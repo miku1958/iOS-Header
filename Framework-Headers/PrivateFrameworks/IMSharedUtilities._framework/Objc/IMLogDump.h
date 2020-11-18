@@ -22,7 +22,7 @@
 - (void)_calculateConnectedMinutesForDateKey:(id)arg1 durationKey:(id)arg2 daysDictionary:(id)arg3 totalDurationDictionary:(id)arg4 totalDurationKey:(id)arg5;
 - (double)_calculateMinutesSyncingWithDurationKey:(id)arg1 attemptDateKey:(id)arg2;
 - (id)_calculatePowerAndWifiConnectedTimeInMinutesForDictionary:(id)arg1;
-- (BOOL)_checkArgumentValidity:(id)arg1 withFileName:(id)arg2 withError:(id *)arg3;
+- (BOOL)_checkArgumentValidity:(id)arg1 withFileName:(id)arg2 withPredicate:(id)arg3 withError:(id *)arg4;
 - (void)_compressAndDeleteFilesAtPath:(id)arg1 destinationFilePath:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_dictionaryForDayKey:(id)arg1;
 - (void)_includeCloudKitDebugFilesAtPath:(id)arg1;

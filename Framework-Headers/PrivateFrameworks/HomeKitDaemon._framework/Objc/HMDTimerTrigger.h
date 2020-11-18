@@ -10,6 +10,9 @@
 
 @interface HMDTimerTrigger : HMDTrigger
 {
+    struct os_unfair_lock_s _lock;
+    NSDate *currentFireDate;
+    NSDate *_currentFireDate;
     NSDate *_fireDate;
     NSTimeZone *_fireDateTimeZone;
     NSString *_significantEvent;
@@ -17,11 +20,10 @@
     NSDateComponents *_fireRepeatInterval;
     NSArray *_recurrences;
     NSString *_timerID;
-    NSDate *_currentFireDate;
     NSTimer *_timer;
 }
 
-@property (strong, nonatomic) NSDate *currentFireDate; // @synthesize currentFireDate=_currentFireDate;
+@property (readonly) NSDate *currentFireDate; // @synthesize currentFireDate=_currentFireDate;
 @property (copy, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property (copy, nonatomic) NSTimeZone *fireDateTimeZone; // @synthesize fireDateTimeZone=_fireDateTimeZone;
 @property (copy, nonatomic) NSDateComponents *fireRepeatInterval; // @synthesize fireRepeatInterval=_fireRepeatInterval;
@@ -77,6 +79,7 @@
 - (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)nsTimerTriggered:(id)arg1;
+- (void)setCurrentFireDate:(id)arg1;
 - (BOOL)shouldActivateOnLocalDevice;
 - (void)timerFired:(id)arg1;
 - (void)timerTriggered;

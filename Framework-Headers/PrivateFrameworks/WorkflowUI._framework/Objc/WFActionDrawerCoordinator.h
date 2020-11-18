@@ -7,90 +7,60 @@
 #import <objc/NSObject.h>
 
 #import <WorkflowUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDescriptionViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerAppsDetailViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerAppsViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerResultsViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
-#import <WorkflowUI/WFActionDrawerViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFComponentNavigationContext-Protocol.h>
 
-@class NSHashTable, NSString, UINavigationController, UIViewController, WFActionDrawerAppsViewController, WFActionDrawerResults, WFActionDrawerResultsController, WFActionDrawerSiriSuggestionsViewController, WFActionDrawerState, WFActionDrawerViewController, WFComposeViewController, WFDrawerController, WFWorkflow;
-@protocol WFActionDrawerResultsControlling;
+@class NSString, UINavigationController, UIViewController, WFActionDrawerResults, WFActionDrawerResultsController, WFActionDrawerSiriSuggestionsViewController, WFActionDrawerState, WFActionDrawerViewController, WFDrawerController;
+@protocol WFActionDrawerCoordinatorDelegate, WFActionDrawerResultsControlling;
 
-@interface WFActionDrawerCoordinator : NSObject <UIPopoverPresentationControllerDelegate, WFActionDrawerAppsDetailViewControllerDelegate, WFActionDrawerAppsViewControllerDelegate, WFActionDrawerViewControllerDelegate, WFActionDrawerResultsViewControllerDelegate, WFActionDescriptionViewControllerDelegate, WFComponentNavigationContext, WFActionDrawerStateConfigurable, WFActionDrawerStateRepresentable>
+@interface WFActionDrawerCoordinator : NSObject <UIPopoverPresentationControllerDelegate, WFActionDrawerStateConfigurable, WFActionDrawerStateRepresentable>
 {
-    WFComposeViewController *_composeViewController;
-    WFActionDrawerViewController *_actionsViewController;
-    WFWorkflow *_workflow;
+    id<WFActionDrawerCoordinatorDelegate> _delegate;
+    WFActionDrawerResultsController *_resultsController;
+    WFActionDrawerViewController *_drawerViewController;
     WFDrawerController *_drawerController;
     UINavigationController *_navigationController;
-    NSHashTable *_componentEditingSessions;
     WFActionDrawerResults *_siriSuggestionsResults;
     WFActionDrawerResults *_siriSuggestionsByIntentResults;
     WFActionDrawerSiriSuggestionsViewController *_siriSuggestionsViewController;
     id<WFActionDrawerResultsControlling> _actionDrawerResultsControllingDelegate;
     UIViewController *_documentationPopoverViewController;
-    WFActionDrawerResultsController *_actionDrawerResultsController;
-    WFActionDrawerAppsViewController *_appsViewController;
 }
 
-@property (strong, nonatomic) WFActionDrawerResultsController *actionDrawerResultsController; // @synthesize actionDrawerResultsController=_actionDrawerResultsController;
 @property (weak, nonatomic) id<WFActionDrawerResultsControlling> actionDrawerResultsControllingDelegate; // @synthesize actionDrawerResultsControllingDelegate=_actionDrawerResultsControllingDelegate;
-@property (readonly, nonatomic) WFActionDrawerViewController *actionsViewController; // @synthesize actionsViewController=_actionsViewController;
-@property (strong, nonatomic) WFActionDrawerAppsViewController *appsViewController; // @synthesize appsViewController=_appsViewController;
-@property (readonly, nonatomic) NSHashTable *componentEditingSessions; // @synthesize componentEditingSessions=_componentEditingSessions;
-@property (readonly, weak, nonatomic) UIViewController *componentHostingViewController;
-@property (readonly, weak, nonatomic) WFComposeViewController *composeViewController; // @synthesize composeViewController=_composeViewController;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<WFActionDrawerCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) UIViewController *documentationPopoverViewController; // @synthesize documentationPopoverViewController=_documentationPopoverViewController;
 @property (weak, nonatomic) WFDrawerController *drawerController; // @synthesize drawerController=_drawerController;
+@property (readonly, nonatomic) WFActionDrawerViewController *drawerViewController; // @synthesize drawerViewController=_drawerViewController;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property (readonly, nonatomic) WFActionDrawerResultsController *resultsController; // @synthesize resultsController=_resultsController;
 @property (strong, nonatomic) WFActionDrawerResults *siriSuggestionsByIntentResults; // @synthesize siriSuggestionsByIntentResults=_siriSuggestionsByIntentResults;
 @property (strong, nonatomic) WFActionDrawerResults *siriSuggestionsResults; // @synthesize siriSuggestionsResults=_siriSuggestionsResults;
 @property (weak, nonatomic) WFActionDrawerSiriSuggestionsViewController *siriSuggestionsViewController; // @synthesize siriSuggestionsViewController=_siriSuggestionsViewController;
 @property (readonly, nonatomic) WFActionDrawerState *state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
 - (void).cxx_destruct;
-- (void)actionDescriptionViewController:(id)arg1 didSelectAddAction:(id)arg2;
-- (void)actionDrawerViewController:(id)arg1 didSelectAction:(id)arg2;
-- (void)actionDrawerViewController:(id)arg1 didSelectAppWithBundleIdentifier:(id)arg2;
-- (void)actionDrawerViewController:(id)arg1 didSelectCategoryForContentType:(id)arg2 title:(id)arg3;
-- (void)actionDrawerViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)actionDrawerViewControllerDidSelectCategoryApps:(id)arg1 title:(id)arg2;
-- (void)actionDrawerViewControllerDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
-- (void)actionDrawerViewControllerDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)appDetailsViewController:(id)arg1 didSelectAction:(id)arg2;
-- (void)appDetailsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)appViewController:(id)arg1 didSelectAppWithBundleIdentifier:(id)arg2;
 - (void)appendAction:(id)arg1;
-- (void)applicationWillEnterForeground:(id)arg1;
-- (void)cancelEditingSessionsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)componentDidEndEditingSession:(id)arg1;
-- (void)componentPresentDocumentationForAction:(id)arg1 withSourceView:(id)arg2;
-- (void)componentPresentWorkflowSettings;
-- (void)componentWillBeginEditingSession:(id)arg1;
+- (void)configureForDisplayingDrawerController:(id)arg1 withViewControllers:(id)arg2;
+- (void)configureForDisplayingNavigationController:(id)arg1 withViewControllers:(id)arg2;
 - (void)dealloc;
 - (void)dismissDocumentationIfPresentedInPopoverAnimated:(BOOL)arg1;
-- (id)initWithComposeViewController:(id)arg1 workflow:(id)arg2;
-- (void)loadWithActionsViewController:(id)arg1 withState:(id)arg2;
+- (id)initWithResultsController:(id)arg1;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
-- (id)presentDescriptionForAction:(id)arg1 fromViewController:(id)arg2 view:(id)arg3 arrowDirections:(unsigned long long)arg4 animated:(BOOL)arg5;
+- (void)presentAppsViewControllerAnimated:(BOOL)arg1;
+- (id)presentDescriptionForAction:(id)arg1 fromViewController:(id)arg2 view:(id)arg3 animated:(BOOL)arg4;
+- (void)presentFavoritesViewControllerAnimated:(BOOL)arg1;
 - (void)presentResultsForAppWithBundleIdentifier:(id)arg1;
 - (void)presentResultsViewController:(id)arg1 visibility:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (id)presentResultsViewControllerWithTitle:(id)arg1 results:(id)arg2 visibility:(unsigned long long)arg3 animated:(BOOL)arg4;
 - (void)reloadSiriSuggestions;
 - (void)responderDidBeginEditing:(id)arg1;
-- (void)resultsViewController:(id)arg1 didSelectAction:(id)arg2;
-- (void)resultsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
 - (void)subscribeForTextEditingNotifications;
-- (void)suggestionsViewController:(id)arg1 didSelectAction:(id)arg2;
 
 @end
 

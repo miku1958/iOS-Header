@@ -10,12 +10,13 @@
 #import <SIMToolkitUI/STKIncomingCallUIStateObserver-Protocol.h>
 #import <SIMToolkitUI/STKUserEventMonitorDelegate-Protocol.h>
 
-@class NSObject, NSString, STKIncomingCallUIStateMonitor, STKSIMToolkitAlertSession, STKUserEventMonitor;
+@class CoreTelephonyClient, NSObject, NSString, STKCarrierSubscriptionMonitor, STKIncomingCallUIStateMonitor, STKSIMToolkitAlertSession, STKUserEventMonitor;
 @protocol BSInvalidatable, OS_dispatch_queue, STKAlertSessionResponseProvider, STKTelephonyListItemsProvider;
 
 @interface STKSIMToolkitAlertSessionManager : STKAlertSessionManager <SBSRemoteAlertHandleObserver, STKUserEventMonitorDelegate, STKIncomingCallUIStateObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    CoreTelephonyClient *_telephonyClient;
     struct __CTServerConnection *_serverConnection;
     STKIncomingCallUIStateMonitor *_incomingCallUIStateMonitor;
     id<BSInvalidatable> _haltEventQueueProcessingAssertion;
@@ -24,6 +25,7 @@
     STKUserEventMonitor *_userEventMonitor;
     id<STKAlertSessionResponseProvider> _userEventResponder;
     STKSIMToolkitAlertSession *_currentSession;
+    STKCarrierSubscriptionMonitor *_subscriptionMonitor;
 }
 
 @property (strong, nonatomic, setter=_setListItemsProvider:) id<STKTelephonyListItemsProvider> _listItemsProvider; // @synthesize _listItemsProvider;
@@ -31,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) STKCarrierSubscriptionMonitor *subscriptionMonitor; // @synthesize subscriptionMonitor=_subscriptionMonitor;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -40,8 +43,7 @@
 - (void)_queue_startListening;
 - (void)handleSIMToolkitEvent:(long long)arg1 responder:(id)arg2 userInfo:(id)arg3;
 - (void)incomingCallUIStateDidChange:(BOOL)arg1;
-- (id)init;
-- (id)initWithEventQueue:(id)arg1 logger:(id)arg2;
+- (id)initWithSubscriptionMonitor:(id)arg1;
 - (id)remoteAlertDescriptorForSession:(id)arg1;
 - (void)remoteAlertHandle:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)remoteAlertHandleDidDeactivate:(id)arg1;

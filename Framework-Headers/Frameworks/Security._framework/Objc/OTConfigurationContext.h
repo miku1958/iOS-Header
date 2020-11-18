@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CKKSControl, NSString, OTControl, SFSignInAnalytics;
+@class CKKSControl, NSString, OTControl;
 
 @interface OTConfigurationContext : NSObject
 {
+    BOOL _overrideEscrowCache;
     NSString *_context;
+    NSString *_containerName;
     NSString *_dsid;
     NSString *_altDSID;
-    SFSignInAnalytics *_analytics;
     NSString *_authenticationAppleID;
     NSString *_passwordEquivalentToken;
     OTControl *_otControl;
@@ -22,12 +23,13 @@
 }
 
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
-@property (strong, nonatomic) SFSignInAnalytics *analytics; // @synthesize analytics=_analytics;
 @property (copy, nonatomic) NSString *authenticationAppleID; // @synthesize authenticationAppleID=_authenticationAppleID;
 @property (strong) CKKSControl *ckksControl; // @synthesize ckksControl=_ckksControl;
+@property (copy, nonatomic) NSString *containerName; // @synthesize containerName=_containerName;
 @property (copy, nonatomic) NSString *context; // @synthesize context=_context;
 @property (copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property (strong) OTControl *otControl; // @synthesize otControl=_otControl;
+@property (nonatomic) BOOL overrideEscrowCache; // @synthesize overrideEscrowCache=_overrideEscrowCache;
 @property (copy, nonatomic) NSString *passwordEquivalentToken; // @synthesize passwordEquivalentToken=_passwordEquivalentToken;
 @property (strong) id sbd; // @synthesize sbd=_sbd;
 

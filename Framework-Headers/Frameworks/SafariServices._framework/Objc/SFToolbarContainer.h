@@ -16,15 +16,9 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _toolbarInsets;
 }
 
-@property (nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
-@property (readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
-@property (nonatomic) struct UIEdgeInsets toolbarInsets; // @synthesize toolbarInsets=_toolbarInsets;
-
 - (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithToolbar:(id)arg1;
 - (void)layoutSubviews;
-- (CDStruct_c3b9c2ee)widthRangeUsingNarrowMetrics:(BOOL)arg1;
 
 @end
 

@@ -18,7 +18,9 @@
 @property (nonatomic) BOOL shouldHide; // @synthesize shouldHide=_shouldHide;
 
 - (void).cxx_destruct;
+- (BOOL)hasLeadingImage;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 gridLayoutManager:(id)arg3 queryId:(unsigned long long)arg4;
+- (BOOL)prefersNoSeparatorAbove;
 
 @end
 

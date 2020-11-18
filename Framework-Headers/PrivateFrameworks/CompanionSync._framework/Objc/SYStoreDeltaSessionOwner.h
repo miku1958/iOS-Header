@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithChanges:(id)arg1;
-- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (unsigned int)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
 
 @end
 

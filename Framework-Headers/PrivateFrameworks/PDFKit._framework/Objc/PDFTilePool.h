@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)releasePDFTileSurface:(id)arg1;
-- (void)requestPDFTileSurfaceForTarget:(id)arg1 forPage:(id)arg2 withRenderingProperties:(id)arg3 atZoomFactor:(double)arg4 frame:(struct CGRect)arg5 transform:(struct CGAffineTransform)arg6;
+- (void)requestPDFTileSurfaceForTarget:(id)arg1 forPage:(id)arg2 withRenderingProperties:(id)arg3 atZoomFactor:(double)arg4 frame:(struct CGRect)arg5 transform:(struct CGAffineTransform)arg6 tag:(int)arg7;
 - (void)saveBitmapFiles;
 - (void)setTileSurfaceType:(int)arg1;
 - (int)tileSurfaceSize;

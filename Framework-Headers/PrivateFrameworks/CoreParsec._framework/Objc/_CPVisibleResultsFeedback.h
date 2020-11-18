@@ -10,13 +10,14 @@
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 #import <CoreParsec/_CPVisibleResultsFeedback-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, _CPSearchResultForFeedback;
 
 @interface _CPVisibleResultsFeedback : PBCodable <_CPProcessableFeedback, _CPVisibleResultsFeedback, NSSecureCoding>
 {
     int _triggerEvent;
     unsigned long long _timestamp;
     NSArray *_results;
+    _CPSearchResultForFeedback *_goTakeoverResult;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
+@property (strong, nonatomic) _CPSearchResultForFeedback *goTakeoverResult; // @synthesize goTakeoverResult=_goTakeoverResult;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;

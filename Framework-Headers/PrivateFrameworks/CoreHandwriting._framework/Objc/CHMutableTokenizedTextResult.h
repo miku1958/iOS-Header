@@ -12,6 +12,8 @@
 {
 }
 
+@property (nonatomic) long long changeableTokenColumnCount; // @dynamic changeableTokenColumnCount;
+@property (nonatomic) long long precedingLineBreaks; // @dynamic precedingLineBreaks;
 @property (copy, nonatomic) NSArray *tokenColumns; // @dynamic tokenColumns;
 
 + (id)refineAlternativeTokens:(id)arg1 historyTokenIDs:(id)arg2 languageModel:(void *)arg3;
@@ -20,7 +22,7 @@
 - (void)appendTokenColumns:(id)arg1;
 - (id)commonStrokeSetsFromSets:(id)arg1 tokenRow:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)filterCandidatesWithOutOfPattern:(BOOL)arg1 duplicateTokenIDs:(BOOL)arg2;
+- (void)filterCandidatesWithOutOfPattern:(BOOL)arg1 duplicateTokenIDs:(BOOL)arg2 shouldKeepOriginalSpelling:(BOOL)arg3;
 - (void)setTranscriptionPaths:(id)arg1 scores:(id)arg2;
 - (void)trimTokensToTranscriptionPathCount:(long long)arg1;
 

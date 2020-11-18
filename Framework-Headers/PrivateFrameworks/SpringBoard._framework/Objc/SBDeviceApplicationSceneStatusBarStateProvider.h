@@ -10,12 +10,14 @@
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector;
+@class NSString, SBDeviceApplicationSceneHandle, SBSUIInCallSceneClientSettingsDiffInspector, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector;
 
 @interface SBDeviceApplicationSceneStatusBarStateProvider : SBDeviceApplicationSceneStatusBarStateProvider_Base <SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride, BSInvalidatable>
 {
     UIApplicationSceneClientSettingsDiffInspector *_appClientSettingsDiffInspector;
     UIApplicationSceneSettingsDiffInspector *_appSceneSettingsDiffInspector;
+    SBSUIInCallSceneClientSettingsDiffInspector *_inCallSceneClientSettingsDiffInspector;
+    BOOL _hasAttemptedInCallSceneClientSettingsDiffInspectorCreation;
     SBDeviceApplicationSceneHandle *_sceneHandle;
 }
 
@@ -27,6 +29,7 @@
 - (void).cxx_destruct;
 - (BOOL)_anyObserverWants:(SEL)arg1;
 - (long long)_fallbackInterfaceOrientation;
+- (void)_handleStatusBarStyleOverridesToSuppressUpdate;
 - (id)_initWithSceneHandle:(id)arg1;
 - (void)_performUpdateWith:(id)arg1 actions:(CDUnknownBlockType)arg2;
 - (double)_statusBarAlpha;
@@ -37,13 +40,17 @@
 - (long long)_statusBarStyle;
 - (long long)_statusBarStyleForPartWithIdentifier:(id)arg1 suppressingInherited:(BOOL)arg2;
 - (BOOL)_suppressInheritedPartStyles;
+- (id)breadcrumbProvider;
+- (id)classicApplicationSceneHandleIfExists;
 - (void)dealloc;
 - (void)invalidate;
 - (void)invalidateStatusBarSettings;
+- (id)overlayStatusBarData;
 - (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
+- (id)sceneToHandleStatusBarTapIfExists;
+- (BOOL)sceneWantsDeviceOrientationEventsEnabled;
 - (struct CGRect)statusBarAvoidanceFrame;
-- (id)statusBarControllingSceneHandle;
 - (id)statusBarSceneIdentifier;
 - (int)statusBarStyleOverridesToSuppress;
 

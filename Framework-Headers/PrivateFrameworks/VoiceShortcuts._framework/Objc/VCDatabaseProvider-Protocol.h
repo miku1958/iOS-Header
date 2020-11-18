@@ -6,12 +6,9 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class NSPersistentStoreDescription, WFDatabase;
+@class WFDatabase;
 
 @protocol VCDatabaseProvider <NSObject>
-
-@property (readonly, nonatomic) WFDatabase *database;
-@property (readonly, copy, nonatomic) NSPersistentStoreDescription *storeDescription;
-
+- (WFDatabase *)databaseWithError:(id *)arg1;
 @end
 

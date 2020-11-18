@@ -34,6 +34,8 @@
 + (BOOL)isFaceTimePhotosEnabled;
 + (BOOL)isFaceTimePhotosEnabledByDefault;
 + (BOOL)isFaceTimePhotosRestricted;
++ (BOOL)isFaceTimePhotosXPCServiceEnabled;
++ (BOOL)isInternalInstall;
 + (void)setFaceTimePhotosEnabled:(BOOL)arg1;
 + (void)setFaceTimePhotosEnabledDeterminer:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;

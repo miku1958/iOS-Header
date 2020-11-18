@@ -7,22 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/PHMediaRequestLiveRenderingOptions-Protocol.h>
+#import <Photos/PHMediaRequestThreadingOptions-Protocol.h>
 
-@interface PHLivePhotoRequestOptions : NSObject <NSCopying>
+@class NSString;
+
+@interface PHLivePhotoRequestOptions : NSObject <PHMediaRequestLiveRenderingOptions, PHMediaRequestThreadingOptions, NSCopying>
 {
     BOOL _networkAccessAllowed;
+    BOOL _liveRenderVideoIfNeeded;
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL liveRenderVideoIfNeeded; // @synthesize liveRenderVideoIfNeeded=_liveRenderVideoIfNeeded;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
+@property (readonly, copy, nonatomic) CDUnknownBlockType progressHandler;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isCurrentVersion;
+- (BOOL)isSynchronous;
+- (BOOL)liveRenderAndOnDemandRenderVideoConcurrently;
+- (id)renderResultHandlerQueue;
+- (id)resultHandlerQueue;
 
 @end
 

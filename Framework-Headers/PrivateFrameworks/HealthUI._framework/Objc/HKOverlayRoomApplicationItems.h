@@ -31,6 +31,7 @@
 @property (strong, nonatomic) HKSelectedTimeScopeController *timeScopeController; // @synthesize timeScopeController=_timeScopeController;
 @property (strong, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 
++ (id)applicationItemsWithItems:(id)arg1;
 - (void).cxx_destruct;
 
 @end

@@ -15,7 +15,7 @@
 }
 
 @property (readonly, nonatomic) BOOL _axIsVisible;
-@property (nonatomic, getter=_axSwitcherType, setter=_setAXSwitcherType:) unsigned long long _axSwitcherType;
+@property (copy, nonatomic, getter=_axSwitcherType, setter=_setAXSwitcherType:) CDUnknownBlockType _axSwitcherType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -45,6 +45,7 @@
 - (unsigned long long)_axCurrentAppLayoutIndex;
 - (void)_axDidQuitApp:(id)arg1;
 - (long long)_axEnvironmentMode;
+- (id)_axGridLayoutModifierIfExists;
 - (BOOL)_axHasInlineSwitcherElements;
 - (BOOL)_axHasInlineSwitcherLayoutClass;
 - (BOOL)_axHasMultirowLayout;
@@ -58,11 +59,10 @@
 - (BOOL)_axPerformScrollToIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_axScrollStatusForIndex:(unsigned long long)arg1;
 - (void)_axScrollToAppLayout:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_axSetTetheredViewController:(id)arg1;
 - (BOOL)_axShouldReverseElements;
 - (id)_axSortedElementArray:(id)arg1;
-- (id)_axTetheredViewController;
 - (void)_axUpdateElementOrderingIfNecessary;
+- (void)_axUpdateElements:(id)arg1 withVisibleItemContainers:(id)arg2;
 - (id)_axVisibleAppLayouts;
 - (BOOL)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;
@@ -70,9 +70,7 @@
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)appElementIsAccessibilityElement:(id)arg1;
-- (void)beginTetheringWithViewController:(id)arg1 asTetheree:(BOOL)arg2;
 - (void)dealloc;
-- (void)endTetheringWithViewController:(id)arg1;
 - (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

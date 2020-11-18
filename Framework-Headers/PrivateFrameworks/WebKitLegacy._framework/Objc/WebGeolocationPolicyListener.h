@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)allow;
 - (void)deny;
 - (void)denyOnlyThisRequest;
-- (id)initWithGeolocation:(struct Geolocation *)arg1 forWebView:(id)arg2;
+- (id)initWithGeolocation:(NakedPtr_331571b6)arg1 forWebView:(id)arg2;
 - (BOOL)shouldClearCache;
 
 @end

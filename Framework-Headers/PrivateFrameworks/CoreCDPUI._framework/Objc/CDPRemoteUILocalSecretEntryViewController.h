@@ -28,6 +28,7 @@
 - (id)title;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

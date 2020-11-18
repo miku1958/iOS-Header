@@ -15,13 +15,11 @@
 @interface _INPBSearchForTimersIntentResponse : PBCodable <_INPBSearchForTimersIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_matchedTimers;
     NSArray *_timers;
     NSArray *_unmatchedTimers;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

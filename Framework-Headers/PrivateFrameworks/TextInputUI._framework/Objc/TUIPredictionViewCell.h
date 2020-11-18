@@ -57,9 +57,10 @@
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) unsigned long long visibleSeparatorEdges; // @synthesize visibleSeparatorEdges=_visibleSeparatorEdges;
 
++ (id)cellHighlightColorForDarkStyle:(BOOL)arg1;
 - (void).cxx_destruct;
-- (long long)_currentInterfaceOrientation;
 - (id)_displayLabelForCandidate:(id)arg1;
+- (BOOL)_isEmojiCandidate:(id)arg1;
 - (BOOL)_isPad;
 - (BOOL)_isSecureCandidate:(id)arg1;
 - (BOOL)_renderConfigUsesDarkStyle:(id)arg1;

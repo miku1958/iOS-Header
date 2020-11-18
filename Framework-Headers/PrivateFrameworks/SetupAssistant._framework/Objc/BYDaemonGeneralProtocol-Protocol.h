@@ -6,14 +6,19 @@
 
 #import <SetupAssistant/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol BYDaemonGeneralProtocol <NSObject>
 - (void)backupMetadata:(void (^)(NSData *))arg1;
 - (void)cancelDataMigratorDeferredExit:(void (^)(void))arg1;
+- (void)cancelInternalSkipInfo:(void (^)(void))arg1;
 - (void)deferDataMigratorExit:(void (^)(void))arg1;
 - (void)ensureShortLivedTokenUpgrade:(void (^)(void))arg1;
 - (void)ensureSilentLoginUpgrade:(void (^)(void))arg1;
+- (void)getInternalSkipInfo:(void (^)(BOOL, NSArray *))arg1;
 - (void)observeFinishSetupTriggers:(void (^)(void))arg1;
 - (void)performSilentICDPUpgrade:(void (^)(void))arg1;
+- (void)setInternalShouldSkipFlows:(BOOL)arg1 skipExceptions:(NSArray *)arg2 completion:(void (^)(void))arg3;
 - (void)setupAssistantNeedsToRun:(void (^)(BOOL))arg1;
 @end
 

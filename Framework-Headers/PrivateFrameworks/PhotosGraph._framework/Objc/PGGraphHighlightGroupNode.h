@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/PGGraphHighlightNode.h>
 
-@class NSArray, PGGraphNode;
+@class NSArray, PGGraphHighlightTypeNode;
 
 @interface PGGraphHighlightGroupNode : PGGraphHighlightNode
 {
@@ -14,7 +14,7 @@
 
 @property (readonly) NSArray *highlightNodes;
 @property (readonly) NSArray *sortedHighlightNodes;
-@property (readonly) PGGraphNode *typeNode;
+@property (readonly) PGGraphHighlightTypeNode *typeNode;
 
 + (id)inclusivePathFromTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)inclusivePathToTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
@@ -33,6 +33,7 @@
 - (BOOL)isPartOfTrip;
 - (BOOL)isShortTrip;
 - (BOOL)isTrip;
+- (id)label;
 - (id)momentNodes;
 
 @end

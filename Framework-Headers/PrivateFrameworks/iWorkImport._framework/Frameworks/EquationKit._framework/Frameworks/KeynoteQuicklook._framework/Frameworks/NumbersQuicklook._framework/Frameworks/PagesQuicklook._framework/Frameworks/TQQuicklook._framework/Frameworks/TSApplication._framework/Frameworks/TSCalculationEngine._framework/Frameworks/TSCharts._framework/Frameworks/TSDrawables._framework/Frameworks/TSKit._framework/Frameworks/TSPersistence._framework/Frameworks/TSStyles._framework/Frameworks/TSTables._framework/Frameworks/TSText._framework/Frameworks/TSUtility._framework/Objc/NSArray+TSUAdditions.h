@@ -12,6 +12,7 @@
 + (id)tsu_arrayWithInts:(const int *)arg1 count:(unsigned long long)arg2;
 + (id)tsu_arrayWithNonNilObject:(id)arg1;
 + (id)tsu_arrayWithUIntegers:(const unsigned long long *)arg1 count:(unsigned long long)arg2;
+- (BOOL)tsu_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (id)tsu_anyObject;
 - (id)tsu_arrayByAddingNonContainedObjectsFromArray:(id)arg1;
 - (id)tsu_arrayByFlattening;

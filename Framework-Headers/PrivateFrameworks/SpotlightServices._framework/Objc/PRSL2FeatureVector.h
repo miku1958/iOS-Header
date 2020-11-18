@@ -54,12 +54,12 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithoutDefaultValues;
-- (float *)getAllScores:(float [1519])arg1;
+- (float *)getAllScores:(float [1542])arg1;
 - (id)init;
 - (id)initWithCache:(struct PRSL2FeatureScoreSmallCache)arg1 featureData:(void *)arg2 featureDataSize:(unsigned short)arg3 flags:(unsigned char)arg4 values:(unsigned char)arg5;
 - (void)restoreFromJazzkonHacks:(float *)arg1;
 - (float)scoreForFeature:(unsigned short)arg1;
-- (BOOL)serializeToJSON:(void *)arg1 valuesOnly:(BOOL)arg2 ignoreDefaultValues:(BOOL)arg3;
+- (BOOL)serializeToJSON:(void *)arg1 options:(long long)arg2;
 - (void)setScores:(float *)arg1 forFeatures:(unsigned short *)arg2 count:(unsigned long long)arg3;
 
 @end

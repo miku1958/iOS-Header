@@ -14,6 +14,10 @@
 + (id)errorWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3;
 - (id)_allPartialErrors;
 - (long long)_code;
+- (id)_objectsOfClassTypeFromPartialErrors:(Class)arg1;
+- (id)_partialErrorsDictionary;
+- (id)allZoneIDs;
+- (id)errorForPartialErrorWithObject:(id)arg1;
 - (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3;
 - (id)initWithError:(id)arg1;
 - (BOOL)isChangeTokenExpired;
@@ -23,6 +27,7 @@
 - (BOOL)isNetworkUnavailable;
 - (BOOL)isPCSError;
 - (BOOL)isPartialError;
+- (BOOL)isUnknownItemError;
 - (BOOL)isUnrecoverableDecryptionError;
 - (BOOL)isZoneNotFoundError;
 

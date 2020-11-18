@@ -19,6 +19,7 @@
 - (id)iCloudEnv;
 - (id)primaryAccountAltDSID;
 - (id)primaryAccountDSID;
+- (id)primaryAccountFirstName;
 - (unsigned long long)primaryAccountSecurityLevel;
 - (id)primaryAccountStashedPRK;
 - (id)primaryAccountUsername;

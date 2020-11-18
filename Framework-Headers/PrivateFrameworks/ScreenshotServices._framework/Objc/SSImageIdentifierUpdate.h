@@ -13,6 +13,7 @@
 
 @interface SSImageIdentifierUpdate : NSObject <BSXPCCoding, SSLoggable>
 {
+    BOOL _success;
     NSString *_imageIdentifier;
     NSString *_environmentDescriptionIdentifier;
 }
@@ -24,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property (readonly, nonatomic) NSString *loggableDescription;
+@property (nonatomic) BOOL success; // @synthesize success=_success;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

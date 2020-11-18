@@ -23,7 +23,6 @@
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEligibleForLeadingCellAppearance) BOOL eligibleForLeadingCellAppearance;
 @property (readonly, copy, nonatomic) NTPBFeedItem *feedItem; // @synthesize feedItem=_feedItem;
 @property (readonly, copy, nonatomic) NTPBFeedItem *feedItemForHeadlineFetch;
 @property (readonly, nonatomic) id<FCFeedTransformationItem> feedTransformationItem;

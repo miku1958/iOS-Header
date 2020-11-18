@@ -6,16 +6,21 @@
 
 #import <SpringBoard/SBGestureSwitcherModifier.h>
 
-@class SBGridSwipeUpGestureSwitcherModifier;
+@class SBDismissSiriSwitcherModifier, SBGridSwipeUpGestureSwitcherModifier;
 
 @interface SBSwitcherSwipeUpGestureFloatingSwitcherModifier : SBGestureSwitcherModifier
 {
     SBGridSwipeUpGestureSwitcherModifier *_gridSwipeUpGestureModifier;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
 }
 
 - (void).cxx_destruct;
-- (id)handleEvent:(id)arg1;
+- (double)contentViewScale;
+- (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (id)handleGestureEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1;
+- (id)responseForProposedChildResponse:(id)arg1 childModifier:(id)arg2 event:(id)arg3;
+- (double)scaleForIndex:(unsigned long long)arg1;
 
 @end
 

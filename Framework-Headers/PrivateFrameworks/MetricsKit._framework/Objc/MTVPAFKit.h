@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MetricsKit/MTMetricsKitTemplate.h>
+#import <MetricsKit/MTPAFKit.h>
 
-@interface MTVPAFKit : MTMetricsKitTemplate
+@interface MTVPAFKit : MTPAFKit
 {
 }
 
-- (id)initWithTopic:(id)arg1;
 - (id)trackerWithPlayList:(id)arg1;
 - (id)trackerWithPlayList:(id)arg1 eventData:(id)arg2;
 

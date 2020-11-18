@@ -10,6 +10,7 @@
 
 @protocol PHResourceChooserAsset <PLAssetID>
 
+@property (readonly, nonatomic) unsigned long long effectiveThumbnailIndex;
 @property (readonly, nonatomic) BOOL hasAdjustments;
 @property (readonly, nonatomic) NSData *imageRequestHints;
 @property (readonly, nonatomic) BOOL isRAWPlusJPEG;

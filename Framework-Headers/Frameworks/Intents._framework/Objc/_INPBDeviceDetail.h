@@ -17,7 +17,6 @@
     struct {
         unsigned int deviceClass:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _deviceClass;
     _INPBDataString *_category;
     _INPBDataString *_deviceName;
@@ -26,7 +25,6 @@
     _INPBDataString *_productName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

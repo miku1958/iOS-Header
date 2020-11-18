@@ -22,13 +22,13 @@
     BOOL _downloaded;
     BOOL _hasSize;
     BOOL _shouldReadRawEncryptedData;
-    NSString *_databaseBasePath;
+    NSString *_UUID;
+    NSString *_rootDatabasePath;
     long long _state;
     NSData *_archiverInfo;
     CKSQLite *_sqlite;
     unsigned long long _nextItemIndex;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_UUID;
     unsigned long long _size;
     long long _storageGroupingPolicy;
     long long _uploadRank;
@@ -38,10 +38,10 @@
     NSString *_recordKey;
 }
 
-@property (strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
+@property (copy, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (copy, nonatomic) NSData *archiverInfo; // @synthesize archiverInfo=_archiverInfo;
 @property (copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
-@property (strong, nonatomic) NSString *databaseBasePath; // @synthesize databaseBasePath=_databaseBasePath;
+@property (copy, nonatomic) NSString *databaseBasePath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL downloaded; // @synthesize downloaded=_downloaded;
@@ -54,6 +54,7 @@
 @property (weak, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (copy, nonatomic) NSString *recordKey; // @synthesize recordKey=_recordKey;
 @property (nonatomic) struct _OpaquePCSShareProtection *recordPCS; // @synthesize recordPCS=_recordPCS;
+@property (copy, nonatomic) NSString *rootDatabasePath; // @synthesize rootDatabasePath=_rootDatabasePath;
 @property (nonatomic) BOOL shouldReadRawEncryptedData; // @synthesize shouldReadRawEncryptedData=_shouldReadRawEncryptedData;
 @property (copy, nonatomic) NSData *signature;
 @property (nonatomic) unsigned long long size; // @synthesize size=_size;
@@ -122,6 +123,7 @@
 - (unsigned long long)sectionCount;
 - (BOOL)setArchiverInfo:(id)arg1 error:(id *)arg2;
 - (id)sqliteOrRaise;
+- (void)testAddSectionConstraintAndRaise:(id)arg1;
 - (void)updateItemAtIndex:(long long)arg1 withFileURL:(id)arg2;
 - (void)updateItemAtIndex:(long long)arg1 withSignature:(id)arg2 size:(unsigned long long)arg3 itemID:(unsigned long long)arg4 sectionIndex:(unsigned long long)arg5;
 - (void)updateItemsAtIndexes:(id)arg1 fileURLs:(id)arg2;

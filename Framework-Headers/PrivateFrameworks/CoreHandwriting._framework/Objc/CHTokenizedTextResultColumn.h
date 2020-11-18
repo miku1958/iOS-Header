@@ -21,6 +21,7 @@
 @property (readonly, copy, nonatomic) NSArray *tokenRows; // @synthesize tokenRows=_tokenRows;
 
 + (BOOL)supportsSecureCoding;
+- (BOOL)containsStartingTokenEquivalentToToken:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

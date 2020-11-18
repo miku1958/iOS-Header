@@ -37,6 +37,7 @@
 + (id)sharedAccountsLogoutConfig;
 + (id)sharedAccountsMigrationConfig;
 + (id)sharedAccountsMigrationConfigOversize;
++ (id)sharedAccountsMultiUserConfig;
 + (id)sharedAccountsNotificationPluginConfig;
 + (id)sharedAccountsOversizeConfig;
 + (id)sharedAccountsStorefrontConfig;
@@ -51,11 +52,13 @@
 + (id)sharedDeviceOffersConfig;
 + (id)sharedFollowUpConfig;
 + (id)sharedKeychainConfig;
++ (id)sharedMarketingItemConfig;
 + (id)sharedMediaConfig;
 + (id)sharedMediaServiceOwnerConfig;
 + (id)sharedPrivacyConfig;
 + (id)sharedPurchaseConfig;
 + (id)sharedPushNotificationConfig;
++ (id)sharedRatingsProviderConfig;
 + (id)sharedUserNotificationConfig;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

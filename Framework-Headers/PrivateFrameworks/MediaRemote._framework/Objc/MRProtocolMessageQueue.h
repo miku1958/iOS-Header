@@ -22,9 +22,8 @@
 @property (weak, nonatomic) id<MRProtocolMessageQueueDelegate> delegate;
 
 - (void).cxx_destruct;
-- (id)_dataForMessage:(id)arg1;
 - (void)dealloc;
-- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)enqueueMessage:(id)arg1 expectedMessage:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)flush;
 - (id)initWithMaxLowPriorityMessagesAllowed:(unsigned long long)arg1;
 - (BOOL)reply:(id)arg1;

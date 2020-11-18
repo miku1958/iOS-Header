@@ -21,6 +21,7 @@
 - (id)_murlRequestWithServiceURL:(id)arg1 version:(id)arg2 endpointComponents:(id)arg3 queryParameters:(id)arg4 appleAccountInformation:(id)arg5;
 - (id)_murlRequestWithURL:(id)arg1;
 - (void)_signRequest:(id)arg1 webService:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_signRequestData:(id)arg1 forRequest:(id)arg2 webService:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

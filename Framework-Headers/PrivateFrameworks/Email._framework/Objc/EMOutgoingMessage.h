@@ -4,31 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Email/EMObject.h>
+#import <objc/NSObject.h>
 
-@class EMMessageObjectID, NSData;
+#import <Email/EFPubliclyDescribable-Protocol.h>
+#import <Email/EMOutgoingMessageBuilder-Protocol.h>
+#import <Email/NSSecureCoding-Protocol.h>
 
-@interface EMOutgoingMessage : EMObject
+@class EMMessageObjectID, NSData, NSString;
+
+@interface EMOutgoingMessage : NSObject <EMOutgoingMessageBuilder, NSSecureCoding, EFPubliclyDescribable>
 {
     BOOL _shouldSign;
     BOOL _shouldEncrypt;
     NSData *_messageData;
     long long _action;
     EMMessageObjectID *_originalMessageID;
+    long long _conversationNotificationLevel;
 }
 
 @property (nonatomic) long long action; // @synthesize action=_action;
-@property (readonly, copy, nonatomic) NSData *messageData; // @synthesize messageData=_messageData;
+@property (nonatomic) long long conversationNotificationLevel; // @synthesize conversationNotificationLevel=_conversationNotificationLevel;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *ef_publicDescription;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSData *messageData; // @synthesize messageData=_messageData;
 @property (strong, nonatomic) EMMessageObjectID *originalMessageID; // @synthesize originalMessageID=_originalMessageID;
 @property (nonatomic) BOOL shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
 @property (nonatomic) BOOL shouldSign; // @synthesize shouldSign=_shouldSign;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithBuilder:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMessageData:(id)arg1;
-- (id)initWithMessageData:(id)arg1 action:(long long)arg2 originalMessageID:(id)arg3 shouldSign:(BOOL)arg4 shouldEncrypt:(BOOL)arg5;
 
 @end
 

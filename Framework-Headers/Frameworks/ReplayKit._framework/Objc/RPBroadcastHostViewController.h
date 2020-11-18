@@ -6,16 +6,14 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-@class NSXPCListenerEndpoint, RPBroadcastExtensionHostContext, RPBroadcastViewController;
+@class NSXPCListenerEndpoint, RPBroadcastExtensionHostContext;
 
 @interface RPBroadcastHostViewController : _UIRemoteViewController
 {
-    RPBroadcastViewController *_broadcastViewController;
     RPBroadcastExtensionHostContext *_hostContext;
     NSXPCListenerEndpoint *_listenerEndpoint;
 }
 
-@property (weak, nonatomic) RPBroadcastViewController *broadcastViewController; // @synthesize broadcastViewController=_broadcastViewController;
 @property (strong, nonatomic) RPBroadcastExtensionHostContext *hostContext; // @synthesize hostContext=_hostContext;
 @property (strong, nonatomic) NSXPCListenerEndpoint *listenerEndpoint; // @synthesize listenerEndpoint=_listenerEndpoint;
 

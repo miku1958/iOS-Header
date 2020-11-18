@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 @class SGQuickResponsesTransformerInstance;
-@protocol PMLMultiLabelClassifierModelProtocol;
+@protocol PMLMultiLabelClassifierProtocol;
 
 @interface SGQuickResponsesModel : NSObject
 {
-    id<PMLMultiLabelClassifierModelProtocol> _model;
+    id<PMLMultiLabelClassifierProtocol> _model;
     SGQuickResponsesTransformerInstance *_transformer;
 }
 
@@ -24,18 +24,17 @@
 + (id)modelForLanguage:(id)arg1 mode:(unsigned long long)arg2 chunkPath:(id)arg3 plistPath:(id)arg4;
 + (id)newTransformerInstanceForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 + (void)setGlobalTransformerForTesting:(id)arg1;
-+ (BOOL)shouldSampleForLabel:(id)arg1 inLanguage:(id)arg2;
++ (BOOL)shouldSampleForLabel:(id)arg1 inLanguage:(id)arg2 isDynamicLabel:(BOOL)arg3;
 + (id)transformerInstanceForLanguage:(id)arg1 mode:(unsigned long long)arg2;
 + (id)transformerInstanceForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 - (void).cxx_destruct;
-- (id)classify:(id)arg1;
 - (id)config;
 - (id)featuresOf:(id)arg1;
 - (id)initWithLazyMultiLabelModel:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 plistPath:(id)arg4;
 - (id)labelOf:(id)arg1;
 - (id)predict:(id)arg1;
 - (void)setTransformer:(id)arg1;
-- (BOOL)shouldSampleForLabel:(id)arg1;
+- (BOOL)shouldSampleForLabel:(id)arg1 isDynamicLabel:(BOOL)arg2;
 
 @end
 

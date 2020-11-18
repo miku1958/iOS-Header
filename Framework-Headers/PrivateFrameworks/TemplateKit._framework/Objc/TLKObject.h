@@ -14,14 +14,14 @@
 
 @interface TLKObject : NSObject <TLKObservable, TLKObserver>
 {
-    BOOL inBatchUpdate;
     id<TLKObserver> observer;
+    long long batchUpdateCount;
 }
 
+@property (nonatomic) long long batchUpdateCount; // @synthesize batchUpdateCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
 @property (weak) id<TLKObserver> observer; // @synthesize observer;
 @property (readonly) Class superclass;
 

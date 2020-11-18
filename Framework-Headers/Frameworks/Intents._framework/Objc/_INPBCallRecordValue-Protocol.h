@@ -22,14 +22,20 @@
 @property (readonly, nonatomic) BOOL hasDateCreated;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasNumberOfCalls;
+@property (nonatomic) BOOL hasPreferredCallProvider;
+@property (readonly, nonatomic) BOOL hasProviderId;
 @property (nonatomic) BOOL hasUnseen;
 @property (copy, nonatomic) NSString *identifier;
 @property (strong, nonatomic) _INPBInteger *numberOfCalls;
+@property (nonatomic) int preferredCallProvider;
+@property (copy, nonatomic) NSString *providerId;
 @property (nonatomic) BOOL unseen;
 
 - (int)StringAsCallCapability:(NSString *)arg1;
 - (int)StringAsCallType:(NSString *)arg1;
+- (int)StringAsPreferredCallProvider:(NSString *)arg1;
 - (NSString *)callCapabilityAsString:(int)arg1;
 - (NSString *)callTypeAsString:(int)arg1;
+- (NSString *)preferredCallProviderAsString:(int)arg1;
 @end
 

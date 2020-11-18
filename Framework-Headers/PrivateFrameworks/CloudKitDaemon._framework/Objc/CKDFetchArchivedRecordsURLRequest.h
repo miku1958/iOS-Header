@@ -41,8 +41,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_handleRecords:(id)arg1;
 - (id)generateRequestOperations;
-- (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 recordZoneIDs:(id)arg2 configurationsByRecordZoneID:(id)arg3;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;

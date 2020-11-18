@@ -36,7 +36,7 @@
 - (id)mutableChangeObject;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
-- (void)updateGadgetsToSpecIfNeeded:(id)arg1;
+- (void)updateGadgetDataSourceToSpecIfNeeded:(id)arg1;
 
 @end
 

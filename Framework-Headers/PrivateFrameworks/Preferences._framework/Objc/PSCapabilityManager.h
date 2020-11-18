@@ -31,11 +31,20 @@
 - (id)supportsDisplayZoomCapability;
 - (id)supportsInEDUModeCapability;
 - (id)supportsInStoreDemoModeCapability;
+- (id)supportsLightningAdapterCapability;
+- (id)supportsListeningExperienceCapbility;
 - (id)supportsNightShiftCapability;
+- (id)supportsPSCellularDataPlanCapability;
 - (id)supportsPSDeveloperSettingsCapability;
 - (id)supportsPSExposureNotificationsCapability;
+- (id)supportsPSHomeScreenPhoneCapability;
+- (id)supportsPSPencilCapability;
 - (id)supportsPSTTYCapability;
+- (id)supportsPSTrackpadAndMouseCapability;
+- (id)supportsPSTrackpadOnlyCapability;
+- (id)supportsPictureInPictureCapability;
 - (id)supportsRaiseToWakeCapability;
+- (id)supportsWalletApplePayCapability;
 
 @end
 

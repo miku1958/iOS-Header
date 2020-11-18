@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSUserDefaults;
+@class NSArray, NSString, NSUserDefaults;
 
 @interface MRUserSettings : NSObject
 {
@@ -23,10 +23,11 @@
 @property (readonly, nonatomic) BOOL connectToAllEndpointsWhenInProximityToAnyDevice;
 @property (readonly, nonatomic) BOOL connectToEndpointWhenBeginsPlayback;
 @property (readonly, nonatomic) BOOL connectToUserSelectedEndpoint;
-@property (strong, nonatomic) NSArray *connectedClientPIDs;
+@property (strong, nonatomic) NSArray *connectedClientAuditTokens;
 @property (readonly, nonatomic) double deviceRecentlyUsedInterval;
 @property (readonly, nonatomic) double discoverEndpointTimeoutInterval;
 @property (readonly, nonatomic) double endpointRecentlyUserSelectedInterval;
+@property (strong, nonatomic) NSArray *expectedClientAuditTokens;
 @property (readonly, nonatomic) double externalDeviceDisconnectSleepDuration;
 @property (readonly, nonatomic) double externalDeviceDisconnectWaitDuration;
 @property (readonly, nonatomic) double externalDeviceNowPlayingInfoArtworkCoalesceDuration;
@@ -36,6 +37,8 @@
 @property (readonly, nonatomic) long long externalDeviceSocketQOSLevel;
 @property (readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property (readonly, nonatomic) BOOL hasExternalDeviceSocketQOSLevelSet;
+@property (readonly, nonatomic) NSArray *jsonClientUIDs;
+@property (strong, nonatomic) NSString *lastBootUUID;
 @property (readonly, nonatomic) double lastPlayingDeviceThresholdInterval;
 @property (readonly, nonatomic) double launchApplicationTimeoutInterval;
 @property (readonly, nonatomic) long long maxTransactionMemorySize;
@@ -43,6 +46,8 @@
 @property (readonly, nonatomic) BOOL needNowPlayingForegroundState;
 @property (readonly, nonatomic) double nowPlayingApplicationTimeout;
 @property (readonly, nonatomic) double queuedCommandsTimeoutInterval;
+@property (readonly, nonatomic) NSArray *remoteControlDiscoveryBlacklist;
+@property (readonly, nonatomic) NSArray *remoteControlDiscoveryWhitelist;
 @property (readonly, nonatomic) BOOL sendLastPlayingDeviceToHome;
 @property (readonly, nonatomic) double sendPlaybackSessionUpdateToCompanionCoalesceInterval;
 @property (readonly, nonatomic) BOOL shouldInitializeGenericBonjourService;
@@ -50,27 +55,29 @@
 @property (readonly, nonatomic) BOOL shouldInitializeTelevisionBonjourService;
 @property (readonly, nonatomic) BOOL shouldLogArtwork;
 @property (readonly, nonatomic) BOOL shouldLogPairingSetupCode;
+@property (readonly, nonatomic) BOOL shouldWakeDeviceForRemoteControlCommands;
 @property (readonly, nonatomic) BOOL supportLastPlayingDevice;
 @property (readonly, nonatomic) BOOL supportMigration;
+@property (readonly, nonatomic) BOOL supportNanoLinkAgent;
 @property (readonly, nonatomic) BOOL supportProximityMigration;
 @property (readonly, nonatomic) BOOL takelockScreenAssertion;
 @property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
 @property (readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
 @property (readonly, nonatomic) double transactionWaitDurationOnXpcSend;
+@property (readonly, nonatomic) BOOL useAPSyncAPI;
+@property (readonly, nonatomic) BOOL useClusterDevices;
 @property (readonly, nonatomic) BOOL useDebugAVRouteWithoutVolumeControl;
 @property (readonly, nonatomic) BOOL useExternalDeviceSystemPairing;
 @property (readonly, nonatomic) BOOL useGenericTransportForHostedEndpoints;
 @property (readonly, nonatomic) BOOL useNoDelayOptionForExternalDeviceSockets;
+@property (readonly, nonatomic) BOOL useOutputDeviceTransport;
 @property (readonly, nonatomic) BOOL usePeerToPeerExternalDeviceConnections;
 @property (readonly, nonatomic) BOOL useProactiveEndpoint;
 @property (readonly, nonatomic) BOOL useSystemAudioContextForAirPlayTransport;
+@property (readonly, nonatomic) BOOL verboseProtocolMessageLogging;
 
 + (id)currentSettings;
 - (void).cxx_destruct;
-- (BOOL)_boolValueForKey:(id)arg1 usingDefaultValue:(BOOL)arg2;
-- (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(double)arg2;
-- (long long)_integerValueForKey:(id)arg1 usingDefaultValue:(long long)arg2;
-- (void)_removeValueForKey:(id)arg1;
 - (id)defaultSupportedCommandsData;
 - (id)defaultSupportedCommandsDataForClient:(id)arg1;
 - (id)init;

@@ -10,23 +10,30 @@
 
 @interface PXGadgetDataSource : PXSectionedDataSource
 {
-    NSArray *_gadgets;
+    NSArray *_gadgetSections;
 }
 
-@property (readonly, copy, nonatomic) NSArray *gadgets; // @synthesize gadgets=_gadgets;
-@property (readonly) BOOL hasNoContentGadget;
+@property (readonly, nonatomic) NSArray *gadgetSections; // @synthesize gadgetSections=_gadgetSections;
+@property (readonly, nonatomic) BOOL hasNoContentGadget;
 
 - (void).cxx_destruct;
+- (void)_enumerateGadgetSectionsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateGadgetsInSection:(id)arg1 atSectionIndex:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)_gadgetsMatchingPredicate:(id)arg1;
+- (void)enumerateGadgetSectionsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateGadgetsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)gadgetAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)gadgetSectionAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)gadgetSectionWithIdentifier:(id)arg1;
 - (id)gadgetWithId:(id)arg1;
 - (id)gadgetsOfClass:(Class)arg1;
 - (id)gadgetsOfType:(unsigned long long)arg1;
 - (struct PXSimpleIndexPath)indexPathForGadget:(id)arg1;
+- (struct PXSimpleIndexPath)indexPathForGadgetSectionWithIdentifier:(id)arg1;
 - (id)init;
-- (id)initWithGadgets:(id)arg1;
+- (id)initWithGadgetSections:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
-- (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 
 @end

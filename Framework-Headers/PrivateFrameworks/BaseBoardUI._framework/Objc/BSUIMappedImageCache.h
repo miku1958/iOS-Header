@@ -29,11 +29,9 @@
 
 - (void).cxx_destruct;
 - (id)_imageForKey:(id)arg1 withCPBitmapReadFlags:(int)arg2 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg3;
-- (id)_imageForKey:(id)arg1 withCPBitmapReadFlags:(int)arg2 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_noteExternalChangeForKey:(id)arg1;
 - (void)_setImage:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 andCPBitmapReadFlags:(int)arg4;
-- (void)_setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 andCPBitmapReadFlags:(int)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_warmupImageForKey:(id)arg1;
 - (id)allKeys;
 - (void)dealloc;

@@ -17,8 +17,10 @@
 + (id)_orderedValuesForDevice:(id)arg1;
 + (id)_orderedValuesRestrictedByDevice:(id)arg1;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)optionByValidatingValueOfInvalidOption:(id)arg1;
 + (id)optionWithPaletteColor:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)_valueToFaceBundleStringDict;
+- (BOOL)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 
 @end

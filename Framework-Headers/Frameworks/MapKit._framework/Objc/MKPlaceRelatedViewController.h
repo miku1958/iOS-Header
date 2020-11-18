@@ -16,9 +16,10 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_fetchedMapItems;
     NSArray *_cells;
-    MKMapItem *_mapItem;
+    BOOL _isExpanded;
     id<MKPlaceRelatedViewControllerDelegate> _delegate;
     id<_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
+    MKMapItem *_mapItem;
 }
 
 @property (weak, nonatomic) id<_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
@@ -26,10 +27,9 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<MKPlaceRelatedViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (readonly) Class superclass;
 
-+ (id)placeRelatedViewControllerFor:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (void)_captureSeeAllAction;
@@ -37,10 +37,13 @@ __attribute__((visibility("hidden")))
 - (id)_moduleTitle;
 - (void)_reloadRelatedMapItems:(id)arg1;
 - (void)_seeAllAction:(id)arg1;
+- (void)_setExpanded:(BOOL)arg1;
 - (void)_updateHeightConstraints;
 - (void)_updateRows;
 - (void)_updateTitle;
 - (void)fetchPOIs;
+- (id)initWithMapItem:(id)arg1;
+- (unsigned long long)maxItems;
 - (void)preferredContentSizeChanged:(id)arg1;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)viewDidLoad;

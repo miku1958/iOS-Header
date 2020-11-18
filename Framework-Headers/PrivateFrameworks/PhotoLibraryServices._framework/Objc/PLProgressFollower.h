@@ -10,12 +10,13 @@
 
 @interface PLProgressFollower : NSObject
 {
-    NSProgress *_sourceProgress;
     CDUnknownBlockType _progressHandler;
+    NSProgress *_sourceProgress;
     NSProgress *_outputProgress;
 }
 
 @property (strong) NSProgress *outputProgress; // @synthesize outputProgress=_outputProgress;
+@property (readonly) NSProgress *sourceProgress; // @synthesize sourceProgress=_sourceProgress;
 
 - (void).cxx_destruct;
 - (void)dealloc;

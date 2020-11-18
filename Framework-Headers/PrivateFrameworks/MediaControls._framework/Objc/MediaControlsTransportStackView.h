@@ -8,13 +8,14 @@
 
 #import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
 
-@class MPCPlayerResponse, MTVisualStylingProvider, MediaControlsTransportButton, NSArray, NSString;
+@class MPCPlayerResponse, MTVisualStylingProvider, MediaControlsTransportButton, NSString;
 @protocol MediaControlsActionsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsTransportStackView : UIView <MTVisualStylingProviderObservingPrivate>
 {
     BOOL _empty;
+    BOOL _shouldShowTVRemoteButton;
     long long _style;
     MPCPlayerResponse *_response;
     MTVisualStylingProvider *_visualStylingProvider;
@@ -24,24 +25,21 @@ __attribute__((visibility("hidden")))
     MediaControlsTransportButton *_middleButton;
     MediaControlsTransportButton *_rightButton;
     MediaControlsTransportButton *_languageOptionsButton;
-    NSArray *_threeButtonContraints;
-    NSArray *_fiveButtonContraints;
 }
 
 @property (weak, nonatomic) id<MediaControlsActionsDelegate> actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
-@property (strong, nonatomic) NSArray *fiveButtonContraints; // @synthesize fiveButtonContraints=_fiveButtonContraints;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MediaControlsTransportButton *languageOptionsButton; // @synthesize languageOptionsButton=_languageOptionsButton;
 @property (strong, nonatomic) MediaControlsTransportButton *leftButton; // @synthesize leftButton=_leftButton;
 @property (strong, nonatomic) MediaControlsTransportButton *middleButton; // @synthesize middleButton=_middleButton;
 @property (strong, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 @property (strong, nonatomic) MediaControlsTransportButton *rightButton; // @synthesize rightButton=_rightButton;
+@property (nonatomic) BOOL shouldShowTVRemoteButton; // @synthesize shouldShowTVRemoteButton=_shouldShowTVRemoteButton;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *threeButtonContraints; // @synthesize threeButtonContraints=_threeButtonContraints;
 @property (strong, nonatomic) MediaControlsTransportButton *tvRemoteButton; // @synthesize tvRemoteButton=_tvRemoteButton;
 @property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 

@@ -123,9 +123,12 @@
 @property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 @property (readonly, nonatomic) NSArray *weekdays; // @synthesize weekdays=_weekdays;
 
++ (BOOL)dateFormatIsPureLiteral:(id)arg1;
 + (id)defaultFormattingSymbolsForLocale:(id)arg1;
 + (id)defaultFormattingSymbolsVersionForLocale:(id)arg1;
 + (id)dummyFormattingSymbolsForTesting:(long long)arg1;
++ (BOOL)isADummyDataSetVersion:(id)arg1;
++ (unsigned long long)locationOfFirstDateFormatCharacter:(id)arg1;
 + (id)numberingSystemForLocale:(id)arg1;
 + (BOOL)p_localeIsCustomized:(id)arg1;
 + (BOOL)p_patternsDifferForDF:(id)arg1 uncustomizedDF:(id)arg2 dateStyle:(unsigned long long)arg3 timeStyle:(unsigned long long)arg4;
@@ -134,7 +137,6 @@
 - (void).cxx_destruct;
 - (id)currencyCodeForCurrencySymbol:(id)arg1;
 - (id)currencySymbolForCurrencyCode:(id)arg1;
-- (void)fillInEmptyFieldsBasedOnLocale:(id)arg1;
 - (id)halfwidthCurrencySymbolForCurrencyCode:(id)arg1;
 - (BOOL)hasUserCustomizations;
 - (unsigned long long)hash;
@@ -143,9 +145,11 @@
 - (id)initWithVersion:(id)arg1 calendar:(id)arg2 numberingSystem:(id)arg3 months:(id)arg4 standaloneMonths:(id)arg5 shortMonths:(id)arg6 standaloneShortMonths:(id)arg7 tinyMonths:(id)arg8 standaloneTinyMonths:(id)arg9 weekdays:(id)arg10 standaloneWeekdays:(id)arg11 shortWeekdays:(id)arg12 standaloneShortWeekdays:(id)arg13 tinyWeekdays:(id)arg14 standaloneTinyWeekdays:(id)arg15 quarters:(id)arg16 standaloneQuarters:(id)arg17 shortQuarters:(id)arg18 standaloneShortQuarters:(id)arg19 eras:(id)arg20 longEras:(id)arg21 amSymbol:(id)arg22 pmSymbol:(id)arg23 shortDatePattern:(id)arg24 mediumDatePattern:(id)arg25 longDatePattern:(id)arg26 fullDatePattern:(id)arg27 shortTimePattern:(id)arg28 mediumTimePattern:(id)arg29 longTimePattern:(id)arg30 fullTimePattern:(id)arg31 decimalSeparator:(id)arg32 groupingSeparator:(id)arg33 currencyDecimalSeparator:(id)arg34 currencyGroupingSeparator:(id)arg35 plusSign:(id)arg36 minusSign:(id)arg37 exponentialSymbol:(id)arg38 percentSymbol:(id)arg39 perMilleSymbol:(id)arg40 infinitySymbol:(id)arg41 nanSymbol:(id)arg42 decimalPattern:(id)arg43 scientificPattern:(id)arg44 percentPattern:(id)arg45 currencyPattern:(id)arg46 currencyCode:(id)arg47 currencySymbols:(id)arg48;
 - (BOOL)isEqual:(id)arg1;
 - (void)p_deriveCalculatedPropertyValues;
-- (id)p_negativeNumberKeyForNumberStyle:(int)arg1 negativeStyle:(int)arg2;
+- (id)p_negativeNumberKeyForNumberStyle:(unsigned int)arg1 negativeStyle:(int)arg2;
 - (id)patternStringForDateStyle:(unsigned long long)arg1 timeStyle:(unsigned long long)arg2;
-- (id)patternStringForNumberStyle:(int)arg1 negativeStyle:(int)arg2;
+- (id)patternStringForNumberStyle:(unsigned int)arg1 negativeStyle:(int)arg2;
+- (void)setForTestingShortDatePattern:(id)arg1 mediumDatePattern:(id)arg2 longDatePattern:(id)arg3 fullDatePattern:(id)arg4 shortTimePattern:(id)arg5 mediumTimePattern:(id)arg6 longTimePattern:(id)arg7 fullTimePattern:(id)arg8;
+- (void)upgradeIfNecessary:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXHorizontalCollectionGadgetProvider.h>
+#import <PhotosUICore/PXGadgetProvider.h>
 
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXCollectionsDataSourceManagerObserver-Protocol.h>
@@ -12,14 +12,14 @@
 
 @class NSString, PUAlbumsGadgetProvider, PUSessionInfo, PXExtendedTraitCollection, PXPhotoKitCollectionsDataSourceManager;
 
-@interface PUHorizontalAlbumListGadgetProvider : PXHorizontalCollectionGadgetProvider <PXSettingsKeyObserver, PXChangeObserver, PXCollectionsDataSourceManagerObserver>
+@interface PUHorizontalAlbumListGadgetProvider : PXGadgetProvider <PXSettingsKeyObserver, PXChangeObserver, PXCollectionsDataSourceManagerObserver>
 {
-    NSString *_title;
     PUSessionInfo *_sessionInfo;
     unsigned long long _type;
     PXExtendedTraitCollection *_traitCollection;
     PXPhotoKitCollectionsDataSourceManager *_dataSourceManager;
     PUAlbumsGadgetProvider *_albumsGadgetProvider;
+    NSString *_title;
 }
 
 @property (strong, nonatomic) PUAlbumsGadgetProvider *albumsGadgetProvider; // @synthesize albumsGadgetProvider=_albumsGadgetProvider;
@@ -29,26 +29,29 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (void)_accountStoreDidChange:(id)arg1;
 - (BOOL)_canProvideGadgets;
 - (id)_fromMyMacConfiguration;
 - (void)_handleDataSourceChange;
 - (id)_newConfiguration;
 - (id)_peoplePlacesAndMediaTypesConfiguration;
+- (void)_resetGadgets;
 - (id)_seeAllViewController;
-- (void)dealloc;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (id)initWithType:(unsigned long long)arg1 extendedTraitCollection:(id)arg2 sessionInfo:(id)arg3;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)pauseLoadingRemainingData;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)startLoadingRemainingData;
-- (id)title;
 
 @end
 

@@ -6,39 +6,22 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+#import <VideosUI/NSCopying-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI10ViewLayout : _TtCs12_SwiftObject
+@interface _TtC8VideosUI10ViewLayout : _TtCs12_SwiftObject <NSCopying>
 {
-    MISSING_TYPE *margin;
-    MISSING_TYPE *padding;
-    MISSING_TYPE *width;
-    MISSING_TYPE *height;
-    MISSING_TYPE *minWidth;
-    MISSING_TYPE *minHeight;
-    MISSING_TYPE *maxWidth;
-    MISSING_TYPE *maxHeight;
-    MISSING_TYPE *tintColor;
-    MISSING_TYPE *backgroundColor;
-    MISSING_TYPE *highlightColor;
-    MISSING_TYPE *lineSpacing;
-    MISSING_TYPE *alignment;
-    MISSING_TYPE *contentAlignment;
-    MISSING_TYPE *position;
-    MISSING_TYPE *highlightStyle;
-    MISSING_TYPE *focusAlign;
-    MISSING_TYPE *focusMargin;
-    MISSING_TYPE *focusSizeIncrease;
-    MISSING_TYPE *acceptsFocus;
-    MISSING_TYPE *centerGrowth;
-    MISSING_TYPE *borderRadii;
-    MISSING_TYPE *shadow;
+    MISSING_TYPE *gridType;
     MISSING_TYPE *relationalLayout;
-    MISSING_TYPE *currentSizeClass;
+    MISSING_TYPE *$__lazy_storage_$_propertyStore;
+    MISSING_TYPE *$__lazy_storage_$_childernLayouts;
     MISSING_TYPE *currentTraitCollection;
-    MISSING_TYPE *sizeClassPublisher;
-    MISSING_TYPE *layoutTraitsProvider;
+    MISSING_TYPE *deviceType;
+    MISSING_TYPE *currentSizeClass;
 }
+
+- (id)copyWithZone:(void *)arg1;
 
 @end
 

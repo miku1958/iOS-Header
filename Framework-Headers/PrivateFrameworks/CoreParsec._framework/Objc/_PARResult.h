@@ -9,13 +9,17 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_PARResult-Protocol.h>
 
-@class NSArray, NSData, NSString, _PARResult_Template;
+@class NSArray, NSData, NSDictionary, NSString, _PARResult_Template;
 
 __attribute__((visibility("hidden")))
 @interface _PARResult : PBCodable <_PARResult, NSSecureCoding>
 {
     BOOL _renderHorizontallyWithOtherResultsInCategory;
     BOOL _isQuickGlance;
+    BOOL _shouldUseCompactDisplay;
+    BOOL _noGoTakeover;
+    BOOL _preferTopPlatter;
+    BOOL _usesCompactDisplay;
     float _score;
     int _maxAgeSeconds;
     float _serverScore;
@@ -39,9 +43,12 @@ __attribute__((visibility("hidden")))
     NSString *_intendedQuery;
     NSString *_correctedQuery;
     NSString *_completedQuery;
+    NSArray *_alternativeURLs;
+    NSDictionary *_serverFeatures;
 }
 
 @property (copy, nonatomic) NSString *adamId; // @synthesize adamId=_adamId;
+@property (copy, nonatomic) NSArray *alternativeURLs; // @synthesize alternativeURLs=_alternativeURLs;
 @property (copy, nonatomic) NSString *appleReferrer; // @synthesize appleReferrer=_appleReferrer;
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (copy, nonatomic) NSString *canonicalId; // @synthesize canonicalId=_canonicalId;
@@ -60,28 +67,39 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int maxAgeSeconds; // @synthesize maxAgeSeconds=_maxAgeSeconds;
 @property (nonatomic) int minimumRankOfTopHitToSuppressResult; // @synthesize minimumRankOfTopHitToSuppressResult=_minimumRankOfTopHitToSuppressResult;
+@property (nonatomic) BOOL noGoTakeover; // @synthesize noGoTakeover=_noGoTakeover;
 @property (nonatomic) int placement; // @synthesize placement=_placement;
+@property (nonatomic) BOOL preferTopPlatter; // @synthesize preferTopPlatter=_preferTopPlatter;
 @property (nonatomic) int queryIndependentEngagementScore; // @synthesize queryIndependentEngagementScore=_queryIndependentEngagementScore;
 @property (nonatomic) BOOL renderHorizontallyWithOtherResultsInCategory; // @synthesize renderHorizontallyWithOtherResultsInCategory=_renderHorizontallyWithOtherResultsInCategory;
 @property (nonatomic) float score; // @synthesize score=_score;
 @property (copy, nonatomic) NSString *sectionBundleId; // @synthesize sectionBundleId=_sectionBundleId;
+@property (copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (nonatomic) float serverScore; // @synthesize serverScore=_serverScore;
+@property (nonatomic) BOOL shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _PARResult_Template *template; // @synthesize template=_template;
 @property (nonatomic) int topHit; // @synthesize topHit=_topHit;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *url; // @synthesize url=_url;
+@property (nonatomic) BOOL usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
 
 - (void).cxx_destruct;
+- (void)addAlternativeURLs:(id)arg1;
 - (void)addEntities:(id)arg1;
+- (id)alternativeURLsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternativeURLsCount;
+- (void)clearAlternativeURLs;
 - (void)clearEntities;
 - (id)dictionaryRepresentation;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
+- (BOOL)getServerFeatures:(double *)arg1 forKey:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -32,10 +32,13 @@
 @property (readonly, nonatomic) BOOL updateReasonIsInitialDownload;
 @property (readonly, nonatomic) unsigned long long updateReasons; // @synthesize updateReasons=_updateReasons;
 
++ (long long)accountEventTypeFromRecord:(id)arg1;
 + (id)eventIdentifierFromRecordName:(id)arg1;
++ (id)recordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addUpdateReasons:(unsigned long long)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)description;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
@@ -46,6 +49,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAccountEvent:(id)arg1;
 - (unsigned long long)itemType;
+- (id)primaryIdentifier;
 - (id)recordName;
 - (id)recordNameForItem:(id)arg1;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;

@@ -6,12 +6,12 @@
 
 #import <MapKit/MKPlaceActivityProvider.h>
 
-#import <MapKit/MKActivityItemSocialSource-Protocol.h>
-#import <MapKit/MKActivityItemSource-Protocol.h>
+#import <MapKit/UIActivityItemSocialSource-Protocol.h>
+#import <MapKit/UIActivityItemSource-Protocol.h>
 
 @class NSString;
 
-@interface MKPlaceURLActivityProvider : MKPlaceActivityProvider <MKActivityItemSource, MKActivityItemSocialSource>
+@interface MKPlaceURLActivityProvider : MKPlaceActivityProvider <UIActivityItemSource, UIActivityItemSocialSource>
 {
 }
 

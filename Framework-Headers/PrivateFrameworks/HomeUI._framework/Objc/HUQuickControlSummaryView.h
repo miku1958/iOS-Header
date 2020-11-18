@@ -6,53 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class HUIconView, NSArray, UILabel, UILayoutGuide;
-@protocol HFStringGenerator;
+@class HUIconView, NSArray, NSString, UILabel, UIStackView, UIVisualEffectView;
 
 @interface HUQuickControlSummaryView : UIView
 {
+    NSString *_primaryText;
+    NSString *_secondaryText;
     HUIconView *_iconView;
-    UILabel *_primaryStatusLabel;
-    UILabel *_secondaryStatusLabel;
-    id<HFStringGenerator> _primaryStatusText;
-    id<HFStringGenerator> _secondaryStatusText;
-    unsigned long long _contentAlignment;
-    long long _sizeSubclass;
-    unsigned long long _iconSize;
+    UILabel *_primaryLabel;
+    UILabel *_secondaryLabel;
     NSArray *_contentConstraints;
-    UILayoutGuide *_lastBaselineLayoutGuide;
+    UIVisualEffectView *_secondaryLabelEffectView;
+    UIStackView *_verticalStackView;
 }
 
-@property (nonatomic) unsigned long long contentAlignment; // @synthesize contentAlignment=_contentAlignment;
 @property (strong, nonatomic) NSArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
-@property (nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
 @property (readonly, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
-@property (strong, nonatomic) UILayoutGuide *lastBaselineLayoutGuide; // @synthesize lastBaselineLayoutGuide=_lastBaselineLayoutGuide;
-@property (readonly, nonatomic) UILabel *primaryStatusLabel; // @synthesize primaryStatusLabel=_primaryStatusLabel;
-@property (copy, nonatomic) id<HFStringGenerator> primaryStatusText; // @synthesize primaryStatusText=_primaryStatusText;
-@property (readonly, nonatomic) UILabel *secondaryStatusLabel; // @synthesize secondaryStatusLabel=_secondaryStatusLabel;
-@property (copy, nonatomic) id<HFStringGenerator> secondaryStatusText; // @synthesize secondaryStatusText=_secondaryStatusText;
-@property (nonatomic) long long sizeSubclass; // @synthesize sizeSubclass=_sizeSubclass;
+@property (strong, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
+@property (copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
+@property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
+@property (strong, nonatomic) UIVisualEffectView *secondaryLabelEffectView; // @synthesize secondaryLabelEffectView=_secondaryLabelEffectView;
+@property (copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
+@property (strong, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=_verticalStackView;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (double)_iconHeight;
-- (double)_iconWidth;
-- (void)_invalidateContentAndConstraints;
-- (id)_primaryFont;
-- (id)_primaryFontTextStyle;
-- (id)_secondaryFont;
-- (id)_statusParagraphStyleWithLineHeight:(double)arg1;
-- (void)_updatePrimaryStatusContent;
-- (void)_updateSecondaryStatusContent;
-- (void)contentSizeCategoryDidChangeNotification;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)lastBaselineAnchor;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
-- (id)viewForFirstBaselineLayout;
-- (id)viewForLastBaselineLayout;
 
 @end
 

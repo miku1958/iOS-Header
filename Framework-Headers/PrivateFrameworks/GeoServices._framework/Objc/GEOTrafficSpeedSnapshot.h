@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_receivedTime:1;
         unsigned int read_snapshotMetaData:1;
         unsigned int read_speeds:1;
-        unsigned int wrote_receivedTime:1;
-        unsigned int wrote_snapshotMetaData:1;
-        unsigned int wrote_speeds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,9 +37,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)speedsType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsSpeeds:(id)arg1;
-- (void)_readSnapshotMetaData;
-- (void)_readSpeeds;
 - (void)addSpeeds:(id)arg1;
 - (void)clearSpeeds;
 - (void)copyTo:(id)arg1;
@@ -51,7 +46,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

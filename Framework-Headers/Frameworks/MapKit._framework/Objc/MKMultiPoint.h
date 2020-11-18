@@ -15,6 +15,10 @@
     CDStruct_c3b9c2ee *_points;
     unsigned long long _pointCount;
     CDStruct_02837cd9 _boundingRect;
+    struct GEOOnce_s _calculatedMapPointsLength;
+    double _mapPointsLength;
+    struct GEOOnce_s _calculatedSelfIntersecting;
+    BOOL _selfIntersecting;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,7 +29,10 @@
 
 - (void)_assignPoints:(CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2;
 - (void)_calculateBounds;
+- (BOOL)_determineSelfIntersecting;
 - (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
+- (BOOL)_isSelfIntersecting;
+- (double)_mapPointsLength;
 - (void)_pointsDidChange;
 - (void)_setBounds:(CDStruct_02837cd9)arg1;
 - (void)_setCoordinates:(const struct CLLocationCoordinate2D *)arg1 count:(unsigned long long)arg2;
@@ -38,6 +45,8 @@
 - (void)getCoordinates:(struct CLLocationCoordinate2D *)arg1 range:(struct _NSRange)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)intersectsMapRect:(CDStruct_02837cd9)arg1;
+- (double)locationAtPointIndex:(unsigned long long)arg1;
+- (id)locationsAtPointIndexes:(id)arg1;
 - (CDStruct_c3b9c2ee *)points;
 
 @end

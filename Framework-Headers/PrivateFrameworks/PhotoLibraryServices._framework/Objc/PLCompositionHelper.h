@@ -20,6 +20,7 @@
 + (BOOL)compositionController:(id)arg1 isPortraitEqualToCompositionController:(id)arg2;
 + (BOOL)compositionController:(id)arg1 isPortraitIntensityEqualToCompositionController:(id)arg2;
 + (void)compositionController:(id)arg1 setEffectFilterName:(id)arg2 version:(long long)arg3;
++ (void)compositionController:(id)arg1 setInputOrientation:(long long)arg2;
 + (BOOL)compositionControllerHasAnyAutoEnhancement:(id)arg1;
 + (BOOL)compositionHasOvercaptureSourceSelection:(id)arg1;
 + (id)defaultValueForAdjustmentKey:(id)arg1 settingKey:(id)arg2;

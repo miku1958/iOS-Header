@@ -8,11 +8,13 @@
 
 #import <CoreUtils/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class NSArray, NSError, NSString, UNUserNotificationCenter;
+@class NSArray, NSError, NSMutableDictionary, NSString, UNUserNotificationCenter;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUUserNotificationSession : NSObject <UNUserNotificationCenterDelegate>
 {
+    NSMutableDictionary *_actions;
+    BOOL _actionsChanged;
     BOOL _activateCalled;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
@@ -79,10 +81,14 @@
 - (BOOL)_runInit:(id *)arg1;
 - (BOOL)_runRequestAddStart:(id *)arg1;
 - (BOOL)_runResponse:(id)arg1 error:(id *)arg2;
+- (void)_updateActionCategories;
 - (void)activate;
+- (void)addActionWithIdentifier:(id)arg1 title:(id)arg2 flags:(unsigned int)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)removeActionWithIdentifier:(id)arg1;
+- (void)removeAllActions;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end

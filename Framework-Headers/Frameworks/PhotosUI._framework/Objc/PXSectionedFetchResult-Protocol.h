@@ -12,6 +12,8 @@
 @protocol PXSectionedFetchResult <NSObject>
 
 @property (readonly, nonatomic) long long count;
+@property (readonly, nonatomic) id<NSObject><NSCopying> firstObject;
+@property (readonly, nonatomic) id<NSObject><NSCopying> lastObject;
 
 - (BOOL)containsObject:(id<NSObject><NSCopying>)arg1;
 - (id<NSObject><NSCopying>)objectAtIndex:(unsigned long long)arg1;

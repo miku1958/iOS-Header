@@ -12,9 +12,12 @@
 
 @property (readonly, nonatomic) NSString *ams_message;
 @property (readonly, nonatomic) NSString *ams_title;
+@property (readonly, nonatomic) NSError *ams_underlyingError;
 @property (readonly, nonatomic, getter=ams_isUserCancelledError) BOOL ams_userCancelledError;
 
+- (id)ams_errorByAddingUnderlyingError:(id)arg1;
 - (id)ams_errorByAddingUserInfo:(id)arg1;
 - (BOOL)ams_hasDomain:(id)arg1 code:(unsigned long long)arg2;
+- (id)ams_underlyingErrorWithDomain:(id)arg1 code:(unsigned long long)arg2;
 @end
 

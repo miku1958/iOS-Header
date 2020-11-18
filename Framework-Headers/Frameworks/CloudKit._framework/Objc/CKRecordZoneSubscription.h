@@ -13,14 +13,21 @@
 
 @interface CKRecordZoneSubscription : CKSubscription <NSSecureCoding, NSCopying>
 {
+    CKRecordZoneID *_zoneID;
 }
 
 @property (copy, nonatomic) NSString *recordType; // @dynamic recordType;
-@property (readonly, copy, nonatomic) CKRecordZoneID *zoneID; // @dynamic zoneID;
+@property (readonly, copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)CKPropertiesDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithZoneID:(id)arg1;
 - (id)initWithZoneID:(id)arg1 subscriptionID:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

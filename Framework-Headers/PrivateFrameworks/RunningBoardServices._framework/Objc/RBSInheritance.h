@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSDescriptionProviding-Protocol.h>
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSAssertionIdentifier;
 @protocol OS_xpc_object;
 
-@interface RBSInheritance : NSObject <BSXPCSecureCoding, BSDescriptionProviding, NSCopying>
+@interface RBSInheritance : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     NSString *_endowmentNamespace;
     NSString *_environment;
@@ -33,19 +32,15 @@
 @property (readonly, copy, nonatomic) RBSAssertionIdentifier *originatingIdentifier; // @synthesize originatingIdentifier=_originatingIdentifier;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithNamespace:(id)arg1 environment:(id)arg2 encodedEndowment:(id)arg3 originatingIdentifier:(id)arg4 attributePath:(unsigned long long)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)endowment;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

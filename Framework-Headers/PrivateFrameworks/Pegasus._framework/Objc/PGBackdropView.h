@@ -6,19 +6,22 @@
 
 #import <Pegasus/__PGView.h>
 
-@class NSString;
+@class CAFilter, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PGBackdropView : __PGView
 {
+    CAFilter *_gaussianBlurFilter;
+    CAFilter *_averageColorFilter;
 }
 
+@property (nonatomic) double backdropScale;
 @property (nonatomic) double gaussianBlurRadius;
 @property (copy, nonatomic) NSString *groupName;
-@property (nonatomic) double saturationAmount;
-@property (nonatomic) double scale;
 
 + (Class)layerClass;
+- (void).cxx_destruct;
+- (void)_updateFilters;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

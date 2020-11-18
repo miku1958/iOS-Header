@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (long long)_recalcPageCount;
+- (void)_resetPaginationInfo;
 - (id)_webDocumentView;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)drawInRect:(struct CGRect)arg1 forPageAtIndex:(long long)arg2;

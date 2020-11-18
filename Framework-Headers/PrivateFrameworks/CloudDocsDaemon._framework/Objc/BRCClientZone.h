@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     _Atomic unsigned int _syncState;
     BRCSyncUpOperation *_syncUpOperation;
     NSError *_lastSyncUpError;
+    BOOL _lastSyncUpErrorWasOnChainedItem;
     BRCSyncDownOperation *_syncDownOperation;
     id _syncDeadlineSourceResumer;
     NSError *_lastSyncDownError;
@@ -65,19 +66,11 @@ __attribute__((visibility("hidden")))
     float _syncUpBatchSizeMultiplier;
     brc_task_tracker *_taskTracker;
     BOOL _needsSave;
-    BOOL _t_syncDownBlocked;
-    BOOL _t_syncUpBlocked;
     unsigned long long _requestID;
     NSArray *_syncThrottles;
     NSString *_osNameRequiredToSync;
-    NSMutableDictionary *_t_osNamesByItemIDBlockedForSyncUp;
-    NSString *_t_syncBlockedUntilOSName;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *_t_osNamesByItemIDBlockedForSyncUp; // @synthesize _t_osNamesByItemIDBlockedForSyncUp;
-@property (readonly, nonatomic) NSString *_t_syncBlockedUntilOSName; // @synthesize _t_syncBlockedUntilOSName;
-@property (readonly, nonatomic) BOOL _t_syncDownBlocked; // @synthesize _t_syncDownBlocked;
-@property (readonly, nonatomic) BOOL _t_syncUpBlocked; // @synthesize _t_syncUpBlocked;
 @property (readonly, nonatomic) BOOL activated; // @synthesize activated=_activated;
 @property (readonly, nonatomic) unsigned long long currentRequestID; // @synthesize currentRequestID=_requestID;
 @property (readonly, nonatomic) BRCPQLConnection *db; // @synthesize db=_db;
@@ -150,18 +143,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_resetItemsTable;
 - (void)_startDownloadingItemIfNecessary:(id)arg1;
 - (void)_startSync;
-- (void)_syncUpOfRecords:(id)arg1 createdAppLibraryNames:(id)arg2 didFinishWithError:(id)arg3;
-- (void)_t_addItemID:(id)arg1 blockedForSyncUpUntilOSName:(id)arg2;
-- (void)_t_flushIdleBlocksIfNeeded;
-- (BOOL)_t_isIdle;
-- (void)_t_markBlockedUntilOSName:(id)arg1;
-- (void)_t_notifyClient:(id)arg1 whenIdle:(CDUnknownBlockType)arg2;
-- (void)_t_pauseSyncDown;
-- (void)_t_pauseSyncUp;
-- (void)_t_removeAllSyncUpBlocking;
-- (void)_t_removeItemIDSyncUpBlocking:(id)arg1;
-- (void)_t_resumeSyncDown;
-- (void)_t_resumeSyncUp;
+- (void)_syncUpOfRecords:(id)arg1 createdAppLibraryNames:(id)arg2 didFinishWithError:(id)arg3 errorWasOnPCSChainedItem:(BOOL)arg4;
 - (void)addSyncDownDependency:(id)arg1;
 - (id)allItems;
 - (id)asPrivateClientZone;
@@ -192,8 +174,8 @@ __attribute__((visibility("hidden")))
 - (void)enumerateFaultsAsyncWithBlock:(CDUnknownBlockType)arg1 batchSize:(unsigned long long)arg2;
 - (BOOL)existsByItemID:(id)arg1;
 - (BOOL)existsByItemID:(id)arg1 db:(id)arg2;
-- (BOOL)existsByParentID:(id)arg1 andLogicalName:(id)arg2;
-- (BOOL)existsByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
+- (BOOL)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2;
+- (BOOL)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 db:(id)arg3;
 - (id)faultByParentID:(id)arg1 andLogicalName:(id)arg2;
 - (id)faultByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
 - (id)faultByParentID:(id)arg1 andPhysicalName:(id)arg2;
@@ -253,8 +235,8 @@ __attribute__((visibility("hidden")))
 - (void)resume;
 - (void)scheduleReset:(unsigned long long)arg1;
 - (void)scheduleReset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)scheduleResetServerAndClientTruthsForReason:(const char *)arg1;
-- (void)scheduleResetServerAndClientTruthsForReason:(const char *)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)scheduleResetServerAndClientTruthsForReason:(id)arg1;
+- (void)scheduleResetServerAndClientTruthsForReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)scheduleSyncDown;
 - (void)scheduleSyncDownFirst;
 - (void)scheduleSyncDownForOOBModifyRecordsAck;
@@ -271,7 +253,6 @@ __attribute__((visibility("hidden")))
 - (long long)serverRankByItemID:(id)arg1 db:(id)arg2;
 - (BOOL)setStateBits:(unsigned int)arg1;
 - (void)setSyncStateBits:(unsigned int)arg1;
-- (void)setupOperationForTestsIfNeeded:(id)arg1 recordsToSave:(id)arg2;
 - (BOOL)shouldSyncMangledID:(id)arg1;
 - (void)signalFaultingWatchersWithError:(id)arg1;
 - (id)sizeOfItemsNeedingSyncUpOrUploadAndReturnError:(id *)arg1;
@@ -280,6 +261,7 @@ __attribute__((visibility("hidden")))
 - (id)syncDownImmediately;
 - (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
 - (id)syncUpAnalyticsError;
+- (float)syncUpBackoff;
 - (long long)throttleHashWithItemID:(id)arg1;
 - (void)unregisterAllItemsDidUploadTracker:(id)arg1;
 - (void)updateWithPlist:(id)arg1;

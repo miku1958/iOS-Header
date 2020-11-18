@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (CDStruct_1b6d18a9)_overlapDurationBetweenAsset:(id)arg1 andAsset:(id)arg2;
 + (BOOL)canMergeAsset:(id)arg1 withConsecutiveAsset:(id)arg2;
++ (CDStruct_e83c9415)conformRange:(CDStruct_e83c9415)arg1 inRange:(CDStruct_e83c9415)arg2;
 - (void).cxx_destruct;
 - (void)_workQueue_finishWithError:(id)arg1;
 - (void)_workQueue_finishWithExportSession:(id)arg1 error:(id)arg2;

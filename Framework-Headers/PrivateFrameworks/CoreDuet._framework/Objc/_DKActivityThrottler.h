@@ -18,22 +18,8 @@
     id<_DKSimpleKeyValueStore> _store;
 }
 
-@property (strong, nonatomic) id<_DKSimpleKeyValueStore> store; // @synthesize store=_store;
-
 - (void).cxx_destruct;
-- (void)_minimumIntervalScheduledActionsAddActionName:(id)arg1;
-- (BOOL)_minimumIntervalScheduledActionsContainsActionName:(id)arg1;
-- (void)_minimumIntervalScheduledActionsRemoveActionName:(id)arg1;
-- (void)_performNoMoreOftenInSecondsThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3 throttleBlock:(CDUnknownBlockType)arg4;
-- (void)_performOrScheduleWithTimeInterval:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4 callDepth:(unsigned long long)arg5;
-- (void)_performWithDelayInSecondsOf:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4;
-- (void)clearDateForKey:(id)arg1;
-- (void)clearHistoryForName:(id)arg1;
-- (id)dateForKey:(id)arg1;
 - (id)description;
-- (id)initWithStore:(id)arg1;
-- (id)keyForName:(id)arg1;
-- (void)setDate:(id)arg1 forKey:(id)arg2;
 
 @end
 

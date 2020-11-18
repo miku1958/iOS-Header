@@ -27,10 +27,10 @@
     PHRelationshipChangeRequestHelper *_invalidMergeCandidatesHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (nonatomic) unsigned short ageType;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (copy, nonatomic) NSDictionary *contactMatchingDictionary;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -54,13 +54,15 @@
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedPerson;
 @property (nonatomic) unsigned short questionType;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *rejectedFacesHelper; // @synthesize rejectedFacesHelper=_rejectedFacesHelper;
+@property (nonatomic) unsigned short sexType;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
+@property (nonatomic) unsigned short suggestedForClientType;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PHPerson *targetPerson; // @synthesize targetPerson=_targetPerson;
 @property (nonatomic) long long type;
 @property (nonatomic, getter=isVerified) BOOL verified;
 @property (nonatomic) long long verifiedType;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForDedupingGraphPersons:(id)arg1;
 + (id)changeRequestForMergingPersons:(id)arg1;
 + (id)changeRequestForMergingPersons:(id)arg1 nominalTargetIdentifier:(id)arg2;
@@ -99,9 +101,8 @@
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (void)mergePersons:(id)arg1;
+- (void)persistSuggestionForClient:(unsigned long long)arg1;
 - (id)personUUID;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)rejectMergeCandidatePersons:(id)arg1;
 - (void)removeFaces:(id)arg1;
 - (void)removeMergeCandidatePersons:(id)arg1;

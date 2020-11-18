@@ -6,7 +6,7 @@
 
 #import <NotesUI/TTTextController.h>
 
-@class ICAttachmentInsertionController, ICNote, NSMutableArray, NSMutableDictionary;
+@class ICAttachmentInsertionController, ICNote, NSMutableArray, NSMutableDictionary, NSTextStorage;
 
 @interface ICTextController : TTTextController
 {
@@ -24,11 +24,13 @@
     NSMutableArray *_trackedRangesForAddedExtraNewlines;
     unsigned long long _overrideAppearanceType;
     unsigned long long _pauseMergeForScrollingCounter;
+    NSTextStorage *_emptyTextStorage;
 }
 
 @property (nonatomic) BOOL alwaysHighlightAuthorEdits; // @synthesize alwaysHighlightAuthorEdits=_alwaysHighlightAuthorEdits;
 @property (weak, nonatomic) ICAttachmentInsertionController *attachmentInsertionController; // @synthesize attachmentInsertionController=_attachmentInsertionController;
 @property (nonatomic) BOOL disableAddingExtraLinesIfNeeded; // @synthesize disableAddingExtraLinesIfNeeded=_disableAddingExtraLinesIfNeeded;
+@property (strong, nonatomic) NSTextStorage *emptyTextStorage; // @synthesize emptyTextStorage=_emptyTextStorage;
 @property (nonatomic) BOOL fullTextStylingRefreshScheduled; // @synthesize fullTextStylingRefreshScheduled=_fullTextStylingRefreshScheduled;
 @property (nonatomic) BOOL isAutoListInsertionDisabled; // @synthesize isAutoListInsertionDisabled=_isAutoListInsertionDisabled;
 @property (nonatomic) BOOL isConvertingTables; // @synthesize isConvertingTables=_isConvertingTables;
@@ -142,6 +144,7 @@
 - (void)showFirstTimeAutoSortEnabledAlertIfNecessaryWithTextView:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 analyticsHandler:(CDUnknownBlockType)arg3;
 - (void)showFirstTimeAutoSortEnabledAlertWithTextView:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 analyticsHandler:(CDUnknownBlockType)arg3;
 - (id)sortTrackedParagraphsMovingCheckedItemsToBottom:(id)arg1;
+- (id)strippedTypingAttributesAtStartOfParagraph:(id)arg1 atTheEndOfDocument:(BOOL)arg2 isTyping:(BOOL)arg3;
 - (void)styleDataDetectorTypesForPreviewInTextStorage:(id)arg1;
 - (void)styleListsAndIndentsInAttributedString:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)superscriptDelta:(long long)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;

@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSAutoAuthenticationViewController-Protocol.h>
 
-@class NSString, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSFontCenter, VSIdentityProviderLogoView, VSViewModel;
+@class NSString, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSFontCenter, VSIdentityProviderLogoView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UILabel *_noticeLabel;
     UILabel *_manualSignInTitleLabel;
     UIButton *_manualSignInButton;
+    UILabel *_footerLabel;
     VSFontCenter *_fontCenter;
 }
 
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
+@property (strong, nonatomic) UILabel *footerLabel; // @synthesize footerLabel=_footerLabel;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
 @property (strong, nonatomic) UIButton *manualSignInButton; // @synthesize manualSignInButton=_manualSignInButton;
@@ -44,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) VSViewModel *viewModel;
+@property (strong, nonatomic) VSAutoAuthenticationViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
 - (void)_manualSignInButtonPressed:(id)arg1;
@@ -54,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setViewModel:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

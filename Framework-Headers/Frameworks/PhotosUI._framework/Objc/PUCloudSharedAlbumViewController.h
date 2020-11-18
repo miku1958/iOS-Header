@@ -6,18 +6,19 @@
 
 #import <PhotosUI/PUPhotosAlbumViewController.h>
 
-#import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
-#import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
 #import <PhotosUI/PXAlbumStreamingOptionsViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PXAssetsSharingHelperDelegate-Protocol.h>
+#import <PhotosUI/PXPhotoStreamComposeServiceDelegate-Protocol.h>
+#import <PhotosUI/PXVideoTrimQueueControllerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PUVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
+@class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PXVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
 @protocol PUCloudSharedAlbumViewControllerDelegate;
 
-@interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
+@interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PXVideoTrimQueueControllerDelegate, PXPhotoStreamComposeServiceDelegate, PXAssetsSharingHelperDelegate>
 {
     PUPhotosPickerViewController *_activePhotosPickerViewController;
-    PUVideoTrimQueueController *_trimController;
+    PXVideoTrimQueueController *_trimController;
     PUPhotoStreamComposeServiceViewController *_composeServiceController;
     BOOL _displayingOptions;
     BOOL __canContributeToCloudSharedAlbum;
@@ -62,19 +63,26 @@
 - (void)_updateOptionsView;
 - (void)_updateOptionsViewInsets;
 - (void)albumStreamingOptionsViewController:(id)arg1 didCompleteWithReason:(int)arg2;
+- (BOOL)assetsSharingHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)assetsSharingHelper:(id)arg1 presentViewController:(id)arg2;
 - (BOOL)canAddToOtherAlbumContent;
 - (BOOL)canDeleteContent;
 - (void)controller:(id)arg1 didCancelTrimmingVideoSources:(id)arg2;
 - (void)controller:(id)arg1 didFinishTrimmingVideoSources:(id)arg2;
+- (void)controller:(id)arg1 dismissViewControllerWithCompletion:(CDUnknownBlockType)arg2;
+- (void)controller:(id)arg1 presentViewController:(id)arg2;
 - (void)didSelectAddPlaceholderInSection:(long long)arg1;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
 - (id)globalFooterSubtitle;
 - (void)handleAddToAlbum:(id)arg1 pickedAssets:(id)arg2;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newToolbarItems;
 - (void)photoStreamComposeService:(id)arg1 didPostComment:(id)arg2;
 - (void)photoStreamComposeServiceDidCancel:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldShowTabBar;

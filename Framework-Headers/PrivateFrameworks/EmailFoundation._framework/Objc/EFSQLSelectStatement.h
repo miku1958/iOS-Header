@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
 #import <EmailFoundation/EFSQLSelectComponent-Protocol.h>
+#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
-@interface EFSQLSelectStatement : NSObject <EFSQLExpressable, EFSQLSelectComponent>
+@interface EFSQLSelectStatement : NSObject <EFSQLValueCollectionExpressable, EFSQLSelectComponent>
 {
     BOOL _distinct;
-    id<EFSQLExpressable> _where;
+    id<EFSQLValueExpressable> _where;
     unsigned long long _limit;
     NSString *_tableName;
     NSMutableArray *_results;
@@ -37,12 +37,15 @@
 @property (readonly, nonatomic) NSMutableArray *results; // @synthesize results=_results;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
-@property (strong, nonatomic) id<EFSQLExpressable> where; // @synthesize where=_where;
+@property (strong, nonatomic) id<EFSQLValueExpressable> where; // @synthesize where=_where;
 
 - (void).cxx_destruct;
 - (void)addResult:(id)arg1 alias:(id)arg2;
 - (void)addResultColumn:(id)arg1;
 - (void)addResultColumn:(id)arg1 fromTable:(id)arg2;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;
 - (void)groupBy:(id)arg1;
 - (void)groupByColumn:(id)arg1;
 - (void)groupByColumn:(id)arg1 fromTable:(id)arg2;

@@ -12,6 +12,7 @@
 
 + (id)_albumArtistProtocolItemWithTrackProperties:(id)arg1 inLibrary:(id)arg2;
 + (id)allProperties;
++ (BOOL)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (id)countingQueryForBaseQuery:(id)arg1 countProperty:(id)arg2 forIdentifier:(long long)arg3;
 + (id)databaseTable;
 + (id)defaultOrderingTerms;

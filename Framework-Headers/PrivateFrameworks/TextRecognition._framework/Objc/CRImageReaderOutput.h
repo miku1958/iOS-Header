@@ -13,6 +13,7 @@
 
 @interface CRImageReaderOutput : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _isTitle;
     int _confidence;
     float _baselineAngle;
     NSString *_type;
@@ -23,6 +24,7 @@
     struct CGPoint _topRight;
     struct CGPoint _bottomRight;
     struct CGPoint _bottomLeft;
+    struct CGSize _imageSize;
     struct CGRect _boundingBox;
 }
 
@@ -33,22 +35,35 @@
 @property (readonly) NSArray *candidates; // @synthesize candidates=_candidates;
 @property (readonly) NSArray *components; // @synthesize components=_components;
 @property int confidence; // @synthesize confidence=_confidence;
+@property struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property BOOL isTitle; // @synthesize isTitle=_isTitle;
 @property (strong) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (readonly) struct CGPoint topLeft; // @synthesize topLeft=_topLeft;
 @property (readonly) struct CGPoint topRight; // @synthesize topRight=_topRight;
 @property (readonly) NSString *type; // @synthesize type=_type;
 
-+ (int)confidenceLevelForConfidenceScore:(double)arg1 options:(id)arg2;
-+ (id)outputWithType:(id)arg1 textFeature:(id)arg2 options:(id)arg3;
++ (int)confidenceLevelForConfidenceScore:(double)arg1 confidenceThresholdProvider:(id)arg2;
++ (id)outputWithType:(id)arg1 textFeature:(id)arg2 imageSize:(struct CGSize)arg3 isTitle:(BOOL)arg4 confidenceThresholdProvider:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_checkValidRange:(struct _NSRange)arg1 forDataLength:(unsigned long long)arg2;
 - (struct CGPoint)_rotatePointIfNeccessary:(struct CGPoint)arg1 anchor:(struct CGPoint)arg2 angle:(double)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)cornersForCharacterRange:(struct _NSRange)arg1 error:(id *)arg2;
+- (id)dataRepresentation;
+- (id)decodeOutputsArrayFromData:(id)arg1 offset:(unsigned long long *)arg2 version:(long long)arg3;
+- (id)decodeStringFromData:(id)arg1 offset:(unsigned long long *)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (id)encodingDataForOutputsArray:(id)arg1;
+- (id)encodingDataForString:(id)arg1;
+- (unsigned long long)hash;
+- (id)initV1WithCoder:(id)arg1;
+- (id)initV2WithDataRepresentation:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(id)arg1 textFeature:(id)arg2 options:(id)arg3;
-- (id)initWithType:(id)arg1 textFeature:(id)arg2 withCandidates:(BOOL)arg3 options:(id)arg4;
+- (id)initWithType:(id)arg1 textFeature:(id)arg2 imageSize:(struct CGSize)arg3 isTitle:(BOOL)arg4 confidenceThresholdProvider:(id)arg5;
+- (id)initWithType:(id)arg1 textFeature:(id)arg2 withCandidates:(BOOL)arg3 imageSize:(struct CGSize)arg4 isTitle:(BOOL)arg5 confidenceThresholdProvider:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToImageReaderOutput:(id)arg1;
 
 @end
 

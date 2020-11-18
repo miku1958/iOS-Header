@@ -28,12 +28,11 @@
 
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (Class)imageDataClass;
 + (BOOL)isPreviewable;
 - (void).cxx_destruct;
-- (id)_getIrisBundleLocation;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (struct CGSize)bbSize;
 - (id)calculateIrisVideoPath;
@@ -46,9 +45,9 @@
 - (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4;
 - (id)location;
 - (int)mediaType;
+- (id)metricsCollectorMediaType;
 - (struct CGSize)originalSize;
 - (id)pasteboardItem;
-- (id)previewFilenameExtension;
 - (id)previewItemTitle;
 - (id)previewItemURL;
 - (BOOL)validatePreviewFormat;

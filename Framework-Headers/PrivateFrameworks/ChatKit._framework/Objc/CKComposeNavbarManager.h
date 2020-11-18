@@ -12,15 +12,15 @@ __attribute__((visibility("hidden")))
 @interface CKComposeNavbarManager : NSObject
 {
     CKComposeNavbarManagerContentView *_contentView;
+    UIView *_customStatusBackgroundView;
     CKComposeNavbarCanvasViewController *_defaultNavbarCanvasViewController;
     CKNavbarCanvasViewController *_avatarNavbarCanvasViewController;
-    UIView *_customStatusBackgroundView;
 }
 
 @property (strong, nonatomic) CKNavbarCanvasViewController *avatarNavbarCanvasViewController; // @synthesize avatarNavbarCanvasViewController=_avatarNavbarCanvasViewController;
 @property (readonly, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) CKComposeNavbarManagerContentView *contentView; // @synthesize contentView=_contentView;
-@property (strong, nonatomic) UIView *customStatusBackgroundView; // @synthesize customStatusBackgroundView=_customStatusBackgroundView;
+@property (readonly, nonatomic) UIView *customStatusBackgroundView; // @synthesize customStatusBackgroundView=_customStatusBackgroundView;
 @property (strong, nonatomic) CKComposeNavbarCanvasViewController *defaultNavbarCanvasViewController; // @synthesize defaultNavbarCanvasViewController=_defaultNavbarCanvasViewController;
 
 - (void).cxx_destruct;

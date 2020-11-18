@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, NSDictionary, NSURL, SLTwitterRequest;
+@class ACAccount, NSDictionary, NSURL;
 
 @interface TWRequest : NSObject
 {
-    SLTwitterRequest *_request;
 }
 
 @property (readonly, nonatomic) NSURL *URL;

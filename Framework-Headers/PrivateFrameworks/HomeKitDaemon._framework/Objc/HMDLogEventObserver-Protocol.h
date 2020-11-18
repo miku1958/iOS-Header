@@ -6,9 +6,9 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDLogEvent, HMDLogEventDispatcher;
+@class HMDLogEvent, HMDLogEventContextProvider;
 
 @protocol HMDLogEventObserver <NSObject>
-- (void)dispatcher:(HMDLogEventDispatcher *)arg1 didReceiveEvent:(HMDLogEvent *)arg2;
+- (void)didReceiveEventFromDispatcher:(HMDLogEvent *)arg1 withLogContext:(HMDLogEventContextProvider *)arg2;
 @end
 

@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI229TagFeedBlueprintLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *feedLayoutSolver;
+    MISSING_TYPE *baseStyler;
+    MISSING_TYPE *assetManager;
 }
 
 @end

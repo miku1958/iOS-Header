@@ -13,6 +13,8 @@
     NSString *_methodToken;
     unsigned int _continuousZeroCounter;
     unsigned int _zeroCounterWinSz;
+    unsigned int _zeroCounterWinSzForReport;
+    unsigned int _maxContinuousZeroCount;
     unsigned int _numChannels;
     unsigned int _analyzeStep;
     float _sampleRate;

@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
 }
 
-@property (nonatomic) unsigned long long artworkSubtype; // @synthesize artworkSubtype;
+@property (readonly, nonatomic) unsigned long long artworkSubtype; // @synthesize artworkSubtype;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration;
+@property (readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double homeAffordanceOverlayAllowance; // @synthesize homeAffordanceOverlayAllowance;
 @property (readonly, nonatomic) struct UIEdgeInsets peripheryInsets; // @synthesize peripheryInsets;

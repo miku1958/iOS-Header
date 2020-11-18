@@ -7,7 +7,7 @@
 #import <UIKit/UIActivityItemProvider.h>
 
 @class NSString, NSURL, WFWorkflow;
-@protocol WFUserInterface;
+@protocol WFUserInterfaceHost;
 
 @interface WFWorkflowLinkProvider : UIActivityItemProvider
 {
@@ -16,12 +16,12 @@
     NSURL *_workflowURL;
     NSString *_workflowID;
     NSURL *_realmURL;
-    id<WFUserInterface> _userInterface;
+    id<WFUserInterfaceHost> _userInterface;
 }
 
 @property (copy, nonatomic) NSString *exclusiveActivityType; // @synthesize exclusiveActivityType=_exclusiveActivityType;
 @property (readonly, nonatomic) NSURL *realmURL; // @synthesize realmURL=_realmURL;
-@property (readonly, nonatomic) id<WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
+@property (readonly, nonatomic) id<WFUserInterfaceHost> userInterface; // @synthesize userInterface=_userInterface;
 @property (readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property (readonly, nonatomic) NSString *workflowID; // @synthesize workflowID=_workflowID;
 @property (strong, nonatomic) NSURL *workflowURL; // @synthesize workflowURL=_workflowURL;

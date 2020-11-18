@@ -49,7 +49,7 @@
 - (void)_adjustStackedButtonViewLocationForViewContentHeight;
 - (void)_pauseResultViewVideos;
 - (void)_playResultViewVideos;
-- (id)_resultViewForSample:(id)arg1;
+- (id)_resultViewForSample:(id)arg1 activeAlgorithmVersion:(long long)arg2;
 - (void)_setStackedButtonViewAsFooterView;
 - (void)_setUpAllResultViewConstraints;
 - (void)_setUpAllResultViews;
@@ -61,7 +61,9 @@
 - (void)_setUpTitle;
 - (void)_setUpTitleConstraints;
 - (void)_updateForCurrentSizeCategory;
+- (id)algorithmVersion;
 - (id)initForOnboarding:(BOOL)arg1;
+- (id)initWithHealthStore:(id)arg1 onboarding:(BOOL)arg2;
 - (id)initWithSample:(id)arg1;
 - (void)linkTextView:(id)arg1 didTapOnLinkInRange:(struct _NSRange)arg2;
 - (void)setUpConstraints;

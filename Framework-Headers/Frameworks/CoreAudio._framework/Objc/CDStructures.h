@@ -18,18 +18,13 @@ struct AudioObjectPropertyAddress {
     unsigned int _field3;
 };
 
-struct Client_Side_IO_Gateway {
+struct Client_Side_IO_Gateway;
+
+struct Device_Token {
     unsigned int _field1;
-    struct atomic<unsigned int> _field2;
-    struct shared_ptr<Client_Side_IO_Host> _field3;
-    struct shared_ptr<HALIO::IPC_Client_Transport<Client_Side_IO_Host>> _field4;
 };
 
-struct Client_Side_IO_Host;
-
 struct HAL_Server_Lifetime_Events;
-
-struct IPC_Client_Transport<Client_Side_IO_Host>;
 
 struct Listener_List {
     struct unique_ptr<HAL::Client::Listener_List::Listener_List_Impl, std::__1::default_delete<HAL::Client::Listener_List::Listener_List_Impl>> _field1;
@@ -37,7 +32,7 @@ struct Listener_List {
 
 struct Listener_List_Impl;
 
-struct ObjectIDMap;
+struct Object_ID_Map;
 
 struct PropertyAddress {
     unsigned int _field1;
@@ -48,31 +43,28 @@ struct PropertyAddress {
 struct Property_Identity {
     unsigned int _field1;
     struct PropertyAddress _field2;
-    unsigned int _field3;
-    int _field4;
+    struct Device_Token _field3;
+    struct Server_Side_Client_Identity _field4;
+};
+
+struct Server_Side_Client_Identity {
+    int _field1;
+};
+
+struct Transport_Token {
+    unsigned int _field1;
 };
 
 struct __shared_weak_count;
 
-struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
-        _Atomic unsigned int _field1;
-    } _field1;
-};
-
-struct shared_ptr<Client_Side_IO_Host> {
-    struct Client_Side_IO_Host *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<HAL::Client::ObjectIDMap> {
-    struct ObjectIDMap *__ptr_;
+struct shared_ptr<Client_Side_IO_Gateway> {
+    struct Client_Side_IO_Gateway *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<HALIO::IPC_Client_Transport<Client_Side_IO_Host>> {
-    struct IPC_Client_Transport<Client_Side_IO_Host> *_field1;
-    struct __shared_weak_count *_field2;
+struct shared_ptr<HAL::Client::Object_ID_Map> {
+    struct Object_ID_Map *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct unique_ptr<HAL::Client::Listener_List::Listener_List_Impl, std::__1::default_delete<HAL::Client::Listener_List::Listener_List_Impl>> {
@@ -97,10 +89,15 @@ struct weak_ptr<HAL_Server_Lifetime_Events> {
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct shared_ptr<HAL::Client::ObjectIDMap> {
-    struct ObjectIDMap *__ptr_;
+typedef struct shared_ptr<Client_Side_IO_Gateway> {
+    struct Client_Side_IO_Gateway *__ptr_;
     struct __shared_weak_count *__cntrl_;
-} shared_ptr_3c219583;
+} shared_ptr_6f98d2b6;
+
+typedef struct shared_ptr<HAL::Client::Object_ID_Map> {
+    struct Object_ID_Map *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_a1e71f47;
 
 typedef struct vector<AudioObjectPropertyAddress, std::__1::allocator<AudioObjectPropertyAddress>> {
     struct AudioObjectPropertyAddress *_field1;

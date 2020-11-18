@@ -6,16 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableDictionary, NSMutableSet;
-@protocol PXLoadingStatusManagerDelegate;
+@class NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet;
 
 @interface PXLoadingStatusManager : NSObject
 {
-    struct {
-        BOOL respondsToDidUpdateLoadingStatusForItem;
-    } _delegateFlags;
+    NSHashTable *_observers;
     BOOL __isUpdateScheduled;
-    id<PXLoadingStatusManagerDelegate> _delegate;
     NSMutableSet *__invalidLoadingStatusItems;
     NSMapTable *__loadOperationTrackingIDsByItem;
     NSMapTable *__loadingStatusByItem;
@@ -29,7 +25,6 @@
 @property (readonly, nonatomic) NSMapTable *_loadOperationTrackingIDsByItem; // @synthesize _loadOperationTrackingIDsByItem=__loadOperationTrackingIDsByItem;
 @property (readonly, nonatomic) NSMapTable *_loadingStatusByItem; // @synthesize _loadingStatusByItem=__loadingStatusByItem;
 @property (readonly, nonatomic) NSMutableDictionary *_loadingStatusByLoadOperationTrackingID; // @synthesize _loadingStatusByLoadOperationTrackingID=__loadingStatusByLoadOperationTrackingID;
-@property (weak, nonatomic) id<PXLoadingStatusManagerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (void)_invalidateLoadingStatusForItem:(id)arg1;
@@ -48,6 +43,8 @@
 - (void)didUpdateLoadOperationWithTrackingID:(id)arg1 withProgress:(double)arg2;
 - (id)init;
 - (id)loadingStatusForItem:(id)arg1;
+- (void)registerObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
 - (id)willBeginLoadOperationWithItem:(id)arg1;
 
 @end

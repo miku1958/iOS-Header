@@ -11,18 +11,20 @@
 @interface TSWPUnsupportedHyperlinkField : TSWPPlaceholderSmartField
 {
     NSString *_href;
+    NSString *_hrefOriginal;
 }
 
 @property (copy, nonatomic) NSString *href;
+@property (copy, nonatomic) NSString *hrefOriginal;
 
 + (Class)classForUnarchiver:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)allowsPasteAsSmartField;
 - (id)copyWithContext:(id)arg1;
-- (id)initFromSmartField:(id)arg1 href:(id)arg2;
+- (id)initFromSmartField:(id)arg1 href:(id)arg2 hrefOriginal:(id)arg3;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 
 @end
 

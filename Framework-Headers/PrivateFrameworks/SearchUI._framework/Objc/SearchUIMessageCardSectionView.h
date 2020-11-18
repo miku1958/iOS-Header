@@ -6,18 +6,50 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-@class TLKMessageView;
+#import <SearchUI/CKAudioControllerDelegate-Protocol.h>
+#import <SearchUI/CKBalloonViewDelegate-Protocol.h>
 
-@interface SearchUIMessageCardSectionView : SearchUICardSectionView
+@class CKAudioController, CKBalloonView, CKVibrantBalloonContainerView, NSString, NUIContainerBoxView;
+
+@interface SearchUIMessageCardSectionView : SearchUICardSectionView <CKBalloonViewDelegate, CKAudioControllerDelegate>
 {
+    CKBalloonView *_balloonView;
+    CKVibrantBalloonContainerView *_vibrantBalloon;
+    CKAudioController *_audioController;
 }
 
-@property (strong, nonatomic) TLKMessageView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) CKAudioController *audioController; // @synthesize audioController=_audioController;
+@property (strong, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+@property (strong, nonatomic) NUIContainerBoxView *contentView; // @dynamic contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) CKVibrantBalloonContainerView *vibrantBalloon; // @synthesize vibrantBalloon=_vibrantBalloon;
 
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
-- (unsigned long long *)messageServiceTypeForSearchUIMessageServiceType:(int)arg1;
-- (unsigned long long *)messageStatusForSearchUIMessageStatus:(int)arg1;
+- (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (id)audioBalloonViewWithFileURL:(id)arg1;
+- (void)audioController:(id)arg1 mediaObjectDidFinishPlaying:(id)arg2;
+- (void)audioController:(id)arg1 mediaObjectProgressDidChange:(id)arg2 currentTime:(double)arg3 duration:(double)arg4;
+- (void)balloonView:(id)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
+- (void)balloonViewDoubleTapped:(id)arg1;
+- (void)balloonViewLongTouched:(id)arg1;
+- (void)balloonViewRequestsDeselection:(id)arg1;
+- (void)balloonViewSelected:(id)arg1 toggleSelection:(BOOL)arg2;
+- (void)balloonViewSelected:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewShouldCopyToPasteboard:(id)arg1;
+- (void)balloonViewShowInlineReply:(id)arg1;
+- (void)balloonViewTapped:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewTextViewDidChangeSelection:(id)arg1 selectedText:(id)arg2 textView:(id)arg3;
+- (void)didMoveToWindow;
+- (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
+- (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
+- (void)liveBalloonTouched:(id)arg1;
 - (id)setupContentView;
+- (id)textBalloonView;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
 
 @end

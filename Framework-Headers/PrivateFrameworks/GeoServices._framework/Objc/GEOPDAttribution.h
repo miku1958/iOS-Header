@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_externalComponentId:1;
         unsigned int read_externalItemId:1;
         unsigned int read_vendorId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_actionUrlComponent:1;
-        unsigned int wrote_attributionUrls:1;
-        unsigned int wrote_externalComponentId:1;
-        unsigned int wrote_externalItemId:1;
-        unsigned int wrote_vendorId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -59,13 +54,7 @@ __attribute__((visibility("hidden")))
 + (Class)attributionUrlType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAttributionUrl:(id)arg1;
 - (BOOL)_isYelp;
-- (void)_readActionUrlComponent;
-- (void)_readAttributionUrls;
-- (void)_readExternalComponentId;
-- (void)_readExternalItemId;
-- (void)_readVendorId;
 - (void)addAttributionUrl:(id)arg1;
 - (id)attributionUrlAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionUrlsCount;
@@ -78,7 +67,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

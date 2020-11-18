@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) NSString *value;
 
 - (void).cxx_destruct;
-- (id)initWithAmount:(id)arg1 paymentPass:(id)arg2;
+- (id)initWithAmount:(id)arg1 transactionSource:(id)arg2;
 
 @end
 

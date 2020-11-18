@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class TVButton, UIImageView, _TVImageView, _TVProgressView;
+@class TVButton, _TVImageView, _TVProgressView;
 @protocol VUILibraryEpisodeFrameViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
     _TVProgressView *_progressView;
     TVButton *_playButton;
     long long _layout;
-    UIImageView *_fullyPlayedImageView;
+    _TVImageView *_fullyPlayedImageView;
 }
 
 @property (weak, nonatomic) id<VUILibraryEpisodeFrameViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UIImageView *fullyPlayedImageView; // @synthesize fullyPlayedImageView=_fullyPlayedImageView;
+@property (strong, nonatomic) _TVImageView *fullyPlayedImageView; // @synthesize fullyPlayedImageView=_fullyPlayedImageView;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) long long layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) TVButton *playButton; // @synthesize playButton=_playButton;

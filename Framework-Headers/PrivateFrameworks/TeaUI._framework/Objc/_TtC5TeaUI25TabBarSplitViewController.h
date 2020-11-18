@@ -11,6 +11,7 @@
 @interface _TtC5TeaUI25TabBarSplitViewController : UISplitViewController
 {
     MISSING_TYPE *extendedDelegate;
+    MISSING_TYPE *commands;
     MISSING_TYPE *eventManager;
     MISSING_TYPE *presentationContextCache;
     MISSING_TYPE *stagedModalContextCache;
@@ -26,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStyle:(long long)arg1;
 
 @end
 

@@ -8,20 +8,22 @@
 
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface HMAccessorySetupCompletedInfo : NSObject <NSSecureCoding>
 {
     NSArray *_addedAccessoryUUIDs;
+    NSString *_homeUUID;
 }
 
 @property (strong, nonatomic) NSArray *addedAccessoryUUIDs; // @synthesize addedAccessoryUUIDs=_addedAccessoryUUIDs;
+@property (strong, nonatomic) NSString *homeUUID; // @synthesize homeUUID=_homeUUID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAccessoryList:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithHome:(id)arg1 accessoryList:(id)arg2;
 
 @end
 

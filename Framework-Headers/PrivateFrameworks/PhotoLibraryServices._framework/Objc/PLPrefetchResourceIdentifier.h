@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) unsigned long long cplType; // @synthesize cplType=_cplType;
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 
++ (id)resourceDescriptionWithAssetUuid:(id)arg1 resourceVersion:(unsigned int)arg2 cplType:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

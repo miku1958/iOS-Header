@@ -38,9 +38,11 @@
 - (id)_newSignatureBezelTemplate;
 - (id)_newSignatureCircularTemplate;
 - (id)_newSignatureCornerTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSignatureRectangularTemplate;
 - (id)_newSmallFlatUtilityTemplate;
 - (id)_newSmallModularTemplate;
+- (id)_richCircularMetadata;
 - (id)_snoozeStateDateTextProvider;
 - (id)description;
 - (id)templateForComplicationFamily:(long long)arg1;

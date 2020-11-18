@@ -15,7 +15,7 @@
 @interface WFShazamMedia : NSObject <WFNaming, NSSecureCoding, NSCopying>
 {
     BOOL _isExplicit;
-    NSString *_adamID;
+    NSString *_appleMusicID;
     NSString *_artist;
     NSString *_title;
     NSURL *_artworkURL;
@@ -26,7 +26,7 @@
     NSString *_lyricsSnippetSynced;
 }
 
-@property (readonly, copy, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
+@property (readonly, copy, nonatomic) NSString *appleMusicID; // @synthesize appleMusicID=_appleMusicID;
 @property (readonly, copy, nonatomic) NSURL *appleMusicURL; // @synthesize appleMusicURL=_appleMusicURL;
 @property (readonly, copy, nonatomic) NSString *artist; // @synthesize artist=_artist;
 @property (readonly, copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
@@ -41,6 +41,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaItem:(id)arg1;

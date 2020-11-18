@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileTimer/MTBedtimeSession-Protocol.h>
+#import <MobileTimer/MTSleepSession-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSString;
 
-@interface MTTimeInBedSession : NSObject <MTBedtimeSession>
+@interface MTTimeInBedSession : NSObject <MTSleepSession>
 {
     BOOL _needsAdditionalProcessing;
     NSDate *_startDate;

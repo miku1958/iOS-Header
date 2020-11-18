@@ -7,11 +7,15 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CalClassAdditions)
++ (id)CalAutoCommentPrefix;
 + (id)ellipsisString;
 + (id)stringWithContentsOfFile:(id)arg1 usingEncoding:(unsigned long long)arg2;
 + (id)stringWithFileSystemRepresentation:(const char *)arg1;
 - (id)CalAddressComment;
+- (BOOL)CalHasAutoCommentPrefix;
 - (id)CalSafeHFSPathComponentName;
+- (id)CalStringByRemovingAutoComment;
+- (id)CalStringWithOnlyAutoComment;
 - (id)CalUncommentedAddress;
 - (id)_phoneNumberDetector;
 - (id)appendSlashIfNeeded;

@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIKBKeyViewContentView-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIKBTree, UIKeyboardEmojiWellView, UIStackView;
+@class NSArray, NSIndexPath, NSMutableArray, NSString, UIKBTree, UIKeyboardEmojiWellView, UIStackView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiFamilyConfigurationView : UIView <UIKBKeyViewContentView>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     UIStackView *_previewWellStackView;
     UIKeyboardEmojiWellView *_neutralWellView;
     UIKeyboardEmojiWellView *_configuredWellView;
+    NSIndexPath *_lastSelectedIndexPath;
     NSString *_baseEmojiString;
     NSMutableArray *_selectedVariantIndices;
     NSArray *_skinToneVariantRows;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *familyMemberStackViews; // @synthesize familyMemberStackViews=_familyMemberStackViews;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSIndexPath *lastSelectedIndexPath; // @synthesize lastSelectedIndexPath=_lastSelectedIndexPath;
 @property (strong, nonatomic) UIKeyboardEmojiWellView *neutralWellView; // @synthesize neutralWellView=_neutralWellView;
 @property (strong, nonatomic) UIStackView *previewWellStackView; // @synthesize previewWellStackView=_previewWellStackView;
 @property (strong, nonatomic) UIKBTree *representedKey; // @synthesize representedKey=_representedKey;
@@ -51,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)_currentlySelectedSkinToneConfiguration;
 - (BOOL)_hasCompletelyConfiguredSkinToneConfiguration;
 - (void)_setCurrentlySelectedSkinToneConfiguration:(id)arg1;
+- (void)_updateBottomRowForSelections:(id)arg1;
 - (void)_updatePreviewWellForCurrentSelection;
 - (void)_updateReferencedKeySelectedVariantIndexBasedOnCurrentConfiguration;
 - (id)_wellViewForSection:(long long)arg1 item:(long long)arg2;

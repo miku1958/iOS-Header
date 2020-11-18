@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (SafariCoreExtras)
++ (id)safari_dataWithHexString:(id)arg1;
 - (id)safari_SHA1Hash;
 - (BOOL)safari_dataAppearsToBeCompressed;
 - (id)safari_dataByAppendingData:(id)arg1;
@@ -14,6 +15,6 @@
 - (id)safari_dataByDecompressingData;
 - (id)safari_descriptionWithoutSpaces;
 - (unsigned long long)safari_hashMD5;
-- (unsigned int)safari_murmurHash2WithSeed:(int)arg1;
+- (id)safari_scryptHashWithSalt:(id)arg1 N:(unsigned long long)arg2 r:(unsigned int)arg3 p:(unsigned int)arg4 keyLength:(unsigned long long)arg5;
 @end
 

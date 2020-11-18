@@ -16,7 +16,7 @@
     GKLeaderboardSetInternal *_internal;
 }
 
-@property (readonly, strong, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
+@property (readonly, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong) GKLeaderboardSetInternal *internal; // @synthesize internal=_internal;
 @property (readonly, strong, nonatomic) NSArray *leaderboardIdentifiers; // @dynamic leaderboardIdentifiers;
@@ -27,7 +27,7 @@
 + (void)loadLeaderboardSetsForGame:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadLeaderboardSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
@@ -39,6 +39,7 @@
 - (void)loadLeaderboardsForGame:(id)arg1 forPlayer:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)loadLeaderboardsForGame:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadLeaderboardsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadLeaderboardsWithHandler:(CDUnknownBlockType)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

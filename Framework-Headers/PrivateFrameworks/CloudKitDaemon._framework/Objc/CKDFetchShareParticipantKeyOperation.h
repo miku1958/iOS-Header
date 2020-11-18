@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSDictionary, NSMutableArray, NSMutableDictionary;
+@protocol CKFetchShareParticipantKeyOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchShareParticipantKeyOperation : CKDDatabaseOperation
@@ -21,10 +22,12 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSDictionary *baseTokensByShareID; // @synthesize baseTokensByShareID=_baseTokensByShareID;
 @property (strong, nonatomic) NSDictionary *childRecordIDsByShareID; // @synthesize childRecordIDsByShareID=_childRecordIDsByShareID;
+@property (strong, nonatomic) id<CKFetchShareParticipantKeyOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (nonatomic) BOOL hasAttemptedShareUpdate; // @synthesize hasAttemptedShareUpdate=_hasAttemptedShareUpdate;
 @property (strong, nonatomic) NSMutableArray *shareIDs; // @synthesize shareIDs=_shareIDs;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantKeyFetchedBlock; // @synthesize shareParticipantKeyFetchedBlock=_shareParticipantKeyFetchedBlock;
 @property (strong, nonatomic) NSMutableDictionary *sharesNeedingUpdateByID; // @synthesize sharesNeedingUpdateByID=_sharesNeedingUpdateByID;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlayUIServices/NSObject-Protocol.h>
+#import <CarPlayUIServices/CRSUIMapStyleProviding-Protocol.h>
 
-@protocol CRSUIApplicationSceneSettings <NSObject>
+@protocol CRSUIApplicationSceneSettings <CRSUIMapStyleProviding>
 
 @property (readonly, nonatomic) double bannerHeight;
 

@@ -148,6 +148,7 @@
 - (BOOL)shouldHeaderFooterBeVisible:(long long)arg1;
 - (BOOL)shouldProvideGuidesDuringExclusiveAlignmentOperation;
 - (BOOL)textIsVertical;
+- (void)updateChildrenFromInfo;
 - (void)validate;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;

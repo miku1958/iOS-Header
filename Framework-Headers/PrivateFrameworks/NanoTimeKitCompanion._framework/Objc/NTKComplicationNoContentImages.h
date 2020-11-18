@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 
 @class UIImage;
 
-@interface NTKComplicationNoContentImages : NSObject <NSSecureCoding>
+@interface NTKComplicationNoContentImages : NSObject <NSSecureCoding, NSCopying>
 {
     UIImage *_modularSmallImage;
     UIImage *_utilitarianSmallImage;
@@ -25,6 +26,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

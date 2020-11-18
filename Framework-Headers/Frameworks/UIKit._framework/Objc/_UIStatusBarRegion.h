@@ -36,7 +36,7 @@
     UIView *_frozenView;
     struct UIOffset _offset;
     struct UIEdgeInsets _actionInsets;
-    struct NSDirectionalEdgeInsets extendedHoverInsets;
+    struct NSDirectionalEdgeInsets _extendedHoverInsets;
 }
 
 @property (readonly, nonatomic) struct CGRect absoluteHoverFrame;
@@ -59,7 +59,7 @@
 @property (weak, nonatomic) _UIStatusBarRegion *enabilityRegion; // @synthesize enabilityRegion=_enabilityRegion;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) NSArray *enabledDisplayItems;
-@property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets; // @synthesize extendedHoverInsets;
+@property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets; // @synthesize extendedHoverInsets=_extendedHoverInsets;
 @property (nonatomic, getter=isFrozen) BOOL frozen;
 @property (strong, nonatomic) UIView *frozenView; // @synthesize frozenView=_frozenView;
 @property (readonly) unsigned long long hash;

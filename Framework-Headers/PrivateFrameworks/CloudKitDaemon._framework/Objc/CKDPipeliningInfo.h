@@ -11,6 +11,7 @@
 
 @interface CKDPipeliningInfo : NSObject
 {
+    BOOL _perRequestCallbackQueueSuspended;
     BOOL _isCancelled;
     id<CKDURLRequestPipelining> _request;
     id<CKDOperationPipelining> _operation;
@@ -25,14 +26,18 @@
 @property (strong, nonatomic) NSMutableArray *perRequestCallbackBlocks; // @synthesize perRequestCallbackBlocks=_perRequestCallbackBlocks;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *perRequestCallbackGroup; // @synthesize perRequestCallbackGroup=_perRequestCallbackGroup;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *perRequestCallbackQueue; // @synthesize perRequestCallbackQueue=_perRequestCallbackQueue;
+@property (nonatomic) BOOL perRequestCallbackQueueSuspended; // @synthesize perRequestCallbackQueueSuspended=_perRequestCallbackQueueSuspended;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *perRequestGroup; // @synthesize perRequestGroup=_perRequestGroup;
 @property (strong, nonatomic) id<CKDURLRequestPipelining> request; // @synthesize request=_request;
 
 - (void).cxx_destruct;
 - (void)addPerRequestCallbackBlock:(CDUnknownBlockType)arg1;
 - (void)cancelAndDisablePerRequestCallbackBlocks;
+- (void)dealloc;
 - (void)disablePerRequestCallbackBlocks;
 - (id)initWithRequest:(id)arg1 operation:(id)arg2;
+- (void)resumeCallbackQueue;
+- (void)suspendCallbackQueue;
 
 @end
 

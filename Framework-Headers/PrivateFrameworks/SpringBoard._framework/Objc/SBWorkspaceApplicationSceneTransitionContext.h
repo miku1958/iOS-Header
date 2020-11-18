@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBDisplayLayoutContext-Protocol.h>
 
-@class FBSDisplayIdentity, NSMutableDictionary, NSSet, NSString, SBApplicationSceneEntity, SBApplicationSceneEntityDestructionIntent, SBLayoutState, SBMainWorkspaceTransitionRequest, SBWorkspaceEntity;
+@class FBSDisplayIdentity, NSArray, NSMapTable, NSMutableDictionary, NSSet, NSString, SBLayoutState, SBMainWorkspaceTransitionRequest, SBWorkspaceEntity;
 @protocol SBWorkspaceApplicationSceneTransitionContextDelegate;
 
 @interface SBWorkspaceApplicationSceneTransitionContext : SBWorkspaceTransitionContext <SBDisplayLayoutContext>
@@ -22,7 +22,10 @@
     SBLayoutState *_layoutState;
     SBLayoutState *_previousLayoutState;
     NSMutableDictionary *_requestedWorkspaceEntityForLayoutRoleMutableDictionary;
+    NSMapTable *_entityToRemovalContext;
     BOOL _suspendsInlineAppExposeCancellation;
+    BOOL _prefersCrossfadeTransition;
+    BOOL _sceneless;
     BOOL _prefersTouchCancellationDisabled;
     BOOL __alreadyPopulatedRequestedWorkspaceEntities;
     id<SBWorkspaceApplicationSceneTransitionContextDelegate> _delegate;
@@ -34,7 +37,7 @@
     long long _requestedUnlockedEnvironmentMode;
     long long _requestedFloatingSwitcherVisible;
     NSString *_requestedAppExposeBundleID;
-    SBApplicationSceneEntityDestructionIntent *_intentForEntityRemoval;
+    NSArray *_entitiesWithRemovalContexts;
 }
 
 @property (nonatomic, setter=_setAlreadyPopulatedRequestedWorkspaceEntities:) BOOL _alreadyPopulatedRequestedWorkspaceEntities; // @synthesize _alreadyPopulatedRequestedWorkspaceEntities=__alreadyPopulatedRequestedWorkspaceEntities;
@@ -47,12 +50,13 @@
 @property (weak, nonatomic) id<SBWorkspaceApplicationSceneTransitionContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) FBSDisplayIdentity *displayIdentity;
+@property (copy, nonatomic) NSArray *entitiesWithRemovalContexts; // @synthesize entitiesWithRemovalContexts=_entitiesWithRemovalContexts;
 @property (nonatomic) BOOL fencesAnimations; // @synthesize fencesAnimations=_fencesAnimations;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SBApplicationSceneEntityDestructionIntent *intentForEntityRemoval; // @synthesize intentForEntityRemoval=_intentForEntityRemoval;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, nonatomic) SBLayoutState *layoutState;
 @property (nonatomic) long long preferredInterfaceOrientation; // @synthesize preferredInterfaceOrientation=_preferredInterfaceOrientation;
+@property (nonatomic) BOOL prefersCrossfadeTransition; // @synthesize prefersCrossfadeTransition=_prefersCrossfadeTransition;
 @property (nonatomic) BOOL prefersTouchCancellationDisabled; // @synthesize prefersTouchCancellationDisabled=_prefersTouchCancellationDisabled;
 @property (readonly, copy, nonatomic) NSSet *previousApplicationSceneEntities;
 @property (readonly, nonatomic) SBLayoutState *previousLayoutState;
@@ -63,8 +67,9 @@
 @property (nonatomic) long long requestedFloatingSwitcherVisible; // @synthesize requestedFloatingSwitcherVisible=_requestedFloatingSwitcherVisible;
 @property (nonatomic) long long requestedSpaceConfiguration; // @synthesize requestedSpaceConfiguration=_requestedSpaceConfiguration;
 @property (nonatomic) long long requestedUnlockedEnvironmentMode; // @synthesize requestedUnlockedEnvironmentMode=_requestedUnlockedEnvironmentMode;
-@property (readonly, nonatomic) SBApplicationSceneEntity *resolvedActivatingApplicationSceneEntity;
+@property (readonly, nonatomic) SBWorkspaceEntity *resolvedActivatingWorkspaceEntity;
 @property (copy, nonatomic) CDUnknownBlockType resultBlock; // @synthesize resultBlock=_resultBlock;
+@property (nonatomic, getter=isSceneless) BOOL sceneless; // @synthesize sceneless=_sceneless;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suspendsInlineAppExposeCancellation; // @synthesize suspendsInlineAppExposeCancellation=_suspendsInlineAppExposeCancellation;
 @property (nonatomic) BOOL waitsForSceneUpdates; // @synthesize waitsForSceneUpdates=_waitsForSceneUpdates;
@@ -74,6 +79,8 @@
 - (id)_displayConfiguration;
 - (long long)_lockedInterfaceOrientation;
 - (void)_setRequestedWorkspaceEntity:(id)arg1 forLayoutRole:(long long)arg2;
+- (id)appClipPlaceholderEntities;
+- (id)appClipPlaceholderEntityForBundleID:(id)arg1;
 - (id)applicationSceneEntityForBundleID:(id)arg1;
 - (id)applicationSceneEntityForLayoutRole:(long long)arg1;
 - (id)compactDescriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -81,16 +88,20 @@
 - (id)entityForLayoutRole:(long long)arg1;
 - (void)finalize;
 - (struct CGRect)frameForApplicationSceneEntity:(id)arg1;
-- (BOOL)hasSentActivationResult;
 - (id)init;
 - (long long)interfaceOrientationOrPreferredOrientation;
+- (BOOL)needsToSendActivationResult;
+- (id)previousAppClipPlaceholderEntities;
+- (id)previousAppClipPlaceholderEntityForBundleID:(id)arg1;
 - (id)previousApplicationSceneEntityForBundleID:(id)arg1;
 - (id)previousApplicationSceneEntityForLayoutRole:(long long)arg1;
 - (id)previousEntityForLayoutRole:(long long)arg1;
+- (id)removalContextForEntity:(id)arg1;
 - (id)requestedWorkspaceEntityForLayoutRole:(long long)arg1;
-- (void)sendActivationResultErrorCode:(long long)arg1 reason:(id)arg2;
+- (void)sendActivationResultError:(id)arg1;
 - (void)setEntity:(id)arg1 forLayoutRole:(long long)arg2;
 - (void)setPreviousEntity:(id)arg1 forLayoutRole:(long long)arg2;
+- (void)setRemovalContext:(id)arg1 forEntity:(id)arg2;
 - (id)succinctDescriptionBuilder;
 
 @end

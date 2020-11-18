@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles37ANFIssueTableOfContentsViewController : UIViewController
 {
     MISSING_TYPE *viewController;
+    MISSING_TYPE *issue;
 }
 
 - (void).cxx_destruct;

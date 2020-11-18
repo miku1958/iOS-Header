@@ -19,6 +19,7 @@
     BOOL _canDefaultMediaLibraryShowCloudContent;
     BOOL _canShowCloudMusic;
     BOOL _canShowCloudVideo;
+    BOOL _cloudEnabledValid;
     BOOL _cloudLockerAccount;
     BOOL _purchaseHistoryAccount;
     BOOL _updateInProgress;
@@ -34,7 +35,6 @@
     long long _activeCount;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_cloudClientCallbackQueue;
-    NSObject<OS_dispatch_queue> *_highPriorityQueue;
     MSVDistributedNotificationObserver *_addToPlaylistBehaviorChangedObserver;
 }
 
@@ -49,13 +49,13 @@
 @property (readonly, nonatomic) ICCloudClient *cloudClient; // @synthesize cloudClient=_cloudClient;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *cloudClientCallbackQueue; // @synthesize cloudClientCallbackQueue=_cloudClientCallbackQueue;
 @property (nonatomic, getter=isCloudEnabled) BOOL cloudEnabled; // @synthesize cloudEnabled=_cloudEnabled;
+@property (nonatomic, getter=isCloudEnabledValid) BOOL cloudEnabledValid; // @synthesize cloudEnabledValid=_cloudEnabledValid;
 @property (nonatomic, getter=isCloudLibraryInitialImport) BOOL cloudLibraryInitialImport; // @synthesize cloudLibraryInitialImport=_cloudLibraryInitialImport;
 @property (nonatomic, getter=isCloudLibraryUpdateInProgress) BOOL cloudLibraryUpdateInProgress; // @synthesize cloudLibraryUpdateInProgress=_cloudLibraryUpdateInProgress;
 @property (nonatomic, getter=hasCloudLockerAccount) BOOL cloudLockerAccount; // @synthesize cloudLockerAccount=_cloudLockerAccount;
 @property (readonly, nonatomic) ICConnectionConfiguration *configuration;
 @property (readonly, nonatomic, getter=isEnablingCloudLibraryDestructive) BOOL enablingCloudLibraryDestructive;
 @property (readonly, nonatomic) BOOL enablingJaliscoGeniusRequiresTerms;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *highPriorityQueue; // @synthesize highPriorityQueue=_highPriorityQueue;
 @property (nonatomic, getter=isInitialImport) BOOL initialImport; // @synthesize initialImport=_initialImport;
 @property (readonly, nonatomic) BOOL isGeniusEnabled;
 @property (readonly, nonatomic, getter=isJaliscoGeniusEnabled) BOOL jaliscoGeniusEnabled; // @synthesize jaliscoGeniusEnabled=_jaliscoGeniusEnabled;
@@ -107,15 +107,20 @@
 - (void)dealloc;
 - (void)deprioritizeArtworkRequestForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4;
 - (id)description;
+- (void)disableAutomaticDownloadsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)disableCloudLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disableCloudLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)enableAutomaticDownloadsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableCloudLibraryWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enableICMLErrorReasonChange:(id)arg1;
 - (void)fetchRecommendedContentWithSeedTrackID:(long long)arg1 seedTrackIDType:(long long)arg2 count:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
 - (BOOL)hasProperNetworkConditionsToShowCloudMedia;
 - (void)hasProperNetworkConditionsToShowCloudMediaDidChangeNotification:(id)arg1;
+- (BOOL)hasSetPreferenceForAutomaticDownloads;
 - (void)hideItemsWithPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (BOOL)isAutomaticDownloadsEnabled;
 - (BOOL)isCellularDataRestricted;
 - (void)isCellularDataRestrictedDidChangeNotification:(id)arg1;
 - (BOOL)isCellularDataRestrictedForMusic;

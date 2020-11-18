@@ -9,6 +9,7 @@
 @protocol CNUIPRLikenessProvider;
 
 @protocol CNUIPlaceholderProviderFactory <NSObject>
+- (id<CNUIPRLikenessProvider>)loadingGroupPlaceholderProviderWithBackgroundStyle:(unsigned long long)arg1;
 - (id<CNUIPRLikenessProvider>)loadingPlaceholderProvider;
 - (id<CNUIPRLikenessProvider>)placeholderProvider;
 @end

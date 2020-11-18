@@ -13,13 +13,12 @@
 {
     AVTImageStore *_imageStore;
     AVTAvatarConfigurationImageRenderer *_renderer;
-    AVTCoreModel *_coreModel;
     NSArray *_scopes;
     id<AVTUILogger> _logger;
     AVTUIEnvironment *_environment;
 }
 
-@property (readonly, nonatomic) AVTCoreModel *coreModel; // @synthesize coreModel=_coreModel;
+@property (readonly, nonatomic) AVTCoreModel *coreModel;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) AVTImageStore *imageStore; // @synthesize imageStore=_imageStore;
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;

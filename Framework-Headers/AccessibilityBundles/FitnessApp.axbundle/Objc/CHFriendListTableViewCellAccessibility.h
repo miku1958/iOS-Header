@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)isAccessibilityElement;
 - (void)setFriend:(id)arg1 snapshot:(id)arg2 formattingManager:(id)arg3 animated:(BOOL)arg4;
 
 @end

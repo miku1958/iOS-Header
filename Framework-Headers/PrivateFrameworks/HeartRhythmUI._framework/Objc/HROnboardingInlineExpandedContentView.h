@@ -29,11 +29,10 @@
 + (id)_listLabelWithAtrialFibrillationLocalizationKey:(id)arg1;
 + (id)_listLabelWithLocalizedText:(id)arg1;
 + (double)_listLastBaselineToBodyFirstBaseline;
-+ (id)atrialFibrillationExpandedView;
-+ (id)highOrLowAbove120Below50HeartRateExpandedView;
-+ (id)inconclusiveExpandedViewWithDelegate:(id)arg1;
++ (id)_makeViewWithContentItem:(id)arg1;
++ (id)_spacingBetweenItems:(id)arg1;
 + (id)learnMoreAboutAtrialFibrillationExpandedView;
-+ (id)sinusRhythmExpandedView;
++ (id)viewWithItems:(id)arg1;
 
 @end
 

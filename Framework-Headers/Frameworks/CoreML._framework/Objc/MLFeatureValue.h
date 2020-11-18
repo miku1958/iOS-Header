@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CoreML/NSCopying-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
 
 @class MLMultiArray, MLSequence, NSDictionary, NSString;
 
-@interface MLFeatureValue : NSObject <NSCopying>
+@interface MLFeatureValue : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _undefined;
     long long _type;
@@ -49,6 +50,7 @@
 + (id)featureValueWithSequence:(id)arg1;
 + (id)featureValueWithString:(id)arg1;
 + (id)featureValueWithStringKeyDictionary:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)undefinedFeatureValueWithType:(long long)arg1;
 + (unsigned long long)visionCropAndScaleOptionFromOptions:(id)arg1;
 - (void).cxx_destruct;
@@ -56,9 +58,11 @@
 - (void)dealloc;
 - (id)debugQuickLookObject;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)getFeatureSize:(id *)arg1;
 - (id)getFeatureSize:(id *)arg1 ndArrayMode:(BOOL)arg2;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithUndefinedValueAndType:(long long)arg1;
 - (id)initWithValue:(id)arg1 type:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;

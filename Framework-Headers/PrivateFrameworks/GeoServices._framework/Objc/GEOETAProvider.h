@@ -44,6 +44,7 @@
 - (id)init;
 - (id)initWithAuditToken:(id)arg1 traits:(id)arg2;
 - (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
+- (id)protobufSession:(id)arg1 validateResponse:(id)arg2;
 - (void)protobufSession:(id)arg1 willSendRequestForTask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startRequest:(id)arg1 connectionProperties:(id)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)startRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;

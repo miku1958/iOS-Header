@@ -9,28 +9,27 @@
 #import <UserNotificationsKit/NCNotificationAlertDestination-Protocol.h>
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 
-@class BSServiceConnectionEndpoint, NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NCNotificationStore, NSString;
-@protocol NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate;
+@class BSServiceConnectionEndpoint, NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NSString;
+@protocol NCNotificationAlertDestinationDelegate;
 
 @interface NCNotificationAlertQueue : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationAlertDestination>
 {
     id<NCNotificationAlertDestinationDelegate> _delegate;
     NCNotificationDestinationsRegistry *_destinationsRegistry;
     NCNotificationCollapsingQueue *_queue;
-    NCNotificationStore *_store;
     NCNotificationRequest *_coalescingRequest;
 }
 
+@property (readonly, nonatomic, getter=isAlertDestination) BOOL alertDestination;
 @property (strong, nonatomic) NCNotificationRequest *coalescingRequest; // @synthesize coalescingRequest=_coalescingRequest;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<NCNotificationDestinationDelegate> delegate;
+@property (weak, nonatomic) id<NCNotificationAlertDestinationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NCNotificationDestinationsRegistry *destinationsRegistry; // @synthesize destinationsRegistry=_destinationsRegistry;
 @property (readonly, nonatomic) BSServiceConnectionEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NCNotificationCollapsingQueue *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NCNotificationStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -62,7 +61,6 @@
 - (void)destinationDidBecomeReadyToReceiveNotifications:(id)arg1;
 - (id)destinationsForRequestDestinations:(id)arg1;
 - (id)init;
-- (id)initWithNotificationStore:(id)arg1;
 - (BOOL)isRegisteredDestination:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;

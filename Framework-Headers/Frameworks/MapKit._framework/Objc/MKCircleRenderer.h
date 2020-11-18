@@ -11,13 +11,18 @@
 @interface MKCircleRenderer : MKOverlayPathRenderer
 {
     VKVectorOverlayCircle *_vectorData;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 @property (readonly, nonatomic) MKCircle *circle;
+@property (nonatomic) double strokeEnd;
+@property (nonatomic) double strokeStart;
 
 + (Class)_mapkitLeafClass;
 - (void).cxx_destruct;
 - (BOOL)_canProvideVectorGeometry;
+- (void)_performInitialConfiguration;
 - (void)_updateRenderColors;
 - (id)_vectorData;
 - (void)createPath;
@@ -27,6 +32,7 @@
 - (void)setFillColor:(id)arg1;
 - (void)setLineWidth:(double)arg1;
 - (void)setStrokeColor:(id)arg1;
+- (void)strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (id)vectorDataForOverlay:(id)arg1;
 
 @end

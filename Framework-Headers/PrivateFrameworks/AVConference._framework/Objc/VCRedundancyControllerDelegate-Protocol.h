@@ -9,5 +9,8 @@
 @protocol VCRedundancyControllerDelegate
 - (void)redundancyController:(id<VCRedundancyControllerProtocol>)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id<VCRedundancyControllerProtocol>)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
+
+@optional
+- (void)redundancyController:(id<VCRedundancyControllerProtocol>)arg1 redundancyVectorDidChange:(CDStruct_cd7ddd1c)arg2;
 @end
 

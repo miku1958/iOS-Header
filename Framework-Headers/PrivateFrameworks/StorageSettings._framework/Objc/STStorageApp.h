@@ -6,24 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class FPProviderDomain, LSApplicationProxy, NSArray, NSDate, NSString, PSUsageBundleApp;
+@class FPProviderDomain, LSApplicationProxy, LSApplicationRecord, NSArray, NSDate, NSString, PSUsageBundleApp;
 
 @interface STStorageApp : NSObject
 {
+    LSApplicationRecord *_appRecord;
     long long _purgeableSize;
     BOOL _isDeleting;
     BOOL _isDemoting;
-    BOOL _isApple;
+    NSString *_appPath;
+    NSString *_dataPath;
+    NSString *_vendorName;
+    struct os_unfair_lock_s _recLock;
+    BOOL _isAppClip;
     BOOL _isUserApp;
     BOOL _isSystemApp;
     BOOL _isInternalApp;
     BOOL _isDocumentApp;
     BOOL _specialSizePending;
     BOOL _isPseudoApp;
+    BOOL _isApple;
     NSString *_appIdentifier;
-    FPProviderDomain *_fpDomain;
-    NSString *_name;
     NSString *_bundleIdentifier;
+    NSString *_name;
+    FPProviderDomain *_fpDomain;
     PSUsageBundleApp *_usageBundleApp;
     NSArray *_mediaTypes;
     long long _externalDataSize;
@@ -34,6 +40,7 @@
 
 @property (strong) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (readonly, nonatomic) LSApplicationProxy *appProxy;
+@property (strong, nonatomic) LSApplicationRecord *appRecord; // @synthesize appRecord=_appRecord;
 @property (strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly) NSString *bundleVersion;
 @property long long coreMLDataSize; // @synthesize coreMLDataSize=_coreMLDataSize;
@@ -43,6 +50,8 @@
 @property long long externalDataSize; // @synthesize externalDataSize=_externalDataSize;
 @property (strong) FPProviderDomain *fpDomain; // @synthesize fpDomain=_fpDomain;
 @property (readonly) NSDate *installDate;
+@property (readonly) BOOL isAppClip; // @synthesize isAppClip=_isAppClip;
+@property BOOL isApple; // @synthesize isApple=_isApple;
 @property (readonly) BOOL isDeletable;
 @property (readonly) BOOL isDeleted;
 @property (readonly) BOOL isDemotable;
@@ -71,8 +80,9 @@
 + (void)setLaunchDatesNeedUpdating;
 - (void).cxx_destruct;
 - (id)initWithApplicationIdentifier:(id)arg1;
-- (id)initWithApplicationProxy:(id)arg1;
-- (void)reloadProxy;
+- (id)initWithApplicationRecord:(id)arg1;
+- (void)loadInfo;
+- (void)refreshAppState;
 - (void)updateSpecialSize;
 
 @end

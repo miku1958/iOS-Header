@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_fillTransferFailure:(id)arg1 withRowID:(unsigned long long)arg2 atDate:(id)arg3 session:(id)arg4;
 - (void)generateReportWithSession:(id)arg1;
-- (id)getRampNumberForDSID:(id)arg1;
+- (id)getRampNumberForSession:(id)arg1;
 - (id)init;
 - (void)syncErrors:(CDUnknownBlockType)arg1;
 

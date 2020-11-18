@@ -6,12 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+#import <SpringBoard/BCBatteryDeviceObserving-Protocol.h>
 
-@interface SBBluetoothAccessoryBatteryMonitor : NSObject
+@class BCBatteryDeviceController, NSMutableSet, NSString;
+
+@interface SBBluetoothAccessoryBatteryMonitor : NSObject <BCBatteryDeviceObserving>
 {
     NSMutableSet *_accessoryNamesInLowPower;
+    BCBatteryDeviceController *_batteryDeviceController;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 

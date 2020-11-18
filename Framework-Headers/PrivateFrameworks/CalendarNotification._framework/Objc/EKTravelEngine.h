@@ -8,7 +8,7 @@
 
 #import <CalendarNotification/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, EKTimedEventStorePurger, NSMutableDictionary, NSString, PCPersistentTimer;
+@class CLLocationManager, EKTimedEventStorePurger, NSMutableDictionary, NSString;
 @protocol CALNRouteHypothesizerProvider, OS_dispatch_queue, OS_dispatch_source;
 
 @interface EKTravelEngine : NSObject <CLLocationManagerDelegate>
@@ -21,7 +21,6 @@
     BOOL _databaseIsEncryptedAndUnreadable;
     BOOL _yieldingToSync;
     NSMutableDictionary *_eventExternalURLsToAgendaEntries;
-    PCPersistentTimer *_periodicRefreshTimer;
     CLLocationManager *_locationManager;
     EKTimedEventStorePurger *_timedEventStorePurger;
     BOOL _authorizedInternal;
@@ -55,13 +54,13 @@
 - (void)_calSyncClientFinishedMultiSaveNotificationReceived;
 - (void)_enableTravelAdvisoriesForAutomaticBehaviorNotificationReceived;
 - (void)_eventKitFeatureSetChanged;
+- (id)_eventStore;
 - (void)_installLocationManager;
 - (void)_installPeriodicRefreshTimer;
 - (void)_installSyncYieldTimer;
 - (BOOL)_isProtectedDataAvailable;
-- (void)_periodicRefreshTimerFired:(id)arg1;
+- (void)_periodicRefreshTimerFired;
 - (void)_refreshIfNeeded;
-- (void)_registerForNotificationObservation;
 - (void)_sendFeedbackForPostingNotificationForEventWithExternalURL:(id)arg1 feedback:(CDUnknownBlockType)arg2;
 - (void)_significantTimeChangeNotificationReceived;
 - (void)_stopInternal;
@@ -71,17 +70,16 @@
 - (void)_uninstallPeriodicRefreshTimer;
 - (void)_uninstallSyncYieldTimer;
 - (void)_unregisterAllAgendaEntries;
-- (void)_unregisterForNotificationObservation;
 - (void)_updateDatabaseEncryptionState;
-- (id)btaJobName;
+- (id)alarmName;
 - (void)cancelHypothesisRefreshRequestForEventWithExternalURL:(id)arg1;
 - (void)ceaseMonitoringForEventWithExternalURL:(id)arg1;
 - (void)dealloc;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (void)handleDarwinNotification:(id)arg1;
 - (id)initWithRouteHypothesizerProvider:(id)arg1;
 - (BOOL)isLocationManagerStatusAuthorized:(int)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)receivedAlarmNamed:(id)arg1;
 - (void)requestHypothesisRefreshAtDate:(id)arg1 forEventWithExternalURL:(id)arg2;
 - (void)sendFeedbackForPostingLeaveByNotificationForEventWithExternalURL:(id)arg1;
 - (void)sendFeedbackForPostingLeaveNowNotificationForEventWithExternalURL:(id)arg1;

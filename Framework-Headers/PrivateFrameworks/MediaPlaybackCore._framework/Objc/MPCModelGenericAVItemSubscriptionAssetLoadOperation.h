@@ -30,6 +30,7 @@
 - (id)_handlePlaybackResponse:(id)arg1 withPlaybackCacheRequest:(id)arg2 error:(id *)arg3;
 - (void)cancel;
 - (CDUnknownBlockType)cancellationHandler;
+- (id)description;
 - (void)execute;
 - (id)init;
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;

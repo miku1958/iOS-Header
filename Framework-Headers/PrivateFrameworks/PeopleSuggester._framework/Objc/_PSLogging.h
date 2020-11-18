@@ -10,11 +10,14 @@
 {
 }
 
++ (id)contactEmbeddingChannel;
 + (id)coreBehaviorChannel;
++ (id)familyRecommenderChannel;
 + (id)feedbackChannel;
 + (id)generalChannel;
 + (id)heuristicsChannel;
 + (id)knnChannel;
++ (id)messagePinningChannel;
 + (id)shareExtensionChannel;
 + (id)suggestionSignpost;
 

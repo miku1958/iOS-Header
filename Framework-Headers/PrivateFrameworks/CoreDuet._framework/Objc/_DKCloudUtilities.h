@@ -32,17 +32,9 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_accountDidChange:(id)arg1;
-- (void)_fetchAccountInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchCloudKitConfigurationAndStatus;
-- (void)_performUpdateNumberOfSyncedDevicesWithAttempt:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_performUpdateNumberOfSyncedDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_updateAccountInfo:(id)arg1 error:(id)arg2;
-- (void)_updateNumberOfSyncedDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)containerKeyValueStore;
 - (void)dealloc;
 - (void)deleteRemoteStateWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)keyValueStore;
 - (void)setCloudSyncAvailable:(BOOL)arg1;
 
 @end

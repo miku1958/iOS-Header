@@ -22,14 +22,13 @@
 - (id)currentSwitcherTemplate;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getTimelineEndDateWithHandler:(CDUnknownBlockType)arg1;
 - (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineStartDateWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)lockedTemplate;
 - (void)pause;
 - (void)resume;
+- (id)sampleTemplate;
 - (void)setDelegate:(id)arg1;
 
 @end

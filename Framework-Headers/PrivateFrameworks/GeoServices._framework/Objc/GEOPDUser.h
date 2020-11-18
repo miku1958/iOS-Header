@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
-    CDStruct_f720eac6 _flags;
+    CDStruct_9fa62941 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasImage;
@@ -31,8 +31,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readImage;
-- (void)_readName;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -41,7 +39,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

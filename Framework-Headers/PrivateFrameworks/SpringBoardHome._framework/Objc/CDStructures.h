@@ -35,6 +35,25 @@ struct CAColorMatrix {
     float _field20;
 };
 
+struct CATransform3D {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+    double _field15;
+    double _field16;
+};
+
 struct CGAffineTransform {
     double a;
     double b;
@@ -71,9 +90,66 @@ struct SBFolderPredictedVisibleColumn {
     struct SBIconListPredictedVisibleColumn predictedVisibleColumn;
 };
 
+struct SBHClockApplicationIconImageMetrics {
+    double secondsHandWidth;
+    double secondsHandLength;
+    double secondsHandleLength;
+    double secondsHandRingDiameter;
+    double secondsHandRingKnockoutDiameter;
+    struct CGSize secondsHandBounds;
+    double minutesHandWidth;
+    double minutesHandLength;
+    double minutesHandRingDiameter;
+    double minutesHandRingKnockoutDiameter;
+    struct CGSize minutesHandBounds;
+    double shadowRadius;
+    double shadowInset;
+    double hoursHandWidth;
+    double hoursHandLength;
+    struct CGSize hoursHandBounds;
+    double separatorWidth;
+    double separatorLength;
+    double separatorExtraLength;
+    double faceRadius;
+    double contentsScale;
+    struct SBIconImageInfo iconImageInfo;
+};
+
 struct SBHFloatRange {
     double _field1;
     double _field2;
+};
+
+struct SBHIconGridRange {
+    unsigned long long _field1;
+    struct SBHIconGridSize _field2;
+};
+
+struct SBHIconGridSize {
+    unsigned short columns;
+    unsigned short rows;
+};
+
+struct SBHIconGridSizeClassAreas {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
+struct SBHIconGridSizeClassIconImageInfos {
+    struct SBIconImageInfo icon;
+    struct SBIconImageInfo small;
+    struct SBIconImageInfo medium;
+    struct SBIconImageInfo large;
+    struct SBIconImageInfo extraLarge;
+};
+
+struct SBHIconGridSizeClassSizes {
+    struct SBHIconGridSize small;
+    struct SBHIconGridSize medium;
+    struct SBHIconGridSize large;
+    struct SBHIconGridSize extraLarge;
 };
 
 struct SBHIconManagerStatistics {
@@ -95,6 +171,10 @@ struct SBHIconManagerStatistics {
     unsigned long long _field16;
     unsigned long long _field17;
     unsigned long long _field18;
+    unsigned long long _field19;
+    unsigned long long _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
 };
 
 struct SBIconCoordinate {
@@ -108,20 +188,47 @@ struct SBIconImageInfo {
     double continuousCornerRadius;
 };
 
-struct SBIconListLayoutMetrics {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    struct CGSize _field3;
-    struct CGSize _field4;
-    double _field5;
-    struct UIEdgeInsets _field6;
+struct SBIconListLayoutAnimationParameters {
+    struct CGPoint _field1;
+    double _field2;
+    struct SBIconImageInfo _field3;
+    BOOL _field4;
+    struct SBIconCoordinate _field5;
+    BOOL _field6;
     BOOL _field7;
-    BOOL _field8;
+    unsigned long long _field8;
+};
+
+struct SBIconListLayoutMetricsParameters {
+    struct CGRect _field1;
+    double _field2;
+    struct UIEdgeInsets _field3;
+    long long _field4;
+    long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    struct SBHIconGridSizeClassSizes _field8;
+    struct CGSize _field9;
+    struct CGSize _field10;
+    double _field11;
+    struct CGSize _field12;
+    unsigned long long _field13;
 };
 
 struct SBIconListPredictedVisibleColumn {
     unsigned long long column;
     double confidence;
+};
+
+struct SBPageManagementCellMetrics {
+    struct CGSize fullListViewSize;
+    struct CGSize scaledListViewSize;
+    struct UIEdgeInsets foregroundInsets;
+    struct UIEdgeInsets backgroundInsets;
+    double listViewHeightAdjustment;
+    double listViewVerticalPositionAdjustment;
+    double toggleButtonDiameter;
+    double toggleButtonVerticalMargin;
 };
 
 struct SBRootFolderPageStateTransitionSnapshot {
@@ -145,6 +252,11 @@ struct SBRootFolderViewMetrics {
     struct CGRect _field12;
 };
 
+struct SBRootFolderViewPageManagementLayoutMetrics {
+    struct CGSize cellSpacing;
+    double bottomMargin;
+};
+
 struct SBVisibleColumnRange {
     unsigned long long iconListIndex;
     struct _NSRange columnRange;
@@ -157,9 +269,18 @@ struct UIEdgeInsets {
     double right;
 };
 
+struct UIOffset {
+    double horizontal;
+    double vertical;
+};
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
+};
+
+struct os_activity_scope_state_s {
+    unsigned long long opaque[2];
 };
 
 #pragma mark Typedef'd Structures
@@ -209,5 +330,6 @@ typedef struct {
     struct CGRect _field4;
     struct CGRect _field5;
     double _field6;
-} CDStruct_c0971cc5;
+    double _field7;
+} CDStruct_91a5d29a;
 

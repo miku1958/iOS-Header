@@ -9,7 +9,7 @@
 #import <EventKitUI/EKCellShortener-Protocol.h>
 #import <EventKitUI/EKTimeZoneViewControllerDelegate-Protocol.h>
 
-@class NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
+@class NSArray, NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
 @protocol EKEventDateEditItemDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSTimeZone *_startTimeZone;
     NSTimeZone *_endTimeZone;
     BOOL _showTimeZones;
+    BOOL _canPerformTargettedReload;
     PreferencesTwoPartValueCell *_startDateCell;
     PreferencesTwoPartValueCell *_endDateCell;
     UITableViewCell *_allDayCell;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
     BOOL _changingDate;
     int _shorteningStatus;
     BOOL _pushingTZController;
+    NSArray *_startPickerConstraints;
+    NSArray *_endPickerConstraints;
     BOOL _showsAllDay;
     BOOL _proposedTime;
     NSDate *_pendingProposedTime;
@@ -102,9 +105,11 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)isInline;
 - (unsigned long long)numberOfSubitems;
+- (BOOL)prefersTargettedTableReloadOnSave;
 - (void)refreshFromCalendarItemAndStore;
 - (BOOL)requiresReconfigurationOnSave;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
+- (void)setupPickerConstraintsForCell:(id)arg1 datePicker:(id)arg2;
 - (void)shortenCell:(id)arg1;
 - (void)timeZoneViewController:(id)arg1 didSelectTimeZone:(id)arg2;
 - (void)timeZoneViewControllerDidCancel:(id)arg1;

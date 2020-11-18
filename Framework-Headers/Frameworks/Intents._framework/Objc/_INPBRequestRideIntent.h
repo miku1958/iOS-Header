@@ -18,7 +18,6 @@
         unsigned int usesApplePayForPayment:1;
     } _has;
     BOOL _usesApplePayForPayment;
-    BOOL __encodeLegacyGloryData;
     _INPBLocation *_dropOffLocation;
     _INPBIntentMetadata *_intentMetadata;
     _INPBInteger *_partySize;
@@ -30,7 +29,6 @@
     _INPBDateTimeRange *_scheduledPickupTime;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBLocation *dropOffLocation; // @synthesize dropOffLocation=_dropOffLocation;

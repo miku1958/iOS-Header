@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 backgroundViewClass:(Class)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundViewClass:(Class)arg2 embeddedInView:(BOOL)arg3 contentExtendsOverArrow:(BOOL)arg4;
 - (void)layoutSubviews;
-- (void)prepareForAnimatedTransitioningWithCoordinator:(id)arg1;
 - (struct UIEdgeInsets)safeAreaInsetsForContentView;
 - (void)setUseToolbarShine:(BOOL)arg1;
 - (id)standardChromeView;

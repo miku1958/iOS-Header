@@ -10,7 +10,7 @@
 #import <ChatKit/CKNavigationBarCanvasViewDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CKAvatarPickerViewController, CKCanvasBackButtonView, CKConversation, CKDetailsContactsManager, CKLabel, CKNavigationBarCanvasView, CNContactStore, NSString, UIButton, UINavigationController;
+@class CKAvatarPickerViewController, CKCanvasBackButtonView, CKConversation, CKDetailsContactsManager, CKLabel, CKNavigationBarCanvasView, CNContactStore, NSString, UIBarButtonItem, UIButton, UINavigationController;
 @protocol CKNavbarCanvasViewControllerDelegate;
 
 @interface CKNavbarCanvasViewController : UIViewController <UIGestureRecognizerDelegate, CKDetailsContactsManagerDelegate, CKNavigationBarCanvasViewDelegate>
@@ -19,6 +19,7 @@
     BOOL _shouldShowDoneButton;
     BOOL _isInEditingMode;
     BOOL _editing;
+    UIBarButtonItem *_detailsBarButton;
     id<CKNavbarCanvasViewControllerDelegate> _delegate;
     UIButton *_callButton;
     CKNavigationBarCanvasView *_canvasView;
@@ -49,6 +50,7 @@
 @property (strong, nonatomic) CKLabel *defaultLabel; // @synthesize defaultLabel=_defaultLabel;
 @property (weak, nonatomic) id<CKNavbarCanvasViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIBarButtonItem *detailsBarButton; // @synthesize detailsBarButton=_detailsBarButton;
 @property (strong, nonatomic) UIButton *detailsButton; // @synthesize detailsButton=_detailsButton;
 @property (strong, nonatomic) UIButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (strong, nonatomic) UIButton *editCancelButtonView; // @synthesize editCancelButtonView=_editCancelButtonView;
@@ -69,8 +71,12 @@
 - (void)_configureForDefaultMode;
 - (void)_configureForEditMode;
 - (void)_contactPhotosEnabledChangedNotification:(id)arg1;
+- (void)_facetimeAudioButtonTapped:(id)arg1;
+- (void)_facetimeVideoButtonTapped:(id)arg1;
 - (void)_handleAddressBookChange:(id)arg1;
+- (void)_handleAllowedByScreenTimeChatChanged:(id)arg1;
 - (void)_handleTranscriptScroll:(id)arg1;
+- (void)_infoButtonTapped:(id)arg1;
 - (void)_initializeForTraitCollection:(id)arg1;
 - (BOOL)_isFaceTimeSupportedForIndividualCalls;
 - (BOOL)_isMuliwayAvaialble;
@@ -79,18 +85,16 @@
 - (double)_preferredHeightForTraitCollection:(id)arg1;
 - (id)_rightItemViewForTraitCollection:(id)arg1;
 - (id)_secondaryRightItemViewForTraitCollection:(id)arg1;
-- (void)_showContactCardForEntity:(id)arg1;
 - (id)_titleItemViewForTraitCollection:(id)arg1;
 - (long long)_unreadCount;
 - (void)_updateMultiwayButtonStateWithConversation:(id)arg1;
 - (void)_updateUnreadCountForBackbuttonView:(long long)arg1;
 - (void)_userDidTapNavigationBar:(id)arg1;
 - (id)_windowTraitCollection;
-- (void)accessibilitySizeCategoryDidChange:(id)arg1;
 - (void)collapse;
 - (void)configureForEditing:(BOOL)arg1;
-- (void)contactsManager:(id)arg1 didRequestCallTypeForEntity:(id)arg2 addresses:(id)arg3 abLabels:(id)arg4 faceTimeAudioEnabled:(BOOL)arg5;
 - (void)contactsManagerViewModelsDidChange:(id)arg1;
+- (id)contextMenuForUnknownRecipient:(id)arg1;
 - (void)dealloc;
 - (void)dismissModal;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -103,16 +107,23 @@
 - (void)multiwayStateChanged:(id)arg1;
 - (id)navBarTitleFromConversation:(id)arg1;
 - (id)navigationItem;
+- (id)recipientContextMenu;
+- (void)refreshAudioButtonTargetAction;
+- (void)registerNotifications;
 - (void)setUnreadCountTitleColor;
+- (BOOL)shouldShowAvatarView;
+- (void)showContactCardForEntity:(id)arg1 address:(id)arg2;
 - (void)showMapkitBusinessData;
 - (void)startAudioCommunicationUsingPreferredRouteIfAvailable:(BOOL)arg1;
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForView:(id)arg1;
 - (void)toggleExpansionState;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1;
+- (void)updateDefaultLabelIfNecessary;
 - (void)updateTitle:(id)arg1 animated:(BOOL)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

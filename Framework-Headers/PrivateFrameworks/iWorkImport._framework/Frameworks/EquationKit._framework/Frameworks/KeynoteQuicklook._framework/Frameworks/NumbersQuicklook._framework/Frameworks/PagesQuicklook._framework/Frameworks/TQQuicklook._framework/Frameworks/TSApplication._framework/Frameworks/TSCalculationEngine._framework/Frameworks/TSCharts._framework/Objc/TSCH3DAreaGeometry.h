@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (const vector_7200ab52 *)bottomLine;
 - (tvec2_84d5962d)bottomTopAtPosition:(float)arg1;
-- (int)capCount;
+- (unsigned int)capCount;
 - (unsigned int)capOffset;
 - (id)elementsBoundsPositions;
 - (void)generateArrays;

@@ -18,14 +18,18 @@
 @property (strong, nonatomic) NSMutableDictionary *preferences; // @synthesize preferences=_preferences;
 
 + (id)buddyPreferences;
++ (id)buddyPreferencesEphemeral;
 + (id)buddyPreferencesExcludedFromBackup;
++ (id)buddyPreferencesInternal;
 + (void)flushEverything;
 + (void)persistEverything;
 - (void).cxx_destruct;
 - (BOOL)boolForKey:(id)arg1;
 - (void)flush;
+- (id)init;
 - (id)initWithDomain:(id)arg1;
 - (id)objectForKey:(id)arg1;
+- (id)objectForKey:(id)arg1 includeCache:(BOOL)arg2;
 - (void)persist;
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeObjectForKey:(id)arg1 onlyFromMemory:(BOOL)arg2;

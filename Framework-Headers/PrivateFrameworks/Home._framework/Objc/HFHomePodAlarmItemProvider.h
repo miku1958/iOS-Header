@@ -11,9 +11,9 @@
 
 @interface HFHomePodAlarmItemProvider : HFItemProvider
 {
+    id<HFMediaProfileContainer> _mediaProfileContainer;
     HFAccessorySettingMobileTimerAdapter *_mobileTimerAdapter;
     id<HFHomePodAlarmItemProviderDelegate> _delegate;
-    id<HFMediaProfileContainer> _mediaProfileContainer;
     NSMutableDictionary *_alarmIDToItemMap;
     NSMutableSet *_alarmItems;
 }

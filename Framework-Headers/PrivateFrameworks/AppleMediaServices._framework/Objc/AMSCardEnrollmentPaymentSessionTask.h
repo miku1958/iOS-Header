@@ -6,26 +6,12 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
-
-@class NSString;
-
-@interface AMSCardEnrollmentPaymentSessionTask : AMSTask <AMSBagConsumer>
+@interface AMSCardEnrollmentPaymentSessionTask : AMSTask
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (id)_bagKeySet;
 + (id)_paymentServiceURLStringForMerchantURL:(id)arg1;
 + (id)_performSilentEnrollmentPaymentSessionWithContext:(id)arg1;
-+ (void)addRequiredBagKeysToAggregator:(id)arg1;
-+ (id)bagKeySet;
-+ (id)bagSubProfile;
-+ (id)bagSubProfileVersion;
 + (void)paymentSessionWithBag:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)paymentSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)performPaymentSessionEnrollment;

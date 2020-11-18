@@ -24,7 +24,6 @@
 + (id)_newsItemCollectionCache;
 + (id)sharedNewsUpdater;
 - (void).cxx_destruct;
-- (id)aggregateDictionaryDomain;
 - (void)clearNewsCacheOnDisk;
 - (void)didParseData;
 - (void)failWithError:(id)arg1;

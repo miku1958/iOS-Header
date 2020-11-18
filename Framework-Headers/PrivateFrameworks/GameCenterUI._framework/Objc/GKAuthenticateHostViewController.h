@@ -12,11 +12,11 @@
 
 @interface GKAuthenticateHostViewController : GKExtensionRemoteViewController <GKAuthenticateHostProtocol>
 {
-    GKHostedAuthenticateViewController *_delegateWeak;
+    GKHostedAuthenticateViewController *_delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) GKHostedAuthenticateViewController *delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) GKHostedAuthenticateViewController *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game;
 @property (readonly) unsigned long long hash;
@@ -24,8 +24,8 @@
 
 + (id)authenticateExtension;
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
+- (void).cxx_destruct;
 - (void)applicationWillTerminate:(id)arg1;
-- (void)dealloc;
 - (void)extensionIsCanceling;
 - (void)extensionIsFinishing;
 - (void)messageFromExtension:(id)arg1;

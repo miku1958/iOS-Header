@@ -116,6 +116,7 @@
 - (int)_generateIndicesForNumCircleShapes:(int)arg1 withMaxSubdivisionLevel:(float)arg2 startingWithNumSubdivisionLevel:(float)arg3 forIndices:(unsigned int **)arg4 atStartIndex:(int)arg5 withFill:(BOOL)arg6 withCullingForAura:(BOOL)arg7 forVertices:(struct *)arg8;
 - (BOOL)_initMetalAndSetupDisplayLink:(BOOL)arg1;
 - (BOOL)_isOriginatingProcessInBackground;
+- (id)_lazy_commandQueue;
 - (BOOL)_loadPipelineLibraries;
 - (id)_metalLayer;
 - (unsigned int)_numVerticesPerCircle;

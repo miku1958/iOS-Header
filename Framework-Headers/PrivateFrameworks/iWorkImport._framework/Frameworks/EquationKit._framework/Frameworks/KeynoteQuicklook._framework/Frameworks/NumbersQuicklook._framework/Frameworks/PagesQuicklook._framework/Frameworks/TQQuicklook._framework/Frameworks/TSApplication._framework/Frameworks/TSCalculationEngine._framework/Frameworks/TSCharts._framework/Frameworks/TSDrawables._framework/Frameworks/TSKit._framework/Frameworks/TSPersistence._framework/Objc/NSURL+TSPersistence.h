@@ -7,10 +7,12 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (TSPersistence)
+
+@property (readonly, nonatomic) BOOL tsp_isIWorkAVAssetURL;
+
 + (id)tsp_iWorkAVAssetURLWithUUID:(id)arg1 filename:(id)arg2 contentTypeUTI:(id)arg3;
 - (id)tsp_embeddedUTI;
 - (id)tsp_fileIdentifier;
-- (BOOL)tsp_isIWorkAVAssetURL;
 - (BOOL)tsp_matchesURL:(id)arg1;
 - (BOOL)tsp_matchesURL:(id)arg1 canCompareFileID:(BOOL)arg2;
 - (id)tsp_queryDictionary;

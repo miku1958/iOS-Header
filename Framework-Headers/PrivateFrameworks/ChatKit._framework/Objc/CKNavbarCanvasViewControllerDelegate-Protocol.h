@@ -6,12 +6,18 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKNavbarCanvasViewController, UIView, UIViewController;
+@class CKNavbarCanvasViewController, CKNavigationButtonView, UIView, UIViewController;
 
 @protocol CKNavbarCanvasViewControllerDelegate <NSObject>
-- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 buttonWasPressedOfType:(long long)arg2 wasLongPress:(BOOL)arg3;
 - (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 didTapView:(UIView *)arg2;
+- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 facetimeAudioButtonTapped:(CKNavigationButtonView *)arg2;
+- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 facetimeVideoButtonTapped:(CKNavigationButtonView *)arg2;
+- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 infoButtonTapped:(CKNavigationButtonView *)arg2;
 - (void)navbarCanvasViewControllerWantsNavbarResize:(CKNavbarCanvasViewController *)arg1;
+- (BOOL)shouldShowAvatarViewInNavBarCanvas;
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForViewController:(UIViewController *)arg1;
+
+@optional
+- (long long)unreadCountForCurrentFilterModeForNavbarCanvasViewController:(CKNavbarCanvasViewController *)arg1;
 @end
 

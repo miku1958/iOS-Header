@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Intents/INIntentHandlerProviding-Protocol.h>
+#import <IntentsCore/INIntentHandlerProviding-Protocol.h>
 
 @class NSString;
 

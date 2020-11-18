@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCItem-Protocol.h>
 
-@class BRCAccountSession, BRCClientZone, BRCItemID, BRCPQLConnection, BRCServerMetrics, BRCServerStatInfo, BRCServerZone, BRCSharedServerItem, BRCUserRowID, BRCVersion, BRFieldCKInfo, NSString;
+@class BRCAccountSession, BRCClientZone, BRCItemGlobalID, BRCItemID, BRCPQLConnection, BRCServerStatInfo, BRCServerZone, BRCSharedServerItem, BRCUserRowID, BRCVersion, BRFieldCKInfo, BRServerMetrics, NSString;
 
 @interface BRCServerItem : NSObject <BRCItem>
 {
@@ -26,7 +26,7 @@
     long long _rank;
     BRCServerStatInfo *_st;
     BRCVersion *_latestVersion;
-    BRCServerMetrics *_serverMetrics;
+    BRServerMetrics *_serverMetrics;
     BRCServerZone *_serverZone;
     BRCClientZone *_clientZone;
     long long _directoryMtime;
@@ -35,25 +35,32 @@
 @property (readonly, nonatomic) BRCSharedServerItem *asSharedItem;
 @property (readonly, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
 @property (readonly, nonatomic) long long directoryMtime; // @synthesize directoryMtime=_directoryMtime;
+@property (readonly, nonatomic) BOOL hasShareIDAndIsOwnedByMe;
 @property (readonly, nonatomic) BOOL isBRAlias;
+@property (readonly, nonatomic) BOOL isChildSharedItem;
 @property (readonly, nonatomic) BOOL isDead;
 @property (readonly, nonatomic) BOOL isDirectory;
 @property (readonly, nonatomic) BOOL isDocument;
 @property (readonly, nonatomic) BOOL isFSRoot;
 @property (readonly, nonatomic) BOOL isFinderBookmark;
 @property (readonly, nonatomic) BOOL isLive;
+@property (readonly, nonatomic) BOOL isOwnedByMe;
 @property (readonly, nonatomic) BOOL isPackage;
-@property (readonly, nonatomic) BOOL isSharedItem;
+@property (readonly, nonatomic) BOOL isShared;
+@property (readonly, nonatomic) BOOL isSharedByMe;
+@property (readonly, nonatomic) BOOL isSharedToMe;
 @property (readonly, nonatomic) BOOL isSharedToMeChildItem;
 @property (readonly, nonatomic) BOOL isSharedToMeTopLevelItem;
 @property (readonly, nonatomic) BOOL isSymLink;
+@property (readonly, nonatomic) BOOL isTopLevelSharedItem;
 @property (readonly, nonatomic) BOOL isZoneRoot;
+@property (readonly, nonatomic) BRCItemGlobalID *itemGlobalID;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) BRCVersion *latestVersion; // @synthesize latestVersion=_latestVersion;
 @property (readonly, nonatomic) NSString *originalName; // @synthesize originalName=_originalName;
 @property (readonly, nonatomic) BRCUserRowID *ownerKey; // @synthesize ownerKey=_ownerKey;
 @property (readonly, nonatomic) long long rank; // @synthesize rank=_rank;
-@property (readonly, nonatomic) BRCServerMetrics *serverMetrics; // @synthesize serverMetrics=_serverMetrics;
+@property (readonly, nonatomic) BRServerMetrics *serverMetrics; // @synthesize serverMetrics=_serverMetrics;
 @property (readonly, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;

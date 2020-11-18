@@ -13,14 +13,22 @@
 __attribute__((visibility("hidden")))
 @interface WFPBTriggeredAutomationEvent : PBCodable <NSCopying>
 {
+    unsigned int _batchCount;
+    unsigned int _batchDroppedCount;
     NSString *_key;
     NSString *_triggerType;
     BOOL _requiredRuntimeConfirmation;
     struct {
+        unsigned int batchCount:1;
+        unsigned int batchDroppedCount:1;
         unsigned int requiredRuntimeConfirmation:1;
     } _has;
 }
 
+@property (nonatomic) unsigned int batchCount; // @synthesize batchCount=_batchCount;
+@property (nonatomic) unsigned int batchDroppedCount; // @synthesize batchDroppedCount=_batchDroppedCount;
+@property (nonatomic) BOOL hasBatchCount;
+@property (nonatomic) BOOL hasBatchDroppedCount;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (nonatomic) BOOL hasRequiredRuntimeConfirmation;
 @property (readonly, nonatomic) BOOL hasTriggerType;

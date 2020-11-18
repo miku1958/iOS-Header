@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLSInvestigationPhotoKitFeeder, NSArray, NSSet, NSString, PGGraphHighlightNode;
+@class CLSInvestigationPhotoKitFeeder, NSArray, NSDictionary, NSSet, NSString, PGGraphHighlightNode;
 @protocol PGHighlightModel;
 
 @interface PGHighlightTailorContext : NSObject
@@ -16,6 +16,7 @@
     id<PGHighlightModel> _highlight;
     PGGraphHighlightNode *_highlightNode;
     NSSet *_meaningLabels;
+    NSDictionary *_meaningLabelsByChildHighlightUUID;
     NSSet *_momentNodes;
     CLSInvestigationPhotoKitFeeder *_feeder;
     NSString *_keyAssetUUID;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) PGGraphHighlightNode *highlightNode; // @synthesize highlightNode=_highlightNode;
 @property (copy, nonatomic) NSString *keyAssetUUID; // @synthesize keyAssetUUID=_keyAssetUUID;
 @property (strong, nonatomic) NSSet *meaningLabels; // @synthesize meaningLabels=_meaningLabels;
+@property (readonly, nonatomic) NSDictionary *meaningLabelsByChildHighlightUUID; // @synthesize meaningLabelsByChildHighlightUUID=_meaningLabelsByChildHighlightUUID;
 @property (readonly, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property (nonatomic) unsigned long long numberOfExtendedAssets; // @synthesize numberOfExtendedAssets;
 @property (readonly, nonatomic) BOOL petIsPresent; // @synthesize petIsPresent=_petIsPresent;

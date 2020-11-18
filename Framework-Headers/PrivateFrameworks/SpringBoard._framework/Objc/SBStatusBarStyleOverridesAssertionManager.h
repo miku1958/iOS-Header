@@ -8,16 +8,18 @@
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/NSXPCListenerDelegate-Protocol.h>
+#import <SpringBoard/SBAppStatusBarAssertionManagerObserver-Protocol.h>
 #import <SpringBoard/SBStatusBarStyleOverridesAssertionServer-Protocol.h>
 
-@class FBWorkspaceEventQueue, NSMapTable, NSMutableArray, NSString, NSXPCListener, SBStatusBarTapManager;
+@class FBWorkspaceEventQueue, NSMapTable, NSMutableArray, NSString, NSXPCListener, SBAppStatusBarAssertionManager, SBStatusBarTapManager;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface SBStatusBarStyleOverridesAssertionManager : NSObject <NSXPCListenerDelegate, SBStatusBarStyleOverridesAssertionServer, BSDescriptionProviding>
+@interface SBStatusBarStyleOverridesAssertionManager : NSObject <NSXPCListenerDelegate, SBAppStatusBarAssertionManagerObserver, SBStatusBarStyleOverridesAssertionServer, BSDescriptionProviding>
 {
     NSMutableArray *_runningUpdateTransactions;
     int _statusBarStyleOverrides;
     int _exclusiveStatusBarStyleOverrides;
+    SBAppStatusBarAssertionManager *_appStatusBarAssertionManager;
     NSXPCListener *_xpcListener;
     NSMapTable *_assertionsByIdentifierByClientConnection;
     NSMapTable *_assertionsByStyleOverride;
@@ -28,6 +30,7 @@
     SBStatusBarTapManager *_statusBarTapManager;
 }
 
+@property (strong, nonatomic) SBAppStatusBarAssertionManager *appStatusBarAssertionManager; // @synthesize appStatusBarAssertionManager=_appStatusBarAssertionManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *assertionTimerSource; // @synthesize assertionTimerSource=_assertionTimerSource;
 @property (strong, nonatomic) NSMapTable *assertionsByIdentifierByClientConnection; // @synthesize assertionsByIdentifierByClientConnection=_assertionsByIdentifierByClientConnection;
 @property (strong, nonatomic) NSMapTable *assertionsByStyleOverride; // @synthesize assertionsByStyleOverride=_assertionsByStyleOverride;
@@ -66,6 +69,7 @@
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)setRegisteredOverrides:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setStatusString:(id)arg1 forAssertionWithIdentifier:(id)arg2;
+- (void)statusBarAssertionManager:(id)arg1 statusBarSettingsDidChange:(id)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)unregisterCoordinatorRegistrationForStyleOverrides:(id)arg1;

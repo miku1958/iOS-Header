@@ -13,11 +13,15 @@
 @interface NRWatchPairingExtendedMetadata : NSObject <NSSecureCoding>
 {
     BOOL _postFailsafeObliteration;
+    BOOL _isCellularEnabled;
     long long _chipID;
+    long long _pairingVersion;
     NSString *_productType;
 }
 
 @property (nonatomic) long long chipID; // @synthesize chipID=_chipID;
+@property (nonatomic) BOOL isCellularEnabled; // @synthesize isCellularEnabled=_isCellularEnabled;
+@property (nonatomic) long long pairingVersion; // @synthesize pairingVersion=_pairingVersion;
 @property (nonatomic) BOOL postFailsafeObliteration; // @synthesize postFailsafeObliteration=_postFailsafeObliteration;
 @property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
 

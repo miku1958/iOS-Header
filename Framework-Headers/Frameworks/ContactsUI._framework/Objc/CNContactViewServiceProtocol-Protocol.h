@@ -10,6 +10,7 @@
 
 @protocol CNContactViewServiceProtocol <NSObject>
 - (void)didChangeToEditMode:(BOOL)arg1;
+- (void)didChangeToShowTitle:(BOOL)arg1;
 - (void)editCancel;
 - (void)performConfirmedCancel;
 - (void)setupWithOptions:(NSDictionary *)arg1 readyBlock:(void (^)(NSError *))arg2;

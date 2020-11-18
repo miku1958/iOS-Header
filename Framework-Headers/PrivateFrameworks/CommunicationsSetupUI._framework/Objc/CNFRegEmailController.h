@@ -8,6 +8,7 @@
 
 @class NSArray, NSString, NSTimer, PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegEmailController : CNFRegFirstRunController
 {
     PSSpecifier *_emailSpecifier;

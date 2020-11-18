@@ -13,10 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityContainerView;
+- (id)_accessibilityControlItem;
+- (id)_accessibilityControlName;
 - (void)_accessibilitySetSwitchValue:(double)arg1;
-- (id)_accessibilitySummaryView;
+- (id)_accessibilitySingleControlHostViewController;
+- (id)_accessibilityStateForPrimaryCharacteristic;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (double)_accessibilitySwitchValue;
 - (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;

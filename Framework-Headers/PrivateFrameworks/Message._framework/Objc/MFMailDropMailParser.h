@@ -10,7 +10,7 @@
 {
 }
 
-+ (BOOL)_domainIsWhitelisted:(id)arg1;
++ (BOOL)_domainIsAllowed:(id)arg1;
 + (void)_parseDirectURL:(id)arg1 intoMetadata:(id)arg2;
 + (id)_parseURLQuery:(id)arg1;
 + (void)_parseWrappedURL:(id)arg1 intoMetadata:(id)arg2;

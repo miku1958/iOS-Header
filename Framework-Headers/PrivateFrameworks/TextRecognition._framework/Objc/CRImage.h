@@ -42,6 +42,7 @@
 - (unsigned long long)bytesPerPixel;
 - (struct vImage_Buffer)createFloatBuffer;
 - (void)dealloc;
+- (id)imageByAdjustingBrightnessAlpha:(double)arg1 beta:(double)arg2;
 - (id)imageByApplyingBinaryMask:(id)arg1;
 - (id)imageByApplyingHistogramCorrection;
 - (id)imageByConvertingToColorSpace:(int)arg1;

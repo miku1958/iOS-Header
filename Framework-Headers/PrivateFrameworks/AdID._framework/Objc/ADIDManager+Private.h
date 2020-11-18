@@ -24,7 +24,6 @@
 - (void)deleteRecords:(CDUnknownBlockType)arg1;
 - (void)finishedReconciling:(CDUnknownBlockType)arg1 withError:(id)arg2;
 - (void)handleAccountChange:(CDUnknownBlockType)arg1;
-- (void)handleIDFAReset:(CDUnknownBlockType)arg1;
 - (void)incrementMonthlyResetCount;
 - (id)init;
 - (void)notifyActiveRecordChanged;

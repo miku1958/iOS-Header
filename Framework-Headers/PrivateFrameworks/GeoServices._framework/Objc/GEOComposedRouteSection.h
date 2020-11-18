@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRouteLeg, GEOComposedRouteStep;
+@class GEOComposedRouteSegment, GEOComposedRouteStep;
 
 @interface GEOComposedRouteSection : NSObject
 {
@@ -14,9 +14,9 @@
     unsigned int _pointCount;
     CDStruct_869f9c67 *_points;
     int _transportType;
-    GEOComposedRouteLeg *_composedRouteLeg;
+    GEOComposedRouteSegment *_composedRouteSegment;
     GEOComposedRouteStep *_composedRouteStep;
-    unsigned long long _composedRouteLegIndex;
+    unsigned long long _composedRouteSegmentIndex;
     CDStruct_953f3dc7 _bounds;
     CDStruct_02837cd9 _overlayBounds;
     unsigned long long _finalStepIndex;
@@ -25,8 +25,8 @@
 }
 
 @property (readonly, nonatomic) CDStruct_953f3dc7 bounds; // @synthesize bounds=_bounds;
-@property (readonly, weak, nonatomic) GEOComposedRouteLeg *composedRouteLeg; // @synthesize composedRouteLeg=_composedRouteLeg;
-@property (readonly, nonatomic) unsigned long long composedRouteLegIndex; // @synthesize composedRouteLegIndex=_composedRouteLegIndex;
+@property (readonly, weak, nonatomic) GEOComposedRouteSegment *composedRouteSegment; // @synthesize composedRouteSegment=_composedRouteSegment;
+@property (readonly, nonatomic) unsigned long long composedRouteSegmentIndex; // @synthesize composedRouteSegmentIndex=_composedRouteSegmentIndex;
 @property (readonly, weak, nonatomic) GEOComposedRouteStep *composedRouteStep; // @synthesize composedRouteStep=_composedRouteStep;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long finalStepIndex; // @synthesize finalStepIndex=_finalStepIndex;
@@ -39,12 +39,14 @@
 
 - (void).cxx_destruct;
 - (BOOL)_MapsCarPlay_isEqual:(id)arg1;
-- (void)_initStepForRoute:(id)arg1;
+- (void)_initialStepInSteps:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 bounds:(CDStruct_953f3dc7)arg4 transportType:(int)arg5 finalStepIndex:(unsigned long long)arg6 startDistance:(double)arg7 lengthScaleFactor:(double)arg8;
-- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 transportType:(int)arg4 finalStepIndex:(unsigned long long)arg5 fallbackStartCoordinate:(CDStruct_c3b9c2ee)arg6 fallbackEndCoordinate:(CDStruct_c3b9c2ee)arg7 startDistance:(double)arg8 lengthScaleFactor:(double)arg9;
+- (id)initWithCoordinates:(id)arg1 segment:(id)arg2 segmentIndex:(unsigned long long)arg3 steps:(id)arg4 startCoordinateIndex:(unsigned int)arg5 coordinateCount:(unsigned int)arg6 bounds:(CDStruct_953f3dc7)arg7 transportType:(int)arg8 finalStepIndex:(unsigned long long)arg9 startDistance:(double)arg10 lengthScaleFactor:(double)arg11;
+- (id)initWithCoordinates:(id)arg1 segment:(id)arg2 segmentIndex:(unsigned long long)arg3 steps:(id)arg4 startCoordinateIndex:(unsigned int)arg5 coordinateCount:(unsigned int)arg6 transportType:(int)arg7 finalStepIndex:(unsigned long long)arg8 fallbackStartCoordinate:(CDStruct_c3b9c2ee)arg9 fallbackEndCoordinate:(CDStruct_c3b9c2ee)arg10 startDistance:(double)arg11 lengthScaleFactor:(double)arg12;
 - (BOOL)isTransfer;
+- (id)stringForCoordinates;
+- (id)stringForPoints;
 
 @end
 

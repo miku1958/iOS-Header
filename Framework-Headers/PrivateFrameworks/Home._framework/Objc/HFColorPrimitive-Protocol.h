@@ -6,10 +6,11 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFRGBColor, HFTemperatureColor;
+@class HFRGBColor, HFTemperatureColor, NSString;
 
 @protocol HFColorPrimitive <NSObject>
 - (HFRGBColor *)hf_RGBColorRepresentation;
+- (NSString *)valueDescription;
 
 @optional
 - (HFTemperatureColor *)hf_temperatureColorRepresentation;

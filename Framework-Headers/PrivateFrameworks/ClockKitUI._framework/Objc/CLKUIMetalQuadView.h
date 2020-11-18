@@ -7,7 +7,7 @@
 #import <ClockKitUI/CLKUIQuadView.h>
 
 @class CAMetalLayer, MTLRenderPassDescriptor, NSArray;
-@protocol MTLCommandQueue, MTLComputePipelineState;
+@protocol MTLCommandQueue, MTLComputePipelineState, MTLTexture;
 
 @interface CLKUIMetalQuadView : CLKUIQuadView
 {
@@ -17,16 +17,26 @@
     struct CLKUIQuadSize _quadSize;
     CAMetalLayer *_metalLayer;
     NSArray *_quads;
+    id<MTLTexture> _depthTexture;
+    unsigned int _isDepthBufferRequired:1;
     id<MTLComputePipelineState> _aplPipelineState;
+    id<MTLComputePipelineState> _colorConversionPipelineState;
+    unsigned int _presentWithTransaction:1;
+    id<MTLTexture> _msaaTexture;
+    id<MTLTexture> _textureForPrewarming;
     unsigned long long _colorPixelFormat;
+    unsigned long long _msaaCount;
 }
 
 @property (readonly, nonatomic) unsigned long long colorPixelFormat; // @synthesize colorPixelFormat=_colorPixelFormat;
+@property (nonatomic) unsigned long long msaaCount; // @synthesize msaaCount=_msaaCount;
 
++ (id)allocateDepthTextureWithWidth:(float)arg1 height:(float)arg2 sampleCount:(unsigned long long)arg3;
 - (void).cxx_destruct;
-- (BOOL)_displayAndCheckForDrawable:(BOOL)arg1 WithCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)_displayAndCheckForDrawable:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleQuadArrayChange:(id)arg1;
 - (id)_newRenderPassDescriptor;
+- (void)_renderQuads:(id)arg1 toScreenWithCommandBuffer:(id)arg2 passDescriptor:(id)arg3;
 - (id)_snapshotTextureInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3 withAdditionalPasses:(CDUnknownBlockType)arg4;
 - (id)_textureToImage:(id)arg1 scale:(double)arg2;
 - (void)_updateDrawableSizeIfNecessary;
@@ -36,6 +46,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2 colorSpace:(long long)arg3;
 - (void)layoutSubviews;
 - (id)metalLayer;
+- (BOOL)prewarmWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setSingleBufferMode:(BOOL)arg1;
 - (id)snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;

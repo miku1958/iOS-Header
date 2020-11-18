@@ -30,6 +30,7 @@
 @property (strong, nonatomic) CPSAbridgableLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CPSAbridgableLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (id)_linearFocusItems;

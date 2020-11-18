@@ -10,11 +10,13 @@
 
 @interface BYLocaleDataSource : NSObject
 {
+    BOOL _hasRecommendedLocaleFromLanguage;
     NSString *_language;
     NSMutableArray *_suggestedCountries;
     NSMutableArray *_moreCountries;
 }
 
+@property (nonatomic) BOOL hasRecommendedLocaleFromLanguage; // @synthesize hasRecommendedLocaleFromLanguage=_hasRecommendedLocaleFromLanguage;
 @property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSMutableArray *moreCountries; // @synthesize moreCountries=_moreCountries;
 @property (strong, nonatomic) NSMutableArray *suggestedCountries; // @synthesize suggestedCountries=_suggestedCountries;

@@ -14,7 +14,7 @@
 @property (readonly, nonatomic) unsigned int legacyID; // @synthesize legacyID=_legacyID;
 
 - (id)asLegacyCustomFormat;
-- (id)initWithFormatType:(int)arg1 legacyID:(unsigned int)arg2;
+- (id)initWithFormatType:(unsigned int)arg1 legacyID:(unsigned int)arg2;
 
 @end
 

@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *_taskServerClassesByTaskIdentifier;
     NSMapTable *_taskServersByUUID;
+    NSMutableDictionary *_taskServerObserversByUUID;
     NSMutableSet *_loadedPluginURLs;
     struct os_unfair_lock_s _lock;
     HDDaemon *_daemon;
@@ -22,13 +23,17 @@
 - (void).cxx_destruct;
 - (BOOL)_lock_loadTaskServersFromPluginAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)_lock_registerTaskServerClass:(Class)arg1 error:(id *)arg2;
-- (id)createTaskServerEndpointForIdentifier:(id)arg1 taskUUID:(id)arg2 configuration:(id)arg3 client:(id)arg4 connectionQueue:(id)arg5 delegate:(id)arg6 error:(id *)arg7;
+- (void)addObserver:(id)arg1 forTaskServerUUID:(id)arg2 queue:(id)arg3;
+- (id)createTaskServerEndpointForIdentifier:(id)arg1 taskUUID:(id)arg2 configuration:(id)arg3 client:(id)arg4 connectionQueue:(id)arg5 error:(id *)arg6;
 - (void)didCreateTaskServer:(id)arg1;
 - (id)initWithDaemon:(id)arg1;
 - (BOOL)loadTaskServersFromPluginAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)registerTaskServerClass:(Class)arg1 error:(id *)arg2;
 - (BOOL)registerTaskServerClasses:(id)arg1 error:(id *)arg2;
 - (BOOL)registerTaskServerClassesWithProvider:(id)arg1 error:(id *)arg2;
+- (void)removeObserver:(id)arg1 forTaskServerUUID:(id)arg2;
+- (void)removeTaskServerObserver:(id)arg1;
+- (void)taskServerDidInvalidate:(id)arg1;
 - (id)taskServerForTaskUUID:(id)arg1;
 
 @end

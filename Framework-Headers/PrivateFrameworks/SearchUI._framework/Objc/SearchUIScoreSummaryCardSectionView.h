@@ -21,12 +21,13 @@
 @property (strong, nonatomic) TLKSplitHeaderView *splitHeaderView; // @synthesize splitHeaderView=_splitHeaderView;
 @property (readonly) Class superclass;
 
++ (int)defaultSeparatorStyleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
-+ (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 + (id)titleForScoreBoard:(id)arg1 forDisplay:(BOOL)arg2;
 - (void).cxx_destruct;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)setupContentView;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;

@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface _WKTextManipulationToken : NSObject
 {
+    struct RetainPtr<NSDictionary<NSString *, id>> _userInfo;
     BOOL _excluded;
     NSString *_identifier;
     NSString *_content;
@@ -19,8 +20,12 @@
 @property (readonly, copy, nonatomic) NSString *debugDescription;
 @property (nonatomic, getter=isExcluded) BOOL excluded; // @synthesize excluded=_excluded;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSDictionary *userInfo;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)_descriptionPreservingPrivacy:(BOOL)arg1;
+- (void)dealloc;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTextManipulationToken:(id)arg1 includingContentEquality:(BOOL)arg2;

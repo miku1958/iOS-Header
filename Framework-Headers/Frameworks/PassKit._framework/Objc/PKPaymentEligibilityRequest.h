@@ -63,6 +63,7 @@
 - (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3 certChain:(id)arg4 devSigned:(BOOL)arg5 deviceData:(id)arg6 webService:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithAddRequestConfiguration:(id)arg1 addRequest:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPaymentCredential:(id)arg1;
 - (id)initWithSource:(long long)arg1;

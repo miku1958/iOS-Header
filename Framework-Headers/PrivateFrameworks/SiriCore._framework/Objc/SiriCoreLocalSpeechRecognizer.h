@@ -33,8 +33,10 @@
 
 + (id)dictionaryWithContentsProfilePathForLanguage:(id)arg1 errorOut:(id *)arg2;
 + (id)installedAssetSizeWithError:(id *)arg1;
++ (id)offlineDictationStatusIgnoringCache:(BOOL)arg1 error:(id *)arg2;
 + (id)profilePathForLanguage:(id)arg1 errorOut:(id *)arg2;
-+ (id)purgeInstalledAssetsWithError:(id *)arg1;
++ (id)purgeInstalledAssetsExceptLanguages:(id)arg1 error:(id *)arg2;
++ (void)resetCacheAndCompileAllAssets;
 + (id)speechProfileDataLastModifiedDataForLanguage:(id)arg1;
 - (void).cxx_destruct;
 - (id)_connection;
@@ -43,7 +45,8 @@
 - (id)_serviceWithFunctionName:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)_synchronousServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)addAudioPacket:(id)arg1;
-- (void)createSpeechProfileWithLanguage:(id)arg1 JSONData:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)createSpeechProfileWithLanguage:(id)arg1 modelOverridePath:(id)arg2 JSONData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)deleteAllDESRecordsForDictationPersonalization;
 - (void)fetchAssetsForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchUserDataForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishAudio;
@@ -51,19 +54,23 @@
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 instanceUUID:(unsigned char [16])arg2;
+- (unsigned char (*)[16])instanceUUID;
 - (void)invalidate;
-- (void)preheatSpeechRecognitionWithLanguage:(id)arg1;
+- (void)invalidatePersonalizedLM;
+- (void)preheatSpeechRecognitionWithLanguage:(id)arg1 modelOverrideURL:(id)arg2;
 - (void)readProfileAndUserDataWithLanguage:(id)arg1 allowOverride:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removePersonalizedLMForFidesOnly:(BOOL)arg1;
 - (void)resetDESWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runAdaptationRecipeEvaluation:(id)arg1 recordData:(id)arg2 attachments:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)runEvaluationWithDESRecordDatas:(id)arg1 language:(id)arg2 recipe:(id)arg3 fidesPersonalizedLMPath:(id)arg4 fidesPersonalizedLMTrainingAsset:(id)arg5 scrubResult:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)sendSpeechCorrectionInfo:(id)arg1 interactionIdentifier:(id)arg2;
 - (oneway void)speechServiceDidFinishRecognitionWithStatistics:(id)arg1 error:(id)arg2;
 - (oneway void)speechServiceDidProcessAudioDuration:(double)arg1;
 - (oneway void)speechServiceDidRecognizePackage:(id)arg1;
 - (oneway void)speechServiceDidRecognizeRawEagerRecognitionCandidate:(id)arg1;
 - (oneway void)speechServiceDidRecognizeTokens:(id)arg1;
-- (void)startSpeechRecognitionWithLanguage:(id)arg1 interactionIdentifier:(id)arg2 task:(id)arg3 context:(id)arg4 narrowband:(BOOL)arg5 detectUtterances:(BOOL)arg6 maximumRecognitionDuration:(double)arg7 farField:(BOOL)arg8 secureOfflineOnly:(BOOL)arg9 censorSpeech:(BOOL)arg10 originalAudioFileURL:(id)arg11 overrides:(id)arg12 modelOverrideURL:(id)arg13 didStartHandler:(CDUnknownBlockType)arg14;
-- (void)updateSpeechProfileWithLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSpeechRecognitionWithLanguage:(id)arg1 interactionIdentifier:(id)arg2 task:(id)arg3 context:(id)arg4 narrowband:(BOOL)arg5 detectUtterances:(BOOL)arg6 maximumRecognitionDuration:(double)arg7 farField:(BOOL)arg8 secureOfflineOnly:(BOOL)arg9 censorSpeech:(BOOL)arg10 originalAudioFileURL:(id)arg11 overrides:(id)arg12 modelOverrideURL:(id)arg13 applicationName:(id)arg14 shouldStoreAudioOnDevice:(BOOL)arg15 didStartHandler:(CDUnknownBlockType)arg16;
+- (void)updateSpeechProfileWithLanguage:(id)arg1 modelOverridePath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)writeDESRecord;
 
 @end

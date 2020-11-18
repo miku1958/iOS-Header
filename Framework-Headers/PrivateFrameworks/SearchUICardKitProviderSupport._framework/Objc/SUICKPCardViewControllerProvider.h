@@ -20,6 +20,7 @@
     NSMutableArray *_pendingDismissalCommands;
     long long _preferredPunchoutIndex;
     NSMutableDictionary *_feedbackDelegateDemultiplexersByCardIdentifiers;
+    struct CGSize _preferredContentSize;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,11 +32,13 @@
 - (void).cxx_destruct;
 - (BOOL)_askDelegateToPerformReferentialCommand:(id)arg1 forCardSection:(id)arg2;
 - (id)_cardViewControllerForCardSection:(id)arg1;
+- (id)_createCardViewControllerForCard:(id)arg1;
 - (struct CGSize)boundingSizeForCardSectionViewController:(id)arg1;
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (void)cardViewController:(id)arg1 preferredContentSizeDidChange:(struct CGSize)arg2 animated:(BOOL)arg3;
 - (id)cardViewControllerForCard:(id)arg1;
 - (id)customViewControllerForCardSection:(id)arg1;
 - (unsigned long long)displayPriorityForCard:(id)arg1;

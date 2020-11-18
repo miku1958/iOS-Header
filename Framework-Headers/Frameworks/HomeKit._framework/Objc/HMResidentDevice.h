@@ -56,6 +56,9 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 - (id)init;

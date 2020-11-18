@@ -8,6 +8,7 @@
 
 @class NSTimer, UITouch;
 
+__attribute__((visibility("hidden")))
 @interface MPTapGestureRecognizer : UIGestureRecognizer
 {
     unsigned long long _lastTapCount;

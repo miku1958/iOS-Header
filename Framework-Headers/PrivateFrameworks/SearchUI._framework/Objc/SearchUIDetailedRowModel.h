@@ -6,19 +6,22 @@
 
 #import <SearchUI/SearchUICardSectionRowModel.h>
 
-@class NSArray, NSString, SFActionItem, SFButton, SFFormattedText, SFImage, SFRichText, SFText;
+@class MKSearchFoundationResult, NSArray, NSString, SFActionItem, SFButton, SFFormattedText, SFImage, SFRichText;
 
 @interface SearchUIDetailedRowModel : SearchUICardSectionRowModel
 {
     BOOL _preventThumbnailImageScaling;
     BOOL _isLocalApplicationResult;
+    BOOL _truncateTitleMiddle;
     BOOL _secondaryTitleIsDetached;
+    BOOL _useCompactDisplay;
     SFImage *_leadingImage;
     SFImage *_fallbackImage;
     SFButton *_leadingButton;
     NSString *_applicationBundleIdentifier;
+    NSString *_nearbyBusinessesString;
     SFRichText *_title;
-    SFText *_secondaryTitle;
+    SFFormattedText *_secondaryTitle;
     SFImage *_secondaryTitleImage;
     NSArray *_details;
     SFRichText *_footnote;
@@ -27,27 +30,30 @@
     SFFormattedText *_trailingTopText;
     SFFormattedText *_trailingMiddleText;
     SFFormattedText *_trailingBottomText;
-    NSArray *_contactIdentifiersNeeded;
+    MKSearchFoundationResult *_mapsResult;
 }
 
 @property (strong) SFActionItem *action; // @synthesize action=_action;
 @property (strong) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
-@property (strong) NSArray *contactIdentifiersNeeded; // @synthesize contactIdentifiersNeeded=_contactIdentifiersNeeded;
-@property (strong) NSArray *details; // @synthesize details=_details;
+@property (strong, nonatomic) NSArray *details; // @synthesize details=_details;
 @property (strong) SFImage *fallbackImage; // @synthesize fallbackImage=_fallbackImage;
 @property (strong) SFRichText *footnote; // @synthesize footnote=_footnote;
 @property (strong) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property BOOL isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
 @property (strong) SFButton *leadingButton; // @synthesize leadingButton=_leadingButton;
-@property (strong) SFImage *leadingImage; // @synthesize leadingImage=_leadingImage;
+@property (strong, nonatomic) SFImage *leadingImage; // @synthesize leadingImage=_leadingImage;
+@property (strong) MKSearchFoundationResult *mapsResult; // @synthesize mapsResult=_mapsResult;
+@property (strong) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
 @property BOOL preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
-@property (strong) SFText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property (strong) SFFormattedText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong) SFImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
 @property BOOL secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
 @property (strong) SFRichText *title; // @synthesize title=_title;
 @property (strong) SFFormattedText *trailingBottomText; // @synthesize trailingBottomText=_trailingBottomText;
 @property (strong) SFFormattedText *trailingMiddleText; // @synthesize trailingMiddleText=_trailingMiddleText;
 @property (strong) SFFormattedText *trailingTopText; // @synthesize trailingTopText=_trailingTopText;
+@property BOOL truncateTitleMiddle; // @synthesize truncateTitleMiddle=_truncateTitleMiddle;
+@property BOOL useCompactDisplay; // @synthesize useCompactDisplay=_useCompactDisplay;
 
 + (BOOL)urlIsDraggable:(id)arg1;
 - (void).cxx_destruct;
@@ -60,10 +66,13 @@
 - (id)dragTitle;
 - (id)dragURL;
 - (void)fillOutPropertiesForCardSection:(id)arg1;
+- (BOOL)hasLeadingImage;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 isInline:(BOOL)arg3 queryId:(unsigned long long)arg4;
+- (id)initWithResult:(id)arg1 suggestion:(id)arg2 queryId:(unsigned long long)arg3;
 - (BOOL)isContact;
 - (BOOL)isDraggable;
 - (BOOL)isTappable;
+- (id)populatedMapsCardSectionIfApplicable;
 - (id)punchouts;
 - (id)richTextFromText:(id)arg1;
 - (int)separatorStyle;

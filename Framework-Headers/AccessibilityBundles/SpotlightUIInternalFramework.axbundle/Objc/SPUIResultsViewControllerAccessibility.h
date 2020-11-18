@@ -15,10 +15,13 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axFirstResultInModel:(id)arg1;
 - (long long)_axNumberOfResultsInModel:(id)arg1;
+- (id)_axPreviousGoResult;
 - (BOOL)_axResultsFirstAppeared;
 - (id)_axResultsInSection:(id)arg1;
 - (id)_axSectionsInModel:(id)arg1;
+- (void)_axSetPreviousGoResult:(id)arg1;
 - (void)_axSetResultsFirstAppeared:(BOOL)arg1;
+- (id)_axStringForType:(int)arg1;
 - (void)searchAgentUpdatedResults:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 

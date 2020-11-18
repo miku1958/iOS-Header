@@ -28,17 +28,16 @@ __attribute__((visibility("hidden")))
 - (long long)_filter;
 - (void)_setImageViewScalingMode:(long long)arg1;
 - (void)_updateScalingMode;
-- (void)componentViewDidMoveToWindow;
+- (void)ensureImageView;
 - (struct CGSize)imageSizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)imageSizeThatFits:(struct CGSize)arg1 scalingMode:(long long)arg2;
 - (id)init;
 - (id)initWithImage:(id)arg1 properties:(id)arg2 style:(id)arg3;
-- (void)installDarkeningView;
+- (void)installDarkeningViewIfNeeded;
 - (void)layoutComponentView;
 - (long long)scalingModeForSize:(struct CGSize)arg1;
-- (void)setCornerRadius:(double)arg1 continuous:(BOOL)arg2;
 - (BOOL)shouldApplyBackground;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateCornerRadius;
 - (void)updateShadowPath;
 
 @end

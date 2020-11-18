@@ -39,8 +39,9 @@
 @property (readonly, strong, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
-- (id)_initWithItem:(id)arg1 initialPayload:(id)arg2 messagePartRange:(struct _NSRange)arg3 parentChatHasKnownParticipants:(BOOL)arg4;
+- (id)_initWithItem:(id)arg1 initialPayload:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 parentChatHasKnownParticipants:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1;
 - (BOOL)wantsAutoPlayback;
 
 @end

@@ -25,30 +25,27 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) NSMutableArray *mutableSections; // @synthesize mutableSections=_mutableSections;
 @property (readonly) SPSearchQuery *query; // @synthesize query=_query;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_shouldPromptUserToOpenTTR;
 - (void)addSections:(id)arg1 delayedTopHit:(BOOL)arg2;
 - (void)cancel;
 - (void)clear;
 - (void)clearInternal:(int)arg1 invalidate:(BOOL)arg2;
 - (id)defaultSearchThroughSection;
-- (id)getTapToRadarPunchOutForRankingWithDebugLog:(id)arg1;
-- (void)handleHiddenResult:(id)arg1 shownResult:(id)arg2 inSection:(id)arg3;
 - (void)handleOptionsForNewSections:(id)arg1;
 - (id)initForSession:(id)arg1 withQuery:(id)arg2;
 - (void)mergeSections;
 - (id)resultWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4;
-- (void)searchDaemonLocalSuggestionsData:(id)arg1 lexicon:(struct _LXLexicon *)arg2 tokenizer:(struct __CFStringTokenizer *)arg3 currentLocaleRef:(struct __CFLocale *)arg4;
 - (void)searchDaemonQuery:(id)arg1 encounteredError:(id)arg2;
-- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 delayed:(BOOL)arg6 delayedTopHit:(BOOL)arg7 unchanged:(BOOL)arg8 forceStable:(BOOL)arg9 blendingDuration:(double)arg10 geoEntityString:(id)arg11 supportedAppScopes:(id)arg12;
+- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(BOOL)arg3 partiallyComplete:(BOOL)arg4 update:(BOOL)arg5 complete:(BOOL)arg6 delayedTopHit:(BOOL)arg7 unchanged:(BOOL)arg8 forceStable:(BOOL)arg9 blendingDuration:(double)arg10 geoEntityString:(id)arg11 supportedAppScopes:(id)arg12 showMoreInAppInfo:(id)arg13;
 - (void)searchDaemonRankingLog:(id)arg1;
-- (void)searchDaemonSuggestionsArray:(id)arg1;
 - (id)searchString;
 - (id)searchThroughSection;
 - (void)start;
+- (void)truncateSuggestionsSectionToFit:(id)arg1;
 - (id)unsafeSections;
 - (id)unsafeSessionEntityString;
 

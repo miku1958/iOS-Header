@@ -7,30 +7,40 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneOverlayViewController-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle, SBSecureWindow, SBWindowSelfHostWrapper, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector;
-@protocol SBIsolatedSceneOrientationFollowingWrapperOrientationDelegate;
+@class NSString, SBDeviceApplicationSceneHandle, SBIsolatedSceneOrientationFollowingContainerView, SBIsolatedSceneOrientationFollowingWindow, SBWindowSelfHostWrapper, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector, UIView;
+@protocol SBDeviceApplicationSceneOverlayView, SBIsolatedSceneOrientationFollowingWrapperOrientationDelegate;
 
-@interface SBIsolatedSceneOrientationFollowingWrapperViewController : UIViewController <SBDeviceApplicationSceneHandleObserver>
+@interface SBIsolatedSceneOrientationFollowingWrapperViewController : UIViewController <SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneOverlayViewController>
 {
     SBDeviceApplicationSceneHandle *_sceneHandle;
     UIViewController *_contentViewController;
-    SBSecureWindow *_appOverlayWindow;
+    SBIsolatedSceneOrientationFollowingWindow *_appOverlayWindow;
     SBWindowSelfHostWrapper *_appOverlayHostWrapper;
+    SBIsolatedSceneOrientationFollowingContainerView *_containerView;
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsDiffInspector;
     UIApplicationSceneClientSettingsDiffInspector *_clientSettingsDiffInspector;
     BOOL _sceneWantsDeviceOrientationEvents;
     BOOL _rendersWhileLocked;
+    BOOL _needsDeferredOverlayWindowRotation;
     id<SBIsolatedSceneOrientationFollowingWrapperOrientationDelegate> _orientationDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIView<SBDeviceApplicationSceneOverlayView> *overlayView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGRect)_boundsForOverlayRootView;
 - (BOOL)_canShowWhileLocked;
+- (void)_containerViewDidSetBounds:(struct CGRect)arg1;
+- (void)_containerViewDidSetCenter:(struct CGPoint)arg1;
+- (long long)_effectiveSceneOrientation;
+- (BOOL)_isSceneStatusBarHidden;
+- (long long)_orientationBasedOnScene;
 - (void)dealloc;
 - (id)initWithContentViewController:(id)arg1 sceneHandle:(id)arg2 orientationDelegate:(id)arg3 rendersWhileLocked:(BOOL)arg4;
 - (void)loadView;

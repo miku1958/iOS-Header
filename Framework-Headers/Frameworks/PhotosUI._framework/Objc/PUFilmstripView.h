@@ -6,6 +6,7 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUI/PHVideoScrubberFilmstripView-Protocol.h>
 #import <PhotosUI/PUTilingViewTileSource-Protocol.h>
 #import <PhotosUI/PUTilingViewTileTransitionDelegate-Protocol.h>
 #import <PhotosUI/PXLivePhotoTrimScrubberFilmStripView-Protocol.h>
@@ -14,7 +15,7 @@
 @class AVAsset, AVVideoComposition, NSArray, NSObject, NSString, PUFilmstripDataSource, PUFilmstripMediaProvider, PUTileViewAnimator, PUTilingView, UIImage;
 @protocol OS_dispatch_queue;
 
-@interface PUFilmstripView : UIView <PXLivePhotoTrimScrubberFilmStripView, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate>
+@interface PUFilmstripView : UIView <PXLivePhotoTrimScrubberFilmStripView, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate, PHVideoScrubberFilmstripView>
 {
     BOOL _needsUpdateThumbnailAspectRatio;
     BOOL _needsUpdateDataSource;
@@ -40,8 +41,8 @@
 @property (strong, nonatomic, setter=_setMediaProvider:) PUFilmstripMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
 @property (nonatomic, setter=_setThumbnailAspectRatio:) double _thumbnailAspectRatio; // @synthesize _thumbnailAspectRatio=__thumbnailAspectRatio;
 @property (readonly, nonatomic) PUTilingView *_tilingView; // @synthesize _tilingView=__tilingView;
-@property (copy, nonatomic) AVAsset *asset;
-@property (copy, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) AVAsset *asset;
+@property (readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -54,10 +55,11 @@
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id thumbnailUpdatingDelegate;
 @property (nonatomic) BOOL useContentAspectRatio;
 @property (nonatomic) BOOL useContentAspectRatio; // @synthesize useContentAspectRatio=_useContentAspectRatio;
-@property (copy, nonatomic) AVVideoComposition *videoComposition;
-@property (copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
+@property (readonly, nonatomic) AVVideoComposition *videoComposition;
+@property (readonly, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 @property (nonatomic) struct CGRect visibleRect;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
@@ -80,6 +82,8 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)reloadThumbnails;
+- (void)setAsset:(id)arg1;
+- (void)setAsset:(id)arg1 videoComposition:(id)arg2;
 - (void)setLivePhotoTrimScrubberThumbnail:(id)arg1;
 - (id)tilingView:(id)arg1 dataSourceConverterForTransitionFromLayout:(id)arg2 toLayout:(id)arg3;
 - (id)tilingView:(id)arg1 tileControllerWithIndexPath:(id)arg2 kind:(id)arg3 dataSource:(id)arg4;

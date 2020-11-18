@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AdPlatforms/ADAttribution_XPC-Protocol.h>
-
-@interface ADAttribution : NSObject <ADAttribution_XPC>
+@interface ADAttribution : NSObject
 {
     BOOL _hasCompletedResponse;
-    int _numRetries;
+    unsigned char _numRetries;
 }
 
 @property (nonatomic) BOOL hasCompletedResponse; // @synthesize hasCompletedResponse=_hasCompletedResponse;
-@property (nonatomic) int numRetries; // @synthesize numRetries=_numRetries;
+@property (nonatomic) unsigned char numRetries; // @synthesize numRetries=_numRetries;
 
 + (id)sharedInstance;
 - (id)init;

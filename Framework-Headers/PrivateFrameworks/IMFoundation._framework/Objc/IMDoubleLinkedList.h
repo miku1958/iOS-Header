@@ -19,6 +19,7 @@
 @property (strong) IMDoubleLinkedListNode *first; // @synthesize first=_first;
 @property (strong) IMDoubleLinkedListNode *last; // @synthesize last=_last;
 
+- (void).cxx_destruct;
 - (id)allObjects;
 - (void)appendLinkedListNode:(id)arg1;
 - (void)appendObject:(id)arg1;

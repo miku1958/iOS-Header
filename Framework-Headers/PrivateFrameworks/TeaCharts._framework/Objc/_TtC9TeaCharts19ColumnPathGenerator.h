@@ -10,7 +10,7 @@
 
 @interface _TtC9TeaCharts19ColumnPathGenerator : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *valueCoordinateCalculator;
+    MISSING_TYPE *coordinateProvider;
 }
 
 @end

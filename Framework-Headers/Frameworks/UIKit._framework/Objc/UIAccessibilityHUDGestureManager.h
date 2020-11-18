@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 
-@class NSMutableArray, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIView, UIViewController;
+@class NSMutableArray, NSString, UIAccessibilityHUDGestureLongPressRecognizer, UIGestureRecognizer, UIView, UIViewController;
 @protocol UIAccessibilityHUDGestureDelegate;
 
 @interface UIAccessibilityHUDGestureManager : NSObject <UIGestureRecognizerDelegatePrivate>
@@ -16,10 +16,11 @@
     UIView *_view;
     id<UIAccessibilityHUDGestureDelegate> _delegate;
     UIViewController *_viewControllerDisplayingHUD;
-    UILongPressGestureRecognizer *_recognizer;
+    UIAccessibilityHUDGestureLongPressRecognizer *_recognizer;
     NSMutableArray *_subscribedConcurrentGestureRecognizers;
     BOOL _delegateDirectlyShowsHUD;
     BOOL _isInvalidated;
+    BOOL _shouldFailAfterMinimumPresentationDuration;
 }
 
 @property (readonly, nonatomic) UIGestureRecognizer *_recognizer;
@@ -30,11 +31,14 @@
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
+- (void)_backOff;
+- (void)_backOffIfNeeded;
 - (id)_bestViewControllerForView;
 - (void)_clearButtonItemGestureSubscriptions;
 - (void)_concurrentGestureRecognizerFired:(id)arg1;
 - (void)_didToggleLargeContentViewer:(id)arg1;
 - (void)_dismissAccessibilityHUD;
+- (BOOL)_gestureRecognizer:(id)arg1 canPreventGestureRecognizer:(id)arg2;
 - (BOOL)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)_gestureRecognizerChanged:(id)arg1;
 - (void)_invalidate;

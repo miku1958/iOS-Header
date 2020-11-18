@@ -6,7 +6,7 @@
 
 #import <IDS/IDSDatagramChannel.h>
 
-@class NSLock, VCMockIDSDataChannelLinkContext;
+@class NSDictionary, NSLock, VCMockIDSDataChannelLinkContext;
 
 __attribute__((visibility("hidden")))
 @interface VCMockIDSDatagramChannel : IDSDatagramChannel
@@ -24,13 +24,22 @@ __attribute__((visibility("hidden")))
     unsigned long long _datagramPacketNextSequenceNumber;
     BOOL _usingOptions;
     double _emulatedRxPLR;
+    struct _opaque_pthread_mutex_t _streamSubscriptionLock;
+    NSDictionary *_subscribedStreamsByParticipantID;
+    long long _participantGenerationCounter;
 }
 
+- (void)dealloc;
 - (void)dequeueDatagramPacket:(CDUnknownBlockType)arg1;
 - (BOOL)enqueueDatagramPacket:(const void *)arg1 datagramSize:(unsigned int)arg2 options:(CDStruct_c3727dd2 *)arg3 error:(id *)arg4;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (id)initRequiresOptions:(BOOL)arg1;
 - (void)invalidate;
+- (BOOL)isControlChannelDatagram:(struct _VCMockIDSDatagramChannelPacket *)arg1;
+- (id)newArrayOfStreamIdsForPacket:(struct _VCMockIDSDatagramChannelPacket *)arg1;
 - (void)osChannelInfoLog;
+- (void)queryProbingResultsWithOptions:(id)arg1;
+- (void)queryStatusWithOptions:(id)arg1;
 - (void)readDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramOptions:(CDStruct_c3727dd2 *)arg3;
 - (void)readDatagramWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -42,9 +51,13 @@ __attribute__((visibility("hidden")))
 - (void)setReadHandler:(CDUnknownBlockType)arg1;
 - (void)setReadHandlerWithOptions:(CDUnknownBlockType)arg1;
 - (void)setReadyToReadBlock:(CDUnknownBlockType)arg1;
+- (void)setWiFiAssist:(BOOL)arg1;
 - (void)setWriteDatagramBlock:(CDUnknownBlockType)arg1;
 - (void)setWriteDatagramsBlock:(CDUnknownBlockType)arg1;
+- (BOOL)shouldReadPacket:(struct _VCMockIDSDatagramChannelPacket *)arg1;
 - (void)start;
+- (void)startActiveProbingWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
 - (int)underlyingFileDescriptor;
 - (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_54fea20c)arg3 completionHandler:(CDUnknownBlockType)arg4;

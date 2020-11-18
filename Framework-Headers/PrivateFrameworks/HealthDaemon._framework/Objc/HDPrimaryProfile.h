@@ -6,10 +6,11 @@
 
 #import <HealthDaemon/HDProfile.h>
 
-@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDOntologyLifecycleManager, HDServiceConnectionManager, HDWorkoutManager;
+@class HDAWDSubmissionManager, HDAgeGatingManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDTinkerPrivacyAlertCoordinator, HDWorkoutManager;
 
 @interface HDPrimaryProfile : HDProfile
 {
+    HDAgeGatingManager *_ageGatingManager;
     HDAppSubscriptionManager *_appSubscriptionManager;
     HDAWDSubmissionManager *_awdSubmissionManager;
     HDCurrentActivitySummaryHelper *_currentActivitySummaryHelper;
@@ -21,7 +22,7 @@
     HDServiceConnectionManager *_serviceConnectionManager;
     HDWorkoutManager *_workoutManager;
     HDDemoDataManager *_demoDataManager;
-    HDOntologyLifecycleManager *_ontologyLifecycleManager;
+    HDTinkerPrivacyAlertCoordinator *_tinkerPrivacyAlertCoordinator;
 }
 
 - (void).cxx_destruct;
@@ -40,10 +41,11 @@
 - (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3;
 - (id)nanoSyncManager;
 - (id)notificationManager;
-- (id)ontologyLifecycleManager;
 - (id)serviceConnectionManager;
 - (id)serviceManager;
 - (void)terminationCleanup;
+- (id)tinkerPrivacyAlertCoordinator;
+- (void)unitTest_setNanoSyncManager:(id)arg1;
 - (void)unitTest_setServiceManager:(id)arg1;
 - (id)workoutManager;
 

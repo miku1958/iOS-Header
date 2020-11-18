@@ -12,9 +12,9 @@
 {
     MISSING_TYPE *playNowIgnoringPlaylistSlot;
     MISSING_TYPE *queue;
-    MISSING_TYPE *carplayQueue;
+    MISSING_TYPE *carplayTemplatesQueue;
     MISSING_TYPE *audioDataManager;
-    MISSING_TYPE *carplayState;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 @end

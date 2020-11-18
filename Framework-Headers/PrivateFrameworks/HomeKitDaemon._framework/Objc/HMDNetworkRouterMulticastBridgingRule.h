@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterRuleDirection, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterRuleDirection, NSString;
 
-@interface HMDNetworkRouterMulticastBridgingRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterMulticastBridgingRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;
     HMDNetworkRouterIPAddress *_destinationIPAddress;
-    HMDTLVUnsignedNumberValue *_destinationPort;
+    HAPTLVUnsignedNumberValue *_destinationPort;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDNetworkRouterIPAddress *destinationIPAddress; // @synthesize destinationIPAddress=_destinationIPAddress;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *destinationPort; // @synthesize destinationPort=_destinationPort;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *destinationPort; // @synthesize destinationPort=_destinationPort;
 @property (strong, nonatomic) HMDNetworkRouterRuleDirection *direction; // @synthesize direction=_direction;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;

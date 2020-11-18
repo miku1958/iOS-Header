@@ -30,6 +30,7 @@
 - (void)dealloc;
 - (id)deleteBackup:(id)arg1;
 - (void)deleteBackup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)getBackupsStatus;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)listBackupsOfType:(unsigned long long)arg1 timeout:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -41,6 +42,7 @@
 - (void)restoreFromBackup:(id)arg1 forDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)restoreFromDevice:(id)arg1 forDevice:(id)arg2;
 - (void)restoreFromDevice:(id)arg1 forDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setBackupsEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unsafe_invalidate;
 
 @end

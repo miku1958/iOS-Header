@@ -14,7 +14,6 @@
 + (id)frameworkDirectoryPath;
 + (id)pathInCacheDirectory:(id)arg1;
 + (id)routineCacheDirectoryPath;
-+ (id)routineLogsPath;
 + (id)routinePreferencesPath;
 + (id)sortFilesByName:(id)arg1;
 + (id)sortedContentsOfDirectoryAtURL:(id)arg1 withExtension:(id)arg2;

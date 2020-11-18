@@ -13,11 +13,11 @@
 
 @interface AVTSnapshotBuilder : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
-    SCNRenderer *_renderer;
     AVTAvatar *_avatar;
     AVTAvatar *_snapshotedAvatar;
-    SCNNode *_avatarNode;
     AVTAvatarEnvironment *_environment;
+    SCNNode *_avatarNode;
+    SCNRenderer *_renderer;
 }
 
 @property (strong, nonatomic) AVTAvatar *avatar;

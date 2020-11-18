@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class VUIFamilySharingRelationship;
+@class VUIFamilySharingPlaybackPositionRelationship, VUIFamilySharingRelationship;
 
 __attribute__((visibility("hidden")))
 @interface VUIFamilySharingRelationships : NSObject
 {
     VUIFamilySharingRelationship *_season;
     VUIFamilySharingRelationship *_show;
+    VUIFamilySharingPlaybackPositionRelationship *_playbackPosition;
 }
 
+@property (strong, nonatomic) VUIFamilySharingPlaybackPositionRelationship *playbackPosition; // @synthesize playbackPosition=_playbackPosition;
 @property (strong, nonatomic) VUIFamilySharingRelationship *season; // @synthesize season=_season;
 @property (strong, nonatomic) VUIFamilySharingRelationship *show; // @synthesize show=_show;
 

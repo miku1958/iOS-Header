@@ -21,6 +21,7 @@
     CKRecord *_userSpecificServerRecord;
 }
 
+@property (readonly, nonatomic) BOOL canSyncPasswordProtectionFields;
 @property (strong, nonatomic) ICCloudState *cloudState; // @dynamic cloudState;
 @property (strong, nonatomic) NSData *cryptoInitializationVector; // @dynamic cryptoInitializationVector;
 @property (nonatomic) long long cryptoIterationCount; // @dynamic cryptoIterationCount;
@@ -189,6 +190,8 @@
 - (void)setServerShareIfNewer:(id)arg1;
 - (void)setValue:(id)arg1 forEncryptableKey:(id)arg2;
 - (void)setVersion:(long long)arg1 forOperation:(id)arg2;
+- (id)shareDescription;
+- (id)shareDescriptionForShareParticipants:(id)arg1;
 - (id)shareTitle;
 - (id)shareType;
 - (id)sharedOwnerName;

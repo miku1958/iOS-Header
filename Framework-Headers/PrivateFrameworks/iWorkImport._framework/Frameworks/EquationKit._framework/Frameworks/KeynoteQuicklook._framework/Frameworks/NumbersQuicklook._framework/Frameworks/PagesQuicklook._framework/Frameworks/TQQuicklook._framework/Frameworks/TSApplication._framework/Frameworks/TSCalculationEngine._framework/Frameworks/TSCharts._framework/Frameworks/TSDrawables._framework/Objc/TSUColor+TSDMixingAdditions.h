@@ -7,7 +7,6 @@
 #import <TSUtility/TSUColor.h>
 
 @interface TSUColor (TSDMixingAdditions)
-+ (id)highContrastBackgroundColorForPreset:(id)arg1;
 + (id)tsd_darkInsertSwatchBackgroundColor;
 + (id)tsd_darkTranslucentSwatchBackground;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;

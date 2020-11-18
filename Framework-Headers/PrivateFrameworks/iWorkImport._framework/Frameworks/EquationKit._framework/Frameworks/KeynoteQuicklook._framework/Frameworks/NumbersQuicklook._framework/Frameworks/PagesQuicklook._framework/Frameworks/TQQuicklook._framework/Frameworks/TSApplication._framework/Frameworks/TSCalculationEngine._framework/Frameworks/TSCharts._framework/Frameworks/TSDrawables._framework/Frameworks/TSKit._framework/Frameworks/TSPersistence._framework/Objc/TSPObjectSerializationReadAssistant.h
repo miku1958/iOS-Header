@@ -15,6 +15,7 @@
     TSPObjectContext *_context;
     NSURL *_resourcesFolderURL;
     NSDictionary *_identiferToResourceNameDictionary;
+    unsigned long long _readVersion;
     NSDictionary *_identifierToObjectUUIDDictionary;
     NSDictionary *_dataInfos;
     TSPComponent *_rootObjectComponent;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCrossAppPaste; // @synthesize isCrossAppPaste=_isCrossAppPaste;
 @property (nonatomic) BOOL isCrossDocumentPaste; // @synthesize isCrossDocumentPaste=_isCrossDocumentPaste;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly) Class superclass;
 

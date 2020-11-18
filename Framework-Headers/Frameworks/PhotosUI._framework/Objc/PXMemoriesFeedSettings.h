@@ -11,6 +11,7 @@
     BOOL _useSlowAnimations;
     BOOL _forceReloadAfterRefresh;
     BOOL _disableRoundedOverlays;
+    BOOL _rankMemoriesByRelevanceScore;
     BOOL _displayContentDuringGraphRebuild;
     BOOL _alwaysShowOnboarding;
     long long _dataSourceType;
@@ -32,6 +33,7 @@
 @property (nonatomic) unsigned long long groupsPerBatch; // @synthesize groupsPerBatch=_groupsPerBatch;
 @property (nonatomic) double memoryGroupingInterval; // @synthesize memoryGroupingInterval=_memoryGroupingInterval;
 @property (nonatomic) long long memoryGroupingMethod; // @synthesize memoryGroupingMethod=_memoryGroupingMethod;
+@property (nonatomic) BOOL rankMemoriesByRelevanceScore; // @synthesize rankMemoriesByRelevanceScore=_rankMemoriesByRelevanceScore;
 @property (nonatomic) long long sharingBehavior; // @synthesize sharingBehavior=_sharingBehavior;
 @property (nonatomic) BOOL useSlowAnimations; // @synthesize useSlowAnimations=_useSlowAnimations;
 

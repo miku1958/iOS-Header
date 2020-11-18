@@ -9,13 +9,12 @@
 #import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
 #import <TVMLKit/UICollectionViewDataSource-Protocol.h>
 #import <TVMLKit/_TVCollectionViewDelegate-Protocol.h>
-#import <TVMLKit/_TVSubviewPreloading-Protocol.h>
+#import <TVMLKit/_TVCollectionViewing-Protocol.h>
 
 @class IKCollectionElement, IKViewElement, NSArray, NSDictionary, NSIndexPath, NSString, UICollectionView, _TVCollectionWrappingView, _TVNeedsMoreContentEvaluator, _TVShadowViewElement;
 @protocol TVPreviewInteractionController;
 
-__attribute__((visibility("hidden")))
-@interface _TVMLCollectionViewController : UIViewController <TVAppTemplateImpressionable, _TVCollectionViewDelegate, UICollectionViewDataSource, _TVSubviewPreloading>
+@interface _TVMLCollectionViewController : UIViewController <TVAppTemplateImpressionable, _TVCollectionViewing, _TVCollectionViewDelegate, UICollectionViewDataSource>
 {
     BOOL _didAppear;
     BOOL _didUpdateFocus;
@@ -95,7 +94,8 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)preferredFocusEnvironments;
 - (unsigned long long)preferredScrollPosition;
-- (void)preloadSubviewsInRect:(struct CGRect)arg1;
+- (void)preloadCellsInRect:(struct CGRect)arg1;
+- (void)resetLastFocusedIndexPath;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (BOOL)shouldHeaderFloatByDefault;

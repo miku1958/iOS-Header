@@ -16,11 +16,7 @@ __attribute__((visibility("hidden")))
     id<AEPolicyDeactivation> _deactivation;
 }
 
-@property (readonly, nonatomic) id<AEPolicyDeactivation> deactivation; // @synthesize deactivation=_deactivation;
-@property (readonly, copy, nonatomic) NSString *scratchpadIdentifier; // @synthesize scratchpadIdentifier=_scratchpadIdentifier;
-
 - (void).cxx_destruct;
-- (id)initWithScratchpadIdentifier:(id)arg1 deactivation:(id)arg2;
 
 @end
 

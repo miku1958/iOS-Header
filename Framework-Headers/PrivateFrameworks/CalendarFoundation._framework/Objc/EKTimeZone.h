@@ -8,39 +8,26 @@
 
 #import <CalendarFoundation/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSTimeZone;
 
 @interface EKTimeZone : NSObject <NSCopying>
 {
-    NSString *_name;
-    void *_internal;
-    long long _lastStart;
-    long long _lastEnd;
-    unsigned long long _lastIndex;
-    double _offset;
+    NSTimeZone *_nsTimeZone;
 }
+
+@property (strong, nonatomic) NSTimeZone *nsTimeZone; // @synthesize nsTimeZone=_nsTimeZone;
 
 + (id)timeZoneWithNSTimeZone:(id)arg1;
 + (id)timeZoneWithName:(id)arg1;
 - (void).cxx_destruct;
 - (id)NSTimeZone;
-- (id)_abbreviationForIndex:(unsigned long long)arg1;
-- (unsigned long long)_indexForAbsoluteTime:(double)arg1;
-- (id)abbreviation;
-- (id)abbreviationForAbsoluteTime:(double)arg1;
-- (id)abbreviationForDate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithName:(id)arg1;
-- (id)initWithOffset:(double)arg1 name:(id)arg2;
+- (id)initWithNSTimeZone:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)name;
 - (double)nextDaylightSavingTimeTransitionAfterAbsoluteTime:(double)arg1;
-- (double)secondsFromGMT;
 - (double)secondsFromGMTForAbsoluteTime:(double)arg1;
-- (double)secondsFromGMTForDate:(id)arg1;
 
 @end
 

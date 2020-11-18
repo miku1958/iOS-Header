@@ -6,9 +6,7 @@
 
 #import <NewsSubscription/_TtC16NewsSubscription17PaywallInteractor.h>
 
-#import <NewsSubscription/FCBundleSubscriptionChangeObserver-Protocol.h>
-
-@interface _TtC16NewsSubscription17PaywallInteractor (NewsSubscription) <FCBundleSubscriptionChangeObserver>
+@interface _TtC16NewsSubscription17PaywallInteractor (NewsSubscription)
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
 @end
 

@@ -17,6 +17,7 @@
 - (id)_axToolPaletteLocationAlongEdge:(long long)arg1;
 - (id)_axToolPaletteLocationAtCorner:(unsigned long long)arg1;
 - (void)_dockPaletteToPosition:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)accessibilityElementsHidden;
 
 @end
 

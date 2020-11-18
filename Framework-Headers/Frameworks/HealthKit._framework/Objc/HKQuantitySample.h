@@ -36,7 +36,7 @@
 - (void)_setFreezing;
 - (void)_setQuantity:(id)arg1;
 - (BOOL)_shouldNotifyOnInsert;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

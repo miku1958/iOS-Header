@@ -19,6 +19,8 @@
     NSDictionary *_geminiTextAttributes;
     BOOL _shouldShowGemini;
     BOOL _isEmergencyContact;
+    BOOL _isRestrictedContact;
+    BOOL _isDowntimeContact;
     BOOL _allowsPickerActions;
     CNContactFormatter *_contactFormatter;
     NSDictionary *_importantTextAttributes;
@@ -52,7 +54,9 @@
 @property (strong, nonatomic) UILabel *importantLabel; // @synthesize importantLabel=_importantLabel;
 @property (strong, nonatomic) NSString *importantMessage; // @synthesize importantMessage=_importantMessage;
 @property (copy, nonatomic) NSDictionary *importantTextAttributes; // @synthesize importantTextAttributes=_importantTextAttributes;
+@property (nonatomic) BOOL isDowntimeContact; // @synthesize isDowntimeContact=_isDowntimeContact;
 @property (nonatomic) BOOL isEmergencyContact; // @synthesize isEmergencyContact=_isEmergencyContact;
+@property (nonatomic) BOOL isRestrictedContact; // @synthesize isRestrictedContact=_isRestrictedContact;
 @property (nonatomic) double maxLabelsHeight; // @synthesize maxLabelsHeight=_maxLabelsHeight;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) double minLabelsHeight; // @synthesize minLabelsHeight=_minLabelsHeight;
@@ -62,10 +66,11 @@
 @property (strong) UILabel *taglineLabel; // @synthesize taglineLabel=_taglineLabel;
 @property (copy, nonatomic) NSDictionary *taglineTextAttributes;
 
-+ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(BOOL)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
-+ (id)contactHeaderViewWithContact:(id)arg1 monogramOnly:(BOOL)arg2 delegate:(id)arg3;
++ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(BOOL)arg2 showingNavBar:(BOOL)arg3 monogramOnly:(BOOL)arg4 delegate:(id)arg5;
++ (id)contactHeaderViewWithContact:(id)arg1 showingNavBar:(BOOL)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
 + (id)descriptorForRequiredKeysForContactFormatter:(id)arg1;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
++ (id)sizeAttributesShowingNavBar:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_headerStringForContacts:(id)arg1;
 - (id)_importantString;
@@ -80,13 +85,14 @@
 - (void)createGeminiViewIfNeeded;
 - (double)defaultMaxHeight;
 - (id)descriptorForRequiredKeys;
+- (void)didFinishUsing;
 - (void)disablePhotoTapGesture;
 - (id)downtimeTextAttributes;
 - (id)geminiTextAttributes;
 - (void)handleGeminiViewTouch:(id)arg1;
 - (void)handleNameLabelLongPress:(id)arg1;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(BOOL)arg4 monogramOnly:(BOOL)arg5 delegate:(id)arg6;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(BOOL)arg4 showingNavBar:(BOOL)arg5 monogramOnly:(BOOL)arg6 delegate:(id)arg7;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 showingNavBar:(BOOL)arg3 monogramOnly:(BOOL)arg4 delegate:(id)arg5;
 - (void)layoutSubviews;
 - (double)maxHeight;
 - (void)menuWillHide:(id)arg1;

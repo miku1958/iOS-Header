@@ -7,16 +7,19 @@
 #import <PhotosUICore/PXDataSectionManager.h>
 
 #import <PhotosUICore/PXCollectionFetchOperationDelegate-Protocol.h>
+#import <PhotosUICore/PXDataSectionManagerEnabling-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
 @class NSOperationQueue, NSString, PHCollection, PHFetchResult;
+@protocol PXNavigationListItem;
 
-@interface PXNavigationListItemDataSectionManager : PXDataSectionManager <PXCollectionFetchOperationDelegate, PXPhotoLibraryUIChangeObserver>
+@interface PXNavigationListItemDataSectionManager : PXDataSectionManager <PXCollectionFetchOperationDelegate, PXPhotoLibraryUIChangeObserver, PXDataSectionManagerEnabling>
 {
     BOOL _enabled;
     BOOL _hiddenWhenEmpty;
     PHCollection *_collection;
     NSOperationQueue *_workQueue;
+    id<PXNavigationListItem> _listItem;
     PHFetchResult *_fetchResult;
 }
 
@@ -29,14 +32,17 @@
 @property (strong, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHiddenWhenEmpty) BOOL hiddenWhenEmpty; // @synthesize hiddenWhenEmpty=_hiddenWhenEmpty;
+@property (readonly, nonatomic) id<PXNavigationListItem> listItem; // @synthesize listItem=_listItem;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSOperationQueue *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (BOOL)allowsEmptyDataSection;
 - (void)collectionFetchOperationDidComplete:(id)arg1;
 - (id)createDataSection;
 - (id)initWithChildDataSectionManagers:(id)arg1;
 - (id)initWithCollection:(id)arg1 workQueue:(id)arg2;
+- (id)initWithItem:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)updateDataSectionIfNecessary;
 

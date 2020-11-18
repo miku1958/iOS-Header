@@ -17,9 +17,10 @@
 @property (readonly, nonatomic) NSArray *animationContextCaches; // @synthesize animationContextCaches=_animationContextCaches;
 @property (readonly, nonatomic) NSArray *animations; // @synthesize animations=_animations;
 
++ (id)p_flattenedBestAnimationContextCachesForKeyPath:(id)arg1 atTime:(double)arg2 inContextCaches:(id)arg3;
 - (void).cxx_destruct;
-- (id)bestAnimationContextCacheForKeyPath:(id)arg1 atTime:(double)arg2;
 - (id)initWithAnimation:(id)arg1;
+- (id)p_bestAnimationContextCachesForKeyPath:(id)arg1 atTime:(double)arg2;
 - (double)p_groupTimingFactorAtTime:(double)arg1;
 - (id)valueForKeyPath:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
 

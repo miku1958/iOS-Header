@@ -6,37 +6,20 @@
 
 #import <HomeKitDaemon/HMDCloudZone.h>
 
-@class HMDCloudShareGroup, NSMutableDictionary;
-
 @interface HMDCloudHomeZone : HMDCloudZone
 {
     BOOL _sharedHome;
-    HMDCloudShareGroup *_shareGroup;
-    NSMutableDictionary *_perUserShareGroups;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *perUserShareGroups; // @synthesize perUserShareGroups=_perUserShareGroups;
-@property (strong, nonatomic) HMDCloudShareGroup *shareGroup; // @synthesize shareGroup=_shareGroup;
 @property (readonly, nonatomic, getter=isSharedHome) BOOL sharedHome; // @synthesize sharedHome=_sharedHome;
 
 + (void)createHomeZoneWithName:(id)arg1 owner:(id)arg2 cacheZone:(id)arg3 cloudCache:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)zoneRootRecordName;
 + (id)zoneSharedRootRecordName;
 + (id)zoneSubscriptionName:(id)arg1;
-- (void).cxx_destruct;
-- (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
-- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)cloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)createCloudZoneChangeTemporaryCache:(BOOL)arg1;
 - (id)description;
-- (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
-- (BOOL)isRootRecord:(id)arg1;
-- (void)markMigratedObjectsAsMigrated;
 - (void)setServerChangeToken:(id)arg1;
-- (void)updateCloudRecord:(id)arg1;
-- (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -6,13 +6,13 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSDictionary, WFRecord, WFRecordDescriptor;
+@class NSDictionary, NSSet, NSString;
 
 @protocol WFRecordStorage <NSObject>
-- (WFRecordDescriptor *)descriptor;
+- (NSString *)identifier;
 
 @optional
-- (void)coordinatePropertyUpdatesForRecord:(WFRecord *)arg1 duringBlock:(void (^)(void))arg2;
-- (NSDictionary *)recordPropertyMap;
++ (NSDictionary *)recordPropertyMap;
+- (void)didUpdateProperties:(NSSet *)arg1;
 @end
 

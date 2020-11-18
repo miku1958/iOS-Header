@@ -10,15 +10,16 @@
 
 @interface TSTCoordinateArray : NSObject
 {
-    unsigned int mOffset;
-    unsigned int mCount;
-    double *mCoordinates;
-    double mAverage;
-    NSMutableIndexSet *mVisibleIndices;
-    BOOL mLayoutDirectionIsLeftToRight;
-    double mTableWidth;
+    unsigned int _offset;
+    unsigned int _count;
+    double *_coordinates;
+    double _average;
+    NSMutableIndexSet *_visibleIndices;
+    BOOL _layoutDirectionIsLeftToRight;
+    double _tableWidth;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithCount:(unsigned int)arg1 atOffset:(unsigned int)arg2 layoutDirectionIsLeftToRight:(BOOL)arg3;

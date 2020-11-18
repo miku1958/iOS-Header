@@ -47,6 +47,7 @@
 - (id)init;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
+- (void)liveActionPerform:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

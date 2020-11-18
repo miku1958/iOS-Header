@@ -21,7 +21,7 @@
     unsigned long long _options;
     NSNumber *_notifyState;
     NSString *_text;
-    NSString *_directAction;
+    NSString *_legacyDirectActionIdentifier;
     NSString *_handoffOriginDeviceName;
     NSData *_handoffRequestData;
     NSString *_handoffURLString;
@@ -30,6 +30,8 @@
     NSDictionary *_correctedSpeechContext;
     SAStartRequest *_startRequest;
     SAStartLocalRequest *_startLocalRequest;
+    NSString *_directActionAppId;
+    long long _directActionEvent;
     long long _activationEvent;
     AFSpeechRequestOptions *_speechRequestOptions;
     NSNumber *_combinedRank;
@@ -51,7 +53,8 @@
 @property (copy, nonatomic) NSNumber *combinedScore; // @synthesize combinedScore=_combinedScore;
 @property (copy, nonatomic) NSString *correctedSpeech; // @synthesize correctedSpeech=_correctedSpeech;
 @property (copy, nonatomic) NSDictionary *correctedSpeechContext; // @synthesize correctedSpeechContext=_correctedSpeechContext;
-@property (copy, nonatomic) NSString *directAction; // @synthesize directAction=_directAction;
+@property (copy, nonatomic) NSString *directActionAppId; // @synthesize directActionAppId=_directActionAppId;
+@property (nonatomic) long long directActionEvent; // @synthesize directActionEvent=_directActionEvent;
 @property (nonatomic) unsigned long long expectedSpeakerConfidenceScore; // @synthesize expectedSpeakerConfidenceScore=_expectedSpeakerConfidenceScore;
 @property (copy, nonatomic) NSString *expectedSpeakerSharedUserID; // @synthesize expectedSpeakerSharedUserID=_expectedSpeakerSharedUserID;
 @property (copy, nonatomic) NSString *handoffNotification; // @synthesize handoffNotification=_handoffNotification;
@@ -60,6 +63,7 @@
 @property (nonatomic) BOOL handoffRequiresUserInteraction; // @synthesize handoffRequiresUserInteraction=_handoffRequiresUserInteraction;
 @property (copy, nonatomic) NSString *handoffURLString; // @synthesize handoffURLString=_handoffURLString;
 @property (copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
+@property (copy, nonatomic) NSString *legacyDirectActionIdentifier; // @synthesize legacyDirectActionIdentifier=_legacyDirectActionIdentifier;
 @property (copy, nonatomic) NSDictionary *nonspeakerConfidenceScores; // @synthesize nonspeakerConfidenceScores=_nonspeakerConfidenceScores;
 @property (copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
 @property (copy, nonatomic) NSNumber *onDeviceUtterancesPresent; // @synthesize onDeviceUtterancesPresent=_onDeviceUtterancesPresent;

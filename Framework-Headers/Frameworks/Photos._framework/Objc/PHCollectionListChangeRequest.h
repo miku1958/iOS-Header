@@ -17,10 +17,10 @@
     PHRelationshipChangeRequestHelper *_collectionsHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *collectionsHelper; // @synthesize collectionsHelper=_collectionsHelper;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (nonatomic) BOOL customSortAscending;
 @property (nonatomic) unsigned int customSortKey;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +31,7 @@
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedCollectionList;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title;
 
@@ -59,8 +60,6 @@
 - (void)insertChildCollection:(id)arg1 inChildCollectionsAtIndex:(unsigned long long)arg2;
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;
 - (void)moveChildCollectionsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeChildCollection:(id)arg1;
 - (void)removeChildCollectionFromChildCollectionsAtIndex:(unsigned long long)arg1;
 - (void)removeChildCollections:(id)arg1;

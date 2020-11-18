@@ -6,17 +6,14 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSCountedSet, NSSet;
+@class NSSet;
+@protocol HMDNetworkRouterFirewallRuleManagerClient;
 
 @protocol HMDNetworkRouterFirewallRuleManager <NSObject>
-
-@property (readonly, nonatomic) NSSet *interestedAccessories;
-
-- (void)addInterestedAccessories:(NSCountedSet *)arg1;
 - (void)fetchCloudChangesWithCompletion:(void (^)(NSSet *, NSError *))arg1;
+- (void)fetchPairedMetadataVersionConfigurationsForAccessories:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)fetchRulesForAccessories:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
-- (void)removeInterestedAccessories:(NSCountedSet *)arg1;
-- (void)shutdownWithCompletion:(void (^)(NSError *))arg1;
-- (void)startupWithCompletion:(void (^)(NSError *))arg1;
+- (void)shutdownForClient:(id<HMDNetworkRouterFirewallRuleManagerClient>)arg1;
+- (void)startupForClient:(id<HMDNetworkRouterFirewallRuleManagerClient>)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

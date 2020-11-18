@@ -14,18 +14,21 @@
 
 @interface _INPBIntentSlotVocabularyConcept : PBCodable <_INPBIntentSlotVocabularyConcept, NSSecureCoding, NSCopying>
 {
-    struct _has;
-    BOOL __encodeLegacyGloryData;
+    struct {
+        unsigned int requiresUserIdentification:1;
+    } _has;
+    BOOL _requiresUserIdentification;
     NSString *_identifier;
     NSArray *_synonyms;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (nonatomic) BOOL hasRequiresUserIdentification;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL requiresUserIdentification; // @synthesize requiresUserIdentification=_requiresUserIdentification;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *synonyms; // @synthesize synonyms=_synonyms;
 @property (readonly, nonatomic) unsigned long long synonymsCount;

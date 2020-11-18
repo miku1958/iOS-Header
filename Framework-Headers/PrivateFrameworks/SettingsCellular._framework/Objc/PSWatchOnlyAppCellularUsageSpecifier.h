@@ -6,7 +6,9 @@
 
 #import <SettingsCellular/PSAppCellularUsageSpecifier.h>
 
-@interface PSWatchOnlyAppCellularUsageSpecifier : PSAppCellularUsageSpecifier
+#import <SettingsCellular/PSSpecifierDataUsageReporter-Protocol.h>
+
+@interface PSWatchOnlyAppCellularUsageSpecifier : PSAppCellularUsageSpecifier <PSSpecifierDataUsageReporter>
 {
 }
 

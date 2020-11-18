@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMapTable;
+@class NSDate, NSMapTable, WLKPlaybackSummary;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentUpdateEventMonitor : NSObject
 {
-    BOOL _appIsInForeground;
-    BOOL _pendingPlayactivity;
-    BOOL _ignoreWLKPlaybackReportNotification;
+    WLKPlaybackSummary *_pendingPlayActivity;
+    BOOL _playbackIsActive;
     int _playbackReportToken;
     NSMapTable *_observerMapTable;
     NSDate *_lastProcesssedPlayActivity;
@@ -44,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleNowPlayingDidEndNotification:(id)arg1;
 - (void)_handleNowPlayingWillStartNotification:(id)arg1;
 - (void)_handlePlayHistoryUpdatedNotification:(id)arg1;
-- (void)_handlePlaybackReportNotification;
+- (void)_handlePlaybackReportNotification:(id)arg1;
 - (void)_handlePreferredVideoFormatDidChangeNotification:(id)arg1;
 - (void)_handlePurchaseFlowDidFinishNotification:(id)arg1;
 - (void)_handlePurchaseRequestSucceededNotification:(id)arg1;
@@ -52,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleRestrictionsDidChangeNotification:(id)arg1;
 - (void)_handleSettingsDidChangeNotification:(id)arg1;
 - (void)_handleSubscriptionDidChangeNotification:(id)arg1;
+- (void)_handleTVSubscriptionEntitlementsChanged:(id)arg1;
 - (void)_handleUTSKDidChangeNotification:(id)arg1;
 - (void)_handleUpNextRequestDidFinishNotification:(id)arg1;
 - (id)_init;

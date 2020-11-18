@@ -37,9 +37,9 @@
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queryQueue;
     double _collectionInterval;
-    _HKFilter *_filter;
     HKObjectType *_objectType;
     long long _dataCount;
+    _HKFilter *_filter;
     CDUnknownBlockType _unitTest_queryServerSetShouldPauseHandler;
     CDUnknownBlockType _unitTest_queryServerWillChangeStateHandler;
 }

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol TILinguisticAssetDownloading
+- (void)addLinguisticAssetsAssertionForLanguage:(NSString *)arg1 assertionID:(NSString *)arg2 region:(NSDictionary *)arg3 clientID:(NSString *)arg4 withHandler:(void (^)(NSError *))arg5;
+- (void)removeLinguisticAssetsAssertionWithIdentifier:(NSString *)arg1 forClientID:(NSString *)arg2 withHandler:(void (^)(NSError *))arg3;
 - (void)requestLinguisticAssetsForLanguage:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;
 @end
 

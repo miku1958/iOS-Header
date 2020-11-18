@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData;
+@class NSArray, NSData, NSDictionary;
 
 @protocol SGDSuggestManagerFidesProtocol
+- (void)evaluateRecipe:(NSDictionary *)arg1 attachments:(NSArray *)arg2 completion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)planReceivedFromServerWithPayload:(NSData *)arg1 completion:(void (^)(SGXPCResponse1 *))arg2;
 @end
 

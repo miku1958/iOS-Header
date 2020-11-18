@@ -24,15 +24,16 @@
 + (id)_remoteObjects;
 + (void)_unregisterIMRemoteObject:(id)arg1;
 + (void)initialize;
-- (void)_cleanupMachBitsCanPost:(BOOL)arg1;
+- (void)_cleanupMachBitsCanPost:(BOOL)arg1 locked:(BOOL)arg2;
 - (id)_initWithConnection:(id)arg1 portName:(id)arg2 protocol:(id)arg3 alreadyConfigured:(BOOL)arg4 forceSecureCoding:(BOOL)arg5;
 - (void)_portDidBecomeInvalid;
 - (id)_queue;
 - (void)_systemShutdown:(id)arg1;
+- (void)blockUntilSendQueueIsEmpty;
 - (void)dealloc;
 - (id)description;
 - (void)forwardInvocation:(id)arg1;
-- (unsigned long long)forwardXPCObject:(id)arg1 messageContext:(id)arg2;
+- (unsigned long long)forwardXPCObject:(id)arg1 messageContext:(id)arg2 locked:(BOOL)arg3;
 - (id)initWithConnection:(id)arg1 protocol:(id)arg2;
 - (id)initWithConnection:(id)arg1 protocol:(id)arg2 alreadyConfigured:(BOOL)arg3;
 - (id)initWithConnection:(id)arg1 protocol:(id)arg2 alreadyConfigured:(BOOL)arg3 forceSecureCoding:(BOOL)arg4;

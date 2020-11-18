@@ -10,9 +10,10 @@
 
 @interface _TtC7NewsUI234CacheTodayFeedServiceConfigFetcher : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *name;
+    MISSING_TYPE *logName;
     MISSING_TYPE *configManager;
     MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *subscriptionController;
 }
 
 @end

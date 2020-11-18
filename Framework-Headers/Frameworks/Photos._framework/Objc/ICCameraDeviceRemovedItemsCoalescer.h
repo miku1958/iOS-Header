@@ -19,13 +19,6 @@
     CDUnknownBlockType _block;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
-@property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
-@property (strong, nonatomic) NSDate *lastNotify; // @synthesize lastNotify=_lastNotify;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (weak, nonatomic) PHImportDeviceSource *source; // @synthesize source=_source;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
-
 - (void).cxx_destruct;
 - (void)coalesceItems:(id)arg1;
 - (id)initWithDevice:(id)arg1 block:(CDUnknownBlockType)arg2;

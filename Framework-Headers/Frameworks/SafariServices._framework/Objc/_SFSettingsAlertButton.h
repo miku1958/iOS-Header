@@ -8,7 +8,7 @@
 
 #import <SafariServices/_SFSettingsAlertOptionsGroupItemConfiguration-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, UIImage, UIImageView, UILabel, UIView;
+@class NSArray, NSAttributedString, NSString, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _SFSettingsAlertButton : _SFSettingsAlertControl <_SFSettingsAlertOptionsGroupItemConfiguration>
@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
     NSAttributedString *_attributedText;
     NSArray *_contentConstraints;
     NSArray *_componentsArrangement;
+    UILabel *_detailTextLabel;
+    UILayoutGuide *_textGuide;
+    NSString *_detailText;
     NSString *_textStyle;
     UIImage *_image;
     UIImageView *_imageView;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *componentsArrangement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_arrangedSubviews;
+- (void)_didChangeContents;
 - (void)_hover:(id)arg1;
 - (void)_updateTintColor;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

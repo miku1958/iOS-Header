@@ -37,6 +37,7 @@
 - (void)_queue_processWillLaunch:(id)arg1;
 - (BOOL)_shouldFailForChildTransaction:(id)arg1;
 - (void)_willComplete;
+- (void)_willFailWithReason:(id)arg1;
 - (void)_willInterruptWithReason:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)init;

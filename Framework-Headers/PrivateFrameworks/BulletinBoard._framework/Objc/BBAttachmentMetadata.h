@@ -10,22 +10,32 @@
 #import <BulletinBoard/NSMutableCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class NSURL, NSUUID;
+@class NSDictionary, NSString, NSURL, NSUUID;
 
 @interface BBAttachmentMetadata : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    NSUUID *_UUID;
     long long _type;
     NSURL *_URL;
+    NSString *_identifier;
+    NSString *_uniformType;
+    NSDictionary *_thumbnailGeneratorUserInfo;
+    BOOL _thumbnailHidden;
+    BOOL _hiddenFromDefaultExpandedView;
+    NSUUID *_UUID;
 }
 
 @property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, nonatomic) BOOL hiddenFromDefaultExpandedView; // @synthesize hiddenFromDefaultExpandedView=_hiddenFromDefaultExpandedView;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDictionary *thumbnailGeneratorUserInfo; // @synthesize thumbnailGeneratorUserInfo=_thumbnailGeneratorUserInfo;
+@property (readonly, nonatomic) BOOL thumbnailHidden; // @synthesize thumbnailHidden=_thumbnailHidden;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, copy, nonatomic) NSString *uniformType; // @synthesize uniformType=_uniformType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithUUID:(id)arg1 type:(long long)arg2 URL:(id)arg3;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 identifier:(id)arg3 uniformType:(id)arg4 thumbnailGeneratorUserInfo:(id)arg5 thumbnailHidden:(BOOL)arg6 hiddenFromDefaultExpandedView:(BOOL)arg7;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

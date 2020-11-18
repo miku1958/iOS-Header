@@ -11,6 +11,7 @@
 @interface STStorageTip : NSObject
 {
     PSSpecifier *_infoSpecifier;
+    struct os_unfair_lock_s _specLock;
     NSString *_identifier;
     PSSpecifier *_specifier;
 }
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (void)_reload:(id)arg1;
 - (id)init;
 - (id)propertyForKey:(id)arg1;
 - (void)reload;

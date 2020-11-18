@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_markItemsFailedSync;
 - (void)_syncUpRecordBatchWithModifiedRecords:(id)arg1 deletedRecordIDs:(id)arg2 recordIDToZoneMap:(id)arg3 requestID:(unsigned long long)arg4;
 - (id)createActivity;
+- (void)fakeSyncForItem:(id)arg1 itemRank:(unsigned long long)arg2;
 - (id)initWithSession:(id)arg1;
 - (void)main;
 - (BOOL)shouldPerformAnotherBatch;

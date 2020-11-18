@@ -69,7 +69,6 @@
     BOOL _is_corpse;
     unsigned long long _awakeSystemUptime;
     int _responsible_pid;
-    NSString *_responsibleProc;
     NSDictionary *_workQueueLimits;
     NSDictionary *_bundle_info;
     NSDictionary *_build_info;
@@ -80,9 +79,11 @@
     NSString *_suspected3rdPartyPlugin;
     BOOL _bundleVisibility;
     BOOL _fatalDyldErrorOnLaunch;
+    unsigned int _platform;
     NSString *_sandboxContainer;
     NSString *_sleepWakeUUID;
     NSArray *_usedImagesLegacyInfo;
+    NSString *_mxTerminationReason;
     BOOL _fullIntegration;
     BOOL _is_beta;
     BOOL _is_simulated;
@@ -91,6 +92,7 @@
     NSString *_procName;
     NSString *_bundle_id;
     NSString *_short_vers;
+    NSString *_responsibleProc;
 }
 
 @property (readonly, nonatomic) NSString *bundle_id; // @synthesize bundle_id=_bundle_id;
@@ -102,9 +104,11 @@
 @property (readonly, nonatomic) BOOL is_simulated; // @synthesize is_simulated=_is_simulated;
 @property (readonly, nonatomic) NSString *procName; // @synthesize procName=_procName;
 @property (readonly, nonatomic) int proc_id; // @synthesize proc_id=_proc_id;
+@property (readonly, nonatomic) NSString *responsibleProc; // @synthesize responsibleProc=_responsibleProc;
 @property (readonly, nonatomic) NSString *short_vers; // @synthesize short_vers=_short_vers;
 @property (readonly) Class superclass;
 
++ (BOOL)isMetricKitClient:(id)arg1;
 + (id)loadBuildInfo:(id)arg1;
 + (id)loadBundInfoAtURL:(id)arg1 withKeys:(id)arg2;
 + (id)loadStoreInfo:(id)arg1 atURL:(id)arg2;
@@ -165,6 +169,7 @@
 - (id)reportNamePrefix;
 - (BOOL)saveWithOptions:(id)arg1;
 - (BOOL)secondChanceToSylog;
+- (void)sendToMetricKit;
 - (void)setApplicationSpecificInformation:(const char *)arg1;
 - (id)slice_uuid;
 - (void)stashStatus:(id)arg1 note:(id)arg2;

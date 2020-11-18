@@ -15,13 +15,11 @@
 @interface _INPBEnergyValue : PBCodable <_INPBEnergyValue, NSSecureCoding, NSCopying>
 {
     CDStruct_74078a21 _has;
-    BOOL __encodeLegacyGloryData;
     int _unit;
     double _magnitude;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasMagnitude;

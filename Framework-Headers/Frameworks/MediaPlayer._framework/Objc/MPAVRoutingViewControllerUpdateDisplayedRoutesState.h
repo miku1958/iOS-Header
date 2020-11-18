@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber;
+@class MPSectionedCollection, NSNumber;
 
 @interface MPAVRoutingViewControllerUpdateDisplayedRoutesState : NSObject
 {
     NSNumber *_version;
-    NSArray *_oldRoutes;
-    NSArray *_updatedRoutes;
-    NSArray *_isEqualBoolsArray;
-    NSArray *_isUpdatedBoolsArray;
+    MPSectionedCollection *_oldItems;
+    MPSectionedCollection *_updatedItems;
+    CDUnknownBlockType _isEqualBlock;
+    CDUnknownBlockType _isUpdatedBlock;
 }
 
-@property (copy, nonatomic) NSArray *isEqualBoolsArray; // @synthesize isEqualBoolsArray=_isEqualBoolsArray;
-@property (copy, nonatomic) NSArray *isUpdatedBoolsArray; // @synthesize isUpdatedBoolsArray=_isUpdatedBoolsArray;
-@property (copy, nonatomic) NSArray *oldRoutes; // @synthesize oldRoutes=_oldRoutes;
-@property (copy, nonatomic) NSArray *updatedRoutes; // @synthesize updatedRoutes=_updatedRoutes;
+@property (copy, nonatomic) CDUnknownBlockType isEqualBlock; // @synthesize isEqualBlock=_isEqualBlock;
+@property (copy, nonatomic) CDUnknownBlockType isUpdatedBlock; // @synthesize isUpdatedBlock=_isUpdatedBlock;
+@property (copy, nonatomic) MPSectionedCollection *oldItems; // @synthesize oldItems=_oldItems;
+@property (copy, nonatomic) MPSectionedCollection *updatedItems; // @synthesize updatedItems=_updatedItems;
 @property (copy, nonatomic) NSNumber *version; // @synthesize version=_version;
 
 - (void).cxx_destruct;

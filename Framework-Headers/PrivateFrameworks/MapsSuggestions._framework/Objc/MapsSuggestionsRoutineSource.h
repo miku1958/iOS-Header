@@ -6,19 +6,17 @@
 
 #import <MapsSuggestions/MapsSuggestionsBaseSource.h>
 
+#import <MapsSuggestions/MapsSuggestionsParkedCarObserver-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsPreloadableSource-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class MapsSuggestionsRoutine, NSArray, NSObject, NSString;
-@protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class MapsSuggestionsRoutine, NSString;
+@protocol MapsSuggestionsSourceDelegate;
 
-@interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsSource, MapsSuggestionsPreloadableSource>
+@interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsParkedCarObserver, MapsSuggestionsSource, MapsSuggestionsPreloadableSource>
 {
     MapsSuggestionsRoutine *_routine;
-    NSArray *_previouslyAddedEntries;
-    NSObject<OS_dispatch_queue> *_queue;
-    BOOL _running;
-    NSObject<OS_dispatch_source> *_updateTimer;
+    struct Queue _queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,18 +28,18 @@
 
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_requestTouristInfoFromRoutineIfNeededForLocation:(id)arg1;
-- (void)_startMonitoringVehicleEvents;
-- (void)_updateSuggestionEntries;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
+- (id)initWithRoutine:(id)arg1 delegate:(id)arg2 name:(id)arg3;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
 - (BOOL)suggestionsEntriesAtLocation:(id)arg1 period:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
+- (void)updatedParkedCar;
 
 @end
 

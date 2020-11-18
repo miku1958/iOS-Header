@@ -8,8 +8,8 @@
 
 #import <HealthUI/HKInteractiveChartAnnotationViewDataSource-Protocol.h>
 
-@class HKSelectedRangeFormatter, HKUIMetricColors, HKValueRange, NSArray, NSString, UIFont, UILabel, UIStackView;
-@protocol HKCurrentValueViewDataSourceValueRangeFormatter;
+@class HKSelectedRangeFormatter, HKUIMetricColors, HKValueRange, NSArray, NSString, UIFont, UILabel;
+@protocol HKCurrentValueViewDataSourceDelegate;
 
 @interface HKInteractiveChartAnnotationViewDataSource : NSObject <HKInteractiveChartAnnotationViewDataSource>
 {
@@ -18,44 +18,38 @@
     NSArray *_annotationLabels;
     long long _timeScope;
     HKValueRange *_lastDateRange;
-    UIStackView *_dateStack;
-    UILabel *_upperDateLabel;
-    UILabel *_lowerDateLabel;
-    UILabel *_dividerDateLabel;
+    UILabel *_mainDateLabel;
     NSString *_lastUpperDateString;
     NSString *_lastLowerDateString;
     NSString *_lastCombinedDateString;
     UIFont *_majorFont;
     UIFont *_minorFont;
-    id<HKCurrentValueViewDataSourceValueRangeFormatter> _dateRangeFormatter;
+    id<HKCurrentValueViewDataSourceDelegate> _currentValueViewDataSourceDelegate;
 }
 
 @property (strong, nonatomic) NSArray *annotationLabels; // @synthesize annotationLabels=_annotationLabels;
-@property (strong, nonatomic) id<HKCurrentValueViewDataSourceValueRangeFormatter> dateRangeFormatter; // @synthesize dateRangeFormatter=_dateRangeFormatter;
-@property (strong, nonatomic) UIStackView *dateStack; // @synthesize dateStack=_dateStack;
+@property (weak, nonatomic) id<HKCurrentValueViewDataSourceDelegate> currentValueViewDataSourceDelegate; // @synthesize currentValueViewDataSourceDelegate=_currentValueViewDataSourceDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UILabel *dividerDateLabel; // @synthesize dividerDateLabel=_dividerDateLabel;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *lastCombinedDateString; // @synthesize lastCombinedDateString=_lastCombinedDateString;
 @property (strong) HKValueRange *lastDateRange; // @synthesize lastDateRange=_lastDateRange;
 @property (strong, nonatomic) NSString *lastLowerDateString; // @synthesize lastLowerDateString=_lastLowerDateString;
 @property (strong, nonatomic) NSString *lastUpperDateString; // @synthesize lastUpperDateString=_lastUpperDateString;
-@property (strong, nonatomic) UILabel *lowerDateLabel; // @synthesize lowerDateLabel=_lowerDateLabel;
+@property (strong, nonatomic) UILabel *mainDateLabel; // @synthesize mainDateLabel=_mainDateLabel;
 @property (strong, nonatomic) UIFont *majorFont; // @synthesize majorFont=_majorFont;
 @property (strong, nonatomic) HKUIMetricColors *metricColors; // @synthesize metricColors=_metricColors;
 @property (strong, nonatomic) UIFont *minorFont; // @synthesize minorFont=_minorFont;
 @property (readonly, nonatomic) HKSelectedRangeFormatter *selectedRangeFormatter; // @synthesize selectedRangeFormatter=_selectedRangeFormatter;
 @property (readonly) Class superclass;
 @property (nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
-@property (strong, nonatomic) UILabel *upperDateLabel; // @synthesize upperDateLabel=_upperDateLabel;
 
 - (void).cxx_destruct;
 - (void)_buildDateLabels;
 - (BOOL)_isMultiSelectionDateRange;
 - (void)_updateDateText;
 - (id)dateViewWithOrientation:(long long)arg1;
-- (id)initWithSelectedRangeFormatter:(id)arg1 metricColors:(id)arg2 dateRangeFormatter:(id)arg3;
+- (id)initWithSelectedRangeFormatter:(id)arg1 metricColors:(id)arg2 currentValueViewDataSourceDelegate:(id)arg3;
 - (id)leftMarginViewWithOrientation:(long long)arg1;
 - (long long)numberOfValuesForAnnotationView:(id)arg1;
 - (BOOL)showSeparators;

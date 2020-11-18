@@ -10,8 +10,9 @@
 - (id)_dateFromExpires;
 - (BOOL)_getCacheControlMaxAge:(double *)arg1;
 - (id)_iTunesStore_valueForHTTPHeader:(id)arg1;
-- (id)expirationDate;
 - (double)expirationInterval;
-- (long long)maxExpectedContentLength;
+- (id)itunes_expirationDate;
+- (double)itunes_expirationInterval;
+- (long long)itunes_maxExpectedContentLength;
 @end
 

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) CDStruct_8e0628e6 homography; // @synthesize homography=_homography;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 
++ (id)keyframesFromDictionaryRepresentations:(id)arg1;
 - (id)description;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithTime:(CDStruct_1b6d18a9)arg1 homography:(CDStruct_8e0628e6)arg2;

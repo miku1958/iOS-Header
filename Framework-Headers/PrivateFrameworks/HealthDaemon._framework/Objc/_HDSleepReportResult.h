@@ -8,6 +8,7 @@
 
 @class NSArray, NSCalendar, NSDate, NSDateInterval, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface _HDSleepReportResult : NSObject
 {
     NSDictionary *_inBedSamplesBySource;

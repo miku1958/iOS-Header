@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL requiresMerge; // @synthesize requiresMerge=_requiresMerge;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) MSPCloudSynchronizer *synchronizer; // @synthesize synchronizer=_synchronizer;
+@property (weak, nonatomic) MSPCloudSynchronizer *synchronizer; // @synthesize synchronizer=_synchronizer;
 
 - (void).cxx_destruct;
 - (void)cancelMergeWithError:(id)arg1;

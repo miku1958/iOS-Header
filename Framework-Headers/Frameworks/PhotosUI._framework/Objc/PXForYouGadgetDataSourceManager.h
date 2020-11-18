@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXCMMCloudGadgetViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSString, PXCMMInvitationsHorizontalGadgetProvider, PXCMMSuggestionsHorizontalGadgetProvider, PXCloudWelcomeGadgetProvider, PXForYouEditSuggestionsGadgetProvider, PXForYouFooterGadgetProvider, PXForYouGadgetPriorityManager, PXForYouMemoryGadgetProvider, PXForYouRecentInterestSuggestionsGadgetProvider, PXGadgetNavigationHelper, PXHorizontalCollectionGadgetProvider, PXPeopleQuestionsGadgetProvider, PXSampleGadgetProvider, PXSampleSuggestionProvider, PXSharedAlbumActivityHorizontalGadgetProvider, PXTapToRadarGadgetProvider;
+@class NSArray, NSString, PXCMMInvitationsHorizontalGadgetProvider, PXCMMSuggestionsHorizontalGadgetProvider, PXCloudWelcomeGadgetProvider, PXForYouEditSuggestionsGadgetProvider, PXForYouFooterGadgetProvider, PXForYouGadgetPriorityManager, PXForYouMemoryGadgetProvider, PXForYouRecentInterestSuggestionsGadgetProvider, PXGadgetNavigationHelper, PXHorizontalCollectionGadgetProvider, PXPeopleQuestionsGadgetProvider, PXSampleSuggestionProvider, PXSharedAlbumActivityHorizontalGadgetProvider;
 @protocol PXGadgetDelegate, PXGadgetTransition;
 
 @interface PXForYouGadgetDataSourceManager : PXGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate, PXSettingsKeyObserver>
@@ -21,6 +21,7 @@
     PXCMMSuggestionsHorizontalGadgetProvider *_CMMSuggestionsHorizontalGadgetProvider;
     PXCloudWelcomeGadgetProvider *_CMMCloudWelcomeGadgetProvider;
     PXSharedAlbumActivityHorizontalGadgetProvider *_icpsActivityHorizontalGadgetProvider;
+    PXHorizontalCollectionGadgetProvider *_inboxHorizontalGadgetProvider;
     PXHorizontalCollectionGadgetProvider *_editSuggestionsHorizontalGadgetProvider;
     PXForYouEditSuggestionsGadgetProvider *_editSuggestionsGadgetProvider;
     PXHorizontalCollectionGadgetProvider *_recentInterestSuggestionsHorizontalGadgetProvider;
@@ -30,8 +31,6 @@
     PXHorizontalCollectionGadgetProvider *_peopleQuestionsHorizontalGadgetProvider;
     PXForYouFooterGadgetProvider *_footerGadgetProvider;
     PXSampleSuggestionProvider *_sampleSuggestionGadgetsProvider;
-    PXSampleGadgetProvider *_sampleGadgetsProvider;
-    PXTapToRadarGadgetProvider *_tapToRadarProvider;
 }
 
 @property (strong, nonatomic) PXCloudWelcomeGadgetProvider *CMMCloudWelcomeGadgetProvider; // @synthesize CMMCloudWelcomeGadgetProvider=_CMMCloudWelcomeGadgetProvider;
@@ -45,6 +44,7 @@
 @property (readonly, nonatomic) id<PXGadgetTransition> gadgetTransition;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXSharedAlbumActivityHorizontalGadgetProvider *icpsActivityHorizontalGadgetProvider; // @synthesize icpsActivityHorizontalGadgetProvider=_icpsActivityHorizontalGadgetProvider;
+@property (strong, nonatomic) PXHorizontalCollectionGadgetProvider *inboxHorizontalGadgetProvider; // @synthesize inboxHorizontalGadgetProvider=_inboxHorizontalGadgetProvider;
 @property (readonly, nonatomic) BOOL isLaunchedToTest; // @synthesize isLaunchedToTest=_isLaunchedToTest;
 @property (strong, nonatomic) PXForYouMemoryGadgetProvider *memoryGadgetProvider; // @synthesize memoryGadgetProvider=_memoryGadgetProvider;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder;
@@ -54,24 +54,26 @@
 @property (strong, nonatomic) PXHorizontalCollectionGadgetProvider *recentInterestSuggestionsHorizontalGadgetProvider; // @synthesize recentInterestSuggestionsHorizontalGadgetProvider=_recentInterestSuggestionsHorizontalGadgetProvider;
 @property (strong, nonatomic) PXForYouRecentInterestSuggestionsGadgetProvider *recentInterestsSuggestionsGadgetProvider; // @synthesize recentInterestsSuggestionsGadgetProvider=_recentInterestsSuggestionsGadgetProvider;
 @property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
-@property (strong, nonatomic) PXSampleGadgetProvider *sampleGadgetsProvider; // @synthesize sampleGadgetsProvider=_sampleGadgetsProvider;
 @property (strong, nonatomic) PXSampleSuggestionProvider *sampleSuggestionGadgetsProvider; // @synthesize sampleSuggestionGadgetsProvider=_sampleSuggestionGadgetsProvider;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) PXTapToRadarGadgetProvider *tapToRadarProvider; // @synthesize tapToRadarProvider=_tapToRadarProvider;
 
 - (void).cxx_destruct;
 - (long long)_adjustComparasionForInbox:(long long)arg1 gadgetType1:(unsigned long long)arg2 gadgeType2:(unsigned long long)arg3;
 - (unsigned long long)_adjustGadgetTypeForRanking:(unsigned long long)arg1;
 - (void)_calendarDayChanged;
+- (void)_calendarDayChangedForced:(BOOL)arg1;
 - (BOOL)_canShowSurveyQuestionsGadget;
 - (long long)_compareRank1:(long long)arg1 rank2:(long long)arg2;
+- (void)_forceCalendarDayChanged;
+- (BOOL)_gadgetProviderIsInbox:(id)arg1;
 - (BOOL)_resetSortingRanksIfNecessary;
+- (void)_updatePrioritiesForCalendarChange;
 - (void)didLoadDataForPriorities;
 - (void)didUpdateCloudPhotoLibraryEnablement:(id)arg1;
-- (id)filteredUndisplayedGadgets:(id)arg1;
 - (CDUnknownBlockType)gadgetProviderSortComparator;
 - (id)gadgetProviders;
 - (CDUnknownBlockType)gadgetSortComparator;
+- (id)hiddenGadgetProviders;
 - (id)initWithPriorityManager:(id)arg1 isLaunchedToTest:(BOOL)arg2;
 - (void)presentationRequestForWelcomeCloudViewController:(id)arg1;
 - (void)removeCachedProviders;

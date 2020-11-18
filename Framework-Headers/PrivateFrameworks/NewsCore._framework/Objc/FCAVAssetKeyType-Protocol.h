@@ -11,6 +11,7 @@
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSDate *expirationDate;
+@property (readonly, nonatomic) BOOL isExpired;
 
 @end
 

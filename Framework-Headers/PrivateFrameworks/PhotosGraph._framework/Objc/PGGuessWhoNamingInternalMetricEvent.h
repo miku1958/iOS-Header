@@ -29,7 +29,7 @@
     unsigned long long _numberOfCalendarSignalRegistrations;
     unsigned long long _numberOfFaceTimeSignalRegistrations;
     unsigned long long _numberOfContactFaceprintSignalRegistrations;
-    unsigned long long _numberOfGenderSignalRegistrations;
+    unsigned long long _numberOfBiologicalSexSignalRegistrations;
     unsigned long long _numberOfSocialGroupSignalRegistrations;
     unsigned long long _numberOfRelationshipSignalRegistrations;
     double _precisionAddressSignal;
@@ -41,7 +41,7 @@
     double _precisionCalendarSignal;
     double _precisionFaceTimeSignal;
     double _precisionContactFaceprintSignal;
-    double _precisionGenderSignal;
+    double _precisionBiologicalSexSignal;
     double _precisionSocialGroupSignal;
     double _precisionRelationshipSignal;
     unsigned long long _truePositiveAddressSignal;
@@ -62,8 +62,8 @@
     unsigned long long _falsePositiveFaceTimeSignal;
     unsigned long long _truePositiveContactFaceprintSignal;
     unsigned long long _falsePositiveContactFaceprintSignal;
-    unsigned long long _truePositiveGenderSignal;
-    unsigned long long _falsePositiveGenderSignal;
+    unsigned long long _truePositiveBiologicalSexSignal;
+    unsigned long long _falsePositiveBiologicalSexSignal;
     unsigned long long _truePositiveSocialGroupSignal;
     unsigned long long _falsePositiveSocialGroupSignal;
     unsigned long long _truePositiveRelationshipSignal;
@@ -73,12 +73,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long falsePositiveAddressSignal; // @synthesize falsePositiveAddressSignal=_falsePositiveAddressSignal;
+@property (nonatomic) unsigned long long falsePositiveBiologicalSexSignal; // @synthesize falsePositiveBiologicalSexSignal=_falsePositiveBiologicalSexSignal;
 @property (nonatomic) unsigned long long falsePositiveBirthdaySignal; // @synthesize falsePositiveBirthdaySignal=_falsePositiveBirthdaySignal;
 @property (nonatomic) unsigned long long falsePositiveCMMSignal; // @synthesize falsePositiveCMMSignal=_falsePositiveCMMSignal;
 @property (nonatomic) unsigned long long falsePositiveCalendarSignal; // @synthesize falsePositiveCalendarSignal=_falsePositiveCalendarSignal;
 @property (nonatomic) unsigned long long falsePositiveContactFaceprintSignal; // @synthesize falsePositiveContactFaceprintSignal=_falsePositiveContactFaceprintSignal;
 @property (nonatomic) unsigned long long falsePositiveFaceTimeSignal; // @synthesize falsePositiveFaceTimeSignal=_falsePositiveFaceTimeSignal;
-@property (nonatomic) unsigned long long falsePositiveGenderSignal; // @synthesize falsePositiveGenderSignal=_falsePositiveGenderSignal;
 @property (nonatomic) unsigned long long falsePositiveMentionedAddressSignal; // @synthesize falsePositiveMentionedAddressSignal=_falsePositiveMentionedAddressSignal;
 @property (nonatomic) unsigned long long falsePositivePotentialBirthdaySignal; // @synthesize falsePositivePotentialBirthdaySignal=_falsePositivePotentialBirthdaySignal;
 @property (nonatomic) unsigned long long falsePositiveRelationshipSignal; // @synthesize falsePositiveRelationshipSignal=_falsePositiveRelationshipSignal;
@@ -88,12 +88,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long numberOfAddressSignalRegistrations; // @synthesize numberOfAddressSignalRegistrations=_numberOfAddressSignalRegistrations;
+@property (nonatomic) unsigned long long numberOfBiologicalSexSignalRegistrations; // @synthesize numberOfBiologicalSexSignalRegistrations=_numberOfBiologicalSexSignalRegistrations;
 @property (nonatomic) unsigned long long numberOfBirthdaySignalRegistrations; // @synthesize numberOfBirthdaySignalRegistrations=_numberOfBirthdaySignalRegistrations;
 @property (nonatomic) unsigned long long numberOfCMMSignalRegistrations; // @synthesize numberOfCMMSignalRegistrations=_numberOfCMMSignalRegistrations;
 @property (nonatomic) unsigned long long numberOfCalendarSignalRegistrations; // @synthesize numberOfCalendarSignalRegistrations=_numberOfCalendarSignalRegistrations;
 @property (nonatomic) unsigned long long numberOfContactFaceprintSignalRegistrations; // @synthesize numberOfContactFaceprintSignalRegistrations=_numberOfContactFaceprintSignalRegistrations;
 @property (nonatomic) unsigned long long numberOfFaceTimeSignalRegistrations; // @synthesize numberOfFaceTimeSignalRegistrations=_numberOfFaceTimeSignalRegistrations;
-@property (nonatomic) unsigned long long numberOfGenderSignalRegistrations; // @synthesize numberOfGenderSignalRegistrations=_numberOfGenderSignalRegistrations;
 @property (nonatomic) unsigned long long numberOfMentionedAddressSignalRegistrations; // @synthesize numberOfMentionedAddressSignalRegistrations=_numberOfMentionedAddressSignalRegistrations;
 @property (nonatomic) unsigned long long numberOfPotentialBirthdaySignalRegistrations; // @synthesize numberOfPotentialBirthdaySignalRegistrations=_numberOfPotentialBirthdaySignalRegistrations;
 @property (nonatomic) unsigned long long numberOfRelationshipSignalRegistrations; // @synthesize numberOfRelationshipSignalRegistrations=_numberOfRelationshipSignalRegistrations;
@@ -101,6 +101,7 @@
 @property (nonatomic) unsigned long long numberOfSocialGroupSignalRegistrations; // @synthesize numberOfSocialGroupSignalRegistrations=_numberOfSocialGroupSignalRegistrations;
 @property (readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 @property (nonatomic) double precisionAddressSignal; // @synthesize precisionAddressSignal=_precisionAddressSignal;
+@property (nonatomic) double precisionBiologicalSexSignal; // @synthesize precisionBiologicalSexSignal=_precisionBiologicalSexSignal;
 @property (nonatomic) double precisionBirthdaySignal; // @synthesize precisionBirthdaySignal=_precisionBirthdaySignal;
 @property (nonatomic) double precisionCMMSignal; // @synthesize precisionCMMSignal=_precisionCMMSignal;
 @property (nonatomic) double precisionCalendarSignal; // @synthesize precisionCalendarSignal=_precisionCalendarSignal;
@@ -110,7 +111,6 @@
 @property (nonatomic) double precisionContactSuggestionTop2; // @synthesize precisionContactSuggestionTop2=_precisionContactSuggestionTop2;
 @property (nonatomic) double precisionContactSuggestionTop3; // @synthesize precisionContactSuggestionTop3=_precisionContactSuggestionTop3;
 @property (nonatomic) double precisionFaceTimeSignal; // @synthesize precisionFaceTimeSignal=_precisionFaceTimeSignal;
-@property (nonatomic) double precisionGenderSignal; // @synthesize precisionGenderSignal=_precisionGenderSignal;
 @property (nonatomic) double precisionHighConfidenceContactSuggestion; // @synthesize precisionHighConfidenceContactSuggestion=_precisionHighConfidenceContactSuggestion;
 @property (nonatomic) double precisionMentionedAddressSignal; // @synthesize precisionMentionedAddressSignal=_precisionMentionedAddressSignal;
 @property (nonatomic) double precisionPotentialBirthdaySignal; // @synthesize precisionPotentialBirthdaySignal=_precisionPotentialBirthdaySignal;
@@ -119,12 +119,12 @@
 @property (nonatomic) double precisionSocialGroupSignal; // @synthesize precisionSocialGroupSignal=_precisionSocialGroupSignal;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long truePositiveAddressSignal; // @synthesize truePositiveAddressSignal=_truePositiveAddressSignal;
+@property (nonatomic) unsigned long long truePositiveBiologicalSexSignal; // @synthesize truePositiveBiologicalSexSignal=_truePositiveBiologicalSexSignal;
 @property (nonatomic) unsigned long long truePositiveBirthdaySignal; // @synthesize truePositiveBirthdaySignal=_truePositiveBirthdaySignal;
 @property (nonatomic) unsigned long long truePositiveCMMSignal; // @synthesize truePositiveCMMSignal=_truePositiveCMMSignal;
 @property (nonatomic) unsigned long long truePositiveCalendarSignal; // @synthesize truePositiveCalendarSignal=_truePositiveCalendarSignal;
 @property (nonatomic) unsigned long long truePositiveContactFaceprintSignal; // @synthesize truePositiveContactFaceprintSignal=_truePositiveContactFaceprintSignal;
 @property (nonatomic) unsigned long long truePositiveFaceTimeSignal; // @synthesize truePositiveFaceTimeSignal=_truePositiveFaceTimeSignal;
-@property (nonatomic) unsigned long long truePositiveGenderSignal; // @synthesize truePositiveGenderSignal=_truePositiveGenderSignal;
 @property (nonatomic) unsigned long long truePositiveMentionedAddressSignal; // @synthesize truePositiveMentionedAddressSignal=_truePositiveMentionedAddressSignal;
 @property (nonatomic) unsigned long long truePositivePotentialBirthdaySignal; // @synthesize truePositivePotentialBirthdaySignal=_truePositivePotentialBirthdaySignal;
 @property (nonatomic) unsigned long long truePositiveRelationshipSignal; // @synthesize truePositiveRelationshipSignal=_truePositiveRelationshipSignal;

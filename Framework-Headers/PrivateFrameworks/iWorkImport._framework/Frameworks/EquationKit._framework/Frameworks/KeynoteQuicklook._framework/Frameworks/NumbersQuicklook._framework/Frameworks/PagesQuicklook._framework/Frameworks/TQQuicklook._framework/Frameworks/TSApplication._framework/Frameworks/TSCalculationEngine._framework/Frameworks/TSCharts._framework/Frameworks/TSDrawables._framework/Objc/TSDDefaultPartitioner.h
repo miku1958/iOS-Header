@@ -9,37 +9,37 @@
 #import <TSDrawables/TSDCanvasDelegate-Protocol.h>
 #import <TSDrawables/TSDPartitioner-Protocol.h>
 
-@class NSString, TSDCanvas, TSDDrawableInfo, TSUPointerKeyDictionary;
+@class NSString, TSDCanvas, TSDDefaultPartitionerPrintingSettings, TSDDrawableInfo, TSDLayout, TSUPointerKeyDictionary;
 @protocol TSDCanvasProxyDelegate;
 
 @interface TSDDefaultPartitioner : TSDLayoutChangeObserver <TSDPartitioner, TSDCanvasDelegate>
 {
-    TSDDrawableInfo *mInfo;
-    TSDCanvas *mCanvas;
-    TSUPointerKeyDictionary *mMainRepsByCanvas;
-    TSUPointerKeyDictionary *mCachedImagesByCanvas;
-    TSUPointerKeyDictionary *mPartialRepsByCanvas;
-    BOOL mPaginateRightToLeft;
-    BOOL _shouldSuppressBackgrounds;
-    BOOL _isPrintingCanvas;
+    TSDDrawableInfo *_info;
+    TSDCanvas *_canvas;
+    TSUPointerKeyDictionary *_mainRepsByCanvas;
+    TSUPointerKeyDictionary *_cachedImagesByCanvas;
+    TSUPointerKeyDictionary *_partialRepsByCanvas;
+    TSDDefaultPartitionerPrintingSettings *_lastPrintingSettings;
+    BOOL _paginateRightToLeft;
 }
 
 @property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isPrintingCanvas; // @synthesize isPrintingCanvas=_isPrintingCanvas;
-@property (readonly, nonatomic) BOOL paginateRightToLeft; // @synthesize paginateRightToLeft=mPaginateRightToLeft;
-@property (nonatomic) BOOL shouldSuppressBackgrounds; // @synthesize shouldSuppressBackgrounds=_shouldSuppressBackgrounds;
+@property (readonly, nonatomic) TSDLayout *i_layout;
+@property (readonly, nonatomic) BOOL paginateRightToLeft; // @synthesize paginateRightToLeft=_paginateRightToLeft;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGRect totalPartitionFrame;
 
+- (void).cxx_destruct;
 - (void)dealloc;
-- (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;
+- (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3;
 - (void)didProcessAllChanges;
 - (id)documentRoot;
 - (id)hintForLayout:(id)arg1;
 - (struct CGImage *)i_cachedImageForCanvas:(id)arg1;
-- (id)i_layout;
+- (void)i_forceLayoutForChangedCanvasPrintingSettingsOfCanvas:(id)arg1;
 - (void)i_layoutRegistered:(id)arg1;
 - (void)i_layoutUnregistered:(id)arg1;
 - (void)i_registerPartialRep:(id)arg1;
@@ -48,6 +48,8 @@
 - (void)i_setCachedImage:(struct CGImage *)arg1 forCanvas:(id)arg2;
 - (void)i_unregisterPartialRep:(id)arg1;
 - (id)initWithInfo:(id)arg1;
+- (BOOL)isCanvasDrawingIntoPDF;
+- (BOOL)isPrintingCanvas;
 - (id)layoutForHint:(id)arg1 parentLayout:(id)arg2;
 - (id)nextHintForSize:(struct CGSize)arg1 parentLayout:(id)arg2 previousHint:(id)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
 - (id)nextLayoutForSize:(struct CGSize)arg1 parentLayout:(id)arg2 previousHint:(id)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
@@ -55,6 +57,7 @@
 - (unsigned long long)p_edgesForHintBounds:(struct CGRect)arg1;
 - (id)p_firstHintForSize:(struct CGSize)arg1;
 - (void)p_generateLayouts;
+- (void)p_generateLayoutsIfNeeded;
 - (id)p_layoutsForInfo:(id)arg1;
 - (id)p_nextHintForSize:(struct CGSize)arg1 previousHint:(id)arg2 horizontally:(BOOL)arg3;
 - (id)p_repsForInfo:(id)arg1;
@@ -63,6 +66,7 @@
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)reset;
 - (void)setLayoutPartititionsRightToLeft:(BOOL)arg1 contentPartitionsRightToLeft:(BOOL)arg2;
+- (BOOL)shouldSuppressBackgrounds;
 
 @end
 

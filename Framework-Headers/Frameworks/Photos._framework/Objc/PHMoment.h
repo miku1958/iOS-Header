@@ -18,11 +18,13 @@
     NSString *_subtitle;
     double _approximateLatitude;
     double _approximateLongitude;
+    double _gpsHorizontalAccuracy;
 }
 
 @property (readonly, nonatomic) float aggregationScore; // @synthesize aggregationScore=_aggregationScore;
 @property (readonly, nonatomic) double approximateLatitude; // @synthesize approximateLatitude=_approximateLatitude;
 @property (readonly, nonatomic) double approximateLongitude; // @synthesize approximateLongitude=_approximateLongitude;
+@property (readonly, nonatomic) double gpsHorizontalAccuracy; // @synthesize gpsHorizontalAccuracy=_gpsHorizontalAccuracy;
 @property (readonly, nonatomic) NSDate *localEndDate;
 @property (readonly, nonatomic) NSDate *localStartDate;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;

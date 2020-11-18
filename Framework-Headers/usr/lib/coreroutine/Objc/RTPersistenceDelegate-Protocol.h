@@ -28,6 +28,5 @@
 - (void)persistenceMigrator:(RTPersistenceMigrator *)arg1 didStartMigratingStore:(RTPersistenceStore *)arg2 withModelProvider:(id<RTPersistenceModelProvider>)arg3;
 - (void)persistenceStore:(RTPersistenceStore *)arg1 encounteredCriticalError:(NSError *)arg2;
 - (void)persistenceStore:(RTPersistenceStore *)arg1 failedWithError:(NSError *)arg2;
-- (BOOL)purgeExpiredRecordsFromPersistenceStore:(RTPersistenceStore *)arg1 withContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
 @end
 

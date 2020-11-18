@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name;
 
 - (void)dealloc;
+- (id)description;
 
 @end
 

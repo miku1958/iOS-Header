@@ -96,14 +96,17 @@
 - (id)_lock_statisticsCalculatorForQuantityType:(id)arg1 mergeStrategy:(unsigned long long)arg2 computationMethod:(long long)arg3;
 - (id)_lock_statisticsDataSourceForQuantityType:(id)arg1;
 - (id)_lock_updateStatisticsWithSamples:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (void)_notifySourcesOfConfigurationUpdate:(id)arg1;
 - (void)_notifySourcesOfTransitionFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (void)_persistRecoveryData;
 - (void)_recoverAssociatedSeriesBuilders;
 - (long long)_recoveredStateForStartDate:(id)arg1 endDate:(id)arg2;
+- (BOOL)_removeMetadata:(id)arg1 error:(id *)arg2;
 - (void)_saveSamples:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_setupDataSource:(id)arg1 identifier:(id)arg2;
 - (void)_updateCachedStateForAddedWorkoutEvents:(id)arg1;
 - (void)_updateStatisticsPauseResumeMask;
+- (void)_updateWorkoutConfiguration:(id)arg1;
 - (BOOL)_validateAuthorizationToSaveWorkoutWithError:(id *)arg1;
 - (void)addDataAccumulationObserver:(id)arg1;
 - (void)addMetadata:(id)arg1 dataSource:(id)arg2;
@@ -127,6 +130,7 @@
 - (void)remote_addWorkoutEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_recoverWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_removeDataSourcesWithIdentifiers:(id)arg1;
+- (void)remote_removeMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setShouldCollectEvents:(BOOL)arg1;
 - (void)remote_setStatisticsComputationMethod:(long long)arg1 forType:(id)arg2;
 - (void)remote_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(id)arg2;
@@ -137,6 +141,7 @@
 - (id)startDate;
 - (void)stateMachine:(id)arg1 didEnterState:(id)arg2 date:(id)arg3 error:(id)arg4;
 - (void)stateMachine:(id)arg1 didTransition:(id)arg2 fromState:(id)arg3 toState:(id)arg4 date:(id)arg5 error:(id)arg6;
+- (void)updateWorkoutConfiguration:(id)arg1 dataSource:(id)arg2;
 
 @end
 

@@ -80,7 +80,7 @@
 - (void)suspendLoadingModifiedFlushedComponentsAndWait;
 - (void)tearDown;
 - (void)traverseComponentTreeFromRoot:(id)arg1 accessor:(CDUnknownBlockType)arg2;
-- (void)willModifyObject:(id)arg1 duringReadOperation:(BOOL)arg2 shouldCaptureSnapshot:(BOOL)arg3;
+- (void)willModifyObject:(id)arg1 options:(unsigned long long)arg2;
 
 @end
 

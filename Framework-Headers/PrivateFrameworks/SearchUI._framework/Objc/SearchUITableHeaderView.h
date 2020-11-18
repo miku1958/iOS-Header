@@ -8,27 +8,22 @@
 
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, SFResultSection, TLKLabel, TLKStackView, TLKTextButton, UIView;
+@class NSString, SFResultSection, TLKLabel, TLKStackView, TLKTextButton;
 @protocol SFFeedbackListener, SearchUITableHeaderViewDelegate;
 
 @interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerViewDelegate>
 {
     BOOL _shouldUseInsetRoundedSections;
-    BOOL _shouldUseStandardSectionInsets;
-    BOOL _useShorterHeaders;
-    BOOL _usesInsetRoundedSections;
     BOOL _isExpanded;
     id<SearchUITableHeaderViewDelegate> _delegate;
     id<SFFeedbackListener> _feedbackListener;
     unsigned long long _headerType;
     SFResultSection *_section;
     TLKLabel *_titleLabel;
-    UIView *_bannerView;
     TLKTextButton *_headerOptionButton;
     TLKStackView *_stackView;
 }
 
-@property (strong, nonatomic) UIView *bannerView; // @synthesize bannerView=_bannerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SearchUITableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -39,34 +34,25 @@
 @property (nonatomic) BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
 @property (strong, nonatomic) SFResultSection *section; // @synthesize section=_section;
 @property (nonatomic) BOOL shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
-@property (nonatomic) BOOL shouldUseStandardSectionInsets; // @synthesize shouldUseStandardSectionInsets=_shouldUseStandardSectionInsets;
 @property (strong, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
 @property (readonly) NSString *title;
 @property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (nonatomic) BOOL useShorterHeaders; // @synthesize useShorterHeaders=_useShorterHeaders;
-@property (nonatomic) BOOL usesInsetRoundedSections; // @synthesize usesInsetRoundedSections=_usesInsetRoundedSections;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)didMoveToWindow;
-- (void)headerOptionButtonPressed;
 - (id)init;
-- (struct CGSize)intrinsicContentSize;
+- (BOOL)isSuggestedAppsHeader;
 - (void)layoutSubviews;
 - (void)moreButtonPressed;
 - (id)moreResultsPunchout;
 - (void)setFloating:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)supportsShowMoreInApp;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateAlignmentRectInsets;
-- (void)updateHeaderButtonVisibility;
-- (void)updateSectionTitle;
+- (void)updateHeaderButtonVisibilityAnimated:(BOOL)arg1;
 - (void)updateWithSection:(id)arg1 isExpanded:(BOOL)arg2 usesInsetRoundedSection:(BOOL)arg3;
 
 @end

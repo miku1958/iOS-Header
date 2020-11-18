@@ -6,23 +6,20 @@
 
 #import <PassKitCore/PKDataAccessor.h>
 
-@class NSArray, NSLock, NSObject, NSURL, PKRemoteAssetManager;
-@protocol OS_dispatch_queue;
+@class NSArray, NSURL, PKDirectoryCoordinator, PKRemoteAssetManager;
 
 @interface PKFileDataAccessor : PKDataAccessor
 {
-    NSLock *_remoteAssetManagerLock;
+    PKDirectoryCoordinator *_coordinator;
     BOOL _remoteAssetManagerAccessed;
     PKRemoteAssetManager *_remoteAssetManager;
     NSArray *_seids;
     BOOL _ownsFileURL;
-    NSObject<OS_dispatch_queue> *_processingQueue;
     NSURL *_fileURL;
 }
 
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (nonatomic) BOOL ownsFileURL; // @synthesize ownsFileURL=_ownsFileURL;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 
 - (void).cxx_destruct;
 - (id)archiveData;
@@ -37,13 +34,13 @@
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)init;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2;
-- (id)initWithFileURL:(id)arg1 error:(id *)arg2 processingQueue:(id)arg3;
+- (id)initWithFileURL:(id)arg1 error:(id *)arg2 coordinator:(id)arg3;
 - (id)manifestHash;
+- (id)passLocalizedStringForKey:(id)arg1;
 - (id)remoteAssetManager;
 - (id)remoteAssetManagerForSEIDs:(id)arg1;
 - (BOOL)remoteAssetsDownloadedForSEIDs:(id)arg1;

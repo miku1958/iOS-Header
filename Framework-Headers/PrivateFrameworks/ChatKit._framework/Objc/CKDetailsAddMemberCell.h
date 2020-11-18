@@ -6,16 +6,14 @@
 
 #import <ChatKit/CKDetailsCell.h>
 
-@class UIImageView, UILabel;
+@class UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CKDetailsAddMemberCell : CKDetailsCell
 {
     UILabel *_addLabel;
-    UIImageView *_addIcon;
 }
 
-@property (strong, nonatomic) UIImageView *addIcon; // @synthesize addIcon=_addIcon;
 @property (strong, nonatomic) UILabel *addLabel; // @synthesize addLabel=_addLabel;
 
 + (Class)cellClass;
@@ -23,7 +21,6 @@ __attribute__((visibility("hidden")))
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)setEnabled:(BOOL)arg1;
 
 @end
 

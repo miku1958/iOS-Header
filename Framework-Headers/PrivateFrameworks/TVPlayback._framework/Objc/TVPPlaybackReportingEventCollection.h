@@ -29,7 +29,7 @@
 + (double)_totalTimeSpentDoingFPSFetchesFromEndEvents:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)_addEventWithName:(id)arg1 type:(long long)arg2 identifier:(id)arg3 value:(id)arg4 timestamp:(id)arg5 forceAdd:(BOOL)arg6;
+- (void)_addEventWithName:(id)arg1 type:(long long)arg2 identifier:(id)arg3 value:(id)arg4 timestamp:(id)arg5 forceAdd:(BOOL)arg6 isUIInteraction:(BOOL)arg7;
 - (void)_closeOpenEvents;
 - (void)_setError:(id)arg1 inEventDict:(id)arg2 errorCodeKey:(id)arg3 errorDomainKey:(id)arg4;
 - (void)addEndEventWithName:(id)arg1;
@@ -39,6 +39,7 @@
 - (void)addSingleShotEventWithName:(id)arg1 value:(id)arg2;
 - (void)addStartEventWithName:(id)arg1;
 - (void)addStartEventWithName:(id)arg1 identifier:(id)arg2;
+- (void)addStartEventWithName:(id)arg1 isUIInteraction:(BOOL)arg2;
 - (BOOL)containsEventWithName:(id)arg1;
 - (id)init;
 

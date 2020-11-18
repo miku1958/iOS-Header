@@ -32,7 +32,6 @@
     NSMutableArray *_childPages;
     NSMutableArray *_didAppearCallbacks;
     BOOL _showsTitlesAsHeaderViews;
-    BOOL _useModernHeaderView;
     BOOL _loading;
     NSDictionary *_attributes;
     RUIPageElement *_pageElement;
@@ -53,6 +52,7 @@
 }
 
 @property (readonly, nonatomic) NSArray *accessoryViews;
+@property (readonly, nonatomic) NSString *activityIndicatorStyle;
 @property (copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (copy, nonatomic) NSString *backButtonTitle; // @synthesize backButtonTitle=_backButtonTitle;
 @property (readonly, nonatomic) NSArray *buttonItems;
@@ -76,6 +76,7 @@
 @property (strong, nonatomic) RUIBarButtonItem *middleToolbarButtonItem; // @synthesize middleToolbarButtonItem=_middleToolbarButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *middleToolbarItem; // @synthesize middleToolbarItem=_middleToolbarItem;
 @property (strong, nonatomic) RUIMultiChoiceElement *multiChoiceElement; // @synthesize multiChoiceElement=_multiChoiceElement;
+@property (readonly, nonatomic) BOOL navBarIndicatorHidesLeftButton;
 @property (copy, nonatomic) NSString *navSubTitle; // @synthesize navSubTitle=_navSubTitle;
 @property (copy, nonatomic) NSString *navTitle; // @synthesize navTitle=_navTitle;
 @property (weak, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
@@ -97,13 +98,13 @@
 @property (readonly, nonatomic) UILabel *titleLabel;
 @property (nonatomic) struct UIEdgeInsets titleLabelPadding;
 @property (readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
-@property (nonatomic) BOOL useModernHeaderView; // @synthesize useModernHeaderView=_useModernHeaderView;
 @property (copy, nonatomic) NSString *validationFunction; // @synthesize validationFunction=_validationFunction;
 @property (readonly, nonatomic) RUIWebView *webViewOM;
 
 - (void).cxx_destruct;
 - (void)_addChildPage:(id)arg1;
 - (void)_barButtonPressed:(id)arg1 isRight:(BOOL)arg2 isNavbar:(BOOL)arg3;
+- (id)_childElements;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (void)_leftNavigationBarButtonPressed:(id)arg1;
@@ -112,7 +113,6 @@
 - (void)_reloadTitleLabel;
 - (void)_rightNavigationBarButtonPressed:(id)arg1;
 - (void)_rightToolbarButtonPressed:(id)arg1;
-- (void)_setCompressedHeightForView:(id)arg1;
 - (void)_setContentInset:(double)arg1;
 - (void)_setParentPage:(id)arg1;
 - (BOOL)_shouldShowMultiChoiceElement;
@@ -141,10 +141,12 @@
 - (void)setRightNavigationBarButtonItem:(id)arg1 barButtonItem:(id)arg2;
 - (id)subElementWithID:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (id)viewForElementIdentifier:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

@@ -6,11 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <GeoServices/GEOCompanionManeuverStep-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBDataReader;
+@class NSMutableArray, NSString, PBDataReader;
+@protocol GEOTransitArtworkDataSource;
 
-@interface GEOCompanionGenericStep : PBCodable <NSCopying>
+@interface GEOCompanionGenericStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
     PBDataReader *_reader;
     struct GEOJunctionElement *_junctionElements;
@@ -31,26 +33,36 @@
         unsigned int read_junctionElements:1;
         unsigned int read_maneuverNames:1;
         unsigned int read_signposts:1;
-        unsigned int wrote_junctionElements:1;
-        unsigned int wrote_maneuverNames:1;
-        unsigned int wrote_signposts:1;
-        unsigned int wrote_junctionType:1;
-        unsigned int wrote_maneuverType:1;
-        unsigned int wrote_transportType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasJunctionType;
 @property (nonatomic) BOOL hasJunctionType;
 @property (nonatomic) BOOL hasManeuverType;
+@property (nonatomic) BOOL hasManeuverType;
 @property (nonatomic) BOOL hasTransportType;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property (readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
+@property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
+@property (nonatomic) int junctionType;
+@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> maneuverArtworkOverride;
+@property (strong, nonatomic) NSMutableArray *maneuverNames;
 @property (strong, nonatomic) NSMutableArray *maneuverNames;
 @property (nonatomic) int maneuverType;
+@property (nonatomic) int maneuverType;
 @property (strong, nonatomic) NSMutableArray *signposts;
+@property (strong, nonatomic) NSMutableArray *signposts;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) int transportType;
 @property (nonatomic) int transportType;
 
++ (id)genericStepForCyclingStep:(id)arg1 protocolVersion:(unsigned long long)arg2;
 + (BOOL)isValid:(id)arg1;
 + (Class)maneuverNameType;
 + (Class)signpostType;
@@ -58,12 +70,6 @@
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
-- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement)arg1;
-- (void)_addNoFlagsManeuverName:(id)arg1;
-- (void)_addNoFlagsSignpost:(id)arg1;
-- (void)_readJunctionElements;
-- (void)_readManeuverNames;
-- (void)_readSignposts;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
@@ -73,12 +79,13 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
 - (id)junctionTypeAsString:(int)arg1;
 - (id)maneuverNameAtIndex:(unsigned long long)arg1;

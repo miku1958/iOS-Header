@@ -46,6 +46,7 @@
     double _alphaForDimmedState;
     long long _layoutOverride;
     id<CLKMonochromeFilterProvider> _filterProvider;
+    CDUnknownBlockType _renderStatsHandler;
     struct CGSize _maxSize;
 }
 
@@ -68,6 +69,7 @@
 @property (copy, nonatomic) CDUnknownBlockType needsResizeHandler; // @synthesize needsResizeHandler=_needsResizeHandler;
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (readonly, nonatomic) struct CGSize preferredSize;
+@property (copy, nonatomic) CDUnknownBlockType renderStatsHandler; // @synthesize renderStatsHandler=_renderStatsHandler;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsCurvedText; // @synthesize supportsCurvedText=_supportsCurvedText;
 @property (nonatomic) BOOL tapEnabled; // @synthesize tapEnabled=_tapEnabled;
@@ -79,7 +81,7 @@
 - (BOOL)_displayIsTappable;
 - (void)_invokeNeedsResizeHandler;
 - (void)_invokeTouchDownHandler;
-- (void)_invokeTouchUpInsideHandler;
+- (BOOL)_invokeTouchUpInsideHandler;
 - (void)_prepareToSetDisplay:(id)arg1 withComplicationAnimation:(inout unsigned long long *)arg2;
 - (void)_removeDisplay:(id)arg1;
 - (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4 animationType:(unsigned long long)arg5 animationFraction:(float)arg6;
@@ -92,6 +94,7 @@
 - (void)_timelineAnimationDidFinish;
 - (void)_tryToSetDisplayHighlighted:(BOOL)arg1;
 - (void)_updateVisibilityForSensitivity:(long long)arg1;
+- (void)complicationDisplay:(id)arg1 renderStatsWithTime:(double)arg2 cost:(double)arg3;
 - (void)complicationDisplayNeedsResize:(id)arg1;
 - (void)dealloc;
 - (id)init;
@@ -101,6 +104,7 @@
 - (id)initWithLegacyDisplay:(id)arg1 layoutOverride:(long long)arg2;
 - (void)layoutSubviews;
 - (void)needsResize;
+- (BOOL)performTap;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)sensitiveUIStateChanged;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;

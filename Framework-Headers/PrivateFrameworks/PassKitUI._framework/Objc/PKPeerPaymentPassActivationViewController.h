@@ -8,62 +8,43 @@
 
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentSetupFlowControllerDataSource-Protocol.h>
 
-@class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentSetupFlowHeroView, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage;
+@class NSString, PKPeerPaymentSetupFlowController, PKPeerPaymentSetupFlowHeroView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPeerPaymentPassActivationViewController : PKExplanationViewController <PKPaymentSetupViewControllerDelegate, PKExplanationViewControllerDelegate, PKExplanationViewDelegate>
+@interface PKPeerPaymentPassActivationViewController : PKExplanationViewController <PKExplanationViewControllerDelegate, PKExplanationViewDelegate, PKPeerPaymentSetupFlowControllerDataSource>
 {
-    PKPaymentProvisioningController *_provisioningController;
-    PKPeerPaymentCredential *_credential;
-    id<PKPaymentSetupViewControllerDelegate> _delegate;
-    unsigned long long _state;
-    PKPeerPaymentWebService *_peerPaymentWebService;
-    PKPeerPaymentTermsController *_termsController;
-    UIImage *_passSnapShot;
-    BOOL _shouldShowAddDebitCardViewController;
+    PKPeerPaymentSetupFlowController *_peerPaymentSetupFlowController;
     PKPeerPaymentSetupFlowHeroView *_heroView;
-    BOOL _presentedDeviceToDeviceEncryptionFlow;
+    unsigned long long _state;
+    unsigned long long _operations;
+    BOOL _shouldShowAddDebitCardViewController;
+    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL presentedDeviceToDeviceEncryptionFlow; // @synthesize presentedDeviceToDeviceEncryptionFlow=_presentedDeviceToDeviceEncryptionFlow;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_beginSetup;
 - (id)_bodyStringForState;
-- (void)_checkCloudStoreState;
 - (void)_handleActivatedState;
-- (void)_handleError:(id)arg1;
 - (void)_handleNextStep;
-- (void)_initalizeCloudStoreWithTargetDevice:(id)arg1 ifNecessaryWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentActivationFailedErrorAlert;
-- (void)_presentAddDebitCardViewController;
-- (void)_presentAlertControllerForError:(id)arg1;
-- (void)_presentDeviceToDeviceEncryptionFlow;
-- (void)_presentIdentityVerificationWithError:(id)arg1;
-- (void)_presentMissingTLKsAlert;
-- (void)_presentSetupWillCompleteLaterAlertController;
-- (void)_presentTermsAndConditionsWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_processCloudStorePCSError;
-- (void)_provisionPeerPaymentPass;
-- (void)_resetApplyPayManateeView;
-- (void)_setShowSpinner:(BOOL)arg1;
+- (void)_presentDisplayableError:(id)arg1;
 - (void)_setState:(unsigned long long)arg1;
 - (BOOL)_shouldShowAddDebitCardViewController;
-- (struct CGSize)_snapshotSize;
+- (void)_showSpinner:(BOOL)arg1;
 - (void)_terminateSetupFlow;
 - (id)_titleStringForState;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 credential:(id)arg4 passSnapShot:(id)arg5;
-- (void)viewControllerDidCancelSetupFlow:(id)arg1;
-- (void)viewControllerDidTerminateSetupFlow:(id)arg1;
+- (id)initWithPeerPaymentSetupFlowController:(id)arg1;
+- (BOOL)shouldPushTerms;
 - (void)viewDidLoad;
 
 @end

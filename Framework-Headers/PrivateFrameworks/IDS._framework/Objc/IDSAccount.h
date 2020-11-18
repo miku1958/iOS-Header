@@ -68,6 +68,7 @@
 - (void)deactivateAndPurgeIdentify;
 - (void)dealloc;
 - (id)description;
+- (void)forceRemoveAccount;
 - (id)initWithDictionary:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3;
 - (id)initWithLoginID:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3;
 - (id)matchingSim;

@@ -10,9 +10,11 @@
 
 @interface SISchemaLanguageProfile : PBCodable
 {
+    BOOL _hasL;
     NSData *_l;
 }
 
+@property (nonatomic) BOOL hasL; // @synthesize hasL=_hasL;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *l; // @synthesize l=_l;
 

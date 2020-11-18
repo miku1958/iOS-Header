@@ -23,6 +23,8 @@
 
 @property (strong) NSMutableSet *childNodes; // @synthesize childNodes=_childNodes;
 @property (readonly, copy) NSSet *children;
+@property (readonly) double graphHighPrecisionThreshold;
+@property (readonly) double graphHighRecallThreshold;
 @property (readonly) double highPrecisionThreshold; // @synthesize highPrecisionThreshold=_highPrecisionThreshold;
 @property (readonly) double highRecallThreshold; // @synthesize highRecallThreshold=_highRecallThreshold;
 @property (readonly, getter=isIndexed) BOOL indexed; // @synthesize indexed=_indexed;

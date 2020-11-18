@@ -29,12 +29,7 @@
         double angle;
         double radius;
     } _selectedColorCoordinate;
-    struct {
-        double r;
-        double g;
-        double b;
-        double temperature;
-    } _selectedColor;
+    CDStruct_dbd0f16f _selectedColor;
 }
 
 @property (nonatomic) unsigned long long colorPickerMode; // @synthesize colorPickerMode=_colorPickerMode;
@@ -52,7 +47,7 @@
 @property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
-@property (nonatomic) CDStruct_d2b197d1 selectedColor; // @synthesize selectedColor=_selectedColor;
+@property (nonatomic) CDStruct_dbd0f16f selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (nonatomic) CDStruct_c3b9c2ee selectedColorCoordinate; // @synthesize selectedColorCoordinate=_selectedColorCoordinate;
 @property (readonly) Class superclass;
 @property (nonatomic) double touchDownTimestamp; // @synthesize touchDownTimestamp=_touchDownTimestamp;
@@ -64,7 +59,6 @@
 - (void)_applyMirroringAxisBiasToColorWheelSpaceIfNecessary;
 - (id)_colorWheelSpaceForMode:(unsigned long long)arg1;
 - (void)_handleGesture:(id)arg1;
-- (void)_setColorPickerMode:(unsigned long long)arg1 notifyDelegate:(BOOL)arg2;
 - (void)_updateDerivedSelectedColorCoordinate;
 - (void)_updateMagnifierPosition;
 - (void)_updateMagnifierTransformForTouchLocation:(struct CGPoint)arg1;

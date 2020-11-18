@@ -29,7 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithAmount:(id)arg1 credentialType:(long long)arg2 dpanSuffix:(id)arg3 cardDescription:(id)arg4;
-- (id)initWithAmount:(id)arg1 paymentPass:(id)arg2;
+- (id)initWithAmount:(id)arg1 transactionSource:(id)arg2;
 
 @end
 

@@ -37,6 +37,7 @@
 @property (nonatomic) BOOL semanticalDedupingUsesAdaptiveSimilarStacking; // @synthesize semanticalDedupingUsesAdaptiveSimilarStacking=_semanticalDedupingUsesAdaptiveSimilarStacking;
 @property (copy, nonatomic) NSSet *uuidsOfRequiredAssets; // @synthesize uuidsOfRequiredAssets=_uuidsOfRequiredAssets;
 
++ (id)defaultOptions;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

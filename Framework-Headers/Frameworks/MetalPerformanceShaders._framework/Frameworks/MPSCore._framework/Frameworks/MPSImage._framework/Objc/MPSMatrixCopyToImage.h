@@ -17,7 +17,7 @@
 @property (nonatomic) unsigned long long sourceMatrixBatchIndex; // @synthesize sourceMatrixBatchIndex=_sourceMatrixBatchIndex;
 @property (nonatomic) CDStruct_14f26992 sourceMatrixOrigin; // @synthesize sourceMatrixOrigin=_sourceMatrixOrigin;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeBatchToCommandBuffer:(id)arg1 encoder:(id)arg2 sourceMatrix:(id)arg3 destinationImages:(id)arg4;

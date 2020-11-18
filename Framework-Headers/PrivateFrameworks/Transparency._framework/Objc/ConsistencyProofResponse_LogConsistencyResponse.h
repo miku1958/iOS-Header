@@ -8,7 +8,7 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class NSMutableArray, NSNumber, SignedLogHead, TransparencyConsistencyProofVerifier, TransparencyManagedDataStore;
+@class NSDictionary, NSMutableArray, NSNumber, SignedLogHead, TransparencyConsistencyProofVerifier, TransparencyManagedDataStore;
 
 @interface ConsistencyProofResponse_LogConsistencyResponse : GPBMessage <TransparencyVerifiable>
 {
@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL hasEndSlh; // @dynamic hasEndSlh;
 @property (nonatomic) BOOL hasStartSlh; // @dynamic hasStartSlh;
 @property (nonatomic) int logType; // @dynamic logType;
+@property (readonly) NSDictionary *metadata;
 @property (strong, nonatomic) NSMutableArray *proofHashesArray; // @dynamic proofHashesArray;
 @property (readonly, nonatomic) unsigned long long proofHashesArray_Count; // @dynamic proofHashesArray_Count;
 @property (strong) NSNumber *startRevision;
@@ -27,6 +28,8 @@
 @property (strong) TransparencyConsistencyProofVerifier *verifier;
 
 + (id)descriptor;
+- (void)setMetadata:(id)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
 - (void)setResult:(unsigned long long)arg1 treeHead:(id)arg2 error:(id)arg3;
 - (unsigned long long)verifyWithError:(id *)arg1;
 

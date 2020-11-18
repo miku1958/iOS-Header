@@ -86,7 +86,6 @@
 - (void)_setDrawInWebThread:(BOOL)arg1;
 - (void)_setDrawsCheckeredPattern:(BOOL)arg1;
 - (void)_setGapBetweenPages:(double)arg1;
-- (void)_setIsBlankBeforeFirstNonEmptyLayout:(BOOL)arg1;
 - (void)_setNetworkInterfaceName:(id)arg1;
 - (void)_setOverridesOrientationChangeEventHandling:(BOOL)arg1;
 - (void)_setPageLength:(double)arg1;

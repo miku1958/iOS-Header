@@ -16,14 +16,12 @@
     NSURL *_bundleURL;
     id<TKApplicationDelegate> _delegate;
     NSURL *_baseURL;
-    NSString *_overrideCachesDirectoryPath;
 }
 
 @property (copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (readonly, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property (readonly, nonatomic) NSString *bundleVersion;
 @property (weak, nonatomic) id<TKApplicationDelegate> delegate; // @synthesize delegate=_delegate;
-@property (copy, nonatomic) NSString *overrideCachesDirectoryPath; // @synthesize overrideCachesDirectoryPath=_overrideCachesDirectoryPath;
 @property (readonly, nonatomic) BOOL ready; // @synthesize ready=_ready;
 @property (readonly, nonatomic) TKRepository *repository; // @synthesize repository=_repository;
 

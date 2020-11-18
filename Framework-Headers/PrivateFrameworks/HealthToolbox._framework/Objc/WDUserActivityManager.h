@@ -8,7 +8,6 @@
 
 @class NSMutableArray, NSMutableDictionary, UIViewController, _WDActivityNode;
 
-__attribute__((visibility("hidden")))
 @interface WDUserActivityManager : NSObject
 {
     UIViewController *_rootViewController;
@@ -23,9 +22,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL recordActivities; // @synthesize recordActivities=_recordActivities;
 
 - (void).cxx_destruct;
-- (id)_castleRockSpotlightBreadcrumbs:(id)arg1;
-- (id)_handoffActivityBreadcrumbsForOnboarding:(id)arg1;
-- (id)_handoffActivityBreadcrumbsForSampleType:(id)arg1;
 - (void)_resetActivities;
 - (BOOL)_restoreActivityFromPolicies:(id)arg1;
 - (void)_restoreFromActivityChain:(id)arg1;

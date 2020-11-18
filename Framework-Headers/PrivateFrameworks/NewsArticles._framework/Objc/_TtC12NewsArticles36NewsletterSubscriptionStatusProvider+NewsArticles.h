@@ -6,11 +6,14 @@
 
 #import <NewsArticles/_TtC12NewsArticles36NewsletterSubscriptionStatusProvider.h>
 
-@interface _TtC12NewsArticles36NewsletterSubscriptionStatusProvider (NewsArticles)
+#import <NewsArticles/FCNewsletterSubscriptionObserver-Protocol.h>
+
+@interface _TtC12NewsArticles36NewsletterSubscriptionStatusProvider (NewsArticles) <FCNewsletterSubscriptionObserver>
 
 @property (nonatomic, readonly) unsigned long long newsletterSubscriptionStatus;
 
 - (void)addObserver:(id)arg1;
+- (void)newsletterSubscriptionChangedFromSubscription:(long long)arg1;
 - (void)removeObserver:(id)arg1;
 @end
 

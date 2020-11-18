@@ -15,7 +15,7 @@
 #import <TSDrawables/TSSPresetSource-Protocol.h>
 
 @class NSArray, NSObject, NSSet, NSString, TSDImageAdjustments, TSDImageDataHelper, TSDInfoGeometry, TSDMaskInfo, TSDMediaStyle, TSPData, TSPObject, TSUBezierPath;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSDImageInfo : TSDMediaInfo <TSDReducibleImageContainer, TSDContainerInfo, TSDMixing, TSSPresetSource, TSKTransformableObject, TSDCompatibilityAwareMediaContainer, TSDAttachmentAwareContainerInfo>
 {
@@ -33,6 +33,7 @@
     TSDMediaStyle *mStyle;
     TSDMaskInfo *mMaskInfo;
     TSUBezierPath *mTracedPath;
+    BOOL mShouldTracePDFData;
     BOOL mCurrentlyInDocument;
     double mDescentForInlineLayout;
     BOOL mDescentForInlineLayoutValid;
@@ -57,6 +58,7 @@
 @property (readonly, nonatomic) TSDMediaStyle *imageStyle;
 @property (readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (strong, nonatomic) TSUBezierPath *instantAlphaPath;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (strong, nonatomic) TSDMaskInfo *maskInfo; // @synthesize maskInfo=mMaskInfo;
@@ -65,7 +67,8 @@
 @property (strong, nonatomic) TSPData *originalImageData; // @synthesize originalImageData=mOriginalImageData;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
+@property (nonatomic) BOOL shouldTracePDFData;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TSPData *thumbnailAdjustedImageData;
 @property (strong, nonatomic) TSPData *thumbnailImageData; // @synthesize thumbnailImageData=mThumbnailImageData;
@@ -79,7 +82,9 @@
 + (id)presetKinds;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
+- (BOOL)allowsCaption;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
+- (BOOL)allowsTitle;
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canCopyData;
 - (BOOL)canResetMediaSize;

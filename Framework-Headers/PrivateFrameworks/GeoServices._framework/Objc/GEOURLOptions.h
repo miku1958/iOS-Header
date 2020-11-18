@@ -38,16 +38,7 @@
         unsigned int read_referralIdentifier:1;
         unsigned int read_routeHandle:1;
         unsigned int read_timePoint:1;
-        unsigned int wrote_camera:1;
-        unsigned int wrote_centerSpan:1;
-        unsigned int wrote_referralIdentifier:1;
-        unsigned int wrote_routeHandle:1;
-        unsigned int wrote_timePoint:1;
-        unsigned int wrote_mapType:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_userTrackingMode:1;
-        unsigned int wrote_connectedToCar:1;
-        unsigned int wrote_enableTraffic:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -81,18 +72,16 @@
 - (int)StringAsMapType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (int)StringAsUserTrackingMode:(id)arg1;
-- (void)_readCamera;
-- (void)_readCenterSpan;
-- (void)_readReferralIdentifier;
-- (void)_readRouteHandle;
-- (void)_readTimePoint;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -12,7 +12,6 @@
 {
     AVPlayerController *_playerController;
     AVPictureInPicturePlayerLayerView *_pictureInPicturePlayerLayerView;
-    AVPlayerLayer *_playerLayer;
     AVPlayerLayer *_pictureInPicturePlayerLayer;
 }
 
@@ -20,7 +19,7 @@
 @property (readonly, nonatomic) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView;
 @property (copy, nonatomic) NSDictionary *pixelBufferAttributes;
 @property (strong, nonatomic) AVPlayerController *playerController;
-@property (readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+@property (readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (readonly, nonatomic) struct CGRect videoBounds;
 @property (readonly, nonatomic) struct CGSize videoDisplaySize;
@@ -28,6 +27,7 @@
 @property (nonatomic, getter=isVideoScaled) BOOL videoScaled;
 
 + (id)keyPathsForValuesAffectingPixelBufferAttributes;
++ (id)keyPathsForValuesAffectingPlayerLayer;
 + (id)keyPathsForValuesAffectingReadyForDisplay;
 + (id)keyPathsForValuesAffectingVideoBounds;
 + (id)keyPathsForValuesAffectingVideoDisplaySize;
@@ -35,7 +35,6 @@
 + (id)keyPathsForValuesAffectingVideoScaled;
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)startRoutingVideoToPictureInPicturePlayerLayerView;
 - (void)stopRoutingVideoToPictureInPicturePlayerLayerView;
 

@@ -22,11 +22,12 @@
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSString *uniqueDescription;
-@property (getter=isValid) BOOL valid; // @synthesize valid=_valid;
+@property (readonly, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 + (id)bundleIdentifier;
 + (id)logCategory;
 - (void).cxx_destruct;
+- (BOOL)acquire:(id *)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithName:(id)arg1;

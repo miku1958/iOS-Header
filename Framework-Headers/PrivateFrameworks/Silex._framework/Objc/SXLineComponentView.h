@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (void)discardContents;
 - (void)loadComponent:(id)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)renderContents;
 - (BOOL)userInteractable;
 

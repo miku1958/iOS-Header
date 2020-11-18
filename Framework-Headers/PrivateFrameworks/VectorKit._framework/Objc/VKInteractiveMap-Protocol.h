@@ -26,16 +26,13 @@
 - (struct CGPoint)convertMapPointToPoint:(CDStruct_c3b9c2ee)arg1;
 - (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
-- (float)currentRoadSignOffset;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (NSString *)detailedDescription;
 - (void)insertOverlay:(VKOverlay *)arg1 aboveOverlay:(VKOverlay *)arg2;
 - (void)insertOverlay:(VKOverlay *)arg1 belowOverlay:(VKOverlay *)arg2;
 - (BOOL)isPointValidForGesturing:(struct CGPoint)arg1;
 - (void)removeOverlay:(VKOverlay *)arg1;
-- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(BOOL)arg2;
 - (void)setMapType:(int)arg1 animated:(BOOL)arg2;
-- (void)setNavCameraIsDetached:(BOOL)arg1;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
 - (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(VKCameraController<VKNavigationCameraController> *)arg5 pounceCompletionHandler:(void (^)(BOOL))arg6;
 @end

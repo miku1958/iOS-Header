@@ -7,11 +7,12 @@
 #import <UIKit/UIView.h>
 
 #import <TSReading/UITextLinkInteraction-Protocol.h>
+#import <TSReading/_UITextInputRevealSupportProviding-Protocol.h>
 
 @class TSDCanvasLayer, TSDInteractiveCanvasController, TSKScrollView;
 @protocol TSDCanvasLayerHosting, UITextLinkInteraction;
 
-@interface TSDCanvasView : UIView <UITextLinkInteraction>
+@interface TSDCanvasView : UIView <UITextLinkInteraction, _UITextInputRevealSupportProviding>
 {
     TSDInteractiveCanvasController *mController;
     id<TSDCanvasLayerHosting> mLayerHost;
@@ -27,6 +28,8 @@
 
 + (Class)layerClass;
 - (void)_requestTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (id)_textImageFromRect:(struct CGRect)arg1;
+- (id)_textInputForReveal;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)cancelInteractionWithLink;
 - (BOOL)isInteractingWithLink;

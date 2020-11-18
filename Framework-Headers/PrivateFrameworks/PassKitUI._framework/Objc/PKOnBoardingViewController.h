@@ -49,6 +49,7 @@
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)terminateSetupFlow;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

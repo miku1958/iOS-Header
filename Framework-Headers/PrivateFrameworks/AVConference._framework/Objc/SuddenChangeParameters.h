@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface SuddenChangeParameters : NSObject
 {
     int margin;
+    int minSamplesCountFastBandwidthEstimation;
     int minSamplesCount;
     int minMarginRequired;
     double percentage;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int margin; // @synthesize margin;
 @property (nonatomic) int minMarginRequired; // @synthesize minMarginRequired;
 @property (nonatomic) int minSamplesCount; // @synthesize minSamplesCount;
+@property (nonatomic) int minSamplesCountFastBandwidthEstimation; // @synthesize minSamplesCountFastBandwidthEstimation;
 @property (nonatomic) double percentage; // @synthesize percentage;
 
 

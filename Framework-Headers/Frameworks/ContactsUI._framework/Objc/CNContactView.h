@@ -66,12 +66,14 @@
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)registerContactCellClass:(Class)arg1;
-- (void)setAttributesFromContactView:(id)arg1;
+- (void)setAttributesFromContactView:(id)arg1 runningInContactsAppOniPad:(BOOL)arg2;
+- (void)setEditing:(BOOL)arg1;
 - (void)setNeedsUpdateVisibleCells;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFontColors;
 - (void)updateFontSizes;
+- (void)updateTableViewMetrics;
 - (void)updateVisibleCellsIfNeeded;
 
 @end

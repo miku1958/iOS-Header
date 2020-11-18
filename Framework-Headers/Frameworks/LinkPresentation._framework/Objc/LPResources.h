@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)appClipIcon;
 + (id)chevron;
-+ (id)chevronLeft;
 + (void)clearCachedResources;
 + (id)fileIcon;
 + (id)iCloudDriveIcon;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)searchGlyph;
 + (id)telephoneIcon;
 + (id)textIcon;
++ (id)transportBicycleIcon;
 + (id)transportDriveIcon;
 + (id)transportTransitIcon;
 + (id)transportWalkIcon;

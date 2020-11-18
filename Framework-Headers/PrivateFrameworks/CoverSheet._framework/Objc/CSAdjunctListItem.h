@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)addAction:(id)arg1;
+- (void)conformsToCSAdjunctListItemProviding;
 - (id)init;
 - (BOOL)isValid;
 - (void)removeAction:(id)arg1;

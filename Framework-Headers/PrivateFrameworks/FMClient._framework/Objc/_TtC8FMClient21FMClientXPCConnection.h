@@ -6,7 +6,6 @@
 
 #import <Foundation/NSXPCConnection.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC8FMClient21FMClientXPCConnection : NSXPCConnection
 {
 }

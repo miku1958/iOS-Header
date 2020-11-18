@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKUIAccountRefresherDelegate-Protocol.h>
 
-@class EKCalendar, EKCalendarEditor, EKEventStore, EKSource, EKUIAccountRefresher, NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, UIBarButtonItem, UIRefreshControl, UITableView, _UIAccessDeniedView;
+@class EKCalendar, EKCalendarEditor, EKEvent, EKEventStore, EKSource, EKUIAccountRefresher, NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, UIBarButtonItem, UIRefreshControl, UITableView, UITableViewCell, _UIAccessDeniedView;
 @protocol EKCalendarChooserDelegate, EKStyleProvider;
 
 @interface EKCalendarChooser : UIViewController <EKUIAccountRefresherDelegate>
@@ -18,6 +18,10 @@
     NSArray *_delegateSources;
     BOOL _showDelegateCalendarsCell;
     NSSet *_currentKnownCalendarIds;
+    long long _displayStyle;
+    UITableViewCell *_showDeclinedEventsCell;
+    UIBarButtonItem *_addCalendarButton;
+    BOOL _updatingHeaderHeight;
     BOOL _canShowIdentityChooser;
     BOOL _disableCalendarEditing;
     BOOL _showsDeclinedEventsSetting;
@@ -33,6 +37,7 @@
     id<EKCalendarChooserDelegate> _delegate;
     unsigned long long _entityType;
     long long _lastAuthorizationStatus;
+    EKEvent *_event;
     UITableView *_tableView;
     UIBarButtonItem *_showAllButton;
     NSMutableArray *_groups;
@@ -60,6 +65,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableCalendarEditing; // @synthesize disableCalendarEditing=_disableCalendarEditing;
 @property (nonatomic) unsigned long long entityType; // @synthesize entityType=_entityType;
+@property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (strong, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property (nonatomic) int explanatoryTextMode; // @synthesize explanatoryTextMode=_explanatoryTextMode;
 @property (nonatomic) CDStruct_424d6339 flags; // @synthesize flags=_flags;
@@ -92,6 +98,7 @@
 + (id)hideAllString;
 + (id)showAllString;
 - (void).cxx_destruct;
+- (long long)_accountErrorActionIndexForGroup:(id)arg1;
 - (id)_allCalendars;
 - (BOOL)_applySelection;
 - (BOOL)_calendarAvailableForEditing:(id)arg1;
@@ -101,7 +108,7 @@
 - (id)_cellIdentifierWithSubtitle:(BOOL)arg1;
 - (id)_contactForSource:(id)arg1;
 - (id)_currentKnownCalendarIds;
-- (void)_delegateSelectionDidChange;
+- (void)_delegateSelectionDidChange:(BOOL)arg1;
 - (void)_ensureWritableCalendarExists;
 - (void)_eventStoreChanged:(id)arg1;
 - (id)_filterCalendars:(id)arg1;
@@ -121,6 +128,7 @@
 - (int)_numSelectedGroups;
 - (void)_populateGroupsForCalendars:(id)arg1 includingAccountsWithoutCalendars:(BOOL)arg2 footersChanged:(BOOL *)arg3;
 - (id)_preferredAddressFromOwnerAddresses:(id)arg1;
+- (void)_presentEditor:(id)arg1 withIndexPath:(id)arg2 barButtonItem:(id)arg3 permittedArrowDirections:(unsigned long long)arg4 animated:(BOOL)arg5;
 - (void)_pulledToRefresh:(id)arg1;
 - (void)_restoreSelection:(id)arg1 calendarsForSelectedSource:(id)arg2 allCalendars:(id)arg3;
 - (id)_saveSelection;
@@ -138,29 +146,36 @@
 - (id)_tableHeaderView;
 - (long long)_tableSectionRow:(long long)arg1 toCalendarIndexInGroup:(id)arg2;
 - (long long)_tableSectionRowToDelegateSourceIndex:(long long)arg1;
-- (BOOL)_tableShouldDisplayVerifyAccountCellForGroup:(id)arg1;
+- (BOOL)_tableShouldDisplayAccountErrorActionCellForGroup:(id)arg1;
 - (void)_updateCurrentKnownCalendarIds;
 - (void)_updateDelegateSources;
 - (void)_updateShowDelegateCalendarsCell;
 - (void)_updateViewControllerTitle;
-- (long long)_verifyAccountIndexForGroup:(id)arg1;
 - (id)_viewModeTitle;
 - (void)accountRefreshFinished:(id)arg1;
-- (void)addCalendarButtonPressed;
+- (void)addCalendarButtonPressed:(id)arg1;
 - (void)calendarEditor:(id)arg1 didCompleteWithAction:(int)arg2;
 - (void)cancel:(id)arg1;
-- (void)declinedEventsSwitchChanged:(id)arg1;
+- (void)centerOnCalendar:(id)arg1;
+- (id)centeredCalendar;
+- (void)dealloc;
+- (void)declinedEventsChanged;
+- (id)displayedEditor;
 - (void)done:(id)arg1;
+- (void)groupHeaderChangedHeight:(id)arg1;
 - (void)groupShowAllTapped:(id)arg1;
 - (BOOL)hasAccountThatCanCreateCalendars;
+- (void)identityChanged:(id)arg1;
 - (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 entityType:(unsigned long long)arg3 eventStore:(id)arg4;
-- (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 entityType:(unsigned long long)arg3 eventStore:(id)arg4 limitedToSource:(id)arg5 showIdentityChooser:(BOOL)arg6 showAccountStatus:(BOOL)arg7;
+- (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 entityType:(unsigned long long)arg3 forEvent:(id)arg4 eventStore:(id)arg5 limitedToSource:(id)arg6 showIdentityChooser:(BOOL)arg7 showAccountStatus:(BOOL)arg8;
 - (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 eventStore:(id)arg3;
 - (void)loadView;
 - (double)marginForTableView:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)populateGroupsForNonDelegateSources;
 - (struct CGSize)preferredContentSize;
+- (void)presentAccountErrorAlertForGroup:(id)arg1;
+- (void)redisplayEditor:(id)arg1;
 - (void)refresh:(id)arg1;
 - (void)setAllSelected:(BOOL)arg1;
 - (void)setShowAll:(BOOL)arg1;
@@ -182,7 +197,7 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)verifyAccountForGroup:(id)arg1;
+- (void)updateDeclinedEventsCell:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

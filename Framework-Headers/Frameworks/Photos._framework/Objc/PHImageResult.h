@@ -6,27 +6,35 @@
 
 #import <Photos/PHCompositeMediaResult.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
 @interface PHImageResult : PHCompositeMediaResult
 {
     struct CGImage *_imageRef;
+    BOOL _isPlaceholder;
+    BOOL _degraded;
     NSNumber *_exifOrientation;
+    NSString *_uniformTypeIdentifier;
 }
 
 @property (copy, nonatomic) NSNumber *exifOrientation; // @synthesize exifOrientation=_exifOrientation;
+@property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
 - (void).cxx_destruct;
+- (id)allowedInfoKeys;
 - (BOOL)containsValidData;
 - (void)dealloc;
 - (id)imageData;
 - (struct CGImage *)imageRef;
 - (id)imageURL;
-- (id)imageUTI;
+- (BOOL)isDegraded;
+- (BOOL)isPlaceholder;
+- (id)sanitizedInfoDictionary;
+- (void)setDegraded:(BOOL)arg1;
 - (void)setImageData:(id)arg1;
 - (void)setImageRef:(struct CGImage *)arg1;
 - (void)setImageURL:(id)arg1;
-- (void)setImageUTI:(id)arg1;
+- (void)setIsPlaceholder:(BOOL)arg1;
 - (long long)uiOrientation;
 
 @end

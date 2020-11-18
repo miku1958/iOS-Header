@@ -7,6 +7,8 @@
 #import <TeaUI/_TtC5TeaUI24CardNavigationController.h>
 
 @interface _TtC5TeaUI24CardNavigationController (TeaUI)
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 @end

@@ -8,18 +8,20 @@
 
 #import <ActionKit/MPAVRoutingControllerDelegate-Protocol.h>
 
-@class MPAVRoutingController, NSArray, NSMutableArray, NSString;
+@class MPAVRoutingController, NSArray, NSMutableArray, NSString, WFBluetoothSettingsClient;
 @protocol OS_dispatch_queue;
 
 @interface WFMediaRoutePicker : NSObject <MPAVRoutingControllerDelegate>
 {
     long long _routeType;
     MPAVRoutingController *_routingController;
+    WFBluetoothSettingsClient *_bluetoothClient;
     NSMutableArray *_observers;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) NSArray *availableRoutes;
+@property (readonly, nonatomic) WFBluetoothSettingsClient *bluetoothClient; // @synthesize bluetoothClient=_bluetoothClient;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -35,6 +37,7 @@
 - (void)findHandoffRoutesMatchingDescriptors:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)findRouteMatchingDescriptor:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)findRoutesMatchingDescriptors:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getPairedAudioDevicesMatchingRouteDescriptor:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handOffFromSourceUID:(id)arg1 toDestinationUID:(id)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithRouteType:(long long)arg1;

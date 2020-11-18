@@ -17,9 +17,13 @@
     NSString *_labelName;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *inputName; // @synthesize inputName=_inputName;
 @property (readonly, nonatomic) NSString *labelName; // @synthesize labelName=_labelName;
 @property (readonly, nonatomic) NSArray *labeledDataSamples; // @synthesize labeledDataSamples=_labeledDataSamples;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dataPointAtIndex:(unsigned long long)arg1 error:(id *)arg2;

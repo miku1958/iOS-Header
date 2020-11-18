@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRTransactionPacketizer, NSMutableArray, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, MRTransactionPacketizer, NSMutableArray;
 @protocol MRTransactionSourceDelegate;
 
 @interface MRTransactionSource : NSObject
@@ -15,11 +15,11 @@
     MRTransactionPacketizer *_packetizer;
     NSMutableArray *_packets;
     id<MRTransactionSourceDelegate> _delegate;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
 }
 
 @property (readonly, nonatomic) unsigned long long name; // @synthesize name=_name;
-@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 
 - (void).cxx_destruct;
 - (void)_begin;

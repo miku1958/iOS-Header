@@ -42,6 +42,7 @@
 @property (copy, nonatomic) NSArray *keyboards; // @synthesize keyboards=_keyboards;
 @property (copy, nonatomic) NSString *locality; // @synthesize locality=_locality;
 @property (nonatomic) int orientation; // @synthesize orientation=_orientation;
+@property (readonly, nonatomic) NSString *osVersionAndBuild;
 @property (copy, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;
 @property (strong, nonatomic) NSNumber *scale; // @synthesize scale=_scale;
 @property (strong, nonatomic) NSNumber *screenHeight; // @synthesize screenHeight=_screenHeight;

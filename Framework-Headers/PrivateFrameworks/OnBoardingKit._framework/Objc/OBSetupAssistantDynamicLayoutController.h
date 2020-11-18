@@ -6,9 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <OnBoardingKit/OBSetupAssistantSupport-Protocol.h>
+
 @class NSString, OBWelcomeController, UIImage, UIView;
 
-@interface OBSetupAssistantDynamicLayoutController : UIViewController
+@interface OBSetupAssistantDynamicLayoutController : UIViewController <OBSetupAssistantSupport>
 {
     BOOL _enableStickyHeader;
     OBWelcomeController *_backingController;
@@ -22,12 +24,16 @@
 
 @property (strong, nonatomic) OBWelcomeController *backingController; // @synthesize backingController=_backingController;
 @property (copy, nonatomic) CDUnknownBlockType constraintForLayoutFactory; // @synthesize constraintForLayoutFactory=_constraintForLayoutFactory;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableStickyHeader; // @synthesize enableStickyHeader=_enableStickyHeader;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *localDetailText; // @synthesize localDetailText=_localDetailText;
 @property (strong, nonatomic) UIImage *localImage; // @synthesize localImage=_localImage;
 @property (copy, nonatomic) NSString *localTitle; // @synthesize localTitle=_localTitle;
 @property (strong, nonatomic) UIView *mainContentSubview; // @synthesize mainContentSubview=_mainContentSubview;
 @property (strong, nonatomic) UIView *outerContentView; // @synthesize outerContentView=_outerContentView;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_relayoutContentSubviewIfNeeded;

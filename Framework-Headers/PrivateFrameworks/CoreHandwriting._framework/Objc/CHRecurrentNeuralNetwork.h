@@ -6,30 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSString;
 
 @interface CHRecurrentNeuralNetwork : NSObject
 {
     NSString *_modelName;
-    NSArray *_inputNames;
-    NSDictionary *_featureCounts;
-    NSArray *_outputNames;
-    NSDictionary *_classCounts;
-    struct MontrealNeuralNetwork *__model;
 }
 
-@property (readonly, nonatomic) struct MontrealNeuralNetwork *_model; // @synthesize _model=__model;
-@property (readonly, strong, nonatomic) NSDictionary *classCounts; // @synthesize classCounts=_classCounts;
-@property (readonly, strong, nonatomic) NSDictionary *featureCounts; // @synthesize featureCounts=_featureCounts;
-@property (readonly, strong, nonatomic) NSArray *inputNames; // @synthesize inputNames=_inputNames;
 @property (readonly, strong, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
-@property (readonly, strong, nonatomic) NSArray *outputNames; // @synthesize outputNames=_outputNames;
 
-- (vector_f9ed6fc8)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
-- (BOOL)_recursivelyPredictProbabilitiesForDrawing:(id)arg1 features:(vector_f9ed6fc8 *)arg2 pointRange:(struct _NSRange)arg3 modelInputName:(id)arg4 modelOutputNames:(id)arg5 probabilities:(vector_e5be908c *)arg6 probabilityPredictionBlock:(CDUnknownBlockType)arg7 error:(id *)arg8;
 - (void)dealloc;
 - (id)initWithModelName:(id)arg1;
-- (id)normalizedDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 interpolationDistance:(double)arg3 outputPointMap:(vector_1dba4e4e *)arg4;
+- (id)normalizedDrawing:(id)arg1 targetHeight:(double)arg2 minimumDrawingSize:(struct CGSize)arg3 interpolationDistance:(double)arg4 outScaleFactor:(double *)arg5 outputPointMap:(vector_1dba4e4e *)arg6;
 
 @end
 

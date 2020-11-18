@@ -37,7 +37,6 @@
 - (id)TIFFRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 stretchingCenterWidthBy:(double)arg3;
 - (id)init;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;

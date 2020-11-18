@@ -10,11 +10,12 @@
 #import <HomeUI/HUAboutResidentDeviceViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUAccessorySettingsItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
+#import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
 @class HFUserItem, HUAboutResidentDeviceFooterView, HUAccessorySettingsItemModuleController, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
 
-@interface HUEditUserViewController : HUUserTableViewController <HUAboutResidentDeviceFooterViewDelegate, HUAboutResidentDeviceViewControllerDelegate, HUSwitchCellDelegate, HUAccessorySettingsItemModuleControllerDelegate, UITextViewDelegate>
+@interface HUEditUserViewController : HUUserTableViewController <HUAboutResidentDeviceFooterViewDelegate, HUAboutResidentDeviceViewControllerDelegate, HUSwitchCellDelegate, HUAccessorySettingsItemModuleControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 {
     HFUserItem *_userItem;
     HUEditUserItemManager *_editUserItemManager;
@@ -49,16 +50,19 @@
 - (id)moduleController:(id)arg1 requestPresentViewController:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)moduleController:(id)arg1 settingUpdatedForItem:(id)arg2;
 - (BOOL)moduleController:(id)arg1 shouldDisableItem:(id)arg2;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (id)userHandle;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

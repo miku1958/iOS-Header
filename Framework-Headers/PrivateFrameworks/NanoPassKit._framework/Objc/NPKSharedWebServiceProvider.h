@@ -42,6 +42,7 @@
 - (void)checkCompanionPeerPaymentRegistrationState;
 - (void)dealloc;
 - (void)handleAppletState:(id)arg1 forUniqueID:(id)arg2;
+- (void)handleBalanceReminderUpdate:(id)arg1 balance:(id)arg2 forUniqueID:(id)arg3;
 - (void)handleBalanceUpdate:(id)arg1 forUniqueID:(id)arg2;
 - (void)handleCredentialsUpdate:(id)arg1 forUniqueID:(id)arg2;
 - (void)handleDownloadAllPaymentPasses;

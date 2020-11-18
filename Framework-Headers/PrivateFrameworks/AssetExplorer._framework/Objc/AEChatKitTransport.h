@@ -34,7 +34,7 @@
 - (void)_unstagePackagesWithIdentifiers:(id)arg1 evictFiles:(BOOL)arg2;
 - (id)_workQueue;
 - (void)commitPackage:(id)arg1;
-- (id)finalizePackage:(id)arg1 error:(out id *)arg2;
+- (id)finalizePackage:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)orderedStagedPayloads;
 - (void)stagePackage:(id)arg1;

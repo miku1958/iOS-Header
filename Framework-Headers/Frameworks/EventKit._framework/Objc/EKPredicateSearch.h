@@ -10,7 +10,6 @@
 
 @class EKEventStore, NSPredicate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface EKPredicateSearch : NSObject <EKCancellableRemoteOperation>
 {
     CDUnknownBlockType _callback;

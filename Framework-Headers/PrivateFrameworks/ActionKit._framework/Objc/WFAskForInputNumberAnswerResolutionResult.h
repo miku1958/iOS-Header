@@ -6,6 +6,7 @@
 
 #import <Intents/INDoubleResolutionResult.h>
 
+__attribute__((visibility("hidden")))
 @interface WFAskForInputNumberAnswerResolutionResult : INDoubleResolutionResult
 {
 }

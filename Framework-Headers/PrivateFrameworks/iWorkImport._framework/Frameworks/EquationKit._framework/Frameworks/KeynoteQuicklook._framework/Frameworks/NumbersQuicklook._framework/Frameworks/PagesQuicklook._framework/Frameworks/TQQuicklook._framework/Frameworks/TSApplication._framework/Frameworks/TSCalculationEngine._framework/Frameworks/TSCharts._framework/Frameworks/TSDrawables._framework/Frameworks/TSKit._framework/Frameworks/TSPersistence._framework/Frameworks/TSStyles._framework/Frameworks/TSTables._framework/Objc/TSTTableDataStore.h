@@ -6,10 +6,12 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
+
 @class NSMutableDictionary, NSObject, TSKCustomFormatList, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTableTileStorage;
 @protocol TSDContainerInfo><TSWPStorageParent;
 
-@interface TSTTableDataStore : TSPContainedObject
+@interface TSTTableDataStore : TSPContainedObject <TSTCompatibilityVersionProviding>
 {
     _Atomic int _iteratorRunningCount;
     vector_e87daf7b _mergedRects;
@@ -86,6 +88,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_needToUpgradeCellStorage;
+- (void)_setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(BOOL)arg6 clearImportWarnings:(BOOL)arg7 richTextDOLCHint:(BOOL *)arg8;
 - (vector_73284f0b)accumulateCurrentCellsConcurrentlyInRow:(struct TSUModelRowIndex)arg1 rowInfo:(id)arg2 atColumns:(vector_5e7df3d8 *)arg3 usingCellCreationBlock:(CDUnknownBlockType)arg4;
 - (id)addPasteboardCustomFormat:(id)arg1 toDocument:(id)arg2 updatingPasteboardFormat:(BOOL)arg3;
 - (void)addPasteboardCustomFormatFromCell:(id)arg1;
@@ -118,19 +121,22 @@
 - (void)decrementCellCountsAtCellID:(struct TSUCellCoord)arg1;
 - (void)decrementColumnCellCount:(unsigned short)arg1 byAmount:(unsigned long long)arg2;
 - (void)didApplyConcurrentCellMap:(id)arg1;
+- (void)embiggenTableForUpgrade;
 - (void)endIteration;
 - (void)enumerateCellStoragesInRange:(struct TSUCellRect)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateCellStoragesRowByRowToMaxID:(struct TSUCellCoord)arg1 getPreBNC:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)forceLoadHeaderStorages;
 - (id)formatDataList;
 - (id)formatForCalcEngineAtCellID:(struct TSUCellCoord)arg1 formatIsExplicitOut:(BOOL *)arg2 refIfAvailable:(struct TSTCellStorage *)arg3;
-- (struct TSCEFormula *)formulaAtCellID:(struct TSUCellCoord)arg1;
+- (id)formulaAtCellID:(struct TSUCellCoord)arg1;
 - (id)formulaDataList;
 - (id)formulaErrorDataList;
 - (id)formulaSpecAtCellID:(struct TSUCellCoord)arg1;
 - (id)formulaSpecForStorageRef:(struct TSTCellStorage *)arg1;
+- (id)formulaSyntaxErrorAtCellID:(struct TSUCellCoord)arg1;
 - (BOOL)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (BOOL)hasFormulaAtCellID:(struct TSUCellCoord)arg1;
+- (BOOL)hasFormulaSyntaxErrorAtCellID:(struct TSUCellCoord)arg1;
 - (double)heightOfRowAtIndex:(unsigned int)arg1;
 - (unsigned char)hidingStateOfColumnAtIndex:(unsigned short)arg1;
 - (unsigned char)hidingStateOfRowAtIndex:(unsigned int)arg1;
@@ -179,6 +185,7 @@
 - (id)richTextDataList;
 - (id)richTextStorageForCalcEngineAtCellID:(struct TSUCellCoord)arg1 refIfAvailable:(struct TSTCellStorage *)arg2;
 - (void)saveToArchive:(struct DataStore *)arg1 archiver:(id)arg2 isInTheDocument:(BOOL)arg3;
+- (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(BOOL)arg6 clearImportWarnings:(BOOL)arg7;
 - (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(BOOL)arg6 clearImportWarnings:(BOOL)arg7 doRichTextDOLC:(BOOL)arg8;
 - (void)setCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormulas:(BOOL)arg5 skipDirtyingNonFormulaCells:(BOOL)arg6 doRichTextDOLC:(BOOL)arg7;
 - (void)setCellStyle:(id)arg1 ofColumnAtIndex:(unsigned short)arg2;

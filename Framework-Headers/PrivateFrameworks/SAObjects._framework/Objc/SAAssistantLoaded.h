@@ -12,6 +12,8 @@
 {
 }
 
+@property (copy, nonatomic) NSNumber *appleConnectSessionExpirationTimestamp;
+@property (copy, nonatomic) NSString *appleConnectSessionToken;
 @property (copy, nonatomic) NSString *dataAnchor;
 @property (copy, nonatomic) NSNumber *requestSync;
 @property (copy, nonatomic) NSArray *syncAnchors;

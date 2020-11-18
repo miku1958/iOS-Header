@@ -21,16 +21,24 @@
 @property (readonly, nonatomic) unsigned long long secondaryDestination;
 
 + (id)_URLComponentsForDestination:(unsigned long long)arg1;
++ (id)_settingsURLHostString:(id)arg1 UUID:(id)arg2 forHome:(id)arg3;
++ (id)_settingsURLHostString:(id)arg1 forHome:(id)arg2;
 + (id)aboutImproveSiriAndDictationURL;
 + (id)aboutResidentDeviceURL;
++ (id)accessoryDetailsURLForAccessory:(id)arg1 home:(id)arg2;
++ (id)bridgeSettingsURLForAccessory:(id)arg1 home:(id)arg2;
++ (id)cameraProfileDetailsURLForCameraProfile:(id)arg1 home:(id)arg2;
++ (id)faceRecognitionSettingsURLForHome:(id)arg1;
 + (id)fixSymptomURLForAccessory:(id)arg1 symptom:(id)arg2;
 + (id)fixSymptomURLForAccessoryWithUUID:(id)arg1 symptom:(id)arg2;
 + (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3;
++ (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3 queryItems:(id)arg4;
 + (BOOL)isHomeAppURL:(id)arg1;
 + (id)locationPrivacyURL;
 + (id)musicLoginURL;
 + (id)musicPrivacyURL;
-+ (id)networkRoutersSettingsURL;
++ (id)networkRouterSettingsURLForHome:(id)arg1;
++ (id)serviceDetailsURLForService:(id)arg1 home:(id)arg2;
 + (id)siriPrivacyURL;
 + (id)symptomFromURL:(id)arg1 accessory:(id)arg2;
 - (void).cxx_destruct;

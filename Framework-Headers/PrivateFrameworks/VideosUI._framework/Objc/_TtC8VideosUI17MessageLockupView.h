@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *logoImageView;
     MISSING_TYPE *labelContainerView;
     MISSING_TYPE *labels;
-    MISSING_TYPE *chevronImageView;
+    MISSING_TYPE *decorationImageView;
     MISSING_TYPE *dividerView;
 }
 

@@ -14,6 +14,7 @@
 
 @interface NTKCompanionRemoteComplicationManager : NSObject <NTKComplicationCollectionObserver, NTKRemoteComplicationProvider>
 {
+    BOOL _loaded;
     NTKComplicationCollection *_remoteComplications;
     NSDictionary *_installedComplications;
     NSMutableDictionary *_syncedComplications;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *installedComplications; // @synthesize installedComplications=_installedComplications;
+@property (nonatomic) BOOL loaded; // @synthesize loaded=_loaded;
 @property (strong, nonatomic) NTKComplicationCollection *remoteComplications; // @synthesize remoteComplications=_remoteComplications;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
@@ -42,12 +44,16 @@
 - (id)_safeComplications;
 - (id)_safeInstalledComplications;
 - (void)complicationCollection:(id)arg1 didRemoveSampleTemplatesForClient:(id)arg2;
-- (void)complicationCollection:(id)arg1 didUpdateSampleTemplateForClient:(id)arg2;
+- (void)complicationCollection:(id)arg1 didUpdateComplicationDescriptorsForClient:(id)arg2;
+- (void)complicationCollection:(id)arg1 didUpdateSampleTemplateForClient:(id)arg2 descriptor:(id)arg3;
 - (void)complicationCollectionDidLoad:(id)arg1;
 - (void)dealloc;
+- (void)enumerateComplicationDescriptorsForClientIdentifier:(id)arg1 family:(long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateEnabledVendorsForComplicationFamily:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)itemIdForVendorWithClientIdentifier:(id)arg1;
 - (id)localizedAppNameForClientIdentifier:(id)arg1;
+- (void)notifyAppForClientIdentifier:(id)arg1 ofSharedComplicationDescriptors:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)vendorExistsWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
 
 @end

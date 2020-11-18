@@ -8,6 +8,7 @@
 
 @class HDDataOriginProvenance, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface _HDDeletedSampleInsertionJournalEntry : HDJournalEntry
 {
     NSArray *_samples;

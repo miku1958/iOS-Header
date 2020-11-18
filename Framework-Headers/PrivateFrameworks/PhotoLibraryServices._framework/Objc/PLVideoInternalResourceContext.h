@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (id)backingResourceForVideoResource:(id)arg1;
 - (BOOL)hasAdjustments;
-- (id)initWithManagedObjectContext:(id)arg1 assetObjectID:(id)arg2;
+- (id)initWithManagedObjectContext:(id)arg1 asset:(id)arg2;
 - (BOOL)isPhotoIris;
 - (id)onDemandInstallAdjustedFullSizeVideoComplementResourceIfPresent;
 - (void)repairResource:(id)arg1;

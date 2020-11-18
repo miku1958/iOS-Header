@@ -17,7 +17,7 @@
 - (BOOL)_hasMessageChatItem;
 - (BOOL)_isInvitation;
 - (id)_newChatItems;
-- (id)_newChatItemsWithFilteredChat:(BOOL)arg1 isBusiness:(BOOL)arg2 parentChatIsSpam:(BOOL)arg3 hasKnownParticipants:(BOOL)arg4;
+- (id)_newChatItemsWithLink:(BOOL)arg1 isBusiness:(BOOL)arg2 parentChatIsSpam:(BOOL)arg3 hasKnownParticipants:(BOOL)arg4;
 - (id)_service;
 - (void)_setInivtation:(BOOL)arg1;
 - (id)descriptionForPurpose:(long long)arg1 isGroupMessage:(BOOL)arg2 messageDataSource:(CDUnknownBlockType)arg3 attachmentDataSource:(CDUnknownBlockType)arg4;

@@ -10,6 +10,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct LocalCIResponder;
+
 struct MIDICIDeviceIdentification {
     unsigned char manufacturer[3];
     unsigned char family[2];
@@ -21,5 +23,10 @@ struct MIDICIDeviceIdentification {
 struct MIDINotification {
     int _field1;
     unsigned int _field2;
+};
+
+struct shared_ptr<LocalCIResponder> {
+    struct LocalCIResponder *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 

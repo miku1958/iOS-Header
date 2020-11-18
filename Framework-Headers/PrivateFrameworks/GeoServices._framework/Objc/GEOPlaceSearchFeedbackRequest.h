@@ -56,7 +56,10 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)feedbackTypeAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

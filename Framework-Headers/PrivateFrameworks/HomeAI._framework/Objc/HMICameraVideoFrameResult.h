@@ -8,34 +8,41 @@
 
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class HMICameraVideoFrame, NSArray, NSDictionary, NSSet;
 
 @interface HMICameraVideoFrameResult : NSObject <NSSecureCoding>
 {
-    unsigned long long _frameId;
+    HMICameraVideoFrame *_frame;
     NSDictionary *_annotationScores;
     long long _events;
     NSArray *_detections;
-    unsigned long long _frameWidth;
-    unsigned long long _frameHeight;
+    NSSet *_faceClassifications;
+    NSSet *_analyzerEvents;
     struct CGRect _regionOfInterest;
 }
 
+@property (readonly) NSSet *analyzerEvents; // @synthesize analyzerEvents=_analyzerEvents;
 @property (readonly) NSDictionary *annotationScores; // @synthesize annotationScores=_annotationScores;
 @property (readonly) NSArray *detections; // @synthesize detections=_detections;
 @property (readonly) long long events; // @synthesize events=_events;
-@property (readonly) unsigned long long frameHeight; // @synthesize frameHeight=_frameHeight;
-@property (readonly) unsigned long long frameId; // @synthesize frameId=_frameId;
-@property (readonly) unsigned long long frameWidth; // @synthesize frameWidth=_frameWidth;
+@property (readonly) NSSet *faceClassifications; // @synthesize faceClassifications=_faceClassifications;
+@property (readonly) HMICameraVideoFrame *frame; // @synthesize frame=_frame;
 @property (readonly) struct CGRect regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
 
++ (id)_annotationScoresFromAnalyzerEvents:(id)arg1;
++ (id)_detectionsFromAnalyzerEvents:(id)arg1;
++ (long long)_eventsFromAnalyzerEvents:(id)arg1;
++ (id)_faceClassificationsFromAnalyzerEvents:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)confidenceThatEventOccurred:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrameId:(unsigned long long)arg1 events:(long long)arg2 annotationScores:(id)arg3 detections:(id)arg4 regionOfInterest:(struct CGRect)arg5 frameWidth:(unsigned long long)arg6 frameHeight:(unsigned long long)arg7;
+- (id)initWithFrame:(id)arg1 events:(long long)arg2 annotationScores:(id)arg3 detections:(id)arg4 regionOfInterest:(struct CGRect)arg5 faceClassifications:(id)arg6;
+- (id)initWithFrame:(id)arg1 regionOfInterest:(struct CGRect)arg2 analyzerEvents:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)maxConfidenceEventForEventClass:(Class)arg1;
 
 @end
 

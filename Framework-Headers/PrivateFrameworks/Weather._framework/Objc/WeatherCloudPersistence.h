@@ -8,20 +8,26 @@
 
 #import <Weather/WeatherPreferencesPersistence-Protocol.h>
 
-@class NSString, NSUbiquitousKeyValueStore;
+@class NSString, NSUbiquitousKeyValueStore, WeatherCloudMigrator;
 @protocol WeatherCloudPersistenceDelegate;
 
 @interface WeatherCloudPersistence : NSObject <WeatherPreferencesPersistence>
 {
     id<WeatherCloudPersistenceDelegate> _delegate;
-    NSUbiquitousKeyValueStore *_cloudStore;
+    WeatherCloudMigrator *_migrator;
+    NSUbiquitousKeyValueStore *_activeCloudStore;
+    NSUbiquitousKeyValueStore *_nonEncryptedStore;
+    NSUbiquitousKeyValueStore *_encryptedStore;
 }
 
-@property (strong) NSUbiquitousKeyValueStore *cloudStore; // @synthesize cloudStore=_cloudStore;
+@property (strong, nonatomic) NSUbiquitousKeyValueStore *activeCloudStore; // @synthesize activeCloudStore=_activeCloudStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<WeatherCloudPersistenceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSUbiquitousKeyValueStore *encryptedStore; // @synthesize encryptedStore=_encryptedStore;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) WeatherCloudMigrator *migrator; // @synthesize migrator=_migrator;
+@property (strong, nonatomic) NSUbiquitousKeyValueStore *nonEncryptedStore; // @synthesize nonEncryptedStore=_nonEncryptedStore;
 @property (readonly) Class superclass;
 
 + (id)cloudPersistenceWithDelegate:(id)arg1;
@@ -31,6 +37,7 @@
 - (BOOL)boolForKey:(id)arg1;
 - (void)cloudCitiesChangedExternally:(id)arg1;
 - (id)dictionaryForKey:(id)arg1;
+- (void)encryptedStoreChanged:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isInitialSyncNotification:(id)arg1;

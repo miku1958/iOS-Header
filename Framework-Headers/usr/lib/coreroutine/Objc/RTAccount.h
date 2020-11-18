@@ -31,7 +31,6 @@
 @property (strong, nonatomic) NSString *primaryEmail; // @synthesize primaryEmail=_primaryEmail;
 @property (nonatomic) BOOL primaryEmailVerified; // @synthesize primaryEmailVerified=_primaryEmailVerified;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 - (id)appleIDs;
 - (id)description;

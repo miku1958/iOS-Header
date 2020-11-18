@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocationMatchInfo, _CLLocationGroundAltitude;
+@class CLLocationMatchInfo, NSData, _CLLocationFusionInfo, _CLLocationGroundAltitude;
 
 @interface CLLocationInternal : NSObject
 {
@@ -14,13 +14,20 @@
     CLLocationMatchInfo *fMatchInfo;
     _CLLocationGroundAltitude *fGroundAltitude;
     double fTrustedTimestamp;
+    NSData *fCoarseMetaData;
+    _CLLocationFusionInfo *fFusionInfo;
+    double fRawHorizontalAccuracy;
+    double fRawCourseAccuracy;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithClientLocation:(CDStruct_0f4838e9)arg1;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 clientLocationPrivate:(CDStruct_f185aced)arg2;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 clientLocationPrivate:(CDStruct_9ef4a103)arg2;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 clientLocationPrivate:(CDStruct_9ef4a103)arg2 coarseMetaData:(id)arg3;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 coarseMetaData:(id)arg2;
 - (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawCourseAccuracy:(double)arg7;
 
 @end
 

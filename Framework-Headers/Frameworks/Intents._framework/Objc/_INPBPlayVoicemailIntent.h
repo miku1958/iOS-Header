@@ -15,12 +15,10 @@
 @interface _INPBPlayVoicemailIntent : PBCodable <_INPBPlayVoicemailIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_callRecordIdentifier;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *callRecordIdentifier; // @synthesize callRecordIdentifier=_callRecordIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

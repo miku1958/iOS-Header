@@ -15,6 +15,8 @@
 
 @interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
 {
+    int _regionStateAtHome;
+    int _regionStateNearbyHome;
     int _locationAuthorization;
     CLLocation *_location;
     NSTimeZone *_timeZone;
@@ -23,7 +25,8 @@
     HMFMessageDispatcher *_msgDispatcher;
     HMDHome *_home;
     NSDate *_locationUpdateTimestamp;
-    CLRegion *_region;
+    CLRegion *_regionAtHome;
+    CLRegion *_regionNearbyHome;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,7 +42,10 @@
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
+@property (strong, nonatomic) CLRegion *regionAtHome; // @synthesize regionAtHome=_regionAtHome;
+@property (strong, nonatomic) CLRegion *regionNearbyHome; // @synthesize regionNearbyHome=_regionNearbyHome;
+@property (nonatomic) int regionStateAtHome; // @synthesize regionStateAtHome=_regionStateAtHome;
+@property (nonatomic) int regionStateNearbyHome; // @synthesize regionStateNearbyHome=_regionStateNearbyHome;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;

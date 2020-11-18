@@ -15,6 +15,7 @@
 - (BOOL)canMakePathEditable;
 - (BOOL)handleSingleTapAtPoint:(struct CGPoint)arg1 withRecognizer:(id)arg2;
 - (BOOL)shouldBeginEditingOnSingleClick;
+- (BOOL)wantsContextMenuWhenEditingDisabledAtPoint:(struct CGPoint)arg1;
 
 @end
 

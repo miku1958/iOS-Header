@@ -40,8 +40,10 @@
 - (id)_transliteratedSpeechCharacters;
 - (id)basicDescription;
 - (BOOL)canSpeakCharacter:(unsigned short)arg1;
+- (BOOL)canSpeakCharacter:(unsigned short)arg1 allowTransliteration:(BOOL)arg2;
 - (BOOL)canSpeakLongCharacter:(unsigned int)arg1;
 - (BOOL)canSpeakString:(id)arg1;
+- (BOOL)canSpeakString:(id)arg1 allowsTransliteration:(BOOL)arg2;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithLocale:(id)arg1 voiceName:(id)arg2 specificLanguageID:(id)arg3 speakableCharacters:(id)arg4 secondaryLanguageRange:(id)arg5;

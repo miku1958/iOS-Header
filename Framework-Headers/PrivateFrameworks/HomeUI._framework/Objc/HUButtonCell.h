@@ -4,27 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeUI/HUTitleDescriptionCell.h>
+#import <UIKit/UITableViewCell.h>
 
-@class NSString;
+#import <HomeUI/HUCellProtocol-Protocol.h>
+#import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
-@interface HUButtonCell : HUTitleDescriptionCell
+@class HFItem, NSString;
+@protocol HUResizableCellDelegate;
+
+@interface HUButtonCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol>
 {
+    BOOL _disabled;
     BOOL _destructive;
     BOOL _textColorFollowsTintColor;
+    BOOL _hideTitle;
+    HFItem *_item;
     long long _textAlignment;
 }
 
-@property (strong, nonatomic) NSString *descriptionText; // @dynamic descriptionText;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDestructive) BOOL destructive; // @synthesize destructive=_destructive;
+@property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
+@property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
+@property (readonly) Class superclass;
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (nonatomic) BOOL textColorFollowsTintColor; // @synthesize textColorFollowsTintColor=_textColorFollowsTintColor;
 
+- (void).cxx_destruct;
 - (void)didMoveToSuperview;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)tintColorDidChange;
 - (void)updateTitle;
+- (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end
 

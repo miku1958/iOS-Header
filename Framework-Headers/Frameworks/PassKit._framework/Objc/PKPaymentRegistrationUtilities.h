@@ -10,7 +10,8 @@
 {
 }
 
-+ (BOOL)_shouldShowAddCardFlow:(id)arg1;
++ (BOOL)_isPaymentSetupSupportedForWebService:(id)arg1;
++ (void)_shouldShowAddCardFlowForWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)configureWebServiceIfNecessary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)registrationIsSupportedInCurrentRegionWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)shouldShowPasscodeAccessibilityOverride:(id)arg1 completion:(CDUnknownBlockType)arg2;

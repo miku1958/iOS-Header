@@ -172,5 +172,9 @@ typedef struct {
     void *_field16;
     void *_field17;
     void **_field18;
-} CDStruct_8ec6d642;
+    BOOL _field19;
+    void *_field20;
+    double _field21;
+    double _field22;
+} CDStruct_33f31899;
 

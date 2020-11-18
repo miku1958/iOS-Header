@@ -10,6 +10,7 @@
 @protocol NTKComplicationDisplay, NTKEditOptionContainerView, NTKKeylineView;
 
 @protocol NTKFaceViewComplicationFactory <NSObject>
+- (UIView<NTKKeylineView> *)complicationPickerKeylineViewForComplicationSlot:(NSString *)arg1;
 - (void)configureComplicationView:(UIView *)arg1 forSlot:(NSString *)arg2;
 - (unsigned long long)keylineLabelAlignmentForComplicationSlot:(NSString *)arg1;
 - (UIView<NTKKeylineView> *)keylineViewForComplicationSlot:(NSString *)arg1;

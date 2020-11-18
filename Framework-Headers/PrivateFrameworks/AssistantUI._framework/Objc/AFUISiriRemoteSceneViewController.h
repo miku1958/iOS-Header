@@ -6,13 +6,13 @@
 
 #import <AssistantUI/AFUISceneHostingViewController.h>
 
-#import <AssistantUI/SRSiriViewControllerHosting-Protocol.h>
+#import <AssistantUI/AFUIViewControllerHosting-Protocol.h>
 #import <AssistantUI/SiriUIPresentationRemoteControlling-Protocol.h>
 
 @class AFApplicationInfo, NSArray, NSString, NSXPCConnection;
 @protocol AFUISiriRemoteSceneViewControllerDataSource, AFUISiriRemoteSceneViewControllerDelegate;
 
-@interface AFUISiriRemoteSceneViewController : AFUISceneHostingViewController <SRSiriViewControllerHosting, SiriUIPresentationRemoteControlling>
+@interface AFUISiriRemoteSceneViewController : AFUISceneHostingViewController <AFUIViewControllerHosting, SiriUIPresentationRemoteControlling>
 {
     BOOL _connectionHasBeenResumed;
     NSArray *_audioCategoriesDisablingVolumeHUD;
@@ -39,6 +39,7 @@
 - (BOOL)_canShowWhileLocked;
 - (id)_connection;
 - (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
+- (void)_handleSceneDidActivateWithIdentifier:(id)arg1;
 - (void)_interrupted;
 - (void)_invalidated;
 - (void)applicationDidBecomeActive;
@@ -50,15 +51,18 @@
 - (void)didReceiveReportBugAction;
 - (void)didReceiveShortTapAction;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)emitUIStateTransitionForSiriDismissal:(int)arg1 withDismissalReason:(int)arg2;
+- (void)emitInstrumentationEvent:(id)arg1;
+- (void)emitUIStateTransitionForSiriDismissalWithDismissalReason:(int)arg1;
 - (void)extendCurrentTTSRequested;
 - (void)getScreenshotWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
+- (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
 - (void)preloadPluginBundles;
 - (void)preloadPresentationBundleWithIdentifier:(id)arg1;
 - (void)pulseHelpButton;
+- (void)requestHostBlurVisible:(BOOL)arg1 reason:(long long)arg2 fence:(id)arg3;
 - (void)sceneController:(id)arg1 willInvalidateScene:(id)arg2 forReason:(unsigned long long)arg3;
 - (void)serviceBulletinWithIdentifier:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)serviceDidDetectAudioRoutePickerTap;
@@ -69,7 +73,6 @@
 - (void)serviceDidEndTaptoEdit;
 - (void)serviceDidEnterUITrackingMode;
 - (void)serviceDidExitUITrackingMode;
-- (void)serviceDidFinishTest:(id)arg1;
 - (void)serviceDidPresentConversationFromBreadcrumb;
 - (void)serviceDidPresentUserInterface;
 - (void)serviceDidPresentViewControllerWithStatusBarStyle:(long long)arg1;
@@ -78,7 +81,6 @@
 - (void)serviceDidRequestKeyboard:(BOOL)arg1;
 - (void)serviceDidRequestKeyboard:(BOOL)arg1 minimized:(BOOL)arg2;
 - (void)serviceDidResetTextInput;
-- (void)serviceFailTest:(id)arg1 withReason:(id)arg2;
 - (void)serviceLaunchApplicationWithBundleIdentifier:(id)arg1 withURL:(id)arg2 launchOptions:(long long)arg3 replyHandler:(CDUnknownBlockType)arg4;
 - (void)serviceOpenURL:(id)arg1 appBundleID:(id)arg2 allowSiriDismissal:(BOOL)arg3;
 - (void)serviceOpenURL:(id)arg1 delaySessionEndForTTS:(BOOL)arg2 replyHandler:(CDUnknownBlockType)arg3;
@@ -97,14 +99,17 @@
 - (void)serviceWillBeginTapToEdit;
 - (void)serviceWillDismissViewControllerWithStatusBarStyle:(long long)arg1;
 - (void)serviceWillPresentViewControllerWithStatusBarStyle:(long long)arg1;
-- (void)serviceWillStartTest:(id)arg1;
 - (id)sessionDelegate;
+- (void)setBottomContentInset:(double)arg1;
 - (void)setBugReportingAvailable:(BOOL)arg1;
 - (void)setCarDisplaySnippetMode:(long long)arg1;
+- (void)setFullScreenDimmingLayerVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHelpButtonEmphasized:(BOOL)arg1;
 - (void)setRequestOptions:(id)arg1;
-- (void)setRunningPPT:(BOOL)arg1 withTestName:(id)arg2 testOptions:(id)arg3;
 - (void)setSession:(id)arg1;
+- (void)setShouldDismissForSwipesOutsideContent:(BOOL)arg1;
+- (void)setShouldDismissForTapOutsideContent:(BOOL)arg1;
+- (void)setShouldDismissForTapsOutsideContent:(BOOL)arg1;
 - (void)setSpeechSynthesis:(id)arg1;
 - (void)setStatusBarFrame:(struct CGRect)arg1;
 - (void)setStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2;
@@ -122,6 +127,7 @@
 - (void)siriIdleAndQuietStatusDidChange:(BOOL)arg1;
 - (void)siriKeyboardViewDidChange:(CDStruct_a82615c4 *)arg1;
 - (void)siriWillActivateFromSource:(long long)arg1;
+- (void)siriWillBeginTearDownForDismissalReason:(unsigned long long)arg1;
 - (void)siriWillHidePasscodeUnlockForResult:(long long)arg1;
 - (void)siriWillShowPasscodeUnlock;
 - (void)siriWillShowPasscodeUnlockAndCancelRequest:(BOOL)arg1;

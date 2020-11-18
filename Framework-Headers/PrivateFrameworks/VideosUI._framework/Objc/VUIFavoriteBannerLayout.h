@@ -20,20 +20,21 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_titleLayout;
     VUITextLayout *_subtitleLayout;
     TVImageLayout *_imageLayout;
+    unsigned long long _bannerStyle;
     struct TVCornerRadii _borderRadii;
     struct UIEdgeInsets _margin;
 }
 
-@property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property (readonly, nonatomic) double bannerMinHeight; // @synthesize bannerMinHeight=_bannerMinHeight;
-@property (readonly, nonatomic) unsigned long long bannerStyle;
-@property (readonly, nonatomic) struct TVCornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
-@property (readonly, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) double bannerMinHeight; // @synthesize bannerMinHeight=_bannerMinHeight;
+@property (nonatomic) unsigned long long bannerStyle; // @synthesize bannerStyle=_bannerStyle;
+@property (nonatomic) struct TVCornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
+@property (strong, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
 @property (readonly, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
-@property (readonly, nonatomic) BOOL isPreModeBanner; // @synthesize isPreModeBanner=_isPreModeBanner;
-@property (readonly, nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
-@property (readonly, nonatomic) double maxTextWidth; // @synthesize maxTextWidth=_maxTextWidth;
-@property (readonly, nonatomic) double subtitleBaseLine; // @synthesize subtitleBaseLine=_subtitleBaseLine;
+@property (nonatomic) BOOL isPreModeBanner; // @synthesize isPreModeBanner=_isPreModeBanner;
+@property (nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
+@property (nonatomic) double maxTextWidth; // @synthesize maxTextWidth=_maxTextWidth;
+@property (nonatomic) double subtitleBaseLine; // @synthesize subtitleBaseLine=_subtitleBaseLine;
 @property (readonly, nonatomic) VUITextLayout *subtitleLayout; // @synthesize subtitleLayout=_subtitleLayout;
 @property (readonly, nonatomic) VUITextLayout *titleLayout; // @synthesize titleLayout=_titleLayout;
 

@@ -8,6 +8,7 @@
 
 @class NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingAssetLoadEvent : MPRTCReportingEvent
 {
     double _duration;

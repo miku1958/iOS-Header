@@ -36,6 +36,7 @@
 @property (readonly, strong) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 @property (readonly, nonatomic) BOOL wasCancelled; // @synthesize wasCancelled=_shouldCancel;
 
+- (void).cxx_destruct;
 - (void)_fillOutputURLFromInputURL;
 - (void)_main_copierFinishedWithResult:(id)arg1;
 - (id)_temporaryCopierPath;

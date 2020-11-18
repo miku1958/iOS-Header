@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216ShowAnywayButton : UIButton
 {
     MISSING_TYPE *onTap;

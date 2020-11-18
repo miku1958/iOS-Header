@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *startTime;
     MISSING_TYPE *currentAnimation;
+    MISSING_TYPE *originalShadowIntensity;
 }
 
 - (id)copyWithZone:(void *)arg1;

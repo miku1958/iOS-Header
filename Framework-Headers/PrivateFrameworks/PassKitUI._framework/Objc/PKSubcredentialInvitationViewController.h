@@ -11,7 +11,7 @@
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
 @class NSString, PKAppletSubcredentialSharingSession, PKHeroCardExplainationHeaderView, PKPeerPaymentContactResolver, PKSubcredentialInvitationFlowControllerContext;
-@protocol PKSubcredentialInvitationFlowControllerProtocol, PKSubcredentialProvisioningFlowController, PKSubcredentialProvisioningViewModelProtocol;
+@protocol PKSubcredentialInvitationFlowControllerProtocol, PKSubcredentialProvisioningViewModelProtocol;
 
 @interface PKSubcredentialInvitationViewController : PKExplanationViewController <PKExplanationViewControllerDelegate, PKSubcredentialInvitationProvisioningFlowControllerOperation, PKViewControllerPreflightable>
 {
@@ -28,7 +28,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<PKSubcredentialProvisioningFlowController> flowController;
+@property (readonly, nonatomic) id<PKSubcredentialInvitationFlowControllerProtocol> flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long operation;
 @property (strong, nonatomic) PKSubcredentialInvitationFlowControllerContext *provisioningContext; // @synthesize provisioningContext=_provisioningContext;

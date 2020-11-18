@@ -8,7 +8,7 @@
 
 #import <IMCore/NSSecureCoding-Protocol.h>
 
-@class CNContact, IMAccount, IMPerson, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
+@class CNContact, IMAccount, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
 
 @interface IMHandle : NSObject <NSSecureCoding>
 {
@@ -22,11 +22,10 @@
     NSDictionary *_extraProps;
     NSDictionary *_certs;
     NSSet *_groups;
-    IMPerson *_person;
-    NSString *_abFirstName;
-    NSString *_abLastName;
-    NSString *_abFullName;
-    NSString *_abNickname;
+    NSString *_cnFirstName;
+    NSString *_cnLastName;
+    NSString *_cnFullName;
+    NSString *_cnNickname;
     NSString *_displayID;
     NSString *_firstName;
     NSString *_lastName;
@@ -60,7 +59,6 @@
     BOOL _isBot;
     BOOL _isAnonymous;
     BOOL _beingTornDown;
-    BOOL _hasCheckedCardMap;
     BOOL _hasCheckedPhoneNumber;
     long long _priority;
     int _addressBookIdentifier;
@@ -77,6 +75,7 @@
     NSData *_mapItemBannerImageData;
     CNContact *_cnContact;
     NSString *_suggestedName;
+    NSString *_cachedDisplayNameWithAbbreviation;
 }
 
 @property (readonly, strong, nonatomic) NSString *ID; // @synthesize ID=_id;
@@ -86,10 +85,10 @@
 @property (readonly, strong, nonatomic) IMAccount *account; // @synthesize account=_account;
 @property (readonly, strong, nonatomic) NSArray *accountSiblingsArray;
 @property (readonly, strong, nonatomic) NSString *accountTypeName;
-@property (readonly, nonatomic) int addressBookIdentifier; // @synthesize addressBookIdentifier=_addressBookIdentifier;
 @property (readonly, nonatomic) unsigned int authRequestStatus; // @synthesize authRequestStatus=_authRequestStatus;
 @property (readonly, strong, nonatomic) id bestAccountSibling;
 @property (readonly, nonatomic) id bestSibling;
+@property (strong, nonatomic) NSString *cachedDisplayNameWithAbbreviation; // @synthesize cachedDisplayNameWithAbbreviation=_cachedDisplayNameWithAbbreviation;
 @property (readonly, nonatomic) BOOL canBeAdded;
 @property (readonly, nonatomic) BOOL canBeDeleted;
 @property (readonly, nonatomic) unsigned long long capabilities;
@@ -142,8 +141,10 @@
 @property (readonly, strong, nonatomic) NSString *offlineString;
 @property (readonly, strong, nonatomic) NSString *originalID; // @synthesize originalID=_uncanonicalID;
 @property (strong, nonatomic) NSDictionary *otherServiceIDs; // @synthesize otherServiceIDs=_otherServiceIDs;
-@property (strong, nonatomic, setter=setIMPerson:) IMPerson *person;
 @property (strong, nonatomic) NSString *personCentricID; // @synthesize personCentricID=_personCentricID;
+@property (readonly, strong, nonatomic) NSString *phoneticFirstName;
+@property (readonly, strong, nonatomic) NSString *phoneticFullName;
+@property (readonly, strong, nonatomic) NSString *phoneticLastName;
 @property (readonly, strong, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
 @property (readonly, nonatomic) unsigned long long previousStatus; // @synthesize previousStatus=_prevStatus;
 @property (readonly, strong, nonatomic) NSString *previousStatusMessage; // @synthesize previousStatusMessage=_prevStatusMsg;
@@ -163,33 +164,30 @@
 @property (readonly, nonatomic) BOOL watchingIMHandle;
 
 + (void)_loadStatusNames;
-+ (void)bestHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)bestHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)bestHandlesForCNContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)bestHandlesForCNContacts:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)bestIMHandleInArray:(id)arg1;
++ (id)cnPhoneticKeys;
 + (id)filterIMHandlesForAccountSiblings:(id)arg1 onAccount:(id)arg2;
 + (id)filterIMHandlesForBestAccountSiblings:(id)arg1;
-+ (void)handlesForPersons:(id)arg1 useBestHandle:(BOOL)arg2 useExtendedAsyncLookup:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-+ (id)imHandlesForIMPerson:(id)arg1;
++ (id)handlesForCNContact:(id)arg1;
++ (void)handlesForCNContacts:(id)arg1 useBestHandle:(BOOL)arg2 useExtendedAsyncLookup:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)imageManager;
 + (id)nameOfStatus:(unsigned long long)arg1;
 + (BOOL)notificationsEnabled;
 + (void)setNotificationsEnabled:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
-+ (void)validHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)validHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)validHandlesForCNContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)validHandlesForCNContacts:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)_IDWithTrimmedServer;
-- (id)__imcnContactWithKeys:(id)arg1;
-- (id)_abPersonCreateIfNeeded;
 - (BOOL)_allowedByScreenTime;
 - (id)_bestChatSibling;
-- (id)_cachedPerson;
 - (id)_chatSiblings;
 - (id)_chatSiblingsArray;
-- (void)_clearABPersonLookup;
-- (void)_clearABProperties;
+- (void)_clearCNContactProperties;
 - (void)_clearStatusMessageURLCache;
 - (id)_contactID;
-- (void)_contactStoreDidChange:(id)arg1;
 - (void)_createPhoneNumberRefIfNeeded;
 - (id)_displayNameWithContact:(id)arg1;
 - (id)_displayNameWithNicknameIfAvailable;
@@ -205,9 +203,9 @@
 - (void)_imPersonPictureChanged:(id)arg1;
 - (BOOL)_isChatSiblingOf:(id)arg1;
 - (BOOL)_isMyIDInList:(id)arg1;
-- (void)_mapItemBannerImageDataFetchedWithResponse:(id)arg1 statusCode:(long long)arg2 resultData:(id)arg3 remoteURLConnectionError:(id)arg4;
+- (void)_mapItemBannerImageDataFetchedWithResultData:(id)arg1 error:(id)arg2;
 - (void)_mapItemFetchedWithMapItems:(id)arg1 error:(id)arg2;
-- (void)_mapItemImageDataFetchedWithResponse:(id)arg1 statusCode:(long long)arg2 resultData:(id)arg3 remoteURLConnectionError:(id)arg4;
+- (void)_mapItemImageDataFetchedWithResultData:(id)arg1 error:(id)arg2;
 - (id)_nameForComparisonPreferFirst:(BOOL)arg1;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationName:(id)arg1 userInfo:(id)arg2;
@@ -217,7 +215,6 @@
 - (void)_sendCommand:(id)arg1 properties:(id)arg2;
 - (void)_sendRemoteLogDumpRequest;
 - (void)_sendRemoteLogDumpRequest:(id)arg1;
-- (void)_setABPersonFirstName:(id)arg1 lastName:(id)arg2;
 - (void)_setBaseFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3;
 - (BOOL)_setCapabilities:(unsigned long long)arg1;
 - (void)_setCountryCode:(id)arg1 updateSiblings:(BOOL)arg2;
@@ -229,13 +226,12 @@
 - (void)_stopRetainingAccount:(id)arg1;
 - (void)_updateOriginalID:(id)arg1;
 - (void)_updateStatusBasedOnAuthRequestStatus;
-- (BOOL)areABPropertiesRecent;
+- (BOOL)areCNContactPropertiesRecent;
 - (void)beginNotificationQueue;
 - (id)bestIMHandleForAccount:(id)arg1;
 - (id)bestIMHandleForAccount:(id)arg1 onService:(id)arg2 inGroup:(id)arg3 otherThan:(id)arg4;
 - (id)bestIMHandleForService:(id)arg1;
 - (id)chatSiblingsArray;
-- (void)clearABPerson;
 - (id)cnContactWithKeys:(id)arg1;
 - (long long)compareAccountNames:(id)arg1;
 - (long long)compareFirstNames:(id)arg1;
@@ -269,6 +265,7 @@
 - (BOOL)isAccountSiblingOf:(id)arg1;
 - (BOOL)isApple;
 - (BOOL)isBetterThanIMHandle:(id)arg1;
+- (BOOL)isBetterThanIMHandle:(id)arg1 nonPhoneNumbersPreferred:(BOOL)arg2;
 - (BOOL)isBusiness;
 - (BOOL)isContact;
 - (BOOL)isMako;
@@ -280,8 +277,8 @@
 - (id)publicAPIPropertiesDictionary;
 - (void)releaseNotificationQueue;
 - (void)requestValueOfProperty:(id)arg1;
-- (BOOL)resetABPerson;
-- (void)resetABProperties;
+- (BOOL)resetCNContact;
+- (void)resetCNContactProperties;
 - (void)resetUniqueName;
 - (void)scheduleSuggestedNameFetchIfNecessary;
 - (void)sendNotificationABPersonChanged;
@@ -293,7 +290,6 @@
 - (void)setEmail:(id)arg1;
 - (void)setEmail:(id)arg1 andUpdateABPerson:(BOOL)arg2;
 - (void)setEmails:(id)arg1;
-- (void)setEmails:(id)arg1 andUpdateABPerson:(BOOL)arg2;
 - (void)setFeedUpdatedDate:(id)arg1;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 andUpdateABPerson:(BOOL)arg4;

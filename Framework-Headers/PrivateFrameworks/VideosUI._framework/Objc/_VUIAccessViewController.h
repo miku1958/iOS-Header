@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)_isHostedInRemoteViewService;
 - (void).cxx_destruct;
 - (void)_allow:(id)arg1;
+- (void)_completeWithStatus:(unsigned long long)arg1;
 - (void)_disallow:(id)arg1;
 - (void)_fetchRemoteAppInfo;
 - (void)_handleMenuGesture:(id)arg1;
@@ -40,10 +41,10 @@ __attribute__((visibility("hidden")))
 - (void)_init;
 - (void)_presentGenericErrorWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setupAccessViews;
+- (void)_setupNavigationBar;
 - (void)_toggleLoadingScreen;
 - (id)_watchListAppIcon;
 - (id)cappedTraitCollection;
-- (void)dealloc;
 - (id)init;
 - (id)initWithBundleIDs:(id)arg1 channels:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)preferredFocusEnvironments;

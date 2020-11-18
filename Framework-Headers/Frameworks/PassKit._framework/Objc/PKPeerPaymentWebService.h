@@ -24,6 +24,7 @@
     PKPeerPaymentService *_peerPaymentService;
 }
 
+@property (readonly, nonatomic) NSString *accountIdentifier;
 @property (readonly, nonatomic) id<PKPeerPaymentWebServiceArchiver> archiver; // @synthesize archiver=_archiver;
 @property (strong, nonatomic) PKPeerPaymentWebServiceContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -57,12 +58,17 @@
 - (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 originalRequest:(id)arg2 redirectHandler:(CDUnknownBlockType)arg3;
-- (id)init;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2 archiver:(id)arg3;
+- (id)initWithContext:(id)arg1 targetDevice:(id)arg2 archiver:(id)arg3 tapToRadarDelegate:(id)arg4;
+- (id)initWithContext:(id)arg1 targetDevice:(id)arg2 tapToRadarDelegate:(id)arg3;
+- (id)initWithTapToRadarDelegate:(id)arg1;
 - (id)logFacility;
 - (unsigned long long)peerPaymentAcceptTermsWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)peerPaymentAddAssociatedAccountWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)peerPaymentAssociatedAccountActionWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)peerPaymentAssociatedAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentBankLookupWithCountryCode:(id)arg1 query:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)peerPaymentDocumentSubmissionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentEmailTermsWithCompletion:(CDUnknownBlockType)arg1;
@@ -76,7 +82,8 @@
 - (unsigned long long)peerPaymentReOpenAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentRecipientForRecipientAddress:(id)arg1 senderAddress:(id)arg2 source:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)peerPaymentRegisterWithURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (unsigned long long)peerPaymentRequestStatementWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)peerPaymentRemoveAssociatedAccountWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)peerPaymentRequestStatementForAccountIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentRequestTokenWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentStatusWithPaymentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentUnregisterWithCompletion:(CDUnknownBlockType)arg1;

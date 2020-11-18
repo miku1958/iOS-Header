@@ -8,12 +8,13 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSIssueData : PBCodable <NSCopying>
 {
     NSString *_issueId;
     int _issueType;
+    NSMutableArray *_topicIds;
     BOOL _isBundlePaid;
     CDStruct_e072d072 _has;
 }
@@ -24,9 +25,13 @@
 @property (nonatomic) BOOL isBundlePaid; // @synthesize isBundlePaid=_isBundlePaid;
 @property (strong, nonatomic) NSString *issueId; // @synthesize issueId=_issueId;
 @property (nonatomic) int issueType; // @synthesize issueType=_issueType;
+@property (strong, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 
++ (Class)topicIdsType;
 - (void).cxx_destruct;
 - (int)StringAsIssueType:(id)arg1;
+- (void)addTopicIds:(id)arg1;
+- (void)clearTopicIds;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +41,8 @@
 - (id)issueTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
 - (void)writeTo:(id)arg1;
 
 @end

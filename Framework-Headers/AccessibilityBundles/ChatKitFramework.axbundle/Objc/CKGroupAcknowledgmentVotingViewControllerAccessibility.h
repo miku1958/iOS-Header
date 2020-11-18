@@ -18,6 +18,7 @@
 - (id)collapseButton;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (void)viewDidLoad;
 
 @end
 

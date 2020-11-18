@@ -10,14 +10,12 @@
 
 @interface AVTPresetDependency : NSObject
 {
-    long long category;
-    AVTPreset *preset;
-    NSString *variantName;
+    long long _category;
+    AVTPreset *_preset;
+    NSString *_morphVariant;
+    NSString *_imageVariant;
+    NSString *_materialVariant;
 }
-
-@property (nonatomic) long long category; // @synthesize category;
-@property (strong, nonatomic) AVTPreset *preset; // @synthesize preset;
-@property (strong, nonatomic) NSString *variantName; // @synthesize variantName;
 
 - (void).cxx_destruct;
 - (id)debugDescription;

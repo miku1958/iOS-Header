@@ -9,13 +9,11 @@
 #import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID, RTMapItem;
+@class NSArray, NSString, NSUUID, RTLocation, RTMapItem;
 
 @interface RTLocationOfInterest : NSObject <NSCopying, NSSecureCoding>
 {
-    double _latitude;
-    double _longitude;
-    double _uncertainty;
+    RTLocation *_location;
     double _confidence;
     NSUUID *_identifier;
     long long _type;
@@ -27,18 +25,19 @@
 
 @property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) NSString *customLabel; // @synthesize customLabel=_customLabel;
-@property (readonly, nonatomic) long long geoMapItemSource;
+@property (readonly, nonatomic) unsigned long long geoMapItemSource;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
-@property (readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property (readonly, nonatomic) double latitude;
+@property (readonly, nonatomic) RTLocation *location; // @synthesize location=_location;
+@property (readonly, nonatomic) double longitude;
 @property (readonly, nonatomic) RTMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (readonly, nonatomic) NSString *preferredName;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) unsigned long long typeSource; // @synthesize typeSource=_typeSource;
-@property (readonly, nonatomic) double uncertainty; // @synthesize uncertainty=_uncertainty;
+@property (readonly, nonatomic) double uncertainty;
 @property (readonly, nonatomic) NSArray *visits; // @synthesize visits=_visits;
 
-+ (id)geoMapItemSourceToString:(long long)arg1;
++ (id)geoMapItemSourceToString:(unsigned long long)arg1;
 + (BOOL)locationOfInterestTypeIsValid:(long long)arg1;
 + (id)locationOfInterestTypeSourceToString:(unsigned long long)arg1;
 + (id)locationOfInterestTypeToString:(long long)arg1;
@@ -50,10 +49,14 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 confidence:(double)arg4 identifier:(id)arg5 type:(long long)arg6 typeSource:(unsigned long long)arg7 visits:(id)arg8 customLabel:(id)arg9 mapItem:(id)arg10;
+- (id)initWithLocation:(id)arg1 confidence:(double)arg2 identifier:(id)arg3 type:(long long)arg4 typeSource:(unsigned long long)arg5 visits:(id)arg6 customLabel:(id)arg7 mapItem:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (id)nameFromType:(long long)arg1;
+- (id)pruneVisitsWithDateInterval:(id)arg1;
 - (long long)recentCompare:(id)arg1;
+- (void)setLatitude:(double)arg1;
+- (void)setLongitude:(double)arg1;
+- (void)setUncertainty:(double)arg1;
 
 @end
 

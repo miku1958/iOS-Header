@@ -22,7 +22,9 @@
 - (void)dealloc;
 - (void)getConformingSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getConformingSharedUserIds:(CDUnknownBlockType)arg1;
+- (void)getFirstNameForSharedUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getHomeUserIdForSharedUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getMultiUserSettingsForSharedUserID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSharedUserProfileLimitWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;

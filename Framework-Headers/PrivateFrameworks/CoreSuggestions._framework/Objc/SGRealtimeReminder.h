@@ -15,11 +15,13 @@
 @interface SGRealtimeReminder : NSObject <NSSecureCoding, NSCopying, SGRealtimeSuggestion>
 {
     SGReminder *_reminder;
+    NSString *_notes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (readonly, nonatomic) SGReminder *reminder; // @synthesize reminder=_reminder;
 @property (readonly) Class superclass;
 
@@ -28,7 +30,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithReminder:(id)arg1;
+- (id)initWithReminder:(id)arg1 notes:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRealtimeReminder:(id)arg1;
 

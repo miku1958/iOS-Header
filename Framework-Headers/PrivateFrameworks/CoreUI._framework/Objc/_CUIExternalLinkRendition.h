@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)assetPackIdentifier;
 - (void)dealloc;
 - (id)externalTags;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end
 

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _showSelection;
     EKEvent *_selectedEvent;
     BOOL _usesSmallText;
+    BOOL _smallTextSettingLocked;
     BOOL _showBirthdayCount;
     long long _birthdayCount;
     long long _targetSizeClass;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)_selectedCopyView;
 - (void)_setUpBirthdayCountViewIfNeeded;
 - (long long)_sizeClass;
+- (void)_smallTextSettingChanged;
 - (void)addViewToScroller:(id)arg1;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsEvent:(id)arg1;
@@ -81,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2;
 - (BOOL)isAllDayLabelHighlighted;
 - (void)layoutSubviews;
+- (void)lockUseOfSmallTextToState:(BOOL)arg1;
 - (double)nextAvailableOccurrenceViewYOrigin;
 - (id)occurrenceViewForEvent:(id)arg1;
 - (id)occurrenceViews;

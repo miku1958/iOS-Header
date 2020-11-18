@@ -38,7 +38,6 @@
 - (id)init;
 - (void)loginDelegates:(id)arg1 parameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerAccount:(id)arg1 withHSA:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)registerAccount:(id)arg1 withHSA:(BOOL)arg2 usingCookieHeaders:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

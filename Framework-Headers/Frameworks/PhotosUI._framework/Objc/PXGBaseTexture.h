@@ -48,6 +48,7 @@
 - (void)getSpriteIndexes:(unsigned int *)arg1 maxSpriteCount:(unsigned int)arg2;
 - (id)init;
 - (void)processPendingTextureRequestIDsWithHandler:(CDUnknownBlockType)arg1;
+- (void)removeAllSpriteIndexes;
 - (void)removeSpriteIndex:(unsigned int)arg1;
 
 @end

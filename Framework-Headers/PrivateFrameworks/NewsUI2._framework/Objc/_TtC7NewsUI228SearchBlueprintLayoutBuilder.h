@@ -11,6 +11,10 @@
 @interface _TtC7NewsUI228SearchBlueprintLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tagViewLayoutAttributesFactory;
+    MISSING_TYPE *searchHeaderLayoutAttributesFactory;
+    MISSING_TYPE *sectionFooterViewLayoutAttributesFactory;
+    MISSING_TYPE *styler;
+    MISSING_TYPE *feedLayoutSolver;
 }
 
 @end

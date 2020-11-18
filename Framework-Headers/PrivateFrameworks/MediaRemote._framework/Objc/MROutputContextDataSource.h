@@ -24,10 +24,6 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (void)notifyOutputDeviceAdded:(id)arg1;
-- (void)notifyOutputDeviceRemoved:(id)arg1;
-- (void)notifyVolumeCapabilitiesDidChange:(unsigned int)arg1 outputDevice:(id)arg2;
-- (void)notifyVolumeDidChange:(float)arg1 outputDevice:(id)arg2;
 - (id)outputDeviceForUID:(id)arg1;
 
 @end

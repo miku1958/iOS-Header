@@ -8,6 +8,7 @@
 
 @class MPMediaLibrary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryGlobalPlaylistImportChangeRequestOperation : MPAsyncOperation
 {
     BOOL _shouldLibraryAdd;

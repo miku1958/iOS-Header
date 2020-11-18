@@ -10,7 +10,10 @@
 {
 }
 
-+ (id)appBlacklist;
++ (id)appBlocklist;
++ (id)contactHandlesForMailMessage:(id)arg1;
++ (id)contactHandlesForSearchableItem:(id)arg1;
++ (id)contactHandlesForTextMessage:(id)arg1;
 
 @end
 

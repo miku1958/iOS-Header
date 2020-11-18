@@ -6,18 +6,30 @@
 
 #import <AXMediaUtilities/AXMEvaluationNode.h>
 
-@class AXMImageCaptionModel;
+@class AXImageCaptionModel, AXMSceneDetectorNode, NSURL;
 
 @interface AXMCaptionDetectorNode : AXMEvaluationNode
 {
-    AXMImageCaptionModel *_captionImpl;
+    AXMSceneDetectorNode *_sceneDetector;
 }
 
+@property (readonly, nonatomic) AXImageCaptionModel *effectiveCaptionModelInfo;
+@property (readonly, nonatomic) NSURL *effectiveModelURL;
+@property (nonatomic) unsigned long long genderStrategy;
+@property (strong, nonatomic) NSURL *overrideModelURL;
+@property (nonatomic) unsigned long long overrideScaleMethod;
+@property (weak, nonatomic) AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
+
 + (BOOL)isSupported;
++ (struct CGSize)preferredModelInputSize;
 + (BOOL)supportsSecureCoding;
 + (id)title;
 - (void).cxx_destruct;
-- (void)evaluate:(id)arg1;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (void)nodeInitialize;
 - (BOOL)requiresVisionFramework;
 
 @end

@@ -22,6 +22,7 @@
     MPCPlayerResponse *_response;
     MPSectionedCollection *_items;
     NSIndexPath *_playingItemIndexPath;
+    MPSectionedCollection *_displayItems;
     long long _playingItemGlobalIndex;
     long long _globalItemCount;
 }
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) MPSectionedCollection *displayItems; // @synthesize displayItems=_displayItems;
 @property (readonly, nonatomic) long long globalItemCount; // @synthesize globalItemCount=_globalItemCount;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) MPSectionedCollection *items; // @synthesize items=_items;
@@ -51,12 +53,14 @@
 - (id)actionAtQueueEndCommand;
 - (id)changeItemCommand;
 - (id)disableModificationsCommand;
+- (id)displayIndexPathForStructuredIndexPath:(id)arg1;
 - (id)initWithResponse:(id)arg1;
 - (id)insertCommand;
 - (id)reorderCommand;
 - (id)repeatCommand;
 - (id)resetCommand;
 - (id)shuffleCommand;
+- (id)structuredIndexPathForDisplayIndexPath:(id)arg1;
 
 @end
 

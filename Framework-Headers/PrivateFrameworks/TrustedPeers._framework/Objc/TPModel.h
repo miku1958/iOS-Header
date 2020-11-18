@@ -53,7 +53,7 @@
 - (void)considerPreapprovalsSponsoredByPeer:(id)arg1 toRecursivelyExpandIncludedPeerIDs:(id)arg2 andExcludedPeerIDs:(id)arg3 dispositions:(id)arg4 currentMachineIDs:(id)arg5 forEpoch:(unsigned long long)arg6;
 - (void)considerVouchersSponsoredByPeerID:(id)arg1 sponsorPermanentInfo:(id)arg2 toRecursivelyExpandIncludedPeerIDs:(id)arg3 andExcludedPeerIDs:(id)arg4 dispositions:(id)arg5 currentMachineIDs:(id)arg6 forEpoch:(unsigned long long)arg7;
 - (id)createDynamicInfoWithIncludedPeerIDs:(id)arg1 excludedPeerIDs:(id)arg2 dispositions:(id)arg3 preapprovals:(id)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
-- (id)createStableInfoWithFrozenPolicyVersion:(id)arg1 flexiblePolicyVersion:(id)arg2 policySecrets:(id)arg3 deviceName:(id)arg4 serialNumber:(id)arg5 osVersion:(id)arg6 signingKeyPair:(id)arg7 recoverySigningPubKey:(id)arg8 recoveryEncryptionPubKey:(id)arg9 error:(id *)arg10;
+- (id)createStableInfoWithFrozenPolicyVersion:(id)arg1 flexiblePolicyVersion:(id)arg2 policySecrets:(id)arg3 syncUserControllableViews:(int)arg4 deviceName:(id)arg5 serialNumber:(id)arg6 osVersion:(id)arg7 signingKeyPair:(id)arg8 recoverySigningPubKey:(id)arg9 recoveryEncryptionPubKey:(id)arg10 error:(id *)arg11;
 - (id)createVoucherForCandidate:(id)arg1 stableInfo:(id)arg2 withSponsorID:(id)arg3 reason:(unsigned long long)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
 - (id)currentCachedViableBottlesSet;
 - (void)deletePeerWithID:(id)arg1;
@@ -67,6 +67,7 @@
 - (id)getViewsForPeer:(id)arg1 stableInfo:(id)arg2 error:(id *)arg3;
 - (BOOL)hasPeerWithID:(id)arg1;
 - (BOOL)hasPotentiallyTrustedPeerPreapprovingKey:(id)arg1;
+- (BOOL)hasPotentiallyTrustedPeerWithSigningKey:(id)arg1;
 - (id)initWithDecrypter:(id)arg1;
 - (BOOL)isRecoveryKeyEnrolled;
 - (unsigned long long)latestEpochAmongPeerIDs:(id)arg1;
@@ -90,6 +91,7 @@
 - (id)untrustedPeerIDs;
 - (BOOL)updateDynamicInfo:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;
 - (BOOL)updateStableInfo:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;
+- (int)userViewSyncabilityConsensusAmongTrustedPeers:(id)arg1;
 - (BOOL)validatePeerWithPreApproval:(id)arg1 sponsor:(id)arg2;
 - (BOOL)validateVoucherForPeer:(id)arg1 sponsor:(id)arg2;
 - (id)vectorClock;

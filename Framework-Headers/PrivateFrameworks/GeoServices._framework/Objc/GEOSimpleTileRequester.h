@@ -18,7 +18,6 @@
     NSMutableArray *_running;
     NSMutableArray *_errors;
     NSObject<OS_os_activity> *_activity;
-    NSObject<OS_voucher> *_voucher;
     GEODataSession *_dataSession;
     unsigned int _qos;
     struct GEOOnce_s _didStart;
@@ -34,6 +33,7 @@
     BOOL _includeReasonHeader;
     BOOL _allowTLSSessionTicketUse;
     BOOL _allowTCPFastOpen;
+    NSObject<OS_voucher> *_voucher;
 }
 
 @property (readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
@@ -42,7 +42,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned int highestRunningOperationPriority;
-@property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue;
 
@@ -65,7 +64,6 @@
 - (void)_updateHighestRunningPriority;
 - (void)_updateRunningCountAndCheckIfDone;
 - (BOOL)_useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
-- (BOOL)allowsCookies;
 - (void)cancel;
 - (void)cancelKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(struct _GEOTileKey *)arg1;

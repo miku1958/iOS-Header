@@ -15,7 +15,7 @@
     id<MTLBuffer> _preluBuffer;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)encodeBatchToCommandBuffer:(id)arg1 sourceGradients:(id)arg2 sourceImages:(id)arg3 batchNormalizationState:(id)arg4;

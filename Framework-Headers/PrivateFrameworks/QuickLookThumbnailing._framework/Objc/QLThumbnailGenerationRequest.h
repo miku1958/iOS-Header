@@ -9,7 +9,7 @@
 #import <QuickLookThumbnailing/NSCopying-Protocol.h>
 #import <QuickLookThumbnailing/NSSecureCoding-Protocol.h>
 
-@class FPItem, FPSandboxingURLWrapper, NSDate, NSError, NSString, NSURL, NSUUID, QLCacheBasicVersionedFileIdentifier, QLCacheFileProviderVersionedFileIdentifier, QLThumbnailRepresentation;
+@class FPItem, FPSandboxingURLWrapper, NSData, NSDate, NSDictionary, NSError, NSString, NSURL, NSUUID, QLCacheBasicVersionedFileIdentifier, QLCacheFileProviderVersionedFileIdentifier, QLThumbnailRepresentation, UTType;
 
 @interface QLThumbnailGenerationRequest : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,7 +19,7 @@
     BOOL _finished;
     BOOL _downloadingAllowed;
     int _interpolationQuality;
-    NSString *_contentType;
+    NSString *_contentTypeUTI;
     double _minimumDimension;
     double _scale;
     unsigned long long _representationTypes;
@@ -28,6 +28,7 @@
     FPSandboxingURLWrapper *_parentDirectorySandboxWrapper;
     NSURL *_fileURL;
     FPItem *_item;
+    NSData *_data;
     NSUUID *_uuid;
     QLCacheBasicVersionedFileIdentifier *_basicFileIdentifier;
     QLCacheFileProviderVersionedFileIdentifier *_fileProviderFileIdentifier;
@@ -35,6 +36,8 @@
     long long _iconVariant;
     long long _generationBehavior;
     NSError *_requestIsInvalidError;
+    NSDictionary *_externalThumbnailGeneratorData;
+    unsigned long long _externalThumbnailGeneratorDataHash;
     NSDate *_beginDate;
     QLThumbnailRepresentation *_mostRepresentativeThumbnail;
     CDUnknownBlockType _updateBlock;
@@ -53,8 +56,12 @@
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property (strong, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property (copy, nonatomic) UTType *contentType;
+@property (strong, nonatomic) NSString *contentTypeUTI; // @synthesize contentTypeUTI=_contentTypeUTI;
+@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (nonatomic, getter=isDownloadingAllowed) BOOL downloadingAllowed; // @synthesize downloadingAllowed=_downloadingAllowed;
+@property (strong, nonatomic) NSDictionary *externalThumbnailGeneratorData; // @synthesize externalThumbnailGeneratorData=_externalThumbnailGeneratorData;
+@property (nonatomic) unsigned long long externalThumbnailGeneratorDataHash; // @synthesize externalThumbnailGeneratorDataHash=_externalThumbnailGeneratorDataHash;
 @property (strong, nonatomic) QLCacheFileProviderVersionedFileIdentifier *fileProviderFileIdentifier; // @synthesize fileProviderFileIdentifier=_fileProviderFileIdentifier;
 @property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
@@ -87,6 +94,7 @@
 
 + (id)_basicFileIdentifierForURL:(id)arg1 error:(id *)arg2;
 + (id)_fileProviderFileIdentifierForFPItem:(id)arg1;
++ (id)customExtensionCommunicationEncodedClasses;
 + (id)requestWithThumbnailRequest:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -103,9 +111,11 @@
 - (BOOL)forceGeneration;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1 contentType:(id)arg2 size:(struct CGSize)arg3 scale:(double)arg4 representationTypes:(unsigned long long)arg5;
 - (id)initWithFPItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 representationTypes:(unsigned long long)arg4;
 - (id)initWithFileAtURL:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 representationTypes:(unsigned long long)arg4;
 - (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 representationTypes:(unsigned long long)arg3;
+- (BOOL)isDataBased;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFileBased;
 - (BOOL)isUbiquitous;

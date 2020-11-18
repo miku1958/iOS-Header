@@ -52,6 +52,7 @@
 - (BOOL)setQuantityTypesIncludedWhilePaused:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (BOOL)setSessionIdentifier:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (BOOL)setStartDate:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (BOOL)setWorkoutConfiguration:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)startDateInTransaction:(id)arg1 error:(id *)arg2;
 - (BOOL)storeStatisticsCalculator:(id)arg1 anchor:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 - (id)workoutEventsInTransaction:(id)arg1 error:(id *)arg2;

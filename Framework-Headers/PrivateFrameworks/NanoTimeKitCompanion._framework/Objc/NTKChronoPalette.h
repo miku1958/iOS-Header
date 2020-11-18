@@ -22,6 +22,7 @@
     UIColor *_inlayColor;
     UIColor *_glyphColor;
     UIColor *_glyphBackgroundColor;
+    UIColor *_swatchColor;
     double _smallTickValue;
     double _largeTickValue;
     unsigned long long _paletteColor;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) unsigned long long paletteColor; // @synthesize paletteColor=_paletteColor;
 @property (readonly, nonatomic) BOOL showsShadows; // @synthesize showsShadows=_showsShadows;
 @property (readonly, nonatomic) double smallTickValue; // @synthesize smallTickValue=_smallTickValue;
+@property (readonly, nonatomic) UIColor *swatchColor; // @synthesize swatchColor=_swatchColor;
 @property (readonly, nonatomic) UIColor *tickColor; // @synthesize tickColor=_tickColor;
 
 + (id)interpolationFromPalette:(id)arg1 toPalette:(id)arg2 fraction:(double)arg3;

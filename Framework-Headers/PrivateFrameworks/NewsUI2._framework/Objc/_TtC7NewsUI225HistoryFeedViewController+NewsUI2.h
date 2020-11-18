@@ -8,8 +8,12 @@
 
 @interface _TtC7NewsUI225HistoryFeedViewController (NewsUI2)
 - (void)clearHistory;
+- (void)tabBarSplitViewDidUnobsureView;
+- (void)tabBarSplitViewWillObsureView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 @end
 

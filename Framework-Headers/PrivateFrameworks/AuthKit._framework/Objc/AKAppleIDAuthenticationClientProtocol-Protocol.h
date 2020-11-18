@@ -14,6 +14,7 @@
 - (void)dismissNativeRecoveryUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)dismissSecondFactorUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)dismissServerProvidedUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)launchOutOfProcessAuthentication:(AKAppleIDAuthenticationContext *)arg1 surrogateID:(NSUUID *)arg2 withErrorHandler:(void (^)(NSError *))arg3;
 - (void)presentBasicLoginUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSString *, NSString *, NSDictionary *, NSError *))arg2;
 - (void)presentBiometricOrPasscodeValidationForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)presentKeepUsingUIForContext:(AKAppleIDAuthenticationContext *)arg1 appleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

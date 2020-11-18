@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription37DeferredBundleHardPaywallViewProvider : NSObject
 {
     MISSING_TYPE *delegate;
@@ -18,7 +17,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *deferredBundleHardPaywallView;
     MISSING_TYPE *renderer;
     MISSING_TYPE *layoutAttributesFactory;
-    MISSING_TYPE *image;
+    MISSING_TYPE *images;
+    MISSING_TYPE *badgeImages;
     MISSING_TYPE *videoFileURL;
 }
 

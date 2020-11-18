@@ -18,7 +18,7 @@
 @property (readonly, nonatomic) NSURL *excludedURL; // @synthesize excludedURL=_excludedURL;
 
 - (void).cxx_destruct;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

@@ -10,11 +10,14 @@
 
 @interface _TtC7SwiftUIP33_64A26C7A8406856A733B1A7B593971F711Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
 {
-    MISSING_TYPE *onTrigger;
+    MISSING_TYPE *action;
+    MISSING_TYPE *menuAttribute;
+    MISSING_TYPE *cachedMenu;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)menuActionTriggered:(id)arg1;
 - (void)primaryActionTriggered:(id)arg1;
 
 @end

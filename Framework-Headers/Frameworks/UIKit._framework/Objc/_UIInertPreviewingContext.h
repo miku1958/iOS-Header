@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UIView *customViewForInteractiveHighlight; // @synthesize customViewForInteractiveHighlight=_customViewForInteractiveHighlight;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<UIViewControllerPreviewingDelegate> delegate;
+@property (weak, nonatomic) id<UIViewControllerPreviewingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship;
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithSourceView:(id)arg1;
 - (struct CGRect)preferredSourceViewRectInCoordinateSpace:(id)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)unregister;
 
 @end

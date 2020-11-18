@@ -12,6 +12,7 @@
 
 @optional
 - (_SFDownload *)sfWebView:(_SFWebView *)arg1 didStartDownload:(_WKDownload *)arg2;
+- (BOOL)sfWebViewCanPromptForAccountSecurityRecommendation;
 - (void)sfWebViewDidBecomeFirstResponder:(_SFWebView *)arg1;
 - (void)sfWebViewDidChangeSafeAreaInsets:(_SFWebView *)arg1;
 - (void)sfWebViewDidEndFormControlInteraction:(_SFWebView *)arg1;

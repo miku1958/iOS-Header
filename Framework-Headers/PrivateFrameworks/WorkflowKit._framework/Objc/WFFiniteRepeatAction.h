@@ -19,7 +19,7 @@
 - (id)repeatInputWithVariableSource:(id)arg1;
 - (void)resetEvaluationCriteriaWithVariableSource:(id)arg1;
 - (void)runWithInput:(id)arg1 error:(id *)arg2;
-- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)setRepeatCount:(long long)arg1 withVariableSource:(id)arg2;
 - (void)setRepeatInput:(id)arg1 withVariableSource:(id)arg2;
 - (BOOL)shouldRepeatWithVariableSource:(id)arg1;

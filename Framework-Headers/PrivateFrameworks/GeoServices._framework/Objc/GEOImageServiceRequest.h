@@ -36,7 +36,10 @@
 - (unsigned long long)hash;
 - (id)imageIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)imageIdsCount;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

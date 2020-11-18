@@ -9,7 +9,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INSpeakableString, NSArray, NSDate, NSString;
+@class INDateComponentsRange, INSpeakableString, NSArray, NSDate, NSString, NSURL;
 
 @interface INReservation : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,14 +19,19 @@
     long long _reservationStatus;
     NSString *_reservationHolderName;
     NSArray *_actions;
+    NSURL *_URL;
+    INDateComponentsRange *__duration;
 }
 
+@property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (readonly, copy, nonatomic) INDateComponentsRange *_duration; // @synthesize _duration=__duration;
 @property (readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, copy, nonatomic) NSDate *bookingTime; // @synthesize bookingTime=_bookingTime;
 @property (readonly, copy, nonatomic) INSpeakableString *itemReference; // @synthesize itemReference=_itemReference;
 @property (readonly, copy, nonatomic) NSString *reservationHolderName; // @synthesize reservationHolderName=_reservationHolderName;
 @property (readonly, copy, nonatomic) NSString *reservationNumber; // @synthesize reservationNumber=_reservationNumber;
 @property (readonly, nonatomic) long long reservationStatus; // @synthesize reservationStatus=_reservationStatus;
+@property (readonly, copy, nonatomic) NSURL *url;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -38,6 +43,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemReference:(id)arg1 reservationNumber:(id)arg2 bookingTime:(id)arg3 reservationStatus:(long long)arg4 reservationHolderName:(id)arg5 actions:(id)arg6;
+- (id)initWithItemReference:(id)arg1 reservationNumber:(id)arg2 bookingTime:(id)arg3 reservationStatus:(long long)arg4 reservationHolderName:(id)arg5 actions:(id)arg6 URL:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

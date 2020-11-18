@@ -9,19 +9,17 @@
 #import <PhotoAnalysis/PHAAssetResourceDataLoading-Protocol.h>
 
 @class NSMutableSet, NSString, PHPhotoLibrary;
-@protocol OS_dispatch_queue, PHADownloadRequestManagement;
+@protocol OS_dispatch_queue;
 
 @interface PHAAssetResourceDataLoader : NSObject <PHAAssetResourceDataLoading>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_activeDownloads;
     PHPhotoLibrary *_photoLibrary;
-    id<PHADownloadRequestManagement> _downloadRequestManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) id<PHADownloadRequestManagement> downloadRequestManager; // @synthesize downloadRequestManager=_downloadRequestManager;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

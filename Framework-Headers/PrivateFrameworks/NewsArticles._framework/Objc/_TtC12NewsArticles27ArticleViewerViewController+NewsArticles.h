@@ -6,10 +6,16 @@
 
 #import <NewsArticles/_TtC12NewsArticles27ArticleViewerViewController.h>
 
-@interface _TtC12NewsArticles27ArticleViewerViewController (NewsArticles)
+#import <NewsArticles/NANavigationControl-Protocol.h>
+
+@interface _TtC12NewsArticles27ArticleViewerViewController (NewsArticles) <NANavigationControl>
 
 @property (nonatomic, readonly) long long preferredStatusBarStyle;
 
+- (void)enableNavigation:(BOOL)arg1;
+- (void)tabBarSplitViewDidUnobsureView;
+- (void)tabBarSplitViewWillChangeDisplayModeToDisplayMode:(long long)arg1;
+- (void)tabBarSplitViewWillObsureView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

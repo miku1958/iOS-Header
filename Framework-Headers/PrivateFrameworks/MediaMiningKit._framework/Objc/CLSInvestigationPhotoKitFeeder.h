@@ -6,7 +6,7 @@
 
 #import <MediaMiningKit/CLSInvestigationFeeder.h>
 
-@class CLSFeederPrefetchOptions, NSArray, PHAssetCollection, PHFetchOptions, PHFetchResult;
+@class NSArray, PHAssetCollection, PHFetchOptions, PHFetchResult;
 
 @interface CLSInvestigationPhotoKitFeeder : CLSInvestigationFeeder
 {
@@ -16,7 +16,6 @@
     unsigned long long _numberOfAllPeople;
     PHAssetCollection *_assetCollection;
     PHFetchOptions *_assetFetchOptions;
-    CLSFeederPrefetchOptions *_prefetchOptions;
 }
 
 @property (readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
@@ -29,7 +28,6 @@
 @property (readonly, nonatomic) unsigned long long numberOfAllPeople;
 @property (readonly, nonatomic) unsigned long long numberOfRegularGemItems;
 @property (readonly, nonatomic) unsigned long long numberOfShinyGemItems;
-@property (readonly, copy, nonatomic) CLSFeederPrefetchOptions *prefetchOptions; // @synthesize prefetchOptions=_prefetchOptions;
 
 + (id)feederForAssetCollection:(id)arg1 options:(id)arg2 feederPrefetchOptions:(id)arg3;
 - (void).cxx_destruct;
@@ -38,9 +36,9 @@
 - (id)approximateLocation;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)initWithFeederWithAssetCollection:(id)arg1 assetFetchOptions:(id)arg2 feederPrefetchOptions:(id)arg3;
+- (id)initWithAssetCollection:(id)arg1 assetFetchOptions:(id)arg2 feederPrefetchOptions:(id)arg3;
+- (id)initWithAssetFetchResult:(id)arg1;
 - (id)itemAtIndex:(unsigned long long)arg1;
-- (struct CGImage *)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
 - (id)localEndDate;
 - (id)localEndDateComponents;
 - (id)localStartDate;

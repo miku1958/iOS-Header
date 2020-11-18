@@ -11,7 +11,6 @@
     BOOL _supportsContainedTextEditing;
     BOOL _showsCellEditingToolbar;
     BOOL _supportsAutomaticNumberKeyboard;
-    BOOL _beginEditingOnSingleTap;
     BOOL _supportsMergedCells;
     BOOL _supportsHiddenCells;
     BOOL _returnWhileEditingNavigates;
@@ -36,7 +35,7 @@
     BOOL _supportsAutoResizedTables;
     BOOL _supportsCreateChartFromSelection;
     BOOL _selectionUsesBezierPath;
-    BOOL _usesWholeChromeResizer;
+    BOOL _usesSelectionChromeResizer;
     BOOL _showsChromeWhileEditingCell;
     BOOL _showsSelectionKnobsWhileEditingCell;
     BOOL _showsCellWarningIndicator;
@@ -100,7 +99,6 @@
 @property (nonatomic) BOOL arrowKeysNavigateWhenEditingBeganByTyping; // @synthesize arrowKeysNavigateWhenEditingBeganByTyping=_arrowKeysNavigateWhenEditingBeganByTyping;
 @property (nonatomic) BOOL arrowKeysWrap; // @synthesize arrowKeysWrap=_arrowKeysWrap;
 @property (nonatomic) BOOL backTabWraps; // @synthesize backTabWraps=_backTabWraps;
-@property (nonatomic) BOOL beginEditingOnSingleTap; // @synthesize beginEditingOnSingleTap=_beginEditingOnSingleTap;
 @property (nonatomic) BOOL cellEditorsCanScrollToNonLocalTableSelection; // @synthesize cellEditorsCanScrollToNonLocalTableSelection=_cellEditorsCanScrollToNonLocalTableSelection;
 @property (nonatomic) BOOL continuesEditingAfterNavigation; // @synthesize continuesEditingAfterNavigation=_continuesEditingAfterNavigation;
 @property (nonatomic) BOOL controlCellUIAlwaysVisible; // @synthesize controlCellUIAlwaysVisible=_controlCellUIAlwaysVisible;
@@ -172,7 +170,7 @@
 @property (nonatomic) BOOL tokenizeFormulaStringLiterals; // @synthesize tokenizeFormulaStringLiterals=_tokenizeFormulaStringLiterals;
 @property (nonatomic) BOOL usesLimitedAutomaticFormatParsing; // @synthesize usesLimitedAutomaticFormatParsing=_usesLimitedAutomaticFormatParsing;
 @property (nonatomic) BOOL usesLimitedNumberFormatInspector; // @synthesize usesLimitedNumberFormatInspector=_usesLimitedNumberFormatInspector;
-@property (nonatomic) BOOL usesWholeChromeResizer; // @synthesize usesWholeChromeResizer=_usesWholeChromeResizer;
+@property (nonatomic) BOOL usesSelectionChromeResizer; // @synthesize usesSelectionChromeResizer=_usesSelectionChromeResizer;
 
 + (void)resetSharedTableConfiguration;
 + (id)sharedTableConfiguration;

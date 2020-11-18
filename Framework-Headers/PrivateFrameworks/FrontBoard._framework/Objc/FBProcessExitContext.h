@@ -8,12 +8,13 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBProcessState, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, NSString, RBSProcessExitContext;
+@class FBProcessState, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, NSError, NSString, RBSProcessExitContext;
 
 @interface FBProcessExitContext : NSObject <BSDescriptionProviding>
 {
     unsigned long long _exitReason;
     RBSProcessExitContext *_underlyingContext;
+    NSError *_launchError;
     FBSProcessTerminationRequest *_terminationRequest;
     FBProcessWatchdogEventContext *_watchdogContext;
     FBProcessState *_stateBeforeExiting;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSError *launchError; // @synthesize launchError=_launchError;
 @property (copy, nonatomic) FBProcessState *stateBeforeExiting; // @synthesize stateBeforeExiting=_stateBeforeExiting;
 @property (readonly) Class superclass;
 @property (nonatomic) long long terminationReason; // @synthesize terminationReason=_terminationReason;
@@ -34,12 +36,14 @@
 + (id)descriptionForExitReason:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)consideredJetsam;
+- (id)createError;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (int)exitCode;
 - (long long)exitStatus;
 - (BOOL)exitedNormally;
 - (BOOL)fairPlayFailure;
+- (id)initWithLaunchError:(id)arg1 underlyingContext:(id)arg2;
 - (id)initWithUnderlyingContext:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

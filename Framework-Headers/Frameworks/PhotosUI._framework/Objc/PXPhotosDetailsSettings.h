@@ -10,6 +10,7 @@
 {
     BOOL _showHeaderWidget;
     BOOL _showAssetsWidget;
+    BOOL _showCaptionHashtagsWidget;
     BOOL _showDemoTilingViewWidget;
     BOOL _showVariationsWidget;
     BOOL _showDemoViewWidget;
@@ -26,6 +27,7 @@
     BOOL _allowMultiColumnLayout;
     BOOL _allowZoomTransitions;
     BOOL _allowPinchTransitions;
+    BOOL _allowsTopTrailingSelectCancelButton;
     BOOL _purgeOnMemoryWarning;
     BOOL _useCuratedLibraryLayout;
     BOOL _editorialLayoutEdit;
@@ -33,6 +35,10 @@
     BOOL _allowEditorialLayoutStressTest;
     BOOL _enableDebugCurationBadge;
     BOOL _placesWidgetShowOnlyPlaceholder;
+    BOOL _captionWidgetEnableHashtags;
+    BOOL _captionWidgetEnableVScrollingInEdit;
+    BOOL _captionWidgetEnableFadeInEffect;
+    BOOL _captionWidgetEnableDirectAttachToMaster;
     BOOL _peopleWidgetDisableSocialGroup;
     BOOL _addToTabSimulate;
     double _defaultPriorityWidgetsLoadingDelay;
@@ -43,6 +49,7 @@
     long long _editorialLayoutActivityFeedItemCountThreshold;
     double _assetsWidgetPlaceholderAspectRatio;
     long long _debugBadgeInfoType;
+    double _captionWidgetFadeInDuration;
     long long _peopleWidgetMaximumNumberOfPeople;
     double _addToTabOpacity;
     double _addToTabDuration;
@@ -66,7 +73,13 @@
 @property (nonatomic) BOOL allowPinchTransitions; // @synthesize allowPinchTransitions=_allowPinchTransitions;
 @property (nonatomic) BOOL allowWidgetsContentLoading; // @synthesize allowWidgetsContentLoading=_allowWidgetsContentLoading;
 @property (nonatomic) BOOL allowZoomTransitions; // @synthesize allowZoomTransitions=_allowZoomTransitions;
+@property (nonatomic) BOOL allowsTopTrailingSelectCancelButton; // @synthesize allowsTopTrailingSelectCancelButton=_allowsTopTrailingSelectCancelButton;
 @property (nonatomic) double assetsWidgetPlaceholderAspectRatio; // @synthesize assetsWidgetPlaceholderAspectRatio=_assetsWidgetPlaceholderAspectRatio;
+@property (nonatomic) BOOL captionWidgetEnableDirectAttachToMaster; // @synthesize captionWidgetEnableDirectAttachToMaster=_captionWidgetEnableDirectAttachToMaster;
+@property (nonatomic) BOOL captionWidgetEnableFadeInEffect; // @synthesize captionWidgetEnableFadeInEffect=_captionWidgetEnableFadeInEffect;
+@property (nonatomic) BOOL captionWidgetEnableHashtags; // @synthesize captionWidgetEnableHashtags=_captionWidgetEnableHashtags;
+@property (nonatomic) BOOL captionWidgetEnableVScrollingInEdit; // @synthesize captionWidgetEnableVScrollingInEdit=_captionWidgetEnableVScrollingInEdit;
+@property (nonatomic) double captionWidgetFadeInDuration; // @synthesize captionWidgetFadeInDuration=_captionWidgetFadeInDuration;
 @property (nonatomic) long long curationAlgorithm; // @synthesize curationAlgorithm=_curationAlgorithm;
 @property (nonatomic) long long debugBadgeInfoType; // @synthesize debugBadgeInfoType=_debugBadgeInfoType;
 @property (nonatomic) double defaultPriorityWidgetsLoadingDelay; // @synthesize defaultPriorityWidgetsLoadingDelay=_defaultPriorityWidgetsLoadingDelay;
@@ -85,6 +98,7 @@
 @property (nonatomic) BOOL purgeOnMemoryWarning; // @synthesize purgeOnMemoryWarning=_purgeOnMemoryWarning;
 @property (nonatomic) BOOL showActionsWidget; // @synthesize showActionsWidget=_showActionsWidget;
 @property (nonatomic) BOOL showAssetsWidget; // @synthesize showAssetsWidget=_showAssetsWidget;
+@property (nonatomic) BOOL showCaptionHashtagsWidget; // @synthesize showCaptionHashtagsWidget=_showCaptionHashtagsWidget;
 @property (nonatomic) BOOL showDemoDynamicWidget; // @synthesize showDemoDynamicWidget=_showDemoDynamicWidget;
 @property (nonatomic) BOOL showDemoTilingViewWidget; // @synthesize showDemoTilingViewWidget=_showDemoTilingViewWidget;
 @property (nonatomic) BOOL showDemoViewWidget; // @synthesize showDemoViewWidget=_showDemoViewWidget;

@@ -21,6 +21,8 @@
     NUIContainerStackView *_labelViewStack;
 }
 
+@property (readonly, nonatomic) BOOL canCollapseRecipient;
+@property (readonly, nonatomic) BOOL canExpandRecipient;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) NUIContainerStackView *labelViewStack; // @synthesize labelViewStack=_labelViewStack;
 @property (strong, nonatomic) CNComposeRecipient *recipient; // @synthesize recipient=_recipient;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAvatarView;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
 @property (readonly, nonatomic) double trailingButtonWidth; // @synthesize trailingButtonWidth=_trailingButtonWidth;
@@ -46,7 +49,7 @@
 - (id)labelWithTextStyle:(id)arg1;
 - (void)labelsChangedWidth:(double)arg1;
 - (void)layoutMarginsDidChange;
-- (void)settrailingButtonMidlineInsetFromLayoutMargin:(double)arg1;
+- (double)leadingInsetsFromCurrentMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (id)titleTextStyle;
 
 @end

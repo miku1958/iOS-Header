@@ -22,6 +22,9 @@
 + (id)nameForAnnotation:(id)arg1;
 + (id)nameForClassName:(id)arg1;
 - (void).cxx_destruct;
+- (void)_logCoreAnalyticsAction:(id)arg1;
+- (void)_logCoreAnalyticsAnnotationCreateActionForAnnotationType:(id)arg1 count:(unsigned long long)arg2;
+- (void)_logCoreAnalyticsHUDPickActionForAnnotationType:(id)arg1;
 - (void)logAnnotationAdded:(id)arg1;
 - (void)logDocumentSaved;
 - (void)logInkAnnotationStrokeAdded:(id)arg1;

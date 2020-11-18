@@ -9,37 +9,45 @@
 #import <GameCenterFoundation/GKClientProtocol-Protocol.h>
 #import <GameCenterFoundation/NSXPCConnectionDelegate-Protocol.h>
 
-@class NSDictionary, NSObject, NSString, NSXPCConnection;
+@class NSDictionary, NSHashTable, NSObject, NSString, NSXPCConnection;
 @protocol GKDaemonProxyDataUpdateDelegate, GKDaemonProxyNetworkActivityIndicatorDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface GKDaemonProxy : GKServiceProxy <NSXPCConnectionDelegate, GKClientProtocol>
 {
     int _hostPID;
-    NSXPCConnection *_connection;
-    NSDictionary *_interfaceLookup;
     NSObject<OS_dispatch_queue> *_invocationQueue;
     NSObject<OS_dispatch_semaphore> *_concurrentRequestSemaphore;
-    id<GKDaemonProxyDataUpdateDelegate> _dataUpdateDelegate;
+    NSDictionary *_interfaceLookup;
+    NSXPCConnection *_connection;
     id<GKDaemonProxyNetworkActivityIndicatorDelegate> _networkActivityIndicatorDelegate;
+    id<GKDaemonProxyDataUpdateDelegate> _dataUpdateDelegate;
+    NSHashTable *_dataUpdateDelegates;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *concurrentRequestSemaphore; // @synthesize concurrentRequestSemaphore=_concurrentRequestSemaphore;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (nonatomic) id<GKDaemonProxyDataUpdateDelegate> dataUpdateDelegate; // @synthesize dataUpdateDelegate=_dataUpdateDelegate;
+@property (weak, nonatomic) id<GKDaemonProxyDataUpdateDelegate> dataUpdateDelegate; // @synthesize dataUpdateDelegate=_dataUpdateDelegate;
+@property (strong, nonatomic) NSHashTable *dataUpdateDelegates; // @synthesize dataUpdateDelegates=_dataUpdateDelegates;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
-@property (nonatomic) id<GKDaemonProxyNetworkActivityIndicatorDelegate> networkActivityIndicatorDelegate; // @synthesize networkActivityIndicatorDelegate=_networkActivityIndicatorDelegate;
+@property (strong, nonatomic) NSDictionary *interfaceLookup; // @synthesize interfaceLookup=_interfaceLookup;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *invocationQueue; // @synthesize invocationQueue=_invocationQueue;
+@property (weak, nonatomic) id<GKDaemonProxyNetworkActivityIndicatorDelegate> networkActivityIndicatorDelegate; // @synthesize networkActivityIndicatorDelegate=_networkActivityIndicatorDelegate;
 @property (readonly) Class superclass;
 
 + (id)daemonProxy;
++ (id)proxiesForPlayer;
 + (id)proxyForPlayer:(id)arg1;
 + (void)removeProxyForPlayer:(id)arg1;
+- (void).cxx_destruct;
 - (void)_resetServiceLookup;
 - (oneway void)acceptInviteWithNotification:(id)arg1;
 - (oneway void)acceptMultiplayerGameInvite;
 - (id)accountName;
 - (oneway void)achievementSelected:(id)arg1;
+- (void)addDataUpdateDelegate:(id)arg1;
 - (void)addInterface:(id)arg1 toLookup:(id)arg2;
 - (id)authenticatedLocalPlayersWithStatus:(unsigned long long)arg1;
 - (id)authenticatedPlayerID;
@@ -52,9 +60,7 @@
 - (oneway void)challengeReceived:(id)arg1;
 - (oneway void)completedChallengeSelected:(id)arg1;
 - (oneway void)completedOptimisticAuthenticationWithResponse:(id)arg1 error:(id)arg2;
-- (id)concurrentRequestSemaphore;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
-- (void)dealloc;
 - (oneway void)declineInviteWithNotification:(id)arg1;
 - (oneway void)didConnectToParticipantWithID:(id)arg1;
 - (oneway void)didDisconnectFromParticipantWithID:(id)arg1;
@@ -65,18 +71,18 @@
 - (oneway void)friendRequestSelected:(id)arg1;
 - (oneway void)getAccountNameWithHandler:(CDUnknownBlockType)arg1;
 - (oneway void)getAuthenticatedPlayerIDWithHandler:(CDUnknownBlockType)arg1;
+- (id)getGamedFiredUp;
 - (BOOL)hasAuthenticatedAccount;
 - (id)init;
-- (id)interfaceLookup;
-- (id)invocationQueue;
 - (void)loadRemoteImageDataForClientForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)localPlayerAcceptedCustomTournamentInvite;
 - (id)localizedMessageFromDictionary:(id)arg1 forBundleID:(id)arg2;
-- (oneway void)processQuickAction:(id)arg1;
 - (oneway void)receivedChallengeSelected:(id)arg1;
 - (oneway void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (oneway void)relayPushNotification:(id)arg1;
+- (void)removeDataUpdateDelegate:(id)arg1;
 - (id)replyQueueForRequestSelector:(SEL)arg1;
+- (oneway void)requestSandboxExtension:(CDUnknownBlockType)arg1;
 - (void)resetLoginCancelCount;
 - (oneway void)resetNetworkActivity;
 - (void)resetServiceLookup;

@@ -56,7 +56,6 @@
 - (void)acceptorSecondOctagonPacket:(id)arg1 reply:(id)arg2 complete:(CDUnknownBlockType)arg3;
 - (void)acceptorSecondPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)acceptorThirdPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
-- (void)attemptSosUpgrade;
 - (BOOL)ensureControlChannel;
 - (void)exchangePacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (id)exchangePacket:(id)arg1 complete:(BOOL *)arg2 error:(id *)arg3;
@@ -76,6 +75,7 @@
 - (void)setSessionSupportsOctagonForTesting:(BOOL)arg1;
 - (void)setXPCConnectionObject:(id)arg1;
 - (void)validateStart:(CDUnknownBlockType)arg1;
+- (void)waitForOctagonUpgrade;
 
 @end
 

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)isUsageTrusted;
 + (id)usageType;
 + (id)webDomain;
 + (id)webpageURL;

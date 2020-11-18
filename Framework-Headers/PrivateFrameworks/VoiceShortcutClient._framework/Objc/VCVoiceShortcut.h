@@ -22,11 +22,9 @@
     INShortcut *_shortcut;
     NSDate *_dateCreated;
     NSDate *_dateLastModified;
-    unsigned long long _cachedBlacklistStatus;
 }
 
 @property (readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
-@property (nonatomic) unsigned long long cachedBlacklistStatus; // @synthesize cachedBlacklistStatus=_cachedBlacklistStatus;
 @property (readonly, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property (readonly, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
 @property (readonly, copy) NSString *debugDescription;

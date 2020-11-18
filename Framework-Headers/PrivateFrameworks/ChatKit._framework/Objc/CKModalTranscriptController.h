@@ -32,6 +32,7 @@
 - (BOOL)_deviceIsLocked;
 - (BOOL)_insertMediaObject:(id)arg1;
 - (void)_insertMediaObjectAndReturnFrame:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (double)_maxEntryViewHeight;
 - (double)_offsetForScreenWidth:(double)arg1 containerWidth:(double)arg2 windowOffset:(struct CGPoint)arg3;
 - (void)_setConversationDeferredSetup;
 - (void)_setEntryViewVisible:(BOOL)arg1;
@@ -47,6 +48,7 @@
 - (void)insertMessage:(id)arg1 appProxy:(id)arg2;
 - (void)insertRichLinkWithURL:(id)arg1 data:(id)arg2;
 - (BOOL)messageEntryViewShouldBeginEditing:(id)arg1;
+- (id)proposedParticipantHandles;
 - (void)registerForNotifications;
 - (void)sendComposition:(id)arg1;
 - (void)setCanEditRecipients:(BOOL)arg1;

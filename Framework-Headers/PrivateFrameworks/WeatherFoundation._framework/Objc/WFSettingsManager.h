@@ -6,40 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol OS_dispatch_queue, WFSettings;
+#import <WeatherFoundation/WFUserInfoManagerDelegate-Protocol.h>
 
-@interface WFSettingsManager : NSObject
+@class NSHashTable, NSString, WFRemoteAppSettings, WFUserInfoManager;
+@protocol OS_dispatch_queue;
+
+@interface WFSettingsManager : NSObject <WFUserInfoManagerDelegate>
 {
     BOOL _useFallback;
-    struct os_unfair_lock_s _useFallbackLock;
     struct os_unfair_lock_s _settingsLock;
-    id<WFSettings> _settings;
+    WFRemoteAppSettings *_settings;
+    WFUserInfoManager *_userInfoManager;
     NSObject<OS_dispatch_queue> *_requestSerialQueue;
+    NSHashTable *_observers;
 }
 
 @property (readonly, nonatomic) NSString *APIVersion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestSerialQueue; // @synthesize requestSerialQueue=_requestSerialQueue;
-@property (readonly, nonatomic) id<WFSettings> settings; // @synthesize settings=_settings;
+@property (strong, nonatomic) WFRemoteAppSettings *settings; // @synthesize settings=_settings;
 @property (nonatomic) struct os_unfair_lock_s settingsLock; // @synthesize settingsLock=_settingsLock;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useFallback; // @synthesize useFallback=_useFallback;
-@property (nonatomic) struct os_unfair_lock_s useFallbackLock; // @synthesize useFallbackLock=_useFallbackLock;
+@property (strong, nonatomic) WFUserInfoManager *userInfoManager; // @synthesize userInfoManager=_userInfoManager;
 
-+ (id)userId;
++ (void)setUserIdentifier:(id)arg1;
++ (id)sharedInstance;
++ (id)userIdentifier;
 - (void).cxx_destruct;
-- (id)_URLSafeBase64EncodedStringWithData:(id)arg1 options:(unsigned long long)arg2;
-- (BOOL)_containerIDForContainerIdentifier:(id)arg1;
-- (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_permanentURLForRecordID:(id)arg1 containerIdentifier:(id)arg2;
-- (void)clearConfigCacheOnLaunchIfRequested;
+- (void)addObserver:(id)arg1;
+- (BOOL)clearConfigCacheOnLaunchIfRequested;
 - (void)completeOnQueue:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)containerIDForContainerIdentifier:(id)arg1;
 - (id)containerIdentifier;
 - (void)fetchAppConfigurationIfExpired;
-- (void)fetchAppConfigurationIfNeeded;
-- (void)fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAppConfigurationWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceFetchAppConfiguration;
 - (id)init;
-- (void)setSettings:(id)arg1;
+- (void)notifyObserversOfAppConfigRefresh;
+- (id)permanentURLForRecordID:(id)arg1 containerIdentifier:(id)arg2;
+- (void)removeObserver:(id)arg1;
 - (void)setUseFallback:(BOOL)arg1;
+- (void)setupRemoteSettings;
+- (BOOL)shouldReroutePermanentURLsForContainerIdentifier:(id)arg1;
+- (void)updateAssetURLHostIfNeededWithComponents:(id)arg1 containerIdentifier:(id)arg2;
+- (id)urlSafeBase64EncodedStringWithData:(id)arg1 options:(unsigned long long)arg2;
+- (void)userInfoManager:(id)arg1 didSynchronizeUserIdentifier:(id)arg2;
 
 @end
 

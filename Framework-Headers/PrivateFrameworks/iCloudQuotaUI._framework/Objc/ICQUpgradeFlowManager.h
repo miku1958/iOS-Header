@@ -47,13 +47,17 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) ICQAlertController *upgradeAlertController; // @synthesize upgradeAlertController=_upgradeAlertController;
 
++ (id)activeFlowManagers;
++ (void)addActiveFlowManager:(id)arg1;
 + (void)needsToRunWithCompletion:(CDUnknownBlockType)arg1;
++ (void)removeActiveFlowManager:(id)arg1;
 + (BOOL)shouldShowForOffer:(id)arg1;
 + (BOOL)shouldSubclassShowForOffer:(id)arg1;
 + (Class)subclassForOfferType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_ICQNavigationControllerWithRootViewController:(id)arg1;
 - (void)_addAlertActionForAlertSpec:(id)arg1 buttonIndex:(long long)arg2;
+- (void)_addBlurEffectToNavigationController:(id)arg1;
 - (void)_cancelFlow;
 - (void)_clearBusyOfferViewController;
 - (void)_configurePresentingViewController:(id)arg1;
@@ -80,6 +84,7 @@
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (BOOL)needsNetwork;
 - (void)presentFlowHostedInNavigationController:(id)arg1;
+- (void)presentRemoteVieWithData:(id)arg1 andURL:(id)arg2;
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
 - (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;

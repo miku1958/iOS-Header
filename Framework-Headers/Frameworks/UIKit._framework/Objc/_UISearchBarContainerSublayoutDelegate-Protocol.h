@@ -14,5 +14,6 @@
 @property (readonly, nonatomic, getter=isProspective) BOOL prospective;
 
 - (void)containerLayoutWillUpdateLayout:(_UISearchBarLayoutBase *)arg1;
+- (double)layout:(_UISearchBarLayoutBase *)arg1 fontScaledValueForValue:(double)arg2;
 @end
 

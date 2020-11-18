@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <EmailDaemon/EDReconciliationQueryProvider-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class EDDaemonInterfaceFactory, NSMutableArray, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class EDDaemonInterfaceFactory, EFLocked, NSArray, NSString, NSXPCListener, NSXPCListenerEndpoint;
 
-@interface EDServer : NSObject <NSXPCListenerDelegate, EFLoggable>
+@interface EDServer : NSObject <NSXPCListenerDelegate, EFLoggable, EDReconciliationQueryProvider>
 {
     NSXPCListener *_listener;
-    NSMutableArray *_connectedClients;
+    EFLocked *_connectedClients;
     EDDaemonInterfaceFactory *_daemonInterfaceFactory;
 }
 
-@property (strong, nonatomic) NSMutableArray *connectedClients; // @synthesize connectedClients=_connectedClients;
+@property (readonly, nonatomic) EFLocked *connectedClients; // @synthesize connectedClients=_connectedClients;
 @property (strong, nonatomic) EDDaemonInterfaceFactory *daemonInterfaceFactory; // @synthesize daemonInterfaceFactory=_daemonInterfaceFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property (readonly, nonatomic) NSXPCListenerEndpoint *serverXPCEndpoint;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *test_remoteClients;
 
 + (id)log;
 - (void).cxx_destruct;
@@ -33,9 +35,11 @@
 - (id)initWithDaemonInterfaceFactory:(id)arg1;
 - (id)initWithDaemonInterfaceFactory:(id)arg1 listener:(id)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (id)messageReconciliationQueries;
 - (void)removeRemoteClient:(id)arg1;
 - (void)start;
 - (void)test_tearDown;
+- (id)threadReconciliationQueries;
 
 @end
 

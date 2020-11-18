@@ -8,7 +8,7 @@
 
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
-@class HFCameraManager, HFUserNotificationServiceSettings, NSString, NSUUID;
+@class HFCameraManager, HFUserNotificationServiceSettings, HMBulletinBoardNotification, HMCharacteristic, NSString, NSUUID;
 
 @interface HMCameraProfile (HFAdditions) <HFUserNotificationServiceSettingsProviding>
 
@@ -17,21 +17,25 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hf_cameraIsNotSetToRecord;
 @property (readonly, nonatomic) HFCameraManager *hf_cameraManager;
-@property (readonly, nonatomic) BOOL hf_cameraSupportsBidirectionalAudio;
-@property (readonly, nonatomic) BOOL hf_cameraSupportsRecording;
+@property (readonly, nonatomic) HMCharacteristic *hf_doorbellChimeMuteCharacteristic;
+@property (readonly, nonatomic) HMBulletinBoardNotification *hf_doorbellNotificationBulletin;
 @property (readonly, nonatomic) BOOL hf_shouldDisableLiveStream;
+@property (readonly, nonatomic) BOOL hf_supportsBidirectionalAudio;
+@property (readonly, nonatomic) BOOL hf_supportsRecordingEvents;
+@property (readonly, nonatomic) BOOL hf_thermalShutdownModeActive;
+@property (readonly, nonatomic) NSString *hf_thermalShutdownModeErrorText;
 @property (readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (unsigned long long)hf_cameraAccessModeSelectedOptionForCameraProfiles:(id)arg1 presenceType:(unsigned long long)arg2;
-+ (unsigned long long)hf_cameraMotionDetectionSettingsForCameraProfiles:(id)arg1;
-+ (unsigned long long)hf_cameraNotificationMotionDetectionSettingsForCameraProfiles:(id)arg1;
-+ (unsigned long long)notificationEventTriggersForPredicate:(id)arg1;
 - (id)_hf_doorbellBulletinNotification;
 - (id)_hf_legacyMotionSensorBulletinNotification;
 - (id)_hf_smartDetectionBulletinNotification;
 - (id)hf_bulletinNotifications;
+- (id)hf_faceCropImageForSignificantEvent:(id)arg1;
+- (id)hf_significantEventWithIdentifier:(id)arg1;
+- (void)hf_updateDoorbellChime:(BOOL)arg1;
 - (id)hf_updateUserNotificationSettings:(id)arg1;
 @end
 

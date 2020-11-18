@@ -9,7 +9,6 @@
 @class NSArray, NSMutableArray, UINavigationBar;
 @protocol UIViewControllerTransitionCoordinator, _UINavigationBarDelegatePrivate;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationBarTransitionAssistant : NSObject
 {
     long long _animationCount;
@@ -18,7 +17,6 @@ __attribute__((visibility("hidden")))
     BOOL _interactive;
     BOOL _needsLifetimeExtended;
     BOOL _cancelledTransition;
-    BOOL _cancelledCleanUp;
     BOOL _shouldHideBackButtonDuringTransition;
     BOOL _shouldUpdatePromptAfterTransition;
     int _transition;
@@ -29,7 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *animationIDs; // @synthesize animationIDs=_animationIDs;
-@property (readonly, nonatomic) BOOL cancelledCleanUp; // @synthesize cancelledCleanUp=_cancelledCleanUp;
+@property (readonly, nonatomic) BOOL cancelledCleanUp;
 @property (readonly, nonatomic) BOOL cancelledTransition; // @synthesize cancelledTransition=_cancelledTransition;
 @property (readonly, weak, nonatomic) id<_UINavigationBarDelegatePrivate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
@@ -54,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (void)_getPushDurationAndTransitionAlwaysCrossfade:(BOOL)arg1;
 - (void)_getTransitionCoordinator;
 - (void)_startTrackingAnimations;
-- (void)cancelCleanUp;
 - (void)cancelInteractiveTransitionPercent:(double)arg1 completionSpeed:(double)arg2 completionCurve:(long long)arg3;
 - (void)decrementAnimationCount;
 - (void)finishInteractiveTransitionPercent:(double)arg1 completionSpeed:(double)arg2 completionCurve:(long long)arg3;

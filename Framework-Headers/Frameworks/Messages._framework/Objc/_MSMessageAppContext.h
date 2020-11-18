@@ -57,8 +57,11 @@
 - (void)contentDidLoad;
 - (void)dismiss;
 - (void)dismissAndPresentPhotosApp;
+- (void)dragMediaItemCanceled;
+- (void)dragMediaItemMoved:(id)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)endDisablingUserInteraction;
 - (id)initWithAppContext:(id)arg1;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;

@@ -20,11 +20,14 @@
 @property (readonly) NSString *instanceID;
 @property (readonly) NSString *stringRepresentation; // @synthesize stringRepresentation=_stringRepresentation;
 
-+ (id)encodedObjectID:(id)arg1;
++ (id)encodedCertificateID:(id)arg1;
++ (id)encodedKeyID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)decodedObjectID:(id)arg1 error:(id *)arg2;
+- (id)decodedCertificateID:(id)arg1 error:(id *)arg2;
+- (id)decodedKeyID:(id)arg1 error:(id *)arg2;
+- (id)decodedObjectID:(id)arg1 isCertificate:(BOOL *)arg2 error:(id *)arg3;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

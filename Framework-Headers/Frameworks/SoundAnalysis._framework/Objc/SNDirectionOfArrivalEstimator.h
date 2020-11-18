@@ -8,12 +8,11 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class NSArray, NSString, SNSystemConfiguration;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNDirectionOfArrivalEstimator : NSObject <SNAnalyzing>
 {
-    SNSystemConfiguration *_systemConfiguration;
     shared_ptr_f6ac7592 _graph;
 }
 
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
-- (void)updateGraph;
 
 @end
 

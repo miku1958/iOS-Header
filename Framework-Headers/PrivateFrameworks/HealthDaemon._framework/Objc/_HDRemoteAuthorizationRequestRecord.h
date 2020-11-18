@@ -8,6 +8,7 @@
 
 @class NSError, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDRemoteAuthorizationRequestRecord : NSObject
 {
     BOOL _didRecieveShouldPrompt;

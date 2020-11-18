@@ -10,9 +10,13 @@
 {
 }
 
+@property (nonatomic) double audioSessionActivationDelay;
+@property (nonatomic) double audioSessionActivationDelayAboveMediaPlaybackVolumeThreshold;
+@property (nonatomic) BOOL hasAudioSessionActivationDelay;
 @property (nonatomic) double initialInterstitialDelay;
 @property (nonatomic) double initialInterstitialDelayForCarPlay;
 @property (nonatomic) double initialInterstitialDelayForVoiceTriggerOneShotWithoutAudioDucking;
+@property (nonatomic) double mediaPlaybackVolumeThresholdForAudioSessionActivationDelay;
 
 + (id)deviceConfiguration;
 + (id)deviceConfigurationWithDictionary:(id)arg1 context:(id)arg2;

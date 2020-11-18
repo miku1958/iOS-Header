@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKPaletteColorSwatchProperties-Protocol.h>
+@class CAShapeLayer, PKSwatchColor, UIColor;
 
-@class CAShapeLayer, NSString, PKSwatchColor;
-
-@interface PKPaletteColorSwatch : UIView <PKPaletteColorSwatchProperties>
+@interface PKPaletteColorSwatch : UIView
 {
     BOOL _selected;
     BOOL _showsSelectionHighlight;
@@ -24,16 +22,14 @@
 @property (strong, nonatomic) UIView *colorBackgroundView; // @synthesize colorBackgroundView=_colorBackgroundView;
 @property (strong, nonatomic) UIView *colorBulletView; // @synthesize colorBulletView=_colorBulletView;
 @property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIColor *presentationColor;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) CAShapeLayer *selectionRingMaskLayer; // @synthesize selectionRingMaskLayer=_selectionRingMaskLayer;
 @property (nonatomic) BOOL showsSelectionHighlight; // @synthesize showsSelectionHighlight=_showsSelectionHighlight;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) PKSwatchColor *swatchColor; // @synthesize swatchColor=_swatchColor;
 
 - (void).cxx_destruct;
+- (id)_colorBulletOutlineColor;
 - (id)_uiColor;
 - (long long)_uiColorUserInterfaceStyle;
 - (void)_updateBackgroundView;

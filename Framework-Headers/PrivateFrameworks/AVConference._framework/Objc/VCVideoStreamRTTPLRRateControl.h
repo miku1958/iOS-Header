@@ -13,17 +13,17 @@
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamRTTPLRRateControl : NSObject <VCVideoStreamRateControlProtocol>
 {
+    double _rampUpFrozenDuration;
+    unsigned short _currentTierIndex;
     double _packetLossRate;
     double _roundTripTime;
     double _rampUpFrozenTime;
-    double _rampUpFrozenDuration;
     double _rampDownPacketLossRate;
     double _rampDownRoundTripTime;
     double _rampUpPacketLossRate;
     int _state;
     double _rateControlTime;
     unsigned int _targetBitrate;
-    unsigned short _currentTierIndex;
     unsigned short _minTierIndex;
     unsigned short _maxTierIndex;
     double _rateControlInterval;

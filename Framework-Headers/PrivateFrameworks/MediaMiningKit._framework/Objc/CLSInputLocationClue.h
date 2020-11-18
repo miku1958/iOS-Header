@@ -19,6 +19,7 @@
 - (void)_prepareWithProgressBlock:(CDUnknownBlockType)arg1;
 - (struct CLLocationCoordinate2D)closestCoordinates;
 - (id)description;
+- (double)gpsHorizontalAccuracy;
 - (BOOL)isDefinite;
 - (BOOL)isEqualToClue:(id)arg1;
 - (id)location;

@@ -18,7 +18,6 @@
 
 + (id)sharedCredentialStorage;
 - (struct _CFURLCredentialStorage *)_CFURLCredentialStorage;
-- (id)__allCredentialsWithAccessControlGroup:(id)arg1 includeLegacyKeychain:(BOOL)arg2;
 - (id)_allCredentialsWithAccessControlGroup:(id)arg1 includeLegacyKeychain:(BOOL)arg2;
 - (id)_initWithCFURLCredentialStorage:(struct _CFURLCredentialStorage *)arg1;
 - (id)_initWithIdentifier:(id)arg1 private:(BOOL)arg2;

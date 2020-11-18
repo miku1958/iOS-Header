@@ -13,9 +13,11 @@
 }
 
 @property (nonatomic) unsigned int gid; // @dynamic gid;
+@property (nonatomic) BOOL isDataSeparatedPersona; // @dynamic isDataSeparatedPersona;
 @property (nonatomic) BOOL isDefaultPersona; // @dynamic isDefaultPersona;
 @property (nonatomic) BOOL isDisabled; // @dynamic isDisabled;
 @property (nonatomic) BOOL isEnterprisePersona; // @dynamic isEnterprisePersona;
+@property (nonatomic) BOOL isGuestPersona; // @dynamic isGuestPersona;
 @property (nonatomic) BOOL isPersonalPersona; // @dynamic isPersonalPersona;
 @property (nonatomic) BOOL isSystemPersona; // @dynamic isSystemPersona;
 @property (nonatomic) unsigned int uid; // @dynamic uid;

@@ -15,6 +15,7 @@
 + (id)p_supportedPlainTextTypes;
 + (id)p_unsupportedPlainTextTypes;
 + (id)supportedImageTypes;
++ (id)supportedMovieAnimatedImageTypes;
 + (id)supportedMovieTypes;
 + (id)supportedRichTextTypes;
 

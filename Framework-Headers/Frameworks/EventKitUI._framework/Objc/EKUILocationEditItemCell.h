@@ -23,7 +23,7 @@
 - (void)_clearButtonTapped:(id)arg1;
 - (id)description;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)updateWithName:(id)arg1 sourceSupportsAvailability:(BOOL)arg2 availabilityRequestInProgress:(BOOL)arg3 availabilityType:(long long)arg4;
+- (void)updateWithName:(id)arg1 sourceSupportsAvailability:(BOOL)arg2 availabilityRequestInProgress:(BOOL)arg3 availabilityType:(long long)arg4 showClearButton:(BOOL)arg5;
 
 @end
 

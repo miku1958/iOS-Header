@@ -56,6 +56,7 @@
     long long _preferredUnlockedGestureDismissalStyle;
     long long _preferredBackgroundStyle;
     NSNumber *_preferredSceneDeactivationReasonValue;
+    _UILegibilitySettings *_preferredStatusBarLegibilitySettings;
 }
 
 @property (nonatomic, getter=isActivatingForSiri) BOOL activatingForSiri; // @synthesize activatingForSiri=_activatingForSiri;
@@ -76,7 +77,7 @@
 @property (readonly, nonatomic) long long preferredBackgroundStyle; // @synthesize preferredBackgroundStyle=_preferredBackgroundStyle;
 @property (readonly, nonatomic) long long preferredLockedGestureDismissalStyle; // @synthesize preferredLockedGestureDismissalStyle=_preferredLockedGestureDismissalStyle;
 @property (readonly, copy, nonatomic) NSNumber *preferredSceneDeactivationReasonValue; // @synthesize preferredSceneDeactivationReasonValue=_preferredSceneDeactivationReasonValue;
-@property (readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings;
+@property (readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings; // @synthesize preferredStatusBarLegibilitySettings=_preferredStatusBarLegibilitySettings;
 @property (readonly, nonatomic) int preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
 @property (readonly, nonatomic) long long preferredUnlockedGestureDismissalStyle; // @synthesize preferredUnlockedGestureDismissalStyle=_preferredUnlockedGestureDismissalStyle;
 @property (readonly, nonatomic) BOOL shouldDisableBanners; // @synthesize shouldDisableBanners=_shouldDisableBanners;

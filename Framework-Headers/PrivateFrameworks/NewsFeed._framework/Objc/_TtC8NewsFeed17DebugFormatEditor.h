@@ -13,6 +13,7 @@
     MISSING_TYPE *key;
     MISSING_TYPE *factory;
     MISSING_TYPE *fontManager;
+    MISSING_TYPE *featureAvailablity;
     MISSING_TYPE *_statusMessage;
     MISSING_TYPE *_canvasDevice;
     MISSING_TYPE *_showMissingOptionBindings;
@@ -35,6 +36,10 @@
     MISSING_TYPE *_uploadEnvironment;
     MISSING_TYPE *_uploadUsername;
     MISSING_TYPE *_uploadPassword;
+    MISSING_TYPE *_featureAppleNews;
+    MISSING_TYPE *_featureAppleNewsPrivateData;
+    MISSING_TYPE *_featureAppleNewsAudio;
+    MISSING_TYPE *_featureAppleNewsMagazines;
     MISSING_TYPE *_themeIdentifier;
     MISSING_TYPE *compiler;
     MISSING_TYPE *$__lazy_storage_$_fonts;

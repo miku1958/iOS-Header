@@ -45,7 +45,7 @@
     NSError *_locationError;
 }
 
-@property (nonatomic) long long activityType;
+@property (readonly, nonatomic) BOOL coarseModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double desiredAccuracy;
@@ -93,6 +93,7 @@
 - (BOOL)isLocationServicesPossiblyAvailable;
 - (BOOL)isLocationServicesPossiblyAvailable:(id *)arg1;
 - (BOOL)isLocationServicesRestricted;
+- (void)locationProvider:(id)arg1 didChangeCoarseMode:(BOOL)arg2;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
@@ -115,9 +116,10 @@
 - (void)stop;
 - (void)stopHeadingUpdateWithObserver:(id)arg1;
 - (void)stopLocationUpdateWithObserver:(id)arg1;
-- (void)useGPSLocationProvider;
+- (void)useGPSLocationProviderWithCLParameters:(id)arg1;
 - (void)useHybridLocationProvider;
 - (void)useLeechedLocationProvider;
+- (void)useSimulationLocationProvider:(id)arg1;
 - (void)useTraceLocationProvider:(id)arg1;
 
 @end

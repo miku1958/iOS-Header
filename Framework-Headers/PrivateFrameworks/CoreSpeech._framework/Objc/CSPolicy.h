@@ -31,8 +31,8 @@
 - (void)dealloc;
 - (id)init;
 - (BOOL)isEnabled;
-- (void)notifyCallback;
-- (void)notifyCallback:(BOOL)arg1;
+- (void)notifyCallback:(BOOL)arg1 option:(unsigned long long)arg2;
+- (void)notifyCallbackWithOption:(unsigned long long)arg1;
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (void)subscribeEventMonitor:(id)arg1;
 

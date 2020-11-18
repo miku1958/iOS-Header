@@ -4,34 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <ManagedConfigurationUI/MCUITableViewController.h>
 
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-
-@class MCPayload, MCPayloadInfo, NSArray, NSString;
+@class MCPayload, MCPayloadInfo, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface MCPayloadDetailsViewController : UITableViewController <PSStateRestoration>
+@interface MCPayloadDetailsViewController : MCUITableViewController
 {
     MCPayload *_payload;
     MCPayloadInfo *_payloadInfo;
     NSArray *_keyValueSections;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *keyValueSections; // @synthesize keyValueSections=_keyValueSections;
 @property (strong, nonatomic) MCPayload *payload; // @synthesize payload=_payload;
 @property (strong, nonatomic) MCPayloadInfo *payloadInfo; // @synthesize payloadInfo=_payloadInfo;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_setup;
-- (BOOL)canBeShownFromSuspendedState;
-- (void)contentSizeCategoryDidChangeNotification:(id)arg1;
-- (void)dealloc;
-- (void)didReceiveMemoryWarning;
 - (id)initWithPayload:(id)arg1;
 - (id)initWithPayloadInfo:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
@@ -42,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (void)viewDidLoad;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class ASDPurchase, NSArray, NSDictionary, NSError;
+@class ASDPurchase, NSArray, NSDictionary, NSError, NSString;
 
 @interface ASDPurchaseResponseItem : NSObject <NSSecureCoding>
 {
@@ -16,6 +16,7 @@
     BOOL _cancelsPurchaseBatch;
     NSError *_error;
     ASDPurchase *_purchase;
+    NSString *_bundleID;
     NSArray *_results;
     double _requestStartTime;
     double _responseEndTime;
@@ -24,6 +25,7 @@
     NSDictionary *_transationIDs;
 }
 
+@property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, nonatomic) BOOL cancelsPurchaseBatch; // @synthesize cancelsPurchaseBatch=_cancelsPurchaseBatch;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, copy, nonatomic) ASDPurchase *purchase; // @synthesize purchase=_purchase;
@@ -37,6 +39,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_setBundleID:(id)arg1;
 - (void)_setError:(id)arg1;
 - (void)_setPurchase:(id)arg1;
 - (void)_setResponseMetrics:(id)arg1;

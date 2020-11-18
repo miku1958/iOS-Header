@@ -25,7 +25,7 @@
 + (void)preMMCSWarm:(id)arg1;
 - (void)_addPreauthorizationOptions:(id)arg1 forFiles:(id)arg2;
 - (void)_cancelRequest:(id)arg1;
-- (id)_optionsForFiles:(id)arg1;
+- (id)_optionsForFiles:(id)arg1 sourceAppID:(id)arg2;
 - (void)_registerPowerAssertionIfNeeded;
 - (void)_releasePowerAssertion;
 - (void)_releasePowerAssertionAndSimulateCrash;
@@ -34,10 +34,10 @@
 - (void)cancelPutRequestID:(id)arg1;
 - (void)dealloc;
 - (id)getContentHeadersAsString;
-- (void)getFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)getFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 sourceAppID:(id)arg4 authToken:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (id)init;
 - (id)parseContentHeaderAsDictionary:(id)arg1 treatValuesAsArrays:(BOOL)arg2;
-- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 transferID:(id)arg4 authToken:(id)arg5 preauthenticate:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 transferID:(id)arg4 sourceAppID:(id)arg5 authToken:(id)arg6 preauthenticate:(BOOL)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (void)registerFilesForDownload:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)registerFilesForUpload:(id)arg1 withPreauthentication:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)removeRequestorContext:(id)arg1 transferID:(id)arg2;

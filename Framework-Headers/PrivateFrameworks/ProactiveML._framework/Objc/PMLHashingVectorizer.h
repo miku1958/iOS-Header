@@ -42,6 +42,7 @@
 - (BOOL)isEqualToHashingVectorizer:(id)arg1;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)transform:(id)arg1;
+- (id)transformBatch:(id)arg1;
 
 @end
 

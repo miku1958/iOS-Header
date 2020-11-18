@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isInvalidated;
 - (void)dealloc;
 - (id)init;
-- (id)initWithQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)initWithQueue:(id)arg1 screen:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (int)queuedFrameCount;
 - (void)setNeedsDisplay;

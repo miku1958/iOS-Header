@@ -20,11 +20,13 @@
     AXMVisionFeatureFaceAttributes *_faceAttributes;
     long long _faceID;
     NSString *_classificationLocalizedValue;
+    NSString *_classificationLabel;
     struct CGRect _normalizedFrame;
 }
 
 @property (readonly, nonatomic) NSString *_subjectDescription;
 @property (strong, nonatomic) AXMCameraFrameContext *cameraFrameContext; // @synthesize cameraFrameContext=_cameraFrameContext;
+@property (copy, nonatomic) NSString *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
 @property (copy, nonatomic) NSString *classificationLocalizedValue; // @synthesize classificationLocalizedValue=_classificationLocalizedValue;
 @property (nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (nonatomic) BOOL didCrossEdge; // @synthesize didCrossEdge=_didCrossEdge;

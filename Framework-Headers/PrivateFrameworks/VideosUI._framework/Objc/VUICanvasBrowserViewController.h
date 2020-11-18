@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (long long)_overrideLargeTitleDisplayMode;
 - (void)updateWithViewElement:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

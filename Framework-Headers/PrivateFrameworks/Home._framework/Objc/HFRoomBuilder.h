@@ -6,9 +6,11 @@
 
 #import <Home/HFItemBuilder.h>
 
+#import <Home/HFNamedItemBuilder-Protocol.h>
+
 @class HFMutableSetDiff, HFWallpaperEditCollectionBuilder, HMRoom, NSSet, NSString;
 
-@interface HFRoomBuilder : HFItemBuilder
+@interface HFRoomBuilder : HFItemBuilder <HFNamedItemBuilder>
 {
     NSString *_name;
     HFWallpaperEditCollectionBuilder *_wallpaperBuilder;
@@ -17,8 +19,12 @@
 
 @property (readonly, nonatomic) NSSet *accessories;
 @property (strong, nonatomic) HFMutableSetDiff *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) HMRoom *room;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) HFWallpaperEditCollectionBuilder *wallpaperBuilder; // @synthesize wallpaperBuilder=_wallpaperBuilder;
 
 + (Class)homeKitRepresentationClass;
@@ -29,8 +35,6 @@
 - (id)_updateName;
 - (void)addAccessory:(id)arg1;
 - (id)commitItem;
-- (id)description;
-- (unsigned long long)hash;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)removeAccessory:(id)arg1;

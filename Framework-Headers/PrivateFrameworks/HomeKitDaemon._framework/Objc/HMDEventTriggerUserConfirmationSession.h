@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDEventTriggerDevice, HMDEventTriggerExecutionSession, HMDTriggerConfirmationTimer, HomeKitEventTriggerUserConfirmationReceiverSessionEvent, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
+@class HMDEventTriggerDevice, HMDEventTriggerExecutionSession, HMDTriggerConfirmationTimer, HomeKitEventTriggerUserConfirmationReceiverSessionLogEvent, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDEventTriggerUserConfirmationSession : HMDEventTriggerSession <HMFDumpState, HMFLogging, HMFTimerDelegate, HMDHomeMessageReceiver>
@@ -19,10 +19,12 @@
     HMDEventTriggerExecutionSession *_executionSession;
     HMDEventTriggerDevice *_requestingDevice;
     HMDTriggerConfirmationTimer *_userResponseTimer;
-    HomeKitEventTriggerUserConfirmationReceiverSessionEvent *_metricEvent;
-    NSMutableArray *_metricSendEvents;
+    HomeKitEventTriggerUserConfirmationReceiverSessionLogEvent *_analyticsEvent;
+    NSMutableArray *_analyticsSendEvents;
 }
 
+@property (strong, nonatomic) HomeKitEventTriggerUserConfirmationReceiverSessionLogEvent *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
+@property (strong, nonatomic) NSMutableArray *analyticsSendEvents; // @synthesize analyticsSendEvents=_analyticsSendEvents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) HMDEventTriggerExecutionSession *executionSession; // @synthesize executionSession=_executionSession;
@@ -30,8 +32,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HomeKitEventTriggerUserConfirmationReceiverSessionEvent *metricEvent; // @synthesize metricEvent=_metricEvent;
-@property (strong, nonatomic) NSMutableArray *metricSendEvents; // @synthesize metricSendEvents=_metricSendEvents;
 @property (readonly, nonatomic) HMDEventTriggerDevice *requestingDevice; // @synthesize requestingDevice=_requestingDevice;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HMDTriggerConfirmationTimer *userResponseTimer; // @synthesize userResponseTimer=_userResponseTimer;

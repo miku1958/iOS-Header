@@ -25,18 +25,19 @@
     PHRelationshipChangeRequestHelper *_movieCuratedAssetsHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (strong, nonatomic) PHMemoryFeature *blacklistedFeature;
 @property (nonatomic) unsigned long long category;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) BOOL clientEntitledToMemoryMutation; // @synthesize clientEntitledToMemoryMutation=_clientEntitledToMemoryMutation;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *curatedAssetsHelper; // @synthesize curatedAssetsHelper=_curatedAssetsHelper;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *extendedCuratedAssetsHelper; // @synthesize extendedCuratedAssetsHelper=_extendedCuratedAssetsHelper;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
+@property (nonatomic) unsigned long long featuredState;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isNewRequest;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetHelper; // @synthesize keyAssetHelper=_keyAssetHelper;
@@ -56,6 +57,7 @@
 @property (nonatomic, getter=isRejected) BOOL rejected;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *representativeAssetsHelper; // @synthesize representativeAssetsHelper=_representativeAssetsHelper;
 @property (nonatomic) double score;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (strong, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title;
@@ -64,7 +66,8 @@
 + (id)_preferredAttributesForMemoryCreationFromObject:(id)arg1 withSuccess:(BOOL)arg2 title:(id)arg3 subtitle:(id)arg4 error:(id)arg5 proposedAttributes:(id)arg6;
 + (BOOL)_shouldAcceptProposedAttributes:(id)arg1;
 + (long long)_titleFormatForProposedAttributes:(id)arg1;
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
++ (void)blockPerson:(id)arg1;
++ (void)blockPerson:(id)arg1 withAsset:(id)arg2;
 + (id)changeRequestForMemory:(id)arg1;
 + (id)changeRequestForRemotelyViewedMemoryWithLocalIdentifier:(id)arg1;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 assets:(id)arg5 curatedAssets:(id)arg6 keyAsset:(id)arg7;
@@ -92,8 +95,6 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)setKeyAsset:(id)arg1;
 - (void)setMovieCuratedAssets:(id)arg1;
 - (void)setMovieStateData:(id)arg1 forAsset:(id)arg2;

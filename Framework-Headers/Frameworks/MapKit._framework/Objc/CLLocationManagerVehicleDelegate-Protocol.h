@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MapKit/NSObject-Protocol.h>
+#import <MapKit/CLLocationManagerDelegate-Protocol.h>
 
 @class CLLocationManager, CLVehicleHeading, CLVehicleSpeed;
 
-@protocol CLLocationManagerVehicleDelegate <NSObject>
+@protocol CLLocationManagerVehicleDelegate <CLLocationManagerDelegate>
 
 @optional
 - (void)locationManager:(CLLocationManager *)arg1 didUpdateVehicleHeading:(CLVehicleHeading *)arg2;

@@ -21,6 +21,9 @@
     BOOL _zoomingEnabled;
     BOOL _microphoneEnabled;
     BOOL _livePreviewActive;
+    BOOL _hasMicrophone;
+    BOOL _canStartPictureInPictureAutomaticallyWhenEnteringBackground;
+    BOOL _playbackControlsIncludePictureInPictureButton;
     BOOL _playbackControlsShowsLoadingIndicator;
     AVPlayerViewController *_playerViewController;
     AVHomeIPCameraBehavior *_behavior;
@@ -33,8 +36,10 @@
 }
 
 @property (weak, nonatomic) AVHomeIPCameraBehavior *behavior; // @synthesize behavior=_behavior;
+@property (nonatomic) BOOL canStartPictureInPictureAutomaticallyWhenEnteringBackground; // @synthesize canStartPictureInPictureAutomaticallyWhenEnteringBackground=_canStartPictureInPictureAutomaticallyWhenEnteringBackground;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasMicrophone; // @synthesize hasMicrophone=_hasMicrophone;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLivePreviewActive) BOOL livePreviewActive; // @synthesize livePreviewActive=_livePreviewActive;
 @property (nonatomic) struct CGSize livePreviewAspectRatio; // @synthesize livePreviewAspectRatio=_livePreviewAspectRatio;
@@ -43,6 +48,7 @@
 @property (nonatomic, getter=isMicrophoneEnabled) BOOL microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
 @property (strong, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property (nonatomic) BOOL playbackControlsIncludeDisplayModeControls; // @synthesize playbackControlsIncludeDisplayModeControls=_playbackControlsIncludeDisplayModeControls;
+@property (nonatomic) BOOL playbackControlsIncludePictureInPictureButton; // @synthesize playbackControlsIncludePictureInPictureButton=_playbackControlsIncludePictureInPictureButton;
 @property (nonatomic) BOOL playbackControlsIncludeTransportControls; // @synthesize playbackControlsIncludeTransportControls=_playbackControlsIncludeTransportControls;
 @property (nonatomic) BOOL playbackControlsIncludeVolumeControls; // @synthesize playbackControlsIncludeVolumeControls=_playbackControlsIncludeVolumeControls;
 @property (nonatomic) BOOL playbackControlsShowsLoadingIndicator; // @synthesize playbackControlsShowsLoadingIndicator=_playbackControlsShowsLoadingIndicator;
@@ -53,6 +59,7 @@
 @property (nonatomic, getter=isZoomingEnabled) BOOL zoomingEnabled; // @synthesize zoomingEnabled=_zoomingEnabled;
 
 - (void).cxx_destruct;
+- (void)_updatePictureInPictureController;
 - (void)_updatePlaybackControlsControllerAndZoomingBehavior;
 - (void)beginScrubbing;
 - (void)dealloc;

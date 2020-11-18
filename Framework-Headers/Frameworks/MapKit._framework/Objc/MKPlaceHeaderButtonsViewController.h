@@ -10,26 +10,28 @@
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 
-@class MKPlaceHeaderButton, MKPlaceSectionRowView, NSArray, NSAttributedString, NSString, _MKPlaceActionButtonController;
-@protocol GEOTransitLineItem, MKPlaceHeaderButtonsViewControllerDelegate, _MKPlaceItem;
+@class MKPlaceSectionRowView, NSArray, NSMutableAttributedString, NSString, UIButton, _MKPlaceActionButtonController;
+@protocol GEOTransitLineItem, MKPlaceHeaderButtonsViewControllerDelegate, _MKPlaceActionControlledButton, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceHeaderButtonsViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, MKETAProviderObserver>
 {
     MKPlaceSectionRowView *_buttonsContainerView;
     NSArray *_constraints;
-    MKPlaceHeaderButton *_primaryButton;
-    MKPlaceHeaderButton *_secondaryButton;
-    NSAttributedString *_primaryAttributedString;
-    NSString *_currentETAString;
+    UIButton<_MKPlaceActionControlledButton> *_primaryButton;
+    UIButton<_MKPlaceActionControlledButton> *_alternatePrimaryButton;
+    UIButton<_MKPlaceActionControlledButton> *_secondaryButton;
+    NSMutableAttributedString *_currentETAString;
     BOOL _resizableViewsDisabled;
     id<_MKPlaceItem> _placeItem;
     id<GEOTransitLineItem> _lineItem;
     id<MKPlaceHeaderButtonsViewControllerDelegate> _delegate;
     unsigned long long _primaryButtonType;
+    _MKPlaceActionButtonController *_alternatePrimaryButtonController;
     _MKPlaceActionButtonController *_secondaryButtonController;
 }
 
+@property (strong, nonatomic) _MKPlaceActionButtonController *alternatePrimaryButtonController; // @synthesize alternatePrimaryButtonController=_alternatePrimaryButtonController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKPlaceHeaderButtonsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

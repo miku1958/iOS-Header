@@ -13,6 +13,7 @@
 @optional
 - (void)engine:(MPCPlaybackEngine *)arg1 didAchieveLikelyToKeepUpWithItem:(MPAVItem *)arg2;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeAccounts:(NSArray *)arg2;
+- (void)engine:(MPCPlaybackEngine *)arg1 didChangeActionAtQueueEnd:(long long)arg2;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeItemElapsedTime:(double)arg2 rate:(float)arg3;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeQueueWithReason:(NSString *)arg2;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeRepeatType:(long long)arg2;
@@ -24,6 +25,8 @@
 - (void)engine:(MPCPlaybackEngine *)arg1 didResetQueueWithPlaybackContext:(MPPlaybackContext *)arg2 error:(NSError *)arg3;
 - (void)engine:(MPCPlaybackEngine *)arg1 willChangeToItem:(MPAVItem *)arg2 fromItem:(MPAVItem *)arg3;
 - (void)engineDidEndStateRestoration:(MPCPlaybackEngine *)arg1;
+- (void)engineDidLoseMediaServices:(MPCPlaybackEngine *)arg1;
+- (void)engineDidResetMediaServices:(MPCPlaybackEngine *)arg1;
 - (void)engineWillBeginStateRestoration:(MPCPlaybackEngine *)arg1;
 @end
 

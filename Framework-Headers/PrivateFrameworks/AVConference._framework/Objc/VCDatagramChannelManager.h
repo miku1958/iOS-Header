@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)removeDatagramChannel:(id)arg1;
 - (BOOL)setupDatagramChannel:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)setupEmulatedDatagramChannelWithDestination:(id)arg1 datagramChannel:(id)arg2;
 
 @end
 

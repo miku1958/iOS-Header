@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) unsigned long long count;
 
 - (void).cxx_destruct;
-- (id)_initWithHashTable:(id)arg1 hasZeroValue:(BOOL)arg2;
 - (BOOL)containsValue:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateWithBlock:(CDUnknownBlockType)arg1;

@@ -36,6 +36,8 @@
     MISSING_TYPE *destinationViewSize;
     MISSING_TYPE *viewingSessionID;
     MISSING_TYPE *scrollDebounce;
+    MISSING_TYPE *commands;
+    MISSING_TYPE *coverViewManager;
 }
 
 - (void).cxx_destruct;

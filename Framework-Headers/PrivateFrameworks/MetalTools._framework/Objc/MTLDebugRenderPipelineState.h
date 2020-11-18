@@ -23,12 +23,15 @@
         unsigned long long bufferStride;
     } _vertexDescriptorLayouts[31];
     BOOL _threadgroupSizeMatchesTileSize;
+    unsigned long long _attachmentWriteMask;
     MTLRenderPipelineDescriptor *_descriptor;
     MTLRenderPipelineReflection *_reflection;
     MTLTileRenderPipelineDescriptor *_tileDescriptor;
 }
 
+@property (readonly, nonatomic) unsigned long long attachmentWriteMask; // @synthesize attachmentWriteMask=_attachmentWriteMask;
 @property (readonly, nonatomic) MTLRenderPipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property (readonly, nonatomic) BOOL rasterizationEnabled;
 @property (readonly, nonatomic) MTLRenderPipelineReflection *reflection; // @synthesize reflection=_reflection;
 @property (readonly, nonatomic) MTLTileRenderPipelineDescriptor *tileDescriptor; // @synthesize tileDescriptor=_tileDescriptor;
 

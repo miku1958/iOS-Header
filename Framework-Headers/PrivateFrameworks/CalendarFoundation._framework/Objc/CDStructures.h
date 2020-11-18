@@ -15,16 +15,20 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    int year;
-    char month;
-    char day;
-    char hour;
-    char minute;
-    double second;
-} CDStruct_b0fa4487;
+    int _field1;
+    char _field2;
+    char _field3;
+    char _field4;
+    char _field5;
+    double _field6;
+} CDStruct_79f9e052;
 
 typedef struct {
     int _field1;

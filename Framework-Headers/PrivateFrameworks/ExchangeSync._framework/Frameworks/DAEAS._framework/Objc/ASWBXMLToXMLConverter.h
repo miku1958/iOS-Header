@@ -10,7 +10,7 @@
 
 @interface ASWBXMLToXMLConverter : NSObject
 {
-    unsigned char _buffer[4096];
+    unsigned char _buffer[16384];
     BOOL _done;
     BOOL _oldFormat;
     BOOL _useMetadata;

@@ -6,9 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsAnalytics/FCBundleSubscriptionChangeObserver-Protocol.h>
+#import <NewsAnalytics/FCSubscriptionObserving-Protocol.h>
+#import <NewsAnalytics/FCUserInfoObserving-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC13NewsAnalytics15SessionObserver : NSObject
+@interface _TtC13NewsAnalytics15SessionObserver : NSObject <FCBundleSubscriptionChangeObserver, FCUserInfoObserving, FCSubscriptionObserving>
 {
     MISSING_TYPE *sessionManager;
     MISSING_TYPE *tracker;
@@ -18,8 +22,19 @@
 }
 
 - (void).cxx_destruct;
+- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
+- (void)bundleSubscriptionDidExpire:(id)arg1;
+- (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)pushContentEnvironmentData;
+- (void)pushMobileData;
+- (void)pushOrientationData;
+- (void)pushSessionDataWithRegionIDs:(id)arg1;
+- (void)pushUserSubscriptionContextData;
+- (void)subscriptionController:(id)arg1 didAddTags:(id)arg2 changeTags:(id)arg3 moveTags:(id)arg4 removeTags:(id)arg5 subscriptionType:(unsigned long long)arg6 eventInitiationLevel:(long long)arg7;
+- (void)userInfoDidChangeFeldsparID:(id)arg1 fromCloud:(BOOL)arg2;
 
 @end
 

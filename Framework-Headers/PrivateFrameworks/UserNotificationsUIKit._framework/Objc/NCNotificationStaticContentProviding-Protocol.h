@@ -22,6 +22,7 @@
 @property (weak, nonatomic) id<NCNotificationStaticContentProvidingDelegate> delegate;
 @property (readonly, nonatomic) NSArray *icons;
 @property (readonly, nonatomic) NSArray *interfaceActions;
+@property (readonly, copy, nonatomic) CDUnknownBlockType nilAction;
 @property (readonly, nonatomic, getter=isNumberOfLinesInfinite) BOOL numberOfLinesInfinite;
 @property (copy, nonatomic) NSArray *overriddenActions;
 @property (readonly, copy, nonatomic) NSString *primarySubtitleText;

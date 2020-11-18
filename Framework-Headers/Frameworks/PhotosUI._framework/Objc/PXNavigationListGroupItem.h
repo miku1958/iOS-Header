@@ -6,16 +6,22 @@
 
 #import <PhotosUICore/PXNavigationListItem.h>
 
+@class PHCollection;
+
 @interface PXNavigationListGroupItem : PXNavigationListItem
 {
     BOOL _group;
     BOOL _draggable;
     BOOL _expandable;
+    PHCollection *_collection;
 }
 
 + (id)titleForIdentifier:(id)arg1;
+- (void).cxx_destruct;
+- (id)collection;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 collection:(id)arg2;
 - (BOOL)isDraggable;
 - (BOOL)isExpandable;
 - (BOOL)isGroup;

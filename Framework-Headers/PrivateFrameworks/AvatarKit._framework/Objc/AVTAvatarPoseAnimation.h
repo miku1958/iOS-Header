@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarPose, NSDictionary;
+@class AVTAvatarPose, NSDictionary, NSMutableArray, NSString;
 
 @interface AVTAvatarPoseAnimation : NSObject
 {
@@ -14,6 +14,8 @@
     NSDictionary *_staticPhysicsStates;
     NSDictionary *_blendshapeAnimations;
     NSDictionary *_perNodeAnimations;
+    NSMutableArray *_animationKeys;
+    NSString *_animationBaseKey;
 }
 
 @property (readonly, nonatomic) double duration;
@@ -21,15 +23,21 @@
 
 + (id)animationFromRepresentation:(id)arg1 keyPath:(id)arg2;
 + (void)enumerateRepresentationsForAnimation:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (void)removeAllPoseAnimationsOnAvatar:(id)arg1;
++ (id)optimizeAnimation:(id)arg1 target:(id)arg2;
 - (void).cxx_destruct;
+- (void)addToAvatar:(id)arg1 options:(unsigned long long)arg2;
+- (void)addToAvatar:(id)arg1 options:(unsigned long long)arg2 transitionDuration:(double)arg3;
+- (void)addToAvatar:(id)arg1 useStaticPhysicsState:(BOOL)arg2;
+- (void)addToAvatar:(id)arg1 useStaticPhysicsState:(BOOL)arg2 transitionDuration:(double)arg3;
 - (id)animatedPoseRepresentation;
-- (id)animationForAvatar:(id)arg1;
-- (void)applyOnAvatar:(id)arg1;
+- (id)animationsForAvatar:(id)arg1;
+- (void)commonInit;
 - (id)initWithScene:(id)arg1;
 - (id)initWithSceneAtURL:(id)arg1;
 - (id)initWithStaticPose:(id)arg1 staticPhysicsStates:(id)arg2;
 - (id)initWithStaticPoseRepresentation:(id)arg1 animatedPoseRepresentation:(id)arg2 staticPhysicsStatesRepresentation:(id)arg3;
+- (id)physicalizedPose;
+- (void)removeFromAvatar:(id)arg1 transitionDuration:(double)arg2;
 - (id)staticPoseRepresentation;
 
 @end

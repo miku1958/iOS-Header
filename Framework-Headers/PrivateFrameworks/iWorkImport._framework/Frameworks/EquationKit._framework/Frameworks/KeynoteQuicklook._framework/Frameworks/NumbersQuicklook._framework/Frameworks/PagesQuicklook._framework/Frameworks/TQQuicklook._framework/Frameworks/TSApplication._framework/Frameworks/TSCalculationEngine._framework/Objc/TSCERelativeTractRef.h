@@ -44,6 +44,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAbsoluteTractRef:(id)arg1 hostCell:(const struct TSUCellCoord *)arg2;
+- (id)initWithRangeRef:(const struct TSCERangeRef *)arg1 hostCell:(const struct TSUCellCoord *)arg2;
 - (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isRectangularRange;

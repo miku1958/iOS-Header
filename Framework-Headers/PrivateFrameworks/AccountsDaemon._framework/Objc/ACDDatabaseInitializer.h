@@ -123,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)_addTudouAccountType;
 - (void)_addTwitterAccountType;
 - (void)_addVimeoAccountType;
+- (void)_addWarmingUpAttributeToAccounts;
 - (void)_addWeiboAccountType;
 - (void)_addYahooAccountType;
 - (void)_addYahooIMAccountType;

@@ -8,22 +8,21 @@
 
 #import <WorkflowKit/NSCopying-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, WFRecordDescriptor;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface WFRecord : NSObject <NSCopying>
 {
-    WFRecordDescriptor *_descriptor;
     NSDictionary *_allPropertiesByName;
     NSMutableSet *_fetchedPropertyNames;
     NSMutableSet *_modifiedPropertyNames;
     NSMutableDictionary *_lastFetchedValues;
     NSMutableSet *_modifiedPropertyNamesSinceLastSave;
     NSMutableDictionary *_lastSavedOrFetchedValues;
+    NSString *_storageIdentifier;
 }
 
 @property (readonly, nonatomic) NSSet *allProperties;
 @property (readonly, nonatomic) NSDictionary *allPropertiesByName; // @synthesize allPropertiesByName=_allPropertiesByName;
-@property (readonly, nonatomic) WFRecordDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property (readonly, nonatomic) NSSet *fetchedProperties;
 @property (readonly, nonatomic) NSMutableSet *fetchedPropertyNames; // @synthesize fetchedPropertyNames=_fetchedPropertyNames;
 @property (readonly, nonatomic) NSMutableDictionary *lastFetchedValues; // @synthesize lastFetchedValues=_lastFetchedValues;
@@ -32,27 +31,32 @@
 @property (readonly, nonatomic) NSSet *modifiedPropertiesSinceLastSave;
 @property (readonly, nonatomic) NSMutableSet *modifiedPropertyNames; // @synthesize modifiedPropertyNames=_modifiedPropertyNames;
 @property (readonly, nonatomic) NSMutableSet *modifiedPropertyNamesSinceLastSave; // @synthesize modifiedPropertyNamesSinceLastSave=_modifiedPropertyNamesSinceLastSave;
+@property (copy, nonatomic) NSString *storageIdentifier; // @synthesize storageIdentifier=_storageIdentifier;
 
-+ (Class)allocateLeafClassForRecordClass:(Class)arg1 named:(id)arg2;
 + (id)defaultPropertyValues;
 + (id)ignoredPropertyNames;
 + (id)propertiesForClass:(Class)arg1;
 + (id)propertiesForClass:(Class)arg1 walkingSuperclassesUntilReaching:(Class)arg2;
++ (id)recordSubclassProperties;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithValues:(BOOL)arg1;
+- (void)enumerateSettablePropertiesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithDescriptor:(id)arg1 storage:(id)arg2 error:(id *)arg3;
-- (id)initWithDescriptor:(id)arg1 storage:(id)arg2 properties:(id)arg3 error:(id *)arg4;
+- (id)initWithStorage:(id)arg1 error:(id *)arg2;
+- (id)initWithStorage:(id)arg1 properties:(id)arg2 error:(id *)arg3;
 - (void)loadFromStorage:(id)arg1;
 - (void)loadFromStorage:(id)arg1 properties:(id)arg2;
 - (void)markPropertyModifiedIfNecessary:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)resetModifications:(BOOL)arg1;
 - (BOOL)saveChangesToStorage:(id)arg1 error:(id *)arg2;
 - (BOOL)saveProperties:(id)arg1 toStorage:(id)arg2 error:(id *)arg3;
-- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)setupPropertyObservation;
+- (void)tearDownPropertyObservation;
 - (BOOL)writeToStorage:(id)arg1 error:(id *)arg2;
 
 @end

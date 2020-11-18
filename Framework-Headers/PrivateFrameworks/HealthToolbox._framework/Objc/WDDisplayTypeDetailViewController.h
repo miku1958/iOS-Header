@@ -7,17 +7,15 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthToolbox/HKInteractiveChartViewObserver-Protocol.h>
-#import <HealthToolbox/SKStoreProductViewControllerDelegate-Protocol.h>
 #import <HealthToolbox/UITableViewDataSource-Protocol.h>
 #import <HealthToolbox/UITableViewDelegate-Protocol.h>
-#import <HealthToolbox/WDAppSwooshTableViewCellDelegate-Protocol.h>
 #import <HealthToolbox/WDSourceOrderObserver-Protocol.h>
 #import <HealthToolbox/WDUserActivityResponder-Protocol.h>
 
 @class HKDisplayCategory, HKDisplayType, HKInteractiveChartViewController, HKNavigationController, HKTimeScopeControl, NSDate, NSMutableArray, NSSet, NSString, UIFont, WDProfile, _UINavigationControllerPalette;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDetailViewController : HKTableViewController <SKStoreProductViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, WDAppSwooshTableViewCellDelegate, HKInteractiveChartViewObserver, WDSourceOrderObserver, WDUserActivityResponder>
+@interface WDDisplayTypeDetailViewController : HKTableViewController <UITableViewDataSource, UITableViewDelegate, HKInteractiveChartViewObserver, WDSourceOrderObserver, WDUserActivityResponder>
 {
     HKDisplayType *_displayType;
     HKDisplayCategory *_displayCategory;
@@ -50,18 +48,13 @@ __attribute__((visibility("hidden")))
 - (void)_configureCell:(id)arg1 forTableView:(id)arg2;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_detachPaletteIfNecessary;
-- (void)_didBecomeActive:(id)arg1;
-- (void)_displayAppWithStoreID:(id)arg1;
 - (void)_displayTypeStringsChanged:(id)arg1;
-- (void)_loadStoreData:(id)arg1;
 - (void)_localeDidChange:(id)arg1;
 - (id)_selectedUnitCellText;
 - (void)_setupObservers;
-- (BOOL)_shouldShowAppsRow;
 - (BOOL)_shouldShowUnitsRow;
 - (id)_showAddDataVC:(id)arg1;
 - (id)_showAllDataVC:(id)arg1;
-- (void)_showAppsRowIfNecessary:(id)arg1;
 - (void)_timeFrameForChartsChanged:(id)arg1;
 - (void)_unitPreferencesDidUpdate:(id)arg1;
 - (void)_updateActivityForViewDidAppear;
@@ -69,16 +62,13 @@ __attribute__((visibility("hidden")))
 - (void)addSectionWithItems:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;
 - (id)applyTransitionActivity:(id)arg1;
-- (void)appsCell:(id)arg1 showStorePageWithStoreID:(id)arg2;
 - (void)calculateSections;
 - (void)dealloc;
-- (long long)findAppsSectionLocation;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisplayType:(id)arg1 displayCategory:(id)arg2 profile:(id)arg3 displayDate:(id)arg4;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)productViewControllerDidFinish:(id)arg1;
 - (void)sourceOrderUpdatedWithOrder:(id)arg1 dataType:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -88,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateAppsSectionIfNecessary;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

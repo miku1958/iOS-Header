@@ -54,6 +54,8 @@
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)_updatePresenceType:(id)arg1 payload:(id)arg2;
 - (void)_updateUsers:(id)arg1 payload:(id)arg2 home:(id)arg3;
+- (id)analyticsPresenceEventData;
+- (id)analyticsTriggerEventData;
 - (BOOL)compatibleWithUser:(id)arg1;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3 delegate:(id)arg4;
 - (id)createClientPayload;
@@ -70,9 +72,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
 - (BOOL)isActive;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
-- (id)presenceMetricData;
 - (id)presenceTypeForClient;
 - (BOOL)removeUser:(id)arg1;
 - (id)thisUser;

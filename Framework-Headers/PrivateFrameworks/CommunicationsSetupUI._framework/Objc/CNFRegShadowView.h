@@ -8,6 +8,7 @@
 
 @class UIBezierPath, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegShadowView : UIView
 {
     struct CGRect _cachedBounds;

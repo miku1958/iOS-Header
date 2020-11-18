@@ -10,11 +10,10 @@
 
 @interface _TtC18HealthExperienceUI8HostView : UIView
 {
-    MISSING_TYPE *recreateViewControllerOnHostedFeedItemChange;
-    MISSING_TYPE *recreateViewControllerOnNextChange;
     MISSING_TYPE *userDataObserver;
     MISSING_TYPE *currentUserInterface;
     MISSING_TYPE *currentFeedItemUniqueIdentifier;
+    MISSING_TYPE *recreateViewControllerOnHostedFeedItemChange;
     MISSING_TYPE *parentViewController;
     MISSING_TYPE *hostedFeedItem;
     MISSING_TYPE *hostedViewController;

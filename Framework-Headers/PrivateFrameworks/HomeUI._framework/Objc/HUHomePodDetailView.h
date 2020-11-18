@@ -12,7 +12,7 @@
 @interface HUHomePodDetailView : UIButton
 {
     BOOL _isAnimatingPop;
-    unsigned long long _role;
+    unsigned long long _mediaSystemRole;
     UILabel *_unitNameLabel;
     UIView *_unitImageView;
     id<HUHomePodDetailViewDelegate> _delegate;
@@ -21,7 +21,7 @@
 
 @property (weak, nonatomic) id<HUHomePodDetailViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isAnimatingPop; // @synthesize isAnimatingPop=_isAnimatingPop;
-@property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
+@property (readonly, nonatomic) unsigned long long mediaSystemRole; // @synthesize mediaSystemRole=_mediaSystemRole;
 @property (readonly, nonatomic) HUMonogramView *unitBadgeLabel; // @synthesize unitBadgeLabel=_unitBadgeLabel;
 @property (readonly, nonatomic) UIView *unitImageView; // @synthesize unitImageView=_unitImageView;
 @property (copy, nonatomic) id<HFStringGenerator> unitName; // @dynamic unitName;

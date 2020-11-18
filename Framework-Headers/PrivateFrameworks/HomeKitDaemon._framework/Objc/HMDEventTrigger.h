@@ -13,9 +13,10 @@
 
 @interface HMDEventTrigger : HMDTrigger <HMDEventDelegate, HMFLogging>
 {
+    struct os_unfair_lock_s _lock;
     BOOL _migratedEventsToRecords;
     BOOL _executeOnce;
-    NSMutableArray *_events;
+    NSMutableArray *_currentEvents;
     NSPredicate *_evaluationCondition;
     NSArray *_recurrences;
     HMDPredicateUtilities *_predicateUtilities;
@@ -32,12 +33,13 @@
 @property (readonly, nonatomic) NSArray *characteristicBaseEvents;
 @property (readonly, nonatomic) NSArray *characteristicEvents;
 @property (readonly, nonatomic) BOOL computedActive;
+@property (strong, nonatomic) NSMutableArray *currentEvents; // @synthesize currentEvents=_currentEvents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *durationEvents;
 @property (readonly, nonatomic) NSArray *endEvents;
 @property (strong, nonatomic) NSPredicate *evaluationCondition; // @synthesize evaluationCondition=_evaluationCondition;
-@property (readonly, nonatomic) NSMutableArray *events; // @synthesize events=_events;
+@property (readonly, nonatomic) NSArray *events;
 @property (nonatomic) BOOL executeOnce; // @synthesize executeOnce=_executeOnce;
 @property (strong, nonatomic) HMDEventTriggerExecutionSession *executionSession; // @synthesize executionSession=_executionSession;
 @property (readonly) unsigned long long hash;
@@ -48,7 +50,7 @@
 @property (readonly, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
 @property (readonly, nonatomic) NSArray *significantTimeEvents;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSArray *timeEvents;
+@property (readonly) NSArray *timeEvents;
 @property (readonly, nonatomic) NSArray *triggerEvents;
 @property (strong, nonatomic) HMDEventTriggerUserConfirmationSession *userConfirmationSession; // @synthesize userConfirmationSession=_userConfirmationSession;
 
@@ -95,6 +97,7 @@
 - (id)_updateEventsOnEventTrigger:(id)arg1;
 - (void)_updateOwningDevice:(id)arg1;
 - (void)_userDidConfirmExecute:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)addEvent:(id)arg1;
 - (BOOL)addEventsFromMessage:(id)arg1;
 - (id)backingStoreObjects:(long long)arg1;
 - (BOOL)checkSharedEventTriggerActivationResidentRequirement:(id)arg1;
@@ -109,17 +112,18 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)executionComplete:(id)arg1 error:(id)arg2;
 - (void)fixupForReplacementAccessory:(id)arg1;
+- (id)generateAnalyticsDataDueToTriggerAddition:(BOOL)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2 message:(id)arg3;
 - (void)invalidate;
 - (BOOL)isEventTriggerOnLocalDeviceForAccessory:(id)arg1;
 - (BOOL)isEventTriggerOnRemoteGatewayForAccessory:(id)arg1;
 - (id)messageReceiverChildren;
-- (id)metric:(BOOL)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (void)processEventRecords:(id)arg1 message:(id)arg2;
 - (void)removeAccessory:(id)arg1;
 - (void)removeCharacteristic:(id)arg1;
+- (void)removeEvent:(id)arg1;
 - (void)removeService:(id)arg1;
 - (void)removeUser:(id)arg1;
 - (BOOL)requiresDataVersion4;

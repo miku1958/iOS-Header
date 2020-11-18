@@ -65,6 +65,7 @@
 + (id)paletteForColor:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_colorForCircularTicksForMinute:(unsigned long long)arg1;
+- (BOOL)_shouldHideColor:(unsigned long long)arg1;
 - (id)circularDialFillColor;
 - (id)circularDialSubtickColor;
 - (id)circularDialTickColor;

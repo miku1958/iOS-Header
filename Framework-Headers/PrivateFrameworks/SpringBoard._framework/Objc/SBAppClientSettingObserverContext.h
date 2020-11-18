@@ -19,14 +19,6 @@
     FBSSceneTransitionContext *_transition;
 }
 
-@property (strong, nonatomic) SBApplication *app; // @synthesize app=_app;
-@property (strong, nonatomic) UIApplicationSceneClientSettings *oldClientSettings; // @synthesize oldClientSettings=_oldClientSettings;
-@property (strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
-@property (strong, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
-@property (strong, nonatomic) UIApplicationSceneSettings *settings; // @synthesize settings=_settings;
-@property (strong, nonatomic) FBSSceneTransitionContext *transition; // @synthesize transition=_transition;
-@property (strong, nonatomic) UIApplicationSceneClientSettings *updatedClientSettings; // @synthesize updatedClientSettings=_updatedClientSettings;
-
 - (void).cxx_destruct;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <HomeKitBackingStore/HMBModel.h>
 
-@class HMDBulletinBoardNotification, NSData, NSNumber;
+@class HMDBulletinBoardNotification, NSData, NSNumber, NSSet;
 
 @interface HMDCameraProfileSettingsModel : HMBModel
 {
@@ -16,23 +16,29 @@
 
 @property unsigned long long accessModeAtHome;
 @property (copy) NSNumber *accessModeAtHomeField; // @dynamic accessModeAtHomeField;
-@property BOOL accessModeChangeNotificationEnabled;
+@property (readonly) BOOL accessModeChangeNotificationEnabled;
 @property (copy) NSNumber *accessModeChangeNotificationEnabledField; // @dynamic accessModeChangeNotificationEnabledField;
 @property BOOL accessModeIndicatorEnabled;
 @property (copy) NSNumber *accessModeIndicatorEnabledField; // @dynamic accessModeIndicatorEnabledField;
 @property unsigned long long accessModeNotAtHome;
 @property (copy) NSNumber *accessModeNotAtHomeField; // @dynamic accessModeNotAtHomeField;
+@property (strong) NSSet *activityZones;
+@property (copy) NSData *activityZonesField; // @dynamic activityZonesField;
+@property BOOL activityZonesIncludedForSignificantEventDetection;
+@property (copy) NSNumber *activityZonesIncludedForSignificantEventDetectionField; // @dynamic activityZonesIncludedForSignificantEventDetectionField;
 @property BOOL cameraManuallyDisabled; // @synthesize cameraManuallyDisabled=_cameraManuallyDisabled;
 @property unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
 @property BOOL nightVisionModeEnabled;
 @property (copy) NSNumber *nightVisionModeEnabledField; // @dynamic nightVisionModeEnabledField;
 @property BOOL periodicSnapshotsAllowed;
 @property (copy) NSNumber *periodicSnapshotsAllowedField; // @dynamic periodicSnapshotsAllowedField;
+@property (readonly) BOOL reachabilityEventNotificationEnabled;
+@property (copy) NSNumber *reachabilityEventNotificationEnabledField; // @dynamic reachabilityEventNotificationEnabledField;
 @property BOOL recordingAudioEnabled;
 @property (copy) NSNumber *recordingAudioEnabledField; // @dynamic recordingAudioEnabledField;
 @property unsigned long long recordingEventTriggers;
 @property (copy) NSNumber *recordingEventTriggersField; // @dynamic recordingEventTriggersField;
-@property (strong) HMDBulletinBoardNotification *smartBulletinBoardNotification;
+@property (readonly) HMDBulletinBoardNotification *smartBulletinBoardNotification;
 @property (copy) NSData *smartBulletinBoardNotificationDataField; // @dynamic smartBulletinBoardNotificationDataField;
 @property BOOL snapshotsAllowed;
 @property (copy) NSNumber *snapshotsAllowedField; // @dynamic snapshotsAllowedField;

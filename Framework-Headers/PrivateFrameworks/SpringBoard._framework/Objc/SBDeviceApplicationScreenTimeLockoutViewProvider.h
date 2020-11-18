@@ -6,30 +6,25 @@
 
 #import <SpringBoard/SBDeviceApplicationSceneOverlayViewProvider.h>
 
-#import <SpringBoard/LOViewControllerDelegate-Protocol.h>
+@class STBlockingViewController;
 
-@class NSString, UIViewController;
-@protocol LOViewController;
-
-@interface SBDeviceApplicationScreenTimeLockoutViewProvider : SBDeviceApplicationSceneOverlayViewProvider <LOViewControllerDelegate>
+@interface SBDeviceApplicationScreenTimeLockoutViewProvider : SBDeviceApplicationSceneOverlayViewProvider
 {
-    UIViewController<LOViewController> *_lockoutViewController;
+    STBlockingViewController *_blockingViewController;
+    BOOL _isActive;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_activateIfPossible;
 - (void)_deactivateIfPossible;
 - (void)_handleInstalledAppsChanged:(id)arg1;
-- (id)_newLockoutViewControllerWithBundleIdentifier:(id)arg1;
+- (id)_newBlockingViewControllerWithBundleIdentifier:(id)arg1;
 - (id)_realOverlayViewController;
 - (void)dealloc;
+- (void)hideContentWithAnimation:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSceneHandle:(id)arg1 delegate:(id)arg2;
-- (void)lockoutViewControllerDidFinishDismissing:(id)arg1;
+- (long long)priority;
+- (void)showContentWithAnimation:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

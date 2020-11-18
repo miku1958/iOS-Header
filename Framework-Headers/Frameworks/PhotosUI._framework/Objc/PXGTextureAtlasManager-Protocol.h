@@ -7,11 +7,14 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSArray, NSData, NSIndexSet, PXGChangeDetails;
+@protocol PXGTextureAtlasManagerDelegate, PXGTextureConverter;
 
 @protocol PXGTextureAtlasManager <NSObject>
 
+@property (weak, nonatomic) id<PXGTextureAtlasManagerDelegate> delegate;
 @property (readonly, nonatomic) unsigned long long pixelFormat;
 @property (strong, nonatomic) NSIndexSet *skipRenderSpriteIndexes;
+@property (weak, nonatomic) id<PXGTextureConverter> textureConverter;
 @property (readonly, copy, nonatomic) NSArray *textures;
 @property (readonly, nonatomic) struct CGSize thumbnailSize;
 

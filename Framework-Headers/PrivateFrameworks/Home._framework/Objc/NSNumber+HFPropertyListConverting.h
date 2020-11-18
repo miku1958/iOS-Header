@@ -15,14 +15,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSNumber *hf_absoluteValue;
-@property (readonly, nonatomic) BOOL hf_isFloatValue;
-@property (readonly, nonatomic) BOOL hf_isSignedValue;
 @property (readonly) Class superclass;
 
-- (long long)hf_compareAbsoluteValue:(id)arg1;
-- (id)hf_largerNumber:(id)arg1;
-- (id)hf_smallerNumber:(id)arg1;
-- (id)hf_valueRoundedToNearestStepValue:(id)arg1 relativeToBaseValue:(id)arg2;
 @end
 

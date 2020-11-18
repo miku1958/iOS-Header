@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVRoute;
+@class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPAVRoutingControllerSelection : NSObject
 {
-    MPAVRoute *_route;
+    NSArray *_routes;
     long long _selectionOperation;
     CDUnknownBlockType _completion;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property (strong, nonatomic) MPAVRoute *route; // @synthesize route=_route;
+@property (strong, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (nonatomic) long long selectionOperation; // @synthesize selectionOperation=_selectionOperation;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithRoute:(id)arg1 selectionOperation:(long long)arg2;
+- (id)initWithRoutes:(id)arg1 selectionOperation:(long long)arg2;
 
 @end
 

@@ -16,10 +16,12 @@
     BOOL _isUnexpectedlyLogOut;
     BOOL _addedObserverForUnexpectedlyLoggedOut;
     UNUserNotificationCenter *_notificationCenter;
+    UNUserNotificationCenter *_notificationCenterCatalyst;
     IMDefaults *_sharedDefaultsInstance;
 }
 
 @property (strong, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (strong, nonatomic) UNUserNotificationCenter *notificationCenterCatalyst; // @synthesize notificationCenterCatalyst=_notificationCenterCatalyst;
 @property (strong, nonatomic) IMDefaults *sharedDefaultsInstance; // @synthesize sharedDefaultsInstance=_sharedDefaultsInstance;
 
 + (id)_accountsArrayForServiceIMessage;

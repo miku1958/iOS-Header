@@ -12,20 +12,23 @@
 
 @interface NPKProtoCatalogChangedRequest : PBRequest <NSCopying>
 {
-    NPKProtoCatalog *_catalog;
+    NPKProtoCatalog *_companionCatalog;
     unsigned int _lastKnownResyncID;
     unsigned int _resyncID;
     unsigned int _syncID;
+    NPKProtoCatalog *_watchCatalog;
     CDStruct_02c44088 _has;
 }
 
-@property (strong, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
+@property (strong, nonatomic) NPKProtoCatalog *companionCatalog; // @synthesize companionCatalog=_companionCatalog;
 @property (nonatomic) BOOL hasLastKnownResyncID;
 @property (nonatomic) BOOL hasResyncID;
 @property (nonatomic) BOOL hasSyncID;
+@property (readonly, nonatomic) BOOL hasWatchCatalog;
 @property (nonatomic) unsigned int lastKnownResyncID; // @synthesize lastKnownResyncID=_lastKnownResyncID;
 @property (nonatomic) unsigned int resyncID; // @synthesize resyncID=_resyncID;
 @property (nonatomic) unsigned int syncID; // @synthesize syncID=_syncID;
+@property (strong, nonatomic) NPKProtoCatalog *watchCatalog; // @synthesize watchCatalog=_watchCatalog;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

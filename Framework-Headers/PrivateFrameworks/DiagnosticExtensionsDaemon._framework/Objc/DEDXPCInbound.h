@@ -34,9 +34,11 @@
 - (void)didCancelSession:(id)arg1;
 - (void)didCommitSession:(id)arg1;
 - (void)didDiscoverDevices:(id)arg1;
+- (void)didGetState:(long long)arg1 info:(id)arg2 sessionID:(id)arg3;
 - (void)didStartBugSessionWithInfo:(id)arg1;
 - (void)discoverAllAvailableDevices;
 - (void)finishedDiagnosticWithIdentifier:(id)arg1 result:(id)arg2 session:(id)arg3;
+- (void)getSessionStateWithSession:(id)arg1;
 - (void)getSessionStatusWithSession:(id)arg1;
 - (void)gotDeviceUpdate:(id)arg1;
 - (void)hasActiveSession:(id)arg1;

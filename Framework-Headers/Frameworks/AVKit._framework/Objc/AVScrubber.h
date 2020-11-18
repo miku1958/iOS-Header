@@ -7,35 +7,37 @@
 #import <UIKit/UISlider.h>
 
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
+#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 #import <AVKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
+@class AVLayoutItemAttributes, NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
 @protocol AVScrubberDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVScrubber : UISlider <UIScrollViewDelegate, AVExternalGestureRecognizerPreventing>
+@interface AVScrubber : UISlider <UIScrollViewDelegate, AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     double _trackingStartTime;
     float _previousValue;
     double _previousValueChangeTime;
     double _currentValueChangedTime;
     BOOL _didHaveLessThanFullScrubbingSpeedSinceTrackingBegin;
-    BOOL _scrollScrubbing;
-    BOOL _slowKnobMovementDetected;
-    BOOL _shouldRecoverFromPrecisionScrubbingIfNeeded;
-    BOOL _scrubsWhenTappedAnywhere;
-    BOOL _canChangeScrubbingSpeed;
     BOOL _collapsed;
     BOOL _included;
     BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
+    BOOL _scrollScrubbing;
+    BOOL _slowKnobMovementDetected;
+    BOOL _shouldRecoverFromPrecisionScrubbingIfNeeded;
+    BOOL _scrubsWhenTappedAnywhere;
+    BOOL _canChangeScrubbingSpeed;
     BOOL _hasChangedLocationAtLeastOnce;
     float _estimatedFrameRate;
     float _rate;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     UIView *_loadedTrackOverlayView;
     NSMutableArray *_previousScrubberVelocities;
+    AVLayoutItemAttributes *_layoutAttributes;
     id<AVScrubberDelegate> _delegate;
     NSArray *_loadedTimeRanges;
     long long _scrubbingSpeed;
@@ -64,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (copy, nonatomic) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property (readonly, nonatomic) UIView *loadedTrackOverlayView; // @synthesize loadedTrackOverlayView=_loadedTrackOverlayView;
 @property (readonly, nonatomic) NSString *localizedScrubbingSpeedName;
@@ -85,6 +88,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingLocalizedScrubbingSpeedName;
 - (void).cxx_destruct;
 - (BOOL)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
+- (void)_updateLayoutItem;
 - (void)_updateSlowKnobMovementDetected;
 - (void)_updateSlowKnobMovementDetectedForTargetValue:(float)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -102,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isTracking;
+- (void)layoutAttributesDidChange;
 - (void)layoutSubviews;
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
@@ -109,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (double)normalizedScrollOffset;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
-- (void)setHidden:(BOOL)arg1;
 - (void)setValue:(float)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;

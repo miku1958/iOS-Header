@@ -12,8 +12,12 @@
 {
     NSString *_interfaceVendorID;
     NSString *_interfaceProductID;
+    BOOL _hasInterfaceVendorID;
+    BOOL _hasInterfaceProductID;
 }
 
+@property (nonatomic) BOOL hasInterfaceProductID; // @synthesize hasInterfaceProductID=_hasInterfaceProductID;
+@property (nonatomic) BOOL hasInterfaceVendorID; // @synthesize hasInterfaceVendorID=_hasInterfaceVendorID;
 @property (copy, nonatomic) NSString *interfaceProductID; // @synthesize interfaceProductID=_interfaceProductID;
 @property (copy, nonatomic) NSString *interfaceVendorID; // @synthesize interfaceVendorID=_interfaceVendorID;
 @property (readonly, nonatomic) NSData *jsonData;

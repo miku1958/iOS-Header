@@ -12,6 +12,7 @@
 
 @interface PKBarcode : NSObject <NSSecureCoding>
 {
+    BOOL _shouldRemoveQuietZone;
     NSData *_messageData;
     NSDictionary *_options;
     long long _format;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) BOOL isTall;
 @property (copy, nonatomic) NSData *messageData; // @synthesize messageData=_messageData;
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (nonatomic) BOOL shouldRemoveQuietZone; // @synthesize shouldRemoveQuietZone=_shouldRemoveQuietZone;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

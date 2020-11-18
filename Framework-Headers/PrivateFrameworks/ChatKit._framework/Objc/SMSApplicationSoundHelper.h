@@ -17,6 +17,8 @@
 @property (nonatomic) BOOL bulletinSuppressed; // @synthesize bulletinSuppressed=_bulletinSuppressed;
 
 - (void).cxx_destruct;
+- (BOOL)_isPlaySoundEnabled;
+- (void)_playIncomingMessageSoundAndHapticForMessage:(id)arg1 messageIsForCurrentTranscript:(BOOL)arg2;
 - (BOOL)_shouldPlayTapbackSound;
 - (BOOL)allowedByScreenTimeToPlayReceiveSoundForChat:(id)arg1;
 - (void)playIncomingMessageSoundAndHapticForMessage:(id)arg1 messageIsForCurrentTranscript:(BOOL)arg2;

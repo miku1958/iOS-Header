@@ -10,6 +10,8 @@
 {
 }
 
+- (id)childViewControllerForStatusBarStyle;
+- (id)preferredFocusEnvironments;
 - (BOOL)shouldAutorotate;
 
 @end

@@ -12,33 +12,35 @@
 
 @interface TSDTextureDescription : NSObject <NSCopying>
 {
-    unsigned int _isMagicMove:1;
-    unsigned int _includesActionBuilds:1;
-    unsigned int _shouldAddFinal:1;
-    unsigned int _shouldAddMasks:1;
-    unsigned int _shouldAddMagicMoveObjectOnly:1;
-    unsigned int _shouldNotAddContainedReps:1;
-    unsigned int _shouldNotAddShapeAttributes:1;
-    unsigned int _shouldNotAddText:1;
-    unsigned int _shouldSeparateReflection:1;
-    unsigned int _shouldSeparateShadow:1;
-    unsigned int _shouldSeparateStroke:1;
-    unsigned int _shouldAddParameterizedStroke:1;
-    unsigned int _shouldReverseStrokeDrawing:1;
-    unsigned int _shouldSeparateGroupedTextures:1;
-    unsigned int _shouldSeparateText:1;
-    unsigned int _shouldIgnoreScaleInSourceImage:1;
-    unsigned int _shouldUseSourceImage:1;
-    unsigned int _shouldDistortToFit:1;
-    unsigned int _shouldForceTextureGeneration:1;
+    BOOL _isMagicMove;
+    BOOL _includesActionBuilds;
+    BOOL _shouldAddFinal;
+    BOOL _shouldAddMasks;
+    BOOL _shouldAddMagicMoveObjectOnly;
+    BOOL _shouldNotAddContainedReps;
+    BOOL _shouldNotAddShapeAttributes;
+    BOOL _shouldNotAddText;
+    BOOL _shouldSeparateReflection;
+    BOOL _shouldSeparateShadow;
+    BOOL _shouldSeparateStroke;
+    BOOL _shouldAddParameterizedStroke;
+    BOOL _shouldReverseStrokeDrawing;
+    BOOL _shouldSeparateGroupedTextures;
+    BOOL _shouldSeparateText;
+    BOOL _shouldIgnoreScaleInSourceImage;
+    BOOL _shouldUseSourceImage;
+    BOOL _shouldDistortToFit;
+    BOOL _shouldForceTextureGeneration;
     BOOL _shouldAddNoShapeAttributes;
     int _byGlyphStyle;
+    int _childRepByGlyphStyle;
     id<TSDAnimationSession> _session;
     unsigned long long _stage;
     unsigned long long _deliveryStyle;
 }
 
 @property (nonatomic) int byGlyphStyle; // @synthesize byGlyphStyle=_byGlyphStyle;
+@property (nonatomic) int childRepByGlyphStyle; // @synthesize childRepByGlyphStyle=_childRepByGlyphStyle;
 @property (nonatomic) unsigned long long deliveryStyle; // @synthesize deliveryStyle=_deliveryStyle;
 @property (nonatomic) BOOL includesActionBuilds; // @synthesize includesActionBuilds=_includesActionBuilds;
 @property (nonatomic) BOOL isMagicMove; // @synthesize isMagicMove=_isMagicMove;

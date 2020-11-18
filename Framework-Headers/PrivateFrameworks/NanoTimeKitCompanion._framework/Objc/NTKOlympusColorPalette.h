@@ -12,6 +12,7 @@
 
 @interface NTKOlympusColorPalette : NSObject <NTKCircularAnalogDialColorPalette>
 {
+    BOOL _useSmallFont;
     unsigned long long _color;
     unsigned long long _style;
     unsigned long long _dial;
@@ -65,14 +66,17 @@
 @property (strong, nonatomic) UIColor *softWhiteColor; // @synthesize softWhiteColor=_softWhiteColor;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 
 + (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4;
++ (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4 useSmallFont:(BOOL)arg5;
 - (void).cxx_destruct;
+- (BOOL)_shouldHideColor:(unsigned long long)arg1;
 - (id)circularDialFillColor;
 - (id)circularDialTickColor;
 - (id)colorForCircularTicksForHour:(unsigned long long)arg1;
 - (id)colorForCircularTicksForMinute:(unsigned long long)arg1;
-- (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4;
+- (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4 useSmallFont:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

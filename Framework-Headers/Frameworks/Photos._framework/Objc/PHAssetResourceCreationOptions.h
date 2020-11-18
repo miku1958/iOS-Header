@@ -18,10 +18,12 @@
     NSDate *_alternateImportImageDate;
     NSString *_originalFilename;
     NSString *_uniformTypeIdentifier;
+    NSString *_forcePairingIdentifier;
 }
 
 @property (strong, nonatomic) NSDate *alternateImportImageDate; // @synthesize alternateImportImageDate=_alternateImportImageDate;
 @property (nonatomic) int burstPickType; // @synthesize burstPickType=_burstPickType;
+@property (strong, nonatomic) NSString *forcePairingIdentifier; // @synthesize forcePairingIdentifier=_forcePairingIdentifier;
 @property (copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
 @property (nonatomic) BOOL shouldIngestInPlace; // @synthesize shouldIngestInPlace=_shouldIngestInPlace;
 @property (nonatomic) BOOL shouldMoveFile; // @synthesize shouldMoveFile=_shouldMoveFile;

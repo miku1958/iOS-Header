@@ -20,9 +20,10 @@
     NSProtocolChecker *_protocol;
     NSString *_listenerID;
     NSObject<OS_dispatch_queue> *_listenerLockQueue;
-    NSObject<OS_dispatch_queue> *_remoteDaemonLockQueue;
+    struct os_unfair_recursive_lock_s _remoteDaemonLock;
     NSObject<OS_dispatch_queue> *_localObjectLockQueue;
     NSObject<OS_dispatch_queue> *_remoteMessageQueue;
+    NSObject<OS_dispatch_queue> *_daemonConnectionQueue;
     NSRecursiveLock *_connectionLock;
     NSArray *_servicesToAllow;
     NSArray *_servicesToDeny;
@@ -66,7 +67,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)__isLocalObjectValidOnQueue:(id)arg1;
-- (BOOL)__isRemoteObjectValidOnQueue:(id)arg1;
+- (BOOL)__isRemoteObjectValid;
 - (BOOL)_acquiringDaemonConnection;
 - (void)_addressBookChanged:(id)arg1;
 - (void)_agentDidLaunchNotification:(id)arg1;
@@ -89,6 +90,7 @@
 - (BOOL)connectToDaemon;
 - (BOOL)connectToDaemonWithLaunch:(BOOL)arg1;
 - (BOOL)connectToDaemonWithLaunch:(BOOL)arg1 capabilities:(unsigned int)arg2 blockUntilConnected:(BOOL)arg3;
+- (BOOL)consumeQueryContext:(id)arg1;
 - (void)dealloc;
 - (void)disconnectFromDaemon;
 - (void)disconnectFromDaemonWithForce:(BOOL)arg1;
@@ -107,16 +109,19 @@
 - (BOOL)removeListenerID:(id)arg1;
 - (void)requestQOSClassOfAgentWhileServicingRequests:(CDUnknownBlockType)arg1;
 - (void)sendABInformationToDaemon;
+- (void)sendQueryWithReply:(BOOL)arg1 query:(CDUnknownBlockType)arg2;
 - (BOOL)setCapabilities:(unsigned int)arg1 forListenerID:(id)arg2;
 - (void)setDaemonLogsOutWithoutStatusListeners:(BOOL)arg1;
 - (void)setDaemonTerminatesWithoutListeners:(BOOL)arg1;
 - (void)setMyPicture:(id)arg1 smallPictureData:(id)arg2;
 - (void)setMyStatus:(unsigned long long)arg1 message:(id)arg2;
 - (void)setMyStatus:(unsigned long long)arg1 message:(id)arg2 forAccount:(id)arg3;
+- (void)setQueryContext:(id)arg1;
 - (void)systemApplicationDidEnterBackground;
 - (void)systemApplicationDidResume;
 - (void)systemApplicationDidSuspend;
 - (void)systemApplicationWillEnterForeground;
+- (void)unsetQueryContext:(id)arg1;
 
 @end
 

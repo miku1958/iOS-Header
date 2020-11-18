@@ -6,13 +6,13 @@
 
 #import <BarcodeSupport/BCSAction.h>
 
-@class LSApplicationProxy, NSArray, NSURL;
+@class LSApplicationRecord, NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BCSURLAction : BCSAction
 {
     NSArray *_appLinks;
-    LSApplicationProxy *_applicationProxy;
+    LSApplicationRecord *_applicationRecord;
     BOOL _deviceDataIsUnavailable;
     NSURL *_appStoreSearchURLForUnsupportedScheme;
     BOOL _hasPreferredAppLink;
@@ -21,12 +21,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long appLinkCount;
 @property (readonly, nonatomic) BOOL hasPreferredAppLink; // @synthesize hasPreferredAppLink=_hasPreferredAppLink;
 @property (readonly, nonatomic) BOOL mustOpenAppLinkInApp;
-@property (readonly, nonatomic) LSApplicationProxy *targetApplication;
+@property (readonly, nonatomic) LSApplicationRecord *targetApplication;
 
 - (void).cxx_destruct;
+- (id)_actionDescriptionForAppClip;
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(BOOL)arg3;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
 - (BOOL)_isCodeFromQRScanner;
+- (void)_resolveAppClipForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldBlockHandlingURL:(id)arg1;
 - (BOOL)_shouldOpenInAppForAppLink:(id)arg1;

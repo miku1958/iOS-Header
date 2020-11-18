@@ -26,6 +26,7 @@
     NSString *_minimumClientVersion;
     NSString *_name;
     int _remoteQuarantineStatus;
+    NSString *_subtitle;
     NSMutableArray *_workflowTypes;
     struct {
         unsigned int creationDate:1;
@@ -54,6 +55,7 @@
 @property (nonatomic) BOOL hasModificationDate;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasRemoteQuarantineStatus;
+@property (readonly, nonatomic) BOOL hasSubtitle;
 @property (nonatomic) unsigned int iconColor; // @synthesize iconColor=_iconColor;
 @property (nonatomic) unsigned int iconGlyph; // @synthesize iconGlyph=_iconGlyph;
 @property (strong, nonatomic) NSData *importQuestionsData; // @synthesize importQuestionsData=_importQuestionsData;
@@ -65,6 +67,7 @@
 @property (nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
+@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSMutableArray *workflowTypes; // @synthesize workflowTypes=_workflowTypes;
 
 + (Class)inputClassesType;

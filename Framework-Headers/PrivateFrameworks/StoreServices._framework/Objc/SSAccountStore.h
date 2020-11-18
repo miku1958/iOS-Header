@@ -41,6 +41,7 @@
 @property (nonatomic, getter=isInProcessCacheDisabled) BOOL inProcessCacheDisabled; // @synthesize inProcessCacheDisabled=_inProcessCacheDisabled;
 @property (strong, nonatomic) SSKeyValueStore *keyValueStore; // @synthesize keyValueStore=_keyValueStore;
 @property (readonly, nonatomic) SSPromise *localAccount;
+@property (readonly, copy) SSAccount *localiTunesAccount;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property (readonly) Class superclass;
@@ -87,8 +88,6 @@
 - (id)_buyParamsForBuyParamsString:(id)arg1;
 - (id)_cachedAccounts;
 - (id)_convertPasswordToPET:(id)arg1 forAccount:(id)arg2 options:(id)arg3;
-- (id)_createLocalAccountPromise;
-- (id)_lookupLocalAccountPromise;
 - (id)_optionsForProxiedAuthenticationWithVerifyCredentialsOptions:(id)arg1;
 - (id)_passwordEquivalentTokenFromAlternateAccountWithAltDSID:(id)arg1 DSID:(id)arg2 username:(id)arg3;
 - (void)_postAccountStoreChangeNotification;

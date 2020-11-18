@@ -86,7 +86,7 @@
 - (id)_query;
 - (id)_samplesSortedByQuantity:(id)arg1;
 - (CDStruct_6ca94699)blockPathForX:(id)arg1 zoom:(long long)arg2;
-- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2 priorityDelegate:(id)arg3;
 - (id)buildBinsWithSamples:(id)arg1;
 - (id)buildGraphSeriesDataBlockFromSamples:(id)arg1;
 - (id)buildGraphSeriesDataBlockWithCalculatedBinValues:(id)arg1;

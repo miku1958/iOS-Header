@@ -16,12 +16,13 @@
 @property (readonly, nonatomic) double alpha;
 @property (readonly, copy, nonatomic) UIColor *color;
 @property (readonly, nonatomic) CAFilter *composedFilter;
-@property (strong, nonatomic, getter=_coreMaterialVisualStyling) MTCoreMaterialVisualStyling *coreMaterialVisualStyling; // @synthesize coreMaterialVisualStyling=_coreMaterialVisualStyling;
+@property (readonly, nonatomic, getter=_coreMaterialVisualStyling) MTCoreMaterialVisualStyling *coreMaterialVisualStyling; // @synthesize coreMaterialVisualStyling=_coreMaterialVisualStyling;
 @property (readonly, copy, nonatomic) NSString *visualStyleName;
 @property (readonly, copy, nonatomic) NSString *visualStyleSetName;
 
 - (void).cxx_destruct;
 - (id)_layerConfig;
+- (void)applyToView:(id)arg1 withColorBlock:(CDUnknownBlockType)arg2;
 - (id)initWithCoreMaterialVisualStyling:(id)arg1;
 - (id)visualEffect;
 

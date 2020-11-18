@@ -22,6 +22,7 @@
 - (struct _NSRange)charRangeRemappedFromStorage:(struct _NSRange)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (TSWPCharacterStyle *)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (TSWPCharacterStyle *)characterStyleForDropCapAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (TSWPDropCapStyle *)dropCapStyleAtCharIndex:(unsigned long long)arg1;
 - (TSWPFootnoteReferenceAttachment *)footnoteReferenceAtCharIndex:(unsigned long long)arg1;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
@@ -45,6 +46,7 @@
 - (void)enumerateSmartFieldsWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;
 - (void)enumerateWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;
 - (BOOL)hasSmartFieldsInRange:(struct _NSRange)arg1;
+- (struct _NSRange)rangeOfDropCapAtCharIndex:(unsigned long long)arg1 actualCharacterCount:(out unsigned long long *)arg2;
 - (NSString *)substringWithRange:(struct _NSRange)arg1;
 @end
 

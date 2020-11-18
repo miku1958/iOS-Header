@@ -9,15 +9,16 @@
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class NSString;
-@protocol _MKPlaceActionButtonControllerProtocol;
+@protocol _MKPlaceActionControlledButton;
 
 @interface _MKPlaceActionButtonController : NSObject <_MKInfoCardChildViewControllerAnalyticsDelegate>
 {
+    BOOL _disabled;
     int _analyticsAction;
     NSString *_buttonTitle;
     NSString *_buttonSubTitle;
     CDUnknownBlockType _buttonSelectedBlock;
-    id<_MKPlaceActionButtonControllerProtocol> _delegate;
+    id<_MKPlaceActionControlledButton> _delegate;
 }
 
 @property (readonly, nonatomic) int analyticsAction; // @synthesize analyticsAction=_analyticsAction;
@@ -25,17 +26,19 @@
 @property (readonly, nonatomic) NSString *buttonSubTitle; // @synthesize buttonSubTitle=_buttonSubTitle;
 @property (readonly, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<_MKPlaceActionButtonControllerProtocol> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<_MKPlaceActionControlledButton> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)actionButtonControllerWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
++ (id)actionButtonControllerWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3 disabled:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)buttonTextChanged;
 - (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
-- (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(CDUnknownBlockType)arg4;
+- (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(CDUnknownBlockType)arg4 disabled:(BOOL)arg5;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
 
 @end

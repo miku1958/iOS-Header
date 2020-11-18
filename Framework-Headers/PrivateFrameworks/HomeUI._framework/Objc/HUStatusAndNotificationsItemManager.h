@@ -6,17 +6,19 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFItem, HFStaticItem, HFUserNotificationServiceSettings, HUCameraSmartDetectionSettingsModule, HUTriggerConditionEditorItemModule;
+@class HFItem, HFStaticItem, HFUserNotificationServiceSettings, HUCameraSmartDetectionSettingsModule, HUChimeOnHomePodListItem, HUChimeOnHomePodSingleItem, HUTriggerConditionEditorItemModule;
 @protocol HFServiceLikeItem, HFUserNotificationServiceSettingsProviding;
 
 @interface HUStatusAndNotificationsItemManager : HFItemManager
 {
     BOOL _showStatusSection;
+    BOOL _showsForServiceDetails;
+    BOOL _showsChimeOnHomePodSection;
     BOOL _showsCameraSnapshotSection;
     BOOL _showsMotionNotificationSection;
     BOOL _showsCameraSmartNotificationSection;
     BOOL _showsTriggerConditionSection;
-    BOOL _showsDoorbellSection;
+    BOOL _hasDoorbellCamera;
     BOOL _showsSmartActivitySection;
     BOOL _showsCameraStatusChangeSection;
     BOOL _serviceItemBelongsToCamera;
@@ -24,22 +26,31 @@
     HFStaticItem *_allowNotificationsItem;
     HFStaticItem *_allowMotionNotificationsItem;
     HFStaticItem *_allowCameraSnapshotsItem;
+    HUChimeOnHomePodSingleItem *_chimeOnHomePodSingleItem;
+    HUChimeOnHomePodListItem *_chimeOnHomePodListItem;
     HFStaticItem *_allowDoorbellNotificationsItem;
+    HFStaticItem *_allowAnalogChimeNotificationItem;
     HFStaticItem *_allowActivityNotificationsItem;
     HFStaticItem *_allowCameraStatusChangesItem;
+    HFStaticItem *_allowCameraReachabilityChangeNotificationsItem;
     HFItem<HFServiceLikeItem> *_serviceItem;
     HUTriggerConditionEditorItemModule *_conditionModule;
     HUCameraSmartDetectionSettingsModule *_cameraSmartDetectionSettingsModule;
 }
 
 @property (strong, nonatomic) HFStaticItem *allowActivityNotificationsItem; // @synthesize allowActivityNotificationsItem=_allowActivityNotificationsItem;
+@property (strong, nonatomic) HFStaticItem *allowAnalogChimeNotificationItem; // @synthesize allowAnalogChimeNotificationItem=_allowAnalogChimeNotificationItem;
+@property (strong, nonatomic) HFStaticItem *allowCameraReachabilityChangeNotificationsItem; // @synthesize allowCameraReachabilityChangeNotificationsItem=_allowCameraReachabilityChangeNotificationsItem;
 @property (strong, nonatomic) HFStaticItem *allowCameraSnapshotsItem; // @synthesize allowCameraSnapshotsItem=_allowCameraSnapshotsItem;
 @property (strong, nonatomic) HFStaticItem *allowCameraStatusChangesItem; // @synthesize allowCameraStatusChangesItem=_allowCameraStatusChangesItem;
 @property (strong, nonatomic) HFStaticItem *allowDoorbellNotificationsItem; // @synthesize allowDoorbellNotificationsItem=_allowDoorbellNotificationsItem;
 @property (strong, nonatomic) HFStaticItem *allowMotionNotificationsItem; // @synthesize allowMotionNotificationsItem=_allowMotionNotificationsItem;
 @property (strong, nonatomic) HFStaticItem *allowNotificationsItem; // @synthesize allowNotificationsItem=_allowNotificationsItem;
 @property (readonly, nonatomic) HUCameraSmartDetectionSettingsModule *cameraSmartDetectionSettingsModule; // @synthesize cameraSmartDetectionSettingsModule=_cameraSmartDetectionSettingsModule;
+@property (strong, nonatomic) HUChimeOnHomePodListItem *chimeOnHomePodListItem; // @synthesize chimeOnHomePodListItem=_chimeOnHomePodListItem;
+@property (strong, nonatomic) HUChimeOnHomePodSingleItem *chimeOnHomePodSingleItem; // @synthesize chimeOnHomePodSingleItem=_chimeOnHomePodSingleItem;
 @property (readonly, nonatomic) HUTriggerConditionEditorItemModule *conditionModule; // @synthesize conditionModule=_conditionModule;
+@property (nonatomic) BOOL hasDoorbellCamera; // @synthesize hasDoorbellCamera=_hasDoorbellCamera;
 @property (strong, nonatomic) HFStaticItem *includeInStatusItem; // @synthesize includeInStatusItem=_includeInStatusItem;
 @property (readonly, nonatomic) HFUserNotificationServiceSettings *notificationSettings;
 @property (readonly, nonatomic) id<HFUserNotificationServiceSettingsProviding> notificationSettingsProvider;
@@ -49,7 +60,8 @@
 @property (nonatomic) BOOL showsCameraSmartNotificationSection; // @synthesize showsCameraSmartNotificationSection=_showsCameraSmartNotificationSection;
 @property (nonatomic) BOOL showsCameraSnapshotSection; // @synthesize showsCameraSnapshotSection=_showsCameraSnapshotSection;
 @property (nonatomic) BOOL showsCameraStatusChangeSection; // @synthesize showsCameraStatusChangeSection=_showsCameraStatusChangeSection;
-@property (nonatomic) BOOL showsDoorbellSection; // @synthesize showsDoorbellSection=_showsDoorbellSection;
+@property (nonatomic) BOOL showsChimeOnHomePodSection; // @synthesize showsChimeOnHomePodSection=_showsChimeOnHomePodSection;
+@property (nonatomic) BOOL showsForServiceDetails; // @synthesize showsForServiceDetails=_showsForServiceDetails;
 @property (nonatomic) BOOL showsMotionNotificationSection; // @synthesize showsMotionNotificationSection=_showsMotionNotificationSection;
 @property (nonatomic) BOOL showsSmartActivitySection; // @synthesize showsSmartActivitySection=_showsSmartActivitySection;
 @property (nonatomic) BOOL showsTriggerConditionSection; // @synthesize showsTriggerConditionSection=_showsTriggerConditionSection;
@@ -61,13 +73,16 @@
 - (id)homeStatusVisibleObject;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithServiceItem:(id)arg1 delegate:(id)arg2 home:(id)arg3;
+- (id)updateAllowCameraReachabilityStatusChangeNotifications:(BOOL)arg1;
 - (id)updateAllowCameraStatusChangeNotifications:(BOOL)arg1;
+- (id)updateAllowChimeAnalogNotifications:(BOOL)arg1;
 - (id)updateAllowDoorbellNotifications:(BOOL)arg1;
 - (id)updateAllowMotionNotifications:(BOOL)arg1;
 - (id)updateAllowNotifications:(BOOL)arg1;
 - (id)updateAllowSmartActivityNotifications:(BOOL)arg1;
 - (id)updateAllowSnapshotsInNotifications:(BOOL)arg1;
 - (id)updateCameraSmartNotificationCondition:(id)arg1;
+- (id)updateChimeOnHomePod:(BOOL)arg1;
 - (id)updateNotificationCondition:(id)arg1;
 
 @end

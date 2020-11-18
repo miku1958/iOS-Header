@@ -41,7 +41,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_clearNotificationRequestsFromDashBoard:(id)arg1;
+- (void)_clearNotificationRequestsFromIncomingSection:(id)arg1;
 - (id)alertingControllerForDestination:(id)arg1;
 - (BOOL)canReceiveNotificationRequest:(id)arg1;
 - (void)destination:(id)arg1 clearNotificationRequests:(id)arg2;
@@ -60,6 +60,7 @@
 - (BOOL)isPresentingNotificationInLongLook;
 - (void)modifyNotificationRequest:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)postNotificationRequest:(id)arg1;
 - (void)stopAllRealerts;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;

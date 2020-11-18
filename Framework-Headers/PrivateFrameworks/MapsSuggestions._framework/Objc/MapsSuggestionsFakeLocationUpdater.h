@@ -26,10 +26,11 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
+- (id)init;
+- (void)onStartImplementation;
+- (void)onStopImplementation;
 - (void)sendLocation:(id)arg1;
 - (void)sendVisit:(id)arg1;
-- (void)startImplemention;
-- (void)stopImplementation;
 
 @end
 

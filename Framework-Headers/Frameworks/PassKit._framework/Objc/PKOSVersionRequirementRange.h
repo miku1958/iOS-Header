@@ -25,9 +25,12 @@
 - (id)asDictionary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithMinimumVersion:(id)arg1 maximumVersion:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToOSVersionRequirementRange:(id)arg1;
 - (BOOL)versionMeetsRequirements:(id)arg1 deviceClass:(id)arg2;
 
 @end

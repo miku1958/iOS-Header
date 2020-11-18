@@ -10,16 +10,16 @@
 
 @interface IMMultiDict : NSObject
 {
-    NSMutableDictionary *_dictionary;
     unsigned long long _count;
+    NSMutableDictionary *_dictionary;
 }
 
 @property (readonly, nonatomic) NSArray *allKeys;
-@property (readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
+@property (nonatomic) unsigned long long count; // @synthesize count=_count;
 @property (strong, nonatomic) NSMutableDictionary *dictionary; // @synthesize dictionary=_dictionary;
 
+- (void).cxx_destruct;
 - (unsigned long long)countForKey:(id)arg1;
-- (void)dealloc;
 - (id)dequeueObjectForKey:(id)arg1;
 - (id)description;
 - (void)enqueueObject:(id)arg1 forKey:(id)arg2;

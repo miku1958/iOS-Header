@@ -23,12 +23,14 @@
 - (void).cxx_destruct;
 - (void)_handleAllWorkersCompleted;
 - (void)_processNextWorker;
+- (void)_submitBundleForProcessing:(id)arg1 priority:(unsigned long long)arg2 ignorePriority:(BOOL)arg3;
 - (id)_workersForBundle:(id)arg1;
 - (BOOL)hasPendingJobsForBundle:(id)arg1 priority:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithWorkerClassesAsStrings:(id)arg1;
 - (void)stopAllBackgorundJobs;
 - (void)submitBundleForProcessing:(id)arg1 priority:(unsigned long long)arg2;
+- (void)submitBundleForProcessingOnAllWorkerPriorities:(id)arg1;
 
 @end
 

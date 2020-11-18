@@ -8,11 +8,11 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSError, NSString, _MRContentItemProtobuf, _MRPlaybackSessionMigrateRequestProtobuf, _MRPlaybackSessionRequestProtobuf;
+@class MRContentItem, MRPlaybackSessionRequest, NSError, NSString, _MRPlaybackSessionMigrateRequestProtobuf;
 
 @interface MRPlaybackSessionMigrateRequest : NSObject <NSCopying>
 {
-    _MRPlaybackSessionMigrateRequestProtobuf *_descriptor;
+    _MRPlaybackSessionMigrateRequestProtobuf *_protobuf;
     NSError *_migrateError;
     NSError *_fallbackError;
     unsigned int _originatorType;
@@ -25,8 +25,7 @@
 }
 
 @property (strong, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
-@property (strong, nonatomic) _MRContentItemProtobuf *contentItem;
-@property (readonly, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *descriptor;
+@property (strong, nonatomic) MRContentItem *contentItem;
 @property (nonatomic) unsigned int destinationTypes; // @synthesize destinationTypes=_destinationTypes;
 @property (readonly, nonatomic) double duration;
 @property (nonatomic) long long endpointOptions;
@@ -35,10 +34,11 @@
 @property (nonatomic) unsigned int originatorType; // @synthesize originatorType=_originatorType;
 @property (nonatomic) double playbackPosition;
 @property (nonatomic) double playbackRate;
-@property (strong, nonatomic) _MRPlaybackSessionRequestProtobuf *playbackSessionRequest;
+@property (strong, nonatomic) MRPlaybackSessionRequest *playbackSessionRequest;
 @property (nonatomic) long long playbackSessionSize; // @synthesize playbackSessionSize=_playbackSessionSize;
 @property (nonatomic) unsigned int playbackState;
 @property (nonatomic) long long playerOptions;
+@property (readonly, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *protobuf;
 @property (readonly, nonatomic) NSString *report;
 @property (strong, nonatomic) NSString *requestID;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
@@ -46,14 +46,14 @@
 - (void).cxx_destruct;
 - (void)addDestinationType:(unsigned int)arg1;
 - (void)addDestinationTypesFromDevices:(id)arg1;
-- (id)analyticsPayload;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)endEvent:(id)arg1;
 - (void)endEvent:(id)arg1 withError:(id)arg2;
 - (void)finalize;
 - (id)init;
-- (id)initWithDescriptor:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (void)merge:(id)arg1;
 - (void)setOriginatorTypeFromDevice:(id)arg1;
 - (void)startEvent:(id)arg1;

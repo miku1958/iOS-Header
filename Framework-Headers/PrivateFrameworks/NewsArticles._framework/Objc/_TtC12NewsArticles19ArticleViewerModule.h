@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *contextBuilder;
 }
 
 - (void).cxx_destruct;

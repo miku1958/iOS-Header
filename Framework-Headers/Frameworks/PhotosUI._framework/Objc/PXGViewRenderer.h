@@ -20,19 +20,20 @@
     unsigned int *_spriteIndexes;
     CDStruct_183601bc *_textureInfos;
     struct CGPoint _renderedVisibleOrigin;
+    struct UIEdgeInsets _visibleRectInsets;
     CDUnknownBlockType _test_renderSnapshotHandler;
     id<PXGRendererDelegate> _delegate;
     id<PXGTextureConverter> _textureConverter;
     PXScrollViewController *_scrollViewController;
     struct CGRect _visibleRect;
-    CDStruct_93894d6c _interactionState;
+    CDStruct_a02a4563 _interactionState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGRendererDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_a02a4563 interactionState; // @synthesize interactionState=_interactionState;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;
@@ -48,6 +49,7 @@
 - (void)_shiftViewsToCompensateForDeferredVisibleOrigin;
 - (void)dealloc;
 - (id)init;
+- (void)releaseResources;
 - (void)renderSpritesWithTextures:(id)arg1 dataStore:(id)arg2 presentationDataStore:(id)arg3 presentationMetadataStore:(id)arg4 layout:(id)arg5;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)setNeedsRender;

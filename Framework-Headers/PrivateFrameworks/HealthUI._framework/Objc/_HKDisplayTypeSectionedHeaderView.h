@@ -6,18 +6,16 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSLayoutConstraint, NSString, UILabel, UIView;
+@class NSString, UILabel, UIView;
 
 @interface _HKDisplayTypeSectionedHeaderView : UICollectionReusableView
 {
     UIView *_contentView;
     NSString *_title;
-    NSLayoutConstraint *_maxTitleWidthConstraint;
     UILabel *_titleLabel;
 }
 
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (strong, nonatomic) NSLayoutConstraint *maxTitleWidthConstraint; // @synthesize maxTitleWidthConstraint=_maxTitleWidthConstraint;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 

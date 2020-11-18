@@ -21,6 +21,8 @@
 @property (readonly, nonatomic, getter=_value) double value; // @synthesize value=_value;
 
 + (id)_quantityWithBeatsPerMinute:(double)arg1;
++ (id)hk_quantityWithMinutes:(id)arg1;
++ (id)hk_quantityWithSeconds:(id)arg1;
 + (id)quantityWithUnit:(id)arg1 doubleValue:(double)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -29,6 +31,7 @@
 - (id)_initWithUnit:(id)arg1 doubleValue:(double)arg2;
 - (BOOL)_isZero;
 - (id)_quantityByAddingQuantity:(id)arg1;
+- (double)_valueScaledForDisplay;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +40,8 @@
 - (unsigned long long)hash;
 - (BOOL)hk_isGreaterThanQuantity:(id)arg1;
 - (BOOL)hk_isLessThanQuantity:(id)arg1;
+- (id)hk_minutesNumber;
+- (id)hk_secondsNumber;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isCompatibleWithUnit:(id)arg1;

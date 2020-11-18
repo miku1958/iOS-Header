@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
 
-@class NSDate, NSString, PHAsset;
+@class NSDate, NSNumber, NSString, PHAsset;
 @protocol PXDisplayAsset, PXDisplaySuggestion;
 
 @interface PXForYouSuggestionDisplayAsset : NSObject <PXPhotoKitAdjustedDisplayAsset>
@@ -32,10 +32,11 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) NSDate *importDate;
 @property (readonly, nonatomic) BOOL isAnimatedImage;
 @property (readonly, nonatomic) BOOL isApplied;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) id<PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) long long mediaType;
+@property (readonly, nonatomic) BOOL needsDeferredProcessing;
 @property (readonly, nonatomic) PHAsset *photoKitAsset; // @synthesize photoKitAsset=_photoKitAsset;
 @property (readonly, nonatomic) unsigned long long pixelHeight;
 @property (readonly, nonatomic) unsigned long long pixelWidth;

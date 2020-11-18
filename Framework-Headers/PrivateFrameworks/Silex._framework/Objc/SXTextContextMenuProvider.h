@@ -28,6 +28,9 @@
 - (void)commitPreviewViewController:(id)arg1;
 - (id)contextMenuAtLocation:(struct CGPoint)arg1 viewport:(id)arg2;
 - (id)initWithTangierController:(id)arg1 actionManager:(id)arg2;
+- (void)repAndHyperlinkAtLocation:(struct CGPoint)arg1 viewport:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)targetedPreviewAtLocation:(struct CGPoint)arg1 viewport:(id)arg2;
+- (struct CGRect)viewportRectForLinkInRep:(id)arg1 range:(struct _NSRange)arg2 viewport:(id)arg3;
 
 @end
 

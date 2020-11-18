@@ -16,15 +16,8 @@
     CDUnknownBlockType _completion;
 }
 
-@property (nonatomic) BOOL animated; // @synthesize animated=_animated;
-@property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property (nonatomic) unsigned long long operation; // @synthesize operation=_operation;
-@property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-
-+ (id)transitionForViewController:(id)arg1 operation:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (id)description;
-- (void)invokeCompletionIfNecessaryWithResult:(BOOL)arg1;
 
 @end
 

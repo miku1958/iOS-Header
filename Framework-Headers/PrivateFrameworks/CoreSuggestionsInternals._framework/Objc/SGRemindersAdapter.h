@@ -22,13 +22,15 @@
 @property (weak, nonatomic) SGSqlEntityStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 
++ (id)_remindersFoundInAppsListInREMStore:(id)arg1;
++ (id)constructNotesForReminder:(id)arg1;
 + (BOOL)reminderHasDuplicate:(id)arg1 usingStore:(id)arg2;
++ (id)reminderPredicateForReminder:(id)arg1;
 + (unsigned long long)remindersCreatedBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_deleteReminder:(id)arg1 usingReminderStore:(id)arg2;
 - (id)_remRemindersAssociatedWithStorageReminder:(id)arg1 remStore:(id)arg2;
 - (id)_remRemindersAssociatedWithTitle:(id)arg1 sourceUniqueIdentifier:(id)arg2 usingStore:(id)arg3;
-- (id)_remindersFoundInAppsListInREMStore:(id)arg1;
 - (BOOL)_saveReminder:(id)arg1 usingReminderStore:(id)arg2;
 - (void)addReminder:(id)arg1;
 - (void)confirmReminderFromOtherDevice:(id)arg1;

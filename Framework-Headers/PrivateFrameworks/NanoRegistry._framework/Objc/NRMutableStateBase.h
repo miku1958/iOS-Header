@@ -40,7 +40,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)notifyObserversWithDiff:(id)arg1;
 - (void)notifyParentWithDiff:(id)arg1;
-- (id)observers;
 - (void)removeObserver:(id)arg1;
 
 @end

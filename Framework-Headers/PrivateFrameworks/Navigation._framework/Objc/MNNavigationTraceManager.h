@@ -24,9 +24,9 @@
     id<GEOMotionContextProviderDelegate> _motionContextProviderDelegate;
 }
 
-@property (nonatomic) long long activityType;
 @property (copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property (readonly, nonatomic) int authorizationStatus;
+@property (readonly, nonatomic) BOOL coarseModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MNLocationProviderDelegate> delegate; // @synthesize delegate=_locationProviderDelegate;
 @property (readonly, copy) NSString *description;
@@ -54,7 +54,7 @@
 
 - (void).cxx_destruct;
 - (id)_defaultTraceExtension;
-- (id)_defaultTraceNameForDestination:(id)arg1;
+- (id)_defaultTraceNameForDestination:(id)arg1 isSimulation:(BOOL)arg2;
 - (BOOL)_isNavigating;
 - (void)_recordEnvironmentInfo:(id)arg1;
 - (void)_recordStylesheet:(id)arg1;
@@ -64,13 +64,12 @@
 - (void)close;
 - (void)dealloc;
 - (void)openForPlaybackWithTracePath:(id)arg1;
-- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceNameOverride:(id)arg2;
+- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceName:(id)arg2 isReconnecting:(BOOL)arg3 isSimulation:(BOOL)arg4;
 - (void)openForSimulationWithRoute:(id)arg1 traceRecordingData:(id)arg2 traceNameOverride:(id)arg3;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)resetForActiveTileGroupChanged;
 - (void)startMotionUpdates;
-- (void)startSimulationWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5 traceNameOverride:(id)arg6;
 - (void)startUpdatingHeading;
 - (void)startUpdatingLocation;
 - (void)startUpdatingVehicleHeading;

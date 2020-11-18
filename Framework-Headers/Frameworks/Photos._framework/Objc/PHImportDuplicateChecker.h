@@ -6,59 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <Photos/PHPhotoLibraryChangeObserver-Protocol.h>
+@class NSDate, NSMutableDictionary, NSMutableSet, PHPhotoLibrary;
 
-@class NSDate, NSMutableDictionary, NSMutableSet, NSString, PFDispatchQueue, PHPhotoLibrary;
-
-@interface PHImportDuplicateChecker : NSObject <PHPhotoLibraryChangeObserver>
+@interface PHImportDuplicateChecker : NSObject
 {
     NSMutableDictionary *_avchdAssetIdentifierCache;
     NSMutableDictionary *_sizeNameCache;
     NSMutableDictionary *_assetIdentifierCache;
-    NSMutableDictionary *_dupInfoByObjectID;
     NSDate *_lastChange;
     NSMutableSet *_updatedDupInfos;
-    PFDispatchQueue *_queue;
     PHPhotoLibrary *_library;
-    NSMutableDictionary *_foundPPTData;
-    NSMutableDictionary *_notFoundPPTData;
-    NSMutableDictionary *_generatedPPTData;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableDictionary *foundPPTData; // @synthesize foundPPTData=_foundPPTData;
-@property (strong, nonatomic) NSMutableDictionary *generatedPPTData; // @synthesize generatedPPTData=_generatedPPTData;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
-@property (strong, nonatomic) NSMutableDictionary *notFoundPPTData; // @synthesize notFoundPPTData=_notFoundPPTData;
-@property (strong) PFDispatchQueue *queue; // @synthesize queue=_queue;
-@property (readonly) Class superclass;
 
-+ (void)addLibrary:(id)arg1;
-+ (id)dateWithDate:(id)arg1;
-+ (id)doneWithDuplicateCheckerForLibrary:(id)arg1 forClient:(id)arg2;
-+ (id)duplicateCheckerForClient:(id)arg1 andLibrary:(id)arg2;
-+ (id)fetchAssetsFromLibrary:(id)arg1 withPredicates:(id)arg2;
-+ (void)initialize;
-+ (void)removeLibrary:(id)arg1;
++ (id)_dateWithDate:(id)arg1;
++ (id)_fetchAssetInfoFromLibrary:(id)arg1 forFileSizes:(id)arg2;
 - (void).cxx_destruct;
-- (id)checkForDuplicate:(id)arg1 considerItemsInTheTrash:(BOOL)arg2;
-- (void)checkForDuplicates:(id)arg1 considerItemsInTrash:(BOOL)arg2 forEach:(CDUnknownBlockType)arg3 atEnd:(CDUnknownBlockType)arg4;
-- (void)dePopulateCachesWithObjectID:(id)arg1;
-- (id)filterDuplicatesForItem:(id)arg1 duplicateSet:(id)arg2 considerItemsInTrash:(BOOL)arg3;
-- (BOOL)findFingerprint:(id)arg1 forItem:(id)arg2 inCache:(id)arg3 considerTrash:(BOOL)arg4;
-- (id)findMatchingAssetsForItem:(id)arg1 inSet:(id)arg2 matchingDate:(id *)arg3 confidence:(unsigned char *)arg4;
-- (id)generatePPTData;
-- (id)getAssetObjectIdsFromObjectIds:(id)arg1;
+- (id)_checkForDuplicate:(id)arg1 considerItemsInTheTrash:(BOOL)arg2;
+- (id)_filterDuplicatesForItem:(id)arg1 duplicateSet:(id)arg2 considerItemsInTrash:(BOOL)arg3;
+- (BOOL)_findFingerprint:(id)arg1 forItem:(id)arg2 inCache:(id)arg3 considerTrash:(BOOL)arg4;
+- (id)_findMatchingAssetsForItem:(id)arg1 inSet:(id)arg2 matchingDate:(id *)arg3 confidence:(unsigned char *)arg4;
+- (void)_populateCachesWithAssetInfo:(id)arg1;
+- (unsigned long long)_populateCachesWithAssetsInfos:(id)arg1;
+- (void)_setDupInfo:(id)arg1 forFingerprint:(id)arg2 inCache:(id)arg3;
+- (void)_updateAssetsFromDupInfos;
+- (void)findDuplicatesOfItems:(id)arg1 considerItemsInTrash:(BOOL)arg2 forEach:(CDUnknownBlockType)arg3 atEnd:(CDUnknownBlockType)arg4;
 - (id)initWithLibrary:(id)arg1;
-- (void)photoLibraryDidChange:(id)arg1;
-- (void)populateCachesWithAssetInfo:(id)arg1;
-- (unsigned long long)populateCachesWithAssetsInfos:(id)arg1;
-- (void)recordTimeSinceStart:(double)arg1 inData:(id)arg2 forKey:(id)arg3;
-- (void)removeDuplicateInfo:(id)arg1 forFingerprint:(id)arg2 inCache:(id)arg3;
-- (void)setDupInfo:(id)arg1 forFingerprint:(id)arg2 inCache:(id)arg3;
-- (void)updateAssetsFromDupInfos;
 
 @end
 

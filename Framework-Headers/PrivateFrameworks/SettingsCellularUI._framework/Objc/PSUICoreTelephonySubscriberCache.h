@@ -36,6 +36,7 @@
 - (id)isoCountryCode:(id)arg1;
 - (id)mobileEquipmentInfo:(id)arg1;
 - (unsigned long long)mobileEquipmentInfoLength;
+- (void)prlVersionDidChange:(id)arg1 version:(id)arg2;
 - (id)shortLabel:(id)arg1;
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (void)willEnterForeground;

@@ -10,26 +10,22 @@
 
 @interface NTPBSectionSlotCostInfo : PBCodable <NSCopying>
 {
-    double _leadingFirstHeadlineSlotCost;
+    double _headlineSlotCost;
+    double _sectionFooterSlotCost;
     double _sectionTitleSlotCost;
-    double _standardFirstHeadlineSlotCost;
-    double _subsequentHeadlineSlotCost;
     struct {
-        unsigned int leadingFirstHeadlineSlotCost:1;
+        unsigned int headlineSlotCost:1;
+        unsigned int sectionFooterSlotCost:1;
         unsigned int sectionTitleSlotCost:1;
-        unsigned int standardFirstHeadlineSlotCost:1;
-        unsigned int subsequentHeadlineSlotCost:1;
     } _has;
 }
 
-@property (nonatomic) BOOL hasLeadingFirstHeadlineSlotCost;
+@property (nonatomic) BOOL hasHeadlineSlotCost;
+@property (nonatomic) BOOL hasSectionFooterSlotCost;
 @property (nonatomic) BOOL hasSectionTitleSlotCost;
-@property (nonatomic) BOOL hasStandardFirstHeadlineSlotCost;
-@property (nonatomic) BOOL hasSubsequentHeadlineSlotCost;
-@property (nonatomic) double leadingFirstHeadlineSlotCost; // @synthesize leadingFirstHeadlineSlotCost=_leadingFirstHeadlineSlotCost;
+@property (nonatomic) double headlineSlotCost; // @synthesize headlineSlotCost=_headlineSlotCost;
+@property (nonatomic) double sectionFooterSlotCost; // @synthesize sectionFooterSlotCost=_sectionFooterSlotCost;
 @property (nonatomic) double sectionTitleSlotCost; // @synthesize sectionTitleSlotCost=_sectionTitleSlotCost;
-@property (nonatomic) double standardFirstHeadlineSlotCost; // @synthesize standardFirstHeadlineSlotCost=_standardFirstHeadlineSlotCost;
-@property (nonatomic) double subsequentHeadlineSlotCost; // @synthesize subsequentHeadlineSlotCost=_subsequentHeadlineSlotCost;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

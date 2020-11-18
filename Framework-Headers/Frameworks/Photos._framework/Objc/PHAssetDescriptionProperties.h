@@ -12,8 +12,10 @@
 {
     NSString *_title;
     NSString *_assetDescription;
+    NSString *_accessibilityDescription;
 }
 
+@property (readonly, copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property (readonly, copy, nonatomic) NSString *assetDescription; // @synthesize assetDescription=_assetDescription;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 

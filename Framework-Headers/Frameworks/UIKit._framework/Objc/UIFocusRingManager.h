@@ -27,11 +27,13 @@
 + (void)moveRingToFocusItem:(id)arg1 forClient:(id)arg2;
 + (void)removeRingFromFocusItem:(id)arg1;
 + (void)removeRingFromFocusItem:(id)arg1 forClient:(id)arg2;
-+ (Class)shapeLayerClassForClient:(id)arg1;
++ (Class)shapeLayerClassForItem:(id)arg1 client:(id)arg2;
 + (void)updateRingForFocusItem:(id)arg1;
 + (void)updateRingForFocusItem:(id)arg1 forClient:(id)arg2;
 - (void).cxx_destruct;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_addFocusLayer:(id)arg1 toView:(id)arg2 forItem:(id)arg3;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
+- (long long)_insertionIndexOfFocusLayerForFocusItem:(id)arg1;
 - (void)_removeActiveFocusLayersForClient:(id)arg1;
 - (void)_updateFocusLayerFrames;
 - (id)_viewToAddFocusLayerForItem:(id)arg1;

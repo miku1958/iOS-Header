@@ -20,17 +20,20 @@
 @property (readonly, nonatomic) CDStruct_14f26992 maskStrideInPixels; // @synthesize maskStrideInPixels=_maskStrideInPixels;
 @property (readonly, nonatomic) unsigned long long seed; // @synthesize seed=_seed;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (id)exportRandomState;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 keepProbability:(float)arg2 seed:(unsigned long long)arg3 maskStrideInPixels:(CDStruct_14f26992)arg4;
+- (id)initWithDevice:(id)arg1 keepProbability:(float)arg2 state:(id)arg3 maskStrideInPixels:(CDStruct_14f26992)arg4;
 - (id)privateResultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3 commandBuffer:(id)arg4 isTemporary:(BOOL)arg5;
 - (void)resetSeedOnCommandBuffer:(id)arg1 seed:(unsigned long long)arg2;
 - (id)resultStateBatchForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
+- (void)synchronizeRandomStateOnCommandBuffer:(id)arg1;
 - (id)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 

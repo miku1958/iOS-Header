@@ -28,6 +28,8 @@
 + (id)identifierWithNumber:(id)arg1;
 + (id)identifierWithRawIdentifier:(long long)arg1;
 + (id)inMemoryConceptIdentifier;
++ (id)medication;
++ (id)root;
 + (BOOL)supportsSecureCoding;
 + (id)systolicBloodPressure;
 - (id)copyWithZone:(struct _NSZone *)arg1;

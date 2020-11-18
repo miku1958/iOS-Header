@@ -23,14 +23,14 @@
 @property (nonatomic) BOOL remotePDelayLogMeanInterval; // @synthesize remotePDelayLogMeanInterval=_remotePDelayLogMeanInterval;
 @property (strong, nonatomic) TSgPTPPortStatistics *statistics; // @synthesize statistics=_statistics;
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
-- (BOOL)_commonInitWithService:(unsigned int)arg1;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
+- (void).cxx_destruct;
+- (BOOL)_commonInitWithService:(id)arg1;
 - (BOOL)_localPDelayLogMeanInterval;
 - (BOOL)_measuringPDelay;
 - (BOOL)_multipleRemotes;
 - (BOOL)_remotePDelayLogMeanInterval;
 - (id)_statistics;
-- (void)dealloc;
 - (void)updateProperties;
 
 @end

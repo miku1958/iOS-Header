@@ -27,7 +27,7 @@
 - (void)_begin;
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_didComplete;
-- (void)_sendActivationResultWithSuccess:(BOOL)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 - (void)transaction:(id)arg1 willLaunchProcess:(id)arg2;
 
 @end

@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBHomeEntity-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBString;
+@class NSArray, NSString, _INPBDataString, _INPBString;
 
 @interface _INPBHomeEntity : PBCodable <_INPBHomeEntity, NSSecureCoding, NSCopying>
 {
@@ -20,7 +20,6 @@
         unsigned int entityType:1;
         unsigned int sceneType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _deviceType;
     int _entityType;
     int _sceneType;
@@ -31,9 +30,9 @@
     _INPBString *_name;
     _INPBDataString *_room;
     _INPBDataString *_zone;
+    NSArray *_zones;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
@@ -60,15 +59,20 @@
 @property (nonatomic) int sceneType; // @synthesize sceneType=_sceneType;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBDataString *zone; // @synthesize zone=_zone;
+@property (copy, nonatomic) NSArray *zones; // @synthesize zones=_zones;
+@property (readonly, nonatomic) unsigned long long zonesCount;
 
 + (BOOL)supportsSecureCoding;
++ (Class)zonesType;
 - (void).cxx_destruct;
 - (int)StringAsDeviceType:(id)arg1;
 - (int)StringAsDeviceTypes:(id)arg1;
 - (int)StringAsEntityType:(id)arg1;
 - (int)StringAsSceneType:(id)arg1;
 - (void)addDeviceTypes:(int)arg1;
+- (void)addZones:(id)arg1;
 - (void)clearDeviceTypes;
+- (void)clearZones;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)deviceTypeAsString:(int)arg1;
@@ -83,6 +87,7 @@
 - (id)sceneTypeAsString:(int)arg1;
 - (void)setDeviceTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
+- (id)zonesAtIndex:(unsigned long long)arg1;
 
 @end
 

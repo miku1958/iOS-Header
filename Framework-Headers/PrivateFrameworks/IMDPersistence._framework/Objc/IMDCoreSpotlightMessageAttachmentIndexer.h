@@ -27,6 +27,7 @@
 + (id)copyGUIDFromAttachment:(struct _IMDAttachmentRecordStruct *)arg1;
 + (id)copyPathFromAttachment:(struct _IMDAttachmentRecordStruct *)arg1;
 + (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(BOOL)arg3 metadataToUpdate:(id)arg4;
++ (unsigned long long)partKeyForAttachmentFromItem:(id)arg1 withGUID:(id)arg2;
 
 @end
 

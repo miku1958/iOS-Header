@@ -56,6 +56,7 @@
 - (void)dismiss;
 - (void)present;
 - (void)presentInNavigationStack:(id)arg1;
+- (void)presentInNavigationStack:(id)arg1 animated:(BOOL)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
 
 @end

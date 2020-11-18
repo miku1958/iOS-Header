@@ -6,31 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSSet, NSString;
 @protocol REMChangeTrackingClientIdentifying, REMDaemonController;
 
 @interface REMChangeTracking : NSObject
 {
     id<REMChangeTrackingClientIdentifying> _changeTrackingClientID;
     id<REMDaemonController> _daemonController;
+    NSString *_entityName;
+    unsigned long long _transactionFetchLimit;
     NSSet *_transactionAuthorKeysToExclude;
 }
 
 @property (readonly, nonatomic) id<REMChangeTrackingClientIdentifying> changeTrackingClientID; // @synthesize changeTrackingClientID=_changeTrackingClientID;
 @property (readonly, nonatomic) id<REMDaemonController> daemonController; // @synthesize daemonController=_daemonController;
+@property (strong, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
 @property (readonly, nonatomic) NSSet *transactionAuthorKeysToExclude; // @synthesize transactionAuthorKeysToExclude=_transactionAuthorKeysToExclude;
+@property (nonatomic) unsigned long long transactionFetchLimit; // @synthesize transactionFetchLimit=_transactionFetchLimit;
 
 + (id)defaultTransactionAuthorKeysToExclude;
 + (id)entityNamesToIncludeFromTrackingWithOptionProvider:(Class)arg1;
 + (id)internalTransactionAuthorKeysToExclude;
 - (void).cxx_destruct;
 - (void)_performChangeTrackingWithReason:(id)arg1 block:(CDUnknownBlockType)arg2 xpcErrorHandler:(CDUnknownBlockType)arg3;
-- (id)changeSetByFilteringTransactionAuthorKeysToExcludeFromChangeSet:(id)arg1;
 - (id)currentChangeTokenForAccountTypes:(long long)arg1 error:(id *)arg2;
 - (id)currentChangeTokenForAllAccountsWithError:(id *)arg1;
 - (id)currentChangeTokenWithError:(id *)arg1;
 - (void)deleteHistoryBeforeDate:(id)arg1 error:(id *)arg2;
 - (void)deleteHistoryBeforeToken:(id)arg1 error:(id *)arg2;
+- (id)earliestChangeTokenWithError:(id *)arg1;
 - (id)fetchAuxiliaryChangeInfosOfType:(Class)arg1 withChangeObject:(id)arg2 error:(id *)arg3;
 - (id)fetchHistoryAfterDate:(id)arg1 error:(id *)arg2;
 - (id)fetchHistoryAfterToken:(id)arg1 error:(id *)arg2;

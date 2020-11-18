@@ -7,6 +7,10 @@
 #import <WorkflowKit/WFWorkoutTrigger.h>
 
 @interface WFWorkoutTrigger (CoreDuetContext)
++ (id)offIcon;
++ (id)offLabel;
++ (id)onIcon;
++ (id)onLabel;
 + (id)triggerTypeIcon;
 @end
 

@@ -15,9 +15,35 @@ struct SWCFields {
     unsigned int siteOrFrameworkApproval:2;
     unsigned int updating:1;
     unsigned int systemApplication:1;
-    unsigned int readFromDisk:1;
-    unsigned int alwaysEnabled:1;
+    unsigned int enabledConfiguration:2;
+    unsigned int provenance:2;
     unsigned int enterpriseManaged:1;
-    unsigned int commandLineAddition:1;
+    unsigned int systemPlaceholder:1;
+    unsigned int unused:3;
+    char relativeOrder;
 };
+
+struct SWCPatternStorage {
+    unsigned int blocking:1;
+    unsigned int hasPath:1;
+    unsigned int hasFragment:1;
+    unsigned int query:2;
+    unsigned int caseInsensitive:1;
+    unsigned int notPercentEncoded:1;
+    unsigned int hasRequiredEntitlement:1;
+    char cStrings[0];
+};
+
+struct SWCSubstitutionVariable {
+    unsigned int terminator:1;
+    unsigned int includesEmptyValue:1;
+    unsigned int allValuesAreOneCharLong:1;
+    char cStrings[0];
+};
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 

@@ -48,6 +48,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dismissAppOnMenu; // @synthesize dismissAppOnMenu=_dismissAppOnMenu;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TVMediaQueryEvaluator *mediaQueryEvaluator; // @synthesize mediaQueryEvaluator=_mediaQueryEvaluator;

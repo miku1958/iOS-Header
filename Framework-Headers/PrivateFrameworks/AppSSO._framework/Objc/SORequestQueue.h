@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface SORequestQueue : NSObject
 {
+    NSString *_identifier;
     NSMutableArray *_queue;
     id _processingItem;
     CDUnknownBlockType _processItemBlock;
@@ -24,7 +25,7 @@
 - (void)_processItem:(id)arg1;
 - (id)description;
 - (void)enqueueRequest:(id)arg1;
-- (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (void)processNextRequest;
 - (void)removeAllRequestsWithBlock:(CDUnknownBlockType)arg1;
 

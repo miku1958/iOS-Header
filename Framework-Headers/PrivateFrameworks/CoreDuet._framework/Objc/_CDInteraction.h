@@ -15,6 +15,7 @@
 {
     BOOL _isResponse;
     BOOL _forcePersistInteraction;
+    BOOL _mailShareSheetDeletionCandidate;
     NSDate *_startDate;
     NSDate *_endDate;
     NSString *_uuid;
@@ -50,6 +51,7 @@
 @property BOOL isResponse; // @synthesize isResponse=_isResponse;
 @property (strong) NSArray *keywords; // @synthesize keywords=_keywords;
 @property (strong) NSString *locationUUID; // @synthesize locationUUID=_locationUUID;
+@property (nonatomic) BOOL mailShareSheetDeletionCandidate; // @synthesize mailShareSheetDeletionCandidate=_mailShareSheetDeletionCandidate;
 @property long long mechanism; // @synthesize mechanism=_mechanism;
 @property (readonly, nonatomic) NSArray *peopleIdentifiers;
 @property (strong) NSArray *recipients; // @synthesize recipients=_recipients;

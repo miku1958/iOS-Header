@@ -8,6 +8,5 @@
 #import <SPOwner/SPLocalPairingManagerXPCProtocol-Protocol.h>
 
 @protocol SPPairingManagerXPCProtocol <NSObject, SPLocalPairingManagerXPCProtocol>
-- (oneway void)currentBeaconingKeyWithCompletion:(void (^)(SPBeaconingKey *))arg1;
 @end
 

@@ -9,15 +9,16 @@
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSAttributedString, NSString;
+@class NSAttributedString, NSString, _HMDocument;
 
 @interface HMHTMLDocument : NSObject <NSCopying, NSSecureCoding>
 {
-    NSString *_stringValue;
+    _HMDocument *_document;
 }
 
 @property (readonly, copy) NSAttributedString *attributedString;
-@property (readonly, copy) NSString *stringValue; // @synthesize stringValue=_stringValue;
+@property (readonly) _HMDocument *document; // @synthesize document=_document;
+@property (readonly, copy) NSString *stringValue;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

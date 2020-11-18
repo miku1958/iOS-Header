@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPArtworkCatalogStaticDataSource : NSObject <MPArtworkDataSource>
 {
 }
@@ -21,10 +22,13 @@
 
 + (id)sharedDataSource;
 - (BOOL)areRepresentationsAvailableForCatalog:(id)arg1;
+- (BOOL)areRepresentationsOfKind:(long long)arg1 availableForCatalog:(id)arg2;
 - (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
 - (id)existingRepresentationForArtworkCatalog:(id)arg1;
+- (id)existingRepresentationOfKind:(long long)arg1 forArtworkCatalog:(id)arg2;
 - (BOOL)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;
 - (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadRepresentationOfKind:(long long)arg1 forArtworkCatalog:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
 
 @end

@@ -39,7 +39,7 @@
 @property (nonatomic) unsigned long long currentAttachedVideoCount; // @synthesize currentAttachedVideoCount=_currentAttachedVideoCount;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (copy, nonatomic) MSMessage *message; // @synthesize message=_message;
-@property (nonatomic) id<MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
+@property (weak, nonatomic) id<MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 

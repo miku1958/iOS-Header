@@ -21,7 +21,7 @@
             struct __IOHIDVirtualServiceClientCallbacksV2 *callbacks;
             void *target;
             void *refcon;
-        } virtual;
+        } virtualService;
         struct __CFDictionary *cachedProperties;
         struct IOHIDServiceFastPathInterface **fastPathInterface;
         struct IOCFPlugInInterfaceStruct **plugInInterface;

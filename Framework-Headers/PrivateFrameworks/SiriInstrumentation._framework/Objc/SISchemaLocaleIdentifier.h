@@ -12,9 +12,13 @@
 {
     NSString *_countryCode;
     NSString *_languageCode;
+    BOOL _hasCountryCode;
+    BOOL _hasLanguageCode;
 }
 
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (nonatomic) BOOL hasCountryCode; // @synthesize hasCountryCode=_hasCountryCode;
+@property (nonatomic) BOOL hasLanguageCode; // @synthesize hasLanguageCode=_hasLanguageCode;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 

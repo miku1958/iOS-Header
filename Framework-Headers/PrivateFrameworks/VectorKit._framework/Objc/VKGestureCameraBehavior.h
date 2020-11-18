@@ -64,7 +64,9 @@ __attribute__((visibility("hidden")))
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
 - (void)updateRotationWithFocusPoint:(struct CGPoint)arg1 newValue:(double)arg2;

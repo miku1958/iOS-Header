@@ -11,6 +11,7 @@
 @class MPMediaLibrary, MPMediaQueryCriteria, MPMediaQuerySectionInfo, NSMutableArray, NSObject;
 @protocol MPMediaLibraryResultSet, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaEntityResultSetArray : MPMediaArray <NSCopying>
 {
     id<MPMediaLibraryResultSet> _resultSet;

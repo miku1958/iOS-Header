@@ -22,14 +22,19 @@
     BOOL _supportsListSharees;
     BOOL _supportsListShareesMutation;
     BOOL _supportsMoveAcrossLists;
-    BOOL _supportsMoveAcrossSharedToMeLists;
+    BOOL _supportsMoveAcrossSharedLists;
+    BOOL _supportsMultipleDateAlarmsOnRecurrence;
     BOOL _supportsHandoff;
     BOOL _supportsReminderActions;
     BOOL _supportsCRDTs;
+    BOOL _supportsAssignments;
+    BOOL _insertsCompletedRecurrentCloneAtTail;
     long long _defaultReminderPriorityLevel;
 }
 
 @property (readonly, nonatomic) long long defaultReminderPriorityLevel; // @synthesize defaultReminderPriorityLevel=_defaultReminderPriorityLevel;
+@property (readonly, nonatomic) BOOL insertsCompletedRecurrentCloneAtTail; // @synthesize insertsCompletedRecurrentCloneAtTail=_insertsCompletedRecurrentCloneAtTail;
+@property (readonly, nonatomic) BOOL supportsAssignments; // @synthesize supportsAssignments=_supportsAssignments;
 @property (readonly, nonatomic) BOOL supportsAttachments; // @synthesize supportsAttachments=_supportsAttachments;
 @property (readonly, nonatomic) BOOL supportsCRDTs; // @synthesize supportsCRDTs=_supportsCRDTs;
 @property (readonly, nonatomic) BOOL supportsCalDAVNotifications; // @synthesize supportsCalDAVNotifications=_supportsCalDAVNotifications;
@@ -44,7 +49,8 @@
 @property (readonly, nonatomic) BOOL supportsListShareesMutation; // @synthesize supportsListShareesMutation=_supportsListShareesMutation;
 @property (readonly, nonatomic) BOOL supportsLocation; // @synthesize supportsLocation=_supportsLocation;
 @property (readonly, nonatomic) BOOL supportsMoveAcrossLists; // @synthesize supportsMoveAcrossLists=_supportsMoveAcrossLists;
-@property (readonly, nonatomic) BOOL supportsMoveAcrossSharedToMeLists; // @synthesize supportsMoveAcrossSharedToMeLists=_supportsMoveAcrossSharedToMeLists;
+@property (readonly, nonatomic) BOOL supportsMoveAcrossSharedLists; // @synthesize supportsMoveAcrossSharedLists=_supportsMoveAcrossSharedLists;
+@property (readonly, nonatomic) BOOL supportsMultipleDateAlarmsOnRecurrence; // @synthesize supportsMultipleDateAlarmsOnRecurrence=_supportsMultipleDateAlarmsOnRecurrence;
 @property (readonly, nonatomic) BOOL supportsPersonTrigger; // @synthesize supportsPersonTrigger=_supportsPersonTrigger;
 @property (readonly, nonatomic) BOOL supportsReminderActions; // @synthesize supportsReminderActions=_supportsReminderActions;
 @property (readonly, nonatomic) BOOL supportsSubtasks; // @synthesize supportsSubtasks=_supportsSubtasks;

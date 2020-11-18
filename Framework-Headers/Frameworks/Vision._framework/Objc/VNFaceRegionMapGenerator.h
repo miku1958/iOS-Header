@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 
 @end

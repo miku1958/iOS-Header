@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <ReminderKit/REMDaemonController-Protocol.h>
-#import <ReminderKit/REMXPCClient-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSXPCConnection, REMStoreContainerToken;
 @protocol REMXPCDaemonControllerCloudKitNetworkActivityDelegate;
 
-@interface REMXPCDaemonController : NSObject <REMDaemonController, REMXPCClient>
+@interface REMXPCDaemonController : NSObject <REMDaemonController>
 {
     struct os_unfair_lock_s _ivarLock;
     id<REMXPCDaemonControllerCloudKitNetworkActivityDelegate> _cloudKitNetworkActivityDelegate;
@@ -48,7 +47,6 @@
 - (void)asyncIndexingPerformerWithReason:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)asyncStorePerformerWithReason:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)asyncSyncInterfacePerformerWithReason:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
-- (void)cloudKitNetworkActivityDidUpdate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithStoreContainerToken:(id)arg1;

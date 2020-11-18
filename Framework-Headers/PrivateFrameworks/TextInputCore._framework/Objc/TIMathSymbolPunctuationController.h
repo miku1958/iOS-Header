@@ -28,6 +28,8 @@
 - (id)init;
 - (id)mathSymbolPunctuationedStringForInputString:(id)arg1;
 - (void)reset;
+- (void)setInputString:(id)arg1;
+- (BOOL)updateInputString:(id)arg1;
 
 @end
 

@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double backButtonMaximumWidth;
 @property (strong, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) long long barType;
-@property (readonly, nonatomic) BOOL barWantsLetterpress;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) BOOL centerTextButtons;
 @property (readonly, nonatomic) BOOL compactMetrics; // @synthesize compactMetrics=_compactMetrics;
@@ -93,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
 - (unsigned long long)edgesPaddingBarButtonItem:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)navigationBarInvalidatedResolvedLayoutMargins;
 - (void)navigationItem:(id)arg1 appearance:(id)arg2 categoriesChanged:(long long)arg3;
 - (BOOL)navigationItemIsBackItem:(id)arg1;
 - (BOOL)navigationItemIsTopItem:(id)arg1;
@@ -120,6 +120,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)stackDidChangeFrom:(id)arg1;
 - (void)teardown;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTopNavigationItemAnimated:(BOOL)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <GameCenterUI/GKDetailViewController.h>
 
-@class GKAchievementIconView, GKChallenge, GKPlayerWithSpeechBalloonView, NSLayoutConstraint, UIButton, UILabel;
+@class GKAchievementIconView, GKChallenge, NSLayoutConstraint, UIButton, UILabel;
 
 @interface GKDashboardChallengeDetailViewController : GKDetailViewController
 {
@@ -19,7 +19,6 @@
     UILabel *_fromLabel;
     UIButton *_playButton;
     UIButton *_declineButton;
-    GKPlayerWithSpeechBalloonView *_playerSpeechView;
     NSLayoutConstraint *_topConstraint;
     double _topMargin;
     NSLayoutConstraint *_iconHeightConstraint;
@@ -28,19 +27,19 @@
 
 @property (strong, nonatomic) GKChallenge *challenge; // @synthesize challenge=_challenge;
 @property (nonatomic) UIButton *declineButton; // @synthesize declineButton=_declineButton;
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (nonatomic) UILabel *fromLabel; // @synthesize fromLabel=_fromLabel;
 @property (nonatomic) NSLayoutConstraint *iconHeightConstraint; // @synthesize iconHeightConstraint=_iconHeightConstraint;
 @property (nonatomic) GKAchievementIconView *iconView; // @synthesize iconView=_iconView;
 @property (nonatomic) UIButton *playButton; // @synthesize playButton=_playButton;
-@property (nonatomic) GKPlayerWithSpeechBalloonView *playerSpeechView; // @synthesize playerSpeechView=_playerSpeechView;
 @property (nonatomic) BOOL shouldShowPlay; // @synthesize shouldShowPlay=_shouldShowPlay;
 @property (nonatomic) NSLayoutConstraint *speechToFromConstraint; // @synthesize speechToFromConstraint=_speechToFromConstraint;
 @property (nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 
+- (void).cxx_destruct;
 - (void)challengeOK:(id)arg1;
 - (void)configureForChallenge;
 - (void)dealloc;

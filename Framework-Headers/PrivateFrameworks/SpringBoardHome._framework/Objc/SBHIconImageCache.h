@@ -37,6 +37,9 @@
 @property (readonly, nonatomic) unsigned long long numberOfCacheHits;
 @property (readonly, nonatomic) unsigned long long numberOfCacheMisses;
 @property (readonly, nonatomic) unsigned long long numberOfCachedImages;
+@property (readonly, nonatomic) unsigned long long numberOfUnmaskedCacheHits;
+@property (readonly, nonatomic) unsigned long long numberOfUnmaskedCacheMisses;
+@property (readonly, nonatomic) unsigned long long numberOfUnmaskedCachedImages;
 @property (readonly, nonatomic) UIImage *overlayImage;
 @property (nonatomic) unsigned long long poolingBypassCount; // @synthesize poolingBypassCount=_poolingBypassCount;
 @property (readonly) Class superclass;
@@ -57,6 +60,8 @@
 - (void)cacheImage:(id)arg1 forIcon:(id)arg2;
 - (void)cacheImageForIcon:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cacheImagesForIcons:(id)arg1;
+- (void)cacheImagesForIcons:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)cacheUnmaskedImagesForIcons:(id)arg1;
 - (id)cachedImageForIcon:(id)arg1;
 - (id)cachedUnmaskedImageForIcon:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

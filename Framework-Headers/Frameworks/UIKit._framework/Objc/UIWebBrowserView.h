@@ -111,6 +111,7 @@
 - (id)_editingDelegate;
 - (void)_endAllowingFocusRedirects;
 - (void)_endDeferringEvents;
+- (void)_focusAndAssistFormNode:(id)arg1;
 - (void)_handleDeferredEvents;
 - (BOOL)_hasSubviewContainingWebContent:(id)arg1;
 - (BOOL)_isAutoFilling;
@@ -136,6 +137,7 @@
 - (BOOL)_requiresKeyboardResetOnReload;
 - (BOOL)_requiresKeyboardWhenFirstResponder;
 - (void)_resetFormDataForFrame:(id)arg1;
+- (BOOL)_resignFirstResponderAndBlurFocusedElement;
 - (BOOL)_restoreFocusWithToken:(id)arg1;
 - (void)_scrollCaretToVisible:(id)arg1;
 - (void)_setInputViewBoundsForAutomaticKeyboardInfo:(id)arg1 adjustScrollView:(BOOL)arg2;

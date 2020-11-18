@@ -9,7 +9,8 @@
 #import <GeoServices/GEOCompanionManeuverStep-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBDataReader;
+@class GEOPBTransitArtwork, NSMutableArray, NSString, PBDataReader;
+@protocol GEOTransitArtworkDataSource;
 
 @interface GEOCompanionFerryStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
@@ -17,6 +18,7 @@
     struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
+    GEOPBTransitArtwork *_artworkOverride;
     NSMutableArray *_maneuverNames;
     NSMutableArray *_signposts;
     unsigned int _readerMarkPos;
@@ -24,11 +26,13 @@
     struct os_unfair_lock_s _readerLock;
     int _junctionType;
     int _maneuverType;
-    CDStruct_6da46726 _flags;
+    CDStruct_9011fabd _flags;
 }
 
+@property (strong, nonatomic) GEOPBTransitArtwork *artworkOverride;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasArtworkOverride;
 @property (nonatomic) BOOL hasJunctionType;
 @property (nonatomic) BOOL hasJunctionType;
 @property (nonatomic) BOOL hasManeuverType;
@@ -40,6 +44,7 @@
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
 @property (nonatomic) int junctionType;
+@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> maneuverArtworkOverride;
 @property (strong, nonatomic) NSMutableArray *maneuverNames;
 @property (strong, nonatomic) NSMutableArray *maneuverNames;
 @property (nonatomic) int maneuverType;
@@ -55,12 +60,6 @@
 - (void).cxx_destruct;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
-- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement)arg1;
-- (void)_addNoFlagsManeuverName:(id)arg1;
-- (void)_addNoFlagsSignpost:(id)arg1;
-- (void)_readJunctionElements;
-- (void)_readManeuverNames;
-- (void)_readSignposts;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
@@ -73,7 +72,10 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
 - (id)junctionTypeAsString:(int)arg1;
 - (id)maneuverNameAtIndex:(unsigned long long)arg1;

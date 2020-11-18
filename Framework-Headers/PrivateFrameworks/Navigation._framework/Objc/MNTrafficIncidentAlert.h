@@ -8,18 +8,16 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteTraffic, GEOETARoute, GEORouteIncident, NSArray, NSData, NSDate;
+@class GEOComposedRoute, GEONavigabilityInfo, GEORouteIncident, GEOTrafficBannerText, MNActiveRouteInfo, NSArray, NSData, NSDate, NSMutableArray, NSString;
 
 @interface MNTrafficIncidentAlert : NSObject <NSSecureCoding>
 {
     NSData *_alertID;
     NSData *_etaResponseID;
     unsigned long long _alertType;
-    GEOETARoute *_oldETARoute;
-    GEOComposedRoute *_originalRoute;
-    GEOComposedRouteTraffic *_originalRouteTraffic;
-    GEOComposedRoute *_alternateRoute;
-    GEOComposedRouteTraffic *_alternateRouteTraffic;
+    GEOTrafficBannerText *_geoTrafficBannerText;
+    MNActiveRouteInfo *_mainRouteInfo;
+    MNActiveRouteInfo *_alternateRouteInfo;
     CDStruct_3f2a7a20 _startValidCoordinateRange;
     CDStruct_3f2a7a20 _endValidCoordinateRange;
     CDStruct_3f2a7a20 _incidentCoordinate;
@@ -28,6 +26,10 @@
     double _distanceToIncident;
     NSDate *_eta;
     BOOL _isAutomaticReroute;
+    NSArray *_buttonActionTitles;
+    BOOL _shouldShowTimer;
+    double _alertDisplayDuration;
+    NSString *_bannerDescription;
 }
 
 @property (readonly, nonatomic) NSDate *alertDate; // @synthesize alertDate=_alertDate;
@@ -37,36 +39,43 @@
 @property (readonly, nonatomic) NSArray *alertTitles;
 @property (readonly, nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 alternateEndValidCoordinateRange; // @synthesize alternateEndValidCoordinateRange=_alternateEndValidCoordinateRange;
-@property (readonly, nonatomic) GEOComposedRoute *alternateRoute; // @synthesize alternateRoute=_alternateRoute;
-@property (readonly, nonatomic) GEOComposedRouteTraffic *alternateRouteTraffic; // @synthesize alternateRouteTraffic=_alternateRouteTraffic;
+@property (readonly, nonatomic) GEOComposedRoute *alternateRoute;
+@property (readonly, nonatomic) MNActiveRouteInfo *alternateRouteInfo; // @synthesize alternateRouteInfo=_alternateRouteInfo;
+@property (readonly, nonatomic) NSString *bannerDescription; // @synthesize bannerDescription=_bannerDescription;
 @property (nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 endValidCoordinateRange; // @synthesize endValidCoordinateRange=_endValidCoordinateRange;
 @property (strong, nonatomic) NSDate *eta; // @synthesize eta=_eta;
 @property (readonly, nonatomic) NSData *etaResponseID; // @synthesize etaResponseID=_etaResponseID;
+@property (readonly, nonatomic) GEORouteIncident *incident;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 incidentCoordinate; // @synthesize incidentCoordinate=_incidentCoordinate;
 @property (readonly, nonatomic) BOOL isAutomaticReroute; // @synthesize isAutomaticReroute=_isAutomaticReroute;
+@property (readonly, nonatomic) BOOL isReroute;
+@property (readonly, nonatomic) MNActiveRouteInfo *mainRouteInfo; // @synthesize mainRouteInfo=_mainRouteInfo;
 @property (readonly, nonatomic) double newEstimatedTime;
-@property (readonly, nonatomic) GEOETARoute *oldETARoute; // @synthesize oldETARoute=_oldETARoute;
-@property (readonly, nonatomic) GEORouteIncident *oldETARouteIncident;
 @property (readonly, nonatomic) double oldEstimatedTime;
-@property (readonly, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
-@property (readonly, nonatomic) GEOComposedRouteTraffic *originalRouteTraffic; // @synthesize originalRouteTraffic=_originalRouteTraffic;
+@property (readonly, nonatomic) double oldHistoricTime;
+@property (readonly, nonatomic) NSMutableArray *oldRouteIncidents;
+@property (readonly, nonatomic) GEOComposedRoute *originalRoute;
+@property (readonly, nonatomic) GEONavigabilityInfo *originalRouteNavigability;
+@property (readonly, nonatomic) int previousBannerChange;
 @property (readonly, nonatomic) unsigned long long secondsSaved;
+@property (readonly, nonatomic) BOOL shouldShowTimer; // @synthesize shouldShowTimer=_shouldShowTimer;
 @property (readonly, nonatomic) NSArray *spokenTexts;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 startValidCoordinateRange; // @synthesize startValidCoordinateRange=_startValidCoordinateRange;
 
 + (BOOL)supportsSecureCoding;
-+ (id)trafficIncidentAlertForDetails:(id)arg1;
++ (id)validTrafficIncidentAlertForMainRouteInfo:(id)arg1 alternateRouteInfo:(id)arg2;
 - (void).cxx_destruct;
-- (CDStruct_c3b9c2ee)_divergenceCoordinate;
+- (unsigned long long)_alertTypeForGeoBannerStyle:(int)arg1;
 - (id)_dynamicStringValues;
-- (void)_findRouteDivergence;
-- (CDStruct_3f2a7a20)_routeCoordinateAtDuration:(double)arg1 beforeRouteCoordinate:(CDStruct_3f2a7a20)arg2;
+- (void)_initRouteCoordinates;
+- (id)_initWithGeoTrafficBannerText:(id)arg1 mainRouteInfo:(id)arg2 alternateRouteInfo:(id)arg3;
+- (void)_populateButtonActionAndTitles:(id)arg1;
+- (void)_populateServerFields:(id)arg1;
+- (CDStruct_3f2a7a20)_routeCoordinateOnRoute:(id)arg1 distanceFromEnd:(double)arg2;
+- (id)buttonActionTitles;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRoute:(id)arg1 traffic:(id)arg2 etaRoute:(id)arg3 etaResponse:(id)arg4;
-- (id)initWithTrafficIncidentAlertDetails:(id)arg1;
-- (BOOL)isSimilarTo:(id)arg1;
 - (void)updateAlertIDWithAlert:(id)arg1;
 - (void)updateLocation:(id)arg1;
 

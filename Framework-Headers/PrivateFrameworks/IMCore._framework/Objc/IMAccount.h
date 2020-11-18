@@ -12,7 +12,6 @@
 
 @interface IMAccount : NSObject <IMSystemMonitorListener>
 {
-    IMServiceImpl *_service;
     IMPeople *_buddyList;
     NSRecursiveLock *_lock;
     NSMapTable *_imHandles;
@@ -72,6 +71,7 @@
     BOOL _needToCheckForWatchedIMHandles;
     BOOL _iconChecked;
     BOOL _hasBeenRemoved;
+    IMServiceImpl *_service;
     id _smallImage;
     id _accountImage;
     BOOL _asleep;
@@ -84,8 +84,6 @@
 @property (readonly, nonatomic) NSDictionary *accountPreferences;
 @property (readonly, nonatomic) NSDictionary *accountSubtypeInfo; // @synthesize accountSubtypeInfo=_subtypeInfo;
 @property (readonly, nonatomic) long long accountType;
-@property (readonly, nonatomic) NSArray *addressBookProperties;
-@property (readonly, nonatomic) NSString *addressBookProperty;
 @property (readonly, nonatomic) NSArray *aliases;
 @property (readonly, nonatomic) NSArray *aliasesToRegister;
 @property (strong, nonatomic) NSArray *allowList;
@@ -220,7 +218,6 @@
 - (BOOL)addAliases:(id)arg1;
 - (void)addBuddyToBuddyList:(id)arg1;
 - (BOOL)addIMHandle:(id)arg1 toGroups:(id)arg2 atLocation:(long long)arg3;
-- (BOOL)addIMHandle:(id)arg1 toIMPerson:(id)arg2;
 - (BOOL)addPeople:(id)arg1 toGroups:(id)arg2 atLocation:(long long)arg3;
 - (id)aliasesForType:(long long)arg1;
 - (BOOL)authenticateAccount;
@@ -264,6 +261,7 @@
 - (id)groupMembers:(id)arg1;
 - (void)groupsChanged:(id)arg1 error:(id)arg2;
 - (void)handleSubscriptionRequestFrom:(id)arg1 withMessage:(id)arg2;
+- (id)handlesForCNContact:(id)arg1;
 - (BOOL)hasAlias:(id)arg1;
 - (BOOL)hasAlias:(id)arg1 type:(long long)arg2;
 - (BOOL)hasCapability:(unsigned long long)arg1;
@@ -276,7 +274,6 @@
 - (id)imHandleWithID:(id)arg1 countryCode:(id)arg2;
 - (id)imHandleWithInfo:(id)arg1;
 - (id)imHandleWithInfo:(id)arg1 alreadyCanonical:(BOOL)arg2;
-- (id)imHandlesForIMPerson:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (id)initWithUniqueID:(id)arg1 service:(id)arg2;
 - (long long)integerForKey:(id)arg1;
@@ -290,9 +287,6 @@
 - (void)nowLoggedOut;
 - (id)objectForKey:(id)arg1;
 - (id)objectForPreferenceKey:(id)arg1;
-- (id)personForIMHandle:(id)arg1;
-- (id)personForIMHandle:(id)arg1 identifier:(int *)arg2;
-- (id)personSibsForIMHandle:(id)arg1;
 - (id)profileStringForKey:(id)arg1;
 - (long long)profileValidationErrorReason;
 - (long long)profileValidationStatus;
@@ -306,7 +300,6 @@
 - (BOOL)removeAlias:(id)arg1 type:(long long)arg2;
 - (BOOL)removeAliases:(id)arg1;
 - (BOOL)removeIMHandle:(id)arg1 fromGroups:(id)arg2;
-- (BOOL)removeIMHandle:(id)arg1 fromIMPerson:(id)arg2;
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeObjectForPreferenceKey:(id)arg1;
 - (void)removePassword;

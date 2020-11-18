@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3;
+- (void)setState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 
 @end
 

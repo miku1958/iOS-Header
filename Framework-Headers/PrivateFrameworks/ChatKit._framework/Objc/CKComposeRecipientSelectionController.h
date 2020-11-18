@@ -13,10 +13,12 @@
 
 @interface CKComposeRecipientSelectionController : CKRecipientSelectionController <UITextFieldDelegate>
 {
+    BOOL _contactPreferredContextSelected;
     UIView *_pillContainerView;
     CDUnknownBlockType _sendBlock;
 }
 
+@property (nonatomic) BOOL contactPreferredContextSelected; // @synthesize contactPreferredContextSelected=_contactPreferredContextSelected;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CKComposeRecipientSelectionControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
@@ -35,7 +37,7 @@
 - (void)_legacyAddRecipient:(id)arg1;
 - (id)_subscriptionContextForSimID:(id)arg1 phoneNumber:(id)arg2;
 - (BOOL)_updateBackfillForNewRecipients;
-- (void)_updatePillViewIfNeededIfIsNewConversation:(BOOL)arg1;
+- (void)_updateSubscriptionContextForRecipient:(id)arg1 preferredService:(id)arg2;
 - (void)addRecipient:(id)arg1;
 - (BOOL)alwaysShowSearchResultsTable;
 - (void)atomizeAndInvokeBlock:(CDUnknownBlockType)arg1;
@@ -46,6 +48,7 @@
 - (void)dealloc;
 - (BOOL)deviceHasMultipleSubscriptions;
 - (BOOL)homogenizePreferredServiceForiMessage;
+- (BOOL)isBeingPresentedInMacDetailsView;
 - (BOOL)recipientIsiMessagable:(id)arg1;
 - (void)recipientSelectionControllerDidChange;
 - (void)reset;

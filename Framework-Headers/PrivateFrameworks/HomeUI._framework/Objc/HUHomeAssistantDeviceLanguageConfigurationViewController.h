@@ -19,7 +19,7 @@
     id<HUConfigurationViewControllerDelegate> _delegate;
     OBTrayButton *_changeLanguageButton;
     OBLinkTrayButton *_cancelButton;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     NSArray *_languageMismatchedHomeAssistantDevices;
     long long _selectedLanguageIndex;
     NSLayoutConstraint *_heightAnchor;
@@ -42,7 +42,7 @@
 @property (nonatomic) long long selectedLanguageIndex; // @synthesize selectedLanguageIndex=_selectedLanguageIndex;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property (strong, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 
 - (void).cxx_destruct;
 - (void)_cancelLanguageChange;
@@ -52,7 +52,7 @@
 - (void)_showSpinner;
 - (void)dealloc;
 - (id)hu_preloadContent;
-- (id)initWithSupportedMultiUserLanguages:(id)arg1 languageMismatchedHomeAssistantDevices:(id)arg2;
+- (id)initWithSupportedVoiceRecognitionLanguages:(id)arg1 languageMismatchedHomeAssistantDevices:(id)arg2;
 - (void)loadView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

@@ -29,6 +29,7 @@
 - (void)chatInputControllerWillTransitionCollapsed:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillTransitionExpanded:(CKChatInputController *)arg1;
 - (void)chatInputDidChangeSize;
+- (void)chatInputDidSelectEffectPicker;
 - (void)chatInputDidSelectPhotoPicker;
 - (void)chatInputDidUpdateInputViewShowingBrowser:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)chatInputDidUpdateWithNewInputViewController:(UIInputViewController *)arg1;
@@ -38,9 +39,9 @@
 - (id<CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;
 - (BOOL)keyboardIsVisibleForChatInputController:(CKChatInputController *)arg1;
 - (void)sendCurrentLocation;
-- (void)sendSticker:(IMSticker *)arg1;
 - (void)sendSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2;
 - (void)setLocalUserIsComposing:(BOOL)arg1 withPluginBundleID:(NSString *)arg2 typingIndicatorData:(NSData *)arg3;
+- (void)showContactForHandle:(NSString *)arg1;
 - (UIViewController *)viewControllerForChatInputModalPresentation;
 - (UIView *)viewForDragAndChatInputDropTarget;
 @end

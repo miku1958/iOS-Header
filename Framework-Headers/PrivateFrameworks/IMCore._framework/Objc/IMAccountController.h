@@ -62,7 +62,9 @@
 - (BOOL)activateAccounts:(id)arg1 force:(BOOL)arg2 locally:(BOOL)arg3;
 - (BOOL)activateAndHandleReconnectAccount:(id)arg1;
 - (BOOL)activateAndHandleReconnectAccounts:(id)arg1;
-- (long long)activeAccountsAreEligibleForSpamFilter;
+- (long long)activeAccountsAreEligibleForAppleSMSFilter;
+- (long long)activeAccountsAreEligibleForHawking;
+- (long long)activeAccountsAreEligibleForUnknownSendersFiltering;
 - (id)activeAccountsForService:(id)arg1;
 - (BOOL)addAccount:(id)arg1;
 - (BOOL)addAccount:(id)arg1 atIndex:(int)arg2;
@@ -100,6 +102,7 @@
 - (id)operationalAccountsForService:(id)arg1;
 - (id)operationalAccountsWithCapability:(unsigned long long)arg1;
 - (BOOL)readOnly;
+- (BOOL)receiverIsMyMention:(id)arg1;
 - (void)setReadOnly:(BOOL)arg1;
 
 @end

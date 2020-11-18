@@ -10,6 +10,7 @@
 
 @interface WKNavigationResponse (SafariServicesExtras)
 
+@property (readonly, nonatomic) NSString *_sf_explicitSuggestedFilename;
 @property (readonly, nonatomic) NSString *_sf_suggestedFilename;
 
 - (BOOL)_sf_allowReloadingInMainFrame;

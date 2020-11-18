@@ -6,15 +6,12 @@
 
 #import <NetworkExtension/NEPluginDriver-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary;
 
 @protocol NEVPNPluginDriver <NEPluginDriver>
 - (void)attachIPCWithCompletionHandler:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)connectWithParameters:(NSDictionary *)arg1;
 - (void)disconnectWithReason:(int)arg1;
-
-@optional
-- (void)transportAvailableWithName:(NSString *)arg1;
-- (void)transportUnavailableWithName:(NSString *)arg1;
+- (void)setAppUUIDMap:(NSDictionary *)arg1;
 @end
 

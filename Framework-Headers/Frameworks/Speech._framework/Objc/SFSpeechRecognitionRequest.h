@@ -13,7 +13,7 @@
     BOOL _forceOfflineRecognition;
     BOOL _shouldReportPartialResults;
     BOOL _detectMultipleUtterances;
-    double _maxiumRecognitionDuration;
+    double _maximumRecognitionDuration;
     _SFSearchRequest *_searchRequest;
     NSDictionary *_voiceTriggerEventInfo;
     NSDictionary *_recognitionOverrides;
@@ -24,7 +24,7 @@
 }
 
 @property (nonatomic, getter=_forceOfflineRecognition, setter=_setForceOfflineRecognition:) BOOL _forceOfflineRecognition; // @synthesize _forceOfflineRecognition;
-@property (nonatomic, getter=_maximumRecognitionDuration, setter=_setMaximumRecognitionDuration:) double _maxiumRecognitionDuration; // @synthesize _maxiumRecognitionDuration;
+@property (nonatomic, getter=_maximumRecognitionDuration, setter=_setMaximumRecognitionDuration:) double _maximumRecognitionDuration; // @synthesize _maximumRecognitionDuration;
 @property (strong, nonatomic, getter=_modelOverrideURL, setter=_setModelOverrideURL:) NSURL *_modelOverrideURL; // @synthesize _modelOverrideURL;
 @property (strong, nonatomic, getter=_recognitionOverrides, setter=_setRecognitionOverrides:) NSDictionary *_recognitionOverrides; // @synthesize _recognitionOverrides;
 @property (strong, nonatomic, getter=_searchRequest, setter=_setSearchRequest:) _SFSearchRequest *_searchRequest; // @synthesize _searchRequest;

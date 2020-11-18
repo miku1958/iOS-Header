@@ -13,6 +13,7 @@
     BOOL _hasVoIPBackgroundMode;
     NSString *_bundleIdentifier;
     NSURL *_bundleURL;
+    NSString *_localizedName;
     NSXPCConnection *_connection;
     NSString *_applicationIdentifier;
     NSSet *_capabilities;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL hasVoIPBackgroundMode; // @synthesize hasVoIPBackgroundMode=_hasVoIPBackgroundMode;
 
 - (void).cxx_destruct;
+- (CDStruct_6ad76789)auditToken;
 - (void)dealloc;
 - (id)identifier;
 - (id)init;
@@ -34,6 +36,7 @@
 - (BOOL)isPermittedToUseBluetoothAccessories;
 - (BOOL)isPermittedToUsePrivateAPI;
 - (BOOL)isPermittedToUsePublicAPI;
+- (id)localizedName;
 - (int)processIdentifier;
 - (id)vendorProtocolDelegate;
 

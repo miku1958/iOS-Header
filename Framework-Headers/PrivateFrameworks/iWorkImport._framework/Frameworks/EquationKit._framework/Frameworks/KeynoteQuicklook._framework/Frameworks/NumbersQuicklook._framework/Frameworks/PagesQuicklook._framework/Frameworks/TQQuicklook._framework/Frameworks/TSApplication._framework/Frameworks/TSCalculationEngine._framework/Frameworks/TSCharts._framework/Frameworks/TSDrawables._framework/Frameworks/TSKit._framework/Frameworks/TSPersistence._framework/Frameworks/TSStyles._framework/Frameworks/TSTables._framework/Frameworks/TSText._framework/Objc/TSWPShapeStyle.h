@@ -8,12 +8,13 @@
 
 #import <TSText/TSSPreset-Protocol.h>
 
-@class NSString;
+@class NSString, TSWPParagraphStyle;
 
 @interface TSWPShapeStyle : TSDShapeStyle <TSSPreset>
 {
 }
 
+@property (strong, nonatomic) TSWPParagraphStyle *defaultParagraphStyle;
 @property (readonly, nonatomic) NSString *presetKind;
 
 + (int)defaultIntValueForProperty:(int)arg1;
@@ -26,11 +27,9 @@
 + (void)saveShapeStyleLayoutPropertyMap:(id)arg1 toArchive:(struct ShapeStylePropertiesArchive *)arg2 archiver:(id)arg3;
 - (id)archivableRepresentationOfChangeSet:(id)arg1;
 - (id)boxedValueForProperty:(int)arg1 oldBoxedValue:(id)arg2 transformedByTransform:(struct CGAffineTransform)arg3;
-- (id)defaultParagraphStyle;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct ShapeStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setDefaultParagraphStyle:(id)arg1;
 
 @end
 

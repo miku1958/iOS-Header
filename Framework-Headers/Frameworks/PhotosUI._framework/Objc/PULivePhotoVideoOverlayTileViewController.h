@@ -11,7 +11,7 @@
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class ISWrappedAVPlayer, NSArray, NSString, PHLivePhotoView, PUAssetReference, PUBrowsingViewModel, PUMergedLivePhotosVideo, PUModelTileTransform, PUOneUpMergedVideoProvider, PXImageLayerModulator, PXImageModulationManager, UIImpactFeedbackGenerator, UIView;
+@class ISWrappedAVPlayer, NSArray, NSString, PHLivePhotoView, PUAssetReference, PUBrowsingViewModel, PUMergedLivePhotosVideo, PUModelTileTransform, PUOneUpMergedVideoProvider, PXImageModulationManager, PXLivePhotoViewModulator, UIImpactFeedbackGenerator, UIView;
 @protocol PULivePhotoVideoOverlayTileViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     ISWrappedAVPlayer *_videoPlayer;
     id _videoPlayerTimeObserver;
     PUModelTileTransform *_modelTileTransform;
-    PXImageLayerModulator *_imageLayerModulator;
+    PXLivePhotoViewModulator *_livePhotoViewModulator;
     PUAssetReference *_playbackAssetReference;
 }
 
@@ -42,10 +42,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property (strong, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
 @property (nonatomic) BOOL isPresentedForSecondScreen; // @synthesize isPresentedForSecondScreen=_isPresentedForSecondScreen;
 @property (readonly, nonatomic) PHLivePhotoView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
+@property (strong, nonatomic) PXLivePhotoViewModulator *livePhotoViewModulator; // @synthesize livePhotoViewModulator=_livePhotoViewModulator;
 @property (readonly, nonatomic) PUMergedLivePhotosVideo *mergedVideo; // @synthesize mergedVideo=_mergedVideo;
 @property (strong, nonatomic) PUOneUpMergedVideoProvider *mergedVideoProvider; // @synthesize mergedVideoProvider=_mergedVideoProvider;
 @property (strong, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
@@ -57,9 +57,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL willEndCurrentPlayback; // @synthesize willEndCurrentPlayback=_willEndCurrentPlayback;
 
 - (void).cxx_destruct;
-- (void)_updateImageLayerModulator;
-- (void)_updateImageLayerModulatorInput;
 - (void)_updateLivePhotoViewFrame;
+- (void)_updateLivePhotoViewModulator;
+- (void)_updateLivePhotoViewModulatorInput;
 - (void)_updateLivePhotoViewPhoto;
 - (void)_updateMergedVideo;
 - (void)_updatePlaybackEnabled;

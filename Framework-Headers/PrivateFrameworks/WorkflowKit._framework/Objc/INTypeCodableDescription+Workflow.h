@@ -7,6 +7,6 @@
 #import <Intents/INTypeCodableDescription.h>
 
 @interface INTypeCodableDescription (Workflow)
-- (id)wf_outputDisplayName;
+- (id)wf_outputDisplayNameWithLocalizer:(id)arg1;
 @end
 

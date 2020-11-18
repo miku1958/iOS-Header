@@ -13,26 +13,37 @@
     BOOL _loginDisabled;
     BOOL _passwordChangeRequired;
     BOOL _shouldShowLinkAccountsUI;
+    BOOL _useNewDashboardUI;
+    BOOL _accessPointIsOnAutomatically;
+    BOOL _accessPointShowHighlights;
     GKPlayerCredential *_credential;
     NSURL *_passwordChangeURL;
     NSString *_alertTitle;
     NSString *_alertMessage;
     NSString *_lastPersonalizationVersionDisplayed;
     unsigned long long _lastPrivacyNoticeVersionDisplayed;
+    NSString *_lastProfilePrivacyVersionDisplayed;
+    long long _accessPointLocation;
 }
 
+@property (nonatomic) BOOL accessPointIsOnAutomatically; // @synthesize accessPointIsOnAutomatically=_accessPointIsOnAutomatically;
+@property (nonatomic) long long accessPointLocation; // @synthesize accessPointLocation=_accessPointLocation;
+@property (nonatomic) BOOL accessPointShowHighlights; // @synthesize accessPointShowHighlights=_accessPointShowHighlights;
 @property (strong, nonatomic) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
 @property (strong, nonatomic) NSString *alertTitle; // @synthesize alertTitle=_alertTitle;
 @property (strong, nonatomic) GKPlayerCredential *credential; // @synthesize credential=_credential;
 @property (strong, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
 @property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
+@property (strong, nonatomic) NSString *lastProfilePrivacyVersionDisplayed; // @synthesize lastProfilePrivacyVersionDisplayed=_lastProfilePrivacyVersionDisplayed;
 @property (nonatomic) BOOL loginDisabled; // @synthesize loginDisabled=_loginDisabled;
 @property (nonatomic) BOOL passwordChangeRequired; // @synthesize passwordChangeRequired=_passwordChangeRequired;
 @property (strong, nonatomic) NSURL *passwordChangeURL; // @synthesize passwordChangeURL=_passwordChangeURL;
 @property (nonatomic) BOOL shouldShowLinkAccountsUI; // @synthesize shouldShowLinkAccountsUI=_shouldShowLinkAccountsUI;
+@property (nonatomic) BOOL useNewDashboardUI; // @synthesize useNewDashboardUI=_useNewDashboardUI;
 
 + (id)secureCodedPropertyKeys;
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

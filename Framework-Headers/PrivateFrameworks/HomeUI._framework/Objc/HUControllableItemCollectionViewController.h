@@ -8,16 +8,20 @@
 
 #import <HomeUI/HUQuickControlPresentationCoordinatorDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlPresentationHost-Protocol.h>
+#import <HomeUI/UICollectionViewDragDelegate-Protocol.h>
+#import <HomeUI/UICollectionViewDropDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class HFItem, HFItemManager, HUQuickControlPresentationCoordinator, NSMutableDictionary, NSString, UICollectionViewLayout, UIGestureRecognizer, UILongPressGestureRecognizer, UIViewController;
-@protocol HUControllableCollectionViewLayout, HUQuickControlPresentationHost, NSCopying;
+@protocol HUControllableCollectionViewLayout, HULockAuthorizationDelegate, HUQuickControlPresentationDelegate, HUQuickControlPresentationHost, NSCopying;
 
-@interface HUControllableItemCollectionViewController : HUItemCollectionViewController <HUQuickControlPresentationHost, UIGestureRecognizerDelegate, HUQuickControlPresentationCoordinatorDelegate>
+@interface HUControllableItemCollectionViewController : HUItemCollectionViewController <HUQuickControlPresentationHost, UIGestureRecognizerDelegate, UICollectionViewDragDelegate, UICollectionViewDropDelegate, HUQuickControlPresentationCoordinatorDelegate>
 {
+    BOOL _useCustomDragAndDrop;
     BOOL _viewAppeared;
-    BOOL _suppressCollectionViewUpdatesForReorderCommit;
     unsigned long long _contentColorStyle;
+    id<HULockAuthorizationDelegate> _lockAuthorizationDelegate;
+    id<HUQuickControlPresentationDelegate> _quickControlPresentationDelegate;
     HUQuickControlPresentationCoordinator *_quickControlPresentationCoordinator;
     UIViewController<HUQuickControlPresentationHost> *_ancestorQuickControlHostAtPresentationTime;
     UILongPressGestureRecognizer *_reorderGestureRecognizer;
@@ -35,11 +39,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HFItemManager *itemManager;
+@property (weak, nonatomic) id<HULockAuthorizationDelegate> lockAuthorizationDelegate; // @synthesize lockAuthorizationDelegate=_lockAuthorizationDelegate;
 @property (strong, nonatomic) HUQuickControlPresentationCoordinator *quickControlPresentationCoordinator; // @synthesize quickControlPresentationCoordinator=_quickControlPresentationCoordinator;
+@property (weak, nonatomic) id<HUQuickControlPresentationDelegate> quickControlPresentationDelegate; // @synthesize quickControlPresentationDelegate=_quickControlPresentationDelegate;
 @property (strong, nonatomic) UILongPressGestureRecognizer *reorderGestureRecognizer; // @synthesize reorderGestureRecognizer=_reorderGestureRecognizer;
 @property (strong, nonatomic) HFItem<NSCopying> *selectedContextualMenuItem; // @synthesize selectedContextualMenuItem=_selectedContextualMenuItem;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL suppressCollectionViewUpdatesForReorderCommit; // @synthesize suppressCollectionViewUpdatesForReorderCommit=_suppressCollectionViewUpdatesForReorderCommit;
+@property (nonatomic) BOOL useCustomDragAndDrop; // @synthesize useCustomDragAndDrop=_useCustomDragAndDrop;
 @property (nonatomic) BOOL viewAppeared; // @synthesize viewAppeared=_viewAppeared;
 
 - (void).cxx_destruct;
@@ -62,15 +68,18 @@
 - (void)_updateEditingStateForCell:(id)arg1;
 - (void)_updateReorderingGestureRecognizer;
 - (id)_visibleCellForItem:(id)arg1;
-- (BOOL)allowsPresentationWithOnlySettings;
 - (BOOL)alwaysAllowReordering;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (BOOL)canReorderItemAtIndexPath:(id)arg1;
 - (void)childViewController:(id)arg1 didEndQuickControlsPresentation:(id)arg2;
 - (void)childViewController:(id)arg1 willBeginQuickControlsPresentation:(id)arg2;
+- (BOOL)collectionView:(id)arg1 canHandleDropSession:(id)arg2;
 - (BOOL)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
@@ -78,9 +87,9 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
-- (void)itemManager:(id)arg1 didMoveItem:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)prepareToPerformToggleActionForItem:(id)arg1 sourceItem:(id)arg2;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentationCoordinator:(id)arg1 applyOverrideAttributes:(id)arg2 toItem:(id)arg3;
 - (void)presentationCoordinator:(id)arg1 clearOverrideAttributesForItem:(id)arg2;
 - (id)presentationCoordinator:(id)arg1 contextForPresentationAtPoint:(struct CGPoint)arg2;
@@ -89,10 +98,11 @@
 - (BOOL)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (BOOL)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 willBeginPresentationWithContext:(id)arg2;
-- (void)presentationCoordinatorDidCancelDismissalTransition:(id)arg1;
-- (void)presentationCoordinatorWillBeginDismissalTransition:(id)arg1;
+- (void)presentationCoordinator:(id)arg1 willEndPresentationWithContext:(id)arg2;
 - (id)quickControlPresentationContextForItem:(id)arg1 atIndexPath:(id)arg2;
+- (id)quickControlPresentationContextForUUID:(id)arg1 type:(unsigned long long)arg2;
 - (id)reorderableHomeKitItemListForSection:(long long)arg1;
+- (BOOL)requiresUnlockToPerformActionForItem:(id)arg1;
 - (void)setContentColorStyle:(unsigned long long)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setExecutionFuture:(id)arg1 forActionSet:(id)arg2;

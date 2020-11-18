@@ -20,12 +20,11 @@
 @property (readonly, nonatomic) unsigned long long violationPolicy; // @synthesize violationPolicy=_violationPolicy;
 
 + (id)limitationForRole:(unsigned char)arg1 withPercentage:(unsigned long long)arg2 duration:(double)arg3 violationPolicy:(unsigned long long)arg4;
-- (id)_initWithRole:(unsigned char)arg1 percentage:(unsigned long long)arg2 duration:(double)arg3 violationPolicy:(unsigned long long)arg4;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescriptionBuilder;
 
 @end
 

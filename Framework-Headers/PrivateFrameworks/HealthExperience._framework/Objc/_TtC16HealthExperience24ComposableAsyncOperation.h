@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthExperience/_TtC16HealthExperience14AsyncOperation.h>
+#import <HealthExperience/_TtC16HealthExperience21AsynchronousOperation.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC16HealthExperience24ComposableAsyncOperation : _TtC16HealthExperience14AsyncOperation
+@interface _TtC16HealthExperience24ComposableAsyncOperation : _TtC16HealthExperience21AsynchronousOperation
 {
     MISSING_TYPE *automaticallyDispatchFinishOperation;
     MISSING_TYPE *childOperations;
     MISSING_TYPE *currentQueue;
     MISSING_TYPE *dispatchChildOperationsCalled;
-    MISSING_TYPE *lock;
 }
 
 - (void).cxx_destruct;
-- (void)cancel;
 - (id)init;
-- (void)start;
+- (void)main;
 
 @end
 

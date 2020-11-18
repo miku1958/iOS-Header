@@ -6,13 +6,17 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle;
+@class FBScene, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, _UIStatusBarData;
 
 @protocol SBApplicationSceneStatusBarDescribing <NSObject>
 
+@property (readonly, nonatomic) SBDeviceApplicationSceneStatusBarBreadcrumbProvider *breadcrumbProvider;
+@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *classicApplicationSceneHandleIfExists;
+@property (readonly, nonatomic) _UIStatusBarData *overlayStatusBarData;
+@property (readonly, nonatomic) FBScene *sceneToHandleStatusBarTapIfExists;
+@property (readonly, nonatomic) BOOL sceneWantsDeviceOrientationEventsEnabled;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
-@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *statusBarControllingSceneHandle;
 @property (readonly, nonatomic) BOOL statusBarHidden;
 @property (readonly, nonatomic) long long statusBarOrientation;
 @property (readonly, nonatomic) NSString *statusBarSceneIdentifier;

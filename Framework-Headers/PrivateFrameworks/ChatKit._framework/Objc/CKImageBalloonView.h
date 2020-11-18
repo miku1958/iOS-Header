@@ -42,6 +42,7 @@
 - (void)clearFilters;
 - (void)configureForComposition:(id)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(BOOL)arg4;
 - (void)configureForMessagePart:(id)arg1;
 - (void)configureForTranscriptPlugin:(id)arg1;
 - (void)dealloc;

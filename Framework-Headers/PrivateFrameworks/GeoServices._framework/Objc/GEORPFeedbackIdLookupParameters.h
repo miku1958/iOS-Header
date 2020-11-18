@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponentTypes:1;
         unsigned int read_feedbackIds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_feedbackComponentTypes:1;
-        unsigned int wrote_feedbackIds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,10 +36,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFeedbackComponentTypes:(id)arg1;
-- (void)_addNoFlagsFeedbackComponentType:(int)arg1;
-- (void)_addNoFlagsFeedbackId:(id)arg1;
-- (void)_readFeedbackComponentTypes;
-- (void)_readFeedbackIds;
 - (void)addFeedbackComponentType:(int)arg1;
 - (void)addFeedbackId:(id)arg1;
 - (void)clearFeedbackComponentTypes;
@@ -59,7 +53,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

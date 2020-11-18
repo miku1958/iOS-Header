@@ -13,7 +13,7 @@
 }
 
 + (id)contentCategories;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)propertyBuilders;

@@ -24,6 +24,7 @@
 - (void)didMoveToWindow;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (id)init;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

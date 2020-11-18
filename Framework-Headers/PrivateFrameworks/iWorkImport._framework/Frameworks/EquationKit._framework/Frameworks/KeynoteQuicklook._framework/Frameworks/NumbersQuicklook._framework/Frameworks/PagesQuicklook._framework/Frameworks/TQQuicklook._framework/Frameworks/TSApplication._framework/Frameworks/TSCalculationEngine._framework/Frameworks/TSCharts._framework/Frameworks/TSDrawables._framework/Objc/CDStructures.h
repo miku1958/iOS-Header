@@ -166,8 +166,12 @@ struct DrawableArchive {
     struct Reference *_field9;
     struct ExteriorTextWrapArchive *_field10;
     struct Reference *_field11;
-    BOOL _field12;
-    BOOL _field13;
+    struct Reference *_field12;
+    struct Reference *_field13;
+    BOOL _field14;
+    BOOL _field15;
+    BOOL _field16;
+    BOOL _field17;
 };
 
 struct DrawableSelectionArchive {
@@ -323,6 +327,7 @@ struct ImageArchive {
     struct Attribution *_field23;
     unsigned int _field24;
     BOOL _field25;
+    BOOL _field26;
 };
 
 struct ImageFillArchive;
@@ -398,19 +403,58 @@ struct MovieArchive {
     struct Size *_field16;
     struct DataReference *_field17;
     struct Attribution *_field18;
-    float _field19;
+    struct MovieFingerprint *_field19;
     float _field20;
     float _field21;
-    unsigned int _field22;
-    float _field23;
-    unsigned int _field24;
+    float _field22;
+    unsigned int _field23;
+    float _field24;
     unsigned int _field25;
-    BOOL _field26;
+    unsigned int _field26;
     BOOL _field27;
     BOOL _field28;
     BOOL _field29;
     BOOL _field30;
     int _field31;
+    BOOL _field32;
+    BOOL _field33;
+};
+
+struct MovieFingerprint {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct RepeatedPtrField<TSD::MovieFingerprintTrack> _field5;
+    struct RepeatedField<unsigned int> _field6;
+    int _field7;
+};
+
+struct MovieFingerprintTrack {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct ArenaStringPtr _field5;
+    struct ArenaStringPtr _field6;
+    struct ArenaStringPtr _field7;
+    struct ArenaStringPtr _field8;
+    struct Size *_field9;
+    long long _field10;
+    long long _field11;
+    int _field12;
+    BOOL _field13;
+    BOOL _field14;
+    BOOL _field15;
+    long long _field16;
+    double _field17;
+    double _field18;
+    double _field19;
+    double _field20;
+    double _field21;
+    double _field22;
+    double _field23;
+    int _field24;
 };
 
 struct PathSourceArchive {
@@ -493,6 +537,12 @@ struct RepeatedField<float> {
     union Pointer _field3;
 };
 
+struct RepeatedField<unsigned int> {
+    int _field1;
+    int _field2;
+    union Pointer _field3;
+};
+
 struct RepeatedPtrField<TSD::ExteriorTextWrapArchive> {
     struct Arena *_field1;
     int _field2;
@@ -501,6 +551,13 @@ struct RepeatedPtrField<TSD::ExteriorTextWrapArchive> {
 };
 
 struct RepeatedPtrField<TSD::GeometryArchive> {
+    struct Arena *_field1;
+    int _field2;
+    int _field3;
+    struct Rep *_field4;
+};
+
+struct RepeatedPtrField<TSD::MovieFingerprintTrack> {
     struct Arena *_field1;
     int _field2;
     int _field3;
@@ -594,6 +651,13 @@ struct ShapeStylePropertiesArchive {
 struct Size;
 
 struct SmartStrokeArchive;
+
+struct StandinCaptionArchive {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+};
 
 struct StrokeArchive {
     CDUnknownFunctionPointerType *_field1;
@@ -815,6 +879,13 @@ typedef struct {
     float y;
 } CDStruct_6e3f967a;
 
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+
 typedef struct CDStruct_183601bc;
 
 typedef struct {
@@ -836,6 +907,11 @@ typedef struct {
     struct _NSRange _field9;
     unsigned long long _field10;
 } CDStruct_64113493;
+
+typedef struct {
+    CDStruct_198678f7 _field1;
+    CDStruct_198678f7 _field2;
+} CDStruct_3c1748cc;
 
 typedef struct {
     struct CGPoint _field1;

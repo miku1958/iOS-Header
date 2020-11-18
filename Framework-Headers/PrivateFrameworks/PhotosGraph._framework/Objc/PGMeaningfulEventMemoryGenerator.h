@@ -30,6 +30,7 @@
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
+- (unsigned long long)durationForCuration;
 - (id)initWithController:(id)arg1;
 
 @end

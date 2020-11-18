@@ -9,15 +9,19 @@
 #import <HomeKit/HMApplicationData-Protocol.h>
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
+#import <HomeKit/HMFTimerDelegate-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 
-@class HMAccessory, HMApplicationData, HMFUnfairLock, HMHome, HMHomeManagerConfiguration, HMMutableArray, HMNetworkRouterFirewallRuleManager, HMUserCloudShareManager, NSArray, NSNumber, NSOperationQueue, NSSet, NSString, NSUUID, _HMContext;
-@protocol HMHomeManagerDelegate, OS_dispatch_queue;
+@class HMAccessory, HMApplicationData, HMFTimer, HMFUnfairLock, HMHome, HMHomeManagerConfiguration, HMMutableArray, HMNetworkRouterFirewallRuleManager, HMSetupViewController, HMUserCloudShareManager, NSArray, NSMutableArray, NSNumber, NSOperationQueue, NSSet, NSString, NSUUID, _HMContext;
+@protocol HMHomeManagerDelegate, HMSetupRemoteService, OS_dispatch_queue;
 
-@interface HMHomeManager : NSObject <HMFLogging, HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
+@interface HMHomeManager : NSObject <HMFLogging, HMFTimerDelegate, HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
 {
     HMFUnfairLock *_lock;
     NSOperationQueue *_syncOperationQueue;
+    NSMutableArray *_refreshRequests;
+    NSMutableArray *_batchNotificationReasons;
+    HMFTimer *_batchNotificationEndTimer;
     BOOL _frameworkMergeComplete;
     BOOL _thisDeviceResidentCapable;
     BOOL _residentEnabledForThisDevice;
@@ -38,6 +42,8 @@
     unsigned long long _options;
     NSSet *_addAccessoryRequests;
     HMUserCloudShareManager *_userCloudShareManager;
+    HMSetupViewController *_setupViewController;
+    id<HMSetupRemoteService> _setupRemoteViewController;
     HMMutableArray *_currentHomes;
     HMMutableArray *_homeInvitations;
     NSOperationQueue *_mergeOperationQueue;
@@ -54,7 +60,7 @@
 
 @property (readonly, getter=isAccessAllowedWhenLocked) BOOL accessAllowedWhenLocked; // @synthesize accessAllowedWhenLocked=_accessAllowedWhenLocked;
 @property (strong, nonatomic) NSSet *addAccessoryRequests; // @synthesize addAccessoryRequests=_addAccessoryRequests;
-@property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (strong, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (readonly) unsigned long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (readonly) HMHomeManagerConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -91,6 +97,8 @@
 @property (readonly) unsigned long long residentProvisioningStatus; // @synthesize residentProvisioningStatus=_residentProvisioningStatus;
 @property (readonly, nonatomic) unsigned long long serverGenerationCounter;
 @property (nonatomic) int serverGenerationCounterToken; // @synthesize serverGenerationCounterToken=_serverGenerationCounterToken;
+@property (weak, nonatomic) id<HMSetupRemoteService> setupRemoteViewController; // @synthesize setupRemoteViewController=_setupRemoteViewController;
+@property (weak, nonatomic) HMSetupViewController *setupViewController; // @synthesize setupViewController=_setupViewController;
 @property (readonly) unsigned long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (readonly, getter=isThisDeviceResidentCapable) BOOL thisDeviceResidentCapable; // @synthesize thisDeviceResidentCapable=_thisDeviceResidentCapable;
@@ -110,15 +118,20 @@
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_acceptInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_addAccessoryRequestsFromArray:(id)arg1;
+- (void)_addAndSetupAccessoriesWithSetupPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_beginActiveAssertionWithReason:(id)arg1;
 - (void)_checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_declineInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_determineCacheFiles;
 - (void)_dumpCaches:(id)arg1 metadata:(id)arg2;
+- (void)_endActiveAssertion:(id)arg1;
 - (void)_eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchHomeConfigurationWithRefreshRequested:(BOOL)arg1;
+- (void)_forceBatchNotificationsEnd;
+- (void)_generateFirewallRuleTLVsFromNetworkDeclarations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
 - (void)_handleCheckForAddAccessoryRequests;
 - (void)_handleCurrentHomeChangedNotification:(id)arg1;
@@ -132,7 +145,7 @@
 - (void)_handleResidentEnabledForThisDeviceUpdatedNotification:(id)arg1;
 - (void)_handleResidentProvisioningStatusChanged:(id)arg1;
 - (void)_handleRuntimeStateUpdateNotification:(id)arg1;
-- (void)_handleRuntimeStateUpdatePayload:(id)arg1;
+- (void)_handleRuntimeStateUpdatePayload:(id)arg1 reason:(id)arg2;
 - (void)_handleStatusUpdated:(id)arg1;
 - (void)_handleUserInvitationsUpdatedNotification:(id)arg1;
 - (id)_homeWithUUID:(id)arg1;
@@ -146,14 +159,15 @@
 - (void)_notifyPendingAddRequests:(id)arg1;
 - (void)_notifyResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_pingDeviceWithDestination:(id)arg1 secure:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_pingDeviceWithUUID:(id)arg1 secure:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_pingDeviceWithDestination:(id)arg1 monitor:(BOOL)arg2 secure:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_pingDeviceWithUUID:(id)arg1 monitor:(BOOL)arg2 secure:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_primaryAccountDidChange:(id)arg1 modified:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_privateDelegate;
 - (void)_processHomeConfigurationRequest:(id)arg1 refreshRequested:(BOOL)arg2;
 - (void)_queryHomeKitUsageStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_refreshBeforeDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerForMediaAccessoryControl:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_removeCacheFiles:(BOOL)arg1;
@@ -175,6 +189,7 @@
 - (void)_updateStatusWithPayload:(id)arg1;
 - (void)_updateiCloudSwitchState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_writeCaches:(id)arg1 homeData:(BOOL)arg2 metadata:(BOOL)arg3;
+- (void)addAndSetupAccessoriesWithSetupPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -183,11 +198,18 @@
 - (void)dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)eraseHomeDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)generateFirewallRuleTLVsFromNetworkDeclarations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleDaemonInterruptedNotification:(id)arg1;
+- (void)handleUIApplicationWillResignActiveNotification:(id)arg1;
 - (void)idmsAccountUsernameModifiedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithHomeMangerConfiguration:(id)arg1;
 - (id)initWithOptions:(unsigned long long)arg1;
+- (void)interruptSetupWithError:(id)arg1;
+- (void)launchSetupViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)notifyDelegateOfBatchNotificationsEndWithReason:(id)arg1;
+- (void)notifyDelegateOfBatchNotificationsStartWithReason:(id)arg1;
 - (void)notifyResidentCapableUpdated:(BOOL)arg1;
 - (void)notifyResidentEnabledUpdated:(BOOL)arg1;
 - (void)pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -202,7 +224,6 @@
 - (void)removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetConfiguration:(BOOL)arg1 withoutPopup:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setAccessAllowedWhenLocked:(BOOL)arg1;
-- (void)setApplicationData:(id)arg1;
 - (void)setCurrentHome:(id)arg1;
 - (void)setDataSyncState:(unsigned long long)arg1;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -211,6 +232,7 @@
 - (void)setStatus:(unsigned long long)arg1;
 - (void)setThisDeviceResidentCapable:(BOOL)arg1;
 - (void)shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)timerDidFire:(id)arg1;
 - (void)updateAccessAllowedWhenLocked:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updatePrimaryHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

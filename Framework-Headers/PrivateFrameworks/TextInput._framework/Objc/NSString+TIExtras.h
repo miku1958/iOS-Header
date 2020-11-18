@@ -56,8 +56,10 @@
 - (unsigned short)_firstChar;
 - (id)_firstGrapheme;
 - (unsigned int)_firstLongCharacter;
+- (id)_graphemeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_graphemeCount;
 - (unsigned long long)_indexFromStartingIndex:(unsigned long long)arg1 byIncrementingComposedCharacterSequenceCount:(unsigned long long)arg2;
+- (BOOL)_isBasicLatin;
 - (BOOL)_isDelete;
 - (BOOL)_isIdeographicGlyphs;
 - (BOOL)_isLeftAssociative;

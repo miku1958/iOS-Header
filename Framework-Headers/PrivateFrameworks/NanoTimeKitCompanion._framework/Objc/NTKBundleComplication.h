@@ -21,18 +21,19 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addKeysToJSONDictionary:(id)arg1;
+- (id)_generateUniqueIdentifier;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
+- (id)appIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
 - (id)localizedRichDetailText;
 - (id)localizedRichKeylineLabelText;
+- (BOOL)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 
 @end
 

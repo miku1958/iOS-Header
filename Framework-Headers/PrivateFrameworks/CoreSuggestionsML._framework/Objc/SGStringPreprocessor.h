@@ -39,6 +39,7 @@
 - (void)replace:(id)arg1 withBuffer:(unsigned short *)arg2 toIndex:(unsigned long long)arg3;
 - (void)replaceAllWhitespaceWithSpaces:(id)arg1;
 - (void)replaceCharactersWithSpaces:(id)arg1 withValue:(id)arg2;
+- (void)replaceContactNamesWithString:(id)arg1 withValue:(id)arg2;
 - (void)replaceLinksWithString:(id)arg1 withValue:(id)arg2;
 - (void)replaceNumbersWithString:(id)arg1 withValue:(id)arg2;
 - (void)separateCharacter:(id)arg1 withValue:(id)arg2;

@@ -8,23 +8,35 @@
 
 @class NSData, NSString, _MRPlaybackSessionRequestProtobuf;
 
-__attribute__((visibility("hidden")))
 @interface MRPlaybackSessionRequest : NSObject
 {
+    BOOL _hasLocation;
+    BOOL _hasLength;
+    NSString *_requestIdentifier;
     NSString *_identifier;
     NSString *_type;
+    unsigned long long _location;
+    unsigned long long _length;
 }
 
 @property (readonly, copy, nonatomic) NSData *data;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL hasLength; // @synthesize hasLength=_hasLength;
+@property (nonatomic) BOOL hasLocation; // @synthesize hasLocation=_hasLocation;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned long long length; // @synthesize length=_length;
+@property (nonatomic) unsigned long long location; // @synthesize location=_location;
 @property (readonly, nonatomic) _MRPlaybackSessionRequestProtobuf *protobuf;
-@property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property (readonly, nonatomic) struct _NSRange range;
+@property (copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithData:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 range:(struct _NSRange)arg2;
 - (id)initWithIdentifier:(id)arg1 type:(id)arg2;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

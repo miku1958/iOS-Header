@@ -51,6 +51,7 @@
 - (double)_resumeFadeInDuration;
 - (void)_setupDimOnSnapshot;
 - (void)_setupLowQualityBlurOnSnapshot;
+- (void)fadeOutAnimatedWithStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithView:(id)arg1 desiredAspectRatio:(long long)arg2;
 - (void)prepareForResumingUsingCrossfade;
 - (void)removeInflightBlurAnimations;

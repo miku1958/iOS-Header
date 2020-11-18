@@ -8,10 +8,11 @@
 
 #import <WorkflowUI/WFActionDrawerResultsControlling-Protocol.h>
 
-@class NSArray, NSString, UITableView, WFActionDrawerResults;
+@class NSArray, NSString, UITableView, WFActionDrawerCoordinator, WFActionDrawerResults;
 
 @interface WFActionDrawerCompositeResultsViewController : UIViewController <WFActionDrawerResultsControlling>
 {
+    WFActionDrawerCoordinator *_coordinator;
     WFActionDrawerResults *_results;
     NSArray *_suggestionSections;
     NSArray *_actionSections;
@@ -22,6 +23,7 @@
 
 @property (readonly, nonatomic) NSArray *actionSections; // @synthesize actionSections=_actionSections;
 @property (readonly, nonatomic) NSArray *appSections; // @synthesize appSections=_appSections;
+@property (readonly, weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,6 +36,7 @@
 - (void).cxx_destruct;
 - (id)categorizeResults:(id)arg1;
 - (id)convertDonationsToActionsForSections:(id)arg1;
+- (id)initWithCoordinator:(id)arg1;
 - (void)reloadViews;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;

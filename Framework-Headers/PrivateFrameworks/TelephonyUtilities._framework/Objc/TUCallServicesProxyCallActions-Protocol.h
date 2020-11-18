@@ -6,9 +6,10 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class IDSDestination, NSString, TUAnswerRequest, TUDialRequest, TUProxyCall;
+@class IDSDestination, NSString, NSUUID, TUAnswerRequest, TUDialRequest, TUProxyCall;
 
 @protocol TUCallServicesProxyCallActions <NSObject>
+- (oneway void)activateInCallUIWithActivityContinuationIdentifier:(NSUUID *)arg1;
 - (oneway void)answerCallWithRequest:(TUAnswerRequest *)arg1;
 - (oneway void)disconnectAllCalls;
 - (oneway void)disconnectCallWithUniqueProxyIdentifier:(NSString *)arg1;
@@ -25,10 +26,12 @@
 - (oneway void)sendHardPauseDigitsForCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)sendMMIOrUSSDCodeWithRequest:(TUDialRequest *)arg1;
 - (oneway void)setDownlinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
+- (oneway void)setIsSendingVideo:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setRemoteVideoPresentationSizeForCallWithUniqueProxyIdentifier:(NSString *)arg1 size:(struct CGSize)arg2;
 - (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(NSString *)arg1 presentationState:(int)arg2;
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
+- (oneway void)shouldAllowRingingCallStatusIndicator:(BOOL)arg1;
 - (oneway void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (oneway void)swapCalls;
 - (oneway void)ungroupCallWithUniqueProxyIdentifier:(NSString *)arg1;

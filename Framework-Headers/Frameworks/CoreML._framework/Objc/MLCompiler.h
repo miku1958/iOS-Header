@@ -14,6 +14,11 @@
 + (id)compileSpecificationAtURL:(id)arg1 toURL:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)compiledVersionForSpecificationAtURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)contentsOfDirectoryAtURL:(id)arg1 error:(id *)arg2;
++ (BOOL)encryptCompiledModelAtURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
++ (BOOL)encryptFileAtURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
++ (BOOL)fingerprintSpecificationAtURL:(id)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
++ (BOOL)storeEncryptionInfoInCompiledArchive:(struct _MLModelOutputArchiver *)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)versionInfo;
 
 @end

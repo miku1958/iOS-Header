@@ -10,6 +10,7 @@
 
 @interface ICMutableMusicSubscriptionStatus : ICMusicSubscriptionStatus
 {
+    long long _statusCode;
 }
 
 @property (nonatomic, getter=isAdministrator) BOOL administrator; // @dynamic administrator;
@@ -31,7 +32,7 @@
 @property (nonatomic) long long reasonType; // @dynamic reasonType;
 @property (copy, nonatomic) NSString *sessionIdentifier; // @dynamic sessionIdentifier;
 @property (nonatomic) long long sourceType; // @dynamic sourceType;
-@property (nonatomic) long long statusCode; // @dynamic statusCode;
+@property (nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property (nonatomic) long long statusType; // @dynamic statusType;
 @property (copy, nonatomic) NSArray *termsStatusList; // @dynamic termsStatusList;
 

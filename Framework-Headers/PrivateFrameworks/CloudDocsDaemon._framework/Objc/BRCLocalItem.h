@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCJobsMatching-Protocol.h>
 #import <CloudDocsDaemon/BRCSyncThrottleItemProtocol-Protocol.h>
 
-@class BRCAccountSession, BRCAliasItem, BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCFinderBookmarkItem, BRCItemID, BRCLocalStatInfo, BRCPQLConnection, BRCServerZone, BRCShareAcceptationFault, BRCSymlinkItem, BRCUserRowID, BRCZoneRowID, BRFieldCKInfo, BRFileObjectID, NSError, NSMutableSet, NSNumber, NSString;
+@class BRCAccountSession, BRCAliasItem, BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCFinderBookmarkItem, BRCItemGlobalID, BRCItemID, BRCLocalStatInfo, BRCPQLConnection, BRCServerZone, BRCShareAcceptationFault, BRCSymlinkItem, BRCUserRowID, BRCZoneRowID, BRFieldCKInfo, BRFileObjectID, NSError, NSMutableSet, NSNumber, NSString;
 @protocol BRCFSRooted, BRCSharedToMeTopLevel, BRCTopLevelShareable;
 
 @interface BRCLocalItem : NSObject <BRCJobsMatching, BRCSyncThrottleItemProtocol, BRCItem>
@@ -64,11 +64,13 @@
 @property (readonly, nonatomic) NSString *digestDescription;
 @property (readonly, nonatomic) NSString *extension;
 @property (readonly, nonatomic) NSNumber *fileID;
+@property (readonly, nonatomic) BOOL forceNeedsSyncUpWithoutDiffs;
 @property (readonly, nonatomic) BOOL fromReadOnlyDB;
 @property (readonly, nonatomic) BOOL hasShareIDAndIsOwnedByMe;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAlmostDead;
 @property (readonly, nonatomic) BOOL isBRAlias;
+@property (readonly, nonatomic) BOOL isChildSharedItem;
 @property (readonly, nonatomic) BOOL isDead;
 @property (readonly, nonatomic) BOOL isDeadOrMissingInServerTruth;
 @property (readonly, nonatomic) BOOL isDirectory;
@@ -95,12 +97,15 @@
 @property (readonly, nonatomic) BOOL isReserved;
 @property (readonly, nonatomic) BOOL isShareAcceptationFault;
 @property (readonly, nonatomic) BOOL isShareableItem;
+@property (readonly, nonatomic) BOOL isShared;
 @property (readonly, nonatomic) BOOL isSharedByMe;
 @property (readonly, nonatomic) BOOL isSharedToMe;
 @property (readonly, nonatomic) BOOL isSharedToMeChildItem;
 @property (readonly, nonatomic) BOOL isSharedToMeTopLevelItem;
 @property (readonly, nonatomic) BOOL isSymLink;
+@property (readonly, nonatomic) BOOL isTopLevelSharedItem;
 @property (readonly, nonatomic) BOOL isZoneRoot;
+@property (readonly, nonatomic) BRCItemGlobalID *itemGlobalID;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) unsigned char itemScope;
 @property (readonly, nonatomic) unsigned long long localDiffs; // @synthesize localDiffs=_localDiffs;
@@ -127,7 +132,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSError *syncUpError;
 @property (readonly, nonatomic) unsigned int syncUpState; // @synthesize syncUpState=_syncUpState;
-@property (readonly, nonatomic) unsigned int uploadStatus;
+@property (readonly, nonatomic) unsigned short uploadStatus;
 
 + (id)_bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2 salted:(BOOL)arg3;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
@@ -147,6 +152,7 @@
 - (BOOL)_computedUserVisibleStatusAtPath:(id)arg1;
 - (BOOL)_contentXattrsHaveChangedAtRelativeAPath:(id)arg1;
 - (BOOL)_deleteFromDB:(id)arg1 keepAliases:(BOOL)arg2;
+- (BOOL)_hasFieldChangesNotDiffed;
 - (id)_initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (id)_initWithLocalItem:(id)arg1;
 - (id)_initWithRelativePath:(id)arg1 parentGlobalID:(id)arg2;
@@ -194,7 +200,7 @@
 - (id)initFromPQLResultSet:(id)arg1 error:(id *)arg2;
 - (id)initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)itemGlobalID;
+- (void)insertTombstoneAliasRecordInZone:(id)arg1;
 - (id)itemParentGlobalID;
 - (id)itemResolutionString;
 - (id)jobsDescription;
@@ -220,6 +226,7 @@
 - (void)markNeedsDeleteWhenAlreadyDeadInServerTruth;
 - (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
 - (void)markNeedsUploadOrSyncingUp;
+- (void)markRejectedItemRemotelyRevived;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
 - (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4 origLogicalNameBeforeBounce:(id)arg5 forContentApplyOnly:(BOOL)arg6;
 - (void)markReserved;

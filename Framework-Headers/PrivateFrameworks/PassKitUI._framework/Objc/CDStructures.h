@@ -44,6 +44,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct PKBarcodeQuietZone {
     double _field1;
     double _field2;
@@ -101,6 +106,17 @@ typedef struct {
 } CDStruct_826e8cf1;
 
 typedef struct {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+} CDStruct_8bc48212;
+
+typedef struct {
     double target;
     double position;
     double velocity;
@@ -148,6 +164,11 @@ typedef struct {
 } CDStruct_e6a35582;
 
 typedef struct {
+    long long _field1;
+    long long _field2;
+} CDStruct_912cb5d2;
+
+typedef struct {
     double _field1;
     double _field2;
     struct CGSize _field3;
@@ -172,6 +193,11 @@ typedef struct {
     struct CGSize _field2;
     double _field3;
 } CDStruct_bc00259c;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_2b0c6e0b;
 
 typedef struct {
     struct CGRect _field1;

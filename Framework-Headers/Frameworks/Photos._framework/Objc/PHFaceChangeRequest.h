@@ -18,6 +18,7 @@
     BOOL _shouldClearFaceCropGenerationState;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (copy, nonatomic) id adjustmentVersion;
 @property (nonatomic) unsigned short ageType;
 @property (nonatomic) unsigned short baldType;
@@ -27,7 +28,6 @@
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
 @property (nonatomic) long long clusterSequenceNumber;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned short eyeMakeupType;
@@ -43,6 +43,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden;
 @property (nonatomic, getter=isInTrash) BOOL inTrash;
+@property (nonatomic) BOOL isInVIPModel;
 @property (readonly) BOOL isNewRequest;
 @property (nonatomic, getter=isLeftEyeClosed) BOOL leftEyeClosed;
 @property (nonatomic) double leftEyeX;
@@ -63,7 +64,9 @@
 @property (nonatomic) double rightEyeX;
 @property (nonatomic) double rightEyeY;
 @property (nonatomic) double roll;
+@property (nonatomic) unsigned short sexType;
 @property (nonatomic) BOOL shouldClearFaceCropGenerationState; // @synthesize shouldClearFaceCropGenerationState=_shouldClearFaceCropGenerationState;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (nonatomic) double size;
 @property (nonatomic) unsigned short smileType;
 @property (nonatomic) long long sourceHeight;
@@ -71,7 +74,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double yaw;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForFace:(id)arg1;
 + (id)creationRequestForFace;
 + (void)deleteFaces:(id)arg1;
@@ -82,8 +84,6 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 
 @end
 

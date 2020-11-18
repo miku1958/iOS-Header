@@ -55,6 +55,7 @@
 }
 
 @property unsigned long long browserViewContext; // @synthesize browserViewContext=_browserViewContext;
+@property (readonly) BOOL canLongPressInitiateSidebarReordering;
 @property BOOL collectionSupportsDragAndDrop; // @synthesize collectionSupportsDragAndDrop=_collectionSupportsDragAndDrop;
 @property (strong) DOCConcreteLocation *defaultLocation; // @synthesize defaultLocation=_defaultLocation;
 @property (copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;

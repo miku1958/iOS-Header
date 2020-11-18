@@ -24,9 +24,15 @@
     BOOL _hasDataValue;
     unsigned int _dataValue;
     struct CGPoint _imageCenter;
+    long long _sizeGroup;
+    float _contentScale;
+    struct IconVariant _iconVariant;
+    unsigned int _countryCode;
     NSArray *_fallbackImageKeys;
 }
 
+@property (readonly, nonatomic) float contentScale; // @synthesize contentScale=_contentScale;
+@property (readonly, nonatomic) unsigned int countryCode; // @synthesize countryCode=_countryCode;
 @property (nonatomic) unsigned char dataType; // @synthesize dataType=_dataType;
 @property (nonatomic) unsigned int dataValue; // @synthesize dataValue=_dataValue;
 @property (strong, nonatomic) NSArray *fallbackImageKeys; // @synthesize fallbackImageKeys=_fallbackImageKeys;
@@ -37,11 +43,14 @@
 @property (readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property (readonly, nonatomic) unsigned int keyType; // @synthesize keyType=_keyType;
 @property (strong, nonatomic) NSString *relatedText; // @synthesize relatedText=_relatedText;
+@property (readonly, nonatomic) unsigned int secondaryVariant;
 @property (readonly, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (readonly, nonatomic) NSString *shieldTextLocale; // @synthesize shieldTextLocale=_shieldTextLocale;
 @property (readonly, nonatomic) unsigned int shieldType; // @synthesize shieldType=_shieldType;
+@property (nonatomic) long long sizeGroup; // @synthesize sizeGroup=_sizeGroup;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 @property (readonly, nonatomic) CDStruct_83984b6f transitLineColor;
+@property (readonly, nonatomic) unsigned int variant;
 
 - (id).cxx_construct;
 - (id)_initWithKeyType:(unsigned int)arg1;

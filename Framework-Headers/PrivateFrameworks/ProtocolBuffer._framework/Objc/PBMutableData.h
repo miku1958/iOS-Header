@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     char *end;
 }
 
-- (void)_pb_growCapacityBy:(unsigned long long)arg1;
 - (const void *)bytes;
 - (void)dealloc;
 - (id)initWithCapacity:(unsigned long long)arg1;

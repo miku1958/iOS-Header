@@ -6,26 +6,27 @@
 
 #import <TemplateKit/TLKStackView.h>
 
-@class TLKImageView, TLKLabel;
+@class TLKImageView, TLKLabel, TLKRichTextField;
 
 @interface TLKTitleContainerView : TLKStackView
 {
-    TLKLabel *_titleLabel;
+    TLKRichTextField *_titleField;
     TLKLabel *_secondaryLabel;
     TLKImageView *_secondaryImageView;
 }
 
 @property (strong, nonatomic) TLKImageView *secondaryImageView; // @synthesize secondaryImageView=_secondaryImageView;
 @property (strong, nonatomic) TLKLabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
-@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) TLKRichTextField *titleField; // @synthesize titleField=_titleField;
 
-+ (id)titleFont;
-+ (id)titleFontforTitle:(id)arg1;
++ (BOOL)hasNonBoldFormattingInRichText:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)secondaryTitleLabelString;
+- (id)titleFont;
+- (id)titleLabel;
 - (id)titleLabelString;
-- (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(BOOL)arg4;
+- (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(BOOL)arg4 useCompactMode:(BOOL)arg5 truncateMiddle:(BOOL)arg6;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

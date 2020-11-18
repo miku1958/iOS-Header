@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     NSDate *_activityEarliestDismissalDate;
     UIProgressHUD *_hud;
+    BOOL _scopeUpgraded;
     HRProfile *_profile;
     id<WDClinicalAccountDetailsViewControllerDelegate> _delegate;
     NSMutableArray *_sections;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property (strong, nonatomic) NSString *patientIdentifier; // @synthesize patientIdentifier=_patientIdentifier;
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property (nonatomic) BOOL scopeUpgraded; // @synthesize scopeUpgraded=_scopeUpgraded;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) NSString *status; // @synthesize status=_status;
 @property (readonly) Class superclass;
@@ -60,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;

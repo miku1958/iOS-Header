@@ -28,8 +28,8 @@
 @property (strong, nonatomic) NSDate *taiDate; // @synthesize taiDate=_taiDate;
 @property (strong, nonatomic) NSDate *utcDate; // @synthesize utcDate=_utcDate;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 

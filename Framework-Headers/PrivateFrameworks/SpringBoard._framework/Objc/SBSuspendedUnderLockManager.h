@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
+@class FBWorkspaceEventQueue;
 @protocol SBSuspendedUnderLockManagerDelegate;
 
 @interface SBSuspendedUnderLockManager : NSObject
 {
     id<SBSuspendedUnderLockManagerDelegate> _delegate;
+    FBWorkspaceEventQueue *_eventQueue;
     BOOL _suspendedUnderLock;
+    BOOL _eventQueue_suspendedUnderLock;
 }
 
 @property (weak, nonatomic) id<SBSuspendedUnderLockManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isSuspendedUnderLock) BOOL suspendedUnderLock; // @synthesize suspendedUnderLock=_suspendedUnderLock;
 
 - (void).cxx_destruct;
-- (BOOL)_sceneShouldBeBackgroundUnderLockWithSceneSettings:(id)arg1;
-- (id)initWithDelegate:(id)arg1;
+- (BOOL)_shouldBeBackgroundUnderLockForScene:(id)arg1 withSettings:(id)arg2;
+- (id)initWithDelegate:(id)arg1 eventQueue:(id)arg2;
 - (void)interceptUpdateForScene:(id)arg1 withNewSettings:(id)arg2;
+- (void)setSuspendedUnderLock:(BOOL)arg1 alongsideWillChangeBlock:(CDUnknownBlockType)arg2 alongsideDidChangeBlock:(CDUnknownBlockType)arg3;
 
 @end
 

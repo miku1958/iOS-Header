@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     double _productBannerHeight;
     BOOL _isPartialScrollingTemplate;
     NSIndexPath *_autoHighlightIndexPath;
+    NSIndexPath *_lastFocusedIndexPath;
     BOOL _fadedIn;
     double _impressionThreshold;
     BOOL _preloadOnLayout;

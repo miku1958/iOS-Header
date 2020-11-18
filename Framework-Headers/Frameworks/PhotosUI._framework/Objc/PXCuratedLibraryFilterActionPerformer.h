@@ -6,18 +6,31 @@
 
 #import <PhotosUICore/PXCuratedLibraryActionPerformer.h>
 
-@class PXGLayout;
+#import <PhotosUICore/PXContentFilterControllerDelegate-Protocol.h>
+#import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@interface PXCuratedLibraryFilterActionPerformer : PXCuratedLibraryActionPerformer
+@class NSString, PXUIContentFilterController;
+
+@interface PXCuratedLibraryFilterActionPerformer : PXCuratedLibraryActionPerformer <PXContentFilterControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
-    PXGLayout *_layout;
+    PXUIContentFilterController *_contentFilterController;
 }
 
-@property (weak, nonatomic) PXGLayout *layout; // @synthesize layout=_layout;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)activitySystemImageName;
+- (id)activityType;
+- (BOOL)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
+- (void)contentFilterController:(id)arg1 filterStateChanged:(id)arg2;
+- (void)contentFilterControllerDidComplete:(id)arg1;
+- (id)initWithActionType:(id)arg1 viewModel:(id)arg2;
 - (void)performUserInteractionTask;
 - (BOOL)performerResetsAfterCompletion;
+- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 
 @end
 

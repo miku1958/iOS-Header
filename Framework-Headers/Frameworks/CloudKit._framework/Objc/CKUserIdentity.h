@@ -18,11 +18,11 @@
     CKUserIdentityLookupInfo *_lookupInfo;
     NSPersonNameComponents *_nameComponents;
     CKRecordID *_userRecordID;
-    NSArray *_contactIdentifiers;
     NSData *_publicSharingKey;
     unsigned long long _publicKeyVersion;
     NSData *_outOfNetworkPrivateKey;
     NSData *_encryptedPersonalInfo;
+    NSArray *_contactIdentifiers;
     NSString *_firstName;
     NSString *_lastName;
 }

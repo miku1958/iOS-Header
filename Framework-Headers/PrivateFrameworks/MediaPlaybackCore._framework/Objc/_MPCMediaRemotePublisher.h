@@ -19,8 +19,11 @@
     BOOL _activeAccountAllowsSubscriptionPlayback;
     NSString *_activeAccountStoreFrontIdentifier;
     NSUserDefaults *_ipodDefaults;
+    BOOL _hasBeganFastForward;
+    BOOL _hasBeganRewind;
     BOOL _initializedSupportedCommands;
     BOOL _engineRestoringState;
+    BOOL _mediaServerAvailable;
     MPCPlaybackEngine *_playbackEngine;
     MPNowPlayingInfoCenter *_infoCenter;
     MPRemoteCommandCenter *_commandCenter;
@@ -36,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MPNowPlayingInfoCenter *infoCenter; // @synthesize infoCenter=_infoCenter;
 @property (nonatomic, getter=hasInitializedSupportedCommands) BOOL initializedSupportedCommands; // @synthesize initializedSupportedCommands=_initializedSupportedCommands;
+@property (nonatomic, getter=isMediaServerAvailable) BOOL mediaServerAvailable; // @synthesize mediaServerAvailable=_mediaServerAvailable;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (readonly, nonatomic) MPCPlayerPath *playerPath;
 @property (readonly) Class superclass;
@@ -53,15 +57,17 @@
 - (id)_supportedSessionTypes;
 - (void)_updateLaunchCommands;
 - (void)_updateSupportedCommands;
-- (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
 - (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
+- (void)engine:(id)arg1 didChangeActionAtQueueEnd:(long long)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeShuffleType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engineDidEndStateRestoration:(id)arg1;
+- (void)engineDidLoseMediaServices:(id)arg1;
+- (void)engineDidResetMediaServices:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
 - (void)getShouldRestoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
@@ -78,7 +84,6 @@
 - (void)nowPlayingInfoCenter:(id)arg1 willBeginSessionMigrationWithIdentifier:(id)arg2;
 - (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 - (void)publishIfNeeded;
-- (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 - (void)reportUserBackgroundedApplication;
 - (BOOL)respondsToSelector:(SEL)arg1;
 

@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (Notification)
+- (id)mtStringByAppendingNotificationDate:(id)arg1;
+- (id)mtStringByRemovingNotificationDate;
 - (id)mtStringByRemovingNotificationPrefixes;
 @end
 

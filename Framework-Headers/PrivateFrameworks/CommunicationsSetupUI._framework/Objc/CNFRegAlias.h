@@ -6,8 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class IMAccount, NSString;
+@class IMAccount, NSDate, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegAlias : NSObject
 {
     NSString *_alias;
@@ -15,15 +16,20 @@
     IMAccount *_account;
     long long _givenAliasType;
     BOOL _selectedDeviceAlias;
+    BOOL _isTemporary;
     NSString *_deviceAliasIdentifier;
+    NSDate *__expirationDate;
 }
 
+@property (copy, nonatomic) NSDate *_expirationDate; // @synthesize _expirationDate=__expirationDate;
 @property (strong, nonatomic) IMAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) NSString *alias; // @synthesize alias=_alias;
-@property (nonatomic) NSString *deviceAliasIdentifier; // @synthesize deviceAliasIdentifier=_deviceAliasIdentifier;
+@property (copy, nonatomic) NSString *deviceAliasIdentifier; // @synthesize deviceAliasIdentifier=_deviceAliasIdentifier;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, copy, nonatomic) NSDate *expirationDate;
 @property (nonatomic) long long givenAliasType; // @synthesize givenAliasType=_givenAliasType;
 @property (readonly, strong, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (nonatomic) BOOL isTemporary; // @synthesize isTemporary=_isTemporary;
 @property (nonatomic, getter=isSelectedDeviceAlias) BOOL selectedDeviceAlias; // @synthesize selectedDeviceAlias=_selectedDeviceAlias;
 @property (readonly, nonatomic) long long type; // @dynamic type;
 
@@ -36,6 +42,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLocalPhoneNumberAlias;
 - (BOOL)isPhoneNumberAliasOnPhoneNumberAccount;
+- (BOOL)isTemporaryPhoneNumberAlias;
 - (long long)localizedCaseInsensitiveCompare:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (BOOL)validate;

@@ -33,6 +33,7 @@
 - (void)service:(IDSService *)arg1 devicesChanged:(NSArray *)arg2;
 - (void)service:(IDSService *)arg1 didSendOpportunisticDataWithIdentifier:(NSString *)arg2 toIDs:(NSArray *)arg3;
 - (void)service:(IDSService *)arg1 didSwitchActivePairedDevice:(IDSDevice *)arg2 acknowledgementBlock:(void (^)(void))arg3;
+- (void)service:(IDSService *)arg1 linkedDevicesChanged:(NSArray *)arg2;
 - (void)service:(IDSService *)arg1 nearbyDevicesChanged:(NSArray *)arg2;
 - (void)serviceAllowedTrafficClassifiersDidReset:(IDSService *)arg1;
 - (void)serviceSpaceDidBecomeAvailable:(IDSService *)arg1;

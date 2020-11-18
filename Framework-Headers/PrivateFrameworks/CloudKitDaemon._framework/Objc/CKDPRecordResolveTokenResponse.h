@@ -8,15 +8,13 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPRecord, CKDPShareMetadata, CKDPZone, NSMutableArray, NSString;
+@class CKDPRecord, CKDPShareMetadata, CKDPZone, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPRecordResolveTokenResponse : PBCodable <NSCopying>
 {
     NSString *_container;
     int _containerEnvironment;
-    CKDPProtectionInfo *_protectionInfo;
-    CKDPProtectionInfo *_recordProtectionInfo;
     CKDPZone *_recordZone;
     NSMutableArray *_records;
     CKDPShareMetadata *_shareMetadata;
@@ -30,13 +28,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int containerEnvironment; // @synthesize containerEnvironment=_containerEnvironment;
 @property (readonly, nonatomic) BOOL hasContainer;
 @property (nonatomic) BOOL hasContainerEnvironment;
-@property (readonly, nonatomic) BOOL hasProtectionInfo;
-@property (readonly, nonatomic) BOOL hasRecordProtectionInfo;
 @property (readonly, nonatomic) BOOL hasRecordZone;
 @property (readonly, nonatomic) BOOL hasShareMetadata;
 @property (readonly, nonatomic) BOOL hasShareRecord;
-@property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
-@property (strong, nonatomic) CKDPProtectionInfo *recordProtectionInfo; // @synthesize recordProtectionInfo=_recordProtectionInfo;
 @property (strong, nonatomic) CKDPZone *recordZone; // @synthesize recordZone=_recordZone;
 @property (strong, nonatomic) NSMutableArray *records; // @synthesize records=_records;
 @property (strong, nonatomic) CKDPShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;

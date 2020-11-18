@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)imageForImageDescriptor:(id)arg1;
+- (id)prepareImageForDescriptor:(id)arg1;
 - (void)prepareImagesForImageDescriptors:(id)arg1;
 
 @end

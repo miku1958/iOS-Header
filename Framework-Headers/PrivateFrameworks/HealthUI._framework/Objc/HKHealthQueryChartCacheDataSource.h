@@ -23,11 +23,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_buildDescriptionFromStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3;
 - (unsigned long long)calendarUnitForTimeScope:(long long)arg1 displayType:(id)arg2;
 - (id)initWithDisplayType:(id)arg1 healthStore:(id)arg2;
 - (CDUnknownBlockType)mappingFunctionForContext:(id)arg1;
-- (id)operationForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)operationForIdentifier:(id)arg1 priorityDelegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 - (id)statisticsIntervalForTimeScope:(long long)arg1 displayType:(id)arg2;
 
 @end

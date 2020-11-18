@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoverSheet/MTVisualStylingProviding-Protocol.h>
+#import <CoverSheet/NSObject-Protocol.h>
 
 @class MTVisualStylingProvider, NSArray;
 
-@protocol MTVisualStylingRequiring <MTVisualStylingProviding>
+@protocol MTVisualStylingRequiring <NSObject>
 
 @property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 

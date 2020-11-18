@@ -6,25 +6,17 @@
 
 #import <UIKit/UIImageView.h>
 
-#import <PhotosUICore/PXAccessibilityView-Protocol.h>
 #import <PhotosUICore/PXGReusableView-Protocol.h>
 
-@class NSString, PXGNamedImageViewConfiguration;
+@class PXGNamedImageViewConfiguration;
 
-@interface PXGNamedImageView : UIImageView <PXGReusableView, PXAccessibilityView>
+@interface PXGNamedImageView : UIImageView <PXGReusableView>
 {
     PXGNamedImageViewConfiguration *_userData;
     struct CGRect _clippingRect;
 }
 
-@property (readonly, copy, nonatomic) NSString *accessibilityLabel;
 @property (nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isAccessible;
-@property (readonly, nonatomic) BOOL isContainedInAsset;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) PXGNamedImageViewConfiguration *userData; // @synthesize userData=_userData;
 
 - (void).cxx_destruct;

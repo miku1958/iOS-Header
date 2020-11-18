@@ -14,6 +14,7 @@
 {
     BOOL _showTriggerSummary;
     BOOL _showTriggerEnableSwitch;
+    BOOL _showTriggerDeleteButton;
     BOOL _showActionSetsInstructions;
     BOOL _showConditionTriggers;
     BOOL _allowDurationEditing;
@@ -24,6 +25,7 @@
     NSString *_actionEditorInstructionsDescription;
     NSString *_triggerContextAwareTitle;
     NSSet *_unsupportedTriggers;
+    NSString *_doneButtonTitle;
     NSString *_deleteConfirmationAlertTitle;
     NSString *_deleteConfirmationAlertMessage;
 }
@@ -35,11 +37,13 @@
 @property (copy, nonatomic) NSString *deleteConfirmationAlertTitle; // @synthesize deleteConfirmationAlertTitle=_deleteConfirmationAlertTitle;
 @property (copy, nonatomic) NSString *deleteInstructionDescription; // @synthesize deleteInstructionDescription=_deleteInstructionDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *doneButtonTitle; // @synthesize doneButtonTitle=_doneButtonTitle;
 @property (nonatomic) BOOL filtersEmptyActionSets; // @synthesize filtersEmptyActionSets=_filtersEmptyActionSets;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *serviceActionsInstructionDescription; // @synthesize serviceActionsInstructionDescription=_serviceActionsInstructionDescription;
 @property (nonatomic) BOOL showActionSetsInstructions; // @synthesize showActionSetsInstructions=_showActionSetsInstructions;
 @property (nonatomic) BOOL showConditionTriggers; // @synthesize showConditionTriggers=_showConditionTriggers;
+@property (nonatomic) BOOL showTriggerDeleteButton; // @synthesize showTriggerDeleteButton=_showTriggerDeleteButton;
 @property (nonatomic) BOOL showTriggerEnableSwitch; // @synthesize showTriggerEnableSwitch=_showTriggerEnableSwitch;
 @property (nonatomic) BOOL showTriggerSummary; // @synthesize showTriggerSummary=_showTriggerSummary;
 @property (readonly) Class superclass;

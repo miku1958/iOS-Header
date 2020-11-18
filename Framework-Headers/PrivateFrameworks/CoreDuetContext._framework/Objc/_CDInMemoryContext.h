@@ -56,10 +56,13 @@
 - (void)receiveSystemTimeCallback:(id)arg1;
 - (void)registerCallback:(id)arg1;
 - (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2 removedObjects:(id *)arg3;
 - (void)setContextValue:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)setObject:(id)arg1 returningMetadataForContextualKeyPath:(id)arg2;
+- (id)unsafe_addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 valueDidChange:(BOOL *)arg4;
 - (void)unsafe_deregisterCallback:(id)arg1;
 - (void)unsafe_deregisterForSystemTimeBasedCallbacksForRegistration:(id)arg1;
 - (id)unsafe_evaluatedContextWithRegistration:(id)arg1 date:(id)arg2;

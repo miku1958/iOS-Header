@@ -6,17 +6,19 @@
 
 #import <PassKitCore/PKPaymentWebServiceResponse.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSString, NSURL, PKContactInformation;
 
 @interface PKPaymentProvisioningResponse : PKPaymentWebServiceResponse
 {
     BOOL _willProvisionWithAuthenticationDisabled;
     NSURL *_passURL;
     NSArray *_moreInfoURLs;
+    PKContactInformation *_idmsContactInformation;
     NSString *_ownershipToken;
     NSString *_ownershipTokenIdentifier;
 }
 
+@property (readonly, nonatomic) PKContactInformation *idmsContactInformation; // @synthesize idmsContactInformation=_idmsContactInformation;
 @property (readonly, copy, nonatomic) NSArray *moreInfoURLs; // @synthesize moreInfoURLs=_moreInfoURLs;
 @property (readonly, copy, nonatomic) NSString *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
 @property (readonly, copy, nonatomic) NSString *ownershipTokenIdentifier; // @synthesize ownershipTokenIdentifier=_ownershipTokenIdentifier;

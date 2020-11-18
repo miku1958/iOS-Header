@@ -47,7 +47,9 @@
 - (void)confirmIntentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getDefaultValueForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getOptionsForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getOptionsForParameterNamed:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleIntentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)prewarmAppWithIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveIntentSlotKeyPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveIntentSlotKeyPaths:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startSendingUpdatesToObserver:(id)arg1;

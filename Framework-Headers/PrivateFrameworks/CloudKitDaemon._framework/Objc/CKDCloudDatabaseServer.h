@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSXPCListener;
+@class NSMutableArray, NSOperationQueue, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CKDCloudDatabaseServer : NSObject
@@ -14,7 +14,6 @@
     int _tccToken;
     NSXPCListener *_xpcListener;
     NSMutableArray *_connectedClients;
-    NSMutableDictionary *_recentClientsByProcessName;
     NSObject<OS_dispatch_source> *_sighandlerSource;
     NSOperationQueue *_clientTeardownQueue;
     unsigned long long _stateHandle;
@@ -26,7 +25,6 @@
 
 @property (strong, nonatomic) NSOperationQueue *clientTeardownQueue; // @synthesize clientTeardownQueue=_clientTeardownQueue;
 @property (strong, nonatomic) NSMutableArray *connectedClients; // @synthesize connectedClients=_connectedClients;
-@property (strong, nonatomic) NSMutableDictionary *recentClientsByProcessName; // @synthesize recentClientsByProcessName=_recentClientsByProcessName;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *sighandlerSource; // @synthesize sighandlerSource=_sighandlerSource;
 @property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *statusReportCallbackQueue; // @synthesize statusReportCallbackQueue=_statusReportCallbackQueue;
@@ -39,11 +37,11 @@
 + (id)sharedServer;
 - (void).cxx_destruct;
 - (id)CKStatusReportArray;
-- (void)_cleanRecentClients;
 - (void)_dumpStatusReportArrayToOsTrace:(id)arg1;
 - (void)_dumpStatusReportToFileHandle:(id)arg1;
 - (void)dealloc;
 - (void)dumpStatusReportToFileHandle:(id)arg1;
+- (void)enumerateConnectedClients:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)kickOffPendingLongLivedOperations;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

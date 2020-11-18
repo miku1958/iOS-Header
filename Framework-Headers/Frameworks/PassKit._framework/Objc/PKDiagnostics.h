@@ -11,6 +11,7 @@
 }
 
 + (id)_allPasses;
++ (void)_createDiagnosticJsonWithDictionary:(id)arg1 hasLibrary:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)_metadataForCardAtURL:(id)arg1;
 + (id)_secureElementData;
 + (void)generateDiagnosticsPackageWithPassLibrary:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

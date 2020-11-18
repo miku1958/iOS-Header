@@ -8,11 +8,11 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI222NotificationRegisterer : NSObject
 {
     MISSING_TYPE *authorizationRequester;
     MISSING_TYPE *categoriesRegisterer;
+    MISSING_TYPE *featureAvailability;
 }
 
 - (void).cxx_destruct;

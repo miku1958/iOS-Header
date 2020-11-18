@@ -32,6 +32,10 @@
     NSMutableArray *_contactChangeRequests;
     NSMutableArray *_addedAccounts;
     NSMutableArray *_removedAccounts;
+    NSMutableArray *_linkRequests;
+    NSMutableArray *_unlinkRequests;
+    NSMutableArray *_preferredForNameRequests;
+    NSMutableArray *_preferredForImageRequests;
     NSMutableDictionary *_parentRecordsByIdentifier;
     BOOL _unsafeApplyChangesOnly;
     BOOL _ignoresGuardianRestrictions;
@@ -77,6 +81,7 @@
 - (void).cxx_destruct;
 - (id)_dictionaryOfArraysFromDictionaryOfDictionaries:(id)arg1;
 - (void)_insertContact:(id)arg1 intoDictionary:(id)arg2 complementDictionary:(id)arg3;
+- (void)acceptChangeHistoryEventVisitor:(id)arg1;
 - (void)addAccount:(id)arg1;
 - (void)addContact:(id)arg1 toContainerWithIdentifier:(id)arg2;
 - (void)addContainer:(id)arg1 toAccountWithIdentifier:(id)arg2;
@@ -113,6 +118,21 @@
 - (void)updateContact:(id)arg1;
 - (void)updateContainer:(id)arg1;
 - (void)updateGroup:(id)arg1;
+- (void)withDifferentMeCard:(CDUnknownBlockType)arg1;
+- (void)withEachAddedContact:(CDUnknownBlockType)arg1;
+- (void)withEachAddedGroup:(CDUnknownBlockType)arg1;
+- (void)withEachContactPreferredForImage:(CDUnknownBlockType)arg1;
+- (void)withEachContactPreferredForName:(CDUnknownBlockType)arg1;
+- (void)withEachDeletedContact:(CDUnknownBlockType)arg1;
+- (void)withEachDeletedGroup:(CDUnknownBlockType)arg1;
+- (void)withEachLinkedContact:(CDUnknownBlockType)arg1;
+- (void)withEachMemberAddedToGroup:(CDUnknownBlockType)arg1;
+- (void)withEachMemberRemovedFromGroup:(CDUnknownBlockType)arg1;
+- (void)withEachSubgroupAddedToGroup:(CDUnknownBlockType)arg1;
+- (void)withEachSubgroupRemovedFromGroup:(CDUnknownBlockType)arg1;
+- (void)withEachUnlinkedContact:(CDUnknownBlockType)arg1;
+- (void)withEachUpdatedContact:(CDUnknownBlockType)arg1;
+- (void)withEachUpdatedGroup:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -11,7 +11,7 @@
 }
 
 - (BOOL)canFlip;
-- (id)instructionalStorageForContainedStorage:(id)arg1 storageKind:(int)arg2;
+- (id)instructionalStorageForContainedStorage:(id)arg1 storageKind:(unsigned char)arg2;
 - (BOOL)supportsRotation;
 
 @end

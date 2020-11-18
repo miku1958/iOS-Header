@@ -22,11 +22,15 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _distanceDisplayThreshold;
+    BOOL _enableLookInsideActionForVenuePois;
     BOOL _isDefaultName;
     BOOL _isLookAroundActionAllowed;
     BOOL _isProminentResult;
     BOOL _shouldSuppressDirectionsAction;
     struct {
+        unsigned int has_distanceDisplayThreshold:1;
+        unsigned int has_enableLookInsideActionForVenuePois:1;
         unsigned int has_isDefaultName:1;
         unsigned int has_isLookAroundActionAllowed:1;
         unsigned int has_isProminentResult:1;
@@ -36,21 +40,17 @@ __attribute__((visibility("hidden")))
         unsigned int read_alternateSearchableNames:1;
         unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientizationFeatures:1;
-        unsigned int wrote_alternateSearchableNames:1;
-        unsigned int wrote_matchedDisplayNameLanguageCode:1;
-        unsigned int wrote_matchedDisplayName:1;
-        unsigned int wrote_isDefaultName:1;
-        unsigned int wrote_isLookAroundActionAllowed:1;
-        unsigned int wrote_isProminentResult:1;
-        unsigned int wrote_shouldSuppressDirectionsAction:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSMutableArray *alternateSearchableNames;
 @property (readonly, nonatomic) int *clientizationFeatures;
 @property (readonly, nonatomic) unsigned long long clientizationFeaturesCount;
+@property (nonatomic) unsigned int distanceDisplayThreshold;
+@property (nonatomic) BOOL enableLookInsideActionForVenuePois;
+@property (nonatomic) BOOL hasDistanceDisplayThreshold;
+@property (nonatomic) BOOL hasEnableLookInsideActionForVenuePois;
 @property (nonatomic) BOOL hasIsDefaultName;
 @property (nonatomic) BOOL hasIsLookAroundActionAllowed;
 @property (nonatomic) BOOL hasIsProminentResult;
@@ -69,12 +69,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsClientizationFeatures:(id)arg1;
-- (void)_addNoFlagsAlternateSearchableName:(id)arg1;
-- (void)_addNoFlagsClientizationFeature:(int)arg1;
-- (void)_readAlternateSearchableNames;
-- (void)_readClientizationFeatures;
-- (void)_readMatchedDisplayName;
-- (void)_readMatchedDisplayNameLanguageCode;
 - (void)addAlternateSearchableName:(id)arg1;
 - (void)addClientizationFeature:(int)arg1;
 - (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
@@ -92,7 +86,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

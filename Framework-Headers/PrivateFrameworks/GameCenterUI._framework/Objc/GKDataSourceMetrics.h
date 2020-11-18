@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSMutableDictionary *sectionToMetrics; // @synthesize sectionToMetrics=_sectionToMetrics;
 
 + (id)dataSourceMetricsWithMetrics:(id)arg1 dataSource:(id)arg2;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)accumulateSections:(id)arg1 layout:(id)arg2;
 - (id)applyDataSourceMetricsToSections:(id)arg1 withParent:(id)arg2 layout:(id)arg3;
 - (void)computeGlobalSectionRangesWithBaseIndex:(long long)arg1;

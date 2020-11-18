@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)_cancelPressed:(id)arg1;
 - (id)_lookUpSoftwareAndUpdateUI;
+- (void)_okPressed:(id)arg1;
 - (void)_punchoutPressed:(id)arg1;
 - (id)initWithPopupDelegate:(id)arg1 setupAccessoryDescription:(id)arg2;
 - (void)viewDidLoad;

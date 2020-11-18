@@ -74,6 +74,7 @@
 - (BOOL)isNaturalLanguageEvent;
 - (BOOL)isPartiallyDownloaded;
 - (id)loadOrigin:(id)arg1;
+- (id)loggingIdentifier;
 - (id)tags;
 - (id)templateShortName;
 - (void)validate;

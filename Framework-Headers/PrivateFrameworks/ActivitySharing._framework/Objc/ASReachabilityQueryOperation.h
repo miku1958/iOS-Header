@@ -40,8 +40,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_queryTimedOut;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)finish;
-- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
 - (id)init;
 - (BOOL)isAsynchronous;
 - (BOOL)isConcurrent;

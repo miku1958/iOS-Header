@@ -14,7 +14,7 @@
 + (BOOL)isAtFrequentLocationForMoment:(id)arg1 frequentLocations:(id)arg2;
 + (BOOL)isNearFrequentLocationForMoment:(id)arg1 frequentLocations:(id)arg2;
 + (BOOL)isTopFrequentLocationForMoment:(id)arg1 frequentLocations:(id)arg2;
-+ (unsigned short)locationTypeForLocation:(id)arg1 usingLocationsOfInterest:(id)arg2 routineIsAvailable:(BOOL)arg3;
++ (unsigned short)locationTypeForLocation:(id)arg1 usingLocationsOfInterest:(id)arg2 routineIsAvailable:(BOOL)arg3 horizontalAccuracy:(double)arg4;
 + (void)processLocationIfNecessaryInMoment:(id)arg1 usingManager:(id)arg2 frequentLocations:(id)arg3 frequentLocationsDidChange:(BOOL)arg4;
 + (unsigned short)processedLocationTypeForMoment:(id)arg1 locationsOfInterest:(id)arg2 frequentLocations:(id)arg3 routineIsAvailable:(BOOL)arg4;
 + (id)sortedOverlappingFrequentLocations:(id)arg1;

@@ -10,7 +10,7 @@
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
 @class NSString, PKHeroCardExplainationHeaderView, PKSubcredentialInvitationFlowControllerContext;
-@protocol PKSubcredentialInvitationFlowControllerProtocol, PKSubcredentialProvisioningFlowController;
+@protocol PKSubcredentialInvitationFlowControllerProtocol;
 
 @interface PKSubcredentialInvitationAcceptedViewController : PKExplanationViewController <PKSubcredentialInvitationFlowControllerOperation, PKViewControllerPreflightable>
 {
@@ -22,7 +22,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<PKSubcredentialProvisioningFlowController> flowController;
+@property (readonly, nonatomic) id<PKSubcredentialInvitationFlowControllerProtocol> flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long operation;
 @property (strong, nonatomic) PKSubcredentialInvitationFlowControllerContext *provisioningContext; // @synthesize provisioningContext=_provisioningContext;

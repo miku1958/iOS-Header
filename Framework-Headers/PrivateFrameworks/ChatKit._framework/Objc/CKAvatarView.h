@@ -14,6 +14,7 @@
     NSString *_preferredHandle;
 }
 
+@property (strong, nonatomic, setter=_ck_setContextToken:) NSString *_ck_contextToken;
 @property (weak, nonatomic) NSString *preferredHandle; // @synthesize preferredHandle=_preferredHandle;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 

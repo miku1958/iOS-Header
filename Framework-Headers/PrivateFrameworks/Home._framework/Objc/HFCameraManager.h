@@ -64,6 +64,7 @@
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
 - (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
 - (void)cameraStreamControlDidStartStream:(id)arg1;
+- (void)cameraUserSettingsDidUpdate:(id)arg1;
 - (void)dealloc;
 - (void)endContinuousStreamingWithRequester:(id)arg1;
 - (void)endPeriodicSnapshotsWithRequester:(id)arg1;

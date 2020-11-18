@@ -22,11 +22,12 @@
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (BOOL)copyAssociationsFromObject:(id)arg1 toObject:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)copyAssociationsFromObjectID:(id)arg1 toObjectID:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)countOfObjectsAssociatedWithObjectUUID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)databaseTable;
-+ (id)deleteStatementForAssociationWithDatabase:(id)arg1;
-+ (id)deleteStatementForObjectAssociationsWithDatabase:(id)arg1;
++ (id)deleteStatementForAssociationWithTransaction:(id)arg1;
++ (id)deleteStatementForObjectAssociationsWithTransaction:(id)arg1;
 + (id)indices;
-+ (BOOL)insertEntriesWithAssociation:(id)arg1 objects:(id)arg2 enforceSameSource:(BOOL)arg3 profile:(id)arg4 database:(id)arg5 error:(id *)arg6;
++ (BOOL)insertEntriesWithAssociation:(id)arg1 objects:(id)arg2 enforceSameSource:(BOOL)arg3 profile:(id)arg4 transaction:(id)arg5 error:(id *)arg6;
 + (BOOL)insertEntriesWithAssociationUUID:(id)arg1 objectUUIDsData:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)joinClausesForProperty:(id)arg1;
 + (id)journalEntryForAssociation:(id)arg1 objects:(id)arg2;

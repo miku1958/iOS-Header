@@ -52,7 +52,7 @@
 	// method
 	// method
  }
- protocol Combine.DebugHandler // 12 requirements
+ protocol Combine._Introspection // 12 requirements
  {
 	// method
 	// method
@@ -108,44 +108,46 @@
 	// Properties
 	var ourl_lock : os_unfair_lock_s
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ourl_count : ›w
+	var ourl_count : yf
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : ›w
+	var _os_unfair_lock_opaque : yf
  }
 
  class Combine.Multicast {
  class Combine.Inner {
- enum Combine.State {
-
-	// Properties
-	case ready : (A, A1)
-	case subscribed : Subscription
-	case terminal  
- }
-
  enum Combine.Subscriptions { }
 
  class Combine.AnyCancellable : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Cancellable {
 
 	// Properties
-	var _cancel : ()? // +0x10 (0x10)
+	var storage : Storage // +0x10 (0x29)
+	let lock : os_unfair_lock_s // +0x40 (0x8)
 
 	// Swift methods
-	0x4f00  class func AnyCancellable.__allocating_init(_:) // init 
-	0x4f50  class func AnyCancellable.__allocating_init<A>(_:) // init 
+	0x2760  class func AnyCancellable.__allocating_init(_:) // init 
+	0x2890  class func AnyCancellable.__allocating_init<A>(_:) // init 
  }
 
  enum Combine.SubscriptionStatus {
 
 	// Properties
 	case subscribed : Subscription
+	case pendingTerminal : Subscription
 	case awaitingSubscription  
 	case terminal  
+ }
+
+ enum Combine.Storage {
+
+	// Properties
+	case cancel : ()
+	case cancellable : Cancellable
+	case cancelled  
  }
 
  struct Combine._EmptySubscription: Cancellable,  Subscription {
@@ -163,14 +165,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
- enum Combine.State {
-
-	// Properties
-	case ready : SubscribeOn
-	case subscribed : SubscribeOn
-	case terminal  
- }
-
  class Combine.FilterProducer {
  enum Combine.State {
 
@@ -188,14 +182,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
- enum Combine.State {
-
-	// Properties
-	case ready : MeasureInterval
-	case subscribed : MeasureInterval
-	case terminal  
- }
-
  struct Combine.DropWhile {
 
 	// Properties
@@ -254,7 +240,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isIncluded : Publisher
  }
 
- class Combine.Inner {
  struct Combine.TryFilter {
 
 	// Properties
@@ -263,6 +248,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
+ struct Combine.Inner {
+
+	// Properties
+	let downstream : A1
+	let filter : Publisher
+	let combineIdentifier : CombineIdentifier
+ }
+
  struct Combine.Breakpoint {
 
 	// Properties
@@ -276,7 +269,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let downstream : A1
-	var breakpoint : Breakpoint
+	let receiveSubscription : Subscription
+	let receiveOutput : Publisher
+	let receiveCompletion : Completion
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -313,19 +308,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let box : AnySubscriberBase
 	let descriptionThunk : ()
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let customMirrorThunk : Ko
+	let customMirrorThunk : ı_
 	let playgroundDescriptionThunk : ()
 	let combineIdentifier : CombineIdentifier
  }
 
  class Combine._ReferencedBasedAnySubscriber {
- class Combine._DequeRef {
- struct Combine.Deque {
-
-	// Properties
-	var _ref : _DequeRef
- }
-
  struct Combine.RemoveDuplicates {
 
 	// Properties
@@ -365,6 +353,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
+ class Combine.PublishedSubject {
+ class Combine.Conduit {
  class Combine.PassthroughSubject {
  class Combine.Conduit {
  struct Combine.Contains {
@@ -410,29 +400,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let combiner : AbstractCombineLatest
  }
 
- struct Combine.SubscriberList {
+ struct Combine.Label {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var items :  empty-list  // +0x0
-	var tickets : [Int] // +0x8
-	var nextTicket : Int // +0x10
+	let upstream : A
+	let name : String
+	let category : Category
+	let dsoHandle : UnsafeRawPointer?
+ }
+
+ struct Combine.Category {
+
+	// Properties
+	let rawValue : String
+ }
+
+ struct Combine.Inner {
+
+	// Properties
+	let downstream : A1
+	let name : String
+	let category : Category
+	let dsoHandle : UnsafeRawPointer?
+	let combineIdentifier : CombineIdentifier
  }
 
  class Combine.Autoconnect {
- enum Combine.State {
-
-	// Properties
-	case connected : Cancellable
-	case disconnected  
- }
-
  struct Combine.Inner {
 
 	// Properties
 	var combineIdentifier : CombineIdentifier
 	var parent : Autoconnect
 	var downstream : A1
+ }
+
+ enum Combine.State {
+
+	// Properties
+	case connected : Cancellable
+	case disconnected  
  }
 
  struct Combine.SideEffectSubscription {
@@ -448,7 +454,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let prefix : String
 	let upstream : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let stream : g
+	let stream : —W
  }
 
  class Combine.Inner {
@@ -456,7 +462,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stream : „f
+	var stream : õW
  }
 
  class Combine.ObservableObjectPublisher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -467,12 +473,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : ObjectIdentifier?
 
 	// Swift methods
-	0x34e00  class func ObservableObjectPublisher.__allocating_init() // init 
+	0x33740  class func ObservableObjectPublisher.__allocating_init() // init 
  }
 
  class Combine.Conduit : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x34660  func ObservableObjectPublisher.Conduit.send() // method 
+	0x32fa0  func ObservableObjectPublisher.Conduit.send() // method 
  }
 
  class Combine.Inner {
@@ -558,15 +564,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct Combine.Published {
 
 	// Properties
-	var value : A
-	var publisher : Publisher
-	var objectWillChange : ObservableObjectPublisher
+	var storage : Storage
  }
 
  struct Combine.Publisher {
 
 	// Properties
-	let subject : CurrentValueSubject
+	let subject : PublishedSubject
+ }
+
+ enum Combine.Storage {
+
+	// Properties
+	case value : A
+	case publisher : Publisher
+ }
+
+ struct Combine.PublishedSubscriber {
+
+	// Properties
+	let combineIdentifier : CombineIdentifier
+	var subject : PublishedSubject
  }
 
  struct Combine.MakeConnectable: ConnectablePublisher {
@@ -616,14 +634,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
- enum Combine.State {
-
-	// Properties
-	case ready : ReceiveOn
-	case subscribed : ReceiveOn
-	case terminal  
- }
-
  enum Combine.Subscribers { }
 
  enum Combine.Completion {
@@ -652,7 +662,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let upstream : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath : Îa
+	let keyPath : ùS
  }
 
  struct Combine.MapKeyPath2 {
@@ -660,9 +670,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let upstream : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath0 : Îa
+	let keyPath0 : ùS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath1 : Õa
+	let keyPath1 : S
  }
 
  struct Combine.MapKeyPath3 {
@@ -670,11 +680,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let upstream : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath0 : Îa
+	let keyPath0 : ùS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath1 : Õa
+	let keyPath1 : S
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath2 : ≠a
+	let keyPath2 : _S
  }
 
  struct Combine.Inner {
@@ -682,11 +692,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let downstream : A1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath0 : Îa
+	let keyPath0 : ùS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath1 : Õa
+	let keyPath1 : S
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath2 : ≠a
+	let keyPath2 : _S
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -695,9 +705,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let downstream : A1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath0 : Îa
+	let keyPath0 : ùS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath1 : Õa
+	let keyPath1 : S
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -706,15 +716,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let downstream : A1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath : Îa
+	let keyPath : ùS
 	let combineIdentifier : CombineIdentifier
  }
 
  class Combine.DebugHook : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var lock : os_unfair_lock_s // +0x10 (0x8)
-	var handlers : Handler // +0x18 (0x8)
+	var lock : os_unfair_lock_s
+	var handlers : Handler
 
 	// Swift methods
  }
@@ -722,7 +732,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct Combine.Handler {
 
 	// Properties
-	var handler : DebugHandler // +0x0
+	var handler : _Introspection // +0x0
  }
 
  struct Combine.SubscriberTap: SubscriberTapMarker {
@@ -738,6 +748,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subscription : Subscription // +0x0
  }
 
+ class Combine.ConduitBase {
+ enum Combine.ConduitList {
+
+	// Properties
+	case single : ConduitBase
+	case many : ConduitBase
+	case empty  
+ }
+
  struct Combine.PrefixUntilOutput {
 
 	// Properties
@@ -747,12 +766,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class Combine.Inner {
  struct Combine.Termination {
-
-	// Properties
-	var inner : Inner
- }
-
- struct Combine.Prefix {
 
 	// Properties
 	var inner : Inner
@@ -784,7 +797,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let transform : Publisher
  }
 
- class Combine.Inner {
  struct Combine.TryCompactMap {
 
 	// Properties
@@ -793,6 +805,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
+ struct Combine.Inner {
+
+	// Properties
+	let downstream : A1
+	let filter : Publisher
+	let combineIdentifier : CombineIdentifier
+ }
+
  struct Combine.Merge {
 
 	// Properties
@@ -882,7 +902,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let result : \
+	let result : ON
  }
 
  class Combine.Inner {
@@ -959,7 +979,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let upstream : A
  }
 
- class Combine.Inner {
+ struct Combine.Inner {
+
+	// Properties
+	let downstream : A1
+	let combineIdentifier : CombineIdentifier
+ }
+
  class Combine.CurrentValueSubject {
  class Combine.Conduit {
  class Combine.Assign {
@@ -1072,7 +1098,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let upstream : A
 	let prefix : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let file : °S
+	let file : QF
 	let line : UInt
  }
 
@@ -1082,7 +1108,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let downstream : A1
 	let prefix : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let file : °S
+	let file : QF
 	let line : UInt
 	let combineIdentifier : CombineIdentifier
  }
@@ -1121,11 +1147,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
+ struct Combine.PrefixSubscriber {
+
+	// Properties
+	let inner : Inner
+ }
+
+ struct Combine.SuffixSubscriber {
+
+	// Properties
+	let inner : Inner
+ }
+
  struct Combine.CombineIdentifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : €S // +0x0
+	let rawValue : SF // +0x0
  }
 
  struct Combine.Debounce {
@@ -1138,6 +1176,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
+ enum Combine.CancellerState {
+
+	// Properties
+	case active : Cancellable
+	case pending  
+	case cancelled  
+ }
+
  struct Combine.Fail {
 
 	// Properties
@@ -1218,14 +1264,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
- enum Combine.State {
-
-	// Properties
-	case ready : Buffer
-	case subscribed : Buffer
-	case terminal  
- }
-
  struct Combine.Sequence {
 
 	// Properties
@@ -1365,14 +1403,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class Combine.Inner {
- enum Combine.State {
-
-	// Properties
-	case ready : Delay
-	case subscribed : Delay
-	case terminal  
- }
-
  struct Combine.Drop {
 
 	// Properties

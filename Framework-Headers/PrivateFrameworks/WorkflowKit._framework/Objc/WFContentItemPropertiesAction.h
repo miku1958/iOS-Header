@@ -11,14 +11,13 @@
 }
 
 + (BOOL)outputIsExemptFromTaintTrackingInheritance;
-- (id)allPossibleDescriptionResults;
-- (id)descriptionResult;
 - (id)descriptionSummary;
 - (void)finishWithItems:(id)arg1 property:(id)arg2 coercionPerformed:(BOOL)arg3;
 - (id)inputParameterKey;
 - (BOOL)inputRequired;
 - (id)keywords;
 - (id)localizedDefaultOutputName;
+- (id)localizedDescriptionResult;
 - (id)name;
 - (id)outputContentClasses;
 - (id)outputMeasurementUnitType;

@@ -43,6 +43,7 @@
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (CDStruct_b2fbf00d)mapPhysicalToScreenCoordinates:(CDStruct_b2fbf00d)arg1 forLayer:(unsigned long long)arg2;
 - (CDStruct_b2fbf00d)mapScreenToPhysicalCoordinates:(CDStruct_b2fbf00d)arg1 forLayer:(unsigned long long)arg2;
+- (id)originalObject;
 - (CDStruct_14f26992)physicalSizeForLayer:(unsigned long long)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)touch;

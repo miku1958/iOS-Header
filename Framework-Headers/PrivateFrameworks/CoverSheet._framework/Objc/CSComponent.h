@@ -49,6 +49,7 @@
 + (id)homeAffordance;
 + (id)pageContent;
 + (id)pageControl;
++ (id)poseidon;
 + (id)proudLock;
 + (id)quickActions;
 + (id)scalableContent;
@@ -58,6 +59,7 @@
 + (id)statusBarGradient;
 + (id)tinting;
 + (id)wallpaper;
++ (id)whitePoint;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

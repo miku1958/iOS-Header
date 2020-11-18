@@ -9,16 +9,24 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/PXSectionedLayoutEngineDataSourceSnapshot-Protocol.h>
 
-@class NSString, PXIndexPathSet;
-@protocol OS_os_log;
+@class NSNumber, NSString, PXIndexPathSet;
+@protocol OS_os_log, PXFastEnumeration;
 
 @interface PXSectionedDataSource : NSObject <NSCopying, PXSectionedLayoutEngineDataSourceSnapshot>
 {
+    NSNumber *_containsAnyItemsCache;
+    NSNumber *_containsMultipleItemsCache;
+    struct PXSimpleIndexPath _firstItemIndexPathCache;
+    struct PXSimpleIndexPath _lastItemIndexPathCache;
     unsigned long long _identifier;
 }
 
+@property (readonly, nonatomic) PXIndexPathSet *allIndexPaths;
 @property (readonly, nonatomic) PXIndexPathSet *allItemIndexPaths;
+@property (readonly, nonatomic) id<PXFastEnumeration> allItemsEnumerator;
+@property (readonly, nonatomic) id<PXFastEnumeration> allObjectsEnumerator;
 @property (readonly, nonatomic) PXIndexPathSet *allSectionIndexPaths;
+@property (readonly, nonatomic) id<PXFastEnumeration> allSectionsEnumerator;
 @property (readonly, nonatomic) BOOL containsAnyItems;
 @property (readonly, nonatomic) BOOL containsMultipleItems;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,31 +42,41 @@
 @property (readonly) Class superclass;
 
 + (id)emptyDataSource;
+- (void).cxx_destruct;
 - (long long)_numberOfAssetsWithMaximum:(long long)arg1;
 - (struct PXSimpleIndexPath)convertIndexPath:(struct PXSimpleIndexPath)arg1 fromSectionedDataSource:(id)arg2;
+- (id)convertIndexPathSet:(id)arg1 fromSectionedDataSource:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)couldObjectReferenceAppear:(id)arg1;
 - (void)enumerateItemIndexPathsStartingAtIndexPath:(struct PXSimpleIndexPath)arg1 reverseDirection:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateItemIndexPathsStartingAtIndexPath:(struct PXSimpleIndexPath)arg1 untilEndIndexPath:(struct PXSimpleIndexPath)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)fetchAllItemObjects;
+- (struct PXSimpleIndexPath)firstNonEmptySectionAtOrBeforeSection:(struct PXSimpleIndexPath)arg1;
+- (struct PXSimpleIndexPath)indexPathForObjectID:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)indexPathSetForItemsInIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)indexPathSetForObjectIDs:(id)arg1;
 - (id)indexPathSetFromIndexPath:(struct PXSimpleIndexPath)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2;
 - (id)init;
 - (id)inputForItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)itemIndexPathsForSections:(id)arg1;
+- (id)itemsEnumeratorForIndexPaths:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)objectIDAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)objectIDsForIndexPathSet:(id)arg1;
 - (id)objectReferenceAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (Class)objectReferenceClassForItem;
 - (Class)objectReferenceClassForSection;
 - (Class)objectReferenceClassForSubItem;
 - (id)objectReferenceForObjectReference:(id)arg1;
+- (id)objectsEnumeratorForIndexPaths:(id)arg1;
 - (id)objectsInIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)prefetchIndexPaths:(id)arg1;
 - (void)prefetchSections:(id)arg1;
+- (id)sectionsEnumeratorForIndexPaths:(id)arg1;
 - (unsigned long long)totalItemCount;
 
 @end

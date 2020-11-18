@@ -25,10 +25,7 @@
         unsigned int read_sourceId:1;
         unsigned int read_sourceName:1;
         unsigned int read_sourceVersion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_sourceId:1;
-        unsigned int wrote_sourceName:1;
-        unsigned int wrote_sourceVersion:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,9 +37,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readSourceId;
-- (void)_readSourceName;
-- (void)_readSourceVersion;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -52,7 +46,10 @@
 - (id)init;
 - (id)initWithAttributionID:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
     struct opaqueRTCReporting *_reportingAgent;
     int _reportingModuleID;
     BOOL _enableReceiveBitstreamDump;
+    struct OpaqueVCTransportStreamRunLoop *_runLoop;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -69,10 +70,10 @@ __attribute__((visibility("hidden")))
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)handleAlarmForTimeStamp:(unsigned int)arg1;
 - (BOOL)handleRemoteVideoAttributesChange:(struct __CVBuffer *)arg1;
-- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5 statisticsCollector:(id)arg6;
+- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5 statisticsCollector:(id)arg6 useTransportStreamRunLoop:(BOOL)arg7;
 - (void *)networkReceivePackets;
 - (void)pauseVideo;
-- (void)processReceptionReportBlock:(struct tagRTCP_RRB *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)processReceptionReportBlock:(struct tagRTCP_RRB *)arg1 blockCount:(unsigned int)arg2 arrivalNTPTime:(union tagNTP)arg3;
 - (int)processVideoRTCP;
 - (int)processVideoRTP;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;

@@ -6,13 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMetalLayer;
+@class CABackdropLayer, CAMetalLayer;
 
 @interface PKMetalView : UIView
 {
-    BOOL _isWideGamut;
+    CABackdropLayer *_backdropLayer;
+    CAMetalLayer *_metalLayer;
     BOOL _isFixedPixelSize;
     BOOL _doubleBuffered;
+    BOOL _useLuminanceColorFilter;
+    unsigned long long _pixelFormat;
     struct CGSize _fixedPixelSize;
 }
 
@@ -21,14 +24,19 @@
 @property (readonly, nonatomic) struct CGSize fixedPixelSize; // @synthesize fixedPixelSize=_fixedPixelSize;
 @property (readonly, nonatomic) BOOL isDrawableAvailable; // @dynamic isDrawableAvailable;
 @property (readonly, nonatomic) BOOL isFixedPixelSize; // @synthesize isFixedPixelSize=_isFixedPixelSize;
-@property (readonly, nonatomic) BOOL isWideGamut; // @synthesize isWideGamut=_isWideGamut;
 @property (readonly, nonatomic) CAMetalLayer *metalLayer;
+@property (readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (nonatomic) BOOL presentsWithTransaction;
+@property (nonatomic) BOOL useLuminanceColorFilter; // @synthesize useLuminanceColorFilter=_useLuminanceColorFilter;
 
-+ (Class)layerClass;
+- (void).cxx_destruct;
+- (void)accessibilityInvertColorsStatusDidChange:(id)arg1;
 - (void)flushDrawables;
 - (void)initLayer;
-- (id)initWithFrame:(struct CGRect)arg1 andPixelSize:(struct CGSize)arg2 isWideGamut:(BOOL)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 isWideGamut:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 andPixelSize:(struct CGSize)arg2 pixelFormat:(unsigned long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 pixelFormat:(unsigned long long)arg2;
+- (void)installLuminanceColorFilter;
+- (struct CGImage *)newLuminanceMap;
 - (void)resizeDrawableIfNecessary;
 - (void)setFixedPixelSize:(struct CGSize)arg1;
 

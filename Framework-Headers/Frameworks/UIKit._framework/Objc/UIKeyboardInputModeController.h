@@ -40,6 +40,7 @@
     NSArray *suggestedInputModesForSiriLanguage;
     UIKeyboardInputMode *_lastUsedInputMode;
     NSString *_inputModeContextIdentifier;
+    NSArray *_additionalTextInputLocales;
     id<UIKeyboardInputModeControllerDelegate> _delegate;
     NSArray *_userSelectableKeyboardInputModes;
     NSArray *_userSelectableKeyboardInputModeIdentifiers;
@@ -52,8 +53,10 @@
 @property (readonly, nonatomic) NSArray *activeDictationSupportedInputModeIdentifiers;
 @property (readonly) NSArray *activeInputModeIdentifiers;
 @property (readonly) NSArray *activeUserSelectableInputModeIdentifiers;
+@property (copy, nonatomic) NSArray *additionalTextInputLocales; // @synthesize additionalTextInputLocales=_additionalTextInputLocales;
 @property (readonly, nonatomic) NSArray *allowedExtensions; // @synthesize allowedExtensions=_allowedExtensions;
 @property (readonly, nonatomic) BOOL containsDictationSupportedInputMode;
+@property (readonly, nonatomic) BOOL containsEmojiInputMode;
 @property (strong) UIKeyboardInputMode *currentInputMode;
 @property (nonatomic) UIKeyboardInputMode *currentInputModeInPreference;
 @property (readonly, nonatomic) UIKeyboardInputMode *currentLinguisticInputMode;
@@ -111,6 +114,7 @@
 - (id)appendPasscodeInputModes:(id)arg1;
 - (void)clearNextInputModeToUse;
 - (BOOL)currentLocaleRequiresExtendedSetup;
+- (id)currentSystemInputModeExcludingEmoji:(BOOL)arg1;
 - (void)dealloc;
 - (id)defaultDictationLanguages:(id)arg1;
 - (id)defaultEnabledInputModesForCurrentLocale:(BOOL)arg1;
@@ -143,6 +147,7 @@
 - (id)inputModeLastUsedForLanguage:(id)arg1 includingExtensions:(BOOL)arg2;
 - (id)inputModeToAddForKeyboardLanguage:(id)arg1 countryCode:(id)arg2 activeModes:(id)arg3;
 - (id)inputModeWithIdentifier:(id)arg1;
+- (id)inputModesByAppendingApplicationLanguagesToInputModes:(id)arg1;
 - (id)inputModesFromIdentifiers:(id)arg1;
 - (BOOL)isDictationLanguageEnabled:(id)arg1;
 - (BOOL)isLockscreenPasscodeKeyboard;

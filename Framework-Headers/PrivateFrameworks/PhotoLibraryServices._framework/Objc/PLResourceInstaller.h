@@ -19,7 +19,7 @@
 + (BOOL)_isPenultimateVersionFromCPLType:(unsigned long long)arg1;
 + (id)_predicateForUnrecoverableResources;
 + (void)_recipeAndDerivativeStateFromCPLResourceType:(unsigned long long)arg1 fromAdjustedSet:(BOOL)arg2 assetType:(short)arg3 recipeID:(unsigned int *)arg4;
-+ (id)_validatedExternalResourceFromExternalResourceCloudAttributes:(id)arg1 cplType:(unsigned long long)arg2 assetType:(short)arg3 uti:(id)arg4 originalOrientation:(unsigned int)arg5 orientation:(unsigned int)arg6 originalColorSpace:(id)arg7 resourceWidth:(unsigned long long)arg8 resourceHeight:(unsigned long long)arg9 assetWidth:(unsigned long long)arg10 assetHeight:(unsigned long long)arg11 resourceFingerprint:(id)arg12 resourceSize:(unsigned long long)arg13 isAvailable:(BOOL)arg14 fromAdjustedSet:(BOOL)arg15 resourceURL:(id)arg16 cloudMaster:(id)arg17 isForMigration:(BOOL)arg18 context:(id)arg19;
++ (id)_speculativePathForPenultimateFullsizeRenderImageFileForAsset:(id)arg1;
 + (id)_validatedExternalResourceFromSupplementalFileURL:(id)arg1 withUTI:(id)arg2 ptpTrashedState:(long long)arg3 index:(id)arg4 asset:(id)arg5;
 + (id)_validatedExternalResourceIfPresentForAudioOrUnknownAsset:(id)arg1;
 + (id)_validatedExternalResourcesFromLocalImageOrVideoAsset:(id)arg1 referencedResourceURLs:(id)arg2;
@@ -35,11 +35,13 @@
 + (id)generateVideoResourcesFromVideoAsset:(id)arg1 referencedVideoPath:(id)arg2;
 + (BOOL)installInternalResourcesForExistingAsset:(id)arg1 assumeNoExistingResources:(BOOL)arg2 referencedResourceURLs:(id)arg3 error:(id *)arg4;
 + (BOOL)installInternalResourcesForExistingAssetsWithNoExistingResourcesInManagedObjectContext:(id)arg1 migrator:(id)arg2;
-+ (BOOL)installSupplementalResourceForExistingFileAtURL:(id)arg1 ptpTrashedState:(long long)arg2 index:(id)arg3 forAsset:(id)arg4 resultingResource:(id *)arg5 error:(id *)arg6;
++ (BOOL)installSupplementalResourceForExistingFileAtURL:(id)arg1 ptpTrashedState:(long long)arg2 index:(id)arg3 forAsset:(id)arg4 imageOrientation:(id)arg5 resultingResource:(id *)arg6 error:(id *)arg7;
 + (BOOL)isValidCPLResourceTypeForPersistence:(unsigned long long)arg1;
 + (unsigned long long)nonDerivativeCPLTypeFromResourceType:(unsigned int)arg1 version:(unsigned int)arg2 uniformTypeIdentifier:(id)arg3;
++ (id)onDemand_installAdjustedDeferredFullSizeVideoComplementResourceForAsset:(id)arg1;
 + (void)onDemand_installAdjustedFullSizeRenderResourceAtFilePath:(id)arg1 forAsset:(id)arg2;
 + (id)onDemand_installAdjustedFullSizeVideoComplementResourceIfPresentForAsset:(id)arg1;
++ (id)onDemand_installLocalVideoKeyFrameForAsset:(id)arg1;
 + (id)onDemand_installOriginalAdjustmentResourceIfPresentForAsset:(id)arg1;
 + (id)onDemand_installOriginalSOCImagePresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)onDemand_installOriginalSOCVideoComplementPresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
@@ -55,8 +57,7 @@
 + (unsigned int)resourceTypeFromCPLType:(unsigned long long)arg1 assetType:(short)arg2;
 + (unsigned int)resourceVersionFromCPLType:(unsigned long long)arg1 fromAdjustedSet:(BOOL)arg2;
 + (id)validatedExternalResourceForLocalVideoIfPresentAtPath:(id)arg1 context:(id)arg2;
-+ (id)validatedExternalResourceFromCloudResource:(id)arg1 asset:(id)arg2;
-+ (id)validatedExternalResourcesUsingLegacyCloudResourcesFromAssetWithCloudMaster:(id)arg1;
++ (id)validatedExternalResourceFromExternalResourceCloudAttributes:(id)arg1 cplType:(unsigned long long)arg2 assetType:(short)arg3 uti:(id)arg4 originalOrientation:(unsigned int)arg5 orientation:(unsigned int)arg6 originalColorSpace:(id)arg7 resourceWidth:(unsigned long long)arg8 resourceHeight:(unsigned long long)arg9 assetWidth:(unsigned long long)arg10 assetHeight:(unsigned long long)arg11 resourceFingerprint:(id)arg12 resourceSize:(unsigned long long)arg13 isAvailable:(BOOL)arg14 fromAdjustedSet:(BOOL)arg15 resourceURL:(id)arg16 cloudMaster:(id)arg17 isForMigration:(BOOL)arg18 context:(id)arg19;
 
 @end
 

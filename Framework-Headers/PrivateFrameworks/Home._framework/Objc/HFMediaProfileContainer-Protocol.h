@@ -9,16 +9,17 @@
 #import <Home/HFHomeKitSettingsVendor-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFRoomContextProviding-Protocol.h>
+#import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFSymptomFixableObject-Protocol.h>
 #import <Home/HFSymptomsHandlerVendor-Protocol.h>
 #import <Home/HFSymptomsVendor-Protocol.h>
 #import <Home/HMMediaObject-Protocol.h>
 
-@class ACAccount, HFServiceNameComponents, HMAccessory, HMMediaSession, NAFuture, NSSet, NSString;
+@class ACAccount, HMAccessory, HMMediaSession, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource;
 
-@protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject>
+@protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
 
 @property (readonly, nonatomic) HMAccessory *hf_backingAccessory;
 @property (readonly, copy, nonatomic) NSString *hf_categoryLocalizedDescription;
@@ -33,10 +34,9 @@
 @property (readonly, copy, nonatomic) NSString *hf_mediaRouteIdentifier;
 @property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
-@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
-@property (readonly, nonatomic) BOOL hf_supportsMediaSystem;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
+@property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
 @property (readonly, nonatomic) NSSet *mediaProfiles;
 @property (readonly, copy, nonatomic) HMMediaSession *mediaSession;
 

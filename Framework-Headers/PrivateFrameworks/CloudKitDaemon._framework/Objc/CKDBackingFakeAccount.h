@@ -6,56 +6,32 @@
 
 #import <CloudKitDaemon/CKDBackingAccount.h>
 
-@class NSDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class ACAccount;
 
 __attribute__((visibility("hidden")))
 @interface CKDBackingFakeAccount : CKDBackingAccount
 {
-    NSString *_dsid;
-    NSString *_altDsid;
-    NSString *_identifier;
-    NSString *_primaryEmail;
-    NSString *_password;
-    NSDictionary *_accountBag;
-    NSDictionary *_propertyOverrides;
-    NSObject<OS_dispatch_queue> *_fakeAccountInfoQueue;
-    NSDictionary *_overridesByDataclass;
+    ACAccount *_fakeCKAccount;
 }
 
-@property (strong, nonatomic) NSDictionary *accountBag; // @synthesize accountBag=_accountBag;
-@property (strong, nonatomic) NSString *altDsid; // @synthesize altDsid=_altDsid;
-@property (strong, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *fakeAccountInfoQueue; // @synthesize fakeAccountInfoQueue=_fakeAccountInfoQueue;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSDictionary *overridesByDataclass; // @synthesize overridesByDataclass=_overridesByDataclass;
-@property (strong, nonatomic) NSString *password; // @synthesize password=_password;
-@property (strong, nonatomic) NSString *primaryEmail; // @synthesize primaryEmail=_primaryEmail;
-@property (strong, nonatomic) NSDictionary *propertyOverrides; // @synthesize propertyOverrides=_propertyOverrides;
+@property (strong, nonatomic) ACAccount *fakeCKAccount; // @synthesize fakeCKAccount=_fakeCKAccount;
 
-+ (Class)_platformBackingAccountClass;
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
++ (void)_setUpFakeAccountShenanigans;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
 - (void).cxx_destruct;
 - (void)_checkAndLogIfAccountError;
-- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
-- (id)accountPropertiesForDataclass:(id)arg1;
+- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3;
+- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
+- (void)_setOverridesOnVettingContext:(id)arg1;
 - (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
-- (void)dealloc;
 - (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)displayedHostname;
-- (id)fullName;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
-- (BOOL)iCloudDriveAllowsCellularAccess;
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (BOOL)isFakeAccount;
-- (BOOL)isPrimaryEmailVerified;
-- (id)objectForKeyedSubscript:(id)arg1;
-- (id)personaIdentifier;
+- (id)password;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)username;
-- (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

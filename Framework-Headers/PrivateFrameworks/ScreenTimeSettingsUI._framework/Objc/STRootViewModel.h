@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *children; // @synthesize children=_children;
 @property (copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property (readonly, nonatomic) BOOL forceParentalControls;
+@property (readonly) BOOL hasWatchOSDevices;
+@property (readonly) BOOL hasWatchOSDevicesOnly;
 @property (copy, nonatomic) NSSet *installedBundleIDs; // @synthesize installedBundleIDs=_installedBundleIDs;
 @property (copy, nonatomic) NSDictionary *installedBundleIDsByCategoryIdentifier; // @synthesize installedBundleIDsByCategoryIdentifier=_installedBundleIDsByCategoryIdentifier;
 @property (nonatomic) BOOL isCloudSyncEnabled; // @synthesize isCloudSyncEnabled=_isCloudSyncEnabled;
@@ -51,6 +53,8 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingCanToggleWebsiteData;
 + (id)keyPathsForValuesAffectingCanViewAskForTimeRequests;
 + (id)keyPathsForValuesAffectingForceParentalControls;
++ (id)keyPathsForValuesAffectingHasWatchOSDevices;
++ (id)keyPathsForValuesAffectingHasWatchOSDevicesOnly;
 + (id)keyPathsForValuesAffectingIsRemotelyManagedUserWithPasscode;
 + (id)keyPathsForValuesAffectingIsSharingUsageData;
 + (id)keyPathsForValuesAffectingScreenTimeEnabled;

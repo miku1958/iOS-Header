@@ -6,15 +6,19 @@
 
 #import <NeutrinoKit/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol NUMediaPlayer <NSObject>
 
 @property (readonly, nonatomic) CDStruct_198678f7 currentTime;
+@property (readonly) NSArray *loadedTimeRanges;
 @property (readonly, nonatomic) CDStruct_198678f7 mediaDuration;
 @property (nonatomic, getter=isMuted) BOOL muted;
 @property (nonatomic) long long playbackMode;
 @property (nonatomic) double playbackRate;
 @property (readonly, nonatomic) long long playbackState;
 
+- (id)addExternalPlaybackObserver:(void (^)(id<NUMediaPlayer>, BOOL))arg1;
 - (id)addPlaybackStateObserver:(void (^)(id<NUMediaPlayer>, long long))arg1;
 - (id)addPlaybackTimeObserver:(void (^)(id<NUMediaPlayer>, struct))arg1;
 - (void)pause;
@@ -22,6 +26,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)seekToTime:(CDStruct_198678f7)arg1;
 - (void)seekToTime:(CDStruct_198678f7)arg1 exact:(BOOL)arg2;
+- (void)seekToTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
 - (void)stepByCount:(long long)arg1;
 @end
 

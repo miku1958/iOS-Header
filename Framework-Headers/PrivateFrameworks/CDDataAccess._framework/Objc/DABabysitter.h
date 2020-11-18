@@ -33,6 +33,7 @@
 - (void)_l_giveAccountWithIDAnotherChance:(id)arg1;
 - (void)_l_incrementRefreshCountForWaiterID:(id)arg1 operationName:(id)arg2;
 - (void)_l_reloadBabysitterWaitersWithRefreshingWaitersPrefs:(id)arg1 failedWaitersPrefs:(id)arg2 restrictedWaitersPrefs:(id)arg3;
+- (id)_populatedStringDictionaryWithWaitersDictionary:(id)arg1;
 - (void)_reloadBabysitterProperties;
 - (BOOL)accountShouldContinue:(id)arg1;
 - (BOOL)accountWithIDShouldContinue:(id)arg1;
@@ -40,6 +41,7 @@
 - (void)giveAccountWithIDAnotherChance:(id)arg1;
 - (id)init;
 - (BOOL)registerAccount:(id)arg1 forOperationWithName:(id)arg2;
+- (void)statusReportWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)tokenByRegisteringAccount:(id)arg1 forOperationWithName:(id)arg2;
 - (void)unregisterAccount:(id)arg1 forOperationWithName:(id)arg2;
 

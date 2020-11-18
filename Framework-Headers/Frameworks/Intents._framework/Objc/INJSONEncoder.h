@@ -6,20 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <Intents/NSCopying-Protocol.h>
 
-@interface INJSONEncoder : NSObject
+@class INJSONEncoderConfiguration, NSString;
+
+@interface INJSONEncoder : NSObject <NSCopying>
 {
-    NSString *_languageCode;
+    INJSONEncoderConfiguration *_configuration;
 }
 
-@property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
+@property (readonly, nonatomic) INJSONEncoderConfiguration *_storedConfiguration;
+@property (readonly, copy, nonatomic) INJSONEncoderConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (copy, nonatomic) NSString *languageCode;
 
 - (void).cxx_destruct;
 - (id)_encodeObject:(id)arg1 codableAttribute:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodeObject:(id)arg1;
 - (id)encodeObject:(id)arg1 withCodableAttribute:(id)arg2;
 - (id)encodeObject:(id)arg1 withCodableDescription:(id)arg2;
+- (id)init;
+- (id)initWithConfiguration:(id)arg1;
 
 @end
 

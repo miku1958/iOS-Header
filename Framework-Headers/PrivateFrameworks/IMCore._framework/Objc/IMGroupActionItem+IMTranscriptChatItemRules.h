@@ -8,5 +8,6 @@
 
 @interface IMGroupActionItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;
+- (BOOL)shouldGenerateTopLevelChatItem;
 @end
 

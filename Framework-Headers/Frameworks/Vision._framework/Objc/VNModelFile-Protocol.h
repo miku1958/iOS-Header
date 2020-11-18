@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) const void *baseAddress;
 @property (readonly, nonatomic) unsigned long long length;
+@property (readonly, nonatomic) struct __sFILE *ptrFile;
 @property (strong, nonatomic) NSString *resourcePath;
 
 - (void)advise:(long long)arg1;

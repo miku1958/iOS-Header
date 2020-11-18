@@ -28,11 +28,9 @@
 + (id)itemWithWithFormat:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_timeFormatter;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithString:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

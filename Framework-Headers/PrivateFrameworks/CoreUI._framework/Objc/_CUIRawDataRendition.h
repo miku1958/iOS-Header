@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (id)data;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (int)pixelFormat;
 
 @end

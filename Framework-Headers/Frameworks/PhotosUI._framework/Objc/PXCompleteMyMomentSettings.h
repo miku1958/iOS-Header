@@ -13,10 +13,10 @@
 @interface PXCompleteMyMomentSettings : PXSettings <PXCMMWorkflowCoordinatorDelegate>
 {
     BOOL _cmmFeatureEnabled;
-    BOOL _showCMMSettingsAtTopLevel;
     BOOL _alwaysSortAfterAddMore;
     BOOL _preventNilTitles;
     BOOL _enableLightCuration;
+    BOOL _simulateMomentShareCreationError;
     BOOL _showTitle;
     BOOL _showSubtitle;
     BOOL _showOtherTitle;
@@ -28,6 +28,16 @@
     BOOL _allowSwipeSelection;
     BOOL _simulateImport;
     BOOL _simulateImportFailure;
+    BOOL _simulateShouldPromptUserToIgnoreBudgets;
+    BOOL _simulateCPLAlertOnPublish;
+    BOOL _emulatesEmptyMomentShare;
+    BOOL _disableOneUpDescriptiveAdd;
+    BOOL _disableDescriptiveWaiting;
+    BOOL _disableClickyOrb;
+    BOOL _disableShareAction;
+    BOOL _disableShowInAllPhotosAction;
+    BOOL _disableCopyAction;
+    BOOL _disableDetailView;
     BOOL _allowLayoutTransitionGesture;
     BOOL _shouldShowInlineAddButton;
     BOOL _showAttachedHeaderView;
@@ -48,6 +58,7 @@
     BOOL _showDebugStatus;
     BOOL _alwaysTapToRetry;
     BOOL _useDebugColors;
+    BOOL _simulateMomentShareBubbleError;
     BOOL _showMessageTextEntryGadget;
     BOOL _insertNewRecipientsAtTheEnd;
     BOOL _graphSuggestionEnabled;
@@ -69,6 +80,7 @@
     long long _suggestionsDataSourceType;
     unsigned long long _suggestionsMatchingStrategy;
     long long _suggestionsScrollDirection;
+    long long _simulatedMomentShareCreationErrorType;
     long long _publishTransport;
     long long _peopleSuggestionsDataSourceType;
     long long _sendBackDataSourceType;
@@ -77,6 +89,7 @@
     long long _reviewFlowDataSourceType;
     long long _overrideNumberOfColumnsInPortrait;
     long long _overrideNumberOfColumnsInLandscape;
+    long long _simulatedMomentShareBubbleErrorType;
     long long _sharingLinkType;
     double _peopleSuggestionsTimeout;
     long long _sidebarType;
@@ -93,6 +106,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL directSendMessages; // @synthesize directSendMessages=_directSendMessages;
+@property (nonatomic) BOOL disableClickyOrb; // @synthesize disableClickyOrb=_disableClickyOrb;
+@property (nonatomic) BOOL disableCopyAction; // @synthesize disableCopyAction=_disableCopyAction;
+@property (nonatomic) BOOL disableDescriptiveWaiting; // @synthesize disableDescriptiveWaiting=_disableDescriptiveWaiting;
+@property (nonatomic) BOOL disableDetailView; // @synthesize disableDetailView=_disableDetailView;
+@property (nonatomic) BOOL disableOneUpDescriptiveAdd; // @synthesize disableOneUpDescriptiveAdd=_disableOneUpDescriptiveAdd;
+@property (nonatomic) BOOL disableShareAction; // @synthesize disableShareAction=_disableShareAction;
+@property (nonatomic) BOOL disableShowInAllPhotosAction; // @synthesize disableShowInAllPhotosAction=_disableShowInAllPhotosAction;
+@property (nonatomic) BOOL emulatesEmptyMomentShare; // @synthesize emulatesEmptyMomentShare=_emulatesEmptyMomentShare;
 @property (nonatomic) BOOL enableLightCuration; // @synthesize enableLightCuration=_enableLightCuration;
 @property (nonatomic) BOOL fakeMomentShareURL; // @synthesize fakeMomentShareURL=_fakeMomentShareURL;
 @property (nonatomic) BOOL graphSuggestionEnabled; // @synthesize graphSuggestionEnabled=_graphSuggestionEnabled;
@@ -124,7 +145,6 @@
 @property (nonatomic) BOOL shouldShowInlineAddButton; // @synthesize shouldShowInlineAddButton=_shouldShowInlineAddButton;
 @property (nonatomic) BOOL showAttachedHeaderView; // @synthesize showAttachedHeaderView=_showAttachedHeaderView;
 @property (nonatomic) BOOL showCMMInvitationGadgets; // @synthesize showCMMInvitationGadgets=_showCMMInvitationGadgets;
-@property (nonatomic) BOOL showCMMSettingsAtTopLevel; // @synthesize showCMMSettingsAtTopLevel=_showCMMSettingsAtTopLevel;
 @property (nonatomic) BOOL showCMMSuggestionGadgets; // @synthesize showCMMSuggestionGadgets=_showCMMSuggestionGadgets;
 @property (nonatomic) BOOL showDebugStatus; // @synthesize showDebugStatus=_showDebugStatus;
 @property (nonatomic) BOOL showFakeSendBackFooterView; // @synthesize showFakeSendBackFooterView=_showFakeSendBackFooterView;
@@ -146,9 +166,15 @@
 @property (nonatomic) BOOL showTitle; // @synthesize showTitle=_showTitle;
 @property (nonatomic) BOOL showURLInBubble; // @synthesize showURLInBubble=_showURLInBubble;
 @property (nonatomic) long long sidebarType; // @synthesize sidebarType=_sidebarType;
+@property (nonatomic) BOOL simulateCPLAlertOnPublish; // @synthesize simulateCPLAlertOnPublish=_simulateCPLAlertOnPublish;
 @property (nonatomic) BOOL simulateDelays; // @synthesize simulateDelays=_simulateDelays;
 @property (nonatomic) BOOL simulateImport; // @synthesize simulateImport=_simulateImport;
 @property (nonatomic) BOOL simulateImportFailure; // @synthesize simulateImportFailure=_simulateImportFailure;
+@property (nonatomic) BOOL simulateMomentShareBubbleError; // @synthesize simulateMomentShareBubbleError=_simulateMomentShareBubbleError;
+@property (nonatomic) BOOL simulateMomentShareCreationError; // @synthesize simulateMomentShareCreationError=_simulateMomentShareCreationError;
+@property (nonatomic) BOOL simulateShouldPromptUserToIgnoreBudgets; // @synthesize simulateShouldPromptUserToIgnoreBudgets=_simulateShouldPromptUserToIgnoreBudgets;
+@property (nonatomic) long long simulatedMomentShareBubbleErrorType; // @synthesize simulatedMomentShareBubbleErrorType=_simulatedMomentShareBubbleErrorType;
+@property (nonatomic) long long simulatedMomentShareCreationErrorType; // @synthesize simulatedMomentShareCreationErrorType=_simulatedMomentShareCreationErrorType;
 @property (nonatomic) long long suggestionsDataSourceType; // @synthesize suggestionsDataSourceType=_suggestionsDataSourceType;
 @property (nonatomic) unsigned long long suggestionsMatchingStrategy; // @synthesize suggestionsMatchingStrategy=_suggestionsMatchingStrategy;
 @property (nonatomic) long long suggestionsScrollDirection; // @synthesize suggestionsScrollDirection=_suggestionsScrollDirection;
@@ -156,8 +182,12 @@
 @property (nonatomic) BOOL useDebugColors; // @synthesize useDebugColors=_useDebugColors;
 @property (strong, nonatomic) PXCMMWorkflowCoordinator *workflowCoordinator;
 
++ (id)_enableAllCmmImprovementsAction;
++ (id)_enabledAllCmmImprovementsActionPredicate;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
++ (id)simulatedMomentShareErrorLabels;
++ (id)simulatedMomentShareErrorValues;
 + (id)transientProperties;
 - (id)parentSettings;
 - (void)setDefaultValues;

@@ -9,7 +9,7 @@
 #import <network/OS_nw_context-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_workloop;
+@protocol OS_dispatch_workloop, OS_nw_resolver_config;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_context : NSObject <OS_nw_context>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct nw_context_cache *cache;
     struct nw_context_globals *globals;
     NWConcrete_nw_context *isolated_context;
+    NSObject<OS_nw_resolver_config> *fallback_resolver_config;
     struct os_unfair_lock_s activate_lock;
     unsigned int max_cache_entries;
     unsigned int target_cache_entries;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned int is_implicit:1;
     unsigned int is_isolated_context:1;
     unsigned int activated:1;
+    unsigned int required_encrypted_resolution:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,7 +41,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithIdentifier:(const char *)arg1;
 - (id)redactedDescription;
 
 @end

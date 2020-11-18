@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
 @property (readonly, nonatomic, getter=isCancelable) BOOL cancelable;
 @property (readonly, nonatomic, getter=isCloudDemoted) BOOL cloudDemoted;
+@property (readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic, getter=isPrioritizable) BOOL prioritizable;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic, getter=isWaiting) BOOL waiting;
 
 - (void).cxx_destruct;

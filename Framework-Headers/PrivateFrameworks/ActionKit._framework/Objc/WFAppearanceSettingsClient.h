@@ -6,19 +6,28 @@
 
 #import <ActionKit/WFSettingsClient.h>
 
-@class UISUserInterfaceStyleMode;
+#import <ActionKit/WFBooleanStateSetting-Protocol.h>
 
-@interface WFAppearanceSettingsClient : WFSettingsClient
+@class NSString, UISUserInterfaceStyleMode;
+
+@interface WFAppearanceSettingsClient : WFSettingsClient <WFBooleanStateSetting>
 {
     UISUserInterfaceStyleMode *_styleMode;
 }
 
+@property (readonly, nonatomic) long long currentAppearance;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UISUserInterfaceStyleMode *styleMode; // @synthesize styleMode=_styleMode;
+@property (readonly) Class superclass;
 
 + (void)createClientWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)getStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithStyleMode:(id)arg1;
 - (void)setAppearance:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

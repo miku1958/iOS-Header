@@ -32,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemKind:(id)arg1 name:(id)arg2 properties:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

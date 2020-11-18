@@ -31,7 +31,7 @@
 
 @property (readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 @property (readonly, copy, nonatomic) NSSet *actions;
-@property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (strong, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) HMMutableArray *currentActions; // @synthesize currentActions=_currentActions;
@@ -65,11 +65,11 @@
 - (void)_handleActionSetRenamedNotification:(id)arg1;
 - (void)_handleActionSetStartExecutionNotification:(id)arg1;
 - (void)_handleActionUpdatedNotification:(id)arg1;
-- (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateAction:(id)arg1 changes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -82,7 +82,6 @@
 - (id)initWithShortcutsDictionaryRepresentation:(id)arg1 home:(id)arg2;
 - (void)removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)requiresDeviceUnlock;
-- (void)setApplicationData:(id)arg1;
 - (void)setLastExecutionDate:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

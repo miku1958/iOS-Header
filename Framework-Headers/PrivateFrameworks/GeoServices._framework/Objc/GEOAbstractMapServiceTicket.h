@@ -30,6 +30,9 @@
     BOOL _showDymSuggestionCloseButton;
     GEOPDMerchantLookupResult *_merchantLookupResult;
     GEOCategorySearchResultSection *_categorySearchResultSection;
+    NSArray *_relatedEntitySections;
+    NSArray *_collectionResults;
+    NSArray *_publisherResults;
 }
 
 @property (readonly, nonatomic) NSArray *browseCategories; // @synthesize browseCategories=_browseCategories;
@@ -38,6 +41,7 @@
 @property (readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection; // @synthesize categorySearchResultSection=_categorySearchResultSection;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet; // @synthesize chainResultSet=_chainResultSet;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult; // @synthesize clientResolvedResult=_clientResolvedResult;
+@property (readonly, nonatomic) NSArray *collectionResults; // @synthesize collectionResults=_collectionResults;
 @property (readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion; // @synthesize defaultRelatedSuggestion=_defaultRelatedSuggestion;
@@ -47,6 +51,8 @@
 @property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime; // @synthesize dymSuggestionVisibleTime=_dymSuggestionVisibleTime;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult; // @synthesize merchantLookupResult=_merchantLookupResult;
+@property (readonly, nonatomic) NSArray *publisherResults; // @synthesize publisherResults=_publisherResults;
+@property (readonly, nonatomic) NSArray *relatedEntitySections; // @synthesize relatedEntitySections=_relatedEntitySections;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion; // @synthesize resultBoundingRegion=_resultBoundingRegion;

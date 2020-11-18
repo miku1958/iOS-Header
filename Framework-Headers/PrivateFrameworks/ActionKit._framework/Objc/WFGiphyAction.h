@@ -15,10 +15,13 @@
 
 @property (readonly, nonatomic) WFGiphySessionManager *sessionManager; // @synthesize sessionManager=_sessionManager;
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (void).cxx_destruct;
+- (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)runWithNoUserInterface;
-- (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
-- (id)targetDataInfo;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
+- (id)targetContentAttribution;
 
 @end
 

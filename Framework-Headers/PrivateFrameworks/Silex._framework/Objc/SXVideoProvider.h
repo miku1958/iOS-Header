@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double impressionThreshold;
 @property (readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 @property (weak, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
@@ -35,20 +36,16 @@
 @property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 
 - (void).cxx_destruct;
-- (void)configureTimelineForQuartileReporting;
 - (id)initWithURL:(id)arg1;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)muteStateChanged:(BOOL)arg1;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
 - (void)playbackInitiatedWithButtonTapped:(BOOL)arg1;
+- (void)playbackPassedQuartile:(unsigned long long)arg1;
 - (void)playbackPaused;
-- (void)playbackPausedAtTime:(double)arg1;
 - (void)playbackResumed;
-- (void)playbackResumedAtTime:(double)arg1;
 - (void)playbackStarted;
-- (BOOL)supportsQuartileReporting;
-- (void)timeElapsed:(double)arg1 duration:(double)arg2;
 
 @end
 

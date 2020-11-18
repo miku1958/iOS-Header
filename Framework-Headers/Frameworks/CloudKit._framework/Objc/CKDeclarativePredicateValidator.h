@@ -8,7 +8,6 @@
 
 @protocol CKObjectValidating;
 
-__attribute__((visibility("hidden")))
 @interface CKDeclarativePredicateValidator : CKPredicateValidator
 {
     id<CKObjectValidating> _validator;

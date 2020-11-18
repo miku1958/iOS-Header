@@ -16,12 +16,15 @@
 @property (nonatomic) double contentScale;
 @property (readonly, nonatomic) struct RenderTarget *finalRenderTarget;
 @property (readonly, nonatomic) const struct RenderTargetFormat *format;
+@property (readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
+@property (readonly, nonatomic) struct RenderTarget *linearRenderTarget;
 @property (readonly, nonatomic) BOOL multiSample;
 @property (nonatomic) id<GGLRenderQueueSource> renderSource;
 @property (readonly, nonatomic) struct Renderer *renderer;
 @property (readonly, nonatomic) BOOL shouldRasterize;
 @property (nonatomic) struct CGSize size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
+@property (readonly, nonatomic) BOOL supportsFramebufferFetch;
 
 - (shared_ptr_fa6aa836)bitmapData;
 - (void)createRenderTarget;

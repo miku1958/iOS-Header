@@ -8,7 +8,7 @@
 
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, RTLocationOfInterest, RTReceipt, RTSource;
+@class NSArray, NSDate, RTLocationOfInterest, RTSource;
 
 @interface RTPredictedLocationOfInterest : NSObject <NSSecureCoding>
 {
@@ -17,14 +17,12 @@
     NSDate *_nextEntryTime;
     long long _modeOfTransportation;
     NSArray *_sources;
-    RTReceipt *_receipt;
 }
 
 @property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) RTLocationOfInterest *locationOfInterest; // @synthesize locationOfInterest=_locationOfInterest;
 @property (nonatomic) long long modeOfTransportation; // @synthesize modeOfTransportation=_modeOfTransportation;
 @property (readonly, nonatomic) NSDate *nextEntryTime; // @synthesize nextEntryTime=_nextEntryTime;
-@property (strong, nonatomic) RTReceipt *receipt; // @synthesize receipt=_receipt;
 @property (readonly, nonatomic) RTSource *source;
 @property (readonly, nonatomic) NSArray *sources; // @synthesize sources=_sources;
 
@@ -35,7 +33,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 sources:(id)arg5;
-- (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 sources:(id)arg5 receipt:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (void)setConfidence:(double)arg1;
 

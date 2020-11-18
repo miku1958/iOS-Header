@@ -8,14 +8,13 @@
 
 #import <Navigation/MNLocationManagerObserver-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOETARoute, GEORouteAttributes, GEORoutePreloader, MNActiveRouteInfo, NSArray, NSMutableArray, NSString;
+@class GEOApplicationAuditToken, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, GEORoutePreloader, MNActiveRouteInfo, NSArray, NSMutableArray, NSString;
 
 @interface MNRouteManager : NSObject <MNLocationManagerObserver>
 {
     MNActiveRouteInfo *_currentRouteInfo;
     NSMutableArray *_alternateRoutes;
     NSArray *_allRoutes;
-    NSArray *_contingencyRouteSegments;
     NSArray *_previewRoutes;
     unsigned long long _selectedRouteIndex;
     GEORouteAttributes *_routeAttributes;
@@ -27,6 +26,7 @@
     GEORoutePreloader *_preloader;
     NSString *_tileLoaderClientIdentifier;
     GEOApplicationAuditToken *_auditToken;
+    NSArray *_contingencyRouteSegments;
     GEOComposedRoute *_originalRoute;
 }
 
@@ -39,7 +39,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
 @property (readonly, nonatomic) GEODirectionsResponse *directionsResponse; // @synthesize directionsResponse=_directionsResponse;
-@property (readonly, nonatomic) GEOETARoute *etaRoute;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOComposedWaypoint *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property (readonly, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
@@ -51,7 +50,6 @@
 
 - (void).cxx_destruct;
 - (void)_clearPreloader;
-- (void)_createContingencyRoutesForResponse:(id)arg1;
 - (void)_updatePreloaderForRoute:(id)arg1;
 - (void)clearCurrentRoute;
 - (void)close;

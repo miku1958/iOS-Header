@@ -7,11 +7,13 @@
 #import <Foundation/NSFormatter.h>
 
 #import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSLocale;
+@class NSLocale, NSString;
 
-@interface NSPersonNameComponentsFormatter : NSFormatter <NSSecureCoding, NSCopying>
+@interface NSPersonNameComponentsFormatter : NSFormatter <NSObservable, NSObserver, NSSecureCoding, NSCopying>
 {
     id _private;
 }
@@ -20,8 +22,12 @@
 @property BOOL _forceGivenNameFirst;
 @property BOOL _ignoresFallbacks;
 @property NSLocale *_locale;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (getter=isPhonetic) BOOL phonetic;
 @property long long style;
+@property (readonly) Class superclass;
 
 + (long long)__abbreviatedNameFormatForPersonNameComponents:(id)arg1;
 + (long long)__abbreviatedNameFormatForString:(id)arg1;
@@ -99,6 +105,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToFormatter:(id)arg1;
 - (id)personNameComponentsFromString:(id)arg1;
+- (void)receiveObservedValue:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromPersonNameComponents:(id)arg1;
 

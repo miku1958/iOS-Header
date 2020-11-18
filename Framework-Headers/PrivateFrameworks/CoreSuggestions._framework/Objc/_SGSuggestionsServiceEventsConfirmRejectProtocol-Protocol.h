@@ -10,6 +10,8 @@
 - (void)confirmEvent:(SGRealtimeEvent *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (BOOL)confirmEventByRecordId:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)confirmEventByRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (BOOL)deleteEventByRecordId:(SGRecordId *)arg1 error:(id *)arg2;
+- (void)deleteEventByRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)rejectEvent:(SGRealtimeEvent *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (BOOL)rejectEventByRecordId:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)rejectEventByRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;

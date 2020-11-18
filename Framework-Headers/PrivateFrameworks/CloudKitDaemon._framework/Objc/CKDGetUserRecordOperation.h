@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)analyticsPayload;
 - (void)fetchRecordsWithIDs:(id)arg1 andFullRecords:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

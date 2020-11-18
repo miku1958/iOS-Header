@@ -14,10 +14,5 @@ __attribute__((visibility("hidden")))
     double dt;
 }
 
-@property double dt; // @synthesize dt;
-@property struct CGPoint end; // @synthesize end;
-@property struct CGPoint start; // @synthesize start;
-
-
 @end
 

@@ -24,6 +24,7 @@
         BOOL targetRegionForDeceleratingPointerWithRequests;
     } _delegateImplements;
     unsigned long long _generationID;
+    BOOL _observingPresentationNotification;
     BOOL _enabled;
     BOOL __delegateProvidesRegionsAsynchronously;
     BOOL _pausesPointerUpdatesWhilePanning;

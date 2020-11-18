@@ -8,14 +8,14 @@
 
 #import <SpringBoardHome/_SBUIPopoverExtensionHostDelegate-Protocol.h>
 
-@class NSExtension, NSString, SBUIPopoverExtensionHostViewController, _SBHRecentsDocumentExtensionWrappingViewController;
+@class NSExtension, NSString, SBHRecentsDocumentExtensionWrappingViewController, SBUIPopoverExtensionHostViewController;
 @protocol SBHRecentsDocumentExtensionProviderDelegate, _SBUIPopoverExtensionRemoteInterface;
 
 @interface SBHRecentsDocumentExtensionProvider : NSObject <_SBUIPopoverExtensionHostDelegate>
 {
     struct CGSize _compactPreferredContentSize;
     id<SBHRecentsDocumentExtensionProviderDelegate> _delegate;
-    _SBHRecentsDocumentExtensionWrappingViewController *_wrappingViewController;
+    SBHRecentsDocumentExtensionWrappingViewController *_wrappingViewController;
     SBUIPopoverExtensionHostViewController *_hostViewController;
     NSExtension *_extension;
     id<_SBUIPopoverExtensionRemoteInterface> _remoteService;
@@ -29,12 +29,13 @@
 @property (readonly, nonatomic) SBUIPopoverExtensionHostViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
 @property (strong, nonatomic) id<_SBUIPopoverExtensionRemoteInterface> remoteService; // @synthesize remoteService=_remoteService;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _SBHRecentsDocumentExtensionWrappingViewController *wrappingViewController; // @synthesize wrappingViewController=_wrappingViewController;
+@property (strong, nonatomic) SBHRecentsDocumentExtensionWrappingViewController *wrappingViewController; // @synthesize wrappingViewController=_wrappingViewController;
 
 - (void).cxx_destruct;
 - (void)_extensionWillExit:(id)arg1;
 - (void)_loadExtensionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadRemoteViewControllerWithBundleIdentifer:(id)arg1;
+- (id)_preferredExtensionIdentifier;
 - (void)_setupHostViewController:(id)arg1;
 - (void)_teardownHostViewController;
 - (BOOL)canShowRecentsDocumentExtensionProviderForBundleIdentifier:(id)arg1;

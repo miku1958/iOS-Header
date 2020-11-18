@@ -6,18 +6,26 @@
 
 #import "__NTKComplicationDisplayWrapperViewAccessibility_super.h"
 
+@class NSString;
+
 @interface NTKComplicationDisplayWrapperViewAccessibility : __NTKComplicationDisplayWrapperViewAccessibility_super
 {
+    NSString *_accessibilityLocalizedComplicationName;
 }
+
+@property (copy, nonatomic) NSString *accessibilityLocalizedComplicationName; // @synthesize accessibilityLocalizedComplicationName=_accessibilityLocalizedComplicationName;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void).cxx_destruct;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (BOOL)accessibilityActivate;
 - (id)accessibilityComplicationIdentifier;
 - (id)accessibilityComplicationSlotIdentifier;
 - (id)accessibilityFaceIdentifier;
 - (id)accessibilityHint;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (void)accessibilitySetComplicationIdentifier:(id)arg1;
 - (void)accessibilitySetComplicationSlotIdentifier:(id)arg1;

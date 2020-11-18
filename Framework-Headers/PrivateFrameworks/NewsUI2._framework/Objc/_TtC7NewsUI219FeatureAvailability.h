@@ -18,6 +18,8 @@
 @property (nonatomic, readonly) BOOL appleMagazineContent;
 @property (nonatomic, readonly) BOOL narrativeAudio;
 @property (nonatomic, readonly) BOOL useHistoryFeedModule;
+@property (nonatomic, readonly) BOOL useNewAds;
+@property (nonatomic, readonly) BOOL useNewsUINotificationHandling;
 @property (nonatomic, readonly) BOOL useSavedFeedModule;
 @property (nonatomic, readonly) BOOL useSearchModule;
 @property (nonatomic, readonly) BOOL useTagFeedModule;

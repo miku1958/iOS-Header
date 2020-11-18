@@ -6,12 +6,14 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientTextView.h>
 
+#import <MessageUI/PKScribbleInteractionDelegate-Protocol.h>
+#import <MessageUI/PKScribbleInteractionElementSource-Protocol.h>
 #import <MessageUI/_UICursorInteractionDelegate-Protocol.h>
 
 @class MFComposeDisplayMetrics, NSString;
 @protocol MFMailComposeRecipientTextViewDelegate;
 
-@interface MFMailComposeRecipientTextView : CNComposeRecipientTextView <_UICursorInteractionDelegate>
+@interface MFMailComposeRecipientTextView : CNComposeRecipientTextView <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, _UICursorInteractionDelegate>
 {
     MFComposeDisplayMetrics *_displayMetrics;
 }
@@ -25,6 +27,11 @@
 
 - (void).cxx_destruct;
 - (void)_displayMetricsDidChange;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (void)_textInputDidChange:(id)arg1;
 - (double)beamHeight;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;

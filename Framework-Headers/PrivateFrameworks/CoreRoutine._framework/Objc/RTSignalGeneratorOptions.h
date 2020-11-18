@@ -18,9 +18,9 @@
     NSArray *_expectedVisits;
 }
 
-@property (readonly) RTLocation *endLocation; // @synthesize endLocation=_endLocation;
-@property (readonly) NSArray *expectedVisits; // @synthesize expectedVisits=_expectedVisits;
-@property (readonly) RTLocation *startLocation; // @synthesize startLocation=_startLocation;
+@property (readonly, nonatomic) RTLocation *endLocation; // @synthesize endLocation=_endLocation;
+@property (readonly, nonatomic) NSArray *expectedVisits; // @synthesize expectedVisits=_expectedVisits;
+@property (readonly, nonatomic) RTLocation *startLocation; // @synthesize startLocation=_startLocation;
 
 + (id)getVisitsFromVisitsDescriptionData:(id)arg1;
 + (BOOL)supportsSecureCoding;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GKDiscovery, GKDispatchGroup, GKMatch, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
+@class GKDiscovery, GKDispatchGroup, GKMatch, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface GKMatchmaker : NSObject
@@ -36,17 +36,29 @@
     NSMutableDictionary *_nearbyInvites;
     NSMutableArray *_shareInvitees;
     NSMutableArray *_acceptedInviteesTokens;
+    NSMutableSet *_autoMatchedPlayers;
+    NSMutableSet *_invitedInvitees;
+    NSMutableSet *_invitedShareInvitees;
+    NSMutableSet *_invitedNearbyPlayers;
+    NSString *_inviterPlayerID;
+    unsigned long long _inviteApproach;
 }
 
 @property (strong, nonatomic) NSMutableArray *acceptedInviteesTokens; // @synthesize acceptedInviteesTokens=_acceptedInviteesTokens;
 @property (readonly, nonatomic) BOOL allInviteesDidRespond;
+@property (strong, nonatomic) NSMutableSet *autoMatchedPlayers; // @synthesize autoMatchedPlayers=_autoMatchedPlayers;
 @property (strong, nonatomic) GKDispatchGroup *compatibilityHashGroup; // @synthesize compatibilityHashGroup=_compatibilityHashGroup;
 @property (nonatomic) BOOL generatingCompatiblityHashes; // @synthesize generatingCompatiblityHashes=_generatingCompatiblityHashes;
 @property (readonly, nonatomic) BOOL hasInviteListener;
+@property (nonatomic) unsigned long long inviteApproach; // @synthesize inviteApproach=_inviteApproach;
 @property (copy, nonatomic) CDUnknownBlockType inviteHandler; // @synthesize inviteHandler=_inviteHandler;
+@property (strong, nonatomic) NSMutableSet *invitedInvitees; // @synthesize invitedInvitees=_invitedInvitees;
+@property (strong, nonatomic) NSMutableSet *invitedNearbyPlayers; // @synthesize invitedNearbyPlayers=_invitedNearbyPlayers;
+@property (strong, nonatomic) NSMutableSet *invitedShareInvitees; // @synthesize invitedShareInvitees=_invitedShareInvitees;
 @property (copy, nonatomic) CDUnknownBlockType inviteeResponseHandler; // @synthesize inviteeResponseHandler=_inviteeResponseHandler;
 @property (strong, nonatomic) NSSet *invitees; // @synthesize invitees=_invitees;
 @property (strong) NSDictionary *inviteesByUserID; // @synthesize inviteesByUserID=_inviteesByUserID;
+@property (strong, nonatomic) NSString *inviterPlayerID; // @synthesize inviterPlayerID=_inviterPlayerID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *lookForInviteQueue; // @synthesize lookForInviteQueue=_lookForInviteQueue;
 @property (strong, nonatomic) GKMatch *match; // @synthesize match=_match;
 @property int matching; // @synthesize matching=_matching;
@@ -69,6 +81,7 @@
 + (id)descriptionForNearbyDictionary:(id)arg1;
 + (id)sharedMatchmaker;
 + (id)syncQueue;
+- (void).cxx_destruct;
 - (id)_nearbyDeviceWithDeviceID:(id)arg1;
 - (void)_request:(id)arg1 match:(id)arg2 rematchID:(id)arg3 serverHosted:(BOOL)arg4 playerCount:(long long)arg5 connectionData:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)acceptNearbyInvite:(id)arg1 connectionData:(id)arg2;
@@ -77,6 +90,7 @@
 - (void)applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)applicationWillEnterForegroundNotification:(id)arg1;
 - (void)applicationWillTerminateNotification:(id)arg1;
+- (BOOL)canPlayMultiplayerGameWithPlayers:(id)arg1;
 - (void)cancel;
 - (void)cancelInviteToPlayer:(id)arg1;
 - (void)cancelNearbyInvitesToPlayers:(id)arg1;
@@ -84,6 +98,7 @@
 - (void)cancelPendingInvitesAndMarkInviteComplete:(BOOL)arg1;
 - (void)cancelSentNearbyInvites;
 - (id)compatibilityHashQueue;
+- (void)createLeaderboardForRequest:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (long long)currentEnvironment;
 - (void)dealloc;
 - (void)declineNearbyInviteFromDevice:(id)arg1 reason:(long long)arg2;
@@ -142,6 +157,7 @@
 - (void)registeredListentersChanged;
 - (BOOL)removeInvitee:(id)arg1;
 - (void)removeNearbyInviteFromPlayer:(id)arg1;
+- (void)reportPlayerConnectedWithPlayerID:(id)arg1;
 - (void)reportResponse:(long long)arg1 forInvitees:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)respondToHostedInvite:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)responseForDeclineReason:(long long)arg1;

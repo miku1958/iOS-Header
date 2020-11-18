@@ -25,6 +25,7 @@
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)normalizedValueForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;
+- (id)resultsForBatchReadResponse:(id)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
 
 @end

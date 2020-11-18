@@ -6,9 +6,13 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource;
+@class NSString, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource;
 
 @protocol PXPhotosDataSourceProvider <NSObject>
-- (PXPhotosDataSource *)dataSourceManagerCreateInitialPhotosDataSource:(PXPhotoKitAssetsDataSourceManager *)arg1;
+- (PXPhotosDataSource *)createInitialPhotosDataSourceForDataSourceManager:(PXPhotoKitAssetsDataSourceManager *)arg1;
+
+@optional
+- (PXPhotosDataSource *)loadInitialPhotosDataSourceForDataSourceManager:(PXPhotoKitAssetsDataSourceManager *)arg1;
+- (NSString *)localizedInitialLoadingStatusMessageForDataSourceManager:(PXPhotoKitAssetsDataSourceManager *)arg1;
 @end
 

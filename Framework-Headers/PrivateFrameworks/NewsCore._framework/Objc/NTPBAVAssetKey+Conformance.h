@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isExpired;
 @property (readonly) Class superclass;
 
 + (int)keyValuePairType;

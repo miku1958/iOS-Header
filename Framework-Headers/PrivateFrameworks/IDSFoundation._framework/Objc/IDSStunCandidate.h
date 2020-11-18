@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface IDSStunCandidate : NSObject
 {
     BOOL _active;
@@ -19,11 +21,16 @@
     unsigned int _radioAccessTechnology;
     unsigned int _mtu;
     double _extIPDetectionStartTime;
+    unsigned int _dataSoMasks;
+    NSString *_allocbindDataBlob;
     unsigned short _remoteLinkFlags;
+    unsigned int _dataSoMask;
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) const struct sockaddr *address;
+@property (copy, nonatomic) NSString *allocbindDataBlob; // @synthesize allocbindDataBlob=_allocbindDataBlob;
+@property (nonatomic) unsigned int dataSoMask; // @synthesize dataSoMask=_dataSoMask;
 @property (nonatomic) double extIPDetectionStartTime; // @synthesize extIPDetectionStartTime=_extIPDetectionStartTime;
 @property (nonatomic) struct sockaddr *external;
 @property (readonly, nonatomic) int index; // @synthesize index=_index;
@@ -36,6 +43,7 @@
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (id)candidateWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned int)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr *)arg6 external:(struct sockaddr *)arg7;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasNATIPv4Address;

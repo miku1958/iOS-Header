@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AVButton, NSString, UIColor, UIImage, UIView;
+@class AVButton, NSString, UIColor, UIFont, UIImage, UIView;
 
 @interface AVControlItem : NSObject
 {
     AVButton *_button;
+    UIFont *_titleFont;
     BOOL _enabled;
     long long _type;
     NSString *_title;
@@ -36,6 +37,8 @@
 - (void)setAccessibilityAttributedLabel:(id)arg1;
 - (void)setAccessibilityHint:(id)arg1;
 - (void)setAccessibilityLabel:(id)arg1;
+- (void)setTitleFont:(id)arg1;
+- (id)titleFont;
 
 @end
 

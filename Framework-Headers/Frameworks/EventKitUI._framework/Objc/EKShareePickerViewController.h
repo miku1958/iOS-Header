@@ -7,11 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/EKEventAttendeePickerDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 
 @class EKCalendarShareePicker, NSArray, NSString;
 @protocol EKShareePickerViewControllerDelegate;
 
-@interface EKShareePickerViewController : UIViewController <EKEventAttendeePickerDelegate>
+@interface EKShareePickerViewController : UIViewController <EKEventAttendeePickerDelegate, EKUIManagedViewController>
 {
     EKCalendarShareePicker *_picker;
     id<EKShareePickerViewControllerDelegate> _delegate;
@@ -31,6 +32,7 @@
 - (id)_recipientFromSharee:(id)arg1;
 - (id)_shareeFromRecipient:(id)arg1;
 - (void)add;
+- (BOOL)canManagePresentationStyle;
 - (void)cancel;
 - (void)eventAttendeePicker:(id)arg1 cacheValidationStatus:(unsigned long long)arg2 forAddress:(id)arg3;
 - (unsigned long long)eventAttendeePicker:(id)arg1 getValidationStatusForAddress:(id)arg2;
@@ -39,6 +41,7 @@
 - (void)setSearchAccountID:(id)arg1;
 - (void)setSharees:(id)arg1;
 - (void)viewDidLoad;
+- (BOOL)wantsManagement;
 
 @end
 

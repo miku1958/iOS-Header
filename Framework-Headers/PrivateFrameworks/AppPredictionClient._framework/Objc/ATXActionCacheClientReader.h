@@ -25,6 +25,7 @@
 - (id)init;
 - (id)initWithChunks:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)lockscreenPredictionIndicesUpToLimit:(long long)arg1;
 
 @end
 

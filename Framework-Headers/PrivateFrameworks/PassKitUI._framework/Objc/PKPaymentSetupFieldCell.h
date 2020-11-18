@@ -36,7 +36,7 @@
 
 @property (nonatomic) BOOL canResignFirstResponder;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPaymentSetupFieldCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentSetupFieldCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) UIColor *editableTextFieldCameraCapturedTextColor; // @synthesize editableTextFieldCameraCapturedTextColor=_editableTextFieldCameraCapturedTextColor;
 @property (copy, nonatomic) UIColor *editableTextFieldDisabledTextColor; // @synthesize editableTextFieldDisabledTextColor=_editableTextFieldDisabledTextColor;

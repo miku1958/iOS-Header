@@ -84,10 +84,13 @@
 - (void)resetBaseStyleSetUpdatedFlag;
 - (id)rootAncestor;
 - (void)saveStyles:(id)arg1 toArchiver:(id)arg2;
+- (void)saveStylesToMessage:(struct StylesheetArchive *)arg1 archiver:(id)arg2 versions:(id *)arg3;
 - (void)saveToArchiver:(id)arg1;
+- (void)saveVersionedStylesToMessage:(struct StylesheetArchive_VersionedStyles *)arg1 archiver:(id)arg2 targetVersion:(unsigned long long)arg3;
 - (void)setIdentifier:(id)arg1 ofStyle:(id)arg2;
 - (void)setParent:(id)arg1;
 - (void)setParent:(id)arg1 ofStyle:(id)arg2;
+- (BOOL)shouldAlwaysArchiveWhenInMemory;
 - (BOOL)shouldDelayArchiving;
 - (void)style:(id)arg1 didChangeUUIDToValue:(id)arg2 fromValue:(id)arg3;
 - (id)styleWithIdentifier:(id)arg1;

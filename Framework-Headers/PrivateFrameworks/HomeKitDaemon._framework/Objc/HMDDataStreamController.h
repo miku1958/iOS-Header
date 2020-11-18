@@ -7,34 +7,43 @@
 #import <objc/NSObject.h>
 
 #import <HomeKitDaemon/HMDDataStreamDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDDataStreamHAPSetupOperationDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDDataStreamSocketController-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDDataStream, HMDDataStreamSetup, HMDHAPAccessory, HMDService, NSMutableArray, NSString;
+@class HMDDataStream, HMDDataStreamSetupOperation, HMDHAPAccessory, HMDService, HMFTimer, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDDataStreamController : NSObject <HMFLogging, HMDDataStreamDelegate>
+@interface HMDDataStreamController : NSObject <HMDDataStreamHAPSetupOperationDelegate, HMFLogging, HMFTimerDelegate, HMDDataStreamDelegate, HMDDataStreamSocketController>
 {
     BOOL _supportsDataStreamOverTCP;
+    BOOL _supportsDataStreamOverHAP;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHAPAccessory *_accessory;
     HMDService *_transferManagementService;
     HMDDataStream *_defaultDataStream;
-    NSMutableArray *_activeProtocols;
-    HMDDataStreamSetup *_setupInProgress;
+    NSMutableArray *_pendingSocketRequests;
+    HMDDataStreamSetupOperation *_setupInProgress;
     CDUnknownBlockType _dataStreamFactory;
     NSString *_logIdentifier;
+    unsigned long long _maxControllerTransportMTU;
+    HMFTimer *_idleTimer;
 }
 
 @property (weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
-@property (strong, nonatomic) NSMutableArray *activeProtocols; // @synthesize activeProtocols=_activeProtocols;
-@property (readonly) CDUnknownBlockType dataStreamFactory; // @synthesize dataStreamFactory=_dataStreamFactory;
+@property (readonly, nonatomic) CDUnknownBlockType dataStreamFactory; // @synthesize dataStreamFactory=_dataStreamFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HMDDataStream *defaultDataStream; // @synthesize defaultDataStream=_defaultDataStream;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
-@property (strong, nonatomic) HMDDataStreamSetup *setupInProgress; // @synthesize setupInProgress=_setupInProgress;
+@property (strong, nonatomic) HMFTimer *idleTimer; // @synthesize idleTimer=_idleTimer;
+@property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property (nonatomic) unsigned long long maxControllerTransportMTU; // @synthesize maxControllerTransportMTU=_maxControllerTransportMTU;
+@property (strong, nonatomic) NSMutableArray *pendingSocketRequests; // @synthesize pendingSocketRequests=_pendingSocketRequests;
+@property (strong, nonatomic) HMDDataStreamSetupOperation *setupInProgress; // @synthesize setupInProgress=_setupInProgress;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsDataStreamOverHAP; // @synthesize supportsDataStreamOverHAP=_supportsDataStreamOverHAP;
 @property (nonatomic) BOOL supportsDataStreamOverTCP; // @synthesize supportsDataStreamOverTCP=_supportsDataStreamOverTCP;
 @property (weak, nonatomic) HMDService *transferManagementService; // @synthesize transferManagementService=_transferManagementService;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -42,28 +51,41 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_cancelStreamTransportWithError:(id)arg1;
-- (void)_continueStreamSetupWithResponse:(id)arg1;
 - (void)_createBulkStreamProtocol;
-- (void)_finishStreamTransport;
-- (void)_generateStreamKeys;
-- (id)_getActiveProtocolWithClass:(Class)arg1;
-- (void)_handleAccessoryIsReachable;
+- (void)_createStreamSocketWithStreamProtocol:(id)arg1 applicationProtocolName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_failPendingSocketRequestsWithError:(id)arg1;
+- (id)_getActiveProtocolWithName:(id)arg1;
+- (id)_getStreamProtocol;
+- (void)_handleAccessoryConnected;
 - (void)_initiateStreamSetup;
+- (BOOL)_isDataStreamCapable;
+- (void)_processPendingSocketRequests;
 - (void)_resetDefaultDataStream;
+- (void)_resetTransportInfo;
+- (void)_startIdleTimer;
+- (void)_stopIdleTimer;
 - (void)addBulkSendListener:(id)arg1 fileType:(id)arg2;
 - (BOOL)canAcceptBulkSendListeners;
 - (void)dataStream:(id)arg1 didFailWithError:(id)arg2;
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
-- (void)handleAccessoryIsNotReachable:(id)arg1;
-- (void)handleAccessoryIsReachable:(id)arg1;
+- (void)dataStreamDidReceiveRawFrame:(id)arg1;
+- (void)dataStreamDidUpdateActiveStatus:(id)arg1;
+- (void)dataStreamInitializationSetupOperation:(id)arg1 didCompleteSupportReadWithStatus:(BOOL)arg2;
+- (void)dataStreamSetupOperation:(id)arg1 didFailWithError:(id)arg2;
+- (void)dataStreamSetupOperation:(id)arg1 didSucceedWithTransport:(id)arg2 sessionEncryption:(id)arg3;
+- (void)handleAccessoryConnected;
+- (void)handleAccessoryConnected:(id)arg1;
+- (void)handleAccessoryDisconnected:(id)arg1;
 - (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3;
 - (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3 dataStreamFactory:(CDUnknownBlockType)arg4;
 - (void)invalidate;
+- (void)openBulkSendSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)openStreamSocketWithApplicationProtocol:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerForMessages;
 - (void)removeBulkSendListener:(id)arg1;
 - (void)sendTargetControlWhoAmIWithIdentifier:(unsigned int)arg1;
-- (void)startBulkSendSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

@@ -6,21 +6,23 @@
 
 #import <ShareSheet/SDXPCDaemonProtocol-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSUUID, UISUIActivityViewControllerConfiguration, _UIActivityDiscoveryContext;
+@class NSArray, NSDictionary, NSNumber, NSString, NSUUID, UISUIActivityViewControllerConfiguration, _UIActivityDiscoveryContext;
 
 @protocol SDShareSheetSlotManagerProtocol <SDXPCDaemonProtocol>
 - (void)activityViewControllerDidEnterBackgroundWithSessionID:(NSString *)arg1;
 - (void)activityViewControllerPerformEditActionsWithSessionID:(NSString *)arg1;
 - (void)activityViewControllerPerformedActivityWithInfoDictionary:(NSDictionary *)arg1;
 - (void)activityViewControllerWillEnterForegroundWithSessionID:(NSString *)arg1;
+- (void)activityViewControllerWithSessionID:(NSString *)arg1 didLongPressShareActivityWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 favoritedActivity:(BOOL)arg2 withIdentifier:(NSUUID *)arg3 activityCategory:(long long)arg4;
+- (void)activityViewControllerWithSessionID:(NSString *)arg1 removedPersonWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedActionWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedActivityWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedDefaultActivityWithIdentifier:(NSUUID *)arg2 activityCategory:(long long)arg3;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedPersonWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 toggledActivityWithIdentifier:(NSUUID *)arg2 activityCategory:(long long)arg3;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 updatedFavoritesProxies:(NSArray *)arg2 activityCategory:(long long)arg3;
-- (void)connectToDaemonWithSessionID:(NSString *)arg1 discoveryContext:(_UIActivityDiscoveryContext *)arg2 assetIdentifiers:(NSArray *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)connectToDaemonWithSessionID:(NSString *)arg1 discoveryContext:(_UIActivityDiscoveryContext *)arg2 assetIdentifiers:(NSArray *)arg3 urlsBeingShared:(NSArray *)arg4 shouldSuggestFamilyMembers:(NSNumber *)arg5 completionHandler:(void (^)(void))arg6;
 - (void)sendConfiguration:(UISUIActivityViewControllerConfiguration *)arg1 completion:(void (^)(UISDShareSheetSessionConfiguration *))arg2;
 @end
 

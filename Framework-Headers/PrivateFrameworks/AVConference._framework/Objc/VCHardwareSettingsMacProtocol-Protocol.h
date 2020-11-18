@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AVConference/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol VCHardwareSettingsMacProtocol
+@protocol VCHardwareSettingsMacProtocol <NSObject>
 
 @property (readonly, nonatomic) BOOL canDoHEVC;
 @property (readonly, nonatomic) BOOL canDoHiDefDecoding;
@@ -18,10 +20,16 @@
 @property (readonly, nonatomic) BOOL isIMac;
 @property (readonly, nonatomic) BOOL isMacBookWVGA;
 @property (readonly, nonatomic) BOOL isMacPro;
+@property (readonly, nonatomic) BOOL isPixelFormatAvailable;
 @property (readonly, nonatomic) NSString *machineName;
 @property (readonly, nonatomic) unsigned int maxActiveVideoDecoders;
 @property (readonly, nonatomic) unsigned int maxActiveVideoEncoders;
+@property (readonly, nonatomic) unsigned int maxDisplayRefreshRate;
+@property (readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
+@property (readonly, nonatomic) BOOL supports1080pDecoding;
+@property (readonly, nonatomic) BOOL supports1080pEncoding;
 @property (readonly, nonatomic) BOOL supportsHEIFEncoding;
+@property (readonly, nonatomic) BOOL supportsMultiway720pStream;
 @property (readonly, nonatomic) BOOL useSoftFramerateSwitching;
 
 @end

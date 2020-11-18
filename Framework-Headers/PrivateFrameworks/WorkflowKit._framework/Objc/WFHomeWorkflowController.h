@@ -30,7 +30,7 @@
 - (void)cancel;
 - (id)init;
 - (id)initWithWorkflow:(id)arg1;
-- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(BOOL)arg3;
+- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(BOOL)arg3 reference:(id)arg4 dialogAttribution:(id)arg5;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

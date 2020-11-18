@@ -36,13 +36,16 @@
 - (void)_registerForMessages;
 - (void)dealloc;
 - (void)executeMediaActionWithSessionData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleNonResidentMediaActionExecutionWithSessionData:(id)arg1 encodePlaybackArchive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
 - (id)mediaProfileWithUUID:(id)arg1;
-- (void)routeMediaActionForExecution:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)routeMediaActionForExecution:(id)arg1 source:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)routeMessage:(id)arg1;
 - (void)routeSessionDataForExecution:(id)arg1 encodePlaybackArchive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)sendMediaActionMessageToDevice:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)sendMediaActionMessageToCompanionWithSessionData:(id)arg1 encodePlaybackArchive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendMediaActionMessageToDevice:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(BOOL)arg3 canForwardMessage:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendMediaActionMessageToResident:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)targetResidentDeviceForExecutingMediaActionWithProfiles:(id)arg1;
 
 @end

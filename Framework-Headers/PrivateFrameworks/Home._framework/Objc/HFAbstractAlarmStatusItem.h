@@ -15,6 +15,9 @@
 - (id)_serviceType;
 - (id)_singleTriggeredRoomFormatString;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
+- (id)iconDescription;
+- (id)title;
 
 @end
 

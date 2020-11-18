@@ -6,25 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection, UABestAppSuggestion;
+#import <UserActivity/UABestAppSuggestionManagerResponseProtocol-Protocol.h>
+
+@class NSString, NSXPCConnection, UABestAppSuggestion, UABestAppSuggestionManagerProxy;
 @protocol UABestAppSuggestionManagerDelegate;
 
-@interface UABestAppSuggestionManager : NSObject
+@interface UABestAppSuggestionManager : NSObject <UABestAppSuggestionManagerResponseProtocol>
 {
     id<UABestAppSuggestionManagerDelegate> _delegate;
     BOOL _listeningForBestAppSuggestions;
     int _bestAppNotificationCount;
     UABestAppSuggestion *_lastBestAppSuggestion;
     NSXPCConnection *_connection;
+    UABestAppSuggestionManagerProxy *_proxyManager;
 }
 
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<UABestAppSuggestionManagerDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong) UABestAppSuggestionManagerProxy *proxyManager; // @synthesize proxyManager=_proxyManager;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)bestAppSuggestion;
 - (void)bestAppSuggestionLaunchWasCancelled:(id)arg1;
-- (void)bestAppSuggestionWasLaunched:(id)arg1 withInteractionType:(int)arg2;
+- (void)bestAppSuggestionWasLaunched:(id)arg1 withInteractionType:(unsigned long long)arg2;
 - (id)bestAppSuggestions:(long long)arg1;
 - (id)createAppSuggestionFromActivityInfo:(id)arg1 atTime:(id)arg2;
 - (void)dealloc;

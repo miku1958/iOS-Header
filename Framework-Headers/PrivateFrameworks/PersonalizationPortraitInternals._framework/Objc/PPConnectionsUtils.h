@@ -10,17 +10,12 @@
 {
 }
 
-+ (id)calendarBundleIdentifier;
 + (id)calendarUserActivityExternalIDKey;
 + (id)calendarUserActivityIdentifier;
 + (BOOL)isClientAuthorizedForSemanticTriggers:(id)arg1;
 + (BOOL)isValidLinguisticQuery:(id)arg1;
 + (unsigned char)locationFieldFromSemanticTag:(unsigned char)arg1;
-+ (id)mapsBundleIdentifier;
-+ (id)safariBundleIdentifier;
 + (BOOL)shouldAggregateLabel:(id)arg1 withValue:(id)arg2 query:(id)arg3;
-+ (id)siriBundleIdentifier;
-+ (id)springboardBundleIdentifier;
 + (id)supportedLocationSemanticTypes;
 + (id)triggerTypeFromQuery:(id)arg1;
 

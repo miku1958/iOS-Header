@@ -13,6 +13,7 @@
 
 @interface NTKFaceEditView : UIView <NTKClockHardwareInput>
 {
+    BOOL _disableBreathingAnimationForComplications;
     UIViewController<NTKFaceViewCustomEditing> *_editingContentViewController;
     id<NTKFaceEditViewDelegate> _delegate;
     long long _editMode;
@@ -21,19 +22,25 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKFaceEditViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableBreathingAnimationForComplications; // @synthesize disableBreathingAnimationForComplications=_disableBreathingAnimationForComplications;
 @property (nonatomic) long long editMode; // @synthesize editMode=_editMode;
 @property (readonly, nonatomic) UIViewController<NTKFaceViewCustomEditing> *editingContentViewController; // @synthesize editingContentViewController=_editingContentViewController;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (struct CGRect)screenBottomAlignedkeylineLabelFrameForText:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (BOOL)_wheelChangedWithEvent:(id)arg1;
 - (void)activate;
 - (void)addKeyline:(id)arg1 forKey:(id)arg2 tappable:(BOOL)arg3 editMode:(long long)arg4;
+- (void)applyTransformForCurrentPageView:(struct CGAffineTransform)arg1;
+- (void)applyTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (struct CGRect)colorPickerFrame;
 - (void)deactivateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithEditModes:(id)arg1 forDevice:(id)arg2;
+- (id)initWithFace:(id)arg1;
 - (BOOL)isTransitioningBetweenEditPages;
+- (struct CGRect)keylineFrameAtSlot:(id)arg1;
 - (struct CGPoint)pageOffsetFromCenter:(long long)arg1;
 - (void)removeAllKeylinesForEditMode:(long long)arg1;
 - (void)selectKeylineForKey:(id)arg1 editMode:(long long)arg2;
@@ -50,6 +57,7 @@
 - (void)setLabelAlignment:(unsigned long long)arg1 forKey:(id)arg2 editMode:(long long)arg3;
 - (void)setLabelText:(id)arg1 forKey:(id)arg2 editMode:(long long)arg3;
 - (void)setSelectedKeylineFrame:(struct CGRect)arg1 forKey:(id)arg2 editMode:(long long)arg3;
+- (void)updateSelectionForKeylineAtSlot:(id)arg1 selected:(BOOL)arg2;
 - (void)willActivate;
 - (void)willDeactivate;
 

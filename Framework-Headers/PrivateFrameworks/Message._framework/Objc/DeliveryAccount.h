@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) BOOL primaryiCloudAccount;
 @property (readonly, copy, nonatomic) NSString *statisticsKind;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) ACAccount *systemAccount;
+@property (readonly, nonatomic) ACAccount *systemAccount;
 
 + (void)_postDeliveryAccountsHaveChanged;
 + (id)accountTypeIdentifier;

@@ -10,10 +10,17 @@
 {
 }
 
++ (id)_featureNameForMediaType:(unsigned long long)arg1;
 + (BOOL)allowAccountModifications;
++ (BOOL)allowActiveAccountModifications;
 + (BOOL)eroticaAllowed;
 + (BOOL)explicitContentAllowed;
++ (BOOL)inAppPurchaseAllowed;
++ (BOOL)isParentalControlEnabled;
++ (long long)maximumMediaRank;
 + (BOOL)onDeviceDiagnosticsAllowed;
++ (id)rankForMediaType:(unsigned long long)arg1;
++ (BOOL)requirePasswordImmediately;
 
 @end
 

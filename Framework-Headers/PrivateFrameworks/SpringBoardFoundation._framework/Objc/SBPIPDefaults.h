@@ -11,6 +11,7 @@
 }
 
 @property (readonly, nonatomic) BOOL allowAutoPIP; // @dynamic allowAutoPIP;
+@property (readonly, nonatomic) BOOL visualizeKeyboardFrame; // @dynamic visualizeKeyboardFrame;
 
 - (void)_bindAndRegisterDefaults;
 

@@ -26,7 +26,7 @@
 @property (weak) id<HMDCloudShareParticipantsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) HMDHome *home; // @synthesize home=_home;
+@property (weak) HMDHome *home; // @synthesize home=_home;
 @property (readonly) NSSet *participatingUsers;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;

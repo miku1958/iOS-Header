@@ -16,7 +16,9 @@
 - (void).cxx_destruct;
 - (long long)_defaultSampleMode;
 - (id)_lowPriorityRenderer:(out id *)arg1;
+- (id)_newLowPriorityNoIntermediatesRenderer:(out id *)arg1;
 - (id)_newMetalRendererWithOptions:(id)arg1;
+- (id)_newNoIntermediatesRenderer:(out id *)arg1;
 - (id)_newOpenGLRendererWithOptions:(id)arg1 error:(out id *)arg2;
 - (id)_newRenderer:(out id *)arg1;
 - (id)_newRendererWithOptions:(id)arg1 error:(out id *)arg2;

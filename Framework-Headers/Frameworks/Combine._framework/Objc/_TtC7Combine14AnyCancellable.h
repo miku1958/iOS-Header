@@ -10,7 +10,8 @@
 
 @interface _TtC7Combine14AnyCancellable : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_cancel;
+    MISSING_TYPE *storage;
+    MISSING_TYPE *lock;
 }
 
 @end

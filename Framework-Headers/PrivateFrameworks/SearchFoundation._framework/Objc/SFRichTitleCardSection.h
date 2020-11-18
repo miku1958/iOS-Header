@@ -27,6 +27,7 @@
         unsigned int titleNoWrap:1;
         unsigned int thumbnailCropCircle:1;
         unsigned int playActionAlign:1;
+        unsigned int subtitleIsEmphasized:1;
     } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
@@ -36,6 +37,7 @@
     BOOL _hideVerticalDivider;
     BOOL _titleNoWrap;
     BOOL _thumbnailCropCircle;
+    BOOL _subtitleIsEmphasized;
     int _separatorStyle;
     int _auxiliaryBottomTextColor;
     int _titleAlign;
@@ -72,8 +74,8 @@
 @property (nonatomic) int auxiliaryBottomTextColor; // @synthesize auxiliaryBottomTextColor=_auxiliaryBottomTextColor;
 @property (copy, nonatomic) NSString *auxiliaryMiddleText; // @synthesize auxiliaryMiddleText=_auxiliaryMiddleText;
 @property (copy, nonatomic) NSString *auxiliaryTopText; // @synthesize auxiliaryTopText=_auxiliaryTopText;
-@property (strong, nonatomic) SFColor *backgroundColor;
-@property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
 @property (copy, nonatomic) NSString *contentAdvisory; // @synthesize contentAdvisory=_contentAdvisory;
@@ -82,13 +84,13 @@
 @property (copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
-@property (nonatomic) BOOL hasBottomPadding;
-@property (nonatomic) BOOL hasTopPadding;
+@property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider;
 @property (nonatomic) BOOL hideVerticalDivider; // @synthesize hideVerticalDivider=_hideVerticalDivider;
 @property (strong, nonatomic) SFImage *imageOverlay; // @synthesize imageOverlay=_imageOverlay;
-@property (nonatomic) BOOL isCentered;
+@property (nonatomic) BOOL isCentered; // @synthesize isCentered=_isCentered;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *moreGlyphs; // @synthesize moreGlyphs=_moreGlyphs;
 @property (strong, nonatomic) SFCard *nextCard;
@@ -96,9 +98,9 @@
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (strong, nonatomic) SFActionItem *playAction; // @synthesize playAction=_playAction;
 @property (nonatomic) int playActionAlign; // @synthesize playActionAlign=_playActionAlign;
-@property (copy, nonatomic) NSArray *punchoutOptions;
-@property (copy, nonatomic) NSString *punchoutPickerDismissText;
-@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (copy, nonatomic) NSNumber *rating; // @synthesize rating=_rating;
 @property (copy, nonatomic) NSString *ratingText; // @synthesize ratingText=_ratingText;
 @property (copy, nonatomic) NSString *resultIdentifier;
@@ -106,16 +108,17 @@
 @property (nonatomic) BOOL reviewNewLine; // @synthesize reviewNewLine=_reviewNewLine;
 @property (copy, nonatomic) NSString *reviewText; // @synthesize reviewText=_reviewText;
 @property (strong, nonatomic) SFRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
-@property (nonatomic) int separatorStyle;
-@property (copy, nonatomic) NSString *subtitle;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (nonatomic) BOOL subtitleIsEmphasized; // @synthesize subtitleIsEmphasized=_subtitleIsEmphasized;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL thumbnailCropCircle; // @synthesize thumbnailCropCircle=_thumbnailCropCircle;
-@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) int titleAlign; // @synthesize titleAlign=_titleAlign;
 @property (strong, nonatomic) SFImage *titleImage; // @synthesize titleImage=_titleImage;
 @property (nonatomic) BOOL titleNoWrap; // @synthesize titleNoWrap=_titleNoWrap;
 @property (copy, nonatomic) NSNumber *titleWeight; // @synthesize titleWeight=_titleWeight;
-@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
@@ -131,6 +134,7 @@
 - (BOOL)hasPlayActionAlign;
 - (BOOL)hasReviewNewLine;
 - (BOOL)hasSeparatorStyle;
+- (BOOL)hasSubtitleIsEmphasized;
 - (BOOL)hasThumbnailCropCircle;
 - (BOOL)hasTitleAlign;
 - (BOOL)hasTitleNoWrap;

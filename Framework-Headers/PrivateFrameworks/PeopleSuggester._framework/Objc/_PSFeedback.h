@@ -30,7 +30,7 @@
 
 + (id)feedbackForAction:(id)arg1 delay:(double)arg2 context:(id)arg3 suggestions:(id)arg4 numberOfVisibleSuggestions:(float)arg5 sessionIdentifier:(id)arg6;
 - (void).cxx_destruct;
-- (id)feedbackPayload;
+- (id)feedbackPayloadShowFamily:(id)arg1;
 - (id)getTrialID;
 - (id)initWithAction:(id)arg1 delay:(double)arg2 context:(id)arg3 suggestions:(id)arg4 numberOfVisibleSuggestions:(float)arg5 sessionIdentifier:(id)arg6;
 - (id)knowledgeEvent;

@@ -60,6 +60,7 @@
 - (void)beganAwaitingAbilityToActivate;
 - (void)companionBecameAvailableWantsConfirmation:(id)arg1;
 - (void)companionDidSendLanguageAndLocale:(id)arg1;
+- (void)companionDidSendTinkerWirelessCredentials:(id)arg1;
 - (void)companionDidSendWirelessCredentials:(id)arg1;
 - (void)companionTermsResponse:(id)arg1;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
@@ -78,6 +79,7 @@
 - (void)handleOfflineTermsRequest:(id)arg1;
 - (void)handleRenameDeviceRequest:(id)arg1;
 - (void)handleWarrantySentinelRequest:(id)arg1;
+- (void)ingestTinkerCredentials:(id)arg1;
 - (id)init;
 - (void)invalidateTimeoutTimer;
 - (void)popToControllerType:(id)arg1;
@@ -87,15 +89,19 @@
 - (void)remoteRequestToKeepAlive:(id)arg1;
 - (BOOL)reportRemoteActivationFailureError:(id)arg1;
 - (void)retryActivation:(id)arg1;
+- (void)returnProxiedDeviceForDeviceWithData:(id)arg1;
 - (BOOL)sendCompanionPerformanceResults;
 - (id)serviceIdentifier;
 - (void)setCanBeginActivating:(id)arg1;
 - (void)setCompanionLanguage:(id)arg1;
 - (void)setCompanionRegion:(id)arg1;
+- (void)setComputedTimeZone:(id)arg1;
 - (void)setCrownOrientationRight:(id)arg1;
 - (void)setDeviceName:(id)arg1;
 - (void)setDiagnosticsEnabled:(id)arg1;
+- (void)setFitnessRouteAuthorizationForTinker:(id)arg1;
 - (void)setLocationEnabled:(id)arg1;
+- (void)setMessagesInCloudEnabledForTinker:(id)arg1;
 - (void)setPasscodeRestrictions:(id)arg1;
 - (void)setSiriEnabled:(id)arg1;
 - (void)setupServiceMessageSelectorMappings;
@@ -104,6 +110,7 @@
 - (BOOL)tellCompanionGizmoFailedActivating:(id)arg1;
 - (BOOL)tellCompanionGizmoFinishedActivating;
 - (BOOL)tellCompanionGizmoFinishedActivatingAsDeKOTA;
+- (void)tellCompanionGizmoFinishedHealthSharingOptInWithSelection:(BOOL)arg1;
 - (void)tellCompanionThatGizmoFailedToCreatePasscode:(int)arg1;
 - (void)tellCompanionThatGizmoFinishedChangingPasscode:(BOOL)arg1 isLong:(BOOL)arg2;
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(BOOL)arg1 isLong:(BOOL)arg2;

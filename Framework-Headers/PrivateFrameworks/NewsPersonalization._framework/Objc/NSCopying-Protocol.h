@@ -5,6 +5,6 @@
 //
 
 @protocol NSCopying
-- (id)copyWithZone:(void *)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @end
 

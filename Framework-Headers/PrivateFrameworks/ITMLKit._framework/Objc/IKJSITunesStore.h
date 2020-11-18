@@ -53,6 +53,7 @@
 - (void)dealloc;
 - (id)eligibilityForService:(id)arg1;
 - (void)evaluateScripts:(id)arg1:(id)arg2;
+- (void)fetchMarketingItem:(id)arg1:(id)arg2:(id)arg3:(id)arg4:(id)arg5;
 - (void)flushUnreportedEvents;
 - (id)getBag;
 - (void)getServiceEligibility:(id)arg1:(id)arg2;
@@ -61,6 +62,8 @@
 - (void)invalidateBag;
 - (void)loadStoreContent:(id)arg1:(id)arg2;
 - (id)makeStoreXMLHttpRequest;
+- (void)openDynamicUIURL:(id)arg1:(id)arg2:(id)arg3;
+- (void)openMarketingItem:(id)arg1:(id)arg2:(id)arg3;
 - (void)recordEvent:(id)arg1:(id)arg2;
 - (void)signOut;
 - (void)updateServiceEligibility:(id)arg1;

@@ -22,8 +22,5 @@
 @property (copy, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property (copy, nonatomic) NSNumber *version; // @dynamic version;
 
-+ (id)fetchAdditionChangeSetRequest;
-+ (id)fetchDeletionChangeSetRequest;
-
 @end
 

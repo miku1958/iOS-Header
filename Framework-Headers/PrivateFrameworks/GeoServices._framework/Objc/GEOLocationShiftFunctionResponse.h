@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;
+- (id)contractFunctionTo:(id)arg1 withRadius:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPolyLocationShiftResponse:(id)arg1 originalCoordinate:(CDStruct_c3b9c2ee)arg2 version:(unsigned int)arg3;

@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSString *assertionType; // @synthesize assertionType=_assertionType;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL shouldHandleSynchronously;
 
 + (id)assertionWithType:(id)arg1 identifier:(id)arg2;
 - (void).cxx_destruct;

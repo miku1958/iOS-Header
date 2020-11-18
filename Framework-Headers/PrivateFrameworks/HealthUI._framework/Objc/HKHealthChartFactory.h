@@ -6,11 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HKChartDataCacheController, HKDateCache, HKDisplayCategoryController, HKDisplayTypeController, HKHealthStore, HKSampleTypeDateRangeController, HKSampleTypeUpdateController, HKSelectedTimeScopeController, HKUnitPreferenceController, NSDictionary, _HKWheelchairUseCharacteristicCache;
+#import <HealthUI/HKSleepDataSourceProvider-Protocol.h>
 
-@interface HKHealthChartFactory : NSObject
+@class HKChartDataCacheController, HKDateCache, HKDisplayCategoryController, HKDisplayTypeController, HKHealthStore, HKInteractiveChartDataFormatter, HKSampleTypeDateRangeController, HKSampleTypeUpdateController, HKSelectedTimeScopeController, HKUnitPreferenceController, NSDictionary, _HKWheelchairUseCharacteristicCache;
+@protocol HKSleepDataSourceProvider;
+
+@interface HKHealthChartFactory : NSObject <HKSleepDataSourceProvider>
 {
     HKHealthStore *_healthStore;
+    id<HKSleepDataSourceProvider> _sleepDataSourceProvider;
+    HKInteractiveChartDataFormatter *_sleepChartFormatter;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitPreferenceController;
     HKDisplayCategoryController *_displayCategoryController;
@@ -32,22 +37,28 @@
 @property (readonly, nonatomic) HKSampleTypeDateRangeController *sampleTypeDateRangeController; // @synthesize sampleTypeDateRangeController=_sampleTypeDateRangeController;
 @property (readonly, nonatomic) HKSampleTypeUpdateController *sampleTypeUpdateController; // @synthesize sampleTypeUpdateController=_sampleTypeUpdateController;
 @property (readonly, nonatomic) HKSelectedTimeScopeController *selectedTimeScopeController; // @synthesize selectedTimeScopeController=_selectedTimeScopeController;
+@property (strong, nonatomic) HKInteractiveChartDataFormatter *sleepChartFormatter; // @synthesize sleepChartFormatter=_sleepChartFormatter;
+@property (strong, nonatomic) id<HKSleepDataSourceProvider> sleepDataSourceProvider; // @synthesize sleepDataSourceProvider=_sleepDataSourceProvider;
 @property (readonly, nonatomic) HKUnitPreferenceController *unitPreferenceController; // @synthesize unitPreferenceController=_unitPreferenceController;
 @property (readonly, nonatomic) _HKWheelchairUseCharacteristicCache *wheelchairUseCharacteristicCache; // @synthesize wheelchairUseCharacteristicCache=_wheelchairUseCharacteristicCache;
 
 + (id)_standardIdentifierMappings;
 - (void).cxx_destruct;
 - (id)CHRRoomApplicationItems;
-- (id)_customTypeIdentifierController:(id)arg1 displayDate:(id)arg2 secondaryIdentifier:(id)arg3;
+- (id)_customTypeIdentifierController:(id)arg1 displayDate:(id)arg2 preferredOverlay:(long long)arg3;
 - (id)_displayTypeForTypeIdentifier:(id)arg1;
 - (id)_mapTypeIdentifierToDisplayType:(id)arg1;
 - (long long)_resolvedTimeScopeForTypeIdentifier:(id)arg1 displayDateInterval:(id)arg2;
+- (id)activityChartForActivityMoveMode:(long long)arg1 displayDate:(id)arg2;
 - (id)activityChartForDisplayDate:(id)arg1;
 - (id)chartForTypeIdentifier:(id)arg1 dateRange:(id)arg2 minimumSize:(struct CGSize)arg3;
 - (id)chartForTypeIdentifier:(id)arg1 dateRange:(id)arg2 minimumSize:(struct CGSize)arg3 disableXAxis:(BOOL)arg4;
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
-- (id)interactiveChartForTypeIdentifier:(id)arg1 secondaryTypeIdentifier:(id)arg2 displayDateInterval:(id)arg3;
+- (id)interactiveChartForTypeIdentifier:(id)arg1 preferredOverlay:(long long)arg2 displayDateInterval:(id)arg3;
+- (id)makeSleepDataSourceFromHealthStore:(id)arg1 representativeDisplayType:(id)arg2;
+- (id)standardSleepChartFormatter;
+- (id)supportedTypeIdentifiers;
 
 @end
 

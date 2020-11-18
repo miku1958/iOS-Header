@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class CKRecordZone, NSArray;
+@class CKAggregateZonePCSOperationInfo, CKRecordZone, NSArray;
 
 @interface CKAggregateZonePCSOperation : CKDatabaseOperation
 {
@@ -16,6 +16,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType aggregateZonePCSCompletionBlock; // @synthesize aggregateZonePCSCompletionBlock=_aggregateZonePCSCompletionBlock;
+@property (readonly, nonatomic) CKAggregateZonePCSOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) NSArray *sourceZoneIDs; // @synthesize sourceZoneIDs=_sourceZoneIDs;
 @property (copy, nonatomic) CKRecordZone *targetZone; // @synthesize targetZone=_targetZone;
 

@@ -7,20 +7,23 @@
 #import <SpringBoard/SBHomeGestureDismissableCoverSheetViewController.h>
 
 #import <SpringBoard/SBViewControllerTransitionContextDelegate-Protocol.h>
+#import <SpringBoard/_SBDashBoardSpotlightViewControllerDelegate-Protocol.h>
 
 @class FBDisplayLayoutTransition, NSString, SBSearchBackdropView, UIViewController, _SBDashBoardSpotlightViewController, _UILegibilitySettings;
-@protocol SBUISpotlightInitiating, SPUIRemoteSearchViewDelegate;
+@protocol SBDashBoardSpotlightViewControllerDelegate, SBUISpotlightInitiating, SPUIRemoteSearchViewDelegate;
 
-@interface SBDashBoardSpotlightViewController : SBHomeGestureDismissableCoverSheetViewController <SBViewControllerTransitionContextDelegate>
+@interface SBDashBoardSpotlightViewController : SBHomeGestureDismissableCoverSheetViewController <_SBDashBoardSpotlightViewControllerDelegate, SBViewControllerTransitionContextDelegate>
 {
     SBSearchBackdropView *_backdropView;
     _UILegibilitySettings *_spotlightLegibilitySettings;
     UIViewController<SBUISpotlightInitiating> *_initiatingViewController;
+    id<SBDashBoardSpotlightViewControllerDelegate> _delegate;
     _SBDashBoardSpotlightViewController *_spotlightViewController;
     FBDisplayLayoutTransition *_displayLayoutTransition;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SBDashBoardSpotlightViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FBDisplayLayoutTransition *displayLayoutTransition; // @synthesize displayLayoutTransition=_displayLayoutTransition;
 @property (readonly) unsigned long long hash;
@@ -45,8 +48,10 @@
 - (long long)presentationStyle;
 - (long long)presentationTransition;
 - (long long)presentationType;
+- (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldDismissForHomeGestureRecognizer:(id)arg1;
+- (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(id)arg1;
 - (id)transitionContextToShowSpotlight:(BOOL)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
 - (void)transitionDidFinish:(id)arg1;
 - (void)transitionDidReverse:(id)arg1;

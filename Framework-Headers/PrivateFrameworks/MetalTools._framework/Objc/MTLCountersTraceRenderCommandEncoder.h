@@ -45,8 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)setFragmentTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
 - (void)setRenderPipelineState:(id)arg1;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
 - (void)setStencilFrontReferenceValue:(unsigned int)arg1 backReferenceValue:(unsigned int)arg2;
 - (void)setStencilReferenceValue:(unsigned int)arg1;
 - (void)setStencilStoreAction:(unsigned long long)arg1;

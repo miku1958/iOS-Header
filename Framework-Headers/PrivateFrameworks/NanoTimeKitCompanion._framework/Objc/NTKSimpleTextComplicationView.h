@@ -9,17 +9,17 @@
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTemplateComplicationDisplay-Protocol.h>
 
-@class CLKComplicationTemplate, CLKDevice, CLKFont, NSString, NTKColoringLabel;
+@class CLKComplicationTemplateSimpleText, CLKDevice, CLKFont, NSDate, NSString, NTKColoringLabel;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKSimpleTextComplicationView : UIView <NTKComplicationDisplay, NTKTemplateComplicationDisplay>
 {
     BOOL canUseCurvedText;
     id<NTKComplicationDisplayObserver> displayObserver;
-    CLKFont *_font;
     NTKColoringLabel *_label;
     CLKDevice *_device;
-    CLKComplicationTemplate *_template;
+    CLKComplicationTemplateSimpleText *_template;
+    NSDate *_timeTravelDate;
 }
 
 @property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
@@ -27,24 +27,27 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
-@property (strong, nonatomic) CLKFont *font; // @synthesize font=_font;
+@property (strong, nonatomic) CLKFont *font;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (strong, nonatomic) NTKColoringLabel *label; // @synthesize label=_label;
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CLKComplicationTemplate *template; // @synthesize template=_template;
+@property (strong, nonatomic) CLKComplicationTemplateSimpleText *template; // @synthesize template=_template;
+@property (strong, nonatomic) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
+@property (readonly, nonatomic) BOOL useAlternateFont;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
+- (id)_defaultFont;
+- (void)_updateLabelFrame;
 - (id)complicationTemplate;
 - (id)init;
 - (void)layoutSubviews;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)sizeToFit;
 
 @end
 

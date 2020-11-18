@@ -22,6 +22,7 @@
 - (BOOL)removeUuidsFromSet:(id)arg1;
 - (id)removeUuidsFromSetReturningRemoved:(id)arg1;
 - (void)removeUuidsFromVector:(const vector_4dc5f307 *)arg1;
+- (void)reserve:(unsigned long long)arg1;
 
 @end
 

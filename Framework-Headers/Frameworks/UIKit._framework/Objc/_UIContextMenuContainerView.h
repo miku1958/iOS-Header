@@ -6,17 +6,19 @@
 
 #import <UIKitCore/UIView.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
 
-@class NSString, UIPanGestureRecognizer;
+@class NSString, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuContainerView : UIView <UIGestureRecognizerDelegate>
+@interface _UIContextMenuContainerView : UIView <_UIPassthroughScrollInteractionDelegate>
 {
-    UIPanGestureRecognizer *_panGestureRecognizer;
+    BOOL _lastHitTestWasPassedThrough;
+    _UIPassthroughScrollInteraction *_passthroughInteraction;
     BOOL _dismissesInstantly;
     UIView *_contentWrapperView;
     CDUnknownBlockType _dismissalHandler;
+    CDUnknownBlockType _subtreeTraitPropagationHandler;
 }
 
 @property (weak, nonatomic) UIView *contentWrapperView; // @synthesize contentWrapperView=_contentWrapperView;
@@ -25,15 +27,18 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
 @property (nonatomic) BOOL dismissesInstantly; // @synthesize dismissesInstantly=_dismissesInstantly;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType subtreeTraitPropagationHandler; // @synthesize subtreeTraitPropagationHandler=_subtreeTraitPropagationHandler;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_attemptDismiss:(BOOL)arg1;
-- (void)_swipeToDismiss:(id)arg1;
+- (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)didMoveToWindow;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
+- (BOOL)passthroughScrollInteractionDidRecognize:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

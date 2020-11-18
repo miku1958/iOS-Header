@@ -10,17 +10,18 @@
 #import <PassKitUI/PKDashboardViewControllerDelegateFlowLayout-Protocol.h>
 #import <PassKitUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSSet, NSString, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKUISpringAnimationFactory, UICollectionViewLayout;
+@class NSDictionary, NSMutableDictionary, NSSet, NSString, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKUISpringAnimationFactory, UICollectionViewLayout;
 @protocol PKDashboardDataSource, PKDashboardDelegate, PKDashboardLayout;
 
 @interface PKDashboardViewController : UICollectionViewController <UICollectionViewDataSourcePrefetching, PKDashboardDataSourceDelegate, PKDashboardViewControllerDelegateFlowLayout>
 {
-    NSArray *_presenters;
-    NSMutableDictionary *_presentersPerItemClassName;
+    NSDictionary *_presentersPerIdentifier;
+    CDStruct_8bc48212 *_presentersOptionalMethods;
+    NSDictionary *_presenterMethodsIndexPerIdentifier;
     PKDashboardTitleHeaderView *_sampleHeaderView;
     NSMutableDictionary *_titlesForSection;
     PKDashboardFooterTextView *_sampleFooterView;
-    NSMutableDictionary *_footersForSection;
+    NSMutableDictionary *_footerTextItemsBySection;
     double _lastScrollOffset;
     BOOL _inScrollViewDidScroll;
     NSSet *_visibleCellsExcludingSafeArea;
@@ -55,6 +56,7 @@
 - (BOOL)_isIndexPathAFooter:(id)arg1;
 - (BOOL)_isIndexPathAHeader:(id)arg1;
 - (void)_presentAllContent;
+- (void)_setupPresenters:(id)arg1;
 - (void)_updateNavigationBarAppearance;
 - (void)_updateNavigationBarVisibility;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -70,12 +72,14 @@
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)contentIsLoaded;
+- (void)dealloc;
 - (void)deleteSections:(id)arg1;
 - (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
 - (void)insertSections:(id)arg1;
 - (void)itemChanged:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)itemIsIndependentInCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)itemIsStackableInCollectionView:(id)arg1 atIndexPath:(id)arg2;
+- (CDStruct_8bc48212)methodsForItemIdentifier:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)preferredStatusBarStyle;
@@ -84,6 +88,7 @@
 - (void)setActionForVisibilityChange:(CDUnknownBlockType)arg1 indexPath:(id)arg2;
 - (void)shouldPresentAllContent:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateContent;
 - (void)viewDidLoad;
 
 @end

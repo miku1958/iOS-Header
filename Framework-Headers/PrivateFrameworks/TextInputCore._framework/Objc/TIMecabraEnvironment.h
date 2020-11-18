@@ -51,6 +51,8 @@
 + (int)maxNumberOfDrawSamples;
 + (void)removeMobileAssetListener:(id)arg1;
 - (void).cxx_destruct;
+- (id)_longestWubiCodeForCharacter:(id)arg1;
+- (id)_wubiCodeForWord:(id)arg1;
 - (void)acceptInlineCandidates;
 - (void)addCandidateWithString:(id)arg1 toArray:(id)arg2;
 - (BOOL)addNewCandidatesIfNecessary:(long long)arg1;
@@ -67,6 +69,7 @@
 - (void)commitPredictionCandidate:(void *)arg1;
 - (void)compareDocumentAndEnvironmentCandidates;
 - (void)completelyCommitInlineCandidate:(void *)arg1;
+- (id)contactNameWubiCodePairsForFirstName:(id)arg1 lastName:(id)arg2;
 - (void)createNewCandidatesFromDocumentContext;
 - (void)declareEndOfSentence;
 - (BOOL)documentContextIsEmpty;
@@ -84,6 +87,7 @@
 - (void)setLeftDocumentContextInternal:(id)arg1;
 - (void)setShuangpinType:(int)arg1;
 - (void)updateCursorPosition;
+- (id)wubiAnnotationForCandidate:(id)arg1;
 
 @end
 

@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class CKServerChangeToken;
+#import <CloudKit/CKFetchNotificationChangesOperationCallbacks-Protocol.h>
 
-@interface CKFetchNotificationChangesOperation : CKOperation
+@class CKFetchNotificationChangesOperationInfo, CKServerChangeToken;
+@protocol CKFetchNotificationChangesOperationCallbacks;
+
+@interface CKFetchNotificationChangesOperation : CKOperation <CKFetchNotificationChangesOperationCallbacks>
 {
     BOOL _moreComing;
     CDUnknownBlockType _notificationChangedBlock;
@@ -18,20 +21,24 @@
     CKServerChangeToken *_resultServerChangeToken;
 }
 
+@property (readonly, nonatomic) id<CKFetchNotificationChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType fetchNotificationChangesCompletionBlock; // @synthesize fetchNotificationChangesCompletionBlock=_fetchNotificationChangesCompletionBlock;
 @property (nonatomic) BOOL moreComing; // @synthesize moreComing=_moreComing;
 @property (copy, nonatomic) CDUnknownBlockType notificationChangedBlock; // @synthesize notificationChangedBlock=_notificationChangedBlock;
+@property (readonly, nonatomic) CKFetchNotificationChangesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property (strong, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
++ (SEL)daemonCallbackCompletionSelector;
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleChangedNotification:(id)arg1;
+- (void)handleOperationDidCompleteWithServerChangeToken:(id)arg1 moreComing:(BOOL)arg2 metrics:(id)arg3 error:(id)arg4;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithPreviousServerChangeToken:(id)arg1;

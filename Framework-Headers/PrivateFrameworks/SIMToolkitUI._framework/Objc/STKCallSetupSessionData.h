@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface STKCallSetupSessionData : STKTextSessionData
 {
     NSString *_phoneNumber;
@@ -19,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithText:(id)arg1 phoneNumber:(id)arg2;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2 phoneNumber:(id)arg3;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

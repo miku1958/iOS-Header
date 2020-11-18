@@ -9,18 +9,17 @@
 #import <AvatarUI/AVTAttributeEditorSectionHeaderViewDelegate-Protocol.h>
 #import <AvatarUI/AVTAvatarAttributeEditorControllerSubSelectionDelegate-Protocol.h>
 #import <AvatarUI/AVTCollapsibleHeaderControllerDelegate-Protocol.h>
-#import <AvatarUI/AVTFaceTrackingManagerDelegate-Protocol.h>
-#import <AvatarUI/AVTGroupDialDelegate-Protocol.h>
+#import <AvatarUI/AVTGroupPickerDelegate-Protocol.h>
 #import <AvatarUI/AVTNotifyingContainerViewDelegate-Protocol.h>
 #import <AvatarUI/AVTTransitionModel-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSource-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class AVTAttributeEditorAnimationCoordinator, AVTAvatarAttributeEditorDataSource, AVTAvatarAttributeEditorModelManager, AVTAvatarRecord, AVTCollapsibleHeaderController, AVTGroupDial, AVTImageTransitioningContainerView, AVTMemoji, AVTShadowView, AVTTransition, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, AVTViewThrottler, CALayer, NSDate, NSString, UICollectionView, UILabel, UITapGestureRecognizer, UIView, _AVTAvatarRecordImageProvider;
+@class AVTAttributeEditorAnimationCoordinator, AVTAvatarAttributeEditorDataSource, AVTAvatarAttributeEditorModelManager, AVTAvatarRecord, AVTCollapsibleHeaderController, AVTGroupDial, AVTGroupListCollectionView, AVTImageTransitioningContainerView, AVTMemoji, AVTShadowView, AVTTransition, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, CALayer, NSDate, NSString, UICollectionView, UILabel, UITapGestureRecognizer, UIView, _AVTAvatarRecordImageProvider;
 @protocol AVTAvatarAttributeEditorLayout, AVTAvatarAttributeEditorViewControllerDelegate, AVTTaskScheduler;
 
-@interface AVTAvatarAttributeEditorViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout, AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTGroupDialDelegate, AVTCollapsibleHeaderControllerDelegate, AVTTransitionModel, AVTNotifyingContainerViewDelegate, AVTFaceTrackingManagerDelegate, AVTAttributeEditorSectionHeaderViewDelegate>
+@interface AVTAvatarAttributeEditorViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout, AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTGroupPickerDelegate, AVTCollapsibleHeaderControllerDelegate, AVTTransitionModel, AVTNotifyingContainerViewDelegate, AVTAttributeEditorSectionHeaderViewDelegate>
 {
     BOOL _disableAvatarSnapshotting;
     BOOL _isCreating;
@@ -32,9 +31,12 @@
     id<AVTAvatarAttributeEditorLayout> _currentLayout;
     AVTAvatarAttributeEditorModelManager *_modelManager;
     id<AVTTaskScheduler> _imageProviderScheduler;
-    UIView *_headerMaskingView;
+    UIView *_attributesContainerView;
+    UIView *_sideGroupContainerView;
     UIView *_groupDialContainerView;
     AVTGroupDial *_groupDial;
+    AVTGroupListCollectionView *_groupListView;
+    UIView *_headerMaskingView;
     AVTShadowView *_shadowView;
     UICollectionView *_attributesCollectionView;
     AVTAvatarAttributeEditorDataSource *_dataSource;
@@ -46,7 +48,6 @@
     AVTViewSession *_avtViewSession;
     AVTCollapsibleHeaderController *_collapsibleHeaderController;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    AVTViewThrottler *_avtViewThrottler;
     AVTUIEnvironment *_environment;
     CDUnknownBlockType _postSessionDidBecomeActiveHandler;
     AVTImageTransitioningContainerView *_transitioningContainer;
@@ -62,11 +63,11 @@
 @property (strong, nonatomic) UILabel *alphaAssetsLabel; // @synthesize alphaAssetsLabel=_alphaAssetsLabel;
 @property (strong, nonatomic) AVTAttributeEditorAnimationCoordinator *animationCoordinator; // @synthesize animationCoordinator=_animationCoordinator;
 @property (strong, nonatomic) UICollectionView *attributesCollectionView; // @synthesize attributesCollectionView=_attributesCollectionView;
+@property (strong, nonatomic) UIView *attributesContainerView; // @synthesize attributesContainerView=_attributesContainerView;
 @property (readonly, nonatomic) AVTMemoji *avatar;
 @property (readonly, nonatomic) AVTAvatarRecord *avatarRecord;
 @property (strong, nonatomic) AVTViewSession *avtViewSession; // @synthesize avtViewSession=_avtViewSession;
 @property (readonly, nonatomic) AVTViewSessionProvider *avtViewSessionProvider; // @synthesize avtViewSessionProvider=_avtViewSessionProvider;
-@property (strong, nonatomic) AVTViewThrottler *avtViewThrottler; // @synthesize avtViewThrottler=_avtViewThrottler;
 @property (strong, nonatomic) AVTCollapsibleHeaderController *collapsibleHeaderController; // @synthesize collapsibleHeaderController=_collapsibleHeaderController;
 @property (nonatomic) BOOL collectionViewIsPerformingBatchUpdates; // @synthesize collectionViewIsPerformingBatchUpdates=_collectionViewIsPerformingBatchUpdates;
 @property (strong, nonatomic) id<AVTAvatarAttributeEditorLayout> currentLayout; // @synthesize currentLayout=_currentLayout;
@@ -79,6 +80,7 @@
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (strong, nonatomic) AVTGroupDial *groupDial; // @synthesize groupDial=_groupDial;
 @property (strong, nonatomic) UIView *groupDialContainerView; // @synthesize groupDialContainerView=_groupDialContainerView;
+@property (strong, nonatomic) AVTGroupListCollectionView *groupListView; // @synthesize groupListView=_groupListView;
 @property (nonatomic) BOOL hasMadeAnySelection; // @synthesize hasMadeAnySelection=_hasMadeAnySelection;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *headerMaskingView; // @synthesize headerMaskingView=_headerMaskingView;
@@ -93,6 +95,7 @@
 @property (copy, nonatomic) CDUnknownBlockType pendingUnhighlightBlock; // @synthesize pendingUnhighlightBlock=_pendingUnhighlightBlock;
 @property (copy, nonatomic) CDUnknownBlockType postSessionDidBecomeActiveHandler; // @synthesize postSessionDidBecomeActiveHandler=_postSessionDidBecomeActiveHandler;
 @property (strong, nonatomic) AVTShadowView *shadowView; // @synthesize shadowView=_shadowView;
+@property (strong, nonatomic) UIView *sideGroupContainerView; // @synthesize sideGroupContainerView=_sideGroupContainerView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (strong, nonatomic) AVTImageTransitioningContainerView *transitioningContainer; // @synthesize transitioningContainer=_transitioningContainer;
@@ -134,9 +137,10 @@
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (id)createAlphaAssetsLabel;
 - (void)createVerticleRuleIfNeeded;
+- (void)didFinishEditing;
 - (void)didTapAvatarView:(id)arg1;
-- (void)groupDial:(id)arg1 didDeselectGroupAtIndex:(long long)arg2;
-- (void)groupDial:(id)arg1 didSelectGroupAtIndex:(long long)arg2 tapped:(BOOL)arg3;
+- (void)groupPicker:(id)arg1 didDeselectGroupAtIndex:(long long)arg2;
+- (void)groupPicker:(id)arg1 didSelectGroupAtIndex:(long long)arg2 tapped:(BOOL)arg3;
 - (id)init;
 - (id)initWithAvatarRecord:(id)arg1 avtViewSessionProvider:(id)arg2 environment:(id)arg3 isCreating:(BOOL)arg4;
 - (long long)interfaceOrientationForFaceTrackingManager:(id)arg1;
@@ -147,15 +151,17 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)prepareForPresetsScrollTestOnCategory:(id)arg1 readyHandler:(CDUnknownBlockType)arg2;
-- (void)presentActionSheetForSelection:(id)arg1 sender:(id)arg2;
+- (void)presentActionSheetForSuppPicker:(id)arg1 sender:(id)arg2;
 - (id)presetSectionItemForIndexPath:(id)arg1;
 - (void)rebuildUIModelAfterSelectionInSection:(id)arg1 senderRect:(struct CGRect)arg2;
 - (void)reloadCollectionViewDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetAllSectionControllersStateToDefault;
-- (void)sectionHeaderView:(id)arg1 didTapAccessorySelection:(id)arg2 sender:(id)arg3;
+- (void)sectionHeaderView:(id)arg1 didSelectItem:(id)arg2 forPicker:(id)arg3 sender:(id)arg4;
+- (void)sectionHeaderView:(id)arg1 didTapSupplementalPicker:(id)arg2 sender:(id)arg3;
 - (void)selectCategory:(id)arg1 withCompletionDelay:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)selectedItemInSection:(id)arg1;
 - (void)setupCollapsibleHeaderIfNeededForLayout:(id)arg1 withSession:(id)arg2;
+- (void)setupGroupSelectorIfNeeded;
 - (void)setupImageView;
 - (void)setupPreview:(CDUnknownBlockType)arg1;
 - (void)setupTapGestureForView:(id)arg1;
@@ -165,11 +171,12 @@
 - (void)transitionLiveViewToFront;
 - (void)transitionStaticViewToFront;
 - (void)transitionToLiveViewAnimated:(BOOL)arg1;
+- (void)updateAlphaAssetsLabelFrameIfNeeded;
 - (void)updateCollapsibleHeaderHeightConstraintsAnimated:(BOOL)arg1;
 - (void)updateForChangedSelectionIfNeeded;
-- (void)updateForSelectionOfAccessoryItem:(id)arg1 senderRect:(struct CGRect)arg2;
 - (void)updateForSelectionOfItem:(id)arg1 controller:(id)arg2;
 - (void)updateForSelectionOfItem:(id)arg1 inSection:(id)arg2 senderRect:(struct CGRect)arg3;
+- (void)updateForSelectionOfSupplementalItem:(id)arg1 senderRect:(struct CGRect)arg2;
 - (void)updateHeaderDependentLayoutWithHeaderFrame:(struct CGRect)arg1 fittingSize:(struct CGSize)arg2;
 - (void)updateImageViewWithPosedAvatarRecordForcingRender:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateLayoutAttributes;

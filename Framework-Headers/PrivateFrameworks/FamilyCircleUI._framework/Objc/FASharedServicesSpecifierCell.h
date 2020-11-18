@@ -13,6 +13,7 @@
     NSLayoutConstraint *_widthConstraint;
 }
 
++ (long long)cellStyle;
 - (void).cxx_destruct;
 - (id)blankIcon;
 - (id)getLazyIcon;

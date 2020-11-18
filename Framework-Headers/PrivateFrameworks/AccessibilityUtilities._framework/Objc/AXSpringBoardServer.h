@@ -37,7 +37,7 @@
 - (id)_axSpringBoardServerInstanceIfExists;
 - (void)_didConnectToClient;
 - (void)_didConnectToServer;
-- (void)_getPasscodeStatusImmediate:(CDUnknownBlockType)arg1;
+- (void)_getPasscodeStatusImmediate:(CDUnknownBlockType)arg1 passcodeStatusRequired:(BOOL)arg2;
 - (id)_handleActionResult:(id)arg1;
 - (id)_handleReachabilityResult:(id)arg1;
 - (id)_handleReplyResult:(id)arg1;
@@ -51,9 +51,9 @@
 - (BOOL)_shouldValidateEntitlements;
 - (void)_wasDisconnectedFromClient;
 - (void)_willClearServer;
-- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
+- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(BOOL)arg3;
 - (void)activateSOSMode;
-- (int)activeApplicationOrientation;
+- (long long)activeApplicationOrientation;
 - (long long)activeInterfaceOrientation;
 - (void)activeInterfaceOrientation:(CDUnknownBlockType)arg1;
 - (id)allowedMedusaGestures;
@@ -83,6 +83,7 @@
 - (id)init;
 - (id)installedApps;
 - (BOOL)isAppSwitcherVisible;
+- (BOOL)isBannerVisible;
 - (BOOL)isControlCenterVisible;
 - (BOOL)isDarkModeActive;
 - (BOOL)isDockVisible;
@@ -93,7 +94,6 @@
 - (BOOL)isMediaPlaying;
 - (BOOL)isMediaPlayingForApp:(id)arg1;
 - (void)isMediaPlayingForApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)isMultiTaskingActive;
 - (BOOL)isNonExclusiveSystemUIFocusableIncludingPIPWindow:(BOOL)arg1;
 - (BOOL)isNotificationCenterVisible;
 - (BOOL)isNotificationVisible;
@@ -141,7 +141,6 @@
 - (void)pauseMedia;
 - (void)pauseMediaForApp:(id)arg1;
 - (BOOL)performMedusaGesture:(unsigned long long)arg1;
-- (void)performVoiceShortcutWithIdentifier:(id)arg1 bundleID:(id)arg2;
 - (int)pid;
 - (void)pid:(CDUnknownBlockType)arg1;
 - (int)purpleBuddyPID;
@@ -151,7 +150,7 @@
 - (void)rebootDevice;
 - (void)registerReachabilityHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)registerSpringBoardActionHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
-- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
+- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(BOOL)arg3;
 - (void)removeActionHandler:(id)arg1;
 - (void)removeReachabilityHandler:(id)arg1;
 - (void)resetDimTimer;
@@ -160,7 +159,7 @@
 - (void)revealSpotlight;
 - (id)runningAppPIDs;
 - (id)runningAppProcesses;
-- (void)screenLockStatus:(CDUnknownBlockType)arg1;
+- (void)screenLockStatus:(CDUnknownBlockType)arg1 passcodeStatusRequired:(BOOL)arg2;
 - (void)setCancelGestureActivation:(unsigned long long)arg1 cancelEnabled:(BOOL)arg2;
 - (void)setCaptionPanelContextId:(unsigned int)arg1;
 - (void)setDockIconActivationMode:(unsigned long long)arg1;

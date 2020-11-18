@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
 
-@class NSString, SBAppStatusBarSettings, SBApplicationSceneView, SBSceneHandle, UIView;
+@class NSString, SBAppStatusBarSettings, SBApplicationSceneHandle, SBApplicationSceneView, UIView;
 @protocol SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
 @interface SBApplicationSceneViewController : SBSceneViewController <SBApplicationSceneViewControlling>
@@ -30,7 +30,7 @@
 @property (strong, nonatomic, getter=_overrideStatusBarSettings, setter=_setOverrideStatusBarSettings:) SBAppStatusBarSettings *overrideStatusBarSettings; // @synthesize overrideStatusBarSettings=_overrideStatusBarSettings;
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
-@property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (readonly, nonatomic) SBApplicationSceneHandle *sceneHandle;
 @property (readonly, nonatomic, getter=_sceneView) SBApplicationSceneView *sceneView; // @dynamic sceneView;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly) Class superclass;

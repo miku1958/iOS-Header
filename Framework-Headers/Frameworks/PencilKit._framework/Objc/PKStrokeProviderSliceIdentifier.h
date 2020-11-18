@@ -27,8 +27,11 @@
 @property (readonly, nonatomic) double tStart; // @synthesize tStart=_tStart;
 @property (readonly, nonatomic) struct _PKStrokeID version; // @synthesize version=_version;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 version:(struct _PKStrokeID)arg2 tStart:(double)arg3 tEnd:(double)arg4;
 - (BOOL)isEqual:(id)arg1;
 

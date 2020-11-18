@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSArray, NSMutableArray, NSString, RBEventQueueEvent;
+@class NSArray, NSMutableArray, RBEventQueueEvent;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface RBEventQueue : NSObject <BSDescriptionProviding>
+@interface RBEventQueue : NSObject
 {
     NSMutableArray *_eventQueue;
     NSObject<OS_dispatch_queue> *_queue;
@@ -22,28 +20,17 @@
 }
 
 @property (readonly, nonatomic) unsigned long long count;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *events; // @synthesize events=_eventQueue;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) RBEventQueueEvent *nextEvent;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_createTimerWithInterval:(double)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_queue_processEvents;
-- (void)_queue_startEventTimer;
-- (void)_queue_stopEventTimer;
 - (void)addEvent:(id)arg1;
 - (void)addEvents:(id)arg1;
 - (void)batchModify:(CDUnknownBlockType)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)description;
 - (id)initWithQueue:(id)arg1;
 - (void)removeEvent:(id)arg1;
 - (void)removeEvents:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

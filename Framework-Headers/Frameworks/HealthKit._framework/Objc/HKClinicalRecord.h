@@ -29,7 +29,7 @@
 - (void).cxx_destruct;
 - (void)_setDisplayName:(id)arg1;
 - (void)_setFHIRResource:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

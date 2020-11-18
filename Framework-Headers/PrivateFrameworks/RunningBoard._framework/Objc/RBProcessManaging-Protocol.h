@@ -6,7 +6,7 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class BSAuditToken, NSSet, RBProcess, RBProcessStateChangeSet, RBSLaunchRequest, RBSProcessHandle, RBSProcessIdentity, RBSProcessInstance, RBSProcessPredicate, RBSTerminateRequest, RBSystemState;
+@class NSSet, RBProcess, RBProcessStateChangeSet, RBSAuditToken, RBSLaunchRequest, RBSProcessHandle, RBSProcessIdentity, RBSProcessInstance, RBSProcessPredicate, RBSTerminateRequest, RBSystemState;
 @protocol RBSProcessIdentifier;
 
 @protocol RBProcessManaging <NSObject>
@@ -14,9 +14,9 @@
 - (NSSet *)busyExtensionInstancesFromSet:(NSSet *)arg1;
 - (void)didUpdateProcessStates:(RBProcessStateChangeSet *)arg1 completion:(void (^)(void))arg2;
 - (RBSProcessHandle *)executeLaunchRequest:(RBSLaunchRequest *)arg1 withError:(out id *)arg2;
-- (BOOL)executeTerminateRequest:(RBSTerminateRequest *)arg1 withError:(out id *)arg2;
+- (void)executeTerminateRequest:(RBSTerminateRequest *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (BOOL)isActiveProcess:(RBProcess *)arg1;
-- (RBProcess *)processForAuditToken:(BSAuditToken *)arg1;
+- (RBProcess *)processForAuditToken:(RBSAuditToken *)arg1;
 - (RBProcess *)processForIdentifier:(id<RBSProcessIdentifier>)arg1;
 - (RBProcess *)processForIdentity:(RBSProcessIdentity *)arg1;
 - (RBProcess *)processForInstance:(RBSProcessInstance *)arg1;

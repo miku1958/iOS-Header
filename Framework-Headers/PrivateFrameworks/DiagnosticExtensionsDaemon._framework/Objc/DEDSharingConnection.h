@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class DEDController, DEDSharingInbound, NSMutableDictionary, NSMutableSet, SFDeviceDiscovery, SFService;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_os_log;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface DEDSharingConnection : NSObject
 {
@@ -19,7 +19,6 @@
     NSMutableDictionary *_deviceSessions;
     NSMutableDictionary *_discoveredDevices;
     NSObject<OS_dispatch_queue> *_run_queue;
-    NSObject<OS_os_log> *_log;
     NSObject<OS_dispatch_semaphore> *_bluetoothSessionSemaphore;
     SFService *_pingService;
     SFDeviceDiscovery *_pingDiscovery;
@@ -36,7 +35,6 @@
 @property (strong) NSMutableDictionary *discoveredDevices; // @synthesize discoveredDevices=_discoveredDevices;
 @property (strong) DEDSharingInbound *inbound; // @synthesize inbound=_inbound;
 @property BOOL listenForClients; // @synthesize listenForClients=_listenForClients;
-@property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (strong, nonatomic) SFDeviceDiscovery *pingDiscovery; // @synthesize pingDiscovery=_pingDiscovery;
 @property (strong, nonatomic) SFService *pingService; // @synthesize pingService=_pingService;
 @property (strong, nonatomic) SFDeviceDiscovery *pongDiscovery; // @synthesize pongDiscovery=_pongDiscovery;

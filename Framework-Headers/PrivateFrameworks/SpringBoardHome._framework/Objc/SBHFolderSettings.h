@@ -10,16 +10,14 @@
 {
     BOOL _allowNestedFolders;
     BOOL _pinchToClose;
-    BOOL _oneColumnAtATime;
-    BOOL _sortsIconsAlphabetically;
+    BOOL _animatesPageScrubbing;
     double _minPinchScale;
 }
 
 @property (nonatomic) BOOL allowNestedFolders; // @synthesize allowNestedFolders=_allowNestedFolders;
+@property (nonatomic) BOOL animatesPageScrubbing; // @synthesize animatesPageScrubbing=_animatesPageScrubbing;
 @property (nonatomic) double minPinchScale; // @synthesize minPinchScale=_minPinchScale;
-@property (nonatomic) BOOL oneColumnAtATime; // @synthesize oneColumnAtATime=_oneColumnAtATime;
 @property (nonatomic) BOOL pinchToClose; // @synthesize pinchToClose=_pinchToClose;
-@property (nonatomic) BOOL sortsIconsAlphabetically; // @synthesize sortsIconsAlphabetically=_sortsIconsAlphabetically;
 
 + (id)settingsControllerModule;
 - (void)setDefaultValues;

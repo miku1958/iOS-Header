@@ -14,17 +14,19 @@
 {
     NSArray *_textLineRects;
     BOOL _appliesShadow;
+    BOOL _hidesSourceViewDuringDropAnimation;
     UIBezierPath *_visiblePath;
+    UIBezierPath *_shadowPath;
     UIColor *_backgroundColor;
     long long _previewMode;
     double _textPathCornerRadius;
-    UIBezierPath *_shadowPath;
     struct UIEdgeInsets _textPathInsets;
 }
 
 @property (nonatomic) BOOL appliesShadow; // @synthesize appliesShadow=_appliesShadow;
 @property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) UIBezierPath *effectiveShadowPath;
+@property (nonatomic) BOOL hidesSourceViewDuringDropAnimation; // @synthesize hidesSourceViewDuringDropAnimation=_hidesSourceViewDuringDropAnimation;
 @property (nonatomic, getter=_previewMode, setter=_setPreviewMode:) long long previewMode; // @synthesize previewMode=_previewMode;
 @property (copy, nonatomic) UIBezierPath *shadowPath; // @synthesize shadowPath=_shadowPath;
 @property (readonly, nonatomic, getter=_isSingleLineText) BOOL singleLineText;

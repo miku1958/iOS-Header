@@ -23,7 +23,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSDate, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsInlinePlaybackController, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate, UIDragSession;
+@protocol PXAnonymousView, PXPhotosDetailsAssetsWidgetEventTracker, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate, UIDragSession;
 
 @interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, PXPhotosDetailsInlinePlaybackControllerDelegate, UIDragInteractionDelegate, PXUIWidget, PXOneUpPresentationDelegate>
 {
@@ -38,8 +38,8 @@
     BOOL __showSelectionButton;
     BOOL __transitionWithoutAnimation;
     BOOL _hasLoadedContentData;
-    BOOL __needsAggdLoggingForCuratedAssetsCount;
-    BOOL __needsAggdLoggingForUncuratedAssetsCount;
+    BOOL _didLogCuratedAssetCount;
+    BOOL _didLogUncuratedAssetCount;
     PXOneUpPresentation *_oneUpPresentation;
     id<PXWidgetDelegate> _widgetDelegate;
     PXWidgetSpec *_spec;
@@ -53,6 +53,7 @@
     PXBasicUIViewTileAnimator *__tileAnimator;
     PXUIAssetsScene *__assetsScene;
     PXPhotosDetailsInlinePlaybackController *__inlinePlaybackController;
+    id<PXPhotosDetailsAssetsWidgetEventTracker> _eventTracker;
     PXLayoutGenerator *__layoutGenerator;
     PXSectionedLayoutEngine *__layoutEngine;
     PXAssetReference *__navigatedAssetReference;
@@ -85,8 +86,6 @@
 @property (strong, nonatomic, setter=_setLoadCoordinationToken:) PXPhotosDetailsLoadCoordinationToken *_loadCoordinationToken; // @synthesize _loadCoordinationToken=__loadCoordinationToken;
 @property (readonly, nonatomic) PXPhotoKitUIMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
 @property (readonly, nonatomic) PXAssetReference *_navigatedAssetReference; // @synthesize _navigatedAssetReference=__navigatedAssetReference;
-@property (nonatomic, setter=_setNeedsAggdLoggingForCuratedAssetsCount:) BOOL _needsAggdLoggingForCuratedAssetsCount; // @synthesize _needsAggdLoggingForCuratedAssetsCount=__needsAggdLoggingForCuratedAssetsCount;
-@property (nonatomic, setter=_setNeedsAggdLoggingForUncuratedAssetsCount:) BOOL _needsAggdLoggingForUncuratedAssetsCount; // @synthesize _needsAggdLoggingForUncuratedAssetsCount=__needsAggdLoggingForUncuratedAssetsCount;
 @property (strong, nonatomic, setter=_setPhotosDataSource:) PXPhotosDataSource *_photosDataSource; // @synthesize _photosDataSource=__photosDataSource;
 @property (readonly, nonatomic) UIPinchGestureRecognizer *_pinchGesture; // @synthesize _pinchGesture=__pinchGesture;
 @property (readonly, nonatomic) PXSectionedSelectionManager *_selectionManager; // @synthesize _selectionManager;
@@ -109,15 +108,21 @@
 @property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didLogCuratedAssetCount; // @synthesize didLogCuratedAssetCount=_didLogCuratedAssetCount;
+@property (nonatomic) BOOL didLogUncuratedAssetCount; // @synthesize didLogUncuratedAssetCount=_didLogUncuratedAssetCount;
 @property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
+@property (readonly, nonatomic) id<PXPhotosDetailsAssetsWidgetEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
+@property (readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled; // @synthesize faceModeEnabled=_faceModeEnabled;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
 @property (nonatomic, setter=_setHasLoadedContentData:) BOOL hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInEditMode;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation; // @synthesize oneUpPresentation=_oneUpPresentation;
 @property (nonatomic, getter=isSelecting) BOOL selecting; // @synthesize selecting=_selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -126,7 +131,9 @@
 @property (readonly, nonatomic) BOOL supportsFaceMode;
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
+@property (readonly, nonatomic) BOOL wantsFocus;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetEditingDelegate> widgetEditingDelegate;
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 - (void).cxx_destruct;
@@ -146,7 +153,7 @@
 - (void)_invalidateLayoutGenerator;
 - (BOOL)_isLocationWithinCurrentLayoutBounds:(struct CGPoint)arg1;
 - (void)_loadTilingController;
-- (void)_logAggdCounterForAssetCountsIfNecessary;
+- (void)_logAssetCountsIfNecessary;
 - (void)_performTilingChangeWithoutAnimationTransition:(CDUnknownBlockType)arg1;
 - (void)_presentConfidentialityWarning;
 - (id)_regionOfInterestForAssetReference:(id)arg1;

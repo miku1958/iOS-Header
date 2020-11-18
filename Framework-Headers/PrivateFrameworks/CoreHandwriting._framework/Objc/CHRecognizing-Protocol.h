@@ -11,12 +11,15 @@
 @protocol CHRecognizing <NSObject>
 
 @property (strong, nonatomic) NSCharacterSet *activeCharacterSet;
+@property (nonatomic) int autoCapitalizationMode;
 @property (nonatomic) int contentType;
+@property (readonly, nonatomic) BOOL enableCachingIfAvailable;
+@property (readonly, nonatomic) BOOL enableGen2CharacterLMIfAvailable;
+@property (readonly, nonatomic) BOOL enableGen2ModelIfAvailable;
 @property (readonly, copy, nonatomic) NSLocale *locale;
 @property (nonatomic) unsigned long long maxRecognitionResultCount;
 @property (nonatomic) struct CGSize minimumDrawingSize;
 @property (readonly, nonatomic) int recognitionMode;
-@property (nonatomic) BOOL shouldEnableCachingIfAvailable;
 
 - (id)initWithMode:(int)arg1 locale:(NSLocale *)arg2;
 @end

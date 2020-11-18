@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeUI/HUGridCellLayoutOptions.h>
+#import <HomeUI/HUGridBannerCellLayoutOptions.h>
 
 @class UIFont;
 
-@interface HUGridStatusBannerCellLayoutOptions : HUGridCellLayoutOptions
+@interface HUGridStatusBannerCellLayoutOptions : HUGridBannerCellLayoutOptions
 {
     double _titleInterLineSpacing;
     double _trailingInset;
@@ -26,12 +26,12 @@
     double _verticalLabelSpacing;
     double _verticalSpacingForLineView;
     double _verticalSpacingForLipElements;
-    UIFont *_continueLabelFont;
+    UIFont *_footerViewLabelFont;
 }
 
 @property (nonatomic) double cellHeight; // @synthesize cellHeight=_cellHeight;
-@property (strong, nonatomic) UIFont *continueLabelFont; // @synthesize continueLabelFont=_continueLabelFont;
 @property (strong, nonatomic) UIFont *descriptionFont; // @synthesize descriptionFont=_descriptionFont;
+@property (strong, nonatomic) UIFont *footerViewLabelFont; // @synthesize footerViewLabelFont=_footerViewLabelFont;
 @property (nonatomic) double horizontalItemSpacing; // @synthesize horizontalItemSpacing=_horizontalItemSpacing;
 @property (nonatomic) double iconHeight; // @synthesize iconHeight=_iconHeight;
 @property (nonatomic) double iconTopInset; // @synthesize iconTopInset=_iconTopInset;
@@ -50,7 +50,7 @@
 + (id)defaultOptionsForCellSizeSubclass:(long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)statusBannerCellHeightForWidth:(double)arg1 havingTitleAndDescription:(id)arg2 forContentSizeCategory:(id)arg3;
+- (double)statusBannerCellHeightForWidth:(double)arg1 title:(id)arg2 description:(id)arg3 forContentSizeCategory:(id)arg4;
 
 @end
 

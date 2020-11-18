@@ -16,9 +16,11 @@
     NSDictionary *_headers;
     NSString *_caller;
     NSNumber *_timeout;
+    NSNumber *_apiVersion;
     long long _options;
 }
 
+@property (copy, nonatomic) NSNumber *apiVersion; // @synthesize apiVersion=_apiVersion;
 @property (copy, nonatomic) NSString *caller; // @synthesize caller=_caller;
 @property (copy, nonatomic) NSString *endpoint; // @synthesize endpoint=_endpoint;
 @property (copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
@@ -29,6 +31,7 @@
 
 + (id)requestPropertiesWithEndpoint:(id)arg1;
 + (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 caller:(id)arg4;
++ (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 headers:(id)arg4 caller:(id)arg5 timeout:(id)arg6 apiVersion:(id)arg7 options:(long long)arg8;
 + (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 headers:(id)arg4 caller:(id)arg5 timeout:(id)arg6 options:(long long)arg7;
 - (void).cxx_destruct;
 - (id)URLRequestWithConfiguration:(id)arg1;

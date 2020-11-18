@@ -6,16 +6,18 @@
 
 #import <SafariSharedUI/WBSGeolocationPreferenceManager.h>
 
-@class UIWebGeolocationPolicyDecider;
+@class CLLocationManager, UIWebGeolocationPolicyDecider;
 
 @interface _SFGeolocationPermissionManager : WBSGeolocationPreferenceManager
 {
     UIWebGeolocationPolicyDecider *_policyDecider;
+    CLLocationManager *_locationManager;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_showDialogRequestingPermissionForURL:(id)arg1 frame:(id)arg2 dialogPresenter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)hasPreciseLocationPermission;
 - (void)requestPermissionForURL:(id)arg1 frame:(id)arg2 dialogPresenter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <VisualPairing/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureSession, AVCaptureVideoPreviewLayer, CAShapeLayer, NSObject, NSString;
+@class AVCaptureDevice, AVCaptureSession, AVCaptureVideoPreviewLayer, CAShapeLayer, NSDate, NSError, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface VPScannerView : UIView <AVCaptureVideoDataOutputSampleBufferDelegate>
@@ -30,14 +30,26 @@
     long long _autoFocusRangeRestriction;
     long long _focusMode;
     CDUnknownBlockType _scannedCodeHandler;
+    NSDate *_startDate;
+    NSDate *_firstScannedCodeDate;
+    NSDate *_firstCapturedFrameDate;
+    unsigned long long _readerResetCount;
+    unsigned long long _extractedCodeLength;
+    NSError *_latestError;
 }
 
 @property (nonatomic) long long autoFocusRangeRestriction; // @synthesize autoFocusRangeRestriction=_autoFocusRangeRestriction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned long long extractedCodeLength; // @synthesize extractedCodeLength=_extractedCodeLength;
+@property (strong) NSDate *firstCapturedFrameDate; // @synthesize firstCapturedFrameDate=_firstCapturedFrameDate;
+@property (strong) NSDate *firstScannedCodeDate; // @synthesize firstScannedCodeDate=_firstScannedCodeDate;
 @property (nonatomic) long long focusMode; // @synthesize focusMode=_focusMode;
 @property (readonly) unsigned long long hash;
+@property (strong) NSError *latestError; // @synthesize latestError=_latestError;
+@property unsigned long long readerResetCount; // @synthesize readerResetCount=_readerResetCount;
 @property (copy, nonatomic) CDUnknownBlockType scannedCodeHandler; // @synthesize scannedCodeHandler=_scannedCodeHandler;
+@property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -47,6 +59,7 @@
 - (void)_handleCaptureSessionStarted:(id)arg1;
 - (void)_handleCaptureSessionStopped:(id)arg1;
 - (void)_initCommon;
+- (void)_postMetricAndResetAnalyticsState;
 - (id)_setupCapture;
 - (id)_setupDevice:(id)arg1;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;

@@ -23,7 +23,7 @@
 - (id)_nowPlaying;
 - (id)_queueDescriptor;
 - (BOOL)_shouldAccessCache;
-- (id)_systemServer;
+- (void)onSystemServer:(CDUnknownBlockType)arg1;
 - (void)openToPlayQueueDescriptor:(id)arg1;
 - (long long)playbackState;
 - (void)setUserQueueModificationsDisabled:(BOOL)arg1;

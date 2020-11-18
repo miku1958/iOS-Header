@@ -25,12 +25,13 @@ __attribute__((visibility("hidden")))
 + (id)unassociationCache;
 + (id)unassociationCacheAccessQueue;
 - (void).cxx_destruct;
+- (void)_attachWindow:(id)arg1;
 - (void)_detachWindow:(id)arg1;
 - (id)_displayInfoProvider;
-- (void)_invalidateScreen;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (struct CGRect)_referenceBounds;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
+- (void)_screenDisconnected:(id)arg1;
 - (void)_setKeepContextAssociationInBackground:(BOOL)arg1;
 - (BOOL)_shouldAllowFencing;
 - (id)_synthesizedSettings;

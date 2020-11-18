@@ -11,6 +11,7 @@
 @interface _TtC5TeaUI26TabBarNavigationController : _TtC5TeaUI20NavigationController
 {
     MISSING_TYPE *rootViewController;
+    MISSING_TYPE *commandCenter;
     MISSING_TYPE *animateAlongsideTabBarSnapshot;
     MISSING_TYPE *viewControllerDepth;
 }

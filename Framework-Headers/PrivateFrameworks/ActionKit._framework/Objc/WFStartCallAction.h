@@ -12,15 +12,15 @@
 
 - (id)airplaneModeError;
 - (id)appConfigurationRequiredError;
-- (id)appIdentifierForIdentifier:(id)arg1;
 - (long long)callCapability;
 - (id)callingServiceNotAvailableError;
 - (id)contactNotSupportedByAppErrorForContacts:(id)arg1;
+- (id)displayableAppIdentifierForBundleIdentifier:(id)arg1;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (id)errorFromStartCallResponse:(id)arg1 intent:(id)arg2;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (id)localizedCallServiceName;
 - (id)localizedKeyParameterDisplayName;
 - (long long)preferredCallProvider;

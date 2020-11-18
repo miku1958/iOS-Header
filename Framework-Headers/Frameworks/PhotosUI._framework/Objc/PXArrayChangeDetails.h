@@ -32,6 +32,7 @@
 
 + (BOOL)_mutableCopyInputs;
 + (id)changeDetailsFromArray:(id)arg1 toArray:(id)arg2 changedObjects:(id)arg3;
++ (id)changeDetailsFromArray:(id)arg1 toArray:(id)arg2 changedObjects:(id)arg3 objectComparator:(CDUnknownBlockType)arg4;
 + (id)changeDetailsFromFetchResultChangeDetails:(id)arg1;
 + (id)changeDetailsWithChangedIndexRange:(struct _NSRange)arg1;
 + (id)changeDetailsWithChangedIndexes:(id)arg1;
@@ -63,6 +64,7 @@
 - (id)init;
 - (id)initWithIncrementalChangeDetailsRemovedIndexes:(id)arg1 insertedIndexes:(id)arg2 movesToIndexes:(id)arg3 movesFromIndexes:(const struct __CFArray *)arg4 changedIndexes:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isOnlyInsertionAtEnd:(BOOL *)arg1 orRemovalAtEnd:(BOOL *)arg2 countBeforeChange:(long long)arg3 countAfterChange:(long long)arg4;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

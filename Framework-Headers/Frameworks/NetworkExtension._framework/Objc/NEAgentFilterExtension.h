@@ -111,6 +111,8 @@
 - (void)sendFilterStatus:(long long)arg1 withError:(long long)arg2;
 - (void)sendSocketContentFilterRequest;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)startControlExtensionWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)startDataExtensionWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startFilter;
 - (void)startFilterExtension;
 - (void)startWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

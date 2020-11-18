@@ -18,12 +18,18 @@ __attribute__((visibility("hidden")))
     NSArray *_allDemoResults;
     HKHostingAreaLayoutView *_pickerInputView;
     UIPickerView *_resultPicker;
+    NSArray *_allAlgorithmVersions;
+    HKHostingAreaLayoutView *_algorithmVersionPickerInputView;
+    UIPickerView *_algorithmVersionPicker;
     NPSManager *_syncManager;
     NSArray *_demoResultKeys;
     HKHealthStore *_healthStore;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
 }
 
+@property (strong, nonatomic) UIPickerView *algorithmVersionPicker; // @synthesize algorithmVersionPicker=_algorithmVersionPicker;
+@property (strong, nonatomic) HKHostingAreaLayoutView *algorithmVersionPickerInputView; // @synthesize algorithmVersionPickerInputView=_algorithmVersionPickerInputView;
+@property (readonly, nonatomic) NSArray *allAlgorithmVersions; // @synthesize allAlgorithmVersions=_allAlgorithmVersions;
 @property (readonly, nonatomic) NSArray *allDemoResults; // @synthesize allDemoResults=_allDemoResults;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDeletingSamples) BOOL deletingSamples; // @synthesize deletingSamples=_deletingSamples;
@@ -39,6 +45,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_buttonCellForTableView:(id)arg1;
+- (unsigned long long)_overrideAlgorithmVersion;
+- (void)_saveOverrideAlgorithmVersion:(long long)arg1;
+- (id)_styleValue1CellForTableView:(id)arg1 inputView:(id)arg2;
+- (id)_versionForAlgorithmVersionText:(id)arg1;
 - (void)clearCellIndexNumberLabels;
 - (id)initWithHealthStore:(id)arg1;
 - (void)keyboardDidDismiss:(id)arg1;

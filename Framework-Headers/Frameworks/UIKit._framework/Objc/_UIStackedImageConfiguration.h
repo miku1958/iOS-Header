@@ -29,6 +29,7 @@
     double _rotationAmount;
     double _scaleSizeIncrease;
     double _pressedScaleAdjustment;
+    double _unmaskedOverlayScaleFactor;
     double _cornerRadius;
     double _continuousCornerRadiusEnabled;
     double _specularHighlightHorizontalPositionSensitivity;
@@ -116,6 +117,7 @@
 @property (nonatomic) double specularHighlightVerticalPositionSensitivity; // @synthesize specularHighlightVerticalPositionSensitivity=_specularHighlightVerticalPositionSensitivity;
 @property (nonatomic) double specularOpacity; // @synthesize specularOpacity=_specularOpacity;
 @property (nonatomic) struct CGPoint translationOffset; // @synthesize translationOffset=_translationOffset;
+@property (nonatomic) double unmaskedOverlayScaleFactor; // @synthesize unmaskedOverlayScaleFactor=_unmaskedOverlayScaleFactor;
 @property (nonatomic) double unpressedDuration; // @synthesize unpressedDuration=_unpressedDuration;
 @property (nonatomic) BOOL useSeparateUnfocusedShadowImage; // @synthesize useSeparateUnfocusedShadowImage=_useSeparateUnfocusedShadowImage;
 @property (nonatomic) double zDepth; // @synthesize zDepth=_zDepth;

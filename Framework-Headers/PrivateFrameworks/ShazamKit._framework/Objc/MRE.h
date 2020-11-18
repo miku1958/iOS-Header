@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) void *mreInstance; // @synthesize mreInstance=_mreInstance;
 
-- (void)ConvertException:(const struct exception *)arg1 toError:(id *)arg2;
-- (void)ConvertSystemError:(const struct system_error *)arg1 toError:(id *)arg2;
-- (void)FillUnknownError:(id *)arg1;
+- (BOOL)ConvertException:(const struct exception *)arg1 toError:(id *)arg2;
+- (BOOL)ConvertSystemError:(const struct system_error *)arg1 toError:(id *)arg2;
+- (BOOL)FillUnknownError:(id *)arg1;
 - (void)dealloc;
 - (id)initWithBundle:(id)arg1 cacheDir:(id)arg2 density:(long long)arg3 bufferSize:(long long)arg4 error:(id *)arg5;
 - (id)initWithBundle:(id)arg1 cacheDir:(id)arg2 density:(long long)arg3 error:(id *)arg4;

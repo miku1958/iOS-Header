@@ -24,6 +24,7 @@
     NSString *_deviceManufacturer;
     NSString *_deviceModel;
     ASCodableCloudKitSample *_sample;
+    NSString *_scwi;
     BOOL _isIndoorWorkout;
     BOOL _isWatchWorkout;
     struct {
@@ -57,6 +58,7 @@
 @property (nonatomic) BOOL hasIsIndoorWorkout;
 @property (nonatomic) BOOL hasIsWatchWorkout;
 @property (readonly, nonatomic) BOOL hasSample;
+@property (readonly, nonatomic) BOOL hasScwi;
 @property (nonatomic) BOOL hasTotalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalDistanceInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalEnergyBurnedInCanonicalUnit;
@@ -64,6 +66,7 @@
 @property (nonatomic) BOOL isIndoorWorkout; // @synthesize isIndoorWorkout=_isIndoorWorkout;
 @property (nonatomic) BOOL isWatchWorkout; // @synthesize isWatchWorkout=_isWatchWorkout;
 @property (strong, nonatomic) ASCodableCloudKitSample *sample; // @synthesize sample=_sample;
+@property (strong, nonatomic) NSString *scwi; // @synthesize scwi=_scwi;
 @property (nonatomic) double totalBasalEnergyBurnedInCanonicalUnit; // @synthesize totalBasalEnergyBurnedInCanonicalUnit=_totalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) double totalDistanceInCanonicalUnit; // @synthesize totalDistanceInCanonicalUnit=_totalDistanceInCanonicalUnit;
 @property (nonatomic) double totalEnergyBurnedInCanonicalUnit; // @synthesize totalEnergyBurnedInCanonicalUnit=_totalEnergyBurnedInCanonicalUnit;

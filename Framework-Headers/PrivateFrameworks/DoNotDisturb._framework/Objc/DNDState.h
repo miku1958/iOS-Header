@@ -9,18 +9,22 @@
 #import <DoNotDisturb/NSCopying-Protocol.h>
 #import <DoNotDisturb/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDate;
 
 @interface DNDState : NSObject <NSCopying, NSSecureCoding>
 {
-    unsigned long long _suppressionState;
     NSArray *_activeModeAssertionMetadata;
+    unsigned long long _suppressionState;
+    NSDate *_userVisibleTransitionDate;
+    unsigned long long _userVisibleTransitionLifetimeType;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active; // @dynamic active;
-@property (readonly, copy, nonatomic) NSArray *activeModeAssertionMetadata; // @synthesize activeModeAssertionMetadata=_activeModeAssertionMetadata;
+@property (readonly, copy, nonatomic) NSArray *activeModeAssertionMetadata; // @dynamic activeModeAssertionMetadata;
 @property (readonly, copy, nonatomic) NSArray *activeModeIdentifiers; // @dynamic activeModeIdentifiers;
 @property (readonly, nonatomic) unsigned long long suppressionState; // @synthesize suppressionState=_suppressionState;
+@property (readonly, copy, nonatomic) NSDate *userVisibleTransitionDate; // @synthesize userVisibleTransitionDate=_userVisibleTransitionDate;
+@property (readonly, nonatomic) unsigned long long userVisibleTransitionLifetimeType; // @synthesize userVisibleTransitionLifetimeType=_userVisibleTransitionLifetimeType;
 @property (readonly, nonatomic) BOOL willSuppressInterruptions; // @dynamic willSuppressInterruptions;
 
 + (BOOL)supportsSecureCoding;
@@ -30,7 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSuppressionState:(unsigned long long)arg1 activeModeAssertionMetadata:(id)arg2;
+- (id)initWithSuppressionState:(unsigned long long)arg1 activeModeAssertionMetadata:(id)arg2 userVisibleTransitionDate:(id)arg3 userVisibleTransitionLifetimeType:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

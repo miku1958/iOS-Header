@@ -10,5 +10,6 @@
 - (id)contextStoreKeyPathForCurrentState;
 - (id)contextStorePredicate;
 - (unsigned int)contextStoreQualityOfService;
+- (BOOL)requiresEventInfoAsInput;
 @end
 

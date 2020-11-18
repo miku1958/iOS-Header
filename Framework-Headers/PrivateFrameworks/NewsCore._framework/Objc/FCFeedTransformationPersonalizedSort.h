@@ -35,6 +35,7 @@
 + (id)transformationWithPersonalizer:(id)arg1 feedItemScores:(id)arg2 sortOptions:(long long)arg3 configurationSet:(long long)arg4;
 + (id)transformationWithPersonalizer:(id)arg1 sortOptions:(long long)arg2;
 - (void).cxx_destruct;
+- (id)personalizedHeadlines:(id)arg1;
 - (id)transformFeedItems:(id)arg1;
 - (id)transformHeadlines:(id)arg1;
 

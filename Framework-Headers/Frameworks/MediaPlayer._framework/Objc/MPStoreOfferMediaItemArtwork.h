@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPConcreteMediaItemArtwork.h>
 
+__attribute__((visibility("hidden")))
 @interface MPStoreOfferMediaItemArtwork : MPConcreteMediaItemArtwork
 {
 }

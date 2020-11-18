@@ -8,12 +8,11 @@
 
 #import <MetalTools/MTLParallelRenderCommandEncoder-Protocol.h>
 
-@class MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLDevice;
 
 @interface MTLToolsParallelRenderCommandEncoder : MTLToolsCommandEncoder <MTLParallelRenderCommandEncoder>
 {
-    MTLToolsPointerArray *_renderCommandEncoders;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,13 +20,9 @@
 @property (readonly) id<MTLDevice> device;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *label;
-@property (readonly, nonatomic) MTLToolsPointerArray *renderCommandEncoders; // @synthesize renderCommandEncoders=_renderCommandEncoders;
 @property (readonly) Class superclass;
 
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
 - (void)endEncoding;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (BOOL)isMemorylessRender;
 - (id)renderCommandEncoder;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

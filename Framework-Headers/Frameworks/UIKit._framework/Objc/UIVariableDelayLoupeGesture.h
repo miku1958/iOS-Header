@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     UIResponder<UITextInput> *_textView;
 }
 
-@property UIResponder<UITextInput> *textView; // @synthesize textView=_textView;
+@property (weak) UIResponder<UITextInput> *textView; // @synthesize textView=_textView;
 
+- (void).cxx_destruct;
 - (BOOL)_allowsForShortDelay;
+- (BOOL)_isGestureType:(long long)arg1;
 - (BOOL)_tracksPointerTouch;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)invalidate;

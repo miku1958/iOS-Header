@@ -19,6 +19,7 @@
 @interface TUCallServicesInterface : NSObject <TUCallServicesXPCClient, TUCallServicesProxyCallActions, TUCallServicesClientCapabilitiesActions, TUAudioDeviceControllerActions, TURouteControllerActions, TUCallFilterControllerActions>
 {
     BOOL _hasRequestedInitialState;
+    BOOL _hasReceivedInitialState;
     BOOL _hasServerLaunched;
     int _connectionRequestNotificationToken;
     id<TUCallServicesXPCServer> _server;
@@ -43,6 +44,7 @@
 @property (copy, nonatomic) NSArray *currentCalls; // @synthesize currentCalls=_currentCalls;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasReceivedInitialState; // @synthesize hasReceivedInitialState=_hasReceivedInitialState;
 @property (nonatomic) BOOL hasRequestedInitialState; // @synthesize hasRequestedInitialState=_hasRequestedInitialState;
 @property (nonatomic) BOOL hasServerLaunched; // @synthesize hasServerLaunched=_hasServerLaunched;
 @property (readonly) unsigned long long hash;
@@ -67,6 +69,7 @@
 - (void)_updateCurrentCalls:(id)arg1;
 - (void)_updateCurrentCalls:(id)arg1 withNotificationsUsingUpdatedCalls:(id)arg2;
 - (void)_updateCurrentCallsWithoutNotifications:(id)arg1;
+- (oneway void)activateInCallUIWithActivityContinuationIdentifier:(id)arg1;
 - (oneway void)answerCallWithRequest:(id)arg1;
 - (id)asynchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (BOOL)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(BOOL)arg3;
@@ -115,10 +118,12 @@
 - (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(id)arg1;
 - (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(id)arg1;
 - (oneway void)setDownlinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
+- (oneway void)setIsSendingVideo:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setRemoteVideoPresentationSizeForCallWithUniqueProxyIdentifier:(id)arg1 size:(struct CGSize)arg2;
 - (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(id)arg1 presentationState:(int)arg2;
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
+- (oneway void)shouldAllowRingingCallStatusIndicator:(BOOL)arg1;
 - (BOOL)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(BOOL)arg3;
 - (oneway void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (oneway void)swapCalls;

@@ -10,14 +10,26 @@
 
 @interface MPModelForYouRecommendationsRequest : MPStoreModelRequest
 {
+    BOOL _withSocial;
+    BOOL _withPlainEditorialNotes;
+    BOOL _withRecentlyPlayed;
     long long _filteringPolicy;
     long long _requestEndpoint;
+    long long _mode;
+    long long _types;
+    long long _displayFilterKinds;
     NSURL *_customForYouURL;
 }
 
 @property (copy, nonatomic) NSURL *customForYouURL; // @synthesize customForYouURL=_customForYouURL;
+@property (nonatomic) long long displayFilterKinds; // @synthesize displayFilterKinds=_displayFilterKinds;
 @property (nonatomic) long long filteringPolicy; // @synthesize filteringPolicy=_filteringPolicy;
+@property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (nonatomic) long long requestEndpoint; // @synthesize requestEndpoint=_requestEndpoint;
+@property (nonatomic) long long types; // @synthesize types=_types;
+@property (nonatomic) BOOL withPlainEditorialNotes; // @synthesize withPlainEditorialNotes=_withPlainEditorialNotes;
+@property (nonatomic) BOOL withRecentlyPlayed; // @synthesize withRecentlyPlayed=_withRecentlyPlayed;
+@property (nonatomic) BOOL withSocial; // @synthesize withSocial=_withSocial;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;

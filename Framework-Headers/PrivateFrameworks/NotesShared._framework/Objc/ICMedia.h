@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSData *assetCryptoInitializationVector; // @dynamic assetCryptoInitializationVector;
 @property (strong, nonatomic) NSData *assetCryptoTag; // @dynamic assetCryptoTag;
 @property (strong, nonatomic) ICAttachment *attachment; // @dynamic attachment;
+@property (readonly, nonatomic) NSString *cacheKey;
+@property (readonly, nonatomic) ICAccount *containerAccount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *filename; // @dynamic filename;
@@ -52,7 +54,6 @@
 + (void)undeleteMedia:(id)arg1;
 - (void).cxx_destruct;
 - (void)accountWillChangeToAccount:(id)arg1;
-- (id)containerAccount;
 - (id)containerDirectoryURL;
 - (id)data;
 - (id)dataWithoutImageMarkupMetadata:(BOOL)arg1;

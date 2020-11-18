@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
     BOOL _maySuppressUpAction;
     int _initialKeyState;
     long long _continuousPathState;
+    BOOL _delayed;
 }
 
 @property (nonatomic) long long continuousPathState; // @synthesize continuousPathState=_continuousPathState;
+@property (nonatomic) BOOL delayed; // @synthesize delayed=_delayed;
 @property (nonatomic) BOOL dragged; // @synthesize dragged=_dragged;
 @property (nonatomic) int fingerID; // @synthesize fingerID=_fingerID;
 @property (nonatomic) struct CGPoint initialDragPoint; // @synthesize initialDragPoint=_initialDragPoint;

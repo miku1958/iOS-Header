@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSString;
 
-@interface _EFSQLCharacterExpression : NSObject <EFSQLExpressable>
+@interface _EFSQLCharacterExpression : NSObject <EFSQLValueExpressable>
 {
     unsigned short _character;
 }
@@ -22,6 +22,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)initWithCharacter:(unsigned short)arg1;
 
 @end

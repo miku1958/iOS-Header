@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSUserDefaults;
+@class NSMutableDictionary;
 
 @interface RMEnrollmentController : NSObject
 {
     NSMutableDictionary *_connectionByServiceName;
     BOOL _synchronous;
-    NSUserDefaults *_remoteManagementUserDefaults;
 }
 
-@property (strong, nonatomic) NSUserDefaults *remoteManagementUserDefaults; // @synthesize remoteManagementUserDefaults=_remoteManagementUserDefaults;
 @property (nonatomic, getter=isSynchronous) BOOL synchronous; // @synthesize synchronous=_synchronous;
 
-+ (id)appleUserEnrollmentServiceURL;
 + (id)synchronousEnrollmentController;
 + (id)userDefaultsEnrollmentURL;
 - (void).cxx_destruct;
@@ -26,10 +23,15 @@
 - (id)_agentProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_daemonConnection;
 - (id)_daemonProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_discoverWebAuthenticationURLForDomain:(id)arg1 port:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_webAuthenticationURL:(id)arg1 withUserIdentifierQuery:(id)arg2;
+- (void)_webAuthenticationURLFromWellKnownURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deviceChannelEnrollmentExistsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)discoverWebAuthenticationURLForUserIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enrollDeviceChannelWithURI:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enrollUserChannelWithURI:(id)arg1 authenticationCredential:(id)arg2 withDataSeparation:(BOOL)arg3 passcodeData:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)init;
+- (void)managementChannelWithAccountIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

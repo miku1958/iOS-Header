@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, WBSSavedPassword;
+@class NSString, WBSPasswordWarning, WBSSavedPassword;
 
 __attribute__((visibility("hidden")))
 @interface SFPasswordCellData : NSObject
 {
-    BOOL _isWeakPassword;
-    BOOL _isReusedPassword;
+    BOOL _savedPasswordIsOnlySavedPasswordForHighLevelDomain;
     WBSSavedPassword *_savedPassword;
+    WBSPasswordWarning *_warning;
 }
 
 @property (readonly, copy, nonatomic) NSString *highLevelDomain;
-@property (nonatomic) BOOL isReusedPassword; // @synthesize isReusedPassword=_isReusedPassword;
-@property (nonatomic) BOOL isWeakPassword; // @synthesize isWeakPassword=_isWeakPassword;
 @property (readonly, nonatomic) WBSSavedPassword *savedPassword; // @synthesize savedPassword=_savedPassword;
+@property (readonly, nonatomic) BOOL savedPasswordIsOnlySavedPasswordForHighLevelDomain; // @synthesize savedPasswordIsOnlySavedPasswordForHighLevelDomain=_savedPasswordIsOnlySavedPasswordForHighLevelDomain;
+@property (readonly, nonatomic) WBSPasswordWarning *warning; // @synthesize warning=_warning;
 
-+ (id)passwordCellDataWithSavedPassword:(id)arg1;
++ (id)passwordCellDataWithSavedPassword:(id)arg1 warning:(id)arg2 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(BOOL)arg3;
 - (void).cxx_destruct;
-- (id)initWithSavedPassword:(id)arg1;
+- (id)initWithSavedPassword:(id)arg1 warning:(id)arg2 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(BOOL)arg3;
 
 @end
 

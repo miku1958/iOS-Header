@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) unsigned long long direction;
 @property (readonly, nonatomic) struct CGRect drawableFrame;
 @property (readonly, nonatomic) double duration;
-@property (readonly, nonatomic) BOOL hasLiveTextureSources;
 @property (readonly, nonatomic) BOOL isBuild;
 @property (readonly, nonatomic) BOOL isFrameRenderer;
 @property (readonly, nonatomic) BOOL isMagicMove;
@@ -28,6 +27,7 @@
 @property (readonly, nonatomic) BOOL isMovieExport;
 @property (readonly, nonatomic) BOOL isOpenGLRenderer;
 @property (readonly, nonatomic) BOOL isPreview;
+@property (readonly, nonatomic) BOOL isSceneRenderingEnabled;
 @property (readonly, nonatomic) BOOL isTransition;
 @property (readonly, nonatomic) BOOL isWarmingUp;
 @property (readonly, nonatomic) NSArray *magicMoveMatches;
@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) NSArray *tags;
 @property (readonly, nonatomic) NSArray *textures;
 @property (readonly, nonatomic) NSDictionary *transitionAttributes;
+@property (readonly, nonatomic) BOOL willRenderWithLiveTextureSources;
 
 @end
 

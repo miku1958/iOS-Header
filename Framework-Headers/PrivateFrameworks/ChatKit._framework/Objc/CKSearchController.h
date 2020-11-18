@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CSSearchQuery, NSArray, NSString;
+@class CKQLPreviewControllerDataSource, CSSearchQuery, NSArray, NSString;
 @protocol CKSearchControllerDelegate;
 
 @interface CKSearchController : NSObject
@@ -17,16 +17,20 @@
     NSString *_currentSearchText;
     unsigned long long _mode;
     CSSearchQuery *_query;
+    NSString *_currentQueryIdentifier;
     CDUnknownBlockType _queryFoundItemHandler;
     CDUnknownBlockType _queryCompletionHandler;
     unsigned long long _sectionIndex;
     NSArray *_results;
+    CKQLPreviewControllerDataSource *_qlPreviewDataSource;
 }
 
+@property (strong, nonatomic) NSString *currentQueryIdentifier; // @synthesize currentQueryIdentifier=_currentQueryIdentifier;
 @property (strong, nonatomic) NSString *currentSearchText; // @synthesize currentSearchText=_currentSearchText;
 @property (weak, nonatomic) id<CKSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL hasMoreResults;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (strong, nonatomic) CKQLPreviewControllerDataSource *qlPreviewDataSource; // @synthesize qlPreviewDataSource=_qlPreviewDataSource;
 @property (strong, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType queryFoundItemHandler; // @synthesize queryFoundItemHandler=_queryFoundItemHandler;
@@ -44,12 +48,13 @@
 + (id)sectionIdentifier;
 + (id)sectionTitle;
 + (BOOL)supportsMenuInteraction;
-+ (BOOL)supportsQuicklook;
++ (BOOL)supportsQuicklookForResult:(id)arg1;
 + (BOOL)useRecencyRankedSearchForMode:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_additionalMenuActionsForResult:(id)arg1;
+- (id)_additionalMenuElementsForResult:(id)arg1;
 - (BOOL)_currentModeIsDetails;
+- (id)_overridingMenuElementsForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (id)_queryContextWithText:(id)arg1;
 - (id)_queryStringWithText:(id)arg1;
@@ -59,6 +64,7 @@
 - (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
 - (id)chatGUIDForSearchableItem:(id)arg1;
+- (id)customLayoutSectionForEnvironment:(id)arg1;
 - (void)deleteAttachmentForResult:(id)arg1;
 - (id)detailsFilterQueriesForChatGUIDs:(id)arg1;
 - (void)didSelectResult:(id)arg1;
@@ -72,7 +78,7 @@
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (unsigned long long)layoutWidth;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
-- (id)menuActionsForResult:(id)arg1 atRect:(struct CGRect)arg2;
+- (id)menuElementsForResult:(id)arg1 atRect:(struct CGRect)arg2;
 - (id)previewViewControllerForResult:(id)arg1;
 - (id)queryAttributesForText:(id)arg1;
 - (id)queryResultsForItems:(id)arg1;

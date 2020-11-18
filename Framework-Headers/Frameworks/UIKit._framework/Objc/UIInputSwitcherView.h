@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 
 + (id)activeInstance;
 + (id)sharedInstance;
+- (BOOL)_canAddLaunchItem;
+- (long long)_indexOfFastSwitchToggleModeForIdentifier:(id)arg1;
 - (long long)_indexOfInputSwitcherItemWithIdentifier:(id)arg1;
 - (BOOL)_isHandBiasSwitchVisible;
 - (id)_itemWithIdentifier:(id)arg1;

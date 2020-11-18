@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_externalTransitStationCodes:1;
         unsigned int read_sourceId:1;
         unsigned int read_transactionLocation:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_externalTransitStationCodes:1;
-        unsigned int wrote_sourceId:1;
-        unsigned int wrote_transactionLocation:1;
-        unsigned int wrote_transactionTimestamp:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,10 +44,6 @@ __attribute__((visibility("hidden")))
 + (Class)externalTransitStationCodeType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsExternalTransitStationCode:(id)arg1;
-- (void)_readExternalTransitStationCodes;
-- (void)_readSourceId;
-- (void)_readTransactionLocation;
 - (void)addExternalTransitStationCode:(id)arg1;
 - (void)clearExternalTransitStationCodes;
 - (void)clearSensitiveFields;
@@ -65,7 +57,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

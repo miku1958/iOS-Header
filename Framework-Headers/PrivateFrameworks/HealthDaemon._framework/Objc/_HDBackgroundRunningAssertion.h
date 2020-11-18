@@ -8,6 +8,7 @@
 
 @class BKSProcessAssertion, CLInUseAssertion, HDHealthStoreClient;
 
+__attribute__((visibility("hidden")))
 @interface _HDBackgroundRunningAssertion : HDAssertion
 {
     BOOL _shouldAcquireCLAssertion;

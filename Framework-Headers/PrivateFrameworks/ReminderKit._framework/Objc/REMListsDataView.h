@@ -19,6 +19,7 @@
 + (id)listsFromAccountStorages:(id)arg1 listStorages:(id)arg2 store:(id)arg3 requestedExternalIdentifiers:(id)arg4;
 + (id)listsFromAccountStorages:(id)arg1 listStorages:(id)arg2 store:(id)arg3 requestedListIDs:(id)arg4;
 - (void).cxx_destruct;
+- (id)debugFetchPhantomListsWithError:(id *)arg1;
 - (id)fetchAllListsWithExternalIdentifier:(id)arg1 inAccount:(id)arg2 error:(id *)arg3;
 - (id)fetchDefaultListWithError:(id *)arg1;
 - (id)fetchEligibleDefaultListsWithError:(id *)arg1;

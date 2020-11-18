@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (Utilities)
+- (id)mt_condensedArray;
 - (id)mt_deepCopy;
 - (id)mt_map:(CDUnknownBlockType)arg1;
 - (void)mt_verifyEventData;

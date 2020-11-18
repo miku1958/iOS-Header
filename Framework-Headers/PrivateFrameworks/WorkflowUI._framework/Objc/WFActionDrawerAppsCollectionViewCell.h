@@ -6,18 +6,24 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSString, UIImage, UILabel, WFCircularImageView;
+#import <WorkflowUI/UIPointerInteractionDelegate-Protocol.h>
 
-@interface WFActionDrawerAppsCollectionViewCell : UICollectionViewCell
+@class NSString, UIImage, UIImageView, UILabel;
+
+@interface WFActionDrawerAppsCollectionViewCell : UICollectionViewCell <UIPointerInteractionDelegate>
 {
     NSString *_title;
     UIImage *_appIconImage;
-    WFCircularImageView *_imageView;
+    UIImageView *_imageView;
     UILabel *_titleLabel;
 }
 
 @property (readonly, nonatomic) UIImage *appIconImage; // @synthesize appIconImage=_appIconImage;
-@property (weak, nonatomic) WFCircularImageView *imageView; // @synthesize imageView=_imageView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (weak, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (weak, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
@@ -25,6 +31,8 @@
 - (void).cxx_destruct;
 - (void)configureWithTitle:(id)arg1 appIconImage:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 
 @end

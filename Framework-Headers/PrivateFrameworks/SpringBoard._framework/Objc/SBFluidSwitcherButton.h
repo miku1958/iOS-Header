@@ -6,11 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-#import <SpringBoard/_UICursorInteractionDelegate-Protocol.h>
+#import <SpringBoard/UIPointerInteractionDelegate-Protocol.h>
 
 @class NSString, UIImage, UIImageView, UIView;
 
-@interface SBFluidSwitcherButton : UIControl <_UICursorInteractionDelegate>
+@interface SBFluidSwitcherButton : UIControl <UIPointerInteractionDelegate>
 {
     UIView *_backgroundView;
     UIImageView *_glyphImageView;
@@ -39,13 +39,13 @@
 - (void)_configureXPlusDViewIfNecessaryForStyle:(long long)arg1;
 - (void)_invalidateBackgroundView;
 - (void)_invalidateXPlusDView;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)didMoveToSuperview;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 
 @end

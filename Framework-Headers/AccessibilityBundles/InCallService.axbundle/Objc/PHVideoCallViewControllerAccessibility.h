@@ -20,6 +20,7 @@
 - (void)_accessibilityMakeSureWindowIsVisibleToElementFetcher;
 - (id)_axCurrentVideoCallDisplayName;
 - (long long)_axDevicePosition;
+- (void)_ensureVideoLayersExist;
 - (void)_refreshStatusBarAndPIPAnimated:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (void)autoFadeOutBottomBar;

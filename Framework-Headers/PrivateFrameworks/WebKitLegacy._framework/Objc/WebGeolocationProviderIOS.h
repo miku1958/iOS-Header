@@ -17,10 +17,10 @@
     BOOL _enableHighAccuracy;
     BOOL _isSuspended;
     BOOL _shouldResetOnResume;
-    struct HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::PtrHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>> _webViewsWaitingForCoreLocationAuthorization;
-    struct HashSet<WebView *, WTF::PtrHash<WebView *>, WTF::HashTraits<WebView *>> _pendingInitialPositionWebView;
-    struct HashSet<WebView *, WTF::PtrHash<WebView *>, WTF::HashTraits<WebView *>> _registeredWebViews;
-    struct HashSet<WebView *, WTF::PtrHash<WebView *>, WTF::HashTraits<WebView *>> _trackedWebViews;
+    struct HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::DefaultHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>> _webViewsWaitingForCoreLocationAuthorization;
+    struct HashSet<WebView *, WTF::DefaultHash<WebView *>, WTF::HashTraits<WebView *>> _pendingInitialPositionWebView;
+    struct HashSet<WebView *, WTF::DefaultHash<WebView *>, WTF::HashTraits<WebView *>> _registeredWebViews;
+    struct HashSet<WebView *, WTF::DefaultHash<WebView *>, WTF::HashTraits<WebView *>> _trackedWebViews;
     struct RetainPtr<NSTimer> _sendLastPositionAsynchronouslyTimer;
     struct RetainPtr<WebGeolocationPosition> _lastPosition;
 }

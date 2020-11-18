@@ -12,6 +12,7 @@
 
 @interface HMBLocalSQLContextInputBlock : HMFObject <HMFLogging>
 {
+    NSString *_identifier;
     unsigned long long _blockRow;
     HMFActivity *_activity;
     HMBLocalSQLContext *_owner;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (weak, nonatomic) HMBLocalSQLContext *owner; // @synthesize owner=_owner;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
@@ -34,7 +36,7 @@
 - (id)abort;
 - (id)attributeDescriptions;
 - (id)commit:(id)arg1;
-- (id)initWithOwner:(id)arg1 zoneRow:(unsigned long long)arg2 blockRow:(unsigned long long)arg3 type:(unsigned long long)arg4;
+- (id)initWithOwner:(id)arg1 identifier:(id)arg2 zoneRow:(unsigned long long)arg3 blockRow:(unsigned long long)arg4 type:(unsigned long long)arg5;
 - (id)insertExternalID:(id)arg1 externalData:(id)arg2 modelEncoding:(unsigned long long)arg3 modelData:(id)arg4;
 - (id)logIdentifier;
 - (id)updateExternalID:(id)arg1 externalData:(id)arg2 modelEncoding:(unsigned long long)arg3 modelData:(id)arg4;

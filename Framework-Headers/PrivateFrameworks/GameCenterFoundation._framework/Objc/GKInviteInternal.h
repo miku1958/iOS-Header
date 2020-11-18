@@ -28,11 +28,13 @@
     unsigned long long _matchType;
     unsigned char _version;
     NSString *_participantID;
+    BOOL _isMessageBasedInvite;
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong, nonatomic) NSString *inviteID; // @synthesize inviteID=_inviteID;
+@property (nonatomic) BOOL isMessageBasedInvite; // @synthesize isMessageBasedInvite=_isMessageBasedInvite;
 @property (readonly, nonatomic) BOOL isNearby; // @dynamic isNearby;
 @property (strong, nonatomic) NSDictionary *localizableMessage; // @synthesize localizableMessage=_localizableMessage;
 @property (nonatomic) unsigned long long matchType; // @synthesize matchType=_matchType;

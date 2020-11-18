@@ -31,12 +31,7 @@
 - (void)URLProtocol:(id)arg1 didReceiveResponse:(id)arg2 cacheStoragePolicy:(unsigned long long)arg3;
 - (void)URLProtocol:(id)arg1 wasRedirectedToRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)URLProtocolDidFinishLoading:(id)arg1;
-- (struct _CFURLAuthChallenge *)cfChallenge;
-- (id)challenge;
 - (void)dealloc;
-- (id)initWithCFClient:(struct URLProtocolClient *)arg1 prot:(struct URLProtocol *)arg2;
-- (void)teardown;
-- (void)withCustomProtocolScheduling:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <Silex/SXCondition-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface SXCondition : SXJSONObject <SXCondition>
 {
@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) NSString *subscriptionStatus; // @dynamic subscriptionStatus;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long testing; // @dynamic testing;
+@property (readonly, nonatomic) NSSet *types;
 @property (readonly, nonatomic) long long verticalSizeClass; // @dynamic verticalSizeClass;
 @property (readonly, nonatomic) NSString *viewLocation; // @dynamic viewLocation;
 

@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) struct MapDataAccess *mapDataAccess;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (readonly, nonatomic) double maxPitch;
+@property (readonly, nonatomic) double minPitch;
 @property (nonatomic) double pitch;
 @property (readonly, nonatomic) struct RunLoopController *runLoopController;
 

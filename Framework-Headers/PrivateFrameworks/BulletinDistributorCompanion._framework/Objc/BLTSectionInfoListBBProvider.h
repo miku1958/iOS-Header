@@ -37,8 +37,8 @@
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
 - (id)sectionInfoForSectionID:(id)arg1;
-- (void)sectionInfoObserver:(id)arg1 removedSectionWithSectionID:(id)arg2;
-- (void)sectionInfoObserver:(id)arg1 updatedSectionInfoForSectionIDs:(id)arg2;
+- (void)sectionInfoObserver:(id)arg1 removedSectionWithSectionID:(id)arg2 transaction:(id)arg3;
+- (void)sectionInfoObserver:(id)arg1 updatedSectionInfoForSectionIDs:(id)arg2 transaction:(id)arg3;
 
 @end
 

@@ -6,40 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBPowerAssertion : NSObject <BSDescriptionProviding>
+@interface RBPowerAssertion : NSObject
 {
     unsigned int _identifier;
     NSDate *_acquisitionDate;
     NSString *_name;
     NSString *_baseName;
     BOOL _invalidated;
+    struct os_unfair_lock_s _lock;
 }
 
-@property (readonly, nonatomic) NSDate *acquisitionDate; // @synthesize acquisitionDate=_acquisitionDate;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly) Class superclass;
-
-+ (id)_nameForPreventIdleSleepIdentifiers:(id)arg1;
 - (void).cxx_destruct;
-- (id)_calculateNewName;
 - (id)_preventIdleSleepIdentifiers;
 - (int)_targetPid;
 - (void)dealloc;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)invalidateWithHandler:(CDUnknownBlockType)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
-- (void)updateWithAcquisitionHandler:(CDUnknownBlockType)arg1 invalidationHander:(CDUnknownBlockType)arg2;
+- (id)description;
+- (id)init;
 
 @end
 

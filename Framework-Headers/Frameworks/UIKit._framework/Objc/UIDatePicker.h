@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIPickerViewScrollTesting-Protocol.h>
 
-@class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, UIView, _UIDatePickerDataModel;
+@class NSCalendar, NSDate, NSLocale, NSString, NSTimeZone, UIColor, UIView, _UIDatePickerDataModel;
 @protocol _UIDatePickerViewComponent;
 
 @interface UIDatePicker : UIControl <UIPickerViewScrollTesting, NSCoding>
@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSCalendar *calendar; // @dynamic calendar;
 @property (readonly, nonatomic, getter=_contentWidth) double contentWidth; // @dynamic contentWidth;
 @property (nonatomic) double countDownDuration; // @dynamic countDownDuration;
+@property (strong, nonatomic, getter=_customFontDesign, setter=_setCustomFontDesign:) NSString *customFontDesign;
 @property (strong, nonatomic) NSDate *date; // @dynamic date;
 @property (nonatomic) long long datePickerMode; // @dynamic datePickerMode;
 @property (readonly, nonatomic) long long datePickerStyle;
@@ -49,21 +50,29 @@
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (void)_datePickerReset:(id)arg1;
+- (void)_emitBeginEditing;
+- (void)_emitEndEditing;
 - (void)_emitValueChanged;
-- (void)_installPickerView:(id)arg1;
+- (void)_installPickerView:(id)arg1 updatingSize:(BOOL)arg2;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
 - (id)_lastSelectedDateComponents;
 - (id)_locale;
 - (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
 - (void)_populateArchivedSubviews:(id)arg1;
+- (void)_registerObservers;
 - (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
 - (void)_setHidesLabels:(BOOL)arg1;
 - (void)_setHighlightsToday:(BOOL)arg1;
 - (void)_setLocale:(id)arg1;
 - (void)_setUpInitialValues;
 - (id)_systemDefaultFocusGroupDescriptor;
+- (void)_todayChanged:(id)arg1;
+- (void)_updatePickerViewIfNecessary;
+- (void)_workaround66574039_updateLayoutMargins;
 - (void)awakeFromNib;
+- (BOOL)becomeFirstResponder;
 - (id)dateComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -71,7 +80,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateIntrinsicContentSize;
+- (void)layoutMarginsDidChange;
 - (int)minute;
+- (BOOL)resignFirstResponder;
 - (int)second;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;

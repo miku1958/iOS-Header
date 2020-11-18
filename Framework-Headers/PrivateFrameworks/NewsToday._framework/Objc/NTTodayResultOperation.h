@@ -7,20 +7,20 @@
 #import <NewsCore/FCOperation.h>
 
 @class NTPBTodayResultOperationInfo;
-@protocol FCContentContext, NTReadablePrivateDataStorage;
+@protocol FCContentContext, NFCopying;
 
 @interface NTTodayResultOperation : FCOperation
 {
-    id<NTReadablePrivateDataStorage> _privateDataStorage;
     id<FCContentContext> _contentContext;
     NTPBTodayResultOperationInfo *_operationInfo;
+    id<NFCopying> _prefetchedContent;
     CDUnknownBlockType _headlineResultCompletionHandler;
 }
 
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (copy, nonatomic) CDUnknownBlockType headlineResultCompletionHandler; // @synthesize headlineResultCompletionHandler=_headlineResultCompletionHandler;
 @property (copy, nonatomic) NTPBTodayResultOperationInfo *operationInfo; // @synthesize operationInfo=_operationInfo;
-@property (strong, nonatomic) id<NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
+@property (copy, nonatomic) id<NFCopying> prefetchedContent; // @synthesize prefetchedContent=_prefetchedContent;
 
 - (void).cxx_destruct;
 - (id)init;

@@ -6,22 +6,46 @@
 
 #import <PassKitCore/PKPassImageSet.h>
 
-@class PKImage;
+@class NSData, PKImage;
 
 @interface PKPassFrontFaceImageSet : PKPassImageSet
 {
     PKImage *_faceImage;
     PKImage *_faceShadowImage;
+    PKImage *_footerImage;
+    PKImage *_dynamicLayerStaticFallbackImage;
+    PKImage *_backgroundParallaxEmitterImage;
+    PKImage *_backgroundParallaxImage;
+    PKImage *_neutralEmitterImage;
+    PKImage *_neutralImage;
+    PKImage *_foregroundParallaxEmitterImage;
+    PKImage *_foregroundParallaxImage;
+    PKImage *_staticOverlayEmitterImage;
+    PKImage *_staticOverlayImage;
+    PKImage *_transactionEffectEmitterImage;
+    NSData *_transactionEffectEmitterShapeSVGData;
     struct CGRect _logoRect;
     struct CGRect _thumbnailRect;
     struct CGRect _stripRect;
 }
 
+@property (strong, nonatomic) PKImage *backgroundParallaxEmitterImage; // @synthesize backgroundParallaxEmitterImage=_backgroundParallaxEmitterImage;
+@property (strong, nonatomic) PKImage *backgroundParallaxImage; // @synthesize backgroundParallaxImage=_backgroundParallaxImage;
+@property (strong, nonatomic) PKImage *dynamicLayerStaticFallbackImage; // @synthesize dynamicLayerStaticFallbackImage=_dynamicLayerStaticFallbackImage;
 @property (strong, nonatomic) PKImage *faceImage; // @synthesize faceImage=_faceImage;
 @property (strong, nonatomic) PKImage *faceShadowImage; // @synthesize faceShadowImage=_faceShadowImage;
+@property (strong, nonatomic) PKImage *footerImage; // @synthesize footerImage=_footerImage;
+@property (strong, nonatomic) PKImage *foregroundParallaxEmitterImage; // @synthesize foregroundParallaxEmitterImage=_foregroundParallaxEmitterImage;
+@property (strong, nonatomic) PKImage *foregroundParallaxImage; // @synthesize foregroundParallaxImage=_foregroundParallaxImage;
 @property (nonatomic) struct CGRect logoRect; // @synthesize logoRect=_logoRect;
+@property (strong, nonatomic) PKImage *neutralEmitterImage; // @synthesize neutralEmitterImage=_neutralEmitterImage;
+@property (strong, nonatomic) PKImage *neutralImage; // @synthesize neutralImage=_neutralImage;
+@property (strong, nonatomic) PKImage *staticOverlayEmitterImage; // @synthesize staticOverlayEmitterImage=_staticOverlayEmitterImage;
+@property (strong, nonatomic) PKImage *staticOverlayImage; // @synthesize staticOverlayImage=_staticOverlayImage;
 @property (nonatomic) struct CGRect stripRect; // @synthesize stripRect=_stripRect;
 @property (nonatomic) struct CGRect thumbnailRect; // @synthesize thumbnailRect=_thumbnailRect;
+@property (strong, nonatomic) PKImage *transactionEffectEmitterImage; // @synthesize transactionEffectEmitterImage=_transactionEffectEmitterImage;
+@property (strong, nonatomic) NSData *transactionEffectEmitterShapeSVGData; // @synthesize transactionEffectEmitterShapeSVGData=_transactionEffectEmitterShapeSVGData;
 
 + (id)archiveName;
 + (unsigned int)currentVersion;

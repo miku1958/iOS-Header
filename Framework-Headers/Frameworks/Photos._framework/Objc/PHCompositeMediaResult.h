@@ -12,17 +12,28 @@
 {
     NSMutableDictionary *_mutableInfo;
     NSDictionary *_imageProperties;
+    BOOL _isInCloud;
+    BOOL _cancelled;
 }
 
+@property (nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic) BOOL isDegraded;
+@property (nonatomic) BOOL isInCloud;
+@property (readonly, nonatomic) BOOL isPlaceholder;
+
 - (void).cxx_destruct;
+- (id)_sanitizedError;
 - (void)addInfoFromDictionary:(id)arg1;
 - (id)adjustmentData;
+- (id)allowedInfoKeys;
 - (id)baseVersionNeeded;
 - (BOOL)canHandleAdjustmentData;
+- (id)cancelledInfoKey;
 - (unsigned int)cgOrientation;
 - (void)clearError;
 - (BOOL)containsValidData;
 - (id)error;
+- (id)errorInfoKey;
 - (id)exifOrientation;
 - (id)imageData;
 - (id)imageProperties;
@@ -30,24 +41,18 @@
 - (struct CGImage *)imageRef;
 - (id)imageSandboxExtensionToken;
 - (id)imageURL;
-- (id)imageUTI;
+- (id)inCloudInfoKey;
 - (id)info;
 - (id)initWithRequestID:(int)arg1;
-- (BOOL)isCancelled;
-- (BOOL)isDegraded;
-- (BOOL)isInCloud;
-- (BOOL)isPlaceholder;
 - (id)mediaMetadata;
 - (id)sandboxExtensionToken;
-- (void)setCancelled:(BOOL)arg1;
-- (void)setDegraded:(BOOL)arg1;
+- (id)sanitizedInfoDictionary;
 - (void)setError:(id)arg1;
 - (void)setErrorIfNone:(id)arg1;
 - (void)setInfo:(id)arg1 forKey:(id)arg2;
-- (void)setIsInCloud:(BOOL)arg1;
-- (void)setIsPlaceholder:(BOOL)arg1;
 - (void)setSandboxExtensionToken:(id)arg1;
 - (long long)uiOrientation;
+- (id)uniformTypeIdentifier;
 - (id)videoAdjustmentData;
 - (id)videoSandboxExtensionToken;
 - (id)videoURL;

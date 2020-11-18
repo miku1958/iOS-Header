@@ -11,7 +11,6 @@
 + (void)compositionController:(id)arg1 applyAssetVariation:(unsigned int)arg2 withRecipe:(id)arg3;
 + (void)compositionController:(id)arg1 applyTrimRangeAndKeyTimeForCurretAssetVariation:(BOOL)arg2;
 + (id)compositionController:(id)arg1 compositionCopyByApplyingAssetVariation:(unsigned int)arg2 withRecipe:(id)arg3;
-+ (void)compositionController:(id)arg1 setInputOrientation:(long long)arg2;
 + (void)compositionController:(id)arg1 setLivePhotoMuteState:(id)arg2;
 + (void)compositionController:(id)arg1 setLivePhotoStillTime:(CDStruct_1b6d18a9)arg2;
 + (void)compositionController:(id)arg1 setLivePhotoTrimEndTime:(CDStruct_1b6d18a9)arg2;
@@ -22,6 +21,6 @@
 + (BOOL)isAdjustedBeyondDepthForCompositionController:(id)arg1;
 + (BOOL)isSlomoOnlyAdjustmentForCompositionController:(id)arg1;
 + (id)livePhotoMuteStateForCompositionController:(id)arg1;
-+ (id)revertComposition:(id)arg1 originalComposition:(id)arg2 keepCrop:(BOOL)arg3 keepOrientation:(BOOL)arg4 primaryEditSource:(id)arg5 overcaptureEditSource:(id)arg6;
++ (id)revertComposition:(id)arg1 originalComposition:(id)arg2 isBasedOnOriginal:(BOOL)arg3 keepCrop:(BOOL)arg4 keepOrientation:(BOOL)arg5 primaryEditSource:(id)arg6 overcaptureEditSource:(id)arg7;
 @end
 

@@ -17,6 +17,7 @@
 @property (readonly, nonatomic, getter=isBuddyOffer) BOOL buddyOffer;
 @property (copy, nonatomic) ICQDaemonOfferConditions *conditionsWhenChosen; // @synthesize conditionsWhenChosen=_conditionsWhenChosen;
 @property (readonly, nonatomic) ICQDaemonOfferCriteria *criteria;
+@property (readonly, nonatomic, getter=isDefaultOffer) BOOL defaultOffer;
 @property (readonly, nonatomic) NSString *offerId;
 @property (readonly, nonatomic) NSDictionary *serverDictionary;
 

@@ -8,18 +8,23 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _HDQuantityDateIntervals : NSObject
 {
     double _currentStartInterval;
     double _currentEndInterval;
     long long _currentPairIndex;
+    BOOL _containsUUIDs;
     NSMutableArray *_intervalPairs;
 }
 
 - (void).cxx_destruct;
-- (void)addDateRangeFrom:(double)arg1 to:(double)arg2;
+- (void)addDateRangeFrom:(double)arg1 to:(double)arg2 uuid:(id)arg3;
+- (BOOL)containsUUIDs;
 - (id)init;
 - (BOOL)insideRanges:(double)arg1;
+- (id)intersectingIdentifiersFrom:(double)arg1 to:(double)arg2;
+- (void)resetState;
 
 @end
 

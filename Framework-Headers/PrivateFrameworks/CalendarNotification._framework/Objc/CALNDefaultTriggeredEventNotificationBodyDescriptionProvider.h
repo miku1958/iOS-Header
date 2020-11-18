@@ -9,13 +9,15 @@
 #import <CalendarNotification/CALNTriggeredEventNotificationBodyDescriptionProvider-Protocol.h>
 
 @class NSString;
-@protocol CALNTravelAdvisoryDescriptionGenerator;
+@protocol CALNTravelAdvisoryDescriptionGenerator, CalDateProvider;
 
 @interface CALNDefaultTriggeredEventNotificationBodyDescriptionProvider : NSObject <CALNTriggeredEventNotificationBodyDescriptionProvider>
 {
     id<CALNTravelAdvisoryDescriptionGenerator> _travelAdvisoryDescriptionGenerator;
+    id<CalDateProvider> _dateProvider;
 }
 
+@property (readonly, nonatomic) id<CalDateProvider> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,8 +28,8 @@
 - (id)_bodyWithTravelAdvisoryForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2;
 - (id)_bodyWithoutTravelAdvisoryForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2;
 - (id)_ttlDescriptionTypeNumberForTravelAdvisoryTimelinessPeriod:(unsigned long long)arg1;
-- (id)bodyForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2;
-- (id)initWithTravelAdvisoryDescriptionGenerator:(id)arg1;
+- (id)bodyForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2 bodyContainsTravelAdvice:(BOOL *)arg3;
+- (id)initWithTravelAdvisoryDescriptionGenerator:(id)arg1 dateProvider:(id)arg2;
 
 @end
 

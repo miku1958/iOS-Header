@@ -13,7 +13,8 @@
 
 @property (readonly, nonatomic) BOOL canAddImplicitAmbientAnimations;
 @property (readonly, nonatomic) NSString *implicitAmbientAnimationEffectIdentifier;
-@property (readonly, nonatomic, getter=isImplicitAmbientAnimationInteractive) BOOL implicitAmbientAnimationInteractive;
+@property (readonly, nonatomic) BOOL shouldRemoveImplicitAmbientAnimationsAtEndOfNoneTransition;
+@property (readonly, nonatomic) BOOL supportsImplicitAmbientAnimationsAfterStartingActionBuilds;
 
 - (KNBuildRenderer<KNAmbientBuildRenderer> *)newImplicitAmbientBuildRendererWithAnimatedBuild:(KNAnimatedBuild *)arg1 buildChunk:(KNBuildChunk *)arg2 session:(KNPlaybackSession *)arg3 animatedSlideView:(KNAnimatedSlideView *)arg4;
 @end

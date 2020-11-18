@@ -6,12 +6,13 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionVerticalSectionController.h>
 
+#import <NanoTimeKitCompanion/NTKCFaceDetailAlbumChooserViewControllerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailCustomPhotosViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, NTKBasePhotosFaceView, NTKCompanionCustomPhotosEditor, NTKCompanionMemoriesEditor, NTKCompanionSyncedAlbumEditor, NTKCompanionTransientCustomPhotosEditor, UIViewController;
 @protocol NTKCFaceDetailPhotosSectionDelegate;
 
-@interface NTKCFaceDetailPhotosSectionController : NTKCFaceDetailEditOptionVerticalSectionController <NTKCFaceDetailCustomPhotosViewControllerDelegate>
+@interface NTKCFaceDetailPhotosSectionController : NTKCFaceDetailEditOptionVerticalSectionController <NTKCFaceDetailCustomPhotosViewControllerDelegate, NTKCFaceDetailAlbumChooserViewControllerDelegate>
 {
     BOOL _canDeleteCustomPhotos;
     unsigned long long _currentContent;
@@ -23,6 +24,7 @@
     NSArray *_externalAssets;
 }
 
+@property (readonly, nonatomic) unsigned long long contentType;
 @property (strong, nonatomic) NTKCompanionCustomPhotosEditor *customPhotosEditor; // @synthesize customPhotosEditor=_customPhotosEditor;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKCFaceDetailPhotosSectionDelegate> delegate; // @dynamic delegate;
@@ -45,9 +47,9 @@
 - (void)_customizeActionRow:(id)arg1 withEditOption:(id)arg2;
 - (BOOL)_handleDidSelectActionRowForOption:(id)arg1;
 - (BOOL)_handleDidSelectOption:(id)arg1;
-- (id)_overrideTextForOption:(id)arg1;
 - (void)_setPhotos:(id)arg1;
 - (void)_updatePhotosSection;
+- (void)albumChooserDidFinish:(id)arg1;
 - (BOOL)canAddFace;
 - (void)customPhotosControllerDidFinish:(id)arg1;
 - (void)faceDidChange;

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC18HealthExperienceUI22DataTypeDetailUnitCell : _TtC18HealthExperienceUI32CollectionViewListDisclosureCell
 {
     MISSING_TYPE *parentViewController;

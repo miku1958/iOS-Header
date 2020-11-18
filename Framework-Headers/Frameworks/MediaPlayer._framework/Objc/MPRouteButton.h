@@ -20,6 +20,7 @@
     MPAVRoute *_route;
     NSString *_routeTitle;
     UIColor *_overrideColor;
+    long long _routeLabelAxis;
     struct UIEdgeInsets _hitRectInsets;
 }
 
@@ -30,6 +31,7 @@
 @property (nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (strong, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property (strong, nonatomic) MPAVRoute *route; // @synthesize route=_route;
+@property (nonatomic) long long routeLabelAxis; // @synthesize routeLabelAxis=_routeLabelAxis;
 @property (nonatomic, getter=isRouteLabelHidden) BOOL routeLabelHidden; // @synthesize routeLabelHidden=_routeLabelHidden;
 @property (readonly, copy, nonatomic) NSString *routeTitle; // @synthesize routeTitle=_routeTitle;
 

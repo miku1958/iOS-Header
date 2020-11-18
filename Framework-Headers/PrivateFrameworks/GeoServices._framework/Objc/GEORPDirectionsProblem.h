@@ -35,15 +35,7 @@
         unsigned int read_overviewScreenshotImageData:1;
         unsigned int read_problematicRouteIndexs:1;
         unsigned int read_startWaypoint:1;
-        unsigned int wrote_clientSuggestedRoutes:1;
-        unsigned int wrote_directionsResponseId:1;
-        unsigned int wrote_endWaypoint:1;
-        unsigned int wrote_instructionCorrections:1;
-        unsigned int wrote_overviewScreenshotImageData:1;
-        unsigned int wrote_problematicRouteIndexs:1;
-        unsigned int wrote_startWaypoint:1;
-        unsigned int wrote_problematicLineIndex:1;
-        unsigned int wrote_problematicStepIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -68,16 +60,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)problematicRouteIndexType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsClientSuggestedRoute:(id)arg1;
-- (void)_addNoFlagsInstructionCorrection:(id)arg1;
-- (void)_addNoFlagsProblematicRouteIndex:(id)arg1;
-- (void)_readClientSuggestedRoutes;
-- (void)_readDirectionsResponseId;
-- (void)_readEndWaypoint;
-- (void)_readInstructionCorrections;
-- (void)_readOverviewScreenshotImageData;
-- (void)_readProblematicRouteIndexs;
-- (void)_readStartWaypoint;
 - (void)addClientSuggestedRoute:(id)arg1;
 - (void)addInstructionCorrection:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
@@ -93,9 +75,12 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)instructionCorrectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)instructionCorrectionsCount;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)problematicRouteIndexAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problematicRouteIndexsCount;

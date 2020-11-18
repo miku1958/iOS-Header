@@ -7,20 +7,21 @@
 #import <SpringBoard/SBTransitionSwitcherModifier.h>
 
 @class SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBHomeToSwitcherSwitcherModifier : SBTransitionSwitcherModifier
 {
     long long _direction;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
 }
 
 @property (readonly, nonatomic) long long direction; // @synthesize direction=_direction;
-@property (readonly, nonatomic) SBSwitcherModifier<SBFluidSwitcherScrollProviding> *multitaskingModifier; // @synthesize multitaskingModifier=_multitaskingModifier;
+@property (readonly, nonatomic) SBSwitcherModifier *multitaskingModifier; // @synthesize multitaskingModifier=_multitaskingModifier;
 
 - (void).cxx_destruct;
+- (id)_dismissForEmptySwitcherResponseName;
 - (id)appLayoutToScrollToDuringTransition;
 - (double)containerStatusBarAnimationDuration;
+- (id)handleTimerEvent:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 multitaskingModifier:(id)arg3;
 - (BOOL)isEffectivelyHome;
 - (id)transitionWillBegin;

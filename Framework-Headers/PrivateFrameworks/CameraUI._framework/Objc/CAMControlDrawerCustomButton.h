@@ -8,7 +8,6 @@
 
 #import <CameraUI/CAMControlDrawerExpandableButton-Protocol.h>
 
-@class UIView;
 @protocol CAMControlDrawerExpandableButtonDelegate;
 
 @interface CAMControlDrawerCustomButton : CAMControlDrawerButton <CAMControlDrawerExpandableButton>
@@ -16,11 +15,9 @@
     BOOL _expanded;
     BOOL __touchInTrackedView;
     id<CAMControlDrawerExpandableButtonDelegate> _delegate;
-    UIView *__highlightedView;
     struct UIEdgeInsets _expansionInsets;
 }
 
-@property (strong, nonatomic, setter=_setHighlightedView:) UIView *_highlightedView; // @synthesize _highlightedView=__highlightedView;
 @property (nonatomic, getter=_isTouchInTrackedView, setter=_setTouchInTrackedView:) BOOL _touchInTrackedView; // @synthesize _touchInTrackedView=__touchInTrackedView;
 @property (weak, nonatomic) id<CAMControlDrawerExpandableButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
@@ -42,7 +39,6 @@
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAccessibilityGestureBeginForHUDManager:(id)arg1;
-- (BOOL)shouldScaleImageWhileHighlighted;
 
 @end
 

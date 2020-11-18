@@ -6,11 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class CKRecord, HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, NSData, NSUUID;
+@class CKRecord, HMDBackingStoreCacheGroup, NSData, NSUUID;
 
 @interface HMDBackingStoreCacheFetchRecordResult : HMFObject
 {
-    HMDBackingStoreCacheShareGroup *_share;
     HMDBackingStoreCacheGroup *_group;
     NSData *_data;
     CKRecord *_record;
@@ -22,12 +21,11 @@
 @property (readonly, nonatomic) unsigned long long encoding; // @synthesize encoding=_encoding;
 @property (readonly, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
 @property (readonly, nonatomic) CKRecord *record; // @synthesize record=_record;
-@property (readonly, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithGroup:(id)arg1 share:(id)arg2 record:(id)arg3 data:(id)arg4 encoding:(unsigned long long)arg5 uuid:(id)arg6;
+- (id)initWithGroup:(id)arg1 record:(id)arg2 data:(id)arg3 encoding:(unsigned long long)arg4 uuid:(id)arg5;
 
 @end
 

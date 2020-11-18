@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAllNotesContainer;
+@property (readonly, nonatomic) BOOL isSharedReadOnly;
 @property (readonly, nonatomic) BOOL isSharedViaICloud;
 @property (readonly, nonatomic) BOOL isTrashFolder;
 @property (readonly) NSManagedObjectContext *managedObjectContext;
@@ -38,7 +39,6 @@
 - (id)accountName;
 - (long long)compare:(id)arg1;
 - (id)customNoteSortTypeValue;
-- (id)detailForTableViewCell;
 - (id)initWithAccount:(id)arg1;
 - (BOOL)isDeleted;
 - (BOOL)isLeaf;

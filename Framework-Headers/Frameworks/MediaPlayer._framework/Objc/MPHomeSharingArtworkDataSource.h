@@ -8,6 +8,7 @@
 
 @class HSHomeSharingLibrary;
 
+__attribute__((visibility("hidden")))
 @interface MPHomeSharingArtworkDataSource : MPAbstractNetworkArtworkDataSource
 {
     HSHomeSharingLibrary *_library;
@@ -20,7 +21,7 @@
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
-- (BOOL)shouldLookForLargerRepresentationsWhenBestRepresentationIsUnavailable;
+- (BOOL)shouldLookForLargerImageRepresentationsWhenBestRepresentationIsUnavailable;
 - (id)supportedSizesForCatalog:(id)arg1;
 
 @end

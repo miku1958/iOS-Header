@@ -16,6 +16,7 @@
     BOOL _optional;
     BOOL _currentValueFromCameraCapture;
     BOOL _requiresSecureSubmission;
+    BOOL _populateFromMeCard;
     NSString *_identifier;
     NSString *_localizedDisplayName;
     NSString *_displayFormat;
@@ -38,6 +39,7 @@
 @property (copy, nonatomic) NSString *localizedPlaceholder; // @synthesize localizedPlaceholder=_localizedPlaceholder;
 @property (nonatomic, getter=isOptional) BOOL optional; // @synthesize optional=_optional;
 @property (copy, nonatomic) id<NSObject><NSCopying> originalCameraCaptureValue; // @synthesize originalCameraCaptureValue=_originalCameraCaptureValue;
+@property (nonatomic) BOOL populateFromMeCard; // @synthesize populateFromMeCard=_populateFromMeCard;
 @property (readonly, copy, nonatomic) NSDictionary *rawConfigurationDictionary; // @synthesize rawConfigurationDictionary=_rawConfigurationDictionary;
 @property (nonatomic) BOOL requiresSecureSubmission; // @synthesize requiresSecureSubmission=_requiresSecureSubmission;
 @property (copy, nonatomic) NSString *submissionDestination; // @synthesize submissionDestination=_submissionDestination;

@@ -9,9 +9,9 @@
 @class NSData, NSString;
 
 @protocol BCSCloudServerBodyProvider <NSObject>
-- (NSData *)bodyForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2;
+- (NSData *)bodyForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2 type:(long long)arg3;
 - (NSData *)bodyForBusinessItemRequestWithBizID:(NSString *)arg1;
-- (NSData *)bodyForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2;
-- (NSData *)bodyForConfigItemRequest;
+- (NSData *)bodyForConfigItemRequestWithType:(long long)arg1;
+- (NSData *)bodyForItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3;
 @end
 

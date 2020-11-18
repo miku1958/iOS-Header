@@ -6,12 +6,11 @@
 
 #import <UIKit/UIPageControl.h>
 
-@class NSMutableArray, _UILegibilitySettings;
+@class _UILegibilitySettings;
 
 @interface CSPageControl : UIPageControl
 {
     _UILegibilitySettings *_sbLegibilitySettings;
-    NSMutableArray *_legibilityViews;
     unsigned long long _cameraPageIndex;
 }
 
@@ -21,16 +20,11 @@
 + (struct CGRect)suggestedFrameForPageBounds:(struct CGRect)arg1;
 + (struct CGRect)suggestedFrameForPageBounds:(struct CGRect)arg1 desiredSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
-- (id)_cameraIndicatorImage:(BOOL)arg1;
+- (id)_cameraIndicator;
 - (id)_currentPageIndicatorColor;
-- (double)_indicatorSpacing;
-- (id)_indicatorViewEnabled:(BOOL)arg1 index:(long long)arg2;
-- (struct CGRect)_modernBounds;
 - (id)_pageIndicatorColor;
-- (id)_pageIndicatorImage:(BOOL)arg1;
-- (void)_setIndicatorImage:(id)arg1 toEnabled:(BOOL)arg2 index:(long long)arg3;
-- (void)_transitionIndicator:(id)arg1 toEnabled:(BOOL)arg2 index:(long long)arg3;
-- (void)_updateLegibilityViews;
+- (void)_rebuildIndicators;
+- (void)_updateForLegibility;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setLegibilitySettings:(id)arg1;
 - (struct CGSize)sizeForNumberOfPages:(long long)arg1;

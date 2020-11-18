@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSDate *startingPlaybackDate; // @synthesize startingPlaybackDate=_startingPlaybackDate;
 
 - (void).cxx_destruct;
-- (void)fetchClipsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)description;
 - (id)initWithHome:(id)arg1 cameraProfile:(id)arg2 scrubberType:(long long)arg3 notificationUUID:(id)arg4 clipUUID:(id)arg5;
 - (BOOL)isConfiguredForLiveStream;
 

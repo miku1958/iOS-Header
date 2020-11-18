@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TSDrawables/TSDMediaRep.h>
+#import <TSText/TSWPEquationBaseRep.h>
 
 #import <TSText/CALayerDelegate-Protocol.h>
-#import <TSText/TSDMagicMoveMatching-Protocol.h>
 
-@class CALayer, NSString, TSWPEquationInfo, TSWPEquationLayout;
+@class CALayer, NSString, TSWPEquationInfo, TSWPEquationInlineLayout;
 
-@interface TSWPEquationInlineRep : TSDMediaRep <CALayerDelegate, TSDMagicMoveMatching>
+@interface TSWPEquationInlineRep : TSWPEquationBaseRep <CALayerDelegate>
 {
     BOOL _layerContentsAreFlipped;
     CALayer *_equationLayer;
@@ -21,7 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSWPEquationInfo *equationInfo;
 @property (strong, nonatomic) CALayer *equationLayer; // @synthesize equationLayer=_equationLayer;
-@property (readonly, nonatomic) TSWPEquationLayout *equationLayout;
+@property (readonly, nonatomic) TSWPEquationInlineLayout *equationLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL layerContentsAreFlipped; // @synthesize layerContentsAreFlipped=_layerContentsAreFlipped;
 @property (readonly) Class superclass;
@@ -32,6 +31,7 @@
 - (BOOL)canDrawInParallel;
 - (BOOL)canPasteDataFromPhysicalKeyboard:(id)arg1;
 - (struct CGRect)clipRect;
+- (void)drawErrorIconInContext:(struct CGContext *)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6 keepingChildrenPassingTest:(CDUnknownBlockType)arg7;
 - (void)drawInLayerContext:(struct CGContext *)arg1;

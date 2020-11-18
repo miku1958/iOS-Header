@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface MLInternalSettings : NSObject
+#import <CoreML/NSSecureCoding-Protocol.h>
+
+@interface MLInternalSettings : NSObject <NSSecureCoding>
 {
     BOOL _restrictNeuralNetworksToUseCPUOnly;
     BOOL _restrictNeuralNetworksFromUsingANE;
@@ -19,7 +21,11 @@
 
 + (BOOL)deviceHasANE;
 + (id)globalSettings;
++ (id)globalSettingsFromSettings:(id)arg1;
++ (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

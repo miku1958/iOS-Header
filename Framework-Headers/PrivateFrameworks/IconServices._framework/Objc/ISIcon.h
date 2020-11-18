@@ -37,6 +37,7 @@
 + (id)sizesFromSet:(unsigned long long)arg1;
 + (id)transparentIcon;
 + (struct _LIIconVariantInfo *)variantInfoForSet:(unsigned long long)arg1 count:(unsigned long long *)arg2;
++ (struct _LIIconVariantInfo)variantInfoForVariant:(int)arg1;
 - (double)_aspectRatio;
 - (id)_init;
 - (unsigned long long)badgeOptions;

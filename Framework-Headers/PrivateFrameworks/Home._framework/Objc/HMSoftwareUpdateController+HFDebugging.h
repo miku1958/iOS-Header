@@ -6,16 +6,22 @@
 
 #import <HomeKit/HMSoftwareUpdateController.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
-@interface HMSoftwareUpdateController (HFDebugging) <HFStateDumpBuildable>
+@interface HMSoftwareUpdateController (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end

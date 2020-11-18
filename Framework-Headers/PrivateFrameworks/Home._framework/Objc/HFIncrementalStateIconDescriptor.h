@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 incrementalState:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

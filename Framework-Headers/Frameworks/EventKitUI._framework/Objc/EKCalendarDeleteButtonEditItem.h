@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKCalendarEditItem.h>
 
-@class UITableViewCell;
+@class UITableViewCell, UIView;
 
 @interface EKCalendarDeleteButtonEditItem : EKCalendarEditItem
 {
@@ -14,6 +14,8 @@
     id _deleteButtonTarget;
     SEL _deleteButtonAction;
 }
+
+@property (readonly, nonatomic) UIView *deleteButtonView;
 
 - (void).cxx_destruct;
 - (void)calendarEditor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;

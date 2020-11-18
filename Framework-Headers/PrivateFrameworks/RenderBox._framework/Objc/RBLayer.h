@@ -6,22 +6,33 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class NSTimer, RBDevice;
+#import <RenderBox/RBDrawableStatistics-Protocol.h>
+#import <RenderBox/_RBDrawableDelegate-Protocol.h>
 
-@interface RBLayer : CALayer
+@class NSDictionary, NSTimer, RBDevice;
+
+@interface RBLayer : CALayer <_RBDrawableDelegate, RBDrawableStatistics>
 {
     struct objc_ptr<RBDevice *> _device;
-    BOOL _disableAsync;
     BOOL _pendingFlush;
-    BOOL _pendingCollection;
     NSTimer *_collectionTimer;
     struct unique_ptr<RB::Drawable, std::__1::default_delete<RB::Drawable>> _drawable;
-    struct objc_ptr<NSObject<OS_dispatch_semaphore>*> _semaphore;
-    struct cf_ptr<_CAImageQueue *> _imageQueue;
-    struct vector<RB::refcounted_ptr<(anonymous namespace)::Surface>, std::__1::allocator<RB::refcounted_ptr<(anonymous namespace)::Surface>>> _surfaces;
+    struct refcounted_ptr<(anonymous namespace)::ImageQueue> _imageQueue;
+    unsigned long long _statistics_mask;
+    double _statistics_alpha;
+    struct spin_lock _statistics_handler_lock;
+    struct objc_ptr<void (^)(id<RBDrawableStatistics>)> _statistics_handler;
+    struct atomic<bool> _deallocating;
+    BOOL _visible;
+    BOOL _needs_display_on_visible;
+    BOOL _pending_visible_callback;
     BOOL _rendersAsynchronously;
+    BOOL _needsSynchronousUpdate;
+    BOOL _promotesFramebuffer;
     BOOL _clearsBackground;
     int _colorMode;
+    unsigned long long _pixelFormat;
+    long long _maxDrawableCount;
     CDStruct_0b1c536a _clearColor;
 }
 
@@ -30,20 +41,30 @@
 @property (nonatomic) int colorMode; // @synthesize colorMode=_colorMode;
 @property (strong, nonatomic) RBDevice *device;
 @property (readonly, nonatomic, getter=isDrawableAvailable) BOOL drawableAvailable;
+@property (nonatomic) long long maxDrawableCount; // @synthesize maxDrawableCount=_maxDrawableCount;
+@property (nonatomic) BOOL needsSynchronousUpdate; // @synthesize needsSynchronousUpdate=_needsSynchronousUpdate;
+@property (nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (nonatomic) BOOL promotesFramebuffer; // @synthesize promotesFramebuffer=_promotesFramebuffer;
 @property (nonatomic) BOOL rendersAsynchronously; // @synthesize rendersAsynchronously=_rendersAsynchronously;
+@property (readonly, copy, nonatomic) NSDictionary *statistics;
+@property (copy, nonatomic) CDUnknownBlockType statisticsHandler;
 
 + (id)defaultValueForKey:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_scheduleCollection;
+- (void)_RBDrawableStatisticsDidChange;
+- (void)copyImageInRect:(struct CGRect)arg1 options:(id)arg2 completionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (void)display;
 - (void)drawInDisplayList:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
+- (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)rb_init;
+- (void)resetStatistics:(unsigned long long)arg1 alpha:(double)arg2;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setContents:(id)arg1;
 - (void)waitUntilAsyncRenderingCompleted;
 
 @end

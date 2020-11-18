@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_saveMovieIfEdited:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_saveMovieIfEditedWithEditedCopy:(id)arg1 shouldDismissAfterSaving:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setupEditBehavior;
+- (void)_setupScrubberPlaceholderThumbnail;
 - (void)_showFailedToSaveChangesAlertWithError:(id)arg1;
 - (void)_updateEditMode;
 - (void)_updateEditsTrimmingValuesWithTrimStartTime:(double)arg1 trimEndTime:(double)arg2;

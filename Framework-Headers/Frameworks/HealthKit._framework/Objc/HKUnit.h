@@ -41,7 +41,10 @@
 + (id)_nullUnit;
 + (id)_personMassUnitForLocale:(id)arg1;
 + (id)_prefixStringForMetricPrefix:(long long)arg1;
++ (void)_prewarmUnitForStringCache;
 + (id)_temperatureUnitForLocale:(id)arg1;
++ (id)_unitForStringPrewarmCache;
++ (id)_voltBaseUnit;
 + (id)atmosphereUnit;
 + (id)calorieUnit;
 + (id)centimeterOfWaterUnit;
@@ -65,6 +68,7 @@
 + (id)hertzUnitWithMetricPrefix:(long long)arg1;
 + (id)hourUnit;
 + (id)inchUnit;
++ (id)inchesOfMercuryUnit;
 + (id)internationalUnit;
 + (id)jouleUnit;
 + (id)jouleUnitWithMetricPrefix:(long long)arg1;
@@ -105,6 +109,8 @@
 + (id)unitFromLengthFormatterUnit:(long long)arg1;
 + (id)unitFromMassFormatterUnit:(long long)arg1;
 + (id)unitFromString:(id)arg1;
++ (id)voltUnit;
++ (id)voltUnitWithMetricPrefix:(long long)arg1;
 + (id)yardUnit;
 - (void).cxx_destruct;
 - (id)_baseUnitReduction;

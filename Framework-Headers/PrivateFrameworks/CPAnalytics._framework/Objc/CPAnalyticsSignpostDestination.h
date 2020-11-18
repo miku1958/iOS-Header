@@ -8,16 +8,20 @@
 
 #import <CPAnalytics/CPAnalyticsDestination-Protocol.h>
 
-@class CPAnalytics, NSMutableDictionary;
+@class CPAnalytics, NSMutableIndexSet, NSString;
 
 @interface CPAnalyticsSignpostDestination : NSObject <CPAnalyticsDestination>
 {
     CPAnalytics *_cpAnalyticsInstance;
-    NSMutableDictionary *_startTimesBySignpostID;
+    NSMutableIndexSet *_startedSignpostIDs;
 }
 
 @property (weak, nonatomic) CPAnalytics *cpAnalyticsInstance; // @synthesize cpAnalyticsInstance=_cpAnalyticsInstance;
-@property (strong, nonatomic) NSMutableDictionary *startTimesBySignpostID; // @synthesize startTimesBySignpostID=_startTimesBySignpostID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableIndexSet *startedSignpostIDs; // @synthesize startedSignpostIDs=_startedSignpostIDs;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_checkSignpostsEndForEvent:(id)arg1;

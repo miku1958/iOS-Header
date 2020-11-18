@@ -6,11 +6,12 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class VUISeasonPickerButton;
+@class NSString, VUISeasonPickerButton;
 
 @protocol VUISeasonPickerButtonDelegate <NSObject>
 
 @optional
+- (void)seasonPickerButtonMenuSelected:(VUISeasonPickerButton *)arg1 selectedTitle:(NSString *)arg2 selectedIndex:(unsigned long long)arg3;
 - (void)seasonPickerButtonTapped:(VUISeasonPickerButton *)arg1;
 @end
 

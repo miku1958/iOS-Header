@@ -16,7 +16,7 @@
 }
 
 @property (readonly, nonatomic) long long index; // @synthesize index=_index;
-@property (readonly, nonatomic) NSData *signature; // @synthesize signature=_signature;
+@property (readonly, copy, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property (nonatomic) unsigned long long size; // @synthesize size=_size;
 
 - (void).cxx_destruct;

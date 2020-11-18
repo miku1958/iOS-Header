@@ -19,7 +19,9 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (void)loadMessageItemWithGUID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadMessageWithGUID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)messageItemQuery:(id)arg1 finishedWithResult:(id)arg2 chatGUIDs:(id)arg3;
 - (void)messageQuery:(id)arg1 finishedWithResult:(id)arg2 chatGUIDs:(id)arg3;
 
 @end

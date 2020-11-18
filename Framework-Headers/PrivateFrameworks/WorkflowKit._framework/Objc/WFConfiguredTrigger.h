@@ -4,25 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFDatabaseObjectDescriptor.h>
+#import <VoiceShortcutClient/WFDatabaseObjectDescriptor.h>
 
-@class NSString, WFTrigger;
+@class NSData, NSString, WFTrigger;
 
 @interface WFConfiguredTrigger : WFDatabaseObjectDescriptor
 {
     BOOL _shouldPrompt;
     BOOL _enabled;
+    int _source;
     NSString *_workflowID;
     WFTrigger *_trigger;
+    NSData *_suggestionData;
 }
 
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) BOOL shouldPrompt; // @synthesize shouldPrompt=_shouldPrompt;
+@property (readonly, nonatomic) int source; // @synthesize source=_source;
+@property (copy, nonatomic) NSData *suggestionData; // @synthesize suggestionData=_suggestionData;
 @property (readonly, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 @property (readonly, nonatomic) NSString *workflowID; // @synthesize workflowID=_workflowID;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithIdentifier:(id)arg1 workflowID:(id)arg2 trigger:(id)arg3 shouldPrompt:(BOOL)arg4 enabled:(BOOL)arg5;
+- (id)initWithIdentifier:(id)arg1 workflowID:(id)arg2 trigger:(id)arg3 shouldPrompt:(BOOL)arg4 enabled:(BOOL)arg5 triggerSource:(int)arg6 suggestionData:(id)arg7;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

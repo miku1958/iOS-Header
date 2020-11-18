@@ -11,6 +11,8 @@
 }
 
 + (void)animateUsingSpringWithStiffness:(double)arg1 damping:(double)arg2 animations:(CDUnknownBlockType)arg3;
++ (long long)orbViewModeForSiriSessionState:(long long)arg1;
++ (id)parsedUtteranceFromText:(id)arg1 context:(id)arg2;
 
 @end
 

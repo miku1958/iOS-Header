@@ -6,11 +6,12 @@
 
 #import <GameCenterUI/NSObject-Protocol.h>
 
-@class GKDashboardMultiplayerPickerViewController;
+@class GKDashboardMultiplayerPickerViewController, NSArray;
 
 @protocol GKDashboardMultiplayerPickerDelegate <NSObject>
 
 @optional
+- (void)multiplayerPicker:(GKDashboardMultiplayerPickerViewController *)arg1 didPickPlayers:(NSArray *)arg2;
 - (void)multiplayerPickerDidCancel:(GKDashboardMultiplayerPickerViewController *)arg1;
 @end
 

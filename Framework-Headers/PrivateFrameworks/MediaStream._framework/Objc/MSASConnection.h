@@ -14,7 +14,6 @@
 @interface MSASConnection : NSObject <XPCNSClientConnectionDelegate>
 {
     XPCNSClientConnection *_connection;
-    XPCNSClientConnection *_noWakeConnection;
     NSMutableDictionary *_foregroundPingTimerContextByPersonID;
     NSMutableDictionary *_focusAlbumTimerByPersonID;
     NSMutableDictionary *_focusAlbumGUIDByPersonID;
@@ -30,7 +29,6 @@
 @property (strong, nonatomic) NSMutableDictionary *foregroundPingTimerContextByPersonID; // @synthesize foregroundPingTimerContextByPersonID=_foregroundPingTimerContextByPersonID;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
-@property (strong, nonatomic) XPCNSClientConnection *noWakeConnection; // @synthesize noWakeConnection=_noWakeConnection;
 @property (strong, nonatomic) NSMutableDictionary *serverSideConfigurationDictionaryByPersonID; // @synthesize serverSideConfigurationDictionaryByPersonID=_serverSideConfigurationDictionaryByPersonID;
 @property (readonly) Class superclass;
 
@@ -60,7 +58,6 @@
 - (void)albumWithGUID:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)assetCollectionGUIDsInAlbumWithGUID:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)assetCollectionWithGUID:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)assetsInDownloadQueueCountForPersonID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)cancelActivitiesForPersonID:(id)arg1;
 - (void)commentGUIDsForAssetCollectionWithGUID:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)commentWithGUID:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -77,7 +74,6 @@
 - (void)invitationGUIDsForPersonID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)invitationWithGUID:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)isAssetCollectionWithGUID:(id)arg1 markedAsUnviewedPersonID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)isBusyCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)isInRetryStateHandler:(CDUnknownBlockType)arg1;
 - (void)markAlbumGUIDAsViewed:(id)arg1 personID:(id)arg2;
 - (void)markAlbumGUIDAsViewed:(id)arg1 personID:(id)arg2 info:(id)arg3;

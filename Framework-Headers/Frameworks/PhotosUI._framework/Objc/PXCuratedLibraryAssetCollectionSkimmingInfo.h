@@ -11,7 +11,6 @@
 
 @interface PXCuratedLibraryAssetCollectionSkimmingInfo : NSObject
 {
-    BOOL _hintsVisible;
     BOOL _slideshowStarted;
     BOOL _touchInteractionStarted;
     id<PXDisplayCollection> _parentAssetCollection;
@@ -23,7 +22,6 @@
 @property (strong, nonatomic) PXIndexPathSet *childCollectionsIndexes; // @synthesize childCollectionsIndexes=_childCollectionsIndexes;
 @property (nonatomic) long long childCollectionsZoomLevel; // @synthesize childCollectionsZoomLevel=_childCollectionsZoomLevel;
 @property (nonatomic) struct PXSimpleIndexPath currentChildCollectionIndexPath; // @synthesize currentChildCollectionIndexPath=_currentChildCollectionIndexPath;
-@property (nonatomic) BOOL hintsVisible; // @synthesize hintsVisible=_hintsVisible;
 @property (strong, nonatomic) id<PXDisplayCollection> parentAssetCollection; // @synthesize parentAssetCollection=_parentAssetCollection;
 @property (nonatomic) BOOL slideshowStarted; // @synthesize slideshowStarted=_slideshowStarted;
 @property (nonatomic) BOOL touchInteractionStarted; // @synthesize touchInteractionStarted=_touchInteractionStarted;

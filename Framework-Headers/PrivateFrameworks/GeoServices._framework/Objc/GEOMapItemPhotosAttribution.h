@@ -13,8 +13,11 @@
 }
 
 @property (readonly, nonatomic) NSArray *addPhotoURLs;
+@property (readonly, nonatomic) BOOL canAddPhotosLocally;
+@property (readonly, nonatomic) BOOL canShowPhotosLocally;
+@property (readonly, nonatomic) BOOL shouldSuppressPhotoAttribution;
+@property (readonly, nonatomic) BOOL supportsReportingIssue;
 
-- (BOOL)canShowPhotosLocally;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2 poiID:(id)arg3;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2 yelpID:(id)arg3;
 - (id)urlsForPhotoWithIdentifier:(id)arg1;

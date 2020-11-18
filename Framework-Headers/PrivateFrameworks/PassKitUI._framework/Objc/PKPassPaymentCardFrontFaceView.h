@@ -6,22 +6,36 @@
 
 #import <PassKitUI/PKPassFrontFaceView.h>
 
-@class UILabel;
+@class PKBackdropView, PKBarcodeStickerView, UIButton, UIImageView, UILabel, UIView;
 
 @interface PKPassPaymentCardFrontFaceView : PKPassFrontFaceView
 {
     UILabel *_balanceLabel;
+    UIView *_scrimView;
+    PKBackdropView *_backdropView;
+    PKBarcodeStickerView *_topBarcodeView;
+    PKBarcodeStickerView *_bottomBarcodeView;
+    UIButton *_fullScreenButton;
+    UIImageView *_compactBankLogoView;
 }
 
 - (void).cxx_destruct;
+- (double)_barcodePadding;
+- (struct CGSize)_barcodeSize;
+- (id)_filterAuxiliaryField:(id)arg1;
+- (id)_filterSecondaryField:(id)arg1;
 - (void)_handleAccountChanged:(id)arg1;
+- (void)_showFullScreenBarcodeForButton:(id)arg1;
 - (void)_updateBalanceLabelFontSize;
 - (void)_updateBalanceWithAccount:(id)arg1;
+- (struct CGSize)contentSize;
 - (void)createHeaderContentViews;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setShowsLiveBalance:(BOOL)arg1;
+- (void)setViewExpanded:(BOOL)arg1;
 - (BOOL)showsShare;
+- (id)templateForHeaderBucket;
 - (id)templateForLayoutMode:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

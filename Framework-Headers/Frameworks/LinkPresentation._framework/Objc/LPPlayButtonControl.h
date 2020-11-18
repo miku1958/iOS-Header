@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowOuterBorder:(BOOL)arg1;
 - (void)showPlayIndicator:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

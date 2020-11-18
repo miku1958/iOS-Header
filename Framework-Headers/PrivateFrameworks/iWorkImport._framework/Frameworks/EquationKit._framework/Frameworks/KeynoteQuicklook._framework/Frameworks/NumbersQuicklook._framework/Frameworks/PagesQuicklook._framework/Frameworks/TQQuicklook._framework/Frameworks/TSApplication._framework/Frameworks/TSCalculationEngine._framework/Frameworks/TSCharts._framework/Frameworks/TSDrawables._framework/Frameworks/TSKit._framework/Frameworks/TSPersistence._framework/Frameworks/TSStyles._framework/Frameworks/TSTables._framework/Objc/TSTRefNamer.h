@@ -26,14 +26,16 @@
 @property (strong, nonatomic) NSCharacterSet *whitespaceAndNewlineCharSet; // @synthesize whitespaceAndNewlineCharSet=_whitespaceAndNewlineCharSet;
 
 - (void).cxx_destruct;
-- (id)cellRangeName:(id)arg1 namingContext:(id)arg2 asChrome:(BOOL)arg3;
+- (id)cellRangeName:(id)arg1 namingContext:(id)arg2;
 - (id)cellRangeNameFromChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(id)arg2;
 - (id)chromeNameForBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 namingContext:(id)arg2;
 - (id)createNameComponentWithChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 rowOrColumnName:(id)arg2 isSticky:(BOOL)arg3 namingContext:(id)arg4;
 - (id)initWithCalcEngine:(id)arg1;
 - (id)nameForBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 namingContext:(id)arg2;
+- (id)nameForBaseTractRef:(id)arg1 namingContext:(id)arg2;
 - (id)nameForChromeColumnIndex:(const struct TSUChromeColumnIndex *)arg1 inTable:(const UUIDData_5fbc143e *)arg2 useSymbolicNames:(BOOL)arg3;
 - (id)nameForChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(id)arg2;
+- (id)nameForViewTractRef:(id)arg1 namingContext:(id)arg2 coordMapper:(id)arg3;
 - (id)nameForWrappedRangeRef:(id)arg1 namingContext:(id)arg2;
 - (id)p_columnNameForBaseCellCoord:(const struct TSUModelCellCoord *)arg1 inTableModel:(id)arg2 cellRangeContainingName:(struct TSUModelCellRect *)arg3;
 - (id)p_rowNameForBaseCellCoord:(const struct TSUModelCellCoord *)arg1 inTableModel:(id)arg2 cellRangeContainingName:(struct TSUModelCellRect *)arg3;

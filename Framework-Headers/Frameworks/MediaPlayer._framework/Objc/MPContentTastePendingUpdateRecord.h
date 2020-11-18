@@ -8,6 +8,7 @@
 
 @class NSString, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface MPContentTastePendingUpdateRecord : NSObject
 {
     NSString *_playlistGlobalID;

@@ -22,7 +22,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned short ipVersion; // @synthesize ipVersion=_ipVersion;
 @property (nonatomic) unsigned short port; // @synthesize port=_port;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
+- (int)getSockaddrStorage:(struct sockaddr_storage *)arg1 size:(unsigned long long *)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isIPv6;
 
 @end

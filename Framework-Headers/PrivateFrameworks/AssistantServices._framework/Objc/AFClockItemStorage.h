@@ -37,7 +37,7 @@
 - (void)beginGrouping;
 - (void)deleteAllItems;
 - (void)deleteItemsWithIDs:(id)arg1;
-- (void)endGrouping;
+- (void)endGroupingWithOptions:(unsigned long long)arg1;
 - (id)initWithIdentifier:(id)arg1 delegate:(id)arg2;
 - (void)insertOrUpdateItems:(id)arg1;
 - (void)invalidate;

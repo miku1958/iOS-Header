@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
     double _fractionOfScreenAboveFarClipPlaneAtCanonicalPitch;
     double _distanceToGroundAndFarClipPlaneIntersection;
     double _screenHeightOfGroundAndFarClipPlaneIntersection;
-    BOOL _allowDatelineWraparound;
     double _canonicalPitch;
     double _horizontalOffset;
     double _ndcZNear;
@@ -53,7 +52,6 @@ __attribute__((visibility("hidden")))
     optional_76e85d3d _maxDistanceToGroundRestriction;
 }
 
-@property (nonatomic) BOOL allowDatelineWraparound; // @synthesize allowDatelineWraparound=_allowDatelineWraparound;
 @property (nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property (nonatomic) struct VKCameraState cameraState;
 @property (nonatomic) double canonicalPitch; // @synthesize canonicalPitch=_canonicalPitch;
@@ -107,13 +105,11 @@ __attribute__((visibility("hidden")))
 - (id)detailedDescription;
 - (double)displayZoomLevel;
 - (Matrix_6e1d3589)groundPlaneIntersectionPoint;
-- (Matrix_6e1d3589)groundPointFromScreenPoint:(struct CGPoint)arg1;
-- (Matrix_6e1d3589)groundPointFromScreenPoint:(struct CGPoint)arg1 atGroundLevel:(double)arg2;
+- (optional_67826ebe)groundPointFromScreenPoint:(struct CGPoint)arg1;
+- (optional_67826ebe)groundPointFromScreenPoint:(struct CGPoint)arg1 atGroundLevel:(double)arg2;
 - (id)initWithRunLoopController:(struct RunLoopController *)arg1;
-- (BOOL)isOuterWorldBoundsVisible;
-- (BOOL)isWorldSpaceRectVisible:(const Box_3d7e3c2c *)arg1;
-- (float)maximumStyleZForRect:(const Box_3d7e3c2c *)arg1;
 - (Mercator3_d8bb135c)mercatorPosition;
+- (struct CGPoint)screenPointFromGroundPoint:(const Mercator3_d8bb135c *)arg1;
 - (void)setMercatorPosition:(const Mercator3_d8bb135c *)arg1;
 - (void)setNeedsUpdate;
 - (void)updateIfNeeded;

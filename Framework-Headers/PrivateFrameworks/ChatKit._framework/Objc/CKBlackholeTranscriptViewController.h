@@ -40,8 +40,10 @@
 - (id)_conversationList;
 - (void)_deleteConversation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_handleIDsForCurrentConversation;
+- (void)_restoreConverstion;
 - (void)_updateTranscriptHistory;
 - (void)chatAllowedByScreenTimeChanged:(id)arg1;
+- (void)dealloc;
 - (id)generateHeader;
 - (id)initWithConversation:(id)arg1;
 - (BOOL)isChatAllowedByScreenTime:(id)arg1;
@@ -59,6 +61,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

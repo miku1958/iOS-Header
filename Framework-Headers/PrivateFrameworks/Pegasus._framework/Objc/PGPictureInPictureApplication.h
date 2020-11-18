@@ -20,8 +20,12 @@
 + (id)pictureInPictureApplicationWithProcessIdentifier:(int)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithProcessIdentifier:(int)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPGPictureInPictureApplication:(id)arg1;
 
 @end
 

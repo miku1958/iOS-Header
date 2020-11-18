@@ -32,6 +32,7 @@
 
 + (id)autoLockBehavior;
 + (id)behaviorForBehaviorProvider:(id)arg1;
++ (id)behaviorWithDuration:(long long)arg1 mode:(long long)arg2 warnMode:(long long)arg3;
 + (id)defaultBehavior;
 + (id)disabledBehavior;
 + (id)lockScreenBehavior;

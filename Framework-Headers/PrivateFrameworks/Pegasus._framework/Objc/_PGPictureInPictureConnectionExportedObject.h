@@ -23,18 +23,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (oneway void)actionButtonTapped;
+- (oneway void)beginTwoStagePictureInPictureStopByRestoringUserInterfaceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (oneway void)endTwoStagePictureInPictureStopWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (oneway void)handleCommand:(id)arg1;
 - (oneway void)hostedWindowSizeChangeBegan;
 - (oneway void)hostedWindowSizeChangeEnded;
 - (id)initWithPictureInPictureProxy:(id)arg1;
 - (oneway void)pictureInPictureCancelRequestedAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)pictureInPictureCancelled;
-- (oneway void)pictureInPictureInterruptionBegan;
-- (oneway void)pictureInPictureInterruptionEnded;
-- (oneway void)pictureInPictureResumed;
 - (oneway void)pictureInPictureStartRequestedAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)pictureInPictureStopRequestedAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (oneway void)pictureInPictureSuspended;
+- (oneway void)setResourcesUsageReductionReasons:(unsigned long long)arg1;
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(id)arg4;
 - (oneway void)updatePictureInPicturePossible:(BOOL)arg1;
 

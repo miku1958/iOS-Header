@@ -9,27 +9,32 @@
 #import <ContextKit/NSCopying-Protocol.h>
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSOrderedSet, NSString, NSURL;
+@class NSOrderedSet, NSSet, NSString, NSURL;
 
 @interface CKContextResult : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _exactMatch;
     NSString *_title;
     NSString *_query;
     long long _minPrefix;
     NSURL *_url;
-    NSString *_portraitId;
+    NSString *_topicId;
     NSString *_category;
     NSString *_debug;
     NSOrderedSet *_relatedItems;
+    NSSet *_tags;
 }
 
 @property (copy, nonatomic) NSString *category; // @synthesize category=_category;
 @property (copy, nonatomic) NSString *debug; // @synthesize debug=_debug;
+@property (nonatomic, getter=isExactMatch) BOOL exactMatch; // @synthesize exactMatch=_exactMatch;
 @property (nonatomic) long long minPrefix; // @synthesize minPrefix=_minPrefix;
-@property (copy, nonatomic) NSString *portraitId; // @synthesize portraitId=_portraitId;
+@property (copy, nonatomic) NSString *portraitId;
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property (copy, nonatomic) NSOrderedSet *relatedItems; // @synthesize relatedItems=_relatedItems;
+@property (copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSString *topicId; // @synthesize topicId=_topicId;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (id)new;

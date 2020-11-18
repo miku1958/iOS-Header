@@ -6,17 +6,17 @@
 
 #import <MediaMiningKit/CLSInputClue.h>
 
-@class CLSPerson, PHPhotoLibrary;
+@class CLSPersonIdentity, PHPhotoLibrary;
 
 @interface CLSInputPeopleClue : CLSInputClue
 {
-    CLSPerson *_person;
+    CLSPersonIdentity *_person;
     PHPhotoLibrary *_photoLibrary;
     unsigned long long _numberOfFaces;
 }
 
 @property (nonatomic) unsigned long long numberOfFaces; // @synthesize numberOfFaces=_numberOfFaces;
-@property (strong, nonatomic) CLSPerson *person; // @synthesize person=_person;
+@property (strong, nonatomic) CLSPersonIdentity *person; // @synthesize person=_person;
 @property (weak, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 
 + (id)clueWithPeople:(id)arg1;

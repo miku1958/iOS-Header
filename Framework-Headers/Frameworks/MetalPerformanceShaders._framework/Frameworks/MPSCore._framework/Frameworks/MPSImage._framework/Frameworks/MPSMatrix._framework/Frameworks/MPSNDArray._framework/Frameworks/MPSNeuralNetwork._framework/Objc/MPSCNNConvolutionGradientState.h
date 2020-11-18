@@ -21,6 +21,7 @@
     BOOL _needReductionInN;
     BOOL _needReductionInXY;
     unsigned int _weightsLayout;
+    unsigned long long _dimSizeN;
 }
 
 @property (readonly, strong, nonatomic) MPSCNNConvolution *convolution; // @synthesize convolution=_convolution;

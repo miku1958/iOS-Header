@@ -9,7 +9,7 @@
 #import <SplashBoard/BSXPCCoding-Protocol.h>
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, XBLaunchInterfaceConfiguration;
 
 @interface XBLaunchInterface : NSObject <BSXPCCoding, NSSecureCoding>
 {
@@ -18,13 +18,16 @@
     NSString *_name;
     NSString *_identifier;
     NSArray *_urlSchemes;
+    XBLaunchInterfaceConfiguration *_configuration;
 }
 
 @property (nonatomic, getter=_isDefault) BOOL _default; // @synthesize _default;
+@property (readonly, nonatomic) XBLaunchInterfaceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isConfiguration;
 @property (readonly, nonatomic) BOOL isStoryboard;
 @property (readonly, nonatomic) BOOL isXIB;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -37,6 +40,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 identifier:(id)arg2 urlSchemes:(id)arg3 isDefault:(BOOL)arg4;
 - (id)initWithType:(unsigned long long)arg1 name:(id)arg2 identifier:(id)arg3 urlSchemes:(id)arg4 isDefault:(BOOL)arg5;
 - (id)initWithXPCDictionary:(id)arg1;
 

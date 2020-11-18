@@ -20,6 +20,7 @@
 - (void)interactionDidEnd:(id)arg1;
 - (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)loadView;
+- (long long)overrideUserInterfaceStyle;
 - (void)selectAll:(id)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <UIFoundation/NSTextElement.h>
 
-@class NSAttributedString, NSMutableArray, NSTextDataProvider, NSTextRange;
+@class NSAttributedString, NSDictionary, NSMutableArray, NSTextDataProvider, NSTextRange;
 
 @interface NSTextParagraph : NSTextElement
 {
@@ -14,19 +14,26 @@
     struct _NSRange _range;
     NSTextRange *_paragraphContentRange;
     NSTextRange *_paragraphSeparatorRange;
+    long long _resolvedBaseDirection;
+    long long _fallbackBaseDirection;
     NSTextDataProvider *_textDataProvider;
     NSMutableArray *_textLayoutFragments;
+    NSDictionary *_attributes;
 }
 
 @property (readonly, copy) NSAttributedString *attributedString; // @dynamic attributedString;
+@property (copy) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (readonly) NSTextRange *paragraphContentRange; // @dynamic paragraphContentRange;
 @property (readonly) NSTextRange *paragraphSeparatorRange; // @dynamic paragraphSeparatorRange;
 
 + (id)textParagraphsForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
+- (long long)_resolvedBaseWritingDirectionWithFallbackDirection:(long long)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)init;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
+- (id)initWithString:(id)arg1 attributes:(id)arg2;
 - (id)initWithTextContentManager:(id)arg1;
 - (id)paragraphRange;
 - (void)setAttributedString:(id)arg1;

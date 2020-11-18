@@ -8,6 +8,7 @@
 
 @class UIActivityIndicatorView, UILabel, UINavigationItem;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegNavigationBarTitleView : UIView
 {
     UINavigationItem *_item;

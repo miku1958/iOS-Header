@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @dynamic documentationMetadata;
 @property (copy, nonatomic) NSNumber *downloadSize; // @dynamic downloadSize;
+@property (copy, nonatomic) NSNumber *installDuration; // @dynamic installDuration;
 @property (copy, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
 @property (copy, nonatomic) NSNumber *state; // @dynamic state;
 

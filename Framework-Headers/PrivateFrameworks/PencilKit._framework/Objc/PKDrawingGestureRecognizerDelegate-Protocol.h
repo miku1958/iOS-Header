@@ -6,12 +6,13 @@
 
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, UIEvent, UIGestureRecognizer;
+@class NSSet, UIEvent, UIGestureRecognizer, UITouch;
 @protocol PKDrawingGestureRecognizerProtocol;
 
 @protocol PKDrawingGestureRecognizerDelegate <UIGestureRecognizerDelegate>
 
 @optional
 - (BOOL)drawingGestureRecognizer:(UIGestureRecognizer<PKDrawingGestureRecognizerProtocol> *)arg1 shouldBeginDrawingWithTouches:(NSSet *)arg2 event:(UIEvent *)arg3;
+- (void)drawingGestureRecognizer:(UIGestureRecognizer<PKDrawingGestureRecognizerProtocol> *)arg1 touchesEndedWithDrawingTouch:(UITouch *)arg2;
 @end
 

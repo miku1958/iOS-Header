@@ -18,12 +18,9 @@
     id _context;
 }
 
-@property (weak, nonatomic) BSCompoundAssertion *assertion; // @synthesize assertion=_assertion;
-@property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

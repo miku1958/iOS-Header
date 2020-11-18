@@ -8,7 +8,7 @@
 
 #import <iCloudQuota/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSString, NSURL, _ICQBannerSpecification, _ICQButtonSpecification, _ICQFollowupSpecification, _ICQUpgradeFlowSpecification;
+@class NSDate, NSDictionary, NSString, NSURL, _ICQBannerSpecification, _ICQButtonSpecification, _ICQDeviceInfo, _ICQFollowupSpecification, _ICQUpgradeFlowSpecification, _ICQXMLSpecification;
 
 @interface ICQOffer : NSObject <NSSecureCoding>
 {
@@ -21,6 +21,7 @@
     long long _offerType;
     long long _level;
     NSString *_bundleIdentifier;
+    NSString *_appVersionId;
     NSString *_accountAltDSID;
     NSString *_notificationID;
     NSString *_offerId;
@@ -28,17 +29,28 @@
     _ICQButtonSpecification *_buttonSpecification;
     _ICQFollowupSpecification *_followupSpecification;
     _ICQUpgradeFlowSpecification *_upgradeFlowSpecification;
+    _ICQXMLSpecification *_XMLSpecification;
+    _ICQDeviceInfo *_deviceInfo;
+    NSString *_context;
 }
 
+@property (readonly, nonatomic) _ICQXMLSpecification *XMLSpecification;
+@property (strong, nonatomic) _ICQXMLSpecification *XMLSpecification; // @synthesize XMLSpecification=_XMLSpecification;
 @property (readonly, nonatomic) double _callbackInterval;
 @property (strong, nonatomic) NSString *accountAltDSID; // @synthesize accountAltDSID=_accountAltDSID;
 @property (readonly, nonatomic) long long action;
+@property (strong, nonatomic) NSString *appVersionId;
+@property (strong, nonatomic) NSString *appVersionId; // @synthesize appVersionId=_appVersionId;
 @property (readonly, nonatomic) _ICQBannerSpecification *bannerSpecification;
 @property (strong, nonatomic) _ICQBannerSpecification *bannerSpecification; // @synthesize bannerSpecification=_bannerSpecification;
 @property (readonly, nonatomic, getter=isBuddyOffer) BOOL buddyOffer;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) _ICQButtonSpecification *buttonSpecification;
 @property (strong, nonatomic) _ICQButtonSpecification *buttonSpecification; // @synthesize buttonSpecification=_buttonSpecification;
+@property (strong, nonatomic) NSString *context;
+@property (strong, nonatomic) NSString *context; // @synthesize context=_context;
+@property (strong, nonatomic) _ICQDeviceInfo *deviceInfo;
+@property (strong, nonatomic) _ICQDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic) _ICQFollowupSpecification *followupSpecification;
@@ -63,6 +75,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServerDictionary:(id)arg1 accountAltDSID:(id)arg2 notificationID:(id)arg3 retrievalDate:(id)arg4 callbackInterval:(double)arg5 bundleIdentifier:(id)arg6;
+- (BOOL)isDetailAppBannerOffer;
+- (BOOL)placeholderExists;
+- (BOOL)showsPhotoVideoCounts;
 - (id)storagePurchaseKeybagForButtonId:(id)arg1;
 - (void)updateOfferWithPlanDetails:(id)arg1 actionString:(id)arg2;
 

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 {
     id<PSBillingPeriodSource> _billingPeriodSource;
     NSArray *_subcategorySpecifiers;
-    PSDataUsageStatisticsCache *_statisticsCache;
     unsigned long long _type;
+    PSDataUsageStatisticsCache *_statisticsCache;
 }
 
 @property (weak, nonatomic) id<PSBillingPeriodSource> billingPeriodSource; // @synthesize billingPeriodSource=_billingPeriodSource;

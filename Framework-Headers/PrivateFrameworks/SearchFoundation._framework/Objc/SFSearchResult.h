@@ -24,6 +24,12 @@
     BOOL _isStreaming;
     BOOL _isStaticCorrection;
     BOOL _isFuzzyMatch;
+    BOOL _noGoTakeover;
+    BOOL _shouldUseCompactDisplay;
+    BOOL _preferTopPlatter;
+    BOOL _wasCompact;
+    BOOL _didTakeoverGo;
+    BOOL _usesCompactDisplay;
     BOOL _publiclyIndexable;
     BOOL _doNotFold;
     int _auxiliaryBottomTextColor;
@@ -87,6 +93,8 @@
     NSString *_intendedQuery;
     NSString *_correctedQuery;
     NSString *_completedQuery;
+    SFCard *_compactCard;
+    NSArray *_alternativeURLs;
     unsigned long long _queryId;
     NSString *_userInput;
     NSArray *_itemProviderDataTypes;
@@ -103,6 +111,7 @@
 }
 
 @property (strong, nonatomic) SFActionItem *action; // @synthesize action=_action;
+@property (copy, nonatomic) NSArray *alternativeURLs; // @synthesize alternativeURLs=_alternativeURLs;
 @property (copy, nonatomic) NSString *appleReferrer; // @synthesize appleReferrer=_appleReferrer;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (copy, nonatomic) NSString *auxiliaryBottomText; // @synthesize auxiliaryBottomText=_auxiliaryBottomText;
@@ -112,6 +121,7 @@
 @property (nonatomic) unsigned long long blockId; // @synthesize blockId=_blockId;
 @property (copy, nonatomic) NSString *calendarIdentifier; // @synthesize calendarIdentifier=_calendarIdentifier;
 @property (strong, nonatomic) SFCard *card; // @synthesize card=_card;
+@property (strong, nonatomic) SFCard *compactCard; // @synthesize compactCard=_compactCard;
 @property (copy, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
 @property (copy, nonatomic) NSString *completion; // @synthesize completion=_completion;
 @property (strong, nonatomic) SFImage *completionImage; // @synthesize completionImage=_completionImage;
@@ -125,6 +135,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *descriptions; // @synthesize descriptions=_descriptions;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL didTakeoverGo; // @synthesize didTakeoverGo=_didTakeoverGo;
 @property (nonatomic) BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
 @property (strong, nonatomic) NSNumber *engagementScore; // @synthesize engagementScore=_engagementScore;
 @property (strong, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
@@ -159,8 +170,10 @@
 @property (strong, nonatomic) SFMoreResults *moreResults; // @synthesize moreResults=_moreResults;
 @property (strong, nonatomic) SFPunchout *moreResultsPunchout; // @synthesize moreResultsPunchout=_moreResultsPunchout;
 @property (copy, nonatomic) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
+@property (nonatomic) BOOL noGoTakeover; // @synthesize noGoTakeover=_noGoTakeover;
 @property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
 @property (nonatomic) int placement; // @synthesize placement=_placement;
+@property (nonatomic) BOOL preferTopPlatter; // @synthesize preferTopPlatter=_preferTopPlatter;
 @property (nonatomic) BOOL preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
 @property (nonatomic) BOOL publiclyIndexable; // @synthesize publiclyIndexable=_publiclyIndexable;
 @property (copy, nonatomic) NSString *publishDate; // @synthesize publishDate=_publishDate;
@@ -180,6 +193,7 @@
 @property (copy, nonatomic) NSURL *sectionHeaderMoreURL; // @synthesize sectionHeaderMoreURL=_sectionHeaderMoreURL;
 @property (copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (nonatomic) double serverScore; // @synthesize serverScore=_serverScore;
+@property (nonatomic) BOOL shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property (copy, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;
 @property (copy, nonatomic) NSString *srf; // @synthesize srf=_srf;
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
@@ -193,9 +207,12 @@
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (copy, nonatomic) NSString *userActivityRequiredString; // @synthesize userActivityRequiredString=_userActivityRequiredString;
 @property (copy, nonatomic) NSString *userInput; // @synthesize userInput=_userInput;
+@property (nonatomic) BOOL usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
+@property (nonatomic) BOOL wasCompact; // @synthesize wasCompact=_wasCompact;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)compareWithResult:(id)arg1 logger:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -13,9 +13,9 @@
 {
     NSString *_topic;
     MTEventHandlers *_eventHandlers;
-    MTUtils *_utils;
     MTConfig *_config;
     MTSystem *_system;
+    MTUtils *_utils;
     id<MTDelegatePackage> _delegatePackage;
 }
 
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property (strong, nonatomic) MTUtils *utils; // @synthesize utils=_utils;
 
++ (id)kitWithTopic:(id)arg1 amsBag:(id)arg2;
 + (id)kitWithTopic:(id)arg1 bagProfile:(id)arg2 profileVersion:(id)arg3;
 - (void).cxx_destruct;
 - (id)initWithTopic:(id)arg1;

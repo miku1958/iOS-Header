@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;

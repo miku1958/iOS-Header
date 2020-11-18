@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+#import <Email/EMBlockedSenderReader-Protocol.h>
+
+@class NSSet, NSString;
 @protocol EFScheduler, OS_dispatch_queue;
 
-@interface EMBlockedSenderManager : NSObject
+@interface EMBlockedSenderManager : NSObject <EMBlockedSenderReader>
 {
     struct atomic_flag _didRemoveObservers;
     NSSet *_blockedSenderCache;
@@ -20,8 +22,12 @@
 @property (strong, nonatomic) NSSet *blockedSenderCache; // @synthesize blockedSenderCache=_blockedSenderCache;
 @property (nonatomic, getter=isBlockedSenderEnabled) BOOL blockedSenderEnabled;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMoveToTrashEnabled) BOOL moveToTrashEnabled;
 @property (strong, nonatomic) id<EFScheduler> resetScheduler; // @synthesize resetScheduler=_resetScheduler;
+@property (readonly) Class superclass;
 
 + (void)setPromptForBlockedSender:(BOOL)arg1;
 + (BOOL)shouldMoveToTrashForMailboxType:(long long)arg1;

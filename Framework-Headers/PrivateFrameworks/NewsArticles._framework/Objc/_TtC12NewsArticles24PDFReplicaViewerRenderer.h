@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles24PDFReplicaViewerRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *styler;
+    MISSING_TYPE *publisherLogoImageCache;
 }
 
 @end

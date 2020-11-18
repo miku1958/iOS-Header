@@ -19,6 +19,7 @@
 + (BOOL)isAHeader:(id)arg1;
 + (double)largestImageSizeForSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (id)leadingTextView;
 - (id)setupContentView;
 - (void)updateWithRowModel:(id)arg1;
 - (struct UIEdgeInsets)verticalBaselineInsetsForHeader:(BOOL)arg1 isCompactTable:(BOOL)arg2;

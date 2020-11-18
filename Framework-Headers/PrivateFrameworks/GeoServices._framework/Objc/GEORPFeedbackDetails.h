@@ -8,17 +8,21 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPAddressFeedback, GEORPDirectionsFeedback, GEORPGroundViewFeedback, GEORPMerchantLookupFeedback, GEORPPoiFeedback, GEORPSearchFeedback, GEORPTileFeedback, GEORPTransitPoiFeedback, PBDataReader, PBUnknownFields;
+@class GEORPAddressFeedback, GEORPCuratedCollectionFeedback, GEORPDirectionsFeedback, GEORPGroundViewFeedback, GEORPIncidentFeedback, GEORPMerchantLookupFeedback, GEORPPoiEnrichmentUpdate, GEORPPoiFeedback, GEORPPoiImageFeedback, GEORPSearchFeedback, GEORPTileFeedback, GEORPTransitPoiFeedback, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackDetails : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEORPAddressFeedback *_addressPointFeedback;
+    GEORPCuratedCollectionFeedback *_curatedCollectionFeedback;
     GEORPDirectionsFeedback *_directionsFeedback;
     GEORPGroundViewFeedback *_groundViewFeedback;
+    GEORPIncidentFeedback *_incidentFeedback;
     GEORPMerchantLookupFeedback *_merchantLookupFeedback;
+    GEORPPoiEnrichmentUpdate *_poiEnrichmentUpdate;
     GEORPPoiFeedback *_poiFeedback;
+    GEORPPoiImageFeedback *_poiImageFeedback;
     GEORPSearchFeedback *_searchFeedback;
     GEORPTileFeedback *_tileFeedback;
     GEORPTransitPoiFeedback *_transitPoiFeedback;
@@ -28,38 +32,42 @@
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_addressPointFeedback:1;
+        unsigned int read_curatedCollectionFeedback:1;
         unsigned int read_directionsFeedback:1;
         unsigned int read_groundViewFeedback:1;
+        unsigned int read_incidentFeedback:1;
         unsigned int read_merchantLookupFeedback:1;
+        unsigned int read_poiEnrichmentUpdate:1;
         unsigned int read_poiFeedback:1;
+        unsigned int read_poiImageFeedback:1;
         unsigned int read_searchFeedback:1;
         unsigned int read_tileFeedback:1;
         unsigned int read_transitPoiFeedback:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressPointFeedback:1;
-        unsigned int wrote_directionsFeedback:1;
-        unsigned int wrote_groundViewFeedback:1;
-        unsigned int wrote_merchantLookupFeedback:1;
-        unsigned int wrote_poiFeedback:1;
-        unsigned int wrote_searchFeedback:1;
-        unsigned int wrote_tileFeedback:1;
-        unsigned int wrote_transitPoiFeedback:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) GEORPAddressFeedback *addressPointFeedback;
+@property (strong, nonatomic) GEORPCuratedCollectionFeedback *curatedCollectionFeedback;
 @property (strong, nonatomic) GEORPDirectionsFeedback *directionsFeedback;
 @property (strong, nonatomic) GEORPGroundViewFeedback *groundViewFeedback;
 @property (readonly, nonatomic) BOOL hasAddressPointFeedback;
+@property (readonly, nonatomic) BOOL hasCuratedCollectionFeedback;
 @property (readonly, nonatomic) BOOL hasDirectionsFeedback;
 @property (readonly, nonatomic) BOOL hasGroundViewFeedback;
+@property (readonly, nonatomic) BOOL hasIncidentFeedback;
 @property (readonly, nonatomic) BOOL hasMerchantLookupFeedback;
+@property (readonly, nonatomic) BOOL hasPoiEnrichmentUpdate;
 @property (readonly, nonatomic) BOOL hasPoiFeedback;
+@property (readonly, nonatomic) BOOL hasPoiImageFeedback;
 @property (readonly, nonatomic) BOOL hasSearchFeedback;
 @property (readonly, nonatomic) BOOL hasTileFeedback;
 @property (readonly, nonatomic) BOOL hasTransitPoiFeedback;
+@property (strong, nonatomic) GEORPIncidentFeedback *incidentFeedback;
 @property (strong, nonatomic) GEORPMerchantLookupFeedback *merchantLookupFeedback;
+@property (strong, nonatomic) GEORPPoiEnrichmentUpdate *poiEnrichmentUpdate;
 @property (strong, nonatomic) GEORPPoiFeedback *poiFeedback;
+@property (strong, nonatomic) GEORPPoiImageFeedback *poiImageFeedback;
 @property (strong, nonatomic) GEORPSearchFeedback *searchFeedback;
 @property (strong, nonatomic) GEORPTileFeedback *tileFeedback;
 @property (strong, nonatomic) GEORPTransitPoiFeedback *transitPoiFeedback;
@@ -67,14 +75,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAddressPointFeedback;
-- (void)_readDirectionsFeedback;
-- (void)_readGroundViewFeedback;
-- (void)_readMerchantLookupFeedback;
-- (void)_readPoiFeedback;
-- (void)_readSearchFeedback;
-- (void)_readTileFeedback;
-- (void)_readTransitPoiFeedback;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -83,7 +83,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

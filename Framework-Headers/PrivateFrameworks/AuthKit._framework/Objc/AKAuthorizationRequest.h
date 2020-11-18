@@ -11,6 +11,7 @@
 @interface AKAuthorizationRequest : AKCredentialRequest
 {
     BOOL _isSilentAppTransfer;
+    BOOL _isEligibleForUpgradeFromPassword;
     NSString *_altDSID;
     ACAccount *_authkitAccount;
     NSArray *_requestedScopes;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (nonatomic) long long existingStatus; // @synthesize existingStatus=_existingStatus;
 @property (readonly, nonatomic) ACAccount *internalAuthKitAccount;
+@property (nonatomic) BOOL isEligibleForUpgradeFromPassword; // @synthesize isEligibleForUpgradeFromPassword=_isEligibleForUpgradeFromPassword;
 @property (copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property (copy, nonatomic) NSArray *requestedScopes; // @synthesize requestedScopes=_requestedScopes;
 @property (copy, nonatomic) NSString *state; // @synthesize state=_state;

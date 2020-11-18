@@ -13,11 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)_axUserDataConfiguration;
-- (id)_focusGroupDescriptor;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)canBecomeFocused;
+- (id)focusGroupIdentifier;
 - (BOOL)isAccessibilityElement;
 
 @end

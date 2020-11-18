@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)canAccessAdvertisingIdentifier;
 - (void)clearAllIdentifiersOfType:(long long)arg1;
 - (void)clearIdentifiersForUninstallationWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (unsigned int)findAppBundleForExecutableURL:(id)arg1 withContext:(struct LSContext *)arg2;

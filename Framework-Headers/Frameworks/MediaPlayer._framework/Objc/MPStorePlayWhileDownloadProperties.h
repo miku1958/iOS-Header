@@ -8,6 +8,7 @@
 
 @class NSArray, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MPStorePlayWhileDownloadProperties : NSObject
 {
     unsigned long long _downloadToken;

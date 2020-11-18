@@ -17,8 +17,10 @@
     NSString *_user;
     NSString *_recordIdentifier;
     long long _rank;
+    id _credentialIdentityStoreIdentifier;
 }
 
+@property (readonly, nonatomic) id credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
 @property (nonatomic) long long rank; // @synthesize rank=_rank;
 @property (readonly, copy, nonatomic) NSString *recordIdentifier; // @synthesize recordIdentifier=_recordIdentifier;
 @property (readonly, nonatomic) ASCredentialServiceIdentifier *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;

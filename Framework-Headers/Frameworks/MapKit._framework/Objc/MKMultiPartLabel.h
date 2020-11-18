@@ -44,6 +44,7 @@
 - (void)layoutSubviews;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 - (void)setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

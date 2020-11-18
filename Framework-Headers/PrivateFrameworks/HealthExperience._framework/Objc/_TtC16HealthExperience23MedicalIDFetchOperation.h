@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthExperience/_TtC16HealthExperience14AsyncOperation.h>
+#import <HealthExperience/_TtC16HealthExperience21AsynchronousOperation.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC16HealthExperience23MedicalIDFetchOperation : _TtC16HealthExperience14AsyncOperation
+@interface _TtC16HealthExperience23MedicalIDFetchOperation : _TtC16HealthExperience21AsynchronousOperation
 {
     MISSING_TYPE *medicalIDData;
     MISSING_TYPE *fetchError;
-    MISSING_TYPE *healthStore;
+    MISSING_TYPE *medicalIDStore;
 }
 
 - (void).cxx_destruct;

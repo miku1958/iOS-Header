@@ -28,6 +28,7 @@
 - (void)dealloc;
 - (void)encodeBool:(BOOL)arg1;
 - (void)encodeData:(const void *)arg1 length:(long long)arg2;
+- (void)encodeDouble:(double)arg1;
 - (void)encodeInt32:(int)arg1;
 - (void)encodeInt64:(long long)arg1;
 - (void)encodeMDPlistObject:(CDStruct_b7fac349)arg1;

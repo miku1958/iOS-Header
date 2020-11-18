@@ -8,6 +8,7 @@
 
 @class NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface MPAssistantMusicSummaryLogEvent : MPAssistantMusicLogEvent
 {
     double _blockingSecureKeyLoadDuration;

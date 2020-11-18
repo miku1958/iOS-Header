@@ -8,7 +8,7 @@
 
 #import <PassKitCore/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
+@class IDSService, NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
 @protocol OS_dispatch_queue, PKIDSManagerDataSource;
 
 @interface PKIDSManager : NSObject <IDSServiceDelegate>
@@ -19,7 +19,7 @@
     NSMutableDictionary *_thumbnailCompletionHandlers;
     PKProximityAdvertiser *_proximityAdvertiser;
     NSHashTable *_delegates;
-    NSLock *_delegatesLock;
+    struct os_unfair_lock_s _delegatesLock;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     int _requestCLTMThrottleUncapToken;
     id<PKIDSManagerDataSource> _dataSource;

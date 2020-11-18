@@ -11,18 +11,20 @@
 
 @interface HUHomeAccessoryTileView : UIView
 {
+    BOOL _iconOnlyTile;
     UIImageView *_homeView;
     HUGridServiceCell *_tileView;
 }
 
 @property (readonly, nonatomic) double aspectRatio;
 @property (readonly, nonatomic) UIImageView *homeView; // @synthesize homeView=_homeView;
+@property (readonly, nonatomic) BOOL iconOnlyTile; // @synthesize iconOnlyTile=_iconOnlyTile;
 @property (readonly, nonatomic) HFItem<HFServiceLikeItem> *item;
 @property (readonly, nonatomic) HUGridServiceCell *tileView; // @synthesize tileView=_tileView;
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1 item:(id)arg2;
-- (id)initWithItem:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 categoryType:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 item:(id)arg2 iconOnlyTile:(BOOL)arg3;
 - (void)layoutSubviews;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 

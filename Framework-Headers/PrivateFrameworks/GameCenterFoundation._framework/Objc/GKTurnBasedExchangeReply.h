@@ -12,19 +12,19 @@
 {
     GKTurnBasedParticipant *_recipient;
     GKTurnBasedExchangeReplyInternal *_internal;
-    GKTurnBasedMatch *_matchWeak;
+    GKTurnBasedMatch *_match;
 }
 
 @property (strong, nonatomic) NSData *data; // @dynamic data;
 @property (strong) GKTurnBasedExchangeReplyInternal *internal; // @synthesize internal=_internal;
-@property (nonatomic) GKTurnBasedMatch *match; // @synthesize match=_matchWeak;
+@property (weak, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
 @property (readonly, nonatomic) NSString *message; // @dynamic message;
 @property (strong, nonatomic) GKTurnBasedParticipant *recipient; // @synthesize recipient=_recipient;
 @property (readonly, nonatomic) NSDate *replyDate; // @dynamic replyDate;
 
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (unsigned long long)hash;

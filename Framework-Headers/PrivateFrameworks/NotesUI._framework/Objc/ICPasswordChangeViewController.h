@@ -104,8 +104,8 @@
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)keyboardResizerScrollView;
 - (void)resetTextFields;
+- (void)setUpForAddingPasswordWithAccount:(id)arg1;
 - (void)setUpForChangePasswordWithAccount:(id)arg1;
-- (void)setUpForInitialPasswordWithAccount:(id)arg1;
 - (void)setUpNavigationBar;
 - (void)setupAccessibility;
 - (void)showEnterAPasswordAlert;
@@ -114,7 +114,6 @@
 - (void)showSimpleAlertWithTitle:(id)arg1 message:(id)arg2;
 - (void)showUnableToSetPasswordAlert;
 - (BOOL)textFieldShouldReturn:(id)arg1;
-- (double)topInsetForResizer:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFonts;
 - (BOOL)validateInput;

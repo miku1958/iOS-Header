@@ -13,17 +13,19 @@
 
 @interface HUGridCellLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
-    BOOL _drawsBorderForOnState;
     unsigned long long _contentColorStyle;
     HUGridCellBackgroundDisplayOptions *_backgroundDisplayOptions;
     UIVisualEffect *_vibrancyEffect;
     UIVisualEffect *_secondaryVibrancyEffect;
+    UIVisualEffect *_iconVibrancyEffect;
     double _secondaryContentDimmingFactor;
+    NSString *_contentSizeCategory;
     UIFont *_font;
     double _iconSize;
     long long _iconContentMode;
     double _cellInnerMargin;
     double _cellCornerRadius;
+    unsigned long long _onStateBorderStyle;
     double _cellScaleFactor;
     long long _cellSizeSubclass;
 }
@@ -34,13 +36,16 @@
 @property (nonatomic) double cellScaleFactor; // @synthesize cellScaleFactor=_cellScaleFactor;
 @property (readonly, nonatomic) long long cellSizeSubclass; // @synthesize cellSizeSubclass=_cellSizeSubclass;
 @property (nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
+@property (nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL drawsBorderForOnState; // @synthesize drawsBorderForOnState=_drawsBorderForOnState;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
+@property (readonly, nonatomic) double gutter;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long iconContentMode; // @synthesize iconContentMode=_iconContentMode;
 @property (nonatomic) double iconSize; // @synthesize iconSize=_iconSize;
+@property (strong, nonatomic) UIVisualEffect *iconVibrancyEffect; // @synthesize iconVibrancyEffect=_iconVibrancyEffect;
+@property (nonatomic) unsigned long long onStateBorderStyle; // @synthesize onStateBorderStyle=_onStateBorderStyle;
 @property (nonatomic) double secondaryContentDimmingFactor; // @synthesize secondaryContentDimmingFactor=_secondaryContentDimmingFactor;
 @property (strong, nonatomic) UIVisualEffect *secondaryVibrancyEffect; // @synthesize secondaryVibrancyEffect=_secondaryVibrancyEffect;
 @property (readonly) Class superclass;

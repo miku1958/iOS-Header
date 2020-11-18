@@ -12,9 +12,9 @@
 
 @interface PTSettingsClassStructure : NSObject <NSSecureCoding>
 {
-    NSDictionary *_classNames;
     NSDictionary *_structNames;
     NSDictionary *_classes;
+    NSDictionary *_classNames;
     NSString *_settingsClassName;
     unsigned long long _settingsClassVersion;
     NSSet *_leafKeys;
@@ -28,12 +28,12 @@
 @property (strong, nonatomic) NSString *settingsClassName; // @synthesize settingsClassName=_settingsClassName;
 @property (nonatomic) unsigned long long settingsClassVersion; // @synthesize settingsClassVersion=_settingsClassVersion;
 
-+ (id)structureForSettingsClass:(Class)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (Class)_classForKey:(id)arg1;
 - (id)_decodeStringSetForKey:(id)arg1 withCoder:(id)arg2;
 - (id)_decodeStringStringDictionaryForKey:(id)arg1 withCoder:(id)arg2;
+- (void)_generateClassNamesIfNecessary;
 - (Class)childClassForKey:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filteredForProxySettings;

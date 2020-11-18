@@ -21,6 +21,7 @@
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSString, PXBasicUIViewTileAnimator, PXMemoriesDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesSpec, PXMemoriesSpecManager, PXMemoriesUITileSource, PXPhotosDetailsContext, PXSectionedLayoutEngine, PXSectionedObjectReference, PXTilingController, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer;
+@protocol PXViewControllerEventTracker;
 
 @interface PXMemoriesUIViewController : UIViewController <UIContextMenuInteractionDelegate, PXChangeObserver, PXAssetCollectionActionPerformerDelegate, PXSectionedDataSourceManagerObserver, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PXUIViewControllerZoomTransitionEndPoint, PXTilingControllerZoomAnimationCoordinatorDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXMemoriesUITileSourceDelegate, PXUserInterfaceFeatureViewController>
 {
@@ -35,6 +36,7 @@
     PXMemoriesSpecManager *__specManager;
     PXMemoriesUITileSource *__tileSource;
     PXSectionedLayoutEngine *__layoutEngine;
+    id<PXViewControllerEventTracker> _eventTracker;
     PXSectionedObjectReference *_anchorMemoryReference;
     PXSectionedObjectReference *__highlightedMemoryReference;
     PXSectionedObjectReference *__actionPresentationMemoryReference;
@@ -71,6 +73,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEmbedded) BOOL embedded; // @synthesize embedded=_embedded;
+@property (readonly, nonatomic) id<PXViewControllerEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL keepsSourceRegionOfInterestContent;
 @property (nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
@@ -106,7 +109,7 @@
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
-- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)createNewLayoutGenerator;
 - (void)datasourceManagerDidChange;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -133,6 +136,8 @@
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;
 - (id)tilingController:(id)arg1 transitionAnimationCoordinatorForChange:(id)arg2;
 - (void)tilingControllerZoomAnimationCoordinator:(id)arg1 enumerateTilesToAnimateInLayerWithType:(long long)arg2 layout:(id)arg3 zoomAnimationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

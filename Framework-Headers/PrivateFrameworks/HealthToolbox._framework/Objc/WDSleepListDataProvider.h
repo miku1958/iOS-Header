@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_callUpdateHandler;
+- (id)_durationFormatter;
 - (id)_sleepDataDictionaryFromSamples:(id)arg1;
 - (id)_sleepSampleAtIndex:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (long long)cellStyle;

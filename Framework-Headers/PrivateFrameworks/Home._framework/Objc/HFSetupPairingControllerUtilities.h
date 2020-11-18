@@ -11,7 +11,6 @@
 }
 
 + (id)_accessoryNotFoundStatusDescriptionSuffixForSetupResult:(id)arg1;
-+ (BOOL)_context:(id)arg1 requiresUserConsentToAddInHome:(id)arg2;
 + (BOOL)_context:(id)arg1 requiresUserConsentToReplaceInHome:(id)arg2;
 + (double)accessoryDiscoveryFatalTimeout;
 + (double)accessoryDiscoverySoftTimeout;

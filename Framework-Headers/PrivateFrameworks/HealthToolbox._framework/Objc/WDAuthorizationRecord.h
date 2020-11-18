@@ -8,7 +8,6 @@
 
 @class _HKAuthorizationRecord;
 
-__attribute__((visibility("hidden")))
 @interface WDAuthorizationRecord : NSObject
 {
     _HKAuthorizationRecord *_internalAuthorizationRecord;

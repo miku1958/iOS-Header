@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)startInjectingBoxes:(id)arg1 inGraph:(id)arg2 error:(id *)arg3;
 + (BOOL)startRecordingBoxes:(id)arg1 inGraph:(id)arg2 toDirectory:(id)arg3 error:(id *)arg4;
++ (BOOL)startRecordingFirstBoxInGraph:(id)arg1 toDirectory:(id)arg2 withFileName:(id)arg3 error:(id *)arg4;
++ (BOOL)startRecordingWithBoxRecordingInfos:(id)arg1 inGraph:(id)arg2 toDirectory:(id)arg3 error:(id *)arg4;
 + (BOOL)stopInjectingBoxesInGraph:(id)arg1;
 + (BOOL)stopRecordingBoxesInGraph:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSString;
 @protocol OS_nw_path;
 
 @interface SONetworkIdentity : NSObject
@@ -15,8 +15,10 @@
     NSString *_realm;
     NSString *_bundleIdentifier;
     NSObject<OS_nw_path> *_lastpath;
+    NSData *_auditToken;
 }
 
+@property (strong, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) NSObject<OS_nw_path> *lastpath; // @synthesize lastpath=_lastpath;
 @property (strong, nonatomic) NSString *networkFingerprint; // @synthesize networkFingerprint=_networkFingerprint;
@@ -26,7 +28,7 @@
 - (void)determineNetworkFingerprint;
 - (id)getInterfaceSignature:(id)arg1;
 - (id)getVPNServerSignature:(id)arg1;
-- (id)initForRealm:(id)arg1 andBundleIdentifier:(id)arg2;
+- (id)initForRealm:(id)arg1 bundleIdentifier:(id)arg2 auditToken:(id)arg3;
 
 @end
 

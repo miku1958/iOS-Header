@@ -18,6 +18,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithPaused:(BOOL)arg1 frozen:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

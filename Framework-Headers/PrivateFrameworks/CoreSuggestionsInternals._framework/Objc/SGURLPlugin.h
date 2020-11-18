@@ -8,12 +8,11 @@
 
 #import <CoreSuggestionsInternals/FIAPPlugin-Protocol.h>
 
-@class NSString, SGDataDetectorDissector, SGURLDissector;
+@class NSString, SGURLDissector;
 
 @interface SGURLPlugin : NSObject <FIAPPlugin>
 {
     SGURLDissector *_urlDissector;
-    SGDataDetectorDissector *_ddDissector;
 }
 
 @property (readonly, copy) NSString *debugDescription;

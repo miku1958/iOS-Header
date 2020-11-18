@@ -6,17 +6,30 @@
 
 #import <HomeKit/HMCameraClip.h>
 
-@class NSDate, NSDateInterval, NSNumber;
+#import <Home/HFCameraRecordingEvent-Protocol.h>
 
-@interface HMCameraClip (HFAdditions)
+@class NSArray, NSDate, NSString, NSUUID;
 
-@property (readonly, copy, nonatomic) NSDateInterval *hf_dateInterval;
-@property (readonly, nonatomic) double hf_duration;
-@property (readonly, nonatomic) double hf_elapsedTimeSinceMidnight;
-@property (readonly, copy, nonatomic) NSDate *hf_endDate;
-@property (readonly, nonatomic) BOOL hf_isPlayable;
-@property (readonly, nonatomic) NSNumber *hf_percentageOfDurationUntilNextDay;
+@interface HMCameraClip (HFAdditions) <HFCameraRecordingEvent>
 
-+ (BOOL)clipSpansMultipleDays:(id)arg1;
+@property (readonly, copy) NSDate *dateOfOccurrence;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSArray *hf_sortedSignificantEvents;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSUUID *uniqueIdentifier;
+
+- (unsigned long long)containerType;
+- (void)dealloc;
+- (id)hf_allEventsContainingPeopleInClip;
+- (id)hf_dateInterval;
+- (double)hf_duration;
+- (id)hf_endDate;
+- (id)hf_faceCropNameAtOffset:(double)arg1;
+- (id)hf_faceCropNamesAtOffset:(double)arg1;
+- (id)hf_familiarFaceEventAtOffset:(double)arg1;
+- (BOOL)hf_isPlayable;
+- (void)hf_sortSignificantEvents;
 @end
 

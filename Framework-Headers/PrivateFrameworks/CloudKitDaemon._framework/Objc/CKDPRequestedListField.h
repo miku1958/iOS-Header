@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)rangeType;
 - (void).cxx_destruct;
+- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)addRange:(id)arg1;
 - (void)clearRanges;
 - (void)copyTo:(id)arg1;

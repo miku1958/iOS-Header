@@ -31,12 +31,14 @@
 @property (nonatomic) BOOL keepOriginals; // @synthesize keepOriginals=_keepOriginals;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL trackAllStoresAndDeletes;
 
 + (id)platformImplementationProtocol;
 - (void).cxx_destruct;
 - (void)_addIdentityToUncommittedFiles:(id)arg1;
 - (BOOL)_compactStorageIncludeOriginals:(BOOL)arg1 desiredFreeSpace:(unsigned long long *)arg2 error:(id *)arg3;
 - (BOOL)_fixupIdentity:(id)arg1 fileURL:(id)arg2 data:(id)arg3 error:(id *)arg4;
+- (id)_markerURLForTrackAllStoresAndDeletes;
 - (BOOL)_recoverFromCrashWithRecoveryHandler:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)_removeIdentityFromUncommittedFiles:(id)arg1;
 - (void)checkFileSizeForIdentity:(id)arg1;
@@ -67,6 +69,8 @@
 - (BOOL)storeUnretainedFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)tryToFreeDiskSpace:(unsigned long long)arg1 actuallyFreedSpace:(unsigned long long *)arg2 error:(id *)arg3;
 - (BOOL)tryToFreeDiskSpace:(unsigned long long)arg1 actuallyFreedSpace:(unsigned long long *)arg2 includeOriginals:(BOOL)arg3 error:(id *)arg4;
+- (void)writeTransactionDidFail;
+- (void)writeTransactionDidSucceed;
 
 @end
 

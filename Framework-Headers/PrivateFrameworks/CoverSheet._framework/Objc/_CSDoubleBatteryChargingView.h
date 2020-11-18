@@ -37,6 +37,7 @@
 - (double)desiredVisibilityDuration;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)performAnimation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setBatteryVisible:(BOOL)arg1;
 - (void)setLegibilitySettings:(id)arg1;
 - (void)setPrimaryBatteryText:(id)arg1 forBattery:(id)arg2;

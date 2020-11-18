@@ -61,6 +61,7 @@
 - (void)handleSessionStateChanged:(id)arg1;
 - (void)handleUserInfoResultWithPairingID:(id)arg1;
 - (id)init;
+- (void)interruptionHandler;
 - (void)invalidateConnection;
 - (void)onqueue_reconnect;
 - (void)onqueue_retryConnectIfNecessary;

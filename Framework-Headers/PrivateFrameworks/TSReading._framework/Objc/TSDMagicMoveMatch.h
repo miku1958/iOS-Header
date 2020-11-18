@@ -8,17 +8,18 @@
 
 #import <TSReading/TSDMatchingAlgorithmMatch-Protocol.h>
 
-@class NSString, TSDMagicMoveMatchObject, TSDTextureContext;
+@class NSString, TSDMagicMoveMatchObject, TSDTextureDescription;
 
 @interface TSDMagicMoveMatch : NSObject <TSDMatchingAlgorithmMatch>
 {
+    BOOL _isShapeMatchOnlyWithoutText;
     TSDMagicMoveMatchObject *_outgoingObject;
     TSDMagicMoveMatchObject *_incomingObject;
     long long _matchType;
     double _distance;
     double _zOrderDistance;
     double _attributeMatchPercent;
-    TSDTextureContext *_textureContext;
+    TSDTextureDescription *_textureDescription;
     long long _matchCost;
     NSString *_name;
 }
@@ -27,17 +28,17 @@
 @property (nonatomic) double distance; // @synthesize distance=_distance;
 @property (readonly, nonatomic) id incomingMatchObject;
 @property (readonly, nonatomic) TSDMagicMoveMatchObject *incomingObject; // @synthesize incomingObject=_incomingObject;
+@property (nonatomic) BOOL isShapeMatchOnlyWithoutText; // @synthesize isShapeMatchOnlyWithoutText=_isShapeMatchOnlyWithoutText;
 @property (readonly, nonatomic) BOOL isTextMatch;
 @property (readonly, nonatomic) long long matchCost; // @synthesize matchCost=_matchCost;
 @property (nonatomic) long long matchType; // @synthesize matchType=_matchType;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) id outgoingMatchObject;
 @property (readonly, nonatomic) TSDMagicMoveMatchObject *outgoingObject; // @synthesize outgoingObject=_outgoingObject;
-@property (strong, nonatomic) TSDTextureContext *textureContext; // @synthesize textureContext=_textureContext;
+@property (strong, nonatomic) TSDTextureDescription *textureDescription; // @synthesize textureDescription=_textureDescription;
 @property (nonatomic) double zOrderDistance; // @synthesize zOrderDistance=_zOrderDistance;
 
-+ (id)matchWithOutgoingObject:(id)arg1 incomingObject:(id)arg2 matchType:(long long)arg3 attributeMatchPercent:(double)arg4 textureContext:(id)arg5;
-- (long long)compareToMatch:(id)arg1;
++ (id)matchWithOutgoingObject:(id)arg1 incomingObject:(id)arg2 matchType:(long long)arg3 attributeMatchPercent:(double)arg4 textureDescription:(id)arg5;
 - (BOOL)conflictsWithMatch:(id)arg1;
 - (void)dealloc;
 - (id)description;

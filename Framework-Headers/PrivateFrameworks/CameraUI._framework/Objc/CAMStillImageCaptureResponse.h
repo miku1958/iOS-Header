@@ -19,12 +19,14 @@
     NSString *_burstIdentifier;
     unsigned long long _burstRepresentedCount;
     UIImage *_imageWellImage;
+    long long _captureID;
     struct CGSize _finalExpectedPixelSize;
 }
 
 @property (readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property (readonly, nonatomic) unsigned long long burstRepresentedCount; // @synthesize burstRepresentedCount=_burstRepresentedCount;
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
+@property (readonly, nonatomic) long long captureID; // @synthesize captureID=_captureID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
@@ -49,7 +51,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(BOOL)arg10;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(BOOL)arg10 captureID:(long long)arg11;
 
 @end
 

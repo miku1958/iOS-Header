@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property long long outcome; // @synthesize outcome=_outcome;
 @property NSString *source; // @synthesize source=_source;
 @property (readonly) Class superclass;

@@ -23,15 +23,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_errorForCode:(long long)arg1 process:(id)arg2 failedEntitlement:(id)arg3;
++ (int)_authenticateAuditToken:(id)arg1 entitlement:(id)arg2 credentials:(unsigned long long)arg3 error:(out id *)arg4 withResult:(CDUnknownBlockType)arg5;
++ (id)_errorForCode:(int)arg1 process:(id)arg2 failedEntitlement:(id)arg3;
 + (BOOL)authenticateAuditToken:(CDStruct_6ad76789)arg1 forEntitlement:(id)arg2 error:(out id *)arg3;
 + (id)sharedForegroundUIAppClientAuthenticator;
 + (id)sharedSystemClientAuthenticator;
 + (id)sharedUIAppClientAuthenticator;
 - (void).cxx_destruct;
-- (int)_authenticateProcessHandle:(id)arg1 entitlement:(id)arg2 error:(out id *)arg3 withResult:(CDUnknownBlockType)arg4;
 - (BOOL)authenticateAuditToken:(id)arg1;
 - (BOOL)authenticateAuditToken:(id)arg1 error:(out id *)arg2;
+- (BOOL)authenticateAuditToken:(id)arg1 forEntitlement:(id)arg2 error:(out id *)arg3;
 - (int)authenticateAuditToken:(CDStruct_6ad76789 *)arg1 forEntitlement:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (int)authenticateAuditToken:(CDStruct_6ad76789 *)arg1 withResult:(CDUnknownBlockType)arg2;
 - (BOOL)authenticateClient:(id)arg1;

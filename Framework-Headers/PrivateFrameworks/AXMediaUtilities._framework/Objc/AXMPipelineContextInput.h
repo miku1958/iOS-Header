@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) long long inputType;
 @property (readonly, nonatomic) AXMPixelBufferWrapper *pixelBuffer;
 @property (readonly, nonatomic) struct CGSize size;
+@property (readonly, nonatomic) struct __CVBuffer *wrappedPixelBuffer;
 
 + (id)inputWithCIImage:(id)arg1;
 + (id)inputWithPixelBuffer:(id)arg1;
@@ -36,7 +37,9 @@
 - (id)_initWithCIImage:(id)arg1;
 - (id)_initWithPixelBuffer:(id)arg1;
 - (id)_initWithURL:(id)arg1;
+- (struct CGImage *)createCGImageWithMetrics:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

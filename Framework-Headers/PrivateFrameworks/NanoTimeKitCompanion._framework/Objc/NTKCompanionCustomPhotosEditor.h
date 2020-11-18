@@ -26,6 +26,7 @@
 - (void)_readPickedPhotosFrom:(id)arg1;
 - (void)_reinitializeWithImageList:(id)arg1 andResourceDirectory:(id)arg2;
 - (BOOL)addAssetsFromAssetList:(id)arg1;
+- (BOOL)addAssetsFromAssetList:(id)arg1 maxPhotosCount:(unsigned long long)arg2;
 - (BOOL)addPhotosFromUIImagePicker:(id)arg1;
 - (BOOL)canChangeOriginalCropOfPhotoAtIndex:(long long)arg1;
 - (void)deletePhotoAtIndex:(long long)arg1;

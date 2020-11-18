@@ -25,3 +25,7 @@ struct CGSize {
     double height;
 };
 
+struct fsid {
+    int val[2];
+};
+

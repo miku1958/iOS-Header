@@ -15,5 +15,6 @@
 @property (strong, nonatomic) id<CPTemplateDelegate> templateDelegate;
 @property (readonly, nonatomic) NAFuture *templateProviderFuture;
 
+- (void)invalidate;
 @end
 

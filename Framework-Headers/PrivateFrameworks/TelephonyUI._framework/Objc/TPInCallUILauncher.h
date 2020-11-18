@@ -7,27 +7,26 @@
 #import <objc/NSObject.h>
 
 #import <TelephonyUI/SBSRemoteAlertHandleObserver-Protocol.h>
+#import <TelephonyUI/TPProcessObserverDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, TPProcessObserver;
 
-@interface TPInCallUILauncher : NSObject <SBSRemoteAlertHandleObserver>
+@interface TPInCallUILauncher : NSObject <SBSRemoteAlertHandleObserver, TPProcessObserverDelegate>
 {
-    CDUnknownBlockType _launchSOSCompletion;
+    TPProcessObserver *_processObserver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType launchSOSCompletion; // @synthesize launchSOSCompletion=_launchSOSCompletion;
+@property (strong, nonatomic) TPProcessObserver *processObserver; // @synthesize processObserver=_processObserver;
 @property (readonly) Class superclass;
 
 + (id)TPRemoteAlertActivationReasonForTPInCallUILaunchReason:(long long)arg1;
 + (id)sharedInCallUILauncher;
 - (void).cxx_destruct;
 - (void)launchInCallUIForReason:(long long)arg1 withRequestURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remoteAlertHandle:(id)arg1 didInvalidateWithError:(id)arg2;
-- (void)remoteAlertHandleDidActivate:(id)arg1;
-- (void)remoteAlertHandleDidDeactivate:(id)arg1;
+- (void)processObserver:(id)arg1 bundleIdentifier:(id)arg2 didUpdateApplicationRunning:(BOOL)arg3;
 
 @end
 

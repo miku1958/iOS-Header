@@ -58,6 +58,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updatePicker;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @class HDProfile, NSArray, NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface _HDSourceOrderTransactionCache : NSObject
 {
     HDProfile *_profile;

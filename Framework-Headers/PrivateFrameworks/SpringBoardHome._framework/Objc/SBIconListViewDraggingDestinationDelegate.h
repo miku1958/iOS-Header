@@ -42,6 +42,7 @@
 
 + (unsigned long long)dragTypeForDropSession:(id)arg1;
 - (void).cxx_destruct;
+- (id)_dropInteraction:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (void)_handleSpringloadAndComplete:(id)arg1;
 - (void)_resetSpringLoadingPolicyHandler;
 - (void)addDragObserver:(id)arg1 forDropSession:(id)arg2;

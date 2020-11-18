@@ -29,6 +29,12 @@
     BOOL _cachedOpticalEdgeInsetsIsValid;
     BOOL _showSeconds;
     UIColor *_textColor;
+    NSAttributedString *_minutesBlinkerAttributedText;
+    NSAttributedString *_secondsBlinkerAttributedText;
+    struct _NSRange _minutesBlinkerRange;
+    struct _NSRange _secondsBlinkerRange;
+    struct CGRect _boundingRectOfMinutesBlinkerAttributedText;
+    struct CGRect _boundingRectOfSecondsBlinkerAttributedText;
     BOOL _animationsPaused;
     BOOL _showsBlinker;
     BOOL _showsNumbers;
@@ -45,6 +51,9 @@
 
 - (void).cxx_destruct;
 - (id)_attributedTextShowingBlinker:(BOOL)arg1 numbers:(BOOL)arg2;
+- (struct CGRect)_boundingRectOfBlinkerAtRange:(struct _NSRange)arg1;
+- (struct CGRect)_boundingRectOfMinutesBlinker;
+- (struct CGRect)_boundingRectOfSecondsBlinker;
 - (id)_initForDevice:(id)arg1 primary:(BOOL)arg2 withTimeFormatter:(id)arg3 options:(unsigned long long)arg4 labelFactory:(CDUnknownBlockType)arg5;
 - (double)_lastLineBaseline;
 - (void)_updateAttributedText;
@@ -52,11 +61,14 @@
 - (id)effectiveFont;
 - (void)enumerateUnderlyingLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithForDevice:(id)arg1 timeFormatter:(id)arg2 options:(unsigned long long)arg3 labelFactory:(CDUnknownBlockType)arg4;
+- (id)minutesDesignatorAttributedText;
+- (id)secondsDesignatorAttributedText;
 - (void)setMaxWidth:(double)arg1;
 - (void)setShowsDesignator:(BOOL)arg1;
 - (void)setStyle:(id)arg1;
 - (struct CGSize)sizeThatFits;
 - (void)sizeViewToFit;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTimeText;
 - (id)viewForLastBaselineLayout;
 

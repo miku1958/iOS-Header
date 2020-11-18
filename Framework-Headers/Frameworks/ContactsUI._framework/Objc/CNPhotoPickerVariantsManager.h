@@ -8,13 +8,14 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CNPhotoPickerVariantsManager : NSObject
 {
     NSArray *_avatarBackgrounds;
+    NSArray *_defaultEmojis;
 }
 
 @property (strong, nonatomic) NSArray *avatarBackgrounds; // @synthesize avatarBackgrounds=_avatarBackgrounds;
+@property (strong, nonatomic) NSArray *defaultEmojis; // @synthesize defaultEmojis=_defaultEmojis;
 
 + (id)avatarBackgroundsFromDictionary:(id)arg1;
 + (id)avatarPoseConfigurationsForAvatarRecord:(id)arg1;
@@ -23,12 +24,17 @@ __attribute__((visibility("hidden")))
 + (id)colorGradientBackground:(id)arg1;
 + (id)colorVariantWithColorNamed:(id)arg1;
 + (id)compositeColorForTopColor:(id)arg1 bottomColor:(id)arg2;
++ (id)defaultEmojisFromDictionary:(id)arg1;
 + (id)generateGradientColorsByColor;
++ (id)generateMonogramGradientColorsByColor;
++ (id)gradientBackgroundImageForColor:(id)arg1;
 + (id)gradientStartColor:(id)arg1;
++ (id)monogramColorGradientBackground:(id)arg1;
 + (id)nonAlphaColorForBackgroundColor:(id)arg1;
 + (id)sharingProfileAvatarPoseConfigurationForAvatarRecord:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
+- (id)randomColorVariant;
 
 @end
 

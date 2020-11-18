@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSArray, NSString;
 
 @interface PKAccountVirtualCardEncryptionFields : NSObject
 {
-    NSData *_publicCertificate;
+    NSArray *_certificates;
     NSString *_encryptionVersion;
     struct os_unfair_lock_s _lock;
 }

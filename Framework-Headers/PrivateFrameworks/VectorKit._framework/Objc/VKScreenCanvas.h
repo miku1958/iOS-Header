@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ARSession, VKCamera, VKCameraController;
+@class ARSession, VKCameraController;
 @protocol MDMapControllerDelegate, MDRenderTarget;
 
 __attribute__((visibility("hidden")))
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     struct RunLoopController *_runLoopController;
     struct AnimationRunner *_animationRunner;
     shared_ptr_e963992e _taskContext;
-    VKCamera *_camera;
+    _retain_ptr_c0a21da9 _camera;
     id<MDRenderTarget> _displayTarget;
     BOOL _userIsGesturing;
     VKCameraController *_cameraController;
@@ -27,11 +27,12 @@ __attribute__((visibility("hidden")))
         CDUnknownFunctionPointerType *;
         shared_ptr_e963992e;
         struct unique_ptr<md::PassList, std::__1::default_delete<md::PassList>>;
-        struct unique_ptr<md::RenderTargetRegistry, std::__1::default_delete<md::RenderTargetRegistry>>;
+        struct unique_ptr<md::FrameGraphResourceRegistry, std::__1::default_delete<md::FrameGraphResourceRegistry>>;
         struct vector<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>, std::__1::allocator<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>>>;
         struct linear_map<md::CommandBufferLocation, md::RenderLayer *, std::__1::equal_to<md::CommandBufferLocation>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>, std::__1::vector<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>>>;
         struct RunLoopController *;
         struct MapEngine *;
+        id;
     } *_mapRenderer;
     struct LayoutContext *_layoutContext;
     id<MDMapControllerDelegate> _mapDelegate;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
     ARSession *_arSession;
 }
 
-@property (readonly, nonatomic) VKCamera *camera; // @synthesize camera=_camera;
+@property (nonatomic) _retain_ptr_c0a21da9 camera; // @synthesize camera=_camera;
 @property (nonatomic) struct VKEdgeInsets edgeInsets;
 @property (nonatomic) struct VKEdgeInsets fullyOccludedEdgeInsets; // @synthesize fullyOccludedEdgeInsets=_fullyOccludedEdgeInsets;
 @property (nonatomic, getter=isGesturing) BOOL gesturing;
@@ -64,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (long long)tileSize;
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)updateCameraForFrameResize;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 - (id)viewportInfo;
 - (BOOL)wantsTimerTick;
 

@@ -7,10 +7,12 @@
 #import <RunningBoard/NSObject-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSSet, RBProcess;
 @protocol RBProcessMonitoring;
 
 @protocol RBProcessMonitorObserving <NSObject, RBStateCapturing>
+- (void)didObserveProcessExit:(RBProcess *)arg1;
+- (void)didResolvePreventLaunchPredicates:(NSSet *)arg1;
 - (void)processMonitor:(id<RBProcessMonitoring>)arg1 didChangeProcessStates:(NSArray *)arg2;
 @end
 

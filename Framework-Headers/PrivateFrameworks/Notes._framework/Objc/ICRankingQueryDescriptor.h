@@ -8,22 +8,34 @@
 
 #import <Notes/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface ICRankingQueryDescriptor : NSObject <NSCopying>
 {
-    NSString *_fieldName;
-    long long _type;
+    NSString *_rankingQuery;
+    NSArray *_queryFields;
+    NSArray *_expandedTokens;
+    long long _rankingQueryType;
+    NSString *_rankingQueryFlags;
+    unsigned long long _displayedMatchedFields;
+    unsigned long long _purpose;
 }
 
-@property (readonly, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) unsigned long long displayedMatchedFields; // @synthesize displayedMatchedFields=_displayedMatchedFields;
+@property (readonly, nonatomic) NSArray *expandedTokens; // @synthesize expandedTokens=_expandedTokens;
+@property (readonly, nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
+@property (readonly, nonatomic) NSArray *queryFields; // @synthesize queryFields=_queryFields;
+@property (strong, nonatomic) NSString *rankingQuery; // @synthesize rankingQuery=_rankingQuery;
+@property (readonly, nonatomic) NSString *rankingQueryFlags; // @synthesize rankingQueryFlags=_rankingQueryFlags;
+@property (readonly, nonatomic) long long rankingQueryType; // @synthesize rankingQueryType=_rankingQueryType;
+@property (readonly, nonatomic) NSArray *tokens;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (id)initWithFieldName:(id)arg1 type:(long long)arg2;
-- (BOOL)isEqual:(id)arg1;
+- (id)initWithQueryFields:(id)arg1 expandedTokens:(id)arg2 rankingQueryType:(long long)arg3 rankingQueryFlags:(id)arg4 displayedMatchedFields:(unsigned long long)arg5 purpose:(unsigned long long)arg6;
+- (id)initWithQueryFields:(id)arg1 expandedTokens:(id)arg2 rankingQueryType:(long long)arg3 rankingQueryFlags:(id)arg4 purpose:(unsigned long long)arg5;
+- (id)rankingQueryForQueryField:(id)arg1 tokenString:(id)arg2;
+- (double)rankingScoreForSearchResultType:(unsigned long long)arg1;
 
 @end
 

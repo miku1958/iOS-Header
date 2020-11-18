@@ -29,6 +29,7 @@
 + (void)initialize;
 + (id)languagePartOfLanguageCode:(id)arg1;
 + (id)patternsForClass:(Class)arg1;
++ (id)patternsForIdentifier:(id)arg1;
 + (void)pauseCacheEvictionTemporarily;
 + (void)resetToDefaultPatternsForTesting;
 + (void)setPatternsDictForTesting:(id)arg1;

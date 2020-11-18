@@ -18,14 +18,14 @@
 + (id)defaultServiceForGenericItem:(id)arg1;
 + (id)errorForStatus:(int)arg1;
 + (BOOL)isBiometryEnabledByDefault;
-+ (BOOL)lookupGenericItem:(id)arg1 account:(id *)arg2 passphrase:(id *)arg3 policy:(long long)arg4 error:(id *)arg5;
++ (BOOL)lookupGenericItem:(id)arg1 account:(id *)arg2 passphrase:(id *)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 + (void)lookupGenericItem:(id)arg1 localizedReason:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-+ (BOOL)lookupGenericItem:(id)arg1 passphrase:(id *)arg2 policy:(long long)arg3 error:(id *)arg4;
++ (BOOL)lookupGenericItem:(id)arg1 passphrase:(id *)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 + (id)mutableQueryForGenericItem:(id)arg1 returnData:(BOOL)arg2;
 + (BOOL)removeGenericItem:(id)arg1 error:(id *)arg2;
 + (void)setBiometryEnabledByDefault:(BOOL)arg1;
-+ (void)setPassphrase:(id)arg1 forGenericItem:(id)arg2 service:(id)arg3 description:(id)arg4 label:(id)arg5 account:(id)arg6 policy:(long long)arg7 completionQueue:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
-+ (BOOL)setPassphrase:(id)arg1 forGenericItem:(id)arg2 service:(id)arg3 description:(id)arg4 label:(id)arg5 account:(id)arg6 policy:(long long)arg7 error:(id *)arg8;
++ (void)setPassphrase:(id)arg1 forGenericItem:(id)arg2 service:(id)arg3 description:(id)arg4 label:(id)arg5 account:(id)arg6 options:(unsigned long long)arg7 completionQueue:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
++ (BOOL)setPassphrase:(id)arg1 forGenericItem:(id)arg2 service:(id)arg3 description:(id)arg4 label:(id)arg5 account:(id)arg6 options:(unsigned long long)arg7 error:(id *)arg8;
 + (BOOL)shouldUseBiometry;
 
 @end

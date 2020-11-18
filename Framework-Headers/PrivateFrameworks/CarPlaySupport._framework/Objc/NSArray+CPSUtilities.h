@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (CPSUtilities)
+- (id)cps_filter:(CDUnknownBlockType)arg1;
 - (id)cps_map:(CDUnknownBlockType)arg1;
 @end
 

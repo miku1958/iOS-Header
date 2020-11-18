@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <CoreDuet/_DKKnowledgeDeleting-Protocol.h>
+#import <CoreDuet/_DKKnowledgeEventStreamDeleting-Protocol.h>
 #import <CoreDuet/_DKKnowledgeQuerying-Protocol.h>
 #import <CoreDuet/_DKKnowledgeSaving-Protocol.h>
+#import <CoreDuet/_DKKnowledgeSynchronizing-Protocol.h>
 
 @class _DKPrivacyPolicyEnforcer, _DKQueryDispatcher, _DKRateLimitPolicyEnforcer;
 @protocol OS_dispatch_queue, _DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting;
 
-@interface _DKKnowledgeStore : NSObject <_DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
+@interface _DKKnowledgeStore : NSObject <_DKKnowledgeEventStreamDeleting, _DKKnowledgeSynchronizing, _DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
 {
     NSObject<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting> *_knowledgeStoreHandle;
     _DKQueryDispatcher *_queryDispatcher;
@@ -22,13 +24,6 @@
     NSObject<OS_dispatch_queue> *_defaultQueue;
 }
 
-@property (strong) NSObject<OS_dispatch_queue> *defaultQueue; // @synthesize defaultQueue=_defaultQueue;
-@property (strong, nonatomic) NSObject<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting> *knowledgeStoreHandle; // @synthesize knowledgeStoreHandle=_knowledgeStoreHandle;
-@property (readonly) _DKPrivacyPolicyEnforcer *privacyEnforcer; // @synthesize privacyEnforcer=_privacyEnforcer;
-@property (strong, nonatomic) _DKQueryDispatcher *queryDispatcher; // @synthesize queryDispatcher=_queryDispatcher;
-@property (readonly) _DKRateLimitPolicyEnforcer *rateLimitEnforcer; // @synthesize rateLimitEnforcer=_rateLimitEnforcer;
-
-+ (id)_knowledgeStoreWithStoreDirectory:(id)arg1 readOnly:(BOOL)arg2;
 + (id)knowledgeStore;
 + (id)knowledgeStoreWithDirectReadOnlyAccess;
 + (id)knowledgeStoreWithDirectReadOnlyAccessWithXPCStore:(id)arg1 storeDirectory:(id)arg2;
@@ -37,7 +32,6 @@
 + (id)userKnowledgeStoreWithDirectReadOnlyAccess;
 + (id)userKnowledgeStoreWithDirectReadWriteAccess;
 - (void).cxx_destruct;
-- (id)_sanitizeObjectsBeforeSaving:(id)arg1;
 - (unsigned long long)deleteAllEventsInEventStream:(id)arg1 error:(id *)arg2;
 - (void)deleteAllEventsInEventStream:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (unsigned long long)deleteAllEventsMatchingPredicate:(id)arg1 error:(id *)arg2;
@@ -51,7 +45,6 @@
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithKnowledgeStoreHandle:(id)arg1 readOnly:(BOOL)arg2;
-- (id)knowledgeSynchronizingHandleWithError:(id *)arg1;
 - (BOOL)saveObjects:(id)arg1 error:(id *)arg2;
 - (void)saveObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)sourceDeviceIdentityFromObject:(id)arg1 error:(id *)arg2;

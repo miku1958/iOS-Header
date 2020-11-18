@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axMarkupCellWithAXInfo:(id)arg1 indexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)loadView;
 
 @end
 

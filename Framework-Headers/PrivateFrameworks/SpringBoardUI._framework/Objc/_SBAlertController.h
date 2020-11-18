@@ -9,12 +9,13 @@
 #import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
 
 @class NSString, SBAlertItem;
-@protocol _SBAlertControllerDelegate;
+@protocol UIAlertControllerVisualStyleProviding, _SBAlertControllerDelegate;
 
 @interface _SBAlertController : UIAlertController <BSDescriptionProviding>
 {
     SBAlertItem *_alertItem;
     id<_SBAlertControllerDelegate> _alertControllerDelegate;
+    id<UIAlertControllerVisualStyleProviding> _styleProvider;
 }
 
 @property (weak, nonatomic) id<_SBAlertControllerDelegate> alertControllerDelegate; // @synthesize alertControllerDelegate=_alertControllerDelegate;
@@ -26,8 +27,10 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (id)_styleProvider;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)initWithStyleProvider:(id)arg1;
 - (void)setHiddenOnClonedDisplay:(BOOL)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

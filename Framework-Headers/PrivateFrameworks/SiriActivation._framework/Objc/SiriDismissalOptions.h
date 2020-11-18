@@ -12,6 +12,7 @@
 @interface SiriDismissalOptions : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _animated;
+    BOOL _shouldTurnScreenOff;
     unsigned long long _deactivationOptions;
     long long _reason;
     unsigned long long _dismissalReason;
@@ -21,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long deactivationOptions; // @synthesize deactivationOptions=_deactivationOptions;
 @property (readonly, nonatomic) unsigned long long dismissalReason; // @synthesize dismissalReason=_dismissalReason;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) BOOL shouldTurnScreenOff; // @synthesize shouldTurnScreenOff=_shouldTurnScreenOff;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -31,7 +33,7 @@
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 dismissalReason:(unsigned long long)arg3;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 requestCancellationReason:(long long)arg3;
-- (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 requestCancellationReason:(long long)arg3 dismissalReason:(unsigned long long)arg4;
+- (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 requestCancellationReason:(long long)arg3 dismissalReason:(unsigned long long)arg4 shouldTurnScreenOff:(BOOL)arg5;
 
 @end
 

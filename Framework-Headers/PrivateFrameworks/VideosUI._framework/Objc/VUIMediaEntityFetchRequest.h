@@ -91,6 +91,7 @@
 - (void)addGroupingSortIndexesOption;
 - (void)addHDRColorCapabilityOr4KResolutionPredicate;
 - (void)addHDRColorCapabilityPredicate;
+- (void)addIsLocalOrHasExpiredDownloadPredicate;
 - (void)addIsLocalPredicate;
 - (void)addRecentlyAddedSortDescriptorWithLimit:(unsigned long long)arg1;
 - (void)addSortIndexesOption;

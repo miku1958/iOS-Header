@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _height;
     double _cellWidth;
     double _cellHeight;
-    BOOL _uncovered;
     NSTimer *_recoverTimer;
+    BOOL _uncovered;
     id<CKInvisibleInkEffectCoverageTrackerDelegate> _delegate;
     double _touchLifetime;
     struct CGSize _size;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<CKInvisibleInkEffectCoverageTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) double touchLifetime; // @synthesize touchLifetime=_touchLifetime;
+@property (nonatomic, getter=isUncovered) BOOL uncovered; // @synthesize uncovered=_uncovered;
 
 - (void).cxx_destruct;
 - (void)_checkForCover:(id)arg1;

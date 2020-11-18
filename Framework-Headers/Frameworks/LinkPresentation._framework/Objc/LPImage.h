@@ -32,14 +32,17 @@
     LPImage *_darkInterfaceAlternativeImage;
     NSURL *_fileURL;
     UIImage *_platformImage;
+    CDUnknownBlockType __alternateHTMLImageGenerator;
 }
 
 @property (readonly, copy, nonatomic) NSString *MIMEType;
+@property (copy, nonatomic) CDUnknownBlockType _alternateHTMLImageGenerator; // @synthesize _alternateHTMLImageGenerator=__alternateHTMLImageGenerator;
 @property (readonly, nonatomic, getter=_isAnimated) BOOL _animated;
 @property (strong, nonatomic, setter=_setDarkInterfaceAlternativeImage:) LPImage *_darkInterfaceAlternativeImage; // @synthesize _darkInterfaceAlternativeImage;
 @property (readonly, nonatomic) unsigned long long _encodedSize;
 @property (nonatomic, getter=_isFallbackIcon) BOOL _fallbackIcon; // @synthesize _fallbackIcon;
 @property (readonly, nonatomic) BOOL _hasTransparency;
+@property (readonly, nonatomic) BOOL _isImperceptible;
 @property (readonly, strong, nonatomic) NSItemProvider *_itemProvider;
 @property (readonly, nonatomic) struct CGSize _pixelSize;
 @property (strong, nonatomic) NSArray *_remoteURLsForEmailCompatibleOutput; // @synthesize _remoteURLsForEmailCompatibleOutput;
@@ -81,6 +84,7 @@
 - (id)initWithItemProvider:(id)arg1 properties:(id)arg2 placeholderImage:(id)arg3;
 - (id)initWithPlatformImage:(id)arg1;
 - (id)initWithPlatformImage:(id)arg1 properties:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadAsynchronouslyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)needsAsynchronousLoad;
 

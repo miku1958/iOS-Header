@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     NSData *_devicePushToken;
     NSString *_preferredEmail;
+    NSString *_ugcUserId;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
     unsigned int _readerMarkPos;
@@ -25,32 +26,27 @@
         unsigned int read_unknownFields:1;
         unsigned int read_devicePushToken:1;
         unsigned int read_preferredEmail:1;
+        unsigned int read_ugcUserId:1;
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_devicePushToken:1;
-        unsigned int wrote_preferredEmail:1;
-        unsigned int wrote_userCredentials:1;
-        unsigned int wrote_userEmail:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSData *devicePushToken;
 @property (readonly, nonatomic) BOOL hasDevicePushToken;
 @property (readonly, nonatomic) BOOL hasPreferredEmail;
+@property (readonly, nonatomic) BOOL hasUgcUserId;
 @property (readonly, nonatomic) BOOL hasUserCredentials;
 @property (readonly, nonatomic) BOOL hasUserEmail;
 @property (strong, nonatomic) NSString *preferredEmail;
+@property (strong, nonatomic) NSString *ugcUserId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEORPUserCredentials *userCredentials;
 @property (strong, nonatomic) NSString *userEmail;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readDevicePushToken;
-- (void)_readPreferredEmail;
-- (void)_readUserCredentials;
-- (void)_readUserEmail;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,7 +55,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

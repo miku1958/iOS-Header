@@ -23,7 +23,7 @@
 - (void)_setCornerRadius:(double)arg1;
 - (id)init;
 - (void)layoutSubviews;
-- (void)showPreviewForToolWithInk:(id)arg1 scalingFactor:(double)arg2 animated:(BOOL)arg3;
+- (void)showPreviewForTool:(id)arg1 scalingFactor:(double)arg2 animated:(BOOL)arg3;
 
 @end
 

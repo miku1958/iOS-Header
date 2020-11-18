@@ -13,7 +13,7 @@
 #import <NewsCore/FCTagStocksFields-Protocol.h>
 #import <NewsCore/FCTopicProviding-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
+@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
 @protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagStocksFields, FCTopicProviding;
 
 @interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
@@ -28,6 +28,7 @@
     BOOL _isHidden;
     BOOL _isRealTimeTrackingEnabled;
     BOOL _isArticleReadCountReportingEnabled;
+    BOOL _isAutoDarkModeEnabled;
     BOOL _isInternal;
     BOOL _isSandbox;
     BOOL _isLocal;
@@ -86,6 +87,9 @@
     NSString *_supergroupConfigJson;
     NSString *_supergroupKnobsJson;
     FCSectionSupergroupKnobs *_supergroupKnobs;
+    NSString *_groupTitleColorHexString;
+    NSString *_groupDarkStyleTitleColorHexString;
+    FCContentColorMap *_contentColorMap;
     NSString *_pptFeedIDOverride;
     FCInterestToken *_tagInterestToken;
     unsigned long long _userFacingTagTypeOverride;
@@ -95,8 +99,6 @@
     NSString *_darkStyleBackgroundColorHexString;
     NSString *_foregroundColorHexString;
     NSString *_darkStyleForegroundColorHexString;
-    NSString *_groupTitleColorHexString;
-    NSString *_groupDarkStyleTitleColorHexString;
     NSDate *_loadDate;
     NTPBTagRecord *_tagRecord;
     FCInterestToken *_tagRecordInterestToken;
@@ -125,6 +127,7 @@
 @property (nonatomic) double bannerImageScale; // @synthesize bannerImageScale=_bannerImageScale;
 @property (readonly, nonatomic) NSArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (readonly, nonatomic) FCTagBanner *compactBannerImage; // @synthesize compactBannerImage=_compactBannerImage;
+@property (readonly, nonatomic) FCContentColorMap *contentColorMap; // @synthesize contentColorMap=_contentColorMap;
 @property (readonly, nonatomic) long long contentProvider; // @synthesize contentProvider=_contentProvider;
 @property (readonly, nonatomic) FCAssetHandle *coverImageAssetHandle; // @synthesize coverImageAssetHandle=_coverImageAssetHandle;
 @property (readonly, copy, nonatomic) NSArray *currentIssueIDs; // @synthesize currentIssueIDs=_currentIssueIDs;
@@ -157,6 +160,7 @@
 @property (readonly, nonatomic) NSArray *iAdKeywords; // @synthesize iAdKeywords=_iAdKeywords;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isArticleReadCountReportingEnabled; // @synthesize isArticleReadCountReportingEnabled=_isArticleReadCountReportingEnabled;
+@property (readonly, nonatomic) BOOL isAutoDarkModeEnabled; // @synthesize isAutoDarkModeEnabled=_isAutoDarkModeEnabled;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDark;
 @property (readonly, nonatomic) BOOL isDeprecated; // @synthesize isDeprecated=_isDeprecated;

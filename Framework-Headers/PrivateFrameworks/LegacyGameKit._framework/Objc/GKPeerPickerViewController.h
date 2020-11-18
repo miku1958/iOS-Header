@@ -10,7 +10,6 @@
 
 @interface GKPeerPickerViewController : UIViewController
 {
-    id _delegate;
     NSMutableDictionary *_sessionMap;
     GKContentView *_btView;
     GKContentView *_listView;
@@ -34,6 +33,7 @@
     NSMutableArray *_peers;
     NSString *_pendingPeer;
     BOOL _alertCancelled;
+    id _delegate;
 }
 
 @property (nonatomic) BOOL alertCancelled; // @synthesize alertCancelled=_alertCancelled;
@@ -46,7 +46,7 @@
 @property (nonatomic) NSString *currentConnectionTypeKey; // @synthesize currentConnectionTypeKey=_currentConnectionTypeKey;
 @property (readonly, nonatomic) GKSession *currentSession; // @dynamic currentSession;
 @property (readonly, nonatomic) GKContentView *currentView; // @synthesize currentView=_currentView;
-@property id delegate; // @synthesize delegate=_delegate;
+@property (weak) id delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSTimer *invitationWaitTimer; // @synthesize invitationWaitTimer=_invitationWaitTimer;
 @property (strong, nonatomic) GKContentView *inviteView; // @synthesize inviteView=_inviteView;
 @property (strong, nonatomic) GKContentView *listView; // @synthesize listView=_listView;
@@ -62,6 +62,7 @@
 @property (nonatomic) BOOL updating; // @synthesize updating=_updating;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible; // @dynamic visible;
 
+- (void).cxx_destruct;
 - (void)_acceptInvitation:(id)arg1;
 - (void)_btPowerStateChanged:(id)arg1;
 - (void)_cancelButtonPressed:(id)arg1;

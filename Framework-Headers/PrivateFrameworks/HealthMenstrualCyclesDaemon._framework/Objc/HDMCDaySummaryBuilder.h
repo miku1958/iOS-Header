@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class HKCalendarCache, NSMutableArray, NSMutableDictionary;
 
 @interface HDMCDaySummaryBuilder : NSObject
 {
+    HKCalendarCache *_calendarCache;
     NSMutableArray *_menstrualFlowSamples;
     NSMutableArray *_intermenstrualBleedingSamples;
     NSMutableArray *_symptomsSamples;
@@ -27,13 +28,13 @@
 - (id)_basalBodyTemperature;
 - (long long)_cervicalMucusQuality;
 - (BOOL)_intermenstrualBleeding;
-- (long long)_menstrualFlowWithCalendarCache:(id)arg1 modificationDay:(long long *)arg2 startOfCycleFromCycleTracking:(id *)arg3;
+- (long long)_menstrualFlowWithModificationDay:(long long *)arg1 startOfCycleFromCycleTracking:(id *)arg2;
 - (long long)_ovulationTestResult;
 - (long long)_sexualActivity;
 - (unsigned long long)_symptoms;
 - (void)addCycleTrackingSample:(id)arg1;
-- (id)createDaySummaryWithDevice:(id)arg1 calendarCache:(id)arg2;
-- (id)initWithDayIndex:(long long)arg1;
+- (id)createDaySummaryWithDevice:(id)arg1;
+- (id)initWithDayIndex:(long long)arg1 calendarCache:(id)arg2;
 
 @end
 

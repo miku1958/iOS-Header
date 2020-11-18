@@ -12,6 +12,7 @@
 
 + (Class)arraySegmentClass;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)packageLocatorForSegments;
 - (void)saveToArchiver:(id)arg1;
 
 @end

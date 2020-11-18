@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPRemoteCommandDelegate_Internal-Protocol.h>
 
-@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPMRNowPlayingPlayerPathWrapper, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSkipIntervalCommand, NSMutableArray, NSString;
+@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSkipIntervalCommand, MRPlayerPath, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPRemoteCommandCenter : NSObject <MPRemoteCommandDelegate_Internal>
@@ -18,9 +18,12 @@
     void *_mediaRemoteCommandHandler;
     BOOL _scheduledSupportedCommandsChangedNotification;
     BOOL _canBeNowPlayingApplication;
-    BOOL _handlingPlaybackQueueCommands;
-    MPMRNowPlayingPlayerPathWrapper *_playerPath;
+    MRPlayerPath *_playerPath;
+    BOOL _processingEvent;
+    NSMutableArray *_eventQueue;
+    unsigned long long _stateHandler;
     BOOL _disableAutomaticCanBeNowPlaying;
+    BOOL _wantsSerializedEventDelivery;
     MPRemoteCommand *_pauseCommand;
     MPRemoteCommand *_playCommand;
     MPRemoteCommand *_stopCommand;
@@ -102,6 +105,7 @@
 @property (readonly, nonatomic) MPRemoteCommand *stopCommand; // @synthesize stopCommand=_stopCommand;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MPRemoteCommand *togglePlayPauseCommand; // @synthesize togglePlayPauseCommand=_togglePlayPauseCommand;
+@property (nonatomic) BOOL wantsSerializedEventDelivery; // @synthesize wantsSerializedEventDelivery=_wantsSerializedEventDelivery;
 
 + (long long)_numberOfCommandCentersWithTargets;
 + (id)commandCenterForPlayerID:(id)arg1;
@@ -112,7 +116,7 @@
 - (id)_activeCommands;
 - (void)_commandTargetsDidChangeNotification:(id)arg1;
 - (id)_createRemoteCommandWithConcreteClass:(Class)arg1 mediaRemoteType:(unsigned int)arg2;
-- (id)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2;
+- (void)_flushEventQueue;
 - (void)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_scheduleSupportedCommandsChanged;
 - (void)_startMediaRemoteSync;

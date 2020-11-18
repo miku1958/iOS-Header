@@ -9,15 +9,15 @@
 #import <TSText/TSDDrawableInfoCustomUnarchivingSubclassProviding-Protocol.h>
 #import <TSText/TSWPDrawableAttachmentDescriptionProvider-Protocol.h>
 
-@class EQKitEquation, NSString, TSPData, TSSPropertyMap;
+@class EQKitEquation, NSString, TSSPropertyMap;
 
 @interface TSWPEquationInfo : TSDImageInfo <TSWPDrawableAttachmentDescriptionProvider, TSDDrawableInfoCustomUnarchivingSubclassProviding>
 {
+    BOOL _isInlineForPreviewImage;
     EQKitEquation *_equation;
     NSString *_source;
     double _depth;
     TSSPropertyMap *_textProperties;
-    TSPData *_pdfImage;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,7 +26,7 @@
 @property (strong, nonatomic) EQKitEquation *equation; // @synthesize equation=_equation;
 @property (readonly, nonatomic) int format;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) TSPData *pdfImage; // @synthesize pdfImage=_pdfImage;
+@property (nonatomic) BOOL isInlineForPreviewImage; // @synthesize isInlineForPreviewImage=_isInlineForPreviewImage;
 @property (copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TSSPropertyMap *textProperties; // @synthesize textProperties=_textProperties;
@@ -42,6 +42,7 @@
 + (id)fontNameFromTextProperties:(id)arg1;
 + (id)pdfImageDataWithContext:(id)arg1 equation:(id)arg2 layout:(id)arg3 layoutContext:(id)arg4 sourceString:(id)arg5;
 + (id)propertiesForChangePropagation;
++ (id)propertiesForParagraphStyle:(id)arg1 characterStyle:(id)arg2;
 + (id)propertiesForStorage:(id)arg1 characterIndex:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
@@ -56,8 +57,9 @@
 - (struct CGSize)defaultOriginalSize;
 - (id)descriptionForDrawableAttachment:(id)arg1;
 - (void)didFinalizeUnarchivingFromWPStorage:(id)arg1;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (id)imageDataWithObjectContext:(id)arg1;
+- (id)initWithContext:(id)arg1 string:(id)arg2;
 - (id)initWithContext:(id)arg1 string:(id)arg2 filteredTextProperties:(id)arg3 equation:(id)arg4 pdfImageData:(id)arg5 depth:(double)arg6 geometry:(id)arg7 style:(id)arg8;
 - (id)initWithContext:(id)arg1 string:(id)arg2 targetGeometry:(id)arg3;
 - (id)initWithContext:(id)arg1 string:(id)arg2 textProperties:(id)arg3;

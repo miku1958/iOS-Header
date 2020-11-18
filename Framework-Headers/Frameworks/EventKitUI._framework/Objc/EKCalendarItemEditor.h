@@ -155,6 +155,7 @@ __attribute__((visibility("hidden")))
 - (void)refreshInvitees;
 - (void)refreshLocation;
 - (void)refreshStartAndEndDates;
+- (void)reloadTableViewSectionsForDates:(BOOL)arg1 invitees:(BOOL)arg2 location:(BOOL)arg3;
 - (void)resignCurrentEditItemFirstResponder;
 - (long long)rowNumberForEditItem:(id)arg1;
 - (BOOL)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;

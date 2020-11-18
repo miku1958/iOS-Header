@@ -17,9 +17,8 @@
     HMFUnfairLock *_lock;
     NSUUID *_uniqueIdentifier;
     NSUUID *_uuid;
-    HMActionSet *_actionSet;
     _HMContext *_context;
-    unsigned long long _type;
+    HMActionSet *_actionSet;
 }
 
 @property (weak) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
@@ -29,7 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL requiresDeviceUnlock;
 @property (readonly) Class superclass;
-@property (readonly) unsigned long long type; // @synthesize type=_type;
+@property (readonly) unsigned long long type;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly, getter=isValid) BOOL valid;
@@ -39,16 +38,18 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
 - (BOOL)_handleUpdates:(id)arg1;
-- (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_serializeForAdd;
-- (unsigned long long)actionType;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)encodeAsProtoBuf;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

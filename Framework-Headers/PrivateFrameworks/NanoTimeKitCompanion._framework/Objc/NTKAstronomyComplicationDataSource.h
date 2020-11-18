@@ -28,11 +28,11 @@
 - (BOOL)alwaysShowIdealizedTemplateInSwitcher;
 - (void)becomeActive;
 - (void)becomeInactive;
+- (id)complicationApplicationIdentifier;
 - (id)currentSwitcherTemplate;
 - (void)dealloc;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)pause;
 - (void)resume;

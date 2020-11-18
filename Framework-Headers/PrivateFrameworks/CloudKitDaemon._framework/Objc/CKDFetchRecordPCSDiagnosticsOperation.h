@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *corruptRecords;
 @property (strong, nonatomic) NSMutableArray *fetchedZones; // @synthesize fetchedZones=_fetchedZones;
 @property (strong, nonatomic) NSMutableArray *mutableCorruptRecords; // @synthesize mutableCorruptRecords=_mutableCorruptRecords;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
 - (void).cxx_destruct;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithBacktrace:(struct os_log_backtrace_s *)arg1;
+- (id)initWithFrames:(id)arg1;
 - (id)initWithSingleFrame:(id)arg1;
 
 @end

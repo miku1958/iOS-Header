@@ -44,6 +44,7 @@
 
 + (BOOL)canSendText;
 - (void).cxx_destruct;
+- (void)addPlayersToMessageCompose:(id)arg1;
 - (id)contactForAddress:(id)arg1 fromContactStore:(id)arg2;
 - (id)initWithMessage:(id)arg1 maxNumberOfPlayers:(long long)arg2;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;

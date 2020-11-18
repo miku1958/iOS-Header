@@ -9,7 +9,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NSUUID, NWEndpoint;
+@class NSString, NSUUID, NWEndpoint;
 
 @interface NEFilterSocketFlow : NEFilterFlow <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     int _socketType;
     int _socketProtocol;
     NWEndpoint *_remoteEndpoint;
+    NSString *_remoteHostname;
     NWEndpoint *_localEndpoint;
     NSUUID *_uuid;
     NSUUID *_euuid;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSUUID *euuid; // @synthesize euuid=_euuid;
 @property (copy) NWEndpoint *localEndpoint; // @synthesize localEndpoint=_localEndpoint;
 @property (copy) NWEndpoint *remoteEndpoint; // @synthesize remoteEndpoint=_remoteEndpoint;
+@property (copy) NSString *remoteHostname; // @synthesize remoteHostname=_remoteHostname;
 @property int socketFamily; // @synthesize socketFamily=_socketFamily;
 @property unsigned long long socketID; // @synthesize socketID=_socketID;
 @property int socketProtocol; // @synthesize socketProtocol=_socketProtocol;

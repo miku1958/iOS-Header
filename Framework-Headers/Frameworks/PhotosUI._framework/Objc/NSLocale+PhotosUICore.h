@@ -8,5 +8,6 @@
 
 @interface NSLocale (PhotosUICore)
 + (unsigned long long)px_currentCharacterDirection;
++ (long long)px_currentLeadingTextAlignment;
 @end
 

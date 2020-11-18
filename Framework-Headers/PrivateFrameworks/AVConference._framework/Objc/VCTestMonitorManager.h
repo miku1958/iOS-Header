@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,14 +15,25 @@ __attribute__((visibility("hidden")))
     BOOL _toneInjectionEnabled;
     BOOL _forceNetworkCellular;
     BOOL _enableLoopbackInterface;
+    BOOL _enableOneToOneMode;
     double _emulatedRxPLR;
+    NSString *_cannedReplayPath;
+    int _forcedTargetBitrate;
+    int _forcedCapBitrate;
+    NSString *_emulatedNetworkConfigPath;
+    NSNumber *_initialMemoryUsage;
     NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     NSObject<OS_dispatch_queue> *_xpcCallbackQueue;
 }
 
+@property (strong, nonatomic) NSString *cannedReplayPath; // @synthesize cannedReplayPath=_cannedReplayPath;
+@property (strong, nonatomic) NSString *emulatedNetworkConfigPath; // @synthesize emulatedNetworkConfigPath=_emulatedNetworkConfigPath;
 @property (nonatomic) double emulatedRxPLR; // @synthesize emulatedRxPLR=_emulatedRxPLR;
 @property (nonatomic) BOOL enableLoopbackInterface; // @synthesize enableLoopbackInterface=_enableLoopbackInterface;
+@property (nonatomic) BOOL enableOneToOneMode; // @synthesize enableOneToOneMode=_enableOneToOneMode;
 @property BOOL forceNetworkCellular; // @synthesize forceNetworkCellular=_forceNetworkCellular;
+@property (nonatomic) int forcedCapBitrate; // @synthesize forcedCapBitrate=_forcedCapBitrate;
+@property (nonatomic) int forcedTargetBitrate; // @synthesize forcedTargetBitrate=_forcedTargetBitrate;
 @property BOOL toneInjectionEnabled; // @synthesize toneInjectionEnabled=_toneInjectionEnabled;
 
 + (id)sharedManager;

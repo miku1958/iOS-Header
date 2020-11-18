@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _completed;
     unsigned long long _batchSize;
     int _tryCount;
+    BOOL _syncDownBeforeRetry;
     unsigned long long _chainedRecordsCount;
     BOOL _shouldFillBatch;
     CDUnknownBlockType _pcsChainCompletionBlock;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_buildRecordListWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_chainRecords;
 - (void)_sendRecordBatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_sendRecordBatch:(id)arg1 recursed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)createActivity;

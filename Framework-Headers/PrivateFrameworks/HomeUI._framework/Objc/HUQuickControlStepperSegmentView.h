@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class NSString, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface HUQuickControlStepperSegmentView : UIView
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     double _cornerRadius;
     unsigned long long _reachabilityState;
     UIView *_highlightedOverlayView;
+    UIVisualEffectView *_titleLabelEffectView;
     UILabel *_titleLabel;
     unsigned long long _style;
     unsigned long long _orientation;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) UIVisualEffectView *titleLabelEffectView; // @synthesize titleLabelEffectView=_titleLabelEffectView;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;

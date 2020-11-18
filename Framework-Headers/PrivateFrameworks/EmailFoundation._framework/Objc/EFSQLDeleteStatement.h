@@ -6,22 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol EFSQLExpressable;
+@class NSMutableArray, NSString;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLDeleteStatement : NSObject
 {
+    unsigned long long _limit;
     NSString *_table;
-    id<EFSQLExpressable> _whereClause;
+    id<EFSQLValueExpressable> _whereClause;
+    NSMutableArray *_orderExpressions;
 }
 
+@property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly, copy, nonatomic) NSString *queryString;
-@property (readonly, copy, nonatomic) NSString *table; // @synthesize table=_table;
-@property (readonly, nonatomic) id<EFSQLExpressable> whereClause; // @synthesize whereClause=_whereClause;
 
 - (void).cxx_destruct;
 - (id)initWithTable:(id)arg1;
 - (id)initWithTable:(id)arg1 where:(id)arg2;
+- (void)orderBy:(id)arg1 ascending:(BOOL)arg2;
+- (void)orderByColumn:(id)arg1 ascending:(BOOL)arg2;
 
 @end
 

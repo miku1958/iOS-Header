@@ -13,9 +13,8 @@
 
 @interface PXPhotoKitEditSourceLoader : NSObject <PXEditSourceLoader>
 {
-    unsigned long long _imageRequestID;
-    BOOL _didBeginLoading;
-    NSDate *_loadingStartDate;
+    unsigned long long _loadingQueue_imageRequestID;
+    NSDate *_mainQueue_loadingStartDate;
     NSProgress *_editSourceCreationProgress;
     NSObject<OS_dispatch_queue> *_loadingQueue;
     BOOL _overcaptureSourceIsActive;
@@ -49,8 +48,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_cancelContentInputRequest;
 - (void)_handleCancellation;
 - (void)_handleContentEditingInputRequestCompletion:(id)arg1 info:(id)arg2 asset:(id)arg3;
+- (void)_mainQueue_handleEditSource:(id)arg1 overCaptureEditSource:(id)arg2 compositionController:(id)arg3 originalCompositionController:(id)arg4 overCaptureEditSourceIsActive:(BOOL)arg5 error:(id)arg6;
+- (void)_resetProgress;
 - (void)beginLoading;
 - (id)initWithAsset:(id)arg1;
 

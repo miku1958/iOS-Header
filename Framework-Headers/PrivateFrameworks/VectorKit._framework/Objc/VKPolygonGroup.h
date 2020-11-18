@@ -29,15 +29,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (shared_ptr_479d1306)_textureForName:(const basic_string_23d93216 *)arg1 textureManager:(shared_ptr_f2399894 *)arg2;
 - (BOOL)addFillForSection:(const struct PolygonSection *)arg1 precision:(unsigned char)arg2 styleIndex:(unsigned int)arg3 cullingMask:(unsigned int)arg4 accessor:(struct ResourceAccessor *)arg5 triangulator:(Triangulator_edf345a1 *)arg6;
-- (void)addPolygon:(CDStruct_b92e1e41 *)arg1 hasNonWaterStyle:(BOOL)arg2 accessor:(struct ResourceAccessor *)arg3 triangulator:(Triangulator_edf345a1 *)arg4;
+- (void)addPolygon:(CDStruct_bcbc66fa *)arg1 hasNonWaterStyle:(BOOL)arg2 accessor:(struct ResourceAccessor *)arg3 triangulator:(Triangulator_edf345a1 *)arg4;
 - (void)addStrokeForSection:(const struct PolygonSection *)arg1 paddedCount:(unsigned int)arg2 key:(pair_1503616b)arg3 attributes:(id)arg4 styles:(vector_0496561e *)arg5 cullingMask:(unsigned int)arg6 accessor:(struct ResourceAccessor *)arg7;
-- (unsigned int)createStrokePointStyleList:(CDStruct_b92e1e41 *)arg1 section:(unsigned long long)arg2 outPointStyles:(vector_0496561e *)arg3;
+- (unsigned int)createStrokePointStyleList:(CDStruct_bcbc66fa *)arg1 section:(unsigned long long)arg2 outPointStyles:(vector_0496561e *)arg3;
 - (void)dealloc;
 - (void)didFinishAddingData;
 - (void)enclosePointsInBoundingBox:(Matrix_8746f91e *)arg1 count:(unsigned long long)arg2;
 - (id)initWithStyleQuery:(shared_ptr_c5d816ee *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const Matrix_8746f91e *)arg3 contentScale:(float)arg4;
 - (unsigned char)initialStyleIndexForSection:(const struct PolygonSection *)arg1 attributes:(id)arg2 styles:(const vector_0496561e *)arg3;
-- (void)prepareForPolygon:(CDStruct_b92e1e41 *)arg1 hasNonWaterStyle:(BOOL)arg2;
+- (void)prepareForPolygon:(CDStruct_bcbc66fa *)arg1 hasNonWaterStyle:(BOOL)arg2;
 - (void)prepareToFillSection:(const struct PolygonSection *)arg1;
 - (void)prepareToStrokeSection:(const struct PolygonSection *)arg1 key:(const pair_1503616b *)arg2 styles:(vector_0496561e *)arg3 paddedCount:(unsigned int)arg4;
 - (void)setNeedsTextureUpdate;

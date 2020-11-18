@@ -14,10 +14,10 @@
 @interface VCAudioRelay : NSObject <VCBasebandCodecNotifications>
 {
     BOOL _isRelayRunning;
-    double _IOBufferDuration;
-    struct _opaque_pthread_t *_relayThread;
-    struct _opaque_pthread_cond_t _wakeUpCondition;
+    struct OpaqueFigThread *_relayThread;
     struct _opaque_pthread_mutex_t _wakeUpMutex;
+    struct _opaque_pthread_cond_t _wakeUpCondition;
+    double _IOBufferDuration;
     struct OpaqueAudioConverter *_clientToRemoteConverter;
     struct OpaqueAudioConverter *_remoteToClientConverter;
     VCAudioRelayIO *_remoteIO;

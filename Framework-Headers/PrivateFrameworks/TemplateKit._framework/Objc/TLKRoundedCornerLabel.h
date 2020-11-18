@@ -4,22 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TemplateKit/TLKLabel.h>
+#import <TemplateKit/TLKView.h>
 
-@class UIView;
+@class TLKLabel, UIView;
 
-@interface TLKRoundedCornerLabel : TLKLabel
+@interface TLKRoundedCornerLabel : TLKView
 {
-    BOOL _large;
+    TLKLabel *_label;
+    unsigned long long _sizeConfiguration;
     UIView *_borderView;
 }
 
 @property (strong, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
-@property (nonatomic) BOOL large; // @synthesize large=_large;
+@property (strong, nonatomic) TLKLabel *label; // @synthesize label=_label;
+@property (nonatomic) unsigned long long sizeConfiguration; // @synthesize sizeConfiguration=_sizeConfiguration;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (id)initWithProminence:(unsigned long long)arg1;
+- (void)layoutSubviews;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateFont;
 
 @end
 

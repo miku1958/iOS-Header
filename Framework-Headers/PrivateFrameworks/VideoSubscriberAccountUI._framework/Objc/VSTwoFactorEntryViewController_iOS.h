@@ -10,7 +10,7 @@
 #import <VideoSubscriberAccountUI/VSTwoFactorDigitViewDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSTwoFactorEntryViewController-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIScrollView, VSFontCenter, VSIdentityProviderLogoView, VSTwoFactorDigitView, VSTwoFactorEntryViewModel, VSViewModel;
+@class NSArray, NSString, UIBarButtonItem, UIScrollView, VSFontCenter, VSIdentityProviderLogoView, VSTwoFactorDigitView, VSTwoFactorEntryViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIBarButtonItem *verifyButton; // @synthesize verifyButton=_verifyButton;
-@property (readonly, nonatomic) VSViewModel *viewModel;
+@property (strong, nonatomic) VSTwoFactorEntryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
 - (void)buttonPressed:(id)arg1;
@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)setViewModel:(id)arg1;
 - (void)startObservingViewModel:(id)arg1;
 - (void)stopObservingViewModel:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

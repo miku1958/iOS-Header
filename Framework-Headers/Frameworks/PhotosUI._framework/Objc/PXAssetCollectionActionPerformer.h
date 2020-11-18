@@ -6,23 +6,34 @@
 
 #import <PhotosUICore/PXActionPerformer.h>
 
-@class PHFetchResult, PXDisplayTitleInfo;
-@protocol PXDisplayAssetCollection;
+@class PHFetchResult, PXAssetCollectionReference, PXAssetReference, PXAssetsDataSource, PXDisplayTitleInfo;
+@protocol PXDisplayAssetCollection, UIDragSession, UIDropSession;
 
 @interface PXAssetCollectionActionPerformer : PXActionPerformer
 {
-    id<PXDisplayAssetCollection> _assetCollection;
+    PXAssetCollectionReference *_assetCollectionReference;
     PXDisplayTitleInfo *_displayTitleInfo;
     PHFetchResult *_people;
+    PXAssetReference *_dropTargetAssetReference;
+    id<UIDragSession> _dragSession;
+    id<UIDropSession> _dropSession;
+    PXAssetsDataSource *_assetsDataSource;
+    PHFetchResult *_assetsFetchResult;
 }
 
-@property (readonly, nonatomic) id<PXDisplayAssetCollection> assetCollection; // @synthesize assetCollection=_assetCollection;
+@property (readonly, nonatomic) id<PXDisplayAssetCollection> assetCollection;
+@property (readonly, nonatomic) PXAssetCollectionReference *assetCollectionReference; // @synthesize assetCollectionReference=_assetCollectionReference;
+@property (strong, nonatomic) PXAssetsDataSource *assetsDataSource; // @synthesize assetsDataSource=_assetsDataSource;
+@property (strong, nonatomic) PHFetchResult *assetsFetchResult; // @synthesize assetsFetchResult=_assetsFetchResult;
 @property (readonly, nonatomic) PXDisplayTitleInfo *displayTitleInfo; // @synthesize displayTitleInfo=_displayTitleInfo;
-@property (readonly, nonatomic) PHFetchResult *people; // @synthesize people=_people;
+@property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
+@property (strong, nonatomic) id<UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
+@property (strong, nonatomic) PXAssetReference *dropTargetAssetReference; // @synthesize dropTargetAssetReference=_dropTargetAssetReference;
+@property (strong, nonatomic) PHFetchResult *people; // @synthesize people=_people;
 
 - (void).cxx_destruct;
 - (id)initWithActionType:(id)arg1;
-- (id)initWithActionType:(id)arg1 assetCollection:(id)arg2 displayTitleInfo:(id)arg3 people:(id)arg4;
+- (id)initWithActionType:(id)arg1 assetCollectionReference:(id)arg2 displayTitleInfo:(id)arg3;
 
 @end
 

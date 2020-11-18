@@ -24,12 +24,12 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSString> _findString;
     unsigned long long _findStringCount;
     unsigned long long _findStringMaxCount;
-    struct RetainPtr<UIView> _fixedOverlayView;
+    RetainPtr_1ac284e4 _fixedOverlayView;
     struct Optional<unsigned long> _focusedSearchResultIndex;
     long long _focusedSearchResultPendingOffset;
     struct RetainPtr<PDFHostViewController> _hostViewController;
     struct CGSize _overlaidAccessoryViewsInset;
-    struct RetainPtr<UIView> _pageNumberIndicator;
+    RetainPtr_1ac284e4 _pageNumberIndicator;
     struct CString _passwordForPrinting;
     struct InteractionInformationAtPosition _positionInformation;
     struct RetainPtr<NSString> _suggestedFilename;
@@ -71,10 +71,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
-- (void)actionSheetAssistant:(id)arg1 performAction:(int)arg2;
+- (void)actionSheetAssistant:(id)arg1 performAction:(BOOL)arg2;
 - (void)actionSheetAssistant:(id)arg1 shareElementWithURL:(id)arg2 rect:(struct CGRect)arg3;
 - (BOOL)actionSheetAssistant:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
-- (id)dataDetectionContextForActionSheetAssistant:(id)arg1;
+- (id)dataDetectionContextForActionSheetAssistant:(id)arg1 positionInformation:(const struct InteractionInformationAtPosition *)arg2;
 - (void)dealloc;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)pdfHostViewController:(id)arg1 didLongPressPageIndex:(long long)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
@@ -85,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)pdfHostViewController:(id)arg1 goToURL:(id)arg2;
 - (void)pdfHostViewController:(id)arg1 updatePageCount:(long long)arg2;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
-- (Optional_677bf244)positionInformationForActionSheetAssistant:(id)arg1;
+- (Optional_b5290310)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)shareSheetDidDismiss:(id)arg1;
 - (void)web_beginAnimatedResizeWithUpdates:(CDUnknownBlockType)arg1;
 - (void)web_computedContentInsetDidChange;

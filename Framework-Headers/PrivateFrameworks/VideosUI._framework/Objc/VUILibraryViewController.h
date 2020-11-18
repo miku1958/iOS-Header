@@ -15,12 +15,11 @@
 #import <VideosUI/VUIMenuCollectionViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIShelvesDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadViewController, VUIFamilyMember, VUILibraryBannerCollectionViewCell, VUILibraryMenuDataSource, VUILibraryMenuItemViewCell, VUILibraryShelvesDataSource, VUIMediaLibrary, VUIViewControllerContentPresenter, _VUILibrarySeeAllController;
+@class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadTableViewController, VUIFamilyMember, VUILibraryBannerCollectionViewCell, VUILibraryMenuDataSource, VUILibraryMenuItemViewCell, VUILibraryShelvesDataSource, VUIMediaLibrary, VUIViewControllerContentPresenter, _VUILibrarySeeAllController;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, UIGestureRecognizerDelegate, VUIShelvesDataSourceDelegate, VUILibraryDataSourceDelegate, VUIMenuCollectionViewControllerDelegate, VUIFamilyMembersViewControllerDelegate, VUIFamilySharingContentProtocol>
 {
-    VUIDownloadViewController *_presentedDownloadViewController;
     BOOL _ppt_isLoaded;
     BOOL _hasMenuItemFetchCompleted;
     BOOL _hasMediaEntitiesFetchCompleted;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_validShelfTypes;
     _VUILibrarySeeAllController *_currentSeeAllController;
     VUIMediaLibrary *_mediaLibrary;
+    VUIDownloadTableViewController *_presentedDownloadViewController;
 }
 
 @property (strong, nonatomic) VUILibraryBannerCollectionViewCell *bannerViewSizingCell; // @synthesize bannerViewSizingCell=_bannerViewSizingCell;
@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *menuCells; // @synthesize menuCells=_menuCells;
 @property (strong, nonatomic) VUILibraryMenuDataSource *menuDataSource; // @synthesize menuDataSource=_menuDataSource;
 @property (strong, nonatomic) VUILibraryMenuItemViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
+@property (strong, nonatomic) VUIDownloadTableViewController *presentedDownloadViewController; // @synthesize presentedDownloadViewController=_presentedDownloadViewController;
 @property (strong, nonatomic) NSMutableArray *shelves; // @synthesize shelves=_shelves;
 @property (strong, nonatomic) VUILibraryShelvesDataSource *shelvesDataSource; // @synthesize shelvesDataSource=_shelvesDataSource;
 @property (readonly) Class superclass;
@@ -75,13 +76,18 @@ __attribute__((visibility("hidden")))
 - (id)_dataSourceForShelves;
 - (id)_deviceMediaLibrary;
 - (void)_deviceMediaLibraryUpdateStateDidChange:(id)arg1;
+- (id)_downloadViewController;
+- (BOOL)_downloadsAreAvailable;
 - (BOOL)_gestureRecognizerShouldBegin;
 - (BOOL)_haveAllInitialFetchesCompleted;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
 - (BOOL)_isDeviceMediaLibraryInitialUpdateInProgress;
 - (id)_localizedTitleForCellType:(long long)arg1;
 - (id)_menuItems;
+- (id)_navigationBarTitle;
 - (void)_networkReachabilityDidChange:(id)arg1;
+- (void)_presentDownloadViewController;
+- (void)_removeDownloadViewController;
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
 - (void)_selectLibraryCellType:(long long)arg1;
@@ -91,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)_stopMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_updateNavigationTitle;
 - (void)_updateViewIfFetchComplete;
+- (void)_updateVisibleCellSeparators;
 - (id)_viewControllerWithCellType:(long long)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

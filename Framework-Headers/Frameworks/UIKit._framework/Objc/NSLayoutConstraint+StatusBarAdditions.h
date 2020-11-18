@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutConstraint.h>
+#import <CoreAutoLayout/NSLayoutConstraint.h>
 
 @class _NSLayoutConstraintConstant;
 
@@ -14,7 +14,6 @@
 
 + (BOOL)_UIWantsMarginAttributeSupport;
 + (double)_constraintConstantLimit;
-+ (id)constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 toAnchor:(id)arg3 withSystemSpacingMultipliedBy:(double)arg4;
 - (id)_baselineLoweringInfoForFirstItem:(BOOL)arg1;
 - (id)_debuggableEquationBaseDescription;
 - (id)_debuggableEquationDescriptionWithoutLegend;
@@ -25,6 +24,5 @@
 - (id)_uiFirstRefView;
 - (id)_uiSecondRefView;
 - (id)_ui_constraintWithPriority:(float)arg1;
-- (id)spacingMultiplier;
 @end
 

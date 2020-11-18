@@ -16,7 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)accessibilityPerformEscape;
 - (void)didMoveToWindow;
-- (id)initWithPassGroupView:(id)arg1 groupViewReceiver:(id)arg2 context:(id)arg3;
+- (id)initWithPassGroupView:(id)arg1 groupsController:(id)arg2 groupViewReceiver:(id)arg3 context:(id)arg4;
 
 @end
 

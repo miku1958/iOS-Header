@@ -9,6 +9,7 @@
 @class MPModelSocialPerson, MPStoreSocialRequestOperation;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface _MPStoreSocialTransientState : NSObject
 {
     long long _followState;

@@ -10,16 +10,21 @@
 
 @interface ContactFolderItemsSyncContext : NSObject
 {
+    BOOL _changeHistoryTruncated;
     int _abPersonChangeId;
     int _abGroupChangeId;
+    unsigned long long _latestSequenceNumber;
     CNChangeHistoryAnchor *_cnChangeAnchor;
 }
 
 @property (nonatomic) int abGroupChangeId; // @synthesize abGroupChangeId=_abGroupChangeId;
 @property (nonatomic) int abPersonChangeId; // @synthesize abPersonChangeId=_abPersonChangeId;
+@property (nonatomic, getter=isChangeHistoryTruncated) BOOL changeHistoryTruncated; // @synthesize changeHistoryTruncated=_changeHistoryTruncated;
 @property (strong, nonatomic) CNChangeHistoryAnchor *cnChangeAnchor; // @synthesize cnChangeAnchor=_cnChangeAnchor;
+@property (nonatomic) unsigned long long latestSequenceNumber; // @synthesize latestSequenceNumber=_latestSequenceNumber;
 
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

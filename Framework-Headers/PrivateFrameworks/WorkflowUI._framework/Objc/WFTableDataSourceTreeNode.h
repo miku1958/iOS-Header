@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowUI/WFTreeNode.h>
+#import <WorkflowUICore/WFTreeNode.h>
 
 @class WFTableDataSource;
 

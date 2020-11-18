@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowUI/WFActionSettingsViewController.h>
+#import <WorkflowEditor/WFActionSettingsViewController.h>
 
 #import <ActionKitUI/UITableViewDataSource-Protocol.h>
 #import <ActionKitUI/UITableViewDelegate-Protocol.h>

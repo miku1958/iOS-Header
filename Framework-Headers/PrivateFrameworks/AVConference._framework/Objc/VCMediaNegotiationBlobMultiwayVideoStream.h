@@ -62,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithStreamConfig:(id)arg1;

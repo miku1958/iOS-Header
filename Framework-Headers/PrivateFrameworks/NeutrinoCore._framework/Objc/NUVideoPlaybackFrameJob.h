@@ -15,6 +15,7 @@
 - (id)initWithVideoFrameRequest:(id)arg1;
 - (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (BOOL)render:(out id *)arg1;
+- (id)renderer:(out id *)arg1;
 - (id)result;
 - (id)scalePolicy;
 - (BOOL)wantsCompleteStage;

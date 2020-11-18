@@ -10,6 +10,7 @@
 
 @protocol HDSyncCodable <NSObject>
 - (NSData *)data;
+- (long long)encodedByteCount;
 - (id)initWithData:(NSData *)arg1;
 @end
 

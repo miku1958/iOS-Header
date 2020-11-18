@@ -23,6 +23,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithApplicationProxy:(id)arg1;
+- (id)initWithApplicationProxy:(id)arg1 associatedAccessories:(id)arg2;
 
 @end
 

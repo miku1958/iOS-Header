@@ -12,5 +12,7 @@
 - (int)authorizationStatusForBundle:(NSBundle *)arg1;
 - (int)authorizationStatusForBundleIdentifier:(NSString *)arg1;
 - (void)markAsHavingReceivedLocationWithEffectiveBundleIdentifier:(NSString *)arg1;
+- (BOOL)preciseLocationAuthorizedForBundle:(NSBundle *)arg1;
+- (BOOL)preciseLocationAuthorizedForBundleIdentifier:(NSString *)arg1;
 @end
 

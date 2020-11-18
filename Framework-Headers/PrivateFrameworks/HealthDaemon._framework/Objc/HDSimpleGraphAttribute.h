@@ -10,23 +10,24 @@
 
 @interface HDSimpleGraphAttribute : HDSimpleGraphObject
 {
+    long long _nodeID;
+    HDSimpleGraphNode *_node;
+    long long _keyID;
     NSString *_key;
     NSString *_value;
     NSString *_valueType;
-    long long _nodeID;
-    HDSimpleGraphNode *_node;
 }
 
-@property (copy, nonatomic) NSString *key; // @synthesize key=_key;
-@property (weak, nonatomic) HDSimpleGraphNode *node; // @synthesize node=_node;
-@property (nonatomic) long long nodeID; // @synthesize nodeID=_nodeID;
-@property (copy, nonatomic) NSString *value; // @synthesize value=_value;
-@property (copy, nonatomic) NSString *valueType; // @synthesize valueType=_valueType;
+@property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (readonly, nonatomic) long long keyID; // @synthesize keyID=_keyID;
+@property (readonly, weak, nonatomic) HDSimpleGraphNode *node;
+@property (readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
+@property (readonly, copy, nonatomic) NSString *valueType; // @synthesize valueType=_valueType;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 key:(id)arg3 value:(id)arg4 valueType:(id)arg5 nodeID:(long long)arg6 node:(id)arg7;
+- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 keyID:(long long)arg3 key:(id)arg4 value:(id)arg5 valueType:(id)arg6 nodeID:(long long)arg7 node:(id)arg8;
 
 @end
 

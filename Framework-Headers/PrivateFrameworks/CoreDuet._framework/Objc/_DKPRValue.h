@@ -25,26 +25,12 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSData *blobValue; // @synthesize blobValue=_blobValue;
-@property (nonatomic) double dateValue; // @synthesize dateValue=_dateValue;
-@property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
-@property (readonly, nonatomic) BOOL hasBlobValue;
-@property (nonatomic) BOOL hasDateValue;
-@property (nonatomic) BOOL hasDoubleValue;
-@property (nonatomic) BOOL hasIntegerValue;
-@property (readonly, nonatomic) BOOL hasStringValue;
-@property (nonatomic) long long integerValue; // @synthesize integerValue=_integerValue;
-@property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
-@property (strong, nonatomic) _DKPRValueType *type; // @synthesize type=_type;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

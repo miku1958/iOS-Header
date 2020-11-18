@@ -9,12 +9,13 @@
 #import <SpringBoard/RadiosPreferencesDelegate-Protocol.h>
 
 @class RadiosPreferences;
-@protocol SBAirplaneModeDelegate;
+@protocol OS_dispatch_queue, SBAirplaneModeDelegate;
 
 @interface SBAirplaneModeController : NSObject <RadiosPreferencesDelegate>
 {
     RadiosPreferences *_radioPrefs;
     BOOL _cachedInAirplaneMode;
+    NSObject<OS_dispatch_queue> *_radioQueue;
     id<SBAirplaneModeDelegate> _delegate;
 }
 

@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKit/UICollectionViewCell.h>
 
-@class MISSING_TYPE, UILabel, _TtC13HealthProfile19MeContactAvatarView;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC13HealthProfile18ProfileContactCell : UITableViewCell
+@interface _TtC13HealthProfile18ProfileContactCell : UICollectionViewCell
 {
-    MISSING_TYPE *nameLabel;
     MISSING_TYPE *avatarView;
+    MISSING_TYPE *nameLabel;
     MISSING_TYPE *item;
 }
 
-@property (nonatomic, weak) _TtC13HealthProfile19MeContactAvatarView *avatarView; // @synthesize avatarView;
-@property (nonatomic, weak) UILabel *nameLabel; // @synthesize nameLabel;
-
 - (void).cxx_destruct;
-- (void)awakeFromNib;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateName;
 
 @end

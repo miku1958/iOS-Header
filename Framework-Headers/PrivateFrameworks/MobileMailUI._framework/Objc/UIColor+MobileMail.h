@@ -11,13 +11,12 @@
 + (id)mailAppBackgroundColor;
 + (id)mailArchiveActionColor;
 + (id)mailAttachmentsFilterColor;
-+ (id)mailCardBackgroundColor;
 + (id)mailCellSelectionStateColorForInterfaceLevel:(long long)arg1;
 + (id)mailChevronBoxColor;
-+ (id)mailConversationBackgroundColorForPhoneUserInterfaceStyle:(long long)arg1;
-+ (id)mailConversationViewCollapsedCellBackgroundColorForUserInterfaceStyle:(long long)arg1;
-+ (id)mailConversationViewCollapsedCellHighlightedBackgroundColorForUserInterfaceStyle:(long long)arg1;
-+ (id)mailConversationViewCollapsedCellLabelColorForUserInterfaceStyle:(long long)arg1;
++ (id)mailConversationViewBackgroundColor;
++ (id)mailConversationViewCollapsedCellBackgroundColor;
++ (id)mailConversationViewCollapsedCellHighlightedBackgroundColor;
++ (id)mailConversationViewCollapsedCellLabelColor;
 + (id)mailConversationViewExpandedCellBackgroundColor;
 + (id)mailConversationViewNoSelectedMessageViewBackgroundColor;
 + (id)mailDarkGrayColor;
@@ -41,16 +40,24 @@
 + (id)mailGrabberColor;
 + (id)mailHeaderSeparatorLayerColor;
 + (id)mailHighlightedChevronBoxColor;
-+ (id)mailInteractiveColor;
 + (id)mailLightGrayColor;
++ (id)mailMailboxPickerBackgroundColorForTraitCollection:(id)arg1;
++ (id)mailMessageListPrimarySelectionColor;
++ (id)mailMessageListSecondarySelectionColor;
++ (id)mailMessageListSelectedAnnotationColor;
++ (id)mailMessageListSelectedRecipientColor;
++ (id)mailMessageListSelectedStatusIndicatorColor;
++ (id)mailMessageListSelectedSummaryColor;
++ (id)mailMessageListTertiarySelectionColor;
 + (id)mailMoreButtonGrayColor;
 + (id)mailPreviousDraftPickerHeaderTextColor;
++ (id)mailSecondaryLabelDarkColor;
 + (id)mailSelectedCellColor;
 + (id)mailSelectedCellSystemLightGrayColor;
 + (id)mailSelectedCellSystemUltraLightGrayColor;
 + (id)mailSortOfNavBarBackgroundColor;
 + (id)mailSplitViewBackgroundColor;
-+ (id)mailSplitViewBoarderColor;
++ (id)mailSplitViewBorderColor;
 + (id)mailSystemLightGrayColor;
 + (id)mailSystemUltraLightGrayColor;
 + (id)mailTiltedTabCloseButtonTintColor;
@@ -62,6 +69,7 @@
 + (id)mailVibrantDarkColor;
 + (id)mailVibrantLightColor;
 + (id)mf_colorFromColor:(id)arg1 toColor:(id)arg2 progress:(float)arg3;
++ (id)mf_colorFromFlagColor:(unsigned long long)arg1;
 - (BOOL)mf_isTranslucent;
 @end
 

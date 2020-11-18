@@ -9,7 +9,7 @@
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 #import <RunningBoard/RBThrottleBestEffortNetworkingManaging-Protocol.h>
 
-@class NSString, RBProcessIndex, RBProcessMap, RBSystemState;
+@class NSString, RBProcessIndex, RBProcessMap;
 @protocol OS_dispatch_queue;
 
 @interface RBThrottleBestEffortNetworkingManager : NSObject <RBThrottleBestEffortNetworkingManaging, RBStateCapturing>
@@ -17,7 +17,6 @@
     NSObject<OS_dispatch_queue> *_queue;
     RBProcessIndex *_processIndex;
     RBProcessMap *_stateMap;
-    RBSystemState *_systemState;
     BOOL _throttleBestEffortNetworking;
     struct os_unfair_lock_s _lock;
 }
@@ -29,9 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_updateThrottleBestEffortNetworking;
 - (void)addProcess:(id)arg1;
-- (void)applySystemState:(id)arg1;
 - (id)captureState;
 - (void)didUpdateProcessStates:(id)arg1;
 - (id)init;

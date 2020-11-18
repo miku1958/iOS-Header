@@ -8,9 +8,13 @@
 
 @interface SBTitledHomeScreenButton : SBHomeScreenButton
 {
+    struct CGSize _preferredContentFittingSize;
 }
 
+@property (nonatomic) struct CGSize preferredContentFittingSize; // @synthesize preferredContentFittingSize=_preferredContentFittingSize;
+
 + (id)contentImageWithTitle:(id)arg1;
+- (struct CGSize)_preferredContentFittingSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundView:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

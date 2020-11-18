@@ -18,22 +18,23 @@
 - (id)_assetURIStringsForPhotos:(id)arg1;
 - (BOOL)_consumeSandboxExtensions:(id)arg1;
 - (void)automaticallyDeleteEmptyAlbumWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)createPhotoLibraryDatabaseWithError:(id *)arg1;
+- (BOOL)createPhotoLibraryDatabaseWithOptions:(id)arg1 error:(id *)arg2;
 - (long long)getCurrentModelVersion;
 - (id)getPhotoLibraryStoreXPCListenerEndpoint;
-- (void)importFileSystemAssetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)importFileSystemAssetsForce:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithQueue:(id)arg1 proxyCreating:(id)arg2 proxyGetter:(SEL)arg3 sandboxExtensions:(id)arg4;
 - (void)launchAssetsd;
 - (BOOL)openPhotoLibraryDatabaseWithPostOpenProgress:(id *)arg1 error:(id *)arg2;
-- (BOOL)openPhotoLibraryDatabaseWithoutProgressIfNeeded:(id *)arg1;
+- (BOOL)openPhotoLibraryDatabaseWithPostOpenProgress:(id *)arg1 options:(id)arg2 error:(id *)arg3;
+- (BOOL)openPhotoLibraryDatabaseWithoutProgressIfNeededWithOptions:(id)arg1 error:(id *)arg2;
 - (void)pendingEventsForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)recoverFromCrashIfNeeded;
 - (BOOL)repairSingletonObjectsWithError:(id *)arg1;
-- (BOOL)synchronouslyImportFileSystemAssetsWithError:(id *)arg1;
+- (BOOL)synchronouslyImportFileSystemAssetsForce:(BOOL)arg1 withError:(id *)arg2;
 - (BOOL)synchronouslyUpdateThumbnailsForPhotos:(id)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 error:(id *)arg4;
 - (void)updateThumbnailsForPhotos:(id)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)upgradePhotoLibraryDatabaseWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

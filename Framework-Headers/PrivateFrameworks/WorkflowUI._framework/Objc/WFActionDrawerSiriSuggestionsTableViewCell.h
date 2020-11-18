@@ -8,15 +8,15 @@
 
 #import <WorkflowUI/WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate-Protocol.h>
 
-@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIViewController, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager, WFModuleTitleView;
-@protocol WFActionDrawerSiriSuggestionsTableViewCellDelegate;
+@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIViewController, WFActionDrawerCoordinator, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager, WFModuleTitleView;
+@protocol WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate;
 
 @interface WFActionDrawerSiriSuggestionsTableViewCell : UITableViewCell <WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate>
 {
-    BOOL _configuredForDailyRoutines;
     WFActionDrawerSection *_section;
-    id<WFActionDrawerSiriSuggestionsTableViewCellDelegate> _delegate;
-    UIViewController *_containingViewController;
+    WFActionDrawerCoordinator *_coordinator;
+    UIViewController *_viewController;
+    id<WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate> _dailyRoutineDelegate;
     WFModuleTitleView *_titleView;
     UIButton *_infoButton;
     UICollectionView *_donationsCollectionView;
@@ -27,20 +27,23 @@
 }
 
 @property (strong, nonatomic) NSLayoutConstraint *collectionViewHeightConstraint; // @synthesize collectionViewHeightConstraint=_collectionViewHeightConstraint;
-@property (nonatomic) BOOL configuredForDailyRoutines; // @synthesize configuredForDailyRoutines=_configuredForDailyRoutines;
-@property (weak, nonatomic) UIViewController *containingViewController; // @synthesize containingViewController=_containingViewController;
-@property (weak, nonatomic) id<WFActionDrawerSiriSuggestionsTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
+@property (weak, nonatomic) id<WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate> dailyRoutineDelegate; // @synthesize dailyRoutineDelegate=_dailyRoutineDelegate;
 @property (weak, nonatomic) UICollectionView *donationsCollectionView; // @synthesize donationsCollectionView=_donationsCollectionView;
 @property (strong, nonatomic) WFActionDrawerSiriSuggestionsCollectionViewManager *donationsCollectionViewManager; // @synthesize donationsCollectionViewManager=_donationsCollectionViewManager;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (weak, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property (strong, nonatomic) INIntent *intent; // @synthesize intent=_intent;
-@property (strong, nonatomic) WFActionDrawerSection *section; // @synthesize section=_section;
+@property (readonly, nonatomic) WFActionDrawerSection *section; // @synthesize section=_section;
 @property (weak, nonatomic) WFModuleTitleView *titleView; // @synthesize titleView=_titleView;
+@property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (void)configureForDailyRoutines:(BOOL)arg1;
 - (void)configureLoading;
 - (void)configureWithActionDrawerSection:(id)arg1;
+- (void)configureWithActionDrawerSection:(id)arg1 coordinator:(id)arg2 viewController:(id)arg3;
+- (void)configureWithActionDrawerSection:(id)arg1 dailyRoutineDelegate:(id)arg2 viewController:(id)arg3;
 - (void)infoButtonPressed;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)siriSuggestionsCollectionViewManager:(id)arg1 didSelectAction:(id)arg2;

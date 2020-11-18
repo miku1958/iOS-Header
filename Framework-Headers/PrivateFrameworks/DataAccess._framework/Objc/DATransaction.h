@@ -7,9 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol OS_os_transaction;
 
 @interface DATransaction : NSObject
 {
+    NSObject<OS_os_transaction> *_transaction;
     NSString *_label;
     NSString *_transactionId;
 }

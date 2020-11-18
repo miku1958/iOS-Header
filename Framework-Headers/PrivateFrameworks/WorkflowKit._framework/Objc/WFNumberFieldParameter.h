@@ -6,7 +6,11 @@
 
 #import <WorkflowKit/WFParameter.h>
 
-@interface WFNumberFieldParameter : WFParameter
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
+
+@class NSString;
+
+@interface WFNumberFieldParameter : WFParameter <WFParameterDialogProvider>
 {
     BOOL _allowsDecimalNumbers;
     BOOL _allowsNegativeNumbers;
@@ -15,12 +19,18 @@
 
 @property (readonly, nonatomic) BOOL allowsDecimalNumbers; // @synthesize allowsDecimalNumbers=_allowsDecimalNumbers;
 @property (readonly, nonatomic) BOOL allowsNegativeNumbers; // @synthesize allowsNegativeNumbers=_allowsNegativeNumbers;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 
 + (BOOL)defaultAllowsDecimalNumbers;
 + (BOOL)defaultAllowsNegativeNumbers;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSupportedVariableTypes;
 - (id)initWithDefinition:(id)arg1;
+- (id)parameterStateFromDialogResponse:(id)arg1;
 - (BOOL)shouldAlignLabels;
 - (Class)singleStateClass;
 

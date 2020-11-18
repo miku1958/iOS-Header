@@ -58,6 +58,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
++ (void)setShouldDisableLaunchOptimizations:(BOOL)arg1;
++ (BOOL)shouldDisableLaunchOptimizations;
 - (void).cxx_destruct;
 - (void)_anchorVisibleArea;
 - (void)_configureSectionLayout:(id)arg1 atIndex:(long long)arg2;
@@ -71,7 +73,7 @@
 - (void)_updateSublayoutsDataSource;
 - (void)_updateSublayoutsForSkimming;
 - (void)clearLastVisibleAreaAnchoringInformation;
-- (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1;
+- (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1 type:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)didFaultInSublayout:(id)arg1 atIndex:(long long)arg2 fromEstimatedContentSize:(struct CGSize)arg3;
 - (void)enumerateAssetsSectionSublayoutsInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;

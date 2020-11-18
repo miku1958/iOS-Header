@@ -12,10 +12,10 @@
 
 @interface NSFileProviderDomain : NSObject <NSSecureCoding>
 {
-    BOOL _disconnected;
     BOOL _hidden;
     BOOL _containsPhotos;
     BOOL _isEnterpriseDomain;
+    BOOL _disconnected;
     NSString *_identifier;
     NSString *_displayName;
     NSString *_pathRelativeToDocumentStorage;

@@ -6,15 +6,16 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSSet, NSString, PKPaymentTransaction, PKTransitPassProperties;
+@class NSSet, NSString, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentTransaction, PKTransitPassProperties;
 
 @protocol NPKCompanionClientProtocol <NSObject>
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableMessageService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableTransactionService:(BOOL)arg2;
-- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveTransaction:(PKPaymentTransaction *)arg2;
-- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didRemoveTransactionWithIdentifier:(NSString *)arg2;
+- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateBalanceReminder:(PKPaymentBalanceReminder *)arg2 forBalance:(PKPaymentBalance *)arg3;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithBalances:(NSSet *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithCredentials:(NSSet *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithTransitPassProperties:(PKTransitPassProperties *)arg2;
+- (void)transactionSourceIdentifier:(NSString *)arg1 didReceiveTransaction:(PKPaymentTransaction *)arg2;
+- (void)transactionSourceIdentifier:(NSString *)arg1 didRemoveTransactionWithIdentifier:(NSString *)arg2;
 @end
 

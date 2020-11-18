@@ -4,34 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ShazamKit/SHConfiguration.h>
+#import <ShazamKit/SHRemoteStore.h>
 
-@class NSDictionary, NSString, SHBag, SKCloudServiceController;
-
-@interface SHPartnerConfiguration : SHConfiguration
+@interface SHPartnerConfiguration : SHRemoteStore
 {
-    NSString *_partnerName;
-    NSDictionary *_locallyProvidedBag;
-    SHBag *_bag;
-    SKCloudServiceController *_cloudServiceController;
-    NSString *_installationID;
 }
-
-@property (strong, nonatomic) SHBag *bag; // @synthesize bag=_bag;
-@property (strong, nonatomic) SKCloudServiceController *cloudServiceController; // @synthesize cloudServiceController=_cloudServiceController;
-@property (readonly, copy, nonatomic) NSString *installationID; // @synthesize installationID=_installationID;
-@property (strong, nonatomic) NSDictionary *locallyProvidedBag; // @synthesize locallyProvidedBag=_locallyProvidedBag;
-@property (readonly, copy, nonatomic) NSString *partnerName; // @synthesize partnerName=_partnerName;
-
-+ (BOOL)validateAPIKey:(id)arg1;
-+ (BOOL)validateInstallationID:(id)arg1;
-+ (BOOL)validatePartnerName:(id)arg1;
-- (void).cxx_destruct;
-- (id)initWithPartnerName:(id)arg1;
-- (id)initWithPartnerName:(id)arg1 apiKey:(id)arg2 host:(id)arg3;
-- (id)initWithPartnerName:(id)arg1 endpoint:(id)arg2 apiKey:(id)arg3;
-- (void)loadBag:(CDUnknownBlockType)arg1;
-- (void)updateEndpoint:(id)arg1 withCountryCode:(id)arg2;
 
 @end
 

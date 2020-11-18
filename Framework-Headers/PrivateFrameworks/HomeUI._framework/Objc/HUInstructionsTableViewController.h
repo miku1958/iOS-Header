@@ -14,13 +14,14 @@
     UIViewController *_contentViewController;
 }
 
-@property (readonly, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property (strong, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, nonatomic) HUInstructionsItem *instructionsItem; // @synthesize instructionsItem=_instructionsItem;
 
 - (void).cxx_destruct;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)initWithInstructionsItem:(id)arg1 contentViewController:(id)arg2;
+- (id)initWithItemManager:(id)arg1;
 - (id)initWithItemManager:(id)arg1 instructionsItem:(id)arg2 contentViewController:(id)arg3;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (BOOL)shouldHideFooterBelowSection:(long long)arg1;

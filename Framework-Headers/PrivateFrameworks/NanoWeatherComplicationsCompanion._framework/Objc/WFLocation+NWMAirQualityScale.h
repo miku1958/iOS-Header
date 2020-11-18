@@ -12,6 +12,8 @@
 @property (readonly, nonatomic) BOOL nwm_isDAQICountry;
 @property (readonly, nonatomic) BOOL nwm_isUBACountry;
 
++ (id)_nwm_attributedDisplayName:(id)arg1 prefixedWithLocationGlyph:(id)arg2;
 + (id)nwm_attributedDisplayNameWithLocationGlyph:(id)arg1 inFont:(id)arg2;
++ (id)nwm_attributedDisplayNameWithLocationGlyph:(id)arg1 withTextStyle:(id)arg2;
 @end
 

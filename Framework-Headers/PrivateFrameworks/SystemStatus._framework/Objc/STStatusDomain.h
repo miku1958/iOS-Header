@@ -13,8 +13,8 @@
 
 @interface STStatusDomain : NSObject <STStatusDomainClientHandle>
 {
-    id<STStatusDomainServerHandle> _serverHandle;
     CDUnknownBlockType _dataChangedBlock;
+    id<STStatusDomainServerHandle> _serverHandle;
 }
 
 @property (readonly, copy, nonatomic) id<STStatusDomainData> data;
@@ -22,7 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) id<STStatusDomainServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
+@property (readonly, nonatomic) id<STStatusDomainServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
 @property (readonly) Class superclass;
 
 + (unsigned long long)statusDomainName;

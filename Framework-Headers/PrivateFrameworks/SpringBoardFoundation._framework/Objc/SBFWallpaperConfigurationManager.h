@@ -42,6 +42,7 @@
 @property (readonly, copy, nonatomic) SBFWallpaperConfiguration *lockScreenWallpaperConfiguration;
 @property (strong, nonatomic) SBFMagnifyMode *magnifyMode; // @synthesize magnifyMode=_magnifyMode;
 @property (readonly, nonatomic) unsigned long long numberOfCachedStaticImages;
+@property (readonly, nonatomic) long long parallaxDeviceType;
 @property (weak, nonatomic) id<SBFProceduralWallpaperProvider> proceduralWallpaperProvider; // @synthesize proceduralWallpaperProvider=_proceduralWallpaperProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL variantsShareWallpaperConfiguration;
@@ -56,6 +57,7 @@
 - (void)beginChangeBatch;
 - (id)cleanedProceduralWallpaperInfo:(id)arg1;
 - (void)clearCacheForVariants:(long long)arg1;
+- (void)clearCacheForVariants:(long long)arg1 memoryOnly:(BOOL)arg2;
 - (void)clearDelayedChangeNotifications;
 - (struct CGRect)cropRectForOldCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 zoomScale:(double)arg3 oldParallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 newZoomScale:(double *)arg6;
 - (struct CGRect)cropRectForViewPort:(struct CGRect)arg1 portrait:(BOOL)arg2 zoomScale:(double)arg3 parallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 contentScaleFactor:(double)arg6;
@@ -68,7 +70,6 @@
 - (id)fallbackWallpaperConfigurationForVarient:(long long)arg1;
 - (void)getBestCropRect:(out struct CGRect *)arg1 zoomScale:(out double *)arg2 forImageSize:(struct CGSize)arg3 portrait:(BOOL)arg4 parallaxFactor:(double)arg5;
 - (BOOL)hasWallpaperImageForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
-- (id)hashDataForImage:(id)arg1;
 - (id)homeScreenWallpaperConfigurationIncludingValuesForTypes:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithWallpaperDataStores:(id)arg1;
@@ -82,7 +83,6 @@
 - (id)migratedWallpaperOptionsForWallpaperOptions:(id)arg1 originalImageSize:(struct CGSize)arg2;
 - (id)normalizeImage:(id)arg1;
 - (void)notifyDelegateOfChangesToVariants:(long long)arg1;
-- (long long)parallaxDeviceType;
 - (double)parallaxFactorForCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 forImageSize:(struct CGSize)arg3 zoomScale:(double)arg4;
 - (void)performMigrationWithFailureHandler:(CDUnknownBlockType)arg1;
 - (Class)proceduralWallpaperClassForIdentifier:(id)arg1;
@@ -108,14 +108,14 @@
 - (void)saveCroppedVideo:(id)arg1 toURL:(id)arg2 cropRect:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)setProceduralWallpaperIdentifier:(id)arg1 options:(id)arg2 forVariants:(long long)arg3;
 - (BOOL)setVideoURL:(id)arg1 forVariant:(long long)arg2 shoudCrop:(BOOL)arg3 relativeCropRect:(struct CGRect)arg4 wallpaperMode:(long long)arg5;
+- (void)setWallpaperBundle:(id)arg1 appearance:(id)arg2;
 - (BOOL)setWallpaperColor:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperColorName:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfiguration:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3 name:(id)arg4;
-- (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfigurationSet:(id)arg1;
 - (BOOL)setWallpaperGradient:(id)arg1 forVariants:(long long)arg2;
-- (BOOL)setWallpaperImage:(id)arg1 adjustedImage:(id)arg2 thumbnailData:(id)arg3 wallpaperOptions:(id)arg4 forVariants:(long long)arg5 wallpaperMode:(long long)arg6;
+- (BOOL)setWallpaperImage:(id)arg1 adjustedImage:(id)arg2 thumbnailData:(id)arg3 imageHashData:(id)arg4 wallpaperOptions:(id)arg5 forVariants:(long long)arg6 wallpaperMode:(long long)arg7;
 - (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 forVariants:(long long)arg3 options:(unsigned long long)arg4;
-- (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 thumbnailData:(id)arg3 wallpaperOptions:(id)arg4 forVariants:(long long)arg5 options:(unsigned long long)arg6 wallpaperMode:(long long)arg7 isMigrating:(BOOL)arg8;
+- (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 thumbnailData:(id)arg3 imageHashData:(id)arg4 wallpaperOptions:(id)arg5 forVariants:(long long)arg6 options:(unsigned long long)arg7 wallpaperMode:(long long)arg8 isMigrating:(BOOL)arg9;
 - (BOOL)setWallpaperImage:(id)arg1 wallpaperOptions:(id)arg2 forVariants:(long long)arg3;
 - (BOOL)setWallpaperImageHashData:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3;
 - (BOOL)setWallpaperOptions:(id)arg1 forVariants:(long long)arg2;

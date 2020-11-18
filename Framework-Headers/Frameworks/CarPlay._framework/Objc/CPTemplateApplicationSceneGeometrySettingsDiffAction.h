@@ -23,7 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
-- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_65389fcd)arg1 windowScene:(id)arg2 transitionContext:(id)arg3;
+- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_b31ca263)arg1 windowScene:(id)arg2 transitionContext:(id)arg3;
 
 @end
 

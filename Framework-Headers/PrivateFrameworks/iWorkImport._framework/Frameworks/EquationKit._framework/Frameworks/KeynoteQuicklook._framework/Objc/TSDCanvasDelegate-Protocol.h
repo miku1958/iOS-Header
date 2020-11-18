@@ -6,7 +6,7 @@
 
 #import <KeynoteQuicklook/NSObject-Protocol.h>
 
-@class NSSet, TSDCanvas, TSDRep, TSKDocumentRoot;
+@class NSSet, TSDCanvas, TSDLayout, TSDRep, TSKDocumentRoot;
 @protocol TSDCanvasProxyDelegate;
 
 @protocol TSDCanvasDelegate <NSObject>
@@ -32,7 +32,7 @@
 - (BOOL)isPrintingCanvas;
 - (BOOL)isRenderingForKPF;
 - (BOOL)shouldShowCommentsForCanvas:(TSDCanvas *)arg1;
-- (BOOL)shouldShowInstructionalText;
+- (BOOL)shouldShowInstructionalTextForLayout:(TSDLayout *)arg1;
 - (BOOL)shouldShowTextCommentHighlightsForCanvas:(TSDCanvas *)arg1;
 - (BOOL)shouldShowTextOverflowGlyphs;
 - (BOOL)shouldSuppressBackgrounds;

@@ -14,7 +14,12 @@
 @property (readonly) NSTextRange *documentRange;
 
 - (id<NSTextLocation>)enumerateTextElementsFromLocation:(id<NSTextLocation>)arg1 options:(long long)arg2 usingBlock:(void (^)(NSTextElement *, BOOL *))arg3;
+- (id<NSTextLocation>)locationFromLocation:(id<NSTextLocation>)arg1 offset:(long long)arg2;
+- (long long)offsetFromLocation:(id<NSTextLocation>)arg1 toLocation:(id<NSTextLocation>)arg2;
 - (void)replaceCharactersInRange:(NSTextRange *)arg1 withTextElements:(NSArray *)arg2;
 - (BOOL)synchronizeToBackingStore:(void (^)(NSError *))arg1;
+
+@optional
+- (NSTextRange *)adjustedRangeFromRange:(NSTextRange *)arg1 inEditingTextSelection:(BOOL)arg2;
 @end
 

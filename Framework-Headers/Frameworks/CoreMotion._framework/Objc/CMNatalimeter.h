@@ -26,14 +26,10 @@
 + (BOOL)setUserInfo:(id)arg1 error:(id *)arg2;
 + (BOOL)setUserProfile:(id)arg1 error:(id *)arg2;
 + (id)userProfile;
-- (BOOL)_shouldAllowMotionCalibrationPromptsForSession:(long long)arg1;
 - (void)dealloc;
-- (unsigned long long)getSupportedMetricsForSession:(long long)arg1;
 - (id)init;
-- (unsigned long long)promptsNeededForSession:(long long)arg1;
 - (void)queryAbsoluteNatalimetryDataSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)queryAbsoluteNatalimetryDataSinceRecord:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)setSession:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)startAbsoluteNatalimetryDataUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopAbsoluteNatalimetryDataUpdates;
 

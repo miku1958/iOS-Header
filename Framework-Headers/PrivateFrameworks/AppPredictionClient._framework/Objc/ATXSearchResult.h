@@ -8,14 +8,16 @@
 
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
-@class ATXResponse, ATXScoredPrediction;
+@class ATXProactiveSuggestion, ATXResponse, ATXScoredPrediction;
 
 @interface ATXSearchResult : SFSearchResult <NSSecureCoding>
 {
     ATXScoredPrediction *_scoredBundleId;
     ATXResponse *_response;
+    ATXProactiveSuggestion *_proactiveSuggestion;
 }
 
+@property (readonly, nonatomic) ATXProactiveSuggestion *proactiveSuggestion; // @synthesize proactiveSuggestion=_proactiveSuggestion;
 @property (readonly, nonatomic) ATXResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) ATXScoredPrediction *scoredBundleId; // @synthesize scoredBundleId=_scoredBundleId;
 
@@ -23,7 +25,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithScoredBundleId:(id)arg1 response:(id)arg2;
+- (id)initWithScoredBundleId:(id)arg1 response:(id)arg2 proactiveSuggestion:(id)arg3;
 
 @end
 

@@ -15,7 +15,8 @@
 {
 }
 
-@property (nonatomic) unsigned long long artworkSubtype;
+@property (readonly, nonatomic) long long accessibilityContrast;
+@property (readonly, nonatomic) unsigned long long artworkSubtype;
 @property (readonly, nonatomic) BOOL canShowAlerts;
 @property (readonly, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration;
 @property (readonly, nonatomic) unsigned long long deactivationReasons;
@@ -23,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long deviceOrientation;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
-@property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property (readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 @property (readonly, nonatomic) BOOL forcedStatusBarForegroundTransparent;
 @property (readonly, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly) unsigned long long hash;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) BOOL idleModeEnabled;
 @property (readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
 @property (readonly, nonatomic) NSString *persistenceIdentifier;
+@property (readonly, nonatomic) long long pointerLockStatus;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;

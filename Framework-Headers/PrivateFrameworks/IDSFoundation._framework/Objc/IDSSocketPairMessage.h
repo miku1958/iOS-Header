@@ -17,6 +17,7 @@
     NSString *_topic;
     BOOL _useDynamicServiceName;
     BOOL _cancelled;
+    BOOL _wasWrittenToConnection;
 }
 
 @property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) NSData *underlyingData; // @synthesize underlyingData=_underlyingData;
 @property (readonly, nonatomic) unsigned long long underlyingDataLength;
 @property (nonatomic) BOOL useDynamicServiceName; // @synthesize useDynamicServiceName=_useDynamicServiceName;
+@property (nonatomic) BOOL wasWrittenToConnection; // @synthesize wasWrittenToConnection=_wasWrittenToConnection;
 
 + (unsigned int)dataLengthFromHeaderData:(id)arg1;
 + (unsigned int)headerDataSize;

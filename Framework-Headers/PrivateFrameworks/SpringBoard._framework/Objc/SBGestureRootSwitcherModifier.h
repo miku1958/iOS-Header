@@ -6,12 +6,12 @@
 
 #import <SpringBoard/SBSwitcherModifier.h>
 
-@class NSString, SBAppLayout;
+@class SBAppLayout;
 
 @interface SBGestureRootSwitcherModifier : SBSwitcherModifier
 {
-    BOOL _shouldVerifyModifierStackCoherencyCheckAfterHandlingEvent;
-    NSString *_activeTransitionKey;
+    SBSwitcherModifier *_transitionModifierBeforeHandlingEvent;
+    SBSwitcherModifier *_gestureModifierBeforeHandlingEvent;
     SBAppLayout *_selectedAppLayout;
     long long _currentEnvironmentMode;
 }
@@ -20,14 +20,15 @@
 @property (readonly, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
 
 - (void).cxx_destruct;
-- (id)_forwardEventAndUpdateInternalState:(id)arg1;
 - (id)_gestureModifier;
-- (void)_performModifierStackCoherencyCheckIfNeededAfterHandlingEvent:(id)arg1;
 - (id)_transitionModifier;
+- (BOOL)completesWhenChildrenComplete;
 - (id)gestureChildModifierForGestureEvent:(id)arg1 activeTransitionModifier:(id)arg2;
 - (long long)gestureType;
+- (id)handleEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleRemovalEvent:(id)arg1;
 - (id)initWithStartingEnvironmentMode:(long long)arg1;
 - (id)transitionChildModifierForMainTransitionEvent:(id)arg1 activeGestureModifier:(id)arg2;
 

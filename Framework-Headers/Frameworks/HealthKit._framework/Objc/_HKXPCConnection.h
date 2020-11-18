@@ -33,6 +33,7 @@
 - (void)invalidate;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)resume;
+- (void)resumeWithExportedInterface:(id)arg1 remoteInterface:(id)arg2;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)unitTest_interrupt;
 

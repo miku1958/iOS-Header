@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)asyncShouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)didChangeToEditMode:(BOOL)arg1;
+- (void)didChangeToShowTitle:(BOOL)arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
 - (void)didExecuteClearRecentsDataAction;

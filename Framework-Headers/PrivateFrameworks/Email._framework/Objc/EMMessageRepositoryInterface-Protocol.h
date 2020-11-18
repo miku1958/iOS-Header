@@ -6,13 +6,15 @@
 
 #import <Email/NSObject-Protocol.h>
 
-@class EFQuery, EMContentRequestOptions, EMMailboxScope, EMMessageChangeAction, EMMessageObjectID, EMObjectID, NSArray, NSProgress, NSString;
+@class EFQuery, EMContentRequestOptions, EMMailboxScope, EMMessageChangeAction, EMMessageObjectID, EMObjectID, NSArray, NSProgress, NSString, NSURL;
 @protocol EMContentItemRequestDelegate, EMMessageListItemQueryResultsObserver, EMMessageRepositoryCountQueryObserver_xpc, EMMessageRepositoryMailboxPredictionObserver_xpc;
 
 @protocol EMMessageRepositoryInterface <NSObject>
 - (void)getCachedMetadataJSONForKey:(NSString *)arg1 messageID:(EMMessageObjectID *)arg2 completionHandler:(void (^)(NSString *))arg3;
 - (void)loadOlderMessagesForMailboxes:(NSArray *)arg1;
 - (void)messageListItemsForObjectIDs:(NSArray *)arg1 requestID:(unsigned long long)arg2 observationIdentifier:(EMObjectID *)arg3 loadSummaryForAdditionalObjectIDs:(NSArray *)arg4 completionHandler:(void (^)(NSArray *, NSDictionary *))arg5;
+- (void)messageObjectIDForURL:(NSURL *)arg1 completionHandler:(void (^)(EMMessageObjectID *, NSError *))arg2;
+- (void)messageObjectIDsForSearchableItemIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)performCountQuery:(EFQuery *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)performMessageChangeAction:(EMMessageChangeAction *)arg1 requestID:(unsigned long long)arg2 returnUndoAction:(BOOL)arg3 completionHandler:(void (^)(EMUndoMessageAction *))arg4;
 - (void)performQuery:(EFQuery *)arg1 limit:(long long)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;

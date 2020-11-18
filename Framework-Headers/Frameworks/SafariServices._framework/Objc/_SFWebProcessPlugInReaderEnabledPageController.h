@@ -8,7 +8,7 @@
 
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
 
-@class NSDictionary, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInAppleConnectExtensionController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
+@class NSDictionary, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
 @protocol SFReaderEventsListener;
 
 @interface _SFWebProcessPlugInReaderEnabledPageController : _SFWebProcessPlugInAutoFillPageController <SFReaderWebProcessControllerProtocol>
@@ -22,7 +22,6 @@
     SFWebProcessPlugInPageExtensionController *_extensionController;
     _SFWebProcessSharingLinkExtractor *_sharingLinkExtractor;
     SFWebProcessPlugInCertificateWarningController *_certificateWarningController;
-    _SFWebProcessPlugInAppleConnectExtensionController *_appleConnectExtensionController;
     BOOL _viewingReadingListArchive;
     NSDictionary *_initalArticleScrollPositionAsDictionary;
     NSDictionary *_initialReaderConfiguration;
@@ -52,7 +51,7 @@
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
 - (void)didCreateReaderPageContextHandle:(id)arg1;
-- (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
+- (void)didDetermineReaderAvailability:(id)arg1;
 - (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;

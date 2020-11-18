@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
 @class CHSubstroke;
 
-@interface CHSubstrokePlacement : NSObject <NSCopying>
+@interface CHSubstrokePlacement : NSObject <NSCopying, NSSecureCoding>
 {
     CHSubstroke *_substroke;
     long long _originalWritingDirectionIndex;
@@ -26,9 +27,14 @@
 @property (readonly, strong, nonatomic) CHSubstroke *substroke; // @synthesize substroke=_substroke;
 @property (nonatomic) struct CGVector writingOrientation; // @synthesize writingOrientation=_writingOrientation;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSubstroke:(id)arg1;
+- (struct CGAffineTransform)orientationTransform;
+- (struct CGRect)orientedBounds;
 
 @end
 

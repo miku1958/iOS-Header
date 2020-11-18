@@ -12,13 +12,15 @@
 {
     int _vrfType;
     VRFPublicKey *_vrfKey;
-    TransparencyTrustedKeyStore *_appKeyStore;
+    TransparencyTrustedKeyStore *_appSmtKeyStore;
+    TransparencyTrustedKeyStore *_appSthKeyStore;
     TransparencyTrustedKeyStore *_tltKeyStore;
     unsigned long long _patLogBeginningMs;
     unsigned long long _tltLogBeginningMs;
     NSDate *_receiptTime;
     NSString *_application;
     NSData *_patConfigProof;
+    NSData *_tltConfigProof;
     NSDictionary *_trustedAppSigningKeys;
     NSArray *_trustedAppLeafs;
     NSDictionary *_trustedTltSigningKeys;
@@ -26,13 +28,15 @@
     NSArray *_trustedIntermediates;
 }
 
-@property (strong) TransparencyTrustedKeyStore *appKeyStore; // @synthesize appKeyStore=_appKeyStore;
+@property (strong) TransparencyTrustedKeyStore *appSmtKeyStore; // @synthesize appSmtKeyStore=_appSmtKeyStore;
+@property (strong) TransparencyTrustedKeyStore *appSthKeyStore; // @synthesize appSthKeyStore=_appSthKeyStore;
 @property (strong) NSString *application; // @synthesize application=_application;
 @property (readonly) BOOL inResetWindow;
 @property (strong) NSData *patConfigProof; // @synthesize patConfigProof=_patConfigProof;
 @property unsigned long long patLogBeginningMs; // @synthesize patLogBeginningMs=_patLogBeginningMs;
 @property (readonly) BOOL ready;
 @property (strong) NSDate *receiptTime; // @synthesize receiptTime=_receiptTime;
+@property (strong) NSData *tltConfigProof; // @synthesize tltConfigProof=_tltConfigProof;
 @property (strong) TransparencyTrustedKeyStore *tltKeyStore; // @synthesize tltKeyStore=_tltKeyStore;
 @property unsigned long long tltLogBeginningMs; // @synthesize tltLogBeginningMs=_tltLogBeginningMs;
 @property (strong) NSArray *trustedAppLeafs; // @synthesize trustedAppLeafs=_trustedAppLeafs;
@@ -46,16 +50,21 @@
 - (void).cxx_destruct;
 - (void)clearState:(id *)arg1;
 - (id)copyKeyStoreState;
-- (id)copyVRFKeyFromConfigProof:(id)arg1 dataStore:(id)arg2 saveTreeHeads:(BOOL)arg3 error:(id *)arg4;
+- (id)copyVRFKeyFromConfigProof:(id)arg1 error:(id *)arg2;
 - (id)createTLTApplicationPublicKeyStore;
+- (id)createTrustedSthKeyStoreFromProofSPKI:(id)arg1 signingKeysMap:(id)arg2 error:(id *)arg3;
 - (BOOL)detectEpochChangeAndResetData:(unsigned long long)arg1 patLogBeginningMs:(unsigned long long)arg2 dataStore:(id)arg3 error:(id *)arg4;
 - (id)initWithApplication:(id)arg1 dataStore:(id)arg2 diskState:(id)arg3 error:(id *)arg4;
 - (id)initWithApplication:(id)arg1 dataStore:(id)arg2 response:(id)arg3 error:(id *)arg4;
+- (void)notifyTreeResetDetected:(BOOL)arg1;
+- (BOOL)procesPatConfigProof:(id)arg1 dataStore:(id)arg2 saveTreeHeads:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)processDiskState:(id)arg1 dataStore:(id)arg2 error:(id *)arg3;
-- (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 patConfigProof:(id)arg4 dataStore:(id)arg5 saveTreeHeads:(BOOL)arg6 error:(id *)arg7;
+- (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 patConfigProof:(id)arg4 tltConfigProof:(id)arg5 dataStore:(id)arg6 saveTreeHeads:(BOOL)arg7 error:(id *)arg8;
 - (BOOL)processPublicKeysResponse:(id)arg1 dataStore:(id)arg2 error:(id *)arg3;
+- (BOOL)processTltConfigProof:(id)arg1 dataStore:(id)arg2 saveTreeHeads:(BOOL)arg3 error:(id *)arg4;
 - (void)startKeyStoreStateSampler;
 - (BOOL)verifyCertificates:(id)arg1 intermediates:(id)arg2 application:(id)arg3 error:(id *)arg4;
+- (BOOL)verifyConfigProof:(id)arg1 dataStore:(id)arg2 saveTreeHeads:(BOOL)arg3 error:(id *)arg4;
 
 @end
 

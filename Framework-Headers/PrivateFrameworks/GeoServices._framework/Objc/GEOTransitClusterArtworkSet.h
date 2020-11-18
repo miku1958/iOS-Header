@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_artworkIndexs:1;
         unsigned int read_artworkItems:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_artworkIndexs:1;
-        unsigned int wrote_artworkItems:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,11 +35,7 @@
 + (Class)artworkItemType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsArtworkIndex:(unsigned int)arg1;
-- (void)_addNoFlagsArtworkItem:(id)arg1;
 - (id)_maps_artworkIndicesAsString;
-- (void)_readArtworkIndexs;
-- (void)_readArtworkItems;
 - (void)addArtworkIndex:(unsigned int)arg1;
 - (void)addArtworkItem:(id)arg1;
 - (unsigned int)artworkIndexAtIndex:(unsigned long long)arg1;
@@ -58,7 +52,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -19,6 +19,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionCurrencyCodeKey;
+- (id)__INCodableDescriptionCurrencyCodesKey;
+- (id)__INIntentResponseCodableDescriptionCurrencyCodeKey;
+- (id)__INIntentResponseCodableDescriptionCurrencyCodesKey;
+- (id)__INTypeCodableDescriptionCurrencyCodeKey;
+- (id)__INTypeCodableDescriptionCurrencyCodesKey;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

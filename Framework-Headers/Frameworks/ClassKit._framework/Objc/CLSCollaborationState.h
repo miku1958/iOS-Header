@@ -8,7 +8,7 @@
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class NSString, NSURL;
+@class NSDictionary, NSString, NSURL;
 
 @interface CLSCollaborationState : CLSObject <CLSRelationable>
 {
@@ -21,6 +21,7 @@
     NSString *_note;
     NSString *_classID;
     NSURL *_assetURL;
+    NSDictionary *_info;
     NSString *_senderPersonID;
     NSString *_recipientPersonID;
     NSString *_serverETag;
@@ -36,6 +37,7 @@
 @property (nonatomic) long long domainVersion; // @synthesize domainVersion=_domainVersion;
 @property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *info; // @synthesize info=_info;
 @property (copy, nonatomic) NSString *note; // @synthesize note=_note;
 @property (copy, nonatomic) NSString *ownerPersonID; // @synthesize ownerPersonID=_ownerPersonID;
 @property (copy, nonatomic) NSString *parentEntityName; // @synthesize parentEntityName=_parentEntityName;
@@ -49,6 +51,7 @@
 
 + (id)identifierForTargetObjectID:(id)arg1 ownerPersonID:(id)arg2 domain:(long long)arg3;
 + (id)relations;
++ (id)supportedInfoDictionaryClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;

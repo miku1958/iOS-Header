@@ -13,8 +13,10 @@
     BOOL _primaryICloudACAccountIsValid;
     ACAccount *_primaryICloudACAccount;
     ACAccountStore *_accountStore;
+    ACAccount *__debug_primaryICloudACAccount;
 }
 
+@property (strong, nonatomic) ACAccount *_debug_primaryICloudACAccount; // @synthesize _debug_primaryICloudACAccount=__debug_primaryICloudACAccount;
 @property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly) ACAccount *primaryICloudACAccount; // @synthesize primaryICloudACAccount=_primaryICloudACAccount;
 @property (nonatomic) BOOL primaryICloudACAccountIsValid; // @synthesize primaryICloudACAccountIsValid=_primaryICloudACAccountIsValid;
@@ -24,6 +26,8 @@
 + (id)getAppleIDSession;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_setPrimaryICloudACAccount:(id)arg1;
+- (void)_unsetMigrationFlagsWithACAccount:(id)arg1 inStore:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)accessQueue;
 - (void)accountStoreDidChange:(id)arg1;
 - (id)allICloudAccountsWithCloudKitEnabled;

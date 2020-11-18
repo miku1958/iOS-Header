@@ -28,6 +28,7 @@
 - (void)garbageCollectAllUnretainedResources;
 - (void)garbageCollectResources:(id)arg1;
 - (id)initWithOwningThread:(id)arg1 token:(id)arg2;
+- (id)initWithOwningThread:(id)arg1 token:(id)arg2 context:(id)arg3;
 - (void)lock;
 - (void)p_clearContextInCurrentThread;
 - (void)p_flushCache;
@@ -36,6 +37,7 @@
 - (void)p_owningThreadWillChange;
 - (id)targetThreadForFlushing;
 - (void)unlock;
+- (void)updateSharegroupMapToken:(id)arg1;
 
 @end
 

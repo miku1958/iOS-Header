@@ -10,6 +10,7 @@
 
 @class HDProfile, NSString, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDStaticSyncStore : NSObject <HDSyncStore>
 {
     long long _syncProvenance;

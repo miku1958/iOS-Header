@@ -27,6 +27,10 @@
     NSString *_clientProcessBundleId;
     NSString *_container;
     NSString *_environment;
+    NSString *_containerScopedUserIdentifier;
+    NSString *_containerScopedDeviceIdentifier;
+    NSString *_applicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
     NSArray *_operationGroups;
     NSArray *_clientOperations;
     CDUnknownBlockType _didCompleteWithError;
@@ -34,11 +38,15 @@
 }
 
 @property (nonatomic) BOOL anonymous; // @synthesize anonymous=_anonymous;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
 @property (copy, nonatomic) NSURL *c2MetricsEndpoint; // @synthesize c2MetricsEndpoint=_c2MetricsEndpoint;
 @property (copy, nonatomic) NSArray *clientOperations; // @synthesize clientOperations=_clientOperations;
 @property (copy, nonatomic) NSString *clientProcessBundleId; // @synthesize clientProcessBundleId=_clientProcessBundleId;
 @property (copy, nonatomic) NSString *clientProcessVersion; // @synthesize clientProcessVersion=_clientProcessVersion;
 @property (copy, nonatomic) NSString *container; // @synthesize container=_container;
+@property (copy, nonatomic) NSString *containerScopedDeviceIdentifier; // @synthesize containerScopedDeviceIdentifier=_containerScopedDeviceIdentifier;
+@property (copy, nonatomic) NSString *containerScopedUserIdentifier; // @synthesize containerScopedUserIdentifier=_containerScopedUserIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType didCompleteWithError; // @synthesize didCompleteWithError=_didCompleteWithError;
 @property (copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) NSString *headerValueForTriggers;

@@ -39,7 +39,6 @@
 - (id)suggestionCategory;
 - (id)suggestionCategoryId;
 - (id)suggestionCategoryImage;
-- (CDUnknownBlockType)suggestionCategoryItemComparator;
 - (id)suggestionCategoryLocalizedCountOfItems:(id)arg1;
 - (id)suggestionCategorySubtitleForItems:(id)arg1;
 - (id)suggestionCategoryTitle;

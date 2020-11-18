@@ -35,6 +35,7 @@
 - (id)initWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3;
 - (id)initWithUIColor:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)valueDescription;
 
 @end
 

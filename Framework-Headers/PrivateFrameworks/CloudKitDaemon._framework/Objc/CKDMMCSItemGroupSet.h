@@ -8,7 +8,6 @@
 
 @class NSError, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemGroupSet : NSObject
 {
     NSMutableDictionary *_itemsByGroupTuple;

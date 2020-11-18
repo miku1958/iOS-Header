@@ -8,11 +8,12 @@
 
 #import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFMediaProfileContainer-Protocol.h>
+#import <Home/HFServiceNameComponentsProviding-Protocol.h>
 
 @class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HFServiceNameComponents, HMAccessory, HMAccessorySettings, HMHome, HMMediaSession, HMRoom, HMSymptomsHandler, NSDate, NSSet, NSString, NSUUID;
 @protocol HFHomeKitObject, HFMediaValueSource, HMMediaObjectDelegate;
 
-@interface HMMediaSystem (HFAdditions) <HFHomeKitObject, HFMediaProfileContainer>
+@interface HMMediaSystem (HFAdditions) <HFHomeKitObject, HFMediaProfileContainer, HFServiceNameComponentsProviding>
 
 @property (readonly, nonatomic) NSSet *accessories;
 @property (readonly, copy) NSString *debugDescription;
@@ -48,17 +49,18 @@
 @property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
 @property (readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
 @property (readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
-@property (readonly, nonatomic) BOOL hf_supportsMediaSystem;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
+@property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;
 @property (readonly, nonatomic) NSSet *mediaProfiles;
-@property (readonly, copy) HMMediaSession *mediaSession;
+@property (readonly, copy, nonatomic) HMMediaSession *mediaSession;
 @property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property (readonly) HMAccessorySettings *settings;
 @property (readonly) Class superclass;
@@ -68,6 +70,7 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+- (id)hf_accessories;
 - (id)hf_accessoryForRole:(id)arg1;
 - (id)hf_appleMusicCurrentLoggedInAccount;
 - (id)hf_appleMusicCurrentLoggedInAccountDSID;
@@ -78,8 +81,11 @@
 - (id)hf_homePodSupportsMultiUserLanguage;
 - (id)hf_idsDeviceIdentifierWithError:(id *)arg1;
 - (BOOL)hf_isValidObject;
+- (id)hf_profiles;
 - (id)hf_roleForAccessory:(id)arg1;
+- (id)hf_services;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_topLevelAccessoryLikeHomeObject;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 @end

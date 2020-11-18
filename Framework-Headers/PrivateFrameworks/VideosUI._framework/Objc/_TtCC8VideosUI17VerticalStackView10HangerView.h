@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtCC8VideosUI17VerticalStackView10HangerView : UIControl
 {
-    MISSING_TYPE *$__lazy_storage_$_viewLayout;
     MISSING_TYPE *imageIcon;
     MISSING_TYPE *hasBlurEffect;
     MISSING_TYPE *imageType;
     MISSING_TYPE *$__lazy_storage_$_visualEffect;
+    MISSING_TYPE *imageWidth;
+    MISSING_TYPE *imageHeight;
+    MISSING_TYPE *viewlayout;
 }
 
 - (void).cxx_destruct;

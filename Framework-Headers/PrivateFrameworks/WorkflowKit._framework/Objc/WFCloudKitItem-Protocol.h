@@ -6,11 +6,12 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class CKRecordID, NSDate, NSDictionary, NSString;
+@class CKRecordID, NSData, NSDate, NSDictionary, NSString;
 
 @protocol WFCloudKitItem <NSObject>
 
 @property (readonly, nonatomic) CKRecordID *identifier;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 
 + (NSDictionary *)properties;
 + (NSString *)recordType;

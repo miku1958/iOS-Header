@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_PARSearchResponse_QuerySuggestion-Protocol.h>
 
-@class NSArray, NSData, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _PARSearchResponse_QuerySuggestion : PBCodable <_PARSearchResponse_QuerySuggestion, NSSecureCoding>
@@ -20,10 +20,13 @@ __attribute__((visibility("hidden")))
     NSString *_query;
     NSData *_feedback;
     NSArray *_entities;
+    NSString *_detailText;
+    NSDictionary *_serverFeatures;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (copy, nonatomic) NSArray *entities; // @synthesize entities=_entities;
 @property (copy, nonatomic) NSData *feedback; // @synthesize feedback=_feedback;
 @property (readonly) unsigned long long hash;
@@ -31,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL previouslyEngaged; // @synthesize previouslyEngaged=_previouslyEngaged;
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property (nonatomic) float score; // @synthesize score=_score;
+@property (copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 
@@ -40,10 +44,12 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
+- (BOOL)getServerFeatures:(double *)arg1 forKey:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

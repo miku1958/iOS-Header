@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/PKExtensionBaseContext.h>
+#import <PassKitCore/PKExtensionBaseContext.h>
 
-#import <PassKit/PKExtensionHostContextProtocol-Protocol.h>
+#import <PassKitCore/PKExtensionHostContextProtocol-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_dispatch_group, PKPaymentAuthorizationHostProtocol;
@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
+- (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;

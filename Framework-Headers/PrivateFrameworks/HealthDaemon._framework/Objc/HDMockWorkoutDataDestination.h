@@ -21,6 +21,7 @@
     CDUnknownBlockType _sampleHandler;
     CDUnknownBlockType _eventHandler;
     CDUnknownBlockType _metadataHandler;
+    CDUnknownBlockType _updateconfigurationHandler;
     NSMutableArray *_dataSources;
     HDProfile *_profile;
     HKWorkoutConfiguration *_workoutConfiguration;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (copy) CDUnknownBlockType sampleHandler; // @synthesize sampleHandler=_sampleHandler;
 @property (readonly) Class superclass;
+@property (copy) CDUnknownBlockType updateconfigurationHandler; // @synthesize updateconfigurationHandler=_updateconfigurationHandler;
 @property (strong, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 @property (readonly, nonatomic) id<HDWorkoutDataAccumulator> workoutDataAccumulator; // @synthesize workoutDataAccumulator;
 @property unsigned long long workoutDataDestinationState; // @synthesize workoutDataDestinationState=_workoutDataDestinationState;
@@ -46,6 +48,7 @@
 - (void)addSamples:(id)arg1 dataSource:(id)arg2;
 - (void)addWorkoutEvents:(id)arg1 dataSource:(id)arg2;
 - (id)initWithQueue:(id)arg1 profile:(id)arg2 workoutConfiguration:(id)arg3;
+- (void)updateWorkoutConfiguration:(id)arg1 dataSource:(id)arg2;
 
 @end
 

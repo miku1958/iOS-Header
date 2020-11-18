@@ -6,29 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, WiFiAwareDiscoveryResult;
+@class NSDictionary, NSString, WiFiAwareDiscoveryResult, WiFiMACAddress;
 
-__attribute__((visibility("hidden")))
 @interface CUNANEndpoint : NSObject
 {
+    unsigned char _instanceID;
     int _port;
+    int _rssi;
     NSString *_identifier;
     NSString *_name;
     NSString *_serviceType;
     NSDictionary *_textInfo;
     WiFiAwareDiscoveryResult *_discoveryResult;
+    WiFiMACAddress *_macAddress;
 }
 
 @property (strong, nonatomic) WiFiAwareDiscoveryResult *discoveryResult; // @synthesize discoveryResult=_discoveryResult;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned char instanceID; // @synthesize instanceID=_instanceID;
+@property (strong, nonatomic) WiFiMACAddress *macAddress; // @synthesize macAddress=_macAddress;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int port; // @synthesize port=_port;
+@property (nonatomic) int rssi; // @synthesize rssi=_rssi;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly, copy, nonatomic) NSDictionary *textInfo; // @synthesize textInfo=_textInfo;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
+- (id)initWithEndpointID:(const char *)arg1 error:(id *)arg2;
 - (unsigned int)updateWithDiscoveryResult:(id)arg1;
 
 @end

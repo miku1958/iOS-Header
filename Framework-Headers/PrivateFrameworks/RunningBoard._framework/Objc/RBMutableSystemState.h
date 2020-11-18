@@ -11,6 +11,7 @@
 }
 
 - (void)addPreventIdleSleepIdentifier:(id)arg1;
+- (void)addPreventLaunchPredicate:(id)arg1;
 - (void)addTag:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
@@ -18,7 +19,6 @@
 - (void)removePreventIdleSleepIdentifier:(id)arg1;
 - (void)setPreventIdleSleep:(BOOL)arg1;
 - (void)setPreventLaunch:(BOOL)arg1;
-- (void)setThrottleBestEffortNetworking:(BOOL)arg1;
 - (void)unionState:(id)arg1;
 
 @end

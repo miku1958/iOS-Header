@@ -8,26 +8,28 @@
 
 #import <ContactsAutocompleteUI/NUIContainerViewDelegate-Protocol.h>
 
-@class CNAvatarViewController, NSArray, NSString, UIButton;
+@class CNAvatarViewController, CNComposeRecipientActionButton, NSArray, NSString, NSUUID;
 @protocol CNComposeRecipientTableViewCellDelegate;
 
 @interface CNComposeRecipientTableViewCell : CNComposeTableViewCell <NUIContainerViewDelegate>
 {
     BOOL _shouldHighlightCompleteMatches;
     id<CNComposeRecipientTableViewCellDelegate> _delegate;
-    UIButton *_actionButton;
+    NSUUID *_displaySessionUUID;
+    CNComposeRecipientActionButton *_actionButton;
     CNAvatarViewController *_avatarViewController;
     NSArray *_activeConstraints;
     unsigned long long _actionType;
 }
 
-@property (strong, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
+@property (strong, nonatomic) CNComposeRecipientActionButton *actionButton; // @synthesize actionButton=_actionButton;
 @property (nonatomic) unsigned long long actionType; // @synthesize actionType=_actionType;
 @property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
 @property (readonly, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<CNComposeRecipientTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL shouldHighlightCompleteMatches; // @synthesize shouldHighlightCompleteMatches=_shouldHighlightCompleteMatches;
 @property (readonly) Class superclass;
@@ -42,13 +44,20 @@
 - (void).cxx_destruct;
 - (void)actionButtonTapped;
 - (void)applyActionButtonTouchInsets;
+- (id)assembleContactAvatarsForRecipient:(id)arg1;
+- (void)assignContactAvatarsToController:(id)arg1;
+- (BOOL)canCollapseRecipient;
+- (BOOL)canExpandRecipient;
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)labelsChangedWidth:(double)arg1;
 - (void)prepareForReuse;
 - (void)setActionType:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setRecipient:(id)arg1;
+- (void)setupAvatarViewControllerWithSettings:(id)arg1;
+- (BOOL)supportsAvatarView;
 - (double)trailingButtonWidth;
+- (void)updateButtonColor;
 - (void)updateLabelsContrainedToWidth:(double)arg1;
 
 @end

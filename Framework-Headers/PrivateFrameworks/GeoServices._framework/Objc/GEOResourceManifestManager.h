@@ -43,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasActiveTileGroup;
+@property (readonly, nonatomic) BOOL hasLoadedActiveTileGroup;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<GEOResourceManifestServerProxy> serverProxy; // @synthesize serverProxy=_serverProxy;
 @property (readonly) Class superclass;
@@ -52,6 +53,7 @@
 + (id)modernManager;
 + (id)modernManagerForConfiguration:(id)arg1;
 + (id)modernManagerForTileGroupIdentifier:(unsigned int)arg1;
++ (id)modernManagerNoCreate;
 + (void)setHiDPI:(BOOL)arg1;
 + (void)setServerProxyClass:(Class)arg1;
 + (id)sharedManager;
@@ -94,7 +96,7 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
-- (BOOL)isDisputedBordersWhitelistedForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
+- (BOOL)isDisputedBordersAllowlistedForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
 - (BOOL)isMuninEnabled;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1 overrideLocale:(id)arg2;

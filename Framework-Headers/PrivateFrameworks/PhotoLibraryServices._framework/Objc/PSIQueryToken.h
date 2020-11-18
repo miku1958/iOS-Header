@@ -14,6 +14,7 @@
 {
     BOOL _userControlledCategoriesUseWildcard;
     BOOL _usesWordEmbeddings;
+    BOOL _isFilterTypeToken;
     BOOL _isFullTextToken;
     BOOL _belongsToSearchText;
     NSString *_text;
@@ -40,6 +41,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *debugDictionary;
 @property (readonly, copy, nonatomic) NSString *groupMatchingText;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL isFilterTypeToken; // @synthesize isFilterTypeToken=_isFilterTypeToken;
 @property (nonatomic) BOOL isFullTextToken; // @synthesize isFullTextToken=_isFullTextToken;
 @property (readonly, nonatomic) BOOL isTextSearchable;
 @property (readonly, nonatomic) unsigned long long matchType; // @synthesize matchType=_matchType;

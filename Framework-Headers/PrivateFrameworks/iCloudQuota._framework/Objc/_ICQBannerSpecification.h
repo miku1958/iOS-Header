@@ -11,20 +11,30 @@
 @interface _ICQBannerSpecification : NSObject
 {
     NSDictionary *_serverDict;
-    NSString *_messageFormat;
-    NSArray *_messageLinks;
+    BOOL _isDetailBannerInfoAvailable;
+    BOOL _placeholderExists;
+    NSDictionary *_messageTemplates;
+    NSDictionary *_titleTemplates;
+    NSString *_linksFormat;
+    NSArray *_links;
     NSURL *_remoteUIURL;
 }
 
-@property (strong, nonatomic) NSString *messageFormat; // @synthesize messageFormat=_messageFormat;
-@property (strong, nonatomic) NSArray *messageLinks; // @synthesize messageLinks=_messageLinks;
+@property (readonly, nonatomic) BOOL isDetailBannerInfoAvailable; // @synthesize isDetailBannerInfoAvailable=_isDetailBannerInfoAvailable;
+@property (strong, nonatomic) NSArray *links; // @synthesize links=_links;
+@property (strong, nonatomic) NSString *linksFormat; // @synthesize linksFormat=_linksFormat;
+@property (readonly, nonatomic) NSDictionary *messageTemplates; // @synthesize messageTemplates=_messageTemplates;
+@property (readonly, nonatomic) BOOL placeholderExists; // @synthesize placeholderExists=_placeholderExists;
 @property (strong, nonatomic) NSURL *remoteUIURL; // @synthesize remoteUIURL=_remoteUIURL;
-@property (strong, nonatomic) NSDictionary *serverDict;
+@property (readonly, nonatomic) NSDictionary *titleTemplates; // @synthesize titleTemplates=_titleTemplates;
 
 + (id)bannerSpecificationSampleForLevel:(long long)arg1;
 - (void).cxx_destruct;
+- (id)initWithDetailBannerInfo:(id)arg1;
 - (id)initWithServerDictionary:(id)arg1;
+- (id)messageWithKey:(id)arg1;
 - (void)setMessageWithServerMessage:(id)arg1;
+- (id)titleWithKey:(id)arg1;
 
 @end
 

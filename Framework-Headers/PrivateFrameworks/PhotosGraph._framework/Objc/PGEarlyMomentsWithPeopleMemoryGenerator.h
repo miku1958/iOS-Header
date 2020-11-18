@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 @property (nonatomic) BOOL shouldGenerateAllMemories; // @synthesize shouldGenerateAllMemories=_shouldGenerateAllMemories;
 
-+ (id)earlyMomentsByPeopleNodes:(id)arg1;
++ (id)earlyMomentNodesByPersonNodeWithPersonNodes:(id)arg1;
 + (unsigned long long)numberOfPotentialMemoriesForGraph:(id)arg1;
 - (void).cxx_destruct;
 - (void)_enumerateEarlyMomentsWithPeopleForLocalDate:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;

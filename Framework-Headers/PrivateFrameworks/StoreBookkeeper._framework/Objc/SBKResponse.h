@@ -8,7 +8,6 @@
 
 @class NSDictionary, NSError, NSString, SBKResponseStatus;
 
-__attribute__((visibility("hidden")))
 @interface SBKResponse : NSObject
 {
     NSDictionary *_responseDictionary;

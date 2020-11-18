@@ -10,7 +10,7 @@
 #import <SpringBoard/SBAppSwitcherSnapshotImageCacheObserver-Protocol.h>
 #import <SpringBoard/SBReusableView-Protocol.h>
 
-@class CAShapeLayer, NSMutableArray, NSMutableDictionary, NSString, SBAppLayout, SBAppSwitcherSettings, SBAppSwitcherSnapshotImageCache, SBAppSwitcherSnapshotLockoutViewControllerProvider, SBMedusaSettings, SBOrientationTransformWrapperView, SBSwitcherSnapshotImageView, UIView, UIViewController;
+@class CAShapeLayer, NSMutableArray, NSMutableDictionary, NSString, SBAppClipOverlayCoordinator, SBAppLayout, SBAppSwitcherSettings, SBAppSwitcherSnapshotImageCache, SBAppSwitcherSnapshotLockoutViewControllerProvider, SBMedusaSettings, SBOrientationTransformWrapperView, SBSwitcherSnapshotImageView, UIView, UIViewController;
 @protocol SBAppSwitcherReusableSnapshotViewDelegate;
 
 @interface SBAppSwitcherReusableSnapshotView : SBSwitcherWallpaperPageContentView <SBAppSwitcherSnapshotImageCacheObserver, SBReusableView, SBAppSwitcherPageContentView>
@@ -22,11 +22,13 @@
     UIViewController *_containerViewController;
     id<SBAppSwitcherReusableSnapshotViewDelegate> _delegate;
     NSMutableDictionary *_snapshotViewStateByRole;
-    NSMutableDictionary *_lockoutViewControllerByRole;
+    NSMutableDictionary *_blockingViewControllerByRole;
     CAShapeLayer *_medusaDividerLayer;
     UIView *_solidColorBackstopView;
     SBAppSwitcherSnapshotImageCache *_snapshotCache;
     SBAppSwitcherSnapshotLockoutViewControllerProvider *_lockoutVCProvider;
+    SBAppClipOverlayCoordinator *_appClipOverlayCoordinator;
+    NSMutableDictionary *_appClipOverlayByRole;
     SBAppSwitcherSettings *_settings;
     SBMedusaSettings *_medusaSettings;
     BOOL _shouldUseBrightMaterial;
@@ -50,7 +52,9 @@
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
 - (void).cxx_destruct;
+- (void)_addAppClipOverlayForRole:(long long)arg1 bundleIdentifier:(id)arg2 sceneIdentifier:(id)arg3;
 - (void)_addAppLockoutOverlayIfNecessaryForRole:(long long)arg1;
+- (void)_addOverlayViewController:(id)arg1 toOrientationWrapperForRole:(long long)arg2;
 - (id)_applicationForRole:(long long)arg1;
 - (id)_cacheEntryForRole:(long long)arg1;
 - (void)_configureSnapshotImageView:(id)arg1 cacheEntry:(id)arg2;
@@ -62,6 +66,7 @@
 - (BOOL)_isAnimatingTransitionForRole:(long long)arg1;
 - (id)_orientationWrapperForRole:(long long)arg1;
 - (void)_performDeferredSnapshotUpdatesIfNecessaryForRole:(long long)arg1;
+- (void)_removeAppClipOverlayForRole:(long long)arg1;
 - (void)_removeAppLockoutOverlayForRole:(long long)arg1;
 - (void)_requestFreshImages;
 - (id)_sceneHandleForRole:(long long)arg1;
@@ -70,13 +75,15 @@
 - (void)_setSceneHandle:(id)arg1 forRole:(long long)arg2;
 - (struct CGRect)_snapshotImageFrameForCacheEntry:(id)arg1;
 - (void)_updateContentOrientationForRole:(long long)arg1;
-- (void)_updateCornerRadiusIfNecessaryForLockoutView:(id)arg1 matchingSnapshotImage:(id)arg2;
+- (void)_updateCornerRadiusIfNecessaryForOverlayView:(id)arg1 matchingSnapshotImage:(id)arg2;
 - (void)_updateCornerRadiusIfNecessaryForSnapshotImageView:(id)arg1 cacheEntry:(id)arg2;
 - (void)_updateDivider;
+- (void)_updateSceneHandleForRole:(long long)arg1;
 - (void)_updateToNewSnapshotImageUsingCacheEntry:(id)arg1;
 - (void)_updateTranslucency;
 - (void)didUpdateCacheEntry:(id)arg1;
-- (id)initWithDelegate:(id)arg1 snapshotCache:(id)arg2 lockoutVCProvider:(id)arg3 containerViewController:(id)arg4;
+- (BOOL)hasSceneOverlayView;
+- (id)initWithDelegate:(id)arg1 snapshotCache:(id)arg2 lockoutVCProvider:(id)arg3 appClipOverlayCoordinator:(id)arg4 containerViewController:(id)arg5;
 - (void)invalidate;
 - (void)layoutSubviews;
 - (void)prepareForReuse;

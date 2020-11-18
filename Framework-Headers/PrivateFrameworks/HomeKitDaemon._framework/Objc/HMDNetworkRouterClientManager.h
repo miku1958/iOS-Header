@@ -7,15 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDNetworkRouterFirewallRuleManagerClient-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDHAPAccessory, HMDHome, HMDNetworkRouterController, HMFUnfairLock, NSNotificationCenter, NSString;
+@class HMDHAPAccessory, HMDHome, HMDNetworkRouterController, HMFUnfairLock, NSMutableSet, NSNotificationCenter, NSString;
 @protocol HMDNetworkRouterFirewallRuleManager, OS_dispatch_queue;
 
-@interface HMDNetworkRouterClientManager : NSObject <HMFLogging, HMDDevicePreferenceDataSource>
+@interface HMDNetworkRouterClientManager : NSObject <HMFLogging, HMDDevicePreferenceDataSource, HMDNetworkRouterFirewallRuleManagerClient>
 {
     BOOL _started;
-    BOOL _initialConfigureNeeded;
     BOOL _managedNetworkEnabled;
     BOOL _staleClientIdentifiersResetNeeded;
     BOOL _staleClientIdentifiersResetInProgress;
@@ -25,14 +25,15 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     NSNotificationCenter *_notificationCenter;
     id<HMDNetworkRouterFirewallRuleManager> _firewallRuleManager;
+    NSMutableSet *_accessoriesInReconfiguration;
 }
 
+@property (readonly) NSMutableSet *accessoriesInReconfiguration; // @synthesize accessoriesInReconfiguration=_accessoriesInReconfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<HMDNetworkRouterFirewallRuleManager> firewallRuleManager; // @synthesize firewallRuleManager=_firewallRuleManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak) HMDHome *home;
-@property (nonatomic) BOOL initialConfigureNeeded; // @synthesize initialConfigureNeeded=_initialConfigureNeeded;
 @property (readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property (nonatomic) BOOL managedNetworkEnabled; // @synthesize managedNetworkEnabled=_managedNetworkEnabled;
 @property (weak) HMDHAPAccessory *networkRouterAccessory; // @synthesize networkRouterAccessory=_networkRouterAccessory;
@@ -49,38 +50,32 @@
 - (void).cxx_destruct;
 - (void)__deregisterForNetworkRouterAccessoryReachable:(id)arg1;
 - (void)__registerForNetworkRouterAccessoryReachable:(id)arg1;
-- (void)_configure;
-- (void)_createClientConfigurationForAccessory:(id)arg1 clientStatus:(id)arg2;
-- (void)_createClientConfigurationForAccessory:(id)arg1 credential:(id)arg2;
-- (void)_createClientConfigurationWithSavedPSKForAccessory:(id)arg1;
+- (void)_createClientConfigurationForAccessory:(id)arg1 credential:(id)arg2 clientStatus:(id)arg3 clientReconfigurationAllowed:(BOOL)arg4;
 - (void)_deregisterForChangesToManagedAccessory:(id)arg1;
 - (void)_evaluateManagement;
 - (void)_fetchFirewallRulesForAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getNetworkConfigurationForAccessory:(id)arg1 targetProtectionMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_handleAccessoryConfigured:(id)arg1;
 - (void)_handleRouterAccessoryReachable:(id)arg1;
-- (void)_handleUnreachableAccessory:(id)arg1;
-- (void)_reconcileClientConfigurationForAccessory:(id)arg1 clientStatusList:(id)arg2 networkRouterUUID:(id)arg3;
+- (void)_migrateAccessory:(id)arg1 withConfiguration:(id)arg2 clientStatus:(id)arg3 fromCredentialType:(long long)arg4 toCredentialType:(long long)arg5 rotate:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_reconcileClientConfigurationForAccessory:(id)arg1 clientStatus:(id)arg2 networkRouterUUID:(id)arg3 clientReconfigurationAllowed:(BOOL)arg4;
+- (void)_reconcileClientConfigurationForReachableAccessory:(id)arg1 clientReconfigurationAllowed:(BOOL)arg2;
 - (void)_registerForChangesToManagedAccessory:(id)arg1;
 - (void)_registerForNetworkProtectionChangesToGroup:(id)arg1;
-- (void)_registerInterestForFirewallRulesForAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_replaceClientConfigurationForAccessory:(id)arg1 clientStatus:(id)arg2;
-- (void)_replaceNetworkClientIdentifierForAccessory:(id)arg1 networkClientIdentifier:(id)arg2 networkRouterUUID:(id)arg3;
+- (void)_replaceClientConfigurationForAccessory:(id)arg1 credential:(id)arg2 clientStatus:(id)arg3 clientReconfigurationAllowed:(BOOL)arg4;
+- (void)_replaceNetworkClientIdentifierForAccessory:(id)arg1 networkClientIdentifier:(id)arg2 networkRouterUUID:(id)arg3 clientStatus:(id)arg4 clientReconfigurationAllowed:(BOOL)arg5;
 - (void)_resetStaleClientIdentifiersBeforeStart;
 - (void)_start;
-- (void)_startManagingAccessory:(id)arg1;
+- (void)_startManagingAccessory:(id)arg1 initialHomeSetup:(BOOL)arg2;
 - (void)_stop;
 - (id)_transactionBlockForAccessoriesWithStaleClientIdentifier;
 - (void)_unregisterForNetworkProtectionChangesToGroup:(id)arg1;
-- (void)_unregisterInterestForFirewallRulesForAccessory:(id)arg1;
-- (void)_unregisterInterestForFirewallRulesForProductData:(id)arg1 firmwareVersion:(id)arg2;
-- (void)_updateClientConfigurationForAccessory:(id)arg1;
-- (void)_updateClientConfigurationForAccessory:(id)arg1 protectionMode:(long long)arg2 clientIdentifier:(id)arg3;
-- (void)_updateClientConfigurationForAllAccessories;
-- (void)_updateExistingClientConfigurationForAccessory:(id)arg1;
+- (void)_updateClientConfiguration:(id)arg1 forAccessory:(id)arg2 protectionMode:(long long)arg3 clientStatus:(id)arg4 skipIfFingerprintMatches:(BOOL)arg5 clientReconfigurationAllowed:(BOOL)arg6;
+- (void)_updateClientConfigurationForAccessory:(id)arg1 clientReconfigurationAllowed:(BOOL)arg2;
+- (void)_updateClientConfigurationForAllAccessoriesWithClientReconfigurationAllowed:(BOOL)arg1;
+- (void)_updateExistingClientConfiguration:(id)arg1 forAccessory:(id)arg2 clientStatus:(id)arg3 clientReconfigurationAllowed:(BOOL)arg4;
 - (void)evaluateManagement;
 - (void)handleAccessoryAdded:(id)arg1;
-- (void)handleAccessoryConfigured:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
 - (void)handleAccessoryFirmwareVersionUpdated:(id)arg1;
 - (void)handleAccessoryRemoved:(id)arg1;
 - (void)handleFirewallRulesUpdated:(id)arg1;
@@ -90,8 +85,11 @@
 - (void)handleNetworkProtectionGroupProtectionChanged:(id)arg1;
 - (void)handleRouterAccessoryReachable:(id)arg1;
 - (id)initWithNetworkRouterAccessory:(id)arg1 workQueue:(id)arg2 firewallRuleManager:(id)arg3 notificationCenter:(id)arg4;
+- (void)migrateAccessory:(id)arg1 toCredentialType:(long long)arg2 rotate:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)replaceActiveNetworkRouterAccessory:(id)arg1;
+- (void)stop;
 - (BOOL)supportsDeviceWithCapabilities:(id)arg1;
+- (id)watchedAccessoryIdentifiersForFirewallRuleManager:(id)arg1;
 
 @end
 

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MAGraph, NSMutableSet;
+@class MABaseGraph, NSMutableSet;
 
 @interface MAMemoryFootprint : NSObject
 {
-    MAGraph *_graph;
+    MABaseGraph *_graph;
     NSMutableSet *_allKeys;
     NSMutableSet *_allValues;
     unsigned long long _allNodesSize;

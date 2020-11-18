@@ -6,16 +6,13 @@
 
 #import <Email/NSObject-Protocol.h>
 
-@class EMMailbox, NSString;
+@class EMMailbox;
 
 @protocol EMMailboxBuilder <NSObject>
 
-@property (nonatomic) BOOL canArchive;
 @property (nonatomic) BOOL canContainMessages;
 @property (nonatomic) BOOL descriptionUsesRealName;
-@property (copy, nonatomic) NSString *name;
 @property (weak, nonatomic) EMMailbox *parent;
-@property (nonatomic) long long type;
 
 @end
 

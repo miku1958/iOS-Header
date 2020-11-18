@@ -11,12 +11,17 @@
     BOOL _allowVoiceTriggerAssetDownloading;
     BOOL _allowEndpointAssetDownloading;
     BOOL _allowLanguageDetectorAssetDownloading;
+    BOOL _allowAdBlockerAssetDownloading;
+    BOOL _allowSpeakerRecognitionAssetDownloading;
 }
 
+@property (nonatomic) BOOL allowAdBlockerAssetDownloading; // @synthesize allowAdBlockerAssetDownloading=_allowAdBlockerAssetDownloading;
 @property (nonatomic) BOOL allowEndpointAssetDownloading; // @synthesize allowEndpointAssetDownloading=_allowEndpointAssetDownloading;
 @property (nonatomic) BOOL allowLanguageDetectorAssetDownloading; // @synthesize allowLanguageDetectorAssetDownloading=_allowLanguageDetectorAssetDownloading;
+@property (nonatomic) BOOL allowSpeakerRecognitionAssetDownloading; // @synthesize allowSpeakerRecognitionAssetDownloading=_allowSpeakerRecognitionAssetDownloading;
 @property (nonatomic) BOOL allowVoiceTriggerAssetDownloading; // @synthesize allowVoiceTriggerAssetDownloading=_allowVoiceTriggerAssetDownloading;
 
+- (id)description;
 - (id)init;
 
 @end

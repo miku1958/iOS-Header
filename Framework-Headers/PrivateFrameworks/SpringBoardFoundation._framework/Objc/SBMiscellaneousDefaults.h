@@ -14,6 +14,7 @@
 @property (nonatomic) long long dataPlanActivationPromptCount; // @dynamic dataPlanActivationPromptCount;
 @property (readonly, nonatomic) BOOL disableAsyncRenderingSurfaceRetention; // @dynamic disableAsyncRenderingSurfaceRetention;
 @property (readonly, nonatomic) BOOL disableAutomaticMallocStackLogging; // @dynamic disableAutomaticMallocStackLogging;
+@property (readonly, nonatomic) BOOL enableDynamicJetsamLimits; // @dynamic enableDynamicJetsamLimits;
 @property (nonatomic) BOOL launchWithMallocStackLogging; // @dynamic launchWithMallocStackLogging;
 @property (nonatomic) BOOL suppressAlertsForKeynote; // @dynamic suppressAlertsForKeynote;
 @property (readonly, nonatomic) BOOL suppressNoSimAlert; // @dynamic suppressNoSimAlert;

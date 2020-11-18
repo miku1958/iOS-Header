@@ -93,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)providedStylesDidChangeForProvider:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBackgroundMask;

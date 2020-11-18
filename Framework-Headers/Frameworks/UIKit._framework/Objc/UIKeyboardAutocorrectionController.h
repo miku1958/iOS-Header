@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasCaseableAutocorrection;
 - (BOOL)hasContinuousPathConversions;
 - (BOOL)hasProactiveCandidates;
+- (BOOL)hasTextSuggestionCandidates;
 - (id)init;
 - (void)removeAutocorrectionObserver:(id)arg1;
 - (void)requestAutocorrectionWithExecutionContext:(id)arg1;

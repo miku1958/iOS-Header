@@ -13,7 +13,7 @@
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
 #import <PhotosUI/UIActivityViewControllerObjectManipulationDelegate-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSString, PLProgressView, PUActivityItemSourceController, PUActivityProgressController, PUActivitySharingController, PUActivitySharingViewModel, PUSharingHeaderController, UIView;
+@class NSArray, NSOrderedSet, NSString, PLProgressView, PUActivityItemSourceController, PUActivityProgressController, PUActivitySharingController, PUActivitySharingViewModel, PUSharingHeaderController, PXCPLStatusProvider, UIView;
 @protocol PUActivityViewControllerDelegate, PXDisplayAsset, UIActivityItemLinkPresentationSource;
 
 @interface PUActivityViewController : UIActivityViewController <PXForcedDismissableViewController, PXChangeObserver, PUActivityItemSourceControllerDelegate, UIActivityViewControllerObjectManipulationDelegate, PUSharingHeaderDataProvider, PXActivityViewController>
@@ -38,6 +38,8 @@
     BOOL _shareAsCMM;
     BOOL _excludeLiveness;
     BOOL _excludeLocation;
+    BOOL _excludeCaption;
+    BOOL _excludeAccessibilityDescription;
     BOOL _sendAsOriginals;
     PUActivitySharingViewModel *_sharingViewModel;
     NSArray *_photosActivities;
@@ -46,15 +48,19 @@
     CDUnknownBlockType _ppt_readyToInteractHandler;
     PUActivitySharingController *_activitySharingController;
     PUActivityProgressController *_progressController;
+    PXCPLStatusProvider *_cplStatusProvider;
 }
 
 @property (strong, nonatomic) PUActivitySharingController *activitySharingController; // @synthesize activitySharingController=_activitySharingController;
 @property (nonatomic) const struct __CFString *aggregateKey; // @synthesize aggregateKey=_aggregateKey;
 @property (readonly, nonatomic) struct PXAssetMediaTypeCount assetTypeCount;
 @property (readonly, copy, nonatomic) NSOrderedSet *assets;
+@property (strong, nonatomic) PXCPLStatusProvider *cplStatusProvider; // @synthesize cplStatusProvider=_cplStatusProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUActivityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL excludeAccessibilityDescription; // @synthesize excludeAccessibilityDescription=_excludeAccessibilityDescription;
+@property (nonatomic) BOOL excludeCaption; // @synthesize excludeCaption=_excludeCaption;
 @property (nonatomic) BOOL excludeLiveness; // @synthesize excludeLiveness=_excludeLiveness;
 @property (nonatomic) BOOL excludeLocation; // @synthesize excludeLocation=_excludeLocation;
 @property (readonly) unsigned long long hash;
@@ -72,7 +78,7 @@
 @property (nonatomic) BOOL shareAsCMM; // @synthesize shareAsCMM=_shareAsCMM;
 @property (readonly, nonatomic) PUActivitySharingViewModel *sharingViewModel; // @synthesize sharingViewModel=_sharingViewModel;
 @property (nonatomic) BOOL shouldAutomaticallyUseCMMInMessagesIfThresholdMet; // @synthesize shouldAutomaticallyUseCMMInMessagesIfThresholdMet=_shouldAutomaticallyUseCMMInMessagesIfThresholdMet;
-@property (readonly, nonatomic) unsigned long long sourceOrigin;
+@property (readonly, nonatomic) long long sourceOrigin;
 @property (readonly) Class superclass;
 
 + (id)actionSheetPhotosApplicationActivities;
@@ -80,15 +86,14 @@
 + (BOOL)cmmFileSizeThresholdIsMetForAssetItems:(id)arg1;
 + (BOOL)cmmThresholdIsMetForAssetItems:(id)arg1;
 + (id)defaultActivityTypeOrder;
-+ (id)descriptionForPreparationErrorType:(unsigned long long)arg1;
 + (BOOL)isOutboundShareActivity:(id)arg1;
 + (BOOL)needsConfidentialityCheckForActivityType:(id)arg1;
 + (id)new;
 + (id)photosApplicationActivities;
-+ (id)preparationErrorFromErrors:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activity:(id)arg1 category:(long long)arg2 didComplete:(BOOL)arg3;
 - (void)_adjustPreparationOptionsIfNeededForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_canCreateCMMWithCurrentItems;
 - (BOOL)_canShowSendAsOriginalsSwitchInObjectManipulationHeader;
 - (void)_cancel;
 - (void)_cleanUpActivityState;
@@ -113,7 +118,6 @@
 - (BOOL)_shouldPresentAirplayAlertForActivity:(id)arg1;
 - (BOOL)_shouldShowSystemActivityType:(id)arg1;
 - (BOOL)_shouldSuggestSharingAsCMMForActivity:(id)arg1;
-- (BOOL)_shouldUseModernDesign;
 - (void)_showRemakerProgressView:(id)arg1 forMail:(BOOL)arg2 withCancelationHandler:(CDUnknownBlockType)arg3;
 - (void)_showSharingWasInterruptedForErrors:(id)arg1 withIndividualAssets:(id)arg2 itemSourcesByAssetUUID:(id)arg3 toActivityType:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_titleForActivity:(id)arg1;
@@ -133,15 +137,16 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)ppt_cancelActivity;
 - (void)ppt_performActivityOfType:(id)arg1;
-- (unsigned long long)preparationErrorTypeFromError:(id)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (void)removeAssetItem:(id)arg1;
 - (void)removeProgressUIAnimated:(BOOL)arg1 withDelay:(BOOL)arg2;
 - (void)replaceAssetItem:(id)arg1 withAssetItem:(id)arg2;
 - (void)setAssetItems:(id)arg1;
 - (void)setCompletionWithItemsHandler:(CDUnknownBlockType)arg1;
+- (void)setExcludedActivityTypes:(id)arg1;
 - (void)setPhotosCarouselViewController:(id)arg1;
 - (void)showProgressUIAnimated:(BOOL)arg1 withDelay:(BOOL)arg2 cancellationHandler:(CDUnknownBlockType)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateProgressUITitle;
 - (void)updateVisibleShareActionsIfNeeded;
 - (void)viewDidAppear:(BOOL)arg1;

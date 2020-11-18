@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class HMDNetworkRouterClientConfiguration, HMDNetworkRouterControlOperation, NSString;
 
-@interface HMDNetworkRouterClientControlOperation : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientControlOperation : NSObject <NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterControlOperation *_operation;
     HMDNetworkRouterClientConfiguration *_configuration;

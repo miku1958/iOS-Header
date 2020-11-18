@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityElementHelp;
 - (BOOL)_axMFAddressIsSafeDomain;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;

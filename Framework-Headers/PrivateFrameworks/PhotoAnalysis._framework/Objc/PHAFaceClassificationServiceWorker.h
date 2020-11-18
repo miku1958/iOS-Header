@@ -8,7 +8,7 @@
 
 #import <PhotoAnalysis/PVVisionIntegrating-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, PHAAnalysisWorkerJob, PVContext, PVVisionAnalyzer, VNPersonsModel;
+@class NSMutableArray, NSObject, NSString, PHAAnalysisWorkerJob, PVVisionAnalyzer, VNPersonsModel;
 @protocol OS_dispatch_queue;
 
 @interface PHAFaceClassificationServiceWorker : PHAWorker <PVVisionIntegrating>
@@ -16,14 +16,12 @@
     NSObject<OS_dispatch_queue> *_workerQueue;
     NSMutableArray *_pendingAssetIdentifiers;
     PHAAnalysisWorkerJob *_currentJob;
-    PVContext *_context;
     PVVisionAnalyzer *_analyzer;
     VNPersonsModel *_personsModel;
     unsigned long long _numberOfAssetsToProcess;
 }
 
 @property (strong) PVVisionAnalyzer *analyzer; // @synthesize analyzer=_analyzer;
-@property (strong) PVContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

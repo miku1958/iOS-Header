@@ -10,14 +10,14 @@
 
 @interface TSKRulerUnits : NSObject
 {
-    int _rulerUnits;
-    BOOL _showRulerAsPercentage;
-    BOOL _centerRulerOrigin;
-    int _preferredPixelUnit;
     NSFormatter *_formatter;
     NSFormatter *_lenientFormatter;
     NSFormatter *_highPrecisionFormatter;
     NSFormatter *_lenientHighPrecisionFormatter;
+    BOOL _showRulerAsPercentage;
+    BOOL _centerRulerOrigin;
+    int _rulerUnits;
+    int _preferredPixelUnit;
 }
 
 @property (nonatomic) BOOL centerRulerOrigin; // @synthesize centerRulerOrigin=_centerRulerOrigin;
@@ -27,10 +27,10 @@
 
 + (id)formatterForRulerUnits:(int)arg1 decimalPlaces:(int)arg2 trailingZeros:(BOOL)arg3 lenient:(BOOL)arg4;
 + (id)instance;
+- (void).cxx_destruct;
 - (id)compatibleRulerUnits;
 - (double)convertPointsToRulerUnits:(double)arg1;
 - (double)convertRulerUnitsToPoints:(double)arg1;
-- (void)dealloc;
 - (id)formatter:(BOOL)arg1 lenient:(BOOL)arg2;
 - (id)init;
 - (id)localizedCompatibleRulerAbbreviatedUnits;

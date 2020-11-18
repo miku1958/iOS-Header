@@ -8,13 +8,16 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface _MRUpdateOutputDevicesMessageProtobuf : PBCodable <NSCopying>
 {
+    NSString *_endpointUID;
     NSMutableArray *_outputDevices;
 }
 
+@property (strong, nonatomic) NSString *endpointUID; // @synthesize endpointUID=_endpointUID;
+@property (readonly, nonatomic) BOOL hasEndpointUID;
 @property (strong, nonatomic) NSMutableArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 
 + (Class)outputDevicesType;

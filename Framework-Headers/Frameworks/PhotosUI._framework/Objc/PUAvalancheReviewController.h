@@ -18,7 +18,7 @@
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSIndexPath, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSString, PHCachingImageManager, PHFetchResult, PLAvalanche, PLManagedAsset, PUAssetTransitionInfo, PUAvalancheReviewCollectionViewLayout, PUAvalancheReviewControllerSpec, PUPhotoPinchGestureRecognizer, PUPhotosSharingTransitionContext, PUPhotosZoomingSharingGridCell, PUReviewInstructionalView, PUReviewScrubber, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
+@class NSIndexPath, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSString, PHCachingImageManager, PHFetchResult, PLAvalanche, PLManagedAsset, PUAssetTransitionInfo, PUAvalancheReviewCollectionViewLayout, PUAvalancheReviewControllerSpec, PUPhotoPinchGestureRecognizer, PUPhotosSharingTransitionContext, PUPhotosZoomingSharingGridCell, PUReviewScrubber, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
 @protocol PLAssetContainer, PLAssetContainerList, PUAvalancheReviewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
     PUAvalancheReviewControllerSpec *__spec;
     UICollectionView *__collectionView;
     PUAvalancheReviewCollectionViewLayout *__collectionViewLayout;
-    PUReviewInstructionalView *__instructionalView;
     UIBarButtonItem *__doneBarButtonItem;
     UIBarButtonItem *__cancelBarButtonItem;
     UITapGestureRecognizer *__tapGestureRecognizer;
@@ -67,7 +66,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSIndexPath *_inFlightReferenceIndexPath; // @synthesize _inFlightReferenceIndexPath=__inFlightReferenceIndexPath;
 @property (readonly, nonatomic) PLManagedAsset *_initialAsset; // @synthesize _initialAsset=__initialAsset;
 @property (readonly, nonatomic) NSOrderedSet *_initialFavorites; // @synthesize _initialFavorites=__initialFavorites;
-@property (readonly, nonatomic) PUReviewInstructionalView *_instructionalView; // @synthesize _instructionalView=__instructionalView;
 @property (strong, nonatomic, setter=_setPhotoZoomAnimator:) PUTransitionViewAnimator *_photoZoomAnimator; // @synthesize _photoZoomAnimator=__photoZoomAnimator;
 @property (strong, nonatomic, setter=_setPhotoZoomCell:) PUPhotosZoomingSharingGridCell *_photoZoomCell; // @synthesize _photoZoomCell=__photoZoomCell;
 @property (strong, nonatomic, setter=_setPhotoZoomPinchGestureRecognizer:) PUPhotoPinchGestureRecognizer *_photoZoomPinchGestureRecognizer; // @synthesize _photoZoomPinchGestureRecognizer=__photoZoomPinchGestureRecognizer;
@@ -132,7 +130,6 @@ __attribute__((visibility("hidden")))
 - (id)assetsInAssetCollection:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)dealloc;
 - (id)embeddedActivityView;

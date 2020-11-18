@@ -25,6 +25,7 @@
 - (unsigned long long)hash;
 - (id)initWithLanguageIdentifier:(id)arg1 forCategory:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)localizedStringForDisplay;
 
 @end
 

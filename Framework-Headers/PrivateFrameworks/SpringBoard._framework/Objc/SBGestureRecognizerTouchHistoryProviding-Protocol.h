@@ -9,6 +9,7 @@
 @protocol SBGestureRecognizerTouchHistoryProviding <NSObject>
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (double)peakSpeed;
 @end
 

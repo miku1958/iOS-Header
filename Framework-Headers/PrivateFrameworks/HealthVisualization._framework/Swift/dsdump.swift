@@ -11,11 +11,6 @@
  {
 	// getter
  }
- protocol HealthVisualization.InsightCalculator // 2 requirements
- {
-	// getter
-	// method
- }
  protocol HealthVisualization.PluginFeedItemProducing // 1 requirements
  {
 	// getter
@@ -33,13 +28,10 @@
 	// class associated type access function
 	// getter
  }
- protocol HealthVisualization.InsightResponseProducingOperation // 1 requirements
- {
-	// getter
- }
- protocol HealthVisualization.DisplayTypeProviding // 2 requirements
+ protocol HealthVisualization.DisplayTypeProviding // 3 requirements
  {
 	// class base protocol
+	// getter
 	// getter
  }
  protocol HealthVisualization.ModelCache // 7 requirements
@@ -70,12 +62,6 @@
 	// class base protocol
 	// getter
  }
- protocol HealthVisualization.ValueConverter // 3 requirements
- {
-	// class associated type access function
-	// class associated type access function
-	// method
- }
  protocol HealthVisualization.DiagramAxisMetricsProviding // 1 requirements
  {
 	// method
@@ -90,10 +76,6 @@
 	// getter
 	// getter
  }
- protocol HealthVisualization.InsightValueObservable // 1 requirements
- {
-	// method
- }
  protocol HealthVisualization.QuantityTypeProviding // 1 requirements
  {
 	// getter
@@ -101,17 +83,6 @@
  protocol HealthVisualization.ChartContextProducing // 1 requirements
  {
 	// getter
- }
- protocol HealthVisualization.InsightCalculatorOperationDataProvider // 1 requirements
- {
-	// method
- }
- protocol HealthVisualization.InsightCalculatorOperation // 4 requirements
- {
-	// class base protocol
-	// getter
-	// setter
-	// modify coroutine
  }
  protocol HealthVisualization.FileLoadable // 4 requirements
  {
@@ -128,15 +99,6 @@
  {
 	// method
  }
- protocol HealthVisualization.InsightTextSupport // 6 requirements
- {
-	// class base protocol
-	// class base protocol
-	// getter
-	// class init
-	// getter
-	// getter
- }
  protocol HealthVisualization.ItemDetailDataProviding // 2 requirements
  {
 	// method
@@ -149,13 +111,6 @@
  protocol HealthVisualization.DatabaseChangesProducing // 2 requirements
  {
 	// method
-	// method
- }
- protocol HealthVisualization.OnlineValueConverter // 4 requirements
- {
-	// class associated type access function
-	// getter
-	// getter
 	// method
  }
 
@@ -171,26 +126,30 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var a : ù°
+	var a : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var b : ù°
+	var b : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c : ù°
+	var c : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var d : ù°
+	var d : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tx : ù°
+	var tx : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ty : ù°
+	var ty : ­
  }
 
  enum __C.QualityOfService { }
 
- enum __C.ComparisonResult { }
-
  enum __C._HKQuantityDistributionStyle { }
 
- struct __C.Options {
+ struct __C.HKQuantityTypeIdentifier {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ struct __C.NSKeyValueObservingOptions {
 
 	// Properties
 	let rawValue : UInt
@@ -200,9 +159,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : ù°
+	var x : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : ù°
+	var y : ­
  }
 
  class __C.CGContext {
@@ -210,22 +169,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ù°
+	var width : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ù°
+	var height : ­
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : ù°
+	var top : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : ù°
+	var left : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : ù°
+	var bottom : ­
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : ù°
+	var right : ­
+ }
+
+ struct __C.SymbolicTraits {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : Á
+ }
+
+ struct __C.Key {
+
+	// Properties
+	var _rawValue : NSString
  }
 
  struct __C.CGRect {
@@ -235,23 +207,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var size : CGSize
  }
 
- struct __C.Key {
+ struct __C.Options {
 
 	// Properties
-	var _rawValue : NSString
- }
-
- struct __C.SymbolicTraits {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : cº
- }
-
- struct __C.HKQuantityTypeIdentifier {
-
-	// Properties
-	var _rawValue : NSString
+	let rawValue : UInt
  }
 
  enum __C.HKDisplayTypeIdentifier { }
@@ -261,30 +220,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let currentValueQueryConfig : QueryConfiguration // +0x0
+	let showDefaultSupplementaryLabel : Bool // +0x21
  }
 
  enum HealthVisualization.CodingKeys {
 
 	// Properties
 	case currentValueQueryConfig  
- }
-
- class HealthVisualization.InsightService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let insightCalculatorFactory : InsightCalculatorFactory // +0x10 (0x8)
-	let operationQueue : NSOperationQueue // +0x18 (0x8)
-	let serialQueue : OS_dispatch_queue // +0x20 (0x8)
-	let healthStore : HKHealthStore // +0x28 (0x8)
-
-	// Swift methods
-	0x57a0  func InsightService.generateInsights(requests:) // method 
- }
-
- enum HealthVisualization.InsightServiceError {
-
-	// Properties
-	case deallocatedBeforeFinishedProcessing  
+	case showDefaultSupplementaryLabel  
  }
 
  struct HealthVisualization.SleepQueryConfiguration {
@@ -299,57 +242,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case dateRange  
  }
 
- class HealthVisualization.AverageValueStatsCollectionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let unit : HKUnit // +0x10 (0x8)
-
+ class HealthVisualization.HistogramUtilities : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x8d40  class func AverageValueStatsCollectionConverter.__allocating_init(unit:) // init 
-	0x8d80  func AverageValueStatsCollectionConverter.convert(from:) // method 
- }
-
- class HealthVisualization.InsightCalculatorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
- }
-
- class HealthVisualization.OnlineMonotonicTrendConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var endAggregateIndexUnderConsideration : Int // +0x10 (0x8)
-	var nextAggregateIndexNeeded : Int // +0x18 (0x8)
-	let configuration : TrendConfiguration // +0x20 (0x19)
-	var currentValues : InsightValue // +0x40 (0x8)
-	var currentDirection : ComparisonResult // +0x48 (0x8)
-
-	// Swift methods
-	0x9be0  func <stripped> // method 
-	0xa120  func <stripped> // method 
-	0xa7c0  func <stripped> // method 
+	0x6bc0  class func <stripped> // method 
  }
 
  class HealthVisualization.DiagramDistribution : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let configuration : Distribution // +0x10 (0x4d)
-	let data : DiagramData // +0x60 (0x30)
-	let minMaxParameters : DiagramDistributionMinMax // +0x90 (0xc0)
-	let maxPointItems : DiagramDistributionPoints // +0x150 (0x18)
-	let minPointItems : DiagramDistributionPoints // +0x168 (0x18)
-	let axisHandler : DiagramAxis // +0x180 (0x8)
+	let configuration : Distribution
+	let data : DiagramData
+	let minMaxParameters : DiagramDistributionMinMax
+	let maxPointItems : DiagramPointAnnotations
+	let minPointItems : DiagramPointAnnotations
+	let axisHandler : DiagramAxis
 
 	// Swift methods
-	0xb4c0  func <stripped> // getter 
-	0xcaa0  func <stripped> // method 
- }
-
- struct HealthVisualization.DiagramDistributionPoints {
-
-	// Properties
-	let pointAnnotations : CGPoint // +0x0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let linePadding : ù° // +0x8
-	let valueAttributes : Key // +0x10
+	0x6ff0  func <stripped> // getter 
+	0x71a0  func <stripped> // getter 
+	0xa890  func <stripped> // method 
+	0xaaa0  func <stripped> // method 
  }
 
  struct HealthVisualization.DiagramDistributionMinMax {
@@ -363,27 +275,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let maxLabelSize : CGSize // +0x50
 	let minValueSize : CGSize // +0x60
 	let maxValueSize : CGSize // +0x70
-	let minPoint : CGPoint // +0x80
-	let maxPoint : CGPoint // +0x98
-	let labelAttributes : Key // +0xb0
-	let valueAttributes : Key // +0xb8
+	let minLabelPoint : CGPoint // +0x80
+	let maxLabelPoint : CGPoint // +0x98
+	let minPoint : CGPoint // +0xb0
+	let maxPoint : CGPoint // +0xc0
+	let showIndicators : Bool // +0xd0
+	let labelAttributes : Key // +0xd8
+	let valueAttributes : Key // +0xe0
  }
 
  class HealthVisualization.Localization : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var localizationBundleTable : [NSBundle : String] // +0x10 (0x8)
-	let defaultLocalizationFile : String // +0x18 (0x10)
+	var localizationBundleTable : [NSBundle : String]
+	let defaultLocalizationFile : String
 
 	// Swift methods
-	0x12290  class func static Localization.localize(_:substitutions:mySelf:) // method 
-	0x12300  class func static Localization.localize(_:substitutions:mySelf:tableName:) // method 
-	0x12370  class func static Localization.localize(stringsDictKey:stringsDictFormatArguments:substitutions:mySelf:tableName:) // method 
-	0x123f0  class func static Localization.registerLocalization(classForBundle:localizationFile:) // method 
-	0x12510  func <stripped> // method 
-	0x126f0  func <stripped> // method 
-	0x12b90  func <stripped> // method 
-	0x13090  func <stripped> // method 
+	0xd7d0  class func <stripped> // method 
+	0xd840  class func <stripped> // method 
+	0xd8b0  class func <stripped> // method 
+	0xd930  class func <stripped> // method 
+	0xda20  func <stripped> // method 
+	0xdc60  func <stripped> // method 
+	0xdde0  func <stripped> // method 
+	0xdf80  func <stripped> // method 
  }
 
  struct HealthVisualization.ObjectTypeConfiguration {
@@ -392,7 +307,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x0
 	let numericalFormatting : NumericalFormatting // +0x10
 	let snippetConfig : SnippetConfiguration // +0x18
-	let insightConfigs : InsightConfiguration // +0x38
  }
 
  enum HealthVisualization.CodingKeys {
@@ -401,26 +315,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case identifier  
 	case numericalFormatting  
 	case snippetConfig  
-	case insightConfigs  
  }
 
  class HealthVisualization.SampleQueryOperation {
- struct HealthVisualization.InsightRequest {
-
-	// Properties
-	let objectTypeIdentifier : String // +0x0
-	let configuration : InsightConfiguration // +0x10
-	let operationName : String // +0xd0
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case objectTypeIdentifier  
-	case configuration  
-	case operationName  
- }
-
  struct HealthVisualization.AudiogramQueryConfiguration {
 
 	// Properties
@@ -433,13 +330,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case mostRecentSample  
  }
 
- class HealthVisualization.AllInsightsDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
-	0x1bcd0  func AllInsightsDataSourceProvider.selectedDataSources(for:) // method 
-	0x1bf80  func <stripped> // method 
-	0x1c2c0  func <stripped> // method 
- }
-
  struct HealthVisualization.AudioExposureStatistics {
 
 	// Properties
@@ -448,36 +338,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let secondsListened : Double
 	let daysAggregated : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastUpdated : õ§
+	let lastUpdated : ñ
  }
 
- class HealthVisualization.AudioExposureStatisticsQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resultHandler :  empty-list 
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : Ñ³
-	let quantityType : HKQuantityType
-	let queryConfig : StatisticsQueryConfiguration
-	let queryConfigOverrides : StatisticsQueryConfigurationOverrides
-	let queryQualityOfService : QualityOfService
-	let healthStore : HKHealthStore
-	let operationQueue : NSOperationQueue
-	var $__lazy_storage_$_statisticsQueryOperation : StatisticsQueryOperation
-	var $__lazy_storage_$_resultDeliveryOperation : NSOperation?
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioExposureResult : Ñ³
-
-	// ObjC -> Swift bridged methods
-	0x1e4a0  @objc AudioExposureStatisticsQueryOperation.main <stripped>
-	0x1e820  @objc AudioExposureStatisticsQueryOperation.init <stripped>
-	0x1e720  @objc AudioExposureStatisticsQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x1ddf0  class func AudioExposureStatisticsQueryOperation.__allocating_init(quantityType:operationQueue:queryConfiguration:queryConfigurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
- }
-
+ class HealthVisualization.AudioExposureStatisticsQueryOperation {
  enum HealthVisualization.CodingKeys {
 
 	// Properties
@@ -510,36 +374,55 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthVisualization.DiagramImageView : UIImageView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var imageRenderer : UIGraphicsImageRenderer? // +0x8 (0x8)
-	var delegate : DiagramImageViewDelegate // +0x10 (0x10)
-	var lastUsedTransformer : DiagramTransformer // +0x20 (0x38)
-	var lastUsedModelSpace : CGRect // +0x58 (0x21)
+	var imageRenderer : UIGraphicsImageRenderer?
+	var delegate : DiagramImageViewDelegate
+	var lastUsedTransformer : DiagramTransformer
+	var lastUsedModelSpace : CGRect
 
 	// ObjC -> Swift bridged methods
-	0x261d0  @objc DiagramImageView.intrinsicContentSize <stripped>
-	0x26210  @objc DiagramImageView.frame <stripped>
-	0x26250  @objc DiagramImageView.setFrame: <stripped>
-	0x26290  @objc DiagramImageView.bounds <stripped>
-	0x26370  @objc DiagramImageView.setBounds: <stripped>
-	0x26920  @objc DiagramImageView.initWithFrame: <stripped>
-	0x269c0  @objc DiagramImageView.initWithCoder: <stripped>
-	0x26e20  @objc DiagramImageView.traitCollectionDidChange: <stripped>
-	0x27e70  @objc DiagramImageView.initWithImage: <stripped>
-	0x27f20  @objc DiagramImageView.initWithImage:highlightedImage: <stripped>
-	0x27d90  @objc DiagramImageView..cxx_destruct <stripped>
+WARNING: couldn't find address 0xd2940002ac30 (0x2940002ac30) in binary!
+	0xd2a8  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xd2cc0002ada8 (0x2cc0002ada8) in binary!
+	0xd290  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xd2b40002ada0 (0x2b40002ada0) in binary!
+	0xd2d8  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xef500002ada8 (0x7500002ada8) in binary!
+	0xdaec  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xef380002add8 (0x7380002add8) in binary!
+	0xd2d8  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xf3140002abb0 (0x3140002abb0) in binary!
+	0x58000000c  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xef080002ad60 (0x7080002ad60) in binary!
+	0xdaa4  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xd26c0002ad30 (0x26c0002ad30) in binary!
+	0xeee4  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xf2cc0002ab68 (0x2cc0002ab68) in binary!
+	0x28000000c  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xf2bc0002ab18 (0x2bc0002ab18) in binary!
+	0xf2b0  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x384fff91a88  @objc DiagramImageView.(null) <stripped>
 
 	// Swift methods
-	0x25dd0  func DiagramImageView.delegate.getter // getter 
-	0x25e10  func DiagramImageView.delegate.setter // setter 
-	0x25e70  func DiagramImageView.delegate.modify // modifyCoroutine 
-	0x25f60  func DiagramImageView.lastUsedTransformer.getter // getter 
-	0x26010  func DiagramImageView.lastUsedTransformer.setter // setter 
-	0x260b0  func DiagramImageView.lastUsedTransformer.modify // modifyCoroutine 
-	0x260f0  func DiagramImageView.lastUsedModelSpace.getter // getter 
-	0x26140  func DiagramImageView.lastUsedModelSpace.setter // setter 
-	0x26180  func DiagramImageView.lastUsedModelSpace.modify // modifyCoroutine 
-	0x26ae0  func <stripped> // method 
-	0x26e70  func DiagramImageView.drawContent(modelSpace:screenInsets:drawingBlock:) // method 
+	0x1c830  func <stripped> // getter 
+	0x1c870  func <stripped> // setter 
+	0x1c8d0  func <stripped> // modifyCoroutine 
+	0x1cb40  func <stripped> // getter 
+	0x1cbe0  func <stripped> // setter 
+	0x1cca0  func <stripped> // modifyCoroutine 
+	0x1cdb0  func <stripped> // getter 
+	0x1ce00  func <stripped> // setter 
+	0x1ce40  func <stripped> // modifyCoroutine 
+	0x1d510  func <stripped> // method 
+	0x1d8f0  func <stripped> // method 
+ }
+
+ struct HealthVisualization.DiagramDrawBlockContext {
+
+	// Properties
+	let size : CGSize // +0x0
+	let context : CGContext // +0x10
+	let transformer : DiagramTransformer // +0x18
  }
 
  struct HealthVisualization.DiagramTransformer {
@@ -565,49 +448,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let adjustedModelCoordinateRange : ClosedRange<Double> // +0x8
  }
 
- enum HealthVisualization.BinningStrategy {
-
-	// Properties
-	case value : (binWidth: Double)
-	case hourOfDay  
-	case dayOfWeek  
-	case weekOfYear  
-	case monthOfYear  
- }
-
- enum HealthVisualization.Base {
-
-	// Properties
-	case value  
-	case hourOfDay  
-	case dayOfWeek  
-	case weekOfYear  
-	case monthOfYear  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case type  
-	case binWidth  
- }
-
- struct HealthVisualization.OutlierConfiguration {
-
-	// Properties
-	let minimumElementsRequired : Int // +0x0
-	let iqrAwayFromQuartile : Double // +0x8
-	let rangeToTest : StatisticsInterval // +0x10
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case minimumElementsRequired  
-	case iqrAwayFromQuartile  
-	case rangeToTest  
- }
-
  enum HealthVisualization.DateRange {
 
 	// Properties
@@ -618,94 +458,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rollingMonth  
  }
 
- class HealthVisualization.LinearRegressionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
-	0x2d000  func LinearRegressionConverter.convert(from:) // method 
- }
-
  struct HealthVisualization.QuantityDistributionConfigurationOverrides {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dateInterval : í¢
+	var dateInterval : åý
 	var predicate : NSPredicate?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var histogramWidth : 5£
+	var histogramWidth : þ
  }
+
+ struct HealthVisualization.EmptyQueryConfiguration { }
+
+ enum HealthVisualization.CodingKeys { }
 
  enum HealthVisualization.ResultProducingError {
 
 	// Properties
 	case notStarted  
+	case notConfigured  
 	case notFinished  
 	case canceled  
- }
-
- class HealthVisualization.OnlineInsightService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let requests : InsightRequest // +0x10 (0x8)
-	let healthStore : HKHealthStore // +0x18 (0x8)
-	let operationQueue : NSOperationQueue // +0x20 (0x8)
-
-	// Swift methods
-	0x2e800  func OnlineInsightService.generateInsights() // method 
-	0x2eb90  func <stripped> // method 
  }
 
  class HealthVisualization.DiagramAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let axisLabelDimension : HKAxisLabelDimension // +0x10 (0x8)
-	let maximumLabelCount : Int // +0x18 (0x8)
-	let calculator : DiagramAxisLabel // +0x20 (0x10)
+	let axisLabelDimension : HKAxisLabelDimension
+	let maximumLabelCount : Int
+	let calculator : DiagramAxisLabel
 
 	// Swift methods
-	0x2f2c0  class func DiagramAxisMetricsCalculator.__allocating_init(axisLabelDimension:maximumLabelCount:calculator:) // init 
-	0x2f340  func DiagramAxisMetricsCalculator.axisMetrics(for:customLocations:) // method 
+	0x23210  class func DiagramAxisMetricsCalculator.__allocating_init(axisLabelDimension:maximumLabelCount:calculator:) // init 
+	0x23290  func <stripped> // method 
  }
 
  enum HealthVisualization.Constants { }
-
- struct HealthVisualization.TrendResult {
-
-	// Properties
-	let type : TrendType
-	let points : InsightValue
-	let fit : InsightFitLine
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateInterval : á¡
- }
-
- enum HealthVisualization.TrendType {
-
-	// Properties
-	case positive  
-	case negative  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case type  
-	case points  
-	case fit  
-	case dateInterval  
- }
-
- struct HealthVisualization.DistributionResult {
-
-	// Properties
-	let bins : [Double]
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let interval : á¡
- }
 
  struct HealthVisualization.DiagramDataGroup {
 
 	// Properties
 	let points : CGPoint // +0x0
 	let annotation : String? // +0x8
+	let supplementaryAnnotation : String? // +0x18
  }
 
  enum HealthVisualization.DiagramDataKey {
@@ -725,9 +520,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthVisualization.DiagramFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x332c0  class func DiagramFactory.__allocating_init() // init 
-	0x332f0  func DiagramFactory.drawDiagram(diagramImageView:diagramData:configuration:) // method 
-	0x333f0  func <stripped> // method 
+	0x26880  class func DiagramFactory.__allocating_init() // init 
+	0x268b0  func <stripped> // method 
+	0x26a30  func <stripped> // method 
+	0x27170  func <stripped> // method 
  }
 
  enum HealthVisualization.CodingKeys {
@@ -742,27 +538,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case points  
 	case annotation  
- }
-
- class HealthVisualization.ChartPointStatsCollectionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let unit : HKUnit // +0x10 (0x8)
-	let statisticsOption : StatisticsOption // +0x18 (0x1)
-
-	// Swift methods
-	0x36690  class func ChartPointStatsCollectionConverter.__allocating_init(unit:statisticsOption:) // init 
-	0x366e0  func ChartPointStatsCollectionConverter.convert(from:) // method 
- }
-
- enum HealthVisualization.InsightVariant {
-
-	// Properties
-	case streak  
-	case trend  
-	case outlier  
-	case timehop  
-	case distribution  
+	case supplementaryAnnotation  
  }
 
  struct HealthVisualization.HighlightCalendarViewModel {
@@ -833,226 +609,76 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let axDate : õ§
+	let axDate : ñ
 	let axProbability : AXProbability
 	let axProjectionKind : String?
- }
-
- enum HealthVisualization.InsightCharacteristicKey {
-
-	// Properties
-	case min  
-	case max  
-	case first  
-	case last  
-	case count  
-	case linearFitGradient  
-	case linearFitIntercept  
- }
-
- enum HealthVisualization.InsightCharacteristicValue {
-
-	// Properties
-	case double : (value: Double)
-	case int : (value: Int)
-	case string : (value: String)
- }
-
- enum HealthVisualization.Base {
-
-	// Properties
-	case double  
-	case int  
-	case string  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case type  
-	case value  
- }
-
- struct HealthVisualization.InsightFitLine {
-
-	// Properties
-	let gradient : Double // +0x0
-	let intercept : Double // +0x8
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case gradient  
-	case intercept  
  }
 
  class HealthVisualization.ConfigurationCache : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var cachedModels : ObjectTypeConfiguration // +0x10 (0x8)
-	let fileName : String // +0x18 (0x10)
-	let fileExtension : String // +0x28 (0x10)
-	let bundle : NSBundle // +0x38 (0x8)
+	var cachedModels : ObjectTypeConfiguration
+	let fileName : String
+	let fileExtension : String
+	let bundle : NSBundle
 
 	// Swift methods
+ }
+
+ class HealthVisualization.DiagramMultiDayDateAxisMetricsCalculator : DiagramDateAxisMetricsCalculator {
+
+	// Properties
+	let durationThreshold6HourTickIntervals : Double
+	let durationThreshold12HourTickIntervals : Double
+	let durationThreshold1DayTickIntervals : Double
  }
 
  class HealthVisualization.HighlightCalendarView : NUIContainerGridView /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI {
 
 	// Properties
-	var longWeekdayStrings : [String]? // +0x8 (0x8)
-	var shortWeekdayStrings : [String]? // +0x10 (0x8)
-	var $__lazy_storage_$_ringsRenderer : ARUIRingsViewRenderer? // +0x18 (0x8)
-	var weekdayLabels : [UILabel] // +0x20 (0x8)
-	var monthLabels : [UILabel] // +0x28 (0x8)
+	var longWeekdayStrings : [String]?
+	var shortWeekdayStrings : [String]?
+	var $__lazy_storage_$_ringsRenderer : ARUIRenderer?
+	var weekdayLabels : [UILabel]
+	var monthLabels : [UILabel]
 
 	// ObjC -> Swift bridged methods
-	0x3fe50  @objc HighlightCalendarView.initWithCoder: <stripped>
-	0x41060  @objc HighlightCalendarView.traitCollectionDidChange: <stripped>
-	0x42160  @objc HighlightCalendarView.initWithFrame: <stripped>
-	0x42230  @objc HighlightCalendarView.initWithArrangedSubviewRows: <stripped>
-	0x42050  @objc HighlightCalendarView..cxx_destruct <stripped>
+WARNING: couldn't find address 0xef080002ad60 (0x7080002ad60) in binary!
+	0xdaa4  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0xd26c0002ad30 (0x26c0002ad30) in binary!
+	0xeee4  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0xf2cc0002ab68 (0x2cc0002ab68) in binary!
+	0x28000000c  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0xf2bc0002ab18 (0x2bc0002ab18) in binary!
+	0xf2b0  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x384fff91a88  @objc HighlightCalendarView.(null) <stripped>
 
 	// Swift methods
-	0x3fe70  class func HighlightCalendarView.__allocating_init(model:) // init 
-	0x410b0  func <stripped> // method 
-	0x41410  func <stripped> // method 
-	0x41c10  func <stripped> // method 
+	0x313c0  func <stripped> // getter 
+	0x31510  class func HighlightCalendarView.__allocating_init(model:) // init 
+	0x322c0  func <stripped> // method 
+	0x323f0  func <stripped> // method 
+	0x32cb0  func <stripped> // method 
+	0x33740  func <stripped> // method 
  }
 
- class HealthVisualization.StatisticsQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : m³ // +0x30 (0x8)
-	let sampleType : HKSampleType // +0x38 (0x8)
-	let configuration : StatisticsQueryConfiguration // +0x40 (0x12)
-	let configurationOverrides : StatisticsQueryConfigurationOverrides // +0x6 (0x0)
-	let queryQualityOfService : QualityOfService // +0x74735f5f (0x8)
-	let healthStore : HKHealthStore // +0x80000408 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resultHandler :  empty-list  // +0x65706c65 (0x10)
-	var $__lazy_storage_$_query : HKStatisticsQuery? // +0x0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x45970  @objc StatisticsQueryOperation.main <stripped>
-	0x45b60  @objc StatisticsQueryOperation.init <stripped>
-	0x45c50  @objc StatisticsQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x455e0  func StatisticsQueryOperation.result.getter // getter 
-	0x45430  class func StatisticsQueryOperation.__allocating_init(sampleType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
- }
-
- class HealthVisualization.DateDistributionCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let variant : InsightVariant // +0x10 (0x1)
-	let configuration : DistributionConfiguration // +0x18 (0x9)
-
-	// Swift methods
-	0x46d50  func <stripped> // method 
- }
-
- enum HealthVisualization.Errors {
-
-	// Properties
-	case unsupportedBinningStrategy : BinningStrategy
- }
-
- struct HealthVisualization.InsightValue {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateInterval : á¡
-	let value : Double?
-	let valueType : ValueType
- }
-
- enum HealthVisualization.ValueType {
-
-	// Properties
-	case inferred : MissingDataConfiguration
-	case original  
- }
-
- enum HealthVisualization.Base {
-
-	// Properties
-	case original  
-	case inferred  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case type  
-	case using  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case dateInterval  
-	case value  
-	case valueType  
- }
-
- class HealthVisualization.AllInsightsSectionHeaderView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	var titleLabel : weak UILabel? // +0x8 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : Ù› // +0x10 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x4b840  @objc AllInsightsSectionHeaderView.titleLabel <stripped>
-	0x4b860  @objc AllInsightsSectionHeaderView.setTitleLabel: <stripped>
-	0x4bed0  @objc AllInsightsSectionHeaderView.initWithFrame: <stripped>
-	0x4c000  @objc AllInsightsSectionHeaderView.initWithCoder: <stripped>
-	0x4bd50  @objc AllInsightsSectionHeaderView..cxx_destruct <stripped>
-
-	// Swift methods
-	0x4b9f0  func AllInsightsSectionHeaderView.item.getter // getter 
-	0x4ba90  func AllInsightsSectionHeaderView.item.setter // setter 
-	0x4bb90  func AllInsightsSectionHeaderView.item.modify // modifyCoroutine 
- }
-
- struct HealthVisualization.AllInsightsSectionHeaderItem {
-
-	// Properties
-	var reuseIdentifier : String // +0x0
-	var title : String? // +0x10
- }
-
- class HealthVisualization.AggregateInsightResponseProducerOperation : type metadata for AsyncOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-	var responses : InsightResponse // +0x18 (0x8)
-	let requests : InsightRequest // +0x20 (0x8)
-	let healthStore : HKHealthStore // +0x28 (0x8)
-	let eventHorizonCalculation : StatisticsInterval // +0x30 (0x10)
-
-	// ObjC -> Swift bridged methods
-	0x4ce20  @objc AggregateInsightResponseProducerOperation.main <stripped>
-	0x4ce50  @objc AggregateInsightResponseProducerOperation.init <stripped>
-	0x4cf00  @objc AggregateInsightResponseProducerOperation..cxx_destruct <stripped>
-
-	// Swift methods
- }
+ class HealthVisualization.StatisticsQueryOperation {
+ enum HealthVisualization.SharedDiagrams { }
 
  struct HealthVisualization.MostRecentSampleQueryConfiguration {
 
 	// Properties
 	let valueOverrideLocalizedStringKey : String? // +0x0
-	let forceDayGranularity : Bool // +0x10
+	let valueOverrideLocalizedStringTable : String? // +0x10
+	let forceDayGranularity : Bool // +0x20
  }
 
  enum HealthVisualization.CodingKeys {
 
 	// Properties
 	case valueOverrideLocalizedStringKey  
+	case valueOverrideLocalizedStringTable  
 	case forceDayGranularity  
  }
 
@@ -1067,63 +693,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case decimalSignificantFour  
  }
 
- class HealthVisualization.SleepQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : M³ // +0x30 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateInterval : á¡ // +0x80000400 (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : wš // +0x6f635f5f (0x0)
-	let healthStore : HKHealthStore // +0x0 (0x8)
-	let queryQualityOfService : QualityOfService // +0x0 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resultHandler :  empty-list  // +0x45545f5f (0x10)
-	var $__lazy_storage_$_query : HKQuery? // +0x0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x4f330  @objc SleepQueryOperation.main <stripped>
-	0x4f6b0  @objc SleepQueryOperation.init <stripped>
-	0x4f5d0  @objc SleepQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x4ec90  func SleepQueryOperation.result.getter // getter 
-	0x4ece0  class func SleepQueryOperation.__allocating_init(dateInterval:calendar:name:queryQualityOfService:healthStore:resultHandler:) // init 
- }
-
- struct HealthVisualization.TimehopConfiguration {
-
-	// Properties
-	let lookbackInterval : StatisticsInterval // +0x0
-	let lookbackWindow : Int // +0x8
-	let minimumThreshold : InsightThreshold // +0x10
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case lookbackInterval  
-	case lookbackWindow  
-	case minimumThreshold  
- }
-
- struct HealthVisualization.StreakConfiguration {
-
-	// Properties
-	let upperBound : InsightThreshold // +0x0
-	let lowerBound : InsightThreshold // +0x10
-	let minimumDuration : Int // +0x20
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case upperBound  
-	case lowerBound  
-	case minimumDuration  
- }
-
+ class HealthVisualization.SleepQueryOperation {
  enum HealthVisualization.DiagramAxisMetricsOrientation {
 
 	// Properties
@@ -1133,153 +703,67 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthVisualization.DiagramAxisMetricsCalculatorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DiagramAxisMetricsCalculatorProducing {
 	// Swift methods
-	0x51dd0  class func DiagramAxisMetricsCalculatorFactory.__allocating_init() // init 
-	0x51e00  func DiagramAxisMetricsCalculatorFactory.diagramAxisMetricsCalculator(for:orientation:) // method 
+	0x398e0  class func DiagramAxisMetricsCalculatorFactory.__allocating_init() // init 
+	0x39910  func <stripped> // method 
  }
 
  class HealthVisualization.HiLoScalarAxisDimension : HKAxisLabelDimensionScalar /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI {
 
 	// Properties
-	let displayType : HKDisplayType? // +0x8 (0x8)
-	let valueFormatter : HKDisplayTypeValueFormatter? // +0x10 (0x8)
-	let unitPreferenceController : HKUnitPreferenceController? // +0x18 (0x8)
+	let displayType : HKDisplayType?
+	let valueFormatter : HKDisplayTypeValueFormatter?
+	let unitPreferenceController : HKUnitPreferenceController?
 
 	// ObjC -> Swift bridged methods
-	0x52390  @objc HiLoScalarAxisDimension.stringForLocation: <stripped>
-	0x524a0  @objc HiLoScalarAxisDimension.init <stripped>
-	0x52450  @objc HiLoScalarAxisDimension..cxx_destruct <stripped>
+WARNING: couldn't find address 0xeea00002ab28 (0x6a00002ab28) in binary!
+	0xf290  @objc HiLoScalarAxisDimension.(null) <stripped>
+WARNING: couldn't find address 0xf27c0002ab18 (0x27c0002ab18) in binary!
+	0xb8000000c  @objc HiLoScalarAxisDimension.(null) <stripped>
+WARNING: couldn't find address 0xf26c0002aaf0 (0x26c0002aaf0) in binary!
+	0xee5c  @objc HiLoScalarAxisDimension.(null) <stripped>
 
 	// Swift methods
  }
 
- class HealthVisualization.InsightQueryManager : NSObject /usr/lib/libobjc.A.dylib, InsightValueObservable {
+ struct HealthVisualization.DiagramPointAnnotations {
 
 	// Properties
-	let healthStore : HKHealthStore
-	let request : InsightRequest
+	let pointAnnotations : CGPoint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let currentDate : õ§
-	let operationQueue : NSOperationQueue
-	let serialQueue : OS_dispatch_queue
-	var $__lazy_storage_$_insightValueObjectCache : InsightValueObject
-	var $__lazy_storage_$_pendingQueryOperations : StatisticsCollectionQueryOperation
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_computedPageDateIntervals : ClosedRange<Int>
-
-	// ObjC -> Swift bridged methods
-	0x52b10  @objc InsightQueryManager.init <stripped>
-	0x52b90  @objc InsightQueryManager..cxx_destruct <stripped>
-
-	// Swift methods
+	let linePadding : ­ // +0x8
+	let valueAttributes : Key // +0x10
  }
 
- class HealthVisualization.InsightValueObject : NSObject /usr/lib/libobjc.A.dylib {
+ enum HealthVisualization.SevenDayDoseOperationError {
 
 	// Properties
-	let boxedValue : InsightValue
-
-	// ObjC -> Swift bridged methods
-	0x52ae0  @objc InsightValueObject.init <stripped>
-	0x52ac0  @objc InsightValueObject..cxx_destruct <stripped>
-
-	// Swift methods
+	case notFinished  
+	case cancelled  
+	case invalidConfiguration  
+	case invalidResults  
  }
 
+ class HealthVisualization.SevenDayDoseOperation {
+ struct HealthVisualization.DoseData {
+
+	// Properties
+	let points : CGPoint // +0x0
+ }
+
+ enum HealthVisualization.SevenDayDose { }
+
+ class HealthVisualization.CountComparisonQueryOperation {
  class HealthVisualization.DiagramBanner : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let bannerConfig : Banner // +0x10 (0x11)
-	let bannerData : DiagramData // +0x28 (0x30)
+	let bannerConfig : Banner
+	let bannerData : DiagramData
 
 	// Swift methods
- }
-
- class HealthVisualization.AllInsightsViewController : type metadata for DataTypeDetailViewController /System/Library/PrivateFrameworks/HealthExperienceUI.framework/HealthExperienceUI {
-	// ObjC -> Swift bridged methods
-	0x53620  @objc AllInsightsViewController.viewDidLoad <stripped>
-	0x53710  @objc AllInsightsViewController.initWithCoder: <stripped>
-	0x53800  @objc AllInsightsViewController.initWithCollectionViewLayout: <stripped>
-	0x53940  @objc AllInsightsViewController.initWithNibName:bundle: <stripped>
- }
-
- enum HealthVisualization.Constants { }
-
- class HealthVisualization.TrendCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let variant : InsightVariant // +0x10 (0x1)
-	let configuration : TrendConfiguration // +0x18 (0x19)
-
-	// Swift methods
-	0x54120  func <stripped> // method 
- }
-
- enum HealthVisualization.Errors {
-
-	// Properties
-	case unsupportedAggregationInterval : StatisticsInterval
  }
 
  class HealthVisualization.MostRecentSampleQueryOperationCore {
  class HealthVisualization.MostRecentSampleQueryOperation {
- enum HealthVisualization.MissingDataConfiguration {
-
-	// Properties
-	case interpolate : (upTo: UInt)
-	case invalidate  
-	case assumeZero  
- }
-
- enum HealthVisualization.Base {
-
-	// Properties
-	case interpolate  
-	case assumeZero  
-	case invalidate  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case type  
-	case upTo  
- }
-
- struct HealthVisualization.TrendConfiguration {
-
-	// Properties
-	let initialWindowLength : Int // +0x0
-	let windowExtension : Int // +0x8
-	let percentageOfFreedom : Double // +0x10
-	let proveStatistically : Bool // +0x18
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case initialWindowLength  
-	case windowExtension  
-	case percentageOfFreedom  
-	case proveStatistically  
- }
-
- class HealthVisualization.InsightResponseProducerOperation : type metadata for AsyncOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-	var responses : InsightResponse // +0x18 (0x8)
-	let request : InsightRequest // +0x20 (0xe0)
-	let queryManager : InsightValueObservable // +0x100 (0x28)
-	let aggregateIndexEventHorizon : Int // +0x128 (0x8)
-	let calculatorFactory : InsightCalculatorOperationFactory // +0x130 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x5a6f0  @objc InsightResponseProducerOperation.main <stripped>
-	0x5a750  @objc InsightResponseProducerOperation.init <stripped>
-	0x5a820  @objc InsightResponseProducerOperation..cxx_destruct <stripped>
-
-	// Swift methods
- }
-
  struct HealthVisualization.AudioExposureQueryConfiguration {
 
 	// Properties
@@ -1292,55 +776,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case statistics  
  }
 
- enum HealthVisualization.ChangeDetectorError {
-
-	// Properties
-	case alreadyRunning  
-	case notReady  
-	case stopped  
-	case unknown  
- }
-
- struct HealthVisualization.AnchoredChangeSet {
-
-	// Properties
-	let changes : [HKSampleType : HKSampleTypeChange] // +0x0
-	let newAnchor : HKQueryAnchor? // +0x8
- }
-
- class HealthVisualization.ChangeDetector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let healthStore : HKHealthStore // +0x10 (0x8)
-	let name : String // +0x18 (0x10)
-	let types : [HKSampleType] // +0x28 (0x8)
-	let anchor : HKQueryAnchor? // +0x30 (0x8)
-	let includeChangeDetails : Bool // +0x38 (0x1)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var state : +³ // +0x40 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updateHandler : o– // +0x48 (0x8)
-	let submissionQueue : OS_dispatch_queue // +0x50 (0x8)
-	var query : _HKDatabaseChangesQuery? // +0x58 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock : Ç• // +0x60 (0x8)
-
-	// Swift methods
-	0x5b5b0  class func ChangeDetector.__allocating_init(healthStore:name:types:anchor:includeChangeDetails:updateHandler:) // init 
-	0x5b6d0  func ChangeDetector.start() // method 
-	0x5b880  func <stripped> // method 
-	0x5bf70  func ChangeDetector.stop() // method 
-	0x5c080  class func static ChangeDetector.Operation(for:anchor:healthStore:waitForChanges:includeChangeDetails:) // method 
- }
-
- enum HealthVisualization.State {
-
-	// Properties
-	case initialized  
-	case running  
-	case stopped  
- }
-
  struct HealthVisualization.SampleCountQueryConfiguration { }
 
  enum HealthVisualization.CodingKeys { }
@@ -1351,13 +786,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case statistics : StatisticsQueryConfiguration
 	case correlatedStatistics : CorrelatedStatisticsQueryConfiguration
 	case sleep : SleepQueryConfiguration
+	case mostRecentTimePeriod : MostRecentTimePeriodQueryConfiguration
 	case mostRecentSample : MostRecentSampleQueryConfiguration
+	case activitySummary : ActivitySummaryQueryConfiguration
 	case audioExposure : AudioExposureQueryConfiguration
 	case audiogram : AudiogramQueryConfiguration
-	case mostRecentTimePeriod  
-	case activitySummary  
-	case sampleCount  
-	case standHours  
+	case sampleCount : SampleCountQueryConfiguration
+	case standHours : MostRecentTimePeriodQueryConfiguration
+	case countComparison : CountComparisonQueryConfiguration
  }
 
  enum HealthVisualization.CodingKeys {
@@ -1373,82 +809,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case audiogram  
 	case sampleCount  
 	case standHours  
+	case countComparison  
  }
 
  class HealthVisualization.DiagramAxis : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var horizontalMetrics : DiagramAxisMetrics // +0x10 (0x18)
-	var verticalMetrics : DiagramAxisMetrics // +0x28 (0x18)
-	let axisConfiguration : Axis // +0x40 (0xc)
-	let originalModelSpace : CGRect // +0x50 (0x20)
-	let originalEdgeInsets : UIEdgeInsets // +0x70 (0x21)
-	let innerAxisInsets : CGSize // +0x98 (0x11)
+	var horizontalMetrics : DiagramAxisMetrics
+	var verticalMetrics : DiagramAxisMetrics
+	let axisConfiguration : Axis
+	let originalModelSpace : CGRect
+	let originalEdgeInsets : UIEdgeInsets
+	let innerAxisInsets : CGSize
 
 	// Swift methods
-	0x5f1b0  func <stripped> // method 
-	0x5f280  func <stripped> // method 
-	0x5f670  func <stripped> // method 
-	0x5f800  func <stripped> // method 
-	0x60290  func <stripped> // method 
+	0x45f70  func <stripped> // method 
+	0x45fe0  func <stripped> // method 
+	0x46400  func <stripped> // method 
+	0x46690  func <stripped> // method 
+	0x47590  func <stripped> // method 
  }
 
- struct HealthVisualization.InsightConfiguration {
-
-	// Properties
-	let aggregatedDataQueryConfig : StatisticsQueryConfiguration // +0x0
-	let missingDataConfig : MissingDataConfiguration // +0x18
-	let requestedTrends : TrendConfiguration // +0x28
-	let requestedOutliers : OutlierConfiguration // +0x48
-	let requestedStreaks : StreakConfiguration // +0x60
-	let requestedDistributions : DistributionConfiguration // +0x90
-	let requestedTimehops : TimehopConfiguration // +0xa0
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case aggregatedDataQueryConfig  
-	case missingDataConfig  
-	case requestedTrends  
-	case requestedOutliers  
-	case requestedStreaks  
-	case requestedDistributions  
-	case requestedTimehops  
- }
-
- class HealthVisualization.StatisticsCollectionQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : ³ // +0x30 (0x8)
-	let sampleType : HKSampleType // +0x38 (0x8)
-	let configuration : StatisticsQueryConfiguration // +0x40 (0x12)
-	let configurationOverrides : StatisticsQueryConfigurationOverrides // +0xd4a60 (0x0)
-	let healthStore : HKHealthStore // +0x0 (0x8)
-	let query : HKStatisticsCollectionQuery // +0xd4a60 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resultHandler :  empty-list  // +0xe3c0 (0x10)
-
-	// ObjC -> Swift bridged methods
-	0x65730  @objc StatisticsCollectionQueryOperation.main <stripped>
-	0x658b0  @objc StatisticsCollectionQueryOperation.init <stripped>
-	0x659a0  @objc StatisticsCollectionQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x64ed0  func StatisticsCollectionQueryOperation.result.getter // getter 
-	0x64d20  class func StatisticsCollectionQueryOperation.__allocating_init(sampleType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
- }
-
+ class HealthVisualization.StatisticsCollectionQueryOperation {
  class HealthVisualization.DiagramLine : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let diagramConfig : Line // +0x10 (0x14)
-	let diagramData : DiagramData // +0x28 (0x30)
-	let axisHandler : DiagramAxis // +0x58 (0x8)
+	let diagramConfig : Line
+	let diagramData : DiagramData
+	let axisHandler : DiagramAxis
+	let computedInsets : UIEdgeInsets
+	let diagramMaxPointAnnotations : DiagramPointAnnotations
 
 	// Swift methods
-	0x66710  func <stripped> // getter 
+	0x4c420  func <stripped> // getter 
+	0x4d1a0  func <stripped> // method 
+	0x4e490  func <stripped> // method 
  }
 
  enum HealthVisualization.StatisticsOption {
@@ -1460,36 +855,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case cumulativeSum  
 	case mostRecent  
 	case duration  
- }
-
- class HealthVisualization.InsightValueCollectionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let unit : HKUnit // +0x10 (0x8)
-	let insightConfig : InsightConfiguration // +0x18 (0xb9)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var expectedDateInterval : í¢ // +0x0 (0x0)
-
-	// Swift methods
-	0x6ae30  func InsightValueCollectionConverter.expectedDateInterval.getter // getter 
-	0x6ae70  func InsightValueCollectionConverter.expectedDateInterval.setter // setter 
-	0x6aec0  func InsightValueCollectionConverter.expectedDateInterval.modify // modifyCoroutine 
-	0x6ac10  class func InsightValueCollectionConverter.__allocating_init(unit:insightConfig:expectedDateInterval:) // init 
-	0x6b000  func InsightValueCollectionConverter.convert(from:) // method 
-	0x6beb0  func <stripped> // method 
-	0x6c030  func <stripped> // method 
+	case averageDuration  
  }
 
  class HealthVisualization.DiagramBar : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let barDiagramConfig : Bar // +0x10 (0x1c)
-	let barData : DiagramData // +0x30 (0x30)
-	let axisHandler : DiagramAxis // +0x60 (0x8)
+	let barDiagramConfig : Bar
+	let barData : DiagramData
+	let axisHandler : DiagramAxis
 
 	// Swift methods
-	0x6f370  func <stripped> // getter 
-	0x6fd50  func <stripped> // method 
+	0x53f30  func <stripped> // getter 
+	0x55330  func <stripped> // method 
  }
 
  struct HealthVisualization.DelayedImmutable {
@@ -1511,34 +889,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case unknownError  
  }
 
- enum HealthVisualization.InsightThreshold {
-
-	// Properties
-	case constant : (value: Double)
-	case median  
-	case average  
- }
-
- enum HealthVisualization.Base {
-
-	// Properties
-	case constant  
-	case median  
-	case average  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case type  
-	case value  
- }
-
  struct HealthVisualization.StatisticsQueryConfigurationOverrides {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateInterval : í¢
+	let dateInterval : åý
 	let additionalPredicate : NSPredicate?
  }
 
@@ -1551,65 +906,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case startOfYear  
  }
 
- class HealthVisualization.ActivitySummaryQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : Û² // +0x30 (0x8)
-	let predicate : NSPredicate? // +0x38 (0x8)
-	let orderedAscending : Bool // +0x40 (0x1)
-	let limit : Int // +0x48 (0x8)
-	let queryQualityOfService : QualityOfService // +0x50 (0x8)
-	let healthStore : HKHealthStore // +0x58 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resultHandler :  empty-list  // +0x60 (0x10)
-	var $__lazy_storage_$_query : HKQuery? // +0x70 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_signpostID : {– // +0x0 (0x0)
-
-	// ObjC -> Swift bridged methods
-	0x76010  @objc ActivitySummaryQueryOperation.main <stripped>
-	0x772d0  @objc ActivitySummaryQueryOperation.init <stripped>
-	0x77200  @objc ActivitySummaryQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x75d20  class func ActivitySummaryQueryOperation.__allocating_init(predicate:orderedAscending:limit:name:queryQualityOfService:healthStore:resultHandler:) // init 
- }
-
+ class HealthVisualization.ActivitySummaryQueryOperation {
  class HealthVisualization.HighlightCalendarDayView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	let model : HighlightCalendarDayViewModel // +0x0 (0x0)
 	var dayLabel : UILabel? // +0x0 (0x8)
 	var todayIndicatorLayer : CALayer? // +0x0 (0x8)
-	let ringsRenderer : ARUIRingsViewRenderer? // +0x0 (0x8)
+	let ringsRenderer : ARUIRenderer? // +0x0 (0x8)
 	var activityRingsView : HKActivityRingView? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7aa80  @objc HighlightCalendarDayView.axDate <stripped>
-	0x7ac20  @objc HighlightCalendarDayView.axProbability <stripped>
-	0x7acf0  @objc HighlightCalendarDayView.axProjectionKind <stripped>
-	0x7adf0  @objc HighlightCalendarDayView.axCircleState <stripped>
-	0x7b140  @objc HighlightCalendarDayView.initWithCoder: <stripped>
-	0x7b160  @objc HighlightCalendarDayView.sizeThatFits: <stripped>
-	0x7b390  @objc HighlightCalendarDayView.layoutSubviews <stripped>
-	0x7b3c0  @objc HighlightCalendarDayView.layoutSublayersOfLayer: <stripped>
-	0x7b860  @objc HighlightCalendarDayView.traitCollectionDidChange: <stripped>
-	0x7b8b0  @objc HighlightCalendarDayView.initWithFrame: <stripped>
-	0x7b910  @objc HighlightCalendarDayView..cxx_destruct <stripped>
+WARNING: couldn't find address 0xf26c0002aaf0 (0x26c0002aaf0) in binary!
+	0xee5c  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xf2540002aac8 (0x2540002aac8) in binary!
+	0xee44  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xee400002ac98 (0x6400002ac98) in binary!
+	0xee40  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xf21c0002b050 (0x21c0002b050) in binary!
+	0xd9c4  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xd9b80002ada8 (0x1b80002ada8) in binary!
+	0xd180  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xf1ec0002aa88 (0x1ec0002aa88) in binary!
+	0x48000000c  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xede00002ac38 (0x5e00002ac38) in binary!
+	0xf1c8  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xd1740002b0d0 (0x1740002b0d0) in binary!
+	0xf1b0  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x204fffca150  @objc HighlightCalendarDayView.(null) <stripped>
+	0x9cfffca588  @objc HighlightCalendarDayView.èé{	 <stripped>
+	0xfffc9dd0  @objc HighlightCalendarDayView.t
+öEÔ…íýÿÿL‰ïÿ„  <stripped>
 
 	// Swift methods
-	0x7ab10  func <stripped> // getter 
+	0x5dab0  func <stripped> // getter 
  }
 
  class HealthVisualization.DiagramAxisOnly : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let config : AxisOnly // +0x10 (0x11)
-	let axisHandler : DiagramAxis // +0x28 (0x8)
+	let config : AxisOnly
+	let axisHandler : DiagramAxis
 
 	// Swift methods
-	0x7ccc0  func <stripped> // getter 
+	0x60d10  func <stripped> // getter 
  }
 
  enum HealthVisualization.LocalizationReplacement {
@@ -1620,28 +961,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case quantity : (value: Double, unit: String)
  }
 
- class HealthVisualization.TrendTextSupport : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let response : InsightResponse // +0x31c0 (0x0)
-	var $__lazy_storage_$_dateFormatter : NSDateFormatter? // +0x0 (0x8)
-	var $__lazy_storage_$_percentFormatter : NSNumberFormatter? // +0x0 (0x8)
-	var $__lazy_storage_$_integerFormatter : NSNumberFormatter? // +0x0 (0x8)
-
-	// Swift methods
-	0x7deb0  class func TrendTextSupport.__allocating_init(with:) // init 
-	0x7e080  func TrendTextSupport.localizedTitle.getter // getter 
-	0x7e270  func TrendTextSupport.localizedDescription.getter // getter 
-	0x7f2e0  class func TrendTextSupport.__allocating_init(from:) // init 
-	0x7f500  func TrendTextSupport.encode(to:) // method 
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case response  
- }
-
  enum HealthVisualization.StatisticsInterval {
 
 	// Properties
@@ -1650,48 +969,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case oneWeek  
 	case oneMonth  
 	case oneYear  
- }
-
- struct HealthVisualization.InsightResponse {
-
-	// Properties
-	let request : InsightRequest
-	let variant : InsightVariant
-	let diagramSupport : DiagramSupport
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let relevantStartDate : õ§
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let relevantEndDate : #Ž
-	let characteristics : InsightCharacteristicKey
- }
-
- struct HealthVisualization.DiagramSupport {
-
-	// Properties
-	let configuration : DiagramConfiguration // +0x0
-	let data : DiagramData // +0x50
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case request  
-	case variant  
-	case diagramSupport  
-	case relevantStartDate  
-	case relevantEndDate  
-	case characteristics  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case configuration  
-	case data  
- }
-
- class HealthVisualization.InsightCalculatorOperationFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
  }
 
  struct HealthVisualization.CorrelatedStatisticsQueryConfiguration {
@@ -1712,32 +989,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum HealthVisualization.CodingKeys { }
 
- class HealthVisualization.CorrelatedStatisticsCollectionQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : ±² // +0x30 (0x8)
-	let correlationType : HKCorrelationType // +0x38 (0x8)
-	let correlatedQuantityTypes : [HKQuantityType] // +0x40 (0x8)
-	let configuration : StatisticsQueryConfiguration // +0x48 (0x12)
-	let configurationOverrides : StatisticsQueryConfigurationOverrides // +0xe2e20 (0x0)
-	let queryQualityOfService : QualityOfService // +0x0 (0x8)
-	let healthStore : HKHealthStore // +0x0 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accumulatedStatisticsCollections : o² // +0x73635f5f (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resultHandler :  empty-list  // +0x0 (0x10)
-	let operationQueue : NSOperationQueue // +0x0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x8a540  @objc CorrelatedStatisticsCollectionQueryOperation.main <stripped>
-	0x8a840  @objc CorrelatedStatisticsCollectionQueryOperation.init <stripped>
-	0x8a740  @objc CorrelatedStatisticsCollectionQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x895d0  class func CorrelatedStatisticsCollectionQueryOperation.__allocating_init(correlationType:correlatedQuantityTypes:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
- }
-
+ class HealthVisualization.CorrelatedStatisticsCollectionQueryOperation {
  struct HealthVisualization.QuantityDistributionConfiguration {
 
 	// Properties
@@ -1758,6 +1010,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum HealthVisualization.BucketSize {
 
 	// Properties
+	case defaultBucketSize  
 	case audioExposureBucketSize  
 	case heartRateBucketSize  
  }
@@ -1777,16 +1030,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthVisualization.DiagramHeartRateRecovery : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let diagramConfig : HeartRateRecovery // +0x10 (0x4)
-	let diagramData : DiagramData // +0x18 (0x30)
-	var $__lazy_storage_$_allPoints : CGPoint // +0x48 (0x8)
-	var $__lazy_storage_$_perMinuteReadings : MinuteLine // +0x50 (0x8)
+	let diagramConfig : HeartRateRecovery
+	let diagramData : DiagramData
+	var $__lazy_storage_$_allPoints : CGPoint
+	var $__lazy_storage_$_perMinuteReadings : MinuteLine
 
 	// Swift methods
-	0x91540  func <stripped> // getter 
-	0x91910  func DiagramHeartRateRecovery.modelSpace.getter // getter 
-	0x91960  func DiagramHeartRateRecovery.screenInsets.getter // getter 
-	0x91de0  func DiagramHeartRateRecovery.drawingBlock.getter // getter 
+	0x6a080  func <stripped> // getter 
+	0x6a0d0  func <stripped> // getter 
+	0x6a560  func <stripped> // getter 
+	0x6a5e0  func <stripped> // getter 
+	0x6ab80  func <stripped> // getter 
+	0x6bae0  func <stripped> // method 
  }
 
  enum HealthVisualization.MinuteLine {
@@ -1823,53 +1078,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case three  
  }
 
- class HealthVisualization.QuantityDistributionQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingResult : #² // +0x30 (0x8)
-	let quantityType : HKQuantityType // +0x38 (0x8)
-	let healthStore : HKHealthStore // +0x40 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resultHandler :  empty-list  // +0x48 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let baseDate : #Ž // +0x0 (0x0)
-	let configuration : QuantityDistributionConfiguration // +0xec370 (0x10)
-	let queryQualityOfService : QualityOfService // +0x31dc (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let queryStartDate : õ§ // +0x2 (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let queryEndDate : õ§ // +0x0 (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anchorDate : õ§ // +0x77735f5f (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intervalComponents : ‰ // +0x6665725f (0x0)
-	let queryPredicate : NSPredicate? // +0x45545f5f (0x8)
-	var $__lazy_storage_$_quantityDistributionQuery : _HKQuantityDistributionQuery? // +0x0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x95380  @objc QuantityDistributionQueryOperation.main <stripped>
-	0x95ae0  @objc QuantityDistributionQueryOperation.init <stripped>
-	0x95990  @objc QuantityDistributionQueryOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x94490  func QuantityDistributionQueryOperation.result.getter // getter 
-	0x945c0  class func QuantityDistributionQueryOperation.__allocating_init(quantityType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:baseDate:resultHandler:) // init 
-	0x95540  func <stripped> // method 
- }
-
- class HealthVisualization.InsightTextSupportFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
-	0x975f0  class func static InsightTextSupportFactory.textSupport(for:) // method 
- }
-
- class HealthVisualization.CurrentValueDateIntervalStatsCollectionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
-	0x97780  class func CurrentValueDateIntervalStatsCollectionConverter.__allocating_init() // init 
-	0x977b0  func CurrentValueDateIntervalStatsCollectionConverter.convert(from:) // method 
- }
-
- class HealthVisualization.AllInsightsSectionedDataSource {
+ class HealthVisualization.QuantityDistributionQueryOperation {
  struct HealthVisualization.MostRecentTimePeriodQueryConfiguration { }
 
  enum HealthVisualization.CodingKeys { }
@@ -1877,61 +1086,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthVisualization.ItemDetailViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var scrollView : UIScrollView? // +0x8 (0x8)
-	var closeButton : UIButton? // +0x10 (0x8)
-	var allItemsButton : UIButton? // +0x18 (0x8)
-	var containerView : UIView? // +0x20 (0x8)
-	var buttonStackView : UIStackView? // +0x28 (0x8)
-	let embeddedViewController : UIViewController // +0x30 (0x8)
-	var dataProvider : ItemDetailDataProviding // +0x38 (0x10)
-	var $__lazy_storage_$_associatedObjectTypeButtons : [UIButton]? // +0x48 (0x8)
-	let associatedObjectTypes : [HKObjectType] // +0x50 (0x8)
+	var scrollView : UIScrollView?
+	var closeButton : UIButton?
+	var allItemsButton : UIButton?
+	var containerView : UIView?
+	var buttonStackView : UIStackView?
+	let embeddedViewController : UIViewController
+	var dataProvider : ItemDetailDataProviding
+	var $__lazy_storage_$_associatedObjectTypeButtons : [UIButton]?
+	let associatedObjectTypes : [HKObjectType]
 
 	// ObjC -> Swift bridged methods
-	0x99480  @objc ItemDetailViewController.initWithCoder: <stripped>
-	0x9a980  @objc ItemDetailViewController.viewDidLoad <stripped>
-	0x9aba0  @objc ItemDetailViewController.initWithNibName:bundle: <stripped>
-	0x9aa60  @objc ItemDetailViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0xede00002ac38 (0x5e00002ac38) in binary!
+	0xf1c8  @objc ItemDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0xd1740002b0d0 (0x1740002b0d0) in binary!
+	0xf1b0  @objc ItemDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x204fffca150  @objc ItemDetailViewController.(null) <stripped>
+	0x9cfffca588  @objc ItemDetailViewController.èé{	 <stripped>
 
 	// Swift methods
-	0x98ce0  func ItemDetailViewController.scrollView.getter // getter 
-	0x98d00  func ItemDetailViewController.scrollView.setter // setter 
-	0x98d20  func ItemDetailViewController.scrollView.modify // modifyCoroutine 
-	0x98d60  func ItemDetailViewController.closeButton.getter // getter 
-	0x98d80  func ItemDetailViewController.closeButton.setter // setter 
-	0x98da0  func ItemDetailViewController.closeButton.modify // modifyCoroutine 
-	0x98de0  func ItemDetailViewController.allItemsButton.getter // getter 
-	0x98e00  func ItemDetailViewController.allItemsButton.setter // setter 
-	0x98e20  func ItemDetailViewController.allItemsButton.modify // modifyCoroutine 
-	0x98e60  func ItemDetailViewController.containerView.getter // getter 
-	0x98e80  func ItemDetailViewController.containerView.setter // setter 
-	0x98ea0  func ItemDetailViewController.containerView.modify // modifyCoroutine 
-	0x98ee0  func ItemDetailViewController.buttonStackView.getter // getter 
-	0x98f40  func ItemDetailViewController.buttonStackView.setter // setter 
-	0x98fa0  func ItemDetailViewController.buttonStackView.modify // modifyCoroutine 
-	0x99010  func ItemDetailViewController.associatedObjectTypeButtons.getter // getter 
-	0x99330  func ItemDetailViewController.associatedObjectTypeButtons.setter // setter 
-	0x99350  func ItemDetailViewController.associatedObjectTypeButtons.modify // modifyCoroutine 
-	0x993c0  class func ItemDetailViewController.__allocating_init(embedding:associatedObjectTypes:dataProvider:) // init 
+	0x70520  func <stripped> // getter 
+	0x70540  func <stripped> // setter 
+	0x70560  func <stripped> // modifyCoroutine 
+	0x705e0  func <stripped> // getter 
+	0x70600  func <stripped> // setter 
+	0x70620  func <stripped> // modifyCoroutine 
+	0x706a0  func <stripped> // getter 
+	0x706c0  func <stripped> // setter 
+	0x706e0  func <stripped> // modifyCoroutine 
+	0x70760  func <stripped> // getter 
+	0x70780  func <stripped> // setter 
+	0x707a0  func <stripped> // modifyCoroutine 
+	0x708c0  func <stripped> // getter 
+	0x70920  func <stripped> // setter 
+	0x70980  func <stripped> // modifyCoroutine 
+	0x70a40  func <stripped> // getter 
+	0x70d60  func <stripped> // setter 
+	0x70d80  func <stripped> // modifyCoroutine 
+	0x70df0  class func ItemDetailViewController.__allocating_init(embedding:associatedObjectTypes:dataProvider:) // init 
  }
 
  struct HealthVisualization.HealthTypeProxy {
 
 	// Properties
 	let objectTypeIdentifier : String // +0x0
- }
-
- class HealthVisualization.InsightResponseCollatorOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
-
-	// Properties
-	var responses : InsightResponse // +0x8 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x9ccc0  @objc InsightResponseCollatorOperation.main <stripped>
-	0x9ccf0  @objc InsightResponseCollatorOperation.init <stripped>
-	0x9cd80  @objc InsightResponseCollatorOperation..cxx_destruct <stripped>
-
-	// Swift methods
+	let healthStore : HKHealthStore? // +0x10
  }
 
  class HealthVisualization.DatabaseChangesProducer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DatabaseChangesProducing {
@@ -1943,68 +1143,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
- class HealthVisualization.ChangeDetectorOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience, AnchoredChangeSetProviding {
+ class HealthVisualization.ChangeDetectorOperation {
+ struct HealthVisualization.CountComparisonQueryConfiguration {
 
 	// Properties
-	let types : [HKSampleType]
-	let anchor : HKQueryAnchor?
-	let healthStore : HKHealthStore
-	let waitForChanges : Bool
-	let includeChangeDetails : Bool
-	var query : DatabaseChangesProducing
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var result : ‰
-
-	// ObjC -> Swift bridged methods
-	0x9f050  @objc ChangeDetectorOperation.main <stripped>
-	0x9f160  @objc ChangeDetectorOperation.init <stripped>
-	0x9f230  @objc ChangeDetectorOperation..cxx_destruct <stripped>
-
-	// Swift methods
+	var firstDurationCondition : DurationCondition // +0x0
+	var secondDurationCondition : DurationCondition // +0x10
  }
 
- class HealthVisualization.OnlineDateDistributionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ enum HealthVisualization.DurationCondition {
 
 	// Properties
-	var endAggregateIndexUnderConsideration : Int // +0x10 (0x8)
-	var nextAggregateIndexNeeded : Int // +0x18 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var relevantDateInterval : í¢ // +0x0 (0x0)
-	let configuration : DistributionConfiguration // +0x0 (0x9)
-	let binningCalculation : BinningCalculation // +0x0 (0x1)
-	var bins : Bin // +0x0 (0x8)
-
-	// Swift methods
-	0x9f810  func <stripped> // method 
-	0x9fad0  func <stripped> // method 
-	0x9ff60  func <stripped> // method 
- }
-
- struct HealthVisualization.Bin {
-
-	// Properties
-	var sumValue : Double // +0x0
-	var valueCount : Int // +0x8
- }
-
- enum HealthVisualization.BinningCalculation {
-
-	// Properties
-	case average  
-	case count  
-	case sum  
- }
-
- struct HealthVisualization.DistributionConfiguration {
-
-	// Properties
-	let binningStrategy : BinningStrategy // +0x0
+	case greaterThanOrEqualTo : Double
  }
 
  enum HealthVisualization.CodingKeys {
 
 	// Properties
-	case binningStrategy  
+	case greaterThanOrEqualTo  
+ }
+
+ enum HealthVisualization.CodingKeys {
+
+	// Properties
+	case firstDurationCondition  
+	case secondDurationCondition  
  }
 
  enum HealthVisualization.DiagramConfiguration {
@@ -2018,6 +1181,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case heartRateRecovery : HeartRateRecovery
  }
 
+ enum HealthVisualization.PointLabelConfigurationKeys {
+
+	// Properties
+	case minMax  
+	case allPoints  
+ }
+
+ enum HealthVisualization.PointLabelConfiguration {
+
+	// Properties
+	case minMax : PointLabelMinMaxConfiguration
+	case allPoints : PointLabelAllPointsConfiguration
+ }
+
+ struct HealthVisualization.PointLabelMinMaxSet {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ struct HealthVisualization.PointLabelMinMaxConfiguration {
+
+	// Properties
+	let labelOptions : PointLabelMinMaxSet // +0x0
+	let labelAttributes : TextAttributes // +0x8
+	let valueAttributes : TextAttributes // +0x9
+	let avoidOverlappingLabelWithDataGroups : Bool // +0xa
+ }
+
+ struct HealthVisualization.PointLabelAllPointsConfiguration {
+
+	// Properties
+	let maxPointsAttributes : PointLabelAllPointsAttributes // +0x0
+	let minPointsAttributes : PointLabelAllPointsAttributes // +0x1
+ }
+
+ struct HealthVisualization.PointLabelAllPointsAttributes {
+
+	// Properties
+	let valueAttributes : TextAttributes // +0x0
+ }
+
  struct HealthVisualization.Bar {
 
 	// Properties
@@ -2028,9 +1233,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let highlightColor : Color // +0x4
 	let axisLineColor : Color // +0x5
 	let referenceLineColor : Color // +0x6
-	let axisText : TextAttributes // +0x7
-	let baseValue : Double // +0x8
-	let axis : Axis // +0x10
+	let referenceLineTextAttributes : TextAttributes // +0x7
+	let referenceAnnotationPosition : ReferenceAnnotationPosition // +0x8
+	let axisText : TextAttributes // +0x9
+	let baseValue : Double // +0x10
+	let axis : Axis // +0x18
+	let outerInsets : Insets // +0x26
  }
 
  struct HealthVisualization.Banner {
@@ -2044,11 +1252,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let axis : Axis // +0x0
-	let horizontalAxisInset : AxisInset // +0xc
-	let verticalAxisInset : AxisInset // +0xd
-	let innerHorizontalInset : AxisInset // +0xe
-	let innerVerticalInset : AxisInset // +0xf
-	let drawModelAreaForDebug : Bool // +0x10
+	let horizontalAxisInset : AxisInset // +0xe
+	let verticalAxisInset : AxisInset // +0xf
+	let innerHorizontalInset : AxisInset // +0x10
+	let innerVerticalInset : AxisInset // +0x11
+	let drawModelAreaForDebug : Bool // +0x12
  }
 
  enum HealthVisualization.BarWidth {
@@ -2056,6 +1264,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case hourWidth  
 	case dayWidth  
+	case weekWidth  
 	case insightWidth  
  }
 
@@ -2064,6 +1273,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let lineProperties : LineProperties // +0x0
 	let axis : Axis // +0x8
+	let valueFormatter : ValueFormatter // +0x16
+	let outerInsets : Insets // +0x17
  }
 
  struct HealthVisualization.LineProperties {
@@ -2074,8 +1285,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let lineHighlightColor : Color // +0x2
 	let linePointRadius : LineRadius // +0x3
 	let lineCornerRadius : LineRadius // +0x4
-	let referenceLineColor : Color // +0x5
-	let referenceLineWidth : LineWidth // +0x6
+	let referenceAnnotationPosition : ReferenceAnnotationPosition // +0x5
+	let referenceLineColor : Color // +0x6
+	let referenceLineWidth : LineWidth // +0x7
+	let referenceLineTextAttributes : TextAttributes // +0x8
+	let dataGroupForPointLabels : DiagramDataKey // +0x9
+	let pointLabels : PointLabelConfiguration // +0x10
  }
 
  enum HealthVisualization.LineWidth {
@@ -2096,6 +1311,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case halfRadius  
 	case zeroRadius  
 	case heartRateRecoveryDotRadius  
+	case threeFourthsRadius  
+	case fourThirdsRadius  
  }
 
  struct HealthVisualization.Distribution {
@@ -2107,57 +1324,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let highlightColor : Color // +0x3
 	let referenceLineColor : Color // +0x4
 	let referenceLineTextAttributes : TextAttributes // +0x5
-	let pointLabelData : DiagramDataKey // +0x6
-	let pointLabels : DistributionPointLabelConfiguration // +0x8
+	let referenceAnnotationPosition : ReferenceAnnotationPosition // +0x6
+	let dataGroupForPointLabels : DiagramDataKey // +0x7
+	let pointLabels : PointLabelConfiguration // +0x8
 	let verticalLimits : DistributionLimits // +0x18
 	let axis : Axis // +0x41
- }
-
- enum HealthVisualization.DistributionPointLabelConfigurationKeys {
-
-	// Properties
-	case minMax  
-	case allPoints  
- }
-
- enum HealthVisualization.DistributionPointLabelConfiguration {
-
-	// Properties
-	case minMax : DistributionMinMaxConfiguration
-	case allPoints : DistributionAllPointsConfiguration
- }
-
- struct HealthVisualization.DistributionMinMaxSet {
-
-	// Properties
-	let rawValue : Int // +0x0
- }
-
- struct HealthVisualization.DistributionMinMaxConfiguration {
-
-	// Properties
-	let labelOptions : DistributionMinMaxSet // +0x0
-	let labelAttributes : TextAttributes // +0x8
-	let valueAttributes : TextAttributes // +0x9
- }
-
- struct HealthVisualization.DistributionAllPointsConfiguration {
-
-	// Properties
-	let maxPointsAttributes : DistributionAllPointsAttributes // +0x0
-	let minPointsAttributes : DistributionAllPointsAttributes // +0x1
- }
-
- struct HealthVisualization.DistributionAllPointsAttributes {
-
-	// Properties
-	let valueAttributes : TextAttributes // +0x0
+	let outerInsets : Insets // +0x4f
+	let valueFormatter : ValueFormatter // +0x50
  }
 
  enum HealthVisualization.DistributionWidth {
 
 	// Properties
 	case defaultDistributionWidth  
+	case weekDistributionWidth  
 	case workoutHeartRateDistributionWidth  
 	case alertHeartRateDistributionWidth  
 	case audioExposureDistributionWidth  
@@ -2194,7 +1374,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let horizontal : AxisProperties // +0x0
-	let vertical : AxisProperties // +0x6
+	let vertical : AxisProperties // +0x7
  }
 
  struct HealthVisualization.AxisProperties {
@@ -2204,9 +1384,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let labelTextAttributes : TextAttributes // +0x1
 	let labelColor : Color // +0x2
 	let gridLineColor : Color // +0x3
-	let gridLineWidth : AxisLineWidth // +0x0
-	let majorTickLength : AxisTickLength // +0x4
-	let minorTickLength : AxisTickLength // +0x5
+	let gridLineWidth : AxisLineWidth // +0x4
+	let majorTickLength : AxisTickLength // +0x5
+	let minorTickLength : AxisTickLength // +0x6
  }
 
  enum HealthVisualization.AxisTickLength {
@@ -2221,12 +1401,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case defaultWidth  
+	case halfWidth  
  }
 
  enum HealthVisualization.AxisType {
 
 	// Properties
 	case defaultDateAxis  
+	case defaultDateRangeAxis  
 	case defaultIntegerAxis  
 	case defaultScalarAxis  
 	case sleepAnalysisDurationAxis  
@@ -2236,8 +1418,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case heightLengthAxis  
 	case audioVerticalAxis  
 	case workoutHeartRateDateAxis  
+	case sleepHeartRateDateAxis  
+	case weekdayAxis  
+	case multiDayDateAxis  
+	case dayLabelBoundsDateAxis  
 	case customAxis  
  }
+
+ enum HealthVisualization.SharedConstants { }
 
  enum HealthVisualization.CornerSize {
 
@@ -2265,6 +1453,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case gradientDarkTransparent  
 	case sparklineActiveColor  
 	case sparklineInactiveColor  
+	case referenceAnnotationCenterColor  
 	case vitalsKeyColor  
 	case activityKeyColor  
 	case bodyMeasurementsKeyColor  
@@ -2272,7 +1461,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case nutritionKeyColor  
 	case reproductiveHealthKeyColor  
 	case sleepKeyColor  
-	case symptomsKeyColor  
 	case respiratoryKeyColor  
 	case workoutKeyColor  
 	case workoutHeartRateKeyColor  
@@ -2296,6 +1484,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noInset  
  }
 
+ enum HealthVisualization.Insets {
+
+	// Properties
+	case defaultDistributionInsets  
+	case defaultBarInsets  
+	case defaultLineInsets  
+	case zeroInsets  
+ }
+
+ enum HealthVisualization.ValueFormatter {
+
+	// Properties
+	case standard  
+	case percent  
+ }
+
  enum HealthVisualization.TextAttributes {
 
 	// Properties
@@ -2303,8 +1507,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case snippetDiagramText  
 	case defaultAxisText  
 	case defaultVerticalAxisText  
+	case dateRangeAxisText  
+	case heavyRoundedVerticalAxisText  
+	case referenceAnnotationCenterText  
 	case hearingMinMaxLabel  
 	case hearingMinMaxValue  
+	case hearingPointAnnotationText  
 	case workoutHeartRateMinMaxLabel  
 	case workoutHeartRateMinMaxValue  
 	case heartRateRecoveryTimeLabel  
@@ -2313,6 +1521,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case alertHeartRatePointLabelText  
 	case alertHearingAnnotationText  
 	case alertHearingPointLabelText  
+ }
+
+ enum HealthVisualization.ReferenceAnnotationPosition {
+
+	// Properties
+	case leftMargin  
+	case rightMargin  
+	case center  
+	case bottomMargin  
  }
 
  enum HealthVisualization.CodingKeys {
@@ -2366,37 +1583,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum HealthVisualization.CodingKeys {
 
 	// Properties
-	case valueAttributes  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case maxPointsAttributes  
-	case minPointsAttributes  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
-	case labelOptions  
-	case labelAttributes  
-	case valueAttributes  
- }
-
- enum HealthVisualization.CodingKeys {
-
-	// Properties
 	case barWidth  
 	case padding  
 	case contentColor  
 	case highlightColor  
 	case referenceLineColor  
 	case referenceLineTextAttributes  
-	case pointLabelData  
+	case referenceAnnotationPosition  
+	case dataGroupForPointLabels  
 	case pointLabels  
 	case verticalLimits  
 	case axis  
+	case outerInsets  
+	case valueFormatter  
  }
 
  enum HealthVisualization.CodingKeys {
@@ -2407,8 +1606,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case lineHighlightColor  
 	case linePointRadius  
 	case lineCornerRadius  
+	case referenceAnnotationPosition  
 	case referenceLineColor  
 	case referenceLineWidth  
+	case referenceLineTextAttributes  
+	case dataGroupForPointLabels  
+	case pointLabels  
  }
 
  enum HealthVisualization.CodingKeys {
@@ -2416,6 +1619,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case lineProperties  
 	case axis  
+	case valueFormatter  
+	case outerInsets  
  }
 
  enum HealthVisualization.CodingKeys {
@@ -2446,15 +1651,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case highlightColor  
 	case axisLineColor  
 	case referenceLineColor  
+	case referenceLineTextAttributes  
+	case referenceAnnotationPosition  
 	case axisText  
 	case baseValue  
 	case axis  
+	case outerInsets  
+ }
+
+ enum HealthVisualization.CodingKeys {
+
+	// Properties
+	case valueAttributes  
+ }
+
+ enum HealthVisualization.CodingKeys {
+
+	// Properties
+	case maxPointsAttributes  
+	case minPointsAttributes  
+ }
+
+ enum HealthVisualization.CodingKeys {
+
+	// Properties
+	case labelOptions  
+	case labelAttributes  
+	case valueAttributes  
+	case avoidOverlappingLabelWithDataGroups  
+ }
+
+ class HealthVisualization.DiagramDateRangeAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+	0x9d930  func <stripped> // method 
  }
 
  class HealthVisualization.DiagramDateAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let boundsLabelsShouldShowDaySpan : Bool
+	let customLabelDateFormatter : NSDateFormatter?
+
 	// Swift methods
-	0xc8740  func <stripped> // method 
-	0xc8cb0  func DiagramDateAxisMetricsCalculator.axisMetrics(for:customLocations:) // method 
+	0x9ddf0  func <stripped> // method 
+	0x9d2d0  func <stripped> // method 
+	0x9d820  func <stripped> // method 
  }
 
  struct HealthVisualization.DateTickIntervalStrategy {
@@ -2462,11 +1703,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let enumerationAlgorithm : IntervalEnumerationAlgorithm
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intervalMatchDateComponents : ‰
+	let intervalMatchDateComponents : #î
 	let intervalDownsampleFactor : Int
 	let useMajorTicksOnly : Bool
 	let labelDateFormatter : NSDateFormatter
+	let boundsLabelDateFormatter : NSDateFormatter
+	let prefersRelativeDateFormatting : Bool
  }
+
+ class HealthVisualization.DiagramWeekdayAxisMetricsCalculator : DiagramDateAxisMetricsCalculator { }
 
  enum HealthVisualization.IntervalEnumerationAlgorithm {
 
@@ -2475,39 +1720,61 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case calendrical  
  }
 
+ enum HealthVisualization.ChangeDetectorError {
+
+	// Properties
+	case alreadyRunning  
+	case notReady  
+	case stopped  
+	case unknown  
+ }
+
+ struct HealthVisualization.AnchoredChangeSet {
+
+	// Properties
+	let changes : [HKSampleType : HKSampleTypeChange] // +0x0
+	let newAnchor : HKQueryAnchor? // +0x8
+ }
+
  class HealthVisualization.AggregateChangeDetector : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let healthStore : HKHealthStore // +0x8 (0x8)
-	let includeChangeDetails : Bool // +0x10 (0x1)
-	let name : String? // +0x18 (0x10)
-	let deliveryQueue : OS_dispatch_queue // +0x28 (0x8)
+	let healthStore : HKHealthStore
+	let includeChangeDetails : Bool
+	let name : String?
+	let deliveryQueue : OS_dispatch_queue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var changesHandler : ƒ // +0x30 (0x8)
+	var changesHandler : +é
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var queries : ï± // +0x38 (0x8)
+	var queries : é
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock : Ç• // +0x40 (0x8)
-	var lock_pendingChangeSet : AnchoredChangeSet // +0x48 (0x10)
+	let otherChangePublishers : óè
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock_pendingError : …ž // +0x58 (0x8)
-	var lock_dispatchPending : Bool // +0x60 (0x1)
-	var lock_state : State // +0x61 (0x1)
+	var otherChanges : Õè
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lock : cè
+	var lock_pendingChangeSet : AnchoredChangeSet
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lock_pendingError : õí
+	var lock_dispatchPending : Bool
+	var lock_state : State
 
 	// ObjC -> Swift bridged methods
-	0xd03b0  @objc AggregateChangeDetector.init <stripped>
-	0xd02c0  @objc AggregateChangeDetector..cxx_destruct <stripped>
+WARNING: couldn't find address 0xf15c0002aa50 (0x15c0002aa50) in binary!
+	0xf148  @objc AggregateChangeDetector.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x5483a4d4152  @objc AggregateChangeDetector.(null) <stripped>
 
 	// Swift methods
-	0xccad0  func AggregateChangeDetector.dispatchPending.getter // getter 
-	0xccb70  class func AggregateChangeDetector.__allocating_init(types:highFrequencyTypes:anchor:includeChangeDetails:name:healthStore:deliveryQueue:changesHandler:) // init 
-	0xcd750  func AggregateChangeDetector.start() // method 
-	0xcda60  func AggregateChangeDetector.stop() // method 
-	0xcdb70  func AggregateChangeDetector.dispatchChanges() // method 
-	0xcec60  func <stripped> // method 
-	0xcf110  func <stripped> // method 
-	0xcf280  func <stripped> // method 
-	0xcf440  func <stripped> // method 
+	0xa09c0  func <stripped> // getter 
+	0xa0a60  class func AggregateChangeDetector.__allocating_init(types:highFrequencyTypes:anchor:includeChangeDetails:name:healthStore:deliveryQueue:changesHandler:otherChangePublishers:) // init 
+	0xa11e0  func <stripped> // method 
+	0xa1820  func <stripped> // method 
+	0xa1980  func <stripped> // method 
+	0xa32e0  func <stripped> // method 
+	0xa37f0  func <stripped> // method 
+	0xa3a50  func <stripped> // method 
+	0xa3ca0  func <stripped> // method 
  }
 
  enum HealthVisualization.State {

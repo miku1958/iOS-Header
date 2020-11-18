@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SharedWebCredentials/NSSecureCoding-Protocol.h>
-#import <SharedWebCredentials/NSXPCListenerDelegate-Protocol.h>
 #import <SharedWebCredentials/SWCRedactedDescription-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, _SWCGeneration, _SWCServiceSpecifier;
+@class NSDictionary, NSMutableDictionary, _SWCGeneration, _SWCServiceSpecifier;
 
-@interface _SWCServiceSettings : NSObject <NSXPCListenerDelegate, SWCRedactedDescription, NSSecureCoding>
+@interface _SWCServiceSettings : NSObject <SWCRedactedDescription, NSSecureCoding>
 {
     NSMutableDictionary *_dict;
     unsigned int _hasChanges:1;
@@ -20,16 +19,11 @@
     _SWCGeneration *_generation;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly) NSDictionary *dictionaryRepresentation;
 @property (readonly) _SWCGeneration *generation; // @synthesize generation=_generation;
 @property (readonly) BOOL hasChanges;
-@property (readonly) unsigned long long hash;
 @property (readonly) _SWCServiceSpecifier *serviceSpecifier; // @synthesize serviceSpecifier=_serviceSpecifier;
-@property (readonly) Class superclass;
 
-+ (id)_log;
 + (id)notificationCenter;
 + (void)postChangeNotificationForServiceSpecifier:(id)arg1;
 + (BOOL)removeObjectsForKeys:(id)arg1 serviceSpecifier:(id)arg2 error:(id *)arg3;
@@ -40,6 +34,8 @@
 - (void).cxx_destruct;
 - (id)_initWithServiceSpecifier:(id)arg1 dictionary:(id)arg2 generation:(id)arg3;
 - (BOOL)commitReturningError:(id *)arg1;
+- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)objectForKey:(id)arg1 ofClass:(Class)arg2;

@@ -11,7 +11,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
++ (id)_timestamp;
++ (id)dictionaryForBiometricMatchState:(long long)arg1 didBiometricsLockout:(BOOL)arg2;
++ (id)dictionaryForCancellationEvent:(unsigned long long)arg1 didBiometricsLockout:(BOOL)arg2;
++ (id)dictionaryForUserAction:(long long)arg1 didBiometricsLockout:(BOOL)arg2;
+- (void)addBiometricMatchStateFinal:(long long)arg1;
+- (void)addClientMetadataForPurchaseInfo:(id)arg1 metricsDictionary:(id)arg2;
+- (void)addDualActionSuccess:(BOOL)arg1;
+- (void)addUserActions:(id)arg1;
 
 @end
 

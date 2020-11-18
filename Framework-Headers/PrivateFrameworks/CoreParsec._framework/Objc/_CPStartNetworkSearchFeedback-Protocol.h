@@ -12,12 +12,14 @@
 
 @property (copy, nonatomic) NSData *bodyData;
 @property (nonatomic) int endpoint;
+@property (copy, nonatomic) NSString *experimentId;
 @property (copy, nonatomic) NSDictionary *headers;
 @property (copy, nonatomic) NSString *input;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int lookupSelectionType;
 @property (nonatomic) unsigned long long queryId;
 @property (nonatomic) unsigned long long timestamp;
+@property (copy, nonatomic) NSString *treatmentId;
 @property (nonatomic) int triggerEvent;
 @property (nonatomic) int tuscanyStatus;
 @property (copy, nonatomic) NSString *url;

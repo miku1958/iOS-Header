@@ -18,18 +18,16 @@
 }
 
 - (void).cxx_destruct;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 multitaskingModifier:(id)arg3;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettings;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (id)opacitySettings;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (id)transitionDidEnd;
-- (id)transitionWillBegin;
 - (id)transitionWillUpdate;
+- (id)visibleAppLayouts;
 
 @end
 

@@ -6,6 +6,7 @@
 
 #import <UIKit/UIPresentationController.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPMediaControlsPresentationController : UIPresentationController
 {
 }

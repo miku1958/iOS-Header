@@ -11,13 +11,12 @@
 @interface DMFApplicationPolicyMonitor : NSObject
 {
     NSArray *_policyTypes;
-    DMFPolicyRegistration *_registration;
     NSUUID *_identifier;
+    DMFPolicyRegistration *_registration;
 }
 
-@property (readonly, getter=isEnabled) BOOL enabled;
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
+@property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 @property (readonly, nonatomic) DMFPolicyRegistration *registration; // @synthesize registration=_registration;
 
 + (void)_fetchCategoriesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -31,6 +31,8 @@
 - (void)logEventInteractionForEventWithEventIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)resolveEventNameRecordChanges:(id)arg1 client:(id)arg2 error:(id *)arg3 handleBatch:(CDUnknownBlockType)arg4;
+- (void)scoredEventsBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)scoredEventsWithQuery:(id)arg1 error:(id *)arg2 handleBatch:(CDUnknownBlockType)arg3;
 - (BOOL)sendRTCLogsWithError:(id *)arg1;
 
 @end

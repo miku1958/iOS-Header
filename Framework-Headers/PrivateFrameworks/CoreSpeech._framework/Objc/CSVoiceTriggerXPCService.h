@@ -8,41 +8,36 @@
 
 #import <CoreSpeech/CSVoiceTriggerXPCClientDelegate-Protocol.h>
 
-@class CSVoiceTriggerXPCClient, NSMutableSet, NSString;
-@protocol CSVoiceTriggerXPCServiceDelegate, OS_dispatch_queue;
+@class CSVoiceTriggerXPCClient, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CSVoiceTriggerXPCService : NSObject <CSVoiceTriggerXPCClientDelegate>
 {
-    BOOL _isPhraseSpotterBypassed;
     NSObject<OS_dispatch_queue> *_queue;
-    id<CSVoiceTriggerXPCServiceDelegate> _delegate;
-    NSMutableSet *_activationAssertions;
     CSVoiceTriggerXPCClient *_xpcClient;
 }
 
-@property (strong, nonatomic) NSMutableSet *activationAssertions; // @synthesize activationAssertions=_activationAssertions;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<CSVoiceTriggerXPCServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isPhraseSpotterBypassed; // @synthesize isPhraseSpotterBypassed=_isPhraseSpotterBypassed;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CSVoiceTriggerXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
 + (id)sharedService;
-+ (id)sharedServiceForCoreSpeechDaemon;
 - (void).cxx_destruct;
-- (id)_createXPCClientConnectionIfNeeded;
+- (id)_createXPCClientConnectionIfNeeded:(id)arg1;
 - (void)_teardownXPCClientIfNeeded;
 - (void)enableVoiceTrigger:(BOOL)arg1 withAssertion:(id)arg2;
-- (void)enableVoiceTriggerForCoreSpeechDaemon:(BOOL)arg1 withAssertion:(id)arg2 timestamp:(double)arg3;
+- (void)enableVoiceTrigger:(BOOL)arg1 withAssertion:(id)arg2 xpcClient:(id)arg3;
+- (id)fetchVoiceTriggerDailyStats;
 - (id)init;
-- (void)notifyServiceConnectionLostForCoreSpeechDaemon;
 - (void)notifyVoiceTriggeredSiriSessionCancelled;
-- (void)notifyVoiceTriggeredSiriSessionCancelledForCoreSpeechDaemon;
+- (void)notifyVoiceTriggeredSiriSessionCancelledWithXpcClient:(id)arg1;
 - (void)setPhraseSpotterBypassing:(BOOL)arg1 timeout:(double)arg2;
-- (void)setPhraseSpotterBypassingForCoreSpeechDaemon:(BOOL)arg1 timeout:(double)arg2;
+- (void)setPhraseSpotterBypassing:(BOOL)arg1 timeout:(double)arg2 xpcClient:(id)arg3;
+- (void)setRaiseToSpeakBypassing:(BOOL)arg1 timeout:(double)arg2;
+- (void)setRaiseToSpeakBypassing:(BOOL)arg1 timeout:(double)arg2 xpcClient:(id)arg3;
 - (void)voiceTriggerXPCClient:(id)arg1 didDisconnect:(BOOL)arg2;
 
 @end

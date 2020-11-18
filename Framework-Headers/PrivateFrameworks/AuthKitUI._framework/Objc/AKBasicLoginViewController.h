@@ -12,7 +12,7 @@
 #import <AuthKitUI/UITableViewDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKBasicLoginActions, AKBasicLoginOptionsViewController, NSLayoutConstraint, NSString, UITableView, UITableViewCell, UIView;
+@class AKAppleIDAuthenticationInAppContext, AKBasicLoginActions, AKBasicLoginOptionsViewController, AKBasicLoginTableViewCell, NSLayoutConstraint, NSString, UITableView, UIView;
 @protocol AKBasicLoginControllerDelegate;
 
 @interface AKBasicLoginViewController : OBWelcomeController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AKBasicLoginPasswordFieldProtocol, AKBasicLoginAnimateProtocol>
@@ -22,8 +22,8 @@
     AKAppleIDAuthenticationInAppContext *_context;
     NSLayoutConstraint *_heightAnchor;
     UITableView *_tableView;
-    UITableViewCell *_usernameCell;
-    UITableViewCell *_passwordCell;
+    AKBasicLoginTableViewCell *_usernameCell;
+    AKBasicLoginTableViewCell *_passwordCell;
     UIView *_loginOptions;
     AKBasicLoginOptionsViewController *_loginOptionsViewController;
 }
@@ -37,15 +37,14 @@
 @property (copy, nonatomic) AKBasicLoginActions *loginActions; // @synthesize loginActions=_loginActions;
 @property (strong, nonatomic) UIView *loginOptions; // @synthesize loginOptions=_loginOptions;
 @property (strong, nonatomic) AKBasicLoginOptionsViewController *loginOptionsViewController; // @synthesize loginOptionsViewController=_loginOptionsViewController;
-@property (strong, nonatomic) UITableViewCell *passwordCell; // @synthesize passwordCell=_passwordCell;
+@property (strong, nonatomic) AKBasicLoginTableViewCell *passwordCell; // @synthesize passwordCell=_passwordCell;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property (strong, nonatomic) UITableViewCell *usernameCell; // @synthesize usernameCell=_usernameCell;
+@property (strong, nonatomic) AKBasicLoginTableViewCell *usernameCell; // @synthesize usernameCell=_usernameCell;
 
 - (void).cxx_destruct;
 - (id)_cancelBarButtonItem;
 - (void)_cancelPressed:(id)arg1;
-- (id)_interpolatedReasonString;
 - (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (id)_loginOptions;

@@ -8,7 +8,7 @@
 
 #import <MobileTimer/MTAlarmObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString, _CDClientContext, _DKKnowledgeStore;
 @protocol MTAlarmStorage, OS_dispatch_queue;
 
 @interface MTCoreDuetMonitor : NSObject <MTAlarmObserver>
@@ -16,21 +16,27 @@
     NSObject<OS_dispatch_queue> *_serialQueue;
     id<MTAlarmStorage> _alarmStorage;
     NSMutableDictionary *_alarmStatesByAlarmID;
+    _CDClientContext *_context;
+    _DKKnowledgeStore *_knowledgeStore;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *alarmStatesByAlarmID; // @synthesize alarmStatesByAlarmID=_alarmStatesByAlarmID;
 @property (readonly, nonatomic) id<MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
+@property (readonly, nonatomic) _CDClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _DKKnowledgeStore *knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_queue_clearPreviouslyDismissedAlarmStates;
+- (void)_queue_writeAlarmToKnowledgeStore:(id)arg1 category:(id)arg2;
 - (void)_queue_writeCurrentStateToContextStore;
+- (void)_queue_writeNextAlarmStateToContextStore:(id)arg1;
 - (void)handleSystemReady;
 - (id)initWithAlarmStorage:(id)arg1;
+- (id)metadataForAlarm:(id)arg1;
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
 - (void)source:(id)arg1 didDismissAlarm:(id)arg2 dismissAction:(unsigned long long)arg3;
@@ -38,7 +44,11 @@
 - (void)source:(id)arg1 didRemoveAlarms:(id)arg2;
 - (void)source:(id)arg1 didSnoozeAlarm:(id)arg2 snoozeAction:(unsigned long long)arg3;
 - (void)source:(id)arg1 didUpdateAlarms:(id)arg2;
-- (void)updateStateForAlarms:(id)arg1;
+- (void)updateLastModifiedDateForAlarms:(id)arg1;
+- (void)updateStateForAlarm:(id)arg1 alarmEvent:(unsigned long long)arg2;
+- (void)updateStateForIdleAlarms:(id)arg1;
+- (void)updateStateForNextAlarm:(id)arg1;
+- (void)writeAlarmToKnowledgeStore:(id)arg1 alarmEvent:(unsigned long long)arg2;
 
 @end
 

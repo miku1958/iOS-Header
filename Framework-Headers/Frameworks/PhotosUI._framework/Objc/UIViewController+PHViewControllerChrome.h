@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class PUModalTransition, PUNavigationTransition, PUToolbarViewModel, PUViewModel, UIToolbar;
+@class PUModalTransition, PUNavigationTransition, PUToolbarViewModel, PUViewModel, UIColor, UIToolbar;
 @protocol PUDisplayAsset;
 
 @interface UIViewController (PHViewControllerChrome)
@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) UIToolbar *pu_footerToolbar;
 @property (readonly, nonatomic) BOOL pu_isPresenting;
 @property (strong, nonatomic, setter=pu_setModalTransition:) PUModalTransition *pu_modalTransition;
+@property (readonly, nonatomic) UIColor *pu_navigationBarTintColor;
 @property (strong, nonatomic, setter=pu_setNavigationTransition:) PUNavigationTransition *pu_navigationTransition;
 @property (readonly, nonatomic) long long pu_preferredBarStyle;
 @property (readonly, nonatomic) long long pu_preferredStatusBarUpdateAnimation;
@@ -30,12 +31,11 @@
 @property (readonly, nonatomic) BOOL pu_wantsTabBarVisible;
 @property (readonly, nonatomic) BOOL pu_wantsToolbarVisible;
 
-+ (void)_pu_ensureLocalAssets:(id)arg1 forReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)pu_copyAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)pu_currentViewControllerStack;
 - (void)_ph_updateBarAppearanceAnimated:(BOOL)arg1;
 - (id)_pu_offersTableView;
 - (void)_pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1 isStatusBarHidden:(BOOL)arg2;
+- (void)_pu_setNavigationBarTintColor:(id)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
 - (void)_pu_setNavigationBarVisible:(BOOL)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
 - (void)_pu_setPreferredStatusBarUpdateAnimation:(long long)arg1;
 - (void)_pu_setTabBarVisible:(BOOL)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
@@ -51,12 +51,10 @@
 - (void)ph_setNeedsChromeUpdate;
 - (BOOL)ph_viewContainsTransitionSourcePlaceholderView;
 - (void)ppt_performBlockAfterNextNavigationAnimation:(CDUnknownBlockType)arg1;
-- (void)pu_copyAssets:(id)arg1;
 - (void)pu_dismissViewControllerAnimated:(BOOL)arg1 interactive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)pu_ensureLocalAssetsForCloudPhotoSharing:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)pu_dismissViewControllerIfAllowedAnimated:(BOOL)arg1 forced:(BOOL)arg2;
 - (BOOL)pu_handleSecondTabTap;
 - (void)pu_insertFooterToolbarWithItems:(id)arg1;
-- (BOOL)pu_isForceTouchEnabled;
 - (id)pu_navigationController;
 - (void)pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1;
 - (void)pu_presentViewController:(id)arg1 transition:(id)arg2 animated:(BOOL)arg3 interactive:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;

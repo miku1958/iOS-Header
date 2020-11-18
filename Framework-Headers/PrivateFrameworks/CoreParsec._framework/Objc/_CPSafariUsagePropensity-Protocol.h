@@ -6,21 +6,32 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, _CPEngagementShareRatio, _CPEngagementTriggerRatio;
 
 @protocol _CPSafariUsagePropensity <NSObject>
 
+@property (strong, nonatomic) _CPEngagementShareRatio *engagementShareRatio;
 @property (nonatomic) float goToSite;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float localGoto;
 @property (nonatomic) float localTap;
 @property (nonatomic) float other;
+@property (nonatomic) float parsecAppStore;
 @property (nonatomic) float parsecGoto;
+@property (nonatomic) float parsecMaps;
+@property (nonatomic) float parsecNews;
+@property (nonatomic) float parsecOther;
+@property (nonatomic) float parsecStocks;
 @property (nonatomic) float parsecTap;
+@property (nonatomic) float parsecWeather;
+@property (nonatomic) float parsecWeb;
+@property (nonatomic) float parsecWiki;
 @property (nonatomic) float thirdPartyCompletionOrRecentSearch;
 @property (nonatomic) float thirdPartyGoto;
 @property (nonatomic) float thirdPartyTap;
+@property (strong, nonatomic) _CPEngagementTriggerRatio *topHitTriggerRatio;
 @property (nonatomic) int totalEngagements;
+@property (nonatomic) int totalTopHitEngagements;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

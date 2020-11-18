@@ -14,6 +14,7 @@
 
 @property (readonly, copy, nonatomic) NSString *altDSID;
 @property (readonly, copy, nonatomic) NSUUID *requestIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *transactionID;
 @property (copy, nonatomic) NSString *userIdentifier;
 
 @end

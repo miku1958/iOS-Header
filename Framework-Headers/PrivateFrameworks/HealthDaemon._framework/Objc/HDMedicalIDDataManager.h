@@ -6,41 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class FKFriendsManager, HDProfile;
+#import <HealthDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+
+@class HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDMedicalIDDataManager : NSObject
+@interface HDMedicalIDDataManager : NSObject <HDAnalyticsSubmissionCoordinatorDelegate, HDHealthDaemonReadyObserver>
 {
-    HDProfile *_profile;
-    FKFriendsManager *_sosFriendsManager;
     NSObject<OS_dispatch_queue> *_queue;
+    HDProfile *_profile;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) FKFriendsManager *sosFriendsManager; // @synthesize sosFriendsManager=_sosFriendsManager;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_fetchMedicalID;
+- (void)_badgeHealthAppForEmergencyContactConsolidationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_fetchMedicalIDDataFromDiskWithError:(id *)arg1;
+- (BOOL)_isDateSavedEarlierForMedicalID:(id)arg1 originalMedicalID:(id)arg2;
 - (id)_medicalIDURL;
 - (id)_medicalIDURLWithDirectoryPath:(id)arg1;
 - (BOOL)_migrateMedicalIDLocationIfNecessary:(id *)arg1;
-- (BOOL)_persistMedicalIDData:(id)arg1 syncProvenance:(id)arg2 error:(id *)arg3;
+- (BOOL)_persistMedicalIDData:(id)arg1 originalData:(id)arg2 provenance:(id)arg3 error:(id *)arg4;
 - (BOOL)_persistMedicalIDDataFileToDisk:(id)arg1 error:(id *)arg2;
-- (id)_unarchiveMedicalIDDataWithRawData:(id)arg1;
+- (void)_setAllowedToMessageSOSContactsIfApplicableForMedicalID:(id)arg1;
+- (void)_triggerSyncForSuccessfulMedicalIDUpdate;
+- (id)_unarchiveMedicalIDDataWithRawData:(id)arg1 error:(id *)arg2;
 - (void)_updateShowMedicalIdOnWatch:(BOOL)arg1;
 - (void)badgeHealthAppForEmergencyContactConsolidationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)daemonReady:(id)arg1;
+- (void)dealloc;
 - (BOOL)deleteMedicalIDDataWithError:(id *)arg1;
-- (id)fetchMedicalIDIfExists;
+- (id)fetchMedicalIDDataIfSetUpOrCreateDefaultWithError:(id *)arg1;
+- (id)fetchMedicalIDIfSetUpWithError:(id *)arg1;
+- (id)fetchMedicalIDWithError:(id *)arg1;
 - (id)initWithProfile:(id)arg1;
-- (BOOL)isDateSavedEarlierForMedicalID:(id)arg1 originalMedicalID:(id)arg2;
-- (id)medicalIDDataCreateIfNecessary:(BOOL)arg1;
-- (id)medicalIDEmergencyContacts;
+- (id)medicalIDClinicalContactsWithError:(id *)arg1;
+- (id)medicalIDEmergencyContactsWithError:(id *)arg1;
 - (BOOL)obliterateMedicalIDDataWithReason:(id)arg1 error:(id *)arg2;
+- (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)unitTest_medicalIDData;
 - (BOOL)unitTest_persistMedicalIDData:(id)arg1;
-- (BOOL)updateMedicalIDData:(id)arg1 error:(id *)arg2;
-- (BOOL)updateMedicalIDData:(id)arg1 syncProvenance:(long long)arg2 error:(id *)arg3;
+- (BOOL)updateMedicalIDWithLocalData:(id)arg1 error:(id *)arg2;
+- (BOOL)updateMedicalIDWithSyncedData:(id)arg1 provenance:(id)arg2 error:(id *)arg3;
 
 @end
 

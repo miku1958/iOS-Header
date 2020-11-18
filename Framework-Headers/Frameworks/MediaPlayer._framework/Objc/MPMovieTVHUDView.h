@@ -8,6 +8,7 @@
 
 @class MPAVController, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface MPMovieTVHUDView : UIView
 {
     long long _currentState;

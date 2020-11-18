@@ -10,6 +10,7 @@
 @protocol CKSendAnimationContext;
 
 @protocol CKThrowAnimationManagerDelegate <NSObject>
+- (double)throwAnimationFinalFrameOffset:(CKThrowAnimationManager *)arg1;
 - (struct CGRect)throwAnimationKeyboardFrame:(CKThrowAnimationManager *)arg1;
 - (void)throwAnimationManager:(CKThrowAnimationManager *)arg1 canNowSendMessages:(NSArray *)arg2;
 - (double)throwAnimationManagerAccessoryViewHeight:(CKThrowAnimationManager *)arg1;

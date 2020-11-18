@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class CLKComplicationDescriptor, NSString;
 
 @interface NTKCompanionSyncedComplication : NSObject
 {
@@ -15,17 +15,16 @@
     NSString *_localizedName;
     NSString *_clientIdentifier;
     NSString *_appBundleIdentifier;
-    NSArray *_supportedFamilies;
+    CLKComplicationDescriptor *_descriptor;
 }
 
 @property (readonly, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (readonly, nonatomic) CLKComplicationDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property (readonly, nonatomic) NSString *localizedName;
-@property (readonly, nonatomic) NSArray *supportedFamilies; // @synthesize supportedFamilies=_supportedFamilies;
 
-+ (id)_stocksComplication:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithRemoteApplication:(id)arg1 supportedFamilies:(id)arg2;
+- (id)initWithRemoteApplication:(id)arg1 descriptor:(id)arg2;
 
 @end
 

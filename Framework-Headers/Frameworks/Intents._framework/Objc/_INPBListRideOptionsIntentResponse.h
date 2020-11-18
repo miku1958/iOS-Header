@@ -18,13 +18,11 @@
         unsigned int supportsApplePayForPayment:1;
     } _has;
     BOOL _supportsApplePayForPayment;
-    BOOL __encodeLegacyGloryData;
     _INPBTimestamp *_expirationDate;
     NSArray *_paymentMethods;
     NSArray *_rideOptions;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBTimestamp *expirationDate; // @synthesize expirationDate=_expirationDate;

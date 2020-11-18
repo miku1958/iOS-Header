@@ -16,7 +16,9 @@
     id<HKDecimalPrecisionRule> _allowedDecimalPrecisionRule;
     NSDictionary *_perUnitDecimalPrecision;
     BOOL _shouldHideAverageLine;
+    BOOL _shouldDisplayUnitForAxisLabels;
     BOOL _shouldConnectSamplesWithLines;
+    BOOL _shouldRoundYAxisDuringExpansion;
     long long _defaultChartStyle;
     id<HKInteractiveChartsAxisScalingRule> _axisScalingRule;
     long long _preferredTimeScope;
@@ -26,8 +28,11 @@
 @property (readonly, nonatomic) long long defaultChartStyle; // @synthesize defaultChartStyle=_defaultChartStyle;
 @property (nonatomic) long long preferredTimeScope; // @synthesize preferredTimeScope=_preferredTimeScope;
 @property (nonatomic) BOOL shouldConnectSamplesWithLines; // @synthesize shouldConnectSamplesWithLines=_shouldConnectSamplesWithLines;
+@property (nonatomic) BOOL shouldDisplayUnitForAxisLabels; // @synthesize shouldDisplayUnitForAxisLabels=_shouldDisplayUnitForAxisLabels;
 @property (nonatomic) BOOL shouldHideAverageLine; // @synthesize shouldHideAverageLine=_shouldHideAverageLine;
+@property (nonatomic) BOOL shouldRoundYAxisDuringExpansion; // @synthesize shouldRoundYAxisDuringExpansion=_shouldRoundYAxisDuringExpansion;
 
++ (BOOL)chartStyleContainsHorizontalGridlines:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_ruleForKey:(id)arg1 timeScope:(long long)arg2;
 - (void)_setRule:(id)arg1 forKey:(id)arg2 timeScope:(long long)arg3;

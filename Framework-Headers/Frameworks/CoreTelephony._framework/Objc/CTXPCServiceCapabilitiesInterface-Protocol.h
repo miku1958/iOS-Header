@@ -11,6 +11,8 @@
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 canSetCapability:(NSString *)arg2 completion:(void (^)(BOOL, NSDictionary *, NSError *))arg3;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 getCapability:(NSString *)arg2 completion:(void (^)(BOOL, NSDictionary *, NSError *))arg3;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 getSystemCapabilities:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)context:(CTXPCServiceSubscriptionContext *)arg1 isMandatoryDisabledVoLTE:(void (^)(BOOL, NSError *))arg2;
+- (void)context:(CTXPCServiceSubscriptionContext *)arg1 mandatoryDisableVoLTE:(BOOL)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 recheckPhoneServicesAccountStatus:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 removePhoneServicesDevice:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 setCapability:(NSString *)arg2 enabled:(BOOL)arg3 info:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;

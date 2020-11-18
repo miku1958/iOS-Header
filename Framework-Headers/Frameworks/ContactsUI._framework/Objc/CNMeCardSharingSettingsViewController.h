@@ -13,7 +13,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CNContact, CNContactImage, CNContactStore, CNMeCardSharingAudienceDataSource, CNMeCardSharingContactAvatarProvider, CNMeCardSharingEnabledDataSource, CNMeCardSharingPickerLayoutAttributes, CNMeCardSharingSettingsHeaderViewController, CNMeCardSharingSettingsNameDataSource, CNMutableContact, CNPhotoPickerViewController, CNSharingProfileLogger, NSArray, NSString, UISwitch, UITableView, UITextField;
+@class CNContact, CNContactImage, CNContactStore, CNMeCardSharingAudienceDataSource, CNMeCardSharingContactAvatarProvider, CNMeCardSharingEnabledDataSource, CNMeCardSharingPickerLayoutAttributes, CNMeCardSharingSettingsHeaderViewController, CNMeCardSharingSettingsNameDataSource, CNMutableContact, CNPhotoPickerViewController, CNSharingProfileLogger, CNSharingProfileMeCardUpdater, NSArray, NSString, UISwitch, UITableView, UITextField;
 @protocol CNMeCardSharingAvatarProvider, CNMeCardSharingNameProvider, CNMeCardSharingSettingsViewControllerDelegate;
 
 @interface CNMeCardSharingSettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CNMeCardSharingSettingsHeaderViewControllerDelegate, CNMeCardSharingEnabledDelegate, CNPhotoPickerViewControllerDelegate>
@@ -26,6 +26,7 @@
     CNContactImage *_editingContactImage;
     NSString *_editingGivenName;
     NSString *_editingFamilyName;
+    CNSharingProfileMeCardUpdater *_meCardUpdater;
     CNMeCardSharingPickerLayoutAttributes *_layoutAttributes;
     CNMeCardSharingSettingsHeaderViewController *_headerViewController;
     id<CNMeCardSharingAvatarProvider> _avatarProvider;
@@ -64,6 +65,7 @@
 @property (nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
 @property (readonly, nonatomic) CNMeCardSharingPickerLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (readonly, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
+@property (strong, nonatomic) CNSharingProfileMeCardUpdater *meCardUpdater; // @synthesize meCardUpdater=_meCardUpdater;
 @property (readonly, nonatomic) CNMeCardSharingSettingsNameDataSource *nameDataSource; // @synthesize nameDataSource=_nameDataSource;
 @property (nonatomic) long long nameOrder; // @synthesize nameOrder=_nameOrder;
 @property (readonly, nonatomic) id<CNMeCardSharingNameProvider> nameProvider; // @synthesize nameProvider=_nameProvider;
@@ -113,6 +115,7 @@
 - (void)updateVisibilityOfAudienceSection;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

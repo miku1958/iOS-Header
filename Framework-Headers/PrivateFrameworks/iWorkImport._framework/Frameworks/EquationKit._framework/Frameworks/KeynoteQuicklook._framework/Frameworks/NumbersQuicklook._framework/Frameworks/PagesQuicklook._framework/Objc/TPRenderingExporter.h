@@ -43,6 +43,7 @@
 - (double)progressForCurrentPage;
 - (void)setup;
 - (void)setupPencilAnnotationsAndHyperlinks;
+- (BOOL)shouldSuppressBackgroundsForCurrentPage;
 - (void)teardown;
 - (double)totalProgess;
 - (struct CGRect)unscaledClipRect;

@@ -18,6 +18,7 @@
     double _startDistance;
     double _startTime;
     double _vehicleSpeed;
+    NSString *_enrouteNoticeIdentifier;
     unsigned int _enrouteNoticeIndex;
     NSString *_eventDescription;
     unsigned int _eventIndex;
@@ -26,6 +27,7 @@
     unsigned int _selectedPrimaryStringIndex;
     unsigned int _selectedSecondaryStringIndex;
     unsigned int _stepID;
+    unsigned int _trafficCameraType;
     unsigned int _trafficColor;
     int _type;
     NSString *_uniqueIDstring;
@@ -42,6 +44,7 @@
         unsigned int selectedPrimaryStringIndex:1;
         unsigned int selectedSecondaryStringIndex:1;
         unsigned int stepID:1;
+        unsigned int trafficCameraType:1;
         unsigned int trafficColor:1;
         unsigned int type:1;
         unsigned int shortPrompt:1;
@@ -50,11 +53,13 @@
 
 @property (nonatomic) double endDistance; // @synthesize endDistance=_endDistance;
 @property (nonatomic) double endTime; // @synthesize endTime=_endTime;
+@property (strong, nonatomic) NSString *enrouteNoticeIdentifier; // @synthesize enrouteNoticeIdentifier=_enrouteNoticeIdentifier;
 @property (nonatomic) unsigned int enrouteNoticeIndex; // @synthesize enrouteNoticeIndex=_enrouteNoticeIndex;
 @property (strong, nonatomic) NSString *eventDescription; // @synthesize eventDescription=_eventDescription;
 @property (nonatomic) unsigned int eventIndex; // @synthesize eventIndex=_eventIndex;
 @property (nonatomic) BOOL hasEndDistance;
 @property (nonatomic) BOOL hasEndTime;
+@property (readonly, nonatomic) BOOL hasEnrouteNoticeIdentifier;
 @property (nonatomic) BOOL hasEnrouteNoticeIndex;
 @property (readonly, nonatomic) BOOL hasEventDescription;
 @property (nonatomic) BOOL hasEventIndex;
@@ -66,6 +71,7 @@
 @property (nonatomic) BOOL hasStartDistance;
 @property (nonatomic) BOOL hasStartTime;
 @property (nonatomic) BOOL hasStepID;
+@property (nonatomic) BOOL hasTrafficCameraType;
 @property (nonatomic) BOOL hasTrafficColor;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUniqueIDstring;
@@ -79,6 +85,7 @@
 @property (nonatomic) double startDistance; // @synthesize startDistance=_startDistance;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
+@property (nonatomic) unsigned int trafficCameraType; // @synthesize trafficCameraType=_trafficCameraType;
 @property (nonatomic) unsigned int trafficColor; // @synthesize trafficColor=_trafficColor;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSUUID *uniqueID;

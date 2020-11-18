@@ -13,13 +13,18 @@
     const struct CGPath **_paths;
     unsigned long long _pathsCount;
     VKVectorOverlayPolygonGroup *_vectorData;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 @property (readonly, nonatomic) MKMultiPolygon *multiPolygon;
+@property (nonatomic, getter=_strokeEnd, setter=_setStrokeEnd:) double strokeEnd;
+@property (nonatomic, getter=_strokeStart, setter=_setStrokeStart:) double strokeStart;
 
 + (Class)_mapkitLeafClass;
 - (void).cxx_destruct;
 - (BOOL)_canProvideVectorGeometry;
+- (void)_performInitialConfiguration;
 - (void)_updateRenderColors;
 - (id)_vectorGeometry;
 - (void)createPath;
@@ -33,6 +38,7 @@
 - (void)setLineWidth:(double)arg1;
 - (void)setMiterLimit:(double)arg1;
 - (void)setStrokeColor:(id)arg1;
+- (void)strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (id)vectorDataForOverlay:(id)arg1;
 
 @end

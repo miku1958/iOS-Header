@@ -15,7 +15,9 @@
 
 @property (readonly, nonatomic) NSString *URLString;
 @property (readonly, nonatomic) NSString *appAdamID;
+@property (readonly, nonatomic) NSString *bundleID;
 @property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) long long type;
 
 - (void).cxx_destruct;
 - (id)initWithQuickLink:(id)arg1;

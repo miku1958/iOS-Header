@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectContext, NSNumber, NSPersistentStoreCoordinator;
+@class NSCache, NSManagedObjectContext, NSNumber, NSPersistentStoreCoordinator;
 @protocol ACDDatabaseConnectionDelegate, NSObject;
 
 __attribute__((visibility("hidden")))
 @interface ACDDatabaseConnection : NSObject
 {
     id<NSObject> _managedObjectContextDidSaveObserver;
+    NSCache *_cache;
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     NSManagedObjectContext *_managedObjectContext;
     id<ACDDatabaseConnectionDelegate> _delegate;
@@ -41,14 +42,18 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countOfEntityNamed:(id)arg1 withPredicate:(id)arg2;
 - (void)dealloc;
 - (void)deleteAccountPropertyWithKey:(id)arg1 owner:(id)arg2;
+- (void)deleteObject:(id)arg1;
 - (id)existingObjectWithURI:(id)arg1;
 - (id)fetchObjectsForEntityNamed:(id)arg1;
 - (id)fetchObjectsForEntityNamed:(id)arg1 withPredicate:(id)arg2;
 - (id)fetchObjectsForEntityNamed:(id)arg1 withPredicate:(id)arg2 sortDescriptor:(id)arg3;
+- (id)fetchObjectsForEntityNamed:(id)arg1 withPredicate:(id)arg2 sortDescriptor:(id)arg3 prefetchKeypaths:(id)arg4;
 - (id)init;
 - (id)initWithPersistentStoreCoordinator:(id)arg1;
+- (id)insertNewObjectForEntityForName:(id)arg1;
 - (id)managedObjectIDForURI:(id)arg1;
 - (id)objectForObjectURI:(id)arg1;
+- (void)rollback;
 - (BOOL)saveWithError:(id *)arg1;
 - (BOOL)saveWithError:(id *)arg1 rollbackOnFailure:(BOOL)arg2;
 - (void)setAccountPropertyWithKey:(id)arg1 value:(id)arg2 owner:(id)arg3;

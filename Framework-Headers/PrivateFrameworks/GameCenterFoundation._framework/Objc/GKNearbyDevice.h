@@ -22,8 +22,8 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 
 + (id)nearbyDeviceWithID:(id)arg1 discovery:(id)arg2;
-- (void)dealloc;
-- (void)sendDictionary:(id)arg1;
+- (void).cxx_destruct;
+- (void)sendDictionary:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

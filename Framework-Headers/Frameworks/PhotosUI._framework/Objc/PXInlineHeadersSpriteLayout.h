@@ -6,12 +6,13 @@
 
 #import <PhotosUICore/PXGItemsLayout.h>
 
+#import <PhotosUICore/PXGItemsGeometry-Protocol.h>
 #import <PhotosUICore/PXGViewSource-Protocol.h>
 
-@class NSCalendar, NSDateFormatter, NSString, PXCuratedLibraryInlineHeadersDataSource, PXCuratedLibraryInlineHeadersLayoutSpec;
-@protocol PXCuratedLibraryInlineHeadersLayoutGeometrySource;
+@class NSCalendar, NSDateFormatter, NSIndexSet, NSString, PXZoomableInlineHeadersDataSource, PXZoomableInlineHeadersLayoutSpec;
+@protocol PXZoomableInlineHeadersLayoutGeometrySource;
 
-@interface PXInlineHeadersSpriteLayout : PXGItemsLayout <PXGViewSource>
+@interface PXInlineHeadersSpriteLayout : PXGItemsLayout <PXGItemsGeometry, PXGViewSource>
 {
     CDStruct_d97c9657 _updateFlags;
     NSDateFormatter *_yearFormatter;
@@ -19,20 +20,21 @@
     NSCalendar *_calendar;
     unsigned short _mediaVersion;
     BOOL _didHideSprites;
+    NSIndexSet *_axSpriteIndexes;
     unsigned long long _level;
     unsigned long long _style;
-    PXCuratedLibraryInlineHeadersLayoutSpec *_spec;
-    PXCuratedLibraryInlineHeadersDataSource *_dataSource;
-    id<PXCuratedLibraryInlineHeadersLayoutGeometrySource> _geometrySource;
+    PXZoomableInlineHeadersLayoutSpec *_spec;
+    PXZoomableInlineHeadersDataSource *_dataSource;
+    id<PXZoomableInlineHeadersLayoutGeometrySource> _geometrySource;
 }
 
-@property (strong, nonatomic) PXCuratedLibraryInlineHeadersDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (strong, nonatomic) PXZoomableInlineHeadersDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<PXCuratedLibraryInlineHeadersLayoutGeometrySource> geometrySource; // @synthesize geometrySource=_geometrySource;
+@property (weak, nonatomic) id<PXZoomableInlineHeadersLayoutGeometrySource> geometrySource; // @synthesize geometrySource=_geometrySource;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long level; // @synthesize level=_level;
-@property (strong, nonatomic) PXCuratedLibraryInlineHeadersLayoutSpec *spec; // @synthesize spec=_spec;
+@property (strong, nonatomic) PXZoomableInlineHeadersLayoutSpec *spec; // @synthesize spec=_spec;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
@@ -42,8 +44,15 @@
 - (void)_setupDateFormatters;
 - (void)_updateSprites;
 - (void)alphaDidChange;
+- (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
+- (id)axSpriteIndexes;
+- (id)axSpriteIndexesInRect:(struct CGRect)arg1;
 - (id)initWithLevel:(unsigned long long)arg1;
 - (void)invalidateAnchorItemFrames;
+- (long long)itemClosestToItem:(long long)arg1 inDirection:(unsigned long long)arg2;
+- (id)itemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
+- (id)itemsGeometry;
+- (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
 - (void)screenScaleDidChange;
 - (void)update;
 - (Class)viewClassForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;

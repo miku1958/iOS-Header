@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PHCollectionList, PHFetchOptions, PHFetchResult;
+@class NSPredicate, PHCollectionList, PHFetchOptions, PHFetchResult;
 
 @interface PXPhotoKitCollectionsDataSourceManagerConfiguration : NSObject
 {
@@ -15,14 +15,17 @@
     BOOL _skipKeyAssetFetches;
     BOOL _skipKeyAssetFetchesForSmartAlbums;
     BOOL _skipAssetFetches;
+    BOOL _updateKeyAssetFetchesInBackground;
     BOOL _shouldIgnoreLibraryChanges;
     PHFetchResult *_collectionsFetchResult;
     PHCollectionList *_collectionList;
+    NSPredicate *_assetsFilterPredicate;
     unsigned long long _assetTypesToInclude;
     unsigned long long _collectionTypesToInclude;
 }
 
 @property (nonatomic) unsigned long long assetTypesToInclude; // @synthesize assetTypesToInclude=_assetTypesToInclude;
+@property (strong, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property (readonly) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
 @property (nonatomic) unsigned long long collectionTypesToInclude; // @synthesize collectionTypesToInclude=_collectionTypesToInclude;
 @property (readonly) PHFetchResult *collectionsFetchResult; // @synthesize collectionsFetchResult=_collectionsFetchResult;
@@ -33,9 +36,10 @@
 @property (nonatomic) BOOL skipAssetFetches; // @synthesize skipAssetFetches=_skipAssetFetches;
 @property (nonatomic) BOOL skipKeyAssetFetches; // @synthesize skipKeyAssetFetches=_skipKeyAssetFetches;
 @property (nonatomic) BOOL skipKeyAssetFetchesForSmartAlbums; // @synthesize skipKeyAssetFetchesForSmartAlbums=_skipKeyAssetFetchesForSmartAlbums;
+@property (nonatomic) BOOL updateKeyAssetFetchesInBackground; // @synthesize updateKeyAssetFetchesInBackground=_updateKeyAssetFetchesInBackground;
 
++ (id)_generatePredicateForAssetTypesToInclude:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)_generatePredicateForAssetTypesToInclude;
 - (id)_newConfigurationWithCollectionList:(id)arg1 collectionsFetchResult:(id)arg2;
 - (id)init;
 - (id)initWithCollectionList:(id)arg1;

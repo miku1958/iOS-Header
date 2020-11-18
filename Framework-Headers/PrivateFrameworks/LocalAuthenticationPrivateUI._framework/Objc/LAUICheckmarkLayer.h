@@ -10,20 +10,21 @@
 
 @interface LAUICheckmarkLayer : CALayer
 {
-    CAShapeLayer *_shapeLayer;
-    struct vector<CAShapeLayer *, std::__1::allocator<CAShapeLayer *>> _transientShapeLayers;
+    CAShapeLayer *_shape_layer;
+    struct vector<CAShapeLayer *, std::__1::allocator<CAShapeLayer *>> _transient_shape_layers;
     BOOL _animating;
-    unsigned int _animationIndex;
-    double _lineWidth;
+    unsigned int _animation_index;
+    double _line_width;
+    double _effective_line_width;
     struct vector<LAUI_CA_utilities::animation_completion_handler_container, std::__1::allocator<LAUI_CA_utilities::animation_completion_handler_container>> _completions;
     BOOL _revealed;
-    double _lineWidthScale;
-    UIColor *_primaryColor;
+    UIColor *_primary_color;
+    double _line_width_scale;
 }
 
 @property (readonly, nonatomic) struct CGSize aspectSize;
-@property (nonatomic) double lineWidthScale; // @synthesize lineWidthScale=_lineWidthScale;
-@property (readonly, copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
+@property (nonatomic) double lineWidthScale; // @synthesize lineWidthScale=_line_width_scale;
+@property (readonly, copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primary_color;
 @property (readonly, nonatomic, getter=isRevealed) BOOL revealed; // @synthesize revealed=_revealed;
 
 - (id).cxx_construct;
@@ -32,6 +33,7 @@
 - (void)_executeCompletions:(BOOL)arg1;
 - (void)_updateRevealedAnimated:(BOOL)arg1;
 - (void)dealloc;
+- (struct CGSize)defaultSizeForCircleWithDiameter:(double)arg1 scale:(double)arg2;
 - (id)init;
 - (void)layoutSublayers;
 - (void)setPrimaryColor:(id)arg1;

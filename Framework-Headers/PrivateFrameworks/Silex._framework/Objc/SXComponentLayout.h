@@ -42,7 +42,6 @@
 - (unsigned long long)ignoreDocumentMarginWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)ignoreViewportPaddingWithValue:(id)arg1 withType:(int)arg2;
 - (id)paddingWithValue:(id)arg1 withType:(int)arg2;
-- (unsigned long long)sideForValue:(id)arg1 withType:(int)arg2;
 
 @end
 

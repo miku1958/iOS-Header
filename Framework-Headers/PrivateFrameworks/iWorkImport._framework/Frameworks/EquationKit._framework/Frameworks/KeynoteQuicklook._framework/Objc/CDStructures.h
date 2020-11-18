@@ -93,10 +93,11 @@ struct BuildAttributesArchive {
     unsigned int _field32;
     BOOL _field33;
     BOOL _field34;
-    double _field35;
+    BOOL _field35;
     double _field36;
-    int _field37;
-    struct CachedSize _field38;
+    double _field37;
+    int _field38;
+    struct CachedSize _field39;
 };
 
 struct BuildChunkArchive {
@@ -749,7 +750,9 @@ struct UIStateArchive {
     float _field40;
     BOOL _field41;
     BOOL _field42;
-    struct CachedSize _field43;
+    BOOL _field43;
+    BOOL _field44;
+    struct CachedSize _field45;
 };
 
 struct UUID;
@@ -772,6 +775,12 @@ struct os_unfair_lock_s {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
 
 typedef struct {
     float _field1;

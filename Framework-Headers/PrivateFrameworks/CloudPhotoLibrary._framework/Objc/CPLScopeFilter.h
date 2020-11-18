@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSSet, NSString;
 
 @interface CPLScopeFilter : NSObject
 {
@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) NSSet *excludedScopeIdentifiers; // @synthesize excludedScopeIdentifiers=_excludedScopeIdentifiers;
 @property (readonly, nonatomic) NSSet *includedScopeIdentifiers; // @synthesize includedScopeIdentifiers=_includedScopeIdentifiers;
+@property (readonly, nonatomic) NSString *simpleDescription;
 
 - (void).cxx_destruct;
 - (id)_setOfScopeIdentifiersFromEnumeration:(id)arg1;

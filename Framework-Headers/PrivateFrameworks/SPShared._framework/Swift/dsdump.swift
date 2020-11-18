@@ -44,30 +44,33 @@
  class SPShared.NetworkReachability : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var reachability : SCNetworkReachability // +0x10 (0x8)
+	var reachability : SCNetworkReachability
 
 	// Swift methods
-	0x4aa0  func NetworkReachability.status.getter // getter 
-	0x4c60  class func NetworkReachability.__allocating_init() // init 
+	0x50e0  func <stripped> // getter 
+	0x52c0  class func NetworkReachability.__allocating_init() // init 
  }
 
  class SPShared.UserDefaultsObserver : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let defaults : NSUserDefaults // +0x8 (0x8)
-	let monitoredKeys : [String] // +0x10 (0x8)
-	var notify : (_:) // +0x18 (0x10)
+	let defaults : NSUserDefaults
+	let monitoredKeys : [String]
+	var notify : (_:)
 
 	// ObjC -> Swift bridged methods
-	0x7620  @objc UserDefaultsObserver.dealloc <stripped>
-	0x78f0  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x7ac0  @objc UserDefaultsObserver.init <stripped>
-	0x7670  @objc UserDefaultsObserver..cxx_destruct <stripped>
+WARNING: couldn't find address 0x38440000cfb8 (0x440000cfb8) in binary!
+	0x2d20  @objc UserDefaultsObserver.(null) <stripped>
+WARNING: couldn't find address 0x38240000cf90 (0x240000cf90) in binary!
+	0x3820  @objc UserDefaultsObserver.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x764ffffca70  @objc UserDefaultsObserver.(null) <stripped>
+	0xffffcb48  @objc UserDefaultsObserver.tL‰ÿL‰îH‰ÂL‰ñE1Àè.¨ <stripped>
 
 	// Swift methods
-	0x7430  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
-	0x76c0  func UserDefaultsObserver.start() // method 
-	0x77a0  func UserDefaultsObserver.stop() // method 
+	0x6070  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
+	0x62f0  func <stripped> // method 
+	0x63d0  func <stripped> // method 
  }
 
  enum SPShared.FutureError {
@@ -78,43 +81,45 @@
 
  class SPShared.Future {
  class SPShared.Promise {
+ class SPShared.KeyedThrottle {
  class SPShared.DispatchTimer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let nanosecondsPerSecond : Double // +0x10 (0x8)
-	let queue : OS_dispatch_queue // +0x18 (0x8)
-	let deadline : Int // +0x20 (0x8)
-	let repeating : Int // +0x28 (0x8)
-	let leeway : Int // +0x30 (0x8)
-	let source : OS_dispatch_source_timer // +0x38 (0x8)
-	let block : () // +0x40 (0x10)
+	let nanosecondsPerSecond : Double
+	let queue : OS_dispatch_queue
+	let deadline : Int
+	let repeating : Int
+	let leeway : Int
+	let source : OS_dispatch_source_timer
+	let block : ()
 
 	// Swift methods
-	0xb020  func DispatchTimer.isCancelled.getter // getter 
-	0xb050  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
-	0xb110  func DispatchTimer.resume() // method 
-	0xb140  func DispatchTimer.cancel() // method 
+	0xa8d0  func <stripped> // getter 
+	0xa900  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
+	0xa9c0  func <stripped> // method 
+	0xa9f0  func <stripped> // method 
  }
 
  class SPShared.DarwinNotificationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var helpers : DarwinNotificationHelper // +0x10 (0x8)
+	var helpers : DarwinNotificationHelper
 
 	// Swift methods
-	0xba40  func DarwinNotificationManager.registerHelper(helper:) // method 
-	0xbb00  func DarwinNotificationManager.unregisterHelper(helper:) // method 
-	0xbce0  func DarwinNotificationManager.setUp() // method 
+	0xb2f0  func <stripped> // method 
+	0xb3b0  func <stripped> // method 
+	0xb5a0  func <stripped> // method 
  }
 
  enum SPShared.Relativity {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rightRelative : CB
+	case rightRelative : ‹@
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case leftRelative : CB
-	case absolute  
+	case leftRelative : ‹@
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case absolute : ‹@
  }
 
  enum SPShared.ExtendedAttributeError {
@@ -182,7 +187,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let subscriber : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let identifier : C
+	let identifier : A
 	let unsubscribeBlock : Subscription
  }
 
@@ -231,14 +236,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let initializationVector : ‹@ // +0x0
+	let initializationVector : á> // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tag : ‹@ // +0x10
+	let tag : á> // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cipherText : ‹@ // +0x20
+	let cipherText : á> // +0x20
  }
 
  class SPShared.XPCSession {
+ enum SPShared.DataError {
+
+	// Properties
+	case invalidRangeForType  
+ }
+
  enum SPShared.Scheduler { }
 
  class SPShared.CancellationToken : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Cancellable {
@@ -249,8 +260,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accessQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x21720  func <stripped> // method 
-	0x218e0  func <stripped> // getter 
+	0x24810  func <stripped> // method 
+	0x249c0  func <stripped> // getter 
  }
 
  class SPShared._ImmediateScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -259,8 +270,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SPShared._MainThreadScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
 	// Swift methods
-	0x21cc0  func <stripped> // method 
-	0x21e80  func <stripped> // method 
+	0x24da0  func <stripped> // method 
+	0x24f50  func <stripped> // method 
  }
 
  class SPShared._QueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -269,9 +280,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x22520  func <stripped> // method 
-	0x226f0  func <stripped> // method 
-	0x22900  func <stripped> // method 
+	0x25570  func <stripped> // method 
+	0x25730  func <stripped> // method 
+	0x25940  func <stripped> // method 
  }
 
  class SPShared._OperationQueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -280,8 +291,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : NSOperationQueue
 
 	// Swift methods
-	0x22c00  func <stripped> // method 
-	0x22d40  func <stripped> // method 
+	0x25c40  func <stripped> // method 
+	0x25d70  func <stripped> // method 
  }
 
  enum SPShared.LegacyResult {
@@ -289,17 +300,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case success : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failure : ¿J
+	case failure : II
+ }
+
+ class SPShared.Lock : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let osLock : os_unfair_lock_s
+
+	// Swift methods
+	0x27610  class func Lock.__allocating_init() // init 
  }
 
  class SPShared.DarwinNotificationHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var notificationHandlers : CFString // +0x10 (0x8)
+	var notificationHandlers : CFString
 
 	// Swift methods
-	0x24320  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
-	0x24ab0  func DarwinNotificationHelper.onNotification(notificationName:) // method 
+	0x27950  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
+	0x28060  func <stripped> // method 
  }
 
  enum SPShared.DispatchUtilities { }
@@ -309,13 +329,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let flag : String // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let start : ·> // +0x0 (0x0)
-	var duration : Double // +0x0 (0x8)
+	let start : ý< // +0x0 (0x0)
+	var duration : Double // +0x19 (0x8)
 
 	// Swift methods
-	0x26f00  func PerformanceCapture.duration.getter // getter 
-	0x26f30  class func PerformanceCapture.__allocating_init(flag:) // init 
-	0x27080  func PerformanceCapture.finished() // method 
+	0x2adb0  func <stripped> // getter 
+	0x2ade0  class func PerformanceCapture.__allocating_init(flag:) // init 
+	0x2af30  func <stripped> // method 
  }
 
  class SPShared.XPCSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -327,8 +347,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var listeners : MachServiceName
 
 	// Swift methods
-	0x276b0  class func XPCSessionManager.__allocating_init(name:) // init 
-	0x27730  func XPCSessionManager.register(service:) // method 
+	0x2b270  func <stripped> // getter 
+	0x2b300  class func XPCSessionManager.__allocating_init(name:) // init 
+	0x2b380  func <stripped> // method 
  }
 
  class SPShared._XPCListenerDelegateTrampoline : NSObject /usr/lib/libobjc.A.dylib {
@@ -337,9 +358,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var sessionManager : XPCSessionManager
 
 	// ObjC -> Swift bridged methods
-	0x28120  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
-	0x281b0  @objc _XPCListenerDelegateTrampoline.init <stripped>
-	0x28210  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
+WARNING: couldn't find address 0x37f60000cf28 (0x7f60000cf28) in binary!
+	0x37f8  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
+WARNING: couldn't find address 0x37f40000cf18 (0x7f40000cf18) in binary!
+	0x1  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
+WARNING: couldn't find address 0x2 (0x2) in binary!
+	0x4  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
 
 	// Swift methods
  }
@@ -359,6 +383,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class __C.SCNetworkReachability {
+ struct __C.os_unfair_lock_s {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _os_unfair_lock_opaque : +I
+ }
+
  struct __C.NSKeyValueChangeKey {
 
 	// Properties
@@ -369,25 +400,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sa_len : ±J
+	var sa_len : GI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sa_family : ±J
+	var sa_family : GI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sa_data : EJ
+	var sa_data : ÛH
  }
 
  struct __C.sockaddr_in {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_len : ±J
+	var sin_len : GI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_family : ±J
+	var sin_family : GI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_port : ÃJ
+	var sin_port : YI
 	var sin_addr : in_addr
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_zero : WJ
+	var sin_zero : íH
  }
 
  struct __C.DirectoryEnumerationOptions {
@@ -406,5 +437,5 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var s_addr : ×I
+	var s_addr : +I
  }

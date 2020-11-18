@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (strong, nonatomic) GKButton *button; // @synthesize button=_button;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GKRemoteUIAuxiliaryViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GKRemoteUIAuxiliaryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;

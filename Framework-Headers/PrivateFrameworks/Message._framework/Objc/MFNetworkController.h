@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Message/CXCallObserverDelegate-Protocol.h>
-#import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
 @class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, EFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, RadiosPreferences;
-@protocol OS_dispatch_queue;
+@protocol EFCancelable, OS_dispatch_queue;
 
-@interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate, CXCallObserverDelegate>
+@interface MFNetworkController : NSObject <RadiosPreferencesDelegate, CXCallObserverDelegate>
 {
     NSLock *_lock;
     struct __CFRunLoop *_rl;
@@ -34,6 +33,7 @@
     CoreTelephonyClient *_ctc;
     NSObject<OS_dispatch_queue> *_dataStatusQueue;
     BOOL _cellularDataAvailable;
+    id<EFCancelable> _stateCancelable;
     struct __SCNetworkReachability *_reachability;
     struct __SCDynamicStore *_store;
     struct __CFRunLoopSource *_store_source;
@@ -69,6 +69,7 @@
 - (void)_inititializeWifiManager;
 - (BOOL)_isNetworkUp_nts;
 - (id)_networkAssertionWithIdentifier:(id)arg1;
+- (void)_registerStateCaptureHandler;
 - (void)_setDataStatus_nts:(id)arg1;
 - (void)_setFlags:(unsigned int)arg1 forReachability:(struct __SCNetworkReachability *)arg2;
 - (void)_setupSymptons;
@@ -81,7 +82,6 @@
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)connectionActivationError:(id)arg1 connection:(int)arg2 error:(int)arg3;
 - (id)copyCarrierBundleValue:(id)arg1;
-- (id)copyDiagnosticInformation;
 - (int)dataStatus;
 - (void)dataStatus:(id)arg1 dataStatusInfo:(id)arg2;
 - (void)dealloc;

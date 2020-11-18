@@ -6,17 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/TUCommandCenterType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TUCommandCenter : NSObject <TUCommandCenterType>
+@interface TUCommandCenter : NSObject
 {
     MISSING_TYPE *commandCenter;
 }
 
-+ (void)setSharedCommandCenter:(id)arg1;
-+ (id)sharedCommandCenter;
 - (void).cxx_destruct;
 - (void)addContextProvider:(id)arg1 forCommand:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)canExecuteCommand:(id)arg1;

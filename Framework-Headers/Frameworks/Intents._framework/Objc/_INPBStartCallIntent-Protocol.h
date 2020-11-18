@@ -6,17 +6,21 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBContact, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContact, _INPBIntentMetadata;
 
 @protocol _INPBStartCallIntent <NSObject>
 
 @property (nonatomic) int audioRoute;
 @property (nonatomic) int callCapability;
+@property (strong, nonatomic) _INPBCallRecordFilter *callRecordFilter;
+@property (strong, nonatomic) _INPBCallRecordValue *callRecordToCallBack;
 @property (copy, nonatomic) NSArray *contacts;
 @property (readonly, nonatomic) unsigned long long contactsCount;
 @property (nonatomic) int destinationType;
 @property (nonatomic) BOOL hasAudioRoute;
 @property (nonatomic) BOOL hasCallCapability;
+@property (readonly, nonatomic) BOOL hasCallRecordFilter;
+@property (readonly, nonatomic) BOOL hasCallRecordToCallBack;
 @property (nonatomic) BOOL hasDestinationType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasPreferredCallProvider;

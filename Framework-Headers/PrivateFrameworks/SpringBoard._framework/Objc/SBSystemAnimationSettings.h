@@ -12,6 +12,8 @@
 {
     float _assistantAnimationDuration;
     float _assistantDismissAnimationDurationOverApp;
+    float _assistantBottomEdgeDismissThreshold;
+    float _assistantBottomEdgeDismissVelocity;
     float _spotlightNoninteractiveAnimationDuration;
     SBFAnimationSettings *_slideoverDosidoAnimationSettings;
     SBEntityRemovalAnimationSettings *_entityRemovalAnimationSettings;
@@ -19,6 +21,8 @@
 }
 
 @property (nonatomic) float assistantAnimationDuration; // @synthesize assistantAnimationDuration=_assistantAnimationDuration;
+@property (nonatomic) float assistantBottomEdgeDismissThreshold; // @synthesize assistantBottomEdgeDismissThreshold=_assistantBottomEdgeDismissThreshold;
+@property (nonatomic) float assistantBottomEdgeDismissVelocity; // @synthesize assistantBottomEdgeDismissVelocity=_assistantBottomEdgeDismissVelocity;
 @property (nonatomic) float assistantDismissAnimationDurationOverApp; // @synthesize assistantDismissAnimationDurationOverApp=_assistantDismissAnimationDurationOverApp;
 @property (strong, nonatomic) SBEntityRemovalAnimationSettings *entityRemovalAnimationSettings; // @synthesize entityRemovalAnimationSettings=_entityRemovalAnimationSettings;
 @property (strong, nonatomic) SBFAnimationSettings *slideoverDosidoAnimationSettings; // @synthesize slideoverDosidoAnimationSettings=_slideoverDosidoAnimationSettings;

@@ -31,7 +31,6 @@
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (id)_createTimerWithInterval:(double)arg1 serviceIdentifier:(id)arg2;
 - (void)_timerFired:(id)arg1;
 - (void)cancel;
 - (void)dealloc;

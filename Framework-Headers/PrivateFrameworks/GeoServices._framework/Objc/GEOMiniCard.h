@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     NSString *_buttonText;
     GEOFormattedString *_detail;
+    GEOFormattedString *_metadata;
     GEOFormattedString *_title;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -26,12 +27,9 @@
         unsigned int read_unknownFields:1;
         unsigned int read_buttonText:1;
         unsigned int read_detail:1;
+        unsigned int read_metadata:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_buttonText:1;
-        unsigned int wrote_detail:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_shouldEmphasize:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,17 +37,16 @@
 @property (strong, nonatomic) GEOFormattedString *detail;
 @property (readonly, nonatomic) BOOL hasButtonText;
 @property (readonly, nonatomic) BOOL hasDetail;
+@property (readonly, nonatomic) BOOL hasMetadata;
 @property (nonatomic) BOOL hasShouldEmphasize;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (strong, nonatomic) GEOFormattedString *metadata;
 @property (nonatomic) BOOL shouldEmphasize;
 @property (strong, nonatomic) GEOFormattedString *title;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readButtonText;
-- (void)_readDetail;
-- (void)_readTitle;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -58,7 +55,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

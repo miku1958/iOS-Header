@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     UIView *_playButtonView;
     UIView *_muteButtonContainerView;
     UIImageView *_muteButtonView;
+    UIImageView *_unmuteButtonView;
     UIView *_videoPlaceholderView;
     UIView *_visualEffectView;
     UIView *_pulsingLoadView;
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
     BOOL _wasPlayingOrWaitingToPlayWhenUnparented;
     BOOL _wasPlayingWhenSuspended;
     BOOL _showingPlayButton;
-    BOOL _waitingForPlaybackDueToAutoplay;
+    BOOL _waitingForPlaybackDueToAutoPlay;
     BOOL _hasEverPlayed;
     unsigned long long _lastInteractionTimestamp;
     unsigned long long _playbackWatchdogTimerID;
@@ -79,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_swapVideoPlaceholderForVideoForAutoPlay:(BOOL)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
+- (void)beginLoadingMediaForPreroll;
 - (void)componentViewDidMoveToWindow;
 - (id)createFullScreenVideoViewController;
 - (id)createVideoPlayerView;
@@ -105,11 +107,12 @@ __attribute__((visibility("hidden")))
 - (void)recreateFullScreenViewControllerIfNeeded;
 - (void)removePlaceholderViews;
 - (void)resetToPlaceholderView;
+- (BOOL)shouldAllowHighlightToRecognizeSimultaneouslyWithGesture:(id)arg1;
 - (void)showMuteButton;
 - (void)showPlayButtonAnimated:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tapRecognized:(id)arg1;
-- (void)updateMuteButtonImage;
+- (void)updateMuteButton;
 - (void)updatePlayButtonVisibility;
 - (void)userInteractedWithVideoView;
 - (BOOL)usesCustomFullScreenImplementation;

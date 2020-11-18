@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_actionUrlComponent:1;
         unsigned int read_actionUrlVerb:1;
         unsigned int read_logoId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_actionLabel:1;
-        unsigned int wrote_actionUrlComponent:1;
-        unsigned int wrote_actionUrlVerb:1;
-        unsigned int wrote_logoId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,10 +44,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readActionLabel;
-- (void)_readActionUrlComponent;
-- (void)_readActionUrlVerb;
-- (void)_readLogoId;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -60,7 +52,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -17,6 +17,7 @@
 - (id)generateAndPersistAnimatedPreviewFromImageData:(id)arg1 forWidth:(double)arg2 withTransferGUID:(id)arg3 isSticker:(BOOL)arg4;
 - (id)generateThumbnailsForWidth:(double)arg1 isSticker:(BOOL)arg2 orientation:(BOOL)arg3;
 - (CDUnknownBlockType)imageEdgeEnhancementBlockIfNecessary;
+- (id)metricsCollectorMediaType;
 - (BOOL)needsAnimation;
 - (id)notificationCenter;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
@@ -25,6 +26,7 @@
 - (id)savedAnimatedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
 - (id)scaledThumbnailFromThumbnail:(id)arg1 forWidth:(double)arg2 isSticker:(BOOL)arg3;
 - (id)thumbnailAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 imageData:(id)arg3 isSticker:(BOOL)arg4 orientation:(BOOL)arg5;
+- (BOOL)validPreviewExistsAtURL:(id)arg1;
 - (BOOL)validatePreviewFormat;
 
 @end

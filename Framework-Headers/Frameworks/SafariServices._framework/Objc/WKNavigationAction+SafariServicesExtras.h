@@ -8,6 +8,7 @@
 
 @interface WKNavigationAction (SafariServicesExtras)
 
+@property (nonatomic, setter=_sf_setAllowsExternalRedirectWithoutPrompting:) BOOL _sf_allowsExternalRedirectWithoutPrompting;
 @property (readonly, nonatomic) BOOL _sf_shouldAskAboutInsecureFormSubmission;
 @property (readonly, nonatomic) BOOL _sf_shouldPerformDownload;
 

@@ -39,16 +39,7 @@
         unsigned int read_genericInstruction:1;
         unsigned int read_transitListInstruction:1;
         unsigned int read_transitSignInstruction:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_countStopsText:1;
-        unsigned int wrote_departureBar:1;
-        unsigned int wrote_drivingWalkingListInstruction:1;
-        unsigned int wrote_drivingWalkingSignInstruction:1;
-        unsigned int wrote_drivingWalkingSpokenInstruction:1;
-        unsigned int wrote_genericInstruction:1;
-        unsigned int wrote_transitListInstruction:1;
-        unsigned int wrote_transitSignInstruction:1;
-        unsigned int wrote_departureBarStyle:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -86,14 +77,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsDepartureBarStyle:(id)arg1;
-- (void)_readCountStopsText;
-- (void)_readDepartureBar;
-- (void)_readDrivingWalkingListInstruction;
-- (void)_readDrivingWalkingSignInstruction;
-- (void)_readDrivingWalkingSpokenInstruction;
-- (void)_readGenericInstruction;
-- (void)_readTransitListInstruction;
-- (void)_readTransitSignInstruction;
 - (void)_transit_prepareForDeepMergeFrom:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -102,7 +85,10 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

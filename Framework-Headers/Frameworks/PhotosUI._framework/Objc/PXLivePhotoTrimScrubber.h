@@ -39,12 +39,9 @@
     long long _changeDepth;
     PXLivePhotoTrimScrubberHiddenAnimationHelper *_loupeHiddenHelper;
     PXLivePhotoTrimScrubberHiddenAnimationHelper *_trimControlHiddenHelper;
-    PXLivePhotoTrimScrubberHiddenAnimationHelper *_playheadHiddenHelper;
     UIView *_debugStartTimeView;
     UIView *_debugLoupeTimeView;
     UIView *_debugEndTimeView;
-    BOOL _canEditKeyTime;
-    BOOL _playheadEnabled;
     BOOL _disabled;
     BOOL _useMiniScrubber;
     BOOL _allowZoom;
@@ -57,6 +54,7 @@
     AVVideoComposition *_videoComposition;
     UIImage *_placeholderImage;
     double _horizontalInset;
+    unsigned long long _playheadStyle;
     NSArray *_snapKeyTimes;
     NSArray *_snapTrimStartTimes;
     NSArray *_snapTrimEndTimes;
@@ -67,10 +65,8 @@
     PXTrimScrubberLayoutHelper *_layoutHelper;
     UIImageView *_trimStartHandle;
     UIImageView *_trimEndHandle;
-    UIImageView *_playhead;
     CDStruct_1b6d18a9 _untrimmedDuration;
     CDStruct_1b6d18a9 _keyTime;
-    CDStruct_1b6d18a9 _playheadTime;
     CDStruct_1b6d18a9 _suggestedKeyTime;
     CDStruct_1b6d18a9 _trimStartTime;
     CDStruct_1b6d18a9 _trimEndTime;
@@ -84,9 +80,8 @@
 @property (readonly, nonatomic) UIView *_preTrimOverlayView; // @synthesize _preTrimOverlayView;
 @property (nonatomic, setter=_setTrackingElement:) long long _trackingElement; // @synthesize _trackingElement=__trackingElement;
 @property (nonatomic) BOOL allowZoom; // @synthesize allowZoom=_allowZoom;
-@property (copy, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic, getter=isAssetDurationLoaded) BOOL assetDurationLoaded;
-@property (nonatomic) BOOL canEditKeyTime; // @synthesize canEditKeyTime=_canEditKeyTime;
 @property (readonly, nonatomic) long long currentlyInteractingElement;
 @property (weak, nonatomic) id<PXLivePhotoTrimScrubberDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
@@ -101,9 +96,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 originalStartTime; // @synthesize originalStartTime=_originalStartTime;
 @property (readonly, nonatomic) UIView *photoLoupe; // @synthesize photoLoupe=_photoLoupe;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
-@property (readonly, nonatomic) UIImageView *playhead; // @synthesize playhead=_playhead;
-@property (nonatomic) BOOL playheadEnabled; // @synthesize playheadEnabled=_playheadEnabled;
-@property (nonatomic) CDStruct_1b6d18a9 playheadTime; // @synthesize playheadTime=_playheadTime;
+@property (nonatomic) unsigned long long playheadStyle; // @synthesize playheadStyle=_playheadStyle;
 @property (nonatomic) BOOL showVideoScrubberDebugOverlay; // @synthesize showVideoScrubberDebugOverlay=_showVideoScrubberDebugOverlay;
 @property (copy, nonatomic) NSArray *snapKeyTimes; // @synthesize snapKeyTimes=_snapKeyTimes;
 @property (copy, nonatomic) NSArray *snapTrimEndTimes; // @synthesize snapTrimEndTimes=_snapTrimEndTimes;
@@ -118,14 +111,12 @@
 @property (readonly, nonatomic) long long trimStatus;
 @property (nonatomic, setter=_setUntrimmedDuration:) CDStruct_1b6d18a9 untrimmedDuration; // @synthesize untrimmedDuration=_untrimmedDuration;
 @property (nonatomic) BOOL useMiniScrubber; // @synthesize useMiniScrubber=_useMiniScrubber;
-@property (copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
+@property (readonly, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 viewportMaxTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 viewportMinTime;
 
 + (id)_createSnappingControllersForKeytimes:(id)arg1;
 + (id)createSnappingControllerWithSnappingTarget:(double)arg1;
-+ (id)playheadImage;
-+ (id)playheadImageMini;
 + (id)trimEndHighlightedImage;
 + (id)trimEndHighlightedImageMini;
 + (id)trimEndImage;
@@ -144,14 +135,13 @@
 - (void)_handleLiftEvent;
 - (void)_handlePanningEvent;
 - (void)_handleTimerFireEvent;
+- (struct CGRect)_keyHandleRect;
 - (void)_newScrubberLayoutSubviews;
 - (double)_offsetForTime:(CDStruct_1b6d18a9)arg1;
 - (void)_presentControlsIfNeeded;
 - (void)_releaseAVObjects;
 - (void)_setKeyTime:(CDStruct_1b6d18a9)arg1 canHaveImpact:(BOOL)arg2;
 - (void)_setPhotoLoupeHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_setPlayheadHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_setPlayheadTime:(CDStruct_1b6d18a9)arg1 canHaveImpact:(BOOL)arg2;
 - (void)_setTrimControlsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)_snapTimesForElement:(long long)arg1;
 - (id)_snappingControllersForElement:(long long)arg1;
@@ -160,7 +150,6 @@
 - (void)_updateContentAspectRatio;
 - (void)_updateEndTimeSnappingControllers;
 - (void)_updateKeyTimeSnappingControllers;
-- (void)_updatePlayhead;
 - (void)_updateSpecDependentUI;
 - (void)_updateStartTimeSnappingControllers;
 - (void)_updateTrimHandles;
@@ -175,9 +164,12 @@
 - (double)horizontalOffsetForTime:(CDStruct_1b6d18a9)arg1;
 - (void)impactOccured;
 - (id)initWithFilmStripViewClass:(Class)arg1 spec:(id)arg2;
+- (BOOL)isValidKeyTime:(CDStruct_1b6d18a9)arg1;
 - (void)layoutSubviews;
 - (void)performAnimatedChanges:(CDUnknownBlockType)arg1;
 - (void)prepareForImpact;
+- (void)setAsset:(id)arg1 videoComposition:(id)arg2;
+- (void)setPlayheadStyle:(unsigned long long)arg1 animate:(BOOL)arg2;
 - (CDStruct_1b6d18a9)timeAtPoint:(struct CGPoint)arg1;
 - (CDStruct_1b6d18a9)timeForElement:(long long)arg1;
 - (BOOL)tryZoomAtTime:(CDStruct_1b6d18a9)arg1;

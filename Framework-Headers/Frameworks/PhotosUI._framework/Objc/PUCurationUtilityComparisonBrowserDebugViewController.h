@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_isUtilityButWasnt;
     NSMutableArray *_wasUtilityButIsnt;
     NSMutableArray *_isUtilityAndWas;
+    NSMutableArray *_isUtilityForMemoriesButNotUtility;
     PUPhotosAlbumViewController *_assetCollectionViewController;
 }
 

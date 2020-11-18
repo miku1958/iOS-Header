@@ -38,8 +38,8 @@
 - (void)networkConfigurationProfileDidUpdateProtectionMode:(id)arg1;
 - (void)networkConfigurationProfileDidUpdateWiFiCredentialType:(id)arg1;
 - (void)networkConfigurationProfileDidUpdateWiFiReconfigurationSupport:(id)arg1;
+- (void)previewAllowedHostsForAutoProtectionModeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reconfigureWiFiWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateProtectionMode:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

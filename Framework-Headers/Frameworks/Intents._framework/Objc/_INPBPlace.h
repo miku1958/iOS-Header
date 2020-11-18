@@ -17,14 +17,12 @@
     struct {
         unsigned int personalPlaceType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _personalPlaceType;
     NSArray *_placeDescriptors;
     _INPBString *_placeSubType;
     _INPBString *_placeType;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasPersonalPlaceType;

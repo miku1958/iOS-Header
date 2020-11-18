@@ -21,6 +21,8 @@
     _UIAsyncInvocation *_cancelViewServiceRequest;
     BOOL _hasBeenDisplayedAtLeastOnce;
     BOOL _remoteViewControllerHasBeenAdded;
+    BOOL _hasNotifiedDelegateAboutInitialLoadCompleted;
+    BOOL _hasRestartedViewService;
     UIView *_nanoHeaderView;
     NSArray *_previewActions;
     _WKActivatedElementInfo *_activatedElementInfo;
@@ -107,9 +109,11 @@
 - (void)remoteViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)remoteViewControllerDidLoadWebView:(id)arg1;
 - (void)remoteViewControllerWillDismiss:(id)arg1;
+- (void)remoteViewControllerWillOpenCurrentPageInBrowser:(id)arg1;
 - (void)serviceProxyWillQueueInvocation:(id)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)setTransitioningDelegate:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

@@ -19,7 +19,6 @@
 - (id)dataForTypeIdentifier:(id)arg1;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
-- (id)generateImageUsingFullscreenRenderer;
 - (BOOL)generatePreviewsDuringCloudActivity;
 - (BOOL)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;

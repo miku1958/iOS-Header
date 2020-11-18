@@ -20,15 +20,15 @@
 @property (readonly) Class superclass;
 
 + (id)duetUserActivitiesFromStreams:(id)arg1 limit:(unsigned long long)arg2 afterDate:(id)arg3 explanationSet:(id)arg4;
-+ (id)identifier;
 + (id)sharedInstance;
 - (id)duetLocationUserActivitiesWithLimit:(unsigned long long)arg1 afterDate:(id)arg2 explanationSet:(id)arg3;
 - (id)duetLocationUserActivitiesWithLimit:(unsigned long long)arg1 explanationSet:(id)arg2;
+- (id)identifier;
 - (BOOL)isDuetEventAuthorized:(id)arg1 bundleID:(id)arg2;
-- (BOOL)isEligibleForPredictions:(id)arg1;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 duetLimit:(long long)arg5 consumer:(unsigned long long)arg6 richLocationItems:(BOOL)arg7 resolveEKLocations:(BOOL)arg8 explanationSet:(id)arg9;
 - (id)supportedLocationFields;
+- (BOOL)testMetadataForValidAddressAndNameWithEvent:(id)arg1;
 - (id)whitespaceAndNewlineCharacterSet;
 
 @end

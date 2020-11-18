@@ -16,11 +16,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) SEL action; // @synthesize action=_action;
 @property (readonly, weak, nonatomic) id target; // @synthesize target=_target;
 
-+ (id)gestureTargetWithTarget:(id)arg1 action:(SEL)arg2;
 - (void).cxx_destruct;
-- (void)_sendActionWithGestureRecognizer:(id)arg1;
 - (id)description;
-- (BOOL)isEqualToTarget:(id)arg1 action:(SEL)arg2;
 
 @end
 

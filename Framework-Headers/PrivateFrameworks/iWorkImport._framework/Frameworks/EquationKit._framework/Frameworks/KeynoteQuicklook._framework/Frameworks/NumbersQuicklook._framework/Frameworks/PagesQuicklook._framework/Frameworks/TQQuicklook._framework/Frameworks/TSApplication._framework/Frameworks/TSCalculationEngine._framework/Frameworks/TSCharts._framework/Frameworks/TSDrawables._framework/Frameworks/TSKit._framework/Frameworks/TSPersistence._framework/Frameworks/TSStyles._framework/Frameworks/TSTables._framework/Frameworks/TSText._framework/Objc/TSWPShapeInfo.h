@@ -12,7 +12,7 @@
 #import <TSText/TSWPTextBoxNesting-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPDocumentRoot, TSWPPadding, TSWPShapeStyle, TSWPStorage;
-@protocol TSDContainerInfo, TSDOwningAttachment, TSWPFlowInfo;
+@protocol TSDInfo, TSDOwningAttachment, TSWPFlowInfo;
 
 @interface TSWPShapeInfo : TSDShapeInfo <TSDContainerInfo, TSWPStorageParent, TSDSelectionStatisticsContributor, TSWPTextBoxNesting>
 {
@@ -20,6 +20,7 @@
     BOOL _isTextBox;
     BOOL _preventsComments;
     BOOL _preventsChangeTracking;
+    BOOL _textStorageAllowsCommentsDisregardingParent;
     BOOL _ignoresInteriorWrap;
     TSPObject<TSWPFlowInfo> *_textFlow;
 }
@@ -39,10 +40,13 @@
 @property (readonly, nonatomic) TSWPDocumentRoot *documentRoot; // @dynamic documentRoot;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText; // @dynamic floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @dynamic geometry;
+@property (readonly, nonatomic) BOOL hasVisibleContents;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoresInteriorWrap; // @synthesize ignoresInteriorWrap=_ignoresInteriorWrap;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) NSString *instructionalText;
+@property (readonly, nonatomic) BOOL isCaptionOrContainedByCaption;
 @property (readonly, nonatomic) BOOL isLinkable;
 @property (readonly, nonatomic) BOOL isLinked;
 @property (readonly, nonatomic) BOOL isMaster;
@@ -53,7 +57,7 @@
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (strong, nonatomic) TSWPPadding *padding;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @dynamic parentInfo;
 @property (readonly, nonatomic) BOOL preventsChangeTracking; // @synthesize preventsChangeTracking=_preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments; // @synthesize preventsComments=_preventsComments;
 @property (readonly, nonatomic) BOOL shouldIgnoreWPContent;
@@ -62,10 +66,12 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (weak, nonatomic) TSPObject<TSWPFlowInfo> *textFlow; // @synthesize textFlow=_textFlow;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) TSWPStorage *textStorage;
+@property (readonly, nonatomic) BOOL textStorageAllowsCommentsDisregardingParent; // @synthesize textStorageAllowsCommentsDisregardingParent=_textStorageAllowsCommentsDisregardingParent;
 @property (readonly, nonatomic) TSWPShapeStyle *tswpShapeStyle;
 @property (nonatomic) int verticalAlignment;
 
@@ -75,12 +81,15 @@
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (struct CGPoint)autosizePositionOffset;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 dynamicallyDraggedLayout:(id)arg2;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 size:(struct CGSize)arg2;
 - (struct CGAffineTransform)autosizedTransformForInfoGeometry:(id)arg1 size:(struct CGSize)arg2;
 - (BOOL)canAnchor;
 - (id)childEnumerator;
+- (id)childEnumeratorForUserSearch;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 byGlyphStyle:(int)arg2 animationFilter:(id)arg3;
 - (id)copyAcceptingTrackedChangesWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1;
@@ -102,6 +111,8 @@
 - (unsigned long long)p_chunkCountForByBullet;
 - (unsigned long long)p_chunkCountForByBulletGroup;
 - (BOOL)p_growsAutomatically;
+- (BOOL)p_isEmptyList;
+- (BOOL)p_isEmptyParagraphWithFillOrBorders;
 - (BOOL)p_isNonTopicParagraphBreakAtParagraphIndex:(unsigned long long)arg1;
 - (unsigned long long)p_nonTopicParagraphBreakCount;
 - (void)p_setOwnedTextStorage:(id)arg1;
@@ -118,6 +129,7 @@
 - (BOOL)supportsShrinkTextToFit;
 - (BOOL)supportsTextInset;
 - (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
+- (BOOL)textStorageAllowsCommentsIgnoringParent;
 - (id)textStorageForHeadOfTextFlow;
 - (id)textureDeliveryStylesLocalized:(BOOL)arg1 animationFilter:(id)arg2;
 - (struct CGPoint)transformableObjectAnchorPoint;

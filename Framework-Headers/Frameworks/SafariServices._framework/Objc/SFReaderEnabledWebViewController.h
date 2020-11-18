@@ -29,11 +29,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateDarkModeEnabled;
 - (void)createReaderWebViewForReaderController:(id)arg1;
 - (void)dealloc;
+- (void)invalidate;
 - (void)loadView;
 - (void)readerController:(id)arg1 contentDidBecomeReadyWithDetectedLanguage:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(id)arg2;
-- (void)readerController:(id)arg1 didDetermineReaderAvailability:(BOOL)arg2 dueTo:(long long)arg3;
+- (void)readerController:(id)arg1 didDetermineReaderAvailability:(id)arg2 dueTo:(long long)arg3;
 - (void)setUpReaderWithReaderWebView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;

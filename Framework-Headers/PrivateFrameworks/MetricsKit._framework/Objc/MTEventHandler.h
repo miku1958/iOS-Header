@@ -6,22 +6,34 @@
 
 #import <MetricsKit/MTEventDataProvider.h>
 
+@class NSArray, NSString;
 @protocol MTEventHandlerDelegate;
 
 @interface MTEventHandler : MTEventDataProvider
 {
+    NSString *_registeredName;
+    NSArray *_registeredEventData;
+    NSArray *_postProcessingBlocks;
 }
 
 @property (weak, nonatomic) id<MTEventHandlerDelegate> delegate; // @dynamic delegate;
+@property (strong) NSArray *postProcessingBlocks; // @synthesize postProcessingBlocks=_postProcessingBlocks;
+@property (strong, nonatomic) NSArray *registeredEventData; // @synthesize registeredEventData=_registeredEventData;
+@property (strong, nonatomic) NSString *registeredName; // @synthesize registeredName=_registeredName;
 
 + (id)cachableWithKey:(id)arg1 onBackgroundThread:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 + (void)clearEventContextCache;
 + (void)createEventContextCache;
 + (id)currentEventContextCache;
+- (void).cxx_destruct;
+- (void)addPostProcessingBlock:(CDUnknownBlockType)arg1;
+- (void)didCreateMetricsData:(id)arg1;
 - (id)eventType;
 - (id)eventVersion:(id)arg1;
 - (id)knownFields;
 - (id)metricsDataWithCallerSuppliedFields:(id)arg1;
+- (id)metricsDataWithEventData:(id)arg1;
+- (id)metricsDataWithFields:(id)arg1;
 - (BOOL)mtIncludeBaseFields;
 
 @end

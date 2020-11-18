@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     long long _privateModifierFlags;
     NSString *_hint;
     long long __keyCode;
-    unsigned long long _source;
+    long long _source;
 }
 
 @property (strong, nonatomic) NSString *_commandModifiedInput; // @synthesize _commandModifiedInput;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long _privateModifierFlags; // @synthesize _privateModifierFlags;
 @property (strong, nonatomic) NSString *_shiftModifiedInput; // @synthesize _shiftModifiedInput;
 @property (strong, nonatomic) NSString *_unmodifiedInput; // @synthesize _unmodifiedInput;
-@property (nonatomic) unsigned long long source; // @synthesize source=_source;
+@property (nonatomic) long long source; // @synthesize source=_source;
 
 + (id)_eventWithInput:(id)arg1 inputFlags:(int)arg2;
 - (void).cxx_destruct;

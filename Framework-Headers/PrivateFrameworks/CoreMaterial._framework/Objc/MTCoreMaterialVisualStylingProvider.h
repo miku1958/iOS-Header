@@ -27,8 +27,8 @@
 - (void)addObserver:(id)arg1;
 - (id)description;
 - (void)removeObserver:(id)arg1;
-- (void)updateVisualStyleSetFromRecipe:(id)arg1 andCategory:(id)arg2;
-- (void)updateVisualStyleSetGeneratedFromRecipe:(id)arg1;
+- (BOOL)updateVisualStyleSetFromRecipe:(id)arg1 andCategory:(id)arg2;
+- (BOOL)updateVisualStyleSetGeneratedFromRecipe:(id)arg1;
 - (id)visualStylingForStyle:(id)arg1;
 
 @end

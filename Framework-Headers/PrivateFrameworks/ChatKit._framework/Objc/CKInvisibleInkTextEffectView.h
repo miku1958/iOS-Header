@@ -44,9 +44,13 @@ __attribute__((visibility("hidden")))
 - (id)dustEmitter;
 - (void)endDrawEmitterEffects;
 - (void)endDustEmitterLayerFingerEffects:(id)arg1;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
+- (void)endEmittersForTouchesEnded:(id)arg1;
 - (void)endTouches;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
 - (void)moveEmittersWithTouches:(id)arg1;
 - (void)reset;
 - (void)setPaused:(BOOL)arg1;

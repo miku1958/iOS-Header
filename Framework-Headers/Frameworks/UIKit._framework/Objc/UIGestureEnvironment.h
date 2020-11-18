@@ -28,48 +28,10 @@ __attribute__((visibility("hidden")))
     NSMapTable *_nodesByGestureRecognizer;
 }
 
-@property (readonly, nonatomic) BOOL _hasGesturesNeedingUpdate;
-
 - (void).cxx_destruct;
-- (BOOL)_activeRelationshipsForGestureRecognizer:(id)arg1;
-- (void)_addDynamicRequirementForGestureRecognizer:(id)arg1 requiringGestureRecognizerToFail:(id)arg2;
-- (void)_addPreUpdateAction:(CDUnknownBlockType)arg1;
-- (void)_cancelGestureRecognizers:(id)arg1;
-- (void)_cancelPresses:(id)arg1 event:(id)arg2;
-- (void)_cancelTouches:(id)arg1 event:(id)arg2;
-- (void)_clearGestureIsDirty:(id)arg1;
-- (void)_clearGestureNeedsUpdate:(id)arg1;
-- (id)_delayedPressForPress:(id)arg1 event:(id)arg2;
-- (id)_delayedTouchForTouch:(id)arg1 event:(id)arg2;
-- (void)_deliverEvent:(id)arg1 toGestureRecognizers:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)_enqueueDelayedPressToSend:(id)arg1;
-- (void)_enqueueDelayedTouchToSend:(id)arg1;
-- (void)_forceUpdateForSpringBoardOnly;
-- (void)_gestureNeedsReset:(id)arg1;
-- (id)_gestureRecognizerForNode:(id)arg1;
-- (id)_graphDictionary:(BOOL)arg1;
-- (void)_markGestureAsDirty:(id)arg1;
-- (id)_nodeForGestureRecognizer:(id)arg1;
-- (void)_notifyDependentsGestureRecognizerHasCompleted:(id)arg1;
-- (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
-- (BOOL)_pressesBeganWasDelayedForPress:(id)arg1;
-- (void)_queueGestureRecognizerForResetIfFinished:(id)arg1;
-- (void)_queueGestureRecognizersForResetIfFinished:(id)arg1;
-- (void)_removeDelayedPress:(id)arg1;
-- (void)_removeDelayedTouch:(id)arg1;
-- (void)_removeNodeFromGestureGraph:(id)arg1;
-- (void)_runPreUpdateActions;
-- (BOOL)_touchesBeganWasDelayedForTouch:(id)arg1;
-- (void)_updateForEvent:(id)arg1 window:(id)arg2;
 - (void)addGestureRecognizer:(id)arg1;
-- (void)addRequirementForGestureRecognizer:(id)arg1 requiringGestureRecognizerToFail:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 requiresGestureRecognizerToFail:(id)arg2;
 - (id)init;
 - (void)removeGestureRecognizer:(id)arg1;
-- (void)removeRequirementForGestureRecognizer:(id)arg1 requiringGestureRecognizerToFail:(id)arg2;
-- (void)setGestureNeedsUpdate:(id)arg1;
-- (void)setNeedsExclusivityUpdate;
-- (BOOL)unmetRequirementsForGestureRecognizer:(id)arg1;
 
 @end
 

@@ -12,15 +12,16 @@
 #import <SpringBoard/SBHomeGrabberDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 
-@class FBDisplayLayoutElement, NSNumber, NSString, SBDisplayItem, SBFHomeGrabberSettings, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, UIStatusBar, UIStatusBarStyleRequest, UIView, UIWindow, _UILegibilitySettings;
+@class FBDisplayLayoutElement, NSNumber, NSString, SBDisplayItem, SBFHomeGrabberSettings, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, UIColor, UIStatusBar, UIStatusBarStyleRequest, UIView, UIWindow, _UILegibilitySettings;
 @protocol SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate;
 
 @interface SBTransientOverlayViewController : UIViewController <SBHomeGrabberDelegate, BSDescriptionProviding, SBButtonEventsHandler, SBFIdleTimerBehaviorProviding, SBIdleTimerProviding>
 {
     long long _appearanceUpdateIgnoreCount;
     UIView *_contentContainerView;
+    UIView *_homeGrabberContainerView;
+    UIView *_dimmingView;
     long long _contentOverlayInsetUpdateIgnoreCount;
-    SBHomeGrabberView *_grabberView;
     SBFHomeGrabberSettings *_grabberSettings;
     BOOL _hasPreservedInputViews;
     BOOL _isDisplayLayoutElementActive;
@@ -40,14 +41,17 @@
     BOOL _shouldDisableInteractiveScreenshotGesture;
     BOOL _shouldDisableSiri;
     BOOL _shouldPendAlertItems;
+    BOOL _shouldUseSceneBasedKeyboardFocus;
     BOOL _shouldDisableOrientationUpdates;
+    BOOL _prefersWindowHitTestingDisabled;
     BOOL _presentationAllowsHomeGrabberAutoHide;
+    BOOL _presentationDimmingViewHidden;
     BOOL _presentationPrefersStatusBarHidden;
+    BOOL _dismissesForCoverSheetPresentation;
     int _preferredStatusBarStyleOverridesToCancel;
     int _pictureInPictureProcessIdentifier;
     UIView *_contentView;
     UIView *_backgroundView;
-    _UILegibilitySettings *_preferredStatusBarLegibilitySettings;
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
     long long _containerOrientation;
     long long _preferredLockedGestureDismissalStyle;
@@ -56,10 +60,12 @@
     FBDisplayLayoutElement *_displayLayoutElement;
     id<SBTransientOverlayViewControllerDelegate> _transientOverlayDelegate;
     UIStatusBarStyleRequest *_currentStatusBarStyleRequest;
+    SBHomeGrabberView *_grabberView;
     double _presentationContentCornerRadius;
     double _presentationHomeGrabberAlpha;
     double _presentationHomeGrabberAdditionalEdgeSpacing;
     struct CGAffineTransform _presentationContentTransform;
+    struct CGAffineTransform _presentationHomeGrabberTransform;
 }
 
 @property (readonly, nonatomic) BOOL allowsStackingOverlayContentAbove; // @synthesize allowsStackingOverlayContentAbove=_allowsStackingOverlayContentAbove;
@@ -72,9 +78,13 @@
 @property (readonly, nonatomic) double customIdleWarningTimeout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL dismissesForCoverSheetPresentation; // @synthesize dismissesForCoverSheetPresentation=_dismissesForCoverSheetPresentation;
+@property (readonly, nonatomic) BOOL dismissesSiriForPresentation;
 @property (strong, nonatomic) FBDisplayLayoutElement *displayLayoutElement; // @synthesize displayLayoutElement=_displayLayoutElement;
+@property (strong, nonatomic) SBHomeGrabberView *grabberView; // @synthesize grabberView=_grabberView;
 @property (readonly, nonatomic) BOOL hasVisibleStatusBar;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long homeAffordanceSuppression;
 @property (weak, nonatomic) id<SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 @property (readonly, nonatomic) long long idleTimerDuration;
 @property (readonly, nonatomic) long long idleTimerMode;
@@ -85,17 +95,23 @@
 @property (readonly, copy, nonatomic) NSString *preferredDisplayLayoutElementIdentifier;
 @property (readonly, nonatomic) long long preferredLockedGestureDismissalStyle; // @synthesize preferredLockedGestureDismissalStyle=_preferredLockedGestureDismissalStyle;
 @property (readonly, copy, nonatomic) NSNumber *preferredSceneDeactivationReasonValue;
-@property (readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings; // @synthesize preferredStatusBarLegibilitySettings=_preferredStatusBarLegibilitySettings;
+@property (readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings;
 @property (readonly, nonatomic) int preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
 @property (readonly, nonatomic) long long preferredUnlockedGestureDismissalStyle; // @synthesize preferredUnlockedGestureDismissalStyle=_preferredUnlockedGestureDismissalStyle;
 @property (readonly, nonatomic) BOOL prefersProximityDetectionEnabled; // @synthesize prefersProximityDetectionEnabled=_prefersProximityDetectionEnabled;
 @property (readonly, nonatomic) BOOL prefersStatusBarActivityItemVisible; // @synthesize prefersStatusBarActivityItemVisible=_prefersStatusBarActivityItemVisible;
+@property (readonly, nonatomic) BOOL prefersWindowHitTestingDisabled; // @synthesize prefersWindowHitTestingDisabled=_prefersWindowHitTestingDisabled;
 @property (nonatomic) BOOL presentationAllowsHomeGrabberAutoHide; // @synthesize presentationAllowsHomeGrabberAutoHide=_presentationAllowsHomeGrabberAutoHide;
 @property (nonatomic) double presentationContentCornerRadius; // @synthesize presentationContentCornerRadius=_presentationContentCornerRadius;
 @property (nonatomic) struct CGAffineTransform presentationContentTransform; // @synthesize presentationContentTransform=_presentationContentTransform;
+@property (nonatomic) double presentationDimmingAlpha;
+@property (readonly, nonatomic) UIColor *presentationDimmingViewColor;
+@property (nonatomic) BOOL presentationDimmingViewHidden; // @synthesize presentationDimmingViewHidden=_presentationDimmingViewHidden;
 @property (nonatomic) double presentationHomeGrabberAdditionalEdgeSpacing; // @synthesize presentationHomeGrabberAdditionalEdgeSpacing=_presentationHomeGrabberAdditionalEdgeSpacing;
 @property (nonatomic) double presentationHomeGrabberAlpha; // @synthesize presentationHomeGrabberAlpha=_presentationHomeGrabberAlpha;
+@property (nonatomic) struct CGAffineTransform presentationHomeGrabberTransform; // @synthesize presentationHomeGrabberTransform=_presentationHomeGrabberTransform;
 @property (readonly, nonatomic) BOOL presentationPrefersStatusBarHidden; // @synthesize presentationPrefersStatusBarHidden=_presentationPrefersStatusBarHidden;
+@property (readonly, nonatomic) BOOL preservesAppSwitcherDuringPresentationAndDismissal;
 @property (readonly, copy, nonatomic) SBDisplayItem *representedDisplayItem; // @synthesize representedDisplayItem=_representedDisplayItem;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sceneDeactivationPredicate;
 @property (readonly, nonatomic) BOOL shouldDisableBanners; // @synthesize shouldDisableBanners=_shouldDisableBanners;
@@ -105,6 +121,7 @@
 @property (readonly, nonatomic) BOOL shouldDisableReachability; // @synthesize shouldDisableReachability=_shouldDisableReachability;
 @property (readonly, nonatomic) BOOL shouldDisableSiri; // @synthesize shouldDisableSiri=_shouldDisableSiri;
 @property (readonly, nonatomic) BOOL shouldPendAlertItems; // @synthesize shouldPendAlertItems=_shouldPendAlertItems;
+@property (readonly, nonatomic) BOOL shouldUseSceneBasedKeyboardFocus; // @synthesize shouldUseSceneBasedKeyboardFocus=_shouldUseSceneBasedKeyboardFocus;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<SBTransientOverlayViewControllerDelegate> transientOverlayDelegate; // @synthesize transientOverlayDelegate=_transientOverlayDelegate;
 
@@ -131,6 +148,7 @@
 - (void)endIgnoringAppearanceUpdates;
 - (void)endIgnoringContentOverlayInsetUpdates;
 - (BOOL)handleDoubleHeightStatusBarTap;
+- (void)handleGestureDismissal;
 - (BOOL)handleHeadsetButtonPress:(BOOL)arg1;
 - (BOOL)handleHomeButtonDoublePress;
 - (BOOL)handleHomeButtonLongPress;
@@ -146,6 +164,7 @@
 - (void)preserveInputViewsAnimated:(BOOL)arg1;
 - (void)removePresentationBackgroundView:(id)arg1;
 - (void)restoreInputViewsAnimated:(BOOL)arg1;
+- (void)setHomeGrabberPointerClickDelegate:(id)arg1;
 - (void)setNeedsContentOpaqueUpdate;
 - (void)setNeedsFeaturePolicyUpdate;
 - (void)setNeedsGestureDismissalStyleUpdate;
@@ -157,6 +176,7 @@
 - (void)setNeedsUpdateOfHomeIndicatorAutoHidden;
 - (void)setNeedsUpdateOfScreenEdgesDeferringSystemGestures;
 - (void)setNeedsWhitePointAdaptivityStyleUpdate;
+- (void)setNeedsWindowHitTestingUpdate;
 - (void)setPresentationPrefersHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPresentationPrefersStatusBarHidden:(BOOL)arg1 initialStatusBarSettings:(id)arg2;
 - (BOOL)shouldAllowAutoHideForHomeGrabberView:(id)arg1;

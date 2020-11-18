@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class CKDFetchRecordZonesOperation, CKDFetchRecordsOperation, CKDMarkAssetBrokenURLRequestWrapperOperation, CKDModifyRecordZonesOperation, CKDModifyRecordsOperation, CKRecord, CKRecordID, CKRecordZone, CKUploadRequestConfiguration, NSError, NSString;
+@protocol CKMarkAssetBrokenOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDMarkAssetBrokenOperation : CKDDatabaseOperation
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) CDUnknownBlockType assetOrPackageMarkedBrokenBlock; // @synthesize assetOrPackageMarkedBrokenBlock=_assetOrPackageMarkedBrokenBlock;
 @property (nonatomic) BOOL bypassPCSEncryptionForTouchRepairZone; // @synthesize bypassPCSEncryptionForTouchRepairZone=_bypassPCSEncryptionForTouchRepairZone;
+@property (strong, nonatomic) id<CKMarkAssetBrokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) CKDModifyRecordsOperation *corruptOperation; // @synthesize corruptOperation=_corruptOperation;
 @property (strong, nonatomic) CKDFetchRecordsOperation *fetchOperation; // @synthesize fetchOperation=_fetchOperation;
 @property (strong, nonatomic) NSString *field; // @synthesize field=_field;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) CKRecordZone *repairZone; // @synthesize repairZone=_repairZone;
 @property (nonatomic) BOOL simulateCorruptAsset; // @synthesize simulateCorruptAsset=_simulateCorruptAsset;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (nonatomic) BOOL touchRepairZone; // @synthesize touchRepairZone=_touchRepairZone;
 @property (strong, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property (strong, nonatomic) CKDMarkAssetBrokenURLRequestWrapperOperation *wrapperOperation; // @synthesize wrapperOperation=_wrapperOperation;
@@ -64,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
 - (id)repairContext;
 
 @end

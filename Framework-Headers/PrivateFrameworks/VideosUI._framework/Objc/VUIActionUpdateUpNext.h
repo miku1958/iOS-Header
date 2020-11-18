@@ -11,10 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface VUIActionUpdateUpNext : VUIAction
 {
+    BOOL _confirmationShouldWaitCompletion;
     NSString *_state;
     NSString *_itemID;
 }
 
+@property (nonatomic) BOOL confirmationShouldWaitCompletion; // @synthesize confirmationShouldWaitCompletion=_confirmationShouldWaitCompletion;
 @property (strong, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property (strong, nonatomic) NSString *state; // @synthesize state=_state;
 

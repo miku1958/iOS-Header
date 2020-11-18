@@ -45,6 +45,7 @@
 - (id)initByReferencingFileURL:(id)arg1 MIMEType:(id)arg2 properties:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStreamingURL:(id)arg1 properties:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 
 @end

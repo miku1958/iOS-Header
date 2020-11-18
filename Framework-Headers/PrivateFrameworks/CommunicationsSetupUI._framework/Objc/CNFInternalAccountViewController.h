@@ -8,6 +8,7 @@
 
 @class FTRegConnectionHandler, IMAccount;
 
+__attribute__((visibility("hidden")))
 @interface CNFInternalAccountViewController : PSListController
 {
     IMAccount *_account;

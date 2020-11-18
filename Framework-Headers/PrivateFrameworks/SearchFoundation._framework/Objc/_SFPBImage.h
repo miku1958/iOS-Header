@@ -9,13 +9,14 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBImage-Protocol.h>
 
-@class NSData, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
+@class NSData, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBSymbolImage, _SFPBURLImage;
 
 @interface _SFPBImage : PBCodable <_SFPBImage, NSSecureCoding>
 {
     BOOL _isTemplate;
     BOOL _shouldCropToCircle;
     int _source;
+    int _cornerRoundingStyle;
     int _type;
     NSData *_imageData;
     _SFPBGraphicalFloat *_cornerRadius;
@@ -31,6 +32,7 @@
     _SFPBAppIconImage *_appIconImage;
     _SFPBMediaArtworkImage *_mediaArtworkImage;
     _SFPBCalendarImage *_calendarImage;
+    _SFPBSymbolImage *_symbolImage;
 }
 
 @property (strong, nonatomic) _SFPBAppIconImage *appIconImage; // @synthesize appIconImage=_appIconImage;
@@ -38,6 +40,7 @@
 @property (strong, nonatomic) _SFPBContactImage *contactImage; // @synthesize contactImage=_contactImage;
 @property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) _SFPBGraphicalFloat *cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (nonatomic) int cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -54,6 +57,7 @@
 @property (strong, nonatomic) _SFPBPointSize *size; // @synthesize size=_size;
 @property (nonatomic) int source; // @synthesize source=_source;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _SFPBSymbolImage *symbolImage; // @synthesize symbolImage=_symbolImage;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) _SFPBURLImage *urlImage; // @synthesize urlImage=_urlImage;
 

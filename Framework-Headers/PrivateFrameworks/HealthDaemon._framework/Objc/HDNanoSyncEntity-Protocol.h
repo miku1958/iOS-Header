@@ -9,11 +9,11 @@
 @class HDProfile;
 
 @protocol HDNanoSyncEntity <HDSyncEntity>
-+ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 
 @optional
 + (BOOL)companionDidChangeForProfile:(HDProfile *)arg1 error:(id *)arg2;
 + (int)nanoSyncObjectType;
++ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (BOOL)supportsSpeculativeNanoSyncChanges;
 @end
 

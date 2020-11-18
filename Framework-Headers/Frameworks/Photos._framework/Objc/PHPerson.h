@@ -14,6 +14,7 @@
     unsigned short _questionType;
     unsigned short _ageType;
     unsigned short _genderType;
+    unsigned short _sexType;
     NSString *_name;
     NSString *_displayName;
     long long _type;
@@ -22,6 +23,7 @@
     long long _faceCount;
     NSDictionary *_contactMatchingDictionary;
     long long _verifiedType;
+    unsigned long long _persistedSuggestionForClient;
 }
 
 @property (readonly, nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
@@ -32,8 +34,10 @@
 @property (readonly, nonatomic, getter=isInPersonNamingModel) BOOL inPersonNamingModel; // @synthesize inPersonNamingModel=_inPersonNamingModel;
 @property (readonly, nonatomic) unsigned long long manualOrder; // @synthesize manualOrder=_manualOrder;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) unsigned long long persistedSuggestionForClient; // @synthesize persistedSuggestionForClient=_persistedSuggestionForClient;
 @property (readonly, nonatomic) NSString *personUri; // @synthesize personUri=_personUri;
 @property (readonly, nonatomic) unsigned short questionType; // @synthesize questionType=_questionType;
+@property (readonly, nonatomic) unsigned short sexType; // @synthesize sexType=_sexType;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic, getter=isVerified) BOOL verified;
 @property (readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
@@ -47,12 +51,13 @@
 + (id)_personSuggestionMarkedAsConfirmed:(BOOL)arg1 fromPersonSuggestion:(id)arg2;
 + (long long)_personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 fromClient:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)_verifiedPersonWithLocalIdentifier:(id)arg1 fromPhotoLibrary:(id)arg2;
++ (id)batchFetchContactInferencesForPersons:(id)arg1 queryOptions:(unsigned long long)arg2;
++ (id)batchFetchRelationshipInferencesForPersons:(id)arg1;
 + (id)batchFetchSuggestedRecipientsForAssets:(id)arg1 options:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
 + (id)entityKeyMap;
 + (id)fetchAssociatedPersonsGroupedByFaceGroupLocalIdentifierForFaceGroups:(id)arg1 options:(id)arg2;
 + (id)fetchFinalMergeTargetPersonsForPersonWithUUID:(id)arg1 options:(id)arg2;
-+ (id)fetchHomePersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
 + (id)fetchInvalidMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchPersonAssociatedWithFaceGroup:(id)arg1 options:(id)arg2;
@@ -71,10 +76,12 @@
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRejectedPersonsForFace:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedPersonsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedPersonsForClient:(unsigned long long)arg1 options:(id)arg2;
 + (id)fetchSuggestedPersonsForFocusedAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedRecipientsForAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedRecipientsForFocusedAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchType;
++ (id)fetchVerifiedPersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
 + (id)fullNameFromContact:(id)arg1;
 + (id)identifierCode;
 + (id)inferredContactByPersonLocalIdentifierForPersons:(id)arg1;
@@ -86,8 +93,6 @@
 + (long long)personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)personToKeepForCloudConistencyFromPersons:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
-+ (long long)suggestVerifiedPersonForFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (long long)suggestVerifiedPersonForPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (long long)updateKeyFacesOfPersons:(id)arg1 forceUpdate:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;

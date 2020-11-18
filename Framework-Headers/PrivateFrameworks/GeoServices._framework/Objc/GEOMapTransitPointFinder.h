@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOMapAccess *map;
 
 - (void).cxx_destruct;
-- (void)_validatePoint:(CDStruct_cdc9fa9f *)arg1 rect:(CDStruct_90e2a262)arg2 localSearch:(Box_3fb92e00)arg3 validPointHandler:(CDUnknownBlockType)arg4;
+- (void)_validatePoint:(CDStruct_bc8de1a2 *)arg1 rect:(CDStruct_90e2a262)arg2 localSearch:(Box_3fb92e00)arg3 validPointHandler:(CDUnknownBlockType)arg4;
 - (void)cancel;
 - (void)findTransitPointsOfType:(unsigned long long)arg1 nodeHandler:(CDUnknownBlockType)arg2 accessPointHandler:(CDUnknownBlockType)arg3;
 - (id)initWithMap:(id)arg1 approxLocation:(CDStruct_c3b9c2ee)arg2 parentID:(unsigned long long)arg3;

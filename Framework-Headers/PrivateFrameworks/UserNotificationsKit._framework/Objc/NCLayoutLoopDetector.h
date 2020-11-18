@@ -7,13 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray;
+@protocol OS_dispatch_queue;
 
 @interface NCLayoutLoopDetector : NSObject
 {
     NSMutableArray *_notificationLayoutsInProgress;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (strong) NSMutableArray *notificationLayoutsInProgress; // @synthesize notificationLayoutsInProgress=_notificationLayoutsInProgress;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 - (void)_saveNotificationLayoutsInProgress;

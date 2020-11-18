@@ -8,6 +8,7 @@
 
 @interface UIColor (MTUIStyling)
 + (id)mtui_backgroundColor;
++ (id)mtui_buttonBackgroundColor;
 + (id)mtui_cellAccessoryColor;
 + (id)mtui_cellHighlightColor;
 + (id)mtui_cellSeparatorColor;

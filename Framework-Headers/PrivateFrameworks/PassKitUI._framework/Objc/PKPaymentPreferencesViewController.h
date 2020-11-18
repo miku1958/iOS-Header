@@ -13,7 +13,7 @@
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UISwitch, UITableView, UITextField;
+@class NSArray, NSIndexPath, NSString, PKContactFormatValidator, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UISwitch, UITableView, UITextField;
 
 @interface PKPaymentPreferencesViewController : UIViewController <CNContactPickerDelegate, UITextFieldDelegate, PKAddressSearcherViewControllerDelegate, PKAddressEditorViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -28,6 +28,8 @@
     BOOL _keyboardVisible;
     unsigned short _layoutRecursionCounter;
     BOOL _preferredContentSizeUpdateDeferred;
+    PKContactFormatValidator *_contactFormatValidator;
+    BOOL _isEditingFieldThatWasOriginallyInvalid;
     NSArray *_preferences;
     long long _style;
     UITableView *_tableView;
@@ -51,6 +53,7 @@
 - (id)_cellForNamePreference:(id)arg1 row:(unsigned long long)arg2;
 - (id)_cellForPreference:(id)arg1 row:(unsigned long long)arg2;
 - (id)_cellOfClass:(Class)arg1;
+- (void)_checkFormatOfTextField:(id)arg1 forBeginEditing:(BOOL)arg2;
 - (void)_cleanupInlineEdits;
 - (void)_editPreferenceAtIndexPath:(id)arg1;
 - (id)_hyperlinkFooterViewForPreference:(id)arg1;
@@ -84,7 +87,7 @@
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
 - (void)hideTextField:(id)arg1;
-- (id)initWithStyle:(long long)arg1 preferences:(id)arg2 title:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)initWithStyle:(long long)arg1 preferences:(id)arg2 title:(id)arg3 handler:(CDUnknownBlockType)arg4 contactFormatValidator:(id)arg5;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pk_childrenForAppearance;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
@@ -107,6 +110,7 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableViewDidFinishReload:(id)arg1;
+- (void)textDidChange:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldEndEditing:(id)arg1;

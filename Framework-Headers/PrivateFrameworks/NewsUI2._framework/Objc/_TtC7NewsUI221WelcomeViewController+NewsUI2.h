@@ -7,6 +7,7 @@
 #import <NewsUI2/_TtC7NewsUI221WelcomeViewController.h>
 
 @interface _TtC7NewsUI221WelcomeViewController (NewsUI2)
+- (void)didTapContinueButton;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -23,8 +23,8 @@
 
 - (void)_checkForContentBlockers;
 - (void)contentBlockerManagerExtensionListDidChange:(id)arg1;
-- (void)dealloc;
 - (id)initWithPerSitePreferencesStore:(id)arg1;
+- (void)invalidate;
 
 @end
 

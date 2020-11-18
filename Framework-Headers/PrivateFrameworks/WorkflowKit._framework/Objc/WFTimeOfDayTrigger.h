@@ -8,25 +8,30 @@
 
 #import <WorkflowKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDateComponents;
+@class NSArray, NSDateComponents, NSNumber;
 
 @interface WFTimeOfDayTrigger : WFTrigger <NSSecureCoding>
 {
     unsigned long long _event;
     unsigned long long _timeOffset;
     NSDateComponents *_time;
+    unsigned long long _mode;
     NSArray *_daysOfWeek;
+    NSNumber *_dayOfMonth;
 }
 
+@property (copy, nonatomic) NSNumber *dayOfMonth; // @synthesize dayOfMonth=_dayOfMonth;
 @property (copy, nonatomic) NSArray *daysOfWeek; // @synthesize daysOfWeek=_daysOfWeek;
 @property (nonatomic) unsigned long long event; // @synthesize event=_event;
+@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) NSDateComponents *time; // @synthesize time=_time;
 @property (nonatomic) unsigned long long timeOffset; // @synthesize timeOffset=_timeOffset;
 
 + (id)dateFormatter;
++ (BOOL)isAllowedToRunAutomatically;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
-+ (id)localizedRecurrenceDescriptionForDaysOfWeek:(id)arg1;
++ (id)localizedRecurrenceDescriptionForDaysOfWeek:(id)arg1 dayOfMonth:(id)arg2 mode:(unsigned long long)arg3;
 + (id)localizedSunriseSunsetDescriptionForTriggerEvent:(unsigned long long)arg1 timeOffset:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -35,6 +40,7 @@
 - (BOOL)hasValidConfiguration;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)localizedDescriptionWithConfigurationSummary;
 - (id)localizedPastTenseDescription;
 

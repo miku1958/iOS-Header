@@ -24,9 +24,10 @@
 + (double)estimatedHeight;
 - (void).cxx_destruct;
 - (void)_setupConstraints;
-- (void)_setupUIWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3;
-- (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3;
+- (void)_setupUIWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3 activeAlgorithmVersion:(long long)arg4;
+- (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3 activeAlgorithmVersion:(long long)arg4;
 - (void)prepareForReuse;
+- (void)setActiveAlgorithmVersion:(long long)arg1;
 
 @end
 

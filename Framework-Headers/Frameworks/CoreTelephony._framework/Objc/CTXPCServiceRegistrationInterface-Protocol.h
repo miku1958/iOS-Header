@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CTNetwork, CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSDictionary, NSString;
+@class CTBandInfo, CTNetwork, CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSDictionary, NSString;
 
 @protocol CTXPCServiceRegistrationInterface
 - (void)automaticallySelectNetwork:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
@@ -31,6 +31,8 @@
 - (void)copyServingPlmn:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyWirelessTechnology:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchNetworkList:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getBandInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTBandInfo *, NSError *))arg2;
+- (void)getCurrentRat:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getEncryptionStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTEncryptionStatusInfo *, NSError *))arg2;
 - (void)getEnhancedVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTEnhancedLinkQualityMetric *, NSError *))arg2;
@@ -38,6 +40,7 @@
 - (void)getMaxDataRate:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getRatSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
+- (void)getRatSelectionMask:(CTServiceDescriptor *)arg1 completion:(void (^)(CTRatSelection *, NSError *))arg2;
 - (void)getSignalStrengthInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSignalStrengthMeasurementsAsync:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
@@ -46,6 +49,7 @@
 - (void)isNetworkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)isNetworkSelectionMenuAvailable:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)selectNetwork:(CTXPCServiceSubscriptionContext *)arg1 network:(CTNetwork *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setActiveBandInfo:(CTXPCServiceSubscriptionContext *)arg1 bands:(CTBandInfo *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setBandInfo:(CTXPCServiceSubscriptionContext *)arg1 bands:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setMaxDataRate:(CTXPCServiceSubscriptionContext *)arg1 rate:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setRatSelection:(CTXPCServiceSubscriptionContext *)arg1 selection:(NSString *)arg2 preferred:(NSString *)arg3 completion:(void (^)(NSError *))arg4;

@@ -6,19 +6,21 @@
 
 #import <Metal/MTLFunctionReflection.h>
 
-@class NSArray;
+@class NSArray, NSData;
 
 @interface MTLFunctionReflectionInternal : MTLFunctionReflection
 {
     NSArray *_builtInArguments;
     NSArray *_arguments;
+    NSData *_pluginReturnData;
 }
 
 - (id)arguments;
 - (id)builtInArguments;
 - (void)dealloc;
-- (id)initWithArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3;
+- (id)initWithArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3 pluginReturnData:(id)arg4;
 - (id)initWithDevice:(id)arg1 reflectionData:(id)arg2 functionType:(unsigned long long)arg3 options:(unsigned long long)arg4;
+- (id)pluginReturnData;
 
 @end
 

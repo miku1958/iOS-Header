@@ -7,12 +7,27 @@
 #import <NewsUI2/_TtC7NewsUI223FollowingViewController.h>
 
 #import <NewsUI2/TSFollowingViewControllerType-Protocol.h>
+#import <NewsUI2/TSViewControllerTabbable-Protocol.h>
 
 @class UIView;
 
-@interface _TtC7NewsUI223FollowingViewController (NewsUI2) <TSFollowingViewControllerType>
+@interface _TtC7NewsUI223FollowingViewController (NewsUI2) <TSFollowingViewControllerType, TSViewControllerTabbable>
 
 @property (nonatomic, readonly) UIView *contentView;
 
+- (id)contentScrollView;
+- (void)editButtonTapped;
+- (void)searchBar:(id)arg1 textDidChange:(id)arg2;
+- (void)searchBarCancelButtonClicked:(id)arg1;
+- (void)searchBarSearchButtonClicked:(id)arg1;
+- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)tabBarControllerDidDoubleTapBarButtonItem:(id)arg1;
+- (void)tabBarSplitViewWillChangeDisplayModeToDisplayMode:(long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 @end
 

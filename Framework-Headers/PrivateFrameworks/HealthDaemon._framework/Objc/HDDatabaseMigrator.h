@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class HDDatabaseMigrationTransaction, HDDatabaseSchemaManager, HDProfile, NSMutableArray;
+@class HDDatabaseMigrationTransaction, HDDatabaseSchemaManager, NSMutableArray, _HKBehavior;
 
 @interface HDDatabaseMigrator : NSObject
 {
     BOOL _hasPerformedMigration;
     NSMutableArray *_migrationSteps;
-    HDProfile *_profile;
     HDDatabaseMigrationTransaction *_transaction;
     HDDatabaseSchemaManager *_schemaManager;
 }
 
-@property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (readonly, nonatomic) _HKBehavior *behavior;
 @property (readonly, nonatomic) HDDatabaseSchemaManager *schemaManager; // @synthesize schemaManager=_schemaManager;
 @property (readonly, nonatomic) HDDatabaseMigrationTransaction *transaction; // @synthesize transaction=_transaction;
 
-+ (BOOL)_databaseSchemas:(id)arg1 containsTable:(id)arg2;
 - (void).cxx_destruct;
 - (long long)_addAnchorForCompanionWorkoutCreditWithError:(id *)arg1;
 - (long long)_addArbitraryMetadataSupportForWorkoutEventsWithError:(out id *)arg1;
@@ -98,7 +96,6 @@
 - (long long)_createSyncAnchorsTableWithError:(id *)arg1;
 - (long long)_createSyncStoreTableWithError:(id *)arg1;
 - (long long)_createUnprotectedKeyValueTableWithError:(id *)arg1;
-- (BOOL)_deleteDataEntitySubclassTables:(id)arg1 intermediateTables:(id)arg2 error:(out id *)arg3;
 - (long long)_dropDataSessionActivitiesTableWithError:(id *)arg1;
 - (long long)_dropMenstruationTable:(id *)arg1;
 - (long long)_emet_addPatientHashtoClinicalAccountsTable:(out id *)arg1;
@@ -120,7 +117,7 @@
 - (long long)_fixProvenancesWithZeroSourceOrDeviceWithError:(id *)arg1;
 - (long long)_fixSyncProvenanceForPostOkemoZurs:(id *)arg1;
 - (long long)_fixupMigratedProtectedSchemaWithError:(id *)arg1;
-- (long long)_initializeDatabaseIdentifiersWithProfile:(id)arg1 error:(id *)arg2;
+- (long long)_initializeDatabaseIdentifiersWithError:(id *)arg1;
 - (BOOL)_insertDeletedObjectTombstoneWithUUID:(id)arg1 provenanceIdentifier:(id)arg2 deletionDate:(id)arg3 insertedRowID:(out id *)arg4 error:(out id *)arg5;
 - (BOOL)_insertDeletedSampleTombstoneWithUUID:(id)arg1 provenanceIdentifier:(id)arg2 dataTypeCode:(id)arg3 deletionDate:(id)arg4 error:(out id *)arg5;
 - (id)_lastReceivedNatalieDatum:(id *)arg1;
@@ -136,7 +133,7 @@
 - (long long)_migrateDeepBreathingColumnInActivityCacheTableWithError:(id *)arg1;
 - (long long)_migrateEndDateKeyBackToLastSessionAnchorWithError:(id *)arg1;
 - (long long)_migrateKeyValueColumnsFromStringToText:(BOOL)arg1 error:(id *)arg2;
-- (long long)_migrateLastSessionAnchorKeyToEndDateWithProfile:(id)arg1 error:(id *)arg2;
+- (long long)_migrateLastSessionAnchorKeyToEndDateWithError:(id *)arg1;
 - (long long)_migrateNanoPairingSchema:(id *)arg1;
 - (long long)_migratePedometerUserDefaults:(id *)arg1;
 - (long long)_migrateSedentaryStateFromQuantityToCategoryWithError:(id *)arg1;
@@ -180,13 +177,19 @@
 - (long long)_updateKeyValueEntityUniquenessWithProtectedDatabase:(BOOL)arg1 error:(id *)arg2;
 - (long long)_updateOriginVersionsWithError:(id *)arg1;
 - (long long)_updateWithComputedStatsColumnsInActivityCacheTableWithError:(id *)arg1;
-- (void)addLockstepMigrationForSchema:(id)arg1 to:(long long)arg2 requiring:(long long)arg3 foreignKeys:(long long)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)addMigrationForSchema:(id)arg1 to:(long long)arg2 foreignKeys:(long long)arg3 migrationHandler:(CDUnknownBlockType)arg4;
+- (void)addLockstepMigrationForSchema:(id)arg1 toVersion:(long long)arg2 requiringVersion:(long long)arg3 foreignKeyStatus:(long long)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)addMigrationForSchema:(id)arg1 toVersion:(long long)arg2 foreignKeyStatus:(long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)addMigrationSteps:(id)arg1;
 - (void)addMigrationTo:(long long)arg1 foreignKeys:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)addMigrationTo:(long long)arg1 function:(CDUnknownFunctionPointerType)arg2;
 - (void)addMigrationTo:(long long)arg1 function:(CDUnknownFunctionPointerType)arg2 foreignKeys:(long long)arg3;
 - (void)addPrimaryMigrationSteps;
+- (void)azul_addProtectedMigrationSteps;
+- (void)azul_addUnprotectedMigrationSteps;
+- (long long)azul_rebuildHFDStep1WithError:(id *)arg1;
+- (long long)azul_rebuildHFDStep2WithError:(id *)arg1;
+- (optional_329458b2)azul_validQuantitySampleSeriesIdentifiersWithError:(id *)arg1;
+- (optional_329458b2)azul_validWorkoutIdentifiersWithError:(id *)arg1;
 - (id)boulderProtectedMigrationSteps;
 - (id)boulderUnprotectedMigrationSteps;
 - (id)butlerProtectedMigrationSteps;
@@ -204,24 +207,32 @@
 - (id)erieUnprotectedMigrationSteps;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSQLStatements:(id)arg1 error:(id *)arg2;
+- (void)future_addProtectedMigrationSteps;
+- (void)future_addUnprotectedMigrationSteps;
 - (id)init;
-- (id)initWithProfile:(id)arg1 transaction:(id)arg2;
+- (id)initWithTransaction:(id)arg1;
 - (void)invalidate;
 - (long long)migrateFromVersion:(long long)arg1 toVersion:(long long)arg2 error:(id *)arg3;
+- (BOOL)migrateSamplesFrom:(struct DataStore *)arg1 to:(struct DataStore *)arg2 usingHandler:(function_196a1805)arg3 identifiers:(set_b4d22a2d)arg4 error:(id *)arg5;
 - (id)monarchProtectedMigrationSteps;
 - (id)monarchUnprotectedMigrationSteps;
-- (id)okemoZursProtectedMigrationStepsForProfile:(id)arg1;
+- (long long)moveTemporaryHFDAtURL:(id)arg1 toPermanentLocationWithError:(id *)arg2;
+- (id)okemoZursProtectedMigrationSteps;
 - (id)okemoZursUnprotectedMigrationSteps;
 - (void)peace_addProtectedMigrationSteps;
 - (void)peace_addUnprotectedMigrationSteps;
 - (long long)performHFDMigrationToVersion:(long long)arg1 handler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (unique_ptr_8ada683d)prepareTemporaryHFDAtURL:(id)arg1 error:(id *)arg2;
 - (id)primaryProtectedMigrationSteps;
 - (id)primaryUnprotectedMigrationSteps;
+- (long long)rebuildHFDIndexWithError:(id *)arg1;
 - (long long)statusForUnhandledVersion:(long long)arg1 error:(id *)arg2;
+- (id)temporaryHFDURL;
 - (id)tigrisProtectedMigrationSteps;
 - (id)tigrisUnprotectedMigrationSteps;
 - (id)whitetailProtectedMigrationSteps;
 - (id)whitetailUnprotectedMigrationSteps;
+- (id)writeaheadLogURLForHFDAt:(id)arg1;
 - (void)yukon_addProtectedMigrationSteps;
 - (void)yukon_addUnprotectedMigrationSteps;
 

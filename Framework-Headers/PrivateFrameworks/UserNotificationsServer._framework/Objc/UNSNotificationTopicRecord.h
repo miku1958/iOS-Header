@@ -18,6 +18,14 @@
     BOOL _supportsCarPlay;
     BOOL _supportsSpoken;
     BOOL _supportsCriticalAlerts;
+    BOOL _enablesAlerts;
+    BOOL _enablesBadges;
+    BOOL _enablesSounds;
+    BOOL _enablesLockScreen;
+    BOOL _enablesNotificationCenter;
+    BOOL _enablesCarPlay;
+    BOOL _enablesSpoken;
+    BOOL _enablesCriticalAlerts;
     BOOL _modalAlertStyle;
     NSString *_identifier;
     NSString *_displayName;
@@ -28,6 +36,14 @@
 
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *displayNameLocalizationKey; // @synthesize displayNameLocalizationKey=_displayNameLocalizationKey;
+@property (nonatomic) BOOL enablesAlerts; // @synthesize enablesAlerts=_enablesAlerts;
+@property (nonatomic) BOOL enablesBadges; // @synthesize enablesBadges=_enablesBadges;
+@property (nonatomic) BOOL enablesCarPlay; // @synthesize enablesCarPlay=_enablesCarPlay;
+@property (nonatomic) BOOL enablesCriticalAlerts; // @synthesize enablesCriticalAlerts=_enablesCriticalAlerts;
+@property (nonatomic) BOOL enablesLockScreen; // @synthesize enablesLockScreen=_enablesLockScreen;
+@property (nonatomic) BOOL enablesNotificationCenter; // @synthesize enablesNotificationCenter=_enablesNotificationCenter;
+@property (nonatomic) BOOL enablesSounds; // @synthesize enablesSounds=_enablesSounds;
+@property (nonatomic) BOOL enablesSpoken; // @synthesize enablesSpoken=_enablesSpoken;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL modalAlertStyle; // @synthesize modalAlertStyle=_modalAlertStyle;
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;

@@ -29,7 +29,6 @@
     NSMutableDictionary *_nonobjectClassInfosDict;
     NSMutableArray *_objCClassStructureClassInfoIndexes;
     unsigned long long _coreFoundationCFTypeIsa;
-    unsigned long long _foundationCFTypeIsa;
     unsigned long long _objCClassCount;
     unsigned long long _swiftClassCount;
     unsigned long long _cfClassCount;
@@ -44,6 +43,7 @@
     id *_stringTypeDescriptions;
     NSMutableSet *_stringUniquingSet;
     NSMutableDictionary *_pidToProcessNameDict;
+    NSMutableDictionary *_moduleNameToBinaryPathDict;
     VMUNonOverlappingRangeArray *_targetProcessVMranges;
     BOOL _targetProcessContainsMallocStackLoggingLiteZone;
     unsigned long long _cfBooleanTrueAddress;
@@ -51,11 +51,15 @@
     unsigned int _osDispatchMachOffsetInOSXPCConnection;
     unsigned long long _taggedPointerMask;
     unsigned long long _taggedPointerObfuscator;
+    unsigned char _taggedPointerPermutations[8];
+    struct VMUAutoreleasePoolPageLayout *_autoreleasePoolPageLayout;
 }
 
+@property (readonly, nonatomic) struct VMUAutoreleasePoolPageLayout *autoreleasePoolPageLayout; // @synthesize autoreleasePoolPageLayout=_autoreleasePoolPageLayout;
 @property (readonly) BOOL hasSwiftContent;
 @property (readonly) BOOL hasSwiftReflection;
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
+@property (readonly) NSMutableDictionary *moduleNameToBinaryPathDict; // @synthesize moduleNameToBinaryPathDict=_moduleNameToBinaryPathDict;
 @property (readonly) BOOL needToValidateAddressRange; // @synthesize needToValidateAddressRange=_needToValidateAddressRange;
 @property (readonly) unsigned int objcABI; // @synthesize objcABI=_objcABI;
 @property (nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
@@ -97,14 +101,17 @@
 - (id)classInfoForObjectWithRange:(struct _VMURange)arg1;
 - (unsigned int)classInfoIndexForObjCClassStructurePointerType:(unsigned int)arg1;
 - (id)classNameForTaggedPointer:(void *)arg1;
+- (struct VMUAutoreleasePoolPageLayout *)createAutoreleasePoolPageLayout;
 - (void)dealloc;
 - (void)enumerateAllClassInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRealizedClassInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)findCFTypes;
 - (void)findObjCAndSwiftClasses;
+- (id)formattedDateLabel:(id)arg1;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2 scanner:(id)arg3;
+- (BOOL)isTaggedPointer:(void *)arg1;
 - (id)labelForCFBundle:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForClassDataExtRW:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForClassDataRO:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
@@ -135,6 +142,7 @@
 - (id)labelForNSSet:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForNSString:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForNSString:(void *)arg1 mappedSize:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 printDetail:(BOOL)arg4;
+- (id)labelForNSTaggedPointerStringCStringContainer:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForNSURL:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForNSXPCConnection:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForNSXPCInterface:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;

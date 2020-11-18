@@ -20,6 +20,10 @@
 @property (weak, nonatomic) id<CCUILayoutViewLayoutSource> layoutSource; // @synthesize layoutSource=_layoutSource;
 
 - (void).cxx_destruct;
+- (double)_extraItemSpacingForItemAtPosition:(unsigned long long)arg1 doubleMarginIndices:(id)arg2 itemSpacing:(double)arg3;
+- (id)_horizontalDoubleMarginIndices;
+- (double)_totalExtraItemSpacingForDoubleMarginIndices:(id)arg1 itemSpacing:(double)arg2;
+- (id)_verticalDoubleMarginIndices;
 - (void)didAddSubview:(id)arg1;
 - (struct CGRect)frameForLayoutRect:(struct CCUILayoutRect)arg1;
 - (struct CGRect)frameForSubview:(id)arg1;

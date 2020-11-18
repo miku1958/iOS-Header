@@ -10,19 +10,7 @@
 {
 }
 
-+ (id)_acquisitionCompletionAttributeWithProperties:(id)arg1;
-+ (id)_attributeClassesByName;
-+ (id)_cpuAccessGrantWithProperties:(id)arg1;
-+ (id)_cpuMaximumUsageLimitationWithProperties:(id)arg1;
-+ (id)_cpuMinimumUsageGrantWithProperties:(id)arg1;
-+ (id)_domainAttributeWithProperties:(id)arg1;
-+ (id)_durationAttributeWithProperties:(id)arg1;
-+ (id)_jetsamPriorityGrantWithProperties:(id)arg1;
-+ (id)_legalPropertyNamesAndValuesByClassName;
-+ (id)_resistTerminationGrantWithProperties:(id)arg1;
-+ (id)_runningReasonAttributeWithProperties:(id)arg1;
-+ (id)_tagAttributeWithProperties:(id)arg1;
-+ (id)attributeFromTemplate:(id)arg1;
++ (id)attributeForClass:(id)arg1 andProperties:(id)arg2;
 
 @end
 

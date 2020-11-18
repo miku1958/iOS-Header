@@ -80,6 +80,7 @@
 - (void).cxx_destruct;
 - (void)addAdornmentRect:(const struct TSWPAdornmentRect *)arg1;
 - (double)baselineOfLineFragmentAtCharIndex:(unsigned long long)arg1;
+- (double)baselineOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct CGRect)boundsOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct _TSWPCharIndexAndPosition)calcAttachmentPositionForDrawable:(id)arg1 atPoint:(struct CGPoint)arg2 inTextLayoutTarget:(id)arg3 tlBoundsInfluencingWrap:(struct CGPoint)arg4 wrapOutset:(struct CGSize)arg5 wrapMargin:(double)arg6 makeInline:(BOOL)arg7;
 - (struct CGRect)caretRectForSelection:(id)arg1;
@@ -101,6 +102,7 @@
 - (double)horizontalOffsetForCharIndex:(unsigned long long)arg1 lineFragmentIndex:(unsigned long long)arg2 bumpPastHyphen:(BOOL)arg3 allowPastLineBounds:(BOOL)arg4;
 - (void)incrementRanges:(long long)arg1;
 - (id)initWithStorage:(id)arg1 frameBounds:(struct CGRect)arg2;
+- (BOOL)isDropCapFragmentAtIndex:(unsigned long long)arg1;
 - (BOOL)isEmptyLineFragmentAtIndex:(unsigned long long)arg1;
 - (BOOL)isTruncatedLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct CGRect)labelBoundsOfLineFragmentAtIndex:(unsigned long long)arg1;
@@ -109,11 +111,13 @@
 - (const struct TSWPLineFragment *)lineFragmentClosestToPoint:(struct CGPoint)arg1 knobTag:(unsigned long long)arg2;
 - (unsigned long long)lineFragmentCountForBaseline:(double)arg1;
 - (const struct TSWPLineFragment *)lineFragmentForCharIndex:(unsigned long long)arg1 knobTag:(unsigned long long)arg2 selectionType:(int)arg3;
+- (struct _NSRange)lineFragmentRangeForLogicalLineIndex:(unsigned long long)arg1;
 - (unsigned long long)lineIndexForCharIndex:(unsigned long long)arg1 eol:(BOOL)arg2;
 - (CDStruct_50f584da)lineMetricsAtCharIndex:(unsigned long long)arg1 allowEndOfLine:(BOOL)arg2;
 - (id)lineSelectionsForSelection:(id)arg1;
 - (double)logicalBoundsBottom;
 - (double)logicalBoundsTop;
+- (unsigned long long)logicalLineCount;
 - (void)makeEmpty:(unsigned long long)arg1 layoutResultFlags:(int)arg2;
 - (struct CGSize)maxSize;
 - (double)minimumHeightForLayoutOnPage;
@@ -140,10 +144,12 @@
 - (id)singleLinePartitionedInfoAtStart:(BOOL)arg1;
 - (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned int)arg2;
 - (double)textHeight;
+- (double)topOfCapForLogicalLineIndex:(unsigned long long)arg1;
 - (double)topOfLineAtCharIndex:(unsigned long long)arg1;
 - (void)trimFromCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 layoutChore:(struct TSWPLayoutChore *)arg3;
 - (double)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeAutoNumberFootnoteCount:(unsigned long long)arg3;
+- (unsigned long long)truncatedCharIndexForLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct CGRect)typographicBoundsOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (double)typographicGlyphExtentOfLineFragmentAtIndex:(unsigned long long)arg1;
 

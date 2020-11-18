@@ -35,10 +35,8 @@
 
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
-- (void)clearRecordFetchProperties;
 - (id)description;
 - (id)initWithSourceZoneID:(id)arg1;
-- (BOOL)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1 assetReference:(id)arg2 useEncryption:(BOOL)arg3 useClearAssetEncryption:(BOOL)arg4;
 
 @end
 

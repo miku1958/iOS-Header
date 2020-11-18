@@ -21,8 +21,13 @@
 @property (readonly, nonatomic) NSString *cloudKitIdentifier;
 @property (readonly, nonatomic) NSString *string;
 
++ (BOOL)_canRollOwnerIdentifierForProfile:(id)arg1;
 + (id)_databaseUUIDForProfile:(id)arg1 error:(id *)arg2;
-+ (void)ownerIdentifierForSyncContainer:(id)arg1 profile:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (BOOL)_rollOwnerDifferentiatorForProfile:(id)arg1 reason:(id)arg2 error:(id *)arg3;
++ (id)deviceIDForContainer:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (id)ownerIdentifierForSyncContainer:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (BOOL)rollOwnerDifferentiatorAfterCloudSyncDisableForProfile:(id)arg1 error:(id *)arg2;
++ (BOOL)rollOwnerDifferentiatorForProfile:(id)arg1 reason:(id)arg2 error:(id *)arg3;
 + (id)unitTest_ownerIdentifierWithDatabaseIdentifer:(id)arg1 deviceIdentifier:(id)arg2 ownerDifferentiator:(id)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

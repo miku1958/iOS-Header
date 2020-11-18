@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (id)_birthdayTitleForPeople;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (BOOL)_person:(id)arg1 isPresentInAnyMomentOfMoments:(id)arg2;
+- (BOOL)_person:(id)arg1 isPresentInAnyMomentOfMomentNodes:(id)arg2;
 - (id)_timeTitleForEarlyMoments;
 - (id)_timeTitleForPeople;
 - (id)_titleForEarlyMoments;

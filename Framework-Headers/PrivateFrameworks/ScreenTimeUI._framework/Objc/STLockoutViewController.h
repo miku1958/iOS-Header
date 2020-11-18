@@ -41,9 +41,11 @@
     UIButton *_mainButton;
     UIButton *_okButton;
     long long _okButtonAction;
+    CDUnknownBlockType _addContactHandler;
     id<STLockoutViewControllerDelegate> _viewControllerDelegate;
 }
 
+@property (copy) CDUnknownBlockType addContactHandler; // @synthesize addContactHandler=_addContactHandler;
 @property (readonly) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (weak) UIImageView *communicationLimitView; // @synthesize communicationLimitView=_communicationLimitView;

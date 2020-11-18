@@ -11,8 +11,11 @@
 + (unsigned long long)_vs_countPhoneticSyllables_xsampa:(id)arg1;
 + (BOOL)vs_isCJKCharacter:(unsigned short)arg1;
 + (id)vs_markerStringForContext:(id)arg1;
++ (id)vs_stringFrom4CC:(int)arg1;
 - (id)md5hash;
 - (id)preinstalledAudioHashForLanguage:(id)arg1 gender:(long long)arg2;
+- (id)sha256hex;
+- (id)vs_convertToSSML;
 - (unsigned long long)vs_countPhoneticSyllables;
 - (BOOL)vs_hasCJKCharacter;
 - (id)vs_insertContextInfo:(id)arg1;

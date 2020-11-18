@@ -6,37 +6,38 @@
 
 #import <TemplateKit/TLKView.h>
 
-@class TLKLabel, TLKMultilineText, UIColor, UIFont;
+@class TLKLabel, TLKMultilineText, TLKProminenceView, UIColor, UIFont;
 
 @interface TLKEmbossedLabel : TLKView
 {
-    struct UIEdgeInsets _customInsets;
     BOOL _shouldBadge;
     TLKMultilineText *_text;
     UIColor *_color;
     UIFont *_font;
     TLKLabel *_label;
+    TLKProminenceView *_backgroundView;
     struct CGSize _textOffset;
+    struct CGSize _customInsetSize;
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth;
+@property (strong, nonatomic) TLKProminenceView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (nonatomic) struct CGSize customInsetSize; // @synthesize customInsetSize=_customInsetSize;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (strong, nonatomic) TLKLabel *label; // @synthesize label=_label;
 @property (nonatomic) BOOL shouldBadge; // @synthesize shouldBadge=_shouldBadge;
 @property (strong, nonatomic) TLKMultilineText *text; // @synthesize text=_text;
 @property (nonatomic) struct CGSize textOffset; // @synthesize textOffset=_textOffset;
 
-+ (Class)layerClass;
 - (void).cxx_destruct;
-- (void)_dynamicUserInterfaceTraitDidChange;
-- (void)didMoveToWindow;
+- (double)effectiveBaselineOffsetFromBottom;
+- (double)effectiveFirstBaselineOffsetFromTop;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (id)init;
 - (void)layoutSubviews;
 - (void)observedPropertiesChanged;
-- (void)setText:(id)arg1 font:(id)arg2 customInsets:(struct UIEdgeInsets)arg3 badge:(BOOL)arg4;
-- (void)tlk_updateForAppearance:(id)arg1;
+- (void)setText:(id)arg1 font:(id)arg2 customInsetSize:(struct CGSize)arg3 badge:(BOOL)arg4;
 
 @end
 

@@ -22,7 +22,9 @@
 @property (readonly, nonatomic) BOOL shouldSpacerShapeProvideSpace;
 
 - (id)additionalDependenciesForChildLayout:(id)arg1;
-- (id)additionalInfosForChildLayouts;
+- (struct CGRect)alignmentFrameForCaptionEdgeInsetsCalculation;
+- (id)childInfosForChildLayouts;
+- (id)childrenForPencilAnnotations;
 - (struct CGRect)computeBoundsForStandardKnobs;
 - (id)descendentWrappables;
 - (BOOL)descendentWrappablesContainsWrappable:(id)arg1;

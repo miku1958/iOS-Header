@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryView, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLibraryMappingRequestOperation : MPAsyncOperation
 {
     MPMediaLibraryView *_libraryView;

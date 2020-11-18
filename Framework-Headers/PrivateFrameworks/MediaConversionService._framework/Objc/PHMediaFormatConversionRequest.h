@@ -8,7 +8,7 @@
 
 #import <MediaConversionService/NSProgressReporting-Protocol.h>
 
-@class NSError, NSProgress, NSString, NSURL, NSUUID, PFMediaCapabilities, PHMediaFormatConversionCompositeRequest, PHMediaFormatConversionDestination, PHMediaFormatConversionSource;
+@class CLLocation, NSDate, NSError, NSProgress, NSString, NSTimeZone, NSURL, NSUUID, PFMediaCapabilities, PHMediaFormatConversionCompositeRequest, PHMediaFormatConversionDestination, PHMediaFormatConversionSource;
 
 @interface PHMediaFormatConversionRequest : NSObject <NSProgressReporting>
 {
@@ -34,10 +34,26 @@
     NSURL *_directoryForTemporaryFiles;
     long long _transferBehaviorUserPreference;
     CDUnknownBlockType _singlePassVideoConversionUpdateHandler;
+    long long _locationMetadataBehavior;
+    CLLocation *_location;
+    long long _creationDateMetadataBehavior;
+    NSDate *_creationDate;
+    NSTimeZone *_creationDateTimeZone;
+    long long _captionMetadataBehavior;
+    NSString *_caption;
+    long long _accessibilityDescriptionMetadataBehavior;
+    NSString *_accessibilityDescription;
     long long _passthroughConversionAdditionalByteCount;
 }
 
+@property (readonly, copy) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
+@property (readonly) long long accessibilityDescriptionMetadataBehavior; // @synthesize accessibilityDescriptionMetadataBehavior=_accessibilityDescriptionMetadataBehavior;
 @property (readonly) long long backwardsCompatibilityStatus;
+@property (readonly, copy) NSString *caption; // @synthesize caption=_caption;
+@property (readonly) long long captionMetadataBehavior; // @synthesize captionMetadataBehavior=_captionMetadataBehavior;
+@property (readonly) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly) long long creationDateMetadataBehavior; // @synthesize creationDateMetadataBehavior=_creationDateMetadataBehavior;
+@property (readonly) NSTimeZone *creationDateTimeZone; // @synthesize creationDateTimeZone=_creationDateTimeZone;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) PHMediaFormatConversionDestination *destination; // @synthesize destination=_destination;
@@ -52,6 +68,8 @@
 @property (readonly) BOOL isCompositeRequest;
 @property (copy) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
 @property long long livePhotoPairingIdentifierBehavior; // @synthesize livePhotoPairingIdentifierBehavior=_livePhotoPairingIdentifierBehavior;
+@property (readonly) CLLocation *location; // @synthesize location=_location;
+@property (readonly) long long locationMetadataBehavior; // @synthesize locationMetadataBehavior=_locationMetadataBehavior;
 @property (readonly) NSString *outputFileType;
 @property (strong) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property (readonly) NSString *outputPathExtension;
@@ -87,9 +105,17 @@
 - (void)padOutputFileToEstimatedLength;
 - (void)preflightWithConversionManager:(id)arg1;
 - (BOOL)prepareWithError:(id *)arg1;
+- (BOOL)requiresAccessibilityDescriptionMetadataChange;
+- (BOOL)requiresCaptionMetadataChange;
+- (BOOL)requiresCreationDateMetadataChange;
 - (BOOL)requiresLivePhotoPairingIdentifierChange;
 - (BOOL)requiresLocationMetadataChange;
+- (void)setAccessibilityDescriptionMetadataBehavior:(long long)arg1 withAccessibilityDescription:(id)arg2;
+- (void)setCaptionMetadataBehavior:(long long)arg1 withCaption:(id)arg2;
+- (void)setCreationDateMetadataBehavior:(long long)arg1 withCreationDate:(id)arg2 inTimeZone:(id)arg3;
+- (void)setLocationMetadataBehavior:(long long)arg1 withLocation:(id)arg2;
 - (void)setupProgress;
+- (BOOL)sourceSupportsPassthroughConversion;
 - (void)updateSinglePassVideoConversionStatus:(long long)arg1 addedRange:(struct _NSRange)arg2 error:(id)arg3;
 - (BOOL)userPreferenceProhibitsFormatConversion;
 

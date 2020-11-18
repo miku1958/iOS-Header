@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, MKMapItem, NSError, _MKRouteETA, _MKRouteETAFetcher;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKMapItem, NSError, _MKRouteETA, _MKRouteETAFetcher;
 @protocol MKQuickRouteConfigurableView, MKQuickRouteManagerDelegate, MKQuickRouteTransportTypeFinding;
 
 @interface _MKQuickRouteManager : NSObject
@@ -28,6 +28,7 @@
 
 @property (copy, nonatomic) GEOAutomobileOptions *automobileOptions;
 @property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+@property (copy, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property (weak, nonatomic) id<MKQuickRouteManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL fetchAllTransportTypes; // @synthesize fetchAllTransportTypes=_fetchAllTransportTypes;
 @property (readonly, nonatomic) BOOL isOnlyDriving;

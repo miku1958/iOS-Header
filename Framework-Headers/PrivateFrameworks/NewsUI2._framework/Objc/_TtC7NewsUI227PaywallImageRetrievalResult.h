@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI227PaywallImageRetrievalResult : _TtCs12_SwiftObject
 {
     MISSING_TYPE *image;
+    MISSING_TYPE *userInterfaceStyle;
     MISSING_TYPE *isFallbackAsset;
 }
 

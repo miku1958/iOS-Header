@@ -9,7 +9,7 @@
 #import <SpringBoardHome/SBIconListLayoutDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconListModelObserver-Protocol.h>
 
-@class NSString, SBFolderController, SBHCenterZoomSettings, UIView;
+@class NSArray, NSString, SBFolderController, SBHCenterZoomSettings, UIView;
 @protocol SBDockOffscreenFractionModifying;
 
 @interface SBCenterIconZoomAnimator : SBIconZoomAnimator <SBIconListLayoutDelegate, SBIconListModelObserver>
@@ -17,7 +17,8 @@
     UIView *_zoomView;
     UIView *_folderView;
     double _iconZoomedZ;
-    UIView *_extraViewsContainer;
+    NSArray *_extraViewsContainers;
+    NSArray *_extraViews;
     double _centerRow;
     double _centerCol;
     struct CGPoint _cameraPosition;
@@ -55,13 +56,9 @@
 - (void)_setAnimationFraction:(double)arg1 withCenter:(struct CGPoint)arg2;
 - (void)_updateDockForFraction:(double)arg1;
 - (double)_zPositionForView:(id)arg1 center:(struct CGPoint)arg2 andFraction:(double)arg3;
-- (void)enumerateExtraViewsWithHandler:(CDUnknownBlockType)arg1;
 - (void)iconList:(id)arg1 didAddIcon:(id)arg2;
-- (void)iconList:(id)arg1 didMoveIcon:(id)arg2;
-- (void)iconList:(id)arg1 didRemoveIcon:(id)arg2;
 - (void)iconList:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
-- (struct CGPoint)iconListView:(id)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 proposedOrigin:(struct CGPoint)arg3;
-- (void)iconListViewIsNotDisplayingAnyIcons:(id)arg1;
+- (struct CGPoint)iconListView:(id)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 proposedOrigin:(struct CGPoint)arg4;
 - (id)initWithFolderController:(id)arg1;
 - (void)setFraction:(double)arg1 withCenter:(struct CGPoint)arg2;
 

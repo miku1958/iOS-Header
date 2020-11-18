@@ -45,29 +45,17 @@
 - (void)_ackBytes:(long long)arg1;
 - (void)_captureTransportConnection:(shared_ptr_8da4e70b)arg1 extraBytes:(id)arg2;
 - (void)_capturedSocketInputStream:(id)arg1 outputStream:(id)arg2;
-- (void)_cleanup;
 - (void)_conditionalRequirementsChanged:(BOOL)arg1;
 - (void)_connectionIsWaitingWithReason:(long long)arg1;
 - (void)_didFinishWithError:(id)arg1;
 - (void)_didReceiveChallenge:(id)arg1;
-- (void)_didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
 - (void)_didReceiveData:(id)arg1;
 - (void)_didReceiveResponse:(id)arg1 sniff:(BOOL)arg2 rewrite:(BOOL)arg3;
 - (void)_didSendBodyData:(struct UploadProgressInfo)arg1;
-- (void)_immediatePostDelegateTick;
 - (void)_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_needNewBodyStream;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_sendResponseToDelegate:(id)arg1;
-- (void)_task_sendFinish;
-- (void)_tick;
-- (void)_tick_finishing;
-- (void)_tick_initialize;
-- (void)_tick_initialize_startLoad;
-- (void)_tick_running;
-- (void)_tick_sniffNow;
 - (void)_willSendRequestForEstablishedConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)afterDelegateWithTick:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
@@ -78,12 +66,10 @@
 - (void)setBytesPerSecondLimit:(long long)arg1;
 - (void)setIsDownload:(BOOL)arg1;
 - (void)setPoolPriority:(long long)arg1;
-- (void)setPriorityHint:(float)arg1;
+- (void)setPriorityHint:(float)arg1 incremental:(BOOL)arg2;
 - (void)suspend;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
-- (void)withDelegateAndPendingCompletion:(CDUnknownBlockType)arg1;
 - (void)withLoaderAsync:(CDUnknownBlockType)arg1;
-- (void)withLoaderOnQueue:(CDUnknownBlockType)arg1;
 
 @end
 

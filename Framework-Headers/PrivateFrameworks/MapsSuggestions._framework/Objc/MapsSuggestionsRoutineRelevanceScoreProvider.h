@@ -26,9 +26,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_confidencesForMapItem:(id)arg1;
-- (id)_confidencesForMapItems:(id)arg1;
-- (BOOL)_fetchLOIsWithCallback:(CDUnknownBlockType)arg1;
 - (id)initWithRoutine:(id)arg1;
 - (void)preLoad;
 - (BOOL)relevanceScoreForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3 completion:(CDUnknownBlockType)arg4;

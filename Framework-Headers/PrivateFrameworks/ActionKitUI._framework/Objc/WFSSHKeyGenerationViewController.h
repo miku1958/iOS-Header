@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSNumber, WFSegmentedControlTableItem, WFTableDataSource, WFTableSection, WFTextFieldTableItem;
+@class NSNumber, WFItemBasedTableSection, WFSegmentedControlTableItem, WFTableDataSource, WFTextFieldTableItem;
 @protocol WFSSHKeyGenerationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 {
     id<WFSSHKeyGenerationViewControllerDelegate> _delegate;
     WFTableDataSource *_dataSource;
-    WFTableSection *_keyTypeSection;
-    WFTableSection *_keySizeSection;
-    WFTableSection *_commentSection;
+    WFItemBasedTableSection *_keyTypeSection;
+    WFItemBasedTableSection *_keySizeSection;
+    WFItemBasedTableSection *_commentSection;
     WFSegmentedControlTableItem *_keyTypeItem;
     WFSegmentedControlTableItem *_keySizeItem;
     Class _currentFormat;
@@ -25,15 +25,15 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) WFTextFieldTableItem *commentItem; // @synthesize commentItem=_commentItem;
-@property (readonly, nonatomic) WFTableSection *commentSection; // @synthesize commentSection=_commentSection;
+@property (readonly, nonatomic) WFItemBasedTableSection *commentSection; // @synthesize commentSection=_commentSection;
 @property (nonatomic) Class currentFormat; // @synthesize currentFormat=_currentFormat;
 @property (strong, nonatomic) NSNumber *currentKeySize; // @synthesize currentKeySize=_currentKeySize;
 @property (readonly, nonatomic) WFTableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (weak, nonatomic) id<WFSSHKeyGenerationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) WFSegmentedControlTableItem *keySizeItem; // @synthesize keySizeItem=_keySizeItem;
-@property (readonly, nonatomic) WFTableSection *keySizeSection; // @synthesize keySizeSection=_keySizeSection;
+@property (readonly, nonatomic) WFItemBasedTableSection *keySizeSection; // @synthesize keySizeSection=_keySizeSection;
 @property (readonly, nonatomic) WFSegmentedControlTableItem *keyTypeItem; // @synthesize keyTypeItem=_keyTypeItem;
-@property (readonly, nonatomic) WFTableSection *keyTypeSection; // @synthesize keyTypeSection=_keyTypeSection;
+@property (readonly, nonatomic) WFItemBasedTableSection *keyTypeSection; // @synthesize keyTypeSection=_keyTypeSection;
 
 - (void).cxx_destruct;
 - (void)authenticationTypeDidChange:(id)arg1;

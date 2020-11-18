@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *activityProviderFactory;
-    MISSING_TYPE *sharingVisibilityProvider;
 }
 
 @end

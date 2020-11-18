@@ -19,8 +19,10 @@
     TLKRichText *_richText;
     UILabel *_overlayLabelForNonColoredGlyphs;
     UIFont *_originalFont;
+    unsigned long long _adjustedProminence;
 }
 
+@property unsigned long long adjustedProminence; // @synthesize adjustedProminence=_adjustedProminence;
 @property BOOL attributedTextExplicitelySet; // @synthesize attributedTextExplicitelySet=_attributedTextExplicitelySet;
 @property BOOL attributedTextUpdateDisabled; // @synthesize attributedTextUpdateDisabled=_attributedTextUpdateDisabled;
 @property BOOL attributedTextUpdateSkipped; // @synthesize attributedTextUpdateSkipped=_attributedTextUpdateSkipped;
@@ -40,6 +42,7 @@
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)didMoveToWindow;
+- (BOOL)hasEmphasizedFormattingInRichText;
 - (id)init;
 - (id)initWithProminence:(unsigned long long)arg1;
 - (void)layoutSubviews;
@@ -47,10 +50,13 @@
 - (void)setAttributedText:(id)arg1;
 - (void)setFont:(id)arg1;
 - (void)setFont:(id)arg1 keepOriginal:(BOOL)arg2;
+- (void)setLineBreakMode:(long long)arg1;
+- (void)setNumberOfLines:(long long)arg1;
 - (void)setText:(id)arg1;
 - (void)setTextAlignment:(long long)arg1;
 - (void)setTextColor:(id)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateAdjustedProminence;
 - (void)updateAttributedText;
 - (void)updateWithAttributedString:(id)arg1;
 - (void)updateWithString:(id)arg1;

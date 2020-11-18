@@ -50,6 +50,7 @@
 - (BOOL)setClassID:(id)arg1 forDomain:(long long)arg2;
 - (BOOL)setDomainVersion:(long long)arg1 forDomain:(long long)arg2;
 - (BOOL)setFlags:(unsigned long long)arg1 forDomain:(long long)arg2;
+- (BOOL)setInfoValue:(id)arg1 forKey:(id)arg2 forDomain:(long long)arg3;
 - (BOOL)setNote:(id)arg1 forDomain:(long long)arg2;
 - (BOOL)setState:(long long)arg1 forDomain:(long long)arg2;
 - (id)stateForDomain:(long long)arg1;

@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property (nonatomic) unsigned long long timeStep; // @synthesize timeStep=_timeStep;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

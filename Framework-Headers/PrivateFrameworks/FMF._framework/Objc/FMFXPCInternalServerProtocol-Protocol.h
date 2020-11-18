@@ -6,7 +6,7 @@
 
 #import <FMF/FMFXPCServerProtocol-Protocol.h>
 
-@class FMFHandle, NSString;
+@class FMFHandle, NSNumber, NSString;
 
 @protocol FMFXPCInternalServerProtocol <FMFXPCServerProtocol>
 - (oneway void)crashDaemon;
@@ -17,7 +17,7 @@
 - (oneway void)isIn5XXGracePeriodWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)sendIDSPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
 - (oneway void)sessionHandleReport:(void (^)(NSDictionary *))arg1;
-- (oneway void)setSessionClientBundleId:(NSString *)arg1;
+- (oneway void)setSessionClientPid:(NSNumber *)arg1;
 - (oneway void)showMeDeviceAlert;
 - (oneway void)showShareMyLocationiCloudSettingsOffAlert;
 @end

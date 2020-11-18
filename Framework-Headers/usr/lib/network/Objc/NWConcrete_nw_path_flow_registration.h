@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     struct necp_all_stats *flow_stats_area;
     struct ifnet_stats_per_flow *flow_interface_stats;
     const struct sk_nexusadv *advisory;
+    struct nw_protocol_identifier *upper_transport_stats_protocol;
     struct nw_protocol_identifier *transport_stats_protocol;
     struct nw_protocol_identifier *internet_stats_protocol;
+    void *upper_transport_stats_region;
     void *transport_stats_region;
     void *internet_stats_region;
     unsigned int override_traffic_class;

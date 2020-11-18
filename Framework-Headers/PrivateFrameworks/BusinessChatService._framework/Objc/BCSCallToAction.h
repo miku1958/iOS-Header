@@ -18,9 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_subtitle;
     NSString *_title;
     BOOL _isDefault;
-    struct {
-        unsigned int isDefault:1;
-    } _has;
+    CDStruct_d3bb80d3 _has;
 }
 
 @property (strong, nonatomic) NSString *body; // @synthesize body=_body;

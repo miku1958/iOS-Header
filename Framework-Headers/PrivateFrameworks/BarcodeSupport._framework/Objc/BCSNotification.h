@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) UNNotificationRequest *request;
 @property (nonatomic) int requestingProcessID; // @synthesize requestingProcessID=_requestingProcessID;
+@property (readonly, nonatomic) BOOL shouldSkipBanner;
 
 + (id)_tlAlertConfiguration;
 + (id)notificationForAction:(id)arg1;

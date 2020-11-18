@@ -16,7 +16,8 @@
 @property (strong) NSDateComponentsFormatter *durationFormatter; // @synthesize durationFormatter=_durationFormatter;
 
 - (void).cxx_destruct;
-- (id)initWithTitle:(id)arg1;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+- (void)setProgress:(double)arg1;
 - (void)setTimeRemainingEstimate:(double)arg1;
 - (id)timeRemainingString:(double)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class ISAVPlayerLayer, ISWrappedAVPlayer, NSString, NSTimer;
+@class ISAVPlayerLayer, ISWrappedAVPlayer, NSString;
 @protocol PXVideoViewDelegate;
 
 @interface PXVideoView : UIView
@@ -15,24 +15,22 @@
     struct {
         BOOL readinessDidChange;
     } _delegateRespondsTo;
-    NSTimer *_readinessTimer;
-    ISAVPlayerLayer *_playerLayer;
-    BOOL _videoIsReadyForDisplay;
     id<PXVideoViewDelegate> _delegate;
+    NSString *_kvoProxyIdentifier;
 }
 
 @property (weak, nonatomic) id<PXVideoViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) NSString *kvoProxyIdentifier; // @synthesize kvoProxyIdentifier=_kvoProxyIdentifier;
 @property (strong, nonatomic) ISWrappedAVPlayer *player;
+@property (readonly, nonatomic) ISAVPlayerLayer *playerLayer;
 @property (copy, nonatomic) NSString *videoGravity;
-@property (nonatomic) BOOL videoIsReadyForDisplay; // @synthesize videoIsReadyForDisplay=_videoIsReadyForDisplay;
+@property (readonly, nonatomic) BOOL videoIsReadyForDisplay;
 
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (void)_startReadinessTimerIfNeeded;
-- (void)_stopReadinessTimer;
-- (void)_updateReadyForDisplay;
+- (void)_layerReadyForDisplayDidChange;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
 
 @end
 

@@ -9,8 +9,7 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, NSLock, NSString, SCNNode;
-@protocol SCNSceneRendererDelegate;
+@class AVTAvatar, AVTAvatarEnvironment, NSLock, NSString, SCNNode;
 
 @interface AVTRenderer : SCNRenderer <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
@@ -18,23 +17,15 @@
     AVTAvatar *_avatar;
     SCNNode *_avatarNode;
     NSLock *_lock;
-    id<SCNSceneRendererDelegate> _fwdDelegate;
     BOOL _pauseSimulation;
-    BOOL _arMode;
-    BOOL _enableDepthMask;
-    AVTFaceTracker *_faceTracker;
     unsigned long long _antialiasingMode;
 }
 
-@property (nonatomic) BOOL arMode;
 @property (strong, nonatomic) AVTAvatar *avatar;
 @property (nonatomic) unsigned long long avt_antialiasingMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL enableDepthMask;
-@property (strong, nonatomic) AVTFaceTracker *faceTracker;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL pauseSimulation;
 @property (readonly) Class superclass;
 
 + (id)renderer;
@@ -42,26 +33,16 @@
 - (void).cxx_destruct;
 - (void)__setAvatar:(id)arg1;
 - (void)_avtSetup;
+- (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)_setAvatar:(id)arg1;
-- (void)_updateAvatarForARMode;
 - (void)_updateFocal;
 - (void)avatarDidChange;
 - (void)dealloc;
-- (id)delegate;
-- (void)faceTrackerDidUpdate:(id)arg1 trackingInfo:(id)arg2;
 - (void)fadePuppetToWhite:(float)arg1;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didApplyConstraintsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
-- (void)renderer:(id)arg1 didSimulatePhysicsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
-- (void)renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
-- (void)setDelegate:(id)arg1;
-- (void)setEnableDepthMask:(BOOL)arg1 withFlippedDepth:(BOOL)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
-- (id)transitionTexture;
 
 @end
 

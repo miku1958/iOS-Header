@@ -27,12 +27,14 @@
 @property (readonly) NSArray *externFunctionNames;
 @property (readonly) NSArray *functionNames;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSString *installName;
 @property (copy) NSString *label;
 @property (copy) NSString *overrideTriple;
 @property (readonly) unsigned long long streamReference;
 @property (readonly) Class superclass;
 @property (readonly) struct GTTraceContext *traceContext;
 @property (readonly) struct GTTraceStream *traceStream;
+@property (readonly) long long type;
 
 - (void).cxx_destruct;
 - (BOOL)conformsToProtocol:(id)arg1;
@@ -40,10 +42,14 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (id)newExternFunctionWithName:(id)arg1;
+- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newFunctionWithName:(id)arg1;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
+- (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)swapObject:(id)arg1;
 - (void)touch;

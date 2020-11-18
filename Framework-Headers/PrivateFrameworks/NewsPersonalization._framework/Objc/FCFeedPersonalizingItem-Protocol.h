@@ -6,7 +6,7 @@
 
 #import <NewsPersonalization/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
 
@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) long long bodyTextLength;
 @property (nonatomic, readonly) BOOL bundlePaid;
 @property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property (nonatomic, readonly) double globalUserFeedback;
 @property (nonatomic, readonly) unsigned long long halfLife;
 @property (nonatomic, readonly) BOOL hasAudioTrack;
@@ -27,11 +28,13 @@
 @property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property (nonatomic, readonly) NSDate *publishDate;
 @property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property (nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property (nonatomic, readonly) NSString *publisherID;
 @property (nonatomic, readonly) NSString *sourceFeedID;
 @property (nonatomic, readonly) NSArray *topicIDs;
 
 - (void)enumerateTopicCohortsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *))arg1;
+- (void)enumerateTopicConversionStatsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *))arg1;
 - (BOOL)isANF;
 - (BOOL)isHiddenFromAutoFavorites;
 - (BOOL)isPaid;

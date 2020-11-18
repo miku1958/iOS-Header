@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer;
+@class CALayer, CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer, UIColor;
 
 @interface PLRoundProgressView : UIView
 {
@@ -18,6 +18,7 @@
     double _increaseRate;
     NSDate *_prevUpdateTime;
     long long _style;
+    UIColor *_manualColor;
     double _progress;
     UIView *__contentView;
     CAShapeLayer *__sliceLayer;
@@ -33,10 +34,10 @@
 @property (strong, nonatomic, setter=_setIrisGlyphLayer:) CALayer *_irisGlyphLayer; // @synthesize _irisGlyphLayer=__irisGlyphLayer;
 @property (strong, nonatomic, setter=_setProgressArcLayer:) PLProgressArcLayer *_progressArcLayer; // @synthesize _progressArcLayer=__progressArcLayer;
 @property (strong, nonatomic, setter=_setSliceLayer:) CAShapeLayer *_sliceLayer; // @synthesize _sliceLayer=__sliceLayer;
+@property (strong, nonatomic) UIColor *manualColor; // @synthesize manualColor=_manualColor;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_updateSublayersContentsScale;
 - (void)_updateSubviews;
 - (void)_updateUIProgress;
@@ -53,6 +54,7 @@
 - (void)startProgressTimer;
 - (void)stopProgressTimer;
 - (double)toRadian:(double)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

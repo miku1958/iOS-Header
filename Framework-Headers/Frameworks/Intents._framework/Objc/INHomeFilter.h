@@ -15,6 +15,7 @@
 @interface INHomeFilter : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     BOOL _isExcludeFilter;
+    BOOL _hasAllQuantifier;
     NSArray *_entityIdentifiers;
     INSpeakableString *_entityName;
     long long _entityType;
@@ -37,6 +38,7 @@
 @property (readonly, copy, nonatomic) INSpeakableString *entityName; // @synthesize entityName=_entityName;
 @property (readonly, nonatomic) long long entityType; // @synthesize entityType=_entityType;
 @property (readonly, copy, nonatomic) INSpeakableString *group; // @synthesize group=_group;
+@property (readonly, nonatomic) BOOL hasAllQuantifier; // @synthesize hasAllQuantifier=_hasAllQuantifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) INSpeakableString *home; // @synthesize home=_home;
 @property (readonly, nonatomic) BOOL isExcludeFilter; // @synthesize isExcludeFilter=_isExcludeFilter;
@@ -55,15 +57,14 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
-- (long long)deviceProfileType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEntityIdentifiers:(id)arg1 entityName:(id)arg2 entityType:(long long)arg3 deviceProfileType:(long long)arg4 capabilityName:(id)arg5 capabilityProfileType:(long long)arg6 home:(id)arg7 zone:(id)arg8 group:(id)arg9 room:(id)arg10 isExcludeFilter:(BOOL)arg11;
 - (id)initWithEntityIdentifiers:(id)arg1 entityName:(id)arg2 entityType:(long long)arg3 outerDeviceType:(long long)arg4 innerDeviceName:(id)arg5 innerDeviceType:(long long)arg6 home:(id)arg7 zone:(id)arg8 group:(id)arg9 room:(id)arg10 isExcludeFilter:(BOOL)arg11;
 - (id)initWithEntityIdentifiers:(id)arg1 entityName:(id)arg2 entityType:(long long)arg3 outerDeviceType:(long long)arg4 outerDeviceName:(id)arg5 deviceType:(long long)arg6 home:(id)arg7 zone:(id)arg8 group:(id)arg9 room:(id)arg10 isExcludeFilter:(BOOL)arg11;
+- (id)initWithEntityIdentifiers:(id)arg1 entityName:(id)arg2 entityType:(long long)arg3 outerDeviceType:(long long)arg4 outerDeviceName:(id)arg5 deviceType:(long long)arg6 home:(id)arg7 zone:(id)arg8 group:(id)arg9 room:(id)arg10 isExcludeFilter:(BOOL)arg11 hasAllQuantifier:(BOOL)arg12;
 - (id)initWithEntityIdentifiers:(id)arg1 home:(id)arg2 scene:(id)arg3 homeZone:(id)arg4 group:(id)arg5 room:(id)arg6 accessory:(id)arg7 entityType:(long long)arg8 serviceType:(long long)arg9 subServiceType:(long long)arg10 isExcludeFilter:(BOOL)arg11 entityName:(id)arg12;
 - (id)initWithEntityIdentifiers:(id)arg1 home:(id)arg2 scene:(id)arg3 homeZone:(id)arg4 group:(id)arg5 room:(id)arg6 accessory:(id)arg7 service:(id)arg8 entityType:(long long)arg9 serviceType:(long long)arg10 subServiceType:(long long)arg11;
 - (id)initWithEntityIdentifiers:(id)arg1 home:(id)arg2 scene:(id)arg3 homeZone:(id)arg4 group:(id)arg5 room:(id)arg6 accessory:(id)arg7 service:(id)arg8 entityType:(long long)arg9 serviceType:(long long)arg10 subServiceType:(long long)arg11 isExcludeFilter:(BOOL)arg12;

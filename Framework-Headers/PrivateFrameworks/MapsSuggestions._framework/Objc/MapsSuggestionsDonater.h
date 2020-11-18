@@ -25,13 +25,9 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (void)_closeConnection;
-- (void)_initCloseTimerIfNecessary;
-- (BOOL)_openConnectionIfNecessary;
-- (void)_scheduleCloseConnection;
-- (void)_unscheduleCloseConnection;
 - (void)dealloc;
 - (BOOL)donateETA:(id)arg1 entry:(id)arg2;
+- (BOOL)donateFlightLookupWithFlightNumber:(id)arg1 departureAirportCode:(id)arg2 departureTime:(id)arg3;
 - (BOOL)donateSignalPack:(id)arg1;
 - (id)init;
 

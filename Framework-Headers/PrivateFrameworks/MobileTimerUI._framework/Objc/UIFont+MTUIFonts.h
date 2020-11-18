@@ -7,6 +7,8 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (MTUIFonts)
++ (id)mtui_defaultTimeDesignatorFont;
++ (double)mtui_defaultTimeDesignatorFontSize;
 + (double)mtui_defaultTimeFontSize;
 + (id)mtui_thinTimeFont;
 + (id)mtui_thinTimeFontOfSize:(double)arg1;

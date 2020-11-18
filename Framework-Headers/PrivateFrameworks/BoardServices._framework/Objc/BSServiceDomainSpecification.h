@@ -12,13 +12,12 @@
 
 @interface BSServiceDomainSpecification : NSObject <BSDescriptionProviding>
 {
+    NSDictionary *_servicesByIdentifier;
     NSString *_identifier;
     NSString *_machName;
-    NSDictionary *_servicesByIdentifier;
     NSOrderedSet *_orderedServices;
 }
 
-@property (readonly, copy, nonatomic) NSOrderedSet *_orderedServices; // @synthesize _orderedServices;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,8 +27,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_domainWithAdditionalServices:(id)arg1;
-- (id)_initWithIdentifier:(id)arg1 machName:(id)arg2 servicesByIdentifier:(id)arg3;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;

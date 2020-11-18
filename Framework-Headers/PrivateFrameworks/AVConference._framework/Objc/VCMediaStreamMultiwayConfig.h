@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSString *_sessionId;
     NSString *_participantId;
-    unsigned long long _idsParticipantID;
+    unsigned long long _remoteIDSParticipantID;
     unsigned int _ssrc;
     unsigned int _maxNetworkBitrate;
     unsigned int _maxMediaBitrate;
@@ -23,19 +23,37 @@ __attribute__((visibility("hidden")))
     unsigned int _maxIDSStreamIdCount;
     unsigned short _repairedStreamID;
     unsigned int _repairedMaxNetworkBitrate;
-    BOOL _hasRepairedStreamID;
     BOOL _startOnDemand;
+    BOOL _isOneToOne;
+    struct {
+        unsigned int maxNetworkBitrate:1;
+        unsigned int maxMediaBitrate:1;
+        unsigned int maxPacketsPerSecond:1;
+        unsigned int idsStreamID:1;
+        unsigned int qualityIndex:1;
+        unsigned int maxIDSStreamIdCount:1;
+        unsigned int repairedStreamID:1;
+        unsigned int repairedMaxNetworkBitrate:1;
+    } _has;
 }
 
-@property (nonatomic) BOOL hasRepairedStreamID; // @synthesize hasRepairedStreamID=_hasRepairedStreamID;
-@property (nonatomic) unsigned long long idsParticipantID; // @synthesize idsParticipantID=_idsParticipantID;
+@property (readonly, nonatomic) BOOL hasIdsStreamID;
+@property (readonly, nonatomic) BOOL hasMaxIDSStreamIdCount;
+@property (readonly, nonatomic) BOOL hasMaxMediaBitrate;
+@property (readonly, nonatomic) BOOL hasMaxNetworkBitrate;
+@property (readonly, nonatomic) BOOL hasMaxPacketsPerSecond;
+@property (readonly, nonatomic) BOOL hasQualityIndex;
+@property (readonly, nonatomic) BOOL hasRepairedMaxNetworkBitrate;
+@property (readonly, nonatomic) BOOL hasRepairedStreamID;
 @property (nonatomic) unsigned short idsStreamID; // @synthesize idsStreamID=_idsStreamID;
+@property (nonatomic) BOOL isOneToOne; // @synthesize isOneToOne=_isOneToOne;
 @property (nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
 @property (nonatomic) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
 @property (nonatomic) unsigned int maxNetworkBitrate; // @synthesize maxNetworkBitrate=_maxNetworkBitrate;
 @property (nonatomic) float maxPacketsPerSecond; // @synthesize maxPacketsPerSecond=_maxPacketsPerSecond;
 @property (strong, nonatomic) NSString *participantId; // @synthesize participantId=_participantId;
 @property (nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
+@property (nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property (nonatomic) unsigned int repairedMaxNetworkBitrate; // @synthesize repairedMaxNetworkBitrate=_repairedMaxNetworkBitrate;
 @property (nonatomic) unsigned short repairedStreamID; // @synthesize repairedStreamID=_repairedStreamID;
 @property (strong, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;

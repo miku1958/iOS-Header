@@ -10,7 +10,6 @@
 
 @interface ACAccount (AppleID)
 
-@property (copy, nonatomic, setter=_aa_setRawPassword:) NSString *_aa_rawPassword;
 @property (copy, nonatomic, setter=aa_setAccountClass:) NSString *aa_accountClass;
 @property (readonly, nonatomic) NSDictionary *aa_accountFirstDisplayAlert;
 @property (readonly, nonatomic) NSDictionary *aa_accountFooterButton;
@@ -28,6 +27,7 @@
 @property (readonly, nonatomic) ACAccount *aa_fmipAccount;
 @property (readonly, nonatomic) NSString *aa_fmipToken;
 @property (readonly, nonatomic) NSString *aa_formattedUsername;
+@property (readonly, copy, nonatomic) NSString *aa_fullName;
 @property (readonly, nonatomic) BOOL aa_hasOptionalTerms;
 @property (readonly, nonatomic) BOOL aa_isAuthKitAccount;
 @property (nonatomic, setter=aa_setCloudDocsMigrationComplete:) BOOL aa_isCloudDocsMigrationComplete;
@@ -37,11 +37,13 @@
 @property (nonatomic, setter=aa_setPrimaryAccount:) BOOL aa_isPrimaryAccount;
 @property (nonatomic, setter=aa_setPrimaryEmailVerified:) BOOL aa_isPrimaryEmailVerified;
 @property (readonly, nonatomic) BOOL aa_isRemindersMigrated;
+@property (readonly, nonatomic) BOOL aa_isRemotelyManaged;
 @property (readonly, nonatomic) BOOL aa_isSandboxAccount;
 @property (readonly, nonatomic) BOOL aa_isSuspended;
 @property (nonatomic, setter=aa_setSyncedAccount:) BOOL aa_isSyncedAccount;
 @property (nonatomic, setter=aa_setUsesCloudDocs:) BOOL aa_isUsingCloudDocs;
 @property (readonly, nonatomic) BOOL aa_isUsingiCloud;
+@property (readonly, nonatomic) NSDictionary *aa_lastAgreedTermsInfo;
 @property (copy, nonatomic, setter=aa_setLastKnownQuota:) NSNumber *aa_lastKnownQuota;
 @property (copy, nonatomic, setter=aa_setLastName:) NSString *aa_lastName;
 @property (readonly, nonatomic) NSString *aa_mapsToken;
@@ -62,14 +64,21 @@
 @property (readonly, nonatomic) NSString *aa_syncStoreIdentifier;
 
 - (void)_aa_clearRawPassword;
+- (id)_aa_rawPassword;
 - (void)_aa_setAltDSID:(id)arg1;
 - (void)_aa_setAppleID:(id)arg1;
+- (void)_aa_setDataclassProperties:(id)arg1;
+- (void)_aa_setLastAgreedTermsInfo:(id)arg1;
+- (void)_aa_setPersonID:(id)arg1;
 - (void)_aa_setPrimaryEmail:(id)arg1;
+- (void)_aa_setRawPassword:(id)arg1;
 - (BOOL)_hasMailDataclassProperties;
 - (id)_registeredBundles;
 - (id)aa_authTokenWithError:(id *)arg1;
+- (BOOL)aa_hasDuplicateAccount;
 - (id)aa_hsaTokenWithError:(id *)arg1;
 - (BOOL)aa_isAccountClass:(id)arg1;
+- (BOOL)aa_isDuplicateAccount:(id)arg1;
 - (void)aa_setMDMServerToken:(id)arg1;
 - (void)aa_setMapsToken:(id)arg1;
 - (void)aa_setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;

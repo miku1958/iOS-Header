@@ -6,7 +6,7 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDate, NSFileHandle, NSString, PARRequest, PARSessionConfiguration;
+@class NSData, NSDate, NSFileHandle, NSString, PARRequest, PARSessionConfiguration, PARSmartSearchV1Parameters, PARSmartSearchV2Parameters;
 
 @protocol PARDaemonXPC <NSObject>
 - (void)addCompletion:(NSString *)arg1 forInput:(NSString *)arg2;
@@ -21,7 +21,7 @@
 - (void)reportFeedbackPayloadData:(PARSessionConfiguration *)arg1 payloadData:(NSData *)arg2 queryId:(unsigned long long)arg3;
 - (void)request:(PARSessionConfiguration *)arg1 request:(PARRequest *)arg2 reply:(void (^)(unsigned long long, PARReply *, NSError *))arg3;
 - (void)stopSessions:(void (^)(NSError *))arg1;
-- (void)teeFeedbackTo:(NSFileHandle *)arg1 prettyPrint:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
-- (void)updateParameters:(double)arg1 safariLast1day:(double)arg2 safariLast1week:(double)arg3 safariLast1month:(double)arg4 safariAll:(double)arg5 safariMostRecent:(double)arg6 minThresholdToSend:(double)arg7;
+- (void)teeFeedbackFromClient:(NSString *)arg1 to:(NSFileHandle *)arg2 prettyPrint:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
+- (void)updateParametersForSmartSearchV1:(PARSmartSearchV1Parameters *)arg1 smartSearchV2:(PARSmartSearchV2Parameters *)arg2;
 @end
 

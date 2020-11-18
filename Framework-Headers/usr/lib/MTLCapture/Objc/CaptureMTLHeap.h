@@ -49,6 +49,7 @@
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (void)touch;

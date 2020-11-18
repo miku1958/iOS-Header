@@ -24,6 +24,7 @@
     double _pageMargin;
     NSOrderedSet *_selectedSlideNodes;
     id _printView;
+    BOOL _hasObjectComments;
     BOOL _printingBuilds;
     BOOL _printingBackgrounds;
     BOOL _printingSlideBackgroundsWithAlpha;
@@ -35,6 +36,7 @@
     BOOL _printingPageMargins;
     BOOL _printingDraftQuality;
     BOOL _printingComments;
+    BOOL _isPrintingCommentsSidebar;
     long long _printLayout;
     double _viewScaleForPageCount;
     struct CGRect _unscaledClipRectForPageCount;
@@ -48,6 +50,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double heightOfPrintedText;
+@property (readonly, nonatomic) BOOL isPrintingCommentsSidebar; // @synthesize isPrintingCommentsSidebar=_isPrintingCommentsSidebar;
 @property (strong, nonatomic) KNOffscreenController *offscreenController; // @synthesize offscreenController=_offscreenController;
 @property (nonatomic) double pageMargin; // @synthesize pageMargin=_pageMargin;
 @property (nonatomic) long long printLayout; // @synthesize printLayout=_printLayout;

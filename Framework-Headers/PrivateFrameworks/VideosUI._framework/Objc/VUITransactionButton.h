@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)_layoutProgressIndicatorIfNeeded;
 - (void)_registerForTransactionNotification;
 - (void)_startListeningForTransactionWithTransactionID:(id)arg1;
-- (id)_transactionBuyParams;
 - (void)_unregisterTransactionNotifications;
 - (void)_updateProgressIndicatorTintColor:(id)arg1;
 - (void)dealloc;
@@ -41,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateWithElement:(id)arg1;
 
 @end
 

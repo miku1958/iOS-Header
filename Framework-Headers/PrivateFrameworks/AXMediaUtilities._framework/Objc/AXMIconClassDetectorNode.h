@@ -4,26 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AXMediaUtilities/AXMEvaluationNode.h>
+#import <AXMediaUtilities/AXMMobileAssetEvaluationNode.h>
 
-@class NSURL, iconclassification__generated__;
+@class iconclassification__generated__;
 
-@interface AXMIconClassDetectorNode : AXMEvaluationNode
+@interface AXMIconClassDetectorNode : AXMMobileAssetEvaluationNode
 {
-    iconclassification__generated__ *_mlModel;
-    NSURL *_modelURL;
 }
+
+@property (readonly, nonatomic) iconclassification__generated__ *mlModel; // @dynamic mlModel;
 
 + (BOOL)isSupported;
 + (BOOL)supportsSecureCoding;
 + (id)title;
-- (void).cxx_destruct;
-- (void)_downloadAssetIfNecessary;
 - (id)_localizedClassForClass:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)evaluate:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
+- (unsigned long long)maxSupportedFormatVersion;
+- (unsigned long long)minSupportedFormatVersion;
+- (id)mlModelClasses;
+- (id)mobileAssetType;
+- (id)modelResourceNames;
 
 @end
 

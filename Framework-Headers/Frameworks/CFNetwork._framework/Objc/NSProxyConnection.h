@@ -11,21 +11,15 @@
 @interface NSProxyConnection : NSObject
 {
     BOOL _doCleanupWhenWritesCompleted;
+    NSObject<OS_tcp_connection> *_connection;
     id<NSProxyConnectionDelegate> _delegate;
     long long _pendingWrites;
-    NSObject<OS_tcp_connection> *_connection;
 }
-
-@property (strong) NSObject<OS_tcp_connection> *connection; // @synthesize connection=_connection;
-@property (weak) id<NSProxyConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-@property BOOL doCleanupWhenWritesCompleted; // @synthesize doCleanupWhenWritesCompleted=_doCleanupWhenWritesCompleted;
-@property long long pendingWrites; // @synthesize pendingWrites=_pendingWrites;
 
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithHost:(id)arg1 port:(unsigned short)arg2 queue:(id)arg3 configuration:(id)arg4;
-- (id)initWithTCPConnection:(id)arg1;
 - (void)read:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)write:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

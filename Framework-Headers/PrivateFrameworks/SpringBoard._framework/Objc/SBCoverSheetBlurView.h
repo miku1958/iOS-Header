@@ -20,15 +20,11 @@
     long long _variantToTrack;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType alphaAdjustment; // @synthesize alphaAdjustment=_alphaAdjustment;
 @property (nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIView *reduceTransparencyView; // @synthesize reduceTransparencyView=_reduceTransparencyView;
-@property (copy, nonatomic) CDUnknownBlockType scaleAdjustment; // @synthesize scaleAdjustment=_scaleAdjustment;
 @property (readonly) Class superclass;
-@property (nonatomic) long long variantToTrack; // @synthesize variantToTrack=_variantToTrack;
 @property (nonatomic) double weighting; // @synthesize weighting=_weighting;
 
 + (Class)layerClass;

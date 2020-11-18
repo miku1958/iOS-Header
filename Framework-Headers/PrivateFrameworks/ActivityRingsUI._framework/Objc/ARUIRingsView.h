@@ -6,27 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-#import <ActivityRingsUI/ARUIRingGroupControllerDelegate-Protocol.h>
-#import <ActivityRingsUI/CALayerDelegate-Protocol.h>
+#import <ActivityRingsUI/ARUIRingGroupDelegate-Protocol.h>
 
-@class ARUIRingGroupController, ARUIRingsViewRenderer, CADisplayLink, CAMetalLayer, MISSING_TYPE, NSArray, NSString, UIImage;
+@class ARUIRenderContext, ARUIRenderer, ARUIRingGroup, ARUIRingGroupController, CAMetalLayer, NSArray, NSString, UIImage;
 
-@interface ARUIRingsView : UIView <ARUIRingGroupControllerDelegate, CALayerDelegate>
+@interface ARUIRingsView : UIView <ARUIRingGroupDelegate>
 {
+    ARUIRenderContext *_renderContext;
+    BOOL _backgrounded;
+    BOOL _inViewHierarchy;
+    NSArray *_ringGroups;
     NSArray *_ringGroupControllers;
-    BOOL _ringGroupControllersNeedRender;
-    CAMetalLayer *_metalLayer;
-    MISSING_TYPE *_drawableSize;
-    CADisplayLink *_displayLink;
-    double _lastTickTime;
-    BOOL _renderOnLayout;
     BOOL _shouldBypassApplicationStateChecking;
     BOOL _discardBackBuffers;
+    BOOL _shouldRenderOnLayout;
     BOOL _viewIsVisible;
     BOOL _paused;
-    BOOL _synchronizesWithCA;
-    float _screenScale;
-    ARUIRingsViewRenderer *_renderer;
+    ARUIRenderer *_renderer;
     long long _preferredFramesPerSecond;
     double _emptyRingAlpha;
     unsigned long long _iconTextureRows;
@@ -42,17 +38,24 @@
 @property (strong, nonatomic) UIImage *iconSpriteImage; // @synthesize iconSpriteImage=_iconSpriteImage;
 @property (nonatomic) unsigned long long iconTextureColumns; // @synthesize iconTextureColumns=_iconTextureColumns;
 @property (nonatomic) unsigned long long iconTextureRows; // @synthesize iconTextureRows=_iconTextureRows;
+@property (readonly, nonatomic) CAMetalLayer *metalLayer;
 @property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
-@property (readonly, nonatomic) ARUIRingsViewRenderer *renderer; // @synthesize renderer=_renderer;
+@property (readonly, nonatomic) ARUIRenderer *renderer; // @synthesize renderer=_renderer;
+@property (readonly, nonatomic) ARUIRingGroup *ringGroup;
 @property (readonly, nonatomic) ARUIRingGroupController *ringGroupController;
-@property (readonly, nonatomic) float screenScale; // @synthesize screenScale=_screenScale;
+@property (readonly, nonatomic) NSArray *ringGroupControllers;
+@property (strong, nonatomic) NSArray *shapeLayers; // @dynamic shapeLayers;
 @property (nonatomic) BOOL shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;
+@property (nonatomic) BOOL shouldRenderOnLayout; // @synthesize shouldRenderOnLayout=_shouldRenderOnLayout;
+@property (readonly, nonatomic) UIImage *snapshot;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL synchronizesWithCA; // @synthesize synchronizesWithCA=_synchronizesWithCA;
+@property (nonatomic) BOOL synchronizesWithCA;
 @property (readonly, nonatomic) BOOL viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 
 + (void)clearSharedCaches;
++ (Class)layerClass;
++ (void)load;
 + (id)ringsViewConfiguredForCompanionOfType:(long long)arg1 withRenderer:(id)arg2;
 + (id)ringsViewConfiguredForOneRingOnCompanionOfType:(long long)arg1;
 + (id)ringsViewConfiguredForOneRingOnWatchOfType:(long long)arg1;
@@ -64,49 +67,39 @@
 + (id)ringsViewConfiguredForThreeRingsOnWatchWithRenderer:(id)arg1;
 + (id)ringsViewConfiguredForWatchOfType:(long long)arg1 withIcon:(BOOL)arg2 renderer:(id)arg3;
 - (void).cxx_destruct;
-- (void)_discardBackBuffersIfNoDisplayLink;
-- (BOOL)_needsDisplayLink;
-- (void)_pauseByNotification:(id)arg1;
-- (void)_resumeByNotification:(id)arg1;
+- (id)_allRings;
+- (id)_anySpriteSheet;
+- (void)_didEnterBackground:(id)arg1;
+- (void)_discardBackBuffers;
+- (void)_sharedInitWithRingGroups:(id)arg1 renderer:(id)arg2;
+- (void)_sharedInitWithWithRingGroupControllers:(id)arg1 renderer:(id)arg2;
 - (BOOL)_shouldAllowRendering;
-- (void)_tick:(id)arg1;
-- (void)_updateDrawableSize;
-- (void)_updateMetalLayerProperties;
-- (void)_updateSkewAdjustment;
-- (void)dealloc;
-- (id)displayLink;
-- (void)drawIntoTexture:(id)arg1 withDrawable:(id)arg2 waitUntilCompleted:(BOOL)arg3;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)_updateRenderContext;
+- (void)_updateRingGroupPauseState;
+- (void)_willEnterForeground:(id)arg1;
+- (id)initWithRingGroup:(id)arg1;
+- (id)initWithRingGroup:(id)arg1 renderer:(id)arg2;
 - (id)initWithRingGroupController:(id)arg1;
 - (id)initWithRingGroupController:(id)arg1 renderer:(id)arg2;
 - (id)initWithRingGroupControllers:(id)arg1;
 - (id)initWithRingGroupControllers:(id)arg1 renderer:(id)arg2;
+- (id)initWithRingGroups:(id)arg1;
+- (id)initWithRingGroups:(id)arg1 renderer:(id)arg2;
 - (void)layoutSubviews;
-- (unsigned long long)maximumRingCountForControllers:(id)arg1;
-- (id)metalLayer;
-- (void)ringGroupControllerNeedsUpdate:(id)arg1;
-- (void)ringGroupControllerWillAddCelebrationOfType:(unsigned long long)arg1;
-- (id)ringGroupControllers;
+- (void)ringGroupHasUpdated:(id)arg1;
 - (id)ringGroups;
 - (void)setActiveEnergyPercentage:(double)arg1 animated:(BOOL)arg2;
 - (void)setActiveEnergyPercentage:(double)arg1 briskPercentage:(double)arg2 movingHoursPercentage:(double)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setBriskPercentage:(double)arg1 animated:(BOOL)arg2;
+- (void)setContentMode:(long long)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMovingHoursPercentage:(double)arg1 animated:(BOOL)arg2;
 - (void)setOpaque:(BOOL)arg1;
-- (void)setRingBoundsDiameter:(float)arg1;
-- (void)setShouldRenderOnLayout:(BOOL)arg1;
-- (void)setSkewAdjustmentMatrix:(CDStruct_14d5dc5e)arg1;
-- (BOOL)shouldAutorotate;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (id)snapshot;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)updateDisplayLink;
-- (void)updateMetalLayerVisibility:(BOOL)arg1;
-- (void)updateRingGroupControllers;
+- (void)sim_layoutSubviews;
+- (void)sim_setOpaque:(BOOL)arg1;
+- (id)sim_snapshot;
+- (void)sim_updateFallbackRings;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

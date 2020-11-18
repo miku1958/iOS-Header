@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SoundAnalysis/SNVGGBasedDetector.h>
+#import <SoundAnalysis/SNDetectorHead.h>
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundDetector : SNVGGBasedDetector <SNAnalyzing>
+@interface SNSoundDetector : SNDetectorHead <SNAnalyzing>
 {
 }
 
@@ -22,8 +22,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct Box *resultsBox;
 @property (readonly) Class superclass;
 
-+ (id)modelForSoundIdentifier:(id)arg1;
-- (id)initWithSoundIdentifier:(id)arg1;
++ (id)detectorConfigurationWithLogMelBasedFeatureExtractor:(id)arg1 detectorHead:(id)arg2 soundIdentifier:(id)arg3;
++ (id)detectorHeadConfigurationForSoundIdentifier:(id)arg1 analysisPassStrategy:(long long)arg2;
++ (id)soundPrint100kDetectorConfigurationWithSoundIdentifier:(id)arg1;
++ (id)vggishDetectorConfigurationWithSoundIdentifier:(id)arg1;
+- (id)initWithSoundIdentifier:(id)arg1 analysisPassStrategy:(long long)arg2;
 - (id)initWithVGGishBasedMLModel:(id)arg1 soundIdentifier:(id)arg2;
 
 @end

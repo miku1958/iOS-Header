@@ -17,6 +17,7 @@
     BOOL _separatorDrawsFlushWithLeadingEdge;
     BOOL _separatorDrawsFlushWithTrailingEdge;
     BOOL _usingLargeTextLayout;
+    BOOL _interactivelyResizing;
     MessageHeaderViewModel *_viewModel;
     MFMessageDisplayMetrics *_displayMetrics;
     SeparatorLayer *_separator;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MFMessageDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL interactivelyResizing; // @synthesize interactivelyResizing=_interactivelyResizing;
 @property (strong, nonatomic) id<EFCancelable> observableCancelable; // @synthesize observableCancelable=_observableCancelable;
 @property (strong, nonatomic) SeparatorLayer *separator; // @synthesize separator=_separator;
 @property (nonatomic) BOOL separatorDrawsFlushWithLeadingEdge; // @synthesize separatorDrawsFlushWithLeadingEdge=_separatorDrawsFlushWithLeadingEdge;

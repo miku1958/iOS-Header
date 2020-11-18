@@ -9,7 +9,7 @@
 #import <ContactsUICore/CNUICoreFamilyMemberWhitelistedContactsDataSource-Protocol.h>
 
 @class CNFuture, NSArray, NSString;
-@protocol CNCancelable, CNScheduler, CNSchedulerProvider, CNUICoreContactStoreFacade, CNUICoreFamilyMemberContactsModelFetching, CNUICoreFamilyMemberContactsObserver;
+@protocol CNCancelable, CNDowntimeWhitelistContainerFetching, CNScheduler, CNSchedulerProvider, CNUICoreContactStoreFacade, CNUICoreFamilyMemberContactsModelFetching, CNUICoreFamilyMemberContactsObserver;
 
 @interface CNUICoreMainWhitelistedContactsController : NSObject <CNUICoreFamilyMemberWhitelistedContactsDataSource>
 {
@@ -17,6 +17,7 @@
     id<CNUICoreFamilyMemberContactsObserver> _observer;
     id<CNUICoreFamilyMemberContactsModelFetching> _modelFetcher;
     id<CNUICoreContactStoreFacade> _mainContactStoreFacade;
+    id<CNDowntimeWhitelistContainerFetching> _downtimeContainerFetcher;
     id<CNSchedulerProvider> _schedulerProvider;
     CNFuture *_familyMemberContactItemsFuture;
     CNFuture *_addContactsToWhitelistFuture;
@@ -31,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) CNFuture *deleteContactsFromWhitelistFuture; // @synthesize deleteContactsFromWhitelistFuture=_deleteContactsFromWhitelistFuture;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<CNDowntimeWhitelistContainerFetching> downtimeContainerFetcher; // @synthesize downtimeContainerFetcher=_downtimeContainerFetcher;
 @property (strong, nonatomic) NSArray *familyMemberContactItems; // @synthesize familyMemberContactItems=_familyMemberContactItems;
 @property (strong, nonatomic) CNFuture *familyMemberContactItemsFuture; // @synthesize familyMemberContactItemsFuture=_familyMemberContactItemsFuture;
 @property (readonly, nonatomic) BOOL familyMemberContainerIsEmpty;
@@ -51,7 +53,7 @@
 - (void)dealloc;
 - (void)finishWhitelistedContactsTasks;
 - (id)init;
-- (id)initWithModelFetcher:(id)arg1 mainContactStoreFacade:(id)arg2 schedulerProvider:(id)arg3;
+- (id)initWithModelFetcher:(id)arg1 mainContactStoreFacade:(id)arg2 downtimeContainerFetcher:(id)arg3 schedulerProvider:(id)arg4;
 - (id)initWiththOptions:(id)arg1 mainContactStoreFacade:(id)arg2 schedulerProvider:(id)arg3;
 - (void)setupChangeNotificationResponse;
 - (void)triggerContactItemsFetch;

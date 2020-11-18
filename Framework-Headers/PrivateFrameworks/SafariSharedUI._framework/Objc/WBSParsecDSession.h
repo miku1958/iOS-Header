@@ -49,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)_didReceiveResponse:(id)arg1 error:(id)arg2 forTask:(id)arg3 query:(id)arg4;
 - (BOOL)_isABTestingEnabledOnProcessingQueue;
+- (void)_setCurrentQuery:(id)arg1 withKeyboardInputType:(id)arg2;
 - (void)_startUpdatingAutoFillDataInBackgroundIfPossibleForSession:(id)arg1;
 - (id)initWithParsecdSession:(id)arg1 skipAutoFillDataUpdates:(BOOL)arg2;
 - (void)session:(id)arg1 bag:(id)arg2 didLoadWithError:(id)arg3;

@@ -14,12 +14,16 @@
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMDRPIdentity, HMFProductInfo, HMFUnfairLock, NSArray, NSSet, NSString, NSUUID;
+@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMDRPIdentity, HMFNetService, HMFProductInfo, HMFUnfairLock, NSArray, NSData, NSSet, NSString, NSUUID;
+@protocol HMFCancellable;
 
 @interface HMDDevice : HMFObject <HMFObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, HMFMerging, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSSet *_handles;
+    HMFNetService *_observedNetService;
+    id<HMFCancellable> _netServiceKVOCancellation;
+    BOOL _lastKnownIsPublishingStateValue;
     BOOL _dirty;
     BOOL _locallyTracked;
     BOOL _cloudTracked;
@@ -55,6 +59,7 @@
 @property (readonly, copy) NSString *privateDescription;
 @property (copy) HMFProductInfo *productInfo; // @synthesize productInfo=_productInfo;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSData *pushToken;
 @property (copy) HMDRPIdentity *rpIdentity; // @synthesize rpIdentity=_rpIdentity;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
@@ -69,7 +74,7 @@
 - (void)__handleAccountHandleUpdated:(id)arg1;
 - (void)__updateDeviceWithActions:(id)arg1;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)destination;
+- (void)dealloc;
 - (id)deviceForIDSService:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)globalHandles;
@@ -81,6 +86,7 @@
 - (id)initWithService:(id)arg1 device:(id)arg2;
 - (BOOL)isBackingStorageEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isPublishingOnObservedNetService;
 - (BOOL)isRelatedToDevice:(id)arg1;
 - (id)localHandles;
 - (id)logIdentifier;
@@ -91,6 +97,8 @@
 - (void)setHandles:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setVersion:(id)arg1;
+- (void)startObservingIsPublishingForService:(id)arg1;
+- (BOOL)swapToNetServiceKVOCancellation:(id)arg1 swapToObservedNetService:(id)arg2;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)updateVersion:(id)arg1;

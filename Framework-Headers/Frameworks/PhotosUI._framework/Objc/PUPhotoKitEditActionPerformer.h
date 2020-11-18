@@ -6,13 +6,17 @@
 
 #import <PhotosUI/PUPhotoKitActionPerformer.h>
 
+@class UIViewController;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotoKitEditActionPerformer : PUPhotoKitActionPerformer
 {
+    UIViewController *_presentedAlertViewController;
 }
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (BOOL)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
+- (void).cxx_destruct;
 - (void)_beginEditingCurrentAsset;
 - (void)_presentEditorForAsset:(id)arg1;
 - (void)performUserInteractionTask;

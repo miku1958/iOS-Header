@@ -28,9 +28,11 @@
 - (void)_acceptInviteWithPresenceAuthStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_unconfigure;
 - (void)acceptInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)acceptInviteWithPresenceAuthStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInvitationData:(id)arg1 homeManager:(id)arg2;

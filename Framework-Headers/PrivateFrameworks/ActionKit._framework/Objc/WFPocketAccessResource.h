@@ -34,6 +34,7 @@
 - (void)pocketAPILoggedIn:(id)arg1;
 - (id)pocketCallbackScheme;
 - (id)protectedResourceDescription;
+- (void)refreshAvailabilityWithNotification:(BOOL)arg1;
 - (id)resourceName;
 - (id)username;
 

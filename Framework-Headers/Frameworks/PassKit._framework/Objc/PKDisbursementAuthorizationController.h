@@ -21,7 +21,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<PKDisbursementAuthorizationControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<PKDisbursementAuthorizationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

@@ -28,7 +28,7 @@
 - (void)endEncoding;
 - (void)filterCounterRangeWithFirstBatch:(unsigned int)arg1 lastBatch:(unsigned int)arg2 filterIndex:(unsigned int)arg3;
 - (unsigned long long)globalTraceObjectID;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2 lockingPolicy:(struct ILayerLockingPolicy *)arg3;
+- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (void)insertDebugSignpost:(id)arg1;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;

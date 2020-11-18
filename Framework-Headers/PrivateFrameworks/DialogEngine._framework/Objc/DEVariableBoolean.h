@@ -13,6 +13,7 @@
 - (BOOL)getValue;
 - (id)init;
 - (id)initWithName:(id)arg1 value:(BOOL)arg2;
+- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
 - (void)setValue:(BOOL)arg1;
 
 @end

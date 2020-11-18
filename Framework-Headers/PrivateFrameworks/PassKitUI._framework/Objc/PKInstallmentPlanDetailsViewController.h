@@ -6,14 +6,14 @@
 
 #import <PassKitUI/PKSectionTableViewController.h>
 
-@class NSArray, PKAccount, PKAccountService, PKInstallmentPlan, PKPaymentPass, PKPaymentTransactionDetailAmountLineItemGenerator, PKPaymentTransactionDetailHeaderView;
+@class NSArray, PKAccount, PKAccountService, PKInstallmentPlan, PKPaymentTransactionDetailAmountLineItemGenerator, PKPaymentTransactionDetailHeaderView, PKTransactionSource;
 
 @interface PKInstallmentPlanDetailsViewController : PKSectionTableViewController
 {
     PKAccount *_account;
     PKAccountService *_accountService;
     PKInstallmentPlan *_installmentPlan;
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKPaymentTransactionDetailAmountLineItemGenerator *_lineItemGenerator;
     NSArray *_lineItems;
     PKPaymentTransactionDetailHeaderView *_headerView;
@@ -23,7 +23,7 @@
 - (id)_detailsCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (id)_progressCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateHeaderHeight;
-- (id)initWithAccount:(id)arg1 installmentPlan:(id)arg2 accountService:(id)arg3 paymentPass:(id)arg4;
+- (id)initWithAccount:(id)arg1 installmentPlan:(id)arg2 accountService:(id)arg3 transactionSource:(id)arg4;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

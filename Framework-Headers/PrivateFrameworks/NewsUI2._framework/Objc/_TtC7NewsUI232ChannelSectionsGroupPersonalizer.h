@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI232ChannelSectionsGroupPersonalizer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *maxVisibleArticlesPerSection;
-    MISSING_TYPE *feedPersonalizingEngine;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

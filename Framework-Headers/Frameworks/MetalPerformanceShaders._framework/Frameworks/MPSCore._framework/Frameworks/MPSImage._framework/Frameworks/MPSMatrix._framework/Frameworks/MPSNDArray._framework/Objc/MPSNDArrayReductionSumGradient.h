@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MPSNDArray/MPSNDArrayReductionBaseGradient.h>
+#import <MPSNDArray/MPSNDArrayReductionGradient.h>
 
-@interface MPSNDArrayReductionSumGradient : MPSNDArrayReductionBaseGradient
+@interface MPSNDArrayReductionSumGradient : MPSNDArrayReductionGradient
 {
 }
 

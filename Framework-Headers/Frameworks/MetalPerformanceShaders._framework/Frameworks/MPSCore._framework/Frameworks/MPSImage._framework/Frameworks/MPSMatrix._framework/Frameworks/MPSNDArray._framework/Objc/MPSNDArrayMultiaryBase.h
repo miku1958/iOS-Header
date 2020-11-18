@@ -6,44 +6,45 @@
 
 #import <MPSCore/MPSKernel.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, MPSKernelDAGObject;
 @protocol MPSNDArrayAllocator;
 
 @interface MPSNDArrayMultiaryBase : MPSKernel
 {
     unsigned long long _srcCount;
-    struct NDArraySrcInfo *_srcInfo;
-    CDUnknownFunctionPointerType _encode;
     void *_encodeData;
+    CDUnknownFunctionPointerType _encodeGradient;
     id<MPSNDArrayAllocator> _destinationArrayAllocator;
+    MPSKernelDAGObject *_defaultKernelDAG;
+    MPSKernelDAGObject *_defaultGradientDAG;
 }
 
 @property (strong, nonatomic) id<MPSNDArrayAllocator> destinationArrayAllocator; // @synthesize destinationArrayAllocator=_destinationArrayAllocator;
 
++ (unsigned long long)expectedVirtualSourceCount;
 - (void)copyToGradientState:(id)arg1 sourceArrays:(id)arg2 sourceStates:(id)arg3 destinationArray:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)destinationArrayDescriptorForSourceArrays:(id)arg1 sourceState:(id)arg2;
-- (CDStruct_27bd5d57)dilationRatesForSourceIndex:(unsigned long long)arg1;
+- (MISSING_TYPE *)destinationStrides;
+- (CDStruct_129fbded)dilationRatesForSourceIndex:(unsigned long long)arg1;
 - (MISSING_TYPE *)dimensionsNotToBeBroadcast;
 - (MISSING_TYPE *)dimensionsToBeRetained;
 - (unsigned long long)edgeModeAtSourceIndex:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 sourceCount:(unsigned long long)arg2;
+- (void)kernelDAGObjectSetup:(id *)arg1 sourceArrays:(id)arg2 sourceGradient:(id)arg3 destination:(id)arg4;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
-- (CDStruct_27bd5d57)kernelSizesForSourceIndex:(unsigned long long)arg1;
+- (CDStruct_129fbded)kernelSizesForSourceIndex:(unsigned long long)arg1;
 - (unsigned long long)maxSupportedDimensionsForSourceArrays:(id)arg1 destinationArray:(id)arg2;
-- (CDStruct_df9f7954)offsetsAtSourceIndex:(unsigned long long)arg1;
+- (CDStruct_f52b1b8f)offsetsAtSourceIndex:(unsigned long long)arg1;
 - (id)reshapeFitToTileToCommandBuffer:(id)arg1 currentSource:(id)arg2 kernelDimension:(unsigned long long)arg3 dimensionsToBeRetained: /* Error: Ran out of types for this method. */;
 - (id)resultStateForSourceArrays:(id)arg1 sourceStates:(id)arg2 destinationArray:(id)arg3;
-- (void)setDilationRates:(CDStruct_27bd5d57)arg1 sourceIndex:(unsigned long long)arg2;
-- (void)setEdgeMode:(unsigned long long)arg1 sourceIndex:(unsigned long long)arg2;
-- (void)setKernelSizes:(CDStruct_27bd5d57)arg1 sourceIndex:(unsigned long long)arg2;
-- (void)setOffsets:(CDStruct_df9f7954)arg1 sourceIndex:(unsigned long long)arg2;
-- (void)setStrides:(CDStruct_df9f7954)arg1 sourceIndex:(unsigned long long)arg2;
-- (CDStruct_df9f7954)stridesForSourceIndex:(unsigned long long)arg1;
+- (MISSING_TYPE *)stridesAtSourceIndex:(unsigned long long)arg1;
+- (CDStruct_f52b1b8f)stridesForSourceIndex:(unsigned long long)arg1;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceArrays:(id)arg2 sourceStates:(id)arg3 destinationArray:(id)arg4;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 sourceState:(id)arg2;
 
 @end
 

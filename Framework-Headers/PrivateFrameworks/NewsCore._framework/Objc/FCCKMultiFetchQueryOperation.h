@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 - (id)_constructQuery;
 - (id)_desiredKeys;
+- (unsigned long long)_queryPriority;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (void)prepareOperation;

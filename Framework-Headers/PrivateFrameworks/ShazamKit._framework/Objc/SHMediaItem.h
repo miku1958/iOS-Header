@@ -6,19 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <ShazamKit/NSCopying-Protocol.h>
 #import <ShazamKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString, NSURL;
 
-@interface SHMediaItem : NSObject <NSSecureCoding>
+@interface SHMediaItem : NSObject <NSSecureCoding, NSCopying>
 {
+    NSString *_fuzzyRepresentation;
     NSDictionary *_resultDictionary;
 }
 
+@property (readonly, copy, nonatomic) NSString *ID;
+@property (readonly, copy, nonatomic) NSString *appleMusicID;
+@property (readonly, nonatomic) NSURL *appleMusicURL;
+@property (readonly, copy, nonatomic) NSString *artist;
+@property (readonly, nonatomic) NSURL *artworkURL;
+@property (readonly, nonatomic) BOOL explicitContent;
+@property (readonly, copy, nonatomic) NSString *fuzzyRepresentation; // @synthesize fuzzyRepresentation=_fuzzyRepresentation;
+@property (readonly, copy, nonatomic) NSString *genre;
+@property (readonly, copy, nonatomic) NSString *lyricsSnippet;
 @property (readonly, nonatomic) NSDictionary *resultDictionary; // @synthesize resultDictionary=_resultDictionary;
+@property (readonly, copy, nonatomic) NSString *staticLyrics;
+@property (readonly, copy, nonatomic) NSString *subtitle;
+@property (readonly, copy, nonatomic) NSString *title;
+@property (readonly, nonatomic) NSURL *videoURL;
+@property (readonly, nonatomic) NSURL *webURL;
 
++ (id)mediaItemWithResultDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

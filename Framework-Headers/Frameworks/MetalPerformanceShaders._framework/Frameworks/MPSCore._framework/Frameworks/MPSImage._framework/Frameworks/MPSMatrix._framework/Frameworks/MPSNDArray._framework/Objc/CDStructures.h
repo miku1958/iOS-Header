@@ -10,13 +10,43 @@ typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameter
 
 #pragma mark Named Structures
 
+struct MPSDevice {
+    CDUnknownFunctionPointerType *_field1;
+    struct MPSDevice *_field2;
+    id _field3;
+    struct MPSDeviceFreeList *_field4;
+    struct atomic<MTLLibraryNode *> _field5;
+    struct atomic<void *> _field6[2][2][2];
+    struct MPSPixelCapabilities _field7[590];
+    struct atomic<void *> _field8;
+    unsigned int _field9;
+    int _field10;
+    unsigned int _field11;
+    struct MPSGPUInfo _field12;
+    struct atomic<MPSLibrary *> _field13[122];
+};
+
+struct MPSDeviceFreeList;
+
 struct MPSDeviceSpecificInfo {
     struct MPSKernelInfo *_field1;
     CDUnknownFunctionPointerType _field2;
     unsigned long long _field3;
 };
 
+struct MPSGPUInfo {
+    unsigned int :8;
+    unsigned int :8;
+    unsigned int :8;
+    unsigned int :16;
+    unsigned int :4;
+    unsigned int :10;
+    unsigned int :10;
+};
+
 struct MPSKernelInfo;
+
+struct MPSLibrary;
 
 struct MPSLibraryInfo {
     int _field1;
@@ -41,20 +71,93 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field20;
     struct MPSDeviceSpecificInfo _field21;
     struct MPSDeviceSpecificInfo _field22;
+    struct MPSDeviceSpecificInfo _field23;
+    struct MPSDeviceSpecificInfo _field24;
+    struct MPSDeviceSpecificInfo _field25;
+    struct MPSDeviceSpecificInfo _field26;
+    struct MPSDeviceSpecificInfo _field27;
+    struct MPSDeviceSpecificInfo _field28;
+    struct MPSDeviceSpecificInfo _field29;
+    struct MPSDeviceSpecificInfo _field30;
 };
+
+struct MPSNDArrayConv3dOffsets_s {
+    long long offsets[3];
+};
+
+struct MPSNDArrayConv3dSizes_s {
+    unsigned long long sizes[3];
+};
+
+struct MPSNDArrayConvolutionOffsets {
+    long long offset[2];
+};
+
+struct MPSNDArrayConvolutionSizes {
+    unsigned long long _field1[2];
+};
+
+struct MPSNDArrayPaddingSize {
+    unsigned long long paddingSize[16][2];
+};
+
+struct MPSNDArrayPoolingOffsets_s {
+    long long offsets[4];
+};
+
+struct MPSNDArrayPoolingSizes_s {
+    unsigned long long sizes[4];
+};
+
+struct MPSPixelCapabilities {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :2;
+    unsigned int :1;
+    unsigned int :8;
+};
+
+struct MPSScaleTransform {
+    double scaleX;
+    double scaleY;
+    double translateX;
+    double translateY;
+};
+
+struct MTLLibraryNode;
 
 struct NDArraySrcInfo {
     unsigned long long _field1;
-    unsigned long long _field2;
+};
+
+struct atomic<MPSLibrary *> {
+    struct __cxx_atomic_impl<MPSLibrary *, std::__1::__cxx_atomic_base_impl<MPSLibrary *>> {
+        _Atomic struct MPSLibrary *_field1;
+    } _field1;
+};
+
+struct atomic<MTLLibraryNode *> {
+    struct __cxx_atomic_impl<MTLLibraryNode *, std::__1::__cxx_atomic_base_impl<MTLLibraryNode *>> {
+        _Atomic struct MTLLibraryNode *_field1;
+    } _field1;
+};
+
+struct atomic<void *> {
+    struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
+        _Atomic void *_field1;
+    } _field1;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long _field1[16];
-} CDStruct_27bd5d57;
+    unsigned long long dimensions[16];
+} CDStruct_129fbded;
 
 typedef struct {
-    long long _field1[16];
-} CDStruct_df9f7954;
+    long long dimensions[16];
+} CDStruct_f52b1b8f;
 

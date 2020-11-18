@@ -8,7 +8,7 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, WFDatabase, WFWorkflow;
+@class NSArray, NSMapTable, NSString, WFDatabase, WFHealthFeatureAvailability, WFWorkflow;
 @protocol WFWorkflowSettingsViewDataSourceDelegate;
 
 @interface WFWorkflowSettingsViewDataSource : NSObject <UITableViewDataSource>
@@ -19,6 +19,7 @@
     WFDatabase *_database;
     NSArray *_accessResources;
     NSMapTable *_switchToAccessResourceMapTable;
+    WFHealthFeatureAvailability *_healthFeatureAvailability;
 }
 
 @property (strong, nonatomic) NSArray *accessResources; // @synthesize accessResources=_accessResources;
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) id<WFWorkflowSettingsViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) WFHealthFeatureAvailability *healthFeatureAvailability; // @synthesize healthFeatureAvailability=_healthFeatureAvailability;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMapTable *switchToAccessResourceMapTable; // @synthesize switchToAccessResourceMapTable=_switchToAccessResourceMapTable;
 @property (copy, nonatomic) NSString *tentativeWorkflowName; // @synthesize tentativeWorkflowName=_tentativeWorkflowName;
@@ -37,18 +39,22 @@
 - (long long)buttonCellTypeForRow:(long long)arg1;
 - (id)buttonCellTypes;
 - (long long)importQuestionsCellCount;
-- (id)initWithWorkflow:(id)arg1 database:(id)arg2;
+- (id)initWithWorkflow:(id)arg1 database:(id)arg2 healthFeatureAvailability:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)registerCellsForTableView:(id)arg1;
+- (long long)rowIndexForShowInCellType:(long long)arg1;
 - (long long)sectionWithOffsetForButtonsSection:(long long)arg1;
 - (id)sections;
 - (id)setUpAcceptedTypesCell:(id)arg1;
 - (id)setUpImportQuestionsCell:(id)arg1;
 - (id)setUpShowInShareSheetCell:(id)arg1;
-- (id)setUpShowInWidgetCell:(id)arg1;
+- (id)setUpShowInWatchCell:(id)arg1;
+- (id)setupShowOnBedSheetCell:(id)arg1;
+- (BOOL)shouldShowBedSheetCell;
 - (BOOL)showAddToHomeScreen;
 - (BOOL)showCustomizeShortcut;
-- (long long)showInCellCount;
+- (long long)showInCellTypeForRow:(long long)arg1;
+- (id)showInCellTypes;
 - (id)tableView:(id)arg1 accessResourcesCellForRow:(long long)arg2;
 - (id)tableView:(id)arg1 buttonCellForRow:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

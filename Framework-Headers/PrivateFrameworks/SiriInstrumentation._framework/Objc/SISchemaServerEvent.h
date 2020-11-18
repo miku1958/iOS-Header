@@ -10,17 +10,31 @@
 
 @interface SISchemaServerEvent : PBCodable
 {
-    unsigned long long _whichEvent_Type;
+    SISchemaServerEventMetadata *_eventMetadata;
     SISchemaUserSpeechDuration *_userSpeechDuration;
     SISchemaConversationTrace *_serverConversationTrace;
     SISchemaTurnInteraction *_turnInteraction;
     SISchemaSpeechResultSelected *_speechResultSelected;
     SISchemaDeviceFixedContext *_serverDeviceFixedContext;
     SISchemaServerGeneratedDismissal *_serverGeneratedDismissal;
-    SISchemaServerEventMetadata *_eventMetadata;
+    BOOL _hasEventMetadata;
+    BOOL _hasUserSpeechDuration;
+    BOOL _hasServerConversationTrace;
+    BOOL _hasTurnInteraction;
+    BOOL _hasSpeechResultSelected;
+    BOOL _hasServerDeviceFixedContext;
+    BOOL _hasServerGeneratedDismissal;
+    unsigned long long _whichEvent_Type;
 }
 
 @property (strong, nonatomic) SISchemaServerEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
+@property (nonatomic) BOOL hasEventMetadata; // @synthesize hasEventMetadata=_hasEventMetadata;
+@property (nonatomic) BOOL hasServerConversationTrace; // @synthesize hasServerConversationTrace=_hasServerConversationTrace;
+@property (nonatomic) BOOL hasServerDeviceFixedContext; // @synthesize hasServerDeviceFixedContext=_hasServerDeviceFixedContext;
+@property (nonatomic) BOOL hasServerGeneratedDismissal; // @synthesize hasServerGeneratedDismissal=_hasServerGeneratedDismissal;
+@property (nonatomic) BOOL hasSpeechResultSelected; // @synthesize hasSpeechResultSelected=_hasSpeechResultSelected;
+@property (nonatomic) BOOL hasTurnInteraction; // @synthesize hasTurnInteraction=_hasTurnInteraction;
+@property (nonatomic) BOOL hasUserSpeechDuration; // @synthesize hasUserSpeechDuration=_hasUserSpeechDuration;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaConversationTrace *serverConversationTrace; // @synthesize serverConversationTrace=_serverConversationTrace;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *serverDeviceFixedContext; // @synthesize serverDeviceFixedContext=_serverDeviceFixedContext;
@@ -32,6 +46,7 @@
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (int)getAnyEventType;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

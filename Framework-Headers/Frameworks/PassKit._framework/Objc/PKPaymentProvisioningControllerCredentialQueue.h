@@ -17,7 +17,9 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)completedCount;
+- (id)completedCredentials;
 - (unsigned long long)count;
+- (id)credentials;
 - (id)init;
 - (id)nextCredentialToProvision;
 - (unsigned long long)remaining;

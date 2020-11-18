@@ -18,6 +18,7 @@
 - (NSArray *)_forwardingRecord;
 - (BOOL)_isAbandoningForwardingRecord;
 - (NSMutableArray *)_mutableForwardingRecord;
+- (long long)_responderForwardableType;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
 - (BOOL)_wantsForwardingFromResponder:(UIResponder *)arg1 toNextResponder:(UIResponder *)arg2 withEvent:(UIEvent *)arg3;
 - (NSArray *)gestureRecognizers;

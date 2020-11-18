@@ -6,9 +6,11 @@
 
 #import <UIFoundation/NSObject-Protocol.h>
 
+@class NSString;
 @protocol NSTextLocation;
 
 @protocol NSTextLocation <NSObject>
 - (long long)compare:(id<NSTextLocation>)arg1;
+- (NSString *)shortDescription;
 @end
 

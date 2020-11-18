@@ -9,5 +9,7 @@
 @interface NSLocale (BusinessChatService)
 + (id)currentCountry;
 + (id)currentLanguage;
+- (id)country;
+- (id)language;
 @end
 

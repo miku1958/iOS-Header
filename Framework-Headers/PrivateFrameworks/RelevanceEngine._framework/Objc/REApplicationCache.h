@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <RelevanceEngine/RESingleton.h>
+#import <objc/NSObject.h>
 
 #import <RelevanceEngine/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NARApplicationWorkspace, NSMutableDictionary, NSObject, NSString, REKeyValueMap;
+@class NARApplicationWorkspace, NSMutableDictionary, NSString, REKeyValueMap;
 @protocol OS_dispatch_queue;
 
-@interface REApplicationCache : RESingleton <LSApplicationWorkspaceObserverProtocol>
+@interface REApplicationCache : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_applicationTypes;
@@ -27,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_accessRemoteApplicationsMapWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_clearApplicationTypesMap;

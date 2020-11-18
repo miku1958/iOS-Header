@@ -8,22 +8,22 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDCameraSnapshotSessionID, NSString;
+@class HMDCameraSnapshotSessionID, HMDProcessInfo;
 
 @interface HMDSnapshotSessionApplicationID : HMFObject <NSCopying>
 {
     HMDCameraSnapshotSessionID *_sessionID;
-    NSString *_applicationIdentifier;
+    HMDProcessInfo *_processInfo;
 }
 
-@property (readonly, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
+@property (readonly, nonatomic) HMDProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property (readonly, nonatomic) HMDCameraSnapshotSessionID *sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithSessionID:(id)arg1 applicationIdentifier:(id)arg2;
+- (id)initWithSessionID:(id)arg1 processInfo:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

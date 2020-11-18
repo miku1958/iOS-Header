@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)addMessage:(id)arg1;
+- (id)init;
 
 @end
 

@@ -20,13 +20,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isiPadLayout;
-@property (readonly, nonatomic) long long layoutOrientation;
+@property (nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (readonly, nonatomic) double standardBottomBarHeight;
 @property (readonly, nonatomic) double standardSideBarWidth;
 @property (readonly) Class superclass;
 
 + (id)toolPickerSelectionColor;
-- (void)setLayoutOrientation:(long long)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

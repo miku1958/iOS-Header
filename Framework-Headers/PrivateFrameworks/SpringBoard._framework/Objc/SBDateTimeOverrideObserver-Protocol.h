@@ -6,9 +6,9 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSDate, SBDateTimeController;
+@class NSDate, SBFDateTimeController;
 
 @protocol SBDateTimeOverrideObserver <NSObject>
-- (void)controller:(SBDateTimeController *)arg1 didChangeOverrideDateFromDate:(NSDate *)arg2;
+- (void)controller:(SBFDateTimeController *)arg1 didChangeOverrideDateFromDate:(NSDate *)arg2;
 @end
 

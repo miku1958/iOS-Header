@@ -25,6 +25,7 @@
     int _defaultScale;
     BOOL _requiresLegacyFormat;
     NSArray *_tileSetOverrides;
+    NSString *_urlTemplate;
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL requiresLegacyFormat; // @synthesize requiresLegacyFormat=_requiresLegacyFormat;
 @property (nonatomic) unsigned int tileGroupIdentifier; // @synthesize tileGroupIdentifier=_tileGroupIdentifier;
 @property (copy, nonatomic) NSArray *tileSetOverrides;
+@property (copy, nonatomic) NSString *urlTemplate; // @synthesize urlTemplate=_urlTemplate;
 
 + (id)configurationWithPairedDevice:(id)arg1;
 + (id)defaultConfiguration;

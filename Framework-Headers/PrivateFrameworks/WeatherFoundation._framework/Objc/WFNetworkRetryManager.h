@@ -21,15 +21,12 @@
 
 - (void).cxx_destruct;
 - (id)apiVersionForSettings:(id)arg1;
-- (id)apiVersionForSettings:(id)arg1 aggregateDictionary:(id)arg2;
 - (int)consecutiveFailsForAPIVersion:(id)arg1;
 - (BOOL)defaultAPIVersionIsFailingForSettings:(id)arg1 failTracker:(id)arg2;
 - (id)init;
 - (double)lastFailTimeInSecondsForAPIVersion:(id)arg1;
-- (void)requestFailureForAPIVersion:(id)arg1 aggregateDictionary:(id)arg2 error:(id)arg3;
 - (void)requestFailureForAPIVersion:(id)arg1 error:(id)arg2;
 - (void)requestSuccessForAPIVersion:(id)arg1;
-- (void)requestSuccessForAPIVersion:(id)arg1 aggregateDictionary:(id)arg2;
 
 @end
 

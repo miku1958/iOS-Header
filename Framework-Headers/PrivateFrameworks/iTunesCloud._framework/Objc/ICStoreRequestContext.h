@@ -31,6 +31,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;

@@ -30,6 +30,8 @@
     NSData *_cdhash;
     NSString *_requirement;
     NSURL *_dataContainerURL;
+    unsigned int _extensionPointPlatform;
+    BOOL _isRBManaged;
     NSUUID *_discoveryInstanceUUID;
 }
 
@@ -43,6 +45,7 @@
 @property (readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property (readonly) NSUUID *discoveryInstanceUUID; // @synthesize discoveryInstanceUUID=_discoveryInstanceUUID;
 @property (strong) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
+@property (readonly) unsigned int extensionPointPlatform; // @synthesize extensionPointPlatform=_extensionPointPlatform;
 @property unsigned long long hubProtocolVersion; // @synthesize hubProtocolVersion=_hubProtocolVersion;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) BOOL isAppExtension;
@@ -50,6 +53,7 @@
 @property (readonly) BOOL isDedicated;
 @property (readonly) BOOL isHybrid;
 @property (readonly) BOOL isMultiplexed;
+@property BOOL isRBManaged; // @synthesize isRBManaged=_isRBManaged;
 @property long long lastModified; // @synthesize lastModified=_lastModified;
 @property (strong) NSString *localizedContainingName; // @synthesize localizedContainingName=_localizedContainingName;
 @property (readonly) NSDictionary *localizedFileProviderActionNames; // @synthesize localizedFileProviderActionNames=_localizedFileProviderActionNames;
@@ -69,8 +73,9 @@
 @property (strong) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly) NSString *version;
 
-+ (id)readSDKDictionary:(id)arg1;
++ (id)readSDKDictionary:(id)arg1 forPlatform:(unsigned int)arg2;
 - (void).cxx_destruct;
+- (void)_loadLocalizedFileProviderActionNames;
 - (void)_loadLocalizedNames;
 - (id)_localizedFileProviderActionNamesForPKDict:(id)arg1 fromBundle:(id)arg2;
 - (id)attribute:(id)arg1;
@@ -85,7 +90,7 @@
 - (id)infoKey:(id)arg1;
 - (id)init;
 - (id)initWithForm:(id)arg1;
-- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(id)arg6;
+- (id)initWithName:(id)arg1 extensionPointPlatform:(unsigned int)arg2 url:(id)arg3 bundleInfo:(id)arg4 uuid:(id)arg5 discoveryInstanceUUID:(id)arg6 extensionPointCache:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (void)localizedInfoDictionaryForKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)mergeSDKDictionary:(id)arg1 intoExtensionDictionary:(id)arg2;
@@ -98,7 +103,7 @@
 - (void)setAnnotation:(id)arg1 value:(id)arg2;
 - (BOOL)setDictionaries:(id)arg1;
 - (BOOL)setupWithForm:(id)arg1;
-- (BOOL)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(id)arg6;
+- (BOOL)setupWithName:(id)arg1 extensionPointPlatform:(unsigned int)arg2 url:(id)arg3 bundleInfo:(id)arg4 uuid:(id)arg5 discoveryInstanceUUID:(id)arg6 extensionPointCache:(id)arg7;
 - (void)updateFromForm:(id)arg1;
 - (BOOL)useBundle:(id)arg1 error:(id *)arg2;
 

@@ -11,6 +11,7 @@
 @interface TSCEQuotedRefPathSplitter : NSObject
 {
     NSMutableArray *_quotedComponents;
+    BOOL _forceSplitting;
     NSString *_localizedBlankGroupName;
     NSString *_localizedErrorGroupName;
     NSString *_localizedTrueGroupName;
@@ -19,6 +20,7 @@
     NSString *_localizedFalseGroupNameForColumn;
 }
 
+@property (nonatomic) BOOL forceSplitting; // @synthesize forceSplitting=_forceSplitting;
 @property (strong, nonatomic) NSString *localizedBlankGroupName; // @synthesize localizedBlankGroupName=_localizedBlankGroupName;
 @property (strong, nonatomic) NSString *localizedErrorGroupName; // @synthesize localizedErrorGroupName=_localizedErrorGroupName;
 @property (strong, nonatomic) NSString *localizedFalseGroupName; // @synthesize localizedFalseGroupName=_localizedFalseGroupName;

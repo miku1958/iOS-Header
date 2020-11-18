@@ -36,6 +36,7 @@
 - (void)flowDivertNewFlow:(struct _NEFlow *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flowDivertOpenControlSocket;
 - (void)openFlowDivertControlSocketWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (Class)requiredProviderSuperClass;
 - (void)setDelegateInterface:(unsigned int)arg1;
 - (void)setInitialFlowDivertControlSocket:(id)arg1;
 - (void)setInitialFlowDivertControlSocket:(id)arg1 extraValidation:(BOOL)arg2;

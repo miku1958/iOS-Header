@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     NSMutableData *_data;
     NSString *_urlString;
+    unsigned long long _signpostID;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSMutableData *data; // @synthesize data=_data;
+@property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property (copy, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
 - (void).cxx_destruct;

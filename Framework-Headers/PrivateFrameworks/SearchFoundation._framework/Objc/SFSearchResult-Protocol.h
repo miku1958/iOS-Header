@@ -9,6 +9,7 @@
 @protocol SFSearchResult
 
 @property (strong, nonatomic) SFActionItem *action;
+@property (copy, nonatomic) NSArray *alternativeURLs;
 @property (copy, nonatomic) NSString *appleReferrer;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier;
 @property (copy, nonatomic) NSString *auxiliaryBottomText;
@@ -18,6 +19,7 @@
 @property (nonatomic) unsigned long long blockId;
 @property (copy, nonatomic) NSString *calendarIdentifier;
 @property (strong, nonatomic) SFCard *card;
+@property (strong, nonatomic) SFCard *compactCard;
 @property (copy, nonatomic) NSString *completedQuery;
 @property (copy, nonatomic) NSString *completion;
 @property (strong, nonatomic) SFImage *completionImage;
@@ -28,6 +30,7 @@
 @property (strong, nonatomic) SFCustom *customProperties;
 @property (nonatomic) long long dataOwnerType;
 @property (copy, nonatomic) NSArray *descriptions;
+@property (nonatomic) BOOL didTakeoverGo;
 @property (nonatomic) BOOL doNotFold;
 @property (strong, nonatomic) NSNumber *engagementScore;
 @property (strong, nonatomic) NSData *entityData;
@@ -59,8 +62,10 @@
 @property (strong, nonatomic) SFMoreResults *moreResults;
 @property (strong, nonatomic) SFPunchout *moreResultsPunchout;
 @property (copy, nonatomic) NSString *nearbyBusinessesString;
+@property (nonatomic) BOOL noGoTakeover;
 @property (nonatomic) double personalizationScore;
 @property (nonatomic) int placement;
+@property (nonatomic) BOOL preferTopPlatter;
 @property (nonatomic) BOOL preventThumbnailImageScaling;
 @property (nonatomic) BOOL publiclyIndexable;
 @property (copy, nonatomic) NSString *publishDate;
@@ -80,6 +85,7 @@
 @property (copy, nonatomic) NSURL *sectionHeaderMoreURL;
 @property (copy, nonatomic) NSDictionary *serverFeatures;
 @property (nonatomic) double serverScore;
+@property (nonatomic) BOOL shouldUseCompactDisplay;
 @property (copy, nonatomic) NSString *sourceName;
 @property (copy, nonatomic) NSString *srf;
 @property (copy, nonatomic) NSString *storeIdentifier;
@@ -92,6 +98,8 @@
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *userActivityRequiredString;
 @property (copy, nonatomic) NSString *userInput;
+@property (nonatomic) BOOL usesCompactDisplay;
+@property (nonatomic) BOOL wasCompact;
 
 @end
 

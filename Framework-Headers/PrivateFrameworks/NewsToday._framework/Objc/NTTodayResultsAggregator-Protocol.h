@@ -6,9 +6,9 @@
 
 #import <NewsToday/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NTItemAggregationResult;
+@class NSArray, NSDictionary, NTAggregationBudgetInfo, NTItemAggregationResult;
 
 @protocol NTTodayResultsAggregator <NSObject>
-- (NTItemAggregationResult *)aggregateSections:(NSArray *)arg1 itemsBySectionDescriptor:(NSDictionary *)arg2;
+- (NTItemAggregationResult *)aggregateSections:(NSArray *)arg1 itemsBySectionDescriptor:(NSDictionary *)arg2 budgetInfo:(NTAggregationBudgetInfo *)arg3;
 @end
 

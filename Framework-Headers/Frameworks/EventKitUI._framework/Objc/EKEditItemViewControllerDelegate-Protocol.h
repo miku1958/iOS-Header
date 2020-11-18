@@ -10,11 +10,11 @@
 @protocol EKEditItemViewControllerProtocol;
 
 @protocol EKEditItemViewControllerDelegate <NSObject>
+- (EKEvent *)editItemEventToDetach;
 - (void)editItemViewController:(EKEditItemViewController *)arg1 didCompleteWithAction:(int)arg2;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
 
 @optional
-- (EKEvent *)editItemEventToDetach;
 - (BOOL)editItemViewControllerSave:(id<EKEditItemViewControllerProtocol>)arg1;
 - (void)editItemViewControllerWantsKeyboardPinned:(BOOL)arg1;
 @end

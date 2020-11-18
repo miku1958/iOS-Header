@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 @class CNAutocompleteFetchRequest, NSMutableOrderedSet;
-@protocol CNAutocompleteFetchDelegate, CNFuture, CNPromise;
+@protocol CNAutocompleteFetchDelegate, CNFuture, CNPromise, OS_dispatch_queue;
 
 @interface CNAutocompleteQueryResponsePreparer : NSObject
 {
     NSMutableOrderedSet *_previouslyReturnedResults;
+    NSObject<OS_dispatch_queue> *_duetSortQueue;
     id<CNAutocompleteFetchDelegate> _delegate;
     CNAutocompleteFetchRequest *_fetchRequest;
     id<CNFuture> _priorityResultsFuture;

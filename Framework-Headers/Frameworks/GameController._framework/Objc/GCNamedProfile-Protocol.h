@@ -15,7 +15,6 @@
 
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
 - (id)initWithController:(GCController *)arg1;
-- (BOOL)isBluetoothAndUSBMirrored;
 - (NSString *)productCategory;
 - (void)setController:(GCController *)arg1;
 - (void)setPlayerIndex:(long long)arg1;
@@ -24,6 +23,7 @@
 @optional
 - (void)appDidBecomeActive;
 - (void)appWillResignActive;
+- (BOOL)isBluetoothAndUSBMirrored;
 - (unsigned int)sampleRate;
 - (void)setButton:(GCControllerButtonInput *)arg1 pressed:(BOOL)arg2;
 - (void)setButton:(GCControllerButtonInput *)arg1 value:(double)arg2;

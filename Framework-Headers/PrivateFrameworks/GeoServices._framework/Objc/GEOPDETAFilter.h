@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, GEOWalkingOptions, PBDataReader, PBUnknownFields;
+@class GEOAutomobileOptions, GEOClientCapabilities, GEOCyclingOptions, GEOTransitOptions, GEOWalkingOptions, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDETAFilter : PBCodable <NSCopying>
@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _transportTypes;
     GEOAutomobileOptions *_automobileOptions;
+    GEOClientCapabilities *_clientCapabilities;
+    GEOCyclingOptions *_cyclingOptions;
     GEOTransitOptions *_transitOptions;
     GEOWalkingOptions *_walkingOptions;
     unsigned int _readerMarkPos;
@@ -30,20 +32,20 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_transportTypes:1;
         unsigned int read_automobileOptions:1;
+        unsigned int read_clientCapabilities:1;
+        unsigned int read_cyclingOptions:1;
         unsigned int read_transitOptions:1;
         unsigned int read_walkingOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_transportTypes:1;
-        unsigned int wrote_automobileOptions:1;
-        unsigned int wrote_transitOptions:1;
-        unsigned int wrote_walkingOptions:1;
-        unsigned int wrote_includeHistoricTravelTime:1;
-        unsigned int wrote_includeRouteTrafficDetail:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions;
+@property (strong, nonatomic) GEOClientCapabilities *clientCapabilities;
+@property (strong, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property (readonly, nonatomic) BOOL hasAutomobileOptions;
+@property (readonly, nonatomic) BOOL hasClientCapabilities;
+@property (readonly, nonatomic) BOOL hasCyclingOptions;
 @property (nonatomic) BOOL hasIncludeHistoricTravelTime;
 @property (nonatomic) BOOL hasIncludeRouteTrafficDetail;
 @property (readonly, nonatomic) BOOL hasTransitOptions;
@@ -56,14 +58,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOWalkingOptions *walkingOptions;
 
++ (id)_etaFilterWithTransportTypes:(int *)arg1 transportTypesCount:(unsigned long long)arg2 automobileOptions:(id)arg3 transitOptions:(id)arg4 walkingOptions:(id)arg5 cyclingOptions:(id)arg6;
++ (id)etaFilterForRouteAttributes:(id)arg1;
++ (id)etaFilterForTraits:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransportTypes:(id)arg1;
-- (void)_addNoFlagsTransportType:(int)arg1;
-- (void)_readAutomobileOptions;
-- (void)_readTransitOptions;
-- (void)_readTransportTypes;
-- (void)_readWalkingOptions;
 - (void)addTransportType:(int)arg1;
 - (void)clearTransportTypes;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -75,7 +75,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

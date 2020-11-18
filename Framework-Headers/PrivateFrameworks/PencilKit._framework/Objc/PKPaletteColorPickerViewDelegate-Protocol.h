@@ -9,7 +9,7 @@
 @class PKPaletteColorPickerView;
 
 @protocol PKPaletteColorPickerViewDelegate <NSObject>
-- (void)colorPickerDidChangeSelectedColor:(PKPaletteColorPickerView *)arg1;
+- (void)colorPickerDidChangeSelectedColor:(PKPaletteColorPickerView *)arg1 isFromExtendedColorPicker:(BOOL)arg2;
 
 @optional
 - (BOOL)colorPickerShouldDisplayColorSelection:(PKPaletteColorPickerView *)arg1;

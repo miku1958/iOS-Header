@@ -16,6 +16,5 @@
 - (void)invalidateSwitcherTemplate;
 - (double)minimumIntervalBetweenTimelineEntries;
 - (void)setTimelineEndDate:(NSDate *)arg1;
-- (void)setTimelineStartDate:(NSDate *)arg1;
 @end
 

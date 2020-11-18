@@ -26,6 +26,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (long long)accessibilityContainerType;
 - (id)accessibilityElements;
+- (void)accessibilityReloadData;
 - (BOOL)isAccessibilityElement;
 
 @end

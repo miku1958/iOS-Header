@@ -14,18 +14,20 @@
     SPUISearchViewController *_searchViewController;
     NSString *_queryString;
     NSString *_currentQueryString;
+    unsigned long long _queryKind;
     CDUnknownBlockType _completion;
 }
 
 @property (copy) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (strong) NSString *currentQueryString; // @synthesize currentQueryString=_currentQueryString;
+@property unsigned long long queryKind; // @synthesize queryKind=_queryKind;
 @property (strong) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong) SPUISearchViewController *searchViewController; // @synthesize searchViewController=_searchViewController;
 @property double timeSinceLastFire; // @synthesize timeSinceLastFire=_timeSinceLastFire;
 
 - (void).cxx_destruct;
 - (void)fire:(id)arg1;
-- (id)initWithString:(id)arg1 viewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithString:(id)arg1 viewController:(id)arg2 queryKind:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

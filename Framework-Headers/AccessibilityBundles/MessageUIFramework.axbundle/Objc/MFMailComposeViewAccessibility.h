@@ -25,7 +25,6 @@
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (BOOL)presentSearchResults:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)setFromAddressPickerVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

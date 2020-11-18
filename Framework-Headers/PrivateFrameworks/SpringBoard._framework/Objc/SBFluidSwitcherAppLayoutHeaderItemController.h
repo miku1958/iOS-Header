@@ -10,15 +10,17 @@
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBIconObserver-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, SBAppLayout;
+@class FBSDisplayIdentity, NSArray, NSMutableDictionary, NSMutableSet, NSString, SBAppLayout;
 
 @interface SBFluidSwitcherAppLayoutHeaderItemController : NSObject <SBDeviceApplicationSceneHandleObserver, SBIconObserver, BSInvalidatable>
 {
     SBAppLayout *_appLayout;
+    FBSDisplayIdentity *_displayIdentity;
     NSArray *_displayItems;
     NSMutableDictionary *_displayItemToIcon;
     NSMutableDictionary *_displayItemToLoadedImage;
     NSMutableDictionary *_displayItemToSceneHandle;
+    NSMutableSet *_downloadingIcons;
     BOOL _invalidated;
     BOOL _useDarkLabels;
     CDUnknownBlockType _updateHandler;
@@ -33,13 +35,16 @@
 
 - (void).cxx_destruct;
 - (id)_computeHeaderItems;
+- (void)_handleDidReplaceDownloadingIconNotification:(id)arg1;
 - (id)_iconForDisplayItem:(id)arg1;
 - (void)_loadIconForDisplayItem:(id)arg1;
 - (void)_performUpdateHandler;
+- (void)_startTrackingDownloadingIcon:(id)arg1;
+- (void)_stopTrackingDownloadingIcon:(id)arg1;
 - (void)_updateDisplayItemIcons;
 - (void)dealloc;
 - (void)iconImageDidUpdate:(id)arg1;
-- (id)initWithAppLayout:(id)arg1 applicationSceneHandleProvider:(id)arg2 showCanvasTitles:(BOOL)arg3;
+- (id)initWithAppLayout:(id)arg1 applicationSceneHandleProvider:(id)arg2 displayIdentity:(id)arg3 showCanvasTitles:(BOOL)arg4;
 - (void)invalidate;
 - (void)sceneHandle:(id)arg1 didChangeSceneTitle:(id)arg2;
 

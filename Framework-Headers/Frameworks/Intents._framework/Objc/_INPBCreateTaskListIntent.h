@@ -15,14 +15,12 @@
 @interface _INPBCreateTaskListIntent : PBCodable <_INPBCreateTaskListIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBDataString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
     NSArray *_taskTitles;
     _INPBDataString *_title;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;

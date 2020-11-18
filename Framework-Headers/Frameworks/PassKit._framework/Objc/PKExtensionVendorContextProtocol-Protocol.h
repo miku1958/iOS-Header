@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/PKExtensionContextProtocol-Protocol.h>
-#import <PassKit/PKPaymentAuthorizationServiceProtocol-Protocol.h>
+#import <PassKitCore/PKExtensionContextProtocol-Protocol.h>
+#import <PassKitCore/PKPaymentAuthorizationServiceProtocol-Protocol.h>
 
 @protocol PKExtensionVendorContextProtocol <PKExtensionContextProtocol, PKPaymentAuthorizationServiceProtocol>
 @end

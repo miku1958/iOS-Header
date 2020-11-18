@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class GEOQuickLink, MKVibrantView, NSArray, NSLayoutConstraint, UIImageView, _MKUILabel;
+@class GEOAppStoreAppClip, GEOQuickLink, MKVibrantView, NSArray, NSLayoutConstraint, UIImageView, _MKUILabel;
 @protocol MKQuickLinkItemViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
     BOOL _touched;
     id<MKQuickLinkItemViewDelegate> _delegate;
     GEOQuickLink *_quickLink;
+    GEOAppStoreAppClip *_appClip;
 }
 
+@property (strong, nonatomic) GEOAppStoreAppClip *appClip; // @synthesize appClip=_appClip;
 @property (weak, nonatomic) id<MKQuickLinkItemViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) GEOQuickLink *quickLink; // @synthesize quickLink=_quickLink;
 @property (nonatomic) BOOL touched; // @synthesize touched=_touched;
@@ -37,7 +39,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
 - (void)_createConstraints;
-- (void)_loadAppArtwork:(id)arg1 adamID:(id)arg2;
+- (void)_loadAppArtwork:(id)arg1;
+- (void)_loadAppClip;
+- (void)_loadAppClipArtwork:(id)arg1 bundleID:(id)arg2;
+- (void)_loadFallBackApp;
 - (void)_loadOfficialApp;
 - (void)didMoveToWindow;
 - (void)infoCardThemeChanged;

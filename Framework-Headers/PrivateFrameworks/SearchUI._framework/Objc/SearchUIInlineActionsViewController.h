@@ -11,18 +11,13 @@
 #import <SearchUI/CNUIObjectViewControllerDelegate-Protocol.h>
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class CNContactInlineActionsViewController, NSData, NSString, NSURL, UIView;
+@class CNContactInlineActionsViewController, NSString, UIView;
 
 @interface SearchUIInlineActionsViewController : SearchUIAccessoryViewController <CNContactInlineActionsViewControllerDelegate, CNUIObjectViewControllerDelegate, CNActionViewDelegate, NUIContainerViewDelegate>
 {
     CNContactInlineActionsViewController *_inlineActionsViewController;
     UIView *_messageButton;
-    NSURL *_messageURL;
     UIView *_directionsButton;
-    NSData *_mapsData;
-    NSString *_name;
-    double _latitude;
-    double _longitude;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,15 +25,12 @@
 @property (strong, nonatomic) UIView *directionsButton; // @synthesize directionsButton=_directionsButton;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CNContactInlineActionsViewController *inlineActionsViewController; // @synthesize inlineActionsViewController=_inlineActionsViewController;
-@property (nonatomic) double latitude; // @synthesize latitude=_latitude;
-@property (nonatomic) double longitude; // @synthesize longitude=_longitude;
-@property (strong, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
 @property (strong, nonatomic) UIView *messageButton; // @synthesize messageButton=_messageButton;
-@property (strong, nonatomic) NSURL *messageURL; // @synthesize messageURL=_messageURL;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
++ (void)clearInlineActionsCache;
 + (id)directionsButtonImage;
++ (id)inlineActionsCache;
 + (BOOL)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)contactInlineActionsViewController:(id)arg1 willPerformActionOfType:(id)arg2;

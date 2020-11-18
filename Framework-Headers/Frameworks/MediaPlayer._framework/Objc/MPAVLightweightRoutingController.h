@@ -9,6 +9,7 @@
 @class AVOutputDeviceDiscoverySession, NSArray, NSString;
 @protocol MPAVLightweightRoutingControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MPAVLightweightRoutingController : NSObject
 {
     AVOutputDeviceDiscoverySession *_avDiscoverySession;

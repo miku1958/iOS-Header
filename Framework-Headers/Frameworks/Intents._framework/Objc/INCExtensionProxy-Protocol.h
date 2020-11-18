@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSString;
+@class INIntent, NSArray, NSString;
 @protocol INIntentResponseObserver;
 
 @protocol INCExtensionProxy
@@ -19,6 +19,8 @@
 @optional
 - (void)getDefaultValueForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)getOptionsForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)getOptionsForParameterNamed:(NSString *)arg1 searchTerm:(NSString *)arg2 completionHandler:(void (^)(INObjectCollection *, NSError *))arg3;
+- (void)prewarmAppWithIntent:(INIntent *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)startSendingUpdatesToObserver:(id<INIntentResponseObserver>)arg1;
 - (void)stopSendingUpdates;
 @end

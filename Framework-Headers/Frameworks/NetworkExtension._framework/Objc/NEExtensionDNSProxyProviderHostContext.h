@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 + (id)_extensionAuxiliaryVendorProtocol;
+- (int)requiredEntitlement;
 - (void)setSystemDNSSettings:(id)arg1;
 
 @end

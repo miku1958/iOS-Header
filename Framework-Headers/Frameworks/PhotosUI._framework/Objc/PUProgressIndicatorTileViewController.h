@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL __didStartProgressLogging;
     PUAssetSharedViewModel *_assetSharedViewModel;
     PUBrowsingVideoPlayer *_videoPlayer;
+    CDUnknownBlockType _errorPresenter;
     long long __progressViewStyle;
     PUOperationStatus *__status;
     long long __sizeClass;
@@ -47,11 +48,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType errorPresenter; // @synthesize errorPresenter=_errorPresenter;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PUBrowsingVideoPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 
 + (id)_loadErrorIconForSizeClass:(long long)arg1;
++ (struct UIEdgeInsets)progressIndicatorIconInsetsForSizeClass:(long long)arg1;
++ (struct CGSize)progressIndicatorIconSizeForSizeClass:(long long)arg1;
 + (struct CGSize)progressIndicatorTileSizeForSizeClass:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
@@ -72,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateSubviewOrdering;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
+- (void)postReloadNotification;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 

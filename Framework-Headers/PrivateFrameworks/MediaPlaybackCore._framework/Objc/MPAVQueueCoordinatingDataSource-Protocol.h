@@ -13,8 +13,10 @@
 - (MPAVItem *)queueCoordinator:(id<MPAVQueueCoordinating>)arg1 itemToFollowItem:(MPAVItem *)arg2;
 
 @optional
+- (void)queueCoordinator:(id<MPAVQueueCoordinating>)arg1 didLoadItem:(MPAVItem *)arg2;
 - (void)queueCoordinator:(id<MPAVQueueCoordinating>)arg1 failedToLoadItem:(MPAVItem *)arg2;
 - (void)queueCoordinator:(id<MPAVQueueCoordinating>)arg1 willInsertItem:(MPAVItem *)arg2 afterItem:(MPAVItem *)arg3;
+- (void)queueCoordinator:(id<MPAVQueueCoordinating>)arg1 willLoadItem:(MPAVItem *)arg2;
 - (void)queueCoordinatorDidChangeItems:(id<MPAVQueueCoordinating>)arg1;
 @end
 

@@ -10,7 +10,7 @@
 
 @interface USKScene : USKObject
 {
-    TfRefPtr_a9ae0d85 _usdStage;
+    TfRefPtr_8a332644 _usdStage;
     NSURL *_fileURL;
 }
 
@@ -26,9 +26,11 @@
 - (void)dealloc;
 - (id)dictionaryMetadataWithKey:(id)arg1 dictionaryKey:(id)arg2;
 - (void)dumpUSDA;
+- (BOOL)exportToURL:(id)arg1;
+- (id)init;
 - (id)initSceneFromURL:(id)arg1;
 - (id)initSceneFromURL:(id)arg1 error:(id *)arg2;
-- (id)initWithUsdStage:(TfRefPtr_a9ae0d85)arg1 fileURL:(id)arg2;
+- (id)initWithUsdStage:(TfRefPtr_8a332644)arg1 fileURL:(id)arg2;
 - (id)loadedNodeIterator;
 - (id)metadata;
 - (id)metadataWithKey:(id)arg1;
@@ -46,7 +48,7 @@
 - (BOOL)setMetadataWithKey:(id)arg1 value:(id)arg2;
 - (id)subLayerOffsets;
 - (id)subLayerPaths;
-- (TfRefPtr_a9ae0d85)usdStage;
+- (TfRefPtr_8a332644)usdStage;
 
 @end
 

@@ -12,10 +12,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (int)connectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
++ (BOOL)createAndStartListener:(id *)arg1 withParameters:(id)arg2;
++ (BOOL)createNWPathEvaluator:(id *)arg1 withIPAddress:(id)arg2 localPort:(int *)arg3 remotePort:(int)arg4 shouldRunInProcess:(BOOL)arg5;
 + (id)encryptionInfoForKey:(unsigned long long)arg1;
 + (id)newEncryptionInfoWithMasterKeyIndex:(id)arg1;
++ (id)newNWConnectionWithIPAddress:(id)arg1 srcPort:(short)arg2;
 + (id)newRTPSocketDictionary:(BOOL)arg1 rtpSourcePort:(short)arg2;
++ (int)nonConnectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
 + (id)securityKeyMaterialWithMasterKeyIndex:(id)arg1;
++ (void)setUniquePIDOnParameters:(id)arg1 shouldRunInProcess:(BOOL)arg2;
 + (int)socketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
 + (int)socketWithIPAddress:(id)arg1 srcPort:(short)arg2 shouldConnect:(BOOL)arg3 error:(id *)arg4;
 

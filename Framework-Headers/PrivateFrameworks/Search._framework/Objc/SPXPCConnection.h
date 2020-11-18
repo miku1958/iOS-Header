@@ -14,10 +14,10 @@
     NSObject<OS_xpc_object> *_conn;
     NSObject<OS_dispatch_queue> *_eventQueue;
     BOOL _ownsQueue;
+    NSString *_bundleID;
     CDUnknownBlockType _messageHandler;
     CDUnknownBlockType _disconnectHandler;
     id _context;
-    NSString *_bundleID;
 }
 
 @property (readonly, weak) NSString *bundleID;

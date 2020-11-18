@@ -32,12 +32,20 @@
 + (id)FHIRAllergyIntoleranceCriticality;
 + (id)FHIRAllergyIntoleranceSeverity;
 + (id)FHIRAllergyIntoleranceStatus;
++ (id)FHIRCarePlanStatus;
 + (id)FHIRConditionClinicalStatus;
 + (id)FHIRConditionVerificationStatus;
++ (id)FHIRCoverageStatus;
++ (id)FHIRDeviceStatus;
 + (id)FHIRDiagnosticReportStatus;
++ (id)FHIREventStatus;
++ (id)FHIRGoalStatus;
++ (id)FHIRImmunizationStatus;
 + (id)FHIRMedicationAdminStatus;
 + (id)FHIRMedicationDispenseStatus;
++ (id)FHIRMedicationDispenseStatusR4;
 + (id)FHIRMedicationOrderStatus;
++ (id)FHIRMedicationRequestStatus;
 + (id)FHIRMedicationStatementStatus;
 + (id)FHIRObservationStatus;
 + (id)FHIRProcedureStatus;
@@ -50,6 +58,8 @@
 + (id)SNOMEDCodeSystem;
 + (id)UCUMSystem;
 + (id)adHocConceptSystem;
++ (id)appleHealthDataTypeSystem;
++ (id)argonautHL7System;
 + (id)codeSystemWithIdentifier:(id)arg1;
 + (id)externalCodeSystems;
 + (BOOL)supportsSecureCoding;
@@ -57,7 +67,6 @@
 + (id)textSystem;
 + (id)unknownSystem;
 - (void).cxx_destruct;
-- (long long)codingSystemOntologyIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -66,6 +75,7 @@
 - (id)initWithCustomIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 OID:(id)arg3 type:(unsigned long long)arg4 synonyms:(id)arg5 hasDisplayStrings:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
+- (long long)ontology_hasCodingSystemAttributeIdentifier;
 
 @end
 

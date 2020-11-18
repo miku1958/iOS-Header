@@ -6,7 +6,7 @@
 
 #import <DeviceManagement/DMFUpdateAppRequest.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface DMFMDMv1UpdateAppRequest : DMFUpdateAppRequest
 {
@@ -14,14 +14,18 @@
     unsigned long long _managementOptions;
     NSString *_VPNUUIDString;
     NSArray *_associatedDomains;
+    NSNumber *_associatedDomainsEnableDirectDownloads;
+    NSNumber *_removable;
     NSDictionary *_configuration;
 }
 
 @property (copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
 @property (copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
+@property (copy, nonatomic) NSNumber *associatedDomainsEnableDirectDownloads; // @synthesize associatedDomainsEnableDirectDownloads=_associatedDomainsEnableDirectDownloads;
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (nonatomic) unsigned long long managementOptions; // @synthesize managementOptions=_managementOptions;
 @property (copy, nonatomic) NSString *originator; // @synthesize originator=_originator;
+@property (copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
 
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_parseContentRatingBag:(id)arg1;
+- (id)_parsePlaybackPositionBag:(id)arg1;
 - (id)_parseRelationship:(id)arg1;
 - (id)_parseRelationshipBag:(id)arg1;
 - (id)_processRawMediaEntities:(id)arg1;

@@ -20,6 +20,7 @@
     NSData *_softwareData;
     unsigned char _protocolVersion;
     long long _relayServerProviderType;
+    NSString *_reportingDataBlob;
     long long _participantID;
     NSArray *_allParticipantIDs;
     BOOL _isInitiator;
@@ -55,6 +56,7 @@
 @property (readonly) NSString *relaySessionID; // @synthesize relaySessionID=_relaySessionID;
 @property (readonly) NSData *relaySessionKey; // @synthesize relaySessionKey=_relaySessionKey;
 @property (readonly) NSData *relaySessionToken; // @synthesize relaySessionToken=_relaySessionToken;
+@property (readonly) NSString *reportingDataBlob; // @synthesize reportingDataBlob=_reportingDataBlob;
 @property (readonly) const struct sockaddr_storage *serverAddress;
 @property (readonly) const struct sockaddr_storage *serverAddressIPv6;
 @property (readonly) NSData *softwareData; // @synthesize softwareData=_softwareData;

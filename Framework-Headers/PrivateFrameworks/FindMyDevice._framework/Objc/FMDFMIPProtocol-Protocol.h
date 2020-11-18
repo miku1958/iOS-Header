@@ -6,7 +6,7 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class FMDLostModeInfo, NSData, NSDictionary, NSString;
+@class FMDFMIPAccountInfo, FMDLostModeInfo, NSData, NSDictionary, NSString;
 
 @protocol FMDFMIPProtocol <NSObject>
 - (void)_forceFMWUpgradeAlertUsingCallback:(void (^)(NSError *))arg1;
@@ -15,6 +15,7 @@
 - (oneway void)deviceActivationDidSucceedUsingCallback:(void (^)(NSError *))arg1;
 - (oneway void)didChangeFMIPAccountInfo:(NSString *)arg1 usingCallback:(void (^)(NSError *))arg2;
 - (oneway void)didReceiveLostModeExitAuthToken:(NSString *)arg1 usingCallback:(void (^)(NSError *))arg2;
+- (oneway void)disableFMIPForAccount:(FMDFMIPAccountInfo *)arg1 pairedDeviceWithUDID:(NSString *)arg2 usingCallback:(void (^)(NSError *))arg3;
 - (oneway void)disableFMIPUsingToken:(NSString *)arg1 forPairedDeviceWithUDID:(NSString *)arg2 usingCallback:(void (^)(NSError *))arg3;
 - (oneway void)disableFMIPUsingToken:(NSString *)arg1 inContext:(unsigned long long)arg2 usingCallback:(void (^)(NSError *))arg3;
 - (oneway void)disableLostModeUsingCallback:(void (^)(NSError *))arg1;

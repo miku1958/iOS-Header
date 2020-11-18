@@ -19,6 +19,7 @@
 - (id<CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;
 - (void)openURL:(NSURL *)arg1 applicationIdentifier:(NSString *)arg2 pluginID:(NSString *)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (void)openURL:(NSURL *)arg1 pluginID:(NSString *)arg2 completionHandler:(void (^)(BOOL))arg3;
+- (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;
 - (void)setLocalUserIsTyping:(BOOL)arg1;
 - (void)startEditingPayload:(CKBrowserItemPayload *)arg1;

@@ -13,13 +13,17 @@
     UIImageView *_imageView;
 }
 
++ (id)_cachedDotImage;
 + (id)_dotColor;
++ (void)_setCachedDotImage:(id)arg1;
 + (struct CAColorMatrix)_vibrantColorMatrixInput;
 + (id)labelAccessorySystemImageName;
 - (void).cxx_destruct;
+- (id)firstBaselineAnchor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)updateWithBaseImage:(id)arg1 legibilitySettings:(id)arg2;
+- (id)lastBaselineAnchor;
+- (void)updateWithLegibilitySettings:(id)arg1 labelFont:(id)arg2;
 
 @end
 

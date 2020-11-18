@@ -10,7 +10,7 @@
 #import <HomeAI/HMFTimerDelegate-Protocol.h>
 #import <HomeAI/HMISystemResourceUsageMonitorDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, HMIPIDController, HMISystemResourceUsageMonitor, MovingAverage, NSArray, NSObject, NSPointerArray, NSString;
+@class HMFTimer, HMFUnfairLock, HMISystemResourceUsageMonitor, MovingAverage, NSArray, NSObject, NSPointerArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMICameraVideoAnalyzerScheduler : HMFObject <HMFLogging, HMFTimerDelegate, HMISystemResourceUsageMonitorDelegate>
@@ -24,7 +24,6 @@
     NSPointerArray *_internalAnalyzers;
     HMISystemResourceUsageMonitor *_systemResourceUsageMonitor;
     long long _systemResourceUsageMonitorUsageLevel;
-    HMIPIDController *_thermalPIDController;
     MovingAverage *_averageAnalysisTimeMovingAverage;
     MovingAverage *_averageTotalAnalysisTimeMovingAverage;
     double _analysisFPSPreference;
@@ -49,8 +48,8 @@
 @property (readonly) long long systemResourceUsageLevel;
 @property (readonly) HMISystemResourceUsageMonitor *systemResourceUsageMonitor; // @synthesize systemResourceUsageMonitor=_systemResourceUsageMonitor;
 @property long long systemResourceUsageMonitorUsageLevel; // @synthesize systemResourceUsageMonitorUsageLevel=_systemResourceUsageMonitorUsageLevel;
-@property (readonly) HMIPIDController *thermalPIDController; // @synthesize thermalPIDController=_thermalPIDController;
 @property (readonly) HMFTimer *tick; // @synthesize tick=_tick;
+@property (readonly) long long transcodingAnalyzerCount;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
@@ -63,7 +62,6 @@
 - (void)registerAnalyzer:(id)arg1;
 - (void)removeAllAnalyzers;
 - (void)requestDidEnd:(id)arg1 outcome:(long long)arg2;
-- (void)resumeThermalPIDController;
 - (void)systemResourceUsageDidChangeTo:(long long)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)updateAnalysisFPS:(id)arg1;

@@ -49,14 +49,14 @@
 
 - (void).cxx_destruct;
 - (void)_appWillEnterForeground;
-- (double)_progressFromWorkerDictionary:(id)arg1;
-- (void)asyncPeopleScanningProgress:(CDUnknownBlockType)arg1;
+- (double)_updateProgressFromFaceAnalysisProgressDictionary:(id)arg1;
+- (void)asyncUpdatePeopleProgressWithReportBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)loadQueryData;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
-- (void)syncPeopleScanningProgress:(CDUnknownBlockType)arg1;
-- (void)updateProgressIfNeededWithWorkBlock:(CDUnknownBlockType)arg1;
+- (void)syncUpdatePeopleProgressWithReportBlock:(CDUnknownBlockType)arg1;
+- (void)updateProgressIfNeededWithReportBlock:(CDUnknownBlockType)arg1;
 
 @end
 

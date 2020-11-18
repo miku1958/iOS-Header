@@ -16,6 +16,7 @@
 - (id)_accessibilityQuickSpeakContent;
 - (id)_accessibilityQuickSpeakEnclosingSentence:(id *)arg1;
 - (id)_accessibilityQuickSpeakTokenizer;
+- (id)_accessibilitySentenceRectsForRange:(id)arg1;
 - (id)_accessibilityTextRectsForRange:(id)arg1 singleTextRect:(struct CGRect *)arg2;
 
 @end

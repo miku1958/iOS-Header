@@ -6,7 +6,7 @@
 
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
-@class MPSCNNConvolution;
+@class MPSCNNConvolution, MPSNNNeuronDescriptor;
 @protocol MPSCNNConvolutionDataSource;
 
 @interface MPSCNNConvolutionTranspose : MPSCNNKernel
@@ -18,7 +18,7 @@
     long long _kernelOffsetY;
     unsigned long long _groups;
     MPSCNNConvolution *_convolution;
-    struct NeuronInfo _neuronInfo;
+    MPSNNNeuronDescriptor *_fusedNeuronDescriptor;
 }
 
 @property (nonatomic) unsigned long long accumulatorPrecisionOption;
@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long weightsBufferLength;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (BOOL)supportsSecureCoding;
 - (BOOL)appendBatchBarrier;
 - (void)copyToGradientState:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;

@@ -27,6 +27,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)addItemStartAtMilliseconds:(unsigned long long)arg1 durationMilliseconds:(unsigned long long)arg2 metricsData:(id)arg3;
+- (void)addItemStartAtMilliseconds:(unsigned long long)arg1 endAtMilliseconds:(unsigned long long)arg2 metricsData:(id)arg3;
+- (void)addItemStartAtSeconds:(double)arg1 durationSeconds:(double)arg2 metricsData:(id)arg3;
 - (void)addRollInfoItem:(id)arg1;
 - (void)addRollInfoItems:(id)arg1;
 - (void)addRollItem:(id)arg1;

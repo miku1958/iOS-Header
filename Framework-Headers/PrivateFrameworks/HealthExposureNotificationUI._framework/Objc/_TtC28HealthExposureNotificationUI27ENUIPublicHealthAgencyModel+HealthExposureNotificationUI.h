@@ -7,6 +7,10 @@
 #import <HealthExposureNotificationUI/_TtC28HealthExposureNotificationUI27ENUIPublicHealthAgencyModel.h>
 
 @interface _TtC28HealthExposureNotificationUI27ENUIPublicHealthAgencyModel (HealthExposureNotificationUI)
+
+@property (nonatomic, readonly) BOOL isPlaceholder;
+
++ (id)defaultModelWithBundleId:(id)arg1 isAuthorized:(BOOL)arg2;
 + (void)refreshRegionsWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

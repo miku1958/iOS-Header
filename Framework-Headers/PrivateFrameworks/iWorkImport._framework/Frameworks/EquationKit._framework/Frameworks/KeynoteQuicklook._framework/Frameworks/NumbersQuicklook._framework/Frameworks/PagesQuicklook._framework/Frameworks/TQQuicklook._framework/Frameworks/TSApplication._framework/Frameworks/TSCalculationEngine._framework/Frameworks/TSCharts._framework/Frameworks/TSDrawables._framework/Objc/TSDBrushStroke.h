@@ -10,6 +10,7 @@
 {
 }
 
++ (void)backgroundLoadAllBrushStrokes;
 + (BOOL)brushStrokeUsesMetal;
 + (BOOL)brushStrokeUsesOpenGL;
 + (Class)mutableClass;
@@ -47,6 +48,7 @@
 - (void)p_rasterBrushPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 orDirectly:(id)arg3 parameterized:(BOOL)arg4 shouldReverseDrawOrder:(BOOL)arg5 withLayoutOptions:(id)arg6;
 - (void)p_rasterRenderSection:(id)arg1 sectionIndex:(unsigned long long)arg2 ontoPath:(id)arg3 inElementRange:(struct _NSRange)arg4 into:(vector_8bba9095 *)arg5 viewScale:(double)arg6 strokeTileLayout:(CDStruct_d2b197d1)arg7 cachedCurrentElementPercentage:(CDStruct_45a6b6f8 *)arg8;
 - (BOOL)p_shouldDrawAsVectorInContext:(struct CGContext *)arg1;
+- (BOOL)p_shouldSplitAtSharpAngles;
 - (void)paintLineEnd:(id)arg1 atPoint:(struct CGPoint)arg2 atAngle:(double)arg3 withScale:(double)arg4 inContext:(struct CGContext *)arg5 useFastDrawing:(BOOL)arg6;
 - (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(BOOL)arg4 parameterized:(BOOL)arg5 shouldReverseDrawOrder:(BOOL)arg6;
 - (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(BOOL)arg4 parameterized:(BOOL)arg5 shouldReverseDrawOrder:(BOOL)arg6 withLayoutOptions:(id)arg7;

@@ -22,5 +22,6 @@
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willOpenExpandedModule:(id<CCUIContentModule>)arg2;
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willPresentViewController:(UIViewController *)arg2;
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willRemoveModuleContainerViewController:(CCUIContentModuleContainerViewController *)arg2;
+- (void)moduleCollectionViewControllerDidUpdateModules:(CCUIModuleCollectionViewController *)arg1;
 @end
 

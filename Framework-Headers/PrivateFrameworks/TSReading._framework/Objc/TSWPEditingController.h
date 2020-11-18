@@ -196,7 +196,6 @@
 - (BOOL)editorKeyboardLanguageIsRTL;
 - (void)endEditing;
 - (void)endEditingAndSelectParent:(id)arg1;
-- (void)endHardPressGestureRecognizer:(id)arg1;
 - (void)extendSelectionLeft;
 - (void)extendSelectionRight;
 - (id)extendSelectionToParagraphs:(id)arg1;
@@ -205,7 +204,6 @@
 - (void)gestureSequenceDidEnd;
 - (void)gestureSequenceWillBegin;
 - (BOOL)handleGesture:(id)arg1;
-- (void)handleHardPressGestureRecognizer:(id)arg1;
 - (id)initWithStorage:(id)arg1 interactiveCanvasController:(id)arg2;
 - (void)insertText:(id)arg1;
 - (void)invalidateSelectionVisualRuns;
@@ -312,7 +310,6 @@
 - (void)p_suppressSelectionHighlight:(BOOL)arg1;
 - (void)p_switchToReplaceSelection;
 - (struct CGRect)p_targetRectForSelection:(id)arg1;
-- (id)p_updateEditingRepIfApplicableWithGesture:(id)arg1 unscaledCanvasPoint:(struct CGPoint)arg2;
 - (void)p_updateHUDState;
 - (id)p_viewControllerForPresenting;
 - (id)p_wordRangesForRange:(struct _NSRange)arg1;

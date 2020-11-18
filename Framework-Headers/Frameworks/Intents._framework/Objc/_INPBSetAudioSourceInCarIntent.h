@@ -18,13 +18,11 @@
         unsigned int audioSource:1;
         unsigned int relativeAudioSourceReference:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _audioSource;
     int _relativeAudioSourceReference;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int audioSource; // @synthesize audioSource=_audioSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

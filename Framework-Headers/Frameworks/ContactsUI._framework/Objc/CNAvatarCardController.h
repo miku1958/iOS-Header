@@ -11,7 +11,7 @@
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ContactsUI/_UIClickPresentationInteractionDelegate-Protocol.h>
 
-@class CNAvatarCardViewController, CNAvatarView, CNContact, CNContactOrbHeaderView, NSArray, NSString, UIAlertController, UIGestureRecognizer, UITapGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
+@class CNAvatarCardViewController, CNAvatarView, CNContact, CNContactOrbHeaderView, NSArray, NSData, NSString, UIAlertController, UIGestureRecognizer, UITapGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol CNAvatarCardControllerDelegate;
 
 @interface CNAvatarCardController : NSObject <_UIClickPresentationInteractionDelegate, CNAvatarCardViewControllerDelegate, CNAvatarCardControllerOrbTransitionDelegate, UIGestureRecognizerDelegate>
@@ -31,6 +31,7 @@
     NSArray *_cardControllerConstraints;
     UITapGestureRecognizer *_tapGestureRecognizer;
     UIVisualEffectView *_backgroundVisualEffectView;
+    NSData *_overrideImageData;
     CNAvatarView *_avatarView;
     CNContactOrbHeaderView *_headerView;
     UIGestureRecognizer *_rolloverGestureRecognizer;
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (copy, nonatomic) NSString *message;
 @property (copy, nonatomic) NSString *name;
+@property (strong, nonatomic) NSData *overrideImageData; // @synthesize overrideImageData=_overrideImageData;
 @property (nonatomic) long long presentationResult; // @synthesize presentationResult=_presentationResult;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 @property (strong, nonatomic) UIGestureRecognizer *rolloverGestureRecognizer; // @synthesize rolloverGestureRecognizer=_rolloverGestureRecognizer;
@@ -93,6 +95,7 @@
 - (void)prepareForDisplay;
 - (void)prepareWithContacts:(id)arg1 store:(id)arg2;
 - (void)prepareWithContacts:(id)arg1 storeProvider:(CDUnknownBlockType)arg2;
+- (void)prepareWithOverrideImageData:(id)arg1;
 - (id)preparedViewControllerForPresentationWithGestureRecognizer:(id)arg1;
 - (void)presentAnimated:(BOOL)arg1;
 - (void)presentAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

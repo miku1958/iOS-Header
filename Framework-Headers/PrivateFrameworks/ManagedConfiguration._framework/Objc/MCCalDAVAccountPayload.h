@@ -6,9 +6,11 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSNumber, NSString;
+#import <ManagedConfiguration/MCPerAccountVPNPayloadProtocol-Protocol.h>
 
-@interface MCCalDAVAccountPayload : MCPayload
+@class NSArray, NSNumber, NSString;
+
+@interface MCCalDAVAccountPayload : MCPayload <MCPerAccountVPNPayloadProtocol>
 {
     NSString *_accountDescription;
     NSString *_hostname;
@@ -18,13 +20,20 @@
     BOOL _useSSL;
     int _port;
     NSString *_accountPersistentUUID;
+    NSString *_VPNUUID;
+    NSString *_acAccountIdentifier;
     NSNumber *_useSSLNum;
     NSNumber *_portNum;
 }
 
+@property (readonly, strong, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
+@property (strong, nonatomic) NSString *acAccountIdentifier; // @synthesize acAccountIdentifier=_acAccountIdentifier;
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
+@property (readonly, strong, nonatomic) NSArray *calendarAccountIdentifiers;
+@property (readonly, strong, nonatomic) NSArray *contactsAccountIdentifiers;
 @property (readonly, strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
+@property (readonly, strong, nonatomic) NSArray *mailAccountIdentifiers;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, nonatomic) int port; // @synthesize port=_port;
 @property (readonly, nonatomic) NSNumber *portNum; // @synthesize portNum=_portNum;
@@ -38,7 +47,6 @@
 + (id)typeStrings;
 - (void).cxx_destruct;
 - (BOOL)containsSensitiveUserInformation;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
@@ -46,7 +54,7 @@
 - (id)subtitle1Label;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
-- (id)title;
+- (id)verboseDescription;
 
 @end
 

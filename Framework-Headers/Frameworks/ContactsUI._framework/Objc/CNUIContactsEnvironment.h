@@ -60,6 +60,7 @@
 @property (strong, nonatomic) CNUIMeContactMonitor *meMonitor; // @synthesize meMonitor=_meMonitor;
 @property (strong, nonatomic) id<CNUIPlaceholderProviderFactory> placeholderProviderFactory; // @synthesize placeholderProviderFactory=_placeholderProviderFactory;
 @property (strong, nonatomic) CNUICoreRecentsManager *recentsManager; // @synthesize recentsManager=_recentsManager;
+@property (readonly, nonatomic) BOOL runningInContactsAppOniPad;
 @property (nonatomic) struct UCollator *sortCollator; // @synthesize sortCollator=_sortCollator;
 
 + (id)currentEnvironment;

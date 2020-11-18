@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue;
+@class NSManagedObjectContext, NSOperationQueue;
 
 @interface ICNotePreviewGenerator : NSObject
 {
     BOOL _suspended;
     NSOperationQueue *_operationQueue;
+    NSManagedObjectContext *_workerContext;
 }
 
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
+@property (strong, nonatomic) NSManagedObjectContext *workerContext; // @synthesize workerContext=_workerContext;
 
 + (id)sharedGenerator;
 - (void).cxx_destruct;

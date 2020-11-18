@@ -6,10 +6,11 @@
 
 #import <AVKit/AVControlItem.h>
 
-@class AVLoadingButtonView;
+@class AVLoadingButtonView, UIFont;
 
 @interface AVHomeLoadingButtonControlItem : AVControlItem
 {
+    UIFont *_titleFont;
     AVLoadingButtonView *_loadingButtonView;
 }
 
@@ -20,6 +21,8 @@
 - (void)_buttonTouchUpInside:(id)arg1;
 - (void)_updateTintColor;
 - (id)initWithTitle:(id)arg1 type:(long long)arg2;
+- (void)setTitleFont:(id)arg1;
+- (id)titleFont;
 - (id)view;
 
 @end

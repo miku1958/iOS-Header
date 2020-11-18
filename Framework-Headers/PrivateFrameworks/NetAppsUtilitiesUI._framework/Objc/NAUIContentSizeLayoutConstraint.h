@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutConstraint.h>
+#import <CoreAutoLayout/NSLayoutConstraint.h>
 
 @class NAUITextStyleDescriptor, NSString;
 

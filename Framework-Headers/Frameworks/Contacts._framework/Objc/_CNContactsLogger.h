@@ -28,6 +28,7 @@
 - (void)XPCConnectionWasInterrupted;
 - (void)XPCConnectionWasInvalidated;
 - (void)_commonFetchContactsMatchingPredicate:(id)arg1 fetchType:(const char *)arg2 unifyResults:(BOOL)arg3 keysToFetch:(id)arg4;
+- (void)accessAuthorizationStatusWasDenied;
 - (void)addingContacts:(id)arg1 toContainerWithIdentifier:(id)arg2;
 - (void)applyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(id)arg3;
 - (void)changedMeContact:(id)arg1;
@@ -60,6 +61,7 @@
 - (void)postingNotificationWithName:(id)arg1;
 - (void)registeringForChangeHistory:(CDUnknownBlockType)arg1;
 - (void)removeContactImageData;
+- (void)requestAuthorizationWasDenied;
 - (void)requestingAccessForContacts:(CDUnknownBlockType)arg1;
 - (void)resettingSortDataIfNeeded:(CDUnknownBlockType)arg1;
 - (void)saveRequestFailed:(id)arg1;
@@ -71,8 +73,6 @@
 - (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
 - (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
 - (void)settingDefaultAccount:(CDUnknownBlockType)arg1;
-- (void)tccAccessPreflightWasDenied;
-- (void)tccAccessRequestWasDenied;
 - (void)unregisteringForChangeHistory:(CDUnknownBlockType)arg1;
 - (void)updatingContact:(id)arg1;
 

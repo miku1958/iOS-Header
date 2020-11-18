@@ -11,6 +11,7 @@
 @interface TSWPHyperlinkField : TSWPSmartField
 {
     NSString *_urlString;
+    NSString *_urlOriginalString;
     NSString *_displayTextForChangeTracking;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) TSWPSelection *highlightSelection;
 @property (readonly, nonatomic) long long scheme;
 @property (copy, nonatomic, setter=setURL:) NSURL *url;
+@property (copy, nonatomic, setter=setURLOriginal:) NSURL *urlOriginal;
 @property (readonly, nonatomic) NSString *urlPrefix;
 
 + (id)defaultFieldStyleIdentifier;
@@ -39,6 +41,7 @@
 - (id)copyWithContext:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithContext:(id)arg1 url:(id)arg2;
+- (id)initWithContext:(id)arg1 url:(id)arg2 urlOriginal:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadFromArchive:(const struct HyperlinkFieldArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -47,8 +50,10 @@
 - (void)saveToArchiver:(id)arg1;
 - (void)saveToHyperlinkArchive:(id)arg1;
 - (void)saveToUnsupportedHyperlinkArchive:(id)arg1;
+- (void)setUrlOriginalString:(id)arg1;
 - (void)setUrlString:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
+- (id)urlOriginalString;
 - (id)urlString;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1 storage:(id)arg2;

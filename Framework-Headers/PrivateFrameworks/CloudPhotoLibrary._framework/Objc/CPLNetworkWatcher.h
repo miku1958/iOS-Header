@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CPLNetworkState, NSString;
+#import <CloudPhotoLibrary/RadiosPreferencesDelegate-Protocol.h>
+
+@class CPLNetworkState, NSString, RadiosPreferences;
 @protocol CPLNetworkWatcherDelegate, OS_dispatch_queue, OS_nw_path_monitor;
 
-@interface CPLNetworkWatcher : NSObject
+@interface CPLNetworkWatcher : NSObject <RadiosPreferencesDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_nw_path_monitor> *_monitor;
+    struct network_usage_policy_client_s *_networkPolicyClient;
+    RadiosPreferences *_radiosPreferences;
     NSString *_endPoint;
     CPLNetworkState *_networkState;
     id<CPLNetworkWatcherDelegate> _delegate;
@@ -23,6 +27,14 @@
 @property (readonly, nonatomic) CPLNetworkState *networkState; // @synthesize networkState=_networkState;
 
 - (void).cxx_destruct;
+- (void)_getCellularPolicyWithClient:(struct network_usage_policy_client_s *)arg1;
+- (BOOL)_isRestrictedPath:(id)arg1 policies:(id)arg2;
+- (void)_updateAirplaneMode;
+- (void)_updateCellularPolicy:(id)arg1;
+- (void)_updateCellularPolicyFromPolicies:(id)arg1;
+- (void)_updateNetworkState:(id)arg1;
+- (void)airplaneModeChanged;
+- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (void)start;
 - (void)stop;

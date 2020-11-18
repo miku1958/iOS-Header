@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     WKContentView *_view;
     BOOL _isRotating;
+    BOOL _isPreservingFocus;
     struct CGPoint _presentationPoint;
     struct RetainPtr<UIPopoverController> _popoverController;
     id<WKRotatingPopoverDelegate> _dismissionDelegate;

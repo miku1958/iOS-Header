@@ -6,21 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, _UIMatchingExtensionsResult;
-@protocol OS_dispatch_queue;
+@class NSArray;
 
 @interface _UIActivityApplicationExtensionDiscovery : NSObject
 {
     NSArray *_extensionPointIdentifiers;
     CDUnknownBlockType _fetchShortcutsBlock;
-    NSObject<OS_dispatch_queue> *_primedExtensionsQueue;
-    _UIMatchingExtensionsResult *_primedExtensionsResult;
 }
 
 @property (copy, nonatomic) NSArray *extensionPointIdentifiers; // @synthesize extensionPointIdentifiers=_extensionPointIdentifiers;
 @property (copy, nonatomic) CDUnknownBlockType fetchShortcutsBlock; // @synthesize fetchShortcutsBlock=_fetchShortcutsBlock;
-@property (strong) NSObject<OS_dispatch_queue> *primedExtensionsQueue; // @synthesize primedExtensionsQueue=_primedExtensionsQueue;
-@property (strong) _UIMatchingExtensionsResult *primedExtensionsResult; // @synthesize primedExtensionsResult=_primedExtensionsResult;
 
 + (id)extensionBasedActivityForExtension:(id)arg1;
 + (id)extensionMatchingDictionariesForExtensionItems:(id)arg1;
@@ -30,6 +25,8 @@
 - (id)init;
 - (id)initWithExtensionPointIdentifiers:(id)arg1;
 - (void)primeWithDiscoveryContext:(id)arg1;
+- (void)registerPendingContinuousExtensionsDiscovery;
+- (id)reportExtensionsCacheResult;
 
 @end
 

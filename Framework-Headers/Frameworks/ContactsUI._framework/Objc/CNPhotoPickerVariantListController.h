@@ -17,9 +17,10 @@
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerVariantListController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CNPhotoPickerProviderItemDelegate>
 {
-    BOOL _wantsScrollingHeader;
-    BOOL _showSelection;
     BOOL _showPreview;
+    BOOL _showsToolbar;
+    BOOL _commitsChangesOnSelection;
+    BOOL _showsSelection;
     BOOL _shouldShowCaptions;
     id<CNPhotoPickerVariantListControllerDelegate> _delegate;
     CNPhotoPickerProviderItem *_originalItem;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) unsigned long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property (nonatomic) BOOL commitsChangesOnSelection; // @synthesize commitsChangesOnSelection=_commitsChangesOnSelection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNPhotoPickerVariantListControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -53,11 +55,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *selectedVariantIdentifier; // @synthesize selectedVariantIdentifier=_selectedVariantIdentifier;
 @property (nonatomic) BOOL shouldShowCaptions; // @synthesize shouldShowCaptions=_shouldShowCaptions;
 @property (nonatomic) BOOL showPreview; // @synthesize showPreview=_showPreview;
-@property (nonatomic) BOOL showSelection; // @synthesize showSelection=_showSelection;
+@property (nonatomic) BOOL showsSelection; // @synthesize showsSelection=_showsSelection;
+@property (nonatomic) BOOL showsToolbar; // @synthesize showsToolbar=_showsToolbar;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *variantsDisplayTitle;
 @property (strong, nonatomic) CNPhotoPickerVariantsManager *variantsManager; // @synthesize variantsManager=_variantsManager;
-@property (nonatomic) BOOL wantsScrollingHeader; // @synthesize wantsScrollingHeader=_wantsScrollingHeader;
 
 + (struct CGRect)frameForHeaderInBounds:(struct CGRect)arg1;
 + (long long)topMarginForBounds:(struct CGRect)arg1 shouldShowCaptions:(BOOL)arg2;

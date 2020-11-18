@@ -10,12 +10,16 @@
 #import <Home/HFHomeContainedObject-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFRoomContextProviding-Protocol.h>
+#import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFSymptomFixableObject-Protocol.h>
 
-@class HFServiceNameComponents, HMHome, HMResidentDevice, HMRoom, NSArray, NSDate, NSSet, NSString, NSUUID;
+@class HFServiceNameComponents, HMHome, HMResidentDevice, HMRoom, HMSymptomsHandler, NSArray, NSDate, NSSet, NSString, NSUUID;
 
-@interface HMAccessory (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeContainedObject, HFRoomContextProviding, HFReorderableHomeKitObject>
+@interface HMAccessory (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFSymptomFixableObject, HFHomeContainedObject, HFRoomContextProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
 
+@property (readonly, nonatomic) NSSet *accessories;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +28,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -31,6 +37,8 @@
 @property (readonly, nonatomic) long long hf_appPunchOutReason;
 @property (readonly, nonatomic) BOOL hf_areAllServicesInGroups;
 @property (readonly, nonatomic) NSArray *hf_bridgedAccessories;
+@property (readonly, nonatomic) BOOL hf_canShowAsIndividualServices;
+@property (readonly, nonatomic) NSString *hf_categoryOrPrimaryServiceType;
 @property (readonly, copy, nonatomic) NSSet *hf_componentServices;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
@@ -49,19 +57,28 @@
 @property (readonly, nonatomic) BOOL hf_fakeShouldDisplayManualFixOption;
 @property (readonly, nonatomic) BOOL hf_fakeUnreachableError;
 @property (readonly, nonatomic) BOOL hf_fakeVPNProfileExpired;
-@property (nonatomic) BOOL hf_fakeWiFiMismatchSymptom;
+@property (nonatomic, setter=hf_setFakeWiFiMismatchSymptom:) BOOL hf_fakeWiFiMismatchSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeWiFiPerformanceSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeWiFiSymptom;
+@property (readonly, nonatomic) NSSet *hf_groupableServices;
+@property (readonly, nonatomic) BOOL hf_hasInputSourceService;
+@property (readonly, nonatomic) BOOL hf_hasManagedNetworkCredential;
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
+@property (readonly, nonatomic) NSArray *hf_irrigationSystemServices;
 @property (readonly, nonatomic) BOOL hf_isAirPortExpressSpeaker;
 @property (readonly, nonatomic) BOOL hf_isAppleTV;
 @property (readonly, nonatomic) BOOL hf_isAudioReceiver;
 @property (readonly, nonatomic) BOOL hf_isBridge;
 @property (readonly, nonatomic) BOOL hf_isCamera;
+@property (readonly, nonatomic) BOOL hf_isCategorizedAsBridge;
+@property (readonly, nonatomic) BOOL hf_isCeilingFanWithLight;
+@property (readonly, nonatomic) BOOL hf_isDirectlyReachable;
 @property (readonly, nonatomic) BOOL hf_isDumbSpeaker;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
 @property (readonly, nonatomic) BOOL hf_isHomePod;
+@property (readonly, nonatomic) BOOL hf_isIdentifiable;
 @property (readonly, nonatomic) BOOL hf_isMediaAccessory;
+@property (readonly, nonatomic) BOOL hf_isMultiSensorAccessory;
 @property (readonly, nonatomic) BOOL hf_isMultiServiceAccessory;
 @property (readonly, nonatomic) BOOL hf_isNetworkRouter;
 @property (readonly, nonatomic) BOOL hf_isNetworkRouterSatellite;
@@ -69,9 +86,14 @@
 @property (readonly, nonatomic) BOOL hf_isNotificationSupportedCamera;
 @property (readonly, nonatomic) BOOL hf_isPowerStrip;
 @property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
+@property (readonly, nonatomic) BOOL hf_isPureBridge;
 @property (readonly, nonatomic) BOOL hf_isRemoteControl;
+@property (readonly, nonatomic) BOOL hf_isSensorAccessory;
+@property (readonly, nonatomic) BOOL hf_isSingleSensorAccessory;
 @property (readonly, nonatomic) BOOL hf_isSingleServiceAccessory;
+@property (readonly, nonatomic) BOOL hf_isSingleServiceLikeAccessory;
 @property (readonly, nonatomic) BOOL hf_isSpeaker;
+@property (readonly, nonatomic) BOOL hf_isSprinkler;
 @property (readonly, nonatomic) BOOL hf_isTelevision;
 @property (readonly, nonatomic) BOOL hf_isVisibleAccessory;
 @property (readonly, nonatomic) BOOL hf_isVisibleAsBridge;
@@ -93,28 +115,43 @@
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, nonatomic) BOOL hf_showAsAccessoryTile;
 @property (readonly, nonatomic) BOOL hf_showAsIndividualServices;
+@property (readonly, nonatomic) BOOL hf_showsAsAccessoryInControlCentre;
 @property (readonly, copy, nonatomic) NSSet *hf_standardServices;
+@property (readonly, nonatomic) NSString *hf_userFriendlyLocalizedCapitalizedDescription;
+@property (readonly, nonatomic) NSString *hf_userFriendlyLocalizedLowercaseDescription;
 @property (readonly, copy, nonatomic) NSSet *hf_visibleServices;
 @property (readonly, weak, nonatomic) HMHome *home;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) HMSymptomsHandler *symptomsHandler;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
++ (id)hf_getUserFriendlyDescriptionKey:(id)arg1;
++ (id)hf_userFriendlyLocalizedCapitalizedDescription:(id)arg1;
++ (id)hf_userFriendlyLocalizedLowercaseDescription:(id)arg1;
 - (void)_pushSymptomUpdate;
-- (id)accessories;
-- (BOOL)hf_anyServiceIsFavorite;
+- (id)hf_accessories;
+- (BOOL)hf_anyNonSensorServiceIsFavorite;
+- (BOOL)hf_areAllSensorServices;
+- (id)hf_categoryType;
 - (id)hf_identifyHomePod;
 - (BOOL)hf_isValidObject;
 - (id)hf_primaryService;
+- (id)hf_profiles;
 - (id)hf_serviceOfType:(id)arg1;
+- (id)hf_services;
 - (id)hf_setShowAsIndividualServices:(BOOL)arg1;
 - (BOOL)hf_shouldDisplayManualFixOptionForSymptom:(long long)arg1;
+- (BOOL)hf_shouldHideNearbyAccessoryService:(id)arg1;
 - (BOOL)hf_shouldShowSoftwareUpdateInfo;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsMultiUserLanguage:(id)arg1;
+- (id)hf_topLevelAccessoryLikeHomeObject;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 @end

@@ -6,7 +6,7 @@
 
 #import <Pasteboard/NSObject-Protocol.h>
 
-@class NSString, NSUUID, NSXPCListenerEndpoint, PBItemCollection;
+@class BKSHIDEventAuthenticationMessage, NSSet, NSString, NSUUID, NSXPCListenerEndpoint, PBItemCollection;
 
 @protocol PBClientToServerProtocol <NSObject>
 - (void)deletePersistentPasteboardWithName:(NSString *)arg1 completionBlock:(void (^)(unsigned long long, NSError *))arg2;
@@ -16,7 +16,9 @@
 - (void)localGeneralPasteboardCompletionBlock:(void (^)(PBItemCollection *, NSError *))arg1;
 - (void)pasteboardWithName:(NSString *)arg1 createIfNeeded:(BOOL)arg2 completionBlock:(void (^)(PBItemCollection *, NSError *))arg3;
 - (void)performJanitorialTasksCompletionBlock:(void (^)(void))arg1;
-- (void)requestItemFromPasteboardWithName:(NSString *)arg1 UUID:(NSUUID *)arg2 itemIndex:(unsigned long long)arg3 typeIdentifier:(NSString *)arg4 completionBlock:(void (^)(NSData *, PBSecurityScopedURLWrapper *, NSError *))arg5;
+- (void)requestItemFromPasteboardWithName:(NSString *)arg1 UUID:(NSUUID *)arg2 authenticationMessage:(BKSHIDEventAuthenticationMessage *)arg3 itemIndex:(unsigned long long)arg4 typeIdentifier:(NSString *)arg5 completionBlock:(void (^)(NSData *, PBSecurityScopedURLWrapper *, NSError *))arg6;
+- (void)requestPatternDetectionsFromPasteboardWithName:(NSString *)arg1 UUID:(NSUUID *)arg2 authenticationMessage:(BKSHIDEventAuthenticationMessage *)arg3 itemIndex:(unsigned long long)arg4 patterns:(NSSet *)arg5 needValues:(BOOL)arg6 completionBlock:(void (^)(NSDictionary *, NSError *))arg7;
 - (void)savePasteboard:(PBItemCollection *)arg1 dataProviderEndpoint:(NSXPCListenerEndpoint *)arg2 completionBlock:(void (^)(unsigned long long, long long, NSError *))arg3;
+- (void)transparentSlotWithSize:(struct CGSize)arg1 completionBlock:(void (^)(unsigned int, NSError *))arg2;
 @end
 

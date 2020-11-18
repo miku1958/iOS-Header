@@ -14,6 +14,7 @@
 + (id)vui_imageHighlightColor;
 + (id)vui_keyBlueColor;
 + (id)vui_keyBlueHighlightedColor;
++ (id)vui_opacityColorWithType:(long long)arg1;
 + (id)vui_opacityColorWithType:(long long)arg1 userInterfaceStyle:(long long)arg2;
 + (id)vui_opaqueSeparatorColor;
 + (id)vui_primaryDynamicBackgroundColor;

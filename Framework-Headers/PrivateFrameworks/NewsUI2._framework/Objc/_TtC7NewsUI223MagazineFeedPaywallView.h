@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223MagazineFeedPaywallView : UIView
 {
     MISSING_TYPE *image;
@@ -17,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *largeTextLabel;
     MISSING_TYPE *smallTextLabel;
     MISSING_TYPE *subscribeButton;
+    MISSING_TYPE *offersButton;
 }
 
 - (void).cxx_destruct;

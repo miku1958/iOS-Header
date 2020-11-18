@@ -13,10 +13,12 @@
 + (id)markerStyleAttributes;
 + (id)styleAttributesForCalloutWithAttributes:(id)arg1;
 + (id)styleAttributesForDraggingWithAttributes:(id)arg1;
++ (id)styleAttributesForRouteAnnotationWithAttributes:(id)arg1;
 + (id)styleAttributesForSearchResultWithAttributes:(id)arg1;
 + (id)styleAttributesForTrafficCameraType:(long long)arg1 isAboveThreshold:(BOOL)arg2;
 + (id)styleAttributesForTrafficIncidentType:(long long)arg1;
 + (id)styleAttributesForTransitType:(long long)arg1;
++ (id)styleAttributesForUnpickedFeatureWithAttributes:(id)arg1;
 + (id)trainStationStyleAttributes;
 @end
 

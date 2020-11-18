@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)roundOffNumber:(id)arg1 toSignificantDigits:(unsigned char)arg2;
++ (id)safeRoundOffNumber:(id)arg1 toSignificantDigits:(unsigned char)arg2;
 
 @end
 

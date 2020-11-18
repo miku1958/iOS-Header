@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKModifyRecordsOperationCallbacks-Protocol.h>
 
-@interface CKModifyRecordsOperation : CKDatabaseOperation
+@class CKModifyRecordsOperationInfo, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@protocol CKModifyRecordsOperationCallbacks;
+
+@interface CKModifyRecordsOperation : CKDatabaseOperation <CKModifyRecordsOperationCallbacks>
 {
     BOOL _atomic;
     BOOL _shouldReportRecordsInFlight;
@@ -28,21 +31,23 @@
     NSMutableDictionary *_recordErrors;
     NSMutableDictionary *_assetsByRecordIDAndRecordKey;
     NSMutableSet *_packagesToDestroy;
+    NSDictionary *_assetUUIDToExpectedProperties;
+    NSDictionary *_packageUUIDToExpectedProperties;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
-    NSDictionary *_assetUUIDToExpectedProperties;
-    NSDictionary *_packageUUIDToExpectedProperties;
 }
 
 @property (copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (strong, nonatomic) NSMutableDictionary *assetsByRecordIDAndRecordKey; // @synthesize assetsByRecordIDAndRecordKey=_assetsByRecordIDAndRecordKey;
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
 @property (copy, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
-@property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
+@property (readonly, nonatomic) id<CKModifyRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property (copy, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (strong, nonatomic) NSMutableArray *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
 @property (nonatomic) BOOL markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
 @property (copy, nonatomic) CDUnknownBlockType modifyRecordsCompletionBlock; // @synthesize modifyRecordsCompletionBlock=_modifyRecordsCompletionBlock;
+@property (readonly, nonatomic) CKModifyRecordsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
 @property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property (copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
@@ -59,10 +64,10 @@
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (void)_trackAssetsToUpload;
 - (id)activityCreate;
 - (BOOL)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
@@ -71,6 +76,11 @@
 - (void)destroyPackagesInRecords:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleDeleteForRecordID:(id)arg1 error:(id)arg2;
+- (void)handleRecordIDsInFlight:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)handleRecordModificationForRecordID:(id)arg1 didProgress:(double)arg2;
+- (void)handleRecordUploadForRecordID:(id)arg1 recordKey:(id)arg2 arrayIndex:(long long)arg3 signature:(id)arg4 size:(unsigned long long)arg5 paddedFileSize:(unsigned long long)arg6 uploaded:(BOOL)arg7 uploadReceipt:(id)arg8 uploadReceiptExpiration:(double)arg9 wrappedAssetKey:(id)arg10 clearAssetKey:(id)arg11 referenceSignature:(id)arg12;
+- (void)handleSaveForRecordID:(id)arg1 etag:(id)arg2 creationDate:(id)arg3 modificationDate:(id)arg4 serverRecord:(id)arg5 protectionData:(id)arg6 pcsKeyID:(id)arg7 allPCSKeyIDs:(id)arg8 zoneishKeyID:(id)arg9 error:(id)arg10;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2;

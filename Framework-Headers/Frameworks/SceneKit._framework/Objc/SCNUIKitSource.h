@@ -6,13 +6,16 @@
 
 #import <SceneKit/SCNImageSource.h>
 
-@class UIView, UIWindow;
+@class CALayer, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface SCNUIKitSource : SCNImageSource
 {
     id _uiView;
     id _uiWindow;
+    CALayer *_uiWindowLayer;
+    BOOL _isOpaque;
+    BOOL _windowPreparing;
 }
 
 @property (strong, nonatomic) UIView *uiView; // @synthesize uiView=_uiView;

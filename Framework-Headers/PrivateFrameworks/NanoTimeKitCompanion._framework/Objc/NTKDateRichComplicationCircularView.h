@@ -4,21 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKDateRichComplicationBaseCircularView.h>
 
-@class NTKDateRichComplicationFullColorImageView;
-
-@interface NTKDateRichComplicationCircularView : NTKRichComplicationCircularBaseView
+@interface NTKDateRichComplicationCircularView : NTKDateRichComplicationBaseCircularView
 {
-    NTKDateRichComplicationFullColorImageView *_dateView;
 }
 
-- (void).cxx_destruct;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (id)init;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

@@ -8,21 +8,26 @@
 
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 
-@class CKRecordID, NSString;
+@class CKRecordID, NSData, NSString;
 
 @interface WFCloudKitSyncFlags : NSObject <WFCloudKitItem>
 {
     BOOL _migratedVoiceShortcuts;
     CKRecordID *_identifier;
+    NSData *_recordSystemFieldsData;
+    long long _defaultShortcutsVersion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) long long defaultShortcutsVersion; // @synthesize defaultShortcutsVersion=_defaultShortcutsVersion;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL migratedVoiceShortcuts; // @synthesize migratedVoiceShortcuts=_migratedVoiceShortcuts;
+@property (copy, nonatomic) NSData *recordSystemFieldsData; // @synthesize recordSystemFieldsData=_recordSystemFieldsData;
 @property (readonly) Class superclass;
 
++ (BOOL)isCloudKitSyncFlagsRecordID:(id)arg1;
 + (id)properties;
 + (id)recordIDWithZoneID:(id)arg1;
 + (id)recordType;

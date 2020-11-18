@@ -13,7 +13,7 @@
 @interface HKElectrocardiogramQuery : HKQuery <HKElectrocardiogramQueryClientInterface>
 {
     HKElectrocardiogram *_elecrocardiogram;
-    unsigned long long _leadName;
+    long long _lead;
     CDUnknownBlockType _dataHandler;
 }
 
@@ -26,7 +26,8 @@
 - (void).cxx_destruct;
 - (void)_enumerateDataWithHandler:(CDUnknownBlockType)arg1;
 - (void)client_deliverData;
-- (id)initWithElectrocardiogram:(id)arg1 lead:(unsigned long long)arg2 dataHandler:(CDUnknownBlockType)arg3;
+- (id)initWithElectrocardiogram:(id)arg1 dataHandler:(CDUnknownBlockType)arg2;
+- (id)initWithElectrocardiogram:(id)arg1 lead:(long long)arg2 dataHandler:(CDUnknownBlockType)arg3;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;
 

@@ -15,17 +15,21 @@ __attribute__((visibility("hidden")))
 @property (readonly) struct tagHANDLE *videoTransmitterHandle; // @synthesize videoTransmitterHandle=_videoTransmitterHandle;
 
 + (double)minKeyFrameGenerationIntervalForMode:(int)arg1;
++ (void)setupBandwidthEstimationOptions:(struct tagBWEOPTION *)arg1 featureString:(id)arg2;
 - (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)computeTimestamp:(unsigned int *)arg1 hostTime:(double *)arg2 forFrame:(struct opaqueCMSampleBuffer *)arg3;
 - (void)dealloc;
-- (BOOL)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (BOOL)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)generateKeyFrame;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (id)initWithConfig:(id)arg1;
-- (unsigned int)parameterSetForPayload:(int)arg1;
+- (unsigned int)parameterSetForPayload:(int)arg1 pixelFormat:(unsigned int)arg2;
+- (BOOL)setEncodingMode:(int)arg1;
 - (void)setFECRatio:(double)arg1;
+- (void)setFECRedundancyVector:(const CDStruct_cd7ddd1c *)arg1;
 - (void)setIsServerBasedBandwidthProbingEnabled:(BOOL)arg1;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
+- (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
 - (void)setTargetBitrate:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;

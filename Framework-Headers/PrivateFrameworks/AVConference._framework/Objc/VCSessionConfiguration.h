@@ -6,20 +6,23 @@
 
 #import <objc/NSObject.h>
 
+@protocol NSCopying;
+
 __attribute__((visibility("hidden")))
 @interface VCSessionConfiguration : NSObject
 {
-    unsigned long long _maxRemoteParticipants;
     long long _sessionMode;
-    id _reportingHierarchyToken;
+    NSObject<NSCopying> *_reportingHierarchyToken;
+    BOOL _oneToOneModeEnabled;
 }
 
-@property (nonatomic) unsigned long long maxRemoteParticipants; // @synthesize maxRemoteParticipants=_maxRemoteParticipants;
-@property (strong, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property (nonatomic, getter=isOneToOneModeEnabled) BOOL oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
+@property (strong, nonatomic) NSObject<NSCopying> *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property (nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
 
 - (BOOL)applyConfigurationUsingClientDict:(id)arg1;
 - (void)dealloc;
+- (id)init;
 - (id)initWithClientDictionary:(id)arg1;
 - (BOOL)updateWithClientDictionary:(id)arg1;
 

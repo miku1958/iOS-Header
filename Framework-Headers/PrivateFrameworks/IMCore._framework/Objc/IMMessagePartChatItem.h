@@ -8,7 +8,7 @@
 
 #import <IMCore/IMVisibleAssociatedMessageHost-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString;
+@class IMMessageItem, NSArray, NSAttributedString, NSString;
 
 @interface IMMessagePartChatItem : IMMessageChatItem <IMVisibleAssociatedMessageHost>
 {
@@ -21,6 +21,7 @@
     BOOL _isBusiness;
     BOOL _chatInScrutinyMode;
     BOOL _whitelistedRichLinkSender;
+    unsigned long long _replyCount;
 }
 
 @property (nonatomic) BOOL chatInScrutinyMode; // @synthesize chatInScrutinyMode=_chatInScrutinyMode;
@@ -28,14 +29,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSAttributedString *fallbackCorruptText; // @synthesize fallbackCorruptText=_fallbackCorruptText;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long index; // @synthesize index=_index;
+@property (readonly, nonatomic) long long index; // @synthesize index=_index;
 @property (nonatomic) BOOL isBusiness; // @synthesize isBusiness=_isBusiness;
 @property (readonly, nonatomic) BOOL isCorrupt;
 @property (readonly, nonatomic) NSArray *messageEditChatItems; // @synthesize messageEditChatItems=_messageEditChatItems;
 @property (nonatomic) struct _NSRange messagePartRange; // @synthesize messagePartRange=_messagePartRange;
+@property (nonatomic) unsigned long long replyCount; // @synthesize replyCount=_replyCount;
 @property (readonly, nonatomic) BOOL requiresSiriAttribution;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
+@property (readonly, copy, nonatomic) NSString *threadIdentifier;
+@property (readonly, nonatomic) IMMessageItem *threadOriginator;
 @property (strong, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 @property (nonatomic, getter=isWhitelistedRichLinkSender) BOOL whitelistedRichLinkSender; // @synthesize whitelistedRichLinkSender=_whitelistedRichLinkSender;
 
@@ -44,7 +48,7 @@
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
 + (BOOL)_isWhiteListedURL:(id)arg1;
 + (BOOL)_isWhitelistedRichLinkSender:(id)arg1 isBusiness:(BOOL)arg2;
-+ (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
++ (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2 indexesOfItemsDeleted:(id *)arg3 indexToRangeMapping:(id *)arg4;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2 isBusiness:(BOOL)arg3 parentChatIsSpam:(BOOL)arg4 hasKnownParticipants:(BOOL)arg5;
 + (id)_richLinkRangesForMessageText:(id)arg1 sender:(id)arg2 isWhitelistedRichLinkSender:(BOOL)arg3;
@@ -52,12 +56,13 @@
 + (BOOL)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isWhitelistedRichLinkSender:(BOOL)arg3;
 + (BOOL)isSiriEnabled;
 - (void).cxx_destruct;
-- (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;
+- (id)_initWithItem:(id)arg1 index:(long long)arg2 messagePartRange:(struct _NSRange)arg3;
 - (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 visibleAssociatedMessageChatItems:(id)arg5;
 - (void)_setMessageEditChatItems:(id)arg1;
 - (BOOL)canDelete;
 - (BOOL)canSendMessageAcknowledgment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1;
 - (id)transcriptText;
 
 @end

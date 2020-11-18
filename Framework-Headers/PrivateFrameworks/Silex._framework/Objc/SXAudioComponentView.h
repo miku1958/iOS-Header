@@ -53,7 +53,7 @@
 - (void)playbackResumed;
 - (void)playbackStarted;
 - (void)playerViewController:(id)arg1 metricsCollectionEventOccured:(long long)arg2;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)renderContents;
 - (void)setupPlayerViewControllerWithPlayer:(id)arg1;
 - (BOOL)shouldAutoStartPlayback;

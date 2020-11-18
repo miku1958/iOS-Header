@@ -33,8 +33,8 @@
 + (id)primaryKey;
 + (id)requiredProperties;
 - (void).cxx_destruct;
-- (void)coordinatePropertyUpdatesForRecord:(id)arg1 duringBlock:(CDUnknownBlockType)arg2;
 - (id)descriptor;
+- (id)identifier;
 - (id)trigger;
 
 @end

@@ -6,14 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SearchUI/SearchUIKeyboardableTableViewScrollDelegate-Protocol.h>
+#import <SearchUI/SearchUIKeyboardableTableViewDelegate-Protocol.h>
+#import <SearchUI/SearchUISizingDelegate-Protocol.h>
 #import <SearchUI/SearchUITableViewTesting-Protocol.h>
 #import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, SearchUIBackgroundView, SearchUIReplicatorView, SearchUIResultTableViewController, SearchUISearchField, UIView;
+@class NSArray, NSString, SearchUIBackgroundView, SearchUIResultsTableViewController, UIResponder, UISearchTextField, UIView;
 @protocol SFFeedbackListener, SearchUIResultsViewDelegate;
 
-@interface SearchUIResultsViewController : UIViewController <UIGestureRecognizerDelegate, SearchUIKeyboardableTableViewScrollDelegate, SearchUITableViewTesting>
+@interface SearchUIResultsViewController : UIViewController <UIGestureRecognizerDelegate, SearchUIKeyboardableTableViewDelegate, SearchUISizingDelegate, SearchUITableViewTesting>
 {
     BOOL _immediatelyShowCardForSingleResult;
     BOOL _shouldMonitorScrollingPastBottomOfContent;
@@ -22,13 +23,13 @@
     CDUnknownBlockType cellWillDisplayHandler;
     NSArray *_sections;
     unsigned long long _style;
-    SearchUIResultTableViewController *_resultTableViewController;
-    SearchUIReplicatorView *_replicatorView;
+    SearchUIResultsTableViewController *_resultsTableViewController;
     NSString *_previousSearchString;
     id<SearchUIResultsViewDelegate> _delegate;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType cellWillDisplayHandler; // @synthesize cellWillDisplayHandler;
+@property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SearchUIResultsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -39,9 +40,9 @@
 @property (nonatomic) BOOL immediatelyShowCardForSingleResult; // @synthesize immediatelyShowCardForSingleResult=_immediatelyShowCardForSingleResult;
 @property (strong, nonatomic) NSString *previousSearchString; // @synthesize previousSearchString=_previousSearchString;
 @property (strong, nonatomic) NSString *queryString;
-@property (strong, nonatomic) SearchUIReplicatorView *replicatorView; // @synthesize replicatorView=_replicatorView;
-@property (strong, nonatomic) SearchUIResultTableViewController *resultTableViewController; // @synthesize resultTableViewController=_resultTableViewController;
-@property (strong, nonatomic) SearchUISearchField *searchField;
+@property (readonly, nonatomic) UIResponder *responderForKeyboardInput;
+@property (strong, nonatomic) SearchUIResultsTableViewController *resultsTableViewController; // @synthesize resultsTableViewController=_resultsTableViewController;
+@property (strong, nonatomic) UISearchTextField *searchField;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (nonatomic) BOOL shortenTopFloatingHeader;
 @property (nonatomic) BOOL shouldHideResultsUnderKeyboard;
@@ -57,14 +58,18 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (double)contentHeightForWidth:(double)arg1 maxHeight:(double)arg2;
 - (id)contentScrollView;
+- (void)contentSizeDidChange:(struct CGSize)arg1 animated:(BOOL)arg2;
 - (id)currentTableModel;
 - (void)didBeginScrolling;
+- (void)didFocusOnCell:(id)arg1;
 - (void)didScrollPastBottomOfContent;
 - (void)didTap;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)init;
+- (void)highlightResult:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)performReturnKeyPressAction;
 - (void)performScrollTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performScrollTestWithHandlerForFirstScrollCompletion:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;

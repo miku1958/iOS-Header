@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSNumber;
+@class NSAttributedString, NSNumber, UIColor;
 
 @interface HKSelectedRangeData : NSObject
 {
@@ -14,10 +14,12 @@
     long long _dataType;
     NSAttributedString *_attributedString;
     NSNumber *_valueAsNumber;
+    UIColor *_prefixColor;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (nonatomic) long long dataType; // @synthesize dataType=_dataType;
+@property (strong, nonatomic) UIColor *prefixColor; // @synthesize prefixColor=_prefixColor;
 @property (nonatomic) long long statisticsType; // @synthesize statisticsType=_statisticsType;
 @property (strong, nonatomic) NSNumber *valueAsNumber; // @synthesize valueAsNumber=_valueAsNumber;
 

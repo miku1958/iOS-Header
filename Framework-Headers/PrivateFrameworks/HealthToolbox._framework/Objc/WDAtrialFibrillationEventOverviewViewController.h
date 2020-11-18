@@ -17,6 +17,7 @@
 
 @interface WDAtrialFibrillationEventOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HROnboardingManagerDelegate, UITextViewDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
 {
+    BOOL _firstViewDidLayoutSubviews;
     BOOL _previousAtrialFibrillationDetectionDisabledCacheValue;
     HKDisplayType *_displayType;
     WDProfile *_profile;
@@ -39,6 +40,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long detectionState; // @synthesize detectionState=_detectionState;
 @property (strong, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
+@property (nonatomic) BOOL firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
 @property (strong, nonatomic) HKKeyValueDomain *keyValueDomain; // @synthesize keyValueDomain=_keyValueDomain;
@@ -67,7 +69,6 @@
 - (id)_cellForShowAll;
 - (void)_getLatestAnalyzedSampleDate;
 - (BOOL)_isDisplayTypeFavorited;
-- (BOOL)_isPrimaryProfile;
 - (id)_pushDataSourcesAndAccessController;
 - (id)_pushShowAllViewController;
 - (void)_recomputeTotalSampleCount;
@@ -79,6 +80,7 @@
 - (void)_showInternalSettingsViewController;
 - (void)_startOnboardingForFirstTime:(BOOL)arg1;
 - (void)_updateDetectionState;
+- (double)adjustedSafeAreaInsetTop;
 - (void)beginOnboardingForOnboardingSetupView:(id)arg1;
 - (void)dealloc;
 - (void)didCompleteOnboarding;
@@ -88,6 +90,8 @@
 - (void)heartRhythmAvailabilityDidUpdate;
 - (id)initWithDisplayType:(id)arg1 profile:(id)arg2;
 - (void)isFavorited:(BOOL)arg1;
+- (BOOL)isPrimaryProfile;
+- (BOOL)isWristDetectionEnabled;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)protectedDataDidBecomeAvailable:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -99,6 +103,7 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

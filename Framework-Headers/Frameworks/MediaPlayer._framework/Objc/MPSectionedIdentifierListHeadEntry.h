@@ -11,6 +11,7 @@
 @class MPSectionedIdentifierListItemEntry, MPSectionedIdentifierListTailEntry, NSMutableDictionary, NSString;
 @protocol MPSectionedIdentifierListDataSource;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListHeadEntry : MPSectionedIdentifierListEntry <MPSectionedIdentifierListEnumerationTrackingEntry>
 {
     BOOL _shuffledHead;

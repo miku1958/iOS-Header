@@ -33,6 +33,7 @@
 - (void)speakUtterance:(id)arg1;
 - (BOOL)stopSpeakingAtBoundary:(long long)arg1;
 - (void)writeUtterance:(id)arg1 toBufferCallback:(CDUnknownBlockType)arg2;
+- (void)writeUtterance:(id)arg1 toBufferCallback:(CDUnknownBlockType)arg2 toMarkerCallback:(CDUnknownBlockType)arg3;
 
 @end
 

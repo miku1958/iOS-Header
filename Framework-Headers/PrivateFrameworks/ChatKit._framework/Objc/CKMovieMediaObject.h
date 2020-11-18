@@ -13,10 +13,8 @@
     BOOL _hasVideoTrack;
     BOOL _checkedVideoInfo;
     BOOL _isAutoloopVideo;
-    BOOL _isAppleAutoloopVideo;
     BOOL _isJellyfishVideo;
     BOOL _isAutoloopVideoInitialized;
-    BOOL _isAppleAutoloopVideoInitialized;
     BOOL _isJellyfishInitialized;
     UIImage *_thumbnail;
     AVURLAsset *_asset;
@@ -26,8 +24,6 @@
 @property (strong, nonatomic) AVURLAsset *asset; // @synthesize asset=_asset;
 @property (nonatomic) BOOL checkedVideoInfo; // @synthesize checkedVideoInfo=_checkedVideoInfo;
 @property (nonatomic) BOOL hasVideoTrack; // @synthesize hasVideoTrack=_hasVideoTrack;
-@property (nonatomic) BOOL isAppleAutoloopVideo; // @synthesize isAppleAutoloopVideo=_isAppleAutoloopVideo;
-@property (nonatomic) BOOL isAppleAutoloopVideoInitialized; // @synthesize isAppleAutoloopVideoInitialized=_isAppleAutoloopVideoInitialized;
 @property (nonatomic) BOOL isAutoloopVideo; // @synthesize isAutoloopVideo=_isAutoloopVideo;
 @property (nonatomic) BOOL isAutoloopVideoInitialized; // @synthesize isAutoloopVideoInitialized=_isAutoloopVideoInitialized;
 @property (nonatomic) BOOL isJellyfishInitialized; // @synthesize isJellyfishInitialized=_isJellyfishInitialized;
@@ -37,13 +33,13 @@
 
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (BOOL)isPreviewable;
 + (struct CGImage *)playButtonPreviewForCGImage:(struct CGImage *)arg1 scale:(double)arg2 isFromMe:(BOOL)arg3;
 + (id)playButtonPreviewForUIImage:(id)arg1 scale:(double)arg2 contentAlignmentInsets:(struct UIEdgeInsets)arg3;
 - (void).cxx_destruct;
 - (BOOL)_assetContainsMetadataKey:(id)arg1;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (struct CGSize)bbSize;
@@ -54,10 +50,12 @@
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (BOOL)hasNoVideoTrack;
 - (int)mediaType;
+- (id)metricsCollectorMediaType;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewItemTitle;
+- (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (void)updateVideoInfo;
 - (BOOL)validatePreviewFormat;
 

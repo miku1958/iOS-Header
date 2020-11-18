@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *patterns;
     MISSING_TYPE *router;
-    MISSING_TYPE *baseHostName;
 }
 
 @end

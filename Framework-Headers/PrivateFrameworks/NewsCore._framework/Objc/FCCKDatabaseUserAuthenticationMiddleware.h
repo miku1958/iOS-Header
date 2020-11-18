@@ -21,7 +21,7 @@
 @property (nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled; // @synthesize privateDataSyncingEnabled=_privateDataSyncingEnabled;
 @property (readonly) Class superclass;
 
-- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2;
+- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
 - (id)init;
 - (id)initWithPrivateDataSyncingEnabled:(BOOL)arg1;
 

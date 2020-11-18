@@ -20,7 +20,7 @@
     NSString *_targetLanguage;
     OBTrayButton *_continueButton;
     OBLinkTrayButton *_customizeButton;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     NSDictionary *_languageToHomePodsMapping;
 }
 
@@ -35,7 +35,7 @@
 @property (strong, nonatomic) NSDictionary *languageToHomePodsMapping; // @synthesize languageToHomePodsMapping=_languageToHomePodsMapping;
 @property (strong, nonatomic) NSString *overrideTargetLanguage; // @synthesize overrideTargetLanguage=_overrideTargetLanguage;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property (strong, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property (strong, nonatomic) NSString *targetLanguage; // @synthesize targetLanguage=_targetLanguage;
 
 - (void).cxx_destruct;

@@ -30,7 +30,7 @@
 - (void)didShowExpandedMode;
 - (void)didStartFaceTrackingInCarouselWithAvatar:(id<AVTAvatarRecord>)arg1;
 - (void)didStopFaceTrackingInCarousel;
-- (void)didTapStickerFromRecents:(NSString *)arg1;
+- (void)didTapStickerFromRecents:(NSString *)arg1 withAvatarIdentifier:(NSString *)arg2;
 - (void)didTapStickerFromStickersApp:(NSString *)arg1 withAvatar:(id<AVTAvatarRecord>)arg2;
 - (void)end;
 @end

@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSTextAttachment *unreadIndicatorAttachment; // @synthesize unreadIndicatorAttachment=_unreadIndicatorAttachment;
 @property (strong, nonatomic) UIColor *unreadIndicatorColor; // @synthesize unreadIndicatorColor=_unreadIndicatorColor;
 
-+ (double)cellHeight;
++ (double)cellHeightForDisplayScale:(double)arg1;
 + (id)hyphenationParagraphStyle;
 + (id)identifierForConversation:(id)arg1;
 - (void).cxx_destruct;
@@ -31,6 +31,7 @@
 - (id)_contentSizeCategoryDependentConstraints;
 - (void)contentSizeCategoryDidChange;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)updateContentsForConversation:(id)arg1 fastPreview:(BOOL)arg2;
 - (void)updateForEditing:(BOOL)arg1;
 - (void)updateFromLabelWithText:(id)arg1;
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;

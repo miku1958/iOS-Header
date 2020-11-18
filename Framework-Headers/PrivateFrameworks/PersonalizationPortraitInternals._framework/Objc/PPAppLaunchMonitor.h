@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class _PASLock;
+@protocol OS_dispatch_queue;
 
 @interface PPAppLaunchMonitor : NSObject
 {
     _PASLock *_lock;
+    NSObject<OS_dispatch_queue> *_contextHandlerQueue;
 }
 
 + (id)sharedInstance;

@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (readonly) long long maxVideoEncoderFrameRate;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceCache; // @synthesize preferenceCache=_preferenceCache;
 @property (readonly) HMFTimer *preferenceCacheFlushTimer; // @synthesize preferenceCacheFlushTimer=_preferenceCacheFlushTimer;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceLoggedValues; // @synthesize preferenceLoggedValues=_preferenceLoggedValues;
@@ -32,6 +33,8 @@
 @property (readonly) Class superclass;
 @property (readonly) BOOL usesCPUOnly;
 
++ (BOOL)isAudioAccessory;
++ (BOOL)isInternalInstall;
 + (BOOL)isProductTypeB238;
 + (BOOL)isProductTypeJ105;
 + (BOOL)isProductTypeJ42;

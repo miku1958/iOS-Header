@@ -79,6 +79,7 @@
 - (void)setAccessibilityPreferenceAsMobile:(id)arg1 value:(id)arg2 notification:(id)arg3;
 - (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setHearingAidControlIsVisible:(BOOL)arg1;
+- (void)setIsSpeakScreenHighlightVisible:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setSessionIsLoginSession:(BOOL)arg1;
 - (void)setSwitchControlHasScreenSwitch:(BOOL)arg1;

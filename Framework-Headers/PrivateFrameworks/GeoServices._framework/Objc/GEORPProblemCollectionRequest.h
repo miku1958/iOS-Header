@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, GEORPUserCredentials, NSData, NSMutableArray, NSString, PBDataReader;
+@class GEOLocation, GEORPDebugSettings, GEORPUserCredentials, NSData, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPProblemCollectionRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
     NSString *_countryCode;
+    GEORPDebugSettings *_debugSettings;
     NSData *_devicePushToken;
     NSString *_hwMachine;
     NSString *_inputLanguage;
@@ -27,6 +28,7 @@
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_countryCode:1;
+        unsigned int read_debugSettings:1;
         unsigned int read_devicePushToken:1;
         unsigned int read_hwMachine:1;
         unsigned int read_inputLanguage:1;
@@ -35,21 +37,15 @@
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
         unsigned int read_userLocation:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_devicePushToken:1;
-        unsigned int wrote_hwMachine:1;
-        unsigned int wrote_inputLanguage:1;
-        unsigned int wrote_osRelease:1;
-        unsigned int wrote_requestElements:1;
-        unsigned int wrote_userCredentials:1;
-        unsigned int wrote_userEmail:1;
-        unsigned int wrote_userLocation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSString *countryCode;
+@property (strong, nonatomic) GEORPDebugSettings *debugSettings;
 @property (strong, nonatomic) NSData *devicePushToken;
 @property (readonly, nonatomic) BOOL hasCountryCode;
+@property (readonly, nonatomic) BOOL hasDebugSettings;
 @property (readonly, nonatomic) BOOL hasDevicePushToken;
 @property (readonly, nonatomic) BOOL hasHwMachine;
 @property (readonly, nonatomic) BOOL hasInputLanguage;
@@ -68,16 +64,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)requestElementType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsRequestElement:(id)arg1;
-- (void)_readCountryCode;
-- (void)_readDevicePushToken;
-- (void)_readHwMachine;
-- (void)_readInputLanguage;
-- (void)_readOsRelease;
-- (void)_readRequestElements;
-- (void)_readUserCredentials;
-- (void)_readUserEmail;
-- (void)_readUserLocation;
 - (void)addRequestElement:(id)arg1;
 - (void)clearRequestElements;
 - (void)copyTo:(id)arg1;
@@ -87,7 +73,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

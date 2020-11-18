@@ -25,6 +25,7 @@
 - (void)_configureForControlMode:(long long)arg1 zoomFactor:(double)arg2 zoomFactors:(id)arg3 displayZoomFactors:(id)arg4 zoomButtonContentType:(long long)arg5 animated:(BOOL)arg6;
 - (void)_setAXZoomFactor:(double)arg1;
 - (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
 - (id)accessibilityHint;
 - (void)accessibilityIncrement;

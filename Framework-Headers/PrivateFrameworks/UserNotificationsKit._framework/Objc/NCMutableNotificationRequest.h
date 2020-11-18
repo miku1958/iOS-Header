@@ -12,6 +12,7 @@
 {
 }
 
+@property (strong, nonatomic) NCNotificationAction *cancelAction; // @dynamic cancelAction;
 @property (copy, nonatomic) NSString *categoryIdentifier; // @dynamic categoryIdentifier;
 @property (strong, nonatomic) NCNotificationAction *clearAction; // @dynamic clearAction;
 @property (strong, nonatomic) NCNotificationAction *closeAction; // @dynamic closeAction;

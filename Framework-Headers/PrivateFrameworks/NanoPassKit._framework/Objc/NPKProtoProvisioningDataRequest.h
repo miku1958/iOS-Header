@@ -10,7 +10,14 @@
 
 @interface NPKProtoProvisioningDataRequest : PBRequest <NSCopying>
 {
+    BOOL _includeDeviceMetadata;
+    struct {
+        unsigned int includeDeviceMetadata:1;
+    } _has;
 }
+
+@property (nonatomic) BOOL hasIncludeDeviceMetadata;
+@property (nonatomic) BOOL includeDeviceMetadata; // @synthesize includeDeviceMetadata=_includeDeviceMetadata;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

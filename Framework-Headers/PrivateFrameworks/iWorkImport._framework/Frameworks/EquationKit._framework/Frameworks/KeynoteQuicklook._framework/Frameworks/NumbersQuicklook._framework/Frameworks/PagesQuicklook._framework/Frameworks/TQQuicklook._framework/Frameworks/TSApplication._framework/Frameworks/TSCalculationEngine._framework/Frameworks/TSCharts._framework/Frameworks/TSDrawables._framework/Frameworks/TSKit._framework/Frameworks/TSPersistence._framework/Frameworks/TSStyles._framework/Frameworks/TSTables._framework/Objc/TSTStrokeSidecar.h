@@ -38,7 +38,9 @@
 - (id)initWithTableModel:(id)arg1;
 - (void)insertColumns:(struct _NSRange)arg1;
 - (void)insertRows:(struct _NSRange)arg1;
+- (BOOL)isEmpty;
 - (void)loadFromUnarchiver:(id)arg1;
+- (BOOL)mightHaveCellBorderAtCellID:(struct TSUCellCoord)arg1;
 - (void)moveColumnIndexRange:(struct _NSRange)arg1 toIndex:(unsigned short)arg2;
 - (void)moveRowIndexRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
 - (id)p_flattenMajorStrokeLayer:(id)arg1 minorStrokeLayer:(id)arg2;

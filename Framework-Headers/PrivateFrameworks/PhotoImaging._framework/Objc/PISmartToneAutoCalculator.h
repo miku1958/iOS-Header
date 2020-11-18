@@ -21,6 +21,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 time;
 
 - (void)submit:(CDUnknownBlockType)arg1;
+- (id)submitSynchronous:(out id *)arg1;
 
 @end
 

@@ -14,22 +14,26 @@
 __attribute__((visibility("hidden")))
 @interface CNPropertyDateEditingCell : CNPropertySimpleEditingCell <UITextFieldDelegate, CNPickerControllerDelegate>
 {
+    BOOL _shouldEditDatesTextually;
     UIDatePicker *_datePicker;
     CNDatePickerContainerView *_datePickerContainerView;
     UIViewController *_contentViewController;
+    NSString *_currentCalendarIdentifier;
 }
 
 @property (strong, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property (strong, nonatomic) NSString *currentCalendarIdentifier; // @synthesize currentCalendarIdentifier=_currentCalendarIdentifier;
 @property (strong, nonatomic) UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
 @property (strong, nonatomic) CNDatePickerContainerView *datePickerContainerView; // @synthesize datePickerContainerView=_datePickerContainerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL shouldEditDatesTextually; // @synthesize shouldEditDatesTextually=_shouldEditDatesTextually;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_shouldUseYearlessPickerForDateComponents:(id)arg1;
-- (void)applyCalendarAndDateToDatePicker;
+- (void)applyCalendarAndDate;
 - (void)dateChanged:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)labelButtonClicked:(id)arg1;
@@ -39,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForReuse;
 - (void)regainFocus;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldDidEndEditing:(id)arg1 reason:(long long)arg2;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (void)updateValueWithPropertyItem:(id)arg1;
 

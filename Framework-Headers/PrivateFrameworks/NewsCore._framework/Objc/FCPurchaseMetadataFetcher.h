@@ -24,9 +24,9 @@
 - (void).cxx_destruct;
 - (id)checkIfOfferUsedAlreadyWithAppAdamID:(id)arg1;
 - (id)createAMSLookupWithProfile:(id)arg1;
-- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurcase:(BOOL)arg2;
+- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurchase:(BOOL)arg2;
 - (id)promiseBundleIDWithAppAdamID:(id)arg1;
-- (id)promiseProductLookupWithLookupResult:(id)arg1 externalVersionID:(id)arg2 restorePurcase:(BOOL)arg3;
+- (id)promiseProductLookupWithLookupResult:(id)arg1 externalVersionID:(id)arg2 restorePurchase:(BOOL)arg3;
 - (id)promisePurchaseLookupWithAppAdamID:(id)arg1;
 - (id)promiseStoreExternalVersionWithAppAdamID:(id)arg1;
 - (id)promiseStoreExternalVersionWithLookupResult:(id)arg1;

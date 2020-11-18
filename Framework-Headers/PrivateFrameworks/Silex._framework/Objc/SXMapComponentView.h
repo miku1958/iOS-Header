@@ -73,7 +73,7 @@
 - (void)mapTypeChanged:(id)arg1;
 - (unsigned long long)mapTypeForSegmentIndex:(unsigned long long)arg1;
 - (void)memoryWarning:(id)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)presentFullScreen;
 - (CDStruct_2b0c6e0b)region;
 - (void)renderContents;

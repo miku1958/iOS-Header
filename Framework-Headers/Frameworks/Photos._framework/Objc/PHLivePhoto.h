@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/NSItemProviderReading-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 
 @class AVAsset, AVVideoComposition, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper;
 
-@interface PHLivePhoto : NSObject <NSCopying, NSSecureCoding>
+@interface PHLivePhoto : NSObject <NSItemProviderReading, NSCopying, NSSecureCoding>
 {
     PHAsset *_asset;
     NSObject *_plImage;
+    BOOL _skipInstantiatingImageAndAVAsset;
     float _audioVolume;
     NSString *_uniqueIdentifier;
     NSString *_assetUUID;
@@ -38,6 +40,9 @@
 @property (readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property (nonatomic) float audioVolume; // @synthesize audioVolume=_audioVolume;
 @property (readonly, nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) CDUnknownBlockType imageFileLoader;
 @property (weak, nonatomic) PHImageManager *imageManager; // @synthesize imageManager=_imageManager;
 @property (readonly, nonatomic) NSString *imageTypeIdentifier;
@@ -47,6 +52,8 @@
 @property (readonly, nonatomic) NSString *originalFilename;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoTime; // @synthesize photoTime=_photoTime;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (nonatomic) BOOL skipInstantiatingImageAndAVAsset; // @synthesize skipInstantiatingImageAndAVAsset=_skipInstantiatingImageAndAVAsset;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (readonly) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;
@@ -63,10 +70,12 @@
 + (BOOL)_validateFileURLs:(id)arg1 withValidationOptions:(unsigned long long)arg2 outError:(id *)arg3;
 + (void)cancelLivePhotoRequestWithRequestID:(int)arg1;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
-+ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 error:(id *)arg4;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipInstantiatingImageAndAVAsset:(BOOL)arg4 error:(id *)arg5;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(BOOL)arg4 error:(id *)arg5;
-+ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(BOOL)arg4 isLooping:(BOOL)arg5 error:(id *)arg6;
-+ (id)loopingLivePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(BOOL)arg4 isLooping:(BOOL)arg5 skipInstantiatingImageAndAVAsset:(BOOL)arg6 error:(id *)arg7;
++ (id)loopingLivePhotoWithResourceFileURLs:(id)arg1 skipInstantiatingImageAndAVAsset:(BOOL)arg2 error:(id *)arg3;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)readableTypeIdentifiersForItemProvider;
 + (int)requestLivePhotoWithResourceFileURLs:(id)arg1 placeholderImage:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 resultHandler:(CDUnknownBlockType)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -74,6 +83,7 @@
 - (id)_imageManager;
 - (id)_initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 assetUUID:(id)arg6 options:(unsigned long long)arg7 videoComposition:(id)arg8;
 - (id)_initWithImageURL:(id)arg1 videoURL:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4;
+- (id)_initWithImageURL:(id)arg1 videoURL:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 skipInstantiatingImageAndAVAsset:(BOOL)arg5;
 - (void)_loadConstituentURLsWithNetworkAccessAllowed:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_synchronouslyLoadImageURL:(id *)arg1 videoURL:(id *)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;

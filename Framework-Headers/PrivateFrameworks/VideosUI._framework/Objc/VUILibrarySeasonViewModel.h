@@ -8,6 +8,7 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
+@class NSString;
 @protocol VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _type;
 }
 
+@property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSObject<VUIMediaEntityIdentifier> *seasonIdentifier; // @synthesize seasonIdentifier=_seasonIdentifier;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 

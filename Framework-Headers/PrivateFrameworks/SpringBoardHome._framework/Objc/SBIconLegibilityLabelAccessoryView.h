@@ -19,8 +19,10 @@
 - (void)addInvertingFilter;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (double)baselineOffsetFromBottom;
+- (id)firstBaselineAnchor;
 - (BOOL)hasBaseline;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)lastBaselineAnchor;
 - (void)removeInvertingFilter;
 - (void)updateWithBaseImage:(id)arg1 legibilitySettings:(id)arg2;
 

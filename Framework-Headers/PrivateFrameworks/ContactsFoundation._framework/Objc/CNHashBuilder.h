@@ -16,6 +16,7 @@
 + (unsigned long long)cgpointHash:(struct CGPoint)arg1;
 + (unsigned long long)cgrectHash:(struct CGRect)arg1;
 + (unsigned long long)cgsizeHash:(struct CGSize)arg1;
++ (unsigned long long)dictionaryHash:(id)arg1;
 + (unsigned long long)hashWithBlocks:(CDUnknownBlockType)arg1;
 + (unsigned long long)integerHash:(long long)arg1;
 + (unsigned long long)objectHash:(id)arg1;

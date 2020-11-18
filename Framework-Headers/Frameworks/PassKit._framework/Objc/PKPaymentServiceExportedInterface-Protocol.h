@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet, NSString, PKAppletSubcredential, PKAppletSubcredentialSharingInvitation, PKFeatureApplication, PKFieldProperties, PKPaymentMessage, PKPaymentTransaction, PKTransactionReceipt, PKTransitPassProperties, PKValueAddedServiceTransaction;
+@class NSDictionary, NSSet, NSString, PKAppletSubcredential, PKAppletSubcredentialSharingInvitation, PKFeatureApplication, PKFieldProperties, PKPaymentBalanceReminder, PKPaymentMessage, PKPaymentTransaction, PKTransactionReceipt, PKTransitPassProperties, PKValueAddedServiceTransaction;
 
 @protocol PKPaymentServiceExportedInterface
 - (void)didRecieveCredentialInvitation:(PKAppletSubcredentialSharingInvitation *)arg1;
@@ -19,11 +19,13 @@
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveBalanceUpdate:(NSSet *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveMessage:(PKPaymentMessage *)arg2;
-- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveTransaction:(PKPaymentTransaction *)arg2;
-- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didRemoveTransactionWithIdentifier:(NSString *)arg2;
+- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateBalanceReminder:(PKPaymentBalanceReminder *)arg2 forBalanceWithIdentifier:(NSString *)arg3;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateCategoryVisualizationWithStyle:(long long)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateCredential:(PKAppletSubcredential *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithTransitPassProperties:(PKTransitPassProperties *)arg2;
+- (void)transactionBatch:(NSDictionary *)arg1 moreComing:(BOOL)arg2 readyForNextBatch:(void (^)(void))arg3;
+- (void)transactionSourceIdentifier:(NSString *)arg1 didReceiveTransaction:(PKPaymentTransaction *)arg2;
+- (void)transactionSourceIdentifier:(NSString *)arg1 didRemoveTransactionWithIdentifier:(NSString *)arg2;
 - (void)transactionWithIdentifier:(NSString *)arg1 didDownloadTransactionReceipt:(PKTransactionReceipt *)arg2;
 @end
 

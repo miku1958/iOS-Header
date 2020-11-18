@@ -9,11 +9,13 @@
 #import <TextInputCore/TITransientLexiconManaging-Protocol.h>
 
 @class NSString;
+@protocol _ICLexiconManaging;
 
 @interface TITransientLexiconManager : NSObject <TITransientLexiconManaging>
 {
     struct _LXLexicon *_namedEntityLexiconRef;
     struct _LXLexicon *_namedEntityPhraseLexiconRef;
+    id<_ICLexiconManaging> _inputContextLexiconManager;
     BOOL _lexiconsLoaded;
 }
 
@@ -28,6 +30,7 @@
 + (void)setSharedTITransientLexiconManager:(id)arg1;
 + (id)sharedInstance;
 + (id)singletonInstance;
+- (void).cxx_destruct;
 - (CDUnknownBlockType)addContactObserver:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)debugLogEntities;
@@ -36,6 +39,7 @@
 - (id)init;
 - (void)keyboardActivityDidTransition:(id)arg1;
 - (void)loadLexicons;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)removeContactObserver:(CDUnknownBlockType)arg1;
 - (BOOL)searchForWord:(id)arg1;
 - (BOOL)searchForWordCaseInsensitive:(id)arg1;

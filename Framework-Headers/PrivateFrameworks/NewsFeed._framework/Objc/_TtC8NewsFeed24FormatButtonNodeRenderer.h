@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed24FormatButtonNodeRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *tracker;
 }
 
 @end

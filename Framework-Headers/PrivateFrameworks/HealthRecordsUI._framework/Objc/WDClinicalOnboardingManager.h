@@ -18,9 +18,8 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) WDClinicalOnboardingOAuthNavigationViewController *inFlightLoginViewController; // @synthesize inFlightLoginViewController=_inFlightLoginViewController;
 @property (strong, nonatomic) WDClinicalGatewayProxy *pendingOnboardingGateway; // @synthesize pendingOnboardingGateway=_pendingOnboardingGateway;
-@property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property (weak, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_didDismissLoginViewController:(id)arg1;
 - (void)_dismissInFlightLoginViewControllerIfExistsWithCompletion:(CDUnknownBlockType)arg1;

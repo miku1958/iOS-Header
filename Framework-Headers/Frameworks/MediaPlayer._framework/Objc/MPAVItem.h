@@ -38,6 +38,7 @@
     unsigned int _userChangedItemsDuringPlayback:1;
     unsigned int _lyricsAvailable:1;
     unsigned int _timeMarkersNeedLoading:1;
+    id _rtcReportingParentHierarchyToken;
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasLoadedHasProtectedContent;
     BOOL _hasLoadedPlaybackMode;
@@ -66,6 +67,7 @@
     BOOL _hasPerformedErrorResolution;
     BOOL _activeItem;
     BOOL _externalDisplay;
+    BOOL _didReachEnd;
     float _currentPlaybackRate;
     float _loudnessInfoVolumeNormalization;
     id<MPAVItemObserver> _observer;
@@ -80,7 +82,10 @@
     long long _storeSubscriptionAdamID;
     MPMediaItem *_mediaItem;
     NSString *_explicitBadge;
+    long long _repeatIndex;
+    long long _lastChangeDirection;
     MPModelGenericObject *_modelGenericObject;
+    NSNumber *_initialPlaybackStartTimeOverride;
     NSString *_aggregateDictionaryItemIdentifier;
     NSString *_storeFrontIdentifier;
     NSNumber *_storeAccountID;
@@ -88,6 +93,7 @@
     long long _leasePlaybackPreventionState;
     ICMusicSubscriptionLeaseStatus *_leaseStatus;
     NSString *_contentItemID;
+    NSString *_previousContentItemID;
 }
 
 @property (nonatomic, getter=_currentPlaybackRate, setter=_setCurrentPlaybackRate:) float _currentPlaybackRate; // @synthesize _currentPlaybackRate;
@@ -135,6 +141,7 @@
 @property (readonly, nonatomic) NSString *databaseID;
 @property (nonatomic) float defaultPlaybackRate; // @synthesize defaultPlaybackRate=_defaultPlaybackRate;
 @property (readonly, nonatomic) BOOL didAttemptToLoadAsset; // @synthesize didAttemptToLoadAsset=_didAttemptToLoadAsset;
+@property (readonly, nonatomic) BOOL didReachEnd; // @synthesize didReachEnd=_didReachEnd;
 @property (readonly, nonatomic) unsigned long long discCount;
 @property (readonly, nonatomic) unsigned long long discNumber;
 @property (readonly, nonatomic) NSString *displayableText;
@@ -159,9 +166,11 @@
 @property (readonly, nonatomic) BOOL hasTimeSyncedLyrics;
 @property (nonatomic, getter=isInWishList) BOOL inWishList;
 @property (readonly, copy, nonatomic) NSNumber *initialPlaybackStartTime;
+@property (copy, nonatomic) NSNumber *initialPlaybackStartTimeOverride; // @synthesize initialPlaybackStartTimeOverride=_initialPlaybackStartTimeOverride;
 @property (readonly, nonatomic) BOOL isAd;
 @property BOOL isAssetLoaded; // @synthesize isAssetLoaded=_isAssetLoaded;
 @property (strong, nonatomic) NSError *itemError; // @synthesize itemError=_itemError;
+@property (nonatomic) long long lastChangeDirection; // @synthesize lastChangeDirection=_lastChangeDirection;
 @property (readonly, nonatomic) long long leasePlaybackPreventionState; // @synthesize leasePlaybackPreventionState=_leasePlaybackPreventionState;
 @property (readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus; // @synthesize leaseStatus=_leaseStatus;
 @property (readonly, nonatomic) NSString *libraryLyrics;
@@ -189,9 +198,12 @@
 @property (readonly, nonatomic) NSURL *podcastURL;
 @property (readonly, nonatomic) BOOL prefersSeekOverSkip; // @synthesize prefersSeekOverSkip=_prefersSeekOverSkip;
 @property (readonly, nonatomic) struct CGSize presentationSize;
+@property (copy, nonatomic) NSString *previousContentItemID; // @synthesize previousContentItemID=_previousContentItemID;
 @property (strong, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
 @property (readonly, nonatomic, getter=isRadioItem) BOOL radioItem;
+@property (nonatomic) long long repeatIndex; // @synthesize repeatIndex=_repeatIndex;
 @property (readonly, nonatomic) BOOL requiresLoadedAssetForAirPlayProperties; // @synthesize requiresLoadedAssetForAirPlayProperties=_requiresLoadedAssetForAirPlayProperties;
+@property (readonly, nonatomic) id rtcReportingParentHierarchyToken; // @synthesize rtcReportingParentHierarchyToken=_rtcReportingParentHierarchyToken;
 @property (readonly, nonatomic) BOOL shouldPreventPlayback; // @synthesize shouldPreventPlayback=_shouldPreventPlayback;
 @property (readonly, nonatomic) BOOL shouldShowComposer;
 @property (nonatomic) float soundCheckVolumeNormalization; // @synthesize soundCheckVolumeNormalization=_soundCheckVolumeNormalization;
@@ -231,11 +243,8 @@
 
 + (id)URLFromPath:(id)arg1;
 + (long long)defaultScaleMode;
-+ (BOOL)hasNominalAmountBeenPlayedForElapsedTime:(double)arg1 startTime:(double)arg2 stopTime:(double)arg3;
 + (BOOL)isPlaceholder;
-+ (double)nominalHasBeenPlayedThresholdForDuration:(double)arg1;
 + (void)setDefaultScaleMode:(long long)arg1;
-+ (BOOL)shouldIncrementPlayCountForElapsedTime:(double)arg1 startTime:(double)arg2 stopTime:(double)arg3;
 - (void).cxx_destruct;
 - (void)_addObservationsForAVPlayerItem:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;

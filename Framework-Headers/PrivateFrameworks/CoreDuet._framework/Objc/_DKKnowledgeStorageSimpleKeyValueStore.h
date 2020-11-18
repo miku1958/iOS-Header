@@ -16,11 +16,7 @@
     NSString *_domain;
 }
 
-@property (readonly, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property (readonly, nonatomic) _DKKnowledgeStorage *storage; // @synthesize storage=_storage;
-
 - (void).cxx_destruct;
-- (id)initWithStorage:(id)arg1 domain:(id)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;

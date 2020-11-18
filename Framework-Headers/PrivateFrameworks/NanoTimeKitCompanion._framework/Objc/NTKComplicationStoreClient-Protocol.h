@@ -6,11 +6,12 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class CLKComplicationTemplate, NSDictionary, NSNumber, NSString;
+@class CLKComplicationDescriptor, CLKComplicationTemplate, NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol NTKComplicationStoreClient <NSObject>
-- (void)loadFullCollectionWithLocalizableSampleTemplates:(NSDictionary *)arg1 seqId:(NSNumber *)arg2;
-- (void)removeComplicationForClientIdentifier:(NSString *)arg1 seqId:(NSNumber *)arg2;
-- (void)updateLocalizableSampleTemplate:(CLKComplicationTemplate *)arg1 forClientIdentifier:(NSString *)arg2 family:(long long)arg3 seqId:(NSNumber *)arg4;
+- (void)loadFullCollectionWithLocalizableSampleTemplates:(NSDictionary *)arg1 complicationDescriptors:(NSDictionary *)arg2 seqId:(NSNumber *)arg3;
+- (void)removeComplicationSampleTemplatesForClientIdentifier:(NSString *)arg1 descriptor:(CLKComplicationDescriptor *)arg2 seqId:(NSNumber *)arg3;
+- (void)updateComplicationDescriptors:(NSArray *)arg1 forClientIdentifier:(NSString *)arg2 seqId:(NSNumber *)arg3;
+- (void)updateLocalizableSampleTemplate:(CLKComplicationTemplate *)arg1 forClientIdentifier:(NSString *)arg2 descriptor:(CLKComplicationDescriptor *)arg3 family:(long long)arg4 seqId:(NSNumber *)arg5;
 @end
 

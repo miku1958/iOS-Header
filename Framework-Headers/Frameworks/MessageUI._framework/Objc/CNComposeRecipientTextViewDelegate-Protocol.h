@@ -6,14 +6,17 @@
 
 #import <MessageUI/CNComposeHeaderViewDelegate-Protocol.h>
 
-@class CNComposeRecipient, CNComposeRecipientAtom, CNComposeRecipientTextView, CNContact, NSArray, NSString;
+@class CNComposeRecipient, CNComposeRecipientAtom, CNComposeRecipientTextView, CNContact, NSArray, NSString, UIContextMenuConfiguration;
 
 @protocol CNComposeRecipientTextViewDelegate <CNComposeHeaderViewDelegate>
 
 @optional
 - (BOOL)chooseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
+- (BOOL)chooseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1 context:(unsigned long long)arg2;
+- (BOOL)collapseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (CNComposeRecipient *)composeRecipientView:(CNComposeRecipientTextView *)arg1 composeRecipientForAddress:(NSString *)arg2;
 - (CNComposeRecipient *)composeRecipientView:(CNComposeRecipientTextView *)arg1 composeRecipientForContact:(CNContact *)arg2;
+- (UIContextMenuConfiguration *)composeRecipientView:(CNComposeRecipientTextView *)arg1 contextMenuConfigurationForAtom:(CNComposeRecipientAtom *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 didAddRecipient:(CNComposeRecipient *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 didFinishEnteringAddress:(NSString *)arg2;
@@ -30,7 +33,9 @@
 - (void)composeRecipientViewRequestAddRecipient:(CNComposeRecipientTextView *)arg1;
 - (void)composeRecipientViewReturnPressed:(CNComposeRecipientTextView *)arg1;
 - (BOOL)composeRecipientViewShowingSearchResults:(CNComposeRecipientTextView *)arg1;
+- (void)composeRecipientViewTabPressed:(CNComposeRecipientTextView *)arg1;
 - (void)dismissSearchResultsForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
+- (BOOL)expandSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (BOOL)presentSearchResultsForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(CNComposeRecipient *)arg1;
 - (void)recipientViewDidBecomeFirstResponder:(CNComposeRecipientTextView *)arg1;

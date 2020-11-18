@@ -16,7 +16,6 @@
 + (id)iconArticleMarkingShare;
 + (id)iconTextSizeControl;
 + (id)iconTextSizeControlCompact;
-+ (id)ignoreSuggestionActivity;
 + (id)leftArrow;
 + (id)openChannelActivity;
 + (id)openInSafariActivity;

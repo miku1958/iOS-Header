@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MapKit/MKUserLocationView.h>
+#import <MapKit/_MKUserLocationView.h>
 
-@interface MKModernUserLocationView : MKUserLocationView
+@interface MKModernUserLocationView : _MKUserLocationView
 {
 }
 

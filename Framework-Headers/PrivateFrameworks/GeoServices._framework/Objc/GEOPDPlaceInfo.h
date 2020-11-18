@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     double _area;
     GEOPDBasemapRegionMetadata *_basemapRegionMetadata;
     GEOLatLng *_center;
+    GEOLatLng *_enhancedCenter;
     GEOTimezone *_timezone;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -31,23 +32,20 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_basemapRegionMetadata:1;
         unsigned int read_center:1;
+        unsigned int read_enhancedCenter:1;
         unsigned int read_timezone:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_area:1;
-        unsigned int wrote_basemapRegionMetadata:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_timezone:1;
-        unsigned int wrote_knownAccuracy:1;
-        unsigned int wrote_isApproximateCenter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (nonatomic) double area;
 @property (strong, nonatomic) GEOPDBasemapRegionMetadata *basemapRegionMetadata;
 @property (strong, nonatomic) GEOLatLng *center;
+@property (strong, nonatomic) GEOLatLng *enhancedCenter;
 @property (nonatomic) BOOL hasArea;
 @property (readonly, nonatomic) BOOL hasBasemapRegionMetadata;
 @property (readonly, nonatomic) BOOL hasCenter;
+@property (readonly, nonatomic) BOOL hasEnhancedCenter;
 @property (nonatomic) BOOL hasIsApproximateCenter;
 @property (nonatomic) BOOL hasKnownAccuracy;
 @property (readonly, nonatomic) BOOL hasTimezone;
@@ -60,9 +58,6 @@ __attribute__((visibility("hidden")))
 + (id)placeInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsKnownAccuracy:(id)arg1;
-- (void)_readBasemapRegionMetadata;
-- (void)_readCenter;
-- (void)_readTimezone;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -71,7 +66,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)knownAccuracyAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

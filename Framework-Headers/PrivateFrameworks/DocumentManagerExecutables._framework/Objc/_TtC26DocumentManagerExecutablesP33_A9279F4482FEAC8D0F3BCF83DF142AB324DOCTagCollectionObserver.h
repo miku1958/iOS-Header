@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentManagerExecutables/FPItemCollectionIndexPathBasedDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC26DocumentManagerExecutablesP33_A9279F4482FEAC8D0F3BCF83DF142AB324DOCTagCollectionObserver : NSObject <FPItemCollectionIndexPathBasedDelegate>
+@interface _TtC26DocumentManagerExecutablesP33_A9279F4482FEAC8D0F3BCF83DF142AB324DOCTagCollectionObserver : NSObject
 {
     MISSING_TYPE *gatheringKeyPath;
     MISSING_TYPE *serialQueue;

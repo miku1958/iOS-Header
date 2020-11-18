@@ -11,21 +11,29 @@
 @interface WFRunShortcutEvent : WFEvent
 {
     BOOL _completed;
-    int _source;
+    BOOL _didRunRemotely;
+    BOOL _isFromAutomationSuggestion;
     unsigned int _actionCount;
+    unsigned int _numberOfDialogsPresented;
     NSString *_key;
+    NSString *_shortcutSource;
     NSString *_runSource;
     NSString *_automationType;
     NSString *_galleryIdentifier;
+    NSString *_automationSuggestionsTrialIdentifier;
 }
 
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;
+@property (copy, nonatomic) NSString *automationSuggestionsTrialIdentifier; // @synthesize automationSuggestionsTrialIdentifier=_automationSuggestionsTrialIdentifier;
 @property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
+@property (nonatomic) BOOL didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property (copy, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
+@property (nonatomic) BOOL isFromAutomationSuggestion; // @synthesize isFromAutomationSuggestion=_isFromAutomationSuggestion;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (nonatomic) unsigned int numberOfDialogsPresented; // @synthesize numberOfDialogsPresented=_numberOfDialogsPresented;
 @property (copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (copy, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
 
 + (Class)codableEventClass;
 + (id)serializablePropertyTransformers;

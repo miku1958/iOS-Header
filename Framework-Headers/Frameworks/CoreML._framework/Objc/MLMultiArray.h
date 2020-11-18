@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class NSArray;
 
-@interface MLMultiArray : NSObject
+@interface MLMultiArray : NSObject <NSSecureCoding>
 {
     struct MultiArrayBuffer *_pArray;
     BOOL _managingData;
@@ -32,29 +34,43 @@
 + (id)doubleMultiArrayWithCopyOfMultiArray:(id)arg1;
 + (id)doubleMultiArrayWithShape:(id)arg1 valueArray:(id)arg2 error:(id *)arg3;
 + (id)doubleVectorWithValues:(id)arg1;
-+ (vector_06e666a8)indexVectorFromArray:(id)arg1;
++ (BOOL)fillIndexVector:(vector_06e666a8 *)arg1 fromArray:(id)arg2 error:(id *)arg3;
++ (id)float32MatrixWithValues:(id)arg1 error:(id *)arg2;
++ (BOOL)getShapeOfArrayOfSameLengthArrays:(id)arg1 numberOfRows:(unsigned long long *)arg2 numberOfColumns:(unsigned long long *)arg3 error:(id *)arg4;
++ (id)multiArrayByConcatenatingMultiArrays:(id)arg1 alongAxis:(long long)arg2 dataType:(long long)arg3;
 + (struct __CVBuffer *)pixelBufferBGRA8FromMultiArrayCHW:(id)arg1 channelOrderIsBGR:(BOOL)arg2 error:(id *)arg3;
 + (struct __CVBuffer *)pixelBufferGray8FromMultiArrayHW:(id)arg1 error:(id *)arg2;
 + (id)stringForDataType:(long long)arg1;
++ (BOOL)supportsSecureCoding;
++ (BOOL)validateMultiArrays:(id)arg1 forConcatenatingAlongAxis:(long long)arg2 normalizedAxis:(unsigned long long *)arg3 reason:(id *)arg4;
 - (void).cxx_destruct;
 - (BOOL)copyIntoMultiArray:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)debugQuickLookObject;
 - (id)description;
 - (double *)doublePointer;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)fillWithNumber:(id)arg1;
+- (float *)float32Pointer;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDataPointer:(void *)arg1 shape:(id)arg2 dataType:(long long)arg3 strides:(id)arg4 deallocator:(CDUnknownBlockType)arg5 error:(id *)arg6;
+- (id)initWithMultiArrayBuffer:(struct MultiArrayBuffer *)arg1;
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 error:(id *)arg3;
+- (id)initWithShape:(id)arg1 dataType:(long long)arg2 storageOrder:(long long)arg3 bufferAlignment:(unsigned long long)arg4;
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 storageOrder:(long long)arg3 error:(id *)arg4;
 - (BOOL)isContiguousInOrder:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMultiArray:(id)arg1;
 - (void *)multiArrayBuffer;
+- (id)multiArrayViewExpandingDimensionsAtAxis:(long long)arg1;
 - (id)numberArray;
 - (id)numberAtOffset:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (unsigned long long)offsetForKeyedSubscript:(id)arg1;
+- (BOOL)renderTo32BGRAPixelBuffer:(struct __CVBuffer *)arg1 channelOrderIsBGR:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)renderToCVPixelBuffer:(struct __CVBuffer *)arg1 channelOrderIsBGR:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)renderToOneComponent8PixelBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (void)setNumber:(id)arg1 atOffset:(unsigned long long)arg2;
 - (void)setObject:(id)arg1 atIndexedSubscript:(long long)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

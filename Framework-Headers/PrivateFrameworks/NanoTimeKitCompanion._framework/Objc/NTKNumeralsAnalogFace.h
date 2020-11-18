@@ -6,12 +6,22 @@
 
 #import <NanoTimeKitCompanion/NTKFace.h>
 
-@interface NTKNumeralsAnalogFace : NTKFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKNumeralsAnalogFace : NTKFace <NTKFaceComplicationPreviewable>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)_complicationSlotDescriptors;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
++ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (id)_orderedComplicationSlots;
 - (void)_commonInit;
 - (id)_complicationMigrationPaths;
@@ -25,6 +35,7 @@
 - (BOOL)_option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
 - (void)dealloc;
 
 @end

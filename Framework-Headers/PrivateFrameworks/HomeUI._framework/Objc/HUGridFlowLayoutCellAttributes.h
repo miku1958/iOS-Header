@@ -7,14 +7,17 @@
 #import <UIKit/UICollectionViewLayoutAttributes.h>
 
 @class HFWallpaperSlice;
+@protocol HUBackgroundEffectViewGrouping;
 
 @interface HUGridFlowLayoutCellAttributes : UICollectionViewLayoutAttributes
 {
     HFWallpaperSlice *_blurredWallpaperSlice;
     HFWallpaperSlice *_darkModeBlurredWallpaperSlice;
+    id<HUBackgroundEffectViewGrouping> _backgroundEffectViewGrouper;
     struct CGRect _normalizedWallpaperRect;
 }
 
+@property (weak, nonatomic) id<HUBackgroundEffectViewGrouping> backgroundEffectViewGrouper; // @synthesize backgroundEffectViewGrouper=_backgroundEffectViewGrouper;
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
 @property (strong, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice; // @synthesize darkModeBlurredWallpaperSlice=_darkModeBlurredWallpaperSlice;
 @property (nonatomic) struct CGRect normalizedWallpaperRect; // @synthesize normalizedWallpaperRect=_normalizedWallpaperRect;

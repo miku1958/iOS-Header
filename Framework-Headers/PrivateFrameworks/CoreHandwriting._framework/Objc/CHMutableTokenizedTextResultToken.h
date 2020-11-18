@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) double alignmentScore; // @dynamic alignmentScore;
 @property (nonatomic) double combinedScore; // @dynamic combinedScore;
 @property (nonatomic) unsigned long long properties; // @dynamic properties;
 @property (nonatomic) double recognitionScore; // @dynamic recognitionScore;

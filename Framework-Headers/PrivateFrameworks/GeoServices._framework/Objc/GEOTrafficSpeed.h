@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTrafficPath, GEOTrafficPredictedPaces, PBDataReader;
+@class GEOTrafficPath, GEOTrafficPredictedPaces, GEOTrafficProbeFlow, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOTrafficSpeed : PBCodable <NSCopying>
@@ -16,29 +16,29 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     GEOTrafficPath *_path;
     GEOTrafficPredictedPaces *_predictedPaces;
+    GEOTrafficProbeFlow *_probeFlow;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _color;
     unsigned int _confidence;
     float _freeFlowSpeedKph;
+    float _loadFactor;
     unsigned int _observationCount;
+    unsigned int _probeCountPerHour;
     float _speedKph;
     struct {
         unsigned int has_color:1;
         unsigned int has_confidence:1;
         unsigned int has_freeFlowSpeedKph:1;
+        unsigned int has_loadFactor:1;
         unsigned int has_observationCount:1;
+        unsigned int has_probeCountPerHour:1;
         unsigned int has_speedKph:1;
         unsigned int read_path:1;
         unsigned int read_predictedPaces:1;
-        unsigned int wrote_path:1;
-        unsigned int wrote_predictedPaces:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_confidence:1;
-        unsigned int wrote_freeFlowSpeedKph:1;
-        unsigned int wrote_observationCount:1;
-        unsigned int wrote_speedKph:1;
+        unsigned int read_probeFlow:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,20 +48,24 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasColor;
 @property (nonatomic) BOOL hasConfidence;
 @property (nonatomic) BOOL hasFreeFlowSpeedKph;
+@property (nonatomic) BOOL hasLoadFactor;
 @property (nonatomic) BOOL hasObservationCount;
 @property (readonly, nonatomic) BOOL hasPath;
 @property (readonly, nonatomic) BOOL hasPredictedPaces;
+@property (nonatomic) BOOL hasProbeCountPerHour;
+@property (readonly, nonatomic) BOOL hasProbeFlow;
 @property (nonatomic) BOOL hasSpeedKph;
+@property (nonatomic) float loadFactor;
 @property (nonatomic) unsigned int observationCount;
 @property (strong, nonatomic) GEOTrafficPath *path;
 @property (strong, nonatomic) GEOTrafficPredictedPaces *predictedPaces;
+@property (nonatomic) unsigned int probeCountPerHour;
+@property (strong, nonatomic) GEOTrafficProbeFlow *probeFlow;
 @property (nonatomic) float speedKph;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
-- (void)_readPath;
-- (void)_readPredictedPaces;
 - (id)colorAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -70,7 +74,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) AMSMetricsFigaroEventModifier *defaultModifier; // @synthesize defaultModifier=_defaultModifier;
-@property (readonly, nonatomic) double flushInterval;
 @property (readonly, nonatomic) NSDictionary *metricsDictionary; // @synthesize metricsDictionary=_metricsDictionary;
 @property (readonly, nonatomic) NSArray *overrides; // @synthesize overrides=_overrides;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

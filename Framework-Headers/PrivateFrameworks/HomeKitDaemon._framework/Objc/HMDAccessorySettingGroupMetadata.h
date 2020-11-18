@@ -13,6 +13,7 @@
 @interface HMDAccessorySettingGroupMetadata : HMFObject <HMFObject>
 {
     NSString *_name;
+    NSString *_keyPath;
     NSArray *_groups;
     NSArray *_settings;
 }
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *groups; // @synthesize groups=_groups;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
@@ -29,10 +31,11 @@
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 
-+ (id)groupWithDictonaryRepresentation:(id)arg1;
-+ (id)groupsWithArrayRepresenation:(id)arg1;
++ (id)groupWithDictonaryRepresentation:(id)arg1 parentKeyPath:(id)arg2;
++ (id)groupsWithArrayRepresenation:(id)arg1 parentKeyPath:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithName:(id)arg1 settings:(id)arg2 groups:(id)arg3;
+- (id)initWithName:(id)arg1 settings:(id)arg2 groups:(id)arg3 parentKeyPath:(id)arg4;
 - (id)modelsWithParentIdentifier:(id)arg1;
 
 @end

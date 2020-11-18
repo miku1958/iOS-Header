@@ -8,6 +8,7 @@
 
 #import <Home/HFCharacteristicValueReader-Protocol.h>
 #import <Home/HFCharacteristicValueWriter-Protocol.h>
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFWallaperHost-Protocol.h>
@@ -15,14 +16,17 @@
 @class NSArray, NSDate, NSNumber, NSObject, NSString, NSUUID, UIImage;
 @protocol OS_dispatch_source;
 
-@interface HMHome (HFUserHandleAdditions) <HFStateDumpBuildable, HFCharacteristicValueReader, HFCharacteristicValueWriter, HFWallaperHost, HFReorderableHomeKitObject>
+@interface HMHome (HFUserHandleAdditions) <HFStateDumpBuildable, HFCharacteristicValueReader, HFCharacteristicValueWriter, HFWallaperHost, HFHomeKitObject, HFReorderableHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -38,6 +42,8 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)_hf_appDataKeyForColorPaletteOfType:(unsigned long long)arg1;
@@ -50,6 +56,7 @@
 - (id)hf_accessControlDescriptor;
 - (id)hf_accessoriesMatchingCategoryType:(id)arg1;
 - (id)hf_accessoriesRequiringManualWiFiReconfiguration;
+- (id)hf_accessoriesSupportingNaturalLighting;
 - (id)hf_accessoryForSymptomsHandler:(id)arg1;
 - (id)hf_accessoryProfilesWithClass:(Class)arg1;
 - (id)hf_accessoryWithDeviceIdentifier:(id)arg1;
@@ -60,14 +67,23 @@
 - (id)hf_allBridgeAccessories;
 - (id)hf_allCameraProfiles;
 - (id)hf_allCameraProfilesSupportingRecording;
-- (id)hf_allHomePodProfiles;
-- (id)hf_allMediaProfiles;
+- (id)hf_allCameraProfilesWithDoorbellService;
+- (id)hf_allCameraProfilesWithSmartMotionRecordingEnabled;
+- (id)hf_allExternalPersonManagers;
+- (id)hf_allHomePodProfileContainers;
+- (id)hf_allHomePodsOrStereoPairs;
+- (id)hf_allHomePodsOrStereoPairsThatWillChime;
+- (id)hf_allLightProfiles;
+- (id)hf_allLightProfilesSupportingNaturalLighting;
+- (id)hf_allMediaProfileContainers;
 - (id)hf_allNetworkConfigurationProfiles;
 - (id)hf_allNetworkRouterProfiles;
 - (id)hf_allNonAdminUsers;
 - (id)hf_allNonEmptyActionSets;
 - (id)hf_allNonOwnerUsers;
 - (id)hf_allObjectsAffectedByServiceTopic:(id)arg1;
+- (id)hf_allPersonManagers;
+- (id)hf_allPersons;
 - (id)hf_allProgrammableSwitchAccessories;
 - (id)hf_allResidentAccessories;
 - (id)hf_allRooms;
@@ -76,22 +92,25 @@
 - (id)hf_allUsersIncludingCurrentUser;
 - (id)hf_allVisibleServices;
 - (id)hf_appleTVs;
+- (id)hf_cameraProfileForSignificantEvent:(id)arg1;
 - (id)hf_cameraProfileWithIdentifier:(id)arg1;
 - (id)hf_cameraProfilesAffectedByServiceTopic:(id)arg1;
 - (BOOL)hf_cameraRecordingHasBeenOnboarded;
 - (id)hf_characteristicValueManager;
-- (id)hf_colorPalette;
 - (id)hf_colorPaletteOfType:(unsigned long long)arg1;
+- (BOOL)hf_containsActionableAccessories;
 - (BOOL)hf_currentUserIsAdministrator;
 - (BOOL)hf_currentUserIsOwner;
 - (id)hf_enabledResidentDevices;
 - (BOOL)hf_enabledResidentsSupportsMediaActions;
+- (BOOL)hf_enabledResidentsSupportsNaturalLight;
 - (unsigned long long)hf_favoriteCameraCountExcludingHomeKitObjects:(id)arg1;
 - (unsigned long long)hf_favoriteServiceLikeObjectCountExcludingHomeKitObjects:(id)arg1;
 - (id)hf_handleForUser:(id)arg1;
 - (BOOL)hf_hasAcceptedTermsAndConditionsForHomePodVersion:(id)arg1;
 - (BOOL)hf_hasAnyVisibleTriggers;
 - (BOOL)hf_hasAppleTVs;
+- (BOOL)hf_hasAtleastOneReachableHomePod;
 - (BOOL)hf_hasCameraRecordingResident;
 - (BOOL)hf_hasEnabledResident;
 - (BOOL)hf_hasHomePods;
@@ -100,10 +119,14 @@
 - (id)hf_home;
 - (BOOL)hf_homeHasMigratedIntoHomeApp;
 - (BOOL)hf_homeHasMigratedServicesToAccessories;
+- (id)hf_homeKitObjectsSupportingNaturalLighting;
 - (id)hf_homePods;
 - (BOOL)hf_isAutomatable;
 - (BOOL)hf_isCurrentLocationHome;
+- (BOOL)hf_isEmpty;
+- (BOOL)hf_isFaceRecognitionAvailable;
 - (BOOL)hf_isMediaAccessoryProfileValid:(id)arg1;
+- (BOOL)hf_isNetworkCredentialManagementEnabled;
 - (BOOL)hf_isNetworkProtectionEnabled;
 - (BOOL)hf_isNetworkProtectionSupportedForAccessories;
 - (BOOL)hf_isNetworkProtectionSupportedForHome;
@@ -116,8 +139,12 @@
 - (id)hf_mediaProfileContainerForSymptomsHandler:(id)arg1;
 - (id)hf_mediaSystemForAccessory:(id)arg1;
 - (id)hf_mediaSystemForSymptomsHandler:(id)arg1;
+- (id)hf_mediaSystemWithIdentifier:(id)arg1;
 - (id)hf_notesApplicationData;
 - (unsigned long long)hf_numberOfHomePods;
+- (id)hf_orderedRooms;
+- (id)hf_personManagerWithIdentifier:(id)arg1;
+- (id)hf_personWithIdentifier:(id)arg1;
 - (id)hf_personalRequestAccessories;
 - (id)hf_primaryResidentDevice;
 - (unsigned long long)hf_remoteAccessState;
@@ -129,32 +156,40 @@
 - (id)hf_roomWithIdentifier:(id)arg1;
 - (id)hf_roomWithName:(id)arg1;
 - (id)hf_selectedRoom;
+- (id)hf_serviceGroupWithIdentifier:(id)arg1;
 - (id)hf_serviceGroupsForService:(id)arg1;
 - (id)hf_serviceWithIdentifier:(id)arg1;
 - (id)hf_servicesAffectedByServiceTopic:(id)arg1;
 - (void)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;
+- (id)hf_setFaceRecognitionEnabled:(BOOL)arg1;
 - (id)hf_setHomeHasMigratedServicesToAccessories:(BOOL)arg1;
 - (id)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:(BOOL)arg1;
+- (id)hf_setImportPhotosLibraryEnabled:(BOOL)arg1 forUser:(id)arg2;
 - (id)hf_setNotesApplicationData:(id)arg1;
+- (id)hf_setPhotosLibrarySettingsForUser:(id)arg1 importPhotosLibraryEnabled:(BOOL)arg2 shareFacesEnabled:(BOOL)arg3;
 - (void)hf_setSelectedRoom:(id)arg1;
+- (id)hf_setSharePhotosLibraryEnabled:(BOOL)arg1 forUser:(id)arg2;
 - (BOOL)hf_shouldDefaultFavoriteForHomeKitObject:(id)arg1 excludingHomeKitObjects:(id)arg2;
 - (void)hf_startReprovisioningAccessory:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsPerUserRemoteAccess;
+- (BOOL)hf_supportsReachabilityNotifications;
 - (BOOL)hf_supportsRemoteAccessRestrictions;
 - (BOOL)hf_supportsSharedEventAutomation;
 - (id)hf_tvViewingProfilesAccessories;
 - (id)hf_unitaryCameraProfile;
 - (id)hf_updateAccessControlDescriptor:(id)arg1;
 - (id)hf_updateAutomaticSoftwareUpdateEnabled:(BOOL)arg1;
-- (id)hf_updateColorPalette:(id)arg1;
 - (id)hf_updateColorPalette:(id)arg1 type:(unsigned long long)arg2;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateNetworkProtection:(long long)arg1;
 - (id)hf_updateWallpaperImage:(id)arg1;
 - (BOOL)hf_userCanCreateTrigger;
 - (id)hf_userForHandle:(id)arg1;
+- (BOOL)hf_userIsAdministrator:(id)arg1;
 - (BOOL)hf_userIsAllowedToCreateTrigger;
+- (BOOL)hf_userIsAllowedToEditTrigger;
+- (BOOL)hf_userIsOwner:(id)arg1;
 - (id)hf_userNotificationTopicForCameraProfile:(id)arg1;
 - (id)hf_userNotificationTopicForObject:(id)arg1;
 - (id)hf_userNotificationTopicForService:(id)arg1;

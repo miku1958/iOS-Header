@@ -4,38 +4,52 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AppleMediaServicesUI/AMSUICommonViewController.h>
 
 #import <AppleMediaServicesUI/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServicesUI/AMSUIDynamicViewControllerDelegate-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, NSDictionary, NSString;
-@protocol AMSBagProtocol;
+@class ACAccount, AMSProcessInfo, AMSUIDynamicViewControllerDelegateProxy, NSDictionary, NSString;
+@protocol AMSBagProtocol, AMSUIDynamicViewControllerDelegate;
 
-@interface AMSUIDynamicViewController : UIViewController <AMSBagConsumer>
+@interface AMSUIDynamicViewController : AMSUICommonViewController <AMSUIDynamicViewControllerDelegate, AMSBagConsumer>
 {
+    AMSUIDynamicViewControllerDelegateProxy *_delegateProxy;
     AMSUIDynamicViewController *_dynamicViewController;
 }
 
 @property (strong, nonatomic) ACAccount *account;
+@property (nonatomic) BOOL anonymousMetrics;
 @property (strong, nonatomic) id<AMSBagProtocol> bag;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo;
+@property (strong, nonatomic) NSDictionary *clientOptions;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<AMSUIDynamicViewControllerDelegate> delegate;
+@property (readonly, nonatomic) AMSUIDynamicViewControllerDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AMSUIDynamicViewController *dynamicViewController; // @synthesize dynamicViewController=_dynamicViewController;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDictionary *internalClientOptions;
 @property (strong, nonatomic) NSDictionary *metricsOverlay;
 @property (readonly) Class superclass;
 
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
-- (void)_setup;
-- (void)_setupChildViewController:(id)arg1;
+- (void)_setupContentSize;
+- (id)initWithBag:(id)arg1 URL:(id)arg2;
+- (id)initWithBag:(id)arg1 bagValue:(id)arg2;
 - (id)initWithBag:(id)arg1 javaScriptBagValue:(id)arg2;
 - (id)initWithBag:(id)arg1 javaScriptURL:(id)arg2;
+- (BOOL)isBeingDismissed;
+- (BOOL)isMovingFromParentViewController;
+- (id)navigationItem;
+- (void)reloadContentViewImpressionItems;
 - (void)setTitle:(id)arg1;
 - (id)title;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

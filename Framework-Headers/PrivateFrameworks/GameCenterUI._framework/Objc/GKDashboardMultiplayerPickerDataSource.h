@@ -6,69 +6,70 @@
 
 #import <GameCenterUI/GKCollectionDataSource.h>
 
-@class GKContactDataSource, GKTournament, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
-@protocol GKDashboardNearbyBrowserDelegate;
+@class GKContactDataSource, NSArray, NSMutableArray, NSMutableDictionary, NSObject;
+@protocol GKDashboardMultiplayerPickerDatasourceDelegate, GKDashboardNearbyBrowserDelegate;
 
 @interface GKDashboardMultiplayerPickerDataSource : GKCollectionDataSource
 {
     BOOL _showsAllFriends;
-    BOOL _searching;
     BOOL _supportsNearby;
-    BOOL _excludesContacts;
-    BOOL _isSegmented;
+    BOOL _nearbyOnly;
     BOOL _browsingForNearbyPlayers;
     BOOL _didLoad;
+    BOOL _excludesContacts;
+    BOOL _showsAllSuggestions;
     NSMutableDictionary *_playerStates;
+    NSArray *_searchPlayers;
     long long _maxSelectable;
-    GKTournament *_tournament;
     id<GKDashboardNearbyBrowserDelegate> _nearbyDelegate;
     CDUnknownBlockType _nearbyPlayersChangedHandler;
-    long long _currentSegment;
+    long long _friendSortFilterScope;
+    NSObject<GKDashboardMultiplayerPickerDatasourceDelegate> *_delegate;
     NSArray *_contactPlayers;
     NSArray *_friendPlayers;
+    NSArray *_suggestedPlayers;
+    NSArray *_coreRecentPlayers;
     NSArray *_recentPlayers;
     NSMutableArray *_nearbyPlayers;
-    NSArray *_searchPlayers;
-    long long _maxFriendsVisible;
     NSArray *_hiddenPlayers;
     GKContactDataSource *_contactSource;
 }
 
 @property (nonatomic) BOOL browsingForNearbyPlayers; // @synthesize browsingForNearbyPlayers=_browsingForNearbyPlayers;
 @property (strong, nonatomic) NSArray *contactPlayers; // @synthesize contactPlayers=_contactPlayers;
-@property (readonly, nonatomic) NSDictionary *contactSectionHeaderIndexes;
-@property (readonly, nonatomic) NSArray *contactSectionHeaders;
-@property (readonly, nonatomic) NSDictionary *contactSkipIndexes;
-@property (readonly, nonatomic) NSArray *contactSkipValues;
 @property (strong, nonatomic) GKContactDataSource *contactSource; // @synthesize contactSource=_contactSource;
-@property (nonatomic) long long currentSegment; // @synthesize currentSegment=_currentSegment;
+@property (strong, nonatomic) NSArray *coreRecentPlayers; // @synthesize coreRecentPlayers=_coreRecentPlayers;
+@property (weak, nonatomic) NSObject<GKDashboardMultiplayerPickerDatasourceDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didLoad; // @synthesize didLoad=_didLoad;
 @property (nonatomic) BOOL excludesContacts; // @synthesize excludesContacts=_excludesContacts;
 @property (strong, nonatomic) NSArray *friendPlayers; // @synthesize friendPlayers=_friendPlayers;
+@property (nonatomic) long long friendSortFilterScope; // @synthesize friendSortFilterScope=_friendSortFilterScope;
+@property (readonly, nonatomic) BOOL hasFriends;
 @property (strong, nonatomic) NSArray *hiddenPlayers; // @synthesize hiddenPlayers=_hiddenPlayers;
-@property (nonatomic) BOOL isSegmented; // @synthesize isSegmented=_isSegmented;
-@property (nonatomic) long long maxFriendsVisible; // @synthesize maxFriendsVisible=_maxFriendsVisible;
+@property (readonly, nonatomic) BOOL isShowingNearbyInstructionCell;
 @property (nonatomic) long long maxSelectable; // @synthesize maxSelectable=_maxSelectable;
 @property (nonatomic) id<GKDashboardNearbyBrowserDelegate> nearbyDelegate; // @synthesize nearbyDelegate=_nearbyDelegate;
+@property (nonatomic) BOOL nearbyOnly; // @synthesize nearbyOnly=_nearbyOnly;
 @property (strong, nonatomic) NSMutableArray *nearbyPlayers; // @synthesize nearbyPlayers=_nearbyPlayers;
 @property (copy, nonatomic) CDUnknownBlockType nearbyPlayersChangedHandler; // @synthesize nearbyPlayersChangedHandler=_nearbyPlayersChangedHandler;
-@property (readonly, nonatomic) long long numberOfContacts;
 @property (strong, nonatomic) NSMutableDictionary *playerStates; // @synthesize playerStates=_playerStates;
 @property (strong, nonatomic) NSArray *recentPlayers; // @synthesize recentPlayers=_recentPlayers;
 @property (strong, nonatomic) NSArray *searchPlayers; // @synthesize searchPlayers=_searchPlayers;
-@property (nonatomic, getter=isSearching) BOOL searching; // @synthesize searching=_searching;
 @property (readonly, nonatomic) NSArray *selectedPlayers;
 @property (nonatomic) BOOL showsAllFriends; // @synthesize showsAllFriends=_showsAllFriends;
+@property (nonatomic) BOOL showsAllSuggestions; // @synthesize showsAllSuggestions=_showsAllSuggestions;
+@property (strong, nonatomic) NSArray *suggestedPlayers; // @synthesize suggestedPlayers=_suggestedPlayers;
 @property (nonatomic) BOOL supportsNearby; // @synthesize supportsNearby=_supportsNearby;
-@property (strong, nonatomic) GKTournament *tournament; // @synthesize tournament=_tournament;
 @property (readonly, nonatomic) long long unmodifiedItemCount;
 
 - (void).cxx_destruct;
-- (BOOL)_canShowMoreFriends;
+- (BOOL)_canShowMoreSuggestions;
+- (id)alternateSearchKeyForSection:(long long)arg1;
+- (id)attributedFriendFilterTitle;
+- (struct CGSize)boundingSizeForItemsInCollectionView:(id)arg1;
 - (BOOL)cellSelectableStateAtIndexPath:(id)arg1 playerState:(unsigned long long)arg2;
 - (void)clearSelection;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
@@ -76,16 +77,22 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (unsigned long long)cornerMaskForItemAtIndexPath:(id)arg1;
+- (unsigned long long)cornerMaskForSectionHeader;
+- (id)filterHiddenPlayersPredicate;
 - (id)firstIndexPathForPlayer:(id)arg1;
+- (id)fullContactWithIdentifier:(id)arg1;
 - (id)headerTextForSection:(long long)arg1;
 - (id)indexPathForFirstPlayer;
 - (id)indexPathsForPlayer:(id)arg1;
-- (id)initWithMaxSelectable:(long long)arg1 hiddenPlayers:(id)arg2;
+- (id)initWithMaxSelectable:(long long)arg1 hiddenPlayers:(id)arg2 nearbyOnly:(BOOL)arg3;
+- (BOOL)isPlayerAtIndexPathCoreRecent:(id)arg1;
+- (BOOL)isShowingAddFriendsFooter;
 - (long long)itemCount;
-- (id)itemForIndexPath:(id)arg1;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (long long)numberOfSectionsInCurrentSegment;
+- (double)playerCellHeightInCollectionView:(id)arg1;
 - (id)playerForIndexPath:(id)arg1;
 - (id)playerForPlayerID:(id)arg1;
 - (id)playersForSection:(long long)arg1 ignoreSearch:(BOOL)arg2;
@@ -95,7 +102,8 @@
 - (void)setNearbyPlayer:(id)arg1 reachable:(BOOL)arg2;
 - (void)setNearbyPlayerID:(id)arg1 reachable:(BOOL)arg2;
 - (void)setupCollectionView:(id)arg1;
-- (void)updateSelectionStateForCollectionView:(id)arg1 indexPaths:(id)arg2;
+- (void)sortPlayersByNickname:(id)arg1;
+- (void)sortPlayersByRecentlyPlayed:(id)arg1;
 
 @end
 

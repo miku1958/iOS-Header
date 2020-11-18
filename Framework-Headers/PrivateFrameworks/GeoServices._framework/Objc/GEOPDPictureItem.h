@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_photo:1;
         unsigned int read_primaryText:1;
         unsigned int read_secondaryText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_photo:1;
-        unsigned int wrote_primaryText:1;
-        unsigned int wrote_secondaryText:1;
-        unsigned int wrote_photoItemType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,9 +45,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsPhotoItemType:(id)arg1;
-- (void)_readPhoto;
-- (void)_readPrimaryText;
-- (void)_readSecondaryText;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -60,7 +53,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)photoItemTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)handle_property_changes:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)handle_server_disconnected;
 - (void)handle_server_reconnected;
-- (id)initWithObjectMap:(shared_ptr_3c219583)arg1;
+- (id)initWithObjectMap:(shared_ptr_a1e71f47)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)notify_listeners_of_object:(unsigned int)arg1 about_changes_to_properties:(const vector_9f82871d *)arg2;
 - (void)release_resources;

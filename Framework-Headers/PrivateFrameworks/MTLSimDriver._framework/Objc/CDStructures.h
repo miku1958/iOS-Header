@@ -37,7 +37,7 @@ struct MTLSimConnection {
 };
 
 struct MTLTargetDeviceArch {
-    unsigned int _field1;
+    unsigned long long _field1;
     unsigned int _field2;
     char *_field3;
 };
@@ -60,12 +60,6 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsign
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*> *_field1;
-};
-
-struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
-        _Atomic unsigned int __a_value;
-    } __a_;
 };
 
 struct deque<unsigned int, std::__1::allocator<unsigned int>> {
@@ -171,16 +165,16 @@ typedef struct {
     unsigned int _field16;
     unsigned int _field17;
     unsigned int _field18;
-    float _field19;
-    float _field20;
+    unsigned int _field19;
+    unsigned int _field20;
     unsigned int _field21;
     unsigned int _field22;
     unsigned int _field23;
     unsigned int _field24;
     unsigned int _field25;
     unsigned int _field26;
-    unsigned int _field27;
-    unsigned int _field28;
+    float _field27;
+    float _field28;
     unsigned int _field29;
     unsigned int _field30;
     unsigned int _field31;
@@ -212,8 +206,10 @@ typedef struct {
     unsigned int _field57;
     unsigned int _field58;
     unsigned int _field59;
-    unsigned long long _field60;
-} CDStruct_a9d832e7;
+    unsigned int _field60;
+    unsigned int _field61;
+    unsigned long long _field62;
+} CDStruct_4a42450c;
 
 typedef struct {
     unsigned int _field1;
@@ -306,4 +302,11 @@ typedef struct {
     CDStruct_da2e99ad _field1;
     CDStruct_da2e99ad _field2;
 } CDStruct_caaed6bc;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    CDStruct_4af8c268 _field1;
+    CDStruct_4af8c268 _field2;
+} CDUnion_c6e49ed4;
 

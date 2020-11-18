@@ -14,13 +14,19 @@
 + (id)MCShortenedObject:(id)arg1;
 - (id)MCDeepCopy;
 - (id)MCDeepCopyWithZone:(struct _NSZone *)arg1;
+- (id)MCDictionaryAdditiveDeltaToCreateDictionary:(id)arg1;
+- (id)MCDictionarySubtractiveDeltaToCreateDictionary:(id)arg1;
+- (id)MCDictionaryWithLeafValuesSetToValue:(id)arg1;
+- (id)MCInsertedKeysFromDictionary:(id)arg1 withNewLeafValue:(id)arg2;
 - (id)MCMutableDeepCopy;
 - (id)MCMutableDeepCopyWithZone:(struct _NSZone *)arg1;
+- (id)MCRemovedKeysFromDictionary:(id)arg1;
 - (id)MCRetainOptionalNonZeroLengthStringKey:(id)arg1 errorDomain:(id)arg2 invalidDataCode:(long long)arg3 invalidDataErrorString:(id)arg4 outError:(id *)arg5;
 - (id)MCRetainOptionalObjectKey:(id)arg1 type:(Class)arg2 errorDomain:(id)arg3 invalidDataCode:(long long)arg4 invalidDataErrorString:(id)arg5 outError:(id *)arg6;
 - (id)MCRetainRequiredNonZeroLengthStringKey:(id)arg1 errorDomain:(id)arg2 missingDataCode:(long long)arg3 missingDataErrorString:(id)arg4 invalidDataCode:(long long)arg5 invalidDataErrorString:(id)arg6 outError:(id *)arg7;
 - (id)MCRetainRequiredObjectKey:(id)arg1 type:(Class)arg2 errorDomain:(id)arg3 missingDataCode:(long long)arg4 missingDataErrorString:(id)arg5 invalidDataCode:(long long)arg6 invalidDataErrorString:(id)arg7 outError:(id *)arg8;
 - (id)MCShortenedPlistDescription;
+- (BOOL)MCWriteToBinaryFile:(id)arg1;
 - (BOOL)MCWriteToBinaryFile:(id)arg1 atomically:(BOOL)arg2;
 @end
 

@@ -10,13 +10,14 @@
 #import <network/nw_listener_inbox_delegate-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_dictionary, OS_nw_endpoint, OS_nw_error, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
+@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_dictionary, OS_nw_endpoint, OS_nw_error, OS_nw_group_descriptor, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_listener : NSObject <nw_listener_inbox_delegate, OS_nw_listener>
 {
     struct os_unfair_lock_s lock;
     NSObject<OS_nw_parameters> *parameters;
+    NSObject<OS_nw_group_descriptor> *multicast_descriptor;
     unsigned short id_value;
     char id_str[6];
     NSObject<OS_nw_connection> *join_connection;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType event_handler;
     CDUnknownBlockType new_connection_handler;
     unsigned int new_connection_limit;
+    CDUnknownBlockType new_packet_handler;
     int state;
     NSObject<OS_nw_error> *last_error;
     NSObject<OS_nw_array> *inboxes;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *inactive_agent_dictionaries;
     NSObject<OS_xpc_object> *triggered_agents;
     NSObject<OS_nw_parameters> *current_derived_parameters;
+    NWConcrete_nw_listener *internally_retained_object;
     NSObject<OS_nw_path_evaluator> *advertise_evaluator;
     NSObject<OS_nw_path> *advertise_path;
     NSObject<OS_nw_advertise_descriptor> *advertise_descriptor;
@@ -44,7 +47,7 @@ __attribute__((visibility("hidden")))
     struct _DNSServiceRef_t *dnsref;
     NSObject<OS_nw_endpoint> *local_endpoint;
     unsigned int defer_socket;
-    NWConcrete_nw_listener *internally_retained_object;
+    unsigned int cancelling:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -56,9 +59,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)canHandleNewConnection:(id)arg1;
 - (void)dealloc;
 - (void)handleInbound:(id)arg1 addProtocolInbox:(BOOL)arg2;
+- (void)handleInboundPacket:(const char *)arg1 length:(unsigned short)arg2 from:(id)arg3 to:(id)arg4 interface:(id)arg5 socket:(id)arg6;
 - (void)handleInboxCancelComplete:(id)arg1;
 - (void)handleInboxFailed:(id)arg1 error:(id)arg2;
-- (id)initWithParameters:(id)arg1;
 
 @end
 

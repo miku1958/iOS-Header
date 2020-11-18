@@ -14,7 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOverridesInvisibility;
+- (BOOL)_accessibilityUseInactiveTextViewValueForParent:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityAttributedValue;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

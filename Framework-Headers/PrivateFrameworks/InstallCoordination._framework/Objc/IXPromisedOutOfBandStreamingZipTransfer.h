@@ -30,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) IXPromisedOutOfBandStreamingZipTransferSeed *seed; // @dynamic seed;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useProgressFromSZExtractor;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

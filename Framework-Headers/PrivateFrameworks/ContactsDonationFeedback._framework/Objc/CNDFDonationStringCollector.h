@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSMutableArray *visitedStrings; // @synthesize visitedStrings=_visitedStrings;
 
 - (void).cxx_destruct;
+- (void)_addNonEmptyString:(id)arg1;
 - (void)collectStringsFromDonation:(id)arg1;
 - (id)init;
 - (void)visitDonationValue:(id)arg1 emailAddress:(id)arg2 label:(id)arg3;

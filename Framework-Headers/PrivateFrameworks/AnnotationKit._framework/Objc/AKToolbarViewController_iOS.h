@@ -108,7 +108,7 @@
 - (BOOL)isPresentingPopovers;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
+- (BOOL)presentationControllerShouldDismiss:(id)arg1;
 - (void)revalidateItems;
 - (void)setFillColorUIDisplayToColor:(id)arg1;
 - (void)setStrokeColorUIDisplayToColor:(id)arg1;

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) Class triggerTypeClass; // @synthesize triggerTypeClass=_triggerTypeClass;
 
 - (void).cxx_destruct;
+- (void)configureWithImage:(id)arg1 title:(id)arg2 numberOfLines:(long long)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)updateUI;

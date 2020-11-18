@@ -54,6 +54,8 @@
 - (void)registerCallback:(id)arg1;
 - (id)remoteDeviceIDs;
 - (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2 removedObjects:(id *)arg3;
 - (void)setContextValue:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

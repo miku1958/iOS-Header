@@ -102,6 +102,7 @@
 - (id)accountPropertyForKey:(id)arg1;
 - (BOOL)addRequest:(id)arg1 consumer:(id)arg2 mailbox:(id)arg3;
 - (BOOL)addRequests:(id)arg1 mailbox:(id)arg2;
+- (BOOL)addRequests:(id)arg1 mailbox:(id)arg2 combine:(BOOL)arg3;
 - (void)addUserFocusMailbox:(id)arg1;
 - (id)allMailMailboxUid;
 - (id)allMailboxUids;

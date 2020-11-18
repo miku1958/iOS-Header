@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TextInputCore/TITypingSessionAggregatedEventObserver-Protocol.h>
+#import <TextInputCore/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSString, TICAnalyticsMetricsKey;
-@protocol TIUserModelValuesProtocol;
+@class NSArray, NSString, TIAnalyticsMetricsContext, TIUserModelValues;
 
-@protocol TIUserModeling <TITypingSessionAggregatedEventObserver>
+@protocol TIUserModeling <NSObject>
 
-@property (readonly, nonatomic) NSArray *keys;
+@property (readonly, nonatomic) NSArray *contexts;
 
-- (void)addNumberToTransientCounter:(NSNumber *)arg1 forKey:(NSString *)arg2 andCandidateLength:(int)arg3 andContext:(TICAnalyticsMetricsKey *)arg4;
+- (void)addDoubleToTransientCounter:(double)arg1 forKey:(NSString *)arg2 andCandidateLength:(int)arg3 andContext:(TIAnalyticsMetricsContext *)arg4;
+- (void)addIntegerToTransientCounter:(int)arg1 forKey:(NSString *)arg2 andCandidateLength:(int)arg3 andContext:(TIAnalyticsMetricsContext *)arg4;
 - (void)addToDurableCounter:(int)arg1 forKey:(NSString *)arg2;
-- (void)addToTransientCounter:(int)arg1 forKey:(NSString *)arg2 andCandidateLength:(int)arg3 andContext:(TICAnalyticsMetricsKey *)arg4;
-- (id<TIUserModelValuesProtocol>)valuesForKey:(TICAnalyticsMetricsKey *)arg1;
+- (TIUserModelValues *)valuesFromContext:(TIAnalyticsMetricsContext *)arg1;
 @end
 

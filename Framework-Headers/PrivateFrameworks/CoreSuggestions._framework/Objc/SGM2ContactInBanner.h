@@ -14,23 +14,36 @@
 {
     int _app;
     int _extracted;
+    unsigned int _extractionModelVersion;
     NSString *_key;
+    int _type;
     BOOL _selfId;
-    CDStruct_5f298e02 _has;
+    struct {
+        unsigned int app:1;
+        unsigned int extracted:1;
+        unsigned int extractionModelVersion:1;
+        unsigned int type:1;
+        unsigned int selfId:1;
+    } _has;
 }
 
 @property (nonatomic) int app; // @synthesize app=_app;
 @property (nonatomic) int extracted; // @synthesize extracted=_extracted;
+@property (nonatomic) unsigned int extractionModelVersion; // @synthesize extractionModelVersion=_extractionModelVersion;
 @property (nonatomic) BOOL hasApp;
 @property (nonatomic) BOOL hasExtracted;
+@property (nonatomic) BOOL hasExtractionModelVersion;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (nonatomic) BOOL hasSelfId;
+@property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (nonatomic) BOOL selfId; // @synthesize selfId=_selfId;
+@property (nonatomic) int type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (int)StringAsApp:(id)arg1;
 - (int)StringAsExtracted:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (id)appAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -41,6 +54,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

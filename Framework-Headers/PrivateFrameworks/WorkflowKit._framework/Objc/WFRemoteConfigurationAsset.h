@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 
-@class CKRecordID, NSNumber, NSString, WFFileRepresentation;
+@class CKRecordID, NSData, NSNumber, NSString, WFFileRepresentation;
 
 @interface WFRemoteConfigurationAsset : NSObject <WFCloudKitItem>
 {
@@ -28,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (strong, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
 @property (readonly) Class superclass;
 

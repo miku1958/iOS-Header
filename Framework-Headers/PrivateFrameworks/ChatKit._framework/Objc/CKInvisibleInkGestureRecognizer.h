@@ -8,7 +8,6 @@
 
 @class UITouch;
 
-__attribute__((visibility("hidden")))
 @interface CKInvisibleInkGestureRecognizer : UIGestureRecognizer
 {
     UITouch *_firstTouch;

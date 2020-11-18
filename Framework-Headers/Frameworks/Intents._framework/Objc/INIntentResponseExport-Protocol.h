@@ -12,7 +12,6 @@
 @protocol INIntentResponseExport <NSObject, JSExport>
 
 @property (readonly, copy, nonatomic) _INPBIntentResponse *backingStore;
-@property (readonly, nonatomic) long long code;
 
 - (long long)_intentHandlingStatus;
 - (NSData *)_payloadResponseMessageData;

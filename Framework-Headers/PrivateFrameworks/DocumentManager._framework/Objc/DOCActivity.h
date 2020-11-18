@@ -24,11 +24,14 @@
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 
++ (long long)_activityStyleForActivityIdentifier:(id)arg1;
 + (id)_imageNameForActivityIdentifier:(id)arg1;
 + (id)_titleForActivityIdentifier:(id)arg1;
 + (long long)activityCategory;
 + (id)activityWithIdentifier:(id)arg1 actionPerformerProxy:(id)arg2;
++ (BOOL)isDestructiveActionIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_needsResolvedActivityItems;
 - (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;

@@ -12,6 +12,8 @@
 
 + (Class)archivedSelectionClass;
 + (id)tableNameSelection;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToSelection:(id)arg1;
 
 @end
 

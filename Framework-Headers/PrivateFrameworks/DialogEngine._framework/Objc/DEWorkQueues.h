@@ -7,17 +7,21 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface DEWorkQueues : NSObject
 {
     NSMutableDictionary *_queues;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
+@property (strong) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (strong) NSMutableDictionary *queues; // @synthesize queues=_queues;
 
 - (void).cxx_destruct;
 - (void)advance:(id)arg1;
 - (id)init;
+- (id)initWithDispatchQueue:(id)arg1;
 - (void)on:(id)arg1 enqueue:(CDUnknownBlockType)arg2;
 
 @end

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSString;
 
-@interface EFSQLLikeEscapedExpression : NSObject <EFSQLExpressable>
+@interface EFSQLLikeEscapedExpression : NSObject <EFSQLValueExpressable>
 {
     unsigned short _escapeCharacter;
     NSString *_value;
@@ -27,7 +27,8 @@
 @property (readonly, nonatomic) NSString *value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
-- (id)_stringForPattern:(unsigned long long)arg1 literal:(id)arg2;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)initWithValue:(id)arg1;
 - (id)initWithValue:(id)arg1 pattern:(unsigned long long)arg2;
 - (id)initWithValue:(id)arg1 pattern:(unsigned long long)arg2 escapeCharacter:(unsigned short)arg3;

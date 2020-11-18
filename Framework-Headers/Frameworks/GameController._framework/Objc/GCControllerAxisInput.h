@@ -10,14 +10,16 @@
 
 @interface GCControllerAxisInput : GCControllerElement
 {
-    BOOL _flipped;
+    float _minValue;
+    float _maxValue;
+    BOOL _horizontal;
     float _value;
     CDUnknownBlockType _valueChangedHandler;
     GCControllerButtonInput *_positive;
     GCControllerButtonInput *_negative;
 }
 
-@property (nonatomic, getter=isFlipped) BOOL flipped; // @synthesize flipped=_flipped;
+@property (nonatomic, getter=isHorizontal) BOOL horizontal; // @synthesize horizontal=_horizontal;
 @property (strong, nonatomic) GCControllerButtonInput *negative; // @synthesize negative=_negative;
 @property (strong, nonatomic) GCControllerButtonInput *positive; // @synthesize positive=_positive;
 @property (nonatomic) float value; // @synthesize value=_value;
@@ -28,8 +30,12 @@
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
 - (id)description;
 - (int)getAndResetTimesPressed;
-- (id)initWithCollection:(id)arg1 flipped:(BOOL)arg2;
+- (id)initWithCollection:(id)arg1;
+- (id)initWithCollection:(id)arg1 horizontal:(BOOL)arg2;
 - (BOOL)isAnalog;
+- (float)maxValue;
+- (float)minValue;
+- (void)setMinValue:(float)arg1 andMaxValue:(float)arg2;
 
 @end
 

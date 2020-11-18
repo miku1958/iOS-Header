@@ -74,7 +74,7 @@
 - (void)adjustInsetsForKeyboardOverlap:(double)arg1;
 - (void)avatarCarouselViewControllerDidTapPhotoPickerCell:(id)arg1;
 - (void)avatarCarouselViewControllerDidUpdateCenterMostItem:(id)arg1;
-- (void)avatarPosePickerManager:(id)arg1 didFinishWithProviderItem:(id)arg2;
+- (void)avatarEditingManager:(id)arg1 didFinishWithProviderItem:(id)arg2;
 - (id)confirmButtonTitle;
 - (long long)contactImageSourceForType:(unsigned long long)arg1;
 - (void)contentSizeCategoryDidChange:(id)arg1;
@@ -93,7 +93,7 @@
 - (void)photoPickerVariantListController:(id)arg1 didSelectProviderItem:(id)arg2;
 - (void)photoPickerVariantListControllerDidCancel:(id)arg1;
 - (void)presentErrorAlertForEmptyPhotoIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)presentPhotoPickerVariantListFor:(id)arg1 FromViewController:(id)arg2;
+- (void)presentPhotoPickerVariantListForItem:(id)arg1 FromViewController:(id)arg2;
 - (void)promptForSavingToMeCard;
 - (void)saveDraftContact;
 - (void)showAvatarPosePickerFromItem:(id)arg1;

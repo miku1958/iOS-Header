@@ -89,6 +89,7 @@
 - (BOOL)supportsCalloutLines;
 - (BOOL)supportsDownsampling;
 - (BOOL)supportsFillSetFill;
+- (BOOL)supportsGridPartitioning;
 - (BOOL)supportsLineConnectionStyle;
 - (BOOL)supportsLineTypeNone;
 - (BOOL)supportsRoundedCorners;

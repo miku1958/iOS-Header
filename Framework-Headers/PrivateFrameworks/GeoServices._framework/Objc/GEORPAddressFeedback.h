@@ -29,12 +29,7 @@
         unsigned int read_personalizedMaps:1;
         unsigned int read_placeRequest:1;
         unsigned int read_place:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_personalizedMaps:1;
-        unsigned int wrote_placeRequest:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,10 +48,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_readAddress;
-- (void)_readPersonalizedMaps;
-- (void)_readPlace;
-- (void)_readPlaceRequest;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -65,7 +56,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *scrubView; // @synthesize scrubView=_scrubView;
 @property unsigned long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 
++ (BOOL)wantsScreenTraits;
 - (void)animateScrubberToRect:(struct CGRect)arg1;
 - (struct CGRect)categorySelectedCircleRect:(long long)arg1;
 - (void)dealloc;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)dimKeys:(id)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;
 - (void)prepareForDisplay;
 - (unsigned long long)selectedIndexForTouches:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

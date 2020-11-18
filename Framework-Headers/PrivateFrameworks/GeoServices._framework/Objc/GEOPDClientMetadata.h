@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _knownClientResolvedTypeDeprecateds;
     CDStruct_95bda58d _knownClientResolvedTypes;
+    CDStruct_95bda58d _supportedMapsResultTypes;
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     NSMutableArray *_businessChatPreflightIdentifiers;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
     int _resultListAttributionSupport;
     unsigned int _timeSinceMapEnteredForeground;
     BOOL _enablePreflightVenues;
+    BOOL _siriUserConsentsForAnalysis;
     struct {
         unsigned int has_clientRevision:1;
         unsigned int has_dayOfWeek:1;
@@ -47,9 +49,11 @@ __attribute__((visibility("hidden")))
         unsigned int has_resultListAttributionSupport:1;
         unsigned int has_timeSinceMapEnteredForeground:1;
         unsigned int has_enablePreflightVenues:1;
+        unsigned int has_siriUserConsentsForAnalysis:1;
         unsigned int read_unknownFields:1;
         unsigned int read_knownClientResolvedTypeDeprecateds:1;
         unsigned int read_knownClientResolvedTypes:1;
+        unsigned int read_supportedMapsResultTypes:1;
         unsigned int read_abClientMetadata:1;
         unsigned int read_additionalEnabledMarkets:1;
         unsigned int read_businessChatPreflightIdentifiers:1;
@@ -62,28 +66,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_deviceSku:1;
         unsigned int read_deviceSpokenLanguage:1;
         unsigned int read_localizationCapabilities:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_knownClientResolvedTypeDeprecateds:1;
-        unsigned int wrote_knownClientResolvedTypes:1;
-        unsigned int wrote_abClientMetadata:1;
-        unsigned int wrote_additionalEnabledMarkets:1;
-        unsigned int wrote_businessChatPreflightIdentifiers:1;
-        unsigned int wrote_debugApiKey:1;
-        unsigned int wrote_deviceCountryCode:1;
-        unsigned int wrote_deviceDisplayLanguage:1;
-        unsigned int wrote_deviceExtendedLocation:1;
-        unsigned int wrote_deviceHistoricalLocations:1;
-        unsigned int wrote_deviceKeyboardLanguage:1;
-        unsigned int wrote_deviceSku:1;
-        unsigned int wrote_deviceSpokenLanguage:1;
-        unsigned int wrote_localizationCapabilities:1;
-        unsigned int wrote_clientRevision:1;
-        unsigned int wrote_dayOfWeek:1;
-        unsigned int wrote_hourOfDay:1;
-        unsigned int wrote_requiredVersion:1;
-        unsigned int wrote_resultListAttributionSupport:1;
-        unsigned int wrote_timeSinceMapEnteredForeground:1;
-        unsigned int wrote_enablePreflightVenues:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -117,6 +100,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasLocalizationCapabilities;
 @property (nonatomic) BOOL hasRequiredVersion;
 @property (nonatomic) BOOL hasResultListAttributionSupport;
+@property (nonatomic) BOOL hasSiriUserConsentsForAnalysis;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int hourOfDay;
 @property (readonly, nonatomic) int *knownClientResolvedTypeDeprecateds;
@@ -126,6 +110,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOLocalizationCapabilities *localizationCapabilities;
 @property (nonatomic) int requiredVersion;
 @property (nonatomic) int resultListAttributionSupport;
+@property (nonatomic) BOOL siriUserConsentsForAnalysis;
+@property (readonly, nonatomic) int *supportedMapsResultTypes;
+@property (readonly, nonatomic) unsigned long long supportedMapsResultTypesCount;
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
@@ -138,28 +125,12 @@ __attribute__((visibility("hidden")))
 - (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (int)StringAsRequiredVersion:(id)arg1;
 - (int)StringAsResultListAttributionSupport:(id)arg1;
-- (void)_addNoFlagsBusinessChatPreflightIdentifier:(id)arg1;
-- (void)_addNoFlagsDeviceHistoricalLocation:(id)arg1;
-- (void)_addNoFlagsKnownClientResolvedType:(int)arg1;
-- (void)_addNoFlagsKnownClientResolvedTypeDeprecated:(int)arg1;
-- (void)_readAbClientMetadata;
-- (void)_readAdditionalEnabledMarkets;
-- (void)_readBusinessChatPreflightIdentifiers;
-- (void)_readDebugApiKey;
-- (void)_readDeviceCountryCode;
-- (void)_readDeviceDisplayLanguage;
-- (void)_readDeviceExtendedLocation;
-- (void)_readDeviceHistoricalLocations;
-- (void)_readDeviceKeyboardLanguage;
-- (void)_readDeviceSku;
-- (void)_readDeviceSpokenLanguage;
-- (void)_readKnownClientResolvedTypeDeprecateds;
-- (void)_readKnownClientResolvedTypes;
-- (void)_readLocalizationCapabilities;
+- (int)StringAsSupportedMapsResultTypes:(id)arg1;
 - (void)addBusinessChatPreflightIdentifier:(id)arg1;
 - (void)addDeviceHistoricalLocation:(id)arg1;
 - (void)addKnownClientResolvedType:(int)arg1;
 - (void)addKnownClientResolvedTypeDeprecated:(int)arg1;
+- (void)addSupportedMapsResultType:(int)arg1;
 - (id)businessChatPreflightIdentifierAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessChatPreflightIdentifiersCount;
 - (void)clearBusinessChatPreflightIdentifiers;
@@ -168,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)clearKnownClientResolvedTypes;
 - (void)clearLocations;
 - (void)clearSensitiveFields;
+- (void)clearSupportedMapsResultTypes;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (id)clientRevisionAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -180,8 +152,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (int)knownClientResolvedTypeAtIndex:(unsigned long long)arg1;
 - (int)knownClientResolvedTypeDeprecatedAtIndex:(unsigned long long)arg1;
 - (id)knownClientResolvedTypeDeprecatedsAsString:(int)arg1;
@@ -193,6 +168,9 @@ __attribute__((visibility("hidden")))
 - (id)resultListAttributionSupportAsString:(int)arg1;
 - (void)setKnownClientResolvedTypeDeprecateds:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setKnownClientResolvedTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedMapsResultTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedMapsResultTypeAtIndex:(unsigned long long)arg1;
+- (id)supportedMapsResultTypesAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

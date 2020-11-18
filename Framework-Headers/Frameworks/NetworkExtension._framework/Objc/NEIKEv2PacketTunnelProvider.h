@@ -17,13 +17,14 @@
     BOOL _sessionDidConnect;
     BOOL _mobikeCapable;
     BOOL _authenticationPrompted;
+    BOOL _isObserving;
     unsigned int _flags;
     NSArray *_ikeConfig;
     NSArray *_localTrafficSelectors;
     NSArray *_remoteTrafficSelectors;
     NSDictionary *_options;
     struct NEVirtualInterface_s *_virtualInterface;
-    NEIKEv2Server *_serverAddresses;
+    NEIKEv2Server *_server;
     NWResolver *_resolver;
     NSObject<OS_dispatch_source> *_resolverWaitTimer;
     NEIKEv2Rekey *_rekey;
@@ -51,6 +52,7 @@
 @property unsigned long long ifIndex; // @synthesize ifIndex=_ifIndex;
 @property (strong) NSArray *ikeConfig; // @synthesize ikeConfig=_ikeConfig;
 @property BOOL isIfCellular; // @synthesize isIfCellular=_isIfCellular;
+@property BOOL isObserving; // @synthesize isObserving=_isObserving;
 @property (strong) NSArray *localTrafficSelectors; // @synthesize localTrafficSelectors=_localTrafficSelectors;
 @property BOOL mobikeCapable; // @synthesize mobikeCapable=_mobikeCapable;
 @property (strong) NEIKEv2MOBIKE *mobikeHandle; // @synthesize mobikeHandle=_mobikeHandle;
@@ -63,7 +65,7 @@
 @property (strong) NWResolver *resolver; // @synthesize resolver=_resolver;
 @property (strong) NSObject<OS_dispatch_source> *resolverWaitTimer; // @synthesize resolverWaitTimer=_resolverWaitTimer;
 @property (strong) NWPathEvaluator *scopedPathEvaluator; // @synthesize scopedPathEvaluator=_scopedPathEvaluator;
-@property (strong) NEIKEv2Server *serverAddresses; // @synthesize serverAddresses=_serverAddresses;
+@property (strong) NEIKEv2Server *server; // @synthesize server=_server;
 @property (strong) NEIKEv2Session *session; // @synthesize session=_session;
 @property BOOL sessionDidConnect; // @synthesize sessionDidConnect=_sessionDidConnect;
 @property (copy) CDUnknownBlockType startTunnelCompletionHandler; // @synthesize startTunnelCompletionHandler=_startTunnelCompletionHandler;
@@ -97,6 +99,7 @@
 - (void)startRekeyTimer:(BOOL)arg1;
 - (void)startTunnelWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopIKEv2TunnelWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopObserving;
 - (void)stopTunnelWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)stringForTunnelKind;
 - (BOOL)tryAlternateServerAddresses;

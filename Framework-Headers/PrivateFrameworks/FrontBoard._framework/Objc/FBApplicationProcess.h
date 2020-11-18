@@ -6,22 +6,14 @@
 
 #import <FrontBoard/FBProcess.h>
 
-@class BKSProcessAssertion, FBProcessWatchdog, FBProcessWatchdogEventContext, FBSProcessExecutionProvision, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, NSMutableArray, RBSAssertion;
+@class BKSProcessAssertion, FBProcessCPUStatistics;
 
 @interface FBApplicationProcess : FBProcess
 {
-    FBSProcessTerminationRequest *_terminationRequest;
-    FBProcessWatchdogEventContext *_terminationWatchdogContext;
-    long long _terminationReason;
-    NSMutableArray *_queue_terminateRequestCompletionBlocks;
-    long long _watchdogReportType;
-    FBProcessWatchdog *_watchdog;
-    FBSProcessWatchdogPolicy *_sceneCreateWatchdogPolicy;
-    FBSProcessExecutionProvision *_latestViolatedProvision;
-    RBSAssertion *_gracefulKillAssertion;
-    BKSProcessAssertion *_mediaAssertion;
-    BKSProcessAssertion *_audioAssertion;
-    BKSProcessAssertion *_accessoryAssertion;
+    FBProcessCPUStatistics *_cpuStatistics;
+    BKSProcessAssertion *_queue_mediaAssertion;
+    BKSProcessAssertion *_queue_audioAssertion;
+    BKSProcessAssertion *_queue_accessoryAssertion;
     BOOL _recordingAudio;
     BOOL _nowPlayingWithAudio;
     BOOL _connectedToExternalAccessory;
@@ -32,35 +24,15 @@
 @property (nonatomic, getter=isNowPlayingWithAudio) BOOL nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property (nonatomic, getter=isRecordingAudio) BOOL recordingAudio; // @synthesize recordingAudio=_recordingAudio;
 
++ (id)_internalDebugEnvironmentVariables;
 - (void).cxx_destruct;
-- (long long)_exceptionCodeForKillReason:(int)arg1;
-- (void)_queue_cancelWatchdogTimer;
-- (id)_queue_composeContextWithValue:(id)arg1 key:(id)arg2;
-- (id)_queue_crashReportThermalsInfo;
-- (id)_queue_createBootstrapContext;
-- (void)_queue_doGracefulKillWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
-- (void)_queue_dropAssertions;
-- (void)_queue_executeKillForRequest:(id)arg1;
-- (void)_queue_executeTerminateRequestCompletionBlocksIfNecessaryForSucccess:(BOOL)arg1;
-- (id)_queue_internalDebugEnvironmentVariables;
-- (void)_queue_killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_noteLaunchDidComplete:(BOOL)arg1;
-- (void)_queue_noteLaunchWillComplete;
-- (void)_queue_noteProcessDidExit:(id)arg1;
-- (BOOL)_queue_shouldWatchdogWithDeclineReason:(id *)arg1;
-- (void)_queue_startWatchdogTimerForContext:(id)arg1;
-- (void)_queue_terminateWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
+- (void)_bootstrapDidComplete;
+- (id)_createBootstrapContext;
+- (void)_finishInit;
+- (void)_noteLaunchDidComplete;
+- (void)_noteProcessDidExit:(id)arg1;
+- (id)_queue_createLegacyAssertionForReason:(unsigned int)arg1 withName:(id)arg2;
 - (BOOL)_wantsStateUpdates;
-- (BOOL)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
-- (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
-- (id)_watchdogProvider;
-- (long long)_watchdogReportType;
-- (void)_watchdogStarted:(id)arg1;
-- (void)_watchdogStopped:(id)arg1;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
-- (void)invalidate;
 - (BOOL)isApplicationProcess;
 - (void)killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3;
 - (void)killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;

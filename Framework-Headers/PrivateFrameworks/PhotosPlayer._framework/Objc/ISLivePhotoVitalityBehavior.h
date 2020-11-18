@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithInitialLayoutInfo:(id)arg1 playbackEndTime:(CDStruct_1b6d18a9)arg2 playDuration:(CDStruct_1b6d18a9)arg3 playRate:(float)arg4 photoTransitionDuration:(double)arg5 pauseDuringTransition:(BOOL)arg6 assetOptions:(unsigned long long)arg7;
 - (void)playVitality;
 - (void)prepareForVitality;
+- (void)videoReadyForDisplayDidChange;
 
 @end
 

@@ -8,13 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI228MagazineFeedVideoPaywallView : UIView
 {
     MISSING_TYPE *badgeImageView;
     MISSING_TYPE *largeTextLabel;
     MISSING_TYPE *smallTextLabel;
     MISSING_TYPE *subscribeButton;
+    MISSING_TYPE *offersButton;
 }
 
 + (Class)layerClass;

@@ -68,6 +68,7 @@
 + (id)criterionForDateReceivedNewerThanDate:(id)arg1;
 + (id)criterionForDateReceivedOlderThanDate:(id)arg1;
 + (id)criterionForDocumentID:(id)arg1;
++ (id)criterionForFlagColor:(unsigned long long)arg1;
 + (id)criterionForLibraryID:(id)arg1;
 + (id)criterionForMailbox:(id)arg1;
 + (id)criterionForMailboxPredictionMessageQuery:(unsigned long long)arg1 variable:(id)arg2;

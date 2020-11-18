@@ -16,7 +16,7 @@
     NSDictionary *_dictionary;
 }
 
-@property (readonly, copy, nonatomic) NSSet *autoFavoriteTagIDs;
+@property (readonly, copy, nonatomic) NSArray *autoFavoriteTagIDs;
 @property (readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) id<FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;

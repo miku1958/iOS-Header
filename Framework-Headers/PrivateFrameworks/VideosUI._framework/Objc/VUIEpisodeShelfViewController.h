@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
 
 - (id)_episodeHeaderView;
 - (void)_updateEpisodeHeaderWithLeftMostItem;
+- (id)indexTitlesForCollectionView:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)seasonPickerButtonMenuSelected:(id)arg1 selectedTitle:(id)arg2 selectedIndex:(unsigned long long)arg3;
 - (void)seasonPickerButtonTapped:(id)arg1;
 - (unsigned long long)selectedIndexTitleForItemIndexPath:(id)arg1;
 - (void)viewDidLayoutSubviews;

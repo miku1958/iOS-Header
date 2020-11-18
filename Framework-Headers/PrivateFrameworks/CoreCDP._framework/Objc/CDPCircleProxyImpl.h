@@ -45,7 +45,6 @@
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;
 - (id)pairingChannelAcceptor:(id *)arg1;
 - (id)pairingChannelInitiator:(id *)arg1;
-- (unsigned long long)peerCount;
 - (id)peerDeviceNamesByPeerID;
 - (id)peerId;
 - (BOOL)registerCredentials;
@@ -58,6 +57,7 @@
 - (BOOL)requestToJoinCircleAfterRestore:(id *)arg1;
 - (BOOL)requestToResetCircle:(id *)arg1;
 - (BOOL)requestToResetCloudKitDataForReason:(id)arg1 error:(id *)arg2;
+- (id)requestToResetProtectedData:(id *)arg1;
 - (BOOL)setViewsWithEnableSet:(id)arg1 disableSet:(id)arg2;
 - (int)sos_circleStatus:(id *)arg1;
 - (BOOL)synchronizeCircleViews;

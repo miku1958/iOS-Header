@@ -25,13 +25,13 @@
 @property (readonly, nonatomic) _DUIPreview *_duiPreview;
 @property (copy, nonatomic) NSDictionary *_springboardParameters; // @synthesize _springboardParameters=__springboardParameters;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview;
+@property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview; // @dynamic defaultPreview;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint liftAnchorPoint; // @synthesize liftAnchorPoint=_liftAnchorPoint;
 @property (nonatomic, getter=_preventAfterScreenUpdatesSnapshot, setter=_setPreventAfterScreenUpdatesSnapshot:) BOOL preventAfterScreenUpdatesSnapshot; // @synthesize preventAfterScreenUpdatesSnapshot=_preventAfterScreenUpdatesSnapshot;
 @property (readonly) Class superclass;
-@property (weak, nonatomic, getter=_viewToSnapshot, setter=_setViewToSnapshot:) UIView *viewToSnapshot;
+@property (weak, nonatomic, getter=_viewToSnapshot, setter=_setViewToSnapshot:) UIView *viewToSnapshot; // @dynamic viewToSnapshot;
 
 + (id)previewForURL:(id)arg1 target:(id)arg2;
 + (id)previewForURL:(id)arg1 title:(id)arg2 target:(id)arg3;

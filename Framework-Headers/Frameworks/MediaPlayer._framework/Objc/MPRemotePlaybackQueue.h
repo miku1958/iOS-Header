@@ -14,9 +14,12 @@
 {
     struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
     ICUserIdentity *_userIdentity;
+    NSDictionary *_mediaRemoteOptions;
 }
 
+@property (readonly, nonatomic) struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
 @property (readonly, copy, nonatomic) NSString *featureName;
+@property (readonly, nonatomic) NSDictionary *mediaRemoteOptions; // @synthesize mediaRemoteOptions=_mediaRemoteOptions;
 @property (nonatomic) long long replaceIntent;
 @property (nonatomic, getter=isRequestingImmediatePlayback) BOOL requestingImmediatePlayback;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue;
@@ -31,7 +34,6 @@
 + (void)registerRemotePlaybackQueueClass:(Class)arg1 forPlaybackQueueType:(int)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (struct _MRSystemAppPlaybackQueue *)_mediaRemotePlaybackQueue;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

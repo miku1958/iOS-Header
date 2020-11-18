@@ -21,9 +21,11 @@
     NSHashTable *_lazyReferences;
     NSHashTable *_lazyReferenceCopies;
     NSMutableArray *_lazyReferenceObserverBlocks;
+    _Atomic BOOL _didSetLazyReferenceDelegate;
     NSObject<OS_dispatch_queue> *_externalReferenceQueue;
     struct unordered_map<long long, TSP::ExternalReferenceInfo, TSP::ObjectIdentifierHash, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ExternalReferenceInfo>>> _externalReferences;
     struct vector<TSP::RepeatedExternalReferenceCompletionInfo, std::__1::allocator<TSP::RepeatedExternalReferenceCompletionInfo>> _repeatedExternalReferences;
+    _Atomic BOOL _didResolveExternalReferences;
     TSPCancellationState *_cancellationState;
 }
 
@@ -36,10 +38,12 @@
 @property (readonly, nonatomic) unsigned long long fileFormatVersion;
 @property (readonly, nonatomic) BOOL hasDocumentVersionUUID;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL ignoreReferencesToUnknownObjects;
 @property (readonly, nonatomic) BOOL isCrossAppPaste;
 @property (readonly, nonatomic) BOOL isCrossDocumentPaste;
 @property (readonly, nonatomic) BOOL isReadingFromDocument;
 @property (readonly, nonatomic) unsigned char packageIdentifier;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly) BOOL success;
 @property (readonly) Class superclass;
@@ -66,6 +70,8 @@
 - (id)reader:(id)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(id)arg1 wantsObjectIdentifierForUUID:(id)arg2;
 - (BOOL)resolveExternalReferences;
+- (void)setLazyReferencesDelegate:(id)arg1 forLazyReference:(id)arg2;
+- (void)setLazyReferencesDelegate:(id)arg1 forLazyReferenceCopy:(id)arg2;
 - (void)setLazyReferencesDelegateToObjectContext;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(BOOL)arg2;
 

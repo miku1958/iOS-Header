@@ -28,17 +28,14 @@
 @property (readonly, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 
 + (id)allKnownTriggersSortedAsInUI;
-+ (id)allTriggersByGroupIdentifier;
++ (id)allTriggerTypeGroups;
 + (id)buildTableContent;
-+ (id)sortedTriggerGroupIdentifiers;
-+ (id)triggerGroupTitleForIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithTriggerManager:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (Class)triggerSourceClassForIndexPath:(id)arg1;
 - (void)viewDidLoad;
 

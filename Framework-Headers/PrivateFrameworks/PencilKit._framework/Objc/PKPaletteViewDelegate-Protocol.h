@@ -6,11 +6,16 @@
 
 #import <PencilKit/PKPaletteViewPositionObserving-Protocol.h>
 
-@class NSUndoManager, PKPaletteView;
+@class NSUndoManager, PKDrawingPaletteView, PKPaletteView, UIResponder;
 
 @protocol PKPaletteViewDelegate <PKPaletteViewPositionObserving>
-- (void)paletteViewDidToggleRuler:(PKPaletteView *)arg1;
-- (void)paletteViewSelectedToolInkDidChange:(PKPaletteView *)arg1;
+- (void)paletteViewDidToggleRuler:(PKDrawingPaletteView *)arg1;
+- (void)paletteViewSelectedToolInkDidChange:(PKDrawingPaletteView *)arg1;
 - (NSUndoManager *)paletteViewUndoManager:(PKPaletteView *)arg1;
+
+@optional
+- (UIResponder *)paletteViewCurrentFirstResponder:(PKPaletteView *)arg1;
+- (void)paletteViewFirstResponderDidUpdate:(PKDrawingPaletteView *)arg1;
+- (BOOL)shouldHandlePencilInteractionWhenNotVisible:(PKDrawingPaletteView *)arg1;
 @end
 

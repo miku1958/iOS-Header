@@ -49,7 +49,9 @@
 - (id)remoteInterface;
 - (void)remote_setDataSourceConfiguration:(id)arg1;
 - (void)remote_startTaskServerIfNeeded;
+- (void)updateWorkoutConfiguration:(id)arg1 dataSource:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)workoutDataDestination:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 

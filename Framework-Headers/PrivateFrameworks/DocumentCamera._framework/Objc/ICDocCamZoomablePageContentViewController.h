@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double zoomScale;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)accessibilityPerformEscape;
 - (void)doubleTap:(id)arg1;
 - (id)init;

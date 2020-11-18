@@ -15,6 +15,8 @@
 {
     UILabel *_titleLabel;
     UILabel *_storeRestrictedLabel;
+    UILabel *_securityResearchDeviceTitleLabel;
+    UIView *_securityResearchDeviceContainer;
     SBFTouchPassThroughView *_homeAffordanceContainer;
     CSHomeAffordanceView *_homeAffordanceView;
     UIView *_homeAffordanceCallToActionContainer;
@@ -44,6 +46,7 @@
 - (void)_addHomeButtonCallToAction;
 - (void)_addInfoButton;
 - (void)_addResetAnimationForKeyPath:(id)arg1 onLayer:(id)arg2 dispatchGroup:(id)arg3;
+- (void)_addSecurityResearchLabels;
 - (void)_addStoreRestrictedLabel;
 - (void)_addTitleLabel;
 - (void)_adjustTitleVisibilityForInfoViews;
@@ -65,7 +68,7 @@
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 usingHomeAffordance:(BOOL)arg2 isStoreRestricted:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 usingHomeAffordance:(BOOL)arg2 isStoreRestricted:(BOOL)arg3 isSecurityResearchDevice:(BOOL)arg4;
 - (void)layoutSubviews;
 - (void)setCallToActionString:(id)arg1 forLanguage:(id)arg2;
 - (void)setInfoButtonVisible:(BOOL)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;

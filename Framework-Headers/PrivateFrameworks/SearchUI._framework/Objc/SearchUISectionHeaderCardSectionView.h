@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) TLKSectionHeaderView *contentView; // @dynamic contentView;
 
-+ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)fillsBackgroundWithContentForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (id)setupContentView;
 - (void)updateWithRowModel:(id)arg1;

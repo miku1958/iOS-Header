@@ -8,7 +8,7 @@
 
 #import <Intents/INStartCallIntentResponseExport-Protocol.h>
 
-@class NSNumber, NSString;
+@class INConnectedCall, NSNumber, NSString;
 
 @interface INStartCallIntentResponse : INIntentResponse <INStartCallIntentResponseExport>
 {
@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *shouldDoEmergencyCountdown;
+@property (copy, nonatomic) INConnectedCall *startedCall;
 @property (readonly) Class superclass;
 
 + (BOOL)_appLaunchRequestedFromCode:(long long)arg1;

@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface VUIInAppMessagingMessageTargetHandler : NSObject <IAMMessageTarget>
 {
     NSString *_targetIdentifier;

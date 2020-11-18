@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIApplicationSceneSettings.h>
+#import <UIKit/UICarPlayApplicationSceneSettings.h>
 
 #import <CarPlayUIServices/CRSUIInstrumentClusterSceneSettings-Protocol.h>
 
 @class NSString;
 
-@interface CRSUIInstrumentClusterSceneSettings : UIApplicationSceneSettings <CRSUIInstrumentClusterSceneSettings>
+@interface CRSUIInstrumentClusterSceneSettings : UICarPlayApplicationSceneSettings <CRSUIInstrumentClusterSceneSettings>
 {
 }
 
@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long itemType;
+@property (readonly, nonatomic) long long mapStyle;
 @property (readonly, nonatomic) unsigned long long showsCompass;
 @property (readonly, nonatomic) unsigned long long showsSpeedLimit;
 @property (readonly) Class superclass;

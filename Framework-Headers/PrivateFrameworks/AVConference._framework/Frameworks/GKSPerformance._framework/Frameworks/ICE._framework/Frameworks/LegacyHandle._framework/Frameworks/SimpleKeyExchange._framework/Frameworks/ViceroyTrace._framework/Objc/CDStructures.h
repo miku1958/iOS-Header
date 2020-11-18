@@ -13,6 +13,13 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned int linkProbingVersion;
+    unsigned int remoteLinkProbingVersion;
+    double localAlertDuration;
+    double remoteAlertDuration;
+} CDStruct_4bc0a271;
+
+typedef struct {
     int twoPtFourGhzChannelCount;
     int fiveGhzChannelCount;
     int dfsChannelCount;

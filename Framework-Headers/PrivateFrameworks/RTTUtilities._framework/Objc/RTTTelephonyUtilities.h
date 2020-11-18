@@ -10,7 +10,7 @@
 #import <RTTUtilities/TUCallCapabilitiesDelegate-Protocol.h>
 #import <RTTUtilities/TUCallCapabilitiesDelegatePrivate-Protocol.h>
 
-@class ACAccountStore, AXDispatchTimer, CNContactStore, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSNumber, NSSet, NSString;
+@class ACAccountStore, AXDispatchTimer, CNContactStore, CTXPCContexts, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegatePrivate, TUCallCapabilitiesDelegate>
@@ -27,11 +27,16 @@
     CoreTelephonyClient *_telephonyClient;
     NSObject<OS_dispatch_queue> *_telephonyUpdateQueue;
     NSObject<OS_dispatch_queue> *_accountStoreQueue;
+    NSArray *_cachedSubscriptionContexts;
+    CTXPCContexts *_cachedActiveContexts;
+    NSMutableDictionary *_phoneNumberInfoCache;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accountStoreQueue; // @synthesize accountStoreQueue=_accountStoreQueue;
 @property unsigned long long activeContextCount; // @synthesize activeContextCount=_activeContextCount;
 @property (strong) NSSet *allVoiceContexts; // @synthesize allVoiceContexts=_allVoiceContexts;
+@property (strong) CTXPCContexts *cachedActiveContexts; // @synthesize cachedActiveContexts=_cachedActiveContexts;
+@property (strong) NSArray *cachedSubscriptionContexts; // @synthesize cachedSubscriptionContexts=_cachedSubscriptionContexts;
 @property (strong) NSNumber *callCapabilitiesSupportsTelephonyCalls;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,12 +44,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL headphoneJackSupportsTTY; // @synthesize headphoneJackSupportsTTY=_headphoneJackSupportsTTY;
+@property (strong, nonatomic) NSMutableDictionary *phoneNumberInfoCache; // @synthesize phoneNumberInfoCache=_phoneNumberInfoCache;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CoreTelephonyClient *telephonyClient; // @synthesize telephonyClient=_telephonyClient;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *telephonyUpdateQueue; // @synthesize telephonyUpdateQueue=_telephonyUpdateQueue;
 
 + (BOOL)TTYHardwareEnabledForAnyActiveContext;
 + (BOOL)TTYSoftwareEnabledForAnyActiveContext;
++ (long long)currentSupportedTextingType;
 + (BOOL)hardwareTTYIsSupported;
 + (BOOL)hardwareTTYIsSupportedForContext:(id)arg1;
 + (BOOL)isOnlyRTTSupported;
@@ -67,6 +74,7 @@
 + (BOOL)softwareTTYIsSupportedForContext:(id)arg1;
 - (void).cxx_destruct;
 - (void)_processiCloudAccountForRTT;
+- (id)activeContexts;
 - (void)activeSubscriptionsDidChange;
 - (void)carrierSettingsDidChange;
 - (BOOL)contactIsTTYContact:(id)arg1;
@@ -92,6 +100,7 @@
 - (id)myPhoneNumber;
 - (id)phoneNumberForContext:(id)arg1;
 - (id)phoneNumberFromUUID:(id)arg1;
+- (void)purgePhoneNumberInfoCache;
 - (void)registerNotifications;
 - (BOOL)relayIsSupported;
 - (id)relayNumberForContext:(id)arg1;

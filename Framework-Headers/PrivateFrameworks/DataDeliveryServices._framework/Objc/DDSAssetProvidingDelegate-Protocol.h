@@ -9,9 +9,10 @@
 @class DDSAssertion, DDSAsset, NSError, NSSet;
 
 @protocol DDSAssetProvidingDelegate <NSObject>
+- (void)didBeginUpdateCatalog;
 - (void)didChangeDownloadState:(unsigned long long)arg1 forAsset:(DDSAsset *)arg2;
 - (void)didCompleteDownloadForAssertion:(DDSAssertion *)arg1 error:(NSError *)arg2;
 - (void)didCompleteDownloadForAssertions:(NSSet *)arg1 error:(NSError *)arg2;
-- (void)didUpdateManifestWithError:(NSError *)arg1;
+- (void)didUpdateCatalogWithError:(NSError *)arg1;
 @end
 

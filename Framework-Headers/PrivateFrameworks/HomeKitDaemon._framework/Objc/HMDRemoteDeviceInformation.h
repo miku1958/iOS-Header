@@ -28,7 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (readonly, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (strong, nonatomic) HMFTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) long long state; // @synthesize state=_state;
@@ -40,6 +40,7 @@
 - (id)init;
 - (id)initWithDevice:(id)arg1;
 - (void)queueConfirmationHandler:(CDUnknownBlockType)arg1 timeout:(double)arg2;
+- (void)setReachable:(BOOL)arg1 reason:(unsigned long long)arg2;
 - (void)setState:(long long)arg1;
 
 @end

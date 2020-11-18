@@ -38,6 +38,7 @@
 - (id)_nonConformingAppBundleIdentifiers;
 - (id)_nonConformingAppProxies;
 - (id)_refreshAppLibrary;
+- (id)_subscriptionInfosForProxies:(id)arg1;
 - (void)_subscriptionsDidChangeNotification:(id)arg1;
 - (id)allAppBundleIdentifiers;
 - (id)allAppProxies;

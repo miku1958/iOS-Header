@@ -39,17 +39,7 @@
         unsigned int read_occurrenceRouteId:1;
         unsigned int read_switchedToRouteId:1;
         unsigned int read_synthesizedStepInstructions:1;
-        unsigned int wrote_errorCode:1;
-        unsigned int wrote_errorDomain:1;
-        unsigned int wrote_occurrenceLatLng:1;
-        unsigned int wrote_occurrenceRouteId:1;
-        unsigned int wrote_switchedToRouteId:1;
-        unsigned int wrote_synthesizedStepInstructions:1;
-        unsigned int wrote_occurrenceResponseIndex:1;
-        unsigned int wrote_occurrenceStepIndex:1;
-        unsigned int wrote_switchedToResponseIndex:1;
-        unsigned int wrote_synthesizedStepManeuverType:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -80,11 +70,6 @@
 - (void).cxx_destruct;
 - (int)StringAsSynthesizedStepManeuverType:(id)arg1;
 - (int)StringAsType:(id)arg1;
-- (void)_readErrorDomain;
-- (void)_readOccurrenceLatLng;
-- (void)_readOccurrenceRouteId;
-- (void)_readSwitchedToRouteId;
-- (void)_readSynthesizedStepInstructions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -92,7 +77,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

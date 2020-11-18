@@ -12,27 +12,21 @@
 
 @interface BSXPCServiceConnectionPeer : NSObject <BSDescriptionProviding>
 {
-    BSProcessHandle *_processHandle;
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_lock_entitlements;
     NSMutableSet *_lock_connections;
     unsigned long long _lock_lastConnectedGenerationCount;
+    BSProcessHandle *_processHandle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) BSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
 @property (readonly) Class superclass;
 
-+ (id)_allPeers;
-+ (void)invalidateConnection:(id)arg1;
-+ (id)peerOfConnection:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithConnection:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (BOOL)hasEntitlement:(id)arg1;
 - (id)init;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

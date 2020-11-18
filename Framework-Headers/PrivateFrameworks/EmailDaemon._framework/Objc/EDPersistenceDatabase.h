@@ -25,7 +25,6 @@
 }
 
 @property (readonly, nonatomic) NSString *basePath; // @synthesize basePath=_basePath;
-@property (readonly, nonatomic) EDPersistenceDatabaseConnectionPool *connectionPool; // @synthesize connectionPool=_connectionPool;
 @property (readonly, nonatomic) BOOL databaseIsCorrupt;
 @property (readonly, nonatomic) NSString *databaseName; // @synthesize databaseName=_databaseName;
 @property (readonly, copy) NSString *debugDescription;
@@ -42,7 +41,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL writersAreWaiting;
 
-+ (id)log;
 - (void).cxx_destruct;
 - (void)checkInConnection:(id)arg1;
 - (id)checkOutConnectionIsWriter:(BOOL)arg1;
@@ -51,10 +49,10 @@
 - (id)init;
 - (id)initWithBasePath:(id)arg1 databaseName:(id)arg2 maxConcurrentReaders:(unsigned long long)arg3 schema:(id)arg4 protectedSchema:(id)arg5 propertyMapper:(id)arg6 protectedDatabasePersistence:(id)arg7;
 - (id)openConnectionIsWriter:(BOOL)arg1;
-- (BOOL)performBlock:(CDUnknownBlockType)arg1 isWriter:(BOOL)arg2 useTransaction:(BOOL)arg3;
 - (BOOL)performDatabaseSetupUsingTransaction:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
 - (void)performDatabaseWorkInBlockWithHighPriority:(CDUnknownBlockType)arg1;
 - (BOOL)performReadBlock:(CDUnknownBlockType)arg1;
+- (BOOL)performWithOptions:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)performWriteBlock:(CDUnknownBlockType)arg1;
 - (void)reconcileJournalWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)scheduleRecurringActivity;

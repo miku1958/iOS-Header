@@ -25,7 +25,6 @@
 - (void)_callbackDidBecomeActive;
 - (void)_callbackDidInvalidateWithError:(id)arg1;
 - (void)connectToTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)didDetectNDEFMessages:(id)arg1 fromTags:(id)arg2 updateUICallback:(CDUnknownBlockType)arg3;
 - (void)didTerminate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 invalidateAfterFirstRead:(BOOL)arg3;

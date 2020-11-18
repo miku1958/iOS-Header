@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_write_request : NSObject <OS_nw_write_request>
 {
     NWConcrete_nw_write_request *next;
+    NWConcrete_nw_write_request *tail;
     CDUnknownBlockType completion;
     NWConcrete_nw_connection *connection;
     unsigned int qos_class;

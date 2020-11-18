@@ -7,24 +7,31 @@
 #import <SpringBoard/SBToAppsWorkspaceTransaction.h>
 
 @class NSArray, SBAutoPiPWorkspaceTransaction;
+@protocol BSInvalidatable;
 
 @interface SBTransientOverlayDismissAllToAppsWorkspaceTransaction : SBToAppsWorkspaceTransaction
 {
     NSArray *_switcherTransitioningTransientOverlayViewControllers;
     SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
+    id<BSInvalidatable> _pipWindowLevelOverrideAssertionInvalidatable;
     BOOL _isUsingSwitcherAnimation;
+    BOOL _beganDismissingTransientOverlays;
 }
 
 - (void).cxx_destruct;
 - (void)_begin;
+- (BOOL)_canBeInterrupted;
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (void)_didComplete;
 - (void)_handleDismissOverlaysCompletion;
+- (void)_logForInterruptAttemptReason:(id)arg1;
 - (void)_performDismissal;
 - (unsigned long long)_serialOverlayPreDismissalOptions;
 - (id)_setupAnimation;
 - (BOOL)_shouldAnimateTransition;
 - (BOOL)_shouldResignActiveForAnimation;
 - (BOOL)_shouldUseSwitcherDismissalAnimationForTransientOverlayViewController:(id)arg1;
+- (BOOL)canInterruptForTransitionRequest:(id)arg1;
 - (void)dealloc;
 - (id)initWithTransitionRequest:(id)arg1;
 

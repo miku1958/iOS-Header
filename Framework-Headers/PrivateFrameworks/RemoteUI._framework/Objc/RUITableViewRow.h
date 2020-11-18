@@ -119,6 +119,7 @@
 - (id)textColorForAttributeName:(id)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 - (void)webContainerView:(id)arg1 didClickLinkWithURL:(id)arg2;
 
 @end

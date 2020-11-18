@@ -13,7 +13,7 @@
 #import <NewsUI/SXScrollViewControllerDelegate-Protocol.h>
 
 @class FCObservable, NFEventManager, NFMultiDelegate, NSDate, NSHashTable, NSString, NUArticleAdManager, NUArticleContext, SXScrollViewController, SXVideoPlayerViewControllerManager, UIResponder, UIScrollView;
-@protocol NUANFDebugSettingsProvider, NUArticleDataProvider, NUArticleKeyCommandManager, NUArticleScrollPositionManagerType, NUDocumentSectionBlueprintProvider, NUEndOfArticleDataProvider, NULoadingDelegate, SXAnalyticsReporting;
+@protocol NUANFDebugSettingsProvider, NUArticleDataProvider, NUArticleKeyCommandManager, NUArticleScrollPositionManagerType, NUChromeControl, NUDocumentSectionBlueprintProvider, NUEndOfArticleDataProvider, NULoadingDelegate, NUSpotlightManager, SXAnalyticsReporting;
 
 @interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUANFDebugSettingsObserver, NULoadable, NUBarCompressible>
 {
@@ -41,6 +41,8 @@
     SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
     id<NUArticleScrollPositionManagerType> _articleScrollPositionManager;
     NSDate *_manualScrollingStartDate;
+    id<NUSpotlightManager> _spotlightManager;
+    id<NUChromeControl> _chromeControl;
 }
 
 @property (readonly, nonatomic) NUArticleAdManager *adManager; // @synthesize adManager=_adManager;
@@ -50,6 +52,7 @@
 @property (nonatomic) BOOL articleIsPresentingFullscreen; // @synthesize articleIsPresentingFullscreen=_articleIsPresentingFullscreen;
 @property (readonly, nonatomic) id<NUArticleScrollPositionManagerType> articleScrollPositionManager; // @synthesize articleScrollPositionManager=_articleScrollPositionManager;
 @property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
+@property (readonly, nonatomic) id<NUChromeControl> chromeControl; // @synthesize chromeControl=_chromeControl;
 @property (nonatomic) long long contentScale; // @synthesize contentScale=_contentScale;
 @property (strong, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (readonly, copy) NSString *debugDescription;
@@ -70,6 +73,7 @@
 @property (readonly, nonatomic) UIResponder *responder;
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
+@property (readonly, nonatomic) id<NUSpotlightManager> spotlightManager; // @synthesize spotlightManager=_spotlightManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
 
@@ -82,7 +86,7 @@
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (id)currentPresentationAttributes;
-- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8 videoPlayerViewControllerManager:(id)arg9 articleScrollPositionManager:(id)arg10;
+- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8 videoPlayerViewControllerManager:(id)arg9 articleScrollPositionManager:(id)arg10 chromeControl:(id)arg11 spotlightManager:(id)arg12;
 - (BOOL)isPreviewingOrShowingHardPaywall;
 - (double)navigationBarHeightForScrollViewController:(id)arg1;
 - (void)nowPlayingDidDisappear:(id)arg1;
@@ -102,12 +106,14 @@
 - (void)scrollViewControllerDidStopScrolling:(id)arg1;
 - (void)scrollViewControllerDismissFullscreen:(id)arg1;
 - (void)scrollViewControllerRequestsFullscreen:(id)arg1;
+- (void)scrollViewControllerWillDismissFullscreen:(id)arg1;
 - (BOOL)shouldSaveScrollPosition;
 - (void)showArticleMessage:(long long)arg1 hideAfterEvent:(id)arg2;
 - (void)testingConditionEnabled:(BOOL)arg1;
 - (double)toolBarHeightForScrollViewController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updatePresentationAttributes;
+- (void)updateScrollPositionForComponentIdentifier;
 - (void)updateScrollViewControllerWithContentOverlayBlueprint:(id)arg1 topOffset:(double)arg2;
 - (void)updateScrollViewControllerWithFooterBlueprint:(id)arg1;
 - (void)updateScrollViewControllerWithHeaderBlueprint:(id)arg1;
@@ -120,6 +126,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewportDebuggingEnabled:(BOOL)arg1;
+- (void)willReturnToFullscreen:(id)arg1;
 
 @end
 

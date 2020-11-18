@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryView, MPModelObject, NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryKeepLocalStatusRequestOperation : MPAsyncOperation
 {
     CDUnknownBlockType _downloadablePlaylistItemEntityQueryBlock;

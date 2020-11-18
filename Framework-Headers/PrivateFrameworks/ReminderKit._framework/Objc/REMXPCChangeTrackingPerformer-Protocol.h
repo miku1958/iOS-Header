@@ -13,9 +13,10 @@
 - (void)currentChangeTokenForAccountTypes:(long long)arg1 completion:(void (^)(REMChangeToken *))arg2;
 - (void)deleteHistoryBeforeDate:(NSDate *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteHistoryBeforeToken:(REMChangeToken *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)earliestChangeTokenForAccountID:(NSString *)arg1 completion:(void (^)(REMChangeToken *))arg2;
 - (void)fetchAuxiliaryChangeInfos:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)fetchHistoryAfterDate:(NSDate *)arg1 completionHandler:(void (^)(REMChangeSet *, NSError *))arg2;
-- (void)fetchHistoryAfterToken:(REMChangeToken *)arg1 completionHandler:(void (^)(REMChangeSet *, NSError *))arg2;
+- (void)fetchHistoryAfterDate:(NSDate *)arg1 entityName:(NSString *)arg2 transactionFetchLimit:(unsigned long long)arg3 completionHandler:(void (^)(REMChangeSet *, NSError *))arg4;
+- (void)fetchHistoryAfterToken:(REMChangeToken *)arg1 entityName:(NSString *)arg2 transactionFetchLimit:(unsigned long long)arg3 completionHandler:(void (^)(REMChangeSet *, NSError *))arg4;
 - (void)getTrackingStateWithClientID:(id<REMChangeTrackingClientIdentifying>)arg1 completion:(void (^)(REMChangeTrackingState *, NSError *))arg2;
 - (void)saveTrackingState:(REMChangeTrackingState *)arg1 withClientID:(id<REMChangeTrackingClientIdentifying>)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end

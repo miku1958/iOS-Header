@@ -6,22 +6,19 @@
 
 #import <ActivityRingsUI/ARUIRingsView.h>
 
-@class ARUICountdownController;
+@class ARUIRingGroupController;
 
 @interface ARUICountdownView : ARUIRingsView
 {
-    ARUICountdownController *_countdownController;
-    ARUICountdownController *_backingTrackController;
 }
 
-@property (readonly, nonatomic) ARUICountdownController *countdownController;
+@property (readonly, nonatomic) ARUIRingGroupController *countdownController;
 
 + (id)countdownViewConfiguredForCompanion;
++ (id)countdownViewConfiguredForDisplayWithRingDiameter:(float)arg1;
 + (id)countdownViewConfiguredForWatch;
-- (void).cxx_destruct;
-- (id)backingTrackController;
-- (id)initWithCountdownController:(id)arg1;
-- (id)initWithCountdownController:(id)arg1 backingTrackController:(id)arg2;
+- (id)backingTrackRingGroup;
+- (id)ringGroup;
 
 @end
 

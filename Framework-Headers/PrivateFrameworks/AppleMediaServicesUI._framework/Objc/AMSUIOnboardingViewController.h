@@ -14,6 +14,7 @@
 @interface AMSUIOnboardingViewController : UIViewController <UIScrollViewDelegate>
 {
     BOOL _viewHasAppeared;
+    UIImage *_rightImage;
     OBPrivacyLinkController *_privacyLinkController;
     CDUnknownBlockType _primaryButtonCallback;
     OBWelcomeController *_welcomeController;
@@ -36,6 +37,7 @@
 @property (copy, nonatomic) CDUnknownBlockType primaryButtonCallback; // @synthesize primaryButtonCallback=_primaryButtonCallback;
 @property (strong, nonatomic) NSString *primaryButtonText; // @synthesize primaryButtonText=_primaryButtonText;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
+@property (strong, nonatomic) UIImage *rightImage; // @synthesize rightImage=_rightImage;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
@@ -44,6 +46,7 @@
 + (id)privacyLinkIdentifiersFromController:(id)arg1;
 - (void).cxx_destruct;
 - (id)childTraitCollectionForViewController:(id)arg1;
+- (void)commonInitWithPrimaryButtonText:(id)arg1 privacyLinkController:(id)arg2;
 - (void)commonSetupWithPrimaryButtonText:(id)arg1 privacyLinkBundleIdentifiers:(id)arg2;
 - (void)didTapPrimaryButton:(id)arg1;
 - (id)initWithHeaderImage:(id)arg1 titleText:(id)arg2 descriptionText:(id)arg3 primaryButtonText:(id)arg4 privacyLinkBundleIdentifier:(id)arg5;

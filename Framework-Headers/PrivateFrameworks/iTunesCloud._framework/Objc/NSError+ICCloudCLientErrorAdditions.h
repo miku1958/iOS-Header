@@ -7,7 +7,13 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (ICCloudCLientErrorAdditions)
+
+@property (readonly) NSError *ic_underlyingError;
+
 + (id)ic_cloudClientErrorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)ic_cloudClientLibraryUploadErrorWithCode:(long long)arg1 userInfo:(id)arg2;
++ (id)ic_errorWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3;
++ (id)ic_errorWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3 underlyingError:(id)arg4;
++ (id)ic_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3;
 @end
 

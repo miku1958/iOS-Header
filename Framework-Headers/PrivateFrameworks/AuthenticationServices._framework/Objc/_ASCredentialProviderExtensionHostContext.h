@@ -7,11 +7,12 @@
 #import <Foundation/NSExtensionContext.h>
 
 #import <AuthenticationServices/_ASCredentialProviderExtensionHostContextProtocol-Protocol.h>
+#import <AuthenticationServices/_ASExtensionHostContext-Protocol.h>
 
 @class NSString;
 @protocol _ASCredentialProviderExtensionHostContextDelegate;
 
-@interface _ASCredentialProviderExtensionHostContext : NSExtensionContext <_ASCredentialProviderExtensionHostContextProtocol>
+@interface _ASCredentialProviderExtensionHostContext : NSExtensionContext <_ASCredentialProviderExtensionHostContextProtocol, _ASExtensionHostContext>
 {
     id<_ASCredentialProviderExtensionHostContextDelegate> _delegate;
 }

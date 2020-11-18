@@ -10,6 +10,7 @@
 
 @class BSTimer, NSString;
 
+__attribute__((visibility("hidden")))
 @interface STKBaseSound : NSObject <STKSound>
 {
     BSTimer *_timer;

@@ -6,11 +6,10 @@
 
 #import <PhotosUICore/PXCuratedLibraryAssetCollectionActionPerformer.h>
 
-@class PXCuratedLibraryActionManager, PXGLayout, PXPhotoKitAssetCollectionActionManager;
+@class PXCuratedLibraryActionManager, PXGLayout;
 
 @interface PXCuratedLibraryEllipsisButtonActionPerformer : PXCuratedLibraryAssetCollectionActionPerformer
 {
-    PXPhotoKitAssetCollectionActionManager *_assetCollectionActionManager;
     PXGLayout *_layout;
     PXCuratedLibraryActionManager *_actionManager;
 }

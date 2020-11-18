@@ -6,9 +6,10 @@
 
 #import <FamilyCircleUI/NSObject-Protocol.h>
 
-@class FACircleRemoteUIDelegate, NSError;
+@class FACircleRemoteUIDelegate, FACircleStateResponse;
 
 @protocol FACircleRemoteUIDelegateDelegate <NSObject>
-- (void)FACircleRemoteUIDelegate:(FACircleRemoteUIDelegate *)arg1 completedWithSuccess:(BOOL)arg2 error:(NSError *)arg3;
+- (void)circleRemoteUIDelegate:(FACircleRemoteUIDelegate *)arg1 completedWithResponse:(FACircleStateResponse *)arg2;
+- (void)circleRemoteUIDelegateDidPresent:(FACircleRemoteUIDelegate *)arg1;
 @end
 

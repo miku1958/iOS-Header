@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_handleResponseForHook:(id)arg1 success:(BOOL)arg2 error:(id)arg3 attributes:(id)arg4 objectModel:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_rebuildServerHookHandlers;
 - (id)_refreshRequestWithInfo:(id)arg1 initiatingObjectModel:(id)arg2 attributes:(id)arg3;
 - (void)_reloadUIWithInfo:(id)arg1 attributes:(id)arg2 initiatingObjectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -6,20 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <NeutrinoCore/NUSharableImage-Protocol.h>
+
+@class NSString;
 @protocol NUPurgeableStorage, OS_dispatch_queue;
 
-@interface _NUImageTile : NSObject
+@interface _NUImageTile : NSObject <NUSharableImage>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<NUPurgeableStorage> _storage;
-    unsigned long long _useCount;
     unsigned long long _accessCount;
     BOOL _wasPurged;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
 - (BOOL)_decrementAccessCount;
-- (BOOL)_decrementUseCount;
 - (BOOL)_incrementAccessCount;
 - (void)_markAsPurgeable;
 - (BOOL)_markAsUnpurgeable;
@@ -31,15 +37,15 @@
 - (BOOL)decrementAccessAndUseCountButLeaveAccessedIfLastUse;
 - (BOOL)decrementAccessCount;
 - (BOOL)decrementUseCount;
-- (id)description;
 - (BOOL)incrementAccessCount;
 - (void)incrementUseCount;
 - (id)initWithStorage:(id)arg1;
+- (BOOL)isInUse;
 - (BOOL)isShared;
 - (BOOL)isValid;
 - (long long)readStorageInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)returnToStorageFactory:(id)arg1;
-- (unsigned long long)useCount;
+- (int)useCount;
 - (long long)writeStorageInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

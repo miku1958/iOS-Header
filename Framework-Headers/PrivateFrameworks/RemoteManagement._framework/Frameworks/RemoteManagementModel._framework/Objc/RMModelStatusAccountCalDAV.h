@@ -11,7 +11,7 @@
 @interface RMModelStatusAccountCalDAV : RMModelStatusBase
 {
     NSString *_statusIdentifier;
-    NSString *_statusDescription;
+    NSString *_statusVisibleName;
     NSString *_statusHostname;
     NSNumber *_statusPort;
     NSString *_statusUsername;
@@ -23,15 +23,15 @@
 @property (copy, nonatomic) NSNumber *statusAreCalendarsEnabled; // @synthesize statusAreCalendarsEnabled=_statusAreCalendarsEnabled;
 @property (copy, nonatomic) NSNumber *statusAreRemindersEnabled; // @synthesize statusAreRemindersEnabled=_statusAreRemindersEnabled;
 @property (copy, nonatomic) NSNumber *statusAuthenticated; // @synthesize statusAuthenticated=_statusAuthenticated;
-@property (copy, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
 @property (copy, nonatomic) NSString *statusHostname; // @synthesize statusHostname=_statusHostname;
 @property (copy, nonatomic) NSString *statusIdentifier; // @synthesize statusIdentifier=_statusIdentifier;
 @property (copy, nonatomic) NSNumber *statusPort; // @synthesize statusPort=_statusPort;
 @property (copy, nonatomic) NSString *statusUsername; // @synthesize statusUsername=_statusUsername;
+@property (copy, nonatomic) NSString *statusVisibleName; // @synthesize statusVisibleName=_statusVisibleName;
 
 + (id)allowedStatusKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 description:(id)arg2 hostname:(id)arg3 port:(id)arg4 username:(id)arg5 authenticated:(id)arg6 areCalendarsEnabled:(id)arg7 areRemindersEnabled:(id)arg8;
++ (id)buildWithIdentifier:(id)arg1 visibleName:(id)arg2 hostname:(id)arg3 port:(id)arg4 username:(id)arg5 authenticated:(id)arg6 areCalendarsEnabled:(id)arg7 areRemindersEnabled:(id)arg8;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadPayloadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;

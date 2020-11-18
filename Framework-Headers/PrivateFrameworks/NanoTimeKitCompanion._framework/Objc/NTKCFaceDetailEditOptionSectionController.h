@@ -30,8 +30,8 @@
 - (id)_actionNameForOption:(id)arg1;
 - (BOOL)_canDisplayActionRowForCustomEditMode:(long long)arg1 andOption:(id)arg2;
 - (BOOL)_canSelectRow:(long long)arg1;
+- (void)_createActionRow;
 - (void)_customizeActionRow:(id)arg1 withEditOption:(id)arg2;
-- (void)_dequeueActionRow;
 - (BOOL)_handleDidSelectActionRowForOption:(id)arg1;
 - (BOOL)_handleDidSelectOption:(id)arg1;
 - (id)_initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;

@@ -13,8 +13,10 @@
 {
     id<BSInvalidatable> _colorSamplingAssertion;
     id<BSInvalidatable> _wallpaperRequiredAssertion;
+    id<BSInvalidatable> _bannerSuppressionAssertion;
 }
 
+@property (strong, nonatomic) id<BSInvalidatable> bannerSuppressionAssertion; // @synthesize bannerSuppressionAssertion=_bannerSuppressionAssertion;
 @property (strong, nonatomic) id<BSInvalidatable> colorSamplingAssertion; // @synthesize colorSamplingAssertion=_colorSamplingAssertion;
 @property (readonly, copy, nonatomic) NSSet *fromApplicationSceneEntities; // @dynamic fromApplicationSceneEntities;
 @property (readonly, nonatomic) SBDeviceApplicationSceneEntity *fromApplicationSceneEntity;

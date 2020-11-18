@@ -85,7 +85,7 @@
 - (void)_showMoveUpInstructions;
 - (void)_showMoveUpInstructionsAfterDelay;
 - (void)_showSpeedInstructions;
-- (void)_updateInstructionLabelText:(id)arg1;
+- (void)_updateInstructionLabelForInstruction:(long long)arg1;
 - (void)dealloc;
 - (void)finishedProcessingPanorama;
 - (id)initWithCoder:(id)arg1;

@@ -23,6 +23,7 @@
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)stringFromGKMultiplayerParticipantStatus:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

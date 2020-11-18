@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_childPlaces:1;
         unsigned int read_parentPlace:1;
         unsigned int read_siblingPlaces:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_childPlaces:1;
-        unsigned int wrote_featureId:1;
-        unsigned int wrote_parentPlace:1;
-        unsigned int wrote_siblingPlaces:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,11 +44,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)siblingPlaceType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsChildPlace:(id)arg1;
-- (void)_addNoFlagsSiblingPlace:(id)arg1;
-- (void)_readChildPlaces;
-- (void)_readParentPlace;
-- (void)_readSiblingPlaces;
 - (void)addChildPlace:(id)arg1;
 - (void)addSiblingPlace:(id)arg1;
 - (id)childPlaceAtIndex:(unsigned long long)arg1;
@@ -67,7 +58,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

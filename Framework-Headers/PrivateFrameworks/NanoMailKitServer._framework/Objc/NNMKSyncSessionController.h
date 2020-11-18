@@ -10,6 +10,7 @@
 
 @interface NNMKSyncSessionController : NSObject
 {
+    BOOL _deviceInStandalone;
     NSMutableSet *_messageIdsToIgnoreStatusUpdates;
     NSMutableDictionary *_notificationPayloadAcks;
     NSMutableDictionary *_syncingAccountIdentityByUsername;
@@ -19,6 +20,7 @@
 }
 
 @property (nonatomic) double accountAuthRequestLastRequestTime; // @synthesize accountAuthRequestLastRequestTime=_accountAuthRequestLastRequestTime;
+@property (nonatomic) BOOL deviceInStandalone; // @synthesize deviceInStandalone=_deviceInStandalone;
 @property (strong, nonatomic) NSDate *lastSyncDueToMailboxesMismatchRequestTime; // @synthesize lastSyncDueToMailboxesMismatchRequestTime=_lastSyncDueToMailboxesMismatchRequestTime;
 @property (strong, nonatomic) NSMutableSet *messageIdsToIgnoreStatusUpdates; // @synthesize messageIdsToIgnoreStatusUpdates=_messageIdsToIgnoreStatusUpdates;
 @property (strong, nonatomic) NSMutableDictionary *notificationPayloadAcks; // @synthesize notificationPayloadAcks=_notificationPayloadAcks;

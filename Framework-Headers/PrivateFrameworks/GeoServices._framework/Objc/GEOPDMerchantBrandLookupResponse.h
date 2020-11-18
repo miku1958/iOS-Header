@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_62a50c50 _abstractOfBrandMuids;
     CDStruct_62a50c50 _childBrandMuids;
     CDStruct_62a50c50 _variantBrandMuids;
     NSMutableArray *_geoHashs;
@@ -30,21 +31,17 @@ __attribute__((visibility("hidden")))
         unsigned int has_relatedGlobalBrandMuid:1;
         unsigned int has_isPrimaryVariant:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_abstractOfBrandMuids:1;
         unsigned int read_childBrandMuids:1;
         unsigned int read_variantBrandMuids:1;
         unsigned int read_geoHashs:1;
         unsigned int read_scope:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_childBrandMuids:1;
-        unsigned int wrote_variantBrandMuids:1;
-        unsigned int wrote_geoHashs:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_relatedGlobalBrandMuid:1;
-        unsigned int wrote_scope:1;
-        unsigned int wrote_isPrimaryVariant:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (readonly, nonatomic) unsigned long long *abstractOfBrandMuids;
+@property (readonly, nonatomic) unsigned long long abstractOfBrandMuidsCount;
 @property (readonly, nonatomic) unsigned long long *childBrandMuids;
 @property (readonly, nonatomic) unsigned long long childBrandMuidsCount;
 @property (strong, nonatomic) NSMutableArray *geoHashs;
@@ -63,17 +60,13 @@ __attribute__((visibility("hidden")))
 + (Class)geoHashType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsChildBrandMuid:(unsigned long long)arg1;
-- (void)_addNoFlagsGeoHash:(id)arg1;
-- (void)_addNoFlagsVariantBrandMuid:(unsigned long long)arg1;
-- (void)_readChildBrandMuids;
-- (void)_readGeoHashs;
-- (void)_readScope;
-- (void)_readVariantBrandMuids;
+- (unsigned long long)abstractOfBrandMuidAtIndex:(unsigned long long)arg1;
+- (void)addAbstractOfBrandMuid:(unsigned long long)arg1;
 - (void)addChildBrandMuid:(unsigned long long)arg1;
 - (void)addGeoHash:(id)arg1;
 - (void)addVariantBrandMuid:(unsigned long long)arg1;
 - (unsigned long long)childBrandMuidAtIndex:(unsigned long long)arg1;
+- (void)clearAbstractOfBrandMuids;
 - (void)clearChildBrandMuids;
 - (void)clearGeoHashs;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -88,10 +81,14 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setAbstractOfBrandMuids:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setChildBrandMuids:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setVariantBrandMuids:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)variantBrandMuidAtIndex:(unsigned long long)arg1;

@@ -12,6 +12,7 @@
 
 @interface RPEndpoint : NSObject <NSSecureCoding>
 {
+    NSString *_accountID;
     SFDevice *_bleDevice;
     CUBonjourDevice *_bonjourDevice;
     unsigned int _hotspotInfo;
@@ -33,6 +34,7 @@
     IDSDevice *_idsDevice;
 }
 
+@property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (strong, nonatomic) SFDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
 @property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
 @property (readonly, copy, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;

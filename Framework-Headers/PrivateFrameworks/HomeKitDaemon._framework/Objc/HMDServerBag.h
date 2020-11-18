@@ -9,16 +9,16 @@
 #import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
 @class NSDictionary, NSObject, NSString, NSURL, NSURLSession;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDServerBag : HMFObject <NSURLSessionDelegate>
 {
+    id<HMFLocking> _lock;
     BOOL _refreshing;
     NSDictionary *_dictionaryRepresentation;
     unsigned long long _environment;
     NSURL *_url;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSURLSession *_urlSession;
 }
 
@@ -26,12 +26,12 @@
 @property (readonly, copy, nonatomic) NSURL *accessoryReportURL;
 @property (readonly, copy, nonatomic) NSURL *activationCertificateHostnameURL;
 @property (readonly, copy, nonatomic) NSURL *activationHostnameURL;
+@property (readonly, nonatomic, getter=isControlCenterEnabled) BOOL controlCenterEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *dictionaryRepresentation; // @synthesize dictionaryRepresentation=_dictionaryRepresentation;
 @property (readonly, nonatomic) unsigned long long environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic) BOOL refreshing; // @synthesize refreshing=_refreshing;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;

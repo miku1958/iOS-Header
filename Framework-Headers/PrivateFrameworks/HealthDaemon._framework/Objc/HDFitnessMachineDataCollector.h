@@ -42,7 +42,7 @@
 - (void).cxx_destruct;
 - (id)_cmFitnessMachineDataFromDatums:(id)arg1 timestamp:(id)arg2;
 - (void)_deliverBufferedMetrics;
-- (id)_filterForFitnessMachineSamplesWithStartDate:(id)arg1 endDate:(id)arg2;
+- (id)_filterForFitnessMachineSamplesWithStartDate:(id)arg1 endDate:(id)arg2 quantityType:(id)arg3;
 - (double)_getDoubleFromDatum:(id)arg1 unitString:(id)arg2 defaultValue:(double)arg3;
 - (long long)_getLongFromDatum:(id)arg1 unitString:(id)arg2 defaultValue:(long long)arg3;
 - (id)_queue_calculateDatumForAggregatorType:(id)arg1 currentDatum:(id)arg2 previousDatum:(id)arg3;

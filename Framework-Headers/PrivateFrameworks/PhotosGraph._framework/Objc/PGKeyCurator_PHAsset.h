@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithPhotoLibrary:(id)arg1;
+- (id)keyAssetInAssets:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)keyAssetWithFeeder:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 
 @end

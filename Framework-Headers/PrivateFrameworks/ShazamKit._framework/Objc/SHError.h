@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface SHError : NSObject
 {
 }
@@ -16,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2 keyOverrides:(id)arg3;
 + (id)messageForCode:(long long)arg1;
-+ (id)recoverySuggestionForCode:(long long)arg1;
 
 @end
 

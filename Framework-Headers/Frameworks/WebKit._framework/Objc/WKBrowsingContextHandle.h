@@ -19,8 +19,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
-- (id)_initWithPage:(struct WebPage *)arg1;
-- (id)_initWithPageProxy:(struct WebPageProxy *)arg1;
+- (id)_initWithPage:(NakedRef_f43bc9c8)arg1;
+- (id)_initWithPageProxy:(NakedRef_0c67ce5b)arg1;
 - (id)_initWithPageProxyID:(ObjectIdentifier_b2f7915a)arg1 andWebPageID:(ObjectIdentifier_8136369e)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

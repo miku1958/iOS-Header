@@ -6,26 +6,29 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UITextView;
+@class RTTServiceUpdate, UITextView;
 @protocol RTTUIServiceCellDelegate;
 
 @interface RTTUIServiceUpdateCell : UITableViewCell
 {
     UITextView *_titleView;
     UITextView *_subtitleView;
+    RTTServiceUpdate *_serviceUpdate;
     id<RTTUIServiceCellDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<RTTUIServiceCellDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (double)heightForWidth:(double)arg1 withDelegate:(id)arg2;
++ (double)heightForWidth:(double)arg1 delegate:(id)arg2 serviceUpdate:(id)arg3;
 - (void).cxx_destruct;
 - (id)accessibilityLabel;
 - (void)adjustTextViewSize;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 serviceUpdate:(id)arg3;
 - (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
 - (double)preferredHeightForWidth:(double)arg1;
 - (id)serviceMessage;
+- (id)serviceTitle;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateLayout;

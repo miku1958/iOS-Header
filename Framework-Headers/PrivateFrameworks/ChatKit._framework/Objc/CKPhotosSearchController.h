@@ -6,11 +6,12 @@
 
 #import <ChatKit/CKMessageTypeSearchController.h>
 
+#import <ChatKit/QLPreviewControllerConformingDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
 @class NSString;
 
-@interface CKPhotosSearchController : CKMessageTypeSearchController <QLPreviewControllerDelegate>
+@interface CKPhotosSearchController : CKMessageTypeSearchController <QLPreviewControllerDelegate, QLPreviewControllerConformingDelegate>
 {
     unsigned long long _contentMode;
 }
@@ -23,12 +24,13 @@
 
 + (Class)cellClass;
 + (id)indexingString;
++ (id)relativeDateFormatter;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
-+ (BOOL)supportsQuicklook;
++ (BOOL)supportsQuicklookForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_additionalMenuActionsForResult:(id)arg1;
+- (id)_additionalMenuElementsForResult:(id)arg1;
 - (void)_filterControlTapped:(id)arg1;
 - (double)_internalInterGroupSpacing;
 - (id)_pasteboardItemsForResult:(id)arg1;
@@ -44,10 +46,12 @@
 - (id)initWithSectionIndex:(unsigned long long)arg1;
 - (double)interGroupSpacing;
 - (id)layoutGroupWithEnvironment:(id)arg1;
+- (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
 - (id)queryAttributesForText:(id)arg1;
 - (id)queryResultsForItems:(id)arg1;
 - (void)saveAttachmentForResult:(id)arg1;
+- (id)sectionSubtitle;
 - (void)updateSupplementryViewIfNeeded:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)wantsHeaderSection;
 

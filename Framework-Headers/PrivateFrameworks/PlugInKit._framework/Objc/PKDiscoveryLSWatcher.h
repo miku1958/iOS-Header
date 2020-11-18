@@ -27,6 +27,7 @@
 - (void)pluginsDidUninstall:(id)arg1;
 - (void)stopUpdates;
 - (void)update;
+- (void)updateWithUninstalledProxies:(id)arg1;
 
 @end
 

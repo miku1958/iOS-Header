@@ -18,6 +18,7 @@
     NSDictionary *_serviceProviderData;
     unsigned long long _paymentInstrumentType;
     NSData *_appletValue;
+    NSString *_transactionIdentifier;
 }
 
 @property (copy, nonatomic) NSData *appletValue; // @synthesize appletValue=_appletValue;
@@ -26,6 +27,7 @@
 @property (nonatomic) unsigned long long paymentInstrumentType; // @synthesize paymentInstrumentType=_paymentInstrumentType;
 @property (copy, nonatomic) NSDictionary *serviceProviderData; // @synthesize serviceProviderData=_serviceProviderData;
 @property (copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
+@property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

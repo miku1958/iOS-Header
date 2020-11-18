@@ -35,6 +35,7 @@
 - (id)_init;
 - (void)adjustReferencedSpriteIndexesWithChangeDetails:(id)arg1 appliedToLayout:(id)arg2;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

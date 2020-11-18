@@ -37,7 +37,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithOptions:(id)arg1;
 - (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (void)setPixelBuffer:(struct __CVBuffer *)arg1;
+- (void)setPixelBuffer:(struct __CVBuffer *)arg1 fromDevice:(id)arg2;
 - (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 fromDevice:(id)arg2;
 
 @end
 

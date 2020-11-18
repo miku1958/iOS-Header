@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
     double _legendCornerRadius;
     UIColor *_dividerColor;
     VUITextLayout *_legendLayout;
-    VUITextLayout *_legendDescriptionLayout;
+    VUITextLayout *_descriptionLayout;
+    double _descriptionMaxWidth;
     VUITextLayout *_portraitLegendLayout;
     VUITextLayout *_portraitLegendDescriptionLayout;
     struct CGSize _logoSize;
@@ -30,18 +31,22 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _legendsMargin;
     struct UIEdgeInsets _legendNamePadding;
     struct UIEdgeInsets _dividerMargin;
+    struct UIEdgeInsets _descriptionMargin;
     struct UIEdgeInsets _portraitMargin;
     struct UIEdgeInsets _portraitLogoMargin;
     struct UIEdgeInsets _portraitLegendsMargin;
     struct UIEdgeInsets _portraitDividerMargin;
+    struct UIEdgeInsets _portraitDescriptionMargin;
 }
 
+@property (readonly, nonatomic) VUITextLayout *descriptionLayout; // @synthesize descriptionLayout=_descriptionLayout;
+@property (nonatomic) struct UIEdgeInsets descriptionMargin; // @synthesize descriptionMargin=_descriptionMargin;
+@property (nonatomic) double descriptionMaxWidth; // @synthesize descriptionMaxWidth=_descriptionMaxWidth;
 @property (readonly, nonatomic) UIColor *dividerColor; // @synthesize dividerColor=_dividerColor;
 @property (nonatomic) struct UIEdgeInsets dividerMargin; // @synthesize dividerMargin=_dividerMargin;
 @property (nonatomic) struct CGSize dividerSize; // @synthesize dividerSize=_dividerSize;
 @property (readonly, nonatomic) UIColor *legendBackgroundColor; // @synthesize legendBackgroundColor=_legendBackgroundColor;
 @property (nonatomic) double legendCornerRadius; // @synthesize legendCornerRadius=_legendCornerRadius;
-@property (readonly, nonatomic) VUITextLayout *legendDescriptionLayout; // @synthesize legendDescriptionLayout=_legendDescriptionLayout;
 @property (readonly, nonatomic) VUITextLayout *legendLayout; // @synthesize legendLayout=_legendLayout;
 @property (nonatomic) double legendMaxWidth; // @synthesize legendMaxWidth=_legendMaxWidth;
 @property (nonatomic) double legendNameMinWidth; // @synthesize legendNameMinWidth=_legendNameMinWidth;
@@ -50,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct UIEdgeInsets legendsMargin; // @synthesize legendsMargin=_legendsMargin;
 @property (nonatomic) struct UIEdgeInsets logoMargin; // @synthesize logoMargin=_logoMargin;
 @property (nonatomic) struct CGSize logoSize; // @synthesize logoSize=_logoSize;
+@property (nonatomic) struct UIEdgeInsets portraitDescriptionMargin; // @synthesize portraitDescriptionMargin=_portraitDescriptionMargin;
 @property (nonatomic) struct UIEdgeInsets portraitDividerMargin; // @synthesize portraitDividerMargin=_portraitDividerMargin;
 @property (nonatomic) struct CGSize portraitDividerSize; // @synthesize portraitDividerSize=_portraitDividerSize;
 @property (readonly, nonatomic) VUITextLayout *portraitLegendDescriptionLayout; // @synthesize portraitLegendDescriptionLayout=_portraitLegendDescriptionLayout;

@@ -5,17 +5,17 @@
 //
 
 #import <HomeUI/HFAccessoryVendor-Protocol.h>
+#import <HomeUI/HFNamedItemBuilder-Protocol.h>
 #import <HomeUI/NSObject-Protocol.h>
 
 @class HFRoomBuilder, NAFuture, NSArray, NSString;
 @protocol HFIconDescriptor;
 
-@protocol HFServiceLikeBuilder <HFAccessoryVendor, NSObject>
+@protocol HFServiceLikeBuilder <HFAccessoryVendor, HFNamedItemBuilder, NSObject>
 
 @property (readonly, nonatomic) NSArray *availableIconDescriptors;
 @property (strong, nonatomic) id<HFIconDescriptor> iconDescriptor;
 @property (nonatomic) BOOL isFavorite;
-@property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSString *originalName;
 @property (strong, nonatomic) HFRoomBuilder *room;
 @property (readonly, nonatomic) BOOL supportsFavoriting;

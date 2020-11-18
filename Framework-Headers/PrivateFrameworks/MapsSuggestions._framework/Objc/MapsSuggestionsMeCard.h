@@ -16,32 +16,41 @@
     BOOL _hasCorrected;
     BOOL _hasGeocoded;
     BOOL _hasHomeOrWork;
+    BOOL _hasHomeOrWorkOrSchool;
     NSArray *_shortcutsForHome;
     NSArray *_shortcutsForWork;
+    NSArray *_shortcutsForSchool;
     NSArray *_hiddenShortcutsForHome;
     NSArray *_hiddenShortcutsForWork;
+    NSArray *_hiddenShortcutsForSchool;
     NSArray *_shortcutsForAll;
+    NSArray *_shortcutsForAllIncludingHidden;
     NSArray *_mapItemsForHome;
     NSArray *_mapItemsForWork;
+    NSArray *_mapItemsForSchool;
     NSArray *_mapItemsForAll;
 }
 
 @property (readonly, nonatomic) BOOL hasCorrected; // @synthesize hasCorrected=_hasCorrected;
 @property (readonly, nonatomic) BOOL hasGeocoded; // @synthesize hasGeocoded=_hasGeocoded;
 @property (readonly, nonatomic) BOOL hasHomeOrWork; // @synthesize hasHomeOrWork=_hasHomeOrWork;
+@property (readonly, nonatomic) BOOL hasHomeOrWorkOrSchool; // @synthesize hasHomeOrWorkOrSchool=_hasHomeOrWorkOrSchool;
 @property (readonly, nonatomic) NSArray *hiddenShortcutsForHome; // @synthesize hiddenShortcutsForHome=_hiddenShortcutsForHome;
+@property (readonly, nonatomic) NSArray *hiddenShortcutsForSchool; // @synthesize hiddenShortcutsForSchool=_hiddenShortcutsForSchool;
 @property (readonly, nonatomic) NSArray *hiddenShortcutsForWork; // @synthesize hiddenShortcutsForWork=_hiddenShortcutsForWork;
 @property (readonly, nonatomic) NSArray *mapItemsForAll; // @synthesize mapItemsForAll=_mapItemsForAll;
 @property (readonly, nonatomic) NSArray *mapItemsForHome; // @synthesize mapItemsForHome=_mapItemsForHome;
+@property (readonly, nonatomic) NSArray *mapItemsForSchool; // @synthesize mapItemsForSchool=_mapItemsForSchool;
 @property (readonly, nonatomic) NSArray *mapItemsForWork; // @synthesize mapItemsForWork=_mapItemsForWork;
 @property (readonly, nonatomic) NSArray *shortcutsForAll; // @synthesize shortcutsForAll=_shortcutsForAll;
+@property (readonly, nonatomic) NSArray *shortcutsForAllIncludingHidden; // @synthesize shortcutsForAllIncludingHidden=_shortcutsForAllIncludingHidden;
 @property (readonly, nonatomic) NSArray *shortcutsForHome; // @synthesize shortcutsForHome=_shortcutsForHome;
+@property (readonly, nonatomic) NSArray *shortcutsForSchool; // @synthesize shortcutsForSchool=_shortcutsForSchool;
 @property (readonly, nonatomic) NSArray *shortcutsForWork; // @synthesize shortcutsForWork=_shortcutsForWork;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithHomes:(id)arg1 works:(id)arg2 hiddenHomes:(id)arg3 hiddenWorks:(id)arg4 all:(id)arg5 perCNPostalAddress:(id)arg6 hasCorrect:(BOOL)arg7 hasGeocoded:(BOOL)arg8;
 - (id)initWithShortcuts:(id)arg1 hasCorrected:(BOOL)arg2 hasGeocoded:(BOOL)arg3;
 - (id)initWithShortcuts:(id)arg1 perCNPostalAddress:(id)arg2 hasCorrected:(BOOL)arg3 hasGeocoded:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;

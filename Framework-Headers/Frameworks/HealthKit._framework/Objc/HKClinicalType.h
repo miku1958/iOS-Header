@@ -13,6 +13,7 @@
 + (id)allTypes;
 + (id)allergyRecordType;
 + (id)conditionRecordType;
++ (id)coverageRecordType;
 + (id)immunizationRecordType;
 + (id)labResultRecordType;
 + (id)medicationRecordType;

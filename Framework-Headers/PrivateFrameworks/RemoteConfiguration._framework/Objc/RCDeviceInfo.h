@@ -18,9 +18,11 @@
     long long _dstOffset;
     NSString *_appVersion;
     NSString *_osVersion;
+    NSString *_countryCode;
 }
 
 @property (readonly, copy, nonatomic) NSString *appVersion; // @synthesize appVersion=_appVersion;
+@property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
@@ -36,6 +38,7 @@
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6;
+- (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6 countryCode:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

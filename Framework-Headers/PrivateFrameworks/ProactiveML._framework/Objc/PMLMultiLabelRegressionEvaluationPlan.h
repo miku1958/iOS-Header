@@ -9,7 +9,7 @@
 #import <ProactiveML/PMLPlanProtocol-Protocol.h>
 
 @class NSArray, NSString, PMLSessionDescriptor, PMLTrainingStore;
-@protocol PMLMultiLabelEvaluationTrackerProtocol, PMLMultiLabelRegressionModelProtocol;
+@protocol PMLMultiLabelClassifierModelProtocol, PMLMultiLabelEvaluationTrackerProtocol;
 
 @interface PMLMultiLabelRegressionEvaluationPlan : NSObject <PMLPlanProtocol>
 {
@@ -17,8 +17,7 @@
     PMLSessionDescriptor *_sessionDescriptor;
     unsigned long long _maxSessionsLimit;
     unsigned long long _sessionsInBatch;
-    unsigned long long _supportPerLabel;
-    id<PMLMultiLabelRegressionModelProtocol> _multiLabelRegressionModel;
+    id<PMLMultiLabelClassifierModelProtocol> _multiLabelRegressionModel;
     NSArray *_positiveLabels;
     NSArray *_weightsArray;
     BOOL _intercept;
@@ -35,14 +34,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL intercept; // @synthesize intercept=_intercept;
 @property (readonly, nonatomic) unsigned long long maxSessionsLimit; // @synthesize maxSessionsLimit=_maxSessionsLimit;
-@property (readonly, nonatomic) id<PMLMultiLabelRegressionModelProtocol> multiLabelRegressionModel; // @synthesize multiLabelRegressionModel=_multiLabelRegressionModel;
+@property (readonly, nonatomic) id<PMLMultiLabelClassifierModelProtocol> multiLabelRegressionModel; // @synthesize multiLabelRegressionModel=_multiLabelRegressionModel;
 @property (readonly, nonatomic) NSString *planId; // @synthesize planId=_planId;
 @property (readonly, nonatomic) NSArray *positiveLabels; // @synthesize positiveLabels=_positiveLabels;
 @property (readonly, nonatomic) PMLSessionDescriptor *sessionDescriptor; // @synthesize sessionDescriptor=_sessionDescriptor;
 @property (readonly, nonatomic) unsigned long long sessionsInBatch; // @synthesize sessionsInBatch=_sessionsInBatch;
 @property (readonly, nonatomic) PMLTrainingStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long supportPerLabel; // @synthesize supportPerLabel=_supportPerLabel;
 @property (readonly, nonatomic) id<PMLMultiLabelEvaluationTrackerProtocol> tracker; // @synthesize tracker=_tracker;
 @property (readonly, nonatomic) NSArray *weightsArray; // @synthesize weightsArray=_weightsArray;
 
@@ -50,10 +48,9 @@
 - (id)_precisionAtEvaluationPointsForSessions:(id)arg1;
 - (id)_rankedLabelsForSession:(id)arg1;
 - (id)init;
-- (id)initWithPlanId:(id)arg1 store:(id)arg2 sessionDescriptor:(id)arg3 maxSessionsLimit:(unsigned long long)arg4 sessionsInBatch:(unsigned long long)arg5 supportPerLabel:(unsigned long long)arg6 labelAndWeights:(id)arg7 modelClassName:(id)arg8 intercept:(BOOL)arg9 evaluationPoints:(id)arg10 tracker:(id)arg11 evaluationLevel:(unsigned long long)arg12;
+- (id)initWithPlanId:(id)arg1 store:(id)arg2 sessionDescriptor:(id)arg3 maxSessionsLimit:(unsigned long long)arg4 sessionsInBatch:(unsigned long long)arg5 labelAndWeights:(id)arg6 modelClassName:(id)arg7 intercept:(BOOL)arg8 evaluationPoints:(id)arg9 tracker:(id)arg10 evaluationLevel:(unsigned long long)arg11;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)run;
-- (id)runWhile:(CDUnknownBlockType)arg1 didFinish:(BOOL *)arg2;
+- (id)runWithError:(id *)arg1;
 - (id)toPlistWithChunks:(id)arg1;
 
 @end

@@ -41,6 +41,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)handleBiometricEvent:(unsigned long long)arg1;
 - (id)initWithMesaSettings:(id)arg1 andUnlockTrigger:(id)arg2;
+- (void)lockButtonDown;
 - (void)menuButtonDown;
 - (void)menuButtonUp;
 - (void)mesaUnlockTriggerFired:(id)arg1;

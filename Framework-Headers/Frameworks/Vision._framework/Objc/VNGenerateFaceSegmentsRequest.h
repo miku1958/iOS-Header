@@ -24,9 +24,10 @@
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputfacesThatNeedSegments:(id)arg4;
+- (long long)dependencyProcessingOrdinality;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

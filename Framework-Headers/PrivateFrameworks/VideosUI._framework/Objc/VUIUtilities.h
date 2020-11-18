@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)isIpadLayout;
 + (BOOL)isTVApp;
 + (double)libraryCategoryListWidth;
++ (double)libraryCategoryListWidthForWindowWidth:(double)arg1;
 + (double)libraryListMarginToGrid;
 + (unsigned long long)minimumNumberOfItemsToEnableSeeAllButton;
 + (id)placeholderImageResourceName:(long long)arg1;

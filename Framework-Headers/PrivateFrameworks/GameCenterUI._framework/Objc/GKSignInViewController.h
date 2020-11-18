@@ -12,7 +12,7 @@
 #import <GameCenterUI/RemoteUIControllerDelegate-Protocol.h>
 #import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKInlineSignInViewController, GKAccountRemoteUIController, GKBubbleFlowContainerView, GKDispatchGroup, GKGame, GKLabel, GKSignInInputView, NSMutableArray, NSString, OBPrivacyLinkController, RemoteUIController, UIActivityIndicatorView, UINavigationController, UIScrollView, UIViewController;
+@class AKAppleIDAuthenticationInAppContext, AKInlineSignInViewController, GKAccountRemoteUIController, GKDispatchGroup, GKGame, GKLabel, GKSignInInputView, NSMutableArray, NSString, RemoteUIController, UIActivityIndicatorView, UIImageView, UILabel, UINavigationController, UIScrollView, UIViewController;
 
 @interface GKSignInViewController : GKViewController <AKInlineSignInViewControllerDelegate, AKAppleIDAuthenticationDelegate, RemoteUIControllerDelegate, GKAuthenticateViewController, UIScrollViewDelegate>
 {
@@ -24,11 +24,10 @@
     CDUnknownBlockType _completionHandler;
     UIViewController *_remoteUIPresentingViewController;
     UIActivityIndicatorView *_progressIndicator;
-    GKLabel *_signInLabel;
+    UILabel *_signInLabel;
     GKLabel *_loginPromptLabel;
     GKSignInInputView *_signInInputView;
-    OBPrivacyLinkController *_privacyLinkController;
-    GKBubbleFlowContainerView *_bubbleContainerView;
+    UIImageView *_bubbleImageView;
     AKInlineSignInViewController *_inlineSignInViewController;
     AKAppleIDAuthenticationInAppContext *_authContext;
     double _fullWidthContentWidthConstraintConstant;
@@ -50,7 +49,7 @@
 @property (strong, nonatomic) GKAccountRemoteUIController *accountController; // @synthesize accountController=_accountController;
 @property (strong, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (strong, nonatomic) AKAppleIDAuthenticationInAppContext *authContext; // @synthesize authContext=_authContext;
-@property (strong, nonatomic) GKBubbleFlowContainerView *bubbleContainerView; // @synthesize bubbleContainerView=_bubbleContainerView;
+@property (strong, nonatomic) UIImageView *bubbleImageView; // @synthesize bubbleImageView=_bubbleImageView;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) BOOL constraintsCreated; // @synthesize constraintsCreated=_constraintsCreated;
 @property (nonatomic) struct UIEdgeInsets contentInsetsBeforeKeyboard; // @synthesize contentInsetsBeforeKeyboard=_contentInsetsBeforeKeyboard;
@@ -67,14 +66,13 @@
 @property (nonatomic) double labelWidthConstraintConstant; // @synthesize labelWidthConstraintConstant=_labelWidthConstraintConstant;
 @property (nonatomic, getter=isLoadingRemoteUI) BOOL loadingRemoteUI; // @synthesize loadingRemoteUI=_loadingRemoteUI;
 @property (strong, nonatomic) GKLabel *loginPromptLabel; // @synthesize loginPromptLabel=_loginPromptLabel;
-@property (strong, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property (strong, nonatomic) UIActivityIndicatorView *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 @property (strong, nonatomic) RemoteUIController *remoteU13Controller; // @synthesize remoteU13Controller=_remoteU13Controller;
 @property (strong, nonatomic) UIViewController *remoteUIPresentingViewController; // @synthesize remoteUIPresentingViewController=_remoteUIPresentingViewController;
 @property (nonatomic) struct UIEdgeInsets scrollIndicatorInsetsBeforeKeyboard; // @synthesize scrollIndicatorInsetsBeforeKeyboard=_scrollIndicatorInsetsBeforeKeyboard;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) GKSignInInputView *signInInputView; // @synthesize signInInputView=_signInInputView;
-@property (strong, nonatomic) GKLabel *signInLabel; // @synthesize signInLabel=_signInLabel;
+@property (strong, nonatomic) UILabel *signInLabel; // @synthesize signInLabel=_signInLabel;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) GKDispatchGroup *u13Group; // @synthesize u13Group=_u13Group;
 @property (strong, nonatomic) UINavigationController *u13NavigationController; // @synthesize u13NavigationController=_u13NavigationController;
@@ -82,20 +80,12 @@
 @property (nonatomic) BOOL userShouldSkipCreateAppleID; // @synthesize userShouldSkipCreateAppleID=_userShouldSkipCreateAppleID;
 
 - (void).cxx_destruct;
-- (BOOL)_gkUsesBubbleFlowModalPresentation;
 - (void)_systemContentSizeSettingDidChange:(id)arg1;
-- (void)_updateBubbleRectsForOrientation:(long long)arg1;
 - (void)accountRemoteUIController:(id)arg1 finishedWithError:(id)arg2;
 - (void)addCancelButtonToNavigationItem:(id)arg1;
-- (void)addGDPRPrivacyLink;
 - (void)authenticateRequestCompletedWithErrorResponse:(id)arg1 error:(id)arg2;
 - (BOOL)authenticationController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
 - (id)barBackgroundImage;
-- (id)bubbleAnimatorForTransitionFromViewController:(id)arg1;
-- (double)bubbleFlowAnimateInDuration;
-- (double)bubbleFlowAnimateOutDuration;
-- (double)bubbleFlowSubviewFadeOutDelay;
-- (double)bubbleFlowSubviewFadeOutDuration;
 - (void)cancelSignIn;
 - (void)createAppleID;
 - (void)createConstraints;
@@ -137,13 +127,9 @@
 - (void)updateConstraintConstantsForTraitCollection:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillAppearAnimated:(BOOL)arg1 bubbleFlow:(BOOL)arg2;
 - (void)viewWillLayoutSubviews;
-- (id)viewsToAnimateInWhileAppearingWithBubbleFlow;
-- (id)viewsToAnimateOutWhileDisappearingWithBubbleFlow;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 

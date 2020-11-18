@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKit/UIHoverGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
-@interface WKMouseGestureRecognizer : UIGestureRecognizer
+@interface WKMouseGestureRecognizer : UIHoverGestureRecognizer
 {
-    struct RetainPtr<UIHoverEvent> _currentHoverEvent;
+    struct RetainPtr<UIEvent> _currentHoverEvent;
     struct RetainPtr<UITouch> _currentTouch;
     BOOL _touching;
     unique_ptr_f5c9497a _lastEvent;
@@ -25,17 +25,13 @@ __attribute__((visibility("hidden")))
 - (void)_hoverMoved:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
 - (BOOL)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
-- (BOOL)_wantsHoverEvents;
-- (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
-- (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (unique_ptr_f5c9497a)createMouseEventWithType:(int)arg1;
-- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (struct NativeWebMouseEvent *)lastMouseEvent;
 - (Optional_f704b8f6)lastMouseLocation;
 - (struct CGPoint)locationInView:(id)arg1;
 - (id)mouseTouch;
 - (void)reset;
-- (void)setView:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

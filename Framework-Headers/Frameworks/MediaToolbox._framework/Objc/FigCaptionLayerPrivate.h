@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigSimpleMutex *renderMutex;
     struct OpaqueFigReentrantMutex *layoutSublayersMutex;
     unsigned char shouldDrawGrid;
+    struct CGRect videoRelativeToViewport;
+    struct FigGeometryMargins captionsAvoidanceMargins;
 }
 
 @end

@@ -15,8 +15,9 @@
 
 @property (nonatomic) SEL action; // @synthesize action=_action;
 @property (nonatomic) BOOL needsUpdate; // @dynamic needsUpdate;
-@property (nonatomic) id target; // @synthesize target=_target;
+@property (weak, nonatomic) id target; // @synthesize target=_target;
 
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)setNeedsUpdate;

@@ -10,7 +10,6 @@
 
 @class CKDAppContainerTuple, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDAppContainerAccountTuple : NSObject <NSCopying>
 {
     CKDAppContainerTuple *_appContainerTuple;

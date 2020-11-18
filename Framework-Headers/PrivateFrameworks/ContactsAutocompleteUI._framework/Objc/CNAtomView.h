@@ -7,10 +7,11 @@
 #import <UIKit/UIDefaultKeyboardInput.h>
 
 #import <ContactsAutocompleteUI/CNAtomViewResembling-Protocol.h>
+#import <ContactsAutocompleteUI/CNChevronButtonMenuDelegate-Protocol.h>
 
-@class CNModernAtomBackgroundView, CNModernAtomIconView, NSString, UIActivityIndicatorView, UIColor, UIFont, UILabel, UIView;
+@class CNModernAtomBackgroundView, CNModernAtomIconView, NSString, UIActivityIndicatorView, UIColor, UIFont, UIImageView, UILabel, UIView;
 
-@interface CNAtomView : UIDefaultKeyboardInput <CNAtomViewResembling>
+@interface CNAtomView : UIDefaultKeyboardInput <CNChevronButtonMenuDelegate, CNAtomViewResembling>
 {
     CNModernAtomIconView *_badgeIconView;
     CNModernAtomIconView *_accessoryIconView;
@@ -25,6 +26,7 @@
     double _scalingFactor;
     BOOL _wrappingSupported;
     BOOL _cachedIsWrappingEnabled;
+    int _separatorStyle;
     BOOL _isPrimaryAddressAtom;
     BOOL _separatorHidden;
     BOOL _separatorIsLeftAligned;
@@ -33,6 +35,7 @@
     UIFont *_titleFont;
     unsigned long long _presentationOptions;
     double _firstLineIndent;
+    UIImageView *_downwardChevronImageView;
 }
 
 @property (readonly, nonatomic) CNModernAtomIconView *accessoryIconView; // @synthesize accessoryIconView=_accessoryIconView;
@@ -42,6 +45,7 @@
 @property (readonly, nonatomic) struct CGPoint baselinePoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIImageView *downwardChevronImageView; // @synthesize downwardChevronImageView=_downwardChevronImageView;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets;
 @property (readonly, nonatomic) unsigned long long effectivePresentationOptions;
 @property (readonly, nonatomic) UIColor *effectiveTintColor;
@@ -63,6 +67,7 @@
 
 + (id)_SMSTintColor;
 + (id)_badgeImagesForPresentationOptions:(unsigned long long)arg1 iconOrder:(const unsigned long long *)arg2 orderingLength:(unsigned long long)arg3 tintColor:(id)arg4 large:(BOOL)arg5 variant:(int)arg6;
++ (id)_clearBackgroundTextTintColor;
 + (id)_defaultLabelAttributesWithFont:(id)arg1 wrappingEnabled:(BOOL)arg2;
 + (id)_defaultLabelAttributesWithWrappingEnabled:(BOOL)arg1;
 + (id)_defaultTintColor;
@@ -91,12 +96,15 @@
 - (void)_updateIconViewsSemanticContentAttribute;
 - (void)_updateLabelAttributes;
 - (void)_updateSubviewsForWrapping;
+- (BOOL)appearsSelected;
 - (void)appendPresentationOption:(unsigned long long)arg1;
 - (void)clearPresentationOption:(unsigned long long)arg1;
+- (void)displaySelectionChangeWithAnimation:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 presentationOptions:(unsigned long long)arg2 separatorStyle:(int)arg3 wrappingSupported:(BOOL)arg4;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isWrappingEnabled;
 - (void)layoutSubviews;
+- (id)menuConfigurationForChevronButton;
 - (void)performBuildInAnimationFromTextColor:(id)arg1 withDuration:(double)arg2;
 - (double)preferredWidth;
 - (double)preferredWidthWithSizeConstraints:(struct CGSize)arg1;
@@ -104,6 +112,7 @@
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 style:(unsigned long long)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)viewForLastBaselineLayout;
 
 @end

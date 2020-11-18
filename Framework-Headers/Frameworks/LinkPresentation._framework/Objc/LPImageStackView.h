@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGSize)_layoutImagesForSize:(struct CGSize)arg1 applyingLayout:(BOOL)arg2;
-- (void)componentViewDidMoveToWindow;
 - (id)init;
 - (id)initWithImages:(id)arg1 style:(id)arg2;
 - (void)layoutComponentView;
+- (void)setDelegate:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

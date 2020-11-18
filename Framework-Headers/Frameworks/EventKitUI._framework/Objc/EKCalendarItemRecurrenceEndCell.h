@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (void)layoutSubviews;
+- (void)viewDidMoveToSuperview;
 
 @end
 

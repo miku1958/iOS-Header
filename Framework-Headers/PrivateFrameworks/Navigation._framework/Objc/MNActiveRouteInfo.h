@@ -8,27 +8,26 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteTraffic, GEOETARoute, GEOETATrafficUpdateResponse, GEOTransitRouteUpdateRequest, NSDate, NSUUID;
+@class GEOComposedETARoute, GEOComposedRoute, GEOComposedRouteTraffic, GEOETATrafficUpdateResponse, GEOTransitRouteUpdateRequest, MNDisplayETAInfo, MNRouteDistanceInfo, NSUUID;
 
 @interface MNActiveRouteInfo : NSObject <NSSecureCoding>
 {
     GEOComposedRoute *_route;
-    GEOETARoute *_etaRoute;
+    GEOComposedETARoute *_etaRoute;
     GEOETATrafficUpdateResponse *_etaResponse;
-    NSDate *_displayETA;
-    unsigned long long _displayRemainingMinutes;
-    GEOComposedRouteTraffic *_traffic;
+    MNDisplayETAInfo *_displayETAInfo;
+    MNRouteDistanceInfo *_remainingDistanceInfo;
     unsigned long long _alternateRouteIndex;
 }
 
 @property (nonatomic) unsigned long long alternateRouteIndex; // @synthesize alternateRouteIndex=_alternateRouteIndex;
-@property (strong, nonatomic) NSDate *displayETA; // @synthesize displayETA=_displayETA;
-@property (nonatomic) unsigned long long displayRemainingMinutes; // @synthesize displayRemainingMinutes=_displayRemainingMinutes;
+@property (strong, nonatomic) MNDisplayETAInfo *displayETAInfo; // @synthesize displayETAInfo=_displayETAInfo;
 @property (strong, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
-@property (strong, nonatomic) GEOETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
+@property (strong, nonatomic) GEOComposedETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
+@property (strong, nonatomic) MNRouteDistanceInfo *remainingDistanceInfo; // @synthesize remainingDistanceInfo=_remainingDistanceInfo;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (readonly, nonatomic) NSUUID *routeID;
-@property (strong, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
+@property (readonly, nonatomic) GEOComposedRouteTraffic *traffic;
 @property (readonly, nonatomic) GEOTransitRouteUpdateRequest *transitRouteUpdateRequest;
 
 + (BOOL)supportsSecureCoding;
@@ -37,9 +36,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRoute:(id)arg1;
-- (id)initWithRoute:(id)arg1 traffic:(id)arg2;
 - (id)initWithRoute:(id)arg1 trafficRoute:(id)arg2 routeInitalizerData:(id)arg3;
-- (void)updateWithETARoute:(id)arg1 offsetInMeters:(double)arg2;
 
 @end
 

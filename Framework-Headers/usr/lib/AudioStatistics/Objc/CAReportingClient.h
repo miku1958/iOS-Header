@@ -7,34 +7,29 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSXPCConnection;
-@protocol CAReportingServiceProtocol;
 
 __attribute__((visibility("hidden")))
 @interface CAReportingClient : NSObject
 {
     NSXPCConnection *_connection;
     NSMutableDictionary *_clientReporters;
-    id<CAReportingServiceProtocol> _serverDelegateAsync;
-    id<CAReportingServiceProtocol> _serverDelegateSync;
 }
 
 @property (strong) NSMutableDictionary *clientReporters; // @synthesize clientReporters=_clientReporters;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (strong) id<CAReportingServiceProtocol> serverDelegateAsync; // @synthesize serverDelegateAsync=_serverDelegateAsync;
-@property (strong) id<CAReportingServiceProtocol> serverDelegateSync; // @synthesize serverDelegateSync=_serverDelegateSync;
 
++ (void)destroyClient;
 + (id)getClient;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)addReporter:(id)arg1;
 - (long long)createReporterID:(unsigned int)arg1;
 - (void)destoryService;
-- (void)destroyClient;
 - (void)destroyReporterWithID:(long long)arg1;
 - (void)disconnectReporters;
 - (id)getConfigurationForReporterID:(long long)arg1;
 - (unsigned short)getServiceTypeForReporterID:(long long)arg1;
-- (id)init;
+- (id)initWithXPC:(BOOL)arg1 endpoint:(id)arg2;
 - (id)listClientReporterIDs;
 - (id)listServerReporterIDs;
 - (void)reconnectReporter:(id)arg1;

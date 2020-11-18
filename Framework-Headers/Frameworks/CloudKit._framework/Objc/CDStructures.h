@@ -26,6 +26,10 @@ struct __va_list_tag {
 
 // Ambiguous groups
 typedef struct {
+    unsigned int contents:1;
+} CDStruct_7e0a6dcb;
+
+typedef struct {
     unsigned int type:1;
 } CDStruct_f953fb60;
 

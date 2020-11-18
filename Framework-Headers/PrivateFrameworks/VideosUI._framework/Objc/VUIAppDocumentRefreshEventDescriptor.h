@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentRefreshEventDescriptor : VUIAppDocumentUpdateEventDescriptor
 {
     unsigned long long _delayInSeconds;

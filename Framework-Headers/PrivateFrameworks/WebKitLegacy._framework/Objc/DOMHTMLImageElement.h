@@ -36,8 +36,6 @@
 - (id)crossOrigin;
 - (id)currentSrc;
 - (id)dataRepresentation:(BOOL)arg1;
-- (id)dataRepresentation:(BOOL)arg1;
-- (id)mimeType;
 - (id)mimeType;
 - (void)setCrossOrigin:(id)arg1;
 - (void)setSizes:(id)arg1;

@@ -36,9 +36,11 @@
 + (id)documentsItemIDWithAppLibraryRowID:(id)arg1;
 + (BOOL)isDocumentsItemIDWithSQLiteValue:(struct sqlite3_value *)arg1;
 + (BOOL)isRootItemIDWithSQLiteValue:(struct sqlite3_value *)arg1;
++ (BOOL)isSharedZoneRootItemIDWithSQLiteValue:(struct sqlite3_value *)arg1;
 + (BOOL)migrateItemIDsToVersion11WithDB:(id)arg1 serverTruth:(BOOL)arg2;
 + (BOOL)migrateItemIDsToVersion5WithDB:(id)arg1 serverTruth:(BOOL)arg2;
 + (BOOL)migrateItemIDsToVersion8WithDB:(id)arg1 serverTruth:(BOOL)arg2;
++ (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)parseMangledItemIDString:(id)arg1 mangledID:(id *)arg2 etag:(id *)arg3 session:(id)arg4;
 + (BOOL)supportsSecureCoding;

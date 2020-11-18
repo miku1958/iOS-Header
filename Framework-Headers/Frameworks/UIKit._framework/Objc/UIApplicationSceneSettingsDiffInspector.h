@@ -11,6 +11,7 @@
 }
 
 - (void)_observeOtherSetting:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)observeAccessibilityContrastWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeCanShowAlertsWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeDeactivationReasonsWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeDeviceOrientationEventsEnabledWithBlock:(CDUnknownBlockType)arg1;
@@ -19,6 +20,7 @@
 - (void)observeForcedStatusBarStyleWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeIdleModeEnabledWithBlock:(CDUnknownBlockType)arg1;
 - (void)observePersistenceIdentifierWithBlock:(CDUnknownBlockType)arg1;
+- (void)observePointerLockStatusWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSafeAreaInsetsLandscapeLeftWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSafeAreaInsetsLandscapeRightWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSafeAreaInsetsPortraitUpsideDownWithBlock:(CDUnknownBlockType)arg1;

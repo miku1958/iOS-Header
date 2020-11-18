@@ -21,6 +21,7 @@
     UIView *_backgroundView;
     NSArray *_segmentViews;
     NSArray *_separatorViews;
+    NSArray *_separatorEffectViews;
     NSNumber *_selectedSegmentIndex;
     UILongPressGestureRecognizer *_gestureRecognizer;
     double _accumulatedTouchDistance;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) NSArray *segmentViews; // @synthesize segmentViews=_segmentViews;
 @property (strong, nonatomic) NSNumber *selectedSegmentIndex; // @synthesize selectedSegmentIndex=_selectedSegmentIndex;
+@property (strong, nonatomic) NSArray *separatorEffectViews; // @synthesize separatorEffectViews=_separatorEffectViews;
 @property (strong, nonatomic) NSArray *separatorViews; // @synthesize separatorViews=_separatorViews;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *trackingSegmentIndex; // @synthesize trackingSegmentIndex=_trackingSegmentIndex;

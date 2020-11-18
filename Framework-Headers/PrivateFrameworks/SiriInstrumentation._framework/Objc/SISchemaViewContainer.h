@@ -14,10 +14,18 @@
     NSString *_snippetClass;
     NSString *_dialogIdentifier;
     NSString *_dialogPhase;
+    BOOL _hasViewID;
+    BOOL _hasSnippetClass;
+    BOOL _hasDialogIdentifier;
+    BOOL _hasDialogPhase;
 }
 
 @property (copy, nonatomic) NSString *dialogIdentifier; // @synthesize dialogIdentifier=_dialogIdentifier;
 @property (copy, nonatomic) NSString *dialogPhase; // @synthesize dialogPhase=_dialogPhase;
+@property (nonatomic) BOOL hasDialogIdentifier; // @synthesize hasDialogIdentifier=_hasDialogIdentifier;
+@property (nonatomic) BOOL hasDialogPhase; // @synthesize hasDialogPhase=_hasDialogPhase;
+@property (nonatomic) BOOL hasSnippetClass; // @synthesize hasSnippetClass=_hasSnippetClass;
+@property (nonatomic) BOOL hasViewID; // @synthesize hasViewID=_hasViewID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *snippetClass; // @synthesize snippetClass=_snippetClass;
 @property (copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;

@@ -6,9 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <AACDependencies/AEPolicyStore-Protocol.h>
-
-@interface _TtC15AACDependencies18AEDNoOpPolicyStore : _TtCs12_SwiftObject <AEPolicyStore>
+@interface _TtC15AACDependencies18AEDNoOpPolicyStore : _TtCs12_SwiftObject
 {
 }
 

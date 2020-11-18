@@ -26,7 +26,6 @@
 
 - (void).cxx_destruct;
 - (id)_initWithGEOComposedRoute:(id)arg1;
-- (id)_maneuverImageForStep:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 
 @end
 

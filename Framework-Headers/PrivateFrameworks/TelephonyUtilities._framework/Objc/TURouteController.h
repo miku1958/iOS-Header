@@ -37,6 +37,7 @@
 - (void)pickRouteWithUniqueIdentifier:(id)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)requeryRoutes;
+- (id)routeWithSourceIdentifier:(id)arg1;
 
 @end
 

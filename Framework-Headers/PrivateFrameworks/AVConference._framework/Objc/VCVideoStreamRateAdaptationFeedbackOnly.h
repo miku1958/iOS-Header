@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)startFeedbackSource;
 - (void)stopFeedbackSource;
 - (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3 size:(unsigned int)arg4 endOfFrame:(BOOL)arg5;
-- (void)updateRateControlInfoWithStatisticsMessage:(CDStruct_b21f1e06)arg1;
+- (void)updateRateControlInfoWithStatisticsMessage:(CDStruct_56e8fa21)arg1;
 
 @end
 

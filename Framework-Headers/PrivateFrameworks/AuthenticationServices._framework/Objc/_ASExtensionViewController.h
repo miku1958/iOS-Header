@@ -6,14 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
+#import <AuthenticationServices/_ASExtensionHostContextDelegate-Protocol.h>
 
-@class NSExtension, NSString, NSTimer, _ASCredentialProviderExtensionHostContext;
+@class NSExtension, NSExtensionContext, NSString, NSTimer;
+@protocol _ASExtensionHostContext;
 
-@interface _ASExtensionViewController : UIViewController <_ASCredentialProviderExtensionHostContextDelegate>
+@interface _ASExtensionViewController : UIViewController <_ASExtensionHostContextDelegate>
 {
     UIViewController *_remoteViewController;
-    _ASCredentialProviderExtensionHostContext *_nonUIHostContext;
+    NSExtensionContext<_ASExtensionHostContext> *_nonUIHostContext;
     NSTimer *_nonUIRequestTimer;
     BOOL _allowRequestingUIFromNonUIRequest;
     BOOL _dismissOnBackground;
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL dismissOnBackground; // @synthesize dismissOnBackground=_dismissOnBackground;
 @property (readonly, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSExtensionContext *nonUIHostContext; // @synthesize nonUIHostContext=_nonUIHostContext;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -36,6 +38,7 @@
 - (void)_nonUIRequestTimedOut;
 - (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setRemoteViewController:(id)arg1;
+- (BOOL)_shouldUseNonUIRequestTimer;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (id)childViewControllerForStatusBarHidden;

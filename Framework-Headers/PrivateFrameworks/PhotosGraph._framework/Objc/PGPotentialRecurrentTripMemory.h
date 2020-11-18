@@ -6,17 +6,19 @@
 
 #import <PhotosGraph/PGPotentialMemory.h>
 
-@class NSSet;
+@class NSArray, NSSet;
 
 @interface PGPotentialRecurrentTripMemory : PGPotentialMemory
 {
-    NSSet *_tripLocationNodes;
+    NSArray *_tripNodes;
+    NSSet *_locationNodes;
 }
 
-@property (readonly) NSSet *tripLocationNodes; // @synthesize tripLocationNodes=_tripLocationNodes;
+@property (readonly) NSSet *locationNodes; // @synthesize locationNodes=_locationNodes;
+@property (readonly) NSArray *tripNodes; // @synthesize tripNodes=_tripNodes;
 
 - (void).cxx_destruct;
-- (id)initWithTripLocationNodes:(id)arg1 momentNodes:(id)arg2;
+- (id)initWithTripNodes:(id)arg1 locationNodes:(id)arg2 momentNodes:(id)arg3;
 
 @end
 

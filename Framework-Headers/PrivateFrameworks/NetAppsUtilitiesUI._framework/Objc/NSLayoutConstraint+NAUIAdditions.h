@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutConstraint.h>
+#import <CoreAutoLayout/NSLayoutConstraint.h>
 
 @interface NSLayoutConstraint (NAUIAdditions)
 + (BOOL)naui_areConstraints:(id)arg1 equalToConstraints:(id)arg2;

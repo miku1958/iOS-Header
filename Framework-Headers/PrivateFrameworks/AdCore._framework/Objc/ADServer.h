@@ -14,6 +14,7 @@
 {
     int _configurationExpirationTime;
     NSDictionary *_configurations;
+    NSString *_resourceConnectProxyURL;
     NSURLSession *_session;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) NSString *resourceConnectProxyURL; // @synthesize resourceConnectProxyURL=_resourceConnectProxyURL;
 @property (strong) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
@@ -36,6 +38,8 @@
 - (id)init;
 - (void)restoreConfiguration;
 - (id)routingHeaderForClass:(Class)arg1 serverURL:(id)arg2;
+- (void)saveConfig;
+- (void)saveProxyURL;
 - (id)serializeMessage:(id)arg1;
 - (id)serverURLForMessageClass:(Class)arg1 serverURL:(id)arg2;
 - (BOOL)shouldRestoreConfiguration;

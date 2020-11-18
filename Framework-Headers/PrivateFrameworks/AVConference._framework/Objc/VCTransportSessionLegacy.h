@@ -97,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)destroySecondaryRelayDispatchTimer;
 - (int)detailedErrorCode;
 - (void)didEnableDuplication:(BOOL)arg1 activeConnection:(id)arg2;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (int)generateConnectionData:(char **)arg1 forCallID:(unsigned int)arg2 connectionDataSize:(int *)arg3 nonCellularCandidateTimeout:(double)arg4;
 - (void)getConnectionDataUsingRelay:(BOOL)arg1 isInitialRelay:(BOOL)arg2 nonCellularCandidateTimeout:(double)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
@@ -105,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
 - (void)handleNewCandidates:(id)arg1 version:(unsigned short)arg2;
+- (void)handleRATChanged:(id)arg1;
 - (double)iceTimeoutInSeconds:(BOOL)arg1;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
 - (void)initiateRelayRequest;
@@ -119,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)processRelayUpdate:(id)arg1 didOriginateRequest:(BOOL)arg2;
 - (void)processRemoteIPChange:(id)arg1;
 - (void)processRemoteIPChange:(char *)arg1 dataLength:(int)arg2 remoteCandidateVersion:(unsigned short)arg3;
+- (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)receivedRealTimeData:(id)arg1 fromParticipantID:(id)arg2;
 - (void)reportNetworkConditionsDegraded;
 - (void)resetICETimeoutToLongTimeout;
@@ -131,8 +134,10 @@ __attribute__((visibility("hidden")))
 - (void)setupSecondaryRelayForCall:(unsigned int)arg1 callerRequired:(BOOL)arg2;
 - (void)setupTransport;
 - (void)start;
+- (void)startActiveProbingWithOptions:(id)arg1;
 - (BOOL)startConnectionWithBlob:(id)arg1 useRelay:(BOOL)arg2 isInitialRelay:(BOOL)arg3 error:(id *)arg4;
 - (void)stop;
+- (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)stopLoopback;
 - (void)stopLoopbackProc:(id)arg1;
 - (void)triggerInterfaceChange;

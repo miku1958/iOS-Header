@@ -29,6 +29,7 @@
     BOOL _needToPerformDocumentClosedTeardown;
     BOOL _observingAKCurrentPageIndex;
     BOOL _alreadyLoggedSavingForThisDocument;
+    BOOL _needsToolPickerVisibleWhenAnnotationControllerIsAvailable;
     BOOL _useFancyTransition;
     BOOL _isAnimatingMarkupExtensionTransition;
     BOOL _userDidCancel;
@@ -102,6 +103,7 @@
 @property (nonatomic, getter=isNavigationModeHorizontal) BOOL navigationModeHorizontal; // @synthesize navigationModeHorizontal=_navigationModeHorizontal;
 @property BOOL needToPerformDocumentClosedTeardown; // @synthesize needToPerformDocumentClosedTeardown=_needToPerformDocumentClosedTeardown;
 @property BOOL needToPerformFullTeardown; // @synthesize needToPerformFullTeardown=_needToPerformFullTeardown;
+@property (nonatomic) BOOL needsToolPickerVisibleWhenAnnotationControllerIsAvailable; // @synthesize needsToolPickerVisibleWhenAnnotationControllerIsAvailable=_needsToolPickerVisibleWhenAnnotationControllerIsAvailable;
 @property (getter=isObservingAKCurrentPageIndex) BOOL observingAKCurrentPageIndex; // @synthesize observingAKCurrentPageIndex=_observingAKCurrentPageIndex;
 @property (readonly, nonatomic) NSString *outputType;
 @property (readonly) PDFDocument *pdfDocument;

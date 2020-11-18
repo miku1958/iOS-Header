@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPMediaLibraryMLCoreStorage : NSObject
 {
     shared_ptr_0f3dbfb3 __MediaLibrary_coreLibrary;

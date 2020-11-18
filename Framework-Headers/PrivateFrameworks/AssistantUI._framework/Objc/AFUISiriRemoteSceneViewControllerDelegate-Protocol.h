@@ -6,7 +6,7 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUISiriRemoteSceneViewController, NSArray, NSDictionary, NSString, NSURL, SASRequestOptions;
+@class AFUISiriRemoteSceneViewController, BKSAnimationFenceHandle, NSArray, NSDictionary, NSString, NSURL, SASRequestOptions;
 
 @protocol AFUISiriRemoteSceneViewControllerDelegate <NSObject>
 - (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(BOOL)arg2 userInfo:(NSDictionary *)arg3 withDismissalReason:(unsigned long long)arg4;
@@ -30,6 +30,7 @@
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsPresentation:(void (^)(BOOL))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setBugReportingAvailable:(BOOL)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setCarDisplaySnippetMode:(long long)arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setFullScreenDimmingLayerVisible:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setHelpButtonEmphasized:(BOOL)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setStatusBarHidden:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setStatusBarHidden:(BOOL)arg2 animated:(BOOL)arg3 completion:(void (^)(BOOL))arg4;
@@ -61,6 +62,12 @@
 
 @optional
 - (void)extendCurrentTTSRequested;
+- (void)requestBlurVisible:(BOOL)arg1 reason:(long long)arg2 fence:(BKSAnimationFenceHandle *)arg3;
+- (void)setShouldDismissForSwipesOutsideContent:(BOOL)arg1;
+- (void)setShouldDismissForTapOutsideContent:(BOOL)arg1;
+- (void)setShouldDismissForTapsOutsideContent:(BOOL)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 presentedIntentWithBundleId:(NSString *)arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 sceneDidActivateWithIdentifier:(NSString *)arg2;
+- (void)siriRemoteViewControllerDidDeactivateScene:(AFUISiriRemoteSceneViewController *)arg1;
 @end
 

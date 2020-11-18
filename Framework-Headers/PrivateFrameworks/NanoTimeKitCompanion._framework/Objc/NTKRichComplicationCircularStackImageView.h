@@ -4,25 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationBaseCircularStackImageView.h>
 
-@class NTKColoringLabel, NTKRichComplicationImageView;
-
-@interface NTKRichComplicationCircularStackImageView : NTKRichComplicationCircularBaseView
+@interface NTKRichComplicationCircularStackImageView : NTKRichComplicationBaseCircularStackImageView
 {
-    NTKRichComplicationImageView *_line1ImageView;
-    NTKColoringLabel *_line2Label;
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-- (void).cxx_destruct;
-- (void)_editingDidEnd;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
-- (void)layoutSubviews;
-- (void)setPaused:(BOOL)arg1;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

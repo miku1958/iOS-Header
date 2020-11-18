@@ -18,6 +18,6 @@
 @optional
 - (void)composeStyleSelectorDidDismissFontPicker:(MFComposeStyleSelectorViewController *)arg1;
 - (void)composeStyleSelectorDidPresentColorPicker:(MFComposeStyleSelectorViewController *)arg1;
-- (UIViewController *)composeStyleSelectorPresentationContext:(MFComposeStyleSelectorViewController *)arg1;
+- (UIViewController *)presentingViewControllerForComposeStyleSelector:(MFComposeStyleSelectorViewController *)arg1;
 @end
 

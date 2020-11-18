@@ -21,6 +21,7 @@
     BOOL _isPerformingChanges;
     BOOL _shouldLoadWidgetContent;
     BOOL __isNotifyingWidget;
+    BOOL __isClassOfViewElement;
     id<PXWidget> _widget;
     PXScrollViewController *_scrollViewController;
     id<PXWidgetCompositionElementDelegate> _delegate;
@@ -34,6 +35,7 @@
 
 @property (readonly, nonatomic) PXWidgetBar *_footer; // @synthesize _footer=__footer;
 @property (readonly, nonatomic) PXWidgetBar *_header; // @synthesize _header=__header;
+@property (nonatomic) BOOL _isClassOfViewElement; // @synthesize _isClassOfViewElement=__isClassOfViewElement;
 @property (nonatomic, setter=_setNotifyingWidget:) BOOL _isNotifyingWidget; // @synthesize _isNotifyingWidget=__isNotifyingWidget;
 @property (readonly, nonatomic) NSHashTable *_observers; // @synthesize _observers=__observers;
 @property (readonly, nonatomic) PXTilingController *animationOptionsOriginatingTilingController; // @synthesize animationOptionsOriginatingTilingController=_animationOptionsOriginatingTilingController;
@@ -57,6 +59,7 @@
 - (void).cxx_destruct;
 - (void)_invalidateFooter;
 - (void)_invalidateHeader;
+- (BOOL)_isViewElementAndCheckingInTile;
 - (void)_notifyWidgetUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_performChanges:(CDUnknownBlockType)arg1 withAnimationOptions:(id)arg2;
 - (void)_performContentChangeWhenSafe:(CDUnknownBlockType)arg1;

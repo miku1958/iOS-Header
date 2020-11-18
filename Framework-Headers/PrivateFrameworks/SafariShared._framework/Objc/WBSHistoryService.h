@@ -8,13 +8,15 @@
 
 #import <SafariShared/NSXPCListenerDelegate-Protocol.h>
 
-@class NSDate, NSString, NSURL, NSXPCListener, WBSHistoryDatabaseAccessBroker, WBSHistoryURLCompletionDataStore;
+@class NSCountedSet, NSDate, NSMutableDictionary, NSString, NSURL, NSXPCListener, WBSHistoryDatabaseAccessBroker, WBSHistoryURLCompletionDataStore;
 @protocol OS_dispatch_queue;
 
 @interface WBSHistoryService : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_listener;
     NSObject<OS_dispatch_queue> *_historyServiceQueue;
+    NSMutableDictionary *_openedDatabases;
+    NSCountedSet *_openedDatabasesRefCounts;
     NSDate *_initDate;
     WBSHistoryDatabaseAccessBroker *_databaseAccessBroker;
     WBSHistoryURLCompletionDataStore *_urlCompletionDataStore;
@@ -30,10 +32,15 @@
 
 - (void).cxx_destruct;
 - (BOOL)_connectionIsEntitledToUseUserDatabase:(id)arg1;
-- (void)_resume;
-- (void)_shutdown;
+- (id)_createListener;
+- (id)_openOrReuseExistingDatabaseWithOptions:(id)arg1 error:(id *)arg2;
+- (void)connectWithOptions:(id)arg1 connection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)dealloc;
+- (void)disconnectDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)resume;
+- (void)shutdown;
 
 @end
 

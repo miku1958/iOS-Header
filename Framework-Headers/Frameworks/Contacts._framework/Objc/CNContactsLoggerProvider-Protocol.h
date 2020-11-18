@@ -6,10 +6,11 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@protocol CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
+@protocol CNAPITriageLogger, CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
 
 @protocol CNContactsLoggerProvider <NSObject>
 
+@property (readonly, nonatomic) id<CNAPITriageLogger> apiTriageLogger;
 @property (readonly, nonatomic) id<CNContactsLogger> contactsLogger;
 @property (readonly, nonatomic) id<CNFavoritesLogger> favoritesLogger;
 @property (readonly, nonatomic) id<CNGeminiLogger> geminiLogger;

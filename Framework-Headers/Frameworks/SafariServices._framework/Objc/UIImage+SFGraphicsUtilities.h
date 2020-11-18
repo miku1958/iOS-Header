@@ -20,6 +20,7 @@
 - (id)_sf_imageByResizingWithAccessibilityScale:(double)arg1;
 - (id)_sf_initWithCGImage:(struct CGImage *)arg1 tabSnapshotEffectsVersion:(long long)arg2;
 - (BOOL)_sf_isLaunchImageSizedForOrientation:(long long)arg1 includesStatusBar:(BOOL *)arg2;
+- (id)_sf_outlineIconForSize:(struct CGSize)arg1;
 - (void)_sf_registerFaviconForDarkUserInterfaceStyle;
 - (id)_sf_resizeImageToSize:(struct CGSize)arg1;
 @end

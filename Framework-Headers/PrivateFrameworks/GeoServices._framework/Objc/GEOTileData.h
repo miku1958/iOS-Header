@@ -29,13 +29,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_replaceFileURL:(id)arg1;
 - (void)dealloc;
 - (void)encodeToXPCDictionary:(id)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
 - (id)initWithDecodedRepresentation:(id)arg1;
 - (id)initWithFileURL:(id)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

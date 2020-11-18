@@ -10,13 +10,22 @@
 
 @interface ACAccount (RemoteManagement)
 
+@property (strong) NSString *managingOwnerIdentifier; // @dynamic managingOwnerIdentifier;
+@property (strong) NSString *managingSourceName; // @dynamic managingSourceName;
 @property (copy, setter=rm_setDSID:) NSNumber *rm_DSID;
+@property (copy, setter=rm_setAccountScheme:) NSString *rm_accountScheme;
 @property (copy, setter=rm_setAltDSID:) NSString *rm_altDSID;
 @property (copy, setter=rm_setEnrollmentToken:) NSString *rm_enrollmentToken;
+@property (copy, setter=rm_setEnrollmentURL:) NSString *rm_enrollmentURL;
 @property (setter=rm_setmanagedByOlympus:) BOOL rm_managedByOlympus;
 @property (copy, setter=rm_setManagementSourceIdentifier:) NSString *rm_managementSourceIdentifier;
 @property (copy, setter=rm_setPersonaIdentifier:) NSString *rm_personaIdentifier;
 @property (copy, setter=rm_setRemoteManagingAccountIdentifier:) NSString *rm_remoteManagingAccountIdentifier;
+@property (copy, setter=rm_setWebAuthenticationToken:) NSString *rm_webAuthenticationToken;
 
++ (id)rm_createTestAccountWithStore:(id)arg1 username:(id)arg2 description:(id)arg3 enrollmentURL:(id)arg4;
++ (id)rm_createWebAuthenticationAccountWithStore:(id)arg1 username:(id)arg2 description:(id)arg3 enrollmentURL:(id)arg4 authToken:(id)arg5;
+- (BOOL)rm_isAccountSchemeTest;
+- (BOOL)rm_isAccountSchemeWebAuthentication;
 @end
 

@@ -7,35 +7,40 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/CSSpotlightPresenting-Protocol.h>
+#import <SpringBoard/SBDashBoardSpotlightViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
 
-@class CSCoverSheetViewController, CSPageViewController, NSString, SBDashBoardSpotlightViewController;
-@protocol SBFLegibilitySettingsProvider;
+@class NSString, SBDashBoardSpotlightViewController;
+@protocol SBFDashBoardModalPresenterProtocol, SBFLegibilitySettingsProvider;
 
-@interface SBDashBoardSpotlightPresenter : NSObject <SPUIRemoteSearchViewDelegate, SBFLegibilitySettingsProviderDelegate, CSSpotlightPresenting>
+@interface SBDashBoardSpotlightPresenter : NSObject <SPUIRemoteSearchViewDelegate, SBFLegibilitySettingsProviderDelegate, SBDashBoardSpotlightViewControllerDelegate, CSSpotlightPresenting>
 {
-    CSCoverSheetViewController *_coverSheetViewController;
+    id<SBFDashBoardModalPresenterProtocol> _presenterViewController;
     SBDashBoardSpotlightViewController *_spotlightViewController;
     id<SBFLegibilitySettingsProvider> _spotlightLegibilitySettingsProvider;
-    CSPageViewController *_todayPageViewController;
+    unsigned long long _spotlightMultiplexingLevel;
+    unsigned long long _remoteSearchViewPresentationSource;
+    long long _homeGestureParticipantIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) CSPageViewController *todayPageViewController; // @synthesize todayPageViewController=_todayPageViewController;
 
 - (void).cxx_destruct;
 - (id)createSpotlightLegiblitySettingsProvider;
 - (void)dismissSearchView;
 - (void)dismissSpotlight;
 - (void)dismissSpotlightWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithCoverSheetViewController:(id)arg1;
+- (long long)homeGestureParticipantIdentifierForSpotlightViewController:(id)arg1;
+- (id)initWithPresenterViewController:(id)arg1 spotlightMultiplexingLevel:(unsigned long long)arg2 remoteSearchViewPresentationSource:(unsigned long long)arg3 homeGestureParticipantIdentifier:(long long)arg4;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(BOOL)arg2;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)providerLegibilitySettingsChanged:(id)arg1;
+- (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(id)arg1;
+- (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(id)arg1;
 
 @end
 

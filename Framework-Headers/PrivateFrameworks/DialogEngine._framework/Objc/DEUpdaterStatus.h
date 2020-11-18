@@ -12,15 +12,20 @@
 {
     BOOL _upToDate;
     BOOL _disabled;
+    BOOL _loggedEvent;
     NSString *_publicationId;
+    NSString *_version;
 }
 
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
+@property (nonatomic) BOOL loggedEvent; // @synthesize loggedEvent=_loggedEvent;
 @property (strong, nonatomic) NSString *publicationId; // @synthesize publicationId=_publicationId;
 @property (nonatomic) BOOL upToDate; // @synthesize upToDate=_upToDate;
+@property (strong, nonatomic) NSString *version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
-- (id)initWithPublicationId:(id)arg1 upToDate:(BOOL)arg2;
+- (id)initWithPublicationId:(id)arg1 upToDate:(BOOL)arg2 version:(id)arg3;
+- (void)logCoreAnalyticsEvent;
 
 @end
 

@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)getRequest:(id)arg1;
 - (id)init;
 - (void)invalidateAndCancel;
-- (id)requestWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5 appleITeamId:(id)arg6 appleIClientId:(id)arg7;
+- (id)requestWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5 appleITeamId:(id)arg6 appleIClientId:(id)arg7 additionalHeaders:(id)arg8;
 
 @end
 

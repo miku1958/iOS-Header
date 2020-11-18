@@ -20,7 +20,7 @@
 + (Class)changeClass;
 - (void).cxx_destruct;
 - (BOOL)applyChanges:(id)arg1 fromSyncService:(id)arg2 error:(id *)arg3;
-- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (void)databaseResultDidChange:(id)arg1;
 - (BOOL)deleteSyncedData:(id *)arg1;
 - (id)initWithResult:(id)arg1;
 

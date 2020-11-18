@@ -48,6 +48,7 @@
 - (void)_pluginViewReadyForSnapshot:(id)arg1;
 - (void)addFilter:(id)arg1;
 - (void)attachInvisibleInkEffectView;
+- (BOOL)canUseOpaqueMask;
 - (void)clearFilters;
 - (void)configureForComposition:(id)arg1;
 - (void)configureForTranscriptPlugin:(id)arg1;

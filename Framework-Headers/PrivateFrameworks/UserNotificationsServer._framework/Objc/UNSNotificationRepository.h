@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class UNSBundleLibrarian, UNSKeyedDataStoreRepository, UNSKeyedObservable;
+@class NSMutableSet, UNSBundleLibrarian, UNSKeyedDataStoreRepository, UNSKeyedObservable;
 @protocol OS_dispatch_queue, UNSNotificationRepositoryDelegate, UNSNotificationRepositorySettingsProvider;
 
 @interface UNSNotificationRepository : NSObject
 {
     UNSKeyedDataStoreRepository *_repository;
     UNSKeyedObservable *_observable;
+    NSMutableSet *_unlimitedBodyBundleIdentifiers;
     NSObject<OS_dispatch_queue> *_queue;
     UNSBundleLibrarian *_librarian;
     id<UNSNotificationRepositoryDelegate> _delegate;
@@ -53,6 +54,8 @@
 - (id)initWithDirectory:(id)arg1 librarian:(id)arg2 repositoryProtectionStrategy:(id)arg3;
 - (id)notificationRecordForForIdentifier:(id)arg1 bundleIdentifier:(id)arg2;
 - (id)notificationRecordsForBundleIdentifier:(id)arg1;
+- (void)notificationSourcesDidInstall:(id)arg1;
+- (void)notificationSourcesDidUninstall:(id)arg1;
 - (void)performMigration;
 - (void)performValidation;
 - (void)removeAllNotificationRecordsForBundleIdentifier:(id)arg1;

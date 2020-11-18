@@ -9,7 +9,7 @@
 #import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
 
 @class CKServerChangeToken, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol CKFetchDatabaseChangesOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchDatabaseChangesOperation : CKDDatabaseOperation <CKDOperationPipelining>
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
+@property (strong, nonatomic) id<CKFetchDatabaseChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
@@ -53,10 +54,9 @@ __attribute__((visibility("hidden")))
 - (void)_sendFetchDatabaseChangesRequestWithChangeToken:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
 - (id)activityCreate;
 - (id)analyticsPayload;
-- (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
-- (Class)operationResultClass;
+- (int)operationType;
 
 @end
 

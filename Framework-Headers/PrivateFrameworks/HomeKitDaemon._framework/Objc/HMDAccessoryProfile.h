@@ -20,9 +20,9 @@
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSUUID *_uniqueIdentifier;
-    NSString *_logID;
     HMDAccessory *_accessory;
     NSArray *_services;
+    NSString *_logIdentifier;
 }
 
 @property (readonly, weak) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -31,7 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
+@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
@@ -45,7 +45,6 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_encodeWithCoder:(id)arg1;
 - (void)configureWithMessageDispatcher:(id)arg1 configurationTracker:(id)arg2;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
@@ -55,7 +54,6 @@
 - (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3 workQueue:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)logIdentifier;
 - (void)registerForMessages;
 - (void)removeCloudData;
 - (id)runtimeState;

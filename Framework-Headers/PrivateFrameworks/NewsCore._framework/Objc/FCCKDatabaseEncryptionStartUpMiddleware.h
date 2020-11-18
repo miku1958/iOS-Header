@@ -22,8 +22,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)secureSentinelRecordID;
-+ (id)sentinelRecordID;
 - (void).cxx_destruct;
 - (void)_adoptSentinel:(id)arg1 secureSentinel:(id)arg2 forDatabase:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_associateChildOperation:(id)arg1;

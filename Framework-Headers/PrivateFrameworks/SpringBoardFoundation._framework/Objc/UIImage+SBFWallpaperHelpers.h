@@ -28,6 +28,7 @@
 - (id)sbf_imageByDrawingIntoContextOfType:(long long)arg1;
 - (id)sbf_imageByManipulatingInDeviceColorSpaceWithBlock:(CDUnknownBlockType)arg1;
 - (id)sbf_imageByTilingCenterPixel;
+- (id)sbf_imageHashData;
 - (id)sbf_imageMaskedByColor:(id)arg1;
 - (id)sbf_imageUsingContextType:(long long)arg1;
 - (id)sbf_memoryMappedImageWithPool:(id)arg1;

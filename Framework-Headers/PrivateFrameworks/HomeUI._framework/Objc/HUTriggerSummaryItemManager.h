@@ -6,21 +6,25 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFItem, HFStaticItem, HFStaticItemProvider, HFTriggerBuilder, HFTriggerDurationSummaryItem, HUShortcutItem, HUTriggerActionFlow, HUTriggerBuilderItem;
+@class HFItem, HFStaticItem, HFStaticItemProvider, HFTriggerBuilder, HFTriggerDurationSummaryItem, HUShortcutItem, HUTriggerActionFlow, HUTriggerBuilderItem, NSSet;
 
 @interface HUTriggerSummaryItemManager : HFItemManager
 {
     BOOL _durationPickerShown;
+    BOOL _shouldShowPrioritizedServiceActions;
     HFTriggerBuilder *_triggerBuilder;
     HUTriggerActionFlow *_currentFlow;
+    NSSet *_prioritizedServices;
     HFStaticItemProvider *_unsupportedItemProvider;
     HFItem *_serviceActionsInstructionItem;
+    HFItem *_prioritizedServiceActionsInstructionItem;
     HFItem *_enableItem;
     HFItem *_mediaRowItem;
     HFItem *_testTriggerItem;
     HFItem *_addActionItem;
     HFItem *_deleteTriggerItem;
     HFStaticItem *_actionSetsGridItem;
+    HFStaticItem *_prioritizedServiceActionsGridItem;
     HFStaticItem *_serviceActionsGridItem;
     HUShortcutItem *_shortcutItem;
     HFTriggerDurationSummaryItem *_durationSummaryItem;
@@ -46,10 +50,14 @@
 @property (strong, nonatomic) HFItem *enableItem; // @synthesize enableItem=_enableItem;
 @property (strong, nonatomic) HFItem *mediaInstructionsItem; // @synthesize mediaInstructionsItem=_mediaInstructionsItem;
 @property (strong, nonatomic) HFItem *mediaRowItem; // @synthesize mediaRowItem=_mediaRowItem;
+@property (strong, nonatomic) HFStaticItem *prioritizedServiceActionsGridItem; // @synthesize prioritizedServiceActionsGridItem=_prioritizedServiceActionsGridItem;
+@property (strong, nonatomic) HFItem *prioritizedServiceActionsInstructionItem; // @synthesize prioritizedServiceActionsInstructionItem=_prioritizedServiceActionsInstructionItem;
+@property (copy, nonatomic) NSSet *prioritizedServices; // @synthesize prioritizedServices=_prioritizedServices;
 @property (strong, nonatomic) HFStaticItem *serviceActionsGridItem; // @synthesize serviceActionsGridItem=_serviceActionsGridItem;
 @property (strong, nonatomic) HFItem *serviceActionsInstructionItem; // @synthesize serviceActionsInstructionItem=_serviceActionsInstructionItem;
 @property (strong, nonatomic) HUShortcutItem *shortcutItem; // @synthesize shortcutItem=_shortcutItem;
 @property (strong, nonatomic) HFItem *shortcutsInstructionItem; // @synthesize shortcutsInstructionItem=_shortcutsInstructionItem;
+@property (nonatomic) BOOL shouldShowPrioritizedServiceActions; // @synthesize shouldShowPrioritizedServiceActions=_shouldShowPrioritizedServiceActions;
 @property (strong, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property (strong, nonatomic) HFItem *testTriggerItem; // @synthesize testTriggerItem=_testTriggerItem;
 @property (strong, nonatomic) HFTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;

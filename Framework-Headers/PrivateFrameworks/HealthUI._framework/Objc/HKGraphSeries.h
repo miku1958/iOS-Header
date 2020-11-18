@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthUI/HKChartCachePriorityDelegate-Protocol.h>
 #import <HealthUI/HKGraphSeriesDataSourceDelegate-Protocol.h>
 
 @class HKAxis, HKGraphSeriesDataSource, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMutableDictionary, NSString, NSUUID, UIColor, UIView;
 @protocol HKAxisAccessoryViewDelegate, HKGraphSeriesAxisAnnotation, HKGraphSeriesAxisScalingRule, HKSeriesDelegate;
 
-@interface HKGraphSeries : NSObject <HKGraphSeriesDataSourceDelegate>
+@interface HKGraphSeries : NSObject <HKGraphSeriesDataSourceDelegate, HKChartCachePriorityDelegate>
 {
     BOOL _dirty;
     CDStruct_f3788345 _selectedPathRange;
@@ -70,6 +71,7 @@
 - (void).cxx_destruct;
 - (void)_cacheCoordinates:(id)arg1 forBlockPath:(CDStruct_6ca94699)arg2;
 - (id)_cachedCoordinatesForBlockPath:(CDStruct_6ca94699)arg1;
+- (id)_clipYAxisValueRangeIfNecessary:(id)arg1;
 - (id)_coordinateListsForGeneratorWithXAxis:(id)arg1 zoomScale:(double)arg2 chartRect:(struct CGRect)arg3 contentOffset:(struct CGPoint)arg4;
 - (id)_coordinateListsWithXValueRange:(id)arg1 xAxis:(id)arg2 zoomLevel:(long long)arg3;
 - (id)_coordinatesForBlockPath:(CDStruct_6ca94699)arg1 xAxis:(id)arg2;
@@ -107,6 +109,7 @@
 - (id)findVisibleBlockCoordinatesForChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 xAxisTransform:(struct CGAffineTransform)arg5;
 - (id)init;
 - (BOOL)isHighlighted;
+- (BOOL)isRangeHighPriority:(id)arg1;
 - (void)layoutOverlayInteractiveViews:(id)arg1 seriesOverlayData:(id)arg2 overlayRect:(struct CGRect)arg3;
 - (id)marginsForYAxis:(id)arg1 chartRect:(struct CGRect)arg2;
 - (id)overlayIdentifier;

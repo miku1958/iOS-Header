@@ -11,10 +11,8 @@
 @interface MTMetrics : NSObject
 {
     id<NAScheduler> _serializer;
-    unsigned long long _operationStartTime;
 }
 
-@property (nonatomic) unsigned long long operationStartTime; // @synthesize operationStartTime=_operationStartTime;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 
 + (id)_sharedPublicMetrics;

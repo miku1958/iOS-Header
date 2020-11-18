@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface RBDisplayList : NSObject
 {
     struct DisplayList _list;
-    struct cf_ptr<CGContext *> _context;
-    struct ContextDelegate *_delegate;
-    BOOL _linearColors;
+    struct vector<std::__1::pair<RB::cf_ptr<CGContext *>, RB::ContextDelegate *>, 1, unsigned long> _contexts;
+    unsigned long long _active_contexts;
     struct CGRect _contentRect;
 }
 
@@ -19,35 +20,52 @@
 @property (readonly, nonatomic) struct CGRect boundingRect;
 @property (readonly, nonatomic) struct CGRect clipBoundingBox;
 @property (nonatomic) struct CGRect contentRect; // @synthesize contentRect=_contentRect;
+@property (nonatomic) int defaultColorSpace;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
-@property (nonatomic) BOOL linearColors; // @synthesize linearColors=_linearColors;
+@property (nonatomic) BOOL linearColors;
 @property (readonly, nonatomic) const struct DisplayList *rb_displayList;
+@property (readonly, copy, nonatomic) NSString *xmlDescription;
 
 + (id)displayListForCGContext:(struct CGContext *)arg1 alpha:(float *)arg2 blendMode:(int *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addBlurFilterWithRadius:(double)arg1;
+- (void)addBlurFilterWithRadius:(double)arg1 colorSpace:(int)arg2 flags:(unsigned int)arg3;
 - (void)addBlurFilterWithRadius:(double)arg1 opaque:(BOOL)arg2;
 - (void)addBrightnessFilterWithAmount:(float)arg1;
+- (void)addBrightnessFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
 - (void)addColorInvertFilter;
+- (void)addColorInvertFilterWithColorSpace:(int)arg1;
 - (void)addColorMatrixFilterWithArray:(float [20])arg1;
+- (void)addColorMatrixFilterWithArray:(float [20])arg1 colorSpace:(int)arg2;
 - (void)addColorMonochromeFilterWithAmount:(float)arg1 color:(CDStruct_0b1c536a)arg2 bias:(float)arg3;
+- (void)addColorMonochromeFilterWithAmount:(float)arg1 color:(CDStruct_0b1c536a)arg2 bias:(float)arg3 colorSpace:(int)arg4;
 - (void)addColorMultiplyFilterWithColor:(CDStruct_0b1c536a)arg1;
+- (void)addColorMultiplyFilterWithColor:(CDStruct_0b1c536a)arg1 colorSpace:(int)arg2;
 - (void)addContrastFilterWithAmount:(float)arg1;
+- (void)addContrastFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
 - (void)addGrayscaleFilterWithAmount:(float)arg1;
+- (void)addGrayscaleFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
 - (void)addHueRotationFilterWithAngle:(double)arg1;
+- (void)addHueRotationFilterWithAngle:(double)arg1 colorSpace:(int)arg2;
 - (void)addLuminanceToAlphaFilter;
+- (void)addLuminanceToAlphaFilterWithColorSpace:(int)arg1;
 - (void)addProjectionStyleWithArray:(float [9])arg1;
 - (void)addSaturationFilterWithAmount:(float)arg1;
+- (void)addSaturationFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
 - (void)addShadowStyleWithRadius:(double)arg1 offset:(struct CGSize)arg2 color:(CDStruct_0b1c536a)arg3 mode:(int)arg4;
 - (struct CGContext *)beginCGContextWithAlpha:(float)arg1;
+- (struct CGContext *)beginCGContextWithAlpha:(float)arg1 flags:(unsigned int)arg2;
 - (void)beginLayer;
+- (void)beginLayerWithColorSpace:(int)arg1 flags:(unsigned int)arg2;
 - (void)beginLayerWithFlags:(unsigned int)arg1;
 - (void)clear;
+- (void)clearCaches;
 - (void)clipLayerWithAlpha:(float)arg1 mode:(int)arg2;
 - (void)clipShape:(id)arg1 mode:(int)arg2;
 - (void)concat:(struct CGAffineTransform)arg1;
 - (void)drawDisplayList:(id)arg1;
+- (void)drawInRect:(struct CGRect)arg1 alpha:(float)arg2 blendMode:(int)arg3 flags:(unsigned int)arg4 operation:(CDUnknownBlockType)arg5;
 - (void)drawLayerWithAlpha:(float)arg1 blendMode:(int)arg2;
 - (void)drawShape:(id)arg1 fill:(id)arg2 alpha:(float)arg3 blendMode:(int)arg4;
 - (void)endCGContext;

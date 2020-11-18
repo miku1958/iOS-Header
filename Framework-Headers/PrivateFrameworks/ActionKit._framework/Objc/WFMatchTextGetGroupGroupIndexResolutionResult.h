@@ -6,6 +6,7 @@
 
 #import <Intents/INIntegerResolutionResult.h>
 
+__attribute__((visibility("hidden")))
 @interface WFMatchTextGetGroupGroupIndexResolutionResult : INIntegerResolutionResult
 {
 }

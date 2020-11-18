@@ -10,8 +10,8 @@
 
 @interface BSBlockTransaction : BSTransaction
 {
-    NSString *_debugName;
     CDUnknownBlockType _block;
+    NSString *_debugName;
 }
 
 @property (copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;

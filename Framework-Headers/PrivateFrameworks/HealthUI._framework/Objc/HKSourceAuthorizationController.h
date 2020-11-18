@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKSource, NSArray, NSDictionary, NSMutableSet, NSSet;
+@class HKAuthorizationStore, HKHealthStore, HKSource, NSArray, NSDictionary, NSMutableSet, NSSet;
 @protocol HKSourceAuthorizationControllerDelegate;
 
 @interface HKSourceAuthorizationController : NSObject
 {
+    HKAuthorizationStore *_authorizationStore;
     BOOL _isUpdatingAllTypes;
     HKHealthStore *_healthStore;
     HKSource *_source;

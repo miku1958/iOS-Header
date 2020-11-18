@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) NSDictionary *conflictLoserState;
 @property (readonly, nonatomic) BRCLocalVersion *currentVersion; // @synthesize currentVersion=_currentVersion;
 @property (readonly, nonatomic) BRCDesiredVersion *desiredVersion; // @synthesize desiredVersion=_desiredVersion;
-@property (readonly, nonatomic) unsigned int downloadStatus;
+@property (readonly, nonatomic) unsigned short downloadStatus;
 @property (readonly, nonatomic) BOOL hasLocalContent;
 @property (readonly, nonatomic) BOOL isAutomaticallyEvictable;
 @property (readonly, nonatomic) BOOL isDownloadRequested;

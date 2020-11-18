@@ -15,6 +15,7 @@
     BOOL _cloudSync;
     NSMutableArray *_entities;
     NSMutableArray *_topics;
+    NSMutableArray *_topicsExactMatchesInSourceText;
     NSMutableDictionary *_locations;
     PPSource *_source;
     unsigned long long _entityAlgorithm;
@@ -32,11 +33,11 @@
 @property (strong, nonatomic) PPSource *source; // @synthesize source=_source;
 @property (nonatomic) unsigned long long topicAlgorithm; // @synthesize topicAlgorithm=_topicAlgorithm;
 @property (strong, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
+@property (strong, nonatomic) NSMutableArray *topicsExactMatchesInSourceText; // @synthesize topicsExactMatchesInSourceText=_topicsExactMatchesInSourceText;
 
 - (void).cxx_destruct;
 - (unsigned long long)_donateLocationsWithContextualNamedEntities:(id)arg1;
 - (void)addLocation:(id)arg1 algorithm:(unsigned short)arg2;
-- (id)asyncWriteQueue;
 - (void)flushWrites;
 - (void)writeSynchronous;
 - (void)writeWithEntityStore:(id)arg1;

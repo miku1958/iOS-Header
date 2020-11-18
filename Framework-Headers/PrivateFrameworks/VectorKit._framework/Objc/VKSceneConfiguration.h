@@ -39,6 +39,7 @@
 - (void)_updateStyleManager;
 - (id)initWithTaskContext:(const shared_ptr_e963992e *)arg1;
 - (unsigned long long)navCameraMode;
+- (unsigned char)navCameraModeStyleAttribute;
 - (unsigned long long)navigationDestination;
 - (unsigned char)navigationState;
 - (void)resetState;

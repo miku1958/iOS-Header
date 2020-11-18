@@ -13,7 +13,7 @@
 @class NSDictionary, NSMutableArray, NSMutableString, NSString, PSIIntArray, PSIStatement, PSITokenizer, PSIWordEmbeddingTable;
 @protocol OS_dispatch_queue;
 
-@interface PSIDatabase : NSObject <PSITableDelegate, PSIQueryDelegate, PSIGroupCacheDelegate>
+@interface PSIDatabase : NSObject <PSIGroupCacheDelegate, PSIQueryDelegate, PSITableDelegate>
 {
     struct sqlite3 *_inqDatabase;
     BOOL _databaseIsValid;
@@ -29,13 +29,9 @@
     PSIStatement *_inqNumberOfCollectionsMatchingGroupWithIdStatement;
     PSIStatement *_inqNumberOfCollectionsByGroupIdMatchingGroupsWithIdsStatement;
     PSIStatement *_inqIdsOfAllGroupsStatement;
-    PSIStatement *_inqIdsOfAllGroupsMatchedByAssetsStatement;
-    PSIStatement *_inqIdsOfAllGroupsMatchedByCollectionsStatement;
-    PSIStatement *_inqRemoveUnmatchedGroupsFromGroupsStatement;
     PSIStatement *_inqIdsOfAllGroupsInPrefixStatement;
     PSIStatement *_inqIdsOfAllGroupsInLookupStatement;
     PSIStatement *_inqRemoveGroupsFromLookupStatement;
-    PSIStatement *_inqRemoveUnmatchedGroupsFromLookupStatement;
     struct __CFDictionary *_inqGroupObjectsById;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_searchQueue;
@@ -66,6 +62,7 @@
 + (void)_dropDatabase:(struct sqlite3 *)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (BOOL)_integrityCheckDatabase:(struct sqlite3 *)arg1;
 + (struct sqlite3 *)_openDatabaseAtPath:(id)arg1 options:(long long)arg2;
++ (id)_scoreByUserCategory;
 + (void)dropDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (id)searchDatabaseLog;
 - (void).cxx_destruct;
@@ -114,7 +111,6 @@
 - (struct __CFSet *)_inqNewGroupIdsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(BOOL)arg3;
 - (struct __CFSet *)_inqNewGroupIdsMatchingString:(id)arg1 textIsSearchable:(BOOL)arg2;
 - (struct __CFSet *)_inqNewGroupIdsWithCategories:(id)arg1;
-- (struct __CFSet *)_inqNewGroupIdsWithOwningGroupIds:(struct __CFSet *)arg1;
 - (id)_inqNewSynonymTextsByOwningGroupIdWithGroupIds:(struct __CFSet *)arg1;
 - (id)_inqNonFilenameGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 includeObjects:(BOOL)arg3 matchingPredicateBlock:(CDUnknownBlockType)arg4;
 - (id)_inqNumberOfAssetsByGroupIdMatchingGroupsWithIds:(id)arg1;

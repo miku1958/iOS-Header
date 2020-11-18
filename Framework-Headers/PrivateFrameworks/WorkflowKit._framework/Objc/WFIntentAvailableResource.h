@@ -6,17 +6,24 @@
 
 #import <WorkflowKit/WFAppInstalledResource.h>
 
-@class INCIntentExecutionInfo;
+@class INIntentExecutionInfo;
 
 @interface WFIntentAvailableResource : WFAppInstalledResource
 {
-    INCIntentExecutionInfo *_executionInfo;
+    BOOL _intentIsSynced;
+    BOOL _actionRequiresRemoteExecution;
+    INIntentExecutionInfo *_executionInfo;
 }
 
-@property (readonly, nonatomic) INCIntentExecutionInfo *executionInfo; // @synthesize executionInfo=_executionInfo;
+@property (readonly, nonatomic) BOOL actionRequiresRemoteExecution; // @synthesize actionRequiresRemoteExecution=_actionRequiresRemoteExecution;
+@property (readonly, nonatomic) INIntentExecutionInfo *executionInfo; // @synthesize executionInfo=_executionInfo;
+@property (readonly, nonatomic) BOOL intentIsSynced; // @synthesize intentIsSynced=_intentIsSynced;
 
 - (void).cxx_destruct;
-- (id)appIdentifier;
+- (id)initWithDefinition:(id)arg1;
+- (id)initWithDefinition:(id)arg1 intentExecutionInfo:(id)arg2 isSyncedFromOtherDevice:(BOOL)arg3;
+- (BOOL)intentIsEligibleForRemoteExecution;
+- (BOOL)intentIsLocallyAvailable;
 - (void)refreshAvailability;
 - (void)updateAvailabilityWithUpdatedVersionRequirementError:(id)arg1;
 

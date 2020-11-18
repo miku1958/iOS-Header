@@ -6,9 +6,11 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class MKPlaceQuickLinksViewController, NSString;
+@class GEOAppStoreAppClip, MKPlaceQuickLinksViewController, NSString;
 
 @protocol MKPlaceQuickLinksViewControllerDelegate <NSObject>
-- (void)placeQuickLinksViewController:(MKPlaceQuickLinksViewController *)arg1 urlStringSelected:(NSString *)arg2;
+- (void)placeQuickLinksViewController:(MKPlaceQuickLinksViewController *)arg1 appClipSelected:(GEOAppStoreAppClip *)arg2;
+- (void)placeQuickLinksViewController:(MKPlaceQuickLinksViewController *)arg1 getRemainingQuickLinksBlock:(void (^)(NSArray *))arg2;
+- (void)placeQuickLinksViewController:(MKPlaceQuickLinksViewController *)arg1 quickLinkURLStringSelected:(NSString *)arg2;
 @end
 

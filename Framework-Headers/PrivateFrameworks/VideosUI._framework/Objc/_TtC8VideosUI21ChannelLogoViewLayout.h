@@ -10,8 +10,9 @@
 
 @interface _TtC8VideosUI21ChannelLogoViewLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *logoImageViewLayout;
-    MISSING_TYPE *appleTVChannelImageViewLayout;
+    MISSING_TYPE *logoMode;
+    MISSING_TYPE *$__lazy_storage_$_logoImageViewLayout;
+    MISSING_TYPE *$__lazy_storage_$_appleTVChannelImageViewLayout;
 }
 
 @end

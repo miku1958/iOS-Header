@@ -6,29 +6,32 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class CKContextClient, PPTextToTopicTransform;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
 
-@interface SGTopicDissector : SGPipelineDissector
+@class CKContextClient, NSString, PPTextToTopicTransform;
+
+@interface SGTopicDissector : SGPipelineDissector <SGMailMessageProcessing>
 {
-    unsigned long long _blacklistHash;
     CKContextClient *_contextClient;
     PPTextToTopicTransform *_transform;
     BOOL _significanceCheckEnabled;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_collectHighLevelTopicsWithText:(id)arg1 bundleId:(id)arg2 addTopic:(CDUnknownBlockType)arg3 weight:(double)arg4;
-- (void)_collectTopicsFromContextKitWithText:(id)arg1 isPlainText:(BOOL)arg2 bundleId:(id)arg3 addTopic:(CDUnknownBlockType)arg4 weight:(double)arg5;
-- (unsigned long long)_hashForBlacklist:(id)arg1;
-- (void)_registerContextBlacklistCheck;
-- (void)checkBlacklist;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
-- (id)extractionsFromContextKitWithText:(id)arg1 isPlainText:(BOOL)arg2 bundleId:(id)arg3 weight:(double)arg4;
+- (void)_collectResultsFromContextKitWithText:(id)arg1 isPlainText:(BOOL)arg2 bundleId:(id)arg3 language:(id)arg4 useContextKitTopics:(BOOL)arg5 useContextKitNamedEntities:(BOOL)arg6 addTopic:(CDUnknownBlockType)arg7 addNamedEntity:(CDUnknownBlockType)arg8 weight:(double)arg9;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (id)extractionsFromContextKitWithText:(id)arg1 isPlainText:(BOOL)arg2 bundleId:(id)arg3 language:(id)arg4 weight:(double)arg5;
 - (id)init;
 - (id)initWithContextClient:(id)arg1 significanceCheckEnabled:(BOOL)arg2;
 - (id)initWithSignificanceCheckEnabled:(BOOL)arg1;
-- (id)topicsInText:(id)arg1 isPlainText:(BOOL)arg2 source:(id)arg3 cloudSync:(BOOL)arg4 algorithms:(id)arg5 weight:(double)arg6;
+- (id)topicsInText:(id)arg1 isPlainText:(BOOL)arg2 source:(id)arg3 cloudSync:(BOOL)arg4 language:(id)arg5 topicAlgorithms:(id)arg6 namedEntityAlgorithms:(id)arg7 weight:(double)arg8;
 
 @end
 

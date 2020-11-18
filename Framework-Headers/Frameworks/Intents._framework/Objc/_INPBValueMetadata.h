@@ -19,7 +19,6 @@
         unsigned int confirmed:1;
     } _has;
     BOOL _confirmed;
-    BOOL __encodeLegacyGloryData;
     NSString *_canonicalValue;
     _INPBConfidenceScore *_confidenceScore;
     NSString *_input;
@@ -28,7 +27,6 @@
     NSString *_uuid;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *canonicalValue; // @synthesize canonicalValue=_canonicalValue;
 @property (strong, nonatomic) _INPBConfidenceScore *confidenceScore; // @synthesize confidenceScore=_confidenceScore;
 @property (nonatomic) BOOL confirmed; // @synthesize confirmed=_confirmed;

@@ -9,7 +9,7 @@
 #import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 #import <CameraUI/CAMControlStatusIndicatorDelegate-Protocol.h>
 
-@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
+@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMExposureBiasStatusIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
 @protocol CAMControlStatusBarDelegate;
 
 @interface CAMControlStatusBar : UIView <CAMControlStatusIndicatorDelegate, CAMAccessibilityHUDItemProvider>
@@ -17,16 +17,18 @@
     BOOL _directionIndicatorVisible;
     BOOL __directionIndicatorHiddenForSpace;
     id<CAMControlStatusBarDelegate> _delegate;
-    NSArray *_primaryVisibleIndicatorTypes;
-    NSArray *_secondaryVisibleIndicatorTypes;
+    NSArray *_primaryDesiredIndicatorTypes;
+    NSArray *_secondaryDesiredIndicatorTypes;
     CAMDirectionalIndicator *_directionIndicator;
     UIView *_primaryAccessoryControl;
     UIView *_secondaryAccessoryControl;
     long long _orientation;
     NSMutableDictionary *__statusIndicatorsByType;
     NSSet *__allVisibleTypes;
+    NSSet *__allDesiredTypes;
 }
 
+@property (strong, nonatomic, setter=_setAllDesiredTypes:) NSSet *_allDesiredTypes; // @synthesize _allDesiredTypes=__allDesiredTypes;
 @property (strong, nonatomic, setter=_setAllVisibleTypes:) NSSet *_allVisibleTypes; // @synthesize _allVisibleTypes=__allVisibleTypes;
 @property (nonatomic, getter=_isDirectionIndicatorHiddenForSpace, setter=_setDirectionIndicatorHiddenForSpace:) BOOL _directionIndicatorHiddenForSpace; // @synthesize _directionIndicatorHiddenForSpace=__directionIndicatorHiddenForSpace;
 @property (readonly, nonatomic) NSMutableDictionary *_statusIndicatorsByType; // @synthesize _statusIndicatorsByType=__statusIndicatorsByType;
@@ -36,6 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CAMDirectionalIndicator *directionIndicator; // @synthesize directionIndicator=_directionIndicator;
 @property (nonatomic, getter=isDirectionIndicatorVisible) BOOL directionIndicatorVisible; // @synthesize directionIndicatorVisible=_directionIndicatorVisible;
+@property (readonly, nonatomic) CAMExposureBiasStatusIndicator *exposureBiasIndicator;
 @property (readonly, nonatomic) CAMFilterStatusIndicator *filterIndicator;
 @property (readonly, nonatomic) CAMFlashStatusIndicator *flashIndicator;
 @property (readonly) unsigned long long hash;
@@ -45,17 +48,19 @@
 @property (readonly, nonatomic) CAMLowLightStatusIndicator *lowLightIndicator;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) UIView *primaryAccessoryControl; // @synthesize primaryAccessoryControl=_primaryAccessoryControl;
-@property (copy, nonatomic) NSArray *primaryVisibleIndicatorTypes; // @synthesize primaryVisibleIndicatorTypes=_primaryVisibleIndicatorTypes;
+@property (copy, nonatomic) NSArray *primaryDesiredIndicatorTypes; // @synthesize primaryDesiredIndicatorTypes=_primaryDesiredIndicatorTypes;
+@property (copy, nonatomic) NSArray *primaryVisibleIndicatorTypes;
 @property (strong, nonatomic) UIView *secondaryAccessoryControl; // @synthesize secondaryAccessoryControl=_secondaryAccessoryControl;
-@property (copy, nonatomic) NSArray *secondaryVisibleIndicatorTypes; // @synthesize secondaryVisibleIndicatorTypes=_secondaryVisibleIndicatorTypes;
+@property (copy, nonatomic) NSArray *secondaryDesiredIndicatorTypes; // @synthesize secondaryDesiredIndicatorTypes=_secondaryDesiredIndicatorTypes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CAMTimerStatusIndicator *timerIndicator;
 @property (readonly, nonatomic) CAMVideoConfigurationStatusIndicator *videoConfigurationIndicator;
 
 - (void).cxx_destruct;
 - (id)_createIndicatorForType:(unsigned long long)arg1;
-- (void)_ensureVisibleIndicators;
+- (void)_ensureDesiredIndicators;
 - (void)_handleApertureStatusIndicatorTapped:(id)arg1;
+- (void)_handleExposureBiasStatusIndicatorTapped:(id)arg1;
 - (void)_handleFilterStatusIndicatorTapped:(id)arg1;
 - (void)_handleFlashStatusIndicatorTapped:(id)arg1;
 - (void)_handleHDRStatusIndicatorTapped:(id)arg1;
@@ -65,8 +70,8 @@
 - (void)_handleTimerStatusIndicatorTapped:(id)arg1;
 - (void)_installIndicatorIfNeededForType:(unsigned long long)arg1;
 - (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;
-- (void)_layoutAllVisibleTypes:(id)arg1 atOrigin:(long long)arg2;
-- (void)_layoutVisibleViewsForTypes:(id)arg1 inVisibleTypes:(id)arg2 atOrigin:(long long)arg3;
+- (void)_layoutAllDesiredTypes:(id)arg1 atOrigin:(long long)arg2;
+- (void)_layoutDesiredViewsForTypes:(id)arg1 inDesiredTypes:(id)arg2 atOrigin:(long long)arg3;
 - (void)_loadIndicatorIfNeededForType:(unsigned long long)arg1;
 - (void)_prelayoutForNewTypes:(id)arg1 oldTypes:(id)arg2 atOrigin:(long long)arg3;
 - (void)_updateDirectionIndicatorAlphaAnimated:(BOOL)arg1;
@@ -74,13 +79,14 @@
 - (void)controlStatusIndicatorDidChangeIntrinsicContentSize:(id)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (id)indicatorForType:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isIndicatorVisibleForType:(unsigned long long)arg1;
+- (BOOL)isIndicatorDesiredForType:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setDirectionIndicatorVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
-- (void)setPrimaryVisibleIndicatorTypes:(id)arg1 secondaryVisibleIndicatorTypes:(id)arg2 animated:(BOOL)arg3;
+- (void)setPrimaryDesiredIndicatorTypes:(id)arg1 secondaryDesiredIndicatorTypes:(id)arg2 animated:(BOOL)arg3;
 
 @end
 

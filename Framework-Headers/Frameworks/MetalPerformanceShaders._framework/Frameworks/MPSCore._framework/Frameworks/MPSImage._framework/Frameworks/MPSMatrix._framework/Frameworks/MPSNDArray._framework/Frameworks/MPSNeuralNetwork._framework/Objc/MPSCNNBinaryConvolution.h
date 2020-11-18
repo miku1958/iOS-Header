@@ -30,7 +30,7 @@
 @property (readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyBuffer:(id)arg1 device:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)createBuffersFromkernelWeights:(const unsigned int *)arg1 inputBiasTerms:(const float *)arg2 inputScaleTerms:(const float *)arg3 outputBiasTerms:(const float *)arg4 outputScaleTerms:(const float *)arg5 useHalfPrecision:(BOOL)arg6;

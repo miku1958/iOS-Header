@@ -7,6 +7,7 @@
 @class SBIconListPageControl;
 
 @protocol SBIconListPageControlDelegate
-- (void)pageControl:(SBIconListPageControl *)arg1 didReceiveTouchInDirection:(unsigned long long)arg2;
+- (void)pageControl:(SBIconListPageControl *)arg1 didMoveCurrentPageToPage:(long long)arg2 withScrubbing:(BOOL)arg3;
+- (void)pageControlDidReceiveButtonTap:(SBIconListPageControl *)arg1;
 @end
 

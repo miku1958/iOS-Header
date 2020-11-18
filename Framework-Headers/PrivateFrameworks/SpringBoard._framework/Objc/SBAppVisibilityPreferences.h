@@ -16,8 +16,8 @@
     BOOL _currentlyVisible;
 }
 
-@property BOOL currentlyVisible; // @synthesize currentlyVisible=_currentlyVisible;
-@property (readonly) BOOL defaultVisible; // @synthesize defaultVisible=_defaultVisible;
+@property (readonly, getter=isCurrentlyVisible) BOOL currentlyVisible;
+@property (readonly, getter=isDefaultVisible) BOOL defaultVisible; // @synthesize defaultVisible=_defaultVisible;
 
 - (void).cxx_destruct;
 - (id)description;

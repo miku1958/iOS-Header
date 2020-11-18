@@ -21,7 +21,7 @@
 @property (strong, nonatomic) id<TIKeyboardInputManagerLogging> logger; // @synthesize logger=_logger;
 
 - (void).cxx_destruct;
-- (void)_updateKeyboardOutput:(id)arg1 withSecureCandidatePayload:(id)arg2;
+- (void)_updateKeyboardOutput:(id)arg1 withSecureCandidatePayload:(id)arg2 keyboardState:(id)arg3;
 - (void)acceptSecureCandidate:(id)arg1 keyboardState:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

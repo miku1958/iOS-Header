@@ -14,12 +14,14 @@
     MTObserverStore *_observers;
     NSMutableArray *_alarms;
     MTAlarm *_sleepAlarm;
+    NSMutableArray *_sleepAlarms;
 }
 
 @property (strong, nonatomic) MTAlarmManager *alarmManager; // @synthesize alarmManager=_alarmManager;
 @property (strong, nonatomic) NSMutableArray *alarms; // @synthesize alarms=_alarms;
 @property (strong, nonatomic) MTObserverStore *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) MTAlarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
+@property (strong, nonatomic) NSMutableArray *sleepAlarms; // @synthesize sleepAlarms=_sleepAlarms;
 
 - (void).cxx_destruct;
 - (void)_handleAlarmNotification:(id)arg1 block:(CDUnknownBlockType)arg2;

@@ -77,7 +77,6 @@
 - (void)setEnabled:(BOOL)arg1 forDataclass:(id)arg2;
 - (void)setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;
 - (void)setupChildMailAccountAndEnable:(BOOL)arg1 withEmail:(id)arg2;
-- (void)signInWithHandler:(CDUnknownBlockType)arg1;
 - (void)updateAccountPropertiesWithHandler:(CDUnknownBlockType)arg1;
 - (void)updateAccountWithProvisioningResponse:(id)arg1;
 - (BOOL)useCellularForDataclass:(id)arg1;

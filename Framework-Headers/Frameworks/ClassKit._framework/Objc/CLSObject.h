@@ -17,7 +17,7 @@
 {
     BOOL _deleted;
     BOOL _modified;
-    BOOL _enforceImmutablility;
+    BOOL _enforceImmutability;
     CLSDataStore *_dataStore;
     NSString *_parentObjectID;
     NSString *_appIdentifier;
@@ -40,7 +40,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDeleted) BOOL deleted;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isImmutablilityEnforced) BOOL enforceImmutablility;
+@property (nonatomic, getter=isImmutabilityEnforced) BOOL enforceImmutability;
 @property unsigned int generation; // @synthesize generation=_generation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isModified) BOOL modified;

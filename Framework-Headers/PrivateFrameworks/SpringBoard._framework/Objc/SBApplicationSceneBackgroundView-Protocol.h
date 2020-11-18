@@ -8,8 +8,10 @@
 
 @protocol SBApplicationSceneBackgroundView <NSObject>
 
+@property (nonatomic, getter=isFullscreen) BOOL fullscreen;
 @property (nonatomic) BOOL needsClassicModeBackground;
 @property (nonatomic) BOOL shouldUseBrightMaterial;
+@property (nonatomic) unsigned long long transformOptions;
 @property (nonatomic) long long wallpaperStyle;
 
 

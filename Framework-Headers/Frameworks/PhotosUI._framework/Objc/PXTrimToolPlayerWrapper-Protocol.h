@@ -15,6 +15,7 @@
 @property (weak, nonatomic) id<PXTrimToolPlayerObserver> playerObserver;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (readonly, nonatomic, getter=isReadyToPlay) BOOL readyToPlay;
+@property (readonly, nonatomic) CDStruct_e83c9415 trimRange;
 
 - (void)applyTrimTimeRange:(CDStruct_e83c9415)arg1;
 - (void)invalidateComposition;

@@ -9,6 +9,7 @@
 #import <UIKitCore/UIResponderStandardEditActions-Protocol.h>
 
 @class NSString, UILongPressGestureRecognizer, UITapGestureRecognizer, UITextChecker, _UITextServiceSession;
+@protocol UITextCursorAssertion;
 
 @interface UIWKTextInteractionAssistant : UITextInteractionAssistant <UIResponderStandardEditActions>
 {
@@ -19,6 +20,7 @@
     _UITextServiceSession *_lookupSession;
     UITextChecker *_textChecker;
     unsigned long long _options;
+    id<UITextCursorAssertion> _blinkAssertion;
     BOOL _shouldDelayActivatingSelectionView;
     BOOL _hadCaretSelectionBeforeTap;
     NSString *_wordBeforeTap;
@@ -43,7 +45,6 @@
 - (BOOL)containerAllowsSelectionTintOnly;
 - (BOOL)containerIsAtom;
 - (BOOL)containerIsBrowserView;
-- (BOOL)containerIsPlainStyleAtom;
 - (long long)currentCursorBehavior;
 - (void)dealloc;
 - (void)didEndScrollingOverflow;
@@ -70,7 +71,7 @@
 - (void)selectionChangedWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3 withFlags:(long long)arg4;
 - (void)selectionChangedWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2 withFlags:(long long)arg3;
 - (Class)selectionInteractionClass;
-- (BOOL)shouldEnqueueObserverUpdates;
+- (BOOL)shouldSuppressSelectionCommands;
 - (BOOL)shouldTryReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)showDictionaryFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)showReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;

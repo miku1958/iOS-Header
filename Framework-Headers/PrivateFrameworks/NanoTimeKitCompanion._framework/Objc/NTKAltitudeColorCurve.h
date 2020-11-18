@@ -6,11 +6,14 @@
 
 #import <NanoTimeKitCompanion/NTKCubicColorCurve.h>
 
+@class MISSING_TYPE;
+
 @interface NTKAltitudeColorCurve : NTKCubicColorCurve
 {
 }
 
 - (id)colorForAltitude:(CDStruct_869f9c67)arg1;
+- (MISSING_TYPE *)rgbfColorForAltitude:(CDStruct_869f9c67)arg1;
 
 @end
 

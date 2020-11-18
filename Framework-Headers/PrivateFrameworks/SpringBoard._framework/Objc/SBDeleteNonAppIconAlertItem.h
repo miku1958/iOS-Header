@@ -14,11 +14,14 @@
     NSString *_iconLocation;
 }
 
+@property (readonly, nonatomic) SBIcon *icon; // @synthesize icon=_icon;
+@property (readonly, copy, nonatomic) NSString *iconLocation; // @synthesize iconLocation=_iconLocation;
+
 - (void).cxx_destruct;
 - (void)configure:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
 - (void)didActivate;
 - (BOOL)dismissOnLock;
-- (id)icon;
+- (BOOL)forcesModalAlertAppearance;
 - (id)initWithIcon:(id)arg1 location:(id)arg2;
 - (BOOL)shouldShowInLockScreen;
 

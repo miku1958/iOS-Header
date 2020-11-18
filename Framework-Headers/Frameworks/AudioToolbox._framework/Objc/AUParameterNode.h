@@ -41,7 +41,7 @@
 
 - (void).cxx_destruct;
 - (void *)_addRecObserver:(CDUnknownBlockType)arg1 autoObserver:(CDUnknownBlockType)arg2;
-- (void)_deserialize:(struct CADeserializer *)arg1;
+- (void)_deserialize:(struct CADeserializer *)arg1 fromSetFullState:(BOOL)arg2;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;
 - (id)_rootParent;
 - (void)_serialize:(struct CASerializer *)arg1;

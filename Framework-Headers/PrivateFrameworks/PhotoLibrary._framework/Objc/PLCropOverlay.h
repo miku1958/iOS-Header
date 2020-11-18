@@ -62,6 +62,7 @@
 - (void)_backgroundSavePhoto:(id)arg1 cropRect:(struct CGRect)arg2 minimalCropDimension:(double)arg3;
 - (void)_createCropView;
 - (void)_fadeOutCompleted:(id)arg1;
+- (id)_fileResizingButton;
 - (id)_newOverlayViewWithFrame:(struct CGRect)arg1 lighterEdgeOnTop:(BOOL)arg2;
 - (void)_pauseButtonPressed:(id)arg1;
 - (void)_playButtonPressed:(id)arg1;
@@ -69,6 +70,7 @@
 - (void)_setMode:(int)arg1;
 - (void)_tappedBottomBarCancelButton:(id)arg1;
 - (void)_tappedBottomBarDoneButton:(id)arg1;
+- (void)_tappedBottomBarFileResizingButton;
 - (void)_tappedBottomBarMotionToggle;
 - (void)_tappedBottomBarPlaybackButton:(id)arg1;
 - (void)_tappedBottomBarSetBothButton;
@@ -110,6 +112,8 @@
 - (void)setControlsAreVisible:(BOOL)arg1;
 - (void)setCropRectVisible:(BOOL)arg1 duration:(float)arg2;
 - (void)setEnabled:(BOOL)arg1;
+- (void)setFileResizingHidden:(BOOL)arg1;
+- (void)setFileResizingTitle:(id)arg1;
 - (void)setOKButtonShowsCamera:(BOOL)arg1;
 - (void)setOKButtonTitle:(id)arg1;
 - (void)setOverlayContainerView:(id)arg1;

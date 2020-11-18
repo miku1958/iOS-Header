@@ -36,6 +36,7 @@
 - (void)addNotificationRequest:(id)arg1;
 - (void)addNotificationRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)badgeNumber;
+- (id)clearedInfoForDataProviderMigration;
 - (id)deliveredNotifications;
 - (void)didChangeSettings:(id)arg1;
 - (void)didOpenApplicationForResponse:(id)arg1;
@@ -62,6 +63,7 @@
 - (void)removeSimilarNotificationRequests:(id)arg1;
 - (void)replaceContentForRequestWithIdentifier:(id)arg1 replacementContent:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestRemoveAuthorizationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setBadgeNumber:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setBadgeString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setNotificationCategories:(id)arg1;

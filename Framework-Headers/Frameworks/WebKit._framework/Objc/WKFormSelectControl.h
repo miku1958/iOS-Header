@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithView:(id)arg1;
+- (BOOL)selectFormAccessoryHasCheckedItemAtRow:(long long)arg1;
 - (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(BOOL)arg3;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Search/SFSearchResult_SpotlightExtras.h>
+#import <SpotlightServices/SFSearchResult_SpotlightExtras.h>
 
 @class NSString;
 

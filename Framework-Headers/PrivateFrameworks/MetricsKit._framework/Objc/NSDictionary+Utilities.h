@@ -8,6 +8,7 @@
 
 @interface NSDictionary (Utilities)
 - (id)mt_deepCopy;
+- (id)mt_dictionarybyReplacingKey:(id)arg1 value:(id)arg2;
 - (id)mt_removingKeys:(id)arg1;
 @end
 

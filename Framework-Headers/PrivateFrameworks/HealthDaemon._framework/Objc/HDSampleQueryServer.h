@@ -12,11 +12,13 @@
 {
     BOOL _suspended;
     BOOL _includeAutomaticTimeZones;
+    BOOL _includeContributorInformation;
     unsigned long long _limit;
     NSArray *_sortDescriptors;
 }
 
 @property (readonly, nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
+@property (readonly, nonatomic) BOOL includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property (readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly, copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 

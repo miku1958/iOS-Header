@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL allowsFocus; // @synthesize allowsFocus=_allowsFocus;
 
+- (void)_updateBackgroundAndHighlightColor;
 - (BOOL)canBecomeFocused;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;

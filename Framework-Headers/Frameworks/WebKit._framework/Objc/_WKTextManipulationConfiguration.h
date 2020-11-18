@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) NSArray *exclusionRules; // @synthesize exclusionRules=_exclusionRules;
 
+- (void)dealloc;
 
 @end
 

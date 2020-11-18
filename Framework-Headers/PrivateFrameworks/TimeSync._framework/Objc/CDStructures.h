@@ -22,6 +22,10 @@ struct mach_timebase_info {
     unsigned int denom;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

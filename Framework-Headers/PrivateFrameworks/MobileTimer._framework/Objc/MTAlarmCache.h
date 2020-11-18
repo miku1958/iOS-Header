@@ -14,7 +14,7 @@
     struct os_unfair_lock_s _cacheLock;
     CDUnknownBlockType _updateBlock;
     NSMutableArray *_orderedAlarms;
-    MTAlarm *_sleepAlarm;
+    NSMutableArray *_sleepAlarms;
     MTAlarm *_nextAlarm;
 }
 
@@ -22,7 +22,7 @@
 @property (nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property (strong, nonatomic) MTAlarm *nextAlarm; // @synthesize nextAlarm=_nextAlarm;
 @property (strong, nonatomic) NSMutableArray *orderedAlarms; // @synthesize orderedAlarms=_orderedAlarms;
-@property (strong, nonatomic) MTAlarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
+@property (strong, nonatomic) NSMutableArray *sleepAlarms; // @synthesize sleepAlarms=_sleepAlarms;
 @property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 
 - (void).cxx_destruct;

@@ -6,17 +6,21 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class PKDashboardPaymentTransactionItem, PKPaymentTransactionGroupItem, PKPaymentTransactionView;
+#import <PassKitUI/PKPaymentTransactionCellResponder-Protocol.h>
 
-@interface PKPaymentTransactionCollectionViewCell : PKDashboardCollectionViewCell
+@class NSString, PKPaymentTransactionView;
+
+@interface PKPaymentTransactionCollectionViewCell : PKDashboardCollectionViewCell <PKPaymentTransactionCellResponder>
 {
-    PKDashboardPaymentTransactionItem *_item;
-    PKPaymentTransactionGroupItem *_groupItem;
+    NSString *_identifier;
     PKPaymentTransactionView *_transactionView;
 }
 
-@property (strong, nonatomic) PKPaymentTransactionGroupItem *groupItem; // @synthesize groupItem=_groupItem;
-@property (strong, nonatomic) PKDashboardPaymentTransactionItem *item; // @synthesize item=_item;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransactionView *transactionView; // @synthesize transactionView=_transactionView;
 
 - (void).cxx_destruct;
@@ -24,7 +28,6 @@
 - (void)layoutSubviews;
 - (double)maxWidthForTransactionCellInWidth:(double)arg1;
 - (void)prepareForReuse;
-- (void)setShowsBottomSeparator:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

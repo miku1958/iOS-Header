@@ -44,7 +44,7 @@
 @property (nonatomic) unsigned long long variancePrefilterRadius; // @synthesize variancePrefilterRadius=_variancePrefilterRadius;
 @property (nonatomic) float variancePrefilterSigma;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (BOOL)supportsSecureCoding;
 - (unsigned long long)channelCount:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

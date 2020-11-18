@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <EmailDaemon/EDReconciliationQueryProvider-Protocol.h>
 #import <EmailDaemon/EFCancelable-Protocol.h>
-#import <EmailDaemon/NSObject-Protocol.h>
 
-@class EMMessageObjectID;
+@class EFQuery, EMMessageObjectID;
 
-@protocol EDMessageRepositoryQueryHandler <NSObject, EFCancelable>
+@protocol EDMessageRepositoryQueryHandler <EDReconciliationQueryProvider, EFCancelable>
+
+@property (readonly, copy, nonatomic) EFQuery *query;
+
 - (void)requestSummaryForMessageObjectID:(EMMessageObjectID *)arg1;
 - (void)start;
 - (void)tearDown;
+- (void)test_tearDown;
 @end
 

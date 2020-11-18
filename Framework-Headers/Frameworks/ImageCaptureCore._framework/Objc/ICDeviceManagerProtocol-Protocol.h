@@ -14,7 +14,6 @@
 - (long long)deleteFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 completion:(void (^)(id, NSMutableDictionary *))arg3;
 - (long long)downloadFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
 - (long long)eject:(ICCameraDevice *)arg1;
-- (void)enumerateContent;
 - (long long)getFileData:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
 - (long long)getFileMetadata:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
 - (long long)getFileThumbnail:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;

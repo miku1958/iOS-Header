@@ -27,6 +27,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct LineSpacingArchive *)arg1 unarchiver:(id)arg2;
+- (id)initWithLocalizationDictionary:(id)arg1;
 - (id)initWithMode:(long long)arg1 amount:(double)arg2;
 - (id)initWithMode:(long long)arg1 amount:(double)arg2 baselineRule:(double)arg3;
 - (BOOL)isEqual:(id)arg1;

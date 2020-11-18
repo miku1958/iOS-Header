@@ -25,7 +25,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)saveAudioChunck:(id)arg1 toURL:(id)arg2;
 - (void).cxx_destruct;
+- (void)addContextKey:(id)arg1 fromMetaFile:(id)arg2;
+- (void)addContextKey:(id)arg1 withContext:(id)arg2;
 - (BOOL)addSamples:(const void *)arg1 numSamples:(long long)arg2;
 - (void)dealloc;
 - (BOOL)endAudio;

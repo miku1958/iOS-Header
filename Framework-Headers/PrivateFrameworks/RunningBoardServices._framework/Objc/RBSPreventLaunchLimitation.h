@@ -6,11 +6,23 @@
 
 #import <RunningBoardServices/RBSLimitation.h>
 
+@class RBSProcessPredicate;
+
 @interface RBSPreventLaunchLimitation : RBSLimitation
 {
+    RBSProcessPredicate *_predicate;
 }
 
-+ (id)limitation;
+@property (readonly, nonatomic) RBSProcessPredicate *predicate; // @synthesize predicate=_predicate;
+
++ (id)limitationWithPredicate:(id)arg1;
+- (void).cxx_destruct;
+- (id)_initWithPredicate:(id)arg1;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDCameraSnapshotIDSRelayReceiver, NSError;
+@class HMDCameraSnapshotIDSRelayReceiver, NSData, NSError;
 
 @protocol HMDCameraSnapshotIDSRelayReceiverDelegate <NSObject>
-- (void)relayReceiver:(HMDCameraSnapshotIDSRelayReceiver *)arg1 didReceiveFile:(NSError *)arg2;
+- (void)relayReceiver:(HMDCameraSnapshotIDSRelayReceiver *)arg1 didReceiveData:(NSData *)arg2 error:(NSError *)arg3;
+- (void)relayReceiverDidAcceptIDSInvitation:(HMDCameraSnapshotIDSRelayReceiver *)arg1;
+- (void)relayReceiverIDSSessionDidStart:(HMDCameraSnapshotIDSRelayReceiver *)arg1;
 @end
 

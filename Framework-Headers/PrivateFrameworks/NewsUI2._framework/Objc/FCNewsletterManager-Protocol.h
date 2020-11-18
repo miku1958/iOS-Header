@@ -6,7 +6,7 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class NSString, NTPBVersionedPersonalizationVector;
+@class NFPromise, NSString, NTPBVersionedPersonalizationVector;
 @protocol FCNewsletterSubscriptionObserver;
 
 @protocol FCNewsletterManager <NSObject>
@@ -21,7 +21,7 @@
 - (void)addObserver:(id<FCNewsletterSubscriptionObserver>)arg1;
 - (BOOL)canSubscribeToNewsletter:(long long)arg1;
 - (void)deletePersonalizationVector;
-- (id)forceUpdateSubscription;
+- (NFPromise *)forceUpdateSubscription;
 - (void)notifyObservers;
 - (void)removeObserver:(id<FCNewsletterSubscriptionObserver>)arg1;
 - (BOOL)shouldSubmitPersonalizationVector;
@@ -31,6 +31,6 @@
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
 - (void)unsubscribe;
 - (void)updateCacheWithNewsletterString:(NSString *)arg1;
-- (id)updateSubscription;
+- (NFPromise *)updateSubscription;
 @end
 

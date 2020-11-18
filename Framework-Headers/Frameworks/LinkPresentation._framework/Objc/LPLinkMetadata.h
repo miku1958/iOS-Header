@@ -9,7 +9,7 @@
 #import <LinkPresentation/NSCopying-Protocol.h>
 #import <LinkPresentation/NSSecureCoding-Protocol.h>
 
-@class LPAudio, LPAudioMetadata, LPIconMetadata, LPImage, LPImageMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSItemProvider, NSMutableArray, NSString, NSURL;
+@class LPAssociatedApplicationMetadata, LPAudio, LPAudioMetadata, LPIconMetadata, LPImage, LPImageMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSItemProvider, NSMutableArray, NSString, NSURL;
 @protocol OS_dispatch_group;
 
 @interface LPLinkMetadata : NSObject <NSCopying, NSSecureCoding>
@@ -46,6 +46,7 @@
     NSArray *_videos;
     NSArray *_streamingVideos;
     NSArray *_audios;
+    LPAssociatedApplicationMetadata *_associatedApplication;
     LPSpecializationMetadata *_specialization;
 }
 
@@ -54,6 +55,7 @@
 @property (copy, nonatomic) NSArray *alternateImages; // @synthesize alternateImages=_alternateImages;
 @property (copy, nonatomic) NSString *appleContentID; // @synthesize appleContentID=_appleContentID;
 @property (copy, nonatomic) NSString *appleSummary; // @synthesize appleSummary=_appleSummary;
+@property (copy, nonatomic) LPAssociatedApplicationMetadata *associatedApplication; // @synthesize associatedApplication=_associatedApplication;
 @property (strong, nonatomic) LPAudio *audio; // @synthesize audio=_audio;
 @property (strong, nonatomic) LPAudioMetadata *audioMetadata; // @synthesize audioMetadata=_audioMetadata;
 @property (copy, nonatomic) NSArray *audios; // @synthesize audios=_audios;

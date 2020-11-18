@@ -11,9 +11,11 @@
 @interface SISchemaClientFlow : PBCodable
 {
     NSString *_clientFlowPayload;
+    BOOL _hasClientFlowPayload;
 }
 
 @property (copy, nonatomic) NSString *clientFlowPayload; // @synthesize clientFlowPayload=_clientFlowPayload;
+@property (nonatomic) BOOL hasClientFlowPayload; // @synthesize hasClientFlowPayload=_hasClientFlowPayload;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

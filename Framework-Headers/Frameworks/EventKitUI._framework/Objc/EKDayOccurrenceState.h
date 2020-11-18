@@ -29,7 +29,7 @@
     double _visibleHeight;
     double _topYBoundaryForText;
     struct CGRect _backgroundRect;
-    struct CGRect _textRect;
+    struct CGRect _estimatedTextFrame;
     struct UIEdgeInsets _padding;
 }
 
@@ -43,6 +43,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *displayColor; // @synthesize displayColor=_displayColor;
 @property (readonly, nonatomic) double enoughHeightForOneLine;
+@property (nonatomic) struct CGRect estimatedTextFrame; // @synthesize estimatedTextFrame=_estimatedTextFrame;
 @property (readonly, nonatomic) unsigned long long fontCompressionDegree;
 @property (readonly, nonatomic) BOOL hasNewTimeProposed;
 @property (readonly) unsigned long long hash;
@@ -59,7 +60,6 @@
 @property (readonly, nonatomic) struct UIEdgeInsets languageAwareInsets;
 @property (readonly, nonatomic) NSString *location;
 @property (readonly, nonatomic) UIColor *locationTextColor;
-@property (nonatomic) struct UIEdgeInsets margin;
 @property (readonly, nonatomic) double minimumNaturalHeightAllText;
 @property (readonly, nonatomic) BOOL needsReply;
 @property (strong, nonatomic) EKEvent *occurrence; // @synthesize occurrence=_occurrence;
@@ -70,7 +70,6 @@
 @property (readonly, nonatomic) UIColor *statusTextColor;
 @property (readonly, nonatomic) UIColor *strikethroughColor;
 @property (readonly) Class superclass;
-@property (nonatomic) struct CGRect textRect; // @synthesize textRect=_textRect;
 @property (readonly, nonatomic) struct CGSize textSpace;
 @property (readonly, nonatomic) NSString *time;
 @property (readonly, nonatomic) UIColor *timeTextColor;

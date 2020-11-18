@@ -6,9 +6,18 @@
 
 #import <ChatKit/CKQLPreviewController.h>
 
-@interface CKQLDetailsPreviewController : CKQLPreviewController
+#import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CKQLDetailsPreviewController : CKQLPreviewController <QLPreviewControllerDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (BOOL)ckCanDismissWhenSuspending;
 

@@ -18,7 +18,6 @@
     NSMutableArray *_bitmaps;
     NSMutableArray *_metrics;
     NSMutableArray *_layerReferences;
-    BOOL _isFPOHint;
     BOOL _isExcludedFromFilter;
     BOOL _isVectorBased;
     long long _templateRenderingMode;
@@ -81,6 +80,7 @@
     unsigned int _standardVectorSize;
     float _baseline;
     float _capHeight;
+    float _templateVersion;
     CDStruct_3c058996 _alignmentRectInsets;
 }
 
@@ -109,7 +109,6 @@
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (strong, nonatomic) CUIPSDGradient *gradient; // @synthesize gradient=_gradient;
 @property (nonatomic) BOOL isFlippable; // @synthesize isFlippable=_isFlippable;
-@property (nonatomic) BOOL isRenditionFPO; // @synthesize isRenditionFPO=_isFPOHint;
 @property (nonatomic) BOOL isTintable; // @synthesize isTintable=_isTintable;
 @property (nonatomic) BOOL isVectorBased; // @synthesize isVectorBased=_isVectorBased;
 @property (readonly, nonatomic) NSArray *layerReferences; // @synthesize layerReferences=_layerReferences;
@@ -138,6 +137,7 @@
 @property (readonly, nonatomic) NSArray *submeshReferences; // @synthesize submeshReferences=_submeshReferences;
 @property long long targetPlatform;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
+@property (nonatomic) float templateVersion; // @synthesize templateVersion=_templateVersion;
 @property (nonatomic) long long textureFormat; // @synthesize textureFormat=_textureFormat;
 @property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
 @property (nonatomic) BOOL textureOpaque; // @synthesize textureOpaque=_textureOpaque;
@@ -149,9 +149,6 @@
 + (void)initialize;
 + (void)setFileEncoding:(int)arg1;
 - (id)CSIRepresentationWithCompression:(BOOL)arg1;
-- (void)_addNodes:(id)arg1 toNodeList:(struct _csigradientdatanode *)arg2;
-- (BOOL)_shouldUseCompactCompressionForBitmap:(id)arg1;
-- (void)_updateCompressionInfoFor:(id)arg1;
 - (void)addBitmap:(id)arg1;
 - (void)addLayerReference:(id)arg1;
 - (void)addMeshReference:(id)arg1;
@@ -160,7 +157,6 @@
 - (void)addSliceRect:(struct CGRect)arg1;
 - (void)addSubmeshReference:(id)arg1;
 - (void)dealloc;
-- (void)formatCSIHeader:(struct _csiheader *)arg1;
 - (id)initWithCanvasSize:(struct CGSize)arg1 sliceCount:(unsigned int)arg2 layout:(short)arg3;
 - (id)initWithColorNamed:(id)arg1 colorSpaceID:(unsigned long long)arg2 components:(id)arg3;
 - (id)initWithColorNamed:(id)arg1 colorSpaceID:(unsigned long long)arg2 components:(id)arg3 linkedToSystemColorWithName:(id)arg4;
@@ -178,17 +174,6 @@
 - (id)initWithTextureForPixelFormat:(long long)arg1;
 - (id)initWithTextureImageWithSize:(struct CGSize)arg1 forPixelFormat:(long long)arg2 cubeMap:(BOOL)arg3;
 - (id)rawData;
-- (unsigned long long)writeBitmap:(id)arg1 toData:(id)arg2 compress:(BOOL)arg3;
-- (unsigned long long)writeColorToData:(id)arg1;
-- (unsigned long long)writeExternalLinkToData:(id)arg1;
-- (unsigned long long)writeGradientToData:(id)arg1;
-- (void)writeHeader:(struct _csiheader *)arg1 toData:(id)arg2;
-- (unsigned long long)writeMultisizeImageSetToData:(id)arg1;
-- (unsigned long long)writeRawDataToData:(id)arg1;
-- (unsigned long long)writeRecognitionObjectToData:(id)arg1;
-- (unsigned long long)writeResourcesToData:(id)arg1;
-- (unsigned long long)writeTextStyleToData:(id)arg1;
-- (unsigned long long)writeTextureToData:(id)arg1;
 
 @end
 

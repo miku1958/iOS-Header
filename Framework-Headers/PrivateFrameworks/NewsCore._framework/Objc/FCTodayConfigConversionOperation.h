@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NSArray, NSDictionary, NTPBTodayConfig;
+@class NSArray, NSDictionary, NSError, NTPBTodayConfig;
 @protocol FCContentContext, FCCoreConfiguration;
 
 @interface FCTodayConfigConversionOperation : FCOperation
@@ -14,22 +14,31 @@
     NSDictionary *_widgetConfiguration;
     id<FCCoreConfiguration> _configuration;
     id<FCContentContext> _context;
-    CDUnknownBlockType _todayConfigCompletionHandler;
-    NTPBTodayConfig *_resultTodayConfig;
+    CDUnknownBlockType _defaultConfigCompletionHandler;
+    CDUnknownBlockType _singleTagConfigCompletionHandler;
+    NTPBTodayConfig *_resultDefaultConfig;
+    NSError *_defaultConfigError;
+    NTPBTodayConfig *_resultSingleTagConfig;
+    NSError *_singleTagConfigError;
     NSArray *_networkEvents;
     NSDictionary *_resultHeldRecordsByType;
 }
 
 @property (copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
+@property (copy, nonatomic) CDUnknownBlockType defaultConfigCompletionHandler; // @synthesize defaultConfigCompletionHandler=_defaultConfigCompletionHandler;
+@property (copy, nonatomic) NSError *defaultConfigError; // @synthesize defaultConfigError=_defaultConfigError;
 @property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
+@property (copy, nonatomic) NTPBTodayConfig *resultDefaultConfig; // @synthesize resultDefaultConfig=_resultDefaultConfig;
 @property (strong, nonatomic) NSDictionary *resultHeldRecordsByType; // @synthesize resultHeldRecordsByType=_resultHeldRecordsByType;
-@property (copy, nonatomic) NTPBTodayConfig *resultTodayConfig; // @synthesize resultTodayConfig=_resultTodayConfig;
-@property (copy, nonatomic) CDUnknownBlockType todayConfigCompletionHandler; // @synthesize todayConfigCompletionHandler=_todayConfigCompletionHandler;
+@property (copy, nonatomic) NTPBTodayConfig *resultSingleTagConfig; // @synthesize resultSingleTagConfig=_resultSingleTagConfig;
+@property (copy, nonatomic) CDUnknownBlockType singleTagConfigCompletionHandler; // @synthesize singleTagConfigCompletionHandler=_singleTagConfigCompletionHandler;
+@property (copy, nonatomic) NSError *singleTagConfigError; // @synthesize singleTagConfigError=_singleTagConfigError;
 @property (strong, nonatomic) NSDictionary *widgetConfiguration; // @synthesize widgetConfiguration=_widgetConfiguration;
 
 - (void).cxx_destruct;
 - (void)_collectRecordIDsReferencedBySectionConfig:(id)arg1 withArticleListIDs:(id)arg2 articleIDs:(id)arg3;
+- (id)_todayConfigWithConfigJSON:(id)arg1 articleListIDs:(id)arg2 articleIDs:(id)arg3 error:(id *)arg4;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

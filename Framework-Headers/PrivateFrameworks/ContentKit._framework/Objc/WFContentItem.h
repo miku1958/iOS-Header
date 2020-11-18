@@ -10,17 +10,17 @@
 #import <ContentKit/WFContentItemClass-Protocol.h>
 #import <ContentKit/WFCopying-Protocol.h>
 
-@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, WFContentSource, WFImage, WFRepresentation, WFType;
+@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, WFContentAttributionSet, WFImage, WFRepresentation, WFType;
 
 @interface WFContentItem : NSObject <WFContentItemClass, WFCopying, NSSecureCoding>
 {
-    WFContentSource *_contentSource;
+    WFContentAttributionSet *_attributionSet;
     NSMutableDictionary *_representationsByType;
     NSMutableDictionary *_subItemsByClass;
     WFType *_internalRepresentationType;
 }
 
-@property (readonly, nonatomic) WFContentSource *contentSource; // @synthesize contentSource=_contentSource;
+@property (readonly, nonatomic) WFContentAttributionSet *attributionSet; // @synthesize attributionSet=_attributionSet;
 @property (readonly, nonatomic) NSExtensionItem *extensionItem;
 @property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) WFRepresentation *internalRepresentation;
@@ -58,20 +58,20 @@
 + (BOOL)hasStringOutput;
 + (BOOL)isAvailableOnPlatform:(long long)arg1;
 + (BOOL)isContentItemSubclass;
-+ (id)itemFromSerializedItem:(id)arg1 withItemClass:(Class)arg2 forType:(id)arg3 nameIfKnown:(id)arg4 sourceName:(id)arg5 contentSource:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
++ (id)itemFromSerializedItem:(id)arg1 withItemClass:(Class)arg2 forType:(id)arg3 nameIfKnown:(id)arg4 sourceName:(id)arg5 attributionSet:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (id)itemWithFile:(id)arg1;
-+ (id)itemWithFile:(id)arg1 contentSource:(id)arg2;
++ (id)itemWithFile:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithObject:(id)arg1;
-+ (id)itemWithObject:(id)arg1 contentSource:(id)arg2;
++ (id)itemWithObject:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithObject:(id)arg1 named:(id)arg2;
-+ (id)itemWithObject:(id)arg1 named:(id)arg2 contentSource:(id)arg3;
++ (id)itemWithObject:(id)arg1 named:(id)arg2 attributionSet:(id)arg3;
 + (id)itemWithRepresentation:(id)arg1;
-+ (id)itemWithRepresentation:(id)arg1 contentSource:(id)arg2;
-+ (id)itemWithRepresentation:(id)arg1 contentSource:(id)arg2 includesDefaultContentSource:(BOOL)arg3;
++ (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2;
++ (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2 includesDefaultAttributionSet:(BOOL)arg3;
 + (id)itemWithRepresentation:(id)arg1 forType:(id)arg2;
-+ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 contentSource:(id)arg3;
-+ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 contentSource:(id)arg3 includesDefaultContentSource:(BOOL)arg4;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3;
++ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(BOOL)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 + (id)localizedFilterDescription;
 + (id)localizedPluralFilterDescription;
 + (id)localizedPluralTypeDescription;
@@ -102,6 +102,7 @@
 - (id)additionalRepresentationsForSerialization;
 - (id)allSupportedItemClasses;
 - (id)allSupportedTypes;
+- (id)allowedClassesForDecodingInternalRepresentations;
 - (BOOL)cachesSupportedTypes;
 - (BOOL)canEncodeWithCoder:(id)arg1;
 - (BOOL)canGenerateIntermediaryRepresentationForItemClass:(Class)arg1;
@@ -112,7 +113,7 @@
 - (void)coerceToItemClasses:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)coercionOptions:(id)arg1 allowCoercionsToItemClass:(Class)arg2;
 - (BOOL)coercionOptions:(id)arg1 allowCoercionsToType:(id)arg2;
-- (id)contentItemByMergingContentSource:(id)arg1;
+- (id)contentItemByMergingAttributionSet:(id)arg1;
 - (id)copyWithName:(id)arg1;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -155,12 +156,12 @@
 - (BOOL)hasStringOutput;
 - (BOOL)includesFileRepresentationInSerializedItem;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 contentSource:(id)arg3;
-- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 contentSource:(id)arg3 includesDefaultContentSource:(BOOL)arg4;
-- (id)initWithRepresentationsByType:(id)arg1 forType:(id)arg2 subItemsByClass:(id)arg3 contentSource:(id)arg4 includesDefaultContentSource:(BOOL)arg5;
+- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3;
+- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(BOOL)arg4;
+- (id)initWithRepresentationsByType:(id)arg1 forType:(id)arg2 subItemsByClass:(id)arg3 attributionSet:(id)arg4 includesDefaultAttributionSet:(BOOL)arg5;
 - (id)intermediaryTypesForCoercionToItemClass:(Class)arg1;
 - (id)internalName;
-- (id)internalRepresentationForCopying;
+- (id)internalRepresentationForCopyingWithName:(id)arg1;
 - (BOOL)isCoercibleToItemClass:(Class)arg1;
 - (BOOL)isCoercibleToItemClasses:(id)arg1;
 - (id)itemProviderForTypes:(id)arg1;

@@ -34,6 +34,7 @@
 - (id)copyWithBuilder:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBuilder:(CDUnknownBlockType)arg1;

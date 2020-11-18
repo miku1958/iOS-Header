@@ -19,7 +19,6 @@
 + (BOOL)supportsBSXPCSecureCoding;
 - (id)bs_encoded;
 - (BOOL)bs_isPlistableType;
-- (BOOL)bs_isXPCObject;
 - (id)bs_secureEncoded;
 - (BOOL)supportsBSXPCSecureCoding;
 @end

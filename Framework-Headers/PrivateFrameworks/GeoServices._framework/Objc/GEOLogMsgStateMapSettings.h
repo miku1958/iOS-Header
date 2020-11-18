@@ -10,10 +10,15 @@
 
 @interface GEOLogMsgStateMapSettings : PBCodable <NSCopying>
 {
+    int _locationType;
     int _navVoiceVolume;
     int _preferredTransportMode;
+    BOOL _avoidBusyRoads;
     BOOL _avoidHighways;
+    BOOL _avoidHills;
+    BOOL _avoidStairs;
     BOOL _avoidTolls;
+    BOOL _eBike;
     BOOL _findMyCarEnabled;
     BOOL _headingEnabled;
     BOOL _labelEnabled;
@@ -21,10 +26,15 @@
     BOOL _speedLimitEnabled;
     BOOL _trafficEnabled;
     struct {
+        unsigned int has_locationType:1;
         unsigned int has_navVoiceVolume:1;
         unsigned int has_preferredTransportMode:1;
+        unsigned int has_avoidBusyRoads:1;
         unsigned int has_avoidHighways:1;
+        unsigned int has_avoidHills:1;
+        unsigned int has_avoidStairs:1;
         unsigned int has_avoidTolls:1;
+        unsigned int has_eBike:1;
         unsigned int has_findMyCarEnabled:1;
         unsigned int has_headingEnabled:1;
         unsigned int has_labelEnabled:1;
@@ -34,14 +44,23 @@
     } _flags;
 }
 
+@property (nonatomic) BOOL avoidBusyRoads;
 @property (nonatomic) BOOL avoidHighways;
+@property (nonatomic) BOOL avoidHills;
+@property (nonatomic) BOOL avoidStairs;
 @property (nonatomic) BOOL avoidTolls;
+@property (nonatomic) BOOL eBike;
 @property (nonatomic) BOOL findMyCarEnabled;
+@property (nonatomic) BOOL hasAvoidBusyRoads;
 @property (nonatomic) BOOL hasAvoidHighways;
+@property (nonatomic) BOOL hasAvoidHills;
+@property (nonatomic) BOOL hasAvoidStairs;
 @property (nonatomic) BOOL hasAvoidTolls;
+@property (nonatomic) BOOL hasEBike;
 @property (nonatomic) BOOL hasFindMyCarEnabled;
 @property (nonatomic) BOOL hasHeadingEnabled;
 @property (nonatomic) BOOL hasLabelEnabled;
+@property (nonatomic) BOOL hasLocationType;
 @property (nonatomic) BOOL hasNavVoiceVolume;
 @property (nonatomic) BOOL hasPauseSpokenAudioEnabled;
 @property (nonatomic) BOOL hasPreferredTransportMode;
@@ -49,6 +68,7 @@
 @property (nonatomic) BOOL hasTrafficEnabled;
 @property (nonatomic) BOOL headingEnabled;
 @property (nonatomic) BOOL labelEnabled;
+@property (nonatomic) int locationType;
 @property (nonatomic) int navVoiceVolume;
 @property (nonatomic) BOOL pauseSpokenAudioEnabled;
 @property (nonatomic) int preferredTransportMode;
@@ -56,6 +76,7 @@
 @property (nonatomic) BOOL trafficEnabled;
 
 + (BOOL)isValid:(id)arg1;
+- (int)StringAsLocationType:(id)arg1;
 - (int)StringAsNavVoiceVolume:(id)arg1;
 - (int)StringAsPreferredTransportMode:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -63,7 +84,11 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
+- (id)locationTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)navVoiceVolumeAsString:(int)arg1;
 - (id)preferredTransportModeAsString:(int)arg1;

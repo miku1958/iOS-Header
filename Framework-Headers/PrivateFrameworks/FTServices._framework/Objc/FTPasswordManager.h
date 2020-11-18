@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <FTServices/ACMonitoredAccountStoreDelegateProtocol-Protocol.h>
 #import <FTServices/FTPasswordManager-Protocol.h>
 
-@class ACAccountStore, IMUserNotificationCenter, NSMutableSet, NSString;
+@class ACAccountStore, IMUserNotificationCenter, NSMutableSet, NSString, _FTPasswordManagerCachedAuthTokenInfo;
 
-@interface FTPasswordManager : NSObject <FTPasswordManager>
+@interface FTPasswordManager : NSObject <ACMonitoredAccountStoreDelegateProtocol, FTPasswordManager>
 {
     NSMutableSet *_runningQueries;
     ACAccountStore *_accountStore;
     IMUserNotificationCenter *_userNotificationCenter;
+    _FTPasswordManagerCachedAuthTokenInfo *_cachedAuthTokenInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -43,9 +45,11 @@
 - (void)_updateStatus:(id)arg1 onAccount:(id)arg2;
 - (BOOL)_usernameHasCorrespondingIdMSAccount:(id)arg1;
 - (id)acAccountWithProfileID:(id)arg1 username:(id)arg2 accountStore:(id)arg3;
+- (void)accountCredentialChanged:(id)arg1;
+- (void)accountWasRemoved:(id)arg1;
 - (double)authTokenGracePeriod;
 - (void)cancelRequestID:(id)arg1 serviceIdentifier:(id)arg2;
-- (void)cleanUpAccountsBasedOnInUseUsernames:(id)arg1 profileIDs:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)cleanUpAccountsBasedOnInUseUsernamesBlock:(CDUnknownBlockType)arg1 profileIDBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)cleanUpAccountsWithUsername:(id)arg1 orProfileID:(id)arg2 basedOnInUseUsernames:(id)arg3 profileIDs:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)fetchAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 outRequestID:(id *)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)fetchPasswordForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 outRequestID:(id *)arg4 completionBlock:(CDUnknownBlockType)arg5;
@@ -56,6 +60,7 @@
 - (id)profileIDForACAccount:(id)arg1;
 - (void)removeAuthTokenAllowingGracePeriodForProfileID:(id)arg1 username:(id)arg2;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 failIfNotSilent:(BOOL)arg6 outRequestID:(id *)arg7 completionBlock:(CDUnknownBlockType)arg8;
+- (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 forceRenewal:(BOOL)arg6 failIfNotSilent:(BOOL)arg7 outRequestID:(id *)arg8 completionBlock:(CDUnknownBlockType)arg9;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)requestPasswordForUsername:(id)arg1 service:(id)arg2 badPassword:(BOOL)arg3 showForgotPassword:(BOOL)arg4 shouldRememberPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)setAccountStatus:(id)arg1 forProfileID:(id)arg2 username:(id)arg3 service:(id)arg4;

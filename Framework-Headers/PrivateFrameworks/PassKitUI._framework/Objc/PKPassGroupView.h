@@ -55,6 +55,7 @@
     BOOL _modallyPresented;
     BOOL _loaned;
     BOOL _paused;
+    BOOL _reduceMotionEnabled;
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
@@ -72,10 +73,11 @@
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, nonatomic) struct UIOffset offsetForFrontmostPassWhileStacked;
 @property (readonly, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
-@property (nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
+@property (weak, nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
 @property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
+@property (nonatomic, getter=isReducedMotionEnabled) BOOL reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -86,6 +88,7 @@
 - (struct CGSize)_contentSize;
 - (long long)_defaultContentModeForIndex:(unsigned long long)arg1;
 - (void)_endTrackingAnimation;
+- (void)_enumerateIndicesInFannedOrderWithHandler:(CDUnknownBlockType)arg1;
 - (void)_enumerateIndicesInStackOrderWithHandler:(CDUnknownBlockType)arg1;
 - (void)_enumeratePassViewsInStackOrderWithHandler:(CDUnknownBlockType)arg1;
 - (void)_handleLongPress:(id)arg1;
@@ -96,6 +99,7 @@
 - (void)_pageControlChanged:(id)arg1;
 - (struct CGRect)_pagingFrameForCardView:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_preparePageControlForReuse;
+- (struct _NSRange)_rangeOfFannedIndices;
 - (struct _NSRange)_rangeOfPagingIndices;
 - (struct _NSRange)_rangeOfVisibleIndices;
 - (void)_removeDelayedAnimationTrackerWithKey:(id)arg1;
@@ -136,6 +140,8 @@
 - (void)passView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
 - (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
 - (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
+- (void)passViewDidResize:(id)arg1 animated:(BOOL)arg2;
+- (void)passViewExpandButtonTapped:(id)arg1;
 - (id)passViewForIndex:(unsigned long long)arg1;
 - (void)passViewTapped:(id)arg1;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -150,6 +156,7 @@
 - (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2;
+- (void)setPassViewExpanded:(BOOL)arg1 forPass:(id)arg2 animated:(BOOL)arg3;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;

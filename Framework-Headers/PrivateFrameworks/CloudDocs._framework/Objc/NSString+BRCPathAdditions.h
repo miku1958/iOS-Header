@@ -12,6 +12,7 @@
 + (id)br_pathWithDeviceID:(int)arg1 fileID:(unsigned long long)arg2;
 + (id)br_pathWithFileSystemRepresentation:(const char *)arg1;
 + (id)br_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(BOOL)arg4;
+- (id)_br_nameWithAddedExtension:(id)arg1 makeDotFile:(BOOL)arg2;
 - (long long)br_compareToStringForHFS:(id)arg1 isCaseSensitive:(BOOL)arg2;
 - (id)br_displayFilenameWithExtensionHidden:(BOOL)arg1;
 - (const char *)br_fileSystemRepresentation;

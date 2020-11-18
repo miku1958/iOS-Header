@@ -34,6 +34,9 @@ __attribute__((visibility("hidden")))
     BOOL useNewPLCalc;
     double firstDegradedMeasure;
     double videoDegradedThreshold;
+    double videoImprovedThreshold;
+    double videoMinFrameRate;
+    BOOL shouldUseExitHysteresis;
     unsigned char u8Version;
     NSString *_frameworkVersion;
     NSString *_osVersion;

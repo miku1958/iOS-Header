@@ -8,36 +8,36 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface NTPBTodayConfig : PBCodable <NSCopying>
 {
-    unsigned long long _backgroundForYouMinimumUpdateInterval;
-    unsigned long long _backgroundTrendingByParsecMinimumUpdateInterval;
-    unsigned long long _foregroundForYouMinimumUpdateInterval;
-    unsigned long long _foregroundTrendingByParsecMinimumUpdateInterval;
-    unsigned long long _widgetSlotsLimit;
+    long long _widgetSystemReloadInterval;
+    long long _widgetSystemReloadJitterMax;
+    NSString *_audioIndicatorColor;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSMutableArray *_todayQueueConfigs;
+    NSString *_widgetIdentifier;
     struct {
-        unsigned int backgroundForYouMinimumUpdateInterval:1;
-        unsigned int backgroundTrendingByParsecMinimumUpdateInterval:1;
-        unsigned int foregroundForYouMinimumUpdateInterval:1;
-        unsigned int foregroundTrendingByParsecMinimumUpdateInterval:1;
-        unsigned int widgetSlotsLimit:1;
+        unsigned int widgetSystemReloadInterval:1;
+        unsigned int widgetSystemReloadJitterMax:1;
     } _has;
 }
 
-@property (nonatomic) unsigned long long backgroundForYouMinimumUpdateInterval; // @synthesize backgroundForYouMinimumUpdateInterval=_backgroundForYouMinimumUpdateInterval;
-@property (nonatomic) unsigned long long backgroundTrendingByParsecMinimumUpdateInterval; // @synthesize backgroundTrendingByParsecMinimumUpdateInterval=_backgroundTrendingByParsecMinimumUpdateInterval;
-@property (nonatomic) unsigned long long foregroundForYouMinimumUpdateInterval; // @synthesize foregroundForYouMinimumUpdateInterval=_foregroundForYouMinimumUpdateInterval;
-@property (nonatomic) unsigned long long foregroundTrendingByParsecMinimumUpdateInterval; // @synthesize foregroundTrendingByParsecMinimumUpdateInterval=_foregroundTrendingByParsecMinimumUpdateInterval;
-@property (nonatomic) BOOL hasBackgroundForYouMinimumUpdateInterval;
-@property (nonatomic) BOOL hasBackgroundTrendingByParsecMinimumUpdateInterval;
-@property (nonatomic) BOOL hasForegroundForYouMinimumUpdateInterval;
-@property (nonatomic) BOOL hasForegroundTrendingByParsecMinimumUpdateInterval;
-@property (nonatomic) BOOL hasWidgetSlotsLimit;
+@property (strong, nonatomic) NSString *audioIndicatorColor; // @synthesize audioIndicatorColor=_audioIndicatorColor;
+@property (strong, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property (strong, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
+@property (readonly, nonatomic) BOOL hasAudioIndicatorColor;
+@property (readonly, nonatomic) BOOL hasBackgroundColorDark;
+@property (readonly, nonatomic) BOOL hasBackgroundColorLight;
+@property (readonly, nonatomic) BOOL hasWidgetIdentifier;
+@property (nonatomic) BOOL hasWidgetSystemReloadInterval;
+@property (nonatomic) BOOL hasWidgetSystemReloadJitterMax;
 @property (strong, nonatomic) NSMutableArray *todayQueueConfigs; // @synthesize todayQueueConfigs=_todayQueueConfigs;
-@property (nonatomic) unsigned long long widgetSlotsLimit; // @synthesize widgetSlotsLimit=_widgetSlotsLimit;
+@property (strong, nonatomic) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
+@property (nonatomic) long long widgetSystemReloadInterval; // @synthesize widgetSystemReloadInterval=_widgetSystemReloadInterval;
+@property (nonatomic) long long widgetSystemReloadJitterMax; // @synthesize widgetSystemReloadJitterMax=_widgetSystemReloadJitterMax;
 
 + (Class)todayQueueConfigsType;
 - (void)addTodayQueueConfigs:(id)arg1;

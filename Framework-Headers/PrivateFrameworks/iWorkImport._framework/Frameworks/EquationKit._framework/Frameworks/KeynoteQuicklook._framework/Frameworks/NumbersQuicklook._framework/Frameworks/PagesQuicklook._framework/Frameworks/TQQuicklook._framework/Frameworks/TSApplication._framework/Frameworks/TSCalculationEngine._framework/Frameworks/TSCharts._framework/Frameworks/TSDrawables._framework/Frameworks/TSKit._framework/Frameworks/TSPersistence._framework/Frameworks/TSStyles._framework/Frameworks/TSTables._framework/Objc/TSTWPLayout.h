@@ -39,10 +39,14 @@
 @property (strong, nonatomic) TSWPParagraphStyle *cachedTextStyle; // @synthesize cachedTextStyle=_cachedTextStyle;
 @property (nonatomic) int cachedVerticalAlignment; // @synthesize cachedVerticalAlignment=_cachedVerticalAlignment;
 
-- (void)dealloc;
-- (id)initWithStorage:(id)arg1 parentLayout:(id)arg2 cellID:(struct TSUCellCoord)arg3 frame:(struct CGRect)arg4;
+- (void).cxx_destruct;
+- (id)initWithStorage:(id)arg1 cellID:(struct TSUCellCoord)arg2 frame:(struct CGRect)arg3;
 - (void)invalidate;
 - (BOOL)invalidateForPageCountChange;
+- (void)invalidatePosition;
+- (void)invalidateSize;
+- (BOOL)isDynamicallyChangingAvailableSpaceForContainedChild;
+- (Class)repClassOverride;
 - (void)validate;
 
 @end

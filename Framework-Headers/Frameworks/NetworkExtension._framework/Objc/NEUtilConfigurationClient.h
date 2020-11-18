@@ -8,7 +8,7 @@
 
 #import <NetworkExtension/NEConfigurationCommandHandling-Protocol.h>
 
-@class NEConfiguration, NEConfigurationManager, NEDNSProxyProviderProtocol, NEFilterProviderConfiguration, NSArray, NSMutableArray, NSString;
+@class NEAppPush, NEConfiguration, NEConfigurationManager, NEDNSProxyProviderProtocol, NEDNSSettingsBundle, NEFilterProviderConfiguration, NSArray, NSMutableArray, NSString;
 
 @interface NEUtilConfigurationClient : NSObject <NEConfigurationCommandHandling>
 {
@@ -21,6 +21,7 @@
     NEConfiguration *_currentConfiguration;
 }
 
+@property (readonly) NEAppPush *appPush;
 @property (readonly) NSString *clientName; // @synthesize clientName=_clientName;
 @property (strong) NSMutableArray *createdConfigurations; // @synthesize createdConfigurations=_createdConfigurations;
 @property (strong) NEConfiguration *currentConfiguration; // @synthesize currentConfiguration=_currentConfiguration;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disconnectOnDemandEnabled;
 @property (readonly) NEDNSProxyProviderProtocol *dnsProxyConfiguration;
+@property (readonly) NEDNSSettingsBundle *dnsSettingsBundle;
 @property BOOL enabled;
 @property (readonly) NEFilterProviderConfiguration *filterConfiguration;
 @property (readonly) unsigned long long hash;
@@ -37,6 +39,7 @@
 @property (readonly) NEConfigurationManager *manager; // @synthesize manager=_manager;
 @property BOOL onDemandEnabled;
 @property (copy) NSArray *onDemandRules;
+@property BOOL onDemandUserOverrideDisabled;
 @property (readonly) Class superclass;
 
 + (id)allClients;
@@ -47,7 +50,6 @@
 - (void)addIdentityProperties:(id)arg1 withDomain:(long long)arg2;
 - (BOOL)addOnDemandRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)addPathRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
-- (BOOL)addPersonalDNSWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)createConfigurationWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (void)dealloc;
 - (id)decodeConfigurationWithIdentifier:(id)arg1 andDecoder:(id)arg2;
@@ -64,9 +66,10 @@
 - (BOOL)removeAppRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)removeOnDemandRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)removePathRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
-- (BOOL)removePersonalDNSWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)setAlwaysOnParameters:(id)arg1 errorStr:(id *)arg2;
+- (BOOL)setAppPushParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)setCommonParameters:(id)arg1 errorStr:(id *)arg2;
+- (BOOL)setDNSParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)setDNSProxyWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)setFilterPluginWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)setIPSecParameters:(id)arg1 errorStr:(id *)arg2;
@@ -80,7 +83,9 @@
 - (BOOL)setSharedSecretWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)swapConfigurationTypeWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)unsetAlwaysOnParameters:(id)arg1 errorStr:(id *)arg2;
+- (BOOL)unsetAppPushParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)unsetCommonParameters:(id)arg1 errorStr:(id *)arg2;
+- (BOOL)unsetDNSParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)unsetDNSProxyWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)unsetFilterPluginParameters:(id)arg1 errorStr:(id *)arg2;
 - (BOOL)unsetIPSecParameters:(id)arg1 errorStr:(id *)arg2;

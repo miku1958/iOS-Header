@@ -8,11 +8,12 @@
 #import <VisualVoicemail/VMGreetingManagerXPCServer-Protocol.h>
 #import <VisualVoicemail/VMMessageManagerXPCServer-Protocol.h>
 
-@class NSArray, NSProgress;
+@class NSArray, NSProgress, NSString;
 
 @protocol VMServerXPCProtocol <VMAccountManagerXPCServer, VMGreetingManagerXPCServer, VMMessageManagerXPCServer>
 - (void)allVoicemails:(void (^)(NSOrderedSet *))arg1;
 - (void)obliterate;
+- (void)remapAccount:(NSString *)arg1 toAccount:(NSString *)arg2;
 - (void)removeAllVoicemails;
 - (void)removeVoicemailFromTrashWithIdentifier:(long long)arg1;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;

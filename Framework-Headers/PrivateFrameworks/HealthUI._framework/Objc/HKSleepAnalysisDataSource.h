@@ -16,9 +16,9 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_mappingFunctionForConsistencyChartWithContext:(id)arg1;
 - (CDUnknownBlockType)_mappingFunctionForDurationChartWithContext:(id)arg1;
-- (CDUnknownBlockType)_mappingFunctionForEfficiencyChartWithContext:(id)arg1;
 - (CDUnknownBlockType)mappingFunctionForContext:(id)arg1;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 
 @end
 

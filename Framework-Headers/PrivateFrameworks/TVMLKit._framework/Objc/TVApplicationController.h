@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
+#import <TVMLKit/AMSUIDynamicViewControllerDelegate-Protocol.h>
 #import <TVMLKit/IKAppContextDelegate-Protocol.h>
+#import <TVMLKit/IKAppContextDelegatePrivate-Protocol.h>
 #import <TVMLKit/IKAppContextInspectorDelegate-Protocol.h>
 #import <TVMLKit/IKAppDeviceConfig-Protocol.h>
 #import <TVMLKit/_TVAppNavigationControllerDelegate-Protocol.h>
@@ -14,7 +16,7 @@
 @class IKAppContext, IKAppDataStorage, NSDate, NSDictionary, NSString, NSXPCListener, TVApplicationControllerContext, UINavigationController, UIView, UIViewController, UIWindow, _TVApplicationInspector, _TVMLKitApplication;
 @protocol TVAppRootViewController, TVApplicationControllerDelegate, UITraitEnvironment;
 
-@interface TVApplicationController : NSObject <IKAppContextInspectorDelegate, IKAppDeviceConfig, _TVAppNavigationControllerDelegate, IKAppContextDelegate>
+@interface TVApplicationController : NSObject <IKAppContextInspectorDelegate, IKAppDeviceConfig, IKAppContextDelegatePrivate, AMSUIDynamicViewControllerDelegate, _TVAppNavigationControllerDelegate, IKAppContextDelegate>
 {
     IKAppContext *_appContext;
     _TVMLKitApplication *_application;
@@ -35,6 +37,7 @@
     UIWindow *_window;
     TVApplicationControllerContext *_context;
     id<TVApplicationControllerDelegate> _delegate;
+    CDUnknownBlockType _dynamicUICompletion;
     _TVApplicationInspector *_applicationInspector;
     id<UITraitEnvironment> _keyTraitEnvironment;
 }
@@ -46,6 +49,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<TVApplicationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType dynamicUICompletion; // @synthesize dynamicUICompletion=_dynamicUICompletion;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<UITraitEnvironment> keyTraitEnvironment; // @synthesize keyTraitEnvironment=_keyTraitEnvironment;
 @property (readonly, nonatomic) UINavigationController *navigationController;
@@ -80,6 +84,8 @@
 - (BOOL)appContext:(id)arg1 highlightViewForElement:(id)arg2 contentColor:(id)arg3 paddingColor:(id)arg4 borderColor:(id)arg5 marginColor:(id)arg6;
 - (BOOL)appContext:(id)arg1 highlightViewsForElements:(id)arg2 contentColor:(id)arg3 paddingColor:(id)arg4 borderColor:(id)arg5 marginColor:(id)arg6;
 - (void)appContext:(id)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(id)arg3;
+- (void)appContext:(id)arg1 openDynamicUIURL:(id)arg2 metricsOverlay:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)appContext:(id)arg1 openMarketingItem:(id)arg2 metricsOverlay:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)appContext:(id)arg1 validateDOMDocument:(id)arg2 inContext:(id)arg3 error:(id *)arg4;
 - (BOOL)appNavigationController:(id)arg1 shouldDismissShroudForDocument:(id)arg2;
 - (BOOL)appNavigationController:(id)arg1 shouldIgnoreDismissalForViewController:(id)arg2;
@@ -89,6 +95,7 @@
 - (BOOL)cancelHighlightViewForAppContext:(id)arg1;
 - (void)dealloc;
 - (id)deviceConfigForContext:(id)arg1;
+- (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
 - (void)evaluateInJavaScriptContext:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithContext:(id)arg1 window:(id)arg2 delegate:(id)arg3;

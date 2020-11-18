@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *siriKitIntent;
     MISSING_TYPE *confirmationState;
+    MISSING_TYPE *parameterMetadata;
     MISSING_TYPE *appResolutionStateProviding;
 }
 

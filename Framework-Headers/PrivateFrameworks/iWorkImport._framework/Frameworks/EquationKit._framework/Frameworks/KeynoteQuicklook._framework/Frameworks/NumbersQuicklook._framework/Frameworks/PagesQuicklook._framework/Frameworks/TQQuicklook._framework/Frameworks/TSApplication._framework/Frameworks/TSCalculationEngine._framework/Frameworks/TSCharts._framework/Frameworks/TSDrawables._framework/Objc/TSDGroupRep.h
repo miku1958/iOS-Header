@@ -8,20 +8,25 @@
 
 #import <TSDrawables/TSDMagicMoveMatching-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSOrderedSet;
 
 @interface TSDGroupRep : TSDContainerRep <TSDMagicMoveMatching>
 {
     struct CGRect mLastBoundsForStandardKnobs;
+    NSOrderedSet *mCachedGroupedChildReps;
 }
 
 @property (readonly, nonatomic) NSArray *allRepsContainedInGroup;
 
+- (void).cxx_destruct;
 - (struct CGRect)clipRect;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (struct CGRect)frameInUnscaledCanvas;
+- (struct CGRect)frameInUnscaledCanvasForMarqueeSelecting;
 - (id)p_groupInfo;
+- (id)p_groupedChildReps;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
+- (void)updateChildrenFromLayout;
 - (void)updateFromLayout;
 
 @end

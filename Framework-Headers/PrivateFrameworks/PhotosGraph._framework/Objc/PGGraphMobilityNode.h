@@ -4,14 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphPropertylessNode.h>
 
-@interface PGGraphMobilityNode : PGGraphNode
+@class NSString;
+
+@interface PGGraphMobilityNode : PGGraphPropertylessNode
 {
+    NSString *_label;
 }
 
 @property (readonly, nonatomic) unsigned long long mobilityType;
 
++ (unsigned long long)mobilityTypeForMobilityLabel:(id)arg1;
+- (void).cxx_destruct;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
 
 @end
 

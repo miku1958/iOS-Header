@@ -6,13 +6,16 @@
 
 #import <VideosUI/VUIListCollectionViewCell.h>
 
-@class VUIImageView, VUILabel, VUISeparatorView;
+@class NSString, VUIImageView, VUILabel, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryMenuItemViewCell : VUIListCollectionViewCell
 {
     VUIImageView *_imageView;
     BOOL _hideChevron;
+    BOOL _shouldAppearAsHeader;
+    NSString *_title;
+    NSString *_imageName;
     VUILabel *_titleLabel;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
@@ -20,6 +23,9 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (nonatomic) BOOL hideChevron; // @synthesize hideChevron=_hideChevron;
+@property (strong, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property (nonatomic) BOOL shouldAppearAsHeader; // @synthesize shouldAppearAsHeader=_shouldAppearAsHeader;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 

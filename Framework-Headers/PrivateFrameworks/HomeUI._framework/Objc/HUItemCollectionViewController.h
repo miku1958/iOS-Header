@@ -11,13 +11,15 @@
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 
 @class HFItem, HFItemManager, NSHashTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
-@interface HUItemCollectionViewController : HUCollectionViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
+@interface HUItemCollectionViewController : HUCollectionViewController <HFExecutionEnvironmentObserver, UICollectionViewDataSourcePrefetching, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     BOOL _wantsPreferredContentSize;
+    BOOL _suppressCollectionViewUpdatesForReorderCommit;
     BOOL _hasFinishedInitialLoad;
     BOOL _viewVisible;
     BOOL _visibilityUpdatesEnabled;
@@ -26,6 +28,7 @@
     NSMutableArray *_foregroundUpdateFutures;
     NSMutableArray *_viewVisibleFutures;
     id<NACancelable> _deferredVisibilityUpdate;
+    id<NACancelable> _iconPreloadCancelable;
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
 }
@@ -39,9 +42,11 @@
 @property (nonatomic) BOOL hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HFItem *hu_presentedItem;
+@property (strong, nonatomic) id<NACancelable> iconPreloadCancelable; // @synthesize iconPreloadCancelable=_iconPreloadCancelable;
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressCollectionViewUpdatesForReorderCommit; // @synthesize suppressCollectionViewUpdatesForReorderCommit=_suppressCollectionViewUpdatesForReorderCommit;
 @property (nonatomic, getter=isViewVisible) BOOL viewVisible; // @synthesize viewVisible=_viewVisible;
 @property (readonly, nonatomic) NSMutableArray *viewVisibleFutures; // @synthesize viewVisibleFutures=_viewVisibleFutures;
 @property (nonatomic) BOOL visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
@@ -49,6 +54,8 @@
 
 + (unsigned long long)updateMode;
 - (void).cxx_destruct;
+- (void)_cancelIconPreload;
+- (void)_preloadIconsIfNeeded;
 - (void)_updateTitle;
 - (BOOL)automaticallyUpdatesViewControllerTitle;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
@@ -56,12 +63,13 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (id)hu_preloadContent;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
 - (BOOL)isLayoutDependentOnItemState;
-- (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
+- (void)itemManager:(id)arg1 didChangeHome:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didInsertItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didInsertSections:(id)arg2;

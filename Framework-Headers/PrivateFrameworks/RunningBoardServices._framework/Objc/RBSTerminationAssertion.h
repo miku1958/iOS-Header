@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, RBSAssertion, RBSProcessMonitor, RBSTarget, RBSTerminateContext;
+@class NSHashTable, RBSAssertion, RBSProcessMonitor, RBSProcessPredicate, RBSTerminateContext;
+@protocol RBSServiceLocalProtocol;
 
 @interface RBSTerminationAssertion : NSObject
 {
@@ -14,7 +15,8 @@
     RBSAssertion *_assertion;
     RBSProcessMonitor *_monitor;
     RBSTerminateContext *_terminateContext;
-    RBSTarget *_target;
+    RBSProcessPredicate *_predicate;
+    id<RBSServiceLocalProtocol> _service;
     unsigned long long _state;
     BOOL _processExists;
     NSHashTable *_observers;
@@ -24,10 +26,10 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 - (void).cxx_destruct;
-- (void)_notifyObserversOfProcessExit;
 - (BOOL)acquireWithError:(out id *)arg1;
 - (void)addObserver:(id)arg1;
-- (id)explanation;
+- (id)initWithPredicate:(id)arg1 context:(id)arg2;
+- (id)initWithPredicate:(id)arg1 context:(id)arg2 service:(id)arg3;
 - (id)initWithTarget:(id)arg1 context:(id)arg2;
 - (void)invalidate;
 - (BOOL)invalidateWithError:(out id *)arg1;

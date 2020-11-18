@@ -11,7 +11,7 @@
 #import <HelpKit/HLPHelpTopicViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPReachabilityManagerDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPReachabilityManager, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
 @protocol HLPHelpViewControllerDelegate;
 
 @interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
@@ -20,12 +20,10 @@
     BOOL _showingHelpTopic;
     BOOL _shouldDismissWelcomeTopic;
     NSDictionary *_context;
-    NSString *_helpBookBasePath;
     NSString *_helpbookVersion;
     UIBarButtonItem *_doneBarButtonItem;
     NSLayoutConstraint *_loadingViewTopConstraint;
     UIView *_fullBookViewSeparator;
-    HLPHelpUsageController *_usageController;
     HLPHelpTopicViewController *_topicViewController;
     BOOL _hideDoneButton;
     BOOL _displayHelpTopicsOnly;
@@ -41,6 +39,7 @@
     NSString *_selectedHelpTopicName;
     NSMutableDictionary *_localHelpBookNameIDMap;
     NSURL *_helpBookURL;
+    NSString *_helpBookBasePath;
     HLPHelpLocaleController *_localeListController;
     HLPHelpBookController *_helpBookController;
     HLPReachabilityManager *_reachabilityManager;
@@ -53,6 +52,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displayHelpTopicsOnly; // @synthesize displayHelpTopicsOnly=_displayHelpTopicsOnly;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *helpBookBasePath; // @synthesize helpBookBasePath=_helpBookBasePath;
 @property (strong, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
 @property (strong, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property (nonatomic) BOOL hideDoneButton; // @synthesize hideDoneButton=_hideDoneButton;
@@ -81,6 +81,8 @@
 - (void).cxx_destruct;
 - (void)_setContext:(id)arg1;
 - (void)_setFullBookView:(BOOL)arg1;
+- (void)_showHelpTopicItem:(id)arg1 anchor:(id)arg2 animate:(BOOL)arg3;
+- (void)_showWithLoadInfo:(id)arg1 animate:(BOOL)arg2;
 - (id)currentHelpTopicItemForTableOfContentViewController:(id)arg1;
 - (void)dealloc;
 - (id)deviceFamily;
@@ -89,6 +91,7 @@
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 selectedHelpTopicItem:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 topicLoaded:(id)arg2;
+- (void)helpTopicViewController:(id)arg1 traitCollectionChanged:(id)arg2;
 - (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(id)arg1;
 - (void)helpTopicViewControllerDoneButtonTapped:(id)arg1;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
@@ -104,12 +107,12 @@
 - (void)setupTableContentViewController;
 - (void)setupTopicViewController;
 - (void)showHelpBookInfo:(id)arg1;
-- (void)showHelpTopicItem:(id)arg1 anchor:(id)arg2 animate:(BOOL)arg3;
 - (void)showMessageForError:(id)arg1;
 - (void)showTopicView;
 - (void)tableOfContentViewController:(id)arg1 showHelpTopicItem:(id)arg2;
 - (void)tableOfContentViewControllerShowHelpBookInfo:(id)arg1;
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
+- (void)traitCollectionChangedFrom:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCacheControllerToLanguageCode:(id)arg1;
 - (void)updateChildViewConstraints;

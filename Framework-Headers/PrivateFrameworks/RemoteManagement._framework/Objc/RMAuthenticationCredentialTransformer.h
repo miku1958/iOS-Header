@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)allowedTopLevelClasses;
-+ (void)load;
 
 @end
 

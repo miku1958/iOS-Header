@@ -6,20 +6,26 @@
 
 #import <TVPlayback/TVPPlayer.h>
 
+@class NWPathEvaluator;
+
 __attribute__((visibility("hidden")))
 @interface VUIPlayer : TVPPlayer
 {
+    NWPathEvaluator *_pathEvaluator;
 }
+
+@property (strong, nonatomic) NWPathEvaluator *pathEvaluator; // @synthesize pathEvaluator=_pathEvaluator;
 
 + (void)initialize;
 + (id)savedPreferredAudioLanguageCode;
 + (void)setSavedPreferredAudioLanguageCode:(id)arg1;
+- (void).cxx_destruct;
 - (void)_configurePlayerForCurrentNetworkSettingsAndMediaItem;
 - (void)_currentMediaItemDidChange:(id)arg1;
-- (void)_networkConfigurationDidChange:(id)arg1;
 - (void)_videoPlaybackSettingsDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

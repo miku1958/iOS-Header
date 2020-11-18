@@ -15,7 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityElementStoredUserLabel;
 - (BOOL)_accessibilitySavePhotoLabel:(id)arg1;
+- (BOOL)_accessibilitySkipImageTraitDescription;
 - (id)_axPHAsset;
+- (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

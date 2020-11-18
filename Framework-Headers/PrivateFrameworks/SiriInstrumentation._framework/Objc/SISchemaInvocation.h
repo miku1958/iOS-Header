@@ -6,19 +6,33 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaViewContainer;
+@class NSData, SISchemaCarPlayInvocationContext, SISchemaViewContainer;
 
 @interface SISchemaInvocation : PBCodable
 {
     int _invocationAction;
     int _invocationSource;
     SISchemaViewContainer *_viewContainer;
+    SISchemaCarPlayInvocationContext *_carPlayInvocationContext;
+    struct {
+        unsigned int invocationAction:1;
+        unsigned int invocationSource:1;
+    } _has;
+    BOOL _hasViewContainer;
+    BOOL _hasCarPlayInvocationContext;
+    unsigned long long _whichInvocationcontext;
 }
 
+@property (strong, nonatomic) SISchemaCarPlayInvocationContext *carPlayInvocationContext; // @synthesize carPlayInvocationContext=_carPlayInvocationContext;
+@property (nonatomic) BOOL hasCarPlayInvocationContext; // @synthesize hasCarPlayInvocationContext=_hasCarPlayInvocationContext;
+@property (nonatomic) BOOL hasInvocationAction;
+@property (nonatomic) BOOL hasInvocationSource;
+@property (nonatomic) BOOL hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
 @property (nonatomic) int invocationAction; // @synthesize invocationAction=_invocationAction;
 @property (nonatomic) int invocationSource; // @synthesize invocationSource=_invocationSource;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
+@property (readonly, nonatomic) unsigned long long whichInvocationcontext; // @synthesize whichInvocationcontext=_whichInvocationcontext;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

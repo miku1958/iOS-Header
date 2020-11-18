@@ -12,7 +12,7 @@
     unsigned long long _pauseCount;
 }
 
-- (void)performAction:(unsigned long long)arg1;
+- (void)performResponse:(unsigned long long)arg1;
 
 @end
 

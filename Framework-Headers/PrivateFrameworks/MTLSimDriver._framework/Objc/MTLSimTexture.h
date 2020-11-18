@@ -11,7 +11,7 @@
 #import <MTLSimDriver/MTLTexture-Protocol.h>
 #import <MTLSimDriver/MTLTextureImplementation-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLSimBuffer, NSString;
+@class MTLSimBuffer, NSString;
 @protocol MTLBuffer, MTLDevice, MTLHeap, MTLResource, MTLTexture;
 
 __attribute__((visibility("hidden")))
@@ -62,7 +62,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) id<MTLBuffer> buffer; // @dynamic buffer;
 @property (readonly) unsigned long long bufferBytesPerRow;
 @property (readonly) unsigned long long bufferOffset; // @dynamic bufferOffset;
-@property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) long long compressionFeedback; // @dynamic compressionFeedback;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -73,6 +72,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) id<MTLDevice> device;
 @property (readonly) unsigned long long firstMipmapInTail; // @synthesize firstMipmapInTail=_firstMipmapInTail;
 @property (readonly, getter=isFramebufferOnly) BOOL framebufferOnly; // @synthesize framebufferOnly=_framebufferOnly;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hazardTrackingMode;
 @property (readonly) id<MTLHeap> heap;
@@ -91,14 +91,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) id<MTLTexture> parentTexture; // @dynamic parentTexture;
 @property (readonly) unsigned long long pixelFormat;
 @property (readonly) unsigned long long protectionOptions;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long resourceOptions;
-@property (readonly) unsigned int resourceRef;
 @property int responsibleProcess;
 @property (readonly) id<MTLResource> rootResource; // @synthesize rootResource;
 @property (readonly) unsigned long long rotation; // @synthesize rotation;
 @property (readonly) unsigned long long sampleCount;
-@property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
+@property (readonly) unsigned int serializerResourceRef;
 @property (readonly) unsigned long long sparseSurfaceDefaultValue;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;

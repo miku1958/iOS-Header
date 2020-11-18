@@ -15,14 +15,12 @@
 @interface _INPBBillPayeeValue : PBCodable <_INPBBillPayeeValue, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_accountNumber;
     _INPBDataString *_nickname;
     _INPBDataString *_organizationName;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

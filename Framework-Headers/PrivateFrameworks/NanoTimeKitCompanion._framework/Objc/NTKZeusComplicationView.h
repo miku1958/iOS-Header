@@ -7,22 +7,24 @@
 #import <UIKit/UIView.h>
 
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
-#import <NanoTimeKitCompanion/NTKZeusComplicationDisplay-Protocol.h>
+#import <NanoTimeKitCompanion/NTKZeudleComplicationDisplay-Protocol.h>
 
-@class CLKDevice, NSString, NTKZeusColorPalette;
-@protocol NTKComplicationDisplayObserver;
+@class CLKDevice, NSString, NTKZeudleComplicationBackgroundView;
+@protocol NTKComplicationDisplayObserver, NTKZeudleColorPalette;
 
-@interface NTKZeusComplicationView : UIView <NTKComplicationDisplay, NTKZeusComplicationDisplay>
+@interface NTKZeusComplicationView : UIView <NTKComplicationDisplay, NTKZeudleComplicationDisplay>
 {
     BOOL canUseCurvedText;
     BOOL _highlighted;
     BOOL _legibilityEnabled;
     id<NTKComplicationDisplayObserver> displayObserver;
     unsigned long long _style;
-    NTKZeusColorPalette *_palette;
+    id<NTKZeudleColorPalette> _palette;
+    NTKZeudleComplicationBackgroundView *_backgroundView;
     CLKDevice *_device;
 }
 
+@property (readonly, nonatomic) NTKZeudleComplicationBackgroundView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,18 +33,21 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) BOOL legibilityEnabled; // @synthesize legibilityEnabled=_legibilityEnabled;
-@property (readonly, nonatomic) NTKZeusColorPalette *palette; // @synthesize palette=_palette;
+@property (readonly, nonatomic) id<NTKZeudleColorPalette> palette; // @synthesize palette=_palette;
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 + (id)viewForComplicationType:(unsigned long long)arg1;
++ (id)viewForComplicationType:(unsigned long long)arg1 backgroundView:(id)arg2;
 - (void).cxx_destruct;
 - (void)_updateLegibility;
 - (void)applyPalette:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
+- (void)layoutSubviews;
+- (struct CGRect)padContentFrame:(struct CGRect)arg1;
 
 @end
 

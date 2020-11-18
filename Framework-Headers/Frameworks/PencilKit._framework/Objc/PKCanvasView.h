@@ -9,11 +9,12 @@
 #import <PencilKit/PKRulerHostingDelegate-Protocol.h>
 #import <PencilKit/PKTiledViewDelegate-Protocol.h>
 #import <PencilKit/PKToolPickerObserver-Protocol.h>
+#import <PencilKit/PKToolPickerObserverPrivate-Protocol.h>
 
 @class NSString, PKCanvasAttachmentView, PKDrawing, PKInk, PKTiledView, PKTool, UIGestureRecognizer, UIView;
 @protocol PKCanvasViewDelegate, PKRulerHostingDelegate;
 
-@interface PKCanvasView : UIScrollView <PKTiledViewDelegate, PKRulerHostingDelegate, PKToolPickerObserver>
+@interface PKCanvasView : UIScrollView <PKTiledViewDelegate, PKRulerHostingDelegate, PKToolPickerObserverPrivate, PKToolPickerObserver>
 {
     PKTiledView *_tiledView;
     PKCanvasAttachmentView *_pageView;
@@ -50,10 +51,10 @@
 @property (nonatomic) BOOL disableWideGamut; // @synthesize disableWideGamut=_disableWideGamut;
 @property (copy, nonatomic) PKDrawing *drawing;
 @property (readonly, nonatomic) UIGestureRecognizer *drawingGestureRecognizer;
+@property (nonatomic) unsigned long long drawingPolicy;
 @property (nonatomic) struct CGAffineTransform drawingTransform; // @synthesize drawingTransform=_drawingTransform;
 @property (nonatomic) SEL drawingUndoSelector;
 @property (weak, nonatomic) id drawingUndoTarget;
-@property (nonatomic, getter=isFingerDrawingEnabled) BOOL fingerDrawingEnabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKInk *ink;
 @property (copy, nonatomic) PKDrawing *nonNullDrawing;
@@ -65,9 +66,12 @@
 @property (readonly, nonatomic) UIView *selectionView;
 @property (readonly, nonatomic) struct CGAffineTransform strokeTransform;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsCopyAsText;
 @property (copy, nonatomic) PKTool *tool;
 
 - (void).cxx_destruct;
+- (id)_adornmentViewsToHitTest;
+- (id)_allowedDrawingTouchTypes;
 - (void)_canvasViewWillBeginDrawing:(id)arg1;
 - (id)_currentStroke;
 - (void)_drawingDidChange;
@@ -75,12 +79,13 @@
 - (void)_fullyRendered;
 - (id)_getDelegateZoomView;
 - (BOOL)_hasSelection;
+- (double)_latestLatency;
 - (struct CGSize)_metalViewDrawableSize;
 - (id)_pinchGestureRecognizer;
 - (struct CGSize)_rendererControllerPixelSize;
 - (id)_selectionController;
+- (id)_selectionInteraction;
 - (void)_setChildrenBackgroundColor:(id)arg1;
-- (void)_setChildrenOpaque:(BOOL)arg1;
 - (void)_setContentViewOpaqueBackgroundColorIfApplicable;
 - (void)_setDrawing:(id)arg1 alreadyRenderedDrawing:(id)arg2 imageForAlreadyRenderedDrawing:(id)arg3 fullyRenderedCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)_setDrawing:(id)arg1 fullyRenderedCompletionBlock:(CDUnknownBlockType)arg2;
@@ -88,6 +93,7 @@
 - (void)_setSelectedStrokesColor:(id)arg1;
 - (void)_toolPicker:(id)arg1 didChangeColor:(id)arg2;
 - (void)_updateCanvas;
+- (void)_updateChildrenOpaque;
 - (void)awakeFromNib;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
@@ -115,7 +121,6 @@
 - (void)setOpaque:(BOOL)arg1;
 - (void)set_fixedPixelSize:(struct CGSize)arg1;
 - (void)setupDrawingWidth:(double)arg1 fixedPixelSizeScrollView:(id)arg2;
-- (BOOL)shouldToolPickerBecomeVisibleWhenFirstResponder:(id)arg1;
 - (void)toolPickerIsRulerActiveDidChange:(id)arg1;
 - (void)toolPickerSelectedToolDidChange:(id)arg1;
 - (void)updateFixedPixelSizeViewForBounds:(struct CGRect)arg1;

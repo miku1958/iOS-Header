@@ -6,16 +6,17 @@
 
 #import <RunningBoardServices/RBSRequest.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSString, RBSProcessIdentity, RBSTerminateContext;
+@class NSString, RBSProcessPredicate, RBSTerminateContext;
+@protocol RBSServiceLocalProtocol;
 
-@interface RBSTerminateRequest : RBSRequest <BSXPCSecureCoding, NSCopying>
+@interface RBSTerminateRequest : RBSRequest <RBSXPCSecureCoding, NSCopying>
 {
+    id<RBSServiceLocalProtocol> _service;
     BOOL _targetsAllManagedProcesses;
-    int _pid;
-    RBSProcessIdentity *_processIdentity;
+    RBSProcessPredicate *_predicate;
     RBSTerminateContext *_context;
 }
 
@@ -23,26 +24,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property (copy, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
+@property (strong, nonatomic) RBSProcessPredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL targetsAllManagedProcesses; // @synthesize targetsAllManagedProcesses=_targetsAllManagedProcesses;
 
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (BOOL)execute:(out id *)arg1;
 - (BOOL)execute:(out id *)arg1 error:(out id *)arg2;
 - (id)initForAllManagedWithReason:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithPredicate:(id)arg1 context:(id)arg2;
+- (id)initWithPredicate:(id)arg1 context:(id)arg2 service:(id)arg3;
 - (id)initWithProcessIdentifier:(id)arg1 context:(id)arg2;
 - (id)initWithProcessIdentity:(id)arg1 context:(id)arg2;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

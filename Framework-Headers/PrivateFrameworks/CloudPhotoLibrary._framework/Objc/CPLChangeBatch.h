@@ -45,6 +45,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)estimatedBatchSize;
 - (void)extractInitialDownloadBatch:(id *)arg1 shouldConsiderRecordFilter:(CDUnknownBlockType)arg2;
+- (id)filterScopeChangeFromBatch;
 - (BOOL)hasChangeWithIdentifier:(id)arg1;
 - (BOOL)hasChangeWithScopedIdentifier:(id)arg1;
 - (id)init;

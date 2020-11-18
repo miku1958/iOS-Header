@@ -9,13 +9,14 @@
 #import <Message/EFLoggable-Protocol.h>
 #import <Message/MFMailMessageLibraryMigratorDelegate-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface MFPersistenceDatabase_iOS : EDPersistenceDatabase <EFLoggable, MFMailMessageLibraryMigratorDelegate>
 {
     BOOL _migrationHasRun;
     BOOL _createdTempTable;
     id _migrationLock;
+    NSMutableArray *_postMigrationSteps;
 }
 
 @property (nonatomic) BOOL createdTempTable; // @synthesize createdTempTable=_createdTempTable;
@@ -24,10 +25,13 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL migrationHasRun; // @synthesize migrationHasRun=_migrationHasRun;
 @property (readonly, nonatomic) id migrationLock; // @synthesize migrationLock=_migrationLock;
+@property (strong, nonatomic) NSMutableArray *postMigrationSteps; // @synthesize postMigrationSteps=_postMigrationSteps;
 @property (readonly) Class superclass;
 
 + (id)log;
 - (void).cxx_destruct;
+- (BOOL)_migrateWithDatabaseConnection:(id)arg1 migrator:(id)arg2;
+- (void)addPostMigrationStep:(id)arg1;
 - (void)checkInConnection:(id)arg1;
 - (id)checkOutConnectionIsWriter:(BOOL)arg1;
 - (BOOL)enforceDataProtection;

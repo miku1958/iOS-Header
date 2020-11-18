@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)_isSecure;
+- (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (BOOL)_ignoresHitTest;
 
 @end

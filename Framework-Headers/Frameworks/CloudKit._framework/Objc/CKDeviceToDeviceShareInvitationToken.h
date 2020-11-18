@@ -17,8 +17,8 @@
     NSURL *_shareURL;
 }
 
-@property (strong, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
-@property (strong, nonatomic) NSData *sharingInvitationData; // @synthesize sharingInvitationData=_sharingInvitationData;
+@property (readonly, copy, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
+@property (readonly, copy, nonatomic) NSData *sharingInvitationData; // @synthesize sharingInvitationData=_sharingInvitationData;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -29,7 +29,6 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSharingInvitationData:(id)arg1;
 - (id)initWithSharingInvitationData:(id)arg1 shareURL:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

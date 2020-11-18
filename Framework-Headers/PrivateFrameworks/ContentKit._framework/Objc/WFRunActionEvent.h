@@ -11,8 +11,9 @@
 @interface WFRunActionEvent : WFEvent
 {
     BOOL _completed;
-    int _source;
+    BOOL _didRunRemotely;
     NSString *_key;
+    NSString *_shortcutSource;
     NSString *_runSource;
     NSString *_actionIdentifier;
     NSString *_automationType;
@@ -21,9 +22,10 @@
 @property (copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
+@property (nonatomic) BOOL didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (copy, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
 
 + (Class)codableEventClass;
 - (void).cxx_destruct;

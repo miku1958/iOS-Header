@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CIContext, MISSING_TYPE, PKLinedPaper, PKMetalFramebuffer, PKMetalRenderState, PKMetalResourceHandler, PKMetalShader;
+@class MISSING_TYPE, PKLinedPaper, PKMetalFramebuffer, PKMetalRenderState, PKMetalResourceHandler, PKMetalShader;
 @protocol MTLBuffer, MTLCommandQueue, MTLCommandQueueSPI, MTLDevice, MTLTexture;
 
 @interface PKMetalRenderer : NSObject
@@ -34,7 +34,6 @@
     struct _PKStrokePoint _lastPointForEraser;
     struct vector<(anonymous namespace)::StrokeVertex, std::__1::allocator<(anonymous namespace)::StrokeVertex>> _strokeBuffer;
     unsigned long long _strokeBufferCount;
-    CIContext *_coreImageContext;
     id<MTLTexture> _paperTexture;
     struct CGSize _paperTextureSize;
     unsigned long long _pixelFormat;
@@ -52,9 +51,12 @@
     unsigned long long _renderMaskMSAASampleCount;
     BOOL _needRestartWorkaroundForOldIntelDrivers;
     BOOL _useComputeRenderCaches;
+    struct CGRect _drawableDirtyRect;
     BOOL _solidColorBackboard;
     BOOL _oneRenderPassForLiveRendering;
+    BOOL _fadeOutStrokesMode;
     BOOL _liveStrokeMode;
+    BOOL _edgeMask;
     BOOL _invertColors;
     PKLinedPaper *_linedPaper;
     struct CGColor *_liveRenderingOverrideColor;
@@ -62,7 +64,7 @@
     double _inputScale;
     double _eraserIndicatorAlpha;
     double _liveStrokeElapsedTime;
-    double _liveStrokeDuration;
+    struct CGSize _liveStrokeMaxSize;
     struct CGAffineTransform _paperTransform;
 }
 
@@ -71,15 +73,17 @@
 @property (nonatomic) struct CGColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) id<MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
 @property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
+@property (nonatomic) BOOL edgeMask; // @synthesize edgeMask=_edgeMask;
 @property (nonatomic) double eraserIndicatorAlpha; // @synthesize eraserIndicatorAlpha=_eraserIndicatorAlpha;
+@property (nonatomic) BOOL fadeOutStrokesMode; // @synthesize fadeOutStrokesMode=_fadeOutStrokesMode;
 @property (nonatomic) double inputScale; // @synthesize inputScale=_inputScale;
 @property (nonatomic) BOOL invertColors; // @synthesize invertColors=_invertColors;
 @property (readonly, nonatomic) BOOL isFinishedRendering;
 @property (readonly, nonatomic) double latestTimestamp;
 @property (strong, nonatomic) PKLinedPaper *linedPaper; // @synthesize linedPaper=_linedPaper;
 @property (nonatomic) struct CGColor *liveRenderingOverrideColor; // @synthesize liveRenderingOverrideColor=_liveRenderingOverrideColor;
-@property (nonatomic) double liveStrokeDuration; // @synthesize liveStrokeDuration=_liveStrokeDuration;
 @property (nonatomic) double liveStrokeElapsedTime; // @synthesize liveStrokeElapsedTime=_liveStrokeElapsedTime;
+@property (nonatomic) struct CGSize liveStrokeMaxSize; // @synthesize liveStrokeMaxSize=_liveStrokeMaxSize;
 @property (nonatomic) BOOL liveStrokeMode; // @synthesize liveStrokeMode=_liveStrokeMode;
 @property (nonatomic) BOOL oneRenderPassForLiveRendering; // @synthesize oneRenderPassForLiveRendering=_oneRenderPassForLiveRendering;
 @property (nonatomic) struct CGAffineTransform paperTransform; // @synthesize paperTransform=_paperTransform;
@@ -88,12 +92,13 @@
 @property (nonatomic) struct CGAffineTransform strokeTransform; // @synthesize strokeTransform=_strokeTransform;
 @property (nonatomic) struct CGRect viewScissor; // @synthesize viewScissor=_viewScissor;
 
++ (BOOL)disableClearOriginalBackbufferWorkaround;
 + (BOOL)useBlitEncoder;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)CIImageFromTexture:(id)arg1;
 - (unsigned long long)_renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 stopBlock:(CDUnknownBlockType)arg4;
 - (void)addBufferForRenderCache:(id)arg1 strokeVertices:(struct StrokeVertex *)arg2 numVertices:(unsigned long long)arg3;
+- (void)addStrokeSpaceDrawableDirtyRect:(struct CGRect)arg1;
 - (double)alphaForStroke:(id)arg1;
 - (BOOL)applyStrokeSpaceClipRect:(struct CGRect)arg1 strokeTransform:(struct CGAffineTransform)arg2;
 - (void)buildRenderCacheForStrokes:(id)arg1;
@@ -114,15 +119,16 @@
 - (void)copyIntoPaintFromTexture:(id)arg1 clipRect:(struct CGRect)arg2 renderEncoder:(id)arg3;
 - (void)copyIntoTile:(id)arg1 tileTransform:(struct CGAffineTransform)arg2 waitUntilCompleted:(BOOL)arg3;
 - (void)dealloc;
-- (void)debugFramebuffers;
 - (void)disableClippingForRenderEncoder:(id)arg1;
 - (void)drawNewPointsAt:(double)arg1;
+- (struct CGRect)drawableDirtyRect;
 - (void)drawingBeganWithStroke:(id)arg1;
 - (void)drawingCancelled;
 - (void)drawingEnded:(id)arg1 finishStrokeBlock:(CDUnknownBlockType)arg2;
 - (id)dummyColorFramebuffer;
 - (id)dummyPaintFramebuffer;
 - (BOOL)ensureOriginalBackFramebufferHasContents;
+- (__wrap_iter_3da3283c)fadeOutLimitFromPoints:(const struct _PKStrokePointSlice *)arg1 animatingStroke:(struct AnimatingStroke *)arg2;
 - (void)finishLiveStrokeAndPresentDrawable:(id)arg1 waitUntilScheduled:(BOOL)arg2;
 - (void)finishRendering;
 - (void)finishRenderingClippedToStrokeSpaceRect:(struct CGRect)arg1 forStroke:(struct AnimatingStroke *)arg2 renderEncoder:(id)arg3;
@@ -135,19 +141,23 @@
 - (id)generateCacheForParticleStroke:(struct AnimatingStroke *)arg1 points:(struct _PKStrokePointSlice)arg2 startPt:(BOOL)arg3 endPt:(BOOL)arg4;
 - (id)generateCacheForPenStroke:(struct AnimatingStroke *)arg1 points:(struct _PKStrokePointSlice)arg2;
 - (id)generateCacheForStroke:(struct AnimatingStroke *)arg1 points:(struct _PKStrokePointSlice)arg2 segmentSteps:(const vector_3203cf93 *)arg3;
-- (void)generateLiveStrokeCachesForStrokes:(id)arg1 destinationLocations:(const vector_9d39b153 *)arg2 strokeInterval:(float)arg3 liveStrokeFrame:(struct CGRect)arg4 liveStrokeTexture:(id)arg5;
-- (id)generatePaintCacheForStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 segmentSteps:(const vector_3203cf93 *)arg3 liveStrokePoints:(const MISSING_TYPE **)arg4 liveStrokeStartTime:(float)arg5 strokeInterval:(float)arg6;
+- (void)generateLiveStrokeCachesForStrokes:(id)arg1 destinationLocations:(const vector_9d39b153 *)arg2 startTime:(double)arg3 duration:(double)arg4;
+- (id)generatePaintCacheForStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 segmentSteps:(const vector_3203cf93 *)arg3 liveStrokePoints:(const MISSING_TYPE **)arg4 liveStrokeStartTime:(double)arg5 duration:(double)arg6;
 - (id)generateParticleCacheForStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 starts:(BOOL)arg3 ends:(BOOL)arg4;
+- (void)generateRenderMaskForPaths:(const vector_acef39cc *)arg1 renderCache:(id)arg2;
+- (id)generateSmartFillMaskForStroke:(id)arg1 maskPaths:(const vector_acef39cc *)arg2;
 - (void)getAndRenderNewPoints:(id)arg1;
 - (id)initWithDrawingPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2 device:(id)arg3 resourceHandler:(id)arg4;
 - (struct CGImage *)newCGImage;
-- (struct CGImage *)newCGImageFromTexture:(id)arg1 clipRect:(struct CGRect)arg2 copyImage:(BOOL)arg3;
 - (struct CGImage *)newCGImageWithClipRect:(struct CGRect)arg1;
 - (struct CGImage *)newCGImageWithClipRect:(struct CGRect)arg1 copyImage:(BOOL)arg2;
 - (void)purgeOriginalBackFramebuffer;
 - (void)purgePaintFramebuffers;
+- (void)purgeRenderCachesForStrokes:(id)arg1;
 - (void)renderAheadWithTransform:(struct CGAffineTransform)arg1 onPaper:(BOOL)arg2 renderBufferSize:(struct CGSize)arg3 destinationTexture:(id)arg4;
+- (void)renderAlternativeStroke:(id)arg1 alpha:(double)arg2 purgeableResources:(id)arg3;
 - (void)renderAnimatingStrokesWithTransform:(struct CGAffineTransform)arg1 renderBufferSize:(struct CGSize)arg2;
+- (void)renderBackgroundColorWithRenderEncoder:(id)arg1;
 - (void)renderBrushIndicatorForStroke:(id)arg1 withTransform:(struct CGAffineTransform)arg2 mode:(long long)arg3;
 - (id)renderCacheItemForStroke:(struct AnimatingStroke *)arg1 bsplineFilter:(struct PKBSplineFilter *)arg2 purgeableResources:(id)arg3 strokeRenderCache:(id)arg4;
 - (id)renderCommandEncoderForCommandBuffer:(id)arg1 backBufferLoadAction:(unsigned long long)arg2 backBufferStoreAction:(unsigned long long)arg3 paintBufferLoadAction:(unsigned long long)arg4 accumulatorBufferLoadAction:(unsigned long long)arg5 accumulatorBufferStoreAction:(unsigned long long)arg6 destinationLoadAction:(unsigned long long)arg7;
@@ -165,6 +175,7 @@
 - (unsigned long long)renderParticleRenderCache:(id)arg1 renderEncoder:(id)arg2 computeEncoder:(id)arg3 animatingStroke:(struct AnimatingStroke *)arg4;
 - (unsigned long long)renderParticleStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 starts:(BOOL)arg3 ends:(BOOL)arg4 combinedRendering:(BOOL)arg5 renderEncoder:(id)arg6;
 - (unsigned long long)renderPenStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 combinedRendering:(BOOL)arg3 renderEncoder:(id)arg4;
+- (void)renderSmartFillMask:(id)arg1 stroke:(id)arg2;
 - (unsigned long long)renderStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 accumulating:(BOOL)arg3 combinedRendering:(BOOL)arg4 renderEncoder:(id)arg5 computeEncoder:(id)arg6 renderCache:(id)arg7;
 - (void)renderStroke:(id)arg1 withTransform:(struct CGAffineTransform)arg2 mode:(long long)arg3 flipped:(BOOL)arg4 renderBufferSize:(struct CGSize)arg5 renderEncoder:(id)arg6 currentClipRect:(struct CGRect)arg7 needRenderMask:(BOOL)arg8;
 - (unsigned long long)renderStrokeRenderCache:(id)arg1 renderEncoder:(id)arg2 animatingStroke:(struct AnimatingStroke *)arg3 indexed:(BOOL)arg4;
@@ -179,9 +190,11 @@
 - (void)renderTiles:(id)arg1 intoTile:(id)arg2 waitUntilCompleted:(BOOL)arg3;
 - (unsigned long long)renderVerticies:(struct StrokeVertex *)arg1 size:(unsigned long long)arg2 numRenderedVertices:(unsigned long long)arg3 numIndices:(unsigned long long)arg4 localClipRect:(struct CGRect)arg5 animatingStroke:(struct AnimatingStroke *)arg6 combinedRendering:(BOOL)arg7 renderEncoder:(id)arg8;
 - (void)renderWithTransform:(struct CGAffineTransform)arg1 animatingStroke:(struct AnimatingStroke *)arg2 mode:(long long)arg3 clipped:(BOOL)arg4 renderBufferSize:(struct CGSize)arg5 renderEncoder:(id)arg6;
+- (void)resetDrawableDirtyRect;
 - (void)resetPaintFramebufferAccumulate:(BOOL)arg1;
 - (void)restartLiveRenderingForSimulator;
 - (void)restartRenderStateForSimulator:(id)arg1;
+- (void)setAlternativeStrokes:(id)arg1 alpha:(double)arg2 originalStrokeAlpha:(double)arg3;
 - (void)setPaperTextureImage:(struct CGImage *)arg1;
 - (void)setPaperTextureOnRenderEncoder:(id)arg1 fragmentUniforms:(struct PKMetalUberFragmentUniforms *)arg2;
 - (void)setShouldClearOriginalFramebuffer;
@@ -193,10 +206,10 @@
 - (void)setupForDefaultUberVertexShaderInRenderEncoder:(id)arg1;
 - (void)setupOriginalBackFramebufferIfNecessary;
 - (void)setupRenderEncoder:(id)arg1 forParticleStroke:(struct AnimatingStroke *)arg2;
-- (void)setupRenderEncoder:(id)arg1 forPenStroke:(struct AnimatingStroke *)arg2;
+- (void)setupRenderEncoder:(id)arg1 forPenStroke:(struct AnimatingStroke *)arg2 alphaFactor:(double)arg3;
 - (void)setupRenderState:(id)arg1 needCompute:(BOOL)arg2;
 - (void)setupRenderState:(id)arg1 needCompute:(BOOL)arg2 clearPaint:(BOOL)arg3;
-- (void)setupRenderStateForLiveRenderingDestinationTexture:(id)arg1 destinationLoadAction:(unsigned long long)arg2 accumLoadAction:(unsigned long long)arg3 accumStoreAction:(unsigned long long)arg4 backBufferLoadAction:(unsigned long long)arg5 backBufferStoreAction:(unsigned long long)arg6;
+- (void)setupRenderStateForLiveRenderingDestinationTexture:(id)arg1 destinationLoadAction:(unsigned long long)arg2 accumLoadAction:(unsigned long long)arg3 accumStoreAction:(unsigned long long)arg4 backBufferLoadAction:(unsigned long long)arg5 backBufferStoreAction:(unsigned long long)arg6 renderMask:(BOOL)arg7;
 - (void)setupRenderStateForRenderingStrokes:(id)arg1;
 - (void)setupRenderStateForStrokeRenderingNeedPaintBuffer:(BOOL)arg1 needRenderMask:(BOOL)arg2;
 - (void)setupStrokeBufferIfNecessary;
@@ -205,6 +218,7 @@
 - (struct CGAffineTransform)strokeRenderTransform;
 - (struct CGAffineTransform)strokeRenderTransformForFramebufferSize:(struct CGSize)arg1 flipped:(BOOL)arg2;
 - (void)teardownDrawingFramebuffers;
+- (void)teardownOriginalBackFramebuffer;
 - (void)teardownRenderStateIfNecessary;
 
 @end

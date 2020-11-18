@@ -6,12 +6,19 @@
 
 #import <SiriUI/SiriUICardSnippetViewController.h>
 
-@class SAUISnippet;
+#import <SiriUI/SiriUISizeClassConfiguring-Protocol.h>
 
-@interface SiriUILegacyCardSnippetViewController : SiriUICardSnippetViewController
+@class NSString, SAUISnippet;
+
+@interface SiriUILegacyCardSnippetViewController : SiriUICardSnippetViewController <SiriUISizeClassConfiguring>
 {
     SAUISnippet *_snippet;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)initialize;
 - (void).cxx_destruct;
@@ -21,6 +28,7 @@
 - (id)attributedSubtitle;
 - (BOOL)cardViewController:(id)arg1 shouldLoadIdentifiedCardSectionViewProvidersWithProviderManager:(id)arg2;
 - (void)cardViewControllerDidLoad:(id)arg1;
+- (void)configureContentWithSizeClass:(long long)arg1;
 - (void)endEditingAndCorrect:(BOOL)arg1;
 - (id)headerPunchOut;
 - (id)initWithSnippet:(id)arg1;

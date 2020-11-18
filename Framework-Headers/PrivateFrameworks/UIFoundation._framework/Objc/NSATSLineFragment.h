@@ -28,27 +28,8 @@
     } _flags;
 }
 
-@property (readonly, getter=isElasticOnly) BOOL elasticOnly;
-@property (readonly, getter=isStandaloneTextAttachment) BOOL standaloneTextAttachment;
-
-- (long long)_charIndexToBreakLineByWordWrappingAtIndex:(long long)arg1 lineFragmentWidth:(double)arg2 hyphenate:(BOOL *)arg3;
-- (id)_copyRenderingContextWithGlyphOrigin:(double)arg1;
-- (void)_flushCachedObjects;
-- (void)_invalidate;
-- (struct _NSRange)characterRange;
 - (void)dealloc;
 - (void)finalize;
-- (void)getTypographicLineHeight:(double *)arg1 baselineOffset:(double *)arg2 leading:(double *)arg3;
-- (struct _NSRange)glyphRange;
-- (BOOL)hasElasticRange;
-- (id)initWithTypesetter:(id)arg1;
-- (void)justifyWithFactor:(double)arg1;
-- (void)layoutForStartingGlyphAtIndex:(unsigned long long)arg1 characterIndex:(unsigned long long)arg2 minPosition:(double)arg3 maxPosition:(double)arg4 lineFragmentRect:(struct CGRect)arg5;
-- (double)lineWidthForType:(int)arg1;
-- (void)resolveOpticalAlignmentUpdatingMinPosition:(double *)arg1 maxPosition:(double *)arg2;
-- (long long)resolvedLineBreakMode:(BOOL)arg1;
-- (void)saveMorphedGlyphs:(struct _NSRange *)arg1;
-- (void)saveWithGlyphOrigin:(double)arg1;
 
 @end
 

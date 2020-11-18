@@ -6,7 +6,7 @@
 
 #import <DataDeliveryServices/NSObject-Protocol.h>
 
-@class DDSAssetQuery, DDSAttributeFilter, NSArray, NSSet;
+@class DDSAssetQuery, DDSAttributeFilter, NSArray, NSSet, NSString;
 @protocol DDSAssetProvidingDelegate;
 
 @protocol DDSAssetProviding <NSObject>
@@ -15,10 +15,11 @@
 
 - (NSArray *)allContentItemsMatchingQuery:(DDSAssetQuery *)arg1 error:(id *)arg2;
 - (NSArray *)assetsForQuery:(DDSAssetQuery *)arg1 errorPtr:(id *)arg2;
-- (void)beginDownloadForAssertions:(NSSet *)arg1;
+- (void)beginDownloadForAssertions:(NSSet *)arg1 discretionaryDownload:(BOOL)arg2;
 - (NSArray *)contentItemsFromAssets:(NSArray *)arg1 matchingFilter:(DDSAttributeFilter *)arg2;
 - (void)removeAssetsForAssertions:(NSSet *)arg1;
 - (void)removeOldAssetsForAssertions:(NSSet *)arg1;
-- (void)updateCatalogForAssetTypes:(NSSet *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)serverDidUpdateAssetsWithType:(NSString *)arg1;
+- (void)updateCatalogForAssetTypes:(NSSet *)arg1 discretionaryDownload:(BOOL)arg2 withCompletion:(void (^)(NSError *))arg3;
 @end
 

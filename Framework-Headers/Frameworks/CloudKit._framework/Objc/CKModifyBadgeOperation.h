@@ -6,6 +6,8 @@
 
 #import <CloudKit/CKOperation.h>
 
+@class CKModifyBadgeOperationInfo;
+
 @interface CKModifyBadgeOperation : CKOperation
 {
     CDUnknownBlockType _modifyBadgeCompletionBlock;
@@ -14,6 +16,7 @@
 
 @property (nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 @property (copy, nonatomic) CDUnknownBlockType modifyBadgeCompletionBlock; // @synthesize modifyBadgeCompletionBlock=_modifyBadgeCompletionBlock;
+@property (readonly, nonatomic) CKModifyBadgeOperationInfo *operationInfo; // @dynamic operationInfo;
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;

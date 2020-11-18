@@ -8,6 +8,7 @@
 
 @class MCLURLDataLoaderTask, NSData, NSDictionary, NSError, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MCLHTTPURLRequest : NSObject
 {
     MCLURLDataLoaderTask *_task;

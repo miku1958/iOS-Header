@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     CDStruct_95bda58d _attributionRequirements;
+    CDStruct_95bda58d _suppressAttributionLogos;
     NSString *_appAdamID;
     NSMutableArray *_attributionApps;
     NSMutableArray *_localizedAttributions;
@@ -29,21 +30,14 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_enforceAppStore:1;
         unsigned int read_attributionRequirements:1;
+        unsigned int read_suppressAttributionLogos:1;
         unsigned int read_appAdamID:1;
         unsigned int read_attributionApps:1;
         unsigned int read_localizedAttributions:1;
         unsigned int read_sourceIdentifier:1;
         unsigned int read_supportedComponentActions:1;
         unsigned int read_webBaseActionURL:1;
-        unsigned int wrote_attributionRequirements:1;
-        unsigned int wrote_appAdamID:1;
-        unsigned int wrote_attributionApps:1;
-        unsigned int wrote_localizedAttributions:1;
-        unsigned int wrote_sourceIdentifier:1;
-        unsigned int wrote_supportedComponentActions:1;
-        unsigned int wrote_webBaseActionURL:1;
-        unsigned int wrote_sourceVersion:1;
-        unsigned int wrote_enforceAppStore:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -59,6 +53,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *sourceIdentifier;
 @property (nonatomic) unsigned int sourceVersion;
 @property (strong, nonatomic) NSMutableArray *supportedComponentActions;
+@property (readonly, nonatomic) int *suppressAttributionLogos;
+@property (readonly, nonatomic) unsigned long long suppressAttributionLogosCount;
 @property (strong, nonatomic) NSString *webBaseActionURL;
 
 + (Class)attributionAppsType;
@@ -67,31 +63,24 @@ __attribute__((visibility("hidden")))
 + (Class)supportedComponentActionsType;
 - (void).cxx_destruct;
 - (int)StringAsAttributionRequirements:(id)arg1;
-- (void)_addNoFlagsAttributionApps:(id)arg1;
-- (void)_addNoFlagsAttributionRequirements:(int)arg1;
-- (void)_addNoFlagsLocalizedAttribution:(id)arg1;
-- (void)_addNoFlagsSupportedComponentActions:(id)arg1;
-- (void)_readAppAdamID;
-- (void)_readAttributionApps;
-- (void)_readAttributionRequirements;
-- (void)_readLocalizedAttributions;
-- (void)_readSourceIdentifier;
-- (void)_readSupportedComponentActions;
-- (void)_readWebBaseActionURL;
+- (int)StringAsSuppressAttributionLogos:(id)arg1;
 - (void)addAttributionApps:(id)arg1;
 - (void)addAttributionRequirements:(int)arg1;
 - (void)addLocalizedAttribution:(id)arg1;
 - (void)addSupportedComponentActions:(id)arg1;
+- (void)addSuppressAttributionLogos:(int)arg1;
 - (id)attributionAppsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionAppsCount;
 - (id)attributionRequirementsAsString:(int)arg1;
 - (int)attributionRequirementsAtIndex:(unsigned long long)arg1;
 - (id)bestLocalizedAttribution;
 - (BOOL)canLocallyHandleAction:(int)arg1 forComponent:(int)arg2;
+- (BOOL)canSuppressActionForComponent:(int)arg1;
 - (void)clearAttributionApps;
 - (void)clearAttributionRequirements;
 - (void)clearLocalizedAttributions;
 - (void)clearSupportedComponentActions;
+- (void)clearSuppressAttributionLogos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -100,16 +89,22 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)localizedAttributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedAttributionsCount;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAttributionRequirements:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setSuppressAttributionLogos:(int *)arg1 count:(unsigned long long)arg2;
 - (id)supportedComponentActionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedComponentActionsCount;
 - (BOOL)supportsAction:(int)arg1 forComponent:(int)arg2;
+- (id)suppressAttributionLogosAsString:(int)arg1;
+- (int)suppressAttributionLogosAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -17,8 +17,10 @@
 
 @property (readonly, nonatomic) NSDictionary *persistentHistoryTokens; // @synthesize persistentHistoryTokens=_persistentHistoryTokens;
 
++ (id)fetchResultTokenFromDataRepresentation:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)dataRepresentationWithError:(id *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

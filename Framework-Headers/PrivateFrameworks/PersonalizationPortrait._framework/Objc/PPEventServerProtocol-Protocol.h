@@ -6,7 +6,7 @@
 
 #import <PersonalizationPortrait/PPFeedbackAccepting-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSArray, NSDate, NSString, PPEventQuery;
 
 @protocol PPEventServerProtocol <PPFeedbackAccepting>
 - (void)eventHighlightsFrom:(NSDate *)arg1 to:(NSDate *)arg2 options:(int)arg3 queryId:(unsigned long long)arg4;
@@ -14,6 +14,7 @@
 - (void)interactionSummaryMetricsWithQueryId:(unsigned long long)arg1;
 - (void)logEventInteractionForEventWithEventIdentifier:(NSString *)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)resolveEventNameRecordChanges:(NSArray *)arg1 client:(NSString *)arg2 queryId:(unsigned long long)arg3;
+- (void)scoredEventsWithQuery:(PPEventQuery *)arg1 queryId:(unsigned long long)arg2;
 - (void)sendRTCLogsWithWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end
 

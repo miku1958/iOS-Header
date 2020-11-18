@@ -69,6 +69,7 @@
 - (BOOL)supportsTickmarks;
 - (BOOL)supportsTrendLines;
 - (BOOL)supportsValueAxisLabelsPosition;
+- (BOOL)supportsValueLabelSpacing;
 - (id)valueLabelPositioner;
 
 @end

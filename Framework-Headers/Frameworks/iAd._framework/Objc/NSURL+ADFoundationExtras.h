@@ -16,5 +16,6 @@
 - (BOOL)_iAd_isHttpOrHttps;
 - (id)_iad_URLByRemovingDuplicateSlashes;
 - (id)decodePercentEscapesEncoding;
+- (BOOL)isNews;
 @end
 

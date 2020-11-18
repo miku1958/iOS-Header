@@ -14,9 +14,7 @@
 - (void)discardSearchResultsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 searchId:(NSString *)arg3;
 - (void)focusWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)getAccessibilityPropertiesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMAccessibilityProperties *))arg2 nodeId:(int)arg3;
-- (void)getAssociatedDataForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *))arg2 nodeId:(int)arg3;
 - (void)getAttributesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
-- (void)getDataBindingsForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getDocumentWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMNode *))arg2;
 - (void)getEventListenersForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getOuterHTMLWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 nodeId:(int)arg3;

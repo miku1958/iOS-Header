@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKMCDaySummaryObserverQuery, NSMutableIndexSet, NSMutableSet;
-@protocol HKMCViewModelProviderDataSourceDelegate;
+@class HKCalendarCache, HKHealthStore, HKMCDaySummaryObserverQuery, NSMutableIndexSet, NSMutableSet;
+@protocol HKMCViewModelProviderDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface HKMCViewModelProviderDataSource : NSObject
 {
     HKHealthStore *_healthStore;
     id<HKMCViewModelProviderDataSourceDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_summaryQueries;
     HKMCDaySummaryObserverQuery *_summaryObserverQuery;
     NSMutableIndexSet *_canceledDayIndexes;
+    HKCalendarCache *_calendarCache;
 }
 
 @property (weak, nonatomic) id<HKMCViewModelProviderDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -26,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 - (void)dealloc;
 - (void)fetchDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (id)initWithHealthStore:(id)arg1 delegate:(id)arg2;
+- (id)initWithHealthStore:(id)arg1 delegate:(id)arg2 calendarCache:(id)arg3 queue:(id)arg4;
 
 @end
 

@@ -7,7 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @class SWDeveloperSettings, SWViewController;
-@protocol SWConfigurationManager, SWErrorProvider, SWInteractionProvider, SWPresentationManager, SWScaleManager;
+@protocol SWConfigurationManager, SWErrorProvider, SWInteractionProvider, SWPresentationManager, SWScaleManager, SWSnapshotManager;
 
 @interface SWContainerViewController : UIViewController
 {
@@ -17,6 +17,7 @@
     id<SWPresentationManager> _presentationManager;
     SWDeveloperSettings *_developerSettings;
     id<SWScaleManager> _scaleManager;
+    id<SWSnapshotManager> _snapshotManager;
     SWViewController *_webContentViewController;
 }
 
@@ -26,12 +27,13 @@
 @property (readonly, nonatomic) id<SWInteractionProvider> interactionProvider; // @synthesize interactionProvider=_interactionProvider;
 @property (readonly, nonatomic) id<SWPresentationManager> presentationManager; // @synthesize presentationManager=_presentationManager;
 @property (readonly, nonatomic) id<SWScaleManager> scaleManager; // @synthesize scaleManager=_scaleManager;
+@property (readonly, nonatomic) id<SWSnapshotManager> snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 @property (readonly, nonatomic) SWViewController *webContentViewController; // @synthesize webContentViewController=_webContentViewController;
 
 - (void).cxx_destruct;
 - (id)accessibilityElements;
 - (BOOL)allowUserInteractionForInteractionType:(unsigned long long)arg1;
-- (id)initWithWebContentViewController:(id)arg1 interactionProvider:(id)arg2 errorProvider:(id)arg3 configurationManager:(id)arg4 presentationManager:(id)arg5 scaleManager:(id)arg6;
+- (id)initWithWebContentViewController:(id)arg1 interactionProvider:(id)arg2 errorProvider:(id)arg3 configurationManager:(id)arg4 presentationManager:(id)arg5 scaleManager:(id)arg6 snapshotManager:(id)arg7;
 - (void)loadHTMLString:(id)arg1 baseURL:(id)arg2;
 - (void)loadURL:(id)arg1;
 - (void)viewDidLayoutSubviews;

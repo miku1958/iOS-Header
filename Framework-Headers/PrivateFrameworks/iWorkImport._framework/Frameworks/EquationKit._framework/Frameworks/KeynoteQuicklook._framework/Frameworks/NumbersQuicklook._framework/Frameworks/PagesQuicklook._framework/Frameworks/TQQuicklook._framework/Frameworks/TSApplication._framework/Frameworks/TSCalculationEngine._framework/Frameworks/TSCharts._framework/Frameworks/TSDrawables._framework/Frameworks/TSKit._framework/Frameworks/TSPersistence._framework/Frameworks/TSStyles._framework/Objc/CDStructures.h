@@ -143,8 +143,21 @@ struct StylesheetArchive {
     struct RepeatedPtrField<TSS::StylesheetArchive_IdentifiedStyleEntry> _field6;
     struct RepeatedPtrField<TSS::StylesheetArchive_StyleChildrenEntry> _field7;
     struct Reference *_field8;
-    BOOL _field9;
-    BOOL _field10;
+    struct StylesheetArchive_VersionedStyles *_field9;
+    struct StylesheetArchive_VersionedStyles *_field10;
+    struct StylesheetArchive_VersionedStyles *_field11;
+    BOOL _field12;
+    BOOL _field13;
+};
+
+struct StylesheetArchive_VersionedStyles {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct RepeatedPtrField<TSP::Reference> _field5;
+    struct RepeatedPtrField<TSS::StylesheetArchive_IdentifiedStyleEntry> _field6;
+    struct RepeatedPtrField<TSS::StylesheetArchive_StyleChildrenEntry> _field7;
 };
 
 struct ThemeArchive {

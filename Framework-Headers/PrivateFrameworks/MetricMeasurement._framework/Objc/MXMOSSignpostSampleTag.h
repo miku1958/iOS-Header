@@ -12,6 +12,9 @@
 
 + (id)animationFrameCount;
 + (id)animationFrameRate;
++ (id)animationGlitchTimeRatio;
++ (id)animationGlitchesTotalDuration;
++ (id)animationNumberOfGlitches;
 + (id)duration;
 + (id)telemetryNumber1;
 + (id)telemetryNumber2;

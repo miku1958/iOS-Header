@@ -8,6 +8,7 @@
 
 @class NSArray, NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreRedownloadProductItemAsset : NSObject
 {
     NSDictionary *_responseDictionary;

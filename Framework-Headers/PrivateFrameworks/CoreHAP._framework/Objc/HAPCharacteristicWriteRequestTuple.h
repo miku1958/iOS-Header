@@ -6,9 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/NSCopying-Protocol.h>
+
 @class HAPCharacteristic, NSData, NSNumber;
 
-@interface HAPCharacteristicWriteRequestTuple : HMFObject
+@interface HAPCharacteristicWriteRequestTuple : HMFObject <NSCopying>
 {
     BOOL _timedWrite;
     BOOL _includeResponseValue;
@@ -29,6 +31,7 @@
 
 + (id)writeRequestTupleForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 timedWrite:(BOOL)arg4 responseValue:(BOOL)arg5 type:(unsigned long long)arg6;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)didChangeToEditMode:(BOOL)arg1;
+- (void)didChangeToShowTitle:(BOOL)arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
 - (void)didExecuteClearRecentsDataAction;

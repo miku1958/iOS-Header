@@ -8,6 +8,7 @@
 
 @interface PXImportSettings : PXSettings
 {
+    BOOL _importSourceSimulationViaDiagnosticsEnabled;
     BOOL _simulateEmptyImportSource;
     BOOL _showImportItemFilenames;
     BOOL _disableAssetDeletion;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL disableAssetDeletion; // @synthesize disableAssetDeletion=_disableAssetDeletion;
 @property (nonatomic) BOOL groupItemsByEXIFDate; // @synthesize groupItemsByEXIFDate=_groupItemsByEXIFDate;
 @property (nonatomic) BOOL hide1UpToolbarAndMarginsForCollapsedAlreadyImportedItem; // @synthesize hide1UpToolbarAndMarginsForCollapsedAlreadyImportedItem=_hide1UpToolbarAndMarginsForCollapsedAlreadyImportedItem;
+@property (nonatomic) BOOL importSourceSimulationViaDiagnosticsEnabled; // @synthesize importSourceSimulationViaDiagnosticsEnabled=_importSourceSimulationViaDiagnosticsEnabled;
 @property (nonatomic) BOOL lazyLoadAllAssets; // @synthesize lazyLoadAllAssets=_lazyLoadAllAssets;
 @property (nonatomic) BOOL loadActualThumbnails; // @synthesize loadActualThumbnails=_loadActualThumbnails;
 @property (nonatomic) BOOL loadRetinaThumbnails; // @synthesize loadRetinaThumbnails=_loadRetinaThumbnails;

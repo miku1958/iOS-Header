@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <EmailDaemon/EDReconciliationQueryProvider-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMDaemonInterfaceXPC-Protocol.h>
 
 @class EDAccountRepository, EDActivityRegistry, EDClientResumer, EDClientState, EDDaemonInterfaceFactory, EDFetchController, EDInteractionLogger, EDMailboxRepository, EDMessageRepository, EDOutgoingMessageRepository, EDSearchableIndex, NSString, NSXPCConnection;
 @protocol EMVIPManagerInterface;
 
-@interface EDRemoteClient : NSObject <EFLoggable, EMDaemonInterfaceXPC>
+@interface EDRemoteClient : NSObject <EFLoggable, EMDaemonInterfaceXPC, EDReconciliationQueryProvider>
 {
     struct os_unfair_lock_s _lock;
     EDAccountRepository *_accountRepository;
@@ -33,7 +34,7 @@
 @property (readonly, nonatomic) EDAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 @property (readonly, nonatomic) EDActivityRegistry *activityRegistry; // @synthesize activityRegistry=_activityRegistry;
 @property (readonly, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
-@property (strong, nonatomic) EDClientResumer *clientResumer; // @synthesize clientResumer=_clientResumer;
+@property (readonly, nonatomic) EDClientResumer *clientResumer; // @synthesize clientResumer=_clientResumer;
 @property (readonly, nonatomic) EDClientState *clientState; // @synthesize clientState=_clientState;
 @property (readonly, nonatomic) EDDaemonInterfaceFactory *daemonInterfaceFactory; // @synthesize daemonInterfaceFactory=_daemonInterfaceFactory;
 @property (readonly, copy) NSString *debugDescription;
@@ -65,8 +66,10 @@
 - (void)getVIPManagerInterface:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 daemonInterfaceFactory:(id)arg2;
 - (void)launchForEarlyRecovery:(CDUnknownBlockType)arg1;
+- (id)messageReconciliationQueries;
 - (void)setAllowsBackgroundResume:(BOOL)arg1;
 - (void)test_tearDown;
+- (id)threadReconciliationQueries;
 
 @end
 

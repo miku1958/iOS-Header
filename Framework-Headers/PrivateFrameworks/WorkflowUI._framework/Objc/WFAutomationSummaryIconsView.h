@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UIImageView *triggerIconView; // @synthesize triggerIconView=_triggerIconView;
 
 - (void).cxx_destruct;
+- (void)configureIconView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)setActionIcons:(id)arg1;

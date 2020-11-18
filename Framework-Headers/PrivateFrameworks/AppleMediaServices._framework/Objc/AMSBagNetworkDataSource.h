@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
 
-@class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSProcessInfo, NSDate, NSString;
+@class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSObserver, AMSProcessInfo, NSDate, NSError, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,39 +16,47 @@ __attribute__((visibility("hidden")))
 {
     CDUnknownBlockType _dataSourceChangedHandler;
     CDUnknownBlockType _dataSourceDataInvalidatedHandler;
+    AMSProcessInfo *_processInfo;
     NSString *_profile;
     NSString *_profileVersion;
+    AMSObserver *_accountsChangedObserver;
     AMSBagNetworkTaskResult *_cachedResult;
     NSObject<OS_dispatch_queue> *_cachedDataAccessQueue;
     NSString *_cachedStorefront;
     NSObject<OS_dispatch_queue> *_cachedStorefrontAccessQueue;
+    NSObject<OS_dispatch_queue> *_completionQueue;
     AMSBagNetworkTask *_currentLoadTask;
+    NSError *_activeFailure;
     NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
-    AMSProcessInfo *_processInfo;
 }
 
+@property (strong, nonatomic) AMSObserver *accountsChangedObserver; // @synthesize accountsChangedObserver=_accountsChangedObserver;
+@property (strong, nonatomic) NSError *activeFailure; // @synthesize activeFailure=_activeFailure;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedDataAccessQueue; // @synthesize cachedDataAccessQueue=_cachedDataAccessQueue;
 @property (strong, nonatomic) AMSBagNetworkTaskResult *cachedResult; // @synthesize cachedResult=_cachedResult;
 @property (strong, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedStorefrontAccessQueue; // @synthesize cachedStorefrontAccessQueue=_cachedStorefrontAccessQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (strong, nonatomic) AMSBagNetworkTask *currentLoadTask; // @synthesize currentLoadTask=_currentLoadTask;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler; // @synthesize dataSourceDataInvalidatedHandler=_dataSourceDataInvalidatedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSString *descriptionExtended;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
-@property (strong, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property (readonly, copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property (readonly) Class superclass;
 
 + (BOOL)_isDataDictionary:(id)arg1 equalToDataDictionary:(id)arg2;
-+ (BOOL)_shouldProcessAccountStoreDidChangeNotification:(id)arg1 withMediaType:(id)arg2;
++ (BOOL)_shouldProcessChangedAccount:(id)arg1 forMediaType:(id)arg2;
++ (id)valueForURLVariable:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;
 - (void).cxx_destruct;
-- (void)_accountStoreDidChange:(id)arg1;
+- (void)_accountStoreDidChange;
 - (id)_fetchBag;
 - (void)_invalidateCacheNotification:(id)arg1;
 - (void)_updateCachedResult:(id)arg1;

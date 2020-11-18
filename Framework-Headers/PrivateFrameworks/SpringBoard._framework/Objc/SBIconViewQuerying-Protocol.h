@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <SpringBoard/NSObject-Protocol.h>
+
 @class NSArray, NSSet, NSString, SBIcon, SBIconView;
 
-@protocol SBIconViewQuerying
+@protocol SBIconViewQuerying <NSObject>
 - (void)enumerateDisplayedIconViewsForIcon:(SBIcon *)arg1 usingBlock:(void (^)(SBIconView *))arg2;
 - (void)enumerateDisplayedIconViewsUsingBlock:(void (^)(SBIconView *, BOOL *))arg1;
 - (SBIconView *)firstIconViewForIcon:(SBIcon *)arg1;
@@ -18,5 +20,14 @@
 - (BOOL)isDisplayingIcon:(SBIcon *)arg1 inLocations:(NSArray *)arg2;
 - (BOOL)isDisplayingIconView:(SBIconView *)arg1;
 - (BOOL)isDisplayingIconView:(SBIconView *)arg1 inLocation:(NSString *)arg2;
+
+@optional
+- (void)enumerateDisplayedIconViewsWithOptions:(unsigned long long)arg1 usingBlock:(void (^)(SBIconView *, BOOL *))arg2;
+- (void)enumerateIconViewQueryableChildrenWithOptions:(unsigned long long)arg1 usingBlock:(void (^)(id<SBIconViewQuerying><SBIconLocationPresenting>, BOOL *))arg2;
+- (SBIconView *)firstIconViewForIcon:(SBIcon *)arg1 options:(unsigned long long)arg2;
+- (SBIconView *)iconViewForIcon:(SBIcon *)arg1 location:(NSString *)arg2 options:(unsigned long long)arg3;
+- (BOOL)isDisplayingIcon:(SBIcon *)arg1 inLocation:(NSString *)arg2 options:(unsigned long long)arg3;
+- (BOOL)isDisplayingIcon:(SBIcon *)arg1 options:(unsigned long long)arg2;
+- (BOOL)isDisplayingIconView:(SBIconView *)arg1 options:(unsigned long long)arg2;
 @end
 

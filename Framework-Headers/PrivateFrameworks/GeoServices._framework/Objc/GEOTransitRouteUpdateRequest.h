@@ -37,16 +37,7 @@
         unsigned int read_requestingAppId:1;
         unsigned int read_routeIdentifiers:1;
         unsigned int read_serviceTags:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_abClientMetadata:1;
-        unsigned int wrote_directionsResponseId:1;
-        unsigned int wrote_originalAdditionalEnabledMarkets:1;
-        unsigned int wrote_originalClientCapabilities:1;
-        unsigned int wrote_originalRouteAttributes:1;
-        unsigned int wrote_originalWaypoints:1;
-        unsigned int wrote_requestingAppId:1;
-        unsigned int wrote_routeIdentifiers:1;
-        unsigned int wrote_serviceTags:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -78,18 +69,6 @@
 + (id)transitRouteUpdateRequestWithDirectionsRequest:(id)arg1 directionsResponse:(id)arg2;
 + (id)transitRouteUpdateRequestWithDirectionsRequest:(id)arg1 directionsResponse:(id)arg2 composedRoutes:(id)arg3;
 - (void).cxx_destruct;
-- (void)_addNoFlagsOriginalWaypoint:(id)arg1;
-- (void)_addNoFlagsRouteIdentifier:(id)arg1;
-- (void)_addNoFlagsServiceTag:(id)arg1;
-- (void)_readAbClientMetadata;
-- (void)_readDirectionsResponseId;
-- (void)_readOriginalAdditionalEnabledMarkets;
-- (void)_readOriginalClientCapabilities;
-- (void)_readOriginalRouteAttributes;
-- (void)_readOriginalWaypoints;
-- (void)_readRequestingAppId;
-- (void)_readRouteIdentifiers;
-- (void)_readServiceTags;
 - (void)addOriginalWaypoint:(id)arg1;
 - (void)addRouteIdentifier:(id)arg1;
 - (void)addServiceTag:(id)arg1;
@@ -105,7 +84,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)originalWaypointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)originalWaypointsCount;

@@ -60,7 +60,7 @@
 + (void)removeSessionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)clearBadgeForPlayers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)description;
 - (id)descriptionSubstitutionMap;

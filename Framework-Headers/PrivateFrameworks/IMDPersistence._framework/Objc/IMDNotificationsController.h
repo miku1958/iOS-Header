@@ -6,35 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, IMBusinessNameManager, NSArray, UNNotificationCategory, UNUserNotificationCenter;
+@class CNContact, IMBusinessNameManager, NSSet, UNNotificationCategory, UNUserNotificationCenter;
 
 @interface IMDNotificationsController : NSObject
 {
     long long _lastAlertedMessageDate;
     long long _lastAlertedFailedMessageDate;
     UNUserNotificationCenter *_notificationCenter;
+    UNUserNotificationCenter *_notificationCenterCatalyst;
     UNNotificationCategory *_incomingMessageNotificationCategory;
     UNNotificationCategory *_incomingFilesNotificationCategory;
     IMBusinessNameManager *_businessNameManager;
     CNContact *_meContact;
-    NSArray *_meTokens;
+    NSSet *_meTokens;
+    NSSet *_activeAccountAliases;
     id _suggestionsService;
 }
 
+@property (strong, nonatomic) NSSet *activeAccountAliases; // @synthesize activeAccountAliases=_activeAccountAliases;
 @property (strong, nonatomic) IMBusinessNameManager *businessNameManager; // @synthesize businessNameManager=_businessNameManager;
 @property (strong, nonatomic) UNNotificationCategory *incomingFilesNotificationCategory; // @synthesize incomingFilesNotificationCategory=_incomingFilesNotificationCategory;
 @property (strong, nonatomic) UNNotificationCategory *incomingMessageNotificationCategory; // @synthesize incomingMessageNotificationCategory=_incomingMessageNotificationCategory;
 @property long long lastAlertedFailedMessageDate;
 @property long long lastAlertedMessageDate;
 @property (strong, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
-@property (strong, nonatomic) NSArray *meTokens; // @synthesize meTokens=_meTokens;
+@property (strong, nonatomic) NSSet *meTokens; // @synthesize meTokens=_meTokens;
 @property (strong, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (strong, nonatomic) UNUserNotificationCenter *notificationCenterCatalyst; // @synthesize notificationCenterCatalyst=_notificationCenterCatalyst;
 @property (strong, nonatomic) id suggestionsService; // @synthesize suggestionsService=_suggestionsService;
 
 + (id)_IMDCoreSpotlightCNContactForAddress:(id)arg1;
 + (id)_addressBookNameForAddress:(id)arg1 orContact:(id)arg2;
 + (id)_addressForHandle:(struct _IMDHandleRecordStruct *)arg1;
-+ (id)_contactKeysForMe;
 + (id)_countryCodeForHandle:(struct _IMDHandleRecordStruct *)arg1;
 + (id)_displayNameForBusinessChatAddress:(id)arg1 businessNameManager:(id)arg2;
 + (id)_displayNameForHandle:(struct _IMDHandleRecordStruct *)arg1 andContact:(id)arg2 suggestionProvider:(CDUnknownBlockType)arg3;
@@ -44,6 +47,7 @@
 + (int)reminderAlertCount;
 + (id)sharedInstance;
 + (int)validateAlertCount:(int)arg1;
+- (id)SMSCategoryWithIdentifier:(id)arg1 actions:(id)arg2;
 - (void)__postNotificationsIsMostActiveDevice:(BOOL)arg1;
 - (BOOL)_amIMentionedInMessage:(id)arg1;
 - (id)_chatDictionaryForMessageRecord:(struct _IMDMessageRecordStruct *)arg1;
@@ -73,6 +77,8 @@
 - (long long)_legacyRowIDPreference;
 - (id)_makeNotificationCategories;
 - (id)_messageDictionaryForMessageRecord:(struct _IMDMessageRecordStruct *)arg1;
+- (id)_messageDictionaryForMessageRecord:(struct _IMDMessageRecordStruct *)arg1 copyThreadOriginator:(BOOL)arg2;
+- (BOOL)_messageIsBusiness:(id)arg1;
 - (BOOL)_messageIsFromFavorite:(id)arg1;
 - (BOOL)_messageIsFromKnownContact:(id)arg1;
 - (BOOL)_messageShouldBeSilentlyDeliveredForBusinessChat:(id)arg1;
@@ -89,9 +95,8 @@
 - (void)_populateBodyAndTitleForSendFailedNotificationContent:(id)arg1 messageDictionary:(id)arg2;
 - (void)_populateBodyAndTitleForSendReceivedAsJunkNotificationContent:(id)arg1 messageDictionary:(id)arg2;
 - (void)_populateBodyForNotificationContent:(id)arg1 messageDictionary:(id)arg2;
-- (void)_populateBodyForNotificationContent:(id)arg1 messageDictionary:(id)arg2 onlyPopulateWasMentionedString:(BOOL)arg3;
 - (void)_populateIgnoresDoNotDisturb:(id)arg1 messageDictionary:(id)arg2 isUrgentMessage:(BOOL)arg3;
-- (void)_populateNotificationCategoryContent:(id)arg1 messageDictionary:(id)arg2;
+- (void)_populateNotificationCategoryContent:(id)arg1 messageDictionary:(id)arg2 chatDictionary:(id)arg3;
 - (void)_populateRealertCountForNotificationContent:(id)arg1;
 - (void)_populateSoundAndDisplayActivationForNotificationContent:(id)arg1 chatDictionary:(id)arg2 messageDictionary:(id)arg3 isMostActive:(BOOL)arg4;
 - (void)_populateSubtitleForNotificationContent:(id)arg1 chatDictionary:(id)arg2 messageDictionary:(id)arg3;
@@ -116,20 +121,24 @@
 - (void)_setupMeContactAndTokens;
 - (BOOL)_shouldOverrideChatSilencingBecauseImMentioned:(id)arg1;
 - (BOOL)_shouldPostNotificationForChat:(id)arg1 messageDictionary:(id)arg2;
-- (BOOL)_shouldPostNotificationRequest:(id)arg1;
+- (void)_shouldPostNotificationRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldUseOriginalURLForUTIType:(id)arg1;
 - (void)_storeLastAlertedFailedMessageDate:(long long)arg1;
 - (void)_storeLastAlertedMessageDate:(long long)arg1;
 - (id)_suggestedDisplayNameForAddress:(id)arg1;
 - (void)advanceLastAlertedFailedMessageDate:(long long)arg1;
 - (void)advanceLastAlertedMessageDate:(long long)arg1;
+- (id)allTokens;
+- (BOOL)areMyTokens:(id)arg1 inMessage:(id)arg2;
 - (void)dealloc;
 - (id)defaultsSharedInstance;
 - (id)init;
+- (id)madridCategoryWithIdentifier:(id)arg1 actions:(id)arg2;
+- (id)madridGroupCategoryWithIdentifier:(id)arg1 actions:(id)arg2;
 - (void)postFirstUnlockMessage:(id)arg1 forIdentifier:(id)arg2;
-- (void)postNotifications;
-- (void)postUrgentNotificationForMessages:(id)arg1;
-- (void)repostNotificationsFromFirstUnlock;
+- (void)postNotificationsWithContext:(id)arg1;
+- (void)postUrgentNotificationForMessages:(id)arg1 withContext:(id)arg2;
+- (void)repostNotificationsFromFirstUnlockWithContext:(id)arg1;
 - (void)retractNotificationsForReadMessages:(id)arg1;
 - (unsigned long long)screenTimeNotificationOptionsForChatDictionary:(id)arg1;
 - (unsigned long long)screenTimeNotificationOptionsForContext:(id)arg1;

@@ -15,6 +15,7 @@
 {
     unsigned int _applicationSDKVersion;
     NSString *_sourceBundleIdentifier;
+    NSString *_sourceVersion;
     NSString *_debugIdentifier;
     HKProfileIdentifier *_profileIdentifier;
 }
@@ -23,13 +24,15 @@
 @property (readonly, copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property (readonly, copy, nonatomic) HKProfileIdentifier *profileIdentifier; // @synthesize profileIdentifier=_profileIdentifier;
 @property (readonly, copy, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSourceBundleIdentifier:(id)arg1 debugIdentifier:(id)arg2 profileIdentifier:(id)arg3 applicationSDKVersion:(unsigned int)arg4;
+- (id)initWithSourceBundleIdentifier:(id)arg1 sourceVersion:(id)arg2 debugIdentifier:(id)arg3 profileIdentifier:(id)arg4 applicationSDKVersion:(unsigned int)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -6,15 +6,18 @@
 
 #import <EventKit/EKCalendarNotification.h>
 
+#import <EventKit/NSCopying-Protocol.h>
+
 @class EKCalendarEventInvitationNotificationAttendee, EKRecurrenceRule, NSArray, NSDate, NSString, NSTimeZone;
 
-@interface EKCalendarEventInvitationNotification : EKCalendarNotification
+@interface EKCalendarEventInvitationNotification : EKCalendarNotification <NSCopying>
 {
     BOOL _allDay;
     BOOL _timeChanged;
     BOOL _dateChanged;
     BOOL _locationChanged;
     BOOL _attendeeReplyChanged;
+    BOOL _expanded;
     NSString *_location;
     NSDate *_startDate;
     NSDate *_startDateForNextOccurrence;
@@ -27,6 +30,7 @@
     NSArray *_attendees;
     EKCalendarEventInvitationNotificationAttendee *_owner;
     NSString *_invitedBy;
+    EKCalendarEventInvitationNotificationAttendee *_expandedProposedTimeAttendee;
 }
 
 @property (nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
@@ -35,6 +39,8 @@
 @property (nonatomic) BOOL couldBeJunk; // @dynamic couldBeJunk;
 @property (nonatomic) BOOL dateChanged; // @synthesize dateChanged=_dateChanged;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
+@property (strong, nonatomic) EKCalendarEventInvitationNotificationAttendee *expandedProposedTimeAttendee; // @synthesize expandedProposedTimeAttendee=_expandedProposedTimeAttendee;
 @property (readonly, nonatomic) NSString *invitedBy; // @synthesize invitedBy=_invitedBy;
 @property (strong, nonatomic) NSString *location; // @synthesize location=_location;
 @property (nonatomic) BOOL locationChanged; // @synthesize locationChanged=_locationChanged;
@@ -49,9 +55,14 @@
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)eventFromEventStore:(id)arg1;
 - (BOOL)hasRecurrenceRules;
 - (id)initWithEvent:(id)arg1;
+- (BOOL)isInvitation;
+- (BOOL)isProposedNewTime;
+- (BOOL)needsReply;
+- (BOOL)proposedStartDateIsInFutureForAttendee:(id)arg1;
 
 @end
 

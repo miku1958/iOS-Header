@@ -46,7 +46,6 @@
 + (id)resourceValuesForKeys:(id)arg1 fromBookmarkData:(id)arg2;
 + (BOOL)supportsSecureCoding;
 + (BOOL)writeBookmarkData:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
-- (id)bookmarkDataWithAliasRecord:(id)arg1;
 - (id)bookmarkDataWithOptions:(unsigned long long)arg1 includingResourceValuesForKeys:(id)arg2 relativeToURL:(id)arg3 error:(id *)arg4;
 - (BOOL)checkResourceIsReachableAndReturnError:(id *)arg1;
 - (id)fileReferenceURL;

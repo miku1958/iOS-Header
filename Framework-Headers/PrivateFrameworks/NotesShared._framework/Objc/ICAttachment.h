@@ -64,6 +64,7 @@
 @property (nonatomic) long long minimumSupportedNotesVersion; // @dynamic minimumSupportedNotesVersion;
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property (strong, nonatomic) AVAsset *movie; // @synthesize movie=_movie;
+@property (nonatomic) BOOL needsInitialRelationshipSetup; // @dynamic needsInitialRelationshipSetup;
 @property (strong, nonatomic) ICNote *note; // @dynamic note;
 @property (strong, nonatomic) ICNote *noteUsingTitleForNoteTitle; // @dynamic noteUsingTitleForNoteTitle;
 @property (strong, nonatomic) NSString *ocrSummary; // @dynamic ocrSummary;
@@ -121,13 +122,13 @@
 + (id)newFetchRequestForAttachments;
 + (id)notDeletedPredicate;
 + (id)noteFromAttachmentRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
-+ (id)predicateForAttachmentBrowser;
++ (id)predicateForAttachmentBrowserWithContext:(id)arg1;
 + (id)predicateForInlineDrawing;
 + (id)predicateForPasswordProtected:(BOOL)arg1;
-+ (id)predicateForSearchableAttachments;
-+ (id)predicateForVisibleAttachments;
-+ (id)predicateForVisibleAttachmentsIncludingTrash;
-+ (id)predicateForVisibleAttachmentsIncludingTrash:(BOOL)arg1;
++ (id)predicateForSearchableAttachmentsInContext:(id)arg1;
++ (id)predicateForVisibleAttachmentsInContext:(id)arg1;
++ (id)predicateForVisibleAttachmentsIncludingTrash:(BOOL)arg1 inContext:(id)arg2;
++ (id)predicateForVisibleAttachmentsIncludingTrashInContext:(id)arg1;
 + (id)predicateForVisibleObjects;
 + (void)purgeAllAttachmentsInContext:(id)arg1;
 + (void)purgeAttachment:(id)arg1;
@@ -167,6 +168,7 @@
 - (void)clearCachedImages;
 - (id)contentIdentifier;
 - (id)dataForTypeIdentifier:(id)arg1;
+- (id)dataSourceIdentifier;
 - (void)dealloc;
 - (id)defaultTitle;
 - (void)deleteAttachmentPreviewImages;

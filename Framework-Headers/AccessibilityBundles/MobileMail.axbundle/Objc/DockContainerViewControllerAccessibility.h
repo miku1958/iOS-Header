@@ -24,6 +24,7 @@
 - (void)_axSetViewContainingDraftsElement:(id)arg1;
 - (id)_axViewContainingDraftsElement;
 - (void)_configureNewDockedView:(id)arg1;
+- (void)_setDockVisible:(BOOL)arg1;
 - (void)activateExposeModeAnimated:(BOOL)arg1;
 - (id)initWithPersistence:(id)arg1 scene:(id)arg2 rootViewController:(id)arg3;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

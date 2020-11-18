@@ -11,6 +11,7 @@
 @protocol SBSuspendedUnderLockManagerDelegate <NSObject>
 - (NSSet *)runningApplicationScenes:(SBSuspendedUnderLockManager *)arg1;
 - (SBDeviceApplicationSceneHandle *)suspendedUnderLockManager:(SBSuspendedUnderLockManager *)arg1 sceneHandleForScene:(FBScene *)arg2;
+- (BOOL)suspendedUnderLockManager:(SBSuspendedUnderLockManager *)arg1 shouldPreventSuspendUnderLockForScene:(FBScene *)arg2;
 - (FBSDisplayConfiguration *)suspendedUnderLockManagerDisplayConfiguration:(SBSuspendedUnderLockManager *)arg1;
 - (NSSet *)suspendedUnderLockManagerVisibleScenesInLayoutState:(SBSuspendedUnderLockManager *)arg1;
 @end

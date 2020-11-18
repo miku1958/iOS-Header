@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <ContentKit/WFNaming-Protocol.h>
 #import <ContentKit/WFSerializableContent-Protocol.h>
 
 @class NSString;
 
-@interface DCMapsLink : NSObject <WFSerializableContent>
+@interface DCMapsLink : NSObject <WFSerializableContent, WFNaming>
 {
 }
 
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) NSString *startAddress;
 @property (readonly, nonatomic) NSString *streetViewLocation;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *wfName;
 @property (readonly, nonatomic) long long zoomLevel;
 
 + (CDStruct_2b0c6e0b)coordinateRegionForMapSize:(struct CGSize)arg1 centeredAtLocation:(struct CLLocationCoordinate2D)arg2 atZoomLevel:(long long)arg3;
@@ -69,7 +71,6 @@
 - (struct CLLocationCoordinate2D)streetViewLocationCoordinate;
 - (id)transitAppURL;
 - (id)wazeAppURL;
-- (id)wfName;
 - (id)wfSerializedRepresentation;
 
 @end

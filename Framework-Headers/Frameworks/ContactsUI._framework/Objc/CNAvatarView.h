@@ -10,8 +10,8 @@
 #import <ContactsUI/CNCardTransitioning-Protocol.h>
 #import <ContactsUI/CNContactChangesObserver-Protocol.h>
 
-@class CNAvatarCardController, CNContact, CNContactStore, NSArray, NSString, PRPersonaStore, UIImage, UIImageView, UINavigationController;
-@protocol CNAvatarViewDelegate, CNCancelable, CNSchedulerProvider, CNUILikenessRendering;
+@class CNAvatarCardController, CNContact, CNContactStore, NSArray, NSIndexSet, NSString, PRPersonaStore, UIImage, UIImageView, UINavigationController;
+@protocol CNAvatarViewDelegate, CNAvatarViewUpdateToken, CNCancelable, CNSchedulerProvider, CNUILikenessRendering;
 
 @interface CNAvatarView : UIView <CNContactChangesObserver, CNAvatarCardControllerDelegate, CNCardTransitioning>
 {
@@ -19,6 +19,8 @@
     BOOL _showsActionsOnForcePress;
     BOOL _threeDTouchEnabled;
     BOOL _showsContactOnTap;
+    BOOL _shouldUpdateMaskedAvatars;
+    BOOL _allowStaleRenderingWithMatchingContextToken;
     BOOL _registeredInNotifier;
     BOOL _registeredContactAction;
     BOOL _disableCornerRadiusForAvatar;
@@ -32,6 +34,7 @@
     CNContactStore *_contactStore;
     PRPersonaStore *_personaStore;
     NSArray *_contacts;
+    NSIndexSet *_maskedAvatarIndices;
     NSString *_name;
     NSString *_message;
     id<CNAvatarViewDelegate> _delegate;
@@ -43,12 +46,15 @@
     CNAvatarCardController *_cardController;
     id<CNSchedulerProvider> _schedulerProvider;
     unsigned long long _stateCaptureHandle;
+    id<CNAvatarViewUpdateToken> _groupViewConfigurationUpdateToken;
     UIImage *_overrideImage;
     long long _monogrammerStyle;
+    NSString *_contextToken;
 }
 
 @property (copy, nonatomic) NSArray *actionCategories;
 @property (nonatomic) BOOL allowStaleRendering; // @synthesize allowStaleRendering=_allowStaleRendering;
+@property (nonatomic) BOOL allowStaleRenderingWithMatchingContextToken; // @synthesize allowStaleRenderingWithMatchingContextToken=_allowStaleRenderingWithMatchingContextToken;
 @property (nonatomic) BOOL allowsAnimation; // @synthesize allowsAnimation=_allowsAnimation;
 @property (nonatomic) BOOL asynchronousRendering; // @synthesize asynchronousRendering=_asynchronousRendering;
 @property (nonatomic) BOOL autoUpdateContact; // @synthesize autoUpdateContact=_autoUpdateContact;
@@ -60,15 +66,19 @@
 @property (strong, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, nonatomic) UIImage *contentImage;
 @property (readonly, nonatomic) struct CGRect contentImageFrame;
+@property (strong, nonatomic) NSString *contextToken; // @synthesize contextToken=_contextToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNAvatarViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableCornerRadiusForAvatar; // @synthesize disableCornerRadiusForAvatar=_disableCornerRadiusForAvatar;
 @property (nonatomic) long long displayedImageState; // @synthesize displayedImageState=_displayedImageState;
 @property (weak, nonatomic) UIView *forcePressView; // @synthesize forcePressView=_forcePressView;
+@property (strong, nonatomic) id<CNAvatarViewUpdateToken> groupViewConfigurationUpdateToken; // @synthesize groupViewConfigurationUpdateToken=_groupViewConfigurationUpdateToken;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<CNUILikenessRendering> imageRenderer; // @synthesize imageRenderer=_imageRenderer;
 @property (copy, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (readonly, nonatomic) BOOL isDisplayingContent;
+@property (strong, nonatomic) NSIndexSet *maskedAvatarIndices; // @synthesize maskedAvatarIndices=_maskedAvatarIndices;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) long long monogrammerStyle; // @synthesize monogrammerStyle=_monogrammerStyle;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -79,6 +89,7 @@
 @property BOOL registeredInNotifier; // @synthesize registeredInNotifier=_registeredInNotifier;
 @property (strong, nonatomic) id<CNCancelable> rendererToken; // @synthesize rendererToken=_rendererToken;
 @property (strong, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property (nonatomic) BOOL shouldUpdateMaskedAvatars; // @synthesize shouldUpdateMaskedAvatars=_shouldUpdateMaskedAvatars;
 @property (nonatomic) BOOL showsActionsOnForcePress;
 @property (nonatomic) BOOL showsActionsOnTap;
 @property (nonatomic) BOOL showsContactOnTap; // @synthesize showsContactOnTap=_showsContactOnTap;
@@ -95,13 +106,16 @@
 @property (readonly, nonatomic) UIView *transitioningView;
 
 + (BOOL)defaultThreeDTouchSupport;
++ (id)descriptionForDisplayedImageState:(long long)arg1;
 + (id)descriptorForRequiredKeys;
 + (id)descriptorForRequiredKeysWithThreeDTouchEnabled:(BOOL)arg1;
 + (id)descriptorForRequiredKeysWithThreeDTouchEnabled:(BOOL)arg1 shouldUseCachingRenderer:(BOOL)arg2 description:(id)arg3;
 + (id)makeDescriptorForRequiredKeysWithThreeDTouchEnabled:(BOOL)arg1 shouldUseCachingRenderer:(BOOL)arg2;
++ (unsigned long long)maxContactAvatars;
 - (void).cxx_destruct;
 - (double)_diameter;
 - (void)_renderContactsImage;
+- (void)_setContacts:(id)arg1;
 - (void)_updateCardActions;
 - (void)_updateRegistration;
 - (id)avatarCardController:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
@@ -119,6 +133,7 @@
 - (void)didMoveToWindow;
 - (void)dismissContactViewController:(id)arg1;
 - (BOOL)enabled;
+- (struct CGRect)frameForAvatarAtIndex:(unsigned long long)arg1 inView:(id)arg2;
 - (id)imageForTransitioningToFullScreen;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -128,13 +143,21 @@
 - (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(BOOL)arg2 contactStore:(id)arg3;
 - (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(BOOL)arg2 contactStore:(id)arg3 style:(unsigned long long)arg4 schedulerProvider:(id)arg5;
 - (id)initWithSettings:(id)arg1;
+- (BOOL)isUpdatingGroupViewConfiguration;
 - (void)layoutSubviews;
+- (void)notifyDelegateOfGroupConfigurationUpdateWithError:(id)arg1;
 - (id)presentingViewControllerForAvatarCardController:(id)arg1;
+- (void)resetGroupUpdateTokenIfNeeded;
+- (void)setContacts:(id)arg1 forToken:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setImage:(id)arg1 state:(long long)arg2;
 - (void)setupAvatarCardControllerIfNeeded;
+- (BOOL)shouldUpdateWithContacts:(id)arg1;
 - (void)showContact:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (id)updateViewWithGroupIdentity:(id)arg1;
+- (id)updateViewWithGroupIdentity:(id)arg1 maskingContacts:(id)arg2;
 
 @end
 

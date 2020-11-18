@@ -17,19 +17,22 @@
     NSString *_serializationKey;
     double _denominator;
     double _sumX;
-    double _sumX2;
     unsigned long long _pcMetricID;
     long long _numSamples;
+    double _M2;
+    double _welfordMean;
 }
 
+@property double M2; // @synthesize M2=_M2;
 @property double denominator; // @synthesize denominator=_denominator;
 @property (copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property long long numSamples; // @synthesize numSamples=_numSamples;
 @property unsigned long long pcMetricID; // @synthesize pcMetricID=_pcMetricID;
 @property (copy) NSString *serializationKey; // @synthesize serializationKey=_serializationKey;
 @property double sumX; // @synthesize sumX=_sumX;
-@property double sumX2; // @synthesize sumX2=_sumX2;
 @property (copy) NSString *unit; // @synthesize unit=_unit;
+@property (readonly) double variance;
+@property double welfordMean; // @synthesize welfordMean=_welfordMean;
 
 + (id)metricWithDisplayName:(id)arg1 unit:(id)arg2 denominator:(double)arg3 serializationKey:(id)arg4;
 + (id)pcMetricWithDisplayName:(id)arg1 pcMetricID:(unsigned long long)arg2 unit:(id)arg3 denominator:(double)arg4 serializationKey:(id)arg5;

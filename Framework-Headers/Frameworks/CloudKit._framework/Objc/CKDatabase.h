@@ -11,10 +11,10 @@
 
 @interface CKDatabase : NSObject
 {
+    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
     CKContainer *_container;
     long long _scope;
     NSOperationQueue *_operationQueue;
-    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
 }
 
 @property (weak, nonatomic) CKContainer *container; // @synthesize container=_container;
@@ -43,6 +43,7 @@
 - (id)description;
 - (void)fetchAllRecordZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchAllSubscriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchPCSFromCacheForZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

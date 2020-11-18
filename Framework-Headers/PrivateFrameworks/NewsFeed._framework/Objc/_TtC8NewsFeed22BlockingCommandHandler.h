@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed22BlockingCommandHandler : NSObject
 {
     MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *commandCenter;
 }
 
 - (void).cxx_destruct;

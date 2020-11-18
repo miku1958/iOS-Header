@@ -6,9 +6,18 @@
 
 #import <UIKit/__UIWindowAccessibility_super.h>
 
-@interface UIWindowAccessibility : __UIWindowAccessibility_super
+#import <UIKit/AXRemoteElementChildrenDelegate-Protocol.h>
+
+@class NSString;
+
+@interface UIWindowAccessibility : __UIWindowAccessibility_super <AXRemoteElementChildrenDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
@@ -16,22 +25,33 @@
 - (id)_accessibilityAllRemoteElements;
 - (unsigned long long)_accessibilityAutomationType;
 - (unsigned int)_accessibilityContextId;
+- (id)_accessibilityFirstResponderCoalesceTimer;
+- (id)_accessibilityGetRemoteElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityIOSMacRotors;
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
+- (BOOL)_accessibilityIsGroupedParent;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityMLRemoteElement;
+- (void)_accessibilityRegisterRemoteElement:(BOOL)arg1;
 - (id)_accessibilityRemoteElement;
 - (int)_accessibilityRemotePid;
 - (void)_accessibilitySetAllRemoteElements:(id)arg1;
+- (void)_accessibilitySetFirstResponderCoalesceTimer:(id)arg1;
 - (void)_accessibilitySetIOSMacRotors:(id)arg1;
+- (void)_accessibilitySetRemoteElement:(id)arg1;
+- (BOOL)_accessibilityShouldUseRemoteElement;
 - (id)_accessibilityUserTestingParent;
+- (id)_accessibilityWindowSections;
 - (void)_axCheckForExistingRemoteElements;
 - (void)_axListenForRemoteElement;
 - (void)_axRemoteElementRegistered:(id)arg1;
 - (void)_axUpdateForRemoteElement:(id)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (void)_orderFrontWithoutMakingKey;
+- (void)_setBoundContext:(id)arg1;
 - (void)_setFirstResponder:(id)arg1;
+- (id)_targetWindowForPathIndex:(long long)arg1 atPoint:(struct CGPoint)arg2 forEvent:(id)arg3 windowServerHitTestWindow:(id)arg4;
 - (id)accessibilityContainer;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)accessibilityIsWindow;
@@ -39,6 +59,7 @@
 - (unsigned long long)accessibilityTraits;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithWindowScene:(id)arg1;
 - (struct CGPoint)warpPoint:(struct CGPoint)arg1;
 
 @end

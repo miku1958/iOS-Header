@@ -13,7 +13,7 @@
 #import <VideosUI/VUILibraryGridCollectionViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIMenuCollectionViewControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UINavigationController, UIViewController, VUIFamilyMember, VUILibraryAlertView, VUILibraryMenuDataSource, VUIMediaLibrary, VUIMenuCollectionViewController;
+@class NSMutableDictionary, NSString, UINavigationController, UIViewController, VUIFamilyMember, VUILibraryAlertView, VUILibraryMenuDataSource, VUIMediaLibrary, VUIMenuCollectionViewController, VUIMenuDataSource;
 @protocol VUILibrarySplitViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -31,9 +31,11 @@ __attribute__((visibility("hidden")))
     VUILibraryAlertView *_alertView;
     VUIMediaLibrary *_currentHomeShareMediaLibrary;
     NSMutableDictionary *_entitiesDataSourceForMenuItem;
+    VUIMenuDataSource *_categories;
 }
 
 @property (strong, nonatomic) VUILibraryAlertView *alertView; // @synthesize alertView=_alertView;
+@property (strong, nonatomic) VUIMenuDataSource *categories; // @synthesize categories=_categories;
 @property (strong, nonatomic) VUIMediaLibrary *currentHomeShareMediaLibrary; // @synthesize currentHomeShareMediaLibrary=_currentHomeShareMediaLibrary;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_addMediaLibraryNotificationObservers;
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
 - (id)_deviceMediaLibrary;
+- (id)_downloadViewController;
 - (id)_entitiesDataSourceForCategoryType:(long long)arg1;
 - (id)_entitiesDataSourceForGenre:(id)arg1;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
@@ -61,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
 - (void)_setDisplayModeForLayoutType:(long long)arg1;
-- (BOOL)_shouldShowBackButton;
+- (BOOL)_shouldLeftBarButton;
 - (id)_viewControllerForIndexPath:(id)arg1;
 - (void)categoryMenuViewControllerShouldDismiss:(id)arg1;
 - (void)dealloc;

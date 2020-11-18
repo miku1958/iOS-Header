@@ -21,12 +21,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_newTimerDialForSettings:(id)arg1;
+- (id)_newTimerDialForSettings:(id)arg1 withFont:(id)arg2;
 - (id)_timerFont;
 - (void)_updateLegibilityStrength;
+- (id)accessoryView;
 - (void)dealloc;
 - (id)init;
+- (double)interItemSpacing;
 - (void)setEndDate:(id)arg1;
+- (void)setFont:(id)arg1;
 - (void)setLegibilitySettings:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)updateTimerLabel;

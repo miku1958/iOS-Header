@@ -12,9 +12,15 @@
 {
     BOOL _personalDomainsSetup;
     BOOL _appleMusicSubscriber;
+    struct {
+        unsigned int personalDomainsSetup:1;
+        unsigned int appleMusicSubscriber:1;
+    } _has;
 }
 
 @property (nonatomic) BOOL appleMusicSubscriber; // @synthesize appleMusicSubscriber=_appleMusicSubscriber;
+@property (nonatomic) BOOL hasAppleMusicSubscriber;
+@property (nonatomic) BOOL hasPersonalDomainsSetup;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL personalDomainsSetup; // @synthesize personalDomainsSetup=_personalDomainsSetup;
 

@@ -22,7 +22,7 @@
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
-- (BOOL)pagingEnabled;
+- (BOOL)prefersPagingEnabled;
 
 @end
 

@@ -21,12 +21,14 @@
         unsigned int separatorStyle:1;
         unsigned int preventThumbnailImageScaling:1;
         unsigned int isSecondaryTitleDetached:1;
+        unsigned int shouldUseCompactDisplay:1;
     } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
     BOOL _preventThumbnailImageScaling;
     BOOL _isSecondaryTitleDetached;
+    BOOL _shouldUseCompactDisplay;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -47,9 +49,9 @@
 }
 
 @property (strong, nonatomic) SFActionItem *action; // @synthesize action=_action;
-@property (strong, nonatomic) SFColor *backgroundColor;
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) SFButton *button; // @synthesize button=_button;
-@property (nonatomic) BOOL canBeHidden;
+@property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
@@ -57,8 +59,8 @@
 @property (copy, nonatomic) NSArray *descriptions; // @synthesize descriptions=_descriptions;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (strong, nonatomic) SFRichText *footnote; // @synthesize footnote=_footnote;
-@property (nonatomic) BOOL hasBottomPadding;
-@property (nonatomic) BOOL hasTopPadding;
+@property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider;
 @property (nonatomic) BOOL isSecondaryTitleDetached; // @synthesize isSecondaryTitleDetached=_isSecondaryTitleDetached;
@@ -66,20 +68,21 @@
 @property (strong, nonatomic) SFCard *nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (nonatomic) BOOL preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
-@property (copy, nonatomic) NSArray *punchoutOptions;
-@property (copy, nonatomic) NSString *punchoutPickerDismissText;
-@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (copy, nonatomic) NSString *resultIdentifier;
 @property (strong, nonatomic) SFFormattedText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong, nonatomic) SFImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
-@property (nonatomic) int separatorStyle;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property (nonatomic) BOOL shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (strong, nonatomic) SFRichText *title; // @synthesize title=_title;
 @property (strong, nonatomic) SFFormattedText *trailingBottomText; // @synthesize trailingBottomText=_trailingBottomText;
 @property (strong, nonatomic) SFFormattedText *trailingMiddleText; // @synthesize trailingMiddleText=_trailingMiddleText;
 @property (strong, nonatomic) SFFormattedText *trailingTopText; // @synthesize trailingTopText=_trailingTopText;
-@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
@@ -92,6 +95,7 @@
 - (BOOL)hasIsSecondaryTitleDetached;
 - (BOOL)hasPreventThumbnailImageScaling;
 - (BOOL)hasSeparatorStyle;
+- (BOOL)hasShouldUseCompactDisplay;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 

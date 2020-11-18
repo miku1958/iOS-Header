@@ -36,6 +36,7 @@
 - (BOOL)_shouldAllowScrollForScrollingStrategy:(long long)arg1;
 - (BOOL)_shouldFailHorizontalSwipesForScrollingStrategy:(long long)arg1;
 - (void)_updateForScrollingStrategy:(long long)arg1 fromScrollingStrategy:(long long)arg2;
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

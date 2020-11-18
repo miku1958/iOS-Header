@@ -25,12 +25,18 @@
 @property (nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
 @property (readonly) Class superclass;
 
++ (struct TSCECellRef)anyHeaderNameChangedPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
++ (struct TSCECellRef)filteringChangedPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
++ (struct TSCECellRef)formulaDefinitionPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 + (struct TSCECellRef)geometryPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
++ (struct TSCECellRef)groupByChangedPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 + (struct TSCECellRef)localePrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 + (struct TSCECellRef)nowPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 + (struct TSCECellRef)randomPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 + (struct TSCECellRef)sheetTableNamePrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
++ (struct TSCECellRef)subtotalPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 + (struct TSCECellRef)todayPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
++ (struct TSCECellRef)userHiddenChangedPrecedentForTableUID:(const UUIDData_5fbc143e *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dirtyGeometryVolatileCells;

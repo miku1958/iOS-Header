@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 #import <PhotosGraph/PGGraphSynonymSupport-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface PGGraphSeasonNode : PGGraphNode <PGGraphLocalizable, PGGraphSynonymSupport>
+@interface PGGraphSeasonNode : PGGraphOptimizedNode <PGGraphLocalizable, PGGraphSynonymSupport>
 {
+    NSString *_name;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,10 +21,19 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) NSArray *localizedSynonyms;
+@property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
 + (id)_localizationKeyForSeasonNode:(id)arg1;
+- (void).cxx_destruct;
+- (unsigned short)domain;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

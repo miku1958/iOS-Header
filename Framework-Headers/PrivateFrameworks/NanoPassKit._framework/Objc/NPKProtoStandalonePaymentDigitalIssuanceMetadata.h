@@ -15,11 +15,11 @@
     NSString *_action;
     NSMutableArray *_defaultSuggestions;
     NSString *_merchantID;
+    NSMutableArray *_serviceProviderAcceptedNetworks;
     NSMutableArray *_serviceProviderCapabilities;
     NSString *_serviceProviderCountryCode;
     NSString *_serviceProviderDictJson;
     NSString *_serviceProviderIdentifier;
-    NSMutableArray *_serviceProviderSupportedNetworks;
 }
 
 @property (strong, nonatomic) NSString *action; // @synthesize action=_action;
@@ -30,22 +30,22 @@
 @property (readonly, nonatomic) BOOL hasServiceProviderDictJson;
 @property (readonly, nonatomic) BOOL hasServiceProviderIdentifier;
 @property (strong, nonatomic) NSString *merchantID; // @synthesize merchantID=_merchantID;
+@property (strong, nonatomic) NSMutableArray *serviceProviderAcceptedNetworks; // @synthesize serviceProviderAcceptedNetworks=_serviceProviderAcceptedNetworks;
 @property (strong, nonatomic) NSMutableArray *serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
 @property (strong, nonatomic) NSString *serviceProviderCountryCode; // @synthesize serviceProviderCountryCode=_serviceProviderCountryCode;
 @property (strong, nonatomic) NSString *serviceProviderDictJson; // @synthesize serviceProviderDictJson=_serviceProviderDictJson;
 @property (strong, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
-@property (strong, nonatomic) NSMutableArray *serviceProviderSupportedNetworks; // @synthesize serviceProviderSupportedNetworks=_serviceProviderSupportedNetworks;
 
 + (Class)defaultSuggestionsType;
++ (Class)serviceProviderAcceptedNetworksType;
 + (Class)serviceProviderCapabilitiesType;
-+ (Class)serviceProviderSupportedNetworksType;
 - (void).cxx_destruct;
 - (void)addDefaultSuggestions:(id)arg1;
+- (void)addServiceProviderAcceptedNetworks:(id)arg1;
 - (void)addServiceProviderCapabilities:(id)arg1;
-- (void)addServiceProviderSupportedNetworks:(id)arg1;
 - (void)clearDefaultSuggestions;
+- (void)clearServiceProviderAcceptedNetworks;
 - (void)clearServiceProviderCapabilities;
-- (void)clearServiceProviderSupportedNetworks;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defaultSuggestionsAtIndex:(unsigned long long)arg1;
@@ -56,10 +56,10 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)serviceProviderAcceptedNetworksAtIndex:(unsigned long long)arg1;
+- (unsigned long long)serviceProviderAcceptedNetworksCount;
 - (id)serviceProviderCapabilitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceProviderCapabilitiesCount;
-- (id)serviceProviderSupportedNetworksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)serviceProviderSupportedNetworksCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSNumber, NSString;
 
 @interface PXMockDisplayAsset : NSObject <PXDisplayAsset>
 {
@@ -25,8 +25,9 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) NSDate *localCreationDate;
@@ -43,6 +44,9 @@
 @property (readonly, nonatomic) unsigned long long thumbnailVersion;
 @property (readonly, nonatomic) NSString *uuid;
 
++ (id)propertiesForImageWithSize:(struct CGSize)arg1;
++ (id)propertiesForLivePhotoWithSize:(struct CGSize)arg1;
++ (id)propertiesForVideoWithSize:(struct CGSize)arg1;
 - (void).cxx_destruct;
 - (BOOL)_boolValueForKey:(id)arg1;
 - (id)_dateValueForKey:(id)arg1;
@@ -52,7 +56,7 @@
 - (unsigned long long)_unsignedIntegerValueForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithProperties:(id)arg1;
 - (long long)isContentEqualTo:(id)arg1;
 
 @end

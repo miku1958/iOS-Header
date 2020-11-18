@@ -18,6 +18,7 @@
     NSNumber *_displayMode;
     NSDictionary *_sortingMode;
     NSNumber *_browseTabSelected;
+    NSNumber *_userPrefersTiledSidebarHidden;
     NSDate *_lastUpdatedDate;
 }
 
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) NSData *mostRecentEffectiveRootLocation; // @synthesize mostRecentEffectiveRootLocation=_mostRecentEffectiveRootLocation;
 @property (strong, nonatomic) NSData *mostRecentlyVisitedLocation; // @synthesize mostRecentlyVisitedLocation=_mostRecentlyVisitedLocation;
 @property (strong, nonatomic) NSDictionary *sortingMode; // @synthesize sortingMode=_sortingMode;
+@property (strong, nonatomic) NSNumber *userPrefersTiledSidebarHidden; // @synthesize userPrefersTiledSidebarHidden=_userPrefersTiledSidebarHidden;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

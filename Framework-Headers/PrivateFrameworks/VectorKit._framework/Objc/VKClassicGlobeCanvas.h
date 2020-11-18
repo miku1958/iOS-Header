@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 {
     VKGlobeCameraController *_globeCameraController;
     int _mapType;
-    CDStruct_80aa614a _mapDisplayStyle;
     double _contentScale;
     BOOL _disableRoads;
     BOOL _disableLabels;
@@ -70,12 +69,11 @@ __attribute__((visibility("hidden")))
 - (const shared_ptr_a3c46825 *)_styleManager;
 - (void)_update;
 - (void)_updateDebugSettings;
-- (void)_viewTransformSetup;
 - (void)addOverlay:(id)arg1;
 - (CDUnknownBlockType)annotationCoordinateTest;
 - (CDUnknownBlockType)annotationRectTest;
 - (id)attributionsForCurrentRegion;
-- (id)camera;
+- (_retain_ptr_c0a21da9)camera;
 - (id)consoleString:(BOOL)arg1;
 - (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_c3b9c2ee)arg1;
 - (struct CGPoint)convertCoordinateToPoint:(CDStruct_c3b9c2ee)arg1;
@@ -84,7 +82,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_c3b9c2ee)convertPointToCoordinateOnSphere:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
 - (id)createFlyoverPreTourAnimation:(id)arg1 duration:(double)arg2;
-- (float)currentRoadSignOffset;
 - (void)dealloc;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (id)detailedDescription;
@@ -105,15 +102,13 @@ __attribute__((visibility("hidden")))
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
 - (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (void)removeOverlay:(id)arg1;
-- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(BOOL)arg2;
 - (void)resetFlyoverStatistics;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)resumeFlyoverTourAnimation;
+- (void)setCamera:(_retain_ptr_c0a21da9)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)setMapType:(int)arg1 animated:(BOOL)arg2;
-- (void)setNavCameraIsDetached:(BOOL)arg1;
-- (void)setNightMode:(BOOL)arg1;
 - (void)setupMapScene;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
 - (void)startFlyoverAnimation:(id)arg1 animateToStart:(BOOL)arg2 labelChanged:(CDUnknownBlockType)arg3 stateChange:(CDUnknownBlockType)arg4;
@@ -126,7 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)updateCameraForFrameResize;
 - (void)updateCameraFromGlobe;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 - (BOOL)useNewRenderPath;
 - (id)viewportInfo;
 - (void)waitForLoading;

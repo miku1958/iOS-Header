@@ -12,7 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface PUActivitySharingConfiguration : NSObject
 {
-    BOOL _allowAirPlayActivity;
+    BOOL _allowsAirPlayActivity;
+    BOOL _allowsRemoveFromFeaturedPhotosActivity;
     BOOL _wantsActionSheet;
     BOOL _excludeShareActivity;
     PHFetchResult *_collectionListFetchResult;
@@ -25,11 +26,12 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSString *_subtitle;
     id<PXDisplayAsset> _keyAsset;
-    unsigned long long _sourceOrigin;
+    long long _sourceOrigin;
 }
 
 @property (copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
-@property (nonatomic) BOOL allowAirPlayActivity; // @synthesize allowAirPlayActivity=_allowAirPlayActivity;
+@property (nonatomic) BOOL allowsAirPlayActivity; // @synthesize allowsAirPlayActivity=_allowsAirPlayActivity;
+@property (nonatomic) BOOL allowsRemoveFromFeaturedPhotosActivity; // @synthesize allowsRemoveFromFeaturedPhotosActivity=_allowsRemoveFromFeaturedPhotosActivity;
 @property (copy, nonatomic) NSDictionary *assetsFetchResultsByAssetCollection; // @synthesize assetsFetchResultsByAssetCollection=_assetsFetchResultsByAssetCollection;
 @property (readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
 @property (nonatomic) BOOL excludeShareActivity; // @synthesize excludeShareActivity=_excludeShareActivity;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (readonly, nonatomic) PUPhotoSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
-@property (nonatomic) unsigned long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property (nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) BOOL wantsActionSheet; // @synthesize wantsActionSheet=_wantsActionSheet;

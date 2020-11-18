@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <PassKitUI/PKPassFaceViewDelegate-Protocol.h>
 #import <PassKitUI/PKPasscodeLockManagerObserver-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKPass, PKPassColorProfile, PKPassFaceViewRendererState, PKPassFrontFaceView, PKPasscodeLockManager, UITapGestureRecognizer;
-@protocol WLCardViewDelegate;
+@class NSMutableArray, NSObject, NSString, PKPass, PKPassColorProfile, PKPassFaceViewRendererState, PKPassFrontFaceView, PKPasscodeLockManager, UITapGestureRecognizer;
+@protocol OS_dispatch_source, WLCardViewDelegate;
 
-@interface PKPassView : UIView <UIGestureRecognizerDelegate, PKPasscodeLockManagerObserver>
+@interface PKPassView : UIView <UIGestureRecognizerDelegate, PKPassFaceViewDelegate, PKPasscodeLockManagerObserver>
 {
     PKPassFrontFaceView *_frontFace;
     PKPassColorProfile *_colorProfile;
@@ -20,8 +21,10 @@
     UITapGestureRecognizer *_tapRecognizer;
     long long _priorContentMode;
     PKPasscodeLockManager *_passcodeLockManager;
-    unsigned long long _contentModeToken;
     NSString *_suppressingIdentifier;
+    BOOL _contentLoading;
+    BOOL _contentLoaded;
+    NSObject<OS_dispatch_source> *_contentModeUpdateTimer;
     NSMutableArray *_delayedAnimations;
     BOOL _invalidated;
     BOOL _modallyPresented;
@@ -38,10 +41,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL frontFaceBodyContentCreated;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFrontFaceExpanded;
 @property (nonatomic) double modalShadowVisibility; // @synthesize modalShadowVisibility=_modalShadowVisibility;
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property (nonatomic, getter=isReduceMotionEnabled) BOOL reduceMotionEnabled;
 @property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
@@ -59,6 +64,7 @@
 - (BOOL)canShowBarcode;
 - (void)dealloc;
 - (void)didAuthenticate;
+- (void)didTransact;
 - (void)drawFrontFaceAtSize:(struct CGSize)arg1;
 - (struct CGRect)frameOfVisibleFace;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -70,13 +76,16 @@
 - (void)invalidate;
 - (id)item;
 - (void)layoutSubviews;
+- (void)passFaceViewExpandButtonTapped:(id)arg1;
 - (void)passcodeLockManager:(id)arg1 didReceivePasscodeSet:(BOOL)arg2;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setContentMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)setContentMode:(long long)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
+- (void)setFrontFaceExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setModalShadowVisibility:(double)arg1 animated:(BOOL)arg2;
 - (void)setModalShadowVisibility:(double)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;
+- (void)setPaymentBarcodeData:(id)arg1;
 - (struct CGSize)sizeOfFront;
 - (struct CGSize)sizeOfFrontFace;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

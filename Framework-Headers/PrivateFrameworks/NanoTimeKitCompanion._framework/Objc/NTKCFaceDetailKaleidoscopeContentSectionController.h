@@ -15,6 +15,7 @@
 {
     NTKCompanionKaleidoscopeEditor *_editor;
     UIImagePickerController *_presentedPicker;
+    unsigned long long _currentAsset;
     BOOL _externalAssetSet;
     id<NTKCFaceDetailEditOptionSectionDelegate> delegate;
     UIViewController *_parentViewController;

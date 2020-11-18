@@ -56,25 +56,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_retainedSearch:1;
         unsigned int read_venueIdentifier:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_supportedAutocompleteResultCellTypes:1;
-        unsigned int wrote_supportedListTypes:1;
-        unsigned int wrote_categorySuggestionEntryMetadata:1;
-        unsigned int wrote_categorySuggestionEntry:1;
-        unsigned int wrote_querySuggestionEntry:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_retainedSearch:1;
-        unsigned int wrote_venueIdentifier:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxQueryBuilderSuggestions:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_highlightDiff:1;
-        unsigned int wrote_interleaveCategorySuggestions:1;
-        unsigned int wrote_supportClientRankingFeatureMetadata:1;
-        unsigned int wrote_supportDirectionIntentSuggestions:1;
-        unsigned int wrote_supportRapAffordance:1;
-        unsigned int wrote_supportSectionHeader:1;
-        unsigned int wrote_supportUnresolvedDirectionIntent:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -120,17 +102,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsSupportedAutocompleteResultCellTypes:(id)arg1;
 - (int)StringAsSupportedListTypes:(id)arg1;
-- (void)_addNoFlagsSupportedAutocompleteResultCellType:(int)arg1;
-- (void)_addNoFlagsSupportedListType:(int)arg1;
-- (void)_readCategorySuggestionEntry;
-- (void)_readCategorySuggestionEntryMetadata;
-- (void)_readQuery;
-- (void)_readQuerySuggestionEntry;
-- (void)_readRetainedSearch;
-- (void)_readSupportedAutocompleteResultCellTypes;
-- (void)_readSupportedListTypes;
-- (void)_readVenueIdentifier;
-- (void)_readViewportInfo;
 - (void)addSupportedAutocompleteResultCellType:(int)arg1;
 - (void)addSupportedListType:(int)arg1;
 - (void)clearSensitiveFields;
@@ -145,7 +116,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

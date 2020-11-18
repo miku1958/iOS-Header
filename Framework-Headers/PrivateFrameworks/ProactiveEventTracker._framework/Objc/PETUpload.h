@@ -8,33 +8,40 @@
 
 #import <ProactiveEventTracker/NSCopying-Protocol.h>
 
-@class NSMutableArray, PETMetadata;
+@class NSData, NSMutableArray, PETMetadata;
 
 @interface PETUpload : PBCodable <NSCopying>
 {
     NSMutableArray *_aggregatedMessages;
+    NSData *_compressedData;
+    NSData *_compressedMessages;
     PETMetadata *_metadata;
-    NSMutableArray *_trialMessages;
     NSMutableArray *_unaggregatedMessages;
+    BOOL _isCompressed;
+    struct {
+        unsigned int isCompressed:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *aggregatedMessages; // @synthesize aggregatedMessages=_aggregatedMessages;
+@property (strong, nonatomic) NSData *compressedData; // @synthesize compressedData=_compressedData;
+@property (strong, nonatomic) NSData *compressedMessages; // @synthesize compressedMessages=_compressedMessages;
+@property (readonly, nonatomic) BOOL hasCompressedData;
+@property (readonly, nonatomic) BOOL hasCompressedMessages;
+@property (nonatomic) BOOL hasIsCompressed;
 @property (readonly, nonatomic) BOOL hasMetadata;
+@property (nonatomic) BOOL isCompressed; // @synthesize isCompressed=_isCompressed;
 @property (strong, nonatomic) PETMetadata *metadata; // @synthesize metadata=_metadata;
-@property (strong, nonatomic) NSMutableArray *trialMessages; // @synthesize trialMessages=_trialMessages;
 @property (strong, nonatomic) NSMutableArray *unaggregatedMessages; // @synthesize unaggregatedMessages=_unaggregatedMessages;
 
 + (Class)aggregatedMessagesType;
-+ (Class)trialMessagesType;
 + (Class)unaggregatedMessagesType;
 - (void).cxx_destruct;
 - (void)addAggregatedMessages:(id)arg1;
-- (void)addTrialMessages:(id)arg1;
 - (void)addUnaggregatedMessages:(id)arg1;
 - (id)aggregatedMessagesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)aggregatedMessagesCount;
 - (void)clearAggregatedMessages;
-- (void)clearTrialMessages;
 - (void)clearUnaggregatedMessages;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -44,8 +51,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)trialMessagesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)trialMessagesCount;
 - (id)unaggregatedMessagesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)unaggregatedMessagesCount;
 - (void)writeTo:(id)arg1;

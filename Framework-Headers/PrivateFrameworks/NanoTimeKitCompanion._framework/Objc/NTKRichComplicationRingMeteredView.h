@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)isXL;
 - (CDUnknownBlockType)customizeMeterLayerBlock;
 
 @end

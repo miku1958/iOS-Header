@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/UICollectionViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSLayoutConstraint, NSString, NTKCGalleryCollection, UICollectionView, UICollectionViewFlowLayout, UILabel, UIStackView, _NTKCAddNewFace;
+@class NSArray, NSLayoutConstraint, NSString, NTKCGalleryCollection, UICollectionView, UICollectionViewFlowLayout, UILabel, UIStackView, _NTKCAddNewFace;
 @protocol NTKCGalleryCellDelegate;
 
 @interface NTKCGalleryCell : UITableViewCell <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -30,6 +30,7 @@
     UIStackView *_titleStack;
     UIStackView *_collectionViewFooterStack;
     UILabel *_footer;
+    NSArray *_snapshotRequests;
     _NTKCAddNewFace *_addNewFace;
     struct CGSize _itemSize;
 }
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) NSLayoutConstraint *leadingInsetConstraint; // @synthesize leadingInsetConstraint=_leadingInsetConstraint;
 @property (nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
+@property (copy, nonatomic) NSArray *snapshotRequests; // @synthesize snapshotRequests=_snapshotRequests;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSLayoutConstraint *titleBaselineConstraint; // @synthesize titleBaselineConstraint=_titleBaselineConstraint;
@@ -63,6 +65,7 @@
 - (void).cxx_destruct;
 - (struct CGPoint)_contentInsetPoint;
 - (void)_fontSizeDidChange;
+- (void)_resetSnapshotRequests;
 - (BOOL)_shouldShowAddNewFace;
 - (void)calculateHeightForCollection;
 - (void)clearSelectedFaces;

@@ -13,7 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *selectedFriend;
     MISSING_TYPE *refreshReason;
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
     MISSING_TYPE *apsConnectionHandler;
     MISSING_TYPE *tapContexts;
     MISSING_TYPE *refreshQueue;

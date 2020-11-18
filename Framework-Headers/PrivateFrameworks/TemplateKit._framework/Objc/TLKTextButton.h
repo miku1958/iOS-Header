@@ -6,25 +6,48 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSString, UIFont;
+@class NSString, TLKImage, TLKImageView, TLKRichText, UIFont;
 
 @interface TLKTextButton : UIButton
 {
+    BOOL _matchesHeightForAlignmentRectWithIntrinsicContentSize;
+    BOOL _attributedTitleExplicitlySet;
     unsigned long long _prominence;
+    TLKRichText *_richTitle;
+    TLKImage *_tlkImage;
     NSString *_title;
+    long long _alignment;
+    TLKImageView *_tlkImageView;
 }
 
+@property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
+@property BOOL attributedTitleExplicitlySet; // @synthesize attributedTitleExplicitlySet=_attributedTitleExplicitlySet;
 @property (strong, nonatomic) UIFont *font;
+@property BOOL matchesHeightForAlignmentRectWithIntrinsicContentSize; // @synthesize matchesHeightForAlignmentRectWithIntrinsicContentSize=_matchesHeightForAlignmentRectWithIntrinsicContentSize;
 @property (nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
+@property (copy, nonatomic) TLKRichText *richTitle; // @synthesize richTitle=_richTitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
+@property (strong, nonatomic) TLKImageView *tlkImageView; // @synthesize tlkImageView=_tlkImageView;
 
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_updateSelectionViewForState:(unsigned long long)arg1;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (BOOL)allowsVibrancy;
 - (void)didMoveToWindow;
+- (BOOL)hasTemplateUIImage;
+- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (id)init;
+- (struct CGSize)intrinsicContentSize;
+- (BOOL)isImageMode;
+- (void)layoutSubviews;
+- (void)matchHeightForAlignmentRectWithIntrinsicContentSizeIfNecessary;
+- (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
+- (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateAttributedTitle;
 
 @end
 

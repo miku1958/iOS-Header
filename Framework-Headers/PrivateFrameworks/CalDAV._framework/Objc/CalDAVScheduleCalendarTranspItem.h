@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)copyParseRules;
+- (id)init;
 
 @end
 

@@ -20,9 +20,9 @@
 @property (readonly) NSPNetworkAgent *agentForKey;
 @property int error; // @synthesize error=_error;
 @property unsigned int flags; // @synthesize flags=_flags;
-@property (strong) NSData *info; // @synthesize info=_info;
+@property (strong, nonatomic) NSData *info; // @synthesize info=_info;
 @property unsigned int session_counter; // @synthesize session_counter=_session_counter;
-@property (strong) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (id)data;

@@ -46,9 +46,10 @@
 - (void)addBreatheSessions:(const vector_b2eb559c *)arg1;
 - (void)addHeartRateSamples:(const vector_8ece868d *)arg1;
 - (void)addWorkouts:(const vector_89c96404 *)arg1;
+- (id)calcRestingHeartRateWithMinReadings:(int)arg1 readingsCount:(int *)arg2 filteredReadingsCount:(int *)arg3;
 - (id)heartRateDateInterval;
 - (id)initWithDateInterval:(id)arg1 activityCacheIndex:(long long)arg2;
-- (id)restingHeartRate;
+- (void)reportDailyAnalyticsWithProfile:(id)arg1;
 - (void)setDateOfBirthComponents:(id)arg1;
 - (id)walkingAverageHeartRate;
 

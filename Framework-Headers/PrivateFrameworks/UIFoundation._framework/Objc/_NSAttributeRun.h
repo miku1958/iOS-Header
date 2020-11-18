@@ -8,12 +8,11 @@
 
 #import <UIFoundation/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSTextStorage;
+@class NSMutableArray;
 
 @interface _NSAttributeRun : NSObject <NSCopying>
 {
     struct _NSRange _range;
-    NSTextStorage *_textStorage;
     NSMutableArray *_attributesArray;
 }
 

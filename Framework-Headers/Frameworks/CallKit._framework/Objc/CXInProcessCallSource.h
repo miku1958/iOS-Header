@@ -12,18 +12,21 @@
 {
     NSString *_bundleIdentifier;
     NSURL *_bundleURL;
+    NSString *_localizedName;
     CXInProcessProvider *_provider;
 }
 
 @property (strong, nonatomic) CXInProcessProvider *provider; // @synthesize provider=_provider;
 
 - (void).cxx_destruct;
+- (CDStruct_6ad76789)auditToken;
 - (id)bundleIdentifier;
 - (id)bundleURL;
 - (id)identifier;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (BOOL)isPermittedToUsePrivateAPI;
 - (BOOL)isPermittedToUsePublicAPI;
+- (id)localizedName;
 - (int)processIdentifier;
 - (id)vendorProtocolDelegate;
 

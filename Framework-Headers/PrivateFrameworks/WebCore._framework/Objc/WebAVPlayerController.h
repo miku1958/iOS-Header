@@ -8,7 +8,6 @@
 
 @class AVPlayerController, AVValueTiming, NSArray, NSString, WebAVMediaSelectionOption;
 
-__attribute__((visibility("hidden")))
 @interface WebAVPlayerController : NSObject
 {
     WebAVMediaSelectionOption *_currentAudioMediaSelectionOption;
@@ -17,7 +16,9 @@ __attribute__((visibility("hidden")))
     BOOL _muted;
     BOOL _liveStreamEventModePossible;
     BOOL _isScrubbing;
+    BOOL _allowsPictureInPicture;
     BOOL _canScanBackward;
+    BOOL _hasContentChapters;
     BOOL _canPlay;
     BOOL _canPause;
     BOOL _canTogglePlayback;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
     BOOL _playingOnSecondScreen;
     BOOL _externalPlaybackActive;
     BOOL _allowsExternalPlayback;
-    BOOL _pictureInPicturePossible;
     AVPlayerController *_playerControllerProxy;
     struct PlaybackSessionModel *_delegate;
     struct PlaybackSessionInterfaceAVKit *_playbackSessionInterface;
@@ -57,6 +57,8 @@ __attribute__((visibility("hidden")))
 @property BOOL canScanBackward; // @synthesize canScanBackward=_canScanBackward;
 @property (readonly) BOOL canScanForward;
 @property BOOL canSeek; // @synthesize canSeek=_canSeek;
+@property (readonly) BOOL canSeekFrameBackward;
+@property (readonly) BOOL canSeekFrameForward;
 @property (readonly) BOOL canSeekToBeginning;
 @property (readonly) BOOL canSeekToEnd;
 @property BOOL canTogglePlayback; // @synthesize canTogglePlayback=_canTogglePlayback;
@@ -70,6 +72,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSString *externalPlaybackAirPlayDeviceLocalizedName; // @synthesize externalPlaybackAirPlayDeviceLocalizedName=_externalPlaybackAirPlayDeviceLocalizedName;
 @property long long externalPlaybackType; // @synthesize externalPlaybackType=_externalPlaybackType;
 @property (readonly) BOOL hasAudioMediaSelectionOptions;
+@property (readonly) BOOL hasContentChapters; // @synthesize hasContentChapters=_hasContentChapters;
 @property BOOL hasEnabledAudio; // @synthesize hasEnabledAudio=_hasEnabledAudio;
 @property BOOL hasEnabledVideo; // @synthesize hasEnabledVideo=_hasEnabledVideo;
 @property (readonly) BOOL hasLegibleMediaSelectionOptions;
@@ -85,7 +88,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AVValueTiming *minTiming; // @synthesize minTiming=_minTiming;
 @property (getter=isMuted) BOOL muted;
 @property (getter=isPictureInPictureInterrupted) BOOL pictureInPictureInterrupted;
-@property (getter=isPictureInPicturePossible) BOOL pictureInPicturePossible; // @synthesize pictureInPicturePossible=_pictureInPicturePossible;
+@property (readonly, getter=isPictureInPicturePossible) BOOL pictureInPicturePossible;
 @property struct PlaybackSessionInterfaceAVKit *playbackSessionInterface; // @synthesize playbackSessionInterface=_playbackSessionInterface;
 @property (strong) AVPlayerController *playerControllerProxy; // @synthesize playerControllerProxy=_playerControllerProxy;
 @property (getter=isPlaying) BOOL playing;
@@ -136,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)seekToEnd:(id)arg1;
 - (void)seekToTime:(double)arg1;
 - (void)seekToTime:(double)arg1 toleranceBefore:(double)arg2 toleranceAfter:(double)arg3;
+- (void)setAllowsPictureInPicture:(BOOL)arg1;
 - (void)setCurrentTimeWithinEndTimes:(double)arg1;
 - (void)skipBackwardThirtySeconds:(id)arg1;
 - (void)toggleMuted:(id)arg1;

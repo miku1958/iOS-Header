@@ -7,49 +7,48 @@
 #import <UIKit/UIView.h>
 
 #import <ContactsUI/CNActionViewDelegate-Protocol.h>
+#import <ContactsUI/NUIContainerViewDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSObject, NSString, NUIContainerStackView, UIFont;
 @protocol CNActionsViewProtocol;
 
-@interface CNActionsView : UIView <CNActionViewDelegate>
+@interface CNActionsView : UIView <CNActionViewDelegate, NUIContainerViewDelegate>
 {
     NSObject<CNActionsViewProtocol> *_actionsDelegate;
     NSArray *_sortedActionTypes;
     double _spacing;
     long long _style;
-    NUIContainerStackView *_stackView;
     NSMutableDictionary *_actionItemsByType;
     NSMutableDictionary *_actionViewsByType;
     UIFont *_titleFont;
+    NUIContainerStackView *_containerView;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *actionItemsByType; // @synthesize actionItemsByType=_actionItemsByType;
 @property (strong, nonatomic) NSMutableDictionary *actionViewsByType; // @synthesize actionViewsByType=_actionViewsByType;
 @property (weak, nonatomic) NSObject<CNActionsViewProtocol> *actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
+@property (strong, nonatomic) NUIContainerStackView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *sortedActionTypes; // @synthesize sortedActionTypes=_sortedActionTypes;
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;
-@property (strong, nonatomic) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 
 + (long long)axisWithTitlesPresent:(BOOL)arg1;
-+ (struct CGSize)intrinsicContentSizeForHorizontalLayoutForActionsViews:(id)arg1 spacing:(double)arg2;
-+ (struct CGSize)intrinsicContentSizeForVerticalLayoutForActionsViews:(id)arg1 spacing:(double)arg2;
 - (void).cxx_destruct;
 - (id)actionViewForType:(id)arg1;
+- (BOOL)actionViewShouldPresentDisambiguationUI:(id)arg1;
 - (void)addActionItem:(id)arg1;
-- (void)didMoveToWindow;
 - (void)didPressActionView:(id)arg1 longPress:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (unsigned long long)insertionIndexForType:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
 - (void)removeActionItem:(id)arg1;
 - (void)resetActions;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateActionItem:(id)arg1;
 - (void)updateAxis;
 

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)_ultralightFillColorForOverlayFilter:(BOOL)arg1 active:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2 updateView:(BOOL)arg3;
+- (void)layoutSubviews;
 - (void)setCornerRadius:(double)arg1;
 
 @end

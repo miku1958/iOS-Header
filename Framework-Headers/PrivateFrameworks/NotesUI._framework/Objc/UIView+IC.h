@@ -6,13 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class ICAppearanceInfo, ICViewControllerManager, UIColor, UITraitCollection, UIWindowScene;
+@class ICAppearanceInfo, ICViewControllerManager, UIColor, UIScrollView, UITraitCollection, UIWindowScene;
 
 @interface UIView (IC)
 
 @property (readonly, nonatomic) ICAppearanceInfo *ic_appearanceInfo;
 @property (copy, nonatomic) UIColor *ic_backgroundColor;
+@property (readonly, nonatomic) double ic_backingScaleFactor;
 @property (readonly, nonatomic) struct NSDirectionalEdgeInsets ic_directionalSafeAreaInsets;
+@property (readonly, nonatomic) UIScrollView *ic_enclosingScrollView;
+@property (readonly, nonatomic) double ic_hairlineWidth;
+@property (readonly, nonatomic) BOOL ic_hasCompactHeight;
+@property (readonly, nonatomic) BOOL ic_hasCompactSize;
+@property (readonly, nonatomic) BOOL ic_hasCompactWidth;
 @property (readonly, nonatomic) BOOL ic_isRTL;
 @property (readonly, nonatomic) UITraitCollection *ic_platformAppearanceObject;
 @property (readonly, nonatomic) ICViewControllerManager *ic_viewControllerManager;
@@ -22,9 +28,21 @@
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3;
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)ic_performWithoutAnimation:(CDUnknownBlockType)arg1;
++ (void)ic_performWithoutAnimationOnMainThread:(CDUnknownBlockType)arg1;
+- (void)ic_addAnchorsToFillSuperview;
+- (void)ic_addAnchorsToFillSuperviewWithHorizontalPadding:(double)arg1;
+- (void)ic_addAnchorsToFillSuperviewWithHorizontalPadding:(double)arg1 verticalPadding:(double)arg2 usesSafeAreaLayoutGuide:(BOOL)arg3;
+- (void)ic_addAnchorsToFillSuperviewWithHorizontalPadding:(double)arg1 verticalPadding:(double)arg2 usesSafeAreaLayoutGuideHorizontally:(BOOL)arg3 usesSafeAreaLayoutGuideVertically:(BOOL)arg4;
+- (void)ic_addAnchorsToFillSuperviewWithPadding:(double)arg1;
+- (void)ic_addAnchorsToFillSuperviewWithVerticalPadding:(double)arg1;
 - (void)ic_addConstraintsToFillSuperview;
 - (id)ic_animator;
-- (double)ic_backingScaleFactor;
+- (void)ic_applyRoundedCorners;
+- (void)ic_applyRoundedCorners:(unsigned long long)arg1;
+- (void)ic_applyRoundedCorners:(unsigned long long)arg1 radius:(double)arg2;
+- (void)ic_applyRoundedCornersWithRadius:(double)arg1;
+- (void)ic_applyShadow;
+- (void)ic_applyShadowWithRadius:(double)arg1 opacity:(double)arg2 offset:(struct CGSize)arg3;
 - (void)ic_crashIfWindowIsSecure;
 - (id)ic_imageRenderedFromLayer;
 - (id)ic_imageRenderedFromViewHierarchy;
@@ -33,6 +51,8 @@
 - (void)ic_insertSubview:(id)arg1 belowSubview:(id)arg2;
 - (BOOL)ic_isInSecureWindow;
 - (void)ic_removeAllConstraintsForSubview:(id)arg1;
+- (void)ic_removeRoundedCorners;
+- (void)ic_removeShadow;
 - (id)ic_renderImage;
 - (id)ic_renderImageView;
 - (void)ic_setAlpha:(double)arg1;

@@ -6,6 +6,7 @@
 
 #import <MetalTools/MTLToolsComputeCommandEncoder.h>
 
+@class MTLDebugCommandBuffer;
 @protocol MTLComputePipelineState;
 
 @interface MTLDebugComputeCommandEncoder : MTLToolsComputeCommandEncoder
@@ -15,7 +16,7 @@
     CDStruct_0f4bf8df _samplers[16];
     CDStruct_0f4bf8df _threadgroupMemoryLengths[31];
     CDStruct_da2e99ad _imageBlockSize;
-    const CDStruct_886a8514 *_limits;
+    MTLDebugCommandBuffer *_commandBuffer;
     BOOL canDealloc;
     BOOL canEndEncoding;
     BOOL canSetComputePipelineState;
@@ -24,6 +25,7 @@
     BOOL hasSetStageInRegion;
     CDStruct_1e3be3a8 stageInRegion;
     BOOL hasIndirectSetStageInRegion;
+    BOOL allowsNullBufferBinds;
     struct deque<id, std::__1::allocator<id>> updatedFences;
     id<MTLComputePipelineState> _computePipelineState;
 }
@@ -32,7 +34,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_resourceTrackingRecordDispatchAccesses;
 - (void)_setDefaults;
 - (void)_validateAllFunctionArguments;
 - (void)_validateThreadsPerThreadgroup:(CDStruct_14f26992)arg1;
@@ -42,6 +43,7 @@
 - (void)dispatchThreadgroupsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2 threadsPerThreadgroup:(CDStruct_14f26992)arg3;
 - (void)dispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreadsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
+- (void)enableNullBufferBinds:(BOOL)arg1;
 - (void)endEncoding;
 - (void)enumerateBuffersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSamplersUsingBlock:(CDUnknownBlockType)arg1;
@@ -54,12 +56,16 @@
 - (id)initWithComputeCommandEncoder:(id)arg1 commandBuffer:(id)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id)arg1;
 - (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
@@ -69,6 +75,8 @@
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)updateFence:(id)arg1;
 - (void)useHeap:(id)arg1;
 - (void)useHeaps:(const id *)arg1 count:(unsigned long long)arg2;

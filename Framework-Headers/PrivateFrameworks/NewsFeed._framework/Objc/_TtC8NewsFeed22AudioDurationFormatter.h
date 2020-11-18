@@ -6,12 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC8NewsFeed22AudioDurationFormatter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *formatter;
-    MISSING_TYPE *accesssibilityFormatter;
 }
 
 @end

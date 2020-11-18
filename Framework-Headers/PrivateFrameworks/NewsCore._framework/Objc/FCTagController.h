@@ -55,8 +55,8 @@
 - (id)fetchOperationForTagsWithIDs:(id)arg1;
 - (id)fetchOperationForTagsWithIDs:(id)arg1 includeChildren:(BOOL)arg2;
 - (id)fetchOperationForTagsWithIDs:(id)arg1 includeParents:(BOOL)arg2;
-- (void)fetchTagForTagID:(id)arg1 maximumCachedAge:(double)arg2 qualityOfService:(long long)arg3 callbackQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchTagForTagID:(id)arg1 qualityOfService:(long long)arg2 callbackQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchTagsForTagIDs:(id)arg1 cachePolicy:(id)arg2 qualityOfService:(long long)arg3 callbackQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchTagsForTagIDs:(id)arg1 maximumCachedAge:(double)arg2 qualityOfService:(long long)arg3 callbackQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchTagsForTagIDs:(id)arg1 qualityOfService:(long long)arg2 callbackQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;

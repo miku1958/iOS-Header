@@ -6,7 +6,7 @@
 
 #import <MediaRemote/MRCryptoPairingSession.h>
 
-@class MRPasscodeCredentials, NSArray, NSData, NSMutableData, NSMutableDictionary, NSObject, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRPasscodeCredentials, NSArray, NSData, NSMutableData, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRCoreUtilsPairingSession : MRCryptoPairingSession
@@ -40,33 +40,19 @@
 @property (readonly, nonatomic) NSMutableDictionary *mediaRemotePairedDevices;
 @property (strong, nonatomic) NSData *outputKey; // @synthesize outputKey=_outputKey;
 @property (strong, nonatomic) NSMutableData *outputNonce; // @synthesize outputNonce=_outputNonce;
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *pairedPeerDevice;
+@property (readonly, nonatomic) MRDeviceInfo *pairedPeerDevice;
 @property (readonly, nonatomic) NSArray *pairedPeerDevices;
 @property (nonatomic) unsigned int pairingFlags; // @synthesize pairingFlags=_pairingFlags;
 @property (readonly, nonatomic) NSString *peerIdentifier;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
-- (void *)_createDeviceFromPeer:(id)arg1;
-- (id)_createPeerDeviceFromPeer:(id)arg1;
-- (void)_delegateDidEnterPasscode:(id)arg1;
-- (int)_displaySetupCode:(id)arg1;
-- (id)_generateSetupCodeWithMaximumLength:(unsigned long long)arg1;
-- (void)_handlePairingCompleteWithError:(id)arg1;
-- (void)_handlePairingFailureWithError:(id)arg1;
-- (void)_handleSetupExchangeComplete;
-- (void)_hideSetupCode;
-- (void)_onQueueDeriveEncryptionKeys;
-- (id)_onQueueInitializePairingSessionWithState:(unsigned long long)arg1;
-- (id)_onQueuePerformPairingExchangeWithInputData:(id)arg1 error:(id *)arg2;
-- (int)_promptForSetupCodeWithDelay:(double)arg1;
 - (id)addPeer;
 - (void)close;
 - (void)dealloc;
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (BOOL)deleteIdentityWithError:(id *)arg1;
 - (id)encryptData:(id)arg1 withError:(id *)arg2;
-- (id)extendedPeerInfo;
 - (void)handlePairingExchangeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePairingFailureWithStatus:(int)arg1;
 - (id)initWithRole:(unsigned long long)arg1 device:(id)arg2;
@@ -77,8 +63,6 @@
 - (void)openInState:(unsigned long long)arg1;
 - (id)pairedDevices;
 - (id)removePeer;
-- (void)retry;
-- (BOOL)shouldAutoRetry;
 - (BOOL)shouldAutoRetryPairingExchange:(id)arg1;
 - (id)updatePeer;
 

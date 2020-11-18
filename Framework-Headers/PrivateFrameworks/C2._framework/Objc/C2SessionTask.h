@@ -8,7 +8,7 @@
 
 #import <C2/C2SessionTaskDelegate-Protocol.h>
 
-@class C2RequestOptions, NSString, NSURLSessionDataTask;
+@class C2RequestOptions, NSMutableSet, NSString, NSURLSessionDataTask, NSURLSessionTaskMetrics;
 @protocol C2RequestDelegate, C2SessionTaskDelegate, OS_os_activity;
 
 @interface C2SessionTask : NSObject <C2SessionTaskDelegate>
@@ -17,15 +17,18 @@
     unsigned int _attemptCount;
     C2RequestOptions *_options;
     id<C2RequestDelegate> _delegate;
-    NSObject<OS_os_activity> *_activity;
     NSURLSessionDataTask *_task;
+    NSURLSessionTaskMetrics *_taskMetrics;
     id<C2SessionTaskDelegate> _sessionTaskDelegate;
     double _initTime;
     double _resetTime;
+    NSMutableSet *_outstandingCallbacks;
+    NSObject<OS_os_activity> *_activity;
 }
 
 @property (readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
 @property (nonatomic) unsigned int attemptCount; // @synthesize attemptCount=_attemptCount;
+@property (readonly, nonatomic) BOOL callbackHung;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<C2RequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,21 +36,27 @@
 @property (nonatomic) double initTime; // @synthesize initTime=_initTime;
 @property (nonatomic) BOOL isComplete; // @synthesize isComplete=_isComplete;
 @property (readonly, copy, nonatomic) C2RequestOptions *options; // @synthesize options=_options;
+@property (strong, nonatomic) NSMutableSet *outstandingCallbacks; // @synthesize outstandingCallbacks=_outstandingCallbacks;
 @property (nonatomic) double resetTime; // @synthesize resetTime=_resetTime;
 @property (strong, nonatomic) id<C2SessionTaskDelegate> sessionTaskDelegate; // @synthesize sessionTaskDelegate=_sessionTaskDelegate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURLSessionDataTask *task; // @synthesize task=_task;
+@property (strong, nonatomic) NSURLSessionTaskMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
 
++ (id)callbackHealthQueue;
 + (double)captureMetricDurationBetweenStart:(double)arg1 andEnd:(double)arg2;
 + (double)captureMetricsForTimingData:(id)arg1 withKey:(id)arg2;
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)C2Session:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)captureMetricsWithError:(id)arg1 eventType:(long long)arg2;
 - (void)dealloc;
+- (void)didFinishCollectingMetrics:(id)arg1;
 - (void)handleCallbackForTask:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)initWithOptions:(id)arg1 delegate:(id)arg2 sessionTaskDelegate:(id)arg3;
 - (void)invalidate;
 - (id)taskDescription;
+- (void)testBehavior_triggerCallbackHang;
 
 @end
 

@@ -20,11 +20,10 @@
     NSString *_formatStringLocID;
     NSString *_conciseFormatString;
     NSString *_conciseFormatStringLocID;
-    INIntentResponseCodableDescription *__responseCodableDescription;
+    INIntentResponseCodableDescription *__codableDescription;
 }
 
-@property (weak, nonatomic, setter=_setResponseCodableDescription:) INIntentResponseCodableDescription *_responseCodableDescription; // @synthesize _responseCodableDescription=__responseCodableDescription;
-@property (readonly, copy, nonatomic) NSString *cacheGroup;
+@property (weak, nonatomic, setter=_setCodableDescription:) INIntentResponseCodableDescription *_codableDescription; // @synthesize _codableDescription=__codableDescription;
 @property (copy, nonatomic) NSString *conciseFormatString; // @synthesize conciseFormatString=_conciseFormatString;
 @property (copy, nonatomic) NSString *conciseFormatStringLocID; // @synthesize conciseFormatStringLocID=_conciseFormatStringLocID;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +31,6 @@
 @property (copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
 @property (copy, nonatomic) NSString *formatStringLocID; // @synthesize formatStringLocID=_formatStringLocID;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSArray *parameterNames;
 @property (nonatomic, getter=isSuccess) BOOL success; // @synthesize success=_success;
@@ -41,8 +39,19 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionConciseFormatStringDictionaryKey;
+- (id)__INCodableDescriptionConciseFormatStringDictionaryLanguageCodeKey;
+- (id)__INCodableDescriptionConciseFormatStringIDKey;
+- (id)__INCodableDescriptionConciseFormatStringKey;
+- (id)__INCodableDescriptionConciseFormatStringLanguageCodeKey;
+- (id)__INCodableDescriptionFormatStringDictionaryKey;
+- (id)__INCodableDescriptionFormatStringDictionaryLanguageCodeKey;
+- (id)__INCodableDescriptionFormatStringIDKey;
+- (id)__INCodableDescriptionFormatStringKey;
+- (id)__INCodableDescriptionFormatStringLanguageCodeKey;
+- (id)__INCodableDescriptionNameKey;
+- (id)__INCodableDescriptionSuccessKey;
 - (id)_parameterNamesFromString:(id)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

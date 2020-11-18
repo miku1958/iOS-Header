@@ -80,7 +80,6 @@
 @property (nonatomic) BOOL returnContentItemAssetsInUserCompletion; // @synthesize returnContentItemAssetsInUserCompletion=_returnContentItemAssetsInUserCompletion;
 
 + (Class)contentItemIdentifiersType;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)addContentItemIdentifiers:(id)arg1;
 - (void)clearContentItemIdentifiers;
@@ -88,8 +87,6 @@
 - (unsigned long long)contentItemIdentifiersCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDescription;
-- (id)customDictionaryRepresentation;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

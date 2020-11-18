@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <WatchListKit/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary;
 
-@interface WLKSubscriptionData : NSObject
+@interface WLKSubscriptionData : NSObject <NSSecureCoding>
 {
     NSDictionary *_backingDictionary;
     NSArray *_subscriptionArray;
     NSDictionary *_account;
     NSDictionary *_family;
     NSDictionary *_subscriptionsByAdamID;
-    unsigned long long _activeSubscriptionsCount;
+    long long _activeSubscriptionsCount;
     NSDictionary *_activeTVPlusSubscription;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)activeSubscriptionsCount;
 - (id)activeTVPlusSubscription;
 - (id)currentAccount;
 - (id)currentFamily;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSubscriptionData:(id)arg1;

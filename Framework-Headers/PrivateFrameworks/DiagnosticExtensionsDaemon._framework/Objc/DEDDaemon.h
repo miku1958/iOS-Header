@@ -40,10 +40,11 @@
 - (void).cxx_destruct;
 - (id)_blockOnFakeSysidagnoseWithIdentifer:(id)arg1 withBugSession:(id)arg2;
 - (id)_controller;
-- (void)_getSessionStatusWithSession:(id)arg1;
 - (void)_logOperations;
+- (void)_startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3 runSetup:(BOOL)arg4;
 - (void)_streamOperationStatus;
 - (void)_syncSessionStatusWithSession:(id)arg1 withIdentifiers:(BOOL)arg2;
+- (void)_syncSessionStatusWithSessionID:(id)arg1 withIdentifiers:(BOOL)arg2;
 - (void)adoptFiles:(id)arg1 forSession:(id)arg2;
 - (id)attachmentHandler;
 - (void)cancelNotificationForSession:(id)arg1;
@@ -51,16 +52,20 @@
 - (void)commitSession:(id)arg1;
 - (void)configureForEmbedded:(BOOL)arg1;
 - (id)diagnosticCollector;
+- (void)finallyStartDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
+- (void)getSessionStateWithSession:(id)arg1;
 - (void)getSessionStatusWithSession:(id)arg1;
 - (id)init;
 - (void)listAvailableExtensionsForSession:(id)arg1;
 - (BOOL)observesOperations;
 - (void)pingSession:(id)arg1;
 - (void)scheduleNotificationForSession:(id)arg1;
+- (void)setupDeferredDiagnosticsWithExtensionInfo:(id)arg1;
 - (void)start;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 deferRunUntil:(id)arg3 session:(id)arg4;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
 - (void)syncSessionStatusWithSession:(id)arg1;
+- (void)teardownDeferredDiagnosticsWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
 - (void)terminateExtension:(id)arg1 info:(id)arg2 session:(id)arg3;
 - (long long)transportType;
 

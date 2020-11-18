@@ -15,9 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)_accessibilityMediaAnalysisFrame;
 - (unsigned int)_accessibilityMediaAnalysisOptions;
+- (id)_axAppClipDescriptionForMetadata:(id)arg1;
 - (id)_axBalloonViewCustomActions;
 - (void)_axClear;
 - (id)_axHandwritingDescriptionForDataSource:(id)arg1;
+- (BOOL)_axIsAppClip;
 - (BOOL)_axIsAttachedHandwritingPlugin;
 - (BOOL)_axIsAttachedPlugin;
 - (BOOL)_axIsHandwriting;

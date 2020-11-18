@@ -7,9 +7,6 @@
 #import <RTTUI/NSObject-Protocol.h>
 #import <RTTUI/RTTUIConversationCellDelegate-Protocol.h>
 
-@class NSString;
-
 @protocol RTTUIServiceCellDelegate <NSObject, RTTUIConversationCellDelegate>
-- (NSString *)currentServiceMessage;
 @end
 

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AppleMediaServicesUI/AMSUICommonViewController.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
 
-@class AMSUIWebCameraReaderInfoView, AMSUIWebCameraReaderPageModel, AMSUIWebClientContext, CRCameraReader, NSDictionary, NSString;
+@class AMSUIWebAppearance, AMSUIWebCameraReaderInfoView, AMSUIWebCameraReaderPageModel, AMSUIWebClientContext, CRCameraReader, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebCameraReaderViewController : UIViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebCameraReaderViewController : AMSUICommonViewController <AMSUIWebPagePresenter>
 {
+    AMSUIWebAppearance *_appearance;
     CRCameraReader *_cameraController;
     AMSUIWebClientContext *_context;
     AMSUIWebCameraReaderInfoView *_infoView;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_output;
 }
 
+@property (strong, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 @property (strong, nonatomic) CRCameraReader *cameraController; // @synthesize cameraController=_cameraController;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)_layoutPageForCreditCard;
 - (id)_outputForCreditCardReaderObjects:(id)arg1;
 - (void)_setupPageForCreditCard;
-- (void)applyPageModel:(id)arg1;
 - (void)cameraReader:(id)arg1 didFailWithError:(id)arg2;
 - (void)cameraReader:(id)arg1 didRecognizeObjects:(id)arg2;
 - (void)cameraReaderDidCancel:(id)arg1;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 
 @end
 

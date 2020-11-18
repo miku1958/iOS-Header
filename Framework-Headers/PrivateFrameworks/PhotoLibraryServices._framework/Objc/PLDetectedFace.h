@@ -92,22 +92,24 @@
 @property (nonatomic) int trainingType;
 @property (nonatomic) int trainingType; // @dynamic trainingType;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
+@property (nonatomic) short vipModelType; // @dynamic vipModelType;
 @property (nonatomic) double yaw; // @dynamic yaw;
 
 + (id)_facesMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inPhotoLibrary:(id)arg3;
 + (id)_syncableFacesToUploadInitiallyPredicate;
 + (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchKeyFaceByPersonObjectIDWithPersonObjectIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (unsigned long long)countOfHiddenFacesOnAssetsWithObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)detectedFaceWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithDetctedFaceUUIDs:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
 + (id)findExistingFaceMatchingDimension:(id)arg1 inFaces:(id)arg2 ignoreSourceAssetDimensions:(BOOL)arg3;
 + (id)predicateForArchival;
++ (id)predicateForFaceCountTrigger;
 + (id)predicatesForFacesNeedingFaceCropGeneration;
 + (id)predicatesToExcludeNonVisibleFaces;
 + (long long)resetAssetForAllSyncableFacesInManagedObjectContext:(id)arg1 error:(id *)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (id)syncableFacesPredicate;
 + (id)syncableFacesToUploadInitiallyInLibrary:(id)arg1 limit:(unsigned long long)arg2;
 - (void)_touchPersonForPersistenceIfNeeded;

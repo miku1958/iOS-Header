@@ -4,17 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
-@interface PGGraphDayOfWeekNode : PGGraphNode
+@class NSString;
+
+@interface PGGraphDayOfWeekNode : PGGraphOptimizedNode
 {
     long long _dayOfWeek;
 }
 
 @property (nonatomic) long long dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
+@property (readonly) NSString *name;
 
 + (long long)dayOfWeekForName:(id)arg1;
 + (id)nameForDayOfWeek:(long long)arg1;
+- (id)description;
+- (unsigned short)domain;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

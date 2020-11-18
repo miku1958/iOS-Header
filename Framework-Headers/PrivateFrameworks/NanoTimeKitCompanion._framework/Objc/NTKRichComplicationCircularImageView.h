@@ -4,24 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationBaseCircularImageView.h>
 
-@class NTKRichComplicationImageView;
-
-@interface NTKRichComplicationCircularImageView : NTKRichComplicationCircularBaseView
+@interface NTKRichComplicationCircularImageView : NTKRichComplicationBaseCircularImageView
 {
-    NTKRichComplicationImageView *_imageView;
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
-- (void).cxx_destruct;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
-- (void)layoutSubviews;
-- (void)setPaused:(BOOL)arg1;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

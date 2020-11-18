@@ -15,15 +15,27 @@ __attribute__((visibility("hidden")))
 
 - (void)getAllUserActivityTypesAndDomainNamesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getBoundIconInfoForDocumentProxy:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getBundleProxyForCurrentProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getBundleRecordForCoreTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getBundleRecordForCurrentProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getDiskUsage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getExtensionPointRecordForCurrentProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getExtensionPointRecordWithIdentifier:(id)arg1 platform:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getLocalizedNameWithBundleType:(id)arg1 bundleIdentifier:(id)arg2 bundleUUID:(id)arg3 context:(id)arg4 shortNameOnly:(BOOL)arg5 preferredLocalizations:(id)arg6 validationToken:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)getPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getRelatedTypesOfTypeWithIdentifier:(id)arg1 maximumDegreeOfSeparation:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getResourceValuesForKeys:(id)arg1 URL:(id)arg2 preferredLocalizations:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getServerStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStoreNonBlockingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getTypeRecordForImportedTypeWithIdentifier:(id)arg1 conformingToIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getTypeRecordWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getTypeRecordWithTag:(id)arg1 ofClass:(id)arg2 conformingToIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getTypeRecordsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getTypeRecordsWithTag:(id)arg1 ofClass:(id)arg2 conformingToIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getWhetherTypeIdentifier:(id)arg1 conformsToTypeIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)mapBundleIdentifiers:(id)arg1 orMachOUUIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveQueries:(id)arg1 legacySPI:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

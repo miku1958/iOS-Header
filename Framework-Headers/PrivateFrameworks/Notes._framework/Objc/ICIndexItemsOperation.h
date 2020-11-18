@@ -6,29 +6,37 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CSSearchableIndex, NSArray, NSError;
+@class CSSearchableIndex, NSArray, NSError, NSMutableArray, NSMutableDictionary;
 
 @interface ICIndexItemsOperation : NSOperation
 {
     CSSearchableIndex *_searchableIndex;
     NSArray *_dataSources;
-    unsigned long long _maxBytesPerBatch;
     NSError *_error;
+    NSMutableArray *_objectIDsToIndex;
+    NSMutableArray *_searchableItemsToIndex;
+    unsigned long long _totalSizeOfSearchableItemsToIndex;
+    NSMutableArray *_objectIDURIsToDelete;
+    NSMutableDictionary *_contextCache;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *contextCache; // @synthesize contextCache=_contextCache;
 @property (copy, nonatomic) NSArray *dataSources; // @synthesize dataSources=_dataSources;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
-@property (nonatomic) unsigned long long maxBytesPerBatch; // @synthesize maxBytesPerBatch=_maxBytesPerBatch;
+@property (strong, nonatomic) NSMutableArray *objectIDURIsToDelete; // @synthesize objectIDURIsToDelete=_objectIDURIsToDelete;
+@property (strong, nonatomic) NSMutableArray *objectIDsToIndex; // @synthesize objectIDsToIndex=_objectIDsToIndex;
 @property (strong, nonatomic) CSSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
+@property (strong, nonatomic) NSMutableArray *searchableItemsToIndex; // @synthesize searchableItemsToIndex=_searchableItemsToIndex;
+@property (nonatomic) unsigned long long totalSizeOfSearchableItemsToIndex; // @synthesize totalSizeOfSearchableItemsToIndex=_totalSizeOfSearchableItemsToIndex;
 
 - (void).cxx_destruct;
-- (void)deleteItems;
-- (void)indexItems;
+- (void)commitObjectIDURIsToDeleteIfNecessaryForDataSource:(id)arg1 forceCommit:(BOOL)arg2;
+- (void)commitObjectIDsToIndexIfNecessaryForDataSource:(id)arg1 forceCommit:(BOOL)arg2;
 - (id)init;
 - (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2;
 - (void)main;
-- (id)objectIDURIsToDeleteFromDataSource:(id)arg1;
-- (id)objectIDsToIndexFromDataSource:(id)arg1;
+- (id)managedObjectContextForDataSource:(id)arg1;
+- (void)processItems;
 
 @end
 

@@ -17,7 +17,6 @@
 - (double)duration;
 - (void)generateLargeThumbnailFileIfNecessary;
 - (BOOL)hasAdjustments;
-- (BOOL)hasLegacyAdjustments;
 - (struct CGSize)imageSize;
 - (BOOL)isCloudPhotoLibraryAsset;
 - (BOOL)isCloudPlaceholder;

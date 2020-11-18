@@ -11,6 +11,7 @@
 }
 
 + (id)contactForResult:(id)arg1;
++ (struct CLLocationCoordinate2D)coordinateForResult:(id)arg1;
 
 @end
 

@@ -113,6 +113,7 @@
 - (void)setLastSignedInItunesAccountNameWithName:(id)arg1;
 - (void)shouldShowSignedInWithDifferentiTunesAccountAlertWithiTunesAccountName:(id)arg1 iTunesAccountDSID:(id)arg2 isUserSignedIntoiTunes:(BOOL)arg3 isBundleSubscriber:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)shouldShowiTunesSignedOutAlertWithiTunesAccountName:(id)arg1 iTunesAccountDSID:(id)arg2 isUserSignedIntoiTunes:(BOOL)arg3 isBundleSubscriber:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)silentExpireInAppSubscriptions;
 - (void)silentRemoveFromPurchasedChannelsListWithTagIDs:(id)arg1;
 - (void)submitWebAccessWithTagID:(id)arg1 purchaseID:(id)arg2 emailAddress:(id)arg3 purchaseReceipt:(id)arg4 serialCompletion:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)subscriptionNotSupportedChannelIDs;

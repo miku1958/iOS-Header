@@ -8,7 +8,7 @@
 
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVButton, NSString;
+@class AVButton, AVLayoutItemAttributes, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVPlaybackControlsRoutePickerView : AVRoutePickerView <AVPlaybackControlsViewItem>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
+    AVLayoutItemAttributes *_layoutAttributes;
 }
 
 @property (nonatomic, getter=isCollapsed) BOOL collapsed;
@@ -29,11 +30,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIncluded) BOOL included;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateLayoutItem;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutAttributesDidChange;
 - (void)updateButtonAppearance;
 
 @end

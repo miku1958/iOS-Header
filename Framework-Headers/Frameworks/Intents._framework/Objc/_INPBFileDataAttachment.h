@@ -15,12 +15,10 @@
 @interface _INPBFileDataAttachment : PBCodable <_INPBFileDataAttachment, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSData *_data;
     NSString *_fileName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -6,21 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class CKRecord;
+@class CKRecord, CKRecordID, NSData;
 
 @interface HDCloudSyncRecord : NSObject
 {
     CKRecord *_record;
+    BOOL _repaired;
+    BOOL _unsaved;
+    CKRecordID *_recordID;
 }
 
-@property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
+@property (readonly, nonatomic) CKRecord *record;
+@property (readonly, copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+@property (nonatomic) BOOL repaired; // @synthesize repaired=_repaired;
+@property (readonly, nonatomic) long long schemaVersion;
+@property (readonly, copy, nonatomic) NSData *underlyingMessage;
+@property (readonly, nonatomic) BOOL unsaved; // @synthesize unsaved=_unsaved;
 
-+ (BOOL)_validateOptionalValueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(BOOL)arg4 error:(id *)arg5;
-+ (id)_valueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)hasFutureSchema:(id)arg1;
++ (id)recordType;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
++ (BOOL)requiresUnderlyingMessage;
 - (void).cxx_destruct;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (id)serializeUnderlyingMessage;
+- (BOOL)validateWithError:(id *)arg1;
 
 @end
 

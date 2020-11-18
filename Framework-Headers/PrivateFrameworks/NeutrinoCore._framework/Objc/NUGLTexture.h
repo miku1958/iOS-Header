@@ -8,7 +8,7 @@
 
 #import <NeutrinoCore/NUGLFramebufferAttachable-Protocol.h>
 
-@class NUPixelFormat;
+@class NUIOSurface, NUPixelFormat;
 
 @interface NUGLTexture : NUGLObject <NUGLFramebufferAttachable>
 {
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NUPixelFormat *format; // @synthesize format=_format;
 @property (readonly) BOOL isSurface;
 @property (readonly, nonatomic) CDStruct_912cb5d2 size; // @synthesize size=_size;
+@property (readonly, nonatomic) NUIOSurface *surface;
 
 + (id)textureWithIOSurface:(id)arg1;
 - (void).cxx_destruct;

@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) void *mySigX; // @synthesize mySigX=_mySigX;
 
 + (basic_string_a1f69cfb)getVersion;
-- (void)ConvertException:(const struct exception *)arg1 toError:(id *)arg2;
-- (void)ConvertSystemError:(const struct system_error *)arg1 toError:(id *)arg2;
-- (void)FillUnknownError:(id *)arg1;
+- (BOOL)ConvertException:(const struct exception *)arg1 toError:(id *)arg2;
+- (BOOL)ConvertSystemError:(const struct system_error *)arg1 toError:(id *)arg2;
+- (BOOL)FillUnknownError:(id *)arg1;
 - (void)dealloc;
 - (BOOL)flowBuffer:(id)arg1 error:(id *)arg2;
 - (BOOL)flowFloatSamples:(float *)arg1 sampleCount:(int)arg2 channels:(int)arg3 error:(id *)arg4;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSignatureType:(int)arg1 sampleRate:(unsigned int)arg2 error:(id *)arg3;
 - (id)initWithSignatureType:(int)arg1 sampleRate:(unsigned int)arg2 signatureOptions:(int)arg3 error:(id *)arg4;
 - (BOOL)resetWithError:(id *)arg1;
+- (BOOL)setRollingBufferSeconds:(float)arg1 error:(id *)arg2;
 
 @end
 

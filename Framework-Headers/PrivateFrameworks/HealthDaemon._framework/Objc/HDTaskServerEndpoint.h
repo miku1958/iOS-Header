@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDXPCListenerDelegate-Protocol.h>
 
 @class HDProfile, HDXPCListener, HKHealthStoreConfiguration, HKTaskConfiguration, NSString, NSUUID, NSXPCListenerEndpoint;
-@protocol HDTaskServer, HDTaskServerDelegate;
+@protocol HDTaskServer, HDTaskServerDelegate, HDTaskServerEndpointDelegate;
 
 @interface HDTaskServerEndpoint : NSObject <HDXPCListenerDelegate>
 {
@@ -18,13 +18,14 @@
     HKTaskConfiguration *_taskConfiguration;
     HKHealthStoreConfiguration *_healthStoreConfiguration;
     HDProfile *_profile;
-    id<HDTaskServerDelegate> _delegate;
     id<HDTaskServer> _taskServer;
+    id<HDTaskServerEndpointDelegate> _delegate;
+    id<HDTaskServerDelegate> _taskServerDelegate;
     HDXPCListener *_listener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<HDTaskServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<HDTaskServerEndpointDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) HKHealthStoreConfiguration *healthStoreConfiguration; // @synthesize healthStoreConfiguration=_healthStoreConfiguration;
@@ -35,13 +36,17 @@
 @property (readonly, copy, nonatomic) HKTaskConfiguration *taskConfiguration; // @synthesize taskConfiguration=_taskConfiguration;
 @property (readonly, weak, nonatomic) id<HDTaskServer> taskServer; // @synthesize taskServer=_taskServer;
 @property (readonly, nonatomic) Class taskServerClass; // @synthesize taskServerClass=_taskServerClass;
+@property (weak, nonatomic) id<HDTaskServerDelegate> taskServerDelegate; // @synthesize taskServerDelegate=_taskServerDelegate;
 @property (readonly, copy, nonatomic) NSUUID *taskUUID; // @synthesize taskUUID=_taskUUID;
 
 - (void).cxx_destruct;
 - (void)connectionConfiguredForListener:(id)arg1 client:(id)arg2 exportedObject:(id)arg3;
+- (void)connectionInvalidatedForListener:(id)arg1 client:(id)arg2 exportedObject:(id)arg3;
+- (void)dealloc;
 - (id)exportObjectForListener:(id)arg1 client:(id)arg2 error:(id *)arg3;
-- (id)initWithTaskServerClass:(Class)arg1 taskConfiguration:(id)arg2 healthStoreConfiguration:(id)arg3 taskUUID:(id)arg4 profile:(id)arg5 connectionQueue:(id)arg6 delegate:(id)arg7;
+- (id)initWithTaskServerClass:(Class)arg1 taskConfiguration:(id)arg2 healthStoreConfiguration:(id)arg3 taskUUID:(id)arg4 profile:(id)arg5 connectionQueue:(id)arg6;
 - (void)invalidate;
+- (void)resume;
 
 @end
 

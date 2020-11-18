@@ -6,7 +6,7 @@
 
 #import <GameCenterUI/GKHostedViewController.h>
 
-@class NSObject, NSString, UIViewController;
+@class NSArray, NSObject, NSString, UIViewController;
 @protocol GKFriendRequestViewControllerDelegate;
 
 @interface GKFriendRequestViewController : GKHostedViewController
@@ -14,12 +14,14 @@
     NSObject<GKFriendRequestViewControllerDelegate> *_delegate;
     NSString *_friendCode;
     NSString *_friendSupportPageURL;
+    NSArray *_recipients;
     UIViewController *_requestingViewController;
 }
 
 @property (weak, nonatomic) NSObject<GKFriendRequestViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSString *friendCode; // @synthesize friendCode=_friendCode;
 @property (strong, nonatomic) NSString *friendSupportPageURL; // @synthesize friendSupportPageURL=_friendSupportPageURL;
+@property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (weak, nonatomic) UIViewController *requestingViewController; // @synthesize requestingViewController=_requestingViewController;
 
 + (void)addFriends:(id)arg1;

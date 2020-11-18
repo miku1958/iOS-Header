@@ -17,6 +17,7 @@
     NSString *_familyName;
     NSString *_forwardingEmail;
     NSString *_previouslySelectedEmail;
+    NSString *_primaryEmailAddress;
     NSString *_accountName;
     NSArray *_accountAliases;
     NSArray *_reachableEmails;
@@ -53,6 +54,7 @@
 @property (copy, nonatomic) NSNumber *phoneAsAppleID; // @synthesize phoneAsAppleID=_phoneAsAppleID;
 @property (copy, nonatomic) NSString *previouslySelectedEmail; // @synthesize previouslySelectedEmail=_previouslySelectedEmail;
 @property (copy, nonatomic) NSNumber *previouslyWantedPrivateEmail; // @synthesize previouslyWantedPrivateEmail=_previouslyWantedPrivateEmail;
+@property (copy, nonatomic) NSString *primaryEmailAddress; // @synthesize primaryEmailAddress=_primaryEmailAddress;
 @property (copy, nonatomic) NSArray *reachableEmails; // @synthesize reachableEmails=_reachableEmails;
 @property (nonatomic) unsigned long long repairState; // @synthesize repairState=_repairState;
 @property (copy, nonatomic) NSString *selectedEmail; // @synthesize selectedEmail=_selectedEmail;

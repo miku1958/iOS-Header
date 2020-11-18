@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 @property (copy, nonatomic) CDUnknownBlockType shadowColorProviderBlock; // @synthesize shadowColorProviderBlock=_shadowColorProviderBlock;
-@property (strong, nonatomic) NSArray *supportedComplicationSlots; // @synthesize supportedComplicationSlots=_supportedComplicationSlots;
+@property (copy, nonatomic) NSArray *supportedComplicationSlots; // @synthesize supportedComplicationSlots=_supportedComplicationSlots;
 @property (copy, nonatomic) CDUnknownBlockType timeTravelYAdjustmentProviderBlock; // @synthesize timeTravelYAdjustmentProviderBlock=_timeTravelYAdjustmentProviderBlock;
 @property (nonatomic) BOOL usesLegibility; // @synthesize usesLegibility=_usesLegibility;
 

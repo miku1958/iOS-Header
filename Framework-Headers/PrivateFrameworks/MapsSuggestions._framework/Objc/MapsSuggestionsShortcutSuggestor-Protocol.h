@@ -6,7 +6,12 @@
 
 #import <MapsSuggestions/NSObject-Protocol.h>
 
+@protocol MapsSuggestionsInternalResourceDepot;
+
 @protocol MapsSuggestionsShortcutSuggestor <NSObject>
++ (id)new;
+- (id)init;
+- (id)initFromResourceDepot:(id<MapsSuggestionsInternalResourceDepot>)arg1;
 - (BOOL)suggestShortcutsOfType:(long long)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 @end
 

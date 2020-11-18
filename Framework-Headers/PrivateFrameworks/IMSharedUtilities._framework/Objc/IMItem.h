@@ -103,6 +103,7 @@
 - (BOOL)isMessageAcknowledgment;
 - (BOOL)isMessageEdit;
 - (BOOL)isOlderThanItem:(id)arg1;
+- (BOOL)isReply;
 - (BOOL)isSticker;
 - (id)pluginSessionGUID;
 - (BOOL)unsentIsFromMeItem;

@@ -59,9 +59,11 @@
 - (id)initWithBaseObject:(id)arg1 captureParallelRenderCommandEncoder:(id)arg2;
 - (void)insertDebugSignpost:(id)arg1;
 - (BOOL)isMemorylessRender;
+- (id)originalObject;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)setAlphaTestReferenceValue:(float)arg1;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 - (void)setClipPlane:(float)arg1 p2:(float)arg2 p3:(float)arg3 p4:(float)arg4 atIndex:(unsigned long long)arg5;

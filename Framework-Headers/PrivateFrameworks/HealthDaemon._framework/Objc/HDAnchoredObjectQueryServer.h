@@ -21,12 +21,14 @@
     NSMutableArray *_addedSamplesPendingResume;
     NSMutableArray *_deletedSamplesPendingResume;
     BOOL _includeAutomaticTimeZones;
+    BOOL _includeContributorInformation;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
 }
 
 @property (readonly, copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
 @property (readonly, nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
+@property (readonly, nonatomic) BOOL includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property (readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 
 + (Class)queryClass;

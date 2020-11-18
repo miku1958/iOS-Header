@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)initWithViewController:(id)arg1;
 - (void)tapped:(id)arg1;
+- (void)viewDidMoveToSuperview;
 
 @end
 

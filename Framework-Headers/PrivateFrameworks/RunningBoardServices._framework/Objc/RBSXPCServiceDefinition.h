@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface RBSXPCServiceDefinition : NSObject <BSXPCSecureCoding, NSSecureCoding>
+@interface RBSXPCServiceDefinition : NSObject <RBSXPCSecureCoding, NSSecureCoding>
 {
     NSString *_identifier;
     long long _variant;
@@ -28,13 +27,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long variant; // @synthesize variant=_variant;
 
 + (id)definitionWithIdentifier:(id)arg1 variant:(long long)arg2 scope:(long long)arg3;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

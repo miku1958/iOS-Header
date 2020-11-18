@@ -19,7 +19,9 @@
 }
 
 - (void).cxx_destruct;
+- (double)_minimumIntervalBetweenOperations;
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)clearPrefetchState;
 - (void)handleOptimizeModeChange;
 - (id)init;
 - (id)initWithCPLManager:(id)arg1 library:(id)arg2;

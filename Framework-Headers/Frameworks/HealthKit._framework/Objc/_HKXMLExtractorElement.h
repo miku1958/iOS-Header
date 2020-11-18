@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_specificationAttributes;
 }
 
-@property (readonly) NSDictionary *specificationAttributes; // @synthesize specificationAttributes=_specificationAttributes;
-@property (readonly) NSString *specificationElement; // @synthesize specificationElement=_specificationElement;
+@property (readonly, copy) NSDictionary *specificationAttributes; // @synthesize specificationAttributes=_specificationAttributes;
+@property (readonly, copy) NSString *specificationElement; // @synthesize specificationElement=_specificationElement;
 
 - (void).cxx_destruct;
 - (id)initWithElementName:(id)arg1 attributes:(id)arg2;

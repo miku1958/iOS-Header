@@ -39,7 +39,6 @@
 @property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (strong, nonatomic) id<PXCMMInvitation> invitation;

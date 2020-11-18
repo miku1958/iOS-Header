@@ -12,6 +12,7 @@
 @interface MFCaptionLabel : UILabel
 {
     BOOL _needsLabelUpdate;
+    BOOL _preventAutoUpdatingLabel;
     id<MFCaptionLabelDataSource> _dataSource;
     NSArray *_toRecipients;
     NSArray *_ccRecipients;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) id<MFCaptionLabelDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) NSArray *fromSenders; // @synthesize fromSenders=_fromSenders;
 @property (strong, nonatomic) NSArray *otherSigners; // @synthesize otherSigners=_otherSigners;
+@property (nonatomic) BOOL preventAutoUpdatingLabel; // @synthesize preventAutoUpdatingLabel=_preventAutoUpdatingLabel;
 @property (strong, nonatomic) NSArray *toRecipients; // @synthesize toRecipients=_toRecipients;
 
 + (id)attributedStringsCache;

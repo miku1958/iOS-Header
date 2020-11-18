@@ -17,29 +17,31 @@ __attribute__((visibility("hidden")))
     NSString *_automationType;
     NSString *_key;
     NSString *_runSource;
-    int _source;
+    NSString *_shortcutSource;
     BOOL _completed;
+    BOOL _didRunRemotely;
     struct {
-        unsigned int source:1;
         unsigned int completed:1;
+        unsigned int didRunRemotely:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property (strong, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
+@property (nonatomic) BOOL didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property (readonly, nonatomic) BOOL hasActionIdentifier;
 @property (readonly, nonatomic) BOOL hasAutomationType;
 @property (nonatomic) BOOL hasCompleted;
+@property (nonatomic) BOOL hasDidRunRemotely;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (readonly, nonatomic) BOOL hasRunSource;
-@property (nonatomic) BOOL hasSource;
+@property (readonly, nonatomic) BOOL hasShortcutSource;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (strong, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (strong, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
 
 - (void).cxx_destruct;
-- (int)StringAsSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

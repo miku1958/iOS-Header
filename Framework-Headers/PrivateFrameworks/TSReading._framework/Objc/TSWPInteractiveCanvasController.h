@@ -48,6 +48,7 @@
 - (BOOL)showsComments;
 - (BOOL)suppressDoubleTapForSelection;
 - (void)teardown;
+- (struct CGImage *)textImageFromRect:(struct CGRect)arg1;
 - (BOOL)textRepsShouldTileAggressively;
 - (void)willEndEditingText;
 - (void)withLayoutForModel:(id)arg1 withSelection:(id)arg2 performBlock:(CDUnknownBlockType)arg3;

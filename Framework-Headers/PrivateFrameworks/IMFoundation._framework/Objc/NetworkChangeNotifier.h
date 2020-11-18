@@ -34,6 +34,7 @@
 + (void)disableNotifications;
 + (BOOL)enableNotifications;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_clearIPCache;
 - (BOOL)_listenForChanges;
 - (void)connectionMonitorDidUpdate:(id)arg1;

@@ -6,14 +6,20 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
-@class OBHollowButton;
+#import <OnBoardingKit/OBSetupAssistantSupport-Protocol.h>
 
-@interface OBSetupAssistantHollowController : OBWelcomeController
+@class NSString, OBHollowButton;
+
+@interface OBSetupAssistantHollowController : OBWelcomeController <OBSetupAssistantSupport>
 {
     OBHollowButton *_contentButton;
 }
 
 @property (strong, nonatomic) OBHollowButton *contentButton; // @synthesize contentButton=_contentButton;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addHollowButtonWithTitle:(id)arg1 target:(id)arg2 downPressSelector:(SEL)arg3 upLiftSelector:(SEL)arg4;

@@ -6,12 +6,12 @@
 
 #import <MediaRemote/MRExternalDeviceTransport.h>
 
-@class NSNetService, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, NSNetService;
 
 __attribute__((visibility("hidden")))
 @interface MRNetServiceTransport : MRExternalDeviceTransport
 {
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     BOOL _requiresCustomPairing;
     NSNetService *_netService;
 }
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)deviceInfo;
 - (id)error;
-- (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (id)hostname;
 - (id)initWithNetService:(id)arg1;
 - (id)name;

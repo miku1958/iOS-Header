@@ -10,10 +10,15 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityAnimationTracker;
+- (void)_accessibilityMarkAnimationNotInProgress:(id)arg1;
+- (void)_accessibilitySetAnimationTracker:(id)arg1;
 - (void)animationDidStart:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (void)dealloc;
 
 @end
 

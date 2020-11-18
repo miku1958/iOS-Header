@@ -13,14 +13,12 @@ __attribute__((visibility("hidden")))
 
 + (const vector_7584168e *)cellStartsX;
 + (const vector_7584168e *)cellStartsY;
-+ (BOOL)hasObjectnessOutputs;
 + (const vector_eb9481f9 *)importantClasses;
 + (struct CGSize)inputImageSize;
 + (id)modelName;
 + (unsigned long long)mumberBinsNegativeMaxout;
 + (unsigned long long)mumberPosClasses;
 + (unsigned long long)numberMaxoutLayers;
-+ (const vector_7584168e *)objectnessFilterThresholds;
 + (BOOL)poseSquare;
 + (const vector_7584168e *)ratios;
 - (id)initWithModelPath:(id)arg1 espressoEngineID:(int)arg2 espressoDeviceID:(int)arg3 espressoStorageType:(int)arg4 threshold:(float)arg5;

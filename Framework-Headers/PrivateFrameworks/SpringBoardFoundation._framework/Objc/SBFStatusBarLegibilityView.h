@@ -15,7 +15,6 @@
     BOOL _forceLegibilityGradientHidden;
     _UILegibilitySettings *_legibilitySettings;
     UIView *_statusBarGradientView;
-    UIView *_overallGradientView;
     UIImageView *_leftCornerView;
     UIImageView *_rightCornerView;
 }
@@ -25,15 +24,13 @@
 @property (nonatomic) BOOL forceLegibilityGradientHidden; // @synthesize forceLegibilityGradientHidden=_forceLegibilityGradientHidden;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *leftCornerView; // @synthesize leftCornerView=_leftCornerView;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
-@property (strong, nonatomic) UIView *overallGradientView; // @synthesize overallGradientView=_overallGradientView;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong, nonatomic) UIImageView *rightCornerView; // @synthesize rightCornerView=_rightCornerView;
 @property (strong, nonatomic) UIView *statusBarGradientView; // @synthesize statusBarGradientView=_statusBarGradientView;
 @property (nonatomic) double strength; // @dynamic strength;
 @property (readonly) Class superclass;
 
 + (id)gradientViewWithOpacities:(const double *)arg1 locations:(id)arg2;
-+ (id)overallGradientView;
 + (id)statusBarGradientView;
 - (void).cxx_destruct;
 - (void)_configureAsPad;

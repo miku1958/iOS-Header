@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class CKRecordZoneID, NSArray, NSDictionary, NSString;
 
 @interface FCCKZoneSchema : NSObject
 {
@@ -21,12 +21,18 @@
     BOOL _shouldUseSecureContainer;
     NSString *_clientZoneName;
     NSString *_serverZoneName;
+    CKRecordZoneID *_clientZoneID;
+    CKRecordZoneID *_serverZoneID;
     NSArray *_staticRecordNamesEligibleForMigration;
 }
 
 @property (readonly, copy, nonatomic) NSArray *allClientRecordTypes;
+@property (readonly, copy, nonatomic) CKRecordZoneID *clientZoneID; // @synthesize clientZoneID=_clientZoneID;
 @property (readonly, copy, nonatomic) NSString *clientZoneName; // @synthesize clientZoneName=_clientZoneName;
 @property (readonly, nonatomic) BOOL isDefaultZone; // @synthesize isDefaultZone=_isDefaultZone;
+@property (readonly, copy, nonatomic) NSString *onlyClientRecordType;
+@property (readonly, copy, nonatomic) NSString *onlyServerRecordType;
+@property (readonly, copy, nonatomic) CKRecordZoneID *serverZoneID; // @synthesize serverZoneID=_serverZoneID;
 @property (readonly, copy, nonatomic) NSString *serverZoneName; // @synthesize serverZoneName=_serverZoneName;
 @property (readonly, nonatomic) BOOL shouldUseSecureContainer; // @synthesize shouldUseSecureContainer=_shouldUseSecureContainer;
 @property (readonly, nonatomic) BOOL shouldUseZoneWidePCS; // @synthesize shouldUseZoneWidePCS=_shouldUseZoneWidePCS;

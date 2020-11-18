@@ -17,9 +17,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (optional_615f169e)_deserializeNode:(id)arg1;
-- (optional_61f7b1bf)_deserializeProperty:(id)arg1;
-- (optional_7a04703f)_deserializeValue:(id)arg1;
+- (optional_69fa5ceb)_deserializeNode:(id)arg1;
+- (optional_7058859e)_deserializeProperty:(id)arg1;
+- (optional_5af9047b)_deserializeValue:(id)arg1;
 - (void)_outputTree:(basic_ostream_374c280d *)arg1;
 - (void)_populateData;
 - (id)_serializeNode:(const struct DebugTreeNode *)arg1;

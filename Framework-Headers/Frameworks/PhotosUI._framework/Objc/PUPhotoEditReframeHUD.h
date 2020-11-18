@@ -6,42 +6,42 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIColor, UILabel;
+@class NSString, PXHUDView, PXHUDVisualization, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditReframeHUD : UIView
 {
     UIColor *_positiveColor;
     UIColor *_negativeColor;
-    UILabel *_detailLabel;
-    UILabel *_pregatedLabel;
-    UILabel *_overcaptureLabel;
-    UILabel *_subjectsLabel;
-    UILabel *_stitchedLabel;
-    UILabel *_tripodLabel;
-    UILabel *_buildingLabel;
-    UILabel *_reframedLabel;
-    UILabel *_resultReframeLabel;
-    UILabel *_resultPerspectiveLabel;
-    UILabel *_resultHorizonLabel;
+    PXHUDView *_hudView;
+    PXHUDVisualization *_detailVisualization;
+    PXHUDVisualization *_pregatedVisualization;
+    PXHUDVisualization *_overcaptureVisualization;
+    PXHUDVisualization *_subjectsVisualization;
+    PXHUDVisualization *_stitchedVisualization;
+    PXHUDVisualization *_tripodVisualization;
+    PXHUDVisualization *_buildingVisualization;
+    PXHUDVisualization *_reframedVisualization;
+    PXHUDVisualization *_resultReframeVisualization;
+    PXHUDVisualization *_resultPerspectiveVisualization;
+    PXHUDVisualization *_resultHorizonVisualization;
 }
 
-@property (strong, nonatomic) UILabel *buildingLabel; // @synthesize buildingLabel=_buildingLabel;
-@property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (strong, nonatomic) PXHUDVisualization *buildingVisualization; // @synthesize buildingVisualization=_buildingVisualization;
 @property (copy, nonatomic) NSString *detailText;
-@property (strong, nonatomic) UILabel *overcaptureLabel; // @synthesize overcaptureLabel=_overcaptureLabel;
-@property (strong, nonatomic) UILabel *pregatedLabel; // @synthesize pregatedLabel=_pregatedLabel;
-@property (strong, nonatomic) UILabel *reframedLabel; // @synthesize reframedLabel=_reframedLabel;
-@property (strong, nonatomic) UILabel *resultHorizonLabel; // @synthesize resultHorizonLabel=_resultHorizonLabel;
-@property (strong, nonatomic) UILabel *resultPerspectiveLabel; // @synthesize resultPerspectiveLabel=_resultPerspectiveLabel;
-@property (strong, nonatomic) UILabel *resultReframeLabel; // @synthesize resultReframeLabel=_resultReframeLabel;
-@property (strong, nonatomic) UILabel *stitchedLabel; // @synthesize stitchedLabel=_stitchedLabel;
-@property (strong, nonatomic) UILabel *subjectsLabel; // @synthesize subjectsLabel=_subjectsLabel;
-@property (strong, nonatomic) UILabel *tripodLabel; // @synthesize tripodLabel=_tripodLabel;
+@property (strong, nonatomic) PXHUDVisualization *detailVisualization; // @synthesize detailVisualization=_detailVisualization;
+@property (strong, nonatomic) PXHUDView *hudView; // @synthesize hudView=_hudView;
+@property (strong, nonatomic) PXHUDVisualization *overcaptureVisualization; // @synthesize overcaptureVisualization=_overcaptureVisualization;
+@property (strong, nonatomic) PXHUDVisualization *pregatedVisualization; // @synthesize pregatedVisualization=_pregatedVisualization;
+@property (strong, nonatomic) PXHUDVisualization *reframedVisualization; // @synthesize reframedVisualization=_reframedVisualization;
+@property (strong, nonatomic) PXHUDVisualization *resultHorizonVisualization; // @synthesize resultHorizonVisualization=_resultHorizonVisualization;
+@property (strong, nonatomic) PXHUDVisualization *resultPerspectiveVisualization; // @synthesize resultPerspectiveVisualization=_resultPerspectiveVisualization;
+@property (strong, nonatomic) PXHUDVisualization *resultReframeVisualization; // @synthesize resultReframeVisualization=_resultReframeVisualization;
+@property (strong, nonatomic) PXHUDVisualization *stitchedVisualization; // @synthesize stitchedVisualization=_stitchedVisualization;
+@property (strong, nonatomic) PXHUDVisualization *subjectsVisualization; // @synthesize subjectsVisualization=_subjectsVisualization;
+@property (strong, nonatomic) PXHUDVisualization *tripodVisualization; // @synthesize tripodVisualization=_tripodVisualization;
 
 - (void).cxx_destruct;
-- (id)_makeLabelAndAddToView;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)showStatsForPhoto:(id)arg1;

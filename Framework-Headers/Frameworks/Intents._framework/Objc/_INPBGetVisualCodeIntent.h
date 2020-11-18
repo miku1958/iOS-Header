@@ -17,12 +17,10 @@
     struct {
         unsigned int visualCodeType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _visualCodeType;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;

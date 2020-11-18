@@ -22,6 +22,8 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
++ (id)_plistAndErrorClasses;
++ (id)_plistClasses;
 - (void)fetchThenApplyConfigurationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queryForStatusWithKeyPaths:(id)arg1 onBehalfOfManagementChannel:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

@@ -27,11 +27,15 @@ __attribute__((visibility("hidden")))
     int _displayMode;
     int _sortOrder;
     int _subCategoryType;
+    BOOL _includeEvChargingParametersOnSearch;
+    BOOL _isAllCategoryForVenue;
     BOOL _isSubCategorySameAsTopLevel;
     struct {
         unsigned int has_displayMode:1;
         unsigned int has_sortOrder:1;
         unsigned int has_subCategoryType:1;
+        unsigned int has_includeEvChargingParametersOnSearch:1;
+        unsigned int has_isAllCategoryForVenue:1;
         unsigned int has_isSubCategorySameAsTopLevel:1;
         unsigned int read_unknownFields:1;
         unsigned int read_displayString:1;
@@ -40,17 +44,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_styleAttributes:1;
         unsigned int read_subCategorys:1;
         unsigned int read_suggestionEntryMetadata:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayString:1;
-        unsigned int wrote_popularDisplayToken:1;
-        unsigned int wrote_shortDisplayString:1;
-        unsigned int wrote_styleAttributes:1;
-        unsigned int wrote_subCategorys:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_displayMode:1;
-        unsigned int wrote_sortOrder:1;
-        unsigned int wrote_subCategoryType:1;
-        unsigned int wrote_isSubCategorySameAsTopLevel:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,6 +52,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *displayString;
 @property (nonatomic) BOOL hasDisplayMode;
 @property (readonly, nonatomic) BOOL hasDisplayString;
+@property (nonatomic) BOOL hasIncludeEvChargingParametersOnSearch;
+@property (nonatomic) BOOL hasIsAllCategoryForVenue;
 @property (nonatomic) BOOL hasIsSubCategorySameAsTopLevel;
 @property (readonly, nonatomic) BOOL hasPopularDisplayToken;
 @property (readonly, nonatomic) BOOL hasShortDisplayString;
@@ -65,6 +61,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (nonatomic) BOOL hasSubCategoryType;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
+@property (nonatomic) BOOL includeEvChargingParametersOnSearch;
+@property (nonatomic) BOOL isAllCategoryForVenue;
 @property (nonatomic) BOOL isSubCategorySameAsTopLevel;
 @property (strong, nonatomic) NSString *popularDisplayToken;
 @property (strong, nonatomic) NSString *shortDisplayString;
@@ -81,13 +79,6 @@ __attribute__((visibility("hidden")))
 - (int)StringAsDisplayMode:(id)arg1;
 - (int)StringAsSortOrder:(id)arg1;
 - (int)StringAsSubCategoryType:(id)arg1;
-- (void)_addNoFlagsSubCategory:(id)arg1;
-- (void)_readDisplayString;
-- (void)_readPopularDisplayToken;
-- (void)_readShortDisplayString;
-- (void)_readStyleAttributes;
-- (void)_readSubCategorys;
-- (void)_readSuggestionEntryMetadata;
 - (void)addSubCategory:(id)arg1;
 - (void)clearSubCategorys;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -99,7 +90,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

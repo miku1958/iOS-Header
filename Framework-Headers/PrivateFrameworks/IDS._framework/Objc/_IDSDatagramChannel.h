@@ -41,6 +41,7 @@
     double _lastIncomingStatReport;
     NSMutableDictionary *_MKIArrivalTime;
     NSMutableDictionary *_firstPacketArrivalTimeForMKI;
+    NSMutableDictionary *_probingDict;
 }
 
 - (void).cxx_destruct;

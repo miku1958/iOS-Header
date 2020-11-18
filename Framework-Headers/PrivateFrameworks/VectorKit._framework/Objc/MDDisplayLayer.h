@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
         struct _release_objc _release;
     } _sharedResources;
     struct deque<std::__1::function<void ()>, std::__1::allocator<std::__1::function<void ()>>> _completionHandlers;
-    struct RenderTargetFormat _format;
+    struct RenderTargetFormat _sRGBFormat;
     struct Device {
         int;
         struct shared_ptr<ggl::Device>;
@@ -50,11 +50,17 @@ __attribute__((visibility("hidden")))
     } *_renderer;
     struct mutex _debugConsoleManagerCreationLock;
     struct unique_ptr<md::DebugConsoleManager, std::__1::default_delete<md::DebugConsoleManager>> _debugConsoleManager;
-    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _renderTarget;
+    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _sRGBRenderTarget;
     struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencil;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _msaaTexture;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _colorTextures[3];
+    struct shared_ptr<ggl::RenderBuffer> _sRGBMsaaTexture;
+    struct shared_ptr<ggl::RenderBuffer> _sRGBColorTextures[3];
+    struct RenderTargetFormat _linearFormat;
+    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _linearRenderTarget;
+    struct shared_ptr<ggl::RenderBuffer> _linearMsaaTexture;
+    struct shared_ptr<ggl::RenderBuffer> _linearTexture;
+    struct shared_ptr<ggl::RenderBuffer> _linearColorTextures[3];
     BOOL _useMultisampling;
+    BOOL _supportsFramebufferFetch;
     BOOL _requiresMultisampling;
     struct CGContext *_snapshotContext;
     BOOL _readPixels;
@@ -73,6 +79,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const struct RenderTargetFormat *format;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
+@property (readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
+@property (readonly, nonatomic) struct RenderTarget *linearRenderTarget;
 @property (readonly, nonatomic) BOOL multiSample; // @synthesize multiSample=_useMultisampling;
 @property (nonatomic) id<GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
 @property (readonly, nonatomic) struct Renderer *renderer;
@@ -80,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGSize size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsFramebufferFetch; // @synthesize supportsFramebufferFetch=_supportsFramebufferFetch;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -104,7 +113,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasRenderTarget;
 - (id)initWithContentScale:(double)arg1 shouldRasterize:(BOOL)arg2 taskContext:(const shared_ptr_e963992e *)arg3 device:(struct Device *)arg4 sharedResources:(id)arg5 signpostId:(unsigned long long)arg6;
 - (BOOL)isDelayedRenderQueueConsumptionSupported;
-- (void)prepareTexture:(struct Texture *)arg1;
+- (void)prepareTexture:(const shared_ptr_857963ed *)arg1;
 - (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
 - (void)renderWithTimestamp:(double)arg1 completion:(function_d3afe2e2)arg2;
 - (void)setBackgroundColor:(struct CGColor *)arg1;

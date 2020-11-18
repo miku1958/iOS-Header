@@ -36,6 +36,7 @@
 @property (nonatomic, getter=shouldCreateZone) BOOL createZone; // @synthesize createZone=_createZone;
 @property (readonly, nonatomic) BOOL decryptionFailed;
 @property (nonatomic, getter=shouldDeleteZone) BOOL deleteZone; // @synthesize deleteZone=_deleteZone;
+@property (readonly) BOOL doRecordsExistInCache;
 @property (readonly, nonatomic) BOOL encryptionFailed;
 @property (readonly, nonatomic) BOOL hasValidChanges;
 @property (strong, nonatomic) HMDCloudChange *homeDataChange; // @synthesize homeDataChange=_homeDataChange;

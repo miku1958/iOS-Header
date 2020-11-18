@@ -6,11 +6,14 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSNumber, NSString;
 
 @protocol NTKRemoteComplicationProvider <NSObject>
+- (void)enumerateComplicationDescriptorsForClientIdentifier:(NSString *)arg1 family:(long long)arg2 withBlock:(void (^)(CLKComplicationDescriptor *))arg3;
 - (void)enumerateEnabledVendorsForComplicationFamily:(long long)arg1 withBlock:(void (^)(NSString *, NSString *))arg2;
+- (NSNumber *)itemIdForVendorWithClientIdentifier:(NSString *)arg1;
 - (NSString *)localizedAppNameForClientIdentifier:(NSString *)arg1;
+- (void)notifyAppForClientIdentifier:(NSString *)arg1 ofSharedComplicationDescriptors:(NSArray *)arg2 withCompletion:(void (^)(BOOL))arg3;
 - (BOOL)vendorExistsWithClientIdentifier:(NSString *)arg1 appBundleIdentifier:(NSString *)arg2;
 @end
 

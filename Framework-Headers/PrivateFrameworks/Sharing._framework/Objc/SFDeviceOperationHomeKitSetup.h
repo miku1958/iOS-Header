@@ -10,7 +10,7 @@
 #import <Sharing/HMHomeManagerDelegate-Protocol.h>
 #import <Sharing/HMHomeManagerDelegatePrivate-Protocol.h>
 
-@class ACAccount, HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
+@class ACAccount, HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMMediaSystem, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceOperationHomeKitSetup : NSObject <HMAccessoryBrowserDelegate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate>
@@ -32,7 +32,9 @@
     BOOL _homeKitAddedAccessory;
     BOOL _homeKitAddedAppData;
     BOOL _configuredStereoPair;
+    HMMediaSystem *_homeKitMediaSystem;
     BOOL _personalRequestsDone;
+    BOOL _userInteractive;
     BOOL _hasHomePod;
     BOOL _hasMultipleUsers;
     BOOL _keyExchangeOnly;
@@ -54,6 +56,7 @@
     CDUnknownBlockType _promptToInstallHomeAppHandler;
     HMAccessory *_stereoCounterpart;
     TRSession *_trSession;
+    double _timeoutInSeconds;
 }
 
 @property (copy, nonatomic) NSDictionary *appDataSelf; // @synthesize appDataSelf=_appDataSelf;
@@ -80,7 +83,9 @@
 @property (strong, nonatomic) HMAccessory *stereoCounterpart; // @synthesize stereoCounterpart=_stereoCounterpart;
 @property (nonatomic) int stereoRole; // @synthesize stereoRole=_stereoRole;
 @property (readonly) Class superclass;
+@property (nonatomic) double timeoutInSeconds; // @synthesize timeoutInSeconds=_timeoutInSeconds;
 @property (strong, nonatomic) TRSession *trSession; // @synthesize trSession=_trSession;
+@property (nonatomic) BOOL userInteractive; // @synthesize userInteractive=_userInteractive;
 
 - (void).cxx_destruct;
 - (void)_cleanup;
@@ -108,7 +113,7 @@
 - (void)accessoryBrowser:(id)arg1 didFindNewAccessory:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;
 - (void)activate;
-- (id)findStereoCounterparts;
+- (id)findStereoCounterpartsWithSupportedVersions:(unsigned long long)arg1;
 - (void)homeAppInstallChoice:(BOOL)arg1;
 - (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;

@@ -84,6 +84,7 @@
 - (id)contentAtIndexPath:(id)arg1;
 - (void)dealloc;
 - (void)elemenAtIndexPathDidDisplay:(id)arg1;
+- (id)elementAtIndexPath:(id)arg1;
 - (void)elementAtIndexPathDidEndDisplay:(id)arg1;
 - (void)elementAtIndexPathWasSelected:(id)arg1;
 - (id)elementIdentifierAtIndexPath:(id)arg1;

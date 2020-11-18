@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXComponentClassification.h>
+#import <Silex/SXDefaultMediumRectangleAdComponentClassification.h>
 
-@interface SXMediumRectangleAdComponentClassification : SXComponentClassification
+@interface SXMediumRectangleAdComponentClassification : SXDefaultMediumRectangleAdComponentClassification
 {
 }
 
 + (int)role;
 + (id)roleString;
 + (id)typeString;
-- (Class)componentModelClass;
-- (BOOL)isCollapsible;
 
 @end
 

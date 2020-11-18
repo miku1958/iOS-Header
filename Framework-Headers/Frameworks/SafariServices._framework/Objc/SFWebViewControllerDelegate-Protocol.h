@@ -50,11 +50,16 @@
 - (void)webViewControllerWillPresentJavaScriptDialog:(SFWebViewController *)arg1;
 
 @optional
+- (void)authenticationChallengeDidNegotiateModernTLS:(NSURLAuthenticationChallenge *)arg1;
+- (void)webViewController:(SFWebViewController *)arg1 authenticationChallenge:(NSURLAuthenticationChallenge *)arg2 shouldAllowLegacyTLS:(void (^)(BOOL))arg3;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuConfigurationForElement:(WKContextMenuElementInfo *)arg2 completionHandler:(void (^)(UIContextMenuConfiguration *))arg3;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuDidEndForElement:(WKContextMenuElementInfo *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuForElement:(WKContextMenuElementInfo *)arg2 willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuWillPresentForElement:(WKContextMenuElementInfo *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(NSString *)arg3 completionHandler:(void (^)(long long))arg4;
+- (void)webViewController:(SFWebViewController *)arg1 willGoToBackForwardListItem:(WKBackForwardListItem *)arg2 inPageCache:(BOOL)arg3;
+- (BOOL)webViewControllerCanPromptForAccountSecurityRecommendation:(SFWebViewController *)arg1;
+- (void)webViewControllerDidFirstPaint:(SFWebViewController *)arg1;
 - (void)webViewControllerDidShowSafeBrowsingWarning:(SFWebViewController *)arg1;
 @end
 

@@ -33,6 +33,7 @@
 - (void)addInvocable:(id)arg1;
 - (void)addInvocationBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithInvocationBlock:(CDUnknownBlockType)arg1;
 - (id)initWithLabel:(id)arg1;
 - (void)invoke;
 - (void)removeAllInvocationBlocks;

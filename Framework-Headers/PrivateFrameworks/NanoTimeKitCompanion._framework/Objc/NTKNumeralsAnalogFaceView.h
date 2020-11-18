@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKAnalogFaceView.h>
 
-@class NSNumber, NTKEditOptionPickerView, NTKNumeralsHourViewsManager, NTKUtilityComplicationFactory;
+@class CLKClockTimerToken, NTKEditOptionPickerView, NTKNumeralsHourViewsManager, NTKUtilityComplicationFactory;
 
 @interface NTKNumeralsAnalogFaceView : NTKAnalogFaceView
 {
@@ -18,7 +18,7 @@
     NTKEditOptionPickerView *_stylePickerView;
     NTKNumeralsHourViewsManager *_hourViewsManager;
     unsigned long long _selectedStyle;
-    NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
 }
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
@@ -50,7 +50,7 @@
 - (double)_handsAlphaForEditMode:(long long)arg1;
 - (BOOL)_isInTimeTravel;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(BOOL)arg2;
 - (struct CGRect)_keylineFrameForFullScreenEditingReducedForOutsideLabel;
 - (struct CGRect)_keylineFrameForStyleEditing;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -59,6 +59,7 @@
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadHoursManagerIfNecessary;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;

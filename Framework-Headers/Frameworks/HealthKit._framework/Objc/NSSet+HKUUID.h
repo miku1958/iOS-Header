@@ -21,6 +21,8 @@
 + (id)hk_typesForArrayOf:(Class)arg1;
 + (id)hk_typesForDictionaryMapping:(Class)arg1 to:(Class)arg2;
 + (id)hk_typesForSetOf:(Class)arg1;
+- (BOOL)hk_allObjectsPassTestWithError:(id *)arg1 test:(CDUnknownBlockType)arg2;
+- (id)hk_anyObjectPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)hk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_dataForAllUUIDs;
 - (BOOL)hk_enumerateUUIDsWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;

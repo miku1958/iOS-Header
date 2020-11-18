@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     BOOL _ignoreMirroredScreens;
     BOOL _ignoreScreenRecordingScreens;
     BOOL _compensateForOverscan;
+    BOOL _switchToMediaPresentationMode;
     unsigned long long _placeholderForSecondScreen;
     unsigned long long _placeholderForMirroredScreen;
     double _minimumZoomForScrollPadding;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long routeAvailabilityOverride; // @synthesize routeAvailabilityOverride=_routeAvailabilityOverride;
 @property (nonatomic) double simulatedScreenContentHeight; // @synthesize simulatedScreenContentHeight=_simulatedScreenContentHeight;
 @property (nonatomic) double simulatedScreenContentWidth; // @synthesize simulatedScreenContentWidth=_simulatedScreenContentWidth;
+@property (nonatomic) BOOL switchToMediaPresentationMode; // @synthesize switchToMediaPresentationMode=_switchToMediaPresentationMode;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

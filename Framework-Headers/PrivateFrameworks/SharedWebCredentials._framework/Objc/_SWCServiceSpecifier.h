@@ -10,7 +10,7 @@
 #import <SharedWebCredentials/NSSecureCoding-Protocol.h>
 #import <SharedWebCredentials/SWCRedactedDescription-Protocol.h>
 
-@class NSString, _SWCApplicationIdentifier, _SWCDomain;
+@class NSNumber, NSString, _SWCApplicationIdentifier, _SWCDomain;
 
 @interface _SWCServiceSpecifier : NSObject <SWCRedactedDescription, NSSecureCoding, NSCopying>
 {
@@ -25,6 +25,9 @@
 @property (readonly) NSString *applicationIdentifierPrefix;
 @property (readonly) NSString *bundleIdentifier;
 @property (readonly) NSString *domain; // @dynamic domain;
+@property (readonly) NSString *domainHost;
+@property (readonly) BOOL domainModeOfOperation;
+@property (readonly) NSNumber *domainPort;
 @property (readonly, getter=isDomainWildcard) BOOL domainWildcard;
 @property (readonly, getter=isFullySpecified) BOOL fullySpecified;
 @property (readonly) NSString *serviceType; // @synthesize serviceType=_serviceType;
@@ -39,6 +42,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
+- (BOOL)domainEncompassesDomain:(id)arg1;
+- (BOOL)domainEncompassesDomainOfServiceSpecifier:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

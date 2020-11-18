@@ -6,8 +6,8 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CNContact, GEOMapItemStorage, MapsSuggestionsEntry;
-@protocol MapsSuggestionsSourceDelegate;
+@class CNContact, GEOMapItemStorage, MapsSuggestionsEntry, NSString;
+@protocol MapsSuggestionsResourceDepot, MapsSuggestionsSourceDelegate;
 
 @protocol MapsSuggestionsSource <MapsSuggestionsObject>
 
@@ -15,16 +15,17 @@
 
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
++ (id)new;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)feedbackForContact:(CNContact *)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(MapsSuggestionsEntry *)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(GEOMapItemStorage *)arg1 action:(long long)arg2;
 - (id)init;
-- (id)initWithDelegate:(id<MapsSuggestionsSourceDelegate>)arg1;
+- (id)initFromResourceDepot:(id<MapsSuggestionsResourceDepot>)arg1 name:(NSString *)arg2;
 - (BOOL)removeEntry:(MapsSuggestionsEntry *)arg1 behavior:(long long)arg2 handler:(void (^)(void))arg3;
 - (void)start;
 - (void)stop;
-- (double)updateSuggestionEntries;
-- (double)updateSuggestionEntriesOfType:(long long)arg1;
+- (double)updateSuggestionEntriesOfType:(long long)arg1 handler:(void (^)(void))arg2;
+- (double)updateSuggestionEntriesWithHandler:(void (^)(void))arg1;
 @end
 

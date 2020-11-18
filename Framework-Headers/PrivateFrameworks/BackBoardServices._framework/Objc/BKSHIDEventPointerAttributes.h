@@ -10,6 +10,7 @@
 
 @interface BKSHIDEventPointerAttributes : BKSHIDEventDigitizerAttributes
 {
+    unsigned char _pointerEdgeMask;
     unsigned short _pointerState;
     NSArray *_hitTestContexts;
     double _unacceleratedRelativePositionX;
@@ -25,14 +26,15 @@
 @property (nonatomic) long long activeModifiers; // @synthesize activeModifiers=_activeModifiers;
 @property (nonatomic) long long fingerDownCount; // @synthesize fingerDownCount=_fingerDownCount;
 @property (copy, nonatomic) NSArray *hitTestContexts; // @synthesize hitTestContexts=_hitTestContexts;
+@property (nonatomic) unsigned char pointerEdgeMask; // @synthesize pointerEdgeMask=_pointerEdgeMask;
 @property (nonatomic) unsigned short pointerState; // @synthesize pointerState=_pointerState;
 @property (nonatomic) double unacceleratedRelativePositionX; // @synthesize unacceleratedRelativePositionX=_unacceleratedRelativePositionX;
 @property (nonatomic) double unacceleratedRelativePositionY; // @synthesize unacceleratedRelativePositionY=_unacceleratedRelativePositionY;
 
 + (id)protobufSchema;
 - (void).cxx_destruct;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -26,6 +26,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 recipient:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 recipient:(id)arg2 presentationOptions:(unsigned long long)arg3;
 - (id)keyCommands;
+- (id)menuConfigurationForChevronButton;
 - (void)moveLeft:(id)arg1;
 - (void)moveRight:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

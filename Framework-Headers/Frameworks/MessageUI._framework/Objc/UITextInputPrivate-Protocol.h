@@ -32,6 +32,8 @@
 - (double)_delayUntilRepeatInsertText:(NSString *)arg1;
 - (void)_didHideCorrections;
 - (void)_insertAttributedTextWithoutClosingTyping:(NSAttributedString *)arg1;
+- (BOOL)_isInteractiveDespiteResponderStatus;
+- (struct CGRect)_selectionClipRect;
 - (SEL)_sendCurrentLocationAction;
 - (BOOL)_shouldRepeatInsertText:(NSString *)arg1;
 - (BOOL)_shouldSuppressSelectionCommands;

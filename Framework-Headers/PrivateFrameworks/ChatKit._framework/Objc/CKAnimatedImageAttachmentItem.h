@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_newImageData;
 - (id)_savedPreviewFromURL:(id)arg1;
+- (id)animatedPreviewURL:(BOOL)arg1;
 - (id)generatePreviewFromThumbnail:(id)arg1 width:(double)arg2;
 - (void)generatePreviewWithCompletion:(CDUnknownBlockType)arg1;
 - (struct CGSize)size;

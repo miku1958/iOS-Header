@@ -13,11 +13,11 @@
 }
 
 - (id)additionalDependenciesForChildLayout:(id)arg1;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)boundsForStandardKnobs;
 - (BOOL)canFlip;
 - (id)descendentWrappables;
 - (BOOL)descendentWrappablesContainsWrappable:(id)arg1;
-- (struct CGRect)frameForCulling;
 - (struct CGSize)minimumSize;
 - (id)reliedOnLayouts;
 - (id)visibleGeometries;

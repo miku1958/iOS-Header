@@ -6,16 +6,16 @@
 
 #import <UIKit/UIButton.h>
 
+@class UITraitCollection;
+
 __attribute__((visibility("hidden")))
 @interface SFDismissButton : UIButton
 {
     long long _style;
+    UITraitCollection *_preferredTraitCollection;
 }
 
-@property (nonatomic) long long style; // @synthesize style=_style;
-
-- (id)_titleForDismissButtonStyle:(long long)arg1;
-- (void)_updateButtonStyle;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

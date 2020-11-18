@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)getKey:(id)arg1 fromDictionary:(id)arg2 withDefault:(id)arg3;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 - (id)performClustersPostprocessing:(id)arg1 error:(id *)arg2;
-- (id)processImagesFromDataProvider:(id)arg1 error:(id *)arg2;
 
 @end
 

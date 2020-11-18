@@ -15,12 +15,10 @@
 @interface _INPBDuration : PBCodable <_INPBDuration, NSSecureCoding, NSCopying>
 {
     CDStruct_85a1ec51 _has;
-    BOOL __encodeLegacyGloryData;
     int _nanos;
     long long _seconds;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasNanos;

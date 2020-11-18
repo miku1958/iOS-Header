@@ -14,19 +14,22 @@
 #import <HomeKitDaemon/HMDSettingsBackingStoreController-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, NSString, NSUUID;
-@protocol HMDAssistantAccessControlModelUpdateReceiver, HMDDatabase, HMDMediaContentProfileAccessControlModelUpdateReceiver, HMDSettingTransactionReceiverProtocol, HMDUserSettingsBackingStoreControllerDelegate, OS_dispatch_queue;
+@class HMBCloudZone, HMBLocalZone, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, HMDLogEventDispatcher, NSString, NSUUID;
+@protocol HMDAssistantAccessControlModelUpdateReceiver, HMDDatabase, HMDMediaContentProfileAccessControlModelUpdateReceiver, HMDSettingTransactionReceiverProtocol, HMDUserSettingsBackingStoreControllerDelegate, OS_dispatch_queue, OS_os_log;
 
 @interface HMDUserSettingsBackingStoreController : NSObject <HMBLocalZoneModelObserver, HMFLogging, HMDCloudShareParticipantsManagerDataSource, HMDCloudShareParticipantsManagerDelegate, HMDCloudShareMessengerDelegate, HMDDatabaseDelegate, HMDSettingsBackingStoreController>
 {
+    NSObject<OS_os_log> *_logger;
+    unsigned long long _startupSignPost;
     id<HMDUserSettingsBackingStoreControllerDelegate> _delegate;
+    HMBLocalZone *_localZone;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_zoneName;
     id<HMDDatabase> _database;
+    HMDLogEventDispatcher *_logEventDispatcher;
     HMDCloudShareMessenger *_shareMessenger;
     HMDCloudShareParticipantsManager *_participantsManager;
     HMBCloudZone *_cloudZone;
-    HMBLocalZone *_localZone;
     long long _runState;
     id<HMDSettingTransactionReceiverProtocol> _transactionReceiver;
     id<HMDAssistantAccessControlModelUpdateReceiver> _assistantAccessControlModelUpdateReceiver;
@@ -44,13 +47,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
+@property (readonly) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
 @property (copy) NSUUID *mediaContentProfileAccessControlModelID; // @synthesize mediaContentProfileAccessControlModelID=_mediaContentProfileAccessControlModelID;
 @property (weak) id<HMDMediaContentProfileAccessControlModelUpdateReceiver> mediaContentProfileAccessControlModelUpdateReceiver; // @synthesize mediaContentProfileAccessControlModelUpdateReceiver=_mediaContentProfileAccessControlModelUpdateReceiver;
 @property (strong) HMDCloudShareParticipantsManager *participantsManager; // @synthesize participantsManager=_participantsManager;
 @property long long runState; // @synthesize runState=_runState;
 @property (readonly) HMDCloudShareMessenger *shareMessenger; // @synthesize shareMessenger=_shareMessenger;
 @property (readonly) Class superclass;
-@property (strong) id<HMDSettingTransactionReceiverProtocol> transactionReceiver; // @synthesize transactionReceiver=_transactionReceiver;
+@property (weak) id<HMDSettingTransactionReceiverProtocol> transactionReceiver; // @synthesize transactionReceiver=_transactionReceiver;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly, copy) NSString *zoneName; // @synthesize zoneName=_zoneName;
 
@@ -63,8 +67,10 @@
 - (void)_startWithSharedZone;
 - (void)_updateRunState:(long long)arg1;
 - (void)clearParticipants;
-- (void)database:(id)arg1 didCreateZoneWithName:(id)arg2;
-- (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2;
+- (void)database:(id)arg1 didCreateZoneWithName:(id)arg2 isPrivate:(BOOL)arg3;
+- (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2 isPrivate:(BOOL)arg3;
+- (void)deregisterObserverDeviceIdentifier:(id)arg1;
+- (void)deregisterObserverDeviceIdentifier:(id)arg1 observerPushToken:(id)arg2 subActivity:(id)arg3 subjectDeviceIdentifier:(id)arg4;
 - (void)destroyZone;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 zoneName:(id)arg3 database:(id)arg4 home:(id)arg5 shareMessenger:(id)arg6;
 - (id)loadAssistantAccessControlModelWithModelID:(id)arg1 error:(id *)arg2;
@@ -80,14 +86,17 @@
 - (BOOL)manager:(id)arg1 shouldShareWithUser:(id)arg2;
 - (void)messenger:(id)arg1 didReceiveInvitationData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)messengerDidReceiveInvitationRequest:(id)arg1;
+- (id)queryPushTokensForDevicesObservingSubjectDevice:(id)arg1 subActivity:(id)arg2;
 - (void)registerForAssistantAccessControlModelUpdates:(id)arg1 modelID:(id)arg2;
 - (void)registerForMediaContentAccessControlModelUpdates:(id)arg1 modelID:(id)arg2;
 - (void)registerForSettingsTransactions:(id)arg1;
+- (void)registerObserverDeviceIdentifier:(id)arg1 observerPushToken:(id)arg2 subActivity:(id)arg3 subjectDeviceIdentifier:(id)arg4;
 - (void)runSettingTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)runSettingTransaction:(id)arg1 waitForCloudPush:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runTransaction:(id)arg1 waitForCloudPush:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)settingTransactionWithName:(id)arg1;
 - (void)start;
+- (void)updateObserverDeviceIdentifier:(id)arg1 observerPushToken:(id)arg2;
 - (void)updateParticipants;
 
 @end

@@ -9,13 +9,14 @@
 #import <BoardServices/BSDescriptionProviding-Protocol.h>
 #import <BoardServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface BSServiceSpecification : NSObject <NSCopying, BSDescriptionProviding>
 {
-    NSString *_identifier;
-    BOOL _launchWhitelisted;
+    NSDictionary *_options;
     BOOL _derived;
+    NSString *_identifier;
+    NSDictionary *_configuration;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,16 +24,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isLaunchWhitelisted) BOOL launchWhitelisted; // @synthesize launchWhitelisted=_launchWhitelisted;
+@property (readonly, nonatomic, getter=isLaunchWhitelisted) BOOL launchWhitelisted;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 launchWhitelisted:(BOOL)arg2 derived:(BOOL)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (id)optionForKey:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

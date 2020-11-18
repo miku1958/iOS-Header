@@ -24,9 +24,9 @@
 + (id)activityCaptionTextAttributes;
 + (id)activityCaptionTextEmphasizedAttributes;
 + (double)activityCaptionTitleBaselineToSubtitleBaselineDynamicDistance;
++ (id)activityChevronImage;
 + (id)activityDateSubtitleTextAttributes;
 + (id)activityHeaderTextAttributesForTextColorStyle:(unsigned long long)arg1;
-+ (id)activityMiniChevronImage;
 + (id)activityPosterTextAttributesForTextColorStyle:(unsigned long long)arg1;
 + (double)captionDynamicDistance;
 + (double)headerDynamicBottomSubtitleToBottomDistance;
@@ -42,6 +42,8 @@
 + (id)invitationParentViewBackgroundColor:(BOOL)arg1;
 + (id)invitationReportJunkLinkAttributes;
 + (id)invitationReportJunkTextAttributes;
++ (id)invitationSubscriberInfoTextAttributes;
++ (double)invitationSubscriberInfoToButtonsDynamicDistance;
 + (id)invitationSubtitleTextAttributes;
 + (id)invitationTextAttributes;
 + (double)invitationTextToAlbumTitleBaselineDynamicDistance;

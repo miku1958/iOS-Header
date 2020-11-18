@@ -6,12 +6,13 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-@class HKHealthStore, HKSample, NSArray, UIFont;
+@class HKAuthorizationStore, HKHealthStore, HKSample, NSArray, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface WDAppAccessListViewController : HKTableViewController
 {
     HKHealthStore *_healthStore;
+    HKAuthorizationStore *_authorizationStore;
     NSArray *_allowedApps;
     NSArray *_disallowedApps;
     HKSample *_sample;

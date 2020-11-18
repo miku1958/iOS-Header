@@ -21,6 +21,8 @@
     long long _userStartDate;
     int _ageBracket;
     float _ageBracketConfidenceLevel;
+    NSString *_amsCampaignId;
+    NSString *_amsPurchaseId;
     NSString *_appBuildNumber;
     NSData *_appProcessLifetimeId;
     NSString *_appVersion;
@@ -49,6 +51,7 @@
     NSString *_originatingCreativeId;
     int _osInstallVariant;
     NSString *_osVersion;
+    int _paywallConfigType;
     NSString *_personalizationPortraitVariantName;
     NSString *_previousAppVersion;
     NSString *_previousOsVersion;
@@ -107,6 +110,7 @@
         unsigned int incomeBracketConfidenceLevel:1;
         unsigned int newsWidgetModeGroup:1;
         unsigned int osInstallVariant:1;
+        unsigned int paywallConfigType:1;
         unsigned int reachabilityStatus:1;
         unsigned int textSize:1;
         unsigned int utcOffset:1;
@@ -140,6 +144,8 @@
 
 @property (nonatomic) int ageBracket; // @synthesize ageBracket=_ageBracket;
 @property (nonatomic) float ageBracketConfidenceLevel; // @synthesize ageBracketConfidenceLevel=_ageBracketConfidenceLevel;
+@property (strong, nonatomic) NSString *amsCampaignId; // @synthesize amsCampaignId=_amsCampaignId;
+@property (strong, nonatomic) NSString *amsPurchaseId; // @synthesize amsPurchaseId=_amsPurchaseId;
 @property (nonatomic) long long appBuild; // @synthesize appBuild=_appBuild;
 @property (strong, nonatomic) NSString *appBuildNumber; // @synthesize appBuildNumber=_appBuildNumber;
 @property (nonatomic) long long appConfigTreatmentId; // @synthesize appConfigTreatmentId=_appConfigTreatmentId;
@@ -161,6 +167,8 @@
 @property (nonatomic) float genderConfidenceLevel; // @synthesize genderConfidenceLevel=_genderConfidenceLevel;
 @property (nonatomic) BOOL hasAgeBracket;
 @property (nonatomic) BOOL hasAgeBracketConfidenceLevel;
+@property (readonly, nonatomic) BOOL hasAmsCampaignId;
+@property (readonly, nonatomic) BOOL hasAmsPurchaseId;
 @property (nonatomic) BOOL hasAppBuild;
 @property (readonly, nonatomic) BOOL hasAppBuildNumber;
 @property (nonatomic) BOOL hasAppConfigTreatmentId;
@@ -207,6 +215,7 @@
 @property (readonly, nonatomic) BOOL hasOriginatingCreativeId;
 @property (nonatomic) BOOL hasOsInstallVariant;
 @property (readonly, nonatomic) BOOL hasOsVersion;
+@property (nonatomic) BOOL hasPaywallConfigType;
 @property (readonly, nonatomic) BOOL hasPersonalizationPortraitVariantName;
 @property (readonly, nonatomic) BOOL hasPreviousAppVersion;
 @property (readonly, nonatomic) BOOL hasPreviousOsVersion;
@@ -260,6 +269,7 @@
 @property (strong, nonatomic) NSString *originatingCreativeId; // @synthesize originatingCreativeId=_originatingCreativeId;
 @property (nonatomic) int osInstallVariant; // @synthesize osInstallVariant=_osInstallVariant;
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
+@property (nonatomic) int paywallConfigType; // @synthesize paywallConfigType=_paywallConfigType;
 @property (strong, nonatomic) NSString *personalizationPortraitVariantName; // @synthesize personalizationPortraitVariantName=_personalizationPortraitVariantName;
 @property (strong, nonatomic) NSString *previousAppVersion; // @synthesize previousAppVersion=_previousAppVersion;
 @property (strong, nonatomic) NSString *previousOsVersion; // @synthesize previousOsVersion=_previousOsVersion;
@@ -298,6 +308,7 @@
 - (int)StringAsCellularRadioAccessTechnology:(id)arg1;
 - (int)StringAsNewsWidgetModeGroup:(id)arg1;
 - (int)StringAsOsInstallVariant:(id)arg1;
+- (int)StringAsPaywallConfigType:(id)arg1;
 - (int)StringAsReachabilityStatus:(id)arg1;
 - (int)StringAsWidgetDisplayMode:(id)arg1;
 - (int)StringAsWidgetDisplayModeSessionEnd:(id)arg1;
@@ -319,6 +330,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)newsWidgetModeGroupAsString:(int)arg1;
 - (id)osInstallVariantAsString:(int)arg1;
+- (id)paywallConfigTypeAsString:(int)arg1;
 - (id)reachabilityStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)regionIdsAtIndex:(unsigned long long)arg1;

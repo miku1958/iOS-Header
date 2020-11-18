@@ -6,19 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@protocol GEOPhoneNumberResolving;
+@class PNRPhoneNumberResolver;
 
 @interface GEOPhoneNumberResolver : NSObject
 {
-    id<GEOPhoneNumberResolving> _resolver;
+    PNRPhoneNumberResolver *_resolver;
 }
 
 + (id)sharedResolver;
-+ (void)useLocalResolver;
-+ (void)useProxy:(Class)arg1;
-+ (void)useRemoteResolver;
 - (void).cxx_destruct;
-- (void)_alePackResolution:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (id)init;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
 

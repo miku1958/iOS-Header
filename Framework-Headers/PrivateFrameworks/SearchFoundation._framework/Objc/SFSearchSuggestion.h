@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSearchSuggestion-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 
 @interface SFSearchSuggestion : NSObject <SFSearchSuggestion, NSSecureCoding, NSCopying>
 {
@@ -31,11 +31,14 @@
     NSString *_fbr;
     NSString *_scopedSearchApplicationBundleIdentifier;
     NSString *_utteranceText;
+    NSString *_detailText;
+    NSMutableDictionary *_serverFeatures;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSArray *duplicateSuggestions; // @synthesize duplicateSuggestions=_duplicateSuggestions;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
@@ -46,6 +49,7 @@
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier; // @synthesize scopedSearchApplicationBundleIdentifier=_scopedSearchApplicationBundleIdentifier;
 @property (nonatomic) double score; // @synthesize score=_score;
+@property (copy, nonatomic) NSMutableDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *topicIdentifier; // @synthesize topicIdentifier=_topicIdentifier;
@@ -63,6 +67,7 @@
 - (id)initWithIdentifier:(id)arg1 suggestion:(id)arg2 query:(id)arg3 score:(double)arg4 type:(int)arg5;
 - (id)initWithProtobuf:(id)arg1;
 - (id)initWithSuggestion:(id)arg1 query:(id)arg2 score:(double)arg3 type:(int)arg4;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

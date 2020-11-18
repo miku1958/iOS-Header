@@ -6,20 +6,28 @@
 
 #import <MapKit/MKSearchFoundationRichText.h>
 
+@class NSString, UIColor;
+
 __attribute__((visibility("hidden")))
 @interface MKSearchFoundationBusinessHoursAndDistanceRichText : MKSearchFoundationRichText
 {
     BOOL _businessHoursResolved;
     BOOL _distanceResolved;
+    NSString *_hoursString;
+    UIColor *_hoursColor;
 }
 
 @property (getter=isBusinessHoursResolved) BOOL businessHoursResolved; // @synthesize businessHoursResolved=_businessHoursResolved;
 @property (getter=isDistanceResolved) BOOL distanceResolved; // @synthesize distanceResolved=_distanceResolved;
+@property (strong) UIColor *hoursColor; // @synthesize hoursColor=_hoursColor;
+@property (strong) NSString *hoursString; // @synthesize hoursString=_hoursString;
 
+- (void).cxx_destruct;
 - (BOOL)isRichTextResolved;
 - (void)resolveBusinessHoursByMapItem:(id)arg1 lines:(id)arg2;
 - (void)resolveDistanceNotFound;
 - (void)resolveDistanceString:(id)arg1 lines:(id)arg2;
+- (void)updateFormattedTextForLines:(id)arg1;
 
 @end
 

@@ -6,24 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSString, NSURL;
 
 @interface RPStoreInfo : NSObject
 {
     NSString *_bundleID;
     NSString *_appName;
     NSString *_author;
-    NSString *_itemURL;
-    NSArray *_categories;
-    NSArray *_artworkDictionary;
+    NSURL *_itemURL;
+    NSURL *_appArtworkURL;
 }
 
+@property (strong, nonatomic) NSURL *appArtworkURL; // @synthesize appArtworkURL=_appArtworkURL;
 @property (strong, nonatomic) NSString *appName; // @synthesize appName=_appName;
-@property (strong, nonatomic) NSArray *artworkDictionary; // @synthesize artworkDictionary=_artworkDictionary;
 @property (strong, nonatomic) NSString *author; // @synthesize author=_author;
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (strong, nonatomic) NSArray *categories; // @synthesize categories=_categories;
-@property (strong, nonatomic) NSString *itemURL; // @synthesize itemURL=_itemURL;
+@property (strong, nonatomic) NSURL *itemURL; // @synthesize itemURL=_itemURL;
 
 - (void).cxx_destruct;
 - (id)dictionary;

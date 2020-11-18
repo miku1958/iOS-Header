@@ -10,6 +10,7 @@
 
 @class HKDevice, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDAggregationStateKey : NSObject <NSCopying>
 {
     NSString *_collectorIdentifier;

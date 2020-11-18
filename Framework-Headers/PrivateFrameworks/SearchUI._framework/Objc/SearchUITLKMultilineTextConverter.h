@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)applyRichText:(id)arg1 toTLKRichText:(id)arg2;
++ (void)applyRichText:(id)arg1 toTLKRichText:(id)arg2 isAsync:(BOOL)arg3;
 + (id)formattedTextForSearchUIText:(id)arg1;
 + (id)richTextForSearchUIText:(id)arg1;
 + (id)richTextForSearchUIText:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

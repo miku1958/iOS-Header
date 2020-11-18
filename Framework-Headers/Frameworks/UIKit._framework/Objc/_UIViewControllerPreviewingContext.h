@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UIView *customViewForInteractiveHighlight; // @synthesize customViewForInteractiveHighlight=_customViewForInteractiveHighlight;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<UIViewControllerPreviewingDelegate> delegate;
+@property (weak, nonatomic) id<UIViewControllerPreviewingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIPreviewInteractionController *previewInteractionController; // @synthesize previewInteractionController=_previewInteractionController;
@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)previewInteractionController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2 forLocation:(struct CGPoint)arg3 inSourceView:(id)arg4;
-- (void)setDelegate:(id)arg1;
 - (void)unregister;
 
 @end

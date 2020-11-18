@@ -29,19 +29,24 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long keepAliveCount; // @synthesize keepAliveCount=_keepAliveCount;
 @property (readonly) Class superclass;
 
++ (id)sharedDatabaseWithContainerId:(id)arg1;
 - (void).cxx_destruct;
 - (id)_lockedById;
 - (void)_performTransaction:(CDUnknownBlockType)arg1;
+- (void)cleanupInvalidIdentifiersWithError:(id *)arg1;
 - (void)close;
 - (BOOL)connectionNeedsResetForCorruption:(id)arg1;
 - (long long)countAllEventsWithLockKey:(id)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (void)dropAllEventsWithLockKey:(id)arg1 error:(id *)arg2;
 - (void)dropEvents:(id)arg1 error:(id *)arg2;
 - (void)enumerateEventsWithTopic:(id)arg1 lockKey:(id)arg2 objectBlock:(CDUnknownBlockType)arg3;
-- (void)enumerateTopicsWithLockKey:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)identifierForKey:(id)arg1 account:(id)arg2 error:(id *)arg3;
 - (id)initWithContainerId:(id)arg1;
 - (void)insertEvents:(id)arg1 error:(id *)arg2;
 - (id)lockAllEventsWithError:(id *)arg1;
+- (void)removeIdentifiersForAccount:(id)arg1 error:(id *)arg2;
+- (void)setIdentifier:(id)arg1 forKey:(id)arg2 account:(id)arg3 duration:(double)arg4 error:(id *)arg5;
 - (void)unlockAllEventsWithKey:(id)arg1 error:(id *)arg2;
 - (void)unlockEvents:(id)arg1 error:(id *)arg2;
 

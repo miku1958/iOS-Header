@@ -8,6 +8,7 @@
 
 @class MPMediaQuery, MPStoreCompletionOfferResponse, MPStoreOfferContentRating, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreOfferMediaItemCollection : MPMediaItemCollection
 {
     MPStoreCompletionOfferResponse *_storeOfferResponse;

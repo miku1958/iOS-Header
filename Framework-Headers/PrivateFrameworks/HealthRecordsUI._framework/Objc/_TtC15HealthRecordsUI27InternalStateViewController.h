@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *dataProvider;
     MISSING_TYPE *sections;
+    MISSING_TYPE *profile;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;

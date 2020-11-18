@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_queue_observerStateChangedCallbackBlocks;
     NSHashTable *_queue_observers;
+    NSMutableArray *_queue_performAfterFirstUnlockBlocks;
     BOOL _queue_hasPasscodeSet;
     BOOL _queue_hasUnlockedSinceBoot;
 }
@@ -39,6 +40,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)lockSkippingGracePeriod:(BOOL)arg1;
+- (void)performAfterFirstUnlockSinceBootUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (BOOL)unlockWithPasscode:(id)arg1 error:(id *)arg2;
 - (void)waitForUnlockWithTimeout:(float)arg1;

@@ -8,11 +8,11 @@
 
 #import <SpringBoard/SBApplicationPlaceholderDelegate-Protocol.h>
 #import <SpringBoard/SBApplicationPlaceholderLifecycleObserver-Protocol.h>
-#import <SpringBoard/SBIconObserver-Protocol.h>
+#import <SpringBoard/SBLeafIconObserver-Protocol.h>
 
 @class NSCountedSet, NSMutableDictionary, NSMutableSet, NSString, SBApplicationController, SBApplicationLibraryObserver;
 
-@interface SBApplicationPlaceholderController : NSObject <SBIconObserver, SBApplicationPlaceholderLifecycleObserver, SBApplicationPlaceholderDelegate>
+@interface SBApplicationPlaceholderController : NSObject <SBLeafIconObserver, SBApplicationPlaceholderLifecycleObserver, SBApplicationPlaceholderDelegate>
 {
     SBApplicationController *_appController;
     SBApplicationLibraryObserver *_lsWorkspaceObserver;

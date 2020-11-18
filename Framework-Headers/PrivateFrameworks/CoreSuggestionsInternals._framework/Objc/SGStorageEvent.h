@@ -66,6 +66,7 @@
 - (BOOL)isEqualToStorageEvent:(id)arg1;
 - (BOOL)isFromDataDetectors;
 - (BOOL)isFromSuggestions;
+- (id)loggingIdentifier;
 - (id)poiFilters;
 - (id)urlFromTags;
 

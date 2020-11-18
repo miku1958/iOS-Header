@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MTMetricsData, MTVPAFKit;
+@class MTMetricsData, MTPAFKit;
 @protocol MTMediaPlaylistItem;
 
 @interface MTMediaActivity : NSObject
@@ -15,19 +15,19 @@
     id<MTMediaPlaylistItem> _playlistItem;
     MTMetricsData *_startMetricsData;
     MTMetricsData *_stopMetricsData;
-    MTVPAFKit *_vpafKit;
+    MTPAFKit *_pafKit;
 }
 
+@property (weak, nonatomic) MTPAFKit *pafKit; // @synthesize pafKit=_pafKit;
 @property (strong, nonatomic) id<MTMediaPlaylistItem> playlistItem; // @synthesize playlistItem=_playlistItem;
 @property (strong, nonatomic) MTMetricsData *startMetricsData; // @synthesize startMetricsData=_startMetricsData;
 @property (strong, nonatomic) MTMetricsData *stopMetricsData; // @synthesize stopMetricsData=_stopMetricsData;
 @property (nonatomic) long long type; // @synthesize type=_type;
-@property (weak, nonatomic) MTVPAFKit *vpafKit; // @synthesize vpafKit=_vpafKit;
 
 + (unsigned long long)startOverallPositionForItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)eventDataForTransitioningEvents;
-- (id)initWithType:(long long)arg1 playlistItem:(id)arg2 vpafKit:(id)arg3;
+- (id)initWithType:(long long)arg1 playlistItem:(id)arg2 pafKit:(id)arg3;
 - (BOOL)isStopped;
 - (unsigned long long)positionFromOverallPosition:(unsigned long long)arg1;
 - (id)startEventHandler;

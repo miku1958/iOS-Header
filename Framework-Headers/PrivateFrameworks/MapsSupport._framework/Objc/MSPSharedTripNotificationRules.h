@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _hasMadeFinalPush;
     unsigned long long _maxPostedNotifications;
-    unsigned long long _postedNotifcations;
+    unsigned long long _postedNotifications;
     double _minimumETADifference;
     double _minimumNotificationInterval;
     NSDate *_lastPostedETADate;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long maxPostedNotifications; // @synthesize maxPostedNotifications=_maxPostedNotifications;
 @property (nonatomic) double minimumETADifference; // @synthesize minimumETADifference=_minimumETADifference;
 @property (nonatomic) double minimumNotificationInterval; // @synthesize minimumNotificationInterval=_minimumNotificationInterval;
-@property (nonatomic) unsigned long long postedNotifcations; // @synthesize postedNotifcations=_postedNotifcations;
+@property (nonatomic) unsigned long long postedNotifications; // @synthesize postedNotifications=_postedNotifications;
 
 + (BOOL)supportsSecureCoding;
 + (id)unarchivingObjectsSet;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)didPostNotification;
 - (void)didReceiveUpdateWithETA:(double)arg1 lastUpdated:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)incrementMinimumETADiffernce;
+- (void)incrementMinimumETADifference;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMaximumNumberOfNotifications:(unsigned long long)arg1;

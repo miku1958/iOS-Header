@@ -8,15 +8,17 @@
 
 #import <EmailDaemon/EMVIPManagerInterface-Protocol.h>
 
-@class EDVIPManager, NSMapTable, NSString;
+@class EDVIPManager, NSMapTable, NSSet, NSString;
 
 @interface EDVIPManagerProxy : NSObject <EMVIPManagerInterface>
 {
     struct os_unfair_lock_s _observersLock;
     NSMapTable *_observersByIdentifier;
+    NSSet *allVIPWaitForResult;
     EDVIPManager *_vipManager;
 }
 
+@property (readonly, copy, nonatomic) NSSet *allVIPWaitForResult; // @synthesize allVIPWaitForResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

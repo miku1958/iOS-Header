@@ -38,6 +38,7 @@
 - (void)_cancelTouchIconRequest;
 - (void)_displayDefaultFolderIcon;
 - (id)_effectiveBackgroundColor;
+- (id)_glyphConfiguration;
 - (struct CGRect)_imageFrame;
 - (long long)_inferredIconSize;
 - (double)_monogramFontSize;
@@ -47,6 +48,7 @@
 - (void)_setSiteIcon:(id)arg1 withBackgroundColor:(id)arg2;
 - (void)_setState:(long long)arg1;
 - (id)_tintedFolderImage;
+- (void)_updateGlyphConfiguration;
 - (void)_updateMonogramLabelSizeAndFont;
 - (void)_updateSiteIconViewWithTouchIconResponse:(id)arg1;
 - (void)dealloc;

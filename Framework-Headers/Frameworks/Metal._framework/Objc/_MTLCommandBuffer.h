@@ -7,7 +7,7 @@
 #import <Metal/_MTLObjectWithLabel.h>
 
 @class NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, _MTLCommandQueue;
-@protocol MTLCommandEncoder, MTLCommandQueue;
+@protocol MTLBuffer, MTLCommandEncoder, MTLCommandQueue;
 
 @interface _MTLCommandBuffer : _MTLObjectWithLabel
 {
@@ -58,6 +58,13 @@
     BOOL _StatEnabled;
     CDUnknownBlockType _perfSampleHandlerBlock;
     BOOL _hasPresent;
+    id<MTLBuffer> _progressBuffer;
+    unsigned int _progressOffset;
+    BOOL _creatingProgressEncoder;
+    BOOL _needsFrameworkAssistedErrorTracking;
+    NSMutableArray *_encoderInfos;
+    NSMutableArray *_logs;
+    unsigned long long _errorOptions;
 }
 
 @property (readonly, nonatomic) double GPUEndTime;
@@ -65,11 +72,13 @@
 @property (nonatomic, getter=isStatEnabled) BOOL StatEnabled; // @synthesize StatEnabled=_StatEnabled;
 @property (readonly) id<MTLCommandQueue> commandQueue; // @synthesize commandQueue=_queue;
 @property (readonly) NSError *error;
+@property (nonatomic) unsigned long long errorOptions; // @synthesize errorOptions=_errorOptions;
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property (readonly, nonatomic) double kernelEndTime;
 @property (readonly, nonatomic) double kernelStartTime;
 @property (copy) NSString *label; // @dynamic label;
-@property (nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
+@property (readonly, nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
+@property (readonly) NSMutableArray *logs; // @synthesize logs=_logs;
 @property (nonatomic) unsigned long long numEncoders; // @synthesize numEncoders=_numEncoders;
 @property (nonatomic) unsigned long long numThisCommandBuffer; // @synthesize numThisCommandBuffer=_numThisCommandBuffer;
 @property (nonatomic) BOOL ownedByParallelEncoder; // @synthesize ownedByParallelEncoder=_ownedByParallelEncoder;
@@ -82,13 +91,16 @@
 
 + (void)initialize;
 - (void)_addRetainedObject:(id)arg1;
+- (id)accelerationStructureCommandEncoder;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
 - (void)addSynchronizationNotification:(CDUnknownBlockType)arg1;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (void)commit;
 - (void)commitAndHold;
 - (void)commitAndReset;
 - (BOOL)commitAndWaitUntilSubmitted;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
@@ -101,15 +113,21 @@
 - (void)executeSynchronizationNotifications:(int)arg1 scope:(unsigned long long)arg2 resources:(const id *)arg3 count:(unsigned long long)arg4;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)getAndIncrementNumEncoders;
+- (void)getDriverEncoderInfoData:(id)arg1;
+- (void)initProgressTracking;
 - (id)initWithQueue:(id)arg1 retainedReferences:(BOOL)arg2;
 - (id)initWithQueue:(id)arg1 retainedReferences:(BOOL)arg2 synchronousDebugMode:(BOOL)arg3;
 - (BOOL)isCommitted;
 - (void)kernelSubmitTime;
 - (void)popDebugGroup;
 - (void)presentDrawable:(id)arg1;
-- (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
+- (void)processEncoderInfos;
+- (id)progressTrackingBlitCommandEncoder;
+- (id)progressTrackingComputeCommandEncoder;
+- (id)progressTrackingRenderCommandEncoder;
 - (void)pushDebugGroup:(id)arg1;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
 - (void)runPerfCounterCallbackWithBlock:(CDUnknownBlockType)arg1;
 - (void)setCommitted:(BOOL)arg1;
 - (void)setCurrentCommandEncoder:(id)arg1;

@@ -57,11 +57,13 @@
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)displays;
 + (id)mainDisplay;
++ (void)updateDisplays;
 - (id)_initWithDisplay:(struct Display *)arg1;
 - (void)_invalidate;
 - (id)allowedHDRModes;
 - (void)dealloc;
 - (id)description;
+- (id)flipBookWithCapacity:(unsigned long long)arg1;
 - (id)immutableCopy;
 - (void)overrideDisplayTimings:(id)arg1;
 - (id)preferredHDRModes;

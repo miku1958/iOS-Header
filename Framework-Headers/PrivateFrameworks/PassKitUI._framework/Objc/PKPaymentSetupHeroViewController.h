@@ -31,7 +31,7 @@
 @property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIViewController *deferredNextViewController; // @synthesize deferredNextViewController=_deferredNextViewController;
-@property (nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPaymentHeroImageController *heroImageController; // @synthesize heroImageController=_heroImageController;

@@ -22,6 +22,7 @@
 - (void)libraryManagerHasChangesToPull;
 - (void)libraryManagerHasStatusChanges;
 - (void)provideLocalResource:(CPLResource *)arg1 recordClassString:(NSString *)arg2 completionHandler:(void (^)(CPLResource *, unsigned long long))arg3;
+- (void)pushAllChangesWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)uploadDidStartForResource:(CPLResource *)arg1 withResourceTransferTask:(NSString *)arg2;
 - (void)uploadOfResource:(CPLResource *)arg1 didFinishForResourceTransferTask:(NSString *)arg2 withError:(NSError *)arg3;
 - (void)uploadOfResource:(CPLResource *)arg1 didProgress:(float)arg2 forResourceTransferTask:(NSString *)arg3;

@@ -6,20 +6,63 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
-@class UITableView;
+#import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
 
-@interface OBTableWelcomeController : OBWelcomeController
+@class NSString, OBTableHeaderFooterView, UITableView, UIView;
+
+@interface OBTableWelcomeController : OBWelcomeController <UIScrollViewDelegate>
 {
+    BOOL _adoptTableViewScrollView;
     UITableView *_tableView;
+    OBTableHeaderFooterView *_headerContainer;
+    OBTableHeaderFooterView *_footerContainer;
+    UIView *_hostedTableFooterView;
+    UIView *_hostedTableHeaderView;
+    struct UIEdgeInsets _hostedTableFooterPadding;
 }
 
+@property (nonatomic) BOOL adoptTableViewScrollView; // @synthesize adoptTableViewScrollView=_adoptTableViewScrollView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) OBTableHeaderFooterView *footerContainer; // @synthesize footerContainer=_footerContainer;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) OBTableHeaderFooterView *headerContainer; // @synthesize headerContainer=_headerContainer;
+@property (nonatomic) struct UIEdgeInsets hostedTableFooterPadding; // @synthesize hostedTableFooterPadding=_hostedTableFooterPadding;
+@property (strong, nonatomic) UIView *hostedTableFooterView; // @synthesize hostedTableFooterView=_hostedTableFooterView;
+@property (strong, nonatomic) UIView *hostedTableHeaderView; // @synthesize hostedTableHeaderView=_hostedTableHeaderView;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (BOOL)_buttonTrayInlined;
+- (void)_floatButtonTray;
+- (void)_inlineButtonTray;
+- (void)_layoutButtonTray;
+- (void)_layoutFooterContainerFloatButtonTray;
+- (void)_layoutFooterContainerInlineButtonTray;
+- (BOOL)_scrollContentUnderButtonTrayForGroupedStyle;
+- (BOOL)_scrollViewContentIsUnderTray;
+- (void)_setTableViewNonHeaderFooterDonation:(id)arg1;
+- (void)_setTableViewWithHeaderFooterDonation:(id)arg1;
+- (void)_setupScrollView;
+- (void)_updateButtonTrayTableFooterContainerSizeIfNeeded;
 - (void)_updateDirectionalLayoutMarginsForTableView;
+- (void)_updateHeaderTopOffsetConstraint;
+- (void)_updateTableHeaderViewSizeIfNeeded;
+- (BOOL)contentViewUnderButtonTray;
+- (double)headerViewBottomToTableViewTopPadding;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 adoptTableViewScrollView:(BOOL)arg4;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3 adoptTableViewScrollView:(BOOL)arg4;
+- (void)loadView;
+- (id)scrollView;
+- (void)setTableFooterView:(id)arg1;
+- (void)setTableHeaderView:(id)arg1;
 - (void)updateDirectionalLayoutMargins;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

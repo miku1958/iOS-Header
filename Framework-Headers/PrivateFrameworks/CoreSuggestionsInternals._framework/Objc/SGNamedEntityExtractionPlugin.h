@@ -27,7 +27,7 @@
 - (id)_extractionsFromEntityContainers:(id)arg1;
 - (id)_harvestMapsIntent:(id)arg1 identifier:(id)arg2;
 - (id)_harvestPodcastsIntent:(id)arg1 identifier:(id)arg2 groupIdentifier:(id)arg3;
-- (void)_processCSSearchableItemLocationWithName:(id)arg1 thoroughfare:(id)arg2 city:(id)arg3 state:(id)arg4 country:(id)arg5 postalCode:(id)arg6 extractionContainer:(id)arg7;
+- (void)_processCSSearchableItemLocationWithName:(id)arg1 thoroughfare:(id)arg2 city:(id)arg3 state:(id)arg4 country:(id)arg5 postalCode:(id)arg6 latitude:(id)arg7 longitude:(id)arg8 extractionContainer:(id)arg9;
 - (void)_processUserActivity:(id)arg1 extractionContainer:(id)arg2 language:(id)arg3;
 - (BOOL)_shouldAcceptSearchableItem:(id)arg1;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1;

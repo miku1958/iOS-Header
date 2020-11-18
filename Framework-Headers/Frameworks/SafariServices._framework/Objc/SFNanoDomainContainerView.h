@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     double _maximumHeight;
     _SFBrowserView *_browserView;
+    CDUnknownBlockType _platterTapAction;
 }
 
 @property (weak, nonatomic) _SFBrowserView *browserView; // @synthesize browserView=_browserView;
 @property (nonatomic) double maximumHeight; // @synthesize maximumHeight=_maximumHeight;
+@property (copy, nonatomic) CDUnknownBlockType platterTapAction; // @synthesize platterTapAction=_platterTapAction;
 
 + (double)defaultHeight;
 + (double)defaultHeightInsideQuickboard;

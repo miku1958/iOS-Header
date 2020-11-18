@@ -20,11 +20,13 @@
 @property (readonly, nonatomic) NSString *category;
 @property (readonly, nonatomic) NSString *convertedAnalysisString;
 @property (readonly, nonatomic) NSString *dictionaryReading;
+@property (readonly, nonatomic) BOOL isAbbreviated;
 @property (readonly, nonatomic) BOOL isAutocorrectedCandidate;
 @property (readonly, nonatomic) BOOL isBilingualCandidate;
 @property (readonly, nonatomic) BOOL isConversionCandidate;
 @property (readonly, nonatomic) BOOL isEmojiCandidate;
 @property (readonly, nonatomic) BOOL isExtensionCandidate;
+@property (readonly, nonatomic) BOOL isExtensionForCandidateBar;
 @property (readonly, nonatomic) BOOL isFuzzyMatchCandidate;
 @property (readonly, nonatomic) BOOL isLearningDictionaryCandidate;
 @property (readonly, nonatomic) BOOL isOTAWordlistCandidate;
@@ -34,14 +36,17 @@
 @property (readonly, nonatomic) BOOL isRegionalCandidate;
 @property (readonly, nonatomic) BOOL isSyntheticCandidate;
 @property (readonly, nonatomic) BOOL isUserWordCandidate;
+@property (readonly, nonatomic) BOOL isWubixingConvertedByPinyin;
 @property (readonly, nonatomic) struct MecabraCandidateBase *rawCandidate;
 @property (readonly, nonatomic) struct ConversionCandidate *rawConversionCandidate;
 @property (readonly, nonatomic) NSString *string;
 @property (readonly, nonatomic) NSString *surface;
 @property (readonly, nonatomic) int type;
 @property (readonly, nonatomic) unsigned long long wordCount;
+@property (readonly, nonatomic) unsigned long long wubixingType;
 
 + (id)syntheticCandidateFromWords:(id)arg1 withLexicon:(struct Lexicon *)arg2 language:(int)arg3;
+- (long long)baseCost;
 - (id)convertedAnalysisStringForFirstSyllable;
 - (struct __CFArray *)copySyllableLengthArrayForWordAtIndex:(unsigned long long)arg1;
 - (struct __CFArray *)copySyllableLengthArrayInAnalysisString;
@@ -54,9 +59,11 @@
 - (id)initWithCandidate:(struct MecabraCandidateBase *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned short)kind;
+- (unsigned short)kindAtIndex:(unsigned long long)arg1;
 - (unsigned short)lastPrefixValue;
 - (unsigned short)lcAttrAtIndex:(unsigned long long)arg1;
 - (double)lmProbability;
+- (long long)matchPenalty;
 - (unsigned short)matchType;
 - (unsigned short)matchedLengthType;
 - (long long)phraseBoundaryAfterWordAtIndex:(long long)arg1;

@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class TSUWeakReference;
 @protocol TSKSelectionDispatchReceiver;
 
 @interface TSKSelectionDispatcher : NSObject
 {
-    TSUWeakReference *_selectionDispatchReceiverReference;
+    id<TSKSelectionDispatchReceiver> _selectionDispatchReceiver;
 }
 
-@property (weak, nonatomic) id<TSKSelectionDispatchReceiver> selectionDispatchReceiver;
-@property (strong, nonatomic) TSUWeakReference *selectionDispatchReceiverReference; // @synthesize selectionDispatchReceiverReference=_selectionDispatchReceiverReference;
+@property (weak, nonatomic) id<TSKSelectionDispatchReceiver> selectionDispatchReceiver; // @synthesize selectionDispatchReceiver=_selectionDispatchReceiver;
 
+- (void).cxx_destruct;
 - (void)beginTransformingCurrentSelectionPaths;
-- (void)dealloc;
 - (void)dispatchSelectionPath:(id)arg1 withFlags:(unsigned long long)arg2;
 - (void)endTransformingCurrentSelectionPaths;
 - (id)newRootSelectionTransformerForSelectionPath:(id)arg1;

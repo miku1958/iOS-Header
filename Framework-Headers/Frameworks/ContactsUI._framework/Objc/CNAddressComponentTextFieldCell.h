@@ -4,35 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <AppSupportUI/NUITableViewContainerCell.h>
 
 @class NSArray, NSDictionary, UIImageView, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface CNAddressComponentTextFieldCell : UITableViewCell
+@interface CNAddressComponentTextFieldCell : NUITableViewContainerCell
 {
-    UITextField *_textFieldForChevron;
-    NSArray *_componentConstraints;
+    BOOL _showsChevron;
     UITextField *_textField;
     UIImageView *_chevron;
 }
 
 @property (strong, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
-@property (strong, nonatomic) NSArray *componentConstraints; // @synthesize componentConstraints=_componentConstraints;
+@property (nonatomic) BOOL showsChevron; // @synthesize showsChevron=_showsChevron;
 @property (copy, nonatomic) NSDictionary *textAttributes;
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
-@property (weak, nonatomic) UITextField *textFieldForChevron; // @synthesize textFieldForChevron=_textFieldForChevron;
 @property (readonly, nonatomic) NSArray *textFields;
 
 + (id)cellIdentifier;
++ (Class)containerViewClass;
 - (void).cxx_destruct;
-- (id)addTextField;
 - (void)contentSizeCategoryDidChange:(id)arg1;
-- (id)currentConstraintsForMetrics:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)newTextField;
 - (void)prepareForReuse;
 - (void)setupTextFields;
-- (void)updateConstraints;
+- (void)updateMargins;
 
 @end
 

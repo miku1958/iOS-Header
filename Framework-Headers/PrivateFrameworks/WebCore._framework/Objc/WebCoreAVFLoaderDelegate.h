@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
 {
-    WeakPtr_1a409454 m_player;
+    WeakPtr_be5c5e1c m_player;
     struct GenericTaskQueue<WebCore::Timer> m_taskQueue;
 }
 
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithPlayer:(WeakPtr_1a409454 *)arg1;
+- (id)initWithPlayer:(WeakPtr_be5c5e1c *)arg1;
 - (void)resourceLoader:(id)arg1 didCancelLoadingRequest:(id)arg2;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForResponseToAuthenticationChallenge:(id)arg2;

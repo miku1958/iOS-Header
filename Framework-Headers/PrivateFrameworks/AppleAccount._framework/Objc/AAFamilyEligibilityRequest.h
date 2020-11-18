@@ -6,14 +6,14 @@
 
 #import <AppleAccount/AAFamilyRequest.h>
 
-@class SSAccount;
+@class ACAccount;
 
 @interface AAFamilyEligibilityRequest : AAFamilyRequest
 {
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
 }
 
-@property (strong, nonatomic) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property (strong, nonatomic) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 
 + (Class)responseClass;
 - (void).cxx_destruct;

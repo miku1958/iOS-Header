@@ -42,6 +42,7 @@
 - (void)_layoutExposureBiasSlider;
 - (void)_layoutRectView:(id)arg1;
 - (void)_updateTintColor;
+- (struct CGRect)boundsIncludingExposureBiasSlider;
 - (id)initWithStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

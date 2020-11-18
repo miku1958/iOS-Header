@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPRadioStationEvent, NSArray, NSString, NSURL;
+@class MPRadioStationEvent, NSArray, NSDate, NSString, NSURL;
 
 @interface MPModelRadioStation : MPModelObject
 {
@@ -18,6 +18,7 @@
 @property (nonatomic, getter=isBeats1) BOOL beats1; // @dynamic beats1;
 @property (readonly, nonatomic) MPRadioStationEvent *currentStationEvent;
 @property (copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
+@property (copy, nonatomic) NSDate *endingAirDate; // @dynamic endingAirDate;
 @property (nonatomic) BOOL hasExplicitContent; // @dynamic hasExplicitContent;
 @property (nonatomic, getter=isLive) BOOL live; // @dynamic live;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *providerName; // @dynamic providerName;
 @property (copy, nonatomic) NSURL *providerUniversalLink; // @dynamic providerUniversalLink;
 @property (copy, nonatomic) NSString *shortEditorNotes; // @dynamic shortEditorNotes;
+@property (copy, nonatomic) NSDate *startingAirDate; // @dynamic startingAirDate;
 @property (copy, nonatomic) NSArray *stationEvents; // @dynamic stationEvents;
 @property (copy, nonatomic) CDUnknownBlockType stationGlyphBlock; // @dynamic stationGlyphBlock;
 @property (nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired; // @dynamic subscriptionRequired;
@@ -38,6 +40,7 @@
 + (id)__attributionLabel_KEY;
 + (id)__beats1_KEY;
 + (id)__editorNotes_KEY;
++ (id)__endingAirDate_KEY;
 + (id)__hasExplicitContent_KEY;
 + (id)__live_KEY;
 + (id)__name_KEY;
@@ -46,6 +49,7 @@
 + (id)__providerName_KEY;
 + (id)__providerUniversalLink_KEY;
 + (id)__shortEditorNotes_KEY;
++ (id)__startingAirDate_KEY;
 + (id)__stationEvents_KEY;
 + (id)__stationGlyphBlock_KEY;
 + (id)__subscriptionRequired_KEY;

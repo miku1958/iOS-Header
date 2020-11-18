@@ -20,6 +20,7 @@
     TUICandidateLayoutAttributes *_customHeaderAttributes;
     BOOL _dirty;
     BOOL _candidateNumberEnabled;
+    BOOL _showExtraLineBeforeFirstRow;
     BOOL _fillGridWithLines;
     BOOL _showsIndex;
     long long _rowType;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) NSIndexPath *oldFirstVisibleIndexPath; // @synthesize oldFirstVisibleIndexPath=_oldFirstVisibleIndexPath;
 @property (nonatomic) double oldFirstVisibleOffset; // @synthesize oldFirstVisibleOffset=_oldFirstVisibleOffset;
 @property (nonatomic) long long rowType; // @synthesize rowType=_rowType;
+@property (nonatomic) BOOL showExtraLineBeforeFirstRow; // @synthesize showExtraLineBeforeFirstRow=_showExtraLineBeforeFirstRow;
 @property (nonatomic) BOOL showsIndex; // @synthesize showsIndex=_showsIndex;
 @property (nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;
 @property (nonatomic) long long transitionState; // @synthesize transitionState=_transitionState;

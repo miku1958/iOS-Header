@@ -60,6 +60,7 @@
 - (id)colorForLogoWithStyle:(unsigned long long)arg1;
 - (id)colorForNumberVictoryAnalogTimeElement:(unsigned long long)arg1;
 - (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 bleed:(unsigned long long)arg3;
+- (id)pride2020ColorAtIndex:(int)arg1;
 
 @end
 

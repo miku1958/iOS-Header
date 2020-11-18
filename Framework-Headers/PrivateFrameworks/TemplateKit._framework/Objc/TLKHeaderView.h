@@ -6,10 +6,14 @@
 
 #import <TemplateKit/TLKView.h>
 
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
+
 @class NSString, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKRichText, TLKRoundedCornerLabel, TLKStackView;
 
-@interface TLKHeaderView : TLKView
+@interface TLKHeaderView : TLKView <NUIContainerViewDelegate>
 {
+    BOOL _subtitleIsEmphasized;
+    BOOL _useCompactWidth;
     TLKImage *_image;
     TLKMultilineText *_title;
     TLKRichText *_subtitle;
@@ -31,8 +35,11 @@
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (strong, nonatomic) TLKStackView *contentView; // @dynamic contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) TLKMultilineText *footnote; // @synthesize footnote=_footnote;
 @property (strong, nonatomic) TLKLabel *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
@@ -41,25 +48,27 @@
 @property (strong, nonatomic) TLKRichText *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) TLKImage *subtitleImage; // @synthesize subtitleImage=_subtitleImage;
 @property (strong, nonatomic) TLKImageView *subtitleImageView; // @synthesize subtitleImageView=_subtitleImageView;
+@property (nonatomic) BOOL subtitleIsEmphasized; // @synthesize subtitleIsEmphasized=_subtitleIsEmphasized;
 @property (strong, nonatomic) TLKLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong, nonatomic) TLKStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 @property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) TLKMultilineText *trailingText; // @synthesize trailingText=_trailingText;
 @property (strong, nonatomic) TLKLabel *trailingTextLabel; // @synthesize trailingTextLabel=_trailingTextLabel;
+@property (nonatomic) BOOL useCompactWidth; // @synthesize useCompactWidth=_useCompactWidth;
 
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)didMoveToWindow;
 - (id)footnoteLabelText;
 - (id)hasImage;
 - (void)observedPropertiesChanged;
 - (id)roundedCornerLabelText;
 - (id)setupContentView;
-- (id)subtitleLabelText;
-- (id)titleLabelFont;
-- (id)titleLabelText;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (BOOL)usesDefaultLayoutMargins;
 
 @end
 

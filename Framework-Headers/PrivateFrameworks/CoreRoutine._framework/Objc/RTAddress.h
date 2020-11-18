@@ -15,6 +15,7 @@
 {
     BOOL _isIsland;
     NSUUID *_identifier;
+    NSArray *_subPremises;
     NSString *_subThoroughfare;
     NSString *_thoroughfare;
     NSString *_subLocality;
@@ -52,6 +53,7 @@
 @property (readonly, copy, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;
 @property (readonly, copy, nonatomic) NSString *subAdministrativeArea; // @synthesize subAdministrativeArea=_subAdministrativeArea;
 @property (readonly, copy, nonatomic) NSString *subLocality; // @synthesize subLocality=_subLocality;
+@property (readonly, nonatomic) NSArray *subPremises; // @synthesize subPremises=_subPremises;
 @property (readonly, copy, nonatomic) NSString *subThoroughfare; // @synthesize subThoroughfare=_subThoroughfare;
 @property (readonly, copy, nonatomic) NSString *thoroughfare; // @synthesize thoroughfare=_thoroughfare;
 
@@ -63,7 +65,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(BOOL)arg15 creationDate:(id)arg16 expirationDate:(id)arg17 iso3166CountryCode:(id)arg18 iso3166SubdivisionCode:(id)arg19;
+- (id)initWithIdentifier:(id)arg1 subPremises:(id)arg2 subThoroughfare:(id)arg3 thoroughfare:(id)arg4 subLocality:(id)arg5 locality:(id)arg6 subAdministrativeArea:(id)arg7 administrativeArea:(id)arg8 administrativeAreaCode:(id)arg9 postalCode:(id)arg10 country:(id)arg11 countryCode:(id)arg12 inlandWater:(id)arg13 ocean:(id)arg14 areasOfInterest:(id)arg15 isIsland:(BOOL)arg16 creationDate:(id)arg17 expirationDate:(id)arg18 iso3166CountryCode:(id)arg19 iso3166SubdivisionCode:(id)arg20;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAddress:(id)arg1;
 

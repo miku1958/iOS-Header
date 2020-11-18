@@ -66,22 +66,22 @@
  class TeaSettings.Preset : Presets {
 
 	// Properties
-	let extends : Preset // +0x10 (0x8)
-	var apply : PresetApplicatorType // +0x18 (0x10)
+	let extends : Preset
+	var apply : PresetApplicatorType
 
 	// Swift methods
-	0x2160  class func Preset.__allocating_init(extends:apply:) // init 
+	0x2020  class func Preset.__allocating_init(extends:apply:) // init 
  }
 
  class TeaSettings.SettingGroup : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var enabledSetting : Setting // +0x10 (0x8)
+	var enabledSetting : Setting
 
 	// Swift methods
-	0x2290  func <stripped> // getter 
-	0x22d0  func <stripped> // method 
-	0x2380  class func SettingGroup.__allocating_init(key:defaultValue:access:) // init 
+	0x2140  func <stripped> // getter 
+	0x2180  func <stripped> // method 
+	0x2230  class func SettingGroup.__allocating_init(key:defaultValue:access:) // init 
  }
 
  enum TeaSettings.Access {
@@ -97,6 +97,10 @@
 	// Properties
 	var standardUserDefaults : NSUserDefaults
 	var observers : SettingObserver
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
+	0x0  @objc SettingsStore.(null) <stripped>
 
 	// Swift methods
  }
@@ -192,14 +196,22 @@
  class TeaSettings.PresetItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let preset : Preset // +0x10 (0x8)
-	let label : String // +0x18 (0x10)
-	let actions : SettingAction // +0x28 (0x8)
+	let preset : Preset
+	let label : String
+	let actions : SettingAction
 
 	// Swift methods
-	0xf6d0  class func PresetItem.__allocating_init(_:label:actions:) // init 
-	0xf740  func <stripped> // getter 
-	0xfa80  func <stripped> // getter 
+	0xdf70  class func PresetItem.__allocating_init(_:label:actions:) // init 
+	0xdfe0  func <stripped> // getter 
+	0xe270  func <stripped> // getter 
+ }
+
+ enum TeaSettings.FeatureState {
+
+	// Properties
+	case default  
+	case enabled  
+	case disabled  
  }
 
  class TeaSettings.OptionItem {
@@ -237,12 +249,12 @@
 	let closure : Updatable
 
 	// Swift methods
-	0x12fa0  func <stripped> // getter 
-	0x12fd0  func <stripped> // setter 
-	0x13010  func <stripped> // modifyCoroutine 
-	0x12d10  class func SettingAction.__allocating_init(_:_:) // init 
-	0x130b0  func <stripped> // method 
-	0x13140  func <stripped> // method 
+	0x11d50  func <stripped> // getter 
+	0x11d80  func <stripped> // setter 
+	0x11dc0  func <stripped> // modifyCoroutine 
+	0x11ac0  class func SettingAction.__allocating_init(_:_:) // init 
+	0x11e60  func <stripped> // method 
+	0x11eb0  func <stripped> // method 
  }
 
  enum TeaSettings.PostInstruction {
@@ -258,11 +270,11 @@
  class TeaSettings.PresetManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PresetManagerType {
 
 	// Properties
-	var updater : Updatable // +0x10 (0x10)
-	var presets : Preset // +0x20 (0x8)
+	var updater : Updatable
+	var presets : Preset
 
 	// Swift methods
-	0x13960  class func PresetManager.__allocating_init() // init 
+	0x12ac0  class func PresetManager.__allocating_init() // init 
  }
 
  enum TeaSettings.Domain {
@@ -272,26 +284,36 @@
 	case standard  
  }
 
+ struct TeaSettings.SettingsBundle {
+
+	// Properties
+	let label : String // +0x0
+	let cellStyle : SettingCellStyle // +0x10
+	let isEnabled : Bool // +0x61
+	let isVisible : Bool // +0x62
+	let layout : Group // +0x68
+ }
+
  class TeaSettings.PresetStartupTask : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let presetManager : PresetManagerType // +0x10 (0x28)
+	let presetManager : PresetManagerType
 
 	// Swift methods
-	0x151d0  class func PresetStartupTask.__allocating_init(presetManager:) // init 
-	0x15260  func <stripped> // method 
+	0x14dd0  class func PresetStartupTask.__allocating_init(presetManager:) // init 
+	0x14e70  func <stripped> // method 
  }
 
  class TeaSettings.ResetItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let isEnabled : Bool // +0x10 (0x1)
-	let isVisible : Bool // +0x11 (0x1)
-	let label : String // +0x18 (0x10)
-	let layout : Group // +0x28 (0x8)
+	let isEnabled : Bool
+	let isVisible : Bool
+	let label : String
+	let layout : Group
 
 	// Swift methods
-	0x15df0  class func ResetItem.__allocating_init(layout:) // init 
+	0x155d0  class func ResetItem.__allocating_init(layout:) // init 
  }
 
  class TeaSettings.Presets : _SwiftObject /usr/lib/swift/libswiftCore.dylib {

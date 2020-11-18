@@ -11,6 +11,7 @@
 @interface ICTodoButton : UIButton
 {
     BOOL _done;
+    BOOL _trackedParagraphIsRTL;
     ICTrackedParagraph *_trackedParagraph;
     struct CGSize _defaultSize;
     struct CGSize _defaultImageSize;
@@ -20,6 +21,7 @@
 @property (nonatomic) struct CGSize defaultSize; // @synthesize defaultSize=_defaultSize;
 @property (nonatomic, getter=isDone) BOOL done; // @synthesize done=_done;
 @property (weak, nonatomic) ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
+@property (nonatomic) BOOL trackedParagraphIsRTL; // @synthesize trackedParagraphIsRTL=_trackedParagraphIsRTL;
 
 - (void).cxx_destruct;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;

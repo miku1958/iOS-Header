@@ -57,6 +57,7 @@ struct MPSBVHOptions {
     int _field11;
     unsigned int _field12;
     int _field13;
+    int _field14;
 };
 
 struct MPSBufferAllocator;
@@ -72,10 +73,38 @@ struct MPSBufferRange {
     struct MPSBufferAllocator *_field8;
 };
 
+struct MPSDevice {
+    CDUnknownFunctionPointerType *_field1;
+    struct MPSDevice *_field2;
+    id _field3;
+    struct MPSDeviceFreeList *_field4;
+    struct atomic<MTLLibraryNode *> _field5;
+    struct atomic<void *> _field6[2][2][2];
+    struct MPSPixelCapabilities _field7[590];
+    struct atomic<void *> _field8;
+    unsigned int _field9;
+    int _field10;
+    unsigned int _field11;
+    struct MPSGPUInfo _field12;
+    struct atomic<MPSLibrary *> _field13[122];
+};
+
+struct MPSDeviceFreeList;
+
 struct MPSDeviceSpecificInfo {
     struct MPSKernelInfo *_field1;
     CDUnknownFunctionPointerType _field2;
     unsigned long long _field3;
+};
+
+struct MPSGPUInfo {
+    unsigned int :8;
+    unsigned int :8;
+    unsigned int :8;
+    unsigned int :16;
+    unsigned int :4;
+    unsigned int :10;
+    unsigned int :10;
 };
 
 struct MPSInstanceBVH {
@@ -125,6 +154,25 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field20;
     struct MPSDeviceSpecificInfo _field21;
     struct MPSDeviceSpecificInfo _field22;
+    struct MPSDeviceSpecificInfo _field23;
+    struct MPSDeviceSpecificInfo _field24;
+    struct MPSDeviceSpecificInfo _field25;
+    struct MPSDeviceSpecificInfo _field26;
+    struct MPSDeviceSpecificInfo _field27;
+    struct MPSDeviceSpecificInfo _field28;
+    struct MPSDeviceSpecificInfo _field29;
+    struct MPSDeviceSpecificInfo _field30;
+};
+
+struct MPSPixelCapabilities {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :2;
+    unsigned int :1;
+    unsigned int :8;
 };
 
 struct MPSPrimitiveBVH {
@@ -234,9 +282,29 @@ struct MPSTemporalAAParams {
     float _field1;
 };
 
+struct MTLLibraryNode;
+
+struct atomic<MPSLibrary *> {
+    struct __cxx_atomic_impl<MPSLibrary *, std::__1::__cxx_atomic_base_impl<MPSLibrary *>> {
+        _Atomic struct MPSLibrary *_field1;
+    } _field1;
+};
+
+struct atomic<MTLLibraryNode *> {
+    struct __cxx_atomic_impl<MTLLibraryNode *, std::__1::__cxx_atomic_base_impl<MTLLibraryNode *>> {
+        _Atomic struct MTLLibraryNode *_field1;
+    } _field1;
+};
+
 struct atomic<unsigned int> {
     struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
         _Atomic unsigned int _field1;
+    } _field1;
+};
+
+struct atomic<void *> {
+    struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
+        _Atomic void *_field1;
     } _field1;
 };
 

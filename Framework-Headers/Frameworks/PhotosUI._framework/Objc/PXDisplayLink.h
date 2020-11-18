@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) double currentMediaTime;
 @property (readonly, nonatomic) double duration;
 @property (nonatomic) BOOL paused;
+@property (readonly, nonatomic) long long preferredFramesPerSecond;
 @property (readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
 @property (readonly, weak, nonatomic) id target; // @synthesize target=_target;
 @property (readonly, nonatomic) double targetTimestamp;

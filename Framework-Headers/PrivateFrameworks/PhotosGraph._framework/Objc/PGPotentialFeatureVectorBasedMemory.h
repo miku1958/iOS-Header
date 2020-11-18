@@ -14,7 +14,7 @@
     NSDictionary *_matchingKeywords;
     NSDictionary *_referenceKeywords;
     NSDictionary *_momentKeywords;
-    NSSet *_peopleNodes;
+    NSSet *_personNodes;
     NSIndexSet *_sortedCriteria;
     double _matchingScore;
     double _contentScore;
@@ -27,7 +27,7 @@
 @property double matchingScore; // @synthesize matchingScore=_matchingScore;
 @property (strong) NSDictionary *momentKeywords; // @synthesize momentKeywords=_momentKeywords;
 @property double neighborScore; // @synthesize neighborScore=_neighborScore;
-@property (strong) NSSet *peopleNodes; // @synthesize peopleNodes=_peopleNodes;
+@property (strong) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property (strong) NSDictionary *referenceKeywords; // @synthesize referenceKeywords=_referenceKeywords;
 @property (strong) NSIndexSet *sortedCriteria; // @synthesize sortedCriteria=_sortedCriteria;
 

@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_isScrollEnabled;
 - (void)dealloc;
 - (id)sourceURL;
 - (id)userStyleSheet;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IMPluginPayload, NSArray, NSAttributedString, NSString;
+@class IMPluginPayload, NSArray, NSAttributedString, NSDictionary, NSString;
 
 @interface CKComposition : NSObject
 {
@@ -15,8 +15,10 @@
     NSAttributedString *_subject;
     IMPluginPayload *_shelfPluginPayload;
     NSString *_expressiveSendStyleID;
+    NSDictionary *_bizIntent;
 }
 
+@property (copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property (readonly, nonatomic, getter=isExpirableComposition) BOOL expirableComposition;
 @property (copy, nonatomic) NSString *expressiveSendStyleID; // @synthesize expressiveSendStyleID=_expressiveSendStyleID;
 @property (readonly, nonatomic) BOOL hasContent;
@@ -33,7 +35,8 @@
 @property (copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
 @property (readonly, nonatomic, getter=isTextOnly) BOOL textOnly;
 
-+ (id)__ck_valueForItemClass:(Class)arg1 forItemProvider:(id)arg2;
++ (void)__ck_valueForItemClass:(Class)arg1 forItemProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (BOOL)_pasteRTFDocumentWithItemProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_savedCompositionForGUID:(id)arg1 readUsingBlock:(CDUnknownBlockType)arg2;
 + (BOOL)_shouldCreateMediaObjectForUTIType:(id)arg1;
 + (id)_temporaryURLFromURL:(id)arg1;
@@ -41,22 +44,26 @@
 + (id)audioCompositionWithMediaObject:(id)arg1;
 + (id)composition;
 + (id)compositionForMessageParts:(id)arg1 preserveSubject:(BOOL)arg2;
-+ (id)compositionFromItemProviders:(id)arg1;
++ (void)compositionFromItemProviders:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)compositionWithMSMessage:(id)arg1 appExtensionIdentifier:(id)arg2;
 + (id)compositionWithMediaObject:(id)arg1 subject:(id)arg2;
 + (id)compositionWithMediaObjects:(id)arg1 subject:(id)arg2;
 + (id)compositionWithPluginDisplayContainer:(id)arg1 subject:(id)arg2;
 + (id)compositionWithShelfPluginPayload:(id)arg1;
-+ (id)dataForPasteboardType:(id)arg1 forItemProvider:(id)arg2;
++ (void)dataForPasteboardType:(id)arg1 forItemProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)deleteCompositionWithGUID:(id)arg1;
 + (id)expirableCompositionWithMediaObject:(id)arg1;
-+ (id)filenameForType:(id)arg1 forItemProvider:(id)arg2;
-+ (id)mediaObjectForItemProvider:(id)arg1;
++ (void)filenameForType:(id)arg1 forItemProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)filenameFromURLTypeForType:(id)arg1 forItemProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)finalCompositionFromAllCompositions:(id)arg1;
++ (void)mediaObjectForItemProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)mediaObjectFromItemAtURL:(id)arg1 filename:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)mediaObjectFromPhotosAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)newExpirableCompositionWithText:(id)arg1 subject:(id)arg2 shelfPluginPayload:(id)arg3;
 + (id)pasteboardTypesForItemProvider:(id)arg1;
 + (id)photoPickerCompositionWithMediaObject:(id)arg1;
 + (id)photoPickerCompositionWithMediaObjects:(id)arg1;
-+ (id)pluginDisplayContainerForItemProvider:(id)arg1;
++ (void)pluginDisplayContainerForItemProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)quickImageCompositionWithMediaObject:(id)arg1;
 + (void)requestCompositionFromItemProviders:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)requestFilenameForType:(id)arg1 forItemProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -85,6 +92,7 @@
 - (unsigned long long)hash;
 - (id)initWithText:(id)arg1 subject:(id)arg2;
 - (id)initWithText:(id)arg1 subject:(id)arg2 shelfPluginPayload:(id)arg3;
+- (id)initWithText:(id)arg1 subject:(id)arg2 shelfPluginPayload:(id)arg3 bizIntent:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)messageWithGUID:(id)arg1;
 - (id)messageWithGUID:(id)arg1 superFormatText:(id)arg2 superFormatSubject:(id)arg3 fileTransferGUIDs:(id)arg4 mediaObjects:(id)arg5 balloonBundleID:(id)arg6 payloadData:(id)arg7;

@@ -19,8 +19,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPrim:(const struct UsdPrim *)arg1;
 - (id)initWithPrim:(const struct UsdPrim *)arg1 withPredicate:(struct Usd_PrimFlagsPredicate)arg2;
-- (id)initWithScene:(const TfWeakPtr_db1cbf17 *)arg1;
-- (id)initWithScene:(const TfWeakPtr_db1cbf17 *)arg1 withPredicate:(struct Usd_PrimFlagsPredicate)arg2;
+- (id)initWithScene:(const TfWeakPtr_163a6a2f *)arg1;
+- (id)initWithScene:(const TfWeakPtr_163a6a2f *)arg1 withPredicate:(struct Usd_PrimFlagsPredicate)arg2;
 - (id)initWithSubtreeRange:(const struct UsdPrimRange *)arg1;
 - (id)nextObject;
 

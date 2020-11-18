@@ -15,41 +15,41 @@
 {
     HDCodableInspectableValue *_abatement;
     NSString *_asserter;
-    HDCodableMedicalCodingListList *_bodySitesCodings;
-    HDCodableMedicalCodingList *_categoryCodings;
+    HDCodableMedicalCodingListList *_bodySitesCodingCollections;
+    HDCodableMedicalCodingListList *_categoriesCodingCollections;
     HDCodableMedicalCoding *_clinicalStatusCoding;
-    HDCodableMedicalCodingList *_conditionCodings;
+    HDCodableMedicalCodingList *_conditionCodingCollection;
     HDCodableMedicalRecord *_medicalRecord;
     HDCodableInspectableValue *_onset;
     NSData *_recordedDate;
-    HDCodableMedicalCodingList *_severityCodings;
+    HDCodableMedicalCodingList *_severityCodingCollection;
     HDCodableMedicalCoding *_verificationStatusCoding;
 }
 
 @property (strong, nonatomic) HDCodableInspectableValue *abatement; // @synthesize abatement=_abatement;
 @property (strong, nonatomic) NSString *asserter; // @synthesize asserter=_asserter;
-@property (strong, nonatomic) HDCodableMedicalCodingListList *bodySitesCodings; // @synthesize bodySitesCodings=_bodySitesCodings;
-@property (strong, nonatomic) HDCodableMedicalCodingList *categoryCodings; // @synthesize categoryCodings=_categoryCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *bodySitesCodingCollections; // @synthesize bodySitesCodingCollections=_bodySitesCodingCollections;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *categoriesCodingCollections; // @synthesize categoriesCodingCollections=_categoriesCodingCollections;
 @property (strong, nonatomic) HDCodableMedicalCoding *clinicalStatusCoding; // @synthesize clinicalStatusCoding=_clinicalStatusCoding;
-@property (strong, nonatomic) HDCodableMedicalCodingList *conditionCodings; // @synthesize conditionCodings=_conditionCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingList *conditionCodingCollection; // @synthesize conditionCodingCollection=_conditionCodingCollection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAbatement;
 @property (readonly, nonatomic) BOOL hasAsserter;
-@property (readonly, nonatomic) BOOL hasBodySitesCodings;
-@property (readonly, nonatomic) BOOL hasCategoryCodings;
+@property (readonly, nonatomic) BOOL hasBodySitesCodingCollections;
+@property (readonly, nonatomic) BOOL hasCategoriesCodingCollections;
 @property (readonly, nonatomic) BOOL hasClinicalStatusCoding;
-@property (readonly, nonatomic) BOOL hasConditionCodings;
+@property (readonly, nonatomic) BOOL hasConditionCodingCollection;
 @property (readonly, nonatomic) BOOL hasMedicalRecord;
 @property (readonly, nonatomic) BOOL hasOnset;
 @property (readonly, nonatomic) BOOL hasRecordedDate;
-@property (readonly, nonatomic) BOOL hasSeverityCodings;
+@property (readonly, nonatomic) BOOL hasSeverityCodingCollection;
 @property (readonly, nonatomic) BOOL hasVerificationStatusCoding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property (strong, nonatomic) HDCodableInspectableValue *onset; // @synthesize onset=_onset;
 @property (strong, nonatomic) NSData *recordedDate; // @synthesize recordedDate=_recordedDate;
-@property (strong, nonatomic) HDCodableMedicalCodingList *severityCodings; // @synthesize severityCodings=_severityCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingList *severityCodingCollection; // @synthesize severityCodingCollection=_severityCodingCollection;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HDCodableMedicalCoding *verificationStatusCoding; // @synthesize verificationStatusCoding=_verificationStatusCoding;
 

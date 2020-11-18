@@ -19,7 +19,7 @@
 #import <TSTables/TSSPropertySource-Protocol.h>
 #import <TSTables/TSSStyleClient-Protocol.h>
 #import <TSTables/TSTAdditionalHiddenRowColumnProviding-Protocol.h>
-#import <TSTables/TSTCategoryProviding-Protocol.h>
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
 #import <TSTables/TSTCustomStrokeProviding-Protocol.h>
 #import <TSTables/TSTStyleProviding-Protocol.h>
 #import <TSTables/TSTTableHiddenRowColumnProviding-Protocol.h>
@@ -29,12 +29,14 @@
 #import <TSTables/TSWPStorageParent-Protocol.h>
 #import <TSTables/TSWPTextStatisticsTrackerProvider-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject, NSString, NSUUID, TSCECalculationEngine, TSCECoordMapper, TSCEOwnerUidMapper, TSDFill, TSDInfoGeometry, TSDStroke, TSPObject, TSTArchivedMasterLayoutBundle, TSTCategoryOrder, TSTCategoryOwner, TSTCellStyle, TSTCellWillChangeDistributor, TSTColumnRowUIDMap, TSTConcurrentMutableCellUIDSet, TSTConditionalStyleFormulaOwner, TSTGroupBy, TSTHiddenStates, TSTHiddenStatesOwner, TSTMasterLayout, TSTPencilAnnotationOwner, TSTSortRuleReferenceTracker, TSTStrokeSidecar, TSTStructuredTextImportRecord, TSTSummaryModel, TSTTableFilterSet, TSTTableModel, TSTTablePartitioner, TSTTableSortOrder, TSTTableStyle, TSTTableStylePreset, TSTTableTranslator, TSUMutableUUIDSet, TSWPParagraphStyle, TSWPShapeStyle;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@class NSArray, NSDictionary, NSObject, NSString, NSUUID, TSCECalculationEngine, TSCECoordMapper, TSCEOwnerUidMapper, TSDFill, TSDInfoGeometry, TSDStroke, TSPObject, TSTArchivedMasterLayoutBundle, TSTCategoryOrder, TSTCategoryOwner, TSTCellStyle, TSTCellWillChangeDistributor, TSTColumnRowUIDMap, TSTConcurrentMutableCellUIDSet, TSTConditionalStyleFormulaOwner, TSTConditionalStyleSet, TSTGroupBy, TSTHiddenStates, TSTHiddenStatesOwner, TSTLayoutHint, TSTMasterLayout, TSTPencilAnnotationOwner, TSTSortRuleReferenceTracker, TSTStrokeSidecar, TSTStructuredTextImportRecord, TSTSummaryModel, TSTTableFilterSet, TSTTableModel, TSTTablePartitioner, TSTTableSortOrder, TSTTableStyle, TSTTableStylePreset, TSTTableTranslator, TSUMutableUUIDSet, TSWPParagraphStyle, TSWPShapeStyle;
+@protocol TSDInfo, TSDOwningAttachment;
 
-@interface TSTTableInfo : TSDDrawableInfo <TSSPropertySource, TSDReplaceableMediaContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer, TSCECalculationEngineRegistration, TSDContainerInfo, TSDMixing, TSKModel, TSKSearchable, TSSPresetSource, TSSStyleClient, TSTCategoryProviding, TSCEColumnRowUIDMapping, TSTCustomStrokeProviding, TSTStyleProviding, TSTTableHiddenRowColumnProviding, TSTAdditionalHiddenRowColumnProviding, TSTTableInternalGeometryProviding, TSTTableMergeRangeProviding, TSTTableStrokeProviding, TSWPStorageParent, TSWPTextStatisticsTrackerProvider>
+@interface TSTTableInfo : TSDDrawableInfo <TSSPropertySource, TSDReplaceableMediaContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer, TSCECalculationEngineRegistration, TSDContainerInfo, TSDMixing, TSKModel, TSKSearchable, TSSPresetSource, TSSStyleClient, TSCEColumnRowUIDMapping, TSTCompatibilityVersionProviding, TSTCustomStrokeProviding, TSTStyleProviding, TSTTableHiddenRowColumnProviding, TSTAdditionalHiddenRowColumnProviding, TSTTableInternalGeometryProviding, TSTTableMergeRangeProviding, TSTTableStrokeProviding, TSWPStorageParent, TSWPTextStatisticsTrackerProvider>
 {
     TSTTableModel *_tableModel;
+    TSTConditionalStyleSet *_noRuleConditionalStyleSet;
+    BOOL _needsFilterSetUpdated;
     BOOL _isCopyContainingCategoryColumn;
     BOOL _hasReference;
     BOOL _wasRemovedFromDocument;
@@ -47,6 +49,7 @@
     TSUMutableUUIDSet *_rowUIDsWithPendingGroupingChanges;
     long long _formulaCoordSpace;
     NSDictionary *_dragAndDropDetails;
+    TSTLayoutHint *_overrideLayoutHint;
     TSTColumnRowUIDMap *_columnRowUIDMap;
     TSTCategoryOrder *_categoryOrder;
     TSTHiddenStates *_hiddenStates;
@@ -157,6 +160,7 @@
 @property (nonatomic) UUIDData_5fbc143e groupByUid; // @synthesize groupByUid=_groupByUid;
 @property (readonly, nonatomic) BOOL hasAlternatingRows;
 @property (readonly, nonatomic) BOOL hasCategoryRules;
+@property (readonly, nonatomic) BOOL hasImportWarnings;
 @property (readonly, nonatomic) BOOL hasMigratableStylesInBaseTableCells;
 @property (nonatomic) BOOL hasReference; // @synthesize hasReference=_hasReference;
 @property (readonly, nonatomic) BOOL hasTableBorder;
@@ -186,6 +190,7 @@
 @property (nonatomic) UUIDData_5fbc143e hiddenStatesUid; // @synthesize hiddenStatesUid=_hiddenStatesUid;
 @property (readonly, nonatomic) TSCEOwnerUidMapper *identityOwnerUIDMapper;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (nonatomic) BOOL isCopyContainingCategoryColumn; // @synthesize isCopyContainingCategoryColumn=_isCopyContainingCategoryColumn;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (strong, nonatomic) TSTCellStyle *labelLevel1CellStyle;
@@ -221,10 +226,11 @@
 @property (nonatomic) unsigned int numberOfHeaderColumns;
 @property (nonatomic) unsigned int numberOfHeaderRows;
 @property (readonly, nonatomic) unsigned int numberOfRows;
+@property (strong, nonatomic) TSTLayoutHint *overrideLayoutHint; // @synthesize overrideLayoutHint=_overrideLayoutHint;
 @property (readonly, nonatomic) TSCEOwnerUidMapper *ownerUIDMapper;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @dynamic parentInfo;
 @property (strong, nonatomic) TSTTablePartitioner *partitioner; // @synthesize partitioner=_partitioner;
 @property (readonly, nonatomic) TSTPencilAnnotationOwner *pencilAnnotationOwner;
 @property (nonatomic) BOOL presetNeedsStrongOwnership;
@@ -248,6 +254,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (strong, nonatomic) NSString *tableName;
 @property (nonatomic) BOOL tableNameBorderEnabled;
 @property (readonly, nonatomic) TSDStroke *tableNameBorderStroke;
@@ -305,6 +312,8 @@
 - (id)allGroupUIDs;
 - (id)allRichTextStorages;
 - (id)allRowUIDsAtSameLevelAsRowIndex:(unsigned int)arg1 withFilter:(CDUnknownBlockType)arg2;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (BOOL)anyHiddenColumnsInCellRange:(struct TSUCellRect)arg1;
 - (BOOL)anyHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (BOOL)anyHiddenRowsInCellRange:(struct TSUCellRect)arg1 forAction:(unsigned char)arg2;
@@ -321,6 +330,7 @@
 - (id)baseTableModel;
 - (struct TSUCellRect)bodyRangeForLowestLevelGroupEnclosingCellAtCellID:(struct TSUCellCoord)arg1;
 - (BOOL)canAspectRatioLockBeChangedByUser;
+- (BOOL)canCommentInCaptionOrTitle;
 - (BOOL)canTranspose;
 - (unsigned short)categoryColumnIndex;
 - (unsigned char)categoryGroupLevelAtLabelRow:(unsigned int)arg1;
@@ -350,10 +360,13 @@
 - (id)cellRegionForUIDRange:(const UUIDRect_d701734b *)arg1;
 - (id)cellRegionFromCellUIDList:(id)arg1;
 - (id)cellRegionFromCellUIDList:(id)arg1 includeLabelsWithSummaries:(BOOL)arg2 didAddLabels:(out BOOL *)arg3;
+- (id)cellRegionFromCellUIDLookupList:(id)arg1;
+- (id)cellRegionFromCellUIDLookupList:(id)arg1 includeLabelsWithSummaries:(BOOL)arg2 didAddLabels:(BOOL *)arg3;
 - (id)cellRegionFromCellUIDRegion:(id)arg1;
 - (id)cellRegionWithConditionalStyleMatchingCell:(struct TSUCellCoord)arg1;
 - (BOOL)cellStyle:(id)arg1 isEqualToDefaultCellStyleForCellID:(struct TSUCellCoord)arg2;
 - (id)cellStyleAtCellID:(struct TSUCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)cellStyleAtCellUID:(const struct TSTCellUID *)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleForCellWithEmptyStyleAtCellID:(struct TSUCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfColumnAtIndex:(unsigned short)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfRowAtIndex:(unsigned int)arg1 isDefault:(out BOOL *)arg2;
@@ -366,10 +379,13 @@
 - (id)cellUIDRegionFromCellRegion:(id)arg1;
 - (id)cellValueFromCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (int)cellValueTypeAtCellID:(struct TSUCellCoord)arg1;
+- (int)cellValueTypeAtCellUID:(const struct TSTCellUID *)arg1;
 - (id)changeDescriptorsForReorganizingFromRowUids:(const vector_4dc5f307 *)arg1 toRowUids:(const vector_4dc5f307 *)arg2;
 - (id)characterFillAtCellID:(struct TSUCellCoord)arg1 optionalCell:(id)arg2;
 - (BOOL)checkState;
+- (BOOL)checkStateForArchiving:(BOOL)arg1;
 - (id)childEnumerator;
+- (id)childEnumeratorForUserFlags:(unsigned long long)arg1;
 - (void)chooseUniqueNameInContainer:(id)arg1 forPaste:(BOOL)arg2;
 - (void)chooseUniqueNameInContainer:(id)arg1 forPaste:(BOOL)arg2 needsNewName:(BOOL)arg3;
 - (void)chooseUniqueNameInContainer:(id)arg1 forPaste:(BOOL)arg2 needsNewName:(BOOL)arg3 avoidNames:(id)arg4;
@@ -404,6 +420,7 @@
 - (id)conditionalStyleSetAtCellID:(struct TSUCellCoord)arg1;
 - (BOOL)containsProperty:(int)arg1;
 - (BOOL)contentsAreRightToLeft;
+- (void)convertCellUIDLookupList:(id)arg1 toCellRangeVector:(vector_e87daf7b *)arg2 prunedSummaryCellUIDs:(vector_0c3ec296 *)arg3;
 - (void)convertFormulasToUidForm:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)convertFormulasToUidForm:(id)arg1 atCellID:(struct TSUCellCoord)arg2 preserveHostCell:(BOOL)arg3;
 - (id)copyWithContext:(id)arg1;
@@ -418,7 +435,7 @@
 - (id)duplicateFilterSet;
 - (id)duplicateFilterSetInUidForm;
 - (Class)editorClass;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (void)enableFilterSet:(BOOL)arg1;
 - (void)enumerateAllAnnotationsInModelWithHitBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCellStringsForRows:(unsigned int)arg1 rowCount:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -433,14 +450,15 @@
 - (BOOL)findChartableRangesFromTableRange:(struct TSCERangeCoordinate)arg1 getBodyRange:(out struct TSCERangeCoordinate *)arg2 headerColumnRange:(out struct TSCERangeCoordinate *)arg3 headerRowRange:(out struct TSCERangeCoordinate *)arg4;
 - (void)flattenGroupValuesIfNeededForCell:(id)arg1 viewCellCoord:(struct TSUViewCellCoord)arg2 summaryAndLabelRows:(id)arg3 categoryColumns:(id)arg4;
 - (float)floatValueForProperty:(int)arg1;
-- (struct TSCEFormula *)formulaAtCellID:(struct TSUCellCoord)arg1;
+- (id)formulaAtCellID:(struct TSUCellCoord)arg1;
 - (id)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)geometryForRTLTableWithGeometry:(id)arg1;
 - (int)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (int)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 holdingReadLockWithAccessController:(id)arg3;
 - (int)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 suppressCellBorder:(BOOL)arg3;
-- (int)getCell:(id)arg1 atCellUID:(struct TSTCellUID)arg2;
+- (int)getCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2;
+- (int)getCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 suppressCellBorder:(BOOL)arg3;
 - (int)getDefaultCell:(out id)arg1 forCellID:(struct TSUCellCoord)arg2;
 - (int)getDefaultCell:(out id)arg1 forCellUID:(const struct TSTCellUID *)arg2;
 - (int)getDefaultCell:(id)arg1 forTableStyleArea:(unsigned long long)arg2;
@@ -599,6 +617,7 @@
 - (id)mutableRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
 - (BOOL)needsFilterFormulaRewriteForImport;
 - (id)newCell;
+- (id)noRuleConditionalStyleSet;
 - (void)notifyAboutStructuredTextImportState;
 - (void)notifyTableOfNewResults;
 - (unsigned int)numberOfCategoryColumns;
@@ -632,10 +651,11 @@
 - (void)p_postCommentNotificationFromDiff:(id)arg1 inverseDiff:(id)arg2 cellID:(struct TSUCellCoord)arg3;
 - (id)p_propertyMapForReplacingImageFill:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)p_setFillOnCell:(id)arg1 positive:(BOOL)arg2;
-- (void)p_setFormula:(struct TSCEFormula)arg1 atCellID:(struct TSUCellCoord)arg2;
+- (void)p_setFormula:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)p_setFormulaWithSymbolCellCoord:(struct TSUCellCoord)arg1 andAttributeCellCoord:(struct TSUCellCoord)arg2 atCellID:(struct TSUCellCoord)arg3;
 - (void)p_setFormulaWithSymbolString:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)p_setPopupMenuOnCell:(id)arg1 withItems:(id)arg2 andSelectedIndex:(double)arg3;
+- (void)p_setupTableModelforNewForm;
 - (void)p_setupTableModelforStockPrototype;
 - (void)p_setupTableModelforStockSwatch;
 - (id)p_stringValueAtCellID:(struct TSUCellCoord)arg1;
@@ -698,6 +718,7 @@
 - (void)setCategoryOrder:(id)arg1;
 - (int)setCell:(id)arg1 atCellCoord:(struct TSUCellCoord)arg2;
 - (int)setCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 ignoreFormula:(BOOL)arg3 clearImportWarnings:(BOOL)arg4;
+- (int)setCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 ignoreFormula:(BOOL)arg3 clearImportWarnings:(BOOL)arg4 formulaReplacer:(id)arg5;
 - (int)setCellStyle:(id)arg1 ofColumnAtUID:(const UUIDData_5fbc143e *)arg2;
 - (int)setCellStyle:(id)arg1 ofRowAtUID:(const UUIDData_5fbc143e *)arg2;
 - (int)setCellsWithCellMap:(id)arg1 ignoreFormulas:(BOOL)arg2 skipDirtyingNonFormulaCells:(BOOL)arg3;
@@ -767,6 +788,7 @@
 - (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 - (BOOL)textStyle:(id)arg1 isEqualToDefaultTextStyleForCellID:(struct TSUCellCoord)arg2;
 - (id)textStyleAtCellID:(struct TSUCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)textStyleAtCellUID:(const struct TSTCellUID *)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleForCellWithEmptyStyleAtCellID:(struct TSUCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleForCellWithEmptyStyleAtCellUID:(struct TSTCellUID)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfColumnAtIndex:(unsigned short)arg1 isDefault:(out BOOL *)arg2;
@@ -788,7 +810,7 @@
 - (void)willClose;
 - (void)willCopyWithOtherDrawables:(id)arg1;
 - (void)willMakeGroupingChangesInRowUIDs:(id)arg1;
-- (BOOL)writeCellIDsInCellUIDList:(id)arg1 toVector:(vector_38b190b0 *)arg2 prunedCellUIDs:(vector_7670e6f2 *)arg3;
+- (BOOL)writeCellIDsInCellUIDList:(id)arg1 toVector:(vector_38b190b0 *)arg2 prunedCellUIDs:(vector_0c3ec296 *)arg3;
 - (int)writingDirectionForCellwithTableDefault:(id)arg1;
 
 @end

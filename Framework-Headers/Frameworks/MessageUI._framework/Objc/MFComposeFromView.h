@@ -6,29 +6,30 @@
 
 #import <MessageUI/MFMailComposeHeaderView.h>
 
-@class UILabel, UIView;
+#import <MessageUI/MFPopupButtonDelegate-Protocol.h>
 
-@interface MFComposeFromView : MFMailComposeHeaderView
+@class MFPopupButton, NSArray, NSString;
+@protocol ECEmailAddressConvertible, MFComposeFromViewDelegate;
+
+@interface MFComposeFromView : MFMailComposeHeaderView <MFPopupButtonDelegate>
 {
-    UILabel *_accountLabel;
-    UIView *_background;
-    BOOL _accountHasUnsafeDomain;
+    MFPopupButton *_popupButton;
 }
 
-@property (nonatomic) BOOL accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
+@property (strong, nonatomic) NSArray *availableAddresses;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<MFComposeFromViewDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) MFPopupButton *popupButton; // @synthesize popupButton=_popupButton;
+@property (copy, nonatomic) NSString<ECEmailAddressConvertible> *selectedAddress;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_accountLabel;
-- (void)_setBackgroundVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (struct CGRect)accountLabelRect;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
+- (void)popupButton:(id)arg1 didSelectItem:(id)arg2;
+- (void)popupButtonWillPresentMenu:(id)arg1 animator:(id)arg2;
 - (void)refreshPreferredContentSize;
-- (void)setAccountLabel:(id)arg1;
-- (void)setLabelHighlighted:(BOOL)arg1;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -43,6 +43,7 @@
 + (id)warningSetForErrorTokenFormula:(id)arg1;
 + (id)warningSetForExternalReferenceFormula:(id)arg1;
 + (id)warningSetForFilteredColumnFormulaNotCopied;
++ (id)warningSetForFormulaReplacedForExcelCompat:(id)arg1 originalFormula:(id)arg2;
 + (id)warningSetForNaturalLanguageFormula:(id)arg1;
 + (id)warningSetForReferenceOutOfBoundsFormula:(id)arg1;
 + (id)warningSetForSharedFormulaBaseNotFoundFormula:(id)arg1;

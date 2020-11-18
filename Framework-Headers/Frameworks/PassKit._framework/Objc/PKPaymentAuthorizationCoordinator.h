@@ -9,11 +9,12 @@
 #import <PassKitCore/NSXPCListenerDelegate-Protocol.h>
 
 @class NSString, NSTimer, NSXPCConnection, NSXPCListener, PKInAppPaymentService, PKPaymentAuthorizationCoordinatorExportedObject, PKPaymentRequest;
-@protocol OS_dispatch_queue, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate;
+@protocol OS_dispatch_queue, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentAuthorizationServiceProtocol;
 
 @interface PKPaymentAuthorizationCoordinator : NSObject <NSXPCListenerDelegate>
 {
     BOOL _didPresent;
+    id<PKPaymentAuthorizationServiceProtocol> _serviceProxy;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;
     NSTimer *_timer;
@@ -35,12 +36,14 @@
 @property (nonatomic) BOOL didPresent; // @synthesize didPresent=_didPresent;
 @property (strong, nonatomic) PKPaymentAuthorizationCoordinatorExportedObject *exportedObject; // @synthesize exportedObject=_exportedObject;
 @property (readonly) unsigned long long hash;
+@property (readonly) id<PKPaymentAuthorizationHostProtocol> hostDelegate;
 @property (strong, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property (strong, nonatomic) PKInAppPaymentService *inAppPaymentService; // @synthesize inAppPaymentService=_inAppPaymentService;
 @property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property (strong, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
 @property (copy, nonatomic) CDUnknownBlockType presentationCompletionBlock; // @synthesize presentationCompletionBlock=_presentationCompletionBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (weak, nonatomic) id<PKPaymentAuthorizationServiceProtocol> serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 

@@ -15,9 +15,11 @@
     BOOL _paused;
     NSDate *_activityStartDate;
     NSString *_primaryActivityItemIdentifier;
+    BOOL _backgroundTimeTrackingEnabled;
 }
 
 @property (readonly, nonatomic) NSArray *additionalActivityItems;
+@property (nonatomic, getter=isBackgroudTimeTrackingEnabled) BOOL backgroundTimeTrackingEnabled; // @synthesize backgroundTimeTrackingEnabled=_backgroundTimeTrackingEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;

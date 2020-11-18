@@ -10,5 +10,6 @@
 - (void)passcodeViewController:(CSPasscodeViewController *)arg1 didCompletePasscodeEntry:(BOOL)arg2;
 - (void)passcodeViewControllerDidBeginPasscodeEntry:(CSPasscodeViewController *)arg1;
 - (void)passcodeViewControllerDidCancelPasscodeEntry:(CSPasscodeViewController *)arg1;
+- (BOOL)passcodeViewControllerShouldHideStatusBar:(CSPasscodeViewController *)arg1;
 @end
 

@@ -9,7 +9,7 @@
 @class NSDictionary, NSString;
 
 @protocol MFComposeBodyFieldController <MSComposeBodyFieldController>
-- (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(BOOL)arg1;
+- (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(BOOL)arg1 shouldQuote:(BOOL)arg2;
 - (void)addMarkupString:(NSString *)arg1 quote:(BOOL)arg2 emptyFirst:(BOOL)arg3 prepended:(BOOL)arg4 composeType:(int)arg5 attachmentInfoByURL:(NSDictionary *)arg6;
 - (void)appendOrReplace:(NSString *)arg1 withMarkupString:(NSString *)arg2 quote:(BOOL)arg3 composeType:(int)arg4 attachmentInfoByURL:(NSDictionary *)arg5 completionHandler:(void (^)(NSDictionary *))arg6;
 - (void)containsRichText:(void (^)(BOOL))arg1;

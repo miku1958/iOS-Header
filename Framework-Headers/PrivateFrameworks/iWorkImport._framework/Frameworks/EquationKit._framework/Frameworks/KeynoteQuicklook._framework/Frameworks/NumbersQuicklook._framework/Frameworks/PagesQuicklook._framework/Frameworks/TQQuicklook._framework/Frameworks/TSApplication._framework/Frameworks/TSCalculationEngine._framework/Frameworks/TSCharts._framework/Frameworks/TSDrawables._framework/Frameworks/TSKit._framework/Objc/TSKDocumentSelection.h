@@ -6,17 +6,17 @@
 
 #import <TSKit/TSKSelection.h>
 
-@class TSKDocumentRoot, TSUWeakReference;
+@class TSKDocumentRoot;
 
 @interface TSKDocumentSelection : TSKSelection
 {
-    TSUWeakReference *mDocumentRootReference;
+    TSKDocumentRoot *mDocumentRoot;
 }
 
-@property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
+@property (readonly, weak, nonatomic) TSKDocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
 
 + (Class)archivedSelectionClass;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithDocumentRoot:(id)arg1;

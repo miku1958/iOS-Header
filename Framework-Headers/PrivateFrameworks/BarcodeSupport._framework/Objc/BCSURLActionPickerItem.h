@@ -6,14 +6,14 @@
 
 #import <BarcodeSupport/BCSActionPickerItem.h>
 
-@class LSAppLink, LSApplicationProxy, NSURL;
+@class LSAppLink, LSApplicationRecord, NSURL;
 @protocol BCSCodePayload;
 
 __attribute__((visibility("hidden")))
 @interface BCSURLActionPickerItem : BCSActionPickerItem
 {
     NSURL *_url;
-    LSApplicationProxy *_applicationProxy;
+    LSApplicationRecord *_applicationRecord;
     LSAppLink *_appLink;
     id<BCSCodePayload> _codePayload;
 }
@@ -23,8 +23,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)actionURL;
+- (id)icon;
 - (id)initWithLabel:(id)arg1 action:(id)arg2 appLink:(id)arg3 codePayload:(id)arg4;
-- (id)initWithLabel:(id)arg1 action:(id)arg2 url:(id)arg3 applicationProxy:(id)arg4;
+- (id)initWithLabel:(id)arg1 action:(id)arg2 url:(id)arg3 applicationRecord:(id)arg4;
 - (void)performAction;
 - (void)performActionWithFBOptions:(id)arg1;
 - (id)targetApplicationBundleIdentifier;

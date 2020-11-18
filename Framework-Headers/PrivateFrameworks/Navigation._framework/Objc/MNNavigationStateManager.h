@@ -66,7 +66,7 @@
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
@@ -80,7 +80,6 @@
 - (void)switchToRoute:(id)arg1;
 - (void)transitionToState:(id)arg1;
 - (void)updateDestination:(id)arg1;
-- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 
 @end

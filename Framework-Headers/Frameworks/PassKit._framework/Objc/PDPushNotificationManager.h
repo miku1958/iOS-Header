@@ -8,7 +8,7 @@
 
 #import <PassKitCore/APSConnectionDelegate-Protocol.h>
 
-@class APSConnection, NSArray, NSHashTable, NSLock, NSMutableSet, NSString;
+@class APSConnection, NSArray, NSHashTable, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface PDPushNotificationManager : NSObject <APSConnectionDelegate>
@@ -17,7 +17,7 @@
     NSMutableSet *_registeredTopics;
     NSString *_pushToken;
     NSHashTable *_consumers;
-    NSLock *_consumersLock;
+    struct os_unfair_lock_s _consumersLock;
     NSObject<OS_dispatch_queue> *_replyQueue;
 }
 

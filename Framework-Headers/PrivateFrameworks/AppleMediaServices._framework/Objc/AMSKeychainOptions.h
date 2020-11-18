@@ -13,6 +13,8 @@
 @interface AMSKeychainOptions : NSObject <NSCopying>
 {
     BOOL _regenerateKeys;
+    BOOL _authenticationFallbackVisible;
+    BOOL _displayAuthenticationReason;
     NSString *_clientCertLabel;
     NSString *_intermediateCertLabel;
     NSString *_label;
@@ -21,7 +23,9 @@
     NSString *_prompt;
 }
 
+@property (nonatomic) BOOL authenticationFallbackVisible; // @synthesize authenticationFallbackVisible=_authenticationFallbackVisible;
 @property (copy, nonatomic) NSString *clientCertLabel; // @synthesize clientCertLabel=_clientCertLabel;
+@property (nonatomic) BOOL displayAuthenticationReason; // @synthesize displayAuthenticationReason=_displayAuthenticationReason;
 @property (copy, nonatomic) NSString *intermediateCertLabel; // @synthesize intermediateCertLabel=_intermediateCertLabel;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;

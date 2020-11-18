@@ -34,8 +34,6 @@
 
 + (void)initialize;
 + (id)sharedInstance;
-- (void)authorizationPresentDeleteAllAlertWithTitle:(id)arg1 actionTitle:(id)arg2 cancelTitle:(id)arg3;
-- (void)authorizationPresentDownloadPath:(id)arg1 sandboxExtensionToken:(id)arg2;
 - (void)authorizationRequestCompleted;
 - (void)authorizationRequestDidDisappear;
 - (void)authorizationRequestFailedWithError:(id)arg1;
@@ -47,7 +45,7 @@
 - (id)navigationControllerFromRoot:(id)arg1;
 - (BOOL)presentAnyViewController:(id)arg1 reason:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentAppsAndStudiesPromptViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)presentPendingAuthorizationPromptViewController:(id)arg1 withDesiredServices:(id)arg2 bundlePath:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)presentFirstRunOnboardingViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentPromptViewController:(id)arg1 withDesiredServices:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentResearchDataViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentStudyAuthorizationPromptViewController:(id)arg1 bundlePath:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

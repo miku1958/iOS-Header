@@ -17,7 +17,7 @@
 @property (nonatomic) BOOL preventsSleepDuringVideoPlayback;
 @property (nonatomic) BOOL seekToBeginningAtEnd;
 
-- (void)setAudioSessionCategory:(NSString *)arg1 options:(unsigned long long)arg2;
+- (void)setAudioSessionCategory:(NSString *)arg1 mode:(NSString *)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4;
 - (void)setVolume:(float)arg1 withFade:(BOOL)arg2;
 @end
 

@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarPoseAnimation, AVTStickerCamera, NSArray, NSDictionary, NSString;
+@class AVTAvatarPhysicalizedPose, AVTAvatarPoseAnimation, AVTStickerCamera, NSArray, NSDictionary, NSString;
 
 @interface AVTStickerConfiguration : NSObject
 {
     BOOL _preRendered;
     BOOL _hasLoadedFromConfiguration;
     float _rate;
-    float _scale;
     NSString *_name;
     NSString *_localizedName;
-    AVTAvatarPoseAnimation *_poseAnimation;
+    AVTAvatarPhysicalizedPose *_physicalizedPose;
     NSArray *_props;
     NSArray *_shaderModifiers;
     AVTStickerCamera *_camera;
@@ -25,6 +24,7 @@
     double _duration;
     NSArray *_morpherOverrides;
     NSArray *_presetOverrides;
+    NSArray *_poseAdjustments;
     unsigned long long _stickerVersion;
     NSDictionary *_configurationDictionary;
     NSString *_assetsPath;
@@ -40,12 +40,13 @@
 @property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) NSArray *morpherOverrides; // @synthesize morpherOverrides=_morpherOverrides;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) AVTAvatarPoseAnimation *poseAnimation; // @synthesize poseAnimation=_poseAnimation;
+@property (strong, nonatomic) AVTAvatarPhysicalizedPose *physicalizedPose; // @synthesize physicalizedPose=_physicalizedPose;
+@property (strong, nonatomic) NSArray *poseAdjustments; // @synthesize poseAdjustments=_poseAdjustments;
+@property (readonly, nonatomic) AVTAvatarPoseAnimation *poseAnimation;
 @property (readonly, nonatomic) BOOL preRendered; // @synthesize preRendered=_preRendered;
 @property (readonly, nonatomic) NSArray *presetOverrides; // @synthesize presetOverrides=_presetOverrides;
 @property (strong, nonatomic) NSArray *props; // @synthesize props=_props;
 @property (readonly, nonatomic) float rate; // @synthesize rate=_rate;
-@property (readonly, nonatomic) float scale; // @synthesize scale=_scale;
 @property (strong, nonatomic) NSArray *shaderModifiers; // @synthesize shaderModifiers=_shaderModifiers;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) double snapshotFrame; // @synthesize snapshotFrame=_snapshotFrame;
@@ -62,9 +63,13 @@
 + (id)stickerConfigurationsForPuppetNamed:(id)arg1;
 + (id)unavailableAnimojiNamesForStickerPack:(id)arg1;
 - (void).cxx_destruct;
+- (void)_updateDictionary:(id)arg1 withTargetPath:(id)arg2;
+- (id)description;
+- (id)dictionaryWithTargetPath:(id)arg1;
 - (id)initWithConfigDictionary:(id)arg1 assetsPath:(id)arg2 forStickerPack:(id)arg3;
 - (id)initWithConfigurationAtPath:(id)arg1;
 - (id)initWithConfigurationAtPath:(id)arg1 forStickerPack:(id)arg2;
+- (id)initWithName:(id)arg1 pose:(id)arg2 props:(id)arg3 shaders:(id)arg4 camera:(id)arg5 options:(id)arg6;
 - (id)initWithName:(id)arg1 poseAnimation:(id)arg2 props:(id)arg3 shaders:(id)arg4 camera:(id)arg5 options:(id)arg6;
 - (void)loadIfNeeded;
 - (void)setupOptions:(id)arg1;

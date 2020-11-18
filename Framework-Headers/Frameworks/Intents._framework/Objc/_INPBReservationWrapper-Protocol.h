@@ -6,11 +6,15 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBFlightReservation, _INPBLodgingReservation, _INPBRentalCarReservation, _INPBRestaurantReservation, _INPBTicketedEventReservation, _INPBTrainReservation;
+@class _INPBBoatReservation, _INPBBusReservation, _INPBFlightReservation, _INPBLodgingReservation, _INPBRentalCarReservation, _INPBRestaurantReservation, _INPBTicketedEventReservation, _INPBTrainReservation;
 
 @protocol _INPBReservationWrapper <NSObject>
 
+@property (strong, nonatomic) _INPBBoatReservation *boatReservation;
+@property (strong, nonatomic) _INPBBusReservation *busReservation;
 @property (strong, nonatomic) _INPBFlightReservation *flightReservation;
+@property (readonly, nonatomic) BOOL hasBoatReservation;
+@property (readonly, nonatomic) BOOL hasBusReservation;
 @property (readonly, nonatomic) BOOL hasFlightReservation;
 @property (readonly, nonatomic) BOOL hasLodgingReservation;
 @property (readonly, nonatomic) BOOL hasRentalCarReservation;

@@ -12,6 +12,8 @@
 
 + (BOOL)IMDeviceIsChinaRegion;
 + (BOOL)IMDeviceIsGreenTea;
++ (BOOL)IMDeviceIsIndiaRegion;
++ (BOOL)IMDeviceRegionIsEligibleToBeForcedIntoFilteringUnknownSender;
 + (BOOL)IMSupportsASTC;
 
 @end

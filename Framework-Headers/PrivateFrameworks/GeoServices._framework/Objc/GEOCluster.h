@@ -22,8 +22,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int read_indexs:1;
         unsigned int read_container:1;
-        unsigned int wrote_indexs:1;
-        unsigned int wrote_container:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -34,9 +33,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsIndex:(int)arg1;
-- (void)_readContainer;
-- (void)_readIndexs;
 - (void)addIndex:(int)arg1;
 - (void)clearIndexs;
 - (void)clearSensitiveFields;
@@ -49,7 +45,10 @@ __attribute__((visibility("hidden")))
 - (int)indexAtIndex:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

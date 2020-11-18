@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/WBSCrowdsourcedFeedbackWhitelist-Protocol.h>
+#import <SafariShared/WBSCrowdsourcedFeedbackAllowList-Protocol.h>
 #import <SafariShared/WBSFormAutoFillCorrectionsStore-Protocol.h>
 
 @class NSString, NSURL, WBSCrowdsourcedFeedbackDomainNormalizer, WBSSQLiteDatabase;
 @protocol OS_dispatch_queue;
 
-@interface WBSFormAutoFillCorrectionsSQLiteStore : NSObject <WBSFormAutoFillCorrectionsStore, WBSCrowdsourcedFeedbackWhitelist>
+@interface WBSFormAutoFillCorrectionsSQLiteStore : NSObject <WBSFormAutoFillCorrectionsStore, WBSCrowdsourcedFeedbackAllowList>
 {
     NSURL *_localDatabaseURL;
     NSURL *_parsecDatabaseURL;
@@ -50,30 +50,30 @@
 - (BOOL)_removeAllLocalClassifications;
 - (BOOL)_removeLocalClassificationsForDomain:(id)arg1 recordedOnOrAfter:(id)arg2;
 - (BOOL)_replaceCrowdsourcedCorrectionSetsWithCorrectionSets:(id)arg1 retrievalURLString:(id)arg2;
-- (BOOL)_replaceDomainWhitelistWithDomains:(id)arg1 retrievalURLString:(id)arg2;
+- (BOOL)_replaceDomainAllowListWithDomains:(id)arg1 retrievalURLString:(id)arg2;
 - (int)_schemaVersionForDatabase:(id)arg1;
 - (BOOL)_setCrowdsourcedClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3;
 - (int)_setDatabaseSchemaVersion:(int)arg1 forDatabase:(id)arg2;
-- (BOOL)_setDomain:(id)arg1 isWhitelistedForFeedback:(BOOL)arg2;
+- (BOOL)_setDomain:(id)arg1 isAllowListedForFeedback:(BOOL)arg2;
 - (void)_setLocalClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 date:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_setLocalClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 dateReclassified:(id)arg4;
 - (BOOL)_setParsecMetadataStringValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)_tryToPerformTransactionOnDatabase:(id)arg1 inBlock:(CDUnknownBlockType)arg2;
 - (void)closeDatabase;
+- (void)getAllowListStatusForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getClassificationForFieldWithFingerprint:(id)arg1 onDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getLastAllowListRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getLastCrowdsourcedCorrectionsRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getLastWhitelistRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getWhitelistStatusForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithLocalDatabaseURL:(id)arg1 parsecDatabaseURL:(id)arg2;
 - (void)removeAllLocalClassificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeLocalClassificationsForDomain:(id)arg1 recordedOnOrAfter:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)replaceCrowdsourcedCorrectionSetsWithCorrectionSets:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)replaceDomainWhitelistWithDomains:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)replaceDomainAllowListWithDomains:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setCrowdsourcedClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)setDomain:(id)arg1 isWhitelistedForFeedback:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setDomain:(id)arg1 isAllowListedForFeedback:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setLastAllowListRetrievalURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setLastCrowdsourcedCorrectionsRetrievalURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setLastWhitelistRetrievalURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setLocalClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

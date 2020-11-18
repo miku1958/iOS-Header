@@ -61,6 +61,7 @@
 - (void)userDidCancelSession:(long long)arg1;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3 doesMatchSiriSuggestion:(BOOL)arg4;
+- (void)userDidTypeKey:(long long)arg1;
 - (void)userTypedGoToSearch:(id)arg1 endpoint:(unsigned long long)arg2 forQueryID:(long long)arg3;
 - (void)userTypedURLDirectlyForQuery:(id)arg1;
 

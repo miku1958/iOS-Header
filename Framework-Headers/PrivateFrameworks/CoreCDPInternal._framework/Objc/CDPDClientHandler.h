@@ -48,7 +48,7 @@
 - (void)removeNonViewAwarePeersFromCircleWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)repairCloudDataProtectionStateWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)shouldPerformRepairForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shouldPerformRepairForContext:(id)arg1 forceFetch:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startCircleApplicationApprovalServerWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

@@ -10,9 +10,12 @@
 
 @protocol _CPSkipSearchFeedback <NSObject>
 
+@property (copy, nonatomic) NSString *experimentId;
+@property (copy, nonatomic) NSString *experimentNamespaceId;
 @property (copy, nonatomic) NSString *input;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;
+@property (copy, nonatomic) NSString *treatmentId;
 @property (nonatomic) int triggerEvent;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

@@ -18,6 +18,7 @@
 + (id)complicationWithApp:(id)arg1;
 - (void).cxx_destruct;
 - (id)localizedDetailText;
+- (id)ntk_sectionIdentifier;
 
 @end
 

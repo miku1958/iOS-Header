@@ -10,6 +10,7 @@
 
 @interface _TtC10RealityKit39__RealityFileARReferenceProvidingPlugin : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *assetService;
     MISSING_TYPE *schemePrefix;
 }
 

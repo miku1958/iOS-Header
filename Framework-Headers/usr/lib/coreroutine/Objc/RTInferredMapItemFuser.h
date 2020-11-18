@@ -25,8 +25,9 @@
 - (id)bestFromFusedInferredMapItems:(id)arg1;
 - (id)filterCandidates:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
 - (id)filterLearnedPlaceCandidates:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
+- (id)filterUnknownLearnedPlaceCandidates:(id)arg1;
 - (id)fusedInferredMapItemsFromUUIDToProbMap:(id)arg1 inferredMapItemDeduperState:(id)arg2 uuidToFusedMapItemSourceMap:(id)arg3 referenceLocation:(id)arg4 error:(id *)arg5;
-- (id)fusedInferredMapItemsUsingCandidates:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
+- (id)fusedInferredMapItemsUsingCandidates:(id)arg1 referenceLocation:(id)arg2 snapToBestKnownPlaceAndAoi:(BOOL)arg3 error:(id *)arg4;
 - (id)highestConfidenceAoiMapItemFromFusedInferredMapItems:(id)arg1;
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2;
@@ -36,7 +37,7 @@
 - (id)normalizeNonAoiUUIDToLogProbMap:(id)arg1 aoiUUIDToProbArrayMap:(id)arg2 error:(id *)arg3;
 - (BOOL)partitionDedupedInferredMapItems:(id)arg1 intoNonAoiDedupedInferredMapItems:(id *)arg2 aoiDedupedInferredMapItems:(id *)arg3 error:(id *)arg4;
 - (id)populateMapItemSourceEntriesForDedupedInferredMapItems:(id)arg1 error:(id *)arg2;
-- (id)preprocessCandidates:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
+- (id)preprocessCandidates:(id)arg1 referenceLocation:(id)arg2 snapToBestKnownPlaceAndAoi:(BOOL)arg3 error:(id *)arg4;
 - (id)snapToBestAOICandidate:(id)arg1 error:(id *)arg2;
 - (id)snapToBestKnownPlaceType:(id)arg1 error:(id *)arg2;
 - (id)subtractMaxLogarithmFromLogProbMap:(id)arg1 error:(id *)arg2;

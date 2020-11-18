@@ -45,7 +45,6 @@
 - (BOOL)shrinkTextToFit;
 - (BOOL)textLayoutShouldLayoutVertically:(id)arg1;
 - (BOOL)textLayoutShouldWrapAroundExternalDrawables:(id)arg1;
-- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 

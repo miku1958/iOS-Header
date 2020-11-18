@@ -21,8 +21,14 @@
 @property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (readonly) long long state; // @synthesize state=_state;
 
++ (void)cancelCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
++ (id)getLoadResultFromMessage:(id)arg1;
++ (id)loadSync:(id)arg1 allowingDifferences:(id)arg2 error:(id *)arg3;
++ (id)loadSync:(id)arg1 error:(id *)arg2;
++ (void)startCatalogDownload:(id)arg1 options:(id)arg2 completionWithError:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
+- (id)absoluteAssetId;
 - (id)assetProperty:(id)arg1;
 - (id)assetServerUrl;
 - (void)attachProgressCallBack:(CDUnknownBlockType)arg1;
@@ -35,23 +41,34 @@
 - (id)createExtractor;
 - (void)dealloc;
 - (id)description;
+- (id)getLocalFilePath;
 - (id)getLocalFileUrl;
 - (id)getLocalUrl;
 - (unsigned long long)hash;
 - (id)hashToString:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
-- (void)invokeClientCompletion:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)invokeClientDownloadCompletion:(long long)arg1 completionBlockWithError:(CDUnknownBlockType)arg2;
+- (void)invokeClientDownloadCompletionAlreadyOnQueue:(long long)arg1 completionBlockWithError:(CDUnknownBlockType)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)logAsset;
+- (BOOL)nonUserInitiatedDownloadsAllowed;
 - (BOOL)overrideGarbageCollectionThreshold:(unsigned long long)arg1;
 - (void)purge:(CDUnknownBlockType)arg1;
 - (long long)purgeSync;
+- (void)purgeWithError:(CDUnknownBlockType)arg1;
 - (BOOL)refreshState;
 - (BOOL)spaceCheck:(long long *)arg1;
 - (void)startDownload:(CDUnknownBlockType)arg1;
+- (void)startDownload:(id)arg1 completionWithError:(CDUnknownBlockType)arg2;
 - (void)startDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)startDownloadWithExtractor:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startDownloadWithExtractor:(CDUnknownBlockType)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startDownloadWithExtractor:(CDUnknownBlockType)arg1 options:(id)arg2 completionWithError:(CDUnknownBlockType)arg3;
+- (BOOL)wasDownloadable;
+- (BOOL)wasInCatalog;
+- (BOOL)wasLocal;
+- (BOOL)wasPreinstalled;
+- (BOOL)wasPurgeable;
 
 @end
 

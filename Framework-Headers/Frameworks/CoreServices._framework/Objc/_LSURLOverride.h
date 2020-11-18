@@ -18,19 +18,19 @@
 @property (readonly, copy, nonatomic) NSURL *overrideURL; // @synthesize overrideURL=_overrideURL;
 
 + (void)addOverrideBlock:(CDUnknownBlockType)arg1;
-+ (id)bizURL:(State_0f18e2a3 *)arg1;
-+ (id)fmfURL:(State_0f18e2a3 *)arg1;
-+ (id)fmipURL:(State_0f18e2a3 *)arg1;
-+ (id)iCloudEmailPrefsURL:(State_0f18e2a3 *)arg1;
-+ (id)iCloudFamilyURL:(State_0f18e2a3 *)arg1;
-+ (id)iCloudSchoolworkURL:(State_0f18e2a3 *)arg1;
-+ (id)iCloudSharingURL:(State_0f18e2a3 *)arg1;
-+ (id)iCloudSharingURL_noFragment:(State_0f18e2a3 *)arg1;
-+ (id)iTunesStoreURL:(State_0f18e2a3 *)arg1;
-+ (id)keynoteLiveURL:(State_0f18e2a3 *)arg1;
-+ (id)keynoteLiveURL_noFragment:(State_0f18e2a3 *)arg1;
++ (id)bizURL:(State_54569a5c *)arg1;
++ (id)fmfURL:(State_54569a5c *)arg1;
++ (id)fmipURL:(State_54569a5c *)arg1;
++ (id)iCloudEmailPrefsURL:(State_54569a5c *)arg1;
++ (id)iCloudFamilyURL:(State_54569a5c *)arg1;
++ (id)iCloudSchoolworkURL:(State_54569a5c *)arg1;
++ (id)iCloudSharingURL:(State_54569a5c *)arg1;
++ (id)iCloudSharingURL_noFragment:(State_54569a5c *)arg1;
++ (id)iTunesStoreURL:(State_54569a5c *)arg1;
++ (id)keynoteLiveURL:(State_54569a5c *)arg1;
++ (id)keynoteLiveURL_noFragment:(State_54569a5c *)arg1;
 + (id)new;
-+ (id)photosURL:(State_0f18e2a3 *)arg1;
++ (id)photosURL:(State_54569a5c *)arg1;
 + (void)removeAllOverrideBlocks;
 + (void)resetPlatformFlag;
 + (void)setUseMacOverrides:(BOOL)arg1;
@@ -38,8 +38,6 @@
 - (id)init;
 - (id)initWithOriginalURL:(id)arg1;
 - (id)initWithOriginalURL:(id)arg1 checkingForAvailableApplications:(BOOL)arg2;
-- (id)initWithOriginalURL:(id)arg1 checkingForAvailableApplications:(BOOL)arg2 newsOnly:(BOOL)arg3;
-- (id)initWithOriginalURL:(id)arg1 newsOnly:(BOOL)arg2;
 
 @end
 

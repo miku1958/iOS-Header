@@ -21,12 +21,11 @@
 @property BOOL disablesOccludedBackdropBlurs; // @synthesize disablesOccludedBackdropBlurs=_disablesOccludedBackdropBlurs;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *groupName;
+@property (copy) NSString *groupNamespace;
 @property BOOL ignoresScreenClip;
 @property double marginWidth;
 @property BOOL reducesCaptureBitDepth;
 @property double scale;
-@property double statisticsInterval;
-@property (copy) NSString *statisticsType;
 @property BOOL tracksLuma;
 @property BOOL usesGlobalGroupNamespace;
 @property double zoom;
@@ -39,7 +38,6 @@
 - (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
 - (void)didChangeValueForKey:(id)arg1;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
-- (id)statisticsValues;
 
 @end
 

@@ -8,5 +8,6 @@
 
 @interface GEORouteAttributes (MNExtras)
 + (id)defaultRouteAttributesForTransportType:(int)arg1;
+- (id)_vehicleSpecifications;
 @end
 

@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class MAGraph;
+@class MABaseGraph;
 
 @interface MAGraphReference : NSObject
 {
-    MAGraph *_graph;
+    unsigned long long _hash;
+    MABaseGraph *_graph;
+    MABaseGraph *_concreteGraph;
 }
 
-@property (readonly, weak) MAGraph *graph; // @synthesize graph=_graph;
+@property (weak) MABaseGraph *concreteGraph; // @synthesize concreteGraph=_concreteGraph;
+@property (readonly, weak) MABaseGraph *graph; // @synthesize graph=_graph;
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;

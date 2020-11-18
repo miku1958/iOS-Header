@@ -11,6 +11,8 @@
 }
 
 + (id)_photosTopicMap;
++ (void)donateLabeledStrings:(id)arg1 bundleId:(id)arg2 groupId:(id)arg3 documentId:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (BOOL)donateNotification:(id)arg1 error:(id *)arg2;
 + (BOOL)donateParsecNamedEntitiesAndTopics:(id)arg1 rawQuery:(id)arg2 reformulatedQuery:(id)arg3 source:(id)arg4 error:(id *)arg5;
 + (BOOL)donatePhotosLocationNamedEntities:(id)arg1 bundleId:(id)arg2 error:(id *)arg3;
 + (BOOL)donatePhotosNamedEntities:(id)arg1 bundleId:(id)arg2 date:(id)arg3 error:(id *)arg4;

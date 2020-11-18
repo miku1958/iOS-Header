@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSCache *cache; // @synthesize cache=_cache;
 @property (readonly, nonatomic) BOOL hasOpenInRestrictions;
 @property (nonatomic) unsigned long long hostAccountDataOwnerState; // @synthesize hostAccountDataOwnerState=_hostAccountDataOwnerState;
-@property (strong, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
+@property (copy, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property (readonly, nonatomic) BOOL isNetworkDriveAllowed;
 @property (readonly, nonatomic) BOOL isUSBAccessAllowed;
 

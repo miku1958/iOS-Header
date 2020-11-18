@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *viewCache;
     MISSING_TYPE *seed;
-    MISSING_TYPE *contentsScale;
+    MISSING_TYPE *nextUpdate;
+    MISSING_TYPE *lastContentsScale;
     MISSING_TYPE *isValid;
     MISSING_TYPE *wasValid;
 }

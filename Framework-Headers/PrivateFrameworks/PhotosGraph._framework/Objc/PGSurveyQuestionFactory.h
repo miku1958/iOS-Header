@@ -12,6 +12,7 @@
 
 @interface PGSurveyQuestionFactory : NSObject <PGQuestionFactory>
 {
+    BOOL _ignoreExistingQuestions;
     NSDictionary *_existingQuestionsByEntityIdentifier;
     PGManager *_manager;
 }
@@ -20,14 +21,18 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDictionary *existingQuestionsByEntityIdentifier; // @synthesize existingQuestionsByEntityIdentifier=_existingQuestionsByEntityIdentifier;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreExistingQuestions; // @synthesize ignoreExistingQuestions=_ignoreExistingQuestions;
 @property (strong, nonatomic) PGManager *manager; // @synthesize manager=_manager;
 @property (readonly, nonatomic) long long questionOptions;
 @property (readonly, nonatomic) unsigned short questionType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_assetFromAssets:(id)arg1 closestToLocationCoordinate:(struct CLLocationCoordinate2D)arg2 radius:(double)arg3;
 - (id)_questionsByEntityIdentifierFromQuestions:(id)arg1;
+- (id)assetFromMomentNode:(id)arg1 closestToLocationCoordinate:(struct CLLocationCoordinate2D)arg2 radius:(double)arg3;
 - (id)curatedAssetsFromMomentNode:(id)arg1;
+- (id)existingQuestionsForEntityIdentifier:(id)arg1;
 - (id)fetchExistingQuestions;
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)initWithManager:(id)arg1;

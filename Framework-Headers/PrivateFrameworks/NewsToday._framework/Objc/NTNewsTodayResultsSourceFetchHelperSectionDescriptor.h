@@ -19,7 +19,9 @@
 
 @property (readonly, copy, nonatomic) NSString *actionTitle;
 @property (readonly, copy, nonatomic) NSURL *actionURL;
-@property (readonly, copy, nonatomic) NSString *backgroundGradientColor;
+@property (readonly, copy, nonatomic) NSString *backgroundColorDark;
+@property (readonly, copy, nonatomic) NSString *backgroundColorLight;
+@property (readonly, nonatomic) NSString *backingTagID;
 @property (readonly, nonatomic) unsigned long long cachedResultCutoffTime;
 @property (readonly, copy, nonatomic) NSString *compactName;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,13 +29,15 @@
 @property (readonly, nonatomic) unsigned long long fallbackOrder;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) int leadingCellPromotionPolicy;
 @property (readonly, nonatomic) unsigned long long maximumStoriesAllocation;
 @property (readonly, nonatomic) unsigned long long minimumStoriesAllocation;
 @property (readonly, copy, nonatomic) NSString *name;
-@property (readonly, copy, nonatomic) NSString *nameColor;
+@property (readonly, copy, nonatomic) NSURL *nameActionURL;
+@property (readonly, copy, nonatomic) NSString *nameColorDark;
+@property (readonly, copy, nonatomic) NSString *nameColorLight;
 @property (readonly, copy, nonatomic) id<NTSectionQueueDescriptor> parentSectionQueueDescriptor; // @synthesize parentSectionQueueDescriptor=_parentSectionQueueDescriptor;
 @property (readonly, copy, nonatomic) NSString *personalizationFeatureID;
+@property (readonly, nonatomic) int promotionCriterion;
 @property (readonly, nonatomic) int readArticlesFilterMethod;
 @property (readonly, copy, nonatomic) NSString *referralBarName;
 @property (readonly, copy, nonatomic) id<NTSectionDescriptor> sectionDescriptor; // @synthesize sectionDescriptor=_sectionDescriptor;
@@ -42,7 +46,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long supplementalInterSectionFilterOptions;
 @property (readonly, nonatomic) long long supplementalIntraSectionFilterOptions;
-@property (readonly, nonatomic) BOOL useNameColorInWidget;
 
 - (void).cxx_destruct;
 - (id)assembleResultsWithCatchUpOperation:(id)arg1;

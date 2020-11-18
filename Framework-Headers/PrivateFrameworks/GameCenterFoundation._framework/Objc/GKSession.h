@@ -17,11 +17,11 @@
 @property (getter=isAvailable) BOOL available;
 @property (getter=isBusy) BOOL busy;
 @property (readonly) GKConnection *connection;
-@property id<GKSessionDelegate> delegate;
+@property (weak) id<GKSessionDelegate> delegate;
 @property double disconnectTimeout;
 @property (readonly) NSString *displayName;
 @property (readonly) NSString *peerID;
-@property id<GKSessionPrivateDelegate> privateDelegate;
+@property (weak) id<GKSessionPrivateDelegate> privateDelegate;
 @property (readonly) NSString *sessionID;
 @property (readonly) int sessionMode;
 @property BOOL wifiEnabled;

@@ -13,14 +13,14 @@
 @interface PXMemoriesFeedTransitionAnimationCoordinator : NSObject <PXTileTransitionAnimationCoordinator>
 {
     PXBasicTileAnimationOptions *_basicOptions;
-    BOOL _referenceSizeChanged;
+    BOOL _useDoubleSidedAnimation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL referenceSizeChanged; // @synthesize referenceSizeChanged=_referenceSizeChanged;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useDoubleSidedAnimation; // @synthesize useDoubleSidedAnimation=_useDoubleSidedAnimation;
 
 - (void).cxx_destruct;
 - (BOOL)getFinalGeometry:(out struct PXTileGeometry *)arg1 finalUserData:(out id *)arg2 forDisappearingTileWithIdentifier:(struct PXTileIdentifier)arg3 fromGeometry:(struct PXTileGeometry)arg4 fromUserData:(id)arg5;

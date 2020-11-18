@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_checkAppropriateCell;
 - (void)dealloc;
 - (id)initWithPresentingRow:(id)arg1;

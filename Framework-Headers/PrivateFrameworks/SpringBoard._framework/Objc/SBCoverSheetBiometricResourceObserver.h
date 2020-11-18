@@ -32,7 +32,6 @@
 - (void)biometricResource:(id)arg1 observeEvent:(unsigned long long)arg2;
 - (id)initWithBiometricResource:(id)arg1;
 - (void)reset;
-- (void)setSeenMatchResultSinceScreenOn:(BOOL)arg1 notifyDelegate:(BOOL)arg2;
 
 @end
 

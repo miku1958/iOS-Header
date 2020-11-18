@@ -8,6 +8,7 @@
 
 @class HDDaemonTransaction, HKWorkoutRoute, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface HDSmoothingTask : NSObject
 {
     HKWorkoutRoute *_sample;

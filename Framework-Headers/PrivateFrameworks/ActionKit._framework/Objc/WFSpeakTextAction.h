@@ -6,32 +6,23 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/AVSpeechSynthesizerDelegate-Protocol.h>
+@class WFSpeakTextActionOperation;
+@protocol WFActionExtendedOperation;
 
-@class AVSpeechSynthesizer, NSString;
-
-@interface WFSpeakTextAction : WFAction <AVSpeechSynthesizerDelegate>
+@interface WFSpeakTextAction : WFAction
 {
-    AVSpeechSynthesizer *_synthesizer;
+    id<WFActionExtendedOperation> _extendedOperation;
+    WFSpeakTextActionOperation *_runningOperation;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) AVSpeechSynthesizer *synthesizer; // @synthesize synthesizer=_synthesizer;
+@property (strong, nonatomic) WFSpeakTextActionOperation *runningOperation; // @synthesize runningOperation=_runningOperation;
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (void)cleanupSpeechSynthesizer;
+- (id)extendedOperation;
 - (void)initializeParameters;
-- (id)languagePickerParameter;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (void)speakTextUsingSynthesizer:(id)arg1 voice:(id)arg2 rate:(float)arg3 pitch:(float)arg4 waitUntilFinished:(BOOL)arg5;
-- (void)speakTextUsingVoiceOver:(id)arg1 languageCode:(id)arg2 pitch:(float)arg3 waitUntilFinished:(BOOL)arg4;
-- (void)speechSynthesizer:(id)arg1 didCancelSpeechUtterance:(id)arg2;
-- (void)speechSynthesizer:(id)arg1 didFinishSpeechUtterance:(id)arg2;
-- (void)speechSynthesizer:(id)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2 utterance:(id)arg3;
+- (void)setExtendedOperation:(id)arg1;
 - (id)voicePickerParameter;
 
 @end

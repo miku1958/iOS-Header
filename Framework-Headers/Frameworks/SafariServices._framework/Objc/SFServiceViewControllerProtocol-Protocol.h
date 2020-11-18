@@ -16,7 +16,7 @@
 - (void)didFetchCustomActivities:(NSArray *)arg1 excludedActivityTypes:(NSArray *)arg2;
 - (void)didRequestShowLinkPreviews:(BOOL)arg1;
 - (void)loadURL:(NSURL *)arg1;
-- (void)openCurrentURLInSafari;
+- (void)openCurrentURLInSafariFromPreviewAction;
 - (void)prepareForDisplayWithCompletionHandler:(void (^)(void))arg1;
 - (void)repostNotificationInViewService:(NSString *)arg1;
 - (void)setConfiguration:(SFSafariViewControllerConfiguration *)arg1;
@@ -25,6 +25,7 @@
 - (void)setHostAppModalPresentationStyle:(long long)arg1;
 - (void)setIsRunningTransitionAnimation:(BOOL)arg1;
 - (void)setPreferredBarTintColor:(UIColor *)arg1;
+- (void)setPreferredBarTintColor:(UIColor *)arg1 controlTintColor:(UIColor *)arg2;
 - (void)setPreferredControlTintColor:(UIColor *)arg1;
 - (void)startResolveRedirectionForURL:(NSURL *)arg1;
 - (void)stopDigitalHealthTracking;

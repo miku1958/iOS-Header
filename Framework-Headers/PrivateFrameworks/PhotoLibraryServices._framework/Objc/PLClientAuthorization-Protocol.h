@@ -11,12 +11,17 @@
 @protocol PLClientAuthorization <NSObject>
 
 @property (readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
+@property (readonly, nonatomic, getter=isClientLimitedLibraryCapable) BOOL clientLimitedLibraryCapable;
 @property (readonly, nonatomic) int clientProcessIdentifier;
+@property (readonly, nonatomic) BOOL cloudInternalEntitled;
 @property (readonly, nonatomic) BOOL directDatabaseAccessAuthorized;
 @property (readonly, nonatomic) BOOL directDatabaseWriteAuthorized;
+@property (readonly, nonatomic) NSString *fetchFilterIdentifier;
+@property (readonly, nonatomic) BOOL limitedLibraryMode;
 @property (readonly, nonatomic) BOOL photoKitEntitled;
 @property (readonly, nonatomic) NSString *trustedCallerBundleID;
 @property (readonly, nonatomic) NSString *trustedCallerDisplayName;
+@property (readonly, nonatomic) NSString *trustedCallerPhotoLibraryUsageDescription;
 
 - (BOOL)photoKitEntitledFor:(NSString *)arg1;
 @end

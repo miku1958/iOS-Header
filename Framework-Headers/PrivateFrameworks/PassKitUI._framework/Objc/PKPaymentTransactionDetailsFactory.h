@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class PKPeerPaymentContactResolver, PKPeerPaymentController;
+@class PKPeerPaymentContactResolver, PKPeerPaymentWebService;
 @protocol PKPaymentDataProvider;
 
 @interface PKPaymentTransactionDetailsFactory : NSObject
 {
     PKPeerPaymentContactResolver *_contactResolver;
-    PKPeerPaymentController *_peerPaymentController;
+    PKPeerPaymentWebService *_peerPaymentWebService;
     id<PKPaymentDataProvider> _paymentServiceDataProvider;
     long long _detailViewStyle;
 }
 
 - (void).cxx_destruct;
-- (id)_transactionFetcherWithPaymentPass:(id)arg1 transaction:(id)arg2;
-- (BOOL)canShowTransactionHistoryForTransaction:(id)arg1 pass:(id)arg2;
-- (id)detailViewControllerForTransaction:(id)arg1 pass:(id)arg2 account:(id)arg3;
-- (id)historyViewControllerForTransaction:(id)arg1 pass:(id)arg2 account:(id)arg3;
-- (void)historyViewControllerForTransaction:(id)arg1 pass:(id)arg2 account:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithContactResolver:(id)arg1 peerPaymentController:(id)arg2 paymentServiceDataProvider:(id)arg3 detailViewStyle:(long long)arg4;
+- (id)_transactionFetcherWithTransactionSource:(id)arg1 transaction:(id)arg2;
+- (BOOL)canShowTransactionHistoryForTransaction:(id)arg1 transactionSource:(id)arg2;
+- (id)detailViewControllerForTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3;
+- (id)historyViewControllerForTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3;
+- (void)historyViewControllerForTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithContactResolver:(id)arg1 peerPaymentWebService:(id)arg2 paymentServiceDataProvider:(id)arg3 detailViewStyle:(long long)arg4;
 
 @end
 

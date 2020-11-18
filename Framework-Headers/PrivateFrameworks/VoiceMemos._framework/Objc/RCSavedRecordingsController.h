@@ -6,24 +6,33 @@
 
 #import <CoreData/NSFetchedResultsController.h>
 
-@class NSArray, NSFetchRequest, NSPredicate, NSString;
-@protocol NSFetchedResultsControllerDelegate;
+#import <VoiceMemos/NSCopying-Protocol.h>
 
-@interface RCSavedRecordingsController : NSFetchedResultsController
+@class NSArray, NSFetchRequest, NSPredicate, NSString;
+@protocol NSFetchedResultsControllerDelegate, RCFolder;
+
+@interface RCSavedRecordingsController : NSFetchedResultsController <NSCopying>
 {
     NSFetchRequest *_fetchRequest;
     NSPredicate *_fetchPredicate;
     NSString *_searchString;
     id<NSFetchedResultsControllerDelegate> _defaultDelegate;
+    BOOL _hasPerformedFetch;
+    id<RCFolder> _folder;
 }
 
+@property (weak, nonatomic) id<NSFetchedResultsControllerDelegate> defaultDelegate; // @synthesize defaultDelegate=_defaultDelegate;
+@property (readonly, nonatomic) NSPredicate *fetchPredicate; // @synthesize fetchPredicate=_fetchPredicate;
 @property (readonly, nonatomic) NSArray *fetchedRecordings;
+@property (weak, nonatomic) id<RCFolder> folder; // @synthesize folder=_folder;
 @property (copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)fetchedObjects;
 - (id)initWithFetchRequest:(id)arg1 managedObjectContext:(id)arg2;
 - (void)invalidate;
-- (void)setDefaultDelegate:(id)arg1;
+- (BOOL)performFetch:(id *)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

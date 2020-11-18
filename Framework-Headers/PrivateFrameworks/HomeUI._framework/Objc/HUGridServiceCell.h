@@ -21,6 +21,7 @@
     BOOL _showingProgressIndicator;
     HFItem *_serviceItem;
     UIView *_accessoryView;
+    UIColor *_defaultNameTextColor;
     UIColor *_defaultDescriptionColor;
     HUIconView *_iconView;
     HUGridServiceCellTextView *_serviceTextView;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) UILabel *coloredDescriptionLabel; // @synthesize coloredDescriptionLabel=_coloredDescriptionLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIColor *defaultDescriptionColor; // @synthesize defaultDescriptionColor=_defaultDescriptionColor;
+@property (strong, nonatomic) UIColor *defaultNameTextColor; // @synthesize defaultNameTextColor=_defaultNameTextColor;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIVisualEffectView *descriptionLabelEffectView; // @synthesize descriptionLabelEffectView=_descriptionLabelEffectView;
 @property (nonatomic) BOOL disableContinuousIconAnimation;
@@ -65,6 +67,7 @@
 - (void).cxx_destruct;
 - (void)_createExclamationViewIfNecessary;
 - (id)_descriptionTextAttributesWithColor:(id)arg1;
+- (void)_setupCommonServiceCell;
 - (void)_setupServiceCell;
 - (id)_textConfiguration;
 - (void)_updateAccessoryView;
@@ -73,6 +76,7 @@
 - (void)_updateSecondaryContentDisplayStyle;
 - (void)_updateText;
 - (void)displayStyleDidChange;
+- (void)dragStateDidChange:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)item;

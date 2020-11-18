@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (void)addAssertionForQuery:(id)arg1 policy:(id)arg2 assertionID:(id)arg3 clientID:(id)arg4;
+- (id)allAssertions;
 - (id)assertionDueForUpdateFrom:(id)arg1 SinceDate:(id)arg2;
 - (id)assertionDueForUpdateSinceDate:(id)arg1;
 - (id)assertionIDsForClientID:(id)arg1;

@@ -11,36 +11,21 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct AudioStreamBasicDescription {
-    double mSampleRate;
-    unsigned int mFormatID;
-    unsigned int mFormatFlags;
-    unsigned int mBytesPerPacket;
-    unsigned int mFramesPerPacket;
-    unsigned int mBytesPerFrame;
-    unsigned int mChannelsPerFrame;
-    unsigned int mBitsPerChannel;
-    unsigned int mReserved;
+    double _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
 };
 
 struct AudioUnitMeterClipping {
     float peakValueSinceLastCall;
     unsigned char sawInfinity;
     unsigned char sawNotANumber;
-};
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
 };
 
 struct PowerMeter {
@@ -55,26 +40,9 @@ struct PowerMeter {
     struct AudioUnitMeterClipping mClipping;
 };
 
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct UIOffset {
-    double _field1;
-    double _field2;
-};
-
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct _RCWaveformRendererState {
-    BOOL recordDidSwitch;
-    double lastRenderTime;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct vector<float, std::__1::allocator<float>> {
@@ -91,24 +59,6 @@ typedef struct {
     double beginTime;
     double endTime;
 } CDStruct_73a5d3ca;
-
-typedef struct {
-    float scale;
-    double vDeltaWaveformToTimeBaseline;
-    double vDeltaTimeBaselineToTitleBaseline;
-    double vDeltaTitleBaselineToDateBaseline;
-    double vDeltaDateBaselineToControlsTop;
-    double vDeltaControlsBottomToBottom;
-    double vDeltaControlsTopToNavigationBottom;
-    BOOL hIsWaveformFlushToEdges;
-    double hDeltaAdditionalInsetFromWaveformEdge;
-    double hDeltaControlButtonsSpacing;
-    double hDeltaTrimProgressInset;
-    double hTrimModeInset;
-    double hDetailNavigationBarInset;
-    double hPresentedRecordMemoHeight;
-    double vDeltaLockAbsoluteTopToWaveformTop;
-} CDStruct_a8723754;
 
 // Template types
 typedef struct vector<float, std::__1::allocator<float>> {

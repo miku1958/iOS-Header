@@ -30,7 +30,6 @@
 - (struct CGRect)regionOfInterestNonIntegralPixelRectForWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (struct CGRect)regionOfInterestPixelRectForWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (BOOL)validateConfigurationAndReturnError:(id *)arg1;
-- (id)validatedInputFaceObservationsClippedToRegionOfInterest:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

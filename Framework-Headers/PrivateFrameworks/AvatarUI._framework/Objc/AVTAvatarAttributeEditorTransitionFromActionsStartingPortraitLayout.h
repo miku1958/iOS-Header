@@ -8,6 +8,7 @@
 
 @interface AVTAvatarAttributeEditorTransitionFromActionsStartingPortraitLayout : AVTAvatarAttributeEditorLayout
 {
+    BOOL _showSideGroupPicker;
     double _avatarContainerAlpha;
     double _attributesContentViewExtraHeight;
     struct CGRect _avatarContainerFrame;
@@ -24,7 +25,9 @@
 - (struct CGRect)groupDialContainerFrame;
 - (double)headerMaskingViewAlpha;
 - (struct CGRect)headerMaskingViewFrame;
-- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 avatarViewContainerFrame:(struct CGRect)arg4 attributesContentViewFrameExtraHeight:(double)arg5 avatarViewAlpha:(double)arg6;
+- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 RTL:(BOOL)arg4 avatarViewContainerFrame:(struct CGRect)arg5 attributesContentViewFrameExtraHeight:(double)arg6 avatarViewAlpha:(double)arg7 showSideGroupPicker:(BOOL)arg8;
+- (BOOL)showSideGroupPicker;
+- (struct CGRect)sideGroupContainerFrame;
 - (unsigned long long)supportedLayoutOrientation;
 - (struct CGRect)userInfoFrame;
 - (double)verticalRuleAlpha;

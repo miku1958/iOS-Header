@@ -10,17 +10,11 @@
 
 @protocol PHImportExceptionRecorder <NSObject>
 
-@property (readonly, nonatomic) NSMutableArray *criticalExceptions;
 @property (readonly, nonatomic) NSMutableArray *exceptions;
-@property (nonatomic) BOOL hasTerminalException;
-@property (readonly, nonatomic) NSMutableArray *terminalExceptions;
 
 - (void)addException:(PHImportException *)arg1;
-- (PHImportException *)addExceptionWithMessage:(NSString *)arg1 path:(NSString *)arg2 importance:(unsigned long long)arg3 nsError:(NSError *)arg4 file:(char *)arg5 line:(unsigned long long)arg6;
+- (PHImportException *)addExceptionWithType:(long long)arg1 path:(NSString *)arg2 underlyingError:(NSError *)arg3 file:(char *)arg4 line:(unsigned long long)arg5;
 - (void)addExceptions:(NSArray *)arg1;
-- (NSArray *)exceptionsOfImportance:(unsigned long long)arg1;
-- (NSArray *)exceptionsWithMinimumImportance:(unsigned long long)arg1;
-- (NSString *)logForExceptionsOfImportance:(unsigned long long)arg1;
-- (NSString *)logForExceptionsOfMinImportance:(unsigned long long)arg1;
+- (NSString *)logForExceptions;
 @end
 

@@ -33,7 +33,9 @@
 - (void)didAdoptFilesWithError:(NSError *)arg1 forSession:(NSString *)arg2;
 - (void)didCancelSession:(NSString *)arg1;
 - (void)didCommitSession:(NSString *)arg1;
+- (void)didGetState:(long long)arg1 info:(NSDictionary *)arg2 sessionID:(NSString *)arg3;
 - (void)finishedDiagnosticWithIdentifier:(NSString *)arg1 result:(NSDictionary *)arg2 session:(NSString *)arg3;
+- (void)getSessionStateWithSession:(NSString *)arg1;
 - (void)getSessionStatusWithSession:(NSString *)arg1;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 inSession:(NSString *)arg3;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 withIdentifiers:(NSArray *)arg3 inSession:(NSString *)arg4;

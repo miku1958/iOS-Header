@@ -14,5 +14,9 @@
     MISSING_TYPE *preconditionCompletion;
 }
 
+- (void)favoritesProviderDidUpdate:(id)arg1;
+- (void)favoritesProviderDidUpdate:(id)arg1 specificType:(id)arg2 isFavorited:(BOOL)arg3;
+- (void)favoritesProviderIsReady:(id)arg1;
+
 @end
 

@@ -40,6 +40,7 @@
 - (id)decorate:(id)arg1 scaledWithSize:(struct CGSize)arg2 croppedToFit:(BOOL)arg3;
 - (id)decoratorIdentifier;
 - (struct CGSize)expectedSize;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithScaleToSize:(struct CGSize)arg1;
 - (id)initWithScaleToSize:(struct CGSize)arg1 cropToFit:(BOOL)arg2;

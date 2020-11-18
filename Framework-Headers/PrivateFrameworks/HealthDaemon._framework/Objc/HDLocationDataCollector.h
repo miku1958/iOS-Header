@@ -36,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CMElevation *elevation; // @synthesize elevation=_elevation;
 @property (readonly) unsigned long long hash;
+@property (readonly) long long state;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -48,6 +49,7 @@
 - (void)_queue_savedLocationData;
 - (void)_queue_setupLocationUpdates;
 - (void)_queue_stopGPSUpdates;
+- (void)_queue_stopUpdates;
 - (int)authorizationStatus;
 - (id)createCMElevation;
 - (void)dealloc;
@@ -60,8 +62,8 @@
 - (void)pauseUpdates;
 - (void)resumeUpdates;
 - (void)startUpdates;
-- (long long)state;
 - (void)stopUpdates;
+- (void)stopUpdatesAndDiscardData;
 - (id)workoutLocationManager;
 
 @end

@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray;
+@class ATXHeroAppPrediction, NSArray;
 
 @protocol ATXHeroAppPredictionXPCInterface
-- (void)donateHeroAppPredictionsWithBundleIds:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)invalidatePredictionsWithCompletion:(void (^)(NSError *))arg1;
+- (void)addConfirmForAppClipWithHeroAppPrediction:(ATXHeroAppPrediction *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)addHardRejectForAppClipWithHeroAppPrediction:(ATXHeroAppPrediction *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)addSoftRejectForAppClipWithHeroAppPrediction:(ATXHeroAppPrediction *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)donateHeroAppPredictions:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)feedbackScoreForAppClipWithHeroAppPrediction:(ATXHeroAppPrediction *)arg1 completion:(void (^)(NSError *, double))arg2;
+- (void)openAppClipWithHeroAppPrediction:(ATXHeroAppPrediction *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

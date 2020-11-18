@@ -11,6 +11,7 @@
 @interface BPSWatchView : UIView
 {
     BOOL _wantsLightenBlendedScreen;
+    BOOL _wantsInternalFPOLabel;
     NSString *_screenImageSearchBundleIdentifier;
     NSString *_screenImageName;
     unsigned long long _style;
@@ -25,6 +26,7 @@
 @property (nonatomic) unsigned long long sizeOverride; // @synthesize sizeOverride=_sizeOverride;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (copy, nonatomic) NSString *styleVersionSuffix; // @synthesize styleVersionSuffix=_styleVersionSuffix;
+@property (nonatomic) BOOL wantsInternalFPOLabel; // @synthesize wantsInternalFPOLabel=_wantsInternalFPOLabel;
 @property (nonatomic) BOOL wantsLightenBlendedScreen; // @synthesize wantsLightenBlendedScreen=_wantsLightenBlendedScreen;
 @property (strong, nonatomic) BPSRemoteImageView *watchImageView; // @synthesize watchImageView=_watchImageView;
 @property (readonly, nonatomic) UIImageView *watchScreenImageView; // @synthesize watchScreenImageView=_watchScreenImageView;
@@ -40,6 +42,7 @@
 - (id)initWithStyle:(unsigned long long)arg1 versionModifier:(id)arg2 allowsMaterialFallback:(BOOL)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)layoutWatchScreenImageView;
 - (void)overrideMaterial:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (id)screenBackground:(struct CGSize)arg1;
 - (struct CGSize)screenImageSize;

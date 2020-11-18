@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/HMDNetworkRouterFirewallRuleManagerBackingStoreFetchHelper.h>
 
-@class CKServerChangeToken, NSArray, NSDictionary, NSMutableSet;
+@class CKServerChangeToken, NSArray, NSDictionary, NSMutableSet, NSSet;
 
 @interface HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorFetchChangesInfo : HMDNetworkRouterFirewallRuleManagerBackingStoreFetchHelper
 {
     BOOL _zonesHaveChanged;
     BOOL _zonesWereDeleted;
+    NSSet *_requestedRecordIDs;
     NSDictionary *_zoneInfoMap;
     CKServerChangeToken *_databaseChangeToken;
     CKServerChangeToken *_originalDatabaseChangeToken;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) CKServerChangeToken *databaseChangeToken; // @synthesize databaseChangeToken=_databaseChangeToken;
 @property (readonly, nonatomic) NSMutableSet *modifiedRecordIDs; // @synthesize modifiedRecordIDs=_modifiedRecordIDs;
 @property (strong, nonatomic) CKServerChangeToken *originalDatabaseChangeToken; // @synthesize originalDatabaseChangeToken=_originalDatabaseChangeToken;
+@property (readonly, nonatomic) NSSet *requestedRecordIDs; // @synthesize requestedRecordIDs=_requestedRecordIDs;
 @property (strong, nonatomic) NSArray *signatureVerificationPublicKeys; // @synthesize signatureVerificationPublicKeys=_signatureVerificationPublicKeys;
 @property (readonly, nonatomic) NSDictionary *zoneInfoMap; // @synthesize zoneInfoMap=_zoneInfoMap;
 @property (readonly, nonatomic) BOOL zonesHaveChanged; // @synthesize zonesHaveChanged=_zonesHaveChanged;

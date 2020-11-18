@@ -6,7 +6,7 @@
 
 #import <MediaPlaybackCore/MPCReportingController.h>
 
-@class NSObject, NSString, SSVPlayActivityController;
+@class ICPlayActivityController, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPCJinglePlayActivityReportingController : MPCReportingController
@@ -21,13 +21,11 @@
     NSString *_nonCatalogBuildVersion;
     NSString *_nonCatalogStoreFrontID;
     unsigned long long _nonCatalogSourceType;
-    BOOL _shouldReportAggregateTimePlayActivityEvents;
     BOOL _shouldReportPlayActivityEvents;
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
 }
 
-@property (readonly, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
-@property (nonatomic) BOOL shouldReportAggregateTimePlayActivityEvents; // @synthesize shouldReportAggregateTimePlayActivityEvents=_shouldReportAggregateTimePlayActivityEvents;
+@property (readonly, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 @property (nonatomic) BOOL shouldReportPlayActivityEvents; // @synthesize shouldReportPlayActivityEvents=_shouldReportPlayActivityEvents;
 
 - (void).cxx_destruct;

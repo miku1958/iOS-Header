@@ -6,31 +6,40 @@
 
 #import <ProactiveSupport/_PASZonedObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@interface PPSourceMetadata : _PASZonedObject <NSCopying, NSSecureCoding>
+@class NSSet;
+
+@interface PPSourceMetadata : _PASZonedObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     unsigned char _flags;
     unsigned short _donationCount;
+    unsigned short _contactHandleCount;
     unsigned int _dwellTimeSeconds;
     unsigned int _lengthSeconds;
     unsigned int _lengthCharacters;
 }
 
+@property (readonly, nonatomic) unsigned short contactHandleCount; // @synthesize contactHandleCount=_contactHandleCount;
 @property (readonly, nonatomic) unsigned short donationCount; // @synthesize donationCount=_donationCount;
 @property (readonly, nonatomic) unsigned int dwellTimeSeconds; // @synthesize dwellTimeSeconds=_dwellTimeSeconds;
+@property (readonly, nonatomic) NSSet *featureNames;
 @property (readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) unsigned int lengthCharacters; // @synthesize lengthCharacters=_lengthCharacters;
 @property (readonly, nonatomic) unsigned int lengthSeconds; // @synthesize lengthSeconds=_lengthSeconds;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureValueForName:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDwellTimeSeconds:(unsigned int)arg1 lengthSeconds:(unsigned int)arg2 lengthCharacters:(unsigned int)arg3 donationCount:(unsigned short)arg4 flags:(unsigned char)arg5;
+- (id)initWithDwellTimeSeconds:(unsigned int)arg1 lengthSeconds:(unsigned int)arg2 lengthCharacters:(unsigned int)arg3 donationCount:(unsigned short)arg4 contactHandleCount:(unsigned short)arg5 flags:(unsigned char)arg6;
+- (id)initWithFlags:(unsigned char)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSourceMetadata:(id)arg1;
 

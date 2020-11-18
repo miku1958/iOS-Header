@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (readonly) Class superclass;
+@property (nonatomic) double widthForDeterminingAvatarVisibility;
 
 + (id)annotatedResultStringWithSearchText:(id)arg1 resultText:(id)arg2 primaryTextColor:(id)arg3 primaryFont:(id)arg4 annotatedTextColor:(id)arg5 annotatedFont:(id)arg6;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2;

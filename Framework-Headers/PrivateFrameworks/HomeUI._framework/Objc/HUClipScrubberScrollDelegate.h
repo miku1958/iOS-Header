@@ -9,45 +9,46 @@
 #import <HomeUI/UICollectionViewDelegate-Protocol.h>
 #import <HomeUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class HFCameraPlaybackEngine, HMCameraClip, HUClipScrubberDataSource, NSString, UICollectionView;
+@class HFCameraPlaybackEngine, HUClipScrubberDataSource, NSString, UICollectionView;
+@protocol HFCameraRecordingEvent;
 
 @interface HUClipScrubberScrollDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     BOOL _shouldIgnoreScrolling;
-    BOOL _isUserScrubbing;
+    BOOL _userScrubbing;
     BOOL _hasUserInteractedWithScrubber;
     HUClipScrubberDataSource *_dataSource;
     UICollectionView *_clipCollectionView;
     HFCameraPlaybackEngine *_playbackEngine;
     double _lastContentWidth;
-    HMCameraClip *_currentClip;
+    id<HFCameraRecordingEvent> _currentEvent;
     double _targetScrollOffset;
 }
 
 @property (weak, nonatomic) UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
-@property (strong, nonatomic) HMCameraClip *currentClip; // @synthesize currentClip=_currentClip;
+@property (strong, nonatomic) id<HFCameraRecordingEvent> currentEvent; // @synthesize currentEvent=_currentEvent;
 @property (weak, nonatomic) HUClipScrubberDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasUserInteractedWithScrubber; // @synthesize hasUserInteractedWithScrubber=_hasUserInteractedWithScrubber;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isUserScrubbing; // @synthesize isUserScrubbing=_isUserScrubbing;
 @property (nonatomic) double lastContentWidth; // @synthesize lastContentWidth=_lastContentWidth;
 @property (weak, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (nonatomic) BOOL shouldIgnoreScrolling; // @synthesize shouldIgnoreScrolling=_shouldIgnoreScrolling;
 @property (readonly) Class superclass;
 @property (nonatomic) double targetScrollOffset; // @synthesize targetScrollOffset=_targetScrollOffset;
+@property (nonatomic, getter=isUserScrubbing) BOOL userScrubbing; // @synthesize userScrubbing=_userScrubbing;
 
 - (void).cxx_destruct;
+- (BOOL)_doesPrecedingSpacerSpanMultipleDaysForEvent:(id)arg1;
 - (void)_handleOutOfBoundsTimelinePosition:(float)arg1;
-- (BOOL)_indexPathContainsClip:(id)arg1;
-- (id)_interpolatedDateFromClip:(id)arg1 toClip:(id)arg2 insideRect:(struct CGRect)arg3 atTimelinePosition:(float)arg4;
+- (id)_interpolatedDateFromEvent:(id)arg1 toEvent:(id)arg2 insideRect:(struct CGRect)arg3 atTimelinePosition:(float)arg4;
 - (id)_selectedDateForAreaOfNoActivityAtPoint:(struct CGPoint)arg1 inScrollView:(id)arg2;
-- (id)_selectedDateForClipInRect:(struct CGRect)arg1;
-- (id)_selectedDateForTodayFromClip:(id)arg1 percentDuration:(float)arg2;
-- (id)_selectedDateForYesterdayFromPreviousClip:(id)arg1 percentDuration:(float)arg2;
+- (id)_selectedDateForEventInRect:(struct CGRect)arg1;
+- (id)_selectedDateForTodayFromEvent:(id)arg1 percentDuration:(float)arg2;
+- (id)_selectedDateForYesterdayFromPreviousEvent:(id)arg1 percentDuration:(float)arg2;
 - (BOOL)_shouldScrollBypassPlaybackEngineUpdate;
-- (BOOL)_spacerPrecedingClipSpansMultipleDays:(id)arg1;
+- (void)_updateFamiliarFaceCell;
 - (void)beginEditing;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
@@ -56,6 +57,7 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
+- (void)dealloc;
 - (void)finishEditing;
 - (id)initWithDataSource:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

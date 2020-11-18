@@ -12,30 +12,23 @@
 
 @interface ARImageAnchor : ARAnchor <ARTrackable>
 {
-    BOOL _detectionOnly;
-    BOOL _isTracked;
+    BOOL isTracked;
     ARReferenceImage *_referenceImage;
     double _estimatedScaleFactor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isDetectionOnly) BOOL detectionOnly; // @synthesize detectionOnly=_detectionOnly;
 @property (readonly, nonatomic) double estimatedScaleFactor; // @synthesize estimatedScaleFactor=_estimatedScaleFactor;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isTracked; // @synthesize isTracked=_isTracked;
+@property (readonly, nonatomic) BOOL isTracked; // @synthesize isTracked;
 @property (readonly, nonatomic) ARReferenceImage *referenceImage; // @synthesize referenceImage=_referenceImage;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithTrackedState:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithReferenceImage:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 detectionOnly:(BOOL)arg3 tracked:(BOOL)arg4;
-- (id)name;
-- (void)setEstimatedScaleFactor:(double)arg1;
 
 @end
 

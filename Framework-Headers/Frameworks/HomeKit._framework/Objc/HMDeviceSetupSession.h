@@ -9,12 +9,13 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMFUnfairLock, NSDictionary, NSString, NSUUID, _HMContext;
+@class HMFActivity, HMFUnfairLock, NSDictionary, NSString, NSUUID, _HMContext;
 @protocol HMDeviceSetupSessionDelegate, OS_dispatch_queue;
 
 @interface HMDeviceSetupSession : NSObject <HMFLogging, HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;
+    HMFActivity *_activity;
     BOOL _open;
     NSDictionary *_userInfo;
     id<HMDeviceSetupSessionDelegate> _delegate;
@@ -46,7 +47,7 @@
 - (void)_closeWithError:(id)arg1;
 - (void)_handleDisconnection:(id)arg1;
 - (void)_handleOpenedSession;
-- (void)_reallySendExchangeData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_reallySendExchangeData:(id)arg1 qualityOfService:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)close;
 - (void)dealloc;
 - (id)init;
@@ -54,7 +55,7 @@
 - (id)logIdentifier;
 - (id)messageDestination;
 - (void)open;
-- (void)sendExchangeData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendExchangeData:(id)arg1 qualityOfService:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setUserInfo:(id)arg1;
 
 @end

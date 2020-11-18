@@ -6,19 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet, VKNavigationPuck, VKTimedAnimation;
+@class NSArray, VKNavigationPuck, VKTimedAnimation;
 @protocol VKMapModelDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VKMapModel : NSObject
 {
     long long _tileSize;
-    double _zoomLevel;
     id<VKMapModelDelegate> _delegate;
-    NSMutableSet *_blockingStylesheetObservers;
-    double _styleTransitionProgress;
-    double _forcedMaxZoomLevel;
-    struct LabelSettings *_labelSettings;
     const struct MapEngineSettings *_mapEngineSettings;
     struct AnimationRunner *_animationRunner;
     struct CartographicRenderer *_renderer;
@@ -31,60 +26,47 @@ __attribute__((visibility("hidden")))
     BOOL _forceMapDrawStyleUpdate;
     VKTimedAnimation *_highZoomTransitionAnimation;
     VKNavigationPuck *_navigationPuck;
+    float _navMapZoomLevelTransitionZ;
     shared_ptr_e963992e _taskContext;
     BOOL _localizeLabels;
     unsigned char _labelScaleFactor;
     BOOL _disableTransitLines;
-    float _navMapZoomLevelTransitionZ;
     float _standardMapZoomLevelTransitionZ;
-    unsigned long long _purpose;
-    struct PolylineCoordinate _routeUserOffset;
+    NSArray *_visibleTileSets;
 }
 
-@property (readonly, nonatomic) float currentRoadSignOffset;
 @property (nonatomic) id<VKMapModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL disableTransitLines; // @synthesize disableTransitLines=_disableTransitLines;
 @property (nonatomic) unsigned char labelScaleFactor; // @synthesize labelScaleFactor=_labelScaleFactor;
 @property (nonatomic) BOOL localizeLabels; // @synthesize localizeLabels=_localizeLabels;
 @property (nonatomic) int mapType;
-@property (nonatomic) float navMapZoomLevelTransitionZ; // @synthesize navMapZoomLevelTransitionZ=_navMapZoomLevelTransitionZ;
 @property (nonatomic) float navigationPuckSize; // @synthesize navigationPuckSize=_navigationPuckSize;
-@property (readonly, nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
-@property (nonatomic) struct PolylineCoordinate routeUserOffset; // @synthesize routeUserOffset=_routeUserOffset;
-@property (readonly, nonatomic) BOOL showingTrafficCasing;
 @property (nonatomic) float standardMapZoomLevelTransitionZ; // @synthesize standardMapZoomLevelTransitionZ=_standardMapZoomLevelTransitionZ;
-@property (readonly, nonatomic) NSArray *visibleTileSets;
+@property (readonly, nonatomic) NSArray *visibleTileSets; // @synthesize visibleTileSets=_visibleTileSets;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_beginMapZoomLevelTransition:(unsigned char)arg1;
-- (shared_ptr_c37d6e02)_sceneManager;
+- (void)_mapZoomLevelDidChange:(unsigned char)arg1;
 - (void)_setStyleManagerFromMapType:(int)arg1;
 - (shared_ptr_a3c46825)_styleManager;
 - (void)_updateZoomLevel:(const struct LayoutContext *)arg1;
-- (id)attributionsForCurrentRegion;
 - (void)dealloc;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (void)destroyRenderer;
-- (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1 groundPoint:(Matrix_6e1d3589)arg2;
 - (void)forceMapType:(int)arg1 animated:(BOOL)arg2;
-- (void)foreachActiveRenderLayer:(CDUnknownBlockType)arg1;
-- (void)foreachRenderLayer:(CDUnknownBlockType)arg1;
-- (id)initWithTarget:(id)arg1 renderer:(struct CartographicRenderer *)arg2 purpose:(unsigned long long)arg3 taskContext:(shared_ptr_e963992e)arg4 logicManager:(struct LogicManager *)arg5 mapEngineSettings:(const struct MapEngineSettings *)arg6 animationRunner:(struct AnimationRunner *)arg7;
+- (id)initWithTarget:(id)arg1 renderer:(struct CartographicRenderer *)arg2 taskContext:(shared_ptr_e963992e)arg3 logicManager:(struct LogicManager *)arg4 mapEngineSettings:(const struct MapEngineSettings *)arg5 animationRunner:(struct AnimationRunner *)arg6;
 - (void)layoutWithContext:(const struct LayoutContext *)arg1;
 - (id)navigationPuck;
 - (double)northYaw;
 - (void)performStylesheetDidReload;
 - (void)reloadStylesheet;
 - (void)setMapType:(int)arg1 animated:(BOOL)arg2;
-- (void)setNavCameraIsDetached:(BOOL)arg1;
+- (void)setNavMapZoomLevelTransitionZFromLowerBound:(float)arg1;
 - (void)setShowingOuterHaloOnLabelsDidChange:(BOOL)arg1;
 - (void)setStyleManager:(shared_ptr_a3c46825)arg1 forRealistic:(BOOL)arg2;
-- (void)setStylesheetMapDisplayStyle:(struct DisplayStyle)arg1;
-- (void)sizeDidChange:(struct CGSize)arg1;
 - (long long)tileSize;
 - (void)updateMapDrawStyleWithContext:(const struct LayoutContext *)arg1;
-- (void)updateOverlayType;
 
 @end
 

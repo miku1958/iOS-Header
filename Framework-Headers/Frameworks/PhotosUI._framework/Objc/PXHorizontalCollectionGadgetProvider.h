@@ -9,38 +9,46 @@
 #import <PhotosUICore/PXGadgetProviderDelegate-Protocol.h>
 #import <PhotosUICore/PXHorizontalCollectionGadgetDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PXHorizontalCollectionGadget;
+@class NSDictionary, NSString, PXHorizontalCollectionGadget;
 
 @interface PXHorizontalCollectionGadgetProvider : PXGadgetProvider <PXGadgetProviderDelegate, PXHorizontalCollectionGadgetDelegate>
 {
     PXHorizontalCollectionGadget *_horizontalGadget;
     BOOL _hasLoaded;
     Class _horizontalCollectionGadgetClass;
-    NSArray *_contentGadgetProviders;
+    BOOL _prefersPagingEnabled;
+    BOOL _isFixedHeight;
     NSString *_title;
     unsigned long long _gadgetType;
+    unsigned long long _headerStyle;
     long long _defaultColumnSpan;
     NSDictionary *_columnSpanForTraitCollection;
+    PXGadgetProvider *_contentGadgetProvider;
 }
 
 @property (copy, nonatomic) NSDictionary *columnSpanForTraitCollection; // @synthesize columnSpanForTraitCollection=_columnSpanForTraitCollection;
-@property (readonly, nonatomic) NSArray *contentGadgetProviders; // @synthesize contentGadgetProviders=_contentGadgetProviders;
+@property (readonly, nonatomic) PXGadgetProvider *contentGadgetProvider; // @synthesize contentGadgetProvider=_contentGadgetProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long defaultColumnSpan; // @synthesize defaultColumnSpan=_defaultColumnSpan;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long headerStyle; // @synthesize headerStyle=_headerStyle;
+@property (nonatomic) BOOL isFixedHeight; // @synthesize isFixedHeight=_isFixedHeight;
+@property (nonatomic) BOOL prefersPagingEnabled; // @synthesize prefersPagingEnabled=_prefersPagingEnabled;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (id)_createHorizontalGadget;
 - (void)_updateHorizontalGadget;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (void)horizontalCollectionGadgetDatasourceDidUpdate:(id)arg1;
 - (id)init;
-- (id)initWithContentGadgetProviders:(id)arg1 title:(id)arg2;
-- (id)initWithContentGadgetProviders:(id)arg1 title:(id)arg2 horizontalCollectionGadgetClass:(Class)arg3;
+- (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2;
+- (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2 horizontalCollectionGadgetClass:(Class)arg3;
+- (id)initWithIdentifier:(id)arg1;
 - (void)invalidateGadgets;
 - (void)loadDataForGadgets;
 - (void)loadDataForPriority;

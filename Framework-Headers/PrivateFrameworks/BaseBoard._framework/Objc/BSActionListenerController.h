@@ -18,14 +18,8 @@
     unsigned int _listenerTearDownToken;
 }
 
-+ (id)sharedInstance;
-- (void)beginTransaction;
-- (void)beginTransactionForListener:(id)arg1;
 - (void)dealloc;
-- (void)endTransaction;
-- (void)endTransactionForListener:(id)arg1;
 - (id)init;
-- (id)listener;
 
 @end
 

@@ -10,12 +10,14 @@
 
 @interface MLModelVisionFeaturePrintInfo : NSObject
 {
-    long long _version;
+    unsigned long long _version;
+    id _featureExtractorParameters;
     MLModel *_postVisionFeaturePrintModel;
 }
 
+@property (strong, nonatomic) id featureExtractorParameters; // @synthesize featureExtractorParameters=_featureExtractorParameters;
 @property (strong, nonatomic) MLModel *postVisionFeaturePrintModel; // @synthesize postVisionFeaturePrintModel=_postVisionFeaturePrintModel;
-@property (nonatomic) long long version; // @synthesize version=_version;
+@property (nonatomic) unsigned long long version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 

@@ -8,7 +8,7 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMDiagnostics, AXMLanguage, AXMVisionFeature, CIImage, NSArray, NSNumber, NSSet, NSString;
+@class AXMVisionFeature, AXMetricSession, CIImage, NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString;
 @protocol NSSecureCoding;
 
 @interface AXMVisionResult : NSObject <NSSecureCoding>
@@ -17,10 +17,11 @@
     NSArray *_features;
     NSSet *_evaluatedFeatureTypes;
     NSNumber *_appliedImageOrientation;
-    AXMDiagnostics *_diagnostics;
+    NSArray *_effectiveTextDetectionLocales;
+    AXMetricSession *_metricSession;
     long long _imageRegistrationState;
     NSObject<NSSecureCoding> *_userContext;
-    NSString *_detectedFeatureDescription;
+    NSData *_equivalenceToken;
     NSString *_detectedTextDescription;
 }
 
@@ -29,33 +30,42 @@
 @property (readonly, nonatomic) NSArray *blurFeatures;
 @property (readonly, nonatomic) NSArray *brightnessFeatures;
 @property (readonly, nonatomic) NSArray *captionFeatures;
+@property (readonly, nonatomic) BOOL captionMayContainSensitiveContent;
 @property (readonly, nonatomic) AXMVisionFeature *colorInfoFeature;
-@property (strong, nonatomic) NSString *detectedFeatureDescription; // @synthesize detectedFeatureDescription=_detectedFeatureDescription;
 @property (strong, nonatomic) NSString *detectedTextDescription; // @synthesize detectedTextDescription=_detectedTextDescription;
-@property (readonly, nonatomic) AXMLanguage *detectedTextLanguage;
-@property (strong, nonatomic) AXMDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
+@property (strong, nonatomic) NSArray *effectiveTextDetectionLocales; // @synthesize effectiveTextDetectionLocales=_effectiveTextDetectionLocales;
+@property (strong, nonatomic) NSData *equivalenceToken; // @synthesize equivalenceToken=_equivalenceToken;
 @property (strong, nonatomic) NSSet *evaluatedFeatureTypes; // @synthesize evaluatedFeatureTypes=_evaluatedFeatureTypes;
 @property (readonly, nonatomic) NSArray *faceFeatures;
+@property (readonly, nonatomic) NSDictionary *featureGates;
 @property (strong, nonatomic) NSArray *features; // @synthesize features=_features;
 @property (readonly, nonatomic) NSArray *iconClassFeatures;
 @property (strong, nonatomic) CIImage *image; // @synthesize image=_image;
 @property (nonatomic) long long imageRegistrationState; // @synthesize imageRegistrationState=_imageRegistrationState;
+@property (readonly, nonatomic) BOOL includesNSFWFeatures;
 @property (readonly, nonatomic) NSString *localizedDetectedIconHint;
 @property (readonly, nonatomic) NSString *localizedDetectedTextHint;
+@property (strong, nonatomic) AXMetricSession *metricSession; // @synthesize metricSession=_metricSession;
 @property (readonly, nonatomic) NSArray *modelClassificationFeatures;
 @property (readonly, nonatomic) NSArray *objectClassificationFeatures;
 @property (readonly, nonatomic) NSArray *ocrFeatures;
 @property (readonly, nonatomic) NSArray *sceneClassificationFeatures;
+@property (readonly, nonatomic) NSArray *sensitiveContentForCaptionFeatures;
 @property (strong, nonatomic) NSObject<NSSecureCoding> *userContext; // @synthesize userContext=_userContext;
 
-+ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 diagnostics:(id)arg4;
-+ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 diagnostics:(id)arg4 userContext:(id)arg5;
++ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 metricSession:(id)arg4;
++ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 metricSession:(id)arg4 userContext:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
 - (id)description;
+- (id)detectedFeatureDescriptionWithOptions:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToAXMVisionResult:(id)arg1;
+- (id)sensitiveContentFeatures;
 - (id)sortedFeatures;
 
 @end

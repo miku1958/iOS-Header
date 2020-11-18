@@ -40,7 +40,12 @@ __attribute__((visibility("hidden")))
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3 descendantBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_blackListDescendantStackAndItemIfThrottledOrNeedsOSUpgrade:(id)arg1 now:(unsigned long long)arg2;
+- (BOOL)_checkForSharesWithinSharesWithItem:(id)arg1;
+- (BOOL)_checkIfParentNeedsRevivalWithParentItem:(id)arg1;
+- (BOOL)_checkIfShouldBlacklistForPathMatch:(id)arg1;
+- (BOOL)_checkIfShouldDedicateOpToPCSChainingItem:(id)arg1;
 - (id)_documentsOrAliasesNeedingSyncUpEnumerator;
+- (BOOL)_handlePendingShareItemWithPendingDeleteChildren:(id)arg1;
 - (BOOL)_handleSharedItemWhichMovedToNewShare:(id)arg1 rootItem:(id)arg2;
 - (id)_liveDirectoriesNeedingSyncUpEnumerator;
 - (id)_nextLiveItem;

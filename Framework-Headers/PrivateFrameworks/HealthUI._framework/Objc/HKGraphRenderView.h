@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGSize)drawAttributedText:(id)arg1 atPoint:(struct CGPoint)arg2 horizontalAlignment:(long long)arg3 verticalAlignment:(long long)arg4 exclusion:(id)arg5;
 - (void)drawPath:(id)arg1 strokeColor:(id)arg2 fillColor:(id)arg3 markerImage:(id)arg4 useGradientFill:(BOOL)arg5 blendMode:(int)arg6 clipToAxes:(BOOL)arg7;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGSize)drawText:(id)arg1 atPoint:(struct CGPoint)arg2 spaceAvailable:(id)arg3 horizontalAlignment:(long long)arg4 verticalAlignment:(long long)arg5 textColor:(id)arg6 font:(id)arg7 clipToAxis:(BOOL)arg8 exclusion:(id)arg9;

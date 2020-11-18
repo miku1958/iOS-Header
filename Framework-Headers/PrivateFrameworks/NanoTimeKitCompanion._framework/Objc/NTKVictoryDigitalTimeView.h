@@ -47,6 +47,7 @@
 - (void)applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
 - (void)clearEditingTransitions;
+- (void)dealloc;
 - (long long)defaultAppearance;
 - (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;

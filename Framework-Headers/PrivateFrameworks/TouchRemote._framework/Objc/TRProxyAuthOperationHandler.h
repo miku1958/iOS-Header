@@ -13,18 +13,21 @@
 @interface TRProxyAuthOperationHandler : NSObject <TROperationHandler>
 {
     CDUnknownBlockType _proxyAuthHandler;
+    CDUnknownBlockType _proxyAuthHandlerWithError;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType proxyAuthHandler; // @synthesize proxyAuthHandler=_proxyAuthHandler;
+@property (copy, nonatomic) CDUnknownBlockType proxyAuthHandlerWithError; // @synthesize proxyAuthHandlerWithError=_proxyAuthHandlerWithError;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleProxyAuthenticationRequest:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)_handleProxyDeviceRequest:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (id)initWithProxyAuthHandler:(CDUnknownBlockType)arg1;
+- (id)initWithProxyAuthHandlerWithError:(CDUnknownBlockType)arg1;
 - (void)registerMessageHandlersForSession:(id)arg1;
 
 @end

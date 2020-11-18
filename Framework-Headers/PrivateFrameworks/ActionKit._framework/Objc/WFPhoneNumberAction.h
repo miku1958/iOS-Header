@@ -10,7 +10,6 @@
 {
 }
 
-- (id)icon;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

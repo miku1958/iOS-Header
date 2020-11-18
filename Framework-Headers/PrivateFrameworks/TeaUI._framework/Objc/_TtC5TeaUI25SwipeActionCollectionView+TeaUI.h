@@ -14,5 +14,14 @@
 @property (nonatomic, readonly) BOOL coordinatingSwipeActionShouldCancel;
 
 - (void)coordinatingResetSwipeAction;
+- (void)deleteItemsAtIndexPaths:(id)arg1;
+- (void)deleteSections:(id)arg1;
+- (void)insertItemsAtIndexPaths:(id)arg1;
+- (void)insertSections:(id)arg1;
+- (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
+- (void)moveSection:(long long)arg1 toSection:(long long)arg2;
+- (void)reloadData;
+- (void)reloadItemsAtIndexPaths:(id)arg1;
+- (void)reloadSections:(id)arg1;
 @end
 

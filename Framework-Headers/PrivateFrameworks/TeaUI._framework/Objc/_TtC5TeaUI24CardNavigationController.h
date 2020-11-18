@@ -6,10 +6,14 @@
 
 #import <TeaUI/_TtC5TeaUI20NavigationController.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC5TeaUI24CardNavigationController : _TtC5TeaUI20NavigationController
 {
+    MISSING_TYPE *commandCenter;
 }
 
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRootViewController:(id)arg1;
 - (id)initWithRootViewController:(id)arg1 navigationBarClass:(Class)arg2;

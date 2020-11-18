@@ -18,6 +18,7 @@
     NSString *_clientBundleID;
     NSDictionary *_additionalParameters;
     NSURL *_urlForContext;
+    NSString *_urlEndpoint;
     AKAppleIDAuthenticationContext *_authContext;
 }
 
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, copy, nonatomic) NSData *dataRepresentation;
 @property (readonly, copy, nonatomic) NSString *eventType; // @synthesize eventType=_eventType;
+@property (copy, nonatomic) NSString *urlEndpoint; // @synthesize urlEndpoint=_urlEndpoint;
 @property (copy, nonatomic) NSURL *urlForContext; // @synthesize urlForContext=_urlForContext;
 
 + (id)contextWithData:(id)arg1;

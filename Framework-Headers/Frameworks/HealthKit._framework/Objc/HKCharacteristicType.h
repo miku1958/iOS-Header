@@ -14,8 +14,10 @@
 - (id)_relatedCategoryType;
 - (id)_relatedQuantityType;
 - (id)_relatedSampleForInsertionWithCharacteristicValue:(id)arg1;
+- (BOOL)_validateActivityMoveMode:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateBiologicalSex:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateBloodType:(id)arg1 error:(id *)arg2;
+- (BOOL)_validateCardioFitnessMedicationsUse:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateCharacteristic:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateDateOfBirth:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateFitzpatrickSkinType:(id)arg1 error:(id *)arg2;

@@ -40,6 +40,7 @@
     EMMessageList *_messageList;
     BOOL _usingDefaultAccount;
     BOOL _prefersFirstLineSelection;
+    BOOL _originatingFromAttachmentMarkup;
     int _sourceAccountManagement;
     NSString *_shareSheetSessionID;
     NSArray *_UTITypes;
@@ -87,6 +88,7 @@
 @property (strong, nonatomic) id originalContent; // @synthesize originalContent=_originalContent;
 @property (readonly, nonatomic) EMMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
+@property (nonatomic) BOOL originatingFromAttachmentMarkup; // @synthesize originatingFromAttachmentMarkup=_originatingFromAttachmentMarkup;
 @property (copy, nonatomic) NSArray *photoIDs; // @synthesize photoIDs=_photoIDs;
 @property (nonatomic) BOOL prefersFirstLineSelection; // @synthesize prefersFirstLineSelection=_prefersFirstLineSelection;
 @property (copy, nonatomic) NSString *sendingAddress; // @synthesize sendingAddress=_sendingAddress;
@@ -104,6 +106,7 @@
 - (void).cxx_destruct;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4;
+- (id)addAttachmentDataItemProvider:(id)arg1 mimeType:(id)arg2 filename:(id)arg3 contentID:(id)arg4;
 - (id)attachments;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 after:(id)arg3;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 before:(id)arg3;

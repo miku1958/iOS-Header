@@ -7,19 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <Photos/PHAssetResourceRequest-Protocol.h>
-#import <Photos/PLTrackableRequestDelegate-Protocol.h>
 
-@class NSDictionary, NSProgress, NSString, PHAssetResource, PHAssetResourceRequestOptions, PHResourceAvailabilityJob;
+@class NSDictionary, NSProgress, NSString, PHAssetResource, PHAssetResourceRequestOptions, PLProgressFollower;
 @protocol PHAssetResourceRequestDelegate;
 
-@interface PHAssetResourceRequest : NSObject <PLTrackableRequestDelegate, PHAssetResourceRequest>
+@interface PHAssetResourceRequest : NSObject <PHAssetResourceRequest>
 {
-    PHResourceAvailabilityJob *_availabilityJob;
     struct os_unfair_lock_s _lock;
     BOOL _cancelled;
     NSProgress *_availabilityProgress;
+    long long _availabilityPendingCount;
     NSProgress *_fileStreamProgress;
+    long long _fileStreamPendingCount;
     NSProgress *_totalProgress;
+    PLProgressFollower *_progressFollower;
     BOOL _loadURLOnly;
     BOOL _synchronous;
     int _requestID;
@@ -52,20 +53,17 @@
 
 + (id)_globalFileIOQueue;
 - (void).cxx_destruct;
-- (void)_finishAsyncWithFileURL:(id)arg1;
-- (void)_finishWithFileURL:(id)arg1;
+- (void)_addAvailabilityProgressIfNeeded:(id)arg1;
+- (void)_finishAsyncWithFileURL:(id)arg1 error:(id)arg2;
+- (void)_finishWithFileURL:(id)arg1 error:(id)arg2;
 - (id)_initialValidationError;
-- (void)_reportProgress;
-- (void)_setupProgressIfNeeded;
-- (void)_streamDataAtURL:(id)arg1 dataHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setupFilestreamProgressIfNeeded;
+- (void)_setupTotalProgressIfNeeded;
+- (long long)_streamDataAtURL:(id)arg1 error:(id *)arg2 dataHandler:(CDUnknownBlockType)arg3;
 - (void)_updateAssetResourceWithLocallyAvailable:(BOOL)arg1 fileURL:(id)arg2;
 - (void)cancel;
 - (id)initWithAssetResource:(id)arg1 options:(id)arg2 requestID:(int)arg3 managerID:(unsigned long long)arg4 delegate:(id)arg5 dataReceivedHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)startRequest;
-- (void)trackableDownloadRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
-- (void)trackableRequest:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
-- (void)trackableResourceRepairRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
-- (void)trackableVideoChoosingAndAvailabilityRequest:(id)arg1 didFinishWithVideoURL:(id)arg2 info:(id)arg3 error:(id)arg4;
 
 @end
 

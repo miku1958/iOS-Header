@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)sectionFooterLabel;
 - (id)sectionHeaderLabel;
 - (unsigned long long)sharingAudienceForIndex:(unsigned long long)arg1;
+- (unsigned long long)sharingAudienceForItem:(id)arg1;
 - (BOOL)supportsSelection;
 
 @end

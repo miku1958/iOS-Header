@@ -6,31 +6,22 @@
 
 #import <QuickLook/QLPreviewController.h>
 
-#import <ChatKit/QLPreviewControllerDataSource-Protocol.h>
-
-@class NSArray;
-
-@interface CKQLPreviewController : QLPreviewController <QLPreviewControllerDataSource>
+@interface CKQLPreviewController : QLPreviewController
 {
     BOOL _controllerWasDismissed;
     BOOL _suppressRefetchingCurrentHighQualityImage;
-    NSArray *_previewItems;
 }
 
 @property (nonatomic) BOOL controllerWasDismissed; // @synthesize controllerWasDismissed=_controllerWasDismissed;
-@property (copy, nonatomic) NSArray *previewItems; // @synthesize previewItems=_previewItems;
 @property (nonatomic) BOOL suppressRefetchingCurrentHighQualityImage; // @synthesize suppressRefetchingCurrentHighQualityImage=_suppressRefetchingCurrentHighQualityImage;
 
-- (void).cxx_destruct;
 - (id)currentPreviewItem;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)loadView;
-- (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
+- (struct CGSize)preferredContentSize;
 - (long long)preferredStatusBarStyle;
 - (id)previewActions;
-- (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
-- (void)setDataSource:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

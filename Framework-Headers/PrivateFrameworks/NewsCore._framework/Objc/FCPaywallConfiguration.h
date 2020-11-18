@@ -12,12 +12,16 @@
 
 @interface FCPaywallConfiguration : NSObject <NSCopying>
 {
+    BOOL _externalOverridesEnabled;
     unsigned long long _paywallType;
     NSString *_title;
     NSString *_descriptionTrial;
     NSString *_descriptionNonTrial;
     NSString *_learnMoreTitle;
     NSURL *_learnMoreURL;
+    NSString *_offersLinkTitle;
+    NSURL *_offersLinkURL;
+    unsigned long long _offersLinkTargetType;
     FCSubscriptionButtonConfiguration *_subscriptionButtonConfig;
     FCPaywallVisualSpecConfiguration *_visualSpecConfig;
     FCPaywallTopOffsetConfiguration *_paywallTopOffsetConfig;
@@ -25,8 +29,12 @@
 
 @property (copy, nonatomic) NSString *descriptionNonTrial; // @synthesize descriptionNonTrial=_descriptionNonTrial;
 @property (copy, nonatomic) NSString *descriptionTrial; // @synthesize descriptionTrial=_descriptionTrial;
+@property (readonly, nonatomic) BOOL externalOverridesEnabled; // @synthesize externalOverridesEnabled=_externalOverridesEnabled;
 @property (copy, nonatomic) NSString *learnMoreTitle; // @synthesize learnMoreTitle=_learnMoreTitle;
 @property (copy, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;
+@property (nonatomic) unsigned long long offersLinkTargetType; // @synthesize offersLinkTargetType=_offersLinkTargetType;
+@property (copy, nonatomic) NSString *offersLinkTitle; // @synthesize offersLinkTitle=_offersLinkTitle;
+@property (copy, nonatomic) NSURL *offersLinkURL; // @synthesize offersLinkURL=_offersLinkURL;
 @property (readonly, nonatomic) FCPaywallTopOffsetConfiguration *paywallTopOffsetConfig; // @synthesize paywallTopOffsetConfig=_paywallTopOffsetConfig;
 @property (nonatomic) unsigned long long paywallType; // @synthesize paywallType=_paywallType;
 @property (strong, nonatomic) FCSubscriptionButtonConfiguration *subscriptionButtonConfig; // @synthesize subscriptionButtonConfig=_subscriptionButtonConfig;
@@ -66,7 +74,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
-- (id)initWithPaywallType:(unsigned long long)arg1 title:(id)arg2 descriptionTrial:(id)arg3 descriptionNonTrial:(id)arg4 learnMoreTitle:(id)arg5 learnMoreURL:(id)arg6 subscriptionButtonConfig:(id)arg7 visualSpecConfig:(id)arg8 paywallTopOffsetConfig:(id)arg9;
+- (id)initWithPaywallType:(unsigned long long)arg1 title:(id)arg2 descriptionTrial:(id)arg3 descriptionNonTrial:(id)arg4 learnMoreTitle:(id)arg5 learnMoreURL:(id)arg6 offersLinkTitle:(id)arg7 offersLinkURL:(id)arg8 offersLinkTargetType:(unsigned long long)arg9 externalOverridesEnabled:(BOOL)arg10 subscriptionButtonConfig:(id)arg11 visualSpecConfig:(id)arg12 paywallTopOffsetConfig:(id)arg13;
 - (BOOL)isEqual:(id)arg1;
 
 @end

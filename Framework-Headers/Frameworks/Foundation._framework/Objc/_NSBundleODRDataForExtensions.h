@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)dataForBundle:(id)arg1 createIfRequired:(BOOL)arg2;
 - (void)accessSandboxExtension:(id)arg1;
 - (void)dealloc;
 - (void)hostApplicationAssetPacksBecameAvailable:(id)arg1;

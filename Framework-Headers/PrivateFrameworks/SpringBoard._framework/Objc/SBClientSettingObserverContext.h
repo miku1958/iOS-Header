@@ -16,11 +16,6 @@
     FBSSceneTransitionContext *_transition;
 }
 
-@property (strong, nonatomic) FBSSceneClientSettings *oldClientSettings; // @synthesize oldClientSettings=_oldClientSettings;
-@property (strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
-@property (strong, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
-@property (strong, nonatomic) FBSSceneTransitionContext *transition; // @synthesize transition=_transition;
-
 - (void).cxx_destruct;
 
 @end

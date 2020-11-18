@@ -19,7 +19,6 @@
 }
 
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
-@property (readonly, nonatomic) BOOL isPublicDatabase;
 @property (nonatomic) long long queryNotificationReason; // @synthesize queryNotificationReason=_queryNotificationReason;
 @property (copy, nonatomic) NSDictionary *recordFields; // @synthesize recordFields=_recordFields;
 @property (copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
@@ -31,6 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRemoteNotificationDictionary:(id)arg1;
+- (BOOL)isPublicDatabase;
 
 @end
 

@@ -11,7 +11,7 @@
 #import <UIKitCore/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerStackManager, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerStackManager, UIAlertControllerVisualStyle, UIGestureRecognizer, UIImage, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
@@ -30,18 +30,19 @@
     _UIAlertControllerTextFieldViewController *_textFieldViewController;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
     id _ownedTransitioningDelegate;
-    BOOL _addContentViewControllerToViewHierarchyNeeded;
     BOOL _isInSupportedInterfaceOrientations;
     BOOL _isInRecomputePreferredContentSize;
     long long _batchActionChangesInProgressCount;
     _UIAlertControllerShimPresenter *_presenter;
     NSPointerArray *_actionsWithInvokedHandlers;
     UIAlertControllerStackManager *_alertControllerStackManager;
+    UIImage *_image;
     BOOL _hidden;
     BOOL _springLoaded;
     BOOL __shouldFlipFrameForShimDismissal;
     BOOL __shouldAllowNilParameters;
     BOOL _hasPreservedInputViews;
+    BOOL __shouldAlignToKeyboard;
     NSMutableArray *_actions;
     UIViewController *_headerContentViewController;
     UIViewController *_separatedHeaderContentViewController;
@@ -64,6 +65,7 @@
 
 @property (readonly) NSMutableArray *_actionDelimiterIndices; // @synthesize _actionDelimiterIndices=__actionDelimiterIndices;
 @property (readonly) NSMutableArray *_actions; // @synthesize _actions;
+@property (readonly) BOOL _alignsToKeyboard;
 @property (copy, nonatomic, getter=_attributedDetailMessage, setter=_setAttributedDetailMessage:) NSAttributedString *_attributedDetailMessage;
 @property (readonly) UIAlertAction *_cancelAction; // @synthesize _cancelAction;
 @property (nonatomic, setter=_setCompatibilityPopoverController:) UIPopoverController *_compatibilityPopoverController; // @synthesize _compatibilityPopoverController=__compatibilityPopoverController;
@@ -75,7 +77,7 @@
 @property (strong, nonatomic, setter=_setPresentationSourceRepresentationView:) UIView *_presentationSourceRepresentationView; // @synthesize _presentationSourceRepresentationView=__presentationSourceRepresentationView;
 @property (readonly) long long _resolvedStyle; // @synthesize _resolvedStyle;
 @property (strong, nonatomic, setter=_setSeparatedHeaderContentViewController:) UIViewController *_separatedHeaderContentViewController; // @synthesize _separatedHeaderContentViewController;
-@property (readonly) BOOL _shouldAlignToKeyboard;
+@property (nonatomic, setter=_setShouldAlignToKeyboard:) BOOL _shouldAlignToKeyboard; // @synthesize _shouldAlignToKeyboard=__shouldAlignToKeyboard;
 @property (setter=_setShouldAllowNilParameters:) BOOL _shouldAllowNilParameters; // @synthesize _shouldAllowNilParameters=__shouldAllowNilParameters;
 @property BOOL _shouldFlipFrameForShimDismissal; // @synthesize _shouldFlipFrameForShimDismissal=__shouldFlipFrameForShimDismissal;
 @property (readonly) BOOL _shouldProvideDimmingView;
@@ -94,6 +96,7 @@
 @property (nonatomic, getter=_effectAlpha, setter=_setEffectAlpha:) double effectAlpha;
 @property (nonatomic, getter=_hasPreservedInputViews, setter=_setHasPreservedInputViews:) BOOL hasPreservedInputViews; // @synthesize hasPreservedInputViews=_hasPreservedInputViews;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIImage *image;
 @property (copy, nonatomic, getter=_indexesOfActionSectionSeparators, setter=_setIndexesOfActionSectionSeparators:) NSIndexSet *indexesOfActionSectionSeparators; // @synthesize indexesOfActionSectionSeparators=_indexesOfActionSectionSeparators;
 @property (copy, nonatomic) NSString *message;
 @property (strong, nonatomic) UIAlertAction *preferredAction; // @synthesize preferredAction=_preferredAction;
@@ -110,6 +113,7 @@
 
 + (id)_alertControllerContainedInViewController:(id)arg1;
 + (id)_alertControllerWithTitle:(id)arg1 message:(id)arg2;
++ (BOOL)_allowInteractiveSheetDismissal;
 + (BOOL)_shouldUsePresentationController;
 + (id)alertControllerWithTitle:(id)arg1 message:(id)arg2 preferredStyle:(long long)arg3;
 - (void).cxx_destruct;
@@ -123,6 +127,7 @@
 - (void)_addSectionDelimiter;
 - (id)_alertControllerContainer;
 - (id)_alertControllerView;
+- (BOOL)_allowsShowingDimmingView;
 - (void)_attemptAnimatedDismissWithGestureRecognizer:(id)arg1;
 - (void)_becomeFirstResponderIfAppropriate;
 - (void)_beginNoPresentingViewControllerPresentation;

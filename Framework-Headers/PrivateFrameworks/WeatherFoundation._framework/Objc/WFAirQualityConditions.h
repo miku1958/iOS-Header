@@ -9,17 +9,22 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSLocale, NSString, WFAQIScaleCategory, WFAirPollutant, WFLocation;
+@class NSArray, NSDate, NSLocale, NSString, NSURL, WFAQIScaleCategory, WFAirPollutant, WFAirQualityProviderAttribution, WFLocation;
 
 @interface WFAirQualityConditions : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _temporarilyUnavailable;
     WFLocation *_location;
     NSDate *_date;
     NSDate *_expirationDate;
     NSString *_provider;
+    WFAirQualityProviderAttribution *_providerAttribution;
     NSString *_localizedDisclaimer;
     unsigned long long _localizedAirQualityIndex;
     WFAQIScaleCategory *_localizedAirQualityScaleCategory;
+    unsigned long long _significance;
+    NSString *_localizedRecommendation;
+    NSURL *_providerURL;
     NSArray *_pollutants;
     WFAirPollutant *_primaryPollutant;
     unsigned long long _category;
@@ -30,18 +35,23 @@
 
 @property (copy, nonatomic) NSString *airQualityScale; // @synthesize airQualityScale=_airQualityScale;
 @property (nonatomic) unsigned long long category; // @synthesize category=_category;
-@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (copy, nonatomic) NSString *localizedAirQualityCategory; // @synthesize localizedAirQualityCategory=_localizedAirQualityCategory;
 @property (nonatomic) unsigned long long localizedAirQualityIndex; // @synthesize localizedAirQualityIndex=_localizedAirQualityIndex;
 @property (strong, nonatomic) WFAQIScaleCategory *localizedAirQualityScaleCategory; // @synthesize localizedAirQualityScaleCategory=_localizedAirQualityScaleCategory;
-@property (strong, nonatomic) NSString *localizedDisclaimer; // @synthesize localizedDisclaimer=_localizedDisclaimer;
+@property (copy, nonatomic) NSString *localizedDisclaimer; // @synthesize localizedDisclaimer=_localizedDisclaimer;
+@property (copy, nonatomic) NSString *localizedRecommendation; // @synthesize localizedRecommendation=_localizedRecommendation;
 @property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSArray *pollutants; // @synthesize pollutants=_pollutants;
 @property (strong, nonatomic) WFAirPollutant *primaryPollutant; // @synthesize primaryPollutant=_primaryPollutant;
-@property (strong, nonatomic) NSString *provider; // @synthesize provider=_provider;
+@property (copy, nonatomic) NSString *provider; // @synthesize provider=_provider;
+@property (strong, nonatomic) WFAirQualityProviderAttribution *providerAttribution; // @synthesize providerAttribution=_providerAttribution;
+@property (copy, nonatomic) NSURL *providerURL; // @synthesize providerURL=_providerURL;
+@property (nonatomic) unsigned long long significance; // @synthesize significance=_significance;
+@property (nonatomic) BOOL temporarilyUnavailable; // @synthesize temporarilyUnavailable=_temporarilyUnavailable;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

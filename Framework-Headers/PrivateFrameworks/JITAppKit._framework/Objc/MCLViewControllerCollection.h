@@ -10,6 +10,7 @@
 
 @class NSArray, NSLayoutConstraint, NSString, UIStackView, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface MCLViewControllerCollection : UIScrollView <UIScrollViewDelegate>
 {
     UIStackView *_contentView;

@@ -31,7 +31,6 @@
 - (BOOL)hasType:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSignalPack:(id)arg1;
-- (struct SignalPack *)innerSignalPack;
 - (BOOL)isEmpty;
 - (BOOL)mergeIntoSignalPack:(id)arg1;
 - (id)mutableCopy;

@@ -15,7 +15,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableSet, NSObject, NSString, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDetailsContext, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUITapGestureRecognizer, PXWidgetSpec, _PXUIRelatedPreviewOrbContext;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXUIRelatedWidget : PXRelatedWidget <PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXScrollViewControllerObserver, PXTilingControllerZoomAnimationCoordinatorDelegate, PXTilingControllerPreheatHandler, PXUIWidget, PXDiagnosticsEnvironment>
 {
@@ -43,14 +43,17 @@
 @property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
 @property (readonly, nonatomic) BOOL hasLoadedContentData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInEditMode;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -59,7 +62,9 @@
 @property (readonly, nonatomic) BOOL supportsFaceMode;
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
+@property (readonly, nonatomic) BOOL wantsFocus;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetEditingDelegate> widgetEditingDelegate;
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 - (void).cxx_destruct;

@@ -6,31 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential, SOAuthorizationRequestParameters, SORemoteExtensionContext;
+@class NSData, NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential, SOAuthorizationRequestParameters;
+@protocol SOHostExtensionContextProtocol;
 
 @interface SOAuthorizationRequest : NSObject
 {
     SOAuthorizationRequestParameters *_requestParameters;
-    SORemoteExtensionContext *_remoteExtensionContext;
+    id<SOHostExtensionContextProtocol> _hostExtensionContext;
     BOOL _authorizationCanceled;
     SOAuthorizationCredential *_canceledAuthorizationCredential;
     NSError *_canceledAuthorizationError;
 }
 
+@property (strong, nonatomic) NSData *auditTokenData;
 @property (nonatomic, getter=isAuthorizationCanceled) BOOL authorizationCanceled; // @synthesize authorizationCanceled=_authorizationCanceled;
 @property (strong, nonatomic) NSDictionary *authorizationOptions;
 @property (strong, nonatomic) NSString *callerBundleIdentifier;
+@property (nonatomic, getter=isCallerManaged) BOOL callerManaged;
+@property (strong, nonatomic) NSString *callerTeamIdentifier;
 @property (strong, nonatomic) SOAuthorizationCredential *canceledAuthorizationCredential; // @synthesize canceledAuthorizationCredential=_canceledAuthorizationCredential;
 @property (strong, nonatomic) NSError *canceledAuthorizationError; // @synthesize canceledAuthorizationError=_canceledAuthorizationError;
 @property (strong, nonatomic) NSDictionary *extensionData;
 @property (strong, nonatomic) NSData *httpBody;
 @property (strong, nonatomic) NSDictionary *httpHeaders;
+@property (strong, nonatomic) NSString *localizedCallerDisplayName;
 @property (strong, nonatomic) NSString *realm;
 @property (strong, nonatomic) NSString *requestedOperation;
 @property (strong, nonatomic) NSURL *url;
 
 - (void).cxx_destruct;
-- (id)_hostExtensionContext;
 - (BOOL)_isUserInterfaceAllowed;
 - (void)cancel;
 - (void)complete;
@@ -38,7 +42,7 @@
 - (void)completeWithHTTPAuthorizationHeaders:(id)arg1;
 - (void)completeWithHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)doNotHandle;
-- (id)initWithRequestParameters:(id)arg1 remoteExtensionContext:(id)arg2;
+- (id)initWithRequestParameters:(id)arg1 hostExtensionContext:(id)arg2;
 - (void)presentAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

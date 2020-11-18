@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, PHFetchResult;
+@class NSArray, NSDictionary, PHFetchResult;
 
 @interface PXPhotosDataSourceSectionCache : NSObject
 {
     PHFetchResult *_collectionListFetchResult;
+    NSArray *_assetCollections;
     NSDictionary *_assetCollectionToSection;
     long long _estimatedPhotosCount;
     long long _estimatedVideosCount;
@@ -28,6 +29,7 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *assetCollectionToSection; // @synthesize assetCollectionToSection=_assetCollectionToSection;
+@property (readonly, nonatomic) NSArray *assetCollections; // @synthesize assetCollections=_assetCollections;
 @property (readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
 @property (readonly, nonatomic) long long estimatedAssetCountWithEnrichmentStateAssetMetadataAndScenesProcessed; // @synthesize estimatedAssetCountWithEnrichmentStateAssetMetadataAndScenesProcessed=_estimatedAssetCountWithEnrichmentStateAssetMetadataAndScenesProcessed;
 @property (readonly, nonatomic) long long estimatedAssetCountWithEnrichmentStateAssetMetadataAndScore; // @synthesize estimatedAssetCountWithEnrichmentStateAssetMetadataAndScore=_estimatedAssetCountWithEnrichmentStateAssetMetadataAndScore;

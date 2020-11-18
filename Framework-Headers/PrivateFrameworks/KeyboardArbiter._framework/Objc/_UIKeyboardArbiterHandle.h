@@ -8,7 +8,7 @@
 
 #import <KeyboardArbiter/_UIKeyboardArbitration-Protocol.h>
 
-@class BKSProcessAssertion, BSServiceConnectionEndpointInjector, FBSCAContextSceneLayer, NSArray, NSMutableSet, NSString, NSXPCConnection, _UIKeyboardArbiter;
+@class BKSProcessAssertion, BSServiceConnectionEndpointInjector, FBSCAContextSceneLayer, FBSSceneIdentityToken, NSArray, NSMutableSet, NSString, NSXPCConnection, _UIKeyboardArbiter;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardArbiterHandle : NSObject <_UIKeyboardArbitration>
@@ -18,14 +18,17 @@ __attribute__((visibility("hidden")))
     _UIKeyboardArbiter *_owner;
     BOOL _running;
     FBSCAContextSceneLayer *_sceneLayer;
-    NSString *_remoteSceneID;
+    FBSSceneIdentityToken *_remoteSceneIdentity;
     BOOL _active;
     unsigned long long _wantedState;
     double _level;
     NSMutableSet *_hostedPids;
     BOOL _checkingShowability;
     int _suppressionCount;
+    int _childrenSuppressionCount;
     BOOL _wantsFence;
+    BOOL _deactivating;
+    BOOL _keyboardOnScreen;
     BKSProcessAssertion *_remoteKeepAliveAssertion;
     unsigned long long _remoteKeepAliveAssertionCount;
     unsigned long long _remoteKeepAliveTimerCount;
@@ -38,19 +41,23 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL active; // @synthesize active=_active;
 @property (readonly, strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly) BOOL deactivating; // @synthesize deactivating=_deactivating;
+@property (readonly) BOOL hasHostedPids;
 @property (readonly) double iavHeight; // @synthesize iavHeight=_iavHeight;
 @property (readonly) double level; // @synthesize level=_level;
 @property (readonly) int processIdentifier;
-@property (readonly, strong) NSString *remoteSceneID; // @synthesize remoteSceneID=_remoteSceneID;
+@property (readonly, strong) FBSSceneIdentityToken *remoteSceneIdentity; // @synthesize remoteSceneIdentity=_remoteSceneIdentity;
 @property BOOL running; // @synthesize running=_running;
 @property (readonly, strong) FBSCAContextSceneLayer *sceneLayer; // @synthesize sceneLayer=_sceneLayer;
+@property int suppressionCount; // @synthesize suppressionCount=_suppressionCount;
 @property (readonly) unsigned long long wantedState; // @synthesize wantedState=_wantedState;
 @property (readonly) BOOL wantsFence; // @synthesize wantsFence=_wantsFence;
 
 + (id)handlerWithArbiter:(id)arg1 forConnection:(id)arg2;
 - (void).cxx_destruct;
 - (void)_deactivateScene;
-- (void)_reevaluateRemoteSceneID:(id)arg1;
+- (void)_reevaluateRemoteSceneIdentity:(id)arg1;
+- (void)addHostedPids:(id)arg1;
 - (void)applicationShouldFocusWithBundle:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)cacheWindowContext;
 - (void)checkActivation:(unsigned long long)arg1;
@@ -58,18 +65,21 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)didAttachLayer;
 - (void)didDetachLayer;
-- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneDeferringToken:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;
+- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (BOOL)isHandlerShowableWithHandler:(id)arg1;
 - (BOOL)isHostingPID:(int)arg1;
+- (BOOL)isKeyboardOnScreen;
 - (void)notifyHostedPIDsOfSuppression:(BOOL)arg1;
 - (void)notifyIAVHeight:(double)arg1;
 - (void)releaseProcessAssertion;
 - (void)retrieveDebugInformation:(CDUnknownBlockType)arg1;
 - (void)retrieveMoreDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setDeactivating:(BOOL)arg1;
 - (void)setKeyboardTotalDisable:(BOOL)arg1 withFence:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setSceneIdentity:(id)arg1;
 - (void)setWantsFencing:(BOOL)arg1;
-- (void)setWindowContextID:(unsigned int)arg1 sceneIdentifier:(id)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
+- (void)setWindowContextID:(unsigned int)arg1 sceneIdentity:(id)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
 - (void)setWindowHostingPID:(int)arg1 active:(BOOL)arg2;
 - (void)signalEventSourceChanged:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)signalKeyboardChangeComplete;
@@ -78,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)takeProcessAssertionOnRemoteWithQueue:(id)arg1;
 - (void)transition:(id)arg1 eventStage:(unsigned long long)arg2 withInfo:(id)arg3;
 - (void)uncacheWindowContext;
+- (void)updateSuspensionCountForPids:(id)arg1;
 
 @end
 

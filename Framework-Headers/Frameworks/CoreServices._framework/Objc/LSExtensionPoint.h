@@ -9,33 +9,32 @@
 #import <CoreServices/NSCopying-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, _LSLazyPropertyList;
+@class LSExtensionPointRecord, NSDictionary, NSNumber, NSString;
 
 @interface LSExtensionPoint : _LSQueryResult <NSCopying, NSSecureCoding>
 {
-    unsigned int _platform;
-    _LSLazyPropertyList *_sdkEntry;
-    NSString *_identifier;
-    NSString *_name;
-    NSString *_version;
+    LSExtensionPointRecord *_record;
 }
 
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (readonly, nonatomic) NSString *name; // @dynamic name;
 @property (readonly, nonatomic) NSNumber *platform;
 @property (readonly, nonatomic) NSDictionary *sdkEntry;
-@property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
+@property (readonly, nonatomic) NSString *version; // @dynamic version;
 
++ (id)_synthesizedExtensionPointWithIdentifier:(id)arg1;
 + (id)extensionPointForIdentifier:(id)arg1;
 + (id)extensionPointForIdentifier:(id)arg1 platform:(id)arg2;
 + (id)identifierForCurrentProcess;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 platform:(unsigned int)arg2 data:(id)arg3;
+- (id)_initWithRecord:(id)arg1 resolveAndDetach:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)respondsToSelector:(SEL)arg1;
 
 @end
 

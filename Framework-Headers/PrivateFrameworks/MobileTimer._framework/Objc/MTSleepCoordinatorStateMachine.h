@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MTSleepCoordinatorStateMachineDisabledState *disabledState; // @synthesize disabledState=_disabledState;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL inUserDefinedSleepWindow;
+@property (readonly, nonatomic) BOOL isUserAsleep;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

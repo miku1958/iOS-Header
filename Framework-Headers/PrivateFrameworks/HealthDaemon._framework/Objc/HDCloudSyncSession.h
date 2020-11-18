@@ -18,7 +18,8 @@
 
 - (void).cxx_destruct;
 - (id)excludedSyncStores;
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 - (void)setExcludedSyncStores:(id)arg1;
 

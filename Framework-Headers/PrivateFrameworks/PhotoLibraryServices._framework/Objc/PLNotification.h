@@ -41,6 +41,7 @@
     NSString *_suggestedCMMUUID;
     NSString *_keyMomentShareUUID;
     NSArray *_momentShareUUIDs;
+    NSString *_momentShareOwnerLocalizedName;
     NSString *_albumUUID;
     NSString *_albumCloudGUID;
     NSDate *_date;
@@ -86,7 +87,6 @@
 - (id)_initWithPhotosAddedNotification:(id)arg1 mergedWithNotification:(id)arg2;
 - (id)_initWithPhotosAddedNotification:(id)arg1 mergedWithNotificationDictionary:(id)arg2;
 - (id)_initWithType:(long long)arg1;
-- (id)_localizedCountFormatter;
 - (BOOL)assetWithUUID:(id)arg1 didChangePlaceholderKindTo:(short)arg2 fromOldKind:(short)arg3;
 - (id)description;
 - (id)init;

@@ -32,6 +32,7 @@
 - (void)startWithSessionId:(id)arg1;
 - (void)stop;
 - (BOOL)supportsWorkoutActivityType:(unsigned long long)arg1;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 
 @end
 

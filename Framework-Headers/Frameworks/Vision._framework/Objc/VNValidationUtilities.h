@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)getDoubleValue:(double *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(double)arg4 error:(id *)arg5;
 + (BOOL)getFloatValue:(float *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (BOOL)getFloatValue:(float *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(float)arg4 error:(id *)arg5;
++ (BOOL)getNSIntegerValue:(long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(long long)arg4 error:(id *)arg5;
 + (BOOL)getNSUIntegerValue:(unsigned long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (BOOL)getNSUIntegerValue:(unsigned long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(unsigned long long)arg4 error:(id *)arg5;
 + (BOOL)getOptionalArray:(id *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withElementsOfClass:(Class)arg4 error:(id *)arg5;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 + (id)requiredFaceObservationInOptions:(id)arg1 withOptionName:(id)arg2 error:(id *)arg3;
 + (id)requiredInputFacesArrayInOptions:(id)arg1 error:(id *)arg2;
 + (id)requiredObjectOfClass:(Class)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
++ (id)requiredSessionInOptions:(id)arg1 error:(id *)arg2;
 + (BOOL)validateArray:(id)arg1 named:(id)arg2 hasElementsOfClass:(Class)arg3 requiredMinimumCount:(unsigned long long)arg4 allowedMaximumCount:(unsigned long long)arg5 error:(id *)arg6;
 + (BOOL)validateClassArray:(id)arg1 named:(id)arg2 hasElementsAncestoredFromClass:(Class)arg3 requiredMinimumCount:(unsigned long long)arg4 allowedMaximumCount:(unsigned long long)arg5 error:(id *)arg6;
 + (BOOL)validateNonZeroImageWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 componentNameProvidingBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)validateRequiredClusterIDs:(id)arg1 error:(id *)arg2;
 + (BOOL)validateRequiredFaceObservations:(id)arg1 error:(id *)arg2;
 + (BOOL)validateRequiredFaceObservations:(id)arg1 forRequest:(id)arg2 error:(id *)arg3;
++ (BOOL)validateVNConfidenceRange:(float)arg1 error:(id *)arg2;
 
 @end
 

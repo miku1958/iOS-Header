@@ -26,7 +26,7 @@
 - (void)removeNonViewAwarePeersFromCircleWithContext:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)repairCloudDataProtectionStateWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
-- (void)shouldPerformRepairForContext:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)shouldPerformRepairForContext:(CDPContext *)arg1 forceFetch:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)startCircleApplicationApprovalServerWithContext:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

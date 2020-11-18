@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <Email/EFCacheable-Protocol.h>
+#import <Email/EFLoggable-Protocol.h>
 #import <Email/NSCopying-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class EFStringHash, NSString;
+@class EFStringHash, NSData, NSString;
 @protocol NSObject><NSSecureCoding><NSCopying;
 
-@interface EMObjectID : NSObject <EFCacheable, NSSecureCoding, NSCopying>
+@interface EMObjectID : NSObject <EFLoggable, EFCacheable, NSSecureCoding, NSCopying>
 {
     unsigned long long _hash;
     struct os_unfair_lock_s _lock;
@@ -27,11 +28,14 @@
 @property (readonly, getter=isEphemeral) BOOL ephemeral; // @synthesize ephemeral=_ephemeral;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) id<NSObject><NSSecureCoding><NSCopying> representedObjectID; // @synthesize representedObjectID=_representedObjectID;
+@property (readonly, copy, nonatomic) NSData *serializedRepresentation;
 @property (readonly) EFStringHash *stringHash; // @synthesize stringHash=_stringHash;
 @property (readonly) Class superclass;
 
 + (id)_decodableClasses;
 + (void)addDecodableClass:(Class)arg1;
++ (id)log;
++ (id)objectIDFromSerializedRepresentation:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_commonInitAsEphemeralID:(BOOL)arg1 representedObjectID:(id)arg2;

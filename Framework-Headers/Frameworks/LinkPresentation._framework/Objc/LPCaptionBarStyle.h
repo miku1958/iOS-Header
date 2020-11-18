@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarAccessoryStyle, LPImageViewStyle, LPMusicPlayButtonStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle;
+@class LPButtonStyle, LPCaptionBarAccessoryStyle, LPImageViewStyle, LPMusicPlayButtonStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarStyle : NSObject
@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
     LPImageViewStyle *_placeholderIcon;
     LPMusicPlayButtonStyle *_playButton;
     LPPadding *_playButtonPadding;
+    LPButtonStyle *_button;
 }
 
+@property (strong, nonatomic) LPButtonStyle *button; // @synthesize button=_button;
 @property (readonly, nonatomic) LPCaptionBarAccessoryStyle *leadingAccessory; // @synthesize leadingAccessory=_leadingAccessory;
 @property (readonly, nonatomic) LPImageViewStyle *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
 @property (strong, nonatomic) LPPointUnit *minimumWidth; // @synthesize minimumWidth=_minimumWidth;

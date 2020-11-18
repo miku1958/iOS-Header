@@ -6,43 +6,27 @@
 
 #import <MetalTools/MTLToolsBuffer.h>
 
-@class MTLDebugDevice, MTLDebugResource, MTLDebugResourceAccessTracker, MTLIndirectCommandBufferDescriptor, NSMutableArray;
+#import <MetalTools/MTLDebugResourcePurgeable-Protocol.h>
 
-@interface MTLDebugBuffer : MTLToolsBuffer
+@class MTLDebugDevice, MTLDebugResource, NSMutableArray;
+
+@interface MTLDebugBuffer : MTLToolsBuffer <MTLDebugResourcePurgeable>
 {
     MTLDebugResource *_common;
     unsigned long long _length;
-    MTLDebugResourceAccessTracker *_resourceAccessTracker;
     MTLDebugDevice *_debugDevice;
     NSMutableArray *_debugMarkers;
+    struct atomic<int> _purgeableStateToken;
     BOOL _purgeableStateHasBeenSet;
-    BOOL _isContentsPointerExposed;
     BOOL _isContentExposedToCPU;
-    unsigned int _maxIndirectCommandCount;
-    unsigned int _checksum;
     const void *_pointer;
-    unsigned long long _purgeableState;
-    MTLIndirectCommandBufferDescriptor *_indirectCommandBufferDescriptor;
 }
 
-@property (nonatomic) unsigned int checksum; // @synthesize checksum=_checksum;
 @property (readonly, nonatomic) MTLDebugResource *common; // @synthesize common=_common;
-@property (readonly, nonatomic) MTLIndirectCommandBufferDescriptor *indirectCommandBufferDescriptor; // @synthesize indirectCommandBufferDescriptor=_indirectCommandBufferDescriptor;
 @property (nonatomic) BOOL isContentExposedToCPU; // @synthesize isContentExposedToCPU=_isContentExposedToCPU;
-@property (readonly, nonatomic) BOOL isContentsPointerExposed; // @synthesize isContentsPointerExposed=_isContentsPointerExposed;
-@property (readonly, nonatomic) unsigned int maxIndirectCommandCount; // @synthesize maxIndirectCommandCount=_maxIndirectCommandCount;
 @property (readonly, nonatomic) const void *pointer; // @synthesize pointer=_pointer;
-@property (readonly, nonatomic) unsigned long long purgeableState; // @synthesize purgeableState=_purgeableState;
-@property (readonly, nonatomic) BOOL purgeableStateHasBeenSet; // @synthesize purgeableStateHasBeenSet=_purgeableStateHasBeenSet;
-@property (readonly, nonatomic) BOOL resourceTrackingEnabled; // @dynamic resourceTrackingEnabled;
-@property (readonly, nonatomic) unsigned int resourceUsage; // @dynamic resourceUsage;
 
-- (void)_initResourceTrackingWithDevice:(id)arg1;
-- (void)accessedByCPU;
-- (void)accessedByGPU;
 - (void)addDebugMarker:(id)arg1 range:(struct _NSRange)arg2;
-- (void)blitManagedToPrivate;
-- (void)blitManagedToShared;
 - (void *)contents;
 - (id)copyDebugMarkers;
 - (void)dealloc;
@@ -56,15 +40,16 @@
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 bytes:(const void *)arg3 options:(unsigned long long)arg4;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithBuffer:(id)arg1 heap:(id)arg2 device:(id)arg3 options:(unsigned long long)arg4;
-- (id)initWithIndirectCommandBuffer:(id)arg1 descriptor:(id)arg2 maxCount:(unsigned long long)arg3 device:(id)arg4 options:(unsigned long long)arg5;
 - (unsigned long long)length;
+- (void)lockPurgeableState;
 - (void)makeAliasable;
 - (id)newLinearTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3;
+- (BOOL)purgeableStateValidForRendering;
 - (void)removeAllDebugMarkers;
 - (unsigned long long)resourceIndex;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
-- (void)setResourceIndex:(unsigned long long)arg1;
+- (void)unlockPurgeableState;
 
 @end
 

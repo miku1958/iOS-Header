@@ -9,13 +9,14 @@
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSFastEnumeration-Protocol.h>
 
-@class NSArray, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHFetchOptions, PHPhotoLibrary, PHQuery, _PHFetchRequestWrapper;
+@class NSArray, NSDictionary, NSError, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHFetchOptions, PHPhotoLibrary, PHQuery, _PHFetchRequestWrapper;
 @protocol OS_dispatch_queue;
 
 @interface PHFetchResult : NSObject <NSCopying, NSFastEnumeration>
 {
     PHBatchFetchingArray *_fetchedObjects;
-    PHBatchFetchingArray *_thumbnailAssets;
+    NSArray *_thumbnailAssets;
+    NSDictionary *_fetchedPropertySetsCache;
     NSArray *_seedOIDs;
     NSObject<OS_dispatch_queue> *_isolationQueue;
     BOOL _registeredForChangeNotificationDeltas;
@@ -29,6 +30,7 @@
     unsigned long long _audiosCount;
     NSNumber *_prefetchCount;
     _PHFetchRequestWrapper *_fetchRequestWrapper;
+    NSError *_fetchError;
     BOOL _preventsClearingOIDCache;
     PHQuery *_query;
     long long _chunkSizeForFetch;
@@ -36,9 +38,11 @@
 
 @property long long chunkSizeForFetch; // @synthesize chunkSizeForFetch=_chunkSizeForFetch;
 @property (readonly) unsigned long long count;
+@property (readonly) NSError *fetchError;
 @property (readonly, nonatomic) PHFetchOptions *fetchOptions;
 @property (readonly) NSSet *fetchPropertySets; // @synthesize fetchPropertySets=_fetchPropertySets;
 @property (readonly) NSFetchRequest *fetchRequest;
+@property (readonly) NSArray *fetchSortDescriptors;
 @property (readonly) NSString *fetchType; // @synthesize fetchType=_fetchType;
 @property (readonly) NSArray *fetchedObjectIDs;
 @property (readonly) NSSet *fetchedObjectIDsSet;
@@ -64,6 +68,8 @@
 + (id)pl_fetchResultForStandInAssetCollection:(id)arg1;
 + (id)pl_filterPredicateForAssetContainer:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canCreateFetchedPropertyObjectsWithClass:(Class)arg1;
+- (id)_createFetchedPropertyObjectsWithClass:(Class)arg1 fetchedObjectIDs:(id)arg2;
 - (unsigned long long)_possibleChangesFromDetectionCriteriaForChange:(id)arg1;
 - (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (unsigned long long)cachedCountOfCollectionsWithCollectionTypes:(id)arg1;
@@ -83,8 +89,10 @@
 - (void)enumerateObjectsAtIndexes:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)fetchPropertiesForPropertySetClass:(Class)arg1 forObjectsAtIndexes:(id)arg2;
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
 - (id)fetchedObjectsUsingManagedObjectContext:(id)arg1;
+- (id)fetchedPropertiesForPropertySetClass:(Class)arg1;
 - (void)getCountOfCollectionsWithCollectionTypes:(id)arg1;
 - (void)getMediaTypeCounts;
 - (unsigned long long)indexOfObject:(id)arg1;

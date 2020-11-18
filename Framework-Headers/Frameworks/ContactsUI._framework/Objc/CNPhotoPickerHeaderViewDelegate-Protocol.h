@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContactsUI/CNContactPhotoViewDelegate-Protocol.h>
 #import <ContactsUI/CNPresenterDelegate-Protocol.h>
+#import <ContactsUI/NSObject-Protocol.h>
 
-@protocol CNPhotoPickerHeaderViewDelegate <CNPresenterDelegate, CNContactPhotoViewDelegate>
-- (void)headerViewPhotoViewTapped;
+@class CNPhotoPickerHeaderView, NSData, NSString, UITextField;
+
+@protocol CNPhotoPickerHeaderViewDelegate <CNPresenterDelegate, NSObject>
+- (void)photoPickerHeaderView:(CNPhotoPickerHeaderView *)arg1 didUpdateIdentityNameTextField:(UITextField *)arg2 withText:(NSString *)arg3;
+- (void)photoPickerHeaderViewDidReceiveDroppedImageData:(NSData *)arg1;
+- (void)photoPickerHeaderViewDidTapClearAvatarImageButton:(CNPhotoPickerHeaderView *)arg1;
 @end
 

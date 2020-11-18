@@ -6,7 +6,7 @@
 
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
-@class MPSCNNAdd, MPSCNNLoss, MPSCNNNeuron, MPSCNNNeuronGradient, MPSNNSlice, NSData, NSObject;
+@class MPSCNNLoss, MPSImage, MPSMatrix, NSData, NSObject;
 @protocol OS_dispatch_semaphore;
 
 @interface MPSCNNYOLOLoss : MPSCNNKernel
@@ -16,10 +16,7 @@
     MPSCNNLoss *_lossConfidence;
     MPSCNNLoss *_lossClasses;
     int _reductionType;
-    MPSCNNNeuron *_sigmoid;
-    MPSCNNNeuronGradient *_sigmoidGradient;
-    MPSCNNAdd *_add;
-    MPSNNSlice *_slice;
+    BOOL _reduceAcrossBatch;
     BOOL _rescore;
     float _scaleXY;
     float _scaleWH;
@@ -32,24 +29,27 @@
     NSObject<OS_dispatch_semaphore> *_encodingSemaphore;
     NSData *_anchorBoxes;
     unsigned long long _numberOfAnchorBoxes;
+    MPSMatrix *_reductionBuffer;
+    MPSImage *_firstLossTexture;
 }
 
-@property (readonly, strong, nonatomic) NSData *anchorBoxes; // @synthesize anchorBoxes=_anchorBoxes;
+@property (strong, nonatomic) NSData *anchorBoxes; // @synthesize anchorBoxes=_anchorBoxes;
 @property (readonly, strong, nonatomic) MPSCNNLoss *lossClasses; // @synthesize lossClasses=_lossClasses;
 @property (readonly, strong, nonatomic) MPSCNNLoss *lossConfidence; // @synthesize lossConfidence=_lossConfidence;
 @property (readonly, strong, nonatomic) MPSCNNLoss *lossWH; // @synthesize lossWH=_lossWH;
 @property (readonly, strong, nonatomic) MPSCNNLoss *lossXY; // @synthesize lossXY=_lossXY;
-@property (readonly, nonatomic) float maxIOUForObjectAbsence; // @synthesize maxIOUForObjectAbsence=_maxIOUForObjectAbsence;
-@property (readonly, nonatomic) float minIOUForObjectPresence; // @synthesize minIOUForObjectPresence=_minIOUForObjectPresence;
-@property (readonly, nonatomic) unsigned long long numberOfAnchorBoxes; // @synthesize numberOfAnchorBoxes=_numberOfAnchorBoxes;
-@property (readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
-@property (readonly, nonatomic) float scaleClass; // @synthesize scaleClass=_scaleClass;
-@property (readonly, nonatomic) float scaleNoObject; // @synthesize scaleNoObject=_scaleNoObject;
-@property (readonly, nonatomic) float scaleObject; // @synthesize scaleObject=_scaleObject;
-@property (readonly, nonatomic) float scaleWH; // @synthesize scaleWH=_scaleWH;
-@property (readonly, nonatomic) float scaleXY; // @synthesize scaleXY=_scaleXY;
+@property (nonatomic) float maxIOUForObjectAbsence; // @synthesize maxIOUForObjectAbsence=_maxIOUForObjectAbsence;
+@property (nonatomic) float minIOUForObjectPresence; // @synthesize minIOUForObjectPresence=_minIOUForObjectPresence;
+@property (nonatomic) unsigned long long numberOfAnchorBoxes; // @synthesize numberOfAnchorBoxes=_numberOfAnchorBoxes;
+@property (nonatomic) BOOL reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
+@property (nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
+@property (nonatomic) float scaleClass; // @synthesize scaleClass=_scaleClass;
+@property (nonatomic) float scaleNoObject; // @synthesize scaleNoObject=_scaleNoObject;
+@property (nonatomic) float scaleObject; // @synthesize scaleObject=_scaleObject;
+@property (nonatomic) float scaleWH; // @synthesize scaleWH=_scaleWH;
+@property (nonatomic) float scaleXY; // @synthesize scaleXY=_scaleXY;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (float)countPresetobjectsSourceImages:(id)arg1 labels:(id)arg2;
 - (void)dealloc;

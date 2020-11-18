@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <CoreTelephony/NSSecureCoding-Protocol.h>
+#import <CoreTelephony/CTPlan.h>
 
 @class CTPlanTransferAttributes, CTRemotePlanIdentifier;
 
-@interface CTRemotePlan : NSObject <NSSecureCoding>
+@interface CTRemotePlan : CTPlan
 {
     CTRemotePlanIdentifier *_planID;
     CTPlanTransferAttributes *_transferAttributes;

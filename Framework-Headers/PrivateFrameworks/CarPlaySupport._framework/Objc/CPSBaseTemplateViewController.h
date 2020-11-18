@@ -10,19 +10,22 @@
 #import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 #import <CarPlaySupport/CPSBaseTemplateViewController-Protocol.h>
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
+#import <CarPlaySupport/CPSTemplateEnvironmentDelegate-Protocol.h>
 #import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CPTemplate, NAFuture, NSString, UITapGestureRecognizer;
+@class CPSTemplateEnvironment, CPTemplate, NAFuture, NSString, UITapGestureRecognizer;
 @protocol CPSTemplateViewControllerDelegate, CPTemplateDelegate;
 
-@interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController, BSInvalidatable>
+@interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPSTemplateEnvironmentDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController, BSInvalidatable>
 {
     BOOL _isPopping;
     BOOL _didDisappear;
+    BOOL _isNowPlayingApp;
     NAFuture *_templateProviderFuture;
     CPTemplate *_associatedTemplate;
     id<CPTemplateDelegate> _templateDelegate;
     id<CPSTemplateViewControllerDelegate> _viewControllerDelegate;
+    CPSTemplateEnvironment *_templateEnvironment;
     UITapGestureRecognizer *_backGestureRecognizer;
 }
 
@@ -32,29 +35,39 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didDisappear; // @synthesize didDisappear=_didDisappear;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isNowPlayingApp; // @synthesize isNowPlayingApp=_isNowPlayingApp;
 @property (nonatomic) BOOL isPopping; // @synthesize isPopping=_isPopping;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
+@property (readonly, nonatomic) CPSTemplateEnvironment *templateEnvironment; // @synthesize templateEnvironment=_templateEnvironment;
 @property (readonly, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
 @property (weak, nonatomic) id<CPSTemplateViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
 
 - (void).cxx_destruct;
 - (void)_addGestureRecognizerIfNecessary;
 - (void)_backGestureFired:(id)arg1;
+- (id)_barButtonItemForBarButton:(id)arg1;
 - (id)_barButtonItemForIdentifier:(id)arg1;
 - (void)_cleanup;
 - (void)_cps_viewControllerWasPopped;
 - (void)_dismissTemplateViewController;
+- (id)_nowPlayingBarButtonItem;
+- (void)_nowPlayingButtonTapped:(id)arg1;
 - (void)_updateLeadingBarButtons;
+- (void)_updateTemplate:(id)arg1;
 - (void)_updateTrailingBarButtons;
 - (void)_viewDidLoad;
+- (BOOL)_wantsNowPlayingButton;
+- (void)applicationDidBecomeNowPlayingApp:(BOOL)arg1;
+- (void)dealloc;
 - (void)didSelectButton:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceivePress:(id)arg2;
-- (id)initWithTemplate:(id)arg1 templateDelegate:(id)arg2;
+- (id)initWithTemplate:(id)arg1 templateDelegate:(id)arg2 templateEnvironment:(id)arg3;
 - (void)invalidate;
 - (void)setBarButton:(id)arg1 image:(id)arg2;
 - (void)setBarButton:(id)arg1 title:(id)arg2;
 - (void)setControl:(id)arg1 enabled:(BOOL)arg2;
+- (void)setControl:(id)arg1 selected:(BOOL)arg2;
 - (void)setHostBackButton:(id)arg1;
 - (void)setLeadingNavigationBarButtons:(id)arg1;
 - (void)setTrailingNavigationBarButtons:(id)arg1;

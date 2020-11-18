@@ -12,8 +12,10 @@
 {
     BOOL _hideProgress;
     BOOL _eraseDataPlan;
+    BOOL _disallowProximitySetup;
 }
 
+@property (nonatomic) BOOL disallowProximitySetup; // @synthesize disallowProximitySetup=_disallowProximitySetup;
 @property (nonatomic) BOOL eraseDataPlan; // @synthesize eraseDataPlan=_eraseDataPlan;
 @property (nonatomic) BOOL hideProgress; // @synthesize hideProgress=_hideProgress;
 

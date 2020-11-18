@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) CNURLSessionFactory *sessionFactory; // @synthesize sessionFactory=_sessionFactory;
 
 + (unsigned long long)NSDataWritingOptionsFromCNDataWritingOptions:(unsigned long long)arg1;
++ (id)dataWithContentsOfFileURL:(id)arg1;
 + (id)dataWithContentsOfURL:(id)arg1;
 + (id)dataWithContentsOfURL:(id)arg1 sessionFactory:(id)arg2;
 + (id)observableWithContentsOfURL:(id)arg1;

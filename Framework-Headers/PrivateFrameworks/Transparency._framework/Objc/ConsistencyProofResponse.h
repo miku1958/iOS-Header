@@ -6,17 +6,20 @@
 
 #import <Transparency/GPBMessage.h>
 
-@class NSMutableArray;
+@class NSDictionary, NSMutableArray;
 
 @interface ConsistencyProofResponse : GPBMessage
 {
 }
 
+@property (readonly) NSDictionary *metadata;
 @property (strong, nonatomic) NSMutableArray *responsesArray; // @dynamic responsesArray;
 @property (readonly, nonatomic) unsigned long long responsesArray_Count; // @dynamic responsesArray_Count;
 @property (nonatomic) int status; // @dynamic status;
 
 + (id)descriptor;
+- (void)setMetadata:(id)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
 
 @end
 

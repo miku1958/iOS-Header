@@ -50,8 +50,6 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
-- (BOOL)_isDeallocating;
-- (BOOL)_tryRetain;
 - (void)dealloc;
 - (void)drawAtPoint:(struct CGPoint)arg1 inContext:(struct CGContext *)arg2;
 - (double)elasticWidth;

@@ -8,6 +8,7 @@
 
 @class MPMediaLibrary, MPModelKind, NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaLibraryEntityTranslationContext : NSObject
 {
     BOOL _multiQuery;
@@ -17,9 +18,11 @@
     unsigned long long _filteringOptions;
     MPModelKind *_modelKind;
     NSString *_personID;
+    NSString *_filterText;
 }
 
 @property (strong, nonatomic) NSArray *allowedEntityIdentifiers; // @synthesize allowedEntityIdentifiers=_allowedEntityIdentifiers;
+@property (strong, nonatomic) NSString *filterText; // @synthesize filterText=_filterText;
 @property (nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (strong, nonatomic) MPModelKind *modelKind; // @synthesize modelKind=_modelKind;

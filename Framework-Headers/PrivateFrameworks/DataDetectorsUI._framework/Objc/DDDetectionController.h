@@ -32,7 +32,10 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldConsiderResultForCoreRecents:(struct __DDResult *)arg1;
++ (unsigned long long)allPublicTypes;
 + (id)barcodeContext:(id)arg1 preview:(BOOL)arg2 contact:(id)arg3 ics:(id)arg4;
++ (id)filterResults:(id)arg1 forTypes:(unsigned long long)arg2 referenceDate:(id)arg3 referenceTimeZone:(id)arg4;
++ (id)lightUnderlineColorFromTextColor:(id)arg1;
 + (CDUnknownBlockType)messagesActionHandler;
 + (void)setMessagesActionHandler:(CDUnknownBlockType)arg1;
 + (id)sharedController;

@@ -8,28 +8,26 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class BKSApplicationStateMonitor, HDDaemon, NSHashTable, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class BKSApplicationStateMonitor, NSHashTable, NSMutableDictionary, NSString;
+@protocol HDApplicationStateMonitorProvider, OS_dispatch_queue;
 
 @interface HDProcessStateManager : NSObject <HDDiagnosticObject>
 {
-    HDDaemon *_daemon;
     NSMutableDictionary *_processObserversByBundleID;
     NSHashTable *_foregroundClientProcessObservers;
     BKSApplicationStateMonitor *_applicationMonitor;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_clientCalloutQueue;
     NSMutableDictionary *_processInfoByBundleID;
+    id<HDApplicationStateMonitorProvider> _applicationStateMonitorProvider;
 }
 
+@property (readonly, weak, nonatomic) id<HDApplicationStateMonitorProvider> applicationStateMonitorProvider; // @synthesize applicationStateMonitorProvider=_applicationStateMonitorProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)applicationIsForeground:(id)arg1;
-+ (id)bundleVersionStringForProcessIdentifier:(int)arg1;
-+ (int)processIdentifierForApplicationIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (void)_handleBackboardApplicationInfoChanged:(id)arg1;
 - (void)_lock_handleBackboardApplicationInfoChanged:(id)arg1;
@@ -39,11 +37,11 @@
 - (void)_lock_unregisterObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (BOOL)applicationIsForeground:(id)arg1;
 - (unsigned int)applicationStateForBundleIdentifier:(id)arg1;
-- (id)bundleVersionStringForProcessIdentifier:(int)arg1;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)init;
-- (id)initWithDaemon:(id)arg1;
+- (id)initWithApplicationStateMonitorProvider:(id)arg1;
+- (BOOL)isApplicationInExtendedRuntimeSessionForBundleIdentifier:(id)arg1;
 - (BOOL)isApplicationStateForegroundForBundleIdentifier:(id)arg1;
 - (BOOL)isApplicationStateSuspendedForBundleIdentifier:(id)arg1;
 - (int)processIdentifierForApplicationIdentifier:(id)arg1;

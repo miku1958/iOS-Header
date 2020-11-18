@@ -77,6 +77,7 @@
 @property (copy, nonatomic) CDUnknownBlockType profileChangedBlock; // @synthesize profileChangedBlock=_profileChangedBlock;
 @property (readonly, nonatomic) BOOL providesUserInterface;
 @property (readonly, nonatomic) CDUnknownBlockType renderBlock;
+@property (readonly, nonatomic) CDUnknownBlockType renderContextObserver;
 @property (nonatomic) long long renderQuality; // @synthesize renderQuality=_renderQuality;
 @property (readonly, nonatomic) BOOL renderResourcesAllocated; // @synthesize renderResourcesAllocated=_renderResourcesAllocated;
 @property (nonatomic, getter=isRenderingOffline) BOOL renderingOffline; // @synthesize renderingOffline=_renderingOffline;
@@ -101,12 +102,16 @@
 + (BOOL)_saveUserPreset:(id)arg1 state:(id)arg2 error:(id *)arg3;
 + (id)auAudioUnitForAudioUnit:(struct OpaqueAudioComponentInstance *)arg1;
 + (void)instantiateWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)instantiateWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 connectionProvider:(function_26e65e92)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)keyPathsForValuesAffectingAllParameterValues;
 + (void)registerSubclass:(Class)arg1 asComponentDescription:(struct AudioComponentDescription)arg2 name:(id)arg3 version:(unsigned int)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_setValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)_valueForProperty:(id)arg1 error:(id *)arg2;
 - (void)addRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
+- (struct OpaqueAudioComponentInstance *)audioUnit;
 - (id)cachedViewController;
 - (void)dealloc;
 - (void)deallocateRenderResources;
@@ -117,10 +122,14 @@
 - (id)init;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 error:(id *)arg2;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
+- (void)internalDeallocateRenderResources;
 - (void)invalidateAudioUnit;
+- (BOOL)isSpeechSynthesisProvider;
+- (id)osWorkgroup;
 - (id)parametersForOverviewWithCount:(long long)arg1;
 - (id)presetStateFor:(id)arg1 error:(id *)arg2;
 - (id)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2;
+- (int)remoteProcessIdentifier;
 - (void)removeRenderObserver:(long long)arg1;
 - (void)removeRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -128,6 +137,7 @@
 - (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
 - (void)selectViewConfiguration:(id)arg1;
 - (void)setCachedViewController:(id)arg1;
+- (void)setLoadedOutOfProcess;
 - (void)setRenderResourcesAllocated:(BOOL)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (BOOL)shouldChangeToFormat:(id)arg1 forBus:(id)arg2;

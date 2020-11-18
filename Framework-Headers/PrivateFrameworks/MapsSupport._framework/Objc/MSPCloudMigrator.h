@@ -10,7 +10,6 @@
 
 @class MSPJournal, NSArray, NSOrderedSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MSPCloudMigrator : NSObject <MSPCloudContainerObserver>
 {
     MSPJournal *_journal;

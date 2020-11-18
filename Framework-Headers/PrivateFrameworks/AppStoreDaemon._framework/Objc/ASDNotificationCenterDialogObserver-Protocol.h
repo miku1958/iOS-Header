@@ -6,10 +6,13 @@
 
 #import <AppStoreDaemon/NSObject-Protocol.h>
 
-@class AMSAuthenticateRequest, AMSDialogRequest;
+@class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest;
 
 @protocol ASDNotificationCenterDialogObserver <NSObject>
 - (void)handleAuthenticateRequest:(AMSAuthenticateRequest *)arg1 resultHandler:(void (^)(AMSAuthenticateResult *, NSError *))arg2;
 - (void)handleDialogRequest:(AMSDialogRequest *)arg1 resultHandler:(void (^)(AMSDialogResult *, NSError *))arg2;
+
+@optional
+- (void)handleEngagementRequest:(AMSEngagementRequest *)arg1 resultHandler:(void (^)(AMSEngagementResult *, NSError *))arg2;
 @end
 

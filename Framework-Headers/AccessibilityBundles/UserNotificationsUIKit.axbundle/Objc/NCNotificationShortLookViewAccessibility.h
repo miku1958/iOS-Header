@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityBannerIsSticky;
 - (BOOL)_accessibilityIsBannerNotificationElement;
 - (BOOL)_accessibilityResetBannerTimer;
@@ -22,6 +23,7 @@
 - (BOOL)_axMore:(id)arg1;
 - (id)_axNCNotificationViewController;
 - (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
+- (BOOL)_axShowLongLook;
 - (id)accessibilityCustomActions;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;
@@ -29,6 +31,7 @@
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
+- (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)isAccessibilityElement;
 
 @end

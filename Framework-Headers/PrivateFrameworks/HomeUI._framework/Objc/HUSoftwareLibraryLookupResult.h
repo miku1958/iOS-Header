@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSDictionary, NSSet;
 
 @interface HUSoftwareLibraryLookupResult : NSObject
 {
     NSSet *_matchedLibraryItems;
+    NSDictionary *_accessoriesByBundleIDs;
     NSSet *_matchedStoreItems;
+    NSDictionary *_accessoriesByStoreIDs;
     NSSet *_unmatchedRequests;
 }
 
+@property (strong, nonatomic) NSDictionary *accessoriesByBundleIDs; // @synthesize accessoriesByBundleIDs=_accessoriesByBundleIDs;
+@property (strong, nonatomic) NSDictionary *accessoriesByStoreIDs; // @synthesize accessoriesByStoreIDs=_accessoriesByStoreIDs;
 @property (strong, nonatomic) NSSet *matchedLibraryItems; // @synthesize matchedLibraryItems=_matchedLibraryItems;
 @property (strong, nonatomic) NSSet *matchedStoreItems; // @synthesize matchedStoreItems=_matchedStoreItems;
 @property (strong, nonatomic) NSSet *unmatchedRequests; // @synthesize unmatchedRequests=_unmatchedRequests;

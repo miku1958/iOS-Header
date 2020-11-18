@@ -22,7 +22,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_deserialize:(struct CADeserializer *)arg1;
+- (void)_deserialize:(struct CADeserializer *)arg1 fromSetFullState:(BOOL)arg2;
 - (void)_indexChildren;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;
 - (void)_serialize:(struct CASerializer *)arg1;

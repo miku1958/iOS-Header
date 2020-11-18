@@ -42,6 +42,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_expressPassInformationWithTechnologyType:(long long)arg1;
 - (id)_expressPassesInformationWithAutomaticSelectionTechnologyType:(long long)arg1;
 - (id)_expressPassesInformationWithTCIs:(id)arg1;
 - (void)_handleEnterNearFieldNotification:(id)arg1;
@@ -58,6 +59,7 @@
 - (void)_parseExpressNotificationObject:(id)arg1 outApplicationIdentifier:(id *)arg2 outApplicationKeyIdentifier:(id *)arg3;
 - (id)_queue_expressPassForTransactionApplicationIdentifier:(id)arg1 transactionApplicationKeyIdentifier:(id)arg2;
 - (id)_queue_paymentService;
+- (id)_queue_siblingExpressPassesForExpressPass:(id)arg1 applicationIdentifier:(id)arg2;
 - (void)_queue_updateExpressPasses;
 - (void)_startFieldDetector;
 - (void)_startListeningForExpressNotifications;
@@ -66,8 +68,8 @@
 - (void)_transitionToStatus:(unsigned long long)arg1 forExpressPass:(id)arg2 paymentApplicationIdentifier:(id)arg3;
 - (void)dealloc;
 - (void)fieldDetectorDidEnterField:(id)arg1 withProperties:(id)arg2;
-- (id)initWithDelegate:(id)arg1;
-- (id)initWithPaymentService:(id)arg1 passLibrary:(id)arg2 distributedNotificationCenter:(id)arg3 delegate:(id)arg4;
+- (id)initWithDelegate:(id)arg1 callbackQueue:(id)arg2;
+- (id)initWithPaymentService:(id)arg1 passLibrary:(id)arg2 distributedNotificationCenter:(id)arg3 delegate:(id)arg4 callbackQueue:(id)arg5;
 - (void)reset;
 - (void)updateExpressPasses;
 

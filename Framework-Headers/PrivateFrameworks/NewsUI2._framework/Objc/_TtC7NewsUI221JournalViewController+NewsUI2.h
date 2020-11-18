@@ -7,6 +7,12 @@
 #import <NewsUI2/_TtC7NewsUI221JournalViewController.h>
 
 @interface _TtC7NewsUI221JournalViewController (NewsUI2)
+- (void)doDismiss;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 @end

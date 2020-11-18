@@ -15,10 +15,10 @@
 
 @property (strong, nonatomic) TSgPTPPortStatistics *statistics; // @synthesize statistics=_statistics;
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
-- (BOOL)_commonInitWithService:(unsigned int)arg1;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
+- (void).cxx_destruct;
+- (BOOL)_commonInitWithService:(id)arg1;
 - (id)_statistics;
-- (void)dealloc;
 - (void)updateProperties;
 
 @end

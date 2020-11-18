@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleTimeChangeNotification:(id)arg1;
+- (BOOL)_largeDistanceFromModelRange:(id)arg1 toStartCache:(id)arg2 orEndCache:(id)arg3 timeScope:(long long)arg4;
 - (id)allAxisLabelsForRange:(id)arg1 isHorizontal:(BOOL)arg2 zoomScale:(double)arg3 timeScope:(long long)arg4;
 - (void)dealloc;
 - (void)enumerateAxisLabelsForTextInRange:(id)arg1 rect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 constantOffset:(double)arg5 isHorizontal:(BOOL)arg6 optionalOffset:(struct CGPoint)arg7 gridlineWidth:(double)arg8 timeScope:(long long)arg9 usingBlock:(CDUnknownBlockType)arg10;

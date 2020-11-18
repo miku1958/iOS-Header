@@ -93,6 +93,7 @@
 - (void)previewTripIdentifier:(id)arg1 usingRouteIdentifier:(id)arg2;
 - (void)showPanningInterfaceAnimated:(BOOL)arg1;
 - (void)showRouteChoicesPreviewForTrip:(id)arg1 textConfiguration:(id)arg2;
+- (void)showTripPreviews:(id)arg1 selectedTrip:(id)arg2 textConfiguration:(id)arg3;
 - (void)showTripPreviews:(id)arg1 textConfiguration:(id)arg2;
 - (id)startNavigationSessionForTrip:(id)arg1;
 - (void)startTripIdentifier:(id)arg1 usingRouteIdentifier:(id)arg2;

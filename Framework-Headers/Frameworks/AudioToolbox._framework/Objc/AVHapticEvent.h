@@ -14,7 +14,6 @@
 {
     double _time;
     double _duration;
-    BOOL _isParameter;
     unsigned long long _eventCategory;
     union {
         unsigned long long _eventType;
@@ -31,7 +30,6 @@
 @property (readonly) unsigned long long eventType;
 @property (readonly) long long fixedParamCount; // @synthesize fixedParamCount=_fixedParamCount;
 @property (readonly) struct AVHapticPlayerFixedParameter *fixedParams;
-@property (readonly) BOOL isParameter; // @synthesize isParameter=_isParameter;
 @property (readonly) unsigned long long paramType;
 @property (readonly) AVHapticPlayerParameterCurve *parameterCurve;
 @property (readonly) double time; // @synthesize time=_time;

@@ -9,8 +9,10 @@
 @interface UIDevice (ControlCenter)
 - (id)_currentProduct;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
+- (id)_lowQualityDevicesForFeatherBlur;
 - (id)_mediumQualityDevicesForHomeScreenBlur;
 - (long long)sbf_animatedBlurRadiusGraphicsQuality;
+- (long long)sbf_featherBlurGraphicsQuality;
 - (long long)sbf_homeGrabberGraphicsQuality;
 @end
 

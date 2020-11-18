@@ -14,6 +14,7 @@
 
 @interface HFAccessoryBuilderItem : HFItem <HFItemBuilderItem, HFServiceLikeItem>
 {
+    HMHome *_home;
     HFAccessoryBuilder *_accessoryBuilder;
     HFItem<HFServiceLikeItem> *_accessoryItem;
 }
@@ -23,7 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMHome *home;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;

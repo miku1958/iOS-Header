@@ -10,20 +10,24 @@
 #import <MTLCapture/MTLCommandBufferSPI-Protocol.h>
 
 @class CaptureMTLCommandQueue, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol MTLCommandBuffer, MTLCommandBufferSPI, MTLCommandQueue, MTLDevice;
+@protocol MTLCommandBuffer, MTLCommandBufferSPI, MTLCommandQueue, MTLDevice, MTLLogContainer, MTLSharedEvent;
 
 @interface CaptureMTLCommandBuffer : NSObject <MTLCommandBufferSPI, CaptureMTLObject>
 {
     CaptureMTLCommandQueue *_captureCommandQueue;
     id<MTLCommandBufferSPI> _baseObject;
-    id<MTLCommandQueue> _downloadQueue;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
     struct _opaque_pthread_mutex_t _retainMutex;
     struct apr_pool_t *_pool;
+    id<MTLSharedEvent> _downloadEvent;
     NSMutableArray *_downloadPoints;
+    NSMutableArray *_scheduledDispatchArray;
+    NSMutableArray *_completedDispatchArray;
     BOOL _presentDrawableUsed;
+    BOOL _isCommitted;
     BOOL _isCapturing;
+    BOOL _isCommited;
     NSMutableSet *_retainedObjects;
 }
 
@@ -35,13 +39,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
 @property (readonly) NSError *error;
+@property (readonly) unsigned long long errorOptions;
 @property (readonly) unsigned long long globalTraceObjectID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCapturing; // @synthesize isCapturing=_isCapturing;
+@property (nonatomic) BOOL isCommited; // @synthesize isCommited=_isCommited;
 @property (readonly) double kernelEndTime;
 @property (readonly) double kernelStartTime;
 @property (copy) NSString *label;
-@property (nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property (readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property (readonly) id<MTLLogContainer> logs;
 @property (readonly) BOOL presentDrawableUsed; // @synthesize presentDrawableUsed=_presentDrawableUsed;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
 @property (readonly) NSDictionary *profilingResults;
@@ -55,16 +62,22 @@
 @property (readonly, nonatomic) NSMutableDictionary *userDictionary;
 
 - (void).cxx_destruct;
-- (void)_commit;
+- (void)_encodeDownloadPoint;
+- (unsigned char)_frameBoundaryFlag;
+- (void)_preCommitWithIndex:(unsigned long long)arg1;
+- (id)accelerationStructureCommandEncoder;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)addPurgedHeap:(id)arg1;
 - (void)addPurgedResource:(id)arg1;
+- (void)addRequestsToDownloadQueue:(id)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
 - (id)blitCommandEncoder;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (void)commit;
 - (void)commitAndHold;
 - (BOOL)commitAndWaitUntilSubmitted;
 - (id)computeCommandEncoder;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;
@@ -78,21 +91,22 @@
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2 timeout:(unsigned int)arg3;
 - (void)enqueue;
 - (id)forwardingTargetForSelector:(SEL)arg1;
-- (id)fragmentRenderCommandEncoderWithDescriptor:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 captureCommandQueue:(id)arg2;
+- (BOOL)isEnqueued;
+- (id)originalObject;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
 - (void)popDebugGroup;
 - (void)presentDrawable:(id)arg1;
-- (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (id)resourceStateCommandEncoder;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
-- (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
-- (id)sampledFragmentRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
+- (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
 - (void)setResourceGroups:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)touch;
 - (void)unionRetainSet:(id)arg1;

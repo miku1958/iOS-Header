@@ -10,7 +10,7 @@
 #import <NewsCore/FCIssueAccessCheckable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
 @protocol FCChannelProviding;
 
 @interface FCIssue : NSObject <FCFeedPersonalizingItem, FCIssueAccessCheckable, NSCopying>
@@ -58,6 +58,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
 @property (readonly, nonatomic) BOOL hasAudioTrack;
@@ -88,6 +89,7 @@
 @property (readonly, copy, nonatomic) NSDate *publicationDate; // @synthesize publicationDate=_publicationDate;
 @property (readonly, copy, nonatomic) NSDate *publishDate;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, copy, nonatomic) id<FCChannelProviding> sourceChannel; // @synthesize sourceChannel=_sourceChannel;
 @property (readonly, copy, nonatomic) NSString *sourceChannelID;
@@ -102,6 +104,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(BOOL)arg13 isDraft:(BOOL)arg14 isPaid:(BOOL)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 coverArticleID:(id)arg18 allowedStorefrontIDs:(id)arg19 blockedStorefrontIDs:(id)arg20 topicTagIDs:(id)arg21 sourceChannel:(id)arg22 notificationDescription:(id)arg23 issueDescription:(id)arg24;

@@ -37,7 +37,8 @@
 
 - (void).cxx_destruct;
 - (id)_addressBodyStringWithPostalAddress:(id)arg1;
-- (void)_handleDidOrderPhysicalCard;
+- (void)_presentNextViewControllerOrTerminate;
+- (void)_presentViewController:(id)arg1;
 - (void)_showDisplayableError:(id)arg1;
 - (void)_showSpinner:(BOOL)arg1;
 - (void)_terminateFlow;

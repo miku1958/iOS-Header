@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBDataReader;
+@class GEOTrafficPath, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOTrafficPredictedPaces : PBCodable <NSCopying>
@@ -16,28 +16,27 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     CDStruct_9f2792e4 _encodedPaces;
     CDStruct_9f2792e4 _secondsInFutures;
+    GEOTrafficPath *_path;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_encodedPaces:1;
         unsigned int read_secondsInFutures:1;
-        unsigned int wrote_encodedPaces:1;
-        unsigned int wrote_secondsInFutures:1;
+        unsigned int read_path:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (readonly, nonatomic) unsigned int *encodedPaces;
 @property (readonly, nonatomic) unsigned long long encodedPacesCount;
+@property (readonly, nonatomic) BOOL hasPath;
+@property (strong, nonatomic) GEOTrafficPath *path;
 @property (readonly, nonatomic) unsigned int *secondsInFutures;
 @property (readonly, nonatomic) unsigned long long secondsInFuturesCount;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsEncodedPace:(unsigned int)arg1;
-- (void)_addNoFlagsSecondsInFuture:(unsigned int)arg1;
-- (void)_readEncodedPaces;
-- (void)_readSecondsInFutures;
 - (void)addEncodedPace:(unsigned int)arg1;
 - (void)addSecondsInFuture:(unsigned int)arg1;
 - (void)clearEncodedPaces;
@@ -51,7 +50,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

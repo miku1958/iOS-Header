@@ -7,50 +7,55 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMBLocalZoneModelObserver-Protocol.h>
-#import <HomeKitDaemon/HMDCloudShareParticipantsManagerDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDActiveXPCClientConnectionsPeriodicTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDDatabaseZoneManagerDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDDatabaseZoneManagerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDLogEventSubmitting-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMDCameraClipsQuotaManager, HMDDatabaseZoneManager, HMFMessageDispatcher, HMFTimer, NSHashTable, NSObject, NSString, NSUUID;
-@protocol HMDCameraClipManagerDelegate, OS_dispatch_queue;
+@class HMBCloudZone, HMBLocalZone, HMDActiveXPCClientConnectionsPeriodicTimer, HMDCameraClipFeedbackManager, HMDCameraClipsQuotaManager, HMDCameraSignificantEventFaceClassificationResolver, HMDDatabaseZoneManager, HMDLogEventDispatcher, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@protocol HMDCameraClipManagerDelegate, HMDFileManager, OS_dispatch_queue;
 
-@interface HMDCameraClipManager : HMFObject <HMBLocalZoneModelObserver, HMFLogging, HMFMessageReceiver, HMFTimerDelegate, HMDCloudShareParticipantsManagerDataSource, HMDDatabaseZoneManagerDelegate>
+@interface HMDCameraClipManager : HMFObject <HMBLocalZoneModelObserver, HMFLogging, HMFMessageReceiver, HMDDatabaseZoneManagerDataSource, HMDDatabaseZoneManagerDelegate, HMDActiveXPCClientConnectionsPeriodicTimerDelegate, HMDLogEventSubmitting>
 {
     BOOL _hasWriteAccess;
     id<HMDCameraClipManagerDelegate> _delegate;
     HMBLocalZone *_localZone;
+    HMBCloudZone *_cloudZone;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDDatabaseZoneManager *_zoneManager;
     HMDCameraClipsQuotaManager *_quotaManager;
+    HMDCameraSignificantEventFaceClassificationResolver *_faceClassificationResolver;
+    HMDActiveXPCClientConnectionsPeriodicTimer *_clientConnectionsTimer;
     HMFMessageDispatcher *_messageDispatcher;
-    NSHashTable *_subscribedClientConnections;
-    HMBCloudZone *_cloudZone;
-    HMFTimer *_cloudZoneFetchTimer;
-    HMFTimer *_clipsCleanupTimer;
-    unsigned long long _fetchClipsBatchLimit;
-    CDUnknownBlockType _cloudFetchTimerFactory;
-    CDUnknownBlockType _clipsCleanupTimerFactory;
+    NSUUID *_cameraProfileUUID;
+    id<HMDFileManager> _fileManager;
+    HMDCameraClipFeedbackManager *_feedbackManager;
+    unsigned long long _fetchBatchLimit;
+    CDUnknownBlockType _fetchServerFactory;
 }
 
-@property (strong) HMFTimer *clipsCleanupTimer; // @synthesize clipsCleanupTimer=_clipsCleanupTimer;
-@property (copy) CDUnknownBlockType clipsCleanupTimerFactory; // @synthesize clipsCleanupTimerFactory=_clipsCleanupTimerFactory;
-@property (copy) CDUnknownBlockType cloudFetchTimerFactory; // @synthesize cloudFetchTimerFactory=_cloudFetchTimerFactory;
+@property (readonly, copy) NSUUID *cameraProfileUUID; // @synthesize cameraProfileUUID=_cameraProfileUUID;
+@property (readonly) HMDActiveXPCClientConnectionsPeriodicTimer *clientConnectionsTimer; // @synthesize clientConnectionsTimer=_clientConnectionsTimer;
 @property (strong) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
-@property (strong) HMFTimer *cloudZoneFetchTimer; // @synthesize cloudZoneFetchTimer=_cloudZoneFetchTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDCameraClipManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property unsigned long long fetchClipsBatchLimit; // @synthesize fetchClipsBatchLimit=_fetchClipsBatchLimit;
+@property (readonly) HMDCameraSignificantEventFaceClassificationResolver *faceClassificationResolver; // @synthesize faceClassificationResolver=_faceClassificationResolver;
+@property (strong) HMDCameraClipFeedbackManager *feedbackManager; // @synthesize feedbackManager=_feedbackManager;
+@property unsigned long long fetchBatchLimit; // @synthesize fetchBatchLimit=_fetchBatchLimit;
+@property (copy) CDUnknownBlockType fetchServerFactory; // @synthesize fetchServerFactory=_fetchServerFactory;
+@property (readonly) id<HMDFileManager> fileManager; // @synthesize fileManager=_fileManager;
+@property (readonly) BOOL hasStartedUpCloudZone;
 @property (nonatomic) BOOL hasWriteAccess; // @synthesize hasWriteAccess=_hasWriteAccess;
 @property (readonly) unsigned long long hash;
 @property (strong) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
+@property (readonly) HMDLogEventDispatcher *logEventDispatcher;
 @property (readonly) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly) HMDCameraClipsQuotaManager *quotaManager; // @synthesize quotaManager=_quotaManager;
-@property (readonly) NSHashTable *subscribedClientConnections; // @synthesize subscribedClientConnections=_subscribedClientConnections;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly) HMDDatabaseZoneManager *zoneManager; // @synthesize zoneManager=_zoneManager;
@@ -58,55 +63,81 @@
 + (id)logCategory;
 + (double)maximumClipDuration;
 - (void).cxx_destruct;
-- (void)_cleanUpClips;
+- (void)_cleanUpClipsAndSignificantEventsForInitialStartup:(BOOL)arg1;
 - (void)_cleanUpExpiredClips;
-- (void)_cleanUpIncompleteClips;
+- (void)_cleanUpIncompleteClipsForInitialStartup:(BOOL)arg1;
 - (void)_cleanUpOrphanedSignficantEvents;
+- (id)_faceClassificationsForSignificantEventWithUUID:(id)arg1;
 - (void)_fetchAssetContextForMessage:(id)arg1 propertyName:(id)arg2;
 - (id)_fetchAssetContextForProperty:(id)arg1 forClipModel:(id)arg2;
-- (BOOL)_fetchClipsAfterDate:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)_handleChangedClipModel:(id)arg1 wasCreated:(BOOL)arg2;
-- (void)_handleNewSignificantEventNotificationModel:(id)arg1;
-- (void)_notifyTransport:(id)arg1 ofFetchedClips:(id)arg2 forFetchUUID:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
+- (id)_fetchCanonicalHeroFrameURLForClipModel:(id)arg1;
+- (BOOL)_fetchClipsWithDateInterval:(id)arg1 isAscending:(BOOL)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)_fetchFaceCropURLForSignificantEventModel:(id)arg1;
+- (id)_fetchHeroFrameURLForSignificantEventModel:(id)arg1;
+- (BOOL)_fetchSignificantEventsWithDateInterval:(id)arg1 isAscending:(BOOL)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)_handleChangedClipModel:(id)arg1 wasCreated:(BOOL)arg2 mirrorOutputFuture:(id)arg3;
+- (void)_handleChangedFaceClassificationModel:(id)arg1;
+- (void)_handleChangedSignificantEventNotificationModel:(id)arg1 mirrorOutputFuture:(id)arg2;
+- (id)_handleFaceMisclassificationForFaceCropURL:(id)arg1 personUUID:(id)arg2 personManagerUUID:(id)arg3 significantEventModel:(id)arg4;
+- (void)_notifyForChangedSignificantEventModel:(id)arg1 mirrorOutputFuture:(id)arg2;
+- (void)_notifyPrimaryResidentAboutFaceMisclassificationForFaceCropData:(id)arg1 personUUID:(id)arg2 personManagerUUID:(id)arg3;
 - (void)_notifyTransportsOfUpdatedClips:(id)arg1 removedClipUUIDs:(id)arg2;
-- (void)_performCloudPull;
-- (void)_postNotificationForSignificantEventNotificationModel:(id)arg1 clipModel:(id)arg2;
-- (void)_postNotificationForSignificantEventNotificationModel:(id)arg1 clipModel:(id)arg2 heroFrameURL:(id)arg3;
-- (id)_significantEventModelsForClipModel:(id)arg1;
-- (void)_updateCloudFetchTimer;
+- (void)_notifyTransportsOfUpdatedSignificantEvents:(id)arg1 removedSignificantEventUUIDs:(id)arg2;
+- (id)_performCloudPull;
+- (void)_removeAllFaceClassificationModels;
+- (id)_removeClipsWithUUIDs:(id)arg1 options:(id)arg2;
+- (id)_significantEventFromSignificantEventModel:(id)arg1;
+- (id)_significantEventModelsForClipWithUUID:(id)arg1;
+- (id)_significantEventModelsWithUUIDs:(id)arg1;
+- (id)_significantEventsWithUUIDs:(id)arg1;
 - (BOOL)areShareModificationsEnabledForManager:(id)arg1;
+- (void)cleanUpClipsAndSignificantEvents;
+- (void)clientConnectionsTimerDidFire:(id)arg1;
 - (void)configureWithHome:(id)arg1;
 - (id)disableCloudStorage;
 - (id)enableCloudStorage;
-- (void)handleClientConnectionDidActivate:(id)arg1;
-- (void)handleClientConnectionDidDeactivate:(id)arg1;
+- (id)fetchHeroFrameURLForSignificantEventWithUUID:(id)arg1;
 - (void)handleDeleteAllClipsMessage:(id)arg1;
 - (void)handleDeleteClipMessage:(id)arg1;
 - (void)handleFetchClipForSignificantEventMessage:(id)arg1;
 - (void)handleFetchClipMessage:(id)arg1;
 - (void)handleFetchClipsMessage:(id)arg1;
 - (void)handleFetchCountOfClipsMessage:(id)arg1;
+- (void)handleFetchFaceCropDataRepresentationMessage:(id)arg1;
+- (void)handleFetchFaceCropURLMessage:(id)arg1;
+- (void)handleFetchHeroFrameDataRepresentationMessage:(id)arg1;
+- (void)handleFetchHeroFrameURLMessage:(id)arg1;
 - (void)handleFetchPosterFramesAssetContextMessage:(id)arg1;
+- (void)handleFetchSignificantEventsMessage:(id)arg1;
 - (void)handleFetchVideoSegmentsAssetContextMessage:(id)arg1;
+- (void)handleHandleFaceMisclassificationMessage:(id)arg1;
+- (void)handleHomePersonManagerSettingsDidChangeNotification:(id)arg1;
 - (void)handleImportClipsMessage:(id)arg1;
+- (void)handlePerformCloudPullMessage:(id)arg1;
+- (void)handleRemoteHandleFaceMisclassificationMessage:(id)arg1;
 - (void)handleSubscribeMessage:(id)arg1;
 - (void)handleUnsubscribeMessage:(id)arg1;
-- (void)handleUserCamerasAccessLevelDidChange:(id)arg1;
-- (void)handleUserPrivilegeDidChange:(id)arg1;
-- (void)handleUserRemoteAccessDidChange:(id)arg1;
+- (void)handleUserCamerasAccessLevelDidChangeNotification:(id)arg1;
+- (void)handleUserPrivilegeDidChangeNotification:(id)arg1;
+- (void)handleUserRemoteAccessDidChangeNotification:(id)arg1;
 - (id)heroFrameURLForSignificantEventWithUUID:(id)arg1;
+- (id)home;
 - (id)initWithCameraProfile:(id)arg1;
-- (id)initWithZoneManager:(id)arg1 quotaManager:(id)arg2 messageDispatcher:(id)arg3 workQueue:(id)arg4;
+- (id)initWithZoneManager:(id)arg1 quotaManager:(id)arg2 faceClassificationResolver:(id)arg3 clientConnectionsTimer:(id)arg4 messageDispatcher:(id)arg5 workQueue:(id)arg6 cameraProfileUUID:(id)arg7 fileManager:(id)arg8;
 - (id)localZone:(id)arg1 didProcessModelCreation:(id)arg2;
 - (id)localZone:(id)arg1 didProcessModelDeletion:(id)arg2;
 - (id)localZone:(id)arg1 didProcessModelUpdate:(id)arg2;
 - (id)logIdentifier;
 - (BOOL)manager:(id)arg1 shouldGrantWriteAccessToUser:(id)arg2;
 - (BOOL)manager:(id)arg1 shouldShareWithUser:(id)arg2;
+- (id)performCloudPull;
 - (id)remove;
-- (id)significantEventsWithUUIDs:(id)arg1;
-- (void)timerDidFire:(id)arg1;
+- (id)significantEventsForClipContainingDate:(id)arg1;
+- (id)significantEventsForClipWithUUID:(id)arg1;
+- (id)significantEventsWithDateInterval:(id)arg1;
+- (void)submitLogEvent:(id)arg1 error:(id)arg2;
 - (void)zoneManager:(id)arg1 didReceiveMessageWithUserInfo:(id)arg2;
+- (BOOL)zoneManager:(id)arg1 shouldRequestShareInvitationFromUser:(id)arg2;
 - (void)zoneManagerDidStart:(id)arg1;
 - (void)zoneManagerDidStop:(id)arg1;
 

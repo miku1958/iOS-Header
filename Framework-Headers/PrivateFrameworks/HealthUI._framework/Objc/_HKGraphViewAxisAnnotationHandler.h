@@ -26,7 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)addAxisAnnotation:(id)arg1 forSeries:(id)arg2 textColor:(id)arg3 modelCoordinate:(id)arg4;
+- (void)addAxisAnnotation:(id)arg1 forSeries:(id)arg2 modelCoordinate:(id)arg3;
 - (long long)applyAnnotationForSeries:(id)arg1 commonAxes:(id)arg2;
 - (void)clearAxisAnnotations;
 - (id)init;

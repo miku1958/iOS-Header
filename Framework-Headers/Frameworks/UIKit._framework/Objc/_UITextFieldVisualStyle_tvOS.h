@@ -6,10 +6,19 @@
 
 #import <UIKitCore/_UITextFieldVisualStyle.h>
 
+#import <UIKitCore/_UITextFieldEditingProcessorDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UITextFieldVisualStyle_tvOS : _UITextFieldVisualStyle
+@interface _UITextFieldVisualStyle_tvOS : _UITextFieldVisualStyle <_UITextFieldEditingProcessorDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id)_defaultEditingFont;
 - (id)_defaultTextColorBlackKeyboard;
@@ -23,9 +32,8 @@ __attribute__((visibility("hidden")))
 - (id)defaultFocusedTextColor;
 - (id)defaultTextColor;
 - (id)defaultTextColorForKeyboardAppearance;
+- (id)editingProcessorOverridingEditingAttributes:(id)arg1;
 - (void)handleTextVibrancy;
-- (id)namesOfAttributesToOverrideForEditing;
-- (id)overridingEditingAttributes:(id)arg1 forOriginalAttributes:(id)arg2;
 - (id)parentViewForTextContentView;
 - (id)placeholderColor;
 - (BOOL)textShouldUseVibrancy;

@@ -28,6 +28,7 @@
     NSSet *_matchingCategories;
     NSSet *_matchingAlgorithms;
     NSSet *_excludingAlgorithms;
+    NSString *_matchingContactHandle;
     unsigned long long _consumer;
 }
 
@@ -43,6 +44,7 @@
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (strong, nonatomic) NSSet *matchingAlgorithms; // @synthesize matchingAlgorithms=_matchingAlgorithms;
 @property (strong, nonatomic) NSSet *matchingCategories; // @synthesize matchingCategories=_matchingCategories;
+@property (strong, nonatomic) NSString *matchingContactHandle; // @synthesize matchingContactHandle=_matchingContactHandle;
 @property (strong, nonatomic) NSSet *matchingSourceBundleIds; // @synthesize matchingSourceBundleIds=_matchingSourceBundleIds;
 @property (nonatomic) double perRecordDecayRate; // @synthesize perRecordDecayRate=_perRecordDecayRate;
 @property (strong, nonatomic) NSDate *scoringDate; // @synthesize scoringDate=_scoringDate;

@@ -47,6 +47,7 @@
 - (BOOL)hasTextColor;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

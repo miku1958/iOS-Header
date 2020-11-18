@@ -9,11 +9,13 @@
 #import <SpringBoard/SBUIUserAgent_Internal-Protocol.h>
 
 @class NSMutableDictionary, NSString, SBIdleTimerPolicyAggregator;
+@protocol BSInvalidatable;
 
 @interface SBUserAgent : NSObject <SBUIUserAgent_Internal>
 {
     NSMutableDictionary *_idleTimerDisableAssertions;
     SBIdleTimerPolicyAggregator *_idleTimerPolicyAggregator;
+    id<BSInvalidatable> _bannerSuppressionAssertion;
 }
 
 @property (strong, nonatomic, setter=_setIdleTimerPolicyAggregator:) SBIdleTimerPolicyAggregator *_idleTimerPolicyAggregator; // @synthesize _idleTimerPolicyAggregator;

@@ -7,16 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSDate, NSTimer, TVPStateMachine;
+@protocol OS_dispatch_queue;
 
 @interface VUIRentalExpirationMonitor : NSObject
 {
     TVPStateMachine *_stateMachine;
     NSDate *_dateOfLastRentalExpirationHandling;
     NSTimer *_earliestExpirationTimer;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (strong, nonatomic) NSDate *dateOfLastRentalExpirationHandling; // @synthesize dateOfLastRentalExpirationHandling=_dateOfLastRentalExpirationHandling;
 @property (strong, nonatomic) NSTimer *earliestExpirationTimer; // @synthesize earliestExpirationTimer=_earliestExpirationTimer;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 
 + (id)sharedInstance;

@@ -43,7 +43,6 @@
 
 + (id)documentsPickerAppearance;
 + (id)recentsPopoverAppearance;
-+ (id)recentsWidgetAppearance;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

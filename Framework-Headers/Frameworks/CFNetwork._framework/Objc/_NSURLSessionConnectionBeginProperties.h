@@ -17,7 +17,6 @@
 }
 
 @property (readonly, nonatomic, getter=isTLSConfigured) BOOL TLSConfigured;
-@property (readonly, nonatomic) __CFN_ConnectionMetrics *_metrics; // @synthesize _metrics=__metrics;
 @property (readonly, nonatomic) NSObject<OS_nw_endpoint> *endpoint;
 @property (readonly, nonatomic, getter=isProxyConfigured) BOOL proxyConfigured;
 
@@ -25,7 +24,6 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMetrics:(id)arg1;
 
 @end
 

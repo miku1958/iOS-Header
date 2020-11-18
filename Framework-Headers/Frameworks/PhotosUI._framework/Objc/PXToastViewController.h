@@ -47,7 +47,7 @@
 - (void)_dismissAfterDelay:(double)arg1;
 - (id)initCheckmarkToastWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 image:(id)arg3;
-- (void)present;
+- (void)presentOnWindowScene:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

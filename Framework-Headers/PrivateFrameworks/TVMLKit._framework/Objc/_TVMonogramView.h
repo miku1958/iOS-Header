@@ -17,6 +17,7 @@
     UIView *_unfocusedShadowView;
     UIView *_focusedShadowView;
     BOOL _isSelected;
+    BOOL _focusedStateEnabled;
     TVMonogramViewConfiguration *_configuration;
     _TVMonogramDescription *_monogramDescription;
     UIImage *_image;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) TVMonogramViewConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isFocusedStateEnabled) BOOL focusedStateEnabled; // @synthesize focusedStateEnabled=_focusedStateEnabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;

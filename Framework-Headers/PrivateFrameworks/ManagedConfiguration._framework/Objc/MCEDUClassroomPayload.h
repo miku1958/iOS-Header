@@ -28,12 +28,12 @@
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
 - (id)title;
 - (id)translatedCRKError:(id)arg1;
+- (id)verboseDescription;
 
 @end
 

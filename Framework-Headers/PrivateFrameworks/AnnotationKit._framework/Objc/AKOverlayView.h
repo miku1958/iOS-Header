@@ -6,9 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class AKMainEventHandler, AKPageController, UIScrollView;
+#import <AnnotationKit/PKScribbleInteractionDelegate-Protocol.h>
+#import <AnnotationKit/PKScribbleInteractionElementSource-Protocol.h>
+#import <AnnotationKit/UIPointerInteractionDelegate-Protocol.h>
 
-@interface AKOverlayView : UIView
+@class AKMainEventHandler, AKPageController, NSString, UIPointerInteraction, UIScrollView;
+
+@interface AKOverlayView : UIView <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, UIPointerInteractionDelegate>
 {
     BOOL _isObserving;
     BOOL _deferWasMovedToSuperviewUntilMoveToWindow;
@@ -16,19 +20,32 @@
     AKPageController *_pageController;
     AKMainEventHandler *_mainEventHandler;
     UIScrollView *_observedScrollView;
+    UIPointerInteraction *_pointerInteraction;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property BOOL deferWasMovedToSuperviewUntilMoveToWindow; // @synthesize deferWasMovedToSuperviewUntilMoveToWindow=_deferWasMovedToSuperviewUntilMoveToWindow;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property BOOL isObserving; // @synthesize isObserving=_isObserving;
 @property (weak) AKMainEventHandler *mainEventHandler; // @synthesize mainEventHandler=_mainEventHandler;
 @property (strong) UIScrollView *observedScrollView; // @synthesize observedScrollView=_observedScrollView;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
+@property (strong, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property BOOL scrollViewIsInLiveMagnify; // @synthesize scrollViewIsInLiveMagnify=_scrollViewIsInLiveMagnify;
+@property (readonly) Class superclass;
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (BOOL)_isEditingTextBoxAnnotation;
 - (void)_postScrollViewRectChangedNotification;
 - (void)_postScrollViewScrollOrMagnifyEndNotification;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (struct UIEdgeInsets)_scribbleInteraction:(id)arg1 hitToleranceInsetsForElement:(id)arg2 defaultInsets:(struct UIEdgeInsets)arg3;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
+- (BOOL)_scribbleInteractionIsEnabled:(id)arg1;
 - (void)_scrollViewDidEndAnimation:(id)arg1;
 - (void)_scrollViewDidEndDecelerating:(id)arg1;
 - (void)_scrollViewDidEndDragging:(id)arg1;
@@ -37,6 +54,7 @@
 - (void)_teardownObservation;
 - (void)_updateLayersUsingScrollView;
 - (void)_updateLayersUsingScrollViewWithForcedUpdate:(BOOL)arg1;
+- (void)_updateLayersUsingScrollViewWithForcedUpdate:(BOOL)arg1 dismissSelectionMenu:(BOOL)arg2;
 - (void)_wasMovedToNewSuperview;
 - (void)_willEndLiveMagnify:(id)arg1;
 - (void)_willRemoveFromOldSuperview;
@@ -58,6 +76,8 @@
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)paste:(id)arg1;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)updateLayers;
 - (void)willMoveToSuperview:(id)arg1;
 

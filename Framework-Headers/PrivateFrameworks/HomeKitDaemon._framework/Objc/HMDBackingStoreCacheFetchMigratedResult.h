@@ -6,26 +6,23 @@
 
 #import <HomeKitDaemon/HMDBackingStoreOperation.h>
 
-@class HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup;
+@class HMDBackingStoreCacheGroup;
 
 @interface HMDBackingStoreCacheFetchMigratedResult : HMDBackingStoreOperation
 {
     BOOL _update;
     BOOL _migration;
     HMDBackingStoreCacheGroup *_group;
-    HMDBackingStoreCacheShareGroup *_share;
     CDUnknownBlockType _fetchResult;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType fetchResult; // @synthesize fetchResult=_fetchResult;
 @property (strong, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
 @property (readonly) BOOL migration; // @synthesize migration=_migration;
-@property (strong, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 @property (readonly) BOOL update; // @synthesize update=_update;
 
 - (void).cxx_destruct;
 - (id)initWithGroup:(id)arg1 update:(BOOL)arg2 migration:(BOOL)arg3 fetchResult:(CDUnknownBlockType)arg4;
-- (id)initWithShareGroup:(id)arg1 update:(BOOL)arg2 migration:(BOOL)arg3 fetchResult:(CDUnknownBlockType)arg4;
 - (id)mainReturningError;
 
 @end

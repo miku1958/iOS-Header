@@ -7,6 +7,9 @@
 #import <NewsUI2/_TtC7NewsUI232SearchMoreArticlesViewController.h>
 
 @interface _TtC7NewsUI232SearchMoreArticlesViewController (NewsUI2)
+
+@property (nonatomic, readonly) BOOL isSearchResultsPane;
+
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

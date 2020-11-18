@@ -18,7 +18,7 @@
 #import <DocumentCamera/UINavigationControllerDelegate-Protocol.h>
 #import <DocumentCamera/UIScrollViewDelegate-Protocol.h>
 
-@class AVCaptureConnection, AVCaptureDeviceInput, AVCapturePhotoOutput, AVCapturePhotoSettings, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, BKSAccelerometer, CIContext, ICDocCamDebugMovieController, ICDocCamDocumentInfo, ICDocCamDocumentInfoCollection, ICDocCamImageCache, ICDocCamImageQuad, ICDocCamImageSequenceAnalyzer, ICDocCamOverlayView, ICDocCamPhysicalCaptureNotifier, ICDocCamPhysicalCaptureRecognizer, ICDocCamPreviewView, ICDocCamProcessingBlocker, ICDocCamRectangleResultsQueue, ICDocCamSaveButton, ICDocCamShutterButton, ICDocCamSpinner, ICDocCamThumbnailCollectionViewController, ICDocCamThumbnailContainerView, NSArray, NSData, NSDate, NSIndexPath, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSObject, NSString, UIButton, UIColor, UIImage, UILabel, UIScrollView, UITapGestureRecognizer, UIView;
+@class AVCaptureConnection, AVCaptureDeviceInput, AVCapturePhotoOutput, AVCapturePhotoSettings, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, BKSAccelerometer, CIContext, ICDocCamDebugMovieController, ICDocCamDocumentInfo, ICDocCamDocumentInfoCollection, ICDocCamImageCache, ICDocCamImageQuad, ICDocCamImageSequenceAnalyzer, ICDocCamOverlayView, ICDocCamPhysicalCaptureNotifier, ICDocCamPhysicalCaptureRecognizer, ICDocCamPreviewView, ICDocCamProcessingBlocker, ICDocCamRectangleResultsQueue, ICDocCamSaveButton, ICDocCamShutterButton, ICDocCamSpinner, ICDocCamThumbnailCollectionViewController, ICDocCamThumbnailContainerView, NSArray, NSData, NSDate, NSIndexPath, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSObject, NSString, UIButton, UIColor, UIImage, UILabel, UIScrollView, UITapGestureRecognizer, UIView, VNRectangleObservation;
 @protocol ICDocCamViewControllerDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICDocCamViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, ICDocCamThumbnailViewDelegate, ICDocCamExtractedDocumentControllerDelegate, ICDocCamProcessingBlockerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate, UINavigationControllerDelegate, DCUnsavedDataDelegate, ICDocCamDebugMovieControllerDelegate, ICDocCamPhysicalCaptureNotifierDelegate>
@@ -58,9 +58,11 @@
     float _rectangleQuadratureTolerance;
     float _rectangleMinimumSize;
     float _rectangleMinimumConfidence;
+    float _rectangleMinimumVisualConfidence;
     float _rectangleStabilityStdDev;
     ICDocCamThumbnailContainerView *_thumbnailContainerView;
     ICDocCamThumbnailCollectionViewController *_thumbnailViewController;
+    long long _setupResult;
     ICDocCamPreviewView *_previewView;
     UIView *_cameraUnavailableScrim;
     UIView *_cameraUnavailableView;
@@ -114,7 +116,6 @@
     AVCaptureVideoPreviewLayer *_videoPreviewLayer;
     long long _statusBarOrientation;
     UIColor *_cameraHighlightColor;
-    long long _setupResult;
     ICDocCamImageSequenceAnalyzer *_vkAnalyzer;
     ICDocCamRectangleResultsQueue *_rectResultsQueue;
     id<ICDocCamViewControllerDelegate> _delegate;
@@ -136,6 +137,7 @@
     ICDocCamProcessingBlocker *_snapStillImageBlocker;
     long long _snapStillImageMode;
     ICDocCamImageQuad *_backupQuad;
+    VNRectangleObservation *_lastHighConfidenceRectangle;
     NSMutableArray *_filterButtons;
     UIView *_filterView;
     UIButton *_filterViewButton;
@@ -270,6 +272,7 @@
 @property (readonly, nonatomic) BOOL isInRetakeMode;
 @property (nonatomic) BOOL isObservingCaptureSession; // @synthesize isObservingCaptureSession=_isObservingCaptureSession;
 @property (strong, nonatomic) NSDate *lastAXPositionAnnouncementDate; // @synthesize lastAXPositionAnnouncementDate=_lastAXPositionAnnouncementDate;
+@property (strong, nonatomic) VNRectangleObservation *lastHighConfidenceRectangle; // @synthesize lastHighConfidenceRectangle=_lastHighConfidenceRectangle;
 @property (strong) NSDate *lastSubjectAreaChange; // @synthesize lastSubjectAreaChange=_lastSubjectAreaChange;
 @property (weak, nonatomic) UIButton *manualButton; // @synthesize manualButton=_manualButton;
 @property (copy, nonatomic) CDUnknownBlockType markupDismissCompletionBlock; // @synthesize markupDismissCompletionBlock=_markupDismissCompletionBlock;
@@ -298,6 +301,7 @@
 @property float rectangleMinimumAspectRatio; // @synthesize rectangleMinimumAspectRatio=_rectangleMinimumAspectRatio;
 @property float rectangleMinimumConfidence; // @synthesize rectangleMinimumConfidence=_rectangleMinimumConfidence;
 @property float rectangleMinimumSize; // @synthesize rectangleMinimumSize=_rectangleMinimumSize;
+@property float rectangleMinimumVisualConfidence; // @synthesize rectangleMinimumVisualConfidence=_rectangleMinimumVisualConfidence;
 @property float rectangleQuadratureTolerance; // @synthesize rectangleQuadratureTolerance=_rectangleQuadratureTolerance;
 @property float rectangleStabilityStdDev; // @synthesize rectangleStabilityStdDev=_rectangleStabilityStdDev;
 @property (nonatomic) long long referenceOrientation; // @synthesize referenceOrientation=_referenceOrientation;
@@ -360,6 +364,7 @@
 + (void)registerDefaults;
 + (void)warnAboutMaxScansReachedForViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)accessibilityPerformEscape;
 - (void)addNewDocument:(id)arg1;
 - (void)addObserversIfNecessary;
@@ -377,7 +382,7 @@
 - (void)createPhysicalCaptureRecognizerOrNotifierIfNecessary;
 - (id)cropAndFilterImage:(id)arg1 rects:(id)arg2 filterType:(short)arg3;
 - (void)dealloc;
-- (void)detectRectanglesAndSaveCapturedImage:(struct __CVBuffer *)arg1 metaData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectRectanglesAndSaveCapturedImage:(struct __CVBuffer *)arg1 metadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)detectRectanglesRequest;
 - (void)didFinishWithImage:(id)arg1;
 - (void)didRecognizeRectangleForAccessibility:(BOOL)arg1;
@@ -400,10 +405,12 @@
 - (void)filterButtonAction:(id)arg1;
 - (void)filterButtonCancelUI:(id)arg1;
 - (void)filterButtonChoiceAction:(id)arg1;
+- (id)filterButtonImage;
 - (double)filterScrollViewContentWidthWithInterItemSpacing:(double)arg1 startPadding:(double)arg2 endPadding:(double)arg3;
 - (id)filteredImageForDocument:(id)arg1;
 - (void)flashButtonAction:(id)arg1;
 - (void)flashButtonCancelUI:(id)arg1;
+- (id)flashButtonImage;
 - (void)flashFilterButtonNameFeedback;
 - (id)flashMenuButtonSizes;
 - (void)flashMoveCloserFeedback;
@@ -419,6 +426,7 @@
 - (void)hideUIForInterruptedSession:(BOOL)arg1;
 - (void)image:(id)arg1 didFinishSavingWithError:(id)arg2 contextInfo:(void *)arg3;
 - (id)imageMeshTransformWithImage:(id)arg1 backgroundImage:(id)arg2 imageViewFrame:(struct CGRect)arg3 imageQuad:(id)arg4 previewView:(id)arg5 previewBounds:(struct CGRect)arg6 scrimView:(id)arg7;
+- (unsigned int)imageOrientationFromDevice;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 imageCache:(id)arg2;
 - (void)initializeFilters;
@@ -445,6 +453,7 @@
 - (void)restartImageCaptureSessionIfNecessary;
 - (void)resumeCaptureSessionForMovieRecording;
 - (void)resumeInterruptedSession:(id)arg1;
+- (void)retakeButtonWasPressed;
 - (id)rootView;
 - (void)saveAction:(id)arg1;
 - (void)saveCapturedImage:(id)arg1 metaData:(id)arg2 rects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -470,11 +479,11 @@
 - (void)subjectAreaDidChange:(id)arg1;
 - (BOOL)sufficientlyLarge:(id)arg1 forImageSize:(struct CGSize)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
-- (void)suppressImageHairlineThickeningForButtons:(id)arg1;
 - (struct CGRect)targetViewRect;
 - (void)thumbnailViewDidTap:(id)arg1;
 - (void)toggleAutoCapture:(id)arg1;
 - (void)toggleRecording:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAccessibilityEnabledStateForUIElements;
 - (void)updateAccessibilityFocusForHidingFilterSettingsUI;
 - (void)updateAccessibilityFocusForHidingFlashSettingsUI;
@@ -490,6 +499,7 @@
 - (void)updateFilterChoiceButtonScrollPositionAnimated:(BOOL)arg1;
 - (void)updateFilterChoiceButtonSelection:(short)arg1;
 - (void)updateFonts;
+- (void)updateLabelColors;
 - (void)updateRecentlyObservedRectanglesWithRect:(id)arg1;
 - (void)updateThumbnailContainerViewConstraintConstantForIPad;
 - (BOOL)useGestureRecognizerForVolumeButtons;

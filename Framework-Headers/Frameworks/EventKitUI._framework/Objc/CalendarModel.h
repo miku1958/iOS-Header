@@ -67,7 +67,9 @@
 + (id)calendarModelWithDataPath:(id)arg1;
 + (id)calendarModelWithEventStore:(id)arg1;
 + (unsigned long long)errorForSource:(id)arg1;
++ (unsigned long long)errorForSubscribedCalendarChildrenOfSource:(id)arg1;
 + (id)sortedEnabledDelegateSourcesFromStore:(id)arg1;
++ (void)temporarilyIgnoreInsecureConnectionErrorsForCalendars:(id)arg1;
 + (void)temporarilyIgnoreInvalidCredentialsErrorForSource:(id)arg1;
 - (void).cxx_destruct;
 - (id)_calendarsForCurrentIdentityFromCalendars:(id)arg1 lock:(BOOL)arg2;
@@ -82,6 +84,7 @@
 - (void)_invalidateOccurrenceCacheDataSources;
 - (void)_loadVisibleCalendarsIfNeeded;
 - (void)_localeChanged:(id)arg1;
+- (void)_notificationBlacklisted;
 - (void)_notificationCountExpired:(id)arg1;
 - (id)_notificationMonitor;
 - (void)_notificationsExpired:(id)arg1;
@@ -101,6 +104,7 @@
 - (void)_tzSupportTodayRolledOver;
 - (void)addOccurrenceAwaitingDeletion:(id)arg1;
 - (void)addOccurrenceAwaitingRefresh:(id)arg1;
+- (void)addRespondedNotificationObjectID:(id)arg1;
 - (id)allEventNotificationReferences;
 - (unsigned long long)allEventNotificationsCount;
 - (long long)cachedFakeTodayIndex;
@@ -110,6 +114,7 @@
 - (BOOL)cachedOccurrencesAreLoaded;
 - (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3 wasEmptyLoad:(BOOL)arg4;
 - (id)calendarsForCurrentIdentityFromCalendars:(id)arg1;
+- (void)checkLocationAuthorizationAndAllowEventLocationPrediction;
 - (id)closestOccurrenceToTomorrowForEventUID:(int)arg1;
 - (long long)countAccountsInInitialSync;
 - (BOOL)countSourcesWithErrors;
@@ -129,6 +134,7 @@
 - (id)initWithEventStore:(id)arg1;
 - (BOOL)invitationBearingStoresExistForEvents;
 - (BOOL)isCalendarVisibleWithID:(id)arg1;
+- (void)locationPrecisionDeterminedNotification:(id)arg1;
 - (long long)numberOfCachedOccurrencesInSection:(long long)arg1;
 - (long long)numberOfCachedOccurrencesInSection:(long long)arg1 usingFilter:(BOOL)arg2;
 - (long long)numberOfDaysWithCachedOccurrences;

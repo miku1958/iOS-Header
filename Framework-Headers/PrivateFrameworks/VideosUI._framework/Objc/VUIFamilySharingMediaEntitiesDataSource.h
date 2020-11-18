@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     VUIMediaAPIResponseMetadata *_responseMetadata;
     NSNumber *_desiredBatchSize;
     NSMutableArray *_processedEntities;
+    unsigned long long _numberOfEntitiesProcessedInBatch;
 }
 
 @property (strong, nonatomic) NSNumber *desiredBatchSize; // @synthesize desiredBatchSize=_desiredBatchSize;
 @property (nonatomic) BOOL fetchAllEntities; // @synthesize fetchAllEntities=_fetchAllEntities;
 @property (nonatomic) BOOL loadingNextBatch; // @synthesize loadingNextBatch=_loadingNextBatch;
 @property (strong, nonatomic) VUIMediaAPIClient *mediaClient; // @synthesize mediaClient=_mediaClient;
+@property (nonatomic) unsigned long long numberOfEntitiesProcessedInBatch; // @synthesize numberOfEntitiesProcessedInBatch=_numberOfEntitiesProcessedInBatch;
 @property (nonatomic) BOOL orderEpisodesByEpisodeNumber; // @synthesize orderEpisodesByEpisodeNumber=_orderEpisodesByEpisodeNumber;
 @property (strong, nonatomic) NSMutableArray *processedEntities; // @synthesize processedEntities=_processedEntities;
 @property (strong, nonatomic) VUIMediaAPIResponseMetadata *responseMetadata; // @synthesize responseMetadata=_responseMetadata;

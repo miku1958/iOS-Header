@@ -6,8 +6,6 @@
 
 #import <FrontBoardServices/FBSSceneSettings.h>
 
-@class NSArray;
-
 @interface FBSMutableSceneSettings : FBSSceneSettings
 {
 }
@@ -16,8 +14,8 @@
 @property (nonatomic, getter=isForeground) BOOL foreground; // @dynamic foreground;
 @property (nonatomic) struct CGRect frame; // @dynamic frame;
 @property (nonatomic) long long interfaceOrientation; // @dynamic interfaceOrientation;
+@property (nonatomic) long long interruptionPolicy; // @dynamic interruptionPolicy;
 @property (nonatomic) double level; // @dynamic level;
-@property (copy, nonatomic) NSArray *occlusions; // @dynamic occlusions;
 
 + (BOOL)_isMutable;
 - (void)_setDisplayConfiguration:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <AudioToolbox/AUAudioUnit.h>
 
-@class AUAudioUnitBus, AUAudioUnitBusArray;
+@class AUAudioUnitBus, AUAudioUnitBusArray, AVAudioFormat;
 
 __attribute__((visibility("hidden")))
 @interface REAUHostAudioUnit : AUAudioUnit
@@ -29,10 +29,14 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<AudioStreamRecordingManager::StreamWriter> _recordingStreamWriter;
     unsigned int _desiredLayoutTag;
     AUAudioUnit *_target;
+    CDUnknownBlockType _pullInputOverride;
+    AVAudioFormat *_inputFormat;
 }
 
 @property (nonatomic) unsigned int desiredLayoutTag; // @synthesize desiredLayoutTag=_desiredLayoutTag;
+@property (strong, nonatomic) AVAudioFormat *inputFormat; // @synthesize inputFormat=_inputFormat;
 @property (nonatomic, getter=isPrepared) BOOL prepared;
+@property (copy, nonatomic) CDUnknownBlockType pullInputOverride; // @synthesize pullInputOverride=_pullInputOverride;
 @property (nonatomic, getter=isRunning) BOOL running;
 @property (nonatomic) float signalPresent; // @dynamic signalPresent;
 @property (strong, nonatomic) AUAudioUnit *target; // @synthesize target=_target;
@@ -44,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deallocateRenderResources;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
-- (id)inputBusses;
 - (CDUnknownBlockType)internalRenderBlock;
 - (id)outputBusses;
 - (void)prepareTargetAU;

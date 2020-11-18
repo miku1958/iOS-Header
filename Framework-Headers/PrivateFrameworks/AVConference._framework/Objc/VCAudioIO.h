@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)stopWithCompletionHandlerInternal:(CDUnknownBlockType)arg1;
 
 @end
 

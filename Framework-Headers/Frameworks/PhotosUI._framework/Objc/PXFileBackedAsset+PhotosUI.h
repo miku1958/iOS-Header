@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long deferredLogInfo;
+@property (readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate;
+@property (readonly, nonatomic) BOOL needsDeferredProcessing;
 @property (readonly, nonatomic) unsigned long long originalFilesize;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisVideoDuration;

@@ -8,7 +8,7 @@
 
 #import <KeynoteQuicklook/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, NSDictionary, NSMapTable, NSMutableArray, NSString, TSDFPSCounter;
+@class CALayer, KNAnimatedSlideView, NSDictionary, NSMapTable, NSMutableArray, NSString, TSDFPSCounter;
 
 @interface KNTransitionRenderer : KNAnimationRenderer <CAAnimationDelegate>
 {
@@ -29,6 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) KNAnimatedSlideView *incomingAnimatedSlideView;
 @property (readonly) Class superclass;
 
 - (BOOL)addAnimationsAtTime:(double)arg1 relativeToCurrentMediaTime:(BOOL)arg2;

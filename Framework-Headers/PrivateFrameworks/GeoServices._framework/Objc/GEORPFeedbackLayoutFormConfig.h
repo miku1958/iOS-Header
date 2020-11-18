@@ -8,26 +8,28 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray;
 
 @interface GEORPFeedbackLayoutFormConfig : PBCodable <NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     NSMutableArray *_layoutFields;
     int _formType;
     unsigned int _ttl;
+    BOOL _enabled;
     struct {
         unsigned int has_formType:1;
         unsigned int has_ttl:1;
+        unsigned int has_enabled:1;
     } _flags;
 }
 
+@property (nonatomic) BOOL enabled;
 @property (nonatomic) int formType;
+@property (nonatomic) BOOL hasEnabled;
 @property (nonatomic) BOOL hasFormType;
 @property (nonatomic) BOOL hasTtl;
 @property (strong, nonatomic) NSMutableArray *layoutFields;
 @property (nonatomic) unsigned int ttl;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 + (Class)layoutFieldType;
@@ -35,14 +37,16 @@
 - (int)StringAsFormType:(id)arg1;
 - (void)addLayoutField:(id)arg1;
 - (void)clearLayoutFields;
-- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)formTypeAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)layoutFieldAtIndex:(unsigned long long)arg1;
 - (unsigned long long)layoutFieldsCount;
 - (void)mergeFrom:(id)arg1;

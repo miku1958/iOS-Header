@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *effectiveProblemMessage;
 @property (nonatomic) BOOL needsSyncUp; // @synthesize needsSyncUp=_needsSyncUp;
 @property (strong, nonatomic) NSNumber *pendingRequestID; // @synthesize pendingRequestID=_pendingRequestID;
+@property (readonly, nonatomic) BOOL shouldResetAfterFixingState;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
 
 + (BOOL)supportsSecureCoding;

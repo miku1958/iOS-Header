@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_didPressDoneButton:(id)arg1;
 - (void)_hasSelectionDidChangeFrom:(BOOL)arg1 to:(BOOL)arg2;
 - (void)_selectCellsForSelectedIdentifiers:(id)arg1;
+- (void)_showNewCategoriesCompatibilityAlertIfNeeded;
 - (void)_updateApplicationSpecifiersWithBundleIdentifier:(id)arg1 categoryIdentifier:(id)arg2 shouldInsertSpecifier:(BOOL)arg3;
 - (id)_webDomainSpecifierForDomain:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;

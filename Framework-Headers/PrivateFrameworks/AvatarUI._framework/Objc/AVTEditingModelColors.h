@@ -23,6 +23,7 @@
 + (void)createColorsForPaletteCategory:(long long)arg1 inCache:(id)arg2 withDerivedPaletteCategories:(id)arg3;
 - (void).cxx_destruct;
 - (id)colorForSettingKind:(CDStruct_597dd055)arg1 identifier:(id)arg2;
+- (BOOL)colorHasDerivedColorDependency:(id)arg1;
 - (id)colorsForSettingKind:(CDStruct_597dd055)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

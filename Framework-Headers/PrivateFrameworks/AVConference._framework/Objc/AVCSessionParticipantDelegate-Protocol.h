@@ -14,7 +14,6 @@
 - (void)participant:(AVCSessionParticipant *)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(NSError *)arg4;
 - (void)participant:(AVCSessionParticipant *)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(NSError *)arg4;
 - (void)participant:(AVCSessionParticipant *)arg1 mediaPrioritiesDidChange:(NSDictionary *)arg2;
-- (void)participant:(AVCSessionParticipant *)arg1 prominenceDidChange:(NSDictionary *)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteAudioEnabledDidChange:(BOOL)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteAudioPausedDidChange:(BOOL)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteVideoEnabledDidChange:(BOOL)arg2;

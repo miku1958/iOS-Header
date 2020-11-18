@@ -14,9 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axChatItemForIndex:(long long)arg1;
-- (id)closeButton;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

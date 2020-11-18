@@ -17,10 +17,14 @@
 }
 
 - (void).cxx_destruct;
+- (id)changeDetectionCriteriaByAddingChangeDetectionCriteria:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateEntitiesAndAttributeIndexesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateEntitiesAndRelationshipIndexesBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithPLQueryChangeDetectionCriteria:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

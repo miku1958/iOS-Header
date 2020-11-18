@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, RTCReporting, RTCSecureHierarchyToken;
+@class NSData, NSString, RTCReporting, RTCSecureHierarchyToken;
 
 @interface PKAnalyticsReporter : NSObject
 {
@@ -14,6 +14,7 @@
     RTCReporting *_session;
     RTCSecureHierarchyToken *_sessionToken;
     struct os_unfair_lock_s _lockArchive;
+    NSString *_subject;
 }
 
 + (id)archivedSessionTokenForSubject:(id)arg1;

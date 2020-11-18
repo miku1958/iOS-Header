@@ -106,6 +106,7 @@
 - (id)succinctDescriptionBuilder;
 - (BOOL)undimsScreen;
 - (BOOL)unlocksScreen;
+- (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
 - (BOOL)wakeDisplay;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)arg1;

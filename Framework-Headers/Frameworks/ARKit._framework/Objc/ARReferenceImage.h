@@ -6,55 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <ARKit/NSSecureCoding-Protocol.h>
+@class NSString;
 
-@class ARReferenceImageCachedError, NSString, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
-
-@interface ARReferenceImage : NSObject <NSSecureCoding>
+@interface ARReferenceImage : NSObject
 {
-    NSObject<OS_dispatch_queue> *_verificationQueue;
-    NSObject<OS_dispatch_semaphore> *_verificationQueueSemaphore;
     NSString *_name;
     NSString *_resourceGroupName;
-    double _estimatedQuality;
-    ARReferenceImageCachedError *_cachedVerificationError;
-    struct __CVBuffer *_pixelBuffer;
-    struct __CVBuffer *_alphaMask;
-    NSUUID *_identifier;
     struct CGSize _physicalSize;
 }
 
-@property (readonly, nonatomic) struct __CVBuffer *alphaMask; // @synthesize alphaMask=_alphaMask;
-@property (strong) ARReferenceImageCachedError *cachedVerificationError; // @synthesize cachedVerificationError=_cachedVerificationError;
-@property double estimatedQuality; // @synthesize estimatedQuality=_estimatedQuality;
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) struct CGSize imageSize;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize physicalSize; // @synthesize physicalSize=_physicalSize;
-@property (readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (readonly, nonatomic) NSString *resourceGroupName; // @synthesize resourceGroupName=_resourceGroupName;
 
 + (id)referenceImagesInGroupNamed:(id)arg1 bundle:(id)arg2;
-+ (id)referenceImagesInGroupNamed:(id)arg1 catalog:(id)arg2;
-+ (id)referenceImagesInGroupNamed:(id)arg1 catalogName:(id)arg2 bundle:(id)arg3;
-+ (id)referenceImagesInGroupNamed:(id)arg1 catalogURL:(id)arg2;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (void)estimateQualityWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (unsigned long long)hash;
 - (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3;
-- (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 addPadding:(BOOL)arg4;
-- (id)initWithCIImage:(id)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 alphaInfo:(unsigned int *)arg4 addPadding:(BOOL)arg5;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3;
-- (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 addPadding:(BOOL)arg4;
-- (BOOL)isEqual:(id)arg1;
-- (void)setResourceGroupName:(id)arg1;
 - (void)validateWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

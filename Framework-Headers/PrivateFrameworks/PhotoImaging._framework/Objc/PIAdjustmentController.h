@@ -31,13 +31,17 @@
 - (id)_primitiveValueForKey:(id)arg1;
 - (void)_setPrimitiveValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)canHaveAuto;
+- (id)debugDescription;
 - (BOOL)hasAutoKeyInSchema;
 - (BOOL)hasInputKey:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithAdjustment:(id)arg1;
 - (void)interpolateFromStart:(id)arg1 toEnd:(id)arg2 progress:(double)arg3;
 - (BOOL)isAuto;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1 forKeys:(id)arg2;
 - (BOOL)isEqual:(id)arg1 visualChangesOnly:(BOOL)arg2;
+- (BOOL)isEqualToAdjustmentController:(id)arg1;
 - (BOOL)isSettingEqual:(id)arg1 forKey:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)setFromAdjustment:(id)arg1;

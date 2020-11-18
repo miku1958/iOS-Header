@@ -8,6 +8,7 @@
 
 @class ICUserIdentity, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, NSIndexSet;
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseRoomMusicKitResponseParser : NSObject
 {
     long long _parseOnceToken;

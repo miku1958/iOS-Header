@@ -21,6 +21,7 @@
 - (id)_connection;
 - (void)_fetchApplicationsInProcess:(CDUnknownBlockType)arg1;
 - (id)_nonConformingBundleList;
+- (id)_otherBundlesOfInterest;
 - (void)fetchApplications:(CDUnknownBlockType)arg1;
 - (id)init;
 

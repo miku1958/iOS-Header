@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoard/SBMainScreenActiveInterfaceOrientationWindow.h>
+#import <SpringBoard/SBSecureMainScreenActiveInterfaceOrientationWindow.h>
 
 #import <SpringBoard/SBIconDragPreviewContaining-Protocol.h>
 
 @class UIView;
 
-@interface SBIconDragPlatterWindow : SBMainScreenActiveInterfaceOrientationWindow <SBIconDragPreviewContaining>
+@interface SBIconDragPlatterWindow : SBSecureMainScreenActiveInterfaceOrientationWindow <SBIconDragPreviewContaining>
 {
 }
 

@@ -20,8 +20,10 @@
 + (id)extensionRequestHandler;
 + (id)extensionStatusPublisher;
 + (id)httpLogging;
++ (id)legacyProfilesFilter;
 + (id)locations;
 + (id)personaHelper;
++ (id)profilesController;
 + (id)unresolvedDataAsset;
 + (id)unresolvedFileAsset;
 

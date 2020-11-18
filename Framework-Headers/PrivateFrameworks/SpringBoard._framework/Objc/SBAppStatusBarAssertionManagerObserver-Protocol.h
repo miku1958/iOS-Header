@@ -6,11 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAppStatusBarAssertionManager, SBAppStatusBarSettings;
+@class SBAppStatusBarAssertionManager, SBAppStatusBarSettings, SBAppStatusBarSettingsAssertion;
 
 @protocol SBAppStatusBarAssertionManagerObserver <NSObject>
 
 @optional
+- (void)statusBarAssertionManager:(SBAppStatusBarAssertionManager *)arg1 addStatusBarSettingsAssertion:(SBAppStatusBarSettingsAssertion *)arg2;
+- (void)statusBarAssertionManager:(SBAppStatusBarAssertionManager *)arg1 removeStatusBarSettingsAssertion:(SBAppStatusBarSettingsAssertion *)arg2;
 - (void)statusBarAssertionManager:(SBAppStatusBarAssertionManager *)arg1 statusBarSettingsDidChange:(SBAppStatusBarSettings *)arg2;
 @end
 

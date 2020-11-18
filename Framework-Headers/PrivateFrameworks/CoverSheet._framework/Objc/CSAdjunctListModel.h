@@ -16,8 +16,8 @@
     NSMutableDictionary *_identifiersToItems;
     NSMutableSet *_pendingActions;
     BOOL _suspended;
-    id<SBFActionProviding> _contentActionProvider;
     id<CSAdjunctListModelDelegate> _delegate;
+    id<SBFActionProviding> _contentActionProvider;
 }
 
 @property (weak, nonatomic) id<SBFActionProviding> contentActionProvider; // @synthesize contentActionProvider=_contentActionProvider;

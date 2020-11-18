@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long recentSampleLimit; // @synthesize recentSampleLimit=_recentSampleLimit;
 @property (nonatomic) BOOL shouldConsiderRequeryDueToDeletedObjects; // @synthesize shouldConsiderRequeryDueToDeletedObjects=_shouldConsiderRequeryDueToDeletedObjects;
 
-- (id)_cellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3;
+- (id)_cellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3 activeAlgorithmVersion:(long long)arg4;
 - (BOOL)calendarDateSelectorVisible;
 - (BOOL)canEditRowAtIndexPath:(id)arg1;
 - (long long)cellStyle;

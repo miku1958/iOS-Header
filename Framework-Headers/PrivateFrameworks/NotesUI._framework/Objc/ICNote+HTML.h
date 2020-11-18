@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSArray *attachmentActivityItemsForSharing;
 @property (readonly, strong, nonatomic) ICCollaborationColorManager *collaborationColorManager;
 @property (nonatomic, getter=isHandwritingRecognitionEnabled) BOOL handwritingRecognitionEnabled;
+@property (readonly, nonatomic) BOOL ic_hasLightBackground;
 @property (nonatomic) BOOL isDrawingStroke;
 @property (readonly, nonatomic) long long primaryWritingDirection;
 @property (copy, nonatomic) PKInk *selectedInk;
@@ -35,6 +36,7 @@
 + (id)mutableAttributedStringFromHTMLString:(id)arg1 readerDelegate:(id)arg2;
 + (id)tagDictionariesForAttributes:(id)arg1 attachmentConversionHandler:(CDUnknownBlockType)arg2;
 + (id)tagDictionaryForWrapperAroundParagraphStyle:(id)arg1;
++ (id)thumbnailImageForAttachment:(id)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(BOOL)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(BOOL *)arg7 isMovie:(BOOL *)arg8 movieDuration:(CDStruct_1b6d18a9 *)arg9;
 - (void)announceAccessibilitySelectionChangedByMerge;
 - (void)announceAccessibilitySelectionChangedByMergeWithSavedSelections:(id)arg1 beforeMergeTimestamp:(id)arg2;
 - (id)attachmentActivityItemsForSharingForRange:(struct _NSRange)arg1;
@@ -77,6 +79,7 @@
 - (void)updateModificationDateAndChangeCountAndSaveAfterDelay;
 - (void)updateModificationDateAndChangeCountAndSaveImmediately;
 - (void)updatePKDrawingsWithHandwritingRecognitionEnabled:(BOOL)arg1;
+- (BOOL)updateThumbnailAttachmentIdentifier;
 - (void)willMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
 @end
 

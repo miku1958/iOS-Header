@@ -9,17 +9,19 @@
 #import <ITMLKit/IKAppKeyboardBridge-Protocol.h>
 #import <ITMLKit/IKDOMFeature-Protocol.h>
 
-@class IKAppContext, IKJSKeyboard, NSString;
+@class IKAppContext, IKJSKeyboard, JSManagedValue, JSValue, NSArray, NSString;
 @protocol IKAppKeyboardDelegate;
 
 @interface IKAppKeyboard : NSObject <IKAppKeyboardBridge, IKDOMFeature>
 {
+    JSManagedValue *_jsHints;
     NSString *_jsText;
     NSString *_jsSource;
     NSString *_featureName;
     IKAppContext *_appContext;
     id<IKAppKeyboardDelegate> _delegate;
     NSString *_text;
+    NSArray *_hints;
     IKJSKeyboard *_jsKeyboard;
     NSString *_source;
 }
@@ -30,6 +32,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSArray *hints; // @synthesize hints=_hints;
+@property (copy, nonatomic, setter=setJSHints:) JSValue *jsHints;
 @property (weak, nonatomic, setter=setJSKeyboard:) IKJSKeyboard *jsKeyboard; // @synthesize jsKeyboard=_jsKeyboard;
 @property (copy, nonatomic, setter=setJSSource:) NSString *jsSource; // @synthesize jsSource=_jsSource;
 @property (copy, nonatomic, setter=setJSText:) NSString *jsText; // @synthesize jsText=_jsText;
@@ -39,6 +43,8 @@
 
 + (id)makeFeatureJSObjectForFeature:(id)arg1;
 - (void).cxx_destruct;
+- (void)_setText:(id)arg1 then:(CDUnknownBlockType)arg2;
+- (void)didSelectHintWithText:(id)arg1 searchTerm:(id)arg2;
 - (id)initWithDOMNode:(id)arg1 featureName:(id)arg2;
 
 @end

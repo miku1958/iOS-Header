@@ -15,6 +15,8 @@
 + (id)_dispatchQueue;
 + (CDUnknownBlockType)_internalHandlerForHandler:(CDUnknownBlockType)arg1 connection:(id)arg2;
 - (id)_newXPCConnection;
+- (void)addLinguisticAssetsAssertionForLanguage:(id)arg1 assertionID:(id)arg2 region:(id)arg3 clientID:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
+- (void)removeLinguisticAssetsAssertionWithIdentifier:(id)arg1 forClientID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)requestLinguisticAssetsForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

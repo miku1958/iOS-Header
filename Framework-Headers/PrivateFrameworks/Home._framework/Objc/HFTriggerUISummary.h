@@ -25,8 +25,9 @@
 @property (readonly, nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
 
 - (void).cxx_destruct;
-- (void)_updateWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(BOOL)arg3;
+- (void)_updateWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(BOOL)arg3 ignoringDisabled:(BOOL)arg4;
 - (id)initWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(BOOL)arg3;
+- (id)initWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(BOOL)arg3 ignoringDisabled:(BOOL)arg4;
 
 @end
 

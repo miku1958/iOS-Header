@@ -19,10 +19,12 @@
     unsigned int _wordID;
     double _recognitionScore;
     double _combinedScore;
+    double _alignmentScore;
     unsigned long long _properties;
     long long _substrokeCount;
 }
 
+@property (readonly, nonatomic) double alignmentScore;
 @property (readonly, nonatomic) double combinedScore;
 @property (readonly, nonatomic) unsigned long long properties;
 @property (readonly, nonatomic) double recognitionScore;
@@ -32,7 +34,7 @@
 @property (readonly, nonatomic) unsigned int wordID; // @synthesize wordID=_wordID;
 
 + (BOOL)supportsSecureCoding;
-+ (id)tokenWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 properties:(unsigned long long)arg6 substrokeCount:(long long)arg7;
++ (id)tokenWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 alignmentScore:(double)arg6 properties:(unsigned long long)arg7 substrokeCount:(long long)arg8;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -40,7 +42,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 properties:(unsigned long long)arg6 substrokeCount:(long long)arg7;
+- (id)initWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 alignmentScore:(double)arg6 properties:(unsigned long long)arg7 substrokeCount:(long long)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTokenizedTextResultToken:(id)arg1;
 - (BOOL)isEquivalentToToken:(id)arg1;

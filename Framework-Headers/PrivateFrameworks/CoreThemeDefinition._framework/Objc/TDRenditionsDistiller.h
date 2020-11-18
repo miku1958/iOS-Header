@@ -13,7 +13,7 @@
 {
     CoreThemeDocument *document;
     NSMutableArray *renditionInQueue;
-    NSMutableArray *psiDataInfoOutQueue;
+    NSMutableArray *csiDataInfoOutQueue;
     NSConditionLock *inQueueLock;
     NSConditionLock *outQueueLock;
     BOOL shouldCompressCSIDataFlag;

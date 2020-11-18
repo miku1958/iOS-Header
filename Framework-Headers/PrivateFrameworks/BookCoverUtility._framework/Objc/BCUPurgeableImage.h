@@ -13,6 +13,7 @@
 @interface BCUPurgeableImage : NSObject <BCUPurgeableImage>
 {
     struct CGImage *_image;
+    struct __IOSurface *_surface;
     double _contentsScale;
 }
 
@@ -26,7 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)initWithImage:(struct CGImage *)arg1 contentsScale:(double)arg2;
+- (id)initWithImage:(struct CGImage *)arg1 surface:(struct __IOSurface *)arg2 contentsScale:(double)arg3;
 - (BOOL)markAsNonVolatile;
 - (BOOL)markAsVolatile;
 

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class HDProfile, NSMutableArray, NSMutableDictionary, NSString, _HDAWDPeriodicAction;
 @protocol OS_dispatch_queue;
 
-@interface HDAWDSubmissionManager : NSObject <HDHealthDaemonReadyObserver, HDDiagnosticObject>
+@interface HDAWDSubmissionManager : NSObject <HDHealthDaemonReadyObserver, HDDiagnosticObject, HDAnalyticsSubmissionCoordinatorDelegate>
 {
     HDProfile *_profile;
     NSMutableDictionary *_serverConnectionsByComponentId;
@@ -24,7 +25,6 @@
     CDUnknownBlockType _testHandler;
 }
 
-@property (readonly, nonatomic) double activitySummaryQueryTimeout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,7 +36,7 @@
 - (long long)_CDACountWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)_aFibSamplesBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_actions;
-- (BOOL)_activitySummaryForActivitySummaryIndex:(long long)arg1 activitySummaryOut:(id *)arg2 error:(id *)arg3;
+- (id)_activitySummaryForActivityCacheIndex:(long long)arg1 error:(id *)arg2;
 - (BOOL)_addRowCountDeltaToEvent:(id)arg1 profile:(id)arg2 currentDate:(id)arg3;
 - (BOOL)_computeAndSubmitDatabaseStatsMetric:(BOOL)arg1;
 - (BOOL)_computeAndSubmitFitnessDailyReportWithAction:(id)arg1 force:(BOOL)arg2;
@@ -44,8 +44,13 @@
 - (BOOL)_computeAndSubmitHeartDailyAnalyticsWithAction:(id)arg1 force:(BOOL)arg2;
 - (BOOL)_computeAndSubmitSleepAlarmDailyReportWithAction:(id)arg1 force:(BOOL)arg2;
 - (BOOL)_computeAndSubmitSleepAlarmStatistics:(BOOL)arg1;
+- (long long)_countActiveEnergySamplesBetweenStartDate:(id)arg1 endDate:(id)arg2;
+- (long long)_countAnalyzedTachogramsPast24Hours;
+- (long long)_countMobileAssetsDownloadedPast24Hours;
 - (long long)_countOfObjectsWithSQLQuery:(id)arg1 database:(id)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4;
+- (long long)_countRecordedTachogramsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (long long)_deletedRowCountWithTransaction:(id)arg1 error:(id *)arg2;
+- (id)_ecgAlgorithmVersion;
 - (id)_ecgClassificationsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (BOOL)_enumerateAppleStandHoursFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)_exerciseMinuteHoursFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
@@ -53,14 +58,17 @@
 - (id)_hasWatchSourcesWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)_hourlyStatisticsCollectionForStartDate:(id)arg1 endDate:(id)arg2 quantityType:(id)arg3 statisticsOptions:(unsigned long long)arg4 error:(id *)arg5;
 - (long long)_int64ForKeyPrefix:(id)arg1 profile:(id)arg2 date:(id *)arg3 error:(id *)arg4;
+- (BOOL)_isBradycardiaDetectionEnabled;
+- (BOOL)_isTachycardiaDetectionEnabled;
 - (long long)_manuallyEnteredTypesCountWithTransaction:(id)arg1 error:(id *)arg2;
-- (id)_newActivitySummaryQueryHelperWithFilter:(id)arg1 initialResultsHandler:(CDUnknownBlockType)arg2;
 - (long long)_nonAppleSourcesCountWithTransaction:(id)arg1 error:(id *)arg2;
 - (long long)_nonAppleSourcesWithDataSince:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (long long)_objectRowCountWithTransaction:(id)arg1 afterRowId:(long long)arg2 error:(id *)arg3;
 - (void)_queue_start;
 - (void)_queue_updateFitnessDailyCollectionEnabled;
 - (void)_registerForFitnessDailyCollection;
+- (void)_resetCountAnalyzedTachogramsPast24Hours;
+- (void)_resetMobileAssetsDownloadedPast24Hours;
 - (id)_serverConnectionForComponentId:(unsigned int)arg1;
 - (BOOL)_setInt64:(long long)arg1 keyPrefix:(id)arg2 profile:(id)arg3 date:(id)arg4 error:(id *)arg5;
 - (id)_sleepConsistencyEventForMonthPriorToDate:(id)arg1 calendar:(id)arg2;
@@ -69,13 +77,15 @@
 - (id)_statisticsForTimeDeltas:(id)arg1;
 - (BOOL)_submitMetric:(id)arg1 container:(id)arg2 connection:(id)arg3 force:(BOOL)arg4;
 - (BOOL)_updateDatabaseStatsEvent:(id)arg1 profile:(id)arg2 currentDate:(id)arg3;
-- (id)_updateMonthDeltaToInt64:(long long)arg1 forKey:(id)arg2 profile:(id)arg3 currentDate:(id)arg4 error:(id *)arg5;
+- (id)_updateDeltaToInt64:(long long)arg1 forKey:(id)arg2 profile:(id)arg3 currentDate:(id)arg4 timeInterval:(double)arg5 error:(id *)arg6;
+- (BOOL)aggregateDatabaseSizeStats:(id)arg1;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
 - (BOOL)isFitnessDailyCollectionEnabled;
 - (id)motionToken;
+- (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetTask:(id)arg1;
 - (BOOL)runTask:(id)arg1 error:(id *)arg2;
 - (void)updateFitnessDailyCollectionEnabled;

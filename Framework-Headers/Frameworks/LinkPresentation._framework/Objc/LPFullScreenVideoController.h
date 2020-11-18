@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)didCompleteDismissal;
 - (void)dismiss;
 - (id)initWithPlayer:(id)arg1 sourceView:(id)arg2;
 - (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;

@@ -16,12 +16,15 @@
     NSMutableDictionary *_childDataSectionManagers;
     NSMutableDictionary *_childDataSectionIndexes;
     NSMapTable *_parentListItems;
+    BOOL _allowsEmptyDataSection;
+    BOOL _skipAssetCountFetches;
     PHCollectionList *_collectionList;
     long long _indentationLevel;
     PXPhotoKitCollectionsDataSourceManager *_collectionsDataSourceManager;
     PXPhotoKitCollectionsDataSource *_collectionsDataSource;
 }
 
+@property (nonatomic) BOOL allowsEmptyDataSection; // @synthesize allowsEmptyDataSection=_allowsEmptyDataSection;
 @property (readonly, nonatomic) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
 @property (strong, nonatomic) PXPhotoKitCollectionsDataSource *collectionsDataSource; // @synthesize collectionsDataSource=_collectionsDataSource;
 @property (readonly, nonatomic) PXPhotoKitCollectionsDataSourceManager *collectionsDataSourceManager; // @synthesize collectionsDataSourceManager=_collectionsDataSourceManager;
@@ -29,20 +32,24 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
+@property (readonly, nonatomic) BOOL skipAssetCountFetches; // @synthesize skipAssetCountFetches=_skipAssetCountFetches;
 @property (readonly) Class superclass;
 
 + (id)makeCollectionsDataSourceManagerForConfiguration:(id)arg1;
 - (void).cxx_destruct;
 - (id)_changeDetailsForItemAtIndex:(long long)arg1 childDataSection:(id)arg2 expanding:(BOOL)arg3;
+- (BOOL)_isThumbnailAllowedForCollection:(id)arg1;
 - (void)_requestParentForListItem:(id)arg1 hintIndex:(long long)arg2 resultHandler:(CDUnknownBlockType)arg3 recursionHandler:(CDUnknownBlockType)arg4;
 - (id)auxiliaryObjectForKey:(id)arg1 dataSectionObject:(id)arg2 hintIndex:(long long)arg3;
 - (void)collapseListItem:(id)arg1 hintIndex:(long long)arg2;
+- (id)collectionsDataSourceIfExisting;
 - (id)createDataSection;
 - (void)expandListItem:(id)arg1 hintIndex:(long long)arg2;
 - (id)initWithChildDataSectionManagers:(id)arg1;
 - (id)initWithCollectionList:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)pauseBackgroundFetching;
 - (void)startBackgroundFetchingIfNeeded;
 
 @end

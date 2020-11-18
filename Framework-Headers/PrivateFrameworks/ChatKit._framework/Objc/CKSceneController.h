@@ -19,8 +19,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_starkManagerSharedInstance;
 - (id)_suppressionContextsForChatIdentifier:(id)arg1 personCentricID:(id)arg2;
+- (id)messagesControllersFromAllScenes;
 - (id)messagesSceneDelegate;
 - (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 

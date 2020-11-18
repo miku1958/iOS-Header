@@ -20,22 +20,30 @@ __attribute__((visibility("hidden")))
     NSString *_newMode;
     BOOL _isGlobeKeyDown;
     BOOL _usingCapsLockLanguageSwitch;
+    BOOL _dismissingEmojiPopover;
     NSString *_loadedIdentifier;
 }
 
+@property (nonatomic) BOOL dismissingEmojiPopover; // @synthesize dismissingEmojiPopover=_dismissingEmojiPopover;
 @property (nonatomic) BOOL isGlobeKeyDown; // @synthesize isGlobeKeyDown=_isGlobeKeyDown;
 @property (copy, nonatomic) NSString *loadedIdentifier; // @synthesize loadedIdentifier=_loadedIdentifier;
 @property (nonatomic) BOOL usingCapsLockLanguageSwitch; // @synthesize usingCapsLockLanguageSwitch=_usingCapsLockLanguageSwitch;
 
 + (id)activeInstance;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_showSwitcherViewAsHUD;
+- (void)cancelHideSwitcherTimer;
 - (void)cancelShowSwitcherTimer;
+- (void)cleanUpAfterHide;
 - (void)clearHideSwitcherTimer;
 - (void)clearKeyHoldTimer;
 - (void)clearShowSwitcherTimer;
 - (void)dealloc;
+- (BOOL)handleEmojiPicker;
+- (BOOL)handleGlobeKeyEvent:(id)arg1 switcherIsVisible:(BOOL)arg2;
 - (BOOL)handleModifiersChangedEvent:(id)arg1;
+- (BOOL)handleNavigationEvent:(id)arg1;
 - (void)handleRotate:(id)arg1;
 - (BOOL)handleSwitchCommand:(BOOL)arg1;
 - (BOOL)handleSwitchCommand:(BOOL)arg1 withHUD:(BOOL)arg2 withDelay:(BOOL)arg3;
@@ -46,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)inputModeIdentifierWithNextFlag:(BOOL)arg1;
 - (BOOL)isVisible;
 - (BOOL)isVisibleOrHiding;
+- (BOOL)needsFullHUD;
 - (void)showSwitcherShouldAutoHide:(BOOL)arg1;
 - (void)showSwitcherWithAutoHide;
 - (void)showSwitcherWithoutAutoHide;

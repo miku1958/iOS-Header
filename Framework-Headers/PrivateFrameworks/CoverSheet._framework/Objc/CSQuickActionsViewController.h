@@ -55,6 +55,7 @@
 - (void)_updateFlashlightButtonState;
 - (BOOL)allowsCameraPress;
 - (BOOL)allowsFlashlight;
+- (BOOL)allowsFlashlightInteraction;
 - (void)dealloc;
 - (void)fireActionForButton:(id)arg1;
 - (void)flashlightAvailabilityDidChange:(BOOL)arg1;

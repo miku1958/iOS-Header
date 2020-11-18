@@ -18,7 +18,6 @@
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilitySearchBarMaskView;
 - (id)_accessibilitySubviews;
-- (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)_searchFieldBeginEditing;
 - (void)_searchFieldEndEditing;
 - (id)imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2;

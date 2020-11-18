@@ -22,7 +22,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)combined:(id)arg1;
 - (void).cxx_destruct;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)initWithExpressions:(id)arg1;
 
 @end

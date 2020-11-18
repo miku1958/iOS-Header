@@ -10,17 +10,21 @@
 #import <Home/NSCopying-Protocol.h>
 
 @class HFColorCollection, NSString, UIColor;
+@protocol HFColorLikeObject;
 
 @interface HFColorPaletteColor : NSObject <NAEquatable, NSCopying>
 {
     HFColorCollection *_colorCollection;
+    id<HFColorLikeObject> _colorValue;
 }
 
 @property (readonly, nonatomic) UIColor *UIColor;
 @property (readonly, nonatomic) HFColorCollection *colorCollection; // @synthesize colorCollection=_colorCollection;
+@property (readonly, nonatomic) id<HFColorLikeObject> colorValue; // @synthesize colorValue=_colorValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isNaturalLightColor;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -28,12 +32,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentationWithPreferredPaletteType:(unsigned long long)arg1;
 - (id)initWithColorCollection:(id)arg1;
+- (id)initWithColorValue:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithNaturalLightColor;
 - (id)initWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3;
-- (id)initWithUIColor:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSimilarToColor:(id)arg1;
-- (BOOL)isSimilarToColor:(id)arg1 ignoreTemperature:(BOOL)arg2;
 
 @end
 

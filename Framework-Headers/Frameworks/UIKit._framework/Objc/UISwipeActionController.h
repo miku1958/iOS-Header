@@ -8,11 +8,12 @@
 
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 
-@class NSIndexPath, NSMutableSet, NSString, UIScrollView, UISwipeActionsConfiguration, UISwipeOccurrence, UIView, _UISwipeHandler;
+@class NSIndexPath, NSMutableSet, NSSet, NSString, UIScrollView, UISwipeActionsConfiguration, UISwipeOccurrence, UIView, _UISwipeHandler;
 @protocol UISwipeActionHost, UISwipeActionHost_Internal;
 
 @interface UISwipeActionController : NSObject <_UIScrollViewScrollObserver>
 {
+    UISwipeOccurrence *_preparingSwipeOccurrence;
     id<UISwipeActionHost> _swipeActionHost;
     unsigned long long _style;
     UISwipeActionsConfiguration *_incomingSwipeActionsConfiguration;
@@ -37,12 +38,16 @@
 @property (strong, nonatomic) _UISwipeHandler *swipeHandler; // @synthesize swipeHandler=_swipeHandler;
 @property (strong, nonatomic) NSMutableSet *swipeOccurrences; // @synthesize swipeOccurrences=_swipeOccurrences;
 @property (readonly, nonatomic) NSIndexPath *swipedIndexPath;
+@property (readonly, nonatomic) NSSet *swipedIndexPaths;
 @property (readonly, nonatomic) UIView *swipedItemView;
 
 - (void).cxx_destruct;
 - (id)_existingSwipeOccurrenceForIndexPath:(id)arg1;
+- (BOOL)_isSwipeForIndexPathFirstOccurrenceBeginningOrLastOccurrenceEnding:(id)arg1;
 - (void)_observeScrollViewDidScroll:(id)arg1;
+- (id)_swipeActionsConfigurationForSwipeDirection:(unsigned long long)arg1 indexPath:(id)arg2;
 - (unsigned long long)_swipeDirectionForLeadingEdge:(BOOL)arg1;
+- (id)_swipedViewForItemAtIndexPath:(id)arg1;
 - (CDStruct_324b76a9)configureForSwipeDirection:(unsigned long long)arg1 configuration:(id)arg2 startingAtTouchLocation:(struct CGPoint)arg3;
 - (void)dealloc;
 - (void)deleteRowAtIndexPath:(id)arg1;
@@ -52,6 +57,8 @@
 - (void)insertSectionAtIndex:(unsigned long long)arg1;
 - (void)moveRowAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)moveSectionAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
+- (void)prepareForSwipeDirection:(unsigned long long)arg1 startingAtTouchLocation:(struct CGPoint)arg2;
+- (void)reloadData;
 - (void)resetSwipedItemAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)swipeHandler:(id)arg1 didConfirmSwipeWithInfo:(CDStruct_9b6dff2a)arg2;
 - (void)swipeHandler:(id)arg1 didGenerateSwipeWithInfo:(CDStruct_9b6dff2a)arg2 isTracking:(BOOL)arg3;
@@ -64,7 +71,6 @@
 - (void)swipeOccurrenceDidFinish:(id)arg1;
 - (BOOL)touchAtLocationShouldDismissSwipedItem:(struct CGPoint)arg1 isTouchUp:(BOOL)arg2;
 - (void)updateLayout;
-- (void)updateSwipedIndexPath:(id)arg1;
 
 @end
 

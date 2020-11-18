@@ -20,7 +20,10 @@
 @property (readonly) BOOL hasNotificationCountEntitlement;
 @property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) BOOL internalAccessLevelGranted;
+@property (readonly) BOOL isCalendarDaemon;
+@property (readonly) BOOL isFirstPartyCalendarApp;
 @property (readonly) BOOL shouldTrustClientEnforcedManagedConfigurationAccess;
+@property (readonly) BOOL storageManagementAccessGranted;
 @property (readonly) BOOL testingAccessLevelGranted;
 
 @end

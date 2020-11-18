@@ -42,18 +42,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_locationHint:1;
         unsigned int read_placeNameHint:1;
         unsigned int read_vendorId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressHint:1;
-        unsigned int wrote_addressObjectHint:1;
-        unsigned int wrote_externalItemId:1;
-        unsigned int wrote_formattedAddressLineHints:1;
-        unsigned int wrote_locationHint:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeNameHint:1;
-        unsigned int wrote_vendorId:1;
-        unsigned int wrote_addressGeocodeAccuracyHint:1;
-        unsigned int wrote_placeTypeHint:1;
-        unsigned int wrote_resultProviderId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -85,14 +74,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
 - (int)StringAsPlaceTypeHint:(id)arg1;
-- (void)_addNoFlagsFormattedAddressLineHint:(id)arg1;
-- (void)_readAddressHint;
-- (void)_readAddressObjectHint;
-- (void)_readExternalItemId;
-- (void)_readFormattedAddressLineHints;
-- (void)_readLocationHint;
-- (void)_readPlaceNameHint;
-- (void)_readVendorId;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 - (void)clearFormattedAddressLineHints;
@@ -106,11 +87,14 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithExternalBusinessID:(id)arg1 contentProvider:(id)arg2;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithMapItemToRefine:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 contentProvider:(id)arg3;
 - (id)initWithMuid:(unsigned long long)arg1 locationHint:(CDStruct_c3b9c2ee)arg2 placeNameHint:(id)arg3 resultProviderId:(int)arg4 contentProvider:(id)arg5;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 muid:(unsigned long long)arg3 resultProviderId:(int)arg4 contentProvider:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)placeTypeHintAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

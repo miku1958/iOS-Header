@@ -26,7 +26,7 @@
 - (id)setupContentView;
 - (id)subtitleLabelText;
 - (void)tlk_updateForAppearance:(id)arg1;
-- (BOOL)usesDefaultInsets;
+- (BOOL)usesDefaultLayoutMargins;
 
 @end
 

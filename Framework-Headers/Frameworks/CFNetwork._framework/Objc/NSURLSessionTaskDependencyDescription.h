@@ -10,20 +10,22 @@
 
 @interface NSURLSessionTaskDependencyDescription : NSObject
 {
+    BOOL _exclusive;
+    float _priority;
+    __NSURLSessionTaskDependencyResourceIdentifier *_dependent;
+    __NSURLSessionTaskDependencyResourceIdentifier *_parent;
     NSString *_dependentURLPath;
     NSString *_dependentMimeType;
     NSString *_parentURLPath;
     NSString *_parentMimeType;
 }
 
-@property (strong, nonatomic) __NSURLSessionTaskDependencyResourceIdentifier *_dependent; // @dynamic _dependent;
-@property (strong, nonatomic) __NSURLSessionTaskDependencyResourceIdentifier *_parent; // @dynamic _parent;
 @property (readonly) NSString *dependentMimeType; // @synthesize dependentMimeType=_dependentMimeType;
 @property (readonly) NSString *dependentURLPath; // @synthesize dependentURLPath=_dependentURLPath;
-@property (nonatomic) BOOL exclusive; // @dynamic exclusive;
+@property (nonatomic) BOOL exclusive; // @synthesize exclusive=_exclusive;
 @property (readonly) NSString *parentMimeType; // @synthesize parentMimeType=_parentMimeType;
 @property (readonly) NSString *parentURLPath; // @synthesize parentURLPath=_parentURLPath;
-@property (nonatomic) float priority; // @dynamic priority;
+@property (nonatomic) float priority; // @synthesize priority=_priority;
 
 + (id)taskDependencyDescriptionWithMimeType:(id)arg1 parentMimeType:(id)arg2;
 + (id)taskDependencyDescriptionWithMimeType:(id)arg1 parentURLPath:(id)arg2;
@@ -31,6 +33,8 @@
 + (id)taskDependencyDescriptionWithParentURLPath:(id)arg1;
 + (id)taskDependencyDescriptionWithURLPath:(id)arg1 parentMimeType:(id)arg2;
 + (id)taskDependencyDescriptionWithURLPath:(id)arg1 parentURLPath:(id)arg2;
+- (void)dealloc;
+- (id)description;
 
 @end
 

@@ -36,8 +36,8 @@
 - (void).cxx_destruct;
 - (id)UTITypes;
 - (void)__viewControllerWillBePresented:(BOOL)arg1;
-- (id)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
-- (void)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 forContentVariation:(id)arg4;
+- (void)_addAttachmentDataItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 forContentVariation:(id)arg4;
+- (id)_addAttachmentItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)_addAttachmentWithFileURL:(id)arg1 mimeType:(id)arg2;
 - (id)_addContentVariationWithName:(id)arg1;
 - (id)_impl;

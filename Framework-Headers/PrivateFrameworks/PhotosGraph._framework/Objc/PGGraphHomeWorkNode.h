@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 
 @class NSString;
 
-@interface PGGraphHomeWorkNode : PGGraphNode <PGGraphLocalizable>
+@interface PGGraphHomeWorkNode : PGGraphOptimizedNode <PGGraphLocalizable>
 {
+    NSString *_uuid;
+    NSString *_label;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,7 +22,20 @@
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly) Class superclass;
 
++ (id)filter;
++ (id)homeFilter;
++ (id)ownerOfHomeWork;
++ (id)workFilter;
+- (void).cxx_destruct;
+- (unsigned short)domain;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (BOOL)isHome;
+- (id)label;
 - (id)owners;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

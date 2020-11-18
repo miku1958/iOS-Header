@@ -8,26 +8,27 @@
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/NSCopying-Protocol.h>
+#import <SpringBoard/SBSwitcherLayoutElementProviding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface SBAppLayout : NSObject <NSCopying, BSDescriptionProviding>
+@interface SBAppLayout : NSObject <NSCopying, BSDescriptionProviding, SBSwitcherLayoutElementProviding>
 {
     long long _cachedAppLayoutType;
+    unsigned long long _cachedHash;
     BOOL _hidden;
     long long _configuration;
     long long _environment;
     NSDictionary *_rolesToLayoutItemsMap;
 }
 
-@property (nonatomic) long long configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) long long configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic, getter=isInsetForHomeAffordance) BOOL insetForHomeAffordance;
-@property (copy, nonatomic) NSDictionary *rolesToLayoutItemsMap; // @synthesize rolesToLayoutItemsMap=_rolesToLayoutItemsMap;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 
@@ -58,6 +59,7 @@
 - (id)protobufRepresentation;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (unsigned long long)switcherLayoutElementType;
 
 @end
 

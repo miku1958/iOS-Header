@@ -12,32 +12,28 @@
 
 @interface ARPlaneGeometry : NSObject <NSSecureCoding>
 {
-    vector_1cb3ea33 _vertices;
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _textureCoordinates;
-    vector_00df4d9c _triangleIndices;
+    unsigned long long _vertexCount;
+    const MISSING_TYPE **_vertices;
+    unsigned long long _textureCoordinateCount;
+    const MISSING_TYPE **_textureCoordinates;
+    unsigned long long _triangleCount;
+    const short *_triangleIndices;
     unsigned long long _boundaryVertexCount;
-    MISSING_TYPE *_center;
-    MISSING_TYPE *_extent;
+    const MISSING_TYPE **_boundaryVertices;
 }
 
 @property (readonly, nonatomic) unsigned long long boundaryVertexCount; // @synthesize boundaryVertexCount=_boundaryVertexCount;
-@property (readonly, nonatomic) const MISSING_TYPE **boundaryVertices;
-@property (readonly, nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
-@property (readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
-@property (readonly, nonatomic) unsigned long long textureCoordinateCount;
-@property (readonly, nonatomic) const MISSING_TYPE **textureCoordinates;
-@property (readonly, nonatomic) unsigned long long triangleCount;
-@property (readonly, nonatomic) const short *triangleIndices;
-@property (readonly, nonatomic) unsigned long long vertexCount;
-@property (readonly, nonatomic) const MISSING_TYPE **vertices;
+@property (readonly, nonatomic) const MISSING_TYPE **boundaryVertices; // @synthesize boundaryVertices=_boundaryVertices;
+@property (readonly, nonatomic) unsigned long long textureCoordinateCount; // @synthesize textureCoordinateCount=_textureCoordinateCount;
+@property (readonly, nonatomic) const MISSING_TYPE **textureCoordinates; // @synthesize textureCoordinates=_textureCoordinates;
+@property (readonly, nonatomic) unsigned long long triangleCount; // @synthesize triangleCount=_triangleCount;
+@property (readonly, nonatomic) const short *triangleIndices; // @synthesize triangleIndices=_triangleIndices;
+@property (readonly, nonatomic) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
+@property (readonly, nonatomic) const MISSING_TYPE **vertices; // @synthesize vertices=_vertices;
 
 + (BOOL)supportsSecureCoding;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBoundaryVertices:(const struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> *)arg1 center:extent: /* Error: Ran out of types for this method. */;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVertices:(const struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> *)arg1 triangleIndices:(const vector_00df4d9c *)arg2 boundaryVertexCount:(unsigned long long)arg3 center:extent: /* Error: Ran out of types for this method. */;
 
 @end
 

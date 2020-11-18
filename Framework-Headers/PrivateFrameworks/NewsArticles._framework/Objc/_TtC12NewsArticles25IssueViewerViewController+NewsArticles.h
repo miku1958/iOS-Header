@@ -7,6 +7,9 @@
 #import <NewsArticles/_TtC12NewsArticles25IssueViewerViewController.h>
 
 @interface _TtC12NewsArticles25IssueViewerViewController (NewsArticles)
+
+@property (nonatomic, readonly) unsigned long long viewingLocation;
+
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

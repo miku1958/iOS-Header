@@ -38,7 +38,7 @@
 - (void)_flushDirtyOwnerIdsWithDepTracker:(struct TSCEDependencyTracker *)arg1 startTime:(id)arg2 timeout:(double)arg3;
 - (void)_flushInternalCellRefSetWithDepTracker:(struct TSCEDependencyTracker *)arg1 startTime:(id)arg2 timeout:(double)arg3;
 - (void)_flushRangeRefsWithDepTracker:(struct TSCEDependencyTracker *)arg1 startTime:(id)arg2 timeout:(double)arg3;
-- (void)addInProgressCalcCellRef:(const struct TSCEInternalCellReference *)arg1;
+- (void)addInProgressCalcCellRefs:(const struct TSCEInternalCellRefSet *)arg1;
 - (void)clearInProgressCalcCellRefs;
 - (void)commonInit;
 - (void)dirtyAllCellsInOwner:(const UUIDData_5fbc143e *)arg1;

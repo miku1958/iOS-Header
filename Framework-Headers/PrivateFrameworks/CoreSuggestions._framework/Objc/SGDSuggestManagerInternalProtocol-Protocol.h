@@ -7,7 +7,7 @@
 #import <CoreSuggestions/_SGDSuggestManagerBaseProtocol-Protocol.h>
 #import <CoreSuggestions/_SGDSuggestManagerInternalHarvestProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString, NSURL, SGRecordId;
+@class NSArray, NSData, NSDate, NSString, NSURL, SGRecordId, SGSimpleMailMessage;
 
 @protocol SGDSuggestManagerInternalProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerInternalHarvestProtocol>
 - (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 completion:(void (^)(SGXPCResponse *))arg3;
@@ -21,6 +21,7 @@
 - (void)eventsInFutureLimitTo:(unsigned long long)arg1 options:(unsigned int)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)eventsStartingAt:(NSDate *)arg1 endingAt:(NSDate *)arg2 limitTo:(unsigned long long)arg3 options:(unsigned int)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
 - (void)eventsStartingAt:(NSDate *)arg1 endingAt:(NSDate *)arg2 prefix:(NSString *)arg3 limitTo:(unsigned long long)arg4 options:(unsigned int)arg5 withCompletion:(void (^)(SGXPCResponse1 *))arg6;
+- (void)powerStateWithCompletion:(void (^)(SGXPCResponse1 *))arg1;
 - (void)predictedCCEmailAddressesWithToAddresses:(NSArray *)arg1 ccAddresses:(NSArray *)arg2 fromAddress:(NSString *)arg3 date:(double)arg4 bounds:(NSArray *)arg5 completion:(void (^)(SGXPCResponse1 *))arg6;
 - (void)predictedToEmailAddressesWithToAddresses:(NSArray *)arg1 ccAddresses:(NSArray *)arg2 fromAddress:(NSString *)arg3 date:(double)arg4 bounds:(NSArray *)arg5 completion:(void (^)(SGXPCResponse1 *))arg6;
 - (void)realtimeSuggestionsFromURL:(NSURL *)arg1 title:(NSString *)arg2 HTMLPayload:(NSString *)arg3 extractionDate:(NSDate *)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
@@ -31,5 +32,6 @@
 - (void)spotlightReimportFromIdentifier:(NSString *)arg1 forPersonHandle:(NSString *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(SGXPCResponse *))arg5;
 - (void)suggestionsFromEmailContent:(NSString *)arg1 headers:(NSData *)arg2 source:(NSString *)arg3 options:(unsigned long long)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
 - (void)suggestionsFromRFC822Data:(NSData *)arg1 source:(NSString *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(SGXPCResponse1 *))arg4;
+- (void)suggestionsFromSimpleMailMessage:(SGSimpleMailMessage *)arg1 headers:(NSData *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(SGXPCResponse1 *))arg4;
 @end
 

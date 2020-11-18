@@ -6,9 +6,11 @@
 
 #import <NewsUI2/_TtC7NewsUI227DockContainerViewController.h>
 
+#import <NewsUI2/UIGestureRecognizerDelegate-Protocol.h>
 #import <NewsUI2/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@interface _TtC7NewsUI227DockContainerViewController (NewsUI2) <UIViewControllerTransitioningDelegate>
+@interface _TtC7NewsUI227DockContainerViewController (NewsUI2) <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
 - (id)animationControllerForDismissedController:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 @end
 

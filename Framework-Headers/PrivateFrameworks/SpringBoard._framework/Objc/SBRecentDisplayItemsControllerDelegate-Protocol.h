@@ -17,5 +17,6 @@
 - (void)recentDisplayItemsController:(SBRecentDisplayItemsController *)arg1 didRemoveItem:(SBDisplayItem *)arg2;
 - (BOOL)recentDisplayItemsController:(SBRecentDisplayItemsController *)arg1 shouldAddItem:(SBDisplayItem *)arg2;
 - (void)recentDisplayItemsControllerDidUpdateDisplayItems:(SBRecentDisplayItemsController *)arg1;
+- (BOOL)recentDisplayItemsControllerShouldRepresentAppClipsAsWebClips:(SBRecentDisplayItemsController *)arg1;
 @end
 

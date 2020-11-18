@@ -14,7 +14,6 @@
 
 @interface PXSampleGadget : NSObject <PXSampleGadgetViewDelegate, PXGadget>
 {
-    BOOL _hasContentToDisplay;
     BOOL _expanded;
     long long _priority;
     id<PXGadgetDelegate> _delegate;
@@ -38,7 +37,6 @@
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (copy, nonatomic) NSString *gadgetTitle; // @synthesize gadgetTitle=_gadgetTitle;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay; // @synthesize hasContentToDisplay=_hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;

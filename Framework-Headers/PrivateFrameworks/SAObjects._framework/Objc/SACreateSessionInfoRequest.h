@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSNumber, NSString;
 
 @interface SACreateSessionInfoRequest : SABaseCommand <SAServerBoundCommand>
 {
@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSNumber *deviceAuthVersion;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (copy, nonatomic) NSData *sessionInfoRequest;

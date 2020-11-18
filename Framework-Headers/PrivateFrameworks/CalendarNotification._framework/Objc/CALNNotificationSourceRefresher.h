@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class CALNInboxNotificationMonitor, NSArray;
-@protocol CALNNotificationManager, CALNNotificationSource;
+@protocol CALNNotificationManager, CALNNotificationSource, OS_dispatch_queue;
 
 @interface CALNNotificationSourceRefresher : NSObject
 {
+    BOOL _needsRefreshOnNotificationsLoaded;
+    NSObject<OS_dispatch_queue> *_refreshQueue;
     NSArray<CALNNotificationSource> *_sources;
     CALNInboxNotificationMonitor *_inboxNotificationMonitor;
     id<CALNNotificationManager> _notificationManager;
@@ -21,11 +23,12 @@
 @property (readonly, copy, nonatomic) NSArray<CALNNotificationSource> *sources; // @synthesize sources=_sources;
 
 - (void).cxx_destruct;
+- (void)_refreshNotifications:(id)arg1;
 - (void)_withdrawExpiredNotificationsForSource:(id)arg1;
 - (void)handleNotificationsChangedNotification:(id)arg1;
+- (void)handleNotificationsLoadedNotification;
 - (id)initWithSources:(id)arg1 notificationMonitor:(id)arg2 notificationManager:(id)arg3;
 - (void)refreshNotifications;
-- (void)refreshNotifications:(id)arg1;
 
 @end
 

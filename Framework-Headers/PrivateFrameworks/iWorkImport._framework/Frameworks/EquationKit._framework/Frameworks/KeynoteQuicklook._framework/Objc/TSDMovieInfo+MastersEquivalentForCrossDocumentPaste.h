@@ -17,8 +17,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *implicitAmbientAnimationEffectIdentifier;
-@property (readonly, nonatomic, getter=isImplicitAmbientAnimationInteractive) BOOL implicitAmbientAnimationInteractive;
+@property (readonly, nonatomic) BOOL shouldRemoveImplicitAmbientAnimationsAtEndOfNoneTransition;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImplicitAmbientAnimationsAfterStartingActionBuilds;
 
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (id)newImplicitAmbientBuildRendererWithAnimatedBuild:(id)arg1 buildChunk:(id)arg2 session:(id)arg3 animatedSlideView:(id)arg4;

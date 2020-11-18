@@ -8,9 +8,11 @@
 
 @interface UIColor (SafariServicesExtras)
 
+@property (readonly, nonatomic) UIColor *_sf_darkenedColor;
 @property (readonly, nonatomic) BOOL _sf_isDarkColor;
 
 + (id)_sf_automationBackgroundColor;
++ (id)_sf_barHairlineOutlineColor;
 + (id)_sf_barHairlineShadowColor;
 + (id)_sf_browserSystemColor;
 + (id)_sf_colorNamed:(id)arg1;
@@ -18,6 +20,7 @@
 + (id)_sf_defaultWebAppStatusBarBackgroundColor;
 + (id)_sf_defaultWebContentBackgroundColor;
 + (id)_sf_folderTouchIconBackgroundColor;
++ (id)_sf_secondaryBarHairlineOutlineColor;
 + (id)_sf_touchIconBackgroundColor;
 @end
 

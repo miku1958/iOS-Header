@@ -22,9 +22,13 @@
 }
 
 @property (readonly, nonatomic) struct CGRect alignmentFrame;
+@property (readonly, nonatomic) struct CGRect alignmentFrameForInlineLayout;
+@property (readonly, nonatomic) struct CGRect alignmentFrameForInlineLayoutInRoot;
 @property (readonly, nonatomic) struct CGRect alignmentFrameForProvidingGuidesInRoot;
+@property (readonly, nonatomic) struct CGRect alignmentFrameInParent;
 @property (readonly, nonatomic) struct CGRect alignmentFrameInRoot;
 @property (readonly, nonatomic) struct CGPoint alignmentFrameOriginForFixingInterimPosition;
+@property (readonly, nonatomic) struct UIEdgeInsets captionEdgeInsets;
 @property (copy, nonatomic) NSArray *children; // @synthesize children=_children;
 @property (readonly, nonatomic) struct CGRect clipRect;
 @property (readonly, nonatomic) BOOL exclusivelyProvidesGuidesForChildLayouts;
@@ -37,6 +41,7 @@
 @property (readonly, nonatomic) TSDLayoutGeometry *geometryInParent;
 @property (readonly, nonatomic) TSDLayoutGeometry *geometryInRoot;
 @property (readonly, nonatomic) struct CGRect insertionFrame;
+@property (readonly, nonatomic) struct CGRect insertionFrameInRoot;
 @property (nonatomic) double interimPositionX;
 @property (nonatomic) double interimPositionY;
 @property (readonly, nonatomic) BOOL isAxisAlignedUnflippedInRoot;
@@ -51,6 +56,7 @@
 @property (readonly, nonatomic) TSDAbstractLayout *root;
 @property (readonly, nonatomic) BOOL shouldBeIncludedInParentFrameForCulling;
 @property (readonly, nonatomic) BOOL shouldSnapWhileResizing;
+@property (readonly, nonatomic) BOOL shouldUseCaptionEdgeInsetsInInterimPosition;
 @property (readonly, nonatomic) BOOL supportsCalloutAttributes;
 @property (readonly, nonatomic) BOOL supportsFlipping;
 @property (readonly, nonatomic) BOOL supportsInspectorPositioning;

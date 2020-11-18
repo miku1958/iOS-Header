@@ -6,31 +6,42 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, NSString, PKPaymentAuthorizationLayout, UILabel;
+@class NSMutableArray, NSString, PKPaymentAuthorizationLayout, UIFont, UILabel;
 
 @interface PKPaymentAuthorizationSummaryItemsView : UIView
 {
     NSMutableArray *_labelViews;
     NSMutableArray *_valueViews;
+    NSMutableArray *_titleViews;
     NSMutableArray *_hasBottomPadding;
+    NSMutableArray *_usesLargeFont;
     UILabel *_titleLabel;
+    UIFont *_titleFont;
+    UIFont *_labelLargeFont;
+    UIFont *_labelRegularFont;
+    UIView *_separatorView;
     BOOL _showsBoldValueText;
+    BOOL _showsTopSeparator;
+    BOOL _occludesBodyView;
     PKPaymentAuthorizationLayout *_layout;
     NSString *_title;
 }
 
-@property (nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
+@property (weak, nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
+@property (nonatomic) BOOL occludesBodyView; // @synthesize occludesBodyView=_occludesBodyView;
 @property (nonatomic) BOOL showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
+@property (nonatomic) BOOL showsTopSeparator; // @synthesize showsTopSeparator=_showsTopSeparator;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)_labelAttributedStringWithString:(id)arg1 withDarkColor:(BOOL)arg2;
+- (id)_labelAttributedStringWithString:(id)arg1 withDarkColor:(BOOL)arg2 largeFont:(BOOL)arg3;
 - (id)_valueAttributedStringWithString:(id)arg1 type:(unsigned long long)arg2;
-- (void)addLabel:(id)arg1 value:(id)arg2 itemType:(unsigned long long)arg3 maxLabelLines:(long long)arg4 maxValueLines:(long long)arg5 hasBottomPadding:(BOOL)arg6 useDarkColor:(BOOL)arg7;
+- (void)addLabel:(id)arg1 value:(id)arg2 title:(id)arg3 itemType:(unsigned long long)arg4 maxLabelLines:(long long)arg5 maxValueLines:(long long)arg6 hasBottomPadding:(BOOL)arg7 useDarkColor:(BOOL)arg8 useLargeFont:(BOOL)arg9;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayout:(id)arg1;
 - (void)layoutSubviews;
+- (id)makeTitleLabel;
 - (void)removeLabelsAndValues;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 andLayout:(BOOL)arg2;

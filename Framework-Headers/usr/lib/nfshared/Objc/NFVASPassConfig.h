@@ -22,8 +22,8 @@
 
 + (id)passConfigWithMode:(long long)arg1 passIdentifier:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

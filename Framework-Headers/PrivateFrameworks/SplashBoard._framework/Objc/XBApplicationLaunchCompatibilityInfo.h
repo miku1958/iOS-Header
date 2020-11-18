@@ -15,6 +15,7 @@
 {
     XBLaunchInterface *_defaultInterface;
     BOOL _launchesOpaque;
+    BOOL _hasKnownBadLaunchImage;
     NSArray *_launchInterfaces;
     NSString *_bundleIdentifier;
     NSString *_bundlePath;
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) NSString *defaultGroupIdentifier; // @synthesize defaultGroupIdentifier=_defaultGroupIdentifier;
 @property (readonly, copy, nonatomic) XBLaunchInterface *defaultLaunchInterface;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasKnownBadLaunchImage; // @synthesize hasKnownBadLaunchImage=_hasKnownBadLaunchImage;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *launchInterfaces; // @synthesize launchInterfaces=_launchInterfaces;
 @property (nonatomic) BOOL launchesOpaque; // @synthesize launchesOpaque=_launchesOpaque;

@@ -8,7 +8,7 @@
 
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
-@class NSArray, NSString, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
+@class NSArray, NSString, UIAction, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface UISegment : UIImageView <CAAnimationDelegate>
@@ -39,14 +39,17 @@ __attribute__((visibility("hidden")))
         unsigned int needsBackgroundAndContentViewUpdate:1;
         unsigned int usesAXTextSize:1;
         unsigned int selectionIndicatorDragged:1;
+        unsigned int adjustsForContentSizeCategory:1;
         unsigned int hovered:1;
         unsigned int animatingSelectionIndicator:1;
     } _segmentFlags;
     NSArray *_infoConstraints;
+    UIAction *_action;
     double _requestedScaleFactor;
 }
 
 @property (copy, nonatomic, setter=_setInfoConstraints:) NSArray *_infoConstraints; // @synthesize _infoConstraints;
+@property (copy, nonatomic) UIAction *action; // @synthesize action=_action;
 @property (copy, nonatomic) NSString *badgeValue;
 @property (readonly) UIView *badgeView;
 @property int controlSize;
@@ -121,16 +124,18 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(BOOL)arg7;
+- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(BOOL)arg7 adjustsForContentSizeCategory:(BOOL)arg8;
 - (void)insertDividerView;
 - (BOOL)isAnimatingSelectionIndicator;
 - (BOOL)isHighlighted;
 - (BOOL)isHovered;
+- (BOOL)isRightSelected;
 - (BOOL)isSelectionIndicatorDragged;
 - (id)label;
 - (void)layoutSubviews;
 - (id)objectValue;
 - (void)removeFromSuperview;
+- (void)setAdjustsForContentSizeCategory:(BOOL)arg1;
 - (void)setAnimatingSelectionIndicator:(BOOL)arg1;
 - (void)setAutosizeText:(BOOL)arg1;
 - (void)setBarStyle:(long long)arg1;

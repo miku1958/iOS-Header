@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryEntityTranslationContext, MPModelLibrarySearchScope;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibrarySearchEntityResultContainer : NSObject
 {
     MPModelLibrarySearchScope *_scope;

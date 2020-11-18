@@ -9,12 +9,13 @@
 #import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPSPreferredFocusManaging-Protocol.h>
 
-@class NSString;
+@class NSString, UIFocusGuide;
 @protocol UIFocusItem;
 
 @interface CPSOverlayViewController : UINavigationController <CPSPreferredFocusManaging, BSInvalidatable>
 {
     BOOL usePreferredItemOnNextUpdate;
+    UIFocusGuide *_rightHandDriveGuide;
     id<UIFocusItem> preferredFocusItem;
 }
 
@@ -22,26 +23,31 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<UIFocusItem> preferredFocusItem; // @synthesize preferredFocusItem;
+@property (readonly, nonatomic) UIFocusGuide *rightHandDriveGuide; // @synthesize rightHandDriveGuide=_rightHandDriveGuide;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usePreferredItemOnNextUpdate; // @synthesize usePreferredItemOnNextUpdate;
 
 - (void).cxx_destruct;
+- (id)_firstFocusProvidingForViewController:(id)arg1;
 - (id)_linearFocusMovementSequences;
+- (void)_resetRightHandDriveGuide;
+- (BOOL)_useRightHandDriveFocusGuide;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)dismissTemplateAnimated:(BOOL)arg1;
+- (void)dismissTemplateAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)indexOfTemplate:(id)arg1;
-- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (void)invalidate;
-- (void)popToRootTemplateAnimated:(BOOL)arg1;
+- (void)popTemplateAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)popToRootTemplateAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)popToRootViewControllerAnimated:(BOOL)arg1;
-- (void)popToTemplate:(id)arg1 animated:(BOOL)arg2;
+- (void)popToTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)popToViewController:(id)arg1 animated:(BOOL)arg2;
 - (id)popViewControllerAnimated:(BOOL)arg1;
 - (id)preferredFocusEnvironments;
-- (void)presentActionSheetTemplate:(id)arg1 animated:(BOOL)arg2;
-- (void)presentTemplateViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)presentActionSheetTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentTemplateViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)presentedTemplateViewController;
-- (void)pushTemplateViewController:(id)arg1 animated:(BOOL)arg2 presentationStyle:(unsigned long long)arg3;
+- (void)pushTemplateViewController:(id)arg1 animated:(BOOL)arg2 presentationStyle:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)restoresFocusAfterTransition;
 - (id)templates;
 - (id)topTemplate;
 - (id)viewControllerForTemplate:(id)arg1;

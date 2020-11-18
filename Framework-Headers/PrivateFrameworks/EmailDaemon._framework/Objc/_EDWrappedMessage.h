@@ -10,8 +10,8 @@
 
 @interface _EDWrappedMessage : NSObject
 {
-    EMMessage *_message;
     long long _databaseID;
+    EMMessage *_message;
 }
 
 @property (readonly, nonatomic) long long databaseID; // @synthesize databaseID=_databaseID;

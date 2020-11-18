@@ -15,6 +15,7 @@
     NSString *_payloadCalendarIdentifier;
     NSString *_payloadMonitor;
     NSArray *_payloadIdentifiers;
+    NSArray *_payloadIdentifiersVersion2;
     NSArray *_payloadNotificationTimes;
     NSArray *_payloadTimeBudget;
 }
@@ -24,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *payloadCalendarIdentifier; // @synthesize payloadCalendarIdentifier=_payloadCalendarIdentifier;
 @property (copy, nonatomic) NSArray *payloadIdentifiers; // @synthesize payloadIdentifiers=_payloadIdentifiers;
+@property (copy, nonatomic) NSArray *payloadIdentifiersVersion2; // @synthesize payloadIdentifiersVersion2=_payloadIdentifiersVersion2;
 @property (copy, nonatomic) NSString *payloadMonitor; // @synthesize payloadMonitor=_payloadMonitor;
 @property (copy, nonatomic) NSArray *payloadNotificationTimes; // @synthesize payloadNotificationTimes=_payloadNotificationTimes;
 @property (copy, nonatomic) NSArray *payloadTimeBudget; // @synthesize payloadTimeBudget=_payloadTimeBudget;
@@ -31,6 +33,7 @@
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithMonitor:(id)arg1 withTimeBudget:(id)arg2;
++ (id)buildWithCalendarIdentifier:(id)arg1 withMonitor:(id)arg2 withIdentifiers:(id)arg3 withIdentifiersVersion2:(id)arg4 withNotificationTimes:(id)arg5 withTimeBudget:(id)arg6;
 + (id)buildWithCalendarIdentifier:(id)arg1 withMonitor:(id)arg2 withIdentifiers:(id)arg3 withNotificationTimes:(id)arg4 withTimeBudget:(id)arg5;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

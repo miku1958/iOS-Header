@@ -19,16 +19,6 @@
     CNMutableMultiDictionary *_registeredObservers;
 }
 
-@property (readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-@property (readonly, nonatomic) id<CNScheduler> downstream; // @synthesize downstream=_downstream;
-@property (nonatomic, getter=isObservingNotification) BOOL observingNotification; // @synthesize observingNotification=_observingNotification;
-@property (readonly, nonatomic) CNMutableMultiDictionary *registeredObservers; // @synthesize registeredObservers=_registeredObservers;
-@property (readonly, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
-@property (readonly, nonatomic) id<CNScheduler> workQueue; // @synthesize workQueue=_workQueue;
-
-+ (id)createProxyForObserver:(id)arg1 keysToFetch:(id)arg2;
-+ (id)os_log;
-+ (id)preparedContact:(id)arg1 withStore:(id)arg2 keysToFetch:(id)arg3;
 + (id)sharedNotifier;
 + (id)workQueue_createFetchersFromRegisteredObservers:(id)arg1;
 - (void).cxx_destruct;
@@ -38,12 +28,8 @@
 - (void)registerObserver:(id)arg1 forContact:(id)arg2;
 - (void)registerObserver:(id)arg1 forContact:(id)arg2 keysToFetch:(id)arg3;
 - (void)registerObserver:(id)arg1 forContact:(id)arg2 keysToFetch:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)registerProxy:(id)arg1 identifier:(id)arg2;
-- (BOOL)resourceLock_removeProxiesPassingTest:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
 - (void)unregisterObserver:(id)arg1 forContact:(id)arg2;
 - (void)unregisterObserver:(id)arg1 forContact:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)workQueue_updateObservers;
-- (void)workQueue_updateObserving;
 
 @end
 

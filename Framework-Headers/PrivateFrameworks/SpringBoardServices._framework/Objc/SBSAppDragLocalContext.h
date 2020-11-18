@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSURL, UIView;
+@class NSSet, NSString, NSURL, NSUserActivity, UIView;
 
 @interface SBSAppDragLocalContext : NSObject
 {
@@ -17,6 +17,7 @@
     long long _startLocation;
     NSString *_draggedSceneIdentifier;
     NSURL *_launchURL;
+    NSUserActivity *_userActivity;
     UIView *_portaledPreview;
 }
 
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) UIView *portaledPreview; // @synthesize portaledPreview=_portaledPreview;
 @property (nonatomic, getter=isSourceLocal) BOOL sourceLocal; // @synthesize sourceLocal=_sourceLocal;
 @property (readonly, nonatomic) long long startLocation; // @synthesize startLocation=_startLocation;
+@property (strong, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
 - (void).cxx_destruct;
 - (id)description;

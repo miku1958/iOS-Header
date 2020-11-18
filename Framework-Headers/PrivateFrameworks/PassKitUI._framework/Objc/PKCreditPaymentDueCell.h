@@ -14,12 +14,12 @@
     BOOL _usingCircleButton;
     BOOL _isCompactUI;
     BOOL _isTemplateLayout;
+    UILabel *_paymentDueLabel;
+    UILabel *_dateLabel;
+    UILabel *_detailLabel;
     BOOL _useAccssibilityLayout;
     id<PKCreditPaymentDueCellDelegate> _delegate;
     PKDashboardCreditAccountItem *_item;
-    UILabel *_labelPaymentDue;
-    UILabel *_labelDate;
-    UILabel *_labelDetail;
     PKContinuousButton *_payButton;
     UIColor *_payButtonTintColor;
     UIColor *_payButtonTitleColor;
@@ -28,17 +28,23 @@
     NSString *_fallbackButtonTitle;
 }
 
+@property (copy, nonatomic) UIFont *dateLabelFont;
+@property (copy, nonatomic) NSString *dateLabelText;
+@property (copy, nonatomic) UIColor *dateLabelTextColor;
 @property (weak, nonatomic) id<PKCreditPaymentDueCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) UIFont *detailLabelFont;
+@property (copy, nonatomic) NSString *detailLabelText;
+@property (copy, nonatomic) UIColor *detailLabelTextColor;
 @property (copy, nonatomic) NSString *fallbackButtonTitle; // @synthesize fallbackButtonTitle=_fallbackButtonTitle;
 @property (strong, nonatomic) PKDashboardCreditAccountItem *item; // @synthesize item=_item;
-@property (readonly, nonatomic) UILabel *labelDate; // @synthesize labelDate=_labelDate;
-@property (readonly, nonatomic) UILabel *labelDetail; // @synthesize labelDetail=_labelDetail;
-@property (readonly, nonatomic) UILabel *labelPaymentDue; // @synthesize labelPaymentDue=_labelPaymentDue;
 @property (readonly, nonatomic) PKContinuousButton *payButton; // @synthesize payButton=_payButton;
 @property (copy, nonatomic) UIFont *payButtonFont; // @synthesize payButtonFont=_payButtonFont;
 @property (strong, nonatomic) UIImage *payButtonImage; // @synthesize payButtonImage=_payButtonImage;
 @property (copy, nonatomic) UIColor *payButtonTintColor; // @synthesize payButtonTintColor=_payButtonTintColor;
 @property (copy, nonatomic) UIColor *payButtonTitleColor; // @synthesize payButtonTitleColor=_payButtonTitleColor;
+@property (copy, nonatomic) UIFont *paymentDueLabelFont;
+@property (copy, nonatomic) NSString *paymentDueLabelText;
+@property (copy, nonatomic) UIColor *paymentDueLabelTextColor;
 @property (nonatomic) BOOL useAccssibilityLayout; // @synthesize useAccssibilityLayout=_useAccssibilityLayout;
 
 - (void).cxx_destruct;

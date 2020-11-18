@@ -9,13 +9,14 @@
 #import <SpringBoard/SBHomeGestureDockSwitcherModifierDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureFinalDestinationSwitcherModifierDelegate-Protocol.h>
 
-@class NSString, SBAppLayout, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBStackedFloatingSwitcherModifier, UIViewFloatAnimatableProperty;
+@class NSString, SBAppLayout, SBDismissSiriSwitcherModifier, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBStackedFloatingSwitcherModifier, UIViewFloatAnimatableProperty;
 
 @interface SBHomeGestureFloatingSwitcherModifier : SBGestureSwitcherModifier <SBHomeGestureDockSwitcherModifierDelegate, SBHomeGestureFinalDestinationSwitcherModifierDelegate>
 {
     SBStackedFloatingSwitcherModifier *_stackedLayoutModifier;
     SBHomeGestureDockSwitcherModifier *_dockModifier;
     SBHomeGestureFinalDestinationSwitcherModifier *_finalDestinationModifier;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
     SBAppLayout *_selectedAppLayout;
     BOOL _continuingGesture;
     BOOL _lastGestureWasAnArcSwipe;
@@ -35,13 +36,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_actionForActivatingFinalDestination:(long long)arg1;
 - (void)_beginAnimatingRampingPropertyWithSettings:(id)arg1;
+- (id)_responseForActivatingFinalDestination:(long long)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
 - (void)_updateGestureTranslationAndVelocityWithEvent:(id)arg1;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
+- (id)appLayoutsToResignActive;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (long long)currentFinalDestination;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
@@ -51,20 +55,15 @@
 - (id)handleMainTransitionEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 continuingGesture:(BOOL)arg3 lastGestureWasAnArcSwipe:(BOOL)arg4;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (long long)keyboardSuppressionMode;
-- (id)layoutSettingsForIndex:(unsigned long long)arg1;
-- (long long)liveContentRasterizationStyle;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
-- (long long)sceneDeactivationReason;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
 - (double)unconditionalDistanceThresholdForHome;
-- (BOOL)wantsMinificationFilter;
-- (BOOL)wantsResignActiveAssertion;
+- (id)visibleAppLayouts;
 
 @end
 

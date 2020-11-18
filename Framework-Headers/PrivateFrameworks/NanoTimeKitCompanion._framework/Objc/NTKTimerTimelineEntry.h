@@ -33,13 +33,17 @@
 - (id)_newExtraLargeTemplate;
 - (id)_newLargeFlatUtilityTemplate;
 - (id)_newLargeModularTemplate;
+- (id)_newSignatureBezelTemplate;
+- (id)_newSignatureCircularTemplate;
 - (id)_newSignatureCornerGaugeImageTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSignatureRectangular;
 - (id)_newSimpleTextTemplate;
 - (id)_newSmallFlatUtilityTemplate;
 - (id)_newSmallModularTemplate;
 - (id)_relativeDateGaugeProviderForTimeInterval:(double)arg1 fullDuration:(double)arg2 paused:(BOOL)arg3 tintColor:(id)arg4;
 - (id)_relativeDateTextProviderForTimeInterval:(double)arg1 paused:(BOOL)arg2 twoDigitMinuteZeroPadding:(BOOL)arg3;
+- (id)_templateMetadata;
 - (id)_textProviderForTimeAtState:(unsigned long long)arg1;
 - (id)_textProviderForTimeAtState:(unsigned long long)arg1 withUnknownText:(id)arg2;
 - (id)_textProviderForTimeAtState:(unsigned long long)arg1 withUnknownText:(id)arg2 twoDigitMinuteZeroPadding:(BOOL)arg3;

@@ -13,6 +13,7 @@
     BOOL _canPunchout;
     BOOL _hidden;
     BOOL _isDefault;
+    BOOL _requestsExtraPadding;
     NSString *_title;
     UIImage *_image;
     UIColor *_backgroundColor;
@@ -28,6 +29,7 @@
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic, setter=_setDefault:) BOOL isDefault; // @synthesize isDefault=_isDefault;
+@property (nonatomic) BOOL requestsExtraPadding; // @synthesize requestsExtraPadding=_requestsExtraPadding;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

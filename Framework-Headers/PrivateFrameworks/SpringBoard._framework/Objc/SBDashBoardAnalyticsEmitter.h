@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (BOOL)handleEvent:(id)arg1;
 - (id)initWithCoverSheetViewController:(id)arg1;

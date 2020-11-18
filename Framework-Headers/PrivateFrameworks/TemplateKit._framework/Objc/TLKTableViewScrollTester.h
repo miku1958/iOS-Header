@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (void)finishFirstScrollIfNeeded;
 - (void)fire:(id)arg1;
 - (id)init;
 - (void)performScrollTestOnTableView:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -37,11 +37,15 @@
 - (BOOL)didPurgeNonCAMLSnapshotsForWidgetDiscoveryController:(id)arg1;
 - (id)init;
 - (void)launchExtensionWithBundleID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)newAvocadoWidgetListViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 - (id)newWidgetGroupViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
+- (id)newWidgetListViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
+- (void)removeWidgetIdentifiersFromToday:(id)arg1;
 - (BOOL)shouldShowWidgetsPinButtonForWidgetDiscoveryController:(id)arg1;
 - (BOOL)shouldShowWidgetsPinningTeachingViewForWidgetDiscoveryController:(id)arg1;
 - (void)sidebarWidgetLearningAdvisorDidUpdate:(id)arg1;
 - (id)statusBarAssertionForWidgetDiscoveryController:(id)arg1 legibilityStyle:(long long)arg2;
+- (id)todayWidgetIdentifiers;
 - (void)widgetDiscoveryController:(id)arg1 didChangeWidgetsPinning:(BOOL)arg2;
 - (void)widgetDiscoveryController:(id)arg1 didEndUsingStatusBarAssertion:(id)arg2;
 - (id)widgetDiscoveryController:(id)arg1 preferredViewControllerForPresentingFromViewController:(id)arg2;

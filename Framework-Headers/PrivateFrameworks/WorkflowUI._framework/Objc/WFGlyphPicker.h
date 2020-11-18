@@ -10,29 +10,39 @@
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 #import <WorkflowUI/WFGlyphPickerTabBarDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, WFGlyphPickerTabBar;
+@class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UISegmentedControl, WFGlyphPickerTabBar;
 @protocol WFGlyphPickerDelegate;
 
 @interface WFGlyphPicker : UIView <UICollectionViewDelegate, UICollectionViewDataSource, WFGlyphPickerTabBarDelegate>
 {
+    BOOL _useOutlineGlyphsOnly;
     unsigned short _selectedGlyphCharacter;
     id<WFGlyphPickerDelegate> _delegate;
+    UISegmentedControl *_segmentedControl;
+    double _glyphDimension;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_collectionViewLayout;
     NSArray *_glyphSections;
+    long long _control;
     WFGlyphPickerTabBar *_tabBar;
+    struct UIEdgeInsets _sectionInset;
 }
 
 @property (weak, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (weak, nonatomic) UICollectionViewFlowLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
+@property (nonatomic) long long control; // @synthesize control=_control;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFGlyphPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double glyphDimension; // @synthesize glyphDimension=_glyphDimension;
 @property (copy, nonatomic) NSArray *glyphSections; // @synthesize glyphSections=_glyphSections;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
+@property (strong, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 @property (nonatomic) unsigned short selectedGlyphCharacter; // @synthesize selectedGlyphCharacter=_selectedGlyphCharacter;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) WFGlyphPickerTabBar *tabBar; // @synthesize tabBar=_tabBar;
+@property (nonatomic) BOOL useOutlineGlyphsOnly; // @synthesize useOutlineGlyphsOnly=_useOutlineGlyphsOnly;
 
 + (unsigned long long)numberOfSections;
 - (void).cxx_destruct;
@@ -43,11 +53,14 @@
 - (unsigned short)glyphCharacterAtIndexPath:(id)arg1;
 - (void)glyphPickerTabBar:(id)arg1 didSelectTabAtIndex:(unsigned long long)arg2;
 - (id)indexPathForGlyphCharacter:(unsigned short)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)intrinsicContentSize;
+- (id)initWithControl:(long long)arg1 glyphDimension:(double)arg2 sectionInset:(struct UIEdgeInsets)arg3;
+- (id)initWithControl:(long long)arg1 glyphDimension:(double)arg2 sectionInset:(struct UIEdgeInsets)arg3 useSystemGlyphsOnly:(BOOL)arg4 useOutlineGlyphsOnly:(BOOL)arg5;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)pickedSegment:(id)arg1;
 - (void)safeAreaInsetsDidChange;
+- (void)scrollToSection:(long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

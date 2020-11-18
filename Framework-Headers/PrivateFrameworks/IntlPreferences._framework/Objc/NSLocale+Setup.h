@@ -17,9 +17,11 @@
 @property (readonly, copy) NSArray *selectableScriptCodes;
 
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1;
++ (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1 currentLocale:(id)arg2;
 + (id)_subdivisionCodeFromSubdivisionTag:(id)arg1 restrictedToRegionCode:(id)arg2;
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
 + (id)archivedPreferences;
++ (id)archivedPreferencesWithHash:(out id *)arg1;
 + (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
 + (id)canonicalLocaleIdentifier:(id)arg1 withNewLanguageIdentifier:(id)arg2;
 + (id)canonicalLocaleIdentifierFromComponents:(id)arg1;

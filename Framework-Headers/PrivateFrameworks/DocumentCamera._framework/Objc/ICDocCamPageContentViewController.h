@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (double)leadingTrailingOffset:(long long)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)didReceiveMemoryWarning;
 - (void)handleSingleTap:(id)arg1;
 - (void)viewDidLoad;

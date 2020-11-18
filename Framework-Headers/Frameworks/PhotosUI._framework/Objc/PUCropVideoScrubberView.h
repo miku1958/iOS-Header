@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)offsetTimeLabelsIfNecessary;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1;
+- (void)timesChanged:(CDStruct_1b6d18a9)arg1 endingTime:(CDStruct_1b6d18a9)arg2 currentTime:(CDStruct_1b6d18a9)arg3;
+- (void)updateSliderPosition;
 - (void)videoScrubberDoneChanging;
 - (void)videoScrubberValueChanged:(id)arg1;
 

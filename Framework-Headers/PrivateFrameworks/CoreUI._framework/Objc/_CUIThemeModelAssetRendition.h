@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)dealloc;
 - (id)initForArchiving:(id)arg1 withMeshRenditionKeys:(id)arg2;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (id)modelAsset;
 - (unsigned long long)writeToData:(id)arg1;
 

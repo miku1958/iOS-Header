@@ -8,7 +8,7 @@
 
 #import <PhotosPlayer/ISAnimatedImagePlayerDestination-Protocol.h>
 
-@class ISAnimatedImage, ISAnimatedImagePlayer, NSString, UIImageView;
+@class ISAnimatedImagePlayer, NSString, PFAnimatedImage, UIImageView;
 
 @interface ISAnimatedImageView : UIView <ISAnimatedImagePlayerDestination>
 {
@@ -20,7 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long displayedFrameIndex;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) ISAnimatedImage *image;
+@property (strong, nonatomic) PFAnimatedImage *image;
 @property (nonatomic) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
 @property (strong, nonatomic) ISAnimatedImagePlayer *player; // @synthesize player=_player;
 @property (nonatomic, getter=isPlaying) BOOL playing;

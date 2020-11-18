@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MRPlayerPath, NSArray, NSData, NSString, _MRPlaybackQueueRequestProtobuf;
+#import <MediaRemote/NSCopying-Protocol.h>
+#import <MediaRemote/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRPlaybackQueueRequest : NSObject
+@class MRPlayerPath, NSArray, NSData, NSDictionary, NSString, _MRPlaybackQueueRequestProtobuf;
+
+@interface MRPlaybackQueueRequest : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _hasLocation;
     BOOL _hasLength;
@@ -27,14 +29,14 @@ __attribute__((visibility("hidden")))
     BOOL _hasIncludeLanguageOptions;
     BOOL _returnContentItemAssetsInUserCompletion;
     BOOL _hasReturnContentItemAssetsInUserCompletion;
-    BOOL _isLegacyNowPlayingInfoRequest;
-    BOOL _hasIsLegacyNowPlayingInfoRequest;
+    BOOL _legacyNowPlayingInfoRequest;
+    BOOL _hasLegacyNowPlayingInfoRequest;
     BOOL _hasCachingPolicy;
+    unsigned int _cachingPolicy;
     long long _location;
     long long _length;
     double _artworkWidth;
     double _artworkHeight;
-    long long _cachingPolicy;
     MRPlayerPath *_playerPath;
     NSString *_requestIdentifier;
     NSString *_label;
@@ -43,9 +45,11 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) double artworkHeight; // @synthesize artworkHeight=_artworkHeight;
 @property (nonatomic) double artworkWidth; // @synthesize artworkWidth=_artworkWidth;
-@property (nonatomic) long long cachingPolicy; // @synthesize cachingPolicy=_cachingPolicy;
+@property (nonatomic) unsigned int cachingPolicy; // @synthesize cachingPolicy=_cachingPolicy;
+@property (readonly, nonatomic) BOOL containsNonDefaultAssets;
 @property (copy, nonatomic) NSArray *contentItemIdentifiers; // @synthesize contentItemIdentifiers=_contentItemIdentifiers;
 @property (readonly, nonatomic) NSData *data;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL hasArtworkHeight; // @synthesize hasArtworkHeight=_hasArtworkHeight;
 @property (nonatomic) BOOL hasArtworkWidth; // @synthesize hasArtworkWidth=_hasArtworkWidth;
 @property (nonatomic) BOOL hasCachingPolicy; // @synthesize hasCachingPolicy=_hasCachingPolicy;
@@ -54,28 +58,49 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasIncludeLyrics; // @synthesize hasIncludeLyrics=_hasIncludeLyrics;
 @property (nonatomic) BOOL hasIncludeMetadata; // @synthesize hasIncludeMetadata=_hasIncludeMetadata;
 @property (nonatomic) BOOL hasIncludeSections; // @synthesize hasIncludeSections=_hasIncludeSections;
-@property (nonatomic) BOOL hasIsLegacyNowPlayingInfoRequest; // @synthesize hasIsLegacyNowPlayingInfoRequest=_hasIsLegacyNowPlayingInfoRequest;
+@property (nonatomic) BOOL hasLegacyNowPlayingInfoRequest; // @synthesize hasLegacyNowPlayingInfoRequest=_hasLegacyNowPlayingInfoRequest;
 @property (nonatomic) BOOL hasLength; // @synthesize hasLength=_hasLength;
 @property (nonatomic) BOOL hasLocation; // @synthesize hasLocation=_hasLocation;
+@property (readonly, nonatomic) BOOL hasRange;
 @property (nonatomic) BOOL hasReturnContentItemAssetsInUserCompletion; // @synthesize hasReturnContentItemAssetsInUserCompletion=_hasReturnContentItemAssetsInUserCompletion;
+@property (readonly, nonatomic) BOOL includeArtwork;
 @property (nonatomic) BOOL includeInfo; // @synthesize includeInfo=_includeInfo;
 @property (nonatomic) BOOL includeLanguageOptions; // @synthesize includeLanguageOptions=_includeLanguageOptions;
 @property (nonatomic) BOOL includeLyrics; // @synthesize includeLyrics=_includeLyrics;
 @property (nonatomic) BOOL includeMetadata; // @synthesize includeMetadata=_includeMetadata;
 @property (nonatomic) BOOL includeSections; // @synthesize includeSections=_includeSections;
-@property (nonatomic) BOOL isLegacyNowPlayingInfoRequest; // @synthesize isLegacyNowPlayingInfoRequest=_isLegacyNowPlayingInfoRequest;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic, getter=isLegacyNowPlayingInfoRequest) BOOL legacyNowPlayingInfoRequest; // @synthesize legacyNowPlayingInfoRequest=_legacyNowPlayingInfoRequest;
 @property (nonatomic) long long length; // @synthesize length=_length;
 @property (nonatomic) long long location; // @synthesize location=_location;
 @property (strong, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (readonly, nonatomic) _MRPlaybackQueueRequestProtobuf *protobuf;
+@property (readonly, nonatomic) struct _NSRange range;
+@property (readonly, nonatomic) BOOL rangeContainsNowPlayingItem;
 @property (copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (nonatomic) BOOL returnContentItemAssetsInUserCompletion; // @synthesize returnContentItemAssetsInUserCompletion=_returnContentItemAssetsInUserCompletion;
+@property (readonly, nonatomic) BOOL shouldRequestItem;
+@property (readonly, nonatomic) BOOL shouldRequestItemNotConsideringMetadata;
+@property (readonly, nonatomic) MRPlaybackQueueRequest *skeleton;
 
++ (id)defaultPlaybackQueueRequest;
++ (id)defaultPlaybackQueueRequestWithRange:(struct _NSRange)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (BOOL)exactMatch:(id)arg1;
+- (id)initFromTransactionName:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithIdentifiers:(id)arg1;
+- (id)initWithIdentifiers:(id)arg1 range:(struct _NSRange)arg2;
 - (id)initWithProtobuf:(id)arg1;
+- (id)initWithRange:(struct _NSRange)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)match:(id)arg1;
+- (void)mergeFrom:(id)arg1;
 
 @end
 

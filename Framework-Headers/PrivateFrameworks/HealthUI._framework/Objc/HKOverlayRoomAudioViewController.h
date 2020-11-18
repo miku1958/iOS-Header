@@ -14,7 +14,7 @@
 {
     NSNumber *_preferredOverlayIndex;
     NSString *_quantityTypeIdentifier;
-    NSString *_secondaryIdentifier;
+    long long _preferredOverlay;
     NSMutableArray *_contextDelegates;
     HKAudioExposureDevicesDataSource *_audioExposureDevicesDataSource;
 }
@@ -24,8 +24,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) NSString *quantityTypeIdentifier; // @synthesize quantityTypeIdentifier=_quantityTypeIdentifier;
-@property (readonly, copy, nonatomic) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
+@property (readonly, nonatomic) long long preferredOverlay; // @synthesize preferredOverlay=_preferredOverlay;
+@property (readonly, nonatomic) NSString *quantityTypeIdentifier; // @synthesize quantityTypeIdentifier=_quantityTypeIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -33,7 +33,7 @@
 - (CDUnknownBlockType)_buildAverageDataSourceTitleFromTimeScope;
 - (CDUnknownBlockType)_buildGranularAverageDataSourceTitleFromTimeScope;
 - (id)_headphonePredicateForDevices:(id)arg1 withName:(id)arg2;
-- (long long)_initialPillForIdentifier:(id)arg1;
+- (long long)_initialPillForPreference:(long long)arg1;
 - (BOOL)_isAudioExposureDevicesSupported;
 - (BOOL)_isEnvironmentalAudioExposureRoom;
 - (id)_makeHeadphoneDeviceFiltersUsingContextCreator:(CDUnknownBlockType)arg1;
@@ -45,10 +45,11 @@
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 secondaryIdentifier:(id)arg5;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 secondaryIdentifier:(id)arg5 audioExposureDeviceDataSource:(id)arg6;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5 audioExposureDeviceDataSource:(id)arg6;
 - (id)initialSelectedContextForMode:(long long)arg1;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
+- (id)showAllFiltersButtonTitle;
 - (void)viewDidLoad;
 
 @end

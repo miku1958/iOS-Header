@@ -24,11 +24,13 @@
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (const struct __CFArray *)createArrayRef;
+- (void)dealloc;
 - (id)description;
 - (id)document;
 - (id)init;
 - (id)initWithDictionary:(struct CGPDFDictionary *)arg1 forDocument:(id)arg2;
 - (id)initWithPage:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (id)pageIfExists;
 - (int)type;
 
 @end

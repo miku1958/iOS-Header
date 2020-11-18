@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     const struct _renditionkeyfmt *_keyFormat;
 }
 
-- (id)_initWithKeyFormat:(const struct _renditionkeyfmt *)arg1 andBitmap:(void **)arg2;
 - (id)archivedData;
 - (int)attributePresent:(int)arg1 withValue:(unsigned short)arg2;
 - (id)bitwiseAndWith:(id)arg1;
@@ -21,9 +20,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)contentEqualForAttribute:(int)arg1 withRenditionInfo:(id)arg2;
 - (BOOL)contentPresentForAttribute:(int)arg1;
 - (void)dealloc;
+- (id)debugDescription;
 - (void)decrementValue:(long long *)arg1 forAttribute:(int)arg2;
 - (id)description;
 - (BOOL)diverseContentPresentForAttribute:(int)arg1;
+- (unsigned short)getClosestValueOfAttribute:(int)arg1 withValue:(unsigned short)arg2;
+- (unsigned short)getValueOfAttribute:(int)arg1;
 - (void)incrementIndex:(unsigned long long *)arg1 inValues:(id)arg2 forAttribute:(int)arg3;
 - (id)initWithData:(id)arg1 andKeyFormat:(const struct _renditionkeyfmt *)arg2;
 - (id)initWithKeyFormat:(const struct _renditionkeyfmt *)arg1;

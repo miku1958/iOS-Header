@@ -50,7 +50,7 @@
 - (void)pushCollaborationData:(id)arg1;
 - (id)rangingConfigurationWithDeviceIndex:(unsigned long long)arg1;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (id)remoteObject;
 - (void)requestInitialCollaborationDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendDataToPeers:(id)arg1;

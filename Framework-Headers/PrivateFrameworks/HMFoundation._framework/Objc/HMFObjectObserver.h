@@ -6,19 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSUUID;
-
 @interface HMFObjectObserver : HMFObject
 {
     id _observedObject;
     CDUnknownBlockType _deallocationBlock;
-    NSUUID *_identifier;
     unsigned long long _cachedHash;
 }
 
 @property (readonly) unsigned long long cachedHash; // @synthesize cachedHash=_cachedHash;
 @property (copy) CDUnknownBlockType deallocationBlock; // @synthesize deallocationBlock=_deallocationBlock;
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, weak) id observedObject; // @synthesize observedObject=_observedObject;
 
 - (void).cxx_destruct;
@@ -29,7 +25,6 @@
 - (id)init;
 - (id)initWithObservedObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)observerKey;
 
 @end
 

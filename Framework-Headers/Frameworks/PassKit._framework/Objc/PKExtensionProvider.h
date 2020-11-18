@@ -6,39 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class NSDictionary, NSMutableArray, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PKExtensionProvider : NSObject
 {
-    BOOL _didReceiveExtensions;
-    id _matchingContext;
-    NSDictionary *_extensions;
+    BOOL _isBeginningMatching;
+    NSString *_extensionPoint;
     NSDictionary *_passKitExtensions;
+    id _matchingContext;
+    NSMutableArray *_beginMatchingCompletions;
+    NSObject<OS_dispatch_source> *_extensionMatchTimer;
     NSObject<OS_dispatch_queue> *_extensionQueue;
-    NSObject<OS_dispatch_semaphore> *_extensionSema;
 }
 
-@property (readonly, nonatomic) NSArray *allExtensions;
-@property (nonatomic) BOOL didReceiveExtensions; // @synthesize didReceiveExtensions=_didReceiveExtensions;
+@property (strong, nonatomic) NSMutableArray *beginMatchingCompletions; // @synthesize beginMatchingCompletions=_beginMatchingCompletions;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *extensionMatchTimer; // @synthesize extensionMatchTimer=_extensionMatchTimer;
+@property (copy, nonatomic) NSString *extensionPoint; // @synthesize extensionPoint=_extensionPoint;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *extensionQueue; // @synthesize extensionQueue=_extensionQueue;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *extensionSema; // @synthesize extensionSema=_extensionSema;
-@property (strong, nonatomic) NSDictionary *extensions; // @synthesize extensions=_extensions;
+@property (nonatomic) BOOL isBeginningMatching; // @synthesize isBeginningMatching=_isBeginningMatching;
 @property (strong, nonatomic) id matchingContext; // @synthesize matchingContext=_matchingContext;
 @property (strong, nonatomic) NSDictionary *passKitExtensions; // @synthesize passKitExtensions=_passKitExtensions;
 
-+ (id)sharedProvider;
++ (id)providerForExtensionPoint:(id)arg1;
 - (void).cxx_destruct;
-- (void)_beginExtensionRequestWithExtension:(id)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_beginRemoteViewControllerExtensionServiceWithExtension:(id)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_extensionWithIdentifier:(id)arg1;
-- (void)_receivedExtensions:(id)arg1;
-- (void)beginMatchingExtensions;
+- (void)_beginMatchingExtensionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_endMatchingExtensions;
+- (id)_extensionMatchingEntitlementAttribute;
+- (id)_extensionsForContainingApplicationIdentifiers:(id)arg1;
+- (void)_finishedMatchingExtensions:(id)arg1 withError:(id)arg2;
+- (void)_invokeAndClearBeginMatchingCompletionsWithError:(id)arg1;
+- (void)beginExtensionRequestWithExtension:(id)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (void)endMatchingExtensions;
-- (id)extensionWithIdentifier:(id)arg1;
-- (void)extensionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)extensionWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)extensionsWithContainingAppBundleIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)extensionsWithContainingApplicationIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithExtensionPoint:(id)arg1;
 
 @end
 

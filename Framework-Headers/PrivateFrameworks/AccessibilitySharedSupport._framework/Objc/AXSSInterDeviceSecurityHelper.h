@@ -22,7 +22,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)securityIdentity;
-- (BOOL)shouldTrustCertificate:(id)arg1;
+- (void)verifyCertificate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

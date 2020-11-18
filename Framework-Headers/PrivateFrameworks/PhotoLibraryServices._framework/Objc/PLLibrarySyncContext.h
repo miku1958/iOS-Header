@@ -25,7 +25,6 @@
 @property (readonly) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly) PLCloudRecordOrganizer *recordOrganizer; // @synthesize recordOrganizer=_recordOrganizer;
 @property (readonly, nonatomic) BOOL serverSupportsGraphHome;
-@property (readonly, nonatomic) BOOL serverSupportsSuggestion;
 @property (readonly, nonatomic) BOOL serverSupportsVision;
 @property (readonly) Class superclass;
 

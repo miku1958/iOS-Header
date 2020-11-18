@@ -10,6 +10,7 @@
 
 @protocol UIKBCacheableView <NSObject>
 
+@property (readonly, nonatomic) long long assetIdiom;
 @property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;

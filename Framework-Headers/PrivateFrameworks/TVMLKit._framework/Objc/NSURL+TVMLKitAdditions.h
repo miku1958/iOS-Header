@@ -10,6 +10,8 @@
 - (long long)tv_imageURLType;
 - (BOOL)tv_isAppIconURL;
 - (BOOL)tv_isResourceURL;
+- (BOOL)tv_isSymbolURL;
 - (id)tv_resourceName;
+- (id)tv_symbolName;
 @end
 

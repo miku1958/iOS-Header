@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class GEOCountryConfiguration, GEOResourceManifestManager, GEOSQLiteDB, NSMutableDictionary, NSString, NSURL, _GEOTileDBWriteQueue, geo_isolater;
+@protocol GEOTileDBDelegate, OS_dispatch_queue;
 
 @interface GEOTileDB : NSObject
 {
@@ -27,13 +28,17 @@
     NSMutableDictionary *_editionsMap;
     NSURL *_baseDirectory;
     NSURL *_externalDataDirectory;
+    geo_isolater *_createdExternalDataDirectoryIsolater;
+    BOOL _createdExternalDataDirectory;
+    id<GEOTileDBDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
 @property (readonly, nonatomic) NSString *devicePostureCountry;
 @property (readonly, nonatomic) NSString *devicePostureRegion;
 
 - (void).cxx_destruct;
-- (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(unsigned int)arg3 ETag:(id)arg4 reason:(unsigned char)arg5;
+- (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(unsigned int)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
 - (unsigned long long)_allTileDataSize;
 - (void)_cleanUpOrphanedExternalResources;
 - (void)_countryChanged:(id)arg1;
@@ -72,6 +77,7 @@
 - (void)calculateFreeableSizeWithQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)dataForKeys:(id)arg1 reason:(unsigned char)arg2 group:(id)arg3 callbackQueue:(id)arg4 dataHandler:(CDUnknownBlockType)arg5;
 - (void)deleteDataForKey:(const struct _GEOTileKey *)arg1;
+- (void)deleteDataForTilesets:(id)arg1;
 - (void)endPreloadSession;
 - (void)enumerateAllKeysIncludingData:(BOOL)arg1 onQueue:(id)arg2 group:(id)arg3 dataHandler:(CDUnknownBlockType)arg4;
 - (void)evaluateDevicePostureAgainstCurrentManifest:(id)arg1;
@@ -81,7 +87,8 @@
 - (void)getStaleTileKeysUsedSince:(double)arg1 fromTileSets:(id)arg2 maxCount:(unsigned long long)arg3 maxTotalSize:(unsigned long long)arg4 queue:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)init;
 - (id)initWithBaseDirectory:(id)arg1;
-- (id)initWithBaseDirectory:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 maximumDatabaseSize:(unsigned long long)arg4;
+- (id)initWithBaseDirectory:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)initWithBaseDirectory:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 maximumDatabaseSize:(unsigned long long)arg6;
 - (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;
 - (void)shrinkBySize:(unsigned long long)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (unsigned long long)shrinkBySizeSync:(unsigned long long)arg1;

@@ -6,7 +6,7 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @protocol SXCondition <NSObject>
 
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) unsigned long long preferredColorScheme;
 @property (readonly, nonatomic) NSString *subscriptionStatus;
 @property (readonly, nonatomic) unsigned long long testing;
+@property (readonly, nonatomic) NSSet *types;
 @property (readonly, nonatomic) long long verticalSizeClass;
 @property (readonly, nonatomic) NSString *viewLocation;
 

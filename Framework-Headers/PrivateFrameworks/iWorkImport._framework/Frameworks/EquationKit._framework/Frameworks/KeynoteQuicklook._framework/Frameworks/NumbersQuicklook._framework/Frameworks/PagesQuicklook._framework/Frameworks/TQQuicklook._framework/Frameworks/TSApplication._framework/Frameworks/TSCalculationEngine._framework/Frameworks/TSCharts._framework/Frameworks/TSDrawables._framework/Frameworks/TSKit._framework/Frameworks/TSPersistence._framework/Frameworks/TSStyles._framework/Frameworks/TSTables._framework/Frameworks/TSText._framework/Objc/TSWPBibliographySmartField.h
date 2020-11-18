@@ -30,7 +30,7 @@
 - (id)copyWithContext:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 
 @end
 

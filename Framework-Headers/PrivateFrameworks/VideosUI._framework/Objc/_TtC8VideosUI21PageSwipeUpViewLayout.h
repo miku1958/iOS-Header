@@ -12,9 +12,6 @@
 {
     MISSING_TYPE *textLayout;
     MISSING_TYPE *chevronImageLayout;
-    MISSING_TYPE *baselineMarginToChevron;
-    MISSING_TYPE *heightOfGradientView;
-    MISSING_TYPE *topMarginOfChevron;
 }
 
 @end

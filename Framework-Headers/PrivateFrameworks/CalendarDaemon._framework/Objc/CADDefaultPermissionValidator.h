@@ -31,7 +31,10 @@
 @property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL internalAccessLevelGranted;
+@property (readonly) BOOL isCalendarDaemon;
+@property (readonly) BOOL isFirstPartyCalendarApp;
 @property (readonly) BOOL shouldTrustClientEnforcedManagedConfigurationAccess;
+@property (readonly) BOOL storageManagementAccessGranted;
 @property (readonly) Class superclass;
 @property (readonly) BOOL testingAccessLevelGranted;
 

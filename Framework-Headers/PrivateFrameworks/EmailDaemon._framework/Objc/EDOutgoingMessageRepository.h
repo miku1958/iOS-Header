@@ -28,6 +28,7 @@
 + (id)log;
 + (id)signpostLog;
 - (void).cxx_destruct;
+- (void)cancelObservation:(id)arg1;
 - (void)deleteDraftsInMailboxID:(id)arg1 documentID:(id)arg2 previousDraftObjectID:(id)arg3;
 - (void)deliverMessage:(id)arg1 usingMailDrop:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithMessagePersistence:(id)arg1 messageChangeManager:(id)arg2;
@@ -40,6 +41,7 @@
 - (void)resumeDeliveryQueue;
 - (void)saveDraftMessage:(id)arg1 mailboxID:(id)arg2 previousDraftObjectID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)signpostID;
+- (void)startObservingPendingMessageChangesWithChangeObserver:(id)arg1 observationIdentifier:(id)arg2;
 - (void)suspendDeliveryQueue;
 
 @end

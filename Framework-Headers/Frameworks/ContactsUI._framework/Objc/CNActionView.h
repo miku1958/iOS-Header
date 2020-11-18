@@ -4,51 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIControl.h>
 
+#import <ContactsUI/NUIContainerViewDelegate-Protocol.h>
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIFont, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class CNActionMenuHelper, NSString, NUIContainerBoxView, NUIContainerStackView, TLKProminenceView, UIFont, UIImage, UIImageView, UILabel, UIView;
 @protocol CNActionViewDelegate;
 
-@interface CNActionView : UIView <UIGestureRecognizerDelegate>
+@interface CNActionView : UIControl <UIGestureRecognizerDelegate, NUIContainerViewDelegate>
 {
     BOOL _disabled;
-    BOOL _highlighted;
     id<CNActionViewDelegate> _actionDelegate;
     UIImage *_image;
     NSString *_title;
     NSString *_type;
     long long _style;
+    NUIContainerStackView *_containerView;
+    NUIContainerBoxView *_platterBoxView;
     UIView *_platterView;
     UIImageView *_imageView;
+    UIView *_imageContainerView;
     UILabel *_titleLabel;
-    NSArray *_activatedContstrants;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    UILongPressGestureRecognizer *_longPressGestureRecognizer;
-    UILongPressGestureRecognizer *_highlightGestureRecognizer;
+    CNActionMenuHelper *_actionMenuHelper;
+    TLKProminenceView *_vibrantPlatterView;
+    TLKProminenceView *_vibrantBackgroundView;
     UIFont *_titleFont;
 }
 
 @property (weak, nonatomic) id<CNActionViewDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
-@property (strong, nonatomic) NSArray *activatedContstrants; // @synthesize activatedContstrants=_activatedContstrants;
+@property (strong, nonatomic) CNActionMenuHelper *actionMenuHelper; // @synthesize actionMenuHelper=_actionMenuHelper;
+@property (strong, nonatomic) NUIContainerStackView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UILongPressGestureRecognizer *highlightGestureRecognizer; // @synthesize highlightGestureRecognizer=_highlightGestureRecognizer;
-@property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) UIView *imageContainerView; // @synthesize imageContainerView=_imageContainerView;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
+@property (strong, nonatomic) NUIContainerBoxView *platterBoxView; // @synthesize platterBoxView=_platterBoxView;
 @property (strong, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;
+@property (strong, nonatomic) TLKProminenceView *vibrantBackgroundView; // @synthesize vibrantBackgroundView=_vibrantBackgroundView;
+@property (strong, nonatomic) TLKProminenceView *vibrantPlatterView; // @synthesize vibrantPlatterView=_vibrantPlatterView;
 
 + (id)borderColorForDisabledBoldState;
 + (id)colorByIncreasingBrightnessComponentByPercentage:(double)arg1 ofColor:(id)arg2;
@@ -58,27 +61,32 @@
 + (id)defaultTitleFontOfSize:(double)arg1;
 + (void)fadeInView:(id)arg1;
 - (void).cxx_destruct;
+- (void)applyRoundedRectMargins;
 - (id)colorByAdjustingColorToHighlightState:(id)arg1;
+- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)didMoveToWindow;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (void)handleHighlightGesture:(id)arg1;
-- (void)handleLongPressGesture:(id)arg1;
-- (void)handleTapGesture:(id)arg1;
+- (void)handleTapGesture;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (double)intrinsicContentWidth;
 - (void)layoutSubviews;
-- (struct CGRect)rectForPlatterView;
-- (struct CGRect)rectForTitleLabelForFont:(id)arg1 fittingSize:(struct CGSize)arg2;
+- (struct CGSize)platterViewMinimumLayoutSizeForStyle:(long long)arg1;
 - (void)setDisabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowDisambiguation;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (id)sourceViewForContextMenuPreview;
 - (void)tintColorDidChange;
+- (void)updateBackground;
 - (void)updateImageViewStateAnimated:(BOOL)arg1;
 - (void)updateLabelStateAnimated:(BOOL)arg1;
 - (void)updatePlatterViewStateAnimated:(BOOL)arg1;
+- (void)updateWithMenuItems:(id)arg1;
 
 @end
 

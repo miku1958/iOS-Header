@@ -17,6 +17,7 @@
 + (id)guidanceStateForStartDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
 - (void).cxx_destruct;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(id)arg2;
+- (id)clParameters;
 - (id)currentDestination;
 - (unsigned long long)desiredLocationProviderType;
 - (void)enterState;
@@ -36,17 +37,17 @@
 - (void)setHFPPreference:(BOOL)arg1 forSetting:(id)arg2;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTracePosition:(double)arg1;
 - (BOOL)shouldClearStoredRoutes;
+- (id)simulationLocationProvider;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigation;
 - (void)switchToRoute:(id)arg1;
 - (id)traceManager;
 - (void)updateDestination:(id)arg1;
-- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 
 @end

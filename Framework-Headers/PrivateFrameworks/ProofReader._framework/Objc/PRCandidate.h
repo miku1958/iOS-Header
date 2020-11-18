@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     struct _NSRange _replacementRange;
     double _errorScore;
     double _lmScore;
-    BOOL _blacklisted;
+    BOOL _blocklisted;
     BOOL _hasCustomErrorScore;
 }
 
@@ -36,12 +36,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasCustomErrorScore;
 - (id)initWithCandidateWords:(id)arg1 replacementRange:(struct _NSRange)arg2 errorScore:(double)arg3;
 - (id)initWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 errorScore:(double)arg3;
-- (BOOL)isBlacklisted;
+- (BOOL)isBlocklisted;
 - (double)languageModelScore;
 - (unsigned long long)numberOfWords;
 - (struct _NSRange)replacementRange;
 - (double)score;
-- (void)setBlacklisted:(BOOL)arg1;
+- (void)setBlocklisted:(BOOL)arg1;
 - (void)setCustomErrorScore:(BOOL)arg1;
 - (void)setErrorScore:(double)arg1;
 - (void)setLanguageModelScore:(double)arg1;

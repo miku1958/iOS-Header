@@ -7,10 +7,11 @@
 #import <Intents/INFile.h>
 
 #import <WorkflowKit/WFCodableAttributeContentConvertible-Protocol.h>
+#import <WorkflowKit/WFCodableAttributeTransformable-Protocol.h>
 
 @class NSString;
 
-@interface INFile (Workflow) <WFCodableAttributeContentConvertible>
+@interface INFile (Workflow) <WFCodableAttributeContentConvertible, WFCodableAttributeTransformable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

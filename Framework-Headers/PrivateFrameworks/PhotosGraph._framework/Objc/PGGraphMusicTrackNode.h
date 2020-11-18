@@ -4,25 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
-@class NSNumber, NSSet, NSString;
+@class NSSet, NSString;
 
-@interface PGGraphMusicTrackNode : PGGraphNode
+@interface PGGraphMusicTrackNode : PGGraphOptimizedNode
 {
+    NSString *_title;
+    double _durationInSeconds;
 }
 
 @property (readonly, nonatomic) NSSet *albumNodes;
 @property (readonly, nonatomic) NSSet *artistNodes;
-@property (readonly, nonatomic) NSNumber *durationInSeconds;
+@property (readonly) double durationInSeconds; // @synthesize durationInSeconds=_durationInSeconds;
 @property (readonly, nonatomic) NSSet *genreNodes;
-@property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)musicTrackTitleSortDescriptors;
+- (void).cxx_destruct;
 - (id)description;
+- (unsigned short)domain;
 - (void)enumerateAlbumNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateArtistNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateGenreNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

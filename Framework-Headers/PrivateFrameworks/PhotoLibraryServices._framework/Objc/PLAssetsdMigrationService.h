@@ -14,9 +14,9 @@
 @interface PLAssetsdMigrationService : PLAbstractLibraryServicesManagerService <PLAssetsdMigrationServiceProtocol>
 {
     NSObject<OS_dispatch_queue> *_backgroundQueue;
+    NSObject<OS_dispatch_queue> *_dataMigratordQueue;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

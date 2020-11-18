@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/NSSecureCoding-Protocol.h>
 #import <Photos/PLVideoChoosingOptions-Protocol.h>
 
 @class NSString;
 
-@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions>
+@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions, NSSecureCoding>
 {
     BOOL _networkAccessAllowed;
     BOOL _streamingAllowed;
@@ -35,8 +36,9 @@
 @property (nonatomic) long long version; // @synthesize version=_version;
 @property (nonatomic, getter=isVideoComplementAllowed) BOOL videoComplementAllowed; // @synthesize videoComplementAllowed=_videoComplementAllowed;
 
-- (id)initWithPlistDictionary:(id)arg1;
-- (id)plistDictionary;
++ (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)shortDescription;
 - (long long)videoDeliveryMode;
 - (long long)videoVersion;

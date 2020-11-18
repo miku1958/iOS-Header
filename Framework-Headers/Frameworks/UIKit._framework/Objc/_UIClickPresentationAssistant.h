@@ -10,13 +10,14 @@
 #import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <UIKitCore/_UIClickPresentationAssisting-Protocol.h>
 
-@class NSString, UITargetedPreview, UIView, UIViewController, UIViewPropertyAnimator, _UIClickPresentation, _UIPortalView, _UIStateMachine;
+@class NSString, UITargetedPreview, UIView, UIViewController, UIViewPropertyAnimator, _UIClickPresentation, _UIPortalView;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
 @interface _UIClickPresentationAssistant : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, _UIClickPresentationAssisting>
 {
     id<UIViewControllerContextTransitioning> _currentContext;
+    unsigned long long _currentState;
     UIViewPropertyAnimator *_presentationAnimator;
     CDUnknownBlockType lifecycleCompletion;
     _UIClickPresentation *presentation;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
     UIViewController *_stashedParentViewController;
     UIView *_stashedSuperView;
     CDUnknownBlockType _transitionCompletion;
-    _UIStateMachine *_stateMachine;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 @property (strong, nonatomic) UIViewController *stashedParentViewController; // @synthesize stashedParentViewController=_stashedParentViewController;
 @property (strong, nonatomic) UIView *stashedSuperView; // @synthesize stashedSuperView=_stashedSuperView;
-@property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType transitionCompletion; // @synthesize transitionCompletion=_transitionCompletion;
 
@@ -48,11 +47,10 @@ __attribute__((visibility("hidden")))
 - (void)_applyStashedParentViewControllerIfNecessary;
 - (void)_createPropertyAnimatorIfNecessaryForTransition:(id)arg1 isAppearing:(BOOL)arg2;
 - (void)_didTransitionToDismissingFromState:(unsigned long long)arg1;
-- (void)_didTransitionToPossibleEndingTransition:(id)arg1;
+- (void)_didTransitionToPossibleEndingTransition:(BOOL)arg1;
 - (void)_didTransitionToPresented;
 - (void)_didTransitionToPresenting;
 - (void)_postInteractionCleanup;
-- (void)_prepareStateMachine;
 - (id)_sourcePreviewPortal;
 - (void)_stashParentViewControllerIfNecessary;
 - (void)animateTransition:(id)arg1;

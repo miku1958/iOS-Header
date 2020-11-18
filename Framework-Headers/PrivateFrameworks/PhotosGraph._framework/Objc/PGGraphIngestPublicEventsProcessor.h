@@ -8,16 +8,18 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSSet, NSString;
 
 @interface PGGraphIngestPublicEventsProcessor : NSObject <PGGraphIngestProcessor>
 {
     NSDictionary *_publicEventCriteriaByCategory;
+    NSSet *_largeFrequentLocationNodes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSSet *largeFrequentLocationNodes; // @synthesize largeFrequentLocationNodes=_largeFrequentLocationNodes;
 @property (readonly, nonatomic) NSDictionary *publicEventCriteriaByCategory; // @synthesize publicEventCriteriaByCategory=_publicEventCriteriaByCategory;
 @property (readonly) Class superclass;
 

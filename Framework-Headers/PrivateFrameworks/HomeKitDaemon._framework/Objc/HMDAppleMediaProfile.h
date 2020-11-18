@@ -8,16 +8,14 @@
 
 #import <HomeKitDaemon/MPRequestResponseControllerDelegate-Protocol.h>
 
-@class HMDAccessorySettingContainer, HMDAppleMediaAccessory, HMDMediaSystem, MPRequestResponseController, NSString;
+@class HMDAppleMediaAccessory, HMDMediaSystem, MPRequestResponseController, NSString;
 
 @interface HMDAppleMediaProfile : HMDMediaProfile <MPRequestResponseControllerDelegate>
 {
     HMDMediaSystem *_mediaSystem;
     MPRequestResponseController *_controller;
-    HMDAccessorySettingContainer *_container;
 }
 
-@property (strong, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
 @property (readonly) MPRequestResponseController *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

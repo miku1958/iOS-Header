@@ -8,33 +8,17 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString;
+@class _MRUpdateActiveSystemEndpointRequestProtobuf;
 
 @interface _MRUpdateActiveSystemEndpointMessageProtobuf : PBCodable <NSCopying>
 {
-    int _changeType;
-    int _operation;
-    NSString *_outputDeviceUID;
-    NSString *_reason;
-    struct {
-        unsigned int changeType:1;
-        unsigned int operation:1;
-    } _has;
+    _MRUpdateActiveSystemEndpointRequestProtobuf *_request;
 }
 
-@property (nonatomic) int changeType; // @synthesize changeType=_changeType;
-@property (nonatomic) BOOL hasChangeType;
-@property (nonatomic) BOOL hasOperation;
-@property (readonly, nonatomic) BOOL hasOutputDeviceUID;
-@property (readonly, nonatomic) BOOL hasReason;
-@property (nonatomic) int operation; // @synthesize operation=_operation;
-@property (strong, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
-@property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) BOOL hasRequest;
+@property (strong, nonatomic) _MRUpdateActiveSystemEndpointRequestProtobuf *request; // @synthesize request=_request;
 
 - (void).cxx_destruct;
-- (int)StringAsChangeType:(id)arg1;
-- (int)StringAsOperation:(id)arg1;
-- (id)changeTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,7 +26,6 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)operationAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBCardSectionValue-Protocol.h>
 
-@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection;
+@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
 
 @interface _SFPBCardSectionValue : PBCodable <_SFPBCardSectionValue, NSSecureCoding>
 {
@@ -51,10 +51,13 @@
     _SFPBMediaRemoteControlCardSection *_mediaRemoteControlCardSection;
     _SFPBMapPlaceCardSection *_mapPlaceCardSection;
     _SFPBCompactRowCardSection *_compactRowCardSection;
+    _SFPBWorldMapCardSection *_worldMapCardSection;
+    _SFPBAttributionFooterCardSection *_attributionFooterCardSection;
 }
 
 @property (strong, nonatomic) _SFPBActivityIndicatorCardSection *activityIndicatorCardSection; // @synthesize activityIndicatorCardSection=_activityIndicatorCardSection;
 @property (strong, nonatomic) _SFPBAppLinkCardSection *appLinkCardSection; // @synthesize appLinkCardSection=_appLinkCardSection;
+@property (strong, nonatomic) _SFPBAttributionFooterCardSection *attributionFooterCardSection; // @synthesize attributionFooterCardSection=_attributionFooterCardSection;
 @property (strong, nonatomic) _SFPBAudioPlaybackCardSection *audioPlaybackCardSection; // @synthesize audioPlaybackCardSection=_audioPlaybackCardSection;
 @property (strong, nonatomic) _SFPBButtonCardSection *buttonCardSection; // @synthesize buttonCardSection=_buttonCardSection;
 @property (strong, nonatomic) _SFPBCompactRowCardSection *compactRowCardSection; // @synthesize compactRowCardSection=_compactRowCardSection;
@@ -96,6 +99,7 @@
 @property (strong, nonatomic) _SFPBVerticalLayoutCardSection *verticalLayoutCardSection; // @synthesize verticalLayoutCardSection=_verticalLayoutCardSection;
 @property (strong, nonatomic) _SFPBWatchListCardSection *watchListCardSection; // @synthesize watchListCardSection=_watchListCardSection;
 @property (strong, nonatomic) _SFPBWebCardSection *webCardSection; // @synthesize webCardSection=_webCardSection;
+@property (strong, nonatomic) _SFPBWorldMapCardSection *worldMapCardSection; // @synthesize worldMapCardSection=_worldMapCardSection;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

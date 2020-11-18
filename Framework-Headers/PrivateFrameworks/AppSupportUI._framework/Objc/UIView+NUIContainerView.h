@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL invalidatingIntrinsicContentSizeAlsoInvalidatesSuperview;
 @property (nonatomic) struct CGSize maximumLayoutSize;
 @property (nonatomic) struct CGSize minimumLayoutSize;
+@property (nonatomic) BOOL neverCacheEffectiveLayoutSize;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
@@ -34,24 +35,26 @@
 - (CDStruct_c3b9c2ee)_nui_additionalInsetsForBaselines;
 - (long long)_nui_baselineViewType;
 - (BOOL)_nui_isImageView;
+- (double)_nui_lineHeight;
+- (void)_setHasValidSize;
 - (struct CGSize)calculateLayoutSizeFittingSize:(struct CGSize)arg1;
-- (id)containerViewInfoCreateIfNeeded:(BOOL)arg1;
-- (struct nui_size_cache *)contentLayoutSizeCache;
+- (BOOL)canUseFastLayoutSizeCalulation;
 - (id)contentLayoutSizeCacheDescription;
+- (id)debugSizeCache;
+- (id)debugSizeCacheDict;
 - (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (double)effectiveBaselineOffsetFromBottom;
 - (double)effectiveBaselineOffsetFromContentBottom;
 - (double)effectiveFirstBaselineOffsetFromContentTop;
 - (double)effectiveFirstBaselineOffsetFromTop;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
-- (struct CGSize)effectiveMaximumLayoutContentSize;
-- (struct CGSize)effectiveMinimumLayoutContentSize;
 - (double)effectiveScreenScale;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)nukeContentLayoutSizeCacheFromOrbit;
+- (void)setCurrentEffectiveLayoutSizeFittingSizeShouldNotBeCached;
 - (void)setLayoutSize:(struct CGSize)arg1 withContentPriority:(float)arg2;
+- (void)setLayoutSize:(struct CGSize)arg1 withHorizontalContentPriority:(float)arg2 verticalContentPriority:(float)arg3;
 - (void)setUntransformedFrame:(struct CGRect)arg1;
-- (BOOL)supportsAsynchronousMeasurement;
 - (double)systemSpacingToAdjecentSiblingView:(id)arg1 axis:(long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
 - (double)systemSpacingToSuperView:(id)arg1 edge:(unsigned long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
 @end

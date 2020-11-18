@@ -29,11 +29,11 @@
 @property (readonly, nonatomic) struct CGPoint velocity; // @synthesize velocity=_velocity;
 
 - (void).cxx_destruct;
-- (id)_actionForActivatingFinalDestination:(long long)arg1;
 - (BOOL)_canCommitToSwitcherWithPanPercent:(double)arg1 forceComplete:(BOOL)arg2;
 - (long long)_currentFinalDestination;
 - (double)_currentProgressForGestureEvent:(id)arg1;
 - (double)_projectedTranslationWithVelocity:(struct CGPoint)arg1 initialTranslation:(double)arg2;
+- (id)_responseForActivatingFinalDestination:(long long)arg1;
 - (id)_updateForGestureDidBeginWithGestureEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithGestureEvent:(id)arg1;
 - (id)_updateForGestureDidEndWithGestureEvent:(id)arg1;

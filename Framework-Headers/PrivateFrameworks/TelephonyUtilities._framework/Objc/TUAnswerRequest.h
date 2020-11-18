@@ -17,6 +17,7 @@
     BOOL _wantsHoldMusic;
     BOOL _pauseVideoToStart;
     BOOL _downgradeToAudio;
+    BOOL _allowBluetoothAnswerWithoutDowngrade;
     NSString *_uniqueProxyIdentifier;
     NSString *_sourceIdentifier;
     IDSDestination *_endpointIDSDestination;
@@ -28,6 +29,7 @@
     struct CGSize _localPortraitAspectRatio;
 }
 
+@property (nonatomic) BOOL allowBluetoothAnswerWithoutDowngrade; // @synthesize allowBluetoothAnswerWithoutDowngrade=_allowBluetoothAnswerWithoutDowngrade;
 @property (nonatomic) long long behavior; // @synthesize behavior=_behavior;
 @property (strong, nonatomic) NSDate *dateAnswered; // @synthesize dateAnswered=_dateAnswered;
 @property (readonly, copy) NSString *debugDescription;

@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) C2SessionPool *sessionPool; // @synthesize sessionPool=_sessionPool;
 
++ (void)initialize;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_testUtility_forTask:(id)arg1 sessionHandle:(id *)arg2 taskHandle:(id *)arg3;

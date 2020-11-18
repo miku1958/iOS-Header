@@ -8,17 +8,17 @@
 
 #import <NumbersQuicklook/TSKArchivedSelection-Protocol.h>
 
-@class NSString, TNFormSelection;
+@class NSString, TNFormViewerSelection;
 
 @interface TNArchivedFormSelection : TSPObject <TSKArchivedSelection>
 {
-    TNFormSelection *_selection;
+    TNFormViewerSelection *_selection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) TNFormSelection *selection; // @synthesize selection=_selection;
+@property (strong, nonatomic) TNFormViewerSelection *selection; // @synthesize selection=_selection;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

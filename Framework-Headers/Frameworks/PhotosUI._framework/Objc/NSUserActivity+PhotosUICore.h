@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSUserActivity.h>
+#import <CoreServices/NSUserActivity.h>
 
 @interface NSUserActivity (PhotosUICore)
 + (BOOL)px_allowsDonationsForCurrentProcess;

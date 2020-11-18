@@ -17,6 +17,7 @@
     NSMutableArray *_folderStack;
     long long _parseDepth;
     NSMutableSet *_nodeIdentifiersUnarchived;
+    NSMutableSet *_widgetUniqueIdentifiersUnarchived;
     BOOL _corrupted;
     BOOL _dirty;
     NSDictionary *_metadata;
@@ -35,11 +36,13 @@
 - (id)_currentFolder;
 - (long long)_currentParseDepth;
 - (BOOL)_isNodeIdentifierAlreadyUnarchived:(id)arg1;
+- (BOOL)_isWidgetUniqueIdentifierAlreadyUnarchived:(id)arg1;
 - (void)_noteEnteredNode;
 - (void)_noteExitedNode;
 - (void)_noteNodeIdentifierWasUnarchived:(id)arg1;
 - (void)_noteRepresentationIsCorrupted;
 - (void)_noteSignificantDeviation;
+- (void)_noteWidgetUniqueIdentifierWasUnarchived:(id)arg1;
 - (id)_popFolder;
 - (void)_pushFolder:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

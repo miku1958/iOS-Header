@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFAbstractAlarmStatusItem.h>
+#import <Home/HFAbstractPresenceStatusItem.h>
 
-@interface HFOccupancyAlarmStatusItem : HFAbstractAlarmStatusItem
+@interface HFOccupancyAlarmStatusItem : HFAbstractPresenceStatusItem
 {
 }
 
 - (id)_entireHomeString;
 - (id)_serviceType;
 - (id)_singleTriggeredRoomFormatString;
+- (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
+- (id)multipleReadyFormatString;
+- (id)multipleTriggeredFormatString;
+- (id)multipleTriggeredWithRoomsFormatString;
+- (id)oneReadyFormatString;
+- (id)oneTriggeredFormatString;
+- (id)oneTriggeredWithRoomFormatString;
 
 @end
 

@@ -37,7 +37,10 @@
 - (void)didReceiveMemoryWarning;
 - (id)init;
 - (id)initWithDataSource:(id)arg1 progressManager:(id)arg2;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)peopleHomeController;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)statusViewControllerEnterButtonTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

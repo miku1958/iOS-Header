@@ -21,6 +21,8 @@
 @property (readonly, nonatomic) MPIdentifierSet *referenceModelObjectIdentifiers; // @synthesize referenceModelObjectIdentifiers=_referenceModelObjectIdentifiers;
 
 + (id)referenceWithMPModelObject:(id)arg1;
++ (id)referenceWithMPModelObject:(id)arg1 containerModelPlayEvent:(id)arg2;
++ (id)referenceWithStoreIdentifier:(id)arg1 trackInfo:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

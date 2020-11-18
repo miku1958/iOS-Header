@@ -16,9 +16,15 @@
 @property (readonly) NSUUID *connectionUUID;
 @property unsigned int downlinkBitrateCap;
 @property (readonly) BOOL isIPv6;
+@property (readonly) BOOL isLocalConstrained;
+@property (readonly) BOOL isLocalDelegated;
+@property (readonly) BOOL isLocalExpensive;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
 @property (readonly) BOOL isRelay;
+@property (readonly) BOOL isRemoteConstrained;
+@property (readonly) BOOL isRemoteDelegated;
+@property (readonly) BOOL isRemoteExpensive;
 @property (readonly) BOOL isRemoteOnCellular;
 @property (readonly) BOOL isRemoteOnWiFi;
 @property (readonly) BOOL isVPN;
@@ -33,6 +39,7 @@
 @property (readonly) unsigned int type;
 @property unsigned int uplinkBitrateCap;
 
+- (long long)compare:(id<VCConnectionProtocol>)arg1 isPrimary:(BOOL)arg2 selectionPolicy:(CDStruct_2a4d9400 *)arg3;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (BOOL)isOnSameInterfacesWithConnection:(id<VCConnectionProtocol>)arg1;
 - (BOOL)isSameAsConnection:(id<VCConnectionProtocol>)arg1;

@@ -12,10 +12,16 @@
 {
     int _audioInputRoute;
     SISchemaHardwareInterfaceIdentifier *_hardwareInterfaceVendorID;
+    struct {
+        unsigned int audioInputRoute:1;
+    } _has;
+    BOOL _hasHardwareInterfaceVendorID;
 }
 
 @property (nonatomic) int audioInputRoute; // @synthesize audioInputRoute=_audioInputRoute;
 @property (strong, nonatomic) SISchemaHardwareInterfaceIdentifier *hardwareInterfaceVendorID; // @synthesize hardwareInterfaceVendorID=_hardwareInterfaceVendorID;
+@property (nonatomic) BOOL hasAudioInputRoute;
+@property (nonatomic) BOOL hasHardwareInterfaceVendorID; // @synthesize hasHardwareInterfaceVendorID=_hasHardwareInterfaceVendorID;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

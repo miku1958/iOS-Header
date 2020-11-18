@@ -18,18 +18,19 @@
     WFDatabase *_database;
 }
 
-@property (readonly, nonatomic) long long changeType;
+@property (readonly, nonatomic) long long changeType; // @synthesize changeType=_changeType;
 @property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) WFDatabaseObjectDescriptor *descriptor;
 @property (readonly, nonatomic) unsigned long long estimatedSize;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *objectIdentifier;
+@property (readonly, nonatomic) NSString *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
 @property (copy, nonatomic) WFRecord *record; // @synthesize record=_record;
 @property (readonly, nonatomic) NSString *sequencer;
 @property (readonly) Class superclass;
 
++ (unsigned long long)databaseObjectType;
 + (int)messageType;
 + (Class)recordClass;
 + (id)recordProperties;

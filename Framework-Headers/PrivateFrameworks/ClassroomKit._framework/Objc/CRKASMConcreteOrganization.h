@@ -13,16 +13,18 @@
 @interface CRKASMConcreteOrganization : NSObject <CRKASMOrganization>
 {
     NSUUID *_UUID;
+    NSString *_name;
 }
 
-@property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPerson:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

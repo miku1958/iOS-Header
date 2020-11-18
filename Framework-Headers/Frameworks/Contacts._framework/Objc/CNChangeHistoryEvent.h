@@ -13,8 +13,12 @@
 {
 }
 
++ (unsigned long long)instanceSortOrder;
 + (BOOL)supportsSecureCoding;
 - (void)acceptEventVisitor:(id)arg1;
+- (long long)compare:(id)arg1;
+- (long long)comparisonResultBetweenClasses:(id)arg1;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

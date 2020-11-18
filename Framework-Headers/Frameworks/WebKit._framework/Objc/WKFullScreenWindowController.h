@@ -26,12 +26,17 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIPanGestureRecognizer> _interactivePanDismissGestureRecognizer;
     struct RetainPtr<UIPinchGestureRecognizer> _interactivePinchDismissGestureRecognizer;
     struct RetainPtr<WKFullScreenInteractiveTransition> _interactiveDismissTransitionCoordinator;
+    struct WKFullScreenWindowControllerVideoFullscreenModelClient _videoFullscreenClient;
+    BOOL _inPictureInPicture;
+    BOOL _returnToFullscreenFromPictureInPicture;
     struct CGRect _initialFrame;
     struct CGRect _finalFrame;
     struct RetainPtr<NSString> _EVOrganizationName;
     BOOL _EVOrganizationNameIsValid;
     BOOL _inInteractiveDismiss;
     BOOL _exitRequested;
+    BOOL _enterRequested;
+    BOOL _exitingFullScreen;
     struct RetainPtr<id> _notificationListener;
     WKWebView *__webView;
 }
@@ -64,15 +69,21 @@ __attribute__((visibility("hidden")))
 - (void)beganExitFullScreenWithInitialFrame:(struct CGRect)arg1 finalFrame:(struct CGRect)arg2;
 - (void)close;
 - (void)dealloc;
+- (void)didEnterPictureInPicture;
+- (void)didExitPictureInPicture;
 - (void)enterFullScreen;
 - (void)exitFullScreen;
+- (void)failedToEnterPictureInPicture;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithWebView:(id)arg1;
 - (id)interactionControllerForDismissal:(id)arg1;
 - (void)placeholderWillMoveToSuperview:(id)arg1;
+- (void)prepareToExitPictureInPicture;
+- (void)requestEnterFullScreen;
 - (void)requestExitFullScreen;
 - (void)videoControlsManagerDidChange;
 - (void)webViewDidRemoveFromSuperviewWhileInFullscreen;
+- (void)willEnterPictureInPicture;
 
 @end
 

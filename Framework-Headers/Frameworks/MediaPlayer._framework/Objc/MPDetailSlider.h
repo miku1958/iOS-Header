@@ -88,6 +88,7 @@
 - (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setValue:(float)arg1;
 - (void)setValue:(float)arg1 animated:(BOOL)arg2;
 - (void)setValue:(float)arg1 duration:(double)arg2;
 - (struct CGRect)thumbHitRect;
@@ -96,6 +97,7 @@
 - (id)timeLabelTextColorForStyle:(long long)arg1;
 - (void)tintColorDidChange;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

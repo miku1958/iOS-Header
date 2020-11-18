@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)identifier;
 - (void).cxx_destruct;
 - (id)initWithGroupView:(id)arg1;
 

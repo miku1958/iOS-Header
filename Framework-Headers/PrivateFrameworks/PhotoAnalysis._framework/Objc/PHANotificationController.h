@@ -18,7 +18,7 @@
 - (void)fireNotificationForMemoryIdentifiers:(id)arg1 withCreationReason:(unsigned long long)arg2;
 - (void)fireNotificationForSuggestionIdentifiers:(id)arg1;
 - (id)initWithGraphManager:(id)arg1;
-- (void)postNotificationForMemory:(id)arg1 withCreationReason:(unsigned long long)arg2;
+- (void)postNotificationForMemory:(id)arg1 withCreationReason:(unsigned long long)arg2 forceImmediateDelivery:(BOOL)arg3;
 - (void)postNotificationForSuggestion:(id)arg1 deliveryDate:(id)arg2;
 - (BOOL)shouldFireNotificationForMemories:(id)arg1 withCreationReason:(unsigned long long)arg2;
 - (BOOL)userIsActivelyUsingPhotos;

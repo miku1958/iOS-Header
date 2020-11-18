@@ -13,6 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _refreshInProgress;
+    BOOL _cacheNeedsRefresh;
     CoreTelephonyClient *_client;
     CTDeviceDataUsage *_cachedDeviceDataUsage;
     CDUnknownBlockType _refreshCompletionHandler;
@@ -20,6 +21,7 @@
     NSDictionary *_hotspotClientsUsage;
 }
 
+@property BOOL cacheNeedsRefresh; // @synthesize cacheNeedsRefresh=_cacheNeedsRefresh;
 @property (strong) CTDeviceDataUsage *cachedDeviceDataUsage; // @synthesize cachedDeviceDataUsage=_cachedDeviceDataUsage;
 @property (strong, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 @property (strong) NSDictionary *hotspotClientsUsage; // @synthesize hotspotClientsUsage=_hotspotClientsUsage;
@@ -48,6 +50,7 @@
 - (id)init;
 - (id)initPrivate;
 - (id)previousBillingCycleEndDate;
+- (void)refreshCacheIfNeeded;
 - (id)systemServiceBundleIDsForPeriod:(unsigned long long)arg1;
 - (id)totalAppUsageForPeriod:(unsigned long long)arg1;
 - (unsigned long long)totalCellularUsageForPeriod:(unsigned long long)arg1;

@@ -6,8 +6,16 @@
 
 #import <TeaUI/_TtC5TeaUI22SettingsViewController.h>
 
-@interface _TtC5TeaUI22SettingsViewController (TeaUI)
+#import <TeaUI/UITableViewDataSource-Protocol.h>
+
+@interface _TtC5TeaUI22SettingsViewController (TeaUI) <UITableViewDataSource>
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 @end
 

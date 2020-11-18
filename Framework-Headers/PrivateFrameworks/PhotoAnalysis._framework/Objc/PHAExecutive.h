@@ -84,6 +84,7 @@
 - (void)notifyLibraryAvailableAtURL:(id)arg1;
 - (void)photoLibraryDidBecomeUnavailable:(id)arg1;
 - (void)removeClientHandler:(id)arg1;
+- (void)setupAnalyticsEnvironment;
 - (void)shutdown;
 - (void)startup;
 - (id)statusAsDictionary;

@@ -21,14 +21,14 @@
 }
 
 @property (readonly, nonatomic, getter=isCompleted) BOOL completed;
-@property (nonatomic) GKGame *game; // @synthesize game=_game;
+@property (strong, nonatomic) GKGame *game; // @synthesize game=_game;
 @property (readonly, copy, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @dynamic hidden;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong) GKAchievementInternal *internal; // @synthesize internal=_internal;
 @property (copy, nonatomic) NSDate *lastReportedDate; // @dynamic lastReportedDate;
 @property (nonatomic) double percentComplete; // @dynamic percentComplete;
-@property (readonly, strong, nonatomic) GKPlayer *player; // @synthesize player=_player;
+@property (readonly, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property (copy, nonatomic) NSString *playerID; // @dynamic playerID;
 @property (nonatomic) BOOL showsCompletionBanner; // @synthesize showsCompletionBanner=_showsCompletionBanner;
 
@@ -42,9 +42,9 @@
 + (void)reportAchievements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)resetAchievementsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_achievementDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;

@@ -13,8 +13,8 @@
 @property (readonly, nonatomic) long long length;
 @property (readonly, nonatomic) long long segmentSize;
 
++ (JSValue *)makeDataSource:(JSValue *)arg1:(JSValue *)arg2:(long long)arg3;
 - (JSValue *)delete:(long long)arg1:(long long)arg2;
-- (id)initConstructor:(JSValue *)arg1:(JSValue *)arg2:(long long)arg3;
 - (void)insert:(long long)arg1:(JSValue *)arg2:(JSValue *)arg3;
 - (JSValue *)item:(long long)arg1;
 - (void)move:(long long)arg1:(long long)arg2:(long long)arg3:(JSValue *)arg4;

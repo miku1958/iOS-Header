@@ -6,13 +6,24 @@
 
 #import <MetricsKit/MTObject.h>
 
-@class MTBaseEventDataProvider;
+@class MTBaseEventDataProvider, NSMutableDictionary;
 
 @interface MTEventHandlers : MTObject
 {
+    MTBaseEventDataProvider *_base;
+    NSMutableDictionary *_registrations;
 }
 
-@property (strong, nonatomic) MTBaseEventDataProvider *base; // @dynamic base;
+@property (strong, nonatomic) MTBaseEventDataProvider *base; // @synthesize base=_base;
+@property (strong, nonatomic) NSMutableDictionary *registrations; // @synthesize registrations=_registrations;
+
+- (void).cxx_destruct;
+- (Class)baseDataProviderClass;
+- (id)objectForKeyedSubscript:(id)arg1;
+- (void)registerDefaultEventHandlers;
+- (void)registerEventHandlerName:(id)arg1 eventData:(id)arg2;
+- (void)registerEventHandlerName:(id)arg1 eventHandlerClass:(Class)arg2;
+- (void)registerEventHandlerName:(id)arg1 eventHandlerClass:(Class)arg2 eventData:(id)arg3;
 
 @end
 

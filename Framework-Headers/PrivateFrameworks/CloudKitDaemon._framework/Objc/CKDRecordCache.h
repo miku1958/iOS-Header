@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKSQLite, CKSQLitePool, NSDate;
+@class CKDClientContext, CKSQLite, CKSQLitePool, NSDate, NSNumber;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordCache : NSObject
 {
     CKSQLite *_db;
     CKSQLitePool *_dbPool;
     CKDClientContext *_context;
     long long _scope;
+    NSNumber *_explicitCacheSizeLimit;
     NSObject<OS_dispatch_queue> *_queue;
     NSDate *_lastExpiryAttempt;
 }
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) CKSQLite *db; // @synthesize db=_db;
 @property (strong, nonatomic) CKSQLitePool *dbPool; // @synthesize dbPool=_dbPool;
+@property (strong, nonatomic) NSNumber *explicitCacheSizeLimit; // @synthesize explicitCacheSizeLimit=_explicitCacheSizeLimit;
 @property (strong, nonatomic) NSDate *lastExpiryAttempt; // @synthesize lastExpiryAttempt=_lastExpiryAttempt;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) long long scope; // @synthesize scope=_scope;

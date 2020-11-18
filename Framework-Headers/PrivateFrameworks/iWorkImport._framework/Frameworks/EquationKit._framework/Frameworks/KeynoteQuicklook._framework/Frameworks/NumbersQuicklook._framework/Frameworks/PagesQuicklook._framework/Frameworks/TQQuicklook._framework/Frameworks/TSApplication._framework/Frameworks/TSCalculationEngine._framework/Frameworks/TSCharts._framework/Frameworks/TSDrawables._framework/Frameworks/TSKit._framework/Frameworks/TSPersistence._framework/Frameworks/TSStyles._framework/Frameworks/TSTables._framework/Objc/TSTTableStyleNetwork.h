@@ -105,6 +105,7 @@
 - (id)deriveCategoryTextStyleForTableStyleArea:(unsigned long long)arg1 connectedToStylesheet:(BOOL)arg2;
 - (id)dictionaryWithPreset:(unsigned long long)arg1;
 - (void)enumerateAllStylesWithBlock:(CDUnknownBlockType)arg1;
+- (void)generateCategoryStrokesInTableStyle:(id)arg1;
 - (void)generateCategoryStylesConnectedToStylesheet:(BOOL)arg1;
 - (unsigned long long)hash;
 - (id)initWithContext:(id)arg1;
@@ -122,6 +123,7 @@
 - (void)saveToArchiver:(id)arg1;
 - (void)setCellStyle:(id)arg1 forTableStyleArea:(unsigned long long)arg2;
 - (void)setTextStyle:(id)arg1 forTableStyleArea:(unsigned long long)arg2;
+- (id)sheetFill;
 - (id)styleForStyleNetworkIndex:(unsigned long long)arg1;
 - (BOOL)stylesInStylesheet:(id)arg1;
 - (id)textStyleForTableStyleArea:(unsigned long long)arg1;

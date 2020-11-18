@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VCCKNotificationCenter, VCCoreDuetListener, VCDaemonDatabaseProvider, VCDaemonSyncDataEndpoint, VCDaemonXPCEventHandler, VCShareSheetWorkflowStatusUpdater, VCSpotlightSyncService, VCWatchSyncCoordinator, VCXPCServer;
+@class VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCDaemonDatabaseProvider, VCDaemonSyncDataEndpoint, VCDaemonXPCEventHandler, VCShareSheetWorkflowStatusUpdater, VCSpotlightSyncService, VCWatchSyncCoordinator, VCXPCServer, WFRemoteExecutionCoordinator, WFSiriWorkflowVocabularyUpdater;
 
 @interface VCDaemon : NSObject
 {
@@ -17,16 +17,20 @@
     VCCoreDuetListener *_coreDuetListener;
     VCWatchSyncCoordinator *_watchSyncCoordinator;
     VCSpotlightSyncService *_spotlightLibrarySyncService;
-    VCCKNotificationCenter *_cloudKitNotificationCenter;
     VCShareSheetWorkflowStatusUpdater *_shareSheetStatusUpdater;
+    WFSiriWorkflowVocabularyUpdater *_vocabularyUpdater;
+    WFRemoteExecutionCoordinator *_remoteExecutionCoordinator;
+    VCCKShortcutSyncCoordinator *_shortcutSyncCoordinator;
 }
 
-@property (strong, nonatomic) VCCKNotificationCenter *cloudKitNotificationCenter; // @synthesize cloudKitNotificationCenter=_cloudKitNotificationCenter;
 @property (readonly, nonatomic) VCCoreDuetListener *coreDuetListener; // @synthesize coreDuetListener=_coreDuetListener;
 @property (readonly, nonatomic) VCDaemonDatabaseProvider *databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property (strong, nonatomic) WFRemoteExecutionCoordinator *remoteExecutionCoordinator; // @synthesize remoteExecutionCoordinator=_remoteExecutionCoordinator;
 @property (strong, nonatomic) VCShareSheetWorkflowStatusUpdater *shareSheetStatusUpdater; // @synthesize shareSheetStatusUpdater=_shareSheetStatusUpdater;
+@property (strong, nonatomic) VCCKShortcutSyncCoordinator *shortcutSyncCoordinator; // @synthesize shortcutSyncCoordinator=_shortcutSyncCoordinator;
 @property (readonly, nonatomic) VCSpotlightSyncService *spotlightLibrarySyncService; // @synthesize spotlightLibrarySyncService=_spotlightLibrarySyncService;
 @property (readonly, nonatomic) VCDaemonSyncDataEndpoint *syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
+@property (strong, nonatomic) WFSiriWorkflowVocabularyUpdater *vocabularyUpdater; // @synthesize vocabularyUpdater=_vocabularyUpdater;
 @property (readonly, nonatomic) VCWatchSyncCoordinator *watchSyncCoordinator; // @synthesize watchSyncCoordinator=_watchSyncCoordinator;
 @property (readonly, nonatomic) VCDaemonXPCEventHandler *xpcEventHandler; // @synthesize xpcEventHandler=_xpcEventHandler;
 @property (readonly, nonatomic) VCXPCServer *xpcServer; // @synthesize xpcServer=_xpcServer;
@@ -34,7 +38,6 @@
 + (id)sharedDaemon;
 - (void).cxx_destruct;
 - (void)applicationWasUnregistered:(id)arg1;
-- (void)assistantPreferencesDidChange;
 - (id)init;
 - (void)start;
 - (void)startEventObservation;

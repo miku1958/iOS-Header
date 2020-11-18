@@ -13,9 +13,10 @@
 
 @interface GKNicknameController : NSObject <UITextFieldDelegate>
 {
+    BOOL _nicknameWasEdited;
     BOOL _nicknameChangeWasCommitted;
     BOOL _shouldShakeTextFieldOnError;
-    BOOL _nicknameWasEdited;
+    BOOL _shouldUseSuggestedNicknameOnDefaultNickname;
     UITextField *_nickname;
     UIActivityIndicatorView *_activityIndicator;
     id<GKNicknameControllerDelegate> _delegate;
@@ -33,15 +34,18 @@
 @property (nonatomic) BOOL nicknameWasEdited; // @synthesize nicknameWasEdited=_nicknameWasEdited;
 @property (strong, nonatomic) GKReachability *reachability; // @synthesize reachability=_reachability;
 @property (nonatomic) BOOL shouldShakeTextFieldOnError; // @synthesize shouldShakeTextFieldOnError=_shouldShakeTextFieldOnError;
+@property (nonatomic) BOOL shouldUseSuggestedNicknameOnDefaultNickname; // @synthesize shouldUseSuggestedNicknameOnDefaultNickname=_shouldUseSuggestedNicknameOnDefaultNickname;
 @property (strong, nonatomic) NSArray *suggestedNicknames; // @synthesize suggestedNicknames=_suggestedNicknames;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)commitNicknameChanges:(CDUnknownBlockType)arg1;
 - (void)didSelectSuggestion:(id)arg1;
 - (void)displayNicknameSuggestions;
 - (id)init;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
+- (void)loadSuggestedNicknames:(CDUnknownBlockType)arg1;
 - (void)nicknameTextChanged:(id)arg1;
 - (void)reset;
 - (void)shakeNicknameTextFieldWithCompletionBlock:(CDUnknownBlockType)arg1;
@@ -51,6 +55,7 @@
 - (void)textFieldDidBecomeFirstResponder:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidResignFirstResponder:(id)arg1;
+- (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updateReturnKeyEnabledState;
 

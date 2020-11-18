@@ -63,6 +63,7 @@
 - (id)activityViewController;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
+- (BOOL)canShareURLThroughMail:(id)arg1;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;

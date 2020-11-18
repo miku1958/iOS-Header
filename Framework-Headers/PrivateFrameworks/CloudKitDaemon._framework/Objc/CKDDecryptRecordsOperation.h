@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)operationShouldBeFlowControlled;
 - (BOOL)shouldCheckAppVersion;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

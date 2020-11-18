@@ -13,6 +13,7 @@
 @interface PBBridgeIDSServiceDelegate : NSObject <IDSServiceDelegate>
 {
     BOOL _shouldSuppressTransportReachabilityTimeout;
+    BOOL _isTinkerPairing;
     IDSService *_service;
     NSTimer *_transportReachabilityTimer;
     NSMutableDictionary *_inflightMessages;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *inflightMessages; // @synthesize inflightMessages=_inflightMessages;
+@property (nonatomic, setter=setTinkerPairing:) BOOL isTinkerPairing; // @synthesize isTinkerPairing=_isTinkerPairing;
 @property (strong, nonatomic) NSMutableDictionary *pendingMessages; // @synthesize pendingMessages=_pendingMessages;
 @property (strong, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldSuppressTransportReachabilityTimeout; // @synthesize shouldSuppressTransportReachabilityTimeout=_shouldSuppressTransportReachabilityTimeout;
@@ -40,7 +42,7 @@
 - (BOOL)connectionStateWithDevices:(id)arg1 accounts:(id)arg2;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)endSetupTransaction;
-- (void)reportConnectionForService:(id)arg1 accounts:(id)arg2 devices:(id)arg3;
+- (BOOL)reportConnectionForService:(id)arg1 accounts:(id)arg2 devices:(id)arg3;
 - (void)resetTransportReachabilityTimer;
 - (id)sendProtoBuf:(id)arg1 service:(id)arg2 priority:(long long)arg3 responseIdentifier:(id)arg4 expectsResponse:(BOOL)arg5 retryCount:(long long)arg6 retryInterval:(double)arg7;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
@@ -54,7 +56,7 @@
 - (void)startReachabilityTimer;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
-- (void)updateConnectivityTimer:(id)arg1;
+- (void)updateConnectivityTimer:(BOOL)arg1;
 
 @end
 

@@ -9,14 +9,17 @@
 #import <ClockKitUI/CLKTimeFormatterObserver-Protocol.h>
 #import <ClockKitUI/_CLKUITimeLabelManager-Protocol.h>
 
-@class CLKTimeFormatter, NSNumber, NSString, UIColor, _CLKUIBasicTimeLabelManager;
+@class CLKClockTimerToken, CLKTimeFormatter, NSString, UIColor, UILabel, _CLKUIBasicTimeLabelManager;
 
 @interface _CLKUIBlinkingTimeLabelManager : UIView <_CLKUITimeLabelManager, CLKTimeFormatterObserver>
 {
     CLKTimeFormatter *_timeFormatter;
     _CLKUIBasicTimeLabelManager *_numbersLabelManager;
     _CLKUIBasicTimeLabelManager *_blinkerLabelManager;
-    NSNumber *_blinkTimerToken;
+    CLKClockTimerToken *_blinkTimerToken;
+    BOOL _usesIsolatedBlinkerLabel;
+    UILabel *_minutesBlinkerLabel;
+    UILabel *_secondsBlinkerLabel;
     BOOL _animationsPaused;
     BOOL _showSeconds;
 }
@@ -50,6 +53,7 @@
 - (struct CGSize)sizeThatFits;
 - (void)sizeViewToFit;
 - (void)timeFormatterReportingLiveTimeDidChange:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTimeText;
 - (id)viewForLastBaselineLayout;
 

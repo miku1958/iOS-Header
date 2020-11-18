@@ -42,6 +42,7 @@
 - (id)messageBody;
 - (id)requiredKeys;
 - (long long)responseCommand;
+- (BOOL)wantsResponse;
 
 @end
 

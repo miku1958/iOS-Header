@@ -12,22 +12,30 @@
 
 @interface PGGraphIngestPersonAgeCategoryProcessor : NSObject <PGGraphIngestProcessor>
 {
+    NSDictionary *_confidenceThresholdByBabySceneIdentifier;
     NSDictionary *_confidenceThresholdByChildSceneIdentifier;
+    NSDictionary *_confidenceThresholdByTeenSceneIdentifier;
     NSDictionary *_confidenceThresholdByAdultSceneIdentifier;
 }
 
 @property (readonly, nonatomic) NSDictionary *confidenceThresholdByAdultSceneIdentifier; // @synthesize confidenceThresholdByAdultSceneIdentifier=_confidenceThresholdByAdultSceneIdentifier;
+@property (readonly, nonatomic) NSDictionary *confidenceThresholdByBabySceneIdentifier; // @synthesize confidenceThresholdByBabySceneIdentifier=_confidenceThresholdByBabySceneIdentifier;
 @property (readonly, nonatomic) NSDictionary *confidenceThresholdByChildSceneIdentifier; // @synthesize confidenceThresholdByChildSceneIdentifier=_confidenceThresholdByChildSceneIdentifier;
+@property (readonly, nonatomic) NSDictionary *confidenceThresholdByTeenSceneIdentifier; // @synthesize confidenceThresholdByTeenSceneIdentifier=_confidenceThresholdByTeenSceneIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (unsigned long long)_ageCategoryForPersonNode:(id)arg1 graph:(id)arg2;
-- (unsigned long long)_ageCategoryFromAssetSamplingForPersonNode:(id)arg1 graph:(id)arg2;
+- (unsigned long long)_ageCategoryFromAssetSamplingScenesForPersonNode:(id)arg1 graph:(id)arg2;
 - (unsigned long long)_ageCategoryFromBirthdayDateForPersonNode:(id)arg1;
 - (unsigned long long)_ageCategoryFromPHFaceAgeType:(unsigned short)arg1;
+- (unsigned long long)_ageCategoryUsingFaceAttributesForPersonNode:(id)arg1 graph:(id)arg2;
+- (id)_ageDescriptionFromAge:(unsigned long long)arg1;
+- (unsigned long long)ageCategoryForPersonNode:(id)arg1 ageCategoryCountedSet:(id)arg2;
+- (unsigned long long)ageCategoryFromBirthdayDateComponents:(id)arg1 currentDate:(id)arg2;
+- (unsigned long long)ageCategoryFromScenesByAssetLocalIdentifier:(id)arg1 personNode:(id)arg2;
 - (void)processPersonAgeCategoryForPersonNodes:(id)arg1 graph:(id)arg2 withProgressBlock:(CDUnknownBlockType)arg3;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)shouldRunWithGraphUpdate:(id)arg1;

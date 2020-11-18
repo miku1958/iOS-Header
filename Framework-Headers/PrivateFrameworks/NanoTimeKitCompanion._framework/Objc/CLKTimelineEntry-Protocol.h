@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NSObject-Protocol.h>
+#import <NanoTimeKitCompanion/TLTimelineEntry-Protocol.h>
 
 @class NSDate;
 
-@protocol CLKTimelineEntry <NSObject>
+@protocol CLKTimelineEntry <TLTimelineEntry>
 - (NSDate *)date;
 - (void)setDate:(NSDate *)arg1;
 @end

@@ -13,18 +13,18 @@
 
 @interface HDCodableProcedureRecord : PBCodable <HDDecoding, NSCopying>
 {
-    HDCodableMedicalCodingListList *_bodySitesCodings;
-    HDCodableMedicalCodingList *_categoryCodings;
-    HDCodableMedicalCodingListList *_complicationsCodings;
+    HDCodableMedicalCodingListList *_bodySitesCodingCollections;
+    HDCodableMedicalCodingList *_categoryCodingCollection;
+    HDCodableMedicalCodingListList *_complicationsCodingCollections;
     NSData *_executionEndDate;
     NSData *_executionStartDate;
-    HDCodableMedicalCodingListList *_followUpsCodings;
+    HDCodableMedicalCodingListList *_followUpsCodingCollections;
     HDCodableMedicalRecord *_medicalRecord;
-    HDCodableMedicalCodingList *_outcomeCodings;
+    HDCodableMedicalCodingList *_outcomeCodingCollection;
     HDCodableStringList *_performers;
-    HDCodableMedicalCodingList *_procedureCodings;
-    HDCodableMedicalCodingList *_reasonCodings;
-    HDCodableMedicalCodingListList *_reasonsNotPerformedCodings;
+    HDCodableMedicalCodingList *_procedureCodingCollection;
+    HDCodableMedicalCodingListList *_reasonCodingCollections;
+    HDCodableMedicalCodingListList *_reasonsNotPerformedCodingCollections;
     HDCodableMedicalCoding *_statusCoding;
     BOOL _notPerformed;
     struct {
@@ -32,36 +32,36 @@
     } _has;
 }
 
-@property (strong, nonatomic) HDCodableMedicalCodingListList *bodySitesCodings; // @synthesize bodySitesCodings=_bodySitesCodings;
-@property (strong, nonatomic) HDCodableMedicalCodingList *categoryCodings; // @synthesize categoryCodings=_categoryCodings;
-@property (strong, nonatomic) HDCodableMedicalCodingListList *complicationsCodings; // @synthesize complicationsCodings=_complicationsCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *bodySitesCodingCollections; // @synthesize bodySitesCodingCollections=_bodySitesCodingCollections;
+@property (strong, nonatomic) HDCodableMedicalCodingList *categoryCodingCollection; // @synthesize categoryCodingCollection=_categoryCodingCollection;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *complicationsCodingCollections; // @synthesize complicationsCodingCollections=_complicationsCodingCollections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSData *executionEndDate; // @synthesize executionEndDate=_executionEndDate;
 @property (strong, nonatomic) NSData *executionStartDate; // @synthesize executionStartDate=_executionStartDate;
-@property (strong, nonatomic) HDCodableMedicalCodingListList *followUpsCodings; // @synthesize followUpsCodings=_followUpsCodings;
-@property (readonly, nonatomic) BOOL hasBodySitesCodings;
-@property (readonly, nonatomic) BOOL hasCategoryCodings;
-@property (readonly, nonatomic) BOOL hasComplicationsCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *followUpsCodingCollections; // @synthesize followUpsCodingCollections=_followUpsCodingCollections;
+@property (readonly, nonatomic) BOOL hasBodySitesCodingCollections;
+@property (readonly, nonatomic) BOOL hasCategoryCodingCollection;
+@property (readonly, nonatomic) BOOL hasComplicationsCodingCollections;
 @property (readonly, nonatomic) BOOL hasExecutionEndDate;
 @property (readonly, nonatomic) BOOL hasExecutionStartDate;
-@property (readonly, nonatomic) BOOL hasFollowUpsCodings;
+@property (readonly, nonatomic) BOOL hasFollowUpsCodingCollections;
 @property (readonly, nonatomic) BOOL hasMedicalRecord;
 @property (nonatomic) BOOL hasNotPerformed;
-@property (readonly, nonatomic) BOOL hasOutcomeCodings;
+@property (readonly, nonatomic) BOOL hasOutcomeCodingCollection;
 @property (readonly, nonatomic) BOOL hasPerformers;
-@property (readonly, nonatomic) BOOL hasProcedureCodings;
-@property (readonly, nonatomic) BOOL hasReasonCodings;
-@property (readonly, nonatomic) BOOL hasReasonsNotPerformedCodings;
+@property (readonly, nonatomic) BOOL hasProcedureCodingCollection;
+@property (readonly, nonatomic) BOOL hasReasonCodingCollections;
+@property (readonly, nonatomic) BOOL hasReasonsNotPerformedCodingCollections;
 @property (readonly, nonatomic) BOOL hasStatusCoding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property (nonatomic) BOOL notPerformed; // @synthesize notPerformed=_notPerformed;
-@property (strong, nonatomic) HDCodableMedicalCodingList *outcomeCodings; // @synthesize outcomeCodings=_outcomeCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingList *outcomeCodingCollection; // @synthesize outcomeCodingCollection=_outcomeCodingCollection;
 @property (strong, nonatomic) HDCodableStringList *performers; // @synthesize performers=_performers;
-@property (strong, nonatomic) HDCodableMedicalCodingList *procedureCodings; // @synthesize procedureCodings=_procedureCodings;
-@property (strong, nonatomic) HDCodableMedicalCodingList *reasonCodings; // @synthesize reasonCodings=_reasonCodings;
-@property (strong, nonatomic) HDCodableMedicalCodingListList *reasonsNotPerformedCodings; // @synthesize reasonsNotPerformedCodings=_reasonsNotPerformedCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingList *procedureCodingCollection; // @synthesize procedureCodingCollection=_procedureCodingCollection;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *reasonCodingCollections; // @synthesize reasonCodingCollections=_reasonCodingCollections;
+@property (strong, nonatomic) HDCodableMedicalCodingListList *reasonsNotPerformedCodingCollections; // @synthesize reasonsNotPerformedCodingCollections=_reasonsNotPerformedCodingCollections;
 @property (strong, nonatomic) HDCodableMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
 @property (readonly) Class superclass;
 

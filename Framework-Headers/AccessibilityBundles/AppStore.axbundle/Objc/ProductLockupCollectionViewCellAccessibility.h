@@ -20,6 +20,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
+- (void)resetProductLockupCellAccessibilityElements;
 
 @end
 

@@ -10,8 +10,8 @@
 
 @protocol _UIDisplayInfoProviding <NSObject>
 
-@property (nonatomic) unsigned long long artworkSubtype;
-@property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property (readonly, nonatomic) unsigned long long artworkSubtype;
+@property (readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 @property (readonly, nonatomic) double homeAffordanceOverlayAllowance;
 @property (readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;

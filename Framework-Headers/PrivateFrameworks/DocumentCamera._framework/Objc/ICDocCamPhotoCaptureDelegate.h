@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface ICDocCamPhotoCaptureDelegate : NSObject <AVCapturePhotoCaptureDelegate>
 {
+    float _highestSharpness;
     AVCapturePhotoSettings *_requestedPhotoSettings;
     NSDictionary *_metaData;
     struct __CVBuffer *_pbRef;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) float highestSharpness; // @synthesize highestSharpness=_highestSharpness;
 @property (strong, nonatomic) NSDictionary *metaData; // @synthesize metaData=_metaData;
 @property (nonatomic) struct __CVBuffer *pbRef; // @synthesize pbRef=_pbRef;
 @property (strong, nonatomic) AVCapturePhotoSettings *requestedPhotoSettings; // @synthesize requestedPhotoSettings=_requestedPhotoSettings;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didFinish;
 - (id)initWithRequestedPhotoSettings:(id)arg1 willCapturePhotoAnimation:(CDUnknownBlockType)arg2 completed:(CDUnknownBlockType)arg3;
+- (float)sharpnessForImageBuffer:(struct __CVBuffer *)arg1;
 
 @end
 

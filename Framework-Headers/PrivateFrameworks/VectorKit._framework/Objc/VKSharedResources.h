@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     struct _retain_ptr<VKResourceManager *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _resourceManager;
     shared_ptr_dd2d1f5e _stylesheetVendor;
     shared_ptr_887a193f _dataOverrideManager;
+    shared_ptr_64671d97 _standardCommandBufferSelector;
+    shared_ptr_0711ef20 _realisticCommandBufferSelector;
     struct unique_ptr<md::Device, std::__1::default_delete<md::Device>> _device;
     struct unique_ptr<ggl::AlphaAtlas, std::__1::default_delete<ggl::AlphaAtlas>> _alphaAtlas;
     struct unique_ptr<ggl::IsoAlphaAtlas, std::__1::default_delete<ggl::IsoAlphaAtlas>> _highInflationAlphaAtlas;
@@ -30,10 +32,12 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ggl::DistanceAtlas, std::__1::default_delete<ggl::DistanceAtlas>> _distanceAtlas;
     shared_ptr_1ddd16cb _shaderLibrary;
     struct FigPhotoDecompressionSession *_defaultDecompressionSession;
+    struct read_write_lock _figCreationLock;
     struct shared_ptr<md::GeoResourceProvider> _resourceProvider;
     shared_ptr_6d521cf7 _grlIconManager;
     shared_ptr_76a6df1b _grlFontManager;
     unsigned int _referenceCount;
+    BOOL _snapshotterIsInService;
 }
 
 @property (readonly, nonatomic) struct AlphaAtlas *alphaAtlas;
@@ -49,8 +53,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct IsoAlphaAtlas *highInflationAlphaAtlas;
 @property (readonly, nonatomic) VKInternalIconManager *iconManager;
 @property (readonly, nonatomic) struct IsoAlphaAtlas *isoAlphaAtlas;
+@property (readonly, nonatomic) shared_ptr_0711ef20 realisticCommandBufferSelector;
 @property (readonly, nonatomic) VKResourceManager *resourceManager;
 @property (readonly, nonatomic) const struct StandardLibrary *shaderLibrary;
+@property (nonatomic) BOOL snapshotterIsInService; // @synthesize snapshotterIsInService=_snapshotterIsInService;
+@property (readonly, nonatomic) shared_ptr_64671d97 standardCommandBufferSelector;
 @property (readonly, nonatomic) shared_ptr_dd2d1f5e stylesheetVendor; // @synthesize stylesheetVendor=_stylesheetVendor;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) shared_ptr_f2399894 textureManager;
@@ -67,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)purgeDecompressSessionCachedBuffers;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
+- (void)startDecompressionSession;
 
 @end
 

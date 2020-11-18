@@ -12,6 +12,14 @@ __attribute__((visibility("hidden")))
     struct MTLSamplerDescriptorPrivate _private;
 }
 
+@property (nonatomic) unsigned long long borderColorSPI;
+@property (nonatomic) unsigned int customBorderColorValue_0;
+@property (nonatomic) unsigned int customBorderColorValue_1;
+@property (nonatomic) unsigned int customBorderColorValue_2;
+@property (nonatomic) unsigned int customBorderColorValue_3;
+@property (nonatomic) BOOL forceSeamsOnCubemapFiltering;
+
+- (unsigned long long)borderColor;
 - (unsigned long long)compareFunction;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -32,9 +40,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)minFilter;
 - (unsigned long long)mipFilter;
 - (BOOL)normalizedCoordinates;
+- (unsigned long long)pixelFormat;
 - (unsigned long long)rAddressMode;
 - (unsigned long long)resourceIndex;
 - (unsigned long long)sAddressMode;
+- (void)setBorderColor:(unsigned long long)arg1;
 - (void)setCompareFunction:(unsigned long long)arg1;
 - (void)setForceResourceIndex:(BOOL)arg1;
 - (void)setLabel:(id)arg1;
@@ -47,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)setMinFilter:(unsigned long long)arg1;
 - (void)setMipFilter:(unsigned long long)arg1;
 - (void)setNormalizedCoordinates:(BOOL)arg1;
+- (void)setPixelFormat:(unsigned long long)arg1;
 - (void)setRAddressMode:(unsigned long long)arg1;
 - (void)setResourceIndex:(unsigned long long)arg1;
 - (void)setSAddressMode:(unsigned long long)arg1;

@@ -4,19 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <AVConference/VCConnection.h>
 
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
 @class NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionLegacy : NSObject <VCConnectionProtocol>
+@interface VCConnectionLegacy : VCConnection <VCConnectionProtocol>
 {
     unsigned int _type;
     int _priority;
     BOOL _waitToBeNominated;
     struct tagCONNRESULT *_connectionResult;
+    BOOL isLocalConstrained;
+    BOOL isLocalExpensive;
+    BOOL isRemoteConstrained;
+    BOOL isRemoteExpensive;
+    BOOL isLocalDelegated;
+    BOOL isRemoteDelegated;
 }
 
 @property (readonly) int connectionId;
@@ -28,9 +34,15 @@ __attribute__((visibility("hidden")))
 @property unsigned int downlinkBitrateCap;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isIPv6;
+@property (readonly) BOOL isLocalConstrained; // @synthesize isLocalConstrained;
+@property (readonly) BOOL isLocalDelegated; // @synthesize isLocalDelegated;
+@property (readonly) BOOL isLocalExpensive; // @synthesize isLocalExpensive;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
 @property (readonly) BOOL isRelay;
+@property (readonly) BOOL isRemoteConstrained; // @synthesize isRemoteConstrained;
+@property (readonly) BOOL isRemoteDelegated; // @synthesize isRemoteDelegated;
+@property (readonly) BOOL isRemoteExpensive; // @synthesize isRemoteExpensive;
 @property (readonly) BOOL isRemoteOnCellular;
 @property (readonly) BOOL isRemoteOnWiFi;
 @property (readonly) BOOL isReplaceOnly;

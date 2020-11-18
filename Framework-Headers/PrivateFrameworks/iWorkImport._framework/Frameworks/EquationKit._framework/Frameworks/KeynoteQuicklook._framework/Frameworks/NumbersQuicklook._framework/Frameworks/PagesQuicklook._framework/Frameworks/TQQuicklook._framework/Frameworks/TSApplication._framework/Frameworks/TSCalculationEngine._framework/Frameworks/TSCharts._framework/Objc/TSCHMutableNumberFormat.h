@@ -19,7 +19,7 @@
 @property (nonatomic) BOOL baseUseMinusSign; // @dynamic baseUseMinusSign;
 @property (copy, nonatomic) NSString *currencyCode; // @dynamic currencyCode;
 @property (nonatomic) unsigned int decimalPlaces; // @dynamic decimalPlaces;
-@property (nonatomic) int formatType; // @dynamic formatType;
+@property (nonatomic) unsigned int formatType; // @dynamic formatType;
 @property (nonatomic) int fractionAccuracy; // @dynamic fractionAccuracy;
 @property (nonatomic) int negativeStyle; // @dynamic negativeStyle;
 @property (copy, nonatomic) NSString *prefixString; // @dynamic prefixString;

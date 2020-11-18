@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_source, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCFairScheduler : NSObject
 {
     NSObject<OS_dispatch_source> *_source;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_workloop;
     NSString *_name;
     unsigned long long _maxRegistedSourceBit;
     unsigned long long _lastVisitedBit;
@@ -21,14 +21,14 @@ __attribute__((visibility("hidden")))
     BOOL _resumed;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_workloop> *workloop;
 
 - (void).cxx_destruct;
 - (void)addSource:(id)arg1;
 - (void)cancel;
 - (void)close;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1 name:(id)arg2;
+- (id)initWithWorkloop:(id)arg1 name:(id)arg2;
 - (void)resume;
 - (void)schedule;
 - (void)signalSourceForBitIndex:(unsigned long long)arg1;

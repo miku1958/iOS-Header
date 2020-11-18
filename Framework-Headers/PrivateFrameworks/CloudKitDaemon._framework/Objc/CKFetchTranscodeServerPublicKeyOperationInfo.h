@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKFetchTranscodeServerPublicKeyOperationInfo : CKOperationInfo
 {
     NSString *_transcodeServerHostname;

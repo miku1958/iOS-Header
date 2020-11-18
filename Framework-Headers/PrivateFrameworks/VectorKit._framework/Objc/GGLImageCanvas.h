@@ -14,18 +14,19 @@
 __attribute__((visibility("hidden")))
 @interface GGLImageCanvas : NSObject <MDRenderTarget>
 {
-    struct RenderTargetFormat _resolvedRenderTargetFormat;
     struct CGSize _size;
     double _contentScale;
     struct CGRect _bounds;
     BOOL _canMakeImage;
     BOOL _recreateRenderTarget;
     BOOL _allowAlpha;
+    BOOL _supportsFramebufferFetch;
     id<GGLRenderQueueSource> _renderSource;
     struct unique_ptr<ggl::IOSurfaceTexture, std::__1::default_delete<ggl::IOSurfaceTexture>> _flippedSurfaceTexture;
     struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _flippedRenderTarget;
     struct unique_ptr<(anonymous namespace)::YFlipPass, std::__1::default_delete<(anonymous namespace)::YFlipPass>> _yFlipPass;
-    struct RenderTargetFormat _format;
+    struct RenderTargetFormat _sRGBFormat;
+    struct RenderTargetFormat _resolvedRenderTargetFormat;
     struct shared_ptr<ggl::Device> _device;
     struct Renderer {
         CDUnknownFunctionPointerType *;
@@ -43,11 +44,14 @@ __attribute__((visibility("hidden")))
         struct Texture2D *;
         struct unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>>;
     } *_renderer;
-    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _renderTarget;
-    struct unique_ptr<ggl::Texture, std::__1::default_delete<ggl::Texture>> _colorBuffer;
+    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _sRGBRenderTarget;
+    shared_ptr_857963ed _sRGBColorBuffer;
     struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencilBuffer;
+    struct RenderTargetFormat _linearFormat;
+    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _linearRenderTarget;
+    shared_ptr_857963ed _linearColorBuffer;
     BOOL _useMultisampling;
-    struct unique_ptr<ggl::Texture, std::__1::default_delete<ggl::Texture>> _msaaResolveBuffer;
+    struct shared_ptr<ggl::Texture> _msaaResolveBuffer;
     unsigned long long _signpostId;
 }
 
@@ -61,15 +65,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const struct RenderTargetFormat *format;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct Texture2D *imageTexture;
+@property (readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
+@property (readonly, nonatomic) struct RenderTarget *linearRenderTarget;
 @property (readonly, nonatomic) BOOL multiSample; // @synthesize multiSample=_useMultisampling;
 @property (nonatomic) id<GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
 @property (readonly, nonatomic) struct RenderTarget *renderTarget;
 @property (readonly, nonatomic) struct Renderer *renderer;
-@property (readonly, nonatomic) struct RenderTargetFormat resolvedRenderTargetFormat; // @synthesize resolvedRenderTargetFormat=_resolvedRenderTargetFormat;
 @property (readonly, nonatomic) BOOL shouldRasterize;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsFramebufferFetch; // @synthesize supportsFramebufferFetch=_supportsFramebufferFetch;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

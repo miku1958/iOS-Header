@@ -22,10 +22,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)_assertionAttributes;
-- (id)_assertionDescriptorForProcess:(id)arg1;
-- (void)_lockQueue_resumeNextProcess;
-- (void)_reconnectProcess:(id)arg1;
 - (void)didInvalidateAssertion:(id)arg1;
 - (id)init;
 - (id)initWithAssertionManager:(id)arg1 domainAttributeManager:(id)arg2 assertionOriginatorPidStore:(id)arg3 originatorProcess:(id)arg4;

@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBHCenterAcceleratedAppSuspendSettings, SBHCenterAppLaunchSettings, SBHCenterAppSuspendSettings, SBHCrossfadeAcceleratedAppSuspendSettings, SBHCrossfadeAppLaunchSettings, SBHCrossfadeAppSuspendSettings, SBHFolderCloseSettings, SBHFolderOpenSettings, SBHReducedMotionFadeSettings, SBHUnlockSettings;
+@class SBHCenterAcceleratedAppSuspendSettings, SBHCenterAppLaunchSettings, SBHCenterAppSuspendSettings, SBHCrossfadeAcceleratedAppSuspendSettings, SBHCrossfadeAppLaunchSettings, SBHCrossfadeAppSuspendSettings, SBHFolderCloseSettings, SBHFolderOpenSettings, SBHLibraryPodCloseSettings, SBHLibraryPodOpenSettings, SBHReducedMotionFadeSettings, SBHUnlockSettings;
 
 @interface SBHIconAnimationRootSettings : PTSettings
 {
@@ -23,6 +23,8 @@
     SBHFolderOpenSettings *_folderOpenSettings;
     SBHFolderCloseSettings *_folderCloseSettings;
     double _maxFolderCloseHintProgress;
+    SBHLibraryPodOpenSettings *_libraryPodOpenSettings;
+    SBHLibraryPodCloseSettings *_libraryPodCloseSettings;
 }
 
 @property (strong, nonatomic) SBHCenterAcceleratedAppSuspendSettings *centerAcceleratedSuspendSettings; // @synthesize centerAcceleratedSuspendSettings=_centerAcceleratedSuspendSettings;
@@ -33,6 +35,8 @@
 @property (strong, nonatomic) SBHCrossfadeAppSuspendSettings *crossfadeSuspendSettings; // @synthesize crossfadeSuspendSettings=_crossfadeSuspendSettings;
 @property (strong, nonatomic) SBHFolderCloseSettings *folderCloseSettings; // @synthesize folderCloseSettings=_folderCloseSettings;
 @property (strong, nonatomic) SBHFolderOpenSettings *folderOpenSettings; // @synthesize folderOpenSettings=_folderOpenSettings;
+@property (strong, nonatomic) SBHLibraryPodCloseSettings *libraryPodCloseSettings; // @synthesize libraryPodCloseSettings=_libraryPodCloseSettings;
+@property (strong, nonatomic) SBHLibraryPodOpenSettings *libraryPodOpenSettings; // @synthesize libraryPodOpenSettings=_libraryPodOpenSettings;
 @property (nonatomic) double maxAppLaunchWallpaperScale; // @synthesize maxAppLaunchWallpaperScale=_maxAppLaunchWallpaperScale;
 @property (nonatomic) double maxAppSuspendHintProgress; // @synthesize maxAppSuspendHintProgress=_maxAppSuspendHintProgress;
 @property (nonatomic) double maxFolderCloseHintProgress; // @synthesize maxFolderCloseHintProgress=_maxFolderCloseHintProgress;

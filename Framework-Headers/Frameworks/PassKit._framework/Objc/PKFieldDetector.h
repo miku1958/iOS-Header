@@ -33,6 +33,7 @@
 - (void)requestPersistentFieldDetectionEnabled:(BOOL)arg1 withReason:(unsigned long long)arg2;
 - (void)setPersistentFieldDetectionEnabled:(BOOL)arg1;
 - (void)unregisterObserver:(id)arg1;
+- (void)updateRadioState;
 
 @end
 

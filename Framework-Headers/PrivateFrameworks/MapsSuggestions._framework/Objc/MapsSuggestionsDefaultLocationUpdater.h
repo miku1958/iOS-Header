@@ -9,14 +9,11 @@
 #import <MapsSuggestions/CLLocationManagerDelegate-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsLocationUpdater-Protocol.h>
 
-@class CLLocationManager, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class CLLocationManager, NSString;
 
 @interface MapsSuggestionsDefaultLocationUpdater : MapsSuggestionsBaseLocationUpdater <CLLocationManagerDelegate, MapsSuggestionsLocationUpdater>
 {
     CLLocationManager *_locationManager;
-    BOOL _running;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,15 +23,13 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (void)_deinitLocationManager;
-- (void)_initLocationManagers;
-- (void)_startImplemention;
-- (void)dealloc;
 - (id)init;
+- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (void)startImplemention;
-- (void)stopImplementation;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
+- (void)onStartImplementation;
+- (void)onStopImplementation;
 
 @end
 

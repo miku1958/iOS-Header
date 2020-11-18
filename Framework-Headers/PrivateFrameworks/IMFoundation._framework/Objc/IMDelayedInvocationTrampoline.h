@@ -14,7 +14,7 @@
     double _delay;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithTarget:(id)arg1 delay:(double)arg2 modes:(id)arg3;
 

@@ -8,6 +8,7 @@
 
 @class NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface TKRepository : NSObject
 {
     NSString *_bundlePath;
@@ -18,6 +19,9 @@
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 
++ (BOOL)_hasEntitlement:(id)arg1;
++ (BOOL)_isApprovedProcess;
++ (id)_processBundleIdentifier;
 + (id)bundlePathForURL:(id)arg1;
 + (void)loadWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)reset;

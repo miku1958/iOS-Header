@@ -21,6 +21,8 @@ struct CGAffineTransform {
     double ty;
 };
 
+struct CGImage;
+
 struct CGPoint {
     double x;
     double y;
@@ -42,83 +44,58 @@ struct CGVector {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct mach_task_basic_info {
-    unsigned long long virtual_size;
-    unsigned long long resident_size;
-    unsigned long long resident_size_max;
-    struct time_value user_time;
-    struct time_value system_time;
-    int policy;
-    int suspend_count;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct task_vm_info {
-    unsigned long long virtual_size;
-    int region_count;
-    int page_size;
-    unsigned long long resident_size;
-    unsigned long long resident_size_peak;
-    unsigned long long device;
-    unsigned long long device_peak;
-    unsigned long long internal;
-    unsigned long long internal_peak;
-    unsigned long long external;
-    unsigned long long external_peak;
-    unsigned long long reusable;
-    unsigned long long reusable_peak;
-    unsigned long long purgeable_volatile_pmap;
-    unsigned long long purgeable_volatile_resident;
-    unsigned long long purgeable_volatile_virtual;
-    unsigned long long compressed;
-    unsigned long long compressed_peak;
-    unsigned long long compressed_lifetime;
-    unsigned long long phys_footprint;
-    unsigned long long min_address;
-    unsigned long long max_address;
-    long long ledger_phys_footprint_peak;
-    long long ledger_purgeable_nonvolatile;
-    long long ledger_purgeable_novolatile_compressed;
-    long long ledger_purgeable_volatile;
-    long long ledger_purgeable_volatile_compressed;
-    long long ledger_tag_network_nonvolatile;
-    long long ledger_tag_network_nonvolatile_compressed;
-    long long ledger_tag_network_volatile;
-    long long ledger_tag_network_volatile_compressed;
-    long long ledger_tag_media_footprint;
-    long long ledger_tag_media_footprint_compressed;
-    long long ledger_tag_media_nofootprint;
-    long long ledger_tag_media_nofootprint_compressed;
-    long long ledger_tag_graphics_footprint;
-    long long ledger_tag_graphics_footprint_compressed;
-    long long ledger_tag_graphics_nofootprint;
-    long long ledger_tag_graphics_nofootprint_compressed;
-    long long ledger_tag_neural_footprint;
-    long long ledger_tag_neural_footprint_compressed;
-    long long ledger_tag_neural_nofootprint;
-    long long ledger_tag_neural_nofootprint_compressed;
-    unsigned long long limit_bytes_remaining;
-    int decompressions;
+struct shared_ptr<CGImage> {
+    struct CGImage *_field1;
+    struct __shared_weak_count *_field2;
 };
 
-struct time_value {
-    int seconds;
-    int microseconds;
+struct shared_ptr<espresso_buffer_t>;
+
+struct vImage_Buffer {
+    void *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+};
+
+struct vector<NSString *, std::__1::allocator<NSString *>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<NSString *__strong *, std::__1::allocator<NSString *>> {
+        id *__value_;
+    } __end_cap_;
+};
+
+struct vector<float, std::__1::allocator<float>> {
+    float *__begin_;
+    float *__end_;
+    struct __compressed_pair<float *, std::__1::allocator<float>> {
+        float *__value_;
+    } __end_cap_;
 };
 
 struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
+    int *__begin_;
+    int *__end_;
     struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
+        int *__value_;
+    } __end_cap_;
+};
+
+struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> {
+    struct shared_ptr<espresso_buffer_t> *__begin_;
+    struct shared_ptr<espresso_buffer_t> *__end_;
+    struct __compressed_pair<std::__1::shared_ptr<espresso_buffer_t>*, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> {
+        struct shared_ptr<espresso_buffer_t> *__value_;
+    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
@@ -148,20 +125,17 @@ typedef struct {
     long long _field4;
 } CDStruct_198678f7;
 
-typedef struct {
-    struct {
-        long long location;
-        long long length;
-    } range;
-    unsigned long long attributes;
-} CDStruct_573f6e06;
-
 // Template types
+typedef struct shared_ptr<CGImage> {
+    struct CGImage *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_34708d24;
+
 typedef struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
+    int *__begin_;
+    int *__end_;
     struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
-} vector_3203cf93;
+        int *__value_;
+    } __end_cap_;
+} vector_12bd641b;
 

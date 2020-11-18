@@ -21,16 +21,17 @@
     unsigned long long _minimumOccurrencesForInclusion;
     NSPredicate *_predicate;
     NSArray *_valueKeyPaths;
+    long long _remoteHistogramLimit;
 }
 
-@property (strong, nonatomic) NSString *customIdentifier; // @synthesize customIdentifier=_customIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType histogramHandler; // @synthesize histogramHandler=_histogramHandler;
 @property (nonatomic) BOOL includeLocalResults; // @synthesize includeLocalResults=_includeLocalResults;
 @property (nonatomic) BOOL includeRemoteResults; // @synthesize includeRemoteResults=_includeRemoteResults;
-@property (strong, nonatomic) NSDateInterval *interval; // @synthesize interval=_interval;
+@property (readonly, nonatomic) NSDateInterval *interval;
 @property (nonatomic) unsigned long long minimumOccurrencesForInclusion; // @synthesize minimumOccurrencesForInclusion=_minimumOccurrencesForInclusion;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property (strong, nonatomic) _DKEventStream *stream; // @synthesize stream=_stream;
+@property (nonatomic) long long remoteHistogramLimit; // @synthesize remoteHistogramLimit=_remoteHistogramLimit;
+@property (readonly, nonatomic) _DKEventStream *stream;
 @property (strong, nonatomic) NSArray *valueKeyPaths; // @synthesize valueKeyPaths=_valueKeyPaths;
 
 + (id)histogramQueryForPersistedHistogramsForStream:(id)arg1 withCustomIdentifier:(id)arg2;
@@ -39,13 +40,6 @@
 + (id)histogramQueryForStream:(id)arg1 interval:(id)arg2 withPredicate:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_constructFetchRequestPredicate;
-- (id)_defaultValueKeyPaths;
-- (id)_fetchRemoteResultsWithStorage:(id)arg1 error:(id *)arg2;
-- (id)_histogramFromEvents:(id)arg1;
-- (id)_histogramFromManagedObjects:(id)arg1;
-- (id)_histogramFromValueCounts:(id)arg1;
-- (id)_valueForEvent:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executeUsingCoreDataStorage:(id)arg1 error:(id *)arg2;

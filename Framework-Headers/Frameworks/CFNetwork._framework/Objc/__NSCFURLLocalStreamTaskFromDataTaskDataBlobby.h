@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <CFNetwork/NSCopying-Protocol.h>
+
 @protocol OS_dispatch_data;
 
-@interface __NSCFURLLocalStreamTaskFromDataTaskDataBlobby : NSObject
+@interface __NSCFURLLocalStreamTaskFromDataTaskDataBlobby : NSObject <NSCopying>
 {
     NSObject<OS_dispatch_data> *_remainingData;
     CDUnknownBlockType _completion;
 }
 
-- (void)callCompletion;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (int)drain:(struct __CFWriteStream *)arg1;
-- (id)initWithData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

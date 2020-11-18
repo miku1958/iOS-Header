@@ -14,9 +14,6 @@
     NSObject *_call;
 }
 
-@property (strong) NSObject *call; // @synthesize call=_call;
-@property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
 - (void).cxx_destruct;
 
 @end

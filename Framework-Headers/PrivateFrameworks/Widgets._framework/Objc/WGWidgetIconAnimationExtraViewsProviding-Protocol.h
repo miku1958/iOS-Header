@@ -6,12 +6,12 @@
 
 #import <Widgets/NSObject-Protocol.h>
 
-@class NSArray, UIView;
+@class NSArray;
 
 @protocol WGWidgetIconAnimationExtraViewsProviding <NSObject>
 
 @property (readonly, copy, nonatomic) NSArray *extraViews;
-@property (readonly, nonatomic) UIView *extraViewsContainer;
+@property (readonly, copy, nonatomic) NSArray *extraViewsContainers;
 @property (readonly, nonatomic) BOOL shouldAnimateFirstTwoViewsAsOne;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 

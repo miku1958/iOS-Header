@@ -33,6 +33,7 @@
 - (void)pause;
 - (void)play;
 - (void)playerItemDidReachEnd:(id)arg1;
+- (void)removeAllQueuedItems;
 - (void)removeMovieItem:(id)arg1;
 - (void)setUpTimeRangeNotificationsForItem:(id)arg1;
 - (void)speedUpRemainderOfCurrentItem;

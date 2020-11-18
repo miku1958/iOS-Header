@@ -12,9 +12,9 @@
 {
     NSMutableOrderedSet *_mutableAnnotations;
     NSMutableSet *_mutableSelectedAnnotations;
+    AKInkAnnotation *_inkCanvasAnnotation;
     id _representedObject;
     AKCropAnnotation *_cropAnnotation;
-    AKInkAnnotation *_inkCanvasAnnotation;
     AKStatistics *_statisticsLogger;
     struct CGRect _appliedCropRect;
 }

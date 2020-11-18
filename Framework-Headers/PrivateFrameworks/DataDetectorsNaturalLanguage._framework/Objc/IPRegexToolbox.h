@@ -16,7 +16,9 @@
 + (BOOL)isRangeNearbyExclusionKeyword:(struct _NSRange)arg1 text:(id)arg2 limitToSurroundingText:(BOOL)arg3 language:(id)arg4;
 + (id)matchingKeywordResultsForRegex:(id)arg1 inString:(id)arg2 needsToLowercase:(BOOL)arg3;
 + (unsigned long long)numberOfMatchesForRegex:(id)arg1 inString:(id)arg2 needsToLowercase:(BOOL)arg3;
++ (id)regexPatternByUncapturingPattern:(id)arg1;
 + (id)regexPatternForLanguageID:(id)arg1 eventVocabularyArray:(id)arg2;
++ (id)regexPatternWithPrefix:(id)arg1 suffix:(id)arg2 choices:(id)arg3;
 + (id)regularExpressionWithKey:(id)arg1 generator:(CDUnknownBlockType)arg2;
 
 @end

@@ -13,12 +13,14 @@
     int _guidanceLevelIgnoringTimeCriterion;
     int _guidanceLevel;
     int _navigationState;
+    int _navigationType;
     int _trackedTransportType;
     BOOL _shouldSuppressCellularDataAlerts;
     struct {
         unsigned int has_guidanceLevelIgnoringTimeCriterion:1;
         unsigned int has_guidanceLevel:1;
         unsigned int has_navigationState:1;
+        unsigned int has_navigationType:1;
         unsigned int has_trackedTransportType:1;
         unsigned int has_shouldSuppressCellularDataAlerts:1;
     } _flags;
@@ -29,9 +31,11 @@
 @property (nonatomic) BOOL hasGuidanceLevel;
 @property (nonatomic) BOOL hasGuidanceLevelIgnoringTimeCriterion;
 @property (nonatomic) BOOL hasNavigationState;
+@property (nonatomic) BOOL hasNavigationType;
 @property (nonatomic) BOOL hasShouldSuppressCellularDataAlerts;
 @property (nonatomic) BOOL hasTrackedTransportType;
 @property (nonatomic) int navigationState;
+@property (nonatomic) int navigationType;
 @property (nonatomic) BOOL shouldSuppressCellularDataAlerts;
 @property (nonatomic) int trackedTransportType;
 
@@ -39,6 +43,7 @@
 - (int)StringAsGuidanceLevel:(id)arg1;
 - (int)StringAsGuidanceLevelIgnoringTimeCriterion:(id)arg1;
 - (int)StringAsNavigationState:(id)arg1;
+- (int)StringAsNavigationType:(id)arg1;
 - (int)StringAsTrackedTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -47,11 +52,15 @@
 - (id)guidanceLevelAsString:(int)arg1;
 - (id)guidanceLevelIgnoringTimeCriterionAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithGuidanceLevel:(int)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithTransportType:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)navigationStateAsString:(int)arg1;
+- (id)navigationTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)trackedTransportTypeAsString:(int)arg1;

@@ -26,10 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_mappedCategorys:1;
         unsigned int read_bounds:1;
         unsigned int read_center:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_mappedCategorys:1;
-        unsigned int wrote_bounds:1;
-        unsigned int wrote_center:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,10 +42,6 @@ __attribute__((visibility("hidden")))
 + (id)spatialLookupResultForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsMappedCategorys:(id)arg1;
-- (void)_addNoFlagsMappedCategory:(int)arg1;
-- (void)_readBounds;
-- (void)_readCenter;
-- (void)_readMappedCategorys;
 - (void)addMappedCategory:(int)arg1;
 - (void)clearMappedCategorys;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -60,7 +53,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (int)mappedCategoryAtIndex:(unsigned long long)arg1;
 - (id)mappedCategorysAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

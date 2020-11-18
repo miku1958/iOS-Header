@@ -6,14 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@interface PKXPCForwarder : NSObject
+#import <PassKitCore/NSCopying-Protocol.h>
+
+@interface PKXPCForwarder : NSObject <NSCopying>
 {
+    struct os_unfair_lock_s _lock;
     id _target;
     Class _targetClass;
 }
 
 - (void).cxx_destruct;
+- (id)_initWithTarget:(id)arg1 targetClass:(Class)arg2;
 - (void)clearTarget;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSMapTable;
+@class NSArray, NSDictionary, NSHashTable, NSMapTable, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FPStitchingManager : NSObject
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_bouncedItems;
 }
 
+@property (readonly, nonatomic) NSMutableArray *allDeletedIDs;
 @property (readonly, nonatomic) NSDictionary *allPlaceholderItemsByParentIdentifierAndName;
 @property (readonly, nonatomic) NSArray *allPlaceholderReplacementsIDs;
 @property (readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;

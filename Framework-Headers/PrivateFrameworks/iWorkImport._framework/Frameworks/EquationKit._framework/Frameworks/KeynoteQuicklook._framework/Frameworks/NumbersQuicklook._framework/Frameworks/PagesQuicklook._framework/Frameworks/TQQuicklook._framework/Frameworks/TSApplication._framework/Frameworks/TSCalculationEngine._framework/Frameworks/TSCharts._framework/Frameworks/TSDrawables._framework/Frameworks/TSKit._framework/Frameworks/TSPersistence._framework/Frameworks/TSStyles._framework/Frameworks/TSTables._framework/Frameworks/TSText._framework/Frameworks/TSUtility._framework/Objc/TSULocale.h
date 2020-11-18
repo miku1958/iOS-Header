@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary, TSUFormattingSymbols;
+@class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary, TSUDecimalFormatter, TSUFormattingSymbols;
 
 @interface TSULocale : NSObject
 {
@@ -15,6 +15,7 @@
     NSString *_languageCode;
     NSString *_localeIdentifier;
     NSString *_documentLanguageIdentifier;
+    NSString *_cacheKey;
     BOOL _isAutoUpdating;
     long long _dateComponentOrdering;
     struct TSUNumberOrDateLexer _numberOrDateLexer;
@@ -26,10 +27,10 @@
     NSMutableArray *_scientificNumberFormatters;
     TSUDateParserLibrary *_dateParserLibrary;
     NSLock *_numberFormatterStringFromDoubleWithFormatLock;
-    struct __CFNumberFormatter *_plainFormatter;
-    struct __CFNumberFormatter *_noMinusSignPlainFormatter;
-    struct __CFNumberFormatter *_currencyFormatter;
-    struct __CFNumberFormatter *_noMinusSignCurrencyFormatter;
+    TSUDecimalFormatter *_plainFormatter;
+    TSUDecimalFormatter *_noMinusSignPlainFormatter;
+    TSUDecimalFormatter *_currencyFormatter;
+    TSUDecimalFormatter *_noMinusSignCurrencyFormatter;
     NSString *_activeCurrencyCode;
     NSString *_activeNoMinusSignCurrencyCode;
     NSLock *_localeSpecificStorageLock;
@@ -51,7 +52,7 @@
 @property (readonly) NSString *decimalSeparator;
 @property (readonly) NSString *documentLanguageIdentifier; // @synthesize documentLanguageIdentifier=_documentLanguageIdentifier;
 @property (readonly) NSString *falseString; // @synthesize falseString=_falseString;
-@property (readonly) TSUFormattingSymbols *formattingSymbols; // @synthesize formattingSymbols=_formattingSymbols;
+@property (readonly, nonatomic) TSUFormattingSymbols *formattingSymbols; // @synthesize formattingSymbols=_formattingSymbols;
 @property (readonly) NSLocale *gregorianCalendarLocale; // @synthesize gregorianCalendarLocale=_gregorianCalendarLocale;
 @property (readonly) NSString *groupingSeparator;
 @property (readonly) unsigned long long groupingSize;
@@ -110,11 +111,12 @@
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundle:(struct __CFBundle *)arg4;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundleWithURL:(id)arg4;
 - (void)_initializeNumberFormatterStringFromDoubleCache;
-- (struct __CFNumberFormatter *)checkoutNumberFormatter;
-- (struct __CFNumberFormatter *)checkoutScientificNumberFormatter;
+- (unsigned long long)autoupdatingCurrentLocaleChangeCount;
+- (id)checkoutNumberFormatter;
+- (id)checkoutScientificNumberFormatter;
 - (id)copyWithDocumentLanguageIdentifier:(id)arg1;
 - (id)copyWithGregorianCalendar;
-- (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterOfStyle:(long long)arg1;
+- (id)createHarmonizedDecimalFormatterOfStyle:(long long)arg1;
 - (id)currencyCodeForCurrencySymbol:(id)arg1;
 - (id)currencySymbolForCurrencyCode:(id)arg1;
 - (void)dealloc;
@@ -128,7 +130,9 @@
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2 useAutoupdating:(BOOL)arg3 formattingSymbols:(id)arg4;
 - (id)initWithLocale:(id)arg1 formattingSymbols:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualViaFormattingAsDouble:(double)arg1:(double)arg2;
 - (BOOL)isLanguageCharacterDirectionRightToLeft;
+- (BOOL)isLanguageFormulasDirectionRightToLeft;
 - (id)languageIdentifierWithLanguageAndRegionOnly;
 - (id)localeIdentifierWithCalendarAndNumberingSystem;
 - (id)localeIdentifierWithLanguageAndRegionOnly;
@@ -140,8 +144,8 @@
 - (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)localizedStringWithFormat:(id)arg1;
 - (id)numberFormatterStringFromDouble:(double)arg1 withFormat:(id)arg2 useDecimalPlaces:(BOOL)arg3 minDecimalPlaces:(unsigned short)arg4 decimalPlaces:(unsigned short)arg5 showThousandsSeparator:(BOOL)arg6 currencyCode:(id)arg7 suppressMinusSign:(BOOL)arg8;
-- (void)returnNumberFormatter:(struct __CFNumberFormatter *)arg1;
-- (void)returnScientificNumberFormatter:(struct __CFNumberFormatter *)arg1;
+- (void)returnNumberFormatter:(id)arg1;
+- (void)returnScientificNumberFormatter:(id)arg1;
 - (void)setLocaleSpecificStorage:(id)arg1 forKey:(id)arg2;
 - (id)simplifiedDisplayNameWithStandalone:(BOOL)arg1;
 

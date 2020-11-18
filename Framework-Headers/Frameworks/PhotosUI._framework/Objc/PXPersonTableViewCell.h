@@ -10,6 +10,7 @@
 
 @interface PXPersonTableViewCell : UITableViewCell
 {
+    BOOL _useImageSize;
     UIImage *_personIcon;
     NSString *_personFirstName;
     NSString *_personLastName;
@@ -22,10 +23,12 @@
 @property (copy, nonatomic) NSString *personFirstName; // @synthesize personFirstName=_personFirstName;
 @property (strong, nonatomic) UIImage *personIcon; // @synthesize personIcon=_personIcon;
 @property (copy, nonatomic) NSString *personLastName; // @synthesize personLastName=_personLastName;
+@property (nonatomic) BOOL useImageSize; // @synthesize useImageSize=_useImageSize;
 
 - (void).cxx_destruct;
 - (void)_updatePersonIconImageView;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 
 @end
 

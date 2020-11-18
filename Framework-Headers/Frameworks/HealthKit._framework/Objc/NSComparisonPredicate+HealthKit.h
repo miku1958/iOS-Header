@@ -9,7 +9,7 @@
 @interface NSComparisonPredicate (HealthKit)
 + (id)hk_equalityPredicateWithKey:(id)arg1 value:(id)arg2;
 + (id)hk_inequalityPredicateWithKey:(id)arg1 value:(id)arg2 ascending:(BOOL)arg3;
-- (id)_parseComparisonPredicateWithKeyPath:(id)arg1 predicateOperatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4 filterClasses:(id)arg5;
-- (id)hk_filterRepresentationForDataTypes:(id)arg1 filterClasses:(id)arg2;
+- (id)_comparisonFilterWithKeyPath:(id)arg1 operatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4;
+- (id)hk_filterRepresentationForDataTypes:(id)arg1;
 @end
 

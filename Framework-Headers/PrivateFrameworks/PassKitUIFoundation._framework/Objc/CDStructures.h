@@ -13,22 +13,22 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CATransform3D {
-    double m11;
-    double m12;
-    double m13;
-    double m14;
-    double m21;
-    double m22;
-    double m23;
-    double m24;
-    double m31;
-    double m32;
-    double m33;
-    double m34;
-    double m41;
-    double m42;
-    double m43;
-    double m44;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+    double _field15;
+    double _field16;
 };
 
 struct CGPoint {

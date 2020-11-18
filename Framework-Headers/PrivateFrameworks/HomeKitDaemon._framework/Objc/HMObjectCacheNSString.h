@@ -11,6 +11,8 @@
 }
 
 + (id)cachedInstanceForString:(id)arg1;
++ (BOOL)enabled;
++ (id)setOfCachedInstancesForStrings:(id)arg1;
 
 @end
 

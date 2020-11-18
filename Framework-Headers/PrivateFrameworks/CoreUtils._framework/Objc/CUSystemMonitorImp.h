@@ -10,7 +10,7 @@
 #import <CoreUtils/CoreTelephonyClientDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager;
+@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager, TUCallCenter;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -21,8 +21,11 @@ __attribute__((visibility("hidden")))
     CDStruct_83abfce7 _bluetoothAddress48;
     NSData *_bluetoothAddressData;
     CUBluetoothClient *_bluetoothClient;
+    TUCallCenter *_callCenter;
     CXCallObserver *_callObserver;
     int _activeCallCount;
+    unsigned int _callFlags;
+    BOOL _callStatusObserving;
     int _connectedCallCount;
     int _familyBuddyToken;
     BOOL _familyFailed;
@@ -91,6 +94,9 @@ __attribute__((visibility("hidden")))
 - (int)_activeCallCountUnached;
 - (void)_bluetoothAddressMonitorStart;
 - (void)_bluetoothAddressMonitorStop;
+- (void)_callCenterStatusChanged:(id)arg1;
+- (unsigned int)_callFlagsUncached;
+- (void)_callInfoChanged;
 - (void)_callMonitorStart;
 - (void)_callMonitorStop;
 - (int)_connectedCallCountUnached;

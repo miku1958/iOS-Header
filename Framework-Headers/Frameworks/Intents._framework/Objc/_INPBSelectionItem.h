@@ -15,13 +15,11 @@
 @interface _INPBSelectionItem : PBCodable <_INPBSelectionItem, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_uuid;
     _INPBIntentSlotValue *_value;
     NSString *_vocabularyValue;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasUuid;

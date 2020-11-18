@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ShazamKit/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface SHLyricLine : NSObject
+@interface SHLyricLine : NSObject <NSSecureCoding>
 {
     NSString *_text;
     double _offset;
@@ -19,8 +20,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (id)lyricLineWithText:(id)arg1 offset:(double)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLineWithText:(id)arg1 offset:(double)arg2;
 
 @end
 

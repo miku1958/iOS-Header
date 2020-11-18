@@ -9,7 +9,7 @@
 #import <VoiceServices/NSCopying-Protocol.h>
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSString, NSURL;
+@class NSArray, NSAttributedString, NSDictionary, NSString, NSURL;
 
 @interface VSSpeechRequest : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,11 +18,7 @@
     BOOL _forceServerTTS;
     BOOL _canUseServerTTS;
     BOOL _retryDeviceOnNetworkStall;
-    BOOL _useCustomVoice;
-    BOOL _audioSessionIDIsValid;
-    BOOL _maintainsInput;
     unsigned int _audioSessionID;
-    unsigned int _audioQueueFlags;
     NSString *_text;
     NSString *_languageCode;
     long long _footprint;
@@ -35,6 +31,7 @@
     NSDictionary *_contextInfo;
     NSURL *_resourceListURL;
     NSURL *_resourceSearchPathURL;
+    NSArray *_customResourceURLs;
     NSAttributedString *_attributedText;
     NSString *_utterance;
     NSString *_clientBundleIdentifier;
@@ -46,18 +43,16 @@
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
-@property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
-@property (nonatomic) BOOL audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
 @property (nonatomic) BOOL canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
 @property (copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property (copy, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;
+@property (strong, nonatomic) NSArray *customResourceURLs; // @synthesize customResourceURLs=_customResourceURLs;
 @property (nonatomic) BOOL disableCompactVoiceFallback; // @synthesize disableCompactVoiceFallback=_disableCompactVoiceFallback;
 @property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (nonatomic) BOOL forceServerTTS; // @synthesize forceServerTTS=_forceServerTTS;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
-@property (nonatomic) BOOL maintainsInput; // @synthesize maintainsInput=_maintainsInput;
 @property (copy, nonatomic) NSURL *outputPath; // @synthesize outputPath=_outputPath;
 @property (copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property (nonatomic) double pitch; // @synthesize pitch=_pitch;
@@ -70,7 +65,6 @@
 @property (nonatomic) BOOL shouldCache; // @synthesize shouldCache=_shouldCache;
 @property (copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-@property (nonatomic) BOOL useCustomVoice; // @synthesize useCustomVoice=_useCustomVoice;
 @property (copy, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 @property (copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 @property (nonatomic) long long voiceType; // @synthesize voiceType=_voiceType;
@@ -86,6 +80,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isSimilarTo:(id)arg1;
+- (id)logText;
+- (id)logUtterance;
 
 @end
 

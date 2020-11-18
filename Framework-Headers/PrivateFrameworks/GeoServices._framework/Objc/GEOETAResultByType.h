@@ -23,6 +23,7 @@
     struct os_unfair_lock_s _readerLock;
     unsigned int _distance;
     unsigned int _historicTravelTime;
+    int _licensePlateRestrictionImpact;
     unsigned int _staticTravelTime;
     int _status;
     int _transportType;
@@ -33,6 +34,7 @@
         unsigned int has_expectedTimeOfDeparture:1;
         unsigned int has_distance:1;
         unsigned int has_historicTravelTime:1;
+        unsigned int has_licensePlateRestrictionImpact:1;
         unsigned int has_staticTravelTime:1;
         unsigned int has_status:1;
         unsigned int has_transportType:1;
@@ -43,19 +45,7 @@
         unsigned int read_routeTrafficDetail:1;
         unsigned int read_shortTrafficSummary:1;
         unsigned int read_summaryForPredictedDestinations:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_expectedTimeOfDeparture:1;
-        unsigned int wrote_routeTrafficDetail:1;
-        unsigned int wrote_shortTrafficSummary:1;
-        unsigned int wrote_summaryForPredictedDestinations:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_historicTravelTime:1;
-        unsigned int wrote_staticTravelTime:1;
-        unsigned int wrote_status:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_travelTimeBestEstimate:1;
-        unsigned int wrote_travelTimeAggressiveEstimate:1;
-        unsigned int wrote_travelTimeConservativeEstimate:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -64,6 +54,7 @@
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasExpectedTimeOfDeparture;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (nonatomic) BOOL hasLicensePlateRestrictionImpact;
 @property (readonly, nonatomic) BOOL hasRouteTrafficDetail;
 @property (readonly, nonatomic) BOOL hasShortTrafficSummary;
 @property (nonatomic) BOOL hasStaticTravelTime;
@@ -73,6 +64,7 @@
 @property (nonatomic) BOOL hasTravelTimeBestEstimate;
 @property (nonatomic) BOOL hasTravelTimeConservativeEstimate;
 @property (nonatomic) unsigned int historicTravelTime;
+@property (nonatomic) int licensePlateRestrictionImpact;
 @property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail;
 @property (strong, nonatomic) GEOShortTrafficSummary *shortTrafficSummary;
 @property (nonatomic) unsigned int staticTravelTime;
@@ -87,12 +79,9 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)summaryForPredictedDestinationType;
 - (void).cxx_destruct;
+- (int)StringAsLicensePlateRestrictionImpact:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
-- (void)_addNoFlagsSummaryForPredictedDestination:(id)arg1;
-- (void)_readRouteTrafficDetail;
-- (void)_readShortTrafficSummary;
-- (void)_readSummaryForPredictedDestinations;
 - (void)addSummaryForPredictedDestination:(id)arg1;
 - (void)clearSummaryForPredictedDestinations;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -103,7 +92,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
+- (id)licensePlateRestrictionImpactAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

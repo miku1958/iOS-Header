@@ -9,7 +9,7 @@
 #import <SpringBoard/SBWallpaperObserver-Protocol.h>
 #import <SpringBoard/_SBFakeBlur-Protocol.h>
 
-@class NSString, SBWallpaperController;
+@class NSString, SBWallpaperViewController;
 @protocol _SBFakeBlurObserver;
 
 @interface _SBAccessibilityTintView : UIView <_SBFakeBlur, SBWallpaperObserver>
@@ -18,7 +18,7 @@
     BOOL _fullscreen;
     unsigned long long _transformOptions;
     id<_SBFakeBlurObserver> _observer;
-    SBWallpaperController *_wallpaperController;
+    SBWallpaperViewController *_wallpaperViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) id<_SBFakeBlurObserver> observer; // @synthesize observer=_observer;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long transformOptions; // @synthesize transformOptions=_transformOptions;
-@property (readonly, weak, nonatomic) SBWallpaperController *wallpaperController; // @synthesize wallpaperController=_wallpaperController;
+@property (readonly, weak, nonatomic) SBWallpaperViewController *wallpaperViewController; // @synthesize wallpaperViewController=_wallpaperViewController;
 @property (nonatomic) double zoomScale;
 
 - (void).cxx_destruct;
@@ -37,7 +37,7 @@
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (long long)effectiveStyle;
-- (id)initWithVariant:(long long)arg1 wallpaperController:(id)arg2;
+- (id)initWithVariant:(long long)arg1 wallpaperViewController:(id)arg2;
 - (void)offsetWallpaperBy:(struct CGPoint)arg1;
 - (void)requestStyle:(long long)arg1;
 - (void)wallpaperDidChangeForVariant:(long long)arg1;

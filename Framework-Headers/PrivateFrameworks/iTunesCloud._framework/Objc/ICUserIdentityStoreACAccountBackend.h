@@ -8,13 +8,11 @@
 
 #import <iTunesCloud/ICUserIdentityStoreBackend-Protocol.h>
 
-@class ACAccountStore, ACAccountType, NSArray, NSMapTable, NSMutableDictionary, NSOperationQueue, NSString;
+@class ACAccountStore, ACAccountType, ICUnfairLock, NSArray, NSMapTable, NSMutableDictionary, NSString;
 @protocol ICUserIdentityStoreBackendDelegate, OS_dispatch_queue;
 
 @interface ICUserIdentityStoreACAccountBackend : NSObject <ICUserIdentityStoreBackend>
 {
-    id _activeAccountDSIDValue;
-    id _activeLockerAccountDSIDValue;
     ACAccountStore *_accountStore;
     NSMapTable *_accountToIdentityProperties;
     NSArray *_allStoreAccounts;
@@ -22,7 +20,7 @@
     id _primaryICloudAccountIdentityPropertiesValue;
     ACAccountType *_storeAccountType;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSOperationQueue *_operationQueue;
+    ICUnfairLock *_lock;
     id<ICUserIdentityStoreBackendDelegate> _delegate;
 }
 
@@ -35,38 +33,38 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChangeNotification:(id)arg1;
-- (void)_activeStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_allStoreAccountsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_activeStoreAccountWithError:(id *)arg1;
+- (id)_allStoreAccountsWithError:(id *)arg1;
 - (void)_applyIdentityProperties:(id)arg1 toAccount:(id)arg2;
 - (void)_applyLocalStoreAccountProperties:(id)arg1 toAccount:(id)arg2;
 - (void)_handleITunesStoreAccountsChanged;
 - (id)_newLocalStoreAccountPropertiesFromAccount:(id)arg1;
 - (id)_newUserIdentityPropertiesForAccount:(id)arg1;
 - (id)_primaryICloudAccountIdentityProperties;
-- (void)_storeAccountForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_storeAccountTypeWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_storeAccountForDSID:(id)arg1 bypassCache:(BOOL)arg2 error:(id *)arg3;
+- (id)_storeAccountForDSID:(id)arg1 error:(id *)arg2;
+- (id)_storeAccountTypeWithError:(id *)arg1;
 - (void)_synchronize;
-- (void)activeAccountDSIDWithCompletion:(CDUnknownBlockType)arg1;
-- (void)activeLockerAccountDSIDWithCompletion:(CDUnknownBlockType)arg1;
+- (id)activeAccountDSIDWithError:(id *)arg1;
+- (id)activeLockerAccountDSIDWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)identityPropertiesForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (id)identityPropertiesForDSID:(id)arg1 error:(id *)arg2;
+- (id)identityPropertiesForPrimaryICloudAccountWithError:(id *)arg1;
 - (id)init;
 - (id)initWithACAccountStore:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)localStoreAccountPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)localStoreAccountPropertiesWithError:(id *)arg1;
 - (void)removeIdentityForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setLocalStoreAccountProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 error:(id *)arg3;
+- (BOOL)setIdentityProperties:(id)arg1 forDSID:(id)arg2 error:(id *)arg3;
+- (BOOL)setLocalStoreAccountProperties:(id)arg1 error:(id *)arg2;
 - (void)synchronize;
-- (void)updateActiveAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updateActiveLockerAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)verificationContextForAccountEstablishmentWithCompletion:(CDUnknownBlockType)arg1;
-- (void)verificationContextForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)updateActiveAccountDSID:(id)arg1 error:(id *)arg2;
+- (BOOL)updateActiveLockerAccountDSID:(id)arg1 error:(id *)arg2;
+- (id)verificationContextForAccountEstablishmentWithError:(id *)arg1;
+- (id)verificationContextForDSID:(id)arg1 error:(id *)arg2;
 
 @end
 

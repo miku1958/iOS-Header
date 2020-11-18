@@ -16,10 +16,12 @@
 @interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
     id<HMFLocking> _lock;
+    NSMutableSet *_notificationRegistrations;
     BOOL _notificationRegisteredWithRemoteGateway;
     BOOL _broadcastNotificationEnabled;
     NSSet *_hapCharacteristicTuples;
     HMDCharacteristicMetadata *_metadata;
+    NSDate *_notificationEnabledTime;
     HMDHAPAccessory *_accessory;
     HMDService *_service;
     NSNumber *_stateNumber;
@@ -29,8 +31,6 @@
     NSDate *_lastKnownValueUpdateTime;
     NSNumber *_characteristicInstanceID;
     long long _characteristicProperties;
-    NSMutableSet *_notificationRegistrations;
-    NSDate *_notificationEnabledTime;
 }
 
 @property (readonly, weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
@@ -52,10 +52,11 @@
 @property (readonly, nonatomic) HMDCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
 @property (nonatomic) BOOL notificationRegisteredWithRemoteGateway; // @synthesize notificationRegisteredWithRemoteGateway=_notificationRegisteredWithRemoteGateway;
-@property (strong, nonatomic) NSMutableSet *notificationRegistrations; // @synthesize notificationRegistrations=_notificationRegistrations;
+@property (readonly, copy, nonatomic) NSSet *notificationRegistrations;
 @property (readonly, nonatomic) long long properties;
 @property (readonly, nonatomic) NSString *serializedIdentifier;
 @property (readonly, weak, nonatomic) HMDService *service; // @synthesize service=_service;
+@property (readonly) BOOL shouldIgnoreCacheValueForRead;
 @property (copy, nonatomic, setter=setStateNumber:) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type;

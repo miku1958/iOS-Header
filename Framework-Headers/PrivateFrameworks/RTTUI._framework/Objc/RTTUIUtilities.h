@@ -33,6 +33,7 @@
 + (id)phoneNumberStringFromString:(id)arg1;
 + (BOOL)relayIsSupported;
 + (id)relayPhoneNumber;
++ (id)rttDisplayName:(long long)arg1 forSubscriptionContextUUID:(id)arg2;
 + (id)sharedUtilityProvider;
 + (BOOL)shouldUseRTT;
 + (BOOL)softwareTTYIsSupported;

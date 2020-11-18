@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSConversation, NPKPeerPaymentConversationContext, NSString, PKPeerPaymentController, PKPeerPaymentRecipient;
+@class MSConversation, NPKPeerPaymentConversationContext, NSString, PKPeerPaymentController, PKPeerPaymentRecipient, PKPeerPaymentService;
 @protocol OS_dispatch_queue;
 
 @interface NPKPeerPaymentConversationManager : NSObject
@@ -17,12 +17,14 @@
     NPKPeerPaymentConversationContext *_conversationContext;
     NSString *_currentRecipientAddressLookup;
     PKPeerPaymentController *_currentPeerPaymentController;
+    PKPeerPaymentService *_peerPaymentService;
 }
 
 @property (strong) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
 @property (strong, nonatomic) NPKPeerPaymentConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
 @property (weak, nonatomic) PKPeerPaymentController *currentPeerPaymentController; // @synthesize currentPeerPaymentController=_currentPeerPaymentController;
 @property (strong, nonatomic) NSString *currentRecipientAddressLookup; // @synthesize currentRecipientAddressLookup=_currentRecipientAddressLookup;
+@property (strong, nonatomic) PKPeerPaymentService *peerPaymentService; // @synthesize peerPaymentService=_peerPaymentService;
 @property (readonly) PKPeerPaymentRecipient *recipient; // @synthesize recipient=_recipient;
 @property (readonly, copy, nonatomic) NSString *recipientDisplayName;
 @property (readonly, nonatomic) BOOL recipientFoundInContacts;
@@ -31,10 +33,13 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_accountDidChange;
 - (id)_ambiguousSenderAddressErrorWithUnderlyingError:(id)arg1;
 - (id)_displayableErrorWithError:(id)arg1;
+- (void)_internalQueue_forceLookupRecipientInformation;
 - (void)_internalQueue_lookupRecipientInformationWithAddress:(id)arg1 senderAddress:(id)arg2;
 - (void)_internalQueue_performPaymentWithAmount:(id)arg1 requestToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_internalQueue_performRequestWithAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_lockedOrRestrictedAccountErrorWithUnderlyingError:(id)arg1;
 - (id)_negativeBalanceErrorWithUnderlyingError:(id)arg1;
 - (id)_newPeerPaymentController;
@@ -46,6 +51,7 @@
 - (void)lookupRecipientInformationIfNecessary;
 - (void)lookupRecipientInformationWithAddress:(id)arg1 senderAddress:(id)arg2;
 - (void)performPaymentWithAmount:(id)arg1 requestToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performRequestWithAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -36,8 +36,10 @@
 - (id)initWithFPItem:(id)arg1;
 - (id)initWithNSURLWrapper:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 issueExtension:(BOOL)arg2 readonly:(BOOL)arg3 extensionClass:(id)arg4;
 - (id)initWithURL:(id)arg1 readonly:(BOOL)arg2;
 - (id)initWithURL:(id)arg1 readonly:(BOOL)arg2 extensionClass:(id)arg3;
+- (id)initWithURLWithoutIssuingExtension:(id)arg1;
 - (id)nsURLWrapper;
 
 @end

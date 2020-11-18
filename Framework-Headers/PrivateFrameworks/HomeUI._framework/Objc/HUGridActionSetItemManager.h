@@ -6,19 +6,23 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFActionSetItemProvider, HFReorderableHomeKitItemList, HMRoom;
+@class HFActionSetItemProvider, HFReorderableHomeKitItemList, HFStaticItem, HFStaticItemProvider, HMRoom;
 
 @interface HUGridActionSetItemManager : HFItemManager
 {
     BOOL _onlyShowsFavorites;
     HMRoom *_room;
     unsigned long long _actionSetStyle;
+    HFStaticItem *_actionSetPlaceholderItem;
     HFActionSetItemProvider *_actionSetItemProvider;
+    HFStaticItemProvider *_actionsetPlaceholderItemProvider;
     HFReorderableHomeKitItemList *_clientReorderableActionSetList;
 }
 
 @property (strong, nonatomic) HFActionSetItemProvider *actionSetItemProvider; // @synthesize actionSetItemProvider=_actionSetItemProvider;
+@property (strong, nonatomic) HFStaticItem *actionSetPlaceholderItem; // @synthesize actionSetPlaceholderItem=_actionSetPlaceholderItem;
 @property (readonly, nonatomic) unsigned long long actionSetStyle; // @synthesize actionSetStyle=_actionSetStyle;
+@property (strong, nonatomic) HFStaticItemProvider *actionsetPlaceholderItemProvider; // @synthesize actionsetPlaceholderItemProvider=_actionsetPlaceholderItemProvider;
 @property (strong, nonatomic) HFReorderableHomeKitItemList *clientReorderableActionSetList; // @synthesize clientReorderableActionSetList=_clientReorderableActionSetList;
 @property (nonatomic) BOOL onlyShowsFavorites; // @synthesize onlyShowsFavorites=_onlyShowsFavorites;
 @property (strong, nonatomic) HFReorderableHomeKitItemList *reorderableActionSetList;
@@ -29,11 +33,13 @@
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
 - (id)_itemForSorting;
+- (id)_itemsToHideInSet:(id)arg1;
 - (BOOL)_requiresNotificationsForCharacteristic:(id)arg1;
 - (void)_updateFilters;
 - (id)actionSetItemAssociatedWithActionSet:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 actionSetStyle:(unsigned long long)arg2 room:(id)arg3;
+- (BOOL)isItemReorderableAtIndex:(id)arg1;
 
 @end
 

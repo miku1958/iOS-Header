@@ -16,6 +16,8 @@ struct ARSessionState;
 
 struct Accel;
 
+struct Accel800;
+
 struct AccelBatch;
 
 struct AccelGesture;
@@ -53,6 +55,8 @@ struct AccessoryGyroConfig;
 
 struct AccessoryGyroGYTT;
 
+struct AccessoryInEarStatus;
+
 struct AccessoryProx;
 
 struct AccessoryProxSensorDrop;
@@ -71,6 +75,27 @@ struct AnchorCorrection;
 
 struct AudioAccessoryDeviceMotion;
 
+struct AudioAccessorySample {
+    struct {
+        struct CMOQuaternion quaternion;
+        CMVector_75ea1f06 rotationRate;
+        CMVector_75ea1f06 biasCovariance;
+        CMVector_75ea1f06 userAcceleration;
+        struct Status status;
+    } auxDM;
+    unsigned long long sensorTime;
+    double timestamp;
+    double arrivalTimestamp;
+    CMVector_75ea1f06 filteredAcceleration;
+    float quiescentNoise;
+    int quiescentMode;
+    unsigned int sequenceNumber;
+    int sensorLocation;
+    int timeSyncStatus;
+    unsigned long long btcTimestamp;
+    double sampleLatency;
+};
+
 struct AuxiliaryDeviceMotion;
 
 struct BTConnection;
@@ -81,6 +106,8 @@ struct BasicMutex {
     CDUnknownFunctionPointerType *_field1;
     struct MutexInfo *_field2;
 };
+
+struct BioMotionPose;
 
 struct BleedToZeroCorrection;
 
@@ -202,6 +229,7 @@ struct CLMotionActivity {
     int workoutDetectionType;
     double workoutDetectionTime;
     unsigned long long workoutEscalationTime;
+    int typeYouth;
 };
 
 struct CLNotifierBase {
@@ -211,6 +239,8 @@ struct CLNotifierBase {
 struct CLNotifierClientBase {
     CDUnknownFunctionPointerType *_field1;
 };
+
+struct CLSettings;
 
 struct CLSignificantElevation {
     int _field1;
@@ -278,6 +308,24 @@ struct CMAccel100 {
     unsigned long long _field4;
 };
 
+struct CMFixedSizeQueue<double, 10> {
+    struct {
+        unsigned short fHead;
+        unsigned short fSize;
+    } fHeadAndSize;
+    unsigned int fCapacity;
+    char fBuffer[8];
+    struct CMQueueStorage<double, 10> fStorage;
+};
+
+struct CMGyro200 {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    unsigned long long _field5;
+};
+
 struct CMGyro50 {
     float _field1;
     float _field2;
@@ -286,10 +334,28 @@ struct CMGyro50 {
     unsigned long long _field5;
 };
 
+struct CMHeadTrackingService;
+
+struct CMMediaSessionAnalyticsTracker;
+
+struct CMOQuaternion {
+    float elements[4];
+};
+
 struct CMPressure {
     float _field1;
     float _field2;
     unsigned long long _field3;
+};
+
+struct CMQueueStorage<double, 10> {
+    char buffer[72];
+};
+
+struct CMSpatialLogger;
+
+struct CMVector<float, 3> {
+    float elements[3];
 };
 
 struct CMWakeGestureVisitor;
@@ -314,13 +380,29 @@ struct CompassConstraints;
 
 struct CompassCorrection;
 
+struct Config {
+    int _field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
+    int _field4;
+    struct CMOQuaternion _field5;
+};
+
+struct ConstrainedIntegratorPose;
+
+struct CoprocessorReplyGaitMetrics;
+
 struct CourseConstraints;
 
 struct CourseCorrection;
 
 struct Delegate;
 
+struct Device;
+
 struct DeviceMotion;
+
+struct DeviceMotionAlwaysOn;
 
 struct DeviceMotionCovariance;
 
@@ -333,21 +415,33 @@ struct DoubleTap;
 
 struct ElevationChange;
 
+struct EmergencyState;
+
 struct EnhancedDeviceMotion;
 
 struct FacePose;
 
 struct FallDetectionDetector;
 
+struct FallDetectionGyroControllerReplay;
+
 struct FallDetectionReplay;
 
 struct FallDetectionStateMachine;
+
+struct FallDetectionWristStateReplay;
 
 struct FallFalsePositiveSuppressionFeatures;
 
 struct FallSnippet;
 
 struct FallStats;
+
+struct FrequencyResponse;
+
+struct GaitCycleSegment;
+
+struct GaitCycleSegmentationState;
 
 struct GeomagneticData;
 
@@ -367,9 +461,19 @@ struct GyroBiasCorrection;
 
 struct GyroBiasFit;
 
+struct GyroCalibrationDataFactory;
+
+struct GyroCalibrationDataNonlinearNonFactory;
+
+struct GyroCalibrationSample;
+
+struct GyroCalibrationSampleNonlinear;
+
 struct GyroCompass;
 
 struct GyroDt;
+
+struct GyroFactoryCalibrationData;
 
 struct GyroGps;
 
@@ -411,6 +515,7 @@ struct IntersiloNSCodingData;
 struct Item {
     CDUnknownFunctionPointerType *_vptr$Base;
     struct unique_ptr<CMMsl::Accel, std::__1::default_delete<CMMsl::Accel>> _accel;
+    struct unique_ptr<CMMsl::Accel800, std::__1::default_delete<CMMsl::Accel800>> _accel800;
     struct unique_ptr<CMMsl::AccelBatch, std::__1::default_delete<CMMsl::AccelBatch>> _accelBatch;
     struct unique_ptr<CMMsl::AccelGesture, std::__1::default_delete<CMMsl::AccelGesture>> _accelGesture;
     struct unique_ptr<CMMsl::AccelGps, std::__1::default_delete<CMMsl::AccelGps>> _accelGps;
@@ -425,6 +530,7 @@ struct Item {
     struct unique_ptr<CMMsl::AccessoryGyroCachedBias, std::__1::default_delete<CMMsl::AccessoryGyroCachedBias>> _accessoryGyroCachedBias;
     struct unique_ptr<CMMsl::AccessoryGyroConfig, std::__1::default_delete<CMMsl::AccessoryGyroConfig>> _accessoryGyroConfig;
     struct unique_ptr<CMMsl::AccessoryGyroGYTT, std::__1::default_delete<CMMsl::AccessoryGyroGYTT>> _accessoryGyroGYTT;
+    struct unique_ptr<CMMsl::AccessoryInEarStatus, std::__1::default_delete<CMMsl::AccessoryInEarStatus>> _accessoryInEarStatus;
     struct unique_ptr<CMMsl::AccessoryProx, std::__1::default_delete<CMMsl::AccessoryProx>> _accessoryProx;
     struct unique_ptr<CMMsl::AccessoryProxSensorDrop, std::__1::default_delete<CMMsl::AccessoryProxSensorDrop>> _accessoryProxSensorDrop;
     struct unique_ptr<CMMsl::AccessoryProxTempComp, std::__1::default_delete<CMMsl::AccessoryProxTempComp>> _accessoryProxTempComp;
@@ -439,6 +545,7 @@ struct Item {
     struct unique_ptr<CMMsl::AuxiliaryDeviceMotion, std::__1::default_delete<CMMsl::AuxiliaryDeviceMotion>> _auxiliaryDeviceMotion;
     struct unique_ptr<CMMsl::BTConnection, std::__1::default_delete<CMMsl::BTConnection>> _bTConnection;
     struct unique_ptr<CMMsl::BasebandSpeed, std::__1::default_delete<CMMsl::BasebandSpeed>> _basebandSpeed;
+    struct unique_ptr<CMMsl::BioMotionPose, std::__1::default_delete<CMMsl::BioMotionPose>> _bioMotionPose;
     struct unique_ptr<CMMsl::BleedToZeroCorrection, std::__1::default_delete<CMMsl::BleedToZeroCorrection>> _bleedToZeroCorrection;
     struct unique_ptr<CMMsl::BodyMetrics, std::__1::default_delete<CMMsl::BodyMetrics>> _bodyMetrics;
     struct unique_ptr<CMMsl::BraveHeartAccel, std::__1::default_delete<CMMsl::BraveHeartAccel>> _braveHeartAccel;
@@ -457,20 +564,29 @@ struct Item {
     struct unique_ptr<CMMsl::CompassCalibrationAttempt, std::__1::default_delete<CMMsl::CompassCalibrationAttempt>> _compassCalibrationAttempt;
     struct unique_ptr<CMMsl::CompassConstraints, std::__1::default_delete<CMMsl::CompassConstraints>> _compassConstraints;
     struct unique_ptr<CMMsl::CompassCorrection, std::__1::default_delete<CMMsl::CompassCorrection>> _compassCorrection;
+    struct unique_ptr<CMMsl::ConstrainedIntegratorPose, std::__1::default_delete<CMMsl::ConstrainedIntegratorPose>> _constrainedIntegratorPose;
+    struct unique_ptr<CMMsl::CoprocessorReplyGaitMetrics, std::__1::default_delete<CMMsl::CoprocessorReplyGaitMetrics>> _coprocessorReplyGaitMetrics;
     struct unique_ptr<CMMsl::CourseConstraints, std::__1::default_delete<CMMsl::CourseConstraints>> _courseConstraints;
     struct unique_ptr<CMMsl::CourseCorrection, std::__1::default_delete<CMMsl::CourseCorrection>> _courseCorrection;
     struct unique_ptr<CMMsl::DeviceMotion, std::__1::default_delete<CMMsl::DeviceMotion>> _deviceMotion;
+    struct unique_ptr<CMMsl::DeviceMotionAlwaysOn, std::__1::default_delete<CMMsl::DeviceMotionAlwaysOn>> _deviceMotionAlwaysOn;
     struct unique_ptr<CMMsl::DeviceMotionCovariance, std::__1::default_delete<CMMsl::DeviceMotionCovariance>> _deviceMotionCovariance;
     struct unique_ptr<CMMsl::DoubleTap, std::__1::default_delete<CMMsl::DoubleTap>> _doubleTap;
     struct unique_ptr<CMMsl::ElevationChange, std::__1::default_delete<CMMsl::ElevationChange>> _elevationChange;
+    struct unique_ptr<CMMsl::EmergencyState, std::__1::default_delete<CMMsl::EmergencyState>> _emergencyState;
     struct unique_ptr<CMMsl::EnhancedDeviceMotion, std::__1::default_delete<CMMsl::EnhancedDeviceMotion>> _enhancedDeviceMotion;
     struct unique_ptr<CMMsl::FacePose, std::__1::default_delete<CMMsl::FacePose>> _facePose;
     struct unique_ptr<CMMsl::FallDetectionDetector, std::__1::default_delete<CMMsl::FallDetectionDetector>> _fallDetectionDetector;
+    struct unique_ptr<CMMsl::FallDetectionGyroControllerReplay, std::__1::default_delete<CMMsl::FallDetectionGyroControllerReplay>> _fallDetectionGyroControllerReplay;
     struct unique_ptr<CMMsl::FallDetectionReplay, std::__1::default_delete<CMMsl::FallDetectionReplay>> _fallDetectionReplay;
     struct unique_ptr<CMMsl::FallDetectionStateMachine, std::__1::default_delete<CMMsl::FallDetectionStateMachine>> _fallDetectionStateMachine;
+    struct unique_ptr<CMMsl::FallDetectionWristStateReplay, std::__1::default_delete<CMMsl::FallDetectionWristStateReplay>> _fallDetectionWristStateReplay;
     struct unique_ptr<CMMsl::FallFalsePositiveSuppressionFeatures, std::__1::default_delete<CMMsl::FallFalsePositiveSuppressionFeatures>> _fallFalsePositiveSuppressionFeatures;
     struct unique_ptr<CMMsl::FallSnippet, std::__1::default_delete<CMMsl::FallSnippet>> _fallSnippet;
     struct unique_ptr<CMMsl::FallStats, std::__1::default_delete<CMMsl::FallStats>> _fallStats;
+    struct unique_ptr<CMMsl::FrequencyResponse, std::__1::default_delete<CMMsl::FrequencyResponse>> _frequencyResponse;
+    struct unique_ptr<CMMsl::GaitCycleSegment, std::__1::default_delete<CMMsl::GaitCycleSegment>> _gaitCycleSegment;
+    struct unique_ptr<CMMsl::GaitCycleSegmentationState, std::__1::default_delete<CMMsl::GaitCycleSegmentationState>> _gaitCycleSegmentationState;
     struct unique_ptr<CMMsl::GeomagneticData, std::__1::default_delete<CMMsl::GeomagneticData>> _geomagneticData;
     struct unique_ptr<CMMsl::GravityConstraints, std::__1::default_delete<CMMsl::GravityConstraints>> _gravityConstraints;
     struct unique_ptr<CMMsl::GravityCorrection, std::__1::default_delete<CMMsl::GravityCorrection>> _gravityCorrection;
@@ -479,8 +595,13 @@ struct Item {
     struct unique_ptr<CMMsl::GyroBiasConstraints, std::__1::default_delete<CMMsl::GyroBiasConstraints>> _gyroBiasConstraints;
     struct unique_ptr<CMMsl::GyroBiasCorrection, std::__1::default_delete<CMMsl::GyroBiasCorrection>> _gyroBiasCorrection;
     struct unique_ptr<CMMsl::GyroBiasFit, std::__1::default_delete<CMMsl::GyroBiasFit>> _gyroBiasFit;
+    struct unique_ptr<CMMsl::GyroCalibrationDataFactory, std::__1::default_delete<CMMsl::GyroCalibrationDataFactory>> _gyroCalibrationDataFactory;
+    struct unique_ptr<CMMsl::GyroCalibrationDataNonlinearNonFactory, std::__1::default_delete<CMMsl::GyroCalibrationDataNonlinearNonFactory>> _gyroCalibrationDataNonlinearNonFactory;
+    struct unique_ptr<CMMsl::GyroCalibrationSample, std::__1::default_delete<CMMsl::GyroCalibrationSample>> _gyroCalibrationSample;
+    struct unique_ptr<CMMsl::GyroCalibrationSampleNonlinear, std::__1::default_delete<CMMsl::GyroCalibrationSampleNonlinear>> _gyroCalibrationSampleNonlinear;
     struct unique_ptr<CMMsl::GyroCompass, std::__1::default_delete<CMMsl::GyroCompass>> _gyroCompass;
     struct unique_ptr<CMMsl::GyroDt, std::__1::default_delete<CMMsl::GyroDt>> _gyroDt;
+    struct unique_ptr<CMMsl::GyroFactoryCalibrationData, std::__1::default_delete<CMMsl::GyroFactoryCalibrationData>> _gyroFactoryCalibrationData;
     struct unique_ptr<CMMsl::GyroGps, std::__1::default_delete<CMMsl::GyroGps>> _gyroGps;
     struct unique_ptr<CMMsl::GyroOscarEmu, std::__1::default_delete<CMMsl::GyroOscarEmu>> _gyroOscarEmu;
     struct unique_ptr<CMMsl::GyroTemperature, std::__1::default_delete<CMMsl::GyroTemperature>> _gyroTemperature;
@@ -495,12 +616,19 @@ struct Item {
     struct unique_ptr<CMMsl::InEarTransitionEntry, std::__1::default_delete<CMMsl::InEarTransitionEntry>> _inEarTransitionEntry;
     struct unique_ptr<CMMsl::InterpolatedAccessoryAccel, std::__1::default_delete<CMMsl::InterpolatedAccessoryAccel>> _interpolatedAccessoryAccel;
     struct unique_ptr<CMMsl::IntersiloNSCodingData, std::__1::default_delete<CMMsl::IntersiloNSCodingData>> _intersiloNSCodingData;
+    struct unique_ptr<CMMsl::JointLinkModelPose, std::__1::default_delete<CMMsl::JointLinkModelPose>> _jointLinkModelPose;
+    struct unique_ptr<CMMsl::KappaTrigger, std::__1::default_delete<CMMsl::KappaTrigger>> _kappaTrigger;
     struct unique_ptr<CMMsl::LocationOscarEmu, std::__1::default_delete<CMMsl::LocationOscarEmu>> _locationOscarEmu;
     struct unique_ptr<CMMsl::LSLHeadingEstimation, std::__1::default_delete<CMMsl::LSLHeadingEstimation>> _lslHeadingEstimation;
+    struct unique_ptr<CMMsl::MagneticAccessoryType1, std::__1::default_delete<CMMsl::MagneticAccessoryType1>> _magneticAccessoryType1;
+    struct unique_ptr<CMMsl::MagneticAccessoryType2, std::__1::default_delete<CMMsl::MagneticAccessoryType2>> _magneticAccessoryType2;
     struct unique_ptr<CMMsl::Magnetometer, std::__1::default_delete<CMMsl::Magnetometer>> _magnetometer;
     struct unique_ptr<CMMsl::MetsInfo, std::__1::default_delete<CMMsl::MetsInfo>> _metsInfo;
+    struct unique_ptr<CMMsl::MobilityBoutMetrics, std::__1::default_delete<CMMsl::MobilityBoutMetrics>> _mobilityBoutMetrics;
+    struct unique_ptr<CMMsl::MotionActivity, std::__1::default_delete<CMMsl::MotionActivity>> _motionActivity;
     struct unique_ptr<CMMsl::MotionGPSLocation, std::__1::default_delete<CMMsl::MotionGPSLocation>> _motionGPSLocation;
     struct unique_ptr<CMMsl::MotionHint, std::__1::default_delete<CMMsl::MotionHint>> _motionHint;
+    struct unique_ptr<CMMsl::MotionLocation, std::__1::default_delete<CMMsl::MotionLocation>> _motionLocation;
     struct unique_ptr<CMMsl::MotionLoiData, std::__1::default_delete<CMMsl::MotionLoiData>> _motionLoiData;
     struct unique_ptr<CMMsl::MotionStateUpdate, std::__1::default_delete<CMMsl::MotionStateUpdate>> _motionStateUpdate;
     struct unique_ptr<CMMsl::MotionWifiAssociation, std::__1::default_delete<CMMsl::MotionWifiAssociation>> _motionWifiAssociation;
@@ -516,11 +644,14 @@ struct Item {
     struct unique_ptr<CMMsl::PearlAttitude, std::__1::default_delete<CMMsl::PearlAttitude>> _pearlAttitude;
     struct unique_ptr<CMMsl::PredictedRelativeDeviceMotion, std::__1::default_delete<CMMsl::PredictedRelativeDeviceMotion>> _predictedRelativeDeviceMotion;
     struct unique_ptr<CMMsl::Pressure, std::__1::default_delete<CMMsl::Pressure>> _pressure;
+    struct unique_ptr<CMMsl::PressureCompensated, std::__1::default_delete<CMMsl::PressureCompensated>> _pressureCompensated;
     struct unique_ptr<CMMsl::PressureFiltered, std::__1::default_delete<CMMsl::PressureFiltered>> _pressureFiltered;
     struct unique_ptr<CMMsl::PressureFilteredNoTemperature, std::__1::default_delete<CMMsl::PressureFilteredNoTemperature>> _pressureFilteredNoTemperature;
     struct unique_ptr<CMMsl::PressureGps, std::__1::default_delete<CMMsl::PressureGps>> _pressureGps;
     struct unique_ptr<CMMsl::PressureOscarEmu, std::__1::default_delete<CMMsl::PressureOscarEmu>> _pressureOscarEmu;
     struct unique_ptr<CMMsl::Prox, std::__1::default_delete<CMMsl::Prox>> _prox;
+    struct unique_ptr<CMMsl::RelDMInSystemConfig, std::__1::default_delete<CMMsl::RelDMInSystemConfig>> _relDMInSystemConfig;
+    struct unique_ptr<CMMsl::RelativeDeviceMotionComplexTransition, std::__1::default_delete<CMMsl::RelativeDeviceMotionComplexTransition>> _relativeDeviceMotionComplexTransition;
     struct unique_ptr<CMMsl::RelativeDeviceMotionCorrelatedMotion, std::__1::default_delete<CMMsl::RelativeDeviceMotionCorrelatedMotion>> _relativeDeviceMotionCorrelatedMotion;
     struct unique_ptr<CMMsl::RelativeDeviceMotionInternal, std::__1::default_delete<CMMsl::RelativeDeviceMotionInternal>> _relativeDeviceMotionInternal;
     struct unique_ptr<CMMsl::RelativeGravityConstraints, std::__1::default_delete<CMMsl::RelativeGravityConstraints>> _relativeGravityConstraints;
@@ -528,6 +659,7 @@ struct Item {
     struct unique_ptr<CMMsl::RotationRate, std::__1::default_delete<CMMsl::RotationRate>> _rotationRate;
     struct unique_ptr<CMMsl::SessionOverride, std::__1::default_delete<CMMsl::SessionOverride>> _sessionOverride;
     struct unique_ptr<CMMsl::SignalEnvironment, std::__1::default_delete<CMMsl::SignalEnvironment>> _signalEnvironment;
+    struct unique_ptr<CMMsl::SoundPressureLevel, std::__1::default_delete<CMMsl::SoundPressureLevel>> _spl;
     struct unique_ptr<CMMsl::SPUPlaybackExampleDeviceMotion, std::__1::default_delete<CMMsl::SPUPlaybackExampleDeviceMotion>> _spuPlaybackExampleDeviceMotion;
     struct unique_ptr<CMMsl::SPUPlaybackExampleMotionStateUpdate, std::__1::default_delete<CMMsl::SPUPlaybackExampleMotionStateUpdate>> _spuPlaybackExampleMotionStateUpdate;
     struct unique_ptr<CMMsl::StepCadenceToStrideLengthBin, std::__1::default_delete<CMMsl::StepCadenceToStrideLengthBin>> _stepCadenceToStrideLengthBin;
@@ -543,8 +675,14 @@ struct Item {
     struct unique_ptr<CMMsl::VibrationEvent, std::__1::default_delete<CMMsl::VibrationEvent>> _vibrationEvent;
     struct unique_ptr<CMMsl::VIOEstimation, std::__1::default_delete<CMMsl::VIOEstimation>> _vioEstimation;
     struct unique_ptr<CMMsl::VIOPose, std::__1::default_delete<CMMsl::VIOPose>> _vioPose;
+    struct unique_ptr<CMMsl::VIOReplayPose, std::__1::default_delete<CMMsl::VIOReplayPose>> _vioReplayPose;
     struct unique_ptr<CMMsl::VisionCompassBias, std::__1::default_delete<CMMsl::VisionCompassBias>> _visionCompassBias;
+    struct unique_ptr<CMMsl::VisualLocalization, std::__1::default_delete<CMMsl::VisualLocalization>> _visualLocalization;
+    struct unique_ptr<CMMsl::VisualLocalizationAttitudeConstraints, std::__1::default_delete<CMMsl::VisualLocalizationAttitudeConstraints>> _visualLocalizationAttitudeConstraints;
+    struct unique_ptr<CMMsl::VisualLocalizationAttitudeCorrection, std::__1::default_delete<CMMsl::VisualLocalizationAttitudeCorrection>> _visualLocalizationAttitudeCorrection;
     struct unique_ptr<CMMsl::VO2MaxInput, std::__1::default_delete<CMMsl::VO2MaxInput>> _vo2MaxInput;
+    struct unique_ptr<CMMsl::VO2MaxOutput, std::__1::default_delete<CMMsl::VO2MaxOutput>> _vo2MaxOutput;
+    struct unique_ptr<CMMsl::WalkingDetectionResult, std::__1::default_delete<CMMsl::WalkingDetectionResult>> _walkingDetectionResult;
     struct unique_ptr<CMMsl::WatchOnWristState, std::__1::default_delete<CMMsl::WatchOnWristState>> _watchOnWristState;
     struct unique_ptr<CMMsl::WatchOrientationSettings, std::__1::default_delete<CMMsl::WatchOrientationSettings>> _watchOrientationSettings;
     struct unique_ptr<CMMsl::WifiScanResults, std::__1::default_delete<CMMsl::WifiScanResults>> _wifiScanResults;
@@ -568,9 +706,25 @@ struct Item {
     } _has;
 };
 
+struct JointLinkModelPose;
+
+struct KappaTrigger;
+
 struct LSLHeadingEstimation;
 
+struct ListenerOrientation {
+    struct CMOQuaternion _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    BOOL _field4;
+    BOOL _field5;
+};
+
 struct LocationOscarEmu;
+
+struct MagneticAccessoryType1;
+
+struct MagneticAccessoryType2;
 
 struct Magnetometer;
 
@@ -582,9 +736,15 @@ struct MemoryDelegate {
 
 struct MetsInfo;
 
+struct MobilityBoutMetrics;
+
+struct MotionActivity;
+
 struct MotionGPSLocation;
 
 struct MotionHint;
+
+struct MotionLocation;
 
 struct MotionLoiData;
 
@@ -630,6 +790,8 @@ struct PredictedRelativeDeviceMotion;
 
 struct Pressure;
 
+struct PressureCompensated;
+
 struct PressureFiltered;
 
 struct PressureFilteredNoTemperature;
@@ -667,6 +829,10 @@ struct ReaderIterator {
     struct Item fItem;
 };
 
+struct RelDMInSystemConfig;
+
+struct RelativeDeviceMotionComplexTransition;
+
 struct RelativeDeviceMotionCorrelatedMotion;
 
 struct RelativeDeviceMotionInternal;
@@ -684,6 +850,12 @@ struct SPUPlaybackExampleMotionStateUpdate;
 struct SessionOverride;
 
 struct SignalEnvironment;
+
+struct SoundPressureLevel;
+
+struct Status {
+    unsigned short bits;
+};
 
 struct StepCadenceToStrideLengthBin;
 
@@ -703,11 +875,20 @@ struct TempestPoCListenerOrientation;
 
 struct TouchOscarEmu;
 
+struct UnTimesyncedAuxSampleHelper {
+    unsigned int totalUnsyncedSamples;
+    unsigned int totalUnsyncedOutlierSamples;
+    double auxAndSrcSensorTimeOffset;
+    struct CMFixedSizeQueue<double, 10> auxAndSrcSensorTimeOffsetBuffer;
+};
+
 struct UserStudyEvent;
 
 struct VIOEstimation;
 
 struct VIOPose;
+
+struct VIOReplayPose;
 
 struct VO2MaxInput {
     unsigned long long _field1;
@@ -727,9 +908,19 @@ struct VO2MaxInput {
     BOOL _field15;
 };
 
+struct VO2MaxOutput;
+
 struct VibrationEvent;
 
 struct VisionCompassBias;
+
+struct VisualLocalization;
+
+struct VisualLocalizationAttitudeConstraints;
+
+struct VisualLocalizationAttitudeCorrection;
+
+struct WalkingDetectionResult;
 
 struct WatchOnWristState;
 
@@ -929,6 +1120,11 @@ struct shared_ptr<CLConnectionMessage> {
     struct __shared_weak_count *_field2;
 };
 
+struct shared_ptr<CLIoHidInterface::Device> {
+    struct Device *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct shared_ptr<int> {
     int *_field1;
     struct __shared_weak_count *_field2;
@@ -937,6 +1133,24 @@ struct shared_ptr<int> {
 struct unique_ptr<CLDeviceMotionLiteService, std::__1::default_delete<CLDeviceMotionLiteService>> {
     struct __compressed_pair<CLDeviceMotionLiteService *, std::__1::default_delete<CLDeviceMotionLiteService>> {
         struct CLDeviceMotionLiteService *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CLSettings, std::__1::default_delete<CLSettings>> {
+    struct __compressed_pair<CLSettings *, std::__1::default_delete<CLSettings>> {
+        struct CLSettings *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMHeadTrackingService, std::__1::default_delete<CMHeadTrackingService>> {
+    struct __compressed_pair<CMHeadTrackingService *, std::__1::default_delete<CMHeadTrackingService>> {
+        struct CMHeadTrackingService *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMediaSessionAnalyticsTracker, std::__1::default_delete<CMMediaSessionAnalyticsTracker>> {
+    struct __compressed_pair<CMMediaSessionAnalyticsTracker *, std::__1::default_delete<CMMediaSessionAnalyticsTracker>> {
+        struct CMMediaSessionAnalyticsTracker *__value_;
     } __ptr_;
 };
 
@@ -955,6 +1169,12 @@ struct unique_ptr<CMMsl::ARSessionState, std::__1::default_delete<CMMsl::ARSessi
 struct unique_ptr<CMMsl::Accel, std::__1::default_delete<CMMsl::Accel>> {
     struct __compressed_pair<CMMsl::Accel *, std::__1::default_delete<CMMsl::Accel>> {
         struct Accel *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::Accel800, std::__1::default_delete<CMMsl::Accel800>> {
+    struct __compressed_pair<CMMsl::Accel800 *, std::__1::default_delete<CMMsl::Accel800>> {
+        struct Accel800 *__value_;
     } __ptr_;
 };
 
@@ -1042,6 +1262,12 @@ struct unique_ptr<CMMsl::AccessoryGyroGYTT, std::__1::default_delete<CMMsl::Acce
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::AccessoryInEarStatus, std::__1::default_delete<CMMsl::AccessoryInEarStatus>> {
+    struct __compressed_pair<CMMsl::AccessoryInEarStatus *, std::__1::default_delete<CMMsl::AccessoryInEarStatus>> {
+        struct AccessoryInEarStatus *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::AccessoryProx, std::__1::default_delete<CMMsl::AccessoryProx>> {
     struct __compressed_pair<CMMsl::AccessoryProx *, std::__1::default_delete<CMMsl::AccessoryProx>> {
         struct AccessoryProx *__value_;
@@ -1111,6 +1337,12 @@ struct unique_ptr<CMMsl::BTConnection, std::__1::default_delete<CMMsl::BTConnect
 struct unique_ptr<CMMsl::BasebandSpeed, std::__1::default_delete<CMMsl::BasebandSpeed>> {
     struct __compressed_pair<CMMsl::BasebandSpeed *, std::__1::default_delete<CMMsl::BasebandSpeed>> {
         struct BasebandSpeed *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::BioMotionPose, std::__1::default_delete<CMMsl::BioMotionPose>> {
+    struct __compressed_pair<CMMsl::BioMotionPose *, std::__1::default_delete<CMMsl::BioMotionPose>> {
+        struct BioMotionPose *__value_;
     } __ptr_;
 };
 
@@ -1216,6 +1448,18 @@ struct unique_ptr<CMMsl::CompassCorrection, std::__1::default_delete<CMMsl::Comp
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::ConstrainedIntegratorPose, std::__1::default_delete<CMMsl::ConstrainedIntegratorPose>> {
+    struct __compressed_pair<CMMsl::ConstrainedIntegratorPose *, std::__1::default_delete<CMMsl::ConstrainedIntegratorPose>> {
+        struct ConstrainedIntegratorPose *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::CoprocessorReplyGaitMetrics, std::__1::default_delete<CMMsl::CoprocessorReplyGaitMetrics>> {
+    struct __compressed_pair<CMMsl::CoprocessorReplyGaitMetrics *, std::__1::default_delete<CMMsl::CoprocessorReplyGaitMetrics>> {
+        struct CoprocessorReplyGaitMetrics *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::CourseConstraints, std::__1::default_delete<CMMsl::CourseConstraints>> {
     struct __compressed_pair<CMMsl::CourseConstraints *, std::__1::default_delete<CMMsl::CourseConstraints>> {
         struct CourseConstraints *__value_;
@@ -1231,6 +1475,12 @@ struct unique_ptr<CMMsl::CourseCorrection, std::__1::default_delete<CMMsl::Cours
 struct unique_ptr<CMMsl::DeviceMotion, std::__1::default_delete<CMMsl::DeviceMotion>> {
     struct __compressed_pair<CMMsl::DeviceMotion *, std::__1::default_delete<CMMsl::DeviceMotion>> {
         struct DeviceMotion *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::DeviceMotionAlwaysOn, std::__1::default_delete<CMMsl::DeviceMotionAlwaysOn>> {
+    struct __compressed_pair<CMMsl::DeviceMotionAlwaysOn *, std::__1::default_delete<CMMsl::DeviceMotionAlwaysOn>> {
+        struct DeviceMotionAlwaysOn *__value_;
     } __ptr_;
 };
 
@@ -1252,6 +1502,12 @@ struct unique_ptr<CMMsl::ElevationChange, std::__1::default_delete<CMMsl::Elevat
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::EmergencyState, std::__1::default_delete<CMMsl::EmergencyState>> {
+    struct __compressed_pair<CMMsl::EmergencyState *, std::__1::default_delete<CMMsl::EmergencyState>> {
+        struct EmergencyState *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::EnhancedDeviceMotion, std::__1::default_delete<CMMsl::EnhancedDeviceMotion>> {
     struct __compressed_pair<CMMsl::EnhancedDeviceMotion *, std::__1::default_delete<CMMsl::EnhancedDeviceMotion>> {
         struct EnhancedDeviceMotion *__value_;
@@ -1270,6 +1526,12 @@ struct unique_ptr<CMMsl::FallDetectionDetector, std::__1::default_delete<CMMsl::
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::FallDetectionGyroControllerReplay, std::__1::default_delete<CMMsl::FallDetectionGyroControllerReplay>> {
+    struct __compressed_pair<CMMsl::FallDetectionGyroControllerReplay *, std::__1::default_delete<CMMsl::FallDetectionGyroControllerReplay>> {
+        struct FallDetectionGyroControllerReplay *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::FallDetectionReplay, std::__1::default_delete<CMMsl::FallDetectionReplay>> {
     struct __compressed_pair<CMMsl::FallDetectionReplay *, std::__1::default_delete<CMMsl::FallDetectionReplay>> {
         struct FallDetectionReplay *__value_;
@@ -1279,6 +1541,12 @@ struct unique_ptr<CMMsl::FallDetectionReplay, std::__1::default_delete<CMMsl::Fa
 struct unique_ptr<CMMsl::FallDetectionStateMachine, std::__1::default_delete<CMMsl::FallDetectionStateMachine>> {
     struct __compressed_pair<CMMsl::FallDetectionStateMachine *, std::__1::default_delete<CMMsl::FallDetectionStateMachine>> {
         struct FallDetectionStateMachine *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::FallDetectionWristStateReplay, std::__1::default_delete<CMMsl::FallDetectionWristStateReplay>> {
+    struct __compressed_pair<CMMsl::FallDetectionWristStateReplay *, std::__1::default_delete<CMMsl::FallDetectionWristStateReplay>> {
+        struct FallDetectionWristStateReplay *__value_;
     } __ptr_;
 };
 
@@ -1297,6 +1565,24 @@ struct unique_ptr<CMMsl::FallSnippet, std::__1::default_delete<CMMsl::FallSnippe
 struct unique_ptr<CMMsl::FallStats, std::__1::default_delete<CMMsl::FallStats>> {
     struct __compressed_pair<CMMsl::FallStats *, std::__1::default_delete<CMMsl::FallStats>> {
         struct FallStats *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::FrequencyResponse, std::__1::default_delete<CMMsl::FrequencyResponse>> {
+    struct __compressed_pair<CMMsl::FrequencyResponse *, std::__1::default_delete<CMMsl::FrequencyResponse>> {
+        struct FrequencyResponse *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::GaitCycleSegment, std::__1::default_delete<CMMsl::GaitCycleSegment>> {
+    struct __compressed_pair<CMMsl::GaitCycleSegment *, std::__1::default_delete<CMMsl::GaitCycleSegment>> {
+        struct GaitCycleSegment *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::GaitCycleSegmentationState, std::__1::default_delete<CMMsl::GaitCycleSegmentationState>> {
+    struct __compressed_pair<CMMsl::GaitCycleSegmentationState *, std::__1::default_delete<CMMsl::GaitCycleSegmentationState>> {
+        struct GaitCycleSegmentationState *__value_;
     } __ptr_;
 };
 
@@ -1348,6 +1634,30 @@ struct unique_ptr<CMMsl::GyroBiasFit, std::__1::default_delete<CMMsl::GyroBiasFi
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::GyroCalibrationDataFactory, std::__1::default_delete<CMMsl::GyroCalibrationDataFactory>> {
+    struct __compressed_pair<CMMsl::GyroCalibrationDataFactory *, std::__1::default_delete<CMMsl::GyroCalibrationDataFactory>> {
+        struct GyroCalibrationDataFactory *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::GyroCalibrationDataNonlinearNonFactory, std::__1::default_delete<CMMsl::GyroCalibrationDataNonlinearNonFactory>> {
+    struct __compressed_pair<CMMsl::GyroCalibrationDataNonlinearNonFactory *, std::__1::default_delete<CMMsl::GyroCalibrationDataNonlinearNonFactory>> {
+        struct GyroCalibrationDataNonlinearNonFactory *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::GyroCalibrationSample, std::__1::default_delete<CMMsl::GyroCalibrationSample>> {
+    struct __compressed_pair<CMMsl::GyroCalibrationSample *, std::__1::default_delete<CMMsl::GyroCalibrationSample>> {
+        struct GyroCalibrationSample *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::GyroCalibrationSampleNonlinear, std::__1::default_delete<CMMsl::GyroCalibrationSampleNonlinear>> {
+    struct __compressed_pair<CMMsl::GyroCalibrationSampleNonlinear *, std::__1::default_delete<CMMsl::GyroCalibrationSampleNonlinear>> {
+        struct GyroCalibrationSampleNonlinear *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::GyroCompass, std::__1::default_delete<CMMsl::GyroCompass>> {
     struct __compressed_pair<CMMsl::GyroCompass *, std::__1::default_delete<CMMsl::GyroCompass>> {
         struct GyroCompass *__value_;
@@ -1357,6 +1667,12 @@ struct unique_ptr<CMMsl::GyroCompass, std::__1::default_delete<CMMsl::GyroCompas
 struct unique_ptr<CMMsl::GyroDt, std::__1::default_delete<CMMsl::GyroDt>> {
     struct __compressed_pair<CMMsl::GyroDt *, std::__1::default_delete<CMMsl::GyroDt>> {
         struct GyroDt *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::GyroFactoryCalibrationData, std::__1::default_delete<CMMsl::GyroFactoryCalibrationData>> {
+    struct __compressed_pair<CMMsl::GyroFactoryCalibrationData *, std::__1::default_delete<CMMsl::GyroFactoryCalibrationData>> {
+        struct GyroFactoryCalibrationData *__value_;
     } __ptr_;
 };
 
@@ -1444,6 +1760,18 @@ struct unique_ptr<CMMsl::IntersiloNSCodingData, std::__1::default_delete<CMMsl::
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::JointLinkModelPose, std::__1::default_delete<CMMsl::JointLinkModelPose>> {
+    struct __compressed_pair<CMMsl::JointLinkModelPose *, std::__1::default_delete<CMMsl::JointLinkModelPose>> {
+        struct JointLinkModelPose *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::KappaTrigger, std::__1::default_delete<CMMsl::KappaTrigger>> {
+    struct __compressed_pair<CMMsl::KappaTrigger *, std::__1::default_delete<CMMsl::KappaTrigger>> {
+        struct KappaTrigger *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::LSLHeadingEstimation, std::__1::default_delete<CMMsl::LSLHeadingEstimation>> {
     struct __compressed_pair<CMMsl::LSLHeadingEstimation *, std::__1::default_delete<CMMsl::LSLHeadingEstimation>> {
         struct LSLHeadingEstimation *__value_;
@@ -1453,6 +1781,18 @@ struct unique_ptr<CMMsl::LSLHeadingEstimation, std::__1::default_delete<CMMsl::L
 struct unique_ptr<CMMsl::LocationOscarEmu, std::__1::default_delete<CMMsl::LocationOscarEmu>> {
     struct __compressed_pair<CMMsl::LocationOscarEmu *, std::__1::default_delete<CMMsl::LocationOscarEmu>> {
         struct LocationOscarEmu *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::MagneticAccessoryType1, std::__1::default_delete<CMMsl::MagneticAccessoryType1>> {
+    struct __compressed_pair<CMMsl::MagneticAccessoryType1 *, std::__1::default_delete<CMMsl::MagneticAccessoryType1>> {
+        struct MagneticAccessoryType1 *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::MagneticAccessoryType2, std::__1::default_delete<CMMsl::MagneticAccessoryType2>> {
+    struct __compressed_pair<CMMsl::MagneticAccessoryType2 *, std::__1::default_delete<CMMsl::MagneticAccessoryType2>> {
+        struct MagneticAccessoryType2 *__value_;
     } __ptr_;
 };
 
@@ -1468,6 +1808,18 @@ struct unique_ptr<CMMsl::MetsInfo, std::__1::default_delete<CMMsl::MetsInfo>> {
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::MobilityBoutMetrics, std::__1::default_delete<CMMsl::MobilityBoutMetrics>> {
+    struct __compressed_pair<CMMsl::MobilityBoutMetrics *, std::__1::default_delete<CMMsl::MobilityBoutMetrics>> {
+        struct MobilityBoutMetrics *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::MotionActivity, std::__1::default_delete<CMMsl::MotionActivity>> {
+    struct __compressed_pair<CMMsl::MotionActivity *, std::__1::default_delete<CMMsl::MotionActivity>> {
+        struct MotionActivity *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::MotionGPSLocation, std::__1::default_delete<CMMsl::MotionGPSLocation>> {
     struct __compressed_pair<CMMsl::MotionGPSLocation *, std::__1::default_delete<CMMsl::MotionGPSLocation>> {
         struct MotionGPSLocation *__value_;
@@ -1477,6 +1829,12 @@ struct unique_ptr<CMMsl::MotionGPSLocation, std::__1::default_delete<CMMsl::Moti
 struct unique_ptr<CMMsl::MotionHint, std::__1::default_delete<CMMsl::MotionHint>> {
     struct __compressed_pair<CMMsl::MotionHint *, std::__1::default_delete<CMMsl::MotionHint>> {
         struct MotionHint *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::MotionLocation, std::__1::default_delete<CMMsl::MotionLocation>> {
+    struct __compressed_pair<CMMsl::MotionLocation *, std::__1::default_delete<CMMsl::MotionLocation>> {
+        struct MotionLocation *__value_;
     } __ptr_;
 };
 
@@ -1570,6 +1928,12 @@ struct unique_ptr<CMMsl::Pressure, std::__1::default_delete<CMMsl::Pressure>> {
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::PressureCompensated, std::__1::default_delete<CMMsl::PressureCompensated>> {
+    struct __compressed_pair<CMMsl::PressureCompensated *, std::__1::default_delete<CMMsl::PressureCompensated>> {
+        struct PressureCompensated *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::PressureFiltered, std::__1::default_delete<CMMsl::PressureFiltered>> {
     struct __compressed_pair<CMMsl::PressureFiltered *, std::__1::default_delete<CMMsl::PressureFiltered>> {
         struct PressureFiltered *__value_;
@@ -1597,6 +1961,18 @@ struct unique_ptr<CMMsl::PressureOscarEmu, std::__1::default_delete<CMMsl::Press
 struct unique_ptr<CMMsl::Prox, std::__1::default_delete<CMMsl::Prox>> {
     struct __compressed_pair<CMMsl::Prox *, std::__1::default_delete<CMMsl::Prox>> {
         struct Prox *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::RelDMInSystemConfig, std::__1::default_delete<CMMsl::RelDMInSystemConfig>> {
+    struct __compressed_pair<CMMsl::RelDMInSystemConfig *, std::__1::default_delete<CMMsl::RelDMInSystemConfig>> {
+        struct RelDMInSystemConfig *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::RelativeDeviceMotionComplexTransition, std::__1::default_delete<CMMsl::RelativeDeviceMotionComplexTransition>> {
+    struct __compressed_pair<CMMsl::RelativeDeviceMotionComplexTransition *, std::__1::default_delete<CMMsl::RelativeDeviceMotionComplexTransition>> {
+        struct RelativeDeviceMotionComplexTransition *__value_;
     } __ptr_;
 };
 
@@ -1651,6 +2027,12 @@ struct unique_ptr<CMMsl::SessionOverride, std::__1::default_delete<CMMsl::Sessio
 struct unique_ptr<CMMsl::SignalEnvironment, std::__1::default_delete<CMMsl::SignalEnvironment>> {
     struct __compressed_pair<CMMsl::SignalEnvironment *, std::__1::default_delete<CMMsl::SignalEnvironment>> {
         struct SignalEnvironment *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::SoundPressureLevel, std::__1::default_delete<CMMsl::SoundPressureLevel>> {
+    struct __compressed_pair<CMMsl::SoundPressureLevel *, std::__1::default_delete<CMMsl::SoundPressureLevel>> {
+        struct SoundPressureLevel *__value_;
     } __ptr_;
 };
 
@@ -1726,9 +2108,21 @@ struct unique_ptr<CMMsl::VIOPose, std::__1::default_delete<CMMsl::VIOPose>> {
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::VIOReplayPose, std::__1::default_delete<CMMsl::VIOReplayPose>> {
+    struct __compressed_pair<CMMsl::VIOReplayPose *, std::__1::default_delete<CMMsl::VIOReplayPose>> {
+        struct VIOReplayPose *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::VO2MaxInput, std::__1::default_delete<CMMsl::VO2MaxInput>> {
     struct __compressed_pair<CMMsl::VO2MaxInput *, std::__1::default_delete<CMMsl::VO2MaxInput>> {
         struct VO2MaxInput *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::VO2MaxOutput, std::__1::default_delete<CMMsl::VO2MaxOutput>> {
+    struct __compressed_pair<CMMsl::VO2MaxOutput *, std::__1::default_delete<CMMsl::VO2MaxOutput>> {
+        struct VO2MaxOutput *__value_;
     } __ptr_;
 };
 
@@ -1741,6 +2135,30 @@ struct unique_ptr<CMMsl::VibrationEvent, std::__1::default_delete<CMMsl::Vibrati
 struct unique_ptr<CMMsl::VisionCompassBias, std::__1::default_delete<CMMsl::VisionCompassBias>> {
     struct __compressed_pair<CMMsl::VisionCompassBias *, std::__1::default_delete<CMMsl::VisionCompassBias>> {
         struct VisionCompassBias *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::VisualLocalization, std::__1::default_delete<CMMsl::VisualLocalization>> {
+    struct __compressed_pair<CMMsl::VisualLocalization *, std::__1::default_delete<CMMsl::VisualLocalization>> {
+        struct VisualLocalization *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::VisualLocalizationAttitudeConstraints, std::__1::default_delete<CMMsl::VisualLocalizationAttitudeConstraints>> {
+    struct __compressed_pair<CMMsl::VisualLocalizationAttitudeConstraints *, std::__1::default_delete<CMMsl::VisualLocalizationAttitudeConstraints>> {
+        struct VisualLocalizationAttitudeConstraints *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::VisualLocalizationAttitudeCorrection, std::__1::default_delete<CMMsl::VisualLocalizationAttitudeCorrection>> {
+    struct __compressed_pair<CMMsl::VisualLocalizationAttitudeCorrection *, std::__1::default_delete<CMMsl::VisualLocalizationAttitudeCorrection>> {
+        struct VisualLocalizationAttitudeCorrection *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::WalkingDetectionResult, std::__1::default_delete<CMMsl::WalkingDetectionResult>> {
+    struct __compressed_pair<CMMsl::WalkingDetectionResult *, std::__1::default_delete<CMMsl::WalkingDetectionResult>> {
+        struct WalkingDetectionResult *__value_;
     } __ptr_;
 };
 
@@ -1852,6 +2270,12 @@ struct unique_ptr<CMMsl::ZeroVelocityCorrection, std::__1::default_delete<CMMsl:
     } __ptr_;
 };
 
+struct unique_ptr<CMSpatialLogger, std::__1::default_delete<CMSpatialLogger>> {
+    struct __compressed_pair<CMSpatialLogger *, std::__1::default_delete<CMSpatialLogger>> {
+        struct CMSpatialLogger *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMWakeGestureVisitor, std::__1::default_delete<CMWakeGestureVisitor>> {
     struct __compressed_pair<CMWakeGestureVisitor *, std::__1::default_delete<CMWakeGestureVisitor>> {
         struct CMWakeGestureVisitor *__value_;
@@ -1934,6 +2358,13 @@ typedef struct {
 } CDStruct_bf7dff04;
 
 typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    int _field4;
+} CDStruct_b141a4d0;
+
+typedef struct {
     double x;
     double y;
     double z;
@@ -1943,6 +2374,14 @@ typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
+
+typedef struct {
+    float _field1;
+    BOOL _field2;
+    BOOL _field3;
+    int _field4;
+    double _field5;
+} CDStruct_a3d1096a;
 
 typedef struct {
     float x;
@@ -2008,6 +2447,14 @@ typedef struct {
 
 typedef struct {
     CDStruct_bf7dff04 _field1;
+    CDStruct_31142d93 _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+} CDStruct_d035bcc1;
+
+typedef struct {
+    CDStruct_bf7dff04 _field1;
     CDStruct_03942939 _field2;
     CDStruct_03942939 _field3;
     CDStruct_03942939 _field4;
@@ -2016,7 +2463,8 @@ typedef struct {
     BOOL _field7;
     BOOL _field8;
     float _field9;
-} CDStruct_981b33bd;
+    int _field10;
+} CDStruct_69e6d857;
 
 typedef struct {
     CDStruct_bf7dff04 _field1;
@@ -2040,6 +2488,7 @@ typedef struct {
 typedef struct {
     int _field1;
     double _field2;
+    double _field3;
     union {
         struct {
             CDStruct_03942939 _field1;
@@ -2047,12 +2496,16 @@ typedef struct {
         } _field1;
         struct {
             BOOL _field1;
-            char _field2[246];
+            char _field2[282];
         } _field2;
-    } _field3;
-} CDStruct_f329898c;
+    } _field4;
+} CDStruct_8d89f794;
 
 // Template types
+typedef struct CMVector<float, 3> {
+    float elements[3];
+} CMVector_75ea1f06;
+
 typedef struct shared_ptr<CLConnectionMessage> {
     struct CLConnectionMessage *_field1;
     struct __shared_weak_count *_field2;

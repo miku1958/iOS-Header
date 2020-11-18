@@ -8,7 +8,6 @@
 
 @class NSArray, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentUpdateEventStore : NSObject
 {
     NSMutableDictionary *_eventByEventDescriptor;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)init;
 - (void)removeAllEvents;
+- (void)removeEvent:(id)arg1;
 
 @end
 

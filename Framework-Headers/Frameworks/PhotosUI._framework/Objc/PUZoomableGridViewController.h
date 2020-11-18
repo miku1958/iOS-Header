@@ -7,17 +7,17 @@
 #import <PhotosUI/PUPhotosGridViewController.h>
 
 #import <PhotosUI/PUMagnfiedViewControllerDelegate-Protocol.h>
-#import <PhotosUI/PXCPLServiceUIDelegate-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXCloudQuotaControllerDelegate-Protocol.h>
 #import <PhotosUI/PXPhotosLibraryFooterViewModelPresentationDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLServiceUI, PXCloudQuotaController, UITapGestureRecognizer;
+@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLUIStatusProvider, PXCloudQuotaController, UITapGestureRecognizer;
 
-@interface PUZoomableGridViewController : PUPhotosGridViewController <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
+@interface PUZoomableGridViewController : PUPhotosGridViewController <PXChangeObserver, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
 {
     BOOL _isDisplayingGlobalFooterView;
     BOOL _isDisplayingEmptyPlaceholderView;
-    PXCPLServiceUI *_cplServiceUI;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
     PXCloudQuotaController *_cloudQuotaController;
     BOOL _iCPLEnabled;
     BOOL _globalFooterDidAutoScroll;
@@ -64,6 +64,7 @@
 @property (readonly, nonatomic) PUMomentsZoomLevelManager *zoomLevelManager; // @synthesize zoomLevelManager=_zoomLevelManager;
 @property (strong, nonatomic) PUZoomableGridViewControllerSpec *zoomableGridSpec; // @synthesize zoomableGridSpec=_zoomableGridSpec;
 
++ (id)_createCPLUIStatusProvider;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
 - (id)_beginInteractiveTransitionWithReferenceItemPath:(id)arg1 zoomingOut:(BOOL)arg2;
@@ -87,12 +88,12 @@
 - (id)_itemPathForLocationInGesture:(id)arg1;
 - (void)_needsCPLInformationDidChange;
 - (void)_reclaimCollectionView;
+- (void)_setCplUIStatusProvider:(id)arg1;
 - (BOOL)_shouldRevealPhotosGlobalFooterView;
 - (BOOL)_shouldShowCPLInformationInGlobalFooter;
 - (void)_updateMagnifierWithGesture:(id)arg1;
 - (void)_updateTransitionsIfNecessary;
 - (BOOL)allowSlideshowButton;
-- (void)animateRevealWithInteractionProgress:(id)arg1 forPreviewingAtLocation:(struct CGPoint)arg2 inSourceView:(id)arg3 containerView:(id)arg4;
 - (id)bestTransitionReferenceItemIndexPathOutIsFromLastTransition:(BOOL *)arg1 outIsExplicit:(BOOL *)arg2;
 - (BOOL)canBeginStackCollapseTransition;
 - (BOOL)canDisplayEditButton;
@@ -100,7 +101,7 @@
 - (BOOL)canNavigateToPhotoInteractively:(BOOL)arg1;
 - (double)cellAspectRatioHint;
 - (long long)cellFillMode;
-- (void)cloudQuotaController:(id)arg1 presentInformationBanner:(id)arg2;
+- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingSupplementaryView:(id)arg2 forElementOfKind:(id)arg3 atIndexPath:(id)arg4;
 - (id)collectionView:(id)arg1 transitionLayoutForOldLayout:(id)arg2 newLayout:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
@@ -110,9 +111,8 @@
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (struct CGPoint)contentOffsetForPreheating;
 - (struct CGSize)contentSizeForPreheating;
-- (unsigned long long)dateRangeFormatterPreset;
+- (long long)dateRangeFormatterPreset;
 - (void)dealloc;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didEndDisplayingEmptyPlaceholderView;
 - (void)didReceiveMemoryWarning;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -134,23 +134,17 @@
 - (id)magnifiedImageViewControllerCreatingIfNecessary:(BOOL)arg1;
 - (void)navigateToLowerZoomLevelWithReferenceItemPath:(id)arg1;
 - (id)newGridLayout;
-- (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpPreviewViewController:(id)arg2;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (long long)oneUpPresentationOrigin;
 - (void)ppt_navigateToPhotosDetailsAnimated:(BOOL)arg1;
 - (void)preheatAssets;
 - (void)prepareForTransitionToZoomableViewController:(id)arg1 anchorItemIndexPath:(id)arg2 anchorShiftsColumns:(BOOL)arg3 animated:(BOOL)arg4 interactive:(BOOL)arg5;
 - (id)presentingViewControllerForCloudQuotaController:(id)arg1;
 - (id)presentingViewControllerForViewModel:(id)arg1;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)processDataSourceChange:(id)arg1;
 - (BOOL)pu_shouldActAsTabRootViewController;
-- (BOOL)px_isSnapBackDestination;
 - (void)reclaimCollectionView;
-- (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;
-- (BOOL)serviceUI:(id)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(id)arg1 progressDidChange:(float)arg2;
-- (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 itemsAtIndexes:(id)arg2 inSection:(long long)arg3 animated:(BOOL)arg4;
 - (BOOL)shouldPerformAutomaticContentOffsetAdjustment;
@@ -171,7 +165,6 @@
 - (BOOL)wantsGlobalFooter;
 - (BOOL)wantsPlaceholderView;
 - (void)willDisplayEmptyPlaceholderView;
-- (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
 - (BOOL)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
 
 @end

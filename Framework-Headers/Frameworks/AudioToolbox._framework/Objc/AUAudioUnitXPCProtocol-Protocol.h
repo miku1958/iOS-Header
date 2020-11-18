@@ -6,22 +6,25 @@
 
 #import <AudioToolboxCore/_AURemoteParameterSynchronization-Protocol.h>
 
-@class AUAudioUnitPreset, AUAudioUnitProperty, AUAudioUnitViewConfiguration, AVAudioFormat, CAXPCObject, MIDICIProfile, NSArray, NSData, NSDictionary, NSObject, NSString;
+@class AUAudioUnitPreset, AUAudioUnitProperty, AUAudioUnitViewConfiguration, AVAudioFormat, AVSpeechSynthesisProviderRequest, MIDICIProfile, NSArray, NSData, NSDictionary, NSObject, NSString;
 @protocol OS_xpc_object;
 
 @protocol AUAudioUnitXPCProtocol <_AURemoteParameterSynchronization>
 - (void)addPropertyObserver:(AUAudioUnitProperty *)arg1 context:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
+- (void)cancelSpeechRequest:(void (^)(NSError *))arg1;
 - (void)close:(void (^)(NSError *))arg1;
+- (void)createRenderPipe:(int)arg1 formats:(NSData *)arg2 maxFrames:(unsigned int)arg3 midiOutSizeHint:(unsigned int)arg4 resources:(NSObject<OS_xpc_object> *)arg5 reply:(void (^)(NSError *, unsigned int))arg6;
 - (void)deleteUserPreset:(AUAudioUnitPreset *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)destroyRenderPipe:(unsigned int)arg1 reply:(void (^)(NSError *))arg2;
 - (void)disableProfile:(MIDICIProfile *)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(void (^)(NSError *))arg4;
 - (void)enableProfile:(MIDICIProfile *)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(void (^)(NSError *))arg4;
 - (void)getBusses:(unsigned int)arg1 reply:(void (^)(NSError *, NSArray *))arg2;
 - (void)getParameter:(unsigned long long)arg1 reply:(void (^)(NSError *, float))arg2;
 - (void)getParameterTree:(void (^)(NSError *, AUParameterTree *))arg1;
-- (void)initialize2:(int)arg1 formats:(NSData *)arg2 maxFrames:(unsigned long long)arg3 buffer:(CAXPCObject *)arg4 bufferSize:(unsigned int)arg5 beginSem:(CAXPCObject *)arg6 endSem:(CAXPCObject *)arg7 reply:(void (^)(NSError *))arg8;
-- (void)initialize:(unsigned long long)arg1 reply:(void (^)(NSError *, unsigned long long, unsigned long long, unsigned long long, NSData *, BOOL))arg2;
+- (void)getSpeechVoices:(void (^)(NSError *, NSArray *))arg1;
+- (void)initialize:(unsigned long long)arg1 reply:(void (^)(NSError *, unsigned long long, unsigned long long, unsigned long long, NSData *, BOOL, unsigned int))arg2;
 - (void)loadUserPresets:(void (^)(NSError *, NSArray *))arg1;
-- (void)open:(void (^)(NSError *, BOOL, BOOL, NSArray *, NSArray *, BOOL, BOOL, int))arg1;
+- (void)open:(void (^)(NSError *, BOOL, BOOL, NSArray *, NSArray *, BOOL, BOOL, int, unsigned long long, unsigned long long))arg1;
 - (void)parameterNode:(NSString *)arg1 displayNameWithLength:(long long)arg2 reply:(void (^)(NSError *, NSString *))arg3;
 - (void)parameterStringFromValue:(float)arg1 currentValue:(BOOL)arg2 address:(unsigned long long)arg3 reply:(void (^)(NSError *, NSString *))arg4;
 - (void)parameterValueFromString:(NSString *)arg1 address:(unsigned long long)arg2 reply:(void (^)(NSError *, float))arg3;
@@ -35,11 +38,13 @@
 - (void)setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 reply:(void (^)(NSError *, NSArray *))arg3;
 - (void)setBusFormat:(unsigned int)arg1 scope:(unsigned int)arg2 format:(AVAudioFormat *)arg3 reply:(void (^)(NSError *, NSArray *))arg4;
 - (void)setValue:(id)arg1 forKey:(NSString *)arg2 reply:(void (^)(NSError *, NSArray *))arg3;
-- (void)setValue:(id)arg1 forProperty:(AUAudioUnitProperty *)arg2 reply:(void (^)(NSError *, NSArray *))arg3;
-- (void)setWorkIntervalPort:(NSObject<OS_xpc_object> *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)setValue:(id)arg1 forProperty:(AUAudioUnitProperty *)arg2 propagateError:(BOOL)arg3 reply:(void (^)(NSError *, NSArray *))arg4;
 - (void)supportedViewConfigurations:(NSArray *)arg1 reply:(void (^)(NSError *, NSIndexSet *))arg2;
+- (void)synthesizeSpeechRequest:(AVSpeechSynthesisProviderRequest *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)uninitialize:(void (^)(NSError *))arg1;
+- (void)updateHostCallbacks:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
+- (void)updateWorkgroupMirror:(NSObject<OS_xpc_object> *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)valueForKey:(NSString *)arg1 reply:(void (^)(NSError *, id))arg2;
-- (void)valueForProperty:(AUAudioUnitProperty *)arg1 reply:(void (^)(NSError *, id))arg2;
+- (void)valueForProperty:(AUAudioUnitProperty *)arg1 propagateError:(BOOL)arg2 reply:(void (^)(NSError *, id))arg3;
 @end
 

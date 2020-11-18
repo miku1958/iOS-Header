@@ -6,18 +6,20 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, _INPBIntentMetadata, _INPBMediaDestination, _INPBMediaItemValue, _INPBMediaSearch;
+@class NSArray, _INPBIntentMetadata, _INPBMediaDestination, _INPBMediaItemValue, _INPBMediaSearch, _INPBPrivateAddMediaIntentData;
 
 @protocol _INPBAddMediaIntent <NSObject>
 
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasMediaDestination;
 @property (readonly, nonatomic) BOOL hasMediaSearch;
+@property (readonly, nonatomic) BOOL hasPrivateAddMediaIntentData;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property (strong, nonatomic) _INPBMediaDestination *mediaDestination;
 @property (copy, nonatomic) NSArray *mediaItems;
 @property (readonly, nonatomic) unsigned long long mediaItemsCount;
 @property (strong, nonatomic) _INPBMediaSearch *mediaSearch;
+@property (strong, nonatomic) _INPBPrivateAddMediaIntentData *privateAddMediaIntentData;
 
 + (Class)mediaItemsType;
 - (void)addMediaItems:(_INPBMediaItemValue *)arg1;

@@ -28,7 +28,7 @@
 - (id)_intents_defaultReadableDescription;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)_intents_indexingRepresentation;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)initIntentPlacemarkWithLocation:(id)arg1 addressDictionary:(id)arg2;
 @end
 

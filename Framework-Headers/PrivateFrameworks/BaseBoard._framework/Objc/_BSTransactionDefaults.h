@@ -12,7 +12,6 @@
 
 @property (nonatomic, getter=isAuditHistoryEnabled) BOOL auditHistoryEnabled; // @dynamic auditHistoryEnabled;
 
-+ (id)sharedInstance;
 - (void)_bindAndRegisterDefaults;
 
 @end

@@ -9,13 +9,14 @@
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ISLivePhotoPlayer, ISTouchLivePhotoPlaybackFilter, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel;
+@class CAMeshTransform, ISLivePhotoPlayer, ISTouchLivePhotoPlaybackFilter, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel;
 
 @interface ISLivePhotoUIView : ISBasePlayerUIView <UIGestureRecognizerDelegate, ISChangeObserver>
 {
     UIImpactFeedbackGenerator *_feedbackGenerator;
     BOOL __playingVitality;
     UIGestureRecognizer *_playbackGestureRecognizer;
+    CAMeshTransform *_vitalityTransform;
     ISTouchLivePhotoPlaybackFilter *__playbackFilter;
     UILabel *__overlayLabel;
     long long __overlayDismissalID;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer; // @synthesize playbackGestureRecognizer=_playbackGestureRecognizer;
 @property (strong, nonatomic) ISLivePhotoPlayer *player; // @dynamic player;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CAMeshTransform *vitalityTransform; // @synthesize vitalityTransform=_vitalityTransform;
 
 - (void).cxx_destruct;
 - (void)_ISLivePhotoUIViewCommonInitialization;
@@ -42,6 +44,7 @@
 - (void)_updateGestureRecognizerParameters;
 - (void)_updatePlaybackFilter;
 - (void)_updatePlaybackFilterInput;
+- (void)_updateVideoTransform;
 - (void)audioSessionDidChange;
 - (void)contentDidChange;
 - (void)dealloc;

@@ -36,7 +36,6 @@
 - (void)accountsRemoved:(id)arg1;
 - (id)allAccounts;
 - (void)allAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithAccountsProvider:(id)arg1 hookRegistry:(id)arg2;
 - (void)registerObserver:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)transformAccounts:(id)arg1;

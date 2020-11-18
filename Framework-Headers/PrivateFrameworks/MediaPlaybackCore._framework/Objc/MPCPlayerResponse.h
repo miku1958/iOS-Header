@@ -7,7 +7,7 @@
 #import <MediaPlayer/MPResponse.h>
 
 @class MPCMediaRemoteController, MPCPlayerPath, MPCPlayerResponseTracklist, UIView;
-@protocol MPCPlayerResponseBuilder, MPCVideoView;
+@protocol MPCPlayerResponseBuilder, MPCVideoOutput, MPCVideoView;
 
 @interface MPCPlayerResponse : MPResponse
 {
@@ -16,6 +16,7 @@
     MPCMediaRemoteController *_controller;
     MPCPlayerPath *_playerPath;
     UIView<MPCVideoView> *_videoView;
+    id<MPCVideoOutput> _videoOutput;
 }
 
 @property (readonly, nonatomic) id<MPCPlayerResponseBuilder> builder; // @dynamic builder;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) MPCPlayerResponseTracklist *tracklist; // @synthesize tracklist=_tracklist;
+@property (strong, nonatomic) id<MPCVideoOutput> videoOutput; // @synthesize videoOutput=_videoOutput;
 @property (strong, nonatomic) UIView<MPCVideoView> *videoView; // @synthesize videoView=_videoView;
 
 + (id)builderProtocol;

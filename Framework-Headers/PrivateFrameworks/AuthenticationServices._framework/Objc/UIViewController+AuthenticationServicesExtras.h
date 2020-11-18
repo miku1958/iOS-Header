@@ -10,5 +10,6 @@
 
 @property (copy, nonatomic, setter=_as_setApplicationBackgroundBlock:) CDUnknownBlockType _as_applicationBackgroundBlock;
 
+- (id)_as_viewControllerToPresentFrom;
 @end
 

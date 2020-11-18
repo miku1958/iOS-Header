@@ -40,6 +40,7 @@
 - (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;
 - (id)pixelBufferSourceForDisplayAsset:(id)arg1 mediaProvider:(id)arg2 spriteReference:(id)arg3;
 - (void)recyclePixelBufferSourceForDisplayAssets:(id)arg1;
+- (BOOL)shouldDisplayPreviousNonnullPixelBufferForPixelBufferSource:(id)arg1;
 - (unsigned long long)supportedDisplayAssetPresentationStylesInLayout:(id)arg1;
 - (void)viewDidLoad;
 

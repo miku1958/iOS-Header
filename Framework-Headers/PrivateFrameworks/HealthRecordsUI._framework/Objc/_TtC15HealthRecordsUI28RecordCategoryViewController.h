@@ -15,6 +15,9 @@
     MISSING_TYPE *preferredSegment;
     MISSING_TYPE *factory;
     MISSING_TYPE *countProvider;
+    MISSING_TYPE *recordCanceller;
+    MISSING_TYPE *aToZCanceller;
+    MISSING_TYPE *recordCount;
     MISSING_TYPE *currentViewController;
     MISSING_TYPE *displayMode;
     MISSING_TYPE *isModePickerHidden;

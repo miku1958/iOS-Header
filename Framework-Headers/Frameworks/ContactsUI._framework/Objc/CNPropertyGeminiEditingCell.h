@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)shouldIndentWhileEditing;
 + (BOOL)wantsChevron;
 + (BOOL)wantsHorizontalLayout;
 - (void).cxx_destruct;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)performDefaultAction;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)pickerDidCancel:(id)arg1;
-- (BOOL)shouldIndentWhileEditing;
 - (BOOL)shouldPerformDefaultAction;
 - (id)variableConstraints;
 

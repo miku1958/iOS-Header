@@ -29,7 +29,7 @@
 @property (nonatomic) BOOL didCallBeginGeneration; // @synthesize didCallBeginGeneration=_didCallBeginGeneration;
 @property (strong, nonatomic) PLHighlightHierarchy *entitiesToUpdate; // @synthesize entitiesToUpdate=_entitiesToUpdate;
 @property (readonly, nonatomic) PLFrequentLocationManager *frequentLocationManager; // @synthesize frequentLocationManager=_frequentLocationManager;
-@property (readonly, nonatomic) PLPhotosHighlightClusterGenerator *highlightClusterGeneratorForAllMoments;
+@property (readonly, nonatomic) PLPhotosHighlightClusterGenerator *highlightClusterGenerator;
 @property (strong, nonatomic) NSMutableSet *highlightsNeedingNewKeyAsset; // @synthesize highlightsNeedingNewKeyAsset=_highlightsNeedingNewKeyAsset;
 @property (strong, nonatomic) NSMutableSet *highlightsToDelete; // @synthesize highlightsToDelete=_highlightsToDelete;
 @property (strong, nonatomic) NSMutableSet *highlightsWithDeletedAssets; // @synthesize highlightsWithDeletedAssets=_highlightsWithDeletedAssets;
@@ -71,6 +71,7 @@
 - (BOOL)_updateHighlightProperties:(id)arg1 fromHighlightCluster:(id)arg2;
 - (void)beginGenerationWithAssets:(id)arg1 hiddenAssets:(id)arg2;
 - (void)cleanupEmptyHighlights;
+- (id)fetchAllOngoingTripDayGroupHighlights;
 - (id)fetchAllRecentHighlights;
 - (void)finishGeneration;
 - (void)generateHighlightListForUpdatedHighlights:(id)arg1 deletedHighlights:(id)arg2;

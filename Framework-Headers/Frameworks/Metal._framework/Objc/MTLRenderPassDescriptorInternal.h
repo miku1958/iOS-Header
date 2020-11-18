@@ -30,10 +30,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDitherEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)openGLModeEnabled;
+- (BOOL)pointCoordYFlipEnabled;
 - (id)rasterizationRateMap;
 - (unsigned long long)renderTargetArrayLength;
 - (unsigned long long)renderTargetHeight;
 - (unsigned long long)renderTargetWidth;
+- (id)sampleBufferAttachments;
 - (void)setDefaultColorSampleCount:(unsigned long long)arg1;
 - (void)setDefaultRasterSampleCount:(unsigned long long)arg1;
 - (void)setDepthAttachment:(id)arg1;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setFineGrainedBackgroundVisibilityEnabled:(BOOL)arg1;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(BOOL)arg1;
+- (void)setPointCoordYFlipEnabled:(BOOL)arg1;
 - (void)setRasterizationRateMap:(id)arg1;
 - (void)setRenderTargetArrayLength:(unsigned long long)arg1;
 - (void)setRenderTargetHeight:(unsigned long long)arg1;

@@ -32,7 +32,7 @@
 - (void)paymentWebService:(PKPaymentWebService *)arg1 didRegisterWithRegionMap:(NSDictionary *)arg2 primaryRegionTopic:(NSString *)arg3;
 - (NSArray *)paymentWebService:(PKPaymentWebService *)arg1 filterVerificationChannels:(NSArray *)arg2;
 - (BOOL)paymentWebService:(PKPaymentWebService *)arg1 hasPassesOfType:(unsigned long long)arg2;
-- (void)paymentWebService:(PKPaymentWebService *)arg1 provisioningDataWithCompletionHandler:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 provisioningDataIncludingDeviceMetadata:(BOOL)arg2 withCompletionHandler:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 registrationDataWithCompletionHandler:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg2;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 requestPassUpgrade:(PKPassUpgradeRequest *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(NSError *, PKPaymentPass *))arg4;
@@ -59,6 +59,7 @@
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)exitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withShouldContinue:(BOOL)arg2 error:(NSError *)arg3;
+- (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
 - (BOOL)felicaSecureElementIsAvailable;
 - (BOOL)isGymKitEnabled;

@@ -74,6 +74,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *voiceInputQueue; // @synthesize voiceInputQueue=_voiceInputQueue;
 
 - (void).cxx_destruct;
+- (void)getDeviceInfoForPlayerPath:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resolvePlayerPath:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

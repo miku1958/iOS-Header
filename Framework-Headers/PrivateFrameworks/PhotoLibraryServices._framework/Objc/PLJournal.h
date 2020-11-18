@@ -12,10 +12,11 @@
 {
     PLJournalFile *_snapshotJournal;
     PLJournalFile *_changeJournal;
-    unsigned char _prepareMode;
+    unsigned char _snapshotMode;
     NSURL *_baseURL;
     Class _payloadClass;
-    PLJournalFile *_pendingJournal;
+    PLJournalFile *_pendingSnapshotJournal;
+    PLJournalFile *_pendingChangeJournal;
     PLJournalFile *_prepareMarker;
 }
 
@@ -23,12 +24,16 @@
 @property (readonly, nonatomic) PLJournalFile *changeJournal;
 @property (readonly, nonatomic) NSDictionary *metadata;
 @property (readonly, nonatomic) Class payloadClass; // @synthesize payloadClass=_payloadClass;
-@property (readonly, nonatomic) PLJournalFile *pendingJournal; // @synthesize pendingJournal=_pendingJournal;
+@property (readonly, nonatomic) PLJournalFile *pendingChangeJournal; // @synthesize pendingChangeJournal=_pendingChangeJournal;
+@property (readonly, nonatomic) PLJournalFile *pendingSnapshotJournal; // @synthesize pendingSnapshotJournal=_pendingSnapshotJournal;
 @property (readonly, nonatomic) PLJournalFile *prepareMarker; // @synthesize prepareMarker=_prepareMarker;
 @property (readonly, nonatomic) PLJournalFile *snapshotJournal;
 
++ (BOOL)_finishFullSnapshotForBaseURL:(id)arg1 snapshotSucceeded:(BOOL)arg2 snapshotMode:(unsigned char)arg3 journals:(id)arg4 error:(id *)arg5;
++ (BOOL)_performSnapshotsForBaseURL:(id)arg1 snapshotMode:(unsigned char)arg2 payloadClasses:(id)arg3 snapshotJournalBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
++ (BOOL)appendSnapshotsForBaseURL:(id)arg1 payloadClasses:(id)arg2 snapshotJournalBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 + (BOOL)createSnapshotFinishMarkerForBaseURL:(id)arg1 error:(id *)arg2;
-+ (BOOL)finishSnapshotForBaseURL:(id)arg1 snapshotSucceeded:(BOOL)arg2 journals:(id)arg3 error:(id *)arg4;
++ (BOOL)createSnapshotsForBaseURL:(id)arg1 payloadClasses:(id)arg2 snapshotJournalBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 + (id)journalURLForBaseURL:(id)arg1 payloadClassId:(id)arg2 journalType:(id)arg3;
 + (id)metadataURLForBaseURL:(id)arg1 payloadClassId:(id)arg2 pending:(BOOL)arg3;
 + (BOOL)recoverJournalsIfNecessaryForBaseURL:(id)arg1 payloadClasses:(id)arg2 error:(id *)arg3;
@@ -36,26 +41,32 @@
 + (BOOL)snapshotFinishMarkerExistsForBaseURL:(id)arg1;
 + (id)snapshotFinishMarkerURLForBaseURL:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_finishSnapshot:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)_finishSnapshotWithMode:(unsigned char)arg1 snapshotSuccess:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_isPendingJournalAuthoritative;
+- (id)_payloadTooNewErrorWithPayloadVersion:(long long)arg1;
+- (BOOL)_performSnapshotWithMode:(unsigned char)arg1 usingNextEntryBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (BOOL)_prepareForSnapshotWithMode:(unsigned char)arg1 error:(id *)arg2;
 - (id)_readMetadataPending:(BOOL)arg1;
 - (BOOL)_recoverJournalWithError:(id *)arg1;
 - (BOOL)_removeMetadataPending:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)_replaceMetadataWithPendingMetadataError:(id *)arg1;
 - (BOOL)_updateMetadataWithMetadata:(id)arg1 replace:(BOOL)arg2 pending:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)appendChangeEntries:(id)arg1 error:(id *)arg2;
+- (BOOL)appendSnapshotUsingNextEntryBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (BOOL)appendUpdatePayloadWithPayloadID:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
 - (BOOL)coalesceChangesToSnapshotWithError:(id *)arg1;
 - (unsigned long long)countOfInsertEntriesWithError:(id *)arg1;
 - (BOOL)createSnapshotUsingNextPayloadBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (unsigned long long)currentPayloadVersionWithError:(id *)arg1;
 - (BOOL)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1 decodePayload:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)enumeratePayloadsUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (BOOL)finishSnapshot:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)finishCreateSnapshot:(BOOL)arg1 error:(id *)arg2;
 - (id)initWithBaseURL:(id)arg1 payloadClass:(Class)arg2;
 - (id)metadataURLPending:(BOOL)arg1;
-- (BOOL)prepareForSnapshotWithError:(id *)arg1;
+- (BOOL)prepareForCreateSnapshotWithError:(id *)arg1;
 - (BOOL)removeJournalFilesWithError:(id *)arg1;
 - (void)removeMetadata;
+- (BOOL)snapshotJournalFileSize:(unsigned long long *)arg1 changeJournalFileSize:(unsigned long long *)arg2 error:(id *)arg3;
 
 @end
 

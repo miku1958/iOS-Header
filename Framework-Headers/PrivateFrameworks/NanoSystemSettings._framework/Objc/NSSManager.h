@@ -20,11 +20,12 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
-+ (void)displayAirplaneModeMirroringUserEducationAlert;
-+ (void)displayAlertFailedRemoteAirplaneMode;
++ (void)displayAirplaneModeMirroringUserEducationAlert:(BOOL)arg1;
++ (void)displayAlertFailedRemoteAirplaneMode:(BOOL)arg1;
 + (void)displayAlertWithTitle:(id)arg1 body:(id)arg2 icon:(id)arg3;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)cancelDiagnosticLogTranfer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)cancelFileTransfersInProgress;
 - (id)connection;
 - (void)dealloc;
@@ -51,7 +52,11 @@
 - (id)protocol;
 - (void)purgeUsageBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rebootDevice;
+- (void)recordSoftwareUpdateSpaceFailure:(id)arg1 osBeingUpdatedTo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeProfileWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)retrieveAirplaneModeSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)retrieveDiagnosticLogTransferProgress:(id)arg1 withProgress:(CDUnknownBlockType)arg2;
+- (void)setAirplaneModeSettings:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setDeviceName:(id)arg1;
 - (void)unsafe_invalidate;
 

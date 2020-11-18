@@ -33,6 +33,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (void)_sanitizeRecordValue:(id)arg1;
 - (void)_validateKeyUniquenessForKey:(id)arg1;
 - (void)_validateRecordKey:(id)arg1;

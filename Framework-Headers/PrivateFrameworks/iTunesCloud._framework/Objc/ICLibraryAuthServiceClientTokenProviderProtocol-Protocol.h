@@ -12,5 +12,6 @@
 - (void)addTokenResult:(ICLibraryAuthServiceClientTokenResult *)arg1 forDSID:(NSNumber *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getTokenResultForDSID:(NSNumber *)arg1 forceRefresh:(BOOL)arg2 completion:(void (^)(ICLibraryAuthServiceClientTokenResult *, NSError *))arg3;
 - (void)getTokenResultsForDSIDs:(NSSet *)arg1 forceRefresh:(BOOL)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)getTokenStatusForDSIDs:(NSSet *)arg1 forcingRefresh:(BOOL)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 @end
 

@@ -13,6 +13,7 @@
 + (id)customLoader;
 + (BOOL)forceAllowPreviewingFilesOutsideApplicationContainer;
 + (id)forceContentSizeCategory;
++ (BOOL)forceEnableAllEntitlements;
 + (unsigned long long)forceImageLoadingScaleFactor;
 + (BOOL)forceRTL;
 + (id)forceSubsampleImagesToScreenSize;
@@ -20,6 +21,7 @@
 + (void)setCustomLoader:(id)arg1;
 + (void)setForceAllowPreviewingFilesOutsideApplicationContainer:(BOOL)arg1;
 + (void)setForceContentSizeCategory:(id)arg1;
++ (void)setForceEnableAllEntitlements:(BOOL)arg1;
 + (void)setForceImageLoadingScaleFactor:(unsigned long long)arg1;
 + (void)setForceRTL:(BOOL)arg1;
 + (void)setForceSubsampleImagesToScreenSize:(id)arg1;

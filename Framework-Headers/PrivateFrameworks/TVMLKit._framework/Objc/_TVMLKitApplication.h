@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) TVApplicationControllerContext *launchContext; // @synthesize launchContext=_launchContext;
 @property (weak, nonatomic) IKAppDataStorage *localDataStorage; // @synthesize localDataStorage=_localDataStorage;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsPictureInPicturePlayback;
 
 - (void).cxx_destruct;
 - (id)activeDocument;

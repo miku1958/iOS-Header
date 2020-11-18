@@ -16,6 +16,7 @@
 - (BOOL)tsu_grantUserWritePosixPermissionAtPath:(id)arg1 error:(id *)arg2;
 - (BOOL)tsu_linkOrCopyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)tsu_makeWritableItemAtURL:(id)arg1 permissionsOverride:(id)arg2 resetCreationDate:(BOOL)arg3 error:(id *)arg4;
+- (void)tsu_removeContentsOfDirectoryAtURL:(id)arg1 reason:(id)arg2 urlsToExclude:(id)arg3 logContext:(id)arg4;
 - (BOOL)tsu_replaceItemAtURL:(id)arg1 withItemAtURL:(id)arg2 backupItemName:(id)arg3 options:(unsigned long long)arg4 resultingItemURL:(id *)arg5 error:(id *)arg6;
 @end
 

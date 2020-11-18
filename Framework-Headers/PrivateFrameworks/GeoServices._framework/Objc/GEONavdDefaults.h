@@ -11,7 +11,6 @@
 }
 
 @property (readonly, nonatomic) unsigned long long accessValueThresholdToUpdateCacheEntries;
-@property (readonly, nonatomic) double ageForRefresh;
 @property (readonly, nonatomic) double automaticTrafficIncidentRerouteDelay;
 @property (readonly, nonatomic) double averageWalkingSpeed;
 @property (readonly, nonatomic) double defaultExpirationOffset;

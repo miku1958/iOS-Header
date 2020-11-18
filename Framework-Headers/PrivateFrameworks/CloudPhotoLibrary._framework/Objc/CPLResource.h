@@ -35,7 +35,11 @@
 + (float)derivativeGenerationThreshold;
 + (id)descriptionForResourceType:(unsigned long long)arg1;
 + (void)enumerateResourceTypesWithBlock:(CDUnknownBlockType)arg1;
++ (void)getAllResourceTypesToDownload:(const unsigned long long **)arg1;
++ (void)getAllResourceTypesToDownloadPrioritizeNonDerivatives:(const unsigned long long **)arg1;
 + (BOOL)hasPriorityBoostForResourceType:(unsigned long long)arg1;
++ (BOOL)isDerivativeResourceType:(unsigned long long)arg1;
++ (BOOL)isNonDerivativeResourceType:(unsigned long long)arg1;
 + (unsigned long long)maxPixelSizeForResourceType:(unsigned long long)arg1;
 + (id)normalizedResourcesFromResources:(id)arg1 resourcePerResourceType:(id *)arg2;
 + (unsigned long long)resourceTypeFromShortDecription:(id)arg1;

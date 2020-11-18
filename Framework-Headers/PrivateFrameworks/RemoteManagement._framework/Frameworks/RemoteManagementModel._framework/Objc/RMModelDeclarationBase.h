@@ -12,12 +12,10 @@
 {
     NSString *_declarationType;
     NSString *_declarationIdentifier;
-    NSString *_declarationDescription;
     NSString *_declarationServerToken;
     RMModelAnyPayload *_declarationPayload;
 }
 
-@property (copy, nonatomic) NSString *declarationDescription; // @synthesize declarationDescription=_declarationDescription;
 @property (copy, nonatomic) NSString *declarationIdentifier; // @synthesize declarationIdentifier=_declarationIdentifier;
 @property (copy, nonatomic) RMModelAnyPayload *declarationPayload; // @synthesize declarationPayload=_declarationPayload;
 @property (copy, nonatomic) NSString *declarationServerToken; // @synthesize declarationServerToken=_declarationServerToken;

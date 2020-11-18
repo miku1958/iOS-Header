@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (void)setOriginalURLSender:(id)arg1;
 + (void)setShowingProfileInstallation:(BOOL)arg1;
 + (BOOL)showingProfileInstallation;
+- (void)_presentNextController:(id)arg1;
 - (void)_pushProfileDetailsForProfileWithID:(id)arg1;
 - (void)_showSheetToInstallConfigurationProfileFromInstallationQueue;
 - (void)_showSheetToInstallConfigurationProfileFromPurgatory;

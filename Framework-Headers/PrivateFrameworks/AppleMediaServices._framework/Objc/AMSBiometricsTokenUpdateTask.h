@@ -14,6 +14,7 @@
 
 @interface AMSBiometricsTokenUpdateTask : AMSTask <AMSSecurityClientInterface, AMSBagConsumer>
 {
+    BOOL _shouldGenerateKeysOnly;
     BOOL _shouldRequestConfirmation;
     BOOL _shouldPromptUser;
     ACAccount *_account;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<AMSRequestPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (strong, nonatomic) AMSURLSession *session; // @synthesize session=_session;
+@property (nonatomic) BOOL shouldGenerateKeysOnly; // @synthesize shouldGenerateKeysOnly=_shouldGenerateKeysOnly;
 @property (nonatomic) BOOL shouldPromptUser; // @synthesize shouldPromptUser=_shouldPromptUser;
 @property (nonatomic) BOOL shouldRequestConfirmation; // @synthesize shouldRequestConfirmation=_shouldRequestConfirmation;
 @property (readonly) Class superclass;

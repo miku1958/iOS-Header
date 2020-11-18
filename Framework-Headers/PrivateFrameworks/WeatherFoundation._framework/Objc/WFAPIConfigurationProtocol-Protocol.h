@@ -7,14 +7,14 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDateComponents, NSLocale, NSURL, NSURLRequest, WFLocation, WFParsedForecastData, WFRequestFormattingRules, WFResponseParsingRules;
+@class NSData, NSDate, NSLocale, NSURL, NSURLRequest, WFLocation, WFParsedForecastData, WFRequestFormattingRules, WFResponseParsingRules;
 
 @protocol WFAPIConfigurationProtocol <NSObject, NSCopying>
 
 @property (readonly, nonatomic) BOOL isValid;
 
-- (NSURLRequest *)forecastRequestForTypes:(unsigned long long)arg1 location:(WFLocation *)arg2 date:(NSDateComponents *)arg3 error:(id *)arg4 rules:(WFRequestFormattingRules *)arg5;
+- (NSURLRequest *)forecastRequestForTypes:(unsigned long long)arg1 location:(WFLocation *)arg2 units:(int)arg3 date:(NSDate *)arg4 error:(id *)arg5 rules:(WFRequestFormattingRules *)arg6;
 - (NSURL *)hostUrl;
-- (WFParsedForecastData *)parseForecast:(unsigned long long)arg1 data:(NSData *)arg2 location:(WFLocation *)arg3 locale:(NSLocale *)arg4 date:(NSDateComponents *)arg5 error:(id *)arg6 rules:(WFResponseParsingRules *)arg7;
+- (WFParsedForecastData *)parseForecast:(unsigned long long)arg1 data:(NSData *)arg2 location:(WFLocation *)arg3 units:(int)arg4 locale:(NSLocale *)arg5 date:(NSDate *)arg6 error:(id *)arg7 rules:(WFResponseParsingRules *)arg8;
 @end
 

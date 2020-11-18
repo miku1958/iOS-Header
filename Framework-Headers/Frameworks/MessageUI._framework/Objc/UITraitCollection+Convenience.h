@@ -10,5 +10,6 @@
 - (long long)mf_correspondingBarMetrics;
 - (BOOL)mf_hasCompactDimension;
 - (BOOL)mf_supportsPopoverPresentation;
+- (BOOL)mf_useSplitViewStyling;
 @end
 

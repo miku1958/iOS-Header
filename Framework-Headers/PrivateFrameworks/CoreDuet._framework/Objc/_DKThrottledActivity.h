@@ -15,11 +15,10 @@
     id<_DKSimpleKeyValueStore> _store;
 }
 
-@property (strong, nonatomic) id<_DKSimpleKeyValueStore> store; // @synthesize store=_store;
+@property (readonly, nonatomic) id<_DKSimpleKeyValueStore> store;
 
 + (id)standardInstance;
 - (void).cxx_destruct;
-- (id)activityThrottler;
 - (void)clearHistoryForName:(id)arg1;
 - (id)description;
 - (id)initWithStore:(id)arg1 namespace:(id)arg2;

@@ -16,6 +16,10 @@
 - (void)deviceBrowser:(ICDeviceBrowser *)arg1 deviceDidChangeName:(ICDevice *)arg2;
 - (void)deviceBrowser:(ICDeviceBrowser *)arg1 deviceDidChangeSharingState:(ICDevice *)arg2;
 - (void)deviceBrowser:(ICDeviceBrowser *)arg1 requestsSelectDevice:(ICDevice *)arg2;
+- (void)deviceBrowserDidCancelSuspendOperations:(ICDeviceBrowser *)arg1;
 - (void)deviceBrowserDidEnumerateLocalDevices:(ICDeviceBrowser *)arg1;
+- (void)deviceBrowserDidResumeOperations:(ICDeviceBrowser *)arg1;
+- (void)deviceBrowserDidSuspendOperations:(ICDeviceBrowser *)arg1;
+- (void)deviceBrowserWillSuspendOperations:(ICDeviceBrowser *)arg1;
 @end
 

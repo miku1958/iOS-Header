@@ -11,7 +11,6 @@
 @class NSString, UIView;
 @protocol MKPhotoGalleryTransitionAnimator;
 
-__attribute__((visibility("hidden")))
 @interface MKPhotoGalleryTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 {
     id<MKPhotoGalleryTransitionAnimator> _delegate;

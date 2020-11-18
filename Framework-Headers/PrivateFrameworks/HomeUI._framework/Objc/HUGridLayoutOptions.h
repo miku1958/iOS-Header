@@ -9,7 +9,7 @@
 #import <HomeUI/HUGridDisplayOptions-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
+@class HUDashboardButtonCellLayoutOptions, HUGridBannerCellLayoutOptions, HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridPlaceholderServiceCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridScenePlaceholderLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUGridStatusCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
 
 @interface HUGridLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
@@ -18,6 +18,7 @@
     BOOL _editing;
     unsigned long long _contentColorStyle;
     long long _scrollDirection;
+    NSString *_contentSizeCategory;
     unsigned long long _columnStyle;
     UIFont *_headlineFont;
     UIFont *_statusItemFont;
@@ -43,9 +44,14 @@
     NSNumber *_overrideNumberOfColumns;
     HUGridCameraCellLayoutOptions *_cameraCellOptions;
     HUGridHeadlineCellLayoutOptions *_headlineCellOptions;
+    HUGridStatusCellLayoutOptions *_statusCellOptions;
     HUGridSceneCellLayoutOptions *_sceneCellOptions;
+    HUGridScenePlaceholderLayoutOptions *_placeholderSceneCellOptions;
     HUGridServiceCellLayoutOptions *_serviceCellOptions;
+    HUGridPlaceholderServiceCellLayoutOptions *_placeholderServiceCellOptions;
     HUNavigationBarLayoutOptions *_navigationBarOptions;
+    HUDashboardButtonCellLayoutOptions *_dashboardButtonCellOptions;
+    HUGridBannerCellLayoutOptions *_bannerCellOptions;
     HUGridStatusBannerCellLayoutOptions *_statusBannerCellOptions;
     long long _numberOfCameraCellsPerRow;
     NSNumber *_overrideViewSizeSubclass;
@@ -53,6 +59,7 @@
     struct UIEdgeInsets _sectionTitleMargin;
 }
 
+@property (copy, nonatomic) HUGridBannerCellLayoutOptions *bannerCellOptions; // @synthesize bannerCellOptions=_bannerCellOptions;
 @property (readonly, nonatomic) double cameraCellHeight;
 @property (copy, nonatomic) HUGridCameraCellLayoutOptions *cameraCellOptions; // @synthesize cameraCellOptions=_cameraCellOptions;
 @property (readonly, nonatomic) double cameraCellWidth;
@@ -60,9 +67,13 @@
 @property (nonatomic) double columnSpacing; // @synthesize columnSpacing=_columnSpacing;
 @property (nonatomic) unsigned long long columnStyle; // @synthesize columnStyle=_columnStyle;
 @property (nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
+@property (nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
+@property (copy, nonatomic) HUDashboardButtonCellLayoutOptions *dashboardButtonCellOptions; // @synthesize dashboardButtonCellOptions=_dashboardButtonCellOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
+@property (readonly, nonatomic) double fixedWidthForCell;
+@property (readonly, nonatomic) double gutter;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double headlineBaselineToFirstStatusItemBaselineDistance; // @synthesize headlineBaselineToFirstStatusItemBaselineDistance=_headlineBaselineToFirstStatusItemBaselineDistance;
 @property (nonatomic) double headlineBaselineToSceneHeaderBaselineDistance; // @synthesize headlineBaselineToSceneHeaderBaselineDistance=_headlineBaselineToSceneHeaderBaselineDistance;
@@ -81,6 +92,8 @@
 @property (readonly, nonatomic) long long numberOfColumns;
 @property (strong, nonatomic) NSNumber *overrideNumberOfColumns; // @synthesize overrideNumberOfColumns=_overrideNumberOfColumns;
 @property (strong, nonatomic) NSNumber *overrideViewSizeSubclass; // @synthesize overrideViewSizeSubclass=_overrideViewSizeSubclass;
+@property (copy, nonatomic) HUGridScenePlaceholderLayoutOptions *placeholderSceneCellOptions; // @synthesize placeholderSceneCellOptions=_placeholderSceneCellOptions;
+@property (copy, nonatomic) HUGridPlaceholderServiceCellLayoutOptions *placeholderServiceCellOptions; // @synthesize placeholderServiceCellOptions=_placeholderServiceCellOptions;
 @property (readonly, nonatomic) double pointWidthForCurrentViewSizeSubclass;
 @property (readonly, nonatomic) double pointWidthForFullWidthCell;
 @property (nonatomic) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
@@ -96,6 +109,7 @@
 @property (nonatomic) double sectionTrailingMargin; // @synthesize sectionTrailingMargin=_sectionTrailingMargin;
 @property (copy, nonatomic) HUGridServiceCellLayoutOptions *serviceCellOptions; // @synthesize serviceCellOptions=_serviceCellOptions;
 @property (copy, nonatomic) HUGridStatusBannerCellLayoutOptions *statusBannerCellOptions; // @synthesize statusBannerCellOptions=_statusBannerCellOptions;
+@property (copy, nonatomic) HUGridStatusCellLayoutOptions *statusCellOptions; // @synthesize statusCellOptions=_statusCellOptions;
 @property (nonatomic) double statusDetailsBaselineToFirstSectionTitleBaselineDistance; // @synthesize statusDetailsBaselineToFirstSectionTitleBaselineDistance=_statusDetailsBaselineToFirstSectionTitleBaselineDistance;
 @property (strong, nonatomic) UIFont *statusDetailsFont; // @synthesize statusDetailsFont=_statusDetailsFont;
 @property (nonatomic) BOOL statusHidden; // @synthesize statusHidden=_statusHidden;
@@ -103,6 +117,7 @@
 @property (strong, nonatomic) UIFont *statusItemFont; // @synthesize statusItemFont=_statusItemFont;
 @property (readonly, nonatomic) double statusListCellBottomMargin;
 @property (readonly, nonatomic) double statusListCellHeight;
+@property (readonly, nonatomic) double statusListCellTopMargin;
 @property (readonly) Class superclass;
 @property (nonatomic) double topOfViewToFirstStatusItemBaselineDistance; // @synthesize topOfViewToFirstStatusItemBaselineDistance=_topOfViewToFirstStatusItemBaselineDistance;
 @property (readonly, nonatomic) struct CGSize viewSize; // @synthesize viewSize=_viewSize;
@@ -115,16 +130,17 @@
 + (id)defaultOptionsForViewSize:(struct CGSize)arg1 overrideSizeSubclass:(long long)arg2;
 - (void).cxx_destruct;
 - (id)_childDisplayOptions;
+- (id)_columnStyleToString:(unsigned long long)arg1;
 - (double)_pointWidthForFixedColumnStyleWithFractionalNumberOfColumns:(double)arg1;
-- (double)_pointWidthForFlexibleColumnStyleWithFractionalNumberOfColumns:(double)arg1 totalNumberOfColumns:(long long)arg2 totalWidth:(double)arg3;
+- (double)_pointWidthForFlexibleColumnStyleWithFractionalNumberOfColumns:(double)arg1 totalNumberOfColumns:(long long)arg2 totalWidth:(double)arg3 useDefaultSectionMargin:(BOOL)arg4;
 - (double)_pointWidthForFractionalNumberOfColumns:(double)arg1;
 - (double)_preferredSectionHeightForNumberOfRows:(unsigned long long)arg1 withCellHeight:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithViewSize:(struct CGSize)arg1 columnStyle:(unsigned long long)arg2 overrideSizeSubclass:(id)arg3;
 - (double)pointWidthForNumberOfColumns:(long long)arg1;
+- (double)pointWidthForWelcomeUIBanner;
 - (double)preferredSectionHeightForNumberOfSceneRows:(unsigned long long)arg1;
 - (double)preferredSectionHeightForNumberOfServiceRows:(unsigned long long)arg1 spanningColumns:(unsigned long long)arg2;
-- (double)statusListCellTopMargin:(BOOL)arg1 forStatusBannerWidth:(double)arg2 havingTitleAndDescription:(id)arg3 contentSizeCategory:(id)arg4;
 
 @end
 

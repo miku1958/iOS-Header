@@ -38,12 +38,12 @@
 - (double)_horizontalPaddingForStatusBar;
 - (BOOL)_isAnalog;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
@@ -57,11 +57,13 @@
 - (double)_timeViewAlphaForEditMode:(long long)arg1;
 - (void)_unloadSnapshotContentViews;
 - (id)complicationPickerViewForSlot:(id)arg1;
+- (id)dialView;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)rectangularViewDidBecomeInteractive:(id)arg1;
 - (void)rectangularViewDidEndInteractive:(id)arg1;
 - (void)setFaceColor:(unsigned long long)arg1;
+- (void)updateMonochromeColorForRichComplicationView:(id)arg1;
 
 @end
 

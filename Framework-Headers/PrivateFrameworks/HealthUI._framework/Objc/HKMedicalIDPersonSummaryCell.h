@@ -22,20 +22,20 @@
     NSLayoutConstraint *_pictureWidthAnchor;
     NSCalendar *_gregorianCalendar;
     BOOL _resetFormatters;
-    BOOL _enabled;
-    BOOL _shareInfo;
+    BOOL _shareDuringEmergencyCalls;
+    BOOL _shareOnLockScreen;
     UIImage *_picture;
     NSString *_name;
     NSDateComponents *_gregorianBirthday;
     NSNumber *_organDonationStatus;
 }
 
-@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) NSDateComponents *gregorianBirthday; // @synthesize gregorianBirthday=_gregorianBirthday;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSNumber *organDonationStatus; // @synthesize organDonationStatus=_organDonationStatus;
 @property (strong, nonatomic) UIImage *picture; // @synthesize picture=_picture;
-@property (nonatomic) BOOL shareInfo; // @synthesize shareInfo=_shareInfo;
+@property (nonatomic) BOOL shareDuringEmergencyCalls; // @synthesize shareDuringEmergencyCalls=_shareDuringEmergencyCalls;
+@property (nonatomic) BOOL shareOnLockScreen; // @synthesize shareOnLockScreen=_shareOnLockScreen;
 
 - (void).cxx_destruct;
 - (id)_cachedCalendar;

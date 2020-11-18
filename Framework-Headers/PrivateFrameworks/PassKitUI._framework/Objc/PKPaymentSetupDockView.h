@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, OBPrivacyLinkController, PKContinuousButton, PKPaymentSetupFooterView, UITextView;
+@class ASCLockupView, NSString, OBPrivacyLinkController, PKContinuousButton, PKPaymentSetupFooterView, UITextView;
 
 @interface PKPaymentSetupDockView : UIView
 {
@@ -18,6 +18,7 @@
     long long _context;
     OBPrivacyLinkController *_privacyLink;
     NSString *_buttonExplanationText;
+    ASCLockupView *_lockUpView;
 }
 
 @property (strong, nonatomic) NSString *buttonExplanationText; // @synthesize buttonExplanationText=_buttonExplanationText;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (strong, nonatomic) PKContinuousButton *continuousButton;
 @property (strong, nonatomic) PKPaymentSetupFooterView *footerView;
+@property (strong, nonatomic) ASCLockupView *lockUpView; // @synthesize lockUpView=_lockUpView;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property (nonatomic) BOOL requiresAdditionalContinuousButtonPadding; // @synthesize requiresAdditionalContinuousButtonPadding=_requiresAdditionalContinuousButtonPadding;
 

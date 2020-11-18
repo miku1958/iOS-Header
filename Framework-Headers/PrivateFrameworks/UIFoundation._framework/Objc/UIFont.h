@@ -49,6 +49,10 @@
 + (id)_preferredFontForTextStyle:(id)arg1 variant:(long long)arg2;
 + (id)_preferredFontForTextStyle:(id)arg1 variant:(long long)arg2 maximumContentSizeCategory:(id)arg3;
 + (double)_readableWidth;
++ (void)_setButtonFontSize:(double)arg1;
++ (void)_setLabelFontSize:(double)arg1;
++ (void)_setSmallSystemFontSize:(double)arg1;
++ (void)_setSystemFontSize:(double)arg1;
 + (id)_sharedFontCache;
 + (id)_sharedZeroPointFont;
 + (id)_supportedDynamicFontStyles;
@@ -67,7 +71,6 @@
 + (id)fontWithName:(id)arg1 size:(double)arg2;
 + (id)fontWithName:(id)arg1 size:(double)arg2 traits:(int)arg3;
 + (id)ib_preferredFontForTextStyle:(id)arg1;
-+ (void)initialize;
 + (id)italicSystemFontOfSize:(double)arg1;
 + (double)labelFontSize;
 + (id)monospacedDigitSystemFontOfSize:(double)arg1 weight:(double)arg2;
@@ -102,11 +105,13 @@
 - (BOOL)_hasColorGlyphs;
 - (BOOL)_isDefaultFace;
 - (BOOL)_isHiraginoFont;
+- (BOOL)_isTextStyleFont;
 - (BOOL)_isUIFont;
 - (id)_kernOverride;
 - (double)_leading;
 - (double)_scaledValueForValue:(double)arg1;
 - (struct CGAffineTransform)_textMatrixTransformForContext:(id)arg1;
+- (id)_textStyle;
 - (double)_totalAdvancementForNativeGlyphs:(const unsigned short *)arg1 count:(long long)arg2;
 - (struct CGSize)advancementForGlyph:(unsigned short)arg1;
 - (void)applyToGraphicsContext:(id)arg1;

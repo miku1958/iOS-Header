@@ -8,13 +8,13 @@
 
 @interface CKSearchCollectionView : UICollectionView
 {
-    BOOL _editing;
+    BOOL __ck_editing;
     BOOL _suppressDatasourceUpdates;
     BOOL _lockContentOffset;
     struct UIEdgeInsets _marginInsets;
 }
 
-@property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
+@property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing; // @synthesize _ck_editing=__ck_editing;
 @property (nonatomic) BOOL lockContentOffset; // @synthesize lockContentOffset=_lockContentOffset;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (nonatomic) BOOL suppressDatasourceUpdates; // @synthesize suppressDatasourceUpdates=_suppressDatasourceUpdates;

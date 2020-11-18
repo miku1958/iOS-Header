@@ -19,8 +19,8 @@
     NSDateComponents *_statisticsInterval;
 }
 
-@property (readonly, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
-@property (readonly, nonatomic) NSDateComponents *statisticsInterval; // @synthesize statisticsInterval=_statisticsInterval;
+@property (readonly, copy, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
+@property (readonly, copy, nonatomic) NSDateComponents *statisticsInterval; // @synthesize statisticsInterval=_statisticsInterval;
 
 - (void).cxx_destruct;
 - (void)_clearSourcesCache;
@@ -34,10 +34,10 @@
 - (id)_mostRecentQuantityDateInterval;
 - (id)_mostRecentQuantityStatistics;
 - (void)_resetStatistics:(id)arg1;
+- (id)_statisticsDateIntervalAndIndex:(long long *)arg1 forDate:(id)arg2;
+- (id)_statisticsDateIntervalAtIndex:(long long)arg1;
 - (id)_statisticsForIndex:(long long)arg1;
 - (id)_statisticsForLastIndex;
-- (id)_statisticsPeriodAndIndex:(long long *)arg1 forDate:(id)arg2;
-- (id)_timePeriodForDate:(id)arg1;
 - (void)_timePeriodForStatisticsAtIndex:(long long)arg1 startDate:(id *)arg2 endDate:(id *)arg3;
 - (void)enumerateStatisticsFromDate:(id)arg1 toDate:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)init;

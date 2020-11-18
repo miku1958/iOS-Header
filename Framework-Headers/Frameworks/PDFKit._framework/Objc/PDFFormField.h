@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (BOOL)_isRedacted;
 - (void)addFieldNameToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addFieldTypeToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addNameDefaultValueToDictionaryRef:(struct __CFDictionary *)arg1;

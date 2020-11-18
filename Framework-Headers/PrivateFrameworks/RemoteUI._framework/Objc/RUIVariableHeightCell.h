@@ -9,8 +9,10 @@
 @interface RUIVariableHeightCell : RemoteUITableViewCell
 {
     BOOL _supportsAccessory;
+    long long _detailTextAlignment;
 }
 
+@property (nonatomic) long long detailTextAlignment; // @synthesize detailTextAlignment=_detailTextAlignment;
 @property (nonatomic) BOOL supportsAccessory; // @synthesize supportsAccessory=_supportsAccessory;
 
 - (double)height;

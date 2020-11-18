@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSPersistentStore, NSSet, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient, PLGenericAlbum, PLKeywordManager, PLLibraryServicesManager, PLManagedObjectContext, PLPhotoLibraryBundle, PLPhotoLibraryOptions, PLPhotoLibraryPathManager, PLSimpleDCIMDirectory, PLThumbnailIndexes, PLThumbnailManager;
+@class NSArray, NSMutableArray, NSPersistentStore, NSSet, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient, PLGenericAlbum, PLGlobalValues, PLKeywordManager, PLLibraryServicesManager, PLManagedObjectContext, PLPhotoLibraryBundle, PLPhotoLibraryOptions, PLPhotoLibraryPathManager, PLSimpleDCIMDirectory, PLThumbnailIndexes, PLThumbnailManager;
 @protocol PLAlbumProtocol;
 
 @interface PLPhotoLibrary : NSObject
@@ -34,6 +34,7 @@
 
 @property (readonly, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *filesystemImportProgressAlbum;
+@property (readonly, nonatomic) PLGlobalValues *globalValues;
 @property (readonly, nonatomic) PAImageConversionServiceClient *imageConversionServiceClient;
 @property (readonly) PLKeywordManager *keywordManager;
 @property (readonly) PLPhotoLibraryBundle *libraryBundle; // @synthesize libraryBundle=_libraryBundle;
@@ -61,19 +62,17 @@
 + (void)_contextSaveFailedWithNoPersistentStores:(id)arg1;
 + (void)_contextSaveFailedWithSQLiteError:(id)arg1;
 + (void)_contextSaveFailedWithTimeoutError:(id)arg1;
-+ (id)_getLibraryPathFromTriggerFile;
-+ (void)_getResourceData:(id)arg1 nonDerivativeSizeOut:(unsigned long long *)arg2 derivativesSizeOut:(unsigned long long *)arg3 fileBackedThumbnailsSizeOut:(float *)arg4 tableThumbnailsSizeOut:(float *)arg5;
++ (void)_getResourceData:(id)arg1 nonDerivativeSizeOut:(unsigned long long *)arg2 derivativesSizeOut:(unsigned long long *)arg3 fileBackedThumbnailsSizeOut:(unsigned long long *)arg4 tableThumbnailsSizeOut:(unsigned long long *)arg5;
 + (id)_internalSystemPhotoLibrary;
 + (void)_loadFileExtensionInformation;
++ (id)_resourcesInfoFromMoc:(id)arg1;
 + (BOOL)areOpportunisticTasksDisabled;
 + (id)cameraPhotoLibrary;
 + (BOOL)canSaveVideoToLibrary:(id)arg1;
 + (id)cloudSharingPhotoLibrary;
 + (id)cmmPhotoLibrary;
 + (id)cplPhotoLibrary;
-+ (void)createRelocateLibraryTriggerFileWithPath:(id)arg1;
 + (id)diagnosticsPhotoLibrary;
-+ (void)exitToRelocatePhotoLibrary;
 + (id)fileReservationForFileAtPath:(id)arg1 exclusive:(BOOL)arg2;
 + (void)initialize;
 + (BOOL)isAdjustmentEnvelopeExtension:(id)arg1;
@@ -82,6 +81,7 @@
 + (BOOL)isNonRawImageFileExtension:(id)arg1;
 + (BOOL)isRawImageFileExtension:(id)arg1;
 + (BOOL)isVideoFileExtension:(id)arg1;
++ (id)librarySummarySizeDataRefWithManagedObjectContext:(id)arg1;
 + (id)masterURLFromSidecarURLs:(id)arg1;
 + (id)myPhotoStreamPhotoLibrary;
 + (id)newPhotoLibraryWithName:(const char *)arg1 loadedFromBundle:(id)arg2 options:(id)arg3 error:(id *)arg4;
@@ -94,23 +94,23 @@
 + (void)refreshCachedCountsAndDates:(BOOL)arg1 onAssetsContainerClass:(Class)arg2 inContext:(id)arg3 withPredicate:(id)arg4;
 + (void)refreshCachedCountsOnAllAssetContainersInContext:(id)arg1;
 + (BOOL)removeFaceMetadataAtURL:(id)arg1 includingPeople:(BOOL)arg2;
-+ (void)removeRelocateLibraryTriggerFile;
-+ (id)resourcesInfoFromMoc:(id)arg1;
++ (id)savedPhotosOriginalsSizeWithSizeDataRef:(id)arg1;
++ (id)savedPhotosReferenceMediaSizeWithSizeDataRef:(id)arg1;
 + (void)setCloudAlbumSharingEnabled:(BOOL)arg1;
 + (void)setPhotoStreamEnabled:(BOOL)arg1;
 + (id)sharedPhotoLibrary;
++ (BOOL)shouldTryFastPathWithLibraryBundle:(id)arg1;
 + (id)systemMainQueuePhotoLibrary;
 + (id)systemPhotoLibrary;
 + (BOOL)systemPhotoLibraryIsObtainable;
 + (id)unitTestPhotoLibrary;
 - (void).cxx_destruct;
-- (void)_applyAdjustmentFileInfo:(id)arg1 renderedContentFileInfo:(id)arg2 renderedVideoComplementFileInfo:(id)arg3 toAsset:(id)arg4 withMainFileURL:(id)arg5;
-- (void)_applySideCarFiles:(id)arg1 toAsset:(id)arg2 withMainFileURL:(id)arg3;
+- (void)_applyAdjustmentFileInfo:(id)arg1 renderedContentFileInfo:(id)arg2 renderedVideoComplementFileInfo:(id)arg3 toAsset:(id)arg4 withMainFileURL:(id)arg5 mainFileMetadata:(id)arg6;
+- (void)_applySideCarFiles:(id)arg1 toAsset:(id)arg2 withMainFileURL:(id)arg3 mainFileMetadata:(id)arg4;
 - (BOOL)_checkMomentAnalysisCompletion;
 - (unsigned long long)_dbFileSizes;
 - (void)_deleteEmptyImportAlbumsWithAddedAlbums:(id)arg1;
 - (void)_deleteObsoleteMetadataFiles;
-- (void)_doFilesystemImportIfNeededWithMOC:(id)arg1 reason:(id)arg2;
 - (void)_enumerateFilesAtURL:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_enumerateFilesAtURLs:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_fetchCompleteAssetIDsWithSavedAssetType:(short)arg1 context:(id)arg2;
@@ -121,19 +121,17 @@
 - (BOOL)_hasIncompleteAsset;
 - (id)_initWithPathManager:(id)arg1;
 - (void)_inq_createPhotoStreamAlbumStreamID:(id)arg1;
-- (id)_loadClientDatabaseContext:(id *)arg1;
 - (id)_loadClientDatabaseContextFastPathAndReturnAbortAfterOpen:(BOOL *)arg1;
-- (id)_loadDatabaseContext:(id *)arg1;
-- (id)_loadServerDatabaseContext:(id *)arg1;
+- (id)_loadClientDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
+- (id)_loadDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
+- (id)_loadServerDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
 - (void)_photoLibraryCorruptNotification;
 - (void)_photoLibraryForceClientExitNotification;
-- (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2;
+- (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2 mainFileMetadata:(id)arg3;
 - (void)_recreateItemsFromMetadataAtDirectoryURLs:(id)arg1 includeAlbums:(BOOL)arg2;
 - (void)_removeOldFaceMetadataAsync;
-- (void)_reportExpungedAssets:(id)arg1;
 - (void)_safeSave:(id)arg1;
 - (void)_setManagedObjectContext:(id)arg1;
-- (BOOL)_shouldTryFastPath;
 - (void)_updateAssetCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 - (void)_updateMemoryCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 - (void)_userApplyTrashedState:(short)arg1 toAlbums:(id)arg2;
@@ -142,7 +140,7 @@
 - (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
 - (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 name:(id)arg3 shouldSave:(BOOL)arg4 performTransaction:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
-- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(id)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(id)arg7 thumbnailImage:(id)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(BOOL)arg14 isPlaceholder:(BOOL)arg15 placeholderFileURL:(id)arg16;
+- (id)addDCIMEntryAtFileURL:(id)arg1 mainFileMetadata:(id)arg2 toEvent:(id)arg3 sidecarFileInfo:(id)arg4 progress:(id)arg5 importSessionIdentifier:(id)arg6 isImported:(BOOL)arg7 previewImage:(id)arg8 thumbnailImage:(id)arg9 savedAssetType:(short)arg10 replacementUUID:(id)arg11 publicGlobalUUID:(id)arg12 extendedInfo:(id)arg13 withUUID:(id)arg14 ignoreEmbeddedMetadata:(BOOL)arg15 isPlaceholder:(BOOL)arg16 placeholderFileURL:(id)arg17;
 - (id)albumFromGroupURL:(id)arg1;
 - (id)albumListForAlbumOfKind:(int)arg1;
 - (id)albumListForContentMode:(int)arg1;
@@ -179,7 +177,6 @@
 - (id)eventWithName:(id)arg1 andImportSessionIdentifier:(id)arg2;
 - (BOOL)getPhotoCount:(unsigned long long *)arg1 videoCount:(unsigned long long *)arg2;
 - (BOOL)getPhotoCount:(unsigned long long *)arg1 videoCount:(unsigned long long *)arg2 excludeTrashed:(BOOL)arg3 excludeInvisible:(BOOL)arg4 excludeCloudShared:(BOOL)arg5;
-- (id)globalValueForKey:(id)arg1;
 - (void)handlePersistentStoreRemoval:(id)arg1;
 - (void)handlePossibleCoreDataError:(id)arg1;
 - (BOOL)hasCompletedMomentAnalysis;
@@ -199,7 +196,7 @@
 - (id)libraryID;
 - (id)librarySizes;
 - (id)librarySizesFromDB;
-- (BOOL)loadDatabase:(id *)arg1;
+- (BOOL)loadDatabaseWithOptions:(id)arg1 error:(id *)arg2;
 - (id)managedObjectContextStoreUUID;
 - (void)modifyDCIMEntryForPhoto:(id)arg1;
 - (id)newImageForPhoto:(id)arg1 format:(unsigned short)arg2;
@@ -234,9 +231,6 @@
 - (void)repairSingletonObjects;
 - (void)resetCachedImportAlbumsIfNeededForAlbum:(id)arg1;
 - (BOOL)safeSave:(id)arg1 error:(id *)arg2;
-- (void)scheduleUserInitiatedAnalysisForAssets:(id)arg1;
-- (void)setGlobalValue:(id)arg1 forKey:(id)arg2;
-- (void)setICloudPhotosEnabled:(BOOL)arg1 withClient:(id)arg2;
 - (unsigned long long)sharedStreamsSize;
 - (id)simpleDCIMDirectory;
 - (id)syncProgressAlbumsIgnoreiTunes:(BOOL)arg1;

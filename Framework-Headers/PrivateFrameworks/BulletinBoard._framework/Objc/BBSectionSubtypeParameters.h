@@ -29,7 +29,6 @@
     NSString *_secondaryContentRemoteServiceBundleIdentifier;
     NSNumber *_boxedSuppressesAlertsWhenAppIsActive;
     NSNumber *_boxedCoalescesWhenLocked;
-    NSNumber *_boxedRealertCount;
     NSNumber *_boxedInertWhenLocked;
     NSNumber *_boxedPreservesUnlockActionCase;
     NSNumber *_boxedVisuallyIndicatesWhenDateIsInFuture;
@@ -79,7 +78,6 @@
 @property (strong, nonatomic) NSNumber *boxedPreventLock; // @synthesize boxedPreventLock=_boxedPreventLock;
 @property (strong, nonatomic) NSNumber *boxedPrioritizeAtTopOfLockScreen; // @synthesize boxedPrioritizeAtTopOfLockScreen=_boxedPrioritizeAtTopOfLockScreen;
 @property (strong, nonatomic) NSNumber *boxedPrivacySettings; // @synthesize boxedPrivacySettings=_boxedPrivacySettings;
-@property (strong, nonatomic) NSNumber *boxedRealertCount; // @synthesize boxedRealertCount=_boxedRealertCount;
 @property (strong, nonatomic) NSNumber *boxedRevealsAdditionalContentOnPresentation; // @synthesize boxedRevealsAdditionalContentOnPresentation=_boxedRevealsAdditionalContentOnPresentation;
 @property (strong, nonatomic) NSNumber *boxedShouldDismissBulletinWhenClosed; // @synthesize boxedShouldDismissBulletinWhenClosed=_boxedShouldDismissBulletinWhenClosed;
 @property (strong, nonatomic) NSNumber *boxedShowsContactPhoto; // @synthesize boxedShowsContactPhoto=_boxedShowsContactPhoto;
@@ -107,7 +105,6 @@
 @property (nonatomic) BOOL preventLock;
 @property (nonatomic) BOOL prioritizeAtTopOfLockScreen;
 @property (nonatomic) unsigned long long privacySettings;
-@property (nonatomic) unsigned long long realertCount;
 @property (nonatomic) BOOL revealsAdditionalContentOnPresentation;
 @property (copy, nonatomic) NSString *secondaryContentRemoteServiceBundleIdentifier; // @synthesize secondaryContentRemoteServiceBundleIdentifier=_secondaryContentRemoteServiceBundleIdentifier;
 @property (copy, nonatomic) NSString *secondaryContentRemoteViewControllerClassName; // @synthesize secondaryContentRemoteViewControllerClassName=_secondaryContentRemoteViewControllerClassName;

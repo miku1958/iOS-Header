@@ -18,17 +18,15 @@
     ARGeometrySource *_classification;
 }
 
-@property (strong, nonatomic) ARGeometrySource *classification; // @synthesize classification=_classification;
-@property (strong, nonatomic) ARGeometryElement *faces; // @synthesize faces=_faces;
-@property (strong, nonatomic) ARGeometrySource *normals; // @synthesize normals=_normals;
-@property (strong, nonatomic) ARGeometrySource *vertices; // @synthesize vertices=_vertices;
+@property (readonly, nonatomic) ARGeometrySource *classification; // @synthesize classification=_classification;
+@property (readonly, nonatomic) ARGeometryElement *faces; // @synthesize faces=_faces;
+@property (readonly, nonatomic) ARGeometrySource *normals; // @synthesize normals=_normals;
+@property (readonly, nonatomic) ARGeometrySource *vertices; // @synthesize vertices=_vertices;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVertices:(id)arg1 normals:(id)arg2 faces:(id)arg3;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

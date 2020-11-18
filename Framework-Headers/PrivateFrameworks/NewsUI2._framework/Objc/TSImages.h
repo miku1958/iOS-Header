@@ -38,7 +38,6 @@
 + (id)iconSubscriptionButtonLikeSelectedHeart;
 + (id)iconSubscriptionButtonLikeSelectedOpaque;
 + (id)ignoreHUD;
-+ (id)macSidebar;
 + (id)saveHUD;
 + (id)showLessHUD;
 + (id)showMoreHUD;

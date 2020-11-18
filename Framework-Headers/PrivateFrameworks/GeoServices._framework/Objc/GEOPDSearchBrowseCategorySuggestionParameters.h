@@ -23,31 +23,26 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _minimumNumberOfCategories;
+    int _preferredTransportType;
     int _suggestionType;
     BOOL _isCarplayRequest;
     BOOL _isFlatCategoryListRequest;
     BOOL _isFromNoQueryState;
+    BOOL _isWidgetRequest;
     struct {
         unsigned int has_requestLocalTimestamp:1;
         unsigned int has_minimumNumberOfCategories:1;
+        unsigned int has_preferredTransportType:1;
         unsigned int has_suggestionType:1;
         unsigned int has_isCarplayRequest:1;
         unsigned int has_isFlatCategoryListRequest:1;
         unsigned int has_isFromNoQueryState:1;
+        unsigned int has_isWidgetRequest:1;
         unsigned int read_unknownFields:1;
         unsigned int read_engineTypes:1;
         unsigned int read_venueFilter:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_engineTypes:1;
-        unsigned int wrote_requestLocalTimestamp:1;
-        unsigned int wrote_venueFilter:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_minimumNumberOfCategories:1;
-        unsigned int wrote_suggestionType:1;
-        unsigned int wrote_isCarplayRequest:1;
-        unsigned int wrote_isFlatCategoryListRequest:1;
-        unsigned int wrote_isFromNoQueryState:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,7 +51,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasIsCarplayRequest;
 @property (nonatomic) BOOL hasIsFlatCategoryListRequest;
 @property (nonatomic) BOOL hasIsFromNoQueryState;
+@property (nonatomic) BOOL hasIsWidgetRequest;
 @property (nonatomic) BOOL hasMinimumNumberOfCategories;
+@property (nonatomic) BOOL hasPreferredTransportType;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
 @property (nonatomic) BOOL hasSuggestionType;
 @property (readonly, nonatomic) BOOL hasVenueFilter;
@@ -64,7 +61,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isCarplayRequest;
 @property (nonatomic) BOOL isFlatCategoryListRequest;
 @property (nonatomic) BOOL isFromNoQueryState;
+@property (nonatomic) BOOL isWidgetRequest;
 @property (nonatomic) int minimumNumberOfCategories;
+@property (nonatomic) int preferredTransportType;
 @property (nonatomic) double requestLocalTimestamp;
 @property (nonatomic) int suggestionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -74,11 +73,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsEngineTypes:(id)arg1;
+- (int)StringAsPreferredTransportType:(id)arg1;
 - (int)StringAsSuggestionType:(id)arg1;
-- (void)_addNoFlagsEngineType:(int)arg1;
-- (void)_readEngineTypes;
-- (void)_readVenueFilter;
-- (void)_readViewportInfo;
 - (void)addEngineType:(int)arg1;
 - (void)clearEngineTypes;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -92,8 +88,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (id)preferredTransportTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setEngineTypes:(int *)arg1 count:(unsigned long long)arg2;

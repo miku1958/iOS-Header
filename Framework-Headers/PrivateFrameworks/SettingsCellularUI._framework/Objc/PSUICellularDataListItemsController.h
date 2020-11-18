@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)reloadCache;
+- (void)setSpecifier:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 

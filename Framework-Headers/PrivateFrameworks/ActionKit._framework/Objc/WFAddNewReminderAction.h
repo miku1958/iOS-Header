@@ -6,19 +6,29 @@
 
 #import <WorkflowKit/WFAction.h>
 
-@class NSDateFormatter;
+@class NSDateFormatter, WFActionParameterSummary;
 
 @interface WFAddNewReminderAction : WFAction
 {
+    WFActionParameterSummary *_parameterSummary;
     NSDateFormatter *_dateFormatter;
 }
 
 @property (readonly, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 
 - (void).cxx_destruct;
-- (id)currentSelectedCalendar;
+- (void)addAlertToReminderChange:(id)arg1 forAccount:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)addImagesToReminderChange:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)finishAddingReminderWithSaveRequest:(id)arg1 reminderChange:(id)arg2 reminderStore:(id)arg3;
+- (void)getSelectedListOrParentReminder:(CDUnknownBlockType)arg1;
+- (void)getTargetContentAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)parameterKeysToHideWhenAttachmentsAreUnavailable;
+- (id)parameterSummary;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (id)targetDataInfo;
+- (id)selectedList;
+- (id)selectedListIfDeterministic;
+- (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
+- (void)updateHiddenParameters;
 - (void)updateLists;
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)wasRemovedFromWorkflow:(id)arg1;

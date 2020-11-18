@@ -14,6 +14,7 @@
 
 @property (nonatomic, getter=isActive) BOOL active; // @dynamic active;
 @property (copy, nonatomic) NSString *addressBookLabel; // @dynamic addressBookLabel;
+@property (copy, nonatomic) NSArray *ancestorFrameURLs; // @dynamic ancestorFrameURLs;
 @property (copy, nonatomic) NSDictionary *annotations; // @dynamic annotations;
 @property (copy, nonatomic) NSString *associatedUsername; // @dynamic associatedUsername;
 @property (nonatomic) long long autoFillButtonType; // @dynamic autoFillButtonType;

@@ -9,7 +9,7 @@
 #import <PhotosUI/PUAirPlayRouteObserverRegistryDelegate-Protocol.h>
 #import <PhotosUI/PUAirPlayScreenReceiver-Protocol.h>
 
-@class NSDate, NSString, PUAirPlayContentRegistry, PUAirPlayRootViewController, PUAirPlayRouteObserverRegistry, PUAirPlayScreen, PUAirPlayScreenDetector, UIViewController;
+@class AVOutputContext, NSDate, NSString, PUAirPlayContentRegistry, PUAirPlayRootViewController, PUAirPlayRouteObserverRegistry, PUAirPlayScreen, PUAirPlayScreenDetector, UIViewController;
 
 @interface PHAirPlayScreenController : NSObject <PUAirPlayScreenReceiver, PUAirPlayRouteObserverRegistryDelegate>
 {
@@ -22,6 +22,9 @@
     NSDate *__lastScreenConnectDate;
     NSDate *__lastScreenRequestDate;
     long long __lastScreenRequestOrigin;
+    long long _airPlaySessionSignpost;
+    id _secondDisplayModeToken;
+    AVOutputContext *_outputContext;
 }
 
 @property (strong, nonatomic, setter=_setContentRegistry:) PUAirPlayContentRegistry *_contentRegistry; // @synthesize _contentRegistry=__contentRegistry;
@@ -33,12 +36,15 @@
 @property (strong, nonatomic, setter=_setRootViewController:) PUAirPlayRootViewController *_rootViewController; // @synthesize _rootViewController=__rootViewController;
 @property (strong, nonatomic, setter=_setRouteObserverRegistry:) PUAirPlayRouteObserverRegistry *_routeObserverRegistry; // @synthesize _routeObserverRegistry=__routeObserverRegistry;
 @property (strong, nonatomic, setter=_setScreenDetector:) PUAirPlayScreenDetector *_screenDetector; // @synthesize _screenDetector=__screenDetector;
+@property (nonatomic) long long airPlaySessionSignpost; // @synthesize airPlaySessionSignpost=_airPlaySessionSignpost;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDisplayingContent) BOOL displayingContent;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) AVOutputContext *outputContext; // @synthesize outputContext=_outputContext;
 @property (readonly, nonatomic) unsigned long long routeAvailability;
 @property (readonly, nonatomic) unsigned long long screenAvailability;
+@property (strong, nonatomic) id secondDisplayModeToken; // @synthesize secondDisplayModeToken=_secondDisplayModeToken;
 @property (readonly) Class superclass;
 
 + (struct __CFString *)_keyForScreenRequestOrigin:(long long)arg1;
@@ -47,12 +53,18 @@
 - (void)_cacheDisplayedContentIfNeededForUnregisteringProvider:(id)arg1;
 - (id)_currentContent;
 - (id)_findAvailableScreen;
+- (void)_handleSettingHighResolutionContent:(BOOL)arg1 forRootController:(id)arg2 content:(id)arg3;
 - (void)_notifyWillRequestAirPlayScreenFromSource:(long long)arg1;
+- (void)_outputDeviceDidChange:(id)arg1;
 - (void)_recordSessionBeganWithScreen:(id)arg1;
 - (void)_recordSessionEnded;
+- (void)_sceneDidActivate:(id)arg1;
+- (void)_sceneWillDeactivate:(id)arg1;
 - (id)_screenAvailabilityName;
 - (BOOL)_shouldIgnoreScreen:(id)arg1;
+- (void)_switchModeForHighResolutionContent:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateScreenContentWithShouldTryToFindAvailableScreen:(BOOL)arg1;
+- (void)_updateSecondDisplayModeWithCurrentContent;
 - (void)airPlayRouteObserverRegistryRouteAvailabilityChanged:(id)arg1 forRouteObserver:(id)arg2;
 - (id)init;
 - (void)notifyDidPresentAirPlayRoutesFromShareSheet;

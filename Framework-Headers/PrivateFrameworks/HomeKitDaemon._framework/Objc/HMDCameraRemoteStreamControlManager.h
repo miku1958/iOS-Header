@@ -12,13 +12,13 @@
 #import <HomeKitDaemon/HMDCameraStreamControlManagerProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDStreamingManagerDelegate-Protocol.h>
 
-@class HMDCameraMediaConfigGenerator, HMDCameraResidentMessageHandler, HMDCameraStreamMetrics, HMDRemoteStreamSession, NSString, NSUUID;
+@class HMDCameraMediaConfigGenerator, HMDCameraRemoteStreamSession, HMDCameraResidentMessageHandler, HMDCameraStreamMetrics, NSString, NSUUID;
 
 @interface HMDCameraRemoteStreamControlManager : HMDCameraStreamControlManager <HMDStreamingManagerDelegate, HMDCameraIDSSessionReceiverDelegate, HMDCameraIDSDeviceConnectionReceiverDelegate, HMDCameraIDSDeviceConnectionSenderDelegate, HMDCameraStreamControlManagerProtocol>
 {
     NSUUID *_profileUniqueIdentifier;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
-    HMDRemoteStreamSession *_streamSession;
+    HMDCameraRemoteStreamSession *_streamSession;
     HMDCameraMediaConfigGenerator *_configGenerator;
 }
 
@@ -29,7 +29,7 @@
 @property (readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
 @property (readonly, copy, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly, nonatomic) HMDCameraStreamMetrics *streamMetrics;
-@property (strong, nonatomic) HMDRemoteStreamSession *streamSession; // @synthesize streamSession=_streamSession;
+@property (strong, nonatomic) HMDCameraRemoteStreamSession *streamSession; // @synthesize streamSession=_streamSession;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

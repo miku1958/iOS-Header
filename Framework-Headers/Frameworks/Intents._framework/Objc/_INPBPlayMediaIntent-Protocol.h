@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBString, _INPBTimestamp;
+@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBPrivatePlayMediaIntentData, _INPBString, _INPBTimestamp;
 
 @protocol _INPBPlayMediaIntent <NSObject>
 
@@ -33,6 +33,7 @@
 @property (nonatomic) BOOL hasPlaybackRepeatMode;
 @property (nonatomic) BOOL hasPlaybackSpeed;
 @property (readonly, nonatomic) BOOL hasPlaylistTitle;
+@property (readonly, nonatomic) BOOL hasPrivatePlayMediaIntentData;
 @property (readonly, nonatomic) BOOL hasProxiedBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasRecoID;
 @property (nonatomic) BOOL hasResumePlayback;
@@ -52,6 +53,7 @@
 @property (nonatomic) int playbackRepeatMode;
 @property (nonatomic) double playbackSpeed;
 @property (strong, nonatomic) _INPBString *playlistTitle;
+@property (strong, nonatomic) _INPBPrivatePlayMediaIntentData *privatePlayMediaIntentData;
 @property (copy, nonatomic) NSString *proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID;
 @property (nonatomic) BOOL resumePlayback;

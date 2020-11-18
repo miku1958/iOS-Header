@@ -45,6 +45,7 @@
 - (id)initWithBalance:(id)arg1 forPass:(id)arg2 balanceReminder:(id)arg3 balanceName:(id)arg4 currencyCode:(id)arg5 associatedAction:(id)arg6 paymentDataProvider:(id)arg7 webService:(id)arg8 style:(long long)arg9;
 - (id)initWithTransitPassProperties:(id)arg1 forPass:(id)arg2 balanceReminder:(id)arg3 associatedAction:(id)arg4 paymentDataProvider:(id)arg5 webService:(id)arg6 style:(long long)arg7;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateBalanceReminder:(id)arg2 forBalanceWithIdentifier:(id)arg3;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;

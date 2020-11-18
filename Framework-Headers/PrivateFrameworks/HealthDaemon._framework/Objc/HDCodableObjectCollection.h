@@ -18,6 +18,7 @@
     NSMutableArray *_cdaDocumentSamples;
     NSMutableArray *_correlations;
     NSMutableArray *_deletedSamples;
+    NSMutableArray *_ecgSamples;
     NSMutableArray *_fitnessFriendAchievements;
     NSMutableArray *_fitnessFriendActivitySnapshots;
     NSMutableArray *_fitnessFriendWorkouts;
@@ -26,6 +27,7 @@
     NSMutableArray *_medicalRecords;
     HDCodableProvenance *_provenance;
     NSMutableArray *_quantitySamples;
+    NSMutableArray *_sleepSchedules;
     HDCodableSource *_source;
     NSString *_sourceBundleIdentifier;
     NSMutableArray *_workouts;
@@ -37,6 +39,7 @@
 @property (strong, nonatomic) NSMutableArray *cdaDocumentSamples; // @synthesize cdaDocumentSamples=_cdaDocumentSamples;
 @property (strong, nonatomic) NSMutableArray *correlations; // @synthesize correlations=_correlations;
 @property (strong, nonatomic) NSMutableArray *deletedSamples; // @synthesize deletedSamples=_deletedSamples;
+@property (strong, nonatomic) NSMutableArray *ecgSamples; // @synthesize ecgSamples=_ecgSamples;
 @property (strong, nonatomic) NSMutableArray *fitnessFriendAchievements; // @synthesize fitnessFriendAchievements=_fitnessFriendAchievements;
 @property (strong, nonatomic) NSMutableArray *fitnessFriendActivitySnapshots; // @synthesize fitnessFriendActivitySnapshots=_fitnessFriendActivitySnapshots;
 @property (strong, nonatomic) NSMutableArray *fitnessFriendWorkouts; // @synthesize fitnessFriendWorkouts=_fitnessFriendWorkouts;
@@ -49,6 +52,7 @@
 @property (strong, nonatomic) NSMutableArray *medicalRecords; // @synthesize medicalRecords=_medicalRecords;
 @property (strong, nonatomic) HDCodableProvenance *provenance; // @synthesize provenance=_provenance;
 @property (strong, nonatomic) NSMutableArray *quantitySamples; // @synthesize quantitySamples=_quantitySamples;
+@property (strong, nonatomic) NSMutableArray *sleepSchedules; // @synthesize sleepSchedules=_sleepSchedules;
 @property (strong, nonatomic) HDCodableSource *source; // @synthesize source=_source;
 @property (strong, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property (strong, nonatomic) NSMutableArray *workouts; // @synthesize workouts=_workouts;
@@ -59,12 +63,14 @@
 + (Class)cdaDocumentSamplesType;
 + (Class)correlationsType;
 + (Class)deletedSamplesType;
++ (Class)ecgSamplesType;
 + (Class)fitnessFriendAchievementsType;
 + (Class)fitnessFriendActivitySnapshotsType;
 + (Class)fitnessFriendWorkoutsType;
 + (Class)locationSeriesType;
 + (Class)medicalRecordsType;
 + (Class)quantitySamplesType;
++ (Class)sleepSchedulesType;
 + (Class)workoutsType;
 - (void).cxx_destruct;
 - (id)activityCachesAtIndex:(unsigned long long)arg1;
@@ -78,9 +84,11 @@
 - (void)addClinicalRecord:(id)arg1;
 - (void)addConditionRecord:(id)arg1;
 - (void)addCorrelations:(id)arg1;
+- (void)addCoverageRecord:(id)arg1;
 - (void)addDeletedSamples:(id)arg1;
 - (void)addDiagnosticTestReport:(id)arg1;
 - (void)addDiagnosticTestResult:(id)arg1;
+- (void)addEcgSamples:(id)arg1;
 - (void)addFitnessFriendAchievements:(id)arg1;
 - (void)addFitnessFriendActivitySnapshots:(id)arg1;
 - (void)addFitnessFriendWorkouts:(id)arg1;
@@ -91,6 +99,7 @@
 - (void)addMedicationRecord:(id)arg1;
 - (void)addProcedureRecord:(id)arg1;
 - (void)addQuantitySamples:(id)arg1;
+- (void)addSleepSchedules:(id)arg1;
 - (void)addUnknownRecord:(id)arg1;
 - (void)addVaccinationRecord:(id)arg1;
 - (void)addWorkouts:(id)arg1;
@@ -106,12 +115,14 @@
 - (void)clearCdaDocumentSamples;
 - (void)clearCorrelations;
 - (void)clearDeletedSamples;
+- (void)clearEcgSamples;
 - (void)clearFitnessFriendAchievements;
 - (void)clearFitnessFriendActivitySnapshots;
 - (void)clearFitnessFriendWorkouts;
 - (void)clearLocationSeries;
 - (void)clearMedicalRecords;
 - (void)clearQuantitySamples;
+- (void)clearSleepSchedules;
 - (void)clearWorkouts;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -123,6 +134,8 @@
 - (unsigned long long)deletedSamplesCount;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)ecgSamplesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)ecgSamplesCount;
 - (id)fitnessFriendAchievementsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)fitnessFriendAchievementsCount;
 - (id)fitnessFriendActivitySnapshotsAtIndex:(unsigned long long)arg1;
@@ -139,6 +152,8 @@
 - (id)quantitySamplesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)quantitySamplesCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)sleepSchedulesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sleepSchedulesCount;
 - (BOOL)unitTest_isEquivalentToObjectCollection:(id)arg1;
 - (id)workoutsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)workoutsCount;

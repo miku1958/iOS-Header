@@ -10,7 +10,10 @@
 
 @interface HMNetworkRouterProfile (HFAdditions)
 
+@property (readonly, nonatomic) BOOL hf_isCableOrSatelliteNotConnected;
 @property (readonly, nonatomic) BOOL hf_isConnected;
+@property (readonly, nonatomic) BOOL hf_isReady;
+@property (readonly, nonatomic) BOOL hf_isStatusKnown;
 @property (readonly, copy, nonatomic) NSString *hf_statusLocalizedDescription;
 
 - (id)hf_iconDescriptor;

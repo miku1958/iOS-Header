@@ -6,16 +6,13 @@
 
 #import <SystemStatusServer/NSObject-Protocol.h>
 
-@class STBatteryStatusDomainData, STBatteryStatusDomainDataDiff, STTelephonyStatusDomainData, STTelephonyStatusDomainDataDiff, STVoiceControlStatusDomainData, STVoiceControlStatusDomainDataDiff, STWifiStatusDomainData, STWifiStatusDomainDataDiff;
+@class NSSet;
+@protocol STStatusDomainData, STStatusDomainDataDiff;
 
 @protocol STStatusDomainPublisherXPCServer <NSObject>
-- (void)publishBatteryData:(STBatteryStatusDomainData *)arg1;
-- (void)publishBatteryDataDiff:(STBatteryStatusDomainDataDiff *)arg1;
-- (void)publishTelephonyData:(STTelephonyStatusDomainData *)arg1;
-- (void)publishTelephonyDataDiff:(STTelephonyStatusDomainDataDiff *)arg1;
-- (void)publishVoiceControlData:(STVoiceControlStatusDomainData *)arg1;
-- (void)publishVoiceControlDataDiff:(STVoiceControlStatusDomainDataDiff *)arg1;
-- (void)publishWifiData:(STWifiStatusDomainData *)arg1;
-- (void)publishWifiDataDiff:(STWifiStatusDomainDataDiff *)arg1;
+- (void)publishData:(id<STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(BOOL)arg3 reply:(void (^)(void))arg4;
+- (void)publishDiff:(id<STStatusDomainDataDiff>)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(BOOL)arg3 reply:(void (^)(void))arg4;
+- (void)registerToPublishDomains:(NSSet *)arg1;
+- (void)unregisterFromPublishingDomains:(NSSet *)arg1;
 @end
 

@@ -22,6 +22,8 @@
 - (long long)q_itemTypeForStrokeGroup:(id)arg1 recognitionResult:(id)arg2;
 - (id)q_strokeGroupItemsFromSessionResult:(id)arg1;
 - (void)q_updateQueryResult;
+- (id)tokenizedStrokeResultForInitialStrokes:(id)arg1 point:(struct CGPoint)arg2 tokenizationLevel:(long long)arg3;
+- (id)tokenizedStrokeResultForInitialStrokes:(id)arg1 point:(struct CGPoint)arg2 tokenizationLevel:(long long)arg3 completion:(CDUnknownBlockType)arg4 shouldCancel:(CDUnknownBlockType)arg5;
 
 @end
 

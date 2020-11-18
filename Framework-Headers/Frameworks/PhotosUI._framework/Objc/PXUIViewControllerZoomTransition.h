@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_leafViewControllerForTransitionWithViewController:(id)arg1;
 + (BOOL)isTransitionSupportedWithMasterViewController:(id)arg1 detailViewController:(id)arg2;
 - (void)animateTransition:(id)arg1;
 - (void)animateZoomTransition:(id)arg1 withInitialVelocity:(struct PXDisplayVelocity)arg2 completionHandler:(CDUnknownBlockType)arg3;

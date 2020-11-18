@@ -11,19 +11,26 @@
 @interface CNChangeHistoryDeleteGroupEvent : CNChangeHistoryEvent
 {
     NSString *_groupIdentifier;
+    NSString *_externalURI;
+    NSString *_externalModificationTag;
 }
 
+@property (readonly, copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag=_externalModificationTag;
+@property (readonly, copy, nonatomic) NSString *externalURI; // @synthesize externalURI=_externalURI;
 @property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 
++ (unsigned long long)instanceSortOrder;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)acceptEventVisitor:(id)arg1;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGroupIdentifier:(id)arg1;
+- (id)initWithGroupIdentifier:(id)arg1 externalURI:(id)arg2 externalModificationTag:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -6,11 +6,12 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class INAppInfo, NSArray, NSString;
+@class INAppInfo, NSArray, NSString, NSURL;
 
 @protocol INVCIntentDefinitionManager <NSObject>
++ (NSArray *)allBundleIdentifiers;
 + (INAppInfo *)appInfoForBundleID:(NSString *)arg1;
-+ (NSArray *)intentDefinitionLocalizableFileURLsForBundleID:(NSString *)arg1;
++ (NSURL *)intentDefinitionBundleURLForBundleID:(NSString *)arg1;
 + (NSArray *)intentDefinitionURLsForBundleID:(NSString *)arg1;
 @end
 

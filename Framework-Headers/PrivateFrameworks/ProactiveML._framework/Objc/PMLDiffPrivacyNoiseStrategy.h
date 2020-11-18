@@ -23,9 +23,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property float minimumMagnitude; // @synthesize minimumMagnitude=_minimumMagnitude;
-@property long long noiseMechanism; // @synthesize noiseMechanism=_noiseMechanism;
-@property CDStruct_cd4a7bf5 noiseScaleFactors; // @synthesize noiseScaleFactors=_noiseScaleFactors;
+@property (nonatomic) float minimumMagnitude; // @synthesize minimumMagnitude=_minimumMagnitude;
+@property (nonatomic) long long noiseMechanism; // @synthesize noiseMechanism=_noiseMechanism;
+@property (nonatomic) CDStruct_cd4a7bf5 noiseScaleFactors; // @synthesize noiseScaleFactors=_noiseScaleFactors;
 @property (readonly) Class superclass;
 
 + (id)gaussianNoiseWithScaleFactor:(float)arg1 minimumMagnitude:(float)arg2 seed:(int)arg3;

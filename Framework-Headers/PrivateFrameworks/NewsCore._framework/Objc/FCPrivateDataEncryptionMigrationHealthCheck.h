@@ -42,7 +42,9 @@
 - (id)_prepareUserInfoAndReturnExpectations;
 - (void)fetchOriginalDataShouldBeDeletedAfterMigrationForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionIsAllowedForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchPrivateDataEncryptionIsRequiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionMigrationIsDesiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchShouldSecureSubscriptionsForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)run;
 

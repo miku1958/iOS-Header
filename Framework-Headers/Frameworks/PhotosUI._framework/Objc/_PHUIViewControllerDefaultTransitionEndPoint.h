@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (id)contentViewForZoomTransition:(id)arg1;
 - (id)init;
 - (id)initWithViewController:(id)arg1;
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forTransition:(id)arg2;

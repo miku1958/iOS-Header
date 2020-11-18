@@ -17,6 +17,7 @@
     HKAxisLabelStyle *_minMaxLabelStyle;
     HKAxisLabelStyle *_minMaxValueStyle;
     HKStrokeStyle *_minMaxPointStyle;
+    long long _zeroCountForGap;
 }
 
 @property (nonatomic) BOOL excludeDistribution; // @synthesize excludeDistribution=_excludeDistribution;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) HKAxisLabelStyle *minMaxValueStyle; // @synthesize minMaxValueStyle=_minMaxValueStyle;
 @property (copy, nonatomic) HKStrokeStyle *selectedStrokeStyle; // @synthesize selectedStrokeStyle=_selectedStrokeStyle;
 @property (copy, nonatomic) HKStrokeStyle *unselectedStrokeStyle; // @synthesize unselectedStrokeStyle=_unselectedStrokeStyle;
+@property (nonatomic) long long zeroCountForGap; // @synthesize zeroCountForGap=_zeroCountForGap;
 
 - (void).cxx_destruct;
 - (void)_drawMinMaxLabelsForMin:(struct CGPoint)arg1 max:(struct CGPoint)arg2 pointTransform:(struct CGAffineTransform)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
@@ -36,6 +38,7 @@
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (double)distanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
+- (id)init;
 - (id)marginsForYAxis:(id)arg1 chartRect:(struct CGRect)arg2;
 - (BOOL)supportsMultiTouchSelection;
 - (double)xAxisDistanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;

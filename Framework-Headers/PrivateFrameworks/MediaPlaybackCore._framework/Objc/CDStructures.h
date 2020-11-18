@@ -21,6 +21,16 @@ struct AudioBufferList {
     struct AudioBuffer _field2[1];
 };
 
+struct CGPoint {
+    double _field1;
+    double _field2;
+};
+
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
 struct CGSize {
     double _field1;
     double _field2;
@@ -83,6 +93,14 @@ typedef struct {
     BOOL _field3;
     BOOL _field4;
 } CDStruct_8024420c;
+
+typedef struct {
+    unsigned long long flags;
+    unsigned long long machAbsoluteTime;
+    unsigned long long rawNanoSeconds;
+    unsigned long long timebase;
+    double userSecondsSinceReferenceDate;
+} CDStruct_aeb9a598;
 
 typedef struct {
     double snapshotTime;

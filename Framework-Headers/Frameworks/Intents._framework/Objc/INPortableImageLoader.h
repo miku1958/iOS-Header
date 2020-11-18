@@ -14,21 +14,20 @@
 
 @interface INPortableImageLoader : NSObject <INImageLoading, NSSecureCoding>
 {
-    NSString *_helperClassName;
     id<INPortableImageLoaderHelping> _helper;
 }
 
-@property (copy, nonatomic, setter=_setHelperClassName:) NSString *_helperClassName; // @synthesize _helperClassName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) id<INPortableImageLoaderHelping> helper; // @synthesize helper=_helper;
+@property (readonly, copy, nonatomic) id<INPortableImageLoaderHelping> helper; // @synthesize helper=_helper;
 @property (readonly, nonatomic) NSString *serviceIdentifier;
 @property (readonly, nonatomic) unsigned long long servicePriority;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_helperClassName;
 - (BOOL)canLoadImageDataForImage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

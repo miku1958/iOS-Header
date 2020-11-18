@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol NSCollectionLayoutContainer, _UICollectionLayoutSupplementaryEnrolling, _UICollectionPreferredSizes;
 
 @protocol _UICollectionLayoutAuxillaryHosting <NSObject>
@@ -22,5 +22,6 @@
 
 @optional
 - (struct CGPoint)auxillaryHostAdditionalFrameOffset;
+- (struct NSDirectionalEdgeInsets)auxillaryHostEdgeInsetsForAuxillaryOfKind:(NSString *)arg1;
 @end
 

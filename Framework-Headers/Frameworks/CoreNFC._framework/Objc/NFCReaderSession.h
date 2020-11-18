@@ -11,12 +11,12 @@
 #import <CoreNFC/NFCSessionCallbacks-Protocol.h>
 #import <CoreNFC/NFReaderSessionCallbacks-Protocol.h>
 
-@class NFWeakReference, NSNumber, NSString;
+@class NSNumber, NSString;
 @protocol NFReaderSessionInterface><NSXPCProxyCreating, NFTag, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NFCReaderSession : NSObject <NFReaderSessionCallbacks, NFCHardwareManagerCallbacks, NFCSessionCallbacks, NFCReaderSession>
 {
-    NFWeakReference *_delegate;
+    id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
     NSObject<NFReaderSessionInterface><NSXPCProxyCreating> *_proxy;
@@ -50,6 +50,7 @@
 
 + (BOOL)featureAvailable:(unsigned long long)arg1;
 + (BOOL)readingAvailable;
+- (void).cxx_destruct;
 - (void)_callbackDidBecomeActive;
 - (void)_callbackDidInvalidateWithError:(id)arg1;
 - (BOOL)_connectTag:(id)arg1 error:(id *)arg2;
@@ -82,6 +83,7 @@
 - (void)restartPolling;
 - (void)submitBlockOnDelegateQueue:(CDUnknownBlockType)arg1;
 - (void)submitBlockOnSessionQueue:(CDUnknownBlockType)arg1;
+- (void)submitBlockOnSessionQueueWithDelay:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)transceive:(id)arg1 tagUpdate:(id *)arg2 error:(id *)arg3;
 - (BOOL)validateDelegate:(id)arg1 expectedType:(long long)arg2;
 - (id)writeLockNdef;

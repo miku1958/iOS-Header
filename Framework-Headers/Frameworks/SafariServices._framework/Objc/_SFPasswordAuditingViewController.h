@@ -6,37 +6,83 @@
 
 #import <SafariServices/_SFPasswordTableViewController.h>
 
+#import <SafariServices/ASAccountAuthenticationModificationControllerDelegate-Protocol.h>
+#import <SafariServices/ASAccountAuthenticationModificationControllerPresentationContextProviding-Protocol.h>
+#import <SafariServices/PSStateRestoration-Protocol.h>
+#import <SafariServices/SFHighPriorityRecommendationDataDelegate-Protocol.h>
+#import <SafariServices/SFPasswordBreachToggleCellDelegate-Protocol.h>
 #import <SafariServices/SFPasswordDetailViewControllerDelegate-Protocol.h>
+#import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
+#import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSString, WBSAutoFillQuirksManager, WBSPasswordEvaluator, WBSSavedPasswordAuditor, WBSSavedPasswordStore;
-@protocol _SFPasswordAuditingViewControllerDelegate;
+@class ASAccountAuthenticationModificationController, NSArray, NSObject, NSString, SFHighPriorityRecommendationData, SFSafariViewController, UIActivityIndicatorView, WBSAutoFillQuirksManager, WBSPasswordGenerationManager, WBSPasswordWarningManager, WBSSavedPassword, WBSSavedPasswordStore, _SFTableViewDiffableDataSource;
+@protocol OS_dispatch_queue, _SFPasswordAuditingViewControllerDelegate;
 
-@interface _SFPasswordAuditingViewController : _SFPasswordTableViewController <SFPasswordDetailViewControllerDelegate>
+@interface _SFPasswordAuditingViewController : _SFPasswordTableViewController <SFPasswordBreachToggleCellDelegate, SFHighPriorityRecommendationDataDelegate, SFPasswordDetailViewControllerDelegate, _SFTableViewDiffableDataSourceDelegate, _ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, PSStateRestoration>
 {
     WBSAutoFillQuirksManager *_autoFillQuirksManager;
-    WBSSavedPasswordAuditor *_savedPasswordAuditor;
     WBSSavedPasswordStore *_savedPasswordStore;
-    NSArray *_flaggedPasswordCellData;
-    WBSPasswordEvaluator *_passwordEvaluator;
+    _SFTableViewDiffableDataSource *_tableViewDiffableDataSource;
+    WBSPasswordWarningManager *_passwordWarningManager;
+    NSArray *_highPriorityRecommendationData;
+    NSArray *_flaggedPasswordData;
+    NSObject<OS_dispatch_queue> *_diffableDataSourceQueue;
+    unsigned long long _numberOfWarnings;
+    UIActivityIndicatorView *_spinner;
+    SFSafariViewController *_changePasswordOnWebsiteSafariViewController;
+    SFHighPriorityRecommendationData *_recommendationForMostRecentSafariViewController;
+    WBSPasswordGenerationManager *_passwordGenerator;
+    SFHighPriorityRecommendationData *_passwordDataForCurrentUpgrade;
+    ASAccountAuthenticationModificationController *_accountAuthenticationModificationController;
     id<_SFPasswordAuditingViewControllerDelegate> _delegate;
+    WBSSavedPassword *_passwordToRemoveAfterCompletedUpgradeInDetailView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFPasswordAuditingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) WBSSavedPassword *passwordToRemoveAfterCompletedUpgradeInDetailView; // @synthesize passwordToRemoveAfterCompletedUpgradeInDetailView=_passwordToRemoveAfterCompletedUpgradeInDetailView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_reloadSavedPasswords;
+- (id)_cellForIdentifier:(id)arg1 indexPath:(id)arg2;
+- (void)_changePasswordOnWebsiteForHighPriorityRecommendation:(id)arg1;
+- (void)_completedSignInWithAppleUpgrade;
+- (void)_completedStrongPasswordUpgrade;
+- (void)_configureHighPriorityInformationCell:(id)arg1 withHighPriorityRecommendationData:(id)arg2;
+- (void)_findAndRemoveEntryForCompletedDetailViewUpgrade;
+- (void)_initiateChangeToStrongPasswordForHighPriorityRecommendation:(id)arg1;
+- (id)_passwordBreachToggleCell;
+- (id)_passwordGenerationManager;
+- (void)_passwordStoreDidUpdate;
+- (void)_reloadSavedPasswordsForceUpdate:(BOOL)arg1;
+- (void)_reloadTableViewDiffableDataSource;
+- (void)_reloadTableViewDiffableDataSourceOnInternalQueue;
+- (void)_removeHighPriorityRecommendation:(id)arg1;
+- (BOOL)_shouldUseInsetGroupedStyle;
+- (id)_standardRecommendationCellWithPasswordCellData:(id)arg1;
+- (void)_upgradeToSignInWithAppleForHighPriorityRecommendation:(id)arg1;
 - (id)_warningStringForPasswordCellData:(id)arg1;
-- (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)passwordDetailViewControllerDidUpdate:(id)arg1;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)accountAuthenticationModificationController:(id)arg1 didFailRequest:(id)arg2 withError:(id)arg3;
+- (void)accountAuthenticationModificationController:(id)arg1 didSuccessfullyCompleteRequest:(id)arg2 withUserInfo:(id)arg3;
+- (void)accountModificationExtensionManagerExtensionListDidChange:(id)arg1;
+- (BOOL)canBeShownFromSuspendedState;
+- (id)dataSource:(id)arg1 footerTextForSection:(long long)arg2;
+- (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
+- (void)didSetPasswordBreachDetectionState:(BOOL)arg1;
+- (void)highPriorityRecommendationDataDidUpdate:(id)arg1;
+- (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2 passwordWarningManager:(id)arg3;
+- (id)passwordGeneratorForPasswordDetailViewController:(id)arg1;
+- (id)passwordWarningManagerForPasswordDetailViewController:(id)arg1;
+- (id)presentationAnchorForAccountAuthenticationModificationController:(id)arg1;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

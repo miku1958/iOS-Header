@@ -6,16 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDSyncOperationManager, HMFExponentialBackoffTimer, NSMutableArray, NSString;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDSyncOperationQueue : HMFObject
+@class HMDSyncOperationManager, HMFExponentialBackoffTimer, NSArray, NSMutableArray, NSString;
+
+@interface HMDSyncOperationQueue : HMFObject <HMFLogging>
 {
+    struct os_unfair_lock_s _lock;
+    NSMutableArray *_stagedOperations;
+    NSMutableArray *_waitingOperations;
     BOOL _hasExponentialBackoff;
     NSString *_name;
     HMFExponentialBackoffTimer *_backoffTimer;
     HMDSyncOperationManager *_manager;
-    NSMutableArray *_stagedOperations;
-    NSMutableArray *_waitingOperations;
     double _initialDelay;
     double _initialBackoff;
 }
@@ -23,20 +26,28 @@
 @property (strong, nonatomic) HMFExponentialBackoffTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
 @property (readonly, nonatomic) long long count;
 @property (readonly, nonatomic) long long countTotal;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasExponentialBackoff; // @synthesize hasExponentialBackoff=_hasExponentialBackoff;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double initialBackoff; // @synthesize initialBackoff=_initialBackoff;
 @property (nonatomic) double initialDelay; // @synthesize initialDelay=_initialDelay;
 @property (weak, nonatomic) HMDSyncOperationManager *manager; // @synthesize manager=_manager;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSMutableArray *stagedOperations; // @synthesize stagedOperations=_stagedOperations;
-@property (strong, nonatomic) NSMutableArray *waitingOperations; // @synthesize waitingOperations=_waitingOperations;
+@property (readonly, copy) NSArray *stagedOperations;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSArray *waitingOperations;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_addOperation:(id)arg1;
+- (void)_addStagedOperation:(id)arg1;
+- (void)_addWaitingOperation:(id)arg1;
 - (void)_createBackoffTimer;
+- (void)_removeStagedOperation:(id)arg1;
+- (void)_removeWaitingOperation:(id)arg1;
 - (void)addOperation:(id)arg1 withDelay:(double)arg2;
 - (id)allOperations;
-- (id)description;
 - (void)dropAllOperations;
 - (void)dropOperation:(id)arg1;
 - (id)initName:(id)arg1 syncManager:(id)arg2 initialDelay:(double)arg3 initialBackoff:(double)arg4 hasBackoff:(BOOL)arg5;

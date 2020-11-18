@@ -16,6 +16,7 @@
 @property (readonly, nonatomic, getter=ams_isHSA2) BOOL ams_HSA2;
 @property (readonly, nonatomic, getter=ams_isIDMSAccount) BOOL ams_IDMSAccount;
 @property (readonly, nonatomic) NSString *ams_altDSID;
+@property (readonly, nonatomic) NSArray *ams_automaticDownloadKinds;
 @property (readonly, nonatomic) NSArray *ams_cookies;
 @property (readonly, nonatomic) NSString *ams_creditsString;
 @property (readonly, nonatomic, getter=ams_isDemoAccount) BOOL ams_demoAccount;
@@ -31,6 +32,7 @@
 @property (nonatomic, setter=ams_setPaidPasswordPromptSetting:) unsigned long long ams_paidPasswordPromptSetting;
 @property (readonly, nonatomic) NSDictionary *ams_privacyAcknowledgement;
 @property (readonly, nonatomic, getter=ams_isPrivateListeningEnabled) BOOL ams_privateListeningEnabled;
+@property (readonly, nonatomic) NSDictionary *ams_pushRegistrationThrottleMap;
 @property (readonly, nonatomic, getter=ams_isSandboxAccount) BOOL ams_sandboxAccount;
 @property (readonly, nonatomic) unsigned long long ams_securityLevel;
 @property (readonly, nonatomic) NSString *ams_storefront;
@@ -80,6 +82,7 @@
 - (BOOL)ams_isPrivateListeningEnabledForHomeUserIdentifier:(id)arg1;
 - (BOOL)ams_isValidPayment;
 - (BOOL)ams_isiCloudFamily;
+- (unsigned long long)ams_lastAuthenticationCredentialSource;
 - (id)ams_lastAuthenticationServerResponse;
 - (long long)ams_mergePrivacyAcknowledgement:(id)arg1;
 - (id)ams_password;
@@ -106,10 +109,13 @@
 - (void)ams_setHomeIdentifier:(id)arg1;
 - (void)ams_setHomeUserID:(id)arg1;
 - (void)ams_setInGoodStanding:(BOOL)arg1;
+- (void)ams_setInUse:(BOOL)arg1;
+- (void)ams_setLastAuthenticationCredentialSource:(unsigned long long)arg1;
 - (void)ams_setLastName:(id)arg1;
 - (void)ams_setManagedAppleID:(BOOL)arg1;
 - (void)ams_setPassword:(id)arg1;
 - (void)ams_setPrivateListeningEnabled:(BOOL)arg1 forHomeUserIdentifier:(id)arg2;
+- (void)ams_setPushRegistrationThrottleMap:(id)arg1;
 - (void)ams_setRawPassword:(id)arg1;
 - (void)ams_setRegisterSuccessCriteria:(id)arg1;
 - (void)ams_setServerResponse:(id)arg1;

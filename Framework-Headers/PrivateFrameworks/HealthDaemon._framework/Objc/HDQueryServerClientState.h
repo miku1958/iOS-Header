@@ -13,6 +13,7 @@
     unsigned int _applicationState;
 }
 
+@property (readonly, nonatomic) unsigned int applicationState; // @synthesize applicationState=_applicationState;
 @property (readonly, nonatomic, getter=isForeground) BOOL foreground;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSCollectionLayoutSection, _UICollectionPreferredSizes;
-@protocol _UICollectionLayoutSectionSolver;
+@protocol _UICollectionLayoutSectionSolver, _UIContentInsetsEnvironment;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionSectionSolutionBookmark : NSObject
@@ -15,12 +15,15 @@ __attribute__((visibility("hidden")))
     id<_UICollectionLayoutSectionSolver> _solution;
     NSCollectionLayoutSection *_section;
     struct CGRect _globalFrame;
+    id<_UIContentInsetsEnvironment> _insetEnvironment;
     struct CGSize _contentSize;
     _UICollectionPreferredSizes *_preferredSizes;
 }
 
+@property (readonly, nonatomic) struct CGPoint contentInsetsOffset;
 @property (readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) struct CGRect globalFrame; // @synthesize globalFrame=_globalFrame;
+@property (readonly, nonatomic) id<_UIContentInsetsEnvironment> insetEnvironment; // @synthesize insetEnvironment=_insetEnvironment;
 @property (readonly, nonatomic) struct CGRect orthogonalContentLayoutFrame;
 @property (readonly, nonatomic) struct CGSize orthogonalContentSize;
 @property (readonly, nonatomic) _UICollectionPreferredSizes *preferredSizes; // @synthesize preferredSizes=_preferredSizes;
@@ -30,8 +33,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)copyWithGlobalFrame:(struct CGRect)arg1;
 - (id)description;
-- (id)initWithSolution:(id)arg1 globalFrame:(struct CGRect)arg2 contentSize:(struct CGSize)arg3 section:(id)arg4;
-- (id)initWithSolution:(id)arg1 globalFrame:(struct CGRect)arg2 contentSize:(struct CGSize)arg3 section:(id)arg4 preferredSizes:(id)arg5;
+- (id)initWithSolution:(id)arg1 globalFrame:(struct CGRect)arg2 insetEnvironment:(id)arg3 contentSize:(struct CGSize)arg4 section:(id)arg5 preferredSizes:(id)arg6;
 
 @end
 

@@ -43,6 +43,8 @@
 - (void)appendCellList:(id)arg1;
 - (void)appendCellLists:(id)arg1;
 - (unsigned long long)cellCount;
+- (id)cellRegionWithTableInfo:(id)arg1;
+- (id)cellRegionWithTableInfo:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (vector_793e6c56)cellUIDRanges;
 - (id)changeDescriptorsForTable:(id)arg1;
 - (void)clearDataListIDs;

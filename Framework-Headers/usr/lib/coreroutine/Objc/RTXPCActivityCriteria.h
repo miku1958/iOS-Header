@@ -14,24 +14,34 @@
     BOOL _requireInexpensiveNetworkConnectivity;
     BOOL _allowBattery;
     BOOL _powerNap;
+    BOOL _cpuIntensive;
+    BOOL _userRequestedBackgroundTask;
+    BOOL _postInstall;
+    BOOL _requiresBuddyComplete;
     double _interval;
     double _delay;
     double _gracePeriod;
     unsigned long long _priority;
     unsigned long long _networkTransferDirection;
+    double _expectedDuration;
     NSMutableDictionary *_additionalCriteria;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *additionalCriteria; // @synthesize additionalCriteria=_additionalCriteria;
 @property (readonly, nonatomic) BOOL allowBattery; // @synthesize allowBattery=_allowBattery;
+@property (nonatomic) BOOL cpuIntensive; // @synthesize cpuIntensive=_cpuIntensive;
 @property (readonly, nonatomic) double delay; // @synthesize delay=_delay;
+@property (nonatomic) double expectedDuration; // @synthesize expectedDuration=_expectedDuration;
 @property (readonly, nonatomic) double gracePeriod; // @synthesize gracePeriod=_gracePeriod;
 @property (readonly, nonatomic) double interval; // @synthesize interval=_interval;
 @property (readonly, nonatomic) unsigned long long networkTransferDirection; // @synthesize networkTransferDirection=_networkTransferDirection;
+@property (nonatomic) BOOL postInstall; // @synthesize postInstall=_postInstall;
 @property (readonly, nonatomic) BOOL powerNap; // @synthesize powerNap=_powerNap;
 @property (readonly, nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) BOOL requireInexpensiveNetworkConnectivity; // @synthesize requireInexpensiveNetworkConnectivity=_requireInexpensiveNetworkConnectivity;
 @property (readonly, nonatomic) BOOL requireNetworkConnectivity; // @synthesize requireNetworkConnectivity=_requireNetworkConnectivity;
+@property (nonatomic) BOOL requiresBuddyComplete; // @synthesize requiresBuddyComplete=_requiresBuddyComplete;
+@property (nonatomic) BOOL userRequestedBackgroundTask; // @synthesize userRequestedBackgroundTask=_userRequestedBackgroundTask;
 
 + (const char *)convertNetworkTransferDirection:(unsigned long long)arg1;
 + (const char *)convertPriority:(unsigned long long)arg1;
@@ -39,7 +49,6 @@
 - (id)description;
 - (id)init;
 - (id)initWithInterval:(double)arg1 gracePeriod:(double)arg2 priority:(unsigned long long)arg3 requireNetworkConnectivity:(BOOL)arg4 requireInexpensiveNetworkConnectivity:(BOOL)arg5 networkTransferDirection:(unsigned long long)arg6 allowBattery:(BOOL)arg7 powerNap:(BOOL)arg8;
-- (void)setCriteria:(id)arg1 forKey:(id)arg2;
 
 @end
 

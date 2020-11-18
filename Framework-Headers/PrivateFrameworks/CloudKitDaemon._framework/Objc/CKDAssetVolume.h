@@ -8,7 +8,6 @@
 
 @class NSNumber, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetVolume : CKObject
 {
     NSNumber *_volumeIndex;

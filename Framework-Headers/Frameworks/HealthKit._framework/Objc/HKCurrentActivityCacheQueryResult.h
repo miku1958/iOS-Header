@@ -14,12 +14,14 @@
 {
     HKActivityCache *_currentActivityCache;
     NSArray *_activeEnergyResults;
+    NSArray *_appleMoveTimeResults;
     NSArray *_appleExerciseTimeResults;
     NSArray *_appleStandHourResults;
 }
 
 @property (copy, nonatomic) NSArray *activeEnergyResults; // @synthesize activeEnergyResults=_activeEnergyResults;
 @property (copy, nonatomic) NSArray *appleExerciseTimeResults; // @synthesize appleExerciseTimeResults=_appleExerciseTimeResults;
+@property (copy, nonatomic) NSArray *appleMoveTimeResults; // @synthesize appleMoveTimeResults=_appleMoveTimeResults;
 @property (copy, nonatomic) NSArray *appleStandHourResults; // @synthesize appleStandHourResults=_appleStandHourResults;
 @property (strong, nonatomic) HKActivityCache *currentActivityCache; // @synthesize currentActivityCache=_currentActivityCache;
 

@@ -6,22 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface TIAnalyticsEventSpec : NSObject
 {
     BOOL _isInputModeRequired;
+    NSDictionary *_fieldSpecsByName;
     NSString *_name;
     NSArray *_fieldSpecs;
 }
 
 @property (readonly, nonatomic) NSArray *fieldSpecs; // @synthesize fieldSpecs=_fieldSpecs;
+@property (readonly, nonatomic) NSDictionary *fieldSpecsByName; // @synthesize fieldSpecsByName=_fieldSpecsByName;
 @property (readonly, nonatomic) BOOL isInputModeRequired; // @synthesize isInputModeRequired=_isInputModeRequired;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)eventSpecWithName:(id)arg1 inputModeRequired:(BOOL)arg2;
 + (id)eventSpecWithName:(id)arg1 inputModeRequired:(BOOL)arg2 fieldSpecs:(id)arg3;
 - (void).cxx_destruct;
+- (id)fieldSpecWithName:(id)arg1;
 - (id)initWithName:(id)arg1 inputModeRequired:(BOOL)arg2 fieldSpecs:(id)arg3;
 
 @end

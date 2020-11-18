@@ -18,11 +18,9 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (strong, nonatomic) AWAttentionAwarenessClient *attentionAwarenessClient; // @synthesize attentionAwarenessClient=_attentionAwarenessClient;
 @property (strong, nonatomic) AWAttentionAwarenessConfiguration *configuration;
 @property (weak, nonatomic) id<SBAttentionAwarenessClientDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 - (void)_handleAttentionAwarenessEvent:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFAccessorySettingMobileTimerAdapter, HFHomePodAlarmItemModule;
+@class HFHomePodAlarmItemModule;
 @protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmItemManager : HFItemManager
@@ -17,7 +17,6 @@
 
 @property (readonly, nonatomic) HFHomePodAlarmItemModule *alarmItemModule; // @synthesize alarmItemModule=_alarmItemModule;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
-@property (readonly, nonatomic) HFAccessorySettingMobileTimerAdapter *mobileTimerAdapter;
 
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;

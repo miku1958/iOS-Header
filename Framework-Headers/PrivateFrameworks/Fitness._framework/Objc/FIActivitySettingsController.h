@@ -24,6 +24,7 @@
 
 @property (nonatomic) long long biologicalSex; // @synthesize biologicalSex=_biologicalSex;
 @property (strong, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
+@property (readonly) unsigned long long experienceType;
 @property (strong, nonatomic) HKQuantity *height; // @synthesize height=_height;
 @property (readonly, nonatomic) HKQuantity *leanBodyMass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;

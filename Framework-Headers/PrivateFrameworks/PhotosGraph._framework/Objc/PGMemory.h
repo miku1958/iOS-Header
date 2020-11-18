@@ -15,8 +15,8 @@
 {
     NSDate *_creationDate;
     PHAssetCollection *_assetCollection;
-    PHAssetCollection *_curatedAssetCollection;
-    PHAssetCollection *_extendedCuratedAssetCollection;
+    NSArray *_curatedAssets;
+    NSArray *_extendedCuratedAssets;
     PHAsset *_curatedKeyAsset;
     NSDate *_localStartDate;
     NSDate *_localEndDate;
@@ -39,7 +39,6 @@
     NSSet *_features;
     NSMutableSet *_persistedFeatures;
     unsigned long long _aggregatedVersions;
-    NSString *_meUUID;
     PGMemoryDebug *_debug;
     long long _notificationQuality;
     NSSet *_momentIDs;
@@ -54,7 +53,7 @@
 @property (strong, nonatomic) NSArray *blacklistableFeatures; // @synthesize blacklistableFeatures=_blacklistableFeatures;
 @property (nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
-@property (strong, nonatomic) PHAssetCollection *curatedAssetCollection; // @synthesize curatedAssetCollection=_curatedAssetCollection;
+@property (strong, nonatomic) NSArray *curatedAssets; // @synthesize curatedAssets=_curatedAssets;
 @property (strong, nonatomic) PHAsset *curatedKeyAsset; // @synthesize curatedKeyAsset=_curatedKeyAsset;
 @property (nonatomic) unsigned short curationAlgorithmsVersion;
 @property (strong, nonatomic) PGMemoryDebug *debug; // @synthesize debug=_debug;
@@ -63,7 +62,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
-@property (strong, nonatomic) PHAssetCollection *extendedCuratedAssetCollection; // @synthesize extendedCuratedAssetCollection=_extendedCuratedAssetCollection;
+@property (strong, nonatomic) NSArray *extendedCuratedAssets; // @synthesize extendedCuratedAssets=_extendedCuratedAssets;
 @property (strong, nonatomic) NSSet *features; // @synthesize features=_features;
 @property (nonatomic) unsigned short graphSchemaVersion;
 @property (readonly) unsigned long long hash;
@@ -75,7 +74,6 @@
 @property (strong, nonatomic) CLLocation *matchedLocation; // @synthesize matchedLocation=_matchedLocation;
 @property (strong, nonatomic) NSSet *matchedPeople; // @synthesize matchedPeople=_matchedPeople;
 @property (nonatomic) unsigned long long matchedTypes; // @synthesize matchedTypes=_matchedTypes;
-@property (strong, nonatomic) NSString *meUUID; // @synthesize meUUID=_meUUID;
 @property (readonly, nonatomic) NSArray *meaningLabels;
 @property (nonatomic) unsigned short memoriesAlgorithmsVersion;
 @property (strong, nonatomic) NSSet *momentIDs; // @synthesize momentIDs=_momentIDs;

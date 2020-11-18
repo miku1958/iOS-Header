@@ -9,13 +9,16 @@
 #import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSNumber, NSString, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
-@protocol PXPhotosDataSourceProvider;
+@class NSNumber, NSObject, NSPredicate, NSString, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
+@protocol OS_dispatch_queue, PXPhotosDataSourceProvider;
 
 @interface PXPhotoKitAssetsDataSourceManager : PXAssetsDataSourceManager <PXPhotosDataSourceChangeObserver, PXMutableAssetsDataSourceManager>
 {
     PXPhotosDataSource *_photosDataSource;
     NSNumber *_backgroundFetchOriginSection;
+    BOOL _isLoadingInitialPhotosDataSource;
+    NSObject<OS_dispatch_queue> *_initialDataSourceLoadingQueue;
+    NSString *_localizedLoadingInitialDataSourceMessage;
     id<PXPhotosDataSourceProvider> _photosDataSourceProvider;
 }
 
@@ -23,31 +26,48 @@
 @property (readonly, nonatomic) PXPhotoKitAssetsDataSource *dataSource; // @dynamic dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSPredicate *filterPredicate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXPhotosDataSource *photosDataSource;
 @property (strong, nonatomic) id<PXPhotosDataSourceProvider> photosDataSourceProvider; // @synthesize photosDataSourceProvider=_photosDataSourceProvider;
 @property (readonly) Class superclass;
 
 + (id)dataSourceManagerForAssetCollection:(id)arg1;
++ (id)dataSourceManagerForAssetCollection:(id)arg1 existingAssetsFetchResult:(id)arg2 existingKeyAssetsFetchResult:(id)arg3 fetchPropertySets:(id)arg4 basePredicate:(id)arg5 options:(unsigned long long)arg6;
++ (id)dataSourceManagerForConfiguration:(id)arg1;
 + (id)dataSourceManagerWithAsset:(id)arg1;
++ (id)dataSourceManagerWithAsset:(id)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)_createAssetsDataSourceWithPhotosDataSource:(id)arg1 withChange:(id)arg2;
 - (void)_ensurePhotosDataSource;
 - (id)createInitialDataSource;
 - (void)dealloc;
+- (void)excludeAssetsAtIndexPaths:(id)arg1;
 - (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (BOOL)forceAccurateSectionsIfNeeded:(id)arg1;
+- (void)forceIncludeAssetsAtIndexPaths:(id)arg1;
 - (id)init;
 - (id)initWithPhotosDataSource:(id)arg1;
 - (id)initWithPhotosDataSourceProvider:(id)arg1;
+- (BOOL)isBackgroundFetching;
+- (BOOL)isLoadingInitialDataSource;
+- (id)localizedEmptyPlaceholderMessage;
+- (id)localizedEmptyPlaceholderTitle;
+- (id)localizedLoadingInitialDataSourceMessage;
 - (id)pauseChangeDeliveryWithTimeout:(double)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (void)photosDataSourceDidFinishBackgroundFetching:(id)arg1;
 - (id)photosDataSourceInterestingAssetReferences:(id)arg1;
+- (void)refreshResultsForAssetCollection:(id)arg1;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
 - (void)setCurationEnabled:(BOOL)arg1 forAssetCollection:(id)arg2;
+- (void)setFilterPredicate:(id)arg1 provideIncrementalChangeDetailsForAssetCollections:(id)arg2;
+- (void)setFilteringDisabled:(BOOL)arg1 forAssetCollection:(id)arg2;
 - (void)setPhotosDataSource:(id)arg1 publishIntermediateEmptySnapshot:(BOOL)arg2;
 - (void)startBackgroundFetchIfNeeded;
+- (void)stopExcludingAssets:(id)arg1;
+- (void)stopForceIncludingAllAssets;
+- (BOOL)supportsFiltering;
 - (void)updateWithPhotosDataSource:(id)arg1 andDataSourceChange:(id)arg2;
 
 @end

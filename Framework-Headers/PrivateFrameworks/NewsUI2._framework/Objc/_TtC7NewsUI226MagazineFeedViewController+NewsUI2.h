@@ -6,7 +6,20 @@
 
 #import <NewsUI2/_TtC7NewsUI226MagazineFeedViewController.h>
 
-@interface _TtC7NewsUI226MagazineFeedViewController (NewsUI2)
+#import <NewsUI2/TUDeselectable-Protocol.h>
+#import <NewsUI2/TUKeyCommandTraversable-Protocol.h>
+#import <NewsUI2/TUPluggable-Protocol.h>
+
+@interface _TtC7NewsUI226MagazineFeedViewController (NewsUI2) <TUPluggable, TUKeyCommandTraversable, TUDeselectable>
+
+@property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) long long pluginVisibleItemCount;
+
+- (void)deselect;
+- (void)initializeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)relayoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startTraversingWithDirection:(long long)arg1;
+- (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

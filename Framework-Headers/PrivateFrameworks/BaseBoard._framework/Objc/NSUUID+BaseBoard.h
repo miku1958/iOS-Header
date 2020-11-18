@@ -18,7 +18,6 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsBSXPCSecureCoding;
-- (id)bs_XPCObject;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)initWithBSXPCCoder:(id)arg1;
 @end

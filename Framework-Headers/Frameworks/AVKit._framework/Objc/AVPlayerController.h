@@ -6,7 +6,7 @@
 
 #import <UIKit/UIResponder.h>
 
-@class AVAsset, AVAssetTrack, AVMediaSelectionOption, AVObservationController, AVPlayer, AVTimecodeController, AVValueTiming, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject, NSString;
+@class AVAsset, AVAssetTrack, AVMediaSelectionOption, AVObservationController, AVPlayer, AVPlayerLayer, AVTimecodeController, AVValueTiming, BSSimpleAssertion, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface AVPlayerController : UIResponder
@@ -54,6 +54,10 @@
     BOOL _forceScanning;
     double _rateBeforeForceScanning;
     BOOL _playingOnSecondScreen;
+    BSSimpleAssertion *_reduceResourceUsageAssertion;
+    double _defaultPlaybackRate;
+    BOOL _touchBarRequiresLinearPlayback;
+    AVTimecodeController *_timecodeController;
     BOOL _atMaxTime;
     BOOL _atMinTime;
     BOOL _scrubbing;
@@ -70,7 +74,6 @@
     BOOL _pictureInPictureActive;
     BOOL _canTogglePictureInPicture;
     BOOL _hasBegunInspection;
-    BOOL _touchBarRequiresLinearPlayback;
     AVPlayer *_player;
     AVObservationController *_observationController;
     AVAsset *_currentAssetIfReady;
@@ -80,13 +83,12 @@
     AVValueTiming *_minTiming;
     AVValueTiming *_maxTiming;
     AVAssetTrack *_currentAudioTrack;
-    AVTimecodeController *_timecodeController;
     double _seekToTime;
     NSDictionary *_metadata;
     NSArray *_contentChapters;
     NSArray *_availableMetadataFormats;
     double _rateBeforeScrubBegan;
-    double _defaultPlaybackRate;
+    AVPlayerLayer *_playerLayerForReducingResources;
     struct CGSize _presentationSize;
     CDStruct_1b6d18a9 _seekToTimeInternal;
 }
@@ -105,14 +107,13 @@
 @property (strong, nonatomic) AVAssetTrack *currentAudioTrack; // @synthesize currentAudioTrack=_currentAudioTrack;
 @property (readonly, nonatomic) NSDate *currentDate;
 @property (readonly, nonatomic) NSDate *currentOrEstimatedDate;
-@property (nonatomic) double defaultPlaybackRate; // @synthesize defaultPlaybackRate=_defaultPlaybackRate;
+@property (nonatomic) double defaultPlaybackRate;
 @property (nonatomic, getter=isDisablingAutomaticTermination) BOOL disablingAutomaticTermination; // @synthesize disablingAutomaticTermination=_disablingAutomaticTermination;
 @property (readonly, nonatomic) NSError *error;
 @property (nonatomic) BOOL handlesAudioSessionInterruptions;
 @property (nonatomic) BOOL hasBegunInspection; // @synthesize hasBegunInspection=_hasBegunInspection;
 @property (nonatomic) BOOL hasProtectedContent; // @synthesize hasProtectedContent=_hasProtectedContent;
 @property (readonly, nonatomic) BOOL hasReadableTimecodes;
-@property (readonly, nonatomic) BOOL hasTimecodes;
 @property (strong, nonatomic) AVValueTiming *maxTiming; // @synthesize maxTiming=_maxTiming;
 @property (readonly, nonatomic) struct CGSize maximumVideoResolution;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
@@ -121,12 +122,14 @@
 @property (nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property (nonatomic, getter=isPictureInPictureSupported) BOOL pictureInPictureSupported; // @synthesize pictureInPictureSupported=_pictureInPictureSupported;
 @property (strong, nonatomic) AVPlayer *player; // @synthesize player=_player;
+@property (weak, nonatomic) AVPlayerLayer *playerLayerForReducingResources; // @synthesize playerLayerForReducingResources=_playerLayerForReducingResources;
 @property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen;
 @property (nonatomic) struct CGSize presentationSize; // @synthesize presentationSize=_presentationSize;
 @property (nonatomic, getter=isPreventingIdleDisplaySleep) BOOL preventingIdleDisplaySleep; // @synthesize preventingIdleDisplaySleep=_preventingIdleDisplaySleep;
 @property (nonatomic, getter=isPreventingIdleSystemSleep) BOOL preventingIdleSystemSleep; // @synthesize preventingIdleSystemSleep=_preventingIdleSystemSleep;
 @property (nonatomic) double rateBeforeScrubBegan; // @synthesize rateBeforeScrubBegan=_rateBeforeScrubBegan;
 @property (readonly, nonatomic, getter=isReadyToPlay) BOOL readyToPlay;
+@property (strong, nonatomic) BSSimpleAssertion *reduceResourceUsageAssertion;
 @property (nonatomic, getter=isScrubbing) BOOL scrubbing; // @synthesize scrubbing=_scrubbing;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *seekTimer;
 @property (nonatomic) double seekToTime; // @synthesize seekToTime=_seekToTime;
@@ -135,9 +138,9 @@
 @property (getter=isSeekingInternal) BOOL seekingInternal; // @synthesize seekingInternal=_seekingInternal;
 @property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) BOOL supportsVolumeAnimation;
-@property (strong, nonatomic) AVTimecodeController *timecodeController; // @synthesize timecodeController=_timecodeController;
+@property (readonly, nonatomic) AVTimecodeController *timecodeController;
 @property (strong, nonatomic) AVValueTiming *timing; // @synthesize timing=_timing;
-@property (nonatomic) BOOL touchBarRequiresLinearPlayback; // @synthesize touchBarRequiresLinearPlayback=_touchBarRequiresLinearPlayback;
+@property (nonatomic) BOOL touchBarRequiresLinearPlayback;
 @property (readonly, nonatomic) BOOL usesExternalPlaybackWhileExternalScreenIsActive;
 
 + (id)canonicalLanguageIdentifierFromString:(id)arg1;
@@ -219,12 +222,14 @@
 - (void)_updateRateForScrubbingAndSeeking;
 - (void)_updateScanningBackwardRate;
 - (void)_updateScanningForwardRate;
+- (void)acquireResourceReductionAssertion;
 - (void)actuallySeekToTime;
 - (BOOL)allowsExternalPlayback;
 - (id)audioMediaSelectionOptions;
 - (id)audioOptions;
 - (id)audioWaveform;
 - (void)autoplay:(id)arg1;
+- (void)beginReducingResourcesForPictureInPicturePlayerLayer:(id)arg1;
 - (void)beginScanningBackward:(id)arg1;
 - (void)beginScanningForward:(id)arg1;
 - (void)beginScrubbing;
@@ -254,6 +259,7 @@
 - (double)currentTimeWithinEndTimes;
 - (void)dealloc;
 - (void)decreaseVolume:(id)arg1;
+- (void)endReducingResourcesForPictureInPicturePlayerLayer:(id)arg1;
 - (void)endScanningBackward:(id)arg1;
 - (void)endScanningForward:(id)arg1;
 - (void)endScrubbing;
@@ -273,6 +279,7 @@
 - (BOOL)hasMediaSelectionOptions;
 - (BOOL)hasSeekableLiveStreamingContent;
 - (BOOL)hasShareableContent;
+- (BOOL)hasTimecodes;
 - (BOOL)hasTrimmableContent;
 - (BOOL)hasVideo;
 - (void)increaseVolume:(id)arg1;
@@ -287,6 +294,7 @@
 - (BOOL)isPictureInPicturePossible;
 - (BOOL)isPlaying;
 - (BOOL)isPlayingOnExternalScreen;
+- (BOOL)isReducingResourcesForPictureInPicture;
 - (BOOL)isStreaming;
 - (id)keyPathsForValuesAffectingCurrentAudioMediaSelectionOption;
 - (id)keyPathsForValuesAffectingCurrentLegibleMediaSelectionOption;

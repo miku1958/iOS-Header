@@ -6,30 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 
-@class NSError;
+@class NSError, NSString;
 @protocol OS_xpc_object;
 
-@interface GEOXPCReply : NSObject <NSSecureCoding>
+@interface GEOXPCReply : NSObject <GEOXPCSerializable>
 {
     unsigned char _flags;
     NSObject<OS_xpc_object> *_object;
     NSError *_error;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *object; // @synthesize object=_object;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *replyDictionary;
+@property (readonly) Class superclass;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (void)send;
 
 @end

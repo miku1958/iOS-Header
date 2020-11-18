@@ -9,7 +9,7 @@
 #import <HealthToolbox/HKMonthViewControllerDelegate-Protocol.h>
 #import <HealthToolbox/WDUserActivityResponder-Protocol.h>
 
-@class HKDisplayType, NSDate, NSString, UIActivityIndicatorView, UIBarButtonItem, WDProfile, _UIContentUnavailableView;
+@class HKDisplayType, NSDate, NSString, UIActivityIndicatorView, UIBarButtonItem, UITapGestureRecognizer, WDProfile, _UIContentUnavailableView;
 @protocol WDDataListViewControllerDataProvider;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     UIActivityIndicatorView *_spinner;
     long long _cellStyle;
     _UIContentUnavailableView *_noContentView;
+    UITapGestureRecognizer *_navigationBarTapGestureRecognizer;
+    BOOL _showOriginalAppProvenance;
     id<WDDataListViewControllerDataProvider> _dataProvider;
     HKDisplayType *_displayType;
     NSDate *_scrollToDate;
@@ -41,14 +43,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dataProviderEnabled;
 - (id)_defaultCellForTableView:(id)arg1 cellStyle:(long long)arg2 indexPath:(id)arg3 object:(id)arg4;
 - (void)_deleteAllButtonTapped:(id)arg1;
+- (id)_deleteAllDataAlertMessage;
 - (void)_deleteAllWithOptions:(unsigned long long)arg1;
 - (void)_deleteAssociatedSamplesConfirmationPlural:(BOOL)arg1 deleteBlock:(CDUnknownBlockType)arg2;
+- (void)_deleteWorkoutSamplesConfirmationPlural:(BOOL)arg1 deleteBlock:(CDUnknownBlockType)arg2;
 - (void)_displayTypeStringsChanged:(id)arg1;
 - (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 fetchError:(id)arg4;
 - (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (BOOL)_hasSpinnerRowRowAtIndexPath:(id)arg1;
 - (void)_loadIconForSourceObject:(id)arg1 onCell:(id)arg2 ofTableView:(id)arg3;
 - (void)_localeDidChange:(id)arg1;
+- (id)_overridenDisplayImageForSource:(id)arg1;
 - (id)_quantityCellForTableView:(id)arg1 dataObjectSource:(id)arg2;
 - (void)_reloadAllData;
 - (void)_reloadAllDataScrolledToDate:(id)arg1;
@@ -56,13 +61,16 @@ __attribute__((visibility("hidden")))
 - (id)_sampleAtIndexPath:(id)arg1;
 - (id)_sampleTypesForDeleteAll;
 - (BOOL)_shouldShowSpinnerRowInSection:(long long)arg1;
+- (void)_tapGestureRecognizerAction:(id)arg1;
 - (void)_updateActivityForViewDidAppear;
+- (void)_updateNavigationTitle;
 - (void)_updateRightBarButtonItems;
 - (void)applyChangeActivity:(id)arg1;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)dealloc;
 - (void)didTapBackButtonForMonthViewController:(id)arg1;
 - (id)initWithDisplayType:(id)arg1 profile:(id)arg2 dataProvider:(id)arg3 usingInsetStyling:(BOOL)arg4;
+- (BOOL)isEditEnabled;
 - (void)monthViewController:(id)arg1 didSelectDate:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)resetDataAndScrollToDate:(id)arg1;

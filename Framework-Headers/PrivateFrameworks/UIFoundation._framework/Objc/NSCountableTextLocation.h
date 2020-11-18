@@ -26,6 +26,9 @@
 + (id)endOfDocumentLocation;
 - (long long)compare:(id)arg1;
 - (id)initWithIndex:(unsigned long long)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToTextLocation:(id)arg1;
+- (id)shortDescription;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @class MPModelLibraryAddToPlaylistChangeRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryAddToPlaylistChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

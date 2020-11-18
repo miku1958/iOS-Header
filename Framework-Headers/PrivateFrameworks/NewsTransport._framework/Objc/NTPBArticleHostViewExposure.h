@@ -100,6 +100,7 @@
     NSString *_previousWebEmbedId;
     int _previousWebEmbedLocation;
     int _publisherArticleVersion;
+    NSMutableArray *_purchaseOffersItems;
     int _rankInVideoPlaylist;
     NSString *_referencedArticleId;
     NSString *_referringSourceApplication;
@@ -116,6 +117,7 @@
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
     int _topStoryType;
+    NSMutableArray *_topicIds;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
     NSString *_webEmbedId;
@@ -396,6 +398,7 @@
 @property (nonatomic) int previousWebEmbedLocation; // @synthesize previousWebEmbedLocation=_previousWebEmbedLocation;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (nonatomic) long long publisherArticleVersionInt64; // @synthesize publisherArticleVersionInt64=_publisherArticleVersionInt64;
+@property (strong, nonatomic) NSMutableArray *purchaseOffersItems; // @synthesize purchaseOffersItems=_purchaseOffersItems;
 @property (nonatomic) int rankInVideoPlaylist; // @synthesize rankInVideoPlaylist=_rankInVideoPlaylist;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
@@ -414,6 +417,7 @@
 @property (nonatomic) int topStoryMandatoryArticleCount; // @synthesize topStoryMandatoryArticleCount=_topStoryMandatoryArticleCount;
 @property (nonatomic) int topStoryOptionalArticleCount; // @synthesize topStoryOptionalArticleCount=_topStoryOptionalArticleCount;
 @property (nonatomic) int topStoryType; // @synthesize topStoryType=_topStoryType;
+@property (strong, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
 @property (nonatomic) double userFeedbackScore; // @synthesize userFeedbackScore=_userFeedbackScore;
 @property (strong, nonatomic) NSString *viewFrameInScreen; // @synthesize viewFrameInScreen=_viewFrameInScreen;
@@ -426,7 +430,9 @@
 
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
++ (Class)purchaseOffersItemType;
 + (Class)surfacedByTagIdsType;
++ (Class)topicIdsType;
 - (void).cxx_destruct;
 - (int)StringAsArticleType:(id)arg1;
 - (int)StringAsCuratedContentType:(id)arg1;
@@ -448,11 +454,15 @@
 - (int)StringAsWidgetSection:(id)arg1;
 - (void)addFractionalCohortMembership:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
+- (void)addPurchaseOffersItem:(id)arg1;
 - (void)addSurfacedByTagIds:(id)arg1;
+- (void)addTopicIds:(id)arg1;
 - (id)articleTypeAsString:(int)arg1;
 - (void)clearFractionalCohortMemberships;
 - (void)clearNamedEntities;
+- (void)clearPurchaseOffersItems;
 - (void)clearSurfacedByTagIds;
+- (void)clearTopicIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)curatedContentTypeAsString:(int)arg1;
 - (id)description;
@@ -478,10 +488,14 @@
 - (id)paidSubscriberToFeedTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
 - (id)previousWebEmbedLocationAsString:(int)arg1;
+- (id)purchaseOffersItemAtIndex:(unsigned long long)arg1;
+- (unsigned long long)purchaseOffersItemsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)surfacedByTagIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)surfacedByTagIdsCount;
 - (id)topStoryTypeAsString:(int)arg1;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
 - (id)widgetSectionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

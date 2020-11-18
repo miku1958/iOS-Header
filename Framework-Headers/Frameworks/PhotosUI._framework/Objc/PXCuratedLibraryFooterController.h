@@ -12,7 +12,7 @@
 #import <PhotosUICore/PXPhotosGlobalFooterViewDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 
-@class NSString, NSTimer, PXCuratedLibraryFooterViewModel, PXCuratedLibraryItemCountsController, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXGView, PXPhotosGlobalFooterView, PXUpdater, UIView;
+@class NSString, NSTimer, PXAssetsDataSourceCountsController, PXCuratedLibraryFooterViewModel, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXGView, PXPhotosGlobalFooterView, PXUpdater, UIView;
 @protocol PXCuratedLibraryFooterControllerDelegate;
 
 @interface PXCuratedLibraryFooterController : PXObservable <PXMutableCuratedLibraryFooterController, PXChangeObserver, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterViewModelPresentationDelegate>
@@ -35,7 +35,7 @@
     PXGView *_gridView;
     PXCuratedLibraryLayout *_layout;
     PXCuratedLibraryViewModel *_viewModel;
-    PXCuratedLibraryItemCountsController *_itemCountsController;
+    PXAssetsDataSourceCountsController *_itemCountsController;
     PXUpdater *_updater;
     PXCuratedLibraryFooterViewModel *_footerViewModelIfLoaded;
     PXPhotosGlobalFooterView *_footerView;
@@ -54,11 +54,10 @@
 @property (readonly, nonatomic) BOOL hasAppeared; // @synthesize hasAppeared=_hasAppeared;
 @property (nonatomic) BOOL hasAppearedOnce; // @synthesize hasAppearedOnce=_hasAppearedOnce;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isFooterOnlyPartiallyVisible;
 @property (nonatomic) BOOL isFooterVisible; // @synthesize isFooterVisible=_isFooterVisible;
 @property (readonly, nonatomic) BOOL isGridViewVisible;
 @property (readonly, nonatomic) BOOL isPullingFooter;
-@property (readonly, nonatomic) PXCuratedLibraryItemCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
+@property (readonly, nonatomic) PXAssetsDataSourceCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
 @property (readonly, nonatomic) PXCuratedLibraryLayout *layout; // @synthesize layout=_layout;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
@@ -72,6 +71,7 @@
 - (void)_conditionallyRevealPhotosFooterViewWithLastUserScrollTime:(double)arg1;
 - (void)_footerHasImportantInformationDidChange;
 - (void)_invalidateFooter;
+- (void)_invalidateFooterAlpha;
 - (void)_invalidateFooterMaskViewFrame;
 - (void)_invalidateFooterMode;
 - (void)_invalidateIsFooterVisible;
@@ -82,6 +82,7 @@
 - (BOOL)_shouldShowFooterForGridViewState;
 - (BOOL)_shouldShowFooterForPresentedZoomLevel;
 - (void)_updateFooter;
+- (void)_updateFooterAlpha;
 - (void)_updateFooterMaskViewFrame;
 - (void)_updateFooterMode;
 - (void)_updateIsFooterVisible;

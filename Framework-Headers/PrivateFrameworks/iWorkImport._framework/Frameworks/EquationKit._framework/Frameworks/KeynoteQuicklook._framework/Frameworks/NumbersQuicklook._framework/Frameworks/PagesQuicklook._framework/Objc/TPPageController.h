@@ -10,7 +10,7 @@
 #import <PagesQuicklook/TSKChangeSourceObserver-Protocol.h>
 #import <PagesQuicklook/TSWPLayoutOwner-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TPDocumentRoot, TPFootnoteLayoutController, TPPageControllerCanvasDelegate, TPPaginationState, TPTextFlowLayoutController, TPTextWrapController, TSUMutablePointerSet, TSWPLayoutManager, TSWPLayoutMetricsCache;
+@class NSArray, NSMutableArray, NSString, TPDocumentRoot, TPFootnoteLayoutController, TPPageControllerCanvasDelegate, TPTextFlowLayoutController, TPTextWrapController, TSUMutablePointerSet, TSWPLayoutManager, TSWPLayoutMetricsCache, _TtC14PagesQuicklook17TPPageLayoutCache, _TtC14PagesQuicklook17TPPaginationState;
 @protocol TPPageControllerDelegate, TPPageControllerObserver;
 
 @interface TPPageController : NSObject <TPPageLayoutInfoProvider, TSKChangeSourceObserver, TSWPLayoutOwner>
@@ -18,8 +18,9 @@
     _Atomic int _isScrolling;
     _Atomic int _isZooming;
     BOOL _isObservingNotifications;
-    multimap_41f9c887 _pageLayoutCache;
-    TPPaginationState *_paginationState;
+    _TtC14PagesQuicklook17TPPageLayoutCache *_pageLayoutCache;
+    _TtC14PagesQuicklook17TPPaginationState *_paginationState;
+    _TtC14PagesQuicklook17TPPaginationState *_cachedPaginationState;
     TPPageControllerCanvasDelegate *_offscreenSearchDelegate;
     TPFootnoteLayoutController *_footnoteLayoutController;
     BOOL _checkedForBackUp;
@@ -39,13 +40,15 @@
     double _verticalGapBetweenPages;
     unsigned long long _pageHeightCount;
     BOOL _layoutInvalidationPending;
+    BOOL _isPaginating;
+    BOOL _allowParagraphMetrics;
     TPDocumentRoot *_documentRoot;
-    NSMutableArray *_sectionHints;
     id<TPPageControllerDelegate> _delegate;
     id<TPPageControllerObserver> _observer;
     TSWPLayoutManager *_bodyLayoutManager;
 }
 
+@property (nonatomic) BOOL allowParagraphMetrics; // @synthesize allowParagraphMetrics=_allowParagraphMetrics;
 @property (readonly, nonatomic) TSWPLayoutManager *bodyLayoutManager; // @synthesize bodyLayoutManager=_bodyLayoutManager;
 @property (readonly, nonatomic) TPTextWrapController *d_wrapController;
 @property (readonly, copy) NSString *debugDescription;
@@ -62,18 +65,18 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double horizontalPageSeparation;
 @property (readonly, nonatomic) BOOL isPageLayoutRightToLeft;
+@property (readonly, nonatomic) BOOL isPaginating;
+@property (nonatomic) BOOL isPaginating; // @synthesize isPaginating=_isPaginating;
 @property (readonly, nonatomic) unsigned long long lastLaidOutDocumentPageIndex;
 @property (readonly, nonatomic) NSArray *numberOfPagesInEachSection;
 @property (weak, nonatomic) id<TPPageControllerObserver> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) unsigned long long pageCount; // @synthesize pageCount=_lastKnownPageCount;
-@property (readonly, nonatomic) NSMutableArray *sectionHints; // @synthesize sectionHints=_sectionHints;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=textLayoutMustIncludeAdornments) BOOL textLayoutMustIncludeAdornments; // @synthesize textLayoutMustIncludeAdornments=_textLayoutMustIncludeAdornments;
 @property (readonly, nonatomic) double verticalPageSeparation;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)accquireLockAndPerformAction:(CDUnknownBlockType)arg1;
 - (void)addLayoutObserver:(id)arg1;
@@ -113,7 +116,6 @@
 - (void)i_inflateTextFlowsOnPage:(id)arg1;
 - (void)i_invalidateFlows:(id)arg1 startingPage:(id)arg2;
 - (void)i_invalidatePageIndex:(unsigned long long)arg1;
-- (multimap_41f9c887 *)i_pageCache;
 - (id)i_pageHintForPageIndex:(unsigned long long)arg1;
 - (id)i_pageIndexPathForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 allowAfterPaginationPoint:(BOOL)arg3;
 - (void)i_rebuildCachedLayoutChildrenFromStartPage:(unsigned long long)arg1 toEndPage:(unsigned long long)arg2 setNeedsLayout:(BOOL)arg3;
@@ -151,7 +153,6 @@
 - (struct _NSRange)p_footnoteLayoutRangeForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 allowAfterPaginationPoint:(BOOL)arg3;
 - (void)p_forceRestartPaginationAndResetMetricsCache:(BOOL)arg1;
 - (void)p_hasBodyChanged:(id)arg1;
-- (void)p_insertPageLayoutIntoCache:(id)arg1;
 - (void)p_interruptBackgroundPagination;
 - (void)p_invalidatePageIndex:(unsigned long long)arg1;
 - (void)p_invalidateThumbnailsFromSectionIndexToEnd:(unsigned long long)arg1;
@@ -176,7 +177,7 @@
 - (unsigned long long)p_pageHintIndexForAnchoredCharIndex:(unsigned long long)arg1;
 - (unsigned long long)p_pageHintIndexForCharIndex:(unsigned long long)arg1;
 - (id)p_pageHintPrecedingPageIndexPath:(id)arg1;
-- (unsigned long long)p_pageIndexContainingIndex:(unsigned long long)arg1 ofType:(int)arg2;
+- (unsigned long long)p_pageIndexContainingIndex:(unsigned long long)arg1 ofType:(unsigned long long)arg2;
 - (unsigned long long)p_pageIndexForAnchoredCharIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 searchAfterPaginationPoint:(BOOL)arg3;
 - (unsigned long long)p_pageIndexForCharIndex:(unsigned long long)arg1 includeEmptyPages:(BOOL)arg2 caretAffinity:(int)arg3 forcePagination:(BOOL)arg4 searchAfterPaginationPoint:(BOOL)arg5;
 - (unsigned long long)p_pageIndexForFootnoteIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 searchAfterPaginationPoint:(BOOL)arg3;
@@ -200,7 +201,6 @@
 - (void)p_rebuildPageLayoutsContainingDrawableUUIDs:(id)arg1;
 - (void)p_removeDeletedFootnotesOnPageLayout:(id)arg1;
 - (void)p_removeFinishedPageGenerators;
-- (void)p_removePageLayoutFromCache:(id)arg1;
 - (void)p_resetPageGenerators;
 - (id)p_sectionAtSectionIndex:(unsigned long long)arg1;
 - (id)p_sectionHintForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 allowAfterPaginationPoint:(BOOL)arg3;
@@ -241,6 +241,7 @@
 - (void)restoreFromLayoutState:(id)arg1;
 - (void)saveIntoLayoutState:(id)arg1;
 - (struct _NSRange)sectionBodyRangeForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2;
+- (id)sectionForPageIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionIndexForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2;
 - (unsigned long long)sectionPageIndexForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2;
 - (struct _NSRange)sectionPageRangeForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 outEndIsValid:(BOOL *)arg3;

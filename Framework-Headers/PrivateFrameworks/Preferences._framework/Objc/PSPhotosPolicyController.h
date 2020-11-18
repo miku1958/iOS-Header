@@ -14,6 +14,8 @@
 - (void)_setPhotosStatus:(id)arg1 specifier:(id)arg2;
 - (id)appSpecifierWithName:(id)arg1 bundleID:(id)arg2;
 - (id)appSpecifierWithName:(id)arg1 bundleID:(id)arg2 showPhotosAccess:(BOOL)arg3 showPhotosAddAccess:(BOOL)arg4;
+- (void)getAuthorizationStatesForService:(struct __CFString *)arg1 allowedArray:(id *)arg2 limitedArray:(id *)arg3 deniedArray:(id *)arg4;
+- (void)setTCCForService:(struct __CFString *)arg1 appIdentifier:(id)arg2 value:(int)arg3;
 
 @end
 

@@ -69,9 +69,11 @@
 
 + (long long)MarkupTypeForMarkupStyle:(unsigned long long)arg1;
 + (BOOL)PDFAnnotationIsHandledByPDFKit:(id)arg1;
++ (id)PDFAnnotationKeysForRedactionDiscoverability;
 + (id)PDFAnnotationKeysWithStringValues;
 + (id)PDFKitAnnotationKeys;
 + (id)PDFKitAnnotationKeysIgnored;
++ (id)PDFKitAnnotationUndoManagerDisplayNames;
 + (id)PDFKitAppearanceDictionaryArray;
 + (id)PDFKitBorderStyleArray;
 + (id)PDFKitFieldTypeArray;
@@ -81,6 +83,7 @@
 + (id)PDFMarkupStyleLabels;
 + (id)PDFTextBorderColors;
 + (id)PDFTextColors;
++ (id)PresentableStringForAnnotationKey:(id)arg1;
 + (id)SubtypeForPDFMarkupStyle:(unsigned long long)arg1;
 + (BOOL)annotationPageLayerEffectIsFlipped;
 + (id)getProperNameStringFromString:(id)arg1;
@@ -107,6 +110,7 @@
 - (void)_generateFormFieldName;
 - (id)_getAttributedStringForTextWidget;
 - (id)_getFullFieldNameFromDictionary:(struct CGPDFDictionary *)arg1;
+- (BOOL)_isTextMarkupRedaction;
 - (BOOL)_isValidAnnotationKey:(id)arg1;
 - (struct CGPoint)_pointOutsetFrom:(struct CGPoint)arg1 startPoint1:(struct CGPoint)arg2 startPoint2:(struct CGPoint)arg3 lineWidth:(double)arg4;
 - (void)_printDictionary:(id)arg1 atDepth:(int)arg2;
@@ -134,6 +138,7 @@
 - (void)addBorderStyleToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addBorderToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addColor:(id)arg1 forKey:(struct __CFString *)arg2 toDictionaryRef:(struct __CFDictionary *)arg3;
+- (void)addContentsToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addDefaultAppearanceDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addDefaultFieldValueToDictionaryRef:(struct __CFDictionary *)arg1;
 - (BOOL)addDestinationToDictionaryRef:(struct __CFDictionary *)arg1;
@@ -197,6 +202,7 @@
 - (id)getFontFromAppearanceNSString:(id)arg1;
 - (id)getFontFromAppearanceString:(struct CGPDFString *)arg1;
 - (id)getPDFKeyMappingDictionary;
+- (void)highlightRedaction:(BOOL)arg1;
 - (id)indexSetForQuadPoints;
 - (id)init;
 - (id)initCommonWithBounds:(struct CGRect)arg1;
@@ -204,6 +210,7 @@
 - (id)initWithBounds:(struct CGRect)arg1 forType:(id)arg2 withProperties:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 forPage:(id)arg2;
+- (BOOL)intersectsWithRedactionPath;
 - (BOOL)isFullyConstructed;
 - (BOOL)isHidden;
 - (BOOL)isInvisible;
@@ -212,11 +219,13 @@
 - (BOOL)isMarkupAnnotationSubtype;
 - (BOOL)isNoteAnnotation;
 - (BOOL)isReadOnlyAnnotation;
+- (BOOL)isRedaction;
 - (BOOL)isSelected;
 - (BOOL)isSignature;
 - (BOOL)isTextMarkupAnnotation;
 - (BOOL)isTextMarkupOrNoteAnnotation;
 - (BOOL)isTextWidget;
+- (BOOL)isTransparent;
 - (BOOL)isWidgetOrMarkupAnnotation;
 - (id)layoutManager;
 - (unsigned long long)markupStyle;
@@ -233,8 +242,10 @@
 - (BOOL)popupDrawsCloseWidget;
 - (BOOL)popupDrawsText;
 - (void)postAnnotationsChangedNotification;
+- (void)presentRedactionDiscoverabilityAlertWithOldValue:(id)arg1 forAnnotationKey:(id)arg2;
 - (void)printDictionaryKeyValues;
 - (long long)priority;
+- (struct CGPath *)quadPointsPath;
 - (void)releaseCGPathArray;
 - (void)removeAKAnnotationAdaptor;
 - (void)removeAllAppearanceStreams;
@@ -262,6 +273,7 @@
 - (void)setIsFullyConstructed:(BOOL)arg1;
 - (void)setIsSelected:(BOOL)arg1;
 - (void)setIsSignature:(BOOL)arg1;
+- (void)setIsTransparent:(BOOL)arg1;
 - (void)setLayoutManager:(id)arg1;
 - (void)setLocked:(BOOL)arg1;
 - (void)setMouseDownAction:(id)arg1;

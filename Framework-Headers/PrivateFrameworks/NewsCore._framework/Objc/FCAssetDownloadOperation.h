@@ -10,10 +10,10 @@
 
 @interface FCAssetDownloadOperation : FCNetworkOperation
 {
+    int _networkEventType;
     NSURL *_URL;
     NSString *_loggingKey;
     long long _downloadDestination;
-    long long _networkEventType;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     CDUnknownBlockType _fileDownloadCompletionHandler;
@@ -40,7 +40,7 @@
 @property (strong, nonatomic) NSHTTPURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
 @property (copy, nonatomic) NSString *loggingKey; // @synthesize loggingKey=_loggingKey;
 @property (strong, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
-@property (nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
+@property (nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property (strong, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 @property (strong, nonatomic) NSString *responseMIMEType; // @synthesize responseMIMEType=_responseMIMEType;
 @property (nonatomic) unsigned long long responseSize; // @synthesize responseSize=_responseSize;

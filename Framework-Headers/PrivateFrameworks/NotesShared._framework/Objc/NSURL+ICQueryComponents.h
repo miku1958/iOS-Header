@@ -13,8 +13,8 @@
 @property (readonly, nonatomic) NSString *ic_UTI;
 @property (readonly, nonatomic) long long ic_fileSize;
 @property (readonly, nonatomic) BOOL ic_isAppStoreURL;
+@property (readonly, nonatomic) BOOL ic_isExcludedFromBackups;
 @property (readonly, nonatomic) BOOL ic_isExcludedFromCloudBackups;
-@property (readonly, nonatomic) BOOL ic_isExcludedFromNonCloudBackups;
 @property (readonly, nonatomic) BOOL ic_isMapURL;
 @property (readonly, nonatomic) BOOL ic_isNewsURL;
 @property (readonly, nonatomic) BOOL ic_isReachable;
@@ -27,7 +27,7 @@
 + (id)ic_urlFromWeblocFileAtURL:(id)arg1;
 - (id)ic_dedupedURLWithProhibitedNames:(id)arg1;
 - (BOOL)ic_isSafeFileURLForAttachment;
-- (void)ic_updateFlagToExcludeFromCloudBackup:(BOOL)arg1;
+- (void)ic_updateFlagToExcludeFromBackup:(BOOL)arg1;
 - (id)queryComponents;
 @end
 

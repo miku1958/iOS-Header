@@ -13,6 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityInternalTextLinks;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityUserTestingChildren;
+- (id)_axAccessoryView;
+- (id)_axFilterView;
+- (id)_axSubtitle1TextView;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

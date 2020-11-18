@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, NSString;
+@class NSData, NSString, SISchemaSiriUISettings;
 
 @interface SISchemaDeviceFixedContext : PBCodable
 {
@@ -17,12 +17,36 @@
     NSString *_systemLocale;
     NSString *_siriDeviceID;
     NSString *_speechID;
+    SISchemaSiriUISettings *_siriUISettings;
+    BOOL _isSatellitePaired;
+    struct {
+        unsigned int isSatellitePaired:1;
+    } _has;
+    BOOL _hasDeviceType;
+    BOOL _hasSystemBuild;
+    BOOL _hasSiriInputLanguage;
+    BOOL _hasSiriVoiceLanguage;
+    BOOL _hasSystemLocale;
+    BOOL _hasSiriDeviceID;
+    BOOL _hasSpeechID;
+    BOOL _hasSiriUISettings;
 }
 
 @property (copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
+@property (nonatomic) BOOL hasDeviceType; // @synthesize hasDeviceType=_hasDeviceType;
+@property (nonatomic) BOOL hasIsSatellitePaired;
+@property (nonatomic) BOOL hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property (nonatomic) BOOL hasSiriInputLanguage; // @synthesize hasSiriInputLanguage=_hasSiriInputLanguage;
+@property (nonatomic) BOOL hasSiriUISettings; // @synthesize hasSiriUISettings=_hasSiriUISettings;
+@property (nonatomic) BOOL hasSiriVoiceLanguage; // @synthesize hasSiriVoiceLanguage=_hasSiriVoiceLanguage;
+@property (nonatomic) BOOL hasSpeechID; // @synthesize hasSpeechID=_hasSpeechID;
+@property (nonatomic) BOOL hasSystemBuild; // @synthesize hasSystemBuild=_hasSystemBuild;
+@property (nonatomic) BOOL hasSystemLocale; // @synthesize hasSystemLocale=_hasSystemLocale;
+@property (nonatomic) BOOL isSatellitePaired; // @synthesize isSatellitePaired=_isSatellitePaired;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
 @property (copy, nonatomic) NSString *siriInputLanguage; // @synthesize siriInputLanguage=_siriInputLanguage;
+@property (strong, nonatomic) SISchemaSiriUISettings *siriUISettings; // @synthesize siriUISettings=_siriUISettings;
 @property (copy, nonatomic) NSString *siriVoiceLanguage; // @synthesize siriVoiceLanguage=_siriVoiceLanguage;
 @property (copy, nonatomic) NSString *speechID; // @synthesize speechID=_speechID;
 @property (copy, nonatomic) NSString *systemBuild; // @synthesize systemBuild=_systemBuild;

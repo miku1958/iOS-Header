@@ -21,13 +21,11 @@ __attribute__((visibility("hidden")))
     NSString *_owningBundleID;
     int _supportsAuthentication;
     int _visibility;
-    BOOL _encryptAccountProperties;
     BOOL _obsolete;
     BOOL _supportsMultipleAccounts;
     struct {
         unsigned int supportsAuthentication:1;
         unsigned int visibility:1;
-        unsigned int encryptAccountProperties:1;
         unsigned int obsolete:1;
         unsigned int supportsMultipleAccounts:1;
     } _has;
@@ -36,10 +34,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *accountTypeDescription; // @synthesize accountTypeDescription=_accountTypeDescription;
 @property (strong, nonatomic) NSString *credentialProtectionPolicy; // @synthesize credentialProtectionPolicy=_credentialProtectionPolicy;
 @property (strong, nonatomic) NSString *credentialType; // @synthesize credentialType=_credentialType;
-@property (nonatomic) BOOL encryptAccountProperties; // @synthesize encryptAccountProperties=_encryptAccountProperties;
 @property (readonly, nonatomic) BOOL hasCredentialProtectionPolicy;
 @property (readonly, nonatomic) BOOL hasCredentialType;
-@property (nonatomic) BOOL hasEncryptAccountProperties;
 @property (readonly, nonatomic) BOOL hasObjectID;
 @property (nonatomic) BOOL hasObsolete;
 @property (readonly, nonatomic) BOOL hasOwningBundleID;

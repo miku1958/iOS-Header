@@ -12,7 +12,10 @@
     struct map<unsigned long, TSWPFontMetricsCacheEntry, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, TSWPFontMetricsCacheEntry>>> _fontHashToInfoMap;
     unsigned int _cacheSize;
     unsigned int _maxCacheSize;
-    struct _opaque_pthread_rwlock_t _lock;
+    struct _opaque_pthread_rwlock_t {
+        long long __sig;
+        char __opaque[192];
+    } _lock;
 }
 
 + (id)_singletonAlloc;

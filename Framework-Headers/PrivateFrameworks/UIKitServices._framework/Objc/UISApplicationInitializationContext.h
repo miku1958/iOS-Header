@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <UIKitServices/BSXPCCoding-Protocol.h>
+#import <UIKitServices/BSXPCSecureCoding-Protocol.h>
 #import <UIKitServices/NSCopying-Protocol.h>
 #import <UIKitServices/NSMutableCopying-Protocol.h>
 
 @class FBSSceneIdentityToken, NSSet, NSString, UISDeviceContext, UISDisplayContext;
 
-@interface UISApplicationInitializationContext : NSObject <NSCopying, NSMutableCopying, BSXPCCoding>
+@interface UISApplicationInitializationContext : NSObject <BSXPCCoding, NSCopying, NSMutableCopying, BSXPCSecureCoding>
 {
     UISDisplayContext *_displayContext;
     UISDeviceContext *_deviceContext;
@@ -30,12 +31,13 @@
 @property (readonly) Class superclass;
 
 + (id)defaultContext;
++ (BOOL)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithXPCDictionary:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithDisplayContext:(id)arg1 deviceContext:(id)arg2 persistedSceneIdentifiers:(id)arg3;
 - (id)initWithUISApplicationInitializationContext:(id)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

@@ -6,15 +6,27 @@
 
 #import <PhotoLibraryServices/PLPhotoLibraryBundle.h>
 
+@class PLLazyObject;
+
 @interface PLClientPhotoLibraryBundle : PLPhotoLibraryBundle
 {
+    PLLazyObject *_lazyClientSandboxExtensionCache;
 }
 
+- (void).cxx_destruct;
+- (void)_initClientSandboxExtensionCache;
+- (void)_invalidateClientSandboxExtensionCache;
+- (id)clientSandboxExtensionCache;
 - (void)close;
+- (id)initWithLibraryURL:(id)arg1 bundleController:(id)arg2;
 - (id)newAssetsdClient;
 - (id)newBoundAssetsdServicesTable;
 - (id)newChangePublisher;
 - (id)newLibraryServicesManager;
+- (void)resetClientSandboxExtensionCache;
+- (void)setCloudPhotoLibraryEnabled:(BOOL)arg1;
+- (void)setPhotoStreamEnabled:(BOOL)arg1;
+- (void)setSharedAlbumEnabled:(BOOL)arg1;
 
 @end
 

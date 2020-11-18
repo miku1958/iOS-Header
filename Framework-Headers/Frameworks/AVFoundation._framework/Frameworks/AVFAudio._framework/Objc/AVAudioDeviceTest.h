@@ -11,12 +11,14 @@
 
 @interface AVAudioDeviceTest : NSObject
 {
+    BOOL _processSequenceAsynchronously;
     NSXPCConnection *_connection;
     id<AVAudioDeviceTestServiceProtocol> _serviceDelegateAsync;
     id<AVAudioDeviceTestServiceProtocol> _serviceDelegateSync;
 }
 
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property BOOL processSequenceAsynchronously; // @synthesize processSequenceAsynchronously=_processSequenceAsynchronously;
 @property (strong) id<AVAudioDeviceTestServiceProtocol> serviceDelegateAsync; // @synthesize serviceDelegateAsync=_serviceDelegateAsync;
 @property (strong) id<AVAudioDeviceTestServiceProtocol> serviceDelegateSync; // @synthesize serviceDelegateSync=_serviceDelegateSync;
 
@@ -24,6 +26,7 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)init;
+- (id)initWithXPCEndPoint:(id)arg1;
 - (void)startWithSequence:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

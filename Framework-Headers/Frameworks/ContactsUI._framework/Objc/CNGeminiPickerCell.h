@@ -6,31 +6,23 @@
 
 #import <ContactsUI/CNLabeledCell.h>
 
-@class NSString, UILabel, UIView;
+@class UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CNGeminiPickerCell : CNLabeledCell
 {
     UILabel *_labelLabel;
     UILabel *_valueLabel;
-    NSString *_badgeText;
-    UIView *_badgeView;
 }
 
-@property (readonly, nonatomic) NSString *badgeText; // @synthesize badgeText=_badgeText;
-@property (strong, nonatomic) UIView *badgeView; // @synthesize badgeView=_badgeView;
 @property (readonly, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
 @property (readonly, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 
 - (void).cxx_destruct;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)dealloc;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)labelView;
 - (void)setText:(id)arg1 detailText:(id)arg2;
 - (void)tintColorDidChange;
 - (id)valueView;
-- (id)variableConstraints;
 
 @end
 

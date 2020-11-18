@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HDEntityEncoder, HDProfile, HDSQLiteDatabase, NSDictionary;
+@class HDDatabaseTransaction, HDEntityEncoder, HDProfile, HDSQLiteDatabase, NSDictionary;
 
 @protocol HDHealthEntityEncoding
 + (HDEntityEncoder *)entityEncoderForProfile:(HDProfile *)arg1 database:(HDSQLiteDatabase *)arg2 purpose:(long long)arg3 encodingOptions:(NSDictionary *)arg4 authorizationFilter:(NSArray * (^)(NSArray *))arg5;
++ (HDEntityEncoder *)entityEncoderForProfile:(HDProfile *)arg1 transaction:(HDDatabaseTransaction *)arg2 purpose:(long long)arg3 encodingOptions:(NSDictionary *)arg4 authorizationFilter:(NSArray * (^)(NSArray *))arg5;
 @end
 

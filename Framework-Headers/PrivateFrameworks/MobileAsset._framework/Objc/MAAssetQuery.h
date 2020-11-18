@@ -10,7 +10,11 @@
 
 @interface MAAssetQuery : NSObject
 {
+    BOOL _isPallasResult;
+    BOOL _isDone;
     BOOL _doNotBlockBeforeFirstUnlock;
+    BOOL _doNotBlockOnNetworkStatus;
+    long long _resultCode;
     NSDate *_postedDate;
     NSMutableArray *_queryParams;
     NSString *_assetType;
@@ -23,9 +27,12 @@
 @property (readonly, nonatomic) NSSet *assetIds; // @synthesize assetIds=_assetIds;
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (nonatomic) BOOL doNotBlockBeforeFirstUnlock; // @synthesize doNotBlockBeforeFirstUnlock=_doNotBlockBeforeFirstUnlock;
+@property (nonatomic) BOOL doNotBlockOnNetworkStatus; // @synthesize doNotBlockOnNetworkStatus=_doNotBlockOnNetworkStatus;
+@property (readonly, nonatomic) BOOL isDone; // @synthesize isDone=_isDone;
 @property (readonly, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property (readonly, nonatomic) NSDate *postedDate; // @synthesize postedDate=_postedDate;
 @property (readonly, nonatomic) NSMutableArray *queryParams; // @synthesize queryParams=_queryParams;
+@property (readonly, nonatomic) long long resultCode; // @synthesize resultCode=_resultCode;
 @property (readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) long long returnTypes; // @synthesize returnTypes=_returnTypes;
 
@@ -34,11 +41,15 @@
 - (long long)addKeyValuePair:(id)arg1 with:(id)arg2;
 - (void)augmentResultsWithState:(BOOL)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)getResultsFromMessage:(id)arg1;
 - (id)initWithType:(id)arg1;
+- (BOOL)isCatalogFetchedFromLiveServer;
+- (BOOL)isCatalogFetchedWithinThePastFewDays:(int)arg1;
 - (long long)queryInstalledAssetIds;
 - (void)queryMetaData:(CDUnknownBlockType)arg1;
 - (long long)queryMetaDataSync;
+- (void)queryMetaDataWithError:(CDUnknownBlockType)arg1;
 - (void)returnTypes:(long long)arg1;
 
 @end

@@ -12,6 +12,7 @@
 @interface SFSafariViewControllerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _ephemeral;
+    BOOL _performingAccountSecurityUpgrade;
     BOOL _entersReaderIfAvailable;
     BOOL _barCollapsingEnabled;
     long long _redirectNotificationBehavior;
@@ -23,7 +24,9 @@
 
 + (BOOL)supportsSecureCoding;
 - (BOOL)_isEphemeral;
+- (BOOL)_isPerformingAccountSecurityUpgrade;
 - (void)_setEphemeral:(BOOL)arg1;
+- (void)_setPerformingAccountSecurityUpgrade:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

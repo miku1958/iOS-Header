@@ -12,9 +12,9 @@
 @property (readonly, nonatomic) long long signatureState;
 @property (readonly, nonatomic, getter=hasUniversalProvisioningProfile) BOOL universalProvisioningProfile;
 
-- (id)_applicationTrustData;
 - (id)_initForProfileManagerTesting;
 - (long long)_mapSignatureStateFromTrustState:(unsigned long long)arg1;
+- (id)_signatureValidationService;
 - (void)acceptApplicationSignatureIdentity;
 @end
 

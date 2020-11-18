@@ -6,32 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProviding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProvidingWritable-Protocol.h>
+#import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
 
 @class NSString;
 
-@interface SNDetectionResult : NSObject <SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNTimeRangeProviding, SNConfidenceProviding>
+@interface SNDetectionResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNResult, SNTimeRangeProviding, SNConfidenceProviding>
 {
-    double confidence;
+    BOOL _detected;
+    double _confidence;
     NSString *_identifier;
-    CDStruct_e83c9415 timeRange;
+    CDStruct_e83c9415 _timeRange;
 }
 
-@property (readonly, nonatomic) double confidence;
+@property (nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL detected; // @synthesize detected=_detected;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
-- (void)setConfidence:(double)arg1;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDetectionResult:(id)arg1;
 
 @end
 

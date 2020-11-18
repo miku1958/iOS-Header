@@ -9,7 +9,7 @@
 #import <EmailDaemon/EDMailboxProviderDelegate-Protocol.h>
 #import <EmailDaemon/EMMailboxTypeResolver-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSSet, NSString;
 @protocol EDMailboxProvider;
 
 @interface EDMailboxPersistence : NSObject <EDMailboxProviderDelegate, EMMailboxTypeResolver>
@@ -19,6 +19,7 @@
     id<EDMailboxProvider> _mailboxProvider;
 }
 
+@property (readonly, nonatomic) NSSet *allMailboxObjectIDs;
 @property (strong, nonatomic) NSMutableDictionary *changeObserversByIdentifier; // @synthesize changeObserversByIdentifier=_changeObserversByIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

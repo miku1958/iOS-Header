@@ -36,7 +36,9 @@
 - (void)getSnapshot:(unsigned long long)arg1;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 options:(id)arg3 accessory:(id)arg4 delegate:(id)arg5 delegateQueue:(id)arg6 uniqueIdentifier:(id)arg7 snapshotRequestHandler:(id)arg8 residentMessageHandler:(id)arg9;
 - (id)logIdentifier;
-- (void)relayReceiver:(id)arg1 didReceiveFile:(id)arg2;
+- (void)relayReceiver:(id)arg1 didReceiveData:(id)arg2 error:(id)arg3;
+- (void)relayReceiverDidAcceptIDSInvitation:(id)arg1;
+- (void)relayReceiverIDSSessionDidStart:(id)arg1;
 - (void)snapShotSendFailed:(id)arg1;
 
 @end

@@ -12,16 +12,18 @@
 {
 }
 
-- (id)_allowableAssetIdentifiers;
 - (void)abGroupInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)assetDefaultBundleOverridePathForAssetIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)assetMetadataRefreshIntervalSecondsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)assetVersionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearAssetMetadataRefreshIntervalSecondsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadAssetMetadataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetTrialMLModelsForNamespaceName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setAssetDefaultBundleOverridePath:(id)arg1 assetIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setAssetMetadataRefreshIntervalSeconds:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setTrialUseDefaultFiles:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sysdiagnoseInformationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)trialOverridePath:(id)arg1 namespaceName:(id)arg2 factorName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

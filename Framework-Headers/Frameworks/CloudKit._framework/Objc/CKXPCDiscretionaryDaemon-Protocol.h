@@ -5,9 +5,10 @@
 //
 
 @class CKDiscretionaryOptions, NSString;
+@protocol CKOperationCallbacks;
 
 @protocol CKXPCDiscretionaryDaemon
 - (void)finishOperationID:(NSString *)arg1;
-- (void)queueOperationID:(NSString *)arg1 options:(CKDiscretionaryOptions *)arg2 startBlock:(void (^)(BOOL, BOOL, NSError *))arg3;
+- (void)queueOperationID:(NSString *)arg1 options:(CKDiscretionaryOptions *)arg2 clientOperationCallbackProxy:(id<CKOperationCallbacks>)arg3 withBlock:(void (^)(void))arg4;
 @end
 

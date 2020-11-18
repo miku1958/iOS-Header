@@ -37,19 +37,11 @@
 @property (readonly, nonatomic, getter=_isInvalidated) BOOL _invalidated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSObject<OS_xpc_object> *endpoint;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isNonLaunching) BOOL nonLaunching;
 @property (readonly) Class superclass;
 
-+ (id)listener;
-+ (id)listenerWithServiceName:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithServiceName:(id)arg1;
 - (void)_invalidateChildConnection:(id)arg1;
-- (void)_invalidateWithLockBlock:(CDUnknownBlockType)arg1;
-- (void)activate;
-- (void)configure:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

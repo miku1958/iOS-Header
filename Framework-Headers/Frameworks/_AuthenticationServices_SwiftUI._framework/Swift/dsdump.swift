@@ -1,0 +1,90 @@
+ enum __C.ButtonType { }
+
+ struct _AuthenticationServices_SwiftUI.SignInWithAppleButton {
+
+	// Properties
+	var configuration : Configuration // +0x0
+ }
+
+ struct _AuthenticationServices_SwiftUI.Label {
+
+	// Properties
+	var type : Storage // +0x0
+ }
+
+ enum _AuthenticationServices_SwiftUI.Storage {
+
+	// Properties
+	case signIn  
+	case continue  
+	case signUp  
+ }
+
+ struct _AuthenticationServices_SwiftUI.Style {
+
+	// Properties
+	var type : Storage // +0x0
+ }
+
+ enum _AuthenticationServices_SwiftUI.Storage {
+
+	// Properties
+	case black  
+	case white  
+	case whiteOutline  
+ }
+
+ struct _AuthenticationServices_SwiftUI.SignInWithAppleButton_Previews { }
+
+ class _AuthenticationServices_SwiftUI.Coordinator : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let config : Configuration
+	var presentationAnchor : UIWindow?
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find offset 0xb79 in binary!
+WARNING: couldn't find offset 0xb79 in binary!
+WARNING: couldn't find address 0xb8500002628 (0x38500002628) in binary!
+	0x0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find offset 0xb07 in binary!
+WARNING: couldn't find offset 0xb07 in binary!
+WARNING: couldn't find address 0xb3f00002620 (0x33f00002620) in binary!
+	0x0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find offset 0xaef in binary!
+WARNING: couldn't find offset 0xaef in binary!
+WARNING: couldn't find address 0xb0300002618 (0x30300002618) in binary!
+	0x0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x1 (0x1) in binary!
+	0x2818  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find offset 0x2c00000 in binary!
+WARNING: couldn't find offset 0x2c00000 in binary!
+WARNING: couldn't find address 0x65300000651 (0x65300000651) in binary!
+	0x0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find offset 0xffffe6f0 in binary!
+WARNING: couldn't find offset 0xffffe6f0 in binary!
+WARNING: couldn't find address 0xffffe72cffffe6f0 (0x0) in binary!
+	0x5687475415f  @objc Coordinator.(null) <stripped>
+
+	// Swift methods
+	0x2a80  func <stripped> // method 
+ }
+
+ struct _AuthenticationServices_SwiftUI.ViewRepresentable {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _style : s // +0x0
+	var config : Configuration // +0x10
+ }
+
+ struct _AuthenticationServices_SwiftUI.Configuration {
+
+	// Properties
+	let type : ButtonType // +0x0
+	let onRequest : (_:) // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onCompletion :  empty-list  // +0x18
+ }
+
+ struct _AuthenticationServices_SwiftUI.SignInWithAppleButtonStyleKey { }

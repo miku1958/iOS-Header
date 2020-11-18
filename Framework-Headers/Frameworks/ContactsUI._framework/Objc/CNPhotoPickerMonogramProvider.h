@@ -8,27 +8,28 @@
 
 #import <ContactsUI/CNPhotoPickerProvider-Protocol.h>
 
-@class CNContact, NSString;
+@class CNVisualIdentity, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerMonogramProvider : NSObject <CNPhotoPickerProvider>
 {
     NSString *_identifier;
-    CNContact *_contact;
+    CNVisualIdentity *_visualIdentity;
 }
 
-@property (readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 
-+ (id)generateMonogramItemForContact:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(BOOL)arg4;
-+ (id)providerItemForContact:(id)arg1 size:(struct CGSize)arg2 RTL:(BOOL)arg3;
-+ (id)providerItemForContact:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(BOOL)arg4;
++ (id)generateMonogramItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(BOOL)arg4 isVariantOptionItem:(BOOL)arg5 backgroundColor:(id)arg6;
++ (id)monogramProviderItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(BOOL)arg4 isVariantOptionItem:(BOOL)arg5 backgroundColor:(id)arg6;
++ (id)providerItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 RTL:(BOOL)arg3;
++ (id)providerItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(BOOL)arg4 backgroundColor:(id)arg5;
 - (void).cxx_destruct;
-- (id)initWithContact:(id)arg1;
+- (id)initWithVisualIdentity:(id)arg1;
 - (id)loadItemsForSize:(struct CGSize)arg1 scale:(double)arg2 RTL:(BOOL)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5 itemDelegate:(id)arg6;
 
 @end

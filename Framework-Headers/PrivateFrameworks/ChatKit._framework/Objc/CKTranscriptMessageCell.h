@@ -10,18 +10,27 @@
 
 @interface CKTranscriptMessageCell : CKTranscriptCell
 {
+    BOOL _chatEligibleForContactImage;
     BOOL _wantsContactImageLayout;
+    BOOL _isReply;
+    BOOL _isReplyContextPreview;
+    BOOL _isFromMe;
     UIButton *_failureButton;
 }
 
+@property (nonatomic) BOOL chatEligibleForContactImage; // @synthesize chatEligibleForContactImage=_chatEligibleForContactImage;
 @property (nonatomic) BOOL failed;
 @property (strong, nonatomic) UIButton *failureButton; // @synthesize failureButton=_failureButton;
 @property (readonly, nonatomic) BOOL failureButtonAdjustsContentAlignmentRect;
+@property (nonatomic) BOOL isFromMe; // @synthesize isFromMe=_isFromMe;
+@property (nonatomic) BOOL isReply; // @synthesize isReply=_isReply;
+@property (nonatomic) BOOL isReplyContextPreview; // @synthesize isReplyContextPreview=_isReplyContextPreview;
 @property (nonatomic) BOOL wantsContactImageLayout; // @synthesize wantsContactImageLayout=_wantsContactImageLayout;
 
 + (double)failureButtonWidthPlusSpacing;
 - (void).cxx_destruct;
 - (id)contactImageView;
+- (struct CGRect)contactImageViewFrame;
 - (id)description;
 - (void)layoutSubviewsForContents;
 - (struct UIEdgeInsets)safeAreaInsets;

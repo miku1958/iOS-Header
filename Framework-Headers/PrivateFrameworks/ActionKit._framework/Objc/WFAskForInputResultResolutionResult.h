@@ -6,6 +6,7 @@
 
 #import <Intents/INObjectResolutionResult.h>
 
+__attribute__((visibility("hidden")))
 @interface WFAskForInputResultResolutionResult : INObjectResolutionResult
 {
 }

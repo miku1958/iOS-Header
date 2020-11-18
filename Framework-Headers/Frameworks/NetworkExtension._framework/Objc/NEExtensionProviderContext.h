@@ -33,6 +33,7 @@
 @property (readonly) NSXPCConnection *hostConnection; // @synthesize hostConnection=_hostConnection;
 @property (nonatomic) BOOL isDisposed; // @synthesize isDisposed=_isDisposed;
 @property (readonly, nonatomic) NEProvider *provider; // @synthesize provider=_provider;
+@property (readonly, nonatomic) Class requiredProviderSuperClass;
 @property (nonatomic) BOOL started; // @synthesize started=_started;
 @property (copy) CDUnknownBlockType stopCompletionHandler; // @synthesize stopCompletionHandler=_stopCompletionHandler;
 @property (readonly) Class superclass;
@@ -60,6 +61,7 @@
 - (void)startWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startedWithError:(id)arg1;
 - (void)stopWithReason:(int)arg1;
+- (void)validateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)wake;
 
 @end

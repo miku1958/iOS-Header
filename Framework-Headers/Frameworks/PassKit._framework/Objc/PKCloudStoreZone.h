@@ -9,22 +9,24 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSSet, NSString;
 
 @interface PKCloudStoreZone : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_containerName;
     NSString *_zoneName;
-    NSString *_subscriptionID;
-    NSDate *_fetchTimestamp;
-    NSData *_tokenData;
+    NSString *_ownerName;
+    long long _scope;
+    NSString *_zoneSubscriptionIdentifier;
+    NSSet *_shareParticipants;
 }
 
 @property (copy, nonatomic) NSString *containerName; // @synthesize containerName=_containerName;
-@property (copy, nonatomic) NSDate *fetchTimestamp; // @synthesize fetchTimestamp=_fetchTimestamp;
-@property (copy, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
-@property (copy, nonatomic) NSData *tokenData; // @synthesize tokenData=_tokenData;
+@property (copy, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
+@property (nonatomic) long long scope; // @synthesize scope=_scope;
+@property (copy, nonatomic) NSSet *shareParticipants; // @synthesize shareParticipants=_shareParticipants;
 @property (copy, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
+@property (strong, nonatomic) NSString *zoneSubscriptionIdentifier; // @synthesize zoneSubscriptionIdentifier=_zoneSubscriptionIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -33,11 +35,13 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithZoneName:(id)arg1 containerName:(id)arg2;
+- (id)initWithZoneID:(id)arg1 containerDatabase:(id)arg2;
+- (id)initWithZoneID:(id)arg1 containerName:(id)arg2 scope:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)recordZone;
-- (id)recordZoneSubscription;
-- (id)serverChangeToken;
+- (id)shareParticipantWithHandle:(id)arg1;
+- (id)shareParticipantWithLookupInfo:(id)arg1;
+- (id)zoneSubscription;
 
 @end
 

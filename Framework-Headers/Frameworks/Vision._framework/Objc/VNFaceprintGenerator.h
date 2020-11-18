@@ -6,8 +6,6 @@
 
 #import <Vision/VNDetector.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceprintGenerator : VNDetector
 {
@@ -26,18 +24,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL useLowPriorityMode; // @synthesize useLowPriorityMode=_useLowPriorityMode;
 
 + (id)configurationOptionKeysForDetectorKey;
-+ (struct __CVBuffer *)cropFaceBoundingBoxFrom:(id)arg1 cropBounds:(struct CGRect)arg2 error:(id *)arg3;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (struct CGRect)faceBoundingBox:(id)arg1;
 + (CDUnknownFunctionPointerType)faceDescriptorCreator;
-+ (MISSING_TYPE *)frontalizer;
 + (CDUnknownFunctionPointerType)getFaceJunkClassifier;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 + (BOOL)shouldDumpDebugIntermediates;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
-- (BOOL)isFaceprinterCompatibleWithFaceprinterCreatedWithOptions:(id)arg1;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (void)printDebugInfoFor:(struct __CVBuffer *)arg1 imageBuffer:(id)arg2 originalImageLumaCrop:(struct vImage_Buffer)arg3 faceBBoxInLumaCropCoordinates:(struct CGRect)arg4 magnifiedBBoxInLumaCropCoordinates:(struct _Geometry2D_rect2D_)arg5;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 

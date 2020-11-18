@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString, SADialog, SAUIListenAfterSpeakingBehavior;
 @protocol SAAceSerializable;
 
 @interface SAAceView : SABaseAceObject <SAAceSerializable>
@@ -21,9 +21,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSNumber *deferredRendering;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SADialog *dialog;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isTransient;
+@property (copy, nonatomic) NSString *itemType;
 @property (copy, nonatomic) NSNumber *listenAfterSpeaking;
+@property (strong, nonatomic) SAUIListenAfterSpeakingBehavior *listenAfterSpeakingBehavior;
 @property (copy, nonatomic) NSDictionary *speakableContextInfo;
 @property (copy, nonatomic) NSString *speakableText;
 @property (readonly) Class superclass;

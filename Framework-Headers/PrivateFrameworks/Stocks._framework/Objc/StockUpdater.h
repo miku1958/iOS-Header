@@ -31,7 +31,6 @@
 - (void)_parseExchangeDictionaries:(id)arg1;
 - (void)_parseQuoteDictionaries:(id)arg1 withDataSourceDictionaries:(id)arg2;
 - (BOOL)_updateStocks:(id)arg1 comprehensive:(BOOL)arg2 forceUpdate:(BOOL)arg3;
-- (id)aggregateDictionaryDomain;
 - (void)didParseData;
 - (void)failWithError:(id)arg1;
 - (BOOL)hadError;

@@ -6,11 +6,13 @@
 
 #import <SpringBoard/SBSwitcherModifier.h>
 
-@class NSUUID;
+@class NSArray, NSUUID;
 
 @interface SBTransitionSwitcherModifier : SBSwitcherModifier
 {
     BOOL _wantsResignActiveAndAsyncRenderingAssertions;
+    BOOL _isTransitioningToSwitcher;
+    NSArray *_appLayoutsToEnsureExist;
     unsigned long long _transitionPhase;
     NSUUID *_transitionID;
 }
@@ -21,19 +23,22 @@
 - (void).cxx_destruct;
 - (id)_handleTransitionEvent:(id)arg1;
 - (void)_setTransitionPhase:(unsigned long long)arg1;
+- (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToResignActive;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleInlineTransitionEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleRemovalEvent:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)initWithTransitionID:(id)arg1;
 - (BOOL)isPreparingLayout;
 - (BOOL)isUpdatingLayout;
-- (long long)keyboardSuppressionMode;
-- (long long)layoutUpdateMode;
-- (long long)liveContentRasterizationStyle;
-- (long long)sceneDeactivationReason;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionDidEnd;
@@ -42,7 +47,6 @@
 - (id)transitionWillUpdate;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

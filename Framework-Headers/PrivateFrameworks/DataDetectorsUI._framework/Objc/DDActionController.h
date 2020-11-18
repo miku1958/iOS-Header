@@ -44,10 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)action:(id)arg1 becameCancellable:(BOOL)arg2;
 - (void)action:(id)arg1 viewControllerReady:(id)arg2;
 - (void)actionDidFinish:(id)arg1;
+- (void)actionDidFinish:(id)arg1 shouldDismiss:(BOOL)arg2;
 - (BOOL)actionIsCancellable;
 - (id)actionsForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (id)actionsForURL:(id)arg1 result:(struct __DDResult *)arg2 enclosingResult:(struct __DDResult *)arg3 context:(id)arg4;
 - (void)cancelAction;
+- (void)cleanupNoDismiss;
 - (void)dealloc;
 - (id)defaultActionForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (void)dismissCurrentController;
@@ -61,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)tellDelegateActionDidFinish;
+- (void)tellDelegateActionDidFinishShouldDismiss:(BOOL)arg1;
 - (void)viewControllerRequiresModalInPopover:(BOOL)arg1;
 
 @end

@@ -13,10 +13,14 @@
     NSString *_url;
     NSDictionary *_headers;
     unsigned long long _endpoint;
+    NSString *_experimentId;
+    NSString *_treatmentId;
 }
 
 @property (nonatomic) unsigned long long endpoint; // @synthesize endpoint=_endpoint;
+@property (copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property (copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
+@property (copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property (copy, nonatomic) NSString *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;
@@ -25,6 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInput:(id)arg1 url:(id)arg2 headers:(id)arg3 triggerEvent:(unsigned long long)arg4 endpoint:(unsigned long long)arg5;
 - (id)initWithInput:(id)arg1 url:(id)arg2 headers:(id)arg3 triggerEvent:(unsigned long long)arg4 endpoint:(unsigned long long)arg5 queryId:(unsigned long long)arg6;
+- (id)initWithInput:(id)arg1 url:(id)arg2 headers:(id)arg3 triggerEvent:(unsigned long long)arg4 endpoint:(unsigned long long)arg5 queryId:(unsigned long long)arg6 experimentId:(id)arg7 treatmentId:(id)arg8;
 
 @end
 

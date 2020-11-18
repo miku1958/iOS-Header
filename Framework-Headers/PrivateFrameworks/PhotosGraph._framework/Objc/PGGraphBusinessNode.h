@@ -4,30 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGGraphPortraitNamedEntity-Protocol.h>
 
 @class NSSet, NSString, PPNamedEntity;
 
-@interface PGGraphBusinessNode : PGGraphNode <PGGraphPortraitNamedEntity>
+@interface PGGraphBusinessNode : PGGraphOptimizedNode <PGGraphPortraitNamedEntity>
 {
+    NSString *_name;
+    NSString *_uuid;
+    long long _venueCapacity;
+    double _latitude;
+    double _longitude;
+    double _radius;
 }
 
-@property (readonly, copy, nonatomic) NSSet *businessCategories;
+@property (readonly, nonatomic) NSString *UUID; // @synthesize UUID=_uuid;
+@property (readonly, nonatomic) NSSet *businessCategories;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
+@property (readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property (readonly, nonatomic) NSSet *momentNodes;
+@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) PPNamedEntity *pg_namedEntity;
 @property (readonly, nonatomic) NSSet *publicEventNodes;
+@property (readonly, nonatomic) double radius; // @synthesize radius=_radius;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) long long venueCapacity;
+@property (readonly, nonatomic) long long venueCapacity; // @synthesize venueCapacity=_venueCapacity;
 
++ (id)categoryOfBusiness;
+- (void).cxx_destruct;
 - (id)associatedNodesForRemoval;
+- (unsigned short)domain;
 - (void)enumerateBusinessCategoryNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
 - (id)keywordDescription;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

@@ -6,17 +6,22 @@
 
 #import <NanoTimeKitCompanion/NTKFaceView.h>
 
-@class NTKBigNumeralsDigitalColorEditOption;
+#import <NanoTimeKitCompanion/NTKBigNumeralsDigitalTimeViewDelegate-Protocol.h>
 
-@interface NTKBigNumeralsDigitalFaceView : NTKFaceView
+@class NSString;
+
+@interface NTKBigNumeralsDigitalFaceView : NTKFaceView <NTKBigNumeralsDigitalTimeViewDelegate>
 {
-    NTKBigNumeralsDigitalColorEditOption *_pride2020SensitiveShroudColor;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
-- (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -25,7 +30,6 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_createTimeView;
-- (unsigned long long)_filterColorForUISensitivityFromColor:(unsigned long long)arg1;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -34,10 +38,10 @@
 - (void)_prepareForStatusChange:(BOOL)arg1;
 - (void)_removeTimeView;
 - (id)_renderTimeViewSwatchImageForStyle:(unsigned long long)arg1 typeface:(unsigned long long)arg2 color:(unsigned long long)arg3;
-- (BOOL)_shouldHideSensitiveUI;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_unloadSnapshotContentViews;
 - (double)_verticalPaddingForStatusBar;
+- (void)bigNumeralsDigitalTimeViewDidChangeTime;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 

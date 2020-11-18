@@ -8,7 +8,7 @@
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class CNChangeHistoryAnchor, NSArray, NSData, NSString;
+@class NSArray, NSData, NSString;
 
 @interface CNChangeHistoryFetchRequest : CNFetchRequest <NSSecureCoding>
 {
@@ -31,7 +31,6 @@
 @property (copy, nonatomic) NSArray *additionalContactKeyDescriptors; // @synthesize additionalContactKeyDescriptors=_additionalContactKeyDescriptors;
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
-@property (readonly, nonatomic, getter=shouldEnforceClientIdentifer) BOOL enforceClientIdentifier; // @synthesize enforceClientIdentifier=_enforceClientIdentifier;
 @property (copy, nonatomic) NSArray *excludedTransactionAuthors; // @synthesize excludedTransactionAuthors=_excludedTransactionAuthors;
 @property (nonatomic) BOOL includeChangeAnchors; // @synthesize includeChangeAnchors=_includeChangeAnchors;
 @property (nonatomic) BOOL includeChangeIDs; // @synthesize includeChangeIDs=_includeChangeIDs;
@@ -41,7 +40,6 @@
 @property (nonatomic) BOOL includeLabeledValueChanges; // @synthesize includeLabeledValueChanges=_includeLabeledValueChanges;
 @property (nonatomic) BOOL mutableObjects; // @synthesize mutableObjects=_mutableObjects;
 @property (nonatomic) BOOL shouldUnifyResults; // @synthesize shouldUnifyResults=_shouldUnifyResults;
-@property (readonly, nonatomic) CNChangeHistoryAnchor *startingAnchor;
 @property (copy, nonatomic) NSData *startingToken; // @synthesize startingToken=_startingToken;
 @property (nonatomic) BOOL unifyResults;
 
@@ -51,7 +49,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithClientIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStartingAnchor:(id)arg1;
 - (void)setStartingAnchor:(id)arg1;
 
 @end

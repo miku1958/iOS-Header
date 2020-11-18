@@ -12,8 +12,8 @@
 {
 }
 
-@property (strong, nonatomic) NSMutableArray *changesArray; // @dynamic changesArray;
-@property (readonly, nonatomic) unsigned long long changesArray_Count; // @dynamic changesArray_Count;
+@property (strong, nonatomic) NSMutableArray *mutationsArray; // @dynamic mutationsArray;
+@property (readonly, nonatomic) unsigned long long mutationsArray_Count; // @dynamic mutationsArray_Count;
 
 + (id)descriptor;
 

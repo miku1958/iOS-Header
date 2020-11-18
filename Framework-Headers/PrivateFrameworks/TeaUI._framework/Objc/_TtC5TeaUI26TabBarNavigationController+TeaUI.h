@@ -6,7 +6,15 @@
 
 #import <TeaUI/_TtC5TeaUI26TabBarNavigationController.h>
 
-@interface _TtC5TeaUI26TabBarNavigationController (TeaUI)
+#import <TeaUI/UINavigationControllerDelegate-Protocol.h>
+
+@interface _TtC5TeaUI26TabBarNavigationController (TeaUI) <UINavigationControllerDelegate>
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
+- (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)showViewController:(id)arg1 sender:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

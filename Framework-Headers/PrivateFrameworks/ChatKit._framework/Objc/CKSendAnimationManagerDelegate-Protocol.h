@@ -6,12 +6,12 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKTranscriptCollectionViewController, IMChat;
-@protocol CKSendAnimationContext, CKSendAnimationManager;
+@class CKViewController, IMChat;
+@protocol CKCoreTranscriptControllerProtocol, CKSendAnimationContext, CKSendAnimationManager;
 
 @protocol CKSendAnimationManagerDelegate <NSObject>
 - (IMChat *)chatForSendAnimationManager:(id<CKSendAnimationManager>)arg1;
-- (CKTranscriptCollectionViewController *)collectionViewControllerForImpactEffectManager:(id<CKSendAnimationManager>)arg1;
+- (CKViewController<CKCoreTranscriptControllerProtocol> *)collectionViewControllerForImpactEffectManager:(id<CKSendAnimationManager>)arg1;
 - (void)sendAnimationManagerDidStopAnimation:(id<CKSendAnimationManager>)arg1 context:(id<CKSendAnimationContext>)arg2;
 - (void)sendAnimationManagerWillStartAnimation:(id<CKSendAnimationManager>)arg1 context:(id<CKSendAnimationContext>)arg2;
 @end

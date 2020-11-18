@@ -7,6 +7,6 @@
 #import <TSDrawables/TSDConnectionLineInfo.h>
 
 @interface TSDConnectionLineInfo (TSTextAdditions)
-- (int)elementKind;
+- (unsigned int)elementKind;
 @end
 

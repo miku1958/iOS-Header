@@ -42,12 +42,12 @@ typedef struct {
 } CDStruct_198678f7;
 
 typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
+    long long x;
+    long long y;
+} CDStruct_f261e59c;
 
 typedef struct {
-    CDStruct_912cb5d2 _field1;
-    CDStruct_912cb5d2 _field2;
-} CDStruct_0973877e;
+    CDStruct_f261e59c _field1;
+    CDStruct_f261e59c _field2;
+} CDStruct_efd166d3;
 

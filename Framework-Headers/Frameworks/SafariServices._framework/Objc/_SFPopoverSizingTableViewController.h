@@ -14,14 +14,13 @@
     BOOL _didUpdateTranslucentAppearanceAtLeastOnce;
     BOOL _didHaveTranslucentAppearance;
     BOOL _updatePreferredContentSizeAfterNextLayout;
-    double _preferredContentWidth;
 }
 
 @property (readonly, nonatomic) BOOL hasTranslucentAppearance;
 @property (readonly, nonatomic) long long maximumNumberOfRows;
 @property (readonly, nonatomic) long long minimumNumberOfRows;
-@property (nonatomic) double preferredContentWidth; // @synthesize preferredContentWidth=_preferredContentWidth;
 
++ (double)caculateHeightForTableView:(id)arg1 targetGlobalRow:(long long)arg2 outGlobalRow:(long long *)arg3;
 + (void)initialize;
 + (id)tableViewCellForSizeEstimation;
 - (void).cxx_destruct;

@@ -18,6 +18,8 @@
 - (id)pk_arrayByRemovingObject:(id)arg1;
 - (id)pk_arrayByRemovingObjectsInArray:(id)arg1;
 - (BOOL)pk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
+- (id)pk_createArrayByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)pk_intersectArray:(id)arg1;
 - (id)pk_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_shuffledArray;
 @end

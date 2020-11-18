@@ -11,15 +11,20 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)range:(struct _NSRange)arg1 containsEmptySelectedRange:(struct _NSRange)arg2;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityApplyArrowLabel;
+- (void)_accessibilityApplyAudioButtonLabel;
 - (void)_accessibilityApplyBrowserLabel;
+- (void)_accessibilityApplyCancelButtonLabel;
+- (void)_accessibilityApplyEmojiButtonLabel;
 - (void)_accessibilityApplyPhotoLabel;
 - (void)_accessibilityApplyPlaceholderLabel;
 - (BOOL)_accessibilityIsMediaJoystickVisible;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (void)_postSentAnnouncementIfNeeded;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)accessibilityViewIsModal;
 - (void)arrowButtonTapped:(id)arg1;
@@ -31,11 +36,11 @@
 - (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (void)configureAudioActionMenuControllerForPlayback:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(BOOL)arg3 shouldShowSendButton:(BOOL)arg4 shouldShowSubject:(BOOL)arg5 shouldShowPluginButtons:(BOOL)arg6 shouldShowCharacterCount:(BOOL)arg7 traitCollection:(id)arg8;
-- (void)layoutSubviews;
 - (void)loadRecordedAudioViewsIfNeeded;
+- (void)messageEntryRecordedAudioViewPressedDelete:(id)arg1;
 - (void)presentAudioActionMenu;
+- (void)setShowMentionSuggestions:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)shouldGroupAccessibilityChildren;
-- (void)touchUpInsideDeleteAudioRecordingButton:(id)arg1;
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)updateEntryView;
 

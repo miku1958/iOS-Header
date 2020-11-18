@@ -6,19 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class _LSLazyPropertyList;
+#import <CoreServices/LSDetachable-Protocol.h>
+#import <CoreServices/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface LSPropertyList : NSObject
+@class NSDictionary, NSString;
+
+@interface LSPropertyList : NSObject <LSDetachable, NSCopying>
 {
-    _LSLazyPropertyList *_lazyPropertyList;
 }
 
-@property (strong) _LSLazyPropertyList *lazyPropertyList; // @synthesize lazyPropertyList=_lazyPropertyList;
+@property (readonly) NSString *_applicationIdentifier;
+@property (readonly, nonatomic) NSDictionary *_expensiveDictionaryRepresentation;
 
 + (id)new;
-- (void).cxx_destruct;
-- (id)_initWithLazyPropertyList:(id)arg1;
++ (id)propertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
++ (id)propertyListWithData:(id)arg1;
++ (id)propertyListWithDictionary:(id)arg1;
+- (id)_init;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
+- (id)description;
+- (void)detach;
 - (id)init;
 - (id)objectForKey:(id)arg1 ofClass:(Class)arg2;
 - (id)objectForKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;

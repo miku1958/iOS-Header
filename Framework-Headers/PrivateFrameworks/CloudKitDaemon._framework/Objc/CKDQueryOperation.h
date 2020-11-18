@@ -9,7 +9,7 @@
 #import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
 
 @class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol CKQueryOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDQueryOperation : CKDDatabaseOperation <CKDOperationPipelining>
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
+@property (strong, nonatomic) id<CKQueryOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (readonly, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -62,10 +63,9 @@ __attribute__((visibility("hidden")))
 - (void)_sendQueryRequestWithCursor:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
 - (id)_wrapError:(id)arg1 format:(id)arg2;
 - (id)activityCreate;
-- (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
-- (Class)operationResultClass;
+- (int)operationType;
 
 @end
 

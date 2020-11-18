@@ -36,7 +36,7 @@
 - (void)open;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2 batchID:(int)arg3;
-- (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
+- (void)shrinkDiskCacheToSize:(unsigned long long)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
 
 @end

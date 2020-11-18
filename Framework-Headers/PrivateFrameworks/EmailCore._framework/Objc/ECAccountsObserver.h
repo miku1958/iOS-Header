@@ -22,10 +22,12 @@
 @property (readonly) Class superclass;
 
 + (id)log;
++ (id)observedAccountTypes;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
 - (void)_credentialsDidChange:(id)arg1;
 - (void)_mailAccountsChanged:(id)arg1;
+- (BOOL)_shouldNotifyOnAccountChangeForNotification:(id)arg1;
 - (void)handleAccountStoreChangeForAccountIdentifier:(id)arg1;
 - (void)handleCredentialChangeForAccountIdentifier:(id)arg1;
 - (void)handleMailAccountsHaveChanged:(id)arg1 accountsNeedInitialization:(BOOL)arg2;

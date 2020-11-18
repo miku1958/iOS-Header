@@ -6,23 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class AVBackdropView;
+@class AVLayoutView;
 
 @interface AVBackgroundView : UIView
 {
     BOOL _automaticallyDrawsRoundedCorners;
     BOOL _prefersLowQualityEffects;
     BOOL _circular;
-    AVBackdropView *_backdropView;
+    AVLayoutView *_layoutView;
 }
 
 @property (nonatomic) BOOL automaticallyDrawsRoundedCorners; // @synthesize automaticallyDrawsRoundedCorners=_automaticallyDrawsRoundedCorners;
-@property (strong, nonatomic) AVBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property (nonatomic, getter=isCircular) BOOL circular; // @synthesize circular=_circular;
+@property (strong, nonatomic) AVLayoutView *layoutView; // @synthesize layoutView=_layoutView;
 @property (nonatomic) BOOL prefersLowQualityEffects; // @synthesize prefersLowQualityEffects=_prefersLowQualityEffects;
 
 - (void).cxx_destruct;
-- (void)_ensureOrRemoveBackdropView;
+- (void)_ensureOrRemoveLayoutView;
 - (BOOL)_isContainedInOverlappingBackgroundView;
 - (void)_updateBackdropShape;
 - (void)addSubview:(id)arg1 applyingMaterialStyle:(long long)arg2 tintEffectStyle:(long long)arg3;

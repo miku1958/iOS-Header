@@ -15,17 +15,21 @@
     PBUnknownFields *_unknownFields;
     unsigned int _offset;
     unsigned int _width;
+    unsigned int _zilchPathIndex;
     struct {
         unsigned int has_offset:1;
         unsigned int has_width:1;
+        unsigned int has_zilchPathIndex:1;
     } _flags;
 }
 
 @property (nonatomic) BOOL hasOffset;
 @property (nonatomic) BOOL hasWidth;
+@property (nonatomic) BOOL hasZilchPathIndex;
 @property (nonatomic) unsigned int offset;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int width;
+@property (nonatomic) unsigned int zilchPathIndex;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
@@ -35,7 +39,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -9,32 +9,34 @@
 #import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class ICStoreArtworkInfo, ICStoreVideoArtworkInfo, NSString, NSURL;
 
 @interface MPStoreArtworkRequestToken : NSObject <NSSecureCoding, MPArtworkDataSourceVisualIdenticality>
 {
-    BOOL _shouldIgnoreImage;
-    NSURL *_artworkURL;
-    NSArray *_lookupItemArtworks;
-    NSArray *_artworkInfoEntries;
+    long long _artworkInfoType;
+    ICStoreArtworkInfo *_imageArtworkInfo;
+    ICStoreVideoArtworkInfo *_videoArtworkInfo;
     NSString *_cropStyle;
     NSString *_format;
     NSString *_sourceEditorialArtworkKind;
+    NSURL *_artworkURL;
 }
 
-@property (copy, nonatomic) NSArray *artworkInfoEntries; // @synthesize artworkInfoEntries=_artworkInfoEntries;
+@property (nonatomic) long long artworkInfoType; // @synthesize artworkInfoType=_artworkInfoType;
 @property (copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property (copy, nonatomic) NSString *cropStyle; // @synthesize cropStyle=_cropStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *format; // @synthesize format=_format;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *lookupItemArtworks; // @synthesize lookupItemArtworks=_lookupItemArtworks;
-@property (nonatomic) BOOL shouldIgnoreImage; // @synthesize shouldIgnoreImage=_shouldIgnoreImage;
+@property (copy, nonatomic) ICStoreArtworkInfo *imageArtworkInfo; // @synthesize imageArtworkInfo=_imageArtworkInfo;
 @property (copy, nonatomic) NSString *sourceEditorialArtworkKind; // @synthesize sourceEditorialArtworkKind=_sourceEditorialArtworkKind;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) ICStoreVideoArtworkInfo *videoArtworkInfo; // @synthesize videoArtworkInfo=_videoArtworkInfo;
 
 + (BOOL)supportsSecureCoding;
++ (id)tokenWithImageArtworkInfo:(id)arg1;
++ (id)tokenWithVideoArtworkInfo:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

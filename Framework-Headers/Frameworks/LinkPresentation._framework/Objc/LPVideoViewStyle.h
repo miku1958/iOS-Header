@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CAMediaTimingFunction *pulsingLoadIndicatorTimingFunction; // @synthesize pulsingLoadIndicatorTimingFunction=_pulsingLoadIndicatorTimingFunction;
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

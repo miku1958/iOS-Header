@@ -25,6 +25,7 @@
 - (Class)exporterClassForType:(id)arg1 options:(id)arg2;
 - (Class)importerClassForType:(id)arg1 path:(id)arg2;
 - (id)indexXmlFilename;
+- (BOOL)isIBADocumentType:(id)arg1;
 - (BOOL)isSageDocumentType:(id)arg1;
 - (BOOL)isTCMessageExceptionErrorDomain:(id)arg1;
 - (BOOL)isTextOnlyType:(id)arg1;

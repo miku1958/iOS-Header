@@ -73,6 +73,7 @@
 - (void)p_pruneToBaseWithTableInfo:(id)arg1;
 - (void)p_setObjectLocale:(id)arg1;
 - (void)p_setupInterestingCells:(vector_73284f0b *)arg1 forAdding:(BOOL)arg2;
+- (void)p_simpleInvokeBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchiver:(id)arg1;
 
 @end

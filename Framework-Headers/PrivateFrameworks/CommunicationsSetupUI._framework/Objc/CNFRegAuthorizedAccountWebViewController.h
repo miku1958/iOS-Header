@@ -6,6 +6,7 @@
 
 #import <CommunicationsSetupUI/CNFRegAccountWebViewController.h>
 
+__attribute__((visibility("hidden")))
 @interface CNFRegAuthorizedAccountWebViewController : CNFRegAccountWebViewController
 {
 }

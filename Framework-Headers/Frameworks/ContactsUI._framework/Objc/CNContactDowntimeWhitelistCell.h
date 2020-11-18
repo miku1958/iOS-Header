@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)shouldIndentWhileEditing;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
-- (BOOL)shouldIndentWhileEditing;
 
 @end
 

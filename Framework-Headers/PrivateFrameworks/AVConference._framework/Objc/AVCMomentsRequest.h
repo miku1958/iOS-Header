@@ -11,10 +11,10 @@
 
 @interface AVCMomentsRequest : NSObject
 {
-    NSString *_transactionID;
     unsigned char _mediaType;
-    id _delegate;
     unsigned char _mode;
+    NSString *_transactionID;
+    NSObject<AVCMomentsRequestDelegate> *_delegate;
     NSString *_requesterID;
     NSString *_requesteeID;
 }

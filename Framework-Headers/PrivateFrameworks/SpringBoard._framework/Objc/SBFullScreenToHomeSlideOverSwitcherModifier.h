@@ -18,21 +18,21 @@
 - (void).cxx_destruct;
 - (BOOL)_isIndexSlideOverAppLayout:(unsigned long long)arg1;
 - (BOOL)_shouldApplySlideOverLayoutToIndex:(unsigned long long)arg1;
-- (long long)backdropBlurType;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (double)homeScreenAlpha;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 direction:(unsigned long long)arg3;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

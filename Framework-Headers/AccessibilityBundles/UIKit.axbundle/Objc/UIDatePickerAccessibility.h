@@ -18,6 +18,7 @@
 - (long long)accessibilityContainerType;
 - (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

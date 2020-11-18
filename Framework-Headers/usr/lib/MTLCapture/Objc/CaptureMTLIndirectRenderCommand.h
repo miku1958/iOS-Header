@@ -37,6 +37,7 @@
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 baseInstance:(unsigned long long)arg5;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2;
+- (id)originalObject;
 - (void)reset;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setFragmentBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;

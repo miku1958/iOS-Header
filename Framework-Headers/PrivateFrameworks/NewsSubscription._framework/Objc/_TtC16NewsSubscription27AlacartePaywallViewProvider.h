@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription27AlacartePaywallViewProvider : NSObject
 {
     MISSING_TYPE *delegate;

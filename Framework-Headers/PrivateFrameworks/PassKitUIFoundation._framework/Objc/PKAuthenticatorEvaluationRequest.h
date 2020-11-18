@@ -11,6 +11,7 @@
 @interface PKAuthenticatorEvaluationRequest : NSObject
 {
     BOOL _useStockAuthInterface;
+    BOOL _hasInitialAuthenticatorState;
     BOOL _assumeUserIntentAvailable;
     long long _policy;
     NSString *_reason;
@@ -22,6 +23,7 @@
     struct __SecAccessControl *_accessControlRef;
     NSString *_physicalButtonTitle;
     NSString *_passcodeTitle;
+    unsigned long long _initialAuthenticatorState;
 }
 
 @property (copy, nonatomic) NSNumber *PINLength; // @synthesize PINLength=_PINLength;
@@ -29,6 +31,8 @@
 @property (nonatomic) struct __SecAccessControl *accessControlRef; // @synthesize accessControlRef=_accessControlRef;
 @property (nonatomic) BOOL assumeUserIntentAvailable; // @synthesize assumeUserIntentAvailable=_assumeUserIntentAvailable;
 @property (strong, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
+@property (nonatomic) BOOL hasInitialAuthenticatorState; // @synthesize hasInitialAuthenticatorState=_hasInitialAuthenticatorState;
+@property (nonatomic) unsigned long long initialAuthenticatorState; // @synthesize initialAuthenticatorState=_initialAuthenticatorState;
 @property (copy, nonatomic) NSString *passcodeTitle; // @synthesize passcodeTitle=_passcodeTitle;
 @property (copy, nonatomic) NSString *physicalButtonTitle; // @synthesize physicalButtonTitle=_physicalButtonTitle;
 @property (readonly, nonatomic) long long policy; // @synthesize policy=_policy;

@@ -20,7 +20,7 @@
 + (id)commandForErasingAllStrokesInDrawing:(id)arg1;
 + (id)commandForErasingStrokes:(id)arg1 drawing:(id)arg2;
 + (id)commandForMakingStrokeVisible:(id)arg1 drawing:(id)arg2 hiding:(BOOL)arg3;
-+ (id)commandForMakingStrokesVisible:(id)arg1 drawing:(id)arg2;
++ (id)commandForMakingStrokesVisible:(id)arg1 drawing:(id)arg2 hiding:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)applyToDrawing:(id)arg1;
 - (id)description;

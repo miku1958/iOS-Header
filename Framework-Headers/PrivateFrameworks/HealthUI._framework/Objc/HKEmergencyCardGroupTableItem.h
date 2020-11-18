@@ -30,6 +30,7 @@
 - (long long)numberOfRows;
 - (void)setData:(id)arg1;
 - (void)setOwningViewController:(id)arg1;
+- (void)setProfileFirstName:(id)arg1;
 - (BOOL)shouldHighlightRowAtIndex:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndex:(long long)arg2;

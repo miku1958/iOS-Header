@@ -6,9 +6,11 @@
 
 #import <WorkflowKit/WFParameter.h>
 
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
+
 @class NSString;
 
-@interface WFTextInputParameter : WFParameter
+@interface WFTextInputParameter : WFParameter <WFParameterDialogProvider>
 {
     BOOL _secureTextEntry;
     BOOL _smartQuotesDisabled;
@@ -27,6 +29,9 @@
 
 @property (readonly, nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
 @property (readonly, nonatomic) long long autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long hintDisplayMode; // @synthesize hintDisplayMode=_hintDisplayMode;
 @property (readonly, nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (readonly, nonatomic, getter=isMultiline) BOOL multiline; // @synthesize multiline=_multiline;
@@ -35,15 +40,19 @@
 @property (readonly, nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @synthesize secureTextEntry=_secureTextEntry;
 @property (readonly, nonatomic) BOOL smartDashesDisabled; // @synthesize smartDashesDisabled=_smartDashesDisabled;
 @property (readonly, nonatomic) BOOL smartQuotesDisabled; // @synthesize smartQuotesDisabled=_smartQuotesDisabled;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long syntaxHighlightingType; // @synthesize syntaxHighlightingType=_syntaxHighlightingType;
 @property (readonly, nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (readonly, copy, nonatomic) NSString *textContentType; // @synthesize textContentType=_textContentType;
 
 - (void).cxx_destruct;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)createDialogTextFieldConfigurationWithDefaultState:(id)arg1;
 - (id)defaultSerializedRepresentation;
 - (id)defaultSupportedVariableTypes;
 - (id)hintForState:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
+- (id)parameterStateFromDialogResponse:(id)arg1;
 - (void)setLocalizedPlaceholder:(id)arg1;
 - (BOOL)shouldAlignLabels;
 - (Class)singleStateClass;

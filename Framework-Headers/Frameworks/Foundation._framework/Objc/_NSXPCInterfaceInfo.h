@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
     Class _xpcDOSubclass;
 }
 
-@property unsigned long long remoteVersion; // @synthesize remoteVersion=_remoteVersion;
-
 - (void)dealloc;
 - (id)init;
 

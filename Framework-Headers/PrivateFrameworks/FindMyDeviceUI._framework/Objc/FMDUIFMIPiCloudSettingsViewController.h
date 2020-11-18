@@ -6,7 +6,7 @@
 
 #import <Preferences/PSListController.h>
 
-@class ACAccount, NSObject, PSSpecifier, RemoteUIController, UIProgressHUD;
+@class ACAccount, NSObject, PSSpecifier, UIProgressHUD;
 @protocol SPSettingsConfigurating;
 
 @interface FMDUIFMIPiCloudSettingsViewController : PSListController
@@ -19,7 +19,6 @@
     ACAccount *_account;
     PSSpecifier *_fmipSpecifier;
     PSSpecifier *_sendLastLocationSpecifier;
-    RemoteUIController *_ruiController;
     UIProgressHUD *_hud;
     NSObject<SPSettingsConfigurating> *_spSession;
 }
@@ -31,7 +30,6 @@
 @property (strong, nonatomic) UIProgressHUD *hud; // @synthesize hud=_hud;
 @property (nonatomic) BOOL offlineFindingDisabledDueToNotHSA2; // @synthesize offlineFindingDisabledDueToNotHSA2=_offlineFindingDisabledDueToNotHSA2;
 @property (nonatomic) BOOL offlineFindingEnabled; // @synthesize offlineFindingEnabled=_offlineFindingEnabled;
-@property (strong, nonatomic) RemoteUIController *ruiController; // @synthesize ruiController=_ruiController;
 @property (strong, nonatomic) PSSpecifier *sendLastLocationSpecifier; // @synthesize sendLastLocationSpecifier=_sendLastLocationSpecifier;
 @property (strong, nonatomic) NSObject<SPSettingsConfigurating> *spSession; // @synthesize spSession=_spSession;
 @property (nonatomic) BOOL togglingFMIPSwitch; // @synthesize togglingFMIPSwitch=_togglingFMIPSwitch;

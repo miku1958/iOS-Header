@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class TSgPTPClock;
+@class IOKConnection, TSgPTPClock;
 @protocol OS_dispatch_queue;
 
 @interface TSgPTPManager : NSObject
 {
-    unsigned int _connection;
+    IOKConnection *_connection;
     TSgPTPClock *_systemDomain;
     NSObject<OS_dispatch_queue> *_systemDomainQueue;
     unsigned long long _systemDomainClockIdentifier;
@@ -20,14 +20,19 @@
 @property (readonly, strong, nonatomic) TSgPTPClock *systemDomain; // @dynamic systemDomain;
 @property (readonly, nonatomic) unsigned long long systemDomainClockIdentifier; // @synthesize systemDomainClockIdentifier=_systemDomainClockIdentifier;
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)gPTPManager;
 + (void)notifyWhengPTPManagerIsAvailable:(CDUnknownBlockType)arg1;
 + (id)sharedgPTPManager;
 + (id)sharedgPTPManagerSyncWithTimeout:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (BOOL)addAVBDomainIndex:(unsigned short)arg1 identifier:(unsigned long long *)arg2 error:(id *)arg3;
+- (BOOL)addAirPlayDomain:(unsigned long long *)arg1 error:(id *)arg2;
 - (BOOL)addDomain:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;
+- (BOOL)removeAVBDomainWithIndex:(unsigned short)arg1 error:(id *)arg2;
+- (BOOL)removeAirPlayDomainWithError:(id *)arg1;
 - (BOOL)removeDomainWithIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 
 @end

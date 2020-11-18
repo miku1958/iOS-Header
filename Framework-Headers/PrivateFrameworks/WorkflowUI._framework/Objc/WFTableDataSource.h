@@ -14,6 +14,7 @@
 @interface WFTableDataSource : NSObject <WFTreeObserver, UITableViewDataSource>
 {
     UITableView *_tableView;
+    double _indentationWidth;
     WFTableDataSourceTreeNode *_tree;
     NSMutableArray *_mutableSections;
 }
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double indentationWidth; // @synthesize indentationWidth=_indentationWidth;
 @property (readonly, nonatomic) NSMutableArray *mutableSections; // @synthesize mutableSections=_mutableSections;
 @property (copy, nonatomic) NSArray *sections;
 @property (readonly) Class superclass;

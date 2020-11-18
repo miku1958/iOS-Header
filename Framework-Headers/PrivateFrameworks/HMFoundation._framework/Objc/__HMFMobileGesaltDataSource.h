@@ -14,13 +14,13 @@
 #import <HMFoundation/HMFSystemInfoSoftwareVersionDataSource-Protocol.h>
 #import <HMFoundation/HMFSystemInfoWiFiDataSource-Protocol.h>
 
-@class HMFMACAddress, HMFSoftwareVersion, HMFUnfairLock, NSObject, NSString;
+@class HMFMACAddress, HMFSoftwareVersion, NSObject, NSString;
 @protocol HMFSystemInfoNameDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface __HMFMobileGesaltDataSource : HMFObject <HMFSystemInfoNameDataSource, HMFSystemInfoMarketingInformationDataSource, HMFSystemInfoSerialNumberDataSource, HMFSystemInfoProductInfoDataSource, HMFSystemInfoSoftwareVersionDataSource, HMFSystemInfoWiFiDataSource, HMFSystemInfoBluetoothLEDataSource>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     BOOL _supportsBLE;
     id<HMFSystemInfoNameDataSourceDelegate> _delegate;
     NSString *_name;

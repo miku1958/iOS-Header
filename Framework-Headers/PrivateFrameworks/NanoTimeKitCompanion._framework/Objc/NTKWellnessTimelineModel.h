@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, HKUnit, NSArray, NSDate, NSHashTable, _HKCurrentActivitySummaryQuery;
+#import <NanoTimeKitCompanion/FIFitnessAppsStateObserverDelegate-Protocol.h>
+
+@class FIFitnessAppsStateObserver, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, HKUnit, NSArray, NSDate, NSHashTable, NSString, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
-@interface NTKWellnessTimelineModel : NSObject
+@interface NTKWellnessTimelineModel : NSObject <FIFitnessAppsStateObserverDelegate>
 {
     HKHealthStore *_healthStore;
     HKUnit *_kcalUnit;
@@ -20,13 +22,21 @@
     HKActivitySummary *_queue_currentActivitySummary;
     HKCurrentActivityCacheQuery *_queue_currentActivityCacheQuery;
     NSArray *_queue_currentActiveEnergyChartData;
+    NSArray *_queue_currentMoveTimeChartData;
     NSArray *_queue_currentExerciseChartData;
     NSArray *_queue_currentStandChartData;
     NSObject<OS_dispatch_queue> *_subscriber_queue;
     NSHashTable *_subscribers;
     NSDate *_currentDate;
     BOOL _queue_ignoreLoadingSummary;
+    FIFitnessAppsStateObserver *_fitnessAppsStateObserver;
+    BOOL _areFitnessAppsRestricted;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedModel;
 - (void).cxx_destruct;
@@ -44,6 +54,7 @@
 - (id)_queue_wellnessEntryModelFromCurrentActivitySummary;
 - (void)addSubscriber:(id)arg1;
 - (void)dealloc;
+- (void)fitnessAppsStateObserver:(id)arg1 stateDidChange:(long long)arg2;
 - (void)getCurrentWellnessEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getWellnessEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)getWellnessEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;

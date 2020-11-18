@@ -15,7 +15,7 @@
 + (id)valueFromSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (id)collectionByConvertingStringItemsToHandles:(id)arg1;
 - (id)initWithValue:(id)arg1;
-- (void)processContentCollection:(id)arg1 fromVariable:(BOOL)arg2 valueHandler:(CDUnknownBlockType)arg3;
+- (void)processContentCollection:(id)arg1 context:(id)arg2 fromVariable:(BOOL)arg3 valueHandler:(CDUnknownBlockType)arg4;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (BOOL)reinterpretsStringsAsContactHandlesFromVariable:(BOOL)arg1;
 - (id)stringInterpretedAsContactHandle:(id)arg1;

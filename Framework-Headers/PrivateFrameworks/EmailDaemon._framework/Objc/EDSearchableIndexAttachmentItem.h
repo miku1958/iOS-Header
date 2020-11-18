@@ -54,6 +54,7 @@
 - (long long)compare:(id)arg1;
 - (id)fetchIndexableAttachments;
 - (id)initWithAttachmentPersistentID:(id)arg1 messagePersistentID:(id)arg2 metadatum:(id)arg3;
+- (void)preprocess;
 - (id)searchableItem;
 - (void)setNeedsAllAttributesIndexingType;
 

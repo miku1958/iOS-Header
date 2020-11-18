@@ -11,10 +11,14 @@
 @interface SISchemaRedactableString : PBCodable
 {
     int _redactionState;
-    unsigned long long _which_String;
     NSString *_value;
+    BOOL _hasRedactionState;
+    BOOL _hasValue;
+    unsigned long long _which_String;
 }
 
+@property (nonatomic) BOOL hasRedactionState; // @synthesize hasRedactionState=_hasRedactionState;
+@property (nonatomic) BOOL hasValue; // @synthesize hasValue=_hasValue;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int redactionState; // @synthesize redactionState=_redactionState;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;

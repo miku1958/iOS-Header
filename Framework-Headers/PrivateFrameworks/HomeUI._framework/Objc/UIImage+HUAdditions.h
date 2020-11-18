@@ -9,15 +9,24 @@
 @interface UIImage (HUAdditions)
 + (id)hu_cameraErrorImage;
 + (id)hu_cellCheckmarkImage;
++ (id)hu_closeButtonImage;
 + (id)hu_flatWhiteResizableTemplateImage;
++ (id)hu_gearImageWithBadgeCount:(unsigned long long)arg1;
 + (id)hu_largeQRBadgeTemplateImage;
++ (id)hu_largeSymbolConfiguration;
 + (id)hu_locationArrowTemplate;
++ (id)hu_microphoneGlyphForTalkingState:(BOOL)arg1 usingStandardSymbolConfiguration:(BOOL)arg2;
 + (id)hu_navigationBarGlyphHouse;
 + (id)hu_navigationBarGlyphList;
 + (id)hu_navigationBarGlyphPlus;
++ (id)hu_pauseButton;
++ (id)hu_playButton;
++ (id)hu_recordingDeleteButton;
 + (struct CGSize)hu_scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2 contentMode:(long long)arg3;
++ (id)hu_settingsImageUsingStandardSymbolConfiguration:(BOOL)arg1;
 + (id)hu_smallQRBadgeTemplateImage;
 + (id)hu_standardSymbolConfiguration;
++ (id)hu_stopButtonImage;
 - (id)hu_imageScaledToSize:(struct CGSize)arg1 contentMode:(long long)arg2;
 @end
 

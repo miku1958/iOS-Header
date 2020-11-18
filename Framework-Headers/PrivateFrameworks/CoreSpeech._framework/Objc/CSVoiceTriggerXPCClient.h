@@ -25,9 +25,11 @@
 - (void)connect;
 - (void)dealloc;
 - (void)enableVoiceTrigger:(BOOL)arg1 withAssertion:(id)arg2 timestamp:(double)arg3;
+- (id)fetchVoiceTriggerStats;
 - (id)init;
 - (void)notifyVoiceTriggeredSiriSessionCancelled;
 - (void)setPhraseSpotterBypassing:(BOOL)arg1 timeout:(double)arg2;
+- (void)setRaiseToSpeakBypassing:(BOOL)arg1 timeout:(double)arg2;
 
 @end
 

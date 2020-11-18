@@ -6,9 +6,13 @@
 
 #import <UIKit/UINavigationBar.h>
 
+@class NSArray;
+
 @interface TUForwardingTouchNavigationBar : UINavigationBar
 {
 }
+
+@property (nonatomic, copy) NSArray *accessibilityElements;
 
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;

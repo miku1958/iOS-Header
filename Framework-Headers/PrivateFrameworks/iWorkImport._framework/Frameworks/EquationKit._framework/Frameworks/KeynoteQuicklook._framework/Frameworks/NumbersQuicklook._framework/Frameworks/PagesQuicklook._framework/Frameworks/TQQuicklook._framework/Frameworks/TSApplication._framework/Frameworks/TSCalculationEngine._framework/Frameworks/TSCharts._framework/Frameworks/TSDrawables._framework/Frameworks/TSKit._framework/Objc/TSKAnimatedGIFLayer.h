@@ -13,9 +13,10 @@
     TSKAnimatedGIFController *mController;
 }
 
-@property (nonatomic) TSKAnimatedGIFController *controller;
+@property (weak, nonatomic) TSKAnimatedGIFController *controller;
 
 + (id)defaultActionForKey:(id)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)display;
 - (void)teardown;

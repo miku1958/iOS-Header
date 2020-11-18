@@ -9,6 +9,7 @@
 #import <HomeKitDaemon/HMDCompanionLinkClient-Protocol.h>
 
 @class NSString, RPCompanionLinkClient;
+@protocol OS_dispatch_queue;
 
 @interface HMDCompanionLinkClient : NSObject <HMDCompanionLinkClient>
 {
@@ -21,6 +22,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

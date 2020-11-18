@@ -20,6 +20,7 @@
 - (long long)groupViewContentModeForFrontmostPassWhenPiled:(PKPassGroupView *)arg1 withDefaultContentMode:(long long)arg2;
 - (long long)groupViewContentModeForFrontmostPassWhenStacked:(PKPassGroupView *)arg1;
 - (void)groupViewDidUpdatePageControlVisibility:(PKPassGroupView *)arg1;
+- (void)groupViewExpandButtonTapped:(PKPassGroupView *)arg1;
 - (void)groupViewPanDidBegin:(PKPassGroupView *)arg1;
 - (void)groupViewPanDidEnd:(PKPassGroupView *)arg1;
 - (unsigned long long)groupViewPassesSuppressedContent:(PKPassGroupView *)arg1;

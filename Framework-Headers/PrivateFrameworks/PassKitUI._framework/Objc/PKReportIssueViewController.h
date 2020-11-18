@@ -9,18 +9,19 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, PKAccount, PKBusinessChatController, PKPaymentPass, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
+@class NSString, PKAccount, PKBusinessChatController, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentWebService, PKTransactionSource, UIActivityIndicatorView, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
 
 @interface PKReportIssueViewController : PKSectionTableViewController <PKPaymentServiceDelegate, UITextViewDelegate>
 {
     PKPaymentTransaction *_transaction;
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
     PKPaymentService *_paymentService;
     PKPaymentTransactionCellController *_transactionCellController;
     PKBusinessChatController *_businessChatController;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_submitButton;
+    UIActivityIndicatorView *_activityIndicator;
     BOOL _hasIssueSelected;
     long long _selectedIssue;
     BOOL _hasMapsIssueSelected;
@@ -29,12 +30,15 @@
     long long _selectedDisputeType;
     BOOL _reportingIssue;
     NSString *_statementName;
+    BOOL _cancelingPayment;
     BOOL _canPerformUnrecognizedTransaction;
     BOOL _canPerformDispute;
+    BOOL _canPerformCancelAccountServicePayment;
     BOOL _canPerformOther;
     BOOL _canPerformIncorrectMerchant;
     UITableViewHeaderFooterView *_footerView;
     UIImageView *_logoView;
+    PKPaymentWebService *_paymentWebService;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,11 +46,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)canReportIssueForTransaction:(id)arg1 paymentPass:(id)arg2;
++ (BOOL)canReportIssueForTransaction:(id)arg1 transactionSource:(id)arg2;
 - (void).cxx_destruct;
 - (void)_cancelButtonTapped:(id)arg1;
+- (void)_cancelPayment;
 - (id)_commentsCellForTableView:(id)arg1 atIndexPath:(id)arg2;
-- (void)_disputeTransactionInBusinessChat;
 - (id)_disputeTypeCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (id)_formattedStatementNameFromRawName:(id)arg1;
 - (void)_handleDisputeTypeSelectedInTableView:(id)arg1 atIndexPath:(id)arg2;
@@ -58,6 +62,7 @@
 - (id)_mapsIssueCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (unsigned long long)_numberOfIssueTypesEnabled;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 dismissAfter:(BOOL)arg3;
+- (void)_reportIssueInBusinessChat;
 - (void)_reportIssueToMaps;
 - (void)_resetMapsMerchantAndBrandWithIssueReportIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)_rowIndexForIssueType:(long long)arg1;
@@ -67,7 +72,7 @@
 - (id)_transactionCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateFooterPlacement;
 - (void)_updateNavigationButtons;
-- (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 detailViewStyle:(long long)arg4;
+- (id)initWithTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 detailViewStyle:(long long)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -77,7 +82,6 @@
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)textViewDidChange:(id)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

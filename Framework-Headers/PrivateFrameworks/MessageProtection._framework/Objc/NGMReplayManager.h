@@ -13,8 +13,6 @@
     NSPersistentContainer *_persistentContainer;
 }
 
-@property (strong) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
-
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)computeDestinationHashForIncomingMessageFrom:(id)arg1 toLocalKey:(id)arg2;
@@ -23,8 +21,13 @@
 - (id)dbNameFromProcess;
 - (BOOL)deleteExpiredSendingDestinations;
 - (BOOL)deleteReceivingCountersForKey:(id)arg1;
-- (id)init;
-- (id)persistentStoreDescriptionWithError:(id *)arg1;
+- (BOOL)isBATS;
+- (BOOL)isRunningTests;
+- (BOOL)isXCTest;
+- (void)logDatabaseCreationDate:(id)arg1;
+- (id)objectContextWithError:(id *)arg1;
+- (id)persistentContainerWithError:(id *)arg1;
+- (id)persistentStoreDescription;
 - (BOOL)processFetchRequestAndValidate:(id)arg1 counter:(unsigned int)arg2 commit:(BOOL)arg3 theirIdentity:(id)arg4 prekey:(id)arg5 error:(id *)arg6;
 - (id)registeredPrekeyForNGMPrekey:(id)arg1 objectContext:(id)arg2;
 - (CDUnknownBlockType)validateIncomingCounter:(unsigned int)arg1 prekey:(id)arg2 publicIdentity:(id)arg3 error:(id *)arg4;

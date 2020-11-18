@@ -10,6 +10,7 @@
 
 @class NSArray, NSString, PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegLocaleController : CNFRegFirstRunController <CNFRegRegionChooserDelegate>
 {
     NSString *_currentRegionID;

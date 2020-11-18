@@ -34,7 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSLayoutConstraint *effectBottomConstraint; // @synthesize effectBottomConstraint=_effectBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *effectTopConstraint; // @synthesize effectTopConstraint=_effectTopConstraint;
-@property (nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
+@property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (strong, nonatomic) GKGame *game; // @synthesize game=_game;
 @property (nonatomic) BOOL hasInitialData; // @synthesize hasInitialData=_hasInitialData;
 @property (readonly) unsigned long long hash;
@@ -42,6 +42,7 @@
 @property (nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (double)_statusBarHeightForCurrentInterfaceOrientation;
 - (BOOL)_useBackdropViewForWindowBackground;
 - (void)addDoneButtonToViewController:(id)arg1;
@@ -69,6 +70,7 @@
 - (void)setToDarkBackground;
 - (void)setToLightBackground;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;
+- (void)setupVisualEffects;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

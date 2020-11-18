@@ -38,10 +38,12 @@
     BOOL _loopsVideo;
     long long _transitionCount;
     struct CGSize _transitionTargetSize;
+    CDUnknownBlockType _renderingCompletionBlock;
+    BOOL _lastVideoPlayerVisibilityChangeWasAnimated;
     BOOL _centerContent;
-    BOOL _videoPlayerVisible;
     BOOL _debugEnabled;
     BOOL _scrollUpdatesSuppressed;
+    BOOL _videoPlayerVisible;
     id<NUMediaViewDelegate> _delegate;
     double _angle;
     struct CGSize __masterSizeWithoutGeometry;
@@ -68,14 +70,16 @@
 @property (readonly) id<NUMediaPlayer> player;
 @property (nonatomic) BOOL scrollUpdatesSuppressed; // @synthesize scrollUpdatesSuppressed=_scrollUpdatesSuppressed;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
-@property (nonatomic, getter=isVideoPlayerVisible) BOOL videoPlayerVisible; // @synthesize videoPlayerVisible=_videoPlayerVisible;
+@property (readonly, nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
+@property (readonly, nonatomic, getter=isVideoPlayerVisible) BOOL videoPlayerVisible; // @synthesize videoPlayerVisible=_videoPlayerVisible;
 @property (nonatomic) double zoomScale;
 
 + (struct UIEdgeInsets)_proposedInsetsForInsets:(struct UIEdgeInsets)arg1 contentSize:(struct CGSize)arg2 inFrame:(struct CGRect)arg3 centerContent:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)_beginTransition;
+- (BOOL)_didReleaseAVObjects;
 - (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2;
+- (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2 alwaysCenterContent:(BOOL)arg3;
 - (void)_endTransition;
 - (id)_geometry;
 - (id)_imageLayer;
@@ -102,7 +106,7 @@
 - (void)_updateContentInsets;
 - (void)_updateRenderContent;
 - (void)_updateRenderContentCoalesced:(BOOL)arg1;
-- (void)_updateVideoPlayerAlpha;
+- (void)_updateVideoPlayerAlpha:(BOOL)arg1;
 - (id)_videoPlayerController;
 - (id)_videoPlayerView;
 - (id)_videoPlayerViewWithoutControls;
@@ -112,9 +116,12 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2 toSpace:(id)arg3;
 - (struct CGPoint)convertPointFromImage:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointToImage:(struct CGPoint)arg1;
+- (struct CGRect)convertRectFromImage:(struct CGRect)arg1;
+- (struct CGRect)convertRectToImage:(struct CGRect)arg1;
 - (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)installRenderingCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isReady;
 - (void)layoutSubviews;
 - (void)playerController:(id)arg1 didUpdateElapsedTime:(double)arg2 duration:(double)arg3;
@@ -128,6 +135,8 @@
 - (void)scrollViewDidZoom:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
+- (void)setVideoEnabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setVideoPlayerVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setZoomScaleToFit;
 - (id)snapshotImage;
 - (id)viewForZoomingInScrollView:(id)arg1;

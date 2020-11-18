@@ -6,25 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSString, PPTopicRecord;
+@class NSSet, NSString, PPTopicRecord;
 
-@interface PPTopic : NSObject <NSCopying, NSSecureCoding>
+@interface PPTopic : NSObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     NSString *_topicIdentifier;
+    NSString *_clusterIdentifier;
 }
 
+@property (readonly, nonatomic) NSString *clusterIdentifier; // @synthesize clusterIdentifier=_clusterIdentifier;
+@property (readonly, nonatomic) NSSet *featureNames;
 @property (readonly, nonatomic) PPTopicRecord *mostRelevantRecord;
 @property (readonly, nonatomic) double sentimentScore;
 @property (readonly, nonatomic) NSString *topicIdentifier; // @synthesize topicIdentifier=_topicIdentifier;
 
++ (id)clusterIdentifierFromTopicId:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureValueForName:(id)arg1;
 - (unsigned long long)hash;
 - (id)id;
 - (id)initWithCoder:(id)arg1;

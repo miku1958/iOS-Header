@@ -19,13 +19,12 @@
 - (id)application;
 - (id)automationID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionForLocation:(id)arg1;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
-- (id)iconCategoryDescription;
-- (id)iconFileSizeDescription;
+- (id)iTunesCategoriesOrderedByRelevancy;
 - (id)initWithApplication:(id)arg1;
 - (BOOL)isApplicationIcon;
+- (BOOL)isEqual:(id)arg1;
 - (void)possibleUserTapBeganWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
 - (void)possibleUserTapDidCancel;
 - (void)setBadge:(id)arg1;

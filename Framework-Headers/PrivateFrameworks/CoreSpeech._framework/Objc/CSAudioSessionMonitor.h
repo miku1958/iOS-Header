@@ -6,18 +6,27 @@
 
 #import <CoreSpeech/CSEventMonitor.h>
 
-@interface CSAudioSessionMonitor : CSEventMonitor
+#import <CoreSpeech/CSAudioSessionEventProvidingDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CSAudioSessionMonitor : CSEventMonitor <CSAudioSessionEventProvidingDelegate>
 {
     unsigned long long _audioSessionState;
 }
 
 @property (nonatomic, getter=getAudioSessionState) unsigned long long audioSessionState; // @synthesize audioSessionState=_audioSessionState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;
+- (void)audioSessionEventProvidingDidSetAudioSessionActive:(BOOL)arg1;
+- (void)audioSessionEventProvidingWillSetAudioSessionActive:(BOOL)arg1;
 - (id)init;
-- (void)notifyAduioSessionStateChange:(unsigned long long)arg1;
 
 @end
 

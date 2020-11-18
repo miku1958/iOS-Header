@@ -6,24 +6,30 @@
 
 #import <Intents/INObject.h>
 
+#import <WorkflowKit/WFCodableAttributeTransformable-Protocol.h>
 #import <WorkflowKit/WFINObject-Protocol.h>
 #import <WorkflowKit/WFNaming-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface INObject (WFNaming) <WFNaming, WFINObject>
+@interface INObject (WFNaming) <WFNaming, WFINObject, WFCodableAttributeTransformable>
 
 @property (readonly, nonatomic) NSArray *alternativeSpeakableMatches;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *pronunciationHint;
 @property (readonly, nonatomic) NSString *spokenPhrase;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *vocabularyIdentifier;
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 - (id)wf_initWithIdentifier:(id)arg1 displayString:(id)arg2;
+- (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @end
 

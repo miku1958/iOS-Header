@@ -16,7 +16,7 @@
 - (BOOL)_accessibilityIsFolder;
 - (id)_axAttrTitle;
 - (id)accessibilityLabel;
-- (BOOL)isAccessibilityElement;
+- (id)accessibilityUserInputLabels;
 
 @end
 

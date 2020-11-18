@@ -8,11 +8,12 @@
 
 #import <SpringBoard/SBScenePlaceholderContentViewProvider-Protocol.h>
 
-@class NSString;
+@class NSString, UIUserInterfaceStyleArbiter;
 @protocol SBScenePlaceholderContentViewProviderDelegate;
 
 @interface SBDeviceApplicationSceneViewPlaceholderContentViewProvider : NSObject <SBScenePlaceholderContentViewProvider>
 {
+    UIUserInterfaceStyleArbiter *_userInterfaceStyleArbiter;
     id<SBScenePlaceholderContentViewProviderDelegate> _delegate;
 }
 
@@ -26,6 +27,7 @@
 - (BOOL)_checkApplicationRestorationState:(id)arg1 useSnapshot:(BOOL *)arg2;
 - (unsigned long long)_contentTypeToSearchFromSceneHandle:(id)arg1 withContext:(id)arg2;
 - (id)_contentViewFromSceneHandle:(id)arg1 displayConfiguration:(id)arg2 orientation:(long long)arg3 snapshot:(id)arg4 size:(struct CGSize)arg5 statusBarDescriptor:(id)arg6;
+- (id)_initWithApplication:(id)arg1 userInterfaceStyleArbiter:(id)arg2;
 - (id)_loadLiveXIBViewForApplication:(id)arg1;
 - (struct CGSize)_naturalSizeForOrientation:(long long)arg1 referenceSize:(struct CGSize)arg2;
 - (void)_snapshotsDidChange:(id)arg1;

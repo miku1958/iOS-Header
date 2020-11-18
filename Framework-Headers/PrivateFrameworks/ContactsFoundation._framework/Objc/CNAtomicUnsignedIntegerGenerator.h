@@ -11,6 +11,7 @@
     _Atomic long long _n;
 }
 
+- (id)description;
 - (id)init;
 - (unsigned long long)nextUnsignedInteger;
 

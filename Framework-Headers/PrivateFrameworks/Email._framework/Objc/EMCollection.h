@@ -9,8 +9,8 @@
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EFSignpostable-Protocol.h>
 
-@class EFFuture, EFPromise, EFQuery, NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSString;
-@protocol EFCancelable, EFScheduler, EMCollectionChangeObserver;
+@class EFFuture, EFPromise, EFQuery, NSHashTable, NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSString;
+@protocol EFCancelable, EFScheduler;
 
 @interface EMCollection : EMRepositoryObject <EFLoggable, EFSignpostable>
 {
@@ -20,15 +20,17 @@
     EFPromise *_allItemIDsPromise;
     struct os_unfair_lock_s _itemIDsLock;
     BOOL _foundAllItemIDs;
+    BOOL _foundFirstBatch;
+    struct os_unfair_lock_s _changeObserversLock;
     EFQuery *_query;
     id<EFCancelable> _cancelationToken;
-    id<EMCollectionChangeObserver> _changeObserver;
+    NSHashTable *_changeObservers;
     id<EFScheduler> _observerScheduler;
 }
 
 @property (readonly, nonatomic) EFFuture *allItemIDs;
 @property (strong, nonatomic) id<EFCancelable> cancelationToken; // @synthesize cancelationToken=_cancelationToken;
-@property (weak, nonatomic) id<EMCollectionChangeObserver> changeObserver; // @synthesize changeObserver=_changeObserver;
+@property (strong, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -55,6 +57,7 @@
 - (BOOL)containsItemID:(id)arg1 includeRecovery:(BOOL)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (void)enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)finishRecovery;
 - (id)firstExistingItemIDAfterItemID:(id)arg1;
 - (id)firstExistingItemIDBeforeItemID:(id)arg1;
@@ -66,9 +69,11 @@
 - (BOOL)isRecovering;
 - (id)itemIDForObjectID:(id)arg1;
 - (id)iterateItemIDsStartingAtItemID:(id)arg1 inReverse:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
-- (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
-- (void)notifyChangeObserverAboutChangesByItemIDs:(id)arg1;
+- (void)notifyChangeObserver:(id)arg1 stockedItemIDs:(id)arg2;
+- (void)notifyChangeObserverAboutStockedItemIDs:(id)arg1;
+- (void)notifyChangeObserversAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
+- (void)notifyChangeObserversAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
+- (void)notifyChangeObserversAboutChangesByItemIDs:(id)arg1;
 - (BOOL)objectIDBelongsToCollection:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
 - (BOOL)observerContainsObjectID:(id)arg1;

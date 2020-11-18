@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AppleMediaServicesUI/AMSUICommonView.h>
 
 @class UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface AMSUILoadingView : UIView
+@interface AMSUILoadingView : AMSUICommonView
 {
     UIActivityIndicatorView *_activityIndicator;
     UILabel *_label;

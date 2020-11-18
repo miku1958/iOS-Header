@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData;
+@class NSData, SISchemaUIStateDismissed, SISchemaUIStatePresenting;
 
 @interface SISchemaUIStateTransition : PBCodable
 {
@@ -14,14 +14,35 @@
     int _previousState;
     int _siriPresentationType;
     int _dismissalReason;
+    SISchemaUIStatePresenting *_presenting;
+    SISchemaUIStateDismissed *_dismissed;
+    struct {
+        unsigned int currentState:1;
+        unsigned int previousState:1;
+        unsigned int siriPresentationType:1;
+        unsigned int dismissalReason:1;
+    } _has;
+    BOOL _hasPresenting;
+    BOOL _hasDismissed;
+    unsigned long long _whichPresentationstate;
 }
 
 @property (nonatomic) int currentState; // @synthesize currentState=_currentState;
 @property (nonatomic) int dismissalReason; // @synthesize dismissalReason=_dismissalReason;
+@property (strong, nonatomic) SISchemaUIStateDismissed *dismissed; // @synthesize dismissed=_dismissed;
+@property (nonatomic) BOOL hasCurrentState;
+@property (nonatomic) BOOL hasDismissalReason;
+@property (nonatomic) BOOL hasDismissed; // @synthesize hasDismissed=_hasDismissed;
+@property (nonatomic) BOOL hasPresenting; // @synthesize hasPresenting=_hasPresenting;
+@property (nonatomic) BOOL hasPreviousState;
+@property (nonatomic) BOOL hasSiriPresentationType;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) SISchemaUIStatePresenting *presenting; // @synthesize presenting=_presenting;
 @property (nonatomic) int previousState; // @synthesize previousState=_previousState;
 @property (nonatomic) int siriPresentationType; // @synthesize siriPresentationType=_siriPresentationType;
+@property (readonly, nonatomic) unsigned long long whichPresentationstate; // @synthesize whichPresentationstate=_whichPresentationstate;
 
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;

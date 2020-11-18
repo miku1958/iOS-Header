@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<QLThumbnailServiceSurfaceGeneratorProtocol> surfaceGenerator; // @synthesize surfaceGenerator=_surfaceGenerator;
 
 - (void).cxx_destruct;
+- (struct CGSize)_IOSurfaceSizeFromThumbnailReply:(id)arg1;
 - (BOOL)_canCreateContextOfSize:(struct CGSize)arg1 forRequest:(id)arg2;
 - (void)_didGenerateThumbnailWithData:(id)arg1 drawingContextSize:(struct CGSize)arg2;
 - (void)_didReceiveThumbnailURL:(id)arg1;

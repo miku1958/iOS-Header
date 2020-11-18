@@ -16,10 +16,9 @@
     NSArray *_propertiesToFetchForTombstones;
 }
 
-@property (strong, nonatomic) NSPredicate *eventPredicateForEventsRequiredToBeTombstoned; // @synthesize eventPredicateForEventsRequiredToBeTombstoned=_eventPredicateForEventsRequiredToBeTombstoned;
-@property (strong, nonatomic) NSPredicate *predicateForEventsRequiredToBeTombstoned; // @synthesize predicateForEventsRequiredToBeTombstoned=_predicateForEventsRequiredToBeTombstoned;
-@property (strong, nonatomic) NSArray *propertiesToFetchForTombstones; // @synthesize propertiesToFetchForTombstones=_propertiesToFetchForTombstones;
-@property (strong, nonatomic) NSArray *requirements; // @synthesize requirements=_requirements;
+@property (readonly, nonatomic) NSPredicate *predicateForEventsRequiredToBeTombstoned;
+@property (readonly, nonatomic) NSArray *propertiesToFetchForTombstones;
+@property (readonly, nonatomic) NSArray *requirements;
 
 + (id)defaultPolicy;
 - (void).cxx_destruct;

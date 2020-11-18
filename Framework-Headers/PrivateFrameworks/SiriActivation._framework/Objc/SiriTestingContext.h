@@ -18,7 +18,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)containsAudioInput;
-- (BOOL)containsPPT;
 - (BOOL)containsRecognitionStrings;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

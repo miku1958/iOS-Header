@@ -6,24 +6,33 @@
 
 #import <PhotosUICore/PXPhotoKitVideoContentProvider.h>
 
-@class NSString;
+#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@interface PXPhotoKitLivePhotoVideoContentProvider : PXPhotoKitVideoContentProvider
+@class NSString, PXPhotoKitLivePhotoVideoContentProviderSpec;
+
+@interface PXPhotoKitLivePhotoVideoContentProvider : PXPhotoKitVideoContentProvider <PXSettingsKeyObserver>
 {
     NSString *_contentIdentifier;
-    double _loopCrossFadeDuration;
-    CDStruct_e83c9415 _loopTimeRange;
+    PXPhotoKitLivePhotoVideoContentProviderSpec *_spec;
 }
 
-@property (readonly, nonatomic) double loopCrossFadeDuration; // @synthesize loopCrossFadeDuration=_loopCrossFadeDuration;
-@property (readonly, nonatomic) CDStruct_e83c9415 loopTimeRange; // @synthesize loopTimeRange=_loopTimeRange;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PXPhotoKitLivePhotoVideoContentProviderSpec *spec; // @synthesize spec=_spec;
+@property (readonly) Class superclass;
 
++ (id)postProcessingOperationQueue;
 - (void).cxx_destruct;
+- (void)_handleStabilizeOperationFinishedWithProcessingCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)cancelLoading;
 - (id)contentIdentifier;
+- (void)dealloc;
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
-- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 loopCrossFadeDuration:(double)arg3 loopTimeRange:(CDStruct_e83c9415)arg4;
+- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 spec:(id)arg3;
 - (BOOL)needsPostprocessing;
-- (id)postprocessPlayerItem:(id)arg1;
+- (void)postprocessPlayerItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end
 

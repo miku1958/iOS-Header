@@ -22,6 +22,7 @@
 - (id)description;
 - (id)initWithPredicate:(id)arg1;
 - (id)initWithStartCondition:(id)arg1 endCondition:(id)arg2;
+- (unsigned long long)timeConditionType;
 
 @end
 

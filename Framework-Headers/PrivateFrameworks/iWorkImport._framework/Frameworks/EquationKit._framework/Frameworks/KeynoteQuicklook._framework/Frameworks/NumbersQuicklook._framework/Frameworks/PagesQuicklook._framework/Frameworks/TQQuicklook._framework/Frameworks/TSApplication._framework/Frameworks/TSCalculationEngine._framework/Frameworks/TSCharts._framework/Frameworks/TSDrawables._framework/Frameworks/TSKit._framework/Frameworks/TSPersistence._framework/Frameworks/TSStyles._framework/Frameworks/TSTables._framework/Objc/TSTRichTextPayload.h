@@ -12,14 +12,14 @@
 
 @interface TSTRichTextPayload : TSPObject <TSPCopying>
 {
-    TSWPStorage *mStorage;
+    TSWPStorage *_storage;
 }
 
-@property (strong, nonatomic) TSWPStorage *storage; // @synthesize storage=mStorage;
+@property (strong, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 
 + (id)payloadWithStorage:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 storage:(id)arg2;
 - (id)initWithStorage:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;

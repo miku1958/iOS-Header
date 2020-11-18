@@ -6,11 +6,9 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class PKPaletteView, UIColor;
+@class PKDrawingPaletteView, UIColor;
 
 @protocol PKPalettePencilInteractionFeedbackHostViewDelegate <NSObject>
-- (double)minimizedPaletteScaleFactor;
-- (struct CGSize)minimizedPaletteSize;
 - (UIColor *)paletteBorderColor;
 - (double)paletteBorderWidth;
 - (double)paletteEdgeSpacing;
@@ -21,7 +19,6 @@
 - (double)paletteShadowRadius;
 - (double)paletteSpringAnimationDampingRatio;
 - (double)paletteSpringAnimationResponse;
-- (PKPaletteView *)paletteView;
-- (struct CGSize)regularPaletteSize;
+- (PKDrawingPaletteView *)paletteView;
 @end
 

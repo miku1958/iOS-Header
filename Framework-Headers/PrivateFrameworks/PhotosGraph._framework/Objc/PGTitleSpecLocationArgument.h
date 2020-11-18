@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/PGTitleSpecArgument.h>
 
-@class NSSet;
+@class NSSet, NSString;
 
 @interface PGTitleSpecLocationArgument : PGTitleSpecArgument
 {
@@ -14,14 +14,17 @@
     unsigned long long _type;
     NSSet *_usedLocationNodes;
     unsigned long long _lineBreakBehavior;
+    NSString *_locationName;
 }
 
 @property (readonly) BOOL filterLocations; // @synthesize filterLocations=_filterLocations;
 @property unsigned long long lineBreakBehavior; // @synthesize lineBreakBehavior=_lineBreakBehavior;
+@property (strong, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
 @property (readonly) unsigned long long type; // @synthesize type=_type;
 @property (strong) NSSet *usedLocationNodes; // @synthesize usedLocationNodes=_usedLocationNodes;
 
 + (id)argumentWithLocationType:(unsigned long long)arg1 filterLocations:(BOOL)arg2;
++ (id)argumentWithLocationTypeLocationForLocationName:(id)arg1;
 - (void).cxx_destruct;
 - (id)_generateBusinessItemTitleWithMomentNodes:(id)arg1;
 - (id)_generateLocationTitleWithOptions:(id)arg1;

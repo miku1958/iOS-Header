@@ -6,17 +6,19 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSString, PKPaymentTransaction;
+@class NSArray, NSSet, NSString, PKCloudStoreZoneInvitation, PKPaymentTransaction;
 
 @protocol PDCloudStoreServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)acceptShareInvitation:(PKCloudStoreZoneInvitation *)arg1 qualityOfService:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)checkTLKsMissingWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)cloudStoreStatusForContainer:(NSString *)arg1 completion:(void (^)(CKAccountInfo *, BOOL, NSError *))arg2;
-- (void)copyDataFromZoneName:(NSString *)arg1 toZoneName:(NSString *)arg2 inContainerName:(NSString *)arg3 passUniqueID:(NSString *)arg4 completion:(void (^)(BOOL, NSError *))arg5;
+- (void)declineInvitationForRecipientHandle:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 qualityOfService:(long long)arg4 completion:(void (^)(BOOL, NSError *))arg5;
 - (void)deleteZone:(NSString *)arg1 containerName:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
-- (void)generateRandomTransactionForPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
+- (void)fetchAndStoreRecordsForTransactionSourceIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
+- (void)generateRandomTransactionForTransactionSourceIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordObject *, NSError *))arg4;
+- (void)itemOfItemTypeFromAllZones:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 - (void)noteAccountDeletedWithHandler:(void (^)(void))arg1;
 - (void)noteCloudSyncPassesSwitchChangedWithHandler:(void (^)(void))arg1;
 - (void)populateEvents:(NSArray *)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
@@ -24,10 +26,12 @@
 - (void)removeItemsWithRecordNames:(NSArray *)arg1 itemType:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeRecordWithRecordName:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)resetContainerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)resetContainerWithIdentifier:(NSString *)arg1 zoneNames:(NSSet *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)sendShareInvitationForRecipientHandle:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 qualityOfService:(long long)arg4 completion:(void (^)(PKCloudStoreZoneInvitation *, NSError *))arg5;
 - (void)setupCloudDatabaseForContainerName:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)shareForZoneName:(NSString *)arg1 containerName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 - (void)simulateCloudStorePushForContainerIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSArray *, NSError *))arg2;
 - (void)updateCloudStoreWithLocalItems:(NSArray *)arg1 recordSpecificKeys:(NSArray *)arg2 includeServerData:(BOOL)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
-- (void)uploadTransaction:(PKPaymentTransaction *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2 includeServerData:(BOOL)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
+- (void)uploadTransaction:(PKPaymentTransaction *)arg1 forTransactionSourceIdentifier:(NSString *)arg2 includeServerData:(BOOL)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 @end
 

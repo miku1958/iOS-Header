@@ -6,9 +6,13 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface TUPrivacyManager : NSObject
 {
 }
+
+@property (readonly, copy, nonatomic) NSArray *privacyRules;
 
 + (id)sharedPrivacyManager;
 - (void)_handleBlockListChanged:(id)arg1;
@@ -16,9 +20,11 @@
 - (id)allBlacklistRules;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isIncomingCommunicationBlockedForBusinessID:(id)arg1;
 - (BOOL)isIncomingCommunicationBlockedForEmailAddress:(id)arg1;
 - (BOOL)isIncomingCommunicationBlockedForPhoneNumber:(id)arg1;
 - (void)removeRule:(id)arg1;
+- (void)setBlockIncomingCommunication:(BOOL)arg1 forBusinessID:(id)arg2;
 - (void)setBlockIncomingCommunication:(BOOL)arg1 forEmailAddress:(id)arg2;
 - (void)setBlockIncomingCommunication:(BOOL)arg1 forPhoneNumber:(id)arg2;
 

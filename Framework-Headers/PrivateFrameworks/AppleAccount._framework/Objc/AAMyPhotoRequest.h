@@ -6,16 +6,16 @@
 
 #import <AppleAccount/AARequest.h>
 
-@class ACAccount, NSString, SSAccount;
+@class ACAccount, NSString;
 
 @interface AAMyPhotoRequest : AARequest
 {
     ACAccount *_account;
     NSString *_serverCacheTag;
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
 }
 
-@property (strong, nonatomic, setter=setiTunesAccount:) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property (strong, nonatomic, setter=setiTunesAccount:) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 @property (copy, nonatomic) NSString *serverCacheTag; // @synthesize serverCacheTag=_serverCacheTag;
 
 + (Class)responseClass;

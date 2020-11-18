@@ -22,10 +22,10 @@
 @property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (copy, nonatomic) NSData *data; // @synthesize data=_data;
 
+- (void).cxx_destruct;
 - (void)addContentTypeParameterWithName:(id)arg1 value:(id)arg2;
 - (id)allContentTypeParameterNames;
 - (id)contentTypeParameterWithName:(id)arg1;
-- (void)dealloc;
 - (id)initWithData:(id)arg1 contentType:(id)arg2;
 
 @end

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC13TeaFoundation12ProxyContext : NSObject
 {
     MISSING_TYPE *context;

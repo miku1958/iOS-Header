@@ -23,12 +23,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_handleDeleteApplicationSnapshots:(id)arg1 fromClient:(id)arg2;
-- (void)_handleHarmonyFetchWhitePointAdaptivityStyleMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleMultiwindowShortcutServiceClientMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleShortcutFetchApplicationShortcutItemsMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleShortcutUpdateDynamicApplicationShortcutItemsMessage:(id)arg1 fromClient:(id)arg2;
-- (id)_init;
 - (void)dealloc;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 

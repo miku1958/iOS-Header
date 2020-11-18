@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSMutableDictionary *localToGlobalSections; // @synthesize localToGlobalSections=_localToGlobalSections;
 @property (nonatomic) long long sectionCount; // @synthesize sectionCount=_sectionCount;
 
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)addMappingFromGlobalSection:(unsigned long long)arg1 toLocalSection:(unsigned long long)arg2 withTag:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

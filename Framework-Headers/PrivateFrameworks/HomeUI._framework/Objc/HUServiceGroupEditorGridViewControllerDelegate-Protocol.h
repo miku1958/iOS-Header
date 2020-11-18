@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <HomeUI/HUServiceGridViewControllerDelegate-Protocol.h>
+
 @class HFServiceGroupBuilder, HUServiceGroupEditorGridViewController;
 
-@protocol HUServiceGroupEditorGridViewControllerDelegate
+@protocol HUServiceGroupEditorGridViewControllerDelegate <HUServiceGridViewControllerDelegate>
 - (void)serviceGroupEditorGrid:(HUServiceGroupEditorGridViewController *)arg1 didUpdateServiceGroupBuilder:(HFServiceGroupBuilder *)arg2;
 @end
 

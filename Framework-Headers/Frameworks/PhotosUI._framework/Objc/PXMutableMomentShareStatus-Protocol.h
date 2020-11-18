@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) id<PXDisplayAssetFetchResult> allAssetsFetchResult;
 @property (strong, nonatomic) id<PXDisplayAssetFetchResult> copiedAssetsFetchResult;
-@property (strong, nonatomic) id<PXDisplayAssetFetchResult> downloadingAssetsFetchResult;
+@property (strong, nonatomic) id<PXDisplayAssetFetchResult> copyingAssetsFetchResult;
 @property (strong, nonatomic) id<PXDisplayMomentShare> momentShare;
 @property (strong, nonatomic) id<PXSectionedFetchResult> participantsFetchResult;
 

@@ -64,6 +64,7 @@
 - (id)initWithFileURL:(id)arg1 size:(struct CGSize)arg2 transferGUID:(id)arg3 guid:(id)arg4 createdDate:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (id)pasteboardItem;
+- (id)previewURL:(BOOL)arg1;
 - (void)startDeferredSetup;
 - (id)uncachedPreviewURL;
 

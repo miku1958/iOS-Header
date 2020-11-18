@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface PDFAKOverlayAdaptorPrivate_ios : NSObject
 {
-    BOOL singleFingerScrollingDisabled;
     AKRectAnnotation *editingAnnotaiton;
+    CDStruct_c23cc2dc animationProperties;
 }
 
 - (void).cxx_destruct;

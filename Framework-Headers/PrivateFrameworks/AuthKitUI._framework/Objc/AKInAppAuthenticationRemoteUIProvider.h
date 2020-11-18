@@ -9,14 +9,13 @@
 #import <AuthKitUI/AKBasicLoginControllerDelegate-Protocol.h>
 #import <AuthKitUI/AKInAppAuthenticationUIProvider-Protocol.h>
 
-@class AAUICDPStingrayRemoteUIController, AKAppleIDAuthenticationInAppContext, AKBasicLoginAlertController, AKBasicLoginViewController, AKInAppAuthenticationRemoteUIDelegate, NSString, RemoteUIController, UINavigationController;
+@class AKAppleIDAuthenticationInAppContext, AKBasicLoginAlertController, AKBasicLoginViewController, AKInAppAuthenticationRemoteUIDelegate, NSString, RemoteUIController, UINavigationController;
 
 @interface AKInAppAuthenticationRemoteUIProvider : NSObject <AKBasicLoginControllerDelegate, AKInAppAuthenticationUIProvider>
 {
     AKBasicLoginAlertController *_basicLoginAlertController;
     AKBasicLoginViewController *_basicLoginViewController;
     UINavigationController *_navController;
-    AAUICDPStingrayRemoteUIController *_stingrayController;
     AKInAppAuthenticationRemoteUIDelegate *_remoteUIControllerDelegate;
     AKAppleIDAuthenticationInAppContext *_context;
     RemoteUIController *_remoteUIController;

@@ -19,11 +19,14 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)clearCache;
 - (void)dealloc;
 - (id)fetchUsagePolicyFor:(id)arg1;
 - (void)handlePolicyChangedNotification;
 - (id)init;
 - (id)initPrivate;
+- (void)managedConfigurationProfileListDidChange;
+- (void)managedConfigurationSettingsDidChange;
 - (BOOL)setCellularUsagePolicy:(id)arg1 forBundle:(id)arg2;
 - (BOOL)setUsagePoliciesForBundle:(id)arg1 cellular:(BOOL)arg2 wifi:(BOOL)arg3;
 - (id)usagePolicyFor:(id)arg1;

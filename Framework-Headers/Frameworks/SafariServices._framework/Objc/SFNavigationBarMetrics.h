@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     double _statusBarHeight;
     UIImageSymbolConfiguration *_accessoryImageSymbolConfiguration;
     UIImageSymbolConfiguration *_squishedAccessoryImageSymbolConfiguration;
+    UIImageSymbolConfiguration *_mediumButtonImageSymbolConfiguration;
     double _accessibilityImageScale;
     double _urlOutlineCornerRadius;
     double _defaultBarHeight;
@@ -35,35 +36,11 @@ __attribute__((visibility("hidden")))
     double _urlLabelAccessoryItemSquishedVerticalOffset;
     double _urlLabelAccessoryLockItemVerticalOffset;
     double _distanceFromLabelBaselineToURLOutlineBottom;
+    UITraitCollection *_traitCollectionForButtonMetrics;
 }
 
-@property (readonly, nonatomic) double accessibilityImageScale; // @synthesize accessibilityImageScale=_accessibilityImageScale;
-@property (readonly, nonatomic) UIImageSymbolConfiguration *accessoryImageSymbolConfiguration;
-@property (readonly, nonatomic) double defaultBarHeight; // @synthesize defaultBarHeight=_defaultBarHeight;
-@property (readonly, nonatomic) UIFont *defaultBoldFont;
-@property (readonly, nonatomic) UIFont *defaultLabelFont;
-@property (readonly, nonatomic) double distanceFromLabelBaselineToURLOutlineBottom; // @synthesize distanceFromLabelBaselineToURLOutlineBottom=_distanceFromLabelBaselineToURLOutlineBottom;
-@property (readonly, nonatomic) double minimumBarHeight; // @synthesize minimumBarHeight=_minimumBarHeight;
-@property (readonly, nonatomic) UIFont *narrowEditingLabelFont;
-@property (readonly, nonatomic) double narrowEditingScaleFactor;
-@property (readonly, nonatomic) UIImageSymbolConfiguration *squishedAccessoryImageSymbolConfiguration;
-@property (readonly, nonatomic) double urlContainerTop; // @synthesize urlContainerTop=_urlContainerTop;
-@property (readonly, nonatomic) double urlLabelAccessoryItemSquishedVerticalOffset; // @synthesize urlLabelAccessoryItemSquishedVerticalOffset=_urlLabelAccessoryItemSquishedVerticalOffset;
-@property (readonly, nonatomic) double urlLabelAccessoryLockItemVerticalOffset; // @synthesize urlLabelAccessoryLockItemVerticalOffset=_urlLabelAccessoryLockItemVerticalOffset;
-@property (readonly, nonatomic) double urlLabelVerticalOffset; // @synthesize urlLabelVerticalOffset=_urlLabelVerticalOffset;
-@property (readonly, nonatomic) double urlOutlineCornerRadius; // @synthesize urlOutlineCornerRadius=_urlOutlineCornerRadius;
-@property (readonly, nonatomic) double urlOutlineHeight; // @synthesize urlOutlineHeight=_urlOutlineHeight;
-
 - (void).cxx_destruct;
-- (id)_contentSizeCategoryWithPreferredCategory:(id)arg1;
-- (BOOL)_updateForContentSizeCategory:(id)arg1;
-- (BOOL)_updateForPresentationSemanticContext:(long long)arg1;
-- (void)_updateMetrics;
-- (double)barHeightWithBarMetricsCategory:(long long)arg1;
 - (id)init;
-- (double)squishHeightQuantizationOffsetWithBarMetricsCategory:(long long)arg1;
-- (BOOL)updateForStatusBarHeight:(double)arg1;
-- (BOOL)updateForTraitCollection:(id)arg1;
 
 @end
 

@@ -17,7 +17,10 @@
 - (void)getLibraryServiceWithReply:(void (^)(id<PLAssetsdLibraryServiceProtocol>, NSError *))arg1;
 - (void)getMigrationServiceWithReply:(void (^)(id<PLAssetsdMigrationServiceProtocol>, NSError *))arg1;
 - (void)getNotificationServiceWithReply:(void (^)(id<PLAssetsdNotificationServiceProtocol>, NSError *))arg1;
+- (void)getPhotoKitAddServiceWithReply:(void (^)(id<PLAssetsdPhotoKitAddServiceProtocol>, NSError *))arg1;
 - (void)getPhotoKitServiceWithReply:(void (^)(id<PLAssetsdPhotoKitServiceProtocol>, NSError *))arg1;
+- (void)getPrivacySupportServiceWithReply:(void (^)(id<PLAssetsdPrivacySupportServiceProtocol>, NSError *))arg1;
+- (void)getResourceAvailabilityServiceWithReply:(void (^)(id<PLAssetsdResourceAvailabilityServiceProtocol>, NSError *))arg1;
 - (void)getResourceInternalServiceWithReply:(void (^)(id<PLAssetsdResourceInternalServiceProtocol>, NSError *))arg1;
 - (void)getResourceServiceWithReply:(void (^)(id<PLAssetsdResourceServiceProtocol>, NSError *))arg1;
 - (void)getResourceWriteOnlyServiceWithReply:(void (^)(id<PLAssetsdResourceWriteOnlyServiceProtocol>, NSError *))arg1;

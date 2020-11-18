@@ -23,8 +23,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPrimaryIdentifier:(id)arg1 wifiIdentifiers:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

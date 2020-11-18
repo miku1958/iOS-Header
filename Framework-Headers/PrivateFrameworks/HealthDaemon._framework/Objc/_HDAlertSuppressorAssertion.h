@@ -9,6 +9,7 @@
 @class NSObject, NSString;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface _HDAlertSuppressorAssertion : HDAssertion
 {
     NSString *_processBundleIdentifier;

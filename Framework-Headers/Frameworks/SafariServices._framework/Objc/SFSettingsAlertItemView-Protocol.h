@@ -7,11 +7,13 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @class _SFSettingsAlertItem;
+@protocol SFSettingsAlertItemViewDelegate;
 
 @protocol SFSettingsAlertItemView <NSObject>
 
 @property (readonly, nonatomic) long long backgroundMode;
 @property (nonatomic) long long defaultBackgroundMode;
+@property (weak, nonatomic) id<SFSettingsAlertItemViewDelegate> delegate;
 @property (nonatomic) BOOL hidesSeparator;
 @property (weak, nonatomic) _SFSettingsAlertItem *item;
 

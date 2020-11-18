@@ -18,14 +18,19 @@
     unsigned long long _zOrderIntersectionsCount;
 }
 
+@property (readonly, nonatomic) NSArray *flattenableAnimationMatches;
 @property (readonly, nonatomic) unsigned long long zOrderIntersectionsCount; // @synthesize zOrderIntersectionsCount=_zOrderIntersectionsCount;
 
 - (void)dealloc;
+- (id)init;
 - (id)initWithAnimationMatches:(id)arg1;
+- (void)p_addFlattenableAnimationMatches:(id)arg1 toArray:(id)arg2;
 - (void)p_addVisibleTexturesFromMatches:(id)arg1 toArray:(id)arg2 interpolatedPercent:(double)arg3;
-- (id)p_arrayBySortingMatches:(id)arg1 withInterpolatedPercent:(double)arg2;
+- (void)p_adjustZOrdererMatchesZIndexByTextureType:(id)arg1;
 - (unsigned long long)p_bestZIndexForUnassignedMatch:(id)arg1 inMatchArray:(id)arg2;
 - (void)p_calculateTextureArraysFromIntersections;
+- (id)p_debugDescription;
+- (id)p_newArrayBySortingMatches:(id)arg1 withInterpolatedPercent:(double)arg2;
 - (void)p_setupZOrderMatchesWithAnimationMatches:(id)arg1;
 - (unsigned long long)p_zIntersectionsBetweenZOrdererMatches:(id)arg1;
 - (id)texturedRectanglesAtPercent:(double)arg1;

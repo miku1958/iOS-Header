@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) ICDocCamImageCache *imageCache; // @synthesize imageCache=_imageCache;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_performActivity:(id)arg1;
 - (id)activityTypesThatInhibitPDFGeneration;
 - (BOOL)inhibitPDFGenerationForActivityType:(id)arg1;

@@ -22,7 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)_fetchAndCacheDataForPath:(CDStruct_6ca94699)arg1;
-- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2 priorityDelegate:(id)arg3;
 - (id)cachedBlockForPath:(CDStruct_6ca94699)arg1 context:(id)arg2;
 - (void)dateRangeDataUpdated;
 - (id)initWithSourceDelegate:(id)arg1;

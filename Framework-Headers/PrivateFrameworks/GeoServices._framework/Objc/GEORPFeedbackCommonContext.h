@@ -45,20 +45,7 @@
         unsigned int read_searchCommon:1;
         unsigned int read_sourceInfo:1;
         unsigned int read_visibleTileSets:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_userPaths:1;
-        unsigned int wrote_auxiliaryControls:1;
-        unsigned int wrote_clientCreatedAt:1;
-        unsigned int wrote_currentAbAssignmentResponse:1;
-        unsigned int wrote_currentEnvironmentManifestUrls:1;
-        unsigned int wrote_mapLocation:1;
-        unsigned int wrote_navigationSettings:1;
-        unsigned int wrote_originatingAuxiliaryControlIndex:1;
-        unsigned int wrote_searchCommon:1;
-        unsigned int wrote_sourceInfo:1;
-        unsigned int wrote_visibleTileSets:1;
-        unsigned int wrote_deviceGmtOffset:1;
-        unsigned int wrote_pinType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -94,18 +81,8 @@
 - (void).cxx_destruct;
 - (int)StringAsPinType:(id)arg1;
 - (int)StringAsUserPaths:(id)arg1;
-- (void)_addNoFlagsAuxiliaryControl:(id)arg1;
-- (void)_addNoFlagsUserPath:(int)arg1;
-- (void)_addNoFlagsVisibleTileSet:(id)arg1;
-- (void)_readAuxiliaryControls;
-- (void)_readCurrentAbAssignmentResponse;
-- (void)_readCurrentEnvironmentManifestUrls;
-- (void)_readMapLocation;
-- (void)_readNavigationSettings;
-- (void)_readSearchCommon;
-- (void)_readSourceInfo;
-- (void)_readUserPaths;
-- (void)_readVisibleTileSets;
+- (void)_recordCurrentEnvironment:(id)arg1;
+- (void)_recordManifestURLs:(id)arg1;
 - (void)addAuxiliaryControl:(id)arg1;
 - (void)addUserPath:(int)arg1;
 - (void)addVisibleTileSet:(id)arg1;
@@ -123,11 +100,15 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)pinTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)recordEnvironmentAndManifestURLs;
 - (void)setUserPaths:(int *)arg1 count:(unsigned long long)arg2;
 - (int)userPathAtIndex:(unsigned long long)arg1;
 - (id)userPathsAsString:(int)arg1;

@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PHResourceDownloadRequest;
+@class NSString, PHResourceLocalAvailabilityRequest;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotosGridDownloadHelpContext : NSObject
 {
-    PHResourceDownloadRequest *_resourceDownloadRequest;
+    PHResourceLocalAvailabilityRequest *_resourceLocalAvailabilityRequest;
     NSString *_gridProgressIdentifier;
     CDUnknownBlockType _downloadHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType downloadHandler; // @synthesize downloadHandler=_downloadHandler;
 @property (strong, nonatomic) NSString *gridProgressIdentifier; // @synthesize gridProgressIdentifier=_gridProgressIdentifier;
-@property (strong, nonatomic) PHResourceDownloadRequest *resourceDownloadRequest; // @synthesize resourceDownloadRequest=_resourceDownloadRequest;
+@property (strong, nonatomic) PHResourceLocalAvailabilityRequest *resourceLocalAvailabilityRequest; // @synthesize resourceLocalAvailabilityRequest=_resourceLocalAvailabilityRequest;
 
 - (void).cxx_destruct;
 

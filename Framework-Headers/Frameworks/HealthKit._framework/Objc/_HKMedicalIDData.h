@@ -15,43 +15,78 @@
 {
     BOOL _isDisabled;
     BOOL _shareDuringEmergency;
+    NSDate *_isDisabledModifiedDate;
+    NSDate *_shareDuringEmergencyModifiedDate;
     NSData *_pictureData;
+    NSDate *_pictureDataModifiedDate;
     NSString *_name;
+    NSDate *_nameModifiedDate;
     NSDate *_gmtBirthdate;
+    NSDate *_gregorianBirthdayModifiedDate;
     NSString *_primaryLanguageCode;
+    NSDate *_primaryLanguageCodeModifiedDate;
     HKQuantity *_height;
+    NSDate *_heightModifiedDate;
     HKQuantity *_weight;
+    NSDate *_weightModifiedDate;
     long long _bloodType;
+    NSDate *_bloodTypeModifiedDate;
     NSNumber *_isOrganDonor;
+    NSDate *_isOrganDonorModifiedDate;
     NSArray *_emergencyContacts;
+    NSDate *_emergencyContactsModifiedDate;
+    NSArray *_clinicalContacts;
+    NSDate *_clinicalContactsModifiedDate;
     NSString *_medicalConditions;
+    NSDate *_medicalConditionsModifiedDate;
     NSString *_medicalNotes;
+    NSDate *_medicalNotesModifiedDate;
     NSString *_allergyInfo;
+    NSDate *_allergyInfoModifiedDate;
     NSString *_medicationInfo;
-    NSDate *_dateSaved;
+    NSDate *_medicationInfoModifiedDate;
     NSDate *_birthdate;
+    NSDate *_legacyDateSaved;
     long long _schemaVersion;
 }
 
 @property (copy, nonatomic) NSString *allergyInfo; // @synthesize allergyInfo=_allergyInfo;
+@property (strong, nonatomic) NSDate *allergyInfoModifiedDate; // @synthesize allergyInfoModifiedDate=_allergyInfoModifiedDate;
 @property (strong, nonatomic) NSDate *birthdate; // @synthesize birthdate=_birthdate;
 @property (nonatomic) long long bloodType; // @synthesize bloodType=_bloodType;
-@property (strong, nonatomic) NSDate *dateSaved; // @synthesize dateSaved=_dateSaved;
+@property (strong, nonatomic) NSDate *bloodTypeModifiedDate; // @synthesize bloodTypeModifiedDate=_bloodTypeModifiedDate;
+@property (copy, nonatomic) NSArray *clinicalContacts; // @synthesize clinicalContacts=_clinicalContacts;
+@property (strong, nonatomic) NSDate *clinicalContactsModifiedDate; // @synthesize clinicalContactsModifiedDate=_clinicalContactsModifiedDate;
+@property (strong, nonatomic) NSDate *dateSaved;
 @property (copy, nonatomic) NSArray *emergencyContacts; // @synthesize emergencyContacts=_emergencyContacts;
+@property (strong, nonatomic) NSDate *emergencyContactsModifiedDate; // @synthesize emergencyContactsModifiedDate=_emergencyContactsModifiedDate;
 @property (strong, nonatomic) NSDate *gmtBirthdate; // @synthesize gmtBirthdate=_gmtBirthdate;
 @property (copy, nonatomic) NSDateComponents *gregorianBirthday;
+@property (strong, nonatomic) NSDate *gregorianBirthdayModifiedDate; // @synthesize gregorianBirthdayModifiedDate=_gregorianBirthdayModifiedDate;
 @property (strong, nonatomic) HKQuantity *height; // @synthesize height=_height;
+@property (strong, nonatomic) NSDate *heightModifiedDate; // @synthesize heightModifiedDate=_heightModifiedDate;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
+@property (strong, nonatomic) NSDate *isDisabledModifiedDate; // @synthesize isDisabledModifiedDate=_isDisabledModifiedDate;
 @property (strong, nonatomic) NSNumber *isOrganDonor; // @synthesize isOrganDonor=_isOrganDonor;
+@property (strong, nonatomic) NSDate *isOrganDonorModifiedDate; // @synthesize isOrganDonorModifiedDate=_isOrganDonorModifiedDate;
+@property (strong, nonatomic) NSDate *legacyDateSaved; // @synthesize legacyDateSaved=_legacyDateSaved;
 @property (copy, nonatomic) NSString *medicalConditions; // @synthesize medicalConditions=_medicalConditions;
+@property (strong, nonatomic) NSDate *medicalConditionsModifiedDate; // @synthesize medicalConditionsModifiedDate=_medicalConditionsModifiedDate;
 @property (copy, nonatomic) NSString *medicalNotes; // @synthesize medicalNotes=_medicalNotes;
+@property (strong, nonatomic) NSDate *medicalNotesModifiedDate; // @synthesize medicalNotesModifiedDate=_medicalNotesModifiedDate;
 @property (copy, nonatomic) NSString *medicationInfo; // @synthesize medicationInfo=_medicationInfo;
+@property (strong, nonatomic) NSDate *medicationInfoModifiedDate; // @synthesize medicationInfoModifiedDate=_medicationInfoModifiedDate;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSDate *nameModifiedDate; // @synthesize nameModifiedDate=_nameModifiedDate;
 @property (copy, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
+@property (strong, nonatomic) NSDate *pictureDataModifiedDate; // @synthesize pictureDataModifiedDate=_pictureDataModifiedDate;
 @property (copy, nonatomic) NSString *primaryLanguageCode; // @synthesize primaryLanguageCode=_primaryLanguageCode;
+@property (strong, nonatomic) NSDate *primaryLanguageCodeModifiedDate; // @synthesize primaryLanguageCodeModifiedDate=_primaryLanguageCodeModifiedDate;
 @property (nonatomic) long long schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 @property (nonatomic) BOOL shareDuringEmergency; // @synthesize shareDuringEmergency=_shareDuringEmergency;
+@property (strong, nonatomic) NSDate *shareDuringEmergencyModifiedDate; // @synthesize shareDuringEmergencyModifiedDate=_shareDuringEmergencyModifiedDate;
 @property (strong, nonatomic) HKQuantity *weight; // @synthesize weight=_weight;
+@property (strong, nonatomic) NSDate *weightModifiedDate; // @synthesize weightModifiedDate=_weightModifiedDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -60,11 +95,15 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAnyData;
+- (BOOL)hasAnyModificationDate;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEmpty;
 - (BOOL)isEqual:(id)arg1;
-- (void)recordFieldPresenceStatistics;
+- (BOOL)isEqualToSyncedData:(id)arg1;
+- (id)merge:(id)arg1;
+- (void)setModificationDatesForUpdatedFieldsWithMedicalIDData:(id)arg1;
+- (void)setModificationDatesToCurrentDate;
 
 @end
 

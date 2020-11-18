@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlayUIServices/NSObject-Protocol.h>
+#import <CarPlayUIServices/CRSUIMapStyleProviding-Protocol.h>
 
-@protocol CRSUIInstrumentClusterSceneSettings <NSObject>
+@protocol CRSUIInstrumentClusterSceneSettings <CRSUIMapStyleProviding>
 
 @property (readonly, nonatomic) unsigned long long itemType;
 @property (readonly, nonatomic) unsigned long long showsCompass;

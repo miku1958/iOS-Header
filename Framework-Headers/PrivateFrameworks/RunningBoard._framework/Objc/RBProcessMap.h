@@ -13,13 +13,13 @@
 @interface RBProcessMap : NSObject <NSCopying>
 {
     struct os_unfair_lock_s _lock;
-    NSMutableDictionary *_stateMap;
+    NSMutableDictionary *_valueMap;
 }
 
 - (void).cxx_destruct;
 - (void)addIdentity:(id)arg1;
 - (id)allIdentities;
-- (id)allState;
+- (id)allValue;
 - (BOOL)containsIdentity:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
@@ -28,10 +28,10 @@
 - (id)init;
 - (void)removeAllObjects;
 - (void)removeIdentity:(id)arg1;
-- (id)removeStateForIdentity:(id)arg1;
-- (id)removeStateForIdentity:(id)arg1 withPredicate:(CDUnknownBlockType)arg2;
-- (id)setState:(id)arg1 forIdentity:(id)arg2;
-- (id)stateForIdentity:(id)arg1;
+- (id)removeValueForIdentity:(id)arg1;
+- (id)removeValueForIdentity:(id)arg1 withPredicate:(CDUnknownBlockType)arg2;
+- (id)setValue:(id)arg1 forIdentity:(id)arg2;
+- (id)valueForIdentity:(id)arg1;
 
 @end
 

@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)_list;
 - (int)allowedEntities;
 - (id)calendarIdentifier;
-- (id)colorString;
+- (id)colorStringRaw;
 - (int)displayOrder;
 - (unsigned long long)ekSharingStatusFromREMSharingStatus:(long long)arg1;
 - (id)externalID;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)symbolicColorName;
 - (id)title;
 - (id)uniqueIdentifier;
+- (id)unlocalizedTitle;
 - (id)updateListWithSaveRequest:(id)arg1 error:(id *)arg2;
 
 @end

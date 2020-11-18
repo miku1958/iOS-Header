@@ -29,12 +29,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_eventName:1;
         unsigned int read_loiIdentifierString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_eventDate:1;
-        unsigned int wrote_eventName:1;
-        unsigned int wrote_loiIdentifierString:1;
-        unsigned int wrote_loiType:1;
-        unsigned int wrote_isEventAllDay:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,8 +49,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsLoiType:(id)arg1;
-- (void)_readEventName;
-- (void)_readLoiIdentifierString;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -64,7 +57,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)loiTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

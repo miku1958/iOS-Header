@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/NSXPCListenerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, NSXPCListener, PLBackgroundJobService, PLDistributedNotificationHandler, PLPhotoLibraryBundleController, PLXPCMessageLogger;
+@class NSMutableSet, NSString, NSXPCInterface, NSXPCListener, PLBackgroundJobService, PLDistributedNotificationHandler, PLPhotoLibraryBundleController, PLTCCObserver, PLXPCMessageLogger;
 
 @interface PLAssetsdServer : NSObject <NSXPCListenerDelegate>
 {
@@ -19,29 +19,28 @@
     PLPhotoLibraryBundleController *_libraryBundleController;
     PLBackgroundJobService *_backgroundJobService;
     PLDistributedNotificationHandler *_distributedNotificationHandler;
-    NSArray *_previewRenderedContentURLs;
-    NSArray *_previewAssetLocalIdentifiers;
+    PLTCCObserver *_tccObserver;
+    NSXPCInterface *_assetsdInterface;
+    CDStruct_f4d52fe1 _resourceCacheMetrics;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *previewAssetLocalIdentifiers; // @synthesize previewAssetLocalIdentifiers=_previewAssetLocalIdentifiers;
-@property (readonly, nonatomic) unsigned long long previewRenderedContentURLCount;
+@property (nonatomic) CDStruct_f4d52fe1 resourceCacheMetrics; // @synthesize resourceCacheMetrics=_resourceCacheMetrics;
 @property (readonly) Class superclass;
 
 + (id)sharedServer;
 - (void).cxx_destruct;
 - (void)_checkInWithLaunchd;
+- (void)_collectCacheMetricsDataFromService:(id)arg1;
 - (void)addService:(id)arg1;
 - (void)handleInterruption:(id)arg1;
 - (void)handleInvalidation:(id)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)logStatus;
-- (id)previewRenderedContentURLAtIndex:(unsigned long long)arg1;
 - (void)removeService:(id)arg1;
-- (void)setPreviewRenderedContentURLs:(id)arg1;
 - (void)start;
 
 @end

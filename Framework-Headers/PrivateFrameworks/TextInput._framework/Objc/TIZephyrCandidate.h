@@ -17,7 +17,10 @@
     BOOL _shouldAccept;
     BOOL _shouldInsertSpaceAfterSelection;
     unsigned int _usageTrackingMask;
+    unsigned int _sourceMask;
     int _confidence;
+    int _dynamicUsageCount;
+    int _dynamicPenaltyCount;
     unsigned long long _wordOriginFeedbackID;
     TIProactiveTrigger *_proactiveTrigger;
     NSString *_responseKitCategory;
@@ -26,31 +29,40 @@
     double _excessPathRatio;
     _ICPredictedItem *_proactivePredictedItem;
     NSString *_label;
+    double _geometryScore;
+    double _wordScore;
+    NSString *_lexiconLocale;
 }
 
 @property (nonatomic) unsigned long long ageForConnectionsMetrics; // @synthesize ageForConnectionsMetrics=_ageForConnectionsMetrics;
 @property (nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;
 @property (nonatomic, getter=isContinuousPathConversion) BOOL continuousPathConversion; // @synthesize continuousPathConversion=_continuousPathConversion;
+@property (nonatomic) int dynamicPenaltyCount; // @synthesize dynamicPenaltyCount=_dynamicPenaltyCount;
+@property (nonatomic) int dynamicUsageCount; // @synthesize dynamicUsageCount=_dynamicUsageCount;
 @property (nonatomic) double excessPathRatio; // @synthesize excessPathRatio=_excessPathRatio;
 @property (copy, nonatomic) NSString *fromBundleId; // @synthesize fromBundleId=_fromBundleId;
+@property (nonatomic) double geometryScore; // @synthesize geometryScore=_geometryScore;
 @property (nonatomic) BOOL isFromPhraseDictionary; // @synthesize isFromPhraseDictionary=_isFromPhraseDictionary;
 @property (nonatomic) BOOL isFromTextChecker; // @synthesize isFromTextChecker=_isFromTextChecker;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) NSString *lexiconLocale; // @synthesize lexiconLocale=_lexiconLocale;
 @property (copy, nonatomic) _ICPredictedItem *proactivePredictedItem; // @synthesize proactivePredictedItem=_proactivePredictedItem;
 @property (nonatomic, getter=shouldAccept) BOOL shouldAccept; // @synthesize shouldAccept=_shouldAccept;
 @property (nonatomic, getter=shouldInsertSpaceAfterSelection) BOOL shouldInsertSpaceAfterSelection; // @synthesize shouldInsertSpaceAfterSelection=_shouldInsertSpaceAfterSelection;
+@property (nonatomic) double wordScore; // @synthesize wordScore=_wordScore;
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
 - (void).cxx_destruct;
 - (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2 label:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(BOOL)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(BOOL)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7 responseKitCategory:(id)arg8;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 sourceMask:(unsigned int)arg5;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 sourceMask:(unsigned int)arg5 secureContentCandidate:(BOOL)arg6 proactiveTrigger:(id)arg7 proactivePredictedItem:(id)arg8;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 sourceMask:(unsigned int)arg5 secureContentCandidate:(BOOL)arg6 proactiveTrigger:(id)arg7 proactivePredictedItem:(id)arg8 responseKitCategory:(id)arg9;
 - (id)initWithCandidate:(id)arg1 responseKitCategory:(id)arg2;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -58,6 +70,7 @@
 - (BOOL)isSecureContentCandidate;
 - (id)proactiveTrigger;
 - (id)responseKitCategory;
+- (unsigned int)sourceMask;
 - (unsigned int)usageTrackingMask;
 - (unsigned long long)wordOriginFeedbackID;
 

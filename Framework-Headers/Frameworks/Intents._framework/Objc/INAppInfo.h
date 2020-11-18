@@ -8,39 +8,49 @@
 
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSData, NSSet, NSString;
+@class NSArray, NSData, NSSet, NSString;
 
 @interface INAppInfo : NSObject <NSSecureCoding>
 {
+    BOOL _supportsMultiwindow;
     NSString *_applicationIdentifier;
-    NSString *_companionApplicationIdentifier;
+    NSArray *_counterpartIdentifiers;
     NSString *_developmentRegion;
     NSSet *_supportedActions;
+    NSSet *_supportedIntents;
+    NSSet *_supportedIntentsByApp;
     NSSet *_supportedActionsByExtensions;
     NSSet *_actionsRestrictedWhileLocked;
     NSSet *_actionsRestrictedWhileProtectedDataUnavailable;
     NSSet *_supportedMediaCategories;
     NSSet *_definedIntents;
+    NSString *_companionApplicationIdentifier;
 }
 
 @property (copy, nonatomic) NSSet *actionsRestrictedWhileLocked; // @synthesize actionsRestrictedWhileLocked=_actionsRestrictedWhileLocked;
 @property (copy, nonatomic) NSSet *actionsRestrictedWhileProtectedDataUnavailable; // @synthesize actionsRestrictedWhileProtectedDataUnavailable=_actionsRestrictedWhileProtectedDataUnavailable;
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (copy, nonatomic) NSString *companionApplicationIdentifier; // @synthesize companionApplicationIdentifier=_companionApplicationIdentifier;
+@property (copy, nonatomic) NSArray *counterpartIdentifiers; // @synthesize counterpartIdentifiers=_counterpartIdentifiers;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (copy, nonatomic) NSSet *definedIntents; // @synthesize definedIntents=_definedIntents;
 @property (copy, nonatomic) NSString *developmentRegion; // @synthesize developmentRegion=_developmentRegion;
 @property (copy, nonatomic) NSSet *supportedActions; // @synthesize supportedActions=_supportedActions;
 @property (copy, nonatomic) NSSet *supportedActionsByExtensions; // @synthesize supportedActionsByExtensions=_supportedActionsByExtensions;
+@property (copy, nonatomic) NSSet *supportedIntents; // @synthesize supportedIntents=_supportedIntents;
+@property (copy, nonatomic) NSSet *supportedIntentsByApp; // @synthesize supportedIntentsByApp=_supportedIntentsByApp;
 @property (copy, nonatomic) NSSet *supportedMediaCategories; // @synthesize supportedMediaCategories=_supportedMediaCategories;
+@property (nonatomic) BOOL supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 
-+ (id)_appInfoWithAppProxy:(id)arg1 plugInKitPlugins:(id)arg2 userActivityTypes:(id)arg3;
++ (id)_appInfoWithApplicationRecord:(id)arg1 applicationExtensionRecords:(id)arg2 userActivityTypes:(id)arg3;
 + (id)appInfoWithAppProxy:(id)arg1;
++ (id)appInfoWithApplicationRecord:(id)arg1;
 + (id)appInfoWithData:(id)arg1 error:(id *)arg2;
 + (id)appInfoWithIntent:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

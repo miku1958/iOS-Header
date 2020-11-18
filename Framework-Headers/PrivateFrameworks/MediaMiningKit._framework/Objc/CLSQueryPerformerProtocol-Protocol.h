@@ -21,8 +21,8 @@
 + (id)queryWithTemplate:(id<CLSQueryPerformerProtocol>)arg1 forRegions:(NSArray *)arg2;
 - (unsigned long long)cacheItems:(NSArray *)arg1;
 - (void)cancel;
-- (void)logAggdGeoLookupCounterAndDurationWithLookupDuration:(NSNumber *)arg1;
-- (void)logAggdGeoLookupFailureResult;
+- (void)logGeoLookupCounterAndDurationWithLookupDuration:(NSNumber *)arg1;
+- (void)logGeoLookupFailureResult;
 - (NSArray *)regions;
 - (BOOL)shouldQueryItemsForRegion:(CLCircularRegion *)arg1 selectedRegions:(NSArray *)arg2;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1;

@@ -29,10 +29,8 @@ __attribute__((visibility("hidden")))
     BOOL _staysCenteredDuringRotation;
     BOOL _isPitchEnabled;
     BOOL _isRotateEnabled;
-    BOOL _allowDatelineWraparound;
 }
 
-@property (nonatomic) BOOL allowDatelineWraparound; // @synthesize allowDatelineWraparound=_allowDatelineWraparound;
 @property (readonly, nonatomic) double altitude;
 @property (readonly, nonatomic) struct AnimationRunner *animationRunner; // @synthesize animationRunner=_animationRunner;
 @property (readonly, nonatomic) BOOL canPitch;
@@ -51,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct MapDataAccess *mapDataAccess; // @synthesize mapDataAccess=_mapDataAccess;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (readonly, nonatomic) double maxPitch;
+@property (readonly, nonatomic) double minPitch;
 @property (nonatomic) double pitch;
 @property (readonly, nonatomic) double presentationHeading;
 @property (readonly, nonatomic) struct RunLoopController *runLoopController; // @synthesize runLoopController=_runLoopController;

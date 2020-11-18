@@ -18,11 +18,9 @@
     CDUnknownBlockType _pluginCompletionBlock;
 }
 
-@property (readonly, strong, nonatomic) SBSCardItem *cardItem; // @synthesize cardItem=_cardItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType pluginCompletionBlock; // @synthesize pluginCompletionBlock=_pluginCompletionBlock;
 @property (nonatomic) BOOL shouldForwardAction; // @synthesize shouldForwardAction=_shouldForwardAction;
 @property (readonly) Class superclass;
 
@@ -30,7 +28,6 @@
 - (void)didDismissLockScreenPlugin:(id)arg1;
 - (void)didPresentLockScreenPlugin:(id)arg1;
 - (void)executeAction:(id)arg1 fromOrigin:(id)arg2 endpoint:(id)arg3 withParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)initWithCardItem:(id)arg1;
 - (void)willDismissLockScreenPlugin:(id)arg1;
 - (void)willPresentLockScreenPlugin:(id)arg1;
 

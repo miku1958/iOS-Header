@@ -6,11 +6,12 @@
 
 #import <PencilKit/PKTiledView.h>
 
+#import <PencilKit/UITextInteractionDelegate-Protocol.h>
 #import <PencilKit/_UICursorInteractionDelegate-Protocol.h>
 
 @class NSString, PKAttachmentView, UIButton;
 
-@interface PKTiledTextView : PKTiledView <_UICursorInteractionDelegate>
+@interface PKTiledTextView : PKTiledView <UITextInteractionDelegate, _UICursorInteractionDelegate>
 {
     PKAttachmentView *_standInEndAttachmentView;
     UIButton *_tapToRadarButton;
@@ -28,17 +29,21 @@
 - (void)_setupTapToRadarButton;
 - (BOOL)_shouldUpdateHeightOfAttachments;
 - (void)_tapToRadarButtonTapped:(id)arg1;
+- (id)_textView;
 - (void)appendPath:(id)arg1 attachmentString:(id)arg2;
 - (BOOL)canAddStroke;
 - (void)canvasViewDidEndDrawing:(id)arg1;
 - (void)canvasViewWillBeginNewStroke:(id)arg1 withTouch:(id)arg2;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (void)dealloc;
 - (struct CGRect)frameOfEndAttachment;
 - (BOOL)hasEndAttachment;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initInScrollView:(id)arg1;
 - (BOOL)insertAttachmentIfInBlankSpace:(struct CGPoint)arg1;
+- (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)layoutSubviews;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)saveTempData:(id)arg1 name:(id)arg2;
 - (void)setLinedPaper:(id)arg1;
 - (id)standInAttachmentView;

@@ -18,10 +18,12 @@
 @property (nonatomic) int entityType;
 @property (strong, nonatomic) _INPBDataString *group;
 @property (readonly, nonatomic) BOOL hasAccessory;
+@property (nonatomic) BOOL hasAllQuantifier;
 @property (nonatomic) BOOL hasDeviceType;
 @property (readonly, nonatomic) BOOL hasEntityName;
 @property (nonatomic) BOOL hasEntityType;
 @property (readonly, nonatomic) BOOL hasGroup;
+@property (nonatomic) BOOL hasHasAllQuantifier;
 @property (readonly, nonatomic) BOOL hasHome;
 @property (nonatomic) BOOL hasIsExcludeFilter;
 @property (readonly, nonatomic) BOOL hasOuterDeviceName;

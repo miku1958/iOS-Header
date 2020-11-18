@@ -43,6 +43,7 @@
 + (id)dispatchQueue;
 + (void)initialize;
 + (BOOL)refreshCurrencyCache;
+- (void).cxx_destruct;
 - (double)_doubleWithoutUnrelevantDecimalsForNumber:(id)arg1;
 - (id)_localizedPluralizedStringsforNumber:(id)arg1 unit:(id)arg2;
 - (id)_normalizedUnitNamesForName:(id)arg1;
@@ -53,7 +54,6 @@
 - (void)_standardizeInputAndOutputUnits;
 - (id)_unitInfoForNormalizedName:(id)arg1;
 - (void)_updateInputValueFromMatch:(id)arg1;
-- (void)dealloc;
 - (id)initWithInput:(id)arg1;
 - (void)processConversionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)similarUnitsForNormalizedName:(id)arg1;

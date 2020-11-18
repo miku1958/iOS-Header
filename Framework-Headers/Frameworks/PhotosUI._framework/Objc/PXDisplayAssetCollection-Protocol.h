@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) NSArray *localizedLocationNames;
 @property (readonly, nonatomic) NSString *localizedSmartDescription;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
-@property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) double promotionScore;
 @property (readonly, nonatomic) unsigned short px_highlightEnrichmentState;
 @property (readonly, nonatomic) long long px_highlightKind;

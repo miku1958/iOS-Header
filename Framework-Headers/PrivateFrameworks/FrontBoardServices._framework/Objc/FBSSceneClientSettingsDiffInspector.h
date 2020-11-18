@@ -16,6 +16,7 @@
 - (void)observePreferredInterfaceOrientationWithBlock:(CDUnknownBlockType)arg1;
 - (void)observePreferredLevelWithBlock:(CDUnknownBlockType)arg1;
 - (void)observePreferredSceneHostIdentifierWithBlock:(CDUnknownBlockType)arg1;
+- (void)observePreferredSceneHostIdentityWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

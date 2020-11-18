@@ -15,9 +15,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType observer; // @synthesize observer=_observer;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
 - (void).cxx_destruct;
 
 @end

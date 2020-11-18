@@ -17,7 +17,7 @@
     long long _yAlignment;
 }
 
-@property (readonly, nonatomic) NSArray *children;
+@property (strong, nonatomic) NSArray *children; // @synthesize children=_children;
 @property (nonatomic) CDStruct_392cfed4 layoutInput;
 @property (strong, nonatomic) PXLayoutPerformerOutput *layoutOutput;
 @property (nonatomic) long long xAlignment; // @synthesize xAlignment=_xAlignment;
@@ -27,7 +27,6 @@
 - (void).cxx_destruct;
 - (struct CGSize)performLayout;
 - (void)preprareForReuse;
-- (void)setChildren:(id)arg1;
 
 @end
 

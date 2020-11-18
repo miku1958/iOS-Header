@@ -7,11 +7,12 @@
 #import <UserNotificationsKit/NCNotificationRequest.h>
 
 @interface NCNotificationRequest (AlertSuppression)
-+ (id)_destinations;
-+ (id)_notificationOptionsForAlertItem:(id)arg1;
++ (id)_notificationOptionsForAlertController:(id)arg1 item:(id)arg2;
++ (id)_notificationRequestForDestinations:(id)arg1 withAlertItem:(id)arg2 identifier:(id)arg3;
 + (id)_notificationSoundFromSound:(id)arg1;
 + (long long)_soundTypeForSBSoundType:(long long)arg1;
-+ (id)notificationRequestWithAlertItem:(id)arg1;
++ (id)notificationRequestForCarPlayWithAlertItem:(id)arg1;
++ (id)notificationRequestForLockScreenWithAlertItem:(id)arg1;
 + (id)notificationRequestWithCardItem:(id)arg1;
 - (BOOL)sb_shouldSuppressAlert;
 @end

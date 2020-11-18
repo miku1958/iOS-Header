@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasLocationEnteredStation:(id)arg1 routeMatch:(id)arg2;
 - (BOOL)_hasLocationExitedStation:(id)arg1;
 - (BOOL)_isLocationNearAccessPoint:(id)arg1;
-- (BOOL)_isLocationNearEndOfWalkingLeg:(id)arg1;
+- (BOOL)_isLocationNearEndOfWalkingSegment:(id)arg1;
 - (BOOL)_isLocationNearTransitNode:(id)arg1;
 - (id)initWithTransitRouteMatcher:(id)arg1 boardVehicleStep:(id)arg2;
 - (BOOL)updateRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;

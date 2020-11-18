@@ -10,7 +10,7 @@
 #import <CoreSpeech/CSEndpointAnalyzerDelegate-Protocol.h>
 #import <CoreSpeech/CSEndpointAnalyzerImplDelegate-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 @protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImpl;
 
 @interface CSEndpointerProxy : NSObject <CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate, CSEndpointAnalyzer>
@@ -20,6 +20,7 @@
     id<CSEndpointAnalyzerImpl> _hybridEndpointer;
     id<CSEndpointAnalyzerImpl> _nnvadEndpointer;
     id<CSEndpointAnalyzerImpl> _activeEndpointer;
+    NSDictionary *_recordContext;
 }
 
 @property (weak, nonatomic) id<CSEndpointAnalyzerImpl> activeEndpointer; // @synthesize activeEndpointer=_activeEndpointer;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) double lastStartOfVoiceActivityTime;
 @property (nonatomic) double minimumDurationForEndpointer;
 @property (strong, nonatomic) id<CSEndpointAnalyzerImpl> nnvadEndpointer; // @synthesize nnvadEndpointer=_nnvadEndpointer;
+@property (strong, nonatomic) NSDictionary *recordContext; // @synthesize recordContext=_recordContext;
 @property (nonatomic) BOOL recordingDidStop; // @synthesize recordingDidStop=_recordingDidStop;
 @property (nonatomic) BOOL saveSamplesSeenInReset;
 @property (nonatomic) double startWaitTime;
@@ -53,12 +55,14 @@
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
 - (id)endpointerModelVersion;
 - (id)init;
+- (BOOL)isWatchRTSTriggered;
+- (void)logHybridEndpointFeaturesWithEvent:(id)arg1 locale:(id)arg2;
 - (void)preheat;
 - (void)processAudioSamplesAsynchronously:(id)arg1;
 - (void)processServerEndpointFeatures:(id)arg1;
 - (void)recordingStoppedForReason:(long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3 voiceTriggerInfo:(id)arg4;
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (void)setActiveChannel:(unsigned long long)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;

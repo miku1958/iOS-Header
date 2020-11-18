@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContentKit/WFContentLibraryFiltering.h>
+#import <ContentKit/WFContentLibraryANDFiltering.h>
 
-@interface WFNotesLibraryFiltering : WFContentLibraryFiltering
+@interface WFNotesLibraryFiltering : WFContentLibraryANDFiltering
 {
 }
 

@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Espresso/NSObject-Protocol.h>
+
 @class NSDictionary;
 
-@protocol ETDataProvider
+@protocol ETDataProvider <NSObject>
 - (NSDictionary *)dataPointAtIndex:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)numberOfDataPoints;
+
+@optional
+- (void)prepareForEpoch;
 @end
 

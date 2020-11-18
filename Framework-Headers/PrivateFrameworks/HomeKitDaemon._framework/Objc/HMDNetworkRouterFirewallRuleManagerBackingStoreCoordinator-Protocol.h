@@ -6,25 +6,29 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDNetworkRouterFirewallRuleAccessoryIdentifier, HMDNetworkRouterFirewallRuleCloudNetworkDeclarations, HMDNetworkRouterFirewallRuleConfiguration, HMFVersion, NSCountedSet, NSDictionary, NSSet, NSString;
-@protocol HMDNetworkRouterFirewallRuleManager;
+@class HMBLocalDatabase, HMDCloudPairedMetadata, HMDCloudPairedMetadataVersionConfiguration, HMDNetworkRouterFirewallRuleAccessoryIdentifier, HMDNetworkRouterFirewallRuleCloudNetworkDeclarations, HMDNetworkRouterFirewallRuleConfiguration, HMFVersion, NSDictionary, NSSet, NSString;
+@protocol HMDNetworkRouterFirewallRuleManagerInternal;
 
 @protocol HMDNetworkRouterFirewallRuleManagerBackingStoreCoordinator <NSObject>
 
-@property (readonly, weak, nonatomic) id<HMDNetworkRouterFirewallRuleManager> firewallRuleManager;
+@property (readonly, weak, nonatomic) id<HMDNetworkRouterFirewallRuleManagerInternal> firewallRuleManager;
 
-- (void)addInterestedAccessories:(NSCountedSet *)arg1;
 - (BOOL)addOverrides:(NSDictionary *)arg1 replace:(BOOL)arg2 error:(id *)arg3;
-- (void)dumpCloudRecordsForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 rawOutput:(BOOL)arg3 listOnly:(BOOL)arg4 completion:(void (^)(NSString *, NSError *))arg5;
+- (void)dumpCloudRecordsForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 rawOutput:(BOOL)arg3 listOnly:(BOOL)arg4 verifySignatures:(BOOL)arg5 completion:(void (^)(NSString *, NSError *))arg6;
 - (NSString *)dumpLocalRulesForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 firmwareVersion:(HMFVersion *)arg3 ignoreOverrides:(BOOL)arg4 rawOutput:(BOOL)arg5 error:(id *)arg6;
+- (NSString *)dumpPairedMetadataForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 firmwareVersion:(HMFVersion *)arg3 ignoreOverrides:(BOOL)arg4 rawOutput:(BOOL)arg5 error:(id *)arg6;
 - (void)fetchCloudChangesWithQualityOfService:(long long)arg1 ignoreLastFetchedAccessories:(BOOL)arg2 forceChangeNotifications:(BOOL)arg3 completion:(void (^)(NSSet *, NSError *))arg4;
-- (NSSet *)fetchRulesForAccessories:(NSSet *)arg1 qualityOfService:(long long)arg2 ignoreOverrides:(BOOL)arg3 error:(id *)arg4;
+- (NSSet *)fetchPairedMetadataVersionConfigurationsForAccessories:(NSSet *)arg1 qualityOfService:(long long)arg2 ignoreOverrides:(BOOL)arg3 error:(id *)arg4;
+- (void)fetchRulesForAccessories:(NSSet *)arg1 qualityOfService:(long long)arg2 ignoreOverrides:(BOOL)arg3 completion:(void (^)(NSSet *, NSError *))arg4;
+- (HMDCloudPairedMetadataVersionConfiguration *)pairedMetadataVersionConfigurationForAccessory:(HMDNetworkRouterFirewallRuleAccessoryIdentifier *)arg1 pairedMetadata:(HMDCloudPairedMetadata *)arg2;
 - (BOOL)removeAllLocalRulesWithError:(id *)arg1;
 - (BOOL)removeAllOverridesWithError:(id *)arg1;
-- (void)removeInterestedAccessories:(NSCountedSet *)arg1;
 - (BOOL)removeOverridesForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 error:(id *)arg3;
 - (HMDNetworkRouterFirewallRuleConfiguration *)ruleConfigurationForAccessory:(HMDNetworkRouterFirewallRuleAccessoryIdentifier *)arg1 declarations:(HMDNetworkRouterFirewallRuleCloudNetworkDeclarations *)arg2;
 - (void)shutdownWithCompletion:(void (^)(NSError *))arg1;
-- (void)startupWithCompletion:(void (^)(NSError *))arg1;
+- (void)startupWithLocalDatabase:(HMBLocalDatabase *)arg1 completion:(void (^)(NSError *))arg2;
+
+@optional
+- (void)firewallRuleManagerClientsDidChange;
 @end
 

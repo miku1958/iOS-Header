@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCNetworkAddress;
+@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCMediaStreamRateControlConfig, VCNetworkAddress;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamConfig : NSObject
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_txPayloadMap;
     NSData *_receiveMasterKey;
     NSMutableDictionary *_rxPayloadMap;
+    BOOL _latencySensitiveModeEnabled;
     long long _SRTPCipherSuite;
     BOOL _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
     unsigned short _rtcpRemotePort;
     BOOL _rateAdaptationEnabled;
     VCMediaStreamMultiwayConfig *_multiwayConfig;
+    VCMediaStreamRateControlConfig *_rateControlConfig;
 }
 
 @property (nonatomic) long long SRTCPCipherSuite; // @synthesize SRTCPCipherSuite=_SRTCPCipherSuite;
@@ -46,11 +48,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isDecryptionTimeOutEnabled) BOOL decryptionTimeOutEnabled; // @synthesize decryptionTimeOutEnabled=_decryptionTimeOutEnabled;
 @property (nonatomic) double decryptionTimeOutInterval; // @synthesize decryptionTimeOutInterval=_decryptionTimeOutInterval;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
+@property (nonatomic, getter=isLatencySensitiveModeEnabled) BOOL latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
 @property (strong, nonatomic) VCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
 @property (nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
 @property (strong, nonatomic) VCMediaStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
 @property (readonly, nonatomic) long long primaryTxCodecType;
 @property (nonatomic, getter=isRateAdaptationEnabled) BOOL rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
+@property (strong, nonatomic) VCMediaStreamRateControlConfig *rateControlConfig; // @synthesize rateControlConfig=_rateControlConfig;
 @property (strong, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;
 @property (nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
 @property (strong, nonatomic) VCNetworkAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;

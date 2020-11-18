@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKContextResponse, NSDate, NSLocale, NSMutableArray, NSString;
+@class CKContextResponse, NSArray, NSDate, NSLocale, NSMutableArray, NSString;
 
 @interface CKContextCompleter : NSObject
 {
@@ -14,13 +14,17 @@
     NSString *_ignorePrefix;
     NSLocale *_searchLocale;
     _Atomic BOOL _discarded;
-    unsigned long long _couldHaveShown;
+    _Atomic BOOL _engaged;
+    _Atomic unsigned long long _inputKeystrokes;
+    NSArray *_couldHaveShown;
     NSString *_input;
     NSDate *_hideCompletionsAfterDate;
     BOOL _hideZKW;
     BOOL _hideCompletions;
     unsigned long long _mustPrefixMatchLength;
     NSMutableArray *_zkwResults;
+    unsigned long long _creationTime;
+    BOOL _likelyUnsolicited;
 }
 
 - (void).cxx_destruct;
@@ -36,6 +40,7 @@
 - (void)logTransactionSuccessfulForInput:(id)arg1 completion:(id)arg2;
 - (id)queriesMatching:(id)arg1;
 - (id)resultsMatching:(id)arg1;
+- (id)resultsMatchingTags:(id)arg1;
 
 @end
 

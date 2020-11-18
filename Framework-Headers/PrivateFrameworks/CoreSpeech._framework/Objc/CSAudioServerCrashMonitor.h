@@ -6,16 +6,22 @@
 
 #import <CoreSpeech/CSEventMonitor.h>
 
-@class AVVoiceTriggerClient;
+#import <CoreSpeech/CSAudioServerCrashEventProvidingDelegate-Protocol.h>
 
-@interface CSAudioServerCrashMonitor : CSEventMonitor
+@class AVVoiceTriggerClient, NSString;
+
+@interface CSAudioServerCrashMonitor : CSEventMonitor <CSAudioServerCrashEventProvidingDelegate>
 {
     unsigned long long _serverState;
     AVVoiceTriggerClient *_alwaysOnProcessorController;
 }
 
 @property (strong, nonatomic) AVVoiceTriggerClient *alwaysOnProcessorController; // @synthesize alwaysOnProcessorController=_alwaysOnProcessorController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long serverState; // @synthesize serverState=_serverState;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -23,8 +29,8 @@
 - (void)_mediaserverdDidRestart;
 - (void)_notifyObserver:(id)arg1 withMediaserverState:(unsigned long long)arg2;
 - (void)_startMonitoringWithQueue:(id)arg1;
+- (void)audioServerCrashEventProvidingLostMediaserverd;
 - (id)init;
-- (void)notifyAudioServerCrash;
 
 @end
 

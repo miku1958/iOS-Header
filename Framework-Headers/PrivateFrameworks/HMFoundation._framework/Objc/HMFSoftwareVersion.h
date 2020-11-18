@@ -14,6 +14,7 @@
 }
 
 @property (readonly, copy) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
+@property (readonly, copy) NSString *shortVersionString;
 
 + (BOOL)supportsSecureCoding;
 + (id)versionFromOperatingSystemVersion:(CDStruct_2ec95fd7)arg1;

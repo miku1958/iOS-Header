@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _UITextFieldPasscodeCutoutBackground : UITextFieldBackgroundView
 {
-    BOOL _customStrokeColor;
-    BOOL _customFillColor;
+    BOOL _hasCustomStrokeColor;
+    BOOL _hasCustomFillColor;
     CAShapeLayer *_lighteningOutline;
     double _outlineAlpha;
     double _cornerRadius;

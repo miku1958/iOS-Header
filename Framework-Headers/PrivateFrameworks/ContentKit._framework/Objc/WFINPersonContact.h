@@ -17,8 +17,12 @@
 
 + (id)contactWithPerson:(id)arg1;
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (Class)classForCoder;
+- (void)encodeWithCoder:(id)arg1;
 - (id)inPerson;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithINPerson:(id)arg1;
 - (id)wfName;
 - (id)wfSerializedRepresentation;

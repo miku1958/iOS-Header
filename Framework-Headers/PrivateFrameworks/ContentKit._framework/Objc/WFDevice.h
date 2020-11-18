@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long platform;
 @property (readonly, nonatomic) struct CGRect screenBounds;
+@property (readonly, nonatomic) double screenCornerRadius;
 @property (readonly, nonatomic) double screenScale;
 @property (readonly, nonatomic) NSString *systemName;
 @property (readonly, nonatomic) NSString *systemVersion;
@@ -30,6 +31,7 @@
 + (id)currentDevice;
 - (void).cxx_destruct;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
+- (id)description;
 - (BOOL)hasCapability:(id)arg1;
 
 @end

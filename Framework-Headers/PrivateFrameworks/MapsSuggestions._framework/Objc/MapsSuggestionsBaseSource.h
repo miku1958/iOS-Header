@@ -32,13 +32,14 @@
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
-- (id)initWithDelegate:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 - (id)initWithDelegate:(id)arg1 name:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
-- (double)updateSuggestionEntries;
-- (double)updateSuggestionEntriesOfType:(long long)arg1;
+- (double)updateSuggestionEntriesOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

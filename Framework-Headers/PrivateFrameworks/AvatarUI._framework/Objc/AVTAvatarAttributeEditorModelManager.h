@@ -6,41 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarConfiguration, AVTAvatarRecord, AVTCoreModel, AVTMemoji, AVTPresetImageProvider, AVTPresetResourceLoader, NSMutableDictionary;
-@protocol AVTUILogger;
+#import <AvatarUI/AVTAvatarAttributeEditorModelManagerDelegateInternal-Protocol.h>
 
-@interface AVTAvatarAttributeEditorModelManager : NSObject
+@class AVTAvatarAttributeEditorPreloader, AVTAvatarAttributeEditorState, AVTAvatarConfiguration, AVTAvatarRecord, AVTColorLayerProvider, AVTCoreModel, AVTMemoji, AVTPresetImageProvider, AVTUIEnvironment, NSString;
+@protocol AVTAvatarAttributeEditorModelManagerDelegate, AVTUILogger;
+
+@interface AVTAvatarAttributeEditorModelManager : NSObject <AVTAvatarAttributeEditorModelManagerDelegateInternal>
 {
-    AVTMemoji *_avatar;
     AVTAvatarRecord *_avatarRecord;
-    AVTAvatarConfiguration *_avatarConfiguration;
+    AVTAvatarAttributeEditorState *_editorState;
+    id<AVTAvatarAttributeEditorModelManagerDelegate> _delegate;
+    AVTAvatarConfiguration *_presetOverriddenConfiguration;
+    AVTUIEnvironment *_environment;
+    AVTMemoji *_avatar;
     AVTCoreModel *_coreModel;
-    AVTPresetImageProvider *_imageProvider;
-    AVTPresetResourceLoader *_resourceLoader;
-    NSMutableDictionary *_cancelationTokens;
     id<AVTUILogger> _logger;
+    AVTAvatarConfiguration *_avatarConfiguration;
+    AVTPresetImageProvider *_imageProvider;
+    AVTColorLayerProvider *_colorLayerProvider;
+    AVTAvatarAttributeEditorPreloader *_preloader;
 }
 
-@property (readonly, nonatomic) AVTMemoji *avatar; // @synthesize avatar=_avatar;
+@property (strong, nonatomic) AVTMemoji *avatar; // @synthesize avatar=_avatar;
 @property (readonly, nonatomic) AVTAvatarConfiguration *avatarConfiguration; // @synthesize avatarConfiguration=_avatarConfiguration;
 @property (readonly, copy, nonatomic) AVTAvatarRecord *avatarRecord; // @synthesize avatarRecord=_avatarRecord;
-@property (strong, nonatomic) NSMutableDictionary *cancelationTokens; // @synthesize cancelationTokens=_cancelationTokens;
+@property (readonly, nonatomic) AVTColorLayerProvider *colorLayerProvider; // @synthesize colorLayerProvider=_colorLayerProvider;
 @property (readonly, nonatomic) AVTCoreModel *coreModel; // @synthesize coreModel=_coreModel;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<AVTAvatarAttributeEditorModelManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) AVTAvatarAttributeEditorState *editorState; // @synthesize editorState=_editorState;
+@property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AVTPresetImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property (strong, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
-@property (readonly, nonatomic) AVTPresetResourceLoader *resourceLoader; // @synthesize resourceLoader=_resourceLoader;
+@property (readonly, nonatomic) AVTAvatarAttributeEditorPreloader *preloader; // @synthesize preloader=_preloader;
+@property (strong, nonatomic) AVTAvatarConfiguration *presetOverriddenConfiguration; // @synthesize presetOverriddenConfiguration=_presetOverriddenConfiguration;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)applyConfigurationToAvatar:(id)arg1 animated:(BOOL)arg2;
+- (void)applyEarringColorUpdateIfNeeded:(id)arg1;
 - (id)buildInitialEditorState;
-- (id)buildUIModelWithCurrentEditorDataSource:(id)arg1 forCategoryAtIndex:(unsigned long long)arg2;
-- (void)cancelAllPreloading;
-- (void)cancelPreloadForSectionItemIndexPath:(id)arg1;
-- (void)dealloc;
-- (id)initWithAvatarRecord:(id)arg1 coreModel:(id)arg2 imageProvider:(id)arg3 resourceLoader:(id)arg4 environment:(id)arg5;
-- (void)preLoadCategory:(id)arg1;
-- (void)preloadSectionItem:(id)arg1 atIndexPath:(id)arg2;
-- (void)updateAvatarBySelectingHeaderPickerItem:(id)arg1 animated:(BOOL)arg2;
+- (id)buildUIModel;
+- (id)buildUIModelWithSelectedCategory:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)flushResourcesForEnteringBackground;
+- (id)initWithAvatarRecord:(id)arg1;
+- (id)initWithAvatarRecord:(id)arg1 coreModel:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 preloader:(id)arg5 environment:(id)arg6;
+- (void)loadResourcesIfNeeded;
+- (BOOL)shouldDisplaySectionForCategory:(long long)arg1;
+- (BOOL)shouldDisplaySectionWithDisplayCondition:(id)arg1 inCategoryAtIndex:(unsigned long long)arg2;
+- (void)updateAvatarByApplyingPresetOverrides:(id)arg1 animated:(BOOL)arg2;
 - (void)updateAvatarBySelectingSectionItem:(id)arg1 animated:(BOOL)arg2;
+- (void)updateAvatarBySelectingSupplementalPickerItem:(id)arg1 animated:(BOOL)arg2;
+- (void)updateAvatarRecordFromAvatar;
 - (void)updateAvatarWithAvatarUpdater:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 
 @end

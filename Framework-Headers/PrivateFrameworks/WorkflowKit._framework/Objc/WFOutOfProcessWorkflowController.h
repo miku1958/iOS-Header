@@ -7,65 +7,69 @@
 #import <objc/NSObject.h>
 
 #import <WorkflowKit/WFOutOfProcessWorkflowControllerHost-Protocol.h>
+#import <WorkflowKit/WFTimerHandler-Protocol.h>
 
-@class NSData, NSExtension, NSString, NSUUID, WFContentCollection, WFWorkflowReference;
-@protocol OS_dispatch_queue, OS_dispatch_source, WFOutOfProcessWorkflowControllerDelegate;
+@class NSExtension, NSString, NSUUID, WFActionUserInterfaceListener, WFDialogAttribution, WFTimer, WFWorkflowReference, WFWorkflowRunningContext;
+@protocol WFOutOfProcessWorkflowControllerDelegate, WFUserInterfaceHost;
 
-@interface WFOutOfProcessWorkflowController : NSObject <WFOutOfProcessWorkflowControllerHost>
+@interface WFOutOfProcessWorkflowController : NSObject <WFOutOfProcessWorkflowControllerHost, WFTimerHandler>
 {
-    WFContentCollection *_input;
-    WFContentCollection *_output;
     id<WFOutOfProcessWorkflowControllerDelegate> _delegate;
-    NSString *_automationType;
-    NSString *_debugIdentifier;
-    NSData *_workflowData;
+    long long _presentationMode;
+    WFWorkflowRunningContext *_runningContext;
     long long _environment;
-    double _timeoutSeconds;
-    WFWorkflowReference *_workflowReference;
     NSExtension *_extension;
     NSUUID *_extensionRequestIdentifier;
-    NSObject<OS_dispatch_queue> *_internalSerialQueue;
-    NSObject<OS_dispatch_source> *_extensionMaxRunTimeTimer;
+    id<WFUserInterfaceHost> _userInterfaceHost;
+    WFActionUserInterfaceListener *_actionInterfaceListener;
+    WFWorkflowReference *_workflowReference;
     long long _state;
+    NSString *_currentWorkflowName;
+    WFDialogAttribution *_currentDialogAttribution;
+    WFTimer *_timer;
 }
 
-@property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
+@property (strong, nonatomic) WFActionUserInterfaceListener *actionInterfaceListener; // @synthesize actionInterfaceListener=_actionInterfaceListener;
+@property (copy, nonatomic) WFDialogAttribution *currentDialogAttribution; // @synthesize currentDialogAttribution=_currentDialogAttribution;
+@property (copy, nonatomic) NSString *currentWorkflowName; // @synthesize currentWorkflowName=_currentWorkflowName;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property (weak, nonatomic) id<WFOutOfProcessWorkflowControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long environment; // @synthesize environment=_environment;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *extensionMaxRunTimeTimer; // @synthesize extensionMaxRunTimeTimer=_extensionMaxRunTimeTimer;
 @property (strong, nonatomic) NSUUID *extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) WFContentCollection *input; // @synthesize input=_input;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalSerialQueue; // @synthesize internalSerialQueue=_internalSerialQueue;
-@property (readonly, nonatomic) WFContentCollection *output; // @synthesize output=_output;
+@property (nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
+@property (readonly, copy, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) double timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
-@property (readonly, nonatomic) NSData *workflowData; // @synthesize workflowData=_workflowData;
-@property (readonly, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
+@property (strong, nonatomic) WFTimer *timer; // @synthesize timer=_timer;
+@property (strong, nonatomic) id<WFUserInterfaceHost> userInterfaceHost; // @synthesize userInterfaceHost=_userInterfaceHost;
+@property (strong, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 
 - (void).cxx_destruct;
-- (void)cancelTimeoutTimer;
+- (void)createSleepWorkflow:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)extensionContext;
 - (id)extensionInterface;
-- (void)handleExtensionMaxRunTimeExceeded;
+- (void)findExtensionInterface:(CDUnknownBlockType)arg1 error:(out id *)arg2;
+- (void)handleIncomingFileForRemoteExecutionWithURL:(id)arg1 withIdentifier:(id)arg2;
 - (void)handleXPCConnectionInterruption;
-- (id)initWithWorkflow:(id)arg1 database:(id)arg2 environment:(long long)arg3;
-- (id)initWithWorkflowData:(id)arg1 debugIdentifier:(id)arg2 environment:(long long)arg3;
-- (id)initWithWorkflowData:(id)arg1 debugIdentifier:(id)arg2 environment:(long long)arg3 workflowReference:(id)arg4;
-- (void)reportFinishToDelegateWithError:(id)arg1 cancelled:(BOOL)arg2;
-- (void)restartTimeoutTimer;
-- (BOOL)runWithInput:(id)arg1 error:(out id *)arg2;
+- (id)initWithEnvironment:(long long)arg1 runningContext:(id)arg2 presentationMode:(long long)arg3;
+- (void)pauseWorkflowAndWriteStateToDisk;
+- (void)populateSleepWorkflowsFromWorkflowReferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)reportFinishToDelegateWithError:(id)arg1 cancelled:(BOOL)arg2 reference:(id)arg3 dialogAttribution:(id)arg4;
+- (void)reset;
+- (BOOL)resumeRunningWithError:(out id *)arg1;
+- (BOOL)runActionWithRunRequestData:(id)arg1 error:(out id *)arg2;
+- (BOOL)runWorkflowWithRequest:(id)arg1 error:(out id *)arg2;
 - (void)stop;
 - (void)stopExtension;
-- (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(BOOL)arg2;
-- (void)workflowDidStart;
+- (void)timerDidFire:(id)arg1;
+- (BOOL)timerShouldStart:(id)arg1;
+- (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(BOOL)arg2 reference:(id)arg3;
+- (void)workflowDidStartFromWorkflowReference:(id)arg1 attribution:(id)arg2;
 
 @end
 

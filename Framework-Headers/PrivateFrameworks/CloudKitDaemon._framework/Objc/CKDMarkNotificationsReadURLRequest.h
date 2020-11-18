@@ -22,8 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)generateRequestOperations;
-- (id)initWithNotificationIDsToMarkRead:(id)arg1;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 notificationIDsToMarkRead:(id)arg2;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;

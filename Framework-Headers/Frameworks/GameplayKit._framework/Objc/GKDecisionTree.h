@@ -35,6 +35,7 @@
 - (id)initWithAttribute:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExamples:(id)arg1 actions:(id)arg2 attributes:(id)arg3;
+- (id)initWithExamples:(id)arg1 actions:(id)arg2 attributes:(id)arg3 maxDepth:(unsigned long long)arg4 minSamplesSplit:(unsigned long long)arg5;
 - (id)initWithURL:(id)arg1 error:(id)arg2;
 
 @end

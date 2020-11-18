@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (void)setWindowOpacity:(double)arg1;
 
 @end
 

@@ -17,6 +17,7 @@
     struct __C3DScene *_scene;
     BOOL _customAudioNode;
     BOOL _completed;
+    BOOL _shouldRecycle;
     CDUnknownBlockType willStartPlayback;
     CDUnknownBlockType didFinishPlayback;
 }

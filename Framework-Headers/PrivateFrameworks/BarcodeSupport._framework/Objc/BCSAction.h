@@ -8,7 +8,7 @@
 
 #import <BarcodeSupport/BCSActionPrivate-Protocol.h>
 
-@class BCSActionPickerViewAssistant, NSArray, NSDictionary, NSString, NSURL;
+@class BCSActionPickerViewAssistant, CPSClipMetadataRequest, NSArray, NSDictionary, NSString, NSURL;
 @protocol BCSActionDelegate, BCSCodePayload, BCSParsedDataPrivate;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     id<BCSActionDelegate> delegate;
     NSURL *urlThatCanBeOpened;
     NSArray *appLinks;
+    CPSClipMetadataRequest *clipMetadataRequest;
     id<BCSParsedDataPrivate> _data;
     NSURL *_url;
     id<BCSCodePayload> _codePayload;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy, nonatomic) NSArray *actionPickerItems;
 @property (readonly, copy, nonatomic) NSArray *appLinks; // @synthesize appLinks;
+@property (strong, nonatomic) CPSClipMetadataRequest *clipMetadataRequest; // @synthesize clipMetadataRequest;
 @property (readonly, nonatomic) id<BCSCodePayload> codePayload; // @synthesize codePayload=_codePayload;
 @property (readonly, nonatomic) long long codeType;
 @property (readonly, nonatomic) id<BCSParsedDataPrivate> data; // @synthesize data=_data;

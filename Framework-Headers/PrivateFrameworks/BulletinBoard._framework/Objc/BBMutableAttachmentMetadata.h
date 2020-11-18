@@ -6,15 +6,19 @@
 
 #import <BulletinBoard/BBAttachmentMetadata.h>
 
-@class NSURL, NSUUID;
+@class NSDictionary, NSString, NSURL;
 
 @interface BBMutableAttachmentMetadata : BBAttachmentMetadata
 {
 }
 
 @property (copy, nonatomic) NSURL *URL; // @dynamic URL;
-@property (copy, nonatomic) NSUUID *UUID; // @dynamic UUID;
+@property (nonatomic) BOOL hiddenFromDefaultExpandedView; // @dynamic hiddenFromDefaultExpandedView;
+@property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (copy, nonatomic) NSDictionary *thumbnailGeneratorUserInfo; // @dynamic thumbnailGeneratorUserInfo;
+@property (nonatomic) BOOL thumbnailHidden; // @dynamic thumbnailHidden;
 @property (nonatomic) long long type; // @dynamic type;
+@property (copy, nonatomic) NSString *uniformType; // @dynamic uniformType;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

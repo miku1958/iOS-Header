@@ -19,11 +19,14 @@
     } _has;
     BOOL _threeDTouchEnabled;
     NSArray *_contactIdentifiers;
+    NSString *_appIconBadgeBundleIdentifier;
 }
 
+@property (copy, nonatomic) NSString *appIconBadgeBundleIdentifier; // @synthesize appIconBadgeBundleIdentifier=_appIconBadgeBundleIdentifier;
 @property (copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (copy, nonatomic) NSString *contentType;
 @property (nonatomic) double cornerRadius;
+@property (nonatomic) int cornerRoundingStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;

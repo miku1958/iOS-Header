@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class CAContext, CALayer, NSHashTable, NSString;
-@protocol OS_dispatch_queue;
+@class CARenderer, NSHashTable;
+@protocol MTLCommandQueue, MTLDevice, OS_dispatch_queue;
 
 @interface BCULayerRenderer : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_renderQueue;
     NSObject<OS_dispatch_queue> *_completionQueue;
-    CALayer *_containerLayer;
-    NSString *_name;
     NSHashTable *_operations;
-    CAContext *_context;
+    CARenderer *_renderer;
+    id<MTLDevice> _device;
+    id<MTLCommandQueue> _queue;
     BOOL _suspended;
 }
 
 - (void).cxx_destruct;
 - (void)_disconnectLayer:(id)arg1;
-- (id)_prepareDrawingContext;
 - (void)_processOperations;
 - (void)_startOperation:(id)arg1;
 - (id)init;

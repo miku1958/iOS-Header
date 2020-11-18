@@ -4,19 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphOptimizedEdge.h>
 
-@interface PGGraphSceneEdge : PGGraphEdge
+@interface PGGraphSceneEdge : PGGraphOptimizedEdge
 {
+    unsigned int _numberOfAssets:32;
+    unsigned int _numberOfHighConfidenceAssets:32;
+    unsigned int _numberOfSearchConfidenceAssets:32;
+    unsigned int _isReliable:1;
+    float _weight;
 }
 
-@property (readonly, nonatomic) BOOL isReliable;
+@property (readonly, nonatomic) BOOL isReliable; // @synthesize isReliable=_isReliable;
 @property (readonly, nonatomic) BOOL isSearchableForEvent;
-@property (readonly, nonatomic) unsigned long long numberOfAssets;
-@property (readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets;
-@property (readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets;
+@property (readonly, nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
+@property (readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets; // @synthesize numberOfHighConfidenceAssets=_numberOfHighConfidenceAssets;
+@property (readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets; // @synthesize numberOfSearchConfidenceAssets=_numberOfSearchConfidenceAssets;
+@property (nonatomic) float weight; // @synthesize weight=_weight;
 
++ (id)filter;
 - (id)debugDescription;
+- (unsigned short)domain;
+- (id)edgeDescription;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initFromMomentNode:(id)arg1 toSceneNode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

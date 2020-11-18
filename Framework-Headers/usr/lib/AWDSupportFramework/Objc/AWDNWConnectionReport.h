@@ -50,17 +50,22 @@
     NSMutableArray *_activities;
     int _appleApp;
     int _appleHost;
+    NSString *_bundleID;
     int _connectedAddressFamily;
     int _connectedInterfaceType;
     int _connectionMode;
     NSString *_connectionUUID;
     AWDNWDeviceReport *_deviceReport;
+    int _dnsProtocol;
+    int _dnsProvider;
+    NSString *_effectiveBundleID;
     int _failureReason;
     int _firstAddressFamily;
     AWDNWL2Report *_l2Report;
     NSString *_processName;
     int _stackLevel;
     int _tlsVersion;
+    int _transportProtocol;
     int _usedProxyType;
     BOOL _customProxyConfigured;
     BOOL _fallbackEligible;
@@ -126,10 +131,13 @@
         unsigned int connectedAddressFamily:1;
         unsigned int connectedInterfaceType:1;
         unsigned int connectionMode:1;
+        unsigned int dnsProtocol:1;
+        unsigned int dnsProvider:1;
         unsigned int failureReason:1;
         unsigned int firstAddressFamily:1;
         unsigned int stackLevel:1;
         unsigned int tlsVersion:1;
+        unsigned int transportProtocol:1;
         unsigned int usedProxyType:1;
         unsigned int customProxyConfigured:1;
         unsigned int fallbackEligible:1;
@@ -161,6 +169,7 @@
 @property (nonatomic) int appleApp; // @synthesize appleApp=_appleApp;
 @property (nonatomic) int appleHost; // @synthesize appleHost=_appleHost;
 @property (nonatomic) unsigned long long bestRTT; // @synthesize bestRTT=_bestRTT;
+@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (nonatomic) unsigned long long bytesDuplicate; // @synthesize bytesDuplicate=_bytesDuplicate;
 @property (nonatomic) unsigned long long bytesIn; // @synthesize bytesIn=_bytesIn;
 @property (nonatomic) unsigned long long bytesOut; // @synthesize bytesOut=_bytesOut;
@@ -176,6 +185,9 @@
 @property (nonatomic) BOOL customProxyConfigured; // @synthesize customProxyConfigured=_customProxyConfigured;
 @property (nonatomic) unsigned long long dataStallCount; // @synthesize dataStallCount=_dataStallCount;
 @property (strong, nonatomic) AWDNWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
+@property (nonatomic) int dnsProtocol; // @synthesize dnsProtocol=_dnsProtocol;
+@property (nonatomic) int dnsProvider; // @synthesize dnsProvider=_dnsProvider;
+@property (strong, nonatomic) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_effectiveBundleID;
 @property (nonatomic) int failureReason; // @synthesize failureReason=_failureReason;
 @property (nonatomic) BOOL fallbackEligible; // @synthesize fallbackEligible=_fallbackEligible;
 @property (nonatomic) int firstAddressFamily; // @synthesize firstAddressFamily=_firstAddressFamily;
@@ -185,6 +197,7 @@
 @property (nonatomic) BOOL hasAppleApp;
 @property (nonatomic) BOOL hasAppleHost;
 @property (nonatomic) BOOL hasBestRTT;
+@property (readonly, nonatomic) BOOL hasBundleID;
 @property (nonatomic) BOOL hasBytesDuplicate;
 @property (nonatomic) BOOL hasBytesIn;
 @property (nonatomic) BOOL hasBytesOut;
@@ -200,6 +213,9 @@
 @property (nonatomic) BOOL hasCustomProxyConfigured;
 @property (nonatomic) BOOL hasDataStallCount;
 @property (readonly, nonatomic) BOOL hasDeviceReport;
+@property (nonatomic) BOOL hasDnsProtocol;
+@property (nonatomic) BOOL hasDnsProvider;
+@property (readonly, nonatomic) BOOL hasEffectiveBundleID;
 @property (nonatomic) BOOL hasFailureReason;
 @property (nonatomic) BOOL hasFallbackEligible;
 @property (nonatomic) BOOL hasFirstAddressFamily;
@@ -250,6 +266,7 @@
 @property (nonatomic) BOOL hasTlsVersion;
 @property (nonatomic) BOOL hasTlsVersionTimeout;
 @property (nonatomic) BOOL hasTrafficClass;
+@property (nonatomic) BOOL hasTransportProtocol;
 @property (nonatomic) BOOL hasTriggeredPath;
 @property (nonatomic) BOOL hasUsedFallback;
 @property (nonatomic) BOOL hasUsedProxyType;
@@ -298,6 +315,7 @@
 @property (nonatomic) int tlsVersion; // @synthesize tlsVersion=_tlsVersion;
 @property (nonatomic) BOOL tlsVersionTimeout; // @synthesize tlsVersionTimeout=_tlsVersionTimeout;
 @property (nonatomic) unsigned long long trafficClass; // @synthesize trafficClass=_trafficClass;
+@property (nonatomic) int transportProtocol; // @synthesize transportProtocol=_transportProtocol;
 @property (nonatomic) BOOL triggeredPath; // @synthesize triggeredPath=_triggeredPath;
 @property (nonatomic) BOOL usedFallback; // @synthesize usedFallback=_usedFallback;
 @property (nonatomic) int usedProxyType; // @synthesize usedProxyType=_usedProxyType;
@@ -309,10 +327,13 @@
 - (int)StringAsConnectedAddressFamily:(id)arg1;
 - (int)StringAsConnectedInterfaceType:(id)arg1;
 - (int)StringAsConnectionMode:(id)arg1;
+- (int)StringAsDnsProtocol:(id)arg1;
+- (int)StringAsDnsProvider:(id)arg1;
 - (int)StringAsFailureReason:(id)arg1;
 - (int)StringAsFirstAddressFamily:(id)arg1;
 - (int)StringAsStackLevel:(id)arg1;
 - (int)StringAsTlsVersion:(id)arg1;
+- (int)StringAsTransportProtocol:(id)arg1;
 - (int)StringAsUsedProxyType:(id)arg1;
 - (id)activitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)activitiesCount;
@@ -328,6 +349,8 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)dnsProtocolAsString:(int)arg1;
+- (id)dnsProviderAsString:(int)arg1;
 - (id)failureReasonAsString:(int)arg1;
 - (id)firstAddressFamilyAsString:(int)arg1;
 - (unsigned long long)hash;
@@ -336,6 +359,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)stackLevelAsString:(int)arg1;
 - (id)tlsVersionAsString:(int)arg1;
+- (id)transportProtocolAsString:(int)arg1;
 - (id)usedProxyTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

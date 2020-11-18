@@ -62,6 +62,7 @@
 - (id)descriptionWithLevel:(int)arg1;
 - (id)init;
 - (void)invalidate;
+- (void)reportIssue:(id)arg1;
 
 @end
 

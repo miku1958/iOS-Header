@@ -8,39 +8,39 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDAmenities : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    struct GEOPDAmenityValue *_amenitys;
-    unsigned long long _amenitysCount;
-    unsigned long long _amenitysSpace;
+    NSMutableArray *_amenitys;
 }
 
-@property (readonly, nonatomic) struct GEOPDAmenityValue *amenitys;
-@property (readonly, nonatomic) unsigned long long amenitysCount;
+@property (strong, nonatomic) NSMutableArray *amenitys;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)amenityType;
 + (id)amentiesForPlaceData:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)addAmenity:(struct GEOPDAmenityValue)arg1;
-- (struct GEOPDAmenityValue)amenityAtIndex:(unsigned long long)arg1;
+- (void)addAmenity:(id)arg1;
+- (id)amenityAtIndex:(unsigned long long)arg1;
+- (unsigned long long)amenitysCount;
 - (void)clearAmenitys;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (BOOL)hasAmenityType:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setAmenitys:(struct GEOPDAmenityValue *)arg1 count:(unsigned long long)arg2;
 - (BOOL)valueForAmenityType:(int)arg1;
 - (void)writeTo:(id)arg1;
 

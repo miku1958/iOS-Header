@@ -6,29 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class ARAnchor, NSUUID;
+@class ARAnchor;
 
 @interface ARRaycastResult : NSObject
 {
     long long _target;
     long long _targetAlignment;
     ARAnchor *_anchor;
-    NSUUID *_anchorIdentifier;
     CDStruct_14d5dc5e _worldTransform;
-    CDStruct_14d5dc5e _localTransform;
 }
 
-@property (strong, nonatomic) ARAnchor *anchor; // @synthesize anchor=_anchor;
-@property (strong, nonatomic) NSUUID *anchorIdentifier; // @synthesize anchorIdentifier=_anchorIdentifier;
-@property (nonatomic) CDStruct_14d5dc5e localTransform; // @synthesize localTransform=_localTransform;
-@property (nonatomic) long long target; // @synthesize target=_target;
+@property (readonly, nonatomic) ARAnchor *anchor; // @synthesize anchor=_anchor;
+@property (readonly, nonatomic) long long target; // @synthesize target=_target;
 @property (readonly, nonatomic) long long targetAlignment; // @synthesize targetAlignment=_targetAlignment;
 @property (readonly, nonatomic) CDStruct_14d5dc5e worldTransform; // @synthesize worldTransform=_worldTransform;
 
 - (void).cxx_destruct;
-- (id)_description:(BOOL)arg1;
-- (id)description;
-- (id)initWithWorldTransform:(CDStruct_14d5dc5e)arg1 target:(long long)arg2 targetAlignment:(long long)arg3;
 
 @end
 

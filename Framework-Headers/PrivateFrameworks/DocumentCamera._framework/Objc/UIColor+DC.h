@@ -8,10 +8,16 @@
 
 @interface UIColor (DC)
 + (id)DCExtractedDocumentViewControllerBackgroundColor;
++ (id)colorInBundleWithName:(id)arg1;
++ (id)dc_barColor;
 + (id)dc_darkerAccessibilityColorForColor:(id)arg1;
++ (id)dc_editBackgroundColor;
++ (id)dc_labelBackgroundColor;
 + (id)dc_lightPaperImage;
 + (id)dc_lightPaperTexture;
 + (id)dc_paperImage;
 + (id)dc_paperTexture;
+- (BOOL)dc_colorIsLight;
+- (id)dc_lighterColor;
 @end
 

@@ -22,8 +22,9 @@
 @property (nonatomic) double stoppedOffset; // @synthesize stoppedOffset=_stoppedOffset;
 
 + (id)defaultPreheatingStrategy;
++ (id)lowMemoryPreheatingStrategy;
 + (id)noPreheatingStrategy;
-- (struct CGRect)preheatingRectForLayout:(id)arg1 interactionState:(CDStruct_93894d6c)arg2;
+- (struct CGRect)preheatingRectForLayout:(id)arg1 interactionState:(CDStruct_a02a4563)arg2;
 
 @end
 

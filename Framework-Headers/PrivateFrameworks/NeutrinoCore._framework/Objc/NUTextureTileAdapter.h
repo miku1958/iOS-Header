@@ -26,8 +26,13 @@
 @property (readonly, nonatomic) NUGLTexture *texture; // @synthesize texture=_texture;
 
 - (void).cxx_destruct;
+- (BOOL)decrementUseCount;
+- (void)incrementUseCount;
 - (id)init;
 - (id)initWithFrameRect:(CDStruct_996ac03c)arg1 contentRect:(CDStruct_996ac03c)arg2 texture:(id)arg3;
+- (BOOL)isInUse;
+- (BOOL)isShared;
+- (int)useCount;
 
 @end
 

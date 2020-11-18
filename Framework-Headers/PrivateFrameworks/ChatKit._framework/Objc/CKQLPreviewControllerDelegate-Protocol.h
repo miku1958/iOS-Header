@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
+#import <ChatKit/QLPreviewControllerConformingDelegate-Protocol.h>
 
-@class CKInvisibleInkEffectController, CKQLPreviewController, NSArray, QLPreviewController;
+@class CKInvisibleInkEffectController, CKQLPreviewController, NSArray;
+@protocol QLPreviewControllerConforming;
 
-@protocol CKQLPreviewControllerDelegate <QLPreviewControllerDelegate>
+@protocol CKQLPreviewControllerDelegate <QLPreviewControllerConformingDelegate>
 - (CKInvisibleInkEffectController *)invisibleInkEffectControllerForPreviewController:(CKQLPreviewController *)arg1;
-- (void)previewControllerDidCancelDismiss:(QLPreviewController *)arg1;
+- (void)previewControllerDidCancelDismiss:(id<QLPreviewControllerConforming>)arg1;
 
 @optional
 - (NSArray *)previewActionsForPreviewController:(CKQLPreviewController *)arg1;

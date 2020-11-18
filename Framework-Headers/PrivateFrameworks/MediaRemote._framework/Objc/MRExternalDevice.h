@@ -6,33 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf, _MROriginProtobuf;
+@class MRDeviceInfo, MROrigin, MRSupportedProtocolMessages, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDevice : NSObject
 {
+    BOOL _wantsEndpointChangeNotifications;
     BOOL _valid;
     BOOL _usingSystemPairing;
     unsigned int _connectionState;
+    NSArray *_personalOutputDevices;
 }
 
 @property (readonly, nonatomic) unsigned int connectionState; // @synthesize connectionState=_connectionState;
-@property (readonly, nonatomic) _MROriginProtobuf *customOrigin;
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property (readonly, nonatomic) MROrigin *customOrigin;
+@property (readonly, nonatomic) MRDeviceInfo *deviceInfo;
 @property (readonly, nonatomic) NSString *hostName;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
+@property (readonly, nonatomic) NSArray *personalOutputDevices; // @synthesize personalOutputDevices=_personalOutputDevices;
 @property (readonly, nonatomic) long long port;
 @property (readonly, nonatomic) MRSupportedProtocolMessages *supportedMessages;
 @property (nonatomic, getter=isUsingSystemPairing) BOOL usingSystemPairing; // @synthesize usingSystemPairing=_usingSystemPairing;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
+@property (nonatomic) BOOL wantsEndpointChangeNotifications; // @synthesize wantsEndpointChangeNotifications=_wantsEndpointChangeNotifications;
 @property (nonatomic) BOOL wantsNowPlayingArtworkNotifications;
 @property (nonatomic) BOOL wantsNowPlayingNotifications;
 @property (nonatomic) BOOL wantsOutputDeviceNotifications;
+@property (nonatomic) BOOL wantsSystemEndpointNotifications;
 @property (nonatomic) BOOL wantsVolumeNotifications;
 
+- (void).cxx_destruct;
 - (id)_init;
 - (void)connectWithOptions:(unsigned int)arg1;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(id)arg2;
 - (id)currentClientUpdatesConfigMessage;
 - (void)disconnect:(id)arg1;
 - (id)errorForCurrentState;

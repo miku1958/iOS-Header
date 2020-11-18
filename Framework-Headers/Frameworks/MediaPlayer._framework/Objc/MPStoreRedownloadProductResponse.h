@@ -8,6 +8,7 @@
 
 @class MPStoreRedownloadProductItem, NSDictionary, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreRedownloadProductResponse : NSObject
 {
     NSDictionary *_responseDictionary;

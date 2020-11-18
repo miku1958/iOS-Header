@@ -25,10 +25,7 @@
         unsigned int has_poisShown:1;
         unsigned int read_lookAroundPipRecords:1;
         unsigned int read_lookAroundViewRecords:1;
-        unsigned int wrote_durationSec:1;
-        unsigned int wrote_lookAroundPipRecords:1;
-        unsigned int wrote_lookAroundViewRecords:1;
-        unsigned int wrote_poisShown:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,10 +40,6 @@
 + (Class)lookAroundPipRecordsType;
 + (Class)lookAroundViewRecordsType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsLookAroundPipRecords:(id)arg1;
-- (void)_addNoFlagsLookAroundViewRecords:(id)arg1;
-- (void)_readLookAroundPipRecords;
-- (void)_readLookAroundViewRecords;
 - (void)addLookAroundPipRecords:(id)arg1;
 - (void)addLookAroundViewRecords:(id)arg1;
 - (void)clearLookAroundPipRecords;
@@ -58,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)lookAroundPipRecordsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lookAroundPipRecordsCount;
 - (id)lookAroundViewRecordsAtIndex:(unsigned long long)arg1;

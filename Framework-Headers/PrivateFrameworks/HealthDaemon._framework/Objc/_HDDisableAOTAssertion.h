@@ -6,6 +6,7 @@
 
 #import <HealthDaemon/HDAssertion.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDDisableAOTAssertion : HDAssertion
 {
 }

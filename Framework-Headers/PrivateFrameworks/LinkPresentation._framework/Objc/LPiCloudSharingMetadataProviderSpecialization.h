@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (void)completeUsingApplication:(id)arg1 title:(id)arg2;
 - (void)completeWithShareMetadata:(id)arg1 bundleIDs:(id)arg2;
-- (id)entitlementForKey:(id)arg1;
 - (void)fail;
 - (id)iconFromShare:(id)arg1;
 - (id)initWithContext:(id)arg1 applicationFromURL:(id)arg2 titleFromURL:(id)arg3;

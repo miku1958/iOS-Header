@@ -10,7 +10,6 @@
 
 @class NSDate, NSDictionary, NSMutableDictionary, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface CKEventMetricInfo : NSObject <NSSecureCoding>
 {
     BOOL _isCKInternalMetric;
@@ -18,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsCellularAccess;
     BOOL _preferAnonymousRequests;
     NSUUID *_metricUUID;
+    NSString *_deviceIdentifier;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_eventName;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSMutableDictionary *associatedOperationGroups; // @synthesize associatedOperationGroups=_associatedOperationGroups;
 @property (readonly, nonatomic) NSMutableDictionary *associatedOperations; // @synthesize associatedOperations=_associatedOperations;
 @property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (readonly, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
 @property (readonly, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
 @property (readonly, nonatomic) BOOL isCKInternalMetric; // @synthesize isCKInternalMetric=_isCKInternalMetric;

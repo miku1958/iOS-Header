@@ -18,7 +18,6 @@
 - (BOOL)_axIsLocalWeatherAtFirstIndex;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
-- (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

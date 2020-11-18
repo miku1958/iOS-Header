@@ -36,7 +36,6 @@
 + (BOOL)canSetUserCloudSharedLiked:(BOOL)arg1 forAssets:(id)arg2 error:(id *)arg3;
 + (void)checkServerModelForAlbum:(id)arg1 photoLibrary:(id)arg2;
 + (void)clearCachedAccountState;
-+ (void)countOfAssetsInMstreamdSharingDownloadQueueWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (BOOL)debugAlwaysStreamSharedVideos;
 + (BOOL)debugAutoAcceptInvitation;
 + (BOOL)debugDownloadAllDerivatives;
@@ -67,7 +66,6 @@
 + (double)intervalBetweenPolls;
 + (BOOL)isBreadcrumbDebugEnabled;
 + (BOOL)isCellularConnection;
-+ (void)isMstreamdBusyPerformingSharingActivityWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)markAlbumGUIDAsViewed:(id)arg1 clearUnseenAssetsCount:(BOOL)arg2;
 + (void)markCommentsForAssetCollectionWithGUID:(id)arg1 asViewedWithLastViewedDate:(id)arg2;
 + (void)markPendingInvitationAsSpamForAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -84,6 +82,7 @@
 + (long long)maxVideoLengthForPublishing;
 + (void)photosPreferencesChanged;
 + (void)pollForAlbumListUpdates;
++ (void)pollForAlbumListUpdatesIfNecessary;
 + (id)prefixForBreadcrumbState:(int)arg1;
 + (void)prioritizeDownloadsForAlbumGUID:(id)arg1;
 + (void)pruneCloudSharingContentIfNecessaryInLibrary:(id)arg1;
@@ -103,6 +102,9 @@
 + (id)serverSideConfigurationDictionary;
 + (BOOL)sharedStreamsEnabledForPhotoLibraryURL:(id)arg1;
 + (BOOL)sharedStreamsExplictlyDisabledForPhotoLibraryURL:(id)arg1;
++ (id)sharingDisplayNameIncludingEmail:(BOOL)arg1 allowsEmail:(BOOL)arg2;
++ (id)sharingFirstName;
++ (id)sharingLastName;
 + (id)sharingPersonID;
 + (id)sharingUsername;
 + (id)streamdVideoCache;
@@ -112,7 +114,6 @@
 + (id)temporaryThumbnailPathForCollectionGUID:(id)arg1;
 + (id)temporaryVideoPathForCollectionGUID:(id)arg1;
 + (id)temporaryVideoPosterFramePathForCollectionGUID:(id)arg1;
-+ (void)trackUploadBatchSize:(unsigned long long)arg1;
 + (unsigned int)unregisterIdleStateChangeObserverWithToken:(int)arg1;
 + (void)unsubscribeFromAlbum:(id)arg1;
 + (void)updateCloudSharedAlbumMetadataOnServer:(id)arg1;

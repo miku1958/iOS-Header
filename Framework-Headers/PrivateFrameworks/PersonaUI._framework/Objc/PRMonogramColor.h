@@ -29,6 +29,7 @@
 @property (strong, nonatomic) UIColor *selectedActiveTextColor; // @synthesize selectedActiveTextColor=_selectedActiveTextColor;
 @property (strong, nonatomic) UIColor *selectedInactiveColor; // @synthesize selectedInactiveColor=_selectedInactiveColor;
 
++ (id)availableColorNames;
 + (id)availableColors;
 + (id)colorWithName:(id)arg1 inBundle:(id)arg2;
 + (id)defaultBundle;
@@ -46,6 +47,7 @@
 - (unsigned long long)hash;
 - (id)initWithColorName:(id)arg1;
 - (id)initWithColorName:(id)arg1 inBundle:(id)arg2;
+- (id)initWithRandomColor;
 - (BOOL)isEqual:(id)arg1;
 - (void)setColorName:(id)arg1;
 

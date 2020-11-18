@@ -6,21 +6,17 @@
 
 #import <UIKit/UITextSelectionRect.h>
 
-@class WebSelectionRect;
-
 __attribute__((visibility("hidden")))
 @interface WKTextSelectionRect : UITextSelectionRect
 {
-    WebSelectionRect *_webRect;
+    struct SelectionRect _selectionRect;
 }
 
-@property (strong, nonatomic) WebSelectionRect *webRect; // @synthesize webRect=_webRect;
-
-+ (id)textSelectionRectsWithWebRects:(id)arg1;
+- (id).cxx_construct;
 - (BOOL)containsEnd;
 - (BOOL)containsStart;
-- (void)dealloc;
-- (id)initWithWebRect:(id)arg1;
+- (id)initWithCGRect:(struct CGRect)arg1;
+- (id)initWithSelectionRect:(const struct SelectionRect *)arg1;
 - (BOOL)isVertical;
 - (id)range;
 - (struct CGRect)rect;

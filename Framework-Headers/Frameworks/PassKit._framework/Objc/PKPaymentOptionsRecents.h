@@ -29,6 +29,7 @@
 - (id)_contactFromRecent:(id)arg1 preference:(id)arg2;
 - (id)_contactsFromKeychainForPreference:(id)arg1;
 - (void)_coreRecentsContactsForPreference:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_correctCountryCodeIfNecessaryForPostalAddress:(id)arg1;
 - (id)_defaultCRSearchQuery;
 - (void)_deleteRecentContactFromKeychain:(id)arg1 forPreference:(id)arg2;
 - (void)_deleteRecentContactsFromKeychainForContactKey:(id)arg1;
@@ -38,6 +39,7 @@
 - (id)_labelsToPropertiesDictionaryForContact:(id)arg1;
 - (id)_postalAddressLabeledValueFromRecent:(id)arg1;
 - (void)_setKeychainData:(id)arg1 forKey:(id)arg2;
+- (void)_updateRecentsWithContactsFromContactInformation:(id)arg1 currentKeychainContacts:(id)arg2 forContactKey:(id)arg3;
 - (id)contactMetadataForContact:(id)arg1 preference:(id)arg2;
 - (void)dealloc;
 - (void)deleteAllRecentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -50,6 +52,7 @@
 - (id)recentsForPreference:(id)arg1;
 - (void)recentsForPreference:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)saveContactToCoreRecents:(id)arg1 preference:(id)arg2;
+- (void)updateRecentsAndKeychainWithContactInformation:(id)arg1;
 
 @end
 

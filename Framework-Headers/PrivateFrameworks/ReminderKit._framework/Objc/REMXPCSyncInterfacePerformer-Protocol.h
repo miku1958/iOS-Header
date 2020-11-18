@@ -11,7 +11,7 @@
 - (void)deleteApplicationDataFromCloudKitWithCompletion:(void (^)(NSError *))arg1;
 - (void)fetchServerRecordFor:(REMObjectID *)arg1 completion:(void (^)(CKRecord *, NSError *))arg2;
 - (void)fetchUserRecordWithCompletion:(void (^)(CKRecord *, NSError *))arg1;
-- (void)migrateICloudCalDavToCloudKitForAccountID:(REMObjectID *)arg1 disableCache:(BOOL)arg2 completion:(void (^)(REMMigrationResult *, NSError *))arg3;
+- (void)migrateICloudCalDavToCloudKitForAccountID:(REMObjectID *)arg1 disableCache:(BOOL)arg2 userInitiated:(BOOL)arg3 completion:(void (^)(REMMigrationResult *, NSError *))arg4;
 - (void)observeCloudKitNetworkActivityChanges;
 - (void)restartCloudKitSyncWithReason:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setMigrationStateToDidChooseToMigrate:(BOOL)arg1 didFinishMigration:(BOOL)arg2 completion:(void (^)(NSError *))arg3;

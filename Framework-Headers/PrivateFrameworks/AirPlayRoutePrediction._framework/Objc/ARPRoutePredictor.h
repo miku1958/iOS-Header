@@ -11,6 +11,7 @@
 
 @interface ARPRoutePredictor : NSObject
 {
+    BOOL _hasLoadedMicroLocation;
     int _token;
     NSSet *_knownOutputDeviceIDs;
     CDUnknownBlockType _longFormVideoFilter;
@@ -24,6 +25,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *file; // @synthesize file=_file;
+@property BOOL hasLoadedMicroLocation; // @synthesize hasLoadedMicroLocation=_hasLoadedMicroLocation;
 @property (readonly, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (strong) NSSet *knownOutputDeviceIDs; // @synthesize knownOutputDeviceIDs=_knownOutputDeviceIDs;
 @property (strong, nonatomic) _DKEvent *latestMicroLocationEvent; // @synthesize latestMicroLocationEvent=_latestMicroLocationEvent;

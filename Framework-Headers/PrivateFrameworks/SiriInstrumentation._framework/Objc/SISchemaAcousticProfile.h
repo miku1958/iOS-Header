@@ -10,10 +10,12 @@
 
 @interface SISchemaAcousticProfile : PBCodable
 {
+    BOOL _hasA;
     NSData *_a;
 }
 
 @property (copy, nonatomic) NSData *a; // @synthesize a=_a;
+@property (nonatomic) BOOL hasA; // @synthesize hasA=_hasA;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

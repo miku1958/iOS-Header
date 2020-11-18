@@ -18,17 +18,17 @@
 + (Class)frozenClass;
 + (BOOL)isWeakRelationship;
 + (id)knownRelationshipMultiValueKeys;
-- (unsigned int)_flags;
 - (BOOL)_hasNotificationsCollectionFlag;
-- (void)_setExternalID:(id)arg1;
-- (void)_setExternalIDTag:(id)arg1;
-- (void)_setFlags:(unsigned int)arg1;
 - (void)_setNotificationsCollectionFlag;
-- (void)_setSource:(id)arg1;
 - (void)addNotification:(id)arg1;
 - (BOOL)commit:(id *)arg1;
+- (unsigned int)flags;
 - (id)initWithOptions:(id)arg1;
 - (void)removeNotification:(id)arg1;
+- (void)setExternalID:(id)arg1;
+- (void)setExternalIDTag:(id)arg1;
+- (void)setFlags:(unsigned int)arg1;
+- (void)setSource:(id)arg1;
 - (BOOL)validate:(id *)arg1;
 
 @end

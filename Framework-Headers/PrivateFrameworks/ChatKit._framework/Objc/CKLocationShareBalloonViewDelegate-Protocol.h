@@ -6,10 +6,11 @@
 
 #import <ChatKit/CKBalloonViewDelegate-Protocol.h>
 
-@class CKLocationShareBalloonView;
+@class CKLocationShareBalloonView, UIMenu;
 
 @protocol CKLocationShareBalloonViewDelegate <CKBalloonViewDelegate>
 - (void)locationShareBalloonViewIgnoreButtonTapped:(CKLocationShareBalloonView *)arg1;
 - (void)locationShareBalloonViewShareButtonTapped:(CKLocationShareBalloonView *)arg1;
+- (UIMenu *)sharingMenu;
 @end
 

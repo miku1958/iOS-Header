@@ -29,6 +29,7 @@
 @property (strong, nonatomic) UINavigationController *onboardingNavigationController; // @synthesize onboardingNavigationController=_onboardingNavigationController;
 @property (readonly) Class superclass;
 
++ (BOOL)shouldUseOldVersioningFormat;
 - (void).cxx_destruct;
 - (void)didSelectReenableFeatureForProductName:(id)arg1;
 - (void)heartRhythmAvailabilityDidUpdate;

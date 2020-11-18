@@ -22,7 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets hitTestEdgeInsets; // @synthesize hitTestEdgeInsets=_hitTestEdgeInsets;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double strength; // @dynamic strength;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *tintImage; // @synthesize tintImage=_tintImage;

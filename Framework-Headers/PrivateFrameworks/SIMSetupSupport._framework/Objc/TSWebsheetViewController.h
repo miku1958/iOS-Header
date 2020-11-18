@@ -13,7 +13,7 @@
 #import <SIMSetupSupport/WKUIDelegate-Protocol.h>
 #import <SIMSetupSupport/_WKInputDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIBarButtonItem, UIView, WKProcessPool, WKWebView, _SFFormAutoFillController;
+@class NSString, NSURLRequest, UIBarButtonItem, UIView, WKProcessPool, WKWebView, _SFFormAutoFillController;
 @protocol TSEntitlementJSHandlerDelegate, TSSIMSetupFlowDelegate;
 
 @interface TSWebsheetViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate, _WKInputDelegate, TSSetupFlowItem>
@@ -22,12 +22,13 @@
     WKWebView *_webView;
     UIView *_contentView;
     UIBarButtonItem *_cancelButton;
-    UIActivityIndicatorView *_headerActivityIndicator;
-    BOOL _headerActivityIndicatorVisible;
     NSString *_currentTitle;
+    NSURLRequest *_request;
     BOOL _didFinishDocumentLoad;
     BOOL _didFirstLayout;
+    BOOL _didLoadLoadingView;
     _SFFormAutoFillController *_autoFillController;
+    BOOL _isRemotePlan;
     BOOL _loadFailure;
     id<TSSIMSetupFlowDelegate> _delegate;
     id<TSEntitlementJSHandlerDelegate> _callbackDelegate;
@@ -61,9 +62,10 @@
 - (BOOL)formAutoFillControllerCanPrefillForm:(id)arg1;
 - (BOOL)formAutoFillControllerShouldDisableAutoFill:(id)arg1;
 - (id)formAutoFillControllerURLForFormAutoFill:(id)arg1;
-- (id)init;
+- (id)initForRemotePlan:(BOOL)arg1;
 - (void)loadRequest:(id)arg1;
 - (void)loadView;
+- (void)sendRequest:(id)arg1;
 - (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;

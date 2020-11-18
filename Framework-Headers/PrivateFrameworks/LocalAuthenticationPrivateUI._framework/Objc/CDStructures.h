@@ -27,11 +27,6 @@ struct CGSize {
     double height;
 };
 
-struct UIOffset {
-    double horizontal;
-    double vertical;
-};
-
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
 };

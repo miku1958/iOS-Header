@@ -12,11 +12,13 @@
 {
     unsigned long long _cutoffTime;
     unsigned long long _headlinesPerFeedFetchCount;
+    unsigned long long _minimumUpdateInterval;
     unsigned long long _subscriptionsFetchCount;
     int _fetchingBin;
     struct {
         unsigned int cutoffTime:1;
         unsigned int headlinesPerFeedFetchCount:1;
+        unsigned int minimumUpdateInterval:1;
         unsigned int subscriptionsFetchCount:1;
         unsigned int fetchingBin:1;
     } _has;
@@ -27,8 +29,10 @@
 @property (nonatomic) BOOL hasCutoffTime;
 @property (nonatomic) BOOL hasFetchingBin;
 @property (nonatomic) BOOL hasHeadlinesPerFeedFetchCount;
+@property (nonatomic) BOOL hasMinimumUpdateInterval;
 @property (nonatomic) BOOL hasSubscriptionsFetchCount;
 @property (nonatomic) unsigned long long headlinesPerFeedFetchCount; // @synthesize headlinesPerFeedFetchCount=_headlinesPerFeedFetchCount;
+@property (nonatomic) unsigned long long minimumUpdateInterval; // @synthesize minimumUpdateInterval=_minimumUpdateInterval;
 @property (nonatomic) unsigned long long subscriptionsFetchCount; // @synthesize subscriptionsFetchCount=_subscriptionsFetchCount;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

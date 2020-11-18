@@ -14,5 +14,6 @@
 - (id)_cn_map:(CDUnknownBlockType)arg1;
 - (id)_cn_mapKeys:(CDUnknownBlockType)arg1;
 - (id)_cn_mapValues:(CDUnknownBlockType)arg1;
+- (id)_cn_objectForKey:(id)arg1 ofClass:(Class)arg2;
 @end
 

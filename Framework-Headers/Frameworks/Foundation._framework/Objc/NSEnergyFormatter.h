@@ -6,17 +6,24 @@
 
 #import <Foundation/NSFormatter.h>
 
-@class NSNumberFormatter;
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
 
-@interface NSEnergyFormatter : NSFormatter
+@class NSNumberFormatter, NSString;
+
+@interface NSEnergyFormatter : NSFormatter <NSObservable, NSObserver>
 {
     void *_formatter;
     BOOL _isForFoodEnergyUse;
     void *_reserved[2];
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isForFoodEnergyUse) BOOL forFoodEnergyUse; // @synthesize forFoodEnergyUse=_isForFoodEnergyUse;
+@property (readonly) unsigned long long hash;
 @property (copy) NSNumberFormatter *numberFormatter;
+@property (readonly) Class superclass;
 @property long long unitStyle;
 
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
@@ -26,6 +33,7 @@
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)receiveObservedValue:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromJoules:(double)arg1;
 - (id)stringFromValue:(double)arg1 unit:(long long)arg2;

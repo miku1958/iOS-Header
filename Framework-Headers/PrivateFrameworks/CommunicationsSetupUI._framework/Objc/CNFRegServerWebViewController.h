@@ -11,6 +11,7 @@
 
 @class CNFRegController, CNFRegLoadingView, NSMutableArray, NSString, NSTimer, RUILoader, UIWebView;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegServerWebViewController : UIViewController <UIWebViewDelegate, RUIObjectModelDelegate>
 {
     CNFRegController *_regController;

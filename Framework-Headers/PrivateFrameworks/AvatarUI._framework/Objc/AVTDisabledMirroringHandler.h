@@ -16,10 +16,10 @@
 
 @property (weak, nonatomic) id<AVTCoreDataCloudKitMirroringHandlerDelegate> delegate;
 
-- (void)exportChangesWithManagedObjectContext:(id)arg1 workQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)importChangesWithManagedObjectContext:(id)arg1 workQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)exportChangesWithManagedObjectContext:(id)arg1 discretionary:(BOOL)arg2 workQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)importChangesWithManagedObjectContext:(id)arg1 discretionary:(BOOL)arg2 workQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)resetZoneWithManagedObjectContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)scheduleExportChangesWithManagedObjectContext:(id)arg1 workQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)scheduleExportChangesWithManagedObjectContext:(id)arg1 discretionary:(BOOL)arg2 workQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)scheduleImportChangesWithManagedObjectContext:(id)arg1 workQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startObservingResetSyncWithNotificationCenter:(id)arg1;
 

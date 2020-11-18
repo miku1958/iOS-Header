@@ -14,5 +14,6 @@
 - (id)hk_attributedStringPrefixedWithImage:(id)arg1 spacing:(double)arg2 attributes:(id)arg3;
 - (double)hk_boundingHeightWithWidth:(double)arg1 font:(id)arg2;
 - (double)hk_boundingWidthWithHeight:(double)arg1 font:(id)arg2;
+- (void)hk_drawInRect:(struct CGRect)arg1 withAttributes:(id)arg2 outlineWidth:(double)arg3 outlineColor:(id)arg4 context:(struct CGContext *)arg5;
 @end
 

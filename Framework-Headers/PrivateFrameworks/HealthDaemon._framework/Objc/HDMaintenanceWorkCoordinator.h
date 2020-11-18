@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly) BOOL suspended;
+@property BOOL suspended;
 
 - (void).cxx_destruct;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;

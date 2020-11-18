@@ -22,11 +22,13 @@
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 + (id)catalogWithContentsOfURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2;
++ (id)catalogWithContentsOfURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2 directoryCoordinator:(id)arg3;
 + (id)catalogWithLocalCatalog:(id)arg1 ubiquitousCatalog:(id)arg2;
-+ (id)cloudStoreCatalogRecordTypeRecordNamePrefix;
++ (id)recordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allGroupIDs;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
@@ -37,6 +39,7 @@
 - (BOOL)isEquivalentToCatalog:(id)arg1;
 - (BOOL)isNewerThanCatalog:(id)arg1;
 - (unsigned long long)itemType;
+- (id)primaryIdentifier;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 - (void)shuffle:(int)arg1;
 - (void)writeToURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2 atomically:(BOOL)arg3;

@@ -27,11 +27,7 @@
         unsigned int read_correctedValue:1;
         unsigned int read_fieldName:1;
         unsigned int read_originalValue:1;
-        unsigned int wrote_correctedValue:1;
-        unsigned int wrote_fieldName:1;
-        unsigned int wrote_originalValue:1;
-        unsigned int wrote_field:1;
-        unsigned int wrote_isMarkedIncorrect:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,9 +45,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsField:(id)arg1;
-- (void)_readCorrectedValue;
-- (void)_readFieldName;
-- (void)_readOriginalValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -60,7 +53,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

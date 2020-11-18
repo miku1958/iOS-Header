@@ -21,6 +21,7 @@
     BOOL _executablePathNeedsCorrection;
     unsigned long long _executableLoadAddress;
     int _cpuType;
+    unsigned int _platform;
     BOOL _is64Bit;
     struct timeval _proc_starttime;
     unsigned long long _physicalFootprint;

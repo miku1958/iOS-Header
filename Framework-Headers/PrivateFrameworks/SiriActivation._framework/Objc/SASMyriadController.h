@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <SiriActivation/AFMyriadDelegate-Protocol.h>
 #import <SiriActivation/SASLockStateMonitorDelegate-Protocol.h>
 
-@class CMMotionActivityManager, FBSDisplayLayoutMonitor, NSString, SASLockStateMonitor;
-@protocol OS_dispatch_semaphore;
+@class AFMyriadCoordinator, CMMotionActivityManager, FBSDisplayLayoutMonitor, NSString, SASLockStateMonitor;
+@protocol OS_dispatch_semaphore, SASMyriadControllerDelegate;
 
-@interface SASMyriadController : NSObject <SASLockStateMonitorDelegate>
+@interface SASMyriadController : NSObject <SASLockStateMonitorDelegate, AFMyriadDelegate>
 {
     NSObject<OS_dispatch_semaphore> *_myriadFinishedSemaphore;
+    AFMyriadCoordinator *_myriadCoordinator;
     CMMotionActivityManager *_activityManager;
     BOOL _isLifted;
     double _liftEndTime;
@@ -21,6 +23,9 @@
     SASLockStateMonitor *_lockStateMonitor;
     FBSDisplayLayoutMonitor *_displayMonitor;
     double _raiseToWakeTime;
+    CDUnknownBlockType _shouldContinueBlock;
+    CDUnknownBlockType _shoudAbortAnotherDeviceBetterBlock;
+    id<SASMyriadControllerDelegate> _delegate;
     BOOL _canceledByMyriad;
 }
 
@@ -30,15 +35,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)currentController;
 - (void).cxx_destruct;
 - (void)_handleCMMotionActivity:(id)arg1;
-- (id)_init;
 - (void)_updateRaiseToWakeTimeForTransition:(id)arg1;
 - (void)activateForInTaskRequest:(BOOL)arg1 isVisible:(BOOL)arg2;
 - (BOOL)activateForRequest:(id)arg1 visible:(BOOL)arg2;
 - (void)dealloc;
 - (void)didChangeLockState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
+- (id)initWithDelegate:(id)arg1;
+- (void)shouldAbortAnotherDeviceBetter:(id)arg1;
+- (void)shouldContinue:(id)arg1;
 
 @end
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldShowConfirmDeletionAlert;
     NSObject<STRootViewModelCoordinator> *_coordinator;
+    PSSpecifier *_informativeTextGroupSpecifier;
     NSArray *_allowanceSpecifiers;
     PSSpecifier *_enableAllAllowancesSpecifier;
     NSDictionary *_allowanceSpecifiersByBundleIdentifier;
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong) PSSpecifier *enableAllAllowancesSpecifier; // @synthesize enableAllAllowancesSpecifier=_enableAllAllowancesSpecifier;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL shouldShowCompatibilityAlert;
+@property (strong) PSSpecifier *informativeTextGroupSpecifier; // @synthesize informativeTextGroupSpecifier=_informativeTextGroupSpecifier;
 @property BOOL shouldShowConfirmDeletionAlert; // @synthesize shouldShowConfirmDeletionAlert=_shouldShowConfirmDeletionAlert;
 @property (readonly) Class superclass;
 
@@ -36,7 +37,11 @@ __attribute__((visibility("hidden")))
 - (void)_adjustCellHeightForAllowanceSpecifier:(id)arg1;
 - (id)_allAllowancesEnabled:(id)arg1;
 - (void)_allowancesDidChange;
+- (void)_devicesDidChange:(id)arg1 coordinator:(id)arg2;
 - (void)_didFetchAppInfo:(id)arg1;
+- (void)_hasWatchOSDevicesDidChange:(BOOL)arg1 coordinator:(id)arg2;
+- (id)_informativeTextWithDevices:(id)arg1 hasWatchOSDevices:(BOOL)arg2;
+- (void)_reloadInformativeTextGroupSpecifierIfNeeded:(id)arg1;
 - (void)_setAllAllowancesEnabled:(id)arg1 specifier:(id)arg2;
 - (void)_showAllowanceDetailController:(id)arg1;
 - (void)_showConfirmDeletionView:(id)arg1;

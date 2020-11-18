@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <AVConference/VCObject.h>
 
 #import <AVConference/GKNATObserverDelegate-Protocol.h>
 #import <AVConference/VCAudioIODelegate-Protocol.h>
@@ -14,11 +14,12 @@
 #import <AVConference/VCCallSessionDelegate-Protocol.h>
 #import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
+#import <AVConference/VCVideoSink-Protocol.h>
 
-@class GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
+@class GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
 @protocol OS_dispatch_queue, VideoConferenceChannelQualityDelegate, VideoConferenceDelegate, VideoConferenceSpeakingDelegate;
 
-@interface VideoConference : NSObject <VCCallSessionDelegate, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOSource, VCAudioIOSink, VCAudioIODelegate, VCAudioPowerLevelMonitorDelegate, VCMomentTransportDelegate>
+@interface VideoConference : VCObject <VCCallSessionDelegate, VCVideoSink, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOSource, VCAudioIOSink, VCAudioIODelegate, VCAudioPowerLevelMonitorDelegate, VCMomentTransportDelegate>
 {
     int _clientPid;
     id delegate;
@@ -112,13 +113,16 @@
 @property float conferenceVolume;
 @property (copy, nonatomic) NSString *currentFocus; // @synthesize currentFocus;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) NSObject<VideoConferenceDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property BOOL disableVAD; // @synthesize disableVAD;
 @property int downstreamBandwidth; // @synthesize downstreamBandwidth;
 @property (getter=isSpeakerPhoneEnabled) BOOL enableSpeakerPhone;
 @property BOOL hasMic;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
 @property (nonatomic, getter=isInputFrequencyMeteringEnabled) BOOL inputFrequencyMeteringEnabled;
@@ -144,11 +148,13 @@
 @property BOOL shouldTimeoutPackets; // @synthesize shouldTimeoutPackets;
 @property NSObject<VideoConferenceSpeakingDelegate> *speakingDelegate; // @synthesize speakingDelegate;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property unsigned int talkingPeersLimit; // @synthesize talkingPeersLimit;
 @property (nonatomic) unsigned int transportType; // @synthesize transportType=_transportType;
 @property int upstreamBandwidth; // @synthesize upstreamBandwidth;
 @property (nonatomic) BOOL useCompressedConnectionData; // @synthesize useCompressedConnectionData;
 @property (nonatomic) BOOL useViceroyBlobFormat; // @synthesize useViceroyBlobFormat;
+@property (readonly, nonatomic) VCMoments *vcMoments; // @synthesize vcMoments=_vcMoments;
 
 - (void)NATTypeDictionaryUpdated:(id)arg1;
 - (struct AudioStreamBasicDescription)audioIOFormat;
@@ -158,6 +164,7 @@
 - (unsigned int)calculateTalkingMaskAtTimeStamp:(unsigned int)arg1;
 - (unsigned int)callIDForOpenSessionWithParticipantID:(id)arg1;
 - (id)callMetadataForCallID:(unsigned int)arg1;
+- (void)cameraAvailabilityDidChange:(BOOL)arg1;
 - (BOOL)canProcessAudio;
 - (void)cancelCallID:(unsigned int)arg1;
 - (void)cancelCallID:(unsigned int)arg1 error:(id)arg2;
@@ -208,7 +215,7 @@
 - (double)networkQualityForCallID:(unsigned int)arg1;
 - (id)newSessionWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (void)notifyDelegateOfLocalVariablesChange;
-- (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (BOOL)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
 - (id)openSessionForParticipant:(id)arg1;
 - (double)packetLossRateForCallID:(unsigned int)arg1;
 - (unsigned char)powerFloatToInt:(float)arg1;

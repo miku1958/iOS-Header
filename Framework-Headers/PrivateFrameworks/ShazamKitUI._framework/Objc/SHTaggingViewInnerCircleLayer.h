@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CALayer *circleContainerLayer; // @synthesize circleContainerLayer=_circleContainerLayer;
 
 - (void).cxx_destruct;
-- (id)circlePathForRect:(struct CGRect)arg1;
+- (struct CGPath *)circlePathForRect:(struct CGRect)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)layoutSublayers;

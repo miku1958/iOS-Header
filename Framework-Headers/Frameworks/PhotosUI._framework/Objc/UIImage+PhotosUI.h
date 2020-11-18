@@ -8,6 +8,8 @@
 
 @interface UIImage (PhotosUI)
 + (id)pu_PhotosUIImageNamed:(id)arg1;
++ (id)pu_centeredImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize)arg3;
++ (id)pu_imageFromView:(id)arg1 isOpaque:(BOOL)arg2;
 + (id)pu_imageWithIconImage:(id)arg1 iconImageColor:(id)arg2 text:(id)arg3 font:(id)arg4 textColor:(id)arg5 fillColor:(id)arg6 strokeColor:(id)arg7 cornerRadius:(double)arg8;
 + (id)pu_imageWithIconImage:(id)arg1 iconImageColor:(id)arg2 text:(id)arg3 font:(id)arg4 textColor:(id)arg5 fillColor:(id)arg6 strokeColor:(id)arg7 cornerRadius:(double)arg8 inset:(struct CGPoint)arg9;
 + (id)pu_imageWithText:(id)arg1 font:(id)arg2 textColor:(id)arg3 fillColor:(id)arg4 strokeColor:(id)arg5 cornerRadius:(double)arg6;

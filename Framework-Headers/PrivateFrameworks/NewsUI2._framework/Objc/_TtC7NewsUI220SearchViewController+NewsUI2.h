@@ -6,9 +6,26 @@
 
 #import <NewsUI2/_TtC7NewsUI220SearchViewController.h>
 
-@interface _TtC7NewsUI220SearchViewController (NewsUI2)
+#import <NewsUI2/UICollectionViewDelegate-Protocol.h>
+#import <NewsUI2/UISearchBarDelegate-Protocol.h>
+#import <NewsUI2/UISearchControllerDelegate-Protocol.h>
+
+@interface _TtC7NewsUI220SearchViewController (NewsUI2) <UISearchBarDelegate, UISearchControllerDelegate, UICollectionViewDelegate>
+
+@property (nonatomic, readonly) BOOL isSearchResultsPane;
+
+- (void)cancelSearch;
+- (void)didDismissSearchController:(id)arg1;
+- (void)didPresentSearchController:(id)arg1;
+- (void)performSearchForText:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)searchBar:(id)arg1 textDidChange:(id)arg2;
+- (void)tabBarSplitViewDidUnobsureView;
+- (void)tabBarSplitViewWillObsureView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 @end
 

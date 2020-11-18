@@ -10,12 +10,13 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBReservationWrapper-Protocol.h>
 
-@class NSString, _INPBFlightReservation, _INPBLodgingReservation, _INPBRentalCarReservation, _INPBRestaurantReservation, _INPBTicketedEventReservation, _INPBTrainReservation;
+@class NSString, _INPBBoatReservation, _INPBBusReservation, _INPBFlightReservation, _INPBLodgingReservation, _INPBRentalCarReservation, _INPBRestaurantReservation, _INPBTicketedEventReservation, _INPBTrainReservation;
 
 @interface _INPBReservationWrapper : PBCodable <_INPBReservationWrapper, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
+    _INPBBoatReservation *_boatReservation;
+    _INPBBusReservation *_busReservation;
     _INPBFlightReservation *_flightReservation;
     _INPBLodgingReservation *_lodgingReservation;
     _INPBRentalCarReservation *_rentalCarReservation;
@@ -24,10 +25,13 @@
     _INPBTrainReservation *_trainReservation;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (strong, nonatomic) _INPBBoatReservation *boatReservation; // @synthesize boatReservation=_boatReservation;
+@property (strong, nonatomic) _INPBBusReservation *busReservation; // @synthesize busReservation=_busReservation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBFlightReservation *flightReservation; // @synthesize flightReservation=_flightReservation;
+@property (readonly, nonatomic) BOOL hasBoatReservation;
+@property (readonly, nonatomic) BOOL hasBusReservation;
 @property (readonly, nonatomic) BOOL hasFlightReservation;
 @property (readonly, nonatomic) BOOL hasLodgingReservation;
 @property (readonly, nonatomic) BOOL hasRentalCarReservation;

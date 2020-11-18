@@ -8,6 +8,7 @@
 
 @interface RMModelStatusReason (RemoteManagement)
 + (id)reasonWithCode:(id)arg1 description:(id)arg2 details:(id)arg3;
++ (id)reasonWithCode:(id)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)reasonWithError:(id)arg1;
 @end
 

@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface WKDataListSuggestionsControl : NSObject
 {
-    struct WebDataListSuggestionsDropdownIOS *_dropdown;
-    Vector_f69b9135 _suggestions;
+    struct WeakPtr<WebKit::WebDataListSuggestionsDropdownIOS, WTF::EmptyCounter> _dropdown;
+    struct Vector<WebCore::DataListSuggestion, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _suggestions;
     WKContentView *_view;
 }
 
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)didSelectOptionAtIndex:(long long)arg1;
 - (id)initWithInformation:(struct DataListSuggestionInformation *)arg1 inView:(id)arg2;
 - (void)invalidate;
-- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(int)arg2;
+- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(unsigned char)arg2;
 - (struct String)suggestionAtIndex:(long long)arg1;
 - (long long)suggestionsCount;
 - (long long)textAlignment;

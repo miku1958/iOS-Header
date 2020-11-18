@@ -42,7 +42,7 @@
 - (id)keyAssetCurationCriteriaWithHighlightTailorContext:(id)arg1;
 - (id)keyAssetWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)momentTitleByMomentUUIDWithHighlightTailorContext:(id)arg1;
-- (unsigned long long)moodWithHighlightTailorContext:(id)arg1;
+- (unsigned long long)moodWithHighlightTailorContext:(id)arg1 moodGenerationContext:(id)arg2;
 - (double)promotionScoreWithHighlightTailorContext:(id)arg1;
 - (id)titleWithHighlightTailorContext:(id)arg1 curatedAssets:(id)arg2 keyAsset:(id)arg3 createVerboseTitle:(BOOL)arg4;
 

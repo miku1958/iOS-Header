@@ -15,8 +15,9 @@
 }
 
 @property (readonly, nonatomic) unsigned short effectId; // @synthesize effectId=_effectId;
+@property (nonatomic) unsigned long long numberOfSiblingSprites;
 @property (readonly, nonatomic) int shaderFlags;
-@property (readonly, nonatomic) int type;
+@property (readonly, nonatomic) unsigned short type;
 @property (nonatomic) float value1;
 @property (nonatomic) float value2;
 @property (nonatomic) float value3;
@@ -26,8 +27,11 @@
 @property (nonatomic) float value7;
 @property (nonatomic) float value8;
 
++ (void)configureSiblingSprites:(CDStruct_92550dd7)arg1 siblingsSpriteIndexRange:(struct _PXGSpriteIndexRange)arg2 siblingsTexture:(id)arg3 forMainRenderSpriteRef:(CDStruct_a6175b54)arg4 mainPresentationSpriteRef:(CDStruct_a6175b54)arg5 mainSpriteIndex:(unsigned int)arg6 mainSpriteTexture:(id)arg7 effectData:(const CDStruct_8a1a641f *)arg8 screenScale:(double)arg9;
 + (id)createEffectForLayout:(id)arg1;
-+ (int)type;
++ (id)createSiblingsTextureForMainSpriteTexture:(id)arg1;
++ (Class)effectClassForType:(unsigned short)arg1;
++ (unsigned short)type;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;

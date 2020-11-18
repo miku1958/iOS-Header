@@ -9,7 +9,7 @@
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
 
-@class MIStoreMetadata, NSArray, NSData, NSDictionary;
+@class MIStoreMetadata, NSArray, NSData, NSDictionary, NSString;
 
 @interface MIInstallOptions : NSObject <NSSecureCoding, NSCopying>
 {
@@ -23,6 +23,7 @@
     BOOL _allowLocalProvisioned;
     BOOL _performAPFSClone;
     unsigned long long _installTargetType;
+    NSString *_bundleIdentifier;
     unsigned long long _lsInstallType;
     MIStoreMetadata *_iTunesMetadata;
     NSData *_sinfData;
@@ -34,6 +35,7 @@
 
 @property (nonatomic) BOOL allowLocalProvisioned; // @synthesize allowLocalProvisioned=_allowLocalProvisioned;
 @property (nonatomic) unsigned long long autoInstallOverride; // @synthesize autoInstallOverride=_autoInstallOverride;
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic, getter=isDeveloperInstall) BOOL developerInstall; // @synthesize developerInstall=_developerInstall;
 @property (copy, nonatomic) NSData *geoJSONData; // @synthesize geoJSONData=_geoJSONData;
 @property (copy, nonatomic) NSData *iTunesArtworkData; // @synthesize iTunesArtworkData=_iTunesArtworkData;

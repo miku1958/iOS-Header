@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NLDataSet, NLModel, NLModelConfiguration, NSDictionary;
+@class NLDataSet, NLModel, NLModelConfiguration, NSDictionary, NSError;
 @protocol NLModelTrainerDelegate;
 
 @interface NLModelTrainer : NSObject
@@ -15,6 +15,7 @@
     NLDataSet *_dataSet;
     NSDictionary *_options;
     NLModel *_model;
+    NSError *_trainingError;
     id<NLModelTrainerDelegate> _delegate;
     BOOL _delegateRespondsToLogMessage;
     BOOL _delegateRespondsToShouldStop;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSDictionary *options;
 @property (readonly, copy) NSDictionary *testResults;
 @property (readonly, copy) NLModel *trainedModel;
+@property (readonly, copy) NSError *trainingError;
 
 + (id)modelTrainerWithConfiguration:(id)arg1 dataSet:(id)arg2 options:(id)arg3 delegate:(id)arg4;
 - (void).cxx_destruct;
@@ -34,6 +36,7 @@
 - (id)model;
 - (Class)modelImplClass;
 - (void)setModel:(id)arg1;
+- (void)setTrainingError:(id)arg1;
 - (BOOL)shouldStop;
 - (void)trainModel;
 - (void)trainer:(id)arg1 logMessage:(id)arg2;

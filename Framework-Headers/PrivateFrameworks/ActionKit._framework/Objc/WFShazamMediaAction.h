@@ -6,34 +6,31 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/SHRecognitionSessionDelegate-Protocol.h>
-#import <ActionKit/WFApplicationStateObserver-Protocol.h>
+#import <ActionKit/SHSessionDelegate-Protocol.h>
 
-@class AVAudioEngine, NSString;
+@class NSString, SHAudioMatchingRemoteStore, SHSession;
 
-@interface WFShazamMediaAction : WFAction <SHRecognitionSessionDelegate, WFApplicationStateObserver>
+@interface WFShazamMediaAction : WFAction <SHSessionDelegate>
 {
-    BOOL _waitingForInterruptionEnd;
-    AVAudioEngine *_audioEngine;
+    SHSession *_session;
+    SHAudioMatchingRemoteStore *_store;
 }
 
-@property (strong, nonatomic) AVAudioEngine *audioEngine; // @synthesize audioEngine=_audioEngine;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SHSession *session; // @synthesize session=_session;
+@property (strong, nonatomic) SHAudioMatchingRemoteStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL waitingForInterruptionEnd; // @synthesize waitingForInterruptionEnd=_waitingForInterruptionEnd;
 
++ (id)userInterfaceProtocol;
 - (void).cxx_destruct;
-- (void)applicationContext:(id)arg1 applicationStateDidChange:(long long)arg2;
-- (void)audioInterruption:(id)arg1;
 - (void)finishRunningWithError:(id)arg1;
 - (void)finishRunningWithMatch:(id)arg1 error:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (void)session:(id)arg1 didFailForSignature:(id)arg2 withError:(id)arg3;
 - (void)session:(id)arg1 didFindMatch:(id)arg2;
-- (void)session:(id)arg1 didNotFindMatchForSignature:(id)arg2;
-- (void)startShazamWithRetryCount:(int)arg1;
+- (void)session:(id)arg1 didNotFindMatchForSignature:(id)arg2 error:(id)arg3;
+- (void)startShazam;
 
 @end
 

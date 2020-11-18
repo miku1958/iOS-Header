@@ -59,6 +59,7 @@
 - (void)addObserver:(id)arg1 forDataType:(id)arg2;
 - (void)addObserverForAllTypes:(id)arg1;
 - (void)addSynchronousObserver:(id)arg1 forSampleType:(id)arg2;
+- (BOOL)associateObjectUUIDs:(id)arg1 objectUUID:(id)arg2 error:(id *)arg3;
 - (void)closeObserverTransaction;
 - (BOOL)containsDataObject:(id)arg1;
 - (BOOL)deleteDataObjects:(id)arg1 restrictedSourceEntities:(id)arg2 failIfNotFound:(BOOL)arg3 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
@@ -67,7 +68,7 @@
 - (BOOL)deleteSamplesWithSourceEntities:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteSamplesWithTypes:(id)arg1 sourceBundleIdentifier:(id)arg2 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)deleteSamplesWithTypes:(id)arg1 sourceEntities:(id)arg2 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (BOOL)deleteSamplesWithUUIDs:(id)arg1 generateDeletedObjects:(BOOL)arg2 database:(id)arg3 error:(id *)arg4;
+- (BOOL)deleteSamplesWithUUIDs:(id)arg1 generateDeletedObjects:(BOOL)arg2 transaction:(id)arg3 error:(id *)arg4;
 - (BOOL)deleteSamplesWithUUIDs:(id)arg1 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)diagnosticDescription;
 - (long long)hasSampleWithBundleIdentifier:(id)arg1 error:(id *)arg2;
@@ -76,7 +77,7 @@
 - (BOOL)insertDataObjects:(id)arg1 sourceEntity:(id)arg2 deviceEntity:(id)arg3 sourceVersion:(id)arg4 creationDate:(double)arg5 error:(id *)arg6;
 - (BOOL)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 error:(id *)arg4;
 - (BOOL)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 skipInsertionFilter:(BOOL)arg4 error:(id *)arg5;
-- (BOOL)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 skipInsertionFilter:(BOOL)arg4 updateSourceOrder:(BOOL)arg5 error:(id *)arg6;
+- (BOOL)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 skipInsertionFilter:(BOOL)arg4 updateSourceOrder:(BOOL)arg5 resolveAssociations:(BOOL)arg6 error:(id *)arg7;
 - (void)openObserverTransaction;
 - (void)removeObserver:(id)arg1 forDataType:(id)arg2;
 - (void)removeObserverForAllTypes:(id)arg1;

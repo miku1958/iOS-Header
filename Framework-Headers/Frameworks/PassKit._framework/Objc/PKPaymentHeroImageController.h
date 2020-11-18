@@ -19,7 +19,7 @@
     long long _watchSize;
 }
 
-@property (nonatomic) id<PKPaymentHeroImageControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentHeroImageControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSArray *featuredImages; // @synthesize featuredImages=_featuredImages;
 @property (readonly, nonatomic) PKPaymentHeroImageManifest *manifest; // @synthesize manifest=_manifest;
 @property (copy, nonatomic) NSString *primaryImageIdentifier; // @synthesize primaryImageIdentifier=_primaryImageIdentifier;

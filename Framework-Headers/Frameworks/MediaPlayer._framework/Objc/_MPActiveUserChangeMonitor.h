@@ -9,6 +9,7 @@
 @class NSMutableSet, NSSet;
 @protocol OS_dispatch_source, _MPActiveUserChangeMonitorDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _MPActiveUserChangeMonitor : NSObject
 {
     struct os_unfair_lock_s _stateLock;
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) id<_MPActiveUserChangeMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSSet *expectedNotifications; // @synthesize expectedNotifications=_expectedNotifications;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *notificationTimer; // @synthesize notificationTimer=_notificationTimer;
-@property (copy, nonatomic) NSMutableSet *receivedNotifications; // @synthesize receivedNotifications=_receivedNotifications;
+@property (strong, nonatomic) NSMutableSet *receivedNotifications; // @synthesize receivedNotifications=_receivedNotifications;
 @property (readonly, nonatomic) struct os_unfair_lock_s stateLock; // @synthesize stateLock=_stateLock;
 
 - (void).cxx_destruct;

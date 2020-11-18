@@ -46,6 +46,7 @@
 - (void)setDetailLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setHTMLData:(id)arg1 sourceURL:(id)arg2 delegate:(id)arg3;
 - (void)setRowInvalid:(BOOL)arg1;
+- (double)webViewWidth;
 
 @end
 

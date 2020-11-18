@@ -57,7 +57,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)logFrameworkItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logFrameworkItemsCount;
 - (void)mergeFrom:(id)arg1;

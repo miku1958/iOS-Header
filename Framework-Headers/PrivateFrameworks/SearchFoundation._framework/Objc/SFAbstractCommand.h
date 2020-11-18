@@ -14,9 +14,7 @@
 
 @interface SFAbstractCommand : NSObject <SFAbstractCommand, NSSecureCoding, NSCopying>
 {
-    struct {
-        unsigned int type:1;
-    } _has;
+    CDStruct_f953fb60 _has;
     int _type;
     SFCommandValue *_value;
 }

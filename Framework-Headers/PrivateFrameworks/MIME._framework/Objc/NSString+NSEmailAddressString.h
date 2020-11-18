@@ -10,7 +10,6 @@
 + (id)mf_formattedAddressWithName:(id)arg1 email:(id)arg2 useQuotes:(BOOL)arg3;
 + (id)mf_stringWithData:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)_mf_bestMimeCharset:(id)arg1;
-- (id)mf_MD5Digest;
 - (id)mf_addressComment;
 - (id)mf_addressCommentPersonNameComponents;
 - (id)mf_addressDomain;

@@ -20,6 +20,7 @@
 @property (nonatomic) id<TSBonjourBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSArray *nodes; // @synthesize nodes=_nodes;
 
+- (void).cxx_destruct;
 - (void)addedServiceWithName:(const char *)arg1 regType:(const char *)arg2 domain:(const char *)arg3 onInterface:(unsigned int)arg4 withFlags:(unsigned int)arg5;
 - (void)dealloc;
 - (id)init;

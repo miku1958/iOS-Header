@@ -6,28 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class BFFPaneHeaderView_RemoteUI, RUIChoiceViewElement, RUIElement, RUISubHeaderElement, UIButton, UIScrollView, _UIBackdropView;
+@class NSLayoutConstraint, RUIChoiceViewElement, RUIElement, RUIModernHeaderView, RUISubHeaderElement, UIButton, UIScrollView, UIVisualEffectView;
 @protocol RUIHeader;
 
 @interface RUIChoiceView : UIView
 {
-    BFFPaneHeaderView_RemoteUI *_headerView;
+    RUIModernHeaderView *_headerView;
     UIButton *_bigChoice;
     UIButton *_smallChoice;
-    _UIBackdropView *_trayBackdrop;
+    UIVisualEffectView *_trayBackdrop;
     UIView *_buttonTray;
     UIScrollView *_scrollView;
     long long _currentStyle;
+    NSLayoutConstraint *_trayHeightConstraint;
     BOOL _usesTwoButtonLayout;
     RUIChoiceViewElement *_target;
     RUIElement *_header;
     RUISubHeaderElement *_subHeader;
-    struct UIEdgeInsets _customSafeAreaInsets;
 }
 
 @property (readonly, nonatomic) UIButton *bigChoice; // @synthesize bigChoice=_bigChoice;
 @property (readonly, nonatomic) UIView *buttonTray; // @synthesize buttonTray=_buttonTray;
-@property (nonatomic) struct UIEdgeInsets customSafeAreaInsets; // @synthesize customSafeAreaInsets=_customSafeAreaInsets;
 @property (strong, nonatomic) RUIElement *header; // @synthesize header=_header;
 @property (readonly, nonatomic) UIView<RUIHeader> *headerView;
 @property (readonly, nonatomic) UIButton *smallChoice; // @synthesize smallChoice=_smallChoice;
@@ -36,8 +35,9 @@
 @property (nonatomic) BOOL usesTwoButtonLayout; // @synthesize usesTwoButtonLayout=_usesTwoButtonLayout;
 
 - (void).cxx_destruct;
-- (void)_updateTrayBackdrop;
+- (void)_setupTrayConstraints;
 - (void)choiceTapped:(id)arg1;
+- (BOOL)headerUsesModernHeaderView;
 - (id)init;
 - (void)layoutSubviews;
 - (void)setFirstChoiceTitle:(id)arg1 withColor:(id)arg2;
@@ -46,6 +46,7 @@
 - (void)setImage:(id)arg1;
 - (void)setSecondChoiceTitle:(id)arg1 withColor:(id)arg2;
 - (id)titleLabel;
+- (id)viewForElementIdentifier:(id)arg1;
 
 @end
 

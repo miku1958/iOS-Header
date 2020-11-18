@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraRecordingGeneralConfiguration, HMDCameraRecordingSelectedConfiguration, HMDCameraRecordingSupportedAudioConfiguration, HMDCameraRecordingSupportedVideoConfiguration, HMDHAPAccessory, HMDService, NSDate, NSDictionary, NSNumber, NSObject, NSString;
+@class HMDCameraRecordingGeneralConfiguration, HMDCameraRecordingSelectedConfiguration, HMDCameraRecordingSupportedAudioConfiguration, HMDCameraRecordingSupportedVideoConfiguration, HMDHAPAccessory, HMDService, NSArray, NSDate, NSDictionary, NSNumber, NSObject, NSString;
 @protocol HMDCameraRecordingSettingsControlDelegate, OS_dispatch_queue;
 
 @interface HMDCameraRecordingSettingsControl : HMFObject <HMFLogging>
@@ -55,6 +55,7 @@
 @property (strong) HMDCameraRecordingSupportedAudioConfiguration *supportedAudioConfiguration; // @synthesize supportedAudioConfiguration=_supportedAudioConfiguration;
 @property (strong) HMDCameraRecordingGeneralConfiguration *supportedRecordingConfiguration; // @synthesize supportedRecordingConfiguration=_supportedRecordingConfiguration;
 @property (strong) HMDCameraRecordingSupportedVideoConfiguration *supportedVideoConfiguration; // @synthesize supportedVideoConfiguration=_supportedVideoConfiguration;
+@property (readonly) NSArray *videoConfigurationsByPreferenceOrder;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)audioBitRateForCodecConfiguration:(id)arg1;
@@ -66,7 +67,6 @@
 + (BOOL)isSupportedVideoCodec:(id)arg1;
 + (id)logCategory;
 + (id)videoCodecForCodecConfiguration:(id)arg1;
-+ (id)videoConfigurationsByPreferenceOrder;
 - (void).cxx_destruct;
 - (void)_configureCameraRecordingSettings;
 - (void)_handleSelectedCameraRecordingConfigurationReadResponse:(id)arg1;
@@ -88,14 +88,16 @@
 - (void)_setSelectedRecordingConfiguration:(id)arg1;
 - (void)configureCameraRecordingSettings;
 - (void)dealloc;
-- (void)handleAccessoryConfigured:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
+- (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleAccessoryIsNotConfiguredError;
-- (void)handleAccessoryUnconfigured:(id)arg1;
 - (void)handleCameraProfileSettingsDidWriteToAccessory:(id)arg1;
 - (void)handleCharacteristicValueUpdated:(id)arg1;
 - (void)handleCharacteristicsUpdated:(id)arg1;
+- (void)handleHomePersonManagerSettingsDidChangeNotification:(id)arg1;
 - (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2 recordingManagementService:(id)arg3;
 - (id)logIdentifier;
+- (void)reconfigureCameraRecordingSettingsWithReason:(id)arg1;
 - (void)start;
 - (void)triggerABCForConfigure;
 - (void)updateCanConfigureCameraForRecording;

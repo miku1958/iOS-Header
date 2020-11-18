@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CFNetwork/NSCoding-Protocol.h>
+
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
-@interface NSHTTPURLRequestParameters : NSObject
+@interface NSHTTPURLRequestParameters : NSObject <NSCoding>
 {
     NSString *method;
     NSMutableDictionary *fields;
@@ -22,6 +24,7 @@
 }
 
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

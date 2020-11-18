@@ -20,11 +20,11 @@
 
 + (id)grantWithNamespace:(id)arg1 endowment:(id)arg2;
 - (void).cxx_destruct;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescriptionBuilder;
 
 @end
 

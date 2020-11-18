@@ -11,6 +11,7 @@
 @interface AVAsset (PhotosUICore)
 
 @property (readonly, nonatomic) NSValue *px_cachedDuration;
+@property (readonly, nonatomic) struct CGSize px_dimensionsOfFirstVideoTrack;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 px_duration;
 
 - (void)_px_setCachedDuration:(id)arg1;

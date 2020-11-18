@@ -4,14 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HDDatabaseMigrator, NSArray, NSString;
-
 @protocol HDDatabaseSchemaProvider
-
-@property (readonly, copy, nonatomic) NSString *schemaName;
-
-- (long long)currentSchemaVersionForProtectionClass:(long long)arg1;
-- (NSArray *)databaseEntitiesForProtectionClass:(long long)arg1;
-- (void)registerMigrationStepsForProtectionClass:(long long)arg1 migrator:(HDDatabaseMigrator *)arg2;
 @end
 

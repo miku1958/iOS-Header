@@ -52,12 +52,14 @@
     NSError *_joinLeaveError;
     NSNumber *_qrReason;
     NSNumber *_previousError;
+    unsigned long long _localParticipantID;
 }
 
 @property (strong, nonatomic) id boostContext; // @synthesize boostContext=_boostContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long localParticipantID; // @synthesize localParticipantID=_localParticipantID;
 @property (readonly, nonatomic) unsigned int sessionEndedReason;
 @property (readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -77,6 +79,7 @@
 - (void)leaveGroupSession;
 - (void)requestActiveParticipants;
 - (void)session:(id)arg1 didReceiveActiveParticipants:(id)arg2 success:(BOOL)arg3;
+- (void)session:(id)arg1 didReceivePluginAllocationInfo:(id)arg2;
 - (void)session:(id)arg1 didReceiveReport:(id)arg2;
 - (void)session:(id)arg1 participantDidJoinGroupWithInfo:(id)arg2;
 - (void)session:(id)arg1 participantDidLeaveGroupWithInfo:(id)arg2;

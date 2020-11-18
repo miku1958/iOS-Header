@@ -6,7 +6,7 @@
 
 #import <AppleAccountUI/NSObject-Protocol.h>
 
-@class ACAccount, ACDataclassAction, ACUIAccountOperationsHelper, ACUIDataclassActionPicker, NSError;
+@class ACAccount, ACDataclassAction, ACUIAccountOperationsHelper, ACUIDataclassActionPicker, NSArray, NSError, NSString;
 
 @protocol ACUIAccountOperationsDelegate <NSObject>
 - (ACDataclassAction *)operationsHelper:(ACUIAccountOperationsHelper *)arg1 desiredDataclassActionFromPicker:(ACUIDataclassActionPicker *)arg2;
@@ -16,6 +16,7 @@
 - (void)operationsHelper:(ACUIAccountOperationsHelper *)arg1 willSaveAccount:(ACAccount *)arg2;
 
 @optional
+- (void)operationsHelper:(ACUIAccountOperationsHelper *)arg1 didLoadSaveActions:(NSArray *)arg2 forDataclass:(NSString *)arg3 withAccount:(ACAccount *)arg4 error:(NSError *)arg5;
 - (BOOL)operationsHelper:(ACUIAccountOperationsHelper *)arg1 shouldRemoveAccount:(ACAccount *)arg2;
 - (long long)operationsHelper:(ACUIAccountOperationsHelper *)arg1 shouldRemoveOrDisableAccount:(ACAccount *)arg2;
 @end

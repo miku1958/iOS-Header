@@ -8,15 +8,17 @@
 
 @interface CAMImageControlModeCommand : CAMCaptureCommand
 {
+    BOOL __capturing;
     long long __captureMode;
 }
 
 @property (readonly, nonatomic) long long _captureMode; // @synthesize _captureMode=__captureMode;
+@property (readonly, nonatomic) BOOL _capturing; // @synthesize _capturing=__capturing;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithContext:(id)arg1;
-- (id)initWithCaptureMode:(long long)arg1;
+- (id)initWithCaptureMode:(long long)arg1 capturing:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;
 
 @end

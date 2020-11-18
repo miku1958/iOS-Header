@@ -42,6 +42,7 @@
 - (void)clearTrafficConditionsBulletin;
 - (void)clearTrafficIncidentBulletinWithAlertID:(id)arg1;
 - (void)clearTrafficIncidentsBulletin;
+- (void)clearVenueBulletin;
 - (void)closeConnection;
 - (void)commitCollectionsSerializedRepresentation:(id)arg1 operationIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)commitFavoritesSerializedRepresentation:(id)arg1 reapingTombstones:(BOOL)arg2 operationIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -93,6 +94,7 @@
 - (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(id)arg1 afterDelay:(double)arg2;
 - (void)showTrafficConditionsBulletinWithTitle:(id)arg1 message:(id)arg2 actionURL:(id)arg3;
 - (void)showTrafficIncidentAlertWithID:(id)arg1 withReroute:(BOOL)arg2 title:(id)arg3 description:(id)arg4;
+- (void)showVenueBulletinWithTitle:(id)arg1 message:(id)arg2 actionURL:(id)arg3;
 - (void)simulateAnnouncement:(id)arg1 afterDelay:(double)arg2;
 - (void)simulateProblemResolution;
 - (void)testByNotingHistoryChangedOnDisk;

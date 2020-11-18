@@ -37,7 +37,7 @@
 - (BOOL)_activate:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_initialize;
 - (id)_nextTimerDate;
-- (void)_reactiveTriggerAfterDelay;
+- (void)_reactivateTriggerAfterDelay;
 - (void)_updateRepetitive;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

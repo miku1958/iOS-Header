@@ -60,6 +60,7 @@
 - (void)_setCornerRadius:(double)arg1;
 - (void)_setImage:(id)arg1;
 - (void)_updateCornerRadius;
+- (void)_updateFlatImageWithImage:(id)arg1;
 - (void)_updateImageView;
 - (void)_updateTintColor;
 - (id)backgroundColor;

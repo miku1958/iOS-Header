@@ -13,10 +13,9 @@
     MISSING_TYPE *config;
     MISSING_TYPE *aceService;
     MISSING_TYPE *viewFactory;
-    MISSING_TYPE *ducExecutor;
-    MISSING_TYPE *bundle;
-    MISSING_TYPE *locale;
-    MISSING_TYPE *synapseDucFamily;
+    MISSING_TYPE *catExecutor;
+    MISSING_TYPE *metricsState;
+    MISSING_TYPE *eventBus;
 }
 
 @end

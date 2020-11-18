@@ -6,11 +6,12 @@
 
 #import <iTunesCloud/ICRequestOperation.h>
 
-@class BLSecureOfflineKeyDeliveryRequest, BLStoreItemMetadataRequest, ICStoreHLSAssetInfo, MPMediaItem, NSData, NSString;
+@class BLSecureOfflineKeyDeliveryRequest, BLStoreItemMetadataRequest, ICStoreHLSAssetInfo, ICStoreRequestContext, MPMediaItem, NSData, NSString;
 
 @interface BLOfflineKeyRequest : ICRequestOperation
 {
     BLStoreItemMetadataRequest *_metadataRequest;
+    ICStoreRequestContext *_requestContext;
     ICStoreHLSAssetInfo *_assetInfo;
     BLSecureOfflineKeyDeliveryRequest *_secureKeyRequest;
     MPMediaItem *_mediaItem;

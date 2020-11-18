@@ -14,6 +14,7 @@
 + (id)builder;
 - (id)appendArray:(id)arg1;
 - (id)appendBool:(BOOL)arg1;
+- (id)appendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)appendCGFloat:(double)arg1;
 - (id)appendCGPoint:(struct CGPoint)arg1;
 - (id)appendCGRect:(struct CGRect)arg1;

@@ -12,7 +12,7 @@
 #import <WorkflowUI/UITextFieldDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowViewControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, OBTrayButton, OBWelcomeController, UIBarButtonItem, UINavigationController, UITableView, UIView, WFDatabase, WFWorkflow, WFWorkflowIcon, WFWorkflowViewController;
+@class NSLayoutConstraint, NSString, OBTrayButton, OBWelcomeController, UIBarButtonItem, UINavigationController, UITableView, UIView, WFAutomationSuggestion, WFDatabase, WFTrigger, WFWorkflow, WFWorkflowIcon, WFWorkflowViewController;
 @protocol VCUIShortcutViewControllerDelegate;
 
 @interface VCUIShortcutViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, WFWorkflowViewControllerDelegate>
@@ -23,6 +23,8 @@
     UINavigationController *_navigationController;
     UIBarButtonItem *_rightBarButtonItem;
     WFWorkflow *_workflow;
+    WFTrigger *_trigger;
+    WFAutomationSuggestion *_suggestion;
     NSString *_shortcutName;
     NSString *_shortcutDescription;
     WFWorkflowIcon *_shortcutIcon;
@@ -56,9 +58,11 @@
 @property (copy, nonatomic) NSString *shortcutDescription; // @synthesize shortcutDescription=_shortcutDescription;
 @property (copy, nonatomic) WFWorkflowIcon *shortcutIcon; // @synthesize shortcutIcon=_shortcutIcon;
 @property (copy, nonatomic) NSString *shortcutName; // @synthesize shortcutName=_shortcutName;
+@property (strong, nonatomic) WFAutomationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property (readonly, nonatomic) NSLayoutConstraint *tableViewHeightConstraint; // @synthesize tableViewHeightConstraint=_tableViewHeightConstraint;
+@property (strong, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 @property (readonly, nonatomic) OBWelcomeController *welcomeController; // @synthesize welcomeController=_welcomeController;
 @property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
@@ -66,6 +70,7 @@
 - (void).cxx_destruct;
 - (id)applicationBundleIdentifier;
 - (id)captionText;
+- (void)createNewAutomationSuggestion;
 - (id)createdSecondaryButton;
 - (unsigned long long)currentPreviewMode;
 - (void)dealloc;
@@ -74,6 +79,7 @@
 - (void)didTapSecondaryButton;
 - (int)eventSource;
 - (id)headerImage;
+- (id)initWithAutomationSuggestion:(id)arg1 workflow:(id)arg2 database:(id)arg3;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 mode:(unsigned long long)arg3;
 - (BOOL)isUpdatingExistingShortcut;
 - (void)keyboardWillChange:(id)arg1;

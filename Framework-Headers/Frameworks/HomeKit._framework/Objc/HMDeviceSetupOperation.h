@@ -39,7 +39,6 @@
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_reallyStart;
 - (void)cancel;
 - (void)cancelWithError:(id)arg1;
 - (void)finish;
@@ -49,6 +48,7 @@
 - (id)logIdentifier;
 - (void)setAccessory:(id)arg1;
 - (void)setError:(id)arg1;
+- (void)setQualityOfService:(long long)arg1;
 - (void)setupSession:(id)arg1 didCloseWithError:(id)arg2;
 - (void)setupSession:(id)arg1 didReceiveExchangeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)start;

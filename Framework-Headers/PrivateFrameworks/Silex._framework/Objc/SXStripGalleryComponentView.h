@@ -103,7 +103,7 @@
 - (void)loadComponent:(id)arg1;
 - (unsigned long long)numberOfViewsInItemizedScrollView:(id)arg1;
 - (void)preloadAdjacentViewsForIndex:(unsigned long long)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (BOOL)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

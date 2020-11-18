@@ -25,7 +25,7 @@
 @property (strong, nonatomic) UICollectionViewCompositionalLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property (strong, nonatomic) _UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CKNicknameUpdatesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CKNicknameUpdatesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
@@ -36,12 +36,12 @@
 - (void)_nicknameStateChanged:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (id)cellForItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 withIdentifier:(id)arg3;
+- (unsigned long long)cellOrderForIndexPath:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
-- (id)layoutSectionForSection:(long long)arg1 withEnvironment:(id)arg2;
 - (void)reloadData;
-- (void)updateCell:(id)arg1 ignoreButtonTappedForBannerView:(id)arg2;
-- (void)updateCell:(id)arg1 updateButtonTappedForBannerView:(id)arg2;
+- (void)updateCell:(id)arg1 selectedAction:(unsigned long long)arg2 sourceView:(id)arg3;
+- (void)updatePreferredContentSize;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

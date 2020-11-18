@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _LSDocumentProxyBindingQuery : _LSQuery
 {
+    BOOL _yieldClaimBindings;
     unsigned char _style;
     LSDocumentProxy *_documentProxy;
     NSString *_handlerRank;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) LSDocumentProxy *documentProxy; // @synthesize documentProxy=_documentProxy;
 @property (readonly, copy, nonatomic) NSString *handlerRank; // @synthesize handlerRank=_handlerRank;
 @property (readonly, nonatomic) unsigned char style; // @synthesize style=_style;
+@property (nonatomic) BOOL yieldClaimBindings; // @synthesize yieldClaimBindings=_yieldClaimBindings;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

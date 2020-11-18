@@ -11,7 +11,6 @@
 }
 
 - (BOOL)isAppExtension;
-- (BOOL)isMemoryConstrained;
 - (BOOL)isWatchOS;
 
 @end

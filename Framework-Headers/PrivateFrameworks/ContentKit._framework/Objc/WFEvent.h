@@ -13,6 +13,8 @@
 + (Class)codableEventClass;
 + (id)serializablePropertyTransformers;
 - (Class)codableEventClass;
+- (id)debugDescription;
+- (id)description;
 - (id)propertyNames;
 - (id)serializableEvent;
 - (void)track;

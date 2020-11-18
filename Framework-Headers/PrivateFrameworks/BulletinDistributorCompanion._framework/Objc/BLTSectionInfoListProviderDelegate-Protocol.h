@@ -6,11 +6,11 @@
 
 #import <BulletinDistributorCompanion/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class BLTTransaction, NSArray, NSDictionary, NSString;
 
 @protocol BLTSectionInfoListProviderDelegate <NSObject>
-- (void)removedSectionWithSectionID:(NSString *)arg1;
-- (void)updateOverrides:(NSDictionary *)arg1 forSectionID:(NSString *)arg2;
-- (void)updateSectionInfoForSectionIDs:(NSArray *)arg1;
+- (void)removedSectionWithSectionID:(NSString *)arg1 transaction:(BLTTransaction *)arg2;
+- (void)updateOverrides:(NSDictionary *)arg1 forSectionID:(NSString *)arg2 transaction:(BLTTransaction *)arg3;
+- (void)updateSectionInfoForSectionIDs:(NSArray *)arg1 transaction:(BLTTransaction *)arg2;
 @end
 

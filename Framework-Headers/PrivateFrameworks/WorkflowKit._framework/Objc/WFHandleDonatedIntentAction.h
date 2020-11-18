@@ -6,7 +6,7 @@
 
 #import <WorkflowKit/WFHandleIntentAction.h>
 
-@class INIntent, NSString;
+@class INIntent, INIntentExecutionInfo, NSString;
 
 @interface WFHandleDonatedIntentAction : WFHandleIntentAction
 {
@@ -15,11 +15,13 @@
     NSString *_groupIdentifier;
     NSString *_title;
     NSString *_subtitle;
+    INIntentExecutionInfo *_resolvedExecutionInfo;
 }
 
 @property (readonly, nonatomic) BOOL forceExecutionOnPhone; // @synthesize forceExecutionOnPhone=_forceExecutionOnPhone;
 @property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (strong, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+@property (readonly, nonatomic) INIntentExecutionInfo *resolvedExecutionInfo; // @synthesize resolvedExecutionInfo=_resolvedExecutionInfo;
 @property (readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
@@ -27,8 +29,9 @@
 - (void).cxx_destruct;
 - (id)appIdentifier;
 - (void)continueInAppWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)createResourceManager;
 - (id)executorWithIntent:(id)arg1 groupIdentifier:(id)arg2;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (id)initWithIntent:(id)arg1;
 - (id)initWithIntent:(id)arg1 forceExecutionOnPhone:(BOOL)arg2;
@@ -42,7 +45,6 @@
 - (id)localizedSubtitle;
 - (id)metricsIdentifier;
 - (id)name;
-- (id)requiredResources;
 - (id)serializedParameters;
 - (id)slots;
 

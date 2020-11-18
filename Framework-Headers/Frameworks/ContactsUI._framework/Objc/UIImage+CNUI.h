@@ -19,6 +19,8 @@
 + (id)cnui_symbolImageNamed:(id)arg1 scale:(long long)arg2 withColor:(id)arg3 useFixedSize:(BOOL)arg4 compatibleWithTextStyle:(id)arg5;
 + (id)cnui_templateImageNamed:(id)arg1 withTint:(id)arg2;
 + (id)cnui_tintedImageNamed:(id)arg1 withTint:(id)arg2;
++ (id)cnui_userActionOutlinedSymbolImageForActionType:(id)arg1 scale:(long long)arg2 withColor:(id)arg3;
 + (id)cnui_userActionSymbolImageForActionType:(id)arg1 scale:(long long)arg2 withColor:(id)arg3;
++ (id)cnui_userActionSymbolImageForActionType:(id)arg1 scale:(long long)arg2 withColor:(id)arg3 compatibleWithTextStyle:(id)arg4;
 @end
 

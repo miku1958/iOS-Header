@@ -15,7 +15,6 @@
 @property (readonly, nonatomic) double backButtonMargin;
 @property (readonly, nonatomic) double backButtonMaximumWidth;
 @property (readonly, nonatomic) long long barType;
-@property (readonly, nonatomic) BOOL barWantsLetterpress;
 @property (readonly, nonatomic) BOOL centerTextButtons;
 @property (readonly, nonatomic) BOOL compactMetrics;
 @property (readonly, nonatomic) double defaultEdgeSpacing;

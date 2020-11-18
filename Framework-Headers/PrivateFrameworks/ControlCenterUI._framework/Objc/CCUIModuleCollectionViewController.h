@@ -28,6 +28,10 @@
     NSHashTable *_currentModules;
     NSHashTable *_expandedModules;
     NSObject<OS_dispatch_group> *_moduleCloseDispatchGroup;
+    NSString *_topmostModuleIdentifier;
+    NSArray *_portraitDoubleMarginIndices;
+    NSArray *_landscapeDoubleMarginIndices;
+    BOOL _pendingModulePopulation;
     BOOL _homeGestureDismissalAllowed;
     id<CCUIModuleCollectionViewControllerDelegate> _delegate;
 }
@@ -47,9 +51,11 @@
 - (void)_beginAppearanceTransition:(BOOL)arg1 affectedModule:(id)arg2;
 - (BOOL)_canShowWhileLocked;
 - (id)_currentLayoutOptions;
+- (id)_doubleMarginIndicesForModuleIdentifiers:(id)arg1 moduleInstanceByIdentifier:(id)arg2 interfaceOrientation:(long long)arg3;
 - (long long)_interfaceOrientation;
 - (id)_moduleInstances;
 - (void)_populateModuleViewControllers;
+- (void)_populateModulesIfNecessary;
 - (id)_positionProviderForInterfaceOrientation:(long long)arg1;
 - (void)_refreshPositionProviders;
 - (void)_removeAndTearDownModuleViewControllerFromHierarchy:(id)arg1;
@@ -58,6 +64,7 @@
 - (void)_updateEnabledModuleIdentifiers;
 - (void)_updateHomeGestureDismissalAllowed;
 - (void)_updateModuleControllers;
+- (BOOL)ccui_shouldPropagateAppearanceCalls;
 - (struct CGRect)compactModeFrameForContentModuleContainerViewController:(id)arg1;
 - (BOOL)contentModuleContainerViewController:(id)arg1 canBeginInteractionWithModule:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 didBeginInteractionWithModule:(id)arg2;
@@ -74,6 +81,7 @@
 - (void)dismissPresentedContentAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)displayWillTurnOff;
 - (void)expandModuleWithIdentifier:(id)arg1;
+- (id)horizontalDoubleMarginIndicesForLayoutView:(id)arg1;
 - (id)initWithModuleInstanceManager:(id)arg1;
 - (BOOL)isAtMaxHeight;
 - (BOOL)isModuleExpandedForIdentifier:(id)arg1;
@@ -87,6 +95,8 @@
 - (id)relevantSnapHeightsForOrientation:(long long)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (id)topmostModuleView;
+- (id)verticalDoubleMarginIndicesForLayoutView:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

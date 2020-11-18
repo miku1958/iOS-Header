@@ -14,13 +14,10 @@
 }
 
 @property (copy, nonatomic) NSString *buttonText;
+@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setHighlighted:(BOOL)arg1;
 
 @end
 

@@ -20,6 +20,7 @@
         unsigned int stationGlyph:1;
         unsigned int attributionLabel:1;
         unsigned int providerName:1;
+        unsigned int live:1;
     } _requestedRadioStationProperties;
 }
 

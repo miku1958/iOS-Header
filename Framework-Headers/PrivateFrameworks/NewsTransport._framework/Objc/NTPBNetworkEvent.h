@@ -12,22 +12,21 @@
 
 @interface NTPBNetworkEvent : PBCodable <NSCopying>
 {
-    unsigned long long _cacheState;
     unsigned long long _connectDuration;
     unsigned long long _dnsDuration;
-    unsigned long long _errorCode;
+    long long _errorCode;
     unsigned long long _httpStatusCode;
     unsigned long long _requestDuration;
     unsigned long long _responseDuration;
     unsigned long long _responseSize;
     unsigned long long _sessionID;
     unsigned long long _startTime;
-    unsigned long long _type;
+    int _cacheState;
     NSString *_requestUUID;
     NSString *_respondingPOP;
+    int _type;
     NSString *_url;
     struct {
-        unsigned int cacheState:1;
         unsigned int connectDuration:1;
         unsigned int dnsDuration:1;
         unsigned int errorCode:1;
@@ -37,14 +36,15 @@
         unsigned int responseSize:1;
         unsigned int sessionID:1;
         unsigned int startTime:1;
+        unsigned int cacheState:1;
         unsigned int type:1;
     } _has;
 }
 
-@property (nonatomic) unsigned long long cacheState; // @synthesize cacheState=_cacheState;
+@property (nonatomic) int cacheState; // @synthesize cacheState=_cacheState;
 @property (nonatomic) unsigned long long connectDuration; // @synthesize connectDuration=_connectDuration;
 @property (nonatomic) unsigned long long dnsDuration; // @synthesize dnsDuration=_dnsDuration;
-@property (nonatomic) unsigned long long errorCode; // @synthesize errorCode=_errorCode;
+@property (nonatomic) long long errorCode; // @synthesize errorCode=_errorCode;
 @property (nonatomic) BOOL hasCacheState;
 @property (nonatomic) BOOL hasConnectDuration;
 @property (nonatomic) BOOL hasDnsDuration;
@@ -67,7 +67,7 @@
 @property (nonatomic) unsigned long long responseSize; // @synthesize responseSize=_responseSize;
 @property (nonatomic) unsigned long long sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
-@property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

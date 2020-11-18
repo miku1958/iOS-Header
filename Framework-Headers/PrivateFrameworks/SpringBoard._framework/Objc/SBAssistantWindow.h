@@ -10,15 +10,19 @@
 
 @interface SBAssistantWindow : SBWindow
 {
+    BOOL _touchesPassThroughToSpringBoard;
 }
 
 @property (readonly, nonatomic) SBAssistantRootViewController *assistantRootViewController; // @dynamic assistantRootViewController;
+@property (nonatomic) BOOL touchesPassThroughToSpringBoard; // @synthesize touchesPassThroughToSpringBoard=_touchesPassThroughToSpringBoard;
 
 + (BOOL)_isSecure;
 + (id)defaultLayoutStrategy;
 + (BOOL)sb_autorotates;
 - (BOOL)_canBecomeKeyWindow;
+- (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
 - (void)dealloc;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3 scene:(id)arg4;
 - (BOOL)isOpaque;
 

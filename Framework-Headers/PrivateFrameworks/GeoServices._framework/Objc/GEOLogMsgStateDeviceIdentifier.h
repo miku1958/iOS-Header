@@ -27,11 +27,7 @@
         unsigned int has_isInternalTool:1;
         unsigned int read_deviceHwIdentifier:1;
         unsigned int read_deviceOsVersion:1;
-        unsigned int wrote_deviceHwIdentifier:1;
-        unsigned int wrote_deviceOsVersion:1;
-        unsigned int wrote_deviceDarkMode:1;
-        unsigned int wrote_isInternalInstall:1;
-        unsigned int wrote_isInternalTool:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,8 +44,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readDeviceHwIdentifier;
-- (void)_readDeviceOsVersion;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -57,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -29,7 +29,6 @@
     NSData *_rollItemReference;
     NSData *_rollItemSHA1;
     NSDate *_server_NextRollDate;
-    struct _PCSIdentityData *_relocateIdentity;
     PCSMTT *_mtt;
     NSObject<OS_os_transaction> *_transaction;
     PCSLockAssertion *_lockAssertion;
@@ -45,7 +44,6 @@
 @property (strong) PCSLockAssertion *lockAssertion; // @synthesize lockAssertion=_lockAssertion;
 @property struct __PCSLogContext *log; // @synthesize log=_log;
 @property (readonly) PCSMTT *mtt; // @synthesize mtt=_mtt;
-@property struct _PCSIdentityData *relocateIdentity; // @synthesize relocateIdentity=_relocateIdentity;
 @property int retryLeftCount; // @synthesize retryLeftCount=_retryLeftCount;
 @property BOOL returnedExistingIdentity; // @synthesize returnedExistingIdentity=_returnedExistingIdentity;
 @property BOOL roll; // @synthesize roll=_roll;

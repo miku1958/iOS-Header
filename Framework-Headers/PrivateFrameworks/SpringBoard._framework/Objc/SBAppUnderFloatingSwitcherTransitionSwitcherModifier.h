@@ -10,9 +10,7 @@
 {
 }
 
-- (long long)liveContentRasterizationStyle;
-- (BOOL)shouldTetherTransitionCompletion;
-- (BOOL)wantsMinificationFilter;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 
 @end
 

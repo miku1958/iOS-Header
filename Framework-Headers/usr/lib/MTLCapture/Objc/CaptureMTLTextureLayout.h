@@ -41,6 +41,7 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2;
 - (void)initializeTextureMemory:(void *)arg1;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)touch;
 

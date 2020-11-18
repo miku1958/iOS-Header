@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSURLSessionDataTask *task; // @synthesize task=_task;
 
 - (void).cxx_destruct;
-- (id)initWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5 appleITeamId:(id)arg6 appleIClientId:(id)arg7;
+- (id)initWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5 appleITeamId:(id)arg6 appleIClientId:(id)arg7 additionalHeaders:(id)arg8;
 - (void)resume;
 
 @end

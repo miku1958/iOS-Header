@@ -6,22 +6,22 @@
 
 #import <PhotosGraph/PGPotentialMemory.h>
 
-@class NSArray, NSDate, NSMutableSet, NSString, PGGraphNode;
+@class NSArray, NSDate, NSMutableSet, NSString, PGGraphROINode;
 
 @interface PGPotentialRegionMemory : PGPotentialMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    PGGraphNode *_regionNode;
+    PGGraphROINode *_regionNode;
     long long _year;
-    NSArray *_scenedAssets;
+    NSArray *_scenedAssetLocalIdentifiers;
     NSDate *_startDate;
     NSDate *_endDate;
 }
 
 @property (strong) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly) NSString *region;
-@property (readonly) PGGraphNode *regionNode; // @synthesize regionNode=_regionNode;
-@property (strong) NSArray *scenedAssets; // @synthesize scenedAssets=_scenedAssets;
+@property (readonly) PGGraphROINode *regionNode; // @synthesize regionNode=_regionNode;
+@property (strong) NSArray *scenedAssetLocalIdentifiers; // @synthesize scenedAssetLocalIdentifiers=_scenedAssetLocalIdentifiers;
 @property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) long long year; // @synthesize year=_year;
 

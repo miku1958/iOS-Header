@@ -13,17 +13,15 @@
 @interface MPCPlaybackHistoryRecordChangeRequest : NSObject <NSCopying>
 {
     BOOL _allowsStoreContainerImport;
-    BOOL _updateHistoryPlaylist;
     MPModelPlayEvent *_playEvent;
     MPModelGenericObject *_itemGenericObject;
-    long long _repeatType;
+    long long _type;
 }
 
 @property (nonatomic) BOOL allowsStoreContainerImport; // @synthesize allowsStoreContainerImport=_allowsStoreContainerImport;
 @property (strong, nonatomic) MPModelGenericObject *itemGenericObject; // @synthesize itemGenericObject=_itemGenericObject;
 @property (strong, nonatomic) MPModelPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
-@property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
-@property (nonatomic) BOOL updateHistoryPlaylist; // @synthesize updateHistoryPlaylist=_updateHistoryPlaylist;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

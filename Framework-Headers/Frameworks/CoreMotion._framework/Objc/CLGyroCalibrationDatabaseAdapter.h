@@ -32,7 +32,7 @@
 - (void)endService;
 - (id)init;
 - (void)startFactoryGYTT;
-- (BOOL)syncgetBiasFit:(CDStruct_f329898c *)arg1;
+- (BOOL)syncgetBiasFit:(CDStruct_8d89f794 *)arg1;
 - (BOOL)syncgetDoSync:(CDUnknownBlockType)arg1;
 - (BOOL)syncgetGyroStatsWithBias:(CDStruct_03942939 *)arg1 slope:(CDStruct_03942939 *)arg2 l2Error:(CDStruct_03942939 *)arg3 isDynamic:(BOOL)arg4 deltaBias:(CDStruct_03942939 *)arg5 deltaSlope:(CDStruct_03942939 *)arg6 deltaError:(CDStruct_03942939 *)arg7 isDeltaDynamic:(BOOL)arg8;
 - (BOOL)syncgetInsertWithBias:(const CDStruct_03942939 *)arg1 variance:(const CDStruct_03942939 *)arg2 temperature:(float)arg3 timestamp:(double)arg4;

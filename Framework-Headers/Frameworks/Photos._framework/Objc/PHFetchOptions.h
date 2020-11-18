@@ -27,13 +27,14 @@
     NSNumber *_includeRejectedMemoriesNumber;
     NSNumber *_personContextNumber;
     NSNumber *_includeTrashedAssetsNumber;
-    NSNumber *_includeTrashedMomentSharesNumber;
-    NSNumber *_includeExpiredMomentSharesNumber;
+    NSNumber *_includeTrashedSharesNumber;
+    NSNumber *_includeExpiredSharesNumber;
     NSNumber *_includeFavoriteMemoriesCollectionListNumber;
     NSNumber *_includePlacesSmartAlbumNumber;
     NSNumber *_includeAllPhotosSmartAlbumNumber;
     NSNumber *_includeRecentlyEditedSmartAlbumNumber;
     NSNumber *_includeScreenRecordingsSmartAlbumNumber;
+    NSNumber *_includeTrashBinAlbumNumber;
     NSNumber *_includeRootFolderNumber;
     NSNumber *_excludeMontageAssetsNumber;
     NSNumber *_minimumVerifiedFaceCountNumber;
@@ -49,7 +50,8 @@
     NSNumber *_highlightCurationTypeNumber;
     NSNumber *_sharingStreamNumber;
     NSNumber *_includeUserSmartAlbumsNumber;
-    BOOL _includeRecentsSmartAlbum;
+    NSNumber *_includeOnlyAssetsAllowedForAnalysisNumber;
+    NSNumber *_includeOnlyContentContributedByCurrentUserNumber;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSArray *_customObjectIDSortOrder;
@@ -60,6 +62,7 @@
     NSPredicate *_internalInclusionPredicate;
     NSSet *_verifiedPersonTypes;
     PHPhotoLibrary *_photoLibrary;
+    NSString *_importantFetchName;
 }
 
 @property (nonatomic) long long cacheSizeForFetch;
@@ -74,14 +77,17 @@
 @property (readonly, nonatomic) NSSet *fetchPropertySetsAsSet;
 @property (readonly, nonatomic) BOOL hasAnySortDescriptors;
 @property (nonatomic) unsigned short highlightCurationType;
+@property (copy, nonatomic) NSString *importantFetchName; // @synthesize importantFetchName=_importantFetchName;
 @property (nonatomic) BOOL includeAllBurstAssets;
 @property (nonatomic) BOOL includeAllPhotosSmartAlbum;
 @property (nonatomic) unsigned long long includeAssetSourceTypes;
 @property (nonatomic) BOOL includeDuplicateAssets;
-@property (nonatomic) BOOL includeExpiredMomentShares;
+@property (nonatomic) BOOL includeExpiredShares;
 @property (nonatomic) BOOL includeFavoriteMemoriesCollectionList;
 @property (nonatomic) BOOL includeHiddenAssets;
 @property (nonatomic) BOOL includeNonvisibleFaces;
+@property (nonatomic) BOOL includeOnlyAssetsAllowedForAnalysis;
+@property (nonatomic) BOOL includeOnlyContentContributedByCurrentUser;
 @property (nonatomic) BOOL includeOnlyFacesInFaceGroups;
 @property (nonatomic) BOOL includeOnlyFacesNeedingFaceCrop;
 @property (nonatomic) BOOL includeOnlyFacesWithFaceprints;
@@ -89,12 +95,12 @@
 @property (nonatomic) BOOL includePendingMemories;
 @property (nonatomic) BOOL includePlacesSmartAlbum;
 @property (nonatomic) BOOL includeRecentlyEditedSmartAlbum;
-@property (nonatomic) BOOL includeRecentsSmartAlbum; // @synthesize includeRecentsSmartAlbum=_includeRecentsSmartAlbum;
 @property (nonatomic) BOOL includeRejectedMemories;
 @property (nonatomic) BOOL includeRootFolder;
 @property (nonatomic) BOOL includeScreenRecordingsSmartAlbum;
+@property (nonatomic) BOOL includeTrashBinAlbum;
 @property (nonatomic) BOOL includeTrashedAssets;
-@property (nonatomic) BOOL includeTrashedMomentShares;
+@property (nonatomic) BOOL includeTrashedShares;
 @property (nonatomic) BOOL includeUserSmartAlbums;
 @property (strong, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property (strong, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;

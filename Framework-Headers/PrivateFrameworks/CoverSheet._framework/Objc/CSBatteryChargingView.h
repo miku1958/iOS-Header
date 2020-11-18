@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) long long batteryCount;
 @property (nonatomic) BOOL batteryVisible;
 @property (readonly, nonatomic) double desiredVisibilityDuration;
+@property (readonly, nonatomic) double horizontalGapBetweenBatteryAndPercentLabel;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 
 + (id)batteryChargingViewWithDoubleBattery;
@@ -30,6 +31,7 @@
 - (id)_chargePercentFont;
 - (id)_updateChargeString:(id)arg1 oldLabel:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)performAnimation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setPrimaryBatteryText:(id)arg1 forBattery:(id)arg2;
 - (void)setSecondaryBatteryText:(id)arg1 forBattery:(id)arg2;
 

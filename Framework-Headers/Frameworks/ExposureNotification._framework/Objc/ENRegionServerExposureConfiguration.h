@@ -14,6 +14,7 @@
 @interface ENRegionServerExposureConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _enableRecursiveReportType;
+    BOOL _matchingRestrictedToRegion;
     NSString *_appBundleIdentifier;
     NSArray *_classificationCriteria;
     NSDictionary *_exposureConfigurationValues;
@@ -24,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSArray *classificationCriteria; // @synthesize classificationCriteria=_classificationCriteria;
 @property (readonly, nonatomic) BOOL enableRecursiveReportType; // @synthesize enableRecursiveReportType=_enableRecursiveReportType;
 @property (readonly, copy, nonatomic) NSDictionary *exposureConfigurationValues; // @synthesize exposureConfigurationValues=_exposureConfigurationValues;
+@property (readonly, nonatomic) BOOL matchingRestrictedToRegion; // @synthesize matchingRestrictedToRegion=_matchingRestrictedToRegion;
 @property (readonly, nonatomic) double privacyParameterInputCandenceInterval; // @synthesize privacyParameterInputCandenceInterval=_privacyParameterInputCandenceInterval;
 
 + (BOOL)supportsSecureCoding;

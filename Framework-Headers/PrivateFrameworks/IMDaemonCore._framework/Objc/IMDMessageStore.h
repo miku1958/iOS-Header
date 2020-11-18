@@ -21,7 +21,8 @@
 @property (strong) NSString *modificationStamp; // @synthesize modificationStamp=_modificationStamp;
 
 + (void)_displayDatabaseFullAlert;
-+ (void)_updateCacheForMessageGUID:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 updateLastMessage:(BOOL)arg4 calculateUnreadCount:(BOOL)arg5;
++ (id)_missingMessageReadReceiptCache;
++ (BOOL)_updateCacheForMessageGUID:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 updateLastMessage:(BOOL)arg4 calculateUnreadCount:(BOOL)arg5;
 + (void)databaseFull;
 + (void)databaseNoLongerFull;
 + (id)sharedInstance;
@@ -40,9 +41,9 @@
 - (id)_itemsWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(BOOL)arg2;
 - (id)_itemsWithGUIDs:(id)arg1;
 - (id)_messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1 attemptCount:(unsigned long long)arg2;
-- (id)_messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(BOOL)arg5;
-- (id)_messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5;
-- (id)_messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(BOOL)arg5;
+- (id)_messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5 onlyMessages:(BOOL)arg6;
+- (id)_messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 threadIdentifier:(id)arg6 hasMessagesBefore:(BOOL *)arg7 hasMessagesAfter:(BOOL *)arg8;
+- (id)_messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5 onlyMessages:(BOOL)arg6;
 - (void)_performBlock:(CDUnknownBlockType)arg1 afterDelay:(double)arg2;
 - (void)_postDBUpdate;
 - (BOOL)_shouldUseBadgeUtilities;
@@ -51,6 +52,7 @@
 - (id)_unreadMessagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (id)_unreadMessagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (void)_updateModificationDate;
+- (void)addMissingMessageReadReceipt:(id)arg1;
 - (id)attachmentsWithHandles:(id)arg1 onServices:(id)arg2;
 - (id)attachmentsWithRoomNames:(id)arg1 onServices:(id)arg2;
 - (BOOL)canStoreItem:(id)arg1 onService:(id)arg2;
@@ -87,10 +89,9 @@
 - (void)markMessageAsCleanWithROWID:(long long)arg1;
 - (void)markMessageAsDeduplicated:(id)arg1;
 - (void)markMessageAsIgnoreButNeedingSyncWithROWID:(long long)arg1;
-- (id)markMessagesAsReadWithHandle:(id)arg1 onService:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;
-- (id)markMessagesAsReadWithHandles:(id)arg1 onServices:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;
-- (id)markMessagesAsReadWithRoomNames:(id)arg1 onServices:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;
-- (id)markMessagesAsReadWithRoomname:(id)arg1 onService:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;
+- (void)markMessageGUIDUnread:(id)arg1;
+- (id)markMessagesAsReadWithChatGUIDs:(id)arg1 upToGUID:(id)arg2 readDate:(id)arg3 fromMe:(BOOL)arg4;
+- (id)markMessagesAsReadWithIdentifiers:(id)arg1 onServices:(id)arg2 chatStyle:(unsigned char)arg3 upToGUID:(id)arg4 readDate:(id)arg5 fromMe:(BOOL)arg6;
 - (id)messageActionItemsForOriginalMessageGUID:(id)arg1;
 - (id)messageWithGUID:(id)arg1;
 - (id)messageWithGUID:(id)arg1 registerAttachments:(BOOL)arg2;
@@ -101,11 +102,15 @@
 - (id)messagesWithGUIDs:(id)arg1;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;
-- (id)messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5;
+- (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 threadIdentifier:(id)arg6 hasMessagesBefore:(BOOL *)arg7 hasMessagesAfter:(BOOL *)arg8;
+- (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5;
 - (id)messagesWithReplyToGUID:(id)arg1;
 - (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;
+- (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5;
+- (id)notificationContext;
 - (void)performInitialHousekeeping;
+- (BOOL)popReadReceiptForMissingGUID:(id)arg1;
 - (void)postCountChanges;
 - (void)rebuildLastFailedMessageDate;
 - (void)rebuildUnreadMessageCount;

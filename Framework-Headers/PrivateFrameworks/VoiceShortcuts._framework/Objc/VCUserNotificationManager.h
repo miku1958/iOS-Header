@@ -7,28 +7,37 @@
 #import <objc/NSObject.h>
 
 #import <VoiceShortcuts/UNUserNotificationCenterDelegate-Protocol.h>
+#import <VoiceShortcuts/VCTriggerNotificationDebouncerDelegate-Protocol.h>
 
-@class NSString, UNUserNotificationCenter;
+@class NSString, VCTriggerNotificationDebouncer, WFUserNotificationManager;
 @protocol VCUserNotificationManagerDelegate;
 
-@interface VCUserNotificationManager : NSObject <UNUserNotificationCenterDelegate>
+@interface VCUserNotificationManager : NSObject <UNUserNotificationCenterDelegate, VCTriggerNotificationDebouncerDelegate>
 {
+    VCTriggerNotificationDebouncer *_debouncer;
     id<VCUserNotificationManagerDelegate> _delegate;
-    UNUserNotificationCenter *_notificationCenter;
+    WFUserNotificationManager *_userNotificationManager;
 }
 
+@property (readonly, nonatomic) VCTriggerNotificationDebouncer *debouncer; // @synthesize debouncer=_debouncer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VCUserNotificationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) WFUserNotificationManager *userNotificationManager; // @synthesize userNotificationManager=_userNotificationManager;
 
++ (id)alertCategory;
++ (id)categoryIdentifiers;
++ (id)promptCategory;
 - (void).cxx_destruct;
-- (id)init;
-- (void)postNotificationOfType:(unsigned long long)arg1 forTrigger:(id)arg2 workflowReference:(id)arg3 actionIcons:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)_postNotificationOfType:(unsigned long long)arg1 forTrigger:(id)arg2 workflowReference:(id)arg3 removeDeliveredNotifications:(BOOL)arg4 pendingTriggerEventIDs:(id)arg5 actionIcons:(id)arg6 error:(id *)arg7;
+- (id)initWithUserNotificationManager:(id)arg1;
+- (void)postNotificationForTrigger:(id)arg1 workflowReference:(id)arg2 pendingTriggerEventIDs:(id)arg3;
+- (BOOL)postNotificationOfType:(unsigned long long)arg1 forTrigger:(id)arg2 workflowReference:(id)arg3 removeDeliveredNotifications:(BOOL)arg4 pendingTriggerEventIDs:(id)arg5 actionIcons:(id)arg6 error:(id *)arg7;
 - (void)postNotificationThatTrigger:(id)arg1 failedWithError:(id)arg2;
 - (void)removeNotificationsWithTriggerIdentifier:(id)arg1;
+- (void)removeStaleNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end

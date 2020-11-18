@@ -19,6 +19,8 @@
 + (id)appDemotionSettingQueue;
 + (void)assignError:(id *)arg1 withCode:(long long)arg2;
 + (void)assignError:(id *)arg1 withError:(id)arg2 translate:(BOOL)arg3;
++ (id)autoDownloadExpiredError:(BOOL)arg1;
++ (id)bootTime;
 + (long long)cacheDelete:(id)arg1;
 + (BOOL)cellularDataIsEnabled;
 + (id)currentDeviceName;
@@ -32,8 +34,10 @@
 + (long long)demoteApps:(unsigned long long)arg1 withError:(id *)arg2;
 + (unsigned long long)devicePadding:(id)arg1;
 + (void)enableAppDemotion:(BOOL)arg1;
++ (id)errorRemovingUserInfoKey:(id)arg1 originalError:(id)arg2;
 + (id)errorWithCode:(long long)arg1;
 + (id)errorWithCode:(long long)arg1 originalError:(id)arg2;
++ (id)fastWorkQueue;
 + (BOOL)freeCachedSpaceSynchronous:(unsigned long long)arg1 timeout:(double)arg2;
 + (BOOL)freeCachedSpaceSynchronous:(unsigned long long)arg1 timeout:(double)arg2 isAutoDownload:(BOOL)arg3;
 + (BOOL)freeCachedSpaceSynchronous:(unsigned long long)arg1 timeout:(double)arg2 isAutoDownload:(BOOL)arg3 disableCDLevelFour:(BOOL)arg4 disableSiriDeletion:(BOOL)arg5 disableAppDemotion:(BOOL)arg6;
@@ -49,14 +53,17 @@
 + (BOOL)isDaemon;
 + (BOOL)isProductionFused;
 + (BOOL)isWiFiCapable;
++ (id)mainWorkQueue;
 + (void)postAutoUpdateInformationalNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 + (void)postFailureNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4;
 + (id)prettyPrintDate:(id)arg1;
 + (void)purgeV1SUAssets;
++ (int)randomIntWithMinVal:(unsigned int)arg1 maxVal:(unsigned int)arg2;
 + (id)serialNumber;
 + (void)setCacheable:(BOOL)arg1;
 + (void)setIsDaemon:(BOOL)arg1;
 + (id)systemContainerURL;
++ (unsigned long long)systemPartitionGrowth:(id)arg1;
 + (id)taskQueue;
 + (unsigned long long)totalPurgeableSpace:(id)arg1;
 + (id)translateError:(id)arg1;

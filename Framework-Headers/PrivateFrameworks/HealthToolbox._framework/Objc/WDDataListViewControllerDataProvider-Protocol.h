@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSPredicate *defaultQueryPredicate;
 @property (readonly) BOOL hasCompleteDataSet;
 @property (readonly, nonatomic) unsigned long long numberOfSections;
+@property (copy, nonatomic) NSString *profileName;
 @property (readonly, nonatomic) BOOL textAdjustsFontSizeToFitWidth;
 
 - (UITableViewCell *)customCellForObject:(id)arg1 indexPath:(NSIndexPath *)arg2 tableView:(UITableView *)arg3;

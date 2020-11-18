@@ -6,17 +6,21 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
+
 @class NSIndexSet, NSMutableIndexSet, TSTTableTileGroup;
 
-@interface TSTTableTileStorage : TSPContainedObject
+@interface TSTTableTileStorage : TSPContainedObject <TSTCompatibilityVersionProviding>
 {
     NSMutableIndexSet *_tileIDSet;
     TSTTableTileGroup *_tileGroups[16];
+    unsigned long long _archivingCompatibilityVersion;
     BOOL _upgradeRepairedTiles;
     BOOL _shouldUseWideRows;
 }
 
-@property (readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
+@property (readonly, nonatomic) unsigned long long archivingCompatibilityVersion; // @synthesize archivingCompatibilityVersion=_archivingCompatibilityVersion;
+@property (readonly, nonatomic) BOOL isEmbiggened; // @dynamic isEmbiggened;
 @property (readonly, nonatomic) unsigned int lastPopulatedRowIndex;
 @property (readonly, nonatomic) BOOL needToUpgradeCellStorage;
 @property (readonly, nonatomic) unsigned long long nextTileID;
@@ -31,6 +35,7 @@
 - (void)_clearContentAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
 - (id)_createTileWithID:(unsigned long long)arg1;
 - (void)_enumerateGroups:(CDUnknownBlockType)arg1;
+- (void)_enumerateLoadedTiles:(CDUnknownBlockType)arg1;
 - (void)_enumerateTiles:(CDUnknownBlockType)arg1;
 - (id)_groupForTileID:(unsigned long long)arg1;
 - (void)_insertRowsAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
@@ -69,6 +74,7 @@
 - (id)tileForWritingAtRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
 - (id)tileStartingAtOrAfterRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
 - (id)tileStartingAtOrBeforeRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
+- (void)widenTilesForUpgrade;
 
 @end
 

@@ -56,7 +56,6 @@
 - (void)_configureContainerViewIfNecessary;
 - (void)_configurePortalViewIfNecessary;
 - (void)_configurePresentedControlIfNecessaryWithTitle:(id)arg1;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (struct CGRect)_finalPresentedViewFrame;
 - (double)_frictionForTransitionPresentation:(BOOL)arg1 cancelled:(BOOL)arg2;
 - (void)_handleEatenTouch:(id)arg1;
@@ -66,6 +65,7 @@
 - (void)_setUpBackgroundMaterialView;
 - (void)_setUpContainerView;
 - (void)_setUpPortalView;
+- (void)_setUpPresentationIfNecessary;
 - (void)_setUpPresentedControl;
 - (void)_setUpSubviews;
 - (void)_tearDown;
@@ -74,11 +74,12 @@
 - (void)clickInteractionDidClickUp:(id)arg1;
 - (void)clickInteractionDidEnd:(id)arg1;
 - (BOOL)clickInteractionShouldBegin:(id)arg1;
-- (void)dealloc;
+- (void)contentSizeCategoryDidChange;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)highlightEffectForClickInteraction:(id)arg1;
 - (id)initWithTitle:(id)arg1 sourceView:(id)arg2 materialRecipe:(long long)arg3;
+- (void)presentModalFullScreen;
 
 @end
 

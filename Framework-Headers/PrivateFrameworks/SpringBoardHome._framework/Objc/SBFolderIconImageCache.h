@@ -45,6 +45,8 @@
 - (void)addObserver:(id)arg1 forFolderIcon:(id)arg2;
 - (void)folder:(id)arg1 didAddIcons:(id)arg2 removedIcons:(id)arg3;
 - (void)folder:(id)arg1 didAddList:(id)arg2;
+- (void)folder:(id)arg1 didMoveIcon:(id)arg2;
+- (void)folder:(id)arg1 didMoveList:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)folder:(id)arg1 didRemoveLists:(id)arg2 atIndexes:(id)arg3;
 - (void)folder:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)folderIcon:(id)arg1 containedIconAccessoriesDidUpdate:(id)arg2;

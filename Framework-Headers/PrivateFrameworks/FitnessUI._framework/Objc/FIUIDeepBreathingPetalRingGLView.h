@@ -6,10 +6,12 @@
 
 #import <HealthKitUI/HKGLView.h>
 
-@class GLKTextureInfo, MISSING_TYPE;
-@protocol FIUIDeepBreathingPetalRingGLViewDelegate;
+#import <FitnessUI/FIUIBreathingPetalRingViewDrawable-Protocol.h>
 
-@interface FIUIDeepBreathingPetalRingGLView : HKGLView
+@class GLKTextureInfo, MISSING_TYPE, NSString, UIView;
+@protocol FIUIDeepBreathingPetalRingViewDelegate;
+
+@interface FIUIDeepBreathingPetalRingGLView : HKGLView <FIUIBreathingPetalRingViewDrawable>
 {
     unsigned int _program;
     MISSING_TYPE *_ringCenterVector;
@@ -25,24 +27,28 @@
     unsigned int _petalPositionUniform;
     unsigned int _petalPropertiesUniform;
     unsigned int _textureRotationUniform;
+    CDStruct_7104cd25 _circleProperties;
     GLKTextureInfo *_texture;
-    MISSING_TYPE *_circlePosition[20];
-    MISSING_TYPE *_circleProperties[20];
-    MISSING_TYPE *_textureRotationVector;
     BOOL _showBlurTrails;
     float _ringRadius;
-    id<FIUIDeepBreathingPetalRingGLViewDelegate> _petalRingDelegate;
+    id<FIUIDeepBreathingPetalRingViewDelegate> _petalRingDelegate;
     long long _numberOfPetals;
     long long _numberOfVisiblePetals;
     struct CGPoint _ringCenter;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long numberOfPetals; // @synthesize numberOfPetals=_numberOfPetals;
 @property (readonly, nonatomic) long long numberOfVisiblePetals; // @synthesize numberOfVisiblePetals=_numberOfVisiblePetals;
-@property (weak, nonatomic) id<FIUIDeepBreathingPetalRingGLViewDelegate> petalRingDelegate; // @synthesize petalRingDelegate=_petalRingDelegate;
+@property (weak, nonatomic) id<FIUIDeepBreathingPetalRingViewDelegate> petalRingDelegate; // @synthesize petalRingDelegate=_petalRingDelegate;
+@property (nonatomic) float preferredFramesPerSecond;
 @property (nonatomic) struct CGPoint ringCenter; // @synthesize ringCenter=_ringCenter;
 @property (nonatomic) float ringRadius; // @synthesize ringRadius=_ringRadius;
 @property (readonly, nonatomic) BOOL showBlurTrails; // @synthesize showBlurTrails=_showBlurTrails;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UIView *view;
 
 - (void).cxx_destruct;
 - (void)_clearCirclesInRange:(struct _NSRange)arg1;
@@ -59,6 +65,7 @@
 - (unsigned int)drawInRect:(struct CGRect)arg1 withContext:(id)arg2;
 - (void)importDataFromPetalRing:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(BOOL)arg3 device:(id)arg4;
 - (void)setBlurTrailAtIndex:(long long)arg1 center:(struct CGPoint)arg2 radius:(float)arg3 blurriness:(float)arg4 alpha:(float)arg5;
 - (void)setGradientRotationAngle:(float)arg1;
 - (void)setNumberOfVisiblePetals:(long long)arg1 showBlurTrails:(BOOL)arg2;

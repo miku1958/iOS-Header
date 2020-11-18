@@ -29,6 +29,7 @@
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)renewalNoticeShownWithPurchaseID:(id)arg1;
+- (void)silentExpireBundleSubscription;
 
 @end
 

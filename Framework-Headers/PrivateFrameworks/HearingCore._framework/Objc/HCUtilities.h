@@ -13,6 +13,7 @@
 + (BOOL)currentProcessIsHeard;
 + (BOOL)currentProcessIsPreferences;
 + (BOOL)deviceHasHomeButton;
++ (BOOL)deviceIsBigPhone;
 + (BOOL)deviceIsMultiUser;
 + (BOOL)deviceIsPad;
 + (BOOL)deviceIsPhone;
@@ -20,6 +21,7 @@
 + (BOOL)deviceIsSmallPhone;
 + (BOOL)deviceIsWatch;
 + (BOOL)isInternalInstall;
++ (BOOL)isProtectedDataAvailable;
 + (id)messagePayloadFromDictionary:(id)arg1 andIdentifier:(unsigned long long)arg2;
 + (BOOL)supportsLEA2;
 + (BOOL)watchSupportsPairingHearingAids;

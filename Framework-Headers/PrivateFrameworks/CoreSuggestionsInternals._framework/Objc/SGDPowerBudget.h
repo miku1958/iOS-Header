@@ -6,26 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_os_log;
+@class NSDate, SGDPowerBudgetThrottlingState;
+@protocol NSObject, OS_os_log;
 
 @interface SGDPowerBudget : NSObject
 {
+    SGDPowerBudgetThrottlingState *_throttlingState;
+    NSDate *_lastPlugInTime;
+    id<NSObject> _batteryObserver;
     _Atomic BOOL _discretionaryWorkInProgress;
     NSObject<OS_os_log> *_log;
 }
 
 + (id)defaultBudget;
 - (void).cxx_destruct;
+- (BOOL)_canDoDiscretionaryWork:(id *)arg1;
+- (void)_didConsumeAnExtraBudgetedOperation;
 - (void)_endDuetBudgetedWork;
 - (void)_endThrottleBudgetedWork;
 - (void)_endWork;
 - (BOOL)_hasDuetBudgetRemaining;
+- (BOOL)_hasExtraThrottleBudgetRemaining;
 - (BOOL)_hasThrottleBudgetRemaining;
 - (void)_startDuetBudgetedWork;
 - (void)_startThrottleBudgetedWork;
-- (void)_startWork;
+- (BOOL)_startWork;
 - (BOOL)canDoDiscretionaryWork;
+- (BOOL)canDoExtraDiscretionaryWork;
 - (void)dealloc;
+- (void)didConsumeAnExtraBudgetedOperation;
 - (void)doDiscretionaryWork:(CDUnknownBlockType)arg1 orElse:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)throttlingState;

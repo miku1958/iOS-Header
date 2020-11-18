@@ -17,8 +17,6 @@
     unsigned long long _typeMask;
     id _primParamVal;
     id _otherParamVals;
-    void *_blockPrimary;
-    void *_blockSecondary;
 }
 
 + (void)initialize;

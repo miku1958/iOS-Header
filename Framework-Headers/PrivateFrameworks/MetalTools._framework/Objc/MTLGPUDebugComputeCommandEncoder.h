@@ -6,13 +6,26 @@
 
 #import <MetalTools/MTLToolsComputeCommandEncoder.h>
 
-@interface MTLGPUDebugComputeCommandEncoder : MTLToolsComputeCommandEncoder
+#import <MetalTools/MTLGPUDebugCommandEncoder-Protocol.h>
+
+@class MTLGPUDebugComputePipelineState, NSString;
+
+@interface MTLGPUDebugComputeCommandEncoder : MTLToolsComputeCommandEncoder <MTLGPUDebugCommandEncoder>
 {
+    unsigned int useResourceIteration;
+    struct Options *_options;
+    struct MTLGPUDebugStageBufferHandles _handles;
+    struct MTLGPUDebugThreadgroupLengths _threadgroup;
     struct MTLGPUDebugBufferArgumentData _buffers;
-    unsigned int _encoderID;
-    unsigned int _currentDispatchID;
-    unsigned long long _currentPipelineID;
+    struct GPUDebugEventUUIDPacket _dispatchID;
+    MTLGPUDebugComputePipelineState *_currentPipeline;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int encoderID;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void)dispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
@@ -20,13 +33,16 @@
 - (void)dispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreadsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
 - (void)endEncoding;
+- (void)flushBindings;
 - (id)initWithComputeCommandEncoder:(id)arg1 parent:(id)arg2 encoderID:(unsigned int)arg3;
-- (void)onDispatch;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id)arg1;
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
+- (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
 
 @end
 

@@ -6,28 +6,15 @@
 
 #import <ARKit/ARSkeleton.h>
 
-#import <ARKit/NSSecureCoding-Protocol.h>
-
-@class ARCoreRESkeletonResult;
-
-@interface ARSkeleton3D : ARSkeleton <NSSecureCoding>
+@interface ARSkeleton3D : ARSkeleton
 {
-    ARCoreRESkeletonResult *_skeleton;
+    const CDStruct_14d5dc5e *_jointModelTransforms;
+    const CDStruct_14d5dc5e *_jointLocalTransforms;
 }
 
-@property (readonly, nonatomic) ARCoreRESkeletonResult *coreRESkeleton;
-@property (readonly, nonatomic) const CDStruct_14d5dc5e *jointLocalTransforms;
-@property (readonly, nonatomic) const CDStruct_14d5dc5e *jointModelTransforms;
+@property (readonly, nonatomic) const CDStruct_14d5dc5e *jointLocalTransforms; // @synthesize jointLocalTransforms=_jointLocalTransforms;
+@property (readonly, nonatomic) const CDStruct_14d5dc5e *jointModelTransforms; // @synthesize jointModelTransforms=_jointModelTransforms;
 
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (id)definition;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithCoreRESkeletonResult:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isJointTracked:(long long)arg1;
-- (unsigned long long)jointCount;
 - (CDStruct_14d5dc5e)localTransformForJointName:(id)arg1;
 - (CDStruct_14d5dc5e)modelTransformForJointName:(id)arg1;
 

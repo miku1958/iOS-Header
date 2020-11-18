@@ -24,7 +24,7 @@
 + (id)pluralTypeDescription;
 + (id)propertyBuilders;
 + (id)typeDescription;
-- (id)adamID;
+- (id)appleMusicID;
 - (id)appleMusicURL;
 - (id)artist;
 - (id)artworkURL;

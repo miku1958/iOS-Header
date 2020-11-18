@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
 + (id)providerItemForAvatarRecord:(id)arg1 imageProvider:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4;
 - (void).cxx_destruct;
 - (BOOL)canCreateMemoji;
-- (id)initWithContact:(id)arg1;
-- (id)initWithContact:(id)arg1 avatarStore:(id)arg2;
+- (id)initWithVisualIdentity:(id)arg1;
+- (id)initWithVisualIdentity:(id)arg1 avatarStore:(id)arg2;
 - (id)loadItemsForSize:(struct CGSize)arg1 scale:(double)arg2 RTL:(BOOL)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5 itemDelegate:(id)arg6;
 
 @end

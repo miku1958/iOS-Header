@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface CKDPCSCacheFetchOperation : CKDDatabaseOperation
 {
-    BOOL _willRetryFetchSuperCalled;
     BOOL _didFetchData;
     BOOL _wasFetchedFromCache;
     BOOL _shouldRetry;
@@ -42,8 +41,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPCSData *pcsData; // @synthesize pcsData=_pcsData;
 @property (getter=isPCSDataInvalidated) BOOL pcsDataInvalidated; // @synthesize pcsDataInvalidated=_pcsDataInvalidated;
 @property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (nonatomic) BOOL wasFetchedFromCache; // @synthesize wasFetchedFromCache=_wasFetchedFromCache;
-@property (nonatomic) BOOL willRetryFetchSuperCalled; // @synthesize willRetryFetchSuperCalled=_willRetryFetchSuperCalled;
 
 - (void).cxx_destruct;
 - (BOOL)_createAdditionalPCS;

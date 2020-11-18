@@ -34,6 +34,7 @@
 @property (copy, nonatomic) NSString *postalCode; // @dynamic postalCode;
 @property (copy, nonatomic) NSString *subAdministrativeArea; // @dynamic subAdministrativeArea;
 @property (copy, nonatomic) NSString *subLocality; // @dynamic subLocality;
+@property (strong, nonatomic) NSArray *subPremises; // @dynamic subPremises;
 @property (copy, nonatomic) NSString *subThoroughfare; // @dynamic subThoroughfare;
 @property (copy, nonatomic) NSString *thoroughfare; // @dynamic thoroughfare;
 

@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXFeatureSpec.h>
 
-@class NSString, UIColor, UIFont;
+@class PXExtendedImageConfiguration, UIColor, UIFont;
 
 @interface PXCuratedLibraryChapterHeaderLayoutSpec : PXFeatureSpec
 {
@@ -14,12 +14,12 @@
     BOOL _shouldAbbreviateMonth;
     UIFont *_titleFont;
     double _titleHeight;
-    UIColor *_titleColor;
-    UIColor *_floatingTitleColor;
-    UIColor *_subtitleColor;
-    UIColor *_floatingSubtitleColor;
-    NSString *_chevronImageName;
-    double _spacingBetweenTitleAndSubtitle;
+    UIColor *_titleEmphasizedColor;
+    UIColor *_floatingTitleEmphasizedColor;
+    UIColor *_titleDeemphasizedColor;
+    UIColor *_floatingTitleDeemphasizedColor;
+    PXExtendedImageConfiguration *_chevronImageConfiguration;
+    double _spacingBetweenTitleAndChevron;
     double _spacingBetweenTitleTopAndPreviousCardBottom;
     double _spacingBetweenTitleBottomAndNextCardTop;
     double _floatingDistanceFromSafeAreaTop;
@@ -30,22 +30,22 @@
     struct CGSize _contentInset;
 }
 
-@property (readonly, nonatomic) NSString *chevronImageName; // @synthesize chevronImageName=_chevronImageName;
+@property (readonly, nonatomic) PXExtendedImageConfiguration *chevronImageConfiguration; // @synthesize chevronImageConfiguration=_chevronImageConfiguration;
 @property (readonly, nonatomic) struct CGSize contentInset; // @synthesize contentInset=_contentInset;
 @property (readonly, nonatomic) double floatingAppearanceCrossfadeDistance; // @synthesize floatingAppearanceCrossfadeDistance=_floatingAppearanceCrossfadeDistance;
 @property (readonly, nonatomic) double floatingAppearanceCrossfadeDuration; // @synthesize floatingAppearanceCrossfadeDuration=_floatingAppearanceCrossfadeDuration;
 @property (readonly, nonatomic) double floatingAppearanceCrossfadeStartDistance; // @synthesize floatingAppearanceCrossfadeStartDistance=_floatingAppearanceCrossfadeStartDistance;
 @property (readonly, nonatomic) double floatingDistanceFromSafeAreaTop; // @synthesize floatingDistanceFromSafeAreaTop=_floatingDistanceFromSafeAreaTop;
 @property (readonly, nonatomic) double floatingFadeOutDistance; // @synthesize floatingFadeOutDistance=_floatingFadeOutDistance;
-@property (readonly, nonatomic) UIColor *floatingSubtitleColor; // @synthesize floatingSubtitleColor=_floatingSubtitleColor;
-@property (readonly, nonatomic) UIColor *floatingTitleColor; // @synthesize floatingTitleColor=_floatingTitleColor;
+@property (readonly, nonatomic) UIColor *floatingTitleDeemphasizedColor; // @synthesize floatingTitleDeemphasizedColor=_floatingTitleDeemphasizedColor;
+@property (readonly, nonatomic) UIColor *floatingTitleEmphasizedColor; // @synthesize floatingTitleEmphasizedColor=_floatingTitleEmphasizedColor;
 @property (readonly, nonatomic) BOOL shouldAbbreviateMonth; // @synthesize shouldAbbreviateMonth=_shouldAbbreviateMonth;
 @property (readonly, nonatomic) BOOL shouldFloat; // @synthesize shouldFloat=_shouldFloat;
-@property (readonly, nonatomic) double spacingBetweenTitleAndSubtitle; // @synthesize spacingBetweenTitleAndSubtitle=_spacingBetweenTitleAndSubtitle;
+@property (readonly, nonatomic) double spacingBetweenTitleAndChevron; // @synthesize spacingBetweenTitleAndChevron=_spacingBetweenTitleAndChevron;
 @property (readonly, nonatomic) double spacingBetweenTitleBottomAndNextCardTop; // @synthesize spacingBetweenTitleBottomAndNextCardTop=_spacingBetweenTitleBottomAndNextCardTop;
 @property (readonly, nonatomic) double spacingBetweenTitleTopAndPreviousCardBottom; // @synthesize spacingBetweenTitleTopAndPreviousCardBottom=_spacingBetweenTitleTopAndPreviousCardBottom;
-@property (readonly, nonatomic) UIColor *subtitleColor; // @synthesize subtitleColor=_subtitleColor;
-@property (readonly, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
+@property (readonly, nonatomic) UIColor *titleDeemphasizedColor; // @synthesize titleDeemphasizedColor=_titleDeemphasizedColor;
+@property (readonly, nonatomic) UIColor *titleEmphasizedColor; // @synthesize titleEmphasizedColor=_titleEmphasizedColor;
 @property (readonly, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (readonly, nonatomic) double titleHeight; // @synthesize titleHeight=_titleHeight;
 

@@ -14,8 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axLocationItem;
+- (id)_axURLCell;
+- (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityIsLocationLink;
+- (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
 
 @end
 

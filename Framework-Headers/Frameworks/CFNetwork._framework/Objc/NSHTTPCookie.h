@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CFNetwork/NSCoding-Protocol.h>
+
 @class NSArray, NSDate, NSDictionary, NSHTTPCookieInternal, NSString, NSURL;
 
-@interface NSHTTPCookie : NSObject
+@interface NSHTTPCookie : NSObject <NSCoding>
 {
     NSHTTPCookieInternal *_cookiePrivate;
 }
@@ -31,10 +33,9 @@
 
 + (id)_cf2nsCookies:(struct __CFArray *)arg1;
 + (id)_cookieForSetCookieString:(id)arg1 forURL:(id)arg2 partition:(id)arg3;
-+ (id)_cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2 singleCookie:(BOOL)arg3;
 + (const struct __CFArray *)_ns2cfCookies:(id)arg1;
 + (id)_parsedCookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
-+ (id)cookieWithCFHTTPCookie:(id)arg1;
++ (id)cookieWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
 + (id)cookieWithProperties:(id)arg1;
 + (id)cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
 + (id)requestHeaderFieldsWithCookies:(id)arg1;
@@ -53,8 +54,8 @@
 - (id)StoragePartition;
 - (id)Value;
 - (id)Version;
-- (id)_CFHTTPCookie;
-- (id)_GetInternalCFHTTPCookie;
+- (const struct OpaqueCFHTTPCookie *)_CFHTTPCookie;
+- (const struct OpaqueCFHTTPCookie *)_GetInternalCFHTTPCookie;
 - (long long)_compareForHeaderOrder:(id)arg1;
 - (id)_initWithCookie:(id)arg1 partition:(id)arg2;
 - (id)_initWithHeader:(const struct CompactCookieHeader *)arg1;
@@ -67,10 +68,9 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)ensureCookieValid;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCFHTTPCookie:(id)arg1;
+- (id)initWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProperties:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

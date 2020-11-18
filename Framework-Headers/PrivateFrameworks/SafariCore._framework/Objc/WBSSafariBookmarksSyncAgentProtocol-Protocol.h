@@ -13,9 +13,9 @@
 - (void)collectDiagnosticsDataWithCompletionHandler:(void (^)(NSData *))arg1;
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteDevicesWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)fetchCloudTabDevicesAndCloseRequests;
 - (void)fetchRemoteMigrationStateWithCompletionHandler:(void (^)(long long, NSString *, NSError *))arg1;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1;
-- (void)fetchUserIdentityWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)getCloudTabContainerManateeStateWithCompletionHandler:(void (^)(BOOL))arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)observeRemoteMigrationStateForSecondaryMigration;

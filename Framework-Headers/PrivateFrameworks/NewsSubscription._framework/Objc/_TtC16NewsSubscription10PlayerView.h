@@ -6,7 +6,6 @@
 
 #import <UIKit/UIView.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription10PlayerView : UIView
 {
 }

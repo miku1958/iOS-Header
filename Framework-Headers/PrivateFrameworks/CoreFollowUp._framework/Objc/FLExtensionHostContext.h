@@ -26,6 +26,7 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 - (void)extensionDidFinish;
+- (void)extensionDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)remoteContextWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end

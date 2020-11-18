@@ -14,9 +14,15 @@
 {
     PBUnknownFields *_unknownFields;
     NSMutableArray *_images;
+    BOOL _isEnrichment;
+    struct {
+        unsigned int has_isEnrichment:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasIsEnrichment;
 @property (strong, nonatomic) NSMutableArray *images;
+@property (nonatomic) BOOL isEnrichment;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)imageType;
@@ -32,7 +38,10 @@
 - (unsigned long long)hash;
 - (id)imageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)imagesCount;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -18,6 +18,7 @@
 - (id)_accessibilityChildren;
 - (void)_accessibilityClearInternalCaches;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)_accessibilityImplementsDefaultRowRange;
 - (id)_accessibilityIndexPath;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (BOOL)_accessibilityIsInCollectionCell;
@@ -26,13 +27,16 @@
 - (id)_accessibilityParentScrollView;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_axContentViewHasSingleFocusableSubview;
+- (id)_axCustomActionsForActions:(id)arg1;
 - (BOOL)_isEligibleForFocusInteraction;
+- (id)_privateAccessibilityCustomActions;
 - (void)accessibilityClearInternalData;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (void)accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;
+- (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScrollToVisible;
 - (unsigned long long)accessibilityTraits;
 - (void)addSubview:(id)arg1;

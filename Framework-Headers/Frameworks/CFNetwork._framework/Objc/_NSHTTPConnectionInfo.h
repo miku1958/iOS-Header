@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue;
+@class NSURLSession;
 @protocol OS_dispatch_queue;
 
 @interface _NSHTTPConnectionInfo : NSObject
 {
     struct HTTPConnectionInfo *_httpConnectionInfo;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSOperationQueue *__delegateQueue;
+    NSURLSession *_session;
 }
 
-@property (strong, nonatomic) NSOperationQueue *_delegateQueue; // @synthesize _delegateQueue=__delegateQueue;
 @property (readonly) BOOL isValid;
 
 - (void).cxx_destruct;
-- (id)initWithHTTPConnectionInfo:(struct HTTPConnectionInfo *)arg1 queue:(id)arg2;
-- (void)invalidateUnderlyingConnection;
 - (void)sendPingWithReceiveHandler:(CDUnknownBlockType)arg1;
 
 @end

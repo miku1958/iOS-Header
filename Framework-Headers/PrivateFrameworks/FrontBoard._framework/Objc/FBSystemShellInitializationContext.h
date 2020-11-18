@@ -21,9 +21,7 @@
 @property (readonly, nonatomic) FBSystemShellInitializationOptions *options; // @synthesize options=_options;
 
 - (void).cxx_destruct;
-- (BOOL)_disablesUIKitWindowImplicitScenes;
 - (id)_initWithOptions:(id)arg1;
-- (BOOL)_optsIntoUIKitWindowHosting;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

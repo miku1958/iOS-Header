@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)_MaxRetry;
 + (double)_MaxRetryInterval;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_connectWithSession:(id)arg1 outError:(id *)arg2;
 - (BOOL)_disconnectWithError:(id *)arg1;
@@ -51,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (id)asNFCMiFareTag;
 - (unsigned long long)capacity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)disconnect;
 - (void)dispatchOnDelegateQueueAsync:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;

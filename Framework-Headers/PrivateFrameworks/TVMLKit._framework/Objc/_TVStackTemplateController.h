@@ -89,6 +89,7 @@
 - (id)viewControllers;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

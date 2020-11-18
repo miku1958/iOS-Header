@@ -15,7 +15,6 @@
 @interface HMDHomeInvitation : HMFObject <HMFTimerDelegate, NSSecureCoding>
 {
     long long _invitationState;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDHome *_home;
     HMHomeInvitationData *_invitationData;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -40,7 +39,6 @@
 @property (nonatomic) long long invitationState; // @synthesize invitationState=_invitationState;
 @property (strong, nonatomic) NSArray *operations; // @synthesize operations=_operations;
 @property (readonly, nonatomic, getter=isPending) BOOL pending;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (copy, nonatomic) CDUnknownBlockType resolutionHandler; // @synthesize resolutionHandler=_resolutionHandler;
 @property (readonly, copy, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;

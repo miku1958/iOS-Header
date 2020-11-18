@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BKSAnimationFenceHandle, BKSHIDEventDeferringToken, NSArray, NSDictionary, NSString, _UIKeyboardChangedInformation;
+@class BKSAnimationFenceHandle, FBSSceneIdentityToken, NSArray, NSDictionary, NSString, _UIKeyboardChangedInformation;
 
 @protocol _UIKeyboardArbitration
 - (void)applicationShouldFocusWithBundle:(NSString *)arg1 onCompletion:(void (^)(BOOL))arg2;
-- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneDeferringToken:(BKSHIDEventDeferringToken *)arg2 onCompletion:(void (^)(BOOL))arg3;
+- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(FBSSceneIdentityToken *)arg2 onCompletion:(void (^)(BOOL))arg3;
 - (void)notifyHostedPIDsOfSuppression:(BOOL)arg1;
 - (void)notifyIAVHeight:(double)arg1;
 - (void)retrieveDebugInformation:(void (^)(NSString *))arg1;
 - (void)retrieveMoreDebugInformationWithCompletion:(void (^)(NSArray *))arg1;
+- (void)setDeactivating:(BOOL)arg1;
 - (void)setKeyboardTotalDisable:(BOOL)arg1 withFence:(BKSAnimationFenceHandle *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)setSceneIdentity:(FBSSceneIdentityToken *)arg1;
 - (void)setWantsFencing:(BOOL)arg1;
-- (void)setWindowContextID:(unsigned int)arg1 sceneIdentifier:(NSString *)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
+- (void)setWindowContextID:(unsigned int)arg1 sceneIdentity:(FBSSceneIdentityToken *)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
 - (void)setWindowHostingPID:(int)arg1 active:(BOOL)arg2;
 - (void)signalEventSourceChanged:(long long)arg1 completionHandler:(void (^)(void))arg2;
 - (void)signalKeyboardChangeComplete;

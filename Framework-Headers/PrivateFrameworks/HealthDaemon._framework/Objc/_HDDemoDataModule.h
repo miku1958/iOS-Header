@@ -9,6 +9,7 @@
 @class NSDate, NSOperationQueue;
 @protocol OS_dispatch_source, _HDDemoDataModuleDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _HDDemoDataModule : NSObject
 {
     NSOperationQueue *_operationQueue;

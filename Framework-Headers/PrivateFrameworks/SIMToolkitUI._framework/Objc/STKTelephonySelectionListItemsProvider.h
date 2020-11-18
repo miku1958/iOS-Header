@@ -8,11 +8,11 @@
 
 #import <SIMToolkitUI/STKTelephonyListItemsProvider-Protocol.h>
 
-@class NSString;
+@class CoreTelephonyClient, NSString;
 
 @interface STKTelephonySelectionListItemsProvider : NSObject <STKTelephonyListItemsProvider>
 {
-    struct __CTServerConnection *_connection;
+    CoreTelephonyClient *_telephonyClient;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,9 +20,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithConnection:(struct __CTServerConnection *)arg1;
-- (id)selectionListItemsFromOptions:(id)arg1;
+- (id)initWithTelephonyClient:(id)arg1;
+- (id)selectionListItemsForContext:(id)arg1 options:(id)arg2;
 
 @end
 

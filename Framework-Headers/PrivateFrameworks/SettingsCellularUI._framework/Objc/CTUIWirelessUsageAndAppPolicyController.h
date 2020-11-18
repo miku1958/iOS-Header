@@ -33,6 +33,8 @@
 - (void)_handleWirelessDataUsageChangedNotification:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)managedConfigurationProfileListDidChange;
+- (void)managedConfigurationSettingsDidChange;
 - (id)selectSpecifier:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;

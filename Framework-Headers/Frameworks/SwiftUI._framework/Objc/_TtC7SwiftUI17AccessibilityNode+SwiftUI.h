@@ -12,5 +12,6 @@
 
 @property (nonatomic, readonly) NSString *description;
 
+- (id)_accessibilityClassName;
 @end
 

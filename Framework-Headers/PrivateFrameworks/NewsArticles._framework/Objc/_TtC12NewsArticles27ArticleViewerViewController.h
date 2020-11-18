@@ -21,12 +21,14 @@
     MISSING_TYPE *eventManager;
     MISSING_TYPE *prewarm;
     MISSING_TYPE *barCompressionManager;
-    MISSING_TYPE *hasPresentedFirstPage;
     MISSING_TYPE *articleViewerImpressionManager;
-    MISSING_TYPE *featureManager;
+    MISSING_TYPE *interstitialAdManager;
     MISSING_TYPE *paidAccessChecker;
-    MISSING_TYPE *currentPageContext;
+    MISSING_TYPE *featureManager;
+    MISSING_TYPE *featureTransitions;
+    MISSING_TYPE *hasPresentedFirstPage;
     MISSING_TYPE *pageSheetPresentationObserver;
+    MISSING_TYPE *commands;
 }
 
 - (void).cxx_destruct;

@@ -9,7 +9,7 @@
 #import <VoiceMemos/CLLocationManagerDelegate-Protocol.h>
 
 @class CLLocation, CLLocationManager, NSArray, NSString;
-@protocol RCLocationsOfInterestDelegate;
+@protocol OS_dispatch_queue;
 
 @interface RCLocationsOfInterestManager : NSObject <CLLocationManagerDelegate>
 {
@@ -20,14 +20,11 @@
     BOOL _isFetchingPlacesOfInterest;
     BOOL _active;
     unsigned long long _placeInferencePolicy;
-    id<RCLocationsOfInterestDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
-@property (readonly, nonatomic) BOOL active; // @synthesize active=_active;
-@property (readonly, nonatomic) BOOL authorized;
-@property (readonly) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
+@property (readonly) CLLocation *currentLocation;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<RCLocationsOfInterestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSArray *locationsOfInterest;
@@ -38,10 +35,11 @@
 - (void)_didFetchPlaceInferences:(id)arg1 location:(id)arg2 error:(id)arg3;
 - (void)_requestPlaceInferences;
 - (void)_startMonitoringLocation;
+- (void)_stopMonitoringLocation;
 - (id)init;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)start;
 - (void)stop;
 

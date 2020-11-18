@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @interface WFStorageServiceRegistry : NSObject
 {
     NSArray *_registeredServices;
 }
 
+@property (readonly, nonatomic) NSSet *objectRepresentationClasses;
 @property (readonly, nonatomic) NSArray *registeredServices; // @synthesize registeredServices=_registeredServices;
 @property (readonly, nonatomic) NSArray *storageServices;
 

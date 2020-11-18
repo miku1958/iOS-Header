@@ -9,7 +9,7 @@
 #import <BaseBoard/BSCompoundAssertionState-Protocol.h>
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString;
+@class NSMutableOrderedSet, NSOrderedSet, NSSet, NSString;
 
 @interface BSCompoundAssertion : NSObject <BSCompoundAssertionState, BSInvalidatable>
 {
@@ -17,7 +17,7 @@
     BOOL _syncLock_invalid;
     CDUnknownBlockType _syncLock_block;
     struct os_unfair_lock_s _dataLock;
-    NSMutableSet *_dataLock_acquisitions;
+    NSMutableOrderedSet *_dataLock_acquisitions;
     NSString *_dataLock_identifierPrefix;
 }
 
@@ -26,6 +26,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSOrderedSet *orderedContext;
+@property (readonly) NSOrderedSet *orderedReasons;
 @property (readonly) NSSet *reasons;
 @property (readonly) Class superclass;
 
@@ -33,12 +35,6 @@
 + (id)assertionWithIdentifier:(id)arg1 stateDidChangeHandler:(CDUnknownBlockType)arg2;
 + (id)new;
 - (void).cxx_destruct;
-- (void)_acquisitionDidInvalidate:(id)arg1;
-- (id)_dataLock_context;
-- (id)_dataLock_copyState;
-- (id)_initWithIdentifier:(id)arg1;
-- (id)_syncLock_acquireForReason:(id)arg1 withContext:(id)arg2;
-- (void)_syncLock_acquisitionDidInvalidate:(id)arg1;
 - (id)acquireForReason:(id)arg1;
 - (id)acquireForReason:(id)arg1 withContext:(id)arg2;
 - (void)dealloc;

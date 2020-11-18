@@ -9,6 +9,7 @@
 @class CLLocation;
 
 @protocol MapsSuggestionsLocationUpdaterDelegate <MapsSuggestionsObject>
-- (void)updateLocation:(CLLocation *)arg1;
+- (void)didLoseLocationPermission;
+- (void)didUpdateLocation:(CLLocation *)arg1;
 @end
 

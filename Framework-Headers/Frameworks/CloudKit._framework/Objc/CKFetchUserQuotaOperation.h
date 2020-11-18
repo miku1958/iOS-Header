@@ -6,22 +6,28 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@interface CKFetchUserQuotaOperation : CKDatabaseOperation
+#import <CloudKit/CKFetchUserQuotaOperationCallbacks-Protocol.h>
+
+@protocol CKFetchUserQuotaOperationCallbacks;
+
+@interface CKFetchUserQuotaOperation : CKDatabaseOperation <CKFetchUserQuotaOperationCallbacks>
 {
     CDUnknownBlockType _fetchUserQuotaCompletionBlock;
     unsigned long long _quotaAvailable;
 }
 
+@property (readonly, nonatomic) id<CKFetchUserQuotaOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType fetchUserQuotaCompletionBlock; // @synthesize fetchUserQuotaCompletionBlock=_fetchUserQuotaCompletionBlock;
 @property (nonatomic) unsigned long long quotaAvailable; // @synthesize quotaAvailable=_quotaAvailable;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
++ (SEL)daemonCallbackCompletionSelector;
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
 - (id)activityCreate;
+- (void)handleOperationDidCompleteWithQuotaAvailable:(unsigned long long)arg1 metrics:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

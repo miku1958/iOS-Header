@@ -45,7 +45,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_canSelectCredential:(id)arg1;
+- (BOOL)_canSelectCredentialCache:(id)arg1;
 - (void)_configureCell:(id)arg1 inTableView:(id)arg2 atIndexPath:(id)arg3 sizing:(BOOL)arg4;
 - (void)_continue;
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -87,6 +87,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

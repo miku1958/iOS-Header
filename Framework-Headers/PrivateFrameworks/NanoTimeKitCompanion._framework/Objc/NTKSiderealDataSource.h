@@ -6,68 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class CLKUIAlmanacTransitInfo, CLLocation, NSArray, NSCalendar, NSDate, NSOrderedSet, NSString;
-@protocol NTKSiderealDataSourceDelegate;
+@class CLLocation, NSDate, NSHashTable, NSString, NTKPromise;
 
 @interface NTKSiderealDataSource : NSObject
 {
-    float _altitudes[361];
-    NSDate *_startOfDayForReferenceDate;
-    NSDate *_endOfDayForReferenceDate;
-    NSOrderedSet *_daytimeEvents;
+    NSHashTable *_observers;
+    long long _locationManagerRefCount;
     NSString *_locationManagerToken;
-    NSCalendar *_currentCalendar;
-    NSDate *_cachedDate;
-    NSDate *_cachedStartOfDay;
-    NSDate *_cachedStartOfNextDay;
-    BOOL _isConstantSunUpOrDown;
-    id<NTKSiderealDataSourceDelegate> _delegate;
-    CLKUIAlmanacTransitInfo *_sunriseSunsetInfo;
-    NSDate *_referenceDate;
-    CLLocation *_referenceLocation;
-    NSOrderedSet *_solarEvents;
-    NSOrderedSet *_sectors;
-    NSArray *_waypoints;
+    NSDate *_currentReferenceDate;
+    CLLocation *_currentReferenceLocation;
+    NTKPromise *_currentData;
+    BOOL _useXR;
 }
 
-@property (weak, nonatomic) id<NTKSiderealDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL isConstantSunUpOrDown; // @synthesize isConstantSunUpOrDown=_isConstantSunUpOrDown;
-@property (strong, nonatomic) NSDate *referenceDate; // @synthesize referenceDate=_referenceDate;
-@property (strong, nonatomic) CLLocation *referenceLocation; // @synthesize referenceLocation=_referenceLocation;
-@property (strong, nonatomic) NSOrderedSet *sectors; // @synthesize sectors=_sectors;
-@property (strong, nonatomic) NSOrderedSet *solarEvents; // @synthesize solarEvents=_solarEvents;
-@property (strong, nonatomic) CLKUIAlmanacTransitInfo *sunriseSunsetInfo; // @synthesize sunriseSunsetInfo=_sunriseSunsetInfo;
-@property (strong, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
-
++ (id)_allAvailableSolarEventsForLocation:(CDStruct_c3b9c2ee)arg1 atDate:(id)arg2;
++ (BOOL)_date:(id)arg1 isBetweenDate:(id)arg2 andDate:(id)arg3;
++ (id)_dayEventsFromEvents:(id)arg1;
++ (long long)_endOfDayEventFollowingSolarEvent:(long long)arg1;
++ (id)_eventWithType:(long long)arg1 time:(id)arg2;
++ (CDStruct_c3b9c2ee)_geoLocationForLocation:(id)arg1;
++ (id)_siderealDataForLocation:(id)arg1 atDate:(id)arg2 useXR:(BOOL)arg3;
++ (id)_solarEventsForLocation:(CDStruct_c3b9c2ee)arg1 withInfo:(id)arg2 atDate:(id)arg3;
++ (double)_solarPercentageToDegree:(double)arg1;
++ (id)_solarSectorsForEvents:(id)arg1;
++ (long long)_startOfDayEventPreceedingFirstSolarEvent:(long long)arg1;
++ (id)_waypointsForTransitInfo:(id)arg1 andEvents:(id)arg2;
++ (double)reverseInterpolateBetweenCalendricalMidnights:(id)arg1;
 - (void).cxx_destruct;
-- (id)_allAvailableSolarEvents;
 - (BOOL)_didLocationChangeSignificantlyFromOldLocation:(id)arg1 toNewLocation:(id)arg2;
-- (long long)_endOfDayEventFollowingSolarEvent:(long long)arg1;
-- (id)_eventWithType:(long long)arg1 time:(id)arg2;
-- (CDStruct_c3b9c2ee)_geoLocationForReferenceLocation;
-- (void)_loadStartEndDates;
 - (void)_locationManagerUpdatedLocation:(id)arg1 error:(id)arg2;
-- (void)_notifyDataDidUpdate;
-- (id)_placeholderSolarEvents;
-- (double)_solarPercentageToDegree:(double)arg1;
-- (long long)_startOfDayEventPreceedingFirstSolarEvent:(long long)arg1;
+- (void)_notifySiderealDataDidUpdate:(id)arg1;
 - (void)_updateData;
-- (void)_updateDayEvents;
-- (void)_updateSolarEvents;
-- (void)_updateSolarSectors;
-- (void)_updateWaypoints;
-- (CDStruct_869f9c67)altitudeForProgress:(double)arg1;
-- (BOOL)date:(id)arg1 isBetweenDate:(id)arg2 andDate:(id)arg3;
-- (id)daytimeEvents;
+- (void)_updateDataIfNeededToDate:(id)arg1 atLocation:(id)arg2;
+- (void)_updateForSignificantTimeChange:(id)arg1;
+- (void)addObserver:(id)arg1;
+- (void)dealloc;
 - (void)ensureLocation:(id)arg1;
-- (id)init;
-- (id)interpolateBetweenCalendricalMidnights:(double)arg1;
-- (BOOL)isDateInReferenceDate:(id)arg1;
-- (double)reverseInterpolateBetweenCalendricalMidnights:(id)arg1;
+- (id)initWithXR:(BOOL)arg1;
+- (void)removeObserver:(id)arg1;
 - (void)startLocationUpdates;
 - (void)stopLocationUpdates;
-- (void)updateForSignificantTimeChange;
-- (void)updateForTimeZoneChange;
 - (void)updateModelWithDate:(id)arg1;
 
 @end

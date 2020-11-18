@@ -32,11 +32,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) long long targetProtectionMode; // @synthesize targetProtectionMode=_targetProtectionMode;
 
 - (void).cxx_destruct;
-- (BOOL)__checkContextAndCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)__sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleAccessViolationUpdated:(id)arg1;
 - (void)_handleHostsUpdated:(id)arg1;
-- (void)_handleProtectionModeUpdated:(id)arg1;
 - (void)_handleWiFiReconfigurationUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyDelegateOfNetworkAccessModeChanged;
@@ -50,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)messageDestination;
 - (id)messageReceiveQueue;
 - (id)messageTargetUUID;
+- (void)previewAllowedHostsForAutoProtectionModeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reconfigureWiFiWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAccessViolation:(id)arg1;
 - (void)setAllowedHosts:(id)arg1;
@@ -58,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)setNetworkAccessRestricted:(BOOL)arg1;
 - (void)setSupportsWiFiReconfiguration:(BOOL)arg1;
 - (void)setTargetProtectionMode:(long long)arg1;
-- (void)updateProtectionMode:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -32,6 +32,7 @@
 - (void)endIgnoringLeaseEndEventsForReason:(id)arg1;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
+- (void)getHasPreparedLeaseForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithPlaybackEngine:(id)arg1;
 - (void)prepareForCurrentItemPlayback;
 - (void)prepareForPlaybackWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;

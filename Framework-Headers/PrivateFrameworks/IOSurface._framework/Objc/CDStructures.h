@@ -40,5 +40,9 @@ typedef struct {
     unsigned long long detachModeCode;
     unsigned long long initDetachModeCodeTime;
     unsigned long long protectionOptions;
-} CDStruct_0bcbbf48;
+    unsigned int residentSize;
+    unsigned int dirtySize;
+    unsigned long long traceID;
+    unsigned long long memDescID;
+} CDStruct_1cd98987;
 

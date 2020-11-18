@@ -32,6 +32,7 @@
 - (void)_setUserPresenceDetectedSinceWake:(BOOL)arg1;
 - (void)_updateFaceDetectionState;
 - (void)addObserver:(id)arg1;
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (void)disableDetectionForReason:(id)arg1;
 - (void)enableDetectionForReason:(id)arg1;

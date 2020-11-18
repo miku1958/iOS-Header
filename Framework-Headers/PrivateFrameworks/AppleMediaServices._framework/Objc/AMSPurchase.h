@@ -8,12 +8,16 @@
 
 #import <AppleMediaServices/NSCopying-Protocol.h>
 
-@class AMSBuyParams, AMSProcessInfo, NSDictionary, NSNumber, NSString;
+@class ACAccount, AMSBuyParams, AMSProcessInfo, NSDictionary, NSNumber, NSString;
 
 @interface AMSPurchase : NSObject <NSCopying>
 {
+    BOOL _ignoreRequirePasswordRestriction;
+    BOOL _requiresAccount;
     BOOL _userInitiated;
+    BOOL _useJSONContentType;
     NSString *_logUUID;
+    ACAccount *_account;
     NSNumber *_accountId;
     NSDictionary *_additionalHeaders;
     AMSBuyParams *_buyParams;
@@ -21,22 +25,28 @@
     NSString *_clientId;
     AMSProcessInfo *_clientInfo;
     NSNumber *_ownerAccountId;
+    NSDictionary *_metricsOverlay;
     long long _purchaseType;
     NSString *_storefront;
     NSNumber *_uniqueIdentifier;
 }
 
+@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) NSNumber *accountId; // @synthesize accountId=_accountId;
 @property (copy, nonatomic) NSDictionary *additionalHeaders; // @synthesize additionalHeaders=_additionalHeaders;
 @property (readonly, nonatomic) AMSBuyParams *buyParams; // @synthesize buyParams=_buyParams;
 @property (copy, nonatomic) NSString *callerBundleId; // @synthesize callerBundleId=_callerBundleId;
 @property (copy, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
 @property (copy, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property (nonatomic) BOOL ignoreRequirePasswordRestriction; // @synthesize ignoreRequirePasswordRestriction=_ignoreRequirePasswordRestriction;
 @property (copy, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
+@property (copy, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
 @property (copy, nonatomic) NSNumber *ownerAccountId; // @synthesize ownerAccountId=_ownerAccountId;
 @property (readonly) long long purchaseType; // @synthesize purchaseType=_purchaseType;
+@property (nonatomic) BOOL requiresAccount; // @synthesize requiresAccount=_requiresAccount;
 @property (copy, nonatomic) NSString *storefront; // @synthesize storefront=_storefront;
 @property (readonly, nonatomic) NSNumber *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (nonatomic) BOOL useJSONContentType; // @synthesize useJSONContentType=_useJSONContentType;
 @property (nonatomic, getter=isUserInitiated) BOOL userInitiated; // @synthesize userInitiated=_userInitiated;
 
 - (void).cxx_destruct;

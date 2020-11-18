@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_sessionId:1;
         unsigned int read_sourceAppBundleId:1;
         unsigned int read_uriScheme:1;
-        unsigned int wrote_sessionId:1;
-        unsigned int wrote_sourceAppBundleId:1;
-        unsigned int wrote_uriScheme:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,8 +37,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readSourceAppBundleId;
-- (void)_readUriScheme;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,7 +44,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

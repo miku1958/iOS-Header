@@ -36,6 +36,7 @@
 @property (readonly, copy) NSNumber *purchaseDownloadID;
 @property (readonly, copy) NSNumber *quantity;
 @property (readonly) unsigned long long segment;
+@property (readonly, copy) NSNumber *subscriptionBundleID;
 @property (readonly, copy) NSString *vendorID;
 
 + (BOOL)supportsSecureCoding;

@@ -12,8 +12,8 @@
 
 - (BOOL)allowsMultipleValues;
 - (id)defaultSupportedVariableTypes;
+- (id)importQuestionBehavior;
 - (Class)stateClass;
-- (BOOL)supportsImportQuestions;
 
 @end
 

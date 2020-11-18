@@ -8,13 +8,14 @@
 
 #import <SIMToolkitUI/STKAlertSessionResponseProvider-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSDictionary, NSString;
 @protocol OS_dispatch_queue, OS_os_log;
 
 @interface _STKSIMToolkitResponseProvider : NSObject <STKAlertSessionResponseProvider>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    struct __CTServerConnection *_connection;
+    CoreTelephonyClient *_telephonyClient;
+    CTXPCServiceSubscriptionContext *_context;
     NSDictionary *_options;
     BOOL _hasSentResponse;
     NSObject<OS_os_log> *_logger;
@@ -29,8 +30,7 @@
 
 - (void).cxx_destruct;
 - (struct __CFString *)_responseFromResponseType:(long long)arg1;
-- (void)dealloc;
-- (id)initWithQueue:(id)arg1 connection:(struct __CTServerConnection *)arg2 options:(id)arg3 logger:(id)arg4;
+- (id)initWithQueue:(id)arg1 telephonyClient:(id)arg2 context:(id)arg3 options:(id)arg4 logger:(id)arg5;
 - (void)sendResponse:(long long)arg1;
 - (void)sendResponse:(long long)arg1 withBOOLResult:(BOOL)arg2;
 - (void)sendResponse:(long long)arg1 withStringResult:(id)arg2;

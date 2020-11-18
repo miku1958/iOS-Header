@@ -13,6 +13,7 @@
 @interface CKTruncatedTextBalloonView : CKHyperlinkBalloonView <NSLayoutManagerDelegate>
 {
     BOOL _avoidTextLineBreaks;
+    BOOL _wantsChevron;
     UIImageView *_chevron;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wantsChevron; // @synthesize wantsChevron=_wantsChevron;
 
 - (void).cxx_destruct;
 - (void)configureForMessagePart:(id)arg1;

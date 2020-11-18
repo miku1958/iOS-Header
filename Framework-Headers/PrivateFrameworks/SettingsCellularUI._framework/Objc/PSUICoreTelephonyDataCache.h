@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)airplaneModeChanged;
+- (void)dataSettingsChanged:(id)arg1;
 - (void)dataStatus:(id)arg1 dataStatusInfo:(id)arg2;
 - (void)dealloc;
 - (void)fetchCellularDataEnabled;

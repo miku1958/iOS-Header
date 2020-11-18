@@ -9,7 +9,7 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface PPQuickTypeQuery : NSObject <NSSecureCoding, NSCopying>
 {
@@ -25,6 +25,7 @@
     NSString *_localeIdentifier;
     NSString *_bundleIdentifier;
     NSArray *_recipients;
+    NSNumber *_timeoutSeconds;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSArray *subFields; // @synthesize subFields=_subFields;
 @property (nonatomic) unsigned char subtype; // @synthesize subtype=_subtype;
 @property (nonatomic) unsigned char time; // @synthesize time=_time;
+@property (strong, nonatomic) NSNumber *timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
 @property (nonatomic) unsigned char type; // @synthesize type=_type;
 
 + (unsigned int)_fieldsFromStrings:(id)arg1;
@@ -59,7 +61,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 options:(unsigned char)arg6 subFields:(id)arg7 label:(id)arg8 people:(id)arg9 localeIdentifier:(id)arg10 bundleIdentifier:(id)arg11 recipients:(id)arg12;
+- (id)initWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 options:(unsigned char)arg6 subFields:(id)arg7 label:(id)arg8 people:(id)arg9 localeIdentifier:(id)arg10 bundleIdentifier:(id)arg11 recipients:(id)arg12 timeoutSeconds:(id)arg13;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToQuickTypeQuery:(id)arg1;
 - (BOOL)isResultEquivelentToQuickTypeQuery:(id)arg1;

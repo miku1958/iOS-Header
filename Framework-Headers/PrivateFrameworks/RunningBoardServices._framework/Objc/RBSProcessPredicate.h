@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSProcessIdentity, RBSProcessPredicateImpl;
 
-@interface RBSProcessPredicate : NSObject <BSXPCSecureCoding, RBSProcessMatching>
+@interface RBSProcessPredicate : NSObject <RBSXPCSecureCoding, RBSProcessMatching>
 {
     RBSProcessPredicateImpl *_predicate;
 }
 
+@property (readonly, copy, nonatomic) NSString *beforeTranslocationBundlePath;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,6 +31,7 @@
 
 + (id)predicate;
 + (id)predicateMatching:(id)arg1;
++ (id)predicateMatchingBeforeTranslocationBundlePath:(id)arg1;
 + (id)predicateMatchingBundleIdentifier:(id)arg1;
 + (id)predicateMatchingEuid:(unsigned int)arg1;
 + (id)predicateMatchingExtensionPoint:(id)arg1;
@@ -37,24 +39,23 @@
 + (id)predicateMatchingIdentifier:(id)arg1;
 + (id)predicateMatchingIdentity:(id)arg1;
 + (id)predicateMatchingJobLabel:(id)arg1;
++ (id)predicateMatchingLaunchServicesProcesses;
++ (id)predicateMatchingPlatform:(int)arg1;
 + (id)predicateMatchingPredicates:(id)arg1;
 + (id)predicateMatchingServiceName:(id)arg1;
++ (id)predicateMatchingSuspendableProcesses;
 + (id)predicateMatchingTarget:(id)arg1;
 + (id)predicatePowerLogProcesses;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesProcess:(id)arg1;
 - (id)processIdentifier;
 - (id)processPredicate;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

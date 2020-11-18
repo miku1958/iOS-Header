@@ -14,6 +14,8 @@
 }
 
 @property (readonly, nonatomic) unsigned long long count;
+@property (readonly, nonatomic) unsigned long long countInMemory;
+@property (readonly, nonatomic) unsigned long long countStructuredEventCandidates;
 
 + (id)defaultQueue;
 + (id)pathForDefaultQueue;
@@ -24,14 +26,18 @@
 + (void)swapInEphemeralDefaultQueueForTesting;
 + (void)swapOutEphemeralDefaultQueueForTesting;
 - (void).cxx_destruct;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)close;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
+- (void)performMaintenanceTasks;
 - (id)permafailDirectory;
 - (void)pop:(CDUnknownBlockType)arg1;
+- (void)popByCustomPriorityCriteria:(unsigned char)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popByItemId:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popBySourceKey:(id)arg1 messageId:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)popHighPriority:(CDUnknownBlockType)arg1;
+- (void)popInMemory:(CDUnknownBlockType)arg1;
 - (void)setPermafailDirectory:(id)arg1;
 - (void)writePermafail:(id)arg1;
 

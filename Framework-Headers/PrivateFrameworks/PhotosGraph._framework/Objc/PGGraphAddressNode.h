@@ -8,32 +8,52 @@
 
 #import <PhotosGraph/PGGraphPortraitLocationNamedEntity-Protocol.h>
 
-@class NSString, PPLocationNamedEntities;
+@class CLLocation, NSString, PPLocationNamedEntities;
 
 @interface PGGraphAddressNode : PGGraphLocationNode <PGGraphPortraitLocationNamedEntity>
 {
+    long long _locationMode;
+    NSString *_name;
+    struct CLLocationCoordinate2D _coordinate;
 }
 
+@property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCoarse;
+@property (readonly, nonatomic) BOOL isImproved;
+@property (readonly, nonatomic) BOOL isOcean;
+@property (readonly, nonatomic) BOOL isPrecise;
+@property (readonly, nonatomic) CLLocation *location;
+@property (readonly, nonatomic) long long locationMode;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) PPLocationNamedEntities *pg_locationNamedEntity;
 @property (readonly) Class superclass;
 
++ (id)cityOfAddress;
++ (id)filter;
++ (id)homeOfAddress;
++ (id)homeWorkOfAddress;
++ (id)workOfAddress;
+- (void).cxx_destruct;
 - (id)UUID;
-- (void)addressEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)areaNodes;
 - (id)cityNode;
-- (struct CLLocationCoordinate2D)coordinate;
 - (id)countryNode;
 - (id)districtNode;
+- (unsigned short)domain;
 - (void)enumerateAreaNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePersonHomeOrWorkNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (BOOL)isOcean;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
 - (BOOL)isPersonHomeOrWorkAddress;
-- (id)location;
-- (BOOL)locationIsImproved;
+- (id)label;
 - (id)momentNodes;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 - (id)stateNode;
 - (id)streetNode;
 

@@ -14,6 +14,7 @@
 
 @property (readonly, nonatomic) UIView *_sf_effectiveViewToLayOut;
 @property (strong, nonatomic, setter=_sf_setSecurityInfo:) _SFSecurityInfo *_sf_securityInfo;
+@property (readonly, nonatomic) NSString *_sf_suggestedFilename;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

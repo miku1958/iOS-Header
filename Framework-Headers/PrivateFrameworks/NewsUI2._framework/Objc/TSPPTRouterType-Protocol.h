@@ -9,6 +9,6 @@
 
 @protocol TSPPTRouterType
 - (void)routeToFeedWithTag:(id<FCTagProviding>)arg1;
-- (void)routeToHeadlineForAritlceID:(NSString *)arg1;
+- (void)routeToHeadlineForArticleID:(NSString *)arg1;
 @end
 

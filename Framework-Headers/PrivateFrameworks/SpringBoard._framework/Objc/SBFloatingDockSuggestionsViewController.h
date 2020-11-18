@@ -12,12 +12,11 @@
 #import <SpringBoard/SBIconViewQuerying-Protocol.h>
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSSet, NSString, SBAppSuggestionManager, SBApplicationController, SBDockIconListView, SBFloatingDockSuggestionsModel, SBFloatingDockViewController, SBIconController, SBIconListModel, SBLayoutStateTransitionCoordinator, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
+@class NSMutableArray, NSSet, NSString, SBAppSuggestionManager, SBApplicationController, SBDockIconListView, SBFloatingDockSuggestionsModel, SBFloatingDockViewController, SBIconController, SBIconListModel, SBLayoutStateTransitionCoordinator, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
 @protocol SBFloatingDockSuggestionsViewControllerDelegate, SBIconViewProviding;
 
 @interface SBFloatingDockSuggestionsViewController : UIViewController <SBFloatingDockSuggestionsModelDelegate, SBLayoutStateTransitionObserver, SBIconViewProviding, SBFloatingDockSuggestionsViewProviding, SBIconViewQuerying>
 {
-    NSMutableDictionary *_icons;
     BOOL _visible;
     SBFloatingDockViewController *_floatingDockViewController;
     id<SBFloatingDockSuggestionsViewControllerDelegate> _delegate;
@@ -62,7 +61,7 @@
 - (void)_emitPresentedEventInvolvingContinuity:(BOOL)arg1 fromModel:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_fadeInIcon:(id)arg1 isReplacing:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fadeOutIcon:(id)arg1 atIndex:(unsigned long long)arg2 isReplacing:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_iconForDisplayItem:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (id)_iconForDisplayItem:(id)arg1;
 - (void)_iconModelDidChange:(id)arg1;
 - (void)_listLayoutDidChange:(id)arg1;
 - (void)_loadAndPlaceIconsInViewForDisplayItems:(id)arg1;
@@ -70,7 +69,6 @@
 - (void)_performDeferredIconUpdates;
 - (void)_performOrDefer:(BOOL)arg1 iconUpdate:(CDUnknownBlockType)arg2;
 - (void)_placeholdersDidChange:(id)arg1;
-- (void)_pruneCachedIcons;
 - (BOOL)_shouldDeferUpdateInvolvingContinuity:(BOOL)arg1;
 - (void)_swapIcon:(BOOL)arg1 forPlaceholders:(id)arg2;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;

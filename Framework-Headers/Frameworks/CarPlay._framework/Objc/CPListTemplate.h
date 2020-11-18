@@ -9,7 +9,7 @@
 #import <CarPlay/CPBarButtonProviding-Protocol.h>
 #import <CarPlay/CPListClientTemplateDelegate-Protocol.h>
 
-@class CPBarButton, NAFuture, NSArray, NSString;
+@class CPBarButton, NAFuture, NSArray, NSMutableSet, NSString;
 @protocol CPListTemplateDelegate;
 
 @interface CPListTemplate : CPTemplate <CPListClientTemplateDelegate, CPBarButtonProviding>
@@ -17,26 +17,43 @@
     id<CPListTemplateDelegate> _delegate;
     NSArray *_sections;
     NSString *_title;
+    NSArray *_emptyViewTitleVariants;
+    NSArray *_emptyViewSubtitleVariants;
+    NSMutableSet *_itemsToReload;
 }
 
 @property (strong, nonatomic) CPBarButton *backButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CPListTemplateDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *emptyViewSubtitleVariants; // @synthesize emptyViewSubtitleVariants=_emptyViewSubtitleVariants;
+@property (copy, nonatomic) NSArray *emptyViewTitleVariants; // @synthesize emptyViewTitleVariants=_emptyViewTitleVariants;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long itemCount;
+@property (strong, nonatomic) NSMutableSet *itemsToReload; // @synthesize itemsToReload=_itemsToReload;
 @property (strong, nonatomic) NSArray *leadingNavigationBarButtons;
+@property (readonly, nonatomic) unsigned long long sectionCount;
 @property (readonly, copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NAFuture *templateProviderFuture; // @dynamic templateProviderFuture;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSArray *trailingNavigationBarButtons;
 
++ (unsigned long long)maximumItemCount;
++ (unsigned long long)maximumSectionCount;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_itemForHostItemWithIdentifier:(id)arg1;
+- (void)_linkItemsInSection:(id)arg1;
+- (id)_sectionsByTrimmingAndLinkingSections:(id)arg1;
+- (void)_setItemNeedsUpdate:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)indexPathForItem:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 sections:(id)arg2;
-- (void)listTemplate:(id)arg1 didSelectListItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)listTemplate:(id)arg1 didSelectImageAtIndex:(unsigned long long)arg2 inImageRowItem:(id)arg3;
+- (void)listTemplate:(id)arg1 didSelectListItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)performUpdate;
 - (void)updateSections:(id)arg1;
 
 @end

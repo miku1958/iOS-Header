@@ -8,12 +8,18 @@
 
 #import <UIKitCore/NSCoding-Protocol.h>
 
-@class NSString;
+@class NSString, UIImageSymbolConfiguration;
 
 @interface UIImageNibPlaceholder : UIImage <NSCoding>
 {
     NSString *runtimeResourceName;
+    NSString *systemSymbolResourceName;
+    long long _resourceRenderingMode;
+    UIImageSymbolConfiguration *_resourceSymbolImageConfiguration;
 }
+
+@property (nonatomic) long long resourceRenderingMode; // @synthesize resourceRenderingMode=_resourceRenderingMode;
+@property (copy, nonatomic) UIImageSymbolConfiguration *resourceSymbolImageConfiguration; // @synthesize resourceSymbolImageConfiguration=_resourceSymbolImageConfiguration;
 
 - (void).cxx_destruct;
 - (id)_initWithOtherImage:(id)arg1;
@@ -21,6 +27,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 andRuntimeResourceName:(id)arg2;
 - (id)initWithData:(id)arg1 andRuntimeResourceName:(id)arg2;
+- (id)initWithRuntimeSystemSymbolResourceName:(id)arg1;
 
 @end
 

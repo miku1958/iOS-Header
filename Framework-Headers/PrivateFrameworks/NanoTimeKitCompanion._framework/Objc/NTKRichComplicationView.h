@@ -21,12 +21,12 @@
     NSDate *_timeTravelDate;
     BOOL canUseCurvedText;
     BOOL _paused;
+    BOOL _templateWantsPlatter;
     id<CLKMonochromeFilterProvider> _filterProvider;
     id<NTKComplicationDisplayObserver> displayObserver;
     CLKComplicationTemplate *_template;
     CLKDevice *_device;
     UIColor *_foregroundColor;
-    UIColor *_templateBackgroundColor;
 }
 
 @property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
@@ -44,7 +44,7 @@
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CLKComplicationTemplate *template; // @synthesize template=_template;
-@property (strong, nonatomic) UIColor *templateBackgroundColor; // @synthesize templateBackgroundColor=_templateBackgroundColor;
+@property (nonatomic) BOOL templateWantsPlatter; // @synthesize templateWantsPlatter=_templateWantsPlatter;
 @property (readonly, nonatomic) NSDate *timeTravelDate;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
@@ -70,8 +70,10 @@
 - (void)setEditingTransitionFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 - (unsigned long long)timelineAnimationFadeTypeOverride;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)transitThemeFromTheme:(long long)arg1 toTheme:(long long)arg2 fraction:(double)arg3;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (long long)tritiumUpdateMode;
 - (void)updateMonochromeColor;
 - (BOOL)viewShouldIgnoreTwoPieceImage:(id)arg1;
 

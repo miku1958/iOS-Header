@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
     PDFAKOverlayAdaptorPrivate_ios *_privateIOS;
 }
 
-@property BOOL singleFingerScrollingDisabled;
-
 - (void).cxx_destruct;
+- (void)_adjustScrollViewWithAnimationProperties:(CDStruct_c23cc2dc)arg1 delta:(double)arg2;
 - (void)_installOverlayForPageView:(id)arg1 ofPage:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)_resetAnimationProperties;
+- (unsigned long long)_scrollViewMinimumNumberOfTouches;
 - (id)_scrollViewRecognizersForPageAtIndex:(unsigned long long)arg1;
 - (void)_setupGestureRecognizersForPageAtIndex:(unsigned long long)arg1;
 - (void)_setupGestureRecognizersForView:(id)arg1 andDocument:(id)arg2;
@@ -30,9 +31,11 @@ __attribute__((visibility("hidden")))
 - (void)annotationWillBeginEditing:(id)arg1;
 - (void)dealloc;
 - (id)initWithPDFView:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (unsigned long long)pageIndexForAnnotation:(id)arg1;
 - (void)removeDrawingGestureRecognizer:(id)arg1 forPageAtIndex:(unsigned long long)arg2;
 - (void)updateDrawingGestureRecognizer:(id)arg1 forPageAtIndex:(unsigned long long)arg2 withPriority:(BOOL)arg3;
+- (void)updatePDFScrollViewMinimumNumberOfTouches;
 
 @end
 

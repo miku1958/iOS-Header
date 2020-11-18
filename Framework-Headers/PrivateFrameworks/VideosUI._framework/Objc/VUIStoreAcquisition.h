@@ -20,12 +20,12 @@
 - (void)_handleCustomRequest:(id)arg1;
 - (void)_handleRequest:(id)arg1;
 - (void)_handleResponse:(id)arg1 responseDict:(id)arg2 forRequest:(id)arg3 error:(id)arg4 cancelled:(BOOL)arg5;
-- (void)_postCrossProcessNotificationWithBuyParams:(id)arg1 error:(id)arg2;
 - (void)_processFirstRequest;
 - (void)_processRequest:(id)arg1;
 - (id)acquireWithProperties:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)cancelAcquisition:(id)arg1;
 - (id)init;
+- (void)postCrossProcessNotificationWithBuyParams:(id)arg1 error:(id)arg2;
 
 @end
 

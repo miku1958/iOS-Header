@@ -12,8 +12,8 @@
 #import <coreroutine/RTPersistenceMirroringRequestDelegate-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, RTAccountManager, RTDefaultsManager, RTInvocationDispatcher, RTPersistenceCloudDeletionEnforcer, RTPersistenceExpirationEnforcer, RTPersistenceManager, RTPersistenceMirroringRequest, RTPlatform, RTPowerAssertion, RTReachabilityManager, RTTimerManager, RTXPCActivityManager;
-@protocol OS_dispatch_queue, OS_os_transaction, RTPersistenceMirroringMetricsDelegate;
+@class NSMutableArray, NSMutableDictionary, NSString, RTAccountManager, RTDefaultsManager, RTInvocationDispatcher, RTPersistenceCloudDeletionEnforcer, RTPersistenceExpirationEnforcer, RTPersistenceManager, RTPersistenceMirroringRequest, RTPlatform, RTReachabilityManager, RTTimerManager, RTXPCActivityManager;
+@protocol OS_dispatch_queue, RTPersistenceMirroringMetricsDelegate;
 
 @interface RTPersistenceMirroringManager : NSObject <RTPersistenceMirroringMetricsDelegate, RTPersistenceMirroringRequestDelegate, RTPersistenceMirroringDelegate, RTPurgable, RTDiagnosticProvider>
 {
@@ -27,8 +27,6 @@
     BOOL _exportingAvailable;
     id<RTPersistenceMirroringMetricsDelegate> _metricsDelegate;
     RTPersistenceManager *_persistenceManager;
-    RTPowerAssertion *_powerAssertion;
-    NSObject<OS_os_transaction> *_setupTransaction;
     NSMutableDictionary *_mirroringPolicies;
     NSMutableDictionary *_retryTimers;
     NSObject<OS_dispatch_queue> *_queue;
@@ -57,19 +55,20 @@
 @property (strong, nonatomic) RTPersistenceExpirationEnforcer *persistenceExpirationEnforcer; // @synthesize persistenceExpirationEnforcer=_persistenceExpirationEnforcer;
 @property (strong, nonatomic) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
 @property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
-@property (strong, nonatomic) RTPowerAssertion *powerAssertion; // @synthesize powerAssertion=_powerAssertion;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableDictionary *retryTimers; // @synthesize retryTimers=_retryTimers;
-@property (strong, nonatomic) NSObject<OS_os_transaction> *setupTransaction; // @synthesize setupTransaction=_setupTransaction;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 
 - (void).cxx_destruct;
 - (BOOL)_authorizedToMirror;
+- (BOOL)_calculateStoreShouldResetFromChangeHistoryCount:(unsigned long long)arg1;
+- (BOOL)_calculateStoreShouldResetFromTransactionHistory:(id)arg1;
 - (BOOL)_dataAvailableToMirror;
 - (void)_dequeueNextMirroringRequest;
 - (void)_enqueueMirroringRequest:(id)arg1 context:(id)arg2;
+- (BOOL)_evaluatePersistentHistoryLengthWithManagedObjectContext:(id)arg1 shouldResetSync:(BOOL *)arg2 error:(id *)arg3;
 - (BOOL)_fetchDatabaseChangesForDatabase:(id)arg1 outputURL:(id)arg2 error:(id *)arg3;
 - (BOOL)_fetchZoneChangesForDatabase:(id)arg1 outputURL:(id)arg2 error:(id *)arg3;
 - (void)_finalizeMirroringRequest:(id)arg1;
@@ -84,7 +83,9 @@
 - (void)_persistenceAvailabilityDidChange:(id)arg1;
 - (void)_prepareRequestForRetryAttempt:(id)arg1 retryInterval:(double)arg2;
 - (void)_scheduleRetryAttemptForRequest:(id)arg1 referenceDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)_shouldResetForChangeCountForManagedObjectContext:(id)arg1 currentExporterToken:(id)arg2 changeRequestError:(id *)arg3;
 - (void)_startMirroringRequest:(id)arg1 context:(id)arg2;
+- (BOOL)_transactionHistorySizeError:(id *)arg1;
 - (void)_updateExportingAvailability:(unsigned long long)arg1;
 - (void)_updateMirroringDelegateState;
 - (void)collectMetricsFromMirroringRequest:(id)arg1 error:(id)arg2;

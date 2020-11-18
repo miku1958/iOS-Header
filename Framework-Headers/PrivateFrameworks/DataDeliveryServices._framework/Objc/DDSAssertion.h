@@ -9,10 +9,11 @@
 #import <DataDeliveryServices/NSCopying-Protocol.h>
 #import <DataDeliveryServices/NSSecureCoding-Protocol.h>
 
-@class DDSAssetPolicy, DDSAssetQuery, NSDate, NSMutableSet, NSSet;
+@class DDSAssetPolicy, DDSAssetQuery, NSDate, NSMutableSet, NSSet, NSString;
 
 @interface DDSAssertion : NSObject <NSSecureCoding, NSCopying>
 {
+    NSString *_description;
     NSDate *_lastUpdated;
     DDSAssetQuery *_query;
     NSMutableSet *_descriptors;
@@ -36,6 +37,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQuery:(id)arg1;
+- (void)invalidateDescription;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAssertion:(id)arg1;
 - (void)removeDescriptorWithAssertionID:(id)arg1;

@@ -15,14 +15,18 @@ __attribute__((visibility("hidden")))
     UIColor *_strokeColor;
 }
 
-+ (id)_pathForBalloonRadius:(double)arg1 tailLength:(double)arg2;
++ (struct CGPath *)_createPathForBalloonRadius:(double)arg1 tailLength:(double)arg2;
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (BOOL)containsPoint:(struct CGPoint)arg1;
 - (id)initWithBalloonRadius:(double)arg1 tailLength:(double)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithOvalInSize:(struct CGSize)arg1;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setFillColor:(id)arg1;
-- (void)setPath:(id)arg1;
+- (void)setPath:(struct CGPath *)arg1;
+- (void)setPath:(struct CGPath *)arg1 duration:(double)arg2;
 - (void)setStrokeColor:(id)arg1 width:(double)arg2;
 
 @end

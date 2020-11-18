@@ -9,12 +9,13 @@
 #import <SpringBoard/CSApplicationHosting-Protocol.h>
 #import <SpringBoard/SBCoverSheetSlidingViewControllerContentViewController-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBSecureAppObserver-Protocol.h>
 
 @class NSString, SBDashBoardHostedAppViewController, SBHomeGestureParticipant;
 @protocol BSInvalidatable, SBCoverSheetSecureAppEnvironmentViewControllerDelegate;
 
-@interface SBCoverSheetSecureAppEnvironmentViewController : UIViewController <SBHomeGestureParticipantDelegate, SBSecureAppObserver, CSApplicationHosting, SBCoverSheetSlidingViewControllerContentViewController>
+@interface SBCoverSheetSecureAppEnvironmentViewController : UIViewController <SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBSecureAppObserver, CSApplicationHosting, SBCoverSheetSlidingViewControllerContentViewController>
 {
     id<BSInvalidatable> _biometricMatchingAssertion;
     unsigned long long _currentOrientationMask;
@@ -37,8 +38,12 @@
 - (id)_currentSecureAppAction;
 - (void)_updateSupportedOrientationsMaskForSecureAppAction;
 - (BOOL)canHostAnApp;
+- (void)conformsToCSApplicationHosting;
+- (void)conformsToSBApplicationHosting;
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 - (BOOL)handlesRotationIndependentOfCoverSheet;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+- (void)homeGrabberViewDidReceiveClick:(id)arg1;
 - (id)hostedAppSceneHandle;
 - (id)hostedAppSceneHandles;
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;

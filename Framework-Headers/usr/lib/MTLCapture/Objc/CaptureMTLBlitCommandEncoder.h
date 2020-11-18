@@ -57,16 +57,16 @@
 - (void)optimizeContentsForGPUAccess:(id)arg1;
 - (void)optimizeContentsForGPUAccess:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
 - (void)optimizeIndirectCommandBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
+- (id)originalObject;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (void)resetCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)resetTextureAccessCounters:(id)arg1 region:(CDStruct_4c83c94d)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4;
+- (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)touch;
 - (void)updateFence:(id)arg1;
-- (void)updateTextureMapping:(id)arg1 mode:(unsigned long long)arg2 indirectBuffer:(id)arg3 indirectBufferOffset:(unsigned long long)arg4;
-- (void)updateTextureMapping:(id)arg1 mode:(unsigned long long)arg2 region:(CDStruct_4c83c94d)arg3 mipLevel:(unsigned long long)arg4 slice:(unsigned long long)arg5;
-- (void)updateTextureMappings:(id)arg1 mode:(unsigned long long)arg2 regions:(const CDStruct_4c83c94d *)arg3 mipLevels:(const unsigned long long *)arg4 slices:(const unsigned long long *)arg5 numRegions:(unsigned long long)arg6;
 - (void)waitForFence:(id)arg1;
 
 @end

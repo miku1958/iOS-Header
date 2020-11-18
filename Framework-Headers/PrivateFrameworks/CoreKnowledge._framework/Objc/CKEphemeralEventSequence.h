@@ -6,15 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreKnowledge/CKEphemeralReadableEventSequence-Protocol.h>
+#import <CoreKnowledge/CKEphemeralWritableEventSequence-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface CKEphemeralEventSequence : NSObject
+@interface CKEphemeralEventSequence : NSObject <CKEphemeralReadableEventSequence, CKEphemeralWritableEventSequence>
 {
     MISSING_TYPE *queue;
 }
 
 - (void).cxx_destruct;
+- (BOOL)appendEvent:(id)arg1;
+- (id)eventsBetween:(id)arg1 and:(id)arg2;
+- (id)eventsWithIdentifier:(id)arg1;
+- (id)first;
 - (id)init;
+- (id)last;
+- (void)loadFromKnowledgeStreamNamed:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)removeAllEventsSavedInKnowledgeStreamNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)writeEventsToKnowledgeStreamNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

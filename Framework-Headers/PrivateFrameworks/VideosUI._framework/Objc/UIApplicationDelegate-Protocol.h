@@ -37,6 +37,7 @@
 - (void)application:(UIApplication *)arg1 handleIntent:(INIntent *)arg2 completionHandler:(void (^)(INIntentResponse *))arg3;
 - (BOOL)application:(UIApplication *)arg1 handleOpenURL:(NSURL *)arg2;
 - (void)application:(UIApplication *)arg1 handleWatchKitExtensionRequest:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;
+- (id)application:(UIApplication *)arg1 handlerForIntent:(INIntent *)arg2;
 - (BOOL)application:(UIApplication *)arg1 openURL:(NSURL *)arg2 options:(NSDictionary *)arg3;
 - (BOOL)application:(UIApplication *)arg1 openURL:(NSURL *)arg2 sourceApplication:(NSString *)arg3 annotation:(id)arg4;
 - (void)application:(UIApplication *)arg1 performActionForShortcutItem:(UIApplicationShortcutItem *)arg2 completionHandler:(void (^)(BOOL))arg3;

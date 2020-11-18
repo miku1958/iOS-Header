@@ -29,14 +29,19 @@
 
 + (id)fakeFlightInformationWithAirlineCode:(id)arg1 flightNumber:(id)arg2 flightDate:(id)arg3;
 - (void).cxx_destruct;
+- (id)_diffSchemas:(id)arg1 withExpectedSchemas:(id)arg2;
+- (id)_eventClassificationForEntity:(id)arg1;
 - (void)_handleMemoryPressureStatus:(unsigned long long)arg1;
 - (id)_prepareArguments:(id)arg1;
 - (id)_prepareEntity:(id)arg1;
+- (id)_resolveCandidatesForJSDict:(id)arg1;
 - (id)_stringFromMemoryPressureStatus:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)dictionaryFromTimezone:(id)arg1;
+- (void)diffSchemas:(id)arg1 withExpectedSchemas:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)emailToJsonLd:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)emailToOutput:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)eventClassificationForEntity:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)flightInformationWithAirlineCode:(id)arg1 flightNumber:(id)arg2 flightDate:(id)arg3;
 - (id)formattedDate:(id)arg1 withTimezone:(id)arg2;
 - (void)freeJSContext;
@@ -50,11 +55,14 @@
 - (id)mappedArrayBufferForFileName:(id)arg1;
 - (id)md5Hash:(id)arg1;
 - (id)outputExceptionsFromOutput:(id)arg1;
+- (void)parseHTML:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)payloadToOutputWithEntryPoint:(id)arg1 arguments:(id)arg2;
 - (void)payloadToOutputWithEntryPoint:(id)arg1 arguments:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)postHistoricalFlightInformationWithAirlineCode:(id)arg1 flightNumber:(id)arg2 flightDate:(id)arg3 andPayload:(id)arg4;
 - (id)processLoadRequestWithFileName:(id)arg1;
 - (void)refreshAssetPath;
+- (void)resolveCandidatesForJSDict:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)reverseMapEntity:(id)arg1 forCategory:(id)arg2 withSchemaExpectation:(id)arg3;
 - (void)schemaOrgToOutput:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAssetPath:(id)arg1;
 - (id)sfAirportToDictionnary:(id)arg1;

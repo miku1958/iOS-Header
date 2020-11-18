@@ -6,17 +6,32 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface SHEntitlements : NSObject
 {
+    BOOL _isEntitledForSignatureGeneration;
+    BOOL _isEntitledForStorefront;
+    BOOL _isEntitledForMicrophone;
+    BOOL _isEntitledForRemoteRecognition;
+    BOOL _isEntitledForExternalAudioRecording;
+    BOOL _isEntitledForInternalAudioRecording;
 }
 
-+ (BOOL)boolValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
-+ (void *)copyValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
-+ (BOOL)entitlementArray:(id)arg1 containsEntitlementValue:(id)arg2 fromSecTask:(struct __SecTask *)arg3;
-+ (BOOL)isEntitledForRemoteRecognition;
-+ (BOOL)isEntitledForSignatureGeneration;
-+ (BOOL)isEntitledForStorefront;
+@property (readonly, nonatomic) BOOL isEntitledForExternalAudioRecording; // @synthesize isEntitledForExternalAudioRecording=_isEntitledForExternalAudioRecording;
+@property (readonly, nonatomic) BOOL isEntitledForInternalAudioRecording; // @synthesize isEntitledForInternalAudioRecording=_isEntitledForInternalAudioRecording;
+@property (readonly, nonatomic) BOOL isEntitledForMicrophone; // @synthesize isEntitledForMicrophone=_isEntitledForMicrophone;
+@property (readonly, nonatomic) BOOL isEntitledForRemoteRecognition; // @synthesize isEntitledForRemoteRecognition=_isEntitledForRemoteRecognition;
+@property (nonatomic) BOOL isEntitledForSignatureGeneration; // @synthesize isEntitledForSignatureGeneration=_isEntitledForSignatureGeneration;
+@property (nonatomic) BOOL isEntitledForStorefront; // @synthesize isEntitledForStorefront=_isEntitledForStorefront;
+
+- (BOOL)boolValueOfEntitlement:(id)arg1 fromConnection:(id)arg2;
+- (BOOL)boolValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (void)configureEntitlementsForConnection:(id)arg1;
+- (void)configureEntitlementsForTask:(struct __SecTask *)arg1;
+- (void *)copyValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (BOOL)entitlementArray:(id)arg1 containsEntitlementValue:(id)arg2 fromConnection:(id)arg3;
+- (BOOL)entitlementArray:(id)arg1 containsEntitlementValue:(id)arg2 fromSecTask:(struct __SecTask *)arg3;
+- (id)init;
+- (id)initWithConnection:(id)arg1;
 
 @end
 

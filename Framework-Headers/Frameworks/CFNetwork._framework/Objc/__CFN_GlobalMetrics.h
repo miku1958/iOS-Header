@@ -12,26 +12,17 @@
 @interface __CFN_GlobalMetrics : NSObject
 {
     struct os_unfair_lock_s lock;
-    id<_NSURLSessionEventDelegate> delegate;
-    NSObject<OS_dispatch_queue> *delegateQueue;
-    id<_NSURLSessionHTTPRewriter> _HTTPRewriter;
+    id<_NSURLSessionEventDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     id<_NSURLSessionEventDelegate> _forwardingDelegate;
     NSMutableDictionary *_defaultSessionMetrics;
     NSMutableDictionary *_ephemeralSessionMetrics;
     NSMutableDictionary *_backgroundSessionMetrics;
+    id<_NSURLSessionHTTPRewriter> _HTTPRewriter;
 }
 
-@property (strong) id<_NSURLSessionHTTPRewriter> HTTPRewriter; // @synthesize HTTPRewriter=_HTTPRewriter;
-@property (strong, nonatomic) NSMutableDictionary *backgroundSessionMetrics; // @synthesize backgroundSessionMetrics=_backgroundSessionMetrics;
-@property (strong, nonatomic) NSMutableDictionary *defaultSessionMetrics; // @synthesize defaultSessionMetrics=_defaultSessionMetrics;
-@property (strong, nonatomic) NSMutableDictionary *ephemeralSessionMetrics; // @synthesize ephemeralSessionMetrics=_ephemeralSessionMetrics;
-@property (strong, nonatomic) id<_NSURLSessionEventDelegate> forwardingDelegate; // @synthesize forwardingDelegate=_forwardingDelegate;
-
-+ (id)globalMetrics;
 - (void).cxx_destruct;
 - (id)init;
-- (void)sessionCreate:(id)arg1;
-- (void)sessionDestroy:(id)arg1;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class NSDate, NSTimeZone;
 
-__attribute__((visibility("hidden")))
 @interface EKOfficeHour : NSObject <NSCopying>
 {
     BOOL _enabled;

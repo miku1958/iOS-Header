@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUITextBadgeViewDelegate-Protocol.h>
 
-@class CALayer, IKViewElement, NSNumber, NSString, VUICountDownProgressIndicator, VUILabel, VUITextBadgeView, VUIUpNextOverlayLayout, _TVImageView, _TVProgressView;
+@class CALayer, IKViewElement, NSNumber, NSString, VUICountDownProgressIndicator, VUILabel, VUIProgressView, VUITextBadgeView, VUIUpNextOverlayLayout, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIUpNextOverlayView : UIView <VUITextBadgeViewDelegate>
@@ -21,26 +21,26 @@ __attribute__((visibility("hidden")))
     BOOL _badgeShowOnlyOnFocus;
     BOOL _isFocused;
     VUIUpNextOverlayLayout *_overlayLayout;
+    VUIProgressView *_progressView;
+    _TVImageView *_appImageView;
+    _TVImageView *_logoImageView;
+    VUILabel *_textLabel;
+    VUILabel *_subtitleLabel;
+    _TVImageView *_badgeView;
+    VUITextBadgeView *_textBadge;
+    UIView *_gradientView;
     CALayer *_gradientLayer;
     IKViewElement *_viewElement;
-    _TVProgressView *_progressView;
     IKViewElement *_progressViewElement;
-    _TVImageView *_appImageView;
     IKViewElement *_appImageElement;
-    _TVImageView *_logoImageView;
     IKViewElement *_logoImageElement;
-    VUILabel *_textLabel;
     IKViewElement *_textElement;
-    VUILabel *_subtitleLabel;
     IKViewElement *_subtitleElement;
-    _TVImageView *_badgeView;
     IKViewElement *_badgeElement;
-    VUITextBadgeView *_textBadge;
     IKViewElement *_textBadgeElement;
-    UIView *_gradientView;
-    CALayer *_blurMaskLayer;
     NSNumber *_autoPlayDuration;
     VUICountDownProgressIndicator *_autoPlayIndicator;
+    double _gradientSizeHeightMultiplier;
 }
 
 @property (strong, nonatomic) IKViewElement *appImageElement; // @synthesize appImageElement=_appImageElement;
@@ -51,10 +51,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) IKViewElement *badgeElement; // @synthesize badgeElement=_badgeElement;
 @property (nonatomic) BOOL badgeShowOnlyOnFocus; // @synthesize badgeShowOnlyOnFocus=_badgeShowOnlyOnFocus;
 @property (strong, nonatomic) _TVImageView *badgeView; // @synthesize badgeView=_badgeView;
-@property (strong, nonatomic) CALayer *blurMaskLayer; // @synthesize blurMaskLayer=_blurMaskLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CALayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
+@property (nonatomic) double gradientSizeHeightMultiplier; // @synthesize gradientSizeHeightMultiplier=_gradientSizeHeightMultiplier;
 @property (strong, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isFocused; // @synthesize isFocused=_isFocused;
@@ -62,7 +62,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _TVImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
 @property (nonatomic) BOOL logoImageViewShowOnlyOnFocus; // @synthesize logoImageViewShowOnlyOnFocus=_logoImageViewShowOnlyOnFocus;
 @property (strong, nonatomic) VUIUpNextOverlayLayout *overlayLayout; // @synthesize overlayLayout=_overlayLayout;
-@property (strong, nonatomic) _TVProgressView *progressView; // @synthesize progressView=_progressView;
+@property (strong, nonatomic) VUIProgressView *progressView; // @synthesize progressView=_progressView;
 @property (strong, nonatomic) IKViewElement *progressViewElement; // @synthesize progressViewElement=_progressViewElement;
 @property (nonatomic) BOOL progressViewShowOnlyOnFocus; // @synthesize progressViewShowOnlyOnFocus=_progressViewShowOnlyOnFocus;
 @property (strong, nonatomic) IKViewElement *subtitleElement; // @synthesize subtitleElement=_subtitleElement;

@@ -5,11 +5,11 @@
 //
 
 @class NSString;
-@protocol AEPersistable><AEPolicyWriteOnlyScratchpad, AEPolicyReadOnlyScratchpad><AERemovable;
+@protocol AEPolicyReadOnlyScratchpad><AERemovable, AEPolicyWriteOnlyScratchpad><AEPersistable;
 
 @protocol AEPolicyStore
 - (id<AEPolicyReadOnlyScratchpad><AERemovable>)readOnlyScratchpadForIdentifier:(NSString *)arg1;
 - (BOOL)removeAllScratchpadsWithError:(id *)arg1;
-- (id<AEPersistable><AEPolicyWriteOnlyScratchpad>)writeOnlyScratchpadForIdentifier:(NSString *)arg1;
+- (id<AEPolicyWriteOnlyScratchpad><AEPersistable>)writeOnlyScratchpadForIdentifier:(NSString *)arg1;
 @end
 

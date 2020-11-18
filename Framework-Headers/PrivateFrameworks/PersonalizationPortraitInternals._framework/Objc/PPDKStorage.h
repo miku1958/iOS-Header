@@ -6,14 +6,30 @@
 
 #import <objc/NSObject.h>
 
+@class _PASLock;
+@protocol OS_dispatch_semaphore;
+
 @interface PPDKStorage : NSObject
 {
+    _PASLock *_entityLock;
+    _PASLock *_topicLock;
+    NSObject<OS_dispatch_semaphore> *_entityWriteSem;
+    NSObject<OS_dispatch_semaphore> *_topicWriteSem;
 }
 
+@property (readonly, nonatomic) double entityStreamCooldownTimeRemaining;
+@property (readonly, nonatomic) double topicStreamCooldownTimeRemaining;
+
 + (id)sharedInstance;
+- (void).cxx_destruct;
+- (id)_init;
 - (BOOL)_isFutureCompatibilityVersionAttachedToEvent:(id)arg1;
 - (id)_readWriteKnowledgeStore;
 - (void)_registerForSyncNotifications;
+- (BOOL)_saveEntityEvents:(id)arg1;
+- (BOOL)_saveEntityEvents:(id)arg1 maxRetries:(long long)arg2 retryInterval:(double)arg3 shouldContinueBlock:(CDUnknownBlockType)arg4;
+- (BOOL)_saveTopicEvents:(id)arg1;
+- (BOOL)_saveTopicEvents:(id)arg1 maxRetries:(long long)arg2 retryInterval:(double)arg3 shouldContinueBlock:(CDUnknownBlockType)arg4;
 - (BOOL)deleteAllEventsInEventStream:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteAllEventsInEventStream:(id)arg1 matchingPredicate:(id)arg2 error:(id *)arg3;
 - (BOOL)deleteEvents:(id)arg1 error:(id *)arg2;
@@ -21,7 +37,7 @@
 - (id)eventForNamedEntityRecord:(id)arg1 sourceDeviceID:(id)arg2;
 - (id)eventForTopicRecord:(id)arg1 sourceDeviceID:(id)arg2;
 - (BOOL)iterEventBatchesMatchingPredicate:(id)arg1 streams:(id)arg2 sortDescriptors:(id)arg3 batchSize:(unsigned long long)arg4 error:(id *)arg5 block:(CDUnknownBlockType)arg6;
-- (BOOL)iterEventBatchesMatchingPredicate:(id)arg1 streams:(id)arg2 sortDescriptors:(id)arg3 batchSize:(unsigned long long)arg4 readMetaData:(BOOL)arg5 error:(id *)arg6 block:(CDUnknownBlockType)arg7;
+- (BOOL)iterEventBatchesMatchingPredicate:(id)arg1 streams:(id)arg2 sortDescriptors:(id)arg3 batchSize:(unsigned long long)arg4 readMetaData:(BOOL)arg5 remoteOnly:(BOOL)arg6 error:(id *)arg7 block:(CDUnknownBlockType)arg8;
 - (id)namedEntityRecordFromEvent:(id)arg1;
 - (double)namedEntityWriteBatchInterval;
 - (unsigned int)namedEntityWriteBatchSize;
@@ -31,7 +47,7 @@
 - (id)registerForTopicsRemoteAdditionWithBlock:(CDUnknownBlockType)arg1;
 - (id)registerForTopicsRemoteDeletionWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
-- (BOOL)saveEvents:(id)arg1 error:(id *)arg2;
+- (BOOL)saveEvents:(id)arg1 stream:(id)arg2 maxRetries:(long long)arg3 retryInterval:(double)arg4 shouldContinueBlock:(CDUnknownBlockType)arg5;
 - (id)tombstoneStream;
 - (id)topicRecordFromEvent:(id)arg1;
 - (id)topicStream;

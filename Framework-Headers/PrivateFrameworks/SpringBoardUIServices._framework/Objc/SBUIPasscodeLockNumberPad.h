@@ -8,11 +8,12 @@
 
 #import <SpringBoardUIServices/CAAnimationDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBNumberPadDelegate-Protocol.h>
+#import <SpringBoardUIServices/UIPointerInteractionDelegate-Protocol.h>
 
 @class NSArray, NSString, SBNumberPadWithDelegate, SBUIButton, UIColor, UIControl;
 @protocol SBUIPasscodeLockNumberPadDelegate, SBUIPasscodeNumberPadButton;
 
-@interface SBUIPasscodeLockNumberPad : UIView <SBNumberPadDelegate, CAAnimationDelegate>
+@interface SBUIPasscodeLockNumberPad : UIView <SBNumberPadDelegate, CAAnimationDelegate, UIPointerInteractionDelegate>
 {
     SBNumberPadWithDelegate *_numberPad;
     UIColor *_customBackgroundColor;
@@ -47,7 +48,7 @@
 @property (nonatomic) BOOL showsEmergencyCallButton; // @synthesize showsEmergencyCallButton=_showsEmergencyCallButton;
 @property (readonly) Class superclass;
 
-+ (id)_buttonForCharacter:(unsigned int)arg1 withLightStyle:(BOOL)arg2;
++ (id)_buttonForCharacter:(long long)arg1 withLightStyle:(BOOL)arg2;
 + (struct CGSize)_inputButtonCircleSize;
 + (struct UIEdgeInsets)_inputButtonCircleSpacing;
 - (void).cxx_destruct;
@@ -63,6 +64,8 @@
 - (void)_numberPadTouchUp:(id)arg1 forEvent:(id)arg2;
 - (void)_setSnapshotsDisabled:(BOOL)arg1;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)setVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 

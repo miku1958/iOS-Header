@@ -12,11 +12,11 @@
 #import <HMFoundation/NSURLSessionDelegate-Protocol.h>
 
 @class HMFExponentialBackoffTimer, HMFHTTPClientConfiguration, HMFNetMonitor, HMFNetService, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession;
-@protocol HMFHTTPClientDelegate, HMFLocking, OS_dispatch_queue;
+@protocol HMFHTTPClientDelegate, OS_dispatch_queue;
 
 @interface HMFHTTPClient : HMFObject <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate>
 {
-    id<HMFLocking> _lock;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _reachable;
     BOOL _pinging;

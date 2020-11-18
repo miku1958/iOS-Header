@@ -24,7 +24,6 @@
         unsigned int taskPriority:1;
     } _has;
     BOOL _includeAllNoteContents;
-    BOOL __encodeLegacyGloryData;
     int _dateSearchType;
     int _itemType;
     int _locationSearchType;
@@ -39,7 +38,6 @@
     _INPBDataString *_title;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *content; // @synthesize content=_content;
 @property (nonatomic) int dateSearchType; // @synthesize dateSearchType=_dateSearchType;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;

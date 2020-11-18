@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString;
+@class NSAttributedString, NSString;
 
 @interface NSParagraphArbitrator : NSObject
 {
+    struct __CFStringTokenizer *_tokenizer;
+    struct UBreakIterator *_breaker;
+    NSString *_breakerString;
+    NSString *_breakerLocale;
     NSAttributedString *_attributedString;
     CDUnknownBlockType _lineWidth;
     CDUnknownBlockType _validateLineBreakContext;
     unsigned long long _lineBreakStrategy;
     double _hyphenationFactor;
     long long _typesetterBehavior;
+    NSString *_preferredLanguage;
     struct _NSRange _paragraphRange;
     struct _NSRange _previousLineRange;
 }
@@ -25,7 +30,9 @@
 @property unsigned long long lineBreakStrategy; // @synthesize lineBreakStrategy=_lineBreakStrategy;
 @property (copy) CDUnknownBlockType lineWidth; // @synthesize lineWidth=_lineWidth;
 @property struct _NSRange paragraphRange; // @synthesize paragraphRange=_paragraphRange;
+@property (copy) NSString *preferredLanguage; // @synthesize preferredLanguage=_preferredLanguage;
 @property struct _NSRange previousLineRange; // @synthesize previousLineRange=_previousLineRange;
+@property (readonly) struct __CFStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 @property long long typesetterBehavior; // @synthesize typesetterBehavior=_typesetterBehavior;
 @property (copy) CDUnknownBlockType validateLineBreakContext; // @synthesize validateLineBreakContext=_validateLineBreakContext;
 
@@ -35,7 +42,10 @@
 - (id)init;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 - (CDStruct_f03de906)lineBreakContextBeforeIndex:(unsigned long long)arg1 lineFragmentWidth:(double)arg2 range:(struct _NSRange)arg3;
+- (BOOL)prepareBreakIteratorForAttributedString:(id)arg1 characterIndex:(unsigned long long)arg2;
+- (BOOL)prepareTokenizerForPreferredLanguage:(id)arg1;
 - (void)reset;
+- (void)resetBreaker;
 
 @end
 

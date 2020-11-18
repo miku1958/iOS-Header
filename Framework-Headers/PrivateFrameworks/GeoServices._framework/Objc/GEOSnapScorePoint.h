@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_candidates:1;
         unsigned int read_point:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_candidates:1;
-        unsigned int wrote_point:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,9 +35,6 @@
 + (Class)candidateType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsCandidate:(id)arg1;
-- (void)_readCandidates;
-- (void)_readPoint;
 - (void)addCandidate:(id)arg1;
 - (id)candidateAtIndex:(unsigned long long)arg1;
 - (unsigned long long)candidatesCount;
@@ -52,7 +47,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

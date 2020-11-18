@@ -8,7 +8,6 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDBatchGetUserPrivacySettingsOperation : CKDOperation
 {
     NSArray *_containerPrivacySettings;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)activityCreate;
 - (void)main;
+- (int)operationType;
 - (BOOL)shouldCheckAppVersion;
 
 @end

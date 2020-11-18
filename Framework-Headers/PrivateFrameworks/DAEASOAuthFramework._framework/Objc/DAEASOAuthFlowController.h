@@ -9,35 +9,57 @@
 #import <DAEASOAuthFramework/SL_OOPAuthFlowDelegate-Protocol.h>
 #import <DAEASOAuthFramework/UIWebViewDelegate-Protocol.h>
 
-@class NSString;
+@class DAEASOAuthPKCEChallenge, NSData, NSString;
 
 @interface DAEASOAuthFlowController : NSObject <SL_OOPAuthFlowDelegate, UIWebViewDelegate>
 {
     CDUnknownBlockType _completion;
+    NSString *_state;
+    DAEASOAuthPKCEChallenge *_challenge;
+    NSString *_redirectURI;
     unsigned long long _oauthType;
     NSString *_oauthURI;
     NSString *_tokenRequestURI;
+    NSString *_jwksURI;
+    NSData *_jwksData;
+    NSString *_issuer;
+    NSString *_clientID;
     NSString *_username;
+    NSString *_easEndPoint;
 }
 
+@property (strong, nonatomic) DAEASOAuthPKCEChallenge *challenge; // @synthesize challenge=_challenge;
+@property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *easEndPoint; // @synthesize easEndPoint=_easEndPoint;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *issuer; // @synthesize issuer=_issuer;
+@property (strong, nonatomic) NSData *jwksData; // @synthesize jwksData=_jwksData;
+@property (strong, nonatomic) NSString *jwksURI; // @synthesize jwksURI=_jwksURI;
 @property (nonatomic) unsigned long long oauthType; // @synthesize oauthType=_oauthType;
 @property (copy, nonatomic) NSString *oauthURI; // @synthesize oauthURI=_oauthURI;
+@property (copy, nonatomic) NSString *redirectURI; // @synthesize redirectURI=_redirectURI;
+@property (strong, nonatomic) NSString *state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *tokenRequestURI; // @synthesize tokenRequestURI=_tokenRequestURI;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
++ (id)upgradeAuthorizationEndpoint:(id)arg1;
++ (id)upgradeTokenEndpoint:(id)arg1;
 - (void).cxx_destruct;
 - (id)_accountDescription;
-- (void)_exchangeAuthCode:(id)arg1 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg2;
-- (void)_exchangeAuthCode:(id)arg1 forTokensWithCompletion:(CDUnknownBlockType)arg2;
-- (id)_urlRequestForOAuthTokenFromAuthCode:(id)arg1;
+- (void)_exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg3;
+- (void)_exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 forTokensWithCompletion:(CDUnknownBlockType)arg3;
+- (id)_urlRequestForOAuthTokenFromAuthCode:(id)arg1 codeVerifier:(id)arg2;
 - (id)authURLForUsername:(id)arg1;
+- (id)authURLForUsername:(id)arg1 originalAuthURL:(id)arg2;
+- (void)exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg3;
 - (id)initWithOAuthType:(unsigned long long)arg1 authURI:(id)arg2 username:(id)arg3;
 - (id)initialRedirectURL;
 - (id)requestForAuthURL:(id)arg1;
+- (void)retrieveJWKSDataFromURI:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)retrieveOpenIDMetadataFromURI:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setAuthFlowCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)shouldHideWebViewForLoadWithRequest:(id)arg1;
 - (void)webViewDidFinishLoadWithPageTitleSupplier:(CDUnknownBlockType)arg1;

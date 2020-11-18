@@ -15,6 +15,7 @@
 - (void)xpcBeginMigrationWithDeviceID:(NSUUID *)arg1 passcode:(NSString *)arg2 withBlock:(void (^)(void))arg3;
 - (void)xpcCheckIfFlaggedForRecoveryWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)xpcClearRecoveryFlagWithCompletion:(void (^)(NSError *))arg1;
+- (void)xpcClearWatchNeedsGraduation:(void (^)(NSError *))arg1;
 - (void)xpcCompanionOOBDiscoverAndPairWithName:(NSString *)arg1 withOutOfBandPairingKey:(NSData *)arg2 withOptions:(NSDictionary *)arg3 operationHasBegun:(void (^)(NSError *))arg4;
 - (void)xpcCompanionPasscodePairWithDeviceID:(NSUUID *)arg1 withOptions:(NSDictionary *)arg2 operationHasBegun:(void (^)(NSError *))arg3;
 - (void)xpcEndDiscoveryWithBlock:(void (^)(void))arg1;
@@ -35,6 +36,8 @@
 - (void)xpcNotifyPasscode:(NSNumber *)arg1 withDeviceID:(NSUUID *)arg2;
 - (void)xpcPairWithSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)xpcPairingClientDidEnterPhase:(NSString *)arg1 withBlock:(void (^)(void))arg2;
+- (void)xpcPairingClientSetAltAccountName:(NSString *)arg1 altDSID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)xpcPairingClientSetPairingParentName:(NSString *)arg1 pairingParentAltDSID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)xpcPairingShouldContinue;
 - (void)xpcPingActiveGizmoWithPriority:(int)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(void (^)(BOOL, double, double))arg3;
 - (void)xpcPutMigrationChallengeCharacteristicWriteData:(NSData *)arg1 completion:(void (^)(BOOL))arg2;
@@ -42,9 +45,11 @@
 - (void)xpcRetriggerUnpairInfoDialogWithBlock:(void (^)(void))arg1;
 - (void)xpcScanForMigratableWatchesWithBlock:(void (^)(void))arg1;
 - (void)xpcSetMigrationConsented:(BOOL)arg1 forDeviceID:(NSUUID *)arg2 withBlock:(void (^)(void))arg3;
+- (void)xpcSetWatchNeedsGraduation:(void (^)(NSError *))arg1;
 - (void)xpcStartWatchSetupPushWithBlock:(void (^)(void))arg1;
 - (void)xpcStopWatchSetupPushWithBlock:(void (^)(void))arg1;
 - (void)xpcSubmitAlbertPairingReport:(void (^)(void))arg1;
+- (void)xpcSubmitRTCPairingMetricForMetricID:(NSString *)arg1 withSuccess:(void (^)(BOOL, NSError *))arg2;
 - (void)xpcSubmitServerRequestReportWithRequestType:(NSString *)arg1 duration:(double)arg2 errorCode:(unsigned int)arg3 block:(void (^)(void))arg4;
 - (void)xpcSuspendPairingClientCrashMonitoring:(void (^)(void))arg1;
 - (void)xpcSwitchActiveDeviceWithDeviceID:(NSUUID *)arg1 isMagicSwitch:(BOOL)arg2 operationHasCompleted:(void (^)(NSError *))arg3;
@@ -54,5 +59,6 @@
 - (void)xpcUnpairWithDeviceID:(NSUUID *)arg1 withOptions:(NSDictionary *)arg2 operationHasBegun:(void (^)(NSError *))arg3;
 - (void)xpcUnpairWithSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)xpcWaitForWatchPairingExtendedMetadataForAdvertisedName:(NSString *)arg1 completion:(void (^)(BOOL, NRWatchPairingExtendedMetadata *))arg2;
+- (void)xpcWatchNeedsGraduation:(void (^)(BOOL))arg1;
 @end
 

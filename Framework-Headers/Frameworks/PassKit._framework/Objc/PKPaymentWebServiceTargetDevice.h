@@ -8,13 +8,12 @@
 
 #import <PassKitCore/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class NSString, PKAssertion, PKPassLibrary, PKPassUpgradeController, PKPaymentService, PKSecureElement;
+@class NSString, PKAssertion, PKPassLibrary, PKPassUpgradeController, PKPaymentService;
 
 @interface PKPaymentWebServiceTargetDevice : NSObject <PKPaymentWebServiceTargetDeviceProtocol>
 {
     PKPassLibrary *_passLibrary;
     PKPaymentService *_paymentService;
-    PKSecureElement *_secureElement;
     PKAssertion *_provisioningAssertion;
     BOOL _provisioningAssertionActive;
     PKAssertion *_verificationAssertion;
@@ -33,8 +32,43 @@
 
 + (id)localTargetDevice;
 - (void).cxx_destruct;
+- (void)_accountAttestationAnonymizationSaltWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_addPass:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_addSharingInvitationReceipts:(id)arg1 onCredentialWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_addSubcredential:(id)arg1 fromSharingInvitation:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_canAcceptInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_conflictingExpressPassIdentifiersForPassInformation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_conflictingExpressPassIdentifiersForPassInformation:(id)arg1 withReferenceExpressState:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_consistencyCheck;
+- (void)_credentialWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_declineRelatedSharingInvitationsIfNecessary:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_downloadAllPaymentPasses;
+- (void)_enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_initializeSecureElement:(CDUnknownBlockType)arg1;
+- (void)_initializeSecureElementIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_matchingInvitationOnDevice:(id)arg1 withTimeout:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_passOwnershipTokenWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_paymentWebService:(id)arg1 pass:(id)arg2 withExpressInfo:(id)arg3 hasDisqualifyingConflicts:(CDUnknownBlockType)arg4;
+- (void)_performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performProductActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_productsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_removeExpressPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_removePassWithUniqueID:(id)arg1 diagnosticReason:(id)arg2;
+- (void)_removeSharingInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_removeSharingInvitationReceiptWithIdentifiers:(id)arg1 onCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_requestBackgroundRegistrationForCredentialWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sanitizeExpressPasses;
+- (void)_setAccountAttestationAnonymizationSalt:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_setDefaultPaymentPassUniqueIdentifier:(id)arg1;
+- (void)_setExpressWithPassInformation:(id)arg1 credential:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
+- (void)_storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
+- (void)_subcredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_updateMetadataOnPassWithIdentifier:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_upgradeRequestForPass:(id)arg1;
 - (void)_validateCommonPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 - (id)appleAccountInformation;
 - (void)applePayTrustKeyForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)availableProductsWithCompletion:(CDUnknownBlockType)arg1;
@@ -55,6 +89,7 @@
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)felicaSecureElementIsAvailable;
 - (id)init;
@@ -89,7 +124,7 @@
 - (void)paymentWebService:(id)arg1 matchingInvitationOnDevice:(id)arg2 withTimeout:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 passOwnershipTokenWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
-- (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 provisioningDataIncludingDeviceMetadata:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;

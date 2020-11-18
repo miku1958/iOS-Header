@@ -13,6 +13,7 @@
     SBIconView *_iconOverlayView;
     UIView *_iconCrossfadeView;
     UIView *_iconOverlayContainerView;
+    struct CGRect _initialIconOverlayViewBounds;
     UIView *_crossfadeView;
     struct CGRect _crossfadeViewFrame;
     UIViewFloatAnimatableProperty *_iconCrossfadeAnimatableProperty;
@@ -26,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyIconOverlayViewOverlayScaleProperties;
+- (double)_currentFadeValue;
 - (double)_iconOverlayScale;
 - (void)_setUpIconCrossfadeAnimatableProperty;
 - (void)_setUpIconCrossfadeView;

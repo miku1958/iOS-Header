@@ -15,6 +15,7 @@
 {
     BOOL _includeTopMargin;
     BOOL _persistAddedSuggestions;
+    id<HUAccessorySceneListContentViewControllerDelegate> _delegate;
     unsigned long long _contentSource;
     unsigned long long _selectionType;
     HFItem<HFServiceLikeItem> *_serviceLikeItem;
@@ -22,7 +23,7 @@
 
 @property (readonly, nonatomic) unsigned long long contentSource; // @synthesize contentSource=_contentSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HUAccessorySceneListContentViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<HUAccessorySceneListContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeTopMargin; // @synthesize includeTopMargin=_includeTopMargin;

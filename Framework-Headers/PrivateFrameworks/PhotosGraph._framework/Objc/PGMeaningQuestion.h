@@ -21,6 +21,7 @@
 - (unsigned short)displayType;
 - (id)entityIdentifier;
 - (unsigned short)entityType;
+- (id)initWithConfirmedMeaningLabel:(id)arg1 assetUUID:(id)arg2;
 - (id)initWithMeaningLabel:(id)arg1 assetUUID:(id)arg2 localFactoryScore:(double)arg3;
 - (double)localFactoryScore;
 - (unsigned short)state;

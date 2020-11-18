@@ -6,11 +6,13 @@
 
 #import <CoreSuggestionsInternals/SGCuratedChangeNotificationsBaseListener.h>
 
-@protocol NSObject;
+@class NSObject;
+@protocol NSObject, OS_dispatch_queue;
 
 @interface SGCuratedChangeNotificationsAddressBookListener : SGCuratedChangeNotificationsBaseListener
 {
     id<NSObject> _notificationCenterToken;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
 }
 
 - (void).cxx_destruct;

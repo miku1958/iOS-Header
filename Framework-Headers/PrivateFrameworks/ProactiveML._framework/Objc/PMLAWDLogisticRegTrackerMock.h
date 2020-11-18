@@ -13,8 +13,8 @@
     PMLTrackerMockAdapter *_adapter;
 }
 
-@property (readonly) NSArray *trackedGradients; // @dynamic trackedGradients;
-@property (readonly) NSArray *trackedWeights; // @dynamic trackedWeights;
+@property (readonly, nonatomic) NSArray *trackedGradients; // @dynamic trackedGradients;
+@property (readonly, nonatomic) NSArray *trackedWeights; // @dynamic trackedWeights;
 
 + (id)mockTracker;
 + (id)mockTrackerForPlanId:(id)arg1;

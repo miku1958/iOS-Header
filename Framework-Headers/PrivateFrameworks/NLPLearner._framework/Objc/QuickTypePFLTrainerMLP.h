@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 + (id)reportingStringForModelUpdates:(float *)arg1 count:(unsigned long long)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)getWeightUpdatesAddNoise:(BOOL)arg1 encryptionKey:(id)arg2;
+- (id)getWeightUpdatesAddNoise:(BOOL)arg1 encryptionKey:(id)arg2 recipe:(id)arg3;
 - (id)initWithSeedModelPath:(id)arg1 andPrivacyIdentifier:(id)arg2;
 - (BOOL)trainOn:(id)arg1 forNEpochs:(unsigned long long)arg2;
 - (void)writeModelToURL:(id)arg1;

@@ -16,21 +16,20 @@
     NSMutableArray *_photoLibraryCPLReadinessBlocks;
 }
 
-@property (readonly) BOOL isReadyForCloudPhotoLibrary;
-
 - (void).cxx_destruct;
 - (void)_callOutstandingCPLReadinessBlocks;
 - (BOOL)_checkForCPLReadinessAndCallBlocks;
-- (BOOL)_isAssetsdReadyForCPLManager;
+- (BOOL)_isAssetsdReadyForCPLManagerWithStatus:(id *)arg1;
 - (void)_setupCPLReadinessTimerAndEventHandlerIfNeeded;
 - (void)_stopWaitingForCPLReadiness;
+- (void)cancelCPLReadinessBlocksAndStopWaiting;
 - (id)initWithLibraryServicesManager:(id)arg1;
 - (void)invalidate;
+- (BOOL)isReadyForCloudPhotoLibraryWithStatus:(id *)arg1;
 - (id)libraryServicesManager;
 - (void)pauseCloudPhotos:(BOOL)arg1 reason:(short)arg2;
 - (void)performOnceLibraryIsReadyForCPLManager:(CDUnknownBlockType)arg1;
 - (void)processCloudPhotosLibraryStateChange:(BOOL)arg1;
-- (void)stopWaitingForCPLReadiness;
 
 @end
 

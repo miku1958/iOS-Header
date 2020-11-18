@@ -22,8 +22,10 @@
 - (void)removeAllObjects;
 - (void)removeItemAtIndexPath:(id)arg1;
 - (void)removeSectionAtIndex:(long long)arg1;
+- (void)replaceItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceObjectAtIndexPath:(id)arg1 withObject:(id)arg2;
 - (void)replaceSectionAtIndex:(long long)arg1 withObject:(id)arg2;
+- (void)replaceSectionsUsingBlock:(CDUnknownBlockType)arg1;
 
 @end
 

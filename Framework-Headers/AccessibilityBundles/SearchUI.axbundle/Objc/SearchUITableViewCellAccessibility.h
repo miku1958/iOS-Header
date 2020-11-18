@@ -19,10 +19,10 @@
 - (id)_accessibilityRetrieveTableViewCellText;
 - (BOOL)_accessibilityShouldSortTableViewCellChildren;
 - (id)_accessibilitySupplementaryFooterViews;
-- (BOOL)_accessibilityUsesOverrideContainerProtocol;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

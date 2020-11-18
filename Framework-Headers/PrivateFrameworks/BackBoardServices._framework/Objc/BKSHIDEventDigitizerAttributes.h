@@ -6,20 +6,33 @@
 
 #import <BackBoardServices/BKSHIDEventBaseAttributes.h>
 
+@class NSArray;
+
 @interface BKSHIDEventDigitizerAttributes : BKSHIDEventBaseAttributes
 {
+    unsigned char _touchStreamIdentifier;
+    BOOL _systemGesturesPossible;
+    BOOL _systemGestureStateChange;
     float _maximumForce;
     double _digitizerSurfaceWidth;
     double _digitizerSurfaceHeight;
+    NSArray *_pathAttributes;
+    double _initialTouchTimestamp;
 }
 
 @property (nonatomic) double digitizerSurfaceHeight; // @synthesize digitizerSurfaceHeight=_digitizerSurfaceHeight;
 @property (nonatomic) double digitizerSurfaceWidth; // @synthesize digitizerSurfaceWidth=_digitizerSurfaceWidth;
+@property (nonatomic) double initialTouchTimestamp; // @synthesize initialTouchTimestamp=_initialTouchTimestamp;
 @property (nonatomic) float maximumForce; // @synthesize maximumForce=_maximumForce;
+@property (strong, nonatomic) NSArray *pathAttributes; // @synthesize pathAttributes=_pathAttributes;
+@property (nonatomic) BOOL systemGestureStateChange; // @synthesize systemGestureStateChange=_systemGestureStateChange;
+@property (nonatomic) BOOL systemGesturesPossible; // @synthesize systemGesturesPossible=_systemGesturesPossible;
+@property (nonatomic) unsigned char touchStreamIdentifier; // @synthesize touchStreamIdentifier=_touchStreamIdentifier;
 
 + (id)protobufSchema;
+- (void).cxx_destruct;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

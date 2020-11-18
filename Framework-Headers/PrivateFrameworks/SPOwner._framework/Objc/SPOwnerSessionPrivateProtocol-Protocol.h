@@ -10,8 +10,11 @@
 
 @protocol SPOwnerSessionPrivateProtocol <SPOwnerSessionProtocol>
 - (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
+- (void)beaconStoreStatusWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)forceDistributeKeysWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)forceUpdateKeyAlignmentRecordForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)forceUpdateKeyMapsForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)rawSearchResultsForBeacon:(SPBeacon *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
+- (void)waitForBeaconStoreAvailableWithCompletion:(void (^)(void))arg1;
 @end
 

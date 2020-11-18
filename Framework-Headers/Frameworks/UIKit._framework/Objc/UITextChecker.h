@@ -23,7 +23,6 @@
 + (BOOL)_learnWord:(id)arg1 inDictionary:(id)arg2;
 + (void)_setDictionaryEntry:(id)arg1 forName:(id)arg2;
 + (void)_setWords:(id)arg1 inDictionary:(id)arg2;
-+ (id)_textCheckerBackgroundQueue;
 + (id)_wordsInDictionary:(id)arg1;
 + (id)availableLanguages;
 + (id)bestLanguageForString:(id)arg1 fromAlternatives:(id)arg2 currentLanguage:(id)arg3;
@@ -33,7 +32,6 @@
 + (BOOL)hasLearnedWord:(id)arg1;
 + (void)learnWord:(id)arg1;
 + (id)openUserDictionary:(id)arg1;
-+ (void)queryLocalUpdateAssets:(CDUnknownBlockType)arg1;
 + (void)setString:(id)arg1 isExemptFromChecker:(BOOL)arg2;
 + (long long)uniqueSpellDocumentTag;
 + (void)unlearnWord:(id)arg1;
@@ -60,9 +58,10 @@
 - (void)initGlobals;
 - (void)initUserDictionaries;
 - (BOOL)isWordInUserDictionaries:(id)arg1 caseSensitive:(BOOL)arg2;
-- (void)queryUpdateBundle;
 - (struct _NSRange)rangeOfMisspelledWordInString:(id)arg1 range:(struct _NSRange)arg2 startingAt:(long long)arg3 wrap:(BOOL)arg4 language:(id)arg5;
 - (struct _NSRange)rangeOfMisspelledWordInString:(id)arg1 range:(struct _NSRange)arg2 startingAt:(long long)arg3 wrap:(BOOL)arg4 languages:(id)arg5;
+- (void)releaseAllLexicons;
+- (void)resetAllLanguageModels;
 - (id)stringForInputString:(id)arg1 language:(id)arg2;
 - (id)suggestWordInLanguage:(id)arg1;
 

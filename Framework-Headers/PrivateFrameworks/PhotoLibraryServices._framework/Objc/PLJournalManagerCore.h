@@ -14,10 +14,10 @@
     NSURL *_historyTokenURL;
 }
 
-+ (id)_populateRelationshipKeyPathsForPrefetching:(id)arg1 currentKeyPath:(id)arg2 usingModelProperties:(id)arg3;
++ (id)_objectEnumeratorForJournal:(id)arg1 usingManagedObjectContext:(id)arg2 error:(id *)arg3;
++ (BOOL)appendSnapshotWithJournal:(id)arg1 usingManagedObjectContext:(id)arg2 changedKeys:(id)arg3 error:(id *)arg4;
 + (BOOL)createSnapshotWithJournal:(id)arg1 usingManagedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)payloadClasses;
-+ (id)populateRelationshipKeyPathsForPrefetching:(id)arg1 forPayloadClass:(Class)arg2;
 + (void)validatePayloadClassesForManagedObjectModel:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;

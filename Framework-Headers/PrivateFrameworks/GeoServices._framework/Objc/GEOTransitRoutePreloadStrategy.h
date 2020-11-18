@@ -9,8 +9,8 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEORoutePreloadStrategy-Protocol.h>
 
-@class GEOComposedRoute, GEOMapServiceTraits, GEORoutePreloader, GEOTransitSuggestedRoute, NSMutableDictionary, NSString, NSTimer, _GEOTransitRoutePreloaderData;
-@protocol OS_dispatch_queue;
+@class GEOComposedRoute, GEOMapServiceTraits, GEORoutePreloader, GEOTransitSuggestedRoute, NSMutableDictionary, NSString, _GEOTransitRoutePreloaderData;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEOTransitRoutePreloadStrategy : NSObject <GEOResourceManifestTileGroupObserver, GEORoutePreloadStrategy>
 {
@@ -19,13 +19,13 @@
     GEOMapServiceTraits *_traits;
     double _endRoutePosition;
     unsigned long long _indexOfLastStepWithPreparedBatch;
-    NSTimer *_geodCrashTimer;
     double _radialDistanceToImplicateTilesMeters;
     long long _tilesRequested;
     BOOL _shouldPreloadEntireRoute;
     NSObject<OS_dispatch_queue> *_workQueue;
     GEORoutePreloader *_preloader;
     GEOComposedRoute *_route;
+    NSObject<OS_dispatch_source> *_geodCrashTimer;
     double _currentRoutePosition;
     int _downloadState;
     double _stepSizeInMeters;
@@ -42,7 +42,7 @@
 
 - (void).cxx_destruct;
 - (void)_cancelAllBatches;
-- (void)_geodCrashed:(id)arg1;
+- (void)_geodCrashed;
 - (void)_ignoreAlreadyRequestedTilesAndUpdateGlobalListWithNonDuplicatesForTileKeyList:(id)arg1;
 - (void)_loadPlacecardsForBatch:(id)arg1;
 - (void)_loadTilesForBatch:(id)arg1;

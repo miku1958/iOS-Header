@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
 @interface AVPictureInPictureViewController : UIViewController <PGPictureInPictureViewController>
 {
     BOOL _shouldShowAlternateActionButtonImage;
-    AVPlayerController *_playerController;
     AVPictureInPicturePlayerLayerView *_pictureInPicturePlayerLayerView;
+    AVPlayerController *_playerController;
     id<AVPictureInPictureViewControllerDelegate> _delegate;
+    AVPictureInPictureViewController *_contentViewController;
 }
 
+@property (strong, nonatomic) AVPictureInPictureViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVPictureInPictureViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -30,9 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL shouldShowLoadingIndicator;
 @property (readonly) Class superclass;
 
-+ (id)keyPathsForValuesAffectingShouldShowLoadingIndicator;
 - (void).cxx_destruct;
-- (void)actionButtonTapped;
 - (void)dealloc;
 - (void)didAnimatePictureInPictureStop;
 - (id)init;

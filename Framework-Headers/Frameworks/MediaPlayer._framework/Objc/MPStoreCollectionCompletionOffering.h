@@ -8,6 +8,7 @@
 
 @class MPMediaQuery, MPStoreOfferMediaItemCollection, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreCollectionCompletionOffering : NSObject
 {
     MPMediaQuery *_localItemsQuery;

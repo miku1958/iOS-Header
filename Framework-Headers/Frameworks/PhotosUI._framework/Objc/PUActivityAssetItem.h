@@ -14,10 +14,14 @@
 {
     BOOL _excludeLiveness;
     BOOL _excludeLocation;
+    BOOL _excludeCaption;
+    BOOL _excludeAccessibilityDescription;
     PHAsset *_asset;
 }
 
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
+@property (nonatomic) BOOL excludeAccessibilityDescription; // @synthesize excludeAccessibilityDescription=_excludeAccessibilityDescription;
+@property (nonatomic) BOOL excludeCaption; // @synthesize excludeCaption=_excludeCaption;
 @property (nonatomic) BOOL excludeLiveness; // @synthesize excludeLiveness=_excludeLiveness;
 @property (nonatomic) BOOL excludeLocation; // @synthesize excludeLocation=_excludeLocation;
 

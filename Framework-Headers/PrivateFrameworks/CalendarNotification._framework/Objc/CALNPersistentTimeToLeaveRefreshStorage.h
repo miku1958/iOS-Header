@@ -26,7 +26,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (id)persistentStorageWithPath:(id)arg1 error:(id *)arg2;
++ (id)persistentStorageWithPath:(id)arg1;
 + (id)timeToLeaveRefreshDataFromPersistentStorageWithPath:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (void)_addRefreshDate:(id)arg1 withIdentifier:(id)arg2;

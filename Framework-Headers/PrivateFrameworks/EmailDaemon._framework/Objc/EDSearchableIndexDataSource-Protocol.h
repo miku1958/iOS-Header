@@ -18,7 +18,7 @@
 - (NSArray *)searchableIndex:(EDSearchableIndex *)arg1 invalidateItemsInTransactions:(NSArray *)arg2;
 - (void)searchableIndex:(EDSearchableIndex *)arg1 willRemoveIdentifiers:(NSArray *)arg2 type:(long long)arg3;
 - (EDSearchableIndexUpdates *)updatesForSearchableIndex:(EDSearchableIndex *)arg1 excludingIdentifiers:(NSArray *)arg2 count:(unsigned long long)arg3 cancelationToken:(EFCancelationToken *)arg4;
-- (NSDictionary *)verificationDataSamplesForSearchableIndex:(EDSearchableIndex *)arg1 count:(unsigned long long)arg2;
+- (NSDictionary *)verificationDataSamplesForSearchableIndex:(EDSearchableIndex *)arg1 count:(unsigned long long)arg2 lastVerifiedMessageID:(long long)arg3;
 
 @optional
 - (void)searchableIndex:(EDSearchableIndex *)arg1 foundAttachmentPaths:(NSArray *)arg2 forMessagePersistentID:(NSString *)arg3;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class SBDeviceApplicationSceneHandle, SBIsolatedSceneOrientationFollowingWrapperViewController, UIViewController;
-@protocol SBDeviceApplicationSceneOverlayViewProviderDelegate;
+@protocol SBDeviceApplicationSceneOverlayViewController, SBDeviceApplicationSceneOverlayViewProviderDelegate;
 
 @interface SBDeviceApplicationSceneOverlayViewProvider : NSObject
 {
@@ -17,18 +17,22 @@
 }
 
 @property (readonly, weak, nonatomic) id<SBDeviceApplicationSceneOverlayViewProviderDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) UIViewController *overlayViewController;
+@property (readonly, nonatomic) UIViewController<SBDeviceApplicationSceneOverlayViewController> *overlayViewController;
 @property (readonly, nonatomic) long long preferredStatusBarStyle;
+@property (readonly, nonatomic) long long priority;
 @property (strong, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
+@property (readonly, nonatomic) BOOL wantsResignActiveAssertion;
 
 - (void).cxx_destruct;
 - (void)_activateIfPossible;
 - (void)_deactivateIfPossible;
 - (id)_realOverlayViewController;
 - (void)dealloc;
+- (void)hideContentWithAnimation:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSceneHandle:(id)arg1 delegate:(id)arg2;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (BOOL)shouldFollowSceneOrientation;
+- (void)showContentWithAnimation:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 
 @end

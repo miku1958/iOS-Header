@@ -18,13 +18,6 @@ __attribute__((visibility("hidden")))
     UIViewController *_viewController;
 }
 
-@property (nonatomic, setter=_setCurlUpRevealedHeight:) double _curlUpRevealedHeight; // @synthesize _curlUpRevealedHeight;
-@property (readonly, nonatomic) BOOL animated;
-@property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) int transition; // @synthesize transition=_transition;
-@property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-
 - (void).cxx_destruct;
 - (id)initWithViewController:(id)arg1 name:(id)arg2 transition:(int)arg3;
 

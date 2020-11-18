@@ -18,14 +18,12 @@
         unsigned int defaultProfile:1;
     } _has;
     BOOL _defaultProfile;
-    BOOL __encodeLegacyGloryData;
     _INPBDataString *_carName;
     _INPBIntentMetadata *_intentMetadata;
     _INPBString *_profileName;
     _INPBInteger *_profileNumber;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL defaultProfile; // @synthesize defaultProfile=_defaultProfile;

@@ -12,11 +12,14 @@
 
 @property (readonly, nonatomic) NSIndexPath *ic_firstItemIndexPath;
 @property (readonly, nonatomic) struct CGRect ic_firstSelectedItemFrame;
+@property (readonly, nonatomic) NSIndexPath *ic_middleVisibleIndexPath;
 
 - (id)ic_cellAtLocation:(struct CGPoint)arg1;
 - (void)ic_deselectAllItems;
+- (void)ic_deselectAllItemsAnimated:(BOOL)arg1;
 - (struct CGRect)ic_frameForItemAtIndexPath:(id)arg1;
+- (void)ic_reloadDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_selectCellAtIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)ic_selectFirstItemIfNoneSelected;
-- (void)ic_selectFirstUnselectedCellWithFrame:(struct CGRect)arg1;
 @end
 

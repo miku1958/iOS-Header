@@ -15,6 +15,7 @@
 {
     BOOL _copiedToPasteboard;
     BOOL _shouldAggregate;
+    NSString *_identifier;
     NSString *_name;
     NSString *_originatingBundleID;
     NSString *_fullFormattedAddress;
@@ -46,6 +47,7 @@
 @property (copy, nonatomic) NSDate *createdAt; // @synthesize createdAt=_createdAt;
 @property (copy, nonatomic) NSString *documentID; // @synthesize documentID=_documentID;
 @property (copy, nonatomic) NSString *fullFormattedAddress; // @synthesize fullFormattedAddress=_fullFormattedAddress;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSNumber *latitude; // @synthesize latitude=_latitude;
 @property (copy, nonatomic) NSNumber *lifetime; // @synthesize lifetime=_lifetime;
@@ -53,7 +55,7 @@
 @property (copy, nonatomic) NSNumber *longitude; // @synthesize longitude=_longitude;
 @property (copy, nonatomic) NSURL *mapItemURL; // @synthesize mapItemURL=_mapItemURL;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
+@property (readonly, copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
 @property (copy, nonatomic) NSURL *originatingWebsiteURL; // @synthesize originatingWebsiteURL=_originatingWebsiteURL;
 @property (copy, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;
 @property (copy, nonatomic) NSString *shortValue; // @synthesize shortValue=_shortValue;
@@ -73,7 +75,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithOriginatingBundleID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToConnectionsLocation:(id)arg1;
 - (id)quickTypeItem;

@@ -29,6 +29,7 @@
 - (id)_signatureBezelTemplate;
 - (id)_signatureCircularTemplate;
 - (id)_signatureCornerTemplate;
+- (id)_signatureExtraLargeTemplate;
 - (id)_utilitarianSmallTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
 

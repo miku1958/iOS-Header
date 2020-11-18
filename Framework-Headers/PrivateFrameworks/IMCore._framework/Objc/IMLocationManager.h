@@ -20,34 +20,41 @@
     NSError *_error;
     NSDate *_locateStartTime;
     NSTimer *_locationUpdateTimer;
+    BOOL _inRequestPreciseLocation;
+    BOOL _firstAuthorizationCallbackArrived;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) BOOL firstAuthorizationCallbackArrived; // @synthesize firstAuthorizationCallbackArrived=_firstAuthorizationCallbackArrived;
 @property (strong, nonatomic) NSMutableArray *handlers; // @synthesize handlers=_handlers;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL inRequestPreciseLocation; // @synthesize inRequestPreciseLocation=_inRequestPreciseLocation;
 @property (strong, nonatomic) NSDate *locateStartTime; // @synthesize locateStartTime=_locateStartTime;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (readonly, nonatomic) BOOL locationAuthorizationDenied;
 @property (readonly, nonatomic) BOOL locationAuthorizationDetermined;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (strong, nonatomic) NSTimer *locationUpdateTimer; // @synthesize locationUpdateTimer=_locationUpdateTimer;
+@property (readonly, nonatomic) BOOL preciseLocationAuthorized;
 @property (readonly) Class superclass;
 
 + (Class)__CLLocationManagerClass;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_errorHappend:(id)arg1;
 - (void)_fireCompletionHandlers;
 - (void)_locationManagerTimedOut;
 - (void)_locationUpdateTimerFired:(id)arg1;
 - (BOOL)_shouldSendLocation:(id)arg1 timeIntervalSinceStart:(double)arg2;
+- (void)_startLocationUpdateTimerWithAuthorizedHandler:(CDUnknownBlockType)arg1 updateHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
-- (void)startUpdatingCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
+- (void)startUpdatingCurrentLocationWithAuthorizedHandler:(CDUnknownBlockType)arg1 updateHandler:(CDUnknownBlockType)arg2;
+- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(id)arg1 withAuthorizedHandler:(CDUnknownBlockType)arg2 updateHandler:(CDUnknownBlockType)arg3;
 
 @end
 

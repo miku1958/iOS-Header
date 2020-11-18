@@ -7,13 +7,11 @@
 #import <AvatarUI/AVTAvatarStore-Protocol.h>
 #import <AvatarUI/AVTStickerBackend-Protocol.h>
 
-@class AVTAvatarRecord, AVTMemoji, NSString;
+@class NSString;
 
 @protocol AVTAvatarStoreInternal <AVTAvatarStore, AVTStickerBackend>
 + (unsigned long long)maximumNumberOfFetchableAvatars;
 + (unsigned long long)maximumNumberOfSavableAvatars;
 - (void)deleteAvatarWithIdentifier:(NSString *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2;
-- (void)duplicateAvatar:(AVTAvatarRecord *)arg1 completionBlock:(void (^)(BOOL, id<AVTAvatarRecord>, NSError *))arg2;
-- (void)saveAvatarRecord:(AVTAvatarRecord *)arg1 thumbnailAvatar:(AVTMemoji *)arg2 completionBlock:(void (^)(BOOL, NSError *))arg3 thumbnailGenerationCompletionBlock:(void (^)(BOOL, NSError *))arg4;
 @end
 

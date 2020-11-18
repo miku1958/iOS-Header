@@ -16,7 +16,9 @@
     NSMutableArray *_samplesPendingDelivery;
     NSMutableArray *_deletedObjectsPendingDelivery;
     _Atomic BOOL _includeDeletedObjects;
+    HKQueryAnchor *_currentAnchor;
     BOOL _includeAutomaticTimeZones;
+    BOOL _includeContributorInformation;
     CDUnknownBlockType _updateHandler;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
@@ -32,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreDeletedObjects;
 @property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
+@property (nonatomic) BOOL includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;

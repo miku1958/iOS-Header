@@ -19,7 +19,6 @@
 - (BOOL)absoluteURLisEqual:(id)arg1;
 - (id)initWithDirtyString:(id)arg1;
 - (id)initWithScheme:(id)arg1 host:(id)arg2 port:(int)arg3 path:(id)arg4;
-- (BOOL)isEqualToURL:(id)arg1;
 - (id)pathWithoutDecodingAndRemovingTrailingSlash;
 - (id)pathWithoutTrailingRemovingSlash;
 - (id)queryParameters;

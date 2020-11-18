@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSuggestionsInternals/SGExtractionModel.h>
 
 @class NSDictionary, NSRegularExpression, _PASNotificationToken;
 
-@interface SGReminderExtractionModel : NSObject
+@interface SGReminderExtractionModel : SGExtractionModel
 {
     _PASNotificationToken *_assetUpdateToken;
     NSDictionary *_enrichments;
@@ -18,26 +18,24 @@
     NSRegularExpression *_whitelistRegex;
 }
 
-+ (id)compileModelAtPath:(id)arg1 toCompiledPath:(id)arg2;
-+ (id)currentModelName;
-+ (id)currentModelURL;
 + (id)enrichTaggedCharacterRangesWithModelOutput:(id)arg1 usingInputCharacterRanges:(id)arg2;
-+ (id)inputFromTaggedCharacterRanges:(id)arg1 usingTokenMapping:(id)arg2;
-+ (id)loadLazyPlistWithBasename:(id)arg1;
++ (id)inputFromTaggedCharacterRanges:(id)arg1 usingTokenMapping:(id)arg2 forModel:(id)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_init;
 - (struct _NSRange)_whitelistedVerbRangeInContent:(id)arg1;
-- (id)argMaxForLastOutput:(id)arg1;
-- (id)argMaxForOutputIndex:(id)arg1 index:(int)arg2 shape:(id)arg3;
-- (id)argMaxForSequence:(id)arg1;
 - (void)dealloc;
 - (id)enrichments;
 - (BOOL)hasWhitelistedVerbInContent:(id)arg1;
+- (id)inputTokenMapping;
 - (id)loadModel;
+- (id)modelDescription;
 - (id)modelInferences:(id)arg1;
+- (id)outputConfig;
 - (id)reminderOverrides;
+- (void)setReminderOverridesForTesting:(id)arg1;
 - (void)updateAll;
+- (id)whitelistedRangesInContent:(id)arg1;
 - (id)whitelistedVerbInContent:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBString;
+@class NSArray, NSString, _INPBDataString, _INPBString;
 
 @protocol _INPBHomeEntity <NSObject>
 
@@ -32,18 +32,24 @@
 @property (strong, nonatomic) _INPBDataString *room;
 @property (nonatomic) int sceneType;
 @property (strong, nonatomic) _INPBDataString *zone;
+@property (copy, nonatomic) NSArray *zones;
+@property (readonly, nonatomic) unsigned long long zonesCount;
 
++ (Class)zonesType;
 - (int)StringAsDeviceType:(NSString *)arg1;
 - (int)StringAsDeviceTypes:(NSString *)arg1;
 - (int)StringAsEntityType:(NSString *)arg1;
 - (int)StringAsSceneType:(NSString *)arg1;
 - (void)addDeviceTypes:(int)arg1;
+- (void)addZones:(_INPBDataString *)arg1;
 - (void)clearDeviceTypes;
+- (void)clearZones;
 - (NSString *)deviceTypeAsString:(int)arg1;
 - (NSString *)deviceTypesAsString:(int)arg1;
 - (int)deviceTypesAtIndex:(unsigned long long)arg1;
 - (NSString *)entityTypeAsString:(int)arg1;
 - (NSString *)sceneTypeAsString:(int)arg1;
 - (void)setDeviceTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (_INPBDataString *)zonesAtIndex:(unsigned long long)arg1;
 @end
 

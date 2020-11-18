@@ -10,31 +10,24 @@
 #import <SensorKitUI/UITableViewDelegatePrivate-Protocol.h>
 
 @class NSArray, NSBundle, NSMutableDictionary, NSString;
-@protocol SRAuthorizationTableDelegate;
 
 @interface SRAuthorizationCategoryGroupViewController : UITableViewController <SRAuthorizationCellDelegate, UITableViewDelegatePrivate>
 {
     NSBundle *_appBundle;
     NSMutableDictionary *_authState;
-    id<SRAuthorizationTableDelegate> _delegate;
-    NSArray *_commonUIs;
     NSArray *_allKeys;
 }
 
 @property (strong, nonatomic) NSArray *allKeys; // @synthesize allKeys=_allKeys;
 @property (strong, nonatomic) NSBundle *appBundle; // @synthesize appBundle=_appBundle;
 @property (strong, nonatomic) NSMutableDictionary *authState; // @synthesize authState=_authState;
-@property (strong, nonatomic) NSArray *commonUIs; // @synthesize commonUIs=_commonUIs;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SRAuthorizationTableDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (void)confirmAuthChangeForService:(id)arg1 value:(BOOL)arg2;
 - (void)dealloc;
-- (void)dismissViewController;
 - (id)init;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)openPrivacy;

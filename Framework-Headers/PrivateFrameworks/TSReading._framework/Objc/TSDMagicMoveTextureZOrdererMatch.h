@@ -27,7 +27,9 @@
 @property (readonly, nonatomic) TSDTextureSet *outgoingTexture; // @synthesize outgoingTexture=_outgoingTexture;
 @property (nonatomic) long long outgoingZIndex; // @synthesize outgoingZIndex=_outgoingZIndex;
 
+- (void)dealloc;
 - (id)description;
+- (id)init;
 - (id)initWithAnimationMatch:(id)arg1;
 - (double)interpolatedZIndexAtPercent:(double)arg1;
 - (double)intersectionPercentWithZOrdererMatch:(id)arg1;

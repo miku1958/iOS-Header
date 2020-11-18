@@ -26,7 +26,6 @@
     } _has;
 }
 
-@property (readonly, nonatomic) double duration;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) double endTimestamp; // @synthesize endTimestamp=_endTimestamp;
 @property (readonly, nonatomic) NSError *error;
@@ -42,6 +41,7 @@
 @property (nonatomic) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 
 - (void).cxx_destruct;
+- (double)calculatedDuration;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -35,7 +35,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAccessoryName:(id)arg1 category:(id)arg2 bundleID:(id)arg3 accessoryDescription:(id)arg4;
 - (id)initWithCoder:(id)arg1;
-- (void)startCleanupTimerForDelegate:(id)arg1;
+- (void)startCleanupTimerForDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (void)storeIdentifierFromUnassociatedAccessory:(id)arg1 setupCode:(id)arg2;
 
 @end

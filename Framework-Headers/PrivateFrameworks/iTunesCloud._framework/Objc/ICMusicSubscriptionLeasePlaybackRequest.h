@@ -14,6 +14,7 @@
 {
     BOOL _shouldPreventLeaseAcquisition;
     BOOL _shouldRequireLeaseAcquisition;
+    BOOL _followUp;
     NSString *_assetSourceStorefrontID;
     ICStoreRequestContext *_requestContext;
     unsigned long long _storeCloudID;
@@ -24,6 +25,7 @@
 
 @property (copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
 @property (copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
+@property (nonatomic, getter=isFollowUp) BOOL followUp; // @synthesize followUp=_followUp;
 @property (readonly, copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (nonatomic) BOOL shouldPreventLeaseAcquisition; // @synthesize shouldPreventLeaseAcquisition=_shouldPreventLeaseAcquisition;
 @property (nonatomic) BOOL shouldRequireLeaseAcquisition; // @synthesize shouldRequireLeaseAcquisition=_shouldRequireLeaseAcquisition;

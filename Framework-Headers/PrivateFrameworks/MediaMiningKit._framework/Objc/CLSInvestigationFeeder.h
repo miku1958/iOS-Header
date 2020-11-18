@@ -42,8 +42,6 @@
 - (void)enumeratePersonNames:(id)arg1 withGaussiansUsingBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)itemAtIndex:(unsigned long long)arg1;
-- (struct CGImage *)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
-- (struct CGImage *)itemThumbnailInInvestigation:(id)arg1 atIndex:(unsigned long long)arg2 withResolution:(unsigned long long)arg3;
 - (id)localEndDateComponents;
 - (id)localStartDateComponents;
 - (unsigned long long)numberOfItems;

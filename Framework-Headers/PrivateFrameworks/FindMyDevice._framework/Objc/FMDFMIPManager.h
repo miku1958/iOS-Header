@@ -41,6 +41,7 @@
 - (void)didChangeFMIPAccountInfo:(id)arg1;
 - (void)didReceiveLostModeExitAuthToken:(id)arg1;
 - (void)disableBiometricIDForLostModeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)disableFMIPForAccount:(id)arg1 pairedDeviceWithUDID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)disableFMIPUsingToken:(id)arg1 forPairedDeviceWithUDID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2;
 - (void)disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;

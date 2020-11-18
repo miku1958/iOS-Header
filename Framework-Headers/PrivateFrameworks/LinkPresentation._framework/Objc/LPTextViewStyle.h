@@ -35,8 +35,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 
 - (void).cxx_destruct;
+- (id)adjustedForString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

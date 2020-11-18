@@ -11,7 +11,6 @@
 
 @class GEOStyleAttributes, NSString, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPBTransitIcon : PBCodable <GEOTransitIconDataSource, NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -47,7 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -30,6 +30,7 @@
 @property (readonly, strong, nonatomic) NSMutableArray *queue; // @synthesize queue=_queue;
 @property id target; // @synthesize target=_target;
 
+- (void).cxx_destruct;
 - (BOOL)_acceptsOptions:(unsigned long long)arg1;
 - (void)_checkQueue;
 - (id)_dequeueInvocation;

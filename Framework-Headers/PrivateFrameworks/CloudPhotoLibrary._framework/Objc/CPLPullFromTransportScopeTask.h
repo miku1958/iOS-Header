@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineScopedTask.h>
 
-@class CPLEngineTransport, CPLFeatureVersionHistory, CPLLibraryInfo, CPLLibraryState, NSData, NSObject, NSString;
+@class CPLEngineTransport, CPLFeatureVersionHistory, CPLScopeChange, NSData, NSObject;
 @protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetCurrentSyncAnchorTask, CPLEngineTransportGroup, CPLEngineTransportQueryTask, OS_dispatch_queue;
 
 @interface CPLPullFromTransportScopeTask : CPLEngineScopedTask
@@ -15,7 +15,7 @@
     CPLEngineTransport *_transport;
     id<CPLEngineTransportDownloadBatchTask> _downloadTask;
     id<CPLEngineTransportQueryTask> _queryTask;
-    CPLLibraryInfo *_currentLibraryInfo;
+    CPLScopeChange *_currentScopeChange;
     Class _currentQueryClass;
     BOOL _ignoreNewBatches;
     BOOL _useCourtesyMingling;
@@ -29,26 +29,23 @@
     BOOL _hasFetchedInitialSyncAnchor;
     BOOL _shouldStoreInitialSyncAnchor;
     NSData *_initialSyncAnchor;
-    CPLLibraryInfo *_initialLibraryInfo;
-    CPLLibraryState *_initialLibraryState;
+    CPLScopeChange *_initialScopeChange;
     id<CPLEngineTransportGetCurrentSyncAnchorTask> _fetchInitialSyncAnchorTask;
     NSObject<OS_dispatch_queue> *_notifyQueue;
     BOOL _didNotifySchedulerPullQueueIsFullOnce;
     BOOL _needsToNotifySchedulerPullQueueIsFull;
-    NSString *_phaseDescription;
 }
-
-@property (copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 
 - (void).cxx_destruct;
 - (void)_cancelAllTasks;
 - (void)_checkServerFeatureVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_extractAndMingleAssetsIfPossibleFromBatch:(id)arg1 inTransaction:(id)arg2;
+- (void)_extractAndMinglePersonsIfPossibleFromBatch:(id)arg1 inTransaction:(id)arg2;
 - (void)_fetchInitialSyncAnchor;
 - (void)_handleNewBatchFromChanges:(id)arg1 newSyncAnchor:(id)arg2 inTransaction:(id)arg3;
-- (void)_handleNewBatchFromChanges:(id)arg1 updatedLibraryInfo:(id)arg2 updatedLibraryState:(id)arg3 newSyncAnchor:(id)arg4;
-- (void)_handleNewBatchFromQuery:(id)arg1 newCursor:(id)arg2;
+- (void)_handleNewBatchFromChanges:(id)arg1 updatedFlags:(id)arg2 newSyncAnchor:(id)arg3;
 - (void)_handleNewBatchFromQuery:(id)arg1 newCursor:(id)arg2 inTransaction:(id)arg3;
+- (void)_handleNewBatchFromQuery:(id)arg1 queryClass:(Class)arg2 newCursor:(id)arg3;
 - (void)_launch;
 - (void)_launchFetchChangesFromSyncAnchor:(id)arg1;
 - (void)_launchNextQueryTask;

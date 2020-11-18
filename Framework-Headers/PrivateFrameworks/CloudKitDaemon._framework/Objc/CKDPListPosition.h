@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int index; // @synthesize index=_index;
 @property (nonatomic) BOOL isReversed; // @synthesize isReversed=_isReversed;
 
+- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

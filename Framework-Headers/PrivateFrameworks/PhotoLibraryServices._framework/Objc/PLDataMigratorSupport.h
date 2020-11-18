@@ -10,22 +10,18 @@
 
 @interface PLDataMigratorSupport : NSObject
 {
-    struct os_unfair_lock_s _lock;
     PLPhotoLibraryPathManager *_pathManager;
 }
 
 @property (readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
 
 - (void).cxx_destruct;
-- (void)_removeAsidePhotosDatabase;
-- (void)_removeInternalMemoriesRelatedSnapshotDirectory;
-- (void)_removeLegacyMetadataFiles;
-- (void)_removeModelInterestDatabase;
-- (BOOL)hasCapturedOTARestoreStatus;
 - (id)initWithPathManager:(id)arg1;
 - (void)recordDataMigrationInfo:(id)arg1;
-- (void)setCapturedOTARestoreStatus;
-- (void)writeModelMigratorPostProcessingToken;
+- (void)removeAsidePhotosDatabase;
+- (void)removeInternalMemoriesRelatedSnapshotDirectory;
+- (void)removeLegacyMetadataFiles;
+- (void)removeModelInterestDatabase;
 
 @end
 

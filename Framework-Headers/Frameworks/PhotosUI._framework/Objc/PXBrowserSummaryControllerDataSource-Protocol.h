@@ -15,6 +15,7 @@
 
 
 @optional
+- (BOOL)browserSummaryControllerShouldUpdateImmediately:(PXBrowserSummaryController *)arg1;
 - (NSDateInterval *)containerDateIntervalForBrowserSummaryController:(PXBrowserSummaryController *)arg1;
 - (NSString *)containerTitleForBrowserSummaryController:(PXBrowserSummaryController *)arg1;
 - (BOOL)isFilteringContainerContentForBrowserSummaryController:(PXBrowserSummaryController *)arg1;

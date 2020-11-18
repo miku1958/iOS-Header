@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSTimer;
+@class NSArray, NSMapTable, NSTimer;
 @protocol _SFBarManagerDelegate;
 
 @interface _SFBarManager : NSObject
 {
     NSMapTable *_barToRegistrationMap;
     BOOL _deferUpdateAllRegistrations;
-    BOOL _itemEnabledMap[8];
     BOOL _needsUpdateAllRegistrations;
     NSTimer *_coalescedUpdatesTimer;
     double _lastCoalescedUpdatesTime;
     CDUnknownBlockType _coalescedUpdatesBlock;
-    BOOL _itemHiddenMap[8];
+    NSArray *_itemConfigurationMap;
     BOOL _bookmarksItemSelected;
     id<_SFBarManagerDelegate> _delegate;
     double _downloadsItemProgress;
@@ -37,6 +36,7 @@
 - (void)barRegistration:(id)arg1 didReceiveLongPressForBarItem:(long long)arg2;
 - (void)barRegistration:(id)arg1 didReceiveTapForBarItem:(long long)arg2;
 - (void)barRegistration:(id)arg1 didReceiveTouchDownForBarItem:(long long)arg2;
+- (struct CGRect)frameForBarItem:(long long)arg1 inCoordinateSpace:(id)arg2;
 - (id)init;
 - (BOOL)isBarItemEnabled:(long long)arg1;
 - (BOOL)isBarItemHidden:(long long)arg1;
@@ -45,6 +45,7 @@
 - (void)registerToolbar:(id)arg1 withLayout:(long long)arg2 persona:(unsigned long long)arg3;
 - (void)setBarItem:(long long)arg1 enabled:(BOOL)arg2;
 - (void)setBarItem:(long long)arg1 hidden:(BOOL)arg2;
+- (void)setBarItem:(long long)arg1 menuProvider:(CDUnknownBlockType)arg2;
 - (void)setDownloadsItemNeedsLayout;
 - (unsigned long long)test_numberOfRegistrations;
 - (id)test_registrationForBar:(id)arg1;

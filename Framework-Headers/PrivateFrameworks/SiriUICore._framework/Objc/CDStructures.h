@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -52,10 +54,22 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
+
+typedef struct {
     double imageHeight;
     double imageWidth;
     int frameCount;
+    int fps;
     BOOL color;
     char *fileName;
-} CDStruct_e77567cc;
+} CDStruct_53edd9a0;
+
+typedef struct {
+    float value;
+    float curVelocity;
+    float maxAcceleration;
+    float springAmount;
+} CDStruct_d7a90142;
 

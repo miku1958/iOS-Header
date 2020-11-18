@@ -20,6 +20,7 @@
 - (BOOL)_enumerateHolidayFeatureVectorsFromLocalDate:(id)arg1 toLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_enumeratePeopleEventFeatureVectorFromLocalDate:(id)arg1 toLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateFeatureVectorsByTypeUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)probabilityPassWithThreshold:(double)arg1;
 
 @end
 

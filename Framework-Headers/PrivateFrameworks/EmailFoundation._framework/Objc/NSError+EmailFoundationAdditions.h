@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL ef_isTemporarilyUnavailableError;
 @property (readonly, nonatomic) BOOL ef_isTimeoutError;
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
+@property (readonly, nonatomic) NSError *ef_underlyingError;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

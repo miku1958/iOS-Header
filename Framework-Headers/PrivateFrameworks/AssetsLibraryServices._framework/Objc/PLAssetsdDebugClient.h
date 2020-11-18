@@ -12,11 +12,13 @@
 
 - (BOOL)allMomentsMetadataWithOutputPath:(id)arg1 metadataDictionary:(id *)arg2 error:(id *)arg3;
 - (BOOL)cleanupEmptyHighlightsWithError:(id *)arg1;
+- (void)clearPrefetchState;
 - (void)coalesceJournalsForPayloadClassIDs:(id)arg1 withChangeJournalOverThreshold:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)debugSidecarFileURLsForAsset:(id)arg1 debugSidecarFileURLs:(id *)arg2 error:(id *)arg3;
 - (id)deferredLogDumpWithFormat:(id)arg1;
 - (void)dropSearchIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)dumpMetadataForMomentsWithOutputPath:(id)arg1 metadataDirectory:(id *)arg2 error:(id *)arg3;
+- (void)enqueuePrefetch;
 - (id)getCPLState;
 - (id)getStatus;
 - (id)getXPCTransactionStatus;

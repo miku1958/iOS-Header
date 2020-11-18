@@ -45,6 +45,7 @@
 - (id)newComputePipelineStateWithName:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newRenderPipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
 - (id)newRenderPipelineStateWithName:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)touch;
 

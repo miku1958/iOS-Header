@@ -6,9 +6,9 @@
 
 #import <PhotosUICore/PXGLayoutContentSource-Protocol.h>
 
-@class NSString, PXGLayout;
+@class PXExtendedImageConfiguration, PXGLayout;
 
 @protocol PXGNamedImageSource <PXGLayoutContentSource>
-- (NSString *)imageNameAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
+- (PXExtendedImageConfiguration *)imageConfigurationAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 @end
 

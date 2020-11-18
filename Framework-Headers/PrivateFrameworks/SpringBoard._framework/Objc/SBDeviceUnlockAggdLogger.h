@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) long long participantState;
 @property (readonly) Class superclass;
 
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (BOOL)handleEvent:(id)arg1;
 - (id)init;

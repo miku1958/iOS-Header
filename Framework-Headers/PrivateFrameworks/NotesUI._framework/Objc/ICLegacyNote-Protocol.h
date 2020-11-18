@@ -7,22 +7,25 @@
 #import <NotesUI/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString;
-@protocol ICLegacyAttachment, ICLegacyFolder;
+@protocol ICLegacyAccount, ICLegacyAttachment, ICLegacyFolder;
 
 @protocol ICLegacyNote <NSObject>
-- (NSArray *)attachments;
+
+@property (readonly, nonatomic) id<ICLegacyAccount> account;
+@property (readonly, nonatomic) NSArray *attachments;
+@property (readonly, copy, nonatomic) NSDate *creationDate;
+@property (readonly, nonatomic) id<ICLegacyFolder> folder;
+@property (copy, nonatomic) NSString *htmlString;
+@property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
+@property (readonly, nonatomic) BOOL isMarkedForDeletion;
+@property (readonly, nonatomic) BOOL isPlainText;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, copy, nonatomic) NSDate *modificationDate;
+@property (readonly, nonatomic) NSManagedObjectID *objectID;
+@property (readonly, copy, nonatomic) NSString *title;
+
 - (id<ICLegacyAttachment>)createAttachmentWithName:(NSString *)arg1;
-- (NSDate *)creationDate;
-- (id<ICLegacyFolder>)folder;
-- (NSString *)htmlString;
-- (NSString *)identifier;
-- (BOOL)isMarkedForDeletion;
-- (BOOL)isPlainText;
-- (NSManagedObjectContext *)managedObjectContext;
 - (void)markForDeletion;
-- (NSDate *)modificationDate;
-- (NSManagedObjectID *)objectID;
-- (void)setHtmlString:(NSString *)arg1;
-- (NSString *)title;
 @end
 

@@ -13,16 +13,9 @@
 @interface LSBundleProxy : LSResourceProxy <NSSecureCoding>
 {
     NSString *_localizedShortName;
-    unsigned long long _bundleFlags;
-    unsigned int _plistContentFlags;
-    unsigned char _iconFlags;
     BOOL _foundBackingBundle;
     BOOL _containerized;
-    BOOL _profileValidated;
-    BOOL _UPPValidated;
-    NSURL *_dataContainerURL;
     NSString *_bundleIdentifier;
-    NSString *_bundleType;
     NSURL *_bundleURL;
     NSString *_bundleExecutable;
     NSURL *_bundleContainerURL;
@@ -35,23 +28,21 @@
     NSArray *_machOUUIDs;
     unsigned long long _compatibilityState;
     _LSLazyPropertyList *__infoDictionary;
-    _LSLazyPropertyList *__groupContainers;
     _LSLazyPropertyList *__entitlements;
     _LSLazyPropertyList *__environmentVariables;
     _LSBundleIDValidationToken *__validationToken;
 }
 
-@property (readonly, nonatomic) BOOL UPPValidated; // @synthesize UPPValidated=_UPPValidated;
+@property (readonly, nonatomic) BOOL UPPValidated; // @dynamic UPPValidated;
 @property (copy, nonatomic, setter=_setEntitlements:) _LSLazyPropertyList *_entitlements; // @synthesize _entitlements=__entitlements;
 @property (copy, nonatomic, setter=_setEnvironmentVariables:) _LSLazyPropertyList *_environmentVariables; // @synthesize _environmentVariables=__environmentVariables;
-@property (copy, nonatomic, setter=_setGroupContainers:) _LSLazyPropertyList *_groupContainers; // @synthesize _groupContainers=__groupContainers;
 @property (copy, nonatomic, setter=_setInfoDictionary:) _LSLazyPropertyList *_infoDictionary; // @synthesize _infoDictionary=__infoDictionary;
 @property (strong, nonatomic, setter=_setValidationToken:) _LSBundleIDValidationToken *_validationToken; // @synthesize _validationToken=__validationToken;
 @property (readonly, nonatomic) NSURL *appStoreReceiptURL; // @dynamic appStoreReceiptURL;
 @property (readonly, nonatomic) NSURL *bundleContainerURL; // @synthesize bundleContainerURL=_bundleContainerURL;
 @property (readonly, nonatomic) NSString *bundleExecutable; // @synthesize bundleExecutable=_bundleExecutable;
 @property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, nonatomic) NSString *bundleType; // @synthesize bundleType=_bundleType;
+@property (readonly, nonatomic) NSString *bundleType;
 @property (readonly, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (readonly, nonatomic) NSUUID *cacheGUID; // @synthesize cacheGUID=_cacheGUID;
@@ -59,37 +50,33 @@
 @property (nonatomic, setter=_setCompatibilityState:) unsigned long long compatibilityState; // @synthesize compatibilityState=_compatibilityState;
 @property (readonly, nonatomic) NSURL *containerURL;
 @property (readonly, nonatomic, getter=isContainerized) BOOL containerized; // @synthesize containerized=_containerized;
-@property (readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
+@property (readonly, nonatomic) NSURL *dataContainerURL; // @dynamic dataContainerURL;
 @property (readonly, nonatomic) NSDictionary *entitlements;
-@property (readonly, nonatomic) NSDictionary *environmentVariables;
+@property (readonly, nonatomic) NSDictionary *environmentVariables; // @dynamic environmentVariables;
 @property (readonly, nonatomic) BOOL foundBackingBundle; // @synthesize foundBackingBundle=_foundBackingBundle;
-@property (readonly, nonatomic) NSDictionary *groupContainerURLs;
+@property (readonly, nonatomic) BOOL freeProfileValidated; // @dynamic freeProfileValidated;
+@property (readonly, nonatomic) NSDictionary *groupContainerURLs; // @dynamic groupContainerURLs;
 @property (readonly, nonatomic) NSString *localizedShortName;
 @property (copy, nonatomic) NSArray *machOUUIDs; // @synthesize machOUUIDs=_machOUUIDs;
-@property (readonly, nonatomic) BOOL profileValidated; // @synthesize profileValidated=_profileValidated;
+@property (readonly, nonatomic) BOOL profileValidated; // @dynamic profileValidated;
 @property (copy, nonatomic, setter=setSDKVersion:) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property (readonly, nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (readonly, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
 @property (readonly, nonatomic) NSString *signerOrganization; // @synthesize signerOrganization=_signerOrganization;
 
 + (id)bundleProxyForCurrentProcess;
-+ (BOOL)bundleProxyForCurrentProcessNeedsUpdate:(id)arg1;
 + (id)bundleProxyForIdentifier:(id)arg1;
 + (id)bundleProxyForURL:(id)arg1;
 + (id)bundleProxyForURL:(id)arg1 error:(id *)arg2;
 + (id)bundleProxyWithAuditToken:(CDStruct_4c969caf)arg1 error:(id *)arg2;
 + (BOOL)canInstantiateFromDatabase;
++ (void)clearBundleProxyForCurrentProcess;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (unsigned long long)_containerClassForLSBundleType:(id)arg1;
-- (id)_dataContainerURLFromContainerManager;
-- (id)_environmentVariablesFromContainerManager;
-- (id)_groupContainerURLsFromContainerManager;
 - (BOOL)_hasAssociatedPersonas;
 - (id)_initWithBundleUnit:(unsigned int)arg1 context:(struct LSContext *)arg2 bundleType:(unsigned long long)arg3 bundleID:(id)arg4 localizedName:(id)arg5 bundleContainerURL:(id)arg6 dataContainerURL:(id)arg7 resourcesDirectoryURL:(id)arg8 iconsDictionary:(id)arg9 iconFileNames:(id)arg10 version:(id)arg11;
 - (id)_localizedNameWithPreferredLocalizations:(id)arg1 useShortNameOnly:(BOOL)arg2;
 - (id)_managedPersonas;
-- (BOOL)_shouldCallThroughToContainerManagerForPersona;
 - (BOOL)_usesSystemPersona;
 - (id)_valueForEqualityTesting;
 - (id)appStoreReceiptName;
@@ -106,7 +93,6 @@
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
 - (id)objectsForInfoDictionaryKeys:(id)arg1;
-- (id)uniqueIdentifier;
 
 @end
 

@@ -41,6 +41,7 @@
 + (id)currentGameIncludingGameCenter:(BOOL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
++ (BOOL)isFirstParty;
 + (BOOL)isGameCenter;
 + (BOOL)isPreferences;
 + (void)loadGamesWithBundleIDs:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

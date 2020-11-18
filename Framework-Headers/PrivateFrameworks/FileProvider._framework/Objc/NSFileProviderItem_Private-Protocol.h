@@ -6,15 +6,19 @@
 
 #import <FileProvider/NSFileProviderItem-Protocol.h>
 
-@class NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@class NSDictionary, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@protocol NSFileProviderItemFlags;
 
 @protocol NSFileProviderItem_Private <NSFileProviderItem>
 
 @property (readonly, copy) NSString *containerDisplayName;
 @property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, copy, getter=isDownloadRequested) NSNumber *downloadRequested;
+@property (readonly, nonatomic, getter=isExcludedFromSync) BOOL excludedFromSync;
+@property (readonly, nonatomic) NSDictionary *extendedAttributes;
 @property (readonly, copy) NSString *fileSystemFilename;
 @property (readonly, copy) NSURL *fileURL;
+@property (readonly, nonatomic) id<NSFileProviderItemFlags> flags;
 @property (readonly, nonatomic, getter=fp_isAddedByCurrentUser) BOOL fp_addedByCurrentUser;
 @property (readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property (readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
@@ -28,6 +32,7 @@
 @property (readonly, getter=fp_isUbiquitous) BOOL fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
 @property (readonly, getter=isHidden) BOOL hidden;
+@property (readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property (readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property (readonly, nonatomic) NSString *preformattedOwnerName;
 @property (readonly, copy) NSString *providerIdentifier;

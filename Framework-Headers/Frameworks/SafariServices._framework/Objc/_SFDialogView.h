@@ -37,6 +37,7 @@
 - (void)setMessageText:(id)arg1;
 - (void)setObscuredInsets:(struct UIEdgeInsets)arg1;
 - (void)setPasswordText:(id)arg1 placeholder:(id)arg2;
+- (void)setTableViewRows:(id)arg1 didSelectRowAction:(CDUnknownBlockType)arg2;
 - (void)setTitleText:(id)arg1;
 - (void)setUsesOpaqueAppearance:(BOOL)arg1;
 - (void)willDisappear;

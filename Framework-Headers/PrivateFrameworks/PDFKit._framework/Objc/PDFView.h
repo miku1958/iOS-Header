@@ -55,9 +55,6 @@
 @property (readonly, nonatomic) NSArray *visiblePages;
 
 + (void)EnableAnnotationKit;
-+ (id)PDFKitEditActionNames;
-+ (id)actionNameForEditType:(unsigned long long)arg1;
-+ (unsigned long long)editTypeForActionName:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)PDFKitHandleBackTabInTextWidget:(id)arg1;
 - (BOOL)PDFKitHandleTabInTextWidget:(id)arg1;
@@ -182,11 +179,13 @@
 - (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 isIndirectTouch:(BOOL)arg5;
 - (BOOL)handleTabInTextWidget:(id)arg1;
 - (void)highlight:(id)arg1;
+- (void)highlightPDFRedactions:(BOOL)arg1;
 - (void)hintScrollDirectionHorizontal:(unsigned long long)arg1 andVertical:(unsigned long long)arg2;
 - (id)hitTestForSubviewsOfView:(id)arg1 atLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)interactWithAnnotation:(id)arg1;
+- (void)internalForceAnnotationRefresh;
 - (void)internalForceTileRefresh;
 - (BOOL)isDrawingAccessibilityNodeType:(int)arg1;
 - (BOOL)isOverLinkAnnotation:(struct CGPoint)arg1;

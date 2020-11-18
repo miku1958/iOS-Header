@@ -22,6 +22,7 @@
 @property (nonatomic) int cachedPhotosCount;
 @property (nonatomic) int cachedVideosCount;
 @property (strong, nonatomic) NSDate *endDate;
+@property (nonatomic) double gpsHorizontalAccuracy;
 @property (readonly, nonatomic) id<PLPhotosHighlightData> highlight;
 @property (readonly, strong, nonatomic) NSDate *localEndDate;
 @property (readonly, strong, nonatomic) NSDate *localStartDate;

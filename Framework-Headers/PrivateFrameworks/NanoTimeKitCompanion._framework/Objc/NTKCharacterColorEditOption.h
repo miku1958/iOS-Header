@@ -21,6 +21,7 @@
 + (unsigned long long)indexOfOption:(id)arg1 forCharacter:(unsigned long long)arg2 forDevice:(id)arg3;
 + (unsigned long long)numberOfOptionsForCharacter:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionAtIndex:(unsigned long long)arg1 forCharacter:(unsigned long long)arg2 forDevice:(id)arg3;
++ (id)optionByValidatingValueOfInvalidOption:(id)arg1;
 + (id)optionWithFaceColor:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithOption:(id)arg1 forCharacter:(unsigned long long)arg2 forDevice:(id)arg3;
 - (id)_valueToFaceBundleStringDict;

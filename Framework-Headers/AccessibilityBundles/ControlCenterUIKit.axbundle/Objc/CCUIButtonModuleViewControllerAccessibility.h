@@ -13,13 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityControlCenterButtonAdditionalTraits;
 - (struct CGRect)_accessibilityControlCenterButtonFrame;
 - (id)_accessibilityControlCenterButtonHint;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (BOOL)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonLabel;
 - (id)_accessibilityControlCenterButtonPath;
-- (unsigned long long)_accessibilityControlCenterButtonTraits;
 - (id)_accessibilityControlCenterElementToFocusAfterClose;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewDidLoad;

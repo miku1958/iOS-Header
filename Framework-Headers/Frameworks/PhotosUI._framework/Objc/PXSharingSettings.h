@@ -16,21 +16,23 @@
     BOOL _sharingSuggestionsWidgetHeuristicsEnabled;
     BOOL _sharingSuggestionsWidgetLearningEnabled;
     BOOL _sharingSuggestionsWidgetCoreDuetEnabled;
-    BOOL _enableNewShareSheet;
     BOOL _enableNewActionShareSheet;
     BOOL _enableOneUpAnimation;
     BOOL _allowFallbacksWhilePreparing;
-    BOOL _performPreYukonColorSpaceConversions;
     BOOL _disableMetadataCorrections;
     BOOL _forceDateTimeMetadataBaking;
     BOOL _forceLocationMetadataBaking;
+    BOOL _forceCaptionMetadataBaking;
+    BOOL _forceAccessibilityDescriptionMetadataBaking;
     BOOL _sendAssetURLsToMessages;
+    BOOL _simulateError;
     BOOL _simulateDownloadFailure;
-    BOOL _simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;
-    BOOL _simulatePhotoRemakingError;
-    BOOL _simulateLivePhotoBundlingError;
     BOOL _simulateCPLNotReadyError;
+    BOOL _simulateLowDiskSpaceError;
+    BOOL _simulateUserCloudNotAuthenticated;
+    BOOL _simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;
     BOOL _simulateMismatchedExportCounts;
+    BOOL _showFileRadarButtonOnInternalInstalls;
     BOOL _showSingleVideoDurationInShareSheetHeader;
     BOOL _showLivePhotoCountInShareSheetHeader;
     BOOL _showSecondaryActionSheet;
@@ -42,7 +44,6 @@
     BOOL _showSendAsOriginalsForIndividualItems;
     BOOL _sendAsOriginalsByDefaultWhenSharing;
     BOOL _savePhotosBundlesToFilesWithoutExtractingMedia;
-    BOOL _debugRevealCMMShadowActivities;
     double _cornerRadius;
     unsigned long long _firstRotationAngle;
     unsigned long long _rotationAngle;
@@ -56,21 +57,22 @@
     unsigned long long _maxMailPhotoLimit;
     unsigned long long _confidentialityWarningsVersion;
     long long _locationBakingComparisonStrategy;
+    long long _simulatedErrorType;
     long long _sharingHeaderLocationDisplayStyle;
 }
 
 @property (nonatomic) BOOL allowFallbacksWhilePreparing; // @synthesize allowFallbacksWhilePreparing=_allowFallbacksWhilePreparing;
 @property (nonatomic) unsigned long long confidentialityWarningsVersion; // @synthesize confidentialityWarningsVersion=_confidentialityWarningsVersion;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property (nonatomic) BOOL debugRevealCMMShadowActivities; // @synthesize debugRevealCMMShadowActivities=_debugRevealCMMShadowActivities;
 @property (nonatomic) BOOL disableMailDrop; // @synthesize disableMailDrop=_disableMailDrop;
 @property (nonatomic) BOOL disableMetadataCorrections; // @synthesize disableMetadataCorrections=_disableMetadataCorrections;
 @property (nonatomic) BOOL enableNewActionShareSheet; // @synthesize enableNewActionShareSheet=_enableNewActionShareSheet;
-@property (nonatomic) BOOL enableNewShareSheet; // @synthesize enableNewShareSheet=_enableNewShareSheet;
 @property (nonatomic) BOOL enableOneUpAnimation; // @synthesize enableOneUpAnimation=_enableOneUpAnimation;
 @property (nonatomic) BOOL excludeLivenessByDefaultWhenSharing; // @synthesize excludeLivenessByDefaultWhenSharing=_excludeLivenessByDefaultWhenSharing;
 @property (nonatomic) BOOL excludeLocationByDefaultWhenSharing; // @synthesize excludeLocationByDefaultWhenSharing=_excludeLocationByDefaultWhenSharing;
 @property (nonatomic) unsigned long long firstRotationAngle; // @synthesize firstRotationAngle=_firstRotationAngle;
+@property (nonatomic) BOOL forceAccessibilityDescriptionMetadataBaking; // @synthesize forceAccessibilityDescriptionMetadataBaking=_forceAccessibilityDescriptionMetadataBaking;
+@property (nonatomic) BOOL forceCaptionMetadataBaking; // @synthesize forceCaptionMetadataBaking=_forceCaptionMetadataBaking;
 @property (nonatomic) BOOL forceDateTimeMetadataBaking; // @synthesize forceDateTimeMetadataBaking=_forceDateTimeMetadataBaking;
 @property (nonatomic) BOOL forceLocationMetadataBaking; // @synthesize forceLocationMetadataBaking=_forceLocationMetadataBaking;
 @property (nonatomic) BOOL forceNonCMMActivitiesToBeVisibleForCMM; // @synthesize forceNonCMMActivitiesToBeVisibleForCMM=_forceNonCMMActivitiesToBeVisibleForCMM;
@@ -80,7 +82,6 @@
 @property (nonatomic) double maxShadowOffset; // @synthesize maxShadowOffset=_maxShadowOffset;
 @property (nonatomic) unsigned long long maximumNumberOfItems; // @synthesize maximumNumberOfItems=_maximumNumberOfItems;
 @property (nonatomic) double minShadowOffset; // @synthesize minShadowOffset=_minShadowOffset;
-@property (nonatomic) BOOL performPreYukonColorSpaceConversions; // @synthesize performPreYukonColorSpaceConversions=_performPreYukonColorSpaceConversions;
 @property (nonatomic) unsigned long long rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 @property (nonatomic) BOOL savePhotosBundlesToFilesWithoutExtractingMedia; // @synthesize savePhotosBundlesToFilesWithoutExtractingMedia=_savePhotosBundlesToFilesWithoutExtractingMedia;
 @property (nonatomic) BOOL sendAsOriginalsByDefaultWhenSharing; // @synthesize sendAsOriginalsByDefaultWhenSharing=_sendAsOriginalsByDefaultWhenSharing;
@@ -93,6 +94,7 @@
 @property (nonatomic) BOOL sharingSuggestionsWidgetHeuristicsEnabled; // @synthesize sharingSuggestionsWidgetHeuristicsEnabled=_sharingSuggestionsWidgetHeuristicsEnabled;
 @property (nonatomic) BOOL sharingSuggestionsWidgetLearningEnabled; // @synthesize sharingSuggestionsWidgetLearningEnabled=_sharingSuggestionsWidgetLearningEnabled;
 @property (nonatomic) BOOL showConfidentialityWarnings; // @synthesize showConfidentialityWarnings=_showConfidentialityWarnings;
+@property (nonatomic) BOOL showFileRadarButtonOnInternalInstalls; // @synthesize showFileRadarButtonOnInternalInstalls=_showFileRadarButtonOnInternalInstalls;
 @property (nonatomic) BOOL showGlobalLivenessExclusionSwitch; // @synthesize showGlobalLivenessExclusionSwitch=_showGlobalLivenessExclusionSwitch;
 @property (nonatomic) BOOL showGlobalLocationExclusionSwitch; // @synthesize showGlobalLocationExclusionSwitch=_showGlobalLocationExclusionSwitch;
 @property (nonatomic) BOOL showInternalGIFExport; // @synthesize showInternalGIFExport=_showInternalGIFExport;
@@ -103,10 +105,12 @@
 @property (nonatomic) BOOL showSingleVideoDurationInShareSheetHeader; // @synthesize showSingleVideoDurationInShareSheetHeader=_showSingleVideoDurationInShareSheetHeader;
 @property (nonatomic) BOOL simulateCPLNotReadyError; // @synthesize simulateCPLNotReadyError=_simulateCPLNotReadyError;
 @property (nonatomic) BOOL simulateDownloadFailure; // @synthesize simulateDownloadFailure=_simulateDownloadFailure;
-@property (nonatomic) BOOL simulateLivePhotoBundlingError; // @synthesize simulateLivePhotoBundlingError=_simulateLivePhotoBundlingError;
+@property (nonatomic) BOOL simulateError; // @synthesize simulateError=_simulateError;
+@property (nonatomic) BOOL simulateLowDiskSpaceError; // @synthesize simulateLowDiskSpaceError=_simulateLowDiskSpaceError;
 @property (nonatomic) BOOL simulateMaxFilesizeLimitForGIFsInSharedAlbumsError; // @synthesize simulateMaxFilesizeLimitForGIFsInSharedAlbumsError=_simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;
 @property (nonatomic) BOOL simulateMismatchedExportCounts; // @synthesize simulateMismatchedExportCounts=_simulateMismatchedExportCounts;
-@property (nonatomic) BOOL simulatePhotoRemakingError; // @synthesize simulatePhotoRemakingError=_simulatePhotoRemakingError;
+@property (nonatomic) BOOL simulateUserCloudNotAuthenticated; // @synthesize simulateUserCloudNotAuthenticated=_simulateUserCloudNotAuthenticated;
+@property (nonatomic) long long simulatedErrorType; // @synthesize simulatedErrorType=_simulatedErrorType;
 @property (nonatomic) unsigned long long verticalAdjustment; // @synthesize verticalAdjustment=_verticalAdjustment;
 
 + (id)settingsControllerModule;

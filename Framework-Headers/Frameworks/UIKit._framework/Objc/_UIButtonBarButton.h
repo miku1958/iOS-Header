@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) struct CGRect _buttonBarHitRect;
 @property (strong, nonatomic) _UIBarButtonItemData *appearanceData; // @synthesize appearanceData=_appearanceData;
 @property (readonly, nonatomic, getter=isBackButton) BOOL backButton; // @synthesize backButton=_backButton;
+@property (nonatomic) BOOL backButtonMaskEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,11 +37,16 @@
 - (void)_accessibilitySettingsChanged:(id)arg1;
 - (BOOL)_accessibilityShouldActivateOnHUDLift;
 - (void)_configureFromBarItem:(id)arg1 appearanceDelegate:(id)arg2 isBackButton:(BOOL)arg3;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_setTouchHasHighlighted:(BOOL)arg1;
+- (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)configureBackButtonFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)configureFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
@@ -55,6 +61,7 @@
 - (id)initWithVisualProvider:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (struct CGPoint)menuAttachmentPointForConfiguration:(id)arg1;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
@@ -64,7 +71,7 @@
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setNeedsAppearanceUpdate;
 - (void)setSelected:(BOOL)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (BOOL)updatePresentedMenuFrom:(id)arg1;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 

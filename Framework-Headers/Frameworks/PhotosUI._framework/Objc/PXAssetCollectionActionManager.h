@@ -6,23 +6,43 @@
 
 #import <PhotosUICore/PXActionManager.h>
 
-@class PHFetchResult, PXDisplayTitleInfo;
-@protocol PXDisplayAssetCollection;
+@class PHFetchResult, PXAssetCollectionReference, PXAssetReference, PXAssetsDataSourceManager, PXDisplayTitleInfo;
+@protocol UIDragSession, UIDropSession;
 
 @interface PXAssetCollectionActionManager : PXActionManager
 {
-    id<PXDisplayAssetCollection> _assetCollection;
+    PXAssetCollectionReference *_initialAssetCollectionReference;
     PXDisplayTitleInfo *_displayTitleInfo;
     PHFetchResult *_people;
+    PXAssetReference *_dropTargetAssetReference;
+    id<UIDragSession> _dragSession;
+    id<UIDropSession> _dropSession;
+    PXAssetsDataSourceManager *_assetsDataSourceManager;
+    PHFetchResult *_assetsFetchResult;
 }
 
-@property (readonly, nonatomic) id<PXDisplayAssetCollection> assetCollection; // @synthesize assetCollection=_assetCollection;
+@property (readonly, nonatomic) PXAssetCollectionReference *assetCollectionReference;
+@property (strong, nonatomic) PXAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
+@property (strong, nonatomic) PHFetchResult *assetsFetchResult; // @synthesize assetsFetchResult=_assetsFetchResult;
 @property (readonly, nonatomic) PXDisplayTitleInfo *displayTitleInfo; // @synthesize displayTitleInfo=_displayTitleInfo;
+@property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
+@property (strong, nonatomic) id<UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
+@property (strong, nonatomic) PXAssetReference *dropTargetAssetReference; // @synthesize dropTargetAssetReference=_dropTargetAssetReference;
 @property (strong, nonatomic) PHFetchResult *people; // @synthesize people=_people;
 
 - (void).cxx_destruct;
+- (id)actionPerformerForActionType:(id)arg1;
+- (id)actionPerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2;
+- (BOOL)canPerformActionType:(id)arg1;
+- (BOOL)canPerformActionType:(id)arg1 assetCollectionReference:(id)arg2;
+- (id)displayTitleInfoForAssetCollection:(id)arg1;
 - (id)init;
 - (id)initWithAssetCollection:(id)arg1 displayTitleInfo:(id)arg2;
+- (id)initWithAssetCollectionReference:(id)arg1 displayTitleInfo:(id)arg2;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2 assetCollectionReference:(id)arg3;
+- (id)systemImageNameForActionType:(id)arg1;
+- (id)systemImageNameForActionType:(id)arg1 assetCollectionReference:(id)arg2;
 
 @end
 

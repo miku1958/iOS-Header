@@ -9,7 +9,7 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCHeadline : NSObject <FCHeadlineProviding, FCFeedElement>
@@ -95,6 +95,8 @@
     NSDate *_displayDate;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_publisherCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_publisherConversionStats;
     NSString *_articleRecirculationConfigJSON;
     NSArray *_publisherSpecifiedArticleIDs;
     NSString *_language;
@@ -150,6 +152,7 @@
 @property (nonatomic) unsigned long long feedOrder; // @synthesize feedOrder=_feedOrder;
 @property (readonly, nonatomic, getter=isFromBlockedStorefront) BOOL fromBlockedStorefront;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats; // @synthesize globalConversionStats=_globalConversionStats;
 @property (nonatomic) double globalUserFeedback; // @synthesize globalUserFeedback=_globalUserFeedback;
 @property (nonatomic) unsigned long long halfLife; // @synthesize halfLife=_halfLife;
 @property (readonly, nonatomic) BOOL hasAudioTrack; // @synthesize hasAudioTrack=_hasAudioTrack;
@@ -158,7 +161,7 @@
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSURL *headlineURL; // @synthesize headlineURL=_headlineURL;
-@property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
+@property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites; // @synthesize hiddenFromAutoFavorites=_hiddenFromAutoFavorites;
 @property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds; // @synthesize hiddenFromFeeds=_hiddenFromFeeds;
 @property (readonly, copy, nonatomic) NSArray *iAdCategories; // @synthesize iAdCategories=_iAdCategories;
 @property (readonly, copy, nonatomic) NSArray *iAdKeywords; // @synthesize iAdKeywords=_iAdKeywords;
@@ -179,7 +182,7 @@
 @property (readonly, copy, nonatomic) NSArray *linkedIssueIDs;
 @property (readonly, copy, nonatomic) NSString *localDraftPath; // @synthesize localDraftPath=_localDraftPath;
 @property (readonly, copy, nonatomic) FCIssue *masterIssue; // @synthesize masterIssue=_masterIssue;
-@property (readonly, nonatomic) long long minimumNewsVersion;
+@property (readonly, nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs; // @synthesize moreFromPublisherArticleIDs=_moreFromPublisherArticleIDs;
 @property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrack; // @synthesize narrativeTrack=_narrativeTrack;
 @property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample; // @synthesize narrativeTrackSample=_narrativeTrackSample;
@@ -195,6 +198,7 @@
 @property (readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property (readonly, nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts; // @synthesize publisherCohorts=_publisherCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats; // @synthesize publisherConversionStats=_publisherConversionStats;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs; // @synthesize publisherSpecifiedArticleIDs=_publisherSpecifiedArticleIDs;
 @property (readonly, copy, nonatomic) NSString *referencedArticleID; // @synthesize referencedArticleID=_referencedArticleID;
@@ -254,6 +258,7 @@
 - (id)contentManifestWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGap;

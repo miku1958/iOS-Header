@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface RCPersistentContainer : NSPersistentContainer
 {
-    NSPersistentStore *_localStore;
     NSPersistentStore *_cloudStore;
     NSArray *_cloudStores;
     NSString *_cloudStoreIdentifier;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSPersistentStore *cloudStore; // @synthesize cloudStore=_cloudStore;
-@property (readonly, nonatomic) NSPersistentStore *localStore; // @synthesize localStore=_localStore;
 @property (readonly, nonatomic) RCDatabaseMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) NSCloudKitMirroringDelegateOptions *mirroringOptions; // @synthesize mirroringOptions=_mirroringOptions;
 
@@ -44,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithMirroring:(BOOL)arg1 useXPCStore:(BOOL)arg2;
 - (BOOL)_isRelevantTransaction:(id)arg1;
 - (id)_legacyRecordingWithUniqueID:(id)arg1 context:(id)arg2;
-- (void)_migrateDatabaseIfNecessary;
+- (void)_migrateDatabaseIfNecessary:(id)arg1;
 - (id)_nextTransactionAfterToken:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)_valueForDatabaseProperty:(id)arg1 context:(id)arg2;
 - (id)newContextWithConcurrencyType:(unsigned long long)arg1;

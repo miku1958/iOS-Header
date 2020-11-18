@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAUIServerUIHookHandler, FACircleContext, FARequestConfigurator, NSDictionary, NSString, NSURLRequest;
+@class AAUIServerUIHookHandler, FACircleContext, FAProfilePictureStore, FARequestConfigurator, NSDictionary, NSMutableDictionary, NSString, NSURLRequest, RUIPage;
 @protocol FACircleRemoteUIDelegateDelegate;
 
 @interface FACircleRemoteUIDelegate : NSObject <RemoteUIControllerDelegate>
@@ -17,6 +17,11 @@
     NSDictionary *_cachedServerInfo;
     AAUIServerUIHookHandler *_serverHookHandler;
     NSURLRequest *_cachedRequest;
+    NSMutableDictionary *_objectModelDecorators;
+    FAProfilePictureStore *_familyPictureStore;
+    NSDictionary *_dismissInfo;
+    BOOL _isReplacing;
+    RUIPage *_cachedPage;
     FACircleContext *_context;
     id<FACircleRemoteUIDelegateDelegate> _delegate;
 }
@@ -30,16 +35,21 @@
 
 - (void).cxx_destruct;
 - (void)_broadcastFamilyDidChangeNotification;
+- (void)_broadcastServicesDidChangeNotification;
 - (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(BOOL)arg3;
 - (void)_notifyDelegateOfCompletionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_reportRequestFailureWithResponse:(id)arg1;
+- (void)_setUserInteractionForRUIPage:(id)arg1 enabled:(BOOL)arg2;
 - (id)init;
-- (id)initWithContext:(id)arg1 serverHookHandler:(id)arg2;
+- (id)initWithContext:(id)arg1 serverHookHandler:(id)arg2 pictureStore:(id)arg3;
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 didRefreshObjectModel:(id)arg2;
 - (void)remoteUIController:(id)arg1 didRemoveObjectModel:(id)arg2;
+- (void)remoteUIController:(id)arg1 loadResourcesForObjectModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;

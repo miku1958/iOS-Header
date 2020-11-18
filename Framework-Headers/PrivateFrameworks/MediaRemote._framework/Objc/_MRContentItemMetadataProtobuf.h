@@ -312,10 +312,7 @@
 @property (nonatomic) int trackNumber; // @synthesize trackNumber=_trackNumber;
 @property (strong, nonatomic) NSData *userInfoData; // @synthesize userInfoData=_userInfoData;
 
-+ (void)initialize;
 - (void).cxx_destruct;
-- (id)_init;
-- (id)_initWithData:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

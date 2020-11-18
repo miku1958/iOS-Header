@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong) _LSAppLinkOpenState *state; // @synthesize state=_state;
 
 + (BOOL)canHandleURLComponents:(id)arg1;
-+ (Class)plugInClasses;
++ (id)plugInClasses;
 - (void).cxx_destruct;
 - (id)appLinksWithContext:(struct LSContext *)arg1 error:(id *)arg2;
 

@@ -30,6 +30,7 @@
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
+- (void)_intents_prepareResponse;
 - (BOOL)_shouldForwardIntentToApp;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

@@ -23,9 +23,9 @@
 
 + (void)registerSupplementaryViewClassesForKind:(id)arg1 withCollectionView:(id)arg2;
 + (BOOL)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)buttonPressed:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateConstraints;
 

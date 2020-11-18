@@ -11,6 +11,7 @@
 }
 
 + (id)cachedInstanceForRemoteMessagePolicy:(id)arg1;
++ (BOOL)enabled;
 
 @end
 

@@ -6,10 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class CKShare, NSError;
+@class CKShare, NSError, NSString;
 
 @protocol _UISharingPublicController <NSObject>
 - (void)_cloudSharingControllerDidActivateShowSharedFolder;
+- (void)_cloudSharingControllerDidChooseTransport:(NSString *)arg1;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(BOOL)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(BOOL)arg1;
 - (void)_dismissForActivityRepresentation:(void (^)(void))arg1;

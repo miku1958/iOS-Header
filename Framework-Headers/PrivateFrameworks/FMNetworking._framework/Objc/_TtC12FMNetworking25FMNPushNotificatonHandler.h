@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC12FMNetworking25FMNPushNotificatonHandler : NSObject
 {
     MISSING_TYPE *topic;

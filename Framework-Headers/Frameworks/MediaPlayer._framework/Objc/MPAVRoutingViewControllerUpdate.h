@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPAVRoutingViewControllerUpdate : NSObject
 {
     BOOL _canGroup;

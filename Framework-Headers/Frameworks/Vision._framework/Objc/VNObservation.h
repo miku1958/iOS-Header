@@ -17,10 +17,12 @@
     unsigned long long _requestRevision;
     float _confidence;
     NSUUID *_uuid;
+    CDStruct_e83c9415 _timeRange;
 }
 
 @property (nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) unsigned long long requestRevision;
+@property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property (strong, nonatomic, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;

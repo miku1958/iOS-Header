@@ -4,32 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFEnumerationParameter.h>
+#import <WorkflowKit/WFDynamicEnumerationParameter.h>
 
-@class NSArray, WFCalendarSubstitutableState;
+#import <WorkflowKit/WFDynamicEnumerationDataSource-Protocol.h>
 
-@interface WFCalendarPickerParameter : WFEnumerationParameter
+@class NSArray, NSObject, NSString;
+@protocol OS_dispatch_queue;
+
+@interface WFCalendarPickerParameter : WFDynamicEnumerationParameter <WFDynamicEnumerationDataSource>
 {
     BOOL _allowsAllCalendars;
-    unsigned long long _entityType;
     id _defaultSerializedCalendarRepresentation;
     NSArray *_calendarStates;
-    WFCalendarSubstitutableState *_allCalendarsState;
+    NSObject<OS_dispatch_queue> *_stateQueue;
 }
 
-@property (readonly, nonatomic) WFCalendarSubstitutableState *allCalendarsState; // @synthesize allCalendarsState=_allCalendarsState;
 @property (readonly, nonatomic) BOOL allowsAllCalendars; // @synthesize allowsAllCalendars=_allowsAllCalendars;
 @property (strong, nonatomic) NSArray *calendarStates; // @synthesize calendarStates=_calendarStates;
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id defaultSerializedCalendarRepresentation; // @synthesize defaultSerializedCalendarRepresentation=_defaultSerializedCalendarRepresentation;
-@property (readonly, nonatomic) unsigned long long entityType; // @synthesize entityType=_entityType;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)accessoryColorForPossibleState:(id)arg1;
-- (id)defaultSerializedRepresentation;
+- (void)clearPossibleStates;
+- (id)enumeration:(id)arg1 accessoryColorForPossibleState:(id)arg2;
+- (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (id)initWithDefinition:(id)arg1;
-- (id)localizedLabelForPossibleState:(id)arg1;
-- (id)possibleStates;
-- (void)reloadCalendars;
+- (void)loadDefaultSerializedRepresentationForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)possibleStatesDidChange;
 - (Class)singleStateClass;
 - (void)wasAddedToWorkflow;
 - (void)wasRemovedFromWorkflow;

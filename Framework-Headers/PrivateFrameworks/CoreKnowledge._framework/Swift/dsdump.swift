@@ -59,27 +59,6 @@
  {
 	// class base protocol
  }
- protocol CoreKnowledge.Memorable // 3 requirements
- {
-	// getter
-	// getter
-	// getter
- }
- protocol CoreKnowledge.MemorableIntent // 1 requirements
- {
-	// method
- }
- protocol CoreKnowledge.SiriKitIntent // 3 requirements
- {
-	// class base protocol
-	// getter
-	// getter
- }
- protocol CoreKnowledge.USOType // 2 requirements
- {
-	// class base protocol
-	// class base protocol
- }
  protocol CoreKnowledge.CKExecutableClosure // 2 requirements
  {
 	// getter
@@ -110,58 +89,49 @@
 	// class base protocol
 	// method
  }
- protocol CoreKnowledge.ClonableOperation // 1 requirements
- {
-	// method
- }
-
- enum __C.INIntentHandlingStatus { }
-
- enum __C.INInteractionDirection { }
-
- enum __C.INPersonHandleType { }
 
  enum __C.ComparisonResult { }
-
- struct __C.Options {
-
-	// Properties
-	let rawValue : UInt
- }
 
  class CoreKnowledge.CKAppInteractionsContext : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var _outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId : [String : [String : Int]] // +0x8 (0x8)
-	var numberOfDiscardedDonationsByIntentTypeAndBundleId : [String : [String : Double]] // +0x10 (0x8)
+	var _outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId : [String : [String : Int]]
+	var numberOfDiscardedDonationsByIntentTypeAndBundleId : [String : [String : Double]]
 
 	// ObjC -> Swift bridged methods
-	0x6660  @objc CKAppInteractionsContext.init <stripped>
-	0x6a20  @objc CKAppInteractionsContext.encodeWithCoder: <stripped>
-	0x6e00  @objc CKAppInteractionsContext.initWithCoder: <stripped>
-	0x6ea0  @objc CKAppInteractionsContext.copyWithZone: <stripped>
-	0x7650  @objc CKAppInteractionsContext.updateDiscardedDonations:forIntentType:andBundleId: <stripped>
-	0x7740  @objc CKAppInteractionsContext..cxx_destruct <stripped>
+WARNING: couldn't find address 0xeb540003c9e0 (0x3540003c9e0) in binary!
+	0xdc74  @objc CKAppInteractionsContext.(null) <stripped>
+WARNING: couldn't find address 0xeb440003c9a8 (0x3440003c9a8) in binary!
+	0x100d0  @objc CKAppInteractionsContext.(null) <stripped>
+WARNING: couldn't find address 0xdc5c0003c980 (0x45c0003c980) in binary!
+	0xfd14  @objc CKAppInteractionsContext.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff077d8  @objc CKAppInteractionsContext.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff07780  @objc CKAppInteractionsContext.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x94fff31b88  @objc CKAppInteractionsContext.(null) <stripped>
 
 	// Swift methods
-	0x63d0  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
-	0x63f0  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.setter // setter 
-	0x6410  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.modify // modifyCoroutine 
-	0x6450  func CKAppInteractionsContext.outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
-	0x6470  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.getter // getter 
-	0x64d0  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.setter // setter 
-	0x6530  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.modify // modifyCoroutine 
-	0x6730  class func CKAppInteractionsContext.__allocating_init(_:) // init 
-	0x68e0  func CKAppInteractionsContext.encode(with:) // method 
-	0x6a70  class func CKAppInteractionsContext.__allocating_init(coder:) // init 
-	0x6e50  func CKAppInteractionsContext.copy(with:) // method 
-	0x6ee0  func CKAppInteractionsContext.incrementNumberOfOutOfAppLaunchBoundaryDonations(forBundleId:intent:) // method 
-	0x74d0  func CKAppInteractionsContext.updateDiscardedDonations(_:forIntentType:andBundleId:) // method 
+	0x5980  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
+	0x59a0  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.setter // setter 
+	0x59c0  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.modify // modifyCoroutine 
+	0x5a00  func CKAppInteractionsContext.outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
+	0x5a20  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.getter // getter 
+	0x5a80  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.setter // setter 
+	0x5ae0  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.modify // modifyCoroutine 
+	0x5ce0  class func CKAppInteractionsContext.__allocating_init(_:) // init 
+	0x5e90  func CKAppInteractionsContext.encode(with:) // method 
+	0x6020  class func CKAppInteractionsContext.__allocating_init(coder:) // init 
+	0x6400  func CKAppInteractionsContext.copy(with:) // method 
+	0x6490  func CKAppInteractionsContext.incrementNumberOfOutOfAppLaunchBoundaryDonations(forBundleId:intent:) // method 
+	0x68c0  func CKAppInteractionsContext.updateDiscardedDonations(_:forIntentType:andBundleId:) // method 
  }
 
  class CoreKnowledge.CKKnowledgeStoreUtils : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xb3d0  @objc CKKnowledgeStoreUtils.init <stripped>
+WARNING: couldn't find address 0xeaec0003c978 (0x2ec0003c978) in binary!
+	0x28000000c  @objc CKKnowledgeStoreUtils.(null) <stripped>
  }
 
  class CoreKnowledge.CKUserDefaultsBackingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -170,51 +140,34 @@
 	var kv : NSUserDefaults // +0x10 (0x8)
 
 	// Swift methods
-	0xb810  func CKUserDefaultsBackingStore.name.getter // getter 
-	0xb830  func CKUserDefaultsBackingStore.name.setter // setter 
-	0xb840  func CKUserDefaultsBackingStore.name.modify // modifyCoroutine 
-	0xb880  class func CKUserDefaultsBackingStore.__allocating_init() // init 
-	0xba70  func CKUserDefaultsBackingStore.synchronize() // method 
-	0xba90  func CKUserDefaultsBackingStore.keys() // method 
-	0xbca0  func CKUserDefaultsBackingStore.keys(matching:) // method 
-	0xbf50  func CKUserDefaultsBackingStore._value(forKey:) // method 
-	0xc010  func CKUserDefaultsBackingStore.values() // method 
-	0xc0a0  func CKUserDefaultsBackingStore.values(forKeys:) // method 
-	0xc280  func CKUserDefaultsBackingStore.values(forKeysMatching:) // method 
-	0xc680  func CKUserDefaultsBackingStore.dictionaryRepresentation() // method 
-	0xc6f0  func CKUserDefaultsBackingStore.dictionaryRepresentation(forKeysMatching:) // method 
-	0xcaa0  func CKUserDefaultsBackingStore.triplesComponents(matching:) // method 
-	0xcb70  func CKUserDefaultsBackingStore.verify(path:completionHandler:) // method 
-	0xcc50  func CKUserDefaultsBackingStore.setValue(_:forKey:completionHandler:) // method 
-	0xcd20  func CKUserDefaultsBackingStore.writeBatch() // method 
-	0xf3f0  func CKUserDefaultsBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0xcdb0  func CKUserDefaultsBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0xce90  func CKUserDefaultsBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
-	0xcf70  func CKUserDefaultsBackingStore.removeValue(forKey:) // method 
-	0xcfe0  func CKUserDefaultsBackingStore.removeValues(forKeys:) // method 
-	0xd0c0  func CKUserDefaultsBackingStore.removeValues(matching:) // method 
-	0xd220  func CKUserDefaultsBackingStore.removeAllValues() // method 
-	0xd300  func CKUserDefaultsBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
-	0xd3e0  func CKUserDefaultsBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
-	0xd4c0  func CKUserDefaultsBackingStore.dropLinks(between:and:completionHandler:) // method 
-	0xd5a0  func CKUserDefaultsBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
- }
-
- class CoreKnowledge.SaveInteraction : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
-
-	// Properties
-	let interaction : INInteraction // +0x8 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dkEventUUID : #Ë // +0x25 (0x0)
-
-	// ObjC -> Swift bridged methods
-	0xf540  @objc SaveInteraction.initWithInteraction:dkEventUUID: <stripped>
-	0xf850  @objc SaveInteraction.main <stripped>
-	0xfa10  @objc SaveInteraction.init <stripped>
-	0xf980  @objc SaveInteraction..cxx_destruct <stripped>
-
-	// Swift methods
-	0xf450  class func SaveInteraction.__allocating_init(interaction:dkEventUUID:) // init 
+	0xc560  func CKUserDefaultsBackingStore.name.getter // getter 
+	0xc580  func CKUserDefaultsBackingStore.name.setter // setter 
+	0xc590  func CKUserDefaultsBackingStore.name.modify // modifyCoroutine 
+	0xc5d0  class func CKUserDefaultsBackingStore.__allocating_init() // init 
+	0xc7c0  func CKUserDefaultsBackingStore.synchronize() // method 
+	0xc7e0  func CKUserDefaultsBackingStore.keys() // method 
+	0xd180  func CKUserDefaultsBackingStore.keys(matching:) // method 
+	0xd260  func CKUserDefaultsBackingStore._value(forKey:) // method 
+	0xd320  func CKUserDefaultsBackingStore.values() // method 
+	0xd3b0  func CKUserDefaultsBackingStore.values(forKeys:) // method 
+	0xd560  func CKUserDefaultsBackingStore.values(forKeysMatching:) // method 
+	0xd920  func CKUserDefaultsBackingStore.dictionaryRepresentation() // method 
+	0xd990  func CKUserDefaultsBackingStore.dictionaryRepresentation(forKeysMatching:) // method 
+	0xdc00  func CKUserDefaultsBackingStore.triplesComponents(matching:) // method 
+	0xdcd0  func CKUserDefaultsBackingStore.verify(path:completionHandler:) // method 
+	0xddb0  func CKUserDefaultsBackingStore.setValue(_:forKey:completionHandler:) // method 
+	0xde80  func CKUserDefaultsBackingStore.writeBatch() // method 
+	0xf810  func CKUserDefaultsBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0xdf10  func CKUserDefaultsBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0xdff0  func CKUserDefaultsBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
+	0xe0d0  func CKUserDefaultsBackingStore.removeValue(forKey:) // method 
+	0xe140  func CKUserDefaultsBackingStore.removeValues(forKeys:) // method 
+	0xe220  func CKUserDefaultsBackingStore.removeValues(matching:) // method 
+	0xe380  func CKUserDefaultsBackingStore.removeAllValues() // method 
+	0xe460  func CKUserDefaultsBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
+	0xe540  func CKUserDefaultsBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
+	0xe620  func CKUserDefaultsBackingStore.dropLinks(between:and:completionHandler:) // method 
+	0xe700  func CKUserDefaultsBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
  }
 
  class CoreKnowledge.INInteractionEncoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -223,13 +176,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let interaction : INInteraction
 
 	// Swift methods
-	0xfc90  class func INInteractionEncoder.__allocating_init(_:) // init 
-	0xfcd0  func INInteractionEncoder.base64() // method 
+	0xf820  class func INInteractionEncoder.__allocating_init(_:) // init 
+	0xf860  func INInteractionEncoder.base64() // method 
  }
 
  class CoreKnowledge.INInteractionDecoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xff20  class func INInteractionDecoder.__allocating_init() // init 
+	0xfa90  class func INInteractionDecoder.__allocating_init() // init 
  }
 
  class CoreKnowledge.CKPermanentEventStore : NSObject /usr/lib/libobjc.A.dylib {
@@ -238,61 +191,90 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let knowledgeStore : CKKnowledgeStore
 
 	// ObjC -> Swift bridged methods
-	0xfff0  @objc CKPermanentEventStore.initWithKnowledgeStore: <stripped>
-	0x10240  @objc CKPermanentEventStore.init <stripped>
-	0x101d0  @objc CKPermanentEventStore..cxx_destruct <stripped>
+WARNING: couldn't find address 0xeab40003c8f8 (0x2b40003c8f8) in binary!
+	0xeabb  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe6f20003ce68 (0x6f20003ce68) in binary!
+	0xdc48  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xdc3c0003c8b0 (0x43c0003c8b0) in binary!
+	0x103c0  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0x103d40003c888 (0x3d40003c888) in binary!
+	0x103c8  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xea820003c860 (0x2820003c860) in binary!
+	0xe680  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe6740003cc80 (0x6740003cc80) in binary!
+	0xdbe8  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe65c0003cc70 (0x65c0003cc70) in binary!
+	0xea46  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xea3a0003c7f8 (0x23a0003c7f8) in binary!
+	0xe638  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xea9c0003cc58 (0x29c0003cc58) in binary!
+	0xdba0  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xea0a0003c7b8 (0x20a0003c7b8) in binary!
+	0xe608  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe9cc0003cac8 (0x1cc0003cac8) in binary!
+	0xe9b8  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xfba80003c828 (0x3a80003c828) in binary!
+	0x18000000c  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe9940003c6c0 (0x1940003c6c0) in binary!
+	0x168000000c  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe97c0003c808 (0x17c0003c808) in binary!
+	0xe978  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe9770003c720 (0x1770003c720) in binary!
+	0xeefa  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe95f0003c6f8 (0x15f0003c6f8) in binary!
+	0xeee2  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe9470003c6d0 (0x1470003c6d0) in binary!
+	0xeeca  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xeebe0003c6a8 (0x6be0003c6a8) in binary!
+	0xe93e  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe9320003cce0 (0x1320003cce0) in binary!
+	0xe926  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe91a0003c660 (0x11a0003c660) in binary!
+	0xe542  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xee760003c638 (0x6760003c638) in binary!
+	0xe910  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe9240003c610 (0x1240003c610) in binary!
+	0xe918  @objc CKPermanentEventStore.(null) <stripped>
+WARNING: couldn't find address 0xe92c0003c5e8 (0x12c0003c5e8) in binary!
+	0xe940  @objc CKPermanentEventStore.(null) <stripped>
 
 	// Swift methods
-	0xff70  class func CKPermanentEventStore.__allocating_init(knowledgeStore:) // init 
+	0xfae0  class func CKPermanentEventStore.__allocating_init(knowledgeStore:) // init 
  }
 
  class CoreKnowledge.CKInMemoryBackingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let inMemoryStoreHandler : CKPersistentStoreHandler // +0x10 (0x8)
+	let inMemoryStoreHandler : CKPersistentStoreHandler
 
 	// Swift methods
-	0x10cd0  func CKInMemoryBackingStore.name.getter // getter 
-	0x10cf0  func CKInMemoryBackingStore.name.setter // setter 
-	0x10d00  func CKInMemoryBackingStore.name.modify // modifyCoroutine 
-	0x10d50  class func CKInMemoryBackingStore.__allocating_init() // init 
-	0x10e80  func CKInMemoryBackingStore.keys(completionHandler:) // method 
-	0x10f20  func CKInMemoryBackingStore.keys(matching:completionHandler:) // method 
-	0x10fc0  func CKInMemoryBackingStore.value(forKey:completionHandler:) // method 
-	0x11180  func CKInMemoryBackingStore.values(completionHandler:) // method 
-	0x11220  func CKInMemoryBackingStore.values(forKeys:completionHandler:) // method 
-	0x112d0  func CKInMemoryBackingStore.values(forKeysMatching:completionHandler:) // method 
-	0x11370  func CKInMemoryBackingStore.dictionaryRepresentation(completionHandler:) // method 
-	0x11410  func CKInMemoryBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
-	0x114b0  func CKInMemoryBackingStore.triplesComponents(matching:completionHandler:) // method 
-	0x11550  func CKInMemoryBackingStore.verify(path:completionHandler:) // method 
-	0x115d0  func CKInMemoryBackingStore.setValue(_:forKey:completionHandler:) // method 
-	0x11680  func CKInMemoryBackingStore.writeBatch() // method 
-	0x11710  func CKInMemoryBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
-	0x11790  func CKInMemoryBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x11910  func CKInMemoryBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x11a90  func CKInMemoryBackingStore.removeValue(forKey:completionHandler:) // method 
-	0x11b00  func CKInMemoryBackingStore.removeValues(forKeys:completionHandler:) // method 
-	0x11b70  func CKInMemoryBackingStore.removeValues(matching:completionHandler:) // method 
-	0x11be0  func CKInMemoryBackingStore.removeAllValues(completionHandler:) // method 
-	0x11c50  func CKInMemoryBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
-	0x11cc0  func CKInMemoryBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
-	0x11d30  func CKInMemoryBackingStore.dropLinks(between:and:completionHandler:) // method 
-	0x11da0  func CKInMemoryBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
- }
-
- class CoreKnowledge.BackgroundQueue : NSOperationQueue /System/Library/Frameworks/Foundation.framework/Foundation {
-
-	// Properties
-	var lock : OS_dispatch_semaphore // +0x8 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x124b0  @objc BackgroundQueue.init <stripped>
-	0x12800  @objc BackgroundQueue..cxx_destruct <stripped>
-
-	// Swift methods
-	0x12520  func BackgroundQueue.pause() // method 
-	0x127b0  func BackgroundQueue.resume() // method 
+	0x10500  func CKInMemoryBackingStore.name.getter // getter 
+	0x10520  func CKInMemoryBackingStore.name.setter // setter 
+	0x10530  func CKInMemoryBackingStore.name.modify // modifyCoroutine 
+	0x10580  class func CKInMemoryBackingStore.__allocating_init() // init 
+	0x106b0  func CKInMemoryBackingStore.keys(completionHandler:) // method 
+	0x10750  func CKInMemoryBackingStore.keys(matching:completionHandler:) // method 
+	0x107f0  func CKInMemoryBackingStore.value(forKey:completionHandler:) // method 
+	0x109b0  func CKInMemoryBackingStore.values(completionHandler:) // method 
+	0x10a50  func CKInMemoryBackingStore.values(forKeys:completionHandler:) // method 
+	0x10b00  func CKInMemoryBackingStore.values(forKeysMatching:completionHandler:) // method 
+	0x10ba0  func CKInMemoryBackingStore.dictionaryRepresentation(completionHandler:) // method 
+	0x10c40  func CKInMemoryBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
+	0x10ce0  func CKInMemoryBackingStore.triplesComponents(matching:completionHandler:) // method 
+	0x10d80  func CKInMemoryBackingStore.verify(path:completionHandler:) // method 
+	0x10e00  func CKInMemoryBackingStore.setValue(_:forKey:completionHandler:) // method 
+	0x10eb0  func CKInMemoryBackingStore.writeBatch() // method 
+	0x10f40  func CKInMemoryBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
+	0x10fc0  func CKInMemoryBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x11130  func CKInMemoryBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x112a0  func CKInMemoryBackingStore.removeValue(forKey:completionHandler:) // method 
+	0x11310  func CKInMemoryBackingStore.removeValues(forKeys:completionHandler:) // method 
+	0x11380  func CKInMemoryBackingStore.removeValues(matching:completionHandler:) // method 
+	0x113f0  func CKInMemoryBackingStore.removeAllValues(completionHandler:) // method 
+	0x11460  func CKInMemoryBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
+	0x114d0  func CKInMemoryBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
+	0x11540  func CKInMemoryBackingStore.dropLinks(between:and:completionHandler:) // method 
+	0x115b0  func CKInMemoryBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
  }
 
  enum CoreKnowledge.SQLTableType {
@@ -307,194 +289,150 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class CoreKnowledge.CKPersistentStoreHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var connection : Connection // +0x8 (0x8)
+	var connection : Connection
 
 	// ObjC -> Swift bridged methods
-	0x1ab20  @objc CKPersistentStoreHandler.init <stripped>
-	0x1b260  @objc CKPersistentStoreHandler.initWithName: <stripped>
-	0x1b950  @objc CKPersistentStoreHandler.keysAndReturnError: <stripped>
-	0x1c150  @objc CKPersistentStoreHandler.keysMatching:error: <stripped>
-	0x1c960  @objc CKPersistentStoreHandler.valuesAndReturnError: <stripped>
-	0x1d1c0  @objc CKPersistentStoreHandler.valuesForKeysMatching:error: <stripped>
-	0x1dab0  @objc CKPersistentStoreHandler.keysAndValuesAndReturnError: <stripped>
-	0x1e450  @objc CKPersistentStoreHandler.keysAndValuesForKeysMatching:error: <stripped>
-	0x1f5c0  @objc CKPersistentStoreHandler._valuesForKeys:error: <stripped>
-	0x206c0  @objc CKPersistentStoreHandler.saveKeysAndValues:error: <stripped>
-	0x20dd0  @objc CKPersistentStoreHandler.removeValueForKey:error: <stripped>
-	0x21760  @objc CKPersistentStoreHandler.removeValuesForKeys:error: <stripped>
-	0x22100  @objc CKPersistentStoreHandler.removeValuesMatching:error: <stripped>
-	0x22a10  @objc CKPersistentStoreHandler.removeAllValuesAndReturnError: <stripped>
-	0x23550  @objc CKPersistentStoreHandler.tripleComponentsMatching:error: <stripped>
-	0x23c90  @objc CKPersistentStoreHandler.setWeightForLinkWithLabel:between:and:toValue:error: <stripped>
-	0x24a60  @objc CKPersistentStoreHandler.increaseWeightForLinkWithLabel:between:and: <stripped>
-	0x25260  @objc CKPersistentStoreHandler.decreaseWeightForLinkWithLabel:between:and: <stripped>
-	0x25eb0  @objc CKPersistentStoreHandler.dropLinkWithLabel:between:and:error: <stripped>
-	0x26680  @objc CKPersistentStoreHandler.dropLinksWithLabel:from:error: <stripped>
-	0x26ac0  @objc CKPersistentStoreHandler.dropLinksBetween:and:error: <stripped>
-	0x27110  @objc CKPersistentStoreHandler..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe97c0003c808 (0x17c0003c808) in binary!
+	0xe978  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9770003c720 (0x1770003c720) in binary!
+	0xeefa  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe95f0003c6f8 (0x15f0003c6f8) in binary!
+	0xeee2  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9470003c6d0 (0x1470003c6d0) in binary!
+	0xeeca  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xeebe0003c6a8 (0x6be0003c6a8) in binary!
+	0xe93e  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9320003cce0 (0x1320003cce0) in binary!
+	0xe926  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe91a0003c660 (0x11a0003c660) in binary!
+	0xe542  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xee760003c638 (0x6760003c638) in binary!
+	0xe910  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9240003c610 (0x1240003c610) in binary!
+	0xe918  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe92c0003c5e8 (0x12c0003c5e8) in binary!
+	0xe940  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9340003c5c0 (0x1340003c5c0) in binary!
+	0xfa7c  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x57cfff2d960  @objc CKPersistentStoreHandler.(null) <stripped>
+	0x540003c610  @objc CKPersistentStoreHandler. <stripped>
+WARNING: couldn't find address 0xfff2d280 (0xfff2d280) in binary!
+	0x3c0003c5f8  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xfff415c8 (0xfff415c8) in binary!
+	0x11a0003c670  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0xfff42b20 (0xfff42b20) in binary!
+	0x3c748  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x3c74cfff41978 (0x74cfff41978) in binary!
+	0x7ec0003c738  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x3c4f4fff41ac0 (0x4f4fff41ac0) in binary!
+	0x7d40003cb40  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x3c684fff41bb8 (0x684fff41bb8) in binary!
+	0x6100003caa8  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x3cab4fff421c0 (0x2b4fff421c0) in binary!
+	0xd00003c618  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x3c604fff42628 (0x604fff42628) in binary!
+	0x78c0003c618  @objc CKPersistentStoreHandler.(null) <stripped>
+WARNING: couldn't find address 0x3c5fcfff42c80 (0x5fcfff42c80) in binary!
+	0x18000000c  @objc CKPersistentStoreHandler.(null) <stripped>
 
 	// Swift methods
-	0x1a900  func CKPersistentStoreHandler.connection.getter // getter 
-	0x1a940  func CKPersistentStoreHandler.connection.setter // setter 
-	0x1a990  func CKPersistentStoreHandler.connection.modify // modifyCoroutine 
-	0x1a9e0  class func static CKPersistentStoreHandler.inMemoryHandler() // method 
-	0x1ab80  class func CKPersistentStoreHandler.__allocating_init(name:) // init 
-	0x1b290  func CKPersistentStoreHandler.keys() // method 
-	0x1ba00  func CKPersistentStoreHandler.keys(matching:) // method 
-	0x1c220  func CKPersistentStoreHandler.values() // method 
-	0x1ca00  func CKPersistentStoreHandler.values(forKeysMatching:) // method 
-	0x1d290  func CKPersistentStoreHandler.keysAndValues() // method 
-	0x1db60  func CKPersistentStoreHandler.keysAndValues(forKeysMatching:) // method 
-	0x1e530  func CKPersistentStoreHandler.selectQuery(project:whereField:isIn:) // method 
-	0x1eca0  func CKPersistentStoreHandler._values(forKeys:) // method 
-	0x1f6b0  func CKPersistentStoreHandler.save(keysAndValues:) // method 
-	0x207a0  func CKPersistentStoreHandler.removeValue(forKey:) // method 
-	0x20f40  func CKPersistentStoreHandler._removeValues(forKeys:) // method 
-	0x21670  func CKPersistentStoreHandler.removeValues(forKeys:) // method 
-	0x21900  func CKPersistentStoreHandler._removeValues(matching:) // method 
-	0x21fe0  func CKPersistentStoreHandler.removeValues(matching:) // method 
-	0x22270  func CKPersistentStoreHandler.removeAllValues() // method 
-	0x22b10  func CKPersistentStoreHandler.tripleComponents(matching:) // method 
-	0x23620  func CKPersistentStoreHandler.setWeight(forLinkWithLabel:between:and:toValue:) // method 
-	0x23df0  func CKPersistentStoreHandler.increaseWeight(forLinkWithLabel:between:and:) // method 
-	0x24a80  func CKPersistentStoreHandler.decreaseWeight(forLinkWithLabel:between:and:) // method 
-	0x25370  func CKPersistentStoreHandler.decreaseWeights(between:and:) // method 
-	0x25a30  func CKPersistentStoreHandler.dropLink(withLabel:between:and:) // method 
-	0x26000  func CKPersistentStoreHandler.dropLinks(withLabel:from:) // method 
-	0x267a0  func CKPersistentStoreHandler.dropLinks(between:and:) // method 
-	0x26be0  func CKPersistentStoreHandler.deserializeValue(_:) // method 
- }
-
- class CoreKnowledge.CKSiriRemembers : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x2bc90  @objc CKSiriRemembers.init <stripped>
-	0x2bc30  @objc CKSiriRemembers..cxx_destruct <stripped>
-
-	// Swift methods
-	0x2b2e0  class func static CKSiriRemembers.saveInteraction(interaction:) // method 
-	0x2b360  class func static CKSiriRemembers.findAppMatches(forIntent:candidateBundleIDs:completionHandler:) // method 
-	0x2b530  class func static CKSiriRemembers.findAppMatches(forJSONIntent:candidateBundleIDs:completionHandler:) // method 
-	0x2b620  class func static CKSiriRemembers.findRelativeAppUsageProbabilities(bundleIDs:days:completionHandler:) // method 
- }
-
- struct CoreKnowledge.SRXPCInterruptionError { }
-
- class CoreKnowledge.DeferrableXPCOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
-
-	// Properties
-	var activity : OS_xpc_object? // +0x8 (0x8)
-	var isDeferred : Bool // +0x10 (0x1)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var completionKVObservation : U· // +0x18 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x37720  @objc DeferrableXPCOperation.init <stripped>
-	0x37870  @objc DeferrableXPCOperation..cxx_destruct <stripped>
-
-	// Swift methods
-	0x37280  func DeferrableXPCOperation.activity.getter // getter 
-	0x372c0  func DeferrableXPCOperation.activity.setter // setter 
-	0x37310  func DeferrableXPCOperation.activity.modify // modifyCoroutine 
-	0x373f0  func DeferrableXPCOperation.isDeferred.getter // getter 
-	0x37420  func DeferrableXPCOperation.isDeferred.setter // setter 
-	0x37460  func DeferrableXPCOperation.isDeferred.modify // modifyCoroutine 
-	0x37550  func DeferrableXPCOperation.completionKVObservation.getter // getter 
-	0x37590  func DeferrableXPCOperation.completionKVObservation.setter // setter 
-	0x375e0  func DeferrableXPCOperation.completionKVObservation.modify // modifyCoroutine 
-	0x37740  class func DeferrableXPCOperation.__allocating_init(activity:) // init 
-	0x377b0  func DeferrableXPCOperation.isCancelledOrDeferred.getter // getter 
+	0x194b0  func CKPersistentStoreHandler.connection.getter // getter 
+	0x194f0  func CKPersistentStoreHandler.connection.setter // setter 
+	0x19540  func CKPersistentStoreHandler.connection.modify // modifyCoroutine 
+	0x19590  class func static CKPersistentStoreHandler.inMemoryHandler() // method 
+	0x19720  class func CKPersistentStoreHandler.__allocating_init(name:) // init 
+	0x19ec0  func CKPersistentStoreHandler.keys() // method 
+	0x1a660  func CKPersistentStoreHandler.keys(matching:) // method 
+	0x1ae80  func CKPersistentStoreHandler.values() // method 
+	0x1b680  func CKPersistentStoreHandler.values(forKeysMatching:) // method 
+	0x1bf50  func CKPersistentStoreHandler.keysAndValues() // method 
+	0x1c840  func CKPersistentStoreHandler.keysAndValues(forKeysMatching:) // method 
+	0x1d210  func CKPersistentStoreHandler.selectQuery(project:whereField:isIn:) // method 
+	0x1d830  func CKPersistentStoreHandler._values(forKeys:) // method 
+	0x1e810  func CKPersistentStoreHandler.save(keysAndValues:) // method 
+	0x1f810  func CKPersistentStoreHandler.removeValue(forKey:) // method 
+	0x1ff00  func CKPersistentStoreHandler._removeValues(forKeys:) // method 
+	0x205e0  func CKPersistentStoreHandler.removeValues(forKeys:) // method 
+	0x20870  func CKPersistentStoreHandler._removeValues(matching:) // method 
+	0x20ec0  func CKPersistentStoreHandler.removeValues(matching:) // method 
+	0x21150  func CKPersistentStoreHandler.removeAllValues() // method 
+	0x21940  func CKPersistentStoreHandler.tripleComponents(matching:) // method 
+	0x223f0  func CKPersistentStoreHandler.setWeight(forLinkWithLabel:between:and:toValue:) // method 
+	0x22b10  func CKPersistentStoreHandler.increaseWeight(forLinkWithLabel:between:and:) // method 
+	0x23770  func CKPersistentStoreHandler.decreaseWeight(forLinkWithLabel:between:and:) // method 
+	0x24180  func CKPersistentStoreHandler.decreaseWeights(between:and:) // method 
+	0x248b0  func CKPersistentStoreHandler.dropLink(withLabel:between:and:) // method 
+	0x24e10  func CKPersistentStoreHandler.dropLinks(withLabel:from:) // method 
+	0x254f0  func CKPersistentStoreHandler.dropLinks(between:and:) // method 
+	0x25930  func CKPersistentStoreHandler.deserializeValue(_:) // method 
  }
 
  class CoreKnowledge.CKSQLBackingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var name : String // +0x10 (0x10)
-	let connection : NSXPCConnection // +0x20 (0x8)
+	var name : String
+	let connection : NSXPCConnection
 
 	// ObjC -> Swift bridged methods
-	0x381c0  @objc CKSQLBackingStore.initWithName: <stripped>
+WARNING: couldn't find address 0xe8540003c610 (0x540003c610) in binary!
+	0x18000000c  @objc CKSQLBackingStore.(null) <stripped>
 
 	// Swift methods
-	0x37fb0  func CKSQLBackingStore.name.getter // getter 
-	0x37ff0  func CKSQLBackingStore.name.setter // setter 
-	0x38030  func CKSQLBackingStore.name.modify // modifyCoroutine 
-	0x38080  class func CKSQLBackingStore.__allocating_init(name:) // init 
-	0x38270  class func static CKSQLBackingStore.mainInstance() // method 
-	0x38290  func CKSQLBackingStore.daemon(errorHandler:) // method 
-	0x38b40  func CKSQLBackingStore.keys(completionHandler:) // method 
-	0x38d40  func CKSQLBackingStore.keys(matching:completionHandler:) // method 
-	0x38ee0  func CKSQLBackingStore.value(forKey:completionHandler:) // method 
-	0x39110  func CKSQLBackingStore.values(completionHandler:) // method 
-	0x39340  func CKSQLBackingStore.values(forKeys:completionHandler:) // method 
-	0x396f0  func CKSQLBackingStore.values(forKeysMatching:completionHandler:) // method 
-	0x39890  func CKSQLBackingStore.dictionaryRepresentation(completionHandler:) // method 
-	0x39ad0  func CKSQLBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
-	0x39c70  func CKSQLBackingStore.triplesComponents(matching:completionHandler:) // method 
-	0x39eb0  func CKSQLBackingStore.verify(path:completionHandler:) // method 
-	0x39f90  func CKSQLBackingStore.setValue(_:forKey:completionHandler:) // method 
-	0x3a270  func CKSQLBackingStore.writeBatch() // method 
-	0x3a2c0  func CKSQLBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
-	0x3a4a0  func CKSQLBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x3a700  func CKSQLBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x3a900  func CKSQLBackingStore.removeValue(forKey:completionHandler:) // method 
-	0x3aa90  func CKSQLBackingStore.removeValues(forKeys:completionHandler:) // method 
-	0x3ac20  func CKSQLBackingStore.removeValues(matching:completionHandler:) // method 
-	0x3ad90  func CKSQLBackingStore.removeAllValues(completionHandler:) // method 
-	0x3aef0  func CKSQLBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
-	0x3b0e0  func CKSQLBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
-	0x3b2c0  func CKSQLBackingStore.dropLinks(between:and:completionHandler:) // method 
-	0x3b480  func CKSQLBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
+	0x31cf0  func CKSQLBackingStore.name.getter // getter 
+	0x31d30  func CKSQLBackingStore.name.setter // setter 
+	0x31d70  func CKSQLBackingStore.name.modify // modifyCoroutine 
+	0x31dc0  class func CKSQLBackingStore.__allocating_init(name:) // init 
+	0x31fb0  class func static CKSQLBackingStore.mainInstance() // method 
+	0x31fd0  func CKSQLBackingStore.daemon(errorHandler:) // method 
+	0x328a0  func CKSQLBackingStore.keys(completionHandler:) // method 
+	0x32a80  func CKSQLBackingStore.keys(matching:completionHandler:) // method 
+	0x32c10  func CKSQLBackingStore.value(forKey:completionHandler:) // method 
+	0x32e20  func CKSQLBackingStore.values(completionHandler:) // method 
+	0x33040  func CKSQLBackingStore.values(forKeys:completionHandler:) // method 
+	0x33400  func CKSQLBackingStore.values(forKeysMatching:completionHandler:) // method 
+	0x33590  func CKSQLBackingStore.dictionaryRepresentation(completionHandler:) // method 
+	0x337c0  func CKSQLBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
+	0x33950  func CKSQLBackingStore.triplesComponents(matching:completionHandler:) // method 
+	0x33b70  func CKSQLBackingStore.verify(path:completionHandler:) // method 
+	0x33c50  func CKSQLBackingStore.setValue(_:forKey:completionHandler:) // method 
+	0x33f20  func CKSQLBackingStore.writeBatch() // method 
+	0x33f70  func CKSQLBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
+	0x34140  func CKSQLBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x34380  func CKSQLBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x34570  func CKSQLBackingStore.removeValue(forKey:completionHandler:) // method 
+	0x346f0  func CKSQLBackingStore.removeValues(forKeys:completionHandler:) // method 
+	0x34870  func CKSQLBackingStore.removeValues(matching:completionHandler:) // method 
+	0x349d0  func CKSQLBackingStore.removeAllValues(completionHandler:) // method 
+	0x34b30  func CKSQLBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
+	0x34d00  func CKSQLBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
+	0x34ec0  func CKSQLBackingStore.dropLinks(between:and:completionHandler:) // method 
+	0x35070  func CKSQLBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
  }
-
- struct CoreKnowledge.MemorableEntity {
-
-	// Properties
-	let paramName : String // +0x0
-	let paramSize : Int // +0x10
-	let entityType : String // +0x18
-	let siriRemembersID : String? // +0x28
-	let siriRemembersTokens : [String] // +0x38
- }
-
- struct CoreKnowledge.MemorableEntityIterator {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var inner : }„ // +0x0
-	var memoized : Memorable // +0x28
-	var memoizedCount : Int // +0x40
- }
-
- class CoreKnowledge.SRInternalDatabaseManager : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0x3ec80  @objc SRInternalDatabaseManager.init <stripped>
- }
-
- enum CoreKnowledge.SRDatabaseManager { }
 
  class CoreKnowledge.Connection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _handle : 	Â // +0x10 (0x8)
-	var busyTimeout : Double // +0x18 (0x8)
+	var _handle : €ú
+	var busyTimeout : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var busyHandler : ≠Â // +0x20 (0x8)
-	var trace : @convention(block) (_:)? // +0x28 (0x8)
+	var busyHandler : ?ù
+	var trace : @convention(block) (_:)?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updateHook :  empty-list  // +0x30 (0x8)
+	var updateHook :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var commitHook : {Â // +0x38 (0x8)
-	var rollbackHook : @convention(block) ()? // +0x40 (0x8)
+	var commitHook : ù
+	var rollbackHook : @convention(block) ()?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var functions :  empty-list  // +0x48 (0x8)
+	var functions :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var collations : String // +0x50 (0x8)
-	var queue : OS_dispatch_queue // +0x58 (0x8)
-	var $__lazy_storage_$_queueContext : Int? // +0x60 (0x9)
+	var collations : String
+	var queue : OS_dispatch_queue
+	var $__lazy_storage_$_queueContext : Int?
 
 	// Swift methods
-	0x43f80  class func Connection.__allocating_init(_:readonly:) // init 
+	0x3a010  class func Connection.__allocating_init(_:readonly:) // init 
  }
 
  enum CoreKnowledge.Location {
@@ -548,192 +486,59 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class CoreKnowledge.CKCloudKitBackingStore : CKSQLBackingStore {
 	// ObjC -> Swift bridged methods
-	0x55bf0  @objc CKCloudKitBackingStore.initWithName: <stripped>
+WARNING: couldn't find address 0xe83c0003c5f8 (0x3c0003c5f8) in binary!
+	0x18000000c  @objc CKCloudKitBackingStore.(null) <stripped>
 
 	// Swift methods
-	0x54910  func CKCloudKitBackingStore.triplesComponents(matching:) // method 
+	0x44fe0  func CKCloudKitBackingStore.triplesComponents(matching:) // method 
  }
 
  class CoreKnowledge.CKTriple : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let value : (String, String, String, Int) // +0x8 (0x38)
+	let value : (String, String, String, Int)
 
 	// ObjC -> Swift bridged methods
-	0x55fe0  @objc CKTriple.subject <stripped>
-	0x56070  @objc CKTriple.predicate <stripped>
-	0x56140  @objc CKTriple.object <stripped>
-	0x56210  @objc CKTriple.weight <stripped>
-	0x56250  @objc CKTriple.description <stripped>
-	0x564b0  @objc CKTriple.hash <stripped>
-	0x56880  @objc CKTriple.isEqual: <stripped>
-	0x56a70  @objc CKTriple.initWithSubject:predicate:object:weight: <stripped>
-	0x56cb0  @objc CKTriple.encodeWithCoder: <stripped>
-	0x57060  @objc CKTriple.initWithCoder: <stripped>
-	0x57280  @objc CKTriple.init <stripped>
-	0x572e0  @objc CKTriple..cxx_destruct <stripped>
+	0xe7f8  @objc CKTriple.ç Ä <stripped>
+WARNING: couldn't find address 0xe7ec0003c738 (0x7ec0003c738) in binary!
+	0xf62c  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0xe7d40003cb40 (0x7d40003cb40) in binary!
+	0xf614  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0xf6100003caa8 (0x6100003caa8) in binary!
+	0xf618  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0xd8d00003c618 (0xd00003c618) in binary!
+	0xe7a0  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0xe78c0003c618 (0x78c0003c618) in binary!
+	0xf97c  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff47470  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff47418  @objc CKTriple.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x434fff4a1c0  @objc CKTriple.(null) <stripped>
+	0x5a4fff4ab28  @objc CKTriple. <stripped>
+	0xfff4abb0  @objc CKTriple.dÉ <stripped>
+WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
+	0x3d4fff45168  @objc CKTriple.(null) <stripped>
 
 	// Swift methods
-	0x56040  func CKTriple.subject.getter // getter 
-	0x560f0  func CKTriple.predicate.getter // getter 
-	0x561c0  func CKTriple.object.getter // getter 
-	0x56230  func CKTriple.weight.getter // getter 
-	0x56910  class func CKTriple.__allocating_init(tuple:) // init 
-	0x55f10  class func CKTriple.__allocating_init(subject:predicate:object:weight:) // init 
-	0x56b10  func CKTriple.encode(with:) // method 
-	0x56d00  class func CKTriple.__allocating_init(coder:) // init 
-	0x570b0  func CKTriple.dictionary() // method 
- }
-
- struct CoreKnowledge.SendMessage: SiriKitIntent {
-
-	// Properties
-	let parameters : Parameters // +0x0
- }
-
- struct CoreKnowledge.Parameters {
-
-	// Properties
-	let recipients : PersonContact // +0x0
-	let speakableGroupName : SpeakableString // +0x8
- }
-
- struct CoreKnowledge.PersonContact: USOType {
-
-	// Properties
-	let person : Person // +0x0
- }
-
- struct CoreKnowledge.Person: USOType {
-
-	// Properties
-	let name : PersonName // +0x0
-	let identifyingRelationship : PersonRelationship // +0x60
-	let contactAddress : ContactAddress // +0x70
- }
-
- struct CoreKnowledge.PersonName {
-
-	// Properties
-	let fullName : String? // +0x0
-	let namePrefix : Name // +0x10
-	let givenName : String? // +0x20
-	let middleName : String? // +0x30
-	let familyName : String? // +0x40
-	let namePostfix : Name // +0x50
- }
-
- struct CoreKnowledge.Name {
-
-	// Properties
-	let textValue : String // +0x0
- }
-
- struct CoreKnowledge.PersonRelationship {
-
-	// Properties
-	let relationshipType : Name // +0x0
- }
-
- struct CoreKnowledge.ContactAddress {
-
-	// Properties
-	let _type : String? // +0x0
-	let value : String? // +0x10
-	let label : String? // +0x20
- }
-
- struct CoreKnowledge.SpeakableString {
-
-	// Properties
-	let spokenPhrase : String // +0x0
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case spokenPhrase  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case _type  
-	case value  
-	case label  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case relationshipType  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case textValue  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case fullName  
-	case namePrefix  
-	case givenName  
-	case middleName  
-	case familyName  
-	case namePostfix  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case name  
-	case identifyingRelationship  
-	case contactAddress  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case person  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case recipients  
-	case speakableGroupName  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case parameters  
- }
-
- class CoreKnowledge.ScrubDeletedRecords : DeferrableXPCOperation {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let oldestDate : WŸ // +0x0 (0x0)
-
-	// ObjC -> Swift bridged methods
-	0x60ff0  @objc ScrubDeletedRecords.initSinceDate: <stripped>
-	0x61ab0  @objc ScrubDeletedRecords.main <stripped>
-	0x61ba0  @objc ScrubDeletedRecords.init <stripped>
-	0x61b30  @objc ScrubDeletedRecords..cxx_destruct <stripped>
-
-	// Swift methods
-	0x60e90  class func ScrubDeletedRecords.__allocating_init(sinceDate:) // init 
+	0x466a0  func CKTriple.subject.getter // getter 
+	0x46750  func CKTriple.predicate.getter // getter 
+	0x46820  func CKTriple.object.getter // getter 
+	0x46890  func CKTriple.weight.getter // getter 
+	0x46f60  class func CKTriple.__allocating_init(tuple:) // init 
+	0x46570  class func CKTriple.__allocating_init(subject:predicate:object:weight:) // init 
+	0x471b0  func CKTriple.encode(with:) // method 
+	0x473a0  class func CKTriple.__allocating_init(coder:) // init 
+	0x477f0  func CKTriple.dictionary() // method 
  }
 
  struct CoreKnowledge.CKOntology { }
 
  class CoreKnowledge.CoreKnowledgeXPCUtils : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x677d0  @objc CoreKnowledgeXPCUtils.init <stripped>
+WARNING: couldn't find address 0xe7540003c5e0 (0x7540003c5e0) in binary!
+	0x58000000c  @objc CoreKnowledgeXPCUtils.(null) <stripped>
  }
 
  enum CoreKnowledge.JSONLDParseError {
@@ -746,57 +551,55 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class CoreKnowledge.CKJSONLDGraph : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let _entities : CKEntity // +0x8 (0x8)
-	let queue : OS_dispatch_queue // +0x10 (0x8)
+	let _entities : CKEntity
+	let queue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-	0x6b340  @objc CKJSONLDGraph.initWithEntities: <stripped>
-	0x6b390  @objc CKJSONLDGraph.entities <stripped>
-	0x6be80  @objc CKJSONLDGraph.linkedDataWithCompletionHandler: <stripped>
-	0x6c020  @objc CKJSONLDGraph.init <stripped>
-	0x6bfa0  @objc CKJSONLDGraph..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe7440003c448 (0x7440003c448) in binary!
+	0xe730  @objc CKJSONLDGraph.(null) <stripped>
+WARNING: couldn't find address 0xe37a0003c420 (0x37a0003c420) in binary!
+	0xe718  @objc CKJSONLDGraph.(null) <stripped>
+WARNING: couldn't find address 0xf9080003c588 (0x1080003c588) in binary!
+	0xa8000000c  @objc CKJSONLDGraph.(null) <stripped>
+WARNING: couldn't find address 0xd90c0003c3e8 (0x10c0003c3e8) in binary!
+	0xe320  @objc CKJSONLDGraph.(null) <stripped>
+WARNING: couldn't find address 0xf5300003ca10 (0x5300003ca10) in binary!
+	0xe308  @objc CKJSONLDGraph.(null) <stripped>
 
 	// Swift methods
-	0x6b2d0  class func CKJSONLDGraph.__allocating_init(withEntities:) // init 
-	0x6b3f0  func CKJSONLDGraph.entities.getter // getter 
-	0x6b5e0  func CKJSONLDGraph.linkedData(completionHandler:) // method 
+	0x4eee0  class func CKJSONLDGraph.__allocating_init(withEntities:) // init 
+	0x4f000  func CKJSONLDGraph.entities.getter // getter 
+	0x4f210  func CKJSONLDGraph.linkedData(completionHandler:) // method 
  }
 
  class CoreKnowledge.CKEphemeralEventSequence : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let queue : OS_dispatch_queue // +0x8 (0x8)
+	let queue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-	0x75cf0  @objc CKEphemeralEventSequence.init <stripped>
-	0x75dc0  @objc CKEphemeralEventSequence..cxx_destruct <stripped>
+WARNING: couldn't find address 0xd90c0003c3e8 (0x10c0003c3e8) in binary!
+	0xe320  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0xf5300003ca10 (0x5300003ca10) in binary!
+	0xe308  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0xea780003c3a0 (0x2780003c3a0) in binary!
+	0xe6c0  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0xe6ac0003c378 (0x6ac0003c378) in binary!
+	0xe6a0  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0xe6940003c520 (0x6940003c520) in binary!
+	0xf884  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x304fff56008  @objc CKEphemeralEventSequence.(null) <stripped>
+	0x7520003c4a8  @objc CKEphemeralEventSequence. <stripped>
+WARNING: couldn't find address 0x3c2e4fff576f8 (0x2e4fff576f8) in binary!
+	0x28000000c  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0xf9ec0003c180 (0x1ec0003c180) in binary!
+	0xe9dc  @objc CKEphemeralEventSequence.(null) <stripped>
+WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
+	0x174fff54e18  @objc CKEphemeralEventSequence.(null) <stripped>
 
 	// Swift methods
-	0x75d10  func CKEphemeralEventSequence.historyStartEvent.getter // getter 
- }
-
- class CoreKnowledge.XPCTaskScheduler : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let queue : BackgroundQueue // +0x8 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x78100  @objc XPCTaskScheduler.initWithQueue: <stripped>
-	0x782c0  @objc XPCTaskScheduler.scheduleAllTasks <stripped>
-	0x78980  @objc XPCTaskScheduler.init <stripped>
-	0x78910  @objc XPCTaskScheduler..cxx_destruct <stripped>
-
-	// Swift methods
-	0x78050  class func XPCTaskScheduler.__allocating_init(queue:) // init 
-	0x78150  func XPCTaskScheduler.scheduleAllTasks() // method 
-	0x78360  func XPCTaskScheduler.add(id:repeatInterval:makeOp:) // method 
- }
-
- enum CoreKnowledge.RepeatInterval {
-
-	// Properties
-	case never  
-	case daily  
+	0x57550  func CKEphemeralEventSequence.historyStartEvent.getter // getter 
  }
 
  enum CoreKnowledge.ConditionType {
@@ -817,11 +620,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_sql : String?
 
 	// Swift methods
-	0x798e0  class func Matcher.__allocating_init(_:value:) // init 
-	0x79960  func Matcher.evaluate(on:) // method 
-	0x79ea0  func Matcher.sql.getter // getter 
-	0x7a200  func Matcher.sql.setter // setter 
-	0x7a220  func Matcher.sql.modify // modifyCoroutine 
+	0x59570  class func Matcher.__allocating_init(_:value:) // init 
+	0x595f0  func Matcher.evaluate(on:) // method 
+	0x598d0  func Matcher.sql.getter // getter 
+	0x59c10  func Matcher.sql.setter // setter 
+	0x59c30  func Matcher.sql.modify // modifyCoroutine 
  }
 
  class CoreKnowledge.CKGenericCondition : NSObject /usr/lib/libobjc.A.dylib {
@@ -832,32 +635,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_sql : String?
 
 	// ObjC -> Swift bridged methods
-	0x7a330  @objc CKGenericCondition.predicate <stripped>
-	0x7a5d0  @objc CKGenericCondition.description <stripped>
-	0x7a870  @objc CKGenericCondition.initWithValue: <stripped>
-	0x7a9a0  @objc CKGenericCondition.initWithMatchType:value:negated: <stripped>
-	0x7aac0  @objc CKGenericCondition.and: <stripped>
-	0x7abc0  @objc CKGenericCondition.or: <stripped>
-	0x7b4e0  @objc CKGenericCondition.evaluateOn: <stripped>
-	0x7b630  @objc CKGenericCondition.copyWithZone: <stripped>
-	0x7bae0  @objc CKGenericCondition.encodeWithCoder: <stripped>
-	0x7c130  @objc CKGenericCondition.initWithCoder: <stripped>
-	0x7c190  @objc CKGenericCondition.init <stripped>
-	0x7c1e0  @objc CKGenericCondition..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe6140003c568 (0x6140003c568) in binary!
+	0xe608  @objc CKGenericCondition.(null) <stripped>
+WARNING: couldn't find address 0xf9360003c2c0 (0x1360003c2c0) in binary!
+	0xf938  @objc CKGenericCondition.(null) <stripped>
+WARNING: couldn't find address 0xe5ec0003c298 (0x5ec0003c298) in binary!
+	0xe5e0  @objc CKGenericCondition.(null) <stripped>
+WARNING: couldn't find address 0xf4200003c270 (0x4200003c270) in binary!
+	0xfb60  @objc CKGenericCondition.(null) <stripped>
+WARNING: couldn't find address 0xd6e00003c428 (0x6e00003c428) in binary!
+	0xe5b0  @objc CKGenericCondition.(null) <stripped>
+WARNING: couldn't find address 0xe59c0003c428 (0x59c0003c428) in binary!
+	0xf78c  @objc CKGenericCondition.(null) <stripped>
+WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
+	0x234fff56b20  @objc CKGenericCondition.(null) <stripped>
+	0x20cfff56ee8  @objc CKGenericCondition. <stripped>
+	0x1e4fff57210  @objc CKGenericCondition. <stripped>
+	0x39cfff574f8  @objc CKGenericCondition.@ <stripped>
+	0x39cfff578b0  @objc CKGenericCondition. <stripped>
+	0xfff57998  @objc CKGenericCondition.[A\A]A^A_]È\N <stripped>
 
 	// Swift methods
-	0x7a430  func CKGenericCondition.predicate.getter // getter 
-	0x7a770  class func CKGenericCondition.__allocating_init(value:) // init 
-	0x790f0  class func CKGenericCondition.__allocating_init(_:value:negated:) // init 
-	0x7a9e0  func CKGenericCondition.and(_:) // method 
-	0x7aae0  func CKGenericCondition.or(_:) // method 
-	0x7acf0  func CKGenericCondition.sql.getter // getter 
-	0x7b210  func CKGenericCondition.sql.setter // setter 
-	0x7b240  func CKGenericCondition.sql.modify // modifyCoroutine 
-	0x7b330  func CKGenericCondition.evaluate(on:) // method 
-	0x7b570  func CKGenericCondition.copy(with:) // method 
-	0x7b7b0  func CKGenericCondition.encode(with:) // method 
-	0x7bb30  class func CKGenericCondition.__allocating_init(coder:) // init 
+	0x59dc0  func CKGenericCondition.predicate.getter // getter 
+	0x5a0f0  class func CKGenericCondition.__allocating_init(value:) // init 
+	0x58e30  class func CKGenericCondition.__allocating_init(_:value:negated:) // init 
+	0x5a380  func CKGenericCondition.and(_:) // method 
+	0x5a490  func CKGenericCondition.or(_:) // method 
+	0x5a680  func CKGenericCondition.sql.getter // getter 
+	0x5aa30  func CKGenericCondition.sql.setter // setter 
+	0x5aa60  func CKGenericCondition.sql.modify // modifyCoroutine 
+	0x5aac0  func CKGenericCondition.evaluate(on:) // method 
+	0x5ace0  func CKGenericCondition.copy(with:) // method 
+	0x5af30  func CKGenericCondition.encode(with:) // method 
+	0x5b210  class func CKGenericCondition.__allocating_init(coder:) // init 
  }
 
  class CoreKnowledge.CKTripleCondition : NSObject /usr/lib/libobjc.A.dylib {
@@ -866,139 +676,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rawCondition : CKGenericCondition
 
 	// ObjC -> Swift bridged methods
-	0x7c3a0  @objc CKTripleCondition.description <stripped>
-	0x7c710  @objc CKTripleCondition.initWithValue: <stripped>
-	0x7c7a0  @objc CKTripleCondition.initWithSubject:predicate:object: <stripped>
-	0x7c940  @objc CKTripleCondition.and: <stripped>
-	0x7cb00  @objc CKTripleCondition.or: <stripped>
-	0x7cc90  @objc CKTripleCondition.evaluateOn: <stripped>
-	0x7cde0  @objc CKTripleCondition.copyWithZone: <stripped>
-	0x7d000  @objc CKTripleCondition.encodeWithCoder: <stripped>
-	0x7d1b0  @objc CKTripleCondition.initWithCoder: <stripped>
-	0x7d230  @objc CKTripleCondition.init <stripped>
-	0x7d2b0  @objc CKTripleCondition..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe57c0003c8e8 (0x57c0003c8e8) in binary!
+	0xf8aa  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xf8fc0003c590 (0xfc0003c590) in binary!
+	0xe560  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xe5540003c1f8 (0x5540003c1f8) in binary!
+	0xf394  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xfad40003c398 (0x2d40003c398) in binary!
+	0xd654  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xe5240003c388 (0x5240003c388) in binary!
+	0xe510  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xf7000003c380 (0x7000003c380) in binary!
+	0x18000000c  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xd5ea0003c340 (0x5ea0003c340) in binary!
+	0xe8000000c  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xe4d40003c368 (0x4d40003c368) in binary!
+	0xe4c8  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xe4bc0003c148 (0x4bc0003c148) in binary!
+	0xf2fc  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xfa380003c120 (0x2380003c120) in binary!
+	0xfa2c  @objc CKTripleCondition.(null) <stripped>
+WARNING: couldn't find address 0xe48c0003c358 (0x48c0003c358) in binary!
+	0xd5ac  @objc CKTripleCondition.(null) <stripped>
 
 	// Swift methods
-	0x7c2c0  func CKTripleCondition.rawCondition.getter // getter 
-	0x7c300  func CKTripleCondition.rawCondition.setter // setter 
-	0x7c350  func CKTripleCondition.rawCondition.modify // modifyCoroutine 
-	0x7c4c0  class func CKTripleCondition.__allocating_init(_:) // init 
-	0x7c880  func CKTripleCondition.and(_:) // method 
-	0x7ca40  func CKTripleCondition.or(_:) // method 
-	0x7cc00  func CKTripleCondition.evaluate(on:) // method 
-	0x7cd50  func CKTripleCondition.copy(with:) // method 
-	0x7cf90  func CKTripleCondition.encode(with:) // method 
-	0x7d0a0  class func CKTripleCondition.__allocating_init(coder:) // init 
- }
-
- struct CoreKnowledge.LegacySendMessageIntent {
-
-	// Properties
-	let typeName : String // +0x0
-	let parameters : LegacySendMessageIntentParameters // +0x10
- }
-
- struct CoreKnowledge.LegacySendMessageIntentParameters {
-
-	// Properties
-	let recipients : LegacyPerson // +0x0
-	let speakableGroupName : SpeakableString // +0x8
- }
-
- struct CoreKnowledge.LegacyPerson {
-
-	// Properties
-	let displayName : String? // +0x0
-	let nameComponents : LegacyNameComponents // +0x10
-	let relationship : String? // +0x70
-	let personHandle : LegacyPersonHandle // +0x80
- }
-
- struct CoreKnowledge.LegacyNameComponents {
-
-	// Properties
-	let namePrefix : String? // +0x0
-	let givenName : String? // +0x10
-	let middleName : String? // +0x20
-	let familyName : String? // +0x30
-	let nameSuffix : String? // +0x40
-	let nickname : String? // +0x50
- }
-
- struct CoreKnowledge.LegacyPersonHandle {
-
-	// Properties
-	let type : String? // +0x0
-	let value : String? // +0x10
-	let label : String? // +0x20
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case type  
-	case value  
-	case label  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case namePrefix  
-	case givenName  
-	case middleName  
-	case familyName  
-	case nameSuffix  
-	case nickname  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case displayName  
-	case nameComponents  
-	case relationship  
-	case personHandle  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case recipients  
-	case speakableGroupName  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case typeName  
-	case parameters  
- }
-
- class CoreKnowledge.SRIngestor : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let db : Connection // +0x8 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : K’ // +0x0 (0x0)
-	let intent : INIntent // +0x0 (0x8)
-	let intentUUID : String // +0x0 (0x10)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dkEventUUID : G’ // +0x0 (0x0)
-	let bundleID : String? // +0x0 (0x10)
-	let direction : INInteractionDirection // +0x0 (0x8)
-	let inintentHandlingStatus : INIntentHandlingStatus // +0x0 (0x9)
-	let engagementSignals : [String : Any]? // +0x0 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x8af00  @objc SRIngestor.init <stripped>
-	0x8af60  @objc SRIngestor..cxx_destruct <stripped>
-
-	// Swift methods
-	0x888e0  func SRIngestor.saveInteraction() // method 
-	0x88dd0  func SRIngestor.upsertIntent() // method 
-	0x898f0  func SRIngestor.upsertEntity(_:entity:) // method 
-	0x88550  class func SRIngestor.__allocating_init(db:interaction:dkEventUUID:) // init 
+	0x5b990  func CKTripleCondition.rawCondition.getter // getter 
+	0x5b9d0  func CKTripleCondition.rawCondition.setter // setter 
+	0x5ba20  func CKTripleCondition.rawCondition.modify // modifyCoroutine 
+	0x5bb90  class func CKTripleCondition.__allocating_init(_:) // init 
+	0x5bf10  func CKTripleCondition.and(_:) // method 
+	0x5c0d0  func CKTripleCondition.or(_:) // method 
+	0x5c290  func CKTripleCondition.evaluate(on:) // method 
+	0x5c400  func CKTripleCondition.copy(with:) // method 
+	0x5c640  func CKTripleCondition.encode(with:) // method 
+	0x5c750  class func CKTripleCondition.__allocating_init(coder:) // init 
  }
 
  class CoreKnowledge.CKHistoricEvent : NSObject /usr/lib/libobjc.A.dylib {
@@ -1006,78 +717,93 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _firstSeen : K’ // +0x14a8e6 (0x0)
+	var _firstSeen : eï // +0x131000 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lastSeen : K’ // +0x19d0 (0x0)
-	var _frequency : Int // +0x0 (0x8)
-	var _lastDuration : Double // +0x80000400 (0x8)
+	var _lastSeen : eï // +0x5 (0x0)
+	var _frequency : Int // +0x16 (0x8)
+	var _lastDuration : Double // +0x65745f5f (0x8)
 	var _totalDuration : Double // +0x0 (0x8)
-	var _metadata : [String : Any] // +0x74735f5f (0x8)
+	var _metadata : [String : Any] // +0x45545f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8bab0  @objc CKHistoricEvent.identifier <stripped>
-	0x8c400  @objc CKHistoricEvent.firstSeen <stripped>
-	0x8c4a0  @objc CKHistoricEvent.lastSeen <stripped>
-	0x8c540  @objc CKHistoricEvent.frequency <stripped>
-	0x8c5b0  @objc CKHistoricEvent.lastDuration <stripped>
-	0x8c620  @objc CKHistoricEvent.totalDuration <stripped>
-	0x8c690  @objc CKHistoricEvent.metadata <stripped>
-	0x8cc00  @objc CKHistoricEvent.encodeWithCoder: <stripped>
-	0x8d610  @objc CKHistoricEvent.initWithCoder: <stripped>
-	0x8d6d0  @objc CKHistoricEvent.init: <stripped>
-	0x8dff0  @objc CKHistoricEvent.initFrom:withIdentifier: <stripped>
-	0x8e090  @objc CKHistoricEvent.copyWithZone: <stripped>
-	0x8e120  @objc CKHistoricEvent.init <stripped>
-	0x8e180  @objc CKHistoricEvent..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe4d40003c368 (0x4d40003c368) in binary!
+	0xe4c8  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xe4bc0003c148 (0x4bc0003c148) in binary!
+	0xf2fc  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xfa380003c120 (0x2380003c120) in binary!
+	0xfa2c  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xe48c0003c358 (0x48c0003c358) in binary!
+	0xd5ac  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xe47c0003c2e0 (0x47c0003c2e0) in binary!
+	0xe470  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xe8100003c0c0 (0x100003c0c0) in binary!
+	0xf9f0  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xe4440003c2d0 (0x4440003c2d0) in binary!
+	0xf634  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x28cfff5e5e8  @objc CKHistoricEvent.(null) <stripped>
+	0x27cfff5e950  @objc CKHistoricEvent.MâÙHÉƒP[A]A^A_]√f.Ñ <stripped>
+	0x7a00003c038  @objc CKHistoricEvent.ˇ√Hâ]†Lâ˜LçΩ`ˇˇˇLâ˛Ë\ ˇˇLâˇLâˆË1 ˇˇHã  <stripped>
+WARNING: couldn't find address 0x3c024fff606c0 (0x24fff606c0) in binary!
+	0x78000000c  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xf2180003c288 (0x2180003c288) in binary!
+	0xe3c0  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xfbcc0003c010 (0x3cc0003c010) in binary!
+	0xfbc0  @objc CKHistoricEvent.(null) <stripped>
+WARNING: couldn't find address 0xe3a40003c050 (0x3a40003c050) in binary!
+	0xe390  @objc CKHistoricEvent.(null) <stripped>
 
 	// Swift methods
-	0x8bc00  func CKHistoricEvent._firstSeen.getter // getter 
-	0x8bc20  func CKHistoricEvent._firstSeen.setter // setter 
-	0x8bc40  func CKHistoricEvent._firstSeen.modify // modifyCoroutine 
-	0x8bd60  func CKHistoricEvent._lastSeen.getter // getter 
-	0x8bdd0  func CKHistoricEvent._lastSeen.setter // setter 
-	0x8be50  func CKHistoricEvent._lastSeen.modify // modifyCoroutine 
-	0x8bf30  func CKHistoricEvent._frequency.getter // getter 
-	0x8bf60  func CKHistoricEvent._frequency.setter // setter 
-	0x8bfa0  func CKHistoricEvent._frequency.modify // modifyCoroutine 
-	0x8c080  func CKHistoricEvent._lastDuration.getter // getter 
-	0x8c0a0  func CKHistoricEvent._lastDuration.setter // setter 
-	0x8c0c0  func CKHistoricEvent._lastDuration.modify // modifyCoroutine 
-	0x8c1a0  func CKHistoricEvent._totalDuration.getter // getter 
-	0x8c1f0  func CKHistoricEvent._totalDuration.setter // setter 
-	0x8c250  func CKHistoricEvent._totalDuration.modify // modifyCoroutine 
-	0x8c330  func CKHistoricEvent._metadata.getter // getter 
-	0x8c370  func CKHistoricEvent._metadata.setter // setter 
-	0x8c3c0  func CKHistoricEvent._metadata.modify // modifyCoroutine 
-	0x8c480  func CKHistoricEvent.firstSeen.getter // getter 
-	0x8c520  func CKHistoricEvent.lastSeen.getter // getter 
-	0x8c590  func CKHistoricEvent.frequency.getter // getter 
-	0x8c600  func CKHistoricEvent.lastDuration.getter // getter 
-	0x8c670  func CKHistoricEvent.totalDuration.getter // getter 
-	0x8c710  func CKHistoricEvent.metadata.getter // getter 
-	0x8b700  class func CKHistoricEvent.__allocating_init(identifier:firstSeen:lastSeen:frequency:lastDuration:totalDuration:metadata:) // init 
-	0x8c8d0  func CKHistoricEvent.encode(with:) // method 
-	0x8cc50  class func CKHistoricEvent.__allocating_init(coder:) // init 
-	0x8d660  class func CKHistoricEvent.__allocating_init(_:) // init 
-	0x8e040  func CKHistoricEvent.copy(with:) // method 
+	0x60640  func CKHistoricEvent._firstSeen.getter // getter 
+	0x60660  func CKHistoricEvent._firstSeen.setter // setter 
+	0x60680  func CKHistoricEvent._firstSeen.modify // modifyCoroutine 
+	0x60770  func CKHistoricEvent._lastSeen.getter // getter 
+	0x607e0  func CKHistoricEvent._lastSeen.setter // setter 
+	0x60860  func CKHistoricEvent._lastSeen.modify // modifyCoroutine 
+	0x60900  func CKHistoricEvent._frequency.getter // getter 
+	0x60930  func CKHistoricEvent._frequency.setter // setter 
+	0x60970  func CKHistoricEvent._frequency.modify // modifyCoroutine 
+	0x60a10  func CKHistoricEvent._lastDuration.getter // getter 
+	0x60a30  func CKHistoricEvent._lastDuration.setter // setter 
+	0x60a50  func CKHistoricEvent._lastDuration.modify // modifyCoroutine 
+	0x60af0  func CKHistoricEvent._totalDuration.getter // getter 
+	0x60b40  func CKHistoricEvent._totalDuration.setter // setter 
+	0x60ba0  func CKHistoricEvent._totalDuration.modify // modifyCoroutine 
+	0x60c50  func CKHistoricEvent._metadata.getter // getter 
+	0x60c90  func CKHistoricEvent._metadata.setter // setter 
+	0x60ce0  func CKHistoricEvent._metadata.modify // modifyCoroutine 
+	0x60da0  func CKHistoricEvent.firstSeen.getter // getter 
+	0x60e40  func CKHistoricEvent.lastSeen.getter // getter 
+	0x60eb0  func CKHistoricEvent.frequency.getter // getter 
+	0x60f20  func CKHistoricEvent.lastDuration.getter // getter 
+	0x60f90  func CKHistoricEvent.totalDuration.getter // getter 
+	0x61030  func CKHistoricEvent.metadata.getter // getter 
+	0x60170  class func CKHistoricEvent.__allocating_init(identifier:firstSeen:lastSeen:frequency:lastDuration:totalDuration:metadata:) // init 
+	0x611f0  func CKHistoricEvent.encode(with:) // method 
+	0x61570  class func CKHistoricEvent.__allocating_init(coder:) // init 
+	0x61fb0  class func CKHistoricEvent.__allocating_init(_:) // init 
+	0x62a60  func CKHistoricEvent.copy(with:) // method 
  }
 
  class CoreKnowledge.CKClosure : NSObject /usr/lib/libobjc.A.dylib, CKExecutableClosure {
 
 	// Properties
-	let store : CKKnowledgeStore // +0x8 (0x8)
-	let entity : CKEntity // +0x10 (0x8)
+	let store : CKKnowledgeStore
+	let entity : CKEntity
 
 	// ObjC -> Swift bridged methods
-	0x8ec00  @objc CKClosure.initWithCoder: <stripped>
-	0x8ee50  @objc CKClosure.encodeWithCoder: <stripped>
-	0x8ef70  @objc CKClosure.init <stripped>
-	0x8eee0  @objc CKClosure..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe42c0003c290 (0x42c0003c290) in binary!
+	0xd544  @objc CKClosure.(null) <stripped>
+WARNING: couldn't find address 0xe40c0003c298 (0x40c0003c298) in binary!
+	0xf5fc  @objc CKClosure.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x24fff606c0  @objc CKClosure.(null) <stripped>
+	0x2180003c288  @objc CKClosure.Iã}ˇj. <stripped>
 
 	// Swift methods
-	0x8e670  class func CKClosure.__allocating_init(coder:) // init 
-	0x8ec30  func CKClosure.encode(with:) // method 
-	0x8eea0  func CKClosure.execute() // method 
+	0x630d0  class func CKClosure.__allocating_init(coder:) // init 
+	0x636c0  func CKClosure.encode(with:) // method 
+	0x63940  func CKClosure.execute() // method 
  }
 
  enum CoreKnowledge.CKLogicError {
@@ -1090,48 +816,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class CoreKnowledge.CKLogic : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var body : CKEntity // +0x8 (0x8)
-	var negatedBody : CKEntity // +0x10 (0x8)
+	var body : CKEntity
+	var negatedBody : CKEntity
 
 	// ObjC -> Swift bridged methods
-	0x90450  @objc CKLogic.hash <stripped>
-	0x90980  @objc CKLogic.identifier <stripped>
-	0x91210  @objc CKLogic.andExistsLink:to:error: <stripped>
-	0x91960  @objc CKLogic.andNotExistsLink:to:error: <stripped>
-	0x91bb0  @objc CKLogic.and: <stripped>
-	0x91cc0  @objc CKLogic.init <stripped>
-	0x91c40  @objc CKLogic..cxx_destruct <stripped>
+WARNING: couldn't find address 0xf2180003c288 (0x2180003c288) in binary!
+	0xe3c0  @objc CKLogic.(null) <stripped>
+WARNING: couldn't find address 0xfbcc0003c010 (0x3cc0003c010) in binary!
+	0xfbc0  @objc CKLogic.(null) <stripped>
+WARNING: couldn't find address 0xe3a40003c050 (0x3a40003c050) in binary!
+	0xe390  @objc CKLogic.(null) <stripped>
+WARNING: couldn't find address 0xf5800003c200 (0x5800003c200) in binary!
+	0x118000000c  @objc CKLogic.(null) <stripped>
+WARNING: couldn't find address 0xf1c00003c658 (0x1c00003c658) in binary!
+	0xf1ac  @objc CKLogic.(null) <stripped>
+WARNING: couldn't find address 0xe3540003c6c0 (0x3540003c6c0) in binary!
+	0xe350  @objc CKLogic.(null) <stripped>
+WARNING: couldn't find address 0xdf740003c5f0 (0x7740003c5f0) in binary!
+	0xdf68  @objc CKLogic.(null) <stripped>
 
 	// Swift methods
-	0x90220  func CKLogic.body.getter // getter 
-	0x90240  func CKLogic.body.setter // setter 
-	0x90260  func CKLogic.body.modify // modifyCoroutine 
-	0x90340  func CKLogic.negatedBody.getter // getter 
-	0x903a0  func CKLogic.negatedBody.setter // setter 
-	0x90400  func CKLogic.negatedBody.modify // modifyCoroutine 
-	0x909e0  func CKLogic.identifier.getter // getter 
-	0x90ae0  class func static CKLogic.ifExistsLink(_:to:) // method 
-	0x90cf0  func CKLogic.andExistsLink(_:to:) // method 
-	0x91230  class func static CKLogic.ifNotExistsLink(_:to:) // method 
-	0x91440  func CKLogic.andNotExistsLink(_:to:) // method 
-	0x91a70  func CKLogic.and(_:) // method 
- }
-
- enum CoreKnowledge.ErrorTracker { }
-
- class CoreKnowledge.ScrubOldRecords : DeferrableXPCOperation {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cutoffDate : WŸ // +0x0 (0x0)
-
-	// ObjC -> Swift bridged methods
-	0x953a0  @objc ScrubOldRecords.main <stripped>
-	0x95420  @objc ScrubOldRecords.init <stripped>
-	0x954a0  @objc ScrubOldRecords..cxx_destruct <stripped>
-
-	// Swift methods
-	0x94a00  class func ScrubOldRecords.__allocating_init(olderThan:) // init 
+	0x64e10  func CKLogic.body.getter // getter 
+	0x64e30  func CKLogic.body.setter // setter 
+	0x64e50  func CKLogic.body.modify // modifyCoroutine 
+	0x64f00  func CKLogic.negatedBody.getter // getter 
+	0x64f60  func CKLogic.negatedBody.setter // setter 
+	0x64fc0  func CKLogic.negatedBody.modify // modifyCoroutine 
+	0x65580  func CKLogic.identifier.getter // getter 
+	0x65680  class func static CKLogic.ifExistsLink(_:to:) // method 
+	0x658b0  func CKLogic.andExistsLink(_:to:) // method 
+	0x65ca0  class func static CKLogic.ifNotExistsLink(_:to:) // method 
+	0x65eb0  func CKLogic.andNotExistsLink(_:to:) // method 
+	0x66390  func CKLogic.and(_:) // method 
  }
 
  struct CoreKnowledge.CKPath {
@@ -1147,55 +863,72 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class CoreKnowledge.CKEntity : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let identifier : String // +0x8 (0x10)
-	let store : CKKnowledgeStore // +0x18 (0x8)
+	let identifier : String
+	let store : CKKnowledgeStore
 
 	// ObjC -> Swift bridged methods
-	0x9b880  @objc CKEntity.isEqual: <stripped>
-	0x9b910  @objc CKEntity.hash <stripped>
-	0x9ba00  @objc CKEntity.description <stripped>
-	0x9bef0  @objc CKEntity.valueForKey: <stripped>
-	0x9bff0  @objc CKEntity.valueForKey:completionHandler: <stripped>
-	0x9c630  @objc CKEntity.valuesForKeys:completionHandler: <stripped>
-	0x9cb60  @objc CKEntity.setValue:forKey:completionHandler: <stripped>
-	0x9d2f0  @objc CKEntity.setValuesForKeys:completionHandler: <stripped>
-	0x9d500  @objc CKEntity.removeValueForKey:completionHandler: <stripped>
-	0x9dcf0  @objc CKEntity.linkTo:withPredicate:completionHandler: <stripped>
-	0x9e120  @objc CKEntity.linkTo:withPredicate:error: <stripped>
-	0x9e340  @objc CKEntity.unlinkTo:withPredicate:ignoreWeights:completionHandler: <stripped>
-	0x9e7f0  @objc CKEntity.removeWithCompletionHandler: <stripped>
-	0xa3980  @objc CKEntity.linksTo:matchType:completionHandler: <stripped>
-	0xa3da0  @objc CKEntity.linksTo:matchType:error: <stripped>
-	0xa3ec0  @objc CKEntity.init <stripped>
-	0xa3f20  @objc CKEntity..cxx_destruct <stripped>
+WARNING: couldn't find address 0xf1c00003c658 (0x1c00003c658) in binary!
+	0xf1ac  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe3540003c6c0 (0x3540003c6c0) in binary!
+	0xe350  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xdf740003c5f0 (0x7740003c5f0) in binary!
+	0xdf68  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xd4dc0003c5b0 (0x4dc0003c5b0) in binary!
+	0xdf50  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xdf440003c3e8 (0x7440003c3e8) in binary!
+	0xd4b8  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe39c0003c218 (0x39c0003c218) in binary!
+	0xff30  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xdf320003bef8 (0x7320003bef8) in binary!
+	0xff38  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xf67c0003bed0 (0x67c0003bed0) in binary!
+	0xe2b8  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xf4a80003c128 (0x4a80003c128) in binary!
+	0x78000000c  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe2940003be10 (0x2940003be10) in binary!
+	0xe288  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe27c0003bde8 (0x27c0003bde8) in binary!
+	0xe270  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe2640003bdc0 (0x2640003bdc0) in binary!
+	0xe260  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe2540003bda0 (0x2540003bda0) in binary!
+	0x308000000c  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe2bc0003be38 (0x2bc0003be38) in binary!
+	0xd440  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xe2240003be18 (0x2240003be18) in binary!
+	0xde48  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xde5a0003c5d8 (0x65a0003c5d8) in binary!
+	0xe20b  @objc CKEntity.(null) <stripped>
+WARNING: couldn't find address 0xde240003bdd0 (0x6240003bdd0) in binary!
+	0xe782  @objc CKEntity.(null) <stripped>
 
 	// Swift methods
-	0x9b640  class func CKEntity.__allocating_init(identifier:knowledgeStore:) // init 
-	0x9bfb0  func CKEntity.value(forKey:completionHandler:) // method 
-	0x9c020  func CKEntity.values(forKeys:completionHandler:) // method 
-	0x9c220  func CKEntity.values(forKeys:completionHandler:) // method 
-	0x9c6e0  func CKEntity.setValue(_:forKey:completionHandler:) // method 
-	0x9cc50  func CKEntity.setValues(forKeys:completionHandler:) // method 
-	0x9d3c0  func CKEntity.removeValue(forKey:completionHandler:) // method 
-	0x9d9a0  func CKEntity.link(to:withPredicate:completionHandler:) // method 
-	0x9ddb0  func CKEntity.link(to:withPredicate:) // method 
-	0x9e210  func CKEntity.unlink(to:withPredicate:ignoreWeights:completionHandler:) // method 
-	0x9e420  func CKEntity.unlink(to:withPredicate:ignoreWeights:) // method 
-	0x9e770  func CKEntity.remove(completionHandler:) // method 
-	0x9e8d0  func CKEntity.remove() // method 
-	0x9eb80  func CKEntity.path(to:withRadius:completionHandler:) // method 
-	0x9f020  func CKEntity.path(to:withRadius:) // method 
-	0x9f040  func CKEntity.path(to:radius:) // method 
-	0x9fad0  func CKEntity.linkedEntities(withPredicate:matchType:complement:completionHandler:) // method 
-	0xa0700  func CKEntity.linkedEntities(withPredicate:matchType:complement:) // method 
-	0xa0ac0  func CKEntity.linkedEntities(completionHandler:) // method 
-	0xa1250  func CKEntity.linkedEntities() // method 
-	0xa15b0  func CKEntity.linkingEntities(withPredicate:matchType:complement:completionHandler:) // method 
-	0xa2300  func CKEntity.linkingEntities(withPredicate:matchType:complement:) // method 
-	0xa26c0  func CKEntity.linkingEntities(completionHandler:) // method 
-	0xa29d0  func CKEntity.linkingEntities() // method 
-	0xa3240  func CKEntity.links(to:matchType:completionHandler:) // method 
-	0xa3a00  func CKEntity.links(to:matchType:) // method 
+	0x6e470  class func CKEntity.__allocating_init(identifier:knowledgeStore:) // init 
+	0x6edd0  func CKEntity.value(forKey:completionHandler:) // method 
+	0x6ee30  func CKEntity.values(forKeys:completionHandler:) // method 
+	0x6f030  func CKEntity.values(forKeys:completionHandler:) // method 
+	0x6f520  func CKEntity.setValue(_:forKey:completionHandler:) // method 
+	0x6fa50  func CKEntity.setValues(forKeys:completionHandler:) // method 
+	0x70180  func CKEntity.removeValue(forKey:completionHandler:) // method 
+	0x70390  func CKEntity.link(to:withPredicate:completionHandler:) // method 
+	0x707c0  func CKEntity.link(to:withPredicate:) // method 
+	0x70be0  func CKEntity.unlink(to:withPredicate:ignoreWeights:completionHandler:) // method 
+	0x70e30  func CKEntity.unlink(to:withPredicate:ignoreWeights:) // method 
+	0x71120  func CKEntity.remove(completionHandler:) // method 
+	0x71280  func CKEntity.remove() // method 
+	0x71510  func CKEntity.path(to:withRadius:completionHandler:) // method 
+	0x719b0  func CKEntity.path(to:withRadius:) // method 
+	0x719d0  func CKEntity.path(to:radius:) // method 
+	0x724b0  func CKEntity.linkedEntities(withPredicate:matchType:complement:completionHandler:) // method 
+	0x72f50  func CKEntity.linkedEntities(withPredicate:matchType:complement:) // method 
+	0x732e0  func CKEntity.linkedEntities(completionHandler:) // method 
+	0x738d0  func CKEntity.linkedEntities() // method 
+	0x73c20  func CKEntity.linkingEntities(withPredicate:matchType:complement:completionHandler:) // method 
+	0x747f0  func CKEntity.linkingEntities(withPredicate:matchType:complement:) // method 
+	0x74b80  func CKEntity.linkingEntities(completionHandler:) // method 
+	0x74eb0  func CKEntity.linkingEntities() // method 
+	0x75200  func CKEntity.links(to:matchType:completionHandler:) // method 
+	0x75940  func CKEntity.links(to:matchType:) // method 
  }
 
  class CoreKnowledge.CKTimedDispatch : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1204,22 +937,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue // +0x10 (0x8)
 	let semaphore : OS_dispatch_semaphore // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _interruptError : _Ó // +0x20 (0x8)
+	var _interruptError : Õ£ // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _timeout : ·” // +0x45545f5f (0x0)
-	var _group : OS_dispatch_group? // +0x0 (0x8)
+	let _timeout : óì // +0x0 (0x0)
+	var _group : OS_dispatch_group? // +0x102a9a (0x8)
 
 	// Swift methods
-	0xa6600  func CKTimedDispatch._interruptError.getter // getter 
-	0xa6630  func CKTimedDispatch._interruptError.setter // setter 
-	0xa6680  func CKTimedDispatch._interruptError.modify // modifyCoroutine 
-	0xa6780  func CKTimedDispatch._group.getter // getter 
-	0xa67c0  func CKTimedDispatch._group.setter // setter 
-	0xa6810  func CKTimedDispatch._group.modify // modifyCoroutine 
-	0xa6850  func CKTimedDispatch.group.getter // getter 
-	0xa59d0  class func CKTimedDispatch.__allocating_init(timeout:) // init 
-	0xa6ca0  func CKTimedDispatch.interrupt(_:) // method 
-	0xa6ce0  func CKTimedDispatch.wait() // method 
+	0x77f10  func CKTimedDispatch._interruptError.getter // getter 
+	0x77f40  func CKTimedDispatch._interruptError.setter // setter 
+	0x77f90  func CKTimedDispatch._interruptError.modify // modifyCoroutine 
+	0x78060  func CKTimedDispatch._group.getter // getter 
+	0x780a0  func CKTimedDispatch._group.setter // setter 
+	0x780f0  func CKTimedDispatch._group.modify // modifyCoroutine 
+	0x78130  func CKTimedDispatch.group.getter // getter 
+	0x77670  class func CKTimedDispatch.__allocating_init(timeout:) // init 
+	0x78620  func CKTimedDispatch.interrupt(_:) // method 
+	0x78660  func CKTimedDispatch.wait() // method 
  }
 
  enum CoreKnowledge.CKError {
@@ -1236,34 +969,113 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class CoreKnowledge.CKKnowledgeStore : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let backingStore : CKBackingStore // +0x8 (0x28)
-	let sparqlQueue : OS_dispatch_queue // +0x30 (0x8)
-	let location : Location // +0x38 (0x11)
-	var delegate : CKKnowledgeStoreDelegate? // +0x50 (0x8)
+	let backingStore : CKBackingStore
+	let sparqlQueue : OS_dispatch_queue
+	let location : Location
+	var delegate : CKKnowledgeStoreDelegate?
 
 	// ObjC -> Swift bridged methods
-	0xa8170  @objc CKKnowledgeStore.delegate <stripped>
-	0xa81c0  @objc CKKnowledgeStore.setDelegate: <stripped>
-	0xa8220  @objc CKKnowledgeStore.name <stripped>
-	0xa8400  @objc CKKnowledgeStore.filePathURL <stripped>
-	0xa8490  @objc CKKnowledgeStore.hash <stripped>
-	0xa8620  @objc CKKnowledgeStore.isEqual: <stripped>
-	0xa88a0  @objc CKKnowledgeStore.init <stripped>
-	0xa8900  @objc CKKnowledgeStore..cxx_destruct <stripped>
+WARNING: couldn't find address 0xe2bc0003be38 (0x2bc0003be38) in binary!
+	0xd440  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe2240003be18 (0x2240003be18) in binary!
+	0xde48  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xde5a0003c5d8 (0x65a0003c5d8) in binary!
+	0xe20b  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xde240003bdd0 (0x6240003bdd0) in binary!
+	0xe782  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xde2a0003bda8 (0x62a0003bda8) in binary!
+	0xe1db  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xddf40003bd88 (0x5f40003bd88) in binary!
+	0xe752  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xddfa0003bd68 (0x5fa0003bd68) in binary!
+	0xe1ab  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xddc40003c440 (0x5c40003c440) in binary!
+	0xe188  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xddac0003bdb0 (0x5ac0003bdb0) in binary!
+	0xdda0  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe6fe0003bf00 (0x6fe0003bf00) in binary!
+	0xe158  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xdd9a0003c290 (0x59a0003c290) in binary!
+	0xe14b  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe6ce0003c450 (0x6ce0003c450) in binary!
+	0xdd58  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xdd4c0003bcc0 (0x54c0003bcc0) in binary!
+	0xe108  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xd2b40003c388 (0x2b40003c388) in binary!
+	0xdd1a  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xdd1c0003bc88 (0x51c0003bc88) in binary!
+	0xdd10  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe0fa0003bc68 (0xfa0003bc68) in binary!
+	0xdcf8  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe0e20003c490 (0xe20003c490) in binary!
+	0xdce0  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe0ca0003be18 (0xca0003be18) in binary!
+	0xdcc8  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe0b20003bdf8 (0xb20003bdf8) in binary!
+	0xdcce  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xdcce0003bdd8 (0x4ce0003bdd8) in binary!
+	0xdcb6  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe0540003bbe8 (0x540003bbe8) in binary!
+	0xd174  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe03c0003bf30 (0x3c0003bf30) in binary!
+	0xe030  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xee700003bee0 (0x6700003bee0) in binary!
+	0xee6c  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xe00c0003be98 (0xc0003be98) in binary!
+	0xf1fc  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x65cfff7abf0  @objc CKKnowledgeStore.(null) <stripped>
+	0x540003bb08  @objc CKKnowledgeStore.Hãı# <stripped>
+WARNING: couldn't find address 0x3c3a4fff7b0a0 (0x3a4fff7b0a0) in binary!
+	0x28000000c  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xdc020003c070 (0x4020003c070) in binary!
+	0xdc02  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff7bad0  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff7dd08  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x1cfff7bc10  @objc CKKnowledgeStore.(null) <stripped>
+	0x3920003c000  @objc CKKnowledgeStore.Lã}¿LâˇËvW <stripped>
+WARNING: couldn't find address 0x3bffcfff800b0 (0x7fcfff800b0) in binary!
+	0x25029232840  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x65726f433a4d4152 (0x7433a4d4152) in binary!
+	0x75250202065  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x4b65726f433a5443 (0x26f433a5443) in binary!
+	0xa312d  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x3ff0000000000000 (0x0) in binary!
+	0x2  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x17070414b43  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0x6e6f697463617265 (0x17463617265) in binary!
+	0x0  @objc CKKnowledgeStore.(null) <stripped>
+	0x98fff061c0  @objc CKKnowledgeStore.œ˙Ì˛ <stripped>
+WARNING: couldn't find address 0x2000217ae (0x2000217ae) in binary!
+	0xa00000002  @objc CKKnowledgeStore.(null) <stripped>
+WARNING: couldn't find address 0xd0000000c (0xd0000000c) in binary!
+	0x144983  @objc CKKnowledgeStore.(null) <stripped>
+	0x144982  @objc CKKnowledgeStore.® <stripped>
+	0x144971  @objc CKKnowledgeStore. <stripped>
+	0x144980  @objc CKKnowledgeStore.$ <stripped>
+	0x435f5f  @objc CKKnowledgeStore.$ <stripped>
+	0x57365526e6f  @objc CKKnowledgeStore.œ˙Ì˛ <stripped>
+WARNING: couldn't find address 0x706d6f43534e4e00 (0x743534e4e00) in binary!
+	0x746c7573  @objc CKKnowledgeStore.(null) <stripped>
+	0x0  @objc CKKnowledgeStore.H!¡HâH«G <stripped>
 
 	// Swift methods
-	0xa73d0  func CKKnowledgeStore.delegate.getter // getter 
-	0xa7410  func CKKnowledgeStore.delegate.setter // setter 
-	0xa7460  func CKKnowledgeStore.delegate.modify // modifyCoroutine 
-	0xa74b0  func CKKnowledgeStore.name.getter // getter 
-	0xa74f0  func CKKnowledgeStore.filePath.getter // getter 
-	0xa7720  class func static CKKnowledgeStore.defaultKnowledgeStore() // method 
-	0xa77d0  class func static CKKnowledgeStore.defaultSynchedKnowledgeStore() // method 
-	0xa7810  class func static CKKnowledgeStore.inMemoryKnowledgeStore() // method 
-	0xa7840  class func static CKKnowledgeStore.userDefaultsKnowledgeStore() // method 
-	0xa7870  class func static CKKnowledgeStore.knowledgeStore(withName:) // method 
-	0xa7880  class func static CKKnowledgeStore.synchedKnowledgeStore(withName:) // method 
-	0xa78e0  class func static CKKnowledgeStore.store(_:) // method 
+	0x78bd0  func CKKnowledgeStore.delegate.getter // getter 
+	0x78c10  func CKKnowledgeStore.delegate.setter // setter 
+	0x78c60  func CKKnowledgeStore.delegate.modify // modifyCoroutine 
+	0x78cb0  func CKKnowledgeStore.name.getter // getter 
+	0x78cf0  func CKKnowledgeStore.filePath.getter // getter 
+	0x78f40  class func static CKKnowledgeStore.defaultKnowledgeStore() // method 
+	0x78ff0  class func static CKKnowledgeStore.defaultSynchedKnowledgeStore() // method 
+	0x79030  class func static CKKnowledgeStore.inMemoryKnowledgeStore() // method 
+	0x79060  class func static CKKnowledgeStore.userDefaultsKnowledgeStore() // method 
+	0x79090  class func static CKKnowledgeStore.knowledgeStore(withName:) // method 
+	0x790a0  class func static CKKnowledgeStore.synchedKnowledgeStore(withName:) // method 
+	0x79100  class func static CKKnowledgeStore.store(_:) // method 
  }
 
  enum CoreKnowledge.Location {
@@ -1275,203 +1087,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case userDefaults  
  }
 
- class CoreKnowledge.AppUsageProbabilityFinder : NSObject /usr/lib/libobjc.A.dylib {
-	// ObjC -> Swift bridged methods
-	0xa9bd0  @objc AppUsageProbabilityFinder.init <stripped>
-
-	// Swift methods
-	0xa9940  class func static AppUsageProbabilityFinder.relativeAppUsageProbabilities(bundleIDs:days:) // method 
- }
-
- class CoreKnowledge.SRAppMatcher : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	var db : Connection // +0x8 (0x8)
-	var domain : String // +0x10 (0x10)
-	var allowedBundleIDs : [String] // +0x20 (0x8)
-	var entitySet : RequestEntity // +0x28 (0x8)
-	var memorableEntities : MemorableEntity // +0x30 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0xb0310  @objc SRAppMatcher.init <stripped>
-	0xb0260  @objc SRAppMatcher..cxx_destruct <stripped>
-
-	// Swift methods
-	0xaacf0  func SRAppMatcher.appMatches() // method 
-	0xab2b0  func SRAppMatcher.findEntitySignals() // method 
-	0xabd60  func SRAppMatcher.findMatchingEntities(forEntity:) // method 
-	0xacd00  func SRAppMatcher.findIntentSignals(entityIDs:) // method 
-	0xacfa0  func SRAppMatcher.findBaseIntentSignals(entityIDs:) // method 
-	0xade90  func SRAppMatcher.calculateEntityMatchSignals(intentSignals:) // method 
-	0xaf320  func SRAppMatcher.findAppSignals(intentSignals:) // method 
-	0xafce0  func SRAppMatcher.makeDecision(appSignals:) // method 
- }
-
- struct CoreKnowledge.EntitySignals {
-
-	// Properties
-	let intentIndex : Int // +0x0
-	let idfScore : Double // +0x8
-	let paramSize : Int // +0x10
- }
-
- class CoreKnowledge.IntentSignals : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intentID : o€ // +0x10 (0x8)
-	var entities : IntentParameter // +0x18 (0x8)
-	let bundleID : String // +0x20 (0x10)
-	let direction : INInteractionDirection // +0x30 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let modifiedAt : K’ // +0x14cfc0 (0x0)
-	var recencyOrder : Int // +0x15c8 (0x8)
-	var ftsRankSum : Double // +0x14cfc0 (0x8)
-	var requestEntityMatchRate : Double // +0x0 (0x8)
-	var intentEntityMatchRate : Double // +0x80000400 (0x8)
-	var maxEntityMatchRate : Double // +0x0 (0x8)
-
-	// Swift methods
-	0xb0420  func IntentSignals.entities.getter // getter 
-	0xb0450  func IntentSignals.entities.setter // setter 
-	0xb0490  func IntentSignals.entities.modify // modifyCoroutine 
-	0xb05b0  func IntentSignals.recencyOrder.getter // getter 
-	0xb05e0  func IntentSignals.recencyOrder.setter // setter 
-	0xb0620  func IntentSignals.recencyOrder.modify // modifyCoroutine 
-	0xb06f0  func IntentSignals.ftsRankSum.getter // getter 
-	0xb0720  func IntentSignals.ftsRankSum.setter // setter 
-	0xb0760  func IntentSignals.ftsRankSum.modify // modifyCoroutine 
-	0xb0840  func IntentSignals.requestEntityMatchRate.getter // getter 
-	0xb0870  func IntentSignals.requestEntityMatchRate.setter // setter 
-	0xb08b0  func IntentSignals.requestEntityMatchRate.modify // modifyCoroutine 
-	0xb0980  func IntentSignals.intentEntityMatchRate.getter // getter 
-	0xb09b0  func IntentSignals.intentEntityMatchRate.setter // setter 
-	0xb09f0  func IntentSignals.intentEntityMatchRate.modify // modifyCoroutine 
-	0xb0ac0  func IntentSignals.maxEntityMatchRate.getter // getter 
-	0xb0af0  func IntentSignals.maxEntityMatchRate.setter // setter 
-	0xb0b30  func IntentSignals.maxEntityMatchRate.modify // modifyCoroutine 
-	0xade20  class func IntentSignals.__allocating_init(intentID:entities:bundleID:direction:modifiedAt:recencyOrder:) // init 
- }
-
- struct CoreKnowledge.IntentParameter {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cardinality : o€ // +0x0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var entityIDs :  empty-list  // +0x8
- }
-
- class CoreKnowledge.RequestEntity : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let entity : MemorableEntity // +0x10 (0x40)
-	var matches : DBEntityMatch // +0x50 (0x8)
-
-	// Swift methods
-	0xb0f20  func RequestEntity.matches.getter // getter 
-	0xb0f50  func RequestEntity.matches.setter // setter 
-	0xb0f90  func RequestEntity.matches.modify // modifyCoroutine 
-	0xaac50  class func RequestEntity.__allocating_init(entity:) // init 
- }
-
- struct CoreKnowledge.DBEntityMatch {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let entityID : o€ // +0x0
-	let ftsRank : Double // +0x8
- }
-
- struct CoreKnowledge.AppSignals {
-
-	// Properties
-	let bundleID : String // +0x0
-	let recencyOrder : Int // +0x10
-	let isMostRecentAppForEntity : Bool // +0x18
-	let frequency : Int // +0x20
-	let secondsAgo : Double // +0x28
-	let relevanceScore : Double // +0x30
-	let frequencyScore : Double // +0x38
-	let overallScore : Double // +0x40
- }
-
- struct CoreKnowledge.AppUsageSignals {
-
-	// Properties
-	let bundleID : String // +0x0
-	var usageShare1Day : Double // +0x10
-	var usageShare7Days : Double // +0x18
-	let usageShare28Days : Double // +0x20
- }
-
- struct CoreKnowledge.AppMatchSignals {
-
-	// Properties
-	let appSignals : AppSignals // +0x0
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case appSignals  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case bundleID  
-	case usageShare1Day  
-	case usageShare7Days  
-	case usageShare28Days  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case bundleID  
-	case recencyOrder  
-	case isMostRecentAppForEntity  
-	case frequency  
-	case secondsAgo  
-	case relevanceScore  
-	case frequencyScore  
-	case overallScore  
- }
-
  class CoreKnowledge.Statement : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FailableIterator {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var handle : 	Â // +0x10 (0x8)
-	let connection : Connection // +0x18 (0x8)
-	var $__lazy_storage_$_columnCount : Int? // +0x20 (0x9)
-	var $__lazy_storage_$_columnNames : [String]? // +0x30 (0x8)
-	var $__lazy_storage_$_row : Cursor // +0x38 (0x10)
+	var handle : €ú
+	let connection : Connection
+	var $__lazy_storage_$_columnCount : Int?
+	var $__lazy_storage_$_columnNames : [String]?
+	var $__lazy_storage_$_row : Cursor
 
 	// Swift methods
-	0xbe9d0  class func Statement.__allocating_init(_:_:) // init 
+	0x7d370  class func Statement.__allocating_init(_:_:) // init 
  }
 
  struct CoreKnowledge.Cursor {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : ‘ // +0x0
+	let handle : sî // +0x0
 	let columnCount : Int // +0x8
  }
 
  class CoreKnowledge.CKDeviceActivityStore : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let store : CKKnowledgeStore // +0x8 (0x8)
+	let store : CKKnowledgeStore
 
 	// ObjC -> Swift bridged methods
-	0xc1c90  @objc CKDeviceActivityStore.init <stripped>
-	0xc1c20  @objc CKDeviceActivityStore..cxx_destruct <stripped>
+WARNING: couldn't find address 0xdfec0003be78 (0x7ec0003be78) in binary!
+	0xf1dc  @objc CKDeviceActivityStore.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x3a4fff7b0a0  @objc CKDeviceActivityStore.(null) <stripped>
 
 	// Swift methods
-	0xc1a50  class func CKDeviceActivityStore.__allocating_init(store:) // init 
+	0x7fea0  class func CKDeviceActivityStore.__allocating_init(store:) // init 
  }
 
  class CoreKnowledge.CKAbstractWriteBatch : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1481,34 +1131,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backingStore : CKBackingStore
 
 	// ObjC -> Swift bridged methods
-	0xc2d10  @objc CKAbstractWriteBatch.setObject:forKey: <stripped>
+WARNING: couldn't find address 0xdbb60003bec0 (0x3b60003bec0) in binary!
+	0x18000000c  @objc CKAbstractWriteBatch.(null) <stripped>
 
 	// Swift methods
-	0xc2ae0  func CKAbstractWriteBatch.buffer.getter // getter 
-	0xc2b10  func CKAbstractWriteBatch.buffer.setter // setter 
-	0xc2b50  func CKAbstractWriteBatch.buffer.modify // modifyCoroutine 
-	0xc2ba0  class func CKAbstractWriteBatch.__allocating_init(backingStore:) // init 
-	0xc2c60  func CKAbstractWriteBatch.setObject(_:forKey:) // method 
+	0x80db0  func CKAbstractWriteBatch.buffer.getter // getter 
+	0x80de0  func CKAbstractWriteBatch.buffer.setter // setter 
+	0x80e20  func CKAbstractWriteBatch.buffer.modify // modifyCoroutine 
+	0x80e70  class func CKAbstractWriteBatch.__allocating_init(backingStore:) // init 
+	0x80f40  func CKAbstractWriteBatch.setObject(_:forKey:) // method 
  }
 
  class CoreKnowledge.CKInMemoryWriteBatch : CKAbstractWriteBatch {
 	// ObjC -> Swift bridged methods
-	0xc2e80  @objc CKInMemoryWriteBatch.writeWithCompletionHandler: <stripped>
-	0xc3590  @objc CKInMemoryWriteBatch.writeAndReturnError: <stripped>
+WARNING: couldn't find address 0xdbb20003c020 (0x3b20003c020) in binary!
+	0xdbb2  @objc CKInMemoryWriteBatch.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x7fcfff800b0  @objc CKInMemoryWriteBatch.(null) <stripped>
 
 	// Swift methods
-	0xc2e20  func CKInMemoryWriteBatch.write(completionHandler:) // method 
-	0xc2f30  func CKInMemoryWriteBatch.write() // method 
+	0x81120  func CKInMemoryWriteBatch.write(completionHandler:) // method 
+	0x81210  func CKInMemoryWriteBatch.write() // method 
  }
 
  class CoreKnowledge.CKUserDefaultsWriteBatch : CKAbstractWriteBatch {
 	// ObjC -> Swift bridged methods
-	0xc7f60  @objc CKUserDefaultsWriteBatch.writeWithCompletionHandler: <stripped>
-	0xc3bd0  @objc CKUserDefaultsWriteBatch.writeAndReturnError: <stripped>
+WARNING: couldn't find address 0xdb920003c000 (0x3920003c000) in binary!
+	0xdb92  @objc CKUserDefaultsWriteBatch.(null) <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x56c776f6e4b  @objc CKUserDefaultsWriteBatch.(null) <stripped>
 
 	// Swift methods
-	0xc8000  func CKUserDefaultsWriteBatch.write(completionHandler:) // method 
-	0xc36a0  func CKUserDefaultsWriteBatch.write() // method 
+	0x85600  func CKUserDefaultsWriteBatch.write(completionHandler:) // method 
+	0x81870  func CKUserDefaultsWriteBatch.write() // method 
  }
 
  class CoreKnowledge.CKSQLWriteBatch : CKAbstractWriteBatch {
@@ -1517,87 +1172,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var queue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-	0xc4d00  @objc CKSQLWriteBatch.writeWithCompletionHandler: <stripped>
-	0xc5060  @objc CKSQLWriteBatch.writeAndReturnError: <stripped>
+WARNING: couldn't find address 0xdc020003c070 (0x4020003c070) in binary!
+	0xdc02  @objc CKSQLWriteBatch.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff7bad0  @objc CKSQLWriteBatch.(null) <stripped>
 
 	// Swift methods
-	0xc3cf0  func CKSQLWriteBatch.queue.getter // getter 
-	0xc3d20  func CKSQLWriteBatch.queue.setter // setter 
-	0xc3d60  func CKSQLWriteBatch.queue.modify // modifyCoroutine 
-	0xc4590  func CKSQLWriteBatch.write(completionHandler:) // method 
-	0xc4d20  func CKSQLWriteBatch.write() // method 
+	0x81f40  func CKSQLWriteBatch.queue.getter // getter 
+	0x81f70  func CKSQLWriteBatch.queue.setter // setter 
+	0x81fb0  func CKSQLWriteBatch.queue.modify // modifyCoroutine 
+	0x81ff0  func CKSQLWriteBatch.write(completionHandler:) // method 
+	0x82700  func CKSQLWriteBatch.write() // method 
  }
 
  class CoreKnowledge.CKCloudKitWriteBatch : CKSQLWriteBatch {
 	// ObjC -> Swift bridged methods
-	0xc60f0  @objc CKCloudKitWriteBatch.writeWithCompletionHandler: <stripped>
- }
-
- class CoreKnowledge.BackfillInteractions : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handler :  empty-list  // +0x8 (0x10)
-
-	// ObjC -> Swift bridged methods
-	0xc8ad0  @objc BackfillInteractions.main <stripped>
-	0xc8bd0  @objc BackfillInteractions.init <stripped>
-	0xc8c30  @objc BackfillInteractions..cxx_destruct <stripped>
-
-	// Swift methods
-	0xc8090  class func BackfillInteractions.__allocating_init(handler:) // init 
- }
-
- enum CoreKnowledge.Configs { }
-
- enum CoreKnowledge.Key {
-
-	// Properties
-	case fetchedInteractionsAt  
-	case scrubbedDeletedDataAt  
-	case scrubbedOldDataAt  
+WARNING: couldn't find address 0xdbca0003c038 (0x3ca0003c038) in binary!
+	0x28000000c  @objc CKCloudKitWriteBatch.(null) <stripped>
  }
 
  class CoreKnowledge.CKLogger : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let osLog : OS_os_log // +0x10 (0x8)
+	let osLog : OS_os_log
 
 	// Swift methods
-	0xcf3d0  class func CKLogger.__allocating_init(_:) // init 
-	0xcf420  func CKLogger.debug(_:_:) // method 
-	0xcf440  func CKLogger.info(_:_:) // method 
-	0xcf460  func CKLogger.error(_:_:) // method 
-	0xcf480  func CKLogger.fault(_:_:) // method 
-	0xcf4e0  func CKLogger.log(type:_:_:) // method 
+	0x875d0  class func CKLogger.__allocating_init(_:) // init 
+	0x87620  func CKLogger.debug(_:_:) // method 
+	0x87640  func CKLogger.info(_:_:) // method 
+	0x87660  func CKLogger.error(_:_:) // method 
+	0x87680  func CKLogger.fault(_:_:) // method 
+	0x876e0  func CKLogger.log(type:_:_:) // method 
  }
-
- class CoreKnowledge.SRAppMatches : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	let matchType : SRAppMatchesType // +0x8 (0x8)
-	let bundleIDs : [String] // +0x10 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signalsJSON : ÿ // +0x18 (0x10)
-
-	// ObjC -> Swift bridged methods
-	0xcfa60  @objc SRAppMatches.matchType <stripped>
-	0xcfaa0  @objc SRAppMatches.bundleIDs <stripped>
-	0xcfb00  @objc SRAppMatches.signalsJSON <stripped>
-	0xcfc90  @objc SRAppMatches.initWithMatchType:bundleIDs:signalsJSON: <stripped>
-	0xcfd60  @objc SRAppMatches.description <stripped>
-	0xd0080  @objc SRAppMatches.copyWithZone: <stripped>
-	0xd0340  @objc SRAppMatches.encodeWithCoder: <stripped>
-	0xd0780  @objc SRAppMatches.initWithCoder: <stripped>
-	0xd0800  @objc SRAppMatches.init <stripped>
-	0xd0860  @objc SRAppMatches..cxx_destruct <stripped>
-
-	// Swift methods
-	0xcfa10  class func SRAppMatches.__allocating_init(matchType:bundleIDs:signals:) // init 
-	0xcfbc0  class func SRAppMatches.__allocating_init(matchType:bundleIDs:signalsJSON:) // init 
-	0xcffb0  func SRAppMatches.copy(with:) // method 
-	0xd0210  func SRAppMatches.encode(with:) // method 
-	0xd0390  class func SRAppMatches.__allocating_init(coder:) // init 
- }
-
- enum CoreKnowledge.SRAppMatchesType { }

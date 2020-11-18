@@ -22,7 +22,10 @@
 - (void)_setValue:(id)arg1 forPreferenceKey:(id)arg2;
 - (id)_valueForPreferenceKey:(id)arg1;
 - (id)currentLocale;
+- (void)dealloc;
 - (id)init;
+- (id)nanoDomainAccessor;
+- (void)pairedWatchDidChange:(id)arg1;
 - (BOOL)shouldUseiCloud;
 
 @end

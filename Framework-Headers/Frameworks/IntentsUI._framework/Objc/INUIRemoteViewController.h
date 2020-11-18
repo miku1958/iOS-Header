@@ -9,15 +9,17 @@
 #import <IntentsUI/INUIExtensionHostContextDelegate-Protocol.h>
 #import <IntentsUI/_INUIRemoteViewControllerHosting-Protocol.h>
 
-@class INUIExtensionRequestInfo, INUIExtensionViewControllerConfiguration, NSExtension, NSString, _INUIExtensionHostContext;
+@class INUIExtensionRequestInfo, INUIExtensionViewControllerConfiguration, INWidgetDescriptor, NSExtension, NSString, _INUIExtensionHostContext;
 @protocol INUIRemoteViewControllerDelegate, NSCopying;
 
 @interface INUIRemoteViewController : _UIRemoteViewController <_INUIRemoteViewControllerHosting, INUIExtensionHostContextDelegate>
 {
     BOOL _needsStateUpdate;
+    BOOL _widgetHost;
     INUIExtensionRequestInfo *_requestInfo;
     id<INUIRemoteViewControllerDelegate> _delegate;
     INUIExtensionViewControllerConfiguration *_configuration;
+    INWidgetDescriptor *_widgetDescriptor;
     _INUIExtensionHostContext *_extensionHostContext;
     NSExtension *_activeExtension;
     id<NSCopying> _currentRequestIdentifier;
@@ -36,8 +38,12 @@
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property (copy, nonatomic, setter=_setRequestInfo:) INUIExtensionRequestInfo *requestInfo; // @synthesize requestInfo=_requestInfo;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) INWidgetDescriptor *widgetDescriptor; // @synthesize widgetDescriptor=_widgetDescriptor;
+@property (nonatomic, getter=isWidgetHost) BOOL widgetHost; // @synthesize widgetHost=_widgetHost;
 
 + (void)_attemptToConnectToRemoteViewControllerForRemainingExtensions:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
++ (void)_getWidgetHostingRemoteViewControllerWithIntent:(id)arg1 descriptor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)_getWidgetHostingRemoteViewControllerWithIntent:(id)arg1 extensionMatchingError:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)_requestRemoteViewControllerForSnippetExtensionInteraction:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (void)_requestRemoteViewControllerWithRequestInfo:(id)arg1 delegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (void)attemptToConnectToRemoteViewControllerForRemainingExtensions:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;

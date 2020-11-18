@@ -25,12 +25,14 @@ __attribute__((visibility("hidden")))
 
 - (id)datagramChannelWithDestination:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (id)initWithDestination:(id)arg1 token:(unsigned int)arg2 error:(id *)arg3;
 - (id)initWithSocketDescriptor:(int)arg1 token:(unsigned int)arg2 error:(id *)arg3;
 - (void)invalidate;
 - (void)optInStreamIDs:(id)arg1;
 - (void)optOutStreamIDs:(id)arg1;
 - (void)osChannelInfoLog;
+- (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)readyToRead;
 - (void)requestSessionInfoWithOptions:(id)arg1;
 - (void)setChannelPreferences:(id)arg1;
@@ -40,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (int)setupDriverSocket;
 - (id)sharedIDSService;
 - (int)start;
+- (void)startActiveProbingWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
 

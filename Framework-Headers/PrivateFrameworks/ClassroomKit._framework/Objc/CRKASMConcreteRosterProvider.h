@@ -10,12 +10,11 @@
 #import <ClassroomKit/CRKClassKitChangeNotifierDelegate-Protocol.h>
 
 @class CRKASMCertificateIngestor, CRKASMRosterProviderConfiguration, CRKASMRosterUpdater, CRKASMWorldBuildOperation, CRKClassKitChangeNotifier, NSArray, NSString;
-@protocol CRKASMRoster, CRKASMUserDirectory;
+@protocol CRKASMRoster, CRKASMUserFetching;
 
 @interface CRKASMConcreteRosterProvider : NSObject <CRKClassKitChangeNotifierDelegate, CRKASMRosterProviding>
 {
     BOOL _populated;
-    id<CRKASMUserDirectory> _userDirectory;
     CRKASMRosterProviderConfiguration *_configuration;
     id<CRKASMRoster> _roster;
     NSArray *_locations;
@@ -38,7 +37,7 @@
 @property (strong, nonatomic) id<CRKASMRoster> roster; // @synthesize roster=_roster;
 @property (readonly, nonatomic) CRKASMRosterUpdater *rosterUpdater; // @synthesize rosterUpdater=_rosterUpdater;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<CRKASMUserDirectory> userDirectory; // @synthesize userDirectory=_userDirectory;
+@property (readonly, nonatomic) id<CRKASMUserFetching> userFetcher;
 @property (strong, nonatomic) CRKASMWorldBuildOperation *worldBuildOperation; // @synthesize worldBuildOperation=_worldBuildOperation;
 
 + (id)instructorRosterProvider;
@@ -48,12 +47,14 @@
 - (void)dealloc;
 - (BOOL)ingestCertificates:(id)arg1 forTrustedUserIdentifier:(id)arg2 error:(id *)arg3;
 - (id)initWithConfiguration:(id)arg1;
+- (id)instructorDirectoryForLocationIDs:(id)arg1;
 - (void)logDurationOfOperation:(id)arg1;
 - (void)notifierDidObserveClassKitChange:(id)arg1;
 - (void)processFinishedWorldBuild:(id)arg1;
 - (void)refresh;
 - (void)removeCourseWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startNewWorldBuild;
+- (id)studentDirectoryForLocationIDs:(id)arg1;
 - (void)updateCourseWithIdentifier:(id)arg1 properties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateManageableLocations:(id)arg1;
 - (void)updateRoster:(id)arg1;

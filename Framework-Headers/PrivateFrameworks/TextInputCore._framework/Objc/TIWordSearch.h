@@ -70,6 +70,7 @@
 - (void)keyboardActivityDidTransition:(id)arg1;
 - (void)lastAcceptedCandidateCorrected;
 - (unsigned long long)mecabraCreationOptions;
+- (id)mecabraCreationOptionsDictionary;
 - (int)mecabraInputMethodType;
 - (void)performAccept:(void *)arg1 isPartial:(BOOL)arg2;
 - (void)performOperationAsync:(id)arg1;

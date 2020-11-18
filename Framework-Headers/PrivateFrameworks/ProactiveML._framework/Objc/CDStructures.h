@@ -54,8 +54,3 @@ typedef struct {
     float laplaceScaleFactor;
 } CDStruct_cd4a7bf5;
 
-// Ambiguous groups
-typedef struct {
-    unsigned int timestamp:1;
-} CDStruct_b5306035;
-

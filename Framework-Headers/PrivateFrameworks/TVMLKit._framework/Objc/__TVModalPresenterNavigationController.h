@@ -26,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;

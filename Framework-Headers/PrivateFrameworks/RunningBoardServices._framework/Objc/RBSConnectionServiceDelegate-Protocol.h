@@ -11,6 +11,5 @@
 @protocol RBSConnectionServiceDelegate <NSObject>
 - (void)didLoseInheritances:(NSSet *)arg1;
 - (void)didReceiveInheritances:(NSSet *)arg1;
-- (void)willTerminateProcessWithAcknowledgement:(void (^)(void))arg1;
 @end
 

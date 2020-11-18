@@ -6,10 +6,13 @@
 
 #import <NewsArticles/_TtC12NewsArticles29TextSizeControlViewController.h>
 
-@interface _TtC12NewsArticles29TextSizeControlViewController (NewsArticles)
+#import <NewsArticles/UIPopoverPresentationControllerDelegate-Protocol.h>
+
+@interface _TtC12NewsArticles29TextSizeControlViewController (NewsArticles) <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic) struct CGSize preferredContentSize;
 
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

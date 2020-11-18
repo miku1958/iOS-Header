@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)RKRepairStringNeeded:(id)arg1;
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
 + (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
 + (id)getDeviceModel;

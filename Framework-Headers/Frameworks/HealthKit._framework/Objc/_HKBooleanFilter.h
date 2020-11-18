@@ -8,17 +8,24 @@
 
 @interface _HKBooleanFilter : _HKFilter
 {
-    BOOL _boolValue;
+    BOOL _value;
 }
 
-@property (readonly, nonatomic) BOOL boolValue; // @synthesize boolValue=_boolValue;
+@property (readonly, nonatomic) BOOL value; // @synthesize value=_value;
 
-+ (id)filterWithBoolValue:(BOOL)arg1;
++ (id)falseFilter;
 + (BOOL)supportsSecureCoding;
++ (id)trueFilter;
+- (long long)acceptsActivitySummary:(id)arg1;
 - (BOOL)acceptsDataObject:(id)arg1;
+- (long long)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithValue:(BOOL)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -26,7 +26,6 @@
 @property (readonly) CDStruct_14f26992 screenSize;
 @property (readonly) Class superclass;
 
-- (void)acceptVisitor:(id)arg1;
 - (void)copyParameterDataToBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (CDStruct_b2fbf00d)mapPhysicalToScreenCoordinates:(CDStruct_b2fbf00d)arg1 forLayer:(unsigned long long)arg2;

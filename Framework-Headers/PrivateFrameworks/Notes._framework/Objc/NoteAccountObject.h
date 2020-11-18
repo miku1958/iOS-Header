@@ -15,7 +15,7 @@
 }
 
 @property (strong, nonatomic) NSString *accountIdentifier; // @dynamic accountIdentifier;
-@property (nonatomic) int accountType;
+@property (nonatomic) long long accountType;
 @property (strong, nonatomic) NSDictionary *constraints; // @synthesize constraints=_constraints;
 @property (strong, nonatomic) NSString *constraintsPath; // @dynamic constraintsPath;
 @property (strong, nonatomic) NoteStoreObject *defaultStore; // @dynamic defaultStore;
@@ -35,6 +35,7 @@
 - (BOOL)isAllNotesContainer;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)predicateForNotes;
+- (id)searchDomainIdentifier;
 - (BOOL)shouldMarkNotesAsDeleted;
 - (id)storeForExternalId:(id)arg1;
 - (BOOL)validateDefaultStore:(id *)arg1 error:(id *)arg2;

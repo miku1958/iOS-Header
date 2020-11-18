@@ -20,9 +20,10 @@
 - (void).cxx_destruct;
 - (id)_allAvailableDefinitionDictionaries;
 - (id)_availableDictionaryAssets;
+- (long long)_compareOrderOfDictionary:(id)arg1 withDictionary:(id)arg2;
 - (id)_definitionValuesForTerm:(id)arg1;
 - (id)_dictionaryAssetType;
-- (void)_downloadDictionaryAssetCatalog:(CDUnknownBlockType)arg1;
+- (void)_downloadDictionaryAssetCatalogWithTimeout:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
 - (void)_migrateInstalledStateForNewDictionaries:(id)arg1;
 - (id)init;

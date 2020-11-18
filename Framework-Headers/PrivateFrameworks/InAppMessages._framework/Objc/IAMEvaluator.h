@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICInAppMessageMetadataEntry, NSArray, NSDate, NSDictionary;
+@class ICInAppMessageMetadataEntry, NSArray, NSDate, NSDictionary, NSString;
 @protocol IAMApplicationContextProvider;
 
 @interface IAMEvaluator : NSObject
@@ -18,6 +18,8 @@
     NSDate *_lastDisplayTimeForRestrictedPresentationPolicyGroup;
     NSDate *_lastDisplayTimeForNormalPresentationPolicyGroup;
     id<IAMApplicationContextProvider> _applicationContext;
+    NSString *_hostBundleIdentifier;
+    NSDictionary *_messageGroupsByGroupIdentifier;
     NSArray *_passingMessageEntries;
     NSArray *_messagesCloseToPassing;
 }
@@ -29,18 +31,21 @@
 + (BOOL)_isMessageWithinDateRange:(id)arg1;
 + (BOOL)applicationContext:(id)arg1 allowsPresentationForPolicyGroup:(long long)arg2 withLastDisplayTime:(id)arg3;
 - (void).cxx_destruct;
-- (unsigned long long)_calculateCompoundRuleProximity:(id)arg1;
-- (unsigned long long)_calculateConditionProximity:(id)arg1;
-- (unsigned long long)_calculateRuleProximity:(id)arg1;
+- (unsigned long long)_calculateCompoundRuleProximity:(id)arg1 forMessageEntry:(id)arg2;
+- (unsigned long long)_calculateConditionProximity:(id)arg1 forMessageEntry:(id)arg2;
+- (unsigned long long)_calculateRuleProximity:(id)arg1 forMessageEntry:(id)arg2;
+- (id)_contextPropertyWithName:(id)arg1 forMessageGroupIdentifier:(id)arg2;
+- (id)_contextPropertyWithName:(id)arg1 messageBundleIdentifier:(id)arg2 conditionBundleIdentifier:(id)arg3;
 - (BOOL)_didCacheResourcesForMessageIfRequired:(id)arg1;
 - (BOOL)_doesPresentationPolicyAllowPresentationOfMessage:(id)arg1;
-- (BOOL)_evaluateCompoundRule:(id)arg1;
-- (BOOL)_evaluateCondition:(id)arg1;
-- (BOOL)_evaluateRule:(id)arg1;
+- (BOOL)_evaluateCompoundRule:(id)arg1 forMessageEntry:(id)arg2;
+- (BOOL)_evaluateCondition:(id)arg1 forMessageEntry:(id)arg2;
+- (BOOL)_evaluateRule:(id)arg1 forMessageEntry:(id)arg2;
 - (unsigned long long)_messageEntryProximity:(id)arg1;
+- (id)_valueForCondition:(id)arg1 messageBundleIdentifier:(id)arg2 messageMetadata:(id)arg3;
 - (id)computeMessagesCloseToPassingWithProximityThreshold:(unsigned long long)arg1;
 - (id)computePassingMessageEntries;
-- (id)initWithMessageEntries:(id)arg1 metadataEntries:(id)arg2 applicationContext:(id)arg3 lastDisplayTimeForRestrictedPresentationPolicyGroup:(id)arg4 lastDisplayTimeForNormalPresentationPolicyGroup:(id)arg5;
+- (id)initWithMessageEntries:(id)arg1 metadataEntries:(id)arg2 applicationContext:(id)arg3 hostBundleIdentifier:(id)arg4 messageGroups:(id)arg5 lastDisplayTimeForRestrictedPresentationPolicyGroup:(id)arg6 lastDisplayTimeForNormalPresentationPolicyGroup:(id)arg7;
 
 @end
 

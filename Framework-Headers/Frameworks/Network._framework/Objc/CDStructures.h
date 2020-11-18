@@ -121,6 +121,8 @@ struct nw_activity_epilogue_report_s {
     unsigned long long duration_msecs;
     struct nw_activity_report_s activity;
     unsigned int fragments_quenched;
+    int underlying_error_domain;
+    int underlying_error_code;
     int completion_reason;
     unsigned char __pad[0];
 };
@@ -131,6 +133,7 @@ struct nw_activity_report_s {
     unsigned int label;
     unsigned char activity_uuid[16];
     unsigned char parent_activity_uuid[16];
+    char bundle_id[256];
     unsigned int retry:1;
     unsigned int __pad_bits:7;
     unsigned char __pad[7];
@@ -171,18 +174,24 @@ struct nw_connection_report_s {
     unsigned int ipv4_dns_server_count;
     unsigned int ipv6_dns_server_count;
     unsigned int seconds_since_interface_change;
+    unsigned int transport_protocol;
+    unsigned int dns_protocol;
+    unsigned int connection_report_reason;
     int failure_reason;
     int connected_interface_type;
     int multipath_service_type;
     int connection_mode;
     int apple_host;
     int apple_app;
+    int dns_provider;
     int tls_version;
     int stack_level;
     unsigned char first_address_family;
     unsigned char connected_address_family;
     unsigned char connection_uuid[16];
     unsigned char activities[50][16];
+    char bundle_id[256];
+    char effective_bundle_id[256];
     unsigned int triggered_path:1;
     unsigned int system_proxy_configured:1;
     unsigned int custom_proxy_configured:1;
@@ -209,7 +218,10 @@ struct nw_connection_report_s {
     unsigned int is_path_constrained:1;
     unsigned int prohibits_expensive:1;
     unsigned int prohibits_constrained:1;
-    unsigned int __pad_bits:6;
+    unsigned int svcb_requested:1;
+    unsigned int svcb_received:1;
+    unsigned int svcb_dohuri:1;
+    unsigned int __pad_bits:3;
     unsigned char __pad[6];
 };
 
@@ -229,6 +241,10 @@ struct nw_protocol_identifier {
     char _field1[32];
     int _field2;
     int _field3;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct sockaddr {

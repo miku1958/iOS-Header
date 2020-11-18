@@ -25,12 +25,16 @@
 - (Matrix_273a43f8)bitmapRepresentationForSize:(struct CGSize)arg1;
 - (struct CGRect)boundingBoxForDrawingSegmentFromCutPoint:(id)arg1 toCutPoint:(id)arg2;
 - (struct CGRect)bounds;
+- (struct CGPoint)centroidForStrokeIndexes:(id)arg1;
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (float)cumulativePointToPointDistance;
 - (id)debugQuickLookObject;
 - (id)description;
+- (float)distanceBetweenFirstAndLastPoint;
 - (id)drawingScaledByFactor:(double)arg1;
 - (id)drawingSpatiallyResampled:(double)arg1 outputPointMap:(vector_1dba4e4e *)arg2;
+- (id)drawingTransformedWithTranslation:(struct CGVector)arg1 scaleFactor:(double)arg2;
 - (id)drawingWithStrokesFromIndexSet:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endStroke;

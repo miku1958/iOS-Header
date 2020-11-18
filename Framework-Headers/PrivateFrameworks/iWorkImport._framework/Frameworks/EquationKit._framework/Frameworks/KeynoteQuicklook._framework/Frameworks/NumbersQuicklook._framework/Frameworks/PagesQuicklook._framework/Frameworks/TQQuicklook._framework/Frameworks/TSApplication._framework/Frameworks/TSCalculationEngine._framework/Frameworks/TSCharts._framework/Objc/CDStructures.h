@@ -1873,7 +1873,7 @@ typedef struct {
 } CDStruct_e0d92598;
 
 typedef struct {
-    int mFormatType;
+    unsigned int mFormatType;
     union {
         struct {
             unsigned int mCurrencyCodeIndex:16;
@@ -1908,7 +1908,7 @@ typedef struct {
             unsigned char mAppliedConditionKey;
         } mCustomFormatStruct;
     } ;
-} CDStruct_b1066b25;
+} CDStruct_4f52a90b;
 
 // Template types
 typedef struct IteratorRange<const char *> {

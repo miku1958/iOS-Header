@@ -11,9 +11,12 @@
 + (id)mtLatest:(id)arg1;
 + (id)mtNow;
 - (id)mtDateNearestMatchingComponents:(id)arg1;
+- (id)mtDescription;
+- (id)mtGreetingString:(BOOL)arg1;
 - (BOOL)mtIsAfterDate:(id)arg1;
 - (BOOL)mtIsAfterOrSameAsDate:(id)arg1;
 - (BOOL)mtIsBeforeDate:(id)arg1;
 - (BOOL)mtIsBeforeOrSameAsDate:(id)arg1;
+- (id)mtMidnightForDate;
 @end
 

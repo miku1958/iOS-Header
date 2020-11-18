@@ -13,11 +13,11 @@
 - (NSArray *)additionalURLQueryItems;
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
 - (NSString *)debugRequestName;
-- (unsigned char)requestCounterInfoTypeForRequest:(PBRequest *)arg1;
 - (NSNumber *)serviceTypeNumber;
 - (unsigned long long)urlType;
 
 @optional
+- (NSArray *)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (double)timeout;
 @end

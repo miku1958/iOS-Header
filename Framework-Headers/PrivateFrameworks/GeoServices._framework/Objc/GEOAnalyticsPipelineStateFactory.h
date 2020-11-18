@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
 - (id)applicationIdentifier;
 - (id)carPlay;
 - (id)carPlayLimited;
+- (id)curatedCollection;
 - (void)dealloc;
 - (id)deviceConnection;
 - (id)deviceConnectionLimited;
 - (void)deviceCountryChanged:(id)arg1;
 - (id)deviceIdentifier;
+- (id)deviceIdentifierNoHardware;
 - (id)deviceIndentifierInternal;
 - (id)deviceLocale;
 - (id)deviceLocaleLimited;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)experimentsIncludingABAssignInfo:(BOOL)arg1 includingClientConfig:(BOOL)arg2;
 - (id)extension;
 - (id)init;
+- (int)logMsgStateTypeForType:(long long)arg1;
 - (id)lookAroundSummary;
 - (id)lookAroundView;
 - (id)mapLaunch;
@@ -48,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)mapView;
 - (id)mapViewLocation;
 - (id)mapsServer;
+- (id)mapsUser;
+- (id)market;
 - (id)muninResourceLog;
 - (id)pairedDevice;
 - (id)placeCard;
@@ -57,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)stateForType:(long long)arg1;
 - (id)suggestions;
 - (id)tileSet;
+- (id)ugc;
 
 @end
 

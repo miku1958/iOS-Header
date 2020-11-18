@@ -12,11 +12,17 @@
 @protocol FCCoreConfiguration <NSObject, NFCopying>
 
 @property (readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
+@property (readonly, nonatomic) long long alternateUniversalLinksBannerPresentationCount;
+@property (readonly, nonatomic) BOOL alternateUniversalLinksEnabledDefaultForFamilyMember;
+@property (readonly, nonatomic) BOOL alternateUniversalLinksEnabledDefaultForPurchaser;
+@property (readonly, nonatomic) NSString *alternateUniversalLinksResourceID;
+@property (readonly, nonatomic) long long alternateUniversalLinksResourceRefreshRate;
 @property (readonly, nonatomic) long long appConfigRefreshRate;
 @property (readonly, nonatomic) long long articleRapidUpdatesTimeout;
 @property (readonly, nonatomic) NSString *audioConfigRecordID;
 @property (readonly, nonatomic) NSString *breakingNewsChannelID;
 @property (readonly, nonatomic) NSString *briefingsTagID;
+@property (readonly, nonatomic) NSString *conversionCohortsExpField;
 @property (readonly, nonatomic) NSNumber *currentTreatment;
 @property (readonly, nonatomic) double delayBeforeRetryingDroppedFeeds;
 @property (readonly, nonatomic) BOOL diversifyOptionalTopStories;
@@ -26,6 +32,7 @@
 @property (readonly, nonatomic) long long endOfArticleMaxInaccessiblePaidArticleCount;
 @property (readonly, nonatomic) double endOfArticleMinPaidHeadlineRatio;
 @property (readonly, nonatomic) NSDictionary *endpointConfigsByEnvironment;
+@property (readonly, nonatomic) NSString *engagementCohortsExpField;
 @property (readonly, nonatomic) long long entitlementsCacheRecoveryAttemptDurationInSeconds;
 @property (readonly, nonatomic) NSString *experimentalizableFieldPostfix;
 @property (readonly, nonatomic) long long expirePinnedArticlesAfter;
@@ -41,6 +48,7 @@
 @property (readonly, nonatomic) long long maximumNumberOfExpiredPaidSubscriptionGroups;
 @property (readonly, nonatomic) long long maximumPaidSubscriptionGroupSizeiPad;
 @property (readonly, nonatomic) long long maximumPaidSubscriptionGroupSizeiPhone;
+@property (readonly, nonatomic) long long maximumRetryAfterForCK;
 @property (readonly, nonatomic) long long maximumTimesHeadlineInPaidSubscriptionGroup;
 @property (readonly, nonatomic) long long minimumDistanceBetweenImageOnTopTiles;
 @property (readonly, nonatomic) long long minimumDurationBetweenForYouGroupsWeekday;
@@ -48,6 +56,9 @@
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekday;
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekend;
 @property (readonly, nonatomic) double minimumTrendingUnseenRatio;
+@property (readonly, nonatomic) BOOL newAdsEnabled;
+@property (readonly, nonatomic) BOOL newNotificationHandlingEnabled;
+@property (readonly, nonatomic) BOOL newPersonalizationEnabled;
 @property (readonly, nonatomic) long long notificationEnabledChannelsRefreshFrequency;
 @property (readonly, nonatomic) FCNotificationsConfiguration *notificationsConfig;
 @property (readonly, nonatomic) long long optionalTopStoriesRefreshRate;
@@ -57,31 +68,42 @@
 @property (readonly, nonatomic, getter=isPrivateDataEncryptionAllowed) BOOL privateDataEncryptionAllowed;
 @property (readonly, nonatomic, getter=isPrivateDataEncryptionMigrationDesired) BOOL privateDataEncryptionMigrationDesired;
 @property (readonly, nonatomic) BOOL privateDataEncryptionMigrationRequiresAllDevicesRunningTigris;
+@property (readonly, nonatomic, getter=isPrivateDataEncryptionRequired) BOOL privateDataEncryptionRequired;
 @property (readonly, nonatomic, getter=isPrivateDataMigrationCleanupEnabled) BOOL privateDataMigrationCleanupEnabled;
+@property (readonly, nonatomic) BOOL privateDataShouldSecureSubscriptions;
 @property (readonly, nonatomic) BOOL recordBothPersonalizationVectors;
 @property (readonly, nonatomic) long long savedArticlesCutoffTime;
 @property (readonly, nonatomic) long long savedArticlesMaximumCountCellular;
 @property (readonly, nonatomic) long long savedArticlesMaximumCountWiFi;
 @property (readonly, nonatomic) long long savedArticlesOpenedCutoffTime;
 @property (readonly, nonatomic) NSString *savedStoriesTagID;
+@property (readonly, nonatomic) BOOL searchFeedEnabled;
 @property (readonly, nonatomic) BOOL shouldShowAlternateHeadlines;
 @property (readonly, nonatomic) long long singleChannelFeedMinFeedItemsPerRequest;
 @property (readonly, nonatomic) long long singleTopicFeedMinFeedItemsPerRequest;
 @property (readonly, nonatomic) NSString *spotlightChannelID;
 @property (readonly, nonatomic) long long subscriptionsGlobalMeteredCount;
+@property (readonly, nonatomic) BOOL tagFeedEnabled;
+@property (readonly, nonatomic) BOOL todayFeedEnabled;
 @property (readonly, nonatomic) NSString *todayFeedKnobs;
 @property (readonly, nonatomic) FCTopStoriesConfiguration *topStoriesConfig;
 @property (readonly, nonatomic) NSString *trendingTagID;
 @property (readonly, nonatomic) long long trendingTopicsRefreshRate;
 @property (readonly, nonatomic) BOOL usePersonalizationVectorAlt;
 @property (readonly, nonatomic) BOOL useSecureConnectionForAssets;
+@property (readonly, nonatomic) long long widgetForYouBackgroundMinimumUpdateInterval;
+@property (readonly, nonatomic) long long widgetSystemHoneymoonDuration;
+@property (readonly, nonatomic) long long widgetSystemReloadInterval;
+@property (readonly, nonatomic) long long widgetSystemReloadIntervalHoneymoon;
+@property (readonly, nonatomic) long long widgetSystemReloadJitterMax;
+@property (readonly, nonatomic) long long widgetSystemReloadJitterMaxHoneymoon;
+@property (readonly, nonatomic) BOOL xavierEnabled;
 
 - (NSDictionary *)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
-- (FCPersonalizationTreatment *)personalizationTreatmentForFeldsparID:(NSString *)arg1;
-- (NTPBTodayConfig *)todayConfigWithQueueConfigs:(NSArray *)arg1 maxSlotCount:(unsigned long long)arg2;
+- (FCPersonalizationTreatment *)personalizationTreatment;
 
 @optional
 - (NSURL *)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
-- (FCPersonalizationTreatment *)personalizationTreatment;
+- (NTPBTodayConfig *)todayConfigWithIdentifier:(NSString *)arg1 queueConfigs:(NSArray *)arg2 backgroundColorLight:(NSString *)arg3 backgroundColorDark:(NSString *)arg4 audioIndicatorColor:(NSString *)arg5;
 @end
 

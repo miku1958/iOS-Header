@@ -25,11 +25,14 @@
     struct cf_ptr<__CFDictionary *> _image_cache;
     struct cf_ptr<__CFDictionary *> _font_cache;
     BOOL _aborted;
+    BOOL _linear_colors;
+    int _colorMode;
     struct CGSize _size;
     CDStruct_0b1c536a _backgroundColor;
 }
 
 @property (readonly, nonatomic) CDStruct_0b1c536a backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) int colorMode; // @synthesize colorMode=_colorMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) RBDisplayList *displayList;
@@ -41,7 +44,7 @@
 + (id)parserWithDelegate:(id)arg1 contentsOfURL:(id)arg2 options:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)abortParsing;
+- (void)abortParsing:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 contentsOfURL:(id)arg2 options:(id)arg3;
 - (BOOL)parse;

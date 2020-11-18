@@ -11,6 +11,7 @@
 }
 
 + (void)requestReview;
++ (void)requestReviewInScene:(id)arg1;
 
 @end
 

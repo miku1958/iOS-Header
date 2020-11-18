@@ -6,11 +6,11 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class UILabel, UIVisualEffectView;
+@class UILabel, UIView, UIVisualEffectView;
 
 @interface RTTUIAbbreviationCell : UICollectionViewCell
 {
-    UIVisualEffectView *_abbreviationContainer;
+    UIView *_abbreviationContainer;
     UIVisualEffectView *_hintContainer;
     UILabel *_abbreviation;
     UILabel *_hint;

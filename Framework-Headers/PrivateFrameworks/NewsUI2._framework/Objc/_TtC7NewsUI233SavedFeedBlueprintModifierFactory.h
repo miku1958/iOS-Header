@@ -10,11 +10,8 @@
 
 @interface _TtC7NewsUI233SavedFeedBlueprintModifierFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *headlineModelFactory;
-    MISSING_TYPE *feedContext;
-    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *feedContextFactory;
 }
 
 @end

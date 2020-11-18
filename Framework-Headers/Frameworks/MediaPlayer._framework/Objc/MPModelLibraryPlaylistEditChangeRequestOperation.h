@@ -8,6 +8,7 @@
 
 @class MPModelLibraryPlaylistEditChangeRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryPlaylistEditChangeRequestOperation : MPAsyncOperation
 {
     MPModelLibraryPlaylistEditChangeRequest *_request;

@@ -21,6 +21,7 @@
     NSMutableArray *_queuedApplicationsThrottledForRelaunch;
     NSTimer *_queuedApplicationsThrottledForRelaunchTimer;
     BOOL _autoLaunchSynchronously;
+    BOOL _invalidated;
 }
 
 @property (nonatomic, getter=_autoLaunchSynchronously, setter=_setAutoLaunchSynchronously:) BOOL autoLaunchSynchronously; // @synthesize autoLaunchSynchronously=_autoLaunchSynchronously;
@@ -52,6 +53,7 @@
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)invalidate;
 - (void)keybagDidUnlockForTheFirstTime:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

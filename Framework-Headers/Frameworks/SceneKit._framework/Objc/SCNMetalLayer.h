@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, NSString, SCNDisplayLink, SCNJitterer, SCNNode, SCNRenderer, SCNScene, SCNTechnique, SKScene;
+@class AVAudioEngine, AVAudioEnvironmentNode, MTLRenderPassDescriptor, NSString, SCNDisplayLink, SCNJitterer, SCNNode, SCNRenderer, SCNScene, SCNTechnique, SKScene;
 @protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, SCNSceneRendererDelegate;
 
 @interface SCNMetalLayer : CAMetalLayer <SCNSceneRenderer, SCNTechniqueSupport>
@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) id<MTLCommandQueue> commandQueue;
 @property (readonly, nonatomic) void *context;
 @property (readonly, nonatomic) id<MTLRenderCommandEncoder> currentRenderCommandEncoder;
+@property (readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property (readonly, nonatomic) struct CGRect currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
@@ -78,7 +79,6 @@
 - (BOOL)canDrawConcurrently;
 - (void)commonInit;
 - (id)contentLayer;
-- (id)currentRenderPassDescriptor;
 - (double)currentTime;
 - (void)dealloc;
 - (void)display;

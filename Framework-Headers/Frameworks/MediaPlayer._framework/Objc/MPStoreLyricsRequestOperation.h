@@ -8,6 +8,7 @@
 
 @class MPStoreLyricsRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLyricsRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

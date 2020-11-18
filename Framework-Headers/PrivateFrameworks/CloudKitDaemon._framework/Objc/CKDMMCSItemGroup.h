@@ -9,7 +9,6 @@
 @class CKAssetDownloadPreauthorization, NSArray, NSData, NSError, NSMutableArray, NSString, NSURL;
 @protocol MMCSOperationMetric;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemGroup : NSObject
 {
     NSMutableArray *_items;

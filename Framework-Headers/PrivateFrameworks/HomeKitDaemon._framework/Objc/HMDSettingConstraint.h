@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDSettingConstraintProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDSettingBaseProtocol-Protocol.h>
 
 @class NSData, NSNumber, NSString, NSUUID;
 
-@interface HMDSettingConstraint : NSObject <HMDSettingConstraintProtocol>
+@interface HMDSettingConstraint : NSObject <HMDSettingBaseProtocol>
 {
     NSUUID *_identifier;
     NSUUID *_parentIdentifier;
@@ -23,10 +23,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly) NSString *name;
+@property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSString *name;
 @property (readonly) NSNumber *numberValue; // @synthesize numberValue=_numberValue;
-@property (readonly) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
+@property (readonly, copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSNumber *type; // @synthesize type=_type;
 @property (readonly, copy) id value;

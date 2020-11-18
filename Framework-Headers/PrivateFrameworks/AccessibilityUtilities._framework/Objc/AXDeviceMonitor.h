@@ -15,6 +15,7 @@
     struct __IOHIDManager *_hidManager;
     unsigned long long _state;
     NSMutableSet *_devices;
+    struct os_unfair_lock_s _devicesLock;
     id<AXDeviceMonitorDelegate> _delegate;
 }
 

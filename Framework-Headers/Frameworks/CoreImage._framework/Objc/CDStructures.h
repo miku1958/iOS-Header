@@ -95,7 +95,8 @@ struct CIRenderDestinationInternal {
     int _field10;
     BOOL _field11;
     BOOL _field12;
-    id _field13;
+    BOOL _field13;
+    id _field14;
 };
 
 struct Context {
@@ -104,32 +105,33 @@ struct Context {
     struct CGColorSpace *_field3;
     struct CGColorSpace *_field4;
     int _field5;
-    BOOL _field6;
+    float _field6;
     BOOL _field7;
     BOOL _field8;
     BOOL _field9;
     BOOL _field10;
-    struct CGContext *_field11;
-    float _field12;
-    BOOL _field13;
-    struct CGRect _field14;
-    struct CGAffineTransform _field15;
-    unsigned int _field16;
-    unsigned long long _field17;
+    BOOL _field11;
+    struct CGContext *_field12;
+    float _field13;
+    BOOL _field14;
+    struct CGRect _field15;
+    struct CGAffineTransform _field16;
+    unsigned int _field17;
     unsigned long long _field18;
-    int _field19;
-    char _field20[64];
-    BOOL _field21;
-    struct ObjectCache<CI::MainProgram, false> *_field22;
-    struct ObjectCache<CI::Node, false> *_field23;
+    unsigned long long _field19;
+    int _field20;
+    char _field21[64];
+    BOOL _field22;
+    struct ObjectCache<CI::MainProgram, false> *_field23;
     struct ObjectCache<CI::Node, false> *_field24;
-    double _field25;
+    struct ObjectCache<CI::Node, false> *_field25;
     double _field26;
-    struct RenderTask *_field27;
-    int _field28;
+    double _field27;
+    struct RenderTask *_field28;
     int _field29;
-    struct Context *_field30;
-    unsigned long long _field31;
+    int _field30;
+    struct Context *_field31;
+    unsigned long long _field32;
 };
 
 struct FastRegistration_Signatures {
@@ -172,6 +174,7 @@ struct Image {
     void *_field6;
     unsigned int _field7;
     unsigned int _field8;
+    unsigned long long _field9;
 };
 
 struct Kernel {
@@ -231,21 +234,26 @@ struct RenderTask {
     struct atomic<unsigned int> _field2;
     char *_field3;
     char *_field4;
-    int _field5;
-    char _field6[64];
-    unsigned long long _field7;
-    struct Node *_field8;
-    struct CGRect _field9;
-    int _field10;
+    char *_field5;
+    int _field6;
+    BOOL _field7;
+    unsigned long long _field8;
+    int _field9;
+    char _field10[64];
     unsigned long long _field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> _field14;
-    double _field15;
-    unsigned long long _field16;
-    unsigned long long _field17;
-    unsigned long long _field18;
-    unsigned long long _field19;
+    struct Node *_field12;
+    struct CGRect _field13;
+    int _field14;
+    unsigned long long _field15;
+    struct __CFString *_field16;
+    struct __CFString *_field17;
+    struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> _field18;
+    double _field19;
+    double _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
+    unsigned long long _field24;
 };
 
 struct SerialIntArray;
@@ -274,8 +282,12 @@ struct Solution {
 
 struct Texture {
     union {
-        CDStruct_c0454aff _field1;
-        void *_field2;
+        unsigned long long _field1;
+        struct {
+            unsigned int _field1;
+            unsigned int _field2;
+        } _field2;
+        void *_field3;
     } _field1;
 };
 
@@ -440,18 +452,6 @@ struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    BOOL debug;
-    char base[256];
-    char face[4];
-    char eye[2];
-    char title[4];
-    char passSpec[12];
-    char line1[256];
-    char line2[256];
-    char line3[256];
-} CDStruct_1c6f3adb;
-
-typedef struct {
     BOOL _field1;
     float _field2;
     float _field3;
@@ -459,16 +459,6 @@ typedef struct {
     float _field5;
     float _field6[3];
 } CDStruct_31328b19;
-
-typedef struct {
-    BOOL _field1;
-    int _field2;
-    double _field3;
-    int _field4;
-    int _field5;
-    double _field6;
-    int _field7;
-} CDStruct_0b15f989;
 
 typedef struct {
     BOOL _field1;
@@ -487,11 +477,6 @@ typedef struct {
     int _field14;
     int _field15;
 } CDStruct_935079c3;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-} CDStruct_c0454aff;
 
 typedef struct {
     unsigned long long width;
@@ -523,16 +508,27 @@ typedef struct {
 } CDStruct_c3faddef;
 
 typedef struct {
-    char *_field1;
-    int _field2;
-    int _field3;
-    int _field4;
-} CDStruct_94ca5ecd;
+    void *_field1;
+    void *_field2;
+    unsigned long long _field3[4];
+    unsigned long long _field4[4];
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned long long _field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
+    unsigned long long _field13;
+    unsigned long long _field14;
+    int _field15;
+} CDStruct_cf098810;
 
 typedef struct {
-    void *_field1;
-    CDUnknownFunctionPointerType _field2;
-} CDStruct_e5fcc3f9;
+    void *plan;
+    int network_index;
+} CDStruct_2bc666a5;
 
 typedef struct {
     double focalLength;
@@ -553,6 +549,14 @@ typedef struct {
     double variance;
     int nNonZero;
 } CDStruct_fc6961d5;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    BOOL _field5;
+} CDStruct_18e74ac9;
 
 typedef struct {
     float skinval;
@@ -577,20 +581,6 @@ typedef struct {
 } CDStruct_12b04d25;
 
 typedef struct {
-    float _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    int _field9;
-    int _field10;
-    int _field11;
-} CDStruct_7a0e83b0;
-
-typedef struct {
     int _field1;
     float _field2;
     float _field3;
@@ -612,11 +602,6 @@ typedef struct {
     int _field9;
 } CDStruct_3edab2bb;
 
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
-
 typedef struct CDStruct_183601bc;
 
 typedef struct {
@@ -625,12 +610,6 @@ typedef struct {
     int _field3;
     struct CGPoint *_field4;
 } CDStruct_d01ad076;
-
-typedef struct {
-    BOOL _field1;
-    struct CGPoint _field2;
-    CDStruct_12b04d25 _field3;
-} CDStruct_7a4a8b82;
 
 typedef struct {
     char _field1[256];
@@ -685,41 +664,12 @@ typedef struct {
 
 typedef struct {
     int _field1;
-    CDStruct_7a0e83b0 _field2[4];
-} CDStruct_e6988dbd;
-
-typedef struct {
-    int _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    BOOL _field6;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-        int _field4;
-    } _field7;
-    struct CGPoint _field8;
-    float _field9;
-    float _field10;
-} CDStruct_32eeb3fa;
-
-typedef struct {
-    int _field1;
     int _field2;
     CDStruct_183601bc *_field3;
     int _field4;
     int _field5;
     int _field6;
 } CDStruct_892ad059;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    CDStruct_183601bc *_field3;
-} CDStruct_f7cf7ab1;
 
 typedef struct {
     int width;
@@ -762,17 +712,6 @@ typedef struct {
 } CDStruct_ed92ceb9;
 
 typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    CDStruct_12b04d25 _field5[100];
-    CDStruct_12b04d25 _field6[100];
-    CDStruct_12b04d25 _field7[100];
-    CDStruct_12b04d25 _field8[100];
-} CDStruct_5ff5faa0;
-
-typedef struct {
     int origHitX;
     int origHitY;
     int snapHitX;
@@ -805,86 +744,6 @@ typedef struct {
 } CDStruct_1c31e7e7;
 
 typedef struct {
-    int _field1;
-    struct CGPoint _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    int _field9;
-    float _field10;
-    CDStruct_818bb265 _field11[32];
-    float _field12;
-    int _field13;
-    BOOL _field14;
-    struct CGPoint _field15;
-    float _field16;
-    float _field17;
-    float _field18;
-    float _field19;
-    float _field20;
-    int _field21;
-    float _field22;
-    BOOL _field23;
-    BOOL _field24;
-    BOOL _field25;
-    BOOL _field26;
-    struct CGPoint _field27;
-    struct CGPoint _field28;
-    struct CGPoint _field29;
-    struct CGPoint _field30;
-    struct CGPoint _field31;
-    struct CGPoint _field32;
-    float _field33;
-    int _field34;
-    int _field35;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-        int _field4;
-    } _field36;
-    int _field37;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-        int _field4;
-    } _field38;
-    int _field39;
-    int _field40;
-    int _field41;
-    int _field42;
-    int _field43;
-    float _field44;
-    float _field45;
-    int _field46;
-    BOOL _field47;
-    float _field48;
-    float _field49;
-    float _field50;
-    float _field51;
-    float _field52;
-    float _field53;
-    int _field54;
-    int _field55;
-    int _field56;
-    int _field57;
-    float _field58;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-        int _field4;
-    } _field59;
-    float _field60;
-    CDStruct_183601bc *_field61;
-    float _field62;
-} CDStruct_9d808415;
-
-typedef struct {
     CDStruct_818bb265 _field1;
     float _field2;
     float _field3;
@@ -896,21 +755,6 @@ typedef struct {
     float _field9;
     float _field10;
 } CDStruct_73443751;
-
-typedef struct {
-    CDStruct_5973fb4f FR;
-    struct CGPoint leftEye;
-    struct CGPoint rightEye;
-    float leftDistMatrix[4];
-    float rightDistMatrix[4];
-    CDStruct_5973fb4f LR;
-    CDStruct_5973fb4f RR;
-    float IOD;
-    float IODp;
-    float IOAngle;
-    CDStruct_c3faddef channels[7];
-    CDStruct_c3faddef M;
-} CDStruct_99f3e179;
 
 typedef struct {
     CDStruct_5973fb4f FR;
@@ -960,74 +804,6 @@ typedef struct {
     struct CGAffineTransform transform;
     int height;
 } CDStruct_242bf05f;
-
-typedef struct {
-    int _field1;
-    BOOL _field2;
-    CDStruct_183601bc *_field3;
-    CDStruct_183601bc *_field4;
-    int _field5;
-    CDStruct_7a4a8b82 _field6;
-    CDStruct_0b15f989 _field7;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-        int _field4;
-    } _field8;
-    float _field9;
-    float _field10;
-    float _field11;
-    int _field12;
-    float _field13;
-    CDStruct_818bb265 _field14;
-    CDStruct_818bb265 _field15;
-    int _field16;
-    int _field17;
-    int _field18;
-    int _field19;
-    float _field20;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-        int _field4;
-    } _field21;
-    CDStruct_3882bc9d _field22;
-    BOOL _field23;
-    BOOL _field24;
-    CDStruct_183601bc *_field25;
-    CDStruct_183601bc *_field26;
-    CDStruct_183601bc *_field27;
-    BOOL _field28;
-    CDStruct_183601bc *_field29;
-    CDStruct_183601bc *_field30;
-    CDStruct_183601bc *_field31;
-    int _field32;
-    CDStruct_7a0e83b0 _field33;
-    CDStruct_7a4a8b82 _field34;
-    CDStruct_32eeb3fa _field35;
-    CDStruct_32eeb3fa _field36;
-    int _field37;
-    char _field38[4];
-    char _field39[4];
-    char _field40[12];
-} CDStruct_85f69347;
-
-typedef struct {
-    int _field1;
-    float _field2;
-    float _field3;
-    CDStruct_183601bc *_field4;
-    int _field5;
-    int _field6;
-    int _field7;
-    CDStruct_32eeb3fa _field8;
-    BOOL _field9;
-    CDStruct_32eeb3fa _field10;
-    int _field11;
-    int _field12;
-} CDStruct_69e56647;
 
 typedef struct {
     int tag;

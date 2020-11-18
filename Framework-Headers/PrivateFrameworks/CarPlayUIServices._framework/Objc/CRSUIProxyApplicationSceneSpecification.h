@@ -10,6 +10,7 @@
 {
 }
 
+- (id)initialActionHandlers;
 - (Class)settingsClass;
 
 @end

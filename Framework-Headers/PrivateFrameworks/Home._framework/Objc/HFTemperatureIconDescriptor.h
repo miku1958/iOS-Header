@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) long long targetHeatingCoolingMode; // @synthesize targetHeatingCoolingMode=_targetHeatingCoolingMode;
 
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)initWithFormattedTemperature:(id)arg1 heatingCoolingMode:(long long)arg2 targetHeatingCoolingMode:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 

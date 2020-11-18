@@ -6,18 +6,20 @@
 
 #import <WorkflowKit/WFAction.h>
 
-@class NSObject;
+@class NSObject, WFAutoIncrementingProgress;
 @protocol OS_dispatch_source;
 
 @interface WFDelayAction : WFAction
 {
     NSObject<OS_dispatch_source> *_timer;
+    WFAutoIncrementingProgress *_delayProgress;
 }
 
+@property (strong, nonatomic) WFAutoIncrementingProgress *delayProgress; // @synthesize delayProgress=_delayProgress;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 
 - (void).cxx_destruct;
-- (void)cancel;
+- (void)finishRunningWithError:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

@@ -8,14 +8,16 @@
 
 #import <HomeKit/HMXPCMessageTransport-Protocol.h>
 
-@class NSString;
+@class HMXPCClient, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HMXPCClientConnectionProxy : HMFMessageTransport <HMXPCMessageTransport>
 {
+    HMXPCClient *_client;
     CDUnknownBlockType _refreshHandler;
 }
 
+@property (weak) HMXPCClient *client; // @synthesize client=_client;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)fetchUserInfo:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1;
 - (void)handleMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (id)initWithRefreshHandler:(CDUnknownBlockType)arg1;

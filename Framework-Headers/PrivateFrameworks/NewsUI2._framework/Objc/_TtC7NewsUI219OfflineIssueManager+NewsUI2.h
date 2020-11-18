@@ -7,6 +7,8 @@
 #import <NewsUI2/_TtC7NewsUI219OfflineIssueManager.h>
 
 @interface _TtC7NewsUI219OfflineIssueManager (NewsUI2)
+- (void)networkReachabilityDidChange:(id)arg1;
 - (void)offlineIssueList:(id)arg1 didAddIssues:(id)arg2 removeIssues:(id)arg3;
+- (void)powerStateDidChange;
 @end
 

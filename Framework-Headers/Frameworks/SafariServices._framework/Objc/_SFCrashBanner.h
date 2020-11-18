@@ -17,11 +17,17 @@
     struct CGSize _cachedLabelLayoutSize;
     _SFBarTheme *_theme;
     UIButton *_closeButton;
+    unsigned long long _type;
+    NSString *_bannerText;
+    NSString *_manuallyWrappedBannerText;
 }
 
 @property (copy, nonatomic) NSString *backdropGroupName;
+@property (readonly, nonatomic) NSString *bannerText; // @synthesize bannerText=_bannerText;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
+@property (readonly, nonatomic) NSString *manuallyWrappedBannerText; // @synthesize manuallyWrappedBannerText=_manuallyWrappedBannerText;
 @property (strong, nonatomic) _SFBarTheme *theme; // @synthesize theme=_theme;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (struct CGSize)_labelLayoutSizeForWidth:(double)arg1;
@@ -29,6 +35,7 @@
 - (BOOL)_shouldUseManuallyWrappedCrashMessageForWidth:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setBannerText:(id)arg1 manuallyWrappedBannerText:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

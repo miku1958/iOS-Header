@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData;
+@class NSArray, NSData, NSDictionary;
 
 @protocol SGSuggestionsServiceFidesProtocol
+- (void)evaluateRecipe:(NSDictionary *)arg1 attachments:(NSArray *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)planReceivedFromServerWithPayload:(NSData *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

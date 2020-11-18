@@ -15,11 +15,13 @@
     NSObject<OS_dispatch_queue> *_replyQueue;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    CDUnknownBlockType _messageHandler;
 }
 
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
 @property (copy) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (copy) CDUnknownBlockType messageHandler; // @synthesize messageHandler=_messageHandler;
 
 - (void).cxx_destruct;
 - (void)_handleMessage:(id)arg1;
@@ -30,7 +32,7 @@
 - (void)invalidate;
 - (void)resume;
 - (void)sendMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
-- (void)sendMessage:(id)arg1 syncReplyHandler:(CDUnknownBlockType)arg2;
+- (id)sendMessageSync:(id)arg1;
 
 @end
 

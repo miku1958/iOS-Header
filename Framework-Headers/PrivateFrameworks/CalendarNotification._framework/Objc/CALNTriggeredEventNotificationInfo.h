@@ -21,6 +21,7 @@
     NSDate *_startDate;
     NSDate *_endDate;
     NSString *_eventID;
+    NSString *_eventOccurrenceID;
     NSString *_eventObjectID;
     NSDictionary *_eventRepresentationDictionary;
     NSString *_legacyIdentifier;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) BOOL eventHasAlarms; // @synthesize eventHasAlarms=_eventHasAlarms;
 @property (readonly, copy, nonatomic) NSString *eventID; // @synthesize eventID=_eventID;
 @property (readonly, copy, nonatomic) NSString *eventObjectID; // @synthesize eventObjectID=_eventObjectID;
+@property (readonly, copy, nonatomic) NSString *eventOccurrenceID; // @synthesize eventOccurrenceID=_eventOccurrenceID;
 @property (readonly, copy, nonatomic) NSDictionary *eventRepresentationDictionary; // @synthesize eventRepresentationDictionary=_eventRepresentationDictionary;
 @property (readonly, nonatomic) BOOL forceDisplayOfNewTravelAdvisoryHypotheses; // @synthesize forceDisplayOfNewTravelAdvisoryHypotheses=_forceDisplayOfNewTravelAdvisoryHypotheses;
 @property (readonly, nonatomic) BOOL hasSuggestedLocation; // @synthesize hasSuggestedLocation=_hasSuggestedLocation;
@@ -49,7 +51,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithTitle:(id)arg1 location:(id)arg2 locationWithoutPrediction:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 isAllDay:(BOOL)arg6 eventID:(id)arg7 eventObjectID:(id)arg8 eventRepresentationDictionary:(id)arg9 legacyIdentifier:(id)arg10 preferredLocation:(id)arg11 conferenceURL:(id)arg12 mailtoURL:(id)arg13 hasSuggestedLocation:(BOOL)arg14 eventHasAlarms:(BOOL)arg15 allowsLocationAlerts:(BOOL)arg16 forceDisplayOfNewTravelAdvisoryHypotheses:(BOOL)arg17;
+- (id)initWithTitle:(id)arg1 location:(id)arg2 locationWithoutPrediction:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 isAllDay:(BOOL)arg6 eventID:(id)arg7 eventOccurrenceID:(id)arg8 eventObjectID:(id)arg9 eventRepresentationDictionary:(id)arg10 legacyIdentifier:(id)arg11 preferredLocation:(id)arg12 conferenceURL:(id)arg13 mailtoURL:(id)arg14 hasSuggestedLocation:(BOOL)arg15 eventHasAlarms:(BOOL)arg16 allowsLocationAlerts:(BOOL)arg17 forceDisplayOfNewTravelAdvisoryHypotheses:(BOOL)arg18;
 
 @end
 

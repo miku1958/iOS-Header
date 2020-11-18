@@ -8,12 +8,12 @@
 
 #import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
 
-@class NSString, NSURLSession, NSURLSessionConfiguration, __NSCFURLSession;
+@class NSString, NSURLSession, NSURLSessionConfiguration;
 
 @interface __NSCFURLSessionTaskGroup : NSObject <__NSURLSessionTaskGroupForConfiguration>
 {
     NSURLSessionConfiguration *_groupConfiguration_ivar;
-    __NSCFURLSession *_groupSession_ivar;
+    NSURLSession *_groupSession_ivar;
 }
 
 @property (readonly, weak) NSURLSessionConfiguration *_groupConfiguration; // @dynamic _groupConfiguration;
@@ -23,7 +23,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_initWithTarget:(id)arg1 configuration:(id)arg2;
 - (id)dataTaskWithRequest:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

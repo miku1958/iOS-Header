@@ -19,6 +19,7 @@
 - (void)setCompanionLanguage:(IDSProtobuf *)arg1;
 - (void)setCompanionRegion:(IDSProtobuf *)arg1;
 - (void)setLocationEnabled:(IDSProtobuf *)arg1;
+- (void)setMessagesInCloudEnabledForTinker:(IDSProtobuf *)arg1;
 - (void)setPasscodeRestrictions:(IDSProtobuf *)arg1;
 
 @optional

@@ -33,13 +33,13 @@
 @property (strong, nonatomic) NSMutableArray *transactionStack; // @synthesize transactionStack=_transactionStack;
 
 - (void).cxx_destruct;
-- (void)_clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(BOOL)arg2;
 - (void)_notifyDelegatesDidUpdatePlaybackState:(long long)arg1 mediaSession:(id)arg2;
 - (void)_notifyDelegatesFailedToUpdatePlaybackStateWithError:(id)arg1 mediaSession:(id)arg2;
 - (void)_notifyDelegatesWillUpdatePlaybackState:(long long)arg1 mediaSession:(id)arg2;
 - (void)_updateCachedPlaybackStateWriteError:(id)arg1 operationType:(id)arg2 notifyDelegates:(BOOL)arg3;
 - (void)_updateLastPlaybackState:(long long)arg1 sender:(SEL)arg2 notifyWillUpdate:(BOOL)arg3 notifyDidUpdate:(BOOL)arg4;
 - (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(BOOL)arg2;
 - (BOOL)hasPendingWritesForRouteID:(id)arg1;
 - (id)init;
 - (id)initWithMediaProfileContainer:(id)arg1;

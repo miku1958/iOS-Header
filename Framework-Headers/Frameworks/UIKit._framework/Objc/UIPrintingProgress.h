@@ -34,6 +34,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSString *title;
 
 - (void).cxx_destruct;
+- (void)_mainQueue_endProgress;
+- (void)_mainQueue_hideProgressAnimated:(BOOL)arg1;
+- (void)_mainQueue_presentProgressAlert;
+- (void)_mainQueue_showProgress:(id)arg1 immediately:(BOOL)arg2;
 - (void)_presentProgressAlert;
 - (void)endProgress;
 - (void)hideProgressAnimated:(BOOL)arg1;

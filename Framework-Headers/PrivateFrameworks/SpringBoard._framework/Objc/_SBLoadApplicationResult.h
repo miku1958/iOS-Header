@@ -15,10 +15,6 @@
     NSString *_errorDescription;
 }
 
-@property (copy, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
-@property (nonatomic, getter=isSuccess) BOOL success; // @synthesize success=_success;
-@property (nonatomic, getter=isUpdate) BOOL update; // @synthesize update=_update;
-
 - (void).cxx_destruct;
 
 @end

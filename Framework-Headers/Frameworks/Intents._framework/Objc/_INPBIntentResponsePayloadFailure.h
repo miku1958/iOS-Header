@@ -19,12 +19,10 @@
         unsigned int errorCode:1;
     } _has;
     BOOL _appLaunchRequested;
-    BOOL __encodeLegacyGloryData;
     int _errorCode;
     NSString *_enumTypeName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL appLaunchRequested; // @synthesize appLaunchRequested=_appLaunchRequested;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

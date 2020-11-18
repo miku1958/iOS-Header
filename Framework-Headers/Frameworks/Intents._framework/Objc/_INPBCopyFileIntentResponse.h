@@ -17,13 +17,11 @@
     CDStruct_be739ab4 _has;
     BOOL _overwrite;
     BOOL _success;
-    BOOL __encodeLegacyGloryData;
     int _entityType;
     _INPBString *_destinationName;
     _INPBString *_entityName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;

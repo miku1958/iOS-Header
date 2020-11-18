@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI231AudioSessionInterruptionHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *currentlyPlayingObservable;
+    MISSING_TYPE *commandCenter;
 }
 
 - (void)handleInterruption:(id)arg1;

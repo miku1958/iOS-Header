@@ -41,6 +41,7 @@
 - (void)_didPrepareSoundEffect;
 - (void)_ensureAudioPlayer;
 - (int)_filterTypeForCell:(id)arg1 caresAboutOrientation:(BOOL *)arg2 orientation:(char *)arg3;
+- (BOOL)_isPlaySoundEnabled;
 - (BOOL)_supportsSoundEffects;
 - (void)animateFiltersForCell:(id)arg1;
 - (void)applyMessageFiltersToCells:(id)arg1;

@@ -6,30 +6,11 @@
 
 #import <HomeKitDaemon/HMDCloudZoneChange.h>
 
-@class HMDCloudShareGroupChange;
-
 @interface HMDCloudHomeZoneChange : HMDCloudZoneChange
 {
-    HMDCloudShareGroupChange *_shareGroupChange;
 }
 
-@property (strong, nonatomic) HMDCloudShareGroupChange *shareGroupChange; // @synthesize shareGroupChange=_shareGroupChange;
-
-- (void).cxx_destruct;
-- (void)addChangeWithDeletedRecordID:(id)arg1;
-- (void)addChangeWithObjectChange:(id)arg1;
-- (void)addChangeWithRecord:(id)arg1;
-- (id)changeWithObjectID:(id)arg1;
-- (id)changeWithRecordName:(id)arg1;
-- (void)fetchBatchToUpload:(CDUnknownBlockType)arg1;
-- (void)flushAllChangesToCache;
 - (id)initWithZone:(id)arg1 temporaryCache:(BOOL)arg2;
-- (void)loadCloudRecordsAndDetermineDeletesFromCache:(CDUnknownBlockType)arg1;
-- (BOOL)moreChangesToProcess;
-- (id)objectChanges;
-- (void)resetRecordWithRecordID:(id)arg1;
-- (void)setDeleteAsProcessedWithRecordID:(id)arg1;
-- (void)setSaveAsProcessedWithRecord:(id)arg1;
 
 @end
 

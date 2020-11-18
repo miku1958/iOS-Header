@@ -6,13 +6,19 @@
 
 #import <HealthDaemon/HDSQLiteStatement.h>
 
+@class HDDatabaseTransaction;
+
 @interface HDMetadataValueStatement : HDSQLiteStatement
 {
+    HDDatabaseTransaction *_transaction;
 }
 
-+ (id)metadataValueStatementWithDatabase:(id)arg1;
+@property (readonly, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
+
++ (id)metadataValueStatementWithTransaction:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)enumerateResultsForObjectID:(long long)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-- (id)initWithDatabase:(id)arg1;
+- (id)initWithTransaction:(id)arg1;
 
 @end
 

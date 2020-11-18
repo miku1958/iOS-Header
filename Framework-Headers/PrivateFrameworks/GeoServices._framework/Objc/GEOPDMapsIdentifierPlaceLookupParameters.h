@@ -41,8 +41,11 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)mapsIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mapsIdsCount;
 - (void)mergeFrom:(id)arg1;

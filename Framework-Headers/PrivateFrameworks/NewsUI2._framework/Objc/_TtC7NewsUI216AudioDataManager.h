@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216AudioDataManager : NSObject
 {
     MISSING_TYPE *state;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *audioTabVisibilitySignal;
     MISSING_TYPE *audioStateFactory;
     MISSING_TYPE *completedListeningProcessor;
-    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *expirationTimer;
     MISSING_TYPE *topOfFeedTrack;
     MISSING_TYPE *upNextTracks;

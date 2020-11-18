@@ -8,11 +8,13 @@
 
 @interface MPSImageEuclideanDistanceTransform : MPSUnaryImageKernel
 {
-    unsigned long long _width;
-    unsigned long long _height;
+    float _searchLimitRadius;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
+@property (nonatomic) float searchLimitRadius; // @synthesize searchLimitRadius=_searchLimitRadius;
+
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 

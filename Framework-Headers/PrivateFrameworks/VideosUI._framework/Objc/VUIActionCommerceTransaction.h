@@ -25,17 +25,25 @@ __attribute__((visibility("hidden")))
 + (void)_removeTransactionForBuyParams:(id)arg1;
 + (void)_saveInterruptedPurchaseTransactionContextInfo:(id)arg1 canonicalID:(id)arg2 error:(id)arg3;
 + (id)_skuDownloadKind:(long long)arg1;
-+ (void)displayConfirmationNotificationWithTitle:(id)arg1 andBody:(id)arg2 forChannelName:(id)arg3;
++ (BOOL)_useAMSPurchase;
++ (void)displayConfirmationUIWithTitle:(id)arg1 andBody:(id)arg2;
++ (void)displayConfirmationUIWithTitle:(id)arg1 andBody:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)extractSalableAdamIDFromBuyParams:(id)arg1;
 + (BOOL)isTransactionInProgressForBuyParams:(id)arg1;
 - (void).cxx_destruct;
+- (void)_handleBuyCompletionForOffer:(id)arg1 appContext:(id)arg2 shouldPlayWhenDone:(BOOL)arg3 serverResponse:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_handleSubscriptionCompletionForOffer:(id)arg1 shouldInitiateFamilySetup:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_notifyDidEndPurchaseType:(long long)arg1 transactionOffer:(id)arg2 withError:(id)arg3;
+- (void)_notifyDidStartPurchaseType:(long long)arg1 transactionOffer:(id)arg2;
 - (void)_postPurchaseNotification:(id)arg1 error:(id)arg2;
 - (void)_postSubscriptionNotificationWithChannelName:(id)arg1 buyParams:(id)arg2 error:(id)arg3;
 - (void)_postTransactionDidStartNotificationWithBuyParams:(id)arg1;
 - (id)_preflightManagerForTransactionOffer:(id)arg1;
 - (void)_recordLog:(id)arg1 withBuyParams:(id)arg2;
+- (void)_showUIConfirmationForSubTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startPurchaseFlowForOffer:(id)arg1 playWhenDone:(BOOL)arg2 appContext:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_startSubscribeFlowForOffer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_startTransactionOfOffer:(id)arg1 withAppContext:(id)arg2 andCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithActionRef:(id)arg1 contextData:(id)arg2 appContext:(id)arg3;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

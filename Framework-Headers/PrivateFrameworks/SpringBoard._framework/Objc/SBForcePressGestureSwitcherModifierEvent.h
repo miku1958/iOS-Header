@@ -13,6 +13,7 @@
 
 @property (nonatomic) double forcePercent; // @synthesize forcePercent=_forcePercent;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 
 @end

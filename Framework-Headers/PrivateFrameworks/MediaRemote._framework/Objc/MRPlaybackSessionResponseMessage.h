@@ -6,13 +6,13 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class _MRPlaybackSessionProtobuf;
+@class MRPlaybackSession;
 
 @interface MRPlaybackSessionResponseMessage : MRProtocolMessage
 {
 }
 
-@property (readonly, nonatomic) _MRPlaybackSessionProtobuf *playbackSession;
+@property (readonly, nonatomic) MRPlaybackSession *playbackSession;
 
 - (id)initWithPlaybackSession:(id)arg1;
 - (unsigned long long)type;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
+@property (readonly, nonatomic) NSArray *collectionResults;
 @property (readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
@@ -33,6 +34,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
+@property (readonly, nonatomic) NSArray *publisherResults;
+@property (readonly, nonatomic) NSArray *relatedEntitySections;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
@@ -47,7 +50,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
 - (void).cxx_destruct;
-- (void)_processResults:(id)arg1 error:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)initWithLatLngs:(id)arg1 shiftLocationsIfNeeded:(BOOL)arg2 traits:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;
 

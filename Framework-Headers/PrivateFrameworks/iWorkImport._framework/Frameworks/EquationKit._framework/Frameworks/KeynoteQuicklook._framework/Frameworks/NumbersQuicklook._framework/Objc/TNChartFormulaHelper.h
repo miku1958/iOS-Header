@@ -29,7 +29,7 @@
 - (id)initWithMediator:(id)arg1 createSpanningReferences:(BOOL)arg2;
 - (unsigned char)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 toFormulaMap:(id)arg4;
 - (unsigned char)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 toFormulaMap:(id)arg4 ofLevel:(unsigned char)arg5;
-- (void)p_addSeriesForRangeList:(id)arg1 rowLabelRangeList:(id)arg2 columnLabelRangeList:(id)arg3 rowLabels:(id)arg4 columnLabels:(id)arg5 toFormulaMap:(id)arg6;
+- (BOOL)p_addSeriesForRangeList:(id)arg1 rowLabelRangeList:(id)arg2 columnLabelRangeList:(id)arg3 rowLabels:(id)arg4 columnLabels:(id)arg5 toFormulaMap:(id)arg6;
 - (void)p_addStringFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 labels:(id)arg4 toFormulaMap:(id)arg5;
 - (BOOL)p_extendExistingSeriesWithSeriesRangeList:(id *)arg1 rowLabelRangeList:(id *)arg2 columnLabelRangeList:(id *)arg3 toFormulaMap:(id)arg4 withLocale:(id)arg5;
 - (unsigned char)p_firstDataCategoryLevelInFormulaMap:(id)arg1 forTable:(UUIDData_5fbc143e)arg2;

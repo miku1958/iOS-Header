@@ -26,6 +26,7 @@
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSMutableDictionary *_pushTypeToToken;
     NSMutableDictionary *_pushTypeToConnection;
+    double _lastReportedCallTime;
 }
 
 @property (nonatomic) int complicationToken; // @synthesize complicationToken=_complicationToken;
@@ -37,6 +38,7 @@
 @property (nonatomic) int fileProviderToken; // @synthesize fileProviderToken=_fileProviderToken;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ivarQueue; // @synthesize ivarQueue=_ivarQueue;
+@property (nonatomic) double lastReportedCallTime; // @synthesize lastReportedCallTime=_lastReportedCallTime;
 @property (nonatomic) int outstandingVoIPPushes; // @synthesize outstandingVoIPPushes=_outstandingVoIPPushes;
 @property (strong, nonatomic) NSMutableDictionary *pushTypeToConnection; // @synthesize pushTypeToConnection=_pushTypeToConnection;
 @property (strong, nonatomic) NSMutableDictionary *pushTypeToToken; // @synthesize pushTypeToToken=_pushTypeToToken;

@@ -70,7 +70,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFullyPitched;
 - (BOOL)isPitched;
 - (id)mapRegion;
+- (double)maxPitch;
 - (double)maximumZoomLevel;
+- (double)minPitch;
 - (double)minimumZoomLevel;
 - (void)moveTo:(CDStruct_c3b9c2ee)arg1 height:(double)arg2 useHeight:(BOOL)arg3 zoom:(double)arg4 rotation:(double)arg5 tilt:(double)arg6 duration:(double)arg7 timingCurve:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)moveTo:(CDStruct_c3b9c2ee)arg1 zoom:(double)arg2 rotation:(double)arg3 tilt:(double)arg4 duration:(double)arg5 timingCurve:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
@@ -89,7 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setCurrentZoomLevel:(double)arg1;
 - (void)setGesturing:(BOOL)arg1;
-- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)setMaxZoomLevel:(double)arg1;
 - (void)setMinZoomLevel:(double)arg1;
 - (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
@@ -97,7 +99,7 @@ __attribute__((visibility("hidden")))
 - (float)slowDownFactorFromLoadProgress;
 - (BOOL)snapMapIfNecessary:(BOOL)arg1;
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
-- (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3 duration:(double)arg4 timingFunction:(CDUnknownBlockType)arg5;
 - (void)stopFlyoverTourAnimation;
 - (void)stopGlobeAnimations;
 - (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;

@@ -21,6 +21,7 @@
 + (id)hk_nilDataMD5;
 + (id)hk_randomDataOfLength:(long long)arg1;
 - (id)hk_MD5;
+- (id)hk_SHA256;
 - (unsigned long long)hk_countOfUUIDs;
 - (id)hk_dataForAllUUIDs;
 - (void)hk_enumerateUUIDBytesUsingBlock:(CDUnknownBlockType)arg1;

@@ -8,7 +8,7 @@
 
 #import <RunningBoard/RBProcessMonitorObserving-Protocol.h>
 
-@class NSHashTable, NSMutableDictionary, NSString, RBProcess, RBProcessMap, RBSProcessStateDescriptor;
+@class NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, RBProcess, RBProcessMap, RBSProcessStateDescriptor;
 @protocol OS_dispatch_queue, RBProcessMonitorObserverConnection, RBProcessMonitoring;
 
 @interface RBProcessMonitorObserver : NSObject <RBProcessMonitorObserving>
@@ -20,11 +20,14 @@
     struct os_unfair_lock_s _lock;
     unsigned int _qos;
     RBProcessMap *_pendingProcessState;
+    NSMutableArray *_pendingExitEvents;
+    NSSet *_pendingPreventLaunchPredicates;
     NSMutableDictionary *_configurations;
     RBSProcessStateDescriptor *_stateDescriptor;
     NSHashTable *_matchedHandles;
-    BOOL _extantUpdate;
-    BOOL _didClearStateForSuspended;
+    BOOL _extantStateUpdate;
+    BOOL _extantEventUpdate;
+    BOOL _didClearState;
     double _lastSend;
 }
 
@@ -37,19 +40,19 @@
 - (void).cxx_destruct;
 - (void)_lock_addAllConfiguredStatesToPending;
 - (void)_lock_addConfigurationStatesToPending:(id)arg1;
+- (void)_lock_checkForBadActorWithPendingStates:(id)arg1;
+- (void)_lock_clearPendingNonterminalStates;
 - (void)_lock_rebuildConfiguration;
 - (void)_lock_sendPendingStateUpdates;
 - (void)addConfiguration:(id)arg1;
 - (id)captureState;
 - (void)dealloc;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)didObserveProcessExit:(id)arg1;
+- (void)didResolvePreventLaunchPredicates:(id)arg1;
 - (id)initWithMonitor:(id)arg1 forProcess:(id)arg2 connection:(id)arg3;
 - (void)invalidate;
 - (void)processMonitor:(id)arg1 didChangeProcessStates:(id)arg2;
 - (void)removeConfigurationWithIdentifier:(unsigned long long)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

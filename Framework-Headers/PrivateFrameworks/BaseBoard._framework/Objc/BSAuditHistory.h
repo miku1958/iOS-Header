@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasItems;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
+@property (readonly, nonatomic) NSArray *items;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

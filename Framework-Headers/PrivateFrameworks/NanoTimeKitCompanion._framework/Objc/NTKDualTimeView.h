@@ -8,16 +8,15 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAReplicatorLayer, CLKDevice, CLKFont, NSArray, NSCalendar, NSDate, NSNumber, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
+@class CALayer, CAReplicatorLayer, CLKClockTimerToken, CLKDevice, CLKFont, NSArray, NSCalendar, NSDate, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
 
 @interface NTKDualTimeView : UIView <NTKTimeView>
 {
     NSDate *_overrideDate;
     NSCalendar *_calendar;
-    NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
     CAReplicatorLayer *_hourTickReplicatorLayer;
     CAReplicatorLayer *_minuteTickReplicatorLayer;
-    UIView *_digitalContainerView;
     CALayer *_digitalTicksContainer;
     NSArray *_digitalTicks;
     NTKDigitalTimeLabelStyle *_digitalStyle;
@@ -32,6 +31,7 @@
     UIView *_dialBackgroundView;
     NTKAnalogHandsView *_analogHandsView;
     NTKDigitalTimeLabel *_digitalTimeLabel;
+    UIView *_digitalContainerView;
     UIView *_dialContainerView;
     UIView *_analogContainerView;
     UIView *_analogTickContainerView;
@@ -46,6 +46,7 @@
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) UIView *dialBackgroundView; // @synthesize dialBackgroundView=_dialBackgroundView;
 @property (strong, nonatomic) UIView *dialContainerView; // @synthesize dialContainerView=_dialContainerView;
+@property (readonly, nonatomic) UIView *digitalContainerView; // @synthesize digitalContainerView=_digitalContainerView;
 @property (readonly, nonatomic) NTKDigitalTimeLabel *digitalTimeLabel; // @synthesize digitalTimeLabel=_digitalTimeLabel;
 @property (nonatomic) BOOL editing; // @synthesize editing=_editing;
 @property (nonatomic, getter=isFrozen) BOOL frozen; // @synthesize frozen=_frozen;
@@ -58,6 +59,7 @@
 - (void).cxx_destruct;
 - (id)_activeTimeView;
 - (double)_analogTickInset;
+- (void)_applyColorToAnalogHands;
 - (void)_colorizeAnalogTicksWithHourColor:(id)arg1 minuteColor:(id)arg2;
 - (void)_colorizeDigitalTicksWithActiveColor:(id)arg1 inactiveColor:(id)arg2 now:(id)arg3 secondFraction:(double)arg4;
 - (id)_customDialBackgroundView;
@@ -76,6 +78,7 @@
 - (id)_minuteTickColorForColor:(unsigned long long)arg1;
 - (unsigned long long)_minuteTickCount;
 - (struct CGSize)_minuteTickSize;
+- (void)_refreshDigitalTicks;
 - (void)_refreshDigitalTicksWithNow:(id)arg1 secondFraction:(double)arg2;
 - (id)_secondHandColorForColor:(unsigned long long)arg1;
 - (id)_secondTickActiveColorForColor:(unsigned long long)arg1;

@@ -38,9 +38,8 @@
 - (id)keyFromKeyStruct:(const void *)arg1;
 - (id)name;
 - (struct CGImage *)newTableThumbImageForKey:(id)arg1;
-- (unsigned long long)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 asset:(id)arg3 inContext:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)requestRemoteAvailabilityChange:(short)arg1 forResource:(id)arg2 asset:(id)arg3 inContext:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 clientBundleID:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)resourceDataForKey:(id)arg1 assetID:(id)arg2;
 - (id)resourceURLForKey:(id)arg1;
 - (void)setThumbnailFormatsByIDs:(id)arg1;

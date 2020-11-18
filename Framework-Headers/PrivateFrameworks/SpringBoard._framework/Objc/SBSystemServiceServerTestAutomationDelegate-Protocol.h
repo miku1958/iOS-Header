@@ -10,14 +10,20 @@
 @protocol FBSServiceFacilityClientHandle;
 
 @protocol SBSystemServiceServerTestAutomationDelegate <SBSystemServiceServerDelegate>
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 addWidgetsToEachPageForClient:(id<FBSServiceFacilityClientHandle>)arg2;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 addWidgetWithIdentifier:(NSString *)arg3 toPage:(long long)arg4 withSizing:(long long)arg5;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 countScenesForBundleIdentifier:(NSString *)arg3 withCompletion:(void (^)(int))arg4;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 loadStashedSwitcherModelFromPath:(NSString *)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 port:(BSMachPortSendRight *)arg3 acquireHUDHiddenAssertionForIdentifier:(NSString *)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 resetToHomeScreenAnimated:(BOOL)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setAlertsEnabled:(BOOL)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setApplicationBundleIdentifier:(NSString *)arg3 blockedForScreenTime:(BOOL)arg4;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setHiddenFeaturesEnabled:(BOOL)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setIdleTimerEnabled:(BOOL)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setMallocStackLoggingEnabled:(BOOL)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setOrientationLockEnabled:(BOOL)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 setTestRunnerRecoveryApplicationBundleIdentifier:(NSString *)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id<FBSServiceFacilityClientHandle>)arg2 stashSwitcherModelToPath:(NSString *)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 suspendAllDisplaysForClient:(id<FBSServiceFacilityClientHandle>)arg2;
 @end
 

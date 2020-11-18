@@ -6,20 +6,19 @@
 
 #import <ChatKit/CKDetailsContactsTableViewCell.h>
 
-@class NSLayoutConstraint, UIStackView;
+@class NSLayoutConstraint;
 
 @interface CKDetailsContactsLargeTextTableViewCell : CKDetailsContactsTableViewCell
 {
-    UIStackView *_buttonStackView;
     NSLayoutConstraint *_buttonsTopConstraint;
 }
 
-@property (strong, nonatomic) UIStackView *buttonStackView; // @synthesize buttonStackView=_buttonStackView;
 @property (strong, nonatomic) NSLayoutConstraint *buttonsTopConstraint; // @synthesize buttonsTopConstraint=_buttonsTopConstraint;
 
 + (double)estimatedHeight;
 + (double)preferredHeight;
 - (void).cxx_destruct;
+- (void)_hideAllButtons;
 - (void)_initConstraints;
 - (void)_updateVisibleButtons;
 - (void)configureWithViewModel:(id)arg1;

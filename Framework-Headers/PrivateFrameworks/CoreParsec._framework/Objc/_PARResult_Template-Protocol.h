@@ -6,7 +6,7 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, _PARRendering;
 
 @protocol _PARResult_Template <NSObject>
 
@@ -14,10 +14,16 @@
 @property (copy, nonatomic) NSString *completion;
 @property (copy, nonatomic) NSData *completionIcon;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *legacyTemplateName;
+@property (copy, nonatomic) NSArray *renderings;
 @property (copy, nonatomic) NSData *thumbnail;
 @property (copy, nonatomic) NSString *title;
 
+- (void)addRenderings:(_PARRendering *)arg1;
+- (void)clearRenderings;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_PARRendering *)renderingsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)renderingsCount;
 @end
 

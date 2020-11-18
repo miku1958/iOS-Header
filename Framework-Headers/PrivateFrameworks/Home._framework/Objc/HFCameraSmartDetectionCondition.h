@@ -10,6 +10,8 @@
 {
 }
 
++ (BOOL)_predicateIsValidForPersonFamiliarityKeyPath:(id)arg1;
++ (BOOL)_predicateIsValidForSignificantEventKeyPath:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
 
 @end

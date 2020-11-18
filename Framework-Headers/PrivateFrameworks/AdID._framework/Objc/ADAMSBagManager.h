@@ -22,6 +22,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 + (id)sharedInstance;
 - (BOOL)authenticateAccountThroughAMSOperation:(id)arg1;
 - (BOOL)retrieveIsSponsoredAdsEnabledValueForAdTrackingdFromAMSBag;

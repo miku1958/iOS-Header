@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <DocumentManagerUICore/UIScribbleInteractionDelegate-Protocol.h>
 #import <DocumentManagerUICore/UITextFieldDelegate-Protocol.h>
 
 @class CAShapeLayer, DOCTagDotView, NSString, UILabel, UITextField;
 @protocol DOCAddTagTextFieldDelegate;
 
-@interface DOCAddTagView : UIView <UITextFieldDelegate>
+@interface DOCAddTagView : UIView <UITextFieldDelegate, UIScribbleInteractionDelegate>
 {
     id<DOCAddTagTextFieldDelegate> _delegate;
     DOCTagDotView *_tagDotView;
@@ -37,6 +38,8 @@
 - (void)configureBorderPath;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)scribbleInteractionShouldDelayFocus:(id)arg1;
+- (void)scribbleInteractionWillBeginWriting:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;

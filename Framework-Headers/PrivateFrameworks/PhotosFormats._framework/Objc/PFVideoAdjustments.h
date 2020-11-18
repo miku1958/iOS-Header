@@ -23,7 +23,7 @@
 + (float)defaultSlowMotionRateForNominalFrameRate:(float)arg1;
 + (CDStruct_e83c9415)defaultSlowMotionTimeRangeForDuration:(CDStruct_1b6d18a9)arg1;
 + (id)defaultVideoAdjustmentsURLForVideoURL:(id)arg1;
-+ (BOOL)isRecognizedFormatWithIdentifier:(id)arg1 version:(id)arg2;
++ (BOOL)isRecognizedSlowMotionFormatWithIdentifier:(id)arg1 version:(id)arg2;
 - (id)_adjustmentsObjectFromNSKeyedArchiverData:(id)arg1;
 - (id)_dictionaryFromSlowMotionTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;
 - (BOOL)_isValidSlowMotionTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;

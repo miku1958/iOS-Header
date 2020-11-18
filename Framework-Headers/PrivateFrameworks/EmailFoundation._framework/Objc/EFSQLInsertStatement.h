@@ -18,27 +18,21 @@
     NSMutableOrderedSet *_requiredColumns;
 }
 
-@property (readonly, nonatomic) unsigned long long conflictResolution; // @synthesize conflictResolution=_conflictResolution;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, copy, nonatomic) NSString *queryString;
-@property (readonly, copy, nonatomic) NSString *queryStringForNamedBindings;
-@property (strong, nonatomic) NSMutableOrderedSet *requiredColumns; // @synthesize requiredColumns=_requiredColumns;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *table; // @synthesize table=_table;
-@property (strong, nonatomic) NSMutableArray *values; // @synthesize values=_values;
 
 - (void).cxx_destruct;
-- (id)_queryStringForNamedBindings:(BOOL)arg1;
-- (id)_valuesForNamedBindings:(BOOL)arg1;
 - (id)addValue;
 - (void)enumerateBindingIndicesAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateBindingNamesAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithTable:(id)arg1;
 - (id)initWithTable:(id)arg1 conflictResolution:(unsigned long long)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (void)renderStatementWithNamedBindingsInto:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
 @end

@@ -32,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_eventId:1;
         unsigned int read_poiId:1;
         unsigned int read_timezone:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_categorys:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_eventDateTimes:1;
-        unsigned int wrote_eventId:1;
-        unsigned int wrote_poiId:1;
-        unsigned int wrote_timezone:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -59,14 +53,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategorys:(id)arg1;
-- (void)_addNoFlagsCategory:(int)arg1;
-- (void)_addNoFlagsEventDateTime:(id)arg1;
-- (void)_readCategorys;
-- (void)_readCenter;
-- (void)_readEventDateTimes;
-- (void)_readEventId;
-- (void)_readPoiId;
-- (void)_readTimezone;
 - (void)addCategory:(int)arg1;
 - (void)addEventDateTime:(id)arg1;
 - (int)categoryAtIndex:(unsigned long long)arg1;
@@ -84,7 +70,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

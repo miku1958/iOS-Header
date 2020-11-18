@@ -19,6 +19,7 @@
 @property BOOL shouldDeleteOnDeallocation; // @synthesize shouldDeleteOnDeallocation=_shouldDeleteOnDeallocation;
 @property (strong) NSURL *url; // @synthesize url=_url;
 
++ (BOOL)getPathHash:(unsigned long long *)arg1 lastPathComponent:(id *)arg2 forDictionaryRepresentation:(id)arg3;
 + (id)referenceWithDictionaryRepresentation:(id)arg1 error:(id *)arg2;
 + (id)referenceWithURL:(id)arg1;
 - (void).cxx_destruct;

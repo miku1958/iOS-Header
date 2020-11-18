@@ -6,47 +6,32 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailSectionController.h>
 
-#import <NanoTimeKitCompanion/NTKCFaceDetailComplicationPickerCellDelegate-Protocol.h>
-
-@class NSMutableArray, NSSet, NSString, NTKCFaceDetailComplicationPickerCell, NTKCFaceDetailComplicationsHiddenCell, NTKFaceView;
+@class NSMutableArray, NSSet, NTKCFaceDetailComplicationsHiddenCell, NTKFaceView;
 @protocol NTKCFaceDetailComplicationSectionDelegate;
 
-@interface NTKCFaceDetailComplicationSectionController : NTKCFaceDetailSectionController <NTKCFaceDetailComplicationPickerCellDelegate>
+@interface NTKCFaceDetailComplicationSectionController : NTKCFaceDetailSectionController
 {
     id<NTKCFaceDetailComplicationSectionDelegate> _delegate;
     NTKFaceView *_faceView;
-    NTKCFaceDetailComplicationPickerCell *_pickerCell;
-    NTKCFaceDetailComplicationPickerCell *_dismissingPickerCell;
     NTKCFaceDetailComplicationsHiddenCell *_hiddenCell;
     NSSet *_richComplicationSlots;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKCFaceDetailComplicationSectionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NTKCFaceDetailComplicationPickerCell *dismissingPickerCell; // @synthesize dismissingPickerCell=_dismissingPickerCell;
 @property (strong, nonatomic) NTKFaceView *faceView; // @synthesize faceView=_faceView;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NTKCFaceDetailComplicationsHiddenCell *hiddenCell; // @synthesize hiddenCell=_hiddenCell;
-@property (strong, nonatomic) NTKCFaceDetailComplicationPickerCell *pickerCell; // @synthesize pickerCell=_pickerCell;
 @property (strong, nonatomic) NSSet *richComplicationSlots; // @synthesize richComplicationSlots=_richComplicationSlots;
 @property (strong, nonatomic) NSMutableArray *rows; // @dynamic rows;
-@property (readonly) Class superclass;
 
 + (BOOL)hasComplicationsForFace:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addComplication:(id)arg1;
 - (BOOL)_canSelectRow:(long long)arg1;
 - (void)_commonInit;
-- (void)_dequeuePickerCellForRow:(long long)arg1;
-- (void)_refreshPickerCellIfNeededForSelectedRow:(long long)arg1;
-- (void)complicationPickerCell:(id)arg1 didSelectComplication:(id)arg2;
 - (void)didSelectRow:(long long)arg1;
 - (void)faceDidChange;
-- (double)heightForRow:(long long)arg1;
 - (id)initWithTableViewController:(id)arg1 face:(id)arg2 faceView:(id)arg3 inGallery:(BOOL)arg4;
 - (id)titleForHeader;
-- (void)toggleRow:(long long)arg1 shouldScroll:(BOOL)arg2;
 
 @end
 

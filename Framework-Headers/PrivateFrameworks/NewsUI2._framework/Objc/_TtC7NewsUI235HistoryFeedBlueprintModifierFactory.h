@@ -10,13 +10,9 @@
 
 @interface _TtC7NewsUI235HistoryFeedBlueprintModifierFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *headlineModelFactory;
     MISSING_TYPE *sectionFactory;
-    MISSING_TYPE *feedContext;
-    MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *feedContextFactory;
 }
 
 @end

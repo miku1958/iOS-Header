@@ -19,7 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasTSCEFormula;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) int interactionType;
+@property (readonly, nonatomic) unsigned int interactionType;
 @property (readonly, nonatomic) BOOL isControl;
 @property (readonly) Class superclass;
 
@@ -27,10 +27,10 @@
 + (id)cellSpecFromTSKFormat:(id)arg1;
 + (id)defaultCellSpec;
 + (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
-+ (int)interactionTypeForShimControlFormatType:(int)arg1;
-+ (BOOL)interactionTypeIsControl:(int)arg1;
-+ (BOOL)isShimControlFormatType:(int)arg1;
-+ (int)shimControlFormatTypeForInteractionType:(int)arg1;
++ (unsigned int)interactionTypeForShimControlFormatType:(unsigned int)arg1;
++ (BOOL)interactionTypeIsControl:(unsigned int)arg1;
++ (BOOL)isShimControlFormatType:(unsigned int)arg1;
++ (unsigned int)shimControlFormatTypeForInteractionType:(unsigned int)arg1;
 - (id)asChooserControlSpec;
 - (id)asFormulaSpec;
 - (id)asRangeControlSpec;

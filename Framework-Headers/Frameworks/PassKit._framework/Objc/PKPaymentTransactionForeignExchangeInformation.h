@@ -20,8 +20,10 @@
 @property (copy, nonatomic) PKCurrencyAmount *destinationCurrencyAmount; // @synthesize destinationCurrencyAmount=_destinationCurrencyAmount;
 @property (copy, nonatomic) NSDecimalNumber *exchangeRate; // @synthesize exchangeRate=_exchangeRate;
 
++ (id)recordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -34,6 +36,7 @@
 - (unsigned long long)itemType;
 - (id)jsonDictionaryRepresentation;
 - (id)jsonString;
+- (id)primaryIdentifier;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 
 @end

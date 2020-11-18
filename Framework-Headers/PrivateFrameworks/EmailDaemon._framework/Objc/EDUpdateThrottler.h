@@ -37,7 +37,6 @@
 @property (nonatomic) long long updateCounter; // @synthesize updateCounter=_updateCounter;
 
 + (void)_registerInstance:(id)arg1;
-+ (struct os_unfair_lock_s)instanceLock;
 + (id)instances;
 + (void)resetAllInstances;
 - (void).cxx_destruct;

@@ -8,18 +8,20 @@
 
 @interface MPSMatrixFindTopK : MPSMatrixUnaryKernel
 {
+    BOOL _alongColumns;
     unsigned long long _sourceColumns;
     unsigned long long _sourceRows;
     unsigned long long _indexOffset;
     unsigned long long _numberOfTopKValues;
 }
 
+@property (nonatomic) BOOL alongColumns; // @synthesize alongColumns=_alongColumns;
 @property (nonatomic) unsigned long long indexOffset; // @synthesize indexOffset=_indexOffset;
 @property (nonatomic) unsigned long long numberOfTopKValues; // @synthesize numberOfTopKValues=_numberOfTopKValues;
 @property (nonatomic) unsigned long long sourceColumns; // @synthesize sourceColumns=_sourceColumns;
 @property (nonatomic) unsigned long long sourceRows; // @synthesize sourceRows=_sourceRows;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 inputMatrix:(id)arg2 resultIndexMatrix:(id)arg3 resultValueMatrix:(id)arg4;

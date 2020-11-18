@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 {
     NSMutableIndexSet *_invalidatedIndexes;
     NSMutableDictionary *_invalidatedAuxillaryIndexesDict;
+    struct CGPoint _contentOffsetAdjustment;
 }
 
+@property (nonatomic) struct CGPoint contentOffsetAdjustment; // @synthesize contentOffsetAdjustment=_contentOffsetAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

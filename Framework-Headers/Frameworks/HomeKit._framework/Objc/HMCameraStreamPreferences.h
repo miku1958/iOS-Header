@@ -14,9 +14,11 @@
 {
     HMCameraStreamAudioPreferences *_audioPreferences;
     HMCameraStreamVideoPreferences *_videoPreferences;
+    long long _minimumRequiredAvailableOrInUseStreams;
 }
 
 @property (readonly, nonatomic) HMCameraStreamAudioPreferences *audioPreferences; // @synthesize audioPreferences=_audioPreferences;
+@property long long minimumRequiredAvailableOrInUseStreams; // @synthesize minimumRequiredAvailableOrInUseStreams=_minimumRequiredAvailableOrInUseStreams;
 @property (readonly, nonatomic) HMCameraStreamVideoPreferences *videoPreferences; // @synthesize videoPreferences=_videoPreferences;
 
 + (BOOL)supportsSecureCoding;

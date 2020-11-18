@@ -19,7 +19,7 @@
 
 @property (strong) NSData *accessControl;
 @property (copy) NSDictionary *constraints; // @synthesize constraints=_constraints;
-@property (readonly, copy) NSData *encodedObjectID;
+@property (readonly, copy) NSData *encodedObjectID; // @dynamic encodedObjectID;
 @property (readonly, copy) NSMutableDictionary *keychainAttributes; // @dynamic keychainAttributes;
 @property (copy) NSString *label; // @synthesize label=_label;
 @property (readonly, copy) id objectID; // @synthesize objectID=_objectID;
@@ -29,6 +29,7 @@
 + (id)keychainItemWithInfo:(id)arg1;
 + (id)operationMap;
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithItemInfo:(id)arg1;
 - (id)initWithObjectID:(id)arg1;
 

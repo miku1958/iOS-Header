@@ -9,6 +9,7 @@
 @class NSDictionary, NSString, NSURLRequest, TMLContext, TMLJSONObject, UIViewController;
 @protocol TKNetworkTask;
 
+__attribute__((visibility("hidden")))
 @interface TKPage : NSObject
 {
     TMLJSONObject *_dataObject;

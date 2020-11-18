@@ -33,9 +33,13 @@
 - (void)_setupCache;
 - (BOOL)existsExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6;
 - (BOOL)existsExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionType:(unsigned long long)arg4 generationType:(unsigned long long)arg5;
+- (BOOL)existsExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 firstPartyExtension:(BOOL)arg3 applicationBundleIdentifier:(id)arg4 extensionPath:(id)arg5 extensionType:(unsigned long long)arg6 generationType:(unsigned long long)arg7;
 - (void)extensionContextForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 appBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6 withCompletionHandler:(CDUnknownBlockType)arg7;
+- (void)extensionContextForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 firstPartyExtension:(BOOL)arg3 appBundleIdentifier:(id)arg4 extensionPath:(id)arg5 extensionType:(unsigned long long)arg6 generationType:(unsigned long long)arg7 withCompletionHandler:(CDUnknownBlockType)arg8;
 - (id)extensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6;
+- (id)extensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 firstPartyExtension:(BOOL)arg3 applicationBundleIdentifier:(id)arg4 extensionPath:(id)arg5 extensionType:(unsigned long long)arg6 generationType:(unsigned long long)arg7;
 - (id)qlExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6;
+- (id)qlExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 firstPartyExtension:(BOOL)arg3 applicationBundleIdentifier:(id)arg4 extensionPath:(id)arg5 extensionType:(unsigned long long)arg6 generationType:(unsigned long long)arg7;
 
 @end
 

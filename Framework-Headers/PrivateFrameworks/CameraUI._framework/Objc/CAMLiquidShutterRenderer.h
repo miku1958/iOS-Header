@@ -14,9 +14,11 @@
     BOOL _needsRender;
     BOOL __backgrounded;
     double _blurRadius;
+    double _shadowSize;
     id<MTLDevice> __device;
     id<MTLCommandQueue> __commandQueue;
     id<MTLRenderPipelineState> __renderPipelineState;
+    CDStruct_e17a5956 _shadowColor;
     CDStruct_361c14a1 _centerShape;
     CDStruct_361c14a1 _dragHandleShape;
 }
@@ -29,6 +31,8 @@
 @property (nonatomic) CDStruct_361c14a1 centerShape; // @synthesize centerShape=_centerShape;
 @property (nonatomic) CDStruct_361c14a1 dragHandleShape; // @synthesize dragHandleShape=_dragHandleShape;
 @property (nonatomic) BOOL needsRender; // @synthesize needsRender=_needsRender;
+@property (nonatomic) CDStruct_e17a5956 shadowColor; // @synthesize shadowColor=_shadowColor;
+@property (nonatomic) double shadowSize; // @synthesize shadowSize=_shadowSize;
 @property (nonatomic) BOOL showDragHandle; // @synthesize showDragHandle=_showDragHandle;
 
 - (void).cxx_destruct;

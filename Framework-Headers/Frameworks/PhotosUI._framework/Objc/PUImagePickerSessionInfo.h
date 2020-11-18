@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface PUImagePickerSessionInfo : PUSessionInfo
 {
+    BOOL _isLimitedLibraryPicker;
     BOOL _showsPrompt;
     unsigned long long _selectionLimit;
     NSString *_staticPrompt;
@@ -21,6 +22,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithPhotoSelectionManager:(id)arg1;
+- (id)initWithPhotosViewDelegate:(id)arg1 loadingStatusManager:(id)arg2 allowMultipleSelection:(BOOL)arg3 limitedLibrary:(BOOL)arg4;
+- (BOOL)isForAssetPicker;
+- (BOOL)isLimitedLibraryPicker;
 - (BOOL)isSelectingAssets;
 - (id)localizedPrompt;
 - (unsigned long long)selectionLimit;

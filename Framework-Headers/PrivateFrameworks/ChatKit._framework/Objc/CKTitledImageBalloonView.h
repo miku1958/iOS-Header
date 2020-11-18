@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)configureForLocatingChatItem:(id)arg1;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(BOOL)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;

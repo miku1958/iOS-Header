@@ -8,31 +8,39 @@
 
 #import <RemoteUI/RUIHeader-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UILabel;
+@class NSString, UILabel;
 
 @interface RUIModernHeaderView : OBHeaderView <RUIHeader>
 {
     UILabel *_headerLabel;
     UILabel *_detailLabel;
-    NSLayoutConstraint *_heightConstraint;
+    NSString *_detailText;
+    NSString *_subHeaderText;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (strong, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
-@property (strong, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
+@property (strong, nonatomic) NSString *subHeaderText; // @synthesize subHeaderText=_subHeaderText;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (double)bottomPadding;
-- (double)calculateHeight;
+- (double)headerHeightForWidth:(double)arg1 inView:(id)arg2;
 - (double)iconHeight;
 - (double)iconToHeaderLabelPadding;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithTitle:(id)arg1;
-- (void)layoutSubviews;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+- (void)setDetailText:(id)arg1 attributes:(id)arg2;
+- (void)setIconImage:(id)arg1;
+- (void)setSubHeaderText:(id)arg1 attributes:(id)arg2;
+- (void)setText:(id)arg1 attributes:(id)arg2;
+- (double)topPadding;
+- (void)updateDetailText;
 
 @end
 

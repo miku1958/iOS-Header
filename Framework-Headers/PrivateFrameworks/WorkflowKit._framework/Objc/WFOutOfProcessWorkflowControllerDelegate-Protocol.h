@@ -6,12 +6,14 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSError, WFOutOfProcessWorkflowController;
+@class NSError, WFDialogAttribution, WFOutOfProcessWorkflowController, WFWorkflowReference;
+@protocol WFUserInterfaceHost;
 
 @protocol WFOutOfProcessWorkflowControllerDelegate <NSObject>
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didFinishWithError:(NSError *)arg2 cancelled:(BOOL)arg3 reference:(WFWorkflowReference *)arg4 dialogAttribution:(WFDialogAttribution *)arg5;
 
 @optional
-- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didFinishWithError:(NSError *)arg2 cancelled:(BOOL)arg3;
-- (void)outOfProcessWorkflowControllerDidStart:(WFOutOfProcessWorkflowController *)arg1;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didStartFromWorkflowReference:(WFWorkflowReference *)arg2 dialogAttribution:(WFDialogAttribution *)arg3;
+- (id<WFUserInterfaceHost>)userInterfaceForOutOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1;
 @end
 

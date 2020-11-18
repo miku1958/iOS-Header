@@ -8,7 +8,7 @@
 
 #import <MusicLibrary/NSCopying-Protocol.h>
 
-@class MIPMovie, MIPPodcast, MIPSong, MIPTVShow, NSData, NSMutableArray, NSString;
+@class MIPAudiobook, MIPMovie, MIPPodcast, MIPSong, MIPTVShow, NSData, NSMutableArray, NSString;
 
 @interface MIPMediaItem : PBCodable <NSCopying>
 {
@@ -33,6 +33,7 @@
     long long _storefrontId;
     long long _subscriptionStoreItemId;
     NSString *_artworkId;
+    MIPAudiobook *_audiobook;
     NSString *_chapterMetadataUrl;
     int _cloudMatchedStatus;
     int _cloudPlaybackEndpointType;
@@ -138,6 +139,7 @@
 
 @property (nonatomic) long long accountId; // @synthesize accountId=_accountId;
 @property (strong, nonatomic) NSString *artworkId; // @synthesize artworkId=_artworkId;
+@property (strong, nonatomic) MIPAudiobook *audiobook; // @synthesize audiobook=_audiobook;
 @property (nonatomic) long long bookmarkTimeMilliseconds; // @synthesize bookmarkTimeMilliseconds=_bookmarkTimeMilliseconds;
 @property (strong, nonatomic) NSString *chapterMetadataUrl; // @synthesize chapterMetadataUrl=_chapterMetadataUrl;
 @property (nonatomic) BOOL cloudAssetAvailable; // @synthesize cloudAssetAvailable=_cloudAssetAvailable;
@@ -164,6 +166,7 @@
 @property (strong, nonatomic) NSString *grouping; // @synthesize grouping=_grouping;
 @property (nonatomic) BOOL hasAccountId;
 @property (readonly, nonatomic) BOOL hasArtworkId;
+@property (readonly, nonatomic) BOOL hasAudiobook;
 @property (nonatomic) BOOL hasBookmarkTimeMilliseconds;
 @property (nonatomic) BOOL hasChapterData; // @synthesize hasChapterData=_hasChapterData;
 @property (readonly, nonatomic) BOOL hasChapterMetadataUrl;

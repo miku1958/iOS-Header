@@ -11,9 +11,11 @@
 - (unsigned short)appearanceIdentifierForName:(NSString *)arg1;
 - (NSDictionary *)appearances;
 - (BOOL)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
+- (BOOL)containsLookupForName:(NSString *)arg1;
 - (NSArray *)imagesWithName:(NSString *)arg1;
 - (unsigned short)localizationIdentifierForName:(NSString *)arg1;
 - (NSDictionary *)localizations;
+- (NSArray *)mappedAliases;
 - (NSString *)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(NSString *)arg1;
 

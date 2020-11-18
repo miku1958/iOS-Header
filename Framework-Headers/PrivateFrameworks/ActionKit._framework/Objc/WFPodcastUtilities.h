@@ -10,8 +10,10 @@
 {
 }
 
++ (void *)createLocalPlayerPath;
 + (struct _MRSystemAppPlaybackQueue *)createPlaybackQueueWithURLs:(id)arg1 setImmediatePlayback:(BOOL)arg2;
-+ (void *)createPlayerPath;
++ (void *)createPlayerPathForOrigin:(void *)arg1;
++ (void)createPreferredPlayerPathWithCompletion:(CDUnknownBlockType)arg1;
 + (id)generatePlaybackQueueURL:(id)arg1 withQueryDictionary:(id)arg2;
 + (void)getPodcastsFromLibraryFetchingDetailsFromServer:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNChangeHistoryAnchor *latestChangeAnchor; // @synthesize latestChangeAnchor=_latestChangeAnchor;
 @property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
-+ (BOOL)enumerateEnumerator:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)contactChangesEnumeratorWithKeysToFetch:(id)arg1 contactStore:(id)arg2;

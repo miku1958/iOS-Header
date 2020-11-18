@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface CKMessageEntryRecordedAudioView : UIView <CKAudioControllerDelegate>
 {
     CKAudioMediaObject *_audioMediaObject;
-    UIButton *_deleteButton;
+    UIButton *_playPauseDeleteButton;
     id<CKMessageEntryRecordedAudioViewDelegate> _delegate;
     UIVisualEffectView *_blurView;
     UIImageView *_balloonImageView;
@@ -33,10 +33,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CKMessageEntryRecordedAudioViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UIButton *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPlaying;
+@property (strong, nonatomic) UIButton *playPauseDeleteButton; // @synthesize playPauseDeleteButton=_playPauseDeleteButton;
 @property (readonly) Class superclass;
 @property (nonatomic) double time; // @synthesize time=_time;
 @property (copy, nonatomic) NSString *timeFormat; // @synthesize timeFormat=_timeFormat;
@@ -49,12 +49,16 @@ __attribute__((visibility("hidden")))
 - (void)audioController:(id)arg1 mediaObjectProgressDidChange:(id)arg2 currentTime:(double)arg3 duration:(double)arg4;
 - (void)audioControllerDidPause:(id)arg1;
 - (void)audioControllerDidStop:(id)arg1;
+- (void)audioControllerPlayingDidChange:(id)arg1;
 - (void)dealloc;
+- (void)handlePlayPauseDelete:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)pause;
 - (void)play;
+- (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updatePlayPauseDeleteButton;
 - (void)updateProgress;
 - (void)updateTimeString;
 

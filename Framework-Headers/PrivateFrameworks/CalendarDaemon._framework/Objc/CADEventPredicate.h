@@ -15,11 +15,21 @@
 {
     BOOL _shouldLoadProposedTimesInRange;
     BOOL _shouldLoadDefaultProperties;
+    BOOL _excludeAllDayEvents;
+    BOOL _excludeTimedEvents;
+    BOOL _excludeDeclined;
+    BOOL _excludeProposed;
+    BOOL _excludeDeclinedUnlessProposed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *eventUUID;
+@property (nonatomic) BOOL excludeAllDayEvents; // @synthesize excludeAllDayEvents=_excludeAllDayEvents;
+@property (nonatomic) BOOL excludeDeclined; // @synthesize excludeDeclined=_excludeDeclined;
+@property (nonatomic) BOOL excludeDeclinedUnlessProposed; // @synthesize excludeDeclinedUnlessProposed=_excludeDeclinedUnlessProposed;
+@property (nonatomic) BOOL excludeProposed; // @synthesize excludeProposed=_excludeProposed;
+@property (nonatomic) BOOL excludeTimedEvents; // @synthesize excludeTimedEvents=_excludeTimedEvents;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL shouldLoadDefaultProperties; // @synthesize shouldLoadDefaultProperties=_shouldLoadDefaultProperties;
 @property (readonly, nonatomic) BOOL shouldLoadProposedTimesInRange; // @synthesize shouldLoadProposedTimesInRange=_shouldLoadProposedTimesInRange;

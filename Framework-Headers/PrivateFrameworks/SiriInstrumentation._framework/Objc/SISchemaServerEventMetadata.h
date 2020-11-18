@@ -14,8 +14,18 @@
     long long _timestampNs;
     NSData *_siriDeviceID;
     NSString *_serverPod;
+    struct {
+        unsigned int timestampNs:1;
+    } _has;
+    BOOL _hasTurnID;
+    BOOL _hasSiriDeviceID;
+    BOOL _hasServerPod;
 }
 
+@property (nonatomic) BOOL hasServerPod; // @synthesize hasServerPod=_hasServerPod;
+@property (nonatomic) BOOL hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property (nonatomic) BOOL hasTimestampNs;
+@property (nonatomic) BOOL hasTurnID; // @synthesize hasTurnID=_hasTurnID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *serverPod; // @synthesize serverPod=_serverPod;
 @property (copy, nonatomic) NSData *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;

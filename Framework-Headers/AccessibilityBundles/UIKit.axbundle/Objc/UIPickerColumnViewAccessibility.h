@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityKeyCommands;
 - (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
+- (id)_accessibilityNativeFocusPreferredElement;
 - (void)_fkaMoveToNextColumn;
 - (void)_fkaMoveToPreviousColumn;
 - (void)_fkaScrollToNextRow;

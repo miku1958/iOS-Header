@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) unsigned long long jointCount; // @synthesize jointCount=_jointCount;
 
 - (void).cxx_destruct;
-- (id)initPrivate;
 - (BOOL)isJointTracked:(long long)arg1;
 
 @end

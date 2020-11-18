@@ -6,9 +6,11 @@
 
 #import <EventKitUI/EKEditItemViewController.h>
 
-@class EKEvent, EKEventAttendeePicker, NSArray;
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 
-@interface EKEventAttendeesEditViewController : EKEditItemViewController
+@class EKEvent, EKEventAttendeePicker, NSArray, NSString;
+
+@interface EKEventAttendeesEditViewController : EKEditItemViewController <EKUIManagedViewController>
 {
     EKEventAttendeePicker *_picker;
     EKEvent *_event;
@@ -19,7 +21,11 @@
 
 @property (nonatomic) BOOL appendOnly; // @synthesize appendOnly=_appendOnly;
 @property (copy, nonatomic) NSArray *attendees;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableShowingButtons; // @synthesize disableShowingButtons=_disableShowingButtons;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
@@ -30,6 +36,7 @@
 - (void)_doneTapped:(id)arg1;
 - (id)_firstInvalidRecipientAddress;
 - (id)_recipientFromAttendee:(id)arg1;
+- (BOOL)canManagePresentationStyle;
 - (BOOL)editItemShouldBeAskedForInjectableViewController;
 - (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
 - (BOOL)isModalInPresentation;
@@ -39,6 +46,7 @@
 - (BOOL)validateAllowingAlert:(BOOL)arg1;
 - (BOOL)validateEmailWithString:(id)arg1;
 - (void)viewDidLoad;
+- (BOOL)wantsManagement;
 
 @end
 

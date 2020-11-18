@@ -29,14 +29,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_filePathFromUnsanitizedFilename:(id)arg1;
 - (void)_queue_addConnection:(id)arg1;
 - (void)_queue_removeConnection:(id)arg1;
 - (id)initWithRecentAppLayouts:(id)arg1 demoFilteringController:(id)arg2;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
-- (BOOL)loadStashedSwitcherModelFromFilename:(id)arg1;
+- (BOOL)loadStashedSwitcherModelFromPath:(id)arg1;
 - (BOOL)setShouldDisableSwitcherModelUpdates:(id)arg1;
-- (BOOL)stashSwitcherModelToFilename:(id)arg1;
+- (BOOL)stashSwitcherModelToPath:(id)arg1;
 - (BOOL)updateHiddenApplicationBundleIDs:(id)arg1;
 
 @end

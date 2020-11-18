@@ -15,9 +15,9 @@
     BMItem *_item;
 }
 
-@property (strong) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong) BMItem *item; // @synthesize item=_item;
-@property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) BMItem *item; // @synthesize item=_item;
+@property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 - (void).cxx_destruct;
 - (id)description;

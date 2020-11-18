@@ -4,21 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphOptimizedEdge.h>
 
 @class CLLocation, NSDate;
 
-@interface PGGraphAddressEdge : PGGraphEdge
+@interface PGGraphAddressEdge : PGGraphOptimizedEdge
 {
+    float _weight;
+    double _timestampUTCStart;
+    double _timestampUTCEnd;
+    struct CLLocationCoordinate2D _photoCoordinate;
 }
 
-@property (readonly, nonatomic) struct CLLocationCoordinate2D photoCoordinate;
-@property (readonly, nonatomic) CLLocation *photoLocation;
-@property (readonly, nonatomic) double timestampUTCEnd;
-@property (readonly, nonatomic) double timestampUTCStart;
-@property (readonly, nonatomic) NSDate *universalEndDate;
-@property (readonly, nonatomic) NSDate *universalStartDate;
+@property (nonatomic) struct CLLocationCoordinate2D photoCoordinate; // @synthesize photoCoordinate=_photoCoordinate;
+@property (strong, nonatomic) CLLocation *photoLocation;
+@property (readonly, nonatomic) double timestampUTCEnd; // @synthesize timestampUTCEnd=_timestampUTCEnd;
+@property (readonly, nonatomic) double timestampUTCStart; // @synthesize timestampUTCStart=_timestampUTCStart;
+@property (strong, nonatomic) NSDate *universalEndDate;
+@property (strong, nonatomic) NSDate *universalStartDate;
 
++ (id)filter;
+- (unsigned short)domain;
+- (id)edgeDescription;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 fromMomentNode:(id)arg2 toAddressNode:(id)arg3 weight:(float)arg4;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
+- (void)setWeight:(float)arg1;
+- (float)weight;
 
 @end
 

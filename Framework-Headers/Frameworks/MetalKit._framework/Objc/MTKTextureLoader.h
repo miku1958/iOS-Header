@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTLCommandQueue, MTLDevice, OS_dispatch_queue, OS_dispatch_semaphore, TXRBufferAllocator;
+@protocol MTLCommandQueue, MTLDevice, MTLDeviceSPI, OS_dispatch_queue, OS_dispatch_semaphore, TXRBufferAllocator;
 
 @interface MTKTextureLoader : NSObject
 {
@@ -16,10 +16,10 @@
     NSObject<OS_dispatch_semaphore> *_loadSemaphore;
     id<MTLCommandQueue> _blitQueue;
     id<TXRBufferAllocator> _bufferAllocator;
-    id<MTLDevice> _device;
+    id<MTLDeviceSPI> _device;
 }
 
-@property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
+@property (readonly, nonatomic) id<MTLDevice> device;
 
 - (unsigned long long)_determineFileType:(id)arg1;
 - (void)_loadCGImage:(struct CGImage *)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

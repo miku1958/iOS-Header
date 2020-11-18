@@ -14,6 +14,7 @@
 @optional
 - (void)acceptVisitor:(id<TSKModelVisitor>)arg1;
 - (NSEnumerator *)childEnumerator;
+- (NSEnumerator *)childEnumeratorForUserFlags:(unsigned long long)arg1;
 - (NSEnumerator *)childEnumeratorForUserSearch;
 - (NSString *)modelPathComponentForChild:(id<TSKModel>)arg1;
 @end

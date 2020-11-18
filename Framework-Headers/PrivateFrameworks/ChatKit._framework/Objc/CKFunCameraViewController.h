@@ -52,6 +52,7 @@
 - (void)openURL:(id)arg1 pluginID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)physicalCaptureNotifierDidChangeState:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;
 - (void)setLocalUserIsTyping:(BOOL)arg1;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

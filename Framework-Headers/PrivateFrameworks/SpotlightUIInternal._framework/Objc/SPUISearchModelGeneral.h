@@ -6,7 +6,7 @@
 
 #import <SpotlightUIInternal/SPUISearchModel.h>
 
-@class NSObject, SPClientSession;
+@class NSObject, NSString, SPClientSession;
 @protocol OS_dispatch_queue;
 
 @interface SPUISearchModelGeneral : SPUISearchModel
@@ -15,19 +15,23 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
+@property (readonly) NSString *rankingDebugLog;
 @property (strong) SPClientSession *session; // @synthesize session=_session;
 @property (strong) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (void)_setInfinitePatience:(BOOL)arg1;
 - (void)activate;
 - (void)clear;
 - (void)deactivate;
 - (BOOL)forceStableResults;
 - (BOOL)infinitePatience;
 - (id)init;
+- (long long)maxUISuggestions;
 - (BOOL)queryInProgress;
 - (void)setForceStableResults:(BOOL)arg1;
 - (void)setInfinitePatience:(BOOL)arg1;
+- (void)setMaxUISuggestions:(long long)arg1;
 - (void)updateWithQueryContext:(id)arg1;
 - (void)updatesDisabled;
 - (void)updatesEnabled;

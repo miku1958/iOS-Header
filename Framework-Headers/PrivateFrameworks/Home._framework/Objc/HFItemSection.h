@@ -12,11 +12,14 @@
 #import <Home/NSMutableCopying-Protocol.h>
 
 @class NSArray, NSAttributedString, NSDictionary, NSString;
+@protocol HFItemSectionAccessoryButtonHeaderDelegate;
 
 @interface HFItemSection : NSObject <HFDiffableItemGroup, NSCopying, NSMutableCopying, NAIdentifiable>
 {
     NSString *_identifier;
     NSString *_headerTitle;
+    NSString *_headerAccessoryButtonTitle;
+    id<HFItemSectionAccessoryButtonHeaderDelegate> _headerAccessoryButtonDelegate;
     NSString *_footerTitle;
     NSAttributedString *_attributedFooterTitle;
     NSDictionary *_userInfo;
@@ -30,6 +33,8 @@
 @property (copy, nonatomic) NSString *footerTitle; // @synthesize footerTitle=_footerTitle;
 @property (readonly, copy, nonatomic) NSString *groupIdentifier;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<HFItemSectionAccessoryButtonHeaderDelegate> headerAccessoryButtonDelegate; // @synthesize headerAccessoryButtonDelegate=_headerAccessoryButtonDelegate;
+@property (copy, nonatomic) NSString *headerAccessoryButtonTitle; // @synthesize headerAccessoryButtonTitle=_headerAccessoryButtonTitle;
 @property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;

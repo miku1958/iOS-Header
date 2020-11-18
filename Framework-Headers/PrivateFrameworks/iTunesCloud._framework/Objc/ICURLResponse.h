@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDate, NSURL, NSURLRequest, NSURLResponse;
+@class NSData, NSDate, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTaskTransactionMetrics;
 
 @interface ICURLResponse : NSObject
 {
@@ -16,18 +16,20 @@
     NSURLResponse *_urlResponse;
     NSData *_bodyData;
     NSURL *_bodyDataURL;
+    NSURLSessionTaskTransactionMetrics *_transactionMetrics;
 }
 
 @property (readonly, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property (readonly, nonatomic) NSURL *bodyDataURL; // @synthesize bodyDataURL=_bodyDataURL;
 @property (readonly, nonatomic) NSDate *expirationDate;
+@property (strong, nonatomic) NSURLSessionTaskTransactionMetrics *transactionMetrics; // @synthesize transactionMetrics=_transactionMetrics;
 @property (readonly, nonatomic) NSURLRequest *urlRequest; // @synthesize urlRequest=_urlRequest;
 @property (readonly, nonatomic) NSURLResponse *urlResponse; // @synthesize urlResponse=_urlResponse;
 
 - (void).cxx_destruct;
 - (void)_prepareParsedBodyResponse;
-- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyData:(id)arg3;
-- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyDataURL:(id)arg3;
+- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyData:(id)arg3 transactionMetrics:(id)arg4;
+- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyDataURL:(id)arg3 transactionMetrics:(id)arg4;
 - (id)parsedBody;
 - (id)parsedBodyArray;
 - (id)parsedBodyDictionary;

@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBViewControllerTransitionContextDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSSet, NSString, SBHUDController;
+@class NSMutableArray, NSMutableSet, NSString, SBHUDController;
 @protocol _SBHUDHostViewControllerDelegate;
 
 @interface _SBHUDHostViewController : SBFTouchPassThroughViewController <SBViewControllerTransitionContextDelegate>
@@ -22,14 +22,9 @@
     id<_SBHUDHostViewControllerDelegate> _delegate;
 }
 
-@property (readonly, weak, nonatomic) SBHUDController *HUDController; // @synthesize HUDController=_HUDController;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<_SBHUDHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned long long numberOfActiveTransitions;
-@property (readonly, nonatomic) NSSet *presentedHUDs; // @synthesize presentedHUDs=_presentedHUDs;
-@property (readonly, nonatomic) NSSet *presentingHUDs; // @synthesize presentingHUDs=_presentingHUDs;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -39,15 +34,6 @@
 - (void)_executePresentNewHUD:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_executeViewControllerTransitionContext:(id)arg1;
 - (id)_transitionContextMatchingHUD:(id)arg1 withinContainer:(id)arg2;
-- (void)dismissHUD:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)dismissHUDs:(BOOL)arg1;
-- (id)initWithHUDController:(id)arg1;
-- (BOOL)isHUDBeingDismissed:(id)arg1;
-- (BOOL)isHUDBeingPresented:(id)arg1;
-- (id)knownHUDForIdentifier:(id)arg1;
-- (void)presentHUD:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)reverseHUDDismissal:(id)arg1;
-- (void)reverseHUDPresentation:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)transitionDidFinish:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

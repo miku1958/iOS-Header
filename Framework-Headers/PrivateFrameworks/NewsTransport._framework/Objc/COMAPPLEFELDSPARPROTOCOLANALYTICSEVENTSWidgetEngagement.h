@@ -12,8 +12,10 @@
 
 @interface COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement : PBCodable <NSCopying>
 {
+    long long _contentFetchDate;
     NSString *_articleId;
     NSData *_articleViewingSessionId;
+    NSString *_contentId;
     NSString *_engagementTargetUrl;
     NSMutableArray *_otherVisibleSections;
     NSString *_sourceChannelId;
@@ -22,20 +24,26 @@
     int _widgetArticleCountInSection;
     int _widgetArticleRank;
     int _widgetArticleRankInSection;
+    NSString *_widgetContentId;
     int _widgetContentType;
+    int _widgetDisplayMode;
     int _widgetEngagementType;
     int _widgetSectionDisplayRank;
     NSString *_widgetSectionId;
     NSString *_widgetUserId;
     int _widgetVideoPresentationReason;
-    CDStruct_de6d94e7 _has;
+    CDStruct_7b5281db _has;
 }
 
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
+@property (nonatomic) long long contentFetchDate; // @synthesize contentFetchDate=_contentFetchDate;
+@property (strong, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property (strong, nonatomic) NSString *engagementTargetUrl; // @synthesize engagementTargetUrl=_engagementTargetUrl;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
+@property (nonatomic) BOOL hasContentFetchDate;
+@property (readonly, nonatomic) BOOL hasContentId;
 @property (readonly, nonatomic) BOOL hasEngagementTargetUrl;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (readonly, nonatomic) BOOL hasWebEmbedId;
@@ -43,7 +51,9 @@
 @property (nonatomic) BOOL hasWidgetArticleCountInSection;
 @property (nonatomic) BOOL hasWidgetArticleRank;
 @property (nonatomic) BOOL hasWidgetArticleRankInSection;
+@property (readonly, nonatomic) BOOL hasWidgetContentId;
 @property (nonatomic) BOOL hasWidgetContentType;
+@property (nonatomic) BOOL hasWidgetDisplayMode;
 @property (nonatomic) BOOL hasWidgetEngagementType;
 @property (nonatomic) BOOL hasWidgetSectionDisplayRank;
 @property (readonly, nonatomic) BOOL hasWidgetSectionId;
@@ -56,7 +66,9 @@
 @property (nonatomic) int widgetArticleCountInSection; // @synthesize widgetArticleCountInSection=_widgetArticleCountInSection;
 @property (nonatomic) int widgetArticleRank; // @synthesize widgetArticleRank=_widgetArticleRank;
 @property (nonatomic) int widgetArticleRankInSection; // @synthesize widgetArticleRankInSection=_widgetArticleRankInSection;
+@property (strong, nonatomic) NSString *widgetContentId; // @synthesize widgetContentId=_widgetContentId;
 @property (nonatomic) int widgetContentType; // @synthesize widgetContentType=_widgetContentType;
+@property (nonatomic) int widgetDisplayMode; // @synthesize widgetDisplayMode=_widgetDisplayMode;
 @property (nonatomic) int widgetEngagementType; // @synthesize widgetEngagementType=_widgetEngagementType;
 @property (nonatomic) int widgetSectionDisplayRank; // @synthesize widgetSectionDisplayRank=_widgetSectionDisplayRank;
 @property (strong, nonatomic) NSString *widgetSectionId; // @synthesize widgetSectionId=_widgetSectionId;
@@ -66,6 +78,7 @@
 + (Class)otherVisibleSectionsType;
 - (void).cxx_destruct;
 - (int)StringAsWidgetContentType:(id)arg1;
+- (int)StringAsWidgetDisplayMode:(id)arg1;
 - (int)StringAsWidgetEngagementType:(id)arg1;
 - (int)StringAsWidgetVideoPresentationReason:(id)arg1;
 - (void)addOtherVisibleSections:(id)arg1;
@@ -81,6 +94,7 @@
 - (unsigned long long)otherVisibleSectionsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)widgetContentTypeAsString:(int)arg1;
+- (id)widgetDisplayModeAsString:(int)arg1;
 - (id)widgetEngagementTypeAsString:(int)arg1;
 - (id)widgetVideoPresentationReasonAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -10,15 +10,20 @@
 @protocol ICLegacyAccount, ICLegacyFolder, ICLegacyNote;
 
 @protocol ICLegacyFolder <NSObject>
-- (id<ICLegacyAccount>)account;
+
+@property (readonly, nonatomic) id<ICLegacyAccount> account;
+@property (readonly, nonatomic) NSSet *changes;
+@property (readonly, nonatomic) long long depth;
+@property (readonly, nonatomic) BOOL isDefaultFolder;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
+@property (readonly, nonatomic) BOOL isTrashFolder;
+@property (readonly, copy, nonatomic) NSString *localizedTitle;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSManagedObjectID *objectID;
+@property (readonly, nonatomic) id<ICLegacyFolder> parentFolder;
+
 - (void)addNotesObject:(id<ICLegacyNote>)arg1;
-- (NSSet *)changes;
-- (BOOL)isDeletedOrInTrash;
-- (NSManagedObjectContext *)managedObjectContext;
-- (NSString *)name;
 - (id<ICLegacyNote>)newNoteInContext:(NoteContext *)arg1;
-- (NSManagedObjectID *)objectID;
-- (id<ICLegacyFolder>)parentFolder;
-- (NSString *)title;
 @end
 

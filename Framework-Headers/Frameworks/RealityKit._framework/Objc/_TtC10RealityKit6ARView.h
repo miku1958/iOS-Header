@@ -6,15 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE, NSArray;
+#import <RealityKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@interface _TtC10RealityKit6ARView : UIView
+@class CALayer, MISSING_TYPE, NSArray;
+
+@interface _TtC10RealityKit6ARView : UIView <UIGestureRecognizerDelegate>
 {
     MISSING_TYPE *_scene;
     MISSING_TYPE *__delegatePrivate;
     MISSING_TYPE *debugOptions;
     MISSING_TYPE *initialized;
     MISSING_TYPE *engineStartedByThisView;
+    MISSING_TYPE *currentIBL;
     MISSING_TYPE *environment;
     MISSING_TYPE *__environmentEntity;
     MISSING_TYPE *__enableAutomaticFrameRate;
@@ -39,13 +42,28 @@
     MISSING_TYPE *__disableStatisticsRendering;
 }
 
+@property (nonatomic) double contentScaleFactor;
 @property (nonatomic, readonly) NSArray *entityAccessibilityWrappers;
+@property (nonatomic, readonly) CALayer *renderLayer;
 
++ (Class)layerClass;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)didMoveToSuperview;
 - (float)distanceInMetersFromEntityAccessibilityWrapper:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)handleSingleTapWithRecognizer:(id)arg1;
+- (BOOL)handleTapForEntityAccessibilityWrapper:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (void)restartEngineWithNotification:(id)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)willResignActiveWithNotification:(id)arg1;
 
 @end
 

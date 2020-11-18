@@ -315,32 +315,34 @@ struct UIStateArchive {
     struct Reference *_field15;
     struct Reference *_field16;
     struct Reference *_field17;
-    float _field18;
-    BOOL _field19;
+    struct Reference *_field18;
+    float _field19;
     BOOL _field20;
     BOOL _field21;
     BOOL _field22;
-    int _field23;
-    unsigned int _field24;
-    float _field25;
-    BOOL _field26;
+    BOOL _field23;
+    int _field24;
+    unsigned int _field25;
+    float _field26;
     BOOL _field27;
     BOOL _field28;
     BOOL _field29;
-    float _field30;
-    int _field31;
-    float _field32;
-    BOOL _field33;
+    BOOL _field30;
+    float _field31;
+    int _field32;
+    float _field33;
     BOOL _field34;
-    float _field35;
+    BOOL _field35;
     BOOL _field36;
-    BOOL _field37;
+    float _field37;
     BOOL _field38;
     BOOL _field39;
-    int _field40;
+    BOOL _field40;
     BOOL _field41;
-    BOOL _field42;
-    struct CachedSize _field43;
+    int _field42;
+    BOOL _field43;
+    BOOL _field44;
+    struct CachedSize _field45;
 };
 
 struct UUID;
@@ -348,10 +350,6 @@ struct UUID;
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
 };
 
 struct atomic<int> {
@@ -362,18 +360,6 @@ struct atomic<int> {
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>;
 
-struct multimap<unsigned long, TPPageLayout *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, TPPageLayout *>>> {
-    struct __tree<std::__1::__value_type<unsigned long, TPPageLayout *>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TPPageLayout *>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, TPPageLayout *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, TPPageLayout *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TPPageLayout *>, std::__1::less<unsigned long>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
 struct pair<double, double> {
     double _field1;
     double _field2;
@@ -382,18 +368,6 @@ struct pair<double, double> {
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct multimap<unsigned long, TPPageLayout *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, TPPageLayout *>>> {
-    struct __tree<std::__1::__value_type<unsigned long, TPPageLayout *>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TPPageLayout *>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, TPPageLayout *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, TPPageLayout *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TPPageLayout *>, std::__1::less<unsigned long>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-} multimap_41f9c887;
-
 typedef struct pair<double, double> {
     double _field1;
     double _field2;

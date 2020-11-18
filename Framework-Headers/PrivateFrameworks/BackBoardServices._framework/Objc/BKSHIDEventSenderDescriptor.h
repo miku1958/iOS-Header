@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/BSProtobufSerializable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSMutableCopying-Protocol.h>
@@ -13,7 +14,7 @@
 
 @class BKSHIDEventDisplay, NSString;
 
-@interface BKSHIDEventSenderDescriptor : NSObject <BSProtobufSerializable, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface BKSHIDEventSenderDescriptor : NSObject <BSProtobufSerializable, BSDescriptionStreamable, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     long long _hardwareType;
     BKSHIDEventDisplay *_associatedDisplay;
@@ -40,6 +41,7 @@
 + (id)wildcard;
 - (void).cxx_destruct;
 - (id)_initWithHardwareType:(long long)arg1 associatedDisplay:(id)arg2 authenticated:(BOOL)arg3 primaryPage:(unsigned int)arg4 primaryUsage:(unsigned int)arg5 senderID:(unsigned long long)arg6;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

@@ -6,12 +6,12 @@
 
 #import <Message/MFMailMessage.h>
 
-#import <Message/EDLibraryMessage-Protocol.h>
+#import <Message/EDPersistedMessage-Protocol.h>
 
 @class ECAngleBracketIDHash, ECMessageFlags, ECSubject, MFMailboxUid, MFMessageHeaders, MailAccount, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 @protocol ECMimePart;
 
-@interface MFLibraryMessage : MFMailMessage <EDLibraryMessage>
+@interface MFLibraryMessage : MFMailMessage <EDPersistedMessage>
 {
     long long _libraryID;
     NSString *_remoteID;
@@ -29,20 +29,22 @@
 @property (readonly, copy, nonatomic) NSArray *bcc;
 @property (readonly, nonatomic) id<ECMimePart> bodyPart;
 @property (readonly, copy, nonatomic) NSArray *cc;
+@property (readonly) unsigned long long conversationFlags;
 @property (readonly, nonatomic) long long conversationID;
 @property (readonly, nonatomic) NSDate *dateReceived;
 @property (readonly, nonatomic) NSDate *dateSent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSUUID *documentID; // @dynamic documentID;
+@property (readonly, nonatomic) unsigned long long fileSize;
 @property (readonly, nonatomic) ECMessageFlags *flags;
 @property (readonly, copy, nonatomic) NSArray *from;
+@property (readonly, nonatomic) long long globalMessageID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MFMessageHeaders *headers; // @dynamic headers;
 @property (readonly, copy, nonatomic) NSDictionary *headersDictionary;
 @property (readonly, nonatomic) BOOL isServerSearchResult;
 @property (readonly) NSSet *labels;
-@property (readonly, nonatomic) long long libraryID;
 @property (readonly, nonatomic) ECAngleBracketIDHash *listIDHash;
 @property (readonly, copy, nonatomic) NSArray *listUnsubscribe;
 @property (readonly, nonatomic) MFMailboxUid *mailbox; // @dynamic mailbox;
@@ -50,6 +52,7 @@
 @property (readonly, nonatomic) ECAngleBracketIDHash *messageIDHeaderHash;
 @property (readonly, nonatomic) unsigned long long numberOfAttachments;
 @property (readonly, nonatomic, getter=isPartOfExistingThread) BOOL partOfExistingThread;
+@property (readonly, nonatomic) long long persistedMessageID;
 @property (readonly, copy, nonatomic) NSString *persistentID;
 @property (copy, nonatomic) NSArray *references; // @synthesize references=_references;
 @property (readonly, copy, nonatomic) NSString *remoteID;
@@ -68,11 +71,9 @@
 - (id)attachmentStorageLocation;
 - (void)commit;
 - (long long)compareByUidWithMessage:(id)arg1;
-- (unsigned long long)conversationFlags;
 - (id)copyMessageInfo;
 - (id)dataConsumerForMimePart:(id)arg1;
 - (id)dataPathForMimePart:(id)arg1;
-- (unsigned long long)fileSize;
 - (BOOL)hasTemporaryUid;
 - (id)initWithLibraryID:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
@@ -80,6 +81,7 @@
 - (BOOL)isMessageContentsLocallyAvailable;
 - (BOOL)isPartial;
 - (id)library;
+- (long long)libraryID;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (long long)mailboxID;
 - (id)mailboxName;

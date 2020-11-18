@@ -9,22 +9,19 @@
 #import <NetworkExtension/NEPrettyDescription-Protocol.h>
 
 @class NSData, NSMutableDictionary;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface NEPolicySession : NSObject <NEPrettyDescription>
 {
     unsigned int _lastSendMessageID;
-    int _controlSocket;
+    int _sessionFD;
     long long _internalPriority;
     NSMutableDictionary *_policies;
     NSObject<OS_dispatch_queue> *_ioQueue;
     NSObject<OS_dispatch_semaphore> *_responseSemaphore;
     NSData *_lastReceivedResponse;
-    NSObject<OS_dispatch_source> *_controlSource;
 }
 
-@property int controlSocket; // @synthesize controlSocket=_controlSocket;
-@property (strong) NSObject<OS_dispatch_source> *controlSource; // @synthesize controlSource=_controlSource;
 @property long long internalPriority; // @synthesize internalPriority=_internalPriority;
 @property (strong) NSObject<OS_dispatch_queue> *ioQueue; // @synthesize ioQueue=_ioQueue;
 @property (strong) NSData *lastReceivedResponse; // @synthesize lastReceivedResponse=_lastReceivedResponse;
@@ -32,6 +29,7 @@
 @property (strong) NSMutableDictionary *policies; // @synthesize policies=_policies;
 @property long long priority;
 @property (strong) NSObject<OS_dispatch_semaphore> *responseSemaphore; // @synthesize responseSemaphore=_responseSemaphore;
+@property int sessionFD; // @synthesize sessionFD=_sessionFD;
 
 + (void)addTLVToMessage:(id)arg1 type:(unsigned char)arg2 length:(unsigned long long)arg3 value:(const void *)arg4;
 + (id)copyTLVForBytes:(const char *)arg1 messageLength:(unsigned long long)arg2 type:(unsigned char)arg3 includeHeaderOffset:(BOOL)arg4 n:(int)arg5;
@@ -45,8 +43,8 @@
 + (id)readTLVOfType:(unsigned char)arg1 startCursor:(char *)arg2 currentCursor:(char **)arg3 totalLength:(unsigned long long)arg4 readTLVInstance:(unsigned int)arg5;
 - (void).cxx_destruct;
 - (unsigned long long)addPolicy:(id)arg1;
+- (unsigned long long)addPolicy:(id)arg1 storeLocally:(BOOL)arg2;
 - (BOOL)apply;
-- (id)copyReceivedResponseForMessageID:(unsigned int)arg1;
 - (id)createTLVMessage:(unsigned char)arg1;
 - (void)dealloc;
 - (id)description;
@@ -54,16 +52,15 @@
 - (id)dumpKernelPolicies;
 - (int)dupSocket;
 - (id)init;
+- (id)initFromPrivilegedProcess;
 - (id)initWithSessionName:(id)arg1;
 - (id)initWithSocket:(int)arg1;
 - (BOOL)lockSessionToCurrentProcess;
-- (id)openControlSource;
 - (id)policyWithID:(unsigned long long)arg1;
 - (id)priorityString;
 - (BOOL)registerServiceUUID:(id)arg1;
 - (BOOL)removeAllPolicies;
 - (BOOL)removePolicyWithID:(unsigned long long)arg1;
-- (BOOL)sendMessage:(id)arg1;
 - (BOOL)unregisterServiceUUID:(id)arg1;
 
 @end

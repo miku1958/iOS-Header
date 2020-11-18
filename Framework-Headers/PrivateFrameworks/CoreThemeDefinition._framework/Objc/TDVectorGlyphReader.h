@@ -16,9 +16,12 @@
     NSDictionary *_guideNodes;
     NSDictionary *_vectorGlyphNodes;
     NSMutableDictionary *_vectorGlyphWithWeightSize;
+    float _templateVersion;
     double _sourcePointSize;
     double _defaultPointSize;
 }
+
+@property (readonly) float templateVersion; // @synthesize templateVersion=_templateVersion;
 
 + (id)vectorGlyphReaderWithURL:(id)arg1 error:(id *)arg2;
 + (id)vectorGlyphReaderWithURL:(id)arg1 platform:(long long)arg2 error:(id *)arg3;

@@ -73,7 +73,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 @property (readonly, nonatomic) PXVideoPlayerView *videoPlayerView; // @synthesize videoPlayerView=_videoPlayerView;
 
-+ (BOOL)_allowHighQualityVideoOverlayButton;
 + (Class)_contentViewClass;
 + (long long)_videoOverlayButtonStyle;
 + (void)preloadResources;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FPPreflightUserInteractionAlert : NSObject
 {
     BOOL _enableContinue;
+    BOOL _continueIsDestructive;
     FPStringFormat *_titleFormat;
     FPStringFormat *_subtitleFormat;
     FPStringFormat *_continueCaptionFormat;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) FPStringFormat *cancelCaptionFormat; // @synthesize cancelCaptionFormat=_cancelCaptionFormat;
 @property (strong, nonatomic) FPStringFormat *continueCaptionFormat; // @synthesize continueCaptionFormat=_continueCaptionFormat;
+@property (nonatomic) BOOL continueIsDestructive; // @synthesize continueIsDestructive=_continueIsDestructive;
 @property (nonatomic) BOOL enableContinue; // @synthesize enableContinue=_enableContinue;
 @property (strong, nonatomic) FPStringFormat *subtitleFormat; // @synthesize subtitleFormat=_subtitleFormat;
 @property (strong, nonatomic) FPStringFormat *titleFormat; // @synthesize titleFormat=_titleFormat;

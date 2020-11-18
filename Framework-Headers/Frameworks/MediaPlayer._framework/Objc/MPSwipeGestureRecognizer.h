@@ -8,6 +8,7 @@
 
 @class UITouch;
 
+__attribute__((visibility("hidden")))
 @interface MPSwipeGestureRecognizer : UIGestureRecognizer
 {
     struct CGPoint _startLocation;

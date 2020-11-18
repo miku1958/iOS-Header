@@ -23,7 +23,7 @@
 - (void)dealloc;
 - (BOOL)devicePresenceDetected;
 - (void)getPickedRouteHasVolumeControlWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getRoutesForCategory:(id)arg1;
 - (id)init;
 - (void)setDiscoveryMode:(long long)arg1;
 

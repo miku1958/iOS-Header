@@ -11,7 +11,6 @@
 
 @class NSDictionary, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MIStoreMetadataSubGenre : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_genre;

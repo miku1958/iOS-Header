@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) id<CRKClassKitRosterRequirements> requirements; // @synthesize requirements=_requirements;
 @property (readonly) Class superclass;
 
-+ (id)iteratorWithRequirements:(id)arg1 searchString:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
++ (id)iteratorWithRosterRequirements:(id)arg1 queryGenerator:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)fetchNextUsersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithRequirements:(id)arg1 query:(id)arg2;

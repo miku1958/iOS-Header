@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long recordRow; // @synthesize recordRow=_recordRow;
 
 - (void).cxx_destruct;
-- (id)description;
+- (id)attributeDescriptions;
 - (id)initWithOutputBlockRow:(unsigned long long)arg1 recordRow:(unsigned long long)arg2 model:(id)arg3 queryTable:(id)arg4 externalID:(id)arg5 externalData:(id)arg6;
 
 @end

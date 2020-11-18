@@ -10,7 +10,6 @@
 
 @class GEOTouristInfo;
 
-__attribute__((visibility("hidden")))
 @interface GEOLogMsgStateMapViewLocation : PBCodable <NSCopying>
 {
     GEOTouristInfo *_touristInfo;
@@ -37,7 +36,10 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)locationBucketAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

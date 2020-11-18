@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <AvatarUI/AVTAvatarAttributeEditorColorSectionProtocol-Protocol.h>
+#import <AvatarUI/AVTAvatarAttributeEditorColorSection-Protocol.h>
 
-@class AVTAvatarColorVariationStore, NSArray, NSString;
-@protocol AVTAvatarAttributeEditorHeaderPicker;
+@class AVTAvatarAttributeEditorSectionOptions, AVTAvatarColorVariationStore, NSArray, NSString;
+@protocol AVTAvatarAttributeEditorSectionSupplementalPicker;
 
-@interface AVTAvatarAttributeEditorColorSection : NSObject <AVTAvatarAttributeEditorColorSectionProtocol>
+@interface AVTAvatarAttributeEditorColorSection : NSObject <AVTAvatarAttributeEditorColorSection>
 {
     BOOL _alwaysShowExtended;
     NSString *_localizedName;
     NSString *_identifier;
-    id<AVTAvatarAttributeEditorHeaderPicker> _headerAccessory;
+    id<AVTAvatarAttributeEditorSectionSupplementalPicker> _supplementalPicker;
+    AVTAvatarAttributeEditorSectionOptions *_options;
     NSArray *_primaryItems;
     NSArray *_extendedItems;
     AVTAvatarColorVariationStore *_colorVariationStore;
@@ -28,15 +29,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *extendedItems; // @synthesize extendedItems=_extendedItems;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<AVTAvatarAttributeEditorHeaderPicker> headerAccessory; // @synthesize headerAccessory=_headerAccessory;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options; // @synthesize options=_options;
 @property (readonly, copy, nonatomic) NSArray *primaryItems; // @synthesize primaryItems=_primaryItems;
 @property (readonly, copy, nonatomic) NSArray *sectionItems;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker; // @synthesize supplementalPicker=_supplementalPicker;
 
 - (void).cxx_destruct;
-- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(BOOL)arg6;
+- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(BOOL)arg6 options:(id)arg7;
 - (BOOL)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (BOOL)shouldDisplayTitle;
 

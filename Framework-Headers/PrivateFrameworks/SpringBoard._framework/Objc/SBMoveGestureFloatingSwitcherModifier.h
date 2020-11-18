@@ -20,18 +20,18 @@
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct CGRect)containerViewBounds;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 initialFloatingConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
+- (id)visibleAppLayouts;
 
 @end
 

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)whitelistedBundles;
 - (void)CADCalendar:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADCalendarSetClearedFromNotificationCenter:(id)arg1 error:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(BOOL)arg1 calculateEarliestExpirationDate:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetInviteReplyNotifications:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(id)arg1 excludingDelegateSources:(BOOL)arg2 filteredByShowsNotificationsFlag:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;

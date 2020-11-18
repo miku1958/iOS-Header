@@ -4,31 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SoftwareUpdateServices/SUOptionsBase.h>
 
+#import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString;
 
-@interface SUScanOptions : NSObject <NSSecureCoding>
+@interface SUScanOptions : SUOptionsBase <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     BOOL _forced;
     NSMutableSet *_types;
     NSString *_requestedPMV;
     BOOL _MDMUseDelayPeriod;
+    NSString *_sessionID;
 }
 
 @property (nonatomic) BOOL MDMUseDelayPeriod; // @synthesize MDMUseDelayPeriod=_MDMUseDelayPeriod;
 @property (nonatomic, getter=isForced) BOOL forced; // @synthesize forced=_forced;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
+@property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) NSSet *types; // @synthesize types=_types;
 
 + (BOOL)supportsSecureCoding;
 - (void)addType:(int)arg1;
 - (void)clearTypes;
 - (BOOL)containsType:(int)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -15,7 +15,6 @@
 
 @property (readonly, nonatomic) NSPredicate *predicateEntryWithUpdateTimestamp; // @synthesize predicateEntryWithUpdateTimestamp=_predicateEntryWithUpdateTimestamp;
 
-+ (BOOL)cachedRegion:(id)arg1 isMatchingOtherRegion:(id)arg2;
 - (void).cxx_destruct;
 - (id)_businessItemInRegion:(id)arg1 matchingCategories:(id)arg2 maximumDistance:(double)arg3 forBusinessItems:(id)arg4;
 - (id)_fetchBusinessItemsForMUIDs:(id)arg1;

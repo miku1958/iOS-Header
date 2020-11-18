@@ -8,7 +8,6 @@
 
 @class NSString, RTPredictedLocationOfInterest;
 
-__attribute__((visibility("hidden")))
 @interface EKPredictedLocationOfInterest : NSObject
 {
     long long _type;

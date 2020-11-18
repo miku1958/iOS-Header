@@ -10,8 +10,6 @@
 
 @interface _TtC8NewsFeed28AudioDailyBriefingViewStyler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *durationFormatter;
-    MISSING_TYPE *countdownFormatter;
     MISSING_TYPE *fontBook;
     MISSING_TYPE *colorPaletteProvider;
 }

@@ -8,22 +8,17 @@
 
 #import <Photos/PHAdjustmentDataRequestDelegate-Protocol.h>
 #import <Photos/PHImageRequestDelegate-Protocol.h>
-#import <Photos/PHResourceRepairRequestDelegate-Protocol.h>
-#import <Photos/PHVideoRequestDelegate-Protocol.h>
-#import <Photos/PLTrackableRequestDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSProgress, NSString, PHAsset, PHImageDisplaySpec, PHImageResourceChooser;
 @protocol PHMediaRequestContextDelegate;
 
-@interface PHMediaRequestContext : NSObject <PLTrackableRequestDelegate, PHImageRequestDelegate, PHVideoRequestDelegate, PHAdjustmentDataRequestDelegate, PHResourceRepairRequestDelegate>
+@interface PHMediaRequestContext : NSObject <PHImageRequestDelegate, PHAdjustmentDataRequestDelegate>
 {
     CDUnknownBlockType _resultHandler;
     _Atomic unsigned long long _nextID;
     _Atomic int _repairAttemptCount;
     struct os_unfair_lock_s _lock;
     NSMutableArray *_requests;
-    NSMutableArray *_jobs;
-    NSMutableDictionary *_requestedResourcesByTaskIdentifier;
     NSMutableSet *_inflightRequestIdentifiers;
     BOOL _isCancelled;
     NSMutableDictionary *_progressByTaskIdentifier;
@@ -59,17 +54,18 @@
 + (id)livePhotoRequestContextWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 livePhotoRequestOptions:(id)arg4 displaySpec:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 + (id)videoRequestContextWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 videoRequestOptions:(id)arg4 intent:(long long)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
-- (BOOL)_makeAvailabilityRequest:(id)arg1 forResource:(id)arg2;
 - (id)_produceChildRequestsForRequest:(id)arg1 reportingIsLocallyAvailable:(BOOL)arg2 isDegraded:(BOOL)arg3;
 - (id)_produceChildRequestsForRequest:(id)arg1 withResult:(id)arg2;
 - (void)_registerAndStartRequests:(id)arg1;
 - (id)_requestWithIdentifier:(id)arg1;
 - (void)_setupProgressIfNeeded;
 - (void)adjustmentDataRequest:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
+- (void)beginCustomAsyncWorkWithIdentifier:(id)arg1;
 - (void)cancel;
+- (void)finishCustomAsyncWorkWithIdentifier:(id)arg1;
 - (void)imageRequest:(id)arg1 isQueryingCacheAndDidWait:(BOOL *)arg2 didFindImage:(BOOL *)arg3 resultHandler:(CDUnknownBlockType)arg4;
-- (BOOL)imageRequest:(id)arg1 isRequestingRepairAndRetryForDataStoreKey:(id)arg2 inStore:(id)arg3 assetObjectID:(id)arg4 forValidationErrors:(id)arg5;
 - (void)imageRequest:(id)arg1 isRequestingScheduledWorkBlock:(CDUnknownBlockType)arg2;
+- (BOOL)imageRequestCanRequestRepair:(id)arg1;
 - (id)initWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 displaySpec:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)initialRequests;
 - (BOOL)isCancelled;
@@ -77,7 +73,8 @@
 - (BOOL)isSynchronous;
 - (void)mediaRequest:(id)arg1 didFindLocallyAvailableResult:(BOOL)arg2 isDegraded:(BOOL)arg3;
 - (void)mediaRequest:(id)arg1 didFinishWithResult:(id)arg2;
-- (BOOL)mediaRequest:(id)arg1 didStartLocalAvailabilityChangeRequestForResource:(id)arg2;
+- (void)mediaRequest:(id)arg1 didReportProgress:(id)arg2;
+- (void)mediaRequest:(id)arg1 didRequestRetryWithHintsAllowed:(BOOL)arg2;
 - (unsigned long long)nextRequestIndex;
 - (void)processMediaResult:(id)arg1 forRequest:(id)arg2;
 - (id)produceChildRequestsForRequest:(id)arg1 reportingIsLocallyAvailable:(BOOL)arg2 isDegraded:(BOOL)arg3 result:(id)arg4;
@@ -85,19 +82,10 @@
 - (id)progresses;
 - (BOOL)representsShareableHighQualityResource;
 - (void)requestWithIdentifier:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
-- (void)resourceAvailabilityChangeRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
-- (void)resourceAvailabilityChangeRequest:(id)arg1 didLoadData:(id)arg2;
-- (void)resourceAvailabilityChangeRequest:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
-- (void)resourceRepairRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
 - (void)setProgress:(id)arg1 forRequestIdentifier:(id)arg2;
 - (BOOL)shouldReportProgress;
 - (void)start;
 - (double)totalProgressFraction;
-- (void)trackableDownloadRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
-- (void)trackableRequest:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
-- (void)trackableResourceRepairRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
-- (void)trackableVideoChoosingAndAvailabilityRequest:(id)arg1 didFinishWithVideoURL:(id)arg2 info:(id)arg3 error:(id)arg4;
-- (BOOL)videoRequest:(id)arg1 didStartVideoChoosingRequestForSize:(struct CGSize)arg2;
 
 @end
 

@@ -8,12 +8,10 @@
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
 @class NSArray, NSCoder;
-@protocol HMDSettingGroupProtocol;
 
 @protocol HMDSettingsControllerProtocol <HMFObject, AWDHMDSettingsControllerProtocol>
 
 @property (readonly) NSArray *allObjectIdentifiers;
-@property (readonly) id<HMDSettingGroupProtocol> rootGroup;
 
 - (void)configure;
 - (void)encodeWithCoder:(NSCoder *)arg1;

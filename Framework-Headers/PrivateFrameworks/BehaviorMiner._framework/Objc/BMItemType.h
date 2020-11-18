@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <BehaviorMiner/NSCopying-Protocol.h>
+#import <BehaviorMiner/NSSecureCoding-Protocol.h>
 
 @class NSString, _DKEventStream;
 
-@interface BMItemType : NSObject <NSCopying>
+@interface BMItemType : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     Class _valueClass;
@@ -25,11 +26,16 @@
 @property (strong, nonatomic) Class valueClass; // @synthesize valueClass=_valueClass;
 @property (copy, nonatomic) CDUnknownBlockType valueExtractBlock; // @synthesize valueExtractBlock=_valueExtractBlock;
 
++ (id)alarmSnoozedAny;
++ (id)alarmSnoozedWithID;
++ (id)alarmStoppedAny;
++ (id)alarmStoppedWithID;
 + (id)allItemTypes;
 + (id)allItemTypesDictionary;
 + (id)allRegisteredItemTypes;
 + (id)appActivityType;
 + (id)appInFocus;
++ (id)appIntentAutomationHash;
 + (id)appIntentClass;
 + (id)appLaunchedReason;
 + (id)appOpened;
@@ -38,13 +44,17 @@
 + (id)bluetoothConnectedToDeviceWithName;
 + (id)bundleIdOfHostOpenedShareExtension;
 + (id)bundleIdOfShareExtensionOpened;
++ (id)connectedToCarPlay;
 + (id)connectedToExternalAudioOutput;
 + (id)dayOfWeek;
++ (id)enterLocation;
++ (id)exitLocation;
 + (id)firstBacklightAfterWakeup;
 + (id)hourOfDay;
 + (id)hourOfDaySlot;
 + (id)interactionContentURL;
 + (id)interactionDirection;
++ (id)interactionExtractedTopicFromAttachment;
 + (id)interactionItemTypes;
 + (id)interactionMechanism;
 + (id)interactionPhotoContact;
@@ -65,14 +75,25 @@
 + (id)relevanceCoarseAppActivityHash;
 + (id)relevanceCoarseIntentHash;
 + (id)relevanceIntentHash;
++ (BOOL)supportsSecureCoding;
++ (id)taskSpecificItemWithIdentifier:(id)arg1 valueClass:(Class)arg2;
++ (id)temporalItemTypes;
++ (id)toggledAirplaneMode;
++ (id)toggledDoNotDisturb;
++ (id)toggledLowPowerMode;
 + (void)unregisterItemType:(id)arg1;
++ (id)wifiConnectedToSSID;
++ (id)wifiDisconnectedFromSSID;
++ (id)wifiIsConnectedToSSID;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)extractEventFromDKEvent:(id)arg1;
 - (id)extractItemFromDKEvent:(id)arg1;
 - (id)extractValueFromDKEvent:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

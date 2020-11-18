@@ -18,9 +18,12 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (unsigned long long)addCity:(id)arg1;
+- (BOOL)canAddCity;
 - (BOOL)checkIfCitiesModified;
 - (id)init;
 - (void)loadCities;
+- (void)saveCities;
 
 @end
 

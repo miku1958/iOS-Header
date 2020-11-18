@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableData, NSString, NSURL, NSURLConnection, UIImage;
+@class NSArray, NSMutableData, NSString, NSURL, NSURLConnection, NSUserActivity, UIImage;
 @protocol WebClipDelegate;
 
 @interface UIWebClip : NSObject
@@ -39,13 +39,21 @@
     NSURLConnection *_startupImageConnection;
     NSMutableData *_customStartupLandscapeImageData;
     NSURLConnection *_startupLandscapeImageConnection;
+    BOOL _isAppClip;
+    BOOL _scenelessBackgroundLaunch;
+    BOOL _ignoreManifestScope;
+    BOOL _configurationIsManaged;
+    unsigned long long _contentMode;
     unsigned long long _webClipStatusBarStyle;
 }
 
+@property (readonly, nonatomic) NSUserActivity *appClipUserActivity;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier;
 @property (readonly, nonatomic) NSURL *applicationLaunchURL;
 @property (readonly, nonatomic) unsigned long long bundleVersion; // @synthesize bundleVersion;
 @property BOOL classicMode; // @synthesize classicMode;
+@property BOOL configurationIsManaged; // @synthesize configurationIsManaged=_configurationIsManaged;
+@property unsigned long long contentMode; // @synthesize contentMode=_contentMode;
 @property (weak, nonatomic) id<WebClipDelegate> delegate; // @synthesize delegate;
 @property BOOL fullScreen; // @synthesize fullScreen;
 @property (readonly, strong, nonatomic) UIImage *iconImage;
@@ -55,9 +63,12 @@
 @property (readonly) BOOL iconIsScreenShotBased; // @synthesize iconIsScreenShotBased;
 @property (strong) NSArray *icons; // @synthesize icons;
 @property (copy) NSString *identifier; // @synthesize identifier;
+@property BOOL ignoreManifestScope; // @synthesize ignoreManifestScope=_ignoreManifestScope;
 @property (strong, nonatomic) UIImage *initialLaunchImage; // @synthesize initialLaunchImage;
+@property BOOL isAppClip; // @synthesize isAppClip=_isAppClip;
 @property (strong, nonatomic) NSURL *pageURL; // @synthesize pageURL;
 @property BOOL removalDisallowed; // @synthesize removalDisallowed;
+@property BOOL scenelessBackgroundLaunch; // @synthesize scenelessBackgroundLaunch=_scenelessBackgroundLaunch;
 @property (strong, nonatomic) UIImage *startupImage; // @synthesize startupImage;
 @property (strong) NSURL *startupImageURL; // @synthesize startupImageURL;
 @property (strong, nonatomic) UIImage *startupLandscapeImage; // @synthesize startupLandscapeImage;
@@ -68,11 +79,14 @@
 @property (nonatomic) unsigned long long webClipStatusBarStyle; // @synthesize webClipStatusBarStyle=_webClipStatusBarStyle;
 
 + (id)_contentForMetaName:(id)arg1 inWebDocumentView:(id)arg2;
++ (id)_normalizedWebClipIdentifierFromBundleIdentifier:(id)arg1;
 + (BOOL)_webClipFullScreenValueForMetaTagContent:(id)arg1;
 + (id)_webClipLinkTagsFromWebDocumentView:(id)arg1;
 + (unsigned long long)_webClipOrientationsForMetaTagContent:(id)arg1;
 + (long long)_webClipStatusBarStyleForMetaTagContent:(id)arg1;
++ (id)appClips;
 + (BOOL)bundleIdentifierContainsWebClipIdentifier:(id)arg1;
++ (id)clipsIncludingWebClips:(BOOL)arg1 includingAppClips:(BOOL)arg2;
 + (id)pathForWebClipCacheWithIdentifier:(id)arg1;
 + (id)pathForWebClipStorageWithIdentifier:(id)arg1;
 + (id)pathForWebClipWithIdentifier:(id)arg1;
@@ -94,6 +108,7 @@
 - (id)_bundleResourceWithName:(id)arg1;
 - (id)_info;
 - (id)_initWithIdentifier:(id)arg1;
+- (id)_launchURLWithScheme:(id)arg1;
 - (void)_readPropertiesFromBundle:(id)arg1;
 - (void)_reloadProperties;
 - (void)_setIconImage:(id)arg1 isPrecomposed:(BOOL)arg2 isScreenShotBased:(BOOL)arg3;
@@ -114,6 +129,7 @@
 - (void)requestCustomLandscapeStartupImageUpdate;
 - (void)requestCustomPortraitStartupImageUpdate;
 - (void)requestIconUpdateInSpringBoard;
+- (void)setContentModeWithString:(id)arg1;
 - (void)setIconImage:(id)arg1 isPrecomposed:(BOOL)arg2;
 - (void)setIconImageFromScreenshot:(id)arg1;
 - (void)stopLoadingCustomIcon;

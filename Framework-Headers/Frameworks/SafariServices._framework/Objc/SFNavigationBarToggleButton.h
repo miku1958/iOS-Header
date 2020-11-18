@@ -6,12 +6,15 @@
 
 #import <UIKit/UIButton.h>
 
-@class SFToggleBackgroundView, UIColor, UIImage, UIImageView, UIView;
+#import <SafariServices/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString, SFToggleBackgroundView, UIColor, UIImage, UIImageSymbolConfiguration, UIImageView, UIPointerInteraction, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SFNavigationBarToggleButton : UIButton
+@interface SFNavigationBarToggleButton : UIButton <UIPointerInteractionDelegate>
 {
     BOOL _liftedForCursor;
+    UIPointerInteraction *_pointerInteraction;
     UIImageView *_defaultStateImageView;
     UIImageView *_selectedStateImageView;
     SFToggleBackgroundView *_selectedStateMaskView;
@@ -23,29 +26,20 @@ __attribute__((visibility("hidden")))
     UIImage *_image;
     double _resizableBackgroundCornerRadius;
     UIColor *_glyphTintColor;
+    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
 }
 
-@property (nonatomic) BOOL drawsLightGlyph; // @synthesize drawsLightGlyph=_drawsLightGlyph;
-@property (strong, nonatomic) UIColor *glyphTintColor; // @synthesize glyphTintColor=_glyphTintColor;
-@property (nonatomic) BOOL highlightsBackground; // @synthesize highlightsBackground=_highlightsBackground;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (nonatomic) double resizableBackgroundCornerRadius; // @synthesize resizableBackgroundCornerRadius=_resizableBackgroundCornerRadius;
-@property (nonatomic) BOOL usesInsetFromBackground; // @synthesize usesInsetFromBackground=_usesInsetFromBackground;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (BOOL)_cursorInteractionEnabled;
-+ (id)formatMenuImage;
-+ (struct CGSize)glyphSize;
-+ (id)readerImage;
 - (void).cxx_destruct;
-- (BOOL)_effectiveHighlightsBackground;
-- (void)_updateDefaultStateImageView;
-- (void)_updateImageViews;
-- (void)_updateSelectedStateView;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
-- (id)initWithImage:(id)arg1 forInputMode:(unsigned long long)arg2;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL, PVClusterer, PVContext, PVDataAccessor, PVEventManager, PVFaceMerger, PVVisionAnalyzer;
+@class NSURL, PVClusterer, PVContext, PVEventManager, PVFaceMerger, PVVisionAnalyzer;
 @protocol PVNotificationListener, PVPersistenceDelegate, PVVisionIntegrating;
 
 @interface PhotoVision : NSObject
@@ -17,7 +17,6 @@
     PVContext *_context;
     PVVisionAnalyzer *_analyzer;
     PVFaceMerger *_faceMerger;
-    PVDataAccessor *_dataAccessor;
     PVEventManager *_eventManager;
     PVClusterer *_clusterer;
     NSURL *_cacheDirUrl;

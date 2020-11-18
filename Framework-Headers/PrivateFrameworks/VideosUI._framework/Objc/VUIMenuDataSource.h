@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *mainMenuItems; // @synthesize mainMenuItems=_mainMenuItems;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMainMenuItems:(id)arg1 genreMenuItems:(id)arg2;
 
 @end

@@ -13,5 +13,6 @@
 @property (nonatomic, readonly) HKHealthStore *resolvedHealthStore;
 @property (nonatomic, readonly) HBXViewControllerFactory *resolvedHealthToolbox;
 
+- (void)submitUserActivityForRestoration:(id)arg1;
 @end
 

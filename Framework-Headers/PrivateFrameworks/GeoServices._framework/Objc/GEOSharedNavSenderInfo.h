@@ -27,11 +27,7 @@
         unsigned int read_fromIdentifier:1;
         unsigned int read_localContactIdentifier:1;
         unsigned int read_localName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_fromDisplayName:1;
-        unsigned int wrote_fromIdentifier:1;
-        unsigned int wrote_localContactIdentifier:1;
-        unsigned int wrote_localName:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,10 +43,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readFromDisplayName;
-- (void)_readFromIdentifier;
-- (void)_readLocalContactIdentifier;
-- (void)_readLocalName;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

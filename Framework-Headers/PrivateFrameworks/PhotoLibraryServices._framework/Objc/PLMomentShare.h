@@ -4,81 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoLibraryServices/PLManagedObject.h>
+#import <PhotoLibraryServices/PLShare.h>
 
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 
-@class NSData, NSDate, NSSet, NSString, NSURL;
+@class NSData, NSDate, NSSet, NSString;
 
-@interface PLMomentShare : PLManagedObject <PLCloudDeletable>
+@interface PLMomentShare : PLShare <PLCloudDeletable>
 {
 }
 
 @property (nonatomic) int assetCount; // @dynamic assetCount;
-@property (strong, nonatomic) NSSet *assets; // @dynamic assets;
 @property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
 @property (readonly) long long cloudDeletionType;
 @property (readonly, copy) NSString *cloudUUIDForDeletion;
-@property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDate *endDate; // @dynamic endDate;
-@property (copy, nonatomic) NSDate *expiryDate; // @dynamic expiryDate;
+@property (nonatomic) BOOL forceSyncAttempted; // @dynamic forceSyncAttempted;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) short localPublishState; // @dynamic localPublishState;
-@property (strong, nonatomic) NSSet *masters; // @dynamic masters;
-@property (nonatomic) short mode; // @dynamic mode;
+@property (strong, nonatomic) NSSet *momentShareAssets; // @dynamic momentShareAssets;
+@property (strong, nonatomic) NSSet *momentShareMasters; // @dynamic momentShareMasters;
 @property (copy, nonatomic) NSString *originatingScopeIdentifier; // @dynamic originatingScopeIdentifier;
-@property (strong, nonatomic) NSSet *participants; // @dynamic participants;
 @property (nonatomic) int photosCount; // @dynamic photosCount;
 @property (copy, nonatomic) NSData *previewData; // @dynamic previewData;
-@property (copy, nonatomic) NSString *scopeIdentifier; // @dynamic scopeIdentifier;
-@property (copy, nonatomic) NSURL *shareURL; // @dynamic shareURL;
 @property (nonatomic) BOOL shouldIgnoreBudgets; // @dynamic shouldIgnoreBudgets;
 @property (nonatomic) BOOL shouldNotifyOnUploadCompletion; // @dynamic shouldNotifyOnUploadCompletion;
 @property (copy, nonatomic) NSDate *startDate; // @dynamic startDate;
-@property (nonatomic) short status; // @dynamic status;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSData *thumbnailImageData; // @dynamic thumbnailImageData;
-@property (copy, nonatomic) NSString *title; // @dynamic title;
-@property (nonatomic) short trashedState; // @dynamic trashedState;
 @property (nonatomic) int uploadedPhotosCount; // @dynamic uploadedPhotosCount;
 @property (nonatomic) int uploadedVideosCount; // @dynamic uploadedVideosCount;
-@property (copy, nonatomic) NSString *uuid; // @dynamic uuid;
 @property (nonatomic) int videosCount; // @dynamic videosCount;
 
-+ (id)_andPredicateWithTrashedState:(id)arg1;
 + (long long)_cloudDeletionTypeForStatus:(short)arg1;
-+ (id)_momentSharesWithPredicate:(id)arg1 fetchLimit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
-+ (id)cloudUUIDKeyForDeletion;
-+ (void)deleteAllMomentSharesInManagedObjectContext:(id)arg1;
-+ (void)deleteExpiredMomentSharesInManagedObjectContext:(id)arg1;
++ (void)createOrUpdateShareWithScopeChange:(id)arg1 photoLibrary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)createOwnedMomentShareWithUUID:(id)arg1 creationDate:(id)arg2 title:(id)arg3 inPhotoLibrary:(id)arg4;
 + (id)entityName;
-+ (void)fetchMomentShareFromShareURL:(id)arg1 inPhotoLibrary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)insertInPhotoLibrary:(id)arg1;
++ (void)forceSyncMomentShares:(id)arg1 photoLibrary:(id)arg2;
 + (id)listOfSyncedProperties;
-+ (id)momentShareWithOriginatingScopeIdentifier:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
-+ (id)momentShareWithScopeIdentifier:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
-+ (id)momentShareWithScopedIdentifier:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
-+ (id)momentShareWithShareURL:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
-+ (id)momentShareWithUUID:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
-+ (id)predicateToExcludeExpiredMomentShares;
-+ (id)predicateToExcludeTrashedMomentShares;
++ (id)momentShareWithOriginatingScopeIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)momentSharesReferencedInUploadBatchContainer:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)scopeIdentifierPrefix;
++ (BOOL)supportsCPLScopeType:(long long)arg1;
 + (id)updateOrInsertWithCPLMomentShare:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)_contactStore;
 - (BOOL)_isOwnerInContacts;
-- (id)_modeDescription;
-- (id)_owner;
-- (id)_statusDescription;
-- (void)_updateSharingStatusFromParticipant:(id)arg1;
-- (void)acceptWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_updateSharingStatusFromCurrentUser:(id)arg1;
 - (void)calculatePropertyValues;
-- (id)cplMomentShare;
+- (id)cplScopeChange;
 - (unsigned long long)estimateUploadSize;
-- (void)forceSync;
 - (BOOL)isSyncableChange;
-- (id)ownerIdentifier;
 - (void)prepareForDeletion;
 - (void)publishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)shouldAutoAccept;

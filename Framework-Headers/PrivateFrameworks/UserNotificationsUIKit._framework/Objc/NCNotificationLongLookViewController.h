@@ -68,14 +68,15 @@
 - (void)_updateWithProvidedAuxiliaryOptionsContent;
 - (void)_updateWithProvidedCustomContent;
 - (void)_updateWithProvidedStaticContent;
+- (BOOL)associatedViewControllerDidAppearForExpandedPlatterView:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (void)contentProviderDismissCustomContent:(id)arg1 animated:(BOOL)arg2;
+- (id)customBackgroundContainerViewForExpandedPlatterPresentationController:(id)arg1;
 - (void)customContent:(id)arg1 didUpdateUserNotificationActions:(id)arg2;
 - (void)customContentDidLoadExtension:(id)arg1;
 - (void)customContentDidUpdateTitle:(id)arg1;
-- (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)expandedPlatterPresentable:(id)arg1 requestsDismissalWithTrigger:(long long)arg2;
 - (struct CGRect)expandedPlatterPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
@@ -105,6 +106,8 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (id)unhideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(id)arg1;
 - (long long)viewControllerTransitionTypeForTransitionDelegate:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

@@ -8,19 +8,18 @@
 
 #import <HomeKitDaemon/HMDWACAccessoryAssociation-Protocol.h>
 
-@class HMDMediaOutputDevice, NSObject;
-@protocol OS_dispatch_queue;
+@class HMDMediaOutputDevice;
+@protocol HMFLocking;
 
 @interface HMDMediaAccessoryAdvertisement : HMDAccessoryAdvertisement <HMDWACAccessoryAssociation>
 {
+    id<HMFLocking> _lock;
     BOOL _associated;
     HMDMediaOutputDevice *_outputDevice;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (getter=isAssociated) BOOL associated; // @synthesize associated=_associated;
 @property (strong) HMDMediaOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 
 + (BOOL)canAirPortExpressSupportMediaAccessory:(id)arg1;
 - (void).cxx_destruct;

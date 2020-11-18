@@ -22,7 +22,7 @@
 
 + (BOOL)supportsRowModel:(id)arg1;
 - (void)didEngageResult:(id)arg1;
-- (void)dismissIfNecessaryForIconDrag;
+- (void)didEngageResult:(id)arg1 withTriggerEvent:(unsigned long long)arg2 destination:(unsigned long long)arg3;
 - (id)setupView;
 - (BOOL)shouldVerticallyCenter;
 - (unsigned long long)type;

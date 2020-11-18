@@ -11,6 +11,7 @@
 @interface _TtC7SwiftUI17DropViewResponder : _TtC7SwiftUI26DefaultLayoutViewResponder
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *transform;
 }
 
 @end

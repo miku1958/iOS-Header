@@ -33,8 +33,8 @@
 
 - (void).cxx_destruct;
 - (void)_resolve;
-- (id)initWithMoments:(id)arg1 incompleteLocationResolver:(id)arg2;
-- (id)initWithSortedMoments:(id)arg1 incompleteLocationResolver:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
+- (id)initWithSortedMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
 - (void)setCreateLocationToAddressMapTable:(BOOL)arg1;
 
 @end

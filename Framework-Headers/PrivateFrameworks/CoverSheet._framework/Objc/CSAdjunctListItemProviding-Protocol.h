@@ -16,5 +16,6 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (strong, nonatomic) UIView *platterView;
 
+- (void)conformsToCSAdjunctListItemProviding;
 @end
 

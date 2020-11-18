@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_forcePresentationInPresenterScene;
 - (id)_popoverHostingWindow;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForSizeClassPair:(CDStruct_912cb5d2)arg1;

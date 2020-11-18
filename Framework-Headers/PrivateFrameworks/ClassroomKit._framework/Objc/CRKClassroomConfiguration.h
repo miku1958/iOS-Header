@@ -14,7 +14,6 @@
 + (void)fetchConfiguration:(CDUnknownBlockType)arg1;
 + (void)setConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)setOfActiveRestrictionUUIDs:(id)arg1;
-+ (id)studentDaemonConnection;
 
 @end
 

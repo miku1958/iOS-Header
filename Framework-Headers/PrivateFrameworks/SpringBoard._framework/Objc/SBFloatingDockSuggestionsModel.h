@@ -79,7 +79,7 @@
 - (id)_oldestRecent;
 - (void)_performAppSuggestionChangedWithNewSuggestion:(id)arg1;
 - (void)_reloadRecentsAndSuggestions;
-- (void)_runStressTest;
+- (void)_runStressTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setRecentsEnabled:(BOOL)arg1;
 - (BOOL)_shouldProcessAppSuggestion:(id)arg1;
 - (void)_updateCurrentDisplayItemsAfterContinuityChange:(BOOL)arg1 notifyDelegate:(BOOL)arg2;
@@ -91,8 +91,6 @@
 - (void)dockViewDidResignVisible;
 - (void)endPendingUpdatesForReason:(id)arg1;
 - (void)iconList:(id)arg1 didAddIcon:(id)arg2;
-- (void)iconList:(id)arg1 didMoveIcon:(id)arg2;
-- (void)iconList:(id)arg1 didRemoveIcon:(id)arg2;
 - (void)iconList:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (id)init;
 - (id)initWithMaximumNumberOfSuggestions:(unsigned long long)arg1 iconController:(id)arg2 recentsController:(id)arg3 recentsDataStore:(id)arg4 recentsDefaults:(id)arg5 floatingDockDefaults:(id)arg6 appSuggestionManager:(id)arg7 analyticsClient:(id)arg8 applicationController:(id)arg9;
@@ -102,6 +100,7 @@
 - (void)recentDisplayItemsController:(id)arg1 didMoveItemToFront:(id)arg2;
 - (void)recentDisplayItemsController:(id)arg1 didRemoveItem:(id)arg2;
 - (BOOL)recentDisplayItemsController:(id)arg1 shouldAddItem:(id)arg2;
+- (BOOL)recentDisplayItemsControllerShouldRepresentAppClipsAsWebClips:(id)arg1;
 
 @end
 

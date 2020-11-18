@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property (copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property (copy, nonatomic) NSData *externalRepresentation; // @dynamic externalRepresentation;
+@property (copy, nonatomic) NSString *externalURI; // @dynamic externalURI;
 @property (copy, nonatomic) NSString *externalUUID; // @dynamic externalUUID;
 @property (nonatomic) int iOSLegacyIdentifier; // @dynamic iOSLegacyIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;

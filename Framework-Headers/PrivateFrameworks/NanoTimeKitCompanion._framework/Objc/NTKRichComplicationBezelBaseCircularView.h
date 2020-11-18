@@ -6,11 +6,12 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationBezelView.h>
 
+#import <NanoTimeKitCompanion/NTKComplicationDisplayObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKRichComplicationCircularBezelView-Protocol.h>
 
-@class NTKCurvedColoringLabel, NTKRichComplicationView;
+@class NSString, NTKCurvedColoringLabel, NTKRichComplicationView;
 
-@interface NTKRichComplicationBezelBaseCircularView : NTKRichComplicationBezelView <NTKRichComplicationCircularBezelView>
+@interface NTKRichComplicationBezelBaseCircularView : NTKRichComplicationBezelView <NTKComplicationDisplayObserver, NTKRichComplicationCircularBezelView>
 {
     NTKRichComplicationView *_circularView;
     double _circularViewRotationInDegree;
@@ -29,6 +30,10 @@
 
 @property (nonatomic) double bezelLabelCircularRadius; // @synthesize bezelLabelCircularRadius=_bezelLabelCircularRadius;
 @property (readonly, nonatomic) NTKRichComplicationView *circularView; // @synthesize circularView=_circularView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)updateCustomDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 animationType:(unsigned long long)arg4 animationDuration:(double)arg5 animationFraction:(float)arg6 bezelTextUpdateHandler:(CDUnknownBlockType)arg7;
 - (void).cxx_destruct;
@@ -48,7 +53,8 @@
 - (void)_transitToHighlightState:(BOOL)arg1 fraction:(double)arg2;
 - (void)_updateNewDataAnimationFinalAlpha:(double)arg1 finalBezelLabelScale:(double)arg2 finalCircularViewScale:(double)arg3 animationApplierBlock:(CDUnknownBlockType)arg4 animationFraction:(float)arg5;
 - (struct CGPoint)circularViewCenter;
-- (id)description;
+- (void)complicationDisplay:(id)arg1 renderStatsWithTime:(double)arg2 cost:(double)arg3;
+- (void)complicationDisplayNeedsResize:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
 - (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;

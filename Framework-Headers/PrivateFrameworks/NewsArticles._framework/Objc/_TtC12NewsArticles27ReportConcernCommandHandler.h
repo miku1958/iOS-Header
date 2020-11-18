@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles27ReportConcernCommandHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *reportConcernModule;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

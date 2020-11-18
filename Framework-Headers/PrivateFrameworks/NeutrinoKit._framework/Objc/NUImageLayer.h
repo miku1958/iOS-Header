@@ -17,6 +17,7 @@
     struct CGColor *_debugColor;
     id<NUTextureImage> __image;
     NUImageGeometry *__geometry;
+    CDStruct_f261e59c _validRegionInsets;
 }
 
 @property (strong) NUImageGeometry *_geometry; // @synthesize _geometry=__geometry;
@@ -24,6 +25,8 @@
 @property (strong) struct CGColor *debugColor; // @synthesize debugColor=_debugColor;
 @property (strong) NUImageGeometry *geometry;
 @property (strong) id<NUTextureImage> image;
+@property (readonly, nonatomic) BOOL nu_contentsAreFlipped;
+@property (nonatomic) CDStruct_f261e59c validRegionInsets; // @synthesize validRegionInsets=_validRegionInsets;
 
 + (id)fragmentShaderProgram;
 + (id)vertexLayout;
@@ -32,7 +35,7 @@
 - (void)clearBackground:(struct CGColor *)arg1 context:(id)arg2;
 - (void)draw:(id)arg1;
 - (void)drawImage:(id)arg1 region:(id)arg2 context:(id)arg3;
-- (void)drawTexture:(id)arg1 inRect:(CDStruct_0973877e)arg2 atPoint:(CDStruct_912cb5d2)arg3 context:(id)arg4;
+- (void)drawTexture:(id)arg1 inRect:(CDStruct_efd166d3)arg2 atPoint:(CDStruct_f261e59c)arg3 context:(id)arg4;
 - (id)init;
 - (void)reset:(id)arg1;
 

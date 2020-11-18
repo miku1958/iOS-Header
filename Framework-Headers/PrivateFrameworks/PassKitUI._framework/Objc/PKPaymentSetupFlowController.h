@@ -20,7 +20,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
@@ -36,7 +36,7 @@
 - (id)_onboardingViewControllerForProduct:(id)arg1;
 - (id)_paymentSetupViewControllerForAssociatedCredential:(id)arg1 product:(id)arg2 allowsManualEntry:(BOOL)arg3;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
-- (id)intialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(BOOL)arg2;
+- (id)initialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(BOOL)arg2;
 - (id)manualEntryPaymentSetupViewControllerForProduct:(id)arg1 allowsSelectingBank:(BOOL)arg2;
 - (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 allowsManualEntry:(BOOL)arg2;
 - (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 state:(long long)arg2 allowsManualEntry:(BOOL)arg3;

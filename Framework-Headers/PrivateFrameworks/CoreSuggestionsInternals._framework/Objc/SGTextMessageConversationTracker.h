@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class _PASLRUCache;
+@class SGConversationTracker;
 
 @interface SGTextMessageConversationTracker : NSObject
 {
-    struct _opaque_pthread_mutex_t _lock;
-    _PASLRUCache *_conversations;
+    SGConversationTracker *_conversationTracker;
 }
 
++ (id)getMergedPrompt:(id)arg1 withParams:(id)arg2;
 + (id)instance;
 - (void).cxx_destruct;
-- (id)addItem:(id)arg1;
-- (id)addMessage:(id)arg1;
-- (id)addMessage:(id)arg1 withDetectedData:(id)arg2;
+- (id)addTextMessageItem:(id)arg1;
 - (void)clear;
 - (id)conversationForIdentifier:(id)arg1;
 - (id)init;

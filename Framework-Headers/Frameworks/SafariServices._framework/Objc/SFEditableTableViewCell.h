@@ -20,8 +20,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_updateTextFieldTextColor;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)copy:(id)arg1;
 - (id)initWithEnabledState:(BOOL)arg1;
-- (void)safari_sharePassword:(id)arg1;
 - (void)tintColorDidChange;
 
 @end

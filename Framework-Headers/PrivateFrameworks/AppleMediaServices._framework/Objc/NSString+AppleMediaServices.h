@@ -9,7 +9,9 @@
 @interface NSString (AppleMediaServices)
 + (id)_replaceBreakingSpaceMarkupForMutableAttributedString:(id)arg1;
 + (id)_replaceMarkupForMutableAttributedString:(id)arg1 markupType:(long long)arg2;
+- (BOOL)ams_matchesRegex:(id)arg1;
 - (id)ams_replacingMarkupUsingAccount:(id)arg1 shouldUppercase:(BOOL)arg2;
 - (id)ams_replacingPatternWithUsername:(id)arg1;
+- (id)ams_stringByRemovingCharactersInSet:(id)arg1;
 @end
 

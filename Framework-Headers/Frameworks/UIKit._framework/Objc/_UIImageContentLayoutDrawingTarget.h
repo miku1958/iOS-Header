@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long semanticContentAttribute;
 @property (readonly) Class superclass;
 
-+ (id)targetWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)_effectForRenderingSource:(id)arg1;
 - (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(BOOL)arg4;
 

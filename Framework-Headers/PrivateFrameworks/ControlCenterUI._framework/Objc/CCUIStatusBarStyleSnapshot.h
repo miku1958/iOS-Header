@@ -8,28 +8,28 @@
 
 #import <ControlCenterUI/NSCopying-Protocol.h>
 
-@class UIStatusBarStyleRequest, _UIStatusBarData;
+@class NSString, UIStatusBarStyleRequest;
 
 @interface CCUIStatusBarStyleSnapshot : NSObject <NSCopying>
 {
     BOOL _hidden;
+    NSString *_hiddenPartIdentifier;
     UIStatusBarStyleRequest *_leadingStyleRequest;
     UIStatusBarStyleRequest *_trailingStyleRequest;
-    _UIStatusBarData *_leadingOverlayData;
     struct CGRect _avoidanceFrame;
     struct UIEdgeInsets _statusBarInsets;
 }
 
 @property (readonly, nonatomic) struct CGRect avoidanceFrame; // @synthesize avoidanceFrame=_avoidanceFrame;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
-@property (readonly, copy, nonatomic) _UIStatusBarData *leadingOverlayData; // @synthesize leadingOverlayData=_leadingOverlayData;
+@property (readonly, copy, nonatomic) NSString *hiddenPartIdentifier; // @synthesize hiddenPartIdentifier=_hiddenPartIdentifier;
 @property (readonly, copy, nonatomic) UIStatusBarStyleRequest *leadingStyleRequest; // @synthesize leadingStyleRequest=_leadingStyleRequest;
 @property (readonly, nonatomic) struct UIEdgeInsets statusBarInsets; // @synthesize statusBarInsets=_statusBarInsets;
 @property (readonly, copy, nonatomic) UIStatusBarStyleRequest *trailingStyleRequest; // @synthesize trailingStyleRequest=_trailingStyleRequest;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithHidden:(BOOL)arg1 leadingStyleRequest:(id)arg2 trailingStyleRequest:(id)arg3 statusBarInsets:(struct UIEdgeInsets)arg4 avoidanceFrame:(struct CGRect)arg5 leadingOverlayData:(id)arg6;
+- (id)initWithHidden:(BOOL)arg1 hiddenPartIdentifier:(id)arg2 leadingStyleRequest:(id)arg3 trailingStyleRequest:(id)arg4 statusBarInsets:(struct UIEdgeInsets)arg5 avoidanceFrame:(struct CGRect)arg6;
 
 @end
 

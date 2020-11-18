@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableURLRequest, NSURLRequest, NSURLSessionEffectiveConfiguration, NSUUID, __CFN_TaskMetrics, __NSCFURLSession;
+@class NSMutableURLRequest, NSURLRequest, NSURLSession, NSURLSessionEffectiveConfiguration, NSUUID, __CFN_TaskMetrics;
 
 @interface CONNECTION_SessionTask : NSObject
 {
-    NSURLRequest *_originalRequest;
-    NSMutableURLRequest *_currentRequest;
+    struct _CFURLRequest *_originalRequest;
+    struct _CFURLRequest *_currentRequest;
     double _startTime;
     struct __CFDictionary *_connectionProperties;
     struct __CFDictionary *_socketProperties;
     NSMutableURLRequest *_nsCurrentRequest;
     NSURLRequest *_nsOriginalRequest;
-    __NSCFURLSession *_session_ivar;
+    NSURLSession *_session_ivar;
     NSURLSessionEffectiveConfiguration *_effectiveConfiguration;
     NSUUID *_uniqueIdentifier;
     BOOL _is_cellular;
@@ -62,6 +62,7 @@
 - (void)_consumePendingBytesReceivedEncoded;
 - (id)_contentDispositionFallbackArray;
 - (int)_cookieAcceptPolicy;
+- (id)_cookieTransformCallback;
 - (struct __CFDictionary *)_copyATSState;
 - (struct _CFHSTSPolicy *)_copyHSTSPolicy;
 - (struct __CFDictionary *)_copySocketStreamProperties;
@@ -75,12 +76,14 @@
 - (id)_effectiveConfiguration;
 - (unsigned long long)_expectedProgressTarget;
 - (id)_expectedWorkload;
-- (void)_getAuthenticationHeadersForResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct __CFSet *)_getAuthenticatorStatusCodes;
+- (id)_hostOverride;
 - (id)_httpConnectionInfoCompletionBlock;
 - (id)_incompleteCurrentTaskTransactionMetrics;
 - (id)_incompleteTaskMetrics;
 - (BOOL)_isTopLevelNavigation;
+- (id)_knownHTTP3Capable;
 - (id)_loggableDescription;
 - (id)_networkServiceType;
 - (BOOL)_preconnect;
@@ -96,7 +99,9 @@
 - (void)_releasePreventIdleSleepAssertionIfAppropriate;
 - (long long)_requestPriority;
 - (BOOL)_requiresSecureHTTPSProxyConnection;
+- (id)_resolvedCNAMEChain;
 - (void)_setAppleIDContext:(id)arg1;
+- (void)_setConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
 - (void)_setConnectionIsCellular:(BOOL)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (id)_shouldHandleCookies;
@@ -126,8 +131,9 @@
 - (void)dealloc;
 - (id)error;
 - (BOOL)hasExtractor;
-- (id)initWithRequest:(id)arg1 mutableCurrent:(id)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
+- (id)initWithRequest:(struct _CFURLRequest *)arg1 mutableCurrent:(struct _CFURLRequest *)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
 - (id)originalRequest;
+- (BOOL)prefersIncrementalDelivery;
 - (float)priority;
 - (id)session;
 - (void)set_TCPConnectionMetadata:(id)arg1;
@@ -142,6 +148,7 @@
 - (void)set_preconnect:(BOOL)arg1;
 - (void)set_preventsAppSSO:(BOOL)arg1;
 - (void)set_protocolForTask:(id)arg1;
+- (void)set_resolvedCNAMEChain:(id)arg1;
 - (void)set_trailers:(id)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;
 - (double)startTime;

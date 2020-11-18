@@ -8,7 +8,6 @@
 
 @class ASDAppQuery, NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface HKWatchAppAvailability : NSObject
 {
     NSString *_bundleID;

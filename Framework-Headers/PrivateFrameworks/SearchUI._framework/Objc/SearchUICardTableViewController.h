@@ -11,23 +11,30 @@
 
 @interface SearchUICardTableViewController : SearchUITableViewController
 {
+    BOOL _rowSelectionAppearanceEnabled;
     id<SearchUICardViewDelegate> _cardViewDelegate;
     SFCard *_card;
 }
 
 @property (strong, nonatomic) SFCard *card; // @synthesize card=_card;
 @property (weak, nonatomic) id<SearchUICardViewDelegate> cardViewDelegate; // @synthesize cardViewDelegate=_cardViewDelegate;
+@property (nonatomic) BOOL rowSelectionAppearanceEnabled; // @synthesize rowSelectionAppearanceEnabled=_rowSelectionAppearanceEnabled;
 
 - (void).cxx_destruct;
 - (id)cellForIndexPath:(id)arg1 reuseIfPossible:(BOOL)arg2;
 - (id)init;
 - (double)offScreenContentScrollDistance;
 - (void)setShouldUseInsetRoundedSections:(BOOL)arg1;
+- (void)setShouldUseStandardSectionInsets:(BOOL)arg1;
 - (void)setTableModel:(id)arg1;
 - (BOOL)shouldDrawTopAndBottomSeparators;
 - (void)showViewController:(id)arg1;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)updateSelectionStyleForCell:(id)arg1;
+- (void)updateTopPadding;
 - (void)viewDidDisappear:(BOOL)arg1;
 
 @end

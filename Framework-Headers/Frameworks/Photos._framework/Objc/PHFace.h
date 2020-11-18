@@ -10,6 +10,7 @@
 
 @interface PHFace : PHObject
 {
+    BOOL _isInVIPModel;
     BOOL _hidden;
     BOOL _inTrash;
     BOOL _manual;
@@ -19,6 +20,7 @@
     short _confirmedFaceCropGenerationState;
     unsigned short _ageType;
     unsigned short _genderType;
+    unsigned short _sexType;
     unsigned short _eyesState;
     unsigned short _smileType;
     unsigned short _facialHairType;
@@ -71,6 +73,7 @@
 @property (readonly, nonatomic) BOOL hasSmile; // @synthesize hasSmile=_hasSmile;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic, getter=isInTrash) BOOL inTrash; // @synthesize inTrash=_inTrash;
+@property (readonly, nonatomic) BOOL isInVIPModel; // @synthesize isInVIPModel=_isInVIPModel;
 @property (readonly, nonatomic, getter=isLeftEyeClosed) BOOL leftEyeClosed; // @synthesize leftEyeClosed=_leftEyeClosed;
 @property (readonly, nonatomic) double leftEyeX; // @synthesize leftEyeX=_leftEyeX;
 @property (readonly, nonatomic) double leftEyeY; // @synthesize leftEyeY=_leftEyeY;
@@ -88,6 +91,7 @@
 @property (readonly, nonatomic) double rightEyeX; // @synthesize rightEyeX=_rightEyeX;
 @property (readonly, nonatomic) double rightEyeY; // @synthesize rightEyeY=_rightEyeY;
 @property (readonly, nonatomic) double roll; // @synthesize roll=_roll;
+@property (readonly, nonatomic) unsigned short sexType; // @synthesize sexType=_sexType;
 @property (readonly, nonatomic) double size; // @synthesize size=_size;
 @property (readonly, nonatomic) unsigned short smileType; // @synthesize smileType=_smileType;
 @property (readonly, nonatomic) long long sourceHeight; // @synthesize sourceHeight=_sourceHeight;
@@ -96,6 +100,7 @@
 @property (readonly, nonatomic) double yaw; // @synthesize yaw=_yaw;
 
 + (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)analyticsPropertiesToFetch;
 + (id)corePropertiesToFetch;
 + (id)croppingPropertiesToFetch;
 + (id)entityKeyMap;
@@ -109,14 +114,14 @@
 + (id)fetchFacesOnAssetWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchFacesWithOptions:(id)arg1;
++ (id)fetchKeyFaceByPersonLocalIdentifierForPersons:(id)arg1 options:(id)arg2;
 + (id)fetchKeyFaceForFaceGroup:(id)arg1 options:(id)arg2;
 + (id)fetchKeyFaceForPerson:(id)arg1 options:(id)arg2;
-+ (id)fetchKeyFacesGroupedByPersonLocalIdentifierForPersonLocalIdentifiers:(id)arg1 fetchOptions:(id)arg2;
-+ (id)fetchKeyFacesGroupedByPersons:(id)arg1;
 + (id)fetchRejectedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchSingletonFacesWithOptions:(id)arg1;
 + (id)fetchSuggestedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchType;
++ (id)genderAgePropertiesToFetch;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsFaceState;

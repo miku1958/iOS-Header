@@ -37,6 +37,7 @@
 - (void)clearAllErrors;
 - (id)errorsForPreference:(id)arg1;
 - (id)initWithTitle:(id)arg1 preferences:(id)arg2 selectedIndex:(unsigned long long)arg3 readOnly:(BOOL)arg4;
+- (BOOL)preferenceObject:(id)arg1 representsContact:(id)arg2;
 - (void)setErrors:(id)arg1 forPreference:(id)arg2;
 
 @end

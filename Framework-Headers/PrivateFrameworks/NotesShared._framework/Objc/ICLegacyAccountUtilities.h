@@ -16,6 +16,8 @@
 + (BOOL)didChooseToMigrateAccountsForContext:(id)arg1 forAccountPassingTest:(CDUnknownBlockType)arg2;
 + (BOOL)didChooseToMigrateLegacyAccountType:(long long)arg1;
 + (BOOL)isLegacyLocalAccount:(id)arg1;
++ (id)legacyAccountForICloudACAccount:(id)arg1 context:(id)arg2;
++ (id)legacyAccountForICloudAccount:(id)arg1 context:(id)arg2;
 + (id)legacyAccountForLegacyAccountType:(long long)arg1 context:(id)arg2;
 + (id)legacyAccountForLocalAccountWithContext:(id)arg1;
 + (id)legacyAccountForPrimaryICloudAccountWithContext:(id)arg1;

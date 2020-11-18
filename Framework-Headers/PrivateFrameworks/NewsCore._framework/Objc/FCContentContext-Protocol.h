@@ -8,7 +8,7 @@
 #import <NewsCore/NSObject-Protocol.h>
 
 @class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 
@@ -32,9 +32,11 @@
 @property (readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
 @property (strong, nonatomic) id<FCWebArchiveSource> webArchiveSource;
 
+- (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id<FCCacheFlushing>)arg2;
 - (id<FCMagazinesConfigurationManager>)magazinesConfigurationManager;
 - (id<FCCoreConfigurationManager><FCNewsAppConfigurationManager>)news_core_ConfigurationManager;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
+- (void)ppt_prewarmFeedDatabase;
 - (id<FCJSONRecordSourceType>)recordSourceWithSchema:(FCJSONRecordSourceSchema *)arg1;
 - (id<FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;
 @end

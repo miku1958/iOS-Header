@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)_transientState;
 - (void)_updateTapGestureHistoryWithLocation:(struct CGPoint)arg1;
 - (BOOL)_usesIndirectSelectionBehavior;
+- (BOOL)_usesPencilSelectionBehaviorForGesture:(id)arg1;
 - (void)confirmMarkedText:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (void)didUpdateSelectionWithGesture:(id)arg1;

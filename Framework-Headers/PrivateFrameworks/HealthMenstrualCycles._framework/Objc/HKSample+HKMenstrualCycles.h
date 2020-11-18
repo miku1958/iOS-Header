@@ -8,7 +8,6 @@
 
 @interface HKSample (HKMenstrualCycles)
 + (id)hkmc_defaultMetadata;
-- (CDStruct_ef5fcbe6)hkmc_dayIndexRangeWithCalendar:(id)arg1;
 - (id)hkmc_timeZone;
 - (BOOL)hkmc_wasEnteredFromCycleTracking;
 @end

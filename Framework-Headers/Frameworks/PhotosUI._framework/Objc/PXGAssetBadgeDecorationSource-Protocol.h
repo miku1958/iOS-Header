@@ -6,11 +6,15 @@
 
 #import <PhotosUICore/PXGLayoutContentSource-Protocol.h>
 
-@class PXGLayout;
+@class PXGLayout, PXOperationStatus;
 @protocol PXDisplayAsset;
 
 @protocol PXGAssetBadgeDecorationSource <PXGLayoutContentSource>
 - (struct PXAssetBadgeInfo)assetBadgeInfoForAsset:(id<PXDisplayAsset>)arg1 atSpriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
 - (BOOL)wantsAssetBadgeDecorationsInLayout:(PXGLayout *)arg1;
+- (BOOL)wantsInteractiveFavoriteBadgesInLayout:(PXGLayout *)arg1;
+
+@optional
+- (PXOperationStatus *)loadStatusForAsset:(id<PXDisplayAsset>)arg1 atSpriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
 @end
 

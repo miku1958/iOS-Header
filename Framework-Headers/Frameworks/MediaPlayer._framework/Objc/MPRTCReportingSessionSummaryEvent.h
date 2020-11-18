@@ -8,6 +8,7 @@
 
 @class NSError, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingSessionSummaryEvent : MPRTCReportingEvent
 {
     BOOL _hadBlockingTracklistLoad;

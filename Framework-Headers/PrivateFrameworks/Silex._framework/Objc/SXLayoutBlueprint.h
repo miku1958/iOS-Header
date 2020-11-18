@@ -60,7 +60,7 @@
 - (void)invalidateDependentsOfInvalidatedComponents;
 - (void)invalidatePositionForComponentWithIdentifier:(id)arg1;
 - (void)invalidateSizeForComponentWithIdentifier:(id)arg1;
-- (void)invalidateSizeForComponentWithIdentifier:(id)arg1 suggestedSize:(struct CGSize)arg2;
+- (void)invalidateSizeForComponentWithIdentifier:(id)arg1 componentState:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)layoutDescriptionForBlueprint:(id)arg1 depth:(unsigned long long)arg2;
 - (void)registerLayout:(id)arg1 sizer:(id)arg2 forComponent:(id)arg3;
 - (void)registerLayout:(id)arg1 sizer:(id)arg2 forComponent:(id)arg3 atIndex:(unsigned long long)arg4;

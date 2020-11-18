@@ -6,6 +6,7 @@
 
 @protocol PPConfigServerProtocol
 - (void)assetVersionWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)readableTrialTreatmentsMappingWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)variantNameWithCompletion:(void (^)(NSString *, NSError *))arg1;
 @end
 

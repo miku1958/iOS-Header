@@ -6,31 +6,33 @@
 
 #import <iTunesCloud/ICURLRequest.h>
 
-@class ICJSSignConfiguration, ICStoreRequestContext, NSDictionary, NSString;
+@class ICJSSignConfiguration, ICStoreRequestContext, NSArray, NSDictionary, NSString;
 
 @interface ICStoreURLRequest : ICURLRequest
 {
     BOOL _shouldUseMescalSigning;
     BOOL _shouldParseBodyData;
     BOOL _shouldRequireURLBag;
-    BOOL _shouldApplyAuthKitHeaders;
     long long _anisetteVersion;
     NSString *_machineDataSyncState;
     NSDictionary *_additionalHTTPCookies;
+    NSArray *_additionalQueryItems;
     ICJSSignConfiguration *_JSSignConfiguration;
 }
 
 @property (copy, nonatomic) ICJSSignConfiguration *JSSignConfiguration; // @synthesize JSSignConfiguration=_JSSignConfiguration;
 @property (copy, nonatomic) NSDictionary *additionalHTTPCookies; // @synthesize additionalHTTPCookies=_additionalHTTPCookies;
+@property (copy, nonatomic) NSArray *additionalQueryItems; // @synthesize additionalQueryItems=_additionalQueryItems;
 @property (nonatomic) long long anisetteVersion; // @synthesize anisetteVersion=_anisetteVersion;
 @property (copy, nonatomic) NSString *machineDataSyncState; // @synthesize machineDataSyncState=_machineDataSyncState;
-@property (nonatomic) BOOL shouldApplyAuthKitHeaders; // @synthesize shouldApplyAuthKitHeaders=_shouldApplyAuthKitHeaders;
 @property (nonatomic) BOOL shouldParseBodyData; // @synthesize shouldParseBodyData=_shouldParseBodyData;
 @property (nonatomic) BOOL shouldRequireURLBag; // @synthesize shouldRequireURLBag=_shouldRequireURLBag;
 @property (nonatomic) BOOL shouldUseMescalSigning; // @synthesize shouldUseMescalSigning=_shouldUseMescalSigning;
 @property (readonly, copy, nonatomic) ICStoreRequestContext *storeRequestContext;
 
 + (unsigned long long)_defaultMaxRetryCountForReason:(id)arg1;
++ (Class)_responseHandlerClass;
++ (BOOL)_shouldPersonalizeRequestForClientInfo:(id)arg1 personalizationStyle:(long long)arg2;
 + (id)currentConnectionTypeHeader;
 - (void).cxx_destruct;
 - (void)_getSignatureDataForRequest:(id)arg1 urlBag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

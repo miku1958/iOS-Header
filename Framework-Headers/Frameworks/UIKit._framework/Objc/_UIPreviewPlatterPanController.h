@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
     _UIVelocityIntegrator *_velocityIntegrator;
     struct CGPoint _originalPlatterCenter;
     struct CGPoint _originalActionsCenter;
-    CDStruct_6f807b77 _menuAnchor;
+    CDStruct_a36705e8 _menuAnchor;
 }
 
 @property (strong, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long initialDetentIndex; // @synthesize initialDetentIndex=_initialDetentIndex;
-@property (nonatomic) CDStruct_6f807b77 menuAnchor; // @synthesize menuAnchor=_menuAnchor;
+@property (nonatomic) CDStruct_a36705e8 menuAnchor; // @synthesize menuAnchor=_menuAnchor;
 @property (nonatomic) struct CGPoint originalActionsCenter; // @synthesize originalActionsCenter=_originalActionsCenter;
 @property (nonatomic) struct CGPoint originalPlatterCenter; // @synthesize originalPlatterCenter=_originalPlatterCenter;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
@@ -76,8 +76,9 @@ __attribute__((visibility("hidden")))
 - (void)_updatePlatterGestureDebugUIWithGesture:(id)arg1 invalidate:(BOOL)arg2;
 - (void)_updateViewPositionsWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2 ended:(BOOL)arg3 withVelocity:(BOOL)arg4;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithContainerView:(id)arg1 platterView:(id)arg2 actionsView:(id)arg3;
 
 @end

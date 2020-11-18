@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSCategorySearchResultSection : PBCodable <NSCopying>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     NSString *_sectionHeaderDisplayName;
     NSString *_sectionSubHeaderDisplayName;
+    GEOStyleAttributes *_styleAttributes;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -26,10 +27,8 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_sectionHeaderDisplayName:1;
         unsigned int read_sectionSubHeaderDisplayName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_sectionHeaderDisplayName:1;
-        unsigned int wrote_sectionSubHeaderDisplayName:1;
-        unsigned int wrote_categorySearchResultSectionCellType:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,15 +36,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasCategorySearchResultSectionCellType;
 @property (readonly, nonatomic) BOOL hasSectionHeaderDisplayName;
 @property (readonly, nonatomic) BOOL hasSectionSubHeaderDisplayName;
+@property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (strong, nonatomic) NSString *sectionHeaderDisplayName;
 @property (strong, nonatomic) NSString *sectionSubHeaderDisplayName;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategorySearchResultSectionCellType:(id)arg1;
-- (void)_readSectionHeaderDisplayName;
-- (void)_readSectionSubHeaderDisplayName;
 - (id)categorySearchResultSectionCellTypeAsString:(int)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -55,7 +54,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

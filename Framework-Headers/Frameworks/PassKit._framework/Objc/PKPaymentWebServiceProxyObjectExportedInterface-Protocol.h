@@ -24,10 +24,11 @@
 - (void)downloadAllPaymentPasses;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
 - (void)getConfigurationDataWithCompletion:(void (^)(PKPaymentDeviceConfigurationData *, NSError *))arg1;
 - (void)getContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
-- (void)getProvisioningDataWithCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg1;
+- (void)getProvisioningDataIncludingDeviceMetadata:(BOOL)arg1 withCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg2;
 - (void)getRegistrationDataWithCompletion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg1;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(void (^)(PKTrustedDeviceEnrollmentInfo *))arg1;
 - (void)handlePotentialExpressPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(NSSet *))arg2;

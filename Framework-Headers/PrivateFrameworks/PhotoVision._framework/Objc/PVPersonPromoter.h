@@ -11,7 +11,6 @@
 
 @interface PVPersonPromoter : NSObject
 {
-    BOOL _didAskFaceProcesingProgress;
     float _faceProcessingProgress;
     PVPersonClusterManager *_personClusterManager;
     id<PVPersonPromoterDelegate> _delegate;
@@ -24,7 +23,6 @@
 
 @property (strong, nonatomic) PVPersonDeduperProfile *deduperProfile; // @synthesize deduperProfile=_deduperProfile;
 @property (weak, nonatomic) id<PVPersonPromoterDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL didAskFaceProcesingProgress; // @synthesize didAskFaceProcesingProgress=_didAskFaceProcesingProgress;
 @property (nonatomic) float faceProcessingProgress; // @synthesize faceProcessingProgress=_faceProcessingProgress;
 @property (readonly, nonatomic) NSMutableDictionary *metricsReport; // @synthesize metricsReport=_metricsReport;
 @property (strong, nonatomic) PVPersonClusterManager *personClusterManager; // @synthesize personClusterManager=_personClusterManager;

@@ -6,32 +6,42 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
+#import <MediaRemote/NSSecureCoding-Protocol.h>
+
 @class MRClient, MROrigin, MRPlayer, NSData, _MRNowPlayingPlayerPathProtobuf;
 
-__attribute__((visibility("hidden")))
-@interface MRPlayerPath : NSObject
+@interface MRPlayerPath : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _systemMediaApplication;
     MROrigin *_origin;
     MRClient *_client;
     MRPlayer *_player;
 }
 
-@property (strong, nonatomic) MRClient *client; // @synthesize client=_client;
+@property (copy, nonatomic) MRClient *client; // @synthesize client=_client;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (readonly, nonatomic, getter=isLocal) BOOL local;
-@property (strong, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
-@property (strong, nonatomic) MRPlayer *player; // @synthesize player=_player;
+@property (readonly, nonatomic) MRPlayerPath *localResolvedPlayerPath;
+@property (copy, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
+@property (copy, nonatomic) MRPlayer *player; // @synthesize player=_player;
 @property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *protobuf;
 @property (readonly, nonatomic, getter=isResolved) BOOL resolved;
-@property (readonly, nonatomic, getter=isSystemMediaApplication) BOOL systemMediaApplication; // @synthesize systemMediaApplication=_systemMediaApplication;
+@property (readonly, nonatomic) MRPlayerPath *skeleton;
+@property (readonly, nonatomic, getter=isSystemMediaApplication) BOOL systemMediaApplication;
 
 + (id)localPlayerPath;
++ (id)localResolvedPlayerPathFromPlayerPath:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithOrigin:(id)arg1 client:(id)arg2 player:(id)arg3;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)playerPathByRedirectingToOrigin:(id)arg1;
 
 @end
 

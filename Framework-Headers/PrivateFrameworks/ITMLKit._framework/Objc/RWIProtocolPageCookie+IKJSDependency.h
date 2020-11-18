@@ -7,6 +7,6 @@
 #import <WebInspector/RWIProtocolPageCookie.h>
 
 @interface RWIProtocolPageCookie (IKJSDependency)
-+ (id)safe_initWithName:(id)arg1 value:(id)arg2 domain:(id)arg3 path:(id)arg4 expires:(double)arg5 size:(int)arg6 httpOnly:(BOOL)arg7 secure:(BOOL)arg8 session:(BOOL)arg9 sameSite:(long long)arg10;
++ (id)safe_initWithName:(id)arg1 value:(id)arg2 domain:(id)arg3 path:(id)arg4 expires:(double)arg5 session:(BOOL)arg6 httpOnly:(BOOL)arg7 secure:(BOOL)arg8 sameSite:(long long)arg9;
 @end
 

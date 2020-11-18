@@ -20,9 +20,13 @@
 + (id)hk_errorWithCodableError:(id)arg1;
 - (id)hd_cloudKitErrorRequiringUserAction;
 - (id)hd_cloudKitErrorRequiringUserActionFromCKErrorDomain;
+- (id)hd_errorStrippingCloudKitPartialFailuresWithShouldIgnoreBlock:(CDUnknownBlockType)arg1;
+- (id)hd_errorStrippingExpectedCloudKitPartialFailures;
 - (BOOL)hd_isConstraintViolation;
+- (BOOL)hd_isCorruptionError;
 - (BOOL)hd_isDatabaseCorruptionError;
 - (BOOL)hd_isManateeIdentityLossError;
+- (BOOL)hd_isNotADatabaseError;
 - (BOOL)hd_isResponseTimeout;
 - (id)hd_persistentMessage;
 - (id)hd_underlyingSQLiteError;

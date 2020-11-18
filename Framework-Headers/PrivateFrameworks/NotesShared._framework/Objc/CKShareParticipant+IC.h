@@ -12,5 +12,6 @@
 
 @property (readonly, nonatomic) NSString *ic_participantName;
 
++ (id)ic_displayableNames:(id)arg1 maximumNamesCount:(unsigned long long)arg2;
 @end
 

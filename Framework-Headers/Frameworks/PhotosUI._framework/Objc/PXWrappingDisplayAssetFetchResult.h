@@ -22,9 +22,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<PXDisplayAsset> firstObject;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<PXDisplayAsset> lastObject;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (BOOL)containsObject:(id)arg1;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
 - (id)initWithFetchResult:(id)arg1 range:(struct _NSRange)arg2;

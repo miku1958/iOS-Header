@@ -14,8 +14,8 @@
 @property (nonatomic) int pid; // @synthesize pid=_pid;
 
 + (id)protobufSchema;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 
 @end
 

@@ -11,6 +11,9 @@
 @interface _TtC7NewsUI225SearchMoreArticlesTracker : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tracker;
+    MISSING_TYPE *scienceDataFactory;
+    MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *contentPrefetchManager;
 }
 
 @end

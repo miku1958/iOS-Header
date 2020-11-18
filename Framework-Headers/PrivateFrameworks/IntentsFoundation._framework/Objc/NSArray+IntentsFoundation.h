@@ -17,6 +17,8 @@
 - (id)if_compactMap:(CDUnknownBlockType)arg1;
 - (void)if_enumerateAsynchronously:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)if_enumerateAsynchronouslyInSequence:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)if_enumerateAsynchronouslyInSequenceOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)if_enumerateAsynchronouslyOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)if_escapedComponentsJoinedByString:(id)arg1 forLocale:(id)arg2;
 - (id)if_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)if_firstObjectWithBoolValue:(BOOL)arg1 forKey:(id)arg2;

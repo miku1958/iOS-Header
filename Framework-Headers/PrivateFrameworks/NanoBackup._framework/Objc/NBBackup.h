@@ -8,7 +8,7 @@
 
 #import <NanoBackup/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString, NSURL, NSUUID;
+@class NSData, NSDate, NSNumber, NSString, NSURL, NSUUID;
 
 @interface NBBackup : NSObject <NSSecureCoding>
 {
@@ -37,6 +37,8 @@
     NSString *_watchFaceColor;
     NSDate *_lastModificationDate;
     NSNumber *_sizeInBytes;
+    NSString *_deviceCSN;
+    NSData *_watchFaceData;
 }
 
 @property (strong, nonatomic) NSURL *activeWatchFaceFileURL; // @synthesize activeWatchFaceFileURL=_activeWatchFaceFileURL;
@@ -45,6 +47,7 @@
 @property (strong, nonatomic) NSNumber *bcmWindowMaterial; // @synthesize bcmWindowMaterial=_bcmWindowMaterial;
 @property (strong, nonatomic) NSNumber *bottomEnclosureMaterial; // @synthesize bottomEnclosureMaterial=_bottomEnclosureMaterial;
 @property (strong, nonatomic) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;
+@property (strong, nonatomic) NSString *deviceCSN; // @synthesize deviceCSN=_deviceCSN;
 @property (strong, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
 @property (strong, nonatomic) NSString *deviceEnclosureColor; // @synthesize deviceEnclosureColor=_deviceEnclosureColor;
 @property (nonatomic, getter=isDiagnosticsOptInEnabled) BOOL diagnosticsOptInEnabled; // @synthesize diagnosticsOptInEnabled=_diagnosticsOptInEnabled;
@@ -64,6 +67,7 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSString *watchFace; // @synthesize watchFace=_watchFace;
 @property (strong, nonatomic) NSString *watchFaceColor; // @synthesize watchFaceColor=_watchFaceColor;
+@property (strong, nonatomic) NSData *watchFaceData; // @synthesize watchFaceData=_watchFaceData;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

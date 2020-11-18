@@ -27,6 +27,8 @@
     BOOL _serverIsDegraded;
     unsigned short _localLinkFlags;
     unsigned short _remoteLinkFlags;
+    unsigned int _localDataSoMask;
+    unsigned int _remoteDataSoMask;
 }
 
 - (void).cxx_destruct;

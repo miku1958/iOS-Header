@@ -9,7 +9,7 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSDate, NSDictionary, NSManagedObjectID, NSString, PHObjectPlaceholder, PHPhotosHighlight, PHRelationshipChangeRequestHelper;
+@class NSDictionary, NSManagedObjectID, NSString, PHPhotosHighlight, PHRelationshipChangeRequestHelper;
 
 @interface PHPhotosHighlightChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
@@ -21,42 +21,33 @@
     NSDictionary *_curationHelpersByCurationType;
 }
 
-@property (nonatomic) unsigned short category;
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, nonatomic) NSDictionary *curationHelpersByCurationType; // @synthesize curationHelpersByCurationType=_curationHelpersByCurationType;
 @property (strong, nonatomic) NSString *dateDescription;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *dayGroupKeyAssetHelper; // @synthesize dayGroupKeyAssetHelper=_dayGroupKeyAssetHelper;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *dayKeyAssetHelper; // @synthesize dayKeyAssetHelper=_dayKeyAssetHelper;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSDate *endDate;
-@property (nonatomic) long long endTimeZoneOffset;
 @property (nonatomic) unsigned short enrichmentState;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isNewRequest;
-@property (nonatomic) unsigned short kind;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *monthKeyAssetHelper; // @synthesize monthKeyAssetHelper=_monthKeyAssetHelper;
 @property (nonatomic) unsigned long long mood;
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (strong, nonatomic) PHPhotosHighlight *originalHighlight; // @synthesize originalHighlight=_originalHighlight;
-@property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedPhotosHighlight;
 @property (nonatomic) double promotionScore;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (strong, nonatomic) NSString *smartDescription;
-@property (strong, nonatomic) NSDate *startDate;
-@property (nonatomic) long long startTimeZoneOffset;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned short type;
 @property (strong, nonatomic) NSString *verboseSmartDescription;
 @property (nonatomic) unsigned short visibilityState;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *yearKeyAssetHelper; // @synthesize yearKeyAssetHelper=_yearKeyAssetHelper;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForPhotosHighlight:(id)arg1;
-+ (id)creationRequestForPhotosHighlight;
 + (void)deletePhotosHighlights:(id)arg1;
 - (void).cxx_destruct;
 - (id)_existentAssetObjectIDs;
@@ -75,8 +66,6 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)setAssets:(id)arg1 forCurationType:(unsigned short)arg2;
 - (void)setEnrichmentVersion:(short)arg1;
 - (void)setKeyAsset:(id)arg1;

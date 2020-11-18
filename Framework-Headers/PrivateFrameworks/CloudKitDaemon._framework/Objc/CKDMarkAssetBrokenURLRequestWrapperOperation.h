@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)activityCreate;
 - (void)main;
+- (int)operationType;
 - (BOOL)shouldCheckAppVersion;
 
 @end

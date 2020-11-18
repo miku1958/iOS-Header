@@ -6,10 +6,10 @@
 
 #import <PagesQuicklook/NSObject-Protocol.h>
 
-@class TPPaginationState, TPSectionHint;
+@class TPSectionHint, _TtC14PagesQuicklook17TPPaginationState;
 
 @protocol TPPageGenerator <NSObject>
-- (void)createOrUpdatePageHintInSectionHint:(TPSectionHint *)arg1 withState:(TPPaginationState *)arg2;
-- (BOOL)wantsPageInSectionHint:(TPSectionHint *)arg1 withState:(TPPaginationState *)arg2;
+- (void)createOrUpdatePageHintInSectionHint:(TPSectionHint *)arg1 withState:(_TtC14PagesQuicklook17TPPaginationState *)arg2;
+- (BOOL)wantsPageInSectionHint:(TPSectionHint *)arg1 withState:(_TtC14PagesQuicklook17TPPaginationState *)arg2;
 @end
 

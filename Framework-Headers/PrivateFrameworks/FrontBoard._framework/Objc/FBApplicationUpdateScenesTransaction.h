@@ -9,11 +9,11 @@
 #import <FrontBoard/FBApplicationProcessLaunchTransactionObserver-Protocol.h>
 #import <FrontBoard/FBUpdateSceneTransactionObserver-Protocol.h>
 
-@class FBApplicationProcess, FBApplicationProcessLaunchTransaction, NSMutableArray, NSString, RBSProcessIdentity;
+@class FBApplicationProcess, FBApplicationProcessLaunchTransaction, FBSSceneClientIdentity, NSMutableArray, NSString;
 
 @interface FBApplicationUpdateScenesTransaction : FBSynchronizedTransactionGroup <FBApplicationProcessLaunchTransactionObserver, FBUpdateSceneTransactionObserver>
 {
-    RBSProcessIdentity *_identity;
+    FBSSceneClientIdentity *_clientIdentity;
     FBApplicationProcessLaunchTransaction *_processLaunchTransaction;
     BOOL _processLaunched;
     BOOL _waitsForSceneCommits;
@@ -46,6 +46,7 @@
 - (void)addObserver:(id)arg1;
 - (id)init;
 - (id)initWithApplicationBundleID:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
+- (id)initWithClientIdentity:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
 - (id)initWithProcessIdentity:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)transaction:(id)arg1 didLaunchProcess:(id)arg2;

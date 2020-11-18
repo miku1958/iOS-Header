@@ -14,7 +14,7 @@
 - (id)cd_dateWithFloorForAlignment:(double)arg1;
 - (id)cd_dateWithFloorForAlignment:(double)arg1 withOffset:(double)arg2 inTimeZone:(id)arg3;
 - (id)dedup;
-- (id)dk_localtimeString;
+- (id)dk_dedup;
 - (id)floorDateWithTotalSlotsInDay:(int)arg1;
 - (int)slotFromMidnightWithTotalSlotsInDay:(int)arg1;
 - (double)timeSinceMidnight:(id *)arg1;

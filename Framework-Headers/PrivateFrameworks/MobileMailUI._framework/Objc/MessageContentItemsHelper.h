@@ -22,10 +22,10 @@
     id<EFScheduler> _attachmentsScheduler;
     NSProgress *_totalMailDropProgress;
     BOOL _allMailDropsDownloaded;
+    EMMailDropMetadata *_mailDropBannerMetadata;
     WKWebView *_webView;
     NSArray *_contentItems;
     id<ContentRepresentationHandlingDelegate> _representationHandler;
-    EMMailDropMetadata *_mailDropBannerMetadata;
     unsigned long long _totalMailDropDownloadSize;
     CDUnknownBlockType _maildropProgressHandler;
 }
@@ -35,7 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) EMMailDropMetadata *mailDropBannerMetadata; // @synthesize mailDropBannerMetadata=_mailDropBannerMetadata;
+@property (readonly, nonatomic) EMMailDropMetadata *mailDropBannerMetadata; // @synthesize mailDropBannerMetadata=_mailDropBannerMetadata;
 @property (copy, nonatomic) CDUnknownBlockType maildropProgressHandler; // @synthesize maildropProgressHandler=_maildropProgressHandler;
 @property (weak, nonatomic) id<ContentRepresentationHandlingDelegate> representationHandler; // @synthesize representationHandler=_representationHandler;
 @property (readonly) Class superclass;

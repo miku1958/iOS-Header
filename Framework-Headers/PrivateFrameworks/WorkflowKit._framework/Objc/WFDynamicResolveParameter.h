@@ -8,12 +8,13 @@
 
 #import <WorkflowKit/WFCodableAttributeBackedParameter-Protocol.h>
 
-@class INCodableAttribute, NSString;
+@class INCodableAttribute, INStringLocalizer, NSString;
 @protocol WFDynamicResolveParameterDataSource, WFDynamicResolveParameterDelegate;
 
 @interface WFDynamicResolveParameter : WFParameter <WFCodableAttributeBackedParameter>
 {
     INCodableAttribute *_codableAttribute;
+    INStringLocalizer *_stringLocalizer;
     id<WFDynamicResolveParameterDataSource> _dataSource;
     id<WFDynamicResolveParameterDelegate> _delegate;
 }
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) id<WFDynamicResolveParameterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

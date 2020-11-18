@@ -15,13 +15,11 @@
 @interface _INPBURLValue : PBCodable <_INPBURLValue, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_absoluteString;
     NSData *_scope;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *absoluteString; // @synthesize absoluteString=_absoluteString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

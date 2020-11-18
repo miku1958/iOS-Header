@@ -14,6 +14,7 @@
 @property (readonly) id featureExtractorParameters; // @synthesize featureExtractorParameters=_featureExtractorParameters;
 
 - (void).cxx_destruct;
+- (id)initWithObjectPrintParameters:(id)arg1 error:(id *)arg2;
 - (id)initWithScenePrintParameters:(id)arg1 error:(id *)arg2;
 
 @end

@@ -17,16 +17,16 @@
 - (void).cxx_destruct;
 - (struct CGRect)_initialFrameForContinuityAppLayout;
 - (BOOL)_isInsertingIndex:(unsigned long long)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 deckModifier:(id)arg3 fullscreenModifier:(id)arg4;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettingsForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
 @class NSString, NSUUID;
 
-@interface MRApplicationActivity : NSObject <NSSecureCoding, NSMutableCopying>
+@interface MRApplicationActivity : NSObject <NSSecureCoding, NSMutableCopying, NSCopying>
 {
     NSUUID *_uniqueIdentifier;
     NSString *_primaryApplicationDisplayID;
@@ -28,7 +29,6 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

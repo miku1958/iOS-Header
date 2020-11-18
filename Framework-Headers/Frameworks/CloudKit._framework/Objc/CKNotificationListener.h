@@ -7,19 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <CloudKit/APSConnectionDelegate-Protocol.h>
-#import <CloudKit/PKPushRegistryDelegate-Protocol.h>
+#import <CloudKit/CKPKPushRegistryDelegate-Protocol.h>
 
-@class APSConnection, NSMutableDictionary, NSOperationQueue, NSString, PKPushRegistry;
+@class APSConnection, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CKNotificationListener : NSObject <APSConnectionDelegate, PKPushRegistryDelegate>
+@interface CKNotificationListener : NSObject <APSConnectionDelegate, CKPKPushRegistryDelegate>
 {
+    BOOL _useOpportunisticPushTopics;
     NSString *_apsEnvironment;
     NSMutableDictionary *_subscriptionInfos;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSOperationQueue *_operationQueue;
-    PKPushRegistry *_pushRegistry;
     APSConnection *_apsConnection;
     NSString *_machServiceName;
     unsigned long long _strategy;
@@ -33,11 +33,11 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property (strong, nonatomic) PKPushRegistry *pushRegistry; // @synthesize pushRegistry=_pushRegistry;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) unsigned long long strategy; // @synthesize strategy=_strategy;
 @property (strong, nonatomic) NSMutableDictionary *subscriptionInfos; // @synthesize subscriptionInfos=_subscriptionInfos;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useOpportunisticPushTopics; // @synthesize useOpportunisticPushTopics=_useOpportunisticPushTopics;
 
 + (unsigned long long)suggestedStrategy;
 - (void).cxx_destruct;
@@ -46,7 +46,9 @@
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connectionDidReconnect:(id)arg1;
-- (void)handlePushNotificationWithPayload:(id)arg1;
+- (void)dealloc;
+- (void)didReceiveIncomingPushWithPayload:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)handlePushNotificationWithPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasAPSConnectionInitiateEntitlement;
 - (BOOL)hasInitializedAPSConnection;
 - (id)init;
@@ -54,8 +56,6 @@
 - (id)initWithStrategy:(unsigned long long)arg1;
 - (id)initWithStrategy:(unsigned long long)arg1 machServiceName:(id)arg2;
 - (BOOL)isRegisteredForSubscriptionWithID:(id)arg1 inDatabase:(id)arg2;
-- (void)pushRegistry:(id)arg1 didReceiveIncomingPushWithPayload:(id)arg2 forType:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)pushRegistry:(id)arg1 didUpdatePushCredentials:(id)arg2 forType:(id)arg3;
 - (void)registerForMachServiceAPSConnectionNotifications;
 - (void)registerForSubscription:(id)arg1 inDatabase:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)uniqueKeyForSubscriptionID:(id)arg1 inDatabase:(id)arg2;

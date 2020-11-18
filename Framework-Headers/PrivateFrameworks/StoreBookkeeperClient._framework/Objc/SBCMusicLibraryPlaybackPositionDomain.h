@@ -6,6 +6,7 @@
 
 #import <StoreBookkeeperClient/SBCPlaybackPositionDomain.h>
 
+__attribute__((visibility("hidden")))
 @interface SBCMusicLibraryPlaybackPositionDomain : SBCPlaybackPositionDomain
 {
 }

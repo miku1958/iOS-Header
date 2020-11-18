@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     NSString *_addToSiriBundleIdentifier;
     NSString *_galleryIdentifier;
     NSString *_key;
-    int _source;
-    CDStruct_fce072d8 _has;
+    NSString *_shortcutSource;
+    CDStruct_810980b6 _has;
 }
 
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;
@@ -28,12 +28,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAddToSiriBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasGalleryIdentifier;
 @property (readonly, nonatomic) BOOL hasKey;
-@property (nonatomic) BOOL hasSource;
+@property (readonly, nonatomic) BOOL hasShortcutSource;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (strong, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
 
 - (void).cxx_destruct;
-- (int)StringAsSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

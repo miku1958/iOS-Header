@@ -14,21 +14,22 @@
 {
     BOOL _isManagedCalendar;
     BOOL _isHolidaySubscribedCalendar;
-    BOOL _didTrySSL;
     int _subCalAccountVersion;
     NSData *_tmpICSData;
 }
 
+@property (nonatomic) BOOL allowInsecureConnection;
 @property (strong, nonatomic) NSString *calDAVURLString;
 @property (readonly, nonatomic) NSString *calendarExternalId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didTrySSL; // @synthesize didTrySSL=_didTrySSL;
 @property (strong, nonatomic) NSDictionary *externalRepresentation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isHolidaySubscribedCalendar; // @synthesize isHolidaySubscribedCalendar=_isHolidaySubscribedCalendar;
 @property (nonatomic) BOOL isManagedCalendar; // @synthesize isManagedCalendar=_isManagedCalendar;
+@property (nonatomic) double refreshInterval;
 @property (nonatomic) BOOL shouldRemoveAlarms;
+@property (nonatomic) BOOL shouldRemoveAttachments;
 @property (nonatomic) int subCalAccountVersion; // @synthesize subCalAccountVersion=_subCalAccountVersion;
 @property (nonatomic) BOOL subscribedURLSanitized;
 @property (readonly, nonatomic) NSURL *subscriptionURL;
@@ -36,13 +37,13 @@
 @property (strong, nonatomic) NSString *syncId;
 @property (readonly, nonatomic) DACoreDAVTaskManager *taskManager;
 @property (strong, nonatomic) NSData *tmpICSData; // @synthesize tmpICSData=_tmpICSData;
+@property (nonatomic) BOOL useFTP;
 
 - (void).cxx_destruct;
 - (void)_checkValidityWithConsumer:(id)arg1 quickValidate:(BOOL)arg2;
-- (void)_checkValidityWithConsumer:(id)arg1 quickValidate:(BOOL)arg2 forceSSL:(BOOL)arg3;
 - (id)_tmpICSCalendarPath;
 - (id)accountDescription;
-- (BOOL)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (BOOL)accountHasSignificantPropertyChangesWithChangeInfo:(id)arg1;
 - (void)clearTmpICSData;
 - (void)discoverInitialPropertiesWithConsumer:(id)arg1;
 - (void)handleTrustChallenge:(id)arg1 forTask:(id)arg2;
@@ -60,7 +61,8 @@
 - (void)saveTmpICSData;
 - (void)setAccountDescription:(id)arg1;
 - (void)setHost:(id)arg1;
-- (void)subCalValidationTask:(id)arg1 finishedWithError:(id)arg2 calendarName:(id)arg3 calendarData:(id)arg4;
+- (void)subCalValidationTask:(id)arg1 downloadProgressedTo:(long long)arg2 outOf:(long long)arg3;
+- (void)subCalValidationTask:(id)arg1 finishedWithError:(id)arg2 calendarName:(id)arg3 document:(id)arg4 calendarData:(id)arg5;
 - (BOOL)upgradeAccount;
 - (void)upgradeAccountSpecificPropertiesOnAccount:(id)arg1 inStore:(id)arg2 parentAccount:(id)arg3;
 

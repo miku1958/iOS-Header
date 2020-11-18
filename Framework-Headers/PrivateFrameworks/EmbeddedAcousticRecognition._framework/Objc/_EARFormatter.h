@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1;
 - (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1 task:(id)arg2;
+- (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1 task:(id)arg2 language:(id)arg3;
 - (id)formattedRecognitionWithNBestList:(id)arg1;
 - (id)formattedStringWithStrings:(id)arg1;
 - (id)formattedStringWithStrings:(id)arg1 preToPostItnArray:(id)arg2;
@@ -33,6 +34,7 @@
 - (id)initWithLanguage:(id)arg1 withSdapiConfig:(id)arg2 quasarConfig:(id)arg3;
 - (id)initWithQuasarConfig:(id)arg1;
 - (id)initWithQuasarConfig:(id)arg1 language:(id)arg2;
+- (id)initWithQuasarConfig:(id)arg1 overrideConfigFiles:(id)arg2;
 
 @end
 

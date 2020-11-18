@@ -35,9 +35,9 @@
 - (void)addMapForStorage:(id)arg1 forHyperlink:(id)arg2;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)childEnumerator;
-- (id)defaultBodyPlaceholderWithContext:(id)arg1;
-- (id)defaultSlideNumberPlaceholderWithContext:(id)arg1;
-- (id)defaultTitlePlaceholderWithContext:(id)arg1;
+- (id)defaultBodyPlaceholder;
+- (id)defaultSlideNumberPlaceholder;
+- (id)defaultTitlePlaceholder;
 - (id)infoCorrespondingToMasterInfo:(id)arg1;
 - (id)infosToDisplay;
 - (id)initWithSlideNode:(id)arg1 master:(id)arg2 andShow:(id)arg3;
@@ -52,6 +52,7 @@
 - (id)p_slideNodeUUIDStringFromURL:(id)arg1;
 - (BOOL)p_urlIsSlideSpecific:(id)arg1;
 - (id)packageLocator;
+- (id)paragraphIndexesOfTopLevelBullets;
 - (void)removeDrawable:(id)arg1;
 - (void)removeInfoUsingObjectPlaceholderGeometry:(id)arg1;
 - (void)removeMapForStorage:(id)arg1 forHyperlink:(id)arg2;

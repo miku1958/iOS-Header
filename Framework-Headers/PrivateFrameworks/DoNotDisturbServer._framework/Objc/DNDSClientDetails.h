@@ -27,7 +27,7 @@
 @property (readonly, nonatomic, getter=isSyncSuppressedClient) BOOL syncSuppressedClient; // @synthesize syncSuppressedClient=_syncSuppressedClient;
 @property (readonly, nonatomic, getter=isUserInteractionClient) BOOL userInteractionClient; // @synthesize userInteractionClient=_userInteractionClient;
 
-+ (id)_detailsForBundleInfoDictionary:(id)arg1;
++ (id)_detailsForClientIdentifier:(id)arg1 bundleInfoDictionary:(id)arg2;
 + (id)detailsForBundleAtURL:(id)arg1;
 + (id)detailsForClientIdentifier:(id)arg1 applicationBundleURL:(id)arg2;
 - (void).cxx_destruct;

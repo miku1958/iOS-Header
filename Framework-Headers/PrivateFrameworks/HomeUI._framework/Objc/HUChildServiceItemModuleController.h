@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUEditableCheckmarkDelegate-Protocol.h>
 
-@class HFItemBuilder, HUChildServiceEditorItemModule, NSMapTable, NSString;
+@class HFItemBuilder, HUChildServiceEditorItemModule, NSMapTable, NSNumber, NSString;
 @protocol HFServiceLikeBuilder, HUChildServiceModuleControllerDelegate;
 
 @interface HUChildServiceItemModuleController : HUItemTableModuleController <HUEditableCheckmarkDelegate>
@@ -17,9 +17,11 @@
     HUChildServiceEditorItemModule *_childServiceItemModule;
     HFItemBuilder<HFServiceLikeBuilder> *_activelyEditingNameServiceBuilder;
     NSMapTable *_identifyButtonMap;
+    NSNumber *_allCheckmarksDisabled;
 }
 
 @property (strong, nonatomic) HFItemBuilder<HFServiceLikeBuilder> *activelyEditingNameServiceBuilder; // @synthesize activelyEditingNameServiceBuilder=_activelyEditingNameServiceBuilder;
+@property (strong, nonatomic) NSNumber *allCheckmarksDisabled; // @synthesize allCheckmarksDisabled=_allCheckmarksDisabled;
 @property (strong, nonatomic) HUChildServiceEditorItemModule *childServiceItemModule; // @synthesize childServiceItemModule=_childServiceItemModule;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUChildServiceModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;

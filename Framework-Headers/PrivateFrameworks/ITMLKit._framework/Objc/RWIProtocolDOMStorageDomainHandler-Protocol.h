@@ -11,6 +11,7 @@
 @protocol RWIProtocolDOMStorageDomainHandler <NSObject>
 
 @optional
+- (void)clearDOMStorageItemsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 storageId:(RWIProtocolDOMStorageStorageId *)arg3;
 - (void)disableWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)enableWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)getDOMStorageItemsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 storageId:(RWIProtocolDOMStorageStorageId *)arg3;

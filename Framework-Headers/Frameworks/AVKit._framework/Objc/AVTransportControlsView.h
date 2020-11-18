@@ -8,7 +8,7 @@
 
 #import <AVKit/AVScrubberDelegate-Protocol.h>
 
-@class AVBackdropView, AVButton, AVLabel, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSLayoutConstraint, NSString, NSTimer, UILabel, UIView;
+@class AVButton, AVLabel, AVLayoutView, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSString, NSTimer, UILabel, UIView;
 @protocol AVTransportControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,7 +23,8 @@ __attribute__((visibility("hidden")))
     BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
-    BOOL _backdropViewNeedsLayout;
+    BOOL _showingScrubInstructions;
+    BOOL _animatingScrubInstructions;
     float _scrubberValueWhenScrubInstructionsTimerBegan;
     id<AVTransportControlsViewDelegate> _delegate;
     AVStyleSheet *_styleSheet;
@@ -40,35 +41,38 @@ __attribute__((visibility("hidden")))
     AVButton *_mediaSelectionButton;
     NSArray *_customItems;
     UIView *_customContentTransitioningInfoPanel;
-    AVBackdropView *_backdropView;
-    AVBackdropView *_detachedExtraContentBackdropView;
-    NSArray *_doubleRowLayoutConstraints;
-    NSLayoutConstraint *_scrubberInstructionsDoubleRowActiveConstraint;
+    AVLayoutView *_controlsLayoutView;
+    AVLayoutView *_detachedExtraContentLayoutView;
     AVLabel *_liveBroadcastLabel;
     AVLabel *_liveBroadcastScrubberLabel;
     AVTouchIgnoringView *_embeddedExtraContentContainer;
     UILabel *_scrubInstructionsLabel;
-    UILabel *_scrubInstructionsBackdropLabel;
+    AVLabel *_detachedScrubInstructionsBackdropLabel;
     NSTimer *_scrubInstructionsTimer;
+    AVTouchIgnoringView *_flexibleViewAfterRoutePickerView;
+    AVTouchIgnoringView *_flexibleViewAfterSkipForwardButtons;
     struct CGSize _extrinsicContentSize;
 }
 
-@property (readonly, nonatomic) AVBackdropView *backdropView; // @synthesize backdropView=_backdropView;
-@property (nonatomic) BOOL backdropViewNeedsLayout; // @synthesize backdropViewNeedsLayout=_backdropViewNeedsLayout;
+@property (nonatomic, getter=isAnimatingScrubInstructions) BOOL animatingScrubInstructions; // @synthesize animatingScrubInstructions=_animatingScrubInstructions;
 @property (readonly, nonatomic) BOOL canShowScrubInstructions;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
+@property (readonly, nonatomic) AVLayoutView *controlsLayoutView; // @synthesize controlsLayoutView=_controlsLayoutView;
 @property (strong, nonatomic) UIView *customContentTransitioningInfoPanel; // @synthesize customContentTransitioningInfoPanel=_customContentTransitioningInfoPanel;
 @property (copy, nonatomic) NSArray *customItems; // @synthesize customItems=_customItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVTransportControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) AVBackdropView *detachedExtraContentBackdropView; // @synthesize detachedExtraContentBackdropView=_detachedExtraContentBackdropView;
-@property (readonly, nonatomic) NSArray *doubleRowLayoutConstraints; // @synthesize doubleRowLayoutConstraints=_doubleRowLayoutConstraints;
+@property (strong, nonatomic) AVLayoutView *detachedExtraContentLayoutView; // @synthesize detachedExtraContentLayoutView=_detachedExtraContentLayoutView;
+@property (readonly, nonatomic) AVLabel *detachedScrubInstructionsBackdropLabel; // @synthesize detachedScrubInstructionsBackdropLabel=_detachedScrubInstructionsBackdropLabel;
 @property (nonatomic, getter=isDoubleRowLayoutEnabled) BOOL doubleRowLayoutEnabled; // @synthesize doubleRowLayoutEnabled=_doubleRowLayoutEnabled;
+@property (readonly, nonatomic) NSArray *doubleRowViews;
 @property (readonly, nonatomic) AVLabel *elapsedTimeLabel; // @synthesize elapsedTimeLabel=_elapsedTimeLabel;
 @property (readonly, nonatomic) AVTouchIgnoringView *embeddedExtraContentContainer; // @synthesize embeddedExtraContentContainer=_embeddedExtraContentContainer;
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
+@property (strong, nonatomic) AVTouchIgnoringView *flexibleViewAfterRoutePickerView; // @synthesize flexibleViewAfterRoutePickerView=_flexibleViewAfterRoutePickerView;
+@property (strong, nonatomic) AVTouchIgnoringView *flexibleViewAfterSkipForwardButtons; // @synthesize flexibleViewAfterSkipForwardButtons=_flexibleViewAfterSkipForwardButtons;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
@@ -80,12 +84,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double minimumRequiredWidth; // @synthesize minimumRequiredWidth=_minimumRequiredWidth;
 @property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (readonly, nonatomic) AVPlaybackControlsRoutePickerView *routePickerView; // @synthesize routePickerView=_routePickerView;
-@property (readonly, nonatomic) UILabel *scrubInstructionsBackdropLabel; // @synthesize scrubInstructionsBackdropLabel=_scrubInstructionsBackdropLabel;
 @property (readonly, nonatomic) UILabel *scrubInstructionsLabel; // @synthesize scrubInstructionsLabel=_scrubInstructionsLabel;
 @property (weak, nonatomic) NSTimer *scrubInstructionsTimer; // @synthesize scrubInstructionsTimer=_scrubInstructionsTimer;
 @property (readonly, nonatomic) AVScrubber *scrubber; // @synthesize scrubber=_scrubber;
-@property (readonly, nonatomic) NSLayoutConstraint *scrubberInstructionsDoubleRowActiveConstraint; // @synthesize scrubberInstructionsDoubleRowActiveConstraint=_scrubberInstructionsDoubleRowActiveConstraint;
 @property (nonatomic) float scrubberValueWhenScrubInstructionsTimerBegan; // @synthesize scrubberValueWhenScrubInstructionsTimerBegan=_scrubberValueWhenScrubInstructionsTimerBegan;
+@property (nonatomic, getter=isShowingScrubInstructions) BOOL showingScrubInstructions; // @synthesize showingScrubInstructions=_showingScrubInstructions;
 @property (nonatomic) BOOL showsLiveStreamingControls; // @synthesize showsLiveStreamingControls=_showsLiveStreamingControls;
 @property (nonatomic) BOOL showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
 @property (readonly, nonatomic) NSArray *singleRowViews;
@@ -98,23 +101,30 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AVLabel *timeRemainingLabel; // @synthesize timeRemainingLabel=_timeRemainingLabel;
 
-+ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_ensureLayoutConstraints;
+- (double)_doubleRowLayoutSpacingAfterSubview:(id)arg1;
+- (void)_layoutDoubleRowViews;
+- (unsigned long long)_layoutItemDisplayPriorityForSubview:(id)arg1;
+- (void)_layoutSingleRowViews;
+- (double)_rowSpacingForDoubleRowLayoutAfterRow:(unsigned long long)arg1;
 - (id)_scrubInstructionsAttributedText;
 - (void)_showScrubInstructions;
+- (double)_singeRowLayoutSpacingAfterSubview:(id)arg1;
 - (void)_updateCustomContentTransitioningInfoPanelLayout;
 - (void)_updateFontSizes;
+- (void)_updateScrubInstructionsFrame;
 - (void)_updateScrubInstructionsLabelsText;
+- (void)avkit_reevaluateHiddenStateOfItem:(id)arg1;
 - (void)beginScrubbing:(id)arg1;
 - (void)endScrubbing:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
+- (double)layoutHeightThatFitsRowsStartingWithRow:(unsigned long long)arg1;
 - (void)layoutSubviews;
+- (void)reevaluateHiddenStateOfAllItems;
 - (void)scrubberSlowKnobMovementDetected:(id)arg1;
 - (void)scrubberValueChanged:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateConstraints;
 
 @end
 

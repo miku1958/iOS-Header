@@ -15,6 +15,8 @@
 + (id)fingerprintForContacts:(id)arg1 scope:(id)arg2;
 + (id)fingerprintForData:(id)arg1;
 + (id)fingerprintForScope:(id)arg1;
++ (id)publicFingerprintForContact:(id)arg1;
++ (id)publicFingerprintForContacts:(id)arg1 scope:(id)arg2;
 
 @end
 

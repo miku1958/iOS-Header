@@ -30,7 +30,6 @@
     BOOL _shouldSuppressSyncDismissalWhenRemoved;
     BOOL _shouldUseRequestIdentifierForDismissalSync;
     BOOL _shouldPreemptPresentedNotification;
-    BOOL _shouldPreemptSTAR;
     BOOL _allowsDefaultDestinations;
     BOOL _allowsAlertDestination;
     BOOL _allowsLockScreenDestination;
@@ -63,6 +62,7 @@
     NSString *_identifier;
     NSString *_launchImageName;
     NSDate *_requestDate;
+    unsigned long long _presentationOptions;
     NSString *_audioCategory;
     NSNumber *_audioVolume;
     double _soundMaximumDuration;
@@ -136,6 +136,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property (copy, nonatomic) NSNumber *mutableContent; // @synthesize mutableContent=_mutableContent;
+@property (nonatomic) unsigned long long presentationOptions; // @synthesize presentationOptions=_presentationOptions;
 @property (nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property (copy, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
 @property (nonatomic) BOOL shouldAuthenticateDefaultAction; // @synthesize shouldAuthenticateDefaultAction=_shouldAuthenticateDefaultAction;
@@ -148,7 +149,6 @@
 @property (nonatomic) BOOL shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
 @property (nonatomic) BOOL shouldPlaySound; // @synthesize shouldPlaySound=_shouldPlaySound;
 @property (nonatomic) BOOL shouldPreemptPresentedNotification; // @synthesize shouldPreemptPresentedNotification=_shouldPreemptPresentedNotification;
-@property (nonatomic) BOOL shouldPreemptSTAR; // @synthesize shouldPreemptSTAR=_shouldPreemptSTAR;
 @property (nonatomic) BOOL shouldPresentAlert; // @synthesize shouldPresentAlert=_shouldPresentAlert;
 @property (nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
 @property (nonatomic) BOOL shouldSoundRepeat; // @synthesize shouldSoundRepeat=_shouldSoundRepeat;
@@ -191,6 +191,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationWithTruncation:(BOOL)arg1;
 - (id)init;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

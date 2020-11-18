@@ -78,11 +78,6 @@ struct statfs {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-} CDStruct_c0454aff;
-
-typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
 

@@ -26,6 +26,7 @@
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1 titleLabelSuperview:(id)arg2;
+- (void)setTitleAndDescriptionLabelTintColor:(id)arg1;
 - (void)updateConstraints;
 - (void)updateTitleText:(id)arg1 descriptionText:(id)arg2;
 

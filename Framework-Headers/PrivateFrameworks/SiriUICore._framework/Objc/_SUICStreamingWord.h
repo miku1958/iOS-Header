@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, UIImage;
+@class CALayer, NSArray, UIImage;
 
 @interface _SUICStreamingWord : NSObject
 {
     _SUICStreamingWord *_previous;
     long long _insertType;
+    NSArray *_emojiRangesInText;
     double _glyphLocationInWordX;
     CALayer *_wordLayer;
     UIImage *_beginImage;
@@ -20,6 +21,7 @@
 }
 
 @property (strong, nonatomic) UIImage *beginImage; // @synthesize beginImage=_beginImage;
+@property (strong, nonatomic) NSArray *emojiRangesInText; // @synthesize emojiRangesInText=_emojiRangesInText;
 @property (strong, nonatomic) UIImage *endImage; // @synthesize endImage=_endImage;
 @property (nonatomic) double glyphLocationInWordX; // @synthesize glyphLocationInWordX=_glyphLocationInWordX;
 @property (nonatomic) long long insertType; // @synthesize insertType=_insertType;

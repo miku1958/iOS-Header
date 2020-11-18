@@ -23,6 +23,7 @@
 - (void)clearCache;
 - (id)imageForItem:(id)arg1 scope:(id)arg2;
 - (id)imageForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(CDUnknownBlockType)arg3;
+- (BOOL)resourceExistsInCacheForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(CDUnknownBlockType)arg3;
 

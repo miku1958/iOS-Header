@@ -27,15 +27,18 @@
     BOOL _requiresPassword;
     BOOL _carplayRoute;
     BOOL _homePodRoute;
+    BOOL _clusterRoute;
     NSString *_routeUID;
     NSString *_productIdentifier;
     NSString *_groupUID;
     long long _routeType;
     long long _pickableRouteType;
     long long _routeSubtype;
+    NSArray *_clusterComposition;
     NSArray *_auxiliaryDevices;
     NSString *_playingPairedDeviceName;
     void *_externalDevice;
+    long long _originalRouteSubtype;
     MPAVRouteConnection *_connection;
 }
 
@@ -57,6 +60,8 @@
 @property (readonly, nonatomic) BOOL canFetchMediaDataFromSender; // @synthesize canFetchMediaDataFromSender=_canFetchMediaDataFromSender;
 @property (readonly, nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
 @property (readonly, nonatomic, getter=isCarplayRoute) BOOL carplayRoute; // @synthesize carplayRoute=_carplayRoute;
+@property (readonly, nonatomic) NSArray *clusterComposition; // @synthesize clusterComposition=_clusterComposition;
+@property (readonly, nonatomic, getter=isClusterRoute) BOOL clusterRoute; // @synthesize clusterRoute=_clusterRoute;
 @property (readonly, nonatomic) MPAVRouteConnection *connection; // @synthesize connection=_connection;
 @property (readonly, nonatomic) NSString *designatedGroupLeaderName;
 @property (readonly, nonatomic, getter=isDeviceSpeakerRoute) BOOL deviceSpeakerRoute;
@@ -73,6 +78,7 @@
 @property (readonly, nonatomic) BOOL isSplitRoute;
 @property (readonly, nonatomic, getter=isLowLatencyRoute) BOOL lowLatencyRoute;
 @property (readonly, nonatomic) long long numberOfOutputDevices;
+@property (readonly, nonatomic) long long originalRouteSubtype; // @synthesize originalRouteSubtype=_originalRouteSubtype;
 @property (readonly, nonatomic) long long passwordType;
 @property (readonly, nonatomic) long long pickableRouteType; // @synthesize pickableRouteType=_pickableRouteType;
 @property (nonatomic, getter=isPicked) BOOL picked;
@@ -90,6 +96,7 @@
 @property (readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly, nonatomic, getter=isRoutingToWirelessDevice) BOOL routingToWirelessDevice;
+@property (readonly, nonatomic, getter=isSetTopBoxRoute) BOOL setTopBoxRoute;
 @property (readonly, nonatomic, getter=isShareableRoute) BOOL shareableRoute;
 @property (readonly, nonatomic, getter=isSmartAudio) BOOL smartAudio;
 @property (readonly, nonatomic, getter=isSplitRoute) BOOL splitRoute;
@@ -99,13 +106,18 @@
 @property (readonly, nonatomic) BOOL supportsRemoteControl;
 @property (readonly, nonatomic) BOOL supportsWirelessDisplay;
 @property (readonly, nonatomic, getter=isTVRoute) BOOL tvRoute;
+@property (readonly, nonatomic, getter=isTVStickRoute) BOOL tvStickRoute;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
 @property (readonly, nonatomic, getter=isW1Route) BOOL w1Route;
 @property (readonly, nonatomic, getter=isW2Route) BOOL w2Route;
 @property (strong, nonatomic) MPAVRoute *wirelessDisplayRoute;
 
++ (id)clusterCompositionForOutputDevice:(id)arg1;
++ (long long)routeSubtypeForMRSubtype:(unsigned int)arg1 mrType:(unsigned int)arg2;
++ (long long)routeSubtypeForMRSubtype:(unsigned int)arg1 withOverridesFromMRType:(unsigned int)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)containsDeviceWithSubtype:(long long)arg1;
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

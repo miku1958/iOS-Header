@@ -6,7 +6,7 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class GCController, NSDictionary, NSNumber, NSString;
+@class GCController;
 
 @protocol GameControllerDaemon <NSObject>
 - (void)addController:(GCController *)arg1 forward:(BOOL)arg2;
@@ -19,9 +19,5 @@
 - (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(BOOL)arg5;
 - (void)ping;
 - (void)removeController:(GCController *)arg1 forward:(BOOL)arg2;
-- (void)requestConnectedHosts;
-- (void)setUserActivityUserInfo:(NSDictionary *)arg1;
-- (void)startBonjourService;
-- (void)startForwardingToApplicationNamed:(NSString *)arg1 pid:(NSNumber *)arg2 bundlePath:(NSString *)arg3;
 @end
 

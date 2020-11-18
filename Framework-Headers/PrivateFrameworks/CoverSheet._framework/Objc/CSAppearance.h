@@ -40,6 +40,7 @@
 - (void)addComponent:(id)arg1;
 - (id)componentForType:(long long)arg1 identifier:(id)arg2;
 - (id)componentForType:(long long)arg1 property:(unsigned long long)arg2;
+- (void)conformsToCSAppearanceProviding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

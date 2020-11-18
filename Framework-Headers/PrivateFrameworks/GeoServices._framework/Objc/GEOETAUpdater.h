@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedRoute, GEOComposedRouteStep, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
+@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedETARoute, GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
 @protocol GEOETAUpdaterDelegate;
 
 @interface GEOETAUpdater : NSObject
@@ -19,6 +19,7 @@
     GEOComposedRoute *_route;
     GEOComposedWaypoint *_destination;
     GEORouteAttributes *_routeAttributes;
+    GEOComposedETARoute *_etaRoute;
     long long _etaState;
     BOOL _allowRequests;
     BOOL _shouldUseConditionalRequest;
@@ -31,8 +32,6 @@
     NSData *_directionsResponseID;
     GEOCommonOptions *_commonOptions;
     GEOApplicationAuditToken *_auditToken;
-    GEOComposedRouteStep *_currentStepAtRequestStart;
-    double _percentageOfCurrentStepRemainingAtRequestStart;
 }
 
 @property (nonatomic) BOOL allowRequests; // @synthesize allowRequests=_allowRequests;
@@ -53,6 +52,7 @@
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 
 - (void).cxx_destruct;
+- (void)_addRouteAttributesToRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (double)_calculateNextTransitionTime;
 - (void)_clearTimer;
 - (void)_continueUpdateRequests;
@@ -62,22 +62,17 @@
 - (void)_startConditionalConnectionETARequest;
 - (void)_startStateWaitingForBestTimeStart:(id)arg1;
 - (void)_trafficRequest:(id)arg1 finished:(id)arg2;
-- (BOOL)_updateETAResponse:(id)arg1 withRemainingDistanceFromRequest:(id)arg2;
 - (id)_updateOrCreateRequest:(id)arg1;
 - (void)_updateRequest:(id)arg1;
-- (BOOL)_updateRouteWithETATrafficUpdateResponse:(id)arg1;
 - (void)cancelRequest;
 - (id)currentStep;
 - (void)dealloc;
 - (id)init;
 - (id)initWithRoute:(id)arg1 destination:(id)arg2 routeAttributes:(id)arg3;
-- (double)percentageOfCurrentStepRemaining;
 - (void)requestUpdate;
 - (void)reset;
-- (id)routesForETAUpdateRequest;
 - (void)startUpdateRequests;
 - (void)stopUpdateRequests;
-- (BOOL)updateRouteWithETATrafficUpdateResponse:(id)arg1 step:(id)arg2 percentOfStepRemaining:(double)arg3;
 
 @end
 

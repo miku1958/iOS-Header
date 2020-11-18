@@ -9,13 +9,14 @@
 #import <HealthKit/HKSeriesBuilderClientInterface-Protocol.h>
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, HKSeriesBuilderConfiguration, HKTaskServerProxyProvider, NSString, NSUUID;
+@class HKHealthStore, HKRetryableOperation, HKSeriesBuilderConfiguration, HKTaskServerProxyProvider, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HKSeriesBuilder : NSObject <_HKXPCExportable, HKSeriesBuilderClientInterface>
 {
     _Atomic int _state;
     HKTaskServerProxyProvider *_proxyProvider;
+    HKRetryableOperation *_retryableOperation;
     NSUUID *_identifier;
     HKSeriesBuilderConfiguration *_configuration;
     HKHealthStore *_store;
@@ -31,6 +32,7 @@
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) HKTaskServerProxyProvider *proxyProvider; // @synthesize proxyProvider=_proxyProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
+@property (strong, nonatomic) HKRetryableOperation *retryableOperation; // @synthesize retryableOperation=_retryableOperation;
 @property long long state;
 @property (readonly, nonatomic) HKHealthStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
@@ -44,7 +46,7 @@
 - (id)_initWithHealthStore:(id)arg1 identifier:(id)arg2 configuration:(id)arg3;
 - (void)_resourceQueue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
-- (void)clientRemote_didChangeToState:(long long)arg1;
+- (void)clientRemote_didChangeToState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectionInvalidated;
 - (void)discard;
 - (id)exportedInterface;

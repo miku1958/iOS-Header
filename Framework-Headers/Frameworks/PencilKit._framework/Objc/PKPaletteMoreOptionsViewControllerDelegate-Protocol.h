@@ -10,5 +10,10 @@
 
 @protocol PKPaletteMoreOptionsViewControllerDelegate <NSObject>
 - (void)moreOptionsViewControllerDidToggleAutoHide:(PKPaletteMoreOptionsViewController *)arg1;
+- (void)moreOptionsViewControllerDidToggleFingerDraws:(PKPaletteMoreOptionsViewController *)arg1;
+
+@optional
+- (void)moreOptionsViewControllerDidSelectOpenPencilSettings:(PKPaletteMoreOptionsViewController *)arg1;
+- (void)moreOptionsViewControllerDidSelectTapToRadar:(PKPaletteMoreOptionsViewController *)arg1;
 @end
 

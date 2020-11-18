@@ -4,24 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
+
+@class AMSUIWebActivityIndicatorModel, NSDictionary, NSString;
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebButtonModel : AMSUIWebModel
+@interface AMSUIWebButtonModel : NSObject <AMSUIWebModelInterface>
 {
     BOOL _bold;
     BOOL _enabled;
     id<AMSUIWebActionRunnable> _action;
+    AMSUIWebActivityIndicatorModel *_activityIndicator;
     NSString *_title;
     NSDictionary *_underlyingJSObject;
 }
 
 @property (strong, nonatomic) id<AMSUIWebActionRunnable> action; // @synthesize action=_action;
+@property (strong, nonatomic) AMSUIWebActivityIndicatorModel *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic) BOOL bold; // @synthesize bold=_bold;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSDictionary *underlyingJSObject; // @synthesize underlyingJSObject=_underlyingJSObject;
 

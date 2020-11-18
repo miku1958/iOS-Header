@@ -7,7 +7,6 @@
 #import <CDDataAccess/DAAccount.h>
 
 @interface DAAccount (DaemonAdditions)
-- (void)_debug_resetBabysitterWithRestrictedAccountID:(id)arg1;
 - (Class)agentClass;
 - (void)deviceDidWake;
 - (void)deviceWillSleep;

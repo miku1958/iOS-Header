@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <SpringBoard/NSObject-Protocol.h>
+
 @class SBHomeGestureParticipant;
 
-@protocol SBHomeGestureParticipantDelegate
+@protocol SBHomeGestureParticipantDelegate <NSObject>
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(SBHomeGestureParticipant *)arg1;
+
+@optional
+- (void)homeGestureParticipantResolvedHomeAffordanceSuppressionDidChange:(SBHomeGestureParticipant *)arg1;
 @end
 

@@ -21,9 +21,7 @@
 @property (readonly, nonatomic) long long target; // @synthesize target=_target;
 @property (readonly, nonatomic) long long targetAlignment; // @synthesize targetAlignment=_targetAlignment;
 
-- (id)description;
 - (id)initWithOrigin:(long long)arg1 direction:(long long)arg2 allowingTarget:alignment: /* Error: Ran out of types for this method. */;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

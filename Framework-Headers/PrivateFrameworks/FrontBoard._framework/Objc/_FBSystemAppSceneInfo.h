@@ -6,24 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class FBSScene, FBSSceneTransitionContext, UIScene, UIWindow;
+@class FBSScene, FBSSceneTransitionContext;
 
 @interface _FBSystemAppSceneInfo : NSObject
 {
-    BOOL _isWindowScene;
     BOOL _hasSentFBSWorkspaceDelegateSceneCreate;
     FBSScene *_FBSScene;
-    UIScene *_UIScene;
-    UIWindow *_primaryWindow;
     FBSSceneTransitionContext *_pendingTransitionContext;
 }
 
 @property (strong, nonatomic) FBSScene *FBSScene; // @synthesize FBSScene=_FBSScene;
-@property (strong, nonatomic) UIScene *UIScene; // @synthesize UIScene=_UIScene;
 @property (nonatomic) BOOL hasSentFBSWorkspaceDelegateSceneCreate; // @synthesize hasSentFBSWorkspaceDelegateSceneCreate=_hasSentFBSWorkspaceDelegateSceneCreate;
-@property (readonly, nonatomic) BOOL isWindowScene; // @synthesize isWindowScene=_isWindowScene;
 @property (strong, nonatomic) FBSSceneTransitionContext *pendingTransitionContext; // @synthesize pendingTransitionContext=_pendingTransitionContext;
-@property (weak, nonatomic) UIWindow *primaryWindow; // @synthesize primaryWindow=_primaryWindow;
 
 - (void).cxx_destruct;
 

@@ -21,8 +21,7 @@
     struct {
         unsigned int read_addressID:1;
         unsigned int read_significantLocations:1;
-        unsigned int wrote_addressID:1;
-        unsigned int wrote_significantLocations:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -33,9 +32,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)significantLocationType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsSignificantLocation:(id)arg1;
-- (void)_readAddressID;
-- (void)_readSignificantLocations;
 - (void)addSignificantLocation:(id)arg1;
 - (void)clearSensitiveFields;
 - (void)clearSignificantLocations;
@@ -46,7 +42,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

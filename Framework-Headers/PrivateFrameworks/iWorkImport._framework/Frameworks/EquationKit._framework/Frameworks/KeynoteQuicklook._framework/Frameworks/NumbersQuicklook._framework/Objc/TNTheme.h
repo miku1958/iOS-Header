@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSArray *tablePrototypes;
 
 + (void)initialize;
-- (void)_upgradeStylesheetWithDefaultSheetStyle;
 - (void)bootstrapBlackHardCodedTheme;
 - (void)bootstrapWhiteHardCodedTheme;
 - (void)loadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;

@@ -7,14 +7,23 @@
 #import <UIKit/UIViewController.h>
 
 #import <HomeUI/HUAlarmEditSettingViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUInlineDatePickerCellDelegate-Protocol.h>
+#import <HomeUI/HUSliderValueTableViewCellDelegate-Protocol.h>
+#import <HomeUI/HUSwitchCellDelegate-Protocol.h>
+#import <HomeUI/MPMediaPickerControllerDelegatePrivate-Protocol.h>
+#import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <HomeUI/UIScrollViewDelegate-Protocol.h>
 #import <HomeUI/UITableViewDataSource-Protocol.h>
 #import <HomeUI/UITableViewDelegate-Protocol.h>
 
-@class HUAlarmEditView, MTAlarm, MTMutableAlarm, NSSet, NSString;
-@protocol HUAlarmEditViewControllerDelegate;
+@class HFPlaybackArchive, HMMediaProfile, HUAlarmEditView, MTAlarm, MTMutableAlarm, NSDateComponents, NSMutableDictionary, NSSet, NSString, UITapGestureRecognizer;
+@protocol HFMediaProfileContainer, HUAlarmEditViewControllerDelegate;
 
-@interface HUAlarmEditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HUAlarmEditSettingViewControllerDelegate>
+@interface HUAlarmEditViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HUAlarmEditSettingViewControllerDelegate, HUSwitchCellDelegate, HUSliderValueTableViewCellDelegate, HUInlineDatePickerCellDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, MPMediaPickerControllerDelegatePrivate>
 {
+    BOOL _isCustomVolumeSelected;
+    BOOL _isPlayMediaSelected;
+    BOOL _isDatePickerWheelScrolled;
     id<HUAlarmEditViewControllerDelegate> _delegate;
     NSString *_loggedInAppleMusicAccountDSID;
     NSSet *_selectedActionSets;
@@ -22,8 +31,18 @@
     long long _editingAlarmSetting;
     MTAlarm *_originalAlarm;
     MTMutableAlarm *_editedAlarm;
+    double _selectedCustomVolumeLevel;
+    HFPlaybackArchive *_hfPlaybackArchive;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
+    NSMutableDictionary *_appleMusicSubcriptionResult;
+    NSDateComponents *_currentDatePickerTimeComponents;
+    HMMediaProfile *_originalSelectedMediaProfile;
+    HMMediaProfile *_selectedMediaProfile;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *appleMusicSubcriptionResult; // @synthesize appleMusicSubcriptionResult=_appleMusicSubcriptionResult;
+@property (strong, nonatomic) NSDateComponents *currentDatePickerTimeComponents; // @synthesize currentDatePickerTimeComponents=_currentDatePickerTimeComponents;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUAlarmEditViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -32,29 +51,72 @@
 @property (strong, nonatomic) MTMutableAlarm *editedAlarm; // @synthesize editedAlarm=_editedAlarm;
 @property (nonatomic) long long editingAlarmSetting; // @synthesize editingAlarmSetting=_editingAlarmSetting;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HFPlaybackArchive *hfPlaybackArchive; // @synthesize hfPlaybackArchive=_hfPlaybackArchive;
+@property (nonatomic) BOOL isCustomVolumeSelected; // @synthesize isCustomVolumeSelected=_isCustomVolumeSelected;
+@property (nonatomic) BOOL isDatePickerWheelScrolled; // @synthesize isDatePickerWheelScrolled=_isDatePickerWheelScrolled;
+@property (nonatomic) BOOL isPlayMediaSelected; // @synthesize isPlayMediaSelected=_isPlayMediaSelected;
 @property (copy, nonatomic) NSString *loggedInAppleMusicAccountDSID; // @synthesize loggedInAppleMusicAccountDSID=_loggedInAppleMusicAccountDSID;
+@property (strong, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (strong, nonatomic) MTAlarm *originalAlarm; // @synthesize originalAlarm=_originalAlarm;
+@property (strong, nonatomic) HMMediaProfile *originalSelectedMediaProfile; // @synthesize originalSelectedMediaProfile=_originalSelectedMediaProfile;
 @property (readonly, nonatomic) NSSet *selectedActionSets; // @synthesize selectedActionSets=_selectedActionSets;
+@property (nonatomic) double selectedCustomVolumeLevel; // @synthesize selectedCustomVolumeLevel=_selectedCustomVolumeLevel;
+@property (strong, nonatomic) HMMediaProfile *selectedMediaProfile; // @synthesize selectedMediaProfile=_selectedMediaProfile;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 
 + (struct CGSize)desiredContentSize;
 - (void).cxx_destruct;
 - (void)_cancelButtonClicked:(id)arg1;
+- (void)_checkAndPrepareEditingAlarmForMediaTypeAlarm;
+- (void)_chooseMediaTapped;
+- (void)_configureMediaIconView:(id)arg1 withImage:(id)arg2;
+- (id)_configureSoundForMediaTypeAlarm:(id)arg1;
+- (id)_dateComponents;
+- (id)_datePickerCellForTableView:(id)arg1 atIndexPath:(id)arg2;
+- (id)_deleteAlarmButtonCellForTableView:(id)arg1 atIndexPath:(id)arg2;
+- (void)_didTap:(id)arg1;
 - (void)_doneButtonClicked:(id)arg1;
+- (void)_handlePickerChanged;
+- (BOOL)_hasUserSelectedCustomVolume;
+- (BOOL)_hasUserSelectedToneAlarm;
+- (BOOL)_isAlarmTypeMedia;
+- (BOOL)_isDeviceSpecificAlarm;
+- (BOOL)_isNewAlarm;
+- (id)_mediaPropertiesTypeCellForTableView:(id)arg1 atIndexpath:(id)arg2;
+- (void)_presentMediaPickerUnavailablePromptWithReason:(long long)arg1 storeKitErrorObject:(id)arg2;
+- (void)_presentMediaPickerWithOptionsShowsLibraryContent:(BOOL)arg1;
+- (id)_setupCell:(id)arg1 forTableView:(id)arg2 indexPath:(id)arg3;
+- (void)_updateAppleMusicSubscriptionStatus;
+- (void)_updateCellForTableView:(id)arg1 indexPath:(id)arg2;
+- (void)_updateEnableStateForDoneButton:(BOOL)arg1;
+- (id)_volumeIconMaximum;
+- (id)_volumeIconMinimum;
+- (double)_volumeSettingForCurrentEditingAlarm;
+- (id)_volumeSliderCellForTableView:(id)arg1 atIndexPath:(id)arg2;
+- (id)_volumeTypeCellForTableView:(id)arg1 atIndexpath:(id)arg2;
 - (void)alarmEditSettingController:(id)arg1 didEditAlarm:(id)arg2;
+- (void)datePickerCell:(id)arg1 didSelectDate:(id)arg2;
 - (void)dealloc;
-- (void)handlePickerChanged;
-- (void)handleSuspend;
-- (id)initWithAlarm:(id)arg1;
-- (BOOL)isNewAlarm;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (id)initWithAlarmItem:(id)arg1 mediaProfileContainer:(id)arg2;
 - (void)loadView;
+- (void)mediaPicker:(id)arg1 didPickPlaybackArchive:(id)arg2;
+- (void)mediaPickerDidCancel:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)saveAlarmOnlyIfEdited:(BOOL)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)sliderValueTableViewCell:(id)arg1 didChangeValue:(double)arg2;
 - (void)startEditingSetting:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidUnload;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;

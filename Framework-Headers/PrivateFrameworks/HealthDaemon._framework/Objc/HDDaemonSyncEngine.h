@@ -13,10 +13,10 @@
 
 @interface HDDaemonSyncEngine : NSObject <HDSyncEngine>
 {
-    HDDaemonSyncEntityManager *_entityManager;
-    CDUnknownBlockType _unitTest_didCompleteReadTransaction;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    HDDaemonSyncEntityManager *_entityManager;
+    CDUnknownBlockType _unitTest_didCompleteReadTransaction;
 }
 
 @property (readonly, copy, nonatomic) NSArray *allOrderedSyncEntities;
@@ -24,27 +24,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType unitTest_didCompleteReadTransaction; // @synthesize unitTest_didCompleteReadTransaction=_unitTest_didCompleteReadTransaction;
 
 - (void).cxx_destruct;
 - (BOOL)_applySyncChange:(id)arg1 entity:(Class)arg2 store:(id)arg3 error:(id *)arg4;
-- (BOOL)_performSyncSession:(id)arg1 error:(id *)arg2;
+- (BOOL)_performSyncSession:(id)arg1 databaseAccessibilityAssertion:(id)arg2 error:(id *)arg3;
 - (void)_resetStore:(id)arg1;
-- (long long)_sendChanges:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (id)_syncAnchorMapForSyncEntityClass:(Class)arg1 session:(id)arg2 error:(id *)arg3;
 - (long long)_synchronizeSyncEntityClass:(Class)arg1 session:(id)arg2 startAnchor:(long long *)arg3 finalAnchor:(long long)arg4 postTransactionBlocks:(id)arg5 error:(id *)arg6;
 - (long long)_validateAnchorsForSyncChange:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (BOOL)_validateSequenceNumberForSyncChange:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (BOOL)applyAcknowledgedAnchorMap:(id)arg1 forStore:(id)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)applySyncChange:(id)arg1 forStore:(id)arg2 error:(id *)arg3;
-- (BOOL)generateSyncObjectsForSession:(id)arg1 entity:(Class)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 messageHandler:(id)arg4 error:(id *)arg5;
 - (BOOL)getReceivedAnchorMap:(id)arg1 forStore:(id)arg2 error:(id *)arg3;
 - (id)initWithProfile:(id)arg1;
 - (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 error:(id *)arg4;
-- (BOOL)performSyncSession:(id)arg1 error:(id *)arg2;
+- (BOOL)performSyncSession:(id)arg1 accessibilityAssertion:(id)arg2 error:(id *)arg3;
 - (void)resetAnchorsWithFailedChanges:(id)arg1 store:(id)arg2;
 - (void)resetStore:(id)arg1;
 - (long long)session:(id)arg1 requiresSyncWithAnchors:(id)arg2 error:(id *)arg3;

@@ -31,6 +31,7 @@
 }
 
 @property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL didWakeHint;
 @property (readonly, nonatomic) BOOL expectsPeerResponse;
 @property (strong, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
 @property (readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;

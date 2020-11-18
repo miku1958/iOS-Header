@@ -11,6 +11,9 @@
 @interface _TtC7NewsUI213SearchService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *context;
+    MISSING_TYPE *tagService;
+    MISSING_TYPE *headlineModelFactory;
+    MISSING_TYPE *feedContextFactory;
 }
 
 @end

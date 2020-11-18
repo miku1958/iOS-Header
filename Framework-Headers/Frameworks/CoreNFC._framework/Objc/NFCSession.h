@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NFWeakReference, NSLock, NSString, NSXPCConnection, NSXPCInterface;
-@protocol OS_dispatch_queue;
+@class NSLock, NSString, NSXPCConnection, NSXPCInterface;
+@protocol NFCSessionCallbacks, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface NFCSession : NSObject
@@ -18,10 +18,11 @@ __attribute__((visibility("hidden")))
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedObjectInterface;
     NSString *_machServiceName;
-    NFWeakReference *_exportedObject;
-    NFWeakReference *_delegate;
+    id _exportedObject;
+    id<NFCSessionCallbacks> _delegate;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_connectIfNeeded;
 - (id)_connection;
 - (id)_connectionLock;

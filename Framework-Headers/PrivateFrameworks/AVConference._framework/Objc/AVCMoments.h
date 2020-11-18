@@ -42,6 +42,7 @@
 - (void)disconnect;
 - (id)initWithStreamToken:(long long)arg1 requesterID:(id)arg2 delegate:(id)arg3 dispatchQueue:(id)arg4;
 - (id)newDictionaryForRequest:(id)arg1;
+- (id)newRequestWithMediaType:(unsigned char)arg1 mode:(unsigned char)arg2 requesteeID:(id)arg3;
 - (id)newRequestWithMediaType:(unsigned char)arg1 requesteeID:(id)arg2;
 - (void)registerBlocksForNotifications;
 

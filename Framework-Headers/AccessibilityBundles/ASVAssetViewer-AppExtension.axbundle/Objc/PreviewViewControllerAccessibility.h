@@ -68,6 +68,7 @@
 - (BOOL)_axShouldExposeControls;
 - (id)_axTimerForVisibilityAnnouncements;
 - (void)_axToggleVisibilityAnnouncementsIfNeeded;
+- (BOOL)_axTranslateForLevitation:(BOOL)arg1 delta:(id)arg2 entityController: /* Error: Ran out of types for this method. */;
 - (id)_axUnifiedGestureRecognizerForEntityController:(id)arg1;
 - (void)_axUpdateARViewAccessibilityElements;
 - (void)_axUpdateForAXSettings;

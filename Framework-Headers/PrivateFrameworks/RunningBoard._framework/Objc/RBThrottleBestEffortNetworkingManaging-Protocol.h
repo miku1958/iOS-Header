@@ -6,11 +6,10 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class RBProcess, RBProcessStateChangeSet, RBSystemState;
+@class RBProcess, RBProcessStateChangeSet;
 
 @protocol RBThrottleBestEffortNetworkingManaging <NSObject>
 - (void)addProcess:(RBProcess *)arg1;
-- (void)applySystemState:(RBSystemState *)arg1;
 - (void)didUpdateProcessStates:(RBProcessStateChangeSet *)arg1;
 - (BOOL)isThrottleBestEffortNetworkingEnabled;
 - (void)removeProcess:(RBProcess *)arg1;

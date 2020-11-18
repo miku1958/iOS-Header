@@ -6,14 +6,16 @@
 
 #import <ChatKit/CKTranscriptMessageCell.h>
 
-@class CKAvatarView;
+@class CKAvatarView, UIImageView;
 
 @interface CKPhoneTranscriptMessageCell : CKTranscriptMessageCell
 {
     CKAvatarView *_avatarView;
+    UIImageView *_printableAvatarView;
 }
 
 @property (strong, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property (strong, nonatomic) UIImageView *printableAvatarView; // @synthesize printableAvatarView=_printableAvatarView;
 
 - (void).cxx_destruct;
 - (id)contactImageView;

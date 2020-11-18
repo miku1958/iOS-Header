@@ -11,6 +11,6 @@
 
 @protocol PXGDataSourceDrivenLayout <NSObject>
 - (void)applySectionedChangeDetails:(NSArray *)arg1 dataSourceAfterChanges:(PXSectionedDataSource *)arg2 sublayoutProvider:(id<PXGSublayoutProvider>)arg3 outChangedSections:(id *)arg4 outSectionsWithItemChanges:(id *)arg5 changeMediaVersionHandler:(BOOL (^)(struct PXSimpleIndexPath, struct PXSimpleIndexPath))arg6;
-- (void)applySectionedChangedDetailsForSingleSection:(NSArray *)arg1 dataSourceAfterChanges:(PXSectionedDataSource *)arg2 changeMediaVersionHandler:(BOOL (^)(struct PXSimpleIndexPath, struct PXSimpleIndexPath))arg3;
+- (void)applySectionedChangeDetailsForSingleSection:(NSArray *)arg1 dataSourceAfterChanges:(PXSectionedDataSource *)arg2 changeMediaVersionHandler:(BOOL (^)(struct PXSimpleIndexPath, struct PXSimpleIndexPath))arg3;
 @end
 

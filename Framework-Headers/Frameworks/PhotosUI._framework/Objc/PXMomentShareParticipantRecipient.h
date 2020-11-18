@@ -6,14 +6,14 @@
 
 #import <PhotosUICore/PXRecipient.h>
 
-@class PHMomentShareParticipant;
+@class PHShareParticipant;
 
 @interface PXMomentShareParticipantRecipient : PXRecipient
 {
-    PHMomentShareParticipant *_momentShareParticipant;
+    PHShareParticipant *_momentShareParticipant;
 }
 
-@property (readonly, nonatomic) PHMomentShareParticipant *momentShareParticipant; // @synthesize momentShareParticipant=_momentShareParticipant;
+@property (readonly, nonatomic) PHShareParticipant *momentShareParticipant; // @synthesize momentShareParticipant=_momentShareParticipant;
 
 - (void).cxx_destruct;
 - (id)initWithContact:(id)arg1 address:(id)arg2 nameComponents:(id)arg3 recipientKind:(long long)arg4;

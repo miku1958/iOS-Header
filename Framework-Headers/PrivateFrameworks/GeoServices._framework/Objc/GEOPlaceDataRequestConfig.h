@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithTimeout:(double)arg1 request:(id)arg2 traits:(id)arg3;
 - (unsigned long long)multipathServiceType;
-- (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (id)serviceTypeNumber;
 - (double)timeout;
 - (unsigned long long)urlType;

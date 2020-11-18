@@ -46,6 +46,7 @@
 - (void)animationEnded:(BOOL)arg1;
 - (void)cancel;
 - (void)cancelTransition:(id)arg1 withCompletionSpeed:(double)arg2 completionCurve:(long long)arg3;
+- (void)completeImmediately;
 - (void)finishInteractiveTransition:(id)arg1 withCompletionSpeed:(double)arg2 completionCurve:(long long)arg3;
 - (BOOL)iconAnimator:(id)arg1 canAlterViewHierarchyDuringCleanupUsingBlock:(CDUnknownBlockType)arg2;
 - (void)iconAnimatorWasInvalidated:(id)arg1;

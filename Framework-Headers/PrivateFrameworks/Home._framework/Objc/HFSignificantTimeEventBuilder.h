@@ -27,6 +27,7 @@
 - (id)buildNewEventFromCurrentState;
 - (id)initWithEvent:(id)arg1;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1 withHome:(id)arg2 recurrences:(id)arg3;
+- (id)naturalLanguageWithOptions:(id)arg1 recurrences:(id)arg2;
 - (id)performValidation;
 
 @end

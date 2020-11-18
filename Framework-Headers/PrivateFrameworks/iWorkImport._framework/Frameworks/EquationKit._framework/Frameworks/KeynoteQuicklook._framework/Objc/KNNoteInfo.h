@@ -12,13 +12,13 @@
 #import <KeynoteQuicklook/TSWPStorageParent-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSDInfoGeometry, TSWPStorage;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDContainerInfo, TSDInfo, TSDOwningAttachment;
 
 @interface KNNoteInfo : TSPObject <TSDContainerInfo, TSWPStorageParent, TSKDocumentObject, TSKTransformableObject>
 {
     NSObject<TSDContainerInfo> *_parentInfo;
     BOOL _shrinkTextForPrinting;
-    NSObject<TSDContainerInfo> *parentInfo;
+    NSObject<TSDInfo> *parentInfo;
     TSWPStorage *_containedStorage;
     unsigned long long _initialCharacterIndexForExporting;
     struct CGRect _frameForPrinting;
@@ -39,11 +39,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long initialCharacterIndexForExporting; // @synthesize initialCharacterIndexForExporting=_initialCharacterIndexForExporting;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo;
 @property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) BOOL shrinkTextForPrinting; // @synthesize shrinkTextForPrinting=_shrinkTextForPrinting;
@@ -51,6 +52,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (readonly, nonatomic) int verticalAlignment;
 

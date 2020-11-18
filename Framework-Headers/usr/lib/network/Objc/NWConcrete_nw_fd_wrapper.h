@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)initWithFileDescriptor:(int)arg1;
 
 @end
 

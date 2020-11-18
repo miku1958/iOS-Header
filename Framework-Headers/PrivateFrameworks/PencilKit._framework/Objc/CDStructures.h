@@ -26,7 +26,12 @@ struct AnimatingStroke {
     unsigned int _field13;
     BOOL _field14;
     BOOL _field15;
-    CDUnknownBlockType _field16;
+    id _field16;
+    double _field17;
+    BOOL _field18;
+    double _field19;
+    unsigned long long _field20;
+    CDUnknownBlockType _field21;
 };
 
 struct CGAffineTransform {
@@ -88,6 +93,8 @@ struct Edge {
     struct CGPoint _field2;
 };
 
+struct IntPoint;
+
 struct PKAzimuthFilter {
     CDUnknownFunctionPointerType *_field1;
     struct PKInputProvider<PKInputPoint> *_field2;
@@ -113,14 +120,15 @@ struct PKBSplineFilter {
     vector_03cfcf00 _field7;
     long long _field8;
     vector_03cfcf00 _field9;
-    BOOL _field10;
+    int _field10;
     BOOL _field11;
-    id _field12;
-    double _field13;
+    BOOL _field12;
+    id _field13;
     double _field14;
     double _field15;
-    int _field16;
-    CDStruct_88b945db _field17;
+    double _field16;
+    int _field17;
+    CDStruct_c3b9c2ee _field18;
 };
 
 struct PKCompressedStrokePoint {
@@ -266,13 +274,12 @@ struct PKMetalPaintKernelUniforms {
     unsigned int _field3;
     float _field4;
     float _field5;
-    float _field6;
 };
 
 struct PKMetalPaintStrokePoint {
     float _field1;
-    unsigned int :4;
-    unsigned int :28;
+    unsigned int :16;
+    unsigned int :16;
 };
 
 struct PKMetalParticleKernelUniforms {
@@ -303,6 +310,8 @@ struct PKMetalParticleStrokePoint {
 struct PKMetalUberFragmentUniforms {
     float _field1;
     float _field2;
+    float _field3;
+    float _field4;
 };
 
 struct PKOutputFunction {
@@ -367,6 +376,7 @@ struct PKRunningStat {
     double newM;
     double oldS;
     double newS;
+    double minValue;
     double maxValue;
     double limit;
     struct os_unfair_lock_s lock;
@@ -392,6 +402,13 @@ struct PKStartHookFilter {
     long long _field5;
     BOOL _field6;
 };
+
+struct PKStrokePathPointsPrivate {
+    shared_ptr_963287a8 constants;
+    struct vector<unsigned char, std::__1::allocator<unsigned char>> pointsData;
+};
+
+struct PKStrokePathPointsShared;
 
 struct PKVelocityCalculationFilter {
     CDUnknownFunctionPointerType *_field1;
@@ -487,6 +504,8 @@ struct StrokeVertex {
     float _field6;
 };
 
+struct TimestampedPoint;
+
 struct Transform;
 
 struct UIEdgeInsets {
@@ -510,28 +529,13 @@ struct Version {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct _PKPoint {
     float _field1;
     float _field2;
-};
-
-struct _PKStrokeDataPoints {
-    struct _PKStrokeDataPointsPrivate *_field1;
-    struct PKCompressedStrokePoint _field2;
-    unsigned long long _field3;
-};
-
-struct _PKStrokeDataPointsPrivate {
-    double referenceTimestamp;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> constantData;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> pointsData;
-    unsigned long long pointFlags;
-    unsigned long long constantFlags;
-    unsigned long long pointSize;
 };
 
 struct _PKStrokeID {
@@ -553,8 +557,8 @@ struct _PKStrokePoint {
 };
 
 struct _PKStrokePointSlice {
-    struct __wrap_iter<const _PKStrokePoint *> _field1;
-    struct __wrap_iter<const _PKStrokePoint *> _field2;
+    __wrap_iter_3da3283c _field1;
+    __wrap_iter_3da3283c _field2;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, PKFunctionPiecewiseSimpleLinear>, void *>*> {
@@ -564,6 +568,8 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::_
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, PKMetalShader *>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, PKMetalShader *>, void *>*> *__next_;
 };
+
+struct __shared_weak_count;
 
 struct __wrap_iter<const _PKStrokePoint *> {
     struct _PKStrokePoint *_field1;
@@ -579,12 +585,15 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct pair<double, double>;
-
 struct pair<long, double>;
 
 struct shared_ptr<PKProtobufUnknownFields> {
     struct PKProtobufUnknownFields *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<PKStrokePathPointsShared> {
+    struct PKStrokePathPointsShared *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -616,12 +625,6 @@ struct unique_ptr<PKOutputTimeFilter, std::__1::default_delete<PKOutputTimeFilte
     struct __compressed_pair<PKOutputTimeFilter *, std::__1::default_delete<PKOutputTimeFilter>> {
         struct PKOutputTimeFilter *_field1;
     } _field1;
-};
-
-struct unique_ptr<_PKStrokeDataPoints, std::__1::default_delete<_PKStrokeDataPoints>> {
-    struct __compressed_pair<_PKStrokeDataPoints *, std::__1::default_delete<_PKStrokeDataPoints>> {
-        struct _PKStrokeDataPoints *__value_;
-    } __ptr_;
 };
 
 struct unique_ptr<drawing::Color, std::__1::default_delete<drawing::Color>> {
@@ -825,14 +828,20 @@ struct vector<(anonymous namespace)::StrokeVertex, std::__1::allocator<(anonymou
 };
 
 struct vector<CGPoint, std::__1::allocator<CGPoint>> {
-    struct CGPoint *_field1;
-    struct CGPoint *_field2;
+    struct CGPoint *__begin_;
+    struct CGPoint *__end_;
     struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint>> {
-        struct CGPoint *_field1;
-    } _field3;
+        struct CGPoint *__value_;
+    } __end_cap_;
 };
 
-struct vector<ClipperLib::IntPoint, std::__1::allocator<ClipperLib::IntPoint>>;
+struct vector<ClipperLib::IntPoint, std::__1::allocator<ClipperLib::IntPoint>> {
+    struct IntPoint *__begin_;
+    struct IntPoint *__end_;
+    struct __compressed_pair<ClipperLib::IntPoint *, std::__1::allocator<ClipperLib::IntPoint>> {
+        struct IntPoint *__value_;
+    } __end_cap_;
+};
 
 struct vector<PB::Data, std::__1::allocator<PB::Data>> {
     struct Data *_field1;
@@ -898,6 +907,22 @@ struct vector<PKSmoothingPoint, std::__1::allocator<PKSmoothingPoint>> {
     } _field3;
 };
 
+struct vector<TimestampedPoint, std::__1::allocator<TimestampedPoint>> {
+    struct TimestampedPoint *__begin_;
+    struct TimestampedPoint *__end_;
+    struct __compressed_pair<TimestampedPoint *, std::__1::allocator<TimestampedPoint>> {
+        struct TimestampedPoint *__value_;
+    } __end_cap_;
+};
+
+struct vector<_PKFloatRange, std::__1::allocator<_PKFloatRange>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<_PKFloatRange *, std::__1::allocator<_PKFloatRange>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
+};
+
 struct vector<_PKStrokePoint, std::__1::allocator<_PKStrokePoint>> {
     struct _PKStrokePoint *__begin_;
     struct _PKStrokePoint *__end_;
@@ -938,14 +963,6 @@ struct vector<long, std::__1::allocator<long>> {
     struct __compressed_pair<long *, std::__1::allocator<long>> {
         long long *_field1;
     } _field3;
-};
-
-struct vector<std::__1::pair<double, double>, std::__1::allocator<std::__1::pair<double, double>>> {
-    struct pair<double, double> *__begin_;
-    struct pair<double, double> *__end_;
-    struct __compressed_pair<std::__1::pair<double, double>*, std::__1::allocator<std::__1::pair<double, double>>> {
-        struct pair<double, double> *__value_;
-    } __end_cap_;
 };
 
 struct vector<std::__1::pair<long, double>, std::__1::allocator<std::__1::pair<long, double>>> {
@@ -1134,19 +1151,21 @@ typedef struct {
     CDUnknownFunctionPointerType *_field1;
     struct vector<float, std::__1::allocator<float>> _field2;
     struct unique_ptr<drawing::Rectangle, std::__1::default_delete<drawing::Rectangle>> _field3;
-    unsigned long long _field4;
-    struct vector<PB::Data, std::__1::allocator<PB::Data>> _field5;
-    struct unique_ptr<drawing::StrokeID, std::__1::default_delete<drawing::StrokeID>> _field6;
-    struct unique_ptr<drawing::StrokeData, std::__1::default_delete<drawing::StrokeData>> _field7;
-    struct unique_ptr<PB::Data, std::__1::default_delete<PB::Data>> _field8;
-    unsigned long long _field9;
-    struct PtrVector<drawing::Stroke> _field10;
-    struct unique_ptr<drawing::StrokeID, std::__1::default_delete<drawing::StrokeID>> _field11;
-    struct unique_ptr<drawing::Transform, std::__1::default_delete<drawing::Transform>> _field12;
+    struct unique_ptr<PB::Data, std::__1::default_delete<PB::Data>> _field4;
+    unsigned long long _field5;
+    struct vector<PB::Data, std::__1::allocator<PB::Data>> _field6;
+    unsigned long long _field7;
+    struct unique_ptr<drawing::StrokeID, std::__1::default_delete<drawing::StrokeID>> _field8;
+    struct unique_ptr<drawing::StrokeData, std::__1::default_delete<drawing::StrokeData>> _field9;
+    struct unique_ptr<PB::Data, std::__1::default_delete<PB::Data>> _field10;
+    unsigned long long _field11;
+    struct PtrVector<drawing::Stroke> _field12;
     struct unique_ptr<drawing::StrokeID, std::__1::default_delete<drawing::StrokeID>> _field13;
-    CDStruct_d7010776 _field14;
-    struct shared_ptr<PKProtobufUnknownFields> _field15;
-} Stroke_aabced13;
+    struct unique_ptr<drawing::Transform, std::__1::default_delete<drawing::Transform>> _field14;
+    struct unique_ptr<drawing::StrokeID, std::__1::default_delete<drawing::StrokeID>> _field15;
+    CDStruct_8a1bf2a3 _field16;
+    struct shared_ptr<PKProtobufUnknownFields> _field17;
+} Stroke_7a0fc4b9;
 
 #endif
 
@@ -1200,9 +1219,9 @@ typedef struct {
 } CDStruct_d2b197d1;
 
 typedef struct {
-    double start;
-    double end;
-} CDStruct_88b945db;
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 
 typedef struct {
     int arcType;
@@ -1222,17 +1241,17 @@ typedef struct {
 } CDStruct_c5e6d23b;
 
 typedef struct {
-    struct CGPoint _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    BOOL _field7;
-    long long _field8;
-    double _field9;
-    BOOL _field10;
-} CDStruct_f17e9403;
+    struct CGPoint point;
+    double force;
+    double azimuth;
+    double altitude;
+    double velocity;
+    double timestamp;
+    BOOL predicted;
+    long long estimationUpdateIndex;
+    double length;
+    BOOL hasEstimatedAltitudeAndAzimuth;
+} CDStruct_6422aa5d;
 
 typedef struct {
     union {
@@ -1250,10 +1269,11 @@ typedef struct {
             unsigned int :1;
             unsigned int :4;
             unsigned int :8;
+            unsigned int :1;
         } _field1;
         unsigned long long _field2;
     } _field1;
-} CDStruct_3c89fc14;
+} CDStruct_e8f1598a;
 
 typedef struct {
     struct _PKStrokePoint _field1;
@@ -1264,12 +1284,22 @@ typedef struct {
     double _field6;
     double _field7;
     id _field8;
-} CDStruct_5237edf5;
+    unsigned long long _field9;
+} CDStruct_713d3c04;
 
 // Template types
 typedef struct PKInputProvider<_PKStrokePoint> {
     CDUnknownFunctionPointerType *_field1;
 } PKInputProvider_28cf270a;
+
+typedef struct __wrap_iter<const _PKStrokePoint *> {
+    struct _PKStrokePoint *_field1;
+} __wrap_iter_3da3283c;
+
+typedef struct shared_ptr<PKStrokePathPointsShared> {
+    struct PKStrokePathPointsShared *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_963287a8;
 
 typedef struct unique_ptr<PKFunction, std::__1::default_delete<PKFunction>> {
     struct __compressed_pair<PKFunction *, std::__1::default_delete<PKFunction>> {
@@ -1307,12 +1337,12 @@ typedef struct vector<(anonymous namespace)::Edge, std::__1::allocator<(anonymou
 } vector_93009049;
 
 typedef struct vector<CGPoint, std::__1::allocator<CGPoint>> {
-    struct CGPoint *_field1;
-    struct CGPoint *_field2;
+    struct CGPoint *__begin_;
+    struct CGPoint *__end_;
     struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint>> {
-        struct CGPoint *_field1;
-    } _field3;
-} vector_e1abc270;
+        struct CGPoint *__value_;
+    } __end_cap_;
+} vector_2e7754b6;
 
 typedef struct vector<PKInputPoint, std::__1::allocator<PKInputPoint>> {
     CDStruct_183601bc *__begin_;
@@ -1329,6 +1359,14 @@ typedef struct vector<PKOutputFunction, std::__1::allocator<PKOutputFunction>> {
         struct PKOutputFunction *__value_;
     } __end_cap_;
 } vector_2b0a8222;
+
+typedef struct vector<_PKFloatRange, std::__1::allocator<_PKFloatRange>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<_PKFloatRange *, std::__1::allocator<_PKFloatRange>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
+} vector_1581e588;
 
 typedef struct vector<_PKStrokePoint, std::__1::allocator<_PKStrokePoint>> {
     struct _PKStrokePoint *__begin_;
@@ -1353,14 +1391,6 @@ typedef struct vector<int, std::__1::allocator<int>> {
         int *_field1;
     } _field3;
 } vector_3203cf93;
-
-typedef struct vector<std::__1::pair<double, double>, std::__1::allocator<std::__1::pair<double, double>>> {
-    struct pair<double, double> *__begin_;
-    struct pair<double, double> *__end_;
-    struct __compressed_pair<std::__1::pair<double, double>*, std::__1::allocator<std::__1::pair<double, double>>> {
-        struct pair<double, double> *__value_;
-    } __end_cap_;
-} vector_63c28b85;
 
 typedef struct vector<std::__1::vector<ClipperLib::IntPoint, std::__1::allocator<ClipperLib::IntPoint>>, std::__1::allocator<std::__1::vector<ClipperLib::IntPoint, std::__1::allocator<ClipperLib::IntPoint>>>> {
     struct vector<ClipperLib::IntPoint, std::__1::allocator<ClipperLib::IntPoint>> *__begin_;

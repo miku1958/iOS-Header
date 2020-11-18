@@ -28,10 +28,13 @@
 - (void)_fetchCellularDataPlanWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_forceDatabaseUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_forceLoadRemoteConfigurationFromDiskWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_forceLookUpURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_forceUpdateRemoteConfigurationFromServerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getDatabaseStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getLastDatabaseUpdateTimeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_getSafeBrowsingEnabledState:(CDUnknownBlockType)arg1;
 - (void)_getServiceStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_lookUpURL:(id)arg1 ignoreEnableState:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_lookUpURLs:(id)arg1 forProtectionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setSafeBrowsingEnabledStateNeedsUpdate;
 - (void)dealloc;

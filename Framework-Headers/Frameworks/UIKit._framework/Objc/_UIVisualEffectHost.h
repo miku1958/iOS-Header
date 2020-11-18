@@ -8,7 +8,8 @@
 
 #import <UIKitCore/_UIVisualEffectViewSubviewMonitoring-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, _UIVisualEffectBackdropView, _UIVisualEffectDescriptor, _UIVisualEffectSubview, _UIVisualEffectViewBackdropCaptureGroup;
+@class NSArray, NSMutableArray, NSString, UIView, _UIVisualEffectBackdropView, _UIVisualEffectDescriptor, _UIVisualEffectViewBackdropCaptureGroup;
+@protocol _UIVisualEffectViewParticipating;
 
 __attribute__((visibility("hidden")))
 @interface _UIVisualEffectHost : NSObject <_UIVisualEffectViewSubviewMonitoring>
@@ -16,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_views;
     BOOL _autosetSubviewLabelTintColor;
     BOOL _contentViewRequired;
-    _UIVisualEffectSubview *_contentView;
+    UIView<_UIVisualEffectViewParticipating> *_contentView;
     _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
     _UIVisualEffectBackdropView *_captureView;
     _UIVisualEffectDescriptor *_currentEffectDescriptor;
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (weak, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
-@property (readonly, nonatomic) _UIVisualEffectSubview *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic) UIView<_UIVisualEffectViewParticipating> *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) BOOL contentViewRequired; // @synthesize contentViewRequired=_contentViewRequired;
 @property (strong, nonatomic) _UIVisualEffectDescriptor *currentEffectDescriptor; // @synthesize currentEffectDescriptor=_currentEffectDescriptor;
 @property (readonly, copy) NSString *debugDescription;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)beginTransition;
 - (void)endTransition;
 - (id)initWithContentView:(id)arg1;
+- (void)monitorSubviewsOf:(id)arg1;
 - (void)prepareToTransitionToEffectDescriptor:(id)arg1;
 
 @end

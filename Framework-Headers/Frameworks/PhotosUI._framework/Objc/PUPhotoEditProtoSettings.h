@@ -8,13 +8,21 @@
 
 @interface PUPhotoEditProtoSettings : PXSettings
 {
+    BOOL _enableCoreImageDebugMode;
+    BOOL _enableCoreImageDebugInputs;
+    BOOL _enableCoreImageDebugOutputs;
+    BOOL _enableCoreImageDebugIntermediates;
+    BOOL _enableCoreImageDebugTiming;
+    BOOL _enableModernPipeline;
+    BOOL _enableVideoStabilizion;
     BOOL _enableFinalizerGesture;
-    BOOL _useAsynchronousVideoRendering;
+    BOOL _useAsynchronousRenderingPhotos;
+    BOOL _disableAsynchronousRenderingVideos;
+    BOOL _enableLiveVideoRender;
     BOOL _enablePerfDebugHUD;
     BOOL _enableReframeDebugHUD;
     BOOL _enablePerfTTRButton;
     BOOL _alwaysShowPortraitV2;
-    BOOL _showLevelIndicator;
     BOOL _showResetToolButton;
     BOOL _allowAnyPlugin;
     BOOL _attemptEditExtensionUndoAutoSetup;
@@ -25,17 +33,18 @@
     BOOL _autoPerspectiveDisableOnFrontFacingCameraImages;
     BOOL _simulateDownload;
     BOOL _simulateDownloadFailure;
+    BOOL _skipPHContentEditingInputDisplaySizeImage;
+    BOOL _simulateEditEntryError;
+    BOOL _showFileRadarButtonForEditEntryOnInternalInstalls;
     BOOL _previewOriginalTimesOut;
     BOOL _loopBounceTrimAllowed;
     BOOL _pauseAfterMovingPlayhead;
     BOOL _alwaysAllowKeyPhotoEditing;
     BOOL _showEffectsPicker;
-    BOOL _limitRAWByCPU;
     BOOL _allowApertureRedEye;
     BOOL _requireTapToShowMakePosterFrame;
     BOOL _allowMakePosterFrameForVideo;
     BOOL _showVideoScrubberDebugOverlay;
-    BOOL _hideSelectionRing;
     BOOL _alwaysShowValueWhenAdjustmentIsSelected;
     BOOL _showSuggestedKeyFrame;
     BOOL _enableEnterEditSmartToneAutoCalc;
@@ -45,6 +54,12 @@
     BOOL _enableEnterEditDepthEffectAutoCalc;
     BOOL _enableEnterEditPortraitAutoCalc;
     BOOL _enableEnterEditFilterThumbnailGeneration;
+    BOOL _useCALayerTileAssembly;
+    BOOL _runNeutrinoSynchronously;
+    BOOL _showSmartBlackAndWhiteAdjustment;
+    BOOL _showStabilizationWatermark;
+    BOOL _applyVideoOrientationAsMetadata;
+    double _videoStabilizeMaxCropFraction;
     long long _renderPriority;
     double _ttrButtonDurationThreshold;
     double _cropSideMargins;
@@ -56,11 +71,12 @@
     double _autoPerspectiveMaxPitch;
     double _autoPerspectiveMaxAngle;
     double _autoPerspectiveMaxFaceSize;
-    double _maxRawMP;
+    long long _simulatedEditingEntryErrorType;
     double _previewOriginalDuration;
     double _strokeWidth;
     double _selectionRingStrokeWidth;
     double _adjustmentLabelPlatterAlpha;
+    unsigned long long _videoCompositorDebugMode;
 }
 
 @property (nonatomic) double adjustmentLabelPlatterAlpha; // @synthesize adjustmentLabelPlatterAlpha=_adjustmentLabelPlatterAlpha;
@@ -70,6 +86,7 @@
 @property (nonatomic) BOOL alwaysAllowKeyPhotoEditing; // @synthesize alwaysAllowKeyPhotoEditing=_alwaysAllowKeyPhotoEditing;
 @property (nonatomic) BOOL alwaysShowPortraitV2; // @synthesize alwaysShowPortraitV2=_alwaysShowPortraitV2;
 @property (nonatomic) BOOL alwaysShowValueWhenAdjustmentIsSelected; // @synthesize alwaysShowValueWhenAdjustmentIsSelected=_alwaysShowValueWhenAdjustmentIsSelected;
+@property (nonatomic) BOOL applyVideoOrientationAsMetadata; // @synthesize applyVideoOrientationAsMetadata=_applyVideoOrientationAsMetadata;
 @property (nonatomic) BOOL attemptEditExtensionUndoAutoSetup; // @synthesize attemptEditExtensionUndoAutoSetup=_attemptEditExtensionUndoAutoSetup;
 @property (nonatomic) BOOL autoCropEnabled; // @synthesize autoCropEnabled=_autoCropEnabled;
 @property (nonatomic) BOOL autoPerspectiveDisableOnFrontFacingCameraImages; // @synthesize autoPerspectiveDisableOnFrontFacingCameraImages=_autoPerspectiveDisableOnFrontFacingCameraImages;
@@ -83,6 +100,12 @@
 @property (nonatomic) double cropRecomposeDelay; // @synthesize cropRecomposeDelay=_cropRecomposeDelay;
 @property (nonatomic) double cropSideMargins; // @synthesize cropSideMargins=_cropSideMargins;
 @property (nonatomic) double cropWheelSize; // @synthesize cropWheelSize=_cropWheelSize;
+@property (nonatomic) BOOL disableAsynchronousRenderingVideos; // @synthesize disableAsynchronousRenderingVideos=_disableAsynchronousRenderingVideos;
+@property (nonatomic) BOOL enableCoreImageDebugInputs; // @synthesize enableCoreImageDebugInputs=_enableCoreImageDebugInputs;
+@property (nonatomic) BOOL enableCoreImageDebugIntermediates; // @synthesize enableCoreImageDebugIntermediates=_enableCoreImageDebugIntermediates;
+@property (nonatomic) BOOL enableCoreImageDebugMode; // @synthesize enableCoreImageDebugMode=_enableCoreImageDebugMode;
+@property (nonatomic) BOOL enableCoreImageDebugOutputs; // @synthesize enableCoreImageDebugOutputs=_enableCoreImageDebugOutputs;
+@property (nonatomic) BOOL enableCoreImageDebugTiming; // @synthesize enableCoreImageDebugTiming=_enableCoreImageDebugTiming;
 @property (nonatomic) BOOL enableEnterEditCropAutoCalc; // @synthesize enableEnterEditCropAutoCalc=_enableEnterEditCropAutoCalc;
 @property (nonatomic) BOOL enableEnterEditDepthEffectAutoCalc; // @synthesize enableEnterEditDepthEffectAutoCalc=_enableEnterEditDepthEffectAutoCalc;
 @property (nonatomic) BOOL enableEnterEditFilterThumbnailGeneration; // @synthesize enableEnterEditFilterThumbnailGeneration=_enableEnterEditFilterThumbnailGeneration;
@@ -91,36 +114,46 @@
 @property (nonatomic) BOOL enableEnterEditSmartColorAutoCalc; // @synthesize enableEnterEditSmartColorAutoCalc=_enableEnterEditSmartColorAutoCalc;
 @property (nonatomic) BOOL enableEnterEditSmartToneAutoCalc; // @synthesize enableEnterEditSmartToneAutoCalc=_enableEnterEditSmartToneAutoCalc;
 @property (nonatomic) BOOL enableFinalizerGesture; // @synthesize enableFinalizerGesture=_enableFinalizerGesture;
+@property (nonatomic) BOOL enableLiveVideoRender; // @synthesize enableLiveVideoRender=_enableLiveVideoRender;
+@property (nonatomic) BOOL enableModernPipeline; // @synthesize enableModernPipeline=_enableModernPipeline;
 @property (nonatomic) BOOL enablePerfDebugHUD; // @synthesize enablePerfDebugHUD=_enablePerfDebugHUD;
 @property (nonatomic) BOOL enablePerfTTRButton; // @synthesize enablePerfTTRButton=_enablePerfTTRButton;
 @property (nonatomic) BOOL enableReframeDebugHUD; // @synthesize enableReframeDebugHUD=_enableReframeDebugHUD;
-@property (nonatomic) BOOL hideSelectionRing; // @synthesize hideSelectionRing=_hideSelectionRing;
-@property (nonatomic) BOOL limitRAWByCPU; // @synthesize limitRAWByCPU=_limitRAWByCPU;
+@property (nonatomic) BOOL enableVideoStabilizion; // @synthesize enableVideoStabilizion=_enableVideoStabilizion;
 @property (nonatomic) BOOL loopBounceTrimAllowed; // @synthesize loopBounceTrimAllowed=_loopBounceTrimAllowed;
-@property (nonatomic) double maxRawMP; // @synthesize maxRawMP=_maxRawMP;
 @property (nonatomic) BOOL pauseAfterMovingPlayhead; // @synthesize pauseAfterMovingPlayhead=_pauseAfterMovingPlayhead;
 @property (nonatomic) BOOL perspectiveViewDebugCropEnabled; // @synthesize perspectiveViewDebugCropEnabled=_perspectiveViewDebugCropEnabled;
 @property (nonatomic) double previewOriginalDuration; // @synthesize previewOriginalDuration=_previewOriginalDuration;
 @property (nonatomic) BOOL previewOriginalTimesOut; // @synthesize previewOriginalTimesOut=_previewOriginalTimesOut;
 @property (nonatomic) long long renderPriority; // @synthesize renderPriority=_renderPriority;
 @property (nonatomic) BOOL requireTapToShowMakePosterFrame; // @synthesize requireTapToShowMakePosterFrame=_requireTapToShowMakePosterFrame;
+@property (nonatomic) BOOL runNeutrinoSynchronously; // @synthesize runNeutrinoSynchronously=_runNeutrinoSynchronously;
 @property (nonatomic) double selectionRingStrokeWidth; // @synthesize selectionRingStrokeWidth=_selectionRingStrokeWidth;
 @property (nonatomic) BOOL showEffectsPicker; // @synthesize showEffectsPicker=_showEffectsPicker;
-@property (nonatomic) BOOL showLevelIndicator; // @synthesize showLevelIndicator=_showLevelIndicator;
+@property (nonatomic) BOOL showFileRadarButtonForEditEntryOnInternalInstalls; // @synthesize showFileRadarButtonForEditEntryOnInternalInstalls=_showFileRadarButtonForEditEntryOnInternalInstalls;
 @property (nonatomic) BOOL showResetToolButton; // @synthesize showResetToolButton=_showResetToolButton;
+@property (nonatomic) BOOL showSmartBlackAndWhiteAdjustment; // @synthesize showSmartBlackAndWhiteAdjustment=_showSmartBlackAndWhiteAdjustment;
+@property (nonatomic) BOOL showStabilizationWatermark; // @synthesize showStabilizationWatermark=_showStabilizationWatermark;
 @property (nonatomic) BOOL showSuggestedKeyFrame; // @synthesize showSuggestedKeyFrame=_showSuggestedKeyFrame;
 @property (nonatomic) BOOL showVideoScrubberDebugOverlay; // @synthesize showVideoScrubberDebugOverlay=_showVideoScrubberDebugOverlay;
 @property (nonatomic) BOOL simulateDownload; // @synthesize simulateDownload=_simulateDownload;
 @property (nonatomic) BOOL simulateDownloadFailure; // @synthesize simulateDownloadFailure=_simulateDownloadFailure;
+@property (nonatomic) BOOL simulateEditEntryError; // @synthesize simulateEditEntryError=_simulateEditEntryError;
+@property (nonatomic) long long simulatedEditingEntryErrorType; // @synthesize simulatedEditingEntryErrorType=_simulatedEditingEntryErrorType;
+@property (nonatomic) BOOL skipPHContentEditingInputDisplaySizeImage; // @synthesize skipPHContentEditingInputDisplaySizeImage=_skipPHContentEditingInputDisplaySizeImage;
 @property (nonatomic) double strokeWidth; // @synthesize strokeWidth=_strokeWidth;
 @property (nonatomic) double trackBallSize; // @synthesize trackBallSize=_trackBallSize;
 @property (nonatomic) double ttrButtonDurationThreshold; // @synthesize ttrButtonDurationThreshold=_ttrButtonDurationThreshold;
-@property (nonatomic) BOOL useAsynchronousVideoRendering; // @synthesize useAsynchronousVideoRendering=_useAsynchronousVideoRendering;
+@property (nonatomic) BOOL useAsynchronousRenderingPhotos; // @synthesize useAsynchronousRenderingPhotos=_useAsynchronousRenderingPhotos;
+@property (nonatomic) BOOL useCALayerTileAssembly; // @synthesize useCALayerTileAssembly=_useCALayerTileAssembly;
+@property (nonatomic) unsigned long long videoCompositorDebugMode; // @synthesize videoCompositorDebugMode=_videoCompositorDebugMode;
+@property (nonatomic) double videoStabilizeMaxCropFraction; // @synthesize videoStabilizeMaxCropFraction=_videoStabilizeMaxCropFraction;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (id)parentSettings;
 - (void)setDefaultValues;
+- (void)updateCoreImageDebug;
 
 @end
 

@@ -11,21 +11,24 @@
 @interface IXGlobalConfiguration : NSObject
 {
     struct os_unfair_lock_s _dynamicPropertyLock;
-    NSURL *_systemContainerPath;
-    NSURL *_mobileHome;
+    unsigned int _daemonUID;
+    unsigned int _daemonGID;
+    NSURL *_dataStorageHome;
+    NSURL *_daemonUserHome;
     NSURL *_rootPath;
 }
 
+@property (readonly, nonatomic) unsigned int daemonGID; // @synthesize daemonGID=_daemonGID;
+@property (readonly, nonatomic) unsigned int daemonUID; // @synthesize daemonUID=_daemonUID;
+@property (readonly, nonatomic) NSURL *daemonUserHome; // @synthesize daemonUserHome=_daemonUserHome;
+@property (readonly, nonatomic) NSURL *dataStorageHome; // @synthesize dataStorageHome=_dataStorageHome;
 @property (readonly, nonatomic) NSURL *frameworkURL;
-@property (readonly, nonatomic) NSURL *mobileHome; // @synthesize mobileHome=_mobileHome;
-@property (readonly, nonatomic) NSURL *oldSupportDirectory;
 @property (readonly, nonatomic) NSURL *rootPath; // @synthesize rootPath=_rootPath;
-@property (readonly, nonatomic) NSURL *systemContainerPath; // @synthesize systemContainerPath=_systemContainerPath;
 @property (readonly, nonatomic) NSURL *userVolumeURL;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_systemContainerURLWithError:(id *)arg1;
+- (id)_dataStorageHomeURLWithError:(id *)arg1;
 - (void)createDirectories;
 - (id)dataDirectoryAbortingOnError;
 - (id)dataDirectoryWithError:(id *)arg1;

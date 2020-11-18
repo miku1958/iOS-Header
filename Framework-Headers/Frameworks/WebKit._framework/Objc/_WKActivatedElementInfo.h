@@ -16,7 +16,7 @@
     struct IntPoint _interactionLocation;
     struct RetainPtr<NSString> _ID;
     struct RefPtr<WebKit::ShareableBitmap, WTF::DumbPtrTraits<WebKit::ShareableBitmap>> _image;
-    struct RetainPtr<UIImage> _uiImage;
+    RetainPtr_337fe565 _cocoaImage;
     struct RetainPtr<NSDictionary> _userInfo;
     BOOL _animatedImage;
     long long _type;

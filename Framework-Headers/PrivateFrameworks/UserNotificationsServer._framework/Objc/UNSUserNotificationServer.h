@@ -86,19 +86,18 @@
 - (void)_removeBundleLibrarianMappingsForSourceDescriptions:(id)arg1;
 - (void)_removeNotificationSourceDirectories:(id)arg1;
 - (void)_removePushStore;
+- (id)_sourceDescriptionsForApplications:(id)arg1;
 - (void)_timeDidChangeSignificantly;
 - (void)_triggerLocationArrowForBundleIdentifier:(id)arg1;
 - (void)_validateNotificationRepository;
 - (void)applicationStateDidChange:(id)arg1;
-- (void)applicationsDidAuthorizeNotificationSettings:(id)arg1;
-- (void)applicationsDidDenyNotificationSettings:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)contentProtectionStateChangedForFirstUnlock:(BOOL)arg1;
+- (void)didChangeNotificationSettings:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)init;
-- (void)initialApplicationsDidInstall:(id)arg1;
-- (void)initialSystemNotificationSourcesDidInstall:(id)arg1;
+- (void)initialSystemNotificationSourcesDidInstall:(id)arg1 applicationsDidInstall:(id)arg2;
 - (BOOL)isApplicationForeground:(id)arg1;
 - (void)willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 

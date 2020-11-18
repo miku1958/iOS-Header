@@ -6,7 +6,7 @@
 
 #import <GameCenterUI/GKBasicCollectionViewDataSource.h>
 
-@class GKTurnBasedMatch;
+@class GKTurnBasedMatch, NSString;
 
 @interface GKTurnBasedParticipantsDataSource : GKBasicCollectionViewDataSource
 {
@@ -14,12 +14,12 @@
 }
 
 @property (strong, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
+@property (readonly, nonatomic) NSString *sectionTitle;
 
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)configureCollectionView:(id)arg1;
-- (void)dealloc;
 - (void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2 updateNotifier:(id)arg3;
-- (id)sectionTitle;
 
 @end
 

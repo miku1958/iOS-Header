@@ -7,6 +7,6 @@
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
 @protocol MPCSupportedCommands <NSObject>
-- (struct _MRMediaRemoteCommandInfo *)commandInfoForCommand:(unsigned int)arg1;
+- (void *)commandInfoForCommand:(unsigned int)arg1;
 @end
 

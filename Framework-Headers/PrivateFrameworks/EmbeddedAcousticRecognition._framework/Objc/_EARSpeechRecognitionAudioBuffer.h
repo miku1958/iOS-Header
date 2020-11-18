@@ -18,6 +18,8 @@
     BOOL _ended;
 }
 
+@property (readonly, nonatomic) double bufferedAudioDuration;
+
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;

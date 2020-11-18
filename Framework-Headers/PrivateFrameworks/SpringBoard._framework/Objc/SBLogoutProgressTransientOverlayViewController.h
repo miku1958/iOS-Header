@@ -44,6 +44,8 @@
 - (void)_updateData;
 - (void)_updateDebugTasksViewControllerSizeFromSize:(struct CGSize)arg1;
 - (void)_updateLegibility;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSExternalBehaviorProviding;
 - (long long)idleTimerDuration;
 - (long long)idleTimerMode;
 - (long long)idleWarnMode;

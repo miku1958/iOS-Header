@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (id)_contentViewForSizingLabelForPositioningInComponent:(long long)arg1;
-- (void)_datePickerReset:(id)arg1;
 - (void)_doneLoadingDateOrTime;
 - (id)_existingLabelForCalendarUnit:(unsigned long long)arg1;
 - (void)_fadeLabelForCalendarUnit:(unsigned long long)arg1 toText:(id)arg2 animated:(BOOL)arg3;
@@ -83,7 +82,6 @@ __attribute__((visibility("hidden")))
 - (void)_setMode:(id)arg1;
 - (BOOL)_showingDate;
 - (double)_tableRowHeight;
-- (void)_todayChanged:(id)arg1;
 - (BOOL)_updateDateOrTime;
 - (void)_updateEnabledCellsIncludingWMDCells:(BOOL)arg1;
 - (void)_updateLabelColors;
@@ -101,6 +99,8 @@ __attribute__((visibility("hidden")))
 - (void)didChangeMinuteInterval;
 - (void)didChangeMode;
 - (void)didChangeTimeZone;
+- (void)didChangeToday;
+- (void)didReset;
 - (BOOL)hasDefaultSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

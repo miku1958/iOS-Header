@@ -8,11 +8,15 @@
 
 @interface SBSplashBoardController : XBApplicationController
 {
+    BOOL _isObservingAppLanguageChanges;
 }
 
-+ (void)setAppLibrary:(id)arg1;
-- (id)_allApplicationsFilteredBySystem:(BOOL)arg1 bySplashBoard:(BOOL)arg2;
-- (id)launchRequestsForApplication:(id)arg1 withCompatibilityInfo:(id)arg2;
+- (void)_checkForChangedLocale;
+- (void)_handleLocaleDidChangeNotification;
+- (void)_observeLocaleChanges;
+- (id)_splashBoardApplicationForBundleID:(id)arg1;
+- (void)configureForLocaleChanges;
+- (void)dealloc;
 
 @end
 

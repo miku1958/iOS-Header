@@ -26,16 +26,14 @@
 + (id)concatenateBaseName:(id)arg1 andExtension:(id)arg2;
 + (id)displayNameConstructorWithContext:(struct LSContext *)arg1 bundle:(unsigned int)arg2 bundleClass:(const unsigned int *)arg3 node:(id)arg4 preferredLocalizations:(id)arg5 error:(id *)arg6;
 + (id)displayNameConstructorWithContext:(struct LSContext *)arg1 node:(id)arg2 error:(id *)arg3;
++ (id)displayNameConstructorsWithContext:(struct LSContext *)arg1 bundle:(unsigned int)arg2 bundleClass:(const unsigned int *)arg3 node:(id)arg4 error:(id *)arg5;
 + (id)displayNameConstructorsWithContext:(struct LSContext *)arg1 node:(id)arg2 error:(id *)arg3;
 + (void)getExtensionRange:(struct _NSRange *)arg1 secondaryExtensionRange:(struct _NSRange *)arg2 fromFileName:(id)arg3 considerConfusables:(BOOL)arg4;
 + (void)setShowAllExtensions:(BOOL)arg1;
 + (void)setSuffixForRemoteXCTests:(id)arg1;
 + (BOOL)showAllExtensions;
 + (id)suffixForRemoteXCTests;
-+ (id)visuallyOrderCharactersInString:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)balanceBiDiControlCharacter:(unsigned short)arg1 inString:(id)arg2 imbalanceAmount:(long long)arg3;
-- (id)balanceBiDiControlCharacters:(id)arg1;
 - (BOOL)canSetExtensionHiddenWithContext:(struct LSContext *)arg1;
 - (id)cleanSecondaryExtension:(id)arg1;
 - (id)combineBaseName:(id)arg1 extension:(id)arg2;
@@ -50,7 +48,6 @@
 - (id)insertNameComponentBiDiControlCharacters:(id)arg1;
 - (BOOL)isStringNaturallyRTL:(id)arg1;
 - (BOOL)mayHideExtensionWithContext:(struct LSContext *)arg1;
-- (id)replaceForbiddenCharacters:(id)arg1;
 - (BOOL)showExtensionWithContext:(struct LSContext *)arg1 asIfShowingAllExtensions:(id)arg2;
 - (id)transformBeforeCombining:(id)arg1 needsBiDiControlCharacters:(BOOL *)arg2;
 - (id)unlocalizedNameWithContext:(struct LSContext *)arg1;

@@ -6,54 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAssetInfo, NSArray, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 @interface AVTAsset : NSObject
 {
-    long long _componentType;
-    AVTAssetInfo *_assetInfo;
     NSString *_uid;
-    NSString *_bundlePath;
-    NSArray *_morphVariants;
+    NSString *_resourcePath;
+    long long _componentType;
+    unsigned char _resourceType;
+    NSDictionary *_morphVariantDependencies;
+    NSDictionary *_imageVariantDependencies;
+    NSDictionary *_materialVariantDependencies;
     NSString *_ao;
     NSDictionary *_highlights;
     unsigned long long _refCount;
-    unsigned char _resourceType;
     id _cachedResource;
     BOOL _forceHighTessellation;
     NSDictionary *_specializationSettings;
     NSDictionary *_layers;
     NSDictionary *_perAssetMain;
     CDStruct_10883d13 _uvRemappingInfo;
-    double _imageScale;
-    struct CGSize _imageOffset;
-    BOOL _imageMirror;
 }
 
 @property (readonly) NSString *ao; // @synthesize ao=_ao;
 @property (readonly) long long componentType; // @synthesize componentType=_componentType;
-@property (readonly) BOOL imageMirror; // @synthesize imageMirror=_imageMirror;
-@property (readonly) struct CGSize imageOffset; // @synthesize imageOffset=_imageOffset;
-@property (readonly) double imageScale; // @synthesize imageScale=_imageScale;
 @property (readonly) BOOL is2DAsset;
 @property (readonly) BOOL is3DAsset;
 @property (readonly) NSDictionary *layers; // @synthesize layers=_layers;
-@property (readonly) NSArray *morphVariants; // @synthesize morphVariants=_morphVariants;
 @property (readonly) NSDictionary *specializationSettings; // @synthesize specializationSettings=_specializationSettings;
 @property (readonly) NSString *uid; // @synthesize uid=_uid;
 @property (readonly) CDStruct_10883d13 uvRemappingInfo; // @synthesize uvRemappingInfo=_uvRemappingInfo;
 
 - (void).cxx_destruct;
-- (id)assetInfo;
-- (id)cachedResource;
+- (id)assetImageForAsset:(id)arg1;
 - (void)decrUseCount;
 - (id)description;
+- (void)enumerateVariantDependenciesOfKind:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)freeCache;
 - (void)incrUseCount;
 - (id)initWithType:(long long)arg1 path:(id)arg2 packID:(id)arg3;
 - (id)instantiateResource;
-- (id)perAssetMain;
-- (id)resourceForCaching:(BOOL)arg1;
+- (id)resourceByCachingIfNeeded:(BOOL)arg1;
 
 @end
 

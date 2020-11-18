@@ -12,11 +12,13 @@
 {
     BOOL _wheelchairUser;
     NSString *_name;
+    long long _activityMoveMode;
     FIUIUnitManager *_unitManager;
     NSDate *_currentDateOverride;
     NSCalendar *_gregorianCalendar;
 }
 
+@property (nonatomic) long long activityMoveMode; // @synthesize activityMoveMode=_activityMoveMode;
 @property (strong, nonatomic) NSDate *currentDateOverride; // @synthesize currentDateOverride=_currentDateOverride;
 @property (strong, nonatomic) NSCalendar *gregorianCalendar; // @synthesize gregorianCalendar=_gregorianCalendar;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
@@ -31,10 +33,12 @@
 - (id)_buildKeyWithKeyBaseString:(id)arg1 andSuffixes:(id)arg2;
 - (id)_calculateSuffixCombinations:(id)arg1;
 - (id)_formatValue:(id)arg1 usingFormatterNamed:(id)arg2 template:(id)arg3;
-- (id)_formattedEnergyValue:(id)arg1 template:(id)arg2;
+- (id)_formattedEnergyValue:(id)arg1 canonicalUnit:(id)arg2;
+- (id)_formattedMoveGoal:(id)arg1 template:(id)arg2;
+- (id)_formattedMoveTimeValue:(id)arg1;
 - (id)_goalValueWithAchievement:(id)arg1;
-- (id)_localizedStringWithKey:(id)arg1 withAchievement:(id)arg2;
-- (id)_localizedStringWithKey:(id)arg1 withAchievement:(id)arg2 localizationBundleURL:(id)arg3;
+- (id)_localizedStringWithKey:(id)arg1 withAchievement:(id)arg2 experienceType:(unsigned long long)arg3;
+- (id)_localizedStringWithKey:(id)arg1 withAchievement:(id)arg2 localizationBundleURL:(id)arg3 experienceType:(unsigned long long)arg4;
 - (id)_pluralizeLocalizedString:(id)arg1 withAchievement:(id)arg2;
 - (id)_progressValueWithAchievement:(id)arg1;
 - (id)_quantityToGoalValueWithAchievement:(id)arg1;
@@ -45,18 +49,18 @@
 - (id)_userEnergyUnitSuffix;
 - (id)_valueFromPlaceholder:(id)arg1 withAchievement:(id)arg2;
 - (id)achievedAlertBackDescriptionForAchievement:(id)arg1 sizeVariant:(long long)arg2 dateSizeVariant:(long long)arg3;
-- (id)achievedAlertDescriptionForAchievement:(id)arg1;
+- (id)achievedAlertDescriptionForAchievement:(id)arg1 experienceType:(unsigned long long)arg2;
 - (id)achievedDescriptionForAchievement:(id)arg1;
 - (id)achievedShortDescriptionForAchievement:(id)arg1;
 - (id)currentDate;
 - (id)friendAchievedDescriptionForAchievement:(id)arg1;
 - (id)friendAchievedTitleForAchievement:(id)arg1;
 - (id)init;
-- (id)localizedStringForKey:(id)arg1 withAchievement:(id)arg2;
+- (id)localizedStringForKey:(id)arg1 withAchievement:(id)arg2 experienceType:(unsigned long long)arg3;
 - (id)shareDescriptionForAchievement:(id)arg1;
 - (id)titleForAchievement:(id)arg1;
 - (id)unachievedAlertBackDescriptionForAchievement:(id)arg1;
-- (id)unachievedAlertDescriptionForAchievement:(id)arg1;
+- (id)unachievedAlertDescriptionForAchievement:(id)arg1 experienceType:(unsigned long long)arg2;
 - (id)unachievedDescriptionForAchievement:(id)arg1;
 - (id)unachievedShortDescriptionForAchievement:(id)arg1;
 

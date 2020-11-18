@@ -19,6 +19,7 @@
     WeatherLocationManager *_locationManager;
     WFGeocodeRequest *_geocodeRequest;
     unsigned long long _citySource;
+    unsigned long long _fallbackCitySource;
     WeatherPreferences *_preferences;
     CDUnknownBlockType _WeatherLocationManagerGenerator;
 }
@@ -27,6 +28,7 @@
 @property (nonatomic) unsigned long long citySource; // @synthesize citySource=_citySource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long fallbackCitySource; // @synthesize fallbackCitySource=_fallbackCitySource;
 @property (strong, nonatomic) WFGeocodeRequest *geocodeRequest; // @synthesize geocodeRequest=_geocodeRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isLocationTrackingEnabled; // @synthesize isLocationTrackingEnabled=_isLocationTrackingEnabled;
@@ -47,6 +49,8 @@
 - (void)_willDeliverForecastModel:(id)arg1;
 - (void)checkIfNeedsToUpdate;
 - (void)clearLocationUpdateState;
+- (void)configureWithInitialCitySource:(unsigned long long)arg1 locationServicesActive:(BOOL)arg2;
+- (void)configureWithLocationServicesActive:(BOOL)arg1;
 - (void)dealloc;
 - (id)forecastModel;
 - (id)init;

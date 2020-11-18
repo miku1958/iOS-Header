@@ -16,6 +16,7 @@
     NSMutableSet *_observers;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_calloutQueue;
+    NSMutableSet *_launchPreventedBundleIDs;
 }
 
 - (void).cxx_destruct;

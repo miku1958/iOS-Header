@@ -33,11 +33,13 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_cleanup;
+- (void)_presentViewController:(id)arg1 fromViewController:(id)arg2 presentationHandler:(CDUnknownBlockType)arg3 barButtonItemPresentationHandler:(CDUnknownBlockType)arg4 dismissalHandler:(CDUnknownBlockType)arg5 animated:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)alertControllerViewDidDisappear:(id)arg1;
 - (void)dealloc;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)presentViewController:(id)arg1 fromViewController:(id)arg2 barButtonItemPresentationHandler:(CDUnknownBlockType)arg3 dismissalHandler:(CDUnknownBlockType)arg4 animated:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)presentViewController:(id)arg1 fromViewController:(id)arg2 presentationHandler:(CDUnknownBlockType)arg3 dismissalHandler:(CDUnknownBlockType)arg4 animated:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end

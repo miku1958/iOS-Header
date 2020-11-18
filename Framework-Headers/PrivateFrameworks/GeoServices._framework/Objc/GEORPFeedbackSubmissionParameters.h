@@ -18,6 +18,7 @@
     GEORPFeedbackCommonContext *_commonContext;
     GEORPFeedbackCommonCorrections *_commonCorrections;
     GEORPFeedbackDetails *_details;
+    NSString *_parentFeedbackId;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -29,12 +30,8 @@
         unsigned int read_commonContext:1;
         unsigned int read_commonCorrections:1;
         unsigned int read_details:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientSubmissionUuid:1;
-        unsigned int wrote_commonContext:1;
-        unsigned int wrote_commonCorrections:1;
-        unsigned int wrote_details:1;
-        unsigned int wrote_type:1;
+        unsigned int read_parentFeedbackId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,17 +43,15 @@
 @property (readonly, nonatomic) BOOL hasCommonContext;
 @property (readonly, nonatomic) BOOL hasCommonCorrections;
 @property (readonly, nonatomic) BOOL hasDetails;
+@property (readonly, nonatomic) BOOL hasParentFeedbackId;
 @property (nonatomic) BOOL hasType;
+@property (strong, nonatomic) NSString *parentFeedbackId;
 @property (nonatomic) int type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_readClientSubmissionUuid;
-- (void)_readCommonContext;
-- (void)_readCommonCorrections;
-- (void)_readDetails;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -65,7 +60,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

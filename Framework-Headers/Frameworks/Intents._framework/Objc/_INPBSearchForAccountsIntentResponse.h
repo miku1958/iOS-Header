@@ -15,11 +15,9 @@
 @interface _INPBSearchForAccountsIntentResponse : PBCodable <_INPBSearchForAccountsIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_accounts;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
 @property (readonly, nonatomic) unsigned long long accountsCount;
 @property (readonly, copy) NSString *debugDescription;

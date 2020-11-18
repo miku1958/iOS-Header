@@ -28,6 +28,7 @@
 
 + (id)_ignoredParameters;
 - (id)_categoryVerb;
+- (id)_currentParameterCombination;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;
 - (id)_metadata;
@@ -35,7 +36,6 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_spotlightContentType;
 - (id)_subtitleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
-- (BOOL)_supportsBackgroundExecution;
 - (id)_typedBackingStore;
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
 - (BOOL)configureAttributeSet:(id)arg1 includingData:(BOOL)arg2;

@@ -16,13 +16,10 @@ __attribute__((visibility("hidden")))
     struct __CTFont *_resolvedFont;
     long long _textAlignment;
     struct __CTLine *_line;
+    BOOL _lineValidForDrawing;
 }
 
-@property (strong, nonatomic) struct __CTLine *CTLine;
-
 - (void)dealloc;
-- (BOOL)getCount:(unsigned long long *)arg1 glyphs:(const unsigned short **)arg2 advances:(const struct CGSize **)arg3 elasticAdvances:(double *)arg4 resolvedFont:(const struct __CTFont **)arg5 textAlignment:(long long *)arg6;
-- (void)setCount:(unsigned long long)arg1 glyphs:(const unsigned short *)arg2 advances:(const struct CGSize *)arg3 elasticAdvances:(double)arg4 resolvedFont:(struct __CTFont *)arg5 textAlignment:(long long)arg6;
 
 @end
 

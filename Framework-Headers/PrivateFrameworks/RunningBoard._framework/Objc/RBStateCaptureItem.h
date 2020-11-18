@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol BSInvalidatable;
+@protocol RBSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface RBStateCaptureItem : NSObject
 {
-    id<BSInvalidatable> _invalidatable;
+    id<RBSInvalidatable> _invalidatable;
     CDUnknownBlockType _block;
     NSString *_title;
     NSString *_identifier;

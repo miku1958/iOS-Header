@@ -68,6 +68,7 @@
 - (void)_broadcastICloudMessage:(id)arg1;
 - (void)_cancelAdvertising;
 - (void)_handleHighlightMessage;
+- (void)_handlePerformSysdiagnoseMessage;
 - (void)_handleSelectionMessageWithPayload:(id)arg1;
 - (void)_handleSwitchEventMessageWithPayload:(id)arg1 fromPeer:(id)arg2;
 - (void)_handleTimeoutAsPotentialSlave;
@@ -92,6 +93,7 @@
 - (void)forwardSwitchEvent:(id)arg1;
 - (void)highlightSearchResult:(id)arg1;
 - (id)init;
+- (void)performSysdiagnoseOnSlave;
 - (void)search;
 - (void)selectSearchResult:(id)arg1 settings:(id)arg2;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;

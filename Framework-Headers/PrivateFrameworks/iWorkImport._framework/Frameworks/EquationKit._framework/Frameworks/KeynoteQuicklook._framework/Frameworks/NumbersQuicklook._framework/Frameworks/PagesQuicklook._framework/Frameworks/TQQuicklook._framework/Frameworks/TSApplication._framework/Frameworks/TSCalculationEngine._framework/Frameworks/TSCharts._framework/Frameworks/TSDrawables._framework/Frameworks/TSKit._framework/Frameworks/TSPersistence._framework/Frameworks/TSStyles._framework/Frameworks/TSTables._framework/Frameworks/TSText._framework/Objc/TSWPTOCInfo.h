@@ -34,11 +34,15 @@
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (id)containedStorageFormattedUsingParagraphStyle:(id)arg1;
 - (id)containedStorageFormattedUsingParagraphStyles;
 - (id)copyWithContext:(id)arg1;
 - (Class)editorClass;
-- (int)elementKind;
+- (unsigned int)elementKind;
+- (void)i_setTOCEntries:(id)arg1;
+- (void)i_setTOCSettings:(id)arg1;
 - (BOOL)isSelectable;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadTOCInfoMessage:(const struct TOCInfoArchive *)arg1 unarchiver:(id)arg2;
@@ -47,9 +51,11 @@
 - (id)referencedStyles;
 - (void)regenerateStorageContent;
 - (Class)repClass;
+- (void)resetStorageStyles;
 - (void)saveTOCInfoMessage:(struct TOCInfoArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (BOOL)supportsAttachedComments;
+- (BOOL)supportsDropCapsInChildStorages;
 - (BOOL)textIsVertical;
 - (id)textualEquivalent;
 - (BOOL)wantsPositionFixedWhenCopying;

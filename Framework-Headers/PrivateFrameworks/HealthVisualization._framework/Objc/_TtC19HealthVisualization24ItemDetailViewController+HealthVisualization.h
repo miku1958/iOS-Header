@@ -7,6 +7,9 @@
 #import <HealthVisualization/_TtC19HealthVisualization24ItemDetailViewController.h>
 
 @interface _TtC19HealthVisualization24ItemDetailViewController (HealthVisualization)
+- (void)allItemsTapped;
+- (void)associatedObjectTypeButtonTapped:(id)arg1;
+- (void)closeButtonTapped;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 @end

@@ -25,7 +25,9 @@
 - (BOOL)_shouldConstructProbe;
 - (BOOL)_shouldNeverWrapInProxy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)didStartAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 startDate:(id)arg3;
 - (void)didStartAtTime:(unsigned long long)arg1 startDate:(id)arg2;
+- (void)didStopAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 stopDate:(id)arg3;
 - (void)didStopAtTime:(unsigned long long)arg1 stopDate:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

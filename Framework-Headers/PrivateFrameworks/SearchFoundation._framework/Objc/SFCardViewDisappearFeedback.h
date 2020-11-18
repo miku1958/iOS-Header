@@ -6,15 +6,21 @@
 
 #import <SearchFoundation/SFFeedback.h>
 
+@class SFCard;
+
 @interface SFCardViewDisappearFeedback : SFFeedback
 {
+    SFCard *_card;
     unsigned long long _cardDisappearEvent;
 }
 
+@property (readonly, nonatomic) SFCard *card; // @synthesize card=_card;
 @property (nonatomic) unsigned long long cardDisappearEvent; // @synthesize cardDisappearEvent=_cardDisappearEvent;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCard:(id)arg1 event:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEvent:(unsigned long long)arg1;
 

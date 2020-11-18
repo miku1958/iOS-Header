@@ -14,8 +14,8 @@
     long long _rowID;
 }
 
-@property (weak, nonatomic) HDSimpleGraphDatabase *database; // @synthesize database=_database;
-@property (nonatomic) long long rowID; // @synthesize rowID=_rowID;
+@property (readonly, weak, nonatomic) HDSimpleGraphDatabase *database; // @synthesize database=_database;
+@property (readonly, nonatomic) long long rowID; // @synthesize rowID=_rowID;
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;

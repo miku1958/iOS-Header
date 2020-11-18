@@ -14,12 +14,10 @@
     int _state;
     SPQueryTask *_task;
     NSArray *_resultSections;
-    NSString *_rankingDebugLog;
     NSString *_sessionEntityString;
 }
 
 @property (nonatomic) int kind; // @synthesize kind=_kind;
-@property (strong, nonatomic) NSString *rankingDebugLog; // @synthesize rankingDebugLog=_rankingDebugLog;
 @property (strong, nonatomic) NSArray *resultSections; // @synthesize resultSections=_resultSections;
 @property (strong, nonatomic) NSString *sessionEntityString; // @synthesize sessionEntityString=_sessionEntityString;
 @property (nonatomic) int state; // @synthesize state=_state;

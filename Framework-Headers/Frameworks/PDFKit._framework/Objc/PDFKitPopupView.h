@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithParentAnnotation:(id)arg1 owningPageView:(id)arg2 owningPDFView:(id)arg3;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)prepareForPopoverPresentation:(id)arg1;
 - (void)removeFromSuperview;
 - (void)textViewDidChange:(id)arg1;
 

@@ -14,17 +14,17 @@
 {
 }
 
-@property (readonly, nonatomic) long long backgroundStyle;
+@property (nonatomic) long long backgroundStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSArray *elementOverrides;
+@property (copy, nonatomic) NSArray *elementOverrides;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isHidden) BOOL hidden;
-@property (readonly, strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
-@property (readonly, nonatomic) long long notificationBehavior;
-@property (readonly, nonatomic) struct CGRect presentationRegion;
-@property (readonly, nonatomic) long long presentationStyle;
-@property (readonly, nonatomic) unsigned long long restrictedCapabilities;
+@property (nonatomic, getter=isHidden) BOOL hidden;
+@property (strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
+@property (nonatomic) long long notificationBehavior;
+@property (nonatomic) struct CGRect presentationRegion;
+@property (nonatomic) long long presentationStyle;
+@property (nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly) Class superclass;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

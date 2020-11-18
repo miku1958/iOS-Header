@@ -21,7 +21,9 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (id)initWithIdentifier:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

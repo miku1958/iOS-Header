@@ -79,6 +79,7 @@
 - (void)identifyRecipientWithAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)identifyRecipientWithAddress:(id)arg1 senderAddress:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)identifyRecipientWithRoutingNumber:(id)arg1 accountNumber:(id)arg2 accountName:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)init;
 - (id)initWithPeerPaymentWebService:(id)arg1;
 - (id)internalState;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;

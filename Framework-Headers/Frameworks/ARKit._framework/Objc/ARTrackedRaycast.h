@@ -6,25 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class ARRaycastQuery, ARWorldTrackingTechnique, NSUUID;
-
 @interface ARTrackedRaycast : NSObject
 {
-    NSUUID *_identifier;
-    CDUnknownBlockType _updateHandler;
-    ARWorldTrackingTechnique *_attachedWorldTrackingTechnique;
-    ARRaycastQuery *_trackedQuery;
 }
 
-@property (weak, nonatomic) ARWorldTrackingTechnique *attachedWorldTrackingTechnique; // @synthesize attachedWorldTrackingTechnique=_attachedWorldTrackingTechnique;
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (strong) ARRaycastQuery *trackedQuery; // @synthesize trackedQuery=_trackedQuery;
-@property (readonly, copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
-
-- (void).cxx_destruct;
-- (id)description;
-- (id)initWithIdentifier:(id)arg1 ray:(id)arg2 worldTrackingTechnique:(id)arg3 updateHandler:(CDUnknownBlockType)arg4;
-- (id)query;
 - (void)stopTracking;
 
 @end

@@ -4,45 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFItemBuilder.h>
+#import <Home/HFAbstractBaseActionSetBuilder.h>
 
-#import <Home/HFActionSetBuilderProtocol-Protocol.h>
+@class HFMutableSetDiff, HMTrigger;
 
-@class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMActionSet, HMTrigger, NSArray, NSString;
-
-@interface HFTriggerAnonymousActionSetBuilder : HFItemBuilder <HFActionSetBuilderProtocol>
+@interface HFTriggerAnonymousActionSetBuilder : HFAbstractBaseActionSetBuilder
 {
-    NSArray *_actions;
     HMTrigger *_containingTrigger;
     unsigned long long _actionSetType;
-    HFMutableSetDiff *_actionBuilders;
 }
 
-@property (strong, nonatomic) HFMutableSetDiff *actionBuilders; // @synthesize actionBuilders=_actionBuilders;
-@property (strong, nonatomic) HMActionSet *actionSet; // @dynamic actionSet;
+@property (readonly, nonatomic) HFMutableSetDiff *actionBuilders; // @dynamic actionBuilders;
 @property (nonatomic) unsigned long long actionSetType; // @synthesize actionSetType=_actionSetType;
-@property (readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
-@property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
 @property (strong, nonatomic) HMTrigger *containingTrigger; // @synthesize containingTrigger=_containingTrigger;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HFMediaPlaybackActionBuilder *mediaAction;
-@property (readonly, nonatomic) BOOL requiresDeviceUnlock;
-@property (readonly) Class superclass;
 
-+ (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
-- (id)_existingActionBuilder:(id)arg1 inSet:(id)arg2;
-- (id)_lazilyUpdateActions;
-- (void)addAction:(id)arg1;
 - (void)addAction:(id)arg1 actionSetType:(unsigned long long)arg2;
 - (id)commitItem;
+- (id)deleteActionSet;
 - (id)getOrCreateActionSet;
 - (BOOL)hasActions;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
-- (void)removeAction:(id)arg1;
-- (void)removeAllActions;
 - (void)updateAction:(id)arg1;
 - (void)updateActionBuildersDiff:(id)arg1;
 

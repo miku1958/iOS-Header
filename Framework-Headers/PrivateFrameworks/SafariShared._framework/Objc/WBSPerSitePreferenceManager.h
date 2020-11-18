@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_recursivelySetDefaultPreferenceValues:(id)arg1 orderedKeys:(id)arg2 currentIndex:(long long)arg3 existingResult:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_validatePreferenceValue:(id)arg1 inPreference:(id)arg2;
 - (void)didUpdatePreference:(id)arg1 toValue:(id)arg2 forDomain:(id)arg3;
 - (void)getAllDomainsConfiguredForPreference:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -35,6 +36,7 @@
 - (id)localizedStringForValue:(id)arg1 inPreference:(id)arg2;
 - (id)preferences;
 - (void)removePreferenceValuesForDomains:(id)arg1 fromPreference:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setDefaultPreferenceValues:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDefaultValue:(id)arg1 ofPreference:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setValue:(id)arg1 ofPreference:(id)arg2 forDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)valuesForPreference:(id)arg1;

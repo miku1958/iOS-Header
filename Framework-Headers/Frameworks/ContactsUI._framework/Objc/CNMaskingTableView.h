@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *tableMaskView; // @synthesize tableMaskView=_tableMaskView;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end
 

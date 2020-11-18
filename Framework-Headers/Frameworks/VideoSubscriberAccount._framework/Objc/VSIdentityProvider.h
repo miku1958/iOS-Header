@@ -53,8 +53,6 @@
 @property (copy, nonatomic) NSNumber *rankForSorting; // @synthesize rankForSorting=_rankForSorting;
 @property (copy, nonatomic) NSArray *supportedAuthenticationSchemes; // @synthesize supportedAuthenticationSchemes=_supportedAuthenticationSchemes;
 @property (copy, nonatomic) NSArray *supportedTemplates; // @synthesize supportedTemplates=_supportedTemplates;
-@property (readonly, nonatomic) BOOL supportsTemplatesSufficientForCurrentPlatform;
-@property (readonly, nonatomic) BOOL supportsTemplatesSufficientForSomeKnownPlatform;
 @property (strong, nonatomic) VSOptional *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (copy, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 

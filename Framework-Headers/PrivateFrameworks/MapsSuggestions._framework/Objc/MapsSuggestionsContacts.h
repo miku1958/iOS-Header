@@ -8,17 +8,18 @@
 
 #import <MapsSuggestions/MapsSuggestionsMeCardReader-Protocol.h>
 
-@class CNContactStore, MapsSuggestionsLimitedDictionary, MapsSuggestionsMeCard, MapsSuggestionsObservers, NSString;
-@protocol MapsSuggestionsNetworkRequester;
+@class MapsSuggestionsLimitedDictionary, MapsSuggestionsLocaleChangedTrigger, MapsSuggestionsMeCard, MapsSuggestionsObservers, NSString;
+@protocol MapsSuggestionsContactsConnector, MapsSuggestionsNetworkRequester;
 
 @interface MapsSuggestionsContacts : NSObject <MapsSuggestionsMeCardReader>
 {
     struct Queue _queue;
-    CNContactStore *_store;
+    id<MapsSuggestionsContactsConnector> _connector;
     id<MapsSuggestionsNetworkRequester> _networkRequester;
     MapsSuggestionsLimitedDictionary *_cache;
     MapsSuggestionsObservers *_meCardObservers;
     MapsSuggestionsMeCard *_currMeCard;
+    MapsSuggestionsLocaleChangedTrigger *_localeChangedTrigger;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,16 +30,13 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_fetchMeCardShortcutsWithHandler:(CDUnknownBlockType)arg1;
-- (void)_readMeCardAddressStringsWithHandler:(CDUnknownBlockType)arg1;
-- (void)_receivedNotification:(id)arg1;
-- (BOOL)_reloadWithHandler:(CDUnknownBlockType)arg1;
 - (void)addMeCardObserver:(id)arg1;
+- (void)contactsDidUpdate;
 - (void)dealloc;
-- (id)initWithNetworkRequester:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1;
+- (id)initWithConnector:(id)arg1 networkRequester:(id)arg2;
 - (BOOL)readMeCardAddressStringsWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)readMeCardWithHandler:(CDUnknownBlockType)arg1;
-- (void)receivedNotification:(id)arg1;
 - (void)removeMeCardObserver:(id)arg1;
 
 @end

@@ -14,14 +14,17 @@
     NSString *_photoDataDirectory;
     NSString *_photoDataCachesDirectory;
     NSString *_photoDataSearchDirectory;
+    NSString *_restoreInfoDirectory;
     NSString *_dcimDirectory;
     NSString *_cplAssetsDirectory;
     NSString *_cmmAssetsDirectory;
     NSString *_journalsDirectory;
     NSString *_projectsDirectory;
+    NSString *_privateDirectory;
     NSString *_changeStoreDatabasePath;
     NSString *_thumbnailsDirectory;
     NSString *_thumbnailsV2Directory;
+    NSString *_thumbnailsVideoKeyFramesDirectory;
     BOOL _assetAlbumOrderStructurePathCreated;
     PLImportFileManager *_importFileManager;
 }
@@ -32,6 +35,10 @@
 - (void).cxx_destruct;
 - (id)addToPath:(id)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
 - (id)assetBaseFilenameForAdjustmentFilePath:(id)arg1;
+- (id)basePrivateDirectoryPath;
+- (id)cloudRestoreBackgroundPhaseInProgressTokenPath;
+- (id)cloudRestoreCompleteTokenPath;
+- (id)cloudRestoreForegroundPhaseCompleteTokenPath;
 - (id)convertPhotoLibraryPathType:(unsigned char)arg1;
 - (id)createPathsForNewLibraries;
 - (id)externalDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
@@ -46,6 +53,7 @@
 - (id)iTunesSyncedFaceAlbumThumbnailsDirectory;
 - (id)iTunesSyncedFaceDataDirectory;
 - (id)initWithLibraryURL:(id)arg1;
+- (id)modelRestorePostProcessingCompleteTokenPath;
 - (id)pathToAssetAlbumOrderStructure;
 - (id)pathToAssetsToAlbumsMapping;
 - (id)pathsForClientAccess:(id)arg1;

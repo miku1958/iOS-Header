@@ -7,6 +7,7 @@
 #import <BulletinBoard/BBSectionIcon.h>
 
 @interface BBSectionIcon (UserNotificationsUIKit)
+- (id)nc_bestVariantForUIFormat:(int)arg1;
 - (id)nc_imageForFormat:(int)arg1 scale:(double)arg2;
 @end
 

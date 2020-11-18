@@ -19,28 +19,18 @@
 @property (weak, nonatomic) UIAlertController *displayedAlertController; // @synthesize displayedAlertController=_displayedAlertController;
 @property (strong, nonatomic) NSString *divergedAccountPassword; // @synthesize divergedAccountPassword=_divergedAccountPassword;
 
-+ (BOOL)authenticateDevicePasscodeIfNecessaryWithReason:(id)arg1;
 + (void)authenticateForMovingNotes:(id)arg1 toNoteContainer:(id)arg2 displayWindow:(id)arg3 authenticateFailureHandler:(CDUnknownBlockType)arg4 movingBlock:(CDUnknownBlockType)arg5;
 + (void)authenticateiCloudPasswordFromRootViewController:(id)arg1 account:(id)arg2 confirmButtonTitle:(id)arg3 reason:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-+ (BOOL)biometricIDEnabledForSharedPassword;
-+ (BOOL)biometricIDHardwareIsAvailable;
-+ (BOOL)biometricIDIsEnrolled;
 + (BOOL)deviceHasPasscode;
-+ (BOOL)deviceSupportsFaceID;
-+ (BOOL)deviceSupportsTouchID;
 + (unsigned long long)faceIDAccess;
 + (BOOL)faceIDAccessAllowedViaTCC;
-+ (BOOL)faceIDEnabledForSharedPassword;
++ (BOOL)faceIDEnabledForSharedPasswordForAccountID:(id)arg1;
 + (id)faceIDFailurePrompt;
-+ (BOOL)faceIDIsEnrolled;
 + (id)imageForCurrentDecryptedStatusForNote:(id)arg1;
 + (void)requestAllowFaceIDIfRequired:(CDUnknownBlockType)arg1;
-+ (void)setFaceIDEnabledForSharedPassword:(BOOL)arg1;
-+ (void)setTouchIDEnabledForSharedPassword:(BOOL)arg1;
 + (id)sharedInstance;
 + (void)showFirstTimePasswordProtectNoteAlertForDisplayWindow:(id)arg1;
-+ (BOOL)touchIDEnabledForSharedPassword;
-+ (BOOL)touchIDIsEnrolled;
++ (BOOL)touchIDEnabledForSharedPasswordForAccountID:(id)arg1;
 + (void)warnUserCannotPasswordProtectDueToManagedAppleIDInViewController:(id)arg1;
 + (void)warnUserCannotPasswordProtectNoteDueToSharedNoteInViewController:(id)arg1;
 + (void)warnUserCannotPasswordProtectNoteDueToUnsupportedAttachmentsInViewController:(id)arg1;
@@ -59,6 +49,7 @@
 - (void)authenticateWithBiometricIDForDeletingNotes:(id)arg1 displayWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authenticateWithBiometricIDWithReason:(id)arg1 intent:(unsigned long long)arg2 note:(id)arg3 displayWindow:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dealloc;
+- (void)hidePasswordEntrySheet;
 - (id)init;
 - (BOOL)keychainContainsValidItemForAccount:(id)arg1;
 - (BOOL)keychainContainsValidItemForNote:(id)arg1;

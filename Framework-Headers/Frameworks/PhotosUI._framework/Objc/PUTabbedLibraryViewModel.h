@@ -38,7 +38,6 @@
 - (BOOL)_shouldShowPhotosTabForTabbedLibraryViewController:(id)arg1;
 - (BOOL)_shouldShowSearchTabForTabbedLibraryViewController:(id)arg1;
 - (BOOL)_shouldShowSharedTabForTabbedLibraryViewController:(id)arg1;
-- (int)contentModeForNavigationDestinationType:(long long)arg1;
 - (id)initWithSettings:(id)arg1 preloadScheduler:(id)arg2;
 - (void)performKeyCommand:(id)arg1 withRootParticipant:(id)arg2;
 - (id)tabInfoForContentMode:(int)arg1;

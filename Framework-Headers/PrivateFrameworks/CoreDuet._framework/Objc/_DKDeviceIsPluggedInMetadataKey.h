@@ -10,6 +10,7 @@
 {
 }
 
++ (id)adapterIsWireless;
 + (id)adapterType;
 
 @end

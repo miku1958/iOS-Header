@@ -15,6 +15,7 @@
 @property (readonly, copy, nonatomic) NSArray *allItems;
 @property (readonly, copy, nonatomic) NSNumber *enqueuerAccountIdentifier;
 @property (readonly, copy, nonatomic) NSDate *expirationDate;
+@property (readonly, copy, nonatomic) id rawResponse;
 @property (readonly, copy, nonatomic) NSString *storefrontIdentifier;
 
 - (void)enumerateItemsUsingBlock:(void (^)(ICStorePlatformMetadata *, BOOL *))arg1;

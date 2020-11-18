@@ -30,6 +30,7 @@
 - (void)_axShowKeyboardIfHidden;
 - (void)_axUnregisterForVoiceOverNotifications:(id)arg1;
 - (void)_axUpdateAutocorrectionSettings;
+- (void)_performKeyboardOutput:(id)arg1 shouldCheckDelegate:(BOOL)arg2;
 - (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4 compareAttributes:(BOOL)arg5;
 - (BOOL)_shouldMinimizeForHardwareKeyboard;
 - (void)acceptCandidate:(id)arg1;
@@ -42,6 +43,7 @@
 - (void)completeDeleteFromInput;
 - (void)completeHandleKeyEvent:(id)arg1;
 - (void)dealloc;
+- (void)deleteBackwardAndNotify:(BOOL)arg1;
 - (void)dismissKeyboard;
 - (void)handleKeyboardInput:(id)arg1 executionContext:(id)arg2;
 - (void)hideKeyboard;

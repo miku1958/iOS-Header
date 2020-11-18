@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface _WKResourceLoadStatisticsFirstParty : NSObject <WKObject>
 {
     struct ObjectStorage<API::ResourceLoadStatisticsFirstParty> _firstParty;

@@ -11,6 +11,7 @@
 @protocol SiriButtonSource <SiriActivationSourceContext>
 - (void)didRecognizeButtonSinglePressUp;
 - (id<SiriAssertion>)prepareForActivation;
+- (id<SiriAssertion>)prepareForActivationWithTimestamp:(double)arg1;
 - (id<SiriAssertion>)speechInteractionActivityWithTimestamp:(double)arg1;
 @end
 

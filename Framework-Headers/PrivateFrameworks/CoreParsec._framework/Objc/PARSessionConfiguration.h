@@ -15,6 +15,7 @@
 {
     BOOL _dontPreloadImages;
     BOOL _enablePersonalizedRanking;
+    BOOL _parsecEnabled;
     NSString *_identifier;
     NSString *_userAgent;
     id<PARResultFactory> _factory;
@@ -24,6 +25,7 @@
 @property BOOL enablePersonalizedRanking; // @synthesize enablePersonalizedRanking=_enablePersonalizedRanking;
 @property (readonly) id<PARResultFactory> factory; // @synthesize factory=_factory;
 @property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property BOOL parsecEnabled; // @synthesize parsecEnabled=_parsecEnabled;
 @property (readonly, copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
 + (id)defaultSessionConfiguration;

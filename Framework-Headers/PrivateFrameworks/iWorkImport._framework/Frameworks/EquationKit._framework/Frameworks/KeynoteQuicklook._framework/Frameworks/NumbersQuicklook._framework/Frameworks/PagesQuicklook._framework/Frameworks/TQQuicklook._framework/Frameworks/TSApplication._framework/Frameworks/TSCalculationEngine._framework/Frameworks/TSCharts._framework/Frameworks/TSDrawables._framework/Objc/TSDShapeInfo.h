@@ -13,7 +13,7 @@
 #import <TSDrawables/TSKSearchable-Protocol.h>
 
 @class NSObject, NSString, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDPathSource, TSDShapeStyle, TSPObject;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSDShapeInfo : TSDStyledInfo <TSDReducibleImageContainer, TSDMixing, TSKSearchable, TSDInfoWithPathSource, TSDCompatibilityAwareMediaContainer>
 {
@@ -32,12 +32,13 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) TSDLineEnd *headLineEnd;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isFreehandDrawingSpacerShape;
 @property (readonly, nonatomic) BOOL isTreatedAsFillForFreehandDrawing;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (strong, nonatomic) TSDPathSource *pathSource; // @synthesize pathSource=mPathSource;
 @property (readonly, nonatomic) TSDShapeStyle *shapeStyle;
 @property (nonatomic) double strokePatternOffsetDistance; // @synthesize strokePatternOffsetDistance=mStrokePatternOffsetDistance;
@@ -48,7 +49,9 @@
 
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
+- (BOOL)allowsCaption;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
+- (BOOL)allowsTitle;
 - (id)animationFilters;
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canCopyData;

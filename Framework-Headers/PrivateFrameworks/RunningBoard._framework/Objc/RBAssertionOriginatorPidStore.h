@@ -32,17 +32,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_allocSharedMemory;
-- (void)_lock_addPidToSharedMemory:(int)arg1;
-- (BOOL)_lock_allocSharedMemoryWithName:(const char *)arg1 size:(unsigned long long)arg2 address:(out void **)arg3 fileDescriptor:(out int *)arg4 created:(out BOOL *)arg5;
-- (BOOL)_lock_containsPid:(int)arg1;
-- (void)_lock_deallocSharedMemory;
-- (unsigned int)_lock_indexOfPidInSharedMemory:(int)arg1;
-- (BOOL)_lock_isHeaderValid;
-- (BOOL)_lock_isPidDataValid;
-- (void)_lock_removePidFromSharedMemory:(int)arg1;
-- (BOOL)_lock_resizeSharedMemoryIfNecessary;
-- (void)_lock_sortSharedMemory;
 - (void)addPid:(int)arg1;
 - (id)captureState;
 - (BOOL)containsPid:(int)arg1;

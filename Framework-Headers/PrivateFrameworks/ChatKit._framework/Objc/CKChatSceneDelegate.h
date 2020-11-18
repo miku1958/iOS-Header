@@ -8,10 +8,11 @@
 
 #import <ChatKit/CKChatControllerDelegate-Protocol.h>
 
-@class CKCoreChatController, CKNavigationController, NSString;
+@class CKCoreChatController, CKDetailsNavigationController, CKNavigationController, NSString;
 
 @interface CKChatSceneDelegate : CKSceneDelegate <CKChatControllerDelegate>
 {
+    CKDetailsNavigationController *_detailsNavigationController;
     CKNavigationController *_navigationController;
     CKCoreChatController *_chatController;
 }
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) CKCoreChatController *chatController; // @synthesize chatController=_chatController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) CKDetailsNavigationController *detailsNavigationController; // @synthesize detailsNavigationController=_detailsNavigationController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKNavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (readonly) Class superclass;
@@ -29,14 +31,20 @@
 - (void)_handleRegistryWillUnregisterChatNotification:(id)arg1;
 - (void)_updateAppSnapshot;
 - (id)canActivatePredicate;
+- (void)chatController:(id)arg1 didDetachDetailsNavigationController:(id)arg2;
 - (void)chatController:(id)arg1 didReportSpamForConversation:(id)arg2;
 - (void)chatController:(id)arg1 didSendCompositionInConversation:(id)arg2;
 - (void)chatController:(id)arg1 forwardComposition:(id)arg2;
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;
 - (id)conversation;
+- (void)dismissAndReopenDetailsNavigationController;
+- (void)dismissDetailsNavigationController;
 - (void)doneButtonPressedForChatController:(id)arg1;
+- (BOOL)hasDetailsNavigationController;
 - (id)init;
+- (BOOL)isDetailsNavigationControllerDetached;
 - (id)prefersToActivatePredicate;
+- (void)presentDetailsNavigationController:(id)arg1;
 - (void)prewarmCameraIfNecessaryForChatController:(id)arg1;
 - (void)scene:(id)arg1 continueUserActivity:(id)arg2;
 - (void)scene:(id)arg1 openURLContexts:(id)arg2;

@@ -7,16 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Notes/CSSearchableIndexDelegate-Protocol.h>
+#import <Notes/ICReindexing-Protocol.h>
 
 @class CSSearchableIndex, ICSelectorDelayer, NSArray, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface ICSearchIndexer : NSObject <CSSearchableIndexDelegate>
+@interface ICSearchIndexer : NSObject <CSSearchableIndexDelegate, ICReindexing>
 {
     BOOL _disabled;
     BOOL _retryOnErrors;
     BOOL _observingChanges;
-    unsigned long long _maxBytesPerIndexingBatch;
     NSObject<OS_dispatch_queue> *_indexingQueue;
     NSOperationQueue *_operationQueue;
     NSDictionary *_dataSourcesByIdentifier;
@@ -25,6 +25,7 @@
     NSMutableDictionary *_retryTimers;
 }
 
+@property (readonly, nonatomic) NSArray *_dataSources;
 @property (strong, nonatomic) ICSelectorDelayer *changeProcessingDelayer; // @synthesize changeProcessingDelayer=_changeProcessingDelayer;
 @property (readonly, nonatomic) NSArray *dataSources;
 @property (copy, nonatomic) NSDictionary *dataSourcesByIdentifier; // @synthesize dataSourcesByIdentifier=_dataSourcesByIdentifier;
@@ -33,7 +34,6 @@
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *indexingQueue; // @synthesize indexingQueue=_indexingQueue;
-@property (nonatomic) unsigned long long maxBytesPerIndexingBatch; // @synthesize maxBytesPerIndexingBatch=_maxBytesPerIndexingBatch;
 @property (nonatomic, getter=isObservingChanges) BOOL observingChanges; // @synthesize observingChanges=_observingChanges;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (nonatomic) BOOL retryOnErrors; // @synthesize retryOnErrors=_retryOnErrors;
@@ -58,7 +58,6 @@
 - (id)objectsDictionaryForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (id)objectsForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (id)pendingReindexingOperation;
-- (void)performBlockOnIndexingQueue:(CDUnknownBlockType)arg1;
 - (void)processChanges;
 - (void)reindexAllSearchableItemsInIndex;
 - (void)reindexAllSearchableItemsInIndex:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

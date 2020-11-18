@@ -6,11 +6,11 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBSSceneParameters, FBSceneClientProviderInvalidationAction;
+@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBSceneClientProviderInvalidationAction, FBSceneRemnant;
 @protocol FBSceneClient, FBSceneHost;
 
 @protocol FBSceneClientProvider <NSObject>
-- (id<FBSceneClient>)registerHost:(id<FBSceneHost>)arg1 withInitialParameters:(FBSSceneParameters *)arg2;
+- (id<FBSceneClient>)registerHost:(id<FBSceneHost>)arg1 withSpecification:(FBSSceneSpecification *)arg2 settings:(FBSSceneSettings *)arg3 initialClientSettings:(FBSSceneClientSettings *)arg4 fromRemnant:(FBSceneRemnant *)arg5;
 - (void)registerInvalidationAction:(FBSceneClientProviderInvalidationAction *)arg1;
 - (void)unregisterHost:(id<FBSceneHost>)arg1;
 @end

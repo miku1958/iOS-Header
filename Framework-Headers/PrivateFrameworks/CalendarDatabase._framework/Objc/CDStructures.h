@@ -45,9 +45,10 @@ struct CalDatabase {
     struct __CFArray *_field25;
     id _field26;
     BOOL _field27;
-    struct __CFSet *_field28;
-    id _field29;
-    BOOL _field30;
+    BOOL _field28;
+    struct __CFSet *_field29;
+    id _field30;
+    BOOL _field31;
 };
 
 struct CalEventIdsSearchContext {
@@ -114,15 +115,4 @@ struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    int _field1;
-    char _field2;
-    char _field3;
-    char _field4;
-    char _field5;
-    double _field6;
-} CDStruct_79f9e052;
 

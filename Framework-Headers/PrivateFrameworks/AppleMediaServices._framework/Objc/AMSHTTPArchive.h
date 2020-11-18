@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface AMSHTTPArchive : NSObject
 {
     BOOL _compressed;
     NSData *_backingJSONData;
     NSData *_JSONData;
+    NSString *_urlString;
 }
 
 @property (readonly, nonatomic) NSData *JSONData; // @synthesize JSONData=_JSONData;
 @property (strong, nonatomic) NSData *backingJSONData; // @synthesize backingJSONData=_backingJSONData;
 @property (nonatomic, getter=isCompressed) BOOL compressed; // @synthesize compressed=_compressed;
+@property (strong, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
 + (id)_createJSONObjectForEntries:(id)arg1;
 + (id)_createJSONObjectForTaskMetrics:(id)arg1 requestData:(id)arg2 responseData:(id)arg3;
@@ -34,8 +35,10 @@ __attribute__((visibility("hidden")))
 + (id)merge:(id)arg1 withEstimatedFileSizeLimit:(unsigned long long)arg2;
 + (void)removeHTTPArchiveFilesOlderThanDate:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithJSONObject:(id)arg1;
+- (id)initWithJSONObject:(id)arg1;
+- (id)initWithMetrics:(id)arg1 requestData:(id)arg2 responseData:(id)arg3;
 - (id)initWithURLTaskInfo:(id)arg1;
+- (void)logHARData;
 - (BOOL)writeToDiskWithError:(id *)arg1 compressed:(BOOL)arg2;
 
 @end

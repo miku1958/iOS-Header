@@ -8,19 +8,19 @@
 
 #import <PassKitCore/PKForegroundActiveArbiterObserver-Protocol.h>
 
-@class NSLock, NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
+@class NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
 @protocol NSObject, PKForegroundActiveArbiter, PKInvalidatable, PKXPCServiceDelegate;
 
 @interface PKXPCService : NSObject <PKForegroundActiveArbiterObserver>
 {
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedObjectInterface;
-    id _exportedObject;
     NSString *_className;
     NSString *_serviceResumedNotificationName;
-    NSLock *_connectionLock;
+    struct os_unfair_lock_s _lock;
     NSXPCConnection *_connection;
-    PKXPCForwarder *_exportedProxy;
+    PKXPCForwarder *_templateExportedProxy;
+    PKXPCForwarder *_currentExportedProxy;
     BOOL _suspendCallbacks;
     BOOL _forceConnectionOnResume;
     id<PKForegroundActiveArbiter> _foregroundActiveArbiter;

@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIAppLoadingViewController.h>
 
-@class NSString, SSLookupItemOffer, UIBarButtonItem, UIButton, VUIAppInstallConfirmationView, VUIAppInstallLockup;
+@class NSString, UIBarButtonItem, UIButton, VUIAppInstallConfirmationView, VUIAppInstallLockup;
 @protocol WLKInstallable;
 
 __attribute__((visibility("hidden")))
@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     UIBarButtonItem *_barButtonItem;
     VUIAppInstallConfirmationView *_confirmationView;
     id<WLKInstallable> _installable;
-    SSLookupItemOffer *_itemOffer;
 }
 
 @property (readonly, nonatomic) UIButton *actionButton;
@@ -32,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType cancelationHandler; // @synthesize cancelationHandler=_cancelationHandler;
 @property (strong, nonatomic) VUIAppInstallConfirmationView *confirmationView; // @synthesize confirmationView=_confirmationView;
 @property (strong, nonatomic) id<WLKInstallable> installable; // @synthesize installable=_installable;
-@property (strong, nonatomic) SSLookupItemOffer *itemOffer; // @synthesize itemOffer=_itemOffer;
 @property (readonly, nonatomic) VUIAppInstallLockup *lockup;
 @property (copy, nonatomic) CDUnknownBlockType secondaryLinkHandler; // @synthesize secondaryLinkHandler=_secondaryLinkHandler;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;

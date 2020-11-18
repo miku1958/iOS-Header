@@ -4,39 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <coreroutine/RTService.h>
 
-@class RTMapServiceManager, RTTimerManager;
-@protocol OS_dispatch_queue;
+#import <coreroutine/_TtP8MapsSync25MapsSyncDataQueryDelegate_-Protocol.h>
 
-@interface RTMapsSupportManager : NSObject
+@class NSMutableDictionary, RTMapServiceManager;
+
+@interface RTMapsSupportManager : RTService <_TtP8MapsSync25MapsSyncDataQueryDelegate_>
 {
+    NSMutableDictionary *_queryMap;
     RTMapServiceManager *_mapServiceManager;
-    NSObject<OS_dispatch_queue> *_queue;
-    RTTimerManager *_timerManager;
 }
 
 @property (strong, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) RTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
+@property (strong, nonatomic) NSMutableDictionary *queryMap; // @synthesize queryMap=_queryMap;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 - (void)_clearParkedCarBulletin;
+- (void)_createQueries;
 - (void)_fetchFavoritePlacesWithHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchHistoryEntryPlaceDisplaysWithHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchHistoryEntryRoutesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchHistoryEntryPlaceDisplaysWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchHistoryEntryRoutesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
+- (long long)_queryTypeForQuery:(id)arg1;
+- (void)_setup;
 - (void)_showParkedCarBulletinForEvent:(id)arg1;
 - (void)_showParkedCarReplacementBulletinForEvent:(id)arg1 replacingEvent:(id)arg2;
 - (void)clearParkedCarBulletin;
 - (void)fetchFavoritePlacesWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchHistoryEntryPlaceDisplaysWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchHistoryEntryRoutesWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchHistoryEntryPlaceDisplaysWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchHistoryEntryRoutesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithMapServiceManager:(id)arg1;
-- (id)initWithMapServiceManager:(id)arg1 timerManager:(id)arg2;
+- (void)queryContentsDidChangeWithQuery:(id)arg1;
 - (void)showParkedCarBulletinForEvent:(id)arg1;
 - (void)showParkedCarReplacementBulletinForEvent:(id)arg1 replacingEvent:(id)arg2;
 

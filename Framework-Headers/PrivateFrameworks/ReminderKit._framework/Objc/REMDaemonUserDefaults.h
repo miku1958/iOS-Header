@@ -6,7 +6,7 @@
 
 #import <ReminderKit/REMUserDefaults.h>
 
-@class NSData, NSDate, NSDateComponents, NSNumber, NSString, NSURL, REMObjectID;
+@class NSData, NSDate, NSDateComponents, NSDictionary, NSNumber, NSString, NSURL, REMObjectID;
 
 @interface REMDaemonUserDefaults : REMUserDefaults
 {
@@ -14,6 +14,9 @@
 
 @property (strong, nonatomic) NSString *acAccountIdentifierToMergeLocalDataIntoSyncData;
 @property (strong, nonatomic) NSString *acAccountIdentifierToMigrateInactivatedCalDavData;
+@property (copy, nonatomic) NSData *accountsListCategorizedCountsCache;
+@property (strong, nonatomic) NSString *cloudKitMergeLocalLastBuildVersionMaxRetryReached;
+@property (strong, nonatomic) NSDate *cloudKitMergeLocalLastDateMaxRetryReached;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationDelayAfterError;
 @property (nonatomic) BOOL cloudKitMigrationDisableCleanUp;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationMaxNumFailures;
@@ -24,12 +27,16 @@
 @property (readonly, nonatomic) BOOL dataaccessDaemonStopSyncingReminders;
 @property (nonatomic) BOOL databaseMigrationTestModeEnabled;
 @property (nonatomic) BOOL databaseMigrationTimedOut;
+@property (nonatomic) BOOL debugSimulateSqliteFull;
 @property (nonatomic) BOOL disableAlarmEngineDataSourcePrefetching;
+@property (nonatomic) BOOL enableAssignmentNotifications;
+@property (nonatomic) BOOL enableInAppDebugMenu;
 @property (nonatomic) BOOL enableWelcomeScreen;
 @property (nonatomic) BOOL forceShowWelcomeScreen;
 @property (nonatomic) BOOL isDatabaseMigrated;
 @property (copy, nonatomic) NSString *lastDatabaseMigrationSystemBuildVersion;
 @property (copy, nonatomic) NSDate *lastPresentAlarmDate;
+@property (copy, nonatomic) NSData *lastSuggestedAttributesAutoTrainingToken;
 @property (copy, nonatomic) NSDate *lastSyncPoll;
 @property (readonly, nonatomic) BOOL newAppShouldTakeoverEKReminderNotifications;
 @property (copy, nonatomic) NSDate *nextScheduledAlarmDate;
@@ -39,16 +46,29 @@
 @property (nonatomic) BOOL simulateMAIDAccount;
 @property (readonly, nonatomic) BOOL siriShouldRouteIntentsToNewRemindersApp;
 @property (copy, nonatomic) NSNumber *spotlightIndexVersion;
+@property (copy, nonatomic) NSDictionary *suggestedAttributesAccepted;
+@property (copy, nonatomic) NSDictionary *suggestedAttributesHarvestingOverrides;
+@property (copy, nonatomic) NSDictionary *suggestedAttributesTrainingOverrides;
 @property (strong, nonatomic) NSDateComponents *todayNotificationFireTime;
 @property (copy, nonatomic) NSData *userInteractionsData;
 
++ (id)defaultValues;
 + (id)storageNumberForTodayNotificationTime:(id)arg1;
 + (id)todayNotificationFireTimeFromStorageNumber:(id)arg1;
 - (void)_deletePreferredDefaultListObjectIDUrl;
+- (id)_pptPreferredDefaultListIDKey;
+- (id)_reminderIDAttributeKey:(id)arg1 attributeType:(id)arg2;
 - (void)deletePreferredDefaultListID;
+- (BOOL)hasSuggestedRecentlyForReminderWithID:(id)arg1 attributeType:(id)arg2;
+- (id)initWithSuiteName:(id)arg1 containerURL:(id)arg2;
 - (id)observePreferredDefaultListIDWithBlock:(CDUnknownBlockType)arg1;
 - (id)observeShowRemindersAsOverdueWithBlock:(CDUnknownBlockType)arg1;
+- (void)ppt_handleInstall;
+- (void)ppt_handleRestore;
+- (void)setBestKForKNN:(id)arg1;
+- (void)setCoreBehaviorTrainingParameters:(id)arg1;
 - (id)streamTodayNotificationFireTime:(CDUnknownBlockType)arg1;
+- (void)updateAcceptedAttributesForReminderWithID:(id)arg1 attributeType:(id)arg2;
 
 @end
 

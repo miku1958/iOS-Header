@@ -21,10 +21,9 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) GEOETATrafficUpdateRequest *updatedRequest; // @synthesize updatedRequest=_updatedRequest;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isValid;
 
 @end

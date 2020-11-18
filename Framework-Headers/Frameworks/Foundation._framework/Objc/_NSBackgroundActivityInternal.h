@@ -26,23 +26,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_currentActivity;
 }
 
-@property (copy) CDUnknownBlockType activity; // @synthesize activity=_activity;
-@property (getter=isAppRefresh) BOOL appRefresh; // @synthesize appRefresh=_appRefresh;
-@property (copy) CDUnknownBlockType checkInHandler; // @synthesize checkInHandler=_checkInHandler;
-@property double delay; // @synthesize delay=_delay;
-@property (copy) NSString *identifier; // @synthesize identifier=_identifier;
-@property double interval; // @synthesize interval=_interval;
-@property BOOL preregistered; // @synthesize preregistered=_preregistered;
-@property long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property BOOL repeats; // @synthesize repeats=_repeats;
-@property double tolerance; // @synthesize tolerance=_tolerance;
-
-- (id)additionalProperties;
-- (id)currentActivity;
 - (void)dealloc;
 - (id)init;
-- (void)setAdditionalProperties:(id)arg1;
-- (void)setCurrentActivity:(id)arg1;
 
 @end
 

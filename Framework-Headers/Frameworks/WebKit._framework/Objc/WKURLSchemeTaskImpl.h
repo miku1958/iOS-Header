@@ -9,7 +9,7 @@
 #import <WebKit/WKObject-Protocol.h>
 #import <WebKit/WKURLSchemeTaskPrivate-Protocol.h>
 
-@class NSString, NSURLRequest;
+@class NSString, NSURLRequest, WKFrameInfo;
 
 __attribute__((visibility("hidden")))
 @interface WKURLSchemeTaskImpl : NSObject <WKObject, WKURLSchemeTaskPrivate>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) WKFrameInfo *_frame;
 @property (readonly, nonatomic) BOOL _requestOnlyIfCached;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

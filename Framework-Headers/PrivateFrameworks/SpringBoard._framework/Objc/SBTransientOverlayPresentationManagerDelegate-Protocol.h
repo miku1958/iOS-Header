@@ -37,7 +37,6 @@
 - (void)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 willChangeTopmostViewControllerInterfaceOrientationToOrientation:(long long)arg2;
 - (void)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 willPresentViewController:(SBTransientOverlayViewController *)arg2;
 - (void)transientOverlayPresentationManagerRequestsAppIconForceTouchDismissal:(SBTransientOverlayPresentationManager *)arg1 animated:(BOOL)arg2;
-- (void)transientOverlayPresentationManagerRequestsBannerLongLookDismissal:(SBTransientOverlayPresentationManager *)arg1 animated:(BOOL)arg2;
 - (void)transientOverlayPresentationManagerRequestsControlCenterDismissal:(SBTransientOverlayPresentationManager *)arg1 animated:(BOOL)arg2;
 - (void)transientOverlayPresentationManagerRequestsSiriDismissal:(SBTransientOverlayPresentationManager *)arg1 animated:(BOOL)arg2;
 @end

@@ -8,30 +8,41 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSDateFormatter, NSString, PKObjectDownloader, UICollectionViewCell, UIImage;
+@class NSString, PKMapsSnapshotManager, PKObjectDownloader, PKPaymentService, PKPeerPaymentContactResolver, UICollectionViewCell, UIColor, UIImage, UIVisualEffect;
 
 @interface PKTransactionHistoryHeaderPresenter : NSObject <PKDashboardItemPresenter>
 {
     PKObjectDownloader *_fileDownloader;
+    PKPaymentService *_paymentService;
     UICollectionViewCell *_templateCell;
     UIImage *_logoImage;
     UIImage *_logoBackgroundImage;
     UIImage *_heroImage;
-    NSDateFormatter *_formatterMonth;
+    UIImage *_mapsPlaceholderImage;
+    BOOL _hasNetworkAccess;
+    PKMapsSnapshotManager *_snapshotManager;
+    PKPeerPaymentContactResolver *_contactResolver;
+    UIVisualEffect *_overlayEffect;
+    UIColor *_shadowColor;
 }
 
+@property (strong, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIVisualEffect *overlayEffect; // @synthesize overlayEffect=_overlayEffect;
+@property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property (strong, nonatomic) PKMapsSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_backgroundImageFromLogoImage:(id)arg1;
-- (void)_configureCategoryHeaderCell:(id)arg1 forITem:(id)arg2;
+- (void)_configureCategoryHeaderCell:(id)arg1 forItem:(id)arg2 isUpdate:(BOOL)arg3;
 - (void)_configureInstallmentProductHeaderCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 - (void)_configureMerchantHeaderCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
-- (void)_configurePeerPaymentHeaderCell:(id)arg1 forITem:(id)arg2;
+- (void)_configurePeerPaymentHeaderCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureTransactionTypeHeaderCell:(id)arg1 forItem:(id)arg2;
+- (void)_downloadLogoForItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_installmentProductHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)_merchantHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)_peerPaymentHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
@@ -42,9 +53,10 @@
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
 - (void)dealloc;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (id)init;
 - (Class)itemClass;
+- (id)mapsPlaceholderImage;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 

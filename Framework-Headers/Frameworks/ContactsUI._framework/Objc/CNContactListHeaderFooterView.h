@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;
-- (void)prepareForReuse;
 
 @end
 

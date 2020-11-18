@@ -80,6 +80,7 @@
 - (void).cxx_destruct;
 - (void)_addThumbnailIndexes:(id)arg1;
 - (void)_attachGestureRecognizersIfNeeded:(void *)arg1;
+- (void)_cancelExpectedAssetUUIDs:(id)arg1;
 - (void)_computeInitialResourcesIndexSetAsync;
 - (void)_configureReviewControllerWithAssetReference:(id)arg1;
 - (id)_createNewLayoutForDataSource:(id)arg1;
@@ -93,14 +94,13 @@
 - (void)_handleInProgressPackageGenerator:(id)arg1 suppressLivePhotoContent:(BOOL)arg2 mediaOrigin:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleTransportStagingUpdateWithDataSource:(id)arg1;
 - (void)_immediatelyGenerateAndStagePackageFromReviewAsset:(id)arg1 suppressLivePhoto:(BOOL)arg2 mediaOrigin:(long long)arg3;
-- (BOOL)_isDownloadRequiredForAsset:(id)arg1;
 - (long long)_layoutStyleForSize:(struct CGSize)arg1;
 - (struct CGSize)_maximumThumbnailSize;
 - (void)_presentConfidentialityAlertWithConfirmAction:(CDUnknownBlockType)arg1 abortAction:(CDUnknownBlockType)arg2;
 - (id)_presentViewControllerAboveKeyboard:(id)arg1 animated:(BOOL)arg2;
-- (id)_selectedAssetUUIDs;
 - (struct CGRect)_sourceRectForPhotoLibraryPresentationInCoordinateSpace:(id)arg1;
-- (void)_stageAsset:(id)arg1 withReference:(id)arg2 atIndexPath:(struct PXSimpleIndexPath)arg3 suppressLivePhotoContent:(BOOL)arg4;
+- (void)_stageAsset:(id)arg1 withReference:(id)arg2 suppressLivePhotoContent:(BOOL)arg3 mediaOrigin:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_stagedAssetUUIDs;
 - (id)_thumbnailResourcesIndexSetForAssets:(id)arg1;
 - (void)_updatePhotoLibraryPresentationIfNeeded;
 - (id)_validateAssetReference:(id)arg1 forScrollViewPoint:(struct CGPoint)arg2;
@@ -120,10 +120,8 @@
 - (void)dealloc;
 - (void)dismissPresentedViewController:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)handleInProgressPackageGenerator:(id)arg1;
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
-- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (id)initWithPackageTransport:(id)arg1 mediaProvider:(id)arg2 dataSourceManager:(id)arg3 statisticsManager:(id)arg4 additionalGestureRecognizers:(id)arg5;

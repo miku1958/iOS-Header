@@ -9,15 +9,17 @@
 #import <SetupAssistant/AKAppleIDAuthenticationDelegate-Protocol.h>
 #import <SetupAssistant/BYNetworkObserver-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSString;
+@class AKAppleIDAuthenticationContext, NSDictionary, NSString;
 
 @interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, BYNetworkObserver>
 {
     AKAppleIDAuthenticationContext *_authContext;
     BOOL _shouldRetrySilentLoginUpgrade;
     long long _silentLoginUpgradeRetryCount;
+    NSDictionary *_authenticationResults;
 }
 
+@property (strong, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,7 +36,7 @@
 + (BOOL)isSettingUpMultiUser;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_createAppleAccountWithAuthenticationResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_fetchAKURLBagSynchronously;
 - (id)_languageConfigurationDictionary;
 - (void)_modifyAuthenticationContextIfNeeded:(id)arg1;
@@ -52,6 +54,7 @@
 - (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2 willNotCompleteBlock:(CDUnknownBlockType)arg3;
 - (void)switchToLoginWindowDueToError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)userSwitchContextHasBeenUsed;
+- (void)willSwitchUser;
 - (void)writeAccountConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

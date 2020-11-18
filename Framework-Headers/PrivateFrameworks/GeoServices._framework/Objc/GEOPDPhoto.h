@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_photoId:1;
         unsigned int read_photoVersions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_photoId:1;
-        unsigned int wrote_photoVersions:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,9 +37,6 @@ __attribute__((visibility("hidden")))
 + (Class)photoVersionType;
 + (id)photosForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsPhotoVersion:(id)arg1;
-- (void)_readPhotoId;
-- (void)_readPhotoVersions;
 - (void)addPhotoVersion:(id)arg1;
 - (id)bestURL;
 - (void)clearPhotoVersions;
@@ -53,7 +48,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)photoVersionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoVersionsCount;

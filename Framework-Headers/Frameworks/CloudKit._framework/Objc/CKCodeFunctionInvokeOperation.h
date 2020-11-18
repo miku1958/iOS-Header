@@ -6,40 +6,46 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSData, NSError, NSString, NSURL;
+#import <CloudKit/CKCodeFunctionInvokeOperationCallbacks-Protocol.h>
 
-@interface CKCodeFunctionInvokeOperation : CKDatabaseOperation
+@class CKCodeFunctionInvokeOperationInfo, NSData, NSError, NSString, NSURL;
+@protocol CKCodeFunctionInvokeOperationCallbacks;
+
+@interface CKCodeFunctionInvokeOperation : CKDatabaseOperation <CKCodeFunctionInvokeOperationCallbacks>
 {
     BOOL _local;
     BOOL _shouldFetchAssetContentInMemory;
     CDUnknownBlockType _functionInvokeCompletionBlock;
-    CDUnknownBlockType _perRecordProgressBlock;
     NSString *_serviceName;
     NSString *_functionName;
     NSData *_serializedRequest;
-    NSURL *_explicitBaseURL;
+    NSURL *_clientRuntimeProvidedServiceURL;
     NSData *_serializedResponse;
     NSError *_responseError;
 }
 
-@property (copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
+@property (readonly, nonatomic) id<CKCodeFunctionInvokeOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property (copy, nonatomic) NSURL *clientRuntimeProvidedServiceURL; // @synthesize clientRuntimeProvidedServiceURL=_clientRuntimeProvidedServiceURL;
 @property (copy, nonatomic) CDUnknownBlockType functionInvokeCompletionBlock; // @synthesize functionInvokeCompletionBlock=_functionInvokeCompletionBlock;
 @property (copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property (nonatomic) BOOL local; // @synthesize local=_local;
-@property (copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
+@property (readonly, nonatomic) CKCodeFunctionInvokeOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSError *responseError; // @synthesize responseError=_responseError;
 @property (copy, nonatomic) NSData *serializedRequest; // @synthesize serializedRequest=_serializedRequest;
 @property (copy, nonatomic) NSData *serializedResponse; // @synthesize serializedResponse=_serializedResponse;
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleInitialResponseReceived:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)handleReplaceLocalWithWireSerializations:(id)arg1 encryptedMasterKeys:(id)arg2 wireEnvelopes:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)handleReplaceWireSerializationsWithRecords:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 local:(BOOL)arg4;

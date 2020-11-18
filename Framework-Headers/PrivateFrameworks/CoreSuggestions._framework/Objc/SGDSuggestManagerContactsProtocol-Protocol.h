@@ -10,14 +10,12 @@
 @class CNContact, NSArray, NSString, SGRecordId;
 
 @protocol SGDSuggestManagerContactsProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerContactsConfirmRejectProtocol>
-- (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
+- (void)allContactsWithSnippets:(BOOL)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)cnContactMatchesForRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)cnContactMatchesForRecordIds:(NSArray *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)contactFromRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)contactMatchesByEmailAddress:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)contactMatchesByPhoneNumber:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
-- (void)contactMatchesOrLookupIdByEmailAddress:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
-- (void)contactMatchesOrLookupIdByPhoneNumber:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)contactMatchesWithContact:(CNContact *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)contactMatchesWithContactIdentifier:(NSString *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)contactMatchesWithContactIdentifiers:(NSArray *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;

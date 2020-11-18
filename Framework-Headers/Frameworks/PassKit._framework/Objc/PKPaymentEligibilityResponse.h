@@ -13,6 +13,7 @@
     NSString *_identifier;
     long long _eligibilityStatus;
     long long _cardType;
+    unsigned long long _deviceProvisioningDataExpected;
     NSURL *_termsURL;
     NSString *_termsID;
     NSString *_applicationIdentifier;
@@ -23,6 +24,7 @@
 
 @property (readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) long long cardType; // @synthesize cardType=_cardType;
+@property (readonly, nonatomic) unsigned long long deviceProvisioningDataExpected; // @synthesize deviceProvisioningDataExpected=_deviceProvisioningDataExpected;
 @property (readonly, nonatomic) long long eligibilityStatus; // @synthesize eligibilityStatus=_eligibilityStatus;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;

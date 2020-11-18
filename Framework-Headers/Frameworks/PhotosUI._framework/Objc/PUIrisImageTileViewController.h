@@ -10,7 +10,7 @@
 #import <PhotosUI/PHLivePhotoViewDelegatePrivate-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
-@class NSString, PHLivePhotoView, PUBrowsingViewModel;
+@class NSString, PHLivePhotoView, PUBrowsingViewModel, PXLivePhotoViewModulator;
 @protocol PUIrisImageTileViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     id<PUIrisImageTileViewControllerDelegate> _delegate;
     PUBrowsingViewModel *_browsingViewModel;
     PHLivePhotoView *__livePhotoView;
+    PXLivePhotoViewModulator *_livePhotoViewModulator;
 }
 
 @property (readonly, nonatomic) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
@@ -37,16 +38,16 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<PUIrisImageTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXLivePhotoViewModulator *livePhotoViewModulator; // @synthesize livePhotoViewModulator=_livePhotoViewModulator;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_assetFocusValueDidChange;
 - (void)_handleBrowsingIrisPlayer:(id)arg1 didChange:(id)arg2;
-- (void)_playVitalityHintIfNeeded;
-- (void)_setLivePhotoView:(id)arg1;
 - (void)_updateLivePhotoViewVitalityEnabled;
 - (void)_updatePlaybackGestureRecognizer;
 - (void)_updatePlayerViewInteractivePlaybackAllowed;
+- (void)_updateVitalityTransform;
 - (void)addToTilingView:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)assetViewModelDidChange;
@@ -59,7 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)ppt_playLivePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeAllAnimations;
 - (void)setAssetViewModel:(id)arg1;
-- (void)updateMutableImageLayerModulator:(id)arg1;
+- (void)updateModulator;
+- (void)updateModulatorInputs;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

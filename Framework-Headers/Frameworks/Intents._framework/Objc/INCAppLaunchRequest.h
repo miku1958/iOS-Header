@@ -33,7 +33,6 @@
 - (id)initWithBundleIdentifier:(id)arg1 options:(id)arg2 URL:(id)arg3 userActivity:(id)arg4;
 - (id)initWithIntent:(id)arg1 userActivity:(id)arg2 inBackground:(BOOL)arg3 error:(id *)arg4;
 - (id)initWithInteraction:(id)arg1 userActivity:(id)arg2 inBackground:(BOOL)arg3 error:(id *)arg4;
-- (id)initWithSockPuppetApplicationProxy:(id)arg1 userActivity:(id)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)observeForAppLaunchWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;

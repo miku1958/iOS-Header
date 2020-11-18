@@ -16,6 +16,7 @@
     BOOL _shouldEnqueueMirrorOutput;
     BOOL _shouldRollBackIfMirrorOutputFails;
     BOOL _disallowsCellularAccessForMirrorOutput;
+    BOOL _disallowsModelCreation;
     NSString *_label;
     NSDictionary *_messagePayload;
     NSString *_messageName;
@@ -23,10 +24,12 @@
     NSUUID *_messageTransactionIdentifier;
     long long _qualityOfService;
     HMFActivity *_activity;
+    unsigned long long _transactionItemsBatchLimit;
 }
 
 @property (strong, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property (nonatomic) BOOL disallowsCellularAccessForMirrorOutput; // @synthesize disallowsCellularAccessForMirrorOutput=_disallowsCellularAccessForMirrorOutput;
+@property BOOL disallowsModelCreation; // @synthesize disallowsModelCreation=_disallowsModelCreation;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSString *messageName; // @synthesize messageName=_messageName;
 @property (strong, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
@@ -36,17 +39,18 @@
 @property (nonatomic) BOOL shouldEnqueueMirrorOutput; // @synthesize shouldEnqueueMirrorOutput=_shouldEnqueueMirrorOutput;
 @property (nonatomic) BOOL shouldPerformDelegateCallbacks; // @synthesize shouldPerformDelegateCallbacks=_shouldPerformDelegateCallbacks;
 @property (nonatomic) BOOL shouldRollBackIfMirrorOutputFails; // @synthesize shouldRollBackIfMirrorOutputFails=_shouldRollBackIfMirrorOutputFails;
+@property (nonatomic) unsigned long long transactionItemsBatchLimit; // @synthesize transactionItemsBatchLimit=_transactionItemsBatchLimit;
 
 + (id)optionsWithLabel:(id)arg1;
 + (id)optionsWithMessage:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
-- (void)callMessageResponseHandlerWithPayload:(id)arg1 error:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLabel:(id)arg1;
-- (id)transactionIdentifier;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

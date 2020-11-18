@@ -20,7 +20,6 @@
 @property BOOL includesPeerToPeer; // @synthesize includesPeerToPeer=_includesPeerToPeer;
 
 - (void)_dispatchCallBack:(void *)arg1 flags:(unsigned long long)arg2 error:(CDStruct_59046461)arg3;
-- (BOOL)_includesAWDL;
 - (struct __CFNetServiceBrowser *)_internalNetServiceBrowser;
 - (void)_setIncludesAWDL:(BOOL)arg1;
 - (void)dealloc;

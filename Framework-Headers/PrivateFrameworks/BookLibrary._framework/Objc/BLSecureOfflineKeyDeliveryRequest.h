@@ -40,6 +40,7 @@
 - (void)contentKeySession:(id)arg1 didProvidePersistableContentKeyRequest:(id)arg2;
 - (void)execute;
 - (id)init;
+- (id)initWithRequestContext:(id)arg1;
 - (void)performRequestWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end

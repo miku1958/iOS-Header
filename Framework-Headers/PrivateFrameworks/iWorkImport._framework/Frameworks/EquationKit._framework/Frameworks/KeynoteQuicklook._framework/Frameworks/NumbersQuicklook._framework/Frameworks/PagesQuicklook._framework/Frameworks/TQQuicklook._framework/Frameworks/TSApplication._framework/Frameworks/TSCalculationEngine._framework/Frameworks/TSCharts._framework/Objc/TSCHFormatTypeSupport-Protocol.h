@@ -6,7 +6,7 @@
 
 @protocol TSCHFormatTypeSupport
 
-@property (readonly, nonatomic) int formatType;
+@property (readonly, nonatomic) unsigned int formatType;
 
 @end
 

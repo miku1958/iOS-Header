@@ -6,15 +6,16 @@
 
 #import <SpringBoard/SBLayoutElementViewController.h>
 
+#import <SpringBoard/SBApplicationSceneStatusBarDescriberProviding-Protocol.h>
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBApplicationSceneViewControllingStatusBarDelegate-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 
-@class NSString, SBApplicationSceneHandle, SBSceneHandle, UIApplicationSceneSettingsDiffInspector, UIView, UIViewController, _SBAppContainerStatusBarStateProxy;
+@class NSString, SBApplicationSceneHandle, UIApplicationSceneSettingsDiffInspector, UIView, UIViewController, _SBAppContainerStatusBarStateProxy;
 @protocol SBApplicationSceneStatusBarDescribing, SBApplicationSceneViewControlling, SBApplicationSceneViewControllingStatusBarDelegate, SBDeviceApplicationSceneStatusBarStateObserver, SBScenePlaceholderContentContext;
 
-@interface SBAppContainerViewController : SBLayoutElementViewController <SBDeviceApplicationSceneStatusBarStateObserver, SBApplicationSceneViewControllingStatusBarDelegate, SBSceneHandleObserver, SBApplicationSceneViewControlling>
+@interface SBAppContainerViewController : SBLayoutElementViewController <SBDeviceApplicationSceneStatusBarStateObserver, SBApplicationSceneViewControllingStatusBarDelegate, SBSceneHandleObserver, SBApplicationSceneViewControlling, SBApplicationSceneStatusBarDescriberProviding>
 {
     SBApplicationSceneHandle *_applicationSceneHandle;
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsDiffInspector;
@@ -35,13 +36,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
-@property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (readonly, nonatomic) SBApplicationSceneHandle *sceneHandle;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (weak, nonatomic) id<SBDeviceApplicationSceneStatusBarStateObserver> statusBarDelegate; // @synthesize statusBarDelegate=_statusBarDelegate;
 @property (readonly, nonatomic) id<SBApplicationSceneStatusBarDescribing> statusBarDescriber; // @synthesize statusBarDescriber=_statusBarObserverProxy;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)SB_conformsToSBApplicationSceneStatusBarDescriberProviding;
 - (id)_applicationSceneViewControllerForSceneHandle:(id)arg1;
 - (void)_clearState;
 - (void)_configureViewController:(id)arg1;

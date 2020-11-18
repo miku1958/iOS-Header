@@ -11,10 +11,13 @@
 @interface NFTimer : NSObject
 {
     NSObject<OS_dispatch_source> *_src;
+    unsigned long long _popTimeInSeconds;
     BOOL _monotonic;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
 - (id)initSleepTimerWithCallback:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)initWithCallback:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)startTimer:(double)arg1;

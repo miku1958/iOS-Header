@@ -6,22 +6,30 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary;
 @protocol OS_nw_path;
 
 @interface CPLNetworkState : NSObject
 {
+    BOOL _cellularRestricted;
+    BOOL _inAirplaneMode;
     NSObject<OS_nw_path> *_networkPath;
 }
 
+@property (readonly, nonatomic) BOOL canUseNetwork;
 @property (readonly, nonatomic, getter=isCellular) BOOL cellular;
+@property (readonly, nonatomic, getter=isCellularRestricted) BOOL cellularRestricted; // @synthesize cellularRestricted=_cellularRestricted;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, nonatomic, getter=isConstrained) BOOL constrained;
+@property (readonly, nonatomic, getter=isInAirplaneMode) BOOL inAirplaneMode; // @synthesize inAirplaneMode=_inAirplaneMode;
 @property (readonly, nonatomic) NSObject<OS_nw_path> *networkPath; // @synthesize networkPath=_networkPath;
+@property (readonly, nonatomic) NSDictionary *plistDescription;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithNetworkPath:(id)arg1;
+- (id)initWithNetworkPath:(id)arg1 cellularRestricted:(BOOL)arg2 inAirplaneMode:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isFunctionallyEqual:(id)arg1;
 - (id)redactedDescription;
 
 @end

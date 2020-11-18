@@ -12,9 +12,15 @@
 {
     long long _durationMs;
     NSString *_resultCandidateId;
+    struct {
+        unsigned int durationMs:1;
+    } _has;
+    BOOL _hasResultCandidateId;
 }
 
 @property (nonatomic) long long durationMs; // @synthesize durationMs=_durationMs;
+@property (nonatomic) BOOL hasDurationMs;
+@property (nonatomic) BOOL hasResultCandidateId; // @synthesize hasResultCandidateId=_hasResultCandidateId;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *resultCandidateId; // @synthesize resultCandidateId=_resultCandidateId;
 

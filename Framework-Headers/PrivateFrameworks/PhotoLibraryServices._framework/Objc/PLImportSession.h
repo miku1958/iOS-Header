@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLFileSystemAlbumMetadataPersistence-Protocol.h>
 
-@class NSOrderedSet, NSString;
+@class NSSet, NSString;
 
 @interface PLImportSession : PLGenericAlbum <PLFileSystemAlbumMetadataPersistence>
 {
@@ -17,7 +17,7 @@
 }
 
 @property (nonatomic) BOOL albumShouldBeAutomaticallyDeleted; // @synthesize albumShouldBeAutomaticallyDeleted=_albumShouldBeAutomaticallyDeleted;
-@property (strong, nonatomic) NSOrderedSet *assets; // @dynamic assets;
+@property (strong, nonatomic) NSSet *assets; // @dynamic assets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,15 +25,16 @@
 @property (readonly) Class superclass;
 
 + (id)albumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)albumsWithImportSessionIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
 + (id)insertNewImportSessionAlbumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)validKindsForPersistence;
 - (BOOL)_isAssetIncludedInImportDates:(id)arg1;
 - (BOOL)_isDateAfterEndDate:(id)arg1;
 - (BOOL)_isDateBeforeStartDate:(id)arg1;
+- (id)_orderedBatchedAssets;
 - (void)_updateEndDate:(id)arg1;
 - (void)_updateStartDate:(id)arg1;
-- (id)batchedAssets;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (void)didSave;

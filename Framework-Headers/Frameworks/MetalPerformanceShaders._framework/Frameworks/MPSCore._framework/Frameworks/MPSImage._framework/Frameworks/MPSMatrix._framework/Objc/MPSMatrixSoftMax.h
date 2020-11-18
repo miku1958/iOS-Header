@@ -15,7 +15,7 @@
 @property (nonatomic) unsigned long long sourceColumns; // @synthesize sourceColumns=_sourceColumns;
 @property (nonatomic) unsigned long long sourceRows; // @synthesize sourceRows=_sourceRows;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 inputMatrix:(id)arg2 resultMatrix:(id)arg3;

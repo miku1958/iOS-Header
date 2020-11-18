@@ -11,7 +11,7 @@
 @interface _WKRemoteObjectInterface : NSObject
 {
     struct RetainPtr<NSString> _identifier;
-    struct HashMap<SEL *, MethodInfo, WTF::PtrHash<SEL *>, WTF::HashTraits<SEL *>, WTF::HashTraits<MethodInfo>> _methods;
+    struct HashMap<SEL *, MethodInfo, WTF::DefaultHash<SEL *>, WTF::HashTraits<SEL *>, WTF::HashTraits<MethodInfo>> _methods;
     Protocol *_protocol;
 }
 
@@ -21,8 +21,8 @@
 + (id)remoteObjectInterfaceWithProtocol:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const Vector_9ec053b8 *)_allowedArgumentClassesForReplyBlockOfSelector:(SEL)arg1;
-- (const Vector_9ec053b8 *)_allowedArgumentClassesForSelector:(SEL)arg1;
+- (const Vector_64fc7226 *)_allowedArgumentClassesForReplyBlockOfSelector:(SEL)arg1;
+- (const Vector_64fc7226 *)_allowedArgumentClassesForSelector:(SEL)arg1;
 - (id)_methodSignatureForReplyBlockOfSelector:(SEL)arg1;
 - (id)_methodSignatureForSelector:(SEL)arg1;
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2;

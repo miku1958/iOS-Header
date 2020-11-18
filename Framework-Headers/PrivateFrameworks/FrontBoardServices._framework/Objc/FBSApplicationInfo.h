@@ -23,6 +23,8 @@
     NSDictionary *_environmentVariables;
     NSDictionary *_lazy_entitlements;
     BOOL _provisioningProfileValidated;
+    BOOL _uppProvisioningProfileValidated;
+    BOOL _freeDeveloperProvisioningProfileValidated;
     BOOL _isManaged;
     NSString *_sdkVersion;
     NSArray *_customMachServices;
@@ -55,15 +57,16 @@
     BOOL _initialized;
     BOOL _pendingUninstall;
     BOOL _supportsMultiwindow;
-    BOOL _blockedForScreenTimeExpiration;
+    long long _screenTimePolicy;
     NSArray *_folderNames;
     NSString *_fallbackFolderName;
 }
 
+@property (readonly, nonatomic, getter=isUPPProvisioningProfileValidated) BOOL UPPProvisioningProfileValidated; // @synthesize UPPProvisioningProfileValidated=_uppProvisioningProfileValidated;
 @property (readonly, copy, nonatomic, getter=_appIDEntitlement) NSString *appIDEntitlement; // @synthesize appIDEntitlement=_appIDEntitlement;
 @property (readonly, nonatomic, getter=isBeta) BOOL beta; // @synthesize beta=_beta;
 @property (readonly, nonatomic, getter=isBlocked) BOOL blocked; // @synthesize blocked=_blocked;
-@property (readonly, nonatomic, getter=isBlockedForScreenTimeExpiration) BOOL blockedForScreenTimeExpiration; // @synthesize blockedForScreenTimeExpiration=_blockedForScreenTimeExpiration;
+@property (readonly, nonatomic, getter=isBlockedForScreenTimeExpiration) BOOL blockedForScreenTimeExpiration;
 @property (readonly, nonatomic) NSURL *bundleContainerURL; // @synthesize bundleContainerURL=_bundleContainerURL;
 @property (readonly, nonatomic) NSArray *customMachServices; // @synthesize customMachServices=_customMachServices;
 @property (readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
@@ -79,6 +82,7 @@
 @property (readonly, nonatomic) NSArray *externalAccessoryProtocols; // @synthesize externalAccessoryProtocols=_externalAccessoryProtocols;
 @property (readonly, nonatomic) NSString *fallbackFolderName; // @synthesize fallbackFolderName=_fallbackFolderName;
 @property (readonly, nonatomic) NSArray *folderNames; // @synthesize folderNames=_folderNames;
+@property (readonly, nonatomic, getter=isFreeDeveloperProvisioningProfileValidated) BOOL freeDeveloperProvisioningProfileValidated; // @synthesize freeDeveloperProvisioningProfileValidated=_freeDeveloperProvisioningProfileValidated;
 @property (readonly, nonatomic) BOOL hasViewServicesEntitlement; // @synthesize hasViewServicesEntitlement=_hasViewServicesEntitlement;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_isInstalling, setter=_setInstalling:) BOOL installing; // @synthesize installing=_installing;
@@ -95,6 +99,7 @@
 @property (readonly, nonatomic) BOOL requiresPersistentWiFi; // @synthesize requiresPersistentWiFi=_requiresPersistentWiFi;
 @property (readonly, nonatomic, getter=isRestricted) BOOL restricted; // @synthesize restricted=_restricted;
 @property (readonly, nonatomic) NSURL *sandboxURL; // @synthesize sandboxURL=_sandboxURL;
+@property (readonly, nonatomic) long long screenTimePolicy; // @synthesize screenTimePolicy=_screenTimePolicy;
 @property (readonly, copy, nonatomic) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property (readonly, copy, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
 @property (readonly, copy, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
@@ -124,6 +129,7 @@
 - (BOOL)supportsBackgroundMode:(id)arg1;
 - (BOOL)supportsDeviceFamily:(unsigned long long)arg1;
 - (BOOL)supportsInterfaceOrientation:(long long)arg1;
+- (unsigned long long)unauthoritativeTrustState;
 
 @end
 

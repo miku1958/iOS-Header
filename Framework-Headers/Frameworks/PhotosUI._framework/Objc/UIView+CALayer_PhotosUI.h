@@ -30,7 +30,6 @@
 + (double)pu_layoutMarginWidthForCurrentScreenSize;
 + (double)pu_springOscillationRootAtIndex:(long long)arg1 forMass:(double)arg2 stiffness:(double)arg3 damping:(double)arg4 initialVelocity:(double)arg5;
 + (void)pu_transitionWithView:(id)arg1 duration:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)_pu_ancestorSharedWithView:(id)arg1;
 - (id)_pu_animationDictionary;
 - (id)_pu_associatedConstraints;
 - (void)pu_addConstraint:(id)arg1 forKey:(id)arg2;
@@ -38,8 +37,6 @@
 - (void)pu_addTransform:(struct CGAffineTransform)arg1;
 - (void)pu_clearAllConstraintsForKey:(id)arg1;
 - (id)pu_constraintsForKey:(id)arg1;
-- (struct CGAffineTransform)pu_convertTransform:(struct CGAffineTransform)arg1 fromView:(id)arg2;
-- (struct CGAffineTransform)pu_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
 - (BOOL)pu_hasConstraintForKey:(id)arg1;
 - (void)pu_removeAllConstraintsForKey:(id)arg1;
 - (void)pu_removeAllGeometryAnimationsRecursively:(BOOL)arg1;

@@ -16,24 +16,27 @@
     NSCountedSet *_orientationUpdateDisableReasons;
     BOOL _passesTouchesThrough;
     NSString *_debugName;
-    UIViewController *_sb_rootViewController;
+    UIViewController *_contentViewController;
 }
 
+@property (strong, nonatomic, setter=setContentViewController:) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL passesTouchesThrough; // @synthesize passesTouchesThrough=_passesTouchesThrough;
-@property (strong, nonatomic, setter=sb_setRootViewController:) UIViewController *sb_rootViewController; // @synthesize sb_rootViewController=_sb_rootViewController;
 @property (readonly) Class superclass;
 
++ (BOOL)layoutContentViewControllerWithConstraints;
 - (void).cxx_destruct;
+- (BOOL)_canBecomeKeyWindow;
 - (void)_updateInterfaceOrientationToCurrentActiveInterfaceOrientationWithDuration:(double)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)disableInterfaceOrientationChangesForReason:(id)arg1;
+- (unsigned long long)effectiveRootViewControllerSupportedInterfaceOrientations;
 - (void)enableInterfaceOrientationChangesForReason:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithDebugName:(id)arg1;

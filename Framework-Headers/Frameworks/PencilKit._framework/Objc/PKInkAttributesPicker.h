@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PencilKit/PKPaletteAttributeViewController.h>
 
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PencilKit/_PKInkAttributesPickerViewDelegate-Protocol.h>
@@ -12,10 +12,12 @@
 @class NSString, PKInk, _PKInkAttributesPickerView;
 @protocol PKInkAttributesPickerDelegate;
 
-@interface PKInkAttributesPicker : UIViewController <UIPopoverPresentationControllerDelegate, _PKInkAttributesPickerViewDelegate>
+@interface PKInkAttributesPicker : PKPaletteAttributeViewController <UIPopoverPresentationControllerDelegate, _PKInkAttributesPickerViewDelegate>
 {
+    BOOL _updatingOpacityValue;
     id<PKInkAttributesPickerDelegate> _delegate;
     _PKInkAttributesPickerView *_pickerView;
+    double _minimumOpacityValue;
 }
 
 @property (nonatomic) long long colorUserInterfaceStyle;
@@ -24,15 +26,19 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long displayMode;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double minimumOpacityValue; // @synthesize minimumOpacityValue=_minimumOpacityValue;
 @property (strong, nonatomic) _PKInkAttributesPickerView *pickerView; // @synthesize pickerView=_pickerView;
 @property (strong, nonatomic) PKInk *selectedInk;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isUpdatingOpacityValue) BOOL updatingOpacityValue; // @synthesize updatingOpacityValue=_updatingOpacityValue;
 
++ (double)defaultMinimumOpacityValue;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (void)_inkAttributesPickerViewUserDidEndDraggingSlider:(id)arg1;
 - (void)_inkAttributesPickerViewUserDidStartDraggingSlider:(id)arg1;
 - (void)_notifyInkAttributesPickerDidChangeInk;
+- (void)_updateUI;
 - (id)initWithInk:(id)arg1;
 - (void)inkAttributesPickerViewDidChangeInkOpacity:(id)arg1;
 - (void)inkAttributesPickerViewDidChangeInkThickness:(id)arg1;

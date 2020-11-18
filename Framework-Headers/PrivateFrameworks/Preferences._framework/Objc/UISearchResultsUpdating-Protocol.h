@@ -7,8 +7,12 @@
 #import <Preferences/NSObject-Protocol.h>
 
 @class UISearchController;
+@protocol UISearchSuggestion;
 
 @protocol UISearchResultsUpdating <NSObject>
 - (void)updateSearchResultsForSearchController:(UISearchController *)arg1;
+
+@optional
+- (void)updateSearchResultsForSearchController:(UISearchController *)arg1 selectingSearchSuggestion:(id<UISearchSuggestion>)arg2;
 @end
 

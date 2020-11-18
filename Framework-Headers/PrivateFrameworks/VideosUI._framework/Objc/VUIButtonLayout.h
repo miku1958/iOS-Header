@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long titleStyle; // @synthesize titleStyle=_titleStyle;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (id)layoutWithLayout:(id)arg1 element:(id)arg2 type:(unsigned long long)arg3;
 + (id)standardTitleLayoutWithStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_configureBarButtonItem;

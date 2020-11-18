@@ -75,6 +75,7 @@
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationState:(id *)arg3 destinationStateIsTemporary:(BOOL)arg4;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 inState:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 inState:(id)arg3 destinationImage:(id)arg4;
+- (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 inState:(id)arg3 destinationImage:(id)arg4 subBatchIndex:(unsigned long long)arg5 batchSize:(unsigned long long)arg6;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceState:(id)arg3 destinationState:(id *)arg4 destinationStateIsTemporary:(BOOL)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)encodingStorageSizeForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;

@@ -22,6 +22,6 @@
 - (BOOL)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
 - (id)codableWorkoutEvents;
-- (BOOL)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5;
+- (BOOL)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 @end
 

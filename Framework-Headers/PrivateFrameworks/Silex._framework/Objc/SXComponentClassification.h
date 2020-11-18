@@ -22,7 +22,6 @@
 @property (readonly, nonatomic) SXComponentLayoutRules *layoutRules; // @synthesize layoutRules=_layoutRules;
 @property (readonly, nonatomic) SXComponentTextRules *textRules; // @synthesize textRules=_textRules;
 
-+ (id)classificationForClass:(Class)arg1;
 + (id)classificationForComponentWithRole:(int)arg1;
 + (id)classificationForComponentWithType:(id)arg1;
 + (id)classificationForComponentWithType:(id)arg1 role:(id)arg2;

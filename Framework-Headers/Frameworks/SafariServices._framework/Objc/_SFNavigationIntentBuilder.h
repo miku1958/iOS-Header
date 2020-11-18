@@ -46,6 +46,7 @@
 - (id)navigationIntentWithMultipleIntents:(id)arg1;
 - (id)navigationIntentWithOpenURLContexts:(id)arg1;
 - (id)navigationIntentWithRecentlyClosedTabStateData:(id)arg1;
+- (id)navigationIntentWithSearchText:(id)arg1;
 - (id)navigationIntentWithText:(id)arg1;
 - (id)navigationIntentWithURL:(id)arg1;
 

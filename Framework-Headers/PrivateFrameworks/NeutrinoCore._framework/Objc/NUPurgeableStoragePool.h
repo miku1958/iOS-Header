@@ -14,6 +14,7 @@
     NUStoragePoolStats *_stats;
     unsigned long long _nonPurgeableActivityCounter;
     BOOL _migrationTimerScheduled;
+    NSMutableArray *_sharedStoragesToBeReclaimedList;
     long long _nonPurgeableLimit;
     long long _purgeableLimit;
     double _migrationDelay;
@@ -34,17 +35,23 @@
 @property (readonly, nonatomic) Class storageClass; // @synthesize storageClass=_storageClass;
 @property (readonly, nonatomic) NSMutableArray *volatileList; // @synthesize volatileList=_volatileList;
 
++ (void)reapAllPurged;
++ (void)reapAllVolatile;
 - (void).cxx_destruct;
 - (id)_allocateStorageWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
 - (void)_enforcePurgableLimit;
+- (BOOL)_isStorageAlreadyReturned:(id)arg1;
 - (void)_migrateAllNonPurgeableStorageIfNoRecentActivity:(unsigned long long)arg1;
 - (void)_migrateOldestNonPurgeableStorageToPurgeable;
 - (void)_migrateStorageToPurgeable:(id)arg1;
 - (void)_migrationTimer:(unsigned long long)arg1;
 - (id)_popOldestNonPurgeableStorage;
 - (void)_reapPurged;
+- (void)_reapVolatile;
+- (void)_reclaimSharedStorages;
 - (void)_resetNonPurgeableStorageMigrationTimer;
 - (void)_returnNonPurgeableStorage:(id)arg1;
+- (void)_returnStorage:(id)arg1;
 - (void)_returnVolatileStorage:(id)arg1;
 - (void)_scheduleMigrationTimer;
 - (id)_storageFromPoolWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2 exactMatch:(BOOL)arg3;
@@ -56,6 +63,7 @@
 - (id)newStorageWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
 - (id)newStorageWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2 exactMatch:(BOOL)arg3;
 - (id)reapPurged;
+- (id)reapVolatile;
 - (void)returnStorage:(id)arg1;
 - (void)waitForMigration;
 

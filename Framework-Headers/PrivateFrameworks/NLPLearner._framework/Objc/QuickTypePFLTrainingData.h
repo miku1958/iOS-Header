@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)getTrainingDataBatch:(unsigned long long)arg1;
 - (id)init;
 - (BOOL)loadFromCoreDuet:(id)arg1;
-- (BOOL)loadFromCoreDuet:(id)arg1 withLocale:(id)arg2 andTokenizationBlock:(CDUnknownBlockType)arg3;
+- (BOOL)loadFromCoreDuet:(id)arg1 withLocale:(id)arg2 andLMStreamTokenizationBlock:(CDUnknownBlockType)arg3;
 - (void)rewind;
 
 @end

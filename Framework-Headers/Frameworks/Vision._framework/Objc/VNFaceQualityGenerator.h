@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/VNDetector.h>
+#import <Vision/VNEspressoModelFileBasedDetector.h>
 
 __attribute__((visibility("hidden")))
-@interface VNFaceQualityGenerator : VNDetector
+@interface VNFaceQualityGenerator : VNEspressoModelFileBasedDetector
 {
     struct shared_ptr<vision::mod::FaceQualityPredictor> _mFaceQualityPredictor;
-    struct FaceQualityOptions _mNetworkOptions;
 }
 
 + (id)configurationOptionKeysForDetectorKey;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (BOOL)supportsProcessingDevice:(id)arg1;
 

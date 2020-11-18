@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <coreroutine/NSXPCConnectionDelegate-Protocol.h>
 #import <coreroutine/RTDaemonInternalProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMotionActivityManager, RTPersistenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager;
+@class NSString, NSXPCConnection, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEntitlementProvider, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMotionActivityManager, RTPersistenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager;
 @protocol OS_dispatch_queue;
 
-@interface RTDaemonClientInternal : NSObject <RTDaemonInternalProtocol>
+@interface RTDaemonClientInternal : NSObject <RTDaemonInternalProtocol, NSXPCConnectionDelegate>
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_queue;
+    RTEntitlementProvider *_entitlementProvider;
     RTAccountManager *_accountManager;
     RTAssetManager *_assetManager;
     RTAuthorizationManager *_authorizationManager;
@@ -42,6 +44,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
 @property (strong, nonatomic) RTDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
+@property (strong, nonatomic) RTEntitlementProvider *entitlementProvider; // @synthesize entitlementProvider=_entitlementProvider;
 @property (strong, nonatomic) RTEventModelProvider *eventModelProvider; // @synthesize eventModelProvider=_eventModelProvider;
 @property (strong, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
 @property (readonly) unsigned long long hash;
@@ -62,6 +65,7 @@
 
 - (void).cxx_destruct;
 - (void)clearAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
+- (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)expireLifetimeOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 toExpireOn:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
@@ -81,13 +85,13 @@
 - (void)forceRelabeling:(CDUnknownBlockType)arg1;
 - (void)forceSequentialClusterIdentification:(CDUnknownBlockType)arg1;
 - (void)forceUpdateAssetMetadataWithReply:(CDUnknownBlockType)arg1;
-- (BOOL)hasEntitlement:(id)arg1;
 - (id)init;
 - (id)initWithQueue:(id)arg1 accountManager:(id)arg2 assetManager:(id)arg3 authorizationManager:(id)arg4 deviceLocationPredictor:(id)arg5 diagnostics:(id)arg6 eventModelProvider:(id)arg7 fingerprintManager:(id)arg8 hintManager:(id)arg9 learnedLocationManager:(id)arg10 learnedLocationStore:(id)arg11 locationManager:(id)arg12 locationStore:(id)arg13 motionActivityManager:(id)arg14 persistenceManager:(id)arg15 purgeManager:(id)arg16 scenarioTriggerManager:(id)arg17 vehicleLocationProvider:(id)arg18 visitManager:(id)arg19;
 - (void)injectFingerprintWithIdentifier:(id)arg1 settledState:(unsigned long long)arg2 start:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)injectFingerprintWithSettledState:(BOOL)arg1 start:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)injectLocationOfInterest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)injectLocations:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)injectRealtimeVisit:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)injectSignalForSignalGeneratorOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)injectVisit:(id)arg1 locationOfInterest:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)injectWiFiAccessPointWithMac:(id)arg1 rssi:(long long)arg2 channel:(long long)arg3 age:(double)arg4 date:(id)arg5 reply:(CDUnknownBlockType)arg6;
@@ -100,6 +104,7 @@
 - (void)reconstructTransitionsWithReply:(CDUnknownBlockType)arg1;
 - (void)simulateScenarioTrigger:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)simulateVisit:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)storeHints:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)submitHintAtLocation:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)submitMetrics:(id)arg1 metricName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)tearDownPersistenceStack:(CDUnknownBlockType)arg1;

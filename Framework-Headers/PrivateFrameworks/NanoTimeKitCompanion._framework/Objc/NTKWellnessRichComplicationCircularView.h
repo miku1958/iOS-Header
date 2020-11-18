@@ -4,25 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKWellnessRichComplicationBaseCircularView.h>
 
-@class NSMutableArray, NTKRingsAndDotsView;
-
-@interface NTKWellnessRichComplicationCircularView : NTKRichComplicationCircularBaseView
+@interface NTKWellnessRichComplicationCircularView : NTKWellnessRichComplicationBaseCircularView
 {
-    NTKRingsAndDotsView *_ringsView;
-    NSMutableArray *_ringsFillFractions;
-    struct CGRect _prevLayoutBounds;
 }
 
-- (void).cxx_destruct;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)_showEmptyViews;
-- (void)_updateRingWithTemplate:(id)arg1;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (id)init;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

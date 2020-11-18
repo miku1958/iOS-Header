@@ -41,6 +41,11 @@
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
++ (id)_memoriesLabelSpecForContext:(CDStruct_89e59a70)arg1;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 descriptor:(struct PXViewSpecDescriptor)arg2 featureSpec:(id)arg3;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 tileKind:(long long)arg2 featureSpec:(id)arg3 boundedByRect:(struct CGRect)arg4;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 tileKind:(long long)arg2 gadgetSpec:(id)arg3 boundedByRect:(struct CGRect)arg4;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 tileKind:(long long)arg2 specSet:(long long)arg3 variant:(long long)arg4 boundedBy:(struct CGRect)arg5 shouldScale:(BOOL)arg6;
 + (id)px_headerSubtitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
 + (id)px_headerTitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
 - (void).cxx_destruct;

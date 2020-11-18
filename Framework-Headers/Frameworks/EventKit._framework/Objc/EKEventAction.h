@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSString *externalScheduleID;
 
 + (Class)frozenClass;
++ (id)knownIdentityKeysForComparison;
 
 @end
 

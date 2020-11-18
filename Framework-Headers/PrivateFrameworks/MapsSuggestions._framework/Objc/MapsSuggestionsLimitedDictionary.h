@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+#import <MapsSuggestions/MapsSuggestionsTriggerObserver-Protocol.h>
 
-@interface MapsSuggestionsLimitedDictionary : NSObject
+@class NSMutableArray, NSMutableDictionary, NSString;
+
+@interface MapsSuggestionsLimitedDictionary : NSObject <MapsSuggestionsTriggerObserver>
 {
     unsigned long long _maxCapacity;
     NSMutableDictionary *_dict;
@@ -16,11 +18,17 @@
     NSMutableArray *_order;
     unsigned long long _totalHits;
     unsigned long long _totalMisses;
+    NSString *uniqueName;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uniqueName; // @synthesize uniqueName;
 
 - (void).cxx_destruct;
 - (unsigned long long)count;
-- (id)description;
 - (unsigned long long)hitsOnKey:(id)arg1;
 - (id)initWithMaximumCapacity:(unsigned long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
@@ -28,6 +36,7 @@
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (double)totalHitRatio;
+- (void)triggerFired:(id)arg1;
 
 @end
 

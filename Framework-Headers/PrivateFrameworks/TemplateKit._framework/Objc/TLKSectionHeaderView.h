@@ -23,7 +23,7 @@
 - (id)headerLabelText;
 - (void)observedPropertiesChanged;
 - (id)setupContentView;
-- (BOOL)usesDefaultInsets;
+- (BOOL)usesDefaultLayoutMargins;
 
 @end
 

@@ -8,25 +8,23 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerResultsControlling-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
-@class NSString, UILabel, UITableView, WFActionDrawerResults, WFActionDrawerState;
-@protocol WFActionDrawerResultsViewControllerDelegate;
+@class NSString, UILabel, UITableView, WFActionDrawerCoordinator, WFActionDrawerResults, WFActionDrawerState;
 
-@interface WFActionDrawerResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WFActionDrawerActionTableViewCellDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable, WFActionDrawerResultsControlling>
+@interface WFActionDrawerResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable, WFActionDrawerResultsControlling>
 {
-    id<WFActionDrawerResultsViewControllerDelegate> _delegate;
+    WFActionDrawerCoordinator *_coordinator;
     WFActionDrawerResults *_results;
     NSString *_emptyText;
     UITableView *_tableView;
     UILabel *_emptyLabel;
 }
 
+@property (readonly, weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerResultsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) UILabel *emptyLabel; // @synthesize emptyLabel=_emptyLabel;
 @property (copy, nonatomic) NSString *emptyText; // @synthesize emptyText=_emptyText;
@@ -38,8 +36,7 @@
 @property (weak, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
-- (id)initWithTitle:(id)arg1;
+- (id)initWithTitle:(id)arg1 coordinator:(id)arg2;
 - (void)loadView;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

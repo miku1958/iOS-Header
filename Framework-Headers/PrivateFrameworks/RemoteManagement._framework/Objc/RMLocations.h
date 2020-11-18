@@ -12,14 +12,18 @@
 
 + (id)URLWithResolvedSymlinksFromURL:(id)arg1 error:(id *)arg2;
 + (id)_applicationSupportChildDirectoryURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2 childName:(id)arg3 descriptor:(id)arg4;
++ (id)_dataVaultChildDirectoryURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2 childName:(id)arg3 descriptor:(id)arg4;
 + (id)applicationSupportBaseDirectoryURLInDomain:(long long)arg1 error:(id *)arg2;
 + (id)applicationSupportDirectoryURLCreateIfNeeded:(BOOL)arg1;
 + (id)applicationSupportDirectoryURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2;
 + (long long)currentDomain;
 + (id)darwinCacheDirectoryURL;
 + (id)darwinTemporaryDirectoryURL;
-+ (id)datavaultDirectoryURLCreateIfNeeded:(BOOL)arg1;
-+ (id)datavaultDirectoryURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2;
++ (id)darwinUserDirectoryURL;
++ (id)dataVaultDirectoryURLCreateIfNeeded:(BOOL)arg1;
++ (id)dataVaultDirectoryURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2;
++ (id)defaultsOverrideFileURLCreateIfNeeded:(BOOL)arg1;
++ (id)defaultsOverrideFileURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2;
 + (id)homeDirectoryURL;
 + (id)httpLoggingDirectoryURLCreateIfNeeded:(BOOL)arg1;
 + (id)httpLoggingDirectoryURLInDomain:(long long)arg1 createIfNeeded:(BOOL)arg2;

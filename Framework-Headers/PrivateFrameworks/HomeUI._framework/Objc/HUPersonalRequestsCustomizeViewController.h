@@ -18,12 +18,14 @@
     HMHome *_home;
     OBTrayButton *_usePRButton;
     OBLinkTrayButton *_customizeButton;
+    NSString *_finePrintFooterText;
 }
 
 @property (strong, nonatomic) OBLinkTrayButton *customizeButton; // @synthesize customizeButton=_customizeButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSString *finePrintFooterText; // @synthesize finePrintFooterText=_finePrintFooterText;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;

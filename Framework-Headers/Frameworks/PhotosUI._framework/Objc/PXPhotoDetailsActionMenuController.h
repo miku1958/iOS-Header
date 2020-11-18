@@ -10,9 +10,11 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
 @class NSString, PHFetchResult, PXCMMSendBackSuggestionSource, PXPhotoKitAssetCollectionActionManager;
+@protocol PXPhotosDetailsActionMenuDelegate;
 
 @interface PXPhotoDetailsActionMenuController : PXActionMenuController <PXChangeObserver, PXAssetCollectionActionPerformerDelegate>
 {
+    id<PXPhotosDetailsActionMenuDelegate> _delegate;
     PXCMMSendBackSuggestionSource *_sendBackSuggestionSource;
     PHFetchResult *_people;
     PXPhotoKitAssetCollectionActionManager *_assetActionManager;
@@ -20,6 +22,7 @@
 
 @property (readonly, nonatomic) PXPhotoKitAssetCollectionActionManager *assetActionManager; // @synthesize assetActionManager=_assetActionManager;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PXPhotosDetailsActionMenuDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PHFetchResult *people; // @synthesize people=_people;
@@ -27,6 +30,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)assetCollectionActionManager;
 - (void)assetCollectionActionPerformer:(id)arg1 playMovieForAssetCollection:(id)arg2;
 - (id)availableActionTypes;

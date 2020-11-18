@@ -14,7 +14,6 @@
 @interface SXAdController : NSObject <ADBannerViewInternalDelegate>
 {
     BOOL _debuggingEnabled;
-    BOOL _interactivityDebuggingEnabled;
     BOOL _didLoadFirstBannerView;
     id<SXAdvertisingSettings> _debugAdvertisementSettings;
     id<SXAdControllerDelegate> _delegate;
@@ -39,7 +38,6 @@
 @property (nonatomic) BOOL didLoadFirstBannerView; // @synthesize didLoadFirstBannerView=_didLoadFirstBannerView;
 @property (readonly, nonatomic) SXDocument *document; // @synthesize document=_document;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isInteractivityDebuggingEnabled) BOOL interactivityDebuggingEnabled; // @synthesize interactivityDebuggingEnabled=_interactivityDebuggingEnabled;
 @property (weak, nonatomic) id<SXAdControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;

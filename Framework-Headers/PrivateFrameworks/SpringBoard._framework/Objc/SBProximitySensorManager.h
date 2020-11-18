@@ -19,6 +19,7 @@
     BOOL _proximityDetectionEnabled;
     BOOL _proximityDetectionPermitted;
     BOOL _objectInProximity;
+    BOOL _objectInCrudeProximity;
     int _backboardNotificationToken;
     NSHashTable *_observers;
     SpringBoard *_interfaceOrientationProvider;
@@ -47,6 +48,7 @@
 - (void)client:(id)arg1 wantsProximityDetectionEnabled:(BOOL)arg2;
 - (id)init;
 - (id)initWithHIDInterface:(id)arg1 hardwareDefaults:(id)arg2 interfaceOrientationProvider:(id)arg3;
+- (void)processHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)resetProximityCalibration;
 

@@ -148,7 +148,6 @@
 - (void)_setupReviewCheckmark;
 - (void)_showBadgeViewIfAppropriate;
 - (void)_teardownDispatchTimer;
-- (void)_updateAggdKeys;
 - (void)_updateContentInset;
 - (void)_updateModelPhotoWithImage:(id)arg1;
 - (void)_updatePlaceholderImageRect;

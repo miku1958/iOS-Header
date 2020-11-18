@@ -6,23 +6,53 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIButton;
+#import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
-@interface PKPaletteButton : UIControl
+@class NSHashTable, NSString, UIButton;
+
+@interface PKPaletteButton : UIControl <PKPaletteViewSizeScaling>
 {
-    long long _buttonType;
+    BOOL _useCompactLayout;
+    double _scalingFactor;
     UIButton *_button;
+    NSHashTable *_observers;
 }
 
 @property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
-@property (nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL useCompactLayout; // @synthesize useCompactLayout=_useCompactLayout;
 
++ (id)UCBButton;
++ (BOOL)_preventsAppearanceProxyCustomization;
++ (id)ellipsisButton;
++ (id)emojiKeyboardButton;
++ (id)keyboardButton;
++ (id)plusButton;
++ (id)redoButton;
++ (id)returnKeyButton;
++ (id)undoButton;
 - (void).cxx_destruct;
+- (id)_backgroundColor;
+- (struct CGAffineTransform)_buttonTransform;
+- (void)_notifyIntrinsicContentSizeDidChange;
+- (id)_tintColorForCurrentState;
+- (void)_updateUI;
+- (void)addIntrinsicContentSizeObserver:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithType:(long long)arg1;
+- (id)initWithImage:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)removeIntrinsicContentSizeObserver:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setSelected:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

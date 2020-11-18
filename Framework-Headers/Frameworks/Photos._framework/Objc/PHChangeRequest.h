@@ -7,19 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
-#import <Photos/PHUpdateChangeRequest-Protocol.h>
 
 @class NSManagedObjectID, NSString, PHChangeRequestHelper, PHPhotoLibrary;
 
-@interface PHChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
+@interface PHChangeRequest : NSObject <PHInsertChangeRequest>
 {
     PHChangeRequestHelper *_helper;
+    BOOL _shouldPerformConcurrentWork;
     PHPhotoLibrary *_photoLibrary;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,10 +29,10 @@
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, weak, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (nonatomic) BOOL shouldPerformConcurrentWork; // @synthesize shouldPerformConcurrentWork=_shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uuid;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 - (void).cxx_destruct;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
@@ -44,6 +44,7 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
+- (void)performConcurrentWork;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;

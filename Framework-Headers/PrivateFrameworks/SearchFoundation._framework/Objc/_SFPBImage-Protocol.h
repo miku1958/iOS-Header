@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
+@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBSymbolImage, _SFPBURLImage;
 
 @protocol _SFPBImage <NSObject>
 
@@ -15,6 +15,7 @@
 @property (strong, nonatomic) _SFPBContactImage *contactImage;
 @property (copy, nonatomic) NSString *contentType;
 @property (strong, nonatomic) _SFPBGraphicalFloat *cornerRadius;
+@property (nonatomic) int cornerRoundingStyle;
 @property (copy, nonatomic) NSString *identifier;
 @property (copy) NSData *imageData;
 @property (nonatomic) BOOL isTemplate;
@@ -27,6 +28,7 @@
 @property (nonatomic) BOOL shouldCropToCircle;
 @property (strong, nonatomic) _SFPBPointSize *size;
 @property (nonatomic) int source;
+@property (strong, nonatomic) _SFPBSymbolImage *symbolImage;
 @property (nonatomic) int type;
 @property (strong, nonatomic) _SFPBURLImage *urlImage;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSMediaToken, NSString;
+@class AMSMediaToken, AMSMediaTokenServiceKeychainStore, AMSMediaTokenServiceUserDefaultsStore, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSMediaTokenServiceStore : NSObject
@@ -14,23 +14,23 @@ __attribute__((visibility("hidden")))
     NSString *_clientIdentifier;
     NSString *_keychainAccessGroup;
     AMSMediaToken *_memoryMediaToken;
+    AMSMediaTokenServiceKeychainStore *_keychainStore;
+    AMSMediaTokenServiceUserDefaultsStore *_userDefaultsStore;
 }
 
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
+@property (strong, nonatomic) AMSMediaTokenServiceKeychainStore *keychainStore; // @synthesize keychainStore=_keychainStore;
 @property (strong, nonatomic) AMSMediaToken *memoryMediaToken; // @synthesize memoryMediaToken=_memoryMediaToken;
+@property (strong, nonatomic) AMSMediaTokenServiceUserDefaultsStore *userDefaultsStore; // @synthesize userDefaultsStore=_userDefaultsStore;
 
 - (void).cxx_destruct;
 - (BOOL)_hasAppleGroupEnabled;
 - (id)_keychainAccessGroup;
-- (struct __CFDictionary *)_keychainQuery;
 - (void)_mediaTokenChanged;
 - (id)_mediaTokenChangedNotificationName;
 - (void)_postMediaTokenChangedNotification;
-- (void)_removeTokenFromKeychain;
-- (id)_retrieveTokenFromKeychain;
 - (void)_setupKeychainNotifications;
-- (void)_storeTokenInKeychain:(id)arg1;
 - (void)_teardownKeychainNotifications;
 - (void)dealloc;
 - (id)initWithClientIdentifier:(id)arg1 keychainAccessGroup:(id)arg2;

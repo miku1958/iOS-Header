@@ -10,7 +10,7 @@
 #import <TSDrawables/TSDMixing-Protocol.h>
 
 @class NSObject, NSString, TSDInfoGeometry, TSDPathSource, TSPObject;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSDMaskInfo : TSDDrawableInfo <TSDMixing, TSDInfoWithPathSource>
 {
@@ -25,16 +25,16 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (copy, nonatomic) TSDPathSource *pathSource; // @synthesize pathSource=mPathSource;
 @property (readonly) Class superclass;
 
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 pathSource:(id)arg3;
 - (BOOL)isEqualToMaskInfo:(id)arg1;
 - (Class)layoutClass;

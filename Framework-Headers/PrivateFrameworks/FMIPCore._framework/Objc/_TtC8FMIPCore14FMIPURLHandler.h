@@ -10,7 +10,7 @@
 
 @interface _TtC8FMIPCore14FMIPURLHandler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
 }
 
 @end

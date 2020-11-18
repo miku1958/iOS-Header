@@ -14,7 +14,7 @@
     NSArray *_feedRequests;
     NSArray *_desiredKeys;
     unsigned long long _resultsLimit;
-    long long _queryPriority;
+    unsigned long long _queryPriority;
     NSArray *_articleLinkKeys;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCEdgeCacheHint *_edgeCacheHint;
@@ -35,7 +35,7 @@
 @property (copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
 @property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
-@property (nonatomic) long long queryPriority; // @synthesize queryPriority=_queryPriority;
+@property (nonatomic) unsigned long long queryPriority; // @synthesize queryPriority=_queryPriority;
 @property (strong, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;
 @property (strong, nonatomic) NSArray *resultFeedItemAndArticleRecords; // @synthesize resultFeedItemAndArticleRecords=_resultFeedItemAndArticleRecords;
 @property (strong, nonatomic) NSArray *resultFeedResponses; // @synthesize resultFeedResponses=_resultFeedResponses;

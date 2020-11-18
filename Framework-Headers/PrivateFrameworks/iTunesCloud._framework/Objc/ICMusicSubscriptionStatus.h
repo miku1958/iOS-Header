@@ -31,7 +31,6 @@
     long long _statusType;
     BOOL _isAdministrator;
     BOOL _isDiscoveryModeEligible;
-    long long _statusCode;
     NSArray *_termsStatusList;
     NSString *_phoneNumber;
     NSString *_cellularOperatorName;
@@ -63,13 +62,13 @@
 @property (readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (readonly, copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
-@property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly, nonatomic) long long statusType; // @synthesize statusType=_statusType;
 @property (readonly, copy, nonatomic) NSArray *termsStatusList; // @synthesize termsStatusList=_termsStatusList;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_copySubscriptionStatusPropertiesToStatus:(id)arg1 withZone:(struct _NSZone *)arg2;
+- (id)_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     id<AUPBRegistrarHosting> mProxyInterface;
     NSXPCListener *mListener;
     NSMutableArray *mClientConnections;
-    struct unique_ptr<CAMutex, std::__1::default_delete<CAMutex>> mLock;
+    struct unique_ptr<CADeprecated::CAMutex, std::__1::default_delete<CADeprecated::CAMutex>> mLock;
     struct map<unsigned int, RemoteAUHandleInfo, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, RemoteAUHandleInfo>>> mAUHandlesToInfo;
     struct map<unsigned int, AUProcessingBlock, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUProcessingBlock>>> mBlockHandlesToMethods;
     unsigned int mAUPBRefCounter;

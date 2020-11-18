@@ -48,7 +48,7 @@
 - (unsigned int)enumerateObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned int)enumerateReferencesOfNode:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (unsigned int)enumerateReferencesWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4;
+- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4 error:(id *)arg5;
 - (id)initWithNodeCount:(unsigned int)arg1 nodeProvider:(CDUnknownBlockType)arg2;
 - (id)initWithNodesNoCopy:(struct _VMUBlockNode *)arg1 nodeCount:(unsigned int)arg2;
 - (void)internalizeNodes;

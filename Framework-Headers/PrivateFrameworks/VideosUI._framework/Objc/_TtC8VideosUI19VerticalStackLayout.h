@@ -10,6 +10,7 @@
 
 @interface _TtC8VideosUI19VerticalStackLayout : _TtC8VideosUI10ViewLayout
 {
+    MISSING_TYPE *stackType;
     MISSING_TYPE *hasBlurPlatter;
     MISSING_TYPE *$__lazy_storage_$_captionTextLayout;
     MISSING_TYPE *$__lazy_storage_$_titleTextLayout;
@@ -23,7 +24,6 @@
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
     MISSING_TYPE *$__lazy_storage_$_textualButtonViewLayout;
     MISSING_TYPE *$__lazy_storage_$_hangerViewLayout;
-    MISSING_TYPE *stackType;
 }
 
 @end

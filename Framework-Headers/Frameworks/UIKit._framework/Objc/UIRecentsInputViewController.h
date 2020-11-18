@@ -44,9 +44,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_delete:(id)arg1;
 - (void)_overrideTraitCollectionForHeaderViewController;
-- (id)_uiktest_FocusedCellLabel;
-- (id)_uiktest_UnfocusedCellBackgroundView;
-- (id)_uiktest_UnfocusedCellLabel;
 - (void)didSelectButtonAtIndexPath:(id)arg1;
 - (void)ensureConstraints;
 - (id)indexPathForPreferredFocusedViewInTableView:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223MagazineFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
@@ -18,12 +17,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *categoriesModule;
     MISSING_TYPE *paywallModule;
     MISSING_TYPE *accessQueue;
-    MISSING_TYPE *dataPrewarmer;
+    MISSING_TYPE *prewarmer;
     MISSING_TYPE *pluginManager;
     MISSING_TYPE *lastRefreshDate;
-    MISSING_TYPE *tagService;
-    MISSING_TYPE *notificationPrompter;
-    MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *_persistedConfigurationDate;
     MISSING_TYPE *readingHistory;

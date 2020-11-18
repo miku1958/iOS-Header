@@ -14,36 +14,53 @@ __attribute__((visibility("hidden")))
 @interface WFPBRunShortcutEvent : PBCodable <NSCopying>
 {
     unsigned int _actionCount;
+    NSString *_automationSuggestionsTrialIdentifier;
     NSString *_automationType;
     NSString *_galleryIdentifier;
     NSString *_key;
+    unsigned int _numberOfDialogsPresented;
     NSString *_runSource;
-    int _source;
+    NSString *_shortcutSource;
     BOOL _completed;
+    BOOL _didPresentShareSheet;
+    BOOL _didRunRemotely;
+    BOOL _isFromAutomationSuggestion;
     struct {
         unsigned int actionCount:1;
-        unsigned int source:1;
+        unsigned int numberOfDialogsPresented:1;
         unsigned int completed:1;
+        unsigned int didPresentShareSheet:1;
+        unsigned int didRunRemotely:1;
+        unsigned int isFromAutomationSuggestion:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;
+@property (strong, nonatomic) NSString *automationSuggestionsTrialIdentifier; // @synthesize automationSuggestionsTrialIdentifier=_automationSuggestionsTrialIdentifier;
 @property (strong, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
+@property (nonatomic) BOOL didPresentShareSheet; // @synthesize didPresentShareSheet=_didPresentShareSheet;
+@property (nonatomic) BOOL didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property (strong, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (nonatomic) BOOL hasActionCount;
+@property (readonly, nonatomic) BOOL hasAutomationSuggestionsTrialIdentifier;
 @property (readonly, nonatomic) BOOL hasAutomationType;
 @property (nonatomic) BOOL hasCompleted;
+@property (nonatomic) BOOL hasDidPresentShareSheet;
+@property (nonatomic) BOOL hasDidRunRemotely;
 @property (readonly, nonatomic) BOOL hasGalleryIdentifier;
+@property (nonatomic) BOOL hasIsFromAutomationSuggestion;
 @property (readonly, nonatomic) BOOL hasKey;
+@property (nonatomic) BOOL hasNumberOfDialogsPresented;
 @property (readonly, nonatomic) BOOL hasRunSource;
-@property (nonatomic) BOOL hasSource;
+@property (readonly, nonatomic) BOOL hasShortcutSource;
+@property (nonatomic) BOOL isFromAutomationSuggestion; // @synthesize isFromAutomationSuggestion=_isFromAutomationSuggestion;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
+@property (nonatomic) unsigned int numberOfDialogsPresented; // @synthesize numberOfDialogsPresented=_numberOfDialogsPresented;
 @property (strong, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (strong, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
 
 - (void).cxx_destruct;
-- (int)StringAsSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -52,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

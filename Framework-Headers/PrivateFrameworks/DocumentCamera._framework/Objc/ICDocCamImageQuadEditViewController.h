@@ -79,6 +79,7 @@
 @property (weak, nonatomic) UILabel *userPromptLabel; // @synthesize userPromptLabel=_userPromptLabel;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)adjustedQuad;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)callCompletionHandler:(BOOL)arg1 withImage:(id)arg2 quad:(id)arg3 preparingForDismissal:(BOOL)arg4;

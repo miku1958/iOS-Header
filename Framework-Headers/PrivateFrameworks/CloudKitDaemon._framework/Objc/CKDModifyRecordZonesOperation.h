@@ -6,7 +6,8 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class CKDPCSKeySyncCoreAnalytics, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifyRecordZonesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyRecordZonesOperation : CKDDatabaseOperation
@@ -24,12 +25,15 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_retryableErrorsByZoneID;
     long long _maxZoneSaveAttempts;
     NSMutableArray *_zonesWaitingOnKeyRegistrySync;
+    CKDPCSKeySyncCoreAnalytics *_keySyncAnalytics;
 }
 
 @property (nonatomic) BOOL allowDefaultZoneSave; // @synthesize allowDefaultZoneSave=_allowDefaultZoneSave;
+@property (strong, nonatomic) id<CKModifyRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property (nonatomic) BOOL didSynchronizeUserKeyRegistry; // @synthesize didSynchronizeUserKeyRegistry=_didSynchronizeUserKeyRegistry;
 @property (nonatomic) BOOL dontFetchFromServer; // @synthesize dontFetchFromServer=_dontFetchFromServer;
+@property (strong, nonatomic) CKDPCSKeySyncCoreAnalytics *keySyncAnalytics; // @synthesize keySyncAnalytics=_keySyncAnalytics;
 @property (nonatomic) BOOL markZonesAsUserPurged; // @synthesize markZonesAsUserPurged=_markZonesAsUserPurged;
 @property (nonatomic) long long maxZoneSaveAttempts; // @synthesize maxZoneSaveAttempts=_maxZoneSaveAttempts;
 @property (nonatomic) int numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
@@ -38,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *recordZonesToSave; // @synthesize recordZonesToSave=_recordZonesToSave;
 @property (strong, nonatomic) NSMutableDictionary *retryableErrorsByZoneID; // @synthesize retryableErrorsByZoneID=_retryableErrorsByZoneID;
 @property (copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (strong, nonatomic) NSMutableArray *zonesWaitingOnKeyRegistrySync; // @synthesize zonesWaitingOnKeyRegistrySync=_zonesWaitingOnKeyRegistrySync;
 
 + (long long)isPredominatelyDownload;
@@ -50,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleRecordZoneDeleted:(id)arg1 responseCode:(id)arg2;
 - (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2 serverCapabilities:(unsigned long long)arg3;
 - (BOOL)_saveZonesToServer;
+- (void)_sendCoreAnalyticsEventForKeySync;
 - (void)_sendErrorForFailedZones;
 - (void)_sychronizeUserKeyRegistryIfNeeded;
 - (id)activityCreate;
@@ -57,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
+- (id)relevantZoneIDs;
 
 @end
 

@@ -33,7 +33,7 @@
 - (id)positionByMovingInDirection:(int)arg1 amount:(unsigned int)arg2 withAffinityDownstream:(BOOL)arg3;
 - (id)positionOfNextBoundaryOfGranularity:(int)arg1 inDirection:(int)arg2;
 - (BOOL)requiresContextForWordBoundary;
-- (unsigned char)textDirection;
+- (BOOL)textDirection;
 - (BOOL)withinTextUnitOfGranularity:(int)arg1 inDirectionIfAtBoundary:(int)arg2;
 
 @end

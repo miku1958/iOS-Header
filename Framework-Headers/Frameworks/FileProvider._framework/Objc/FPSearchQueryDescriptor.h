@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqualToItemQueryDescriptor:(id)arg1;
 - (BOOL)keepCollectorsAlive;
+- (id)name;
 - (id)queryStringForMountPoint:(id)arg1;
 
 @end

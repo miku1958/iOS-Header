@@ -11,8 +11,7 @@
 }
 
 - (void)handleExtensionStartedWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (int)requiredEntitlement;
-- (BOOL)shouldAllowUnentitledExtension:(id)arg1;
+- (void)setAppUUIDMap:(id)arg1;
 
 @end
 

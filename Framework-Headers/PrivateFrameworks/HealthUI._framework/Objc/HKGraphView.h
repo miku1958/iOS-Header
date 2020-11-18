@@ -15,7 +15,7 @@
 #import <HealthUI/HKSeriesDelegate-Protocol.h>
 #import <HealthUI/UIScrollViewDelegate-Protocol.h>
 
-@class HKAxis, HKBorderLineView, HKGraphViewSelectionStyle, HKMultiTouchPressGestureRecognizer, HKOutsideViewTapDetector, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimer, UIColor, UIImage, UIScrollView, _HKGraphViewOverlayView;
+@class HKAxis, HKBorderLineView, HKGraphViewSelectionStyle, HKMultiTouchPressGestureRecognizer, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimer, UIColor, UIImage, UIScrollView, _HKGraphViewOverlayView;
 @protocol HKGraphRenderer, HKGraphViewDelegate;
 
 @interface HKGraphView : UIView <UIScrollViewDelegate, HKSeriesDelegate, HKGraphRenderDelegate, HKMultiTouchPressGestureRecognizerDelegate, HKGraphTileDrawingDelegate, HKGraphSeriesOverlayDelegate, HKScrollPerformanceTestable, HKInteractiveChartRangeProvider>
@@ -40,6 +40,7 @@
     BOOL _disableScrolling;
     BOOL _disableSelection;
     BOOL _multiSeriesSelection;
+    BOOL _moveSelectedSeriesToFront;
     BOOL _contentWidthFromTimeScope;
     BOOL _enableStickySelection;
     BOOL _enableZoomInGesture;
@@ -78,7 +79,6 @@
     UIView *_detailView;
     HKValueRange *_destinationEffectiveVisibleRangeActive;
     NSSet *_yAxisAccessoryViews;
-    HKOutsideViewTapDetector *_outsideViewTapDetector;
     long long _tileColumns;
     double _tileWidthInPoints;
     long long _tileFirstColumn;
@@ -95,6 +95,7 @@
     double _startTime;
     double _lastEndTime;
     NSTimer *_startupTimer;
+    double _firstNonemptyDrawTime;
     struct CGPoint _contentOffset;
     struct CGPoint _tileContentOffsetOverride;
     struct UIEdgeInsets _axisInset;
@@ -123,6 +124,7 @@
 @property (nonatomic) BOOL enableStickySelection; // @synthesize enableStickySelection=_enableStickySelection;
 @property (nonatomic) BOOL enableZoomInGesture; // @synthesize enableZoomInGesture=_enableZoomInGesture;
 @property (nonatomic) unsigned long long featheringOptions; // @synthesize featheringOptions=_featheringOptions;
+@property (nonatomic) double firstNonemptyDrawTime; // @synthesize firstNonemptyDrawTime=_firstNonemptyDrawTime;
 @property (nonatomic) double hardLeftMarginWidth; // @synthesize hardLeftMarginWidth=_hardLeftMarginWidth;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isScrollViewDecelerating;
@@ -132,11 +134,11 @@
 @property (nonatomic) long long maximumDateZoom; // @synthesize maximumDateZoom=_maximumDateZoom;
 @property (nonatomic) BOOL measuringStartupTime; // @synthesize measuringStartupTime=_measuringStartupTime;
 @property (nonatomic) long long minimumDateZoom; // @synthesize minimumDateZoom=_minimumDateZoom;
+@property (nonatomic) BOOL moveSelectedSeriesToFront; // @synthesize moveSelectedSeriesToFront=_moveSelectedSeriesToFront;
 @property (nonatomic) BOOL multiSeriesSelection; // @synthesize multiSeriesSelection=_multiSeriesSelection;
 @property (readonly, nonatomic) HKMultiTouchPressGestureRecognizer *multiTouchGestureRecognizer; // @synthesize multiTouchGestureRecognizer=_multiTouchGestureRecognizer;
 @property (copy, nonatomic) UIColor *outlineColor; // @synthesize outlineColor=_outlineColor;
 @property (nonatomic) unsigned long long outlineOptions; // @synthesize outlineOptions=_outlineOptions;
-@property (strong, nonatomic) HKOutsideViewTapDetector *outsideViewTapDetector; // @synthesize outsideViewTapDetector=_outsideViewTapDetector;
 @property (strong, nonatomic) NSMapTable *overlayInteractiveViews; // @synthesize overlayInteractiveViews=_overlayInteractiveViews;
 @property (strong, nonatomic) _HKGraphViewOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property (nonatomic) long long previousOverlayType; // @synthesize previousOverlayType=_previousOverlayType;
@@ -174,17 +176,20 @@
 
 + (double)_modelCoordinateSpanForRange:(id)arg1 axis:(id)arg2;
 + (id)_rangeFromModelCoordinateMin:(double)arg1 max:(double)arg2 axis:(id)arg3;
++ (BOOL)visibleIntersectionForRange:(id)arg1 visibleRange:(id)arg2;
 - (void).cxx_destruct;
 - (void)_activateStickySelection;
 - (id)_actualVisibleRangeFromEffectiveVisibleRange:(id)arg1 dataAreaRect:(struct CGRect)arg2;
 - (void)_addSelectionRecognizerToView:(id)arg1;
 - (void)_addTapGestureRecognizerForTapOnView:(id)arg1;
 - (void)_addTapGestureRecognizerForTogglingStickyToView:(id)arg1;
+- (struct CGRect)_adjustLeftMarginRectForBaselines:(struct CGRect)arg1;
 - (BOOL)_anySeriesAnimatingDuringAutoscale;
 - (void)_autoScaleXAxis;
 - (void)_autoScaleYAxisIfNecessaryForAllGroupsForChartRect:(struct CGRect)arg1;
 - (void)_autoScaleYAxisIfNecessaryForGroupRow:(long long)arg1 chartRect:(struct CGRect)arg2;
 - (BOOL)_axisRangeIsDateRange;
+- (double)_bottomBaselineYValueForChartRect:(struct CGRect)arg1;
 - (void)_cancelAllInFlightAutoscales;
 - (void)_clearRenderViewIfNecessary;
 - (CDStruct_767cbfa4)_closestDataPointPathToPoint:(struct CGPoint)arg1 seriesGroupRow:(long long)arg2 minimumXDistance:(double)arg3 xDistanceOut:(double *)arg4;
@@ -276,7 +281,6 @@
 - (void)_renderXAxisGridlinesInContext:(struct CGContext *)arg1 withBlendMode:(int)arg2;
 - (BOOL)_renderXAxisLabelAndGridsNeedsNewRendererInContext:(struct CGContext *)arg1;
 - (double)_renderXAxisLabelsInContext:(struct CGContext *)arg1;
-- (void)_renderYAxisDividersWithContext:(struct CGContext *)arg1;
 - (void)_renderYAxisGridlinesInContext:(struct CGContext *)arg1 chartRect:(struct CGRect)arg2 withBlendMode:(int)arg3;
 - (void)_renderYAxisLabelsInContext:(struct CGContext *)arg1 chartRect:(struct CGRect)arg2;
 - (void)_resetSingleSelectionXValue;
@@ -309,6 +313,7 @@
 - (BOOL)_tilesConfigurableAfterInitialRender;
 - (BOOL)_tilesReconfigurableAfterInitialRender;
 - (void)_toggleStickySelectionAction:(id)arg1;
+- (double)_topBaselineYValueForChartRect:(struct CGRect)arg1;
 - (struct CGPoint)_touchPointForSeriesGroupIndex:(long long)arg1 originalTouchPoint:(struct CGPoint)arg2;
 - (void)_touchTilesForContentOffset:(struct CGPoint)arg1 applyHysteresis:(BOOL)arg2;
 - (BOOL)_touchesActuallyMoved:(id)arg1;
@@ -343,8 +348,10 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateDataSourceCaches;
 - (void)layoutSubviews;
+- (void)nonemptyDrawComplete;
 - (void)overlayNeedsRedisplay;
 - (id)primarySeries;
+- (BOOL)rangeIsVisible:(id)arg1;
 - (void)removeSeries;
 - (void)resetAndRedraw;
 - (struct CGRect)screenRectForSeries:(id)arg1;

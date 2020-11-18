@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACDAccountStoreFilter, NSMutableDictionary, NSNumber, NSString, NSXPCConnection;
+@class ACDAccountStoreFilter, NSMutableDictionary, NSNumber, NSSet, NSString, NSXPCConnection;
 
 @interface ACDClient : NSObject
 {
@@ -19,6 +19,7 @@
     NSString *_name;
     NSMutableDictionary *_entitlementChecks;
     ACDAccountStoreFilter *_filter;
+    NSSet *_monitoredAccountTypes;
 }
 
 @property (readonly, nonatomic) NSString *adamOrDisplayID;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) ACDAccountStoreFilter *filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) NSString *localizedAppName;
+@property (strong, nonatomic) NSSet *monitoredAccountTypes; // @synthesize monitoredAccountTypes=_monitoredAccountTypes;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSNumber *pid;
 
@@ -35,6 +37,7 @@
 + (id)_bundleIDForPID:(int)arg1;
 + (id)clientWithBundleID:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_allowSimulatorExceptions;
 - (id)_displayNameFromBundleInfoDictionaryForPID:(int)arg1;
 - (id)_displayNameFromLaunchServicesForPID:(int)arg1;
 - (id)_rawValueForEntitlement:(id)arg1;

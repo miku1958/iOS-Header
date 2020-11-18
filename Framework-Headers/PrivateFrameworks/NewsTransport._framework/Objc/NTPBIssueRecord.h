@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBIssueRecord : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     NSMutableArray *_blockedStorefrontIDs;
     NSMutableArray *_bundleFeaturedArticleIDs;
     NSString *_channelTagID;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *_conversionStats;
     NSString *_coverArticleID;
     NSString *_coverImageURL;
     NSString *_coverPrimaryColor;
@@ -60,6 +61,7 @@
 @property (strong, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (strong, nonatomic) NSMutableArray *bundleFeaturedArticleIDs; // @synthesize bundleFeaturedArticleIDs=_bundleFeaturedArticleIDs;
 @property (strong, nonatomic) NSString *channelTagID; // @synthesize channelTagID=_channelTagID;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property (strong, nonatomic) NSString *coverArticleID; // @synthesize coverArticleID=_coverArticleID;
 @property (nonatomic) double coverAspectRatio; // @synthesize coverAspectRatio=_coverAspectRatio;
 @property (strong, nonatomic) NSString *coverImageURL; // @synthesize coverImageURL=_coverImageURL;
@@ -68,6 +70,7 @@
 @property (nonatomic) unsigned long long halfLifeMilliseconds; // @synthesize halfLifeMilliseconds=_halfLifeMilliseconds;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (readonly, nonatomic) BOOL hasChannelTagID;
+@property (readonly, nonatomic) BOOL hasConversionStats;
 @property (readonly, nonatomic) BOOL hasCoverArticleID;
 @property (nonatomic) BOOL hasCoverAspectRatio;
 @property (readonly, nonatomic) BOOL hasCoverImageURL;

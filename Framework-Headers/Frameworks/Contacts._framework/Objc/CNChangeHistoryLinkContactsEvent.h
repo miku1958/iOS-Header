@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CNContact *fromContact; // @synthesize fromContact=_fromContact;
 @property (readonly, nonatomic) CNContact *toContact; // @synthesize toContact=_toContact;
 
++ (unsigned long long)instanceSortOrder;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)acceptEventVisitor:(id)arg1;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

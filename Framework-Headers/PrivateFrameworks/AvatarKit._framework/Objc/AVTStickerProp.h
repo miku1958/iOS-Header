@@ -8,54 +8,64 @@
 
 #import <AvatarKit/NSCopying-Protocol.h>
 
-@class NSArray, SCNNode;
+@class MISSING_TYPE, NSArray, NSString, SCNNode;
 
 @interface AVTStickerProp : NSObject <NSCopying>
 {
     BOOL _orientToCamera;
     BOOL _renderLast;
     SCNNode *_node;
+    NSString *_originalName;
     NSArray *_palettesDescriptions;
     NSArray *_shaderModifiers;
     NSArray *_adjustments;
-    struct SCNVector3 _position;
-    struct SCNVector3 _rotation;
-    struct SCNVector3 _scale;
+    double _opacity;
     struct CGSize _size;
+    MISSING_TYPE *_position;
+    MISSING_TYPE *_scale;
+    MISSING_TYPE *_rotation;
 }
 
 @property (readonly, nonatomic) NSArray *adjustments; // @synthesize adjustments=_adjustments;
+@property (readonly, copy, nonatomic) NSString *displayName;
+@property (readonly, copy, nonatomic) NSString *identifier;
 @property (strong, nonatomic) SCNNode *node; // @synthesize node=_node;
+@property (readonly, nonatomic) NSString *nodeName;
+@property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (readonly, nonatomic) BOOL orientToCamera; // @synthesize orientToCamera=_orientToCamera;
+@property (copy, nonatomic) NSString *originalName; // @synthesize originalName=_originalName;
 @property (readonly, nonatomic) NSArray *palettesDescriptions; // @synthesize palettesDescriptions=_palettesDescriptions;
-@property (readonly, nonatomic) struct SCNVector3 position; // @synthesize position=_position;
+@property (nonatomic) MISSING_TYPE *position; // @synthesize position=_position;
 @property (readonly, nonatomic) BOOL renderLast; // @synthesize renderLast=_renderLast;
-@property (readonly, nonatomic) struct SCNVector3 rotation; // @synthesize rotation=_rotation;
-@property (readonly, nonatomic) struct SCNVector3 scale; // @synthesize scale=_scale;
+@property (nonatomic) MISSING_TYPE *rotation; // @synthesize rotation=_rotation;
+@property (nonatomic) MISSING_TYPE *scale; // @synthesize scale=_scale;
 @property (copy, nonatomic) NSArray *shaderModifiers; // @synthesize shaderModifiers=_shaderModifiers;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
 + (id)adjustmentFromDictionary:(id)arg1 presetCategory:(id)arg2;
 + (void)applyPalettesForAvatar:(id)arg1 toNode:(id)arg2 palettesDescriptions:(id)arg3;
-+ (id)cacheKeyForSize:(struct CGSize)arg1 position:(struct SCNVector3)arg2 rotation:(struct SCNVector3)arg3 scale:(struct SCNVector3)arg4 palettesDescriptions:(id)arg5 filePath:(id)arg6;
++ (BOOL)cacheEnabled;
++ (id)cacheKeyForSize:(struct CGSize)arg1 position:(id)arg2 rotation:(id)arg3 scale:palettesDescriptions:filePath: /* Error: Ran out of types for this method. */;
++ (float)getOpacityInDictionary:(id)arg1;
 + (BOOL)getOrientToCameraInDictionary:(id)arg1;
-+ (struct SCNVector3)getPositionInDictionary:(id)arg1;
++ (MISSING_TYPE *)getPositionInDictionary:(id)arg1;
 + (BOOL)getRenderLastInDictionary:(id)arg1;
-+ (struct SCNVector3)getRotationInDictionary:(id)arg1;
-+ (struct SCNVector3)getScaleInDictionary:(id)arg1;
++ (MISSING_TYPE *)getRotationInDictionary:(id)arg1;
++ (MISSING_TYPE *)getScaleInDictionary:(id)arg1;
 + (struct CGSize)getSizeInDictionary:(id)arg1;
 + (id)propFromDictionary:(id)arg1 assetsPath:(id)arg2;
++ (void)setCacheEnabled:(BOOL)arg1;
 + (id)stickerPropCache;
 - (void).cxx_destruct;
 - (void)applyCamera:(id)arg1 toNode:(id)arg2 distToHead:(double)arg3;
 - (void)buildNodeForAvatar:(id)arg1 withCamera:(id)arg2 forExport:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)cloneWithShaderModifiers:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithSize:(struct CGSize)arg1 scale:(struct SCNVector3)arg2 position:(struct SCNVector3)arg3 renderLast:(BOOL)arg4 orientToCamera:(BOOL)arg5 rotation:(struct SCNVector3)arg6 palettesDescriptions:(id)arg7 shaderModifiers:(id)arg8 adjustments:(id)arg9;
-- (id)nodeName;
+- (id)dictionaryWithTargetPath:(id)arg1;
+- (id)initWithSize:(struct CGSize)arg1 scale:(BOOL)arg2 position:(BOOL)arg3 renderLast:(id)arg4 orientToCamera:(id)arg5 rotation:(id)arg6 palettesDescriptions:shaderModifiers:adjustments: /* Error: Ran out of types for this method. */;
 - (void)stickerGenerationDidEnd;
 - (void)stickerGenerationWillBegin;
-- (void)updateNode:(id)arg1 withContentAtTime:(CDStruct_1b6d18a9)arg2;
+- (void)updateNode:(id)arg1 withContentAtTime:(CDStruct_198678f7)arg2;
 
 @end
 

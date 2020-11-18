@@ -8,7 +8,7 @@
 
 #import <BulletinBoard/BBAssertionDelegate-Protocol.h>
 
-@class BBGuaranteedOnceCache, BBObserverServerProxy, NSMapTable, NSMutableDictionary, NSString;
+@class BBObserverServerProxy, NSMapTable, NSMutableDictionary, NSString;
 @protocol BBObserverDelegate, OS_dispatch_queue;
 
 @interface BBObserver : NSObject <BBAssertionDelegate>
@@ -20,10 +20,6 @@
     NSMutableDictionary *_remainingFeedsByBulletinID;
     BBObserverServerProxy *_serverProxy;
     BOOL _isGateway;
-    NSMutableDictionary *_attachmentUUIDsForBulletinID;
-    BBGuaranteedOnceCache *_cachedDataForAttachmentUUID;
-    BBGuaranteedOnceCache *_cachedComposedImageForAttachmentUUID;
-    BBGuaranteedOnceCache *_cachedComposedImageSizeForAttachmentUUID;
     id<BBObserverDelegate> _delegate;
     unsigned long long _observerFeed;
     NSString *_gatewayName;
@@ -43,44 +39,24 @@
 + (void)initialize;
 + (id)observerWithQueue:(id)arg1 calloutQueue:(id)arg2 forGatewayName:(id)arg3;
 - (void).cxx_destruct;
-- (void)_getComposedImageIgnoringCacheForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)_getComposedImageSizeIgnoringCacheForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)_getDataIgnoringCacheForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_initWithQueue:(id)arg1 calloutQueue:(id)arg2 gatewayName:(id)arg3 gatewayPriority:(unsigned long long)arg4 isGateway:(BOOL)arg5;
-- (void)_prewarmSectionParametersAndAttachmentsForBulletin:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_queue_associateAttachment:(id)arg1 withBulletin:(id)arg2;
-- (id)_queue_cachedComposedImageForAttachment:(id)arg1;
-- (id)_queue_cachedComposedImageSizeForAttachment:(id)arg1;
-- (id)_queue_cachedDataForAttachment:(id)arg1;
-- (void)_queue_cleanupAttachmentCacheForBulletinID:(id)arg1;
-- (BOOL)_queue_hasCachedComposedImageForAttachment:(id)arg1;
-- (BOOL)_queue_hasCachedComposedImageSizeForAttachment:(id)arg1;
-- (BOOL)_queue_hasCachedDataForAttachment:(id)arg1;
 - (void)_queue_invalidate;
+- (void)_queue_noteBulletinsLoadedForSectionID:(id)arg1;
 - (void)_queue_registerBulletin:(id)arg1 withTransactionID:(unsigned long long)arg2;
 - (void)_queue_serverProxy:(id)arg1 connectionStateDidChange:(BOOL)arg2;
-- (void)_queue_setCachedComposedImage:(id)arg1 forAttachment:(id)arg2 bulletin:(id)arg3;
-- (void)_queue_setCachedComposedImageSize:(id)arg1 forAttachment:(id)arg2 bulletin:(id)arg3;
-- (void)_queue_setCachedData:(id)arg1 forAttachment:(id)arg2 bulletin:(id)arg3;
 - (void)_queue_updateAddBulletin:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_queue_updateBulletin:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_queue_updateModifyBulletin:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_queue_updateRemoveBulletin:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)assertionExpired:(id)arg1 transactionID:(unsigned long long)arg2;
-- (id)cachedComposedImageForBulletin:(id)arg1 attachment:(id)arg2;
-- (struct CGSize)cachedComposedImageSizeForBulletin:(id)arg1 attachment:(id)arg2;
 - (void)clearBulletins:(id)arg1 inSection:(id)arg2;
 - (void)clearBulletinsFromDate:(id)arg1 toDate:(id)arg2 inSections:(id)arg3;
 - (void)clearSection:(id)arg1;
 - (void)dealloc;
-- (void)getAttachmentImageForBulletin:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getBulletinsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getComposedImageForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getComposedImageSizeForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)getDataForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getParametersForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)getPrimaryAttachmentDataForBulletin:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -94,6 +70,7 @@
 - (id)initWithQueue:(id)arg1 forGateway:(id)arg2;
 - (void)invalidate;
 - (BOOL)isValid;
+- (void)noteBulletinsLoadedForSectionID:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
 - (id)parametersForSectionID:(id)arg1;
 - (void)removeBulletins:(id)arg1 inSection:(id)arg2;

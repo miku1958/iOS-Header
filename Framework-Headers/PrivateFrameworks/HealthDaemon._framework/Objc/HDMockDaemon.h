@@ -32,10 +32,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)createXPCListenerWithMachServiceName:(id)arg1;
 - (id)daemonExtensionWithIdentifier:(id)arg1;
 - (id)daemonExtensionsConformingToProtocol:(id)arg1;
 - (id)init;
+- (void)registerDaemonActivatedObserver:(id)arg1 queue:(id)arg2;
 - (void)registerDaemonReadyObserver:(id)arg1 queue:(id)arg2;
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;

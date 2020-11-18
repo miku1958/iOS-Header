@@ -22,5 +22,6 @@
 - (void)dayViewDidCompleteAsyncLoadAndLayout:(EKDayView *)arg1;
 - (void)dayViewDidFinishScrollingToOccurrence:(EKDayView *)arg1;
 - (void)dayViewDidTapEmptySpace:(EKDayView *)arg1;
+- (BOOL)dayViewShouldDrawSynchronously:(EKDayView *)arg1;
 @end
 

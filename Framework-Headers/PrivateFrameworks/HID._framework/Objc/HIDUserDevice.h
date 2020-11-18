@@ -12,6 +12,7 @@
     CDUnknownBlockType _getReportHandler;
     CDUnknownBlockType _setReportHandler;
     unsigned int _service;
+    CDUnknownBlockType _cancelHandler;
 }
 
 @property (readonly) unsigned int service;

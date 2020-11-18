@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface VUIUpNextBannerViewController : UIViewController <__TVShelfViewControllerDelegate, TVMediaProviding, TVAppTemplateImpressionable>
 {
+    BOOL _firstViewAppearance;
     unsigned long long _host;
     IKViewElement *_viewElement;
     _TVShelfViewController *_shelfViewController;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isFirstViewAppearance) BOOL firstViewAppearance; // @synthesize firstViewAppearance=_firstViewAppearance;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long host; // @synthesize host=_host;
 @property (strong, nonatomic) TVObservableEventController *observableEventController; // @synthesize observableEventController=_observableEventController;
@@ -51,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)shelfViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)shelfViewController:(id)arg1 didSettleOnItemAtIndexPath:(id)arg2;
 - (void)updateWithElement:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

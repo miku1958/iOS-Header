@@ -29,6 +29,7 @@
 @property (nonatomic) BOOL highColorCarplayEnabled;
 @property (nonatomic) BOOL immediateAlarmCreation;
 @property (nonatomic) BOOL largeListViewDisclosingEventDetails;
+@property (strong, nonatomic) NSNumber *lastSidebarMode;
 @property (strong, nonatomic) NSNumber *lastSuspendTime;
 @property (strong, nonatomic) NSNumber *lastViewMode;
 @property (strong, nonatomic) NSNumber *lastViewedDate;
@@ -48,12 +49,6 @@
 @property (strong, nonatomic) NSDate *simulatedCurrentDate;
 @property (strong, nonatomic) NSString *sourceIdentifierForSelectedIdentity;
 @property (nonatomic) BOOL swipeToDeleteEnabled;
-@property (strong, nonatomic) NSString *upNextColor;
-@property (nonatomic) double upNextDuration;
-@property (strong, nonatomic) NSString *upNextLocation;
-@property (nonatomic) BOOL upNextSimpleModeEnabled;
-@property (strong, nonatomic) NSDate *upNextStartTime;
-@property (strong, nonatomic) NSString *upNextTitle;
 @property (nonatomic) BOOL viewedTimeZoneAutomatic;
 @property (strong, nonatomic) NSNumber *weekStart;
 @property (strong, nonatomic) NSNumber *weekViewHourScale;

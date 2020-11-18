@@ -6,26 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class CalendarModel, NSDate, NSSet;
+@class CalendarModel, NSArray, NSDate;
 @protocol EKUIAccountRefresherDelegate;
 
 @interface EKUIAccountRefresher : NSObject
 {
     CalendarModel *_model;
-    BOOL _sourcesCurrentlySyncing;
+    BOOL _currentlySyncing;
     NSDate *_refreshStartDate;
+    NSArray *_refreshingSources;
+    NSArray *_refreshingCalendars;
     BOOL _refreshing;
     id<EKUIAccountRefresherDelegate> _delegate;
-    NSSet *_refreshingSources;
 }
 
 @property (readonly, nonatomic) BOOL allAccountsOffline;
 @property (weak, nonatomic) id<EKUIAccountRefresherDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL refreshing; // @synthesize refreshing=_refreshing;
-@property (readonly, nonatomic) NSSet *refreshingSources; // @synthesize refreshingSources=_refreshingSources;
 
 - (void).cxx_destruct;
+- (BOOL)_allCalendarsRefreshed;
 - (BOOL)_allSourcesRefreshed;
+- (BOOL)_areAnyCalendarsCurrentlySyncing;
 - (BOOL)_areAnySourcesCurrentlySyncing;
 - (void)_beginMaximumTimeElapsedTimeout;
 - (void)_beginSyncStartTimeout;
@@ -37,6 +39,7 @@
 - (void)_syncDidEnd;
 - (void)_syncDidStart;
 - (void)_syncStartTimeoutExpired;
+- (BOOL)calendarFinishedRefreshing:(id)arg1;
 - (id)initWithCalendarModel:(id)arg1;
 - (void)refresh;
 - (BOOL)sourceFinishedRefreshing:(id)arg1;

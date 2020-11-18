@@ -15,10 +15,12 @@
 @interface CPSManeuversCardView : UIView <CPSNavigationDisplaying, CPSCardPlatterProviding, BSInvalidatable>
 {
     BOOL _usesCustomBackgroundColor;
+    BOOL _showSecondaryManeuverView;
     CPSCardPlatterView *_cardPlatterView;
     NSArray *_maneuvers;
     CPSPrimaryManeuverView *_primaryManeuverView;
     CPSSecondaryManeuverView *_secondaryManeuverView;
+    NSArray *_secondaryHeightConstraints;
     NSLayoutConstraint *_platterBottomConstraint;
     CPSHairlineView *_hairlineView;
 }
@@ -31,7 +33,9 @@
 @property (strong, nonatomic) NSArray *maneuvers; // @synthesize maneuvers=_maneuvers;
 @property (strong, nonatomic) NSLayoutConstraint *platterBottomConstraint; // @synthesize platterBottomConstraint=_platterBottomConstraint;
 @property (strong, nonatomic) CPSPrimaryManeuverView *primaryManeuverView; // @synthesize primaryManeuverView=_primaryManeuverView;
+@property (strong, nonatomic) NSArray *secondaryHeightConstraints; // @synthesize secondaryHeightConstraints=_secondaryHeightConstraints;
 @property (strong, nonatomic) CPSSecondaryManeuverView *secondaryManeuverView; // @synthesize secondaryManeuverView=_secondaryManeuverView;
+@property (nonatomic) BOOL showSecondaryManeuverView; // @synthesize showSecondaryManeuverView=_showSecondaryManeuverView;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesCustomBackgroundColor; // @synthesize usesCustomBackgroundColor=_usesCustomBackgroundColor;
 

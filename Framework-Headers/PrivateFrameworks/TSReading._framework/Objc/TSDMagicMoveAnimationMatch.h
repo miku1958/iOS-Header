@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, TSDTextureSet;
+@class NSDictionary, NSLock, TSDTextureSet;
 
 @interface TSDMagicMoveAnimationMatch : NSObject
 {
@@ -20,23 +20,30 @@
     BOOL _isMorphMatch;
     BOOL _isTextStyleIdenticalExceptSize;
     BOOL _shouldDisableTextMorphing;
+    BOOL _shouldTearDownTextures;
     TSDTextureSet *_outgoingTexture;
     TSDTextureSet *_incomingTexture;
+    long long _matchType;
+    NSDictionary *_outgoingTextureActionBuildFinalAttributes;
 }
 
 @property (strong, nonatomic) TSDTextureSet *incomingTexture; // @synthesize incomingTexture=_incomingTexture;
 @property (readonly, nonatomic) BOOL isMatched;
 @property (nonatomic) BOOL isMorphMatch; // @synthesize isMorphMatch=_isMorphMatch;
 @property (nonatomic) BOOL isTextStyleIdenticalExceptSize; // @synthesize isTextStyleIdenticalExceptSize=_isTextStyleIdenticalExceptSize;
+@property (nonatomic) long long matchType; // @synthesize matchType=_matchType;
 @property (strong, nonatomic) TSDTextureSet *outgoingTexture; // @synthesize outgoingTexture=_outgoingTexture;
+@property (strong, nonatomic) NSDictionary *outgoingTextureActionBuildFinalAttributes; // @synthesize outgoingTextureActionBuildFinalAttributes=_outgoingTextureActionBuildFinalAttributes;
 @property (nonatomic) BOOL shouldDisableTextMorphing; // @synthesize shouldDisableTextMorphing=_shouldDisableTextMorphing;
+@property (nonatomic) BOOL shouldTearDownTextures; // @synthesize shouldTearDownTextures=_shouldTearDownTextures;
 
-+ (id)animationMatch;
 + (unsigned long long)magicMoveMorphTexturesPerSecond;
 - (void)addMorphTexture:(id)arg1;
+- (void)clearMorphTexture;
 - (void)dealloc;
 - (id)description;
 - (id)init;
+- (id)initWithMatchType:(long long)arg1 outgoingTexture:(id)arg2 incomingTexture:(id)arg3;
 - (id)lockCurrentMorphTexture;
 - (void)teardown;
 - (void)unlockCurrentMorphTexture;

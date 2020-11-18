@@ -45,7 +45,7 @@
 - (void)_allowedByScreenTimeChanged:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (BOOL)_deviceIsPasscodeLocked;
-- (void)_dismissFullScreenBubbleViewControllerWithSendAnimation:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_dismissFullScreenBubbleViewControllerAnimated:(BOOL)arg1 withSendAnimation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_fullScreenBalloonViewControllerWithChatItem:(id)arg1 showActionMenu:(BOOL)arg2;
 - (double)_maxEntryViewHeight;
 - (id)_menuTitleForChatItem:(id)arg1;
@@ -117,7 +117,9 @@
 - (void)updateRaiseGesture;
 - (void)updateTyping;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (BOOL)wantsReplyButton;
 - (BOOL)wantsWindowedPresentation;
 
 @end

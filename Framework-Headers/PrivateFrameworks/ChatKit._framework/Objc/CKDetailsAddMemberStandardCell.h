@@ -6,13 +6,22 @@
 
 #import <ChatKit/CKDetailsAddMemberCell.h>
 
+@class UIImageView;
+
 __attribute__((visibility("hidden")))
 @interface CKDetailsAddMemberStandardCell : CKDetailsAddMemberCell
 {
+    UIImageView *_addIcon;
 }
 
+@property (strong, nonatomic) UIImageView *addIcon; // @synthesize addIcon=_addIcon;
+
 + (double)preferredHeight;
+- (void).cxx_destruct;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)setEnabled:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

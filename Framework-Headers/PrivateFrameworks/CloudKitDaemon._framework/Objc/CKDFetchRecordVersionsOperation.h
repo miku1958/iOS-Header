@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class CKDDecryptRecordsOperation, NSArray, NSObject, NSString;
-@protocol OS_dispatch_group;
+@protocol CKFetchRecordVersionsOperationCallbacks, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordVersionsOperation : CKDDatabaseOperation
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_group> *_fetchVersionsGroup;
 }
 
+@property (strong, nonatomic) id<CKFetchRecordVersionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *fetchVersionsGroup; // @synthesize fetchVersionsGroup=_fetchVersionsGroup;
 @property (nonatomic) BOOL isDeleted; // @synthesize isDeleted=_isDeleted;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasDecryptOperation;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

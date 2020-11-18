@@ -16,6 +16,7 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSString *assetVersion;
+@property (copy, nonatomic) NSString *classifiedUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,6 +26,7 @@
 @property (copy, nonatomic) NSNumber *scoringSchemeVersion;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *thresholdType;
+@property (copy, nonatomic) NSString *userIdentityClassification;
 
 + (id)confidenceScores;
 + (id)confidenceScoresWithDictionary:(id)arg1 context:(id)arg2;

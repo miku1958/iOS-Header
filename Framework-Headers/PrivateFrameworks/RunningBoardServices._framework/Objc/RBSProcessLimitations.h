@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessLimitations : NSObject <BSXPCSecureCoding>
+@interface RBSProcessLimitations : NSObject <RBSXPCSecureCoding>
 {
     double _runTime;
 }
@@ -21,14 +21,10 @@
 @property (nonatomic) double runTime; // @synthesize runTime=_runTime;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsBSXPCSecureCoding;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
++ (BOOL)supportsRBSXPCSecureCoding;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
+- (id)initWithRBSXPCCoder:(id)arg1;
 
 @end
 

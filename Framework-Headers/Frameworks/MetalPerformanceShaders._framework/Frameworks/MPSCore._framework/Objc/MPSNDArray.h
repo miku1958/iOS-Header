@@ -24,6 +24,7 @@
     unsigned long long _offset;
     unsigned long long _rowBytes;
     struct MPSLibrary *_library;
+    BOOL _isTemporary;
 }
 
 @property (readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
@@ -34,18 +35,23 @@
 @property (readonly, strong, nonatomic) MPSNDArray *parent; // @synthesize parent=_parent;
 
 + (id)defaultAllocator;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)arrayViewWithCommandBuffer:(id)arg1 computeEncoder:(id)arg2 descriptor:(id)arg3 destinationArray:(id)arg4 aliasing:(unsigned long long)arg5;
 - (id)arrayViewWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
+- (void)arrayViewWithCommandBuffer:(id)arg1 descriptor:(id)arg2 destinationArray:(id)arg3 aliasing:(unsigned long long)arg4;
 - (id)buffer;
+- (id)checkNDArray:(float *)arg1 nativeUlps:(float)arg2 absoluteErr:(float)arg3;
 - (void)copyDataWithCommandBuffer:(id)arg1 images:(id)arg2 offset:(struct MPSImageCoordinate)arg3 imageToArray:(BOOL)arg4;
 - (id)dataWithCommandBuffer:(id)arg1;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)descriptor;
-- (void)encodeCopyWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 destinationOffsetBytes:(unsigned long long)arg4 destinationStrideBytes:(long long *)arg5;
+- (void)encodeCopyWithCommandBuffer:(id)arg1 computeEncoder:(id)arg2 toBuffer:(id)arg3 destinationDataType:(unsigned int)arg4 destinationOffsetBytes:(unsigned long long)arg5 destinationStrideBytes:(long long *)arg6;
 - (void)encodeReshapedBatchWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 destinationOffsetBytes:(unsigned long long)arg4 destinationRowBytes:(unsigned long long)arg5 destinationColumns:(unsigned long long)arg6 destinationRows:(unsigned long long)arg7;
-- (void)encodeReshapedMatrixWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 destinationOffsetBytes:(unsigned long long)arg4 destinationRowBytes:(unsigned long long)arg5 destinationColumns:(unsigned long long)arg6 destinationRows:(unsigned long long)arg7;
+- (void)encodeReshapedMatrixWithCommandBuffer:(id)arg1 computeEncoder:(id)arg2 toBuffer:(id)arg3 destinationDataType:(unsigned int)arg4 destinationOffsetBytes:(unsigned long long)arg5 destinationRowBytes:(unsigned long long)arg6 destinationColumns:(unsigned long long)arg7 destinationRows:(unsigned long long)arg8;
+- (void)exportDataWithCommandBuffer:(id)arg1 computeEncoder:(id)arg2 toBuffer:(id)arg3 destinationDataType:(unsigned int)arg4 offset:(unsigned long long)arg5 rowStrides:(long long *)arg6 lengths:(unsigned long long *)arg7 numLengths:(unsigned long long)arg8 flatteningLevel:(unsigned long long)arg9;
 - (void)exportDataWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 offset:(unsigned long long)arg4 rowStrides:(long long *)arg5;
 - (void)exportDataWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 offset:(unsigned long long)arg4 rowStrides:(long long *)arg5 lengths:(unsigned long long *)arg6 numLengths:(unsigned long long)arg7 flatteningLevel:(unsigned long long)arg8;
 - (void)exportDataWithCommandBuffer:(id)arg1 toImages:(id)arg2 offset:(struct MPSImageCoordinate)arg3;
@@ -59,11 +65,15 @@
 - (unsigned long long)lengthOfDimension:(unsigned long long)arg1;
 - (MISSING_TYPE *)makeStrideBytes;
 - (void)makeStrideBytesInArray:(long long *)arg1;
+- (MISSING_TYPE *)makeStrideElements;
 - (id)matrixWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
 - (unsigned long long)offset;
 - (void)printNDArray;
+- (void)printNDArrayToFile:(struct __sFILE *)arg1;
 - (void)readBytes:(void *)arg1 strideBytes:(long long *)arg2;
 - (unsigned long long)resourceSize;
+- (id)safeArrayViewWithCommandBuffer:(id)arg1 computeEncoder:(id)arg2 descriptor:(id)arg3 aliasing:(unsigned long long)arg4;
+- (id)safeArrayViewWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
 - (void)synchronizeOnCommandBuffer:(id)arg1;
 - (void)writeBytes:(void *)arg1 strideBytes:(long long *)arg2;
 

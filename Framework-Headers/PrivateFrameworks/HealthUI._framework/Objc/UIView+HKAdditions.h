@@ -26,6 +26,8 @@
 - (void)hk_alignVerticalConstraintsWithGuide:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
 - (void)hk_alignVerticalConstraintsWithView:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
 - (void)hk_alignVerticalConstraintsWithView:(id)arg1 margin:(double)arg2;
+- (void)hk_constrainToSuperviewAlongEdges:(id)arg1 constant:(double)arg2;
+- (void)hk_constrainToView:(id)arg1 fromEdge:(long long)arg2 toEdge:(long long)arg3 constant:(double)arg4;
 - (void)hk_constraintAspectRatioFromSize:(struct CGSize)arg1;
 - (BOOL)hk_isLeftToRight;
 - (double)hk_layoutHeightFittingWidth:(double)arg1;

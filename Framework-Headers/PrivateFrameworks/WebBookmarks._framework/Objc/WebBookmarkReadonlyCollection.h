@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_collection;
 - (id)bookmarkWithID:(int)arg1;
 - (id)bookmarksMatchingString:(id)arg1;
 - (id)databaseHealthInformation;

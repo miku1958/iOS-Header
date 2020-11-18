@@ -29,8 +29,10 @@
 + (BOOL)_isSecureForRemoteViewService;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (void)_cancelPayment;
 - (void)_dismiss;
 - (void)_invalidate;
+- (void)_presentEnrollAccessibilityIntentAlert;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;

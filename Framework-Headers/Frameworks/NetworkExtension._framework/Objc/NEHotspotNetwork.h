@@ -15,19 +15,20 @@
 
 @property (readonly) NSString *BSSID;
 @property (readonly) NSString *SSID;
-@property (readonly, getter=didAutoJoin) BOOL autoJoined;
-@property (readonly, getter=isChosenHelper) BOOL chosenHelper;
 @property (readonly) NSString *interfaceName;
-@property (readonly, getter=didJustJoin) BOOL justJoined;
 @property struct __CNNetwork *network; // @synthesize network=_network;
-@property (readonly, getter=isSecure) BOOL secure;
-@property (readonly) double signalStrength;
 
++ (void)fetchCurrentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;
+- (BOOL)didAutoJoin;
+- (BOOL)didJustJoin;
 - (id)initWithNetwork:(struct __CNNetwork *)arg1;
+- (BOOL)isChosenHelper;
+- (BOOL)isSecure;
 - (void)setConfidence:(long long)arg1;
 - (void)setPassword:(id)arg1;
+- (double)signalStrength;
 
 @end
 

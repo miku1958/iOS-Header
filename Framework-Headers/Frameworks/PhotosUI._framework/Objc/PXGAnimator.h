@@ -21,13 +21,17 @@
     BOOL _animating;
     double _speed;
     long long _computeCount;
+    long long _preferredFramesPerSecond;
 }
 
 @property (nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (readonly, nonatomic) long long computeCount; // @synthesize computeCount=_computeCount;
+@property (readonly, nonatomic) BOOL hasCriticalAnimations;
+@property (nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
 @property (nonatomic) double speed; // @synthesize speed=_speed;
 
 - (void).cxx_destruct;
+- (id)_animationByAnimationIndexForAnimations:(id)arg1;
 - (void)_stopAllAnimations;
 - (void)computeAnimationStateForTime:(double)arg1 inputSpriteDataStore:(id)arg2 inputChangeDetails:(id)arg3 inputLayout:(id)arg4 viewportShift:(struct CGPoint)arg5 animationPresentationSpriteDataStore:(id)arg6 animationTargetSpriteDataStore:(id)arg7 animationChangeDetails:(out id *)arg8 animationLayout:(out id *)arg9;
 - (void)dealloc;

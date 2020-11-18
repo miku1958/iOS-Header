@@ -24,7 +24,9 @@
 - (void)scrollViewControllerDidStopScrolling:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDismissFullscreen:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerRequestsFullscreen:(SXScrollViewController *)arg1;
+- (void)scrollViewControllerWillDismissFullscreen:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerWillLayoutContent:(SXScrollViewController *)arg1;
 - (double)toolBarHeightForScrollViewController:(SXScrollViewController *)arg1;
+- (void)willReturnToFullscreen:(SXScrollViewController *)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <WorkflowKit/WFBaseRemoteQuarantineRequest.h>
 
-@class NSDictionary, WFWorkflow;
+@class NSDictionary, NSString, WFWorkflow;
 
 @interface WFWorkflowRemoteQuarantineRequest : WFBaseRemoteQuarantineRequest
 {
@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property (copy, nonatomic) NSDictionary *workflowJavaScriptCoreRepresentation; // @synthesize workflowJavaScriptCoreRepresentation=_workflowJavaScriptCoreRepresentation;
+@property (readonly, nonatomic) NSString *workflowName;
 
 + (id)JSONKeyPathsByPropertyKey;
 - (void).cxx_destruct;

@@ -16,10 +16,12 @@
     BOOL _shouldBypassCDNForCKAssetURLs;
     NSString *_containerIdentifier;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
+    double _maximumRetryAfterForCK;
 }
 
 @property (readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property (readonly, nonatomic) BOOL isProductionEnvironment; // @synthesize isProductionEnvironment=_isProductionEnvironment;
+@property (nonatomic) double maximumRetryAfterForCK; // @synthesize maximumRetryAfterForCK=_maximumRetryAfterForCK;
 @property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (nonatomic) BOOL shouldBypassCDNForCKAssetURLs; // @synthesize shouldBypassCDNForCKAssetURLs=_shouldBypassCDNForCKAssetURLs;
 @property (readonly, nonatomic) BOOL shouldUseCloudd; // @synthesize shouldUseCloudd=_shouldUseCloudd;

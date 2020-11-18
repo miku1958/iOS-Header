@@ -41,17 +41,7 @@
         unsigned int read_name:1;
         unsigned int read_resources:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_regions:1;
-        unsigned int wrote_badgeChecksum:1;
-        unsigned int wrote_badge:1;
-        unsigned int wrote_logoChecksum:1;
-        unsigned int wrote_logo:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_resources:1;
-        unsigned int wrote_url:1;
-        unsigned int wrote_dataSet:1;
-        unsigned int wrote_linkDisplayStringIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -79,16 +69,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)resourceType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsRegion:(struct GEOTileSetRegion)arg1;
-- (void)_addNoFlagsResource:(id)arg1;
-- (void)_readBadge;
-- (void)_readBadgeChecksum;
-- (void)_readLogo;
-- (void)_readLogoChecksum;
-- (void)_readName;
-- (void)_readRegions;
-- (void)_readResources;
-- (void)_readUrl;
 - (void)addRegion:(struct GEOTileSetRegion)arg1;
 - (void)addResource:(id)arg1;
 - (void)clearRegions;
@@ -102,7 +82,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

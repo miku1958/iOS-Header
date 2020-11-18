@@ -9,6 +9,7 @@
 @class NSMutableArray;
 @protocol MPMediaLibraryDataProviderPrivate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaEntityCache : NSObject
 {
     id<MPMediaLibraryDataProviderPrivate> _mediaLibraryDataProvider;

@@ -14,6 +14,7 @@
 
 @optional
 - (void)handleActivationAssertionStatusChangeForAlert:(TLAlert *)arg1 updatedStatus:(BOOL)arg2;
+- (void)preheatForAlert:(TLAlert *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)updateAudioVolumeDynamicallyForAlert:(TLAlert *)arg1 toValue:(float)arg2;
 @end
 

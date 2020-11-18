@@ -24,7 +24,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (double)defaultCentimeterValue;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_hidePicker;

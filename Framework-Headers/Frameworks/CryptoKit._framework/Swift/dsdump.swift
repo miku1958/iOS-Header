@@ -54,6 +54,16 @@
 	// class base protocol
 	// class init
  }
+ protocol CryptoKit.ASN1IntegerRepresentable // 7 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class associated conformance access function
+	// class associated type access function
+	// class getter
+	// class init
+	// method
+ }
  protocol CryptoKit.AEADSealedBox // 6 requirements
  {
 	// class associated conformance access function
@@ -80,6 +90,14 @@
 	// class associated type access function
 	// class init
 	// method
+	// method
+ }
+ protocol CryptoKit.ASN1Parseable // 1 requirements
+ {
+	// class init
+ }
+ protocol CryptoKit.ASN1Serializable // 1 requirements
+ {
 	// method
  }
  protocol CryptoKit.PRF // 3 requirements
@@ -184,11 +202,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var chacha20_ctx : ccchacha20_ctx
 	var poly1305_ctx : ccpoly1305_ctx
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var aad_nbytes : EW
+	var aad_nbytes : m
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var text_nbytes : EW
+	var text_nbytes : m
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var state : 'W
+	var state : ål
  }
 
  struct __C.ccmode_gcm {
@@ -196,20 +214,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var size : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var encdec : —W
+	var encdec : Mm
 	var block_size : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var init : ‘W
+	var init : Gm
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var set_iv : iW
+	var set_iv : m
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gmac : iW
+	var gmac : m
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gcm : KW
+	var gcm : m
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var finalize : )W
+	var finalize : ßl
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var reset : W
+	var reset : Ál
 	var custom : UnsafeRawPointer?
  }
 
@@ -217,34 +235,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var b : ýW
+	var b : »m
  }
 
  struct __C.ccec_pub_ctx {
 
 	// Properties
-	var cp : ccec_cp
+	var cp : ccec_cp // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pad : }V
+	var pad : ;l // +0x0
  }
 
  struct __C.ccec_full_ctx {
 
 	// Properties
-	var cp : ccec_cp
+	var cp : ccec_cp // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pad : }V
+	var pad : ;l // +0x0
  }
 
  class __C.CFString {
- struct __C._ConditionalAllocationBuffer {
-
-	// Properties
-	var memory : UnsafeMutableRawPointer // +0x0
-	var capacity : Int // +0x0
-	var onStack : Bool // +0x0
- }
-
  struct __C.__Unnamed_union_state { }
 
  struct __C.ccdigest_state {
@@ -257,47 +267,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var r0 : ±V
+	var r0 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var r1 : ±V
+	var r1 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var r2 : ±V
+	var r2 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var r3 : ±V
+	var r3 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var r4 : ±V
+	var r4 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var s1 : ±V
+	var s1 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var s2 : ±V
+	var s2 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var s3 : ±V
+	var s3 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var s4 : ±V
+	var s4 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var h0 : ±V
+	var h0 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var h1 : ±V
+	var h1 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var h2 : ±V
+	var h2 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var h3 : ±V
+	var h3 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var h4 : ±V
+	var h4 : l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buf : ýW
+	var buf : »m
 	var buf_used : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var key : ýW
+	var key : »m
  }
 
  struct __C.ccchacha20_ctx {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var state : ÉV
+	var state : —l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buffer : ­V
+	var buffer : kl
 	var leftover : Int
  }
 
@@ -306,9 +316,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var n : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var options : EW
+	var bitlen : m
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var funcs : gU
+	var funcs : ëj
  }
 
  struct __C.__Unnamed_union_state { }
@@ -316,19 +326,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var ctx : ccgcm_ctx // +0x10 (0x8)
-	let mode : ccmode_gcm // +0x18 (0x8)
+	var ctx : ccgcm_ctx
+	let mode : ccmode_gcm
 
 	// Swift methods
-	0x2ba0  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
-	0x2fe0  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
-	0x3590  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
+	0x2310  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
+	0x2460  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
+	0x2700  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
  }
 
  struct CryptoKit.CoreCryptoGCMImpl {
 
 	// Properties
 	var context : Context // +0x0
+ }
+
+ enum CryptoKit.RFC5480AlgorithmIdentifier {
+
+	// Properties
+	case ecdsaP256  
+	case ecdsaP384  
+	case ecdsaP521  
  }
 
  enum CryptoKit.Curve25519 { }
@@ -479,6 +497,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct CryptoKit.CurveDetails: CorecryptoSupportedNISTCurve { }
 
+ struct CryptoKit.ASN1BitString {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bytes : ûe // +0x0
+ }
+
  enum CryptoKit.P256 { }
 
  enum CryptoKit.P384 { }
@@ -489,35 +514,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : Q // +0x0
+	let bytes : »f // +0x0
  }
 
  struct CryptoKit.SHA384Digest {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : Q // +0x0
+	let bytes : ¯f // +0x0
  }
 
  struct CryptoKit.SHA512Digest {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : Q // +0x0
+	let bytes : £f // +0x0
  }
 
  struct CryptoKit.SHA1Digest {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : ùP // +0x0
+	let bytes : —f // +0x0
  }
 
  struct CryptoKit.MD5Digest {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : íP // +0x0
+	let bytes : ‹f // +0x0
+ }
+
+ struct CryptoKit.IntegerBytesCollection {
+
+	// Properties
+	var integer : A
+ }
+
+ struct CryptoKit.Index {
+
+	// Properties
+	var byteNumber : Int
  }
 
  enum CryptoKit.SecureEnclave { }
@@ -531,7 +568,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let publicKey : PublicKey // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataRepresentation : ¿N // +0x8
+	let dataRepresentation : uc // +0x8
 	let tokenObject : TKClientTokenObject // +0x18
  }
 
@@ -542,9 +579,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let publicKey : PublicKey // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataRepresentation : ¿N // +0x8
+	let dataRepresentation : uc // +0x8
 	let tokenObject : TKClientTokenObject // +0x18
  }
+
+ struct CryptoKit.HKDF { }
 
  struct CryptoKit._CMAC {
 
@@ -558,7 +597,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let underlyingData : ¿N // +0x0
+	let underlyingData : uc // +0x0
  }
 
  struct CryptoKit.SHA256 {
@@ -581,24 +620,79 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum CryptoKit.Insecure { }
 
+ enum CryptoKit.Content {
+
+	// Properties
+	case constructed : ASN1NodeCollection
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case primitive : ûe
+ }
+
+ struct CryptoKit.ASN1ParserNode {
+
+	// Properties
+	var identifier : ASN1Identifier // +0x0
+	var depth : Int // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataBytes : õ_ // +0x10
+ }
+
+ struct CryptoKit.ASN1ParseResult {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nodes : ×_ // +0x0
+ }
+
+ struct CryptoKit.Iterator {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nodes : ×_ // +0x0
+	var depth : Int // +0x20
+ }
+
+ struct CryptoKit.ASN1NodeCollection {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nodes : ×_ // +0x0
+	var depth : Int // +0x20
+ }
+
+ struct CryptoKit.ASN1Node {
+
+	// Properties
+	var identifier : ASN1Identifier // +0x0
+	var content : Content // +0x8
+ }
+
+ enum CryptoKit.ASN1 { }
+
+ struct CryptoKit.ASN1ObjectIdentifier {
+
+	// Properties
+	var oidComponents : [UInt] // +0x0
+ }
+
  enum CryptoKit.ChaChaPoly { }
 
  struct CryptoKit.SealedBox {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let combined : ¿N // +0x0
+	let combined : uc // +0x0
  }
 
  class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let ctx : ccchacha20poly1305_ctx // +0x10 (0x8)
+	let ctx : ccchacha20poly1305_ctx
 
 	// Swift methods
-	0x1bda0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
-	0x1c220  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
-	0x1c7a0  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
+	0x27fb0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
+	0x28130  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
+	0x283b0  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
  }
 
  struct CryptoKit.CoreCryptoChaChaPolyImpl {
@@ -611,17 +705,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : ¿N // +0x0
+	let bytes : uc // +0x0
  }
 
  struct CryptoKit.Nonce {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bytes : ¿N // +0x0
+	let bytes : uc // +0x0
  }
 
  enum CryptoKit.AES { }
+
+ struct CryptoKit.ASN1Identifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var baseTag : ål // +0x0
+ }
 
  struct CryptoKit.SymmetricKeySize {
 
@@ -641,7 +742,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let combinedRepresentation : ¿N // +0x0
+	let combinedRepresentation : uc // +0x0
 	let nonceByteCount : Int // +0x10
  }
 
@@ -649,21 +750,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawRepresentation : ¿N // +0x0
+	var rawRepresentation : uc // +0x0
  }
 
  struct CryptoKit.ECDSASignature: NISTECDSASignature {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawRepresentation : ¿N // +0x0
+	var rawRepresentation : uc // +0x0
  }
 
  struct CryptoKit.ECDSASignature: NISTECDSASignature {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawRepresentation : ¿N // +0x0
+	var rawRepresentation : uc // +0x0
  }
 
  struct CryptoKit.SharedSecret {
@@ -695,10 +796,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case underlyingCoreCryptoError : K
+	case underlyingCoreCryptoError : Q]
 	case incorrectKeySize  
 	case incorrectParameterSize  
 	case authenticationFailure  
+ }
+
+ enum CryptoKit.CryptoKitASN1Error {
+
+	// Properties
+	case invalidFieldIdentifier  
+	case unexpectedFieldType  
+	case invalidObjectIdentifier  
+	case invalidASN1Object  
+	case invalidASN1IntegerEncoding  
+	case truncatedASN1Field  
+	case unsupportedFieldLength  
+	case invalidPEMDocument  
+ }
+
+ struct CryptoKit.ASN1OctetString {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bytes : ûe // +0x0
  }
 
  enum CryptoKit.KeyAgreement { }

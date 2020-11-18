@@ -9,7 +9,7 @@
 #import <coreroutine/NSXPCListenerDelegate-Protocol.h>
 #import <coreroutine/RTClientListenerProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSXPCInterface, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMetricManager, RTPlaceInferenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
+@class NSMutableDictionary, NSString, NSXPCInterface, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTContactsManager, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMetricManager, RTPlaceInferenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
 
 @interface RTClientListener : RTXPCListener <RTClientListenerProtocol, NSXPCListenerDelegate>
 {
@@ -24,6 +24,7 @@
     RTEventModelProvider *_eventModelProvider;
     RTVisitManager *_visitManager;
     RTAssetManager *_assetManager;
+    RTHintManager *_hintManager;
     RTLocationStore *_locationStore;
     RTLocationManager *_locationManager;
     RTEventAgentManager *_eventAgentManager;
@@ -35,11 +36,13 @@
     RTFingerprintManager *_fingerprintManager;
     RTWiFiManager *_wifiManager;
     RTMapServiceManager *_mapServiceManager;
+    RTContactsManager *_contactsManager;
 }
 
 @property (strong, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property (strong, nonatomic) RTAssetManager *assetManager; // @synthesize assetManager=_assetManager;
 @property (strong, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
+@property (strong, nonatomic) RTContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
@@ -48,6 +51,7 @@
 @property (strong, nonatomic) RTEventModelProvider *eventModelProvider; // @synthesize eventModelProvider=_eventModelProvider;
 @property (strong, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
 @property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (strong, nonatomic) RTLocationStore *locationStore; // @synthesize locationStore=_locationStore;
@@ -70,7 +74,7 @@
 - (void)handleDisconnectionForDaemonClient:(id)arg1;
 - (id)handleRestorationForDaemonClient:(id)arg1;
 - (id)init;
-- (id)initWithAccountManager:(id)arg1 assetManager:(id)arg2 authorizationManager:(id)arg3 deviceLocationPredictor:(id)arg4 diagnostics:(id)arg5 eventAgentManager:(id)arg6 eventModelProvider:(id)arg7 fingerprintManager:(id)arg8 learnedLocationManager:(id)arg9 locationManager:(id)arg10 locationStore:(id)arg11 mapServiceManager:(id)arg12 metricManager:(id)arg13 placeInferenceManager:(id)arg14 purgeManager:(id)arg15 scenarioTriggerManager:(id)arg16 vehicleLocationProvider:(id)arg17 visitManager:(id)arg18 wifiManager:(id)arg19;
+- (id)initWithAccountManager:(id)arg1 assetManager:(id)arg2 authorizationManager:(id)arg3 contactsManager:(id)arg4 deviceLocationPredictor:(id)arg5 diagnostics:(id)arg6 eventAgentManager:(id)arg7 eventModelProvider:(id)arg8 fingerprintManager:(id)arg9 hintManager:(id)arg10 learnedLocationManager:(id)arg11 locationManager:(id)arg12 locationStore:(id)arg13 mapServiceManager:(id)arg14 metricManager:(id)arg15 placeInferenceManager:(id)arg16 purgeManager:(id)arg17 scenarioTriggerManager:(id)arg18 vehicleLocationProvider:(id)arg19 visitManager:(id)arg20 wifiManager:(id)arg21;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)saveDaemonClient:(id)arg1;
 

@@ -5,25 +5,28 @@
 //
 
 #import <VoiceMemos/NSFetchRequestResult-Protocol.h>
-#import <VoiceMemos/UIActivityItemSource-Protocol.h>
 
 @class AVAsset, CLLocation, NSDate, NSString, NSURL;
+@protocol RCFolder;
 
-@protocol RCRecording <NSFetchRequestResult, UIActivityItemSource>
+@protocol RCRecording <NSFetchRequestResult>
 
 @property (readonly, copy, nonatomic) NSURL *URIRepresentation;
 @property (readonly, nonatomic) AVAsset *avAsset;
 @property (readonly, copy, nonatomic) NSString *customLabel;
 @property (readonly, copy, nonatomic) NSDate *date;
+@property (readonly, nonatomic) BOOL deleted;
 @property (readonly, nonatomic) BOOL downloading;
 @property (readonly, nonatomic) double duration;
-@property (readonly, nonatomic) BOOL editing;
-@property (readonly, nonatomic) BOOL evicted;
+@property (readonly, nonatomic) BOOL enhanced;
 @property (readonly, copy, nonatomic) NSDate *evictionDate;
+@property (readonly, nonatomic) BOOL favorite;
+@property (readonly, nonatomic) id<RCFolder> folder;
 @property (readonly, nonatomic) long long iTunesPersistentID;
 @property (readonly, nonatomic) BOOL isContentBeingModified;
 @property (readonly, copy, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) BOOL manuallyRenamed;
+@property (readonly, nonatomic) BOOL musicMemo;
 @property (readonly, copy, nonatomic) NSString *path;
 @property (readonly, nonatomic) BOOL pendingRestore;
 @property (readonly, nonatomic) BOOL playable;
@@ -34,6 +37,11 @@
 @property (readonly, copy, nonatomic) NSString *uniqueID;
 @property (readonly, nonatomic) BOOL uploaded;
 @property (readonly, copy, nonatomic) NSURL *url;
+@property (readonly, nonatomic) BOOL watchOS;
 
+- (id)itemForActivityType:(NSString *)arg1;
+- (NSString *)subjectForActivityType:(NSString *)arg1;
+
+@optional
 @end
 

@@ -6,19 +6,20 @@
 
 #import <UIKitCore/UIEvent.h>
 
-@class NSMapTable;
+@class BKSHIDEventPointerAttributes, NSMapTable;
 
-__attribute__((visibility("hidden")))
 @interface UIScrollEvent : UIEvent
 {
     NSMapTable *_gestureRecognizersByWindow;
     struct CGPoint _sceneReferenceLocation;
     unsigned long long _lastDeliveredPhase;
     unsigned long long _lastReceivedPhase;
+    BKSHIDEventPointerAttributes *_pointerAttributes;
     unsigned long long _phase;
 }
 
 @property (readonly) struct CGVector acceleratedDelta;
+@property (readonly, nonatomic, getter=_beganScrollTimestamp) double beganScrollTimestamp;
 @property (readonly) BOOL directionInvertedFromDevice;
 @property (readonly, nonatomic, getter=_isHighResolution) BOOL highResolution;
 @property (readonly) struct CGVector nonAcceleratedDelta;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)_wasDeliveredToGestureRecognizers;
+- (id)_windowServerHitTestWindow;
 - (id)_windows;
 - (struct CGPoint)locationInView:(id)arg1;
 - (long long)subtype;

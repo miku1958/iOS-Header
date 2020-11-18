@@ -10,7 +10,7 @@
 #import <SpringBoard/SBTouchTemplateGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, NSString, SBFluidScrunchGestureRecognizer, SBHomeGesturePanGestureRecognizer, SBIndirectPanGestureRecognizer, UIGestureRecognizer;
+@class NSSet, NSString, SBFluidScrunchGestureRecognizer, SBHomeGesturePanGestureRecognizer, SBIndirectPanGestureRecognizer, SBSystemGestureManager, UIGestureRecognizer;
 @protocol SBHomeGestureInteractionDelegate;
 
 @interface SBHomeGestureInteraction : NSObject <UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBTouchTemplateGestureRecognizerDelegate>
@@ -21,15 +21,18 @@
     SBIndirectPanGestureRecognizer *_indirectPanGestureRecognizer;
     SBFluidScrunchGestureRecognizer *_scrunchGestureRecognizer;
     id<SBHomeGestureInteractionDelegate> _delegate;
+    SBSystemGestureManager *_gestureManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBHomeGestureInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (strong, nonatomic) SBSystemGestureManager *gestureManager; // @synthesize gestureManager=_gestureManager;
 @property (readonly, nonatomic) NSSet *gestureRecognizers;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectPanGestureRecognizer; // @synthesize indirectPanGestureRecognizer=_indirectPanGestureRecognizer;
+@property (readonly, nonatomic) double indirectScreenEdgeGestureRecognitionDistance;
 @property (readonly, nonatomic) UIGestureRecognizer *recognizedGestureRecognizer;
 @property (nonatomic) long long recognizedGestureType; // @synthesize recognizedGestureType=_recognizedGestureType;
 @property (strong, nonatomic) SBHomeGesturePanGestureRecognizer *screenEdgePanGestureRecognizer; // @synthesize screenEdgePanGestureRecognizer=_screenEdgePanGestureRecognizer;
@@ -51,6 +54,7 @@
 - (id)gestureRecognizerForType:(long long)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
+- (id)initWithSystemGestureManager:(id)arg1 delegate:(id)arg2;
 - (void)invalidate;
 - (struct CGPoint)locationInView:(id)arg1;
 - (struct CGPoint)translationInView:(id)arg1;

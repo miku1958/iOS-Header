@@ -24,6 +24,7 @@
 - (id)entitlementsForProcess:(id)arg1;
 - (BOOL)hasEntitlement:(id)arg1;
 - (BOOL)hasEntitlementDomain:(unsigned long long)arg1;
+- (void)purgeEntitlementsForProcess:(id)arg1;
 
 @end
 

@@ -21,20 +21,16 @@
 
 + (struct TSUCellCoord)coordFromIndex:(unsigned long long)arg1;
 + (unsigned long long)indexFromCoord:(const struct TSUCellCoord *)arg1;
-+ (struct TSUModelCellRect)rangeFromFormula:(const struct TSCEFormula *)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
-+ (struct TSUModelCellRect)rangeFromFormula:(const struct TSCEFormula *)arg1 atCoord:(const struct TSUModelCellCoord *)arg2 useBoundingRange:(BOOL)arg3;
 + (struct TSUModelCellRect)rangeFromFormulaObject:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
 + (struct TSUModelCellRect)rangeFromFormulaObject:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2 useBoundingRange:(BOOL)arg3;
 + (UUIDData_5fbc143e)tableUIDFromFormula:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)appendIndexedFormula:(struct TSCEFormula)arg1;
+- (unsigned long long)appendIndexedFormula:(id)arg1;
 - (void)clearFormulaAtIndex:(unsigned long long)arg1;
-- (struct TSCEFormula)createFormulaForRange:(struct TSUModelCellRect)arg1 atIndex:(unsigned long long)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
 - (id)createFormulaObjectForRange:(struct TSUModelCellRect)arg1 atIndex:(unsigned long long)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
 - (id)description;
 - (void)foreach:(CDUnknownBlockType)arg1;
-- (const struct TSCEFormula *)formulaAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formulaCount;
 - (id)formulaObjectAtIndex:(unsigned long long)arg1;
 - (id)initWithOwnerUID:(UUIDData_5fbc143e)arg1;
@@ -48,7 +44,6 @@
 - (unsigned long long)reserveNextIndex;
 - (void)rollbackToMark:(unsigned long long)arg1;
 - (void)saveToArchive:(struct FormulaStoreArchive *)arg1 archiver:(id)arg2;
-- (void)setFormula:(const struct TSCEFormula *)arg1 atIndex:(unsigned long long)arg2;
 - (void)setFormulaObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (UUIDData_5fbc143e)tableUIDFromFormulaAtIndex:(unsigned long long)arg1;
 

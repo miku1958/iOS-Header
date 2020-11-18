@@ -26,10 +26,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)hasVisitedMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)initWithMeCardReader:(id)arg1 routine:(id)arg2;
 - (BOOL)meCardForProminentPlacesAroundCoordinate:(struct CLLocationCoordinate2D)arg1 maxDistance:(double)arg2 maxAge:(double)arg3 minVisits:(long long)arg4 handler:(CDUnknownBlockType)arg5;
-- (id)meCardReader;
-- (id)routine;
 
 @end
 

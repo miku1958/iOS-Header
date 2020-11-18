@@ -8,15 +8,17 @@
 
 #import <ModelIO/MDLAssetResolver-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURL;
+@class NSData, NSMutableDictionary, NSString, NSURL;
 
 @interface MDLArchiveAssetResolver : NSObject <MDLAssetResolver>
 {
     NSURL *_archiveURL;
     NSMutableDictionary *_archiveDictionary;
     NSString *_rootUSDPath;
+    NSData *_data;
 }
 
+@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

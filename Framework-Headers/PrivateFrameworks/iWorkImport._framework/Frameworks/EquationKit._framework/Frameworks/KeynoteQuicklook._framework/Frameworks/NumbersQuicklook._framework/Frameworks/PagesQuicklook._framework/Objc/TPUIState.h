@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <PagesQuicklook/NSCopying-Protocol.h>
+#import <PagesQuicklook/TSAUIState-Protocol.h>
 
-@class NSDictionary, NSString, TSDFreehandDrawingToolkitUIState, TSKAnnotationAuthor, TSKSelectionPath;
+@class NSDictionary, NSString, TSDFreehandDrawingToolkitUIState, TSKAnnotationAuthor, TSKPencilAnnotationUIState, TSKSelectionPath;
 
-@interface TPUIState : NSObject <NSCopying>
+@interface TPUIState : NSObject <NSCopying, TSAUIState>
 {
     BOOL _masterDrawablesSelectable;
     BOOL _wordCountHUDVisible;
@@ -18,6 +19,7 @@
     struct CGPoint _wordCountHUDPosition;
     BOOL _shouldShowCommentSidebar;
     struct CGRect _windowFrame;
+    BOOL _editingDisabled;
     BOOL _rulersVisible;
     BOOL _layoutBordersVisible;
     BOOL _showsComments;
@@ -41,6 +43,7 @@
     NSString *_authorForFilteringName;
     TSKAnnotationAuthor *_authorForFiltering;
     TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
+    TSKPencilAnnotationUIState *_pencilAnnotationUIState;
     long long _viewScaleModeiOS;
     double _presentationAutoScrollSpeed;
     struct CGRect _visibleRect;
@@ -50,12 +53,17 @@
 @property (copy, nonatomic) NSString *authorForFilteringName; // @synthesize authorForFilteringName=_authorForFilteringName;
 @property (nonatomic) BOOL changeTrackingPaused; // @synthesize changeTrackingPaused=_changeTrackingPaused;
 @property (copy, nonatomic) NSDictionary *chartUIState; // @synthesize chartUIState=_chartUIState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL editingDisabled; // @synthesize editingDisabled=_editingDisabled;
 @property (strong, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState; // @synthesize freehandDrawingToolkitUIState=_freehandDrawingToolkitUIState;
 @property (readonly, nonatomic) BOOL hasShowsCTDeletions; // @synthesize hasShowsCTDeletions=_hasShowsCTDeletions;
 @property (readonly, nonatomic) BOOL hasShowsCTMarkup; // @synthesize hasShowsCTMarkup=_hasShowsCTMarkup;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inspectorHidden; // @synthesize inspectorHidden=_inspectorHidden;
 @property (nonatomic) BOOL layoutBordersVisible; // @synthesize layoutBordersVisible=_layoutBordersVisible;
 @property (nonatomic) long long pageViewState; // @synthesize pageViewState=_pageViewState;
+@property (strong, nonatomic) TSKPencilAnnotationUIState *pencilAnnotationUIState; // @synthesize pencilAnnotationUIState=_pencilAnnotationUIState;
 @property (nonatomic) BOOL pencilAnnotationsHidden; // @synthesize pencilAnnotationsHidden=_pencilAnnotationsHidden;
 @property (nonatomic) double presentationAutoScrollSpeed; // @synthesize presentationAutoScrollSpeed=_presentationAutoScrollSpeed;
 @property (nonatomic) BOOL rulersVisible; // @synthesize rulersVisible=_rulersVisible;
@@ -68,6 +76,7 @@
 @property (nonatomic) BOOL showsComments; // @synthesize showsComments=_showsComments;
 @property (nonatomic) BOOL showsPageNavigator; // @synthesize showsPageNavigator=_showsPageNavigator;
 @property (nonatomic) BOOL showsTOCNavigator; // @synthesize showsTOCNavigator=_showsTOCNavigator;
+@property (readonly) Class superclass;
 @property (nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 @property (nonatomic) long long viewScaleMode; // @synthesize viewScaleMode=_viewScaleMode;
 @property (nonatomic) long long viewScaleModeiOS; // @synthesize viewScaleModeiOS=_viewScaleModeiOS;
@@ -77,11 +86,11 @@
 - (id)UIStateForChart:(id)arg1;
 - (id)archivedUIStateInContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct UIStateArchive *)arg1 unarchiver:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToUIState:(id)arg1;
+- (void)resetForInitialViewing;
 - (void)saveToArchive:(struct UIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 

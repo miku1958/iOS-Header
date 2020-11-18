@@ -22,6 +22,7 @@
     NTKFaceView *_faceView;
     NTKFace *_face;
     NSDictionary *_selectedOptions;
+    NSDictionary *_selectedSlotOptions;
     id<NTKCFaceDetailEditOptionCellDelegate> _delegate;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_layout;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) UILabel *optionsDescription; // @synthesize optionsDescription=_optionsDescription;
 @property (strong, nonatomic) NSDictionary *selectedOptions; // @synthesize selectedOptions=_selectedOptions;
+@property (strong, nonatomic) NSDictionary *selectedSlotOptions; // @synthesize selectedSlotOptions=_selectedSlotOptions;
 @property (readonly) Class superclass;
 
 + (id)reuseIdentifier;

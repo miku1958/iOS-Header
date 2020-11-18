@@ -8,15 +8,20 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
+@class AWDNWAccumulator;
+
 @interface AWDNWDeviceReport : PBCodable <NSCopying>
 {
     unsigned int _batteryAbsoluteCapacity;
+    AWDNWAccumulator *_batteryAccumulator;
     unsigned int _batteryCurrentCapacity;
     unsigned int _batteryDesignCapacity;
     unsigned int _batteryMaximumCapacity;
     unsigned int _batteryPercentage;
     unsigned int _batteryTimeRemaining;
     unsigned int _batteryVoltage;
+    int _cellularMode;
+    int _motionState;
     int _thermalPressure;
     BOOL _batteryAtCriticalLevel;
     BOOL _batteryAtWarnLevel;
@@ -33,6 +38,8 @@
         unsigned int batteryPercentage:1;
         unsigned int batteryTimeRemaining:1;
         unsigned int batteryVoltage:1;
+        unsigned int cellularMode:1;
+        unsigned int motionState:1;
         unsigned int thermalPressure:1;
         unsigned int batteryAtCriticalLevel:1;
         unsigned int batteryAtWarnLevel:1;
@@ -45,6 +52,7 @@
 }
 
 @property (nonatomic) unsigned int batteryAbsoluteCapacity; // @synthesize batteryAbsoluteCapacity=_batteryAbsoluteCapacity;
+@property (strong, nonatomic) AWDNWAccumulator *batteryAccumulator; // @synthesize batteryAccumulator=_batteryAccumulator;
 @property (nonatomic) BOOL batteryAtCriticalLevel; // @synthesize batteryAtCriticalLevel=_batteryAtCriticalLevel;
 @property (nonatomic) BOOL batteryAtWarnLevel; // @synthesize batteryAtWarnLevel=_batteryAtWarnLevel;
 @property (nonatomic) unsigned int batteryCurrentCapacity; // @synthesize batteryCurrentCapacity=_batteryCurrentCapacity;
@@ -56,9 +64,11 @@
 @property (nonatomic) unsigned int batteryPercentage; // @synthesize batteryPercentage=_batteryPercentage;
 @property (nonatomic) unsigned int batteryTimeRemaining; // @synthesize batteryTimeRemaining=_batteryTimeRemaining;
 @property (nonatomic) unsigned int batteryVoltage; // @synthesize batteryVoltage=_batteryVoltage;
+@property (nonatomic) int cellularMode; // @synthesize cellularMode=_cellularMode;
 @property (nonatomic) BOOL devicePluggedIn; // @synthesize devicePluggedIn=_devicePluggedIn;
 @property (nonatomic) BOOL deviceScreenOn; // @synthesize deviceScreenOn=_deviceScreenOn;
 @property (nonatomic) BOOL hasBatteryAbsoluteCapacity;
+@property (readonly, nonatomic) BOOL hasBatteryAccumulator;
 @property (nonatomic) BOOL hasBatteryAtCriticalLevel;
 @property (nonatomic) BOOL hasBatteryAtWarnLevel;
 @property (nonatomic) BOOL hasBatteryCurrentCapacity;
@@ -70,19 +80,27 @@
 @property (nonatomic) BOOL hasBatteryPercentage;
 @property (nonatomic) BOOL hasBatteryTimeRemaining;
 @property (nonatomic) BOOL hasBatteryVoltage;
+@property (nonatomic) BOOL hasCellularMode;
 @property (nonatomic) BOOL hasDevicePluggedIn;
 @property (nonatomic) BOOL hasDeviceScreenOn;
+@property (nonatomic) BOOL hasMotionState;
 @property (nonatomic) BOOL hasThermalPressure;
+@property (nonatomic) int motionState; // @synthesize motionState=_motionState;
 @property (nonatomic) int thermalPressure; // @synthesize thermalPressure=_thermalPressure;
 
+- (int)StringAsCellularMode:(id)arg1;
+- (int)StringAsMotionState:(id)arg1;
 - (int)StringAsThermalPressure:(id)arg1;
+- (id)cellularModeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)motionStateAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)thermalPressureAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

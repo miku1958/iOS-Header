@@ -42,18 +42,18 @@
 - (void)_removeApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (BOOL)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)ensureTokenRefreshForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)forceTokenRefreshForAllClients;
 - (void)handlePublicPushTokenDidUpdate:(id)arg1;
 - (id)init;
 - (id)initWithAccountInfoProvider:(id)arg1;
 - (void)refreshAllClientsNow:(BOOL)arg1;
+- (void)registerTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 accountInfoProvider:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)registerTokenRefreshActivity;
 - (void)setSchedulerAvailable:(BOOL)arg1;
-- (void)systemAvailabilityChanged:(unsigned long long)arg1;
+- (BOOL)systemAvailabilityChanged:(unsigned long long)arg1;
 - (void)tokenRefreshChanged;
 - (void)unregisterAllTokensForAccountID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1;
+- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2;
 
 @end
 

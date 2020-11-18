@@ -12,7 +12,7 @@
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
-@class CLHeading, CLLocation, NSArray, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSArray, NSString, NSURL;
 @protocol CAMStillImageCaptureRequestDelegate;
 
 @interface CAMMutableStillImageCaptureRequest : CAMStillImageCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin, CAMMutableCaptureRequestEncodingBehavior>
@@ -25,10 +25,12 @@
 @property (copy, nonatomic) NSString *EV0PersistenceUUID; // @dynamic EV0PersistenceUUID;
 @property (copy, nonatomic) NSString *EV0VideoPersistenceUUID; // @dynamic EV0VideoPersistenceUUID;
 @property (strong, nonatomic) NSArray *adjustmentFilters; // @dynamic adjustmentFilters;
+@property (strong, nonatomic) CAMAnalyticsCaptureEvent *analyticsEvent; // @dynamic analyticsEvent;
 @property (nonatomic) long long aspectRatioCrop; // @dynamic aspectRatioCrop;
 @property (nonatomic) unsigned int assertionIdentifier;
 @property (copy, nonatomic) NSString *burstIdentifier; // @dynamic burstIdentifier;
 @property (nonatomic) long long captureDevice; // @dynamic captureDevice;
+@property (nonatomic, getter=isCaptureMirrored) BOOL captureMirrored; // @dynamic captureMirrored;
 @property (nonatomic) long long captureMode; // @dynamic captureMode;
 @property (nonatomic) long long captureOrientation; // @dynamic captureOrientation;
 @property (nonatomic) long long ctmCaptureType; // @dynamic ctmCaptureType;

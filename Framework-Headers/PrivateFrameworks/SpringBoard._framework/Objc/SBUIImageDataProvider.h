@@ -15,7 +15,6 @@
     UIImage *_image;
     SBSnapshotDataProviderContext *_context;
     double _scaleFactor;
-    BOOL _allowIOSurface;
 }
 
 @property (readonly, strong, nonatomic) XBSnapshotDataProviderContext *context; // @synthesize context=_context;
@@ -25,8 +24,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)fetchImage;
-- (id)initWithImage:(id)arg1 context:(id)arg2 scaleFactor:(double)arg3 allowIOSurface:(BOOL)arg4;
+- (id)fetchImageForFormat:(long long)arg1;
+- (id)initWithImage:(id)arg1 context:(id)arg2 scaleFactor:(double)arg3;
 
 @end
 

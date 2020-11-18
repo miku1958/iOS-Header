@@ -18,10 +18,10 @@
 + (Class)__ck_attachmentItemClass;
 + (void)_cachePowerLevels:(id)arg1 forKey:(id)arg2;
 + (id)_cachedPowerLevelsForKey:(id)arg1;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)generateThumbnailForWidth:(double)arg1 color:(id)arg2 powerLevels:(id)arg3 fileURL:(id)arg4;
 + (BOOL)shouldUseTranscoderGeneratedPreviewSize;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (BOOL)canExport;
 - (Class)coloredBalloonViewClass;
 - (id)composeWaveformForWidth:(double)arg1 orientation:(BOOL)arg2;
@@ -31,6 +31,7 @@
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (BOOL)isLikeAudioMessage;
 - (int)mediaType;
+- (id)metricsCollectorMediaType;
 - (id)previewFilenameExtension;
 - (id)previewItemTitle;
 - (void)savePreview:(id)arg1 toURL:(id)arg2 forOrientation:(BOOL)arg3;

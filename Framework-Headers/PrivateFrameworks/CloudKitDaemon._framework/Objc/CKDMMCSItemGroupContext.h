@@ -11,7 +11,6 @@
 
 @class CKDMMCS, CKDMMCSItem, CKDMMCSItemGroup, CKDOperation, NSMapTable, NSNumber;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemGroupContext : NSObject <CKDCancelling, CKDMMCSItemReaderWriterDelegateProtocol>
 {
     CKDOperation *_operation;

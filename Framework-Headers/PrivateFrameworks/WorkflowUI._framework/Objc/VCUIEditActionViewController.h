@@ -6,18 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WorkflowUI/WFComponentNavigationContext-Protocol.h>
 #import <WorkflowUI/WFEditWorkflowViewControllerDelegate-Protocol.h>
 
 @class NSString, WFEditWorkflowViewController, WFWorkflow;
 
-@interface VCUIEditActionViewController : UIViewController <WFEditWorkflowViewControllerDelegate, WFComponentNavigationContext>
+@interface VCUIEditActionViewController : UIViewController <WFEditWorkflowViewControllerDelegate>
 {
     WFWorkflow *_workflow;
     WFEditWorkflowViewController *_workflowViewController;
 }
 
-@property (readonly, weak, nonatomic) UIViewController *componentHostingViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

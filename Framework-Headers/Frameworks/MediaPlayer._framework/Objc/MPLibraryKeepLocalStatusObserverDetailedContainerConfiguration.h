@@ -22,6 +22,8 @@
 @property (nonatomic) long long redownloadableItemCount; // @synthesize redownloadableItemCount=_redownloadableItemCount;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

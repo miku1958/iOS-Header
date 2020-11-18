@@ -23,6 +23,7 @@
 @property (nonatomic, getter=isRead) BOOL read; // @dynamic read;
 @property (copy, nonatomic) NSString *receiverDestinationID; // @dynamic receiverDestinationID;
 @property (copy, nonatomic) NSString *receiverISOCountryCode; // @dynamic receiverISOCountryCode;
+@property (copy, nonatomic) NSString *receiverLabelID; // @dynamic receiverLabelID;
 @property (nonatomic) unsigned long long remoteUID; // @dynamic remoteUID;
 @property (copy, nonatomic) NSString *senderDestinationID; // @dynamic senderDestinationID;
 @property (copy, nonatomic) NSString *senderISOCountryCode; // @dynamic senderISOCountryCode;

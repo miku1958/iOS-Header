@@ -19,6 +19,8 @@
 
 + (id)collectionForBookmarkDataDictionaryRepresentation:(id)arg1 error:(id *)arg2;
 + (id)collectionWithMainResourceURL:(id)arg1;
++ (id)filenameSummaryStringForDictionaryRepresentation:(id)arg1;
++ (BOOL)getSignatureString:(id *)arg1 filenameSummary:(id *)arg2 forDictionaryRepresentation:(id)arg3;
 - (void).cxx_destruct;
 - (id)bookmarkDataDictionaryRepresentationWithError:(id *)arg1;
 - (BOOL)containsAllRoles:(id)arg1;

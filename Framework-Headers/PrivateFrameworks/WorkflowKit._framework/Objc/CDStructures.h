@@ -321,16 +321,6 @@ struct Schema {
     } __end_cap_;
 };
 
-struct SipHasher {
-    int _c;
-    int _d;
-    unsigned long long _v0;
-    unsigned long long _v1;
-    unsigned long long _v2;
-    unsigned long long _v3;
-    struct TailBuffer _buffer;
-};
-
 struct Slab;
 
 struct SlabAlloc {
@@ -405,10 +395,6 @@ struct TaggedBool<realm::IsPrimaryTag> {
     BOOL _field1;
 };
 
-struct TailBuffer {
-    unsigned long long value;
-};
-
 struct ThreadSafeReferenceBase;
 
 struct VTable;
@@ -419,11 +405,6 @@ struct WFRowTemplateValueInfo {
     SEL _field3;
     id _field4;
     id _field5;
-};
-
-struct _WFDatabaseResultsSlice {
-    unsigned long long startIndex;
-    unsigned long long endIndex;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, RLMClassInfo>, void *>*> {
@@ -547,6 +528,10 @@ struct map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1
             unsigned long long _field1;
         } _field3;
     } _field1;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct shared_ptr<const realm::Descriptor> {

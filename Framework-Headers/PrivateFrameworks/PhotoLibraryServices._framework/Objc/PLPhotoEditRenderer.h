@@ -55,6 +55,7 @@
 + (void)configureNeutrinoCacheDirectoryIfNeeded;
 + (BOOL)currentDeviceShouldAllowLocalLight;
 + (id)newImageDataFromCGImage:(struct CGImage *)arg1 withCompressionQuality:(double)arg2 metadataSourceImageURL:(id)arg3 preserveRegionsInMetadata:(BOOL)arg4;
++ (id)rendererForVideoURL:(id)arg1 overcaptureVideoURL:(id)arg2 livePhotoStillURL:(id)arg3 adjustmentData:(id)arg4 formatIdentifier:(id)arg5 formatVersion:(id)arg6;
 + (void)updateComposition:(id)arg1 fromPortraitMetadata:(id)arg2;
 + (void)updateCompositionController:(id)arg1 fromPortraitMetadata:(id)arg2;
 - (void).cxx_destruct;
@@ -64,20 +65,25 @@
 - (double)_smartColorLevelWithAttributeKey:(id)arg1 settingKey:(id)arg2;
 - (id)_smartToneAdjustments;
 - (double)_smartToneLevelWithAttributeKey:(id)arg1 settingKey:(id)arg2;
-- (void)applySourceChangesToCompositionController:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)applySourceChangesToComposition:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3 executeSynchronously:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)applySourceChangesToCompositionAsynchronously:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)applySourceChangesToCompositionSynchronously:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)calculateLongExposureFusionParametersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)cancelAllRenders;
 - (id)exportVideoToURL:(id)arg1 preset:(id)arg2 livePhotoPairingIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateJPEGImageDataWithCompressionQuality:(double)arg1 livePhotoPairingIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getGeometryForComposition:(id)arg1;
+- (id)getGeometryForComposition:(id)arg1 pipelineFilters:(id)arg2;
 - (id)initWithEditSource:(id)arg1 overcaptureEditSource:(id)arg2;
 - (id)initWithEditSource:(id)arg1 overcaptureEditSource:(id)arg2 renderPriority:(long long)arg3;
 - (id)newExporter;
 - (id)newImageExporterOptions;
 - (id)newVideoExporterOptions;
-- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 renderTime:(CDStruct_198678f7)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)renderVideoWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 name:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 name:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 renderTime:(CDStruct_198678f7)arg4 name:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)renderVideoWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 name:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)renderVideoWithTargetSize:(struct CGSize)arg1 name:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

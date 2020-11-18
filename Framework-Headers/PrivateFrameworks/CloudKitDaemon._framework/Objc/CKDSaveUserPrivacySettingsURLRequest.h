@@ -21,8 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (long long)databaseScope;
 - (id)generateRequestOperations;
-- (id)init;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
 - (BOOL)requiresTokenRegistration;

@@ -11,6 +11,7 @@
 }
 
 - (void)analyzeWavData:(id)arg1 numSamples:(unsigned long long)arg2;
+- (void)analyzeWavFloatData:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)getAnalyzedResultForPhraseId:(unsigned int)arg1;
 - (id)getOptionValue:(id)arg1;

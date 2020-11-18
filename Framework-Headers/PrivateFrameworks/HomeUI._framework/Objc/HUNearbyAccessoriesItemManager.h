@@ -6,17 +6,20 @@
 
 #import <Home/HFItemManager.h>
 
-@class HMAccessory;
+@class HMAccessory, NSDictionary;
 
 @interface HUNearbyAccessoriesItemManager : HFItemManager
 {
     BOOL _supportsQuickControls;
     HMAccessory *_primaryAccessory;
+    NSDictionary *_customNearbyAccessories;
 }
 
+@property (strong, nonatomic) NSDictionary *customNearbyAccessories; // @synthesize customNearbyAccessories=_customNearbyAccessories;
 @property (strong, nonatomic) HMAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
 @property (nonatomic) BOOL supportsQuickControls; // @synthesize supportsQuickControls=_supportsQuickControls;
 
++ (id)itemProvidersForPrimaryAccessory:(id)arg1 inHome:(id)arg2;
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
@@ -24,8 +27,11 @@
 - (BOOL)_isServiceItemAssociatedWithPrimaryAccessory:(id)arg1;
 - (id)_itemsToHideInSet:(id)arg1;
 - (unsigned long long)_numberOfSections;
+- (BOOL)hasCustomNearbyAccessories;
+- (BOOL)hasEmptyNearbyAccessories;
 - (id)initWithDelegate:(id)arg1 sourceProfileItem:(id)arg2 supportsQuickControls:(BOOL)arg3;
 - (BOOL)shouldHideItem:(id)arg1;
+- (id)userFilteredIdentifiers;
 
 @end
 

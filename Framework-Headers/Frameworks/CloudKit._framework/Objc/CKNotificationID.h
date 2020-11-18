@@ -17,7 +17,7 @@
     NSString *_notificationUUID;
 }
 
-@property (copy, nonatomic) NSString *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
+@property (readonly, copy, nonatomic) NSString *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -28,6 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNotificationUUID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

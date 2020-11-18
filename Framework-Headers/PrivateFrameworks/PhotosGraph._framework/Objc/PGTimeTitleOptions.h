@@ -11,17 +11,17 @@
 @interface PGTimeTitleOptions : NSObject
 {
     BOOL _filterDates;
-    NSSet *_eventNodes;
+    NSSet *_momentNodes;
     NSSet *_locationNodes;
     unsigned long long _allowedFormats;
     NSLocale *_locale;
 }
 
 @property (nonatomic) unsigned long long allowedFormats; // @synthesize allowedFormats=_allowedFormats;
-@property (strong, nonatomic) NSSet *eventNodes; // @synthesize eventNodes=_eventNodes;
 @property (nonatomic) BOOL filterDates; // @synthesize filterDates=_filterDates;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSSet *locationNodes; // @synthesize locationNodes=_locationNodes;
+@property (strong, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 
 - (void).cxx_destruct;
 - (id)init;

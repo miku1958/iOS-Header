@@ -31,6 +31,7 @@
 - (id)interfaceID;
 - (id)mediaRemoteOptions;
 - (long long)playbackQueueOffset;
+- (id)sourceID;
 
 @end
 

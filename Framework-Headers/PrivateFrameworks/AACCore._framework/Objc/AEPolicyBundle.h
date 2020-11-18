@@ -17,19 +17,10 @@
     id<AEPerformancePrimitives> _performancePrimitives;
 }
 
-@property (readonly, copy, nonatomic) NSArray *activations; // @synthesize activations=_activations;
-@property (readonly, nonatomic) id<AEPerformancePrimitives> performancePrimitives; // @synthesize performancePrimitives=_performancePrimitives;
-@property (readonly, nonatomic) id<AEPolicyStore> policyStore; // @synthesize policyStore=_policyStore;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
 - (void).cxx_destruct;
 - (void)activateSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (id)activationErrorWithErrors:(id)arg1;
 - (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 activations:(id)arg3;
-- (void)recoverWithError:(id)arg1 deactivations:(id)arg2 finalCompletion:(CDUnknownBlockType)arg3;
 - (id)recoverySession;
-- (void)runWithRemainingActivations:(id)arg1 remainingDeactivations:(id)arg2 invalidationHandler:(CDUnknownBlockType)arg3 currentEvent:(long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)validateProducedPersistentDeactivations:(id)arg1 currentEvent:(long long)arg2;
 
 @end
 

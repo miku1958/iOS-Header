@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <BookLibrary/BLRequest.h>
 
 #import <BookLibrary/NSCopying-Protocol.h>
 #import <BookLibrary/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSNumber, NSString, NSURL;
 
-@interface BLPurchaseRequest : NSObject <NSCopying, NSSecureCoding>
+@interface BLPurchaseRequest : BLRequest <NSCopying, NSSecureCoding>
 {
     BOOL _audiobook;
     BOOL _preOrder;
     BOOL _restore;
+    BOOL _suppressNetworkEvaluatorDialogs;
+    NSString *_logUUID;
     NSString *_buyParameters;
     NSNumber *_storeIdentifier;
     NSURL *_permlink;
@@ -28,11 +30,13 @@
 @property (strong, nonatomic) NSDictionary *analyticsInfo; // @synthesize analyticsInfo=_analyticsInfo;
 @property (nonatomic, getter=isAudiobook) BOOL audiobook; // @synthesize audiobook=_audiobook;
 @property (copy, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
+@property (copy, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property (strong, nonatomic) NSURL *permlink; // @synthesize permlink=_permlink;
 @property (copy, nonatomic) NSString *permlinkTitle; // @synthesize permlinkTitle=_permlinkTitle;
 @property (nonatomic, getter=isPreOrder) BOOL preOrder; // @synthesize preOrder=_preOrder;
 @property (nonatomic, getter=isRestore) BOOL restore; // @synthesize restore=_restore;
 @property (strong, nonatomic) NSNumber *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property (nonatomic, getter=shouldSuppressNetworkEvaluatorDialogs) BOOL suppressNetworkEvaluatorDialogs; // @synthesize suppressNetworkEvaluatorDialogs=_suppressNetworkEvaluatorDialogs;
 
 + (id)requestWithBuyParameters:(id)arg1 storeIdentifier:(id)arg2;
 + (id)requestWithPermlink:(id)arg1 title:(id)arg2;

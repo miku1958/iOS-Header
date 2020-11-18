@@ -32,7 +32,6 @@
 - (void)resultDidChangeForAceCommand:(AceObject<SAAceCommand> *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)rollbackClearContext;
-- (void)sendReplyCommand:(AceObject<SAAceCommand> *)arg1;
 - (void)setAlertContext;
 - (void)setApplicationContext;
 - (void)setCarDNDActive:(BOOL)arg1;

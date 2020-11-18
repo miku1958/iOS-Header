@@ -33,9 +33,9 @@
 - (void).cxx_destruct;
 - (id)_applyTransformToSegments:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)_quickDate:(id)arg1;
-- (id)_segmentsFromChartPoint:(id)arg1 forX:(double)arg2 minY:(double)arg3 maxY:(double)arg4;
+- (id)_segmentsFromChartPoint:(id)arg1 forX:(double)arg2 minY:(double)arg3 maxY:(double)arg4 zeroCountForGap:(long long)arg5;
 - (id)copyWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(BOOL)arg2;
-- (id)initWithChartPoint:(id)arg1 xAxisTransform:(id)arg2 yAxisTransform:(id)arg3;
+- (id)initWithChartPoint:(id)arg1 xAxisTransform:(id)arg2 yAxisTransform:(id)arg3 gapZeroCount:(long long)arg4;
 - (id)initWithTransform:(struct CGAffineTransform)arg1 blockPoint:(id)arg2;
 
 @end

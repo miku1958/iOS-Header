@@ -26,6 +26,7 @@
 @property (readonly) BOOL connectedToSpeaker;
 @property (strong) NSDictionary *localDevices; // @synthesize localDevices=_localDevices;
 
++ (id)bluetoothQueue;
 + (id)supportedFeatures;
 - (void).cxx_destruct;
 - (id)_init;

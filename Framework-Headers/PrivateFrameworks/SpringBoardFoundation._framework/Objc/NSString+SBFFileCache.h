@@ -15,6 +15,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_adjustedFontForScripts:(long long)arg1 forFont:(id)arg2;
+- (id)_adjustedFontForScripts:(long long)arg1 forFont:(id)arg2 ignoringContent:(BOOL)arg3;
+- (id)_adjustedFontForScripts:(long long)arg1 forFont:(id)arg2 withPointAdjustment:(double)arg3;
+- (id)_adjustedFontForScripts:(long long)arg1 forFont:(id)arg2 withPointAdjustment:(double)arg3 ignoringContent:(BOOL)arg4;
+- (BOOL)_isEntirelyCharactersInScript:(long long)arg1;
+- (BOOL)_isEntirelyCommon;
+- (BOOL)_isInScript:(long long)arg1 useLocaleOnly:(BOOL)arg2;
 - (id)fileCacheStableDataRepresentation;
+- (BOOL)sb_containsEmoji;
+- (BOOL)sb_isEntirelyCharactersInSet:(struct USet *)arg1;
 @end
 

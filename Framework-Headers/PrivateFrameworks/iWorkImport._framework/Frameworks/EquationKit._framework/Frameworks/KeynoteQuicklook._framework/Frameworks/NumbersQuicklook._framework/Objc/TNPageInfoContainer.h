@@ -9,7 +9,7 @@
 #import <NumbersQuicklook/TSDContainerInfo-Protocol.h>
 
 @class NSArray, NSString, TNPageController, TSDInfoGeometry, TSPObject;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TNPageInfoContainer : NSObject <TSDContainerInfo>
 {
@@ -26,13 +26,14 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (readonly, weak, nonatomic) TNPageController *pageController; // @synthesize pageController=_pageController;
 @property (readonly, nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

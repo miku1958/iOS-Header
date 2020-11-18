@@ -51,10 +51,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (CDUnknownBlockType)internalRenderBlock;
 - (id)outputBusses;
+- (double)outputSampleRate;
 - (void)pause;
 - (void)play;
-- (void)prepareToPlayBuffer:(id)arg1 looping:(BOOL)arg2;
-- (void)prepareToPlayFile:(id)arg1 looping:(BOOL)arg2;
+- (void)prepareToPlayBuffer:(id)arg1 withLayoutTag:(unsigned int)arg2 looping:(BOOL)arg3;
+- (void)prepareToPlayFile:(id)arg1 withLayoutTag:(unsigned int)arg2 looping:(BOOL)arg3;
 - (void)resume;
 - (void)scheduleCurrentResourceOnPlayer:(id)arg1;
 - (void)scheduleCurrentResourceOnPlayer:(id)arg1 startingProgress:(double)arg2;

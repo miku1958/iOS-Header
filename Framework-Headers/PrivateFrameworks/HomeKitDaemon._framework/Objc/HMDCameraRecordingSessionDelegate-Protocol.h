@@ -9,6 +9,6 @@
 @class HMDCameraRecordingSession, NSError;
 
 @protocol HMDCameraRecordingSessionDelegate <NSObject>
-- (void)closeSession:(HMDCameraRecordingSession *)arg1 withError:(NSError *)arg2;
+- (void)session:(HMDCameraRecordingSession *)arg1 didEndWithError:(NSError *)arg2;
 @end
 

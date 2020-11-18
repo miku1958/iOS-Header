@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 preferPlaceholder:(BOOL)arg2;
+- (void)parseManagedPersonaIDs:(id)arg1 containsSystemPersona:(BOOL)arg2;
 - (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;

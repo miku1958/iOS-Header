@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
 - (void)SPIUsageLackingEntitlementRejectedForPID:(int)arg1;
 - (void)XPCConnectionWasInterrupted;
 - (void)XPCConnectionWasInvalidated;
+- (void)accessAuthorizationStatusWasDenied;
 - (void)addingContacts:(id)arg1 toContainerWithIdentifier:(id)arg2;
 - (void)applyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(id)arg3;
 - (void)changedMeContact:(id)arg1;
 - (void)changingMeContact:(CDUnknownBlockType)arg1;
 - (void)clearingChangeHistory:(CDUnknownBlockType)arg1;
 - (void)contactsAccessWasGranted:(BOOL)arg1;
+- (void)deleteImageRecentsMetadataRequestFailed:(id)arg1;
 - (void)deletingContact:(id)arg1;
 - (void)didFetchContacts:(id)arg1 error:(id)arg2;
 - (void)didFetchEncodedContacts:(id)arg1 error:(id)arg2;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)postingNotificationWithName:(id)arg1;
 - (void)registeringForChangeHistory:(CDUnknownBlockType)arg1;
 - (void)removeContactImageData;
+- (void)requestAuthorizationWasDenied;
 - (void)requestingAccessForContacts:(CDUnknownBlockType)arg1;
 - (void)resettingSortDataIfNeeded:(CDUnknownBlockType)arg1;
 - (void)saveRequestFailed:(id)arg1;
@@ -65,8 +68,6 @@ __attribute__((visibility("hidden")))
 - (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
 - (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
 - (void)settingDefaultAccount:(CDUnknownBlockType)arg1;
-- (void)tccAccessPreflightWasDenied;
-- (void)tccAccessRequestWasDenied;
 - (void)unregisteringForChangeHistory:(CDUnknownBlockType)arg1;
 - (void)updatingContact:(id)arg1;
 

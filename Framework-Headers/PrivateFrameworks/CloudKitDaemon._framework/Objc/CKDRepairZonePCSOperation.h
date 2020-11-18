@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKRepairZonePCSOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDRepairZonePCSOperation : CKDDatabaseOperation
@@ -18,9 +19,11 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_pcsInfoByZoneID;
 }
 
+@property (strong, nonatomic) id<CKRepairZonePCSOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableArray *fetchedZones; // @synthesize fetchedZones=_fetchedZones;
 @property (strong, nonatomic) NSMutableArray *fixedZones; // @synthesize fixedZones=_fixedZones;
 @property (strong, nonatomic) NSMutableDictionary *pcsInfoByZoneID; // @synthesize pcsInfoByZoneID=_pcsInfoByZoneID;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 @property (copy, nonatomic) CDUnknownBlockType zonePCSRepairProgressBlock; // @synthesize zonePCSRepairProgressBlock=_zonePCSRepairProgressBlock;
 

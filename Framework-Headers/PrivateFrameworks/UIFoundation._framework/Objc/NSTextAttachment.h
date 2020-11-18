@@ -49,11 +49,13 @@
 + (Class)textAttachmentViewProviderClassForFileType:(id)arg1;
 - (BOOL)_allocatesTextContainer;
 - (id)_cacheKey;
+- (void)_drawInAlignedRect:(struct CGRect)arg1 attributes:(id)arg2 location:(id)arg3 textContainer:(id)arg4 applicationFrameworkContext:(long long)arg5;
 - (id)_image;
 - (id)_imageForUTI_iOS:(id)arg1;
 - (void)_invalidateWrapperView;
 - (void)_setAllocatesTextContainer:(BOOL)arg1;
 - (BOOL)allowsTextAttachmentView;
+- (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (id)attachmentCell;
 - (void)dealloc;
@@ -61,6 +63,7 @@
 - (struct CGRect)drawingBounds;
 - (long long)embeddingType;
 - (void)encodeWithCoder:(id)arg1;
+- (id)imageForBounds:(struct CGRect)arg1 attributes:(id)arg2 location:(id)arg3 textContainer:(id)arg4;
 - (id)imageForBounds:(struct CGRect)arg1 textContainer:(id)arg2 characterIndex:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -68,6 +71,7 @@
 - (id)initWithFileWrapper:(id)arg1;
 - (double)lineLayoutPadding;
 - (void)placeView:(id)arg1 withFrame:(struct CGRect)arg2 inParentView:(id)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
+- (void)placeView:(id)arg1 withFrame:(struct CGRect)arg2 inParentView:(id)arg3 location:(id)arg4 textContainer:(id)arg5 applicationFrameworkContext:(long long)arg6;
 - (void)setAllowsTextAttachmentView:(BOOL)arg1;
 - (void)setDrawingBounds:(struct CGRect)arg1;
 - (void)setEmbeddingType:(long long)arg1;
@@ -77,6 +81,7 @@
 - (Class)textAttachmentViewProviderClass;
 - (BOOL)usesTextAttachmentView;
 - (id)viewProviderForParentView:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
+- (id)viewProviderForParentView:(id)arg1 location:(id)arg2 textContainer:(id)arg3;
 
 @end
 

@@ -4,31 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Intents/INExecutionInfo.h>
 
-#import <IntentsCore/NSCopying-Protocol.h>
-
-@class INAppInfo, LSApplicationProxy, NSString, NSURL;
-
-@interface INCExecutionInfo : NSObject <NSCopying>
+@interface INCExecutionInfo : INExecutionInfo
 {
-    INAppInfo *_appInfo;
-    NSString *_launchableAppBundleId;
-    NSString *_displayableAppBundleId;
-    NSURL *_containingAppBundleURL;
 }
-
-@property (readonly, nonatomic) INAppInfo *_appInfo; // @synthesize _appInfo;
-@property (readonly, nonatomic) LSApplicationProxy *_applicationProxy;
-@property (readonly, nonatomic) BOOL canRunOnLocalDevice;
-@property (readonly, copy, nonatomic) NSURL *containingAppBundleURL; // @synthesize containingAppBundleURL=_containingAppBundleURL;
-@property (readonly, copy, nonatomic) NSString *displayableAppBundleId; // @synthesize displayableAppBundleId=_displayableAppBundleId;
-@property (readonly, copy, nonatomic) NSString *launchableAppBundleId; // @synthesize launchableAppBundleId=_launchableAppBundleId;
-
-+ (void)initialize;
-- (void).cxx_destruct;
-- (id)_initWithLaunchableAppBundleId:(id)arg1 displayableAppBundleId:(id)arg2 containingAppBundleURL:(id)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

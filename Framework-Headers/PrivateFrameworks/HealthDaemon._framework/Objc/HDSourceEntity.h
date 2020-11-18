@@ -16,7 +16,7 @@
 + (id)_sourcesWithPredicate:(id)arg1 includeDeleted:(BOOL)arg2 profile:(id)arg3 error:(id *)arg4;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (BOOL)enumerateBundleIdentifiersForSourcesForUUIDData:(id)arg1 transaction:(id)arg2 error:(id *)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 + (BOOL)enumerateBundleIdentifiersForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 + (id)firstSourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;

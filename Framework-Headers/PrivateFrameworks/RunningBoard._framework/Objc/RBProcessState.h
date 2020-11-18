@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/NSCopying-Protocol.h>
 #import <RunningBoard/NSMutableCopying-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSSet, NSString, RBInheritanceCollection, RBSProcessIdentity;
+@class NSMutableDictionary, NSMutableSet, NSSet, RBInheritanceCollection, RBSProcessIdentity;
 
-@interface RBProcessState : NSObject <NSCopying, NSMutableCopying, BSDescriptionProviding>
+@interface RBProcessState : NSObject <NSCopying, NSMutableCopying>
 {
     RBSProcessIdentity *_identity;
     RBInheritanceCollection *_inheritances;
@@ -32,53 +31,46 @@
 }
 
 @property (readonly, nonatomic) BOOL GPUAllowed;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL effectiveJetsamLenientMode;
 @property (readonly, nonatomic) unsigned long long effectiveMaxCPUDuration;
 @property (readonly, nonatomic) unsigned long long effectiveMaxCPUPercentage;
 @property (readonly, nonatomic) unsigned long long effectiveMaxCPUUsageViolationPolicy;
 @property (readonly, nonatomic) unsigned long long effectiveMinCPUDuration;
 @property (readonly, nonatomic) unsigned long long effectiveMinCPUPercentage;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL forceRoleManage;
 @property (readonly, copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 @property (readonly, nonatomic) RBInheritanceCollection *inheritances; // @synthesize inheritances=_inheritances;
 @property (readonly, nonatomic) BOOL isBeingDebugged;
 @property (readonly, nonatomic) unsigned char jetsamBand; // @synthesize jetsamBand=_jetsamBand;
 @property (readonly, nonatomic) BOOL jetsamLenientMode;
-@property (copy, nonatomic) NSSet *legacyAssertions; // @synthesize legacyAssertions=_legacyAssertions;
+@property (readonly, copy, nonatomic) NSSet *legacyAssertions;
 @property (readonly, nonatomic) unsigned long long legacyFinishTaskReason; // @synthesize legacyFinishTaskReason=_legacyFinishTaskReason;
-@property (strong, nonatomic) NSMutableDictionary *maxCPULimitsByRole; // @synthesize maxCPULimitsByRole=_maxCPULimitsByRole;
-@property (strong, nonatomic) NSMutableDictionary *minCPULimitsByRole; // @synthesize minCPULimitsByRole=_minCPULimitsByRole;
 @property (readonly, nonatomic) BOOL preventIdleSleep;
 @property (readonly, nonatomic) NSSet *preventIdleSleepIdentifiers; // @synthesize preventIdleSleepIdentifiers=_preventIdleSleepIdentifiers;
-@property (readonly, nonatomic) BOOL preventLaunch;
 @property (readonly, nonatomic) NSSet *preventLaunchReasons; // @synthesize preventLaunchReasons=_preventLaunchReasons;
-@property (copy, nonatomic) NSSet *primitiveAssertions; // @synthesize primitiveAssertions=_primitiveAssertions;
+@property (readonly, nonatomic) BOOL preventSuspend;
+@property (readonly, copy, nonatomic) NSSet *primitiveAssertions;
 @property (readonly, nonatomic) unsigned char role; // @synthesize role=_role;
-@property (readonly) Class superclass;
-@property (copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
+@property (readonly, copy, nonatomic) NSSet *tags;
 @property (readonly, nonatomic) unsigned char terminationResistance; // @synthesize terminationResistance=_terminationResistance;
 @property (readonly, nonatomic) BOOL throttleBestEffortNetworking;
 
 - (void).cxx_destruct;
-- (id)_initWithProcessState:(id)arg1;
-- (BOOL)_isEqualToProcessStateIgnoringIdentityAndInheritances:(id)arg1;
+- (id)clientStateForProcess:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescriptionWithMultilinePrefix:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)debugDescription;
+- (id)description;
+- (unsigned long long)hash;
 - (id)inheritancesForEnvironment:(id)arg1;
 - (id)init;
 - (id)initWithIdentity:(id)arg1;
+- (BOOL)isAppNapEqualToProcessState:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToProcessStateIgnoringIdentity:(id)arg1;
 - (BOOL)isEqualToProcessStateIgnoringInheritances:(id)arg1;
 - (id)maxCPUUsageLimitsForRole:(unsigned char)arg1;
 - (id)minCPUUsageLimitsForRole:(unsigned char)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

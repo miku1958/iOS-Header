@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TextInputCore/DDSManagingDelegate-Protocol.h>
+@class NSString;
 
-@protocol DDSAssetCenterDelegate <DDSManagingDelegate>
+@protocol DDSAssetCenterDelegate
+- (void)didUpdateAssetsWithType:(NSString *)arg1;
 @end
 

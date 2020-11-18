@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <HomeUI/HUServiceGridViewControllerDelegate-Protocol.h>
+
 @class HFMediaSystemBuilder, HUMediaSystemEditorGridViewController, NAFuture;
 
-@protocol HUMediaSystemEditorGridViewControllerDelegate
+@protocol HUMediaSystemEditorGridViewControllerDelegate <HUServiceGridViewControllerDelegate>
 - (NAFuture *)mediaSystemEditorGrid:(HUMediaSystemEditorGridViewController *)arg1 didUpdateMediaSystemBuilder:(HFMediaSystemBuilder *)arg2;
 @end
 

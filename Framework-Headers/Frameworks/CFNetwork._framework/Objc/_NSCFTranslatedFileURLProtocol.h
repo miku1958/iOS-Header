@@ -17,7 +17,6 @@
 + (id)canonicalRequestForRequest:(id)arg1;
 + (const struct CFURLProtocolImplementation *)pimpl;
 + (BOOL)requestIsCacheEquivalent:(id)arg1 toRequest:(id)arg2;
-- (struct CFURLProtocolClient *)cfurlClient;
 - (void)dealloc;
 - (id)initWithRequest:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 - (void)startLoading;

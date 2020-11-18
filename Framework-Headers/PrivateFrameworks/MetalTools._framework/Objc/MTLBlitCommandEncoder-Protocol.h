@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLFence, MTLIndirectCommandBuffer, MTLResource, MTLTexture;
+@protocol MTLBuffer, MTLCounterSampleBuffer, MTLFence, MTLIndirectCommandBuffer, MTLResource, MTLTexture;
 
 @protocol MTLBlitCommandEncoder <MTLCommandEncoder>
 - (void)copyFromBuffer:(id<MTLBuffer>)arg1 sourceOffset:(unsigned long long)arg2 sourceBytesPerRow:(unsigned long long)arg3 sourceBytesPerImage:(unsigned long long)arg4 sourceSize:(CDStruct_14f26992)arg5 toTexture:(id<MTLTexture>)arg6 destinationSlice:(unsigned long long)arg7 destinationLevel:(unsigned long long)arg8 destinationOrigin:(CDStruct_14f26992)arg9;
@@ -28,6 +28,8 @@
 - (void)optimizeIndirectCommandBuffer:(id<MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;
 - (void)resetCommandsInBuffer:(id<MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;
 - (void)resetTextureAccessCounters:(id<MTLTexture>)arg1 region:(CDStruct_1e3be3a8)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4;
+- (void)resolveCounters:(id<MTLCounterSampleBuffer>)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id<MTLBuffer>)arg3 destinationOffset:(unsigned long long)arg4;
+- (void)sampleCountersInBuffer:(id<MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)synchronizeResource:(id<MTLResource>)arg1;
 - (void)synchronizeTexture:(id<MTLTexture>)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
 - (void)updateFence:(id<MTLFence>)arg1;

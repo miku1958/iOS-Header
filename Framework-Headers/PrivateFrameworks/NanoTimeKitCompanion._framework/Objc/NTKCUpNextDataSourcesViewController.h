@@ -25,8 +25,6 @@
 - (void)_disabledDataSourcesDidChange;
 - (void)_setAndResizeIconImage:(id)arg1 forSpecifier:(id)arg2;
 - (void)_setDataSourceEnabled:(id)arg1 withSpecifier:(id)arg2;
-- (void)dataSourcesSection:(id)arg1 didChangeDataSources:(id)arg2 forMode:(long long)arg3;
-- (void)dataSourcesSectionDidFinishLoading:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)manager:(id)arg1 didUpdateDataSourceEntries:(id)arg2;

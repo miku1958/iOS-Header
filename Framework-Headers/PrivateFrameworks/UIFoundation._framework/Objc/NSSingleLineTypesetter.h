@@ -21,7 +21,7 @@
 
 + (BOOL)_validateAttributes:(id)arg1 measuringOnly:(BOOL)arg2;
 + (void)initialize;
-+ (id)singleLineTypesetter;
++ (void)performWithSingleLineTypesetterContext:(CDUnknownBlockType)arg1;
 - (BOOL)_allowsEllipsisGlyphSubstitution;
 - (BOOL)_mirrorsTextAlignment;
 - (id)_textContainerForAttachmentProtocol;
@@ -33,7 +33,6 @@
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(BOOL)arg3 hasStrongRight:(BOOL)arg4 syncDirection:(BOOL)arg5 mirrorsTextAlignment:(BOOL)arg6 maximumWidth:(double)arg7;
 - (void)dealloc;
 - (void)deleteGlyphsInRange:(struct _NSRange)arg1;
-- (void)done;
 - (unsigned long long)getGlyphsInRange:(struct _NSRange)arg1 glyphs:(unsigned short *)arg2 properties:(long long *)arg3 characterIndexes:(unsigned long long *)arg4 bidiLevels:(char *)arg5;
 - (void)getLineFragmentRect:(struct CGRect *)arg1 usedRect:(struct CGRect *)arg2 remainingRect:(struct CGRect *)arg3 forStartingGlyphAtIndex:(unsigned long long)arg4 proposedRect:(struct CGRect)arg5 lineSpacing:(double)arg6 paragraphSpacingBefore:(double)arg7 paragraphSpacingAfter:(double)arg8;
 - (struct _NSRange)glyphRangeForCharacterRange:(struct _NSRange)arg1 actualCharacterRange:(struct _NSRange *)arg2;

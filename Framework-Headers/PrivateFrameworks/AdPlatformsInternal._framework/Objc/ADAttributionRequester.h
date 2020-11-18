@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSNumber *transactionToken; // @synthesize transactionToken=_transactionToken;
 
 - (void).cxx_destruct;
+- (BOOL)_isAppTrackingAuthorized;
 - (int)appRunState;
 - (void)attachDownloadDataTo:(id)arg1 forAdamID:(id)arg2;
 - (void)attachSearchMetadataTo:(id)arg1 forAdamID:(id)arg2;

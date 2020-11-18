@@ -12,7 +12,7 @@
 #import <MapsSupport/MSPSharedTripXPCServer-Protocol.h>
 #import <MapsSupport/NSXPCListenerDelegate-Protocol.h>
 
-@class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMutableSet, NSString, NSXPCListener;
+@class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMapTable, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
 @interface MSPSharedTripServer : NSObject <NSXPCListenerDelegate, MSPReceiverETAControllerDelegate, MSPSenderETAControllerDelegate, MSPSharedTripAvailabiltyDelegate, MSPSharedTripXPCServer>
@@ -22,6 +22,7 @@
     MSPSharedTripRelay *_idsRelay;
     NSXPCListener *_listener;
     NSMutableSet *_connections;
+    NSMapTable *_peersByConnection;
     NSObject<OS_dispatch_queue> *_isolationQueue;
 }
 
@@ -31,9 +32,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_connectionCanControlReceiving:(id)arg1;
+- (BOOL)_connectionCanControlSharing:(id)arg1;
+- (void)_createXPCListener;
 - (void)_setNotificationCenter:(id)arg1;
 - (void)blockSharedTrip:(id)arg1;
-- (void)checkin;
+- (void)checkinWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cleanConnections;
 - (id)connections;
 - (void)createControllers;
@@ -46,27 +50,25 @@
 - (void)etaController:(id)arg1 sharedTripDidBecomeAvailable:(id)arg2;
 - (void)etaController:(id)arg1 sharedTripDidBecomeUnavailable:(id)arg2;
 - (void)etaController:(id)arg1 sharedTripDidClose:(id)arg2;
-- (void)fetchAccountAliasesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchRequiresUserConfirmationOfSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidateActiveHandlesForSenderController:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)relay:(id)arg1 accountStatusChanged:(BOOL)arg2;
+- (void)reportUserConfirmationOfSharingIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)senderController:(id)arg1 didInvalidateSharedTripWithError:(id)arg2;
-- (void)senderController:(id)arg1 sendMessage:(id)arg2 toGroup:(id)arg3;
-- (void)senderController:(id)arg1 sendMessage:(id)arg2 toParticipant:(id)arg3;
-- (void)startSharingTripWithContacts:(id)arg1;
-- (void)startSharingTripWithMessagesContacts:(id)arg1;
-- (void)startSharingTripWithMessagesGroup:(id)arg1;
+- (void)startSharingTripWithContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSharingTripWithMessagesContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSharingTripWithMessagesGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopSharingTrip;
 - (void)stopSharingTripWithContacts:(id)arg1;
 - (void)stopSharingTripWithMessagesContacts:(id)arg1;
 - (void)stopSharingTripWithMessagesGroup:(id)arg1;
-- (void)subscribeToSharedTripUpdatesWithIdentifier:(id)arg1;
-- (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1;
+- (void)subscribeToSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

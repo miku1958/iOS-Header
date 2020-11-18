@@ -61,10 +61,11 @@
             void *target;
             void *refcon;
             struct IOHIDServiceVirtualCallbacksV2 *callbacks;
-        } virtual;
+        } virtualService;
         void **connections;
         unsigned long long propertySetTime;
         unsigned long long propertyGetTime;
+        unsigned long long elementSetTime;
         unsigned long long regID;
         struct __CFData *eventLog;
         unsigned long long *eventTypeCnt;

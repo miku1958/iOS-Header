@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CKEffectPickerViewController, NSString;
+@class NSString;
+@protocol CKEffectPickerViewControllerProtocol;
 
 @protocol CKEffectPickerViewControllerDelegate
-- (void)effectPickerViewController:(CKEffectPickerViewController *)arg1 effectWithIdentifierSelected:(NSString *)arg2;
-- (void)effectPickerViewControllerClose:(CKEffectPickerViewController *)arg1;
+- (void)effectPickerViewController:(id<CKEffectPickerViewControllerProtocol>)arg1 effectWithIdentifierSelected:(NSString *)arg2;
+- (void)effectPickerViewControllerClose:(id<CKEffectPickerViewControllerProtocol>)arg1;
 @end
 

@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 + (BOOL)isEnabled;
-- (id)_locationOfEntry:(id)arg1;
 - (BOOL)shouldKeepEntry:(id)arg1;
 
 @end

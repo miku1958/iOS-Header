@@ -9,7 +9,7 @@
 #import <EventKitUI/CLLocationManagerDelegate-Protocol.h>
 #import <EventKitUI/MKSearchCompleterDelegate-Protocol.h>
 
-@class CLGeocoder, CLInUseAssertion, CLLocationManager, CNContactStore, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
+@class CLGeocoder, CLInUseAssertion, CLLocation, CLLocationManager, CNContactStore, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol CNCancelable, EKUILocationSearchModelDelegate, GEOMapServiceCompletionTicket, OS_dispatch_queue;
 
 @interface EKUILocationSearchModel : NSObject <CLLocationManagerDelegate, MKSearchCompleterDelegate>
@@ -18,6 +18,7 @@
     CLInUseAssertion *_locationAssertion;
     MKLocalSearchCompleter *_completer;
     EKStructuredLocation *_currentLocation;
+    CLLocation *_currentImpreciseLocation;
     CLGeocoder *_geocoder;
     MKLocalSearch *_localSearch;
     CNContactStore *_contactStore;

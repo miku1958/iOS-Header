@@ -8,6 +8,7 @@
 
 @interface NSMutableArray (CalClassAdditions)
 + (id)nonRetainingArray;
+- (void)CalFilterUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removeAllObjectsWithClass:(Class)arg1;
 @end
 

@@ -8,5 +8,6 @@
 
 @interface CALayer (AVAdditions)
 - (void)avkit_removeAllSublayerTransformAnimations;
+- (id)avkit_sbdlpip_findFirstCALayerHost;
 @end
 

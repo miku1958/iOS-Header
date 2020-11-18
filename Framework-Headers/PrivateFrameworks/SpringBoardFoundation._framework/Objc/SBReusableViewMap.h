@@ -32,6 +32,7 @@
 - (id)dequeueReusableViewOfClass:(Class)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)enumerateRecycledViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)invalidate;

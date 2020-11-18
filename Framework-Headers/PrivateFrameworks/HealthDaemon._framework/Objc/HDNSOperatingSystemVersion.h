@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface HDNSOperatingSystemVersion : NSObject
 {
     CDStruct_f6aba300 _versionStruct;

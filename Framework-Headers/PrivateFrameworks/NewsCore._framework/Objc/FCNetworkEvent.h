@@ -12,7 +12,7 @@
 
 @interface FCNetworkEvent : NSObject <NSCopying>
 {
-    long long _type;
+    int _type;
     NSURL *_URL;
     NSString *_requestUUID;
     NSString *_operationID;
@@ -47,7 +47,7 @@
 @property (nonatomic) unsigned long long responseSize; // @synthesize responseSize=_responseSize;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly, nonatomic) double totalDuration;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) int type; // @synthesize type=_type;
 @property (copy, nonatomic) NSDictionary *w3cNavigationTiming; // @synthesize w3cNavigationTiming=_w3cNavigationTiming;
 
 - (void).cxx_destruct;

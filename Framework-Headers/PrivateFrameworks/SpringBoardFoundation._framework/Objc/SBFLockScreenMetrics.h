@@ -47,7 +47,6 @@
 + (double)pinNumberPadButtonPaddingWidth;
 + (double)pinNumberPadWidth;
 + (struct CGSize)proudLockAssetSize;
-+ (double)proudLockCenterFromTopOfScreen;
 + (double)proudLockOffsetFromTopOfScreen;
 + (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 + (double)slideToUnlockFontSize;

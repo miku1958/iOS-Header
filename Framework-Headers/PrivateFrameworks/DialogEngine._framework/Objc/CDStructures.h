@@ -12,6 +12,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct Arena;
+
 struct ArenaStringPtr {
     basic_string_a1f69cfb *_field1;
 };
@@ -47,19 +49,21 @@ struct Context {
     struct RequestInfo _field2;
     shared_ptr_ab06ee6d _field3;
     struct map<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>>> _field4;
-    struct map<std::__1::basic_string<char>, siri::dialogengine::Parameter, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::Parameter>>> _field5;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field6;
-    struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field7;
-    basic_string_a1f69cfb _field8;
+    struct map<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>>> _field5;
+    struct map<std::__1::basic_string<char>, siri::dialogengine::Parameter, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::Parameter>>> _field6;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field7;
+    struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field8;
     basic_string_a1f69cfb _field9;
-    double _field10;
-    CDUnknownBlockType _field11;
-    struct DialogStateUseCase _field12;
-    struct DialogStateFamily _field13;
-    BOOL _field14;
+    basic_string_a1f69cfb _field10;
+    struct ElapsedTimer _field11;
+    CDUnknownBlockType _field12;
+    struct DialogStateUseCase _field13;
+    struct DialogStateFamily _field14;
     BOOL _field15;
-    struct shared_ptr<siri::dialogengine::ExecutionState> _field16;
-    BOOL _field17;
+    BOOL _field16;
+    struct shared_ptr<siri::dialogengine::ExecutionState> _field17;
+    BOOL _field18;
+    struct RandomNumberGenerator _field19;
 };
 
 struct CountAndTimestamp {
@@ -80,10 +84,10 @@ struct DialogStateUseCase {
     struct map<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>>> _field4;
 };
 
-struct Distribution {
-    basic_string_a1f69cfb _field1;
-    basic_string_a1f69cfb _field2;
-    basic_string_a1f69cfb _field3;
+struct ElapsedTimer {
+    double _field1;
+    double _field2;
+    unsigned long long _field3;
 };
 
 struct Encrypted {
@@ -95,12 +99,24 @@ struct Encrypted {
     struct ArenaStringPtr _field6;
     struct ArenaStringPtr _field7;
     struct ArenaStringPtr _field8;
-    BOOL _field9;
+    struct ArenaStringPtr _field9;
+    struct ArenaStringPtr _field10;
+    struct ArenaStringPtr _field11;
+    BOOL _field12;
 };
 
 struct ExecutionState;
 
 struct File;
+
+struct Filter {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArenaLite _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct MatchCriteria *_field5;
+    struct MatchCriteria *_field6;
+};
 
 struct Group;
 
@@ -112,22 +128,36 @@ struct InternalMetadataWithArenaLite {
     void *_field1;
 };
 
-struct MetadataProperty {
-    struct ObjectSampleValues mSampleValues;
+struct MatchCriteria {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArenaLite _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct RepeatedPtrField<std::__1::basic_string<char>> _field5;
+    struct RepeatedPtrField<std::__1::basic_string<char>> _field6;
 };
 
 struct Node;
 
-struct ObjectProperty {
+struct ObjectInput {
     basic_string_a1f69cfb _field1;
     basic_string_a1f69cfb _field2;
     basic_string_a1f69cfb _field3;
     basic_string_a1f69cfb _field4;
-    BOOL _field5;
+    int _field5;
+    BOOL _field6;
 };
 
-struct ObjectSampleValues {
-    struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> mValues;
+struct ObjectProperty {
+    CDUnknownFunctionPointerType *_field1;
+    basic_string_a1f69cfb _field2;
+    basic_string_a1f69cfb _field3;
+    basic_string_a1f69cfb _field4;
+    basic_string_a1f69cfb _field5;
+    basic_string_a1f69cfb _field6;
+    basic_string_a1f69cfb _field7;
+    BOOL _field8;
+    BOOL _field9;
 };
 
 struct ObjectSchema {
@@ -141,22 +171,42 @@ struct ObjectSchema {
 
 struct Parameter;
 
+struct RandomNumberGenerator {
+    unsigned int _field1;
+    struct mersenne_twister_engine<unsigned int, 32, 624, 397, 31, 2567483615, 11, 4294967295, 7, 2636928640, 15, 4022730752, 18, 1812433253> _field2;
+};
+
+struct Rep;
+
+struct RepeatedPtrField<std::__1::basic_string<char>> {
+    struct Arena *_field1;
+    int _field2;
+    int _field3;
+    struct Rep *_field4;
+};
+
 struct RequestInfo {
-    basic_string_a1f69cfb _field1;
+    int _field1;
     basic_string_a1f69cfb _field2;
     basic_string_a1f69cfb _field3;
     basic_string_a1f69cfb _field4;
     basic_string_a1f69cfb _field5;
     basic_string_a1f69cfb _field6;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field7;
-    struct Distribution _field8;
+    unsigned int _field7;
+    long long _field8;
     basic_string_a1f69cfb _field9;
     basic_string_a1f69cfb _field10;
-    int _field11;
-    BOOL _field12;
-    BOOL _field13;
-    int _field14;
-    int _field15;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field11;
+    basic_string_a1f69cfb _field12;
+    int _field13;
+    BOOL _field14;
+    BOOL _field15;
+    int _field16;
+    int _field17;
+    basic_string_a1f69cfb _field18;
+    basic_string_a1f69cfb _field19;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field20;
+    basic_string_a1f69cfb _field21;
 };
 
 struct SpeakableString {
@@ -172,7 +222,11 @@ struct State {
     struct ArenaStringPtr _field5;
     struct ArenaStringPtr _field6;
     struct ArenaStringPtr _field7;
-    BOOL _field8;
+    struct ArenaStringPtr _field8;
+    struct ArenaStringPtr _field9;
+    struct ArenaStringPtr _field10;
+    struct Filter *_field11;
+    BOOL _field12;
 };
 
 struct Variable;
@@ -180,7 +234,7 @@ struct Variable;
 struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
+    struct __tree_node_base<void *> *_field1;
 };
 
 struct atomic<int> {
@@ -287,16 +341,9 @@ struct map<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine
     } _field1;
 };
 
-struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
+struct mersenne_twister_engine<unsigned int, 32, 624, 397, 31, 2567483615, 11, 4294967295, 7, 2636928640, 15, 4022730752, 18, 1812433253> {
+    unsigned int _field1[624];
+    unsigned long long _field2;
 };
 
 struct set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {

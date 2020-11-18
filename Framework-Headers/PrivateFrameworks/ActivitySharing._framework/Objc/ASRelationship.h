@@ -18,6 +18,7 @@
     BOOL _hasIncomingInviteRequest;
     BOOL _hasOutgoingInviteRequest;
     BOOL _isAwaitingInviteResponse;
+    BOOL _sentInviteResponse;
     BOOL _hasIncomingCompetitionRequest;
     BOOL _hasOutgoingCompetitionRequest;
     BOOL _hasIgnoredCompetitionRequest;
@@ -25,7 +26,6 @@
     BOOL _isCompetitionActive;
     BOOL _hasCompletedCompetition;
     BOOL _isHidingActivityData;
-    BOOL _sentInviteResponse;
     unsigned int _supportedPhoneFeatures;
     unsigned int _supportedWatchFeatures;
     long long _version;
@@ -45,6 +45,7 @@
     NSDate *_dateForLatestIncomingCompetitionRequest;
     NSDate *_dateForLatestIgnoredCompetitionRequest;
     NSDate *_dateForLatestDataHidden;
+    NSDate *_dateForLatestIncomingInviteRequest;
     NSDate *_dateForLatestOutgoingInviteRequest;
     NSDate *_dateForLatestRelationshipStart;
     NSDate *_dateActivityDataInitiallyBecameVisible;
@@ -59,6 +60,7 @@
 @property (strong, nonatomic) NSDate *dateForLatestDataHidden; // @synthesize dateForLatestDataHidden=_dateForLatestDataHidden;
 @property (strong, nonatomic) NSDate *dateForLatestIgnoredCompetitionRequest; // @synthesize dateForLatestIgnoredCompetitionRequest=_dateForLatestIgnoredCompetitionRequest;
 @property (strong, nonatomic) NSDate *dateForLatestIncomingCompetitionRequest; // @synthesize dateForLatestIncomingCompetitionRequest=_dateForLatestIncomingCompetitionRequest;
+@property (strong, nonatomic) NSDate *dateForLatestIncomingInviteRequest; // @synthesize dateForLatestIncomingInviteRequest=_dateForLatestIncomingInviteRequest;
 @property (strong, nonatomic) NSDate *dateForLatestOutgoingCompetitionRequest; // @synthesize dateForLatestOutgoingCompetitionRequest=_dateForLatestOutgoingCompetitionRequest;
 @property (strong, nonatomic) NSDate *dateForLatestOutgoingInviteRequest; // @synthesize dateForLatestOutgoingInviteRequest=_dateForLatestOutgoingInviteRequest;
 @property (strong, nonatomic) NSDate *dateForLatestRelationshipStart; // @synthesize dateForLatestRelationshipStart=_dateForLatestRelationshipStart;
@@ -109,6 +111,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (void)insertEventWithType:(unsigned short)arg1;
+- (void)insertEventWithType:(unsigned short)arg1 timestamp:(id)arg2;
 - (void)insertEvents:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRelationship:(id)arg1;

@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *address; // @dynamic address;
 @property (copy, nonatomic) NSString *addressDictionaryString; // @dynamic addressDictionaryString;
+@property (nonatomic) BOOL coarse; // @dynamic coarse;
 @property (nonatomic) double latitude; // @dynamic latitude;
 @property (nonatomic) double longitude; // @dynamic longitude;
 @property (nonatomic) unsigned long long muid; // @dynamic muid;

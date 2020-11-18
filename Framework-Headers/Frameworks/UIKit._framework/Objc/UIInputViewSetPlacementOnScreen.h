@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (BOOL)inputViewWillAppear;
+- (BOOL)showsInputOrAssistantViews;
 - (BOOL)showsInputViews;
 - (BOOL)showsKeyboard;
 

@@ -19,14 +19,13 @@
     } _lock;
     EKEventStore *_eventStore;
     EKObjectID *_objectID;
-    NSMutableSet *_dirtyProperties;
     unsigned int _flags;
+    NSMutableSet *_coCommitObjects;
     NSMutableDictionary *_loadedProperties;
-    NSMutableDictionary *_committedProperties;
+    NSMutableDictionary *_updatedProperties;
 }
 
 @property (readonly, nonatomic) BOOL canBeConvertedToFullObject;
-@property (strong, nonatomic) NSMutableDictionary *committedProperties; // @synthesize committedProperties=_committedProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int entityType;
@@ -41,6 +40,7 @@
 
 + (id)_relationForKey:(id)arg1;
 + (BOOL)_shouldRetainPropertyForKey:(id)arg1;
++ (id)allObjectsWithChangesRelatedToObjects:(id)arg1;
 + (Class)alternateUniverseClass;
 + (id)defaultPropertiesToLoad;
 + (Class)frozenClass;
@@ -48,10 +48,10 @@
 + (id)propertiesUnavailableForPartialObjects;
 + (id)relations;
 - (void).cxx_destruct;
-- (void)_addDirtyProperty:(id)arg1;
 - (void)_addObjectCore:(id)arg1 toValues:(id)arg2 relation:(id)arg3;
 - (BOOL)_areDefaultPropertiesLoaded;
 - (void)_createLoadedPropertiesIfNeeded;
+- (void)_createUpdatedPropertiesIfNeeded;
 - (BOOL)_isNew;
 - (BOOL)_isPendingDelete;
 - (BOOL)_isPendingInsert;
@@ -60,6 +60,7 @@
 - (void)_loadDefaultPropertiesIfNeeded;
 - (BOOL)_loadRelationForKey:(id)arg1 value:(id *)arg2;
 - (id)_loadStringValueForKey:(id)arg1;
+- (id)_loadedPropertyForKey:(id)arg1;
 - (id)_loadedPropertyKeys;
 - (void)_primitiveSetValue:(id)arg1 forKey:(id)arg2 daemonSetter:(CDUnknownBlockType)arg3;
 - (id)_primitiveValueForKey:(id)arg1 loader:(CDUnknownBlockType)arg2;
@@ -72,16 +73,16 @@
 - (void)_setPendingDelete:(BOOL)arg1;
 - (void)_setPendingInsert:(BOOL)arg1;
 - (void)_setPendingUpdate:(BOOL)arg1;
-- (void)_setProperty:(id)arg1 forKey:(id)arg2;
-- (void)_setProperty:(id)arg1 forKey:(id)arg2 forRelation:(id)arg3;
-- (void)_setProperty:(id)arg1 forKey:(id)arg2 isRelation:(BOOL)arg3;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 forRelation:(id)arg3 isUpdatedProperty:(BOOL)arg4;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 isRelation:(BOOL)arg3 isUpdatedProperty:(BOOL)arg4;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 isUpdatedProperty:(BOOL)arg3;
 - (void)_takeValues:(id)arg1 forKeys:(id)arg2;
 - (void)_takeValuesForDefaultPropertyKeys:(id)arg1 values:(id)arg2;
+- (void)addCoCommitObject:(id)arg1;
 - (id)changeSet;
 - (void)changed;
-- (id)committedValueForKey:(id)arg1;
+- (id)coCommitObjects;
 - (void)dealloc;
-- (id)dirtyProperties;
 - (id)dump;
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;
@@ -98,6 +99,7 @@
 - (BOOL)isPropertyDirty:(id)arg1;
 - (BOOL)isPropertyLoaded:(id)arg1;
 - (BOOL)isPropertyUnavailable:(id)arg1;
+- (id)loadedPropertyForKey:(id)arg1;
 - (id)meltedObjectInStore:(id)arg1;
 - (id)objectID;
 - (void)primitiveAddRelatedObject:(id)arg1 forKey:(id)arg2;
@@ -117,9 +119,7 @@
 - (void)primitiveSetNumberValue:(id)arg1 forKey:(id)arg2;
 - (void)primitiveSetRelationValue:(id)arg1 forKey:(id)arg2;
 - (void)primitiveSetStringValue:(id)arg1 forKey:(id)arg2;
-- (void)primitiveSetURLValue:(id)arg1 forKey:(id)arg2;
 - (id)primitiveStringValueForKey:(id)arg1;
-- (id)primitiveURLValueForKey:(id)arg1;
 - (BOOL)pushDirtyProperties:(id *)arg1;
 - (BOOL)refresh;
 - (void)reset;

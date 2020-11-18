@@ -17,9 +17,11 @@
 @property (readonly, nonatomic) CNGroup *group; // @synthesize group=_group;
 @property (readonly, nonatomic) CNContact *member; // @synthesize member=_member;
 
++ (unsigned long long)instanceSortOrder;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)acceptEventVisitor:(id)arg1;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -66,12 +66,14 @@ __attribute__((visibility("hidden")))
 - (void)ppt_setSteps:(long long)arg1;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;
 - (void)setBackdropViewGroupName:(id)arg1;
+- (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setUseGradientBackground:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
 - (void)specDidChange;
 - (long long)toolControllerTag;
 - (id)toolbarIcon;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateAdjustmentControls;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

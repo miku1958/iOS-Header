@@ -16,16 +16,12 @@
     NRDevice *_device;
 }
 
-@property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, strong, nonatomic) NRDevice *device;
 @property (readonly, nonatomic) BOOL isActive;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
-- (void)_invalidate;
 - (void)dealloc;
 - (id)description;
-- (id)initWithDevice:(id)arg1 identifier:(id)arg2;
 - (void)invalidate;
 
 @end

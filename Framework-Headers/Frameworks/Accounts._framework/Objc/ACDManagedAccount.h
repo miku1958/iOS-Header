@@ -25,12 +25,16 @@
 @property (strong, nonatomic) NSSet *enabledDataclasses; // @dynamic enabledDataclasses;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong, nonatomic) NSDate *lastCredentialRenewalRejectionDate; // @dynamic lastCredentialRenewalRejectionDate;
+@property (strong, nonatomic) NSString *modificationID; // @dynamic modificationID;
 @property (strong, nonatomic) NSString *owningBundleID; // @dynamic owningBundleID;
 @property (strong, nonatomic) ACDManagedAccount *parentAccount; // @dynamic parentAccount;
 @property (strong, nonatomic) NSSet *provisionedDataclasses; // @dynamic provisionedDataclasses;
 @property (strong, nonatomic) NSNumber *supportsAuthentication; // @dynamic supportsAuthentication;
 @property (strong, nonatomic) NSString *username; // @dynamic username;
 @property (strong, nonatomic) NSNumber *visible; // @dynamic visible;
+@property (strong, nonatomic) NSNumber *warmingUp; // @dynamic warmingUp;
+
+- (id)description;
 
 @end
 

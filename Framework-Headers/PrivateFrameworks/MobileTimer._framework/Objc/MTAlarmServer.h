@@ -42,8 +42,10 @@
 - (void)handleSystemReady;
 - (id)initWithStorage:(id)arg1;
 - (id)initWithStorage:(id)arg1 connectionListenerProvider:(id)arg2;
+- (void)nextSleepAlarmWithCompletion:(CDUnknownBlockType)arg1;
 - (void)printDiagnostics;
 - (void)removeAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resetSleepAlarmSnoozeStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)snoozeAlarmWithIdentifier:(id)arg1 snoozeAction:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
@@ -55,6 +57,7 @@
 - (void)startListening;
 - (void)stopListening;
 - (void)updateAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)updateSleepAlarmsWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

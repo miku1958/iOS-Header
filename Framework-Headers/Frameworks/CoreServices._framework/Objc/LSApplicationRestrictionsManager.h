@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, getter=isAdTrackingEnabled) BOOL adTrackingEnabled; // @dynamic adTrackingEnabled;
 @property (readonly) NSSet *blacklistedBundleIDs;
+@property (readonly, getter=isLimitAdTrackingForced) BOOL limitAdTrackingForced;
 @property (readonly) NSNumber *maximumRating;
 @property (readonly, getter=isOpenInRestrictionInEffect) BOOL openInRestrictionInEffect;
 @property (copy, nonatomic) NSSet *removedSystemApplicationIdentifiers; // @synthesize removedSystemApplicationIdentifiers=_removedSystemApplicationIdentifiers;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)beginListeningForChanges;
 - (BOOL)cleanRemovedSystemApplicationsList;
 - (void)effectiveSettingsChanged;
-- (id)identifierForRemovedAppPrompt:(id)arg1;
 - (BOOL)isAppExtensionRestricted:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1 checkFeatureRestrictions:(BOOL)arg2;

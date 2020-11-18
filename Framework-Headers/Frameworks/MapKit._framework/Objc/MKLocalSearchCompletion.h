@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEODirectionIntent, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, MKMapItem, NSArray, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, MKMapItem, NSArray, NSString;
 @protocol GEOCompletionItem;
 
 @interface MKLocalSearchCompletion : NSObject
@@ -27,7 +27,9 @@
 @property (readonly, nonatomic, getter=_alreadySentFeedback) BOOL alreadySentFeedback; // @synthesize alreadySentFeedback=_alreadySentFeedback;
 @property (readonly, nonatomic) long long autocompleteCellType;
 @property (readonly, nonatomic) GEOSearchCategory *category;
+@property (readonly, nonatomic) NSArray *childItems;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolved;
+@property (readonly, nonatomic) GEOCollectionResult *collectionResult;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
 @property (strong, nonatomic) MKLocalSearchCompletion *directionIntentDestination; // @synthesize directionIntentDestination=_directionIntentDestination;
 @property (strong, nonatomic) MKLocalSearchCompletion *directionIntentOrigin; // @synthesize directionIntentOrigin=_directionIntentOrigin;
@@ -41,6 +43,7 @@
 @property (copy, nonatomic) NSString *localizedSectionHeader; // @synthesize localizedSectionHeader=_localizedSectionHeader;
 @property (readonly, nonatomic) MKMapItem *mapItem;
 @property (readonly, nonatomic, getter=_placeType) int placeType;
+@property (readonly, nonatomic) GEOPublisherResult *publisherResult;
 @property (readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (readonly, nonatomic) unsigned long long serverItemIndexInSection; // @synthesize serverItemIndexInSection=_serverItemIndexInSection;

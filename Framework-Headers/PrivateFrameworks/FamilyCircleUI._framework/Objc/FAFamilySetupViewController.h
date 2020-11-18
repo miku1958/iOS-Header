@@ -20,7 +20,7 @@
     AAUIRemoteUIController *_remoteUIController;
     NSMutableURLRequest *_startRemoteUIRequest;
     NSMutableURLRequest *_currentRemoteUIRequest;
-    BOOL _isShowingSpinner;
+    long long _spinnerCount;
     UIActivityIndicatorView *_spinnerView;
     NSArray *_originalRightBarButtonItems;
     UINavigationItem *_navigationItemShowingSpinner;

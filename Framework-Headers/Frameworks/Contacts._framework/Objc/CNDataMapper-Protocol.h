@@ -6,7 +6,7 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
+@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
 @protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
@@ -45,6 +45,7 @@
 - (NSNumber *)contactCountForFetchRequest:(CNContactFetchRequest *)arg1 error:(id *)arg2;
 - (NSString *)contactIdentifierWithMatchingDictionary:(NSDictionary *)arg1;
 - (CNContact *)contactWithUserActivityUserInfo:(NSDictionary *)arg1 keysToFetch:(NSArray *)arg2;
+- (CNResult *)currentHistoryAnchor;
 - (NSData *)currentHistoryToken;
 - (id<CNKeyDescriptor>)descriptorForRequiredKeysForMatchingDictionary;
 - (BOOL)executeChangeHistoryClearRequest:(CNChangeHistoryClearRequest *)arg1 error:(id *)arg2;

@@ -44,6 +44,7 @@
 - (id)attachmentForContentID:(id)arg1;
 - (id)attachmentForContentID:(id)arg1 preferredSchemes:(id)arg2;
 - (id)attachmentForData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
+- (id)attachmentForItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
 - (id)attachmentForTextAttachment:(id)arg1 error:(id *)arg2;
 - (id)attachmentForURL:(id)arg1 error:(id *)arg2;
 - (id)attachmentForURL:(id)arg1 withMimeBody:(id)arg2 error:(id *)arg3;

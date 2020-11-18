@@ -8,7 +8,7 @@
 
 #import <FrontBoardServices/FBSWorkspaceFencing-Protocol.h>
 
-@class BSMutableIntegerMap, FBSSerialQueue, NSString;
+@class BSMutableIntegerMap, BSMutableIntegerSet, FBSSerialQueue, NSString;
 @protocol OS_dispatch_queue;
 
 @interface FBSWorkspaceFencingImpl : NSObject <FBSWorkspaceFencing>
@@ -17,6 +17,7 @@
     FBSSerialQueue *_callOutQueue;
     unsigned long long _signpostName;
     BSMutableIntegerMap *_triggerToFenceNameMap;
+    BSMutableIntegerSet *_triggersToIgnore;
     BOOL _synchronizingFence;
 }
 

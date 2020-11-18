@@ -7,8 +7,8 @@
 @class Core_Audio_XPC_Raw_Transporter;
 
 @protocol Core_Audio_IO
-- (void)handle_io_message:(unsigned int)arg1 with:(Core_Audio_XPC_Raw_Transporter *)arg2 reply:(void (^)(Core_Audio_XPC_Raw_Transporter *))arg3;
-- (void)start_after_io_device_change:(unsigned int)arg1;
+- (void)handle_io_message:(struct Device_Token)arg1 with:(Core_Audio_XPC_Raw_Transporter *)arg2 reply:(void (^)(Core_Audio_XPC_Raw_Transporter *))arg3;
+- (void)start_after_io_device_change:(unsigned int)arg1 reply:(void (^)(BOOL))arg2;
 - (void)stop_before_io_device_change:(unsigned int)arg1 reply:(void (^)(BOOL))arg2;
 @end
 

@@ -83,6 +83,7 @@
 - (CDUnknownBlockType)_onQueue_setOptimisticPlaybackState:(unsigned int)arg1 withOptions:(id)arg2;
 - (CDUnknownBlockType)_onQueue_setOptimisticPlayingItemIdentifier:(id)arg1;
 - (void)_onQueue_setOptimisticReorderedPlaybackQueueWithMovingContentItemIdentifier:(id)arg1 afterContentItemIdentifier:(id)arg2;
+- (void)_onQueue_setOptimisticReorderedPlaybackQueueWithMovingContentItemIdentifier:(id)arg1 beforeContentItemIdentifier:(id)arg2;
 - (CDUnknownBlockType)_onQueue_updateOptimisticStateForCommand:(unsigned int)arg1 options:(id)arg2;
 - (void)_playbackQueueChangedNotification:(id)arg1;
 - (void)_playbackQueueContentItemsChangedNotification:(id)arg1;

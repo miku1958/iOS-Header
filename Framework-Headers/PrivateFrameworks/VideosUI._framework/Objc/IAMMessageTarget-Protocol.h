@@ -10,7 +10,7 @@
 
 @protocol IAMMessageTarget <NSObject>
 
-@property (readonly, nonatomic) NSString *targetIdentifier;
+@property (nonatomic, readonly) NSString *targetIdentifier;
 
 - (void)messageCoordinator:(IAMMessageCoordinator *)arg1 didUpdatePriorityMessage:(IAMMessage *)arg2 forTarget:(NSString *)arg3;
 @end

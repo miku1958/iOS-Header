@@ -23,7 +23,6 @@
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSString *nickName; // @synthesize nickName=_nickName;
 
-+ (id)handleForContact:(id)arg1;
 + (id)recipientForContact:(id)arg1;
 + (id)recipientForHandle:(id)arg1;
 - (void).cxx_destruct;

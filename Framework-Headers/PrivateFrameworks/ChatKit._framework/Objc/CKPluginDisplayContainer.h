@@ -26,6 +26,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)itemProvider;
 - (id)pasteboardItem;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 
 @end
 

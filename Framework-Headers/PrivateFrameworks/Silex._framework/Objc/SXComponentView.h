@@ -13,7 +13,7 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, SXColumnLayout, SXFillView, SXUnitConverter, SXViewport;
-@protocol SXComponent, SXComponentHosting, SXComponentLayout, SXComponentStyle, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXDOMObjectProviding, SXPresentationDelegate;
+@protocol SXComponent, SXComponentHosting, SXComponentLayout, SXComponentState, SXComponentStyle, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXDOMObjectProviding, SXPresentationDelegate;
 
 @interface SXComponentView : UIView <UIGestureRecognizerDelegate, SXTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionableComponentView, SXComponentInteractable>
 {
@@ -26,9 +26,10 @@
     BOOL _hasAnimation;
     BOOL _hasBehaviors;
     BOOL _hasRenderedComponentStyle;
-    CDStruct_1cc9d0d0 _presentationChanges;
+    CDStruct_12a35e6e _presentationChanges;
     id<SXComponentLayout> _componentLayout;
     id<SXComponent> _component;
+    id<SXComponentState> _state;
     id<SXDOMObjectProviding> _DOMObjectProvider;
     SXViewport *_viewport;
     id<SXPresentationDelegate> _presentationDelegate;
@@ -82,14 +83,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (readonly, nonatomic) struct CGRect interactionFrame;
 @property (readonly, nonatomic) BOOL isDraggable; // @synthesize isDraggable=_isDraggable;
 @property (readonly, nonatomic) BOOL isTransitionable;
 @property (nonatomic) struct CGRect originalFrame; // @synthesize originalFrame=_originalFrame;
-@property (nonatomic) CDStruct_1cc9d0d0 presentationChanges; // @synthesize presentationChanges=_presentationChanges;
+@property (nonatomic) CDStruct_12a35e6e presentationChanges; // @synthesize presentationChanges=_presentationChanges;
 @property (readonly, weak, nonatomic) id<SXPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (nonatomic) struct CGRect presentationFrame; // @synthesize presentationFrame=_presentationFrame;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (nonatomic) BOOL requiresThoroughFrameCalculations; // @synthesize requiresThoroughFrameCalculations=_requiresThoroughFrameCalculations;
+@property (strong, nonatomic) id<SXComponentState> state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGRect transitionContainerFrame;
 @property (readonly, nonatomic) UIView *transitionContainerView;
@@ -124,7 +127,7 @@
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
 - (void)prepareComponentStyleRendererForStyle:(id)arg1;
 - (void)prepareForTransitionType:(unsigned long long)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)provideInfosLayoutTo:(id)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)renderComponentStyle;
@@ -136,7 +139,7 @@
 - (BOOL)userInteractable;
 - (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
-- (void)willPresentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)willPresentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 
 @end
 

@@ -15,7 +15,6 @@
     BOOL _enableIntermediateNaturalClustering;
     BOOL _enableFinalNaturalClustering;
     BOOL _enableFinalTimeClustering;
-    BOOL _usesVision;
     CLSSimilarStacker *_similarStacker;
     BOOL _usesKMeans;
     NSSet *_identifiersOfRequiredItems;
@@ -28,7 +27,6 @@
 @property (nonatomic) BOOL enableStatisticalSampling; // @synthesize enableStatisticalSampling=_enableStatisticalSampling;
 @property (copy, nonatomic) NSSet *identifiersOfRequiredItems; // @synthesize identifiersOfRequiredItems=_identifiersOfRequiredItems;
 @property (nonatomic) BOOL usesKMeans; // @synthesize usesKMeans=_usesKMeans;
-@property (nonatomic) BOOL usesVision; // @synthesize usesVision=_usesVision;
 
 + (id)beautifier;
 - (void).cxx_destruct;

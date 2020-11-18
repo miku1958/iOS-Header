@@ -11,8 +11,8 @@
 }
 
 + (double)highlightedCircleViewAlpha;
-+ (id)imageForCharacter:(unsigned int)arg1;
-+ (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2;
++ (id)imageForCharacter:(long long)arg1;
++ (id)imageForCharacter:(long long)arg1 highlighted:(BOOL)arg2;
 + (double)unhighlightedCircleViewAlpha;
 + (BOOL)usesTelephonyGlyphsWhereAvailable;
 - (id)buttonColor;

@@ -33,3 +33,10 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
+

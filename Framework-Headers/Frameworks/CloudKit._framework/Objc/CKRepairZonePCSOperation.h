@@ -6,22 +6,28 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray;
+#import <CloudKit/CKRepairZonePCSOperationCallbacks-Protocol.h>
 
-@interface CKRepairZonePCSOperation : CKDatabaseOperation
+@class CKRepairZonePCSOperationInfo, NSArray;
+@protocol CKRepairZonePCSOperationCallbacks;
+
+@interface CKRepairZonePCSOperation : CKDatabaseOperation <CKRepairZonePCSOperationCallbacks>
 {
     CDUnknownBlockType _zoneRepairedBlock;
     NSArray *_zoneIDs;
 }
 
+@property (readonly, nonatomic) id<CKRepairZonePCSOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property (readonly, nonatomic) CKRepairZonePCSOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 @property (copy, nonatomic) CDUnknownBlockType zoneRepairedBlock; // @synthesize zoneRepairedBlock=_zoneRepairedBlock;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleZonePCSRepairForID:(id)arg1 pcsInfo:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithZoneIDsToRepair:(id)arg1;
 - (void)performCKOperation;

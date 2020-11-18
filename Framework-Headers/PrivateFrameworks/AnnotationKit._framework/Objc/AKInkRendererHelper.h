@@ -11,7 +11,7 @@
 }
 
 + (double)_calculateMaxRenderingSize;
-+ (id)_sharedOfflineInkRendererFullSize;
++ (id)_createFullSizeRenderer;
 + (id)_sharedOfflineInkRendererSmallSize;
 + (double)maxRenderingSize;
 + (void)purgeSharedRenderer;

@@ -6,14 +6,16 @@
 
 #import <PassKitCore/PKApplyWebServiceRequest.h>
 
-@class PKPaymentInstallmentConfiguration;
+@class NSURL, PKPaymentInstallmentConfiguration;
 
 @interface PKApplyWebServiceCreateRequest : PKApplyWebServiceRequest
 {
+    NSURL *_applyServiceURL;
     unsigned long long _featureIdentifier;
     PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
+@property (strong, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
 @property (nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
 @property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 

@@ -7,16 +7,17 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray;
+@class INCallRecord, INCallRecordFilter, NSArray;
 
 @protocol INStartCallIntentExport <NSObject, JSExport>
 
 @property (nonatomic) long long audioRoute;
 @property (nonatomic) long long callCapability;
+@property (copy, nonatomic) INCallRecordFilter *callRecordFilter;
+@property (copy, nonatomic) INCallRecord *callRecordToCallBack;
 @property (copy, nonatomic) NSArray *contacts;
 @property (nonatomic) long long destinationType;
 @property (nonatomic) long long preferredCallProvider;
-@property (nonatomic) long long recordTypeForRedialing;
 @property (nonatomic, setter=setTTYType:) long long ttyType;
 
 - (id)init;

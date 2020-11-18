@@ -21,23 +21,23 @@
     struct os_unfair_lock_s _readerLock;
     int _prioritization;
     int _routingBehavior;
+    BOOL _enableIncidents;
     struct {
         unsigned int has_prioritization:1;
         unsigned int has_routingBehavior:1;
+        unsigned int has_enableIncidents:1;
         unsigned int read_unknownFields:1;
         unsigned int read_avoidedModes:1;
         unsigned int read_fareOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_avoidedModes:1;
-        unsigned int wrote_fareOptions:1;
-        unsigned int wrote_prioritization:1;
-        unsigned int wrote_routingBehavior:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (readonly, nonatomic) int *avoidedModes;
 @property (readonly, nonatomic) unsigned long long avoidedModesCount;
+@property (nonatomic) BOOL enableIncidents;
 @property (strong, nonatomic) GEOFareOptions *fareOptions;
+@property (nonatomic) BOOL hasEnableIncidents;
 @property (readonly, nonatomic) BOOL hasFareOptions;
 @property (nonatomic) BOOL hasPrioritization;
 @property (nonatomic) BOOL hasRoutingBehavior;
@@ -50,9 +50,6 @@
 - (int)StringAsAvoidedModes:(id)arg1;
 - (int)StringAsPrioritization:(id)arg1;
 - (int)StringAsRoutingBehavior:(id)arg1;
-- (void)_addNoFlagsAvoidedMode:(int)arg1;
-- (void)_readAvoidedModes;
-- (void)_readFareOptions;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
 - (id)avoidedModesAsString:(int)arg1;
@@ -66,7 +63,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)prioritizationAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

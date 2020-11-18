@@ -22,6 +22,7 @@
 - (id<NSObject>)hardwareFamily;
 - (id<NSObject>)hardwareModel;
 - (id<NSObject>)hostApp;
+- (BOOL)isAnonymous;
 - (id<NSObject>)os;
 - (id<NSObject>)osBuildNumber;
 - (id<NSObject>)osLanguages;

@@ -8,17 +8,14 @@
 
 @interface DEMetadata : NSObject
 {
-    struct MetadataProperty _Obj;
+    const struct ObjectInput *_Obj;
 }
 
-@property struct MetadataProperty Obj; // @synthesize Obj=_Obj;
+@property const struct ObjectInput *Obj; // @synthesize Obj=_Obj;
 
-+ (id)catParameter:(id)arg1 catId:(id)arg2 parameter:(id)arg3;
 + (id)schemaInput:(id)arg1 typeName:(id)arg2 inputName:(id)arg3;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)init;
-- (id)initWithObj:(struct MetadataProperty)arg1;
+- (id)initWithObj:(const struct ObjectInput *)arg1;
 - (id)sampleValues:(id)arg1;
 - (id)sampleValues:(id)arg1 locale:(id)arg2;
 

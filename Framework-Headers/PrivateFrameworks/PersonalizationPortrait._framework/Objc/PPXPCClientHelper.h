@@ -16,8 +16,8 @@
     } _connLock;
     NSXPCConnection *_conn;
     NSString *_serviceName;
-    NSXPCInterface *_whitelistedServerInterface;
-    NSXPCInterface *_whitelistedClientInterface;
+    NSXPCInterface *_allowedServerInterface;
+    NSXPCInterface *_allowedClientInterface;
     id _clientExportedObject;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)_locked_establishConnection;
 - (void)dealloc;
-- (id)initWithServiceName:(id)arg1 whitelistedServerInterface:(id)arg2 whitelistedClientInterface:(id)arg3 clientExportedObject:(id)arg4 interruptionHandler:(CDUnknownBlockType)arg5 invalidationHandler:(CDUnknownBlockType)arg6;
+- (id)initWithServiceName:(id)arg1 allowedServerInterface:(id)arg2 allowedClientInterface:(id)arg3 clientExportedObject:(id)arg4 interruptionHandler:(CDUnknownBlockType)arg5 invalidationHandler:(CDUnknownBlockType)arg6;
 - (id)remoteObjectProxy;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 

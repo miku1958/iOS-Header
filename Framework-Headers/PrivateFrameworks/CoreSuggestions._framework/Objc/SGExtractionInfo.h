@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreSuggestions/SGObject.h>
+#import <objc/NSObject.h>
+
+#import <CoreSuggestions/NSCopying-Protocol.h>
+#import <CoreSuggestions/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface SGExtractionInfo : SGObject
+@interface SGExtractionInfo : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _extractionType;
     NSNumber *_modelVersion;
@@ -20,7 +23,11 @@
 @property (readonly, nonatomic) NSNumber *modelVersion; // @synthesize modelVersion=_modelVersion;
 
 + (id)extractionInfoWithExtractionType:(unsigned long long)arg1 modelVersion:(id)arg2 confidence:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithExtractionType:(unsigned long long)arg1 modelVersion:(id)arg2 confidence:(id)arg3;
 
 @end

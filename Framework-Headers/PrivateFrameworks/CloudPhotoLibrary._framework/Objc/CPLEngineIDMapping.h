@@ -7,10 +7,11 @@
 #import <CloudPhotoLibrary/CPLEngineStorage.h>
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
+#import <CloudPhotoLibrary/CPLEngineIDMapping-Protocol.h>
 
 @class CPLPlatformObject, NSString;
 
-@interface CPLEngineIDMapping : CPLEngineStorage <CPLAbstractObject>
+@interface CPLEngineIDMapping : CPLEngineStorage <CPLAbstractObject, CPLEngineIDMapping>
 {
 }
 

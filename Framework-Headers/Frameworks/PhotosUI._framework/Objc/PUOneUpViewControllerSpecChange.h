@@ -27,7 +27,9 @@ __attribute__((visibility("hidden")))
     BOOL _canDisplayLoadingIndicatorsChanged;
     BOOL _backgroundColorOverrideChanged;
     BOOL _progressIndicatorSizeChanged;
+    BOOL _progressIndicatorContentInsetsChanged;
     BOOL _bufferingIndicatorSizeChanged;
+    BOOL _renderIndicatorSizeChanged;
     BOOL _shouldUseCompactCommentsTitleChanged;
     BOOL _tileInitialContentModeChanged;
     BOOL _shouldCounterrotateReviewScreenBarsChanged;
@@ -43,7 +45,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setMaximumAccessoryToolbarHeightChanged:) BOOL maximumAccessoryToolbarHeightChanged; // @synthesize maximumAccessoryToolbarHeightChanged=_maximumAccessoryToolbarHeightChanged;
 @property (nonatomic, setter=_setMaximumToolbarHeightChanged:) BOOL maximumToolbarHeightChanged; // @synthesize maximumToolbarHeightChanged=_maximumToolbarHeightChanged;
 @property (nonatomic, setter=_setPresentedForPreviewChanged:) BOOL presentedForPreviewChanged; // @synthesize presentedForPreviewChanged=_presentedForPreviewChanged;
+@property (nonatomic, setter=_setProgressIndicatorContentInsetsChanged:) BOOL progressIndicatorContentInsetsChanged; // @synthesize progressIndicatorContentInsetsChanged=_progressIndicatorContentInsetsChanged;
 @property (nonatomic, setter=_setProgressIndicatorSizeChanged:) BOOL progressIndicatorSizeChanged; // @synthesize progressIndicatorSizeChanged=_progressIndicatorSizeChanged;
+@property (nonatomic, setter=_setRenderIndicatorSizeChanged:) BOOL renderIndicatorSizeChanged; // @synthesize renderIndicatorSizeChanged=_renderIndicatorSizeChanged;
 @property (nonatomic, setter=_setShouldAutoplayOnAppearChanged:) BOOL shouldAutoplayOnAppearChanged; // @synthesize shouldAutoplayOnAppearChanged=_shouldAutoplayOnAppearChanged;
 @property (nonatomic, setter=_setShouldCounterrotateReviewScreenBarsChanged:) BOOL shouldCounterrotateReviewScreenBarsChanged; // @synthesize shouldCounterrotateReviewScreenBarsChanged=_shouldCounterrotateReviewScreenBarsChanged;
 @property (nonatomic, setter=_setShouldDisplayAssetExplorerReviewScreenBadgesChanged:) BOOL shouldDisplayAssetExplorerReviewScreenBadgesChanged; // @synthesize shouldDisplayAssetExplorerReviewScreenBadgesChanged=_shouldDisplayAssetExplorerReviewScreenBadgesChanged;

@@ -7,6 +7,14 @@
 #import <NewsUI2/_TtC7NewsUI225MyMagazinesViewController.h>
 
 @interface _TtC7NewsUI225MyMagazinesViewController (NewsUI2)
+
+@property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) long long pluginVisibleItemCount;
+
+- (void)deselect;
+- (void)initializeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)relayoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startTraversingWithDirection:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

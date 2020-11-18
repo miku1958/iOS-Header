@@ -30,7 +30,6 @@
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 characteristicType:(id)arg2 valueTransformer:(id)arg3 displayResults:(id)arg4;
-- (id)togglePrimaryState;
 - (id)toggleValue;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)writePrimaryState:(long long)arg1;

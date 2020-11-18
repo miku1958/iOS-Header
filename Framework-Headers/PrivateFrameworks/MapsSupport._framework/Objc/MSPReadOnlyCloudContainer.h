@@ -11,6 +11,9 @@
 }
 
 - (void)pushChanges:(id)arg1 withGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setupCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)subscribeToChangesWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -28,10 +28,12 @@
     struct CGSize _maxVisibleContentSize;
     BOOL _shouldBlurContent;
     BOOL _editingIcons;
+    BOOL _shouldIncludeScrollView;
     id<WGWidgetListViewControllerDelegate> _delegate;
     UIControl *_editButton;
     NSArray *_previouslyVisibleWidgetIDs;
     NSLayoutConstraint *_stackViewBottomConstraint;
+    NSMutableDictionary *_resizeContexts;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -46,7 +48,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_previouslyVisibleWidgetIDs, setter=_setPreviouslyVisibleWidgetIDs:) NSArray *previouslyVisibleWidgetIDs; // @synthesize previouslyVisibleWidgetIDs=_previouslyVisibleWidgetIDs;
+@property (strong, nonatomic) NSMutableDictionary *resizeContexts; // @synthesize resizeContexts=_resizeContexts;
 @property (nonatomic) BOOL shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
+@property (nonatomic) BOOL shouldIncludeScrollView; // @synthesize shouldIncludeScrollView=_shouldIncludeScrollView;
 @property (readonly, nonatomic) NSLayoutConstraint *stackViewBottomConstraint; // @synthesize stackViewBottomConstraint=_stackViewBottomConstraint;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -55,6 +59,7 @@
 
 - (void).cxx_destruct;
 - (void)_adjustContentOffsetToInsideContent:(BOOL)arg1;
+- (id)_animatablePropertiesForStackViewUpdate;
 - (CDUnknownBlockType)_beginInsertion:(BOOL)arg1 ofListItem:(id)arg2 withOrderedIdentifiers:(id)arg3 removingViewIfPossible:(BOOL)arg4;
 - (void)_cancelTouchesForHitWidgetIfNecessaryAndDisableTouchesOnAllWidgets;
 - (void)_cancelTouchesForWidget:(id)arg1;
@@ -62,9 +67,11 @@
 - (void)_configureCaptureOnlyMaterialView;
 - (void)_configureScrollView;
 - (void)_configureStackView;
+- (void)_createPropertiesForStackViewUpdate;
 - (void)_didUpdateStackViewArrangedSubviews;
 - (void)_disableTouchesOnAllWidgets;
 - (void)_enableTouchesOnAllWidgets;
+- (id)_identifierForCell:(id)arg1;
 - (CDUnknownBlockType)_insert:(BOOL)arg1 listItem:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(BOOL)arg4;
 - (unsigned long long)_insertionIndexofListItem:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
 - (void)_invalidateAllAlternateCaptureOnlyMaterialViews;
@@ -83,9 +90,11 @@
 - (void)_pruneAlternateCaptureOnlyMaterialViews;
 - (void)_repopulateStackView;
 - (void)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_resizeCell:(id)arg1;
 - (void)_scrollViewDidStop;
 - (id)_scrollViewIfLoaded;
 - (id)_scrollViewLoadingIfNecessary:(BOOL)arg1;
+- (void)_stackViewArrangedSubviewsTransformPresentationValueChanged;
 - (void)_updateBackgroundViewForPlatter:(id)arg1;
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
 - (struct CGRect)_visibleContentFrameForBounds:(struct CGRect)arg1 withContentOccludingInsets:(struct UIEdgeInsets)arg2;
@@ -120,6 +129,8 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unregisterWidgetForRefreshEvents:(id)arg1;
+- (void)updatePreviouslyVisibleWidgetIDs;
+- (void)updateWidgetViewState;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

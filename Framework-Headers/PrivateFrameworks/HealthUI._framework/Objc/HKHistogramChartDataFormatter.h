@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)_formattedStringWithValue:(double)arg1 unit:(id)arg2 showUnit:(BOOL)arg3;
-- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1;
+- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
 - (id)formattedUnitStringForChartData:(id)arg1;
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;
 - (id)initWithUnit:(id)arg1;

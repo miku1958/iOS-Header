@@ -8,38 +8,53 @@
 
 #import <PhotosUI/PUPhotoSelectionManagerChangeObserver-Protocol.h>
 
-@class NSOrderedSet, NSPointerArray, NSString, PHAssetCollection, PUPhotoSelectionManager;
-@protocol PLAlbumProtocol;
+@class NSOrderedSet, NSPointerArray, NSPredicate, NSString, PHAssetCollection, PUPhotoSelectionManager, PXLoadingStatusManager, PXSelectionCoordinator;
+@protocol PLAlbumProtocol, PXPhotosViewDelegate;
 
 @interface PUSessionInfo : NSObject <PUPhotoSelectionManagerChangeObserver>
 {
     NSPointerArray *_observers;
-    BOOL _selectingAssets;
     BOOL _selectingTargetAlbum;
+    BOOL _allowsMultipleSelection;
     BOOL _enforcesSelectionLimitByDelesectingOtherAssets;
     BOOL _showsFileSizePicker;
+    BOOL _isForAssetPicker;
+    BOOL _isLimitedLibraryPicker;
     long long _status;
     PUPhotoSelectionManager *_photoSelectionManager;
     PHAssetCollection *_sourceAlbum;
     NSOrderedSet *_transferredAssets;
     NSObject<PLAlbumProtocol> *_targetAlbum;
     NSString *_targetAlbumName;
+    NSPredicate *_assetsFilterPredicate;
+    unsigned long long _assetTypesToInclude;
     NSString *_localizedPrompt;
     long long _promptLocation;
     CDUnknownBlockType _bannerGenerator;
     unsigned long long _selectionLimit;
+    id<PXPhotosViewDelegate> _photosViewDelegate;
+    PXLoadingStatusManager *_loadingStatusManager;
+    PXSelectionCoordinator *_selectionCoordinator;
 }
 
+@property (nonatomic) BOOL allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
+@property (nonatomic) unsigned long long assetTypesToInclude; // @synthesize assetTypesToInclude=_assetTypesToInclude;
+@property (strong, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property (copy, nonatomic) CDUnknownBlockType bannerGenerator; // @synthesize bannerGenerator=_bannerGenerator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enforcesSelectionLimitByDelesectingOtherAssets; // @synthesize enforcesSelectionLimitByDelesectingOtherAssets=_enforcesSelectionLimitByDelesectingOtherAssets;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isForAssetPicker; // @synthesize isForAssetPicker=_isForAssetPicker;
+@property (readonly, nonatomic) BOOL isLimitedLibraryPicker; // @synthesize isLimitedLibraryPicker=_isLimitedLibraryPicker;
+@property (strong, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property (copy, nonatomic) NSString *localizedPrompt; // @synthesize localizedPrompt=_localizedPrompt;
 @property (strong, nonatomic) PUPhotoSelectionManager *photoSelectionManager; // @synthesize photoSelectionManager=_photoSelectionManager;
+@property (weak, nonatomic) id<PXPhotosViewDelegate> photosViewDelegate; // @synthesize photosViewDelegate=_photosViewDelegate;
 @property (nonatomic) long long promptLocation; // @synthesize promptLocation=_promptLocation;
-@property (readonly, nonatomic, getter=isSelectingAssets) BOOL selectingAssets; // @synthesize selectingAssets=_selectingAssets;
+@property (readonly, nonatomic, getter=isSelectingAssets) BOOL selectingAssets;
 @property (readonly, nonatomic, getter=isSelectingTargetAlbum) BOOL selectingTargetAlbum; // @synthesize selectingTargetAlbum=_selectingTargetAlbum;
+@property (strong, nonatomic) PXSelectionCoordinator *selectionCoordinator; // @synthesize selectionCoordinator=_selectionCoordinator;
 @property (nonatomic) unsigned long long selectionLimit; // @synthesize selectionLimit=_selectionLimit;
 @property (nonatomic) BOOL showsFileSizePicker; // @synthesize showsFileSizePicker=_showsFileSizePicker;
 @property (strong, nonatomic) PHAssetCollection *sourceAlbum; // @synthesize sourceAlbum=_sourceAlbum;

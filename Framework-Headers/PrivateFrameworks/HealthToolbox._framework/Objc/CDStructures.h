@@ -21,22 +21,15 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct NSDirectionalEdgeInsets {
-    double top;
-    double leading;
-    double bottom;
-    double trailing;
+    double _field1;
+    double _field2;
 };
 
 struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct WDElectrocardiogramOverviewSectionInfo {
@@ -62,6 +55,11 @@ struct _NSRange {
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
+};
+
+struct os_unfair_recursive_lock_s {
+    struct os_unfair_lock_s _field1;
+    unsigned int _field2;
 };
 
 #pragma mark Typedef'd Structures

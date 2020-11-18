@@ -28,6 +28,7 @@
 - (id)_potentialMemoryForMomentNodes:(id)arg1 seasonNode:(id)arg2 category:(unsigned long long)arg3;
 - (id)_seasonInHistoryPotentialMemories;
 - (id)initWithController:(id)arg1;
+- (id)keyAssetCurationOptions;
 - (void)lastSeasonMomentNodesForLocalDate:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
 - (void)seasonInHistoryMomentNodesForLocalDate:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
 

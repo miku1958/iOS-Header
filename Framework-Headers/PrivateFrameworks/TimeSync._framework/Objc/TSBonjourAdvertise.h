@@ -17,6 +17,7 @@
 
 @property (nonatomic) id<TSBonjourAdvertiseDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)registeredServiceWithName:(const char *)arg1 regType:(const char *)arg2 domain:(const char *)arg3 withFlags:(unsigned int)arg4;

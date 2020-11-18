@@ -18,6 +18,7 @@
 @property (nonatomic) long long source; // @dynamic source;
 
 + (id)fetchRequest;
++ (id)managedObjectWithHint:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)managedObjectWithLatitude:(double)arg1 longitude:(double)arg2 source:(long long)arg3 date:(id)arg4 inManagedObjectContext:(id)arg5;
 
 @end

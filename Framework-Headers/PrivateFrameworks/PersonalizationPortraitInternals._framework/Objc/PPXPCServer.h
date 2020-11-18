@@ -20,6 +20,7 @@
 + (void)_registerNamedEntityReadOnlyListener;
 + (void)_registerNamedEntityReadWriteListener;
 + (void)_registerQuickTypeListener;
++ (void)_registerStringDonationListener;
 + (void)_registerTopicReadOnlyListener;
 + (void)_registerTopicReadWriteListener;
 + (void)registerXPCListeners;

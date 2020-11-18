@@ -62,6 +62,7 @@
 @property (readonly, nonatomic) NSString *iForgotUIURL;
 @property (readonly, nonatomic) NSString *initiateFamilyV2URL;
 @property (readonly, nonatomic) NSString *initiateValidateEmailURL;
+@property (readonly, nonatomic) NSString *loginAccountURL;
 @property (readonly, nonatomic) NSString *loginDelegatesURL;
 @property (readonly, nonatomic) NSString *loginOrCreateDelegatesURL;
 @property (readonly, nonatomic) NSString *mobileMeOfferAlertURL;

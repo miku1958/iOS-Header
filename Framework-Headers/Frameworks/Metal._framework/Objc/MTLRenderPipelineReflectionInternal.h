@@ -6,7 +6,7 @@
 
 #import <Metal/MTLRenderPipelineReflection.h>
 
-@class MTLArgument, NSArray, NSDictionary;
+@class MTLArgument, NSArray, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MTLRenderPipelineReflectionInternal : MTLRenderPipelineReflection
@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     MTLArgument *_imageBlockDataReturn;
     NSDictionary *_performanceStatistics;
     unsigned int _traceBufferIndex;
+    NSData *_vertexPluginReturnData;
+    NSData *_fragmentPluginReturnData;
     NSArray *_constantSamplerUniqueIdentifiers;
     NSArray *_constantSamplerDescriptors;
 }
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)fragmentArguments;
+- (id)fragmentPluginReturnData;
 - (id)imageBlockDataReturn;
 - (id)inferredInputs;
 - (id)initWithTileArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3 imageBlockDataReturn:(id)arg4 device:(id)arg5 traceBufferIndex:(unsigned int)arg6 flags:(CDStruct_7ce1aa5b)arg7;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_7ce1aa5b)usageFlags;
 - (id)vertexArguments;
 - (id)vertexBuiltInArguments;
+- (id)vertexPluginReturnData;
 
 @end
 

@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) HKSample *sample; // @synthesize sample=_sample;
 @property (readonly, nonatomic) NSArray *subSampleTypes; // @synthesize subSampleTypes=_subSampleTypes;
-@property (readonly, nonatomic) id<HKDataMetadataSubsampleDelegate> subsampleDelegate; // @synthesize subsampleDelegate=_subsampleDelegate;
+@property (readonly, weak, nonatomic) id<HKDataMetadataSubsampleDelegate> subsampleDelegate; // @synthesize subsampleDelegate=_subsampleDelegate;
 @property (readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 
 - (void).cxx_destruct;

@@ -59,27 +59,7 @@
         unsigned int read_requestErrorDomain:1;
         unsigned int read_serviceIpAddress:1;
         unsigned int read_taskMetrics:1;
-        unsigned int wrote_manifestEnv:1;
-        unsigned int wrote_requestAppIdentifier:1;
-        unsigned int wrote_requestEnd:1;
-        unsigned int wrote_requestErrorCode:1;
-        unsigned int wrote_requestErrorDescription:1;
-        unsigned int wrote_requestErrorDomain:1;
-        unsigned int wrote_requestStart:1;
-        unsigned int wrote_serviceIpAddress:1;
-        unsigned int wrote_taskMetrics:1;
-        unsigned int wrote_decodeTime:1;
-        unsigned int wrote_httpResponseCode:1;
-        unsigned int wrote_mptcpServiceType:1;
-        unsigned int wrote_networkService:1;
-        unsigned int wrote_queuedTime:1;
-        unsigned int wrote_redirectCount:1;
-        unsigned int wrote_requestDataSize:1;
-        unsigned int wrote_responseDataSize:1;
-        unsigned int wrote_tilesetId:1;
-        unsigned int wrote_totalTime:1;
-        unsigned int wrote_mptcpNegotiated:1;
-        unsigned int wrote_rnfTriggered:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -130,12 +110,6 @@
 - (void).cxx_destruct;
 - (int)StringAsMptcpServiceType:(id)arg1;
 - (int)StringAsNetworkService:(id)arg1;
-- (void)_readManifestEnv;
-- (void)_readRequestAppIdentifier;
-- (void)_readRequestErrorDescription;
-- (void)_readRequestErrorDomain;
-- (void)_readServiceIpAddress;
-- (void)_readTaskMetrics;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -143,7 +117,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)mptcpServiceTypeAsString:(int)arg1;
 - (id)networkServiceAsString:(int)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowUI/WFModuleSummaryEditor.h>
+#import <WorkflowEditor/WFModuleSummaryEditor.h>
 
 #import <ActionKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFSSHKeyConfigurationViewControllerDelegate-Protocol.h>

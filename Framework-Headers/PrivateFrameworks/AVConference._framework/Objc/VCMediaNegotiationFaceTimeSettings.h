@@ -12,16 +12,28 @@ __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationFaceTimeSettings : PBCodable <NSCopying>
 {
     unsigned int _capabilities;
+    unsigned int _linkProbingCapabilityVersion;
+    unsigned int _mediaControlInfoSubVersion;
     unsigned int _switches;
+    BOOL _oneToOneModeSupported;
     struct {
         unsigned int capabilities:1;
+        unsigned int linkProbingCapabilityVersion:1;
+        unsigned int mediaControlInfoSubVersion:1;
         unsigned int switches:1;
+        unsigned int oneToOneModeSupported:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int capabilities; // @synthesize capabilities=_capabilities;
 @property (nonatomic) BOOL hasCapabilities;
+@property (nonatomic) BOOL hasLinkProbingCapabilityVersion;
+@property (nonatomic) BOOL hasMediaControlInfoSubVersion;
+@property (nonatomic) BOOL hasOneToOneModeSupported;
 @property (nonatomic) BOOL hasSwitches;
+@property (nonatomic) unsigned int linkProbingCapabilityVersion; // @synthesize linkProbingCapabilityVersion=_linkProbingCapabilityVersion;
+@property (nonatomic) unsigned int mediaControlInfoSubVersion; // @synthesize mediaControlInfoSubVersion=_mediaControlInfoSubVersion;
+@property (nonatomic) BOOL oneToOneModeSupported; // @synthesize oneToOneModeSupported=_oneToOneModeSupported;
 @property (nonatomic) unsigned int switches; // @synthesize switches=_switches;
 
 - (BOOL)SIPDisabled;
@@ -31,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned char)mediaControlInfoFECFeedbackVersion;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (BOOL)secureMessagingRequired;

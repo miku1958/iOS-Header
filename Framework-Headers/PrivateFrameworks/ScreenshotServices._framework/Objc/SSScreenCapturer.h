@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <ScreenshotServices/SSScreenshotsWindowDelegate-Protocol.h>
 #import <ScreenshotServices/SSTestingCoordinatorDelegate-Protocol.h>
 #import <ScreenshotServices/SSUIServiceServerDelegate-Protocol.h>
 
-@class RCPEventStreamRecorder, RCPScreenRecorder, SSApplicationScreenshotSupplementalDataCapturer, SSDittoRemoteConnection, SSScreenshotsWindow, SSSnapshotter, SSTestingCoordinator, SSUIServiceServer, UIWindow;
+@class FBSDisplayLayoutMonitor, RCPEventStreamRecorder, RCPScreenRecorder, SSApplicationScreenshotSupplementalDataCapturer, SSDittoRemoteConnection, SSScreenshotsWindow, SSSnapshotter, SSTestingCoordinator, SSUIServiceServer, UIWindow;
 @protocol SSScreenCapturerDelegate;
 
-@interface SSScreenCapturer : NSObject <SSUIServiceServerDelegate, SSTestingCoordinatorDelegate>
+@interface SSScreenCapturer : NSObject <SSUIServiceServerDelegate, SSTestingCoordinatorDelegate, SSScreenshotsWindowDelegate>
 {
     SSSnapshotter *_snapshotter;
     SSDittoRemoteConnection *_dittoRemoteConnection;
@@ -22,13 +23,13 @@
     SSScreenshotsWindow *_serviceWindow;
     RCPEventStreamRecorder *_recap;
     RCPScreenRecorder *_recapSnapshotter;
+    FBSDisplayLayoutMonitor *_layoutMonitor;
     id<SSScreenCapturerDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<SSScreenCapturerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIWindow *screenshotsWindow;
 
-+ (id)_currentDisplayLayout;
 + (BOOL)_filesAppExistsOnSystem;
 + (void)playScreenshotSound;
 + (BOOL)shouldUseScreenCapturerForScreenshots;
@@ -40,6 +41,7 @@
 - (void)_captureAndSendDocumentForEnvironmentElement:(id)arg1;
 - (void)_captureAndSendMetadataAndDocumentForEnvironmentDescription:(id)arg1;
 - (void)_captureAndSendMetadataForEnvironmentElement:(id)arg1 sendCompletion:(CDUnknownBlockType)arg2;
+- (id)_currentDisplayLayout;
 - (id)_environmentDescriptionFromImage:(id)arg1;
 - (void)_preheatAndTakeScreenshotIfPossibleWithOptionsCollection:(id)arg1 presentationOptions:(id)arg2 appleInternalOptions:(id)arg3;
 - (void)_saveImageToPhotoLibrary:(id)arg1 environmentDescription:(id)arg2;
@@ -47,8 +49,11 @@
 - (void)_sendEnvironmentDescription:(id)arg1 savingImageToPhotos:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_takeScreenshotWithOptionsCollection:(id)arg1 presentationOptions:(id)arg2 appleInternalOptions:(id)arg3;
 - (id)_testingCoordinator;
+- (void)dealloc;
 - (id)init;
 - (void)preheatWithPresentationOptions:(id)arg1;
+- (void)screenshotWindowWasDismissed;
+- (void)screenshotWindowWillBeDisplayed;
 - (void)server:(id)arg1 handleRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)startRecap;
 - (void)takeScreenshot;

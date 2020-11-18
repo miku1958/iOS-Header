@@ -5,10 +5,11 @@
 //
 
 #import <NeutrinoCore/NUImageTile-Protocol.h>
+#import <NeutrinoCore/NUSharableImage-Protocol.h>
 
 @class NUGLTexture;
 
-@protocol NUTextureTile <NUImageTile>
+@protocol NUTextureTile <NUImageTile, NUSharableImage>
 
 @property (readonly, nonatomic) NUGLTexture *texture;
 

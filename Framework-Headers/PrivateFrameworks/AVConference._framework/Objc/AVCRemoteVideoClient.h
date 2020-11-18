@@ -48,13 +48,16 @@
 @property (nonatomic) BOOL shouldDisplayVideoInfoLayer; // @synthesize shouldDisplayVideoInfoLayer=_shouldDisplayVideoInfoLayer;
 @property (readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 
+- (void)adjustInfoSubLayerBounds:(struct CGRect)arg1 forSuperLayer:(id)arg2;
 - (void)cleanupSubLayerForMode:(int)arg1;
 - (void)dealloc;
 - (void)didReceiveFirstRemoteFrameForStreamToken:(long long)arg1;
 - (void)drawText:(id)arg1 inSubLayer:(id)arg2;
+- (id)findInfoSubLayerFromLayer:(id)arg1;
 - (id)initWithStreamToken:(long long)arg1 delegate:(id)arg2;
 - (void)insertInfoSubLayerIntoLayer:(id)arg1 videoMode:(int)arg2;
 - (void)insertSubLayerInLayer:(id)arg1 videoMode:(int)arg2 videoSlot:(id)arg3;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)releaseQueueForStreamToken:(long long)arg1;
 - (void)remoteMediaDidStall:(BOOL)arg1 streamToken:(long long)arg2;
 - (void)remoteScreenAttributesDidChange:(id)arg1 streamToken:(long long)arg2;

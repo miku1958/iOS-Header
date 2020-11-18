@@ -41,7 +41,6 @@
 - (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)jsonData;
-- (id)objectForLookupKey:(id)arg1;
 - (void)storeObject:(id)arg1 forLookupKey:(id)arg2;
 - (void)storeValue:(id)arg1 forLookupKey:(id)arg2;
 - (id)valueForLookupKey:(id)arg1;

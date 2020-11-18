@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
 
@@ -12,14 +12,14 @@
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebErrorPageModel : AMSUIWebModel <AMSUIWebPageProvider>
+@interface AMSUIWebErrorPageModel : NSObject <AMSUIWebPageProvider>
 {
     BOOL _errorMessageInternalOnly;
+    NSString *_errorMessage;
     AMSUIWebNavigationBarModel *_navigationBar;
     id<AMSUIWebActionRunnable> _action;
     CDUnknownBlockType _actionBlock;
     NSString *_actionButtonTitle;
-    NSString *_errorMessage;
     NSString *_errorTitle;
     AMSUIWebClientContext *_context;
 }
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL disableReappearPlaceholder;
-@property (strong, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
+@property (readonly, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
 @property (nonatomic) BOOL errorMessageInternalOnly; // @synthesize errorMessageInternalOnly=_errorMessageInternalOnly;
 @property (strong, nonatomic) NSString *errorTitle; // @synthesize errorTitle=_errorTitle;
 @property (readonly) unsigned long long hash;

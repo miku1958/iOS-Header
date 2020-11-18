@@ -32,6 +32,7 @@
     BOOL _convertsPositionStyleOnCopy;
     BOOL _allowsMetaRefresh;
     BOOL _allowUniversalAccessFromFileURLs;
+    BOOL _allowTopNavigationToDataURLs;
     struct LazyInitialized<WTF::RetainPtr<WKWebViewContentProviderRegistry>> _contentProviderRegistry;
     BOOL _allowsInlineMediaPlayback;
     BOOL _inlineMediaPlaybackRequiresPlaysInlineAttribute;
@@ -71,6 +72,7 @@
 
 @property (copy, nonatomic, setter=_setAdditionalSupportedImageTypes:) NSArray *_additionalSupportedImageTypes;
 @property (nonatomic, setter=_setAllowMediaContentTypesRequiringHardwareSupportAsFallback:) BOOL _allowMediaContentTypesRequiringHardwareSupportAsFallback;
+@property (nonatomic, setter=_setAllowTopNavigationToDataURLs:) BOOL _allowTopNavigationToDataURLs;
 @property (nonatomic, setter=_setAllowUniversalAccessFromFileURLs:) BOOL _allowUniversalAccessFromFileURLs;
 @property (nonatomic, setter=_setAllowsInlineMediaPlaybackAfterFullscreen:) BOOL _allowsInlineMediaPlaybackAfterFullscreen;
 @property (nonatomic, setter=_setAllowsJavaScriptMarkup:) BOOL _allowsJavaScriptMarkup;
@@ -90,16 +92,21 @@
 @property (nonatomic, getter=_isControlledByAutomation, setter=_setControlledByAutomation:) BOOL _controlledByAutomation;
 @property (nonatomic, setter=_setConvertsPositionStyleOnCopy:) BOOL _convertsPositionStyleOnCopy;
 @property (copy, nonatomic, setter=_setCORSDisablingPatterns:) NSArray *_corsDisablingPatterns;
+@property (nonatomic, setter=_setCrossOriginAccessControlCheckEnabled:) BOOL _crossOriginAccessControlCheckEnabled;
+@property (nonatomic, setter=_setDeferrableUserScriptsShouldWaitUntilNotification:) BOOL _deferrableUserScriptsShouldWaitUntilNotification;
 @property (nonatomic, setter=_setDragLiftDelay:) unsigned long long _dragLiftDelay;
 @property (nonatomic, setter=_setDrawsBackground:) BOOL _drawsBackground;
 @property (nonatomic, setter=_setEditableImagesEnabled:) BOOL _editableImagesEnabled;
 @property (copy, nonatomic, setter=_setGroupIdentifier:) NSString *_groupIdentifier;
+@property (nonatomic, setter=_setIgnoresAppBoundDomains:) BOOL _ignoresAppBoundDomains;
 @property (nonatomic, setter=_setIncompleteImageBorderEnabled:) BOOL _incompleteImageBorderEnabled;
 @property (nonatomic, setter=_setIncrementalRenderingSuppressionTimeout:) double _incrementalRenderingSuppressionTimeout;
 @property (nonatomic, setter=_setInitialCapitalizationEnabled:) BOOL _initialCapitalizationEnabled;
 @property (nonatomic, setter=_setInlineMediaPlaybackRequiresPlaysInlineAttribute:) BOOL _inlineMediaPlaybackRequiresPlaysInlineAttribute;
 @property (nonatomic, setter=_setInvisibleAutoplayNotPermitted:) BOOL _invisibleAutoplayNotPermitted;
 @property (nonatomic, setter=_setLegacyEncryptedMediaAPIEnabled:) BOOL _legacyEncryptedMediaAPIEnabled;
+@property (nonatomic, setter=_setLoadsFromNetwork:) BOOL _loadsFromNetwork;
+@property (nonatomic, setter=_setLoadsSubresources:) BOOL _loadsSubresources;
 @property (nonatomic, setter=_setLongPressActionsEnabled:) BOOL _longPressActionsEnabled;
 @property (nonatomic, setter=_setMainContentUserGestureOverrideEnabled:) BOOL _mainContentUserGestureOverrideEnabled;
 @property (nonatomic, setter=_setMediaContentTypesRequiringHardwareSupport:) NSString *_mediaContentTypesRequiringHardwareSupport;
@@ -107,18 +114,20 @@
 @property (nonatomic, setter=_setNeedsStorageAccessFromFileURLsQuirk:) BOOL _needsStorageAccessFromFileURLsQuirk;
 @property (nonatomic, setter=_setOverrideContentSecurityPolicy:) NSString *_overrideContentSecurityPolicy;
 @property (nonatomic, setter=_setPrintsBackgrounds:) BOOL _printsBackgrounds;
+@property (nonatomic, setter=_setProcessDisplayName:) NSString *_processDisplayName;
 @property (weak, nonatomic, setter=_setRelatedWebView:) WKWebView *_relatedWebView;
 @property (nonatomic, setter=_setRequiresUserActionForAudioPlayback:) BOOL _requiresUserActionForAudioPlayback;
 @property (nonatomic, setter=_setRequiresUserActionForVideoPlayback:) BOOL _requiresUserActionForVideoPlayback;
 @property (nonatomic, setter=_setRespectsImageOrientation:) BOOL _respectsImageOrientation;
 @property (nonatomic, setter=_setShouldDecidePolicyBeforeLoadingQuickLookPreview:) BOOL _shouldDecidePolicyBeforeLoadingQuickLookPreview;
 @property (nonatomic, setter=_setShouldDeferAsynchronousScriptsUntilAfterDocumentLoad:) BOOL _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
+@property (nonatomic, setter=_setShouldRelaxThirdPartyCookieBlocking:) BOOL _shouldRelaxThirdPartyCookieBlocking;
 @property (nonatomic, setter=_setSystemPreviewEnabled:) BOOL _systemPreviewEnabled;
 @property (nonatomic, setter=_setTextInteractionGesturesEnabled:) BOOL _textInteractionGesturesEnabled;
-@property (nonatomic, setter=_setTreatsSHA1SignedCertificatesAsInsecure:) BOOL _treatsSHA1SignedCertificatesAsInsecure;
 @property (nonatomic, setter=_setUndoManagerAPIEnabled:) BOOL _undoManagerAPIEnabled;
 @property (strong, nonatomic, setter=_setVisitedLinkStore:) _WKVisitedLinkStore *_visitedLinkStore;
 @property (nonatomic, setter=_setWaitsForPaintAfterViewDidMoveToWindow:) BOOL _waitsForPaintAfterViewDidMoveToWindow;
+@property (nonatomic, setter=_setWebViewCategory:) unsigned long long _webViewCategory;
 @property (strong, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
 @property (readonly, nonatomic) WKWebsiteDataStore *_websiteDataStoreIfExists;
 @property (nonatomic) BOOL allowsAirPlayForMediaPlayback; // @synthesize allowsAirPlayForMediaPlayback=_allowsAirPlayForMediaPlayback;
@@ -128,6 +137,7 @@
 @property (nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
 @property (copy, nonatomic) WKWebpagePreferences *defaultWebpagePreferences;
 @property (nonatomic) BOOL ignoresViewportScaleLimits; // @synthesize ignoresViewportScaleLimits=_ignoresViewportScaleLimits;
+@property (nonatomic) BOOL limitsNavigationsToAppBoundDomains;
 @property (nonatomic) BOOL mediaPlaybackAllowsAirPlay;
 @property (nonatomic) BOOL mediaPlaybackRequiresUserAction;
 @property (nonatomic) unsigned long long mediaTypesRequiringUserActionForPlayback; // @synthesize mediaTypesRequiringUserActionForPlayback=_mediaTypesRequiringUserActionForPlayback;

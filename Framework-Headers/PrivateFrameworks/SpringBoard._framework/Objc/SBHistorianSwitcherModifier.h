@@ -6,35 +6,26 @@
 
 #import <SpringBoard/SBSwitcherModifier.h>
 
-#import <SpringBoard/SBFluidSwitcherScrollProviding-Protocol.h>
+@protocol SBHistorianSwitcherModifierDelegate;
 
-@class NSString;
-@protocol SBFluidSwitcherScrollProviding, SBFluidSwitcherScrollProvidingDelegate, SBHistorianSwitcherModifierDelegate;
-
-@interface SBHistorianSwitcherModifier : SBSwitcherModifier <SBFluidSwitcherScrollProviding>
+@interface SBHistorianSwitcherModifier : SBSwitcherModifier
 {
-    id<SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
     id<SBHistorianSwitcherModifierDelegate> _historianDelegate;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_rootModifier;
+    SBSwitcherModifier *_rootModifier;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<SBHistorianSwitcherModifierDelegate> historianDelegate; // @synthesize historianDelegate=_historianDelegate;
-@property (readonly, nonatomic) SBSwitcherModifier<SBFluidSwitcherScrollProviding> *rootModifier; // @synthesize rootModifier=_rootModifier;
-@property (weak, nonatomic) id<SBFluidSwitcherScrollProvidingDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) SBSwitcherModifier *rootModifier; // @synthesize rootModifier=_rootModifier;
 
 + (BOOL)canLogEvent:(id)arg1;
 - (void).cxx_destruct;
-- (id)_actionSnapshotFromAction:(id)arg1;
 - (id)_eventSnapshotFromEvent:(id)arg1;
 - (id)_modifierStackSnapshotFromModifier:(id)arg1;
+- (void)_populateAppLayoutQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4;
 - (void)_populateIndexedQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4 appLayouts:(id)arg5;
 - (void)_populateQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4 appLayouts:(id)arg5;
 - (id)_querySnapshotFromModifier:(id)arg1;
-- (id)forwardingTargetForSelector:(SEL)arg1;
+- (id)_responseSnapshotFromResponse:(id)arg1;
 - (id)handleEvent:(id)arg1;
 - (id)initWithRootModifier:(id)arg1;
 - (void)setDelegate:(id)arg1;

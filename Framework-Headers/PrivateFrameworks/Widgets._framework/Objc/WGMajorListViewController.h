@@ -28,7 +28,7 @@
 @property (weak, nonatomic) id<WGMajorListViewControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *extraViews;
-@property (readonly, nonatomic) UIView *extraViewsContainer;
+@property (readonly, copy, nonatomic) NSArray *extraViewsContainers;
 @property (readonly, nonatomic) WGWidgetListFooterView *footerView; // @synthesize footerView=_footerView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *headerContentViewController; // @synthesize headerContentViewController=_headerContentViewController;
@@ -49,6 +49,11 @@
 - (void)_updateFooterViewShouldBlurContent;
 - (void)_updateFooterVisibility;
 - (void)_updateHeaderVisibility;
+- (void)editButtonTapped:(id)arg1;
+- (id)editingMaterialViewForWidgetListFooterView:(id)arg1;
+- (void)enumerateWidgetWrapperViewsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)extraViewsContainer;
+- (void)invalidateVisibleWidgets;
 - (void)presentEditView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setEditingIcons:(BOOL)arg1;

@@ -11,9 +11,10 @@
 
 @interface GEOTileServerRemoteProxy : GEOTileServerProxy
 {
-    NSObject<OS_dispatch_queue> *_connectionReplyQueue;
+    NSObject<OS_dispatch_queue> *_connectionIncomingQueue;
     NSObject<OS_xpc_object> *_connection;
     NSObject<OS_dispatch_queue> *_connectionSendIsolation;
+    int _diskCacheDeletedExternalDataNotifyToken;
 }
 
 - (void).cxx_destruct;
@@ -40,7 +41,7 @@
 - (void)open;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2 batchID:(int)arg3;
-- (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
+- (void)shrinkDiskCacheToSize:(unsigned long long)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
 
 @end

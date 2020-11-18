@@ -10,9 +10,11 @@
 {
     unsigned long long _heapResourceOptions;
     long long _heapType;
+    unsigned long long _gpuAddress;
 }
 
 @property (readonly) unsigned long long cpuCacheMode;
+@property (readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
 @property (readonly) unsigned long long hazardTrackingMode;
 @property (readonly) unsigned long long resourceOptions;
 @property (readonly) unsigned long long storageMode;

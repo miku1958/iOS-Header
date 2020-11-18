@@ -12,8 +12,10 @@
 
 + (id)_localeString;
 + (id)hu_allowAccessWhileLockedSettingsURL;
++ (id)hu_appStoreURLForBundleIdentifier:(id)arg1;
 + (id)hu_applePrivacyURL;
 + (id)hu_cameraRecordingURL;
++ (id)hu_faceRecognitionPrivacyURL;
 + (id)hu_learnAboutNetworkProtectionURL;
 + (id)hu_learnAboutNetworksRequiringProfilesURL;
 + (id)hu_learnAboutUnshareableNetworksURL;
@@ -23,6 +25,7 @@
 + (id)hu_notificationSettingsURL;
 + (id)hu_openiCloudKeychainPreferences;
 + (id)hu_openiCloudPreferencesURL;
++ (id)hu_photosLibraryPeopleAlbumURL;
 + (id)hu_wifiSettingsURL;
 @end
 

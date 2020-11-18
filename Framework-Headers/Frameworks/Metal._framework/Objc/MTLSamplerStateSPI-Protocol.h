@@ -8,7 +8,9 @@
 
 @protocol MTLSamplerStateSPI <MTLSamplerState>
 
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
+@property (readonly, nonatomic) unsigned long long pixelFormat;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long uniqueIdentifier;
 
 

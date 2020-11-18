@@ -19,7 +19,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (struct CGRect)clipRect;
 - (BOOL)directlyManagesLayerContent;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isOpaque;

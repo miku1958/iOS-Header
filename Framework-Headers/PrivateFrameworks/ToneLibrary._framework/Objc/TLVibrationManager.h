@@ -31,7 +31,7 @@
 + (void)_handleVibrationPreferencesDidChangeNotificationForPreferencesKinds:(unsigned long long)arg1 atInitiativeOfVibrationManager:(id)arg2;
 + (id)sharedVibrationManager;
 - (void).cxx_destruct;
-- (BOOL)_areSynchronizedVibrationsAllowedForAlertType:(long long)arg1;
+- (BOOL)_areSynchronizedVibrationsAllowedForAlertType:(long long)arg1 topic:(id)arg2;
 - (BOOL)_booleanPreferenceForKey:(struct __CFString *)arg1 defaultValue:(BOOL)arg2;
 - (id)_completeSystemVibrationsSubdirectoryForSubdirectory:(id)arg1;
 - (id)_currentVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2;

@@ -10,7 +10,6 @@
 {
 }
 
-+ (unsigned int)_mainExecutableSDKVersion;
 + (BOOL)supportsAutoreleasePoolDuringPlugInLaunch;
 
 @end

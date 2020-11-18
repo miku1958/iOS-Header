@@ -6,19 +6,33 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class NSMutableDictionary;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGNaturalLanguageDissector : SGPipelineDissector
+@class NSMutableDictionary, NSString;
+
+@interface SGNaturalLanguageDissector : SGPipelineDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     NSMutableDictionary *_conversations;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)_personForCSPerson:(id)arg1;
 + (BOOL)allowNaturalLanguageDissector;
-+ (id)ipsosMessageWithEntity:(id)arg1 store:(id)arg2;
++ (id)ipsosMessageWithMailMessage:(id)arg1 store:(id)arg2;
++ (id)ipsosMessageWithTextMessage:(id)arg1 store:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)_shouldProcessMessage:(id)arg1 entity:(id)arg2;
+- (void)_tagNaturalLanguageEnrichmentsForEntity:(id)arg1;
 - (void)addEnrichmentForEvents:(id)arg1 forMessage:(id)arg2 toEntity:(id)arg3;
+- (void)clearConversations;
 - (id)conversationWithIdentifier:(id)arg1;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (id)init;
 - (id)initWithoutSharedInstance;
 

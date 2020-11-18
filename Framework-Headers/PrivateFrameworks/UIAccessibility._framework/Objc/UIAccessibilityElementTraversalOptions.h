@@ -17,22 +17,20 @@
     BOOL _includeHiddenViews;
     BOOL _includeWindowlessViews;
     BOOL _sorted;
-    BOOL _ignoreObscuresScreen;
-    BOOL _includeDirectDescendantsOnly;
     BOOL _includeAncestorsOfSelfInSiblingMatch;
     BOOL _forSpeakScreen;
     BOOL _shouldIncludeStatusBarWindow;
     long long _direction;
     CDUnknownBlockType _leafNodePredicate;
     NSArray *_allowedViewsForTraversal;
+    CDUnknownBlockType _alternateViewChildrenHandler;
 }
 
 @property (strong, nonatomic) NSArray *allowedViewsForTraversal; // @synthesize allowedViewsForTraversal=_allowedViewsForTraversal;
+@property (copy, nonatomic) CDUnknownBlockType alternateViewChildrenHandler; // @synthesize alternateViewChildrenHandler=_alternateViewChildrenHandler;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (nonatomic) BOOL forSpeakScreen; // @synthesize forSpeakScreen=_forSpeakScreen;
-@property (nonatomic) BOOL ignoreObscuresScreen; // @synthesize ignoreObscuresScreen=_ignoreObscuresScreen;
 @property (nonatomic) BOOL includeAncestorsOfSelfInSiblingMatch; // @synthesize includeAncestorsOfSelfInSiblingMatch=_includeAncestorsOfSelfInSiblingMatch;
-@property (nonatomic) BOOL includeDirectDescendantsOnly; // @synthesize includeDirectDescendantsOnly=_includeDirectDescendantsOnly;
 @property (nonatomic) BOOL includeHiddenViews; // @synthesize includeHiddenViews=_includeHiddenViews;
 @property (nonatomic) BOOL includeWindowlessViews; // @synthesize includeWindowlessViews=_includeWindowlessViews;
 @property (copy, nonatomic) CDUnknownBlockType leafNodePredicate; // @synthesize leafNodePredicate=_leafNodePredicate;
@@ -46,7 +44,9 @@
 + (id)defaultSpeakScreenOptions;
 + (id)defaultSwitchControlOptions;
 + (id)defaultVoiceOverOptions;
++ (id)defaultVoiceOverOptionsHonoringGroupsForContainer:(id)arg1;
 + (id)options;
++ (id)optionsHonoringGroupsForContainer:(id)arg1;
 + (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)description;

@@ -6,16 +6,35 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSArray, NSString, UILabel;
+#import <HomeUI/HFItemSectionAccessoryButtonHeader-Protocol.h>
 
-@interface HUQuickControlSectionHeaderView : UICollectionReusableView
+@class HFItemSection, NSArray, NSString, UIButton, UILabel;
+@protocol HFItemSectionAccessoryButtonHeaderDelegate;
+
+@interface HUQuickControlSectionHeaderView : UICollectionReusableView <HFItemSectionAccessoryButtonHeader>
 {
+    BOOL _hideSeparator;
+    HFItemSection *itemSection;
     NSString *_titleText;
+    NSString *_accessoryButtonTitleText;
+    id<HFItemSectionAccessoryButtonHeaderDelegate> _accessoryButtonTarget;
     UILabel *_titleLabel;
     NSArray *_labelConstraints;
+    UIButton *_accessoryButton;
+    NSArray *_accessoryButtonConstraints;
 }
 
+@property (strong, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
+@property (strong, nonatomic) NSArray *accessoryButtonConstraints; // @synthesize accessoryButtonConstraints=_accessoryButtonConstraints;
+@property (weak, nonatomic) id<HFItemSectionAccessoryButtonHeaderDelegate> accessoryButtonTarget; // @synthesize accessoryButtonTarget=_accessoryButtonTarget;
+@property (strong, nonatomic) NSString *accessoryButtonTitleText; // @synthesize accessoryButtonTitleText=_accessoryButtonTitleText;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideSeparator; // @synthesize hideSeparator=_hideSeparator;
+@property (strong, nonatomic) HFItemSection *itemSection; // @synthesize itemSection;
 @property (strong, nonatomic) NSArray *labelConstraints; // @synthesize labelConstraints=_labelConstraints;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 
@@ -23,10 +42,13 @@
 + (double)estimatedHeight;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (void)accessoryButtonTapped;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
 - (void)updateConstraints;
+- (void)updateUIForReachabilityState:(unsigned long long)arg1;
+- (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end
 

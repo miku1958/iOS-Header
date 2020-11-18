@@ -30,6 +30,7 @@
 - (id)initWithLocalizedTitle:(id)arg1 localizedBody:(id)arg2 isLongForm:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToProfileWarning:(id)arg1;
+- (id)serializedDictionary;
 
 @end
 

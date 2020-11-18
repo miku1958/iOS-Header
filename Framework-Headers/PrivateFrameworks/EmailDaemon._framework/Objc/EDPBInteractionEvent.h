@@ -10,7 +10,7 @@
 #import <EmailDaemon/EDPETMessageFrameTypeIntrospectable-Protocol.h>
 #import <EmailDaemon/NSCopying-Protocol.h>
 
-@class EDPBInteractionEventAppBackground, EDPBInteractionEventAppLaunch, EDPBInteractionEventAppResume, EDPBInteractionEventFlagChanged, EDPBInteractionEventForwardDraftStarted, EDPBInteractionEventForwardSent, EDPBInteractionEventLinkClicked, EDPBInteractionEventMarkedMuteThread, EDPBInteractionEventMessageCopied, EDPBInteractionEventMessageFetched, EDPBInteractionEventMessageMoved, EDPBInteractionEventMessageSent, EDPBInteractionEventMessageViewEnd, EDPBInteractionEventMessageViewStart, EDPBInteractionEventReadChanged, EDPBInteractionEventReplyDraftStarted, EDPBInteractionEventReplySent;
+@class EDPBInteractionEventAppBackground, EDPBInteractionEventAppLaunch, EDPBInteractionEventAppResume, EDPBInteractionEventCategoryInferred, EDPBInteractionEventCategoryMarked, EDPBInteractionEventFlagChanged, EDPBInteractionEventForwardDraftStarted, EDPBInteractionEventForwardSent, EDPBInteractionEventLinkClicked, EDPBInteractionEventMarkedMuteThread, EDPBInteractionEventMessageCopied, EDPBInteractionEventMessageFetched, EDPBInteractionEventMessageMoved, EDPBInteractionEventMessageSent, EDPBInteractionEventMessageViewEnd, EDPBInteractionEventMessageViewStart, EDPBInteractionEventReadChanged, EDPBInteractionEventReplyDraftStarted, EDPBInteractionEventReplySent;
 
 @interface EDPBInteractionEvent : PBCodable <EDPETMessageFrameTypeIntrospectable, EDPBDataSetters, NSCopying>
 {
@@ -18,6 +18,8 @@
     EDPBInteractionEventAppBackground *_appBackground;
     EDPBInteractionEventAppLaunch *_appLaunch;
     EDPBInteractionEventAppResume *_appResume;
+    EDPBInteractionEventCategoryInferred *_categoryInferred;
+    EDPBInteractionEventCategoryMarked *_categoryMarked;
     int _eventName;
     EDPBInteractionEventFlagChanged *_flagChanged;
     EDPBInteractionEventForwardDraftStarted *_forwardDraftStarted;
@@ -44,6 +46,8 @@
 @property (strong, nonatomic) EDPBInteractionEventAppBackground *appBackground; // @synthesize appBackground=_appBackground;
 @property (strong, nonatomic) EDPBInteractionEventAppLaunch *appLaunch; // @synthesize appLaunch=_appLaunch;
 @property (strong, nonatomic) EDPBInteractionEventAppResume *appResume; // @synthesize appResume=_appResume;
+@property (strong, nonatomic) EDPBInteractionEventCategoryInferred *categoryInferred; // @synthesize categoryInferred=_categoryInferred;
+@property (strong, nonatomic) EDPBInteractionEventCategoryMarked *categoryMarked; // @synthesize categoryMarked=_categoryMarked;
 @property (nonatomic) int eventName; // @synthesize eventName=_eventName;
 @property (strong, nonatomic) EDPBInteractionEventFlagChanged *flagChanged; // @synthesize flagChanged=_flagChanged;
 @property (strong, nonatomic) EDPBInteractionEventForwardDraftStarted *forwardDraftStarted; // @synthesize forwardDraftStarted=_forwardDraftStarted;
@@ -51,6 +55,8 @@
 @property (readonly, nonatomic) BOOL hasAppBackground;
 @property (readonly, nonatomic) BOOL hasAppLaunch;
 @property (readonly, nonatomic) BOOL hasAppResume;
+@property (readonly, nonatomic) BOOL hasCategoryInferred;
+@property (readonly, nonatomic) BOOL hasCategoryMarked;
 @property (nonatomic) BOOL hasEventName;
 @property (readonly, nonatomic) BOOL hasFlagChanged;
 @property (readonly, nonatomic) BOOL hasForwardDraftStarted;

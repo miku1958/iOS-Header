@@ -53,9 +53,8 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_addEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleEventTriggerConditionNotification:(id)arg1;
-- (void)_handleEventTriggerExecuteOnceNotification:(id)arg1;
-- (void)_handleEventTriggerRecurrencesNotification:(id)arg1;
+- (void)_handleAddEventFromResponse:(id)arg1 newEventPayload:(id)arg2;
+- (void)_handleEventsRemovedFromResponse:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_removeEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -63,6 +62,7 @@
 - (BOOL)_updateCharacterisiticReferenceInNewEvent:(id)arg1;
 - (void)_updateCharacteristicReference;
 - (void)_updateEvents:(id)arg1 endEvent:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateEventsFromResponse:(id)arg1 responsePayload:(id)arg2;
 - (void)_updateExecuteOnce:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updatePredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateRecurrences:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -72,9 +72,6 @@
 - (BOOL)containsSharedTriggerActivationBits;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleActivationStateNotification:(id)arg1;
-- (void)handleEventAddedNotification:(id)arg1;
-- (void)handleEventsRemovedNotification:(id)arg1;
-- (void)handleEventsUpdatedNotification:(id)arg1;
 - (id)initInternalWithName:(id)arg1 events:(id)arg2 endEvents:(id)arg3 recurrences:(id)arg4 predicate:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 events:(id)arg2 endEvents:(id)arg3 recurrences:(id)arg4 predicate:(id)arg5;

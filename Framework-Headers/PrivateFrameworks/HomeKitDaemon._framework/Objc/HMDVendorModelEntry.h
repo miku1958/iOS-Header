@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
+- (long long)compare:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithManufacturer:(id)arg1 model:(id)arg2 appBundleID:(id)arg3 appStoreID:(id)arg4 firmwareVersion:(id)arg5 productData:(id)arg6 productDataAlternates:(id)arg7;
 - (BOOL)isEqual:(id)arg1;

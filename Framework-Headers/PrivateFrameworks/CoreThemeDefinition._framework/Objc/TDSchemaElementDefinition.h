@@ -11,8 +11,8 @@
 }
 
 + (unsigned long long)elementDefinitionCountWithSchema:(id)arg1;
-+ (const CDStruct_e3362728 *)elementDefinitionWithName:(id)arg1 withSchema:(id)arg2;
-+ (const CDStruct_e3362728 *)sortedElementDefinitionAtIndex:(unsigned long long)arg1 withSchema:(id)arg2;
++ (const CDStruct_22c2ae3f *)elementDefinitionWithName:(id)arg1 withSchema:(id)arg2;
++ (const CDStruct_22c2ae3f *)sortedElementDefinitionAtIndex:(unsigned long long)arg1 withSchema:(id)arg2;
 
 @end
 

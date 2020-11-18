@@ -12,7 +12,6 @@
 {
 }
 
-@property (strong, nonatomic) TDThemeConstant *artworkDraftType; // @dynamic artworkDraftType;
 @property (strong, nonatomic) TDRenditionKeySpec *baseKeySpec; // @dynamic baseKeySpec;
 @property (strong, nonatomic) NSString *comment; // @dynamic comment;
 @property (strong, nonatomic) NSDate *dateOfLastChange; // @dynamic dateOfLastChange;

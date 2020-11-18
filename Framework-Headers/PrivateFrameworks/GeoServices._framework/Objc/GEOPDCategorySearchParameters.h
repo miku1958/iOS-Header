@@ -8,50 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDRecentRouteInfo, GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
+@class GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDSSearchEvChargingParameters, GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _supportedRelatedEntitySectionTypes;
+    CDStruct_95bda58d _supportedSearchTierTypes;
+    GEOPDETAFilter *_etaFilter;
+    GEOPDSSearchEvChargingParameters *_evChargingParameters;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     NSData *_suggestionEntryMetadata;
     GEOPDViewportInfo *_viewportInfo;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _auxiliaryTierNumResults;
     unsigned int _blurredHourOfDay;
     unsigned int _dayOfWeek;
     unsigned int _maxResults;
     int _searchType;
     BOOL _supportCategorySearchResultSection;
     struct {
+        unsigned int has_auxiliaryTierNumResults:1;
         unsigned int has_blurredHourOfDay:1;
         unsigned int has_dayOfWeek:1;
         unsigned int has_maxResults:1;
         unsigned int has_searchType:1;
         unsigned int has_supportCategorySearchResultSection:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_supportedRelatedEntitySectionTypes:1;
+        unsigned int read_supportedSearchTierTypes:1;
+        unsigned int read_etaFilter:1;
+        unsigned int read_evChargingParameters:1;
         unsigned int read_recentRouteInfo:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_recentRouteInfo:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_blurredHourOfDay:1;
-        unsigned int wrote_dayOfWeek:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_searchType:1;
-        unsigned int wrote_supportCategorySearchResultSection:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (nonatomic) unsigned int auxiliaryTierNumResults;
 @property (nonatomic) unsigned int blurredHourOfDay;
 @property (nonatomic) unsigned int dayOfWeek;
+@property (strong, nonatomic) GEOPDETAFilter *etaFilter;
+@property (strong, nonatomic) GEOPDSSearchEvChargingParameters *evChargingParameters;
+@property (nonatomic) BOOL hasAuxiliaryTierNumResults;
 @property (nonatomic) BOOL hasBlurredHourOfDay;
 @property (nonatomic) BOOL hasDayOfWeek;
+@property (readonly, nonatomic) BOOL hasEtaFilter;
+@property (readonly, nonatomic) BOOL hasEvChargingParameters;
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasRecentRouteInfo;
 @property (nonatomic) BOOL hasSearchType;
@@ -63,28 +71,45 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int searchType;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata;
 @property (nonatomic) BOOL supportCategorySearchResultSection;
+@property (readonly, nonatomic) int *supportedRelatedEntitySectionTypes;
+@property (readonly, nonatomic) unsigned long long supportedRelatedEntitySectionTypesCount;
+@property (readonly, nonatomic) int *supportedSearchTierTypes;
+@property (readonly, nonatomic) unsigned long long supportedSearchTierTypesCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSearchType:(id)arg1;
-- (void)_readRecentRouteInfo;
-- (void)_readSuggestionEntryMetadata;
-- (void)_readViewportInfo;
+- (int)StringAsSupportedRelatedEntitySectionTypes:(id)arg1;
+- (int)StringAsSupportedSearchTierTypes:(id)arg1;
+- (void)addSupportedRelatedEntitySectionType:(int)arg1;
+- (void)addSupportedSearchTierType:(int)arg1;
+- (void)clearSupportedRelatedEntitySectionTypes;
+- (void)clearSupportedSearchTierTypes;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)searchTypeAsString:(int)arg1;
+- (void)setSupportedRelatedEntitySectionTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedSearchTierTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedRelatedEntitySectionTypeAtIndex:(unsigned long long)arg1;
+- (id)supportedRelatedEntitySectionTypesAsString:(int)arg1;
+- (int)supportedSearchTierTypeAtIndex:(unsigned long long)arg1;
+- (id)supportedSearchTierTypesAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -74,6 +74,7 @@
     NSString *_appID;
     NSDictionary *_appInfoPeer;
     NSDictionary *_appInfoSelf;
+    long long _bleClientUseCase;
     CUBLEConnection *_bleConnection;
     NSUUID *_blePeerIdentifier;
     CUBonjourDevice *_bonjourPeerDevice;
@@ -111,6 +112,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *appInfoPeer; // @synthesize appInfoPeer=_appInfoPeer;
 @property (copy, nonatomic) NSDictionary *appInfoSelf; // @synthesize appInfoSelf=_appInfoSelf;
 @property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
+@property (nonatomic) long long bleClientUseCase; // @synthesize bleClientUseCase=_bleClientUseCase;
 @property (strong, nonatomic) CUBLEConnection *bleConnection; // @synthesize bleConnection=_bleConnection;
 @property (copy, nonatomic) NSUUID *blePeerIdentifier; // @synthesize blePeerIdentifier=_blePeerIdentifier;
 @property (strong, nonatomic) CUBonjourDevice *bonjourPeerDevice; // @synthesize bonjourPeerDevice=_bonjourPeerDevice;

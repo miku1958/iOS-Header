@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLToolsComputePipelineState.h>
 
-@class MTLComputePipelineDescriptor, MTLComputePipelineReflection, NSArray;
+@class MTLComputePipelineDescriptor, MTLComputePipelineReflection;
 @protocol MTLFunction;
 
 @interface MTLDebugComputePipelineState : MTLToolsComputePipelineState
@@ -23,22 +23,25 @@
     id<MTLFunction> _function;
     MTLComputePipelineDescriptor *_descriptor;
     MTLComputePipelineReflection *_reflection;
-    NSArray *_imageFilterFunctions;
-    CDStruct_dbc1e4aa *_imageFilterFunctionInfo;
 }
 
 @property (readonly, nonatomic) MTLComputePipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property (readonly, nonatomic) id<MTLFunction> function; // @synthesize function=_function;
-@property (readonly, nonatomic) CDStruct_dbc1e4aa *imageFilterFunctionInfo; // @synthesize imageFilterFunctionInfo=_imageFilterFunctionInfo;
-@property (readonly, nonatomic) NSArray *imageFilterFunctions; // @synthesize imageFilterFunctions=_imageFilterFunctions;
 @property (readonly, nonatomic) MTLComputePipelineReflection *reflection; // @synthesize reflection=_reflection;
 
 - (void)dealloc;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (id)functionHandleToDebugFunctionHandle:(id)arg1 parentFunction:(id)arg2;
+- (id)functionHandleWithFunction:(id)arg1;
 - (id)getParameter:(id)arg1;
 - (id)initWithComputePipelineState:(id)arg1 reflection:(id)arg2 parent:(id)arg3 descriptor:(id)arg4;
-- (void)setImageFilterFunctions:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2;
+- (BOOL)isAncestorOf:(id)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (void)validateHandleForSetFunction:(id)arg1;
 
 @end
 

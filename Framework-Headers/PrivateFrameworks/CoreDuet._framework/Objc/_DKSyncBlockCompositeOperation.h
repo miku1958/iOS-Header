@@ -16,13 +16,8 @@
 
 @property (readonly) NSMutableArray *blocks; // @synthesize blocks=_blocks;
 
-+ (id)blockCompositeOperationWithBlock:(CDUnknownBlockType)arg1;
-+ (id)blockCompositeOperationWithParent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (void)addExecutionBlock:(CDUnknownBlockType)arg1;
 - (id)executionBlocks;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithParent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)isAsynchronous;
 - (void)main;
 

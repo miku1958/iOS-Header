@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <Photos/PHFetchedObject-Protocol.h>
+#import <Photos/PHBatchFetchedPropertySet-Protocol.h>
 #import <Photos/PHThumbnailAsset-Protocol.h>
 #import <Photos/_PLThumbnailLoadingAsset-Protocol.h>
 
 @class NSKnownKeysDictionary, NSManagedObjectID, NSString, PHPhotoLibrary;
 
-@interface PHThumbnailAsset : NSObject <_PLThumbnailLoadingAsset, PHFetchedObject, PHThumbnailAsset>
+@interface PHThumbnailAsset : NSObject <_PLThumbnailLoadingAsset, PHThumbnailAsset, PHBatchFetchedPropertySet>
 {
     NSKnownKeysDictionary *_dictionary;
-    unsigned short _firstPropertyIndex;
     NSManagedObjectID *_objectID;
 }
 
@@ -29,12 +28,18 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long thumbnailIndex;
 
++ (long long)batchSize;
++ (long long)cacheSize;
 + (id)entityName;
++ (id)fetchType;
 + (id)propertiesToFetch;
++ (id)propertiesToSortBy;
++ (BOOL)useNoIndexSelf;
++ (BOOL)useObjectFetchingContext;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)effectiveThumbnailIndex;
-- (id)initWithObjectID:(id)arg1 knownKeysDictionary:(id)arg2 firstKeyIndex:(unsigned short)arg3 photoLibrary:(id)arg4;
+- (id)initWithObjectID:(id)arg1 knownKeysDictionary:(id)arg2 photoLibrary:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)pl_photoLibrary;
 

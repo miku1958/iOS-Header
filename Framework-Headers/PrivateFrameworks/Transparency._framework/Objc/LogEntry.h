@@ -8,7 +8,7 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class NSData, NSMutableArray, SignedLogHead, TransparencyLogEntryVerifier, TransparencyManagedDataStore;
+@class NSData, NSDictionary, NSMutableArray, SignedLogHead, TransparencyLogEntryVerifier, TransparencyManagedDataStore;
 
 @interface LogEntry : GPBMessage <TransparencyVerifiable>
 {
@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *hashesOfPeersInPathToRootArray; // @dynamic hashesOfPeersInPathToRootArray;
 @property (readonly, nonatomic) unsigned long long hashesOfPeersInPathToRootArray_Count; // @dynamic hashesOfPeersInPathToRootArray_Count;
 @property (nonatomic) int logType; // @dynamic logType;
+@property (readonly) NSDictionary *metadata;
 @property (copy, nonatomic) NSData *nodeBytes; // @dynamic nodeBytes;
 @property (nonatomic) unsigned long long nodePosition; // @dynamic nodePosition;
 @property (strong, nonatomic) SignedLogHead *slh; // @dynamic slh;
@@ -26,6 +27,8 @@
 
 + (id)descriptor;
 - (BOOL)setInclusionResult:(unsigned long long)arg1 signedLogHead:(id)arg2 error:(id *)arg3;
+- (void)setMetadata:(id)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
 - (unsigned long long)verifyTLTEntryForPerApplicationLogHead:(id)arg1 error:(id *)arg2;
 - (unsigned long long)verifyWithError:(id *)arg1;
 

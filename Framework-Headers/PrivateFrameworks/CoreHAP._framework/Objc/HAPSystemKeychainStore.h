@@ -30,7 +30,7 @@
 + (id)systemStore;
 - (void).cxx_destruct;
 - (int)_addKeychainItem:(id)arg1 logDuplicateItemError:(BOOL)arg2;
-- (id)_auditAccessoryKeys:(id)arg1;
+- (id)_auditKeychainItems:(id)arg1 managedAccessories:(id)arg2;
 - (int)_createControllerPublicKey:(id *)arg1 secretKey:(id *)arg2 keyPair:(id *)arg3 username:(id *)arg4;
 - (int)_createMetadataSecretKey:(id *)arg1;
 - (int)_deleteAllPeripheralIdentifiers;
@@ -53,7 +53,7 @@
 - (int)_savePublicKey:(id)arg1 forAccessoryName:(id)arg2;
 - (int)_updateCurrentiCloudIdentifier:(id)arg1 controllerPairingIdentifier:(id)arg2;
 - (void)_updateKeychainItemToInvisible:(id)arg1;
-- (id)auditAccessoryKeys:(id)arg1;
+- (id)auditKeysOfManagedAccessories:(id)arg1;
 - (BOOL)deleteAllPeripheralIdentifiers:(id *)arg1;
 - (BOOL)deletePeripheralIdentifierForAccessoryIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)deserializeKeyPair:(id)arg1 publicKey:(id *)arg2 secretKey:(id *)arg3 error:(id *)arg4;

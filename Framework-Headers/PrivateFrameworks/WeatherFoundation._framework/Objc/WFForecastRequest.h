@@ -6,14 +6,15 @@
 
 #import <WeatherFoundation/WFTask.h>
 
-@class NSData, NSDateComponents, NSLocale, NSString, WFLocation;
+@class NSData, NSDate, NSDateComponents, NSLocale, NSString, WFLocation;
 
 @interface WFForecastRequest : WFTask
 {
     BOOL _attachRawAPIData;
     WFLocation *_location;
-    NSDateComponents *_date;
+    NSDate *_onDate;
     CDUnknownBlockType _completionHandler;
+    NSDateComponents *_date;
     unsigned long long _forecastType;
     NSData *_rawAPIData;
     NSLocale *_locale;
@@ -26,19 +27,21 @@
 @property (nonatomic) unsigned long long forecastType; // @synthesize forecastType=_forecastType;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (copy, nonatomic) WFLocation *location; // @synthesize location=_location;
+@property (readonly, nonatomic) NSDate *onDate; // @synthesize onDate=_onDate;
 @property (strong, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
 @property (strong, nonatomic) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 
 + (id)forecastRequestForLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)forecastRequestForLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)forecastRequestForLocation:(id)arg1 onDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)cleanup;
 - (id)description;
-- (id)editLinksForForecast:(id)arg1;
 - (void)handleCancellation;
 - (void)handleResponse:(id)arg1;
 - (id)initWithLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithLocation:(id)arg1 onDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startWithService:(id)arg1;
 
 @end

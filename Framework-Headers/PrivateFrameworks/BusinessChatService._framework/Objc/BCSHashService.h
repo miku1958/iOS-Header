@@ -10,9 +10,12 @@
 {
 }
 
-- (long long)SHA256HashForInputString:(id)arg1;
-- (long long)_SHA256HashForInputString:(id)arg1 includedBytes:(unsigned long long)arg2;
-- (long long)chatSuggestHashForPhoneNumber:(id)arg1;
++ (id)SHA256HashForInputString:(id)arg1;
++ (long long)SHA256TruncatedHashForInputString:(id)arg1 includedBytes:(unsigned long long)arg2;
++ (id)_SHA256DataForInputString:(id)arg1;
++ (long long)_truncatedHashForFullHashData:(id)arg1 includedBytes:(unsigned long long)arg2;
++ (BOOL)isValidFullHash:(id)arg1;
++ (long long)truncatedHashForFullHash:(id)arg1 includedBytes:(unsigned long long)arg2;
 
 @end
 

@@ -6,19 +6,12 @@
 
 #import <TSDrawables/TSDContainerRep-Protocol.h>
 
-@class NSArray, NSObject, TSDRep;
+@class NSObject;
 @protocol TSDMutableContainerInfo;
 
 @protocol TSDMutableContainerRep <TSDContainerRep>
 
 @property (readonly, nonatomic) NSObject<TSDMutableContainerInfo> *mutableContainerInfo;
 
-- (void)addChildRep:(TSDRep *)arg1;
-- (void)insertChildRep:(TSDRep *)arg1 above:(TSDRep *)arg2;
-- (void)insertChildRep:(TSDRep *)arg1 atIndex:(unsigned long long)arg2;
-- (void)insertChildRep:(TSDRep *)arg1 below:(TSDRep *)arg2;
-- (void)removeChildRep:(TSDRep *)arg1;
-- (void)replaceChildRep:(TSDRep *)arg1 with:(TSDRep *)arg2;
-- (void)setChildReps:(NSArray *)arg1;
 @end
 

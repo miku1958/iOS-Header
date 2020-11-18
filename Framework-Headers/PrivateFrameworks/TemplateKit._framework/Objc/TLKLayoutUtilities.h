@@ -10,10 +10,13 @@
 {
 }
 
-+ (void)applyRowBoundedSizingToImageView:(id)arg1;
-+ (double)bestScaleForView:(id)arg1;
++ (void)applyMinimumSizeTouchInsetsForControlsInView:(id)arg1;
++ (void)applyRowBoundedSizingToImageView:(id)arg1 isCompactWidth:(BOOL)arg2;
 + (double)ceilingValue:(double)arg1 inView:(id)arg2;
++ (double)contentHeightOfTableView:(id)arg1 forWidth:(double)arg2 maxHeight:(double)arg3;
++ (id)controlsInView:(id)arg1;
 + (double)deviceScaledFlooredValue:(double)arg1;
++ (struct UIEdgeInsets)deviceScaledRoundedInsets:(struct UIEdgeInsets)arg1;
 + (struct CGRect)deviceScaledRoundedRect:(struct CGRect)arg1;
 + (double)deviceScaledRoundedValue:(double)arg1;
 + (double)flooredValue:(double)arg1 inView:(id)arg2;
@@ -21,11 +24,14 @@
 + (BOOL)isSuperLargeAccessibilitySize;
 + (BOOL)isWideScreen;
 + (struct CGSize)maxThumbnailSize;
++ (struct CGSize)maxThumbnailSizeIsCompactWidth:(BOOL)arg1;
++ (struct CGSize)minimumButtonSize;
 + (void)requireIntrinsicSizeForView:(id)arg1;
 + (void)requireIntrinsicSizeForView:(id)arg1 withPriority:(float)arg2;
 + (double)roundedValue:(double)arg1 inView:(id)arg2;
 + (double)scaledValueForValue:(double)arg1 withFont:(id)arg2;
 + (void)setDynamicBaselineAlignmentsForLabel:(id)arg1 top:(double)arg2 bottom:(double)arg3;
++ (BOOL)widthIsCompact:(double)arg1;
 
 @end
 

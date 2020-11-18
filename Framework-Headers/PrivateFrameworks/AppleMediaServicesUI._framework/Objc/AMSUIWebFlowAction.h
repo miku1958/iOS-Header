@@ -8,7 +8,7 @@
 
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, AMSUIWebLoadingPageModel, AMSUIWebModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
+@class AMSUIWebClientContext, AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
 @protocol AMSUIWebPageProvider;
 
 __attribute__((visibility("hidden")))
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_metrics;
     AMSUIWebNavigationBarModel *_navigationBar;
     long long _presentationType;
-    AMSUIWebModel<AMSUIWebPageProvider> *_replacementPage;
+    id<AMSUIWebPageProvider> _replacementPage;
     long long _replacementType;
     AMSUIWebClientContext *_context;
 }
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property (strong, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) long long presentationType; // @synthesize presentationType=_presentationType;
-@property (strong, nonatomic) AMSUIWebModel<AMSUIWebPageProvider> *replacementPage; // @synthesize replacementPage=_replacementPage;
+@property (strong, nonatomic) id<AMSUIWebPageProvider> replacementPage; // @synthesize replacementPage=_replacementPage;
 @property (nonatomic) long long replacementType; // @synthesize replacementType=_replacementType;
 @property (readonly) Class superclass;
 

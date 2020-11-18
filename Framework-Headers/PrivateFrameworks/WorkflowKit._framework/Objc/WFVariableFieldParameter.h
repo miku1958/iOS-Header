@@ -11,8 +11,8 @@
 }
 
 - (id)defaultSupportedVariableTypes;
+- (id)importQuestionBehavior;
 - (Class)singleStateClass;
-- (BOOL)supportsImportQuestions;
 
 @end
 

@@ -9,19 +9,22 @@
 #import <AppleMediaServices/PKPaymentAuthorizationControllerDelegate-Protocol.h>
 #import <AppleMediaServices/PKPaymentAuthorizationControllerPrivateDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, AMSPaymentSheetAssetCache, AMSPaymentSheetRequest, AMSPromise, NSObject, NSString, _PaymentSheetState;
+@class AKAppleIDAuthenticationContext, AMSPaymentSheetAssetCache, AMSPaymentSheetRequest, AMSPromise, AMSPurchaseInfo, NSDictionary, NSMutableArray, NSObject, NSString, _PaymentSheetState;
 @protocol AMSBagProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSPaymentSheetTask : AMSTask <PKPaymentAuthorizationControllerDelegate, PKPaymentAuthorizationControllerPrivateDelegate>
 {
     id<AMSBagProtocol> _bag;
+    NSDictionary *_metricsDictionary;
+    AMSPurchaseInfo *_purchaseInfo;
     AMSPaymentSheetAssetCache *_assetCache;
     AKAppleIDAuthenticationContext *_authenticationContext;
     AMSPromise *_paymentSheetPromise;
     NSObject<OS_dispatch_queue> *_presentationQueue;
     _PaymentSheetState *_state;
     AMSPaymentSheetRequest *_request;
+    NSMutableArray *_userActions;
 }
 
 @property (strong, nonatomic) AMSPaymentSheetAssetCache *assetCache; // @synthesize assetCache=_assetCache;
@@ -30,15 +33,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDictionary *metricsDictionary; // @synthesize metricsDictionary=_metricsDictionary;
 @property (strong, nonatomic) AMSPromise *paymentSheetPromise; // @synthesize paymentSheetPromise=_paymentSheetPromise;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *presentationQueue; // @synthesize presentationQueue=_presentationQueue;
+@property (strong, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
 @property (strong, nonatomic) AMSPaymentSheetRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) _PaymentSheetState *state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableArray *userActions; // @synthesize userActions=_userActions;
 
 + (id)_authenticationContextForRequest:(id)arg1;
 - (void).cxx_destruct;
 - (float)_challengeSigningDelay;
+- (id)_metricsEvent;
 - (id)_paymentRequest;
 - (BOOL)_presentPaymentSheetWithPaymentRequest:(id)arg1 error:(id *)arg2;
 - (id)initWithRequest:(id)arg1 bag:(id)arg2;

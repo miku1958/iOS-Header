@@ -14,11 +14,11 @@
 
 @interface MLTreeEnsembleClassifier : MLClassifier <MLModelSpecificationLoader, MLCompiledModelLoader, MLSpecificationCompiler>
 {
-    struct shared_ptr<Archiver::MMappedFile> _mmapped_model;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _cached_model;
+    shared_ptr_0841df90 _mmapped_model;
+    vector_aab22ae2 _cached_model;
     unsigned long long num_dimensions;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _classes_by_string;
-    struct vector<long long, std::__1::allocator<long long>> _classes_by_int64_t;
+    vector_ebb6ef3e _classes_by_string;
+    vector_bbba3654 _classes_by_int64_t;
     long long _class_type;
     NSArray *_class_values;
     NSString *_single_array_key;
@@ -29,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_convertStringClassVector:(const vector_ebb6ef3e *)arg1 int64ClassVector:(const vector_bbba3654 *)arg2 dimensions:(unsigned long long)arg3 toClassLabel:(id *)arg4 classType:(long long *)arg5 andReturnError:(id *)arg6;
 + (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;

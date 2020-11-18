@@ -8,13 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPPageInfo, GEORPSortParameters, PBDataReader, PBUnknownFields;
+@class GEORPFilter, GEORPPageInfo, GEORPSortParameters, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackQueryParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _feedbackComponentTypes;
+    GEORPFilter *_filter;
     GEORPPageInfo *_pageInfo;
     GEORPSortParameters *_sortParameters;
     unsigned int _readerMarkPos;
@@ -23,17 +24,17 @@
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponentTypes:1;
+        unsigned int read_filter:1;
         unsigned int read_pageInfo:1;
         unsigned int read_sortParameters:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_feedbackComponentTypes:1;
-        unsigned int wrote_pageInfo:1;
-        unsigned int wrote_sortParameters:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (readonly, nonatomic) int *feedbackComponentTypes;
 @property (readonly, nonatomic) unsigned long long feedbackComponentTypesCount;
+@property (strong, nonatomic) GEORPFilter *filter;
+@property (readonly, nonatomic) BOOL hasFilter;
 @property (readonly, nonatomic) BOOL hasPageInfo;
 @property (readonly, nonatomic) BOOL hasSortParameters;
 @property (strong, nonatomic) GEORPPageInfo *pageInfo;
@@ -43,10 +44,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFeedbackComponentTypes:(id)arg1;
-- (void)_addNoFlagsFeedbackComponentType:(int)arg1;
-- (void)_readFeedbackComponentTypes;
-- (void)_readPageInfo;
-- (void)_readSortParameters;
 - (void)addFeedbackComponentType:(int)arg1;
 - (void)clearFeedbackComponentTypes;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -60,7 +57,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -8,7 +8,7 @@
 #import <MultipeerConnectivity/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UIContextMenuConfiguration, UIFocusAnimationCoordinator, UISwipeActionsConfiguration, UITableView, UITableViewCell, UITableViewFocusUpdateContext, UITargetedPreview, UIView;
-@protocol UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
+@protocol UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
 
 @protocol UITableViewDelegate <NSObject, UIScrollViewDelegate>
 
@@ -56,8 +56,10 @@
 - (void)tableView:(UITableView *)arg1 willBeginEditingRowAtIndexPath:(NSIndexPath *)arg2;
 - (NSIndexPath *)tableView:(UITableView *)arg1 willDeselectRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 willDisplayCell:(UITableViewCell *)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
+- (void)tableView:(UITableView *)arg1 willDisplayContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionAnimating>)arg3;
 - (void)tableView:(UITableView *)arg1 willDisplayFooterView:(UIView *)arg2 forSection:(long long)arg3;
 - (void)tableView:(UITableView *)arg1 willDisplayHeaderView:(UIView *)arg2 forSection:(long long)arg3;
+- (void)tableView:(UITableView *)arg1 willEndContextMenuInteractionWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionAnimating>)arg3;
 - (void)tableView:(UITableView *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
 - (NSIndexPath *)tableView:(UITableView *)arg1 willSelectRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableViewDidEndMultipleSelectionInteraction:(UITableView *)arg1;

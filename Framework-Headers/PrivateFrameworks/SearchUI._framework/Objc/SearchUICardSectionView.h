@@ -6,42 +6,60 @@
 
 #import <AppSupportUI/NUIContainerStackView.h>
 
-@class SFCardSection, SearchUICardSectionRowModel, UIView, UIViewController;
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
+
+@class NSString, SFCardSection, SearchUICardSectionRowModel, UIView, UIViewController;
 @protocol SearchUIFeedbackDelegate;
 
-@interface SearchUICardSectionView : NUIContainerStackView
+@interface SearchUICardSectionView : NUIContainerStackView <NUIContainerViewDelegate>
 {
+    BOOL _isCompactWidth;
     UIView *_contentView;
     SearchUICardSectionRowModel *_rowModel;
     UIViewController *_embeddedViewController;
     id<SearchUIFeedbackDelegate> _feedbackDelegate;
+    UIView *_leadingView;
+    UIView *_leadingTextView;
     UIView *_chevronView;
 }
 
 @property (strong, nonatomic) UIView *chevronView; // @synthesize chevronView=_chevronView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) UIViewController *embeddedViewController; // @synthesize embeddedViewController=_embeddedViewController;
 @property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property (readonly) unsigned long long hash;
+@property BOOL isCompactWidth; // @synthesize isCompactWidth=_isCompactWidth;
+@property (readonly, nonatomic) UIView *leadingTextView; // @synthesize leadingTextView=_leadingTextView;
+@property (readonly, nonatomic) UIView *leadingView; // @synthesize leadingView=_leadingView;
 @property (strong, nonatomic) SearchUICardSectionRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property (readonly, nonatomic) SFCardSection *section;
+@property (readonly) Class superclass;
 
++ (int)defaultSeparatorStyleForCardSection:(id)arg1;
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
++ (BOOL)fillsBackgroundWithContentForCardSection:(id)arg1;
++ (BOOL)hasLeadingImageForCardSection:(id)arg1;
 + (Class)layerClass;
-+ (double)separatorInsetForLeadingImageForSection:(id)arg1;
-+ (int)separatorStyleForCardSection:(id)arg1;
++ (BOOL)prefersNoSeparatorAboveCardSection:(id)arg1;
++ (struct UIEdgeInsets)separatorInsetsForStyle:(int)arg1 cellView:(id)arg2 leadingView:(id)arg3 leadingTextView:(id)arg4;
++ (BOOL)supportsCustomUserReportRequestAfforance;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
-- (id)description;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)didInvalidateSizeAnimate:(BOOL)arg1;
 - (void)didMoveToWindow;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
+- (void)presentUserReportRequestViewController;
 - (void)presentViewController:(id)arg1;
 - (void)requestRemovalFromEnclosingView;
 - (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (id)setupContentView;
+- (void)tabKeyPressed;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;

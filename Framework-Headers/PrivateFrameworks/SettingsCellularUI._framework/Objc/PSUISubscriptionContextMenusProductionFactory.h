@@ -25,13 +25,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL popViewControllerOnPlanRemoval; // @synthesize popViewControllerOnPlanRemoval=_popViewControllerOnPlanRemoval;
 
 - (void).cxx_destruct;
+- (id)createCallCache;
 - (id)createCallingSubgroup;
 - (id)createCarrierBundleCache;
 - (id)createCarrierSpaceSubgroup;
 - (id)createCellularPlanManager;
 - (id)createCellularPlanManagerCache;
 - (id)createDataCache;
-- (id)createLowDataModeSubgroup;
+- (id)createDataModeSubgroup;
 - (id)createMyNumberSubgroup;
 - (id)createNetworkSelectionSubgroup;
 - (id)createNetworkSettingsSubgroup;

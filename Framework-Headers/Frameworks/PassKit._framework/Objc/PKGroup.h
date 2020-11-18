@@ -37,6 +37,7 @@
 - (void)handleUserPassDelete:(id)arg1;
 - (unsigned long long)indexForPassUniqueID:(id)arg1;
 - (id)initWithCatalogGroup:(id)arg1 passes:(id)arg2;
+- (void)movePass:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)passAtIndex:(unsigned long long)arg1;
 - (unsigned long long)passCount;
 - (id)passWithUniqueID:(id)arg1;

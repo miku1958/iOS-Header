@@ -26,7 +26,6 @@
     BOOL _customResponsesDisabled;
     BOOL _interstitialDisabled;
     BOOL _prefersExecutionOnCompanion;
-    BOOL __encodeLegacyGloryData;
     int _intentCategory;
     int _toggleState;
     NSString *_appBundleId;
@@ -40,7 +39,6 @@
     NSString *_verb;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property (nonatomic) BOOL continueRunning; // @synthesize continueRunning=_continueRunning;
 @property (nonatomic) BOOL customResponsesDisabled; // @synthesize customResponsesDisabled=_customResponsesDisabled;

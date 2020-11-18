@@ -7,8 +7,12 @@
 #import <NewsUI2/_TtC7NewsUI223SavedFeedViewController.h>
 
 @interface _TtC7NewsUI223SavedFeedViewController (NewsUI2)
+- (void)tabBarSplitViewDidUnobsureView;
+- (void)tabBarSplitViewWillObsureView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 @end
 

@@ -9,34 +9,27 @@
 @interface HMDNetworkRouterProfile : HMDAccessoryProfile
 {
     unsigned long long _networkStatus;
+    unsigned long long _wanStatus;
     long long _routerStatus;
 }
 
 @property (nonatomic) unsigned long long networkStatus; // @synthesize networkStatus=_networkStatus;
 @property (nonatomic) long long routerStatus; // @synthesize routerStatus=_routerStatus;
+@property (nonatomic) unsigned long long wanStatus; // @synthesize wanStatus=_wanStatus;
 
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
-- (void)__handleAccessoryConfigured;
 - (void)__handleNetworkAccessViolationUpdate:(id)arg1;
-- (void)__handleNetworkRouterStatusUpdate:(id)arg1;
-- (void)__handleNetworkRouterWANStatusUpdate:(id)arg1;
-- (unsigned long long)__networkStatusFromWANStatus:(id)arg1;
 - (void)__notifyClientsOfNetworkStatus:(unsigned long long)arg1;
-- (void)__notifyClientsOfUpdatedSatelliteProfiles;
-- (void)_handleCharacteristicChanges:(id)arg1;
-- (void)_notifyClientsOfNetworkStatusUpdate;
-- (void)_registerForNotifications;
-- (void)_updateNetworkStatus:(id)arg1;
-- (void)_updateRouterStatus:(id)arg1;
+- (void)_updateRouterStatus:(long long)arg1;
+- (void)_updateWANStatus:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleAccessoryConfigured:(id)arg1;
-- (void)handleCharacteristicValuesChanged:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
+- (void)handleCharacteristicsChangedNotification:(id)arg1;
 - (void)handleInitialState;
 - (void)handleNetworkRouterSatelliteAddedOrRemoved:(id)arg1;
-- (id)idenfifiersForSatelliteProfiles;
 - (id)initWithRouterService:(id)arg1 msgDispatcher:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)registerForMessages;

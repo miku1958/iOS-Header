@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)attributedStringForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)init;
 - (id)initWithStringCount:(unsigned long long)arg1 localeCodes:(id)arg2;
 - (id)stringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;

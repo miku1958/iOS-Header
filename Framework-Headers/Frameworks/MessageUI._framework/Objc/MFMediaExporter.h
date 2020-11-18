@@ -12,6 +12,7 @@
 
 + (id)conversionTimers;
 + (int)exportAsset:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)jpegRepresentationForImageData:(id)arg1 inputContentType:(id)arg2;
 + (id)log;
 + (void)setConversionTimers:(id)arg1;
 

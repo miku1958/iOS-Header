@@ -6,18 +6,20 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-#import <HomeUI/HUSplitAccountDelegate-Protocol.h>
+#import <HomeUI/HFUserObserver-Protocol.h>
+#import <HomeUI/HUMediaAccountDelegate-Protocol.h>
 
-@class HFItemManager, HMHome, NAFuture, NSAttributedString, NSString, _HUUserAvatarHeaderView;
+@class AMSUIUpdateMultiUserTokenTask, HFItemManager, HMHome, NAFuture, NSAttributedString, NSString, _HUUserAvatarHeaderView;
 @protocol HUUserItemManager;
 
-@interface HUUserTableViewController : HUItemTableViewController <HUSplitAccountDelegate>
+@interface HUUserTableViewController : HUItemTableViewController <HUMediaAccountDelegate, HFUserObserver>
 {
     HFItemManager<HUUserItemManager> *_userItemManager;
     NSAttributedString *_headerMessage;
     _HUUserAvatarHeaderView *_userAvatarHeaderView;
     HMHome *_home;
     NAFuture *_mediaAccountFuture;
+    AMSUIUpdateMultiUserTokenTask *_multiUserTokenFixTask;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,13 +28,17 @@
 @property (strong, nonatomic) NSAttributedString *headerMessage; // @synthesize headerMessage=_headerMessage;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NAFuture *mediaAccountFuture; // @synthesize mediaAccountFuture=_mediaAccountFuture;
+@property (strong, nonatomic) AMSUIUpdateMultiUserTokenTask *multiUserTokenFixTask; // @synthesize multiUserTokenFixTask=_multiUserTokenFixTask;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _HUUserAvatarHeaderView *userAvatarHeaderView; // @synthesize userAvatarHeaderView=_userAvatarHeaderView;
 @property (readonly, nonatomic) HFItemManager<HUUserItemManager> *userItemManager; // @synthesize userItemManager=_userItemManager;
 
 - (void).cxx_destruct;
 - (id)_fetchAccountsForHome:(id)arg1 forceCloudKitFetch:(BOOL)arg2;
+- (void)_presentMediaAccountErrorsIfNeeded:(BOOL)arg1;
+- (void)_presentMultiUserTokenFixUIForAccount:(id)arg1;
 - (void)_refreshSplitAccountsHeaderViewIfNeeded:(BOOL)arg1;
+- (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)dealloc;
@@ -41,6 +47,8 @@
 - (void)performRemovalAction:(id)arg1;
 - (void)setAMSiTunesAccount:(id)arg1 forHome:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (void)signIniTunesAccount:(id)arg1 forHome:(id)arg2;
+- (void)user:(id)arg1 didUpdateNeedsiTunesMultiUserRepair:(BOOL)arg2;
 - (id)userHandle;
 
 @end

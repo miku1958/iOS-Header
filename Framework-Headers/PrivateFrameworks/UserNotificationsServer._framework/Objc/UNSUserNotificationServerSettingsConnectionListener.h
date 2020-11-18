@@ -26,6 +26,8 @@
 
 - (void).cxx_destruct;
 - (id)_currentConnection;
+- (void)_handleClientConnectionInterrupted:(id)arg1;
+- (void)_handleClientConnectionInvalidated:(id)arg1;
 - (void)dealloc;
 - (void)getAllNotificationSourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getNotificationSource:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

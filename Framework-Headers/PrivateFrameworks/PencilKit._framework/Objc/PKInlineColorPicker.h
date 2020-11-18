@@ -101,8 +101,8 @@
 - (void)layoutSubviews;
 - (void)notifyDelegateDidSelectColor:(BOOL)arg1;
 - (void)notifyDelegateDidSelectColorInCompactChooseToolState;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
-- (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (BOOL)presentationControllerShouldDismiss:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)showOverflowViewsIfNeeded;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

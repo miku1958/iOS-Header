@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface INImageServiceRegistry : NSObject
 {
     NSMutableDictionary *_imageServicesByServiceIdentifier;
     NSMutableArray *_prioritySortedImageServices;
+    NSObject<OS_dispatch_queue> *_registryQueue;
 }
 
 @property (readonly, copy, nonatomic) NSArray *imageLoaders;

@@ -12,30 +12,39 @@
 @interface MRAVConcreteRoutingDiscoverySession : MRAVRoutingDiscoverySession
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
+    NSObject<OS_dispatch_queue> *_reloadQueue;
     AVOutputDeviceDiscoverySession *_avDiscoverySession;
     unsigned int _endpointFeatures;
     unsigned int _discoveryMode;
     unsigned int _targetAudioSessionID;
     NSString *_routingContextUID;
     NSArray *_availableOutputDevices;
-    BOOL _scheduledAvailableEndpointsAndOutputDevicesReload;
+    NSArray *_virtualOutputDevices;
+    BOOL _scheduledAvailableOutputDevicesReload;
     int _airplayActiveNotificationToken;
     BOOL _isLocalDeviceBeingAirplayedTo;
 }
 
-@property (readonly, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
-@property (readonly, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
+@property (strong, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
+@property (strong, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
+@property (readonly, nonatomic) NSArray *virtualOutputDevices; // @synthesize virtualOutputDevices=_virtualOutputDevices;
 
++ (id)daemonVirtualDevices;
++ (void)setDaemonVirtualDevices:(id)arg1;
 - (void).cxx_destruct;
 - (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
+- (void)_checkClusterConsistencyWithLeaders:(id)arg1 members:(id)arg2;
+- (void)_onQueue_reload;
 - (void)_onQueue_reloadAvailableOutputDevices;
-- (void)_scheduleAvailableEndpointsAndOutputDevicesReload;
+- (void)_scheduleAvailableOutputDevicesReload;
+- (void)_scheduleReload;
+- (BOOL)_shouldCreateClusterOutputDevices;
 - (void)dealloc;
+- (id)description;
 - (BOOL)devicePresenceDetected;
 - (unsigned int)discoveryMode;
 - (unsigned int)endpointFeatures;
-- (id)initWithEndpointFeatures:(unsigned int)arg1;
+- (id)initWithConfiguration:(id)arg1;
 - (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (void)setRoutingContextUID:(id)arg1;

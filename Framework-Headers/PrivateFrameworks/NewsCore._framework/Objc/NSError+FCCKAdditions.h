@@ -15,6 +15,7 @@
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1 description:(id)arg2;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1 descriptionFormat:(id)arg2;
++ (id)fc_encryptionRequiredError;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2 additionalUserInfo:(id)arg3;
 + (id)fc_expiredAVAssetCertificateError;
@@ -36,11 +37,14 @@
 + (id)fc_operationCancelledErrorWithAdditionalUserInfo:(id)arg1;
 + (id)fc_partialFailureErrorWithUserInfo:(id)arg1;
 + (id)fc_requestDroppedErrorForDroppedFeeds:(unsigned long long)arg1 totalFeeds:(unsigned long long)arg2;
++ (id)fc_secureSubscriptionsDisallowedError;
 + (id)fc_unauthorizedAVAssetCertificateError;
 + (id)fc_unauthorizedAVAssetKeyErrorWithKeyURI:(id)arg1;
 + (id)fc_unauthorizedAssetKeyErrorWithWrappingKeyID:(id)arg1;
 + (id)fc_unzipFailedErrorWithErrorCode:(int)arg1;
+- (id)fc_errorWithMaximumRetryAfter:(double)arg1;
 - (BOOL)fc_hasCKErrorWithCodePassingTest:(CDUnknownBlockType)arg1;
+- (BOOL)fc_hasErrorCode:(long long)arg1;
 - (BOOL)fc_hasIdentityLostError;
 - (BOOL)fc_hasIdentityStillSyncingError;
 - (BOOL)fc_isAVUnauthorizedError;

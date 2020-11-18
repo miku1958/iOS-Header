@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *alternateRoutes;
 
 - (void).cxx_destruct;
-- (id)_findTrackedAlternateRouteMatching:(id)arg1;
 - (id)alternateRouteForLocation:(id)arg1;
 - (BOOL)setAlternateRoutes:(id)arg1 forMainRoute:(id)arg2;
 - (BOOL)updateForLocation:(id)arg1;

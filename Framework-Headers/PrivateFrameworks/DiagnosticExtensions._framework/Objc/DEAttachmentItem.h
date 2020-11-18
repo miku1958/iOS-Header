@@ -20,8 +20,10 @@
     NSURL *_attachedPath;
     NSString *_attachmentType;
     NSNumber *_deleteOnAttach;
+    NSString *__sandboxExtensionToken;
 }
 
+@property (readonly, nonatomic) NSString *_sandboxExtensionToken; // @synthesize _sandboxExtensionToken=__sandboxExtensionToken;
 @property (strong, nonatomic) NSURL *attachedPath; // @synthesize attachedPath=_attachedPath;
 @property (copy, nonatomic) NSString *attachmentType; // @synthesize attachmentType=_attachmentType;
 @property (copy, nonatomic) NSNumber *deleteOnAttach; // @synthesize deleteOnAttach=_deleteOnAttach;
@@ -36,6 +38,7 @@
 + (id)attachmentWithPathURL:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_generateSandboxExtensionTokenForPID:(int)arg1;
 - (id)attachToDestinationDir:(id)arg1;
 - (id)description;
 - (void)detach;
@@ -45,6 +48,7 @@
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 withDisplayName:(id)arg2 modificationDate:(id)arg3 andFilesize:(id)arg4;
 - (id)initWithPathURL:(id)arg1;
+- (id)sandboxExtensionHandleWithErrorOut:(id *)arg1;
 
 @end
 

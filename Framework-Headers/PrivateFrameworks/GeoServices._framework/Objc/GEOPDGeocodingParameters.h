@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_queryString:1;
         unsigned int read_structuredAddress:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_queryString:1;
-        unsigned int wrote_structuredAddress:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,9 +44,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readQueryString;
-- (void)_readStructuredAddress;
-- (void)_readViewportInfo;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,10 +52,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithForwardGeocodeAddress:(id)arg1 addressString:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithForwardGeocodeAddress:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initWithForwardGeocodeAddressString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -7,49 +7,59 @@
 #import <objc/NSObject.h>
 
 #import <WorkflowKit/NSCopying-Protocol.h>
+#import <WorkflowKit/NSSecureCoding-Protocol.h>
 #import <WorkflowKit/WFParameterEventObserver-Protocol.h>
 #import <WorkflowKit/WFUUIDProvider-Protocol.h>
 #import <WorkflowKit/WFVariableProvider-Protocol.h>
 
-@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFContentCollection, WFContentSourceTracker, WFDataInfo, WFImage, WFParameter, WFResourceManager, WFWorkflow;
-@protocol WFActionParameterInputProvider, WFUserInterface, WFVariableDataSource;
+@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFContentAttribution, WFContentAttributionTracker, WFContentCollection, WFImage, WFParameter, WFResourceManager, WFWorkflow;
+@protocol OS_dispatch_queue, WFActionExtendedOperation, WFActionParameterInputProvider, WFRemoteUserInterface, WFUserInterfaceHost, WFVariableDataSource;
 
-@interface WFAction : NSObject <WFUUIDProvider, WFParameterEventObserver, NSCopying, WFVariableProvider>
+@interface WFAction : NSObject <WFUUIDProvider, WFParameterEventObserver, NSCopying, NSSecureCoding, WFVariableProvider>
 {
     BOOL _running;
     BOOL _inputParameterUnlocked;
     BOOL _skipsProcessingHiddenParameters;
+    BOOL _didRunRemotely;
+    struct os_unfair_lock_s _parameterInitializationLock;
     NSArray *_parameters;
     WFResourceManager *_resourceManager;
     NSArray *_inputContentClasses;
     NSArray *_outputContentClasses;
     NSProgress *_progress;
-    WFContentSourceTracker *_contentSourceTracker;
+    WFContentAttributionTracker *_contentAttributionTracker;
     NSString *_identifier;
     NSString *_metricsIdentifier;
     NSDictionary *_definition;
+    NSString *_appIdentifier;
     WFContentCollection *_input;
     WFContentCollection *_output;
-    id<WFUserInterface> _userInterface;
+    id<WFUserInterfaceHost> _userInterface;
     id<WFVariableDataSource> _variableSource;
     NSHashTable *_eventObservers;
     NSDictionary *_initialSerializedParameters;
     NSDictionary *_parametersByKey;
     NSMutableDictionary *_userDefinedParameterStates;
     NSMutableDictionary *_supplementalSerializedParameters;
+    NSSet *_ignoredParameterKeysForProcessing;
     CDUnknownBlockType _completionHandler;
+    id<WFRemoteUserInterface> _actionUserInterface;
+    NSObject<OS_dispatch_queue> *_workQueue;
     WFWorkflow *_workflow;
     NSDictionary *_processedParameters;
     id<WFActionParameterInputProvider> _parameterInputProvider;
+    NSString *_widgetSizeClass;
+    id<WFActionExtendedOperation> _extendedOperation;
 }
 
 @property (copy, nonatomic) NSString *UUID;
 @property (readonly, nonatomic) NSString *accessibilityName;
+@property (strong, nonatomic) id<WFRemoteUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
 @property (readonly, nonatomic) NSSet *allPossibleDescriptionRequires;
 @property (readonly, nonatomic) NSArray *allPossibleDescriptionResults;
 @property (readonly, nonatomic) ICApp *app;
 @property (readonly, copy, nonatomic) NSString *appBundleIdentifier;
-@property (readonly, nonatomic) NSString *appIdentifier;
+@property (readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (readonly, nonatomic) NSString *appSection;
 @property (readonly, nonatomic) NSAttributedString *attributedLocalizedName;
 @property (readonly, nonatomic) NSString *attribution;
@@ -60,7 +70,7 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) Class configurationViewClass;
 @property (readonly, nonatomic, getter=isConstructorAction) BOOL constructorAction;
-@property (strong, nonatomic) WFContentSourceTracker *contentSourceTracker; // @synthesize contentSourceTracker=_contentSourceTracker;
+@property (strong, nonatomic) WFContentAttributionTracker *contentAttributionTracker; // @synthesize contentAttributionTracker=_contentAttributionTracker;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic, getter=isDebugAction) BOOL debugAction;
 @property (readonly, copy) NSString *debugDescription;
@@ -74,26 +84,32 @@
 @property (readonly, nonatomic) NSString *descriptionRequires;
 @property (readonly, nonatomic) NSString *descriptionResult;
 @property (readonly, nonatomic) NSString *descriptionSummary;
+@property (nonatomic) BOOL didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
+@property (readonly, nonatomic) NSArray *disabledOnPlatforms;
 @property (readonly, nonatomic, getter=isDiscontinued) BOOL discontinued;
 @property (readonly, nonatomic, getter=isDiscoverable) BOOL discoverable;
 @property (readonly, nonatomic, getter=isDiscoverableInSearch) BOOL discoverableInSearch;
 @property (readonly, nonatomic) BOOL displaysParameterSummary;
 @property (readonly, nonatomic) NSHashTable *eventObservers; // @synthesize eventObservers=_eventObservers;
+@property (strong, nonatomic) id<WFActionExtendedOperation> extendedOperation; // @synthesize extendedOperation=_extendedOperation;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (copy, nonatomic) NSString *groupingIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) NSString *iconName;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSSet *ignoredParameterKeysForProcessing; // @synthesize ignoredParameterKeysForProcessing=_ignoredParameterKeysForProcessing;
 @property (strong, nonatomic) NSDictionary *initialSerializedParameters; // @synthesize initialSerializedParameters=_initialSerializedParameters;
 @property (readonly, nonatomic) long long initialSuggestionBehavior;
 @property (readonly, nonatomic) WFContentCollection *input; // @synthesize input=_input;
 @property (readonly, nonatomic) NSArray *inputContentClasses; // @synthesize inputContentClasses=_inputContentClasses;
+@property (readonly, nonatomic) NSDictionary *inputDictionary;
 @property (readonly, nonatomic) WFParameter *inputParameter;
 @property (readonly, nonatomic) NSString *inputParameterKey;
 @property (nonatomic) BOOL inputParameterUnlocked; // @synthesize inputParameterUnlocked=_inputParameterUnlocked;
 @property (readonly, nonatomic) BOOL inputPassthrough;
 @property (readonly, nonatomic) BOOL inputRequired;
+@property (readonly, nonatomic) BOOL inputTypeDeterminesOutputType;
 @property (readonly, nonatomic) BOOL inputTypePassthrough;
 @property (readonly, nonatomic) NSArray *inputTypes;
 @property (readonly, nonatomic) BOOL inputsMultipleItems;
@@ -125,6 +141,7 @@
 @property (readonly, nonatomic) BOOL neverSuggested;
 @property (strong, nonatomic) WFContentCollection *output; // @synthesize output=_output;
 @property (readonly, nonatomic) NSArray *outputContentClasses; // @synthesize outputContentClasses=_outputContentClasses;
+@property (readonly, nonatomic) NSDictionary *outputDictionary;
 @property (readonly, nonatomic) unsigned long long outputDisclosureLevel;
 @property (readonly, nonatomic) WFImage *outputIcon;
 @property (readonly, nonatomic) NSString *outputMeasurementUnitType;
@@ -133,8 +150,11 @@
 @property (readonly, nonatomic) BOOL outputsMultipleItems;
 @property (readonly, nonatomic) unsigned long long parameterCollapsingBehavior;
 @property (readonly, nonatomic) NSArray *parameterDefinitions;
+@property (readonly, nonatomic) struct os_unfair_lock_s parameterInitializationLock; // @synthesize parameterInitializationLock=_parameterInitializationLock;
 @property (readonly, nonatomic) id<WFActionParameterInputProvider> parameterInputProvider; // @synthesize parameterInputProvider=_parameterInputProvider;
 @property (readonly, nonatomic) WFActionParameterSummary *parameterSummary;
+@property (readonly, nonatomic) id parameterSummaryDefinition;
+@property (readonly, nonatomic) NSString *parameterSummaryString;
 @property (readonly, nonatomic) NSArray *parameters; // @synthesize parameters=_parameters;
 @property (copy, nonatomic) NSDictionary *parametersByKey; // @synthesize parametersByKey=_parametersByKey;
 @property (readonly, nonatomic) BOOL populatesInputFromInputParameter;
@@ -143,11 +163,12 @@
 @property (readonly, nonatomic) long long rateLimitDelay;
 @property (readonly, nonatomic) long long rateLimitThreshold;
 @property (readonly, nonatomic) long long rateLimitTimeout;
+@property (readonly, nonatomic) NSArray *remoteExecuteOnPlatforms;
 @property (readonly, nonatomic) NSArray *requiredResources;
+@property (readonly, nonatomic) BOOL requiresRemoteExecution;
 @property (readonly, nonatomic, getter=isResidentCompatible) BOOL residentCompatible;
 @property (readonly, nonatomic) WFResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
-@property (readonly, nonatomic) Class runningViewClass;
 @property (readonly, nonatomic) NSDictionary *settingsUIDefinition;
 @property (readonly, nonatomic) Class settingsViewControllerClass;
 @property (readonly, nonatomic) NSString *shortName;
@@ -160,38 +181,47 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *supplementalSerializedParameters; // @synthesize supplementalSerializedParameters=_supplementalSerializedParameters;
 @property (readonly, nonatomic) NSArray *supportedAppIdentifiers;
-@property (readonly, nonatomic) WFDataInfo *targetDataInfo;
+@property (readonly, nonatomic) WFContentAttribution *targetContentAttribution;
 @property (readonly, nonatomic) NSArray *unsupportedEnvironments;
 @property (strong, nonatomic) NSMutableDictionary *userDefinedParameterStates; // @synthesize userDefinedParameterStates=_userDefinedParameterStates;
-@property (strong, nonatomic) id<WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
+@property (strong, nonatomic) id<WFUserInterfaceHost> userInterface; // @synthesize userInterface=_userInterface;
+@property (readonly, nonatomic) NSDictionary *userInterfaceClasses;
 @property (readonly, nonatomic) NSArray *userInterfaceTypes;
+@property (readonly, nonatomic) BOOL usesLegacyInputBehavior;
 @property (strong, nonatomic) id<WFVariableDataSource> variableSource; // @synthesize variableSource=_variableSource;
-@property (readonly, nonatomic, getter=isWatchCompatible) BOOL watchCompatible;
+@property (copy, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly, weak, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property (readonly, nonatomic) NSArray *workflowInputClasses;
 
 + (id)iconCache;
 + (id)indentationLevelsForActions:(id)arg1;
 + (BOOL)outputIsExemptFromTaintTrackingInheritance;
-+ (void)showImplicitChooseFromListWithInput:(id)arg1 userInterface:(id)arg2 cancelHandler:(CDUnknownBlockType)arg3 selectionHandler:(CDUnknownBlockType)arg4;
++ (void)showImplicitChooseFromListWithInput:(id)arg1 userInterface:(id)arg2 workQueue:(id)arg3 cancelHandler:(CDUnknownBlockType)arg4 selectionHandler:(CDUnknownBlockType)arg5;
++ (BOOL)supportsSecureCoding;
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (void).cxx_destruct;
-- (void)_processParameterStates:(id)arg1 withInput:(id)arg2 skippingHiddenParameters:(BOOL)arg3 askForValuesIfNecessary:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_notifyEventObserversParameterStateDidChangeForKey:(id)arg1;
+- (void)_processParameterStates:(id)arg1 withInput:(id)arg2 skippingHiddenParameters:(BOOL)arg3 askForValuesIfNecessary:(BOOL)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (id)actionForAppIdentifier:(id)arg1;
 - (id)actionProvidingVariableWithOutputUUID:(id)arg1;
 - (id)actionsProvidingVariableName:(id)arg1;
 - (void)addEventObserver:(id)arg1;
 - (void)addVariableObserver:(id)arg1;
-- (void)askForValuesOfParameters:(id)arg1 withDefaultStates:(id)arg2 input:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)askForValuesOfParameters:(id)arg1 withDefaultStates:(id)arg2 input:(id)arg3 workQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)canHandleInputOfContentClasses:(id)arg1 withSupportedClasses:(id)arg2;
 - (BOOL)canHandleInputOfContentClasses:(id)arg1 withSupportedClasses:(id)arg2 includingCoercedTypes:(BOOL)arg3;
 - (void)cancel;
 - (void)checkUserInterfaceAndRunWithInput:(id)arg1;
 - (id)classesForTypeArray:(id)arg1 includeAllOutputTypes:(BOOL)arg2;
+- (void)configureResourcesForParameter:(id)arg1;
 - (void)configureRuntimeResourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)containedVariables;
 - (id)containedVariablesOfClass:(Class)arg1;
 - (BOOL)containsVariableOfType:(id)arg1;
+- (id)copyForDuplicating;
 - (id)copyForProcessing;
 - (id)copyParameterStates;
 - (id)copyWithDefinition:(id)arg1 serializedParameters:(id)arg2;
@@ -203,10 +233,13 @@
 - (id)defaultParameterStateForKey:(id)arg1;
 - (BOOL)descriptionInputIncludesSupportingItemClasses;
 - (void)didChangeVariableName:(id)arg1 to:(id)arg2;
+- (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)finishRunningWithError:(id)arg1;
 - (id)generateOutputUUIDForAction:(id)arg1;
 - (id)generateUUIDIfNecessaryWithUUIDProvider:(id)arg1;
 - (BOOL)getInputContentFromVariablesInParameterState:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getTargetContentAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasAvailableActionOutputVariables;
 - (BOOL)hasAvailableVariables;
 - (BOOL)hasChildren;
@@ -214,9 +247,13 @@
 - (id)inheritedInputVariableInWorkflow:(id)arg1;
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1;
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1 context:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (void)initializeParameters;
+- (void)initializeParametersIfNecessary;
+- (void)initializeParametersWithLock;
 - (id)inputSourceInWorkflow:(id)arg1;
+- (BOOL)isDisabledWhenRunOnDevice:(id)arg1;
 - (BOOL)isUnsupportedWhenRunWithEnvironment:(id)arg1;
 - (BOOL)isVariableWithNameAvailable:(id)arg1;
 - (BOOL)isVariableWithOutputUUIDAvailable:(id)arg1;
@@ -228,7 +265,6 @@
 - (id)minimumSupportedClientVersion;
 - (void)nameUpdated;
 - (void)outputDetailsUpdated;
-- (id)outputDictionary;
 - (id)outputVariableWithVariableProvider:(id)arg1 UUIDProvider:(id)arg2;
 - (void)parameterDefaultSerializedRepresentationDidChange:(id)arg1;
 - (id)parameterForKey:(id)arg1;
@@ -241,21 +277,26 @@
 - (id)populatedInputWithProcessedParameterValues:(id)arg1;
 - (id)possibleContentClassesForVariableNamed:(id)arg1 context:(id)arg2;
 - (id)previousAction;
-- (void)processParameterStates:(id)arg1 withInput:(id)arg2 skippingHiddenParameters:(BOOL)arg3 askForValuesIfNecessary:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)processParametersWithoutAskingForValuesWithInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)prioritizedParameterKeysForRemoteExecution;
+- (void)processParameterStates:(id)arg1 withInput:(id)arg2 skippingHiddenParameters:(BOOL)arg3 askForValuesIfNecessary:(BOOL)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)processParametersWithoutAskingForValuesWithInput:(id)arg1 workQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)providedVariableNames;
 - (void)removeEventObserver:(id)arg1;
 - (void)removeVariableObserver:(id)arg1;
+- (void)requestInterfacePresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)requiresHandoffWhenRunWithUserInterfaceType:(id)arg1;
 - (BOOL)requiresUserInteractionWhenRunWithInput:(id)arg1;
 - (void)resetOutput;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (BOOL)runAsynchronouslyWithInput:(id)arg1 userInterfaceType:(id)arg2 userInterface:(id)arg3;
+- (void)runSynchronouslyWithInput:(id)arg1 error:(id *)arg2;
+- (BOOL)runWithFallbackUserInterface:(id)arg1;
 - (void)runWithInput:(id)arg1 error:(id *)arg2;
-- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)runWithSiriUserInterface:(id)arg1 input:(id)arg2;
 - (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
-- (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
+- (void)runWithoutUserInterfaceWithInput:(id)arg1;
 - (id)serializedParameters;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
 - (void)setDefaultCoercionOptionsOnContentCollection:(id)arg1;
@@ -266,6 +307,7 @@
 - (void)setSupplementalParameterValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)shouldBeConnectedToPreviousActionInWorkflow:(id)arg1 withOutputsConsumedByFollowingActions:(id)arg2;
 - (BOOL)shouldBeSuggestedAfterAction:(id)arg1 inWorkflow:(id)arg2;
+- (BOOL)shouldInsertExpandingParameterForParameter:(id)arg1;
 - (BOOL)showsImplicitChooseFromListWhenRunWithInput:(id)arg1;
 - (void)snapInputParameterIfNecessary;
 - (id)subcategoryForCategory:(id)arg1;
@@ -273,6 +315,7 @@
 - (BOOL)supportsUserInterfaceType:(id)arg1;
 - (id)typeDescriptionWithTypes:(id)arg1 explanationText:(id)arg2 multiple:(BOOL)arg3 optional:(BOOL)arg4;
 - (void)unlockInputParameter;
+- (id)visibleParametersForParameterSummary;
 - (id)visibleParametersWithProcessing:(BOOL)arg1;
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)wasAddedToWorkflowByUser:(id)arg1;

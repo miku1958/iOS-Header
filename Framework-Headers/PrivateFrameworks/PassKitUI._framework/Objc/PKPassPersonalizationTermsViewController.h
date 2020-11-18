@@ -16,7 +16,7 @@
     id<PKPassPersonalizationTermsViewControllerDelegate> _delegate;
 }
 
-@property (nonatomic) id<PKPassPersonalizationTermsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassPersonalizationTermsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSString *termsAndConditions; // @synthesize termsAndConditions=_termsAndConditions;
 
 - (void).cxx_destruct;

@@ -17,6 +17,7 @@
 @property (readonly) NSMutableDictionary *createdInstallProgresses; // @synthesize createdInstallProgresses=_createdInstallProgresses;
 @property (readonly) LSInstallProgressList *observedInstallProgresses; // @synthesize observedInstallProgresses=_observedInstallProgresses;
 
++ (id)_defaultAppQueue;
 + (id)_remoteObserver;
 + (id)activeManagedConfigurationRestrictionUUIDs;
 + (id)callbackQueue;
@@ -33,6 +34,8 @@
 - (void)_LSPrivateSetRemovedSystemAppIdentifiers:(id)arg1;
 - (void)_LSPrivateSyncWithMobileInstallation;
 - (void)_LSPrivateUpdateAppRemovalRestrictions;
+- (BOOL)_getBundleIdentifierForBundleAtURL:(id)arg1 invokeUpdateBlockAndReregister:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (void)_openUserActivity:(id)arg1 orUserActivityUUID:(id)arg2 activityTypeForUUID:(id)arg3 withApplicationProxy:(id)arg4 options:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)addObserver:(id)arg1;
 - (id)allApplications;
 - (id)allInstalledApplications;
@@ -74,6 +77,7 @@
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (BOOL)installContainerizedApplicationArtifactAtURL:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (BOOL)installPhaseFinishedForProgress:(id)arg1;
 - (id)installProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2;
 - (id)installProgressForBundleID:(id)arg1 makeSynchronous:(unsigned char)arg2;
@@ -97,8 +101,10 @@
 - (void)openURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)openURL:(id)arg1 withOptions:(id)arg2;
 - (BOOL)openURL:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
+- (void)openUserActivity:(id)arg1 usingApplicationRecord:(id)arg2 configuration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openUserActivity:(id)arg1 withApplicationProxy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openUserActivity:(id)arg1 withApplicationProxy:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)openUserActivityWithUUID:(id)arg1 activityType:(id)arg2 usingApplicationRecord:(id)arg3 configuration:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 isContentManaged:(BOOL)arg4 sourceAuditToken:(const CDStruct_4c969caf *)arg5 userInfo:(id)arg6 options:(id)arg7 delegate:(id)arg8;
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 sourceIsManaged:(BOOL)arg4 userInfo:(id)arg5 delegate:(id)arg6;
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 sourceIsManaged:(BOOL)arg4 userInfo:(id)arg5 options:(id)arg6 delegate:(id)arg7;
@@ -114,26 +120,35 @@
 - (id)pluginsWithIdentifiers:(id)arg1 protocols:(id)arg2 version:(id)arg3 withFilter:(CDUnknownBlockType)arg4;
 - (id)privateURLSchemes;
 - (id)publicURLSchemes;
+- (void)rebuildDatabaseContentForFrameworkAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)registerApplication:(id)arg1;
 - (BOOL)registerApplicationDictionary:(id)arg1;
 - (BOOL)registerApplicationDictionary:(id)arg1 withObserverNotification:(int)arg2;
 - (BOOL)registerPlugin:(id)arg1;
+- (void)relaxApplicationTypeRequirements:(BOOL)arg1 forApplicationRecord:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)remoteObserver;
+- (void)removeAllDefaultApplicationPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeDeviceIdentifierForVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (id)removedSystemApplications;
 - (BOOL)restoreSystemApplication:(id)arg1;
+- (void)setDefaultMailClientToApplicationRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setDefaultWebBrowserToApplicationRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)syncObserverProxy;
 - (BOOL)uninstallApplication:(id)arg1 withOptions:(id)arg2;
 - (BOOL)uninstallApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (BOOL)uninstallApplication:(id)arg1 withOptions:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)uninstallContainerizedApplicationWithIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (BOOL)unregisterApplication:(id)arg1;
 - (BOOL)unregisterPlugin:(id)arg1;
 - (id)unrestrictedApplications;
 - (BOOL)updatePlaceholderMetadataForApp:(id)arg1 installType:(unsigned long long)arg2 failure:(unsigned long long)arg3 underlyingError:(id)arg4 source:(unsigned long long)arg5 outError:(id *)arg6;
+- (BOOL)updatePlaceholderWithBundleIdentifier:(id)arg1 withInstallType:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)updateRecordForApp:(id)arg1 withSINF:(id)arg2 iTunesMetadata:(id)arg3 placeholderMetadata:(id)arg4 sendNotification:(int)arg5 error:(id *)arg6;
 - (BOOL)updateSINFWithData:(id)arg1 forApplication:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (BOOL)updateSINFWithData:(id)arg1 forApplicationAtURL:(id)arg2 error:(id *)arg3;
 - (BOOL)updateiTunesMetadataWithData:(id)arg1 forApplication:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (BOOL)updateiTunesMetadataWithData:(id)arg1 forApplicationAtURL:(id)arg2 error:(id *)arg3;
 
 @end
 

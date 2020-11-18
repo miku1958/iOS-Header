@@ -29,7 +29,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<EDSearchableIndexHookResponder> hookResponder; // @synthesize hookResponder=_hookResponder;
 @property long long lastProcessedAttachmentID; // @synthesize lastProcessedAttachmentID=_lastProcessedAttachmentID;
-@property (nonatomic) struct os_unfair_lock_s lastProcessedAttachmentIDLock; // @synthesize lastProcessedAttachmentIDLock=_lastProcessedAttachmentIDLock;
 @property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 
@@ -55,12 +54,12 @@
 - (id)_identifiersForDeletedMessagesUsingConnection:(id)arg1;
 - (id)_identifiersForRemovedItemsUsingConnection:(id)arg1;
 - (id)_identifiersForTombstonesOfType:(long long)arg1 connection:(id)arg2;
-- (id)_messageIDTransactionIDDictionaryToVerifyUsingConnection:(id)arg1 count:(unsigned long long)arg2;
+- (id)_messageIDTransactionIDDictionaryToVerifyUsingConnection:(id)arg1 count:(unsigned long long)arg2 lastVerifiedMessageID:(long long)arg3;
 - (id)_messagesRequiringIndexingForType:(long long)arg1 excludingIdentifiers:(id)arg2 limit:(long long)arg3;
 - (void)_purgeSpotlightTombstonesBeforeTransaction:(long long)arg1 connection:(id)arg2;
 - (void)_removeIndexedIdentifiers:(id)arg1 connection:(id)arg2;
 - (id)_searchableIndexMessageIndexingTypes;
-- (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 result:(CDUnknownBlockType)arg4;
+- (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 mailboxID:(long long)arg4 result:(CDUnknownBlockType)arg5;
 - (id)childIdentifiersToRemoveFromSearchableIndex:(id)arg1 whenRemovingParentIdentifiers:(id)arg2;
 - (long long)indexingTypeForSearchableIndex:(id)arg1 item:(id)arg2;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
@@ -73,7 +72,7 @@
 - (void)searchableIndex:(id)arg1 willRemoveIdentifiers:(id)arg2 type:(long long)arg3;
 - (id)searchableIndexItemsFromMessages:(id)arg1 type:(long long)arg2;
 - (id)updatesForSearchableIndex:(id)arg1 excludingIdentifiers:(id)arg2 count:(unsigned long long)arg3 cancelationToken:(id)arg4;
-- (id)verificationDataSamplesForSearchableIndex:(id)arg1 count:(unsigned long long)arg2;
+- (id)verificationDataSamplesForSearchableIndex:(id)arg1 count:(unsigned long long)arg2 lastVerifiedMessageID:(long long)arg3;
 - (id)verificationDataSamplesFromMessageIDTransactionIDDictionary:(id)arg1;
 
 @end

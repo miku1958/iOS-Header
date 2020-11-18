@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPRTCReportingEvent.h>
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingNetworkInterfaceChangeEvent : MPRTCReportingEvent
 {
 }

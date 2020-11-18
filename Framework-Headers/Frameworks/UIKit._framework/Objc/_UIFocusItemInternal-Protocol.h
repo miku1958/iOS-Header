@@ -16,6 +16,8 @@
 
 @optional
 - (BOOL)_drawsFocusRingWhenChildrenFocused;
+- (struct CGRect)_globalFocusCastingFrameForHeading:(unsigned long long)arg1;
+- (unsigned long long)_insertionIndexOfFocusLayerInView;
 - (UIView *)_viewToAddFocusLayer;
 @end
 

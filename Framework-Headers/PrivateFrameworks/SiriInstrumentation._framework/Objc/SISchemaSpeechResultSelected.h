@@ -10,10 +10,16 @@
 
 @interface SISchemaSpeechResultSelected : PBCodable
 {
-    int _source;
     NSString *_resultCandidateId;
+    int _source;
+    struct {
+        unsigned int source:1;
+    } _has;
+    BOOL _hasResultCandidateId;
 }
 
+@property (nonatomic) BOOL hasResultCandidateId; // @synthesize hasResultCandidateId=_hasResultCandidateId;
+@property (nonatomic) BOOL hasSource;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *resultCandidateId; // @synthesize resultCandidateId=_resultCandidateId;
 @property (nonatomic) int source; // @synthesize source=_source;

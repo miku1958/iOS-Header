@@ -8,38 +8,47 @@
 
 #import <PhotoLibraryServices/PLClientAuthorization-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSDate, NSSet, NSString;
+@class BKSApplicationStateMonitor, NSDate, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface PLAssetsdConnectionAuthorization : NSObject <PLClientAuthorization>
 {
     CDStruct_4c969caf _auditToken;
     NSSet *_photoKitEntitlements;
-    int _kTCCPhotosAuthorized;
-    int _kTCCPhotosAddAuthorized;
+    NSNumber *_photosAccessAllowed;
+    NSNumber *_photosAddAccessAllowed;
     BOOL _libraryUpgradeAuthorized;
     BOOL _directDatabaseAccessAuthorized;
     BOOL _directDatabaseWriteAuthorized;
+    NSString *_fetchFilterIdentifier;
     NSDate *_connectionStartDate;
     BKSApplicationStateMonitor *_applicationStateMonitor;
     NSObject<OS_dispatch_queue> *_duetUpdateQueue;
     BOOL _photoKitEntitled;
+    BOOL _cloudInternalEntitled;
+    BOOL _clientLimitedLibraryCapable;
     int _clientProcessIdentifier;
     NSString *_trustedCallerBundleID;
     NSString *_trustedCallerDisplayName;
+    NSString *_trustedCallerPhotoLibraryUsageDescription;
 }
 
 @property (readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
+@property (readonly, nonatomic, getter=isClientLimitedLibraryCapable) BOOL clientLimitedLibraryCapable; // @synthesize clientLimitedLibraryCapable=_clientLimitedLibraryCapable;
 @property (readonly, nonatomic) int clientProcessIdentifier; // @synthesize clientProcessIdentifier=_clientProcessIdentifier;
+@property (readonly, nonatomic) BOOL cloudInternalEntitled; // @synthesize cloudInternalEntitled=_cloudInternalEntitled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL directDatabaseAccessAuthorized;
 @property (readonly, nonatomic) BOOL directDatabaseWriteAuthorized;
+@property (readonly, nonatomic) NSString *fetchFilterIdentifier; // @synthesize fetchFilterIdentifier=_fetchFilterIdentifier;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL limitedLibraryMode;
 @property (readonly, nonatomic) BOOL photoKitEntitled; // @synthesize photoKitEntitled=_photoKitEntitled;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *trustedCallerBundleID; // @synthesize trustedCallerBundleID=_trustedCallerBundleID;
 @property (readonly, nonatomic) NSString *trustedCallerDisplayName; // @synthesize trustedCallerDisplayName=_trustedCallerDisplayName;
+@property (readonly, nonatomic) NSString *trustedCallerPhotoLibraryUsageDescription; // @synthesize trustedCallerPhotoLibraryUsageDescription=_trustedCallerPhotoLibraryUsageDescription;
 
 - (void).cxx_destruct;
 - (void)_handleDuetReportIsForground:(BOOL)arg1;
@@ -51,8 +60,12 @@
 - (BOOL)isClientAuthorizedForLibraryUpgrade;
 - (BOOL)isClientAuthorizedForTCCServicePhotos;
 - (BOOL)isClientAuthorizedForTCCServicePhotosAdd;
+- (BOOL)isClientInFullLibraryMode;
+- (BOOL)isClientInLimitedLibraryMode;
+- (BOOL)isClientInRestrictedMode;
 - (BOOL)isPhotosClient;
 - (BOOL)photoKitEntitledFor:(id)arg1;
+- (void)setClientLimitedLibraryCapable:(BOOL)arg1;
 - (void)setupFromConnection:(id)arg1;
 
 @end

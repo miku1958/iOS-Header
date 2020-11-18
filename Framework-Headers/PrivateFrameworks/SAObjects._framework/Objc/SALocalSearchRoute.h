@@ -16,7 +16,10 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSData *etaFilter;
+@property (copy, nonatomic) NSData *evChargingMetadata;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSData *originalWaypointRoute;
 @property (copy, nonatomic) NSData *routeAsZilchBinary;
 @property (copy, nonatomic) NSData *routeId;
 @property (copy, nonatomic) NSData *sessionState;

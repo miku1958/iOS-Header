@@ -19,6 +19,8 @@
 @property (readonly, nonatomic) NSString *presetKind;
 @property (readonly, nonatomic) TSWPDropCapStyle *variationWithSingleCharacterDropCap;
 
++ (int)defaultIntValueForProperty:(int)arg1;
++ (id)defaultPropertyMap;
 + (id)defaultStyleWithContext:(id)arg1;
 + (id)defaultValueForProperty:(int)arg1;
 + (id)dropCapProperties;
@@ -26,10 +28,16 @@
 + (id)propertiesAllowingNSNull;
 - (void)loadFromArchive:(const struct DropCapStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)mapNonDefaultPropertyOverridesForParentStyle:(id)arg1 propertyMap:(id)arg2;
+- (unsigned long long)minimumReadVersion;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (double)resolvedFloatForProperty:(int)arg1 inStyles:(id)arg2;
+- (int)resolvedIntForProperty:(int)arg1 inStyles:(id)arg2;
+- (id)resolvedValueForProperty:(int)arg1 inStyles:(id)arg2;
 - (void)saveToArchive:(struct DropCapStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (BOOL)wantsCustomResolveLogicForProperty:(int)arg1 forStyles:(id)arg2;
 
 @end
 

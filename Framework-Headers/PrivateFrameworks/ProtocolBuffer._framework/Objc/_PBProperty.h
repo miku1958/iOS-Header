@@ -29,30 +29,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _structSize;
 }
 
-@property (readonly, nonatomic) BOOL canConvertFromString;
-@property (readonly, nonatomic) BOOL isObject;
-@property (readonly, nonatomic) BOOL isStruct;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) Class objectType; // @synthesize objectType=_objectType;
-@property (strong, nonatomic) Class subObjectType; // @synthesize subObjectType=_subObjectType;
-@property (nonatomic) BOOL subType; // @synthesize subType=_subType;
-@property (nonatomic) BOOL type; // @synthesize type=_type;
-
-+ (id)getValidPropertiesForType:(Class)arg1 withCache:(id)arg2;
-+ (id)pbPropertyFor:(struct objc_property *)arg1 type:(Class)arg2;
-- (id)_parseStructDefinition:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (unsigned long long)getCountOfRepeatedValuesFromInstance:(id)arg1;
-- (id)getNumberValueFromInstance:(id)arg1;
-- (id)getObjValueFromInstance:(id)arg1;
-- (id)getPtrArrayValueFromInstance:(id)arg1;
-- (id)getStructValueFromInstance:(id)arg1;
-- (id)initWith:(struct objc_property *)arg1 type:(Class)arg2;
-- (BOOL)instanceHasValue:(id)arg1;
-- (void)setNumberValue:(id)arg1 onInstance:(id)arg2;
-- (void)setObjValue:(id)arg1 onInstance:(id)arg2;
-- (BOOL)setStructValue:(id)arg1 onInstance:(id)arg2;
 
 @end
 

@@ -9,6 +9,11 @@
 @class NSArray;
 
 @protocol CPSLinearFocusProviding <NSObject>
+
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
+
 - (NSArray *)_linearFocusItems;
+
+@optional
 @end
 

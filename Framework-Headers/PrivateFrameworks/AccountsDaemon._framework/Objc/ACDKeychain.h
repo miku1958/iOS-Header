@@ -14,8 +14,10 @@
 + (BOOL)_isKnownMigratedKeychainItem:(id)arg1;
 + (id)_knownMigratedKeychainItems;
 + (void)_migrateKeychainItemIfNecessary:(id)arg1;
++ (id)_passwordForServiceName:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 checkInKeybag:(BOOL)arg4 options:(id)arg5 error:(id *)arg6;
 + (void)addItemWithServiceName:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 passwordData:(id)arg4 options:(id)arg5 error:(id *)arg6;
 + (BOOL)addSyncItemWithServiceName:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 extension:(id)arg5 error:(id *)arg6;
++ (id)cache;
 + (BOOL)canAccessPasswordsWithPolicy:(id)arg1;
 + (id)keychainDeletedAccounts;
 + (id)passwordForServiceName:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 error:(id *)arg5;

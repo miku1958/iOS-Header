@@ -6,7 +6,7 @@
 
 #import <AdCore/ADSingleton.h>
 
-@class ACAccount, NSString, NSURL, NSUUID;
+@class ACAccount, NSString, NSURL;
 
 @interface ADCoreSettings : ADSingleton
 {
@@ -28,23 +28,17 @@
     NSString *_storefrontLocalizationLanguage;
     NSString *_homeCarrierMCC;
     NSString *_homeCarrierMNC;
-    NSString *_currentCarrierMCC;
-    NSString *_currentCarrierMNC;
     NSString *_iTunesStorefront;
 }
 
-@property (readonly, nonatomic) NSUUID *IDFA;
 @property (nonatomic) double NSURLConnectionTimeout; // @synthesize NSURLConnectionTimeout=_NSURLConnectionTimeout;
 @property (nonatomic) double NSURLTransactionTimeout; // @synthesize NSURLTransactionTimeout=_NSURLTransactionTimeout;
 @property (nonatomic) double adServerTimeoutInterval; // @synthesize adServerTimeoutInterval=_adServerTimeoutInterval;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic) int connectionType; // @synthesize connectionType=_connectionType;
-@property (copy, nonatomic) NSString *currentCarrierMCC; // @synthesize currentCarrierMCC=_currentCarrierMCC;
-@property (copy, nonatomic) NSString *currentCarrierMNC; // @synthesize currentCarrierMNC=_currentCarrierMNC;
 @property (readonly, nonatomic) NSString *customJinglePayload;
 @property (strong, nonatomic) NSURL *defaultConfigurationServerURL; // @synthesize defaultConfigurationServerURL=_defaultConfigurationServerURL;
 @property (strong, nonatomic) NSURL *defaultServerURL; // @synthesize defaultServerURL=_defaultServerURL;
-@property (readonly, nonatomic) BOOL deviceLimitsAdTracking;
 @property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (readonly, nonatomic) BOOL educationModeEnabled; // @synthesize educationModeEnabled=_educationModeEnabled;
 @property (nonatomic) BOOL hasDeterminedRoamingStatus; // @synthesize hasDeterminedRoamingStatus=_hasDeterminedRoamingStatus;
@@ -57,12 +51,11 @@
 @property (readonly, nonatomic) ACAccount *iTunesStoreAccount;
 @property (strong, nonatomic) NSString *iTunesStorefront; // @synthesize iTunesStorefront=_iTunesStorefront;
 @property (nonatomic) BOOL internationalRoaming; // @synthesize internationalRoaming=_internationalRoaming;
-@property (nonatomic) BOOL isLATEnabled;
 @property (readonly, nonatomic) BOOL isManagedAppleID;
 @property (readonly, nonatomic) BOOL isManagediCloudAccount;
 @property (readonly, nonatomic) BOOL isManagediTunesAccount;
+@property (nonatomic) BOOL isPersonalizedAdsEnabled;
 @property (nonatomic) double jingleTimeoutInterval; // @synthesize jingleTimeoutInterval=_jingleTimeoutInterval;
-@property (readonly, nonatomic) BOOL limitAdTrackingRestrictionEnabledBySpringboard;
 @property (readonly, nonatomic) NSString *localeIdentifier;
 @property (nonatomic) int maxSegmentSendInterval;
 @property (strong, nonatomic) NSString *osVersionAndBuild; // @synthesize osVersionAndBuild=_osVersionAndBuild;
@@ -75,15 +68,15 @@
 + (BOOL)educationModeEnabled;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)clearAdvertisingIdentifier;
 - (id)deviceDescription;
 - (int)deviceRunStateForBundleIdentifier:(id)arg1;
 - (void)expire;
 - (void)gatherTelephonyData;
 - (id)init;
-- (BOOL)isLATRestrictedByProfile;
+- (BOOL)isAccountRestricted;
 - (BOOL)purpleBuddyWillRun;
 - (void)reloadStorefront:(CDUnknownBlockType)arg1;
+- (void)setIdentifierForAdvertisingAllowed:(BOOL)arg1;
 
 @end
 

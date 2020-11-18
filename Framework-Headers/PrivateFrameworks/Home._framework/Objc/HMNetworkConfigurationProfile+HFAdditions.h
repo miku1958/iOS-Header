@@ -10,9 +10,12 @@
 
 @interface HMNetworkConfigurationProfile (HFAdditions)
 
+@property (readonly, copy, nonatomic) NSString *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;
 @property (readonly, nonatomic) BOOL hf_hasCurrentNetworkAccessViolation;
+@property (readonly, nonatomic) BOOL hf_hasManagedNetworkCredential;
 @property (readonly, nonatomic) BOOL hf_hasProtectionModeMismatch;
 @property (readonly, nonatomic) BOOL hf_requiresManualWiFiReconfiguration;
+@property (readonly, nonatomic) BOOL hf_requiresWiFiReconfiguration;
 @property (readonly, copy, nonatomic) NSString *hf_targetProtectionModeDetailedLocalizedDescription;
 @property (readonly, copy, nonatomic) NSString *hf_targetProtectionModeDetailedLocalizedTitle;
 @property (readonly, nonatomic) BOOL hf_targetProtectionModeIsValid;
@@ -24,6 +27,7 @@
 + (id)hf_detailedLocalizedDescriptionForTargetProtectionMode:(long long)arg1;
 + (id)hf_detailedLocalizedTitleForTargetProtectionMode:(long long)arg1;
 + (id)hf_localizedDescriptionForAllowedHostPurpose:(unsigned long long)arg1;
++ (id)hf_localizedDescriptionForCredentialType:(long long)arg1;
 + (id)hf_localizedTitleForTargetProtectionMode:(long long)arg1;
 + (BOOL)hf_targetProtectionModeIsValid:(long long)arg1;
 @end

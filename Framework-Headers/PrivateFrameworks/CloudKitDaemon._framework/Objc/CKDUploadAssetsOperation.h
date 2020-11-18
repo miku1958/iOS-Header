@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *packageManifests; // @synthesize packageManifests=_packageManifests;
 @property (strong, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (nonatomic) BOOL temporary; // @synthesize temporary=_temporary;
 @property (copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType uploadPreparationBlock; // @synthesize uploadPreparationBlock=_uploadPreparationBlock;
@@ -69,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_didUploadPackageWithTask:(id)arg1;
 - (void)_failAllItemsInAssetBatch:(id)arg1 error:(id)arg2;
 - (BOOL)_fetchAssetRereferenceRecords;
+- (BOOL)_fetchConfiguration;
 - (BOOL)_fetchUploadTokens;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_openPackage:(id)arg1;
@@ -86,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

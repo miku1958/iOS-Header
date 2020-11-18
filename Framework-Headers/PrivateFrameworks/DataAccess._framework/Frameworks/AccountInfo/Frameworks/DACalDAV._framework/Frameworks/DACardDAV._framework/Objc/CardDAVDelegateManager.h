@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSString;
+@class ACAccountStore, CardDAVLocalDBHelper, NSString;
 @protocol CardDAVDelegateInfoProvider;
 
 @interface CardDAVDelegateManager : NSObject
@@ -14,10 +14,12 @@
     id<CardDAVDelegateInfoProvider> _delegateProvider;
     NSString *_accountID;
     ACAccountStore *_accountStore;
+    CardDAVLocalDBHelper *_databaseHelper;
 }
 
 @property (readonly, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (readonly, nonatomic) CardDAVLocalDBHelper *databaseHelper; // @synthesize databaseHelper=_databaseHelper;
 @property (readonly, nonatomic) id<CardDAVDelegateInfoProvider> delegateProvider; // @synthesize delegateProvider=_delegateProvider;
 
 + (void)finishFutures:(id)arg1;
@@ -25,8 +27,9 @@
 - (id)account;
 - (id)addChildWithDelegateInfo:(id)arg1;
 - (id)collectDelegateInfoReturningError:(id *)arg1;
+- (void)deleteOrphanDatabasesLackingRepresentationInDelegateInfos:(id)arg1;
 - (id)existingChildAccountsWithProperty:(id)arg1;
-- (id)initWithDelegateInfoProvider:(id)arg1 accountID:(id)arg2;
+- (id)initWithDelegateInfoProvider:(id)arg1 accountID:(id)arg2 databaseHelper:(id)arg3;
 - (id)removeAccount:(id)arg1;
 - (id)saveAccount:(id)arg1;
 - (void)updateDelegates;

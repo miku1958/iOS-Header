@@ -27,6 +27,7 @@
 - (id)homeButtonColor;
 - (id)homeExplanatoryText;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)prepareForReuse;
 - (void)setButtonColor:(id)arg1;
 - (void)setButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setButtonTitle:(id)arg1;

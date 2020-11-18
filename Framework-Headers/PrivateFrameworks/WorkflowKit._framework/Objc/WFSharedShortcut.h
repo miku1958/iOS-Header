@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
-#import <WorkflowKit/WFLoggableObject-Protocol.h>
 
-@class CKRecordID, NSDate, NSDictionary, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
+@class CKRecordID, NSData, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
 
-@interface WFSharedShortcut : NSObject <WFCloudKitItem, WFLoggableObject>
+@interface WFSharedShortcut : NSObject <WFCloudKitItem>
 {
     CKRecordID *_identifier;
     NSString *_name;
@@ -35,7 +34,7 @@
 @property (strong, nonatomic) NSNumber *iconGlyph; // @synthesize iconGlyph=_iconGlyph;
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSDictionary *propertiesForEventLogging;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (strong, nonatomic) WFFileRepresentation *shortcutFile; // @synthesize shortcutFile=_shortcutFile;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WFWorkflowRecord *workflowRecord; // @synthesize workflowRecord=_workflowRecord;
@@ -44,6 +43,7 @@
 + (id)recordType;
 - (void).cxx_destruct;
 - (void)ensureFileAssets;
+- (id)propertiesForEventLogging;
 - (void)setCreatedAt:(id)arg1 modifiedAt:(id)arg2 createdBy:(id)arg3;
 - (id)sharingURL;
 

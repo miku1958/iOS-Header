@@ -30,7 +30,8 @@
 + (BOOL)usesTelephonyGlyphsWhereAvailable;
 - (void).cxx_destruct;
 - (int)characterType;
-- (id)initForCharacter:(unsigned int)arg1;
+- (void)conformsToSBUIPasscodeNumberPadButton;
+- (id)initForCharacter:(long long)arg1;
 - (id)stringCharacter;
 
 @end

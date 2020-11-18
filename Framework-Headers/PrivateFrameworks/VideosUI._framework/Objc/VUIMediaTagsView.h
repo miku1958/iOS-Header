@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, UIImage, VUIMediaTagsViewLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaTagsView : UIView <VUIRentalExpirationLabelDelegate, VUILabelTopMarginCalculationProtocol>
+@interface VUIMediaTagsView : UIView <VUIRentalExpirationLabelDelegate, VUILabelBaselineProtocol>
 {
     VUIMediaTagsViewLayout *_layout;
     NSDictionary *_viewsMap;
@@ -34,7 +34,9 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSDictionary *viewsMap; // @synthesize viewsMap=_viewsMap;
 
 + (id)tagsViewWithMetadata:(id)arg1 layout:(id)arg2 element:(id)arg3 existingView:(id)arg4;
++ (id)tagsViewWithMetadata:(id)arg1 layout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;
+- (id)_firstLabelSubview;
 - (struct CGSize)_layoutSubviewsForSize:(struct CGSize)arg1 computationOnly:(BOOL)arg2;
 - (id)_newImageViewAsSubview;
 - (id)_newLabelAsSubview:(id)arg1;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (double)_totalSubviewsWidth;
 - (void)_updateAppearanceWithUserInterfaceStyle:(long long)arg1;
 - (void)_updateImageAppearanceWithUserInterfaceStyle:(long long)arg1;
+- (double)baselineOffsetFromBottom;
 - (double)bottomMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;

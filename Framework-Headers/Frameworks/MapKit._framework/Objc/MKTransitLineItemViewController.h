@@ -17,7 +17,7 @@
 #import <MapKit/_MKInfoCardAnalyticsDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardController-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKNearestStationViewController, MKPlaceActionManager, MKPlaceCardActionItem, MKPlaceCardActionsViewController, MKPlaceCardHeaderViewController, MKPlaceHeaderButtonsViewController, NSNumber, NSString;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKNearestStationViewController, MKPlaceActionManager, MKPlaceCardActionItem, MKPlaceCardActionsViewController, MKPlaceCardHeaderViewController, MKPlaceHeaderButtonsViewController, NSNumber, NSString;
 @protocol GEOTransitLineItem, MKLocationManagerOperation, MKMapServiceTicket, MKTransitLineItemViewControllerDelegate, UIScrollViewDelegate;
 
 @interface MKTransitLineItemViewController : MKStackingViewController <MKStackingViewControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKETAProviderDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKNearestStationViewControllerDelegate, MKTransitLineIncidentsViewControllerDelegate, _MKInfoCardController, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate>
@@ -42,12 +42,14 @@
     MKPlaceCardActionItem *_removeFromFavoritesItem;
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
+    GEOCyclingOptions *_cyclingOptions;
     id<UIScrollViewDelegate> _scrollViewDelegate;
 }
 
 @property (strong, nonatomic) MKPlaceCardActionItem *addToFavoritesItem; // @synthesize addToFavoritesItem=_addToFavoritesItem;
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (nonatomic) double contentAlpha;
+@property (strong, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKTransitLineItemViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -64,6 +66,7 @@
 - (void).cxx_destruct;
 - (void)_fetchNearestStation;
 - (void)_updateViewControllers;
+- (id)createMenuActions;
 - (void)hideTitle:(BOOL)arg1;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 eventValue:(id)arg2 feedbackDelegateSelector:(int)arg3;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 feedbackDelegateSelector:(int)arg6;
@@ -72,6 +75,7 @@
 - (id)initWithTransitLineItem:(id)arg1;
 - (int)mapTypeForETAProvider:(id)arg1;
 - (void)nearestStationViewControllerDidSelectStation:(id)arg1;
+- (void)performAction:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)placeActionManager:(id)arg1 didSelectShareFromView:(id)arg2;
 - (void)placeCardActionControllerDidSelectAddToCollection:(id)arg1;
 - (void)placeCardActionControllerDidSelectAddToFavorites:(id)arg1;

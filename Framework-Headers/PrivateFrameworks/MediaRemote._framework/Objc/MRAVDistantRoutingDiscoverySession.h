@@ -45,6 +45,8 @@
 - (void)_reloadAvailableDistantOutputDevices;
 - (void)_reloadAvailableDistantOutputDevicesWithOutputDevices:(id)arg1;
 - (void)_reloadHostedRoutingServiceDiscoveryMode;
+- (void)_reloadHostedRoutingServiceEndpointFeatures;
+- (BOOL)_shouldAddLocalEndpoint;
 - (id)availableEndpoints;
 - (void)availableEndpointsDidChange:(id)arg1;
 - (id)availableOutputDevices;
@@ -53,9 +55,10 @@
 - (BOOL)devicePresenceDetected;
 - (unsigned int)discoveryMode;
 - (unsigned int)endpointFeatures;
-- (id)initWithEndpointFeatures:(unsigned int)arg1 enableThrottling:(BOOL)arg2;
+- (id)initWithConfiguration:(id)arg1;
 - (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;
+- (void)setEndpointFeatures:(unsigned int)arg1;
 - (void)setRoutingContextUID:(id)arg1;
 
 @end

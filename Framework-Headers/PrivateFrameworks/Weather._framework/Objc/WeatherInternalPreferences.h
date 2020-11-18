@@ -13,10 +13,11 @@
     id<WeatherPreferencesPersistence> _persistence;
 }
 
-@property (readonly) BOOL isInternalInstall;
-@property (readonly) BOOL isV3Enabled;
+@property (readonly, nonatomic) unsigned long long deviceInactivityThreshold;
+@property (readonly, nonatomic) BOOL isInternalInstall;
+@property (readonly, nonatomic) BOOL isV3Enabled;
 @property (strong) id<WeatherPreferencesPersistence> persistence; // @synthesize persistence=_persistence;
-@property (readonly) BOOL shouldShowUpdateTimestamp;
+@property (readonly, nonatomic) BOOL shouldShowUpdateTimestamp;
 
 + (id)sharedInternalPreferences;
 - (void).cxx_destruct;

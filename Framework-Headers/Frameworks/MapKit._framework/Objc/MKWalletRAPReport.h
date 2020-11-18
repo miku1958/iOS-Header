@@ -16,6 +16,8 @@
 }
 
 @property (copy, nonatomic) NSString *correlationId;
+@property (nonatomic) BOOL isAppleCard;
+@property (nonatomic) unsigned long long lookupTransactionType;
 @property (copy, nonatomic) NSString *merchantAdamId;
 @property (readonly, nonatomic) GEORPProblem *problem; // @synthesize problem=_problem;
 @property (copy, nonatomic) NSString *reportersComment;

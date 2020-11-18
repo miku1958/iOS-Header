@@ -19,8 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_contentsCompositingFilter;
 - (id)_contentsTintColor;
+- (BOOL)_ignoreRemoveAllAnimations;
 - (void)_updateContentAppearance;
-- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)trailingView;
 - (void)traitCollectionDidChange:(id)arg1;
 

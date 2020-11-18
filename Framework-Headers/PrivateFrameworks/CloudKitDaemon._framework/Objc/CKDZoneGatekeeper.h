@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasStatusToReport;
 - (id)init;
 - (void)registerWaiter:(id)arg1 forZoneIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)relinquishLocksForWaiter:(id)arg1;
+- (void)relinquishLocksForWaiter:(id)arg1 deferRelinquish:(BOOL)arg2;
 
 @end
 

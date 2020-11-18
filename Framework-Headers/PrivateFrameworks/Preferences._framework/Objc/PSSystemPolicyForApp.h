@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PSPhotosPolicyController;
+@class NEConfiguration, NSString, PSAccountEnumerator, PSContactsPolicyController, PSPhotosPolicyController;
 @protocol PSSystemPolicyForAppDelegate;
 
 @interface PSSystemPolicyForApp : NSObject
@@ -14,8 +14,11 @@
     unsigned long long _policyOptions;
     BOOL _forcePolicyOptions;
     PSPhotosPolicyController *_photosPrivacyController;
-    NSString *_bundleIdentifier;
+    PSContactsPolicyController *_contactsPrivacyController;
+    PSAccountEnumerator *_accountEnumerator;
+    NEConfiguration *_pathControllerConfiguration;
     id<PSSystemPolicyForAppDelegate> _delegate;
+    NSString *_bundleIdentifier;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -23,35 +26,56 @@
 
 + (BOOL)isServiceRestricted:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_accountModificationDisabledByRestrictions;
+- (void)_handleAddAccountButtonAction:(id)arg1;
 - (BOOL)_isBackgroundAppRefreshAllowed;
 - (BOOL)_isLocationServicesRestricted;
 - (BOOL)_isWirelessDataRestricted;
 - (id)_privacyAccessForService:(struct __CFString *)arg1;
 - (BOOL)_supportsBackgroundAppRefresh;
+- (id)accountsSpecifier;
 - (id)assistantAndSearchSpecifiers;
 - (id)authLevelStringForStatus:(unsigned long long)arg1;
 - (id)backgroundAppRefreshSpecifier;
+- (id)contactsServicesSpecifier;
 - (struct __CFBundle *)copyTCCBundleForService:(struct __CFString *)arg1;
 - (id)dataUsageWorkspaceInfo;
+- (id)defaultAppSpecifierWithAppRecordsMatchingBlock:(CDUnknownBlockType)arg1 getter:(SEL)arg2 setter:(SEL)arg3 title:(id)arg4;
+- (id)defaultBrowser:(id)arg1;
+- (id)defaultBrowserSpecifier;
+- (id)defaultMailApp:(id)arg1;
+- (id)defaultMailAppSpecifier;
 - (id)documentSource:(id)arg1;
 - (id)documentsSpecifier;
 - (id)exposureSpecifiers;
+- (BOOL)getMulticastAllowed:(BOOL *)arg1;
+- (void)headerLinkWasTapped;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)isBackgroundRefreshEnabled:(id)arg1;
 - (BOOL)isCellularBundleID:(id)arg1;
+- (id)isLocalNetworkEnabled:(id)arg1;
+- (void)loadNetworkConfigurationsForceRefresh:(BOOL)arg1;
 - (id)locationServicesSpecifier;
 - (id)locationStatus:(id)arg1;
+- (id)networkServicesSpecifier;
 - (id)notificationSpecifier;
+- (id)pathRuleForBundleID:(id)arg1 create:(BOOL)arg2;
 - (id)photosServicesSpecifier;
 - (id)preferredLanguage:(id)arg1;
 - (id)preferredLanguageSpecifier;
 - (id)privacyAccessForSpecifier:(id)arg1;
 - (id)privacySpecifierForService:(struct __CFString *)arg1;
 - (id)privacySpecifiers;
+- (void)saveNetworkConfiguration;
 - (void)setBackgroundRefreshEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (void)setDefaultBrowser:(id)arg1 specifier:(id)arg2;
+- (void)setDefaultMailApp:(id)arg1 specifier:(id)arg2;
+- (void)setLocalNetworkEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setPrivacyAccess:(id)arg1 forSpecifier:(id)arg2;
+- (void)setupNetworkConfiguration;
 - (id)specifiers;
 - (id)specifiersForPolicyOptions:(unsigned long long)arg1 force:(BOOL)arg2;
+- (id)trackingSpecifiers;
 - (id)wirelessDataSpecifierWithAppName:(id)arg1;
 
 @end

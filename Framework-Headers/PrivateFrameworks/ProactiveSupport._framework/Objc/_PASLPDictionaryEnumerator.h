@@ -6,16 +6,18 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class _PASLPDictionary;
+@class _PASLPDictionaryContext;
+@protocol _PASLPReaderProtocol;
 
 @interface _PASLPDictionaryEnumerator : NSEnumerator
 {
-    _PASLPDictionary *_lpDict;
+    id<_PASLPReaderProtocol> _reader;
+    _PASLPDictionaryContext *_context;
     unsigned long long _ofs;
 }
 
 - (void).cxx_destruct;
-- (id)initWithLPDictionary:(id)arg1;
+- (id)initWithLazyPlistReader:(id)arg1 context:(id)arg2;
 - (id)nextObject;
 
 @end

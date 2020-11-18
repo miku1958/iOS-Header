@@ -13,6 +13,8 @@
 
 @property (nonatomic, getter=areCellContentsHidden) BOOL cellContentsHidden;
 @property (strong, nonatomic) HUGridCellLayoutOptions *layoutOptions;
+@property (nonatomic, getter=isPointerInteractionEnabled) BOOL pointerInteractionEnabled;
+@property (nonatomic) double pointerRegionMargin;
 @property (nonatomic, getter=isRearranging) BOOL rearranging;
 
 + (Class)layoutOptionsClass;

@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@class NSSet;
 @protocol PXActionPerformerDelegate;
 
 @interface PXActionManager : NSObject
 {
     id<PXActionPerformerDelegate> _performerDelegate;
+    NSSet *_allowedActionTypes;
 }
 
+@property (copy, nonatomic) NSSet *allowedActionTypes; // @synthesize allowedActionTypes=_allowedActionTypes;
 @property (weak, nonatomic) id<PXActionPerformerDelegate> performerDelegate; // @synthesize performerDelegate=_performerDelegate;
 
 + (CDUnknownBlockType)_unlockDeviceHandler;
@@ -24,6 +27,7 @@
 - (id)alertActionViewControllerForActionType:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
 - (BOOL)canPerformActionType:(id)arg1;
+- (BOOL)isActionTypeAllowed:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)previewActionForActionType:(id)arg1 image:(id)arg2;
 - (id)systemImageNameForActionType:(id)arg1;

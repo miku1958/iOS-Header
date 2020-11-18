@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSMutableArray *posterFrameViewQueue; // @synthesize posterFrameViewQueue=_posterFrameViewQueue;
 
-+ (id)dequeuePosterFrameView;
++ (id)dequeuePosterFrameViewForWidth:(double)arg1;
 + (void)enqueuePosterFrameView:(id)arg1;
 + (void)purgeCache;
 + (id)sharedCache;

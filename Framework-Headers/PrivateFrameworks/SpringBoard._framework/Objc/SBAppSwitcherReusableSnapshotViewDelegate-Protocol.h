@@ -10,5 +10,6 @@
 
 @protocol SBAppSwitcherReusableSnapshotViewDelegate <NSObject>
 - (struct CGRect)layoutFrameForItemWithRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 interfaceOrientation:(long long)arg3 forSnapshotView:(SBAppSwitcherReusableSnapshotView *)arg4;
+- (BOOL)snapshotView:(SBAppSwitcherReusableSnapshotView *)arg1 shouldShowAppClipOverlayForLayout:(SBAppLayout *)arg2;
 @end
 

@@ -16,7 +16,7 @@
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

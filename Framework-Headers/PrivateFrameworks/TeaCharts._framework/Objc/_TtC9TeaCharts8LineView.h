@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC9TeaCharts8LineView : UIView
 {
     MISSING_TYPE *imageView;

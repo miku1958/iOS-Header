@@ -19,6 +19,7 @@
     double _altitude;
     MKMapView *_mapView;
     BOOL _pitchAdjustsAltitude;
+    BOOL _needsStateUpdate;
 }
 
 @property (nonatomic) double altitude; // @synthesize altitude=_altitude;
@@ -37,6 +38,7 @@
 - (void).cxx_destruct;
 - (CDStruct_02837cd9)_enclosingGEOMapRectForAspectRatio:(float)arg1;
 - (id)_mapView;
+- (void)_mapViewStateChanged;
 - (void)_setMapView:(id)arg1;
 - (void)_updateState;
 - (BOOL)_validate;

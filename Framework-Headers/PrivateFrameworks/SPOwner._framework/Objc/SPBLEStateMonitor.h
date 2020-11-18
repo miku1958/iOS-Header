@@ -6,20 +6,29 @@
 
 #import <objc/NSObject.h>
 
+#import <SPOwner/CBCentralManagerDelegate-Protocol.h>
+
+@class CBCentralManager, NSString;
 @protocol SPBLEStateMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SPBLEStateMonitor : NSObject
+@interface SPBLEStateMonitor : NSObject <CBCentralManagerDelegate>
 {
     unsigned long long _bleState;
     id<SPBLEStateMonitorDelegate> _delegate;
+    CBCentralManager *_centralManager;
 }
 
 @property (nonatomic) unsigned long long bleState; // @synthesize bleState=_bleState;
+@property (strong, nonatomic) CBCentralManager *centralManager; // @synthesize centralManager=_centralManager;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SPBLEStateMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_updateBLEStatus;
+- (void)centralManagerDidUpdateState:(id)arg1;
 - (id)init;
 - (void)notifyDelegate:(unsigned long long)arg1;
 - (void)startMonitoring;

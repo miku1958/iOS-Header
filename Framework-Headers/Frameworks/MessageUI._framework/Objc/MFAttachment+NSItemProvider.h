@@ -36,7 +36,6 @@
 
 + (BOOL)_isPDF:(id)arg1;
 + (id)attachmentElementHTMLStringWithAttributes:(id)arg1;
-+ (BOOL)canInlineImageType:(id)arg1 data:(id)arg2;
 + (BOOL)isBasicImageMimeType:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
 - (id)_contentTypeByStrippingZipIfNeeded:(BOOL)arg1;

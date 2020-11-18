@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *flow;
     MISSING_TYPE *healthAgencyModel;
+    MISSING_TYPE *statusView;
     MISSING_TYPE *primaryButton;
     MISSING_TYPE *secondaryButton;
 }

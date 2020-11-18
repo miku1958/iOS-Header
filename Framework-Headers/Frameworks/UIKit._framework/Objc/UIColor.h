@@ -23,6 +23,8 @@
 
 @property (readonly, nonatomic) struct CGColor *CGColor;
 @property (readonly, nonatomic) CIColor *CIColor;
+@property (readonly, nonatomic) NSString *_accessibilityNameWithLuma;
+@property (readonly, nonatomic) NSString *accessibilityName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -49,6 +51,8 @@
 + (id)_alertControllerDimmingViewColor;
 + (id)_alternateSystemInteractionTintColor;
 + (id)_apiColorNames;
++ (id)_appKeyColor;
++ (id)_appKeyColorOrDefaultTint;
 + (id)_barHairlineShadowColor;
 + (id)_barStyleBlackHairlineShadowColor;
 + (id)_carSystemFocusColor;
@@ -66,6 +70,7 @@
 + (id)_controlShadowColor;
 + (id)_controlVibrantBottomBackgroundColor;
 + (id)_controlVibrantTopBackgroundColor;
++ (id)_convertColorPickerColor:(id)arg1 fromUserInterfaceStyle:(long long)arg2 to:(long long)arg3;
 + (id)_dimmingViewColor;
 + (id)_disabledColorForColor:(id)arg1;
 + (id)_disambiguated_due_to_CIImage_colorWithCGColor:(struct CGColor *)arg1;
@@ -88,7 +93,10 @@
 + (id)_linkColor;
 + (double)_luminanceWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3;
 + (id)_markedTextBackgroundColor;
++ (id)_monochromeCellImageTintColor;
 + (id)_opaqueSeparatorColor;
++ (id)_pageControlIndicatorColor;
++ (id)_pageControlPlatterIndicatorColor;
 + (id)_placeholderTextColor;
 + (id)_plainTableHeaderFooterTextColor;
 + (id)_quaternaryFillColor;
@@ -102,6 +110,8 @@
 + (id)_secondarySystemGroupedBackgroundColor;
 + (id)_separatorColor;
 + (id)_splitViewBorderColor;
++ (id)_switchOffColor;
++ (id)_switchOffImageColor;
 + (id)_systemBackgroundColor;
 + (id)_systemBackgroundSectionCellColor;
 + (id)_systemBackgroundSectionColor;
@@ -131,6 +141,11 @@
 + (id)_textFieldDisabledBackgroundColor;
 + (id)_textFieldDisabledBorderColor;
 + (id)_translucentPaperTextureColor;
++ (id)_tvInterfaceStyleDarkContentColor;
++ (id)_tvInterfaceStyleLightContentColor;
++ (id)_tvLabelOpacityAColor;
++ (id)_tvLabelOpacityBColor;
++ (id)_tvLabelOpacityCColor;
 + (id)_unfocusedCarSystemColor:(id)arg1;
 + (id)_vibrantDarkFillDodgeColor;
 + (id)_vibrantLightDividerBurnColor;
@@ -252,10 +267,15 @@
 + (id)tableCellBackgroundColor;
 + (id)tableCellBlueTextColor;
 + (id)tableCellDefaultSelectionTintColor;
++ (id)tableCellDisabledBackgroundColor;
++ (id)tableCellFocusedBackgroundColor;
 + (id)tableCellGrayTextColor;
 + (id)tableCellGroupedBackgroundColor;
 + (id)tableCellGroupedBackgroundColorLegacyWhite;
++ (id)tableCellGroupedSelectedBackgroundColor;
++ (id)tableCellHighlightedBackgroundColor;
 + (id)tableCellPlainBackgroundColor;
++ (id)tableCellPlainSelectedBackgroundColor;
 + (id)tableCellValue1BlueColor;
 + (id)tableCellValue2BlueColor;
 + (id)tableCellbackgroundColorCarPlay;
@@ -298,7 +318,6 @@
 - (double)_luminanceDifferenceFromColor:(id)arg1;
 - (void)_setDebugCatalogBundleIdentifier:(id)arg1;
 - (void)_setDebugName:(id)arg1;
-- (id)_ui_swipeActionHighlightedColor;
 - (double)alphaComponent;
 - (struct CGColor *)cgColor;
 - (Class)classForCoder;

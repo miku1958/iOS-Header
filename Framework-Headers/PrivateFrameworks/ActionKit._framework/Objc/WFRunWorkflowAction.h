@@ -28,15 +28,14 @@
 - (id)getWorkflowWithError:(id *)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (void)runWorkflowWithInput:(id)arg1;
 - (void)setHandoffWorkflowControllerState:(id)arg1;
 - (void)stop;
-- (id)targetDataInfo;
-- (void)wasAddedToWorkflowByUser:(id)arg1;
+- (id)targetContentAttribution;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(BOOL)arg3;
 - (BOOL)workflowController:(id)arg1 handleUnsupportedEnvironmentForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)workflowController:(id)arg1 handleUnsupportedUserInterfaceForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)workflowController:(id)arg1 parameterInputProviderForAction:(id)arg2;
+- (void)workflowController:(id)arg1 prepareToRunAction:(id)arg2 withInput:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)workflowController:(id)arg1 userInterfaceForAction:(id)arg2;
 
 @end

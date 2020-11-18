@@ -16,6 +16,7 @@
 {
     BOOL _requiresScaling;
     BOOL _automaticallyFitData;
+    BOOL _overrideNoTopBaseline;
     HKAxisStyle *_preferredStyle;
     HKAxisStyle *_secondaryStyle;
     long long _maxLabels;
@@ -41,6 +42,7 @@
 @property (weak, nonatomic) id<HKAxisLabelDataSource> labelDataSource; // @synthesize labelDataSource=_labelDataSource;
 @property (nonatomic) long long maxLabels; // @synthesize maxLabels=_maxLabels;
 @property (nonatomic) long long minLabels; // @synthesize minLabels=_minLabels;
+@property (nonatomic) BOOL overrideNoTopBaseline; // @synthesize overrideNoTopBaseline=_overrideNoTopBaseline;
 @property (nonatomic) struct HKLinearTransform pointTransform; // @synthesize pointTransform=_pointTransform;
 @property (strong, nonatomic) HKAxisStyle *preferredStyle; // @synthesize preferredStyle=_preferredStyle;
 @property (readonly, nonatomic) BOOL requiresScaling; // @synthesize requiresScaling=_requiresScaling;
@@ -56,22 +58,25 @@
 - (double)_axisFillWidthForStyle:(id)arg1 labels:(id)arg2 font:(id)arg3;
 - (double)_axisOffsetWithStyle:(id)arg1 chartRect:(struct CGRect)arg2 horizontalAlignmentOut:(long long *)arg3;
 - (id)_baselineForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5;
-- (double)_baselineYCoordinateForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3;
 - (id)_cachedAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (struct HKRange)_chartRangeForChartRect:(struct CGRect)arg1 zoomScale:(double)arg2 contentOffset:(struct CGPoint)arg3;
+- (BOOL)_containsTopBaselineWithModelRange:(id)arg1 zoomScale:(double)arg2;
 - (void)_drawTextBackgroundWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5 renderView:(id)arg6;
 - (void)_drawTextForModelRange:(id)arg1 inRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 style:(id)arg6 maximumLabelSize:(struct CGSize *)arg7 omitOffscreenLabels:(BOOL)arg8;
 - (id)_gridLinesForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5 gridLineType:(long long)arg6;
 - (struct CGRect)_labelBackgroundRectWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5;
 - (double)_maxLabelWidthFromLabels:(id)arg1 font:(id)arg2;
+- (double)_maximumWidthOfAnnotations:(id)arg1 axisStyle:(id)arg2;
 - (void)_offsetForChartRect:(struct CGRect)arg1 chartRange:(struct HKRange)arg2 zoomScaleOut:(double *)arg3 contentOffsetOut:(struct CGPoint *)arg4;
 - (struct HKLinearTransform)_pointTransformFromSeriesRanges:(id)arg1 linearTransform:(struct HKLinearTransform)arg2 chartRange:(struct HKRange)arg3;
 - (void)_renderTickMarksForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5 renderView:(id)arg6;
 - (BOOL)_styleIsHorizontal:(id)arg1;
-- (void)addAxisAnnotation:(id)arg1 textColor:(id)arg2 modelCoordinate:(id)arg3;
+- (void)addAxisAnnotation:(id)arg1 modelCoordinate:(id)arg2;
 - (id)adjustValueRangeForLabels:(id)arg1;
 - (id)adjustedRangeForFittedRange:(id)arg1 chartRange:(struct HKRange)arg2;
 - (long long)axisAnnotationCount;
+- (long long)axisLabelCountWithTextInModelRange:(id)arg1 zoomScale:(double)arg2;
+- (double)bottomBaselineYCoordinateForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3;
 - (void)clearAnnotations;
 - (void)clearCache;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -89,7 +94,8 @@
 - (void)offsetForValueRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScaleOut:(double *)arg3 contentOffsetOut:(struct CGPoint *)arg4;
 - (struct HKLinearTransform)pointTransformFittingValueRange:(id)arg1 toChartRange:(struct HKRange)arg2;
 - (id)rangeForChartRect:(struct CGRect)arg1 zoomScale:(double)arg2 contentOffset:(struct CGPoint)arg3;
-- (struct CGPoint)renderPositionForLabel:(id)arg1 rect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 constantOffset:(double)arg5 isHorizontal:(BOOL)arg6 optionalOffset:(struct CGPoint)arg7;
+- (struct CGPoint)renderPositionForLabelLocation:(id)arg1 rect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 constantOffset:(double)arg5 isHorizontal:(BOOL)arg6 optionalOffset:(struct CGPoint)arg7;
+- (double)topBaselineYCoordinateForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3;
 - (id)zoomScaleEngine;
 
 @end

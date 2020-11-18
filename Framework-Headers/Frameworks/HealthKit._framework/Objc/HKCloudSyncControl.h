@@ -20,14 +20,28 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)clientInterface;
-+ (id)serverInterface;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
+- (void)accountConfigurationDidChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectionInvalidated;
+- (void)disableCloudSyncAndDeleteAllCloudDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)disableCloudSyncAndDeleteAllCloudDataWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)disableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)enableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (id)exportedInterface;
+- (void)fetchCloudDescriptionWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCloudSyncProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCloudSyncRequiredWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchCloudSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forceCloudResetWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceCloudSyncDataUploadForProfileWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forceCloudSyncWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceCloudSyncWithOptions:(unsigned long long)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)forceCloudSyncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithHealthStore:(id)arg1;
+- (void)oldestSampleStartDateInHealthDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (id)remoteInterface;
+- (void)requestDataRefreshWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

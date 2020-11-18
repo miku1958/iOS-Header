@@ -11,10 +11,10 @@
 @interface PGPotentialEarlyMomentsWithPeopleMemory : PGPotentialMemory
 {
     NSSet *_personNodes;
-    NSArray *_facedAssets;
+    NSArray *_facedAssetLocalIdentifiers;
 }
 
-@property (strong, nonatomic) NSArray *facedAssets; // @synthesize facedAssets=_facedAssets;
+@property (strong, nonatomic) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
 @property (readonly, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 
 - (void).cxx_destruct;

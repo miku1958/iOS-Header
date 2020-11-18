@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (id)initWithData:(id)arg1 metadata:(id)arg2 device:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithIdentifier:(id)arg1 data:(id)arg2 metadata:(id)arg3 device:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

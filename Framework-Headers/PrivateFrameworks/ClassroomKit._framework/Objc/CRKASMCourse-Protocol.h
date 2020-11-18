@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class DMFControlGroupIdentifier, NSArray, NSSet, NSString;
+@class DMFControlGroupIdentifier, NSArray, NSDate, NSSet, NSString;
 @protocol CRKASMLocation, CRKIdentity;
 
 @protocol CRKASMCourse
 
 @property (readonly, copy, nonatomic) NSSet *allTrustedUserCertificates;
 @property (readonly, nonatomic) unsigned long long color;
+@property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic, getter=isEditable) BOOL editable;
 @property (readonly, copy, nonatomic) DMFControlGroupIdentifier *identifier;
 @property (readonly, nonatomic) id<CRKIdentity> identity;
@@ -18,6 +19,7 @@
 @property (readonly, nonatomic) unsigned long long mascot;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSArray *trustedUsers;
+@property (readonly, copy, nonatomic) NSArray *users;
 
 @end
 

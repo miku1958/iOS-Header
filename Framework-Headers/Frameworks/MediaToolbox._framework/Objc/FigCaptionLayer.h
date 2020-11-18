@@ -26,7 +26,9 @@
 - (void)layoutSublayers;
 - (void)processCaptionCommand:(unsigned int)arg1 data:(id)arg2;
 - (void)resetCaptions;
+- (void)setCaptionsAvoidanceMargins:(struct FigGeometryMargins)arg1;
 - (void)setFontName:(const char *)arg1;
+- (void)setVideoRelativeToViewport:(struct CGRect)arg1;
 - (void)updateDisplay:(struct OpaqueFigCFCaptionRenderer *)arg1;
 
 @end

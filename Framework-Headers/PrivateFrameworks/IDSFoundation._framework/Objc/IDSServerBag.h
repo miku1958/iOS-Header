@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSRateLimiter, IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
+@class IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface IDSServerBag : NSObject
@@ -35,7 +35,6 @@
     NSData *_serverGivenBag;
     CDUnknownBlockType _remoteURLCreationBlock;
     CDUnknownBlockType _connectionMonitorCreationBlock;
-    IDSRateLimiter *_rateLimiter;
 }
 
 @property (strong, setter=_setBag:) NSDictionary *_bag; // @synthesize _bag;
@@ -61,8 +60,9 @@
 @property (readonly) BOOL isLoaded;
 @property (readonly) BOOL isLoading;
 @property (readonly) BOOL isServerAvailable;
-@property (strong, nonatomic) IDSRateLimiter *rateLimiter; // @synthesize rateLimiter=_rateLimiter;
 @property (copy) CDUnknownBlockType remoteURLCreationBlock; // @synthesize remoteURLCreationBlock=_remoteURLCreationBlock;
+@property (readonly) BOOL requiresIDSConnection;
+@property (readonly) BOOL requiresIDSHost;
 @property (strong) NSArray *serverCerts; // @synthesize serverCerts=_serverCerts;
 @property (strong) NSData *serverGivenBag; // @synthesize serverGivenBag=_serverGivenBag;
 @property (strong) NSData *serverSignature; // @synthesize serverSignature=_serverSignature;

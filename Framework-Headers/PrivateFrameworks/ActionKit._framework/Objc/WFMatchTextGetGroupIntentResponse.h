@@ -8,6 +8,7 @@
 
 @class NSArray, NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface WFMatchTextGetGroupIntentResponse : INIntentResponse
 {
     long long _code;

@@ -18,6 +18,7 @@
 - (void)remote_setDate:(NSDate *)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setNumber:(NSNumber *)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setString:(NSString *)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)remote_setValueForAllKeys:(id)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_setValuesWithDictionary:(NSDictionary *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_stringForKey:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 @end

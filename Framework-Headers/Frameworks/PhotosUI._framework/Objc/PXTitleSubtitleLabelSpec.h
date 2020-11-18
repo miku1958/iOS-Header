@@ -24,6 +24,11 @@
 @property (strong, nonatomic) PXLabelSpec *subtitleLabelSpec; // @synthesize subtitleLabelSpec=_subtitleLabelSpec;
 @property (strong, nonatomic) PXLabelSpec *titleLabelSpec; // @synthesize titleLabelSpec=_titleLabelSpec;
 
++ (id)_memoriesTitleSubtitleSpecForContext:(CDStruct_46c45068)arg1;
++ (id)memoriesTitleSubtitleSpecForTileKind:(long long)arg1 featureSpec:(id)arg2 boundedByRect:(struct CGRect)arg3;
++ (id)memoriesTitleSubtitleSpecForTileKind:(long long)arg1 gadgetSpec:(id)arg2 boundedByRect:(struct CGRect)arg3;
++ (id)memoriesTitleSubtitleSpecForTileKind:(long long)arg1 viewMode:(id)arg2 boundedByRect:(struct CGRect)arg3;
++ (id)memoriesTitleSubtitleSpecForViewSpecDescriptor:(struct PXViewSpecDescriptor)arg1 featureSpec:(id)arg2;
 + (id)px_headerTitleSubtitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

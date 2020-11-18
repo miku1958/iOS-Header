@@ -31,6 +31,7 @@
         unsigned int didFailToStartScanWithError:1;
         unsigned int didUpdateControllerBTClockForPeripheral:1;
     } _delegateFlags;
+    BOOL _observingKeyPaths;
     BOOL _isScanning;
     id<CBCentralManagerDelegate> _delegate;
     NSMapTable *_peripherals;
@@ -50,10 +51,12 @@
 - (void)cancelPeripheralConnection:(id)arg1 force:(BOOL)arg2;
 - (void)cancelPeripheralConnection:(id)arg1 options:(id)arg2;
 - (void)connectPeripheral:(id)arg1 options:(id)arg2;
+- (void)createOfflineLEPairing:(unsigned short)arg1;
 - (id)createPeripheralWithAddress:(id)arg1 andIdentifier:(id)arg2;
 - (id)dataArrayToUUIDArray:(id)arg1;
 - (void)dealloc;
 - (void)enablePrivateModeForPeripheral:(id)arg1 forDuration:(unsigned short)arg2;
+- (void)enablePrivateModeForSessionWithIdentifier:(id)arg1 forDuration:(unsigned short)arg2;
 - (void)forEachPeripheral:(CDUnknownBlockType)arg1;
 - (unsigned short)getRemainingAdvancedMatchingRule;
 - (unsigned short)getTotalSupportedAdvancedMatchingRules;
@@ -110,6 +113,7 @@
 - (void)setEnhancedScanEnable:(id)arg1;
 - (void)setEnhancedSetScanParamtersMultiCore:(id)arg1;
 - (void)setLESetPhy:(id)arg1 options:(id)arg2;
+- (void)setLeAFHMap:(id)arg1;
 - (void)setMatchActionRules:(id)arg1;
 - (id)startConnectionEventCounterForPeripheral:(id)arg1;
 - (void)startTrackingPeripheral:(id)arg1 options:(id)arg2;

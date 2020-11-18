@@ -36,11 +36,13 @@
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
 
++ (id)cachedHomeSceneNames;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_setHomes:(id)arg1;
 - (void)addEventObserver:(id)arg1;
 - (void)applicationContext:(id)arg1 applicationStateDidChange:(long long)arg2;
+- (void)cacheHomeSceneNames;
 - (void)dealloc;
 - (void)ensureHomesAreLoadedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)homeManagerDidUpdateHomes:(id)arg1;

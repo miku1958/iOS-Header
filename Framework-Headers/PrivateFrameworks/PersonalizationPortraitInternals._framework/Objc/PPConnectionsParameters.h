@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface PPConnectionsParameters : NSObject
 {
-    NSString *_abGroupIdentifier;
     NSDictionary *_assets;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -23,10 +22,10 @@
 - (BOOL)boolValueForKey:(id)arg1 default:(BOOL)arg2;
 - (double)calendarEventLocationExpirySeconds;
 - (double)calendarEventLocationLookaheadTimeSeconds;
-- (id)donationBlacklistApps;
-- (id)donationBlacklistWebsites;
-- (id)donationWhitelistApps;
-- (id)donationWhitelistWebsites;
+- (id)donationAllowedApps;
+- (id)donationAllowedWebsites;
+- (id)donationBlockedApps;
+- (id)donationBlockedWebsites;
 - (double)doubleValueForKey:(id)arg1 default:(long long)arg2;
 - (long long)expirySeconds;
 - (double)foundInAppsSourceExpirySeconds;
@@ -39,13 +38,13 @@
 - (long long)locationAppPredictionInstallMaxScore;
 - (long long)locationAppPredictionLaunchTimeOfDayFactor;
 - (long long)locationAppPredictionOverallLaunchFactor;
-- (id)locationPredictionBlacklistApps;
+- (id)locationPredictionBlockedApps;
 - (double)namedEntitySourceExpirySeconds;
 - (double)namedEntitySourceLookBackSeconds;
 - (double)pasteboardItemExpirySeconds;
 - (unsigned long long)quickTypePredictionLimit;
-- (BOOL)shouldUseWhitelistApps;
-- (BOOL)shouldUseWhitelistWebsite;
+- (BOOL)shouldUseAllowedApps;
+- (BOOL)shouldUseAllowedWebsite;
 - (long long)unsignedIntegerValueForKey:(id)arg1 default:(long long)arg2;
 - (unsigned long long)userActivityBatchSize;
 - (double)userActivityCandidateScore;

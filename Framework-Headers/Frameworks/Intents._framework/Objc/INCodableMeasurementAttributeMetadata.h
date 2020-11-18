@@ -6,9 +6,11 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
-@class NSOrderedSet, NSUnit;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableMeasurementAttributeMetadata : INCodableAttributeMetadata
+@class NSOrderedSet, NSString, NSUnit;
+
+@interface INCodableMeasurementAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     BOOL _supportsNegativeNumbers;
     NSUnit *_unit;
@@ -16,16 +18,33 @@
     double _defaultValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSOrderedSet *defaultUnits; // @synthesize defaultUnits=_defaultUnits;
 @property (nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsNegativeNumbers; // @synthesize supportsNegativeNumbers=_supportsNegativeNumbers;
 @property (strong, nonatomic) NSUnit *unit; // @synthesize unit=_unit;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDefaultUnitKey;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INCodableDescriptionUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INIntentResponseCodableDescriptionUnitKey;
+- (id)__INTypeCodableDescriptionDefaultUnitKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INTypeCodableDescriptionUnitKey;
 - (id)_defaultUnitWithNames:(id)arg1;
 - (Class)_unitClass;
 - (id)_unitWithUnitName:(id)arg1;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

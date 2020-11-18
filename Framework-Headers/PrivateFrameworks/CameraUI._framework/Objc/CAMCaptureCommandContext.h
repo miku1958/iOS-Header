@@ -63,6 +63,7 @@
 - (id)primaryOutputForMode:(long long)arg1;
 - (void)registerStillImageCaptureRequest:(id)arg1 withSettings:(id)arg2;
 - (void)registerVideoCaptureRequest:(id)arg1;
+- (void)registerVideoEndZoomFactor:(double)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
 - (void)stopPanoramaCaptureInterrupted:(BOOL)arg1;
 - (id)videoDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;

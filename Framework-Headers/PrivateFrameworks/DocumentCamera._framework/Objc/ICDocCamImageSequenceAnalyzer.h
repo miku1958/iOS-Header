@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableArray, VNSequenceRequestHandler;
+@class NSDictionary, NSMutableArray, VNRectangleObservation, VNSequenceRequestHandler;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     VNSequenceRequestHandler *_seqHandler;
     BOOL _bRealTime;
     BOOL _bSynchronous;
+    VNRectangleObservation *_previousRectangleObservation;
 }
 
 - (void).cxx_destruct;

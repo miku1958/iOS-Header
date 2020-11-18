@@ -63,6 +63,7 @@
 - (void)_internalSetAccessibilityAttributedLabel:(id)arg1;
 - (void)_internalSetAccessibilityAttributedUserInputLabels:(id)arg1;
 - (void)_internalSetAccessibilityAttributedValue:(id)arg1;
+- (BOOL)_isGestureType:(long long)arg1;
 - (id)_ivarDescription;
 - (void)_keyboardActivate;
 - (struct __IOHIDEvent *)_keyboardActivateEventDown:(BOOL)arg1;

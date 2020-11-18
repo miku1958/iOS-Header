@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationDataSource.h>
 
-@class NSObject, NSString, NTKPeopleComplicationEntry;
+@class NSObject, NSString, NTKPeopleComplication, NTKPeopleComplicationEntry;
 @protocol OS_dispatch_queue;
 
 @interface NTKPeopleComplicationDataSource : NTKComplicationDataSource
@@ -14,13 +14,16 @@
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _isPaused;
     BOOL _needsInvalidation;
-    NSString *_contactID;
+    NTKPeopleComplication *_complication;
+    NSString *_secondaryContactID;
+    NSString *_storeBackedContactID;
     NTKPeopleComplicationEntry *_timelineEntry;
     NTKPeopleComplicationEntry *_switcherEntry;
 }
 
 + (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
++ (long long)tritiumUpdatePriority;
 - (void).cxx_destruct;
 - (void)_didReceiveContactsCachceChangedNotification;
 - (void)_invalidateIfNeeded;
@@ -33,7 +36,6 @@
 - (void)dealloc;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)lockedTemplate;
 - (void)pause;

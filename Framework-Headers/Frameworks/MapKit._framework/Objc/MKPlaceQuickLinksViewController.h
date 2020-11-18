@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 + (id)placeQuickLinksViewControllerFor:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (void)_captureTapActionWithAppClipLink:(id)arg1;
 - (void)_captureTapActionWithQuickLink:(id)arg1;
 - (void)createActionViews;
 - (void)createConstraints;

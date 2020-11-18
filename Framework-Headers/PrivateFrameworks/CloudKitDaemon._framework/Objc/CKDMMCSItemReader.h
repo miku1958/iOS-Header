@@ -10,7 +10,6 @@
 
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSFileHandle, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemReader : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     CKDMMCSItemGroupContext *_MMCSRequest;

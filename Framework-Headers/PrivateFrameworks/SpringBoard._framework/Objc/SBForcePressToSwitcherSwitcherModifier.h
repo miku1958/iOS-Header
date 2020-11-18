@@ -17,21 +17,24 @@
 
 - (void).cxx_destruct;
 - (id)_appLayoutToScrollToDuringTransition;
+- (id)_dismissForEmptySwitcherResponseName;
 - (unsigned long long)_indexOfSelectedAppLayout;
-- (long long)backdropBlurType;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (double)containerStatusBarAnimationDuration;
+- (id)handleTimerEvent:(id)arg1;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 multitaskingModifier:(id)arg4;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

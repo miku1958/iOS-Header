@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL, UIImage;
+@class NSURL;
 
 __attribute__((visibility("hidden")))
 @interface _WKFileUploadItem : NSObject
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSURL> _fileURL;
 }
 
-@property (readonly, nonatomic) UIImage *displayImage;
+@property (readonly, nonatomic) RetainPtr_337fe565 displayImage;
 @property (readonly, nonatomic) NSURL *fileURL;
 @property (readonly, nonatomic, getter=isVideo) BOOL video;
 

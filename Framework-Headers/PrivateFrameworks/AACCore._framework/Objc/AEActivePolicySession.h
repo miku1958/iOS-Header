@@ -23,21 +23,12 @@
     NSArray *_persistentDeactivations;
 }
 
-@property (readonly, copy, nonatomic) NSArray *activation; // @synthesize activation=_activation;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (readonly, nonatomic) AEInvalidationRouter *invalidationRouter; // @synthesize invalidationRouter=_invalidationRouter;
-@property (readonly, nonatomic) id<AEPerformancePrimitives> performancePrimitives; // @synthesize performancePrimitives=_performancePrimitives;
-@property (readonly, copy, nonatomic) NSArray *persistentDeactivations; // @synthesize persistentDeactivations=_persistentDeactivations;
-@property (readonly, nonatomic) id<AEPolicyStore> policyStore; // @synthesize policyStore=_policyStore;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)sessionWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 invalidationRouter:(id)arg3 activations:(id)arg4 persistentDeactivations:(id)arg5;
 - (void).cxx_destruct;
 - (void)deactivateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 invalidationRouter:(id)arg3 activations:(id)arg4 persistentDeactivations:(id)arg5;
 - (void)invalidationRouter:(id)arg1 didReceiveInvalidationError:(id)arg2;
-- (void)runRemainingActivations:(id)arg1 remainingDeactivations:(id)arg2 currentEvent:(long long)arg3 errors:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)validateProducedPersistentDeactivations:(id)arg1 currentEvent:(long long)arg2;
 
 @end
 

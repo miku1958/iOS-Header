@@ -31,6 +31,8 @@
 - (id)addIdentity:(id)arg1 entry:(id)arg2;
 - (id)addIdentity:(id)arg1 forUserIdentifier:(id)arg2;
 - (id)certificateWithPersistentID:(id)arg1;
+- (void)clearCertificates;
+- (void)clearIdentities;
 - (void)forgetCertificatesWithPersistentIDs:(id)arg1;
 - (void)forgetIdentitiesWithPersistentIDs:(id)arg1;
 - (id)identityWithPersistentID:(id)arg1;

@@ -134,13 +134,12 @@
 - (void)addAssetCollections:(id)arg1 toAlbum:(id)arg2 info:(id)arg3;
 - (void)addComments:(id)arg1 toAssetCollection:(id)arg2 inAlbum:(id)arg3 info:(id)arg4;
 - (void)addSharingRelationships:(id)arg1 toOwnedAlbum:(id)arg2 info:(id)arg3;
-- (int)assetsInDownloadQueueCount;
 - (void)cancelCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)cancelOutstandingCommandsForAlbumWithGUID:(id)arg1;
 - (void)cancelOutstandingCommandsForAssetCollectionWithGUID:(id)arg1;
 - (void)checkForAlbumSyncedStateChangesInAlbums:(id)arg1 info:(id)arg2;
 - (void)checkForAssetCollectionUpdates:(id)arg1 inAlbum:(id)arg2 info:(id)arg3;
-- (void)checkForChangesInfo:(id)arg1;
+- (void)checkForChangesIfMissingRootCtag;
 - (void)checkForChangesResetSync:(BOOL)arg1 info:(id)arg2;
 - (void)checkForCommentChanges:(id)arg1 inAlbumWithGUID:(id)arg2;
 - (void)checkForUpdatesInAlbums:(id)arg1 resetSync:(BOOL)arg2 info:(id)arg3;

@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (float *)bufferWithKey:(id)arg1;
 - (void)dealloc;
-- (map_8a5bf7af)getSampleData;
+- (unordered_map_74b681bc)getSampleData;
 - (struct vImage_Buffer)imageWithKey:(id)arg1;
 - (void)iterateBuffersByKey:(CDUnknownBlockType)arg1;
 - (void)setData:(float *)arg1 size:(unsigned long long)arg2 forKey:(id)arg3 freeWhenDone:(BOOL)arg4;

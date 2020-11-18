@@ -17,13 +17,11 @@
     struct {
         unsigned int originDevice:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _originDevice;
     NSArray *_appTitles;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *appTitles; // @synthesize appTitles=_appTitles;
 @property (readonly, nonatomic) unsigned long long appTitlesCount;
 @property (readonly, copy) NSString *debugDescription;

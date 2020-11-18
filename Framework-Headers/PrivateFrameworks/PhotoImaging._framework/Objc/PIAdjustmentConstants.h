@@ -43,6 +43,8 @@
     NSString *_PIRawNoiseReductionAdjustmentKey;
     NSString *_PIVideoReframeAdjustmentKey;
     NSString *_PISourceSelectAdjustmentKey;
+    NSString *_PIVideoStabilizeAdjustmentKey;
+    NSString *_PIVideoCrossfadeLoopAdjustmentKey;
     NSString *_PISourceAdjustmentKey;
     NSString *_PIOvercaptureSourceAdjustmentKey;
 }
@@ -78,8 +80,10 @@
 @property (readonly, nonatomic) NSString *PISourceAdjustmentKey; // @synthesize PISourceAdjustmentKey=_PISourceAdjustmentKey;
 @property (readonly, nonatomic) NSString *PISourceSelectAdjustmentKey; // @synthesize PISourceSelectAdjustmentKey=_PISourceSelectAdjustmentKey;
 @property (readonly, nonatomic) NSString *PITrimAdjustmentKey; // @synthesize PITrimAdjustmentKey=_PITrimAdjustmentKey;
+@property (readonly, nonatomic) NSString *PIVideoCrossfadeLoopAdjustmentKey; // @synthesize PIVideoCrossfadeLoopAdjustmentKey=_PIVideoCrossfadeLoopAdjustmentKey;
 @property (readonly, nonatomic) NSString *PIVideoPosterFrameAdjustmentKey; // @synthesize PIVideoPosterFrameAdjustmentKey=_PIVideoPosterFrameAdjustmentKey;
 @property (readonly, nonatomic) NSString *PIVideoReframeAdjustmentKey; // @synthesize PIVideoReframeAdjustmentKey=_PIVideoReframeAdjustmentKey;
+@property (readonly, nonatomic) NSString *PIVideoStabilizeAdjustmentKey; // @synthesize PIVideoStabilizeAdjustmentKey=_PIVideoStabilizeAdjustmentKey;
 @property (readonly, nonatomic) NSString *PIVignetteAdjustmentKey; // @synthesize PIVignetteAdjustmentKey=_PIVignetteAdjustmentKey;
 @property (readonly, nonatomic) NSString *PIWhiteBalanceAdjustmentKey; // @synthesize PIWhiteBalanceAdjustmentKey=_PIWhiteBalanceAdjustmentKey;
 @property (readonly, nonatomic) NSArray *allAdjustmentTypes;

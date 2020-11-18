@@ -10,7 +10,7 @@
 @protocol PGSuggestion;
 
 @protocol PGCoordinatableSuggester <PGSuggester>
-- (id<PGSuggestion>)nextSuggestion;
+- (id<PGSuggestion>)nextSuggestionWithProgress:(void (^)(double, BOOL *))arg1;
 - (void)reset;
 - (void)startSuggestingWithOptions:(PGSuggestionOptions *)arg1;
 @end

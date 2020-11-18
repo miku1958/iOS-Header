@@ -9,17 +9,19 @@
 @class MISSING_TYPE;
 @protocol TUPluggableDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219TodayViewController : UIViewController
 {
+    MISSING_TYPE *adPresentationDelegateProvider;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *blueprintSelectionProvider;
+    MISSING_TYPE *blueprintLayoutProvider;
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *barCompressionManager;
     MISSING_TYPE *refreshStateMachine;
     MISSING_TYPE *refreshControl;
+    MISSING_TYPE *commands;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
 }

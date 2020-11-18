@@ -49,7 +49,7 @@
 - (void)layoutErrorView;
 - (void)layoutLoadingIndicator;
 - (void)layoutWebView;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)renderContents;
 
 @end

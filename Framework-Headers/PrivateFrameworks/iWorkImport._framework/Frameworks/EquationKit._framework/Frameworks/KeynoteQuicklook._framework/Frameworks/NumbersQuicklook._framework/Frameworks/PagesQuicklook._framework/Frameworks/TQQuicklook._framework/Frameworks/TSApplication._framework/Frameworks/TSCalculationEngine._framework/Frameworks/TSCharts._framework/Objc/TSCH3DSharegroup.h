@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) TSCH3DResourceCache *resourceCache; // @synthesize resourceCache=mResourceCache;
 @property (readonly, nonatomic) TSCH3DShaderCache *shaderCache; // @synthesize shaderCache=mShaderCache;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) TSCH3DSharegroupToken *token; // @synthesize token=mToken;
+@property (readonly, weak, nonatomic) TSCH3DSharegroupToken *token; // @synthesize token=mToken;
 
 + (id)uniqueSharegroupWithOwningThread:(id)arg1 token:(id)arg2;
 - (void).cxx_destruct;
@@ -42,7 +42,6 @@
 - (void)flushMemoryForResourceSet:(id)arg1;
 - (void)flushResourceSet:(id)arg1;
 - (void)forceFlushResourceSet:(id)arg1;
-- (id)init;
 - (id)initWithOwningThread:(id)arg1 token:(id)arg2;
 - (BOOL)isCurrentThreadOwner;
 - (BOOL)isOneShot;

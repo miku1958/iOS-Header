@@ -18,14 +18,12 @@
         unsigned int event:1;
         unsigned int mobileSpace:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _event;
     int _mobileSpace;
     _INPBLocationValue *_location;
     NSArray *_suggestedValues;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int event; // @synthesize event=_event;

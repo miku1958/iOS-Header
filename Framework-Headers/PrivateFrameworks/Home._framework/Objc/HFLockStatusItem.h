@@ -4,17 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFAbstractBinaryStatusItem.h>
+#import <Home/HFAbstractPositionStatusItem.h>
 
-@interface HFLockStatusItem : HFAbstractBinaryStatusItem
+@interface HFLockStatusItem : HFAbstractPositionStatusItem
 {
 }
 
-- (id)multipleAbnormalServicesFormatString;
-- (id)multipleAbnormalServicesWithRoomFormatString;
-- (id)oneAbnormalServiceFormatString;
-- (id)oneAbnormalServiceWithRoomFormatString;
-- (id)serviceTypes;
++ (id)serviceType;
+- (id)_formatStringTypeComponent;
+- (id)multipleClosedServicesFormatString;
+- (id)multipleClosingServicesFormatString;
+- (id)multipleObstructedServicesFormatString;
+- (id)multipleOpenServicesFormatString;
+- (id)multipleOpeningServicesFormatString;
+- (id)multipleUnknownServicesFormatString;
+- (id)oneClosedServiceFormatString;
+- (id)oneClosingServiceFormatString;
+- (id)oneObstructedServiceFormatString;
+- (id)oneOpenServiceFormatString;
+- (id)oneOpeningServiceFormatString;
+- (id)oneUnknownServiceFormatString;
 
 @end
 

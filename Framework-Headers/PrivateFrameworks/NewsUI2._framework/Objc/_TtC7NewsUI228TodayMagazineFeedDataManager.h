@@ -4,16 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI228TodayMagazineFeedDataManager : _TtCs12_SwiftObject
+@interface _TtC7NewsUI228TodayMagazineFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *group;
+    MISSING_TYPE *cursor;
     MISSING_TYPE *feedContext;
+    MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *readingList;
 }
+
+- (void).cxx_destruct;
+- (void)dealloc;
+- (id)init;
 
 @end
 

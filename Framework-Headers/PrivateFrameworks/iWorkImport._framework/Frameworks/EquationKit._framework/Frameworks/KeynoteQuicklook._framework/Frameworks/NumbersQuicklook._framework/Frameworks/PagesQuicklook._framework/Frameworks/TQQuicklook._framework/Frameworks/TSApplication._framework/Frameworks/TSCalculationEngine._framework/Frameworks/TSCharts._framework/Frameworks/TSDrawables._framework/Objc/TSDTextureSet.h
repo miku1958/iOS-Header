@@ -14,6 +14,7 @@
 {
     CALayer *_layer;
     NSMutableArray *_allTextures;
+    NSMutableArray *_titleAndCaptionTextures;
     NSMutableArray *_animatableTextures;
     NSDictionary *_bakedAttributes;
     NSMapTable *_eventIndexToViewLayerMap;
@@ -74,7 +75,9 @@
 @property (copy, nonatomic) TSDTextureDescription *textureDescription; // @synthesize textureDescription=_textureDescription;
 @property (nonatomic) double textureOpacity; // @synthesize textureOpacity=_textureOpacity;
 @property (nonatomic) long long textureZOrder; // @synthesize textureZOrder=_textureZOrder;
+@property (readonly, nonatomic) NSArray *titleAndCaptionTextures;
 @property (readonly, nonatomic) NSArray *visibleTextures;
+@property (readonly, nonatomic) NSArray *visibleTexturesIncludingCaptions;
 
 + (id)newFlattenedTextureFromTextures:(id)arg1 newRect:(struct CGRect)arg2;
 - (void).cxx_destruct;
@@ -119,11 +122,13 @@
 - (void)setBoundingRect:(struct CGRect)arg1 forStage:(long long)arg2;
 - (void)setLayerGeometry;
 - (void)setLayerGeometryAtEventIndex:(unsigned long long)arg1;
+- (BOOL)shouldAnimateBackgroundTexturesWithStage:(long long)arg1 isBuildIn:(BOOL)arg2;
 - (long long)stageIndexForTexture:(id)arg1;
 - (void)teardown;
 - (id)viewLayerAtEventIndex:(unsigned long long)arg1;
 - (id)visibleTexturesBeforeStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3 shouldFlatten:(BOOL)arg4 flattenKey:(id)arg5;
 - (id)visibleTexturesForStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3 shouldFlatten:(BOOL)arg4 flattenKey:(id)arg5;
+- (id)visibleTexturesForStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3 shouldFlatten:(BOOL)arg4 flattenKey:(id)arg5 shouldIncludeCaptions:(BOOL)arg6;
 - (id)visibleTexturesWithTextureType:(long long)arg1;
 
 @end

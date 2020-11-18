@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SPLocalServerProtocolStub : NSObject <SPLocalServerProtocol>
 {
 }

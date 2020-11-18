@@ -53,7 +53,7 @@
 @property (readonly, nonatomic) AEWrappedDataSourceManager *_wrappedDataSourceManager; // @synthesize _wrappedDataSourceManager=__wrappedDataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<CKPluginEntryViewControllerDelegate> entryViewDelegate;
+@property (weak, nonatomic) id<CKPluginEntryViewControllerDelegate> entryViewDelegate; // @synthesize entryViewDelegate=_entryViewDelegate;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL loadedContentView;
 @property (strong, nonatomic) PUAssetExplorerReviewScreenViewController *presentedReviewController; // @synthesize presentedReviewController=_presentedReviewController;

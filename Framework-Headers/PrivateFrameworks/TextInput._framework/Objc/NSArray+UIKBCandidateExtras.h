@@ -8,5 +8,6 @@
 
 @interface NSArray (UIKBCandidateExtras)
 - (id)_arrayByFilteringCandidatesForNonExtendedView;
+- (id)_arrayByFilteringEmojiCandidates:(long long)arg1;
 @end
 

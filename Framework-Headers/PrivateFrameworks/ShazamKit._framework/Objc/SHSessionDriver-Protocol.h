@@ -7,12 +7,11 @@
 #import <ShazamKit/SHMatcherDelegate-Protocol.h>
 
 @class AVAudioPCMBuffer, AVAudioTime, SHSignature;
-@protocol SHRecognitionSessionDelegate, SHSessionDriverDelegate;
+@protocol SHSessionDriverDelegate;
 
 @protocol SHSessionDriver <SHMatcherDelegate>
 
 @property (readonly, nonatomic) SHSignature *matchingSignature;
-@property (weak, nonatomic) id<SHRecognitionSessionDelegate> recognitionDelegate;
 @property (weak, nonatomic) id<SHSessionDriverDelegate> sessionDelegate;
 
 - (void)flow:(AVAudioPCMBuffer *)arg1 time:(AVAudioTime *)arg2;

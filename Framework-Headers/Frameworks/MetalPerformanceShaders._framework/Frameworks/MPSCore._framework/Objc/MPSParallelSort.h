@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) unsigned int keyPairDataType; // @synthesize keyPairDataType=_keyPairDataType;
 @property (readonly, nonatomic) unsigned int valuePairDataType; // @synthesize valuePairDataType=_valuePairDataType;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 sourceBuffer:(id)arg2 sourceOffset:(unsigned long long)arg3 destinationBuffer:(id)arg4 destinationOffset:(unsigned long long)arg5 numEntries:(unsigned long long)arg6;

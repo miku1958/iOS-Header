@@ -17,13 +17,7 @@
     struct __CFString *_scheduledMode;
 }
 
-@property (strong) NSMutableArray *monitors; // @synthesize monitors=_monitors;
-
-- (void)copyScheduledRunLoop:(struct __CFRunLoop **)arg1 andMode:(const struct __CFString **)arg2;
 - (void)dealloc;
-- (id)listener;
-- (void)setListener:(id)arg1;
-- (void)setScheduledRunLoop:(struct __CFRunLoop *)arg1 andMode:(struct __CFString *)arg2;
 
 @end
 

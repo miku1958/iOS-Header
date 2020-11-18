@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, PARBag, PRSRankingServerKnobs, SSPlistDataReader;
+@class GEOUserSessionEntity, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, PARBag, SSPlistDataReader;
 @protocol OS_dispatch_group, OS_dispatch_queue, PRSSessionController;
 
 @interface PRSBagHandler : NSObject
@@ -29,7 +29,6 @@
     double _searchRenderTimeout;
     double _suggestionsRenderTimeout;
     SSPlistDataReader *_cep_server_values;
-    PRSRankingServerKnobs *_ranking_server_knobs;
     NSSet *_appBlacklist;
     NSArray *_enabledDomains;
     NSArray *_anonymousMetadataUndesiredBundleIDs;
@@ -63,7 +62,6 @@
 @property (readonly, nonatomic) NSString *lookupFirstUseDescription1; // @synthesize lookupFirstUseDescription1=_lookupFirstUseDescription1;
 @property (readonly, nonatomic) NSString *lookupFirstUseDescription2; // @synthesize lookupFirstUseDescription2=_lookupFirstUseDescription2;
 @property (readonly, nonatomic) NSString *lookupFirstUseLearnMore; // @synthesize lookupFirstUseLearnMore=_lookupFirstUseLearnMore;
-@property (strong) PRSRankingServerKnobs *ranking_server_knobs; // @synthesize ranking_server_knobs=_ranking_server_knobs;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resourceFetchQueue; // @synthesize resourceFetchQueue=_resourceFetchQueue;
 @property (strong, nonatomic) NSMutableDictionary *resourceMetadata; // @synthesize resourceMetadata=_resourceMetadata;
 @property (nonatomic) BOOL resourceMetadataNeedsWrite; // @synthesize resourceMetadataNeedsWrite=_resourceMetadataNeedsWrite;
@@ -97,7 +95,6 @@
 - (void)triggerTaskWhenReady:(id)arg1;
 - (void)updateFromSession:(id)arg1 bag:(id)arg2 forClient:(id)arg3 error:(id)arg4;
 - (void)updateWithBagDictionary:(id)arg1 error:(id)arg2;
-- (void)updateWithDictionary:(id)arg1;
 - (id)userId;
 
 @end

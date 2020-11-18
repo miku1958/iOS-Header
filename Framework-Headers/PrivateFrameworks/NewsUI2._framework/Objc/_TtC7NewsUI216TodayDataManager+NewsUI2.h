@@ -8,5 +8,7 @@
 
 @interface _TtC7NewsUI216TodayDataManager (NewsUI2)
 - (void)plugin:(id)arg1 didResizePluginModel:(id)arg2;
+- (void)readingHistory:(id)arg1 didChangeFeaturesForArticles:(id)arg2;
+- (void)readingList:(id)arg1 didAddArticles:(id)arg2 removeArticles:(id)arg3 eventInitiationLevel:(long long)arg4;
 @end
 

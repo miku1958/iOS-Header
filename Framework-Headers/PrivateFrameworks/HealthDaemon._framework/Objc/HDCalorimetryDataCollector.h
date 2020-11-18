@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)isCoreMotionCaloriePushModelEnabled;
 + (BOOL)isNatalimeterAvailable;
 + (BOOL)supportsCollectionForProfile:(id)arg1;
 - (id)collectedTypes;

@@ -23,9 +23,7 @@
         unsigned int read_deviceInputLocale:1;
         unsigned int read_deviceOutputLocale:1;
         unsigned int read_deviceSettingsLocale:1;
-        unsigned int wrote_deviceInputLocale:1;
-        unsigned int wrote_deviceOutputLocale:1;
-        unsigned int wrote_deviceSettingsLocale:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,9 +36,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readDeviceInputLocale;
-- (void)_readDeviceOutputLocale;
-- (void)_readDeviceSettingsLocale;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,7 +43,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

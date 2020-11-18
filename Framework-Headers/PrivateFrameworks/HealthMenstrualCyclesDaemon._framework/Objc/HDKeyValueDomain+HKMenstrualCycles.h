@@ -11,6 +11,7 @@
 - (id)hdmc_isOnboardingCompletedWithError:(id *)arg1;
 - (id)hdmc_lastLoggedInCycleTrackingDateWithError:(id *)arg1;
 - (id)hdmc_onboardingFirstCompletedDateWithError:(id *)arg1;
+- (id)hdmc_onboardingVersionCompletedWithError:(id *)arg1;
 - (BOOL)hdmc_setLastLoggedInCycleTrackingDate:(id)arg1 error:(id *)arg2;
 @end
 

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *textToCopy; // @synthesize textToCopy=_textToCopy;
 
 - (void).cxx_destruct;
+- (id)icon;
 - (id)initWithAction:(id)arg1 textToCopy:(id)arg2;
 - (BOOL)isCopyActionItem;
 - (void)performAction;

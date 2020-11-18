@@ -6,20 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoTimeKitCompanion/NTKBundleComplicationProvider-Protocol.h>
+@class NTKBundleComplicationDataSourceLoader;
 
-@class NSString, NTKBundleComplicationDataSourceLoader;
-
-@interface NTKBundleComplicationManager : NSObject <NTKBundleComplicationProvider>
+@interface NTKBundleComplicationManager : NSObject
 {
     NTKBundleComplicationDataSourceLoader *_loader;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NTKBundleComplicationDataSourceLoader *loader; // @synthesize loader=_loader;
-@property (readonly) Class superclass;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
@@ -27,8 +21,10 @@
 - (BOOL)bundleExistsWithIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
 - (Class)dataSourceClassForBundleComplication:(id)arg1;
 - (void)enumerateBundlesForComplicationFamily:(long long)arg1 device:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (id)groupIdentifierForBundleIdentifier:(id)arg1;
 - (id)init;
 - (id)localizedAppNameForBundleIdentifier:(id)arg1;
+- (id)localizedComplicationNameForBundleIdentifier:(id)arg1;
 
 @end
 

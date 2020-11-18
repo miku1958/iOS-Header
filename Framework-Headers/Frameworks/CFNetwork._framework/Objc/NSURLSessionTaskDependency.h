@@ -10,15 +10,20 @@
 
 @interface NSURLSessionTaskDependency : NSObject
 {
+    NSURLSessionTaskDependencyDescription *_taskDependencyDescription;
+    NSURLSessionTask *_parentTask;
+    NSURLSessionTask *_mainDocumentTask;
 }
 
-@property (readonly, strong, nonatomic) NSURLSessionTask *mainDocumentTask; // @dynamic mainDocumentTask;
-@property (readonly, strong, nonatomic) NSURLSessionTask *parentTask; // @dynamic parentTask;
-@property (strong, nonatomic) NSURLSessionTaskDependencyDescription *taskDependencyDescription; // @dynamic taskDependencyDescription;
+@property (readonly, strong, nonatomic) NSURLSessionTask *mainDocumentTask; // @synthesize mainDocumentTask=_mainDocumentTask;
+@property (readonly, strong, nonatomic) NSURLSessionTask *parentTask; // @synthesize parentTask=_parentTask;
+@property (strong, nonatomic) NSURLSessionTaskDependencyDescription *taskDependencyDescription; // @synthesize taskDependencyDescription=_taskDependencyDescription;
 
 + (id)taskDependencyWithMainDocumentTask:(id)arg1;
 + (id)taskDependencyWithMainDocumentTask:(id)arg1 taskDependencyDescription:(id)arg2;
 + (id)taskDependencyWithParentTask:(id)arg1 priority:(float)arg2 exclusive:(BOOL)arg3;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -23,13 +23,13 @@
 @property (nonatomic) BOOL isMarkedCorrupt; // @synthesize isMarkedCorrupt=_isMarkedCorrupt;
 
 + (id)populatedCustomFormatWrapperFromCFWrapper:(id)arg1 customFormat:(id)arg2;
-+ (id)unpopulatedCustomFormatWrapperWithFormatType:(int)arg1 customFormatKey:(id)arg2;
++ (id)unpopulatedCustomFormatWrapperWithFormatType:(unsigned int)arg1 customFormatKey:(id)arg2;
 - (void).cxx_destruct;
 - (id)applyConditionalValue:(double)arg1;
 - (id)asCustomFormatWrapper;
 - (id)currencyCodeForValue:(double)arg1;
 - (unsigned long long)hash;
-- (id)initWithFormatType:(int)arg1 customFormatKey:(id)arg2 customFormat:(id)arg3 appliedConditionKey:(unsigned char)arg4;
+- (id)initWithFormatType:(unsigned int)arg1 customFormatKey:(id)arg2 customFormat:(id)arg3 appliedConditionKey:(unsigned char)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringFromDate:(id)arg1 locale:(id)arg2;
 - (id)stringFromDouble:(double)arg1 locale:(id)arg2;

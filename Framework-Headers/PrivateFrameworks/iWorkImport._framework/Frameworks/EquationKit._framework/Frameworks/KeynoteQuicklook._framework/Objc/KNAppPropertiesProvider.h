@@ -29,6 +29,7 @@
 - (id)templateDocumentType;
 - (id)templateSFFDocumentType;
 - (id)templateTypeDisplayName;
+- (unsigned long long)webVideoRequiredDocumentWriteVersion;
 
 @end
 

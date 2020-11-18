@@ -28,6 +28,7 @@
     BOOL _alwaysEnforcePlatterInset;
     BOOL _useRoundedFontDesign;
     BOOL _useBlockyHighlightCorners;
+    BOOL _shouldScaleAndFadeWhenHighlighting;
     BOOL _suppressesInternalColorOverrides;
     BOOL _editing;
     id<NTKComplicationDisplayObserver> displayObserver;
@@ -76,6 +77,7 @@
 @property (nonatomic) unsigned long long placement; // @synthesize placement=_placement;
 @property (strong, nonatomic) UIColor *platterColor; // @synthesize platterColor=_platterColor;
 @property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property (nonatomic) BOOL shouldScaleAndFadeWhenHighlighting; // @synthesize shouldScaleAndFadeWhenHighlighting=_shouldScaleAndFadeWhenHighlighting;
 @property (nonatomic) BOOL shouldUseBackgroundPlatter; // @synthesize shouldUseBackgroundPlatter=_shouldUseBackgroundPlatter;
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (readonly) Class superclass;

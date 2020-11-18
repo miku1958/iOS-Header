@@ -12,7 +12,7 @@
 #import <TSDrawables/TSKDocumentObject-Protocol.h>
 
 @class NSArray, NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSSPropertySetChangeDetails;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDContainerInfo, TSDInfo, TSDOwningAttachment;
 
 @interface TSDContainerInfo : TSPObject <TSDMutableContainerInfo, TSKDocumentObject, TSDModelContainer, TSDChangeableInfo>
 {
@@ -32,11 +32,12 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

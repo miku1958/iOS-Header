@@ -8,6 +8,7 @@
 
 @interface NSXPCConnection (CCSEntitlements)
 
+@property (readonly, nonatomic) BOOL ccs_hasEntitlementForForciblyEnablingModules;
 @property (readonly, nonatomic) BOOL ccs_hasEntitlementForListingModuleIdentifiers;
 
 - (BOOL)ccs_hasEntitlementForModuleIdentifier:(id)arg1;

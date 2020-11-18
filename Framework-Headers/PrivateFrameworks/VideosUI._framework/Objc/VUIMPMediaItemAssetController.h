@@ -10,7 +10,7 @@
 #import <VideosUI/VUIMPMediaItemDownloadControllerObserver-Protocol.h>
 #import <VideosUI/VUIMediaEntityAssetController-Protocol.h>
 
-@class MPMediaItem, NSString, VUIMPMediaItemDownloadController, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
+@class MPMediaItem, NSString, NSTimer, VUIMPMediaItemDownloadController, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
     VUIMPMediaItemDownloadController *_downloadController;
     NSObject<OS_dispatch_queue> *_serialProcessingDispatchQueue;
     MPMediaItem *_mediaItem;
+    NSTimer *_waitForDeletionTimer;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue; // @synthesize completionDispatchQueue=_completionDispatchQueue;
+@property (readonly, nonatomic) BOOL contentAllowsCellularDownload;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIMediaEntityAssetControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -40,10 +42,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialProcessingDispatchQueue; // @synthesize serialProcessingDispatchQueue=_serialProcessingDispatchQueue;
 @property (readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsRedownloadingContent;
 @property (readonly, nonatomic) BOOL supportsStartingDownload; // @synthesize supportsStartingDownload=_supportsStartingDownload;
+@property (strong, nonatomic) NSTimer *waitForDeletionTimer; // @synthesize waitForDeletionTimer=_waitForDeletionTimer;
 
 + (unsigned long long)_assetControllerStatusFromDownloadControllerState:(id)arg1;
 + (BOOL)_supportsStartingDownloadWithMediaItem:(id)arg1;
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_enqueueAsyncProcessingQueueStrongSelfBlock:(CDUnknownBlockType)arg1;
 - (void)_enqueueCompletionQueueBlock:(CDUnknownBlockType)arg1;
@@ -51,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isDownloaded;
 - (void)_notifyDelegateStateDidChange:(id)arg1;
 - (void)_onProcessingQueue_calculateStateAndNotify:(BOOL)arg1;
-- (void)_onProcessingQueue_cancelAndRemoveDownload;
+- (void)_onProcessingQueue_cancelAndRemoveDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_onProcessingQueue_downloadController;
 - (void)_onProcessingQueue_invalidate;
 - (void)_onProcessingQueue_invalidateAndSetState;
@@ -61,15 +66,18 @@ __attribute__((visibility("hidden")))
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 downloadProgress:(double)arg2 bytesDownloaded:(unsigned long long)arg3 bytesToDownload:(unsigned long long)arg4 supportsPausing:(BOOL)arg5 supportsCancellation:(BOOL)arg6 notify:(BOOL)arg7;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 notify:(BOOL)arg2;
 - (void)cancelAndRemoveDownload;
+- (void)cancelKeyFetch;
 - (void)dealloc;
+- (void)deleteAndRedownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadManager:(id)arg1 didAddDownloads:(id)arg2 removeDownloads:(id)arg3;
+- (void)fetchNewKeysForDownloadedVideo;
 - (id)init;
 - (id)initWithMediaItem:(id)arg1 mediaEntityIdentifier:(id)arg2 serialProcessingDispatchQueue:(id)arg3;
 - (void)invalidate;
 - (void)mediaItemDownloadController:(id)arg1 stateDidChange:(id)arg2;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

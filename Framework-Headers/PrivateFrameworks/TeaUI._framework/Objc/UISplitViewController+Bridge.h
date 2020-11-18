@@ -8,6 +8,7 @@
 
 @interface UISplitViewController (Bridge)
 - (void)togglePrimaryViewVisibilityAnimated:(BOOL)arg1;
+- (void)ts_columnSeparatorsExtendToTitlebar:(BOOL)arg1;
 - (BOOL)ts_isCollapsedOrCollapsing;
 - (BOOL)ts_isCollapsing;
 - (void)ts_setGutterWidth:(double)arg1;

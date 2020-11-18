@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDUser, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDTipUser, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTip : PBCodable <NSCopying>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_snippets;
     NSString *_tipId;
     double _tipTime;
-    GEOPDUser *_tipster;
+    GEOPDTipUser *_tipster;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_snippets:1;
         unsigned int read_tipId:1;
         unsigned int read_tipster:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_snippets:1;
-        unsigned int wrote_tipId:1;
-        unsigned int wrote_tipTime:1;
-        unsigned int wrote_tipster:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,17 +38,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *snippets;
 @property (strong, nonatomic) NSString *tipId;
 @property (nonatomic) double tipTime;
-@property (strong, nonatomic) GEOPDUser *tipster;
+@property (strong, nonatomic) GEOPDTipUser *tipster;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 + (Class)snippetType;
 + (id)tipsForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsSnippet:(id)arg1;
-- (void)_readSnippets;
-- (void)_readTipId;
-- (void)_readTipster;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -63,7 +55,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

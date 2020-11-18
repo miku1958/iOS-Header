@@ -15,13 +15,11 @@
 @interface _INPBUncompressFileIntent : PBCodable <_INPBUncompressFileIntent, NSSecureCoding, NSCopying>
 {
     CDStruct_032f6352 _has;
-    BOOL __encodeLegacyGloryData;
     int _entityType;
     _INPBString *_entityName;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;

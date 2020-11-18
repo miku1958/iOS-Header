@@ -7,6 +7,8 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (SafariCoreExtras)
++ (id)safari_dictionaryWithJSONData:(id)arg1 options:(unsigned long long)arg2;
++ (id)safari_dictionaryWithJSONOrPropertyListData:(id)arg1;
 + (id)safari_dictionaryWithObjectsInFastEnumerationCollection:(id)arg1 groupedUsingBlock:(CDUnknownBlockType)arg2;
 + (id)safari_dictionaryWithPropertyListData:(id)arg1;
 + (id)safari_dictionaryWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
@@ -16,13 +18,16 @@
 - (id)safari_arrayContainingObjectsOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)safari_arrayForKey:(id)arg1;
 - (BOOL)safari_boolForKey:(id)arg1;
+- (BOOL)safari_containsObject:(id)arg1;
 - (id)safari_dataForKey:(id)arg1;
 - (id)safari_dateForKey:(id)arg1;
 - (id)safari_dictionaryByMergingWithDictionary:(id)arg1;
+- (id)safari_dictionaryByRemovingNullObjects;
 - (id)safari_dictionaryForKey:(id)arg1;
 - (id)safari_dictionaryWithLowercaseKeys;
 - (id)safari_diffWithDictionary:(id)arg1;
 - (id)safari_mapAndFilterKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_mapAndFilterKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapTableForKey:(id)arg1;
 - (id)safari_numberForKey:(id)arg1;
 - (id)safari_setForKey:(id)arg1;

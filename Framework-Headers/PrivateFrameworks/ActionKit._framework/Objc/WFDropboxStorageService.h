@@ -8,7 +8,7 @@
 
 #import <ActionKit/WFFileStorageService-Protocol.h>
 
-@class NSString, WFContentSource;
+@class NSString, WFContentAttributionSet;
 
 @interface WFDropboxStorageService : NSObject <WFFileStorageService>
 {
@@ -16,7 +16,7 @@
 
 @property (readonly, nonatomic) Class accessResourceClass;
 @property (readonly, nonatomic) NSString *associatedAppBundleIdentifier;
-@property (readonly, nonatomic) WFContentSource *contentSource;
+@property (readonly, nonatomic) WFContentAttributionSet *contentAttributionSet;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPublicURLs;
@@ -31,10 +31,9 @@
 - (void)appendText:(id)arg1 toPath:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createFolderAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteFiles:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)finishRetrievalWithContentsOfFolderAtPath:(id)arg1 sessionManager:(id)arg2 retrievalHandler:(CDUnknownBlockType)arg3;
 - (void)getSharingURLsForFiles:(id)arg1 usePublicURLs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveFilesAtPath:(id)arg1 options:(unsigned long long)arg2 progress:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)saveFiles:(id)arg1 toPath:(id)arg2 options:(unsigned long long)arg3 progress:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)saveFiles:(id)arg1 withManagedLevel:(unsigned long long)arg2 toPath:(id)arg3 options:(unsigned long long)arg4 progress:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)searchFiles:(id)arg1 inPath:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

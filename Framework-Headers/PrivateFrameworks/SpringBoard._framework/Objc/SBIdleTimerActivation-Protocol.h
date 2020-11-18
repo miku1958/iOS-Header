@@ -10,5 +10,6 @@
 
 @property (nonatomic, getter=isActivated) BOOL activated;
 
+- (void)conformsToSBIdleTimerActivation;
 @end
 

@@ -24,8 +24,11 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)preloadAnimationFrames;
+- (void)setLivePhotoMode:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
 - (BOOL)shouldUseOutline;
+- (BOOL)shouldUseSlash;
 
 @end
 

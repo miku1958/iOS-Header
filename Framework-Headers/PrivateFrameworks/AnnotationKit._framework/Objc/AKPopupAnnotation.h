@@ -13,7 +13,7 @@
 
 @interface AKPopupAnnotation : AKAnnotation <AKRectangularAnnotationProtocol, AKChildAnnotationProtocol>
 {
-    unsigned long long _visualStyle;
+    long long _visualStyle;
     AKAnnotation *_parentAnnotation;
     NSString *_contents;
     struct CGRect _rectangle;
@@ -28,7 +28,7 @@
 @property (weak) AKAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
 @property struct CGRect rectangle; // @synthesize rectangle=_rectangle;
 @property (readonly) Class superclass;
-@property unsigned long long visualStyle; // @synthesize visualStyle=_visualStyle;
+@property long long visualStyle; // @synthesize visualStyle=_visualStyle;
 
 + (id)displayNameForUndoablePropertyChangeWithKey:(id)arg1;
 + (id)keyPathsForValuesAffectingHitTestBounds;

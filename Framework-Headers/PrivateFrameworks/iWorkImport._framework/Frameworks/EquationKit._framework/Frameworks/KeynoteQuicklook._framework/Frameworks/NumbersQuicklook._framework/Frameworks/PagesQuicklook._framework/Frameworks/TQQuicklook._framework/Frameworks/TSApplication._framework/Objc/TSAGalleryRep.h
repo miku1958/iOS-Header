@@ -10,7 +10,7 @@
 #import <TSApplication/TSKChangeSourceObserver-Protocol.h>
 #import <TSApplication/TSWPContainerTextEditingRep-Protocol.h>
 
-@class NSArray, NSObject, NSString, TSAGalleryLayout, TSDImageDrawingHelper, TSWPRep;
+@class NSObject, NSString, TSAGalleryLayout, TSDImageDrawingHelper, TSWPRep;
 @protocol TSDContainerInfo;
 
 @interface TSAGalleryRep : TSDRep <TSWPContainerTextEditingRep, TSDImageDrawingDataSource, TSKChangeSourceObserver>
@@ -20,7 +20,6 @@
 }
 
 @property (readonly, nonatomic) TSWPRep *captionRep; // @synthesize captionRep=_captionRep;
-@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) TSWPRep *containedRep;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,8 +33,9 @@
 + (struct CGRect)p_textureRectForLayout:(id)arg1 viewScale:(double)arg2 isMagicMove:(BOOL)arg3;
 + (struct CGAffineTransform)p_textureRenderTransformRelativeToTextureRect:(struct CGRect)arg1 forLayout:(id)arg2 viewScale:(double)arg3 isMagicMove:(BOOL)arg4;
 - (void).cxx_destruct;
+- (void)addChildTexturesToTextureSet:(id)arg1 forDescription:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
+- (id)childReps;
 - (void)dealloc;
-- (void)didDisplayTextureWithDescription:(id)arg1 isAtEndOfBuild:(BOOL)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)galleryInfo;
 - (id)imageDrawingHelperAdjustedImageData:(id)arg1;
@@ -47,6 +47,7 @@
 - (id)imageDrawingHelperThumbnailImageData:(id)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (void)invalidateCurrentItem;
+- (id)layoutsForChildReps;
 - (void)p_announceNewItemForAccessibilityIfNeeded;
 - (void)p_drawImageInContext:(struct CGContext *)arg1 forLayer:(BOOL)arg2;
 - (id)p_emptyPlaceholderBackgroundColor;
@@ -57,12 +58,9 @@
 - (id)p_newTextureForStage:(unsigned long long)arg1 isIncoming:(BOOL)arg2 includeImage:(BOOL)arg3 includeCaption:(BOOL)arg4 size:(struct CGSize)arg5 offset:(struct CGPoint)arg6 renderTransform:(struct CGAffineTransform)arg7;
 - (void)p_renderTextureInContext:(struct CGContext *)arg1 includeImage:(BOOL)arg2 includeCaption:(BOOL)arg3 renderTransform:(struct CGAffineTransform)arg4;
 - (BOOL)p_shouldIncludeItemCaptionTextForStage:(unsigned long long)arg1 isIncoming:(BOOL)arg2;
-- (void)recursivelyPerformSelector:(SEL)arg1;
-- (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
 - (id)textureForDescription:(id)arg1;
 - (void)updateChildrenFromLayout;
+- (void)updateHitTestingForTextureStage:(unsigned long long)arg1 isAtEndOfBuild:(BOOL)arg2;
 - (void)willBeRemoved;
 
 @end

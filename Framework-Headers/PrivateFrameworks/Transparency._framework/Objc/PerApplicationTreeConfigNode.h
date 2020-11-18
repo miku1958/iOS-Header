@@ -6,13 +6,14 @@
 
 #import <Transparency/GPBMessage.h>
 
-@class VRFPublicKey;
+@class NSData, VRFPublicKey;
 
 @interface PerApplicationTreeConfigNode : GPBMessage
 {
 }
 
 @property (nonatomic) BOOL hasVrfPublicKey; // @dynamic hasVrfPublicKey;
+@property (copy, nonatomic) NSData *publicKeyBytes; // @dynamic publicKeyBytes;
 @property (strong, nonatomic) VRFPublicKey *vrfPublicKey; // @dynamic vrfPublicKey;
 
 + (id)descriptor;

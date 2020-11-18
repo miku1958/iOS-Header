@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     long long oldPageRotation;
     struct CGRect oldBoundsForBox;
     CALayer *tilesLayer;
+    CALayer *shadowLayer;
     int generationCount;
     double lastLayoutZoomFactor;
     struct CGRect lastLayerFrameInRootView;

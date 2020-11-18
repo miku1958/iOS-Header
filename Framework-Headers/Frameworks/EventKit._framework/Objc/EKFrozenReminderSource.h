@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
 
 + (Class)meltedClass;
 - (id)UUID;
+- (id)defaultAlarmOffset;
 - (id)delegatedAccountOwnerStoreID;
+- (BOOL)disabled;
 - (id)externalID;
 - (int)flags;
 - (id)lastSyncEndDate;

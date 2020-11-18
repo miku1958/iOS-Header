@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIColor, UIStackView;
+@class NSMutableArray, UIActivityIndicatorView, UIColor, UIStackView, UIVisualEffectView;
 @protocol RUIMultiChoiceActionHandler;
 
 @interface RUIMultiChoiceView : UIView
@@ -15,6 +15,8 @@
     NSMutableArray *_choices;
     NSMutableArray *_choiceButtons;
     NSMutableArray *_buttonsWidthConstraint;
+    UIActivityIndicatorView *_activityIndicatorView;
+    UIVisualEffectView *_trayBackdrop;
     id<RUIMultiChoiceActionHandler> _target;
     UIColor *_backgroundColor;
 }
@@ -25,11 +27,14 @@
 - (void).cxx_destruct;
 - (void)addChoice:(id)arg1;
 - (void)didTapChoice:(id)arg1;
-- (double)estimatedHeight;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setChoiceHidden:(BOOL)arg1 atIndex:(unsigned long long)arg2;
 - (void)setupStackView;
+- (void)setupTrayBackdrop;
+- (void)startActivityIndicatorForChoice:(id)arg1;
+- (void)stopActivityIndicatorForChoice:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 
 @end
 

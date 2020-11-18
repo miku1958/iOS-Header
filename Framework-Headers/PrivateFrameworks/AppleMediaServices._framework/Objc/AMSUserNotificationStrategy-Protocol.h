@@ -9,6 +9,7 @@
 
 @protocol AMSUserNotificationStrategy
 + (NSArray *)_activeNotificationsWithCenterBundleId:(NSString *)arg1;
++ (BOOL)_badgeBundleId:(NSString *)arg1 increment:(BOOL)arg2 error:(id *)arg3;
 + (AMSBinaryPromise *)_postNotification:(AMSUserNotification *)arg1 bag:(id<AMSBagProtocol>)arg2 centerBundleId:(NSString *)arg3;
 + (AMSBinaryPromise *)_removeNotification:(AMSUserNotification *)arg1 centerBundleId:(NSString *)arg2;
 + (AMSBinaryPromise *)_removeNotificationWithIdentifier:(NSString *)arg1 centerBundleId:(NSString *)arg2 logKey:(NSString *)arg3 scheduledOnly:(BOOL)arg4;

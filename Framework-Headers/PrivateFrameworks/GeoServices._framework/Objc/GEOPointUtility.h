@@ -10,14 +10,15 @@
 {
 }
 
++ (id)compressedZilchDataFromPoints:(void *)arg1 fromPointIndex:(unsigned long long)arg2 pointCount:(unsigned long long)arg3;
 + (void *)controlPoints:(id)arg1 usesZilch:(BOOL)arg2;
++ (id)debugDescriptionForCompressedZilchData:(id)arg1;
 + (CDStruct_39925896)pointAt:(unsigned long long)arg1 pointData:(id)arg2 usesZilch:(BOOL)arg3;
 + (unsigned long long)pointCount:(id)arg1 usesZilch:(BOOL)arg2;
 + (id)subdataFromPointData:(id)arg1 fromPointIndex:(unsigned long long)arg2 usesZilch:(BOOL)arg3;
 + (id)unpackBasicPoints:(id)arg1;
 + (id)unpackPoints:(id)arg1 usesZilch:(BOOL)arg2;
 + (id)unpackZilchPoints:(id)arg1;
-+ (id)zilchData:(id)arg1 fromPointIndex:(unsigned long long)arg2;
 
 @end
 

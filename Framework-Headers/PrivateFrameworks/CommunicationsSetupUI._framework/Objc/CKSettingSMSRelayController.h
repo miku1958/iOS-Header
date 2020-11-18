@@ -10,6 +10,7 @@
 
 @class IDSService, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKSettingSMSRelayController : PSListController <IDSServiceDelegate>
 {
     IDSService *_relayService;

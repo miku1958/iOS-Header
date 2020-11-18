@@ -7,7 +7,7 @@
 #import <MediaPlaybackCore/MPCResponseMediaRemoteControllerChaining-Protocol.h>
 
 @class MPMiddlewareChain, MPModelGenericObject, MPPropertySet, NSArray, NSIndexPath, NSString, UIView;
-@protocol MPCVideoView;
+@protocol MPCVideoOutput, MPCVideoView;
 
 @protocol MPCPlayerResponseBuilder <MPCResponseMediaRemoteControllerChaining>
 
@@ -35,6 +35,8 @@
 - (long long)playerState:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (UIView<MPCVideoView> *)playerVideoView:(UIView<MPCVideoView> *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (BOOL)sectionIsAutoPlaySection:(BOOL)arg1 atIndex:(long long)arg2 chain:(MPMiddlewareChain *)arg3;
 - (NSString *)tracklistUniqueIdentifier:(NSString *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (id<MPCVideoOutput>)videoOutput:(id<MPCVideoOutput>)arg1 chain:(MPMiddlewareChain *)arg2;
 @end
 

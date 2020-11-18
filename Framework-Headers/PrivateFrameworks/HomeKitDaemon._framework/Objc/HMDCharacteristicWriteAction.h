@@ -33,6 +33,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_processWriteActionModelUpdated:(id)arg1 message:(id)arg2;
+- (id)associatedAccessories;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)entitlementsForNotification;
@@ -40,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 characteristic:(id)arg2 targetValue:(id)arg3 actionSet:(id)arg4;
 - (BOOL)isActionForCharacteristic:(id)arg1;
+- (BOOL)isAssociatedWithAccessory:(id)arg1;
 - (BOOL)isSecureAction;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)replaceCharacteristic:(id)arg1;

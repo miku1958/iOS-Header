@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSPredicate, NSSet, PHAsset, PHFetchResult, PHPhotoLibrary;
+@class NSArray, NSDictionary, NSPredicate, NSSet, PHAsset, PHCollection, PHFetchResult, PHPhotoLibrary;
 
 @interface PXPhotosDataSourceConfiguration : NSObject
 {
     BOOL _hideHiddenAssets;
     PHFetchResult *_collectionListFetchResult;
+    PHCollection *_containerCollection;
     unsigned long long _options;
     NSDictionary *_existingAssetCollectionFetchResults;
     NSDictionary *_existingKeyAssetsFetchResults;
     PHAsset *_referenceAsset;
+    NSPredicate *_basePredicate;
     NSPredicate *_filterPredicate;
     NSSet *_allowedUUIDs;
+    NSSet *_allowedOIDs;
     NSArray *_filterPersons;
     PHPhotoLibrary *_photoLibrary;
     NSArray *_fetchPropertySets;
     long long _curationType;
 }
 
+@property (strong, nonatomic) NSSet *allowedOIDs; // @synthesize allowedOIDs=_allowedOIDs;
 @property (strong, nonatomic) NSSet *allowedUUIDs; // @synthesize allowedUUIDs=_allowedUUIDs;
+@property (strong, nonatomic) NSPredicate *basePredicate; // @synthesize basePredicate=_basePredicate;
 @property (readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
+@property (readonly, nonatomic) PHCollection *containerCollection; // @synthesize containerCollection=_containerCollection;
 @property (nonatomic) long long curationType; // @synthesize curationType=_curationType;
 @property (strong, nonatomic) NSDictionary *existingAssetCollectionFetchResults; // @synthesize existingAssetCollectionFetchResults=_existingAssetCollectionFetchResults;
 @property (strong, nonatomic) NSDictionary *existingKeyAssetsFetchResults; // @synthesize existingKeyAssetsFetchResults=_existingKeyAssetsFetchResults;
@@ -40,6 +46,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithAssetFetchResult:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithCollectionListFetchResult:(id)arg1 containerCollection:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithCollectionListFetchResult:(id)arg1 options:(unsigned long long)arg2;
 
 @end

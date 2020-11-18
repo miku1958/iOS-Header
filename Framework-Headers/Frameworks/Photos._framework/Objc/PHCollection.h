@@ -11,6 +11,7 @@
 
 @interface PHCollection : PHObject
 {
+    BOOL _trashed;
     BOOL _customSortAscending;
     unsigned int _customSortKey;
     unsigned long long _estimatedPhotosCount;
@@ -38,11 +39,14 @@
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSManagedObjectID *parentFolderID;
 @property (readonly, copy, nonatomic) id<PHCollectionPresentationHints> presentationHints;
-@property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
+@property (readonly, nonatomic) BOOL startsAtEnd;
+@property (readonly, nonatomic, getter=isTrashed) BOOL trashed; // @synthesize trashed=_trashed;
 
 + (id)entityKeyMap;
 + (id)fetchCollectionsInCollectionList:(id)arg1 options:(id)arg2;
++ (id)fetchFilteredAssetCollections:(id)arg1 containingAssetsMatchingPredicate:(id)arg2;
 + (id)fetchMomentsForAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsForAssetsWithOIDs:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchTopLevelUserCollectionsWithOptions:(id)arg1;
@@ -58,6 +62,7 @@
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (BOOL)isDeleted;
 - (id)objectReference;
 
 @end

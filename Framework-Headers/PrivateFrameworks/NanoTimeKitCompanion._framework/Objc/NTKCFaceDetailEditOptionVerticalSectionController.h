@@ -20,8 +20,6 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canSelectRow:(long long)arg1;
-- (id)_overrideTextForOption:(id)arg1;
-- (void)_refreshOverrideTexts;
 - (void)_setupWithCollection:(id)arg1;
 - (id)cellForRow:(long long)arg1;
 - (BOOL)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;

@@ -21,25 +21,15 @@ __attribute__((visibility("hidden")))
     NSArray *_groupIdentifiers;
 }
 
-@property (readonly, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *digits; // @synthesize digits=_digits;
-@property (readonly, copy, nonatomic) NSArray *groupIdentifiers; // @synthesize groupIdentifiers=_groupIdentifiers;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) CNPhoneNumber *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (readonly, copy, nonatomic) NSString *prefixHint; // @synthesize prefixHint=_prefixHint;
-@property (readonly, nonatomic) BOOL returnsMultipleResults; // @synthesize returnsMultipleResults=_returnsMultipleResults;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDigits:(id)arg1 countryCode:(id)arg2 returnMultipleResults:(BOOL)arg3;
-- (id)initWithPhoneNumber:(id)arg1 prefixHint:(id)arg2 groupIdentifiers:(id)arg3 returnMultipleResults:(BOOL)arg4;
-- (id)initWithPhoneNumber:(id)arg1 prefixHint:(id)arg2 returnMultipleResults:(BOOL)arg3;
-- (id)initWithPhoneNumber:(id)arg1 returnMultipleResults:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
 - (id)shortDebugDescription;

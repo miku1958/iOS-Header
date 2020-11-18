@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class TVImageLayout, VUIButton, VUIFocusableTextView, VUILabel, VUIListLockupCollectionViewCellLayout, VUISeparatorView, _TVImageView, _TVMonogramView;
+@class TVImageLayout, VUIButton, VUIFocusableTextView, VUILabel, VUISeparatorView, _TVImageView, _TVMonogramView;
 
 __attribute__((visibility("hidden")))
 @interface VUIListLockupCollectionViewCellView : UIView
 {
-    VUIListLockupCollectionViewCellLayout *_layout;
     _TVImageView *_imageView;
     _TVMonogramView *_monogramView;
     TVImageLayout *_imageLayout;
@@ -20,13 +19,16 @@ __attribute__((visibility("hidden")))
     VUIFocusableTextView *_descriptionTextView;
     VUIButton *_primaryButton;
     VUIButton *_secondaryButton;
+    long long _imagePosition;
+    TVImageLayout *_monogramImageLayout;
     VUISeparatorView *_separatorView;
 }
 
 @property (strong, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
+@property (nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong, nonatomic) VUIListLockupCollectionViewCellLayout *layout; // @synthesize layout=_layout;
+@property (strong, nonatomic) TVImageLayout *monogramImageLayout; // @synthesize monogramImageLayout=_monogramImageLayout;
 @property (strong, nonatomic) _TVMonogramView *monogramView; // @synthesize monogramView=_monogramView;
 @property (strong, nonatomic) VUIButton *primaryButton; // @synthesize primaryButton=_primaryButton;
 @property (strong, nonatomic) VUIButton *secondaryButton; // @synthesize secondaryButton=_secondaryButton;

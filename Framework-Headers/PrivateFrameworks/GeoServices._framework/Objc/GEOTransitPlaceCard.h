@@ -25,10 +25,7 @@
         unsigned int read_incidentType:1;
         unsigned int read_transitDepartureSequenceUsage:1;
         unsigned int read_transitSystemName:1;
-        unsigned int wrote_incidentType:1;
-        unsigned int wrote_transitDepartureSequenceUsage:1;
-        unsigned int wrote_transitSystemName:1;
-        unsigned int wrote_transitCategory:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,9 +41,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransitCategory:(id)arg1;
-- (void)_readIncidentType;
-- (void)_readTransitDepartureSequenceUsage;
-- (void)_readTransitSystemName;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -54,7 +48,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

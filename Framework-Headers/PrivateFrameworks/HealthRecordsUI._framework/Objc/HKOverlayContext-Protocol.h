@@ -15,7 +15,10 @@
 - (void)updateContextItemForDateInterval:(NSDateInterval *)arg1 timeScope:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 
 @optional
+- (HKDisplayType *)baseDisplayTypeForOverlay:(long long)arg1;
 - (void)invalidateContextItem;
 - (void)overlayStateDidChange:(BOOL)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
+- (void)overlayStateWillChange:(BOOL)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
+- (BOOL)unselectedContextShouldUseContextBaseType;
 @end
 

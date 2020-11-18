@@ -10,7 +10,7 @@
 + (id)_gkDefaultKeymap;
 - (id)_gkAddObserverForKeyPath:(id)arg1 options:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)_gkDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)_gkInvokeSelector:(SEL)arg1;
 - (id)_gkInvokeSelector:(SEL)arg1 withNullableObject:(id)arg2;
 - (id)_gkInvokeSelector:(SEL)arg1 withObject:(id)arg2;

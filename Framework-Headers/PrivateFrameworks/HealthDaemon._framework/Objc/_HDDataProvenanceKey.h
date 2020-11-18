@@ -10,6 +10,7 @@
 
 @class HDDataOriginProvenance, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDDataProvenanceKey : NSObject <NSCopying>
 {
     unsigned long long _hash;

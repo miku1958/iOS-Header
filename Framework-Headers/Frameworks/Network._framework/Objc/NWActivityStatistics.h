@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, NWDeviceReport, NWL2Report, PBCodable;
+@class NSString, NSUUID, NWDeviceReport, NWL2Report, PBCodable;
 
 @interface NWActivityStatistics : NSObject
 {
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSUUID *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property (nonatomic) unsigned int awdMetricID; // @synthesize awdMetricID=_awdMetricID;
 @property (strong, nonatomic) PBCodable *awdReport; // @synthesize awdReport=_awdReport;
+@property (strong, nonatomic) NSString *bundleID;
 @property (strong, nonatomic) NWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property (readonly, nonatomic) unsigned int domain;
 @property (strong, nonatomic) NSUUID *externallyVisibleActivityUUID; // @synthesize externallyVisibleActivityUUID=_externallyVisibleActivityUUID;
@@ -35,6 +36,7 @@
 @property (nonatomic) struct nw_activity_report_s report; // @synthesize report=_report;
 @property (readonly, nonatomic) BOOL retry;
 
++ (id)createActivityReport:(struct nw_activity_report_s)arg1 uuidString:(id)arg2 parentUUIDString:(id)arg3;
 - (void).cxx_destruct;
 - (id)initWithNWActivityReport:(struct nw_activity_report_s *)arg1 length:(unsigned long long)arg2;
 - (id)initWithPBCodableData:(id)arg1;

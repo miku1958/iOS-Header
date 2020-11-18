@@ -8,13 +8,14 @@
 
 #import <RemoteUI/UIWebViewDelegate-Protocol.h>
 
-@class NSString, UIWebView;
+@class NSString, NSURL, UIWebView;
 @protocol RUIWebContainerViewDelegate;
 
 @interface RUIWebContainerView : UIView <UIWebViewDelegate>
 {
     BOOL _highlighted;
     BOOL _reallyHighlighted;
+    NSURL *_baseURL;
     UIWebView *_webView;
     id<RUIWebContainerViewDelegate> _delegate;
 }
@@ -34,6 +35,7 @@
 - (void)layoutSubviews;
 - (void)setUserStyleSheet:(id)arg1;
 - (BOOL)uiWebView:(id)arg1 previewIsAllowedForPosition:(struct CGPoint)arg2;
+- (void)updateContent:(id)arg1;
 - (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
 - (void)webViewDidFinishLoad:(id)arg1;
 

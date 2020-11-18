@@ -29,6 +29,7 @@
 @property (readonly, copy, nonatomic) NSNumber *enqueuerAccountIdentifier; // @synthesize enqueuerAccountIdentifier=_enqueuerAccountIdentifier;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) id rawResponse;
 @property (readonly, copy, nonatomic) NSDictionary *resultsDictionary;
 @property (readonly, copy, nonatomic) NSString *storefrontIdentifier;
 @property (readonly) Class superclass;

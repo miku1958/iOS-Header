@@ -11,7 +11,7 @@
 @interface NSKeyedUnarchiver : NSCoder
 {
     id _delegate;
-    unsigned int _flags;
+    _Atomic unsigned long long _flags;
     id _objRefMap;
     id _replacementMap;
     id _nameClassMap;
@@ -40,6 +40,10 @@
 + (id)unarchiveObjectWithData:(id)arg1 error:(id *)arg2;
 + (id)unarchiveObjectWithFile:(id)arg1;
 + (id)unarchiveTopLevelObjectWithData:(id)arg1 error:(id *)arg2;
++ (id)unarchivedArrayOfObjectsOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
++ (id)unarchivedArrayOfObjectsOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
++ (id)unarchivedDictionaryWithKeysOfClass:(Class)arg1 objectsOfClass:(Class)arg2 fromData:(id)arg3 error:(id *)arg4;
++ (id)unarchivedDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 fromData:(id)arg3 error:(id *)arg4;
 + (id)unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (id)unarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
 - (void)__setError:(id)arg1;
@@ -55,19 +59,21 @@
 - (id)_initWithStream:(struct __CFReadStream *)arg1 data:(id)arg2 topDict:(struct __CFDictionary *)arg3;
 - (void)_replaceObject:(id)arg1 withObject:(id)arg2;
 - (void)_setAllowedClassNames:(id)arg1;
+- (BOOL)_strictSecureDecodingEnabled;
 - (void)_temporaryMapReplaceObject:(id)arg1 withObject:(id)arg2;
 - (BOOL)_validateAllowedClassesContainsClass:(Class)arg1 forKey:(id)arg2;
-- (BOOL)_validatePropertyListClass:(Class)arg1 forKey:(id)arg2;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;
 - (Class)classForClassName:(id)arg1;
 - (BOOL)containsValueForKey:(id)arg1;
 - (void)dealloc;
 - (void)decodeArrayOfObjCType:(const char *)arg1 count:(unsigned long long)arg2 at:(void *)arg3;
+- (id)decodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
 - (BOOL)decodeBoolForKey:(id)arg1;
 - (const char *)decodeBytesForKey:(id)arg1 returnedLength:(unsigned long long *)arg2;
 - (void *)decodeBytesWithReturnedLength:(unsigned long long *)arg1;
 - (id)decodeDataObject;
+- (id)decodeDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 forKey:(id)arg3;
 - (double)decodeDoubleForKey:(id)arg1;
 - (float)decodeFloatForKey:(id)arg1;
 - (int)decodeInt32ForKey:(id)arg1;

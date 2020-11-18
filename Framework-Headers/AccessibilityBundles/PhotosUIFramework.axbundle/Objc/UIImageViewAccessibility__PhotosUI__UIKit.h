@@ -16,8 +16,10 @@
 - (id)_accessibilityElementStoredUserLabel;
 - (id)_accessibilityPhotoDescription;
 - (BOOL)_accessibilitySavePhotoLabel:(id)arg1;
+- (BOOL)_accessibilitySkipImageTraitDescription;
 - (BOOL)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (id)_axPHAsset;
+- (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityURL;

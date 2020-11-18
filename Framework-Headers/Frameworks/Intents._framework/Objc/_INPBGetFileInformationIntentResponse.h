@@ -16,12 +16,10 @@
 {
     CDStruct_f2ecb737 _has;
     BOOL _success;
-    BOOL __encodeLegacyGloryData;
     _INPBString *_entityName;
     _INPBFileProperty *_property;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;

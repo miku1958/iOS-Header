@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class RBDevice;
+#import <RenderBox/RBDrawableStatistics-Protocol.h>
+#import <RenderBox/_RBDrawableDelegate-Protocol.h>
+
+@class NSDictionary, RBDevice;
 @protocol MTLTexture, RBDrawableDelegate;
 
-@interface RBDrawable : NSObject
+@interface RBDrawable : NSObject <_RBDrawableDelegate, RBDrawableStatistics>
 {
     struct unique_ptr<RB::Drawable, std::__1::default_delete<RB::Drawable>> _drawable;
+    struct spin_lock _statistics_handler_lock;
+    struct objc_ptr<void (^)(id<RBDrawableStatistics>)> _statistics_handler;
     int _initialState;
     RBDevice *_device;
+    double _scale;
     unsigned long long _pixelFormat;
     id<RBDrawableDelegate> _delegate;
     id<MTLTexture> _texture;
@@ -27,15 +33,20 @@
 @property (readonly, nonatomic) RBDevice *device; // @synthesize device=_device;
 @property (nonatomic) int initialState; // @synthesize initialState=_initialState;
 @property (nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (readonly, copy, nonatomic) NSDictionary *statistics;
+@property (copy, nonatomic) CDUnknownBlockType statisticsHandler;
 @property (strong, nonatomic) id<MTLTexture> texture; // @synthesize texture=_texture;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_RBDrawableStatisticsDidChange;
 - (void)dumpTexture:(id)arg1 name:(id)arg2;
 - (void)finish;
 - (id)initWithDevice:(id)arg1;
 - (void)renderDisplayList:(id)arg1 flags:(unsigned int)arg2;
+- (void)resetStatistics:(unsigned long long)arg1 alpha:(double)arg2;
 
 @end
 

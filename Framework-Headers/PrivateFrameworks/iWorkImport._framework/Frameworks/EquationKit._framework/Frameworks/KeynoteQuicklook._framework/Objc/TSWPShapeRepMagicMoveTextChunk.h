@@ -13,6 +13,7 @@
     BOOL _hasListLabel;
     BOOL _isVisible;
     BOOL _shouldTreatAsSingleCharacter;
+    BOOL _hasBackgroundShape;
     TSWPShapeRep *_rep;
     NSString *_stringValue;
     NSMutableIndexSet *_unhandledIndexSet;
@@ -21,6 +22,7 @@
     struct _NSRange _range;
 }
 
+@property (nonatomic) BOOL hasBackgroundShape; // @synthesize hasBackgroundShape=_hasBackgroundShape;
 @property (nonatomic) BOOL hasListLabel; // @synthesize hasListLabel=_hasListLabel;
 @property (nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
 @property (nonatomic) double opacityFromRenderer; // @synthesize opacityFromRenderer=_opacityFromRenderer;

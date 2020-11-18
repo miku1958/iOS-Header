@@ -6,12 +6,14 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBLocation;
+@class _INPBLocation, _INPBString;
 
 @protocol _INPBRetrieveParkingLocationIntentResponse <NSObject>
 
 @property (readonly, nonatomic) BOOL hasParkingLocation;
+@property (readonly, nonatomic) BOOL hasParkingNote;
 @property (strong, nonatomic) _INPBLocation *parkingLocation;
+@property (strong, nonatomic) _INPBString *parkingNote;
 
 @end
 

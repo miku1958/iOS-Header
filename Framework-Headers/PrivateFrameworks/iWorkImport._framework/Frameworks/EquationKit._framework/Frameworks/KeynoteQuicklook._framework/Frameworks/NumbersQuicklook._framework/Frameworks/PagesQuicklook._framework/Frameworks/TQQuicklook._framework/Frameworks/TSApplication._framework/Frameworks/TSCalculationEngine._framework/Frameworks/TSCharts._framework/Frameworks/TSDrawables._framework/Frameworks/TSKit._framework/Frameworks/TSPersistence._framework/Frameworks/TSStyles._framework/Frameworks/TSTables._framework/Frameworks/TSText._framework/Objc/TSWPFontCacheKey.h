@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <TSText/NSCopying-Protocol.h>
+
 @class NSArray, NSString;
 
-@interface TSWPFontCacheKey : NSObject
+@interface TSWPFontCacheKey : NSObject <NSCopying>
 {
     BOOL _hasExtraFields;
     BOOL _bold;
@@ -28,6 +30,7 @@
 + (id)cacheKeyWithFontName:(id)arg1 fontSize:(double)arg2 bold:(BOOL)arg3 italic:(BOOL)arg4 fontFeatures:(id)arg5;
 + (id)cacheKeyWithFontName:(id)arg1 size:(double)arg2;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithFontName:(id)arg1 fontSize:(double)arg2 hasExtraFields:(BOOL)arg3 bold:(BOOL)arg4 italic:(BOOL)arg5 fontFeatures:(id)arg6;

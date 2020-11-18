@@ -14,6 +14,7 @@
 {
     BOOL _isEntitled;
     BOOL _isBetaApp;
+    BOOL _isAppStoreVendable;
     BOOL _isSystemApp;
     BOOL _supportsTVApp;
     NSString *_bundleIdentifier;
@@ -23,6 +24,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, nonatomic) BOOL isAppStoreVendable; // @synthesize isAppStoreVendable=_isAppStoreVendable;
 @property (readonly, nonatomic) BOOL isBetaApp; // @synthesize isBetaApp=_isBetaApp;
 @property (readonly, nonatomic) BOOL isEntitled; // @synthesize isEntitled=_isEntitled;
 @property (readonly, nonatomic) BOOL isSystemApp; // @synthesize isSystemApp=_isSystemApp;

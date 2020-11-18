@@ -31,7 +31,7 @@
 @property (nonatomic) BOOL recurrentOutputIsTemporary; // @synthesize recurrentOutputIsTemporary=_recurrentOutputIsTemporary;
 @property (nonatomic) BOOL storeAllIntermediateStates; // @synthesize storeAllIntermediateStates=_storeAllIntermediateStates;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (void)encodeBidirectionalSequenceToCommandBuffer:(id)arg1 sourceSequence:(id)arg2 destinationForwardImages:(id)arg3 destinationBackwardImages:(id)arg4;

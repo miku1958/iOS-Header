@@ -22,6 +22,7 @@
 - (id)da_urlByRemovingUsername;
 - (id)da_urlBySettingHost:(id)arg1;
 - (id)da_urlBySettingHost:(id)arg1 keepUsername:(BOOL)arg2;
+- (id)da_urlBySettingPassword:(id)arg1;
 - (id)da_urlBySettingPath:(id)arg1;
 - (id)da_urlBySettingPath:(id)arg1 keepUsername:(BOOL)arg2;
 - (id)da_urlBySettingPort:(id)arg1;

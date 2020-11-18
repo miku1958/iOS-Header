@@ -19,7 +19,6 @@
         unsigned int entityType:1;
         unsigned int sourceType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _destinationType;
     int _entityType;
     int _sourceType;
@@ -30,7 +29,6 @@
     _INPBString *_sourceName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;

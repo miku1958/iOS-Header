@@ -6,24 +6,16 @@
 
 #import <MetricsKit/MTEventHandler.h>
 
-@class NSString;
 @protocol MTMediaActivityEventHandlerDelegate;
 
 @interface MTMediaActivityEventHandler : MTEventHandler
 {
-    NSString *_defaultEventType;
-    NSString *_defaultActionType;
 }
 
-@property (strong, nonatomic) NSString *defaultActionType; // @synthesize defaultActionType=_defaultActionType;
-@property (strong, nonatomic) NSString *defaultEventType; // @synthesize defaultEventType=_defaultEventType;
 @property (weak, nonatomic) id<MTMediaActivityEventHandlerDelegate> delegate; // @dynamic delegate;
 
-- (void).cxx_destruct;
-- (id)actionType;
-- (id)eventType;
+- (void)didCreateMetricsData:(id)arg1;
 - (id)eventVersion:(id)arg1;
-- (id)initWithMetricsKit:(id)arg1 defaultEventType:(id)arg2 defaultActionType:(id)arg3;
 - (id)knownFields;
 - (id)metricsDataForStartActionWithPosition:(unsigned long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
 - (id)metricsDataForStopActionWithPosition:(unsigned long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 startMetricsData:(id)arg5 eventData:(id)arg6;

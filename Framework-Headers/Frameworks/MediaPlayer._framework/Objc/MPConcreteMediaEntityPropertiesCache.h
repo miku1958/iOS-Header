@@ -9,6 +9,7 @@
 @class NSMutableDictionary;
 @protocol MPMediaLibraryDataProvider, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPConcreteMediaEntityPropertiesCache : NSObject
 {
     Class _dataProviderEntityClass;

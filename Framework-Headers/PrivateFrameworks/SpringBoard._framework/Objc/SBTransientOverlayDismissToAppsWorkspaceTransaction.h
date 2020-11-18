@@ -12,8 +12,10 @@
 
 + (BOOL)isValidForTransitionRequest:(id)arg1;
 - (void)_begin;
+- (BOOL)_canBeInterrupted;
 - (void)_didComplete;
-- (void)_sendActivationResultWithSuccess:(BOOL)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
+- (BOOL)canInterruptForTransitionRequest:(id)arg1;
 
 @end
 

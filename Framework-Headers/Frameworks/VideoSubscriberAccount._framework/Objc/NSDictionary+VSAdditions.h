@@ -14,6 +14,8 @@
 - (id)vs_arrayOfStringsForKey:(id)arg1;
 - (id)vs_dictionaryForKey:(id)arg1;
 - (id)vs_numberForKey:(id)arg1;
+- (id)vs_objectForCaseInsensitiveKey:(id)arg1;
+- (id)vs_objectForNormalizedKey:(id)arg1;
 - (id)vs_objectOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)vs_stringForKey:(id)arg1;
 @end

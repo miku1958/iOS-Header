@@ -48,6 +48,7 @@
 - (void).cxx_destruct;
 - (void)acceptFirstCandidateWithContext:(id)arg1;
 - (BOOL)alwaysShowExtensionCandidatesForSortingMethod:(id)arg1;
+- (id)candidateResultSetFromCandidates:(id)arg1 proactiveTriggers:(id)arg2;
 - (id)candidateResultSetUsedForCompletionQuery;
 - (void)clearInput;
 - (id)completionCandidateResultSetForKeyHint:(id)arg1;

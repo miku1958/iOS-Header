@@ -6,7 +6,18 @@
 
 #import <HomeKit/HMOutgoingHomeInvitation.h>
 
-@interface HMOutgoingHomeInvitation (HFDebugging)
+#import <Home/HFHomeKitObject-Protocol.h>
+
+@class NSString, NSUUID;
+
+@interface HMOutgoingHomeInvitation (HFDebugging) <HFHomeKitObject>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

@@ -18,18 +18,22 @@
     double _stillTimeInVideo;
 }
 
+@property (readonly, nonatomic) unsigned long long backingType;
 @property (copy, nonatomic) NSURL *fullsizeImageURL; // @synthesize fullsizeImageURL=_fullsizeImageURL;
-@property (readonly, nonatomic) unsigned long long identifier;
+@property (readonly, nonatomic) long long identifier;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
 @property (copy, nonatomic) NSURL *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
 @property (readonly, nonatomic) unsigned long long type;
 @property (copy, nonatomic) NSURL *videoAssetURL; // @synthesize videoAssetURL=_videoAssetURL;
 
++ (id)na_identity;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2 thumbnailImageURL:(id)arg3 fullsizeImageURL:(id)arg4 videoAssetURL:(id)arg5 stillTimeInVideo:(double)arg6;
+- (CDUnknownBlockType)descriptionBuilderBlock;
+- (unsigned long long)hash;
+- (id)initWithIdentifier:(long long)arg1 name:(id)arg2 thumbnailImageURL:(id)arg3 fullsizeImageURL:(id)arg4 videoAssetURL:(id)arg5 stillTimeInVideo:(double)arg6;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

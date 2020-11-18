@@ -29,12 +29,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_attributeKeys:1;
         unsigned int read_photoOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributeKeys:1;
-        unsigned int wrote_photoOptions:1;
-        unsigned int wrote_maxBusinessResults:1;
-        unsigned int wrote_includeBusinessHours:1;
-        unsigned int wrote_includeCenter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,10 +47,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)photoOptionsType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAttributeKey:(id)arg1;
-- (void)_addNoFlagsPhotoOptions:(id)arg1;
-- (void)_readAttributeKeys;
-- (void)_readPhotoOptions;
 - (void)addAttributeKey:(id)arg1;
 - (void)addPhotoOptions:(id)arg1;
 - (id)attributeKeyAtIndex:(unsigned long long)arg1;
@@ -70,7 +61,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)photoOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoOptionsCount;

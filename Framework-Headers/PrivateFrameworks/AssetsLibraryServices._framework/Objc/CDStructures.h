@@ -84,16 +84,3 @@ typedef struct {
     int _field2;
 } CDStruct_1ef3fb1f;
 
-typedef struct {
-    int _field1;
-    struct CGSize _field2;
-    struct CGRect _field3;
-    struct CGRect _field4;
-    unsigned int _field5;
-    int _field6;
-    int _field7;
-    double _field8[4];
-    double _field9[4];
-    unsigned int _field10;
-} CDStruct_e5ce1f5a;
-

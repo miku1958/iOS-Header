@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface AVHapticPlayerParameterCurveControlPoint : NSObject
+#import <AudioToolbox/NSSecureCoding-Protocol.h>
+
+@interface AVHapticPlayerParameterCurveControlPoint : NSObject <NSSecureCoding>
 {
     float _value;
     double _time;
@@ -15,6 +17,9 @@
 @property double time; // @synthesize time=_time;
 @property float value; // @synthesize value=_value;
 
++ (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTime:(double)arg1 value:(float)arg2;
 
 @end

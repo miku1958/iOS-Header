@@ -13,8 +13,8 @@
 
 @interface CNReaderWriterScheduler : NSObject <CNReaderWriterScheduler>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     BOOL _suspended;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_activeReaders;
     NSMutableArray *_pendingReaders;
     NSMutableArray *_activeWriters;
@@ -39,6 +39,7 @@
 - (void)addWriterWithIdentifier:(id)arg1;
 - (void)appendDescriptionToBuilder:(id)arg1;
 - (id)init;
+- (id)initWithQueue:(id)arg1;
 - (id)performReaderBlock:(CDUnknownBlockType)arg1;
 - (void)performSynchronousReaderBlock:(CDUnknownBlockType)arg1;
 - (void)performSynchronousWriterBlock:(CDUnknownBlockType)arg1;

@@ -7,14 +7,17 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/HMFMerging-Protocol.h>
+#import <CoreHAP/NSCopying-Protocol.h>
 
 @class CBCharacteristic, HAPCharacteristicMetadata, HAPService, HMFUnfairLock, NSDate, NSNumber, NSString;
 
-@interface HAPCharacteristic : HMFObject <HMFMerging>
+@interface HAPCharacteristic : HMFObject <NSCopying, HMFMerging>
 {
     HMFUnfairLock *_lock;
     BOOL _eventNotificationsEnabled;
     BOOL _shouldValidateValueAfterReading;
+    BOOL _prohibitCaching;
+    BOOL _implicitWriteWithResponse;
     NSDate *_valueUpdatedTime;
     id _value;
     NSNumber *_stateNumber;
@@ -32,21 +35,29 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL eventNotificationsEnabled; // @synthesize eventNotificationsEnabled=_eventNotificationsEnabled;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isWriteWithResponseImplicitlySupported) BOOL implicitWriteWithResponse; // @synthesize implicitWriteWithResponse=_implicitWriteWithResponse;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (copy, nonatomic) HAPCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) BOOL prohibitCaching; // @synthesize prohibitCaching=_prohibitCaching;
 @property (nonatomic) unsigned long long properties; // @synthesize properties=_properties;
 @property (weak, nonatomic) HAPService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldValidateValueAfterReading; // @synthesize shouldValidateValueAfterReading=_shouldValidateValueAfterReading;
 @property (readonly, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAdditionalAuthorizationData;
+@property (readonly, nonatomic) BOOL supportsWriteWithResponse;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic, setter=setValue:) id value; // @synthesize value=_value;
 @property (strong, nonatomic) NSDate *valueUpdatedTime; // @synthesize valueUpdatedTime=_valueUpdatedTime;
 
++ (id)hap2_shortTypeFromUUID:(id)arg1;
 - (void).cxx_destruct;
 - (id)_generateValidMetadata:(id)arg1;
 - (void)_updateMetadata:(id)arg1 withProvidedMetadata:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)hap2_canUseCachedValue;
+- (BOOL)hap2_mergeWithCharacteristic:(id)arg1;
+- (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 stateNumber:(id)arg4 properties:(unsigned long long)arg5 eventNotificationsEnabled:(BOOL)arg6 implicitWriteWithResponse:(BOOL)arg7 metadata:(id)arg8;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 stateNumber:(id)arg4 properties:(unsigned long long)arg5 eventNotificationsEnabled:(BOOL)arg6 metadata:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCharacteristic:(id)arg1;

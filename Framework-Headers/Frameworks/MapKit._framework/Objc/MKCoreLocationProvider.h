@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/CLLocationManagerDelegate-Protocol.h>
 #import <MapKit/CLLocationManagerVehicleDelegate-Protocol.h>
 #import <MapKit/MKLocationProvider-Protocol.h>
 
@@ -14,12 +13,13 @@
 @protocol MKLocationProviderDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MKCoreLocationProvider : NSObject <CLLocationManagerDelegate, CLLocationManagerVehicleDelegate, MKLocationProvider>
+@interface MKCoreLocationProvider : NSObject <CLLocationManagerVehicleDelegate, MKLocationProvider>
 {
     CLLocationManager *_clLocationManager;
     id<MKLocationProviderDelegate> _delegate;
     BOOL _locationServicesPreferencesDialogEnabled;
     int _authorizationStatus;
+    BOOL _authorizedForPreciseLocation;
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
@@ -32,7 +32,9 @@ __attribute__((visibility("hidden")))
     long long _activityType;
     double _distanceFilter;
     BOOL _matchInfoEnabled;
+    BOOL _fusionInfoEnabled;
     int _headingOrientation;
+    BOOL _hasExternallyProvidedLocationManager;
 }
 
 @property (readonly, nonatomic) CLLocationManager *_clLocationManager;
@@ -47,8 +49,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSBundle *effectiveBundle;
 @property (copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property (readonly, nonatomic) double expectedGpsUpdateInterval; // @synthesize expectedGpsUpdateInterval=_expectedGpsUpdateInterval;
+@property (nonatomic) BOOL fusionInfoEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int headingOrientation;
+@property (readonly, nonatomic) BOOL isAuthorizedForPreciseLocation;
 @property (readonly, nonatomic) BOOL isTracePlayer;
 @property (readonly, nonatomic) CLLocation *lastLocation;
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
@@ -61,12 +65,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)_authorizationStatusOnQueue;
 - (void)_createCLLocationManager;
+- (BOOL)_isAuthorizedForPreciseLocationOnQueue;
 - (void)_resetForNewEffectiveBundle;
 - (void)_updateAuthorizationStatus;
+- (void)_updateAuthorizedForPreciseLocationOnQueue:(id)arg1;
 - (void)authorizationStatusOnQueue:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)dismissHeadingCalibrationDisplay;
 - (id)init;
+- (id)initWithCLLocationManager:(id)arg1;
+- (void)isAuthorizedForPreciseLocationOnQueue:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateHeading:(id)arg2;
@@ -76,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(id)arg1;
+- (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)startUpdatingHeading;

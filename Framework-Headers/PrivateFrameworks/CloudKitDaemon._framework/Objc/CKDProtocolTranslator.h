@@ -98,6 +98,7 @@
 - (id)shareParticipantFromPParticipant:(id)arg1 error:(id *)arg2;
 - (id)streamingAssetFromPStreamingAsset:(id)arg1 error:(id *)arg2;
 - (id)subscriptionFromPSubscription:(id)arg1 error:(id *)arg2;
+- (id)throttleFromPThrottlingConfig:(id)arg1;
 - (id)userNameFromPIdentifier:(id)arg1 error:(id *)arg2;
 
 @end

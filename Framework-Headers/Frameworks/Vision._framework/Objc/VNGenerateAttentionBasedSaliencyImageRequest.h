@@ -6,19 +6,30 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@interface VNGenerateAttentionBasedSaliencyImageRequest : VNImageBasedRequest
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface VNGenerateAttentionBasedSaliencyImageRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
 
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
 + (const CDStruct_7d93034e *)revisionAvailability;
 + (BOOL)supportsPrivateRevision:(unsigned long long)arg1;
+- (id)_detectorLoadedInSession:(id)arg1 forRevision:(unsigned long long)arg2 getAppliedDetectorOptions:(id *)arg3 error:(id *)arg4;
 - (id)_smartCamCombinedModelImageSaliencyObservationsForRevision:(unsigned long long)arg1 performedInContext:(id)arg2 error:(id *)arg3;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

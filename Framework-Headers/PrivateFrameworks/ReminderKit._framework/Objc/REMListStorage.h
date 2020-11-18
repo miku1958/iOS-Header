@@ -10,12 +10,13 @@
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
+#import <ReminderKit/REMSortingStyleReadWriteProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, REMColor, REMObjectID, REMResolutionTokenMap;
+@class NSArray, NSData, NSDate, NSDictionary, NSOrderedSet, NSSet, NSString, REMColor, REMObjectID, REMResolutionTokenMap;
 
-@interface REMListStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
+@interface REMListStorage : NSObject <NSCopying, NSSecureCoding, REMSortingStyleReadWriteProtocol, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
 {
-    BOOL _hasDeserializedReminderIDsMergeableOrdering;
+    NSOrderedSet *_reminderIDsMergeableOrdering;
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
     BOOL _isGroup;
@@ -30,6 +31,8 @@
     NSString *externalModificationTag;
     NSString *daSyncToken;
     NSString *daPushKey;
+    NSString *sortingStyle;
+    long long sortingDirection;
     REMObjectID *_accountID;
     REMObjectID *_objectID;
     NSString *_name;
@@ -38,7 +41,9 @@
     REMObjectID *_parentAccountID;
     REMObjectID *_parentListID;
     NSData *_reminderIDsMergeableOrderingData;
+    NSDictionary *_reminderIDsOrderingHints;
     REMResolutionTokenMap *_resolutionTokenMap;
+    NSData *_resolutionTokenMapData;
     NSSet *_reminderIDsToUndelete;
     NSString *_sharedOwnerName;
     NSString *_sharedOwnerAddress;
@@ -50,12 +55,14 @@
     NSString *_daExternalIdentificationTag;
     NSDictionary *_daBulkRequests;
     long long _daDisplayOrder;
+    NSString *_currentUserShareParticipantID;
 }
 
 @property (strong, nonatomic) REMObjectID *accountID; // @synthesize accountID=_accountID;
 @property (strong, nonatomic) NSString *badgeEmblem; // @synthesize badgeEmblem=_badgeEmblem;
 @property (strong, nonatomic) NSArray *calDAVNotifications; // @synthesize calDAVNotifications=_calDAVNotifications;
 @property (strong, nonatomic) REMColor *color; // @synthesize color=_color;
+@property (copy, nonatomic) NSString *currentUserShareParticipantID; // @synthesize currentUserShareParticipantID=_currentUserShareParticipantID;
 @property (strong, nonatomic) NSDictionary *daBulkRequests; // @synthesize daBulkRequests=_daBulkRequests;
 @property (nonatomic) long long daDisplayOrder; // @synthesize daDisplayOrder=_daDisplayOrder;
 @property (strong, nonatomic) NSString *daExternalIdentificationTag; // @synthesize daExternalIdentificationTag=_daExternalIdentificationTag;
@@ -76,36 +83,44 @@
 @property (strong, nonatomic) REMObjectID *parentAccountID; // @synthesize parentAccountID=_parentAccountID;
 @property (strong, nonatomic) REMObjectID *parentListID; // @synthesize parentListID=_parentListID;
 @property (readonly, nonatomic) REMObjectID *remObjectID;
+@property (strong, nonatomic) NSOrderedSet *reminderIDsMergeableOrdering;
 @property (strong, nonatomic) NSData *reminderIDsMergeableOrderingData; // @synthesize reminderIDsMergeableOrderingData=_reminderIDsMergeableOrderingData;
+@property (strong, nonatomic) NSDictionary *reminderIDsOrderingHints; // @synthesize reminderIDsOrderingHints=_reminderIDsOrderingHints;
 @property (strong, nonatomic) NSSet *reminderIDsToUndelete; // @synthesize reminderIDsToUndelete=_reminderIDsToUndelete;
 @property (nonatomic) BOOL remindersICSDisplayOrderChanged; // @synthesize remindersICSDisplayOrderChanged=_remindersICSDisplayOrderChanged;
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property (copy, nonatomic) NSString *sharedOwnerAddress; // @synthesize sharedOwnerAddress=_sharedOwnerAddress;
 @property (strong, nonatomic) REMObjectID *sharedOwnerID; // @synthesize sharedOwnerID=_sharedOwnerID;
 @property (copy, nonatomic) NSString *sharedOwnerName; // @synthesize sharedOwnerName=_sharedOwnerName;
 @property (strong, nonatomic) NSArray *sharees; // @synthesize sharees=_sharees;
 @property (nonatomic) long long sharingStatus; // @synthesize sharingStatus=_sharingStatus;
 @property (nonatomic) BOOL showingLargeAttachments; // @synthesize showingLargeAttachments=_showingLargeAttachments;
+@property (nonatomic) long long sortingDirection; // @synthesize sortingDirection;
+@property (copy, nonatomic) NSString *sortingStyle; // @synthesize sortingStyle;
 
++ (BOOL)_forceDisableFullRemindersSorting;
 + (id)cdEntityName;
 + (id)newObjectID;
 + (id)objectIDWithUUID:(id)arg1;
 + (id)reminderIDUUIDStringsJSONDataFromReminderIDsMergeableOrdering:(id)arg1 error:(id *)arg2;
 + (id)reminderIDsMergeableOrderingFromReminderIDUUIDStringsJSONData:(id)arg1 error:(id *)arg2;
++ (void)set_forceDisableFullRemindersSorting:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)cdKeyToStorageKeyMap;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)ekColor;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasDeserializedReminderIDsMergeableOrdering;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 name:(id)arg3;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 name:(id)arg3 isGroup:(BOOL)arg4 reminderIDsMergeableOrdering:(id)arg5;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 name:(id)arg3 isGroup:(BOOL)arg4 reminderIDsMergeableOrderingData:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
-- (id)reminderIDsMergeableOrdering;
 - (void)setStoreGenerationIfNeeded:(unsigned long long)arg1;
 - (unsigned long long)storeGeneration;
 

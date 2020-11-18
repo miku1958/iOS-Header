@@ -48,6 +48,25 @@ struct CachedSize {
     struct atomic<int> _field1;
 };
 
+struct CaptionInfoArchive {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct ShapeInfoArchive *_field5;
+    struct Reference *_field6;
+    int _field7;
+};
+
+struct CaptionPlacementArchive {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    int _field5;
+    int _field6;
+};
+
 struct DataReference;
 
 struct DocumentArchive {
@@ -70,6 +89,7 @@ struct DocumentArchive {
     BOOL _field17;
     BOOL _field18;
     BOOL _field19;
+    BOOL _field20;
 };
 
 struct DrawableArchive;
@@ -129,6 +149,7 @@ struct ImageArchive {
     struct Attribution *_field23;
     unsigned int _field24;
     BOOL _field25;
+    BOOL _field26;
 };
 
 struct InternalMetadataWithArena {
@@ -172,6 +193,8 @@ struct RepeatedPtrField<TSWP::TextPresetDisplayItemArchive> {
     int _field3;
     struct Rep *_field4;
 };
+
+struct ShapeInfoArchive;
 
 struct ShortcutControllerArchive {
     CDUnknownFunctionPointerType *_field1;

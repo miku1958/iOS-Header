@@ -18,6 +18,7 @@
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (void)applyLayoutAttributes:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

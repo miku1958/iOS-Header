@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKitUI/UIDocumentInteractionControllerDelegate-Protocol.h>
+#import <EventKitUI/QLPreviewControllerDelegate-Protocol.h>
 
 @class EKAttachment, EKEventAttachmentCell, NSString;
 @protocol EKEventAttachmentCellControllerDelegate;
 
-@interface EKEventAttachmentCellController : NSObject <UIDocumentInteractionControllerDelegate>
+@interface EKEventAttachmentCellController : NSObject <QLPreviewControllerDelegate>
 {
     id _downloadID;
     EKEventAttachmentCell *_cell;
@@ -42,13 +42,12 @@
 - (void)_presentPreviewWithURL:(id)arg1 filename:(id)arg2;
 - (id)attachmentFilename;
 - (void)cellSelected;
-- (id)documentInteractionControllerViewControllerForPreview:(id)arg1;
-- (id)documentInteractionControllerViewForPreview:(id)arg1;
-- (void)documentInteractionControllerWillEndPreview:(id)arg1;
 - (id)event;
 - (id)initWithAttachment:(id)arg1 sourceIsManaged:(BOOL)arg2;
+- (void)previewControllerWillDismiss:(id)arg1;
 - (void)promptToDownloadAttachment;
 - (void)startAttachmentDownload;
+- (unsigned long long)supportedInterfaceOrientationMaskForInterfaceOrientation:(long long)arg1;
 - (void)tearDown;
 
 @end

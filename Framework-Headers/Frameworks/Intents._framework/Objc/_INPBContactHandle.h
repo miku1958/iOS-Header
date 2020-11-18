@@ -16,25 +16,27 @@
 {
     struct {
         unsigned int emergencyType:1;
+        unsigned int suggested:1;
         unsigned int type:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
+    BOOL _suggested;
     int _emergencyType;
     int _type;
     NSString *_label;
     NSString *_value;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int emergencyType; // @synthesize emergencyType=_emergencyType;
 @property (nonatomic) BOOL hasEmergencyType;
 @property (readonly, nonatomic) BOOL hasLabel;
+@property (nonatomic) BOOL hasSuggested;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValue;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) BOOL suggested; // @synthesize suggested=_suggested;
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;

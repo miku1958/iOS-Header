@@ -29,24 +29,10 @@
     BOOL _foundAdditions;
 }
 
-+ (void)_updateEventStatsWithIsNewestMissingWindow:(BOOL)arg1;
-+ (void)_updateEventStatsWithPreviousSyncDate:(id)arg1 transportType:(long long)arg2;
-+ (void)_updateEventStatsWithSyncLatencyOfEvent:(id)arg1 ingressDate:(id)arg2 transportType:(long long)arg3;
-+ (void)_updateEventStatsWithTotal:(unsigned long long)arg1 streamNameCounts:(id)arg2 transportType:(long long)arg3;
 - (void).cxx_destruct;
-- (void)coalesceRedundantOverlappingWindows;
 - (void)endOperation;
-- (void)endPerfMetrics;
-- (void)handleFetchedEvents:(id)arg1 completedWindows:(id)arg2 missingWindows:(id)arg3;
-- (id)initWithParent:(id)arg1 localStorage:(id)arg2 transport:(id)arg3 peer:(id)arg4 policy:(id)arg5 type:(id)arg6;
 - (BOOL)isAsynchronous;
 - (void)main;
-- (void)performSyncDownPeerAdditions;
-- (void)performSyncDownPeerAdditionsWithCompletedWindows:(id)arg1;
-- (void)performSyncDownPeerAdditionsWithDidPrewarm:(BOOL)arg1 orError:(id)arg2;
-- (void)performSyncDownPeerAdditionsWithHighWaterMark:(id)arg1 orError:(id)arg2;
-- (void)startPerfMetrics;
-- (void)updateEvents:(id)arg1 withSourceDeviceID:(id)arg2;
 
 @end
 

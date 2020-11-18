@@ -6,10 +6,15 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-@class ACAccount, AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@interface AMSAuthenticateTask : AMSTask
+@class AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
+@protocol AMSAuthenticateTaskDelegate, AMSBagProtocol;
+
+@interface AMSAuthenticateTask : AMSTask <AMSBagConsumer>
 {
+    id<AMSBagProtocol> _bag;
+    id<AMSAuthenticateTaskDelegate> _delegate;
     AMSAuthenticateOptions *_options;
     NSString *_password;
     NSString *_multiUserToken;
@@ -17,37 +22,52 @@
     NSString *_altDSID;
     NSNumber *_DSID;
     NSUUID *_homeIdentifier;
+    NSUUID *_homeUserIdentifier;
     NSString *_username;
-    ACAccount *_authenticatedAccount;
 }
 
 @property (strong, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property (strong, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
-@property (strong, nonatomic) ACAccount *authenticatedAccount; // @synthesize authenticatedAccount=_authenticatedAccount;
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<AMSAuthenticateTaskDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
+@property (strong, nonatomic) NSUUID *homeUserIdentifier; // @synthesize homeUserIdentifier=_homeUserIdentifier;
 @property (strong, nonatomic) NSString *multiUserToken; // @synthesize multiUserToken=_multiUserToken;
 @property (readonly, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (strong, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *username; // @synthesize username=_username;
 
++ (id)_createFallbackBag;
++ (void)_updateAccountPasswordUsingSecondaryAccounts:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
-- (id)_accountForAuthentication;
+- (id)_accountForAuthenticationWithError:(id *)arg1;
 - (id)_accountStoreForAuthentication;
 - (id)_attemptMultiUserTokenAuthenticationForAccount:(id)arg1;
-- (id)_attemptPasswordReuseAuthenticationForAccount:(id)arg1;
-- (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned long long)arg1;
+- (id)_attemptPasswordReuseAuthenticationForAccount:(id)arg1 error:(id *)arg2;
+- (id)_createAuthKitUpdateTaskForAccount:(id)arg1;
+- (id)_handleDialogFromError:(id)arg1;
 - (id)_performAuthenticationUsingAccount:(id)arg1 credentialSource:(unsigned long long)arg2 error:(id *)arg3;
-- (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
+- (BOOL)_runCreateAccountDialogWithError:(id *)arg1;
+- (id)_runDialogRequest:(id)arg1;
+- (id)_sanitizeError:(id)arg1;
 - (void)_updateAccountWithProvidedInformation:(id)arg1;
 - (id)homeID;
-- (id)homeUserID;
 - (id)init;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
+- (id)initWithAccount:(id)arg1 options:(id)arg2 bag:(id)arg3;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 bag:(id)arg2;
 - (id)performAuthentication;
 - (void)setHomeID:(id)arg1;
-- (void)setHomeUserID:(id)arg1;
 
 @end
 

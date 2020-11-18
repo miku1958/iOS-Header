@@ -9,11 +9,11 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSString;
+@class HMFTimer, NSString;
 
 @interface HMFOperationBudget : HMFObject <HMFLogging, HMFTimerDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_recursive_lock_s _lock;
     HMFTimer *_timer;
     unsigned long long _value;
     unsigned long long _limit;

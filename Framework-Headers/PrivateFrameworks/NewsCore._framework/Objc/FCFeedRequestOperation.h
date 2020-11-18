@@ -54,6 +54,7 @@
 + (BOOL)_orderFeedTopKEnabled;
 + (id)feedRequestContentEnvironmentTokenWithContext:(id)arg1;
 + (void)initialize;
++ (void)prewarm;
 - (void).cxx_destruct;
 - (id)_additionalHTTPHeadersForOrderFeedRequest;
 - (BOOL)_countOfDroppedFeeds;

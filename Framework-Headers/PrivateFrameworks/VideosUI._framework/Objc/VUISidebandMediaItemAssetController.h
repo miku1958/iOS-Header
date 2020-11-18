@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueueInternal; // @synthesize completionDispatchQueueInternal=_completionDispatchQueueInternal;
+@property (readonly, nonatomic) BOOL contentAllowsCellularDownload;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIMediaEntityAssetControllerDelegate> delegate;
 @property (weak, nonatomic) id<VUIMediaEntityAssetControllerDelegate> delegateInternal; // @synthesize delegateInternal=_delegateInternal;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state;
 @property (strong, nonatomic) VUIMediaEntityAssetControllerState *stateInternal; // @synthesize stateInternal=_stateInternal;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsRedownloadingContent;
 @property (readonly, nonatomic) BOOL supportsStartingDownload;
 @property (strong, nonatomic) VUIVideoManagedObject *videoManagedObjectInternal; // @synthesize videoManagedObjectInternal=_videoManagedObjectInternal;
 
@@ -47,16 +49,19 @@ __attribute__((visibility("hidden")))
 - (void)_updateDownloadStateAndNotifyDelegates;
 - (void)_updateObservedDownload;
 - (void)cancelAndRemoveDownload;
+- (void)cancelKeyFetch;
 - (void)dealloc;
+- (void)deleteAndRedownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)download:(id)arg1 didChangeStateTo:(long long)arg2;
 - (void)download:(id)arg1 progressDidChange:(double)arg2;
 - (void)downloadManagerDownloadsDidChange:(id)arg1;
+- (void)fetchNewKeysForDownloadedVideo;
 - (id)initWithVideoManagedObject:(id)arg1 mediaEntityIdentifier:(id)arg2;
 - (void)invalidate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

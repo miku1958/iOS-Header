@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <Vision/VNSequencedRequestSupporting-Protocol.h>
+
 @class CIContext, CIImage, NSDictionary, VNImageSourceManager;
 
-@interface VNImageBuffer : NSObject
+@interface VNImageBuffer : NSObject <VNSequencedRequestSupporting>
 {
     struct __CVBuffer *_origPixelBuffer;
+    struct CGImage *_origCGImage;
     struct __CFArray *_pixelBufferReps;
     struct os_unfair_lock_s _pixelBufferRepsLock;
     CIImage *_origCIImage;
     CIContext *_passedInCIContext;
+    struct opaqueCMSampleBuffer *_origSampleBuffer;
     VNImageSourceManager *_imageSourceManager;
     int _orientation;
     unsigned long long _origImageWidth;
@@ -23,8 +27,11 @@
 }
 
 @property (readonly) unsigned long long height;
+@property (readonly) CDStruct_d2aef016 timingInfo;
 @property (readonly) unsigned long long width;
 
++ (int)_VNVTImageRotationSessionCreate:(struct OpaqueVTImageRotationSession **)arg1 rotation:(unsigned int)arg2;
++ (int)_VNVTPixelTransferSessionCreate:(struct OpaqueVTPixelTransferSession **)arg1;
 + (int)_helpReadOrientationFromOptionsDictionary:(id)arg1;
 + (struct CGRect)computeCenterCropRectFromCropRect:(struct CGRect)arg1 inImageSize:(struct CGSize)arg2 calculatedScaleX:(double *)arg3 calculatedScaleY:(double *)arg4;
 + (struct CGColorSpace *)copyColorspaceForFormat:(unsigned int)arg1 bitmapInfo:(unsigned int *)arg2;
@@ -56,16 +63,26 @@
 - (BOOL)getPixelFocalLengthIfAvailable:(float *)arg1;
 - (id)imageProperties;
 - (id)initWithCGImage:(struct CGImage *)arg1 options:(id)arg2;
+- (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithCIImage:(id)arg1 options:(id)arg2;
+- (id)initWithCIImage:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
+- (id)initWithCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 options:(id)arg2;
+- (id)initWithCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
+- (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithData:(id)arg1 options:(id)arg2;
-- (id)initWithOptions:(id)arg1;
+- (id)initWithData:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
+- (id)initWithOptions:(id)arg1 orientation:(unsigned int)arg2;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
+- (id)initWithURL:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (struct CGRect)makeClippedRectAgainstImageExtentUsingOriginalRect:(struct CGRect)arg1;
 - (int)orientation;
+- (struct CGImage *)originalCGImage;
 - (struct __CVBuffer *)originalPixelBuffer;
 - (BOOL)processInChunksOfSize:(unsigned long long)arg1 overlapFraction:(float)arg2 options:(id)arg3 roi:(struct CGRect)arg4 handler:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (void)purgeCachedRepresentations;
+- (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)wantsSequencedRequestObservationsRecording;
 
 @end
 

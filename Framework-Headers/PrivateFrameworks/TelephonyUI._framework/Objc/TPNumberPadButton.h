@@ -12,7 +12,7 @@
 
 @interface TPNumberPadButton : UIControl <TPNumberPadButtonProtocol>
 {
-    unsigned int character;
+    long long character;
     UIColor *_color;
     CALayer *_glyphLayer;
     CALayer *_highlightedGlyphLayer;
@@ -22,7 +22,7 @@
 }
 
 @property (readonly, nonatomic) UIColor *buttonColor; // @synthesize buttonColor=_buttonColor;
-@property unsigned int character; // @synthesize character;
+@property long long character; // @synthesize character;
 @property (strong) UIView *circleView; // @synthesize circleView=_circleView;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,15 +36,15 @@
 
 + (struct CGRect)circleBounds;
 + (struct CGSize)defaultSize;
-+ (id)disabledImageForCharacter:(unsigned int)arg1;
++ (id)disabledImageForCharacter:(long long)arg1;
 + (double)highlightedCircleViewAlpha;
 + (double)horizontalPadding;
-+ (id)imageForCharacter:(unsigned int)arg1;
-+ (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2;
-+ (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3;
++ (id)imageForCharacter:(long long)arg1;
++ (id)imageForCharacter:(long long)arg1 highlighted:(BOOL)arg2;
++ (id)imageForCharacter:(long long)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3;
 + (BOOL)isCarPlay;
 + (void)loadNumberPadKeyPrototypeView;
-+ (id)localizedLettersForCharacter:(unsigned int)arg1;
++ (id)localizedLettersForCharacter:(long long)arg1;
 + (double)outerCircleDiameter;
 + (struct UIEdgeInsets)paddingOutsideRing;
 + (void)resetLocale;
@@ -60,7 +60,7 @@
 - (id)defaultColor;
 - (void)highlightCircleView:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initForCharacter:(unsigned int)arg1;
+- (id)initForCharacter:(long long)arg1;
 - (void)reloadImagesForCurrentCharacter;
 - (void)setGreyedOut:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;

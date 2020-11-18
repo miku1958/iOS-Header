@@ -25,9 +25,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_condition:1;
         unsigned int read_formattedString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_condition:1;
-        unsigned int wrote_formattedString:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,15 +43,16 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readCondition;
-- (void)_readFormattedString;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

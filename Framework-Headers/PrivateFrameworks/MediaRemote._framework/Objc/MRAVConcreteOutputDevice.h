@@ -27,14 +27,12 @@
 }
 
 @property (strong, nonatomic, setter=setAVOutputDevice:) AVOutputDevice *avOutputDevice;
+@property (readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) BOOL headTrackedSpatialAudioActive;
 @property (strong, nonatomic) MRAVOutputDeviceSourceInfo *sourceInfo;
+@property (readonly, nonatomic) BOOL supportsHeadTrackedSpatialAudio;
 
 - (void).cxx_destruct;
 - (id)MACAddress;
-- (BOOL)_isOutputDevice:(id)arg1 belongToOutputContext:(id)arg2;
-- (void)_onqueue_clearCachedAVOutputDeviceProperties;
-- (id)_outputContext;
-- (id)_playingPairedDeviceNameForAVOutputDevice:(id)arg1;
 - (id)availableBluetoothListeningModes;
 - (float)batteryLevel;
 - (id)bluetoothID;
@@ -44,6 +42,7 @@
 - (BOOL)canFetchMediaDataFromSender;
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
+- (id)clusterComposition;
 - (id)currentBluetoothListeningMode;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
@@ -81,6 +80,7 @@
 - (BOOL)supportsRapport;
 - (id)uid;
 - (float)volume;
+- (unsigned int)volumeCapabilities;
 
 @end
 

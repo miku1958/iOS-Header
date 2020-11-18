@@ -16,6 +16,7 @@
     SPQueryResponse *_delayedResponse;
     int _unsafeState;
     NSArray *_supportedAppScopes;
+    NSArray *_showMoreInAppInfo;
     BOOL _sentSuggestions;
     _Atomic int _updatesDisabled;
     _Atomic struct WaitingResults_s *_deferredUpdate;
@@ -25,10 +26,12 @@
     int _state;
     NSObject<SPQueryTaskDelegate> *_delegate;
     unsigned long long _whyQuery;
+    unsigned long long _queryKind;
     unsigned long long _maxTopHitAppResults;
     NSString *_rankingDebugLog;
     NSString *_sessionEntityString;
     NSArray *_sections;
+    long long _maxUISuggestions;
 }
 
 @property (weak, nonatomic) NSObject<SPQueryTaskDelegate> *delegate; // @synthesize delegate=_delegate;
@@ -36,19 +39,20 @@
 @property (nonatomic) BOOL forceStableResults; // @synthesize forceStableResults=_forceStableResults;
 @property (nonatomic) BOOL live; // @synthesize live=_live;
 @property (nonatomic) unsigned long long maxTopHitAppResults; // @synthesize maxTopHitAppResults=_maxTopHitAppResults;
+@property long long maxUISuggestions; // @synthesize maxUISuggestions=_maxUISuggestions;
+@property (nonatomic) unsigned long long queryKind; // @synthesize queryKind=_queryKind;
 @property (readonly) NSObject<OS_dispatch_queue> *queryProcessor; // @synthesize queryProcessor=_queryProcessor;
 @property (strong, nonatomic) NSString *rankingDebugLog; // @synthesize rankingDebugLog=_rankingDebugLog;
 @property (readonly) NSString *searchString;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) NSString *sessionEntityString; // @synthesize sessionEntityString=_sessionEntityString;
+@property (strong) NSArray *showMoreInAppInfo; // @synthesize showMoreInAppInfo=_showMoreInAppInfo;
 @property (nonatomic) int state; // @synthesize state=_state;
-@property (readonly, nonatomic) NSString *suggestionsDebugLog;
-@property (readonly, nonatomic) int unsafeState; // @synthesize unsafeState=_unsafeState;
+@property (nonatomic) int unsafeState; // @synthesize unsafeState=_unsafeState;
 @property (nonatomic) unsigned long long whyQuery; // @synthesize whyQuery=_whyQuery;
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (BOOL)_shouldPromptUserToOpenTTR;
 - (void)cancel;
 - (void)clear;
 - (void)disableUpdates;
@@ -58,8 +62,6 @@
 - (void)pushAndPostUpdates;
 - (BOOL)readyToUpdate;
 - (void)start;
-- (void)startAtUIPriority;
-- (id)unsafeCombinedSuggestions;
 - (void)updateResultsThroughDelegate:(BOOL)arg1 state:(int)arg2 sections:(id)arg3;
 - (void)updateResultsThroughDelegate:(BOOL)arg1 state:(int)arg2 unchanged:(BOOL)arg3 sections:(id)arg4;
 

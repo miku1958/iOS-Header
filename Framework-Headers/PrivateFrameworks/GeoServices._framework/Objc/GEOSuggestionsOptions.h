@@ -32,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_suggestionMetadata:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_suggestionMetadata:1;
-        unsigned int wrote_entriesType:1;
-        unsigned int wrote_listType:1;
-        unsigned int wrote_includeRankingFeatures:1;
-        unsigned int wrote_normalizePOIs:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -60,8 +54,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsEntriesType:(id)arg1;
 - (int)StringAsListType:(id)arg1;
-- (void)_readSuggestionEntryMetadata;
-- (void)_readSuggestionMetadata;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -71,7 +63,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)listTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

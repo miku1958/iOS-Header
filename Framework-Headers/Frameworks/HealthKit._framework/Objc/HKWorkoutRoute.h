@@ -15,12 +15,13 @@
 
 @property (strong, nonatomic, setter=_setCodableWorkoutRoute:) HDCodableLocationSeries *_codableWorkoutRoute; // @synthesize _codableWorkoutRoute=__codableWorkoutRoute;
 
++ (BOOL)_isConcreteObjectClass;
 + (id)_workoutRouteWithDevice:(id)arg1 metadata:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_isSmoothed;
 - (BOOL)_requiresPrivateEntitlementForQueries;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateSample;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)_valueDescription;
 
 @end

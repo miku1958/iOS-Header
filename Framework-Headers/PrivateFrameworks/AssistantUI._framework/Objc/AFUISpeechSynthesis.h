@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <AssistantUI/AFQueueDelegate-Protocol.h>
+#import <AssistantUI/AFUIPowerLevelListenerDelegate-Protocol.h>
 #import <AssistantUI/AFUISpeechSynthesis-Protocol.h>
 #import <AssistantUI/AFUISpeechSynthesisElementDelegate-Protocol.h>
 #import <AssistantUI/VSSpeechSynthesizerDelegate-Protocol.h>
 
-@class AFQueue, AFSiriClientStateManager, AFVoiceInfo, NSMutableArray, NSMutableDictionary, NSString, VSSpeechSynthesizer;
+@class AFQueue, AFSiriClientStateManager, AFUIPowerLevelListener, AFVoiceInfo, NSMutableArray, NSMutableDictionary, NSString, VSSpeechSynthesizer;
 @protocol AFUISpeechSynthesisDelegate, AFUISpeechSynthesisLocalDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface AFUISpeechSynthesis : NSObject <AFQueueDelegate, AFUISpeechSynthesisElementDelegate, VSSpeechSynthesizerDelegate, AFUISpeechSynthesis>
+@interface AFUISpeechSynthesis : NSObject <AFQueueDelegate, AFUIPowerLevelListenerDelegate, AFUISpeechSynthesisElementDelegate, VSSpeechSynthesizerDelegate, AFUISpeechSynthesis>
 {
     VSSpeechSynthesizer *_synthesizer;
     AFSiriClientStateManager *_siriClientStateManager;
@@ -26,6 +27,7 @@
     NSObject<OS_dispatch_group> *_pendingElementsGroup;
     id<AFUISpeechSynthesisDelegate> _delegate;
     id<AFUISpeechSynthesisLocalDelegate> _localDelegate;
+    AFUIPowerLevelListener *_powerLevelListener;
     AFQueue *_elementQueue;
     NSMutableArray *_activeElements;
     NSMutableDictionary *_delayedElements;
@@ -68,6 +70,7 @@
 - (void)invalidateOnMainThread;
 - (BOOL)isSpeaking;
 - (void)isSynthesisQueueEmpty:(CDUnknownBlockType)arg1;
+- (void)powerLevelListener:(id)arg1 powerLevelDidUpdateTo:(float)arg2;
 - (void)prewarmIfNeeded;
 - (void)processDelayedItem:(id)arg1;
 - (void)queue:(id)arg1 didEnqueueObjects:(id)arg2;

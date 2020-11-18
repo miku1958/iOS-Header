@@ -9,12 +9,13 @@
 #import <ContactsUICore/CNUICoreFamilyMemberContactsModelFetching-Protocol.h>
 
 @class CNSchedulerProvider, NSString;
-@protocol CNScheduler, CNUICoreContactStoreFacade, CNUICoreFamilyInfoFetching;
+@protocol CNDowntimeWhitelistContainerFetching, CNScheduler, CNUICoreContactStoreFacade, CNUICoreFamilyInfoFetching;
 
 @interface CNUICoreFamilyMemberContactsModelRetriever : NSObject <CNUICoreFamilyMemberContactsModelFetching>
 {
     id<CNUICoreContactStoreFacade> _contactStore;
     id<CNUICoreFamilyInfoFetching> _familyInfoFetcher;
+    id<CNDowntimeWhitelistContainerFetching> _downtimeContainerFetcher;
     CNSchedulerProvider *_schedulerProvider;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) id<CNUICoreContactStoreFacade> contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<CNDowntimeWhitelistContainerFetching> downtimeContainerFetcher; // @synthesize downtimeContainerFetcher=_downtimeContainerFetcher;
 @property (readonly, nonatomic) id<CNUICoreFamilyInfoFetching> familyInfoFetcher; // @synthesize familyInfoFetcher=_familyInfoFetcher;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CNSchedulerProvider *schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
@@ -33,9 +35,11 @@
 - (id)allContacts;
 - (id)allContactsModel;
 - (id)init;
-- (id)initWithContactStoreFacade:(id)arg1 familyInfoFetcher:(id)arg2 schedulerProvider:(id)arg3;
+- (id)initWithContactStoreFacade:(id)arg1 familyInfoFetcher:(id)arg2 downtimeContainerFetcher:(id)arg3 schedulerProvider:(id)arg4;
+- (id)initWithDowntimeContainerFetcher:(id)arg1 schedulerProvider:(id)arg2;
 - (id)initWithFamilyMember:(id)arg1 schedulerProvider:(id)arg2;
-- (id)initWithSchedulerProvider:(id)arg1;
+- (id)modelBuilderForContacts:(id)arg1 familyInfo:(id)arg2;
+- (id)modelBuilderForWhitelistedContacts:(id)arg1 familyInfo:(id)arg2;
 - (id)whitelistedContactsModel;
 
 @end

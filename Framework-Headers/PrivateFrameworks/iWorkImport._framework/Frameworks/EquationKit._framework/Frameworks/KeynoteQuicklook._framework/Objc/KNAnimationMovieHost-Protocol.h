@@ -6,12 +6,13 @@
 
 #import <KeynoteQuicklook/NSObject-Protocol.h>
 
-@class NSObject, TSDMovieInfo;
+@class KNSlideNode, NSObject, TSDMovieInfo;
 @protocol TSKMediaPlayerController;
 
 @protocol KNAnimationMovieHost <NSObject>
 
 @property (readonly, nonatomic) TSDMovieInfo *movieInfo;
+@property (readonly, nonatomic) KNSlideNode *movieSlideNode;
 @property (readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController;
 
 - (void)applyMovieControl:(long long)arg1;

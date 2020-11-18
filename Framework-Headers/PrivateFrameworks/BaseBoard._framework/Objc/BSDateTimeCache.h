@@ -21,12 +21,7 @@
 }
 
 + (id)sharedInstance;
-- (struct __CFCalendar *)_copyCurrentCalendar;
-- (double)_currentAbsoluteTime;
-- (BOOL)_isToday:(double)arg1;
 - (void)_resetAndConfigure;
-- (void)_resetAndConfigureAndPostNotification:(BOOL)arg1;
-- (void)_resetAndConfigureIfNecessary;
 - (void)dealloc;
 - (id)description;
 - (id)init;

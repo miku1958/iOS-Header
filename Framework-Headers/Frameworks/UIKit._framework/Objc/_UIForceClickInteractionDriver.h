@@ -9,16 +9,16 @@
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UITouchForceGestureRecognizer, UIView, _UIStateMachine;
+@class NSString, UIGestureRecognizer, UITouchForceGestureRecognizer, UIView;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIForceClickInteractionDriver : NSObject <UIGestureRecognizerDelegatePrivate, _UIClickInteractionDriving>
 {
+    unsigned long long _currentState;
     BOOL _cancelsTouchesInView;
     id<_UIClickInteractionDriverDelegate> _delegate;
     UIView *_view;
-    _UIStateMachine *_stateMachine;
     UITouchForceGestureRecognizer *_gestureRecognizer;
 }
 
@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
-@property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double touchDuration;
 @property (readonly, nonatomic) double touchForce;
@@ -47,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleGestureRecognizer:(id)arg1;
-- (void)_prepareStateMachine;
 - (BOOL)allowsRepeatedClicks;
 - (void)cancelInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;

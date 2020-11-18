@@ -6,28 +6,51 @@
 
 #import <Home/HFItem.h>
 
-@class HMHome, HMRoom;
+#import <Home/NSCopying-Protocol.h>
+
+@class HMHome, HMRoom, NSDate;
 @protocol HFCharacteristicValueSource;
 
-@interface HFStatusItem : HFItem
+@interface HFStatusItem : HFItem <NSCopying>
 {
+    BOOL _supportsInvalidation;
+    BOOL _needsInvalidation;
     HMRoom *_room;
     HMHome *_home;
     id<HFCharacteristicValueSource> _valueSource;
+    NSDate *_invalidationDate;
 }
 
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) NSDate *invalidationDate;
+@property (strong, nonatomic) NSDate *invalidationDate; // @synthesize invalidationDate=_invalidationDate;
+@property (nonatomic) BOOL needsInvalidation; // @synthesize needsInvalidation=_needsInvalidation;
 @property (readonly, nonatomic) HMRoom *room; // @synthesize room=_room;
+@property (readonly, nonatomic) BOOL supportsInvalidation; // @synthesize supportsInvalidation=_supportsInvalidation;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
++ (id)_associatedServiceTypeToServiceTypeMap;
++ (id)_serviceTypeToAssociatedServiceTypesMap;
++ (id)characteristicTypesForServiceType:(id)arg1 includingAssociatedTypes:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_filteredServicesOfTypes:(id)arg1 containingCharacteristicTypes:(id)arg2;
+- (void)_updateInvalidationDate;
+- (BOOL)canScheduleInvalidation;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
+- (id)displayNameForHomeKitObject:(id)arg1;
 - (id)filteredServices;
 - (id)filteredServicesOfTypes:(id)arg1;
 - (id)filteredServicesOfTypes:(id)arg1 containingCharacteristicTypes:(id)arg2;
+- (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1 room:(id)arg2;
 - (id)initWithHome:(id)arg1 room:(id)arg2 valueSource:(id)arg3;
+- (double)invalidationTimeout;
+- (BOOL)isInvalidationPending;
+- (BOOL)isTransitioning;
+- (void)scheduleInvalidation;
+- (id)shortTitleForFormat:(id)arg1;
 - (id)standardResultsForBatchReadResponse:(id)arg1 serviceTypes:(id)arg2;
 
 @end

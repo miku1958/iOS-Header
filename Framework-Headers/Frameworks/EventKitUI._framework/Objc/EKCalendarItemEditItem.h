@@ -31,15 +31,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_showViewController:(id)arg1 editor:(id)arg2 animated:(BOOL)arg3;
 - (void)addStylingToCell:(id)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (void)applicationDidResume;
 - (id)calendarItem;
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
+- (id)cellForSubitemAtIndex:(unsigned long long)arg1 inEditor:(id)arg2;
 - (BOOL)configureForCalendarConstraints:(id)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (id)editItemEventToDetach;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
 - (BOOL)editItemViewControllerSave:(id)arg1;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)notifySubitemDidSave:(unsigned long long)arg1;
 - (void)notifyTextChanged;
 - (unsigned long long)numberOfSubitems;
+- (BOOL)prefersTargettedTableReloadOnSave;
 - (void)prepareForReload;
 - (void)refreshFromCalendarItemAndStore;
 - (BOOL)requiresReconfigurationOnSave;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 - (BOOL)shouldPinKeyboard;
+- (void)showViewController:(id)arg1 editor:(id)arg2 animated:(BOOL)arg3;
 - (void)tableViewDidScroll;
 - (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (BOOL)usesDetailViewControllerForSubitem:(unsigned long long)arg1;

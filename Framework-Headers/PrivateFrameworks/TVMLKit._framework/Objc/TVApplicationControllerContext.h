@@ -12,6 +12,7 @@
 
 @interface TVApplicationControllerContext : NSObject <NSCopying>
 {
+    BOOL _supportsPictureInPicturePlayback;
     BOOL _supplementary;
     NSURL *_javaScriptApplicationURL;
     NSString *_storageIdentifier;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSURL *offlineJSURL; // @synthesize offlineJSURL=_offlineJSURL;
 @property (copy, nonatomic) NSString *storageIdentifier; // @synthesize storageIdentifier=_storageIdentifier;
 @property (nonatomic, getter=isSupplementary) BOOL supplementary; // @synthesize supplementary=_supplementary;
+@property (nonatomic) BOOL supportsPictureInPicturePlayback; // @synthesize supportsPictureInPicturePlayback=_supportsPictureInPicturePlayback;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

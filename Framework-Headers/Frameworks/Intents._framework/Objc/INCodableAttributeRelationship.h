@@ -9,7 +9,7 @@
 #import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttribute, NSArray, NSDictionary, NSString;
+@class INCodableAttribute, INCodableDescription, NSArray, NSDictionary, NSString;
 
 @interface INCodableAttributeRelationship : NSObject <NSSecureCoding, INCodableCoding>
 {
@@ -20,13 +20,12 @@
     INCodableAttribute *_codableAttribute;
 }
 
+@property (readonly, weak, nonatomic) INCodableDescription *_codableDescription;
 @property (strong, nonatomic, setter=_setOriginalDictionary:) NSDictionary *_originalDictionary; // @synthesize _originalDictionary;
-@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, weak, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (weak, nonatomic) INCodableAttribute *parentCodableAttribute; // @synthesize parentCodableAttribute=_parentCodableAttribute;
 @property (nonatomic) unsigned long long relation; // @synthesize relation=_relation;
 @property (readonly) Class superclass;
@@ -35,10 +34,21 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionParentNameKey;
+- (id)__INCodableDescriptionPredicateNameKey;
+- (id)__INCodableDescriptionPredicateValueKey;
+- (id)__INCodableDescriptionPredicateValuesKey;
+- (id)__INIntentResponseCodableDescriptionParentNameKey;
+- (id)__INIntentResponseCodableDescriptionPredicateNameKey;
+- (id)__INIntentResponseCodableDescriptionPredicateValueKey;
+- (id)__INIntentResponseCodableDescriptionPredicateValuesKey;
+- (id)__INTypeCodableDescriptionParentNameKey;
+- (id)__INTypeCodableDescriptionPredicateNameKey;
+- (id)__INTypeCodableDescriptionPredicateValueKey;
+- (id)__INTypeCodableDescriptionPredicateValuesKey;
 - (void)_establishRelationship;
 - (BOOL)compareValue:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

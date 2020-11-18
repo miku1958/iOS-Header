@@ -17,6 +17,7 @@
     NSMutableArray *_pendingEntries;
     NSSet *_recipientIdentifiers;
     NSSet *_senderIdentifiers;
+    NSSet *_recipientNames;
 }
 
 @property (readonly, nonatomic) NSString *aggregateText;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) NSString *mostRecentTextEntryLogString;
 @property (readonly, nonatomic) NSArray *pendingEntries; // @synthesize pendingEntries=_pendingEntries;
 @property (readonly, nonatomic) NSSet *recipientIdentifiers; // @synthesize recipientIdentifiers=_recipientIdentifiers;
+@property (readonly, nonatomic) NSSet *recipientNames; // @synthesize recipientNames=_recipientNames;
 @property (readonly, nonatomic) NSString *senderIdentifier; // @dynamic senderIdentifier;
 @property (readonly, nonatomic) NSSet *senderIdentifiers; // @synthesize senderIdentifiers=_senderIdentifiers;
 
@@ -47,6 +49,7 @@
 - (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifiers:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)mostRecentTextEntries:(unsigned long long)arg1;
+- (void)updateRecipientNames:(id)arg1;
 
 @end
 

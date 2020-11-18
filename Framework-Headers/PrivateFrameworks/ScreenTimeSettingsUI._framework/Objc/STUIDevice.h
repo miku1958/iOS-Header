@@ -8,21 +8,25 @@
 
 #import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface STUIDevice : NSObject <NSCopying>
 {
+    short _platform;
     NSString *_name;
     NSString *_identifier;
+    NSDate *_lastFamilyCheckinDate;
 }
 
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSDate *lastFamilyCheckinDate; // @synthesize lastFamilyCheckinDate=_lastFamilyCheckinDate;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) short platform; // @synthesize platform=_platform;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithName:(id)arg1 identifier:(id)arg2;
+- (id)initWithName:(id)arg1 identifier:(id)arg2 platform:(short)arg3 lastFamilyCheckinDate:(id)arg4;
 
 @end
 

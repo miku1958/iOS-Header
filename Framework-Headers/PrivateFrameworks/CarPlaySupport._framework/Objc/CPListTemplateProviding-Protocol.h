@@ -9,6 +9,7 @@
 @class NSArray;
 
 @protocol CPListTemplateProviding <CPBaseTemplateProviding>
+- (void)reloadItems:(NSArray *)arg1;
 - (void)updateSections:(NSArray *)arg1;
 @end
 

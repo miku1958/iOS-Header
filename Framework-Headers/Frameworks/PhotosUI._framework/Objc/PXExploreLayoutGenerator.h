@@ -23,7 +23,7 @@
         double _field5;
     } *_inputItemInfos;
     struct _PXLayoutGeometry *_outputGeometries;
-    long long *_outputParseLocationToItemIndex;
+    long long *_outputItemIndexToParseLocation;
     CDStruct_e6148bb0 *_outputItemLocations;
     long long *_outputNumberOfColumnsAtRow;
     BOOL _isPrepared;
@@ -94,6 +94,8 @@
 - (id)initWithMetrics:(id)arg1;
 - (void)invalidate;
 - (BOOL)isAcceptableLargeHeroNextItemAtIndex:(long long)arg1;
+- (long long)itemIndexForItem:(long long)arg1 inDirection:(unsigned long long)arg2;
+- (long long)itemIndexForPresentedItemIndex:(long long)arg1;
 - (void)moveNextItemAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (BOOL)nextInputItems:(unsigned long long)arg1;
 - (BOOL)nextItems:(long long)arg1 areAll:(unsigned long long)arg2;

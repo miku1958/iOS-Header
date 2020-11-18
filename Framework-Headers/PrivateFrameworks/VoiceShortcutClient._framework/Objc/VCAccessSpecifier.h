@@ -23,6 +23,7 @@
 
 + (id)accessSpecifierFilteredForAssociatedAppBundleIdentifier:(id)arg1 bundleIdentifier:(id)arg2;
 + (id)accessSpecifierForAuditToken:(CDStruct_6ad76789)arg1;
++ (id)accessSpecifierForCurrentConnection;
 + (id)accessSpecifierForCurrentProcess;
 + (id)accessSpecifierForTask:(struct __SecTask *)arg1;
 + (id)accessSpecifierForXPCConnection:(id)arg1;
@@ -35,12 +36,16 @@
 - (BOOL)allowBackgroundShortcutRunning;
 - (BOOL)allowConnection;
 - (BOOL)allowHomeResidentShortcutRunning;
+- (BOOL)allowIntentsExtensionDiscovery;
+- (BOOL)allowReadAccessForDonations;
+- (BOOL)allowReadAccessForSleepWorkflows;
 - (BOOL)allowReadAccessForTriggers;
 - (BOOL)allowReadAccessToPodcastsDatabase;
 - (BOOL)allowReadAccessToShortcutsLibrary;
 - (BOOL)allowReadAccessToSingleStepShortcutsWithBundleIdentifier:(id)arg1;
 - (BOOL)allowReadAccessToSuggestionsWithBundleIdentifier:(id)arg1;
 - (BOOL)allowUnrestrictedAccess;
+- (BOOL)allowWriteAccessForSleepWorkflows;
 - (BOOL)allowWriteAccessForTriggers;
 - (BOOL)allowWriteAccessToSuggestionsWithBundleIdentifier:(id)arg1;
 - (BOOL)allowWriteAccessToVoiceShortcuts;

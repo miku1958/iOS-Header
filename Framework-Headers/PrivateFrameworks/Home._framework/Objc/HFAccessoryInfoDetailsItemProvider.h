@@ -6,7 +6,7 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HFAccessoryInfoItem, HMAccessory, HMHome, NSMutableSet;
+@class HFAccessoryInfoItem, HFAccessoryNetworkInfoItem, HMAccessory, HMHome, NSMutableSet;
 @protocol HFCharacteristicValueSource;
 
 @interface HFAccessoryInfoDetailsItemProvider : HFItemProvider
@@ -17,16 +17,16 @@
     HMAccessory *_accessory;
     HFAccessoryInfoItem *_firmwareItem;
     HFAccessoryInfoItem *_softwareItem;
-    HFAccessoryInfoItem *_wifiItem;
+    HFAccessoryNetworkInfoItem *_networkItem;
 }
 
 @property (strong, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property (strong, nonatomic) NSMutableSet *accessoryInfoDetailItems; // @synthesize accessoryInfoDetailItems=_accessoryInfoDetailItems;
 @property (readonly, nonatomic) HFAccessoryInfoItem *firmwareItem; // @synthesize firmwareItem=_firmwareItem;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) HFAccessoryNetworkInfoItem *networkItem; // @synthesize networkItem=_networkItem;
 @property (readonly, nonatomic) HFAccessoryInfoItem *softwareItem; // @synthesize softwareItem=_softwareItem;
 @property (strong, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
-@property (readonly, nonatomic) HFAccessoryInfoItem *wifiItem; // @synthesize wifiItem=_wifiItem;
 
 + (id)_displayValueForCachedValue:(id)arg1 characteristicType:(id)arg2 accessoryInfoService:(id)arg3;
 + (CDUnknownBlockType)accessoryInfoServiceDetailComparator;

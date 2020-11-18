@@ -4,26 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKAstronomyRichComplicationBaseCircularView.h>
 
-@class NTKAstronomyRichComplicationContentView;
-
-@interface NTKAstronomyRichComplicationCircularView : NTKRichComplicationCircularBaseView
+@interface NTKAstronomyRichComplicationCircularView : NTKAstronomyRichComplicationBaseCircularView
 {
-    NTKAstronomyRichComplicationContentView *_astronomyContentView;
 }
 
-- (void).cxx_destruct;
-- (void)_applyPausedUpdate;
-- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)_setupContentView;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (id)init;
-- (void)layoutSubviews;
-- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
-- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

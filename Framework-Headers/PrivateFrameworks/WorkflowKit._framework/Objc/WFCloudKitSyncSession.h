@@ -6,48 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, CKDatabase, CKRecordID, CKRecordZoneID;
-
 @interface WFCloudKitSyncSession : NSObject
 {
-    CKContainer *_container;
-    CKDatabase *_database;
-    CKRecordZoneID *_recordZoneID;
-    CKRecordID *_userRecordID;
 }
 
-@property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
-@property (readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
-@property (readonly, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
-@property (readonly, nonatomic) CKRecordID *userRecordID; // @synthesize userRecordID=_userRecordID;
-
-+ (id)checkForConflictsBetweenIncomingChanges:(id)arg1 incomingDeletes:(id)arg2 outgoingChanges:(id)arg3 outgoingDeletes:(id)arg4 incomingOrderedWorkflowIDs:(id)arg5 outgoingOrderedWorkflowIDs:(id)arg6 detectingDuplicateWorkflowsInDatabase:(id)arg7 outWorkflowIDsToRename:(id *)arg8 outLocalWorkflowsToDelete:(id *)arg9;
++ (long long)currentDefaultShortcutsVersion;
++ (long long)defaultShortcutsVersion;
++ (void)fetchCloudKitSyncFlagsIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (BOOL)ignoresUserDeletedZoneErrors;
 + (void)initialize;
 + (BOOL)isSyncEnabled;
-+ (BOOL)isSyncOrderingEnabled;
-+ (id)mergePreviousOrdering:(id)arg1 incomingOrdering:(id)arg2 outgoingOrdering:(id)arg3 sendOutgoingChange:(BOOL *)arg4 saveLocalChange:(BOOL *)arg5;
++ (long long)lastSyncedFlagsHash;
++ (BOOL)needsDefaultShortcutUpdate;
++ (void)setDefaultShortcutsVersion:(long long)arg1;
 + (void)setIgnoresUserDeletedZoneErrors:(BOOL)arg1;
++ (void)setLastSyncedFlagsHash:(long long)arg1;
 + (void)setSyncEnabled:(BOOL)arg1;
 + (void)setVoiceShortcutMigrationDidRun:(BOOL)arg1;
 + (void)setVoiceShortcutMigrationDidSync:(BOOL)arg1;
++ (void)setZoneWasPurged:(BOOL)arg1;
++ (long long)syncedFlagsHash;
 + (BOOL)voiceShortcutMigrationDidRun;
 + (BOOL)voiceShortcutMigrationDidSync;
-- (void).cxx_destruct;
-- (id)accountNameForSyncToken;
++ (BOOL)zoneWasPurged;
 - (id)applyConflictResolution:(id)arg1 inDatabase:(id)arg2;
-- (BOOL)buildOutgoingChangesFromDatabase:(id)arg1 sendAllChanges:(BOOL)arg2 outChangedWorkflows:(out id *)arg3 outPreSyncHashes:(out id *)arg4 outDeletedWorkflowIDs:(out id *)arg5 outOrderedWorkflowIDs:(out id *)arg6;
-- (void)clearSyncStateForWorkflows:(id)arg1 inDatabase:(id)arg2;
-- (BOOL)createRecordZoneIfNecessaryWithDatabase:(id)arg1 error:(id *)arg2;
-- (BOOL)fetchChangesFromCloudKitSinceChangeToken:(id)arg1 outChangedWorkflowRecords:(out id *)arg2 outDeleted:(out id *)arg3 outOrderedWorkflowIDs:(out id *)arg4 outNewServerChangeToken:(out id *)arg5 error:(id *)arg6;
-- (long long)fetchCurrentAccountInfo;
-- (id)init;
-- (void)pruneIncomingChanges:(id)arg1 deletes:(id)arg2 inDatabase:(id)arg3 outWorkflowsToReupload:(id *)arg4;
-- (BOOL)pushChangesToCloudKit:(id)arg1 deletes:(id)arg2 ordering:(id)arg3 outSuccessfulChanges:(out id *)arg4 outSuccessfulDeletes:(out id *)arg5 outOrderingSaved:(BOOL *)arg6 database:(id)arg7 error:(id *)arg8;
-- (BOOL)saveIncomingChanges:(id)arg1 incomingDeletes:(id)arg2 conflicts:(id)arg3 mergedOrderedWorkflowIDs:(id)arg4 sentChanges:(id)arg5 sentDeletes:(id)arg6 sentOrdering:(BOOL)arg7 saveOrderingLocally:(BOOL)arg8 isOrderingEnabled:(BOOL)arg9 localWorkflowsToDelete:(id)arg10 workflowIDsToRename:(id)arg11 preSyncHashes:(id)arg12 serverChangeToken:(id)arg13 inDatabase:(id)arg14;
-- (void)startSubscriptionForRemoteChanges;
-- (void)syncDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)syncDatabase:(id)arg1 includingOrdering:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

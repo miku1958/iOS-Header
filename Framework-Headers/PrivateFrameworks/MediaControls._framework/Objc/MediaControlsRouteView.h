@@ -8,23 +8,29 @@
 
 #import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
 
-@class CCUICAPackageView, MTVisualStylingProvider, NSString, UILabel;
+@class CCUICAPackageView, MTVisualStylingProvider, NSString, NSTimer, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsRouteView : UIView <MTVisualStylingProviderObservingPrivate>
 {
     BOOL _labelHidden;
+    BOOL _displayMessage;
     NSString *_title;
     NSString *_packageName;
     MTVisualStylingProvider *_visualStylingProvider;
     UILabel *_titleLabel;
     CCUICAPackageView *_packageView;
+    UILabel *_messageLabel;
+    NSTimer *_messageTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL displayMessage; // @synthesize displayMessage=_displayMessage;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLabelHidden) BOOL labelHidden; // @synthesize labelHidden=_labelHidden;
+@property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
+@property (strong, nonatomic) NSTimer *messageTimer; // @synthesize messageTimer=_messageTimer;
 @property (strong, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property (strong, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
 @property (readonly) Class superclass;
@@ -39,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)providedStylesDidChangeForProvider:(id)arg1;
 - (void)setGlyphState:(id)arg1;
+- (void)showMessage:(id)arg1;
 
 @end
 

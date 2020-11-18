@@ -8,7 +8,7 @@
 
 #import <AppStoreDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class NSObject, NSString, NSXPCConnection;
+@class ASDPromise, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface ASDSoftwareUpdatesStore : ASDBaseClient <NSXPCListenerDelegate>
@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_calloutQueue;
     BOOL _hasUpdatesEntitlement;
     int _storeChangedNotificationToken;
+    ASDPromise *_getUpdatesPromise;
 }
 
 @property (readonly, copy) NSString *debugDescription;

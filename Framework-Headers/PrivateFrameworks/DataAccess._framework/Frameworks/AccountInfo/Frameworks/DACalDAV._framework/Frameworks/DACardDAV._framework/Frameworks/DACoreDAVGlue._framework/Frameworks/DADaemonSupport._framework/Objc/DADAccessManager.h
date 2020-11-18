@@ -27,6 +27,7 @@
 - (id)init;
 - (BOOL)isAccountID:(id)arg1 folderID:(id)arg2 watchedByClientBesides:(id)arg3;
 - (void)removeClient:(id)arg1;
+- (id)stateString;
 
 @end
 

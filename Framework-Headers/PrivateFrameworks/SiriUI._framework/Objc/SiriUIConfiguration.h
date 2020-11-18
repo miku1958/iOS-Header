@@ -11,10 +11,12 @@
 @interface SiriUIConfiguration : NSObject <NSCopying>
 {
     BOOL _isSystemHostedPresentation;
+    BOOL _allowResizingBetweenModes;
     long long _flamesViewFidelity;
     long long _siriViewMode;
 }
 
+@property (readonly, nonatomic) BOOL allowResizingBetweenModes; // @synthesize allowResizingBetweenModes=_allowResizingBetweenModes;
 @property (readonly, nonatomic) long long flamesViewFidelity; // @synthesize flamesViewFidelity=_flamesViewFidelity;
 @property (readonly, nonatomic) BOOL isSystemHostedPresentation; // @synthesize isSystemHostedPresentation=_isSystemHostedPresentation;
 @property (readonly, nonatomic) long long siriViewMode; // @synthesize siriViewMode=_siriViewMode;
@@ -24,7 +26,7 @@
 - (id)description;
 - (id)init;
 - (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(BOOL)arg2;
-- (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(BOOL)arg2 siriViewMode:(long long)arg3;
+- (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(BOOL)arg2 allowResizingBetweenModes:(BOOL)arg3 siriViewMode:(long long)arg4;
 
 @end
 

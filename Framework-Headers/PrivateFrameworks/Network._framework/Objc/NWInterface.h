@@ -22,12 +22,17 @@
 @property (readonly, nonatomic) NWInterface *delegateInterface;
 @property (readonly, nonatomic, getter=isExpensive) BOOL expensive;
 @property (readonly, nonatomic) unsigned long long generation;
+@property (readonly, nonatomic) BOOL hasDNS;
+@property (readonly, nonatomic) BOOL hasNAT64;
 @property (readonly, nonatomic) unsigned long long interfaceIndex;
 @property (readonly, nonatomic) NSString *interfaceName;
 @property (strong) NSObject<OS_nw_interface> *internalInterface; // @synthesize internalInterface=_internalInterface;
+@property (readonly, nonatomic, getter=isIPv4Routable) BOOL ipv4Routable;
+@property (readonly, nonatomic, getter=isIPv6Routable) BOOL ipv6Routable;
 @property (readonly, nonatomic) long long mtu;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
 @property (readonly, nonatomic) long long subtype;
+@property (readonly, nonatomic) BOOL supportsMulticast;
 @property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic) NSString *typeString;
 
@@ -36,11 +41,15 @@
 + (id)interfaceWithProtocolBufferData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyLocalAddressForDefaultIPv4;
+- (id)copyLocalAddressForDefaultIPv6;
+- (id)copyLocalAddressForRemoteAddress:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createProtocolBufferObject;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInterface:(id)arg1;
 - (id)initWithInterfaceIndex:(unsigned long long)arg1;
@@ -49,6 +58,7 @@
 - (id)ipv4Broadcast;
 - (id)ipv4Netmask;
 - (BOOL)isDeepEqual:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isShallowEqual:(id)arg1;
 
 @end

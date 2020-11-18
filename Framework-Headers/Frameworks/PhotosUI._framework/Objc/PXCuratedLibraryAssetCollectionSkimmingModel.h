@@ -14,7 +14,6 @@
     long long _zoomLevel;
     long long _skimmingZoomLevel;
     id _dataSourcePauseToken;
-    BOOL _hintsVisible;
     BOOL _isPlayingSlideshow;
     BOOL _isInteractionInProgress;
     PXAssetCollectionReference *_containingAssetCollectionReference;
@@ -25,7 +24,6 @@
 
 @property (readonly, nonatomic) BOOL canStartSkimming;
 @property (readonly, nonatomic) PXAssetCollectionReference *containingAssetCollectionReference; // @synthesize containingAssetCollectionReference=_containingAssetCollectionReference;
-@property (readonly, nonatomic) BOOL hintsVisible; // @synthesize hintsVisible=_hintsVisible;
 @property (readonly, copy, nonatomic) PXIndexPathSet *indexPathSetForSkimming; // @synthesize indexPathSetForSkimming=_indexPathSetForSkimming;
 @property (readonly, nonatomic) struct PXSimpleIndexPath initialIndexPath; // @synthesize initialIndexPath=_initialIndexPath;
 @property (readonly, nonatomic) BOOL isInteractionInProgress; // @synthesize isInteractionInProgress=_isInteractionInProgress;

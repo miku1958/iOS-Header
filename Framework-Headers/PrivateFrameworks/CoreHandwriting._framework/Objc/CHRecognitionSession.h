@@ -6,44 +6,62 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHandwriting/CHRecognitionSessionTaskDelegate-Protocol.h>
+#import <CoreHandwriting/CHRecognitionSessionTextInputTaskDelegate-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
-@class CHRecognitionSessionResult, NSArray, NSData, NSMutableArray, NSMutableDictionary, NSString;
+@class CHRecognitionSessionResult, CHRecognitionSessionVersion, CHStrokeClassificationModel, CHTextInputQuery, NSArray, NSData, NSMutableArray, NSMutableDictionary, NSOrderedSet, NSString;
 @protocol CHRecognitionSessionDataSource, CHStrokeProvider, OS_dispatch_queue;
 
-@interface CHRecognitionSession : NSObject <CHRecognitionSessionTaskDelegate>
+@interface CHRecognitionSession : NSObject <CHRecognitionSessionTextInputTaskDelegate, NSSecureCoding>
 {
     CHRecognitionSessionResult *_lastRecognitionResult;
     long long _status;
     id<CHStrokeProvider> _latestStrokeProvider;
+    NSOrderedSet *_latestStrokeProviderVisibleStrokes;
+    CHTextInputQuery *_activeTextInputQuery;
     BOOL _strokeGroupingOnly;
+    CHRecognitionSessionResult *_cachedFastGroupingRecognitionResult;
+    CHRecognitionSessionResult *_partialRecognitionResult;
+    int _autoCapitalizationMode;
+    CHRecognitionSessionVersion *_version;
     BOOL __hasUnprocessedChanges;
+    BOOL __shouldForceFastGrouping;
     unsigned int __taskQueueQoSClass;
     long long _mode;
     NSArray *_preferredLocales;
     id<CHRecognitionSessionDataSource> _dataSource;
     long long _recognitionEnvironment;
     long long _priority;
-    NSArray *__effectiveLocales;
+    NSArray *__textRecognitionLocales;
     NSMutableDictionary *__recognizersByLocaleID;
+    NSArray *__latestTextInputTargets;
+    NSMutableDictionary *__correctionRecognizersByLocaleID;
     unsigned long long __changeCoalescingIndex;
     NSMutableArray *__changeObservers;
     NSMutableArray *__inputDrawingClients;
     NSObject<OS_dispatch_queue> *__tasksWorkQueue;
     NSObject<OS_dispatch_queue> *__sessionQueue;
+    NSObject<OS_dispatch_queue> *__highResponsivenessQueue;
     NSMutableArray *__activeTasks;
+    CHStrokeClassificationModel *_strokeClassificationModel;
 }
 
 @property (readonly, strong, nonatomic) NSMutableArray *_activeTasks; // @synthesize _activeTasks=__activeTasks;
 @property (nonatomic) unsigned long long _changeCoalescingIndex; // @synthesize _changeCoalescingIndex=__changeCoalescingIndex;
 @property (readonly, strong, nonatomic) NSMutableArray *_changeObservers; // @synthesize _changeObservers=__changeObservers;
-@property (copy, nonatomic, setter=_setEffectiveLocales:) NSArray *_effectiveLocales; // @synthesize _effectiveLocales=__effectiveLocales;
+@property (readonly, strong, nonatomic) NSMutableDictionary *_correctionRecognizersByLocaleID; // @synthesize _correctionRecognizersByLocaleID=__correctionRecognizersByLocaleID;
 @property (nonatomic, setter=_setHasUnprocessedChanges:) BOOL _hasUnprocessedChanges; // @synthesize _hasUnprocessedChanges=__hasUnprocessedChanges;
+@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *_highResponsivenessQueue; // @synthesize _highResponsivenessQueue=__highResponsivenessQueue;
 @property (readonly, strong, nonatomic) NSMutableArray *_inputDrawingClients; // @synthesize _inputDrawingClients=__inputDrawingClients;
+@property (strong, setter=_setLatestTextInputTargets:) NSArray *_latestTextInputTargets; // @synthesize _latestTextInputTargets=__latestTextInputTargets;
 @property (readonly, strong, nonatomic) NSMutableDictionary *_recognizersByLocaleID; // @synthesize _recognizersByLocaleID=__recognizersByLocaleID;
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *_sessionQueue; // @synthesize _sessionQueue=__sessionQueue;
+@property (setter=_setShouldForceFastGrouping:) BOOL _shouldForceFastGrouping; // @synthesize _shouldForceFastGrouping=__shouldForceFastGrouping;
 @property (readonly, nonatomic) unsigned int _taskQueueQoSClass; // @synthesize _taskQueueQoSClass=__taskQueueQoSClass;
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *_tasksWorkQueue; // @synthesize _tasksWorkQueue=__tasksWorkQueue;
+@property (copy, nonatomic, setter=_setTextRecognitionLocales:) NSArray *_textRecognitionLocales; // @synthesize _textRecognitionLocales=__textRecognitionLocales;
+@property (nonatomic) CHTextInputQuery *activeTextInputQuery;
+@property (nonatomic) int autoCapitalizationMode;
 @property (nonatomic) id<CHRecognitionSessionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -58,31 +76,58 @@
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (nonatomic) long long recognitionEnvironment; // @synthesize recognitionEnvironment=_recognitionEnvironment;
 @property (readonly, nonatomic) NSData *sessionData;
+@property (readonly, strong) CHRecognitionSessionVersion *sessionVersion;
+@property (nonatomic) BOOL shouldForceFastGrouping;
 @property (readonly, nonatomic) long long status;
 @property (nonatomic, setter=_setStatus:) long long status;
+@property (readonly, strong, nonatomic) CHStrokeClassificationModel *strokeClassificationModel; // @synthesize strokeClassificationModel=_strokeClassificationModel;
 @property (nonatomic) BOOL strokeGroupingOnly;
 @property (readonly) Class superclass;
 
 + (BOOL)_isLocaleSupported:(id)arg1;
-+ (id)createRecognizerForLocale:(id)arg1 remote:(BOOL)arg2 priority:(long long)arg3;
++ (id)_strokeGroupsInProximityOfSubjectStrokeGroups:(id)arg1 clusteredStrokeGroups:(id)arg2;
++ (id)createRecognizerForLocale:(id)arg1 sessionMode:(long long)arg2 remote:(BOOL)arg3 priority:(long long)arg4;
 + (id)effectiveLocalesFromLocales:(id)arg1;
++ (id)strokeIdentifiersInProximalGroupsForStrokeIdentifiers:(id)arg1 sortedStrokeGroups:(id)arg2 clusteredStrokeGroups:(id)arg3 unusedStrokeIdentifiers:(id *)arg4;
++ (BOOL)supportsSecureCoding;
+- (id)_cachedClutterFilter;
+- (id)_cachedFastGroupingResult;
+- (void)_cancelAllHighResponsivenessTasks;
 - (void)_cancelOngoingRequests;
 - (void)_cleanupCachedRecognizers;
+- (id)_contextualTextResultsFromCachedResultUsingContextStrokes:(id)arg1 shouldCancel:(CDUnknownBlockType)arg2;
+- (struct CGSize)_drawingCanvasSizeForLatestStrokeProviderSnapshot;
 - (BOOL)_hasPendingRecognitionTasks;
+- (void)_invalidateCachedResults;
 - (BOOL)_isReadyToProcessChanges;
-- (id)_newRecognitionSessionTask;
+- (id)_newRecognitionSessionTaskWithStrokeGroupingRequirement:(long long)arg1 isHighResponsivenessTask:(BOOL)arg2 strokeGroupingOnly:(BOOL)arg3 subjectStrokeIdentifiers:(id)arg4 partialResultBlock:(CDUnknownBlockType)arg5;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (double)_preferredCoalescingInterval;
 - (void)_processPendingStrokeChangesIfAvailable;
+- (id)_recognitionSessionResultOnDemandUsingContextStrokes:(id)arg1 shouldCancel:(CDUnknownBlockType)arg2;
 - (void)_scheduleProcessStrokeProviderChangesImmediately:(BOOL)arg1;
+- (void)_setCachedFastGroupingRecognitionResult:(id)arg1;
+- (void)_setPartialRecognitionResult:(id)arg1;
 - (void)_setupExecutionQueuesForMode:(long long)arg1;
 - (BOOL)_shouldRunRecognitionLocally;
+- (id)_strokeGroupsContainingStrokeIdentifiers:(id)arg1;
+- (id)_strokeIdentifiersFromCachedResultUsingContextStrokes:(id)arg1 tokenizationLevel:(long long)arg2;
+- (id)_strokeIdentifiersInGroupsContainingStrokeIdentifiers:(id)arg1;
+- (id)_strokeIdentifiersInProximalGroupsForStrokeIdentifiers:(id)arg1;
+- (id)_strokeIdentifiersInWordsContainingStrokeIdentifiers:(id)arg1;
+- (void)_updateLatestStrokeProviderVisibleStrokes;
 - (void)_updateRecognitionSessionStatus;
+- (BOOL)_validateLastRecognitionResult:(id)arg1 visibleStrokeIdentifiers:(id)arg2;
 - (void)cancelOngoingRequests;
+- (id)contextualTextResultsForContextStrokes:(id)arg1 completion:(CDUnknownBlockType)arg2 shouldCancel:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)indexableContent;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMode:(long long)arg1;
+- (id)initWithMode:(long long)arg1 recognitionSessionResult:(id)arg2 dataSource:(id)arg3;
+- (id)initWithMode:(long long)arg1 withVersion:(id)arg2;
 - (id)lastRecognitionResultWaitingForPendingTasks;
 - (BOOL)loadSessionData:(id)arg1 error:(id *)arg2;
 - (void)rebuildRecognitionResults;
@@ -91,6 +136,8 @@
 - (void)registerChangeObserver:(id)arg1;
 - (void)registerInputDrawingClient:(id)arg1;
 - (void)setNeedsRecognitionUpdate;
+- (id)textCorrectionRecognizerForLocale:(id)arg1;
+- (id)tokenStrokeIdentifiersForContextStrokes:(id)arg1 point:(struct CGPoint)arg2 tokenizationLevel:(long long)arg3 completion:(CDUnknownBlockType)arg4 shouldCancel:(CDUnknownBlockType)arg5;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)unregisterInputDrawingClient:(id)arg1;
 - (void)waitForPendingRecognitionTasks;

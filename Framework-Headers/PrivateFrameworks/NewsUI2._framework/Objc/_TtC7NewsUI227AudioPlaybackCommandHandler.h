@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227AudioPlaybackCommandHandler : NSObject
 {
     MISSING_TYPE *dataManager;
@@ -21,6 +20,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *offlineManager;
     MISSING_TYPE *offlineArticleManager;
     MISSING_TYPE *offlineAlertControllerFactory;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *sceneProvider;
 }
 
 - (void).cxx_destruct;

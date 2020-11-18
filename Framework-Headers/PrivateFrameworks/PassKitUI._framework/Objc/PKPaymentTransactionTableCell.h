@@ -6,17 +6,23 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
+#import <PassKitUI/PKPaymentTransactionCellResponder-Protocol.h>
+
 @class NSString, PKPaymentTransactionView, UIColor;
 
-@interface PKPaymentTransactionTableCell : PKTableViewCell
+@interface PKPaymentTransactionTableCell : PKTableViewCell <PKPaymentTransactionCellResponder>
 {
-    NSString *_transactionIdentifier;
+    NSString *_identifier;
     PKPaymentTransactionView *_transactionView;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIColor *primaryColor;
 @property (strong, nonatomic) UIColor *secondaryColor;
-@property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransactionView *transactionView; // @synthesize transactionView=_transactionView;
 
 - (void).cxx_destruct;

@@ -12,6 +12,7 @@
 
 @interface HMAccessoryAllowedHost : HMFObject <NSSecureCoding>
 {
+    BOOL _unrestricted;
     NSString *_name;
     unsigned long long _purpose;
     NSSet *_addresses;
@@ -21,12 +22,12 @@
 @property (readonly, nonatomic) NSSet *addresses; // @synthesize addresses=_addresses;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
+@property (readonly, nonatomic, getter=isUnrestricted) BOOL unrestricted; // @synthesize unrestricted=_unrestricted;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1 purpose:(unsigned long long)arg2 addresses:(id)arg3;
 
 @end
 

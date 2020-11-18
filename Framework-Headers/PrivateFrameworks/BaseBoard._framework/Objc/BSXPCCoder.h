@@ -24,18 +24,17 @@
     int _finalized;
 }
 
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *XPCConnection; // @synthesize XPCConnection=_xpcConnection;
+@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *XPCConnection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *message; // @synthesize message=_message;
+@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *message;
 @property (readonly) Class superclass;
 
 + (id)coder;
 + (id)coderWithMessage:(id)arg1;
 + (BOOL)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (void)_appendXPCObject:(id)arg1 withName:(const char *)arg2 toBuilder:(id)arg3;
 - (id)_finishCoding;
 - (id)_implicitDecodeXPCObjectForKey:(id)arg1;
 - (void)_removeValueForKey:(id)arg1;

@@ -6,30 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterCredential, HMDNetworkRouterLANFirewallConfiguration, HMDNetworkRouterWANFirewallConfiguration, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterCredential, HMDNetworkRouterLANFirewallConfiguration, HMDNetworkRouterWANFirewallConfiguration, NSString, NSUUID;
 
-@interface HMDNetworkRouterClientConfiguration : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientConfiguration : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
-    HMDTLVUnsignedNumberValue *_lanIdentifier;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_lanIdentifier;
     HMDNetworkRouterCredential *_credential;
     HMDNetworkRouterWANFirewallConfiguration *_wanFirewallConfiguration;
     HMDNetworkRouterLANFirewallConfiguration *_lanFirewallConfiguration;
 }
 
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) HMDNetworkRouterCredential *credential; // @synthesize credential=_credential;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSUUID *fingerprint;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDNetworkRouterLANFirewallConfiguration *lanFirewallConfiguration; // @synthesize lanFirewallConfiguration=_lanFirewallConfiguration;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HMDNetworkRouterWANFirewallConfiguration *wanFirewallConfiguration; // @synthesize wanFirewallConfiguration=_wanFirewallConfiguration;
 
++ (id)configurationForFirewallConfiguration:(id)arg1 hapAccessory:(BOOL)arg2 withClientIdentifier:(id)arg3;
++ (id)configurationForOpenProtectionWithClientIdentifier:(id)arg1;
++ (id)configurationWithClientIdentifier:(id)arg1 lanIdentifier:(long long)arg2;
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

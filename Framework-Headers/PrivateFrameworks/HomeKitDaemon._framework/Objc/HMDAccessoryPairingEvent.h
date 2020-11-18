@@ -19,6 +19,8 @@
     BOOL _usedOwnershipProof;
     BOOL _networkRouterAdd;
     BOOL _networkRouterReplace;
+    BOOL _firstHAPAccessoryInHome;
+    BOOL _firstHAPAccessoryInAnyHome;
     HMDAccessory *_pairedAccessory;
     long long _linkType;
     long long _certificationStatus;
@@ -28,10 +30,13 @@
     NSUUID *_accessoryUUID;
     NSString *_appIdentifier;
     NSString *_accessoryModel;
+    NSString *_accessoryManufacturer;
     NSString *_accessoryCategory;
+    NSString *_primaryServiceType;
 }
 
 @property (copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
+@property (copy, nonatomic) NSString *accessoryManufacturer; // @synthesize accessoryManufacturer=_accessoryManufacturer;
 @property (copy, nonatomic) NSString *accessoryModel; // @synthesize accessoryModel=_accessoryModel;
 @property (copy, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
 @property (readonly, nonatomic, getter=isAddOperation) BOOL addOperation; // @synthesize addOperation=_addOperation;
@@ -41,6 +46,8 @@
 @property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isFirstHAPAccessoryInAnyHome) BOOL firstHAPAccessoryInAnyHome; // @synthesize firstHAPAccessoryInAnyHome=_firstHAPAccessoryInAnyHome;
+@property (nonatomic, getter=isFirstHAPAccessoryInHome) BOOL firstHAPAccessoryInHome; // @synthesize firstHAPAccessoryInHome=_firstHAPAccessoryInHome;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -48,6 +55,7 @@
 @property (nonatomic, getter=isNetworkRouterAdd) BOOL networkRouterAdd; // @synthesize networkRouterAdd=_networkRouterAdd;
 @property (nonatomic, getter=isNetworkRouterReplace) BOOL networkRouterReplace; // @synthesize networkRouterReplace=_networkRouterReplace;
 @property (strong, nonatomic) HMDAccessory *pairedAccessory; // @synthesize pairedAccessory=_pairedAccessory;
+@property (copy, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isUsedOwnershipProof) BOOL usedOwnershipProof; // @synthesize usedOwnershipProof=_usedOwnershipProof;
 @property (nonatomic, getter=isUsedWiFiPPSK) BOOL usedWiFiPPSK; // @synthesize usedWiFiPPSK=_usedWiFiPPSK;

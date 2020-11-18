@@ -28,7 +28,9 @@
 @property (readonly, nonatomic) NSString *state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (BOOL)iconDescriptorShouldAlwaysAnimate:(id)arg1;
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id)arg1;
 - (id)initWithPackageIdentifier:(id)arg1;
 - (id)initWithPackageIdentifier:(id)arg1 state:(id)arg2;

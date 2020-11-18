@@ -7,10 +7,11 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/HMFMerging-Protocol.h>
+#import <CoreHAP/NSCopying-Protocol.h>
 
 @class CBService, HAPAccessory, NSArray, NSNumber, NSString;
 
-@interface HAPService : HMFObject <HMFMerging>
+@interface HAPService : HMFObject <NSCopying, HMFMerging>
 {
     NSString *_type;
     NSNumber *_instanceID;
@@ -32,12 +33,15 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
++ (BOOL)hap2_mergeServices:(id)arg1 discoveredServices:(id)arg2 mergedServices:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)_updateAndValidateCharacteristics;
 - (BOOL)_updateCharacteristic:(id)arg1;
 - (BOOL)_validateMandatoryCharacteristics;
 - (BOOL)_validateServiceCharacteristics;
 - (id)characteristicsOfType:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)hap2_mergeWithService:(id)arg1;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2 parsedCharacteristics:(id)arg3 serviceProperties:(unsigned long long)arg4 linkedServices:(id)arg5;
 - (BOOL)isEqual:(id)arg1;

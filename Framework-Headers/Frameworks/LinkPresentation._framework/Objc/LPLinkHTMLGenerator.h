@@ -32,6 +32,7 @@
     BOOL _includeClassNamesWhenUsingInlineStyles;
     BOOL _includeDarkInterfaceInlineStyles;
     BOOL _allowsTapToLoad;
+    BOOL _disableAutoPlay;
     BOOL _useInlineStyles;
     BOOL _applyCornerRadiusToLink;
     BOOL _generateEmailCompatibleMarkup;
@@ -48,6 +49,7 @@
 @property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (nonatomic, setter=_setAllowsTapToLoad:) BOOL _allowsTapToLoad; // @synthesize _allowsTapToLoad;
 @property (readonly, nonatomic) BOOL _canTapToLoad;
+@property (nonatomic, setter=_setDisableAutoPlay:) BOOL _disableAutoPlay; // @synthesize _disableAutoPlay;
 @property (nonatomic, setter=_setIncludeClassNamesWhenUsingInlineStyles:) BOOL _includeClassNamesWhenUsingInlineStyles; // @synthesize _includeClassNamesWhenUsingInlineStyles;
 @property (nonatomic, setter=_setIncludeDarkInterfaceInlineStyles:) BOOL _includeDarkInterfaceInlineStyles; // @synthesize _includeDarkInterfaceInlineStyles;
 @property (nonatomic, setter=_setUseVariablesWhenUsingInlineStyles:) BOOL _useVariablesWhenUsingInlineStyles; // @synthesize _useVariablesWhenUsingInlineStyles;

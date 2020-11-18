@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
 #import <PhotosUICore/PXShareable-Protocol.h>
 
-@class CLLocation, NSAttributedString, NSDate, NSString, NSValue, PXDebugValueList;
+@class CLLocation, NSAttributedString, NSDate, NSNumber, NSString, NSValue, PXDebugValueList;
 
 @interface PHAsset (PXMetadataAssetAdoption) <PXMetadataAsset, PXLayoutItemInput, PXPhotoKitAdjustedDisplayAsset, PXShareable>
 
@@ -37,8 +37,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) NSDate *localCreationDate;
@@ -78,12 +79,12 @@
 + (id)px_fetchAssetsInArray:(id)arg1 photoLibrary:(id)arg2;
 + (id)px_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)px_orderedAssetsFromAssets:(id)arg1 sortDescriptors:(id)arg2;
-- (struct CGRect)_adjustedRectWithFaceAreaRect:(struct CGRect)arg1 proposedCropRect:(struct CGRect)arg2 assetRect:(struct CGRect)arg3 verticalContentMode:(long long)arg4;
 - (id)_deferredProcessingStringWithEnum:(unsigned short)arg1;
 - (id)_faceNamesStringForAsset;
 - (id)_imageProccessingFlagsWithMainFileURL:(id)arg1;
 - (id)_junkClassificationStringWithClassifications:(id)arg1;
 - (id)_sceneClassificationStringWithClassifications:(id)arg1;
+- (id)_sdClassificationStringWithClassifications:(id)arg1;
 - (id)applyAdjustmentsToCompositionController:(id)arg1 renderer:(id)arg2;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
@@ -91,7 +92,6 @@
 - (id)localizedDetailedGeoDescriptionForRTL:(BOOL)arg1;
 - (id)px_accessibilityLabelForStyles:(unsigned long long)arg1;
 - (id)px_detailedDebugDescriptionInLibrary:(id)arg1;
-- (BOOL)px_isConfidentialAdjustmentsVersion:(id)arg1;
 - (BOOL)px_isRecommendationSeenForVariationType:(long long)arg1;
 - (BOOL)px_isSupportedApp:(id)arg1;
 - (BOOL)px_isVariationTypeRecommended:(long long)arg1;

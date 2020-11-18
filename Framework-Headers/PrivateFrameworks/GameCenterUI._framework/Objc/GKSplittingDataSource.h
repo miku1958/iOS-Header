@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSMutableDictionary *sectionToSectionInfo; // @synthesize sectionToSectionInfo=_sectionToSectionInfo;
 @property (strong, nonatomic) GKBasicCollectionViewDataSource *underlyingDataSource; // @synthesize underlyingDataSource=_underlyingDataSource;
 
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)addSectionWithTitle:(id)arg1 sortDescriptors:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionViewDidBecomeInactive:(id)arg1;

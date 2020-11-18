@@ -37,9 +37,6 @@
 + (id)verticalContainerStackViewWithArrangedSubviews:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_baselineViewVendForFirstBaseline:(BOOL)arg1;
-- (struct CGSize)_calculateArrangedSizeFittingSize:(struct CGSize)arg1 forLayout:(BOOL)arg2;
-- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1;
 - (id)arrangedDescription;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (id)calculateViewForFirstBaselineLayout;

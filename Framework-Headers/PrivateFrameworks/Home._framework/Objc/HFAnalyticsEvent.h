@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithData:(id)arg1;
 - (id)initWithEventType:(unsigned long long)arg1;
 
 @end

@@ -14,6 +14,7 @@
 
 @interface SearchUICombinedCardSectionsView : UIView <NUIArrangementContainer, NUIGridArrangementDataSource>
 {
+    BOOL _hasAttributionFooter;
     SearchUICombinedCardSectionRowModel *_rowModel;
     id<SearchUIFeedbackDelegate> _feedbackDelegate;
     NUIGridArrangement *_arrangement;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property BOOL hasAttributionFooter; // @synthesize hasAttributionFooter=_hasAttributionFooter;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SearchUICombinedCardSectionRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property (readonly) Class superclass;
@@ -37,6 +39,7 @@
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
 - (id)init;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (void)layoutSubviews;

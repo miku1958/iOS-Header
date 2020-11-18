@@ -35,6 +35,7 @@
 - (void).cxx_destruct;
 - (void)_addConstraints;
 - (void)_addSubviews;
+- (void)_applyPausedUpdate;
 - (double)_calculateGraphXBasedOnRect:(struct CGRect)arg1 constants:(CDStruct_05cddbcc)arg2;
 - (id)_datesForGraphInTimezone:(id)arg1;
 - (void)_drawVerticalHourLines:(struct CGContext *)arg1 rect:(struct CGRect)arg2 bottomLabelPadding:(double)arg3;

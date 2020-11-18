@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)enableBasebandLogDump:(void *)arg1;
 - (id)init;
+- (BOOL)isRadioAccessTechnologyOnCellular:(unsigned int)arg1;
 - (void)printFlushAckToBasebandDump:(unsigned char)arg1 transactionID:(unsigned short)arg2 packetDropped:(unsigned short)arg3 sequenceNumberArray:(unsigned short *)arg4;
 - (void)processBasebandAck:(CDStruct_b203c80d *)arg1;
 - (BOOL)processBasebandNotification:(CDStruct_b203c80d *)arg1 arrivalTime:(double)arg2 error:(id *)arg3;

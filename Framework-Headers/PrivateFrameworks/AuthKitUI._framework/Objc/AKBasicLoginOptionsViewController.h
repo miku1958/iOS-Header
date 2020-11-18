@@ -10,6 +10,7 @@
 
 @interface AKBasicLoginOptionsViewController : UIViewController
 {
+    BOOL _isCreateAppleIDAllowed;
     CDUnknownBlockType _createIDAction;
     CDUnknownBlockType _forgotAction;
     AKAppleIDAuthenticationInAppContext *_context;
@@ -25,6 +26,7 @@
 @property (copy, nonatomic) CDUnknownBlockType createIDAction; // @synthesize createIDAction=_createIDAction;
 @property (copy, nonatomic) CDUnknownBlockType forgotAction; // @synthesize forgotAction=_forgotAction;
 @property (strong) UIButton *forgotButton; // @synthesize forgotButton=_forgotButton;
+@property BOOL isCreateAppleIDAllowed; // @synthesize isCreateAppleIDAllowed=_isCreateAppleIDAllowed;
 @property (strong) UIStackView *optionsStack; // @synthesize optionsStack=_optionsStack;
 @property (strong) OBPrivacyLinkController *privacyController; // @synthesize privacyController=_privacyController;
 @property (strong) UIView *privacyView; // @synthesize privacyView=_privacyView;
@@ -33,6 +35,8 @@
 - (void)_addPrivacyView:(id)arg1;
 - (void)_configureButtonForFontAdjustment:(id)arg1;
 - (void)_configureOptionsStack;
+- (void)_refreshCreateAppleIDButton;
+- (BOOL)_shouldHideCreateButton;
 - (void)createPressed:(id)arg1;
 - (void)forgotPressed:(id)arg1;
 - (id)init;

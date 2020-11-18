@@ -6,10 +6,16 @@
 
 #import <ActionKit/WFAccountAccessResource.h>
 
+@class WFWebAuthenticationSessionPresentationContext;
+
 @interface WFTrelloAccessResource : WFAccountAccessResource
 {
+    WFWebAuthenticationSessionPresentationContext *_presentationContext;
 }
 
+@property (strong, nonatomic) WFWebAuthenticationSessionPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
+
+- (void).cxx_destruct;
 - (Class)accountClass;
 - (id)associatedAppIdentifier;
 - (id)authorizationURLWithCallbackURL:(id)arg1;

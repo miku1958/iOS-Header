@@ -33,31 +33,11 @@
     NSArray *_requiresCompanions;
 }
 
-@property (nonatomic) BOOL additionTriggersImmediateSync; // @synthesize additionTriggersImmediateSync=_additionTriggersImmediateSync;
-@property (nonatomic) BOOL additionsCountTowardTriggeredSyncBucket; // @synthesize additionsCountTowardTriggeredSyncBucket=_additionsCountTowardTriggeredSyncBucket;
-@property (nonatomic) BOOL deletionTriggersImmediateSync; // @synthesize deletionTriggersImmediateSync=_deletionTriggersImmediateSync;
-@property (nonatomic) BOOL deletionsCountTowardTriggeredSyncBucket; // @synthesize deletionsCountTowardTriggeredSyncBucket=_deletionsCountTowardTriggeredSyncBucket;
-@property (strong, nonatomic) NSArray *destinations; // @synthesize destinations=_destinations;
-@property (strong, nonatomic) NSString *feature; // @synthesize feature=_feature;
-@property (nonatomic) BOOL isSyncDisabled; // @synthesize isSyncDisabled=_isSyncDisabled;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) unsigned long long oldestEventToSyncInDays; // @synthesize oldestEventToSyncInDays=_oldestEventToSyncInDays;
-@property (nonatomic) BOOL onlyMultiDevice; // @synthesize onlyMultiDevice=_onlyMultiDevice;
-@property (nonatomic) BOOL onlySingleDevice; // @synthesize onlySingleDevice=_onlySingleDevice;
-@property (nonatomic) unsigned long long periodicSyncCadenceInMinutes; // @synthesize periodicSyncCadenceInMinutes=_periodicSyncCadenceInMinutes;
 @property (strong, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property (nonatomic) BOOL pushTriggersSync; // @synthesize pushTriggersSync=_pushTriggersSync;
-@property (nonatomic) BOOL requiresCharging; // @synthesize requiresCharging=_requiresCharging;
-@property (strong, nonatomic) NSArray *requiresCompanions; // @synthesize requiresCompanions=_requiresCompanions;
-@property (strong, nonatomic) NSArray *sources; // @synthesize sources=_sources;
-@property (strong, nonatomic) NSArray *streamNames; // @synthesize streamNames=_streamNames;
-@property (strong, nonatomic) NSString *transport; // @synthesize transport=_transport;
 
-+ (id)policyForFeature:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (id)initWithName:(id)arg1 properties:(id)arg2;
 
 @end
 

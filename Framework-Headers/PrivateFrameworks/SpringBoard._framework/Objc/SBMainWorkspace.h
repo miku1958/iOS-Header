@@ -17,13 +17,14 @@
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
 #import <SpringBoard/SBBacklightControllerObserver-Protocol.h>
 #import <SpringBoard/SBControlCenterModuleTransientOverlayViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBInCallPresentationManagerDelegate-Protocol.h>
 #import <SpringBoard/SBPowerDownViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBTransientOverlayPresentationManagerDelegate-Protocol.h>
 
-@class BSEventQueueLock, BSWatchdog, FBDisplayLayoutTransition, FBSceneManager, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBControlCenterModuleTransientOverlayViewController, SBHUDController, SBHomeGestureArbiter, SBHomeHardwareButtonLongPressDurationAssertion, SBIdleTimerCoordinatorHelper, SBInCallTransientOverlayManager, SBOrientationAggdLogger, SBPowerDownViewController, SBRingerControl, SBTransientOverlayPresentationManager, SBVolumeControl, SBWorkspaceKeyboardFocusController, SBWorkspaceTransaction;
+@class BSEventQueueLock, BSWatchdog, FBDisplayLayoutTransition, FBSceneManager, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBControlCenterModuleTransientOverlayViewController, SBHUDController, SBHomeGestureArbiter, SBHomeHardwareButtonLongPressDurationAssertion, SBIdleTimerCoordinatorHelper, SBInCallPresentationManager, SBInCallTransientOverlayManager, SBOrientationAggdLogger, SBPowerDownViewController, SBRingerControl, SBTransientOverlayPresentationManager, SBVolumeControl, SBWorkspaceKeyboardFocusController, SBWorkspaceTransaction;
 @protocol SBIdleTimerCoordinating, SBIdleTimerProviding;
 
-@interface SBMainWorkspace : SBWorkspace <BSTransactionObserver, SBBacklightControllerObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver, MCProfileConnectionObserver, BSPowerMonitorObserver, SBPowerDownViewControllerDelegate, SBTransientOverlayPresentationManagerDelegate, CCSModulePresentationEndpoint, SBControlCenterModuleTransientOverlayViewControllerDelegate>
+@interface SBMainWorkspace : SBWorkspace <BSTransactionObserver, SBBacklightControllerObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver, MCProfileConnectionObserver, BSPowerMonitorObserver, SBPowerDownViewControllerDelegate, SBTransientOverlayPresentationManagerDelegate, CCSModulePresentationEndpoint, SBControlCenterModuleTransientOverlayViewControllerDelegate, SBInCallPresentationManagerDelegate>
 {
     BOOL _initialized;
     BSEventQueueLock *_suspensionLock;
@@ -48,6 +49,7 @@
     SBHomeGestureArbiter *_homeGestureArbiter;
     SBInCallTransientOverlayManager *_inCallTransientOverlayManager;
     SBTransientOverlayPresentationManager *_transientOverlayPresentationManager;
+    SBInCallPresentationManager *_inCallPresentationManager;
     FBSceneManager *_sceneManager;
 }
 
@@ -59,6 +61,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBHomeGestureArbiter *homeGestureArbiter; // @synthesize homeGestureArbiter=_homeGestureArbiter;
 @property (strong, nonatomic) id<SBIdleTimerCoordinating> idleTimerCoordinator;
+@property (readonly, nonatomic) SBInCallPresentationManager *inCallPresentationManager; // @synthesize inCallPresentationManager=_inCallPresentationManager;
 @property (readonly, nonatomic) SBInCallTransientOverlayManager *inCallTransientOverlayManager; // @synthesize inCallTransientOverlayManager=_inCallTransientOverlayManager;
 @property (readonly, nonatomic) SBWorkspaceKeyboardFocusController *keyboardFocusController;
 @property (readonly, nonatomic, getter=isMedusaEnabled) BOOL medusaEnabled; // @synthesize medusaEnabled=_medusaEnabled;
@@ -81,7 +84,7 @@
 - (void)_applicationEntityWasRemovedFromAppSwitcher:(id)arg1;
 - (id)_applicationForIdentifier:(id)arg1;
 - (BOOL)_applicationProcessExited:(id)arg1 withContext:(id)arg2;
-- (void)_applyCommonActivationSettings:(id)arg1 forRequestWithOptions:(id)arg2 clientProcess:(id)arg3;
+- (void)_applyCommonActivationSettings:(id)arg1 forRequestWithOptions:(id)arg2 clientProcess:(id)arg3 application:(id)arg4;
 - (void)_attemptUnlockToApplication:(id)arg1 showPasscode:(BOOL)arg2 origin:(id)arg3 givenOrigin:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_broadcastCurrentTransaction;
 - (BOOL)_canImplicitlyUnlockAtLockScreenWhileAuthenticatedFromOrigin:(id)arg1 givenOrigin:(id)arg2 trustedRequest:(BOOL)arg3 outReason:(id *)arg4;
@@ -149,6 +152,10 @@
 - (BOOL)executeTransitionRequest:(id)arg1;
 - (BOOL)executeTransitionRequest:(id)arg1 withValidator:(CDUnknownBlockType)arg2;
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
+- (id)inCallPresentationManager:(id)arg1 createPresentationSessionWithSceneHandle:(id)arg2;
+- (long long)inCallPresentationManagerInterfaceOrientationForBannerPresentation:(id)arg1;
+- (long long)inCallPresentationManagerInterfaceOrientationForTransientOverlayPresentation:(id)arg1;
+- (void)inCallPresentationManagerRequestsHandlingOfDeferredUILock:(id)arg1;
 - (id)init;
 - (id)initWithEventQueue:(id)arg1;
 - (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayPresentationManager:(id)arg1;
@@ -198,7 +205,6 @@
 - (void)transientOverlayPresentationManager:(id)arg1 willChangeTopmostViewControllerInterfaceOrientationToOrientation:(long long)arg2;
 - (void)transientOverlayPresentationManager:(id)arg1 willPresentViewController:(id)arg2;
 - (void)transientOverlayPresentationManagerRequestsAppIconForceTouchDismissal:(id)arg1 animated:(BOOL)arg2;
-- (void)transientOverlayPresentationManagerRequestsBannerLongLookDismissal:(id)arg1 animated:(BOOL)arg2;
 - (void)transientOverlayPresentationManagerRequestsControlCenterDismissal:(id)arg1 animated:(BOOL)arg2;
 - (void)transientOverlayPresentationManagerRequestsSiriDismissal:(id)arg1 animated:(BOOL)arg2;
 - (void)updateFrontMostApplicationEventPort;

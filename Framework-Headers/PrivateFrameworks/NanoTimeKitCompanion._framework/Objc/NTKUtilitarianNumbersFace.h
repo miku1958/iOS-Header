@@ -6,15 +6,25 @@
 
 #import <NanoTimeKitCompanion/NTKUtilitarianFace.h>
 
-@interface NTKUtilitarianNumbersFace : NTKUtilitarianFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKUtilitarianNumbersFace : NTKUtilitarianFace <NTKFaceComplicationPreviewable>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_complicationSlotDescriptors;
 + (id)_dateComplicationSlotForDevice:(id)arg1;
 + (unsigned long long)_dateComplicationSlotSupportedStylesForDevice:(id)arg1;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
 + (id)_orderedComplicationSlots;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
 
 @end
 

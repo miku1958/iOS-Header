@@ -87,6 +87,7 @@
 - (BOOL)biometricUnlockBehavior:(id)arg1 requestsUnlock:(id)arg2 withFeedback:(id)arg3;
 - (BOOL)canBeDeactivatedForUIUnlockFromSource:(int)arg1;
 - (BOOL)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 - (void)coverSheetViewController:(id)arg1 didChangeActiveBehavior:(id)arg2;
 - (id)createHomeButtonShowPasscodeRecognizerForHomeButtonPress;
 - (id)createHomeButtonSuppressAfterUnlockRecognizerForUnlockSource:(int)arg1;

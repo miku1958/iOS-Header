@@ -87,6 +87,7 @@
 - (BOOL)sendGPRMCDataStatusValueA:(BOOL)arg1 ValueV:(BOOL)arg2 ValueX:(BOOL)arg3;
 - (BOOL)sendGpsWeek:(unsigned long long)arg1 gpsTOW:(double)arg2;
 - (BOOL)sendPointOfInterestInformation:(id)arg1 identifier:(unsigned short)arg2;
+- (void)sendWiredCarPlayAvailable:(id)arg1 usbIdentifier:(id)arg2 wirelessCarPlayAvailable:(id)arg3 bluetoothIdentifier:(id)arg4;
 - (void)setCameraComponents:(id)arg1;
 - (int)setCameraProperties:(unsigned int)arg1 forCameraId:(unsigned short)arg2 withProperties:(id)arg3;
 - (void)setDestinationSharingOptions:(unsigned long long)arg1;
@@ -109,6 +110,7 @@
 - (BOOL)supportsCamera;
 - (BOOL)supportsCarPlay;
 - (BOOL)supportsCarPlayAppLinks;
+- (BOOL)supportsCarPlayConnectionRequest;
 - (BOOL)supportsDestinationSharing;
 - (BOOL)supportsLocation;
 - (BOOL)supportsOOBBTPairing;
@@ -117,6 +119,7 @@
 - (BOOL)supportsPublicIap;
 - (BOOL)supportsUSBCarPlay;
 - (BOOL)supportsWirelessCarPlay;
+- (long long)transportType;
 - (void)updateItemProperty:(int)arg1 withValue:(id)arg2;
 - (void)updateSystemProperty:(int)arg1 withValue:(id)arg2;
 - (id)vehicleInfoInitialData;

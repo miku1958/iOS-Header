@@ -8,7 +8,6 @@
 
 @class CKPublicKey, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDSignedServerPublicKeyURLRequest : CKDURLRequest
 {
     CKPublicKey *_verifiedPublicKey;
@@ -32,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)hasRequestBody;
 - (id)httpMethod;
-- (id)initWithPlistURL:(id)arg1 verifyWithPolicy:(struct __SecPolicy *)arg2;
+- (id)initWithOperation:(id)arg1 plistURL:(id)arg2 verifyWithPolicy:(struct __SecPolicy *)arg3;
 - (long long)partitionType;
 - (void)requestDidParsePlistObject:(id)arg1;
 - (BOOL)requiresConfiguration;

@@ -9,15 +9,16 @@
 #import <EventKitUI/EKEventDetailNotesCellDelegate-Protocol.h>
 #import <EventKitUI/EKEventTitleDetailItemDelegate-Protocol.h>
 #import <EventKitUI/EKUIEventStatusButtonsViewDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
+@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEventStatusButtonsView, EKUIInviteesViewMessageSendingManager, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
 @protocol EKEventViewDelegate;
 
-@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailNotesCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailNotesCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EKUIManagedViewController>
 {
     NSArray *_items;
     EKEvent *_event;
@@ -78,6 +79,7 @@
     int _editorShowTransition;
     int _editorHideTransition;
     id<EKEventViewDelegate> _delegate;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
     NSDictionary *_context;
     struct UIEdgeInsets _layoutMargins;
 }
@@ -102,6 +104,7 @@
 @property (nonatomic) BOOL inlineDayViewRespectsSelectedCalendarsFilter;
 @property (nonatomic) BOOL isLargeDayView; // @synthesize isLargeDayView=_isLargeDayView;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
+@property (strong, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property (nonatomic) BOOL minimalMode;
 @property (nonatomic) BOOL noninteractivePlatterMode; // @synthesize noninteractivePlatterMode=_noninteractivePlatterMode;
 @property (weak, nonatomic) UIViewController *presentationSourceViewController;
@@ -119,6 +122,7 @@
 
 + (id)_orderedActionsForMask:(long long)arg1;
 + (void)adjustLayoutForCell:(id)arg1 tableViewWidth:(double)arg2 numRowsInSection:(unsigned long long)arg3 cellRow:(unsigned long long)arg4 forceLayout:(BOOL)arg5;
++ (void)popViewControllersAfterAndIncluding:(id)arg1 fromNavigationController:(id)arg2 animated:(BOOL)arg3;
 + (void)setDefaultDatesForEvent:(id)arg1;
 - (void).cxx_destruct;
 - (void)_acceptProposedTimeWithSourceViewForPopover:(id)arg1;
@@ -197,6 +201,7 @@
 - (id)activeEventEditor;
 - (BOOL)allowContextProvider:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
+- (BOOL)canManagePresentationStyle;
 - (void)completeWithAction:(long long)arg1;
 - (void)dealloc;
 - (void)detailItem:(id)arg1 performActionsOnCellAtIndexPath:(id)arg2 actions:(CDUnknownBlockType)arg3;
@@ -208,6 +213,7 @@
 - (void)editButtonPressed;
 - (void)editEvent;
 - (void)eventDetailItemWantsRefeshForHeightChange;
+- (void)eventDetailItemWantsRefresh:(id)arg1;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)eventItemDidEndEditing:(id)arg1;
 - (void)eventItemDidSave:(id)arg1;
@@ -225,7 +231,7 @@
 - (void)openAttendeesDetailItem;
 - (struct CGSize)preferredContentSize;
 - (void)presentEditorAnimated:(BOOL)arg1;
-- (id)previewActionsWithPresentationController:(id)arg1;
+- (id)previewActionsWithPresentationController:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setActiveEventEditor:(id)arg1;
 - (void)setNeedsReload;
@@ -256,6 +262,7 @@
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (BOOL)wantsManagement;
 
 @end
 

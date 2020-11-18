@@ -8,28 +8,31 @@
 
 #import <PhotosUICore/PXDebugHierarchyProvider-Protocol.h>
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
-#import <PhotosUICore/PXGAccessibilityRendererDelegate-Protocol.h>
+#import <PhotosUICore/PXGAXResponder-Protocol.h>
 #import <PhotosUICore/PXGDiagnosticsProvider-Protocol.h>
 #import <PhotosUICore/PXGEngineDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
+#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MTKView, NSArray, NSDictionary, NSString, PXGAnchor, PXGDebugHUDLayer, PXGEngine, PXGLayout, PXGRectDiagnosticsLayer, PXScrollViewController, PXScrollViewSpeedometer, UIColor;
-@protocol PXGViewAccessibilityDelegate, PXGViewDiagnosticsSource;
+@class MTKView, NSArray, NSDictionary, NSString, PXGAXCoalescingResponder, PXGAnchor, PXGDebugHUDLayer, PXGEngine, PXGLayout, PXGRectDiagnosticsLayer, PXScrollViewController, PXScrollViewSpeedometer, UIColor;
+@protocol PXGAXResponder, PXGViewAccessibilityDelegate, PXGViewDiagnosticsSource;
 
-@interface PXGView : UIView <PXDiagnosticsEnvironment, PXScrollViewControllerObserver, PXGEngineDelegate, PXGAccessibilityRendererDelegate, UIGestureRecognizerDelegate, PXGDiagnosticsProvider, PXDebugHierarchyProvider>
+@interface PXGView : UIView <PXDiagnosticsEnvironment, PXGEngineDelegate, PXScrollViewControllerObserver, PXSettingsKeyObserver, UIGestureRecognizerDelegate, PXGAXResponder, PXGDiagnosticsProvider, PXDebugHierarchyProvider>
 {
     PXGDebugHUDLayer *_debugHUDLayer;
     PXGRectDiagnosticsLayer *_rectDiagnosticsLayer;
+    PXGAXCoalescingResponder *_coalescingAXResponder;
     UIColor *_backgroundColor;
-    BOOL canSelectAccessibilityGroupElements;
-    BOOL canSelectAccessibilityGroupElementsChildren;
+    BOOL _lowMemoryModeEnabled;
     BOOL _isScrolling;
     BOOL _isAnimatingScroll;
+    BOOL _isAccessibilityEnabled;
+    BOOL _isSceneBackgrounded;
     BOOL _showDebugHUD;
     BOOL _showPerspectiveDebug;
     BOOL _shouldWorkaround18475431;
-    PXGLayout *accessibilityRootLayout;
+    id<PXGAXResponder> axNextResponder;
     id<PXGViewAccessibilityDelegate> _accessibilityDelegate;
     PXScrollViewController *_scrollViewController;
     PXScrollViewSpeedometer *_scrollingSpeedometer;
@@ -43,9 +46,7 @@
 }
 
 @property (weak, nonatomic) id<PXGViewAccessibilityDelegate> accessibilityDelegate; // @synthesize accessibilityDelegate=_accessibilityDelegate;
-@property (readonly, nonatomic) PXGLayout *accessibilityRootLayout; // @synthesize accessibilityRootLayout;
-@property (readonly, nonatomic) BOOL canSelectAccessibilityGroupElements; // @synthesize canSelectAccessibilityGroupElements;
-@property (readonly, nonatomic) BOOL canSelectAccessibilityGroupElementsChildren; // @synthesize canSelectAccessibilityGroupElementsChildren;
+@property (weak, nonatomic) id<PXGAXResponder> axNextResponder; // @synthesize axNextResponder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSArray *debugHierarchyIdentifiers;
@@ -58,8 +59,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct UIEdgeInsets hitTestPadding; // @synthesize hitTestPadding=_hitTestPadding;
+@property (nonatomic) BOOL isAccessibilityEnabled; // @synthesize isAccessibilityEnabled=_isAccessibilityEnabled;
 @property (nonatomic) BOOL isAnimatingScroll; // @synthesize isAnimatingScroll=_isAnimatingScroll;
+@property (nonatomic) BOOL isSceneBackgrounded; // @synthesize isSceneBackgrounded=_isSceneBackgrounded;
 @property (nonatomic) BOOL isScrolling; // @synthesize isScrolling=_isScrolling;
+@property (nonatomic) BOOL lowMemoryModeEnabled; // @synthesize lowMemoryModeEnabled=_lowMemoryModeEnabled;
 @property (readonly, nonatomic) MTKView *metalView; // @synthesize metalView=_metalView;
 @property (copy, nonatomic) CDUnknownBlockType nextDidLayoutHandler; // @synthesize nextDidLayoutHandler=_nextDidLayoutHandler;
 @property (copy, nonatomic, setter=ppt_setCurrentTestOptions:) NSDictionary *ppt_currentTestOptions; // @synthesize ppt_currentTestOptions=_ppt_currentTestOptions;
@@ -85,29 +89,30 @@
 + (long long)screenPixelCount;
 + (void)setForceAccessibilityEnabled:(BOOL)arg1;
 - (void).cxx_destruct;
-- (void)_applicationAccessibilityStatusChanged:(id)arg1;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_ensureEndAnimatedScroll;
 - (struct CGImage *)_fallbackImageForAssetReference:(id)arg1 mediaProvider:(id)arg2;
-- (void)_forceAccessibilityEnabledChanged:(id)arg1;
+- (void)_handleSceneDidEnterBackground:(id)arg1;
+- (void)_handleSceneWillEnterForeground:(id)arg1;
 - (void)_installNextDidLayoutHandler:(CDUnknownBlockType)arg1;
-- (void)_updateAccessibilityStatus;
+- (void)_updateAccessibility;
 - (void)_updateDebugHUD;
+- (void)_updateEngineLowMemoryMode;
 - (void)_updateFocusItemProvider;
 - (void)_updateIsVisible;
 - (void)_updateLayoutScreenScale;
 - (void)_updateLayoutViewEnvironment;
 - (void)_updateMetalView;
+- (void)_updateRectDiagnosticsLayer;
 - (void)_updateUserInterfaceDirection;
 - (void)_willChangeBoundsSizeFrom:(struct CGRect)arg1 toBounds:(struct CGRect)arg2;
-- (id)accessibilityHitTestResultAtPoint:(struct CGPoint)arg1;
-- (id)accessibilityViewForSpriteIndex:(unsigned int)arg1;
-- (id)assetClosestToAsset:(id)arg1 inDirection:(unsigned long long)arg2;
-- (void)axScrollToAsset:(id)arg1;
+- (id)axContainingViewForAXGroup:(id)arg1;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (BOOL)axGroup:(id)arg1 didRequestToPerformAction:(long long)arg2 userInfo:(id)arg3;
 - (id)backgroundColor;
 - (id)curatedLibraryHitTestResultsInRect:(struct CGRect)arg1 withControl:(long long)arg2;
 - (void)didMoveToWindow;
 - (void)disablePreheating;
+- (id)dropTargetObjectReferenceForLocation:(struct CGPoint)arg1;
 - (void)engine:(id)arg1 updateDebugHUDWithStats:(CDStruct_58b866b9 *)arg2;
 - (void)enumerateCuratedLibraryHitTestResultsAtPoint:(struct CGPoint)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateCuratedLibraryHitTestResultsAtPoint:(struct CGPoint)arg1 withControls:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -122,17 +127,14 @@
 - (id)hitTestResultAtPoint:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (id)hitTestResultsAtPoint:(struct CGPoint)arg1;
 - (id)hitTestResultsAtPoint:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2 passingTest:(CDUnknownBlockType)arg3;
+- (id)hitTestResultsAtPoint:(struct CGPoint)arg1 withIdentifiers:(id)arg2;
 - (id)hitTestResultsInDirection:(unsigned long long)arg1 fromSpriteReference:(id)arg2;
 - (id)hitTestResultsInRect:(struct CGRect)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)installAnimationRenderingCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)installLayoutCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)isObjectReference:(id)arg1 visuallyBeforeObjectReference:(id)arg2;
-- (BOOL)itemDidShowAlternateUIAtLocation:(struct CGPoint)arg1;
-- (BOOL)itemDidShowDefaultUIAtLocation:(struct CGPoint)arg1;
-- (BOOL)itemWasDoubleClickedWithHitTestResult:(id)arg1;
-- (BOOL)itemWasRightClickedWithHitTestResult:(id)arg1 location:(struct CGPoint)arg2;
-- (void)notifySelectedCellsChanged;
+- (BOOL)isVisible;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)ppt_cleanUpAfterTest:(id)arg1 isScrollTest:(BOOL)arg2;
 - (void)ppt_prepareForTest:(id)arg1 withOptions:(id)arg2 isScrollTest:(BOOL)arg3;
@@ -151,15 +153,16 @@
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
 - (void)scrollViewControllerWillBeginScrollingAnimation:(id)arg1 towardsContentEdges:(unsigned long long)arg2;
-- (void)selectAssets:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)test_installRenderSnapshotHandler:(CDUnknownBlockType)arg1;
 - (struct CGImage *)textureSnapshotForSpriteReference:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)viewForSpriteIndex:(unsigned int)arg1;
+- (id)viewForSpriteReference:(id)arg1;
 
 @end
 

@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)_margin;
 - (void)_showAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_showWithAnimationWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithRatingInfoDictionary:(id)arg1;
+- (id)initWithAdvisoryInfoDictionary:(id)arg1;
 - (void)layoutSubviews;
 - (void)show:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

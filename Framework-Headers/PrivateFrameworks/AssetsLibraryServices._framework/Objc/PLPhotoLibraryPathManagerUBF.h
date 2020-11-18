@@ -36,13 +36,12 @@
 
 + (id)systemLibraryPathManager;
 - (void).cxx_destruct;
-- (id)_basePrivateDirectoryPath;
 - (id)_externalDirectoryWithBundleIdentifier:(id)arg1 createIfNeeded:(BOOL)arg2;
-- (id)_privateDirectoryWithBundleIdentifier:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (id)addToPath:(id)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
 - (id)baseDirectoryForBundleScope:(unsigned char)arg1;
+- (id)basePrivateDirectoryPath;
 - (id)convertPhotoLibraryPathType:(unsigned char)arg1;
-- (id)corePathsWithError:(id *)arg1 directDatabaseAccess:(BOOL)arg2;
+- (id)corePathsWithError:(id *)arg1 directDatabaseAccess:(BOOL)arg2 limitedLibrary:(BOOL)arg3;
 - (BOOL)createPathsForNewLibrariesWithError:(id *)arg1;
 - (id)extendedPathsWithError:(id *)arg1;
 - (id)externalDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;

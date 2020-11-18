@@ -15,6 +15,7 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_callHistoryDBDidChange:(id)arg1;
 - (void)callHistoryDBDidChange:(id)arg1;
 - (id)cloudKitContainer;
 - (BOOL)contactIDIsTTYContact:(id)arg1;

@@ -7,9 +7,8 @@
 #import <objc/NSObject.h>
 
 #import <NotesUI/ICAccessibilityExtras-Protocol.h>
-#import <NotesUI/ICAnalyticsReporterAccessibilityDelegate-Protocol.h>
 
-@interface ICAccessibility : NSObject <ICAccessibilityExtras, ICAnalyticsReporterAccessibilityDelegate>
+@interface ICAccessibility : NSObject <ICAccessibilityExtras>
 {
 }
 

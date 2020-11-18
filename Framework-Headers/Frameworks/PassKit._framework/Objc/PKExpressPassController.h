@@ -6,45 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKitCore/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
-#import <PassKitCore/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
-
-@class NSString, PKExpressAuthorizationPaymentRequestContext, PKPaymentAuthorizationCoordinator;
 @protocol PKPassLibraryDataProvider, PKPaymentDataProvider;
 
-@interface PKExpressPassController : NSObject <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
+@interface PKExpressPassController : NSObject
 {
     id<PKPaymentDataProvider> _paymentDataProvider;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     BOOL _isForWatch;
     BOOL _hasSupportsExpressForAutomaticSelectionTechnologyTypeCheck;
-    PKExpressAuthorizationPaymentRequestContext *_authorizationContext;
-    PKPaymentAuthorizationCoordinator *_authorizationCoordinator;
     id _presentingViewController;
     long long _apiVersion;
 }
 
 @property (nonatomic) long long apiVersion; // @synthesize apiVersion=_apiVersion;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)conflictingExpressPassesWithPassInformation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)deviceUsesAutomaticAuthorization;
 - (void)disableExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)enableExpressModeWithPass:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)enableExpressModeWithPassInformation:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)expressModeSupportedForPass:(id)arg1;
 - (id)expressModeUpgradeRequestForPass:(id)arg1;
 - (id)expressState;
 - (id)initWithPaymentDataProvider:(id)arg1 passLibraryDataProvider:(id)arg2 isForWatch:(BOOL)arg3;
 - (BOOL)isExpressModeEnabledForPass:(id)arg1;
-- (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizeContextWithHandler:(CDUnknownBlockType)arg2;
-- (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
 - (BOOL)supportsLowPowerExpressMode;
 - (void)upgradeExpressModeForPass:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)validExpressModeUpgradeRequestForPass:(id)arg1;

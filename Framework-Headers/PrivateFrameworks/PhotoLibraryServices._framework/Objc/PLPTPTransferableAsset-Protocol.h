@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) int avalanchePickType;
 @property (readonly, copy, nonatomic) NSString *avalancheUUID;
+@property (readonly, nonatomic) long long cameraProcessingAdjustmentTrashedState;
 @property (readonly, nonatomic) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, copy, nonatomic) NSDate *dateCreated;
 @property (readonly, nonatomic) unsigned short deferredProcessingNeeded;
@@ -52,7 +53,6 @@
 @property (readonly, nonatomic) id<PLPTPTransferableSidecarFile> ptpPhotoIrisSidecar;
 @property (readonly, strong, nonatomic) NSSet *ptpSidecarFiles;
 @property (readonly, nonatomic) short savedAssetType;
-@property (readonly, nonatomic) long long snowplowTrashedState;
 @property (readonly, nonatomic) struct CGSize spatialOverCaptureSize;
 @property (readonly, strong, nonatomic) id uuid;
 @property (readonly, nonatomic) struct CGSize videoComplementSpatialOverCaptureSize;

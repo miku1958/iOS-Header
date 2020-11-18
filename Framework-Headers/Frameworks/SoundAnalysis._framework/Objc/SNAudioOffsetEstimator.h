@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface SNAudioOffsetEstimator : NSObject <SNAnalyzing>
 {
     shared_ptr_f6ac7592 _graph;
+    double _offset;
     double _minimumObservableOffset;
     double _maximumObservableOffset;
 }
@@ -24,14 +25,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double maximumObservableOffset; // @synthesize maximumObservableOffset=_maximumObservableOffset;
 @property (nonatomic) double minimumObservableOffset; // @synthesize minimumObservableOffset=_minimumObservableOffset;
-@property (readonly, nonatomic) double offset;
+@property (readonly, nonatomic) double offset; // @synthesize offset=_offset;
 @property (readonly, nonatomic) struct Box *resultsBox;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (shared_ptr_f6ac7592)createGraph;
 - (id)init;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;

@@ -33,12 +33,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSWPPadding *layoutMargins;
+@property (readonly, nonatomic) BOOL shouldShowInstructionalText;
 @property (readonly, nonatomic) BOOL shrinkTextToFit;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double textScaleFactor;
 
 - (void).cxx_destruct;
-- (void)addChild:(id)arg1;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGPoint)autosizePositionOffset;
@@ -47,7 +47,7 @@
 - (struct CGAffineTransform)autosizedTransform;
 - (struct CGAffineTransform)autosizedTransformForInfoGeometry:(id)arg1;
 - (id)bidirectionalSizeDependentLayouts;
-- (id)children;
+- (id)childInfosForChildLayouts;
 - (struct CGAffineTransform)computeLayoutTransform;
 - (void)createContainedLayoutForEditing;
 - (void)createContainedLayoutForInstructionalText;
@@ -57,9 +57,6 @@
 - (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)initWithInfo:(id)arg1;
-- (void)insertChild:(id)arg1 above:(id)arg2;
-- (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)insertChild:(id)arg1 below:(id)arg2;
 - (id)interiorClippingPath;
 - (id)interiorWrapPath;
 - (id)interiorWrapSegments;
@@ -68,9 +65,6 @@
 - (BOOL)isInvisibleAutosizingShape;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
-- (BOOL)p_hasVisibleContents;
-- (BOOL)p_isEmptyList;
-- (BOOL)p_isEmptyParagraphWithFillOrBorders;
 - (BOOL)parentAutosizes;
 - (id)pathSource;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;
@@ -78,11 +72,10 @@
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
 - (BOOL)providesGuidesForChildLayouts;
 - (Class)repClassForTextLayout:(id)arg1;
-- (void)replaceChild:(id)arg1 with:(id)arg2;
-- (void)setChildren:(id)arg1;
 - (void)setGeometry:(id)arg1;
 - (BOOL)shouldAssertDependenciesAreCorrect;
 - (BOOL)shouldInvalidateSizeWhenInvalidateSizeOfReliedOnLayout:(id)arg1;
+- (BOOL)shouldValidate;
 - (BOOL)textLayoutShouldLayoutVertically:(id)arg1;
 - (BOOL)textLayoutShouldWrapAroundExternalDrawables:(id)arg1;
 - (id)textWrapper;

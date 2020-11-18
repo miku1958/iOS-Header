@@ -14,8 +14,11 @@
 
 @property (strong, nonatomic) SearchUIImageView *view; // @dynamic view;
 
++ (BOOL)rowModelHasSuggestionThumbnail:(id)arg1;
 + (BOOL)supportsRowModel:(id)arg1;
+- (void)applyImageConstraints;
 - (void)forceVerticalCenteringOfContents;
+- (void)setUsesCompactWidth:(BOOL)arg1;
 - (id)setupView;
 - (BOOL)shouldVerticallyCenter;
 - (unsigned long long)type;

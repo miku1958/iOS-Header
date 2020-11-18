@@ -10,12 +10,7 @@
 {
 }
 
-+ (Class)__AVAssetClass;
 + (Class)__AVDataAssetClass;
-+ (id)__AVMetadataFormatQuickTimeUserData;
-+ (Class)__AVMetadataItemClass;
-+ (id)__AVMetadataKeySpaceQuickTimeUserData;
-+ (Class)__AVURLAssetClass;
 + (BOOL)asset:(id)arg1 containsMetadataKey:(id)arg2;
 
 @end

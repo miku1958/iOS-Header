@@ -14,11 +14,13 @@
 - (NSDictionary *)getPendingCertificateUUIDs:(id<NEProfilePayloadBaseDelegate>)arg1;
 - (BOOL)setAppLayerVPNRuleSettings:(NSDictionary *)arg1 withAppIdentifier:(NSString *)arg2;
 - (BOOL)setAppLayerVPNUUID:(NSString *)arg1 andSafariDomains:(NSArray *)arg2;
+- (BOOL)setAssociatedDomains:(NSArray *)arg1;
 - (BOOL)setCalendarDomains:(NSArray *)arg1;
 - (BOOL)setCalendarDomains:(NSArray *)arg1 accountIdentifiers:(NSArray *)arg2;
 - (BOOL)setCertificates:(NSDictionary *)arg1;
 - (BOOL)setContactsDomains:(NSArray *)arg1;
 - (BOOL)setContactsDomains:(NSArray *)arg1 accountIdentifiers:(NSArray *)arg2;
+- (BOOL)setExcludedDomains:(NSArray *)arg1;
 - (BOOL)setMailDomains:(NSArray *)arg1;
 - (BOOL)setMailDomains:(NSArray *)arg1 accountIdentifiers:(NSArray *)arg2;
 - (BOOL)setPayloadInfoCommon:(NSString *)arg1 payloadOrganization:(NSString *)arg2;

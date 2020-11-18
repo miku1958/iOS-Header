@@ -6,24 +6,31 @@
 
 #import <SpringBoard/SBGestureSwitcherModifier.h>
 
+@class SBDismissSiriSwitcherModifier;
+
 @interface SBGridSwipeUpGestureSwitcherModifier : SBGestureSwitcherModifier
 {
     struct CGPoint _translation;
+    BOOL _isApplyingContentViewScaleToSwitcherViewBounds;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
 }
 
+- (void).cxx_destruct;
 - (void)_applyPrototypeSettings;
-- (long long)backdropBlurType;
+- (void)_performBlockByApplyContentViewScaleToSwitcherViewBounds:(CDUnknownBlockType)arg1;
 - (double)contentViewScale;
 - (void)didMoveToParentModifier:(id)arg1;
-- (long long)finalActionForGestureEvent:(id)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
+- (long long)finalResponseForGestureEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
+- (long long)homeScreenBackdropBlurType;
+- (id)initWithGestureID:(id)arg1;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (struct CGPoint)scrollViewContentOffset;
+- (struct CGRect)switcherViewBounds;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

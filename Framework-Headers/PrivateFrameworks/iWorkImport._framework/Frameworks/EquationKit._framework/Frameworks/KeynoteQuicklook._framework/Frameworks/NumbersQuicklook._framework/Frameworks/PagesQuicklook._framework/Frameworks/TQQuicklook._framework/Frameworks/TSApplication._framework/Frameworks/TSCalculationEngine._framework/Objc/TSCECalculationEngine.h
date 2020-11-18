@@ -15,6 +15,7 @@
 {
     struct TSCECalcEngine *_cppCalcEngine;
     BOOL _isUnarchiving;
+    BOOL _calculationWillShutDown;
     TSULocale *_locale;
 }
 
@@ -84,6 +85,8 @@
 - (struct TSCECellCoordSet)cellCoordinatesNeedingExcelImportForTable:(const UUIDData_5fbc143e *)arg1;
 - (unsigned long long)cellDependMemoryUseEstimate;
 - (id)cellDependenciesAsStringForOwner:(const UUIDData_5fbc143e *)arg1;
+- (struct TSCECellRefSet)cellDependentsOfCell:(const struct TSCECellRef *)arg1;
+- (BOOL)cellHasPrecedents:(const struct TSCECellRef *)arg1;
 - (BOOL)cellIsInACycle:(const struct TSCECellRef *)arg1;
 - (vector_0737b28f)cellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
 - (BOOL)cellWillBeModifiedInCurrentRecalcCycle:(const struct TSCECellRef *)arg1;
@@ -120,7 +123,7 @@
 - (void)endSuppressingWillModifyCalls;
 - (void)endTrackingNamesInTableForLegacyNRM:(const UUIDData_5fbc143e *)arg1;
 - (void)enumerateFormulaOwnersUsingBlock:(CDUnknownBlockType)arg1;
-- (struct TSCEValue)evaluateSynchedWithCalcEngineWithFormula:(struct TSCEFormula *)arg1 evalContext:(struct TSCEEvaluationContext *)arg2;
+- (struct TSCEValue)evaluateSynchedWithCalcEngineWithFormula:(id)arg1 evalContext:(struct TSCEEvaluationContext *)arg2;
 - (void)executeBlockWhileCalculationEngineIsNotWriting:(CDUnknownBlockType)arg1;
 - (id)extendTableUIDHistoryWithRewrite:(id)arg1;
 - (vector_38b190b0)formulaCoordsInRange:(const struct TSCERangeCoordinate *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
@@ -143,6 +146,7 @@
 - (unsigned short)internalFormulaOwnerIDForFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (BOOL)isCellReferenceDirty:(const struct TSCECellRef *)arg1;
 - (BOOL)isInCollaborationMode;
+- (BOOL)isRecalculationRunning;
 - (BOOL)isRecalculationStarted;
 - (id)legacyGlobalIDStringToOwnerUIDMap;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -188,6 +192,7 @@
 - (BOOL)recalculationIsPaused;
 - (BOOL)referenceIsValid:(const struct TSCERangeRef *)arg1;
 - (BOOL)referenceWasGuaranteedCleanAtRecalcCycleStart:(const struct TSCEAnyRef *)arg1;
+- (id)referencesToDirty;
 - (int)registerOwnerWithOwnerUID:(const UUIDData_5fbc143e *)arg1 owner:(id)arg2 referenceResolver:(id)arg3 baseOwnerUID:(const UUIDData_5fbc143e *)arg4 ownerKind:(unsigned short)arg5;
 - (void)removeAllFormulasCleanObserver:(id)arg1;
 - (void)removeAllFormulasFromOwner:(const UUIDData_5fbc143e *)arg1;
@@ -210,6 +215,7 @@
 - (id)resolverMatchingName:(id)arg1 contextResolver:(id)arg2;
 - (id)resolverMatchingNameWithContextContainer:(id)arg1 contextContainerName:(id)arg2;
 - (void)resumeRecalculation;
+- (void)resumeRecalculationForBlock:(CDUnknownBlockType)arg1;
 - (id)rewriteSpecStack;
 - (void)rollbackTableUIDHistoryWithRewriteInfo:(id)arg1;
 - (struct TSCECellRef)rootCauseForErrorInCell:(const struct TSCECellRef *)arg1 atRootCell:(BOOL *)arg2;

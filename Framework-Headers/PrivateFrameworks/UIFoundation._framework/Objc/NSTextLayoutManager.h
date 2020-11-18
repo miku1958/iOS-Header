@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <UIFoundation/NSSecureCoding-Protocol.h>
+#import <UIFoundation/NSTextSelectionDataSource-Protocol.h>
 #import <UIFoundation/NSTextViewportElementProvider-Protocol.h>
 
-@class NSArray, NSLayoutManager, NSOperationQueue, NSString, NSTextContainer, NSTextContentManager, NSTextViewportLayoutController;
-@protocol NSTextLayoutManagerDelegate, NSTextLayoutManagerDelegatePrivate;
+@class NSArray, NSLayoutManager, NSOperationQueue, NSString, NSTextContainer, NSTextContentManager, NSTextParagraph, NSTextRange, NSTextSelectionNavigation, NSTextViewportLayoutController;
+@protocol NSTextLayoutManagerDelegate, NSTextLayoutManagerDelegatePrivate, NSTextLocation;
 
-@interface NSTextLayoutManager : NSObject <NSTextViewportElementProvider, NSSecureCoding>
+@interface NSTextLayoutManager : NSObject <NSTextViewportElementProvider, NSSecureCoding, NSTextSelectionDataSource>
 {
     NSTextContentManager *_textContentManager;
     NSArray *_textContainers;
@@ -20,18 +21,23 @@
     long long _applicationFrameworkContext;
     id<NSTextLayoutManagerDelegatePrivate> _delegate;
     NSLayoutManager *_companion;
+    NSTextSelectionNavigation *_textSelectionNavigation;
+    BOOL _usesFontLeading;
+    BOOL _limitsLayoutForSuspiciousContents;
+    BOOL _usesDefaultHyphenation;
+    BOOL _allowsFontSubstitutionAffectingVerticalMetrics;
+    NSArray *_textSelections;
+    NSTextParagraph *_textParagraphForEmptyDocument;
+    BOOL _isProcessingRenderingAttributesMethod;
     CDStruct_80f920e0 _lastTextContainerEntry;
     CDStruct_80f920e0 *_textContainerEntries;
     CDStruct_80f920e0 *_textContainerEntriesAccessHint;
     unsigned long long _textContainerEntriesSize;
     unsigned long long _textContainerEntriesCount;
-    CDStruct_0f015c83 *_textLayoutSegments;
-    CDStruct_0f015c83 *_textLayoutSegmentsAccessHint;
-    CDStruct_0f015c83 *_softInvalidatedSegmentHead;
-    unsigned long long _textLayoutSegmentsSize;
-    unsigned long long _textLayoutSegmentsCount;
-    BOOL _usesFontLeading;
-    BOOL _limitsLayoutForSuspiciousContents;
+    double _firstNonContiguousLayoutSegmentOriginY;
+    id<NSTextLocation> _firstNonContiguousLayoutSegmentLocation;
+    id<NSTextLocation> _softInvalidationLocation;
+    CDUnknownBlockType _renderingAttributesValidator;
     NSTextContainer *_templateTextContainer;
     NSOperationQueue *_layoutQueue;
 }
@@ -39,47 +45,90 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<NSTextLayoutManagerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSTextRange *documentRange; // @dynamic documentRange;
 @property (readonly) unsigned long long hash;
 @property (strong) NSOperationQueue *layoutQueue; // @synthesize layoutQueue=_layoutQueue;
-@property BOOL limitsLayoutForSuspiciousContents; // @synthesize limitsLayoutForSuspiciousContents=_limitsLayoutForSuspiciousContents;
+@property BOOL limitsLayoutForSuspiciousContents; // @dynamic limitsLayoutForSuspiciousContents;
+@property (copy) CDUnknownBlockType renderingAttributesValidator; // @synthesize renderingAttributesValidator=_renderingAttributesValidator;
 @property (readonly) Class superclass;
 @property (strong) NSTextContainer *templateTextContainer; // @synthesize templateTextContainer=_templateTextContainer;
 @property (readonly, copy) NSArray *textContainers; // @dynamic textContainers;
 @property (readonly, weak) NSTextContentManager *textContentManager; // @dynamic textContentManager;
+@property (readonly) NSTextSelectionNavigation *textSelectionNavigation; // @dynamic textSelectionNavigation;
+@property (strong) NSArray *textSelections; // @dynamic textSelections;
 @property (readonly) struct CGRect usageBoundsForLastTextContainer;
-@property BOOL usesFontLeading; // @synthesize usesFontLeading=_usesFontLeading;
+@property BOOL usesDefaultHyphenation; // @dynamic usesDefaultHyphenation;
+@property BOOL usesFontLeading; // @dynamic usesFontLeading;
 
++ (void)_setThrowsOnAssertionError:(BOOL)arg1;
++ (void)_setValidatesInternalCaches:(BOOL)arg1;
++ (BOOL)_throwsOnAssertionError;
++ (BOOL)_validatesInternalCaches;
 + (Class)companionLayoutManagerClass;
++ (id)linkRenderingAttributes;
 + (BOOL)supportsSecureCoding;
++ (BOOL)usesDefaultHyphenation;
++ (id)validRenderingAttributes;
 + (Class)viewportLayoutControllerClass;
 - (void)_addTextContainerFromTemplate:(id)arg1;
 - (void)_commonInit;
+- (void)_fixSelectionAfterChangeInCharacterRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
 - (BOOL)_hasLayoutForLocation:(id)arg1;
+- (void)_invalidateTextParagraphForEmptyDocument;
+- (void)_prepareAttributedString:(id)arg1 forTextLayoutFragment:(id)arg2;
 - (void)_removeTextContainer;
 - (void)_removeTextContainersUntilCondition:(CDUnknownBlockType)arg1;
+- (id)_selectionAndMarkedTextAttributesForLocation:(id)arg1 inTextRange:(id)arg2 effectiveTextRange:(out id *)arg3;
+- (id)_textLayoutFragmentAtLocation:(id)arg1;
+- (id)_textLineFragmentAtLocation:(id)arg1 textLayoutFragment:(out id *)arg2 rangeDelta:(out long long *)arg3;
+- (id)_textParagraphForEmptyDocument;
+- (BOOL)_validateTextContainerEntries;
+- (void)addRenderingAttribute:(id)arg1 value:(id)arg2 forTextRange:(id)arg3;
+- (id)adjustedTextSelectionsForEditingContextFromTextSelections:(id)arg1;
+- (BOOL)allowsFontSubstitutionAffectingVerticalMetrics;
 - (long long)applicationFrameworkContext;
+- (long long)baseWritingDirectionAtLocation:(id)arg1;
 - (id)companionLayoutManager;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)ensureLayoutForBounds:(struct CGRect)arg1;
 - (void)ensureLayoutForRange:(id)arg1;
+- (void)enumerateCaretOffsetsInLineFragmentAtLocation:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateContainerBoundariesFromLocation:(id)arg1 reverse:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateRenderingAttributesFromLocation:(id)arg1 reverse:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateSubstringsFromLocation:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)enumerateTextLayoutFragmentsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)enumerateTextLayoutFragmentsInTextRange:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateTextSegmentsInRange:(id)arg1 type:(long long)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateViewportElementsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)finalizeAndPushLastTextContainer;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidateLayoutForRange:(id)arg1;
+- (void)invalidateRenderingAttributesForTextRange:(id)arg1;
+- (BOOL)isCountableDataSource;
+- (long long)layoutOrientationAtLocation:(id)arg1;
+- (id)lineFragmentRangeForPoint:(struct CGPoint)arg1 inContainerAtLocation:(id)arg2;
+- (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
+- (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
+- (void)processLayoutInvalidationForTextRange:(id)arg1 synchronizing:(BOOL)arg2;
 - (id)rangeForTextContainerAtIndex:(long long)arg1;
+- (void)removeRenderingAttribute:(id)arg1 forTextRange:(id)arg2;
+- (id)renderingAttributesForLink:(id)arg1 atLocation:(id)arg2;
+- (id)renderingColorForDocumentColor:(id)arg1 atLocation:(id)arg2;
 - (void)replaceCharactersInRange:(id)arg1 withAttributedString:(id)arg2;
 - (void)replaceCharactersInRange:(id)arg1 withElements:(id)arg2;
 - (void)replaceTextContentManager:(id)arg1;
+- (void)setAllowsFontSubstitutionAffectingVerticalMetrics:(BOOL)arg1;
 - (void)setApplicationFrameworkContext:(long long)arg1;
+- (void)setRenderingAttributes:(id)arg1 forTextRange:(id)arg2;
 - (void)setTextContentManager:(id)arg1;
 - (void)synchronize;
 - (void)textContainerChangedGeometry:(id)arg1;
 - (id)textContainerForLocation:(id)arg1;
 - (id)textLayoutFragmentForLocation:(id)arg1;
 - (id)textLayoutFragmentForPosition:(struct CGPoint)arg1 inTextContainerAtIndex:(long long)arg2;
+- (id)textRangeForSelectionGranularity:(long long)arg1 enclosingLocation:(id)arg2;
 - (void)updateLayoutWithTextLayoutFragment:(id)arg1;
 - (struct CGRect)usageBoundsInTextContainerAtIndex:(long long)arg1;
 - (id)viewportLayoutController;

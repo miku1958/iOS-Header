@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDIDSMessageCenter, IDSDevice, NSData, NSDictionary, NSString;
+@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString;
 
 @interface HDIDSOutgoingRequest : NSObject <HDNanoSyncDescription>
 {
@@ -16,7 +16,7 @@
     BOOL _queueOnly1;
     BOOL _forceLocalDelivery;
     unsigned short _messageID;
-    IDSDevice *_toDevice;
+    HDIDSParticipant *_toParticipant;
     NSData *_data;
     NSString *_idsIdentifier;
     unsigned long long _priority;
@@ -43,12 +43,12 @@
 @property (nonatomic) double responseTimeout; // @synthesize responseTimeout=_responseTimeout;
 @property (nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) IDSDevice *toDevice; // @synthesize toDevice=_toDevice;
+@property (readonly, nonatomic) HDIDSParticipant *toParticipant; // @synthesize toParticipant=_toParticipant;
 
 + (id)_requestWithMessageID:(unsigned short)arg1 message:(id)arg2 syncStore:(id)arg3;
 + (id)activationRequestWithRestore:(id)arg1 syncStore:(id)arg2;
 + (id)changeRequestWithChangeSet:(id)arg1 status:(id)arg2 syncStore:(id)arg3;
-+ (id)requestWithMessageID:(unsigned short)arg1 device:(id)arg2;
++ (id)requestWithMessageID:(unsigned short)arg1 participant:(id)arg2;
 + (id)speculativeChangeRequestWithChangeSet:(id)arg1 syncStore:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;

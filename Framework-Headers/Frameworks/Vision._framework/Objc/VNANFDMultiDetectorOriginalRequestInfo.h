@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long originalRequestResultsIndex; // @synthesize originalRequestResultsIndex=_originalRequestResultsIndex;
 @property (readonly) NSString *requestRevisionKey; // @synthesize requestRevisionKey=_requestRevisionKey;
 
++ (id)requestClassToMultiDetectorClassPerRequestRevision;
 - (void).cxx_destruct;
 - (id)initWithProcessingOptionRequestRevisionKey:(id)arg1 originalRequestResultsIndex:(unsigned long long)arg2;
 

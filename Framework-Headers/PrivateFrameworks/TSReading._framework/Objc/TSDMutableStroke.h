@@ -6,20 +6,22 @@
 
 #import <TSReading/TSDStroke.h>
 
+#import <TSReading/TSDMutableStroke-Protocol.h>
+
 @class TSDStrokePattern, TSUColor;
 
-@interface TSDMutableStroke : TSDStroke
+@interface TSDMutableStroke : TSDStroke <TSDMutableStroke>
 {
 }
 
-@property (nonatomic) double actualWidth; // @dynamic actualWidth;
-@property (nonatomic) int cap; // @dynamic cap;
-@property (strong, nonatomic) TSUColor *color; // @dynamic color;
+@property (nonatomic) double actualWidth;
+@property (nonatomic) int cap;
+@property (copy, nonatomic) TSUColor *color;
 @property (nonatomic) BOOL dontClearBackground; // @dynamic dontClearBackground;
-@property (nonatomic) int join; // @dynamic join;
-@property (nonatomic) double miterLimit; // @dynamic miterLimit;
-@property (strong, nonatomic) TSDStrokePattern *pattern; // @dynamic pattern;
-@property (nonatomic) double width; // @dynamic width;
+@property (nonatomic) int join;
+@property (nonatomic) double miterLimit;
+@property (copy, nonatomic) TSDStrokePattern *pattern;
+@property (nonatomic) double width;
 
 + (id)emptyStroke;
 + (id)stroke;

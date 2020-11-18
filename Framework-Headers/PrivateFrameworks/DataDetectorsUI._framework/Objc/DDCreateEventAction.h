@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) DDRemoteActionViewController *viewController; // @synthesize viewController;
 
 + (BOOL)actionAvailableForEvent:(id)arg1;
-+ (id)cachedEventForICSString:(id)arg1;
 - (void).cxx_destruct;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (id)icon;

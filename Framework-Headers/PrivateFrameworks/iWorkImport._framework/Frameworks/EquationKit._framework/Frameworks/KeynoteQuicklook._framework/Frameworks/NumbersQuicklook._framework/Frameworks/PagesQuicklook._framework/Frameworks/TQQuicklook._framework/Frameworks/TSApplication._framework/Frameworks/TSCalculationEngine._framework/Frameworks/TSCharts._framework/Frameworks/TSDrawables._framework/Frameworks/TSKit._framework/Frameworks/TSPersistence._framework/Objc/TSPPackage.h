@@ -26,11 +26,13 @@
     BOOL _isClosed;
     SFUCryptoKey *_decryptionKey;
     unsigned long long _fileFormatVersion;
+    unsigned long long _documentReadVersion;
 }
 
 @property (readonly) TSUZipFileArchive *componentZipArchive;
 @property (readonly, nonatomic) SFUCryptoKey *decryptionKey; // @synthesize decryptionKey=_decryptionKey;
 @property (readonly, nonatomic) TSPDocumentProperties *documentProperties;
+@property (readonly, nonatomic) unsigned long long documentReadVersion; // @synthesize documentReadVersion=_documentReadVersion;
 @property (readonly, weak, nonatomic) id<TSPFileCoordinatorDelegate> fileCoordinatorDelegate; // @synthesize fileCoordinatorDelegate=_fileCoordinatorDelegate;
 @property (readonly, nonatomic) unsigned long long fileFormatVersion; // @synthesize fileFormatVersion=_fileFormatVersion;
 @property (readonly, nonatomic) BOOL isClosed; // @synthesize isClosed=_isClosed;
@@ -57,6 +59,7 @@
 - (void)copyComponent:(id)arg1 toPackageURL:(id)arg2 packageLocator:(id)arg3 zipFileWriter:(id)arg4 encryptionKey:(id)arg5 canLink:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)dataAtRelativePath:(id)arg1 allowDecryption:(BOOL)arg2 error:(id *)arg3;
 - (void)didCloseDocument;
+- (void)didReadDocumentReadVersion:(unsigned long long)arg1;
 - (void)didReadFileFormatVersion:(unsigned long long)arg1;
 - (void)didReferenceData:(id)arg1;
 - (BOOL)didReloadZipArchive:(id)arg1 packageURL:(id)arg2 error:(id *)arg3;

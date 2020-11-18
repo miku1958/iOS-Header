@@ -31,6 +31,11 @@
     unsigned long long _customWidth;
     unsigned long long _customHeight;
     unsigned long long _tilesPerFrame;
+    unsigned int _pixelFormat;
+    BOOL _ltrpEnabled;
+    unsigned long long _hdrMode;
+    NSString *_remoteDeviceName;
+    BOOL _latencySensitiveModeEnabled;
 }
 
 @property (nonatomic) long long captureSource; // @synthesize captureSource=_captureSource;
@@ -39,8 +44,13 @@
 @property (nonatomic) unsigned long long cvoExtensionID; // @synthesize cvoExtensionID=_cvoExtensionID;
 @property (nonatomic) BOOL enableCVO; // @synthesize enableCVO=_enableCVO;
 @property (nonatomic) unsigned long long framerate; // @synthesize framerate=_framerate;
+@property (nonatomic) unsigned long long hdrMode; // @synthesize hdrMode=_hdrMode;
 @property (nonatomic) BOOL isVideoProtected; // @synthesize isVideoProtected=_isVideoProtected;
 @property (nonatomic) unsigned long long keyFrameInterval; // @synthesize keyFrameInterval=_keyFrameInterval;
+@property (nonatomic, getter=isLatencySensitiveModeEnabled) BOOL latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
+@property (nonatomic, getter=isLTRPEnabled) BOOL ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
+@property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (strong, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
 @property (nonatomic) int remoteVideoInitialOrientation; // @synthesize remoteVideoInitialOrientation=_remoteVideoInitialOrientation;
 @property (strong, nonatomic) NSString *rxCodecFeatureListString; // @synthesize rxCodecFeatureListString=_rxCodecFeatureListString;
 @property (nonatomic) long long rxCodecType; // @synthesize rxCodecType=_rxCodecType;
@@ -60,13 +70,14 @@
 + (long long)clientVideoResolutionFromResolution:(long long)arg1;
 + (long long)clientVideoStreamModeFromVideoStreamType:(long long)arg1;
 + (long long)codecTypeWithClientCodecType:(long long)arg1;
++ (BOOL)isPixelFormatValid:(unsigned int)arg1 hdrMode:(unsigned long long)arg2;
 + (int)videoCaptureSourceFromClientCaptureSource:(long long)arg1;
 + (long long)videoResolutionFromClientResolution:(long long)arg1;
 + (long long)videoStreamTypeFromClientVideoStreamMode:(long long)arg1;
 - (void)dealloc;
 - (id)dictionary;
 - (id)init;
-- (BOOL)isValid;
+- (BOOL)isValidForDirection:(long long)arg1;
 - (void)setUpWithDictionary:(id)arg1;
 
 @end

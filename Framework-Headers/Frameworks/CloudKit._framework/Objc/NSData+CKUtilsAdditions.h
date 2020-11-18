@@ -22,10 +22,11 @@
 + (id)CKDataWithHexString:(id)arg1 stringIsUppercase:(BOOL)arg2;
 - (id)CKBase64URLSafeString;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (id)CKHashedDescription;
 - (id)CKHexString;
 - (id)CKLowercaseHexStringWithoutSpaces;
 - (id)CKSHA256;
 - (id)CKUppercaseHexStringWithoutSpaces;
-- (id)hashedDescription;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @end
 

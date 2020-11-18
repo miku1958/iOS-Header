@@ -8,18 +8,20 @@
 
 #import <SearchUI/SearchUIKeyboardableNavigationProtocol-Protocol.h>
 
-@class NSArray, NSString, SearchUIDragSource, SearchUIRowModel, UIView, UIViewController;
-@protocol SearchUIFeedbackDelegateInternal, SearchUIResultShortLook;
+@class NSArray, NSString, SearchUIDragSource, SearchUIRowModel, UIView;
+@protocol SearchUIFeedbackDelegateInternal;
 
 @interface SearchUITableViewCell : UITableViewCell <SearchUIKeyboardableNavigationProtocol>
 {
     BOOL _isExpanded;
+    int _sfSeparatorStyle;
     SearchUIRowModel *_rowModel;
     UIView *_platterView;
     id<SearchUIFeedbackDelegateInternal> _delegate;
     UIView *_sizingContainer;
     SearchUIDragSource *_dragSource;
-    UIViewController<SearchUIResultShortLook> *_shortLookViewController;
+    UIView *_leadingView;
+    UIView *_leadingTextView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,9 +30,11 @@
 @property (strong, nonatomic) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
+@property (readonly, nonatomic) UIView *leadingTextView; // @synthesize leadingTextView=_leadingTextView;
+@property (readonly, nonatomic) UIView *leadingView; // @synthesize leadingView=_leadingView;
 @property (strong, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property (strong, nonatomic) SearchUIRowModel *rowModel; // @synthesize rowModel=_rowModel;
-@property (weak, nonatomic) UIViewController<SearchUIResultShortLook> *shortLookViewController; // @synthesize shortLookViewController=_shortLookViewController;
+@property (nonatomic) int sfSeparatorStyle; // @synthesize sfSeparatorStyle=_sfSeparatorStyle;
 @property (readonly) BOOL shouldDrawBackgroundColor;
 @property (strong, nonatomic) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;
 @property (readonly) Class superclass;
@@ -52,6 +56,8 @@
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isExpandable;
+- (id)keyboardCardSectionForFocus;
+- (id)keyboardResultForFocus;
 - (void)layoutSubviews;
 - (BOOL)navigateKeyboardDown;
 - (BOOL)navigateKeyboardLeft;
@@ -63,12 +69,14 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)supportsRecycling;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)tabKeyPressed;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateExpanded:(BOOL)arg1;
 - (void)updateWithResult:(id)arg1;
 - (void)updateWithResults:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

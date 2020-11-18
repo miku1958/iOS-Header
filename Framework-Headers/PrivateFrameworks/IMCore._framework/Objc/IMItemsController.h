@@ -19,8 +19,10 @@
 @property (readonly, nonatomic) BOOL isMoreToLoad;
 
 + (id)_charactersToIgnoreWhenParsingTextContent;
+- (id)_appendArchivedItemsToItemsArray:(id)arg1;
+- (void)_didReplaceItem:(struct __CFArray *)arg1 oldItem:(id)arg2 idx:(long long)arg3;
 - (id)_firstMessage;
-- (void)_handleItem:(id)arg1;
+- (void)_handleItem:(id)arg1 forChatStyle:(unsigned char)arg2;
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (id)_initWithItems:(id)arg1;
 - (id)_itemForGUID:(id)arg1;

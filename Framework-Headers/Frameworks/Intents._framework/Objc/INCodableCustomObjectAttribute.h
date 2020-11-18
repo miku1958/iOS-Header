@@ -21,6 +21,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionObjectTypeKey;
+- (id)__INCodableDescriptionObjectTypeNamespaceKey;
+- (id)__INIntentResponseCodableDescriptionObjectTypeKey;
+- (id)__INIntentResponseCodableDescriptionObjectTypeNamespaceKey;
+- (id)__INTypeCodableDescriptionObjectTypeKey;
+- (id)__INTypeCodableDescriptionObjectTypeNamespaceKey;
 - (Class)_unsafeObjectClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;

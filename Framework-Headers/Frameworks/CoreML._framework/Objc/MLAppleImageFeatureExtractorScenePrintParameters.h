@@ -8,12 +8,12 @@
 
 @interface MLAppleImageFeatureExtractorScenePrintParameters : NSObject
 {
-    long long _scenePrintVersion;
+    unsigned long long _scenePrintVersion;
 }
 
-@property long long scenePrintVersion; // @synthesize scenePrintVersion=_scenePrintVersion;
+@property (readonly) unsigned long long scenePrintVersion; // @synthesize scenePrintVersion=_scenePrintVersion;
 
-- (id)initWithSpec:(const struct VisionFeaturePrint *)arg1 error:(id *)arg2;
+- (id)initScenePrintParameters:(unsigned long long)arg1 error:(id *)arg2;
 
 @end
 

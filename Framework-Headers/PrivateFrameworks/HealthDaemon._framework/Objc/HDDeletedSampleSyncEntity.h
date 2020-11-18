@@ -22,6 +22,7 @@
 + (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
 + (BOOL)_insertObjectsFromCodableObjectCollection:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)_predicateForSyncSession:(id)arg1;
++ (Class)_syncedSampleTypeClass;
 + (Class)healthEntityClass;
 + (int)nanoSyncObjectType;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;

@@ -17,6 +17,7 @@
     SOAuthorizationCore *_authorizationCore;
     SOExtension *_extension;
     SORemoteExtensionViewController *_extensionViewController;
+    CDUnknownBlockType _pendingFinishAuthorizationBlock;
     BOOL _enableEmbeddedAuthorizationViewController;
     id<SOAuthorizationDelegate> _delegate;
 }
@@ -33,14 +34,17 @@
 + (BOOL)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2;
 + (BOOL)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 useInternalExtensions:(BOOL)arg3;
 - (void).cxx_destruct;
+- (void)_applicationActivationWithTimeout:(BOOL)arg1;
 - (void)_cancelAuthorization;
 - (void)_extensionCleanup;
 - (void)_finishAuthorizationWithCredential:(id)arg1 error:(id)arg2;
+- (void)applicationDidBecomeActive:(id)arg1;
 - (void)authorizationDidCompleteWithCredential:(id)arg1 error:(id)arg2;
 - (void)beginAuthorizationWithOperation:(id)arg1 url:(id)arg2 httpHeaders:(id)arg3 httpBody:(id)arg4;
 - (void)beginAuthorizationWithParameters:(id)arg1;
 - (void)beginAuthorizationWithURL:(id)arg1 httpHeaders:(id)arg2 httpBody:(id)arg3;
 - (void)cancelAuthorization;
+- (void)dealloc;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;

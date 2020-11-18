@@ -18,6 +18,7 @@
     NSArray *_primaryLabelWithoutShowAllButtonNormalConstraints;
     NSArray *_commonNormalConstraints;
     NSArray *_commonConstraints;
+    BOOL _stacked;
     UILabel *_primaryLabel;
     EKGroupInfoButton *_showAllButton;
     EKCalendarChooser *_chooser;
@@ -37,6 +38,8 @@
 - (void)_eventStoreChanged;
 - (void)_groupShowAllButtonTapped:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)layoutMarginsDidChange;
+- (void)tintColorDidChange;
 - (void)updateSpinner;
 
 @end

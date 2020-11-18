@@ -8,7 +8,12 @@
 
 @interface HUClipScrubberPlayheadView : UIView
 {
+    BOOL _drawsUpperContent;
+    BOOL _editing;
 }
+
+@property (nonatomic) BOOL drawsUpperContent; // @synthesize drawsUpperContent=_drawsUpperContent;
+@property (nonatomic) BOOL editing; // @synthesize editing=_editing;
 
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

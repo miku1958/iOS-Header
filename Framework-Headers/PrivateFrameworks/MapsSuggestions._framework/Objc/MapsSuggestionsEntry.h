@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <MapsSuggestions/MapsSuggestionsJSONable-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/NSCopying-Protocol.h>
 #import <MapsSuggestions/NSSecureCoding-Protocol.h>
 
 @class GEOMapItemStorage, NSData, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 
-@interface MapsSuggestionsEntry : NSObject <NSCopying, NSSecureCoding, MapsSuggestionsObject>
+@interface MapsSuggestionsEntry : NSObject <NSCopying, NSSecureCoding, MapsSuggestionsObject, MapsSuggestionsJSONable>
 {
     NSMutableSet *_typeHistory;
     NSMutableDictionary *_sourceSpecificInfo;
@@ -76,8 +77,6 @@
 - (id)URLForKey:(id)arg1;
 - (id)UUIDForKey:(id)arg1;
 - (void)_overrideType:(long long)arg1;
-- (void)_setValue:(id)arg1 forKey:(id)arg2 class:(Class)arg3;
-- (id)_valueForKey:(id)arg1 class:(Class)arg2;
 - (BOOL)_wasEverOfType:(long long)arg1;
 - (BOOL)_wasEverOneOfTypes:(id)arg1;
 - (long long)availableRemovalBehaviors;
@@ -92,7 +91,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)endTime;
 - (BOOL)expiresBeforeEntry:(id)arg1;
-- (id)fullFlightCode;
 - (BOOL)hasEndTime;
 - (BOOL)hasEssentialFlightInfo;
 - (BOOL)hasFullFlightInfoAndGate;
@@ -101,7 +99,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 title:(id)arg2;
 - (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(id)arg6 sourceSpecificInfo:(id)arg7;
-- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
 - (long long)integerForKey:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEntry:(id)arg1;
@@ -110,6 +107,7 @@
 - (void)mergeFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2 protectTitles:(BOOL)arg3 protectTitleDecorations:(BOOL)arg4 protectMapItem:(BOOL)arg5 protectWeight:(BOOL)arg6 protectExpiration:(BOOL)arg7 protectIcon:(BOOL)arg8;
 - (void)mergeSpecificsFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2;
 - (id)numberForKey:(id)arg1;
+- (id)objectForJSON;
 - (void)replaceByEntry:(id)arg1;
 - (void)replaceByEntry:(id)arg1 forceDecoratedOverwrites:(BOOL)arg2;
 - (void)resetAvailableRemovalBehavior:(long long)arg1;
@@ -123,13 +121,11 @@
 - (void)setNumber:(id)arg1 forKey:(id)arg2;
 - (void)setSourceSpecificInfo:(id)arg1;
 - (void)setString:(id)arg1 forKey:(id)arg2;
-- (void)setStringArray:(id)arg1 forKey:(id)arg2;
 - (void)setURL:(id)arg1 forKey:(id)arg2;
 - (void)setUUID:(id)arg1 forKey:(id)arg2;
 - (id)sourceSpecificInfo;
 - (id)startTime;
 - (BOOL)startsBeforeEntry:(id)arg1;
-- (id)stringArrayForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
 - (unsigned long long)uint64ForKey:(id)arg1;
 - (BOOL)updateUndecoratedSubtitle:(id)arg1;

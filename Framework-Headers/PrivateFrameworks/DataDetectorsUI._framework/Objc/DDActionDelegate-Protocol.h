@@ -8,5 +8,6 @@
 
 @protocol DDActionDelegate
 - (void)actionDidFinish:(DDAction *)arg1;
+- (void)actionDidFinish:(DDAction *)arg1 shouldDismiss:(BOOL)arg2;
 @end
 

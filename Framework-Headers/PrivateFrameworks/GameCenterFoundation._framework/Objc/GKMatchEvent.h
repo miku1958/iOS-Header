@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) GKPlayer *recipientPlayer; // @synthesize recipientPlayer=_recipientPlayer;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

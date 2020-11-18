@@ -9,7 +9,7 @@
 #import <WorkflowKit/NSMutableCopying-Protocol.h>
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 
-@class CKRecordID, NSArray, NSNumber, NSString;
+@class CKRecordID, NSArray, NSData, NSNumber, NSString;
 
 @interface WFGalleryPage : NSObject <WFCloudKitItem, NSMutableCopying>
 {
@@ -22,11 +22,13 @@
     NSArray *_routines;
     NSArray *_donations;
     NSArray *_donationsGroupedByApp;
+    NSArray *_automationSuggestions;
     NSString *_language;
     CKRecordID *_base;
     NSString *_persistentIdentifier;
 }
 
+@property (copy, nonatomic) NSArray *automationSuggestions; // @synthesize automationSuggestions=_automationSuggestions;
 @property (readonly, nonatomic) NSArray *banners; // @synthesize banners=_banners;
 @property (readonly, nonatomic) CKRecordID *base; // @synthesize base=_base;
 @property (readonly, nonatomic) NSArray *collections; // @synthesize collections=_collections;
@@ -41,6 +43,7 @@
 @property (readonly, nonatomic) NSNumber *minVersion; // @synthesize minVersion=_minVersion;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (readonly, nonatomic) NSArray *routines; // @synthesize routines=_routines;
 @property (readonly) Class superclass;
 

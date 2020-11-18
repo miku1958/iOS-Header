@@ -8,21 +8,19 @@
 
 #import <MetalTools/MTLHeapSPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLDevice;
 
 @interface MTLToolsHeap : MTLToolsResource <MTLHeapSPI>
 {
-    MTLToolsPointerArray *_buffers;
-    MTLToolsPointerArray *_textures;
 }
 
-@property (readonly, nonatomic) MTLToolsPointerArray *buffers; // @synthesize buffers=_buffers;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly) unsigned long long currentAllocatedSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hazardTrackingMode;
 @property (copy) NSString *label;
@@ -30,17 +28,13 @@
 @property (readonly) unsigned long long size;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) MTLToolsPointerArray *textures; // @synthesize textures=_textures;
 @property (readonly) long long type;
 @property (readonly) unsigned long long unfilteredResourceOptions;
 @property (readonly) unsigned long long usedSize;
 
-- (id)_wrapBuffer:(id)arg1;
-- (id)_wrapTexture:(id)arg1;
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
+- (id)_newToolsBuffer:(id)arg1;
+- (id)_newToolsTexture:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (unsigned long long)maxAvailableSizeWithAlignment:(unsigned long long)arg1;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;

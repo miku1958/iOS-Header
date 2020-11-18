@@ -47,7 +47,6 @@
 - (void)_hideErrorMessage;
 - (void)_reportUserTransparencyViewControllerEventWithType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_showErrorMessage:(id)arg1;
-- (id)bundleForTransparencyDetailsViewFramework;
 - (void)errorDelegate;
 - (void)immediatelyLoadViewControllerBeforeNetworkRequest;
 - (id)initWithUserTransparencyDetails:(id)arg1;

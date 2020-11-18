@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaRemote/MRAVConcreteEndpoint.h>
+#import <MediaRemote/MRAVEndpoint.h>
 
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
 @class MRAVOutputContext, MROutputContextController, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MRAVLocalEndpoint : MRAVConcreteEndpoint <NSSecureCoding>
+@interface MRAVLocalEndpoint : MRAVEndpoint <NSSecureCoding>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     MRAVOutputContext *_outputContext;
@@ -25,19 +25,14 @@
 + (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_ouputDevicesForOutputDeviceUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
-- (void)_registerForNotifications;
-- (void)_reloadOutputDevicesFromContext;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)canModifyGroupMembership;
-- (void)connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)connectionType;
 - (void)dealloc;
+- (id)designatedGroupLeader;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithOutputContext:(id)arg1;
-- (id)initWithOutputDevices:(id)arg1;
 - (BOOL)isProxyGroupPlayer;
 - (id)origin;
 - (void)outputContextDataSourceOutputDeviceDidChangeVolume:(id)arg1;

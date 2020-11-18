@@ -20,6 +20,7 @@
     BOOL _isFetchingDataFromCloudKit;
     BOOL _hasAttemptedToFetchDevicesAtLeastOnce;
     NSMutableArray *_syncedCloudTabDevicesFromCloudKit;
+    NSArray *_filteredAndSortedSyncedCloudTabDevicesFromCloudKit;
     WBSCloudTabDevice *_currentDevice;
     NSMutableDictionary *_deviceUUIDsToCloseRequestsFromCloudKit;
     NSError *_lastFetchError;
@@ -51,8 +52,8 @@
 - (id)_currentDeviceUUID;
 - (BOOL)_deviceIsStoredInCloudKit:(id)arg1;
 - (id)_deviceWithTabsWithOutstandingCloseRequestsRemoved:(id)arg1 closeRequestsForDevice:(id)arg2;
+- (id)_devicesByFilteringAndSortingDevices:(id)arg1;
 - (id)_devicesByRemovingDevicesFromKVSWithOutstandingCloseRequests:(id)arg1;
-- (id)_devicesByRemovingThisDeviceAndDevicesWithNoTabs:(id)arg1;
 - (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2 error:(id)arg3;
 - (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2 fetchedDevicesBySyncing:(BOOL)arg3 error:(id)arg4;
 - (unsigned long long)_indexOfDevice:(id)arg1 inSyncedCloudTabDevices:(id)arg2;

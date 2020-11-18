@@ -7,7 +7,7 @@
 #import <IDS/IDSService.h>
 
 @interface IDSService (PB)
-- (id)pb_defaultPairedDeviceID;
-- (id)pb_mineDevices;
+- (id)pb_defaultPairedDeviceIDIncludingTinkerDevices;
+- (id)pb_mineTinkerDevices;
 @end
 

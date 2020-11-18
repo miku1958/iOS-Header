@@ -14,6 +14,7 @@
 
 @property (readonly) NSArray *contents;
 
+- (BOOL)isObject:(id)arg1 equalTo:(id)arg2;
 
 @end
 

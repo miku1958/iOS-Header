@@ -16,6 +16,8 @@
 + (Class)configurationClass;
 + (id)iconLocation;
 - (id)floatyFolderView;
+- (void)folderView:(id)arg1 didBeginEditingTitle:(id)arg2;
+- (void)folderView:(id)arg1 didEndEditingTitle:(id)arg2;
 - (BOOL)isDisplayingIcon:(id)arg1 inLocation:(id)arg2;
 - (BOOL)isDisplayingIconView:(id)arg1 inLocation:(id)arg2;
 - (BOOL)isPresentingIconLocation:(id)arg1;

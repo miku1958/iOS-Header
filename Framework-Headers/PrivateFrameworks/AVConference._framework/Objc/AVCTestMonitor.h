@@ -24,8 +24,13 @@
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)registerBlocksForNotifications;
 - (void)requestReport;
+- (void)setCannedReplayPath:(id)arg1;
+- (void)setEmulatedNetworkConfigurationPath:(id)arg1;
 - (void)setEmulatedRxPLR:(double)arg1;
 - (void)setEnableLoopbackInterface:(BOOL)arg1;
+- (void)setEnableOneToOneMode:(BOOL)arg1;
+- (void)setForcedCapBitrate:(int)arg1;
+- (void)setForcedTargetBitrate:(int)arg1;
 - (void)setupNotificationQueue:(id)arg1;
 - (void)updateAudioInjectConfig:(id)arg1;
 

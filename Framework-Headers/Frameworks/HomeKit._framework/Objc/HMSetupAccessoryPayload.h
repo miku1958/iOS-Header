@@ -20,8 +20,10 @@
     NSString *_setupCode;
     NSString *_setupID;
     NSNumber *_categoryNumber;
-    NSNumber *_flags;
+    NSString *_productData;
+    NSString *_productNumber;
     NSURL *_setupPayloadURL;
+    NSNumber *_flags;
 }
 
 @property (strong, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
@@ -29,6 +31,8 @@
 @property (strong, nonatomic) NSNumber *categoryNumber; // @synthesize categoryNumber=_categoryNumber;
 @property (strong, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
+@property (strong, nonatomic) NSString *productData; // @synthesize productData=_productData;
+@property (strong, nonatomic) NSString *productNumber; // @synthesize productNumber=_productNumber;
 @property (strong, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
 @property (strong, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
 @property (strong, nonatomic) NSURL *setupPayloadURL; // @synthesize setupPayloadURL=_setupPayloadURL;

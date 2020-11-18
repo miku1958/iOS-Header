@@ -36,10 +36,10 @@
 - (id)_extraVisitsToDeleteWhenDeletingItems:(id)arg1 visits:(id)arg2;
 - (id)_extraVisitsToDeleteWhenDeletingItems:(id)arg1 visits:(id)arg2 relatedVisitKey:(id)arg3 relatedVisitsQueryFactory:(CDUnknownBlockType)arg4;
 - (void)_prepareWithTriggeringItems:(id)arg1 triggeringVisits:(id)arg2;
-- (void)execute;
+- (id)initWithSQLiteStore:(id)arg1 discoveredItemsToDelete:(id)arg2;
 - (id)initWithSQLiteStore:(id)arg1 triggeringItems:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4 reason:(long long)arg5;
 - (id)initWithSQLiteStore:(id)arg1 triggeringVisits:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4;
-- (void)prepare;
+- (id)initWithSQLiteStore:(id)arg1 triggeringVisits:(id)arg2 updatedLastVisitsByItem:(id)arg3;
 
 @end
 

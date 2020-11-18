@@ -75,7 +75,7 @@
 - (id)customPosScatterXFormulas;
 - (id)dataFormatterForAxis:(id)arg1 documentRoot:(id)arg2;
 - (id)dataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
-- (id)dataFormatterFromFormatStruct:(CDStruct_cf9a5aa8)arg1 in:(id)arg2;
+- (id)dataFormatterFromFormatStruct:(CDStruct_a4ff7456)arg1 in:(id)arg2;
 - (id)dataFormulas;
 - (id)errorBarCustomFormulaForSeriesIndex:(unsigned long long)arg1 dataType:(int)arg2;
 - (struct TSCERecalculationState)evaluateFormulaAt:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;

@@ -12,6 +12,7 @@
 
 + (id)algorithm;
 + (id)assetVersion;
++ (id)compatibilityVersion;
 + (id)decayRate;
 + (id)osBuild;
 + (id)score;

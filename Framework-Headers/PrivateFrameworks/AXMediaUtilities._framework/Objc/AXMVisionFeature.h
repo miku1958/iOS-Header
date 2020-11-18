@@ -9,7 +9,7 @@
 #import <AXMediaUtilities/AXMJSONSerializable-Protocol.h>
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMLanguage, AXMTaggedText, AXMVisionFeatureAestheticsResult, AXMVisionFeatureAssetMetadata, AXMVisionFeatureColorInfo, AXMVisionFeatureFaceDetectionResult, CMDeviceMotion, NSArray, NSDictionary, NSNumber, NSString;
+@class AXMVisionFeatureAestheticsResult, AXMVisionFeatureAssetMetadata, AXMVisionFeatureColorInfo, AXMVisionFeatureFaceDetectionResult, CMDeviceMotion, NSArray, NSDictionary, NSMutableDictionary, NSString;
 @protocol NSSecureCoding;
 
 @interface AXMVisionFeature : NSObject <AXMJSONSerializable, NSSecureCoding>
@@ -18,18 +18,18 @@
     NSArray *_subfeatures;
     NSString *_barcodeType;
     long long _ocrFeatureType;
-    AXMLanguage *_textDetectionLanguage;
+    NSArray *_effectiveTextDetectionLocales;
     double _creationDate;
     struct CGRect _frame;
     struct CGRect _normalizedFrame;
     NSString *_value;
-    NSNumber *_isValueSpeakable;
-    AXMTaggedText *_taggedText;
+    BOOL _isValueSpeakable;
     AXMVisionFeatureColorInfo *_colorInfo;
     AXMVisionFeatureAssetMetadata *_assetMetadata;
     double _blur;
     double _brightness;
     double _confidence;
+    BOOL _isLowConfidence;
     struct CGAffineTransform _horizonTransform;
     float _horizonAngle;
     AXMVisionFeatureFaceDetectionResult *_faceDetectionResult;
@@ -40,12 +40,16 @@
     NSString *_classificationLabel;
     NSString *_classificationLocalizedValue;
     NSString *_caption;
+    NSMutableDictionary *_featureGates;
+    BOOL _captionMayContainSensitiveContent;
+    long long _uiClass;
     AXMVisionFeatureAestheticsResult *_aestheticsResult;
     CMDeviceMotion *_deviceMotion;
     long long _deviceOrientation;
     long long _cameraType;
     NSObject<NSSecureCoding> *_userContext;
     NSDictionary *_debugRectangles;
+    NSString *_overrideLabel;
     struct CGRect _unpaddedDetectedFaceRect;
 }
 
@@ -57,6 +61,7 @@
 @property (readonly, nonatomic) long long cameraType; // @synthesize cameraType=_cameraType;
 @property (readonly, nonatomic) struct CGSize canvasSize;
 @property (readonly, nonatomic) NSString *caption;
+@property (nonatomic) BOOL captionMayContainSensitiveContent; // @synthesize captionMayContainSensitiveContent=_captionMayContainSensitiveContent;
 @property (readonly, nonatomic) NSString *classificationLabel;
 @property (readonly, nonatomic) NSString *classificationLocalizedValue;
 @property (readonly, nonatomic) AXMVisionFeatureColorInfo *colorInfo;
@@ -70,6 +75,7 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) AXMVisionFeatureFaceDetectionResult *faceDetectionResult;
 @property (readonly, nonatomic) unsigned long long faceId;
+@property (readonly, nonatomic) NSDictionary *featureGates;
 @property (readonly, nonatomic) unsigned long long featureType;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) unsigned long long hash;
@@ -86,9 +92,11 @@
 @property (readonly, nonatomic) BOOL isHorizon;
 @property (readonly, nonatomic) BOOL isIconClass;
 @property (readonly, nonatomic) BOOL isImageAesthetics;
+@property (readonly, nonatomic) BOOL isLowConfidence;
 @property (readonly, nonatomic) BOOL isMediaLegibility;
 @property (readonly, nonatomic) BOOL isModelClassification;
 @property (readonly, nonatomic) BOOL isMotion;
+@property (readonly, nonatomic) BOOL isNSFWClassification;
 @property (readonly, nonatomic) BOOL isOCR;
 @property (readonly, nonatomic) BOOL isObjectClassification;
 @property (readonly, nonatomic) BOOL isPerson;
@@ -96,6 +104,7 @@
 @property (readonly, nonatomic) BOOL isRealtimeFace;
 @property (readonly, nonatomic) BOOL isRectangle;
 @property (readonly, nonatomic) BOOL isSceneClassification;
+@property (readonly, nonatomic) BOOL isSignificantEventClassification;
 @property (readonly, nonatomic) BOOL isTextCharacter;
 @property (readonly, nonatomic) BOOL isTextDiacritic;
 @property (readonly, nonatomic) BOOL isTextDocument;
@@ -105,10 +114,10 @@
 @property (readonly, nonatomic) BOOL isValueSpeakable;
 @property (readonly, nonatomic) struct CGRect normalizedFrame;
 @property (readonly, nonatomic) long long ocrFeatureType;
+@property (strong, nonatomic) NSString *overrideLabel; // @synthesize overrideLabel=_overrideLabel;
 @property (readonly, nonatomic) NSArray *subfeatures;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) AXMTaggedText *taggedText;
-@property (readonly, nonatomic) AXMLanguage *textDetectionLanguage;
+@property (readonly, nonatomic) long long uiClass; // @synthesize uiClass=_uiClass;
 @property (readonly, nonatomic) struct CGRect unpaddedDetectedFaceRect; // @synthesize unpaddedDetectedFaceRect=_unpaddedDetectedFaceRect;
 @property (strong, nonatomic) NSObject<NSSecureCoding> *userContext; // @synthesize userContext=_userContext;
 @property (readonly, nonatomic) NSString *value;
@@ -125,38 +134,45 @@
 + (id)featureWithMediaLegibility:(id)arg1;
 + (id)featureWithMetadata:(id)arg1 interfaceOrientation:(long long)arg2 isMirrored:(BOOL)arg3 canvasSize:(struct CGSize)arg4;
 + (id)featureWithTaxonomyNode:(id)arg1 canvasSize:(struct CGSize)arg2;
++ (id)featureWithVisionRequest:(id)arg1 axElementRect:(struct CGRect)arg2 confidence:(double)arg3 uiClass:(long long)arg4 label:(id)arg5 canvasSize:(struct CGSize)arg6;
 + (id)featureWithVisionRequest:(id)arg1 blurValue:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 brightnessValue:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 horizonResult:(id)arg2 canvasSize:(struct CGSize)arg3;
-+ (id)featureWithVisionRequest:(id)arg1 recognizedTextResult:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
 + (id)featureWithVisionRequest:(id)arg1 rectangleResult:(id)arg2 canvasSize:(struct CGSize)arg3;
-+ (id)featureWithVisionRequest:(id)arg1 textResult:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
 + (id)flattenedFeatureList:(id)arg1;
++ (id)groupedFeatureWithElementRect:(struct CGRect)arg1 uiClass:(long long)arg2 confidence:(double)arg3 label:(id)arg4 canvasSize:(struct CGSize)arg5 subElements:(id)arg6;
 + (id)localizedStringForLocation:(long long)arg1 isSubjectImplicit:(BOOL)arg2;
 + (long long)locationForNormalizedFrame:(struct CGRect)arg1 previousLocation:(long long)arg2 usingThirds:(BOOL)arg3;
 + (id)nameForFeatureType:(unsigned long long)arg1;
 + (id)nameForLocation:(long long)arg1;
 + (id)nameForOCRType:(long long)arg1;
++ (id)nameForUIClass:(long long)arg1;
++ (id)nsfwClassificationWithCategory:(id)arg1 confidence:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)objectClassificationWithLabel:(id)arg1 localizedValue:(id)arg2 boundingBox:(struct CGRect)arg3 confidence:(float)arg4 canvasSize:(struct CGSize)arg5;
 + (id)personWithBoundingBox:(struct CGRect)arg1 confidence:(double)arg2 canvasSize:(struct CGSize)arg3;
 + (id)prominentObjectWithBoundingBox:(struct CGRect)arg1 canvasSize:(struct CGSize)arg2 confidence:(double)arg3;
 + (id)sceneClassificationWithLabel:(id)arg1 localizedValue:(id)arg2 confidence:(float)arg3 canvasSize:(struct CGSize)arg4;
++ (id)significantEventClassificationWithCategory:(id)arg1 confidence:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (BOOL)supportsSecureCoding;
-+ (id)textDocumentWithBoundingBox:(struct CGRect)arg1 regions:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
-+ (id)textLineWithBoundingBox:(struct CGRect)arg1 sequences:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
-+ (id)textRegionWithBoundingBox:(struct CGRect)arg1 lines:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
++ (id)textDocumentWithText:(id)arg1 isSpeakable:(BOOL)arg2 boundingBox:(struct CGRect)arg3 regions:(id)arg4 canvasSize:(struct CGSize)arg5;
++ (id)textLineWithText:(id)arg1 boundingBox:(struct CGRect)arg2 sequences:(id)arg3 canvasSize:(struct CGSize)arg4;
++ (id)textRegionWithText:(id)arg1 isSpeakable:(BOOL)arg2 boundingBox:(struct CGRect)arg3 lines:(id)arg4 canvasSize:(struct CGSize)arg5;
++ (id)textSequence:(id)arg1 canvasSize:(struct CGSize)arg2;
++ (long long)uiClassForName:(id)arg1;
 + (id)unitTestingFaceFeature;
 + (id)unitTestingFaceFeatureWithSize:(struct CGSize)arg1 faceFrame:(struct CGRect)arg2;
 + (id)unitTestingFeature;
 + (id)unitTestingFeatureWithType:(unsigned long long)arg1 canvasSize:(struct CGSize)arg2 frame:(struct CGRect)arg3 value:(id)arg4 barcodeType:(id)arg5 ocrFeatureType:(long long)arg6 subFeatures:(id)arg7;
++ (id)unitTestingFeatureWithType:(unsigned long long)arg1 canvasSize:(struct CGSize)arg2 frame:(struct CGRect)arg3 value:(id)arg4 valueIsSpeakable:(BOOL)arg5 barcodeType:(id)arg6 ocrFeatureType:(long long)arg7 subFeatures:(id)arg8;
 + (id)unitTestingHorizonFeature;
 + (id)unitTestingProminentObjectFeature;
++ (id)unitTestingTeatureWithType:(unsigned long long)arg1 axElementRect:(struct CGRect)arg2 confidence:(double)arg3 uiClass:(long long)arg4 label:(id)arg5 canvasSize:(struct CGSize)arg6;
 - (void).cxx_destruct;
 - (id)_init;
-- (BOOL)_isTextFeatureValueSpeakable;
 - (id)_nameForOCRFeatureType:(long long)arg1;
 - (void)_serializeWithCoder:(id)arg1 orDictionary:(id)arg2;
-- (id)_valueForTextFeature;
+- (void)addFeatureGate:(id)arg1 userInfo:(id)arg2;
+- (id)effectiveTextDetectionLocales;
 - (void)encodeWithCoder:(id)arg1;
 - (CDStruct_14d5dc5e)facePose;
 - (id)initWithCoder:(id)arg1;

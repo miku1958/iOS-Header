@@ -12,9 +12,11 @@
 {
     NSArray *_serverStubs;
     NSArray *_buddyStubs;
+    NSArray *_defaultStubs;
 }
 
 @property (readonly, nonatomic) NSArray *buddyStubs; // @synthesize buddyStubs=_buddyStubs;
+@property (readonly, nonatomic) NSArray *defaultStubs; // @synthesize defaultStubs=_defaultStubs;
 @property (readonly, nonatomic) NSArray *serverStubs; // @synthesize serverStubs=_serverStubs;
 
 + (id)daemonOfferStubsDictionarySample;
@@ -29,6 +31,9 @@
 - (id)chooseBuddyStub;
 - (id)chooseBuddyStubForConditions:(id)arg1;
 - (id)chooseBuddyStubForOfferType:(long long)arg1;
+- (id)chooseDefaultStub;
+- (id)chooseDefaultStubForConditions:(id)arg1;
+- (id)chooseFirstDefaultStub;
 - (id)chooseFirstStub;
 - (id)chooseStub;
 - (id)chooseStubForConditions:(id)arg1;

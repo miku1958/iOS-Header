@@ -36,7 +36,7 @@
 @property (copy, nonatomic) NSDecimalNumber *amount;
 @property (readonly, nonatomic) PKAccountBillPaymentAmountContainerView *amountContainerView; // @synthesize amountContainerView=_amountContainerView;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKAccountBillPaymentAmountDescriptionViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKAccountBillPaymentAmountDescriptionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (readonly) unsigned long long hash;

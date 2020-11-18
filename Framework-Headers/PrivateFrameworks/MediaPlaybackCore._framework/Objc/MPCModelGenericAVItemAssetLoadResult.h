@@ -15,6 +15,7 @@
     BOOL _isHomeSharingAsset;
     BOOL _isHLSAsset;
     BOOL _isCloudStreamingAsset;
+    BOOL _onlineSubscriptionKeysRequired;
     BOOL _iTunesStoreStream;
     NSString *_assetPathExtension;
     long long _assetProtectionType;
@@ -45,6 +46,7 @@
 @property (nonatomic) BOOL isCloudStreamingAsset; // @synthesize isCloudStreamingAsset=_isCloudStreamingAsset;
 @property (nonatomic) BOOL isHLSAsset; // @synthesize isHLSAsset=_isHLSAsset;
 @property (nonatomic) BOOL isHomeSharingAsset; // @synthesize isHomeSharingAsset=_isHomeSharingAsset;
+@property (nonatomic) BOOL onlineSubscriptionKeysRequired; // @synthesize onlineSubscriptionKeysRequired=_onlineSubscriptionKeysRequired;
 @property (copy, nonatomic) NSURL *protectedContentSupportStorageFileURL; // @synthesize protectedContentSupportStorageFileURL=_protectedContentSupportStorageFileURL;
 @property (copy, nonatomic) NSDictionary *purchaseBundleDictionary; // @synthesize purchaseBundleDictionary=_purchaseBundleDictionary;
 @property (copy, nonatomic) NSURL *streamingKeyCertificateURL; // @synthesize streamingKeyCertificateURL=_streamingKeyCertificateURL;

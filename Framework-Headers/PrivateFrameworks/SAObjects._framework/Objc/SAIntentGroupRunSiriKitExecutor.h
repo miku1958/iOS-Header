@@ -6,7 +6,7 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSArray, NSString, SAIntentGroupParse, SAIntentGroupSiriKitAppSelectionState, SAIntentGroupSiriKitListPosition, SAIntentGroupSiriKitMetrics, SAIntentGroupSiriKitRemoteExecution;
+@class NSArray, NSString, SAIntentGroupParse, SAIntentGroupSiriKitAppSelectionState, SAIntentGroupSiriKitListPosition, SAIntentGroupSiriKitMetrics, SAIntentGroupSiriKitRemoteExecution, SAPerson;
 
 @interface SAIntentGroupRunSiriKitExecutor : SABaseClientBoundCommand
 {
@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL directAction;
 @property (nonatomic) BOOL eyesFree;
 @property (copy, nonatomic) NSString *goalID;
+@property (strong, nonatomic) SAPerson *identifiedUserMeCard;
 @property (copy, nonatomic) NSString *inputOrigin;
 @property (copy, nonatomic) NSString *interactionType;
 @property (nonatomic) BOOL multiUser;
@@ -34,6 +35,8 @@
 @property (copy, nonatomic) NSString *usoVerb;
 @property (nonatomic) BOOL voiceTriggerEnabled;
 
++ (id)runSiriKitExecutor;
++ (id)runSiriKitExecutorWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (BOOL)mutatingCommand;

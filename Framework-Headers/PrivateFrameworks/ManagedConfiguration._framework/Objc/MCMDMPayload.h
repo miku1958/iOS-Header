@@ -69,7 +69,6 @@
 - (id)_invalidRightsError;
 - (id)_invalidTopicError;
 - (id)_nonHTTPSURLErrorForField:(id)arg1;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
 - (id)kvsForCertUUIDs:(id)arg1 persistentRefs:(id)arg2 labelKey:(id)arg3;
@@ -77,7 +76,7 @@
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
-- (id)title;
+- (id)verboseDescription;
 
 @end
 

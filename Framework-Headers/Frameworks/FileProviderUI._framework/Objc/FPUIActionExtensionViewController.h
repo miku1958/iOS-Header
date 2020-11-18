@@ -29,6 +29,7 @@
 - (void)_prepareForError:(id)arg1;
 - (void)_prepareForServerCreation;
 - (void)_setBrowserUserInterfaceStyle:(unsigned long long)arg1;
+- (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)prepareAuthenticationUsingServerURL:(id)arg1;
 - (void)prepareAuthenticationUsingURL:(id)arg1;
 - (void)prepareForActionWithIdentifier:(id)arg1 itemIdentifiers:(id)arg2;

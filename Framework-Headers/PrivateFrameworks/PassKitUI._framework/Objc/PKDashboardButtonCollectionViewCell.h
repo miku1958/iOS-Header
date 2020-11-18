@@ -22,11 +22,13 @@
 
 - (void).cxx_destruct;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
+- (void)_resetFonts;
 - (void)_updateTextColor;
 - (void)createSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

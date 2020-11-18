@@ -5,6 +5,6 @@
 //
 
 @protocol WebCoreFrameView
-- (struct Frame *)_web_frame;
+- (NakedPtr_adf45b6b)_web_frame;
 @end
 

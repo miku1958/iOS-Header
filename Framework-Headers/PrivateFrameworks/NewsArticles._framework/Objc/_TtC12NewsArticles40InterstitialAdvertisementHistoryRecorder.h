@@ -10,10 +10,11 @@
 
 @interface _TtC12NewsArticles40InterstitialAdvertisementHistoryRecorder : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *articlesViewedCount;
+    MISSING_TYPE *articlesSeenSinceLastInterstitial;
 }
 
-- (long long)numberOfArticlesViewedSinceLastInterstitialAd;
+@property (nonatomic) long long articlesSeenSinceLastInterstitial; // @synthesize articlesSeenSinceLastInterstitial;
+
 - (void)recordArticleView;
 - (void)recordInterstitialAdView;
 

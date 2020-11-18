@@ -6,11 +6,11 @@
 
 #import <HealthRecordsUI/HRRecordViewControllerFactory-Protocol.h>
 
-@class UIViewController, WDMedicalRecordCategory;
+@class HRProfile, UIViewController, WDMedicalRecordCategory;
 
 @protocol HRCategoryViewControllerFactory <HRRecordViewControllerFactory>
-- (UIViewController *)makeAlphabeticalViewControllerForCategory:(WDMedicalRecordCategory *)arg1;
-- (UIViewController *)makeTimelineViewControllerForCategory:(WDMedicalRecordCategory *)arg1 showsInitialSearchBar:(BOOL)arg2;
-- (UIViewController *)makeViewControllerForCategory:(WDMedicalRecordCategory *)arg1;
+- (UIViewController *)makeAlphabeticalViewControllerForCategory:(WDMedicalRecordCategory *)arg1 usingProfile:(HRProfile *)arg2;
+- (UIViewController *)makeTimelineViewControllerForCategory:(WDMedicalRecordCategory *)arg1 showsInitialSearchBar:(BOOL)arg2 usingProfile:(HRProfile *)arg3;
+- (UIViewController *)makeViewControllerForCategory:(WDMedicalRecordCategory *)arg1 usingProfile:(HRProfile *)arg2;
 @end
 

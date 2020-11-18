@@ -6,28 +6,34 @@
 
 #import <CloudKitDaemon/CKDFetchBatchedRecordsOperation.h>
 
-@class CKDFetchZoneChangesRequestOperationResult;
+@class CKServerChangeToken, NSData;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZoneChangesOperation : CKDFetchBatchedRecordsOperation
 {
     BOOL _clientIsUsingLegacyCKFetchRecordChangesOperationAPI;
     CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _recordDeletedBlock;
     CDUnknownBlockType _serverChangeTokenUpdatedBlock;
+    CKServerChangeToken *_resultServerChangeToken;
+    NSData *_resultClientChangeTokenData;
+    long long _resultStatus;
     long long _changeTypes;
-    CKDFetchZoneChangesRequestOperationResult *_savedResult;
 }
 
 @property (nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
 @property (nonatomic) BOOL clientIsUsingLegacyCKFetchRecordChangesOperationAPI; // @synthesize clientIsUsingLegacyCKFetchRecordChangesOperationAPI=_clientIsUsingLegacyCKFetchRecordChangesOperationAPI;
 @property (copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
-@property (strong, nonatomic) CKDFetchZoneChangesRequestOperationResult *savedResult; // @synthesize savedResult=_savedResult;
+@property (copy, nonatomic) CDUnknownBlockType recordDeletedBlock; // @synthesize recordDeletedBlock=_recordDeletedBlock;
+@property (strong, nonatomic) NSData *resultClientChangeTokenData; // @synthesize resultClientChangeTokenData=_resultClientChangeTokenData;
+@property (strong, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
+@property (nonatomic) long long resultStatus; // @synthesize resultStatus=_resultStatus;
 @property (copy, nonatomic) CDUnknownBlockType serverChangeTokenUpdatedBlock; // @synthesize serverChangeTokenUpdatedBlock=_serverChangeTokenUpdatedBlock;
 
 - (void).cxx_destruct;
 - (id)_createAndConfigureURLRequestForZoneIDs:(id)arg1 optionsByZoneID:(id)arg2;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_noteChangedRecordWithID:(id)arg1 recordType:(id)arg2 record:(id)arg3 error:(id)arg4;
+- (void)_noteChangedRecordWithID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)_noteCompletedURLRequest:(id)arg1 withSchedulerInfo:(id)arg2;
 - (void)_noteDeletedRecordWithID:(id)arg1 recordType:(id)arg2;
 - (void)_noteOperationBeginning;
@@ -36,9 +42,8 @@ __attribute__((visibility("hidden")))
 - (id)_optionsForZonesWithPendingChangesAfterRequest:(id)arg1;
 - (id)activityCreate;
 - (id)analyticsPayload;
-- (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
-- (Class)operationResultClass;
+- (int)operationType;
 - (id)pipeliningDescription;
 
 @end

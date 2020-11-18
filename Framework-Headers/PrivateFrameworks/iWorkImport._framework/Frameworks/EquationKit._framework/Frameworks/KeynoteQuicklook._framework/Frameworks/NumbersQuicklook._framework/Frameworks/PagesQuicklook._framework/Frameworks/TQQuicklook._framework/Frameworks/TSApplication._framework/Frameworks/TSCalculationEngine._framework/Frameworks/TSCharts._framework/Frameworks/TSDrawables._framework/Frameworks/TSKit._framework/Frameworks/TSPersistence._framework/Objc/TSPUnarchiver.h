@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) long long objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
 @property (readonly, nonatomic) NSUUID *objectUUID;
 @property (readonly, nonatomic) unsigned long long preUFFVersion;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly, nonatomic) TSPUnknownContent *unknownContent; // @synthesize unknownContent=_unknownContent;
 

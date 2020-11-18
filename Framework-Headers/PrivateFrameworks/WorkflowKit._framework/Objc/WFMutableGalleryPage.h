@@ -22,8 +22,10 @@
     NSString *persistentIdentifier;
     NSArray *donations;
     NSArray *donationsGroupedByApp;
+    NSArray *automationSuggestions;
 }
 
+@property (copy, nonatomic) NSArray *automationSuggestions; // @synthesize automationSuggestions;
 @property (copy, nonatomic) NSArray *banners; // @synthesize banners;
 @property (strong, nonatomic) CKRecordID *base; // @synthesize base;
 @property (copy, nonatomic) NSArray *collections; // @synthesize collections;

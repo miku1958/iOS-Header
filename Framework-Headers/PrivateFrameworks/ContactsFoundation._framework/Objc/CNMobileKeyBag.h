@@ -11,6 +11,7 @@
 }
 
 + (const char *)firstUnlockNotificationID;
++ (BOOL)isDevicePasscodeProtected;
 + (BOOL)isDeviceUnlockedSinceBoot;
 
 @end

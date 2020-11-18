@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIFont;
+@class UIFont, UIImage;
 
 @interface EKUISemiConstantCache : NSObject
 {
@@ -22,6 +22,7 @@
     UIFont *_weekAllDayLabelFontCompact;
     UIFont *_weekAllDayLabelFontRegular;
     UIFont *_weekAllDayTodayLabelFontCompact;
+    UIImage *_inboxDisclosureImage;
     double _currentScaleFactor;
     double _weekAllDayOccurrenceHeight;
     double _minYearMonthHeaderFontSizeUsed;
@@ -52,6 +53,7 @@
 - (long long)_participantStatusFromDetailAttendeesStatus:(int)arg1;
 - (id)birthdayImageForFont:(id)arg1;
 - (id)commentIconStringForFont:(id)arg1;
+- (id)inboxDisclosureImage;
 - (id)init;
 - (id)statusGlyphForStatusType:(int)arg1;
 - (void)updateMetrics;

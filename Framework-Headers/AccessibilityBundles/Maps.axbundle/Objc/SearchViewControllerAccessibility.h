@@ -13,13 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_accessibilityUpdateCardGrabberValueAndSpeak:(BOOL)arg1;
-- (void)_axAnnotateTableView;
-- (BOOL)_axCollapseCard;
-- (BOOL)_axExpandCard;
+- (void)_axAnnotateSubviews;
 - (void)dealloc;
 - (void)setCurrentDataSource:(id)arg1;
+- (void)showDropDown:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

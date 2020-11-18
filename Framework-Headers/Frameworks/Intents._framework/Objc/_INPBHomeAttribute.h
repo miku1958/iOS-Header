@@ -17,12 +17,10 @@
     struct {
         unsigned int attributeType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _attributeType;
     _INPBHomeAttributeValue *_attributeValue;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int attributeType; // @synthesize attributeType=_attributeType;
 @property (strong, nonatomic) _INPBHomeAttributeValue *attributeValue; // @synthesize attributeValue=_attributeValue;
 @property (readonly, copy) NSString *debugDescription;

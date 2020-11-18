@@ -44,13 +44,13 @@
 
 - (void).cxx_destruct;
 - (BOOL)_prepareWithError:(id *)arg1;
-- (BOOL)_promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 additionalAlertParameters:(id)arg5;
+- (BOOL)_promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 extensionItem:(id)arg5;
 - (BOOL)_recordObjectID:(id)arg1 withSimpleDeleteValidators:(id)arg2;
 - (id)_simpleDeleteValidatorsWithManagedObjectContext:(id)arg1;
 - (BOOL)_validateSimpleDeletionsWithValidators:(id)arg1 requestsByObjectID:(id)arg2 error:(id *)arg3;
 - (id)initWithInsertRequests:(id)arg1 updateRequests:(id)arg2 deleteRequests:(id)arg3 context:(id)arg4 photoLibrary:(id)arg5;
 - (BOOL)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4;
-- (BOOL)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 previewAssetLocalIdentifiers:(id)arg5;
+- (BOOL)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 previewAssetLocalIdentifiers:(id)arg5 revertToOriginal:(BOOL)arg6;
 - (BOOL)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 renderedContentURLs:(id)arg5;
 - (BOOL)validateWithError:(id *)arg1;
 

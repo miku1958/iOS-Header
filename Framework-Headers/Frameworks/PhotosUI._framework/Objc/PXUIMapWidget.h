@@ -9,8 +9,8 @@
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXImageUIView, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXUIWidgetContainerView, PXWidgetSpec, UIButton, UIFont, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXImageUIView, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UIFont, UIView;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXUIMapWidget : NSObject <PXPhotosDataSourceChangeObserver, PXUIWidget>
 {
@@ -27,7 +27,7 @@
     id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXPhotosDetailsContext *_context;
     PXWidgetSpec *_spec;
-    PXUIWidgetContainerView *__containerView;
+    UIView *__containerView;
     UIView *__contentView;
     PXImageUIView *__imageView;
     PXPlacesMapFetchResultViewController *__mapViewController;
@@ -44,7 +44,7 @@
 
 @property (strong, nonatomic) NSString *_cachedDisclosureTitle; // @synthesize _cachedDisclosureTitle=__cachedDisclosureTitle;
 @property (strong, nonatomic) NSString *_cachedLocalizedTitle; // @synthesize _cachedLocalizedTitle=__cachedLocalizedTitle;
-@property (readonly, nonatomic) PXUIWidgetContainerView *_containerView; // @synthesize _containerView=__containerView;
+@property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (strong, nonatomic) PXPlacesSnapshotFactory *_factory; // @synthesize _factory=__factory;
 @property (readonly, nonatomic) PXImageUIView *_imageView; // @synthesize _imageView=__imageView;
@@ -61,6 +61,7 @@
 @property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
 @property (readonly, nonatomic) UIButton *footerButton; // @synthesize footerButton=_footerButton;
 @property (readonly, nonatomic) UIFont *footerFont; // @synthesize footerFont=_footerFont;
@@ -69,10 +70,12 @@
 @property (nonatomic, setter=_setHasLoadedContentData:) BOOL hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
+@property (readonly, nonatomic) BOOL isInEditMode;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -82,9 +85,12 @@
 @property (readonly, nonatomic) BOOL supportsFaceMode;
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
+@property (readonly, nonatomic) BOOL wantsFocus;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetEditingDelegate> widgetEditingDelegate;
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 
++ (id)sharedSnapshotRequestConcurrentQueue;
 - (void).cxx_destruct;
 - (id)_createSnapshotOptions;
 - (long long)_fetchCountOfAssetsWithLocation;

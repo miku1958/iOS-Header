@@ -35,6 +35,7 @@
 - (void)handleMessageError:(id)arg1 destructive:(BOOL)arg2;
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (id)init;
+- (BOOL)isEmergencyNumber:(id)arg1;
 - (void)primeRTTServer;
 - (void)registerForRemoteUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerForServiceUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
@@ -45,6 +46,8 @@
 - (void)setShouldSuppressIncomingNotification:(BOOL)arg1;
 - (void)setSystemOutputAudioMuted:(BOOL)arg1 withCallID:(id)arg2;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;
+- (void)setViewControllerIsVisible:(BOOL)arg1 withCallID:(id)arg2;
+- (BOOL)shouldRestartOnInterruption;
 - (void)terminateConnectionAndNotify:(BOOL)arg1;
 - (id)valueForTTYSetting:(id)arg1;
 

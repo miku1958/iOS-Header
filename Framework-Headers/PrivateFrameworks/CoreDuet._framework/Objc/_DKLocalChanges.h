@@ -22,7 +22,6 @@
 @property (readonly, nonatomic) NSArray *tombstones; // @synthesize tombstones=_tombstones;
 
 - (void).cxx_destruct;
-- (id)initWithInsertedObjects:(id)arg1 tombstones:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 
 @end
 

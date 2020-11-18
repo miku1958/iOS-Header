@@ -22,6 +22,7 @@
     BOOL _wakeOnWirelessEnabledChanged;
     BOOL _infraDisabled;
     BOOL _wakeOnWirelessEnabled;
+    unsigned int _controlFlags;
     unsigned int _wifiFlags;
     int _wifiState;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -32,6 +33,7 @@
     CDUnknownBlockType _wifiStateChangedHandler;
 }
 
+@property (nonatomic) unsigned int controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) BOOL infraDisabled; // @synthesize infraDisabled=_infraDisabled;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;

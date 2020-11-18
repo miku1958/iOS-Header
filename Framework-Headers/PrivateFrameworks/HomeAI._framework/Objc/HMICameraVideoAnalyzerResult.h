@@ -39,15 +39,21 @@
 @property double timeToAnalyzeFragment; // @synthesize timeToAnalyzeFragment=_timeToAnalyzeFragment;
 @property (strong) HMICameraVideoFragment *videoFragment; // @synthesize videoFragment=_videoFragment;
 
++ (id)_annotationScoresFromAnalyzerEvents:(id)arg1;
++ (long long)_eventsFromAnalyzerEvents:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)aggregatedEventTypes;
+- (id)aggregatedEvents;
 - (long long)confidenceThatEventOccurred:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEvents:(long long)arg1 posterFrames:(id)arg2 frameResults:(id)arg3 annotationScores:(id)arg4 duration:(CDStruct_1b6d18a9)arg5 creationDate:(id)arg6 resultCode:(long long)arg7 lastSequenceNumber:(unsigned long long)arg8;
+- (id)initWithPosterFrames:(id)arg1 frameResults:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 creationDate:(id)arg4 resultCode:(long long)arg5 lastSequenceNumber:(unsigned long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1 excludeTime:(BOOL)arg2;
+- (id)maxConfidenceEventForEventClass:(Class)arg1;
 
 @end
 

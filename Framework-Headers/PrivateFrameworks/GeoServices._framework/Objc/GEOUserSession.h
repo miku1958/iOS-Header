@@ -16,8 +16,8 @@
     unsigned int _sequenceNumber;
     struct GEOSessionID _longSessionID;
     double _longSessionIDGenerationTime;
-    struct GEOSessionID _thirtyDayCountsSessionID;
-    double _thirtyDayCountsSessionIDGenerationTime;
+    struct GEOSessionID _15MonthSessionID;
+    double _15MonthSessionIDGenerationTime;
     BOOL _shareSessionWithMaps;
     GEOUserSessionEntity *_mapsUserSessionEntity;
     BOOL _zeroSessionIDMode;
@@ -41,6 +41,8 @@
 }
 
 @property (readonly, nonatomic) GEOUserSessionEntity *cohortSessionEntity;
+@property (readonly, nonatomic) GEOUserSessionEntity *fifteenMonthSessionEntity;
+@property (readonly, nonatomic) struct GEOSessionID fifteenMonthSessionID;
 @property (readonly, nonatomic) GEOUserSessionEntity *longSessionEntity;
 @property (readonly, nonatomic) struct GEOSessionID longSessionID;
 @property (strong, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity; // @synthesize mapsUserSessionEntity=_mapsUserSessionEntity;
@@ -49,22 +51,23 @@
 @property (readonly, nonatomic) GEOUserSessionSnapshot *userSessionSnapshot;
 @property (nonatomic) BOOL zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
 
++ (BOOL)initialShareSessionWithMaps;
 + (BOOL)isGeod;
++ (void)setInitialShareSessionWithMaps:(BOOL)arg1;
 + (void)setIsGeod;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_create15MonthSessionFirstTime:(BOOL)arg1;
 - (void)_createLongSessionWithOffset:(BOOL)arg1;
 - (void)_generateNewNavSessionID;
 - (double)_getCurrentTime;
 - (void)_overrideShortSessionId:(struct GEOSessionID)arg1 sessionMachBasisTime:(unsigned long long)arg2 sessionStartTime:(double)arg3;
-- (void)_renewCohortSessionID;
+- (void)_renew15MonthSessionId;
 - (void)_renewLongSessionID;
-- (void)_renewThirtyDayCountsSessionID;
 - (void)_resetSessionID;
+- (void)_rollInitial15MonthSessionId;
 - (void)_rollInitialLongSessionId;
-- (void)_safe_renewCohortSessionID;
 - (void)_safe_renewLongSessionID;
-- (void)_safe_renewThirtyDayCountsSessionID;
 - (void)_shortSessionWithBasisComponentsCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateNavSessionID;
 - (void)_updateWithNewUUIDForSessionID:(struct GEOSessionID *)arg1;
@@ -76,8 +79,6 @@
 - (void)setSharedMapsUserSessionEntity:(id)arg1 shareSessionIDWithMaps:(BOOL)arg2;
 - (id)shortSessionEntity;
 - (void)startNavigationSessionWithDirectionsID:(id)arg1 originalDirectionsID:(id)arg2;
-- (id)thirtyDayCountsEntity;
-- (struct GEOSessionID)thirtyDayCountsSessionID;
 
 @end
 

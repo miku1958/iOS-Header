@@ -18,24 +18,21 @@ __attribute__((visibility("hidden")))
     CDStruct_5df41632 _roadIds;
     NSMutableArray *_geometrys;
     NSData *_openlr;
+    long long _pathletId;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     float _endOffset;
     float _startOffset;
     struct {
+        unsigned int has_pathletId:1;
         unsigned int has_endOffset:1;
         unsigned int has_startOffset:1;
         unsigned int read_continuingRoadIds:1;
         unsigned int read_roadIds:1;
         unsigned int read_geometrys:1;
         unsigned int read_openlr:1;
-        unsigned int wrote_continuingRoadIds:1;
-        unsigned int wrote_roadIds:1;
-        unsigned int wrote_geometrys:1;
-        unsigned int wrote_openlr:1;
-        unsigned int wrote_endOffset:1;
-        unsigned int wrote_startOffset:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,8 +42,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *geometrys;
 @property (nonatomic) BOOL hasEndOffset;
 @property (readonly, nonatomic) BOOL hasOpenlr;
+@property (nonatomic) BOOL hasPathletId;
 @property (nonatomic) BOOL hasStartOffset;
 @property (strong, nonatomic) NSData *openlr;
+@property (nonatomic) long long pathletId;
 @property (readonly, nonatomic) long long *roadIds;
 @property (readonly, nonatomic) unsigned long long roadIdsCount;
 @property (nonatomic) float startOffset;
@@ -54,13 +53,6 @@ __attribute__((visibility("hidden")))
 + (Class)geometryType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsContinuingRoadId:(long long)arg1;
-- (void)_addNoFlagsGeometry:(id)arg1;
-- (void)_addNoFlagsRoadId:(long long)arg1;
-- (void)_readContinuingRoadIds;
-- (void)_readGeometrys;
-- (void)_readOpenlr;
-- (void)_readRoadIds;
 - (void)addContinuingRoadId:(long long)arg1;
 - (void)addGeometry:(id)arg1;
 - (void)addRoadId:(long long)arg1;
@@ -78,7 +70,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

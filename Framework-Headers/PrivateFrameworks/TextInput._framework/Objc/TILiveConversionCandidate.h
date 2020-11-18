@@ -12,9 +12,11 @@
 {
     NSString *_candidate;
     BOOL _inlineCandidate;
+    BOOL _partialCandidate;
 }
 
 @property (nonatomic, getter=isInlineCandidate) BOOL inlineCandidate; // @synthesize inlineCandidate=_inlineCandidate;
+@property (nonatomic, getter=isPartialCandidate) BOOL partialCandidate; // @synthesize partialCandidate=_partialCandidate;
 
 + (BOOL)supportsSecureCoding;
 + (int)type;

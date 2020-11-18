@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_hideTileLayer:(BOOL)arg1;
 - (BOOL)_isTile:(id)arg1 occludedByTiles:(id)arg2;
 - (struct CGRect)_layerTileToRootViewBounds:(id)arg1;
+- (void)_pageChangedPageRef:(id)arg1;
 - (void)_pageDidRotate:(id)arg1;
 - (id)_pageLayerEffects;
 - (struct CGRect)_pageLayerVisibleRect;

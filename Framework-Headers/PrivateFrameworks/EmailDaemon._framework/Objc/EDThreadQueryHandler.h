@@ -18,8 +18,8 @@
 {
     _Atomic char _state;
     struct atomic_flag _isRunning;
-    EMThreadScope *_threadScope;
     EFQuery *_query;
+    EMThreadScope *_threadScope;
     id<EMMessageListItemQueryResultsObserver> _resultsObserver;
     EMObjectID *_observationIdentifier;
     EDMessagePersistence *_messagePersistence;
@@ -40,7 +40,7 @@
 @property (readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property (readonly, nonatomic) EMObjectID *observationIdentifier; // @synthesize observationIdentifier=_observationIdentifier;
 @property (readonly, nonatomic) id<EDResumable> observerResumer; // @synthesize observerResumer=_observerResumer;
-@property (readonly, nonatomic) EFQuery *query; // @synthesize query=_query;
+@property (readonly, copy, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) id<EMMessageListItemQueryResultsObserver> resultsObserver; // @synthesize resultsObserver=_resultsObserver;
 @property (readonly) Class superclass;
@@ -52,11 +52,13 @@
 + (id)log;
 - (void).cxx_destruct;
 - (void)_createUnderlyingHandlerIfNeededAndStart;
+- (void)_tearDownWithQueryHandlerBlock:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)checkIfPrecomputedStateIsAvailable;
 - (id)inMemoryMessageObjectIDsForThread:(id)arg1;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 threadPersistence:(id)arg3 hookRegistry:(id)arg4 vipManager:(id)arg5 remoteSearchProvider:(id)arg6 observer:(id)arg7 observationIdentifier:(id)arg8 delegate:(id)arg9 observationResumer:(id)arg10;
 - (BOOL)isStarted;
+- (id)messageReconciliationQueries;
 - (void)observer:(id)arg1 matchedAddedObjectIDs:(id)arg2 after:(id)arg3 extraInfo:(id)arg4;
 - (void)observer:(id)arg1 matchedAddedObjectIDs:(id)arg2 before:(id)arg3 extraInfo:(id)arg4;
 - (void)observer:(id)arg1 matchedChangesForObjectIDs:(id)arg2;
@@ -75,6 +77,7 @@
 - (void)test_tearDown;
 - (id)threadForObjectID:(id)arg1 isPersisted:(BOOL *)arg2 error:(id *)arg3;
 - (void)threadMigratorDidComplete:(id)arg1;
+- (id)threadReconciliationQueries;
 - (void)triggerMigration;
 
 @end

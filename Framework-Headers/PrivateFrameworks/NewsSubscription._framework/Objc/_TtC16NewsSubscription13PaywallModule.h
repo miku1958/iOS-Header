@@ -10,7 +10,7 @@
 
 @interface _TtC16NewsSubscription13PaywallModule : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *paywallView;
+    MISSING_TYPE *paywallViewKind;
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
 }

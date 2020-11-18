@@ -11,6 +11,8 @@
 @interface AFConversationInsertion : NSObject
 {
     BOOL _transient;
+    BOOL _supplemental;
+    BOOL _immersiveExperience;
     long long _conversationItemType;
     AceObject *_aceObject;
     NSString *_aceCommandIdentifier;
@@ -20,11 +22,13 @@
 @property (readonly, copy, nonatomic) NSString *aceCommandIdentifier; // @synthesize aceCommandIdentifier=_aceCommandIdentifier;
 @property (readonly, nonatomic) AceObject *aceObject; // @synthesize aceObject=_aceObject;
 @property (readonly, nonatomic) long long conversationItemType; // @synthesize conversationItemType=_conversationItemType;
+@property (readonly, nonatomic, getter=isImmersiveExperience) BOOL immersiveExperience; // @synthesize immersiveExperience=_immersiveExperience;
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
+@property (readonly, nonatomic, getter=isSupplemental) BOOL supplemental; // @synthesize supplemental=_supplemental;
 @property (readonly, nonatomic, getter=isTransient) BOOL transient; // @synthesize transient=_transient;
 
 - (void).cxx_destruct;
-- (id)initWithConversationItemType:(long long)arg1 aceObject:(id)arg2 aceCommandIdentifier:(id)arg3 transient:(BOOL)arg4 indexPath:(id)arg5;
+- (id)initWithConversationItemType:(long long)arg1 aceObject:(id)arg2 aceCommandIdentifier:(id)arg3 transient:(BOOL)arg4 supplemental:(BOOL)arg5 immersiveExperience:(BOOL)arg6 indexPath:(id)arg7;
 
 @end
 

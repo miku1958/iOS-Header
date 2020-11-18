@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_cancel;
 - (void)_finish;
-- (void)_resource:(struct PlatformMediaResource *)arg1 loadFinishedWithError:(id)arg2;
+- (void)_resource:(struct PlatformMediaResource *)arg1 loadFinishedWithError:(id)arg2 metrics:(const struct NetworkLoadMetrics *)arg3;
 - (void)_restart;
 - (id)_timingData;
 - (void)cancel;
@@ -57,10 +57,10 @@ __attribute__((visibility("hidden")))
 - (void)resource:(struct PlatformMediaResource *)arg1 loadFailedWithError:(const struct ResourceError *)arg2;
 - (void)resource:(struct PlatformMediaResource *)arg1 receivedData:(const char *)arg2 length:(int)arg3;
 - (void)resource:(struct PlatformMediaResource *)arg1 receivedRedirect:(const struct ResourceResponse *)arg2 request:(struct ResourceRequest *)arg3 completionHandler:(CompletionHandler_7162061b *)arg4;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2 completionHandler:(CompletionHandler_29859e2c *)arg3;
+- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2 completionHandler:(CompletionHandler_be2c0021 *)arg3;
 - (void)resource:(struct PlatformMediaResource *)arg1 sentBytes:(unsigned long long)arg2 totalBytesToBeSent:(unsigned long long)arg3;
 - (BOOL)resource:(struct PlatformMediaResource *)arg1 shouldCacheResponse:(const struct ResourceResponse *)arg2;
-- (void)resourceFinished:(struct PlatformMediaResource *)arg1;
+- (void)resourceFinished:(struct PlatformMediaResource *)arg1 metrics:(const struct NetworkLoadMetrics *)arg2;
 - (void)resume;
 - (void)suspend;
 

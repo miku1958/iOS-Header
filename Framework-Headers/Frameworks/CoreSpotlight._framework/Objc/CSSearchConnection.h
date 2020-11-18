@@ -26,6 +26,7 @@
 - (void)handleReply:(id)arg1;
 - (id)init;
 - (id)initWithMachServiceName:(id)arg1;
+- (void)preheat:(id)arg1;
 - (id)queryForID:(id)arg1;
 - (id)removeQueryForID:(id)arg1;
 - (void)sendMessageAsync:(id)arg1 completion:(CDUnknownBlockType)arg2;

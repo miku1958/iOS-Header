@@ -6,33 +6,10 @@
 
 #import <AVKit/AVView.h>
 
-@class AVCABackdropLayerView, NSArray, UIStackView, UIView, UIVisualEffectView;
-
 __attribute__((visibility("hidden")))
 @interface AVBackdropView : AVView
 {
-    NSArray *_temporaryArrangedSubviews;
-    BOOL _prefersLowQualityEffects;
-    BOOL _disablesAutoLayout;
-    long long _axis;
-    unsigned long long _shapeStyle;
-    UIView *_targetViewForSecondaryMaterialOverlay;
-    UIStackView *_stackView;
-    UIVisualEffectView *_secondaryMaterialOverlayView;
-    NSArray *_secondaryMaterialOverlayViewConstraints;
-    AVCABackdropLayerView *_backdropLayerView;
 }
-
-@property (readonly, nonatomic) long long axis; // @synthesize axis=_axis;
-@property (strong, nonatomic) AVCABackdropLayerView *backdropLayerView; // @synthesize backdropLayerView=_backdropLayerView;
-@property (nonatomic) struct NSDirectionalEdgeInsets contentLayoutMargins;
-@property (nonatomic) BOOL disablesAutoLayout; // @synthesize disablesAutoLayout=_disablesAutoLayout;
-@property (nonatomic) BOOL prefersLowQualityEffects; // @synthesize prefersLowQualityEffects=_prefersLowQualityEffects;
-@property (strong, nonatomic) UIVisualEffectView *secondaryMaterialOverlayView; // @synthesize secondaryMaterialOverlayView=_secondaryMaterialOverlayView;
-@property (strong, nonatomic) NSArray *secondaryMaterialOverlayViewConstraints; // @synthesize secondaryMaterialOverlayViewConstraints=_secondaryMaterialOverlayViewConstraints;
-@property (nonatomic) unsigned long long shapeStyle; // @synthesize shapeStyle=_shapeStyle;
-@property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
-@property (strong, nonatomic) UIView *targetViewForSecondaryMaterialOverlay; // @synthesize targetViewForSecondaryMaterialOverlay=_targetViewForSecondaryMaterialOverlay;
 
 + (void)applyBaseTrackTintToView:(id)arg1;
 + (void)applyCompletedTrackTintToView:(id)arg1;
@@ -46,27 +23,6 @@ __attribute__((visibility("hidden")))
 + (void)removeAllFiltersFromView:(id)arg1;
 + (id)secondaryGlyphTintColor;
 + (id)secondaryMaterialOverlayView;
-- (void).cxx_destruct;
-- (void)_applyShapeStyle;
-- (id)_stackViewIfLoaded;
-- (id)arrangedSubviews;
-- (id)backgroundColor;
-- (double)customSpacingAfterView:(id)arg1;
-- (void)dealloc;
-- (void)didMoveToSuperview;
-- (void)didMoveToWindow;
-- (BOOL)hasVisibleArrangedSubview;
-- (id)initWithArrangedSubviews:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 disablingAutoLayout:(BOOL)arg2;
-- (void)layoutSubviews;
-- (void)setArrangedSubviews:(id)arg1 axis:(long long)arg2;
-- (void)setBackgroundColor:(id)arg1;
-- (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
-- (void)setCustomSpacing:(double)arg1 afterViews:(id)arg2;
-- (void)setHidden:(BOOL)arg1;
-- (void)setSemanticContentAttribute:(long long)arg1;
-- (void)updateConstraints;
 
 @end
 

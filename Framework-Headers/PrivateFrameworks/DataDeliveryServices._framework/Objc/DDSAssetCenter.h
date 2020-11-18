@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <DataDeliveryServices/DDSAssetObservingDelegate-Protocol.h>
 #import <DataDeliveryServices/DDSManagingDelegate-Protocol.h>
 
 @class NSMutableSet, NSString;
-@protocol DDSAssetProviding, DDSManaging, OS_dispatch_queue;
+@protocol DDSAssetObserving, DDSAssetProviding, DDSManaging, OS_dispatch_queue;
 
-@interface DDSAssetCenter : NSObject <DDSManagingDelegate>
+@interface DDSAssetCenter : NSObject <DDSManagingDelegate, DDSAssetObservingDelegate>
 {
     id<DDSAssetProviding> _provider;
     id<DDSManaging> _managerInterface;
     NSMutableSet *_delegates;
     NSObject<OS_dispatch_queue> *_queue;
+    id<DDSAssetObserving> _assetObserver;
 }
 
+@property (readonly, nonatomic) id<DDSAssetObserving> assetObserver; // @synthesize assetObserver=_assetObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSMutableSet *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
@@ -35,11 +38,13 @@
 - (id)assertionIDsForClientID:(id)arg1;
 - (id)assetsForQuery:(id)arg1 error:(id *)arg2;
 - (id)contentItemsFromAssets:(id)arg1 matchingFilter:(id)arg2;
-- (void)didUpdateAssetsWithType:(id)arg1;
 - (id)init;
 - (id)initWithProvider:(id)arg1 managerInterface:(id)arg2;
 - (void)registerDelegate:(id)arg1;
 - (void)removeAssertionWithIdentifier:(id)arg1;
+- (void)serverDidUpdateAssetsWithType:(id)arg1;
+- (void)triggerDump;
+- (void)triggerUpdate;
 - (void)unregisterDelegate:(id)arg1;
 
 @end

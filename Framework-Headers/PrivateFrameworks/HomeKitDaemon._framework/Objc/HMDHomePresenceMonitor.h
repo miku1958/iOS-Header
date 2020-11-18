@@ -10,11 +10,13 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDBackgroundTaskAgentTimer, HMDHomePresence, HMDHomePresenceUpdate, NSMutableDictionary, NSString;
+@protocol HMFLocking;
 
 @interface HMDHomePresenceMonitor : HMDHomePresenceBase <HMFLogging, NSSecureCoding>
 {
-    NSMutableDictionary *_presenceMap;
+    id<HMFLocking> _lock;
     HMDHomePresence *_currentHomePresence;
+    NSMutableDictionary *_presenceMap;
     HMDHomePresenceUpdate *_homePresenceUpdate;
     HMDBackgroundTaskAgentTimer *_btaAuditTimer;
 }

@@ -12,6 +12,7 @@
 {
     AXSSPunctuationEntryCloudKitHelper *_punctuationEntryCloudKitHelper;
     AXSSPunctuationGroupCloudKitHelper *_punctuationGroupCloudKitHelper;
+    BOOL _finishedInitialization;
     BOOL _cloudKitSync;
     BOOL _cloudKitPushInSameProcess;
 }
@@ -21,6 +22,8 @@
 @property (readonly, nonatomic) NSArray *punctuationGroups;
 
 + (void)initialize;
++ (id)overrideDatabasePath;
++ (void)setOverrideDatabasePath:(id)arg1;
 + (id)sharedDatabase;
 - (void).cxx_destruct;
 - (void)_cloudKitUpdated:(id)arg1;
@@ -28,6 +31,7 @@
 - (id)_databaseFilePath;
 - (void)_filterAutoswitchContexts:(id)arg1 punctuationGroupsForContexts:(id)arg2;
 - (void)_initializeCloudKitHelpers;
+- (void)_initializeDatabaseStartup;
 - (void)_initializeSystemGroups;
 - (void)_managedObjectChanged:(id)arg1;
 - (id)_punctuationEntryFromManagedObject:(id)arg1;

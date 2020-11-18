@@ -16,10 +16,12 @@
     SUCarrierDownloadPolicyProperties *_carrierPolicy;
     SUNetworkMonitor *_networkMonitor;
     BOOL _cellularCapable;
+    int _cellularFeeAgreementStatus;
 }
 
 @property (strong, nonatomic) SUCarrierDownloadPolicyProperties *carrierPolicy; // @synthesize carrierPolicy=_carrierPolicy;
 @property (nonatomic, getter=isCellularCapable) BOOL cellularCapable; // @synthesize cellularCapable=_cellularCapable;
+@property (nonatomic) int cellularFeeAgreementStatus; // @synthesize cellularFeeAgreementStatus=_cellularFeeAgreementStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SUDescriptor *descriptor; // @synthesize descriptor=_descriptor;
@@ -27,14 +29,18 @@
 @property (strong, nonatomic) SUNetworkMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property (readonly) Class superclass;
 
+- (BOOL)_inexpensiveHDM;
 - (BOOL)_isCellularCapable;
 - (BOOL)_isDownloadableForNetworkType:(int)arg1 error:(long long *)arg2 cellularFeesApply:(BOOL *)arg3 powerRequired:(BOOL *)arg4;
 - (id)_stringForBool:(BOOL)arg1;
+- (BOOL)allowExpensiveNetwork;
+- (BOOL)cellularDownloadFeesApply;
 - (void)dealloc;
 - (BOOL)hasEnoughDiskSpace;
 - (id)initWithDescriptor:(id)arg1;
 - (BOOL)isDownloadAllowableForCellular;
 - (BOOL)isDownloadAllowableForCellular2G;
+- (BOOL)isDownloadAllowableForCellularIncludingInexpensiveHDM:(BOOL)arg1;
 - (BOOL)isDownloadAllowableForCellularRoaming;
 - (BOOL)isDownloadAllowableForWiFi;
 - (BOOL)isDownloadFreeForCellular;
@@ -43,6 +49,7 @@
 - (BOOL)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(BOOL *)arg2 powerRequired:(BOOL *)arg3;
 - (BOOL)isPowerRequired;
 - (BOOL)isSamePolicy:(id)arg1;
+- (unsigned long long)wifiOnlyPeriodInDays;
 
 @end
 

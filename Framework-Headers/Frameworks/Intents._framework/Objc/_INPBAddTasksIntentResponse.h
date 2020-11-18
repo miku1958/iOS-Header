@@ -16,12 +16,10 @@
 {
     CDStruct_95bda58d _warnings;
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_addedTasks;
     _INPBTaskList *_modifiedTaskList;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *addedTasks; // @synthesize addedTasks=_addedTasks;
 @property (readonly, nonatomic) unsigned long long addedTasksCount;
 @property (readonly, copy) NSString *debugDescription;

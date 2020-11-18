@@ -12,22 +12,23 @@
 #import <HealthUI/HKSampleTypeUpdateControllerObserver-Protocol.h>
 
 @class HKDisplayType, HKDisplayTypeSectionedContextView, HKInteractiveChartOverlayViewController, HKOverlayContextLocation, HKOverlayRoomApplicationItems, HKValueRange, NSArray, NSDate, NSDateInterval, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HKOverlayRoomViewControllerLayoutDelegate, OS_dispatch_queue;
 
 @interface HKOverlayRoomViewController : HKViewController <HKDisplayTypeSectionedContextViewDelegate, HKInteractiveChartViewObserver, HKSampleTypeDateRangeControllerObserver, HKSampleTypeUpdateControllerObserver>
 {
     BOOL _shouldSelectInitialOverlay;
     BOOL _userHasOverriddenPreferredOverlay;
     HKOverlayRoomApplicationItems *_applicationItems;
+    HKDisplayType *_primaryDisplayType;
     NSDate *_displayDate;
     long long _controllerMode;
     HKInteractiveChartOverlayViewController *_chartController;
     HKValueRange *_initialVisibleDateRange;
+    id<HKOverlayRoomViewControllerLayoutDelegate> _layoutDelegate;
     long long _currentChartTimeScope;
     NSDateInterval *_currentChartDateInterval;
     HKOverlayContextLocation *_currentSelectedContextLocation;
     HKDisplayTypeSectionedContextView *_sectionedContextView;
-    HKDisplayType *_primaryDisplayType;
     NSArray *_overlayContextSections;
     HKOverlayContextLocation *_initialSelectedContextLocation;
     NSObject<OS_dispatch_queue> *_contextUpdateQueue;
@@ -42,10 +43,11 @@
 @property (strong, nonatomic) HKOverlayContextLocation *currentSelectedContextLocation; // @synthesize currentSelectedContextLocation=_currentSelectedContextLocation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
+@property (readonly, copy, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKOverlayContextLocation *initialSelectedContextLocation; // @synthesize initialSelectedContextLocation=_initialSelectedContextLocation;
 @property (strong, nonatomic) HKValueRange *initialVisibleDateRange; // @synthesize initialVisibleDateRange=_initialVisibleDateRange;
+@property (weak, nonatomic) id<HKOverlayRoomViewControllerLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property (strong, nonatomic) NSArray *overlayContextSections; // @synthesize overlayContextSections=_overlayContextSections;
 @property (strong, nonatomic) HKDisplayType *primaryDisplayType; // @synthesize primaryDisplayType=_primaryDisplayType;
 @property (strong, nonatomic) HKDisplayTypeSectionedContextView *sectionedContextView; // @synthesize sectionedContextView=_sectionedContextView;
@@ -74,10 +76,10 @@
 - (void)_showAllFilters:(id)arg1;
 - (void)_updateChartForOverlaySelection:(id)arg1 previousSelection:(id)arg2;
 - (void)_updateContextTiles;
-- (BOOL)_usePreferredOverlayAndAllFiltersButton;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (void)contextView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)contextView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)contextViewDidInvalidateLayout:(id)arg1;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (id)createChartOverlayViewController;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
@@ -89,8 +91,11 @@
 - (id)initialSelectedContextForMode:(long long)arg1;
 - (void)newDataArrivedWithValueRange:(id)arg1;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
+- (void)refreshOverlayContextItems;
 - (void)reloadOverlayContextItems;
 - (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
+- (id)showAllFiltersButtonTitle;
+- (BOOL)supportsShowAllFilters;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 - (void)viewDidLoad;

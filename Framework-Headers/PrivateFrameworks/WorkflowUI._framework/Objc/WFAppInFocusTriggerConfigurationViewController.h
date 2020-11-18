@@ -9,10 +9,11 @@
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFAppSearchViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFTriggerMultiSelectCellDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableOrderedSet, NSString, UITableView;
 
-@interface WFAppInFocusTriggerConfigurationViewController : WFTriggerConfigurationViewController <WFAppSearchViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface WFAppInFocusTriggerConfigurationViewController : WFTriggerConfigurationViewController <WFAppSearchViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, WFTriggerMultiSelectCellDelegate>
 {
     NSMutableOrderedSet *_selectedApps;
     NSMutableArray *_displayNameOfSelectedApps;
@@ -32,6 +33,7 @@
 - (void).cxx_destruct;
 - (void)appSearchViewController:(id)arg1 didFinishWithApps:(id)arg2;
 - (void)appSearchViewControllerDidCancel:(id)arg1;
+- (void)cell:(id)arg1 didSelectOptionWithLeftViewSelected:(BOOL)arg2 rightViewSelected:(BOOL)arg3;
 - (id)infoForSection:(long long)arg1;
 - (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;

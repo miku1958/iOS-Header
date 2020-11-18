@@ -31,7 +31,6 @@
 + (id)containerFlowViewWithArrangedSubviews:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1 inAxis:(long long)arg2;
 - (id)arrangedDescription;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (id)calculateViewForFirstBaselineLayout;
@@ -44,9 +43,7 @@
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (void)populateFlowArrangementCells:(vector_702fc599 *)arg1;
 - (void)setBaselineRelativeArrangement:(BOOL)arg1;
-- (void)setHorizontalDistribution:(long long)arg1;
 - (BOOL)setNeedsInvalidation:(long long)arg1;
-- (void)setVerticalDistribution:(long long)arg1;
 
 @end
 

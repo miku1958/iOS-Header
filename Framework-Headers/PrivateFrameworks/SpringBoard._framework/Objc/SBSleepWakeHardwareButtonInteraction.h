@@ -9,7 +9,7 @@
 #import <SpringBoard/SBHardwareButtonGestureParametersObserver-Protocol.h>
 #import <SpringBoard/SBHardwareButtonInteraction-Protocol.h>
 
-@class NSString, SBBacklightController, SBBannerController, SBHIDInterface, SBLockScreenManager, SBScreenWakeAnimationController, SBSoundController, SpringBoard;
+@class NSString, SBBacklightController, SBHIDInterface, SBLockScreenManager, SBScreenWakeAnimationController, SBSoundController, SpringBoard;
 @protocol BSInvalidatable;
 
 @interface SBSleepWakeHardwareButtonInteraction : NSObject <SBHardwareButtonInteraction, SBHardwareButtonGestureParametersObserver>
@@ -20,7 +20,6 @@
     BOOL _undidFadeOutFromLockButton;
     BOOL _didPlayLockSound;
     SBBacklightController *_backlightController;
-    SBBannerController *_bannerController;
     SBLockScreenManager *_lockScreenManager;
     SBScreenWakeAnimationController *_screenWakeAnimationController;
     SBSoundController *_soundController;
@@ -34,7 +33,6 @@
 @property (strong, nonatomic) SpringBoard *SBApp; // @synthesize SBApp=_SBApp;
 @property (nonatomic, getter=isSOSGestureActive) BOOL SOSGestureActive; // @synthesize SOSGestureActive=_SOSGestureActive;
 @property (strong, nonatomic) SBBacklightController *backlightController; // @synthesize backlightController=_backlightController;
-@property (strong, nonatomic) SBBannerController *bannerController; // @synthesize bannerController=_bannerController;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<BSInvalidatable> deferOrientationUpdatesAssertion; // @synthesize deferOrientationUpdatesAssertion=_deferOrientationUpdatesAssertion;
 @property (readonly, copy) NSString *description;

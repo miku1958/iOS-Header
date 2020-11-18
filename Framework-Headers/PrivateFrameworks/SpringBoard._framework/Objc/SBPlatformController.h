@@ -37,7 +37,6 @@
 - (long long)medusaCapabilities;
 - (BOOL)prefersAlwaysOnOrientation;
 - (id)productType;
-- (BOOL)supportsGestureInitiatedAutoPiP;
 - (id)systemBuildVersion;
 - (id)uniqueDeviceIdentifier;
 

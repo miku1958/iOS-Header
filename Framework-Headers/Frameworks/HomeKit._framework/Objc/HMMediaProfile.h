@@ -34,8 +34,9 @@
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)init;
-- (id)initWithAccessoryProfile:(id)arg1;
+- (id)initWithMediaProfile:(id)arg1;
 - (void)mediaProfile:(id)arg1 didUpdateMediaSession:(id)arg2;
+- (void)refreshStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setCapability:(unsigned long long)arg1;
 
 @end

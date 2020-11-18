@@ -36,6 +36,7 @@
 + (id)postalAddressWithThoroughfare:(id)arg1 subThoroughfare:(id)arg2 locality:(id)arg3 subLocality:(id)arg4 administrativeArea:(id)arg5 subAdministrativeArea:(id)arg6 postalCode:(id)arg7 country:(id)arg8;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_countryStringWithCountry:(id)arg1 isoCode:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -13,7 +13,7 @@
 #import <HomeKitDaemon/NSFastEnumeration-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CNContact, HMDAccountHandle, HMDAccountIdentifier, HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@class CNContact, HMDAccountHandle, HMDAccountIdentifier, HMDDevice, HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDAccountManager, OS_dispatch_queue;
 
 @interface HMDAccount : HMFObject <HMFLogging, HMFMerging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, NSFastEnumeration, NSSecureCoding>
@@ -29,6 +29,7 @@
 @property (readonly, getter=isAuthenticated) BOOL authenticated;
 @property (readonly, copy) CNContact *contact;
 @property (readonly, getter=isCurrentAccount) BOOL currentAccount;
+@property (readonly) HMDDevice *currentDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *destination;
@@ -43,6 +44,7 @@
 @property (readonly, copy, nonatomic) NSUUID *modelParentIdentifier;
 @property (readonly, copy) NSString *name;
 @property (readonly, copy) HMDAccountHandle *primaryHandle;
+@property (readonly, copy) NSString *senderCorrelationIdentifier;
 @property (readonly) BOOL shouldCache;
 @property (readonly) Class superclass;
 
@@ -57,7 +59,6 @@
 - (id)attributeDescriptions;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (id)currentDevice;
 - (id)currentDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)deviceForHandle:(id)arg1;
 - (id)deviceForIdentifier:(id)arg1;

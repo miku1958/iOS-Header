@@ -14,9 +14,11 @@
     PKPaymentApplication *_paymentApplication;
     PKWrappedPayment *_wrappedPayment;
     NSData *_applicationData;
+    long long _cryptogramType;
 }
 
 @property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
+@property (nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
 @property (readonly, nonatomic) NSString *endpointName;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;

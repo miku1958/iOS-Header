@@ -14,15 +14,17 @@
     unsigned long long _numberOfFirstPartyWorkoutsOver5MinutesWithType;
     unsigned long long _numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek;
     double _bestKilocaloriesForType;
+    unsigned long long _experienceType;
 }
 
 @property (readonly, nonatomic) double bestKilocaloriesForType; // @synthesize bestKilocaloriesForType=_bestKilocaloriesForType;
+@property (readonly, nonatomic) unsigned long long experienceType; // @synthesize experienceType=_experienceType;
 @property (readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek; // @synthesize numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek=_numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek;
 @property (readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver5MinutesWithType; // @synthesize numberOfFirstPartyWorkoutsOver5MinutesWithType=_numberOfFirstPartyWorkoutsOver5MinutesWithType;
 @property (readonly, nonatomic) ACHWorkoutEvaluationWorkoutProperties *workout; // @synthesize workout=_workout;
 
 - (void).cxx_destruct;
-- (id)initWithWorkout:(id)arg1 numberOfFirstPartyWorkoutsOver5MinutesWithType:(unsigned long long)arg2 numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek:(unsigned long long)arg3 bestKilocaloriesForType:(double)arg4;
+- (id)initWithWorkout:(id)arg1 numberOfFirstPartyWorkoutsOver5MinutesWithType:(unsigned long long)arg2 numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek:(unsigned long long)arg3 bestKilocaloriesForType:(double)arg4 experienceType:(unsigned long long)arg5;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

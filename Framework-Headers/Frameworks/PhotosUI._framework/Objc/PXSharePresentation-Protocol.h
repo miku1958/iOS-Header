@@ -6,11 +6,10 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PHFetchResult, PXActivitySharingContext, UIViewController;
+@class PXActivitySharingContext;
 @protocol PXActivitySharingController;
 
 @protocol PXSharePresentation <NSObject>
 - (id<PXActivitySharingController>)createActivitySharingControllerWithContext:(PXActivitySharingContext *)arg1;
-- (UIViewController *)createShareViewControllerWithFetchResult:(PHFetchResult *)arg1;
 @end
 

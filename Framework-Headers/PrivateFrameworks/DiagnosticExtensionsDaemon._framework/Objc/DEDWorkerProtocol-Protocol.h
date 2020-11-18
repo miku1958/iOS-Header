@@ -13,6 +13,7 @@
 - (void)cancelNotificationForSession:(NSString *)arg1;
 - (void)cancelSession:(NSString *)arg1;
 - (void)commitSession:(NSString *)arg1;
+- (void)getSessionStateWithSession:(NSString *)arg1;
 - (void)getSessionStatusWithSession:(NSString *)arg1;
 - (void)listAvailableExtensionsForSession:(NSString *)arg1;
 - (void)pingSession:(NSString *)arg1;

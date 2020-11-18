@@ -20,6 +20,9 @@
     struct _NSRange _cachedRange;
     struct _NSRange _modifiedRange;
     long long _modifiedDocumentLengthDelta;
+    struct _NSRange _editedRange;
+    long long _editedDelta;
+    BOOL _notifyingToFixSelection;
     struct {
         id *_field1;
         struct _NSRange _field2;
@@ -42,6 +45,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void)_commonInitialization;
+- (id)adjustedRangeFromRange:(id)arg1 inEditingTextSelection:(BOOL)arg2;
 - (id)attributedStringForTextElement:(id)arg1;
 - (id)attributedStringForTextElements:(id)arg1;
 - (void)beginEditingTransaction;
@@ -51,8 +55,13 @@
 - (id)enumerateTextElementsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isCountableDataSource;
+- (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
+- (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
+- (void)performEditingTransactionForTextStorage:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)processEditingForTextStorage:(id)arg1 edited:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 invalidatedRange:(struct _NSRange)arg5;
 - (void)replaceCharactersInRange:(id)arg1 withTextElements:(id)arg2;
+- (BOOL)synchronizeTextLayoutManagers:(CDUnknownBlockType)arg1;
 - (BOOL)synchronizeToBackingStore:(CDUnknownBlockType)arg1;
 - (id)textElementForAttributedString:(id)arg1;
 - (id)textElementsForAttributedString:(id)arg1;

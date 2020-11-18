@@ -9,6 +9,7 @@
 @class _HKExpiringCompletionTimer;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface _HDFTMProducerMetricTracker : NSObject
 {
     _HKExpiringCompletionTimer *_timer;

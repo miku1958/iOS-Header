@@ -31,10 +31,14 @@
 @property (readonly, strong, nonatomic) PFVideoAVObjectBuilder *_videoAVObjectBuilder; // @synthesize _videoAVObjectBuilder=__videoAVObjectBuilder;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
 @property (weak, nonatomic) NSObject<PLVideoRemakerDelegate> *delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSString *exportPreset;
 @property (copy, nonatomic) NSString *exportPresetOverride; // @synthesize exportPresetOverride=_exportPresetOverride;
+@property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) BOOL shouldExportToPhotoDataDirectory; // @synthesize shouldExportToPhotoDataDirectory=_shouldExportToPhotoDataDirectory;
+@property (nonatomic) double trimEndTime; // @synthesize trimEndTime=_trimEndTime;
+@property (nonatomic) double trimStartTime; // @synthesize trimStartTime=_trimStartTime;
 
 + (long long)approximateByteSizeForMode:(int)arg1 duration:(double)arg2;
 + (long long)fileLengthLimitForRemakerMode:(int)arg1;
@@ -51,20 +55,12 @@
 - (void)_updateProgress;
 - (void)cancel;
 - (void)dealloc;
-- (double)duration;
 - (id)initWithAVAsset:(id)arg1;
 - (id)initWithManagedAsset:(id)arg1 applyVideoAdjustments:(BOOL)arg2;
 - (id)initWithPublishingMedia:(id)arg1;
 - (id)messageForRemakingProgress;
-- (int)mode;
 - (id)progressView;
 - (void)remake;
-- (void)setDuration:(double)arg1;
-- (void)setMode:(int)arg1;
-- (void)setTrimEndTime:(double)arg1;
-- (void)setTrimStartTime:(double)arg1;
-- (double)trimEndTime;
-- (double)trimStartTime;
 
 @end
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (void)fire:(id)arg1;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

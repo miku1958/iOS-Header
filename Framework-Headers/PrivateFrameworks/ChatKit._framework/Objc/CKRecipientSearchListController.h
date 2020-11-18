@@ -20,8 +20,8 @@
     NSArray *_prefilteredRecipients;
     IMAccount *_defaultiMessageAccount;
     IDSBatchIDQueryController *_statusQueryController;
-    CKContactsSearchManager *_searchManager;
     NSArray *_searchResults;
+    CKContactsSearchManager *_searchManager;
     NSDate *_idsQueryStartTime;
     NSArray *_conversationCache;
 }

@@ -6,7 +6,7 @@
 
 #import <SwiftUI/NSObject-Protocol.h>
 
-@class NSArray, NSCoder, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUserActivity, UIApplication, UIApplicationShortcutItem, UILocalNotification, UISceneConfiguration, UISceneConnectionOptions, UISceneSession, UIUserNotificationSettings, UIViewController, UIWindow;
+@class CKShareMetadata, NSArray, NSCoder, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUserActivity, UIApplication, UIApplicationShortcutItem, UILocalNotification, UISceneConfiguration, UISceneConnectionOptions, UISceneSession, UIUserNotificationSettings, UIViewController, UIWindow;
 
 @protocol UIApplicationDelegate <NSObject>
 
@@ -46,6 +46,7 @@
 - (BOOL)application:(UIApplication *)arg1 shouldSaveApplicationState:(NSCoder *)arg2;
 - (BOOL)application:(UIApplication *)arg1 shouldSaveSecureApplicationState:(NSCoder *)arg2;
 - (unsigned long long)application:(UIApplication *)arg1 supportedInterfaceOrientationsForWindow:(UIWindow *)arg2;
+- (void)application:(UIApplication *)arg1 userDidAcceptCloudKitShareWithMetadata:(CKShareMetadata *)arg2;
 - (UIViewController *)application:(UIApplication *)arg1 viewControllerWithRestorationIdentifierPath:(NSArray *)arg2 coder:(NSCoder *)arg3;
 - (void)application:(UIApplication *)arg1 willChangeStatusBarFrame:(struct CGRect)arg2;
 - (void)application:(UIApplication *)arg1 willChangeStatusBarOrientation:(long long)arg2 duration:(double)arg3;

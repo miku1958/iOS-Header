@@ -18,6 +18,7 @@
     NSString *_clientName;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,8 +39,6 @@
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithUUID:(id)arg1 request:(id)arg2 objectID:(id)arg3;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (id)uuid;
 - (BOOL)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
 

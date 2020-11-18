@@ -25,8 +25,8 @@
     BOOL _canHandleEditedCopy;
     BOOL _originalContentWasUpdated;
     BOOL _canBeShared;
-    BOOL _hasDeterminedShouldUseExtensionPreview;
-    BOOL _shouldUseExtensionPreview;
+    BOOL _hasDeterminedShouldUseThirdPartyPreviewExtension;
+    BOOL _shouldUseThirdPartyPreviewExtension;
     BOOL _hasDeterminedShouldUseExtensionThumbnail;
     BOOL _shouldUseExtensionThumbnail;
     BOOL _hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
@@ -82,10 +82,10 @@
 @property (strong, nonatomic) QLItemFetcher *fetcher; // @synthesize fetcher=_fetcher;
 @property (strong) FPItem *fpItem; // @synthesize fpItem=_fpItem;
 @property (nonatomic) BOOL hasDeterminedPredictedPreferredContentSizeForOrbPlatter; // @synthesize hasDeterminedPredictedPreferredContentSizeForOrbPlatter=_hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
-@property (nonatomic) BOOL hasDeterminedShouldUseExtensionPreview; // @dynamic hasDeterminedShouldUseExtensionPreview;
-@property (nonatomic) BOOL hasDeterminedShouldUseExtensionPreview; // @synthesize hasDeterminedShouldUseExtensionPreview=_hasDeterminedShouldUseExtensionPreview;
 @property (nonatomic) BOOL hasDeterminedShouldUseExtensionThumbnail; // @dynamic hasDeterminedShouldUseExtensionThumbnail;
 @property (nonatomic) BOOL hasDeterminedShouldUseExtensionThumbnail; // @synthesize hasDeterminedShouldUseExtensionThumbnail=_hasDeterminedShouldUseExtensionThumbnail;
+@property (nonatomic) BOOL hasDeterminedShouldUseThirdPartyPreviewExtension; // @dynamic hasDeterminedShouldUseThirdPartyPreviewExtension;
+@property (nonatomic) BOOL hasDeterminedShouldUseThirdPartyPreviewExtension; // @synthesize hasDeterminedShouldUseThirdPartyPreviewExtension=_hasDeterminedShouldUseThirdPartyPreviewExtension;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPromisedItem; // @synthesize isPromisedItem=_isPromisedItem;
@@ -112,10 +112,10 @@
 @property (strong, nonatomic) FPSandboxingURLWrapper *sandboxingURLWrapper; // @synthesize sandboxingURLWrapper=_sandboxingURLWrapper;
 @property (strong) NSString *searchableItemApplicationBundleIdentifier; // @synthesize searchableItemApplicationBundleIdentifier=_searchableItemApplicationBundleIdentifier;
 @property (strong) NSString *searchableItemIdentifier; // @synthesize searchableItemIdentifier=_searchableItemIdentifier;
-@property (nonatomic) BOOL shouldUseExtensionPreview; // @dynamic shouldUseExtensionPreview;
-@property (nonatomic) BOOL shouldUseExtensionPreview; // @synthesize shouldUseExtensionPreview=_shouldUseExtensionPreview;
 @property (nonatomic) BOOL shouldUseExtensionThumbnail; // @dynamic shouldUseExtensionThumbnail;
 @property (nonatomic) BOOL shouldUseExtensionThumbnail; // @synthesize shouldUseExtensionThumbnail=_shouldUseExtensionThumbnail;
+@property (nonatomic) BOOL shouldUseThirdPartyPreviewExtension; // @dynamic shouldUseThirdPartyPreviewExtension;
+@property (nonatomic) BOOL shouldUseThirdPartyPreviewExtension; // @synthesize shouldUseThirdPartyPreviewExtension=_shouldUseThirdPartyPreviewExtension;
 @property (strong) NSString *spotlightQueryString; // @synthesize spotlightQueryString=_spotlightQueryString;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -127,11 +127,13 @@
 @property (readonly) BOOL wantsDefaultMediaPlayer;
 @property BOOL wantsPreviewInDebugViewController; // @synthesize wantsPreviewInDebugViewController=_wantsPreviewInDebugViewController;
 
++ (BOOL)_shouldUsePreviewExtensionForContentType:(id)arg1 firstPartyExtension:(BOOL)arg2;
 + (BOOL)contentTypeConformsToRTFD:(id)arg1;
 + (id)contentTypesToPreviewTypes;
 + (id)customExtensionCommunicationEncodedClasses;
 + (id)encodedClasses;
 + (id)itemWithPreviewItem:(id)arg1;
++ (unsigned long long)openInTypeForItem:(id)arg1 appIsContentManaged:(BOOL)arg2;
 + (id)rtfContentTypes;
 + (BOOL)shouldUseRemoteCollection:(id)arg1;
 + (id)supportedContentTypes;
@@ -178,8 +180,8 @@
 - (id)shareableURL;
 - (BOOL)shouldUseRemoteViewController;
 - (Class)transformerClass;
-- (BOOL)useExtensionPreview;
 - (BOOL)useExtensionThumbnail;
+- (BOOL)useThirdPartyPreviewExtension;
 
 @end
 

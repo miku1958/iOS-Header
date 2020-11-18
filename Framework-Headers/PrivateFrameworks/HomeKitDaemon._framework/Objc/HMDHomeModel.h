@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelObject.h>
 
-@class HMDHomeKitVersion, NSData, NSDate, NSNumber, NSString;
+@class HMDHomeKitVersion, HMDNaturalLightingContext, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDHomeModel : HMDBackingStoreModelObject
 {
@@ -14,10 +14,14 @@
 
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) NSString *defaultRoomUUID; // @dynamic defaultRoomUUID;
+@property (strong, nonatomic) NSNumber *doorbellChimeEnabled; // @dynamic doorbellChimeEnabled;
+@property (strong, nonatomic) NSData *encodedNaturalLightingContext; // @dynamic encodedNaturalLightingContext;
+@property (strong, nonatomic) NSDate *firstHAPAccessoryAddedDate; // @dynamic firstHAPAccessoryAddedDate;
 @property (strong, nonatomic) NSNumber *hasAnyUserAcknowledgedCameraRecordingOnboarding; // @dynamic hasAnyUserAcknowledgedCameraRecordingOnboarding;
 @property (strong, nonatomic) NSData *homeLocationData; // @dynamic homeLocationData;
 @property (strong, nonatomic) NSNumber *multiUserEnabled; // @dynamic multiUserEnabled;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
+@property (copy, nonatomic) HMDNaturalLightingContext *naturalLightingContext;
 @property (strong, nonatomic) NSNumber *networkProtectionMode; // @dynamic networkProtectionMode;
 @property (strong, nonatomic) NSString *ownerName; // @dynamic ownerName;
 @property (strong, nonatomic) NSData *ownerPublicKey; // @dynamic ownerPublicKey;

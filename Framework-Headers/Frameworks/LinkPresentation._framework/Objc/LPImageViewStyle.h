@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     long long _verticalAlignment;
     LPShadowStyle *_shadow;
     UIColor *_maskColor;
+    double _opacity;
     UIColor *_backgroundColor;
     LPPointUnit *_backgroundInset;
     LPPointUnit *_cornerRadius;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) LPPadding *margin; // @synthesize margin=_margin;
 @property (strong, nonatomic) UIColor *maskColor; // @synthesize maskColor=_maskColor;
 @property (strong, nonatomic) LPSize *minimumSize; // @synthesize minimumSize=_minimumSize;
+@property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (readonly, strong, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 @property (nonatomic) BOOL requireFixedSize; // @synthesize requireFixedSize=_requireFixedSize;
 @property (nonatomic) long long scalingMode; // @synthesize scalingMode=_scalingMode;

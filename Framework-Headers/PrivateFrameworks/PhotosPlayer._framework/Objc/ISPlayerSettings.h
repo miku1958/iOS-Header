@@ -26,8 +26,6 @@ __attribute__((visibility("hidden")))
     float _vitalityEaseMinRate;
     double _vitalityEaseDuration;
     long long _startBehavior;
-    double _forceTouchTimeoutInterval;
-    double _forceTouchTimeoutMinimumProgress;
     double _forceScrubMinimumPressure;
     double _forceScrubMaximumPressure;
     double _forceScrubRewindFactor;
@@ -50,8 +48,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double forceScrubMinimumPressure; // @synthesize forceScrubMinimumPressure=_forceScrubMinimumPressure;
 @property (nonatomic) double forceScrubMinimumRate; // @synthesize forceScrubMinimumRate=_forceScrubMinimumRate;
 @property (nonatomic) double forceScrubRewindFactor; // @synthesize forceScrubRewindFactor=_forceScrubRewindFactor;
-@property (nonatomic) double forceTouchTimeoutInterval; // @synthesize forceTouchTimeoutInterval=_forceTouchTimeoutInterval;
-@property (nonatomic) double forceTouchTimeoutMinimumProgress; // @synthesize forceTouchTimeoutMinimumProgress=_forceTouchTimeoutMinimumProgress;
 @property (nonatomic) BOOL longExposureVitality; // @synthesize longExposureVitality=_longExposureVitality;
 @property (nonatomic) BOOL loopingEnabled; // @synthesize loopingEnabled=_loopingEnabled;
 @property (nonatomic) BOOL playDuringHint; // @synthesize playDuringHint=_playDuringHint;

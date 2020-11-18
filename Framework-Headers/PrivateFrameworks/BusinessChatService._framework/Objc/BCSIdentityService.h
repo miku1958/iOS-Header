@@ -6,19 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class IDSAccount, NSMutableDictionary;
+#import <BusinessChatService/BCSIdentityServiceProtocol-Protocol.h>
+
+@class IDSAccount, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BCSIdentityService : NSObject
+@interface BCSIdentityService : NSObject <BCSIdentityServiceProtocol>
 {
     IDSAccount *_businessChatAccount;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
     NSMutableDictionary *_idStatusCompletionBlocks;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *idStatusCompletionBlocks; // @synthesize idStatusCompletionBlocks=_idStatusCompletionBlocks;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -26,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)businessChatAccount;
 - (void)handleIDStatusCompletionBlocksForBizID:(id)arg1 idStatus:(long long)arg2;
 - (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
+- (id)loginID;
 - (void)refreshIDStatusForBizID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)warmBusinessChatAccountCache;
 

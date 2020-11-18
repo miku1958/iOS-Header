@@ -29,6 +29,7 @@
 - (id)initInEditMode:(BOOL)arg1 shouldShowLocked:(BOOL)arg2 shouldShareInfo:(BOOL)arg3;
 - (void)medicalIDEditorCellDidChangeValue:(id)arg1;
 - (struct UIEdgeInsets)separatorInset;
+- (void)setIsSecondaryProfile:(BOOL)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;
 - (id)titleForHeader;

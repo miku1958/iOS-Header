@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class CKShareMetadata, NSData, NSString;
+@protocol CKInitiateParticipantVettingOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDInitiateParticipantVettingOperation : CKDOperation
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSString *address; // @synthesize address=_address;
+@property (strong, nonatomic) id<CKInitiateParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSData *encryptedKey; // @synthesize encryptedKey=_encryptedKey;
 @property (strong, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property (copy, nonatomic) CDUnknownBlockType participantVettingProgressBlock; // @synthesize participantVettingProgressBlock=_participantVettingProgressBlock;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

@@ -6,20 +6,22 @@
 
 #import <PencilKit/PKTool.h>
 
-@class NSString, UIColor;
+@class NSString, PKInk, UIColor;
 
 @interface PKInkingTool : PKTool
 {
 }
 
 @property (readonly, nonatomic) UIColor *color;
+@property (readonly, nonatomic) PKInk *ink; // @dynamic ink;
 @property (readonly, nonatomic) NSString *inkType;
 @property (readonly, nonatomic) double width;
 
 + (double)_calculateEdgeWidthForWeight:(double)arg1 type:(id)arg2;
 + (double)_calculateWidthForWeight:(double)arg1 type:(id)arg2;
 + (void)_computeWeightToWidthMapFor:(id)arg1 in:(unordered_map_573a5644 *)arg2;
-+ (CDStruct_5237edf5)_contextForStroke:(id)arg1 weight:(double)arg2 type:(id)arg3;
++ (CDStruct_713d3c04)_contextForStroke:(id)arg1 weight:(double)arg2 type:(id)arg3;
++ (BOOL)_isUsingSystemColorPicker;
 + (double)_weightForWidth:(double)arg1 type:(id)arg2;
 + (unordered_map_573a5644 *)_weightToWidthMap;
 + (double)_widthForWeight:(double)arg1 type:(id)arg2;
@@ -27,6 +29,7 @@
 + (double)defaultWidthForInkType:(id)arg1;
 + (double)maximumWidthForInkType:(id)arg1;
 + (double)minimumWidthForInkType:(id)arg1;
+- (id)initWithInk:(id)arg1 width:(double)arg2;
 - (id)initWithInkType:(id)arg1 color:(id)arg2;
 - (id)initWithInkType:(id)arg1 color:(id)arg2 width:(double)arg3;
 

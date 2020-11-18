@@ -26,6 +26,7 @@
     NSString *_receiverDestinationID;
     NSString *_receiverISOCountryCode;
     NSURL *_transcriptionURL;
+    NSString *_receiverLabelID;
     unsigned long long _flags;
 }
 
@@ -55,6 +56,7 @@
 @property (nonatomic, getter=isRead) BOOL read;
 @property (copy, nonatomic) NSString *receiverDestinationID; // @synthesize receiverDestinationID=_receiverDestinationID;
 @property (copy, nonatomic) NSString *receiverISOCountryCode; // @synthesize receiverISOCountryCode=_receiverISOCountryCode;
+@property (copy, nonatomic) NSString *receiverLabelID; // @synthesize receiverLabelID=_receiverLabelID;
 @property (nonatomic) unsigned long long remoteUID; // @synthesize remoteUID=_remoteUID;
 @property (readonly, nonatomic) NSString *sender;
 @property (copy, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;
@@ -90,7 +92,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithMessage:(id)arg1;
-- (id)initWithRecord:(const void *)arg1;
 - (id)initWithVoicemailMessage:(id)arg1;
 - (BOOL)isContactSuggested:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

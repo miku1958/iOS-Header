@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) float smartDistance;
 @property (nonatomic) float yawAngle; // @synthesize yawAngle=_yawAngle;
 
+- (id)description;
 - (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6;
 - (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 hasLabel:(BOOL)arg7 label:(int)arg8;
 - (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 mergesCount:(int)arg7;

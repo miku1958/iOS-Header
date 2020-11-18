@@ -70,6 +70,7 @@
 - (id)_currentSnapshot;
 - (void)_pushCurrentTargetState;
 - (void)_recoverWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_removeMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resourceQueue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resourceQueue_addSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resourceQueue_addWorkoutEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -80,6 +81,7 @@
 - (void)_resourceQueue_finishWorkoutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resourceQueue_freezeSeriesBuilders;
 - (void)_resourceQueue_markRecoveryRequired;
+- (void)_resourceQueue_removeMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_resourceQueue_seriesBuilderWithIdentifier:(id)arg1 type:(id)arg2;
 - (void)_resourceQueue_setStatisticsComputationMethod:(long long)arg1 forType:(id)arg2;
 - (void)_resourceQueue_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(id)arg2;

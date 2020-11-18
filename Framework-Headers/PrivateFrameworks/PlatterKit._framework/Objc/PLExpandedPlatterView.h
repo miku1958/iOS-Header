@@ -10,14 +10,15 @@
 #import <PlatterKit/PLExpandedPlatter-Protocol.h>
 #import <PlatterKit/PLTitled-Protocol.h>
 #import <PlatterKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <PlatterKit/UIPointerInteractionDelegate-Protocol.h>
 #import <PlatterKit/UIScrollViewDelegate-Protocol.h>
-#import <PlatterKit/_UICursorInteractionDelegate-Protocol.h>
 
 @class MTMaterialView, NSArray, NSDate, NSString, NSTimeZone, PLInterfaceActionGroupView, PLPlatterHeaderContentView, UIButton, UIControl, UIScrollView;
 @protocol PLExpandedPlatterViewDelegate;
 
-@interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, _UICursorInteractionDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
+@interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, UIPointerInteractionDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
 {
+    UIView *_headerContainerView;
     UIView *_headerBackgroundView;
     UIView *_headerKeyLineView;
     UIView *_headerTintView;
@@ -80,7 +81,10 @@
 - (void)_configureDismissControlIfNecessary;
 - (void)_configureHeaderBackgroundDefaultIfNecessary;
 - (void)_configureHeaderBackgroundForReduceTransparencyIfNecessary;
-- (void)_configureHeaderViewsIfNecessary;
+- (void)_configureHeaderBackgroundViewsIfCanScroll;
+- (void)_configureHeaderBackgroundViewsIfNecessary;
+- (void)_configureHeaderContainerViewIfNecessary;
+- (void)_configureHeaderContentViewIfNecessary;
 - (void)_configureMainContentViewIfNecessary;
 - (void)_configureScrollViewContentViewIfNecessary;
 - (void)_configureScrollViewIfNecessary;
@@ -89,11 +93,15 @@
 - (struct UIEdgeInsets)_dismissControlTotalOutset;
 - (struct CGRect)_effectiveMainContentViewFrame;
 - (struct CGSize)_flexibleAreaSizeForBounds:(struct CGRect)arg1;
+- (struct CGRect)_headerFrame;
 - (double)_headerKeyLineAlphaForContentOffset;
+- (void)_invalidateHeaderBackgroundViews;
 - (void)_layoutActionsView;
 - (void)_layoutCustomContentView;
 - (void)_layoutDismissControl;
-- (void)_layoutHeader;
+- (void)_layoutHeaderBackgroundViewsWithFrame:(struct CGRect)arg1;
+- (void)_layoutHeaderContainerViewWithFrame:(struct CGRect)arg1;
+- (void)_layoutHeaderContentViewWithFrame:(struct CGRect)arg1;
 - (void)_layoutMainContentView;
 - (void)_layoutMainContentViewIfNecessary;
 - (void)_layoutScrollView;
@@ -103,13 +111,11 @@
 - (void)_reduceTransparencyDidChange:(id)arg1;
 - (struct CGRect)_scrollViewContentViewFrame;
 - (struct CGSize)_sizeThatFitsContentExcludingActionsWithSize:(struct CGSize)arg1;
-- (void)_updateHeaderKeyLineAlphaIfNecessary;
+- (void)_updateHeaderKeyLineAlphaIfNecessaryAnimated:(BOOL)arg1;
 - (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeExcludingActions;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (struct CGRect)frameForPlatterFrame:(struct CGRect)arg1;
@@ -118,6 +124,8 @@
 - (struct UIEdgeInsets)minimumScrollViewContentInsets;
 - (struct CGRect)platterFrameForFrame:(struct CGRect)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

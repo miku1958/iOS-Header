@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) TSUColor *color;
 @property (readonly, nonatomic) float custom3DChartRotation;
 @property (readonly, nonatomic) long long customAccelerationOption;
+@property (readonly, nonatomic) BOOL customAlignToPath;
 @property (readonly, nonatomic) BOOL customBounce;
 @property (readonly, nonatomic) BOOL customCursor;
 @property (readonly, nonatomic) BOOL customDecay;
@@ -105,6 +106,7 @@
 @property (readonly, nonatomic) BOOL supportsActionRotationAngle;
 @property (readonly, nonatomic) BOOL supportsActionRotationDirection;
 @property (readonly, nonatomic) BOOL supportsActionScale;
+@property (readonly, nonatomic) BOOL supportsAlignToPath;
 @property (readonly, nonatomic) BOOL supportsBounce;
 @property (readonly, nonatomic) BOOL supportsCursor;
 @property (readonly, nonatomic) BOOL supportsCustomDetail;

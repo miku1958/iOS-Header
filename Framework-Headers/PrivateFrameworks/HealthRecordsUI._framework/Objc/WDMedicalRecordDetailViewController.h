@@ -27,17 +27,22 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 
 - (void).cxx_destruct;
+- (id)_makeCopyMenuFor:(id)arg1;
+- (id)_pasteboardStringForRowAtIndexPath:(id)arg1;
 - (void)_tapToRadar:(id)arg1;
 - (void)detailDataProviderHasDisplayItemUpdate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProfile:(id)arg1 medicalRecord:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)recordCategory;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

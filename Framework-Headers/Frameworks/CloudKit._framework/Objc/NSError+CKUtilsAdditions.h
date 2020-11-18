@@ -15,10 +15,12 @@
 - (id)CKClientSuitableError;
 - (id)CKClientSuitableUnderlyingError;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (id)CKErrorScopedToZoneIDs:(id)arg1;
 - (BOOL)CKHasCKErrorInChildChain;
 - (BOOL)CKHasTopLevelUnderlyingError;
 - (BOOL)CKIsCKError;
 - (BOOL)CKIsNotFoundError;
 - (BOOL)CKIsPOSIXErrorCode:(long long)arg1;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @end
 

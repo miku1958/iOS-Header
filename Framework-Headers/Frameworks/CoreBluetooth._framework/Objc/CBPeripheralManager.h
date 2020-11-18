@@ -28,6 +28,7 @@
         unsigned int didStopAdvertisingWithError:1;
         unsigned int didUpdateANCSAuthorization:1;
     } _delegateFlags;
+    BOOL _observingKeyPaths;
     BOOL _isAdvertising;
     BOOL _readyForUpdates;
     BOOL _waitingForReady;

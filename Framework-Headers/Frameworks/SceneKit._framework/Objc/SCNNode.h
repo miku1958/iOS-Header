@@ -76,6 +76,7 @@
 @property (nonatomic) struct SCNVector3 eulerAngles;
 @property (copy, nonatomic) NSArray *filters;
 @property (nonatomic) long long focusBehavior;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (strong, nonatomic) SCNGeometry *geometry;
@@ -139,7 +140,7 @@
 + (id)nodeWithGeometry:(id)arg1;
 + (id)nodeWithMDLAsset:(id)arg1;
 + (id)nodeWithMDLObject:(id)arg1;
-+ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2 sceneNodes:(id)arg3 skinnedMeshes:(id)arg4 skelNodesMap:(struct SkelNodesMap *)arg5 options:(id)arg6;
++ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2 sceneNodes:(id)arg3 skinnedMeshes:(id)arg4 skelNodesMap:(struct SkelNodesMap *)arg5 asset:(id)arg6 options:(id)arg7;
 + (id)nodeWithNodeRef:(struct __C3DNode *)arg1;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
 + (MISSING_TYPE *)simdLocalFront;

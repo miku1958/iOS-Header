@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class UINavigationController;
+@class NSPointerArray;
 
 @interface VUICurrentSiriNavControllerContainer : NSObject
 {
-    UINavigationController *_currentSiriNavController;
+    NSPointerArray *_activeNavigationControllers;
 }
 
-@property (weak, nonatomic) UINavigationController *currentSiriNavController; // @synthesize currentSiriNavController=_currentSiriNavController;
+@property (strong, nonatomic) NSPointerArray *activeNavigationControllers; // @synthesize activeNavigationControllers=_activeNavigationControllers;
 
 + (BOOL)isRunningInSiriPluggin;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)currentSiriNavController;
 - (id)init;
+- (void)setCurrentSiriNavController:(id)arg1;
 
 @end
 

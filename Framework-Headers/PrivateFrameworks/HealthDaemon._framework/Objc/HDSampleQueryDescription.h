@@ -17,8 +17,8 @@
     NSDictionary *_encodingOptions;
     NSSet *_restrictedSourceEntities;
     CDUnknownBlockType _authorizationFilter;
-    _HKFilter *_filter;
     HDSQLitePredicate *_sqlitePredicate;
+    _HKFilter *_filter;
 }
 
 @property (readonly, copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
@@ -37,6 +37,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithSampleTypes:(id)arg1 predicate:(id)arg2 encodingOptions:(id)arg3 restrictedSourceEntities:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5 filter:(id)arg6 sqlitePredicate:(id)arg7;
+- (id)initWithSampleTypes:(id)arg1 predicate:(id)arg2 encodingOptions:(id)arg3 restrictedSourceEntities:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5 sqlitePredicate:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

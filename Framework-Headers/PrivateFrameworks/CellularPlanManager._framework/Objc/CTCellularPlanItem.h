@@ -17,6 +17,7 @@
     NSString *_iccid;
     BOOL _shouldDisplayType;
     BOOL _shouldAutoSelectWhenInRange;
+    BOOL _shouldDisplayExtendedConsentInfo;
     BOOL _isSimStateValid;
     BOOL _shouldDisplay;
     BOOL _shouldAppearDisabled;
@@ -55,7 +56,8 @@
 @property (readonly, nonatomic) CTCellularPlan *plan; // @synthesize plan=_plan;
 @property (nonatomic) BOOL shouldAppearDisabled; // @synthesize shouldAppearDisabled=_shouldAppearDisabled;
 @property (nonatomic) BOOL shouldAutoSelectWhenInRange; // @synthesize shouldAutoSelectWhenInRange=_shouldAutoSelectWhenInRange;
-@property (readonly, nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
+@property (nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
+@property (nonatomic) BOOL shouldDisplayExtendedConsentInfo; // @synthesize shouldDisplayExtendedConsentInfo=_shouldDisplayExtendedConsentInfo;
 @property (nonatomic) BOOL shouldDisplayType; // @synthesize shouldDisplayType=_shouldDisplayType;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) CTUserLabel *userLabel; // @synthesize userLabel=_userLabel;
@@ -65,6 +67,7 @@
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)customDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2;

@@ -18,7 +18,6 @@
 @property (nonatomic) BOOL observingAttachment; // @synthesize observingAttachment=_observingAttachment;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
-+ (id)sharedDrawingController;
 - (void).cxx_destruct;
 - (void)attachmentIsDeallocating:(id)arg1;
 - (BOOL)canSaveURL;

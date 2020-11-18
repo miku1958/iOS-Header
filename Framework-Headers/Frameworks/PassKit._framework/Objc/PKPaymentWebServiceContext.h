@@ -73,6 +73,7 @@
 - (id)applyServiceLocalizationBundleForFeatureIdentifier:(unsigned long long)arg1;
 - (id)applyServicePreferredLanguageForFeatureIdentifier:(unsigned long long)arg1;
 - (id)betaPaymentNetworksForRegion:(id)arg1;
+- (BOOL)contextMeetsDeviceUpgradeTasksEnablementThresholdForRegion:(id)arg1;
 - (BOOL)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
 - (void)dealloc;

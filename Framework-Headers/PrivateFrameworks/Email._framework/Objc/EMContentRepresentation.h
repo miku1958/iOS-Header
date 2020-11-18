@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Email/EFLoggable-Protocol.h>
 #import <Email/EFPubliclyDescribable-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
 @class CSSearchableItem, EFInvocationToken, EFSandboxedURLWrapper, EMListUnsubscribeCommand, EMMessage, EMMessageHeaders, EMSecurityInformation, NSArray, NSString, NSURL;
 @protocol EMContentItem, _EMDistantContentRepresentation;
 
-@interface EMContentRepresentation : NSObject <NSSecureCoding, EFLoggable, EFPubliclyDescribable>
+@interface EMContentRepresentation : NSObject <NSSecureCoding, EFPubliclyDescribable>
 {
     EFInvocationToken *_invocable;
     BOOL _claimedScopedResource;
@@ -32,6 +31,7 @@
     EFSandboxedURLWrapper *_urlWrapper;
     id<_EMDistantContentRepresentation> _distantContentRepresentation;
     CDUnknownBlockType _requestMoreContentBlock;
+    CDUnknownBlockType _listUnsubscribeBlock;
 }
 
 @property (weak, nonatomic) id<EMContentItem> contentItem; // @synthesize contentItem=_contentItem;
@@ -43,6 +43,7 @@
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (nonatomic) BOOL hasMoreContent; // @synthesize hasMoreContent=_hasMoreContent;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType listUnsubscribeBlock; // @synthesize listUnsubscribeBlock=_listUnsubscribeBlock;
 @property (strong, nonatomic) NSURL *publicMessageURL; // @synthesize publicMessageURL=_publicMessageURL;
 @property (copy, nonatomic) NSArray *relatedContentItems; // @synthesize relatedContentItems=_relatedContentItems;
 @property (nonatomic) long long remainingByteCount; // @synthesize remainingByteCount=_remainingByteCount;
@@ -58,7 +59,6 @@
 
 + (id)contentRequestDelegateInterface;
 + (id)distantContentRepresentationInterface;
-+ (id)log;
 + (BOOL)supportsSecureCoding;
 + (id)temporaryURLWithData:(id)arg1 clientIdentifier:(id)arg2 preferredFilename:(id)arg3 pathExtension:(id)arg4 cleanupInvocable:(id *)arg5 error:(id *)arg6;
 - (void).cxx_destruct;
@@ -75,6 +75,7 @@
 - (id)initWithData:(id)arg1 clientIdentifier:(id)arg2 preferredFilename:(id)arg3 extension:(id)arg4 relatedItems:(id)arg5 securityInformation:(id)arg6;
 - (void)invalidate;
 - (void)mergeUpdatedRepresentation:(id)arg1;
+- (id)performUnsubscribeAction:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)requestAdditionalContentWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

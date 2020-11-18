@@ -7,17 +7,15 @@
 #import <UIKit/UITableViewController.h>
 
 #import <PassKitUI/PKPassPersonalizationCellDelegate-Protocol.h>
-#import <PassKitUI/PKPassPersonalizationFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPassPersonalizationTermsViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PKContact, PKPass, PKPassPersonalizationFooterView, PKPassPersonalizationHeaderView, UIBarButtonItem, UIButton;
+@class NSArray, NSString, OBPrivacyLinkController, PKContact, PKPass, PKPassPersonalizationHeaderView, UIBarButtonItem, UIButton;
 @protocol PKPassPersonalizationViewControllerDelegate;
 
-@interface PKPassPersonalizationViewController : UITableViewController <PKPassPersonalizationCellDelegate, PKPassPersonalizationFooterViewDelegate, PKPassPersonalizationTermsViewControllerDelegate, PKPaymentSetupViewControllerDelegate>
+@interface PKPassPersonalizationViewController : UITableViewController <PKPassPersonalizationCellDelegate, PKPassPersonalizationTermsViewControllerDelegate, PKPaymentSetupViewControllerDelegate>
 {
     PKPassPersonalizationHeaderView *_headerView;
-    PKPassPersonalizationFooterView *_footerView;
     UIBarButtonItem *_personalizeNowButton;
     UIButton *_personalizeLaterButton;
     PKPass *_pass;
@@ -27,17 +25,17 @@
     unsigned long long _personalizationSource;
     BOOL _hasScrolledToCells;
     BOOL _termsAndConditionsAccepted;
+    OBPrivacyLinkController *_privacyController;
     id<PKPassPersonalizationViewControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPassPersonalizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassPersonalizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_configureFooterView;
 - (void)_configureHeaderViewForState:(unsigned long long)arg1;
 - (BOOL)_contactReadyForPersonalization;
 - (id)_nextCellForIndexPath:(id)arg1;
@@ -50,7 +48,6 @@
 - (void)dealloc;
 - (id)initWithPass:(id)arg1 personalizationToken:(id)arg2 personalizationSource:(unsigned long long)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)passPersonalizationFooterViewPrivacyLinkPressed:(id)arg1;
 - (void)passPersonalizationTermsViewControllerDidAcceptTerms:(id)arg1;
 - (void)passPersonalizationTermsViewControllerDidDeclineTerms:(id)arg1;
 - (void)personalizationCellDidChangeValue:(id)arg1;

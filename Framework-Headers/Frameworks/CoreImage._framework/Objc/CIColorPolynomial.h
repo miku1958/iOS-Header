@@ -26,7 +26,9 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (BOOL)_isIdentity;
+- (BOOL)_isIdentityAlpha;
 - (id)_kernel;
+- (id)_kernelRGB;
 - (id)outputImage;
 
 @end

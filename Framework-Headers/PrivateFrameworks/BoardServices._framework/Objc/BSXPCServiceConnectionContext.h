@@ -18,12 +18,10 @@
 @property (readonly, nonatomic, getter=isChild) BOOL child;
 @property (readonly, nonatomic, getter=isClient) BOOL client;
 @property (readonly, copy, nonatomic) NSString *endpointDescription;
-@property (readonly, copy, nonatomic) NSString *loggingProem; // @synthesize loggingProem=_proem;
 @property (readonly, nonatomic, getter=isRoot) BOOL root;
 @property (readonly, nonatomic, getter=isServer) BOOL server;
 
 - (void).cxx_destruct;
-- (id)_initWithProem:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;

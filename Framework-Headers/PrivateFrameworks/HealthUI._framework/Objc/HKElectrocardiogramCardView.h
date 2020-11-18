@@ -13,8 +13,10 @@
 @interface HKElectrocardiogramCardView : UIView <HKDateCacheObserver>
 {
     BOOL _onboarding;
+    BOOL _isSampleInteractive;
     HKElectrocardiogram *_sample;
     HKDateCache *_dateCache;
+    long long _activeAlgorithmVersion;
     HKRoundedHeaderView *_headerView;
     UIView *_cellBackgroundView;
     UIImageView *_heartImageView;
@@ -30,6 +32,7 @@
     NSArray *_largeTextConstraints;
 }
 
+@property (nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property (strong, nonatomic) UILabel *averageHeartRateLabel; // @synthesize averageHeartRateLabel=_averageHeartRateLabel;
 @property (strong, nonatomic) NSLayoutConstraint *averageHeartRateLabelFirstBaselineConstraint; // @synthesize averageHeartRateLabelFirstBaselineConstraint=_averageHeartRateLabelFirstBaselineConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *averageHeartRateLabelWidthConstraint; // @synthesize averageHeartRateLabelWidthConstraint=_averageHeartRateLabelWidthConstraint;
@@ -43,6 +46,7 @@
 @property (strong, nonatomic) HKRoundedHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) UIImageView *heartImageView; // @synthesize heartImageView=_heartImageView;
 @property (strong, nonatomic) NSLayoutConstraint *heartImageViewHeightConstraint; // @synthesize heartImageViewHeightConstraint=_heartImageViewHeightConstraint;
+@property (readonly, nonatomic) BOOL isSampleInteractive; // @synthesize isSampleInteractive=_isSampleInteractive;
 @property (strong, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property (nonatomic, getter=isOnboarding) BOOL onboarding; // @synthesize onboarding=_onboarding;
 @property (strong, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
@@ -74,12 +78,12 @@
 - (void)_updateForCurrentSizeCategory;
 - (void)_updateGraphTopConstraint;
 - (void)_updateTextConstraints;
-- (void)_updateUI;
 - (void)dateCacheDidUpdate:(id)arg1 onNotification:(id)arg2;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3;
+- (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3 activeAlgorithmVersion:(long long)arg4 isSampleInteractive:(BOOL)arg5;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateUI;
 
 @end
 

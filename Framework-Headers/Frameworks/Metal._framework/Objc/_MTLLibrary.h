@@ -8,7 +8,7 @@
 
 #import <Metal/MTLLibrarySPI-Protocol.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 @protocol MTLDevice;
 
 @interface _MTLLibrary : _MTLObjectWithLabel <MTLLibrarySPI>
@@ -27,24 +27,32 @@
 @property (readonly, strong, nonatomic) NSMutableDictionary *functionDictionary; // @synthesize functionDictionary=_functionDictionary;
 @property (readonly, strong) NSArray *functionNames; // @dynamic functionNames;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSString *installName;
 @property (copy) NSString *label; // @dynamic label;
 @property (readonly) struct MTLLibraryData *libraryData; // @synthesize libraryData=_libraryData;
-@property (readonly, copy) NSData *libraryDataContents;
 @property (copy) NSString *overrideTriple; // @dynamic overrideTriple;
 @property (readonly) Class superclass;
+@property (readonly) long long type; // @dynamic type;
+@property (readonly) NSArray *variableList;
 
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithLibraryContainer:(struct MTLLibraryContainer *)arg1 device:(id)arg2;
+- (id)libraryDataContents;
 - (id)newExternFunctionWithName:(id)arg1;
+- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newFunctionWithName:(id)arg1;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
-- (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
+- (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 specializedName:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 specializedName:(id)arg4 error:(id *)arg5;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
 - (id)newFunctionWithNameInternal:(id)arg1;
+- (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 
 @end
 

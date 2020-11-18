@@ -32,6 +32,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *unformattedInternationalStringValue;
 
++ (CDUnknownBlockType)StringValue;
 + (id)_countryCodeForNorthAmericanDialingPlanAreaCodesExcludingUS;
 + (id)_countryCodesForNorthAmericanDialingPlan;
 + (BOOL)_isCountryCodeForNorthAmericanDialingPlan:(id)arg1;
@@ -46,7 +47,6 @@
 + (id)unsupportedCountryCodes;
 - (void).cxx_destruct;
 - (id)_countryCodeFromPhoneNumberRef;
-- (id)_determineCorrectCountryCodeForNorthAmericanDialingPlan;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)digitsRemovingDialingCode;

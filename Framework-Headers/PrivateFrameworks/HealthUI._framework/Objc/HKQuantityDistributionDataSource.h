@@ -6,12 +6,14 @@
 
 #import <HealthUI/HKHealthQueryChartCacheDataSource.h>
 
-@class HKQuantityType, HKUnit, NSDate, NSPredicate;
+@class HKQuantityType, HKUnitPreferenceController, NSDate, NSPredicate;
 
 @interface HKQuantityDistributionDataSource : HKHealthQueryChartCacheDataSource
 {
     HKQuantityType *_quantityType;
-    HKUnit *_unit;
+    HKUnitPreferenceController *_unitController;
+    double _bucketSize;
+    double _bucketAnchor;
     long long _contextStyle;
     NSPredicate *_predicate;
     unsigned long long _options;
@@ -20,20 +22,24 @@
     CDUnknownBlockType _userInfoCreationBlock;
 }
 
+@property (readonly, nonatomic) double bucketAnchor; // @synthesize bucketAnchor=_bucketAnchor;
+@property (readonly, nonatomic) double bucketSize; // @synthesize bucketSize=_bucketSize;
 @property (readonly, nonatomic) long long contextStyle; // @synthesize contextStyle=_contextStyle;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly, nonatomic) HKQuantityType *quantityType; // @synthesize quantityType=_quantityType;
 @property (readonly, nonatomic) NSDate *specificEndDate; // @synthesize specificEndDate=_specificEndDate;
 @property (readonly, nonatomic) NSDate *specificStartDate; // @synthesize specificStartDate=_specificStartDate;
-@property (readonly, nonatomic) HKUnit *unit; // @synthesize unit=_unit;
+@property (readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property (readonly, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
 
 - (void).cxx_destruct;
 - (id)_dataBlockFromHistograms:(id)arg1;
 - (id)_quickDate:(id)arg1;
-- (id)initWithQuantityType:(id)arg1 unit:(id)arg2 healthStore:(id)arg3 contextStyle:(long long)arg4 predicate:(id)arg5 options:(unsigned long long)arg6 baseDisplayType:(id)arg7 specificStartDate:(id)arg8 specificEndDate:(id)arg9 userInfoCreationBlock:(CDUnknownBlockType)arg10;
+- (id)initWithQuantityType:(id)arg1 unitController:(id)arg2 distributionBucketSize:(id)arg3 distributionAnchor:(id)arg4 healthStore:(id)arg5 contextStyle:(long long)arg6 predicate:(id)arg7 options:(unsigned long long)arg8 baseDisplayType:(id)arg9 specificStartDate:(id)arg10 specificEndDate:(id)arg11 userInfoCreationBlock:(CDUnknownBlockType)arg12;
+- (id)initWithQuantityType:(id)arg1 unitController:(id)arg2 healthStore:(id)arg3 contextStyle:(long long)arg4 predicate:(id)arg5 options:(unsigned long long)arg6 baseDisplayType:(id)arg7 specificStartDate:(id)arg8 specificEndDate:(id)arg9 userInfoCreationBlock:(CDUnknownBlockType)arg10;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 
 @end
 

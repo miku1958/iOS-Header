@@ -19,11 +19,9 @@
         unsigned int isHomePodInUltimateMode:1;
     } _has;
     BOOL _isHomePodInUltimateMode;
-    BOOL __encodeLegacyGloryData;
     int _deviceIdiom;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceIdiom; // @synthesize deviceIdiom=_deviceIdiom;

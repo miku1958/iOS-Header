@@ -15,7 +15,6 @@
 @interface _INPBRunVoiceCommandIntent : PBCodable <_INPBRunVoiceCommandIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBIntentExecutionResult *_executionResult;
     _INPBIntentMetadata *_intentMetadata;
     _INPBVoiceCommandDeviceInformation *_originDevice;
@@ -23,7 +22,6 @@
     _INPBDataString *_voiceCommand;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBIntentExecutionResult *executionResult; // @synthesize executionResult=_executionResult;

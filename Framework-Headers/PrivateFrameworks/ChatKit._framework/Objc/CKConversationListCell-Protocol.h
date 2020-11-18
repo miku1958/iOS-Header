@@ -9,7 +9,7 @@
 @class CKConversation, NSString;
 
 @protocol CKConversationListCell <NSObject>
-+ (double)cellHeight;
++ (double)cellHeightForDisplayScale:(double)arg1;
 + (NSString *)identifierForConversation:(CKConversation *)arg1;
 - (void)updateContentsForConversation:(CKConversation *)arg1;
 - (void)updateContentsForConversation:(CKConversation *)arg1 fastPreview:(BOOL)arg2;

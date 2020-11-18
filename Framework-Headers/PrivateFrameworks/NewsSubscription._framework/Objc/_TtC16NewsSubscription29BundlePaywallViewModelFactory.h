@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *channelToken;
     MISSING_TYPE *genreToken;
+    MISSING_TYPE *priceToken;
+    MISSING_TYPE *priceDeltaToken;
     MISSING_TYPE *defaultTitleWithTagFreeTrial;
     MISSING_TYPE *defaultTitleWithTagNonTrial;
     MISSING_TYPE *defaultTitleWithoutTagFreeTrial;
@@ -24,6 +26,8 @@
     MISSING_TYPE *webAuthButtonTitle;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *purchaseProvider;
+    MISSING_TYPE *offerOverrideProvider;
+    MISSING_TYPE *offerManager;
 }
 
 @end

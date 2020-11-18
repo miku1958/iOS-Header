@@ -6,55 +6,72 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, _PASLock;
+@class CNContactStore, NSString, PPContactDiskCacheManager, PPMeCardCacheManager, PPSQLDatabase, SGSqlEntityStore;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, SGSuggestionsServiceContactsProtocol;
 
 @interface PPContactStorage : NSObject
 {
+    CNContactStore *_contactsStore;
     NSObject<OS_dispatch_semaphore> *_concurrentContactQueryThrottleSem;
     NSObject<OS_dispatch_queue> *_concurrentContactQueryQueue;
-    CNContactStore *_contactsStore;
-    _PASLock *_diskCacheLock;
+    PPContactDiskCacheManager *_contactCacheManager;
+    PPMeCardCacheManager *_meCardCacheManager;
     id<SGSuggestionsServiceContactsProtocol> _foundInAppsService;
+    SGSqlEntityStore *_foundInAppsHarvestStore;
+    NSString *_path;
+    PPSQLDatabase *_db;
+    BOOL _chineseBirthdayFound;
 }
 
-+ (id)defaultStorage;
++ (id)normalizeHandle:(id)arg1;
 - (void).cxx_destruct;
-- (id)_allCNNameRecordsFromDiskCache:(id)arg1;
-- (id)_changeHistoryIdentifierForClient:(id)arg1;
-- (id)_cnNameRecordsForAllContacts;
-- (id)_cnNameRecordsForAllContactsFromSource;
+- (BOOL)_addToCache:(id)arg1 records:(id)arg2;
 - (id)_contactsContactsWithPredicate:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
 - (id)_contactsEmailSearchWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
 - (id)_contactsFullTextSearchWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3 filter:(CDUnknownBlockType)arg4;
 - (id)_contactsNameSearchWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
 - (id)_contactsPhoneSearchWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
 - (id)_contactsPostalAddressSearchWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
+- (id)_disksCacheHistoryRecordsWithError:(id *)arg1;
 - (id)_foundInAppsContactsQueryWithIdentifier:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
 - (id)_foundInAppsContactsQueryWithTerm:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3 filter:(CDUnknownBlockType)arg4;
 - (id)_foundInAppsContactsWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
-- (id)_init;
+- (id)_historyTokenForClientIdentifier:(id)arg1;
+- (BOOL)_iterContactsNameRecordsForAllContactsFromSouceAndReplaceDiskCacheWithError:(id *)arg1 diskCache:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (BOOL)_iterContactsNameRecordsForAllContactsWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_iterNameRecordsFromDiskCache:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)_joinResults:(id)arg1;
-- (id)_nameRecordFromCNContactChange:(id)arg1;
 - (id)_nameRecordKeysToFetch;
-- (void)_namesRecordsForAllFoundInAppsContactsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_namesRecordsForAllFoundInAppsContactsWithKeepGoingBlock:(CDUnknownBlockType)arg1;
+- (void)_setHistoryToken:(id)arg1 clientIdentifier:(id)arg2;
 - (id)_waitForGroup:(id)arg1 results:(id)arg2;
-- (id)_waitForGroup:(id)arg1 results:(id)arg2 timeoutSeconds:(double)arg3;
-- (BOOL)_writeCNNameRecords:(id)arg1 history:(id)arg2 diskCache:(id)arg3 fullLoadFromSource:(BOOL)arg4;
-- (id)allNameRecordsFromAllSources;
+- (id)_waitForGroup:(id)arg1 results:(id)arg2 timeoutSeconds:(double)arg3 explanationSet:(id)arg4;
 - (void)asyncFillResultsFromContactsWithQuery:(id)arg1 explanationSet:(id)arg2 group:(id)arg3 results:(id)arg4;
 - (void)asyncFillResultsFromFoundInAppsWithQuery:(id)arg1 explanationSet:(id)arg2 group:(id)arg3 results:(id)arg4;
-- (BOOL)clearChangeHistoryForClient:(id)arg1 history:(id)arg2;
-- (id)contactNameRecordsWithHistory:(id)arg1 error:(id *)arg2;
+- (BOOL)chineseBirthdayFound;
+- (void)clearChangeHistoryForClient:(id)arg1 historyResult:(id)arg2;
+- (id)contactHandleSourceCountsWithMinimumSourceCount:(unsigned long long)arg1;
+- (id)contactHandlesForSource:(id)arg1;
+- (id)contactHandlesForTopics:(id)arg1;
+- (id)contactNameRecordsWithHistoryResult:(id)arg1 truncated:(BOOL *)arg2 error:(id *)arg3;
 - (id)contactsChangeHistoryForClient:(id)arg1 error:(id *)arg2;
 - (id)contactsContactsWithQuery:(id)arg1 explanationSet:(id)arg2 error:(id *)arg3;
-- (id)contactsWithQuery:(id)arg1 explanationSet:(id)arg2 timeoutSeconds:(double)arg3 error:(id *)arg4;
+- (id)contactsWithQuery:(id)arg1 explanationSet:(id)arg2 timeoutSeconds:(id)arg3 error:(id *)arg4;
 - (CDUnknownBlockType)emailFilterWithQuery:(id)arg1;
 - (id)init;
+- (id)initWithDatabase:(id)arg1;
+- (long long)insertIfNeededAndFetchIdentifierWithHandle:(id)arg1 txnWitness:(id)arg2;
+- (BOOL)iterAllNameRecordsFromAllSourcesWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)loadChineseBirthdayFoundKVData;
+- (id)meCard;
 - (CDUnknownBlockType)nameFilterWithQuery:(id)arg1;
 - (CDUnknownBlockType)phoneFilterWithQuery:(id)arg1;
 - (CDUnknownBlockType)postalAddressFilterWithQuery:(id)arg1;
-- (void)registerContactsChangeHistoryForClient:(id)arg1;
+- (unsigned long long)pruneOrphanedHandlesWithTxnWitness:(id)arg1;
+- (void)setChineseBirthdayFound:(BOOL)arg1;
+- (void)setChineseBirthdayFoundKVData;
+- (id)sourcesForContactHandle:(id)arg1;
+- (void)storeHandleSourceMapWithHandles:(id)arg1 sourceId:(long long)arg2 txnWitness:(id)arg3;
 
 @end
 

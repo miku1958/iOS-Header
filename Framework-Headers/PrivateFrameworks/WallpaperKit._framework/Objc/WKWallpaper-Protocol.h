@@ -10,7 +10,8 @@
 
 @protocol WKWallpaper <NSCopying>
 
-@property (readonly, nonatomic) unsigned long long identifier;
+@property (readonly, nonatomic) unsigned long long backingType;
+@property (readonly, nonatomic) long long identifier;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned long long type;
 

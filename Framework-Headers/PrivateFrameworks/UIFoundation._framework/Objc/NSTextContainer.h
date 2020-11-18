@@ -38,6 +38,7 @@
     long long _layoutOrientation;
     NSDictionary *_attributesForExtraLineFragment;
     long long _applicationFrameworkContext;
+    BOOL _textViewSupportsAdaptiveColor;
 }
 
 @property (copy, nonatomic) NSArray *exclusionPaths;
@@ -69,10 +70,14 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContainerSize:(struct CGSize)arg1;
 - (id)initWithSize:(struct CGSize)arg1;
+- (void)invalidateTextContainerOrigin;
 - (struct CGRect)lineFragmentRectForProposedRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2 writingDirection:(long long)arg3 remainingRect:(struct CGRect *)arg4;
 - (struct CGRect)lineFragmentRectForProposedRect:(struct CGRect)arg1 remainingRect:(struct CGRect *)arg2;
+- (id)markedTextAttributesAtCharacterIndex:(long long)arg1 effectiveRange:(out struct _NSRange *)arg2;
 - (double)minimumLineFragmentWidth;
+- (id)renderingColorForDocumentColor:(id)arg1;
 - (void)replaceLayoutManager:(id)arg1;
+- (id)selectedTextAttributes;
 - (void)setAttributesForExtraLineFragment:(id)arg1;
 - (void)setContainerSize:(struct CGSize)arg1;
 - (void)setLayoutOrientation:(long long)arg1;

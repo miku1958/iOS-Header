@@ -8,7 +8,7 @@
 
 #import <PassKitUI/UIKeyInput-Protocol.h>
 
-@class NSArray, NSCharacterSet, NSMutableString, NSString, UILabel, UITextInputPasswordRules;
+@class NSArray, NSCharacterSet, NSMutableString, NSString, UIImage, UILabel, UITextInputPasswordRules;
 @protocol PKPinCodeFieldDelegate;
 
 @interface PKPinCodeField : UIView <UIKeyInput>
@@ -19,9 +19,18 @@
     double _fontHeight;
     NSArray *_numberLabels;
     NSArray *_dashViews;
+    NSArray *_dotViews;
+    UIImage *_dotImage;
     UILabel *_hyphenLabel;
     BOOL _keyboardOverrideEnabled;
+    unsigned long long _style;
+    struct {
+        double dashLength;
+        double dashWidth;
+        double hyphenOffset;
+    } _config;
     BOOL _hyphenatePinCode;
+    BOOL _secureTextEntry;
     id<PKPinCodeFieldDelegate> _delegate;
 }
 
@@ -39,7 +48,7 @@
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (copy, nonatomic) NSString *pinCode;
 @property (nonatomic) long long returnKeyType;
-@property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
+@property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @synthesize secureTextEntry=_secureTextEntry;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
@@ -51,6 +60,7 @@
 - (BOOL)canBecomeFirstResponder;
 - (void)deleteBackward;
 - (id)initWithPinCodeLength:(unsigned long long)arg1 delegate:(id)arg2;
+- (id)initWithPinCodeLength:(unsigned long long)arg1 style:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)insertText:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

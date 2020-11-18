@@ -6,10 +6,12 @@
 
 #import <Preferences/PSSpecifier.h>
 
+#import <SettingsCellular/PSSpecifierDataUsageReporter-Protocol.h>
+
 @class NSString, PSDataUsageStatisticsCache;
 @protocol PSAppCellularUsageSpecifierDelegate, PSBillingPeriodSource;
 
-@interface PSAppCellularUsageSpecifier : PSSpecifier
+@interface PSAppCellularUsageSpecifier : PSSpecifier <PSSpecifierDataUsageReporter>
 {
     BOOL _shouldShowUsage;
     NSString *_bundleID;

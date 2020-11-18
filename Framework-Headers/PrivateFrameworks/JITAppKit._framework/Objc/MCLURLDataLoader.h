@@ -11,6 +11,7 @@
 
 @class NSArray, NSHTTPCookieStorage, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSOperationQueue, NSRecursiveLock, NSSet, NSString, NSURLCache, NSURLSession;
 
+__attribute__((visibility("hidden")))
 @interface MCLURLDataLoader : NSObject <NSURLSessionDataDelegate, NSURLSessionDownloadDelegate>
 {
     NSString *_cachePath;

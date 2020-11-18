@@ -6,12 +6,11 @@
 
 #import <TSApplication/NSObject-Protocol.h>
 
-@class NSArray, NSObject;
+@class NSObject;
 @protocol TSDContainerInfo;
 
 @protocol TSDContainerRep <NSObject>
 
-@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 
 @end

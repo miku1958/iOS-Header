@@ -34,6 +34,7 @@
 + (void)_mapkit_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (double)_mapkit_currentAnimationDuration;
 + (id)_mapkit_currentAnimationTimingFunction;
++ (void)_mapkit_performWithoutAnimation:(CDUnknownBlockType)arg1;
 + (BOOL)_mapkit_shouldAdoptImplicitAnimationParameters;
 + (void)_maps_setDoesNotTranslateAutoresizingConstraintsForViewsDictionary:(id)arg1;
 - (id)_findNearestViewController;
@@ -44,6 +45,7 @@
 - (id)_mapkit_accessoryControlToExtendWithCallout;
 - (void)_mapkit_addCursorInteraction;
 - (void)_mapkit_addCursorInteractionWithDelegate:(id)arg1;
+- (void)_mapkit_bringSubviewToFront:(id)arg1;
 - (id)_mapkit_constraintsPinningSubviewToBounds:(id)arg1;
 - (float)_mapkit_contentCompressionResistancePriorityForAxis:(long long)arg1;
 - (float)_mapkit_contentHuggingPriorityForAxis:(long long)arg1;

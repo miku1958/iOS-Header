@@ -40,7 +40,6 @@
 - (void)disableButtons;
 - (void)handleTurnBasedEvent:(id)arg1;
 - (id)initWithTurnBasedMatch:(id)arg1;
-- (id)playingWithString;
 - (id)preferredFocusEnvironments;
 - (void)quitMatch:(id)arg1;
 - (void)refreshPresenter;

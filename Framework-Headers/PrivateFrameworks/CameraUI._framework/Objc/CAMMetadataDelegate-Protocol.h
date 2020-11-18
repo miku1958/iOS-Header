@@ -6,11 +6,11 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class NSArray, NSSet;
+@class AVCaptureDeviceFormat, NSArray, NSSet;
 
 @protocol CAMMetadataDelegate <NSObject>
 
 @optional
-- (void)metadataWasRecognized:(NSArray *)arg1 forMetadataObjectTypes:(NSSet *)arg2;
+- (void)metadataWasRecognized:(NSArray *)arg1 forMetadataObjectTypes:(NSSet *)arg2 deviceFormat:(AVCaptureDeviceFormat *)arg3;
 @end
 

@@ -19,10 +19,13 @@
     long long _wheelchairUse;
     double _deepBreathingDuration;
     HKQuantity *_energyBurned;
+    double _moveMinutes;
     double _briskMinutes;
     double _activeHours;
     HKQuantity *_energyBurnedGoal;
     NSDate *_energyBurnedGoalDate;
+    double _moveMinutesGoal;
+    NSDate *_moveMinutesGoalDate;
     double _briskMinutesGoal;
     NSDate *_briskMinutesGoalDate;
     double _activeHoursGoal;
@@ -30,21 +33,24 @@
     HKQuantity *_walkingAndRunningDistance;
     long long _flightsClimbed;
     NSArray *_dailyEnergyBurnedStatistics;
+    NSArray *_dailyMoveMinutesStatistics;
     NSArray *_dailyBriskMinutesStatistics;
+    long long _activityMoveMode;
     unsigned long long _knownFields;
     long long _sequence;
-    double _moveMinutesGoal;
 }
 
 @property (setter=_setActiveHours:) double activeHours;
 @property (setter=_setActiveHoursGoal:) double activeHoursGoal;
 @property (readonly) NSDate *activeHoursGoalDate; // @synthesize activeHoursGoalDate=_activeHoursGoalDate;
+@property (setter=_setActivityMoveMode:) long long activityMoveMode;
 @property (setter=_setBriskMinutes:) double briskMinutes;
 @property (setter=_setBriskMinutesGoal:) double briskMinutesGoal;
 @property (readonly) NSDate *briskMinutesGoalDate; // @synthesize briskMinutesGoalDate=_briskMinutesGoalDate;
 @property (setter=_setCacheIndex:) long long cacheIndex;
 @property (copy, setter=_setDailyBriskMinutesStatistics:) NSArray *dailyBriskMinutesStatistics;
 @property (copy, setter=_setDailyEnergyBurnedStatistics:) NSArray *dailyEnergyBurnedStatistics;
+@property (copy, setter=_setDailyMoveMinutesStatistics:) NSArray *dailyMoveMinutesStatistics;
 @property (readonly) NSDateComponents *dateComponents;
 @property (setter=_setDeepBreathingDuration:) double deepBreathingDuration;
 @property (strong, setter=_setEnergyBurned:) HKQuantity *energyBurned;
@@ -59,17 +65,22 @@
 @property (readonly) BOOL hasBriskMinutesGoalDate;
 @property (readonly) BOOL hasDailyBriskMinutesStatistics;
 @property (readonly) BOOL hasDailyEnergyBurnedStatistics;
+@property (readonly) BOOL hasDailyMoveMinutesStatistics;
 @property (readonly) BOOL hasDateComponents;
 @property (readonly) BOOL hasDeepBreathingDuration;
 @property (readonly) BOOL hasEnergyBurned;
 @property (readonly) BOOL hasEnergyBurnedGoal;
 @property (readonly) BOOL hasFlightsClimbed;
+@property (readonly) BOOL hasMoveMinutes;
+@property (readonly) BOOL hasMoveMinutesGoal;
 @property (readonly) BOOL hasPushCount;
 @property (readonly) BOOL hasStepCount;
 @property (readonly) BOOL hasWalkingAndRunningDistance;
 @property (readonly) BOOL hasWheelchairUse;
 @property (readonly) unsigned long long knownFields;
-@property (setter=_setMoveMinutesGoal:) double moveMinutesGoal; // @synthesize moveMinutesGoal=_moveMinutesGoal;
+@property (setter=_setMoveMinutes:) double moveMinutes;
+@property (setter=_setMoveMinutesGoal:) double moveMinutesGoal;
+@property (readonly) NSDate *moveMinutesGoalDate;
 @property (setter=_setPushCount:) long long pushCount;
 @property (setter=_setSequence:) long long sequence; // @synthesize sequence=_sequence;
 @property (setter=_setStepCount:) long long stepCount;
@@ -94,6 +105,9 @@
 - (void)_setEnergyBurnedGoal:(id)arg1 date:(id)arg2;
 - (void)_setEnergyBurnedGoalDateOnly:(id)arg1;
 - (void)_setEnergyBurnedGoalOnly:(id)arg1;
+- (void)_setMoveMinutesGoal:(double)arg1 date:(id)arg2;
+- (void)_setMoveMinutesGoalDateOnly:(id)arg1;
+- (void)_setMoveMinutesGoalOnly:(double)arg1;
 - (id)_valueDescription;
 - (double)_walkingAndRunningDistanceInMeters;
 - (double)activeHoursGoalPercentage;
@@ -102,6 +116,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (double)energyBurnedGoalPercentage;
 - (id)initWithCoder:(id)arg1;
+- (double)moveMinutesGoalPercentage;
 - (void)reset;
 
 @end

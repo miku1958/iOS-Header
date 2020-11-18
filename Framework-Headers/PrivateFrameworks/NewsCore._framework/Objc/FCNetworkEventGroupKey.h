@@ -12,12 +12,12 @@
 
 @interface FCNetworkEventGroupKey : NSObject <NSCopying>
 {
-    long long _eventType;
+    int _eventType;
     unsigned long long _sessionID;
     NSString *_respondingPOP;
 }
 
-@property (nonatomic) long long eventType; // @synthesize eventType=_eventType;
+@property (nonatomic) int eventType; // @synthesize eventType=_eventType;
 @property (strong, nonatomic) NSString *respondingPOP; // @synthesize respondingPOP=_respondingPOP;
 @property (nonatomic) unsigned long long sessionID; // @synthesize sessionID=_sessionID;
 

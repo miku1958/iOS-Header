@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
-@interface HKCodedValueCollection : NSObject <NSSecureCoding, NSCopying>
+@interface HKCodedValueCollection : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     NSArray *_codedValues;
 }
 
 @property (readonly, copy, nonatomic) NSArray *codedValues; // @synthesize codedValues=_codedValues;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)codedValueCollectionWithCodedValues:(id)arg1;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCodedValues:(id)arg1;
 - (id)initWithCoder:(id)arg1;

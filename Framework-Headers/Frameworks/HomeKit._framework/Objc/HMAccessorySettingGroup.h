@@ -49,7 +49,9 @@
 - (id)initWithInternal:(id)arg1;
 - (id)initWithKeyPath:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isReflectedEqual:(id)arg1;
 - (id)logIdentifier;
+- (void)mergeReflected:(id)arg1;
 - (void)removeGroup:(id)arg1;
 - (void)removeGroup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeSetting:(id)arg1;

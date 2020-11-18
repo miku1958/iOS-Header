@@ -12,6 +12,7 @@
 
 @interface SBSceneWatchdogProvider : NSObject <FBProcessWatchdogProviding>
 {
+    BOOL _watchdogDisabled;
     FBApplicationProcessWatchdogPolicy *_defaultProcessWatchdogProvider;
 }
 
@@ -21,9 +22,10 @@
 @property (readonly) Class superclass;
 
 + (id)defaultSceneWatchdogProvider;
++ (id)disabledSceneWatchdogProvider;
 - (void).cxx_destruct;
 - (id)_scaleProvisions:(id)arg1 byFactor:(double)arg2;
-- (id)init;
+- (id)initAsDisabled:(BOOL)arg1;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
 
 @end

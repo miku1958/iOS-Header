@@ -8,13 +8,14 @@
 
 #import <Notes/ICSearchIndexerDataSource-Protocol.h>
 
-@class NSMutableOrderedSet, NSString;
+@class NSMutableOrderedSet, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface ICBaseSearchIndexerDataSource : NSObject <ICSearchIndexerDataSource>
 {
     BOOL _observingChanges;
     BOOL _needsReindexing;
+    NSString *_uuid;
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSMutableOrderedSet *_objectIDsToProcess;
     NSMutableOrderedSet *_objectIDsBeingProcessed;
@@ -28,41 +29,50 @@
 @property (strong, nonatomic) NSMutableOrderedSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
 @property (nonatomic, getter=isObservingChanges) BOOL observingChanges; // @synthesize observingChanges=_observingChanges;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property (readonly, nonatomic) NSURL *stateFileURL;
+@property (readonly, copy, nonatomic) NSString *stateFilename;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (id)didReindexForMigrationUserDefaultKeyForIdentifier:(id)arg1;
 + (BOOL)isAccountReindexedForMigration:(id)arg1;
 + (void)markAccountReindexedForMigration:(id)arg1;
 - (void).cxx_destruct;
-- (id)allIndexableObjectIDsInReversedReindexingOrder;
+- (BOOL)_loadStateDictionaryWithFileManager:(id *)arg1 fileURL:(id *)arg2 NSError:(id *)arg3 fileExists:(BOOL *)arg4 savedDictionary:(id *)arg5;
+- (BOOL)addNewObjectsForProcessing:(id)arg1;
+- (id)addNotesFromSubtree:(id)arg1;
+- (id)allIndexableObjectIDsInReversedReindexingOrderWithContext:(id)arg1;
 - (void)clearObjectIDsToIgnoreAndStageForReindexing;
 - (void)clearObjectIDsToProcess;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
-- (id)indexableObjectIDsWithURIs:(id)arg1;
+- (long long)decisionOnObjectID:(id)arg1 searchableItemToIndex:(id *)arg2 objectIDURIToDelete:(id *)arg3 context:(id)arg4;
+- (id)indexableObjectIDsWithURIs:(id)arg1 context:(id)arg2;
 - (unsigned long long)indexingPriority;
 - (id)init;
-- (void)loadState;
+- (BOOL)isFolderWithServerShareChanged:(id)arg1;
+- (void)loadOrClearStateIfNecessary;
+- (id)loadStateDictionary;
+- (void)logFileSizeForFileAtPath:(id)arg1 fileManager:(id)arg2;
+- (id)moveIndexingTrackingFromUserDefaultsToFileIfNecessary;
 - (id)newManagedObjectContext;
 - (id)objectForManagedObjectIDURI:(id)arg1 context:(id)arg2;
 - (id)objectForSearchableItem:(id)arg1 context:(id)arg2;
-- (id)objectIDURIsToBeDeleted;
 - (id)objectIDsFromSearchableItems:(id)arg1;
-- (id)objectIDsNeedingIndexing;
+- (id)objectIDsNeedingProcessing;
 - (id)persistentStoreCoordinator;
 - (void)resetContextObservers;
-- (void)saveState;
+- (BOOL)saveStateDictionary:(id)arg1;
+- (void)saveStateIfNecessary;
 - (void)searchIndexerDidFinishDeletingSearchableItemsWithObjectIDURIs:(id)arg1 error:(id)arg2;
 - (void)searchIndexerDidFinishIndexingObjectIDs:(id)arg1 error:(id)arg2;
 - (void)searchIndexerWillDeleteSearchableItemsWithObjectIDURIs:(id)arg1;
 - (void)searchIndexerWillIndexObjectIDs:(id)arg1;
 - (id)searchableItemForObject:(id)arg1;
-- (id)searchableItemsForObjectIDs:(id)arg1;
 - (BOOL)shouldIndexableObjectExistInIndexing:(id)arg1;
-- (void)stageForReindexing;
-- (void)stageObjectIDURIsForIndexing:(id)arg1;
+- (void)stageForReindexingWithContext:(id)arg1;
+- (void)stageObjectIDURIsForIndexing:(id)arg1 context:(id)arg2;
 - (void)startObservingChanges;
-- (id)stateDefaultsKey;
 - (void)stopObservingChanges;
 
 @end

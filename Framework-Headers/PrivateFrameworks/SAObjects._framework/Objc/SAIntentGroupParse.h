@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSString, SAIntentGroupProtobufMessage;
+@class NSString, SAIntentGroupDirectInvocation, SAIntentGroupProtobufMessage;
 
 @interface SAIntentGroupParse : AceObject <SAAceSerializable>
 {
@@ -16,6 +16,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SAIntentGroupDirectInvocation *directInvocation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *jsonIntent;
 @property (copy, nonatomic) NSString *jsonIntentTypeName;
@@ -24,6 +25,8 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
 
++ (id)parse;
++ (id)parseWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

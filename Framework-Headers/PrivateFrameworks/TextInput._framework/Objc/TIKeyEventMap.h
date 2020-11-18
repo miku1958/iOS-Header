@@ -13,6 +13,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
+- (long long)candidateNumberKey:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

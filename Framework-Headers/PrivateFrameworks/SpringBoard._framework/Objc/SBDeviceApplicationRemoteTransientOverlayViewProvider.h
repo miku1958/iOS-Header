@@ -52,6 +52,7 @@
 - (void)transientOverlayViewControllerNeedsSceneDeactivationUpdate:(id)arg1;
 - (void)transientOverlayViewControllerNeedsStatusBarAppearanceUpdate:(id)arg1;
 - (void)transientOverlayViewControllerNeedsWhitePointAdaptivityStyleUpdate:(id)arg1;
+- (void)transientOverlayViewControllerNeedsWindowHitTestingUpdate:(id)arg1;
 - (void)transientOverlayViewControllerWillBeginRotation:(id)arg1 toInterfaceOrientation:(long long)arg2;
 
 @end

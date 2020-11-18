@@ -20,10 +20,11 @@
 + (BOOL)isActionSpotlightConsumerSubType:(unsigned char)arg1;
 + (void)iterConsumerSubTypesWithBlock:(CDUnknownBlockType)arg1;
 + (void)iterConsumerTypesWithBlock:(CDUnknownBlockType)arg1;
++ (id)safeStringForConsumerSubtype:(unsigned char)arg1;
 + (id)stringForConsumerSubtype:(unsigned char)arg1;
 + (id)stringForConsumerType:(unsigned long long)arg1;
 + (id)stringForEngagementType:(unsigned long long)arg1;
-+ (id)uiTypeForConsumerSubType:(unsigned char)arg1;
++ (id)uiTypeForActionConsumerSubType:(unsigned char)arg1;
 + (id)validConsumerSubTypeList;
 + (id)validConsumerSubTypes;
 + (id)validConsumerTypeList;

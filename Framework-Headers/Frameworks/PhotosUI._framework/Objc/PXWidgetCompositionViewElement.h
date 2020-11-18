@@ -14,6 +14,7 @@
 
 @interface PXWidgetCompositionViewElement : PXWidgetCompositionElement <PXTileSource, PXTilingControllerTransitionDelegate, PXTilingControllerScrollDelegate>
 {
+    BOOL _isCheckingInTile;
     PXBasicTileAnimator *__tileAnimator;
     PXWidgetCompositionViewElementLayout *__layout;
     NSMutableSet *__tilesInUse;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isCheckingInTile; // @synthesize isCheckingInTile=_isCheckingInTile;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

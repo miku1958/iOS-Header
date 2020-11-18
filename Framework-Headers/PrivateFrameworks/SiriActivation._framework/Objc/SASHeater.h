@@ -14,11 +14,9 @@
     BOOL _predictedRecordRouteIsZLL;
     id<SASHeaterDelegate> _delegate;
     double _preparationStartTime;
-    NSTimer *_defrostTimer;
     NSTimer *_preheatTimer;
 }
 
-@property (strong, nonatomic) NSTimer *defrostTimer; // @synthesize defrostTimer=_defrostTimer;
 @property (weak, nonatomic) id<SASHeaterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL predictedRecordRouteIsZLL; // @synthesize predictedRecordRouteIsZLL=_predictedRecordRouteIsZLL;
 @property (strong, nonatomic) NSTimer *preheatTimer; // @synthesize preheatTimer=_preheatTimer;
@@ -26,7 +24,6 @@
 
 - (void).cxx_destruct;
 - (void)_cancelPreparation;
-- (void)_suggestDefrost;
 - (void)_suggestPreheat;
 - (void)_updatePredictedRouteIsZLL;
 - (void)cancelPreparation;

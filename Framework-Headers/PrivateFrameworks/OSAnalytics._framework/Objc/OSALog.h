@@ -31,6 +31,7 @@
 + (id)locallyCreateForSubmission:(id)arg1 metadata:(id)arg2 options:(id)arg3 error:(id *)arg4 writing:(CDUnknownBlockType)arg5;
 + (void)markDescriptor:(int)arg1 forKey:(id)arg2 withObj:(id)arg3;
 + (void)markDescriptor:(int)arg1 withPairs:(id)arg2 andOptions:(id)arg3;
++ (void)markPurgability:(id)arg1;
 + (void)purgeLogs:(id)arg1;
 + (unsigned int)scanLogs:(id)arg1 from:(id)arg2;
 + (id)scanProxies:(id)arg1;

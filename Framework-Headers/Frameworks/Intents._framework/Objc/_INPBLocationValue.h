@@ -15,13 +15,11 @@
 @interface _INPBLocationValue : PBCodable <_INPBLocationValue, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     GEOMapItemStorage *_mapItemStorage;
     GEOPDPlace *_place;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasMapItemStorage;

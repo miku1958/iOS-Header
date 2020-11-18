@@ -6,9 +6,10 @@
 
 #import <FrontBoardServices/NSObject-Protocol.h>
 
-@class FBSApplicationInfo, NSString;
+@class BSAuditToken, FBSApplicationInfo, NSString;
 
 @protocol FBSApplicationInfoProvider <NSObject>
+- (FBSApplicationInfo *)applicationInfoForAuditToken:(BSAuditToken *)arg1;
 - (FBSApplicationInfo *)applicationInfoForBundleIdentifier:(NSString *)arg1;
 
 @optional

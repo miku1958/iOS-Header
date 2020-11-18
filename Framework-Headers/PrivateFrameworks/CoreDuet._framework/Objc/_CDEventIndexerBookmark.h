@@ -18,23 +18,13 @@
     long long _version;
 }
 
-@property (readonly, copy, nonatomic) NSDate *earliestCreationDate; // @synthesize earliestCreationDate=_earliestCreationDate;
-@property (readonly, copy, nonatomic) NSDate *latestCreationDate; // @synthesize latestCreationDate=_latestCreationDate;
-@property (readonly, copy, nonatomic) NSDate *latestTombstoneDate; // @synthesize latestTombstoneDate=_latestTombstoneDate;
-@property (readonly, nonatomic) long long version; // @synthesize version=_version;
-
-+ (id)baseBookmarkWithVersion:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEarliestCreationDate:(id)arg1 latestCreationDate:(id)arg2 latestTombstoneDate:(id)arg3 version:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)updatedBookmarkWithEarliestCreationDate:(id)arg1;
-- (id)updatedBookmarkWithLatestCreationDate:(id)arg1;
-- (id)updatedBookmarkWithLatestTombstoneDate:(id)arg1;
 
 @end
 

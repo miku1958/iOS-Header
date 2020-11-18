@@ -13,7 +13,10 @@
     NSArray *_sources;
 }
 
+@property (strong) NSArray *sources; // @synthesize sources=_sources;
+
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithAssetIdentifier:(id)arg1;
 - (id)initWithSourceNodes:(id)arg1 assetIdentifier:(id)arg2;
 - (id)primarySourceNode;

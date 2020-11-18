@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileManager, NSString;
+@class NSFileManager, NSString, geo_isolater;
 
 @interface MNKeepAliveManager : NSObject
 {
+    geo_isolater *_isolator;
     unsigned long long _counter;
     NSString *_launchdKeepAliveFile;
     NSFileManager *_fileManager;

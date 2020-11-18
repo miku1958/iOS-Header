@@ -23,6 +23,8 @@
     BOOL _usesSmallText;
     BOOL _isProposedTime;
     BOOL _isLoadingAsync;
+    BOOL _hasPrecedingDuration;
+    BOOL _hasTrailingDuration;
     EKEvent *_event;
     unsigned long long _eventIndex;
     EKDayOccurrenceView *_view;
@@ -43,6 +45,8 @@
 @property (readonly, nonatomic) double enoughHeightForOneLine;
 @property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (readonly, nonatomic) unsigned long long eventIndex; // @synthesize eventIndex=_eventIndex;
+@property (nonatomic) BOOL hasPrecedingDuration; // @synthesize hasPrecedingDuration=_hasPrecedingDuration;
+@property (nonatomic) BOOL hasTrailingDuration; // @synthesize hasTrailingDuration=_hasTrailingDuration;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideTravelTime;
 @property (nonatomic) BOOL isLoadingAsync; // @synthesize isLoadingAsync=_isLoadingAsync;
@@ -64,7 +68,7 @@
 
 + (double)barToBarHorizontalDistanceIncludingBarWidth;
 - (void).cxx_destruct;
-- (void)_requestPayload:(BOOL)arg1;
+- (void)_requestPayloadAnimated:(BOOL)arg1 drawSynchronously:(BOOL)arg2;
 - (void)_updateWithPayload:(id)arg1;
 - (id)initWithEventIndex:(unsigned long long)arg1 sizeClass:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;

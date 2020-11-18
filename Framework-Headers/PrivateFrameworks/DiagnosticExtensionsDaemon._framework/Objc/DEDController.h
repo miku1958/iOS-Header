@@ -11,7 +11,7 @@
 #import <DiagnosticExtensionsDaemon/DEDXPCConnectorDaemonDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
-@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
+@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
 @interface DEDController : NSObject <DEDXPCConnectorDaemonDelegate, DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
@@ -35,7 +35,7 @@
     NSMutableDictionary *_sessionDidStartBlocks;
     DEDIDSConnection *__idsConnection;
     DEDSharingConnection *__sharingConnection;
-    double _sessionStartTimeout;
+    NSMutableSet *_recentlyFinishedSessions;
     NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_os_log> *_log;
@@ -59,11 +59,11 @@
 @property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (weak) id<DEDPairingProtocol> pairingDelegate; // @synthesize pairingDelegate=_pairingDelegate;
 @property (copy) CDUnknownBlockType pongBlock; // @synthesize pongBlock=_pongBlock;
+@property (strong) NSMutableSet *recentlyFinishedSessions; // @synthesize recentlyFinishedSessions=_recentlyFinishedSessions;
 @property (strong) NSObject<OS_dispatch_queue> *replyQueue; // @synthesize replyQueue=_replyQueue;
 @property (strong) NSMutableDictionary *sessionDidStartBlocks; // @synthesize sessionDidStartBlocks=_sessionDidStartBlocks;
 @property (copy) CDUnknownBlockType sessionExistsCompletion; // @synthesize sessionExistsCompletion=_sessionExistsCompletion;
 @property (strong) NSMutableDictionary *sessionStartBlocks; // @synthesize sessionStartBlocks=_sessionStartBlocks;
-@property double sessionStartTimeout; // @synthesize sessionStartTimeout=_sessionStartTimeout;
 @property (strong) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
 @property BOOL started; // @synthesize started=_started;
 @property (readonly) Class superclass;
@@ -87,7 +87,7 @@
 - (void)abortSession:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addDevice:(id)arg1;
 - (void)addDidStartSessionCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
-- (void)addSessionStartCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
+- (void)addSessionStartCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2 configuration:(id)arg3;
 - (id)allKnownDevices;
 - (void)configureClientDelegate:(id)arg1;
 - (void)configureForDaemon;
@@ -99,6 +99,7 @@
 - (void)connector:(id)arg1 didLooseConnectionToProcessWithPid:(int)arg2;
 - (id)devicesWithIdentifier:(id)arg1;
 - (void)didDiscoverDevices:(id)arg1;
+- (void)didFinishSessionWithIdentifier:(id)arg1;
 - (void)didStartBugSessionWithInfo:(id)arg1;
 - (void)discoverAllAvailableDevices;
 - (void)discoverDevicesWithCompletion:(CDUnknownBlockType)arg1;
@@ -107,10 +108,12 @@
 - (void)hasActiveSessionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)hasCompletionBlockWithIdentifier:(id)arg1;
 - (BOOL)hasDevice:(id)arg1;
+- (BOOL)hasRecentlyFinishedSessionWithIdentifier:(id)arg1;
 - (id)idsConnection;
 - (BOOL)induceTimeOutIfNeededAndReturnCanProceedWithDevice:(id)arg1 sessionId:(id)arg2;
 - (id)init;
 - (id)knownSessions;
+- (void)logDeviceCounts;
 - (id)persistence;
 - (void)ping;
 - (void)pingDaemonWithCompletion:(CDUnknownBlockType)arg1;
@@ -118,7 +121,7 @@
 - (CDUnknownBlockType)popDidStartSessionCompletionWithIdentifier:(id)arg1;
 - (CDUnknownBlockType)popSessionStartCompletionWithIdentifier:(id)arg1;
 - (void)promptPINForDevice:(id)arg1;
-- (id)purgeStaleSessions:(id)arg1;
+- (void)purgeStaleSessions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteXPCObject;
 - (void)reset;
 - (id)sessionForIdentifier:(id)arg1;

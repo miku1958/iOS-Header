@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class AXMSemanticTextFactory;
+
 @interface AXMTextLayoutManager : NSObject
 {
+    AXMSemanticTextFactory *_semanticTextFactory;
 }
 
+@property (strong, nonatomic) AXMSemanticTextFactory *semanticTextFactory; // @synthesize semanticTextFactory=_semanticTextFactory;
+
+- (void).cxx_destruct;
 - (id)_assembleLayoutLines:(id)arg1;
 - (id)_assembleLayoutRegions:(id)arg1;
-- (id)_assembleLayoutSequences:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3;
-- (id)_axmVisionFeatureForFeature:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3;
-- (id)_textDocumentWithFeatures:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3 error:(id *)arg4;
-- (id)textDocumentWithVisionObservations:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3 error:(id *)arg4;
+- (id)_assembleLayoutSequences:(id)arg1 canvasSize:(struct CGSize)arg2;
+- (id)documentWithTextItems:(id)arg1 canvasSize:(struct CGSize)arg2 preferredLocales:(id)arg3 applySemanticAnalysis:(BOOL)arg4 error:(id *)arg5;
+- (id)initWithSemanticTextFactory:(id)arg1;
 
 @end
 

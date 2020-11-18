@@ -10,8 +10,8 @@
 
 @interface WFHomeWorkflow : NSObject
 {
+    WFWorkflow *_cachedWorkflow;
     NSData *_data;
-    WFWorkflow *_workflow;
     HFTriggerActionsSetsUISummary *_actionSetsSummary;
 }
 
@@ -21,7 +21,6 @@
 @property (readonly, copy, nonatomic) NSArray *summaryIconDescriptors;
 @property (readonly, copy, nonatomic) NSArray *summaryIconNames;
 @property (readonly, copy, nonatomic) NSString *summaryString;
-@property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
 + (void)setCachedHomes:(id)arg1;
 - (void).cxx_destruct;
@@ -29,6 +28,7 @@
 - (id)debugDescription;
 - (id)initWithData:(id)arg1;
 - (id)triggerActionSetsBuilders;
+- (id)workflowWithEnvironment:(long long)arg1 error:(id *)arg2;
 
 @end
 

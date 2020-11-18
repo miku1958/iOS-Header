@@ -19,7 +19,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)generateInferredTimeZoneOffsetForAsset:(id)arg1;
-- (id)init;
+- (id)initWithTimeZoneLookup:(id)arg1;
 
 @end
 

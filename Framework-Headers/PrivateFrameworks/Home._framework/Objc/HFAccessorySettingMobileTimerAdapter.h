@@ -36,6 +36,9 @@
 - (void)_notifyObserversOfUpdates;
 - (void)_respondToAlarmManagerUpdate;
 - (void)_setupDebugHandler;
+- (void)_submitAnalyticsForAddedAlarm:(id)arg1 success:(BOOL)arg2;
+- (void)_submitAnalyticsForDeletedAlarm:(id)arg1 success:(BOOL)arg2;
+- (void)_submitAnalyticsForUpdatedAlarm:(id)arg1 success:(BOOL)arg2;
 - (id)_synchronizeHomeKitToMobileTimer;
 - (id)_synchronizeMobileTimerToHomeKitWithChangeType:(unsigned long long)arg1;
 - (id)addAlarm:(id)arg1;

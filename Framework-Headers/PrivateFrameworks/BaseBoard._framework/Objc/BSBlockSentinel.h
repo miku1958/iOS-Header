@@ -25,8 +25,6 @@
 + (id)sentinelWithQueue:(id)arg1 signalHandler:(CDUnknownBlockType)arg2;
 + (id)sentinelWithSignalCount:(unsigned long long)arg1 exceptionReason:(id)arg2;
 - (void).cxx_destruct;
-- (void)_performSynchronously:(CDUnknownBlockType)arg1;
-- (id)initWithCount:(unsigned long long)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)signal;
 - (BOOL)signalWithContext:(id)arg1;
 

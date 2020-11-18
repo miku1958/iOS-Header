@@ -14,19 +14,18 @@
 @interface HDNotificationManager : NSObject <HDDiagnosticObject>
 {
     HDProfile *_profile;
+    UNUserNotificationCenter *_userNotificationCenter;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
     NSObject<OS_dispatch_queue> *_resourceQueue;
     NSDate *_lastNotificationDate;
-    UNUserNotificationCenter *_userNotificationCenter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
@@ -34,7 +33,7 @@
 - (id)_badgeForDomain:(long long)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_postBadgesDidUpdateNotification;
-- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 accessoryImageName:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (id)_resourceQueue_badgeForDomain:(long long)arg1;
 - (id)_resourceQueue_badgeForDomain:(long long)arg1 error:(out id *)arg2;
 - (id)_resourceQueue_coaleseDomainBadges;
@@ -52,7 +51,7 @@
 - (void)postCompanionUserNotificationOfType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postNotificationWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)postNotificationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 accessoryImageName:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)receivedCompanionUserNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerWithUserNotificationCenter;
 - (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class EFSQLInsertStatement, EFSQLUpdateStatement, NSArray, NSString;
-@protocol EFSQLExpressable, EFSQLInsertStatementValue, EFSQLUpdateStatementValue;
+@protocol EFSQLInsertStatementValue, EFSQLUpdateStatementValue, EFSQLValueExpressable;
 
 @interface EFSQLUpsertStatement : NSObject
 {
@@ -16,14 +16,11 @@
     NSArray *_conflictTarget;
 }
 
-@property (readonly, nonatomic) NSArray *conflictTarget; // @synthesize conflictTarget=_conflictTarget;
-@property (readonly, nonatomic) EFSQLInsertStatement *insertStatement; // @synthesize insertStatement=_insertStatement;
 @property (readonly, nonatomic) id<EFSQLInsertStatementValue> insertValue;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, copy, nonatomic) NSString *queryString;
-@property (readonly, nonatomic) EFSQLUpdateStatement *updateStatement; // @synthesize updateStatement=_updateStatement;
 @property (readonly, nonatomic) id<EFSQLUpdateStatementValue> updateValue;
-@property (strong, nonatomic) id<EFSQLExpressable> whereClause;
+@property (strong, nonatomic) id<EFSQLValueExpressable> whereClause;
 
 - (void).cxx_destruct;
 - (void)enumerateBindingNamesAndValuesUsingBlock:(CDUnknownBlockType)arg1;

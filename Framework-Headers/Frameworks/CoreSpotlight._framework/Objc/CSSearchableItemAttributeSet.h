@@ -33,6 +33,7 @@
 @property (copy) NSString *albumPersistentID;
 @property (copy) NSString *applicationName;
 @property (readonly) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (copy) NSArray *autocompleteTriggers;
 @property (strong) NSNumber *backgroundRunnable;
 @property (copy) NSString *bundleID;
 @property (readonly, nonatomic) CDStruct_b7fac349 codedAttributes; // @synthesize codedAttributes=_codedAttributes;
@@ -98,6 +99,7 @@
 @property long long searchableItemFlags; // @synthesize searchableItemFlags=_searchableItemFlags;
 @property (strong, nonatomic, getter=isShared) NSNumber *shared;
 @property (copy) NSString *sharedItemCurrentUserRole;
+@property (strong) NSNumber *shortcutAvailability;
 @property (strong) NSNumber *subItemCount;
 @property (copy) NSString *subtitle;
 @property (copy) NSString *suggestedInvocationPhrase;
@@ -256,6 +258,7 @@
 - (id)initWithAttributeSet:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContentType:(id)arg1;
 - (id)initWithDecoder:(id)arg1 obj:(CDStruct_b7fac349)arg2;
 - (id)initWithItemContentType:(id)arg1;
 - (id)initWithKnownKeysDictionary:(id)arg1;

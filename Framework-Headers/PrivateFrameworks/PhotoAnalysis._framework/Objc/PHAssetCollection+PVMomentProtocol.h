@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) unsigned long long estimatedAssetCount;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCoarse;
 @property (readonly, nonatomic) NSString *localIdentifier;
 @property (readonly, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;

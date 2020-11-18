@@ -6,14 +6,17 @@
 
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
-@class CSStatusTextView, MCProfileConnection, NSString;
+#import <CoverSheet/SBFRemoteBasebandLoggingObserver-Protocol.h>
+
+@class CSStatusTextView, MCProfileConnection, NSString, SBFRemoteBasebandLoggingManager;
 @protocol CSStatusTextViewControllerDelegate;
 
-@interface CSStatusTextViewController : CSCoverSheetViewControllerBase
+@interface CSStatusTextViewController : CSCoverSheetViewControllerBase <SBFRemoteBasebandLoggingObserver>
 {
     CSStatusTextView *_view;
     NSString *_overrideFooterText;
     MCProfileConnection *_profileConnection;
+    SBFRemoteBasebandLoggingManager *_basebandLoggingManager;
     id<CSStatusTextViewControllerDelegate> _delegate;
 }
 
@@ -21,6 +24,7 @@
 @property (copy, nonatomic) NSString *overrideFooterText; // @synthesize overrideFooterText=_overrideFooterText;
 
 - (void).cxx_destruct;
+- (BOOL)_isSecurityResearchDevice;
 - (id)_legalContact;
 - (id)_legalString;
 - (void)_profileStateChangedNotification:(id)arg1;
@@ -30,9 +34,11 @@
 - (void)_updateTextForProfiles;
 - (void)_updateTextForProvisionalEnrollment;
 - (void)_updateTextForSupervision;
+- (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)init;
 - (void)loadView;
+- (void)remoteBasebandLogCollectionStateDidChange:(BOOL)arg1;
 - (id)statusTextView;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

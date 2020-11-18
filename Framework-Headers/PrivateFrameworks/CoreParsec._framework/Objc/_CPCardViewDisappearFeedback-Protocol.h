@@ -6,10 +6,11 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, _CPCardForFeedback;
 
 @protocol _CPCardViewDisappearFeedback <NSObject>
 
+@property (strong, nonatomic) _CPCardForFeedback *card;
 @property (nonatomic) int cardDisappearEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;

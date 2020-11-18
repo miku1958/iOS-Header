@@ -13,6 +13,7 @@
     NSArray *_outputDevices;
 }
 
+@property (readonly, nonatomic) NSArray *externalOutputDevices;
 @property (readonly, nonatomic) NSArray *outputDevices;
 
 - (void).cxx_destruct;

@@ -44,13 +44,14 @@
 - (void)_registerNotificationHandlers;
 - (void)_start;
 - (void)_startSearchingForNewAccessories;
-- (void)_stopSearchingForNewAccessories;
+- (void)_stopSearchingForNewAccessoriesWithError:(id)arg1;
 - (void)_updateNewAccessories:(id)arg1;
 - (void)dealloc;
 - (void)handleStartWithError:(id)arg1 response:(id)arg2;
 - (id)init;
 - (void)startSearchingForNewAccessories;
 - (void)stopSearchingForNewAccessories;
+- (void)stopSearchingForNewAccessoriesWithError:(id)arg1;
 
 @end
 

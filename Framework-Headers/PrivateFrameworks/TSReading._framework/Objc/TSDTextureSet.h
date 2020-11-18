@@ -90,6 +90,7 @@
 - (id)newFlattenedTextureFromTextures:(id)arg1 newRect:(struct CGRect)arg2;
 - (void)p_applyPositionFromAttributes:(id)arg1 viewScale:(double)arg2;
 - (void)p_resetAttributesWithViewScale:(double)arg1;
+- (void)releaseSingleTextures;
 - (void)removeRenderable:(id)arg1;
 - (void)renderIntoContext:(struct CGContext *)arg1;
 - (void)renderLayerContentsIfNeeded;

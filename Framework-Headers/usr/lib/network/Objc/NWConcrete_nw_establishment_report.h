@@ -20,8 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned long long flow_started_after_milliseconds;
     NSObject<OS_nw_endpoint> *proxy_endpoint;
     NSObject<OS_nw_array> *protocol_reports;
-    struct nw_establishment_resolution_report *resolution_reports;
-    unsigned int resolution_report_count;
+    NSObject<OS_nw_array> *resolution_reports;
     unsigned int previous_attempt_count;
     unsigned int proxy_configured:1;
     unsigned int used_proxy:1;

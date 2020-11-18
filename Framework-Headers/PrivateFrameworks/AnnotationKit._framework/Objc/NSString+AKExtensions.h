@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (AKExtensions)
+- (id)_stringByTrimmingDotDirectories;
 - (id)stringByTrimmingLeadingCharactersInSet:(id)arg1;
 - (id)stringByTrimmingLeadingWhitespace;
 - (id)stringByTrimmingLeadingWhitespaceAndNewline;

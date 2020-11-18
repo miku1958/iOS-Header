@@ -12,22 +12,22 @@
 @interface HKInteractiveChartGenericStatFormatter : HKInteractiveChartDataFormatter
 {
     NSArray *_overrideStatFormatterItemOptions;
-    long long _context;
     id<HKInteractiveChartRangeProvider> _chartRangeProvider;
     NSArray *_configuredStatItems;
 }
 
 @property (strong, nonatomic) id<HKInteractiveChartRangeProvider> chartRangeProvider; // @synthesize chartRangeProvider=_chartRangeProvider;
 @property (strong, nonatomic) NSArray *configuredStatItems; // @synthesize configuredStatItems=_configuredStatItems;
-@property (nonatomic) long long context; // @synthesize context=_context;
 @property (strong, nonatomic) NSArray *overrideStatFormatterItemOptions; // @synthesize overrideStatFormatterItemOptions=_overrideStatFormatterItemOptions;
 
 + (long long)mapSingleItemToStatisticsType:(id)arg1;
 - (void).cxx_destruct;
+- (id)_formatMin:(double)arg1 max:(double)arg2 unit:(id)arg3;
+- (id)_formattedAnnotationForDistributionChartData:(id)arg1;
 - (id)_formattedSelectedRangeLabelDataWithChartData:(id)arg1 items:(id)arg2;
 - (id)_makeSelectedRangeDataWithMin:(double)arg1 max:(double)arg2 unit:(id)arg3 statisticsType:(long long)arg4;
 - (void)configureFormatterForDisplayType:(id)arg1 quantityType:(id)arg2 chartRangeProvider:(id)arg3 timeScope:(long long)arg4 context:(long long)arg5;
-- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1;
+- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
 - (id)formattedUnitStringForChartData:(id)arg1;
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;
 

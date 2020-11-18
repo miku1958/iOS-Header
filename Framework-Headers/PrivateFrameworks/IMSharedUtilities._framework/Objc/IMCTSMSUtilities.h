@@ -28,6 +28,7 @@
 + (BOOL)IMMessagesFilteringSettingForPreferedSubscription;
 + (id)IMPhoneNumbersEnabledForMultipleSubscriptionDevice;
 + (unsigned long long)IMReadAttachmentPreviewTranscodingQualitySizeCarrierValueForPhoneNumber:(id)arg1 simID:(id)arg2;
++ (BOOL)IMReadDisablePreviewTranscodingQualityOnWiFiCarrierValueForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (BOOL)IMReadEnablePreviewTranscodingQualityCarrierValueForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (BOOL)IMReadMMSUserOverrideForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (BOOL)IMShouldShowMMSEmailAddress:(id)arg1 simID:(id)arg2;

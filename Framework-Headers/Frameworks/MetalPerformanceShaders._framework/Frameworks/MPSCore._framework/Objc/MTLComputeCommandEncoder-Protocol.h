@@ -6,7 +6,7 @@
 
 #import <MPSCore/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLComputePipelineState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLResource, MTLSamplerState, MTLTexture;
+@protocol MTLAccelerationStructure, MTLBuffer, MTLComputePipelineState, MTLCounterSampleBuffer, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLIntersectionFunctionTable, MTLResource, MTLSamplerState, MTLTexture, MTLVisibleFunctionTable;
 
 @protocol MTLComputeCommandEncoder <MTLCommandEncoder>
 
@@ -19,12 +19,16 @@
 - (void)executeCommandsInBuffer:(id<MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1;
+- (void)sampleCountersInBuffer:(id<MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
+- (void)setAccelerationStructure:(id<MTLAccelerationStructure>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setBuffer:(id<MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id<MTLComputePipelineState>)arg1;
 - (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTable:(id<MTLIntersectionFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setSamplerState:(id<MTLSamplerState>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setSamplerState:(id<MTLSamplerState>)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
@@ -34,6 +38,8 @@
 - (void)setTexture:(id<MTLTexture>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTable:(id<MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)updateFence:(id<MTLFence>)arg1;
 - (void)useHeap:(id<MTLHeap>)arg1;
 - (void)useHeaps:(const id *)arg1 count:(unsigned long long)arg2;

@@ -9,7 +9,7 @@
 #import <ModelIO/NSCopying-Protocol.h>
 #import <ModelIO/NSFastEnumeration-Protocol.h>
 
-@class MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL, NSUnitLength;
+@class MDLAnimatedVector3Array, MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL, NSUnitLength;
 @protocol MDLAssetResolver, MDLMeshBufferAllocator, MDLObjectContainerComponent;
 
 @interface MDLAsset : NSObject <NSCopying, NSFastEnumeration>
@@ -31,6 +31,7 @@
     MDLVertexDescriptor *_vertexDescriptor;
     double __timeCodesPerSecond;
     NSUnitLength *_unitLength;
+    MDLAnimatedVector3Array *_extents;
 }
 
 @property (readonly, strong, nonatomic) NSURL *URL;
@@ -42,6 +43,7 @@
 @property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> bufferAllocator; // @synthesize bufferAllocator=_bufferAllocator;
 @property (readonly, nonatomic) unsigned long long count;
 @property (nonatomic) double endTime;
+@property (strong, nonatomic) MDLAnimatedVector3Array *extents; // @synthesize extents=_extents;
 @property (nonatomic) double frameInterval; // @synthesize frameInterval=_frameInterval;
 @property (strong, nonatomic) id<MDLObjectContainerComponent> masters; // @synthesize masters=_masters;
 @property (nonatomic) float metersPerUnit; // @synthesize metersPerUnit=_metersPerUnit;
@@ -75,6 +77,7 @@
 - (id)init;
 - (id)initThroughSCNKitBridgeWithURL:(id)arg1 preserveTopology:(BOOL)arg2 error:(id)arg3;
 - (id)initWithBufferAllocator:(id)arg1;
+- (id)initWithData:(id)arg1 name:(id)arg2 vertexDescriptor:(id)arg3 bufferAllocator:(id)arg4 preserveTopology:(BOOL)arg5 error:(id *)arg6;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 bufferAllocator:(id)arg2 preserveIndexing:(BOOL)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1 options:(id)arg2 error:(id *)arg3;

@@ -21,13 +21,15 @@
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (strong, nonatomic) NSError *eventError; // @synthesize eventError=_eventError;
 @property (readonly, nonatomic) NSUUID *eventType; // @synthesize eventType=_eventType;
-@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic, getter=isSubmitted) BOOL submitted; // @synthesize submitted=_submitted;
 
 + (id)stringForSource:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (id)bucketedDurationWithRoundInterval:(id)arg1;
 - (id)init;
 - (id)initWithEventType:(id)arg1;
+- (void)populateErrorDetails:(id)arg1;
 - (void)submitAtDate:(id)arg1 error:(id)arg2;
 
 @end

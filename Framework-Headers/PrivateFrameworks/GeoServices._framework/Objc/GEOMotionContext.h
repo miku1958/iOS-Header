@@ -26,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long exitType; // @synthesize exitType=_exitType;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCycling;
 @property (readonly, nonatomic) BOOL isDriving;
 @property (readonly, nonatomic) BOOL isMoving;
 @property (readonly, nonatomic) BOOL isRunning;

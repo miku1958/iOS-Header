@@ -22,7 +22,6 @@
 - (id)inputContentClasses;
 - (BOOL)inputsMultipleItems;
 - (BOOL)outputsMultipleItems;
-- (id)unsupportedEnvironments;
 
 @end
 

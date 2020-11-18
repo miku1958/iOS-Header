@@ -11,12 +11,12 @@
 @interface PGPotentialPersonOverTimeMemory : PGPotentialMemory
 {
     PGGraphPersonNode *_personNode;
-    NSArray *_curatedAssets;
-    NSArray *_facedAssets;
+    NSArray *_bestAssetLocalIdentifiers;
+    NSArray *_facedAssetLocalIdentifiers;
 }
 
-@property (strong) NSArray *curatedAssets; // @synthesize curatedAssets=_curatedAssets;
-@property (strong) NSArray *facedAssets; // @synthesize facedAssets=_facedAssets;
+@property (strong) NSArray *bestAssetLocalIdentifiers; // @synthesize bestAssetLocalIdentifiers=_bestAssetLocalIdentifiers;
+@property (strong) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
 @property (readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 
 - (void).cxx_destruct;

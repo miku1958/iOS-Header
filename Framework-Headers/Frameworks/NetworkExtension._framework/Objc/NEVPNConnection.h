@@ -12,6 +12,8 @@
 @interface NEVPNConnection : NSObject
 {
     BOOL _initialized;
+    BOOL _installed;
+    BOOL _installNotify;
     int _sessionType;
     long long _status;
     NSDate *_connectedDate;
@@ -27,6 +29,8 @@
 @property (strong, nonatomic) NSString *configurationName; // @synthesize configurationName=_configurationName;
 @property (readonly) NSDate *connectedDate; // @synthesize connectedDate=_connectedDate;
 @property (nonatomic) BOOL initialized; // @synthesize initialized=_initialized;
+@property (nonatomic) BOOL installNotify; // @synthesize installNotify=_installNotify;
+@property (nonatomic) BOOL installed; // @synthesize installed=_installed;
 @property (readonly) NSError *lastDisconnectError; // @synthesize lastDisconnectError=_lastDisconnectError;
 @property (readonly) NEVPNManager *manager;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -36,12 +40,13 @@
 @property (weak) NEVPNManager *weakmanager; // @synthesize weakmanager=_weakmanager;
 
 + (id)createConnectionForEnabledEnterpriseConfiguration;
++ (id)createConnectionForEnabledEnterpriseConfigurationWithName:(id)arg1;
 + (id)createDisconnectErrorWithDomain:(id)arg1 code:(unsigned int)arg2;
 - (void).cxx_destruct;
 - (void)createSessionWithConfigurationIdentifier:(id)arg1 forceInfoFetch:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)destroySession;
-- (id)initHeadless;
+- (id)initHeadlessWithName:(id)arg1;
 - (id)initWithType:(int)arg1;
 - (void)newSessionWithConfigID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)reload;

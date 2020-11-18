@@ -41,18 +41,7 @@
         unsigned int read_mapRegion:1;
         unsigned int read_title:1;
         unsigned int read_userMessage:1;
-        unsigned int wrote_buttonOneAppURI:1;
-        unsigned int wrote_buttonOneMessage:1;
-        unsigned int wrote_buttonTwoAppURI:1;
-        unsigned int wrote_buttonTwoMessage:1;
-        unsigned int wrote_flyoverInfo:1;
-        unsigned int wrote_mapRegion:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_userMessage:1;
-        unsigned int wrote_announcementID:1;
-        unsigned int wrote_announcementType:1;
-        unsigned int wrote_displayDestinations:1;
-        unsigned int wrote_releasePhase:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -85,14 +74,6 @@
 - (void).cxx_destruct;
 - (int)StringAsAnnouncementType:(id)arg1;
 - (int)StringAsReleasePhase:(id)arg1;
-- (void)_readButtonOneAppURI;
-- (void)_readButtonOneMessage;
-- (void)_readButtonTwoAppURI;
-- (void)_readButtonTwoMessage;
-- (void)_readFlyoverInfo;
-- (void)_readMapRegion;
-- (void)_readTitle;
-- (void)_readUserMessage;
 - (id)announcementTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -101,7 +82,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

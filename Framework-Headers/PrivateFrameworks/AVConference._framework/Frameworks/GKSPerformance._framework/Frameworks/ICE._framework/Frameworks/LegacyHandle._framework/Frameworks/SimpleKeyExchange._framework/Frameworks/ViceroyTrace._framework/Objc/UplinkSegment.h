@@ -6,14 +6,39 @@
 
 #import <ViceroyTrace/MultiwaySegment.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface UplinkSegment : MultiwaySegment
 {
     NSMutableDictionary *_streamQualityAggregator;
+    NSNumber *_wrmLinkTypeSuggestion;
+    NSNumber *_wrmLinkTypeChangeReasonCode;
+    NSNumber *_wrmLinkTypeWifiRSSI;
+    NSNumber *_wrmLinkTypeWifiSNR;
+    NSNumber *_wrmLinkTypeWifiCCA;
+    NSNumber *_wrmLinkTypeWifiPacketLoss;
+    NSNumber *_wrmLinkTypeCellSignalStrength;
+    NSNumber *_wrmLinkTypeCellSignalBar;
+    NSNumber *_wrmLinkTypeCellServingCellType;
+    unsigned long long _totalCellTxDataBytes;
+    unsigned long long _totalCellDupTxDataBytes;
 }
 
+@property unsigned long long totalCellDupTxDataBytes; // @synthesize totalCellDupTxDataBytes=_totalCellDupTxDataBytes;
+@property unsigned long long totalCellTxDataBytes; // @synthesize totalCellTxDataBytes=_totalCellTxDataBytes;
+@property NSNumber *wrmLinkTypeCellServingCellType; // @synthesize wrmLinkTypeCellServingCellType=_wrmLinkTypeCellServingCellType;
+@property NSNumber *wrmLinkTypeCellSignalBar; // @synthesize wrmLinkTypeCellSignalBar=_wrmLinkTypeCellSignalBar;
+@property NSNumber *wrmLinkTypeCellSignalStrength; // @synthesize wrmLinkTypeCellSignalStrength=_wrmLinkTypeCellSignalStrength;
+@property NSNumber *wrmLinkTypeChangeReasonCode; // @synthesize wrmLinkTypeChangeReasonCode=_wrmLinkTypeChangeReasonCode;
+@property NSNumber *wrmLinkTypeSuggestion; // @synthesize wrmLinkTypeSuggestion=_wrmLinkTypeSuggestion;
+@property NSNumber *wrmLinkTypeWifiCCA; // @synthesize wrmLinkTypeWifiCCA=_wrmLinkTypeWifiCCA;
+@property NSNumber *wrmLinkTypeWifiPacketLoss; // @synthesize wrmLinkTypeWifiPacketLoss=_wrmLinkTypeWifiPacketLoss;
+@property NSNumber *wrmLinkTypeWifiRSSI; // @synthesize wrmLinkTypeWifiRSSI=_wrmLinkTypeWifiRSSI;
+@property NSNumber *wrmLinkTypeWifiSNR; // @synthesize wrmLinkTypeWifiSNR=_wrmLinkTypeWifiSNR;
+
+- (void)addCellByteCountStats:(id)arg1;
+- (void)addSegmentWRMReportStats:(id)arg1;
 - (id)calculateBitrate:(id)arg1 sumKey:(id)arg2 counterKey:(id)arg3;
 - (id)calculateFramerate:(id)arg1 forKey:(id)arg2;
 - (void)collectStreamQualityAggregator:(id)arg1;

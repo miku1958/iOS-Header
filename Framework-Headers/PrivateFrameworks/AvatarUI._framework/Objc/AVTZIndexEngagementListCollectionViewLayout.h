@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (double)alphaForElementWithAttributes:(id)arg1;
-- (double)alphaForSunflowerElementWithEngagement:(double)arg1;
+- (double)alphaForPadElementWithEngagement:(double)arg1;
 - (struct UIEdgeInsets)engagementInsetsForCollectionViewBounds:(struct CGSize)arg1;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (void)finalizeCollectionViewUpdates;

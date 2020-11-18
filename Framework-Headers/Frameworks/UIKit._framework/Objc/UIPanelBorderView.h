@@ -10,6 +10,7 @@
 
 @interface UIPanelBorderView : UIView
 {
+    BOOL _draggable;
     BOOL _observesTime;
     long long _statusBarAvoidance;
     UIPanelBorderReplicatingView *_replicatingView;
@@ -17,12 +18,14 @@
 }
 
 @property (strong, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
+@property (nonatomic, getter=isDraggable) BOOL draggable; // @synthesize draggable=_draggable;
 @property (nonatomic) BOOL observesTime; // @synthesize observesTime=_observesTime;
 @property (strong, nonatomic) UIPanelBorderReplicatingView *replicatingView; // @synthesize replicatingView=_replicatingView;
 @property (nonatomic) long long statusBarAvoidance; // @synthesize statusBarAvoidance=_statusBarAvoidance;
 
 - (void).cxx_destruct;
 - (id)_cachedBackdropGroupName;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 
 @end

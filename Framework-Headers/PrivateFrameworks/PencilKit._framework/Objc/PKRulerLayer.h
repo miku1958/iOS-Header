@@ -74,6 +74,7 @@
 - (id)addScaleAnimationOnLayer:(id)arg1 delegate:(id)arg2 fromScale:(double)arg3 toScale:(double)arg4;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (BOOL)compactRuler;
+- (long long)currentAngle;
 - (struct CGPoint)getRulerCenterLineOriginAndTangent:(struct CGPoint *)arg1;
 - (void)hideRulerAngleMarker;
 - (void)hideRulerAnimated:(BOOL)arg1;

@@ -12,6 +12,8 @@
 
 @property (readonly, nonatomic) long long presentedNumberOfRows;
 
+- (long long)itemIndexForItem:(long long)arg1 inDirection:(unsigned long long)arg2;
+- (long long)itemIndexForPresentedItemIndex:(long long)arg1;
 - (CDStruct_e6148bb0)presentedItemLocationForItemAtIndex:(long long)arg1;
 - (NSIndexSet *)presentedItemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
 - (NSIndexSet *)presentedItemsInRect:(struct CGRect)arg1;

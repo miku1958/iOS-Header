@@ -20,6 +20,6 @@
 - (id)labelsForClassificationObservations:(id)arg1;
 - (BOOL)needToGeneratePreviews;
 - (BOOL)needToPostProcessAttachment;
-- (id)ocrStringFromImage:(id)arg1 title:(id *)arg2;
+- (id)ocrStringFromImageURL:(id)arg1 title:(id *)arg2;
 @end
 

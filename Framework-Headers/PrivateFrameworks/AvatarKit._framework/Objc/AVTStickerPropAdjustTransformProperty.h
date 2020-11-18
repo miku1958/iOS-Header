@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class MISSING_TYPE, NSString;
 
 @interface AVTStickerPropAdjustTransformProperty : NSObject
 {
     long long _presetCategory;
     NSString *_presetValue;
-    struct SCNVector3 _position;
-    struct SCNVector3 _rotation;
-    struct SCNVector3 _scale;
+    MISSING_TYPE *_position;
+    MISSING_TYPE *_rotation;
+    MISSING_TYPE *_scale;
 }
 
-@property (readonly, nonatomic) struct SCNVector3 position; // @synthesize position=_position;
+@property (readonly, nonatomic) MISSING_TYPE *position; // @synthesize position=_position;
 @property (readonly, nonatomic) long long presetCategory; // @synthesize presetCategory=_presetCategory;
 @property (readonly, nonatomic) NSString *presetValue; // @synthesize presetValue=_presetValue;
-@property (readonly, nonatomic) struct SCNVector3 rotation; // @synthesize rotation=_rotation;
-@property (readonly, nonatomic) struct SCNVector3 scale; // @synthesize scale=_scale;
+@property (readonly, nonatomic) MISSING_TYPE *rotation; // @synthesize rotation=_rotation;
+@property (readonly, nonatomic) MISSING_TYPE *scale; // @synthesize scale=_scale;
 
 - (void).cxx_destruct;
 - (void)applyAdjustmentIfNeededToNode:(id)arg1 forMemoji:(id)arg2 ignoreScaleZ:(BOOL)arg3;
-- (id)initWithPresetCategory:(long long)arg1 presetValue:(id)arg2 position:(struct SCNVector3)arg3 rotation:(struct SCNVector3)arg4 scale:(struct SCNVector3)arg5;
+- (id)initWithPresetCategory:(long long)arg1 presetValue:(id)arg2 position:rotation:scale: /* Error: Ran out of types for this method. */;
 
 @end
 

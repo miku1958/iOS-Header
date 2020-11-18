@@ -35,6 +35,7 @@
 - (void)eraseAnisetteForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchAnisetteDataForContext:(id)arg1 provisionIfNecessary:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)initWithAuthenticationController:(id)arg1;
+- (void)launchOutOfProcessAuthentication:(id)arg1 surrogateID:(id)arg2 withErrorHandler:(CDUnknownBlockType)arg3;
 - (void)legacyAnisetteDataForContext:(id)arg1 DSID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)presentBasicLoginUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentBiometricOrPasscodeValidationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

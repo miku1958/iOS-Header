@@ -55,7 +55,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ML3MusicLibraryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL downloadOnAddToLibrary;
+@property (readonly, nonatomic) BOOL downloadOnAddToLibrary;
 @property (readonly, nonatomic) BOOL hasAddedToLibraryAppleMusicContent;
 @property (readonly, nonatomic) BOOL hasUserPlaylists;
 @property (readonly, nonatomic) BOOL hasUserPlaylistsContainingAppleMusicContent;
@@ -172,14 +172,14 @@
 - (void).cxx_destruct;
 - (id)_allArtworkVariantDirectories;
 - (id)_allKeepLocalPlaylistTracks;
-- (long long)_artworkTotalSize;
+- (unsigned long long)_artworkTotalSize;
 - (void)_autogenerateArtworkForRelativePath:(id)arg1 artworkType:(long long)arg2 mediaType:(unsigned int)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_canConfigureMediaLibraryDatabaseConnection:(id)arg1;
 - (long long)_clearAllCloudAssets;
 - (BOOL)_clearAllRowsFromTables:(id)arg1;
 - (long long)_clearDatabaseFileFreeSpace;
 - (long long)_clearOrphanedAssetsOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
-- (long long)_clearPurgeableArtworkOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
+- (unsigned long long)_clearPurgeableArtworkOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
 - (long long)_clearPurgeableTracksOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2 includeAutoFilledTracks:(BOOL)arg3;
 - (long long)_clearPurgeableTracksOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2 includeCloudAssets:(BOOL)arg3 includeAutoFilledTracks:(BOOL)arg4;
 - (void)_closeAndLockCurrentDatabaseConnections;
@@ -208,8 +208,9 @@
 - (void)_onQueue_updateDatabaseConnectionsProfilingLevel;
 - (void)_postClientNotificationWithDistributedName:(id)arg1 localName:(id)arg2;
 - (BOOL)_prepareForAccountChange:(id *)arg1;
+- (unsigned long long)_purgeAllArtwork;
 - (id)_purgeableAlbumsQuerySQLWithUrgency:(unsigned long long)arg1;
-- (long long)_purgeableArtworkTotalSizeWithUrgency:(unsigned long long)arg1;
+- (unsigned long long)_purgeableArtworkTotalSizeWithUrgency:(unsigned long long)arg1;
 - (id)_purgeableItemsPredicateSQLWithUrgency:(unsigned long long)arg1;
 - (id)_purgeableTrackPredicateWithUrgency:(unsigned long long)arg1 includeAutoFilledTracks:(BOOL)arg2 includeCloudAssets:(BOOL)arg3;
 - (long long)_purgeableTracksTotalSizeWithUrgency:(unsigned long long)arg1 includeAutoFilledTracks:(BOOL)arg2;
@@ -219,12 +220,14 @@
 - (BOOL)_removeOrphanedArtworkTokensUsingConnection:(id)arg1;
 - (void)_setupNotificationManager;
 - (BOOL)_shouldProcessAccountChanges;
+- (BOOL)_shouldPurgeAllArtworkAtUrgency:(unsigned long long)arg1;
 - (BOOL)_shouldPurgeKeepLocalTracksForUrgency:(unsigned long long)arg1;
 - (id)_systemUnicodeVersionData;
 - (void)_tearDownNotificationManager;
 - (void)_teardownMediaLibraryDatabaseConnection:(id)arg1;
 - (unsigned long long)_totalSizeForAllNonCacheTracks;
 - (BOOL)_updateBestArtworkTokensForArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 preserveExistingAvailableToken:(BOOL)arg4 usingConnection:(id)arg5;
+- (void)_updateSystemPlaylist:(id)arg1 withName:(id)arg2 usingConnection:(id)arg3;
 - (BOOL)_validateDatabaseUsingConnection:(id)arg1 error:(id *)arg2;
 - (void)accessSortKeyBuilder:(CDUnknownBlockType)arg1;
 - (id)accountCacheDatabase;
@@ -319,6 +322,7 @@
 - (void)migratePresignedValidity;
 - (long long)minimumPurgeableStorage;
 - (CDStruct_912cb5d2)nameOrderForString:(id)arg1;
+- (void)notifyAssistantContentsDidChange;
 - (void)notifyCloudLibraryAvailabilityDidChange;
 - (void)notifyContentsDidChange;
 - (void)notifyDisplayValuesPropertyDidChange;
@@ -380,7 +384,7 @@
 - (BOOL)updateSortMap;
 - (BOOL)updateSortMapOnConnection:(id)arg1;
 - (BOOL)updateSortMapOnConnection:(id)arg1 forceUpdateOriginals:(BOOL)arg2;
-- (BOOL)updateSystemPlaylistNamesForCurrentLanguage;
+- (BOOL)updateSystemPlaylistNamesForCurrentLanguageUsingConnection:(id)arg1;
 - (void)updateTrackIntegrity;
 - (void)updateUbiquitousDatabaseByRemovingUbiquitousMetadataFromTrackWithPersistentID:(long long)arg1;
 - (id)uppService;

@@ -36,6 +36,7 @@
 - (void)announceRunConditionsChanged;
 - (double)currentRetryDelay;
 - (double)delayRetryingAfterError:(id)arg1;
+- (id)description;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)networkConditionsChanged;

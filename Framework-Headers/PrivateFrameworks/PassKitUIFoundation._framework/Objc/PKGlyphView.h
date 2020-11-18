@@ -42,6 +42,7 @@
     UIColor *_primaryHighlightColor;
     UIColor *_intentPrimaryHighlightColor;
     UIColor *_secondaryHighlightColor;
+    BOOL _showQRCode;
     unsigned int _userIntentEdge;
     long long _colorMode;
     UIColor *_primaryColor;
@@ -60,6 +61,7 @@
 @property (nonatomic) BOOL fadeOnRecognized;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
+@property (nonatomic) BOOL showQRCode; // @synthesize showQRCode=_showQRCode;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int userIntentEdge; // @synthesize userIntentEdge=_userIntentEdge;

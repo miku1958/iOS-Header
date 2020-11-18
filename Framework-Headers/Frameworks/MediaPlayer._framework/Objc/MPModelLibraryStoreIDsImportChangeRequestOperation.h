@@ -8,6 +8,7 @@
 
 @class MPMediaLibrary, MPModelObject, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryStoreIDsImportChangeRequestOperation : MPAsyncOperation
 {
     BOOL _shouldLibraryAdd;

@@ -15,6 +15,7 @@
 + (BOOL)tsk_isHorizontallyCompactOnLandscape;
 + (BOOL)tsk_pad1080H;
 + (BOOL)tsk_pad1112H;
++ (BOOL)tsk_pad1180H;
 + (BOOL)tsk_pad1194H;
 + (BOOL)tsk_pad1366H;
 + (BOOL)tsk_pad1366HOrLarger;
@@ -24,6 +25,7 @@
 + (BOOL)tsk_phoneUI667HOrSmaller;
 + (BOOL)tsk_phoneUI736H;
 + (BOOL)tsk_phoneUI812H;
++ (BOOL)tsk_phoneUI812HOrLarger;
 + (BOOL)tsk_phoneUI896H;
 + (void)tsk_resetScreenScaleCache;
 + (double)tsk_screenScale;

@@ -18,7 +18,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSHashTable *externalHandlers; // @synthesize externalHandlers=_externalHandlers;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

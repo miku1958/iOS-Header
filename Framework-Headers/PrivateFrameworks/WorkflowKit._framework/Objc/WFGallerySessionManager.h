@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, CKDatabase, NSArray, NSCache;
+@class CKContainer, CKDatabase, NSArray, NSCache, NSString;
 
 @interface WFGallerySessionManager : NSObject
 {
@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSCache *bannerImageCache; // @synthesize bannerImageCache=_bannerImageCache;
 @property (readonly, nonatomic) NSCache *collectionSearchCache; // @synthesize collectionSearchCache=_collectionSearchCache;
 @property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (readonly, nonatomic) NSString *containerDescription;
 @property (readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (readonly, nonatomic) NSCache *pageCache; // @synthesize pageCache=_pageCache;
 @property (readonly, nonatomic) BOOL performExpensiveFetchOperations; // @synthesize performExpensiveFetchOperations=_performExpensiveFetchOperations;
@@ -50,12 +51,13 @@
 - (id)initWithContainer:(id)arg1 preferredLocalizations:(id)arg2 performExpensiveFetchOperations:(BOOL)arg3;
 - (id)loadWorkflowInGalleryWorkflow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)preferredPageInPages:(id)arg1 preferredLanguages:(id)arg2;
-- (id)queryFilterForTokenizedKey:(id)arg1 words:(id)arg2 endsWithSpace:(BOOL)arg3;
+- (id)queryFilterForTokenizedKey:(id)arg1 query:(id)arg2;
 - (id)searchCollections:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)searchUsingWebServicesForItem:(Class)arg1 query:(id)arg2 queryFilter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)searchWorkflows:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)searchWorkflowsAndCollections:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)sortAndFilterSearchResults:(id)arg1 searchedWords:(id)arg2;
+- (id)sortAndFilterSearchResults:(id)arg1 query:(id)arg2;
+- (BOOL)stringContainsCJKCharacters:(id)arg1;
 - (void)unshareSharedShortcut:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateBanner:(id)arg1 withName:(id)arg2 detailPage:(id)arg3 iphone2xImage:(id)arg4 iphone3xImage:(id)arg5 ipadImage:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)updateCollection:(id)arg1 small2xImage:(id)arg2 large2xImage:(id)arg3 small3xImage:(id)arg4 large3xImage:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;

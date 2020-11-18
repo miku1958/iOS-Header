@@ -8,6 +8,7 @@
 
 @class MPMediaQuery, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreCompletionOfferingLookupItem : NSObject
 {
     BOOL _wantsArtwork;

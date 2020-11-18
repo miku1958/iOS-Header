@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 - (id)HLSColorCapability;
 - (void)_videoManagedObjectPlaybackExpirationWillChange:(id)arg1;
 - (id)addedDate;
+- (BOOL)allowsManualDownloadRenewal;
+- (id)availabilityEndDate;
+- (id)brandID;
+- (id)brandName;
 - (id)canonicalID;
 - (id)colorCapability;
 - (void)dealloc;
@@ -36,10 +40,14 @@ __attribute__((visibility("hidden")))
 - (id)initWithMediaLibrary:(id)arg1 videoManagedObject:(id)arg2 requestedProperties:(id)arg3;
 - (id)isLocal;
 - (id)isPlayable;
+- (BOOL)markedAsDeleted;
 - (id)releaseDate;
+- (BOOL)renewsOfflineKeysAutomatically;
+- (id)seasonCanonicalID;
 - (id)seasonIdentifier;
 - (id)seasonNumber;
 - (id)seasonTitle;
+- (id)showCanonicalID;
 - (id)showIdentifier;
 - (id)showTitle;
 - (id)storeID;

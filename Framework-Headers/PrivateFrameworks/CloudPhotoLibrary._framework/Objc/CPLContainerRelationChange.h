@@ -20,13 +20,13 @@
 + (id)relationToContainerWithIdentifier:(id)arg1;
 + (id)relationWithItemIdentifier:(id)arg1 containerIdentifier:(id)arg2;
 + (id)relationWithItemScopedIdentifier:(id)arg1 containerIdentifier:(id)arg2;
++ (BOOL)shouldReallyQuarantineRecord;
 - (void).cxx_destruct;
-- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
+- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingStorageView:(id)arg4;
 - (id)containerScopedIdentifier;
 - (id)description;
 - (id)itemScopedIdentifier;
 - (id)relatedIdentifier;
-- (id)scopedIdentifierForQuarantine;
 - (id)scopedIdentifiersForMapping;
 - (id)secondaryIdentifier;
 - (void)setContainerScopedIdentifier:(id)arg1;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     UIImageView *blurMaskView;
     UIImageView *tintMaskView;
     UIImageView *separatorMaskView;
+    struct CGRect viewFrame;
 }
 
 - (void).cxx_destruct;

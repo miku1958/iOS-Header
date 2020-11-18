@@ -11,15 +11,15 @@
 @interface ICAlertController : UIAlertController
 {
     BOOL _didPerformAction;
-    BOOL _didDismissWithDissmissWithoutActionBlock;
-    CDUnknownBlockType _dissmissWithoutActionBlock;
+    BOOL _didDismissWithDismissWithoutActionBlock;
+    CDUnknownBlockType _dismissWithoutActionBlock;
     UIAlertAction *_dismissAction;
 }
 
-@property (nonatomic) BOOL didDismissWithDissmissWithoutActionBlock; // @synthesize didDismissWithDissmissWithoutActionBlock=_didDismissWithDissmissWithoutActionBlock;
+@property (nonatomic) BOOL didDismissWithDismissWithoutActionBlock; // @synthesize didDismissWithDismissWithoutActionBlock=_didDismissWithDismissWithoutActionBlock;
 @property (nonatomic) BOOL didPerformAction; // @synthesize didPerformAction=_didPerformAction;
 @property (strong, nonatomic) UIAlertAction *dismissAction; // @synthesize dismissAction=_dismissAction;
-@property (copy, nonatomic) CDUnknownBlockType dissmissWithoutActionBlock; // @synthesize dissmissWithoutActionBlock=_dissmissWithoutActionBlock;
+@property (copy, nonatomic) CDUnknownBlockType dismissWithoutActionBlock; // @synthesize dismissWithoutActionBlock=_dismissWithoutActionBlock;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;

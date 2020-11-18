@@ -6,11 +6,10 @@
 
 #import <GameController/GCControllerElement.h>
 
-@class GCControllerAxisInput, GCControllerButtonInput, NSString;
+@class GCControllerAxisInput, GCControllerButtonInput;
 
 @interface GCControllerDirectionPad : GCControllerElement
 {
-    NSString *_descriptionName;
     BOOL _wasZeroed;
     int _timesPressed;
     BOOL _nonAnalog;
@@ -29,12 +28,13 @@
 @property (strong, nonatomic) GCControllerAxisInput *yAxis; // @synthesize yAxis=_yAxis;
 
 - (void).cxx_destruct;
+- (BOOL)_commitPendingValueOnQueue:(id)arg1;
 - (void)_fireValueChanged;
 - (void)_fireValueChangedWithQueue:(id)arg1;
 - (id)description;
 - (int)getAndResetTimesPressed;
-- (id)initWithFlippedY:(BOOL)arg1 digital:(BOOL)arg2;
-- (id)initWithFlippedY:(BOOL)arg1 digital:(BOOL)arg2 descriptionName:(id)arg3;
+- (id)initWithDigital:(BOOL)arg1;
+- (id)initWithDigital:(BOOL)arg1 descriptionName:(id)arg2;
 - (BOOL)isAnalog;
 - (void)setValueForXAxis:(float)arg1 yAxis:(float)arg2;
 

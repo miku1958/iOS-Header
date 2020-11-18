@@ -10,6 +10,7 @@
 
 @class AKTapToSignInViewController, CNFRegSigninLearnMoreView, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegSplashSignInController : CNFRegSignInController <AKTapToSignInViewControllerDelegate>
 {
     CNFRegSigninLearnMoreView *_signInView;

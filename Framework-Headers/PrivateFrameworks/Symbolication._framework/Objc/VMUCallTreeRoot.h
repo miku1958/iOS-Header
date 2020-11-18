@@ -13,6 +13,8 @@
 {
     struct _CSTypeRef _symbolicator;
     id<VMUStackLogReader> _stackLogReader;
+    NSArray *_vmRegions;
+    unsigned long long _cambriaRuntimeObjectID;
     VMUSampler *_sampler;
     unsigned long long _options;
     NSMutableSet *_uniqueNodeNames;
@@ -38,7 +40,9 @@
 - (id)descriptionStringForAddress:(unsigned long long)arg1 atTime:(unsigned long long)arg2 leafFrame:(BOOL)arg3 startOfRecursion:(BOOL)arg4;
 - (id)initWithCallGraphFile:(id)arg1 fileHeader:(id *)arg2 topFunctionsList:(id *)arg3 binaryImagesList:(id *)arg4;
 - (id)initWithSymbolicator:(struct _CSTypeRef)arg1 sampler:(id)arg2 options:(unsigned long long)arg3;
+- (void)setCambriaRuntimeVMObjectID:(unsigned long long)arg1;
 - (void)setStackLogReader:(id)arg1;
+- (void)setVMRegions:(id)arg1;
 
 @end
 

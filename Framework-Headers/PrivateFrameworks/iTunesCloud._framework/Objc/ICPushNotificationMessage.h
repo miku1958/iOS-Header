@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface ICPushNotificationMessage : NSObject
 {
     NSDictionary *_userInfo;
-    NSNumber *_accountDSID;
+    long long _accountDSID;
     long long _actionType;
     NSDictionary *_apsPayload;
 }
 
-@property (readonly, copy, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
+@property (readonly, nonatomic) long long accountDSID; // @synthesize accountDSID=_accountDSID;
 @property (readonly, nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (readonly, copy, nonatomic) NSDictionary *apsPayload; // @synthesize apsPayload=_apsPayload;
 @property (readonly, copy, nonatomic) NSString *clientIdentifier;

@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 @property (readonly, nonatomic) CALayer *punchOutRootLayer;
 @property (readonly, nonatomic) NSArray *punchOutRootLayers;
+@property (readonly, nonatomic) BOOL shouldPerformClickInteraction;
 @property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *volumeAudioCategory;
@@ -54,9 +55,10 @@
 - (void)_updateGlyphPackageDescription;
 - (void)_updateVisibility;
 - (void)dealloc;
+- (void)didTransitionToExpandedContentMode:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)mediaControlsVolumeController:(id)arg1 didChangeUserInteractionEnabled:(BOOL)arg2 forRoute:(unsigned long long)arg3;
-- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(unsigned long long)arg4;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeUserInteractionEnabled:(BOOL)arg2 forRoute:(long long)arg3;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(long long)arg4;
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(BOOL)arg2;
 - (struct CGRect)primaryFrame;
 - (struct CGRect)secondaryFrame;

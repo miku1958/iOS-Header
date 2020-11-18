@@ -27,12 +27,15 @@
 
 - (void).cxx_destruct;
 - (id)_curvedLabel;
+- (void)_layoutBottomLabel;
 - (void)_layoutLabel:(id)arg1 text:(id)arg2 monospaced:(BOOL)arg3 offset:(struct CGPoint)arg4 useCache:(BOOL)arg5;
+- (void)_layoutTopLabel;
 - (void)_setFontSize:(double)arg1 monospaced:(BOOL)arg2 offset:(struct CGPoint)arg3 onLabel:(id)arg4;
 - (void)applyTransitionFraction:(double)arg1;
 - (void)didFinishTransition;
 - (id)initWithFrame:(struct CGRect)arg1 device:(id)arg2;
 - (void)setup;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)willStartTransition;
 
 @end

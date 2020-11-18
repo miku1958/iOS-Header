@@ -20,6 +20,7 @@
 {
     BOOL _fullscreen;
     BOOL _playButtonTapped;
+    BOOL _showsPlaybackControls;
     id<SXVideoPlayerViewControllerDelegate> _delegate;
     id<SXVideoPlayerViewControllerDataSource> _dataSource;
     unsigned long long _mode;
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (strong, nonatomic) SXVideoPlaybackQueue *queue; // @synthesize queue=_queue;
+@property (nonatomic) BOOL showsPlaybackControls; // @synthesize showsPlaybackControls=_showsPlaybackControls;
 @property (strong, nonatomic) SXVideoAdSkipButton *skipButton; // @synthesize skipButton=_skipButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
@@ -66,7 +68,6 @@
 @property (readonly, nonatomic) id<SVVolumeReporting> volumeReporter; // @synthesize volumeReporter=_volumeReporter;
 
 - (void).cxx_destruct;
-- (void)adPrivacyButtonTapped:(id)arg1;
 - (void)adSkipButtonTapped:(id)arg1;
 - (void)advance;
 - (void)dealloc;

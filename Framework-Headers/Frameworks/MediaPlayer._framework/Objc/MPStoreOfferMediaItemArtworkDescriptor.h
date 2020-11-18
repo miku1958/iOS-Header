@@ -10,6 +10,7 @@
 
 @class NSArray, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreOfferMediaItemArtworkDescriptor : NSObject <MPArtworkDataSourceVisualIdenticality>
 {
     long long _itemPersistentID;

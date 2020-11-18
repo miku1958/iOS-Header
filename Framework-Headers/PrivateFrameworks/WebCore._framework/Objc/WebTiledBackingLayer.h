@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)drawsAsynchronously;
 - (id)init;
-- (id)initWithLayer:(id)arg1;
 - (void)invalidate;
 - (BOOL)isOpaque;
 - (void)setBorderColor:(struct CGColor *)arg1;

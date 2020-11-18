@@ -6,10 +6,16 @@
 
 #import <SpringBoard/SBSpotlightMultiplexingViewController.h>
 
+@protocol _SBDashBoardSpotlightViewControllerDelegate;
+
 @interface _SBDashBoardSpotlightViewController : SBSpotlightMultiplexingViewController
 {
+    id<_SBDashBoardSpotlightViewControllerDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<_SBDashBoardSpotlightViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+
+- (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (unsigned long long)level;
 - (unsigned long long)remoteSearchViewPresentationSource;

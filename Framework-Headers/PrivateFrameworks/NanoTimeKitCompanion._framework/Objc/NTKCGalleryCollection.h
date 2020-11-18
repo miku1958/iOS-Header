@@ -36,7 +36,6 @@
 + (id)_blackcombFacesForDevice:(id)arg1;
 + (id)_breatheFacesForDevice:(id)arg1;
 + (id)_californiaFacesForDevice:(id)arg1;
-+ (id)_calloutNameForNewFaces:(id)arg1 withDevice:(id)arg2;
 + (id)_chronographFacesForDevice:(id)arg1;
 + (id)_colorFacesForDevice:(id)arg1;
 + (id)_explorerFacesForDevice:(id)arg1;

@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 @protocol HKFetchOperationDelegate;
 
 @interface HKFetchOperation : NSObject
 {
+    BOOL _highPriority;
     NSUUID *_UUID;
-    long long _clientPriority;
-    long long _operationPriority;
+    NSString *_operationDescription;
     id<HKFetchOperationDelegate> _delegate;
+    double _queueTime;
+    double _executionTime;
 }
 
 @property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-@property (nonatomic) long long clientPriority; // @synthesize clientPriority=_clientPriority;
 @property (weak, nonatomic, getter=_delegate, setter=_setDelegate:) id<HKFetchOperationDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) long long operationPriority; // @synthesize operationPriority=_operationPriority;
+@property (nonatomic) double executionTime; // @synthesize executionTime=_executionTime;
+@property (nonatomic) BOOL highPriority; // @synthesize highPriority=_highPriority;
+@property (readonly, nonatomic) NSString *operationDescription; // @synthesize operationDescription=_operationDescription;
+@property (nonatomic) double queueTime; // @synthesize queueTime=_queueTime;
 
 - (void).cxx_destruct;
 - (void)_alertDelegateDidUpdatePriority;
-- (id)init;
+- (id)initWithOperationDescription:(id)arg1;
 - (void)startOperationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopOperation;
 

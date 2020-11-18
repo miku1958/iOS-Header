@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@protocol _DKKnowledgeDeleting><_DKKnowledgeQuerying;
+@protocol _DKKnowledgeEventStreamDeleting;
 
 @interface USWebHistory : NSObject
 {
-    id<_DKKnowledgeDeleting><_DKKnowledgeQuerying> _eventStorage;
+    BOOL _usageTrusted;
+    id<_DKKnowledgeEventStreamDeleting> _eventStorage;
 }
 
-@property (readonly) id<_DKKnowledgeDeleting><_DKKnowledgeQuerying> eventStorage; // @synthesize eventStorage=_eventStorage;
+@property (readonly) id<_DKKnowledgeEventStreamDeleting> eventStorage; // @synthesize eventStorage=_eventStorage;
+@property (readonly) BOOL usageTrusted; // @synthesize usageTrusted=_usageTrusted;
 
 - (void).cxx_destruct;
 - (void)_deleteEventsWithPredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_deleteEventsWithWebUsagePredicate:(id)arg1 videoUsagePredicate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteAllHistoryForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteHistoryDuringInterval:(id)arg1 webApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteHistoryForDomain:(id)arg1 webApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteHistoryForURL:(id)arg1 webApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initWithEventStorage:(id)arg1;
+- (id)initWithAuditToken:(CDStruct_6ad76789)arg1;
+- (id)initWithEventStorage:(id)arg1 usageTrusted:(BOOL)arg2;
 
 @end
 

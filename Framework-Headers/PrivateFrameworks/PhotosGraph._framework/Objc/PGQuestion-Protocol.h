@@ -10,9 +10,9 @@
 
 @protocol PGQuestion <NSObject>
 
-@property (readonly, nonatomic) NSDictionary *additionalInfo;
+@property (readonly, copy, nonatomic) NSDictionary *additionalInfo;
 @property (readonly, nonatomic) unsigned short displayType;
-@property (readonly, nonatomic) NSString *entityIdentifier;
+@property (readonly, copy, nonatomic) NSString *entityIdentifier;
 @property (readonly, nonatomic) unsigned short entityType;
 @property (readonly, nonatomic) double localFactoryScore;
 @property (nonatomic) double score;

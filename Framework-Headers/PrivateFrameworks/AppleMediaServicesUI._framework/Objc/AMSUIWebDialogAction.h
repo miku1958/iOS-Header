@@ -8,7 +8,7 @@
 
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSDialogRequest, AMSUIWebClientContext, NSString;
+@class AMSDialogRequest, AMSUIWebClientContext, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebDialogAction : NSObject <AMSUIWebActionRunnable>
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     BOOL _pauseTimeouts;
     AMSDialogRequest *_request;
     AMSUIWebClientContext *_context;
+    NSArray *_buttonModels;
 }
 
+@property (strong, nonatomic) NSArray *buttonModels; // @synthesize buttonModels=_buttonModels;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -15,21 +15,21 @@
 
 + (id)connection;
 - (void).cxx_destruct;
-- (void)cancelDeferredExitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cancelDeferredExit;
 - (void)changeVisibility:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (void)deferExitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deferExit;
 - (void)forceMigrationOnNextRebootWithUserDataDisposition:(unsigned int)arg1;
 - (id)init;
-- (void)isMigrationNeeded:(CDUnknownBlockType)arg1;
-- (void)migrateCheckingNecessity:(BOOL)arg1 lastRelevantPlugin:(id)arg2 testMigrationInfrastructureOnly:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)migrationPhaseDescription:(CDUnknownBlockType)arg1;
+- (BOOL)isMigrationNeeded;
+- (long long)migrateCheckingNecessity:(BOOL)arg1 lastRelevantPlugin:(id)arg2 testMigrationInfrastructureOnly:(BOOL)arg3;
+- (id)migrationPhaseDescription;
 - (void)migrationPluginResults:(CDUnknownBlockType)arg1;
-- (void)orderedPluginIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)previousBuildVersion:(CDUnknownBlockType)arg1;
+- (id)orderedPluginIdentifiers;
+- (id)previousBuildVersion;
 - (void)reportMigrationFailure;
 - (void)testMigrationUIWithProgress:(BOOL)arg1 forceInvert:(BOOL)arg2;
-- (void)userDataDisposition:(CDUnknownBlockType)arg1;
+- (unsigned int)userDataDisposition;
 
 @end
 

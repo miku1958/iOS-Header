@@ -6,58 +6,44 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNResultsGating-Protocol.h>
-#import <SoundAnalysis/SNTimeConverting-Protocol.h>
-
-@class AVAudioFormat, NSArray, NSMutableArray, NSString, SNAudioProcessorCache;
+@class AVAudioFormat, NSMutableArray, NSMutableDictionary, SNForwardPassAudioStreamAnalyzer;
 @protocol OS_dispatch_queue;
 
-@interface SNAudioStreamAnalyzer : NSObject <SNTimeConverting, SNResultsGating>
+@interface SNAudioStreamAnalyzer : NSObject
 {
-    SNAudioProcessorCache *_processorCache;
-    struct list<SoundAnalysis::ProcessingContext, std::__1::allocator<SoundAnalysis::ProcessingContext>> _processingContexts;
-    struct ProcessingTree _processingTree;
+    NSMutableArray *_requests;
     AVAudioFormat *_currentFormat;
-    NSArray *_requests;
-    NSMutableArray *_analyzerInfos;
-    BOOL _shouldRebuildProcessingTree;
-    BOOL _isInErrorState;
     NSObject<OS_dispatch_queue> *_analyzerQueue;
-    BOOL _shouldProduceResults;
+    SNForwardPassAudioStreamAnalyzer *_firstPassAnalyzer;
+    NSMutableDictionary *_secondPassAnalyzers;
+    struct unique_ptr<AudioRingBuffer, std::__1::default_delete<AudioRingBuffer>> _ringBuffer;
+    struct unique_ptr<CABufferList, std::__1::default_delete<CABufferList>> _ringBufferWriteBufferList;
 }
 
-@property (readonly, nonatomic) double clientSampleRate;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL shouldProduceResults; // @synthesize shouldProduceResults=_shouldProduceResults;
-@property (readonly) Class superclass;
-
-+ (void)validateFormatIsPCM:(id)arg1;
++ (void)deleteWAVAndTextFilesCreatedBeforeLastWeekInDirectory:(id)arg1;
++ (id)secondPassRecordingPath;
++ (BOOL)shouldRecordSecondPass;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)_addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
+- (BOOL)_addRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (BOOL)_addSinglePassRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (BOOL)_addTwoPassRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)_analyzeAudioBuffer:(id)arg1 atAudioFramePosition:(long long)arg2;
 - (void)_removeRequest:(id)arg1;
+- (void)_removeSinglePassRequest:(id)arg1;
+- (void)_removeTwoPassRequest:(id)arg1;
+- (BOOL)addRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
 - (void)analyzeAudioBuffer:(id)arg1 atAudioFramePosition:(long long)arg2;
-- (void)analyzeAudioBufferList:(struct AudioBufferList *)arg1 withAudioFrameCount:(unsigned int)arg2 atAudioFramePosition:(long long)arg3;
-- (id)analyzerInfoForRequest:(id)arg1;
-- (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(struct Box *)arg2;
 - (void)completeAnalysis;
-- (BOOL)configureAnalysisTreeWithFormat:(id)arg1;
-- (BOOL)configureAnalyzer:(id)arg1 withFormat:(id)arg2;
-- (id)createAnalyzerInfoForRequest:(id)arg1 resultsObserver:(id)arg2;
 - (id)detailedDescription;
-- (void)enterErrorState:(id)arg1;
-- (void)handleAnalyzeAudioBufferError;
+- (void)handleBeginSecondPassForRequest:(id)arg1 secondPassController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 resultsHandler:(CDUnknownBlockType)arg4;
+- (void)handleEndSecondPassForRequest:(id)arg1;
 - (id)initWithFormat:(id)arg1;
 - (void)removeAllRequests;
-- (void)removeAnalyzerInfoForRequest:(id)arg1;
 - (void)removeRequest:(id)arg1;
+- (void)removeRequestAsync:(id)arg1;
 - (void)sendErrorToAllRequests:(id)arg1;
-- (void)updateProcessingTreeFormat:(id)arg1;
-- (BOOL)updateTreeProcessingContexts;
 - (void)writeDSPGraphDotFilesToDirectory:(id)arg1;
 
 @end

@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXLayoutItemInput-Protocol.h>
 #import <PhotosUICore/PXMetadataAsset-Protocol.h>
 
-@class CLLocation, NSDate, NSString, NSURL, PXFileBackedAssetDescription, _PXFileBackedAssetMetadata;
+@class CLLocation, NSDate, NSNumber, NSString, NSURL, PXFileBackedAssetDescription, _PXFileBackedAssetMetadata;
 
 @interface PXFileBackedAsset : NSObject <PXDisplayAsset, PXLayoutItemInput, PXMetadataAsset>
 {
@@ -34,9 +34,10 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) NSDate *importDate;
 @property (readonly, nonatomic) BOOL isAnimatedImage;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) NSDate *localCreationDate;

@@ -6,35 +6,46 @@
 
 #import <objc/NSObject.h>
 
+#import <WallpaperKit/NAIdentifiable-Protocol.h>
+#import <WallpaperKit/WKWallpaperRepresenting-Protocol.h>
+
 @class NSMutableDictionary, NSString, NSURL;
 
-@interface WKWallpaperBundle : NSObject
+@interface WKWallpaperBundle : NSObject <NAIdentifiable, WKWallpaperRepresenting>
 {
     BOOL _appearanceAware;
-    BOOL _distintWallpapersForLocations;
+    BOOL _distinctWallpapersForLocations;
     BOOL _dynamicWallpaperBundle;
-    unsigned long long _version;
-    unsigned long long _identifier;
+    NSURL *_thumbnailImageURL;
+    long long _version;
+    long long _identifier;
     NSString *_name;
     NSString *_family;
-    NSURL *_thumbnailImageURL;
-    NSURL *__bundleURL;
     NSMutableDictionary *__defaultAppearanceWallpapers;
     NSMutableDictionary *__darkAppearanceWallpapers;
+    NSURL *__bundleURL;
 }
 
 @property (strong, nonatomic) NSURL *_bundleURL; // @synthesize _bundleURL=__bundleURL;
 @property (strong, nonatomic) NSMutableDictionary *_darkAppearanceWallpapers; // @synthesize _darkAppearanceWallpapers=__darkAppearanceWallpapers;
 @property (strong, nonatomic) NSMutableDictionary *_defaultAppearanceWallpapers; // @synthesize _defaultAppearanceWallpapers=__defaultAppearanceWallpapers;
 @property (readonly, nonatomic, getter=isAppearanceAware) BOOL appearanceAware; // @synthesize appearanceAware=_appearanceAware;
-@property (readonly, nonatomic, getter=hasDistintWallpapersForLocations) BOOL distintWallpapersForLocations; // @synthesize distintWallpapersForLocations=_distintWallpapersForLocations;
+@property (readonly, nonatomic) unsigned long long contentSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=hasDistinctWallpapersForLocations) BOOL distinctWallpapersForLocations; // @synthesize distinctWallpapersForLocations=_distinctWallpapersForLocations;
 @property (readonly, nonatomic, getter=isDynamicWallpaperBundle) BOOL dynamicWallpaperBundle; // @synthesize dynamicWallpaperBundle=_dynamicWallpaperBundle;
 @property (readonly, copy, nonatomic) NSString *family; // @synthesize family=_family;
-@property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *identifierString;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSURL *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
-@property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
+@property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
++ (id)createTemporaryWallpaperBundleWithImages:(id)arg1 videoAssetURLs:(id)arg2 wallpaperOptions:(id)arg3 error:(id *)arg4;
++ (id)na_identity;
 + (BOOL)shouldLoadWallpaperBundleAtURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_liveWallpaperWithMetadataDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
@@ -46,8 +57,9 @@
 - (id)_stillWallpaperWithMetadataDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
 - (id)fileBasedWallpaperForLocation:(id)arg1;
 - (id)fileBasedWallpaperForLocation:(id)arg1 andAppearance:(id)arg2;
-- (id)initWithDynamicDictionary:(id)arg1 identifier:(unsigned long long)arg2;
+- (id)initWithDynamicDictionary:(id)arg1 identifier:(long long)arg2;
 - (id)initWithURL:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)valueBasedWallpaperForLocation:(id)arg1;
 - (id)valueBasedWallpaperForLocation:(id)arg1 andAppearance:(id)arg2;
 - (unsigned long long)wallpaperBackingTypeForLocation:(id)arg1;

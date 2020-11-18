@@ -8,64 +8,52 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFEmailContactsTableViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFTriggerTextConfigurationViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFRecipientFieldViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFTriggerTableViewControllerDelegate-Protocol.h>
 
-@class CSSearchQuery, NSArray, NSMutableSet, NSString, UITableView;
+@class NSArray, NSString, UITableView, UIViewController;
 
-@interface WFEmailTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTriggerTextConfigurationViewControllerDelegate, WFEmailContactsTableViewControllerDelegate>
+@interface WFEmailTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFRecipientFieldViewControllerDelegate, WFTriggerTableViewControllerDelegate>
 {
     BOOL _showingAccounts;
     BOOL _showingRecipients;
-    BOOL _showingAttachments;
     UITableView *_tableView;
     NSArray *_sections;
-    NSMutableSet *_allRecipients;
-    NSMutableSet *_allSenders;
     NSArray *_allAccounts;
-    NSMutableSet *_allAccountsUsernames;
-    CSSearchQuery *_query;
+    UIViewController *_senderFieldViewController;
+    UIViewController *_recipientFieldViewController;
 }
 
 @property (strong, nonatomic) NSArray *allAccounts; // @synthesize allAccounts=_allAccounts;
-@property (strong, nonatomic) NSMutableSet *allAccountsUsernames; // @synthesize allAccountsUsernames=_allAccountsUsernames;
-@property (strong, nonatomic) NSMutableSet *allRecipients; // @synthesize allRecipients=_allRecipients;
-@property (strong, nonatomic) NSMutableSet *allSenders; // @synthesize allSenders=_allSenders;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
+@property (weak, nonatomic) UIViewController *recipientFieldViewController; // @synthesize recipientFieldViewController=_recipientFieldViewController;
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property (weak, nonatomic) UIViewController *senderFieldViewController; // @synthesize senderFieldViewController=_senderFieldViewController;
 @property (nonatomic) BOOL showingAccounts; // @synthesize showingAccounts=_showingAccounts;
-@property (nonatomic) BOOL showingAttachments; // @synthesize showingAttachments=_showingAttachments;
 @property (nonatomic) BOOL showingRecipients; // @synthesize showingRecipients=_showingRecipients;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
-- (id)accountFromUsername:(id)arg1;
-- (BOOL)additionalSectionRowWithinAccounts:(long long)arg1;
-- (BOOL)additionalSectionRowWithinHasAttachment:(long long)arg1;
-- (BOOL)additionalSectionRowWithinRecipient:(long long)arg1;
-- (void)didSelectContacts:(id)arg1 ofType:(unsigned long long)arg2;
-- (id)displayForSelectedContacts:(id)arg1;
-- (long long)firstRowOfHasAttachment;
-- (long long)firstRowOfRecipient;
+- (id)accountFromAccountIdentifier:(id)arg1;
 - (id)infoForSection:(long long)arg1;
 - (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)presentNavControllerWithRootViewController:(id)arg1;
+- (void)recipientViewControllerDidFinish:(id)arg1 cancelled:(BOOL)arg2;
 - (void)setUpAccounts;
-- (void)startQuery:(id)arg1;
+- (void)showSubjectContainsAlert;
 - (id)supportedAccountTypeIdentifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)triggerTextConfigurationViewController:(id)arg1 didSelectText:(id)arg2;
-- (void)triggerTextConfigurationViewControllerDidCancel:(id)arg1;
+- (void)triggerTableViewController:(id)arg1 didFinishWithAnySelected:(BOOL)arg2 orSelectedOptions:(id)arg3;
+- (void)triggerTableViewControllerDidCancel:(id)arg1;
 - (void)updateUI;
 - (void)viewWillAppear:(BOOL)arg1;
 

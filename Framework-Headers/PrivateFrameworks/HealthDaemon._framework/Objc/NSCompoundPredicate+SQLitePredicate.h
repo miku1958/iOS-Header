@@ -7,6 +7,6 @@
 #import <Foundation/NSCompoundPredicate.h>
 
 @interface NSCompoundPredicate (SQLitePredicate)
-- (id)_sqlPredicateForSelect;
+- (id)hd_sqlPredicateForSelect;
 @end
 

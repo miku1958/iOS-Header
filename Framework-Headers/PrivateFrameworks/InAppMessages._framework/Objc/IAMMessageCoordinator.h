@@ -8,85 +8,73 @@
 
 #import <InAppMessages/IAMEventReceiver-Protocol.h>
 #import <InAppMessages/IAMImpressionManagerDelegate-Protocol.h>
+#import <InAppMessages/IAMStorageCoordinatorDelegate-Protocol.h>
 
-@class IAMImpressionManager, IAMModalTarget, ICInAppMessageManager, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class IAMImpressionManager, IAMMessageEntryManager, IAMModalTarget, IAMStorageCoordinator, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 @protocol IAMApplicationContextProvider, IAMMessageMetricsDelegate, OS_dispatch_queue;
 
-@interface IAMMessageCoordinator : NSObject <IAMImpressionManagerDelegate, IAMEventReceiver>
+@interface IAMMessageCoordinator : NSObject <IAMImpressionManagerDelegate, IAMStorageCoordinatorDelegate, IAMEventReceiver>
 {
-    ICInAppMessageManager *_iTunesCloudIAMManager;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSDictionary *_messageEntriesByIdentifier;
-    NSDictionary *_allPreviousPriorityMessageEntriesByIdentifier;
-    NSMutableDictionary *_metadataEntriesByIdentifier;
     id<IAMApplicationContextProvider> _applicationContext;
-    NSDictionary *_messageEntriesByMonitoredKeys;
-    NSDictionary *_messageEntriesByTargetIdentifier;
     NSMutableDictionary *_messageTargetsByTargetIdentifier;
     NSMutableDictionary *_priorityMessageEntryByTargetIdentifier;
-    NSMutableDictionary *_lastDisplayTimeByGlobalPresentationPolicyGroupString;
     IAMImpressionManager *_impressionManager;
-    NSMutableArray *_pendingEvents;
+    NSMutableArray *_pendingTriggerContexts;
+    IAMStorageCoordinator *_storageCoordinator;
+    NSDictionary *_metadataEntryByMessageIdentifier;
+    NSDate *_lastDisplayTimeGlobalPresentationPolicyGroupNormal;
+    NSDate *_lastDisplayTimeGlobalPresentationPolicyGroupRestricted;
+    IAMMessageEntryManager *_messageEntryManager;
+    BOOL _isReadyToEvaluateMessages;
     NSString *_modalTargetIdentifier;
     IAMModalTarget *_modalTarget;
-    BOOL _haveMessagesBeenFetchedAndIndexed;
-    BOOL _havePresentationPolicyDisplayTimesBeenFetched;
-    BOOL _registeredAsObserverForICNotifications;
+    NSDictionary *_messageGroupsByGroupIdentifier;
     id<IAMMessageMetricsDelegate> _metricsDelegate;
 }
 
+@property (weak, nonatomic) id<IAMApplicationContextProvider> applicationContext; // @synthesize applicationContext=_applicationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSDictionary *messageEntriesByIdentifier; // @synthesize messageEntriesByIdentifier=_messageEntriesByIdentifier;
-@property (strong, nonatomic) NSDictionary *messageEntriesByMonitoredKeys; // @synthesize messageEntriesByMonitoredKeys=_messageEntriesByMonitoredKeys;
 @property (weak, nonatomic) id<IAMMessageMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
-@property (strong, nonatomic) NSMutableDictionary *priorityMessageEntryByTargetIdentifier; // @synthesize priorityMessageEntryByTargetIdentifier=_priorityMessageEntryByTargetIdentifier;
 @property (readonly) Class superclass;
 
++ (id)_createMessageFromMessageEntry:(id)arg1 replacingResourcePathsWithCachedResourceLocations:(BOOL)arg2;
 + (void)initialize;
-+ (id)propertyNameForGlobalPresentationPolicyGroupLastDisplayTime:(int)arg1;
 - (void).cxx_destruct;
 - (void)_calculateMessagesProximityAndDownloadResourcesIfNeeded:(id)arg1;
-- (BOOL)_canMessagesBeEvaluated;
-- (id)_createMessageFromMessageEntry:(id)arg1 replacingResourcePathsWithCachedResourceLocations:(BOOL)arg2;
-- (id)_dequeuePendingEvents;
-- (void)_didReceiveMessagesDidChangeNotification;
-- (void)_enqueuePendingEvent:(id)arg1;
-- (void)_evaluateMessagesIfReady;
-- (void)_fetchLastDisplayTimeForGlobalPresentationPolicyGroup:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_dequeuePendingTriggerContexts;
+- (void)_enqueuePendingTriggerContext:(id)arg1;
+- (void)_evaluateMessagesForAllActiveTargets;
+- (void)_fetchMessagesAndMetadataFromStorageCoordinator:(CDUnknownBlockType)arg1;
 - (id)_filterActiveTargetIdentifiers:(id)arg1;
+- (void)_handleMessageReachedMaximumDisplayCount:(id)arg1;
+- (void)_handleUpdatedMessageEntries:(id)arg1 andMetadata:(id)arg2;
 - (void)_incrementNumberOfDisplaysForMessageEntry:(id)arg1;
-- (id)_messageEntriesCorrespondingToContextProperties:(id)arg1 shouldExcludeMessagesRequiringTriggerEvent:(BOOL)arg2;
+- (id)_messageBundleIdentifiers;
+- (id)_metadataEntryForMessageIdentifier:(id)arg1;
 - (void)_notifyMessageTargets:(id)arg1 withTargetIdentifier:(id)arg2 didUpdatePriorityMessageFromEntry:(id)arg3;
 - (void)_reevaluateMessageEntries:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(BOOL)arg3;
-- (void)_reevaluateTargetsWithIdentifiers:(id)arg1 forEvent:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(BOOL)arg3;
+- (void)_reevaluateTargetsWithIdentifiers:(id)arg1 forTriggerContext:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(BOOL)arg3;
 - (void)_removeUserNotificationRemovalForMessageWithIdentifier:(id)arg1;
-- (void)_reportDisplayToITunesCloudManagerWithEventIdentifier:(id)arg1;
+- (void)_reportHoldoutMessageWouldAppear:(id)arg1;
 - (void)_reportMessageAction:(id)arg1 wasPerformedInMessageEntry:(id)arg2 fromTargetWithIdentifier:(id)arg3;
-- (id)_targetIdentifiersCorrespondingToMessageEntries:(id)arg1;
-- (void)_updateMessageIndexes;
+- (void)_setMessageGroups:(id)arg1;
+- (void)_startStorageCoordinatorWithMessageEntryProvider:(id)arg1 messageMetadataStorage:(id)arg2 propertyStorage:(id)arg3;
+- (void)_updateLastDisplayTime:(id)arg1 forMessageEntry:(id)arg2;
+- (void)_updateMetadata:(id)arg1 forMessageEntry:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_updateMetadataOfMessageEntriesByTrigger:(id)arg1 forReceivedEvent:(id)arg2;
 - (void)_updatePriorityMessageEntry:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfNonNil:(BOOL)arg3;
-- (id)allMessageEntriesWithoutDuplicates:(id)arg1;
-- (BOOL)applicationAllowsModalPresentation;
-- (id)applicationViewControllerForModalPresentation;
-- (void)cacheLastDisplayTime:(id)arg1 forGlobalPresentationPolicyGroup:(int)arg2;
 - (void)dealloc;
-- (void)fetchGlobalPresentationPolicyGroupDisplayTimesFromiTunesCloud;
-- (void)fetchMessagesFromiTunesCloud;
 - (void)impressionManager:(id)arg1 impressionDidEndForMessageEntry:(id)arg2;
 - (void)impressionManager:(id)arg1 shouldReportImpressionEventWithDictionary:(id)arg2;
 - (id)init;
-- (id)lastDisplayTimeForGlobalPresentationPolicyGroup:(int)arg1;
-- (id)messageEntriesByRealKeyCorrespondingToEvent:(id)arg1;
-- (id)messageEntryForIdentifier:(id)arg1;
-- (id)metadataEntriesByIdentifier;
-- (id)metadataEntryForIdentifier:(id)arg1;
-- (void)performApplicationAction:(id)arg1;
 - (void)receiveEvent:(id)arg1;
+- (void)receiveTriggerEventContext:(id)arg1;
 - (void)registerMessageTarget:(id)arg1;
 - (void)reportApplicationContextPropertiesDidChange:(id)arg1;
-- (void)reportHoldoutMessageWouldAppear:(id)arg1;
+- (void)reportChangedContextPropertiesContext:(id)arg1;
 - (void)reportMessageDidAppearWithIdentifier:(id)arg1;
 - (void)reportMessageDidAppearWithIdentifier:(id)arg1 fromTargetWithIdentifier:(id)arg2;
 - (void)reportMessageDidDisappearWithIdentifier:(id)arg1;
@@ -94,13 +82,12 @@
 - (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2;
 - (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2 fromTargetWithIdentifier:(id)arg3;
 - (void)reportMetricsEvent:(id)arg1;
-- (void)setLastDisplayTime:(id)arg1 forGlobalPresentationPolicyGroup:(int)arg2;
-- (void)setMetadataEntriesByIdentifier:(id)arg1;
-- (void)setMetadataEntry:(id)arg1 forIdentifier:(id)arg2;
 - (void)start;
 - (void)startWithApplicationContext:(id)arg1;
+- (void)startWithApplicationContext:(id)arg1 messageGroups:(id)arg2;
+- (void)startWithApplicationContext:(id)arg1 messageGroups:(id)arg2 messageEntryProvider:(id)arg3 messageMetadataStorage:(id)arg4 propertyStorage:(id)arg5;
+- (void)storageCoordinatorMessageEntriesChanged:(id)arg1;
 - (void)unregisterMessageTarget:(id)arg1;
-- (void)updateMetadataOfMessageEntriesByRealKey:(id)arg1 forReceivedEvent:(id)arg2;
 
 @end
 

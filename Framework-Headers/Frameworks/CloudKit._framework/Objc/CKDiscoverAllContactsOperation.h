@@ -6,26 +6,15 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSMutableArray;
-
 @interface CKDiscoverAllContactsOperation : CKOperation
 {
     CDUnknownBlockType _discoverAllContactsCompletionBlock;
-    NSMutableArray *_discoveredUserInfos;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType discoverAllContactsCompletionBlock; // @synthesize discoverAllContactsCompletionBlock=_discoverAllContactsCompletionBlock;
-@property (strong, nonatomic) NSMutableArray *discoveredUserInfos; // @synthesize discoveredUserInfos=_discoveredUserInfos;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
-- (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
-- (id)activityCreate;
-- (BOOL)hasCKOperationCallbacksSet;
-- (id)init;
-- (Class)operationInfoClass;
-- (void)performCKOperation;
 
 @end
 

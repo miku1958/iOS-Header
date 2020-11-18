@@ -30,11 +30,16 @@
 - (BOOL)hasPlaceCard_PlaceActionDetails_TransitPlaceCard_TransitDepartureSequence;
 - (BOOL)hasSuggestionsData;
 - (id)init;
+- (int)layoutInfoAsGEOLayoutInfo;
+- (int)layoutStyleAsGEOLayoutStyle;
+- (int)locationPrecisionTypeAsGEOSettingsLocationType;
+- (int)navVoiceVolumeAsGEONavVoiceVolume;
 - (void)performMapViewStateUpdate:(CDUnknownBlockType)arg1;
 - (void)performPlaceCardStateUpdate:(CDUnknownBlockType)arg1;
 - (void)populateWithChildPlace:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3;
 - (void)populateWithPlace:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3;
 - (void)populateWithPlaceActionDetails:(id)arg1;
+- (int)transportModeAsGEOTransportMode;
 
 @end
 

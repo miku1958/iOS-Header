@@ -12,7 +12,9 @@
 - (void)cancelButtonPressed;
 - (void)dictationButtonPressed;
 - (void)didBeginEditing;
+- (void)performWebSearch;
 - (void)queryContextDidChange:(SPSearchQueryContext *)arg1 fromSearchHeader:(SPUISearchHeader *)arg2 allowZKW:(BOOL)arg3;
+- (void)removeCompletionAndHighlightAsTyped:(BOOL)arg1;
 - (void)returnKeyPressed;
 @end
 

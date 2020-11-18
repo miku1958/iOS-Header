@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSMutableSet, NSString;
+@class NSMutableSet;
 @protocol RBClientInheritanceManagerDelegate;
 
-@interface RBClientInheritanceManager : NSObject <BSDescriptionProviding>
+@interface RBClientInheritanceManager : NSObject
 {
     NSMutableSet *_inheritances;
     NSMutableSet *_queuedGainedInheritances;
@@ -21,21 +19,13 @@
     id<RBClientInheritanceManagerDelegate> _delegate;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<RBClientInheritanceManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_lock_sendQueuedInheritances;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)description;
 - (id)init;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithInheritances:(id)arg1 delegate:(id)arg2;
 - (void)setInheritances:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

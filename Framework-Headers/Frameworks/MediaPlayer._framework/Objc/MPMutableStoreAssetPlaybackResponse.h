@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSArray *fileAssetInfoList; // @dynamic fileAssetInfoList;
 @property (strong, nonatomic) MPStoreHLSAssetInfo *hlsAssetInfo; // @dynamic hlsAssetInfo;
 @property (nonatomic, getter=isLiveRadioStream) BOOL liveRadioStream; // @dynamic liveRadioStream;
+@property (nonatomic) BOOL onlineSubscriptionKeysRequired; // @dynamic onlineSubscriptionKeysRequired;
 @property (copy, nonatomic) NSArray *radioStreamAssetInfoList; // @dynamic radioStreamAssetInfoList;
 @property (nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired; // @dynamic subscriptionRequired;
 @property (strong, nonatomic) id suzeLeaseID; // @dynamic suzeLeaseID;

@@ -8,14 +8,16 @@
 
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
+#import <HomeKit/HMFObject-Protocol.h>
 
-@class HMAccessory, HMCameraBulletinBoardSmartNotification, HMFUnfairLock, NSString, NSUUID, _HMCameraUserSettings, _HMContext;
+@class HMAccessory, HMCameraBulletinBoardSmartNotification, HMFUnfairLock, NSArray, NSSet, NSString, NSUUID, _HMCameraUserSettings, _HMContext;
 @protocol HMCameraUserSettingsDelegate, OS_dispatch_queue;
 
-@interface HMCameraUserSettings : NSObject <HMFLogging, HMFMessageReceiver>
+@interface HMCameraUserSettings : NSObject <HMFLogging, HMFMessageReceiver, HMFObject>
 {
     HMFUnfairLock *_lock;
     _HMCameraUserSettings *_cameraUserSettings;
+    HMCameraBulletinBoardSmartNotification *_smartNotificationBulletin;
     id<HMCameraUserSettingsDelegate> _delegate;
     _HMContext *_context;
     HMAccessory *_accessory;
@@ -24,8 +26,11 @@
 @property (readonly, getter=isAccessModeChangeNotificationEnabled) BOOL accessModeChangeNotificationEnabled;
 @property (readonly, getter=isAccessModeIndicatorEnabled) BOOL accessModeIndicatorEnabled;
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, getter=activityZones) NSSet *activityZones;
+@property (readonly, getter=areActivityZonesIncludedForSignificantEventDetection) BOOL activityZonesIncludedForSignificantEventDetection;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, getter=isCameraManuallyDisabled) BOOL cameraManuallyDisabled;
-@property (strong) _HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;
+@property (copy) _HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly) unsigned long long currentAccessMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,16 +40,21 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, getter=isNightVisionModeEnabled) BOOL nightVisionModeEnabled;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, getter=isReachabilityChangeNotificationEnabled) BOOL reachabilityChangeNotificationEnabled;
+@property (readonly, getter=isReachabilityEventNotificationEnabled) BOOL reachabilityEventNotificationEnabled;
 @property (readonly, getter=isRecordingAudioEnabled) BOOL recordingAudioEnabled;
 @property (readonly) unsigned long long recordingEventTriggers;
-@property (readonly) unsigned long long recordingStorageDuration;
-@property (readonly) HMCameraBulletinBoardSmartNotification *smartNotificationBulletin;
+@property (readonly, copy) NSString *shortDescription;
+@property (strong) HMCameraBulletinBoardSmartNotification *smartNotificationBulletin; // @synthesize smartNotificationBulletin=_smartNotificationBulletin;
 @property (readonly, getter=areSnapshotsAllowed) BOOL snapshotsAllowed;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long supportedFeatures;
 @property (readonly) NSUUID *uniqueIdentifier;
 
 + (id)logCategory;
++ (id)shortDescription;
 - (void).cxx_destruct;
 - (void)_callSettingsDidUpdateDelegate;
 - (void)_mergeNewSettings:(id)arg1 operations:(id)arg2;
@@ -52,16 +62,21 @@
 - (unsigned long long)accessModeForPresenceType:(unsigned long long)arg1;
 - (unsigned long long)accessModeNotAtHome;
 - (void)configureWithAccessory:(id)arg1 context:(id)arg2;
+- (void)handleSettingsDidUpdateMessage:(id)arg1;
 - (id)initWithCameraUserSettings:(id)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;
+- (id)smartNotificationBulletinForSettings:(id)arg1;
 - (void)updateAccessMode:(unsigned long long)arg1 forPresenceEventType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccessModeChangeNotificationEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAccessModeIndicatorEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateActivityZones:(id)arg1 areActivityZonesIncludedForSignificantEventDetection:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateActivityZones:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateNightVisionModeEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateReachabilityChangeNotificationEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateReachabilityEventNotificationEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRecordingAudioEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRecordingEventTriggers:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateRecordingStorageDuration:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSnapshotsAllowed:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateWithSettings:(id)arg1;
 

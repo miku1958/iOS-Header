@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileValueSource-Protocol.h>
 
 @class NSString;
 @protocol HFCharacteristicOperationContextProviding, HFCharacteristicValueSource, HFOverrideCharacteristicValueProvider;
 
-@interface HFOverrideCharacteristicValueSource : NSObject <HFCharacteristicValueSource>
+@interface HFOverrideCharacteristicValueSource : NSObject <HFLightProfileValueSource, HFCharacteristicValueSource>
 {
     id<HFCharacteristicValueSource> _originalValueSource;
     id<HFOverrideCharacteristicValueProvider> _overrideValueProvider;
@@ -19,10 +20,14 @@
 
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> originalValueSource; // @synthesize originalValueSource=_originalValueSource;
 @property (weak, nonatomic) id<HFOverrideCharacteristicValueProvider> overrideValueProvider; // @synthesize overrideValueProvider=_overrideValueProvider;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)na_identity;
@@ -31,10 +36,14 @@
 - (id)cachedErrorForWriteToCharacteristic:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
 - (void)commitTransactionWithReason:(id)arg1;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 lightProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithOriginalValueSource:(id)arg1 overrideValueProvider:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isNaturalLightingEnabledForProfile:(id)arg1;
+- (BOOL)isNaturalLightingSupportedForProfile:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
+- (id)writeNaturalLightEnabledState:(BOOL)arg1 forProfile:(id)arg2;
 - (id)writeValuesForCharacteristics:(id)arg1;
 
 @end

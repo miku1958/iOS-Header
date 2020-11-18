@@ -11,7 +11,6 @@
 }
 
 + (id)sleepDaysQueryWithStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3 predicate:(id)arg4 healthStore:(id)arg5 completion:(CDUnknownBlockType)arg6;
-+ (id)sleepDaysWithStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3 healthStore:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -9,18 +9,25 @@
 #import <VideosUI/MPStoreDownloadManagerObserver-Protocol.h>
 
 @class NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface VUIRentalManager : NSObject <MPStoreDownloadManagerObserver>
 {
     BOOL _needToSendPlaybackStartDatesToServer;
+    BOOL _initialized;
+    BOOL _initialRentalsFetched;
     NSMutableSet *_deferredRentalCheckinContexts;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMutableSet *deferredRentalCheckinContexts; // @synthesize deferredRentalCheckinContexts=_deferredRentalCheckinContexts;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL initialRentalsFetched; // @synthesize initialRentalsFetched=_initialRentalsFetched;
+@property (nonatomic) BOOL initialized; // @synthesize initialized=_initialized;
 @property (nonatomic) BOOL needToSendPlaybackStartDatesToServer; // @synthesize needToSendPlaybackStartDatesToServer=_needToSendPlaybackStartDatesToServer;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;

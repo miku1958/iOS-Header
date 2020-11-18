@@ -10,6 +10,7 @@
 
 @interface HKLevelCategoryTimePeriodSeries : HKHorizontalTimePeriodSeries
 {
+    BOOL _drawSampleSpans;
     double _markerRadius;
     UIColor *_innerMarkColor;
     UIFont *_categoryLevelFont;
@@ -20,6 +21,7 @@
 
 @property (strong, nonatomic) UIColor *categoryLevelColor; // @synthesize categoryLevelColor=_categoryLevelColor;
 @property (strong, nonatomic) UIFont *categoryLevelFont; // @synthesize categoryLevelFont=_categoryLevelFont;
+@property (nonatomic) BOOL drawSampleSpans; // @synthesize drawSampleSpans=_drawSampleSpans;
 @property (strong, nonatomic) UIColor *innerMarkColor; // @synthesize innerMarkColor=_innerMarkColor;
 @property (nonatomic) double markerRadius; // @synthesize markerRadius=_markerRadius;
 @property (strong, nonatomic) UIColor *specialMarkColor; // @synthesize specialMarkColor=_specialMarkColor;
@@ -27,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)_drawCategoryLabels:(struct CGContext *)arg1 axisRect:(struct CGRect)arg2;
+- (void)_drawMarkerWithContext:(struct CGContext *)arg1 style:(long long)arg2 color:(struct CGColor *)arg3 innerColor:(struct CGColor *)arg4 specialColor:(struct CGColor *)arg5 location:(struct CGPoint)arg6 radius:(double)arg7;
 - (BOOL)_interiorCategoryLabels;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;

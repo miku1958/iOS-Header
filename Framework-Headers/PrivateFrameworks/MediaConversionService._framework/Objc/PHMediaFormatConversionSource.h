@@ -17,10 +17,14 @@
     NSString *_renderOriginatingSignature;
     NSString *_livePhotoPairingIdentifier;
     long long _locationMetadataStatus;
+    long long _captionMetadataStatus;
+    long long _accessibilityDescriptionMetadataStatus;
     id _hevcTrackFormatDescription;
     struct CGSize _imageDimensions;
 }
 
+@property long long accessibilityDescriptionMetadataStatus; // @synthesize accessibilityDescriptionMetadataStatus=_accessibilityDescriptionMetadataStatus;
+@property long long captionMetadataStatus; // @synthesize captionMetadataStatus=_captionMetadataStatus;
 @property BOOL containsHEIFImage; // @synthesize containsHEIFImage=_containsHEIFImage;
 @property BOOL containsHEVCVideo; // @synthesize containsHEVCVideo=_containsHEVCVideo;
 @property BOOL didCheckForLivePhotoPairingIdentifier; // @synthesize didCheckForLivePhotoPairingIdentifier=_didCheckForLivePhotoPairingIdentifier;
@@ -38,15 +42,25 @@
 + (id)sourceForFileURL:(id)arg1 mediaType:(long long)arg2 imageDimensions:(struct CGSize)arg3;
 + (id)videoSourceForFileURL:(id)arg1;
 - (void).cxx_destruct;
+- (void)checkForAccessibilityDescriptionData;
+- (void)checkForCaptionData;
 - (void)checkForHEIFImage;
 - (void)checkForHEVCVideo;
 - (void)checkForLivePhotoPairingIdentifier;
 - (void)checkForLocationData;
 - (BOOL)determineMediaTypeFromPathExtensionWithError:(id *)arg1;
+- (long long)imageSourceAccessibilityDescriptionMetadataStatus;
+- (long long)imageSourceCaptionMetadataStatus;
 - (long long)imageSourceLocationMetadataStatus;
+- (BOOL)imageSourceMetadataByTraversingKeys:(id)arg1 metadataValue:(id *)arg2;
+- (void)markAccessibilityDescriptionMetadataAsCheckedWithStatus:(long long)arg1;
+- (void)markCaptionMetadataAsCheckedWithStatus:(long long)arg1;
 - (void)markLivePhotoPairingIdentifierAsCheckedWithValue:(id)arg1;
 - (void)markLocationMetadataAsCheckedWithStatus:(long long)arg1;
 - (BOOL)preflightWithError:(id *)arg1;
+- (BOOL)valueExistsInDictionary:(id)arg1 byTraversingKeys:(id)arg2 value:(id *)arg3;
+- (long long)videoSourceAccessibilityDescriptionMetadataStatus;
+- (long long)videoSourceCaptionMetadataStatus;
 - (long long)videoSourceLocationMetadataStatus;
 
 @end

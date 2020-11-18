@@ -19,6 +19,8 @@
 + (id)_effectIdentifierForEffectIndex:(unsigned long long)arg1;
 + (id)effectIdentifierForAsset:(id)arg1 withEnvironment:(id)arg2;
 + (id)effectIdentifierForFilterInfo:(id)arg1;
++ (id)effectIdentifierWithRTL:(BOOL)arg1 style:(unsigned long long)arg2 content:(unsigned long long)arg3 nightMode:(BOOL)arg4;
++ (struct CGImage *)restrictedImageFrom:(struct CGImage *)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (id)bookCoverEffectFilterForEffectIdentifier:(id)arg1;
 - (id)bookCoverEffectFilters;

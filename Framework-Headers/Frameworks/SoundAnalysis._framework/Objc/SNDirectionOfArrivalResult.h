@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SNDirectionOfArrivalResult : NSObject <SNTimeRangeProvidingWritable, SNTimeRangeProviding>
+@interface SNDirectionOfArrivalResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNTimeRangeProviding>
 {
     float _azimuth;
     NSArray *_spatialSpectrum;
-    CDStruct_e83c9415 timeRange;
+    CDStruct_e83c9415 _timeRange;
 }
 
 @property (nonatomic) float azimuth; // @synthesize azimuth=_azimuth;
@@ -24,10 +26,15 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *spatialSpectrum; // @synthesize spatialSpectrum=_spatialSpectrum;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDirectionOfArrivalResult:(id)arg1;
 
 @end
 

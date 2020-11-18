@@ -9,7 +9,6 @@
 @class NSString, NSURL;
 @protocol GEOMapItemPhoto;
 
-__attribute__((visibility("hidden")))
 @interface MKMapItemPhoto : NSObject
 {
     NSString *_title;
@@ -19,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL displayFullScreenPhotoGallery;
 @property (readonly, nonatomic) long long format;
-@property (strong, nonatomic) id<GEOMapItemPhoto> geoMapItemPhoto; // @synthesize geoMapItemPhoto=_geoMapItemPhoto;
+@property (readonly, nonatomic) id<GEOMapItemPhoto> geoMapItemPhoto; // @synthesize geoMapItemPhoto=_geoMapItemPhoto;
 @property (readonly, nonatomic) NSURL *largestPhotoURL;
 @property (readonly, nonatomic) NSString *license;
 @property (readonly, nonatomic) NSString *photoID;

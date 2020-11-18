@@ -16,11 +16,11 @@
     AKController *_controller;
 }
 
-@property BOOL allInkEnabled; // @synthesize allInkEnabled=_allInkEnabled;
+@property (nonatomic) BOOL allInkEnabled; // @synthesize allInkEnabled=_allInkEnabled;
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 @property (readonly, nonatomic) BOOL isInDefaultMode;
-@property BOOL pencilInkEnabled; // @synthesize pencilInkEnabled=_pencilInkEnabled;
-@property unsigned long long toolMode; // @synthesize toolMode=_toolMode;
+@property (nonatomic) BOOL pencilInkEnabled; // @synthesize pencilInkEnabled=_pencilInkEnabled;
+@property (nonatomic) unsigned long long toolMode; // @synthesize toolMode=_toolMode;
 
 + (void)cascadeAnnotations:(id)arg1 onPageController:(id)arg2 forPaste:(BOOL)arg3;
 - (void).cxx_destruct;

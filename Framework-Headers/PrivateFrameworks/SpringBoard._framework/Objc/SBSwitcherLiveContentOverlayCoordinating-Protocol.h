@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 
-@class NSString, SBMainWorkspaceTransitionRequest, SBUIAnimationController;
+@class NSString, SBAppLayout, SBMainWorkspaceTransitionRequest, SBUIAnimationController;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
 @protocol SBSwitcherLiveContentOverlayCoordinating <SBLayoutStateTransitionObserver>
@@ -16,6 +16,8 @@
 @property (nonatomic, getter=areLiveContentOverlayUpdatesSuspended) BOOL liveContentOverlayUpdatesSuspended;
 
 - (SBUIAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
+- (void)appLayoutDidBecomeHidden:(SBAppLayout *)arg1;
+- (void)appLayoutWillBecomeVisible:(SBAppLayout *)arg1;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 @end
 

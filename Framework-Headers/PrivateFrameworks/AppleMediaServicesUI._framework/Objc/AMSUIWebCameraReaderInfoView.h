@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AppleMediaServicesUI/AMSUICommonView.h>
 
 @class UIButton, UILabel;
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebCameraReaderInfoView : UIView
+@interface AMSUIWebCameraReaderInfoView : AMSUICommonView
 {
     UIButton *_bottomLink;
     id<AMSUIWebActionRunnable> _bottomLinkAction;
@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_bottomLinkSelected:(id)arg1;
+- (id)_createButtonWithTarget:(id)arg1 selector:(SEL)arg2;
+- (id)_createLabelWithLines:(long long)arg1 title:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 

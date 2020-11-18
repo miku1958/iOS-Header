@@ -14,7 +14,7 @@
 @property (readonly, nonatomic) long long notifyType; // @synthesize notifyType=_notifyType;
 
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithText:(id)arg1 notifyType:(long long)arg2;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2 notifyType:(long long)arg3;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

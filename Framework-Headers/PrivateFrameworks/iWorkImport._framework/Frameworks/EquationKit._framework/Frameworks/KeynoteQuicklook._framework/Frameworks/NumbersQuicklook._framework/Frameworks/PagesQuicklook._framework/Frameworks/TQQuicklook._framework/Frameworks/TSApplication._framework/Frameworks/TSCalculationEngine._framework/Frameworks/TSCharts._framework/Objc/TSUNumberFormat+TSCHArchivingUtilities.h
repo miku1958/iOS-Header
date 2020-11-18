@@ -8,8 +8,8 @@
 
 @interface TSUNumberFormat (TSCHArchivingUtilities)
 + (id)instanceWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
-+ (id)numberFormatFromFormatStruct:(CDStruct_b1066b25)arg1;
-- (CDStruct_b1066b25)formatStructAndCustomFormatData:(id *)arg1;
++ (id)numberFormatFromFormatStruct:(CDStruct_4f52a90b)arg1;
+- (CDStruct_4f52a90b)formatStructAndCustomFormatData:(id *)arg1;
 - (id)initWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchive:(struct FormatStructArchive *)arg1 archiver:(id)arg2;
 @end

@@ -41,7 +41,7 @@
 - (BOOL)inputRequired;
 - (id)inputSourceInWorkflow:(id)arg1;
 - (BOOL)isDeletable;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)measurementForQuantityValue:(id)arg1;
 - (id)minimumSupportedClientVersion;
 - (id)name;
@@ -62,6 +62,7 @@
 - (void)updatePossibleOperators;
 - (void)updateRightExpressionParameters;
 - (BOOL)useLegacyComparisonBehavior;
+- (BOOL)usesLegacyInputBehavior;
 - (void)variableDidChange:(id)arg1;
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)wasRemovedFromWorkflow:(id)arg1;

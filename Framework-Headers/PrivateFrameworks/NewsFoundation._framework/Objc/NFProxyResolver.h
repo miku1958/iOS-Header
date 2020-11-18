@@ -48,13 +48,12 @@
 - (id)resolveClass:(Class)arg1 name:(id)arg2 contextBlock:(CDUnknownBlockType)arg3;
 - (id)resolveForKey:(id)arg1;
 - (id)resolveForKey:(id)arg1 context:(id)arg2;
+- (id)resolveForKey:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)resolveForKey:(id)arg1 context:(id)arg2 validateBlock:(CDUnknownBlockType)arg3;
 - (id)resolveProtocol:(id)arg1;
 - (id)resolveProtocol:(id)arg1 contextBlock:(CDUnknownBlockType)arg2;
 - (id)resolveProtocol:(id)arg1 name:(id)arg2;
 - (id)resolveProtocol:(id)arg1 name:(id)arg2 contextBlock:(CDUnknownBlockType)arg3;
-- (id)unsafeResolveForKey:(id)arg1 name:(id)arg2;
-- (id)unsafeResolveForKey:(id)arg1 name:(id)arg2 context:(id)arg3;
 
 @end
 

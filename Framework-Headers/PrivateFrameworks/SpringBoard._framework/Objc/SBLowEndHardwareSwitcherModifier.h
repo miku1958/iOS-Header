@@ -15,15 +15,14 @@
 
 - (BOOL)_shouldResignActiveAppsUnderFloatingApp;
 - (BOOL)_shouldSimplifyForOpenFolder;
-- (BOOL)_shouldSimplifyForTodayViewOrSpotlight;
+- (BOOL)_shouldSimplifyForWidgetCenterAndLibrary;
+- (id)appLayoutsToResignActive;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (double)homeScreenAlpha;
 - (double)homeScreenScale;
 - (id)initWithSimplificationOptions:(unsigned long long)arg1;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
+- (id)keyboardSuppressionMode;
 - (double)wallpaperScale;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

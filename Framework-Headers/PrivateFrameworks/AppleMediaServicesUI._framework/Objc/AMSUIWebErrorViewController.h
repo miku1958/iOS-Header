@@ -4,35 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AppleMediaServicesUI/AMSUICommonViewController.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
 
-@class AMSUIWebClientContext, AMSUIWebErrorPageModel, NSString, _UIContentUnavailableView;
+@class AMSUIErrorView, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebErrorPageModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebErrorViewController : UIViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebErrorViewController : AMSUICommonViewController <AMSUIWebPagePresenter>
 {
-    _UIContentUnavailableView *_errorView;
+    BOOL _showingCancelButton;
+    AMSUIWebAppearance *_appearance;
     AMSUIWebClientContext *_context;
+    AMSUIErrorView *_errorView;
     AMSUIWebErrorPageModel *_model;
 }
 
+@property (strong, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _UIContentUnavailableView *errorView; // @synthesize errorView=_errorView;
+@property (strong, nonatomic) AMSUIErrorView *errorView; // @synthesize errorView=_errorView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) AMSUIWebErrorPageModel *model; // @synthesize model=_model;
+@property (nonatomic) BOOL showingCancelButton; // @synthesize showingCancelButton=_showingCancelButton;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_applyAppearance;
-- (void)applyPageModel:(id)arg1;
+- (void)_showCancelButtonIfNeeded;
 - (id)initWithContext:(id)arg1;
 - (void)loadView;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 
 @end
 

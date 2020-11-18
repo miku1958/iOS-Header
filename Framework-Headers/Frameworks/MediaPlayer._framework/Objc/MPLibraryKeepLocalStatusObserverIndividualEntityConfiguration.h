@@ -19,6 +19,8 @@
 @property (nonatomic) long long managedStatus; // @synthesize managedStatus=_managedStatus;
 @property (nonatomic, getter=isStoreRedownloadable) BOOL storeRedownloadable; // @synthesize storeRedownloadable=_storeRedownloadable;
 
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

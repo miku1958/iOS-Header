@@ -20,16 +20,17 @@ __attribute__((visibility("hidden")))
     UIImage *_displayImage;
     UIImage *_displayImageWhite;
     NSArray *_sampleTypes;
+    NSDictionary *_additionalPredicatesForCategory;
 }
 
-@property (readonly, nonatomic) NSDictionary *additionalPredicatesForCategory;
+@property (copy, nonatomic) NSDictionary *additionalPredicatesForCategory; // @synthesize additionalPredicatesForCategory=_additionalPredicatesForCategory;
 @property (strong, nonatomic) HKUIMetricColors *categoryMetricColors; // @synthesize categoryMetricColors=_categoryMetricColors;
 @property (nonatomic) long long categoryType; // @synthesize categoryType=_categoryType;
 @property (strong, nonatomic) UIImage *displayImage; // @synthesize displayImage=_displayImage;
 @property (copy, nonatomic) NSString *displayImageName; // @synthesize displayImageName=_displayImageName;
 @property (strong, nonatomic) UIImage *displayImageWhite; // @synthesize displayImageWhite=_displayImageWhite;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (strong, nonatomic) NSArray *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
+@property (copy, nonatomic) NSArray *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -31,6 +31,7 @@
     id<PLResourceIdentity> _backingResourceIdentity;
     NSManagedObjectID *_assetObjectID;
     unsigned long long _cplResourceType;
+    NSString *_libraryID;
 }
 
 @property (readonly, nonatomic) long long analysisType;
@@ -40,6 +41,7 @@
 @property (nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
 @property (readonly, nonatomic, getter=isCurrent) BOOL current; // @synthesize current=_current;
 @property (readonly, nonatomic) unsigned long long fileSize;
+@property (readonly, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
 @property (readonly, nonatomic, getter=isLocallyAvailable) BOOL locallyAvailable;
 @property (nonatomic, getter=isLocallyAvailable) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
 @property (nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
@@ -55,6 +57,7 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
++ (id)_assetResourcesFromPLResources:(id)arg1 includeMetadata:(BOOL)arg2 mediaMetadataVirtualResources:(id)arg3 asset:(id)arg4 assetHasAdjustments:(BOOL)arg5 includeDerivatives:(BOOL)arg6 includeAdjustmentOverflowDataBlob:(BOOL)arg7;
 + (id)assetResourceForAsset:(id)arg1 qualityClass:(id)arg2;
 + (id)assetResourcesForAsset:(id)arg1;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2;

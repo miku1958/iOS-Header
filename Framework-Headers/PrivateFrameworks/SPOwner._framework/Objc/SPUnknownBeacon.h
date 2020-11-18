@@ -9,7 +9,7 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSUUID, SPHandle;
+@class NSArray, NSData, NSDate, NSUUID, SPHandle;
 
 @interface SPUnknownBeacon : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,14 +17,20 @@
     NSUUID *_identifier;
     NSArray *_beaconLocations;
     NSData *_advertisement;
+    NSUUID *_beaconIdentifier;
     SPHandle *_handle;
+    NSDate *_triggerDate;
+    NSDate *_ignoresUntilDate;
 }
 
 @property (copy, nonatomic) NSData *advertisement; // @synthesize advertisement=_advertisement;
+@property (copy, nonatomic) NSUUID *beaconIdentifier; // @synthesize beaconIdentifier=_beaconIdentifier;
 @property (copy, nonatomic) NSArray *beaconLocations; // @synthesize beaconLocations=_beaconLocations;
 @property (copy, nonatomic) SPHandle *handle; // @synthesize handle=_handle;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSDate *ignoresUntilDate; // @synthesize ignoresUntilDate=_ignoresUntilDate;
 @property (nonatomic) BOOL isIgnored; // @synthesize isIgnored=_isIgnored;
+@property (copy, nonatomic) NSDate *triggerDate; // @synthesize triggerDate=_triggerDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

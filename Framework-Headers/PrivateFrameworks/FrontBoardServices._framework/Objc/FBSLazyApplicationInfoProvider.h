@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)applicationInfoForAuditToken:(id)arg1;
 - (id)applicationInfoForBundleIdentifier:(id)arg1;
 - (id)init;
 

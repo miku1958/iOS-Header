@@ -82,7 +82,7 @@
 - (id)_persistentStorageDirectoryURLWithPhotoLibrary:(id)arg1;
 - (id)_photoVisionAllowingCreation:(BOOL)arg1 syncClusterCache:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_promotePersonsWithError:(id *)arg1;
-- (id)_pvImageForAsset:(id)arg1 error:(id *)arg2;
+- (id)_pvImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 error:(id *)arg3;
 - (id)_pvImageForAssetResource:(id)arg1 asset:(id)arg2 error:(id *)arg3;
 - (id)_pvImageForAssetResourceFileURL:(id)arg1 forAsset:(id)arg2 error:(id *)arg3;
 - (void)_readState;
@@ -109,6 +109,7 @@
 - (BOOL)faceIDModelLastGenerationDidExceedTimeInterval;
 - (void)faceProcessingStatusForUserInterfaceWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)fetchPersonsForFaceIDModel;
+- (id)generateFaceCropForFaceCropSourceDescriptors:(id)arg1;
 - (void)generateFaceIDModelShouldForce:(BOOL)arg1 progress:(id)arg2 extendTimeoutBlock:(CDUnknownBlockType)arg3;
 - (BOOL)getLocallyAvailableAssetResource:(id *)arg1 forAnalyzingAsset:(id)arg2 error:(id *)arg3;
 - (void)handlePVNotification:(id)arg1;
@@ -135,11 +136,10 @@
 - (void)processPersonsWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rebuildPersonsWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)reclusterFacesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)requestOnDemandFaceCropsForFaceLocalIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestSuggestedMePersonIdentifierWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetFaceClassificationModelWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetFaceClusteringStateWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)resetPeopleWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setLastMinimumFaceGroupSizeForCreatingMergeCandidate:(unsigned long long)arg1;
 - (BOOL)shouldProcessContact:(id)arg1;
 - (BOOL)shouldRebuildFaceIDModel;
@@ -149,7 +149,6 @@
 - (id)statusAsDictionary;
 - (BOOL)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)suggestPersonsForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedPersonSuggestions:(id)arg2 toBeRejectedPersonSuggestions:(id)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)suggestVerifiedPersonLocalIdentifierForFaceWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)suggestVerifiedPersonLocalIdentifierForPersonWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)suggestedMeIdentifierWithPersonClusterManager:(id)arg1 forPersons:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (void)terminatePhotoVision;

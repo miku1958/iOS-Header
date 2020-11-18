@@ -31,6 +31,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
 - (void)_cacheFamilyInfoLookupResult:(id)arg1 forAccount:(id)arg2;
 - (id)_cachedFamilyInfoLookupResultForAccount:(id)arg1;

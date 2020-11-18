@@ -32,6 +32,7 @@
 
 @property (strong, nonatomic) NSString *achievedDescription; // @synthesize achievedDescription=_achievedDescription;
 @property (nonatomic) unsigned int attributes; // @dynamic attributes;
+@property (readonly, nonatomic, getter=isCompleted) BOOL completed;
 @property (strong, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @dynamic hidden;
 @property (strong, nonatomic) NSDictionary *icons; // @synthesize icons=_icons;

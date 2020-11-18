@@ -31,6 +31,7 @@
 + (id)_applyFaceTimeScheme:(id)arg1 toFaceTimeURL:(id)arg2;
 + (id)_faceTimeURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 audioOnly:(BOOL)arg3;
 + (id)_faceTimeURLWithHandle:(id)arg1 addressBookUID:(int)arg2 audioOnly:(BOOL)arg3;
++ (id)faceTimeAnswerURLWithSourceIdentifier:(id)arg1;
 + (id)faceTimeLaunchForIncomingCallURL;
 + (id)faceTimeLaunchForOutgoingConversationURL;
 + (id)faceTimePromptURLWithURL:(id)arg1;
@@ -58,9 +59,11 @@
 - (BOOL)_isPhoneNumberID:(id)arg1;
 - (id)_mobilePhonePathParameters;
 - (id)_mobilePhoneQueryParameters;
+- (id)answerRequestSourceIdentifier;
 - (id)faceTimeDestinationAccount;
 - (BOOL)hasNoPromptOption;
 - (BOOL)hasTelephonyScheme;
+- (BOOL)isAnswerRequestURL;
 - (BOOL)isDialCallURL;
 - (BOOL)isFaceTimeAudioPromptURL;
 - (BOOL)isFaceTimeAudioURL;

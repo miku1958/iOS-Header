@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) id block; // @synthesize block=_block;
 @property (readonly, nonatomic) NSString *describer; // @synthesize describer=_describer;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithBlock:(id)arg1 GUID:(id)arg2 description:(id)arg3;
 
 @end

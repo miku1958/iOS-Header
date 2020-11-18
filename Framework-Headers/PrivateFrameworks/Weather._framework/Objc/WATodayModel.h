@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 
 + (id)autoupdatingLocationModelWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
++ (id)currentLocationModel;
 + (id)modelWithLocation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_executeForecastRetrievalForLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,7 +8,7 @@
 
 #import <ShazamKit/SHMatcher-Protocol.h>
 
-@class MRE, NSString, SHLocalConfiguration;
+@class MRE, NSString, SHLocalStore;
 @protocol SHMatcherDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,23 +16,24 @@ __attribute__((visibility("hidden")))
 {
     id<SHMatcherDelegate> delegate;
     MRE *_mre;
-    SHLocalConfiguration *_localConfiguration;
+    SHLocalStore *_localStore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SHMatcherDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SHLocalConfiguration *localConfiguration; // @synthesize localConfiguration=_localConfiguration;
+@property (strong, nonatomic) SHLocalStore *localStore; // @synthesize localStore=_localStore;
 @property (strong, nonatomic) MRE *mre; // @synthesize mre=_mre;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)MRESignaturesFromMatches:(id)arg1;
 - (void)buildMRE;
-- (id)initWithLocalRecognitionConfiguration:(id)arg1;
-- (void)match:(id)arg1;
+- (id)initWithLocalStore:(id)arg1;
+- (void)matchSignature:(id)arg1;
 - (id)mediaItemsFromMREResult:(id)arg1;
+- (long long)storeDensityToMREDensity:(long long)arg1;
 
 @end
 

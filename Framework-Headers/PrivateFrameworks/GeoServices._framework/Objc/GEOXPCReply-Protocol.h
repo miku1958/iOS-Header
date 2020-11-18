@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 #import <GeoServices/NSObject-Protocol.h>
-#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@protocol GEOXPCReply <NSObject, NSSecureCoding>
+@protocol GEOXPCReply <NSObject, GEOXPCSerializable>
 - (BOOL)isValid;
 @end
 

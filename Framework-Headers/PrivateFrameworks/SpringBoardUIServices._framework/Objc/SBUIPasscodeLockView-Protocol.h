@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NSString, UIColor;
+@class BSAnimationSettings, NSString, SBUIPoseidonContainerViewController, UIColor, UIView;
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
@@ -21,6 +21,8 @@
 @property (readonly, nonatomic) NSString *passcode;
 @property (nonatomic) long long passcodeLockViewState;
 @property (nonatomic) BOOL playsKeypadSounds;
+@property (strong, nonatomic) UIView *poseidonContainerView;
+@property (strong, nonatomic) SBUIPoseidonContainerViewController *poseidonContainerViewController;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn;
 @property (nonatomic) BOOL showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton;

@@ -19,11 +19,11 @@
     double score;
 }
 
-@property (readonly, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo;
+@property (readonly, copy, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned short displayType;
-@property (readonly, nonatomic) NSString *entityIdentifier; // @synthesize entityIdentifier;
+@property (readonly, copy, nonatomic) NSString *entityIdentifier; // @synthesize entityIdentifier;
 @property (readonly, nonatomic) unsigned short entityType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double localFactoryScore; // @synthesize localFactoryScore;

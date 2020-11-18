@@ -29,7 +29,7 @@
 - (void)_autoResolveReferencedResources:(id)arg1 folderURL:(id)arg2 resourceClient:(id)arg3;
 - (int)_nextRequestID;
 - (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
-- (void)assetResourceRequestDidFinish:(id)arg1;
+- (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancelDataRequest:(int)arg1;
 - (id)consolidateAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)infoForRequest:(int)arg1;

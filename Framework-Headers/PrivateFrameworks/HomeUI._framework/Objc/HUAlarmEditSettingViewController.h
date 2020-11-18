@@ -9,18 +9,20 @@
 #import <HomeUI/UITableViewDataSource-Protocol.h>
 #import <HomeUI/UITableViewDelegate-Protocol.h>
 
-@class HUAlarmEditableTextCell, MTMutableAlarm, NSString, UITableView;
+@class HMMediaProfile, HUAlarmEditableTextCell, MTMutableAlarm, NSMutableArray, NSString, UITableView;
 @protocol HUAlarmEditSettingViewControllerDelegate;
 
 @interface HUAlarmEditSettingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     id<HUAlarmEditSettingViewControllerDelegate> _delegate;
     NSString *_loggedInAppleMusicAccountDSID;
+    HMMediaProfile *_selectedMediaProfile;
     UITableView *_tableView;
     HUAlarmEditableTextCell *_editingCell;
     long long _setting;
     unsigned long long _firstWeekday;
     unsigned long long _repeatSchedule;
+    NSMutableArray *_profileList;
     MTMutableAlarm *_alarm;
 }
 
@@ -32,7 +34,9 @@
 @property (nonatomic) unsigned long long firstWeekday; // @synthesize firstWeekday=_firstWeekday;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *loggedInAppleMusicAccountDSID; // @synthesize loggedInAppleMusicAccountDSID=_loggedInAppleMusicAccountDSID;
+@property (strong, nonatomic) NSMutableArray *profileList; // @synthesize profileList=_profileList;
 @property (nonatomic) unsigned long long repeatSchedule; // @synthesize repeatSchedule=_repeatSchedule;
+@property (strong, nonatomic) HMMediaProfile *selectedMediaProfile; // @synthesize selectedMediaProfile=_selectedMediaProfile;
 @property (nonatomic) long long setting; // @synthesize setting=_setting;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
@@ -42,7 +46,7 @@
 - (void)_dismiss;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
-- (id)initWithAlarm:(id)arg1 setting:(long long)arg2 loggedInAppleMusicAccountDSID:(id)arg3;
+- (id)initWithAlarm:(id)arg1 setting:(long long)arg2 mediaProfileContainer:(id)arg3 selectedMediaProfile:(id)arg4 loggedInAppleMusicAccountDSID:(id)arg5;
 - (void)loadView;
 - (unsigned int)maskForRow:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

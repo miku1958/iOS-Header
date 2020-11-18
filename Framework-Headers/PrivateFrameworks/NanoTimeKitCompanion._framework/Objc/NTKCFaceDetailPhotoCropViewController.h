@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) NTKDigitalTimeLabelStyle *timeStyle;
 
 - (void).cxx_destruct;
-- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4;
+- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)viewDidLoad;
 
 @end

@@ -24,6 +24,7 @@
     BOOL _isWatchWorkout;
 }
 
+@property (readonly, nonatomic, getter=_activityMoveMode) long long activityMoveMode;
 @property (readonly) double duration;
 @property (strong, nonatomic, getter=_goal, setter=_setGoal:) HKQuantity *goal; // @synthesize goal=_goal;
 @property (nonatomic, getter=_goalType, setter=_setGoalType:) unsigned long long goalType; // @synthesize goalType=_goalType;
@@ -70,8 +71,8 @@
 - (double)_totalEnergyBurnedInCanonicalUnit;
 - (double)_totalFlightsClimbedInCanonicalUnit;
 - (double)_totalSwimmingStrokeCountInCanonicalUnit;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
-- (id)_validateWorkoutEvents:(id)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
+- (id)_validateWorkoutEvents:(id)arg1 withConfiguration:(struct HKObjectValidationConfiguration)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)hk_integerValue;

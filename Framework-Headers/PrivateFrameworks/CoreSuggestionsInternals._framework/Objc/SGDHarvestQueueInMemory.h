@@ -28,16 +28,20 @@
 - (long long)_indexOfItemWithIdLocked:(long long)arg1;
 - (void)_popCallback:(CDUnknownBlockType)arg1 where:(CDUnknownBlockType)arg2 or:(CDUnknownBlockType)arg3;
 - (void)_sortLocked;
-- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)close;
 - (unsigned long long)count;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
+- (unsigned long long)countInMemory;
+- (unsigned long long)countStructuredEventCandidates;
 - (void)deleteAllItemsDangerously;
 - (id)initWithLimit:(unsigned long long)arg1 ttl:(double)arg2 flushingToQueue:(id)arg3;
 - (void)pop:(CDUnknownBlockType)arg1;
+- (void)popByCustomPriorityCriteria:(unsigned char)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popByItemId:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popBySourceKey:(id)arg1 messageId:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)popHighPriority:(CDUnknownBlockType)arg1;
+- (void)popInMemory:(CDUnknownBlockType)arg1;
 - (void)writePermafail:(id)arg1;
 
 @end

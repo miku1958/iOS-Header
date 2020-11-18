@@ -7,7 +7,7 @@
 #import <ActionKit/WFDropboxStorageService.h>
 
 @interface WFDropboxStorageService (UIKit)
-- (void)retrieveFilesWithUserInterface:(id)arg1 initialDirectoryPath:(id)arg2 options:(unsigned long long)arg3 progress:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)saveFiles:(id)arg1 withUserInterface:(id)arg2 options:(unsigned long long)arg3 progress:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)retrieveFilesWithUserInterface:(id)arg1 initialDirectoryPath:(id)arg2 consumingBundleID:(id)arg3 options:(unsigned long long)arg4 progress:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)saveFiles:(id)arg1 withManagedLevel:(unsigned long long)arg2 userInterface:(id)arg3 consumingBundleID:(id)arg4 options:(unsigned long long)arg5 progress:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 @end
 

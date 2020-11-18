@@ -28,6 +28,7 @@
 - (void)addEdge:(MAEdge *)arg1 requiresTesting:(BOOL)arg2;
 - (void)addNode:(MANode *)arg1 requiresTesting:(BOOL)arg2;
 - (void)closePersistentStore;
+- (BOOL)copyToURL:(NSURL *)arg1 error:(id *)arg2;
 - (void)deleteMarker;
 - (void)enterBatch;
 - (void)enumerateModelEdgesForDomains:(NSIndexSet *)arg1 withBlock:(void (^)(int, short, NSString *, float, int, int, BOOL *))arg2;
@@ -56,10 +57,12 @@
 - (void)removeModelNodesForIdentifiers:(NSSet *)arg1;
 - (void)removeModelNodesPropertiesForIdentifiers:(NSSet *)arg1;
 - (void)save:(void (^)(BOOL))arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (void)setMarker;
 - (void)setModelEdgeProperties:(NSDictionary *)arg1 forIdentifier:(long long)arg2 clobberExisting:(BOOL)arg3;
 - (void)setModelEdgePropertyValue:(id<MAPropertyTypeProtocol>)arg1 forKey:(NSString *)arg2 andIdentifier:(long long)arg3;
 - (void)setModelNodeProperties:(NSDictionary *)arg1 forIdentifier:(long long)arg2 clobberExisting:(BOOL)arg3;
 - (void)setModelNodePropertyValue:(id<MAPropertyTypeProtocol>)arg1 forKey:(NSString *)arg2 andIdentifier:(long long)arg3;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
 @end
 

@@ -18,6 +18,7 @@
     BOOL _isServerTimeout;
     BOOL _isServerTTSRacing;
     BOOL _canUseServerTTS;
+    BOOL _neuralAlignmentStall;
     BOOL _isSpeechRequest;
     BOOL _isCacheHitFromDisk;
     BOOL _isCacheHitFromMemory;
@@ -26,6 +27,7 @@
     NSString *_voiceResourceAssetKey;
     NSString *_audioOutputRoute;
     NSString *_clientBundleIdentifier;
+    NSString *_experimentIdentifier;
     long long _requestCreatedTimestamp;
     long long _eagerRequestCreatedTimeStampDiffs;
     long long _synthesisBeginTimestamp;
@@ -37,8 +39,6 @@
     long long _promptCount;
     long long _errorCode;
     long long _sourceOfTTS;
-    long long _synthesisToSpeechTimeGap;
-    long long _waitForSynthesisToFinishTimeDelay;
 }
 
 @property double audioDuration; // @synthesize audioDuration=_audioDuration;
@@ -48,6 +48,7 @@
 @property (copy) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
 @property long long errorCode; // @synthesize errorCode=_errorCode;
+@property (copy) NSString *experimentIdentifier; // @synthesize experimentIdentifier=_experimentIdentifier;
 @property BOOL isCacheHitFromDisk; // @synthesize isCacheHitFromDisk=_isCacheHitFromDisk;
 @property BOOL isCacheHitFromMemory; // @synthesize isCacheHitFromMemory=_isCacheHitFromMemory;
 @property BOOL isServerStreamTTS; // @synthesize isServerStreamTTS=_isServerStreamTTS;
@@ -56,6 +57,7 @@
 @property BOOL isServerTimeout; // @synthesize isServerTimeout=_isServerTimeout;
 @property BOOL isSpeechRequest; // @synthesize isSpeechRequest=_isSpeechRequest;
 @property BOOL isWarmStart; // @synthesize isWarmStart=_isWarmStart;
+@property BOOL neuralAlignmentStall; // @synthesize neuralAlignmentStall=_neuralAlignmentStall;
 @property long long promptCount; // @synthesize promptCount=_promptCount;
 @property long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
 @property long long sourceOfTTS; // @synthesize sourceOfTTS=_sourceOfTTS;
@@ -63,16 +65,15 @@
 @property long long speechEndTimestamp; // @synthesize speechEndTimestamp=_speechEndTimestamp;
 @property long long synthesisBeginTimestamp; // @synthesize synthesisBeginTimestamp=_synthesisBeginTimestamp;
 @property long long synthesisEndTimestamp; // @synthesize synthesisEndTimestamp=_synthesisEndTimestamp;
-@property long long synthesisToSpeechTimeGap; // @synthesize synthesisToSpeechTimeGap=_synthesisToSpeechTimeGap;
 @property (copy) NSString *utterance; // @synthesize utterance=_utterance;
 @property (copy) NSString *voiceAssetKey; // @synthesize voiceAssetKey=_voiceAssetKey;
 @property (copy) NSString *voiceResourceAssetKey; // @synthesize voiceResourceAssetKey=_voiceResourceAssetKey;
-@property long long waitForSynthesisToFinishTimeDelay; // @synthesize waitForSynthesisToFinishTimeDelay=_waitForSynthesisToFinishTimeDelay;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (double)_clockFactor;
 - (double)audioQueueLatency;
+- (id)cappedRealTimeFactor;
 - (id)description;
 - (id)dictionaryMetrics;
 - (double)eagerRequestTimeGap;
@@ -80,12 +81,8 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isSynthesisCached;
 - (double)realTimeFactor;
-- (double)synthesisLatency;
-- (double)synthesisToSpeechTime;
 - (double)timeToSpeakLatency;
 - (double)ttsSynthesisLatency;
-- (double)ttsTotalLatency;
-- (double)waitForSynthesisToFinishTime;
 
 @end
 

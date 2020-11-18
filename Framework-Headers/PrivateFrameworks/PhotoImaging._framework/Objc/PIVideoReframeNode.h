@@ -11,6 +11,7 @@
 
 @interface PIVideoReframeNode : NURenderNode
 {
+    BOOL _shouldApplyWatermark;
     PIReframeKeyframeSequence *_keyframeSequence;
     id<NUVideoProperties> _inputVideoProperties;
     CDStruct_1b6d18a9 _frameDuration;
@@ -20,6 +21,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property (strong, nonatomic) id<NUVideoProperties> inputVideoProperties; // @synthesize inputVideoProperties=_inputVideoProperties;
 @property (strong, nonatomic) PIReframeKeyframeSequence *keyframeSequence; // @synthesize keyframeSequence=_keyframeSequence;
+@property (nonatomic) BOOL shouldApplyWatermark; // @synthesize shouldApplyWatermark=_shouldApplyWatermark;
 @property (nonatomic) CDStruct_996ac03c stabCropRect; // @synthesize stabCropRect=_stabCropRect;
 
 - (void).cxx_destruct;
@@ -27,6 +29,7 @@
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)_evaluateVideoProperties:(out id *)arg1;
 - (id)_stabilizeImage:(id)arg1 cleanRect:(struct CGRect)arg2 cropRect:(struct CGRect)arg3 transform:(CDStruct_8e0628e6)arg4 geometry:(id)arg5;
+- (BOOL)canPropagateOriginalLivePhotoMetadataTrack;
 - (id)initWithKeyframes:(id)arg1 stabCropRect:(CDStruct_996ac03c)arg2 input:(id)arg3;
 - (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 - (BOOL)requiresVideoComposition;

@@ -20,8 +20,10 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (id)_numberFormatterForNumber:(id)arg1 displayType:(id)arg2;
 - (BOOL)returnsUnitWithValueForDisplay;
 - (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
+- (unsigned long long)style;
 
 @end
 

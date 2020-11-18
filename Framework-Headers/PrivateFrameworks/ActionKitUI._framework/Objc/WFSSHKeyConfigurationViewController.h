@@ -8,7 +8,7 @@
 
 #import <ActionKitUI/WFSSHKeyGenerationViewControllerDelegate-Protocol.h>
 
-@class NSString, WFBasicTableItem, WFSSHKeyPair, WFTableDataSource, WFTableSection;
+@class NSString, WFBasicTableItem, WFItemBasedTableSection, WFSSHKeyPair, WFTableDataSource;
 @protocol WFSSHKeyConfigurationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 {
     id<WFSSHKeyConfigurationViewControllerDelegate> _delegate;
     WFTableDataSource *_dataSource;
-    WFTableSection *_keyInfoSection;
-    WFTableSection *_actionsSection;
+    WFItemBasedTableSection *_keyInfoSection;
+    WFItemBasedTableSection *_actionsSection;
     WFBasicTableItem *_typeItem;
     WFBasicTableItem *_md5HashItem;
     WFBasicTableItem *_sha256HashItem;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     WFSSHKeyPair *_keyPair;
 }
 
-@property (readonly, nonatomic) WFTableSection *actionsSection; // @synthesize actionsSection=_actionsSection;
+@property (readonly, nonatomic) WFItemBasedTableSection *actionsSection; // @synthesize actionsSection=_actionsSection;
 @property (readonly, nonatomic) WFBasicTableItem *bitsItem; // @synthesize bitsItem=_bitsItem;
 @property (readonly, nonatomic) WFBasicTableItem *commentItem; // @synthesize commentItem=_commentItem;
 @property (readonly, nonatomic) WFTableDataSource *dataSource; // @synthesize dataSource=_dataSource;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) WFBasicTableItem *exportItem; // @synthesize exportItem=_exportItem;
 @property (readonly, nonatomic) WFBasicTableItem *generateItem; // @synthesize generateItem=_generateItem;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) WFTableSection *keyInfoSection; // @synthesize keyInfoSection=_keyInfoSection;
+@property (readonly, nonatomic) WFItemBasedTableSection *keyInfoSection; // @synthesize keyInfoSection=_keyInfoSection;
 @property (strong, nonatomic) WFSSHKeyPair *keyPair; // @synthesize keyPair=_keyPair;
 @property (readonly, nonatomic) WFBasicTableItem *md5HashItem; // @synthesize md5HashItem=_md5HashItem;
 @property (readonly, nonatomic) WFBasicTableItem *sha256HashItem; // @synthesize sha256HashItem=_sha256HashItem;

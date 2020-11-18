@@ -8,6 +8,8 @@
 
 @interface NSNumberFormatter (HealthKit)
 + (id)hk_heartRateNumberFormatter;
++ (id)hk_percentDecimalNumberFormatter;
 + (id)hk_percentNumberFormatter;
++ (id)hk_wholeNumberFormatter;
 @end
 

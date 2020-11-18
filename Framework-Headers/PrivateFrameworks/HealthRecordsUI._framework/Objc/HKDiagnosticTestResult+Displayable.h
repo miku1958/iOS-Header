@@ -9,7 +9,6 @@
 @interface HKDiagnosticTestResult (Displayable)
 - (void)_displayItemsForCodedValueCollection:(id)arg1 healthRecordsStore:(id)arg2 preferredStyle:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_displayItemsForValuePreferedStyle:(long long)arg1 healthRecordsStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)chartValue;
 - (id)chartableCodedQuantitySet;
 - (id)codings;
 - (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;

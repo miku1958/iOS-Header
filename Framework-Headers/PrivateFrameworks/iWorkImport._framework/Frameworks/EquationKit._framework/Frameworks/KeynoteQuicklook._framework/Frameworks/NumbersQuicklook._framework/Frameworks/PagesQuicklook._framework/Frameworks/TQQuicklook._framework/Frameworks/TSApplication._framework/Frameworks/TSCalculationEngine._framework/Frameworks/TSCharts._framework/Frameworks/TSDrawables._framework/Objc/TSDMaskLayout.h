@@ -50,6 +50,7 @@
 - (struct CGPath *)path;
 - (struct CGRect)pathBounds;
 - (id)pathSource;
+- (BOOL)shouldBeIncludedInParentFrameForCulling;
 
 @end
 

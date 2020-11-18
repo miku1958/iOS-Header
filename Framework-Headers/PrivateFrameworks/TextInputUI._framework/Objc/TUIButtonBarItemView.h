@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UIView *customView; // @synthesize customView=_customView;
 
 - (void).cxx_destruct;
+- (BOOL)_isPad;
 - (void)layoutSubviews;
 
 @end

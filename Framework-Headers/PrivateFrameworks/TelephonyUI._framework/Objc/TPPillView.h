@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUI/TPView.h>
+#import <TelephonyUI/TPControl.h>
 
 @class NSLayoutConstraint, NSString, TPBadgeView, UILabel, UIStackView, UITapGestureRecognizer;
 @protocol TPPillViewDelegate;
 
-@interface TPPillView : TPView
+@interface TPPillView : TPControl
 {
     id<TPPillViewDelegate> _delegate;
     unsigned long long _theme;
@@ -37,7 +37,9 @@
 @property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (unsigned long long)_controlEventsForActionTriggered;
 - (void)commonInit;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)handleTap:(id)arg1;
 - (id)initWithTitle:(id)arg1 frame:(struct CGRect)arg2;
 - (id)initWithTitle:(id)arg1 frame:(struct CGRect)arg2 theme:(unsigned long long)arg3;

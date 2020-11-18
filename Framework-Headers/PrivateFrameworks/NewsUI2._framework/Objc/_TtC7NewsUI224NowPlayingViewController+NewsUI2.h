@@ -6,9 +6,13 @@
 
 #import <NewsUI2/_TtC7NewsUI224NowPlayingViewController.h>
 
+#import <NewsUI2/NUNowPlayingDockedViewDelegate-Protocol.h>
 #import <NewsUI2/NUNowPlayingViewControllerDelegate-Protocol.h>
 
-@interface _TtC7NewsUI224NowPlayingViewController (NewsUI2) <NUNowPlayingViewControllerDelegate>
+@interface _TtC7NewsUI224NowPlayingViewController (NewsUI2) <NUNowPlayingViewControllerDelegate, NUNowPlayingDockedViewDelegate>
+- (void)nowPlayingDockedViewDidTapPause:(id)arg1;
+- (void)nowPlayingDockedViewDidTapPlay:(id)arg1;
+- (void)nowPlayingDockedViewDidTapRewind:(id)arg1;
 - (id)nowPlayingViewController:(id)arg1 didReceiveContextMenuInteraction:(id)arg2 configurationForMenuAtLocation:(struct CGPoint)arg3;
 - (void)nowPlayingViewController:(id)arg1 seekToPosition:(double)arg2;
 - (void)nowPlayingViewControllerDidTapDismissButton:(id)arg1;

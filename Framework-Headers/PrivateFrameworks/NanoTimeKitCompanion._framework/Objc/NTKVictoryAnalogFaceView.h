@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKUtilityComplicationFactoryDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKVictoryAnalogBackgroundViewDelegate-Protocol.h>
 
-@class NSString, NTKRoundedCornerOverlayView, NTKUtilityComplicationFactory, NTKVictoryAnalogBackgroundView, NTKVictoryColorEditOption;
+@class NSString, NTKRoundedCornerOverlayView, NTKUtilityComplicationFactory, NTKVictoryAnalogBackgroundView;
 
 @interface NTKVictoryAnalogFaceView : NTKAnalogFaceView <NTKVictoryAnalogBackgroundViewDelegate, NTKUtilityComplicationFactoryDelegate>
 {
@@ -17,7 +17,6 @@
     NTKVictoryAnalogBackgroundView *_backgroundView;
     NTKRoundedCornerOverlayView *_cornerView;
     BOOL _isFullBleed;
-    NTKVictoryColorEditOption *_pride2020SensitiveShroudColor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,10 +43,10 @@
 - (struct CGPoint)_contentCenterOffset;
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (unsigned long long)_filterColorForUISensitivityFromColor:(unsigned long long)arg1;
 - (double)_handsAlphaForEditMode:(long long)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (double)_keylineEdgeGapForState:(long long)arg1;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(BOOL)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -62,7 +61,6 @@
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_prepareForEditing;
 - (void)_setFullBleed:(BOOL)arg1;
-- (BOOL)_shouldHideSensitiveUI;
 - (id)_slotForUtilitySlot:(long long)arg1;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;

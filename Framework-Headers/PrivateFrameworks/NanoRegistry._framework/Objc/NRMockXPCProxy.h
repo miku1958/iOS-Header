@@ -17,11 +17,8 @@ __attribute__((visibility("hidden")))
     id _target;
 }
 
-@property (weak, nonatomic) id target; // @synthesize target=_target;
-
 - (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
-- (id)initWithBlahBlahBlahTarget:(id)arg1 queue:(id)arg2 async:(BOOL)arg3;
 - (id)methodSignatureForSelector:(SEL)arg1;
 
 @end

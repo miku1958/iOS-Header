@@ -10,7 +10,7 @@
 {
 }
 
-- (void)applyConditions:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
+- (void)applyEntryModel:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
 - (void)applyStyle;
 - (id)topLabelTextFromConditions:(id)arg1;
 

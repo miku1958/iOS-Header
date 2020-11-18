@@ -32,6 +32,7 @@
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlockWithActivity:(CDUnknownBlockType)arg1 requestID:(unsigned long long)arg2;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
+- (void)performSyncBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)performVoucherPreservingBlock:(CDUnknownBlockType)arg1;
 - (id)performWithObject:(id)arg1;

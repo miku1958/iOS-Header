@@ -30,16 +30,17 @@
 @property (readonly, nonatomic) unsigned short type; // @synthesize type=_type;
 
 + (id)entityKeyMap;
-+ (id)fetchAnsweredQuestionsWithOptions:(id)arg1;
-+ (id)fetchAnsweredYesOrNoQuestionsWithOptions:(id)arg1;
-+ (id)fetchQuestionsForValidEntitiesWithOptions:(id)arg1;
-+ (id)fetchQuestionsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
-+ (id)fetchQuestionsWithOptions:(id)arg1;
++ (id)fetchAnsweredQuestionsWithOptions:(id)arg1 validQuestionsOnly:(BOOL)arg2;
++ (id)fetchAnsweredYesOrNoQuestionsWithOptions:(id)arg1 validQuestionsOnly:(BOOL)arg2;
++ (id)fetchInvalidatedQuestionsWithOptions:(id)arg1;
++ (id)fetchQuestionsWithLocalIdentifiers:(id)arg1 options:(id)arg2 validQuestionsOnly:(BOOL)arg3;
++ (id)fetchQuestionsWithOptions:(id)arg1 validQuestionsOnly:(BOOL)arg2;
 + (id)fetchType;
-+ (id)fetchUnansweredQuestionsWithOptions:(id)arg1;
++ (id)fetchUnansweredQuestionsWithOptions:(id)arg1 validQuestionsOnly:(BOOL)arg2;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)questionsWithValidEntitiesFromQuestions:(id)arg1 photoLibrary:(id)arg2;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
 - (Class)changeRequestClass;

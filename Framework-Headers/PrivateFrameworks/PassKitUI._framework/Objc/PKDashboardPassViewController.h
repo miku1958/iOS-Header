@@ -10,7 +10,7 @@
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class BKPresenceDetectOperation, NSObject, NSString, PKPass, PKPaymentPass, UIButton, _PKUIKVisibilityBackdropView;
+@class BKPresenceDetectOperation, NSObject, NSString, PKDashboardPassFlowLayout, PKDashboardPaymentTransactionItemPresenter, PKPass, PKPaymentPass, UIButton, _PKUIKVisibilityBackdropView;
 @protocol OS_dispatch_source, PKDashboardPassViewControllerDelegate><PKDashboardDelegate;
 
 @interface PKDashboardPassViewController : PKDashboardViewController <PKForegroundActiveArbiterObserver, _PKUIKVisibilityBackdropViewDelegate, BKOperationDelegate>
@@ -27,6 +27,8 @@
     struct CGSize _defaultPasscodeButtonSize;
     UIButton *_passcodeButton;
     PKPass *_frontmostPass;
+    PKDashboardPassFlowLayout *_passFlowLayout;
+    PKDashboardPaymentTransactionItemPresenter *_transactionPresenter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,8 +36,11 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PKPass *frontmostPass; // @synthesize frontmostPass=_frontmostPass;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PKDashboardPassFlowLayout *passFlowLayout; // @synthesize passFlowLayout=_passFlowLayout;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PKDashboardPaymentTransactionItemPresenter *transactionPresenter; // @synthesize transactionPresenter=_transactionPresenter;
 
++ (void)dataSource:(id *)arg1 presenters:(id *)arg2 forGroupView:(id)arg3 context:(id)arg4 presentingViewController:(id)arg5;
 - (void).cxx_destruct;
 - (void)_createFooter;
 - (void)_passcodeTapped:(id)arg1;
@@ -45,10 +50,11 @@
 - (void)_visibilityDidChange;
 - (void)dealloc;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
+- (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
+- (id)initWithPass:(id)arg1;
 - (void)invalidate;
 - (void)loadView;
 - (void)operation:(id)arg1 presenceStateChanged:(BOOL)arg2;
-- (void)showStatement:(id)arg1 account:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewSafeAreaInsetsDidChange;

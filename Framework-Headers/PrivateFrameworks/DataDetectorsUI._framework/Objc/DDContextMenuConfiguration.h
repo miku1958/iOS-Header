@@ -23,6 +23,7 @@
 
 + (id)configurationWithIdentifier:(id)arg1 previewProvider:(CDUnknownBlockType)arg2 actionProvider:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (BOOL)performPreviewActionForMenuWithAnimator:(id)arg1;
 
 @end
 

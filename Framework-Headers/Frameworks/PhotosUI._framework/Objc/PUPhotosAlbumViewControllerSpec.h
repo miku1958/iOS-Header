@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) double contentCornerRadius;
 @property (readonly, nonatomic) struct UIEdgeInsets fullMomentsLevelSectionHeaderHighlightInset;
-@property (readonly, nonatomic) unsigned long long fullMomentsSectionHeaderBackgroundStyle;
 @property (readonly, nonatomic) long long fullMomentsSectionHeaderStyle; // @synthesize fullMomentsSectionHeaderStyle=_fullMomentsSectionHeaderStyle;
 @property (readonly, nonatomic) BOOL shouldUseAspectItems; // @synthesize shouldUseAspectItems=_shouldUseAspectItems;
 

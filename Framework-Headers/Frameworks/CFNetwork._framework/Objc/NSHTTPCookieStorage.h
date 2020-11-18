@@ -19,15 +19,13 @@
 @property (readonly, copy) NSArray *cookies;
 
 + (id)_csff:(id)arg1;
-+ (id)_csfi:(id)arg1;
-+ (id)_groupContainerCookieStorages;
 + (void)_setSharedHTTPCookieStorage:(id)arg1;
 + (id)sharedCookieStorageForGroupContainerIdentifier:(id)arg1;
 + (id)sharedHTTPCookieStorage;
-- (struct OpaqueCFHTTPCookieStorage *)_CFHTTPCookieStorage;
 - (struct OpaqueCFHTTPCookieStorage *)_cookieStorage;
 - (id)_cookiesForURL:(id)arg1 mainDocumentURL:(id)arg2;
 - (void)_getCookieStoragePartitionsCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_getCookiesForDomain:(id)arg1;
 - (void)_getCookiesForPartition:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_getCookiesForURL:(id)arg1 mainDocumentURL:(id)arg2 partition:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_getCookiesForURL:(id)arg1 mainDocumentURL:(id)arg2 partition:(id)arg3 policyProperties:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -36,9 +34,11 @@
 - (void)_saveCookies;
 - (void)_saveCookies:(CDUnknownBlockType)arg1;
 - (void)_setCookies:(id)arg1 forURL:(id)arg2 mainDocumentURL:(id)arg3 policyProperties:(id)arg4;
+- (void)_setCookiesChangedHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
+- (void)_setCookiesRemovedHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)_setPrivateBrowsingEnabled:(BOOL)arg1;
+- (void)_setSubscribedDomainsForCookieChanges:(id)arg1;
 - (void)_testingOfStoringOfCookie:(id)arg1;
-- (id)cookieRequestHeaderFieldsForURL:(id)arg1;
 - (id)cookiesForURL:(id)arg1;
 - (void)dealloc;
 - (void)deleteCookie:(id)arg1;
@@ -48,7 +48,6 @@
 - (void)removeCookiesSinceDate:(id)arg1;
 - (void)setCookie:(id)arg1;
 - (void)setCookies:(id)arg1 forURL:(id)arg2 mainDocumentURL:(id)arg3;
-- (void)setCookiesFromResponseHeader:(id)arg1 forURL:(id)arg2 policyBaseURL:(id)arg3;
 - (id)sortedCookiesUsingDescriptors:(id)arg1;
 - (void)storeCookies:(id)arg1 forTask:(id)arg2;
 

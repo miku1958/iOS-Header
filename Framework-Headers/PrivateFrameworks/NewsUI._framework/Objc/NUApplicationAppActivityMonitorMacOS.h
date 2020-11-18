@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsUI/FCAppActivityReceiver-Protocol.h>
 #import <NewsUI/NUAppActivityMonitor-Protocol.h>
 
 @class NSHashTable, NSMutableSet, NSNotificationCenter, NSString;
 
-@interface NUApplicationAppActivityMonitorMacOS : NSObject <NUAppActivityMonitor>
+@interface NUApplicationAppActivityMonitorMacOS : NSObject <NUAppActivityMonitor, FCAppActivityReceiver>
 {
     BOOL _windowIsForeground;
     BOOL _becomingActive;
@@ -40,13 +41,10 @@
 @property (readonly, copy, nonatomic) NSString *windowLostFrontmostNotificationName; // @synthesize windowLostFrontmostNotificationName=_windowLostFrontmostNotificationName;
 
 - (void).cxx_destruct;
+- (void)_applicationWillTerminate;
 - (void)_markWindowAsBackground;
 - (void)_markWindowAsForeground;
-- (void)activityObservingApplicationDidFinishLaunchingNotification:(id)arg1;
-- (void)activityObservingApplicationWillEnterForegroundNotification:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)applicationDidBecomeActiveNotification:(id)arg1;
-- (void)applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)dealloc;
 - (id)initWithNotificationCenter:(id)arg1 windowBecameFrontmostNotificationName:(id)arg2 windowLostFrontmostNotificationName:(id)arg3;
 - (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
@@ -55,6 +53,11 @@
 - (void)performOnApplicationWindowDidBecomeBackground:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationWindowDidBecomeForeground:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)sceneDidBecomeActive;
+- (void)sceneDidBecomeActiveWithURL:(id)arg1 sourceApplication:(id)arg2;
+- (void)sceneDidEnterBackground;
+- (void)sceneWillConnect;
+- (void)sceneWillEnterForeground;
 
 @end
 

@@ -17,10 +17,12 @@
 @property (readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 
++ (id)handlesForContactFavorites;
 - (void).cxx_destruct;
 - (id)allEmailAndPhoneNumberHandlesForContact:(id)arg1;
 - (id)contactWithIdentifier:(id)arg1;
 - (id)initWithContactStore:(id)arg1 keysToFetch:(id)arg2;
+- (id)normalizedHandlesDictionaryFromHandles:(id)arg1;
 - (id)resolveContact:(id)arg1;
 - (id)resolveContactFromINPerson:(id)arg1;
 - (id)resolveContactIdentifier:(id)arg1;

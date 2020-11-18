@@ -18,7 +18,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateScroller;
 - (id)accessibilityCustomRotors;
-- (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 displayDate:(id)arg3 backgroundColor:(id)arg4 opaque:(BOOL)arg5 scrollbarShowsInside:(BOOL)arg6;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 orientation:(long long)arg3 displayDate:(id)arg4 backgroundColor:(id)arg5 opaque:(BOOL)arg6 scrollbarShowsInside:(BOOL)arg7;
 
 @end
 

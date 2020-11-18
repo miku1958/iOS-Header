@@ -15,8 +15,8 @@
 - (void)setComplicationTemplate:(CLKComplicationTemplate *)arg1 reason:(long long)arg2;
 
 @optional
++ (long long)layoutOverride;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
-- (long long)layoutOverride;
 - (unsigned long long)timelineAnimationFadeTypeOverride;
 @end
 

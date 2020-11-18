@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 + (double)_randomDouble;
++ (double)reversePushSamplingPercentageForTask:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_URLIsTrustedFromRequest:(id)arg1 bag:(id)arg2;
 - (void)_pingURL:(id)arg1 session:(id)arg2 bag:(id)arg3;

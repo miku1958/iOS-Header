@@ -33,6 +33,8 @@
     NSArray *_constraints;
     CDUnknownBlockType _customOffset;
     struct CGSize _contentSize;
+    struct CGPoint _visibleLocation;
+    struct CGPoint _normalizedAnchorPoint;
     struct CGRect _visibleRect;
     struct UIEdgeInsets _padding;
 }
@@ -54,6 +56,7 @@
 @property (readonly, nonatomic) BOOL isScrollingAnimationAnchor;
 @property (readonly, weak, nonatomic) PXGLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
+@property (nonatomic) struct CGPoint normalizedAnchorPoint; // @synthesize normalizedAnchorPoint=_normalizedAnchorPoint;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (nonatomic) unsigned long long referencingOptions; // @synthesize referencingOptions=_referencingOptions;
@@ -63,6 +66,7 @@
 @property (copy, nonatomic) NSArray *spriteReferences; // @synthesize spriteReferences=_spriteReferences;
 @property (readonly) Class superclass;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) struct CGPoint visibleLocation; // @synthesize visibleLocation=_visibleLocation;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
 - (void).cxx_destruct;

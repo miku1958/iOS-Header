@@ -9,9 +9,11 @@
 @interface ISRootMigrator : ISMigrator
 {
     BOOL _isErase;
+    BOOL _isRestoreFromBackup;
 }
 
 @property (nonatomic) BOOL isErase; // @synthesize isErase=_isErase;
+@property (nonatomic) BOOL isRestoreFromBackup; // @synthesize isRestoreFromBackup=_isRestoreFromBackup;
 
 - (id)appendRegionalVariantsToLanguageIdentifiers:(id)arg1 regionCode:(id)arg2;
 - (id)importPreferredLanguagesForPreferences:(id)arg1;

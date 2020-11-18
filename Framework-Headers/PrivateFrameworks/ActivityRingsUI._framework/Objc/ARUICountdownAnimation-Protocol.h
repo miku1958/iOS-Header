@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class ARUICountdownView, CAMediaTimingFunction, NSString;
+@class ARUICountdownView, NSString;
 
 @protocol ARUICountdownAnimation
 + (NSString *)identifier;
@@ -13,7 +13,6 @@
 - (double)delay;
 - (double)duration;
 - (NSString *)identifier;
-- (CAMediaTimingFunction *)timingFunction;
 
 @optional
 - (unsigned long long)countdownStep;

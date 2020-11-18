@@ -24,6 +24,7 @@
     NSMutableDictionary *_itemQueue_preferredRepresentationByType;
     NSMutableDictionary *_itemQueue_visibilityByType;
     NSMutableDictionary *_itemQueue_dataAvailabilityByType;
+    NSMutableDictionary *_itemQueue_patternDetections;
     id _itemQueue_localUserInfo;
     id<NSObject> _itemQueue_localObject;
     NSDictionary *_itemQueue_metadata;
@@ -42,6 +43,7 @@
 @property (strong, nonatomic) id<NSObject> itemQueue_localObject; // @synthesize itemQueue_localObject=_itemQueue_localObject;
 @property (strong, nonatomic) id itemQueue_localUserInfo; // @synthesize itemQueue_localUserInfo=_itemQueue_localUserInfo;
 @property (copy, nonatomic) NSDictionary *itemQueue_metadata; // @synthesize itemQueue_metadata=_itemQueue_metadata;
+@property (strong, nonatomic) NSMutableDictionary *itemQueue_patternDetections; // @synthesize itemQueue_patternDetections=_itemQueue_patternDetections;
 @property (strong, nonatomic) NSMutableDictionary *itemQueue_preferredRepresentationByType; // @synthesize itemQueue_preferredRepresentationByType=_itemQueue_preferredRepresentationByType;
 @property (strong, nonatomic) NSData *itemQueue_primaryData; // @synthesize itemQueue_primaryData=_itemQueue_primaryData;
 @property (strong, nonatomic) NSURL *itemQueue_primaryFileURL; // @synthesize itemQueue_primaryFileURL=_itemQueue_primaryFileURL;
@@ -73,6 +75,7 @@
 - (void)addDataRepresentationType:(id)arg1 loader:(CDUnknownBlockType)arg2;
 - (void)addFileCopyRepresentationType:(id)arg1 loader:(CDUnknownBlockType)arg2;
 - (void)addOpenInPlaceRepresentationType:(id)arg1 loader:(CDUnknownBlockType)arg2;
+- (void)addPatternDetections:(id)arg1;
 - (void)addRepresentation:(id)arg1;
 - (void)addRepresentationType:(id)arg1 loader:(CDUnknownBlockType)arg2;
 - (void)addRepresentationType:(id)arg1 loaderBlock:(CDUnknownBlockType)arg2;
@@ -82,6 +85,7 @@
 - (id)copyWithDoNothingRepresentations;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (id)enumeratePatternDetectionsForPatterns:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)hasRepresentationConformingToType:(id)arg1;
 - (BOOL)hasRepresentationOfType:(id)arg1;
 - (id)init;

@@ -13,7 +13,6 @@
 
 + (id)builder;
 + (id)builderWithObject:(id)arg1 ofExpectedClass:(Class)arg2;
-- (id)_initWithInitialState:(BOOL)arg1;
 - (id)appendArray:(id)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendBool:(BOOL)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendCGFloat:(double)arg1 counterpart:(CDUnknownBlockType)arg2;

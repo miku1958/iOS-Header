@@ -6,14 +6,15 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBFolder, SBFolderController, SBFolderControllerConfiguration, SBHomeScreenIconTransitionAnimator, SBIconAnimator, SBIconListView, SBIconView, SBNestingViewController, UIColor, UIDragItem, UIDropProposal, UIPinchGestureRecognizer, UIStatusBar, UIStatusBarStyleRequest, UITargetedDragPreview;
-@protocol BSInvalidatable, UIDragAnimating, UIDropSession;
+@class SBFolder, SBFolderController, SBFolderControllerConfiguration, SBHomeScreenIconTransitionAnimator, SBIconAnimator, SBIconListView, SBIconView, SBNestingViewController, UIColor, UIDragItem, UIDropProposal, UIPinchGestureRecognizer, UIStatusBar, UIStatusBarStyleRequest, UITargetedDragPreview, UITextField;
+@protocol BSInvalidatable, UIDragAnimating, UIDropSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol SBFolderControllerDelegate <NSObject>
 - (Class)controllerClassForFolder:(SBFolder *)arg1;
 - (BOOL)folderController:(SBFolderController *)arg1 canChangeCurrentPageIndexToIndex:(long long)arg2;
 - (void)folderController:(SBFolderController *)arg1 draggedIconShouldDropFromListView:(SBIconListView *)arg2;
 - (BOOL)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 canHandleIconDropSession:(id<UIDropSession>)arg3;
+- (id<UIViewSpringAnimationBehaviorDescribing>)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 customSpringAnimationBehaviorForDroppingItem:(UIDragItem *)arg3;
 - (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDragItem:(UIDragItem *)arg3 willAnimateDropWithAnimator:(id<UIDragAnimating>)arg4;
 - (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDropSession:(id<UIDropSession>)arg3 didPauseAtLocation:(struct CGPoint)arg4;
 - (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDropSessionDidEnter:(id<UIDropSession>)arg3;
@@ -23,8 +24,9 @@
 - (UITargetedDragPreview *)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 previewForDroppingIconDragItem:(UIDragItem *)arg3 proposedPreview:(UITargetedDragPreview *)arg4;
 - (BOOL)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id<UIDropSession>)arg3 onIconView:(SBIconView *)arg4;
 - (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(SBIconView *)arg3;
+- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 willUseIconView:(SBIconView *)arg3 forDroppingIconDragItem:(UIDragItem *)arg4;
 - (void)folderControllerDidEndScrolling:(SBFolderController *)arg1;
-- (void)folderControllerShouldBeginEditing:(SBFolderController *)arg1;
+- (void)folderControllerShouldBeginEditing:(SBFolderController *)arg1 withHaptic:(BOOL)arg2;
 - (BOOL)folderControllerShouldClose:(SBFolderController *)arg1 withPinchGesture:(UIPinchGestureRecognizer *)arg2;
 - (void)folderControllerShouldEndEditing:(SBFolderController *)arg1;
 - (void)folderControllerWillBeginScrolling:(SBFolderController *)arg1;
@@ -33,13 +35,15 @@
 - (struct UIEdgeInsets)contentOverlayInsetsFromParentIfAvailableForFolderController:(SBFolderController *)arg1;
 - (UIStatusBar *)fakeStatusBarForFolderController:(SBFolderController *)arg1;
 - (UIColor *)folderController:(SBFolderController *)arg1 accessibilityTintColorForScreenRect:(struct CGRect)arg2;
+- (void)folderController:(SBFolderController *)arg1 didBeginEditingTitle:(UITextField *)arg2;
+- (void)folderController:(SBFolderController *)arg1 didEndEditingTitle:(UITextField *)arg2;
 - (SBIconAnimator *)folderController:(SBFolderController *)arg1 iconAnimatorForOperation:(long long)arg2 onViewController:(SBNestingViewController *)arg3 animated:(BOOL)arg4 initialDelay:(double *)arg5;
 - (void)folderController:(SBFolderController *)arg1 willCreateInnerFolderControllerWithConfiguration:(SBFolderControllerConfiguration *)arg2;
 - (void)folderController:(SBFolderController *)arg1 willRemoveFakeStatusBar:(UIStatusBar *)arg2;
 - (void)folderController:(SBFolderController *)arg1 willUseIconTransitionAnimator:(SBHomeScreenIconTransitionAnimator *)arg2 forOperation:(long long)arg3 onViewController:(SBNestingViewController *)arg4 animated:(BOOL)arg5;
 - (void)folderControllerDidClose:(SBFolderController *)arg1;
 - (void)folderControllerDidOpen:(SBFolderController *)arg1;
-- (id<BSInvalidatable>)folderControllerWantsToHideStatusBar:(SBFolderController *)arg1;
+- (id<BSInvalidatable>)folderControllerWantsToHideStatusBar:(SBFolderController *)arg1 animated:(BOOL)arg2;
 - (void)folderControllerWillClose:(SBFolderController *)arg1;
 - (void)folderControllerWillOpen:(SBFolderController *)arg1;
 - (double)minimumHomeScreenScaleForFolderController:(SBFolderController *)arg1;

@@ -4,54 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDAccessorySettingsControllerDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDAccessorySettingsControllerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingGroup, HMDAppleMediaAccessory, HMDApplicationData, HMDHome, HMDMediaSession, HMDMediaSystemSymptomHandler, HMFMessageDispatcher, HMFTimer, NSArray, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDAccessorySettingsController, HMDAppleMediaAccessory, HMDApplicationData, HMDBackingStore, HMDHome, HMDMediaSession, HMDMediaSystemSymptomHandler, HMDRoom, HMFActivity, HMFMessageDispatcher, NSArray, NSNotificationCenter, NSObject, NSSet, NSString, NSUUID;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDMediaSystem : NSObject <NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol, HMFTimerDelegate, HMDHomeMessageReceiver>
+@interface HMDMediaSystem : HMFObject <HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 {
+    id<HMFLocking> _lock;
     NSString *_name;
     NSArray *_components;
     HMDApplicationData *_appData;
-    HMDAccessorySettingGroup *_rootSettings;
     HMDMediaSession *_mediaSession;
     NSString *_configuredName;
     NSUUID *_uuid;
     HMDHome *_home;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
-    HMFTimer *_auditSettingsTimer;
-    HMFTimer *_fixupSettingsTimer;
     HMDMediaSystemSymptomHandler *_symptomsHandler;
+    HMDAccessorySettingsController *_settingsController;
+    NSNotificationCenter *_notificationCenter;
 }
 
 @property (readonly, nonatomic) NSArray *accessories;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
-@property (strong, nonatomic) HMFTimer *auditSettingsTimer; // @synthesize auditSettingsTimer=_auditSettingsTimer;
+@property (readonly) HMDBackingStore *backingStore;
 @property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) HMFTimer *fixupSettingsTimer; // @synthesize fixupSettingsTimer=_fixupSettingsTimer;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property double homepodSettingsCreationTimestamp;
+@property double homepodSetupLatency;
 @property (strong, nonatomic) HMDMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (strong, nonatomic) HMDAccessorySettingGroup *rootSettings; // @synthesize rootSettings=_rootSettings;
+@property (strong) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (readonly) HMDRoom *room;
+@property (readonly) HMDAccessorySettingsController *settingsController; // @synthesize settingsController=_settingsController;
+@property (strong) HMFActivity *setupActivity;
+@property double setupStartTimestamp;
 @property (readonly) Class superclass;
 @property (readonly) HMDMediaSystemSymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (readonly, nonatomic) HMDAppleMediaAccessory *targetAccessory;
@@ -66,53 +70,49 @@
 - (void).cxx_destruct;
 - (void)_appDataRemoved:(id)arg1 message:(id)arg2;
 - (void)_appDataUpdated:(id)arg1 message:(id)arg2;
-- (void)_auditRootSettingsAfterTimerFire;
-- (void)_auditRootSettingsGroup:(unsigned long long)arg1;
-- (void)_fixupAccessorySetting;
-- (void)_fixupAccessorySettingAfterTimerFire;
 - (void)_handleAppData:(id)arg1;
 - (void)_handleUpdateMediaSystem:(id)arg1;
-- (id)_mergeSetting:(id)arg1 item:(id)arg2 groupMetadata:(id)arg3;
-- (void)_notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)_registerForMessages;
 - (void)_registerForNotifications;
-- (void)_setupSettings:(id)arg1;
 - (void)_transactionMediaSystemUpdated:(id)arg1 message:(id)arg2;
 - (void)_updateAppData:(id)arg1;
-- (void)_updateMediaSystem:(id)arg1;
-- (void)_updateMediaSystemSettingsGroup;
-- (void)_updateSettings:(id)arg1;
-- (void)addModels:(id)arg1 settingsGroup:(id)arg2;
+- (void)accessorySettingsController:(id)arg1 saveWithReason:(id)arg2;
+- (void)accessorySettingsController:(id)arg1 saveWithReason:(id)arg2 model:(id)arg3;
+- (id)assistantAccessControlModelWithRemovedAccessoriesForAccessorySettingsController:(id)arg1;
 - (id)assistantObject;
+- (id)attributeDescriptions;
 - (void)auditMediaComponents;
-- (void)auditRootSettingsGroup:(unsigned long long)arg1;
-- (id)backingStoreObjects;
+- (id)backingStoreObjectsForVersion:(long long)arg1;
 - (void)configureMediaSystemComponents:(id)arg1;
-- (void)configureQueue:(id)arg1 messageDispatcher:(id)arg2;
-- (id)container;
+- (void)configureWithMessageDispatcher:(id)arg1;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fixupAccessorySetting;
-- (void)handleAddedRootSettingsModel:(id)arg1 message:(id)arg2;
+- (void)handleAccessorySoftwareUpdated:(id)arg1;
 - (void)handleHomeCloudZoneReadyNotification:(id)arg1;
 - (void)handleRemovedAccessory:(id)arg1;
-- (void)handleRemovedRootSettingsModel:(id)arg1 message:(id)arg2;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaSystemModel:(id)arg1 home:(id)arg2;
+- (id)initWithUUID:(id)arg1 configuredName:(id)arg2 home:(id)arg3 components:(id)arg4;
+- (id)initWithUUID:(id)arg1 configuredName:(id)arg2 home:(id)arg3 components:(id)arg4 settingsControllerCreator:(CDUnknownBlockType)arg5;
+- (BOOL)isMultiUserEnabledForAccessorySettingsController:(id)arg1;
 - (BOOL)isValid;
 - (id)logIdentifier;
 - (id)messageDestination;
+- (id)modelForMediaSystem;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
-- (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
+- (id)modelsToMakeSettingsForController:(id)arg1 parentUUID:(id)arg2;
+- (id)modelsToMigrateSettingsForController:(id)arg1;
+- (id)privateDescription;
+- (void)relayMessage:(id)arg1;
+- (id)remoteMessageDestinationForAccessorySettingsController:(id)arg1 target:(id)arg2;
 - (id)serialize;
-- (void)timerDidFire:(id)arg1;
+- (id)supportedMultiUserLanguageCodesForAccessorySettingsController:(id)arg1;
+- (id)targetAccessoryBySerial;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)unconfigureMediaSystemComponents;
 - (void)unconfigureMediaSystemComponents:(id)arg1;
-- (void)updateMediaSystemSettingsGroup;
 - (id)urlString;
 
 @end

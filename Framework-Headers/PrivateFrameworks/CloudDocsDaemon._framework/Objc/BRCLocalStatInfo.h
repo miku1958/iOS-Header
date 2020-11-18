@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_markAlmostDead;
 - (void)_markClearedFromStage;
 - (void)_markDead;
+- (void)_markDeadAsSharedTopLevelItemWithDocumentsItemID:(id)arg1;
 - (void)_markFound;
 - (void)_markLiveFromStageAsFault:(BOOL)arg1;
 - (void)_markLiveFromStageAsType:(BOOL)arg1;

@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isHighlighted) BOOL highlighted;
+@property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (strong) NSLayoutConstraint *labelContainerCenterXConstraint; // @synthesize labelContainerCenterXConstraint=_labelContainerCenterXConstraint;
 @property (strong) NSLayoutConstraint *labelContainerLeadingPinConstraint; // @synthesize labelContainerLeadingPinConstraint=_labelContainerLeadingPinConstraint;
 @property (strong) NSLayoutConstraint *labelContainerTrailingPinConstraint; // @synthesize labelContainerTrailingPinConstraint=_labelContainerTrailingPinConstraint;
@@ -107,7 +107,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasLayoutHeightConstraintsIdenticalToInterfaceActionCustomView:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setHighlighted:(BOOL)arg1;
 - (void)tintColorDidChange;
 - (void)underlyingInterfaceActionRepresentationDidChange;
 - (void)updateHeightUsingAXEnforcedWidth:(double)arg1;

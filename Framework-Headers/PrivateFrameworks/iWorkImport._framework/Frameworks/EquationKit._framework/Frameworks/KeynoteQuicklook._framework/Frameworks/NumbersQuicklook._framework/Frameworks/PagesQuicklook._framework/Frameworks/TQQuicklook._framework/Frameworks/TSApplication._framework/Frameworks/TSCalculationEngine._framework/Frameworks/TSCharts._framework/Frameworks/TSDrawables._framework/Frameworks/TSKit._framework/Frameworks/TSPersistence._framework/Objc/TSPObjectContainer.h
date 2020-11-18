@@ -18,6 +18,7 @@
 
 + (long long)objectIdentifierForPackageIdentifier:(unsigned char)arg1;
 - (void).cxx_destruct;
+- (unsigned char)componentRequiredPackageIdentifier;
 - (unsigned int)delayedArchivingPriority;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 packageIdentifier:(unsigned char)arg2;

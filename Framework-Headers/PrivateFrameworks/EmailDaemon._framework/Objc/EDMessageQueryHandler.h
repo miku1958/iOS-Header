@@ -11,11 +11,12 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDMessageQueryHelper, EFCancelationToken, EMCollectionItemIDStateCapturer, NSMutableDictionary, NSObject, NSString;
+@class EDMessageQueryHelper, EMCollectionItemIDStateCapturer, NSMutableDictionary, NSObject, NSString;
 @protocol EDRemoteSearchProvider, EFScheduler, OS_dispatch_queue;
 
 @interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EMCollectionItemIDStateCapturerDelegate, EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
 {
+    struct EFAtomicObject _updateOldestMessagesCancelationToken;
     BOOL _didCancel;
     BOOL _isInitialized;
     id<EDRemoteSearchProvider> _remoteSearchProvider;
@@ -24,7 +25,6 @@
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     NSObject<OS_dispatch_queue> *_resultQueue;
     NSMutableDictionary *_oldestMessageIDsByMailboxObjectIDs;
-    EFCancelationToken *_updateOldestMessagesCancelationToken;
     EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
@@ -41,13 +41,13 @@
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) EFCancelationToken *updateOldestMessagesCancelationToken; // @synthesize updateOldestMessagesCancelationToken=_updateOldestMessagesCancelationToken;
 
 + (id)findMessagesByPreviousObjectIDForAddedMessages:(id)arg1 messageSource:(id)arg2;
 + (id)log;
 - (void).cxx_destruct;
 - (void)_contentProtectionChangedToLocked;
 - (void)_contentProtectionChangedToUnlocked;
+- (id)_createChangesForMessagesWithConversationID:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_createHelperAndReconcileJournal:(BOOL)arg1;
 - (void)_initializeOldestMessagesByMailbox;
 - (id)_objectIDsAndUnreadObjectIDsFromMessages:(id)arg1 unreadObjectIDs:(id *)arg2;

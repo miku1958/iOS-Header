@@ -83,7 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)setupPlayerWithMediaAsset:(id)arg1;
 - (BOOL)shouldDisplayPlayButtonInNavigationBar;
 - (void)stop;
-- (void)togglePlayback;
+- (BOOL)togglePlayback;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 
 @end

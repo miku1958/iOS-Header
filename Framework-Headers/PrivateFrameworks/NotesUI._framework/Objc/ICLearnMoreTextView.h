@@ -29,12 +29,13 @@
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (id)attributedString:(id)arg1 withColor:(id)arg2 font:(id)arg3;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (void)didTapLearnMore;
-- (id)letterpressedString:(id)arg1 withColor:(id)arg2 font:(id)arg3;
+- (BOOL)isAccessibilityElement;
 - (void)resetTextView;
-- (void)setAttributedText:(id)arg1 addLearnMore:(BOOL)arg2 letterpress:(BOOL)arg3;
+- (void)setAttributedText:(id)arg1 addLearnMore:(BOOL)arg2;
 - (void)setAttributedText:(id)arg1 font:(id)arg2 lineSpacing:(double)arg3 addLearnMore:(BOOL)arg4;
 - (void)setText:(id)arg1 font:(id)arg2 color:(id)arg3 lineSpacing:(double)arg4 addLearnMore:(BOOL)arg5;
 - (void)sizeToFitWidthUsingHeightConstraint:(id)arg1;

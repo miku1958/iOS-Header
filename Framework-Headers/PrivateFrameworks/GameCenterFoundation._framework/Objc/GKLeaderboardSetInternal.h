@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)secureCodedPropertyKeys;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 

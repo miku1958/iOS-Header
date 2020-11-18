@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     UIImage *_backgroundImage[4];
     struct UIOffset _titlePositionAdjustment[4];
     struct UIOffset _backgroundImagePositionAdjustment[4];
-    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
-    UIImageSymbolConfiguration *_compactPreferredSymbolConfiguration;
+    UIImageSymbolConfiguration *_imageSymbolConfiguration;
+    UIImageSymbolConfiguration *_compactImageSymbolConfiguration;
     UIImage *_backIndicatorImage;
     UIImage *_backIndicatorTransitionMaskImage;
+    UIImageSymbolConfiguration *_backIndicatorSymbolConfiguration;
+    UIImageSymbolConfiguration *_compactBackIndicatorSymbolConfiguration;
     id<_UIBarButtonItemDataFallback> _fallback;
     struct {
         unsigned int hasUserFont:1;
@@ -37,16 +39,20 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) UIImage *backIndicatorImage;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *backIndicatorSymbolConfiguration;
 @property (readonly, nonatomic) UIImage *backIndicatorTransitionMaskImage;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *backIndicatorTransitionMaskSymbolConfiguration;
 @property (readonly, nonatomic) UIImage *compactBackIndicatorImage;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *compactBackIndicatorSymbolConfiguration;
 @property (readonly, nonatomic) UIImage *compactBackIndicatorTransitionMaskImage;
-@property (readonly, nonatomic) UIImageSymbolConfiguration *compactPreferredSymbolConfiguration;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *compactBackIndicatorTransitionMaskSymbolConfiguration;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *compactImageSymbolConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<_UIBarButtonItemDataFallback> fallback;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration;
 @property (readonly, nonatomic) BOOL isBackButtonData;
-@property (readonly, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 

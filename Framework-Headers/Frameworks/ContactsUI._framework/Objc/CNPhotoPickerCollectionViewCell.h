@@ -12,26 +12,25 @@ __attribute__((visibility("hidden")))
 @interface CNPhotoPickerCollectionViewCell : UICollectionViewCell
 {
     BOOL _displaySelection;
+    BOOL _displaysBorder;
     unsigned long long _cellStyle;
     NSUUID *_displaySessionUUID;
     CAShapeLayer *_selectionLayer;
     UILabel *_captionLabel;
     UIView *_containerView;
     UIView *_containerContentView;
-    CAShapeLayer *_clippingLayer;
 }
 
 @property (strong, nonatomic) UILabel *captionLabel; // @synthesize captionLabel=_captionLabel;
 @property (nonatomic) unsigned long long cellStyle; // @synthesize cellStyle=_cellStyle;
-@property (strong, nonatomic) CAShapeLayer *clippingLayer; // @synthesize clippingLayer=_clippingLayer;
 @property (strong, nonatomic) UIView *containerContentView; // @synthesize containerContentView=_containerContentView;
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (nonatomic) BOOL displaySelection; // @synthesize displaySelection=_displaySelection;
 @property (strong, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
+@property (nonatomic) BOOL displaysBorder; // @synthesize displaysBorder=_displaysBorder;
 @property (strong, nonatomic) CAShapeLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 
 + (id)cellIdentifier;
-+ (struct CGPath *)containerClippingPathForBounds:(struct CGRect)arg1 forCellStyle:(unsigned long long)arg2;
 + (double)cornerRadiusForBounds:(struct CGRect)arg1 forCellStyle:(unsigned long long)arg2;
 + (struct CGPath *)selectionPathInBounds:(struct CGRect)arg1 forCellStyle:(unsigned long long)arg2;
 - (void).cxx_destruct;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setSelected:(BOOL)arg1;
+- (void)updateBorderTintColor:(id)arg1;
 - (void)updateCaptionFrame;
 - (void)updateWithCaption:(id)arg1;
 - (void)updateWithView:(id)arg1 animation:(unsigned long long)arg2;

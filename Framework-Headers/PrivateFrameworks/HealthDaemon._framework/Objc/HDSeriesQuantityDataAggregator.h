@@ -10,11 +10,13 @@
 {
 }
 
++ (id)_anySampleThatOverlapsWithSeries:(id)arg1 lastDatum:(id)arg2 provenance:(id)arg3 profile:(id)arg4 error:(id *)arg5;
++ (void)_checkForOverlapWithSeries:(id)arg1 lastDatum:(id)arg2 provenance:(id)arg3 profile:(id)arg4;
 - (id)_codableDatumsFromData:(id)arg1;
 - (id)_startSeriesWithDatum:(id)arg1 device:(id)arg2;
 - (id)_validatedState:(id)arg1;
 - (void)addDatum:(id)arg1 toAccumulatedData:(id)arg2;
-- (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 freezeSeries:(BOOL)arg6 error:(id *)arg7;
+- (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (id)initialAggregationState;
 - (BOOL)requiresNewSeriesForDatum:(id)arg1 lastDatum:(id)arg2 seriesLength:(long long)arg3 currentSeries:(id)arg4 configuration:(id)arg5 aggregationInterval:(double)arg6;
 - (BOOL)shouldFreezeCurrentSeries:(id)arg1 lastDatum:(id)arg2 seriesLength:(long long)arg3 configuration:(id)arg4 aggregationInterval:(double)arg5;

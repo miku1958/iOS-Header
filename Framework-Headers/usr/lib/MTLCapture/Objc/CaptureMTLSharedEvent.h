@@ -18,8 +18,6 @@
     id<MTLSharedEvent> _baseObject;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
-    _Atomic unsigned long long _downloadSignal;
-    id<MTLSharedEvent> _downloadEvent;
 }
 
 @property (readonly) id<MTLSharedEvent> baseObject;
@@ -39,9 +37,9 @@
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
-- (id)newDownloadPoint:(id)arg1;
 - (id)newSharedEventHandle;
 - (void)notifyListener:(id)arg1 atValue:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)touch;
 

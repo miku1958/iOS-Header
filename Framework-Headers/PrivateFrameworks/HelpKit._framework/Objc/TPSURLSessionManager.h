@@ -9,8 +9,8 @@
 #import <HelpKit/NSURLSessionDataDelegate-Protocol.h>
 #import <HelpKit/NSURLSessionDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURLSession;
-@protocol OS_dispatch_queue, TPSURLSessionDelegate, TPSURLSessionManagerDelegate;
+@class NSMutableDictionary, NSString, NSURLSession, PPCRedirect;
+@protocol OS_dispatch_queue, TPSURLSessionCustomAuthHandling, TPSURLSessionDelegate, TPSURLSessionManagerDelegate;
 
 @interface TPSURLSessionManager : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate>
 {
@@ -22,12 +22,15 @@
     BOOL _coalesceRequests;
     id<TPSURLSessionManagerDelegate> _delegate;
     id<TPSURLSessionDelegate> _defaultSessionDelegate;
+    id<TPSURLSessionCustomAuthHandling> _authenticationHandler;
     NSMutableDictionary *_coalesceTaskURLMap;
     NSMutableDictionary *_uncoalesceTaskMap;
     NSURLSession *_URLSession;
+    PPCRedirect *_urlRedirector;
 }
 
 @property (strong, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
+@property (strong, nonatomic) id<TPSURLSessionCustomAuthHandling> authenticationHandler; // @synthesize authenticationHandler=_authenticationHandler;
 @property (nonatomic) BOOL coalesceRequests; // @synthesize coalesceRequests=_coalesceRequests;
 @property (strong, nonatomic) NSMutableDictionary *coalesceTaskURLMap; // @synthesize coalesceTaskURLMap=_coalesceTaskURLMap;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,6 +43,7 @@
 @property (nonatomic) BOOL respondsToRequestResumed; // @synthesize respondsToRequestResumed=_respondsToRequestResumed;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *uncoalesceTaskMap; // @synthesize uncoalesceTaskMap=_uncoalesceTaskMap;
+@property (strong, nonatomic) PPCRedirect *urlRedirector; // @synthesize urlRedirector=_urlRedirector;
 
 + (id)defaultManager;
 - (void).cxx_destruct;
@@ -52,6 +56,7 @@
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_mappedURLRequest:(id)arg1;
 - (void)cancelSessionItem:(id)arg1;
 - (void)dealloc;
 - (id)init;

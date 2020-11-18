@@ -25,6 +25,8 @@
 - (void)loadParagraphStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct ParagraphStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
 - (void)p_removeFontColorPropertyInPropertyMap:(id)arg1;
 - (void)p_upgradeOutlinesToStrokesInPropertyMap:(id)arg1 forcingUpgradeForUnderspecifiedCharacterStyles:(BOOL)arg2 overridingCharacterStrokes:(BOOL)arg3;
+- (double)resolvedFloatForProperty:(int)arg1 inStyles:(id)arg2;
+- (int)resolvedIntForProperty:(int)arg1 inStyles:(id)arg2;
 - (id)resolvedValueForProperty:(int)arg1 inStyles:(id)arg2;
 - (void)saveCharacterStylePropertiesToArchive:(struct CharacterStylePropertiesArchive *)arg1 archiver:(id)arg2 archivingForCommand:(BOOL)arg3;
 - (void)saveParagraphStylePropertiesToArchive:(struct ParagraphStylePropertiesArchive *)arg1 archiver:(id)arg2;

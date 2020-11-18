@@ -20,6 +20,7 @@
     long long _buildType;
     NSString *_effectIdentifier;
     long long _eventIndex;
+    long long _indexInEvent;
     long long _stageIndex;
     unsigned long long _direction;
     unsigned long long _deliveryOption;
@@ -54,8 +55,12 @@
 @property (copy, nonatomic) NSDictionary *finalAttributes; // @synthesize finalAttributes=_finalAttributes;
 @property (readonly, nonatomic) double finalRotation;
 @property (readonly, nonatomic) double finalScale;
+@property (readonly, nonatomic) BOOL hasFinalActionRotate;
+@property (readonly, nonatomic) BOOL hasFinalActionScale;
+@property (readonly, nonatomic) BOOL hasPreviousActionAttributes;
 @property (readonly, nonatomic) BOOL hasPreviousActionRotate;
 @property (readonly, nonatomic) BOOL hasPreviousActionScale;
+@property (nonatomic) long long indexInEvent; // @synthesize indexInEvent=_indexInEvent;
 @property (readonly, nonatomic) double initialRotation;
 @property (readonly, nonatomic) double initialScale;
 @property (readonly, nonatomic) BOOL isActionBuild;

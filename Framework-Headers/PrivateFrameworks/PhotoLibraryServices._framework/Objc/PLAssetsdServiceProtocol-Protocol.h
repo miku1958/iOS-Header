@@ -6,10 +6,10 @@
 
 #import <PhotoLibraryServices/PLAssetsdServiceCreating-Protocol.h>
 
-@class NSData, NSURL, PLDaemonJob;
+@class NSData, NSDictionary, NSURL, PLDaemonJob;
 
 @protocol PLAssetsdServiceProtocol <PLAssetsdServiceCreating>
-- (void)bindToPhotoLibraryURL:(NSURL *)arg1 bookmark:(NSData *)arg2 withReply:(void (^)(NSError *))arg3;
+- (void)bindToPhotoLibraryURL:(NSURL *)arg1 sandboxExtension:(NSData *)arg2 clientOptions:(NSDictionary *)arg3 withReply:(void (^)(NSError *))arg4;
 - (void)bindToPhotoLibraryURL:(NSURL *)arg1 sandboxExtension:(NSData *)arg2 withReply:(void (^)(NSError *))arg3;
 - (void)runDaemonJob:(PLDaemonJob *)arg1 isSerial:(BOOL)arg2;
 - (void)runDaemonJob:(PLDaemonJob *)arg1 isSerial:(BOOL)arg2 withReply:(void (^)(NSError *, PLDaemonJobReply *))arg3;

@@ -45,14 +45,18 @@
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (id)currentDateForUserCloudShareController:(id)arg1;
 - (void)handleHomeChangedNotification:(id)arg1;
+- (void)handleRemoteUserClientCloudShareRepairRequest:(id)arg1;
 - (void)handleRemoteUserClientCloudShareRequest:(id)arg1;
+- (void)handleUsersChangedNotification:(id)arg1;
 - (void)handleXPCConnectionInvalidated:(id)arg1;
 - (id)initWithHomeManager:(id)arg1;
 - (id)initWithHomeManager:(id)arg1 dependency:(id)arg2;
 - (id)messageDestination;
 - (void)registerForMessages;
+- (void)userCloudShareController:(id)arg1 sendRepairInfo:(id)arg2 toConnection:(id)arg3 home:(id)arg4 containerID:(id)arg5;
 - (void)userCloudShareController:(id)arg1 sendShareRequestMessageWithConnection:(id)arg2 fromUser:(id)arg3 toUser:(id)arg4 home:(id)arg5 shareURL:(id)arg6 shareToken:(id)arg7 containerID:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (id)userCloudShareController:(id)arg1 timerWithInterval:(double)arg2;
+- (void)userCloudShareController:(id)arg1 wakeClientForRepairWithContainerID:(id)arg2;
 - (void)userCloudShareController:(id)arg1 wakeClientWithContainerID:(id)arg2;
 
 @end

@@ -9,8 +9,8 @@
 @interface VideoFrameWriterElement : NSObject
 {
     struct __CVBuffer *_pixelBuffer;
-    long long _frameNumber;
     CDStruct_1b6d18a9 _frameTime;
+    long long _frameNumber;
 }
 
 @property (nonatomic) long long frameNumber; // @synthesize frameNumber=_frameNumber;

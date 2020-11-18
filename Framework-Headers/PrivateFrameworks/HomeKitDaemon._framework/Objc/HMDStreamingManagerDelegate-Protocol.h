@@ -17,6 +17,6 @@
 - (void)streamingManagerDidUpdateConfiguration:(HMDStreamingManager *)arg1;
 
 @optional
-- (void)streamingManager:(HMDStreamingManager *)arg1 didStartRelay:(NSError *)arg2;
+- (void)streamingManagerDidStartRelay:(HMDStreamingManager *)arg1;
 @end
 

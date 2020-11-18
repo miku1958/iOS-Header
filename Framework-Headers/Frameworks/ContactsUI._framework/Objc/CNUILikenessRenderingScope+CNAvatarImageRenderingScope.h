@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (unsigned long long)avatarViewBackgroundStyle;
 - (unsigned long long)avatarViewStyle;
 - (id)likenessRenderingScope;
 @end

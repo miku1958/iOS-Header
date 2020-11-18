@@ -26,12 +26,14 @@
 @property (strong, nonatomic) NSString *otherUnformattedID; // @synthesize otherUnformattedID=_otherUnformattedID;
 
 + (BOOL)supportsSecureCoding;
+- (BOOL)actionIsGroupPhoto;
 - (id)copyDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isCompatibleWithMiC;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -14,6 +14,7 @@
     MISSING_TYPE *eventBindingManager;
     MISSING_TYPE *needsRootViewUpdate;
     MISSING_TYPE *needsEnvironmentUpdate;
+    MISSING_TYPE *needsFocusedValuesUpdate;
     MISSING_TYPE *isRendering;
     MISSING_TYPE *externalUpdateCount;
     MISSING_TYPE *currentTimestamp;

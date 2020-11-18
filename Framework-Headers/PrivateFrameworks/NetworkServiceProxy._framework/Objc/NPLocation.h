@@ -20,7 +20,7 @@
 @property (readonly) BOOL isValid;
 @property double latitude; // @synthesize latitude=_latitude;
 @property double longtitude; // @synthesize longtitude=_longtitude;
-@property (strong) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

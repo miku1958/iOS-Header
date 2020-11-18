@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/CSAdBlockerMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSAssetControllerDelegate-Protocol.h>
 #import <CoreSpeech/CSLanguageCodeUpdateMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSSpeakerRecognitionAssetMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSpeechEndpointAssetMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetMetaUpdateMonitorDelegate-Protocol.h>
 
 @class CSAssetDownloadingOption, CSPolicy, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSAssetControllerDelegate, CSLanguageCodeUpdateMonitorDelegate>
+@interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSAdBlockerMetaUpdateMonitorDelegate, CSAssetControllerDelegate, CSSpeakerRecognitionAssetMetaUpdateMonitorDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
     CSPolicy *_enablePolicy;
     NSString *_currentLanguageCode;
@@ -34,8 +36,10 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)CSAdBlockerMetaUpdateMonitor:(id)arg1 didReceiveNewAdBlockerAssetMetaData:(BOOL)arg2;
 - (void)CSAssetController:(id)arg1 didDownloadNewAssetForType:(unsigned long long)arg2;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
+- (void)CSSpeakerRecognitionAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeakerRecognitionAssetMetaData:(BOOL)arg2;
 - (void)CSSpeechEndpointAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeechEndpointAssetMetaData:(BOOL)arg2;
 - (void)CSVoiceTriggerAssetMetaUpdateMonitor:(id)arg1 didReceiveNewVoiceTriggerAssetMetaData:(BOOL)arg2;
 - (BOOL)_canFetchRemoteAsset:(unsigned long long)arg1;
@@ -49,6 +53,7 @@
 - (void)assetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)assetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)assetOfType:(unsigned long long)arg1 providerType:(unsigned long long)arg2 language:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithDownloadOption:(id)arg1;
 - (id)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;

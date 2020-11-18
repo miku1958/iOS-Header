@@ -36,6 +36,7 @@
 - (BOOL)_validateWithContainerIdentity:(id)arg1;
 - (void)addSnapshot:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionForStateCaptureWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

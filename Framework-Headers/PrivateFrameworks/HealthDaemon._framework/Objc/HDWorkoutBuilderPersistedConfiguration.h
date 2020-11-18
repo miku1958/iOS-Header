@@ -12,6 +12,7 @@
 
 @interface HDWorkoutBuilderPersistedConfiguration : NSObject <NSCopying>
 {
+    BOOL _shouldCollectWorkoutEvents;
     NSUUID *_builderIdentifier;
     HKWorkoutConfiguration *_workoutConfiguration;
     HDSourceEntity *_sourceEntity;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) HDDeviceEntity *deviceEntity; // @synthesize deviceEntity=_deviceEntity;
 @property (copy, nonatomic) HKQuantity *goal; // @synthesize goal=_goal;
 @property (nonatomic) unsigned long long goalType; // @synthesize goalType=_goalType;
+@property (nonatomic) BOOL shouldCollectWorkoutEvents; // @synthesize shouldCollectWorkoutEvents=_shouldCollectWorkoutEvents;
 @property (strong, nonatomic) HDSourceEntity *sourceEntity; // @synthesize sourceEntity=_sourceEntity;
 @property (copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property (copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;

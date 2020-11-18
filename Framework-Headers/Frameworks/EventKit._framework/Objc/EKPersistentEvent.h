@@ -25,6 +25,7 @@
 - (id)description;
 - (BOOL)disallowProposeNewTime;
 - (id)endDate;
+- (id)endDateRaw;
 - (int)entityType;
 - (int)externalTrackingStatus;
 - (BOOL)firedTTL;
@@ -35,6 +36,7 @@
 - (BOOL)needsOccurrenceCacheUpdate;
 - (id)organizer;
 - (id)originalStartDate;
+- (id)participationStatusModifiedDate;
 - (long long)privacyLevel;
 - (id)proposedStartDate;
 - (BOOL)pushDirtyProperties:(id *)arg1;
@@ -49,6 +51,7 @@
 - (void)setConferenceURL:(id)arg1;
 - (void)setDisallowProposeNewTime:(BOOL)arg1;
 - (void)setEndDate:(id)arg1;
+- (void)setEndDateRaw:(id)arg1;
 - (void)setExternalTrackingStatus:(int)arg1;
 - (void)setFiredTTL:(BOOL)arg1;
 - (void)setInvitationChangedProperties:(unsigned int)arg1;
@@ -57,17 +60,16 @@
 - (void)setLocationPredictionState:(long long)arg1;
 - (void)setNeedsOccurrenceCacheUpdate:(BOOL)arg1;
 - (void)setOriginalStartDate:(id)arg1;
+- (void)setParticipationStatusModifiedDate:(id)arg1;
 - (void)setPrivacyLevel:(long long)arg1;
 - (void)setProposedStartDate:(id)arg1;
 - (void)setRecurrenceSet:(id)arg1;
 - (void)setResponseComment:(id)arg1;
 - (void)setStatus:(long long)arg1;
-- (void)setSuggestedEventInfo:(id)arg1;
 - (void)setSuggestionInfo:(id)arg1;
 - (void)setTravelAdvisoryBehavior:(long long)arg1;
 - (void)setTravelTime:(id)arg1;
 - (long long)status;
-- (id)suggestedEventInfo;
 - (id)suggestionInfo;
 - (long long)travelAdvisoryBehavior;
 - (id)travelTime;

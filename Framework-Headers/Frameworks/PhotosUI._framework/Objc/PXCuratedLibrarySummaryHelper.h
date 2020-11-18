@@ -24,6 +24,7 @@
     struct {
         BOOL visibleContentSnapshot;
         BOOL topmostAssetCollection;
+        BOOL shouldUpdateImmediately;
     } _dataSourceRespondsTo;
     struct {
         BOOL setTitle;
@@ -63,6 +64,7 @@
 - (void)_updateTitle;
 - (void)_updateTitleFromSummaryController;
 - (void)_updateTopmostAssetCollection;
+- (BOOL)browserSummaryControllerShouldUpdateImmediately:(id)arg1;
 - (id)init;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)visibleContentDidChange;

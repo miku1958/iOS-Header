@@ -7,24 +7,26 @@
 #import <objc/NSObject.h>
 
 @class NSError, SNAnalyzerHost;
-@protocol SNAnalyzerProviding, SNProcessing, SNResultsObserving;
+@protocol SNAnalyzerCreating, SNProcessing;
 
 __attribute__((visibility("hidden")))
 @interface SNAnalyzerInfo : NSObject
 {
     BOOL _configured;
-    id<SNAnalyzerProviding> _request;
-    id<SNResultsObserving> _resultsObserver;
+    id<SNAnalyzerCreating> _request;
+    CDUnknownBlockType _resultsHandler;
+    CDUnknownBlockType _completionHandler;
     SNAnalyzerHost *_analyzerHost;
     id<SNProcessing> _sharedProcessor;
     NSError *_configurationError;
 }
 
 @property (strong, nonatomic) SNAnalyzerHost *analyzerHost; // @synthesize analyzerHost=_analyzerHost;
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSError *configurationError; // @synthesize configurationError=_configurationError;
 @property (nonatomic) BOOL configured; // @synthesize configured=_configured;
-@property (strong, nonatomic) id<SNAnalyzerProviding> request; // @synthesize request=_request;
-@property (weak, nonatomic) id<SNResultsObserving> resultsObserver; // @synthesize resultsObserver=_resultsObserver;
+@property (strong, nonatomic) id<SNAnalyzerCreating> request; // @synthesize request=_request;
+@property (copy, nonatomic) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
 @property (strong, nonatomic) id<SNProcessing> sharedProcessor; // @synthesize sharedProcessor=_sharedProcessor;
 
 - (void).cxx_destruct;

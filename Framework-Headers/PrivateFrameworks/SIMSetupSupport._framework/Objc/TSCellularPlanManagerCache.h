@@ -35,7 +35,7 @@
 - (long long)calculateInstallConsentTextTypeFor:(id)arg1;
 - (void)dealloc;
 - (void)didPurchasePlanForEid:(id)arg1 iccid:(id)arg2 smdpURL:(id)arg3;
-- (void)didTransferPlanForEid:(id)arg1 iccid:(id)arg2 smdpURL:(id)arg3 state:(id)arg4;
+- (void)didTransferPlanForEid:(id)arg1 iccid:(id)arg2 srcIccid:(id)arg3 smdpURL:(id)arg4 state:(id)arg5;
 - (id)getDanglingPlanItems;
 - (id)getPredefinedLabels;
 - (id)getShortLabelsForLabels:(id)arg1;

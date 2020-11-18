@@ -24,7 +24,10 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)fetchVirtualInterfaceTypeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestSocket:(BOOL)arg1 interface:(id)arg2 local:(id)arg3 remote:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (int)requiredEntitlement;
+- (void)setAppUUIDMap:(id)arg1;
 - (void)setVirtualInterfaceSocket:(id)arg1;
+- (void)validateWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -21,20 +21,6 @@
     unsigned long long _options;
 }
 
-@property (strong, nonatomic) Class classType; // @synthesize classType=_classType;
-@property (copy, nonatomic) NSString *defaultKey; // @synthesize defaultKey=_defaultKey;
-@property (strong, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
-@property (copy, nonatomic) NSString *getterName; // @synthesize getterName=_getterName;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic, getter=isNumber) BOOL number;
-@property (nonatomic) unsigned long long options; // @synthesize options=_options;
-@property (readonly, nonatomic) BOOL removeIfCollectionSetEmpty;
-@property (readonly, nonatomic) BOOL removeIfSettingDefaultValue;
-@property (copy, nonatomic) NSString *setterName; // @synthesize setterName=_setterName;
-@property (readonly, nonatomic) BOOL synchronizeOnSet;
-@property (nonatomic) BOOL type; // @synthesize type=_type;
-@property (copy, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
-
 - (void).cxx_destruct;
 - (id)description;
 

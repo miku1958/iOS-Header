@@ -32,6 +32,7 @@
 - (void)didUpdateSettings:(id)arg1;
 - (id)initInUniverse:(id)arg1;
 - (void)invalidate;
+- (void)setArray:(id)arg1 forKey:(id)arg2;
 - (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setDictionary:(id)arg1 forKey:(id)arg2;
 - (void)setDouble:(double)arg1 forKey:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, SGDataDetectorDissector, SGNamedEntityDissector, SGSqlEntityStore, SGURLDissector;
+@class PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, SGNamedEntityDissector, SGSqlEntityStore, SGURLDissector;
 
 @interface PPEventKitImporter : NSObject
 {
@@ -16,7 +16,7 @@
     SGSqlEntityStore *_urlStore;
     SGURLDissector *_urlDissector;
     SGNamedEntityDissector *_neDissector;
-    SGDataDetectorDissector *_ddDissector;
+    Class _dataDetectorMatchClass;
     struct atomic_flag _fullImportInProgress;
 }
 
@@ -40,7 +40,7 @@
 - (void)importEventData;
 - (void)importEventDataWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithEventStore:(id)arg1 namedEntityStore:(id)arg2 locationStore:(id)arg3 urlStore:(id)arg4 urlDissector:(id)arg5 namedEntityDissector:(id)arg6 dataDetectorDissector:(id)arg7;
+- (id)initWithEventStore:(id)arg1 namedEntityStore:(id)arg2 locationStore:(id)arg3 urlStore:(id)arg4 urlDissector:(id)arg5 namedEntityDissector:(id)arg6 dataDetectorMatchClass:(Class)arg7;
 
 @end
 

@@ -12,15 +12,17 @@
 - (void)deleteAllSavedRecordsForBundleId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deleteSavedRecordForBundleId:(NSString *)arg1 identfier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchInstalledBundlesIdsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)fetchNativeRecordDataForRecordUUID:(NSUUID *)arg1 bundleId:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)fetchRecordsForBundleId:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSDictionary *, NSArray *, NSError *))arg2;
 - (void)fetchSavedRecordInfoForRecordType:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchTelemetryForBundleId:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)postRecipeResultForBundleId:(NSString *)arg1 baseURL:(NSURL *)arg2 result:(NSDictionary *)arg3 recipeUUID:(NSUUID *)arg4 completion:(void (^)(NSError *))arg5;
-- (void)runEvaluationForBundleId:(NSString *)arg1 recipePath:(NSString *)arg2 recordUUIDs:(NSArray *)arg3 attachments:(NSArray *)arg4 completion:(void (^)(NSDictionary *, NSData *, NSURL *, NSError *))arg5;
+- (void)runEvaluationForBundleId:(NSString *)arg1 recipePath:(NSString *)arg2 recordUUIDs:(NSArray *)arg3 attachments:(NSArray *)arg4 sandboxExtensions:(NSArray *)arg5 completion:(void (^)(NSDictionary *, NSData *, NSURL *, NSError *))arg6;
 - (void)runLiveEvaluationForAllBundlesWithBaseURL:(NSURL *)arg1 localeIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)runLiveEvaluationForBundleId:(NSString *)arg1 baseURL:(NSURL *)arg2 localeIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)saveCoreDuetEvent:(_DKEvent *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)saveRecordForBundleId:(NSString *)arg1 data:(NSData *)arg2 recordInfo:(NSDictionary *)arg3 completion:(void (^)(NSUUID *, NSError *))arg4;
 - (void)setValue:(NSString *)arg1 forInfoKey:(NSString *)arg2 bundleID:(NSString *)arg3 completion:(void (^)(NSDictionary *))arg4;
+- (void)wakeUpWithCompletion:(void (^)(void))arg1;
 @end
 

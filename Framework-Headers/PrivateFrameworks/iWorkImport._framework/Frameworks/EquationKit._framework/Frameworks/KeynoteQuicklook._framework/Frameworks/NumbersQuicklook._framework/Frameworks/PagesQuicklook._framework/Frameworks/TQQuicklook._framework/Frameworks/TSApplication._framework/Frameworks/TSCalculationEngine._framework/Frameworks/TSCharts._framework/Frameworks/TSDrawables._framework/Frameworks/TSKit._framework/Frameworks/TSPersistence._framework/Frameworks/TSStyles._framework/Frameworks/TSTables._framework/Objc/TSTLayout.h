@@ -10,7 +10,7 @@
 #import <TSTables/TSWPLayoutParent-Protocol.h>
 #import <TSTables/TSWPStorageObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableInfo, TSWPLayout, TSWPPadding;
+@class NSString, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableInfo, TSUPointerKeyDictionary, TSWPLayout, TSWPPadding;
 
 @interface TSTLayout : TSWPTextHostLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
 {
@@ -34,7 +34,6 @@
     } mCached;
     struct CGRect mRenderingFrameForLayoutGeometryFromInfo;
     TSWPLayout *mContainedTextEditingLayout;
-    NSMutableDictionary *mAttachmentCellLayouts;
     struct UIEdgeInsets mCachedPaddingForEditingCell;
     struct CGRect mComputedEditingCellContentFrame;
     int mCachedVerticalAlignmentForEditingCell;
@@ -52,14 +51,17 @@
     BOOL mShouldUpdateAttachmentChildren;
     unsigned long long mPageCount;
     unsigned long long mPageNumber;
+    TSUPointerKeyDictionary *_attachmentCellStorageToLayoutMap;
 }
 
 @property (readonly, nonatomic) BOOL alwaysStartsNewTarget;
+@property (readonly) TSUPointerKeyDictionary *attachmentCellStorageToLayoutMap; // @synthesize attachmentCellStorageToLayoutMap=_attachmentCellStorageToLayoutMap;
 @property (readonly, nonatomic) unsigned long long columnCount;
 @property (readonly, nonatomic) BOOL columnsAreLeftToRight;
 @property (readonly, nonatomic) struct CGRect computedEditingCellContentFrame;
 @property (strong, nonatomic) TSWPLayout *containedTextEditingLayout; // @synthesize containedTextEditingLayout=mContainedTextEditingLayout;
 @property (readonly, nonatomic) BOOL containedTextEditorSpills; // @synthesize containedTextEditorSpills=mContainedTextEditorSpills;
+@property (readonly, nonatomic) BOOL containedTextEditorWraps; // @synthesize containedTextEditorWraps=mContainedTextEditorTextWraps;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct TSUCellRect editingSpillingTextRange; // @synthesize editingSpillingTextRange=mEditingSpillingTextRange;
@@ -76,6 +78,7 @@
 @property (nonatomic) struct TSUCellRect prevEditingSpillingTextRange; // @synthesize prevEditingSpillingTextRange=mPrevEditingSpillingTextRange;
 @property (nonatomic) BOOL processChangesFiltering; // @synthesize processChangesFiltering=mProcessChangesFiltering;
 @property (nonatomic) struct CGSize scaleToFit;
+@property (readonly, nonatomic) struct CGSize scaleToFitParent;
 @property (readonly, nonatomic) BOOL shrinkTextToFit;
 @property (strong, nonatomic) TSTLayoutSpaceBundle *spaceBundle; // @synthesize spaceBundle=mSpaceBundle;
 @property (readonly) Class superclass;
@@ -84,27 +87,37 @@
 @property (readonly, nonatomic) double textScaleFactor;
 
 + (id)findLayoutIfAvailableInSet:(id)arg1 intersectingRow:(unsigned int)arg2;
+- (struct TSUCellRect)_floatingCellRangeAtRect:(struct CGRect)arg1 inLayoutSpace:(id)arg2 withTransform:(struct CGAffineTransform)arg3;
 - (struct CGPoint)activityLineUnscaledEndPointForSearchReference:(id)arg1;
 - (struct CGRect)adjustRect:(struct CGRect)arg1 forScrollingToSelectionPath:(id)arg2 forZoom:(BOOL)arg3;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct CGRect)alignedStrokeFrame;
+- (struct CGRect)alignedStrokeFrameForGridRange:(CDStruct_58eae27c)arg1;
+- (struct CGRect)alignedStrokeFrameForRange:(struct TSUCellRect)arg1;
 - (struct CGRect)alignmentFrame;
+- (id)attachmentCellLayoutForCellID:(struct TSUCellCoord)arg1 optionalCell:(id)arg2;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
-- (void)bezierPathsForCellRegion:(id)arg1 selectionMask:(unsigned int)arg2 transform:(struct CGAffineTransform)arg3 viewScale:(double)arg4 inset:(double)arg5 clipToVisibleRect:(BOOL)arg6 block:(CDUnknownBlockType)arg7;
+- (void)bezierPathsForCellRegion:(id)arg1 selectionMask:(unsigned int)arg2 transform:(struct CGAffineTransform)arg3 viewScale:(double)arg4 inset:(double)arg5 clipToVisibleRect:(BOOL)arg6 cornerRadius:(double)arg7 block:(CDUnknownBlockType)arg8;
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
 - (struct CGPoint)calculatePointFromSearchReferenceWithoutValidation:(id)arg1;
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canRotateChildLayout:(id)arg1;
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
+- (struct UIEdgeInsets)captionEdgeInsets;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)cellIteratorWithRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3;
-- (id)children;
+- (id)childInfosForChildLayouts;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
 - (BOOL)descendersCannotClip;
+- (struct TSUCellRect)extendedPartitionRangeSingleSpaceIntersectionWithCellRange:(struct TSUCellRect)arg1;
+- (struct TSUCellRect)floatingHeaderColumnRangeAtRect:(struct CGRect)arg1;
+- (struct TSUCellRect)floatingHeaderRowRangeAtRect:(struct CGRect)arg1;
+- (struct CGRect)frameForCaptionPositioning;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (BOOL)inFindReplaceMode;
 - (BOOL)inPrintPreviewMode;
@@ -148,7 +161,7 @@
 - (struct TSUCellRect)p_maximumSpillRangeForCellID:(struct TSUCellCoord)arg1;
 - (struct CGRect)p_nonAutosizedFrameForRichTextLayout:(id)arg1;
 - (struct CGRect)p_nonAutosizedFrameForTextEditingLayout:(id)arg1;
-- (void)p_prepareAttachmentCells;
+- (void)p_prepareAttachmentCellsIfNeeded;
 - (struct CGSize)p_rangeUpAndLeftOfIntersectionRangeOfGridRange:(CDStruct_58eae27c)arg1;
 - (struct TSUCellRect)p_spillRangeForMaskingRichTextLayout:(id)arg1;
 - (struct TSUCellRect)p_spillRangeToRightForCellID:(struct TSUCellCoord)arg1;
@@ -163,8 +176,10 @@
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setupContainedTextEditingLayout:(struct TSUCellCoord)arg1;
+- (BOOL)shouldShowCaption;
 - (BOOL)supportsRotation;
 - (BOOL)suppressFrozenHeadersForEditing;
+- (double)tabsRowWidthAndOptionalLeftGap:(out double *)arg1;
 - (BOOL)textIsVertical;
 - (id)unscaledCommentFlagAnchorInfoForSearchReference:(id)arg1;
 - (void)updateChildrenFromInfo;

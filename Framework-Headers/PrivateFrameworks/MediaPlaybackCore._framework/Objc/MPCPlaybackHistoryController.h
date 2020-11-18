@@ -15,10 +15,8 @@
     MPCPlaybackEngine *_playbackEngine;
     NSOperationQueue *_operationQueue;
     MPModelPlayEvent *_lastRecordedPlayEvent;
-    long long _currentRepeatType;
 }
 
-@property (nonatomic) long long currentRepeatType; // @synthesize currentRepeatType=_currentRepeatType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,7 +26,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
 - (id)initWithPlaybackEngine:(id)arg1;
 

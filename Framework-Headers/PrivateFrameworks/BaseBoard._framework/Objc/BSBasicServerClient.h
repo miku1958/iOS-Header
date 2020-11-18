@@ -19,7 +19,7 @@
     BOOL _managingResumeState;
 }
 
-@property (strong, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

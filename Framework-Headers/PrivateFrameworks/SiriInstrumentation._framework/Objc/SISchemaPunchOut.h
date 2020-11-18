@@ -14,9 +14,17 @@
     NSString *_urlScheme;
     SISchemaViewContainer *_viewContainer;
     NSData *_viewElementID;
+    BOOL _hasAppID;
+    BOOL _hasUrlScheme;
+    BOOL _hasViewContainer;
+    BOOL _hasViewElementID;
 }
 
 @property (copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
+@property (nonatomic) BOOL hasAppID; // @synthesize hasAppID=_hasAppID;
+@property (nonatomic) BOOL hasUrlScheme; // @synthesize hasUrlScheme=_hasUrlScheme;
+@property (nonatomic) BOOL hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
+@property (nonatomic) BOOL hasViewElementID; // @synthesize hasViewElementID=_hasViewElementID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *urlScheme; // @synthesize urlScheme=_urlScheme;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;

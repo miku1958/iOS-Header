@@ -17,8 +17,12 @@
     BOOL _darkMode;
     BOOL _scrollingDisabled;
     BOOL __shouldInlineButtontray;
+    BOOL _shouldAdjustScrollViewInsetForKeyboard;
+    BOOL _shouldAdjustButtonTrayForKeyboard;
+    BOOL _includePaddingAboveContentView;
     OBHeaderView *_headerView;
     OBContentView *_contentView;
+    UIView *_secondaryContentView;
     OBButtonTray *_buttonTray;
     long long _contentViewLayout;
     UIView *_bleedView;
@@ -28,13 +32,17 @@
     NSLayoutConstraint *_headerTopOffsetConstraint;
     NSLayoutConstraint *_contentViewTopOffsetConstraint;
     NSLayoutConstraint *_contentViewHeightConstraint;
+    NSLayoutConstraint *_secondaryContentViewTopOffsetConstraint;
     OBBulletedList *_bulletedList;
     unsigned long long _templateType;
     OBNavigationBarDisplayState *_cachedBarState;
     UINavigationController *_retainedNavigationController;
+    double _availableContentViewHeight;
+    struct CGRect _keyboardFrame;
 }
 
 @property (nonatomic) BOOL _shouldInlineButtontray; // @synthesize _shouldInlineButtontray=__shouldInlineButtontray;
+@property (nonatomic) double availableContentViewHeight; // @synthesize availableContentViewHeight=_availableContentViewHeight;
 @property (strong, nonatomic) UIView *bleedView; // @synthesize bleedView=_bleedView;
 @property (strong, nonatomic) OBBulletedList *bulletedList; // @synthesize bulletedList=_bulletedList;
 @property (strong, nonatomic) OBButtonTray *buttonTray; // @synthesize buttonTray=_buttonTray;
@@ -50,20 +58,38 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutConstraint *headerTopOffsetConstraint; // @synthesize headerTopOffsetConstraint=_headerTopOffsetConstraint;
 @property (strong, nonatomic) OBHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic) BOOL includePaddingAboveContentView; // @synthesize includePaddingAboveContentView=_includePaddingAboveContentView;
+@property (nonatomic) struct CGRect keyboardFrame; // @synthesize keyboardFrame=_keyboardFrame;
 @property (strong, nonatomic) UINavigationController *retainedNavigationController; // @synthesize retainedNavigationController=_retainedNavigationController;
 @property (strong, nonatomic) UIView *scrollContentView; // @synthesize scrollContentView=_scrollContentView;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic, getter=isScrollingDisabled) BOOL scrollingDisabled; // @synthesize scrollingDisabled=_scrollingDisabled;
+@property (strong, nonatomic) UIView *secondaryContentView; // @synthesize secondaryContentView=_secondaryContentView;
+@property (strong, nonatomic) NSLayoutConstraint *secondaryContentViewTopOffsetConstraint; // @synthesize secondaryContentViewTopOffsetConstraint=_secondaryContentViewTopOffsetConstraint;
+@property (nonatomic) BOOL shouldAdjustButtonTrayForKeyboard; // @synthesize shouldAdjustButtonTrayForKeyboard=_shouldAdjustButtonTrayForKeyboard;
+@property (nonatomic) BOOL shouldAdjustScrollViewInsetForKeyboard; // @synthesize shouldAdjustScrollViewInsetForKeyboard=_shouldAdjustScrollViewInsetForKeyboard;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long templateType; // @synthesize templateType=_templateType;
 
 - (void).cxx_destruct;
+- (void)_animatePushTransitionForViews:(id)arg1 transitionSubtype:(id)arg2;
 - (BOOL)_buttonTrayInlined;
 - (double)_contentViewHeight;
+- (id)_currentContainerView;
+- (void)_floatButtonTray;
+- (void)_handleKeyboardPresentation:(id)arg1;
 - (double)_headerTopOffset;
+- (void)_inlineButtonTray;
+- (void)_inlineButtonTrayIfNeeded;
+- (void)_keyboardWillHide:(id)arg1;
+- (BOOL)_landscapeiPhone;
 - (void)_layoutButtonTray;
+- (void)_registerForKeyboardNotifications;
 - (BOOL)_scrollViewContentIsUnderTray;
 - (void)_scrollViewDidLayoutSubviews:(id)arg1;
+- (void)_setupNavigationBarBleed;
+- (void)_setupScrollView;
+- (void)_unregisterForKeyboardNotifications;
 - (void)_updateButtonTrayBackdrop;
 - (void)_updateHeaderTopOffsetConstraint;
 - (void)_updateScrollContentViewLayoutMargins;
@@ -94,6 +120,7 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

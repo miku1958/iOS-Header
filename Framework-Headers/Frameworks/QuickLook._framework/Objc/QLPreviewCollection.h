@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <QuickLook/QLItemPresenterViewControllerDelegate-Protocol.h>
 #import <QuickLook/QLPageViewControllerDataSource-Protocol.h>
 #import <QuickLook/QLPageViewControllerDelegate-Protocol.h>
 #import <QuickLook/QLPreviewCollectionProtocol-Protocol.h>
@@ -17,7 +18,7 @@
 @protocol QLPreviewControllerStateProtocol, QLTransitionControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewCollection : UIViewController <QLTransitionControllerProtocol, QLPageViewControllerDataSource, QLPageViewControllerDelegate, QLPreviewItemViewControllerDelegate, UIGestureRecognizerDelegatePrivate, QLPreviewCollectionProtocol>
+@interface QLPreviewCollection : UIViewController <QLTransitionControllerProtocol, QLPageViewControllerDataSource, QLPageViewControllerDelegate, QLPreviewItemViewControllerDelegate, QLItemPresenterViewControllerDelegate, UIGestureRecognizerDelegatePrivate, QLPreviewCollectionProtocol>
 {
     struct _NSRange _previewItemRange;
     long long _currentItemIndex;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
     QLPageViewController *_pageViewController;
     id<QLPreviewControllerStateProtocol> _stateManager;
     CDUnknownBlockType _prepareForInvalidationCompletionHandler;
+    NSString *_overrideParentApplicationDisplayIdentifier;
     UIPanGestureRecognizer *_slideGesture;
     UIPinchGestureRecognizer *_pinchGesture;
     UIRotationGestureRecognizer *_rotationGesture;
@@ -64,7 +66,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isAvailable; // @synthesize isAvailable=_isAvailable;
 @property (nonatomic) BOOL isEditing; // @synthesize isEditing=_isEditing;
 @property (nonatomic) BOOL isTransitioningPage; // @synthesize isTransitioningPage=_isTransitioningPage;
+@property (copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property (strong) QLPageViewController *pageViewController; // @synthesize pageViewController=_pageViewController;
+@property (readonly, nonatomic) NSString *parentApplicationDisplayIdentifier;
 @property (strong) UIPinchGestureRecognizer *pinchGesture; // @synthesize pinchGesture=_pinchGesture;
 @property (strong) QLPinchRotationTracker *pinchRotationTracker; // @synthesize pinchRotationTracker=_pinchRotationTracker;
 @property (copy, nonatomic) CDUnknownBlockType prepareForInvalidationCompletionHandler; // @synthesize prepareForInvalidationCompletionHandler=_prepareForInvalidationCompletionHandler;
@@ -121,11 +125,13 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)invalidateService;
 - (BOOL)isRemote;
+- (BOOL)itemPresenterViewControllerShouldForceAutodownloadFile:(id)arg1;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadView;
 - (id)loadingTextForPreviewItemViewController:(id)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
+- (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)pageViewController:(id)arg1 didCancelTransitionFromPage:(id)arg2 withIndex:(unsigned long long)arg3 toPage:(id)arg4 withIndex:(unsigned long long)arg5 animated:(BOOL)arg6;
 - (void)pageViewController:(id)arg1 didTransitionFromPage:(id)arg2 withIndex:(unsigned long long)arg3 toPage:(id)arg4 withIndex:(unsigned long long)arg5 animated:(BOOL)arg6;
 - (void)pageViewController:(id)arg1 isTransitioningFromPage:(id)arg2 withIndex:(unsigned long long)arg3 toPage:(id)arg4 withIndex:(unsigned long long)arg5 withProgress:(double)arg6;

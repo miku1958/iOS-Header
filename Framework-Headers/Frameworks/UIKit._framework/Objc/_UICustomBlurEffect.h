@@ -6,11 +6,10 @@
 
 #import <UIKitCore/UIBlurEffect.h>
 
-@class UIColor, _UIBackdropViewSettings;
+@class UIColor;
 
 @interface _UICustomBlurEffect : UIBlurEffect
 {
-    _UIBackdropViewSettings *_blurEffect;
 }
 
 @property (nonatomic) double blurRadius;
@@ -30,12 +29,7 @@
 @property (nonatomic) double zoom;
 
 + (id)effectWithStyle:(long long)arg1;
-- (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)effectSettings;
-- (unsigned long long)hash;
-- (id)init;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

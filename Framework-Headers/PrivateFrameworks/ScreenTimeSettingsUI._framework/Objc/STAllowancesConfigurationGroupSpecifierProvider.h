@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)_communicationLimitsDetailText;
 - (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_deviceBedtimeDidChange:(id)arg1;
+- (void)_hasWatchOSDevicesOnlyDidChange:(BOOL)arg1;
 - (void)_isRemoteUserDidChangeFrom:(BOOL)arg1 to:(BOOL)arg2;
 - (void)_resetCommunicationLimitsDetailText;
 - (void)_showCommunicationLimitsViewController:(id)arg1;

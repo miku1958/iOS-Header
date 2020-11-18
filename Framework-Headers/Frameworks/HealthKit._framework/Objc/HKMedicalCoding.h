@@ -24,6 +24,10 @@
 @property (readonly, copy, nonatomic) NSString *codingVersion; // @synthesize codingVersion=_codingVersion;
 @property (readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 
++ (id)RxNormCodingWithCode:(id)arg1;
++ (id)RxNormCodingWithCode:(id)arg1 displayString:(id)arg2;
++ (id)loinc_diastolicBloodPressureCoding;
++ (id)loinc_systolicBloodPressureCoding;
 + (id)medicalCodingWithSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
 + (BOOL)supportsSecureCoding;
 + (id)text_codingWithDisplayString:(id)arg1;
@@ -40,6 +44,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCodingSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEquivalent:(id)arg1;
 - (id)synthesizedIdentifier;
 
 @end

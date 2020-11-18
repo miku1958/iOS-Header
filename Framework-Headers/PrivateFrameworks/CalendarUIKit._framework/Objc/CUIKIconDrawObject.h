@@ -6,43 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class CUIKIconSizeMetrics, NSCalendar, NSString;
+@class NSCalendar, NSString;
 
 @interface CUIKIconDrawObject : NSObject
 {
     NSCalendar *_calendar;
     NSString *_dayNumber;
-    CDUnknownBlockType _dateNameBlock;
-    long long _dateNameFormatType;
+    NSString *_dateName;
     double _canvasScale;
-    CUIKIconSizeMetrics *_sizeMetrics;
     struct CGSize _canvasSize;
 }
 
 @property (readonly, copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (readonly, nonatomic) double canvasScale; // @synthesize canvasScale=_canvasScale;
 @property (readonly, nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
-@property (readonly, nonatomic) CDUnknownBlockType dateNameBlock; // @synthesize dateNameBlock=_dateNameBlock;
-@property (readonly, nonatomic) long long dateNameFormatType; // @synthesize dateNameFormatType=_dateNameFormatType;
+@property (readonly, copy, nonatomic) NSString *dateName; // @synthesize dateName=_dateName;
 @property (readonly, copy, nonatomic) NSString *dayNumber; // @synthesize dayNumber=_dayNumber;
-@property (readonly, nonatomic) CUIKIconSizeMetrics *sizeMetrics; // @synthesize sizeMetrics=_sizeMetrics;
 
 + (id)countriesRequiringBlackDayOfWeek;
-+ (id)defaultDayNumberFontWithSize:(double)arg1;
 + (BOOL)isBlackDayOfWeekRequiredForLocale:(id)arg1;
-+ (id)systemG2FromFont:(id)arg1;
 - (void).cxx_destruct;
+- (id)_dateNameFont;
+- (id)_dateNameFontOfSize:(double)arg1;
+- (id)_dayNumberFont;
 - (void)_drawDateName;
 - (void)_drawDayNumber;
+- (id)_iconBlackColor;
+- (id)_iconRedColor;
+- (double)_roundSpecToActual:(double)arg1;
 - (id)colorForDayOfWeek;
-- (id)dateNameFont:(id)arg1;
-- (id)dateNameFontForDateName:(id)arg1 size:(double)arg2;
-- (double)dateNameFontSizeForDateName:(id)arg1;
-- (id)dayNumberFont;
 - (void)draw;
-- (id)initWithCalendar:(id)arg1 dayNumber:(id)arg2 dateNameBlock:(CDUnknownBlockType)arg3 dateNameFormatType:(long long)arg4 canvasSize:(struct CGSize)arg5 canvasScale:(double)arg6;
-- (double)resizeAttributedString:(id)arg1 withDateName:(id)arg2 font:(id)arg3 ctx:(id)arg4 maxSize:(struct CGSize)arg5;
-- (BOOL)sizeMetricsAreHomeScreenSize;
+- (id)initWithCalendar:(id)arg1 dayNumber:(id)arg2 dateName:(id)arg3 canvasSize:(struct CGSize)arg4 canvasScale:(double)arg5;
 
 @end
 

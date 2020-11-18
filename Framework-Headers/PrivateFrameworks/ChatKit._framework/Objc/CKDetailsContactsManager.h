@@ -17,6 +17,7 @@
     NSString *_serviceAvailabilityKey;
     NSDictionary *_facetimeIDStatuses;
     NSDictionary *_facetimeAudioIDStatuses;
+    NSDictionary *_screenSharingIDSStatuses;
 }
 
 @property (readonly, copy, nonatomic) NSArray *contacts;
@@ -25,9 +26,11 @@
 @property (weak, nonatomic) id<CKDetailsContactsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSDictionary *facetimeAudioIDStatuses; // @synthesize facetimeAudioIDStatuses=_facetimeAudioIDStatuses;
 @property (strong, nonatomic) NSDictionary *facetimeIDStatuses; // @synthesize facetimeIDStatuses=_facetimeIDStatuses;
+@property (strong, nonatomic) NSDictionary *screenSharingIDSStatuses; // @synthesize screenSharingIDSStatuses=_screenSharingIDSStatuses;
 @property (strong, nonatomic) NSString *serviceAvailabilityKey; // @synthesize serviceAvailabilityKey=_serviceAvailabilityKey;
 
 - (void).cxx_destruct;
+- (void)_callButtonPressedWithVideoEnabled:(BOOL)arg1;
 - (BOOL)_conversationHasLeft;
 - (void)_conversationJoinStateDidChange:(id)arg1;
 - (long long)_facetimeAudioIDStatusForEntity:(id)arg1;
@@ -37,13 +40,17 @@
 - (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (void)_handleLocationChanged:(id)arg1;
 - (BOOL)_hasLinkedTelephoneNumbersForEntity:(id)arg1;
+- (void)_inviteEntityToShareTheirScreen:(id)arg1;
 - (BOOL)_isFaceTimeAudioAvailable;
 - (BOOL)_isFaceTimeVideoAvailable;
-- (BOOL)_isTelephonyDevice;
+- (BOOL)_isTelephonyAvailable;
+- (void)_performUpdateViewModels;
 - (id)_preferredCallServiceToIDMap;
 - (BOOL)_preferredRoutesDisabledViaServerBag;
-- (void)_refreshFaceTimeIDSStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_refreshIDSStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (long long)_screenSharingStatusForEntity:(id)arg1;
 - (void)_setPreferredCallServiceToIDMap:(id)arg1;
+- (void)_shareMyScreenWithEntity:(id)arg1;
 - (BOOL)_showFaceTimeVideoButtonForEntity:(id)arg1;
 - (BOOL)_showMessageButtonForEntity:(id)arg1;
 - (BOOL)_showPhoneButtonForEntity:(id)arg1;
@@ -51,11 +58,25 @@
 - (void)_startCommunicationForEntity:(id)arg1 usePreferredRouteIfAvailable:(BOOL)arg2;
 - (void)_startFacetimeCommunicationForEntity:(id)arg1 audioOnly:(BOOL)arg2;
 - (void)_startMessageWithEntity:(id)arg1;
-- (void)_updateViewModels;
+- (void)_updateViewModelsWithDelay:(BOOL)arg1;
+- (void)beginFacetimeCallWithVideo:(BOOL)arg1;
+- (id)callMenuForEntity:(id)arg1;
+- (void)callableAddressesForEntity:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (id)contextMenuForEntity:(id)arg1 atom:(id)arg2;
+- (id)contextMenuForUnknownRecipient:(id)arg1 atom:(id)arg2;
+- (id)conversationContextMenuConfigForEntity:(id)arg1 allowConversationRemoval:(BOOL)arg2;
+- (id)conversationContextMenuForEntity:(id)arg1 allowConversationRemoval:(BOOL)arg2;
+- (id)conversationContextMenuForUnknownEntity:(id)arg1 allowConversationRemoval:(BOOL)arg2 showUnknownContactActionInPopover:(BOOL)arg3 unknownContactActionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
+- (BOOL)hasPreferredCallServiceForEntity:(id)arg1;
 - (id)initWithConversation:(id)arg1 delegate:(id)arg2;
+- (BOOL)isFaceTimeAudioAvailableForEntity:(id)arg1;
 - (unsigned long long)preferredCallServiceForID:(id)arg1;
+- (void)sendEmail;
 - (void)setPreferredCallService:(unsigned long long)arg1 forID:(id)arg2;
+- (BOOL)shouldAlwaysShowCallMenuForEntity:(id)arg1;
+- (BOOL)showScreenSharingButtonForEntity:(id)arg1;
+- (void)startAudioCommunicationUsingPreferredRouteIfAvailable:(BOOL)arg1;
 - (void)startCommunicationForEntity:(id)arg1 action:(unsigned long long)arg2 address:(id)arg3;
 - (void)startCommunicationForEntity:(id)arg1 action:(unsigned long long)arg2 address:(id)arg3 usePreferredRouteIfAvailable:(BOOL)arg4;
 

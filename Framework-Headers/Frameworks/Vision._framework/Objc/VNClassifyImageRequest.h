@@ -6,33 +6,38 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@class VNClassificationCustomHierarchy;
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
 
-@interface VNClassifyImageRequest : VNImageBasedRequest
+@class NSArray, NSString, VNClassificationCustomHierarchy;
+
+@interface VNClassifyImageRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
 }
 
 @property (readonly, copy, nonatomic) VNClassificationCustomHierarchy *customHierarchy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long imageCropAndScaleOption;
 @property (nonatomic) unsigned long long maximumHierarchicalObservations;
 @property (nonatomic) unsigned long long maximumLeafObservations;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
 
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (id)knownClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (const CDStruct_7d93034e *)revisionAvailability;
-- (id)_applicableDetectorAndOptions:(id *)arg1 error:(id *)arg2;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 - (void)_setCustomHierarchy:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (BOOL)defineCustomHierarchy:(id)arg1 error:(id *)arg2;
 - (id)defineCustomHierarchyWithRelationships:(id)arg1 error:(id *)arg2;
-- (id)description;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (void)setRevision:(unsigned long long)arg1;
-- (id)supportedImageSizeSet;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

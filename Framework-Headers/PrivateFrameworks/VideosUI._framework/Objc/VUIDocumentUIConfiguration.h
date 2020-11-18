@@ -10,6 +10,7 @@
 
 @interface VUIDocumentUIConfiguration : NSObject
 {
+    BOOL _supportsInAppBanner;
     BOOL _animated;
     BOOL _navigationBarHidden;
     BOOL _navigationBarAdjustedToSizeClass;
@@ -23,6 +24,7 @@
 @property (nonatomic, getter=isInteractivePopGestureAllowed) BOOL isInteractivePopGestureAllowed; // @synthesize isInteractivePopGestureAllowed=_isInteractivePopGestureAllowed;
 @property (nonatomic, getter=isNavigationBarAdjustedToSizeClass) BOOL navigationBarAdjustedToSizeClass; // @synthesize navigationBarAdjustedToSizeClass=_navigationBarAdjustedToSizeClass;
 @property (nonatomic, getter=isNavigationBarHidden) BOOL navigationBarHidden; // @synthesize navigationBarHidden=_navigationBarHidden;
+@property (nonatomic) BOOL supportsInAppBanner; // @synthesize supportsInAppBanner=_supportsInAppBanner;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *viewControllerDocumentIdentifier; // @synthesize viewControllerDocumentIdentifier=_viewControllerDocumentIdentifier;
 @property (copy, nonatomic) NSString *viewControllerIdentifier; // @synthesize viewControllerIdentifier=_viewControllerIdentifier;

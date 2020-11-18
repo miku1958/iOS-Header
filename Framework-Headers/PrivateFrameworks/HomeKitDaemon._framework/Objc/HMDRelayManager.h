@@ -12,17 +12,17 @@
 #import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
 @class HMDHome, HMFNetMonitor, IDSService, NSHashTable, NSMutableArray, NSObject, NSString, NSURLSession;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDRelayManager : HMFObject <HMFNetMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate, HMFLogging>
 {
+    id<HMFLocking> _lock;
     BOOL _supported;
     BOOL _enabled;
     unsigned long long _currentState;
     NSString *_controllerIdentifier;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     IDSService *_idsService;
     NSHashTable *_delegates;
     NSHashTable *_relayAccessories;
@@ -42,7 +42,6 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
 @property (readonly, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSHashTable *relayAccessories; // @synthesize relayAccessories=_relayAccessories;
 @property (readonly, nonatomic) NSMutableArray *relayStreams; // @synthesize relayStreams=_relayStreams;
 @property (readonly) Class superclass;

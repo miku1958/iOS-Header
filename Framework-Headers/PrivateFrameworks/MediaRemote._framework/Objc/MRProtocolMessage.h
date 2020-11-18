@@ -17,7 +17,8 @@
     BOOL _isReply;
     PBCodable *_underlyingCodableMessage;
     NSError *_error;
-    NSString *_identifier;
+    NSString *_replyIdentifier;
+    NSString *_uniqueIdentifier;
     unsigned long long _timestamp;
     MRProtocolClientConnection *_clientConnection;
 }
@@ -26,19 +27,20 @@
 @property (readonly, nonatomic) NSString *description;
 @property (readonly, nonatomic) unsigned long long encryptionType;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isReply; // @synthesize isReply=_isReply;
 @property (readonly, nonatomic) MSVMultiCallback *messagePurgedCallbacks;
 @property (readonly, nonatomic) MSVMultiCallback *messageSentCallbacks;
 @property (readonly, nonatomic) unsigned long long priority;
 @property (readonly, nonatomic) NSData *protobufData;
+@property (copy, nonatomic) NSString *replyIdentifier; // @synthesize replyIdentifier=_replyIdentifier;
 @property (readonly, nonatomic) BOOL shouldLog;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) unsigned long long type;
 @property (strong, nonatomic) PBCodable *underlyingCodableMessage; // @synthesize underlyingCodableMessage=_underlyingCodableMessage;
+@property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (unsigned long long)currentProtocolVersion;
-+ (id)protocolMessageWithProtobufData:(id)arg1;
++ (id)protocolMessageWithProtobufData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;

@@ -18,14 +18,18 @@ __attribute__((visibility("hidden")))
     unsigned int _unit;
     unsigned int _flags;
     unsigned int _clumpID;
+    float _defaultValue;
+    unsigned int _originalOrder;
     NSString *_unitName;
     NSArray *_valueStrings;
 }
 
 @property (nonatomic) unsigned int clumpID; // @synthesize clumpID=_clumpID;
+@property (nonatomic) float defaultValue; // @synthesize defaultValue=_defaultValue;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (nonatomic) float maxValue; // @synthesize maxValue=_maxValue;
 @property (nonatomic) float minValue; // @synthesize minValue=_minValue;
+@property (nonatomic) unsigned int originalOrder; // @synthesize originalOrder=_originalOrder;
 @property (nonatomic) unsigned int unit; // @synthesize unit=_unit;
 @property (strong, nonatomic) NSString *unitName; // @synthesize unitName=_unitName;
 @property (strong, nonatomic) NSArray *valueStrings; // @synthesize valueStrings=_valueStrings;

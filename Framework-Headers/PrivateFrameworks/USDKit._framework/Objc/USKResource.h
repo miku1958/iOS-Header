@@ -8,7 +8,7 @@
 
 @interface USKResource : NSObject
 {
-    struct shared_ptr<pxrInternal_v0_19__pxrReserved__usdkit__::ArAsset> _asset;
+    struct shared_ptr<pxrInternal_v0_20__pxrReserved__usdkit__::ArAsset> _asset;
     struct shared_ptr<const char> _buffer;
     long long _length;
 }

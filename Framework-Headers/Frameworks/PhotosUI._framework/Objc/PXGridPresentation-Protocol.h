@@ -6,18 +6,21 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, PHAsset, PHAssetCollection, PHCollection, PHFetchResult, PXPhotoKitCollectionsDataSourceManagerConfiguration, UIViewController;
-@protocol NSFastEnumeration, PXGridPresentationNavigationItemDelegate;
+@class NSArray, NSString, PHAsset, PHAssetCollection, PHCollection, PHCollectionList, PHFetchResult, PXPhotosUIViewController, UIViewController;
+@protocol NSFastEnumeration, PXGridPresentationBarsUpdateDelegate;
 
 @protocol PXGridPresentation <NSObject>
 
 @optional
-- (UIViewController *)createAlbumListViewControllerWithConfiguration:(PXPhotoKitCollectionsDataSourceManagerConfiguration *)arg1;
-- (void)createGridViewControllerWithAssets:(id<NSFastEnumeration>)arg1 withTitle:(NSString *)arg2 hideTabBar:(BOOL)arg3 gridPresentationContext:(long long)arg4 containerViewController:(UIViewController *)arg5 navigationItemDelegate:(id<PXGridPresentationNavigationItemDelegate>)arg6 andCompletion:(void (^)(UIViewController *))arg7;
+- (UIViewController *)createAlbumListViewControllerWithCollectionList:(PHCollectionList *)arg1;
+- (PXPhotosUIViewController *)createAssetPickerPhotosAlbumViewControllerForAlbum:(PHAssetCollection *)arg1;
+- (void)createGridViewControllerWithAssets:(id<NSFastEnumeration>)arg1 withTitle:(NSString *)arg2 hideTabBar:(BOOL)arg3 gridPresentationContext:(long long)arg4 containerViewController:(UIViewController *)arg5 barsUpdateDelegate:(id<PXGridPresentationBarsUpdateDelegate>)arg6 andCompletion:(void (^)(UIViewController *))arg7;
 - (UIViewController *)createImportHistoryGridViewControllerWithCollection:(PHCollection *)arg1;
 - (UIViewController *)createPanoramaViewController;
 - (UIViewController *)createPhotosAlbumViewControllerForAlbum:(PHAssetCollection *)arg1 withFetchResult:(PHFetchResult *)arg2;
-- (UIViewController *)createPhotosPickerViewControllerWithSelectedAssets:(NSArray *)arg1 anchorAtAsset:(PHAsset *)arg2 inAssetCollection:(PHAssetCollection *)arg3 completionHandler:(void (^)(NSOrderedSet *))arg4;
-- (UIViewController *)createSharedAlbumListViewControllerWithConfiguration:(PXPhotoKitCollectionsDataSourceManagerConfiguration *)arg1;
+- (UIViewController *)createPhotosPickerViewControllerWithSelectedAssets:(NSArray *)arg1 anchorAtAsset:(PHAsset *)arg2 inAssetCollection:(PHAssetCollection *)arg3 options:(unsigned long long)arg4 completionHandler:(void (^)(NSOrderedSet *))arg5;
+- (UIViewController *)createPlacesViewControllerForAssetCollection:(PHAssetCollection *)arg1;
+- (UIViewController *)createViewControllerForAssetCollection:(PHAssetCollection *)arg1;
+- (UIViewController *)createViewControllerForAssetCollection:(PHAssetCollection *)arg1 existingAssetsFetchResult:(PHFetchResult *)arg2;
 @end
 

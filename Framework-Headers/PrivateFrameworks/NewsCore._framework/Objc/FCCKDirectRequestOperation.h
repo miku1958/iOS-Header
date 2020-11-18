@@ -12,10 +12,10 @@
 {
     BOOL _production;
     BOOL _operationFailsOnRequestFailure;
+    int _networkEventType;
     NSArray *_requests;
     NSString *_containerName;
     long long _requestType;
-    long long _networkEventType;
     double _timeoutIntervalForRequest;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCEdgeCacheHint *_edgeCacheHint;
@@ -33,7 +33,7 @@
 @property (copy, nonatomic) CDUnknownBlockType criticalNodeFailureTest; // @synthesize criticalNodeFailureTest=_criticalNodeFailureTest;
 @property (copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
 @property (strong, nonatomic) FCNetworkEvent *networkEvent; // @synthesize networkEvent=_networkEvent;
-@property (nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
+@property (nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property (nonatomic) BOOL operationFailsOnRequestFailure; // @synthesize operationFailsOnRequestFailure=_operationFailsOnRequestFailure;
 @property (nonatomic) BOOL production; // @synthesize production=_production;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
@@ -48,6 +48,10 @@
 + (id)URLSession;
 + (BOOL)_enableDebugLogLevel;
 + (id)_headersImpactingEdgeCache;
++ (BOOL)newTagFeedEnabled;
++ (BOOL)newTodayFeedEnabled;
++ (void)setNewTagFeedEnabled:(BOOL)arg1;
++ (void)setNewTodayFeedEnabled:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_bundleIDToReport;
 - (id)_errorFromHTTPResponse:(id)arg1;

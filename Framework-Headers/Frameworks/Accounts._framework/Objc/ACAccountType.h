@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Accounts/ACProtobufCoding-Protocol.h>
+#import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccountStore, NSSet, NSString, NSURL;
 
-@interface ACAccountType : NSObject <ACProtobufCoding, NSSecureCoding>
+@interface ACAccountType : NSObject <ACProtobufCoding, NSCopying, NSSecureCoding>
 {
     NSString *_accountTypeDescription;
     NSString *_identifier;
@@ -26,7 +27,6 @@
     NSSet *_supportedDataclasses;
     NSSet *_syncableDataclasses;
     NSSet *_accessKeys;
-    BOOL _encryptAccountProperties;
     NSString *_owningBundleID;
 }
 
@@ -38,7 +38,6 @@
 @property (strong, nonatomic) NSString *credentialType; // @synthesize credentialType=_credentialType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL encryptAccountProperties; // @synthesize encryptAccountProperties=_encryptAccountProperties;
 @property (readonly, nonatomic) NSString *fullDescription;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

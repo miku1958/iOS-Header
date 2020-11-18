@@ -63,10 +63,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_connectIfNeeded;
+- (void)_connectionDidAttemptConnection:(id)arg1;
 - (void)_connectionDidConnect:(id)arg1;
 - (void)_connectionDidInvalidate:(id)arg1;
 - (void)_connectionHasBecomeInvalid;
 - (void)_createRequestController;
+- (void)_getConnected:(BOOL *)arg1 connecting:(BOOL *)arg2 invalid:(BOOL *)arg3;
 - (void)_getConnected:(BOOL *)arg1 invalid:(BOOL *)arg2;
 - (void)_initRoutingController;
 - (void)_maybeReloadPlayerPathWithRoute:(id)arg1;

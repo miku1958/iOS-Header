@@ -10,9 +10,9 @@
 @protocol __NSString__;
 
 @protocol SBSSwitcherDemoCommandsClientToServerInterface <NSObject>
-- (BOOL)loadStashedSwitcherModelFromFilename:(NSString *)arg1;
+- (BOOL)loadStashedSwitcherModelFromPath:(NSString *)arg1;
 - (BOOL)setShouldDisableSwitcherModelUpdates:(NSNumber *)arg1;
-- (BOOL)stashSwitcherModelToFilename:(NSString *)arg1;
+- (BOOL)stashSwitcherModelToPath:(NSString *)arg1;
 - (BOOL)updateHiddenApplicationBundleIDs:(NSArray<__NSString__> *)arg1;
 @end
 

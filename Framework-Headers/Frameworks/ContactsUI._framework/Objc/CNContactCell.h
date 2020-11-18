@@ -6,9 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <ContactsUI/CNIndentableCell-Protocol.h>
+
 @class CNCardGroupItem, NSArray;
 
-@interface CNContactCell : UITableViewCell
+@interface CNContactCell : UITableViewCell <CNIndentableCell>
 {
     NSArray *_constantConstraints;
     NSArray *_variableConstraints;
@@ -22,7 +24,9 @@
 @property (nonatomic) BOOL showSeparator;
 @property (readonly, nonatomic) NSArray *variableConstraints;
 
++ (BOOL)shouldIndentWhileEditing;
 - (void).cxx_destruct;
+- (void)_setAnimating:(BOOL)arg1 clippingAdjacentCells:(BOOL)arg2;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

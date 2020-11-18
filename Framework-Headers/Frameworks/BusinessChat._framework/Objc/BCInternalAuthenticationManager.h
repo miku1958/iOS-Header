@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, BCInternalAuthenticationRequest, NSString;
+@class BCInternalAuthenticationRequest, NSString;
+@protocol ACAccountProtocol, ACAccountStoreProtocol;
 
 @interface BCInternalAuthenticationManager : NSObject
 {
     BCInternalAuthenticationRequest *_authenticationRequest;
-    ACAccount *_account;
-    ACAccountStore *_accountStore;
+    id<ACAccountProtocol> _account;
+    id<ACAccountStoreProtocol> _accountStore;
 }
 
-@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
-@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (strong, nonatomic) id<ACAccountProtocol> account; // @synthesize account=_account;
+@property (strong, nonatomic) id<ACAccountStoreProtocol> accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, copy, nonatomic) NSString *action;
 @property (strong, nonatomic) BCInternalAuthenticationRequest *authenticationRequest; // @synthesize authenticationRequest=_authenticationRequest;
 @property (readonly, copy, nonatomic) NSString *firstName;
@@ -34,6 +35,7 @@
 - (void)fetchCredentials:(CDUnknownBlockType)arg1;
 - (id)globalAuthToken;
 - (id)initWithAuthenticationRequest:(id)arg1;
+- (id)initWithAuthenticationRequest:(id)arg1 acAccount:(id)arg2 acAccountStore:(id)arg3;
 - (id)labelCategory;
 - (id)personIdentifier;
 

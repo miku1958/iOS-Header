@@ -9,12 +9,11 @@
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 
-@class HFWallpaperFileManager, HFWallpaperImageCache, HFWallpaperLegacyFileManager, NSMutableDictionary, NSString, NSUserDefaults;
-@protocol HFNamedWallpaperSource, HMFLocking;
+@class HFReaderWriterCache, HFWallpaperFileManager, HFWallpaperImageCache, HFWallpaperLegacyFileManager, NSString, NSUserDefaults;
+@protocol HFNamedWallpaperSource;
 
 @interface HFWallpaperManager : NSObject <HFHomeManagerObserver, HFHomeObserver>
 {
-    id<HMFLocking> _lock;
     BOOL _wallpaperSourceRegistered;
     BOOL _hasPreheatedCache;
     id<HFNamedWallpaperSource> _namedWallpaperSource;
@@ -22,8 +21,8 @@
     HFWallpaperLegacyFileManager *_legacyFileManager;
     HFWallpaperImageCache *_imageCache;
     NSUserDefaults *_userDefaults;
-    NSMutableDictionary *_wallpapers;
-    NSMutableDictionary *_wallpaperSlices;
+    HFReaderWriterCache *_wallpapersCache;
+    HFReaderWriterCache *_wallpaperSlicesCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,9 +35,9 @@
 @property (strong, nonatomic) id<HFNamedWallpaperSource> namedWallpaperSource; // @synthesize namedWallpaperSource=_namedWallpaperSource;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
-@property (strong, nonatomic) NSMutableDictionary *wallpaperSlices; // @synthesize wallpaperSlices=_wallpaperSlices;
+@property (strong, nonatomic) HFReaderWriterCache *wallpaperSlicesCache; // @synthesize wallpaperSlicesCache=_wallpaperSlicesCache;
 @property (readonly, nonatomic) BOOL wallpaperSourceRegistered; // @synthesize wallpaperSourceRegistered=_wallpaperSourceRegistered;
-@property (strong, nonatomic) NSMutableDictionary *wallpapers; // @synthesize wallpapers=_wallpapers;
+@property (strong, nonatomic) HFReaderWriterCache *wallpapersCache; // @synthesize wallpapersCache=_wallpapersCache;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -54,6 +53,7 @@
 - (void)_pruneUnusedWallpapers;
 - (void)_pruneUnusedWallpapersWithExistingHomeKitIdentifiers:(id)arg1;
 - (id)_resolveHomeKitObjectForKey:(id)arg1;
+- (void)_setImageCacheForWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
 - (void)_setWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
 - (void)_setWallpaper:(id)arg1 image:(id)arg2 forKey:(id)arg3;
 - (id)_sliceFromWallpaper:(id)arg1 variant:(long long)arg2 preloading:(BOOL)arg3;

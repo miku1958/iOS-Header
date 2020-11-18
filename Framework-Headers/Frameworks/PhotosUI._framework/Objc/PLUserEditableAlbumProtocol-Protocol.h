@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PLAlbumProtocol-Protocol.h>
+#import <PhotosUICore/PLAlbumProtocol-Protocol.h>
 
 @class NSArray, NSDictionary, NSIndexSet, NSMutableOrderedSet, NSString;
 

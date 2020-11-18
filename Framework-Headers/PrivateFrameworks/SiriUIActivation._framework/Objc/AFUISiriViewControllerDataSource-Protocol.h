@@ -12,6 +12,7 @@
 - (NSArray *)bulletinsForSiriViewController:(AFUISiriViewController *)arg1;
 - (NSArray *)contextAppInfosForSiriViewController:(AFUISiriViewController *)arg1;
 - (unsigned long long)lockStateForSiriViewController:(AFUISiriViewController *)arg1;
+- (struct UIEdgeInsets)safeAreaInsetsForSceneCreationInSiriViewController:(AFUISiriViewController *)arg1;
 - (AFBulletin *)siriViewController:(AFUISiriViewController *)arg1 bulletinWithIdentifier:(NSString *)arg2;
 
 @optional

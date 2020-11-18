@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (BOOL)processPairingForEntireLibraryInContext:(id)arg1 error:(id *)arg2;
-- (BOOL)processPairingForGroupIDs:(id)arg1 inContext:(id)arg2 duplicateDetection:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)processPairingForGroupIDs:(id)arg1 inContext:(id)arg2 deferredProcessingNeeded:(BOOL *)arg3 error:(id *)arg4;
 
 @end
 

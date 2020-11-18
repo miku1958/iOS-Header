@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)configureForAutomationType:(unsigned long long)arg1 buttonTarget:(id)arg2 action:(SEL)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)prepareForReuse;
 
 @end
 

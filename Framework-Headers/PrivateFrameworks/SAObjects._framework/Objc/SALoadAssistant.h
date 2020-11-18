@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSNumber, NSString;
 
 @interface SALoadAssistant : SABaseCommand <SAServerBoundCommand>
 {
@@ -16,12 +16,15 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSData *activationToken;
+@property (copy, nonatomic) NSString *appleConnectServiceTicket;
+@property (copy, nonatomic) NSString *appleConnectSessionToken;
 @property (copy, nonatomic) NSString *assistantId;
 @property (copy, nonatomic) NSString *connectionMode;
 @property (copy, nonatomic) NSString *connectionType;
 @property (copy, nonatomic) NSString *dataSharingOptInStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSNumber *deviceAuthVersion;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *language;
 @property (copy, nonatomic) NSString *lastKnownAceHostOfCompanion;

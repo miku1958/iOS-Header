@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFMessage, NSObject, NSUUID;
+@class HMFActivity, HMFMessage, NSObject, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDRemoteReadRequestMessage : HMFObject
@@ -14,16 +14,18 @@
     HMFMessage *_readMessage;
     NSUUID *_accessoryUUID;
     NSObject<OS_dispatch_queue> *_responseQueue;
+    HMFActivity *_activity;
 }
 
 @property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property (readonly, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property (readonly, nonatomic) HMFMessage *readMessage; // @synthesize readMessage=_readMessage;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
-- (id)initWithReadMessage:(id)arg1 accessoryUUID:(id)arg2 responseQueue:(id)arg3;
+- (id)initWithReadMessage:(id)arg1 accessoryUUID:(id)arg2 responseQueue:(id)arg3 activity:(id)arg4;
 
 @end
 

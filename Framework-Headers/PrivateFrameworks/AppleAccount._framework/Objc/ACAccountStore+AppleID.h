@@ -22,13 +22,14 @@
 - (id)aa_grandSlamAccountForAltDSID:(id)arg1;
 - (id)aa_grandSlamAccountForiCloudAccount:(id)arg1;
 - (BOOL)aa_isUsingiCloud;
+- (void)aa_loginAndUpdateiCloudAccount:(id)arg1 delegateParams:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)aa_loginAndUpdateiCloudAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)aa_primaryAppleAccount;
 - (void)aa_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)aa_primaryAppleAccountWithPreloadedDataclasses;
 - (id)aa_recommendedAppleIDForAccountSignInWithTypeIdentifier:(id)arg1;
 - (void)aa_registerAppleAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)aa_registerAppleAccountWithHSA:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)aa_registerAppleAccountWithHSA:(id)arg1 usingCookieHeaders:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)aa_updatePropertiesForAppleAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)aa_updatePropertiesForAppleAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)accountWithAppleID:(id)arg1;

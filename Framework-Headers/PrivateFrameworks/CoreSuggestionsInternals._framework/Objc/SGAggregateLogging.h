@@ -18,7 +18,6 @@
 + (void)app:(id)arg1 performedAction:(id)arg2 onEvents:(id)arg3 withResult:(id)arg4 elapsedTime:(unsigned long long)arg5;
 + (void)assetVersion;
 + (void)assetVersion:(long long)arg1;
-+ (void)clearDistributionKey:(id)arg1;
 + (void)contactConfirmed:(id)arg1 inApp:(unsigned long long)arg2;
 + (void)contactRejected:(id)arg1 inApp:(unsigned long long)arg2;
 + (void)contactSuggestionImpressionsViaBanner:(int)arg1;
@@ -37,7 +36,6 @@
 + (void)eventsFoundOnDeviceEnabled:(BOOL)arg1;
 + (id)eventsFromEntity:(id)arg1;
 + (void)eventsSuggested:(id)arg1 withElapsedTime:(unsigned long long)arg2 inApp:(unsigned long long)arg3;
-+ (void)flushSynchronously;
 + (void)harvestDrainedNumberOfMails:(int)arg1;
 + (void)harvestedEntity:(id)arg1 withElapsedTime:(unsigned long long)arg2;
 + (void)harvestedMessageInQueueSince:(double)arg1;
@@ -62,20 +60,12 @@
 + (void)performedAction:(id)arg1 onDetail:(id)arg2 forContact:(id)arg3;
 + (void)performedAction:(id)arg1 onEventInCalendar:(id)arg2;
 + (void)performedAction:(id)arg1 onRecordForContact:(id)arg2;
-+ (void)persistInMemoryStatisticsToDatabase;
-+ (void)persistInMemoryStatisticsToDatabaseInternal:(id)arg1;
-+ (void)platform_flushSynchronously;
-+ (void)platform_persistInMemoryStatisticsToDatabase;
-+ (void)platform_popMetricsFromDatabaseAndSendToMessageTracer;
-+ (void)platform_setEntityStore:(id)arg1;
-+ (void)popMetricsFromDatabaseAndSendToMessageTracer;
 + (void)pushValue:(double)arg1 toDistKeyWithDomain:(id)arg2 suffix:(id)arg3;
 + (void)pushValue:(double)arg1 toDistKeyWithSuffix:(id)arg2;
 + (void)pushValueForDistributionKeyWithDomain:(id)arg1 subdomain:(id)arg2 suffix:(id)arg3 action:(id)arg4 value:(long long)arg5;
 + (void)reMatched:(id)arg1;
 + (void)recordConfirmedForContact:(id)arg1;
 + (void)recordRejectedForContact:(id)arg1;
-+ (void)setEntityStore:(id)arg1;
 + (void)setKeyWithDomain:(id)arg1 suffix:(id)arg2 toValue:(unsigned long long)arg3;
 + (void)setValueForScalarKeyWithDomain:(id)arg1 subdomain:(id)arg2 suffix:(id)arg3 action:(id)arg4 value:(long long)arg5;
 + (void)suggestionImpressionsViaBanner:(int)arg1;

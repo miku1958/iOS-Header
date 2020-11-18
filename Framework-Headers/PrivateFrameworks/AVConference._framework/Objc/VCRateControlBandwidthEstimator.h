@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SuddenChangeParameters;
+@class SuddenChangeParameters, VCRateControlServerBag;
 
 __attribute__((visibility("hidden")))
 @interface VCRateControlBandwidthEstimator : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned int _referencePacketDataSize;
     BOOL _isInitialized;
     BOOL _isFirstBWEstimationReleased;
+    unsigned int _lastProbingSequenceTimestamp;
     unsigned int _lastProbingSequenceReferenceTimestamp;
     double _firstDivergeTime;
     int _bandwidthDivergeCount;
@@ -37,19 +38,27 @@ __attribute__((visibility("hidden")))
     double _estimatedBandwidthUncapped;
     unsigned int _radioAccessTechnology;
     unsigned int _mode;
-    unsigned int _bandwidthEstimationState;
+    int _bandwidthEstimationState;
+    BOOL _fastSuddenBandwidthDetectionEnabled;
+    VCRateControlServerBag *_serverBag;
+    unsigned int _minProbingSequenceSize;
+    void *_logBWEDump;
 }
 
+@property (readonly, nonatomic) int bandwidthEstimationState; // @synthesize bandwidthEstimationState=_bandwidthEstimationState;
 @property (nonatomic) double estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
 @property (nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
+@property (nonatomic) BOOL fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
 @property (nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property (nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
+@property (strong, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
 
 - (void)calculateBandwidthEstimationAtTime:(double)arg1 mediaTimestamp:(unsigned int)arg2 mediaDataSize:(unsigned int)arg3 probingSequence:(BOOL)arg4 probingSequenceID:(unsigned int)arg5;
 - (void)calculateBandwidthEstimationForBandwidthSample:(double)arg1 arrivalTime:(double)arg2;
 - (void)compensateSuddenChangeBandwidths;
 - (void)dealloc;
 - (void)detectSuddenChangeWithBandwidth:(double)arg1 suddenChangeAbove:(BOOL *)arg2 suddenChangeBelow:(BOOL *)arg3;
+- (void)enableBWELogDump:(void *)arg1;
 - (id)init;
 - (void)initializeBandwidthEstimationAtTime:(double)arg1 mediaTimestamp:(unsigned int)arg2 probingSequence:(BOOL)arg3 probingSequenceID:(unsigned int)arg4;
 - (BOOL)isPacketProcessedLateWithArrivalTime:(double)arg1;

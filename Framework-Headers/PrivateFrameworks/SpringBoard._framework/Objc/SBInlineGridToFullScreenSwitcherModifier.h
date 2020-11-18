@@ -22,21 +22,20 @@
 - (void).cxx_destruct;
 - (BOOL)_isIndexFullScreenAppLayout:(unsigned long long)arg1;
 - (double)_unselectedCardScale;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
 - (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
 - (id)appLayoutToScrollToBeforeTransitioning;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (double)dimmingAlpha;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (double)homeScreenBackdropBlurProgress;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (id)initWithTransitionID:(id)arg1 fullScreenAppLayout:(id)arg2 multitaskingModifier:(id)arg3 fullscreenCornerRadii:(struct UIRectCornerRadii)arg4 dimInactiveCards:(BOOL)arg5;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettings;
-- (long long)liveContentRasterizationStyle;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)plusButtonAlpha;
 - (long long)plusButtonStyle;
@@ -44,8 +43,9 @@
 - (double)reopenClosedWindowsButtonScale;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 
 @end
 

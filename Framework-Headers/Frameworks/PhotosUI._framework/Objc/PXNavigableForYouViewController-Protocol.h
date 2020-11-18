@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, PXMemoriesFeedUIViewController, UIViewController;
+@class NSString, PXMemoriesFeedUIViewController;
 
 @protocol PXNavigableForYouViewController
-- (UIViewController *)navigateToDetailsForMemoryWithLocalIdentifier:(NSString *)arg1;
+- (void)navigateToDetailsForMemoryWithLocalIdentifier:(NSString *)arg1 animated:(BOOL)arg2;
 - (PXMemoriesFeedUIViewController *)navigateToShowAllMemoriesFeedAnimated:(BOOL)arg1;
 @end
 

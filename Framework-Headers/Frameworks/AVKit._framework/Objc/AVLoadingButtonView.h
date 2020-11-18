@@ -8,7 +8,7 @@
 
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVButton, NSString, UIActivityIndicatorView;
+@class AVButton, AVLayoutItemAttributes, NSString, UIActivityIndicatorView;
 
 __attribute__((visibility("hidden")))
 @interface AVLoadingButtonView : UIView <AVPlaybackControlsViewItem>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _collapsedOrExcluded;
     BOOL _collapsed;
     BOOL _showsLoadingIndicator;
+    AVLayoutItemAttributes *_layoutAttributes;
     AVButton *_button;
     UIActivityIndicatorView *_loadingIndicator;
 }
@@ -34,17 +35,18 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (strong, nonatomic) UIActivityIndicatorView *loadingIndicator; // @synthesize loadingIndicator=_loadingIndicator;
 @property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) BOOL showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_updateIsHiddenAndAlpha;
+- (void)_updateLayoutItem;
 - (id)initWithTitle:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutAttributesDidChange;
 - (void)layoutSubviews;
-- (void)setHidden:(BOOL)arg1;
 
 @end
 

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI218TagFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *readingList;
+    MISSING_TYPE *appConfigManager;
 }
 
 - (void).cxx_destruct;

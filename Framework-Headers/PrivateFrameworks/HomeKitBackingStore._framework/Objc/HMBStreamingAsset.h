@@ -7,11 +7,12 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitBackingStore/HMBModelNativeCKWrapper-Protocol.h>
+#import <HomeKitBackingStore/HMBModelObjectMerging-Protocol.h>
 #import <HomeKitBackingStore/NSSecureCoding-Protocol.h>
 
 @class CKStreamingAsset, NSString;
 
-@interface HMBStreamingAsset : HMFObject <NSSecureCoding, HMBModelNativeCKWrapper>
+@interface HMBStreamingAsset : HMFObject <NSSecureCoding, HMBModelNativeCKWrapper, HMBModelObjectMerging>
 {
     CKStreamingAsset *_uploadStreamingAsset;
     CKStreamingAsset *_downloadStreamingAsset;
@@ -26,14 +27,15 @@
 
 + (void)applyNativeCKValue:(id)arg1 fromSource:(unsigned long long)arg2 associatingWith:(id)arg3 toModel:(id)arg4 propertyNamed:(id)arg5;
 + (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
-+ (BOOL)includeInModelEncoding;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
+- (id)hmbObjectByMergingFromObject:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStreamingAsset:(id)arg1;
+- (id)initWithUploadStreamingAsset:(id)arg1;
 - (id)initWithUploadStreamingAsset:(id)arg1 downloadStreamingAsset:(id)arg2;
 - (id)nativeCKValueWithEncodingContext:(id)arg1 error:(id *)arg2;
 

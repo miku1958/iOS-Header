@@ -16,14 +16,14 @@
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_addKeysToJSONDictionary:(id)arg1;
+- (id)_generateUniqueIdentifier;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
+- (id)appIdentifier;
 - (BOOL)appearsInDailySnapshotForFamily:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
 - (BOOL)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;

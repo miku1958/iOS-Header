@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)activateSingleAppModeSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)activateSingleAppModeSessionWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

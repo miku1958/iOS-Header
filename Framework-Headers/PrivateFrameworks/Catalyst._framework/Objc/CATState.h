@@ -10,7 +10,7 @@
 
 @interface CATState : NSObject
 {
-    NSMutableDictionary *mTranstionByTriggeringEvent;
+    NSMutableDictionary *mTransitionByTriggeringEvent;
     NSString *_name;
     SEL _enterAction;
     SEL _exitAction;

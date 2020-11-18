@@ -20,6 +20,7 @@
 - (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 associatedAccessories:(id)arg2;
 
 @end
 

@@ -44,6 +44,7 @@
 - (void)beginDraggingItem:(id)arg1 withDragImage:(id)arg2 fromRect:(struct CGRect)arg3;
 - (void)browserDragViewController:(id)arg1 dragEndedWithTarget:(id)arg2;
 - (void)browserDragViewController:(id)arg1 draggedWithTarget:(id)arg2;
+- (id)browserDragViewControllerTargetView:(id)arg1;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithTargetView:(id)arg1;

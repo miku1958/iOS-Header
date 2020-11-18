@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 @protocol OS_dispatch_source, OS_xpc_object;
 
 @interface GEODaemon : NSObject
 {
-    NSMutableSet *_servers;
+    NSMutableDictionary *_servers;
     NSMutableSet *_peers;
     NSObject<OS_dispatch_source> *_sigInfoSrc;
     NSObject<OS_dispatch_source> *_sigTermSrc;

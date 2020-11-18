@@ -4,32 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UICollectionViewListCell.h>
+#import <UIKit/UICollectionViewListCell.h>
 
-@class CSSearchableItem, UILabel, UILayoutGuide;
+@class CSSearchableItem;
 
-@interface SUIKSearchResultCollectionViewListCell : _UICollectionViewListCell
+@interface SUIKSearchResultCollectionViewListCell : UICollectionViewListCell
 {
-    UILabel *_textLabel;
-    UILabel *_detailTextLabel;
-    UILayoutGuide *_simulatedImageViewLayoutGuide;
     CSSearchableItem *_searchableItem;
 }
 
-@property (strong, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property (strong, nonatomic) CSSearchableItem *searchableItem; // @synthesize searchableItem=_searchableItem;
-@property (strong, nonatomic) UILayoutGuide *simulatedImageViewLayoutGuide; // @synthesize simulatedImageViewLayoutGuide=_simulatedImageViewLayoutGuide;
-@property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-- (void)_commonInit;
 - (void)configureWithSearchableItem:(id)arg1;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
-- (void)setHighlighted:(BOOL)arg1;
+- (void)updateConfigurationUsingState:(id)arg1;
 
 @end
 

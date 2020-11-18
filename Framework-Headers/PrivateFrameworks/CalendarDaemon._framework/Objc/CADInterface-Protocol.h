@@ -10,6 +10,7 @@
 #import <CalendarDaemon/CADCalendarItemInterface-Protocol.h>
 #import <CalendarDaemon/CADCalendarToolInterface-Protocol.h>
 #import <CalendarDaemon/CADDatabaseInterface-Protocol.h>
+#import <CalendarDaemon/CADDatabaseStorageManagementInterface-Protocol.h>
 #import <CalendarDaemon/CADEventInterface-Protocol.h>
 #import <CalendarDaemon/CADInternalInterface-Protocol.h>
 #import <CalendarDaemon/CADMigrationInterface-Protocol.h>
@@ -22,6 +23,6 @@
 #import <CalendarDaemon/CADSyncInterface-Protocol.h>
 #import <CalendarDaemon/CADTestingInterface-Protocol.h>
 
-@protocol CADInterface <CADAccessInterface, CADDatabaseInterface, CADObjectInterface, CADSourceInterface, CADCalendarInterface, CADCalendarItemInterface, CADEventInterface, CADReminderInterface, CADAlarmEngineInterface, CADNotificationMonitorInterface, CADSpotlightInterface, CADInternalInterface, CADTestingInterface, CADMigrationInterface, CADSyncInterface, CADCalendarToolInterface, CADNotificationCountInterface>
+@protocol CADInterface <CADAccessInterface, CADDatabaseInterface, CADObjectInterface, CADSourceInterface, CADCalendarInterface, CADCalendarItemInterface, CADEventInterface, CADReminderInterface, CADAlarmEngineInterface, CADNotificationMonitorInterface, CADSpotlightInterface, CADInternalInterface, CADTestingInterface, CADMigrationInterface, CADSyncInterface, CADCalendarToolInterface, CADNotificationCountInterface, CADDatabaseStorageManagementInterface>
 @end
 

@@ -45,9 +45,7 @@
 - (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(id)arg3 sessionDescriptor:(id)arg4 maxSessionsLimit:(unsigned long long)arg5 sessionsInBatch:(unsigned long long)arg6 currentModelWeights:(id)arg7 intercept:(BOOL)arg8 skew:(double)arg9 threshold:(double)arg10 isMultiLabel:(BOOL)arg11 positiveLabel:(unsigned long long)arg12 evaluationLevel:(unsigned long long)arg13;
 - (void)loadSessionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)normalizeRegressor:(id)arg1;
-- (id)run;
-- (void)runUntilDoneForTesting;
-- (id)runWhile:(CDUnknownBlockType)arg1 didFinish:(BOOL *)arg2;
+- (id)runWithError:(id *)arg1;
 - (id)toPlistWithChunks:(id)arg1;
 
 @end

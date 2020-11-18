@@ -21,6 +21,7 @@
 - (id)_shippingName;
 - (id)errors;
 - (BOOL)isValidWithError:(id *)arg1;
+- (id)paymentContactFormatErrors;
 
 @end
 

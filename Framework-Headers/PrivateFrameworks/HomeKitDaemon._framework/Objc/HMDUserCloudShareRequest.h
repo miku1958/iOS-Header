@@ -6,34 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class HMDHome, HMDUser, NSData, NSDate, NSString, NSUUID;
+@class HMDHome, NSDate, NSString, NSUUID;
 
 @interface HMDUserCloudShareRequest : NSObject
 {
     NSUUID *_identifier;
     NSDate *_startDate;
-    HMDHome *_home;
-    HMDUser *_fromUser;
-    HMDUser *_toUser;
-    NSData *_encodedShareURL;
-    NSData *_shareToken;
     NSString *_containerID;
-    CDUnknownBlockType _completion;
+    HMDHome *_home;
 }
 
-@property (readonly, copy) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (readonly) NSString *containerID; // @synthesize containerID=_containerID;
-@property (readonly) NSData *encodedShareURL; // @synthesize encodedShareURL=_encodedShareURL;
-@property (readonly, weak) HMDUser *fromUser; // @synthesize fromUser=_fromUser;
 @property (readonly, weak) HMDHome *home; // @synthesize home=_home;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly) NSData *shareToken; // @synthesize shareToken=_shareToken;
 @property (readonly) NSDate *startDate; // @synthesize startDate=_startDate;
-@property (readonly, weak) HMDUser *toUser; // @synthesize toUser=_toUser;
 
 - (void).cxx_destruct;
-- (id)description;
-- (id)initWithHome:(id)arg1 fromUser:(id)arg2 toUser:(id)arg3 encodedShareURL:(id)arg4 shareToken:(id)arg5 containerID:(id)arg6 currentDate:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (id)initWithStartDate:(id)arg1 containerID:(id)arg2 home:(id)arg3;
 
 @end
 

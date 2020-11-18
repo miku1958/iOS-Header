@@ -11,7 +11,6 @@
 
 @class HMHomeManager, NSString, PSSpecifier;
 
-__attribute__((visibility("hidden")))
 @interface PSUIPasscodeLockController : PSListController <HMHomeManagerDelegate, DevicePINControllerDelegate>
 {
     int _policyDictatedMaxFailedAttempts;

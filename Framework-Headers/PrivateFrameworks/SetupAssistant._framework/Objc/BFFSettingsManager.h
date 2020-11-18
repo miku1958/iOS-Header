@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber;
+@class NSArray, NSData, NSMutableArray, NSMutableDictionary, NSNumber;
 
 @interface BFFSettingsManager : NSObject
 {
@@ -25,8 +25,8 @@
     NSNumber *_stashedAutoUpdateEnabled;
     NSNumber *_stashedAutoDownloadEnabled;
     NSData *_stashedAccessibilityData;
-    NSDictionary *_stashedDeviceToDeviceMigrationSuccessInfo;
     NSNumber *_stashedUserInterfaceStyleMode;
+    NSMutableArray *_stashedAnalytics;
 }
 
 + (id)sharedManager;
@@ -45,6 +45,7 @@
 - (id)_preferencesForDomain:(id)arg1;
 - (void)_reset:(BOOL)arg1;
 - (void)_restoreAccessibilityData;
+- (void)_restoreAnalyticsData;
 - (unsigned long long)_restoreConfiguration;
 - (void)_restoreStashedFiles;
 - (void)_restoreWatchData;
@@ -74,9 +75,9 @@
 - (void)setScreenTimeEnabled:(BOOL)arg1;
 - (void)setUserInterfaceStyleMode:(long long)arg1;
 - (void)stashAccessibilityData:(id)arg1;
+- (void)stashAnalyticEvent:(id)arg1 payload:(id)arg2;
 - (id)stashBuildVersion;
 - (long long)stashConfigurationType;
-- (void)stashDeviceToDeviceMigrationSuccessInfo:(id)arg1;
 - (void)stashFlowSkipIdentifiers:(id)arg1;
 - (void)stashHapticType:(long long)arg1 forButtonKind:(long long)arg2;
 - (void)stashLocationServicesChoice:(BOOL)arg1;

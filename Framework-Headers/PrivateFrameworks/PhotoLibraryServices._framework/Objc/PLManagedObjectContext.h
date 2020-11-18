@@ -89,7 +89,6 @@
 - (void)_destroyDelayedSaveActions;
 - (void)_getInsertedIDs:(id)arg1 deletedIDs:(id)arg2 changedIDs:(id)arg3 adjustedIDs:(id)arg4 ofEntityKind:(id)arg5 fromRemoteContextDidSaveObjectIDsNotification:(id)arg6;
 - (void)_informPTPDelegateAboutChangesFromRemoteContextSaveNotification:(id)arg1;
-- (void)_logFaultForPotentialySlowFetchRequeset:(id)arg1;
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(BOOL)arg2;
 - (void)_notifyALAssetsLibraryWithChanges:(id)arg1 usingObjectIDs:(BOOL)arg2;
 - (void)_recordChangedKeys:(id)arg1 forObjectID:(id)arg2;
@@ -108,7 +107,6 @@
 - (id)getAndClearRecordedObjectsForCloudDeletion;
 - (BOOL)getAndClearSyncChangeMarker;
 - (void)getAndClearUpdatedObjectsAttributes:(id *)arg1 relationships:(id *)arg2;
-- (id)globalValueForKey:(id)arg1;
 - (BOOL)hasPreviouslyMergedDeleteForObject:(id)arg1;
 - (id)initWithConcurrencyType:(unsigned long long)arg1 libraryBundle:(id)arg2;
 - (id)initWithConcurrencyType:(unsigned long long)arg1 pathManager:(id)arg2 changeHandlingContainer:(id)arg3 coordinator:(id)arg4;
@@ -119,6 +117,7 @@
 - (id)libraryBundle;
 - (BOOL)obtainPermanentIDsForObjects:(id)arg1 error:(id *)arg2;
 - (id)pathManager;
+- (id)pl_executeFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)pl_fetchObjectsWithIDs:(id)arg1;
 - (id)pl_fetchObjectsWithIDs:(id)arg1 rootEntity:(id)arg2;
 - (BOOL)pl_performWithOptions:(unsigned long long)arg1 andBlock:(CDUnknownBlockType)arg2;
@@ -131,9 +130,10 @@
 - (void)registerFilesystemDeletionInfo:(id)arg1;
 - (void)resetAllFetchingAlbums;
 - (BOOL)save:(id *)arg1;
-- (void)setGlobalValue:(id)arg1 forKey:(id)arg2;
 - (void)setName:(id)arg1;
 - (void)setupLocalChangeNotifications;
+- (BOOL)shouldMergeFromRemoteContextWithChanges:(id)arg1;
+- (id)storeUUID;
 - (void)tearDownLocalChangeNotifications;
 - (void)updateTransactionAuthor;
 - (void)withDispatchGroup:(id)arg1 performBlock:(CDUnknownBlockType)arg2;

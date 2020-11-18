@@ -20,6 +20,8 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)__shouldRemoteViewControllerFenceOperations;
+- (BOOL)_canShowWhileLocked;
 - (void)_extensionRequestsDismiss;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 

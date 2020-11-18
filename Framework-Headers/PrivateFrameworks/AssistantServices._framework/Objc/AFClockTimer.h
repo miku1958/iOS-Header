@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <AssistantServices/AFClockItem-Protocol.h>
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString, NSURL, NSUUID;
 
-@interface AFClockTimer : NSObject <AFClockItem, NSCopying, NSSecureCoding>
+@interface AFClockTimer : NSObject <AFClockItem, NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     BOOL _isFiring;
     NSUUID *_timerID;
@@ -29,6 +30,8 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDate *dismissedDate;
 @property (readonly, copy, nonatomic) NSDate *dismissedDate; // @synthesize dismissedDate=_dismissedDate;
@@ -38,6 +41,7 @@
 @property (readonly, copy, nonatomic) NSDate *firedDate;
 @property (readonly, copy, nonatomic) NSDate *firedDate; // @synthesize firedDate=_firedDate;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isFiring;
 @property (readonly, nonatomic) BOOL isFiring; // @synthesize isFiring=_isFiring;
 @property (readonly, nonatomic) NSUUID *itemID;
@@ -45,6 +49,7 @@
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *timerID; // @synthesize timerID=_timerID;
 @property (readonly, copy, nonatomic) NSURL *timerURL; // @synthesize timerURL=_timerURL;
@@ -55,9 +60,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
+- (id)buildDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithTimerID:(id)arg1 timerURL:(id)arg2 isFiring:(BOOL)arg3 title:(id)arg4 state:(long long)arg5 duration:(double)arg6 type:(long long)arg7 fireTimeInterval:(double)arg8 fireDate:(id)arg9 firedDate:(id)arg10 dismissedDate:(id)arg11 lastModifiedDate:(id)arg12;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;

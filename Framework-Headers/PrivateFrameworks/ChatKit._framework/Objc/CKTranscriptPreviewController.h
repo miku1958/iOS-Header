@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface CKTranscriptPreviewController : CKViewController <CKTranscriptCollectionViewControllerDelegate>
 {
+    BOOL _isInitialLayout;
     CKConversation *_conversation;
     CKTranscriptCollectionView *_collectionView;
     double _transcriptWidth;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isInitialLayout; // @synthesize isInitialLayout=_isInitialLayout;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (readonly) Class superclass;
 @property (nonatomic) double transcriptWidth; // @synthesize transcriptWidth=_transcriptWidth;
@@ -35,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 doubleTappedItemAtIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 longPressedForItemWithIndexPath:(id)arg3;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 selectedItemAtIndexPath:(id)arg3;
+- (BOOL)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 shouldSelectChatItem:(id)arg3;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 showInlineReplyForItemWithIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
 - (BOOL)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(BOOL)arg4 error:(id *)arg5;
@@ -49,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)transcriptCollectionViewController:(id)arg1 didTapPluginStatusButtonForChatItem:(id)arg2;
 - (BOOL)transcriptCollectionViewController:(id)arg1 shouldCleanupFullscreenEffectUI:(id)arg2;
 - (BOOL)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
+- (double)transcriptCollectionViewController:(id)arg1 targetAlphaForChatItem:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (id)transcriptCollectionViewControllerAdditionalFullscreenEffectViews:(id)arg1;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
@@ -58,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
 - (void)transcriptCollectionViewControllerPlayingAudioDidChange:(id)arg1;
 - (void)transcriptCollectionViewControllerReportSpamButtonTapped:(id)arg1;
+- (void)transcriptCollectionViewControllerRestingStateDidChange:(id)arg1;
 - (BOOL)transcriptCollectionViewControllerShouldLayoutFullscreenEffects:(id)arg1;
 - (BOOL)transcriptCollectionViewControllerShouldPlayAudio:(id)arg1;
 - (void)transcriptCollectionViewControllerWillDisplayLastBalloon:(id)arg1;

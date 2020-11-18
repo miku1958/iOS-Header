@@ -27,7 +27,7 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (void)_addTransportControl:(id)arg1 toTransportControlsArray:(id)arg2;
-+ (id)_createTransportControlForType:(long long)arg1 withMediaRemoteCommand:(struct _MRMediaRemoteCommandInfo *)arg2;
++ (id)_createTransportControlForType:(long long)arg1 withMediaRemoteCommand:(void *)arg2;
 + (id)_descriptionForTransportControlGroup:(int)arg1;
 + (id)_descriptionForTransportControlType:(long long)arg1;
 + (int)_groupForTransportControlType:(long long)arg1;

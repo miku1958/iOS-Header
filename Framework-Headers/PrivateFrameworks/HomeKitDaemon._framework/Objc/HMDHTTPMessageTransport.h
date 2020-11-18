@@ -13,7 +13,7 @@
 @class HMDHTTPDevice, HMDHTTPServerMessageTransport, HMFNetServiceBrowser, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDHTTPMessageTransport : HMDRemoteMessageTransport <HMDHTTPClientMessageTransportDelegate, HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate>
+@interface HMDHTTPMessageTransport : HMDRemoteMessageTransport <HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate, HMDHTTPClientMessageTransportDelegate>
 {
     id<HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -81,6 +81,7 @@
 - (void)setServerTransport:(id)arg1;
 - (void)setTXTRecordValue:(id)arg1 forKey:(id)arg2;
 - (id)shortDescription;
+- (void)startObservingIsPublishingForService:(id)arg1;
 
 @end
 

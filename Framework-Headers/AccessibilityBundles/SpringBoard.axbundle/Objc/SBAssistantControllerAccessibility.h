@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_dismissForMainScreenWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_dismissForMainScreenWithFactory:(id)arg1 dismissalOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

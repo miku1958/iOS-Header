@@ -45,6 +45,7 @@
 @property (copy, nonatomic) NSString *productBuildVersion; // @synthesize productBuildVersion=_productBuildVersion;
 @property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (copy, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
+@property (readonly, nonatomic) long long relationship;
 @property (copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property (nonatomic) BOOL supportsCinnamonAntimonyGloryF; // @synthesize supportsCinnamonAntimonyGloryF=_supportsCinnamonAntimonyGloryF;
 @property (nonatomic) BOOL supportsCinnamonHW; // @synthesize supportsCinnamonHW=_supportsCinnamonHW;
@@ -57,7 +58,6 @@
 - (id)hd_deviceIdentifier;
 - (BOOL)hd_isEquivalentToDevice:(id)arg1;
 - (id)hd_shortDescription;
-- (unsigned long long)relationship;
 
 @end
 

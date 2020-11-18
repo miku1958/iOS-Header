@@ -13,11 +13,13 @@
     BOOL _isAnimationKeyTypeOfRotation;
     BOOL _isAnimationKeyHidden;
     BOOL _isAnimationKeyDoubleSided;
+    BOOL _additive;
     BOOL _isObjectTypeCGColor;
     BOOL _isContentsAnimation;
     NSString *_keyPath;
 }
 
+@property (readonly, nonatomic, getter=isAdditive) BOOL additive; // @synthesize additive=_additive;
 @property (readonly, nonatomic) BOOL isAnimationKeyDoubleSided; // @synthesize isAnimationKeyDoubleSided=_isAnimationKeyDoubleSided;
 @property (readonly, nonatomic) BOOL isAnimationKeyHidden; // @synthesize isAnimationKeyHidden=_isAnimationKeyHidden;
 @property (readonly, nonatomic) BOOL isAnimationKeyTypeOfRotation; // @synthesize isAnimationKeyTypeOfRotation=_isAnimationKeyTypeOfRotation;

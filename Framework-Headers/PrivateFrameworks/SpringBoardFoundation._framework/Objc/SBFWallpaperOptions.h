@@ -10,20 +10,23 @@
 #import <SpringBoardFoundation/NSCopying-Protocol.h>
 #import <SpringBoardFoundation/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString;
 
 @interface SBFWallpaperOptions : NSObject <NSCopying, BSDescriptionProviding, NSSecureCoding>
 {
     BOOL _magnifyEnabled;
     BOOL _supportsCropping;
+    BOOL _supportsRotation;
     BOOL _portrait;
     BOOL _hasVideo;
     NSString *_name;
     double _parallaxFactor;
     double _zoomScale;
+    double _rotationAngle;
     double _stillTimeInVideo;
     long long _wallpaperMode;
     long long _wallpaperStatus;
+    NSDictionary *_wallpaperKitData;
     struct CGRect _cropRect;
 }
 
@@ -38,16 +41,22 @@
 @property (nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
 @property (readonly, copy, nonatomic) NSData *persistentDataRepresentation;
 @property (nonatomic, getter=isPortrait) BOOL portrait; // @synthesize portrait=_portrait;
+@property (nonatomic) double rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 @property (nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsCropping; // @synthesize supportsCropping=_supportsCropping;
+@property (nonatomic) BOOL supportsRotation; // @synthesize supportsRotation=_supportsRotation;
+@property (copy, nonatomic) NSDictionary *wallpaperKitData; // @synthesize wallpaperKitData=_wallpaperKitData;
 @property (nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
 @property (nonatomic) long long wallpaperStatus; // @synthesize wallpaperStatus=_wallpaperStatus;
 @property (nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8 wallpaperKitData:(id)arg9;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10 wallpaperKitData:(id)arg11;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 supportsRotation:(BOOL)arg6 rotationAngle:(double)arg7 portrait:(BOOL)arg8 hasVideo:(BOOL)arg9 stillTimeInVideo:(double)arg10 wallpaperMode:(long long)arg11 wallpaperStatus:(long long)arg12;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct CGSize)bestWallpaperSizeForWallpaperSize:(struct CGSize)arg1 wallpaperScale:(double)arg2 deviceType:(long long)arg3 imageScale:(double)arg4;
@@ -58,7 +67,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
-- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
+- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 supportsRotation:(BOOL)arg6 rotationAngle:(double)arg7 portrait:(BOOL)arg8 hasVideo:(BOOL)arg9 stillTimeInVideo:(double)arg10 wallpaperMode:(long long)arg11 wallpaperStatus:(long long)arg12 wallpaperKitData:(id)arg13;
 - (id)initWithPersistentDataRepresentation:(id)arg1;
 - (id)initWithStream:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

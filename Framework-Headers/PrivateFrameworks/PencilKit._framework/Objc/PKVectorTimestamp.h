@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allUUIDs;
 - (id)clockElementForUUID:(id)arg1;
@@ -28,9 +29,11 @@
 - (long long)compareClock:(unsigned long long)arg1 subclock:(unsigned long long)arg2 forUUID:(id)arg3;
 - (unsigned long long)compareTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)incrementClockForUUID:(id)arg1;
 - (id)init;
 - (id)initWithArchive:(const struct VectorTimestamp *)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (BOOL)isEmpty;
 - (BOOL)isEqual:(id)arg1;

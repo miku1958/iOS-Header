@@ -29,6 +29,7 @@
     unsigned int _coordinateSpaceSourceContextID;
     long long _overlayEffectStyle;
     BOOL _shouldPointerUnderlayContent;
+    BOOL _shouldPointerSuppressMirroring;
 }
 
 @property (readonly, nonatomic) struct CGRect contentBounds; // @synthesize contentBounds=_contentBounds;
@@ -46,6 +47,7 @@
 @property (readonly, copy, nonatomic) NSValue *pointerSlipValue; // @synthesize pointerSlipValue=_pointerSlipValue;
 @property (readonly, nonatomic) double pointerVisualIntensity; // @synthesize pointerVisualIntensity=_pointerVisualIntensity;
 @property (readonly, nonatomic) unsigned long long preferredPointerMaterialLuminance; // @synthesize preferredPointerMaterialLuminance=_preferredPointerMaterialLuminance;
+@property (readonly, nonatomic) BOOL shouldPointerSuppressMirroring; // @synthesize shouldPointerSuppressMirroring=_shouldPointerSuppressMirroring;
 @property (readonly, nonatomic) BOOL shouldPointerUnderlayContent; // @synthesize shouldPointerUnderlayContent=_shouldPointerUnderlayContent;
 
 + (BOOL)supportsSecureCoding;

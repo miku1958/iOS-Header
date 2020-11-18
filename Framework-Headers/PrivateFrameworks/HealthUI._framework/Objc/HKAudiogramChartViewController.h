@@ -32,6 +32,8 @@
     long long _selectedOverlayEar;
     HKLollipopController *_lollipopController;
     HKAxis *_yAxis;
+    NSLayoutConstraint *_leadingMarginConstraint;
+    NSLayoutConstraint *_trailingMarginConstraint;
 }
 
 @property (strong, nonatomic) _HKAudiogramAnnotationViewDataSource *annotationViewDataSource; // @synthesize annotationViewDataSource=_annotationViewDataSource;
@@ -43,6 +45,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *leadingMarginConstraint; // @synthesize leadingMarginConstraint=_leadingMarginConstraint;
 @property (strong, nonatomic) HKLollipopController *lollipopController; // @synthesize lollipopController=_lollipopController;
 @property (nonatomic) double minimumAudiogramHeight; // @synthesize minimumAudiogramHeight=_minimumAudiogramHeight;
 @property (strong, nonatomic) HKScalarGraphCollectionViewController *scalarGraphCollectionController; // @synthesize scalarGraphCollectionController=_scalarGraphCollectionController;
@@ -52,6 +55,7 @@
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (strong, nonatomic) NSLayoutConstraint *stackViewHeightConstraint; // @synthesize stackViewHeightConstraint=_stackViewHeightConstraint;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSLayoutConstraint *trailingMarginConstraint; // @synthesize trailingMarginConstraint=_trailingMarginConstraint;
 @property (strong, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property (strong, nonatomic) HKSampleTypeUpdateController *updateController; // @synthesize updateController=_updateController;
 @property (strong, nonatomic) HKAxis *yAxis; // @synthesize yAxis=_yAxis;
@@ -62,6 +66,7 @@
 - (id)_accessibleColorFromColor:(id)arg1;
 - (void)_addContextView;
 - (void)_addControllerAsChildController:(id)arg1;
+- (void)_applyDynamicInsets:(struct UIEdgeInsets)arg1;
 - (id)_audiogramDisplayType;
 - (id)_audiogramLabelColorForStyle:(long long)arg1;
 - (id)_audiogramLineColorForStyle:(long long)arg1;
@@ -122,6 +127,7 @@
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

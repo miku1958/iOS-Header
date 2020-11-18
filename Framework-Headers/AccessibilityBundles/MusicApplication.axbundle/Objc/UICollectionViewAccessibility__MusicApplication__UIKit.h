@@ -13,6 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsShelfCollectionView;
+- (BOOL)_accessibilityShouldAvoidScrollingCollectionViewCells;
+- (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 - (BOOL)accessibilityShouldSpeakItemReorderEvents;
 
 @end

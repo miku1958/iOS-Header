@@ -20,7 +20,9 @@
 @property (strong, nonatomic) NSBundle *effectiveBundle;
 @property (copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property (readonly, nonatomic) double expectedGpsUpdateInterval;
+@property (nonatomic) BOOL fusionInfoEnabled;
 @property (nonatomic) int headingOrientation;
+@property (readonly, nonatomic) BOOL isAuthorizedForPreciseLocation;
 @property (readonly, nonatomic) BOOL isTracePlayer;
 @property (readonly, nonatomic) CLLocation *lastLocation;
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
@@ -31,6 +33,8 @@
 
 - (void)authorizationStatusOnQueue:(NSObject<OS_dispatch_queue> *)arg1 result:(void (^)(int))arg2;
 - (void)dismissHeadingCalibrationDisplay;
+- (void)isAuthorizedForPreciseLocationOnQueue:(NSObject<OS_dispatch_queue> *)arg1 result:(void (^)(BOOL))arg2;
+- (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)startUpdatingHeading;

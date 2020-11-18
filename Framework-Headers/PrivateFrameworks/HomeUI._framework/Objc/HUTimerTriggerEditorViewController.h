@@ -7,19 +7,21 @@
 #import <HomeUI/HUItemTableViewController.h>
 
 #import <HomeUI/HUDayOfWeekPickerCellDelegate-Protocol.h>
+#import <HomeUI/HUInlineDatePickerCellDelegate-Protocol.h>
 #import <HomeUI/HUTimerTriggerOffsetEditorDelegate-Protocol.h>
 #import <HomeUI/HUTriggerConditionEditorItemModuleControllerDelegate-Protocol.h>
 
-@class HFItem, HFTimerTriggerBuilder, HUTimerTriggerEditorItemManager, HUTriggerConditionEditorItemModuleController, NSArray, NSDateComponents, NSString;
+@class HFItem, HFTimerTriggerBuilder, HUGridLayoutOptions, HUTimerTriggerEditorItemManager, HUTriggerConditionEditorItemModuleController, NSArray, NSDateComponents, NSString;
 @protocol HUTriggerEditorDelegate;
 
-@interface HUTimerTriggerEditorViewController : HUItemTableViewController <HUDayOfWeekPickerCellDelegate, HUTimerTriggerOffsetEditorDelegate, HUTriggerConditionEditorItemModuleControllerDelegate>
+@interface HUTimerTriggerEditorViewController : HUItemTableViewController <HUDayOfWeekPickerCellDelegate, HUTimerTriggerOffsetEditorDelegate, HUTriggerConditionEditorItemModuleControllerDelegate, HUInlineDatePickerCellDelegate>
 {
     HFTimerTriggerBuilder *_timerTriggerBuilder;
     unsigned long long _mode;
     id<HUTriggerEditorDelegate> _delegate;
     HUTriggerConditionEditorItemModuleController *_conditionModuleController;
     HFItem *_selectedDateOptionItem;
+    HUGridLayoutOptions *_layoutOptions;
 }
 
 @property (readonly, nonatomic) HUTriggerConditionEditorItemModuleController *conditionModuleController; // @synthesize conditionModuleController=_conditionModuleController;
@@ -28,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HUTimerTriggerEditorItemManager *itemManager; // @dynamic itemManager;
+@property (strong, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) HFItem *selectedDateOptionItem; // @synthesize selectedDateOptionItem=_selectedDateOptionItem;
 @property (strong, nonatomic) NSDateComponents *selectedFireTimeComponents;
@@ -50,6 +53,7 @@
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 dismissDetailViewController:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 presentDetailViewController:(id)arg2;
+- (void)datePickerCell:(id)arg1 didSelectDate:(id)arg2;
 - (void)dayOfWeekPickerCell:(id)arg1 didChangeSelectedRecurrences:(id)arg2;
 - (id)initWithTimerTriggerBuilder:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
 - (id)itemModuleControllers;
@@ -63,6 +67,7 @@
 - (void)timerTriggerOffsetEditor:(id)arg1 didFinishWithOffset:(id)arg2;
 - (void)timerTriggerOffsetEditorDidCancel:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

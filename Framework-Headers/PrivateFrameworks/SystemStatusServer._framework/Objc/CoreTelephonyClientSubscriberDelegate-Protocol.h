@@ -6,12 +6,13 @@
 
 #import <SystemStatusServer/NSObject-Protocol.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSString;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSNumber, NSString;
 
 @protocol CoreTelephonyClientSubscriberDelegate <NSObject>
 
 @optional
 - (void)authTokenChanged:(CTServiceDescriptor *)arg1;
+- (void)prlVersionDidChange:(CTXPCServiceSubscriptionContext *)arg1 version:(NSNumber *)arg2;
 - (void)shortLabelsDidChange;
 - (void)simLockSaveRequestDidComplete:(CTXPCServiceSubscriptionContext *)arg1 success:(BOOL)arg2;
 - (void)simPinChangeRequestDidComplete:(CTXPCServiceSubscriptionContext *)arg1 success:(BOOL)arg2;

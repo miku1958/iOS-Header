@@ -7,97 +7,78 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDAccessorySettingProtocol-Protocol.h>
-#import <HomeKitDaemon/HMDAccessorySettingUpdateDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAccessorySettingUpdateProtocol-Protocol.h>
-#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
-#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDSettingBaseProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingContainer, HMDAccessorySettingGroup, HMDAccessorySettingModel, HMDAccessorySettingUpdateBase, HMFMessageDestination, HMFMessageDispatcher, NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDAccessorySettingModel, HMFMessageDispatcher, NSArray, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDAccessorySetting : HMFObject <HMDBackingStoreObjectProtocol, HMDAccessorySettingUpdateDelegate, HMFLogging, HMDAccessorySettingUpdateProtocol, HMDAccessorySettingProtocol, HMDHomeMessageReceiver, NSSecureCoding>
+@interface HMDAccessorySetting : HMFObject <HMFLogging, HMDAccessorySettingUpdateProtocol, HMDAccessorySettingProtocol, NSSecureCoding, HMDSettingBaseProtocol>
 {
+    id<HMFLocking> _lock;
+    NSMutableSet *_inMemoryCachedConstraintRemovals;
+    NSMutableArray *_inMemoryCachedConstraints;
     id _value;
     NSString *_name;
     long long _type;
     NSMutableArray *_constraints;
-    NSMutableSet *_constraintItemsMarkedForRemoval;
+    BOOL _reflected;
     unsigned long long _configurationVersion;
-    HMDAccessorySetting *_mediaSystemSetting;
+    NSUUID *_parentIdentifier;
+    NSString *_keyPath;
     NSUUID *_identifier;
-    HMDAccessorySettingGroup *_group;
     unsigned long long _properties;
-    HMDAccessorySettingUpdateBase *_updateSetting;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_messageDispatcher;
-    HMDAccessorySettingContainer *_container;
-    HMFMessageDestination *_messageDestination;
+    HMDAccessorySettingModel *_model;
+    NSArray *_models;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned long long configurationVersion; // @synthesize configurationVersion=_configurationVersion;
 @property (readonly, copy) NSArray *constraints;
-@property (strong, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak) HMDAccessorySettingGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly) NSString *keyPath;
-@property (weak) HMDAccessorySetting *mediaSystemSetting; // @synthesize mediaSystemSetting=_mediaSystemSetting;
-@property (strong, nonatomic) HMFMessageDestination *messageDestination; // @synthesize messageDestination=_messageDestination;
+@property (readonly) BOOL isCollectionType;
+@property (readonly) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, copy) NSSet *messageReceiverChildren;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (readonly) HMDAccessorySettingModel *model;
-@property (readonly, copy) NSArray *models;
+@property (readonly) HMDAccessorySettingModel *model; // @synthesize model=_model;
+@property (readonly, copy) NSArray *models; // @synthesize models=_models;
 @property (readonly, copy) NSString *name;
+@property (readonly, copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (readonly) unsigned long long properties; // @synthesize properties=_properties;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (getter=isReflected) BOOL reflected; // @synthesize reflected=_reflected;
 @property (readonly) Class superclass;
 @property (readonly) long long type;
-@property (strong, nonatomic) HMDAccessorySettingUpdateBase *updateSetting; // @synthesize updateSetting=_updateSetting;
 @property (readonly, copy) id value;
 
-+ (BOOL)hasMessageReceiverChildren;
++ (id)decodedValue:(id)arg1 error:(id *)arg2;
 + (id)logCategory;
 + (id)supportedConstraintClasses;
 + (id)supportedValueClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_fixupAccessorySetting;
-- (id)_fixupMergeStrategyConstraints;
-- (void)_handleAddConstraint:(id)arg1;
-- (void)_handleRemoveConstraint:(id)arg1;
-- (void)_handleReplaceConstraints:(id)arg1;
-- (void)_handleReplaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_handleUpdateValue:(id)arg1;
-- (void)_handleUpdatedConstraints:(id)arg1;
 - (void)_mergeConstraintsLocallyWithAdditions:(id)arg1 removals:(id)arg2;
-- (void)_relayConstraintsMessage:(id)arg1 toTargetAccessory:(id)arg2 additions:(id)arg3 removals:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_relayRequestMessage:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_relayRequestMessageNoRemoteCheck:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_replaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_saveHomeConfiguration:(id)arg1;
-- (BOOL)_shouldBlockSettingUpdateMessage:(id)arg1;
-- (BOOL)_shouldTurnOffPersonalRequestsOnLanguageChangeFrom:(id)arg1 toValue:(id)arg2;
-- (id)accessoryFromTarget;
+- (id)_modelsForMergeStrategyConstraintsUpdate:(id)arg1;
+- (void)_setType:(long long)arg1;
 - (void)addConstraint:(id)arg1;
+- (void)addConstraintsInMemory:(id)arg1;
+- (BOOL)canAddConstraint:(id)arg1 error:(id *)arg2;
+- (BOOL)canRemoveConstraint:(id)arg1;
 - (BOOL)compareConstraints:(id)arg1;
-- (void)configureWithContainer:(id)arg1 messageDispatcher:(id)arg2;
 - (id)constraintWithIdentifier:(id)arg1;
+- (id)constraintsForCodingXPC;
+- (id)copyIdentical;
+- (id)copyReplica;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)counterpartConstraintFor:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fixupAccessorySetting;
-- (void)handleAddConstraint:(id)arg1;
-- (void)handleRemoveConstraint:(id)arg1;
-- (void)handleReplaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)handleUpdateValue:(id)arg1;
+- (id)inMemoryConstraintWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2;
@@ -108,20 +89,15 @@
 - (id)logIdentifier;
 - (void)mergeConstraintsFromOther:(id)arg1;
 - (id)modelsForConstraintsUpdate:(id)arg1;
-- (void)registerForMessages;
-- (id)remoteMessageDestination:(id)arg1;
 - (void)removeConstraint:(id)arg1;
-- (void)replaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendReflectedNotification:(BOOL)arg1;
+- (void)removeConstraintsInMemory:(id)arg1;
+- (id)replicatedMissingConstraintsFrom:(id)arg1;
 - (void)setConstraints:(id)arg1;
+- (void)setGroup:(id)arg1;
 - (void)setValue:(id)arg1;
-- (void)settingUpdate:(id)arg1 didCompleteWithError:(id)arg2;
+- (BOOL)shouldBlockSettingUpdateFromVersion:(id)arg1 isMultiUserEnabled:(BOOL)arg2;
 - (BOOL)shouldEncodeForCoder:(id)arg1;
-- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
-- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
-- (id)transactionWithObjectChangeType:(unsigned long long)arg1;
-- (void)updateMediaSystemSettings:(id)arg1;
-- (id)valueUpdateNotificationWithMessage:(id)arg1;
+- (BOOL)shouldTurnOffPersonalRequestsOnLanguageChangeTo:(id)arg1 supportedMultiUserLanguageCodes:(id)arg2 isMultiUserEnabled:(BOOL)arg3;
 
 @end
 

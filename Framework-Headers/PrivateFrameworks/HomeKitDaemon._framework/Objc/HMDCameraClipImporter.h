@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBLocalZone, NSObject, NSString;
+@class HMBLocalZone, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraClipImporter : HMFObject <HMFLogging>
@@ -16,8 +16,10 @@
     NSString *_logIdentifier;
     HMBLocalZone *_localZone;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSUUID *_cameraProfileUUID;
 }
 
+@property (readonly, copy) NSUUID *cameraProfileUUID; // @synthesize cameraProfileUUID=_cameraProfileUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,7 +31,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)importClipsWithImportData:(id)arg1;
-- (id)initWithLocalZone:(id)arg1;
+- (id)initWithLocalZone:(id)arg1 cameraProfileUUID:(id)arg2;
 
 @end
 

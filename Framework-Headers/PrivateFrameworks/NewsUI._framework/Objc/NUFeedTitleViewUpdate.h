@@ -8,19 +8,25 @@
 
 #import <NewsUI/NSCopying-Protocol.h>
 
-@class NSString, UIImage;
+@class NSAttributedString, NSString, UIImage;
 
 @interface NUFeedTitleViewUpdate : NSObject <NSCopying>
 {
+    NSString *_accessibilityTitle;
     unsigned long long _type;
     unsigned long long _updateType;
     unsigned long long _storyCount;
     NSString *_feedName;
+    NSAttributedString *_attributedText;
     UIImage *_feedImage;
+    double _lingerTimeInterval;
 }
 
+@property (copy, nonatomic) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
+@property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (strong, nonatomic) UIImage *feedImage; // @synthesize feedImage=_feedImage;
 @property (copy, nonatomic) NSString *feedName; // @synthesize feedName=_feedName;
+@property (nonatomic) double lingerTimeInterval; // @synthesize lingerTimeInterval=_lingerTimeInterval;
 @property (nonatomic) unsigned long long storyCount; // @synthesize storyCount=_storyCount;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) unsigned long long updateType; // @synthesize updateType=_updateType;
@@ -28,11 +34,14 @@
 + (id)feedTitleViewUpdateCheckingForNewStoriesForType:(unsigned long long)arg1;
 + (id)feedTitleViewUpdateEmptyState;
 + (id)feedTitleViewUpdateEmptyStateForType:(unsigned long long)arg1;
++ (id)feedTitleViewUpdateForAttributedText:(id)arg1;
++ (id)feedTitleViewUpdateForAttributedText:(id)arg1 forType:(unsigned long long)arg2;
 + (id)feedTitleViewUpdateForCheckingForNewStories;
-+ (id)feedTitleViewUpdateForFeedImage:(id)arg1;
++ (id)feedTitleViewUpdateForFeedImage:(id)arg1 accessibilityTitle:(id)arg2;
 + (id)feedTitleViewUpdateForFeedName:(id)arg1;
 + (id)feedTitleViewUpdateForNewStoriesWithStoryCount:(unsigned long long)arg1;
 + (id)feedTitleViewUpdateNewStoriesWithStoryForType:(unsigned long long)arg1 storyCount:(unsigned long long)arg2;
++ (id)feedTitleViewUpdateNewStoriesWithStoryForType:(unsigned long long)arg1 storyCount:(unsigned long long)arg2 linger:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)convertToTitleViewUpdateWithCompact:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

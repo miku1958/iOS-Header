@@ -15,7 +15,6 @@
     SBAppLayout *_activeAppLayout;
 }
 
-@property (strong, nonatomic) SBAppLayout *activeAppLayout; // @synthesize activeAppLayout=_activeAppLayout;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) long long spacingType; // @synthesize spacingType=_spacingType;
 

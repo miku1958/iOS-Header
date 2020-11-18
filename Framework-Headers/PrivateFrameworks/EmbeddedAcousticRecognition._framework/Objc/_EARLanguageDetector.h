@@ -9,7 +9,10 @@
 @interface _EARLanguageDetector : NSObject
 {
     struct unique_ptr<quasar::LanguageDetector, std::__1::default_delete<quasar::LanguageDetector>> languageDetector;
+    unsigned int _featureQueuePriority;
 }
+
+@property (nonatomic) unsigned int featureQueuePriority; // @synthesize featureQueuePriority=_featureQueuePriority;
 
 + (void)initialize;
 + (id)localesOfMessages:(id)arg1;

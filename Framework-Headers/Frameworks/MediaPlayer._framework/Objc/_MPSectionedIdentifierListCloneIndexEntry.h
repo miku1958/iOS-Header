@@ -8,6 +8,7 @@
 
 @class MPSectionedIdentifierListItemEntry, NSMutableSet;
 
+__attribute__((visibility("hidden")))
 @interface _MPSectionedIdentifierListCloneIndexEntry : NSObject
 {
     MPSectionedIdentifierListItemEntry *_rootEntry;

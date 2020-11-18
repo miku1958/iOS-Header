@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_displayMapRegion:1;
         unsigned int read_mapRegion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayMapRegion:1;
-        unsigned int wrote_mapRegion:1;
-        unsigned int wrote_maxZoom:1;
-        unsigned int wrote_minZoom:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,8 +45,6 @@ __attribute__((visibility("hidden")))
 + (id)boundsInfoForPlaceData:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readDisplayMapRegion;
-- (void)_readMapRegion;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,7 +53,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

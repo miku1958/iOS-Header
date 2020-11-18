@@ -9,13 +9,14 @@
 #import <NanoTimeKitCompanion/NTKOlympusContentViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, NSDate, NSString, NTKOlympusTimeContentView;
+@class CLKDevice, NSDate, NSString, NTKOlympusTimeContentView, UIImage;
 @protocol NTKOlympusViewDelegate;
 
 @interface NTKOlympusTimeView : UIView <NTKOlympusContentViewDelegate, NTKTimeView>
 {
     BOOL frozen;
     BOOL _maskingPathStartsFromHourHand;
+    BOOL _useSmallFont;
     id<NTKOlympusViewDelegate> _delegate;
     NSDate *_date;
     double _hourHandAngle;
@@ -26,9 +27,11 @@
     CLKDevice *_device;
     NTKOlympusTimeContentView *_contentView;
     NTKOlympusTimeContentView *_overlayContentView;
+    UIImage *_circularLogoImage;
     struct CGSize _maskingSize;
 }
 
+@property (strong, nonatomic) UIImage *circularLogoImage; // @synthesize circularLogoImage=_circularLogoImage;
 @property (strong, nonatomic) NTKOlympusTimeContentView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) unsigned long long currentColor; // @synthesize currentColor=_currentColor;
 @property (nonatomic) unsigned long long currentDial; // @synthesize currentDial=_currentDial;
@@ -46,6 +49,7 @@
 @property (nonatomic) double minuteHandAngle; // @synthesize minuteHandAngle=_minuteHandAngle;
 @property (strong, nonatomic) NTKOlympusTimeContentView *overlayContentView; // @synthesize overlayContentView=_overlayContentView;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 
 - (void).cxx_destruct;
 - (double)_calculateDeviationBetweenHourAngle:(double)arg1 minuteAngle:(double)arg2;
@@ -66,6 +70,7 @@
 - (void)configureViewsForEditing;
 - (void)createAndRemoveViewsForCurrentStateIfNeeded;
 - (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 date:(id)arg5;
+- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 date:(id)arg5 useSmallFont:(BOOL)arg6 circularLogoImage:(id)arg7;
 - (void)layoutSubviews;
 - (void)olympusContentView:(id)arg1 didHandleLogoTouchUpInsideFromRect:(struct CGRect)arg2;
 - (void)olympusContentViewDidHandleLogoHighlighted:(id)arg1;

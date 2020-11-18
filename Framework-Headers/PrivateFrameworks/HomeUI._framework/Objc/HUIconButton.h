@@ -18,11 +18,16 @@
 @property (strong, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 
 - (void).cxx_destruct;
+- (long long)contentMode;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)setContentMode:(long long)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)setVibrancyEffect:(id)arg1 animated:(BOOL)arg2;
 - (void)tintColorDidChange;
 - (void)updateWithIconDescriptor:(id)arg1 animated:(BOOL)arg2;
+- (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
+- (id)vibrancyEffect;
 
 @end
 

@@ -23,8 +23,11 @@
 @property (nonatomic) double desiredAccuracy;
 @property (nonatomic) double distanceFilter;
 @property (nonatomic) BOOL dynamicAccuracyReductionEnabled;
+@property (nonatomic) BOOL fusionInfoEnabled;
 @property (nonatomic) BOOL groundAltitudeEnabled;
 @property (nonatomic) double headingFilter;
+@property (nonatomic) BOOL isAuthorizedForWidgetUpdates;
+@property (nonatomic) BOOL limitsPrecision;
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (nonatomic) BOOL paused;
 @property int pausesLocationUpdatesAutomatically;

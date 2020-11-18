@@ -34,6 +34,8 @@
     struct LogCategory *_ucat;
     unsigned short _destinationPSM;
     int _connectionLatency;
+    NSString *_clientBundleID;
+    long long _clientUseCase;
     NSUUID *_destinationUUID;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
@@ -43,6 +45,8 @@
     CDUnknownBlockType _serverInvalidationHandler;
 }
 
+@property (copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
+@property (nonatomic) long long clientUseCase; // @synthesize clientUseCase=_clientUseCase;
 @property (nonatomic) int connectionLatency; // @synthesize connectionLatency=_connectionLatency;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

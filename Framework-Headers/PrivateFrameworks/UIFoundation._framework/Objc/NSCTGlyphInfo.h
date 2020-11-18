@@ -15,6 +15,7 @@
 + (BOOL)supportsSecureCoding;
 - (id)_baseString;
 - (unsigned long long)_cfTypeID;
+- (unsigned int)_glyph;
 - (unsigned int)_glyphForFont:(id)arg1 baseString:(id)arg2;
 - (BOOL)allowsWeakReference;
 - (unsigned long long)characterCollection;

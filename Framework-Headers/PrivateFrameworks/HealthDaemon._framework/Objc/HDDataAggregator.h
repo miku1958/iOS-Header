@@ -42,10 +42,10 @@
 - (BOOL)didPersistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 error:(id *)arg4;
 - (id)initWithDataCollectionManager:(id)arg1;
 - (BOOL)persistForCollector:(id)arg1 usedDatums:(id)arg2 source:(id)arg3 device:(id)arg4 error:(id *)arg5 persistenceHandler:(CDUnknownBlockType)arg6;
-- (BOOL)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 error:(id *)arg6;
+- (BOOL)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 resolveAssociations:(BOOL)arg6 error:(id *)arg7;
 - (void)recomputeCollectorConfiguration;
 - (void)registerDataCollector:(id)arg1 state:(id)arg2;
-- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 freezeSeries:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resume;
 - (void)unregisterDataCollector:(id)arg1;
 

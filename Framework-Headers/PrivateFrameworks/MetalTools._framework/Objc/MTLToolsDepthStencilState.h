@@ -26,8 +26,6 @@
 @property (readonly) BOOL writesDepth;
 @property (readonly) BOOL writesStencil;
 
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
 
 @end
 

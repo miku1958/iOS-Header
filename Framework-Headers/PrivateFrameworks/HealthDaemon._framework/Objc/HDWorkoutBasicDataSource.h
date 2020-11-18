@@ -47,7 +47,9 @@
 - (id)initWithConfiguration:(id)arg1 client:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesJournaled:(id)arg1 type:(id)arg2;
+- (void)setWorkoutConfiguration:(id)arg1;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)workoutDataDestination:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 

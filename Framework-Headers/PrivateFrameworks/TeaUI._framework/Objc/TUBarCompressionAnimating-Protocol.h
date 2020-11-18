@@ -8,6 +8,7 @@
 
 @protocol TUBarCompressionAnimating
 
+@property (nonatomic, readonly) BOOL shouldCloseGapOnScroll;
 @property (nonatomic, readonly) BOOL shouldCompressAtTop;
 @property (nonatomic) double topOffset;
 

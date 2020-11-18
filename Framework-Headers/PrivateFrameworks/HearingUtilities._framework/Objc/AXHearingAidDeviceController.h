@@ -94,6 +94,7 @@
 - (void)removeAvailableDevice:(id)arg1;
 - (void)removeConnectedDevice:(id)arg1;
 - (void)removeLoadedDevice:(id)arg1;
+- (void)replaceDevice:(id)arg1 withDevice:(id)arg2;
 - (BOOL)representsLocalDevices;
 - (void)resetConnectionToPeripheral:(id)arg1;
 - (void)searchForAvailableDevices;

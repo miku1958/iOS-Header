@@ -10,6 +10,7 @@
 
 @interface KNAnimationInfo : NSObject
 {
+    NSSet *_supportedCustomAttributeKeys;
     Class _animationClass;
     NSSet *_validAnimationTypes;
 }
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) NSString *localizedBuildOutName;
 @property (readonly, nonatomic) NSString *localizedContentBuildName;
 @property (readonly, nonatomic) NSString *localizedTransitionName;
+@property (readonly, nonatomic) NSSet *supportedCustomAttributeKeys;
 @property (strong, nonatomic) NSSet *validAnimationTypes; // @synthesize validAnimationTypes=_validAnimationTypes;
 
 + (id)effectIdentifiersForAnimationInfos:(id)arg1;
@@ -41,6 +43,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedNameForType:(long long)arg1;
 - (BOOL)supportsAnimationType:(long long)arg1;
+- (BOOL)supportsCustomAttributeKey:(id)arg1;
 - (id)thumbnailImageNameForType:(long long)arg1;
 
 @end

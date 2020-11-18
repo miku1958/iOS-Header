@@ -9,6 +9,6 @@
 @class CALNTriggeredEventNotificationSourceNotificationInfo, NSString;
 
 @protocol CALNTriggeredEventNotificationBodyDescriptionProvider <NSObject>
-- (NSString *)bodyForSourceClientIdentifier:(NSString *)arg1 sourceNotificationInfo:(CALNTriggeredEventNotificationSourceNotificationInfo *)arg2;
+- (NSString *)bodyForSourceClientIdentifier:(NSString *)arg1 sourceNotificationInfo:(CALNTriggeredEventNotificationSourceNotificationInfo *)arg2 bodyContainsTravelAdvice:(BOOL *)arg3;
 @end
 

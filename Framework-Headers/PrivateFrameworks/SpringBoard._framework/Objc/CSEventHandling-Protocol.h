@@ -9,6 +9,7 @@
 @class CSEvent;
 
 @protocol CSEventHandling <NSObject>
+- (void)conformsToCSEventHandling;
 - (BOOL)handleEvent:(CSEvent *)arg1;
 - (BOOL)wouldHandleButtonEvent:(CSEvent *)arg1;
 @end

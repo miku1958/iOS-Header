@@ -20,9 +20,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)identifier;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)identifier;
 - (id)initWithNamedEntityStore:(id)arg1;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
 

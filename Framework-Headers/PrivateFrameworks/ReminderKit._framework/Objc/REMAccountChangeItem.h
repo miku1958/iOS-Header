@@ -10,7 +10,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
 
-@class NSSet, NSString, REMAccountCapabilities, REMAccountGroupContextChangeItem, REMAccountStorage, REMCRMergeableOrderedSet, REMChangedKeysObserver, REMObjectID, REMResolutionTokenMap, REMSaveRequest;
+@class NSData, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContextChangeItem, REMAccountStorage, REMCRMergeableOrderedSet, REMChangedKeysObserver, REMObjectID, REMResolutionTokenMap, REMSaveRequest;
 
 @interface REMAccountChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
 {
@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL didChooseToMigrate; // @dynamic didChooseToMigrate;
 @property (nonatomic) BOOL didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property (nonatomic) BOOL didFinishMigration; // @dynamic didFinishMigration;
+@property (strong, nonatomic) NSString *displayName; // @dynamic displayName;
 @property (copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property (copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property (readonly, nonatomic) REMAccountGroupContextChangeItem *groupContext;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property (readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property (readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
 @property (readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;

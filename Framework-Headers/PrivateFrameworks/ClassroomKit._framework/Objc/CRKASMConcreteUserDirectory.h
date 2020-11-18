@@ -14,16 +14,20 @@
 @interface CRKASMConcreteUserDirectory : NSObject <CRKASMUserDirectory>
 {
     id<CRKClassKitRosterRequirements> _requirements;
+    CDUnknownBlockType _queryGenerator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) CDUnknownBlockType queryGenerator; // @synthesize queryGenerator=_queryGenerator;
 @property (readonly, nonatomic) id<CRKClassKitRosterRequirements> requirements; // @synthesize requirements=_requirements;
 @property (readonly) Class superclass;
 
++ (id)instructorDirectoryWithRosterRequirements:(id)arg1 locationIDs:(id)arg2;
++ (id)studentDirectoryWithRosterRequirements:(id)arg1 locationIDs:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithRequirements:(id)arg1;
+- (id)initWithRosterRequirements:(id)arg1 queryGenerator:(CDUnknownBlockType)arg2;
 - (id)iteratorForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
 
 @end

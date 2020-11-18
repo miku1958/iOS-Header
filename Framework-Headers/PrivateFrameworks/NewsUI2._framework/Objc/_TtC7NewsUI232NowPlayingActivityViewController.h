@@ -6,7 +6,6 @@
 
 #import <UIKit/UIActivityViewController.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI232NowPlayingActivityViewController : UIActivityViewController
 {
 }

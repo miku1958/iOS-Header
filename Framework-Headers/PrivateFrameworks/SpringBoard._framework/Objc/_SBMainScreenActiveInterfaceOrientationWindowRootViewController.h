@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <SpringBoardFoundation/SBFTouchPassThroughViewController.h>
 
-@interface _SBMainScreenActiveInterfaceOrientationWindowRootViewController : UIViewController
+@interface _SBMainScreenActiveInterfaceOrientationWindowRootViewController : SBFTouchPassThroughViewController
 {
     unsigned long long _supportedInterfaceOrientations;
 }

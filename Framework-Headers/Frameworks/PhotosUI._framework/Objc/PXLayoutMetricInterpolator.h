@@ -22,6 +22,9 @@
 @property (strong, nonatomic, setter=_setCachedValue:) NSValue *_cachedValue; // @synthesize _cachedValue=__cachedValue;
 @property (readonly, nonatomic) NSMutableArray *_referenceValuesByMetrics; // @synthesize _referenceValuesByMetrics=__referenceValuesByMetrics;
 
++ (id)_gridItemWidthInterpolatorWithGridEdgeInsetsInterpolator:(id)arg1;
++ (id)_sharedGridEdgeInsetsInterpolator;
++ (id)_sharedGridItemWidthInterpolator;
 + (id)albumsGridEdgeInsetsInterpolator;
 + (id)albumsGridItemWidthInterpolator;
 + (id)allLayoutMetricConfigurationSizes;
@@ -48,6 +51,7 @@
 - (void)_setNeedsUpdate;
 - (void)_updateReferenceValuesByMetricsOrderIfNeeded;
 - (id)_valueForMetric:(double)arg1 fromInterpolationBetweenValue:(id)arg2 secondValue:(id)arg3;
+- (id)description;
 - (id)init;
 - (void)setReferenceValue:(double)arg1 forMetric:(double)arg2;
 - (double)valueForMetric:(double)arg1;

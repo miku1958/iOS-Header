@@ -6,7 +6,7 @@
 
 #import <TVMLKit/TVViewLayout.h>
 
-@class TVImageLayout, VUIMediaTagsViewLayout, VUITextLayout;
+@class TVImageLayout, VUIMediaTagsViewLayout, VUIProductUberBackgroundViewLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductBannerLayout : TVViewLayout
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_disclaimerTextLayout;
     VUITextLayout *_availabilityTextLayout;
     TVImageLayout *_availabilityImageLayout;
+    VUIProductUberBackgroundViewLayout *_uberBackgroundViewLayout;
 }
 
 @property (readonly, nonatomic) TVImageLayout *availabilityImageLayout; // @synthesize availabilityImageLayout=_availabilityImageLayout;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUITextLayout *promoTextLayout; // @synthesize promoTextLayout=_promoTextLayout;
 @property (readonly, nonatomic) VUITextLayout *subTextLayout; // @synthesize subTextLayout=_subTextLayout;
 @property (readonly, nonatomic) VUIMediaTagsViewLayout *tagsLayout; // @synthesize tagsLayout=_tagsLayout;
+@property (readonly, nonatomic) VUIProductUberBackgroundViewLayout *uberBackgroundViewLayout; // @synthesize uberBackgroundViewLayout=_uberBackgroundViewLayout;
 
 + (id)_coverArtImageShadow;
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2 sizeClass:(long long)arg3 contentType:(unsigned long long)arg4;

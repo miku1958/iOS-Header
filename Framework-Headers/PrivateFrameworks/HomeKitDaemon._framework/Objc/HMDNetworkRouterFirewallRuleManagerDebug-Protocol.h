@@ -11,9 +11,10 @@
 @protocol HMDNetworkRouterFirewallRuleManagerDebug <NSObject>
 - (void)addOverrides:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)dumpAllLocalRulesIgnoringOverrides:(BOOL)arg1 rawOutput:(BOOL)arg2 completion:(void (^)(NSError *, NSString *))arg3;
-- (void)dumpCloudRecordsForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 rawOutput:(BOOL)arg3 completion:(void (^)(NSError *, NSString *))arg4;
+- (void)dumpCloudRecordsForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 rawOutput:(BOOL)arg3 verifySignatures:(BOOL)arg4 completion:(void (^)(NSError *, NSString *))arg5;
 - (void)dumpLocalRulesForProductGroup:(NSString *)arg1 ignoreOverrides:(BOOL)arg2 rawOutput:(BOOL)arg3 completion:(void (^)(NSError *, NSString *))arg4;
 - (void)dumpLocalRulesForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 firmwareVersion:(HMFVersion *)arg3 ignoreOverrides:(BOOL)arg4 rawOutput:(BOOL)arg5 completion:(void (^)(NSError *, NSString *))arg6;
+- (void)dumpPairedMetadataForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 firmwareVersion:(HMFVersion *)arg3 ignoreOverrides:(BOOL)arg4 rawOutput:(BOOL)arg5 completion:(void (^)(NSError *, NSString *))arg6;
 - (void)forceFetchCloudChangesAndForceChangeNotifications:(BOOL)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)listCloudRecordsForProductGroup:(NSString *)arg1 rawOutput:(BOOL)arg2 completion:(void (^)(NSError *, NSString *))arg3;
 - (void)removeAllLocalRulesWithCompletion:(void (^)(NSError *))arg1;

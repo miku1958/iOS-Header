@@ -77,6 +77,9 @@
 @property (readonly) long long type; // @synthesize type;
 @property (readonly) NSString *uuid; // @dynamic uuid;
 
++ (struct http_addrlist_s *)_createAddrList:(const char *)arg1 hostName:(const char *)arg2 port:(int)arg3;
++ (struct _ipp_s *)_data_to_ipp:(id)arg1;
++ (id)_ipp_to_data:(struct _ipp_s *)arg1;
 + (id)defaultPrinter;
 + (struct _ipp_s *)getAttributes:(const char **)arg1 count:(int)arg2 fromURI:(id)arg3;
 + (id)hardcodedURIs;
@@ -92,9 +95,10 @@
 + (BOOL)urfIsOptional;
 + (BOOL)uriMatchesMCProfileAdded:(id)arg1;
 - (id)TXTRecordWithTimeout:(int)arg1;
+- (struct _pk_proxy_s *)_httpConnectViaSelfHost:(int)arg1 msTimeout:(int)arg2;
 - (long long)abortJob;
+- (void)abortJobCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addRSSIValue:(id)arg1;
-- (void)aggdAppsAndPrinters;
 - (id)availableRollPapersPreferBorderless:(BOOL)arg1;
 - (void)cancelUnlock;
 - (void)checkOperations:(struct _ipp_s *)arg1;
@@ -106,7 +110,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (long long)feedOrientation:(id)arg1;
 - (long long)finalizeJob:(int)arg1;
+- (void)finalizeJob:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)finishJob;
+- (void)finishJobCompletionHandler:(CDUnknownBlockType)arg1;
 - (struct _ipp_s *)getAttributes:(const char **)arg1 count:(int)arg2;
 - (struct _ipp_s *)getPrinterAttributes;
 - (struct _ipp_s *)getSupplyLevelAttributes;
@@ -123,14 +129,15 @@
 - (id)localName;
 - (id)localizedPrinterWarnings;
 - (id)location;
-- (struct http_addrlist_s *)lookup;
 - (id)makeAndModel;
 - (id)matchedPaper:(id)arg1 preferBorderless:(BOOL)arg2 withDuplexMode:(id)arg3 didMatch:(BOOL *)arg4;
 - (id)paperListForDuplexMode:(id)arg1;
 - (id)papersForDocumentWithSize:(struct CGSize)arg1 andDuplex:(BOOL)arg2;
 - (id)papersForDocumentWithSize:(struct CGSize)arg1 scaleUpOnRoll:(BOOL)arg2 andDuplex:(BOOL)arg3;
 - (id)papersForPhotoWithSize:(struct CGSize)arg1;
+- (void)pollForPrinterStatusQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)printURL:(id)arg1 ofType:(id)arg2 printSettings:(id)arg3;
+- (void)printURL:(id)arg1 ofType:(id)arg2 printSettings:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)privateObjectForKey:(id)arg1;
 - (void)reconfirmWithForce:(BOOL)arg1;
 - (void)removeCredentialsFromKeychain;

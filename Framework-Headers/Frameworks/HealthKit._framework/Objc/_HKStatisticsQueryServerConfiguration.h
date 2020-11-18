@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSDateInterval *_dateInterval;
 }
 
-@property (strong, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property (nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 

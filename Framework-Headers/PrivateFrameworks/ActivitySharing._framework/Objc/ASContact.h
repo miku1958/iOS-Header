@@ -37,6 +37,7 @@
 - (id)_bestDestinationFromKnownDestinations;
 - (id)codableContactIncludingCloudKitFields:(BOOL)arg1;
 - (id)contactStore;
+- (id)contactWithKeys:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;

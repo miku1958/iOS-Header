@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     BOOL _flushImmediately;
     BOOL _autovacuumInProgress;
     long long _changesOverride;
+    BOOL _isReadonly;
     unsigned long long _vmStepsExecuted;
 }
 
+@property (readonly, nonatomic) BOOL isReadonly; // @synthesize isReadonly=_isReadonly;
 @property (copy, nonatomic) CDUnknownBlockType lockedHandler; // @dynamic lockedHandler;
 @property (nonatomic) BOOL profilingEnabled;
 @property (readonly, nonatomic) unsigned long long vmStepsExecuted; // @synthesize vmStepsExecuted=_vmStepsExecuted;

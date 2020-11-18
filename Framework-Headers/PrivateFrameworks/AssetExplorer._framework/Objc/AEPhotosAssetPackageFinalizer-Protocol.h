@@ -7,6 +7,6 @@
 @class AEAssetPackage;
 
 @protocol AEPhotosAssetPackageFinalizer
-- (AEAssetPackage *)finalizePackage:(AEAssetPackage *)arg1 error:(out id *)arg2;
+- (AEAssetPackage *)finalizePackage:(AEAssetPackage *)arg1 error:(id *)arg2;
 @end
 

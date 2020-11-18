@@ -6,17 +6,26 @@
 
 #import <HomeKit/HMAction.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
-@interface HMAction (HFDebugging) <HFStateDumpBuildable>
+@interface HMAction (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+- (id)hf_affectedAccessoryProfiles;
+- (id)hf_affectedCharacteristic;
+- (BOOL)hf_isServiceLikeItemInvolved:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

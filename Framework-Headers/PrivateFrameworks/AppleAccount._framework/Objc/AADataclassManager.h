@@ -19,7 +19,6 @@
 - (id)_filteredDataclassesForAccountClass:(id)arg1;
 - (BOOL)_hideDataclassWhenAppRemoved:(id)arg1;
 - (BOOL)_isRestrictedForDataclass:(id)arg1;
-- (BOOL)_isRunningInStoreDemoMode;
 - (id)_nonVisibleServiceDataclass;
 - (BOOL)_shouldProvisionNotesForAccount:(id)arg1;
 - (id)_userVisibleDataclasses;
@@ -32,6 +31,7 @@
 - (id)filterDataclassesForPossibleAutoEnablementForAccount:(id)arg1;
 - (id)filteredServerProvidedFeatures:(id)arg1 forAccount:(id)arg2;
 - (id)init;
+- (id)initWithAccountStore:(id)arg1;
 - (BOOL)isDataclassActionSafeForAutoEnablement:(id)arg1;
 - (BOOL)isSystemAppRestrictedOrRemovedForDataclass:(id)arg1;
 - (BOOL)shouldProvisionDataclass:(id)arg1 forAccount:(id)arg2;

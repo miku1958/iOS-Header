@@ -21,9 +21,12 @@
     unsigned long long _previousDataSectionIdentifier;
 }
 
+@property (readonly, nonatomic) BOOL allowsEmptyDataSection;
 @property (readonly, nonatomic) PXArrayChangeDetails *changeDetailsFromPreviousDataSection; // @synthesize changeDetailsFromPreviousDataSection=_changeDetailsFromPreviousDataSection;
+@property (readonly, nonatomic) unsigned long long childChangeDescriptorsInvalidatingDataSection;
 @property (copy, nonatomic) NSArray *childDataSectionManagers; // @synthesize childDataSectionManagers=_childDataSectionManagers;
 @property (readonly, nonatomic) PXDataSection *dataSection;
+@property (readonly, nonatomic, getter=isDataSectionEmpty) BOOL dataSectionEmpty;
 @property (readonly, nonatomic) PXDataSection *dataSectionIfCreated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

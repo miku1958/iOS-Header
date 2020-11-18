@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NPKPMUButtonListener, NPKQuickPaymentSessionLocalAuthenticationCoordinator, NSDictionary, PKPass;
-@protocol NPKQuickPaymentSessionSourceDelegate, OS_dispatch_queue;
+@class NPKButtonListener, NPKQuickPaymentSessionLocalAuthenticationCoordinator, NSDictionary, PKPass;
+@protocol NPKQuickPaymentSessionDelegate, NPKQuickPaymentSessionSourceDelegate, OS_dispatch_queue;
 
 @interface NPKQuickPaymentSessionSource : NSObject
 {
     id<NPKQuickPaymentSessionSourceDelegate> _delegate;
-    NPKPMUButtonListener *_buttonListener;
+    NPKButtonListener *_buttonListener;
     NSObject<OS_dispatch_queue> *_sessionSourceQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     BOOL _delegateHandlingButtonEvents;
     BOOL _deferAuthorization;
+    BOOL _requireFirstInQueue;
+    id<NPKQuickPaymentSessionDelegate> _sessionDelegate;
     unsigned long long _preconditionState;
     PKPass *_initialPass;
     NSDictionary *_vasPasses;
@@ -26,12 +28,15 @@
 - (void).cxx_destruct;
 - (void)_handlePMUButtonEvent;
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
-- (id)initWithDelegate:(id)arg1 callbackQueue:(id)arg2;
+- (void)handleDoublePressEvent;
+- (id)initWithDelegate:(id)arg1 buttonListener:(id)arg2 callbackQueue:(id)arg3;
 - (void)setDeferAuthorization:(BOOL)arg1;
 - (void)setDelegateHandlingButtonEvents:(BOOL)arg1;
 - (void)setInitialPass:(id)arg1;
 - (void)setLocalAuthenticationCoordinator:(id)arg1;
 - (void)setPreconditionState:(unsigned long long)arg1;
+- (void)setRequireFirstInQueue:(BOOL)arg1;
+- (void)setSessionDelegate:(id)arg1;
 - (void)setVasPasses:(id)arg1;
 
 @end

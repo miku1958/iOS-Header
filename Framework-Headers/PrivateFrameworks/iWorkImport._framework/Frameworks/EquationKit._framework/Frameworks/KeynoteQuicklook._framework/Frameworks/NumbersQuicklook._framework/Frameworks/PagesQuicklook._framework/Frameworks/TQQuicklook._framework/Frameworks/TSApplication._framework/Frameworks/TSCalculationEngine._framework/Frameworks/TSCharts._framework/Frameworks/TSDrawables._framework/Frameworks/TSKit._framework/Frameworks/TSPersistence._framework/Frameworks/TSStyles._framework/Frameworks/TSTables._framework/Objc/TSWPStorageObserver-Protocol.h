@@ -12,5 +12,6 @@
 
 @optional
 - (void)storage:(TSWPStorage *)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(unsigned long long)arg4 attributeKindChanges:(NSArray *)arg5;
+- (void)tearDown;
 @end
 

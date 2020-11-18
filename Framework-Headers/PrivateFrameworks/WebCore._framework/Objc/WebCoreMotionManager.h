@@ -12,8 +12,8 @@
 {
     CMMotionManager *m_motionManager;
     CLLocationManager *m_locationManager;
-    struct WeakHashSet<WebCore::MotionManagerClient> m_deviceMotionClients;
-    struct WeakHashSet<WebCore::MotionManagerClient> m_deviceOrientationClients;
+    struct WeakHashSet<WebCore::MotionManagerClient, WTF::EmptyCounter> m_deviceMotionClients;
+    struct WeakHashSet<WebCore::MotionManagerClient, WTF::EmptyCounter> m_deviceOrientationClients;
     NSTimer *m_updateTimer;
     BOOL m_gyroAvailable;
     BOOL m_headingAvailable;

@@ -6,7 +6,7 @@
 
 #import <CloudServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, SecureBackup;
+@class NSArray, NSData, NSDictionary, NSSet, NSString, OTEscrowRecord, OTICDPRecordContext, SecureBackup;
 
 @protocol SecureBackupProtocol <NSObject>
 - (void)backOffDateWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
@@ -16,6 +16,7 @@
 - (void)cachePassphraseWithRequestAsync:(SecureBackup *)arg1;
 - (void)cacheRecoveryKeyWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)changeSMSTargetWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)createICDPRecordWithRequest:(SecureBackup *)arg1 recordContents:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)disableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)enableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getAccountInfoWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
@@ -24,7 +25,10 @@
 - (void)notificationInfoWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)prepareHSA2EscrowRecordContents:(SecureBackup *)arg1 usesComplexPassphrase:(BOOL)arg2 reply:(void (^)(NSError *))arg3;
 - (void)recoverRecordContentsWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)recoverSilentWithCDPContextInDaemon:(OTICDPRecordContext *)arg1 allRecords:(NSArray *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)recoverWithCDPContextInDaemon:(OTICDPRecordContext *)arg1 escrowRecord:(OTEscrowRecord *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)recoverWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)restoreKeychainAsyncWithPasswordInDaemon:(NSData *)arg1 keybagDigest:(NSData *)arg2 haveBottledPeer:(BOOL)arg3 viewsNotToBeRestored:(NSSet *)arg4 reply:(void (^)(NSError *))arg5;
 - (void)setBackOffDateWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)startSMSChallengeWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)stashRecoveryDataWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;

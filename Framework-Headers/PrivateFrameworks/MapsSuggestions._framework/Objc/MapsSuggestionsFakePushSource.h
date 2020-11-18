@@ -11,8 +11,9 @@
 }
 
 + (unsigned long long)disposition;
-- (double)configFrequency;
-- (void)setConfigFrequency:(double)arg1;
+- (double)configureFrequency;
+- (void)pushEntries:(id)arg1;
+- (void)setConfigureFrequency:(double)arg1;
 
 @end
 

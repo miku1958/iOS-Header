@@ -11,13 +11,14 @@
 #import <ChatKit/UICollectionViewDataSource-Protocol.h>
 #import <ChatKit/UICollectionViewDelegate-Protocol.h>
 
-@class CKAvatarPickerLayout, CKAvatarTitleCollectionReusableView, CKConversation, CNContactStore, NSMapTable, NSString, UICollectionView;
+@class CKAvatarPickerLayout, CKAvatarTitleCollectionReusableView, CKConversation, CNContactStore, CNGroupAvatarViewController, NSMapTable, NSString, UICollectionView;
 
 @interface CKAvatarPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, CKAvatarPickerLayoutDelegate>
 {
     CKAvatarTitleCollectionReusableView *_titleView;
     long long _indicatorType;
     UICollectionView *_collectionView;
+    CNGroupAvatarViewController *_groupAvatarViewController;
     CKAvatarPickerLayout *_layout;
     CKConversation *_conversation;
     CNContactStore *_suggestionsEnabledContactStore;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CNGroupAvatarViewController *groupAvatarViewController; // @synthesize groupAvatarViewController=_groupAvatarViewController;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long indicatorType; // @synthesize indicatorType=_indicatorType;
 @property (strong, nonatomic) CKAvatarPickerLayout *layout; // @synthesize layout=_layout;
@@ -42,13 +44,19 @@
 - (void).cxx_destruct;
 - (void)_animateInTitleView;
 - (void)_animateOutTitleView;
+- (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatPropertiesChanged:(id)arg1;
+- (id)_configureCollectionView:(id)arg1 avatarViewCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
+- (id)_configureCollectionView:(id)arg1 bannerViewCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
+- (id)_configureCollectionView:(id)arg1 groupIdentityCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
 - (id)_contactNameSupplementaryViewAtIndexPath:(id)arg1;
 - (id)_cutoutSupplementaryViewAtIndexPath:(id)arg1;
+- (id)_groupAvatarViewControllerRequiredContactKeys;
 - (void)_handleAddressBookChange:(id)arg1;
 - (void)_handleConversationIsFilteredChange:(id)arg1;
 - (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (void)_handleGroupNameChange:(id)arg1;
+- (unsigned long long)_preferredAvatarLayoutMode;
 - (void)_setTitle:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_shouldUseBanner;
 - (id)_titleSupplementaryViewAtIndexPath:(id)arg1;
@@ -66,8 +74,10 @@
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (void)sendUpdatedRecentParticipantsToContacts;
 - (void)setAvatarPickerActive:(BOOL)arg1;
 - (void)updateContentsForConversation:(id)arg1;
+- (void)updateGroupAvatarView;
 
 @end
 

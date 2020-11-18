@@ -8,7 +8,7 @@
 
 #import <MediaMiningKit/CLSSocialServiceContactsDelegate-Protocol.h>
 
-@class CLSLRUMemoryCache, CLSPerson, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, CLSSocialServiceCoreDuet, CLSSocialServiceCoreNameParser, NSDateInterval, NSString, NSURL;
+@class CLSLRUMemoryCache, CLSPersonIdentity, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, CLSSocialServiceCoreDuet, CLSSocialServiceCoreNameParser, NSDateInterval, NSString, NSURL;
 
 @interface CLSServiceManager : NSObject <CLSSocialServiceContactsDelegate>
 {
@@ -18,7 +18,7 @@
     CLSSocialServiceCalendar *_calendarService;
     CLSSocialServiceCoreDuet *_coreDuetService;
     CLSSocialServiceCoreNameParser *_coreNameParserService;
-    CLSPerson *_mePerson;
+    CLSPersonIdentity *_mePerson;
     NSObject *_routineServiceLockObject;
     NSDateInterval *_validDateInterval;
     NSURL *_applicationDataURL;
@@ -32,7 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CLSPerson *mePerson; // @synthesize mePerson=_mePerson;
+@property (strong, nonatomic) CLSPersonIdentity *mePerson; // @synthesize mePerson=_mePerson;
 @property (readonly, nonatomic) CLSRoutineService *routineService; // @synthesize routineService=_routineService;
 @property (readonly, nonatomic) NSObject *routineServiceLockObject; // @synthesize routineServiceLockObject=_routineServiceLockObject;
 @property (readonly) Class superclass;
@@ -59,7 +59,6 @@
 - (id)fetchImportantLocationsOfInterest;
 - (id)fetchLocationOfInterestVisitsAtLocation:(id)arg1 inDateInterval:(id)arg2;
 - (void)flushSocialServicesAtURL:(id)arg1;
-- (unsigned long long)genderHintForPerson:(id)arg1 usingLocales:(id)arg2;
 - (BOOL)hasAddressesForMePerson;
 - (id)init;
 - (id)initWithURL:(id)arg1;
@@ -90,6 +89,7 @@
 - (void)prefetchEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2 forAssetCollectionsSortedByStartDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (unsigned long long)relationshipHintForPerson:(id)arg1 usingLocales:(id)arg2;
 - (BOOL)routineIsAvailable;
+- (unsigned long long)sexHintForPerson:(id)arg1 usingLocales:(id)arg2;
 - (BOOL)shutdownForPhotoLibraryURL:(id)arg1;
 - (id)workCalendarEventsMatchingContactIdentifiers:(id)arg1 fromUniversalDate:(id)arg2 toUniversalDate:(id)arg3;
 

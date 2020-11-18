@@ -21,7 +21,7 @@
     OBTrayButton *_usePRButton;
     OBLinkTrayButton *_customizeButton;
     HULocationDevice *_locationDevice;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
     HUPersonalRequestsDevicesModuleController *_prDevicesModuleController;
 }
@@ -37,7 +37,7 @@
 @property (strong, nonatomic) HUPersonalRequestsDevicesModuleController *prDevicesModuleController; // @synthesize prDevicesModuleController=_prDevicesModuleController;
 @property (strong, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property (strong, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property (strong, nonatomic) OBTrayButton *usePRButton; // @synthesize usePRButton=_usePRButton;
 
 - (void).cxx_destruct;

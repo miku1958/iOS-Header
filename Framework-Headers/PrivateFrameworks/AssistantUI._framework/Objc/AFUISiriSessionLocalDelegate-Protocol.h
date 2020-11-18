@@ -12,7 +12,11 @@
 - (void)siriSession:(AFUISiriSession *)arg1 didChangeToState:(long long)arg2;
 - (void)siriSession:(AFUISiriSession *)arg1 didReceiveDeviceUnlockRequestAndCancelRequest:(BOOL)arg2 withCompletion:(void (^)(long long))arg3;
 - (void)siriSession:(AFUISiriSession *)arg1 didReceiveDeviceUnlockRequestWithCompletion:(void (^)(long long))arg2;
+- (void)siriSession:(AFUISiriSession *)arg1 failedToLaunchAppWithBundleIdentifier:(NSString *)arg2;
 - (void)siriSession:(AFUISiriSession *)arg1 speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg2;
+- (void)siriSession:(AFUISiriSession *)arg1 willProcessAppLaunchWithBundleIdentifier:(NSString *)arg2;
+- (void)siriSessionAudioOutputDidChangePowerLevel:(float)arg1;
+- (void)siriSessionAudioRecordingDidChangePowerLevel:(float)arg1;
 - (void)siriSessionDidEnd:(AFUISiriSession *)arg1;
 - (void)siriSessionDidReceiveDelayedActionCancelCommand:(SAUIDelayedActionCancelCommand *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveDelayedActionCommand:(SAUIDelayedActionCommand *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;

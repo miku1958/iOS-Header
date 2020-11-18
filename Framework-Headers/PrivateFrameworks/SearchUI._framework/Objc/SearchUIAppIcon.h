@@ -7,14 +7,17 @@
 #import <SpringBoardHome/SBLeafIcon.h>
 
 @class SFSearchResult, SearchUIAppIconImage;
+@protocol SBLeafIconDataSource;
 
 @interface SearchUIAppIcon : SBLeafIcon
 {
+    id<SBLeafIconDataSource> _activeDataSourceForwarder;
     SFSearchResult *_searchResult;
     unsigned long long _variant;
     SearchUIAppIconImage *_iconImage;
 }
 
+@property (weak, nonatomic) id<SBLeafIconDataSource> activeDataSourceForwarder; // @synthesize activeDataSourceForwarder=_activeDataSourceForwarder;
 @property (strong, nonatomic) SearchUIAppIconImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (readonly, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property (readonly, nonatomic) unsigned long long variant; // @synthesize variant=_variant;
@@ -22,6 +25,7 @@
 + (BOOL)canGenerateIconsInBackground;
 + (BOOL)isPlaceholderIcon;
 - (void).cxx_destruct;
+- (id)activeDataSource;
 - (void)applicationWithBundleIdentifierDidChangeIconAccessories:(id)arg1;
 - (void)iconDidChange;
 - (id)initWithSearchResult:(id)arg1 variant:(unsigned long long)arg2;

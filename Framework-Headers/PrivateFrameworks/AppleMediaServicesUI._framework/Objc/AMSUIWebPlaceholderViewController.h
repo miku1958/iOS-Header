@@ -4,28 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AppleMediaServicesUI/AMSUICommonViewController.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
 
-@class AMSUILoadingView, AMSUIWebClientContext, AMSUIWebLoadingPageModel, NSString, UIView;
+@class AMSBinaryPromise, AMSUILoadingView, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebLoadingPageModel, NSString, UIView, UIViewController;
 @protocol AMSUIWebPagePresenter;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebPlaceholderViewController : UIViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebPlaceholderViewController : AMSUICommonViewController <AMSUIWebPagePresenter>
 {
     BOOL _hasAppeared;
     BOOL _isVisible;
     BOOL _shouldSnapshot;
+    AMSUIWebAppearance *_appearance;
     AMSUIWebLoadingPageModel *_model;
     UIViewController<AMSUIWebPagePresenter> *_originalViewController;
     AMSUIWebClientContext *_context;
     AMSUILoadingView *_loadingView;
-    long long _originalOrientation;
+    AMSBinaryPromise *_snapshotPromise;
     UIView *_snapshotView;
     UIView *_visibleView;
 }
 
+@property (strong, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,32 +36,31 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
 @property (strong, nonatomic) AMSUILoadingView *loadingView; // @synthesize loadingView=_loadingView;
 @property (strong, nonatomic) AMSUIWebLoadingPageModel *model; // @synthesize model=_model;
-@property (nonatomic) long long originalOrientation; // @synthesize originalOrientation=_originalOrientation;
 @property (strong, nonatomic) UIViewController<AMSUIWebPagePresenter> *originalViewController; // @synthesize originalViewController=_originalViewController;
 @property (nonatomic) BOOL shouldSnapshot; // @synthesize shouldSnapshot=_shouldSnapshot;
+@property (strong, nonatomic) AMSBinaryPromise *snapshotPromise; // @synthesize snapshotPromise=_snapshotPromise;
 @property (strong, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *visibleView; // @synthesize visibleView=_visibleView;
 
 - (void).cxx_destruct;
 - (void)_applyAppearance;
-- (void)_handlePotentialRotation;
-- (long long)_interfaceOrientation;
 - (void)_replacePrimaryViewWithView:(id)arg1;
 - (void)_startReappearTransitionTimer;
 - (void)_transitionToLoading;
 - (void)_transitionToSnapshot;
-- (void)applyPageModel:(id)arg1;
+- (void)awaitSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
-- (id)initWithModel:(id)arg1 context:(id)arg2;
-- (id)initWithSnapshot:(id)arg1 context:(id)arg2;
+- (id)initWithModel:(id)arg1 context:(id)arg2 appearance:(id)arg3;
+- (id)initWithSnapshot:(id)arg1 context:(id)arg2 appearance:(id)arg3;
 - (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)willAppearAfterDismiss;
+- (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 
 @end
 

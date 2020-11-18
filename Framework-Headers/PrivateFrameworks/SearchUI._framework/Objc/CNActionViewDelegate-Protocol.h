@@ -10,5 +10,8 @@
 
 @protocol CNActionViewDelegate <NSObject>
 - (void)didPressActionView:(CNActionView *)arg1 longPress:(BOOL)arg2;
+
+@optional
+- (BOOL)actionViewShouldPresentDisambiguationUI:(CNActionView *)arg1;
 @end
 

@@ -27,7 +27,7 @@
     BOOL _invalidated;
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
-    BOOL _userIntentRequired;
+    BOOL _physicalButtonRequired;
     long long _state;
     long long _coachingState;
     id<PKPassFooterViewDelegate> _delegate;
@@ -40,12 +40,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isPassAuthorized) BOOL passAuthorized;
 @property (strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
+@property (readonly, nonatomic, getter=isPhysicalButtonRequired) BOOL physicalButtonRequired; // @synthesize physicalButtonRequired=_physicalButtonRequired;
 @property (readonly, nonatomic) BOOL requestPileSuppression;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isUserIntentRequired) BOOL userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
 
 - (void).cxx_destruct;
+- (long long)_acquireContactlessInterfaceSessionErrorActionForError:(id)arg1;
 - (void)_acquireContactlessInterfaceSessionWithSessionToken:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_advanceContentViewVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
 - (void)_advanceVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
@@ -59,12 +60,13 @@
 - (void)_lostModeButtonTapped;
 - (id)_messageContentViewFromMessage:(id)arg1;
 - (id)_messageForPaymentApplicationState;
+- (id)_messageForPeerPaymentLockedByOwner;
 - (id)_messageForPeerPaymentZeroBalance;
 - (id)_messageForRestrictedState;
 - (id)_messageForUnavailableState;
 - (void)_setCoachingState:(long long)arg1;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
-- (void)_setUserIntentRequired:(BOOL)arg1;
+- (void)_setPhysicalButtonRequired:(BOOL)arg1;
 - (void)_startContactlessInterfaceSessionWithContext:(id)arg1 sessionAvailable:(CDUnknownBlockType)arg2 sessionUnavailable:(CDUnknownBlockType)arg3;
 - (void)_updateForForegroundActivePresentationIfNecessaryAnimated:(BOOL)arg1;
 - (void)_updateForNonForegroundActivePresentationAnimated:(BOOL)arg1;
@@ -78,11 +80,15 @@
 - (void)invalidate;
 - (BOOL)isPassFooterContentViewInGroup:(id)arg1;
 - (void)layoutSubviews;
+- (void)passFooterContentView:(id)arg1 didAuthorizeAndRetrieveDecryptedBarcode:(id)arg2;
 - (void)passFooterContentViewDidAuthenticate:(id)arg1;
+- (void)passFooterContentViewDidAuthorizeTransaction:(id)arg1;
 - (void)passFooterContentViewDidChangeCoachingState:(id)arg1;
+- (void)passFooterContentViewDidChangePhysicalButtonRequirement:(id)arg1;
 - (void)passFooterContentViewDidChangePileSuppressionRequirement:(id)arg1;
-- (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;
+- (void)passFooterContentViewDidInvalidateAuthorizedBarcode:(id)arg1;
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
+- (void)showFullScreenBarcode;
 - (unsigned long long)suppressedContentForContentView:(id)arg1;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;
 - (void)willBecomeVisibleAnimated:(BOOL)arg1;

@@ -6,11 +6,12 @@
 
 #import <TSDrawables/TSDDrawableInfo.h>
 
+#import <TSDrawables/TSDStyleOwning-Protocol.h>
 #import <TSDrawables/TSSStyleClient-Protocol.h>
 
 @class NSString, TSDReflection, TSDShadow, TSDStroke, TSSStyle;
 
-@interface TSDStyledInfo : TSDDrawableInfo <TSSStyleClient>
+@interface TSDStyledInfo : TSDDrawableInfo <TSDStyleOwning, TSSStyleClient>
 {
 }
 
@@ -23,6 +24,7 @@
 @property (copy, nonatomic) TSDShadow *shadow;
 @property (copy, nonatomic) TSDStroke *stroke;
 @property (strong, nonatomic) TSSStyle *style;
+@property (readonly, nonatomic) Class styleClass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsStyleInspecting;
 
@@ -38,7 +40,6 @@
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)setBoxedValue:(id)arg1 forProperty:(int)arg2;
 - (void)setValuesForProperties:(id)arg1;
-- (Class)styleClass;
 - (id)styleIdentifierTemplateForNewPreset;
 - (unsigned short)stylePropertyId;
 - (id)stylePropertyName;

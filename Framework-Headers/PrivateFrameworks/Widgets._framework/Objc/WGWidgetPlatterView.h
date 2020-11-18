@@ -16,7 +16,6 @@
 @interface WGWidgetPlatterView : UIView <PLContentSizeManaging, PLContentSizeCategoryAdjusting, MTMaterialGrouping, MTVisualStylingRequiring>
 {
     MTMaterialView *_backgroundView;
-    MTMaterialView *_headerBackgroundView;
     WGPlatterHeaderContentView *_headerContentView;
     double _cornerRadius;
     BOOL _adjustsFontForContentSizeCategory;
@@ -55,6 +54,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double topMarginForLayout; // @synthesize topMarginForLayout=_topMarginForLayout;
 @property (weak, nonatomic) WGWidgetHostingViewController *widgetHost; // @synthesize widgetHost=_widgetHost;
+@property (readonly, copy, nonatomic) NSString *widgetIdentifier;
 
 + (double)contentBaselineToBoundsBottomWithWidth:(double)arg1;
 - (void).cxx_destruct;
@@ -76,6 +76,7 @@
 - (void)_updateUtilityButtonForMode:(long long)arg1;
 - (void)_updateUtilityButtonForMoreContentState:(BOOL)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
+- (id)cancelTouches;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (void)iconDidInvalidate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

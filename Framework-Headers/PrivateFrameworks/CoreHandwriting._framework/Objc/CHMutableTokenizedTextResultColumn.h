@@ -19,6 +19,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTokenRows:(id)arg1;
 - (void)removeTokenRowAtIndex:(long long)arg1;
+- (void)setTokenRowWithTokens:(id)arg1 atIndex:(long long)arg2;
 - (void)sortTokenRows;
 
 @end

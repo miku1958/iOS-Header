@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id)createActivitySharingControllerWithContext:(id)arg1;
-- (id)createShareViewControllerWithFetchResult:(id)arg1;
 
 @end
 

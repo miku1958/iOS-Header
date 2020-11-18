@@ -9,7 +9,7 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/CPTemplateServiceClientInterface-Protocol.h>
 
-@class CPTemplate, CPWindow, NSArray, NSMutableArray, NSString, NSXPCConnection;
+@class CPTemplate, CPWindow, NSArray, NSMutableArray, NSString, NSXPCConnection, UITraitCollection;
 @protocol CPInterfaceControllerDelegate, CPTemplateProviding, CPWindowProviding;
 
 @interface CPInterfaceController : NSObject <CPTemplateDelegate, CPTemplateServiceClientInterface>
@@ -26,6 +26,7 @@
     id<CPWindowProviding> _windowProvider;
 }
 
+@property (readonly, nonatomic) UITraitCollection *carTraitCollection;
 @property (strong, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,32 +52,48 @@
 - (void)_connectToListenerEndpoint:(id)arg1;
 - (void)_connectionInterrupted;
 - (void)_connectionInvalidated;
+- (void)_handleCompletion:(CDUnknownBlockType)arg1 withSuccess:(BOOL)arg2 error:(id)arg3;
 - (id)_init;
 - (void)_invalidate;
 - (id)_listenerEndpointForSettings:(id)arg1;
-- (void)_presentActionSheetTemplate:(id)arg1 animated:(BOOL)arg2;
-- (void)_presentAlertTemplate:(id)arg1 animated:(BOOL)arg2;
-- (void)_pushGridTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
-- (void)_pushListTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
-- (void)_pushMapTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
-- (void)_pushSearchTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
-- (void)_pushTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
-- (void)_pushVoiceControlTemplate:(id)arg1 animated:(BOOL)arg2;
+- (void)_presentActionSheetTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_presentAlertTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_pushEntityTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushGridTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushInformationTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushListTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushMapTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushNowPlayingTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushSearchTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushTabBarTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_pushTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushVoiceControlTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_sceneConnect:(id)arg1;
 - (id)_synchronousTemplateProvider;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
 - (void)bannerTappedWithIdentifier:(id)arg1;
+- (void)clientExceededAudioMetadataThrottleLimit;
 - (void)clientExceededHierarchyDepthLimit;
+- (void)clientExceededTabBarTabLimit;
+- (void)clientPushNowPlayingTemplateAnimated:(BOOL)arg1;
+- (void)clientPushedIllegalTemplateOfClass:(id)arg1;
 - (void)dismissTemplateAnimated:(BOOL)arg1;
+- (void)dismissTemplateAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleActionForControlIdentifier:(id)arg1;
 - (BOOL)isCarPlayCanvasActive;
 - (void)popTemplateAnimated:(BOOL)arg1;
+- (void)popTemplateAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)popToRootTemplateAnimated:(BOOL)arg1;
+- (void)popToRootTemplateAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)popToTemplate:(id)arg1 animated:(BOOL)arg2;
+- (void)popToTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentTemplate:(id)arg1 animated:(BOOL)arg2;
+- (void)presentTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pushTemplate:(id)arg1 animated:(BOOL)arg2;
+- (void)pushTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setRootTemplate:(id)arg1 animated:(BOOL)arg2;
+- (void)setRootTemplate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)templateDidAppear:(id)arg1 animated:(BOOL)arg2;
 - (void)templateDidDisappear:(id)arg1 animated:(BOOL)arg2;
 - (void)templateDidDismiss:(id)arg1;
@@ -85,6 +102,7 @@
 - (void)templateWillAppear:(id)arg1 animated:(BOOL)arg2;
 - (void)templateWillDisappear:(id)arg1 animated:(BOOL)arg2;
 - (void)updateInterestingLayoutGuideWithInsets:(struct UIEdgeInsets)arg1;
+- (void)updateTabBarTemplate:(id)arg1;
 
 @end
 

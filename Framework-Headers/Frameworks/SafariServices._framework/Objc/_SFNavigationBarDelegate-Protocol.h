@@ -22,13 +22,15 @@
 - (NSItemProvider *)itemProviderForNavigationBar:(_SFNavigationBar *)arg1;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didCreateLeadingToolbar:(UIToolbar *)arg2 trailingToolbar:(UIToolbar *)arg3;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didProduceNavigationIntent:(_SFNavigationIntent *)arg2;
+- (void)navigationBarDidLayoutSubviews:(_SFNavigationBar *)arg1;
 - (void)navigationBarDidUpdateBackdropEffect:(_SFNavigationBar *)arg1;
 - (void)navigationBarDoneButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarFormatMenuButtonBecameUnavailable:(_SFNavigationBar *)arg1;
 - (void)navigationBarFormatMenuButtonStartedInteraction:(_SFNavigationBar *)arg1;
 - (void)navigationBarFormatMenuButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarMediaCaptureMuteButtonWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarMediaStateMuteButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarMetricsDidChange:(_SFNavigationBar *)arg1;
-- (void)navigationBarURLWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarTranslateButtonWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarURLWasTapped:(_SFNavigationBar *)arg1 completionHandler:(void (^)(void))arg2;
 @end
 

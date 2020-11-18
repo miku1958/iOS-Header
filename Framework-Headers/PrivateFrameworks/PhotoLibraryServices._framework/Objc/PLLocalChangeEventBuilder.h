@@ -20,12 +20,13 @@
     NSMutableArray *_deletedMemoryCloudGUIDs;
     NSMutableArray *_deletedPersonCloudGUIDs;
     NSMutableArray *_deletedFaceCropCloudGUIDs;
-    NSMutableArray *_deletedOwnedMomentShareCloudGUIDs;
-    NSMutableArray *_deletedSubscribedMomentShareCloudGUIDs;
+    NSMutableArray *_deletedOwnedShareCloudGUIDs;
+    NSMutableArray *_deletedSubscribedShareCloudGUIDs;
     NSMutableArray *_deletedSuggestionCloudGUIDs;
     NSMutableArray *_deletedInternalResourceUUIDToResourceTypeMappings;
     BOOL _coalescedEvent;
     BOOL _syncChange;
+    BOOL _unknownMergeEvent;
     CDUnknownBlockType _transactionFilter;
     CDUnknownBlockType _updatedPropertyFilter;
 }
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (nonatomic, getter=isSyncChange) BOOL syncChange; // @synthesize syncChange=_syncChange;
 @property (copy, nonatomic) CDUnknownBlockType transactionFilter; // @synthesize transactionFilter=_transactionFilter;
+@property (nonatomic, getter=isUnknownMergeEvent) BOOL unknownMergeEvent; // @synthesize unknownMergeEvent=_unknownMergeEvent;
 @property (copy, nonatomic) CDUnknownBlockType updatedPropertyFilter; // @synthesize updatedPropertyFilter=_updatedPropertyFilter;
 
 + (id)localEventFromTransaction:(id)arg1;

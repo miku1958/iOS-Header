@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double visibilityOffset; // @synthesize visibilityOffset=_visibilityOffset;
 
 - (void).cxx_destruct;
-- (void)_startAutoplay;
 - (void)updateOutput;
 
 @end

@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)canChangeVoLTESettingEnableStillProvisioning:(id)arg1;
 - (BOOL)canSetCapabilityVoLTE:(id)arg1;
 - (BOOL)cannotChangeVoLTESettingCallCarrier:(id)arg1;
 - (BOOL)capabilityEnabledVoLTE:(id)arg1;
@@ -41,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)fetchCapabilityEnabledVoLTE;
 - (id)init;
 - (id)initPrivate;
+- (BOOL)isVoLTEStillProvisioningForContext:(id)arg1;
 - (void)setCapabilityVoLTE:(id)arg1 enabled:(BOOL)arg2;
 - (BOOL)singleSimCanSetCapabilityVoLTE;
 - (void)willEnterForeground;

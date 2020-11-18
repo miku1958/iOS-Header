@@ -13,10 +13,12 @@
 
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 
-+ (id)_prefixColorForSelectedRangeData:(id)arg1 defaultColor:(id)arg2;
-+ (id)_stringForSelectedRangeData:(id)arg1;
-+ (id)attributedStringForSelectedRangeData:(id)arg1 font:(id)arg2 foregroundColor:(id)arg3 prefersImageAffixes:(BOOL)arg4;
++ (id)_attributedMultiplePrefixStringForSelectedRangeData:(id)arg1 attributedString:(id)arg2 font:(id)arg3 foregroundColor:(id)arg4;
++ (id)_attributedStringForSelectedRangeData:(id)arg1 font:(id)arg2 foregroundColor:(id)arg3 prefixColor:(id)arg4 prefersImageAffixes:(BOOL)arg5 embedded:(BOOL)arg6;
++ (id)_stringForSelectedRangeData:(id)arg1 embedded:(BOOL)arg2;
++ (id)attributedStringForSelectedRangeData:(id)arg1 font:(id)arg2 foregroundColor:(id)arg3 prefixColor:(id)arg4 prefersImageAffixes:(BOOL)arg5;
 + (void)clearCaches;
++ (id)standardPrefixColorForSelectedRangeData:(id)arg1 defaultColor:(id)arg2;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;

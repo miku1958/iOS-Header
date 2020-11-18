@@ -11,10 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface TLKDescriptionContainerBoxView : NUIContainerBoxView
 {
-    TLKTextView *_descriptionViewBaselineView;
+    TLKTextView *_viewForFirstAndLastBaseline;
 }
 
-@property (strong, nonatomic) TLKTextView *descriptionViewBaselineView; // @synthesize descriptionViewBaselineView=_descriptionViewBaselineView;
+@property (strong, nonatomic) TLKTextView *viewForFirstAndLastBaseline; // @synthesize viewForFirstAndLastBaseline=_viewForFirstAndLastBaseline;
 
 - (void).cxx_destruct;
 - (id)calculateViewForFirstBaselineLayout;

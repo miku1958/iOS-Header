@@ -13,8 +13,16 @@
     float _latitude;
     float _longitude;
     float _horizontalAccuracyInMeters;
+    struct {
+        unsigned int latitude:1;
+        unsigned int longitude:1;
+        unsigned int horizontalAccuracyInMeters:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasHorizontalAccuracyInMeters;
+@property (nonatomic) BOOL hasLatitude;
+@property (nonatomic) BOOL hasLongitude;
 @property (nonatomic) float horizontalAccuracyInMeters; // @synthesize horizontalAccuracyInMeters=_horizontalAccuracyInMeters;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float latitude; // @synthesize latitude=_latitude;

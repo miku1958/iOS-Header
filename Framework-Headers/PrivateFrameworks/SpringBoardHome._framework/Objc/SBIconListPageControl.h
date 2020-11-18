@@ -6,45 +6,45 @@
 
 #import <UIKit/UIPageControl.h>
 
-@class NSArray, SBIconPageIndicatorImageSetCache, SBIconPageIndicatorImageSetResult, _UILegibilitySettings;
+#import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
+
+@class NSArray, NSString, UITapGestureRecognizer, _UILegibilitySettings;
 @protocol SBIconListPageControlDelegate;
 
-@interface SBIconListPageControl : UIPageControl
+@interface SBIconListPageControl : UIPageControl <UIGestureRecognizerDelegate>
 {
-    BOOL _hasSetLegibility;
     double _cachedDefaultHeight;
-    SBIconPageIndicatorImageSetResult *_pageIndicatorImageSets;
-    SBIconPageIndicatorImageSetResult *_searchIndicatorImageSets;
-    BOOL _shouldShowSearchIndicator;
-    BOOL _legibilityEnabled;
+    BOOL _actsAsButton;
     _UILegibilitySettings *_legibilitySettings;
     id<SBIconListPageControlDelegate> _delegate;
-    SBIconPageIndicatorImageSetCache *_imageSetCache;
     NSArray *_touchIgnoreRects;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
+@property (nonatomic) BOOL actsAsButton; // @synthesize actsAsButton=_actsAsButton;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double defaultHeight;
-@property (readonly, nonatomic) double defaultIndicatorHeight;
 @property (weak, nonatomic) id<SBIconListPageControlDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) SBIconPageIndicatorImageSetCache *imageSetCache; // @synthesize imageSetCache=_imageSetCache;
-@property (nonatomic, getter=isLegibilityEnabled) BOOL legibilityEnabled; // @synthesize legibilityEnabled=_legibilityEnabled;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-@property (nonatomic) BOOL shouldShowSearchIndicator; // @synthesize shouldShowSearchIndicator=_shouldShowSearchIndicator;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (copy, nonatomic) NSArray *touchIgnoreRects; // @synthesize touchIgnoreRects=_touchIgnoreRects;
 
 - (void).cxx_destruct;
-- (id)_iconListIndicatorImage:(BOOL)arg1;
-- (id)_indicatorViewEnabled:(BOOL)arg1 index:(long long)arg2;
-- (void)_invalidateIndicators;
-- (id)_searchIndicatorImage:(BOOL)arg1;
-- (void)_setIndicatorImage:(id)arg1 toEnabled:(BOOL)arg2 index:(long long)arg3;
-- (void)_transitionIndicator:(id)arg1 toEnabled:(BOOL)arg2 index:(long long)arg3;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (id)effectiveLegibilitySettings;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)legibilitySettingsDidChange;
+- (void)pageControlCurrentPageDidChange:(id)arg1;
+- (void)setButtonHighlighted:(BOOL)arg1;
+- (void)tapGestureDidUpdate:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end
 

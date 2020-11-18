@@ -52,6 +52,7 @@
 - (id)_importantLanguageIdentifiers;
 - (void)_incrementLocalizedStringsForNewCycle;
 - (void)_infoButtonTapped:(id)arg1;
+- (BOOL)_isSecurityResearchDevice;
 - (void)_regulatoryInfoButtonTapped:(id)arg1;
 - (void)_resetDisplayedLocalizedStringsImmediately:(BOOL)arg1;
 - (void)_startCyclingComponents:(unsigned long long)arg1 withDelay:(double)arg2;

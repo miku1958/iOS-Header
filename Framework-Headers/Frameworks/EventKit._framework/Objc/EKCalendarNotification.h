@@ -8,7 +8,7 @@
 
 #import <EventKit/EKIdentityProtocol-Protocol.h>
 
-@class EKObjectID, EKSource, NSString, NSURL;
+@class EKEvent, EKObjectID, EKSource, NSString, NSURL;
 
 @interface EKCalendarNotification : NSObject <EKIdentityProtocol>
 {
@@ -26,6 +26,7 @@
     EKSource *_source;
     NSString *_firstName;
     NSString *_lastName;
+    EKEvent *_event;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGColor *dotColor; // @synthesize dotColor=_dotColor;
 @property (strong, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
+@property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (strong, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hiddenFromNotificationCenter; // @synthesize hiddenFromNotificationCenter=_hiddenFromNotificationCenter;
@@ -47,10 +49,16 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
 
 - (void).cxx_destruct;
+- (BOOL)acknowledgeWithEventStore:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithType:(long long)arg1;
+- (BOOL)isInvitation;
+- (BOOL)isProposedNewTime;
+- (BOOL)isSharedCalendarInvitation;
+- (BOOL)proposedStartDateIsInFutureForAttendee:(id)arg1;
 
 @end
 

@@ -54,6 +54,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
 - (id)_fetchBagProperties;
 - (id)_fetchToken;

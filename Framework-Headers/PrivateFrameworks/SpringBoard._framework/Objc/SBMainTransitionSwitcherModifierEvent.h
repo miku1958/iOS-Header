@@ -6,31 +6,40 @@
 
 #import <SpringBoard/SBTransitionSwitcherModifierEvent.h>
 
-@class NSString, SBAppLayout, SBApplicationSceneEntityDestructionIntent;
+@class NSArray, NSMutableDictionary, NSString, SBAppLayout, SBBannerUnfurlSourceContext;
 
 @interface SBMainTransitionSwitcherModifierEvent : SBTransitionSwitcherModifierEvent
 {
+    NSMutableDictionary *_appLayoutToRemovalContext;
     BOOL _fromAppLayoutWantsExclusiveForeground;
     BOOL _toAppLayoutWantsExclusiveForeground;
     BOOL _fromFloatingSwitcherVisible;
     BOOL _toFloatingSwitcherVisible;
+    BOOL _prefersCrossfadeTransition;
     BOOL _gestureInitiated;
     BOOL _dragAndDropTransition;
     BOOL _breadcrumbTransition;
     BOOL _inlineAppExposeTransition;
     BOOL _morphToPiPTransition;
+    BOOL _morphFromPiPTransition;
     BOOL _continuityTransition;
+    BOOL _bannerUnfurlTransition;
+    BOOL _iconZoomDisabled;
+    BOOL _spotlightTransition;
     SBAppLayout *_fromFloatingAppLayout;
     long long _fromFloatingConfiguration;
     SBAppLayout *_toFloatingAppLayout;
     long long _toFloatingConfiguration;
     NSString *_fromAppExposeBundleID;
     NSString *_toAppExposeBundleID;
-    SBApplicationSceneEntityDestructionIntent *_intentForEntityRemoval;
     unsigned long long _fromInlineAppExposeRoles;
     unsigned long long _toInlineAppExposeRoles;
+    SBBannerUnfurlSourceContext *_bannerUnfurlSourceContext;
 }
 
+@property (readonly, copy, nonatomic) NSArray *appLayoutsWithRemovalContexts;
+@property (copy, nonatomic) SBBannerUnfurlSourceContext *bannerUnfurlSourceContext; // @synthesize bannerUnfurlSourceContext=_bannerUnfurlSourceContext;
+@property (nonatomic, getter=isBannerUnfurlTransition) BOOL bannerUnfurlTransition; // @synthesize bannerUnfurlTransition=_bannerUnfurlTransition;
 @property (nonatomic, getter=isBreadcrumbTransition) BOOL breadcrumbTransition; // @synthesize breadcrumbTransition=_breadcrumbTransition;
 @property (nonatomic, getter=isContinuityTransition) BOOL continuityTransition; // @synthesize continuityTransition=_continuityTransition;
 @property (nonatomic, getter=isDragAndDropTransition) BOOL dragAndDropTransition; // @synthesize dragAndDropTransition=_dragAndDropTransition;
@@ -41,9 +50,12 @@
 @property (nonatomic) BOOL fromFloatingSwitcherVisible; // @synthesize fromFloatingSwitcherVisible=_fromFloatingSwitcherVisible;
 @property (nonatomic) unsigned long long fromInlineAppExposeRoles; // @synthesize fromInlineAppExposeRoles=_fromInlineAppExposeRoles;
 @property (nonatomic, getter=isGestureInitiated) BOOL gestureInitiated; // @synthesize gestureInitiated=_gestureInitiated;
+@property (nonatomic, getter=isIconZoomDisabled) BOOL iconZoomDisabled; // @synthesize iconZoomDisabled=_iconZoomDisabled;
 @property (nonatomic, getter=isInlineAppExposeTransition) BOOL inlineAppExposeTransition; // @synthesize inlineAppExposeTransition=_inlineAppExposeTransition;
-@property (strong, nonatomic) SBApplicationSceneEntityDestructionIntent *intentForEntityRemoval; // @synthesize intentForEntityRemoval=_intentForEntityRemoval;
+@property (nonatomic, getter=isMorphFromPiPTransition) BOOL morphFromPiPTransition; // @synthesize morphFromPiPTransition=_morphFromPiPTransition;
 @property (nonatomic, getter=isMorphToPiPTransition) BOOL morphToPiPTransition; // @synthesize morphToPiPTransition=_morphToPiPTransition;
+@property (nonatomic) BOOL prefersCrossfadeTransition; // @synthesize prefersCrossfadeTransition=_prefersCrossfadeTransition;
+@property (nonatomic, getter=isSpotlightTransition) BOOL spotlightTransition; // @synthesize spotlightTransition=_spotlightTransition;
 @property (copy, nonatomic) NSString *toAppExposeBundleID; // @synthesize toAppExposeBundleID=_toAppExposeBundleID;
 @property (nonatomic) BOOL toAppLayoutWantsExclusiveForeground; // @synthesize toAppLayoutWantsExclusiveForeground=_toAppLayoutWantsExclusiveForeground;
 @property (strong, nonatomic) SBAppLayout *toFloatingAppLayout; // @synthesize toFloatingAppLayout=_toFloatingAppLayout;
@@ -52,7 +64,10 @@
 @property (nonatomic) unsigned long long toInlineAppExposeRoles; // @synthesize toInlineAppExposeRoles=_toInlineAppExposeRoles;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)removalContextForAppLayout:(id)arg1;
+- (void)setRemovalContext:(id)arg1 forAppLayout:(id)arg2;
 - (long long)type;
 
 @end

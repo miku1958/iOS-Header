@@ -10,7 +10,7 @@
 
 @property (readonly, nonatomic) struct __CVBuffer *currentPixelBuffer;
 @property (copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler;
-@property (readonly, nonatomic) struct CGAffineTransform videoRotationTransform;
+@property (readonly, nonatomic) struct CGAffineTransform preferredTransform;
 
 @end
 

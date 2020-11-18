@@ -6,7 +6,7 @@
 
 #import <MediaMiningKit/CLSClue.h>
 
-@class CLSEvent, CLSPerson, CLSPlace, NSMutableArray;
+@class CLSEvent, CLSPersonIdentity, CLSPlace, NSMutableArray;
 
 @interface CLSOutputClue : CLSClue
 {
@@ -14,12 +14,12 @@
     NSMutableArray *_relatedInputLocationClues;
     NSMutableArray *_relatedInputPeopleClues;
     CLSEvent *_relatedEvent;
-    CLSPerson *_relatedPerson;
+    CLSPersonIdentity *_relatedPerson;
     CLSPlace *_relatedPlace;
 }
 
 @property (strong) CLSEvent *relatedEvent; // @synthesize relatedEvent=_relatedEvent;
-@property (strong) CLSPerson *relatedPerson; // @synthesize relatedPerson=_relatedPerson;
+@property (strong) CLSPersonIdentity *relatedPerson; // @synthesize relatedPerson=_relatedPerson;
 @property (strong) CLSPlace *relatedPlace; // @synthesize relatedPlace=_relatedPlace;
 
 + (id)clueWithValue:(id)arg1 forKey:(id)arg2;

@@ -6,24 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MapKit/MKActionRowItemViewDelegate-Protocol.h>
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 
-@class MKPlaceActionManager, MKPlaceSectionItemView, MKPlaceholderGridCache, NSArray, NSString, UILayoutGuide;
+@class MKPlaceActionManager, MKPlaceCardActionsRowView, MKPlaceSectionItemView, MKPlaceholderGridCache, NSArray, NSString;
+@protocol _MKPlaceViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceCardActionsRowViewController : UIViewController <MKActionRowItemViewDelegate, MKModuleViewControllerProtocol>
+@interface MKPlaceCardActionsRowViewController : UIViewController <MKModuleViewControllerProtocol>
 {
-    NSArray *_actionButtons;
-    NSArray *_constraints;
-    NSArray *_actionRowsArray;
-    unsigned long long _maxButtonsPerRow;
     MKPlaceSectionItemView *_hairlineView;
-    unsigned long long _style;
-    UILayoutGuide *_marginLayoutguide;
+    MKPlaceCardActionsRowView *_actionsRowView;
     MKPlaceholderGridCache *_placeholderGridCache;
     NSArray *_items;
     MKPlaceActionManager *_actionManager;
+    id<_MKPlaceViewControllerDelegate> _placeViewControllerDelegate;
 }
 
 @property (weak, nonatomic) MKPlaceActionManager *actionManager; // @synthesize actionManager=_actionManager;
@@ -31,19 +27,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
+@property (weak, nonatomic) id<_MKPlaceViewControllerDelegate> placeViewControllerDelegate; // @synthesize placeViewControllerDelegate=_placeViewControllerDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)actionRowSelected:(id)arg1;
-- (void)createActionViews;
-- (void)createActions;
-- (void)createConstraints;
 - (void)infoCardThemeChanged;
 - (id)initWithStyle:(unsigned long long)arg1;
-- (void)layoutButtons;
 - (void)loadView;
-- (unsigned long long)maxButtonsPerRow;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

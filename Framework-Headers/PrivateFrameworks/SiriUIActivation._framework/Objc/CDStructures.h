@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -30,6 +32,14 @@ struct InstrumentationDismissalState {
     BOOL punchedOut;
     BOOL incomingPhoneCallDetected;
     BOOL outgoingPhoneCallDetected;
+    NSString *attemptedAppLaunchIdentifier;
+};
+
+struct UIEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct os_unfair_lock_s {

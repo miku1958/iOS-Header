@@ -17,6 +17,7 @@
     BOOL _isAmplifyUser;
     NSString *_bundlePurchaseID;
     NSSet *_bundleChannelIDs;
+    NSString *_servicesBundlePurchaseID;
     unsigned long long _unprotectedSubscriptionState;
 }
 
@@ -24,7 +25,9 @@
 @property (copy, nonatomic) NSString *bundlePurchaseID; // @synthesize bundlePurchaseID=_bundlePurchaseID;
 @property (nonatomic) BOOL isAmplifyUser; // @synthesize isAmplifyUser=_isAmplifyUser;
 @property (nonatomic) BOOL isPurchaser; // @synthesize isPurchaser=_isPurchaser;
+@property (readonly, nonatomic) BOOL isServicesBundleUser;
 @property (readonly, nonatomic) BOOL isSubscribed;
+@property (copy, nonatomic) NSString *servicesBundlePurchaseID; // @synthesize servicesBundlePurchaseID=_servicesBundlePurchaseID;
 @property (readonly, nonatomic) unsigned long long subscriptionState;
 @property (nonatomic) unsigned long long unprotectedSubscriptionState; // @synthesize unprotectedSubscriptionState=_unprotectedSubscriptionState;
 
@@ -37,7 +40,7 @@
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBundlePurchaseID:(id)arg1 bundleChannelIDs:(id)arg2 inTrialPeriod:(BOOL)arg3 isPurchaser:(BOOL)arg4 isAmplifyUser:(BOOL)arg5;
+- (id)initWithBundlePurchaseID:(id)arg1 bundleChannelIDs:(id)arg2 inTrialPeriod:(BOOL)arg3 isPurchaser:(BOOL)arg4 servicesBundlePurchaseID:(id)arg5 isAmplifyUser:(BOOL)arg6;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

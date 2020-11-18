@@ -6,15 +6,19 @@
 
 #import <VideosUI/VUIDeviceMediaLibrary.h>
 
-@class VUIMPMediaLibrary;
+@class NSMutableDictionary, VUIMPMediaLibrary;
 
 __attribute__((visibility("hidden")))
 @interface VUIMPDeviceMediaLibrary : VUIDeviceMediaLibrary
 {
+    BOOL _updatingRentalPlaybackStartDates;
     VUIMPMediaLibrary *_mediaLibrary;
+    NSMutableDictionary *_rentalPlaybackStartDatesToSave;
 }
 
 @property (strong, nonatomic) VUIMPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
+@property (strong, nonatomic) NSMutableDictionary *rentalPlaybackStartDatesToSave; // @synthesize rentalPlaybackStartDatesToSave=_rentalPlaybackStartDatesToSave;
+@property (nonatomic) BOOL updatingRentalPlaybackStartDates; // @synthesize updatingRentalPlaybackStartDates=_updatingRentalPlaybackStartDates;
 
 + (BOOL)_isInitialUpdateInProgress;
 + (BOOL)_isUpdateInProgress;

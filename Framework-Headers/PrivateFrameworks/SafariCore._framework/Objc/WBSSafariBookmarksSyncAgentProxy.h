@@ -29,9 +29,9 @@
 - (void)dealloc;
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteDevicesWithUUIDStrings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchCloudTabDevicesAndCloseRequests;
 - (void)fetchRemoteMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)fetchUserIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateDAVServerIDsForExistingBookmarksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCloudTabContainerManateeStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -6,20 +6,14 @@
 
 #import <HomeKitDaemon/HMDObjectLookup.h>
 
-#import <HomeKitDaemon/HMDObjectLookupScanProtocol-Protocol.h>
+@class HMDHomeManager;
 
-@class HMDHomeManager, NSString;
-
-@interface HMDHomeManagerObjectLookup : HMDObjectLookup <HMDObjectLookupScanProtocol>
+@interface HMDHomeManagerObjectLookup : HMDObjectLookup
 {
     HMDHomeManager *_homeManager;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (readonly) Class superclass;
+@property (weak) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 
 + (id)logCategory;
 - (void).cxx_destruct;

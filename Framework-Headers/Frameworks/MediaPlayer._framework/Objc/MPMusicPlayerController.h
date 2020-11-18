@@ -66,13 +66,11 @@
 + (void)setRunLoopForNotifications:(id)arg1;
 + (id)systemMusicPlayer;
 - (void).cxx_destruct;
-- (id)_asyncServer;
 - (void)_clearConnection;
 - (void)_establishConnectionIfNeeded;
 - (id)_mediaItemFromNowPlaying:(id)arg1;
 - (id)_nowPlaying;
 - (id)_queueDescriptor;
-- (id)_server;
 - (id)_snapshot;
 - (void)adjustLoadedQueueRangeToReverseCount:(long long)arg1 forwardCount:(long long)arg2;
 - (void)appendQueueDescriptor:(id)arg1;
@@ -94,6 +92,8 @@
 - (id)nowPlayingAtIndex:(long long)arg1;
 - (id)nowPlayingItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfItems;
+- (void)onServer:(CDUnknownBlockType)arg1;
+- (void)onServerAsync:(CDUnknownBlockType)arg1;
 - (void)pause;
 - (void)pauseWithFadeoutDuration:(double)arg1;
 - (void)play;
@@ -104,7 +104,7 @@
 - (id)queueAsQuery;
 - (id)queueAsRadioStation;
 - (void)serverItemDidEnd;
-- (void)serverPlaybackModeDidChange;
+- (void)serverPlaybackModeDidChangeAffectingQueue:(BOOL)arg1;
 - (void)serverQueueDidEnd;
 - (void)setQueueWithDescriptor:(id)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(id)arg1;

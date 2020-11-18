@@ -25,6 +25,7 @@
 - (id)luxFormatter;
 - (id)percentFormatter;
 - (void)registerTemperatureFormatter:(id)arg1;
+- (id)relativeDateFormatter;
 - (id)timeIntervalFormatter;
 
 @end

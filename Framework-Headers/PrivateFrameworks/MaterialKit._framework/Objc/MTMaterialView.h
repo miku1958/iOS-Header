@@ -35,6 +35,7 @@
 @property (nonatomic) long long configuration; // @synthesize configuration=_configuration;
 @property (nonatomic, getter=isContentReplacedWithSnapshot) BOOL contentReplacedWithSnapshot;
 @property (readonly, copy) NSString *debugDescription;
+@property (copy, nonatomic) NSString *debugIdentifier;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL forceCrossfadeIfNecessary;
 @property (copy, nonatomic) NSString *groupName;
@@ -59,8 +60,10 @@
 + (Class)layerClass;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3;
++ (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 compatibleWithTraitCollection:(id)arg4;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
 + (id)materialViewWithRecipeNamed:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
++ (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 compatibleWithTraitCollection:(id)arg2 bundle:(id)arg3 configuration:(long long)arg4 initialWeighting:(double)arg5 scaleAdjustment:(CDUnknownBlockType)arg6;
 + (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 + (id)newDefaultHighlightAnimator;
 + (id)staticMaterialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
@@ -69,8 +72,8 @@
 - (id)_coreMaterialVisualStylingProviderForCategory:(id)arg1;
 - (id)_groupNameWithBase:(id)arg1;
 - (id)_initWithCoreMaterialRecipe:(id)arg1 fromBundle:(id)arg2 coreMaterialConfiguration:(id)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
-- (id)_initWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
-- (id)_initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
+- (id)_initWithRecipe:(long long)arg1 configuration:(long long)arg2 userInterfaceStyle:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
+- (id)_initWithRecipeNamesByTraitCollection:(id)arg1 compatibleWithTraitCollection:(id)arg2 bundle:(id)arg3 configuration:(long long)arg4 initialWeighting:(double)arg5 scaleAdjustment:(CDUnknownBlockType)arg6;
 - (void)_invalidateAlphaTransformer;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_recipeNameForCurrentTraitCollection;
@@ -83,7 +86,7 @@
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)_updateGroupNameIfNecessary;
 - (void)_updateRecipeNameIfNeeded;
-- (BOOL)addCompletionForCurrentAnimation:(CDUnknownBlockType)arg1 forMaterialLayer:(id)arg2;
+- (BOOL)addCompletionForCurrentAnimation:(CDUnknownBlockType)arg1 forMaterialLayer:(id)arg2 reason:(out id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;

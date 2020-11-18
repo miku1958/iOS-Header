@@ -18,6 +18,7 @@
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleModelUpdate;
 - (void)_removePassphraseViewFromHierarchyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)biometricAttemptFailed;
 
 @end
 

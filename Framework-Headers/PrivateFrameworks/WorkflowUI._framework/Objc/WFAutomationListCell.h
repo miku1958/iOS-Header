@@ -6,35 +6,33 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HFTriggerItem, UIColor, UILabel, WFAutomationSummaryIconsView, WFConfiguredTrigger, WFWorkflow;
+@class HFTriggerItem, NSString, UILabel, WFAutomationSummaryIconsView, WFConfiguredTrigger, WFWorkflow;
 
 @interface WFAutomationListCell : UITableViewCell
 {
     WFConfiguredTrigger *_configuredTrigger;
     WFWorkflow *_workflow;
     HFTriggerItem *_homeTrigger;
+    NSString *_identifier;
     WFAutomationSummaryIconsView *_summaryIconsView;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
-    UIColor *_normalBackgroundColor;
-    UIColor *_selectedBackgroundColor;
 }
 
 @property (strong, nonatomic) WFConfiguredTrigger *configuredTrigger; // @synthesize configuredTrigger=_configuredTrigger;
 @property (readonly, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (strong, nonatomic) HFTriggerItem *homeTrigger; // @synthesize homeTrigger=_homeTrigger;
-@property (readonly, nonatomic) UIColor *normalBackgroundColor; // @synthesize normalBackgroundColor=_normalBackgroundColor;
-@property (readonly, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) WFAutomationSummaryIconsView *summaryIconsView; // @synthesize summaryIconsView=_summaryIconsView;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
 - (void).cxx_destruct;
+- (void)configureWithModel:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)setConfiguredTrigger:(id)arg1 workflow:(id)arg2;
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateUI;
 
 @end

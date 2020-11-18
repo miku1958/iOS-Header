@@ -28,20 +28,12 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (id)sharedInsights;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_closeConnection;
-- (void)_initCloseTimerIfNecessary;
-- (BOOL)_openConnectionIfNecessary;
-- (void)_scheduleCloseConnection;
-- (void)_unscheduleCloseConnection;
 - (id)confidenceScoresForContacts:(id)arg1 addresses:(id)arg2;
 - (id)confidenceScoresForMapItems:(id)arg1;
 - (void)dealloc;
-- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
-- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
-- (id)init;
+- (id)initFromResourceDepot:(id)arg1;
 - (double)isTouristHere;
 - (void)preload;
 - (id)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;

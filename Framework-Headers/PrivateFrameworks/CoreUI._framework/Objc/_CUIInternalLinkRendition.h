@@ -26,10 +26,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGRect)_destinationFrame;
-- (void)_fillOutImageSlices;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
-- (struct CGImage *)_sourceImage;
 - (id)_sourceRendition;
 - (struct CGRect)alphaCroppedRect;
 - (int)bitmapEncoding;
@@ -37,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)edgesOnly;
 - (id)imageForSliceIndex:(long long)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (BOOL)isInternalLink;
 - (BOOL)isOpaque;
 - (BOOL)isScaled;

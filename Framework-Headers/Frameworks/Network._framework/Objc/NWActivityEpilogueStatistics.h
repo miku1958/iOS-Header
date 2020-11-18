@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, NWDeviceReport, NWL2Report, PBCodable;
+@class NSString, NSUUID, NWDeviceReport, NWL2Report, PBCodable;
 
 @interface NWActivityEpilogueStatistics : NSObject
 {
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSUUID *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property (nonatomic) unsigned int awdMetricID; // @synthesize awdMetricID=_awdMetricID;
 @property (strong, nonatomic) PBCodable *awdReport; // @synthesize awdReport=_awdReport;
+@property (strong, nonatomic) NSString *bundleID;
 @property (readonly, nonatomic) int completionReason;
 @property (strong, nonatomic) NWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property (readonly, nonatomic) unsigned int domain;
@@ -37,7 +38,10 @@
 @property (strong, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property (nonatomic) struct nw_activity_epilogue_report_s report; // @synthesize report=_report;
 @property (readonly, nonatomic) BOOL retry;
+@property (readonly, nonatomic) int underlyingErrorCode;
+@property (readonly, nonatomic) int underlyingErrorDomain;
 
++ (id)createActivityEpilogue:(struct nw_activity_epilogue_report_s)arg1;
 - (void).cxx_destruct;
 - (id)initWithNWActivityEpilogueReport:(struct nw_activity_epilogue_report_s *)arg1 length:(unsigned long long)arg2;
 - (id)initWithPBCodableData:(id)arg1;

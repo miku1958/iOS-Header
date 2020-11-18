@@ -10,7 +10,7 @@
 
 @interface _IOSurfaceDebugDescription : IOSurfaceDebugDescription
 {
-    CDStruct_0bcbbf48 _basicInfo;
+    CDStruct_1cd98987 _basicInfo;
     CDStruct_6c6f70a4 _layoutInfo;
     NSString *_name;
 }
@@ -20,12 +20,13 @@
 @property (readonly) NSString *name;
 @property (readonly) unsigned int pixelFormat;
 @property (readonly) unsigned int surfaceID;
+@property (readonly) unsigned long long traceID;
 @property (readonly) unsigned long long virtualAddress;
 @property (readonly) unsigned int width;
 
 - (void)dealloc;
 - (id)description;
-- (id)initWithBasicInfo:(const CDStruct_0bcbbf48 *)arg1 layoutInfo:(const CDStruct_6c6f70a4 *)arg2 name:(id)arg3;
+- (id)initWithBasicInfo:(const CDStruct_1cd98987 *)arg1 layoutInfo:(const CDStruct_6c6f70a4 *)arg2 name:(id)arg3;
 
 @end
 

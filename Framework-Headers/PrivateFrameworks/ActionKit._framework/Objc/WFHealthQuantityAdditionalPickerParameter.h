@@ -18,11 +18,11 @@
 
 - (void).cxx_destruct;
 - (id)defaultSerializedRepresentation;
+- (id)importQuestionBehavior;
 - (BOOL)isHidden;
 - (id)localizedLabel;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)possibleStates;
-- (BOOL)supportsImportQuestions;
 - (void)updatePossibleStates;
 
 @end

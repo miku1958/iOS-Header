@@ -18,18 +18,20 @@
 @property (strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 
 + (id)UTITypes;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (BOOL)isPreviewable;
 - (void).cxx_destruct;
 - (BOOL)_supportsPassbook;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4;
 - (int)mediaType;
+- (id)metricsCollectorMediaType;
 - (id)passView;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)previewItemTitle;
 - (BOOL)shouldBeQuickLooked;
 - (BOOL)shouldShowDisclosure;
 - (BOOL)shouldShowViewer;

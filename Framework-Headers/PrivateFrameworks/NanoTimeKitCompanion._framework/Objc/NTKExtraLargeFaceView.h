@@ -6,23 +6,19 @@
 
 #import <NanoTimeKitCompanion/NTKFaceView.h>
 
-@class NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKExtraLargeTimeView, NTKFaceColorScheme, UILabel, UITapGestureRecognizer, UIView;
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@interface NTKExtraLargeFaceView : NTKFaceView
+@class NSString, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKExtraLargeTimeView, NTKFaceColorScheme, UIView;
+
+@interface NTKExtraLargeFaceView : NTKFaceView <CLKMonochromeFilterProvider>
 {
     UIView *_zoomingIconCircleView;
     UIView *_zoomingIconTimeView;
     NTKFaceColorScheme *_colorScheme;
     unsigned long long _faceColor;
-    double _currentFaceViewScale;
-    double _currentFaceOffsetY;
     NTKExtraLargeTimeView *_largeTimeLabel;
     NTKDigitalTimeLabel *_smallTimeLabel;
     NTKDigitalTimeLabelStyle *_smallTimeLabelStyle;
-    UILabel *_timeTravelLabel;
-    NTKDigitalTimeLabelStyle *_timeTravelStyle;
-    UIView *_timeTravelExitView;
-    UITapGestureRecognizer *_timeTravelExitRecognizer;
     BOOL _viewsOffsetForStatusBar;
     BOOL _isEditing;
     BOOL _complicationIsVisible;
@@ -30,15 +26,22 @@
     UIView *_complicationEditingTimeOverlayView;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyColor:(id)arg1 toRichComplicationView:(id)arg2 withFraction:(double)arg3 isMonochrome:(BOOL)arg4;
+- (void)_applyComplicationTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
+- (void)_applyFaceColorToRichComplicationView:(id)arg1;
 - (void)_applyFrozen;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyShowContentForUnadornedSnapshot;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
-- (BOOL)_canStartTimeScrubbing;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
@@ -48,7 +51,6 @@
 - (void)_configureLargeTimeLabelColors;
 - (void)_configureSmallTimeLabelColors;
 - (void)_createTimeViews;
-- (void)_handleTimeTravelTapGesture:(id)arg1;
 - (void)_initLargeTimeLabelIfNecessary;
 - (void)_initSmallTimeLabelIfNecessary;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
@@ -57,6 +59,7 @@
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_layoutForegroundContainerView;
+- (void)_layoutSmallTimeLabel;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (BOOL)_needsForegroundContainerView;
@@ -68,22 +71,17 @@
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_prepareWristRaiseAnimation;
 - (void)_removeTimeViews;
-- (void)_scrubToDate:(id)arg1 animated:(BOOL)arg2;
+- (id)_richComplicationSecondaryColor;
 - (double)_smallTimeAlphaForEditMode:(long long)arg1;
-- (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (double)_statusBarOffsetForComplication;
 - (double)_statusBarOffsetForComplicationBackground;
 - (double)_statusBarOffsetForSmallTime;
-- (BOOL)_supportsTimeScrubbing;
-- (id)_timeTravelStyle;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateComplicationVisibility;
 - (double)_verticalPaddingForStatusBar;
-- (BOOL)_wantsTimeTravelStatusModule;
-- (void)endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
+- (BOOL)shouldFlipColorsForRichComplicationView:(id)arg1;
 
 @end
 

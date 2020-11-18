@@ -7,11 +7,10 @@
 #import <Preferences/PSListController.h>
 
 #import <SettingsCellularUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
-#import <SettingsCellularUI/RadiosPreferencesDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSString, PSSpecifier, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularDataSpecifier, PSUICellularPlanListGroup, PSUICellularUsageSchedulingGroup, PSUISubscriptionContextMenusGroup, RadiosPreferences;
+@class CoreTelephonyClient, NSString, PSSpecifier, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularDataSpecifier, PSUICellularPlanListGroup, PSUICellularUsageSchedulingGroup, PSUISubscriptionContextMenusGroup;
 
-@interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate, RadiosPreferencesDelegate>
+@interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate>
 {
     PSSpecifier *_viewAccount;
     PSSpecifier *_viewAccountGroup;
@@ -32,7 +31,6 @@
     PSUISubscriptionContextMenusGroup *_subscriptionContextMenus;
     PSUICellularUsageSchedulingGroup *_appUsageGroup;
     CoreTelephonyClient *_coreTelephonyClient;
-    RadiosPreferences *_radioPreferences;
 }
 
 @property (strong, nonatomic) PSUICellularUsageSchedulingGroup *appUsageGroup; // @synthesize appUsageGroup=_appUsageGroup;
@@ -47,7 +45,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) RadiosPreferences *radioPreferences; // @synthesize radioPreferences=_radioPreferences;
 @property (strong, nonatomic) PSUISubscriptionContextMenusGroup *subscriptionContextMenus; // @synthesize subscriptionContextMenus=_subscriptionContextMenus;
 @property (readonly) Class superclass;
 
@@ -86,6 +83,7 @@
 - (void)updatePaneWithCellularDataState:(BOOL)arg1;
 - (void)viewAccountPressed:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)wirelessDataUsageCacheRefreshed;
 - (void)wirelessDataUsageChangedNotification;
 
 @end

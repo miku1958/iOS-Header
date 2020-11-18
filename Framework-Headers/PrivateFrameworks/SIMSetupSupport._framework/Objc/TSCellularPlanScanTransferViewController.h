@@ -12,7 +12,7 @@
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class CAShapeLayer, CTDisplayPlanList, NSArray, NSDate, NSString, TSCellularPlanQRCodeScannerView, UIActivityIndicatorView, UIButton, UILabel, UITableView, UIView;
+@class CAShapeLayer, CTDisplayPlanList, NSArray, NSDate, NSDictionary, NSString, TSCellularPlanQRCodeScannerView, UIActivityIndicatorView, UIButton, UILabel, UITableView, UIView;
 @protocol TSSIMSetupFlowDelegate;
 
 @interface TSCellularPlanScanTransferViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
@@ -32,6 +32,7 @@
     BOOL _transferring;
     id<TSSIMSetupFlowDelegate> _delegate;
     NSString *_fauxCardData;
+    NSDictionary *_physicalTransferPlan;
     UIView *_scanView;
     UIView *_cutoutView;
     UIActivityIndicatorView *_checkingAvailablePlansSpinner;
@@ -54,6 +55,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL manualCardInfoEntry; // @synthesize manualCardInfoEntry=_manualCardInfoEntry;
 @property (weak, nonatomic) UITableView *pendingPlansListTableView; // @synthesize pendingPlansListTableView=_pendingPlansListTableView;
+@property (readonly) NSDictionary *physicalTransferPlan; // @synthesize physicalTransferPlan=_physicalTransferPlan;
 @property (weak, nonatomic) UILabel *positionQRCodeLabel; // @synthesize positionQRCodeLabel=_positionQRCodeLabel;
 @property (weak, nonatomic) UILabel *scanQRCodeLabel; // @synthesize scanQRCodeLabel=_scanQRCodeLabel;
 @property (weak, nonatomic) UIView *scanView; // @synthesize scanView=_scanView;
@@ -63,7 +65,7 @@
 - (void).cxx_destruct;
 - (void)_addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2;
 - (void)_maybeUpdateTableView;
-- (id)_messageTextForActionSheet:(id)arg1 carrierName:(id)arg2 countryCode:(id)arg3;
+- (id)_messageTextForActionSheet:(id)arg1 carrierName:(id)arg2 transferCapability:(unsigned long long)arg3;
 - (void)_presentActionSheetForPendingInstall:(id)arg1;
 - (void)_presentActionSheetForPlanTransfer:(id)arg1;
 - (void)_startPendingInstall:(id)arg1;

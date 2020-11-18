@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDate;
+@class NSDate, NSDictionary;
+@protocol WBSHistoryServiceDatabaseDelegate;
 
 @protocol WBSHistoryConnectionProtocol
 - (void)beginHistoryAccessSession:(void (^)(id<WBSHistoryAccessSessionProtocol>, NSError *))arg1;
 - (void)beginURLCompletionSession:(void (^)(id<WBSURLCompletionSessionProtocol>, NSError *))arg1;
+- (void)connectWithOptions:(NSDictionary *)arg1 delegate:(id<WBSHistoryServiceDatabaseDelegate>)arg2 completionHandler:(void (^)(id<WBSHistoryServiceDatabaseProtocol>, long long, long long, NSError *))arg3;
 - (void)debugGetDatabaseURLWithCompletionHandler:(void (^)(NSURL *, NSError *))arg1;
+- (void)disconnectWithCompletionHandler:(void (^)(void))arg1;
 - (void)ensureConnected:(void (^)(NSError *))arg1;
+- (void)finishClearingHistoryIfNecessaryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)getServiceInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getVisitedLinksWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)groupVisitsIntoSessionsBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)initializeCloudHistoryWithConfiguration:(NSDictionary *)arg1 completionHandler:(void (^)(id<WBSCloudHistoryServiceProtocol>, NSError *))arg2;
 - (void)queryMemoryFootprint:(void (^)(WBSMemoryFootprint *, NSError *))arg1;
+- (void)releaseCloudHistory:(void (^)(NSError *))arg1;
 @end
 

@@ -61,6 +61,7 @@
 - (void)dealloc;
 - (void)dualSimCapabilityDidChange;
 - (id)initWithCoreTelephonyClient:(id)arg1 systemMonitor:(id)arg2;
+- (BOOL)isPNRNumber:(id)arg1 andPhoneBookNumber:(id)arg2 differentEnoughFromSIMIdentifier:(id)arg3 toReregisterWithNewNumber:(id *)arg4;
 - (BOOL)isPhoneNumberEmergencyNumber:(id)arg1;
 - (void)operatorBundleChange:(id)arg1;
 - (void)phoneNumberChanged:(id)arg1;

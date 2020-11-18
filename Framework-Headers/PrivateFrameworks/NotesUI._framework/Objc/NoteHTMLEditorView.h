@@ -81,6 +81,7 @@
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)contextMenuConfigurationForElement:(id)arg1 presentation:(id)arg2;
 - (void)copyNoteHTMLToPasteboard;
+- (void)getRectForSelectionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertBulletedList:(id)arg1;
@@ -92,9 +93,7 @@
 - (void)insertOrderedList:(id)arg1;
 - (BOOL)isFirstResponder;
 - (id)jsonStringFromDictionaryOrArray:(id)arg1;
-- (void)layoutSubviews;
 - (void)menuControllerDidHide:(id)arg1;
-- (struct CGRect)rectForSelection;
 - (void)removeStyle:(id)arg1;
 - (void)replaceContentIDs:(id)arg1;
 - (void)replaceSelectionWithAttachmentPresentation:(id)arg1;

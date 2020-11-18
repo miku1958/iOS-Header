@@ -10,7 +10,6 @@
 {
 }
 
-@property (nonatomic) BOOL allowLocketGesture; // @dynamic allowLocketGesture;
 @property (nonatomic) double cameraSwipePrelaunchThreshold; // @dynamic cameraSwipePrelaunchThreshold;
 @property (nonatomic) double cameraSwipePrewarmThreshold; // @dynamic cameraSwipePrewarmThreshold;
 @property (nonatomic) BOOL forceWakeToMaps; // @dynamic forceWakeToMaps;

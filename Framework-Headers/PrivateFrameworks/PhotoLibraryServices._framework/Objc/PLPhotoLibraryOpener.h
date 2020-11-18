@@ -18,7 +18,7 @@
 
 + (BOOL)canAutomaticallyCreateLibrary;
 - (void).cxx_destruct;
-- (BOOL)createPhotoLibraryDatabase:(id *)arg1;
+- (BOOL)createPhotoLibraryDatabaseWithOptions:(id)arg1 error:(id *)arg2;
 - (id)initWithLibraryServicesManager:(id)arg1 reportInProgressUpgrades:(BOOL)arg2;
 - (BOOL)lightweightPermissionCheckWithError:(id *)arg1;
 - (BOOL)lightweightPermissionCheckWithPath:(id)arg1 isDir:(BOOL)arg2 error:(id *)arg3;

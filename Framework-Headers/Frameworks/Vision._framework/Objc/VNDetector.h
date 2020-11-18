@@ -34,16 +34,21 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *synchronizationQueue; // @synthesize synchronizationQueue=_synchronizationQueue;
 
++ (Class)_detectorClassForDetectorType:(id)arg1 options:(id)arg2 detectorCreationOptions:(id *)arg3 error:(id *)arg4;
 + (id)configurationOptionKeysForDetectorKey;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (Class)detectorClassForDetectorType:(id)arg1 configuredWithOptions:(id)arg2 error:(id *)arg3;
++ (Class)detectorClassForDetectorType:(id)arg1 error:(id *)arg2;
 + (id)detectorKeyComponentForDetectorConfigurationOptionKey:(id)arg1 value:(id)arg2;
 + (id)detectorName;
-+ (id)detectorWithConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)detectorWithConfigurationOptions:(id)arg1 forSession:(id)arg2 error:(id *)arg3;
 + (void)fullyPopulateConfigurationOptions:(id)arg1;
++ (id)fullyPopulatedConfigurationOptionsWithOverridingOptions:(id)arg1;
 + (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (BOOL)canBehaveAsDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (BOOL)currentQueueIsSynchronizationQueue;
 - (BOOL)getOptionalCanceller:(id *)arg1 inOptions:(id)arg2 error:(id *)arg3;
 - (id)initWithConfigurationOptions:(id)arg1;
@@ -52,13 +57,15 @@ __attribute__((visibility("hidden")))
 - (id)processInSynchronizationQueueUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (id)requiredCancellerInOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)shouldBeReplacedByDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
+- (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 - (BOOL)supportsProcessingDevice:(id)arg1;
 - (void)updateConfigurationOptionsWithObject:(id)arg1 forKey:(id)arg2;
 - (BOOL)useGPU;
 - (BOOL)validateImageBuffer:(id)arg1 error:(id *)arg2;
 - (id)validatedImageBufferFromOptions:(id)arg1 error:(id *)arg2;
 - (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
-- (BOOL)warmUpWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 
 @end
 

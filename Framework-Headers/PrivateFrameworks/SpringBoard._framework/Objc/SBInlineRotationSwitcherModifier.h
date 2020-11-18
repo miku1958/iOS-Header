@@ -10,7 +10,7 @@
 {
 }
 
-- (long long)layoutUpdateMode;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (BOOL)shouldPerformRotationAnimationForOrientationChange;
 
 @end

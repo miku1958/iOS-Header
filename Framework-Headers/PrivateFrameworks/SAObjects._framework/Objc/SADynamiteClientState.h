@@ -8,7 +8,7 @@
 
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@class NSArray, NSNumber, NSString, SACalendar, SAUserState;
+@class NSArray, NSNumber, NSString, SACalendar, SAUserState, SAUserTokenStatus;
 
 @interface SADynamiteClientState : SAAceClientState <SABackgroundContextObject>
 {
@@ -22,11 +22,13 @@
 @property (strong, nonatomic) SACalendar *expirationDate;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *iCloudMusicLibraryToggle;
+@property (copy, nonatomic) NSString *iTunesMatchSubscriptionStatus;
 @property (copy, nonatomic) NSArray *inContextUsersStates;
 @property (copy, nonatomic) NSString *status;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSNumber *userHistoryUnmodifiable;
 @property (copy, nonatomic) NSString *userToken;
+@property (strong, nonatomic) SAUserTokenStatus *userTokenStatus;
 @property (copy, nonatomic) NSString *xpAbCookie;
 
 + (id)deliveryDeadline;

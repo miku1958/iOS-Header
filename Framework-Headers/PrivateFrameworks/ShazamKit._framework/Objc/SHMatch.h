@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ShazamKit/NSSecureCoding-Protocol.h>
+
 @class NSArray, SHSignature;
 
-@interface SHMatch : NSObject
+@interface SHMatch : NSObject <NSSecureCoding>
 {
     NSArray *_mediaItems;
     SHSignature *_signature;
@@ -17,7 +19,11 @@
 @property (readonly, nonatomic) NSArray *mediaItems; // @synthesize mediaItems=_mediaItems;
 @property (readonly, nonatomic) SHSignature *signature; // @synthesize signature=_signature;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)containsMediaItemWithFuzzyTolerance:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMediaItems:(id)arg1 forSignature:(id)arg2;
 
 @end

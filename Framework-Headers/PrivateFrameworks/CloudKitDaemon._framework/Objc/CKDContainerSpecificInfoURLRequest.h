@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsAnonymousAccount;
 - (BOOL)allowsAuthedAccount;
 - (BOOL)hasRequestBody;
-- (id)initWithContainerIdentifier:(id)arg1;
+- (id)initWithOperation:(id)arg1 containerIdentifier:(id)arg2;
 - (long long)partitionType;
 - (void)requestDidParseJSONObject:(id)arg1;
 - (BOOL)requiresConfiguration;

@@ -6,29 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class EMThreadScope, NSMutableSet;
+@class NSCountedSet;
 
 @interface _EDThreadMigrationState : NSObject
 {
-    EMThreadScope *_threadScope;
-    NSMutableSet *_objectIDsToMigrate;
-    NSMutableSet *_recentlyMigratedObjectIDs;
+    NSCountedSet *_objectIDsToMigrate;
+    NSCountedSet *_recentlyMigratedObjectIDs;
+    NSCountedSet *_recentlyDeletedObjectIDs;
     unsigned long long _state;
+    unsigned long long _generation;
 }
 
-@property (readonly, nonatomic) NSMutableSet *objectIDsToMigrate; // @synthesize objectIDsToMigrate=_objectIDsToMigrate;
-@property (readonly, nonatomic) NSMutableSet *recentlyMigratedObjectIDs; // @synthesize recentlyMigratedObjectIDs=_recentlyMigratedObjectIDs;
+@property (readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
+@property (readonly, nonatomic) BOOL isEmpty;
+@property (readonly, nonatomic) BOOL isFullyMigrated;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
-@property (readonly, nonatomic) EMThreadScope *threadScope; // @synthesize threadScope=_threadScope;
+@property (readonly, nonatomic) unsigned long long unmigratedCount;
 
 - (void).cxx_destruct;
-- (BOOL)addObjectIDs:(id)arg1;
-- (BOOL)changeObjectIDsToMigrate:(id)arg1;
-- (id)deleteObjectIDsToMigrate:(id)arg1;
+- (void)_removeAllObjectIDs;
+- (BOOL)_verifyIsMigratingGeneration:(unsigned long long)arg1 stateVerifier:(CDUnknownBlockType)arg2 logIdentifier:(id)arg3 logAction:(id)arg4 logCount:(unsigned long long)arg5;
+- (void)addDeletedObjectIDs:(id)arg1;
+- (void)addObjectIDs:(id)arg1;
+- (void)cancel;
 - (void)fail;
-- (id)initWithThreadScope:(id)arg1;
+- (id)init;
+- (BOOL)isRecentlyMigrated:(id)arg1;
 - (id)nextBatch;
-- (BOOL)removeMigratedObjectIDs:(id)arg1;
+- (void)removeDeletedObjectIDs:(id)arg1;
+- (void)removeMigratedObjectIDs:(id)arg1;
+- (void)removeObjectIDs:(id)arg1;
+- (void)reset;
+- (BOOL)verifyIsMigratingGeneration:(unsigned long long)arg1 andIsInState:(unsigned long long)arg2 logIdentifier:(id)arg3 logAction:(id)arg4 logCount:(unsigned long long)arg5;
+- (BOOL)verifyIsMigratingGeneration:(unsigned long long)arg1 andIsInState:(unsigned long long)arg2 orState:(unsigned long long)arg3 logIdentifier:(id)arg4 logAction:(id)arg5 logCount:(unsigned long long)arg6;
 
 @end
 

@@ -15,6 +15,7 @@
 @interface AKToolsListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     BOOL _supportsOpacityEditing;
+    BOOL _isDeviceLocked;
     id<AKToolsListViewControllerDelegate> _delegate;
     UITableView *_tableView;
     NSArray *_cellItemTypes;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) id<AKToolsListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsOpacityEditing; // @synthesize supportsOpacityEditing=_supportsOpacityEditing;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
@@ -36,11 +38,12 @@
 - (id)_buttonViewForShapes;
 - (id)_buttonViewForSignature;
 - (id)_buttonViewForText;
-- (id)_buttonViewWithImage:(id)arg1 title:(id)arg2;
+- (id)_buttonViewWithImage:(id)arg1 title:(id)arg2 tintColor:(id)arg3;
 - (BOOL)_canShowWhileLocked;
 - (void)_reloadCellItemTypes;
 - (void)_shapeButtonPressed:(id)arg1;
 - (long long)_shapesCellIndexRow;
+- (void)_updateDeviceLocked;
 - (void)addRowView:(id)arg1 toCellView:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

@@ -15,27 +15,27 @@
     NSObject<OS_dispatch_queue> *_calloutQueue;
     BOOL _invalidated;
     NSMutableArray *_pendingConnectionHandlers;
-    CDUnknownBlockType _receivedCustomDataHandler;
     CDUnknownBlockType _invalidationHandler;
     void *_externalDevice;
 }
 
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
+@property (readonly, nonatomic, getter=isConnecting) BOOL connecting;
 @property (readonly, nonatomic) void *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (copy, nonatomic) CDUnknownBlockType receivedCustomDataHandler; // @synthesize receivedCustomDataHandler=_receivedCustomDataHandler;
 
 - (void).cxx_destruct;
-- (void)_connectionDidReceiveCustomData:(id)arg1;
 - (void)_connectionStateDidChange:(unsigned int)arg1 error:(id)arg2;
-- (void)becomeActiveOriginWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;
 - (void)connectWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)connectWithOptions:(unsigned long long)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connectWithUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (id)description;
 - (id)initWithExternalDevice:(void *)arg1;
 - (void)reset;
-- (void)resignActiveOriginWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendCustomData:(id)arg1;
 - (void)sendMediaRemoteCommand:(unsigned int)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

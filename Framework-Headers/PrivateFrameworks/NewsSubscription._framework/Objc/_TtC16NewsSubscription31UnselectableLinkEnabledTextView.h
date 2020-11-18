@@ -6,7 +6,6 @@
 
 #import <UIKit/UITextView.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription31UnselectableLinkEnabledTextView : UITextView
 {
 }

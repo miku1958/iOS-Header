@@ -53,6 +53,7 @@
 - (void)account:(id)arg1 isValid:(BOOL)arg2 validationError:(id)arg3;
 - (id)accountBooleanPropertyWithSpecifier:(id)arg1;
 - (id)accountFromSpecifier;
+- (BOOL)accountIsManaged;
 - (id)accountPropertyWithSpecifier:(id)arg1;
 - (id)accountSpecifiers;
 - (void)cancelButtonTapped:(id)arg1;

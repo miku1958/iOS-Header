@@ -13,21 +13,25 @@
 }
 
 @property (nonatomic) BOOL allowsSnooze; // @dynamic allowsSnooze;
-@property (nonatomic) BOOL bedtimeDoNotDisturb; // @dynamic bedtimeDoNotDisturb;
-@property (nonatomic) unsigned long long bedtimeDoNotDisturbOptions; // @dynamic bedtimeDoNotDisturbOptions;
 @property (nonatomic) unsigned long long bedtimeHour; // @dynamic bedtimeHour;
 @property (nonatomic) unsigned long long bedtimeMinute; // @dynamic bedtimeMinute;
 @property (copy, nonatomic) NSNumber *bedtimeReminder; // @dynamic bedtimeReminder;
 @property (nonatomic) unsigned long long bedtimeReminderMinutes; // @dynamic bedtimeReminderMinutes;
+@property (nonatomic) unsigned long long day; // @dynamic day;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @dynamic enabled;
 @property (nonatomic) unsigned long long hour; // @dynamic hour;
 @property (nonatomic) unsigned long long minute; // @dynamic minute;
+@property (nonatomic) unsigned long long month; // @dynamic month;
 @property (nonatomic) unsigned long long playOptions; // @dynamic playOptions;
 @property (nonatomic) unsigned long long repeatSchedule; // @dynamic repeatSchedule;
+@property (nonatomic) BOOL sleepMode; // @dynamic sleepMode;
+@property (nonatomic) unsigned long long sleepModeOptions; // @dynamic sleepModeOptions;
 @property (nonatomic) BOOL sleepSchedule; // @dynamic sleepSchedule;
+@property (nonatomic) BOOL sleepTracking; // @dynamic sleepTracking;
 @property (copy, nonatomic) MTSound *sound; // @dynamic sound;
 @property (nonatomic) BOOL timeInBedTracking; // @dynamic timeInBedTracking;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
+@property (nonatomic) unsigned long long year; // @dynamic year;
 
 - (void)applyChangesFromChangeSet:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

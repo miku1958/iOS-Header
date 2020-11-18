@@ -6,14 +6,18 @@
 
 #import <PhotosUICore/PXGadgetDataSourceManager.h>
 
+#import <PhotosUI/PUSearchZeroKeywordChangeDelegate-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, PUSearchZeroKeywordGadgetProvider;
+@class NSArray, NSString, PUSearchZeroKeywordDataSource, PXTapToRadarGadgetProvider;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver>
+@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver, PUSearchZeroKeywordChangeDelegate>
 {
-    PUSearchZeroKeywordGadgetProvider *_zeroKeywordGadgetProvider;
+    NSArray *_gadgetProviders;
+    PUSearchZeroKeywordDataSource *_zeroKeywordDataSource;
+    NSArray *_zeroKeywordGadgetProviders;
+    PXTapToRadarGadgetProvider *_tapToRadarProvider;
     long long _filteringState;
 }
 
@@ -23,14 +27,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isExpectedToLoadNonEmptyDataSourceSoon;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) PUSearchZeroKeywordGadgetProvider *zeroKeywordGadgetProvider; // @synthesize zeroKeywordGadgetProvider=_zeroKeywordGadgetProvider;
+@property (strong, nonatomic) PXTapToRadarGadgetProvider *tapToRadarProvider; // @synthesize tapToRadarProvider=_tapToRadarProvider;
+@property (readonly, nonatomic) PUSearchZeroKeywordDataSource *zeroKeywordDataSource; // @synthesize zeroKeywordDataSource=_zeroKeywordDataSource;
+@property (strong, nonatomic) NSArray *zeroKeywordGadgetProviders; // @synthesize zeroKeywordGadgetProviders=_zeroKeywordGadgetProviders;
 
 - (void).cxx_destruct;
-- (id)_sortingRankForGadget:(id)arg1;
 - (void)_waitForFirstDisplayTimedOut;
-- (id)filteredUndisplayedGadgets:(id)arg1;
+- (BOOL)_zeroKeywordDataSourceHasZeroKeywords;
+- (void)didUpdateSections:(id)arg1;
 - (id)gadgetProviders;
-- (CDUnknownBlockType)gadgetSortComparator;
+- (id)hiddenGadgetProviders;
 - (id)init;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
 - (void)refreshData;

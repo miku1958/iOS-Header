@@ -25,8 +25,8 @@
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
-- (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(BOOL)arg2;
-- (void)workflowDidStart;
+- (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(BOOL)arg2 reference:(id)arg3;
+- (void)workflowDidStartFromWorkflowReference:(id)arg1 attribution:(id)arg2;
 
 @end
 

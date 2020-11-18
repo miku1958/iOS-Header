@@ -10,6 +10,7 @@
 {
 }
 
++ (double)animationDurationForStyle:(long long)arg1;
 + (double)defaultAnimationDuration;
 + (id)defaultTimingFunction;
 

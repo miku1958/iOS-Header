@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_roundedLabels;
     unsigned long long _prominence;
+    unsigned long long _sizeConfiguration;
 }
 
 @property (nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property (strong, nonatomic) NSMutableArray *roundedLabels; // @synthesize roundedLabels=_roundedLabels;
+@property (nonatomic) unsigned long long sizeConfiguration; // @synthesize sizeConfiguration=_sizeConfiguration;
 
 - (void).cxx_destruct;
 - (id)init;

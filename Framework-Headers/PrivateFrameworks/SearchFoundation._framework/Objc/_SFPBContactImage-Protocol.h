@@ -10,6 +10,7 @@
 
 @protocol _SFPBContactImage <NSObject>
 
+@property (copy, nonatomic) NSString *appIconBadgeBundleIdentifier;
 @property (copy, nonatomic) NSArray *contactIdentifiers;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL threeDTouchEnabled;

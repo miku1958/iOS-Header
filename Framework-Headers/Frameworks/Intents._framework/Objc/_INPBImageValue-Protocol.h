@@ -14,18 +14,22 @@
 @property (readonly, nonatomic) BOOL hasData;
 @property (nonatomic) BOOL hasHeight;
 @property (readonly, nonatomic) BOOL hasProxyServiceIdentifier;
+@property (nonatomic) BOOL hasRenderingMode;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUri;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (nonatomic) BOOL hasWidth;
 @property (nonatomic) double height;
 @property (copy, nonatomic) NSString *proxyServiceIdentifier;
+@property (nonatomic) int renderingMode;
 @property (nonatomic) int type;
 @property (copy, nonatomic) NSString *uri;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata;
 @property (nonatomic) double width;
 
+- (int)StringAsRenderingMode:(NSString *)arg1;
 - (int)StringAsType:(NSString *)arg1;
+- (NSString *)renderingModeAsString:(int)arg1;
 - (NSString *)typeAsString:(int)arg1;
 @end
 

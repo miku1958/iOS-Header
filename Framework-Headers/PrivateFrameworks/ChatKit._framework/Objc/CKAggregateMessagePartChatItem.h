@@ -22,6 +22,7 @@
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)loadTranscriptText;
 - (id)pasteboardItems;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 
 @end
 

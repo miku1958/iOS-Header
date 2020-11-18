@@ -16,15 +16,15 @@
 @interface BSServiceConnectionListener : NSObject <BSServiceConnectionListenerConfiguring, BSServiceListener, BSInvalidatable>
 {
     BSServiceManager *_manager;
-    NSString *_domain;
-    NSString *_service;
-    NSString *_instance;
     struct os_unfair_lock_s _lock;
     id<BSServiceConnectionListenerDelegate> _lock_delegate;
     BOOL _lock_activated;
     BOOL _lock_invalidated;
     struct os_unfair_lock_s _registrationLock;
     id<BSInvalidatable> _registrationLock_assertion;
+    NSString *_domain;
+    NSString *_service;
+    NSString *_instance;
     BSServiceConnectionEndpoint *_endpoint;
 }
 
@@ -40,7 +40,6 @@
 + (void)disableLaunchWhitelist;
 + (id)listenerWithConfigurator:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)_initWithManager:(id)arg1 config:(CDUnknownBlockType)arg2;
 - (void)activate;
 - (void)dealloc;
 - (void)didReceiveConnection:(id)arg1;

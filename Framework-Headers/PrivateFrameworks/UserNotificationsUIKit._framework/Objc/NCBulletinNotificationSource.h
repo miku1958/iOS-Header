@@ -52,15 +52,13 @@
 - (id)initWithDispatcher:(id)arg1 observer:(id)arg2 queue:(id)arg3;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(BOOL)arg4 withReply:(CDUnknownBlockType)arg5;
-- (id)observer:(id)arg1 composedAttachmentImageForType:(long long)arg2 thumbnailData:(id)arg3 key:(id)arg4;
 - (void)observer:(id)arg1 modifyBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
+- (void)observer:(id)arg1 noteBulletinsLoadedForSectionID:(id)arg2;
 - (void)observer:(id)arg1 noteServerConnectionStateChanged:(BOOL)arg2;
 - (void)observer:(id)arg1 removeBulletin:(id)arg2;
 - (void)observer:(id)arg1 removeBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
 - (void)observer:(id)arg1 removeSection:(id)arg2;
-- (id)observer:(id)arg1 thumbnailSizeConstraintsForAttachmentType:(long long)arg2;
 - (void)observer:(id)arg1 updateSectionInfo:(id)arg2;
-- (BOOL)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)arg1;
 
 @end
 

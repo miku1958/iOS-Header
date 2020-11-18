@@ -22,6 +22,7 @@
 
 @property (readonly, nonatomic) double secondsToRun; // @synthesize secondsToRun=_secondsToRun;
 
+- (void).cxx_destruct;
 - (void)_doPingWithSocket:(int)arg1 address:(struct sockaddr_in)arg2 timeToRunTestInSeconds:(double)arg3 pingTimeout:(double)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (int)_setupAndPerformPing:(double)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setupReadSource:(int)arg1 address:(struct sockaddr_in)arg2 icmID:(unsigned short)arg3 queue:(id)arg4 completionHander:(CDUnknownBlockType)arg5;

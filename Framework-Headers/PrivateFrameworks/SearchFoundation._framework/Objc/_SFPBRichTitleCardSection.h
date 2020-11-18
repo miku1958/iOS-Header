@@ -21,6 +21,7 @@
     BOOL _hideVerticalDivider;
     BOOL _titleNoWrap;
     BOOL _thumbnailCropCircle;
+    BOOL _subtitleIsEmphasized;
     int _separatorStyle;
     float _rating;
     int _auxiliaryBottomTextColor;
@@ -86,6 +87,7 @@
 @property (strong, nonatomic) _SFPBRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (nonatomic) BOOL subtitleIsEmphasized; // @synthesize subtitleIsEmphasized=_subtitleIsEmphasized;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL thumbnailCropCircle; // @synthesize thumbnailCropCircle=_thumbnailCropCircle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

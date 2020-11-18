@@ -38,7 +38,6 @@
 
 + (id)debugDescriptionForErrorCode:(long long)arg1;
 + (id)errorWithCode:(long long)arg1 request:(id)arg2 additionalUserInfo:(id)arg3;
-+ (void)generateThumbnailOfMaximumSize:(struct CGSize)arg1 scale:(double)arg2 forURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)initialize;
 + (id)sharedGenerator;
 - (void).cxx_destruct;

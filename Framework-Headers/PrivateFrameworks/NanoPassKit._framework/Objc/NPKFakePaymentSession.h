@@ -15,6 +15,7 @@
 {
     BOOL _ourConfirmed;
     BOOL _ourInServiceMode;
+    BOOL _ourPerformedFirstActivation;
     BOOL _invalidated;
     PKPass *_ourCurrentPass;
     NSDictionary *_ourVasPasses;
@@ -36,16 +37,19 @@
 @property (strong, nonatomic) PKPass *ourCurrentPass; // @synthesize ourCurrentPass=_ourCurrentPass;
 @property (nonatomic) BOOL ourInServiceMode; // @synthesize ourInServiceMode=_ourInServiceMode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ourInternalQueue; // @synthesize ourInternalQueue=_ourInternalQueue;
+@property (nonatomic) BOOL ourPerformedFirstActivation; // @synthesize ourPerformedFirstActivation=_ourPerformedFirstActivation;
 @property (strong, nonatomic) NSDictionary *ourVasPasses; // @synthesize ourVasPasses=_ourVasPasses;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
 
 - (void).cxx_destruct;
+- (void)_handleSessionHasCredentialIfNecessaryWithCurrentPass:(id)arg1;
 - (void)_handleTimeoutTimer;
 - (void)_handleTransactionCompleteDarwinNotification;
 - (void)_scheduleDidActivateEventForPass:(id)arg1;
+- (void)_sendTransactionCompleteToDelegate;
 - (void)_setTimeoutTimer;
-- (void)confirmOrRenewSession;
+- (void)confirmSessionExpectingCredential:(BOOL)arg1;
 - (id)currentPass;
 - (void)deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -53,7 +57,7 @@
 - (void)fieldDetectorDidEnterField:(id)arg1 withProperties:(id)arg2;
 - (BOOL)inServiceMode;
 - (id)initWithQueue:(id)arg1;
-- (void)renewSession;
+- (BOOL)sessionStarted;
 - (void)setCredential:(id)arg1;
 - (void)setCurrentPass:(id)arg1;
 - (void)setDeferAuthorization:(BOOL)arg1;

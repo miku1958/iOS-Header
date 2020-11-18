@@ -11,6 +11,7 @@
 
 @class MPConcreteMediaEntityPropertiesCache, MPMediaItem, MPMediaQuery;
 
+__attribute__((visibility("hidden")))
 @interface MPConcreteMediaItemCollection : MPMediaItemCollection <NSCopying, MPCacheableConcreteMediaEntity>
 {
     long long _identifier;

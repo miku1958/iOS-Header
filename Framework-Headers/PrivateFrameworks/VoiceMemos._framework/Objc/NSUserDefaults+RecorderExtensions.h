@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (RecorderExtensions)
++ (id)voiceMemosUserDefaults;
 - (BOOL)_deletionMatchesWindow:(long long)arg1;
 - (long long)rc_audioQuality;
 - (BOOL)rc_deletionIsImmediate;

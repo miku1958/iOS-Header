@@ -30,7 +30,7 @@
 - (void)dealloc;
 - (void)getExternalScreenTypeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPickedRouteHasVolumeControlWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getRoutesForCategory:(id)arg1;
 - (id)init;
 - (BOOL)routeIsLeaderOfEndpoint:(id)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;

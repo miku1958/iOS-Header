@@ -10,12 +10,14 @@
 
 @interface _UIStatusBarCellularSignalView : _UIStatusBarSignalView
 {
+    BOOL _needsLargerScale;
     BOOL _needsCycleAnimationUpdate;
     _UIStatusBarCycleAnimation *_cycleAnimation;
 }
 
 @property (strong, nonatomic) _UIStatusBarCycleAnimation *cycleAnimation; // @synthesize cycleAnimation=_cycleAnimation;
 @property (nonatomic) BOOL needsCycleAnimationUpdate; // @synthesize needsCycleAnimationUpdate=_needsCycleAnimationUpdate;
+@property (nonatomic) BOOL needsLargerScale; // @synthesize needsLargerScale=_needsLargerScale;
 
 + (double)_barCornerRadiusForIconSize:(long long)arg1;
 + (double)_barWidthForIconSize:(long long)arg1;
@@ -34,6 +36,7 @@
 - (void)_updateCycleAnimationNow;
 - (void)_updateFromMode:(long long)arg1;
 - (id)accessibilityHUDRepresentation;
+- (void)applyStyleAttributes:(id)arg1;
 - (void)didMoveToWindow;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

@@ -22,9 +22,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)assertOnQueue;
+- (void)assertBarrierOnQueue;
 - (id)backingQueueIfExists;
-- (id)initWithQueue:(id)arg1;
 - (void)performAsync:(CDUnknownBlockType)arg1;
 - (void)performAsync:(CDUnknownBlockType)arg1 withHandoff:(id)arg2;
 

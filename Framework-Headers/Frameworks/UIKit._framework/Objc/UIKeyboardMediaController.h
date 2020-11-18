@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedKeyboardMediaController;
 - (void).cxx_destruct;
+- (void)_didInsertMedia;
+- (void)_didPresentCard;
 - (void)_displayiMessageAppWithID:(id)arg1;
 - (void)_embedRecentlyUsedMediaViewInView:(id)arg1 animated:(BOOL)arg2;
 - (void)_instantiateCardFromViewService;

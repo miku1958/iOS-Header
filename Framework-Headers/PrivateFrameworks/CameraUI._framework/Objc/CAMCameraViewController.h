@@ -95,6 +95,7 @@
 - (id)_behaviorDefinedDestinationURLForRequest:(id)arg1 withLocalDestinationURL:(id)arg2 linkedDestinationURL:(id)arg3;
 - (unsigned long long)_capturePersistenceBehaviorForViewfinderPersistenceBehavior:(unsigned long long)arg1;
 - (id)_clientPropertiesForLivePhotoVideoURL:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 error:(id)arg3;
+- (id)_clientPropertiesForPhotoProperties:(id)arg1 withFilteredImageURL:(id)arg2 conversionOutputInfo:(id)arg3 error:(id)arg4;
 - (id)_clientPropertiesForStillImageWithURL:(id)arg1 captureMode:(long long)arg2 captureOrientation:(long long)arg3 previewSurface:(void *)arg4 previewOrientation:(long long)arg5 uniqueIdentifier:(id)arg6 savedToPhotoLibrary:(BOOL)arg7 captureResult:(id)arg8;
 - (id)_clientPropertiesForVideoURL:(id)arg1 renderedURL:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4 creationDate:(id)arg5 captureOrientation:(long long)arg6 previewOrientation:(long long)arg7 adjustments:(id)arg8 uniqueIdentifier:(id)arg9 savedToPhotoLibrary:(BOOL)arg10;
 - (void)_commonCAMCameraViewControllerInitializationWithOverrides:(id)arg1 usingEmulationMode:(long long)arg2 initialLayoutStyle:(long long)arg3 privateOptions:(long long)arg4;
@@ -102,12 +103,14 @@
 - (void)_handleCTMVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3;
 - (void)_handleCTMVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3 size:(struct CGSize)arg4 videoURL:(id)arg5 renderedToURL:(id)arg6 renderedAdjustments:(id)arg7;
 - (void)_handleLivePhotoVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3;
+- (void)_handlePhotoProperties:(id)arg1 videoProperties:(id)arg2 unfilteredPhotoProperties:(id)arg3 unfilteredVideoProperties:(id)arg4 assetAdjustments:(id)arg5 attemptPairingVideo:(BOOL)arg6 error:(id)arg7;
 - (void)_handleVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3;
 - (id)_mediaConversionOptionsForAdjustments:(id)arg1 mediaType:(long long)arg2;
 - (void)_notifyCaptureDelegateOfCompletedCaptureOfLivePhoto:(id)arg1 withProperties:(id)arg2 error:(id)arg3;
 - (void)_notifyCaptureDelegateOfCompletedCaptureOfPhoto:(id)arg1 withProperties:(id)arg2 error:(id)arg3;
 - (void)_notifyCaptureDelegateOfCompletedCaptureOfVideo:(id)arg1 withProperties:(id)arg2 error:(id)arg3;
 - (id)_previewImageFromVideoURL:(id)arg1;
+- (void)_renderLivePhotoWithCoordinator:(id)arg1 specifiers:(unsigned long long)arg2 photoProperties:(id)arg3 videoProperties:(id)arg4 adjustments:(id)arg5;
 - (id)_resultQueueSafeImageFromSurface:(void *)arg1 imageOrientation:(long long)arg2;
 - (void)_resultQueue_forceCompletionIfPossibleForRequest:(id)arg1;
 - (id)_resultQueue_getOrCreateStillImageResultCoordinatorForRequest:(id)arg1 captureTimeExpectedResultSpecifiers:(id)arg2 isExpectingPairedVideo:(BOOL)arg3 isDisablingMultipleCaptures:(BOOL)arg4 isGeneratingFilteredMedia:(BOOL)arg5;

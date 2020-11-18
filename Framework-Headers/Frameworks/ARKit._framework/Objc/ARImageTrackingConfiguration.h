@@ -18,16 +18,9 @@
 @property (nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
 @property (copy, nonatomic) NSSet *trackingImages; // @synthesize trackingImages=_trackingImages;
 
-+ (BOOL)isSupported;
 + (id)new;
-+ (id)supportedVideoFormats;
-+ (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniques:(id)arg1;
-- (id)description;
 - (id)init;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

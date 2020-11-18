@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIListCollectionViewCell.h>
 
-@class IKViewElement, VUIListLockupCollectionViewCellView;
+@class IKViewElement, VUIListLockupCollectionViewCellLayout, VUIListLockupCollectionViewCellView;
 
 __attribute__((visibility("hidden")))
 @interface VUIListLockupCollectionViewCell : VUIListCollectionViewCell
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     IKViewElement *_primaryButtonElement;
     IKViewElement *_secondaryButtonElement;
     VUIListLockupCollectionViewCellView *_listCellView;
+    VUIListLockupCollectionViewCellLayout *_layout;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType buttonSelectionHandler; // @synthesize buttonSelectionHandler=_buttonSelectionHandler;
+@property (strong, nonatomic) VUIListLockupCollectionViewCellLayout *layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) VUIListLockupCollectionViewCellView *listCellView; // @synthesize listCellView=_listCellView;
 @property (strong, nonatomic) IKViewElement *primaryButtonElement; // @synthesize primaryButtonElement=_primaryButtonElement;
 @property (strong, nonatomic) IKViewElement *secondaryButtonElement; // @synthesize secondaryButtonElement=_secondaryButtonElement;

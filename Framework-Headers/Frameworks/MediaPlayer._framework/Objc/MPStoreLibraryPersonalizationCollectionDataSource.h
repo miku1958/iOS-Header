@@ -11,6 +11,7 @@
 @class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
@@ -33,7 +34,7 @@
 @property (copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
 @property (copy, nonatomic) NSMapTable *relativeModelClassToMappingResponse; // @synthesize relativeModelClassToMappingResponse=_relativeModelClassToMappingResponse;
 @property (copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
-@property (copy, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
+@property (strong, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MPMediaLibraryEntityTranslationContext *translatingContext; // @synthesize translatingContext=_translatingContext;
 @property (strong, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;

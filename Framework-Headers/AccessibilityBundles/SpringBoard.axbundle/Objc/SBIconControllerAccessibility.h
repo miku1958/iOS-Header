@@ -31,7 +31,10 @@
 - (id)_axLabelForIcons:(id)arg1;
 - (BOOL)_axNeedsToDismissHomeScreenTodayView;
 - (id)_axRecipientIconView;
+- (BOOL)_axSetAppLibraryVisible:(BOOL)arg1;
+- (BOOL)_axSetOverlayVisible:(BOOL)arg1 leadingOverlay:(BOOL)arg2;
 - (BOOL)_axSetTodayViewVisible:(BOOL)arg1;
+- (BOOL)_axShowAppLibrary;
 - (BOOL)_axShowTodayView;
 - (id)init;
 

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_didFindExtensions:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_soExtensionsForExtensions:(id)arg1;
 - (void)beginMatchingExtensionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)endMatchingExtensions;

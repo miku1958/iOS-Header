@@ -13,6 +13,7 @@
 
 @interface CAMTimelapseState : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _captureMirrored;
     BOOL _allFramesWritten;
     BOOL _preferHEVC;
     unsigned short _sessionIdentifier;
@@ -33,6 +34,7 @@
 
 @property (nonatomic) BOOL allFramesWritten; // @synthesize allFramesWritten=_allFramesWritten;
 @property (nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
+@property (nonatomic, getter=isCaptureMirrored) BOOL captureMirrored; // @synthesize captureMirrored=_captureMirrored;
 @property (nonatomic) int captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (readonly, nonatomic) double captureTimeInterval; // @synthesize captureTimeInterval=_captureTimeInterval;
 @property (readonly, nonatomic) long long connectionMode;

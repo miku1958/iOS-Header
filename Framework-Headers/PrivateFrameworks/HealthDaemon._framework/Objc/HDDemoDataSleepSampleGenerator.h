@@ -14,16 +14,16 @@
 @property (nonatomic) double nextSleepDurationSampleTime; // @synthesize nextSleepDurationSampleTime=_nextSleepDurationSampleTime;
 
 + (BOOL)supportsSecureCoding;
-- (double)_computeAwakeTimeForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (double)_computeSleepTimeFromCurrentTime:(double)arg1 mean:(double)arg2 stdDev:(double)arg3;
-- (BOOL)_isDemoPersonAwake:(id)arg1 atTime:(double)arg2;
-- (BOOL)_isDemoPersonSleeping:(id)arg1 atTime:(double)arg2;
+- (void)_generateHeartRateDataForSleepSamples:(id)arg1 objectCollection:(id)arg2 demoPerson:(id)arg3;
+- (double)computeAwakeTimeForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (double)computeSleepTimeFromCurrentTime:(double)arg1 mean:(double)arg2 stdDev:(double)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isDemoPersonAwake:(id)arg1 atTime:(double)arg2;
+- (BOOL)isDemoPersonSleeping:(id)arg1 atTime:(double)arg2;
 - (void)setupWithDemoDataGenerator:(id)arg1;
-- (id)sleepSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 startDate:(id)arg3;
 
 @end
 

@@ -25,6 +25,7 @@
 - (double)caloriesDuringDateComponentInterval:(id)arg1;
 - (double)exerciseMinutesDuringDateComponentInterval:(id)arg1;
 - (id)initWithProfile:(id)arg1 activitySummaryUtility:(id)arg2 workoutUtility:(id)arg3;
+- (double)moveTimeDuringDateComponentInterval:(id)arg1;
 - (long long)numberOfAllRingsClosedDuringDateComponentInterval:(id)arg1;
 - (long long)numberOfDaysDoublingMoveGoalDuringDateComponentInterval:(id)arg1;
 - (long long)numberOfExerciseRingsClosedDuringDateComponentInterval:(id)arg1;

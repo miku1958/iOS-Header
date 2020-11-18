@@ -6,38 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSMetrics, AMSProcessInfo, AMSUIWebFlowController, AMSUIWebJSDataProvider, AMSUIWebPageViewController, AMSURLSession, NSString;
+@class ACAccount, AMSMetrics, AMSProcessInfo, AMSSnapshotBag, AMSUIWebFlowController, AMSUIWebJSDataProvider, AMSUIWebPageViewController, AMSUIWebPluginLoader, AMSURLSession, NSDictionary, NSString;
 @protocol AMSBagProtocol, AMSUIWebActionRunnerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebClientContext : NSObject
 {
     BOOL _loadUsingWebKit;
+    BOOL _signatureResumption;
+    AMSSnapshotBag *_bag;
     ACAccount *_account;
     id<AMSUIWebActionRunnerDelegate> _actionDelegate;
-    id<AMSBagProtocol> _bag;
+    NSDictionary *_additionalHeaders;
     AMSProcessInfo *_clientInfo;
+    NSDictionary *_clientOptions;
     AMSUIWebJSDataProvider *_dataProvider;
     AMSUIWebFlowController *_flowController;
     NSString *_logKey;
     AMSMetrics *_metrics;
+    NSDictionary *_metricsOverlay;
+    AMSUIWebPluginLoader *_pluginLoader;
     AMSURLSession *_URLSession;
     AMSUIWebPageViewController *_webPage;
+    id<AMSBagProtocol> _backingBag;
 }
 
 @property (strong, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
-@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (weak, nonatomic) id<AMSUIWebActionRunnerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
-@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (strong, nonatomic) NSDictionary *additionalHeaders; // @synthesize additionalHeaders=_additionalHeaders;
+@property (strong, nonatomic) id<AMSBagProtocol> backingBag; // @synthesize backingBag=_backingBag;
+@property (readonly, nonatomic) AMSSnapshotBag *bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property (strong, nonatomic) NSDictionary *clientOptions; // @synthesize clientOptions=_clientOptions;
 @property (strong, nonatomic) AMSUIWebJSDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
+@property (readonly, nonatomic) BOOL disableTrustedDomains;
 @property (strong, nonatomic) AMSUIWebFlowController *flowController; // @synthesize flowController=_flowController;
 @property (nonatomic) BOOL loadUsingWebKit; // @synthesize loadUsingWebKit=_loadUsingWebKit;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property (strong, nonatomic) AMSMetrics *metrics; // @synthesize metrics=_metrics;
+@property (strong, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
+@property (strong, nonatomic) AMSUIWebPluginLoader *pluginLoader; // @synthesize pluginLoader=_pluginLoader;
+@property (nonatomic) BOOL signatureResumption; // @synthesize signatureResumption=_signatureResumption;
 @property (weak, nonatomic) AMSUIWebPageViewController *webPage; // @synthesize webPage=_webPage;
 
++ (BOOL)_boolForKey:(id)arg1 defaultValue:(BOOL)arg2 domain:(struct __CFString *)arg3;
++ (id)_updatedClientInfoMatchingAccount:(id)arg1 clientInfo:(id)arg2;
 - (void).cxx_destruct;
+- (id)JSAccountFromAccount:(id)arg1 store:(id)arg2;
+- (id)iTunesAccountFromJSAccount:(id)arg1;
+- (id)iTunesAccountFromJSDSID:(id)arg1;
+- (id)initWithAccount:(id)arg1 clientInfo:(id)arg2 backingBag:(id)arg3;
+- (id)loadSnapshot;
+- (void)replaceCurrentAccount:(id)arg1;
+- (void)updateBackingBag:(id)arg1;
 
 @end
 

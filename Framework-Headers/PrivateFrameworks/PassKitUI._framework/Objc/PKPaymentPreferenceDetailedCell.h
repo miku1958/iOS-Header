@@ -6,11 +6,11 @@
 
 #import <PassKitUI/PKPaymentPreferenceCell.h>
 
-@class UITextField;
+@class PKPaymentPreferenceDetailedCellTextField;
 
 @interface PKPaymentPreferenceDetailedCell : PKPaymentPreferenceCell
 {
-    UITextField *_textField;
+    PKPaymentPreferenceDetailedCellTextField *_textField;
     BOOL _isLeftToRight;
     double _minimumCellHeight;
     BOOL _inlineEditingEnabled;
@@ -20,7 +20,7 @@
 @property (nonatomic) BOOL inlineEditingEnabled; // @synthesize inlineEditingEnabled=_inlineEditingEnabled;
 @property (nonatomic) double leadingOffset; // @synthesize leadingOffset=_leadingOffset;
 @property (nonatomic) double minimumCellHeight; // @synthesize minimumCellHeight=_minimumCellHeight;
-@property (readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;
+@property (readonly, nonatomic) PKPaymentPreferenceDetailedCellTextField *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
 - (id)initWithReuseIdentifier:(id)arg1;

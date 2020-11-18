@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface SYIncomingFullSyncSession : SYSession
 {
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     BOOL canRestart;
     BOOL canRollback;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendEndSessionResponse:(id)arg1;
 - (void)_sessionComplete;
 - (void)_sessionEnded;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
 - (void)cancelWithError:(id)arg1;
@@ -42,9 +42,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)protocolVersion;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 
 @end
 

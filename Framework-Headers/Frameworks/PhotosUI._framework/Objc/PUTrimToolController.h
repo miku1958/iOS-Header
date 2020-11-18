@@ -6,20 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUI/PLSlalomRegionEditorDelegate-Protocol.h>
 #import <PhotosUI/PULivePhotoKeyFrameSelectionViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PXLivePhotoTrimScrubberDelegate-Protocol.h>
+#import <PhotosUI/PXSlowMotionEditorDelegate-Protocol.h>
 #import <PhotosUI/PXTrimToolPlayerObserver-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVPlayerItem, NSLayoutConstraint, NSNumber, NSString, PICompositionController, PLEditSource, PLPhotoEditRenderer, PLSlalomRegionEditor, PULivePhotoKeyFrameSelectionViewController, PUTimeCodeOverlayView, PXLivePhotoTrimScrubber, PXLivePhotoTrimScrubberSnapStripController, PXLivePhotoTrimScrubberSpec, UIButton, UIImage, UILabel, UIView;
+@class AVPlayerItem, NSLayoutConstraint, NSNumber, NSString, PICompositionController, PLEditSource, PLPhotoEditRenderer, PULivePhotoKeyFrameSelectionViewController, PUTimeCodeOverlayView, PXLivePhotoTrimScrubber, PXLivePhotoTrimScrubberSnapStripController, PXLivePhotoTrimScrubberSpec, PXSlowMotionEditor, UIButton, UIImage, UILabel, UIView, UIVisualEffectView;
 @protocol PUTrimToolControllerDelegate, PXTrimToolPlayerWrapper;
 
 __attribute__((visibility("hidden")))
-@interface PUTrimToolController : UIViewController <PXTrimToolPlayerObserver, PXLivePhotoTrimScrubberDelegate, UIPopoverPresentationControllerDelegate, PULivePhotoKeyFrameSelectionViewControllerDelegate, PLSlalomRegionEditorDelegate>
+@interface PUTrimToolController : UIViewController <PXTrimToolPlayerObserver, PXLivePhotoTrimScrubberDelegate, UIPopoverPresentationControllerDelegate, PULivePhotoKeyFrameSelectionViewControllerDelegate, PXSlowMotionEditorDelegate>
 {
     PXLivePhotoTrimScrubber *_trimScrubber;
-    PLSlalomRegionEditor *_slomoView;
+    PXSlowMotionEditor *_slomoView;
     BOOL _needsUpdateRenderForVisualChanges;
     PUTimeCodeOverlayView *_timeCodeOverlayView;
     NSLayoutConstraint *_timeCodeHorizontalConstraint;
@@ -35,6 +35,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _state;
     PLEditSource *_editSource;
     PLEditSource *_overcaptureEditSource;
+    UIVisualEffectView *_auxilaryContainerView;
+    UIVisualEffectView *_scrubberPlayButtonContainerView;
+    NSLayoutConstraint *_scrubberContainerToAuxiliaryContainerConstraint;
     PULivePhotoKeyFrameSelectionViewController *_livePhotoKeyFramePicker;
     PLPhotoEditRenderer *__renderer;
     AVPlayerItem *_currentVideoPlayerItem;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic, setter=_setRenderer:) PLPhotoEditRenderer *_renderer; // @synthesize _renderer=__renderer;
 @property (nonatomic) CDStruct_1b6d18a9 adjustedStillFrameTime;
+@property (strong, nonatomic) UIVisualEffectView *auxilaryContainerView; // @synthesize auxilaryContainerView=_auxilaryContainerView;
 @property (nonatomic) CDStruct_1b6d18a9 cachedFrameDuration; // @synthesize cachedFrameDuration=_cachedFrameDuration;
 @property (strong, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 currentStillFrameTime;
@@ -93,7 +97,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<PXTrimToolPlayerWrapper> playerWrapper; // @synthesize playerWrapper=_playerWrapper;
 @property (nonatomic) unsigned long long playheadStyle; // @synthesize playheadStyle=_playheadStyle;
 @property (nonatomic) CDStruct_1b6d18a9 playheadTime;
+@property (strong, nonatomic) NSLayoutConstraint *scrubberContainerToAuxiliaryContainerConstraint; // @synthesize scrubberContainerToAuxiliaryContainerConstraint=_scrubberContainerToAuxiliaryContainerConstraint;
 @property (readonly, nonatomic) double scrubberHeight;
+@property (strong, nonatomic) UIVisualEffectView *scrubberPlayButtonContainerView; // @synthesize scrubberPlayButtonContainerView=_scrubberPlayButtonContainerView;
 @property (nonatomic) BOOL slomoDraggingStartHandle; // @synthesize slomoDraggingStartHandle=_slomoDraggingStartHandle;
 @property (readonly, nonatomic, getter=isSlomoEnabled) BOOL slomoEnabled; // @synthesize slomoEnabled=_slomoEnabled;
 @property (strong, nonatomic) NSNumber *slomoTimeForPlayheadUpdate; // @synthesize slomoTimeForPlayheadUpdate=_slomoTimeForPlayheadUpdate;
@@ -132,7 +138,7 @@ __attribute__((visibility("hidden")))
 - (void)_updatePlayheadStyle;
 - (void)_updatePublicState;
 - (void)_updateScrubberContents;
-- (void)_updateScrubberPresentedPlayhead:(BOOL)arg1;
+- (void)_updateScrubberPresentedPlayhead;
 - (void)_updateScrubberTimes;
 - (void)_updateSnappingDots;
 - (void)_updateTimeCodeOverlay;
@@ -151,12 +157,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
 - (void)releaseAVObjects;
 - (void)setEditSource:(id)arg1 overcaptureEditSource:(id)arg2;
-- (void)slalomRegionEditorDidBeginEditing:(id)arg1 withStartHandle:(BOOL)arg2;
-- (void)slalomRegionEditorDidEndEditing:(id)arg1;
-- (void)slalomRegionEditorEndValueChanged:(id)arg1;
-- (void)slalomRegionEditorRequestForceUnzoom:(id)arg1;
-- (BOOL)slalomRegionEditorRequestForceZoom:(id)arg1;
-- (void)slalomRegionEditorStartValueChanged:(id)arg1;
+- (void)slowMotionEditorDidBeginEditing:(id)arg1 withStartHandle:(BOOL)arg2;
+- (void)slowMotionEditorDidEndEditing:(id)arg1;
+- (void)slowMotionEditorEndValueChanged:(id)arg1;
+- (void)slowMotionEditorRequestForceUnzoom:(id)arg1;
+- (BOOL)slowMotionEditorRequestForceZoom:(id)arg1;
+- (void)slowMotionEditorStartValueChanged:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)trimScrubber:(id)arg1 canBeginInteractivelyEditingElement:(long long)arg2;
 - (void)trimScrubber:(id)arg1 debugEndOffset:(struct CGRect)arg2;
@@ -172,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)trimScrubberAssetDurationDidChange:(id)arg1;
 - (void)trimScrubberDidLayoutSubviews:(id)arg1;
 - (void)trimScrubberDidUnzoom:(id)arg1;
+- (void)updateViewConstraints;
 - (void)userDidRequestToMakeKeyPhoto:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

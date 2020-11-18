@@ -8,23 +8,22 @@
 
 #import <PhotosUI/PUCloudSharedAlbumViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUStackedAlbumTransitionDelegate-Protocol.h>
+#import <PhotosUI/PXAssetCollectionActionPerformerDelegate-Protocol.h>
 #import <PhotosUI/PXNavigableCollectionContainer-Protocol.h>
 
-@class NSString, NSUserActivity, PUAlbumDropSessionController, PUAlbumListViewControllerSpec, PUAlbumsGadgetProvider, PUPhotoPinchGestureRecognizer, PUSessionInfo;
+@class NSString, NSUserActivity, PUAlbumListViewControllerSpec, PUAlbumsGadgetProvider, PUPhotoPinchGestureRecognizer, PUSessionInfo;
 
-@interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PUStackedAlbumTransitionDelegate, PUCloudSharedAlbumViewControllerDelegate, PXNavigableCollectionContainer>
+@interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PUStackedAlbumTransitionDelegate, PUCloudSharedAlbumViewControllerDelegate, PXAssetCollectionActionPerformerDelegate, PXNavigableCollectionContainer>
 {
     PUAlbumsGadgetProvider *_provider;
     PUSessionInfo *_sessionInfo;
     PUPhotoPinchGestureRecognizer *_pinchGestureRecognizer;
-    PUAlbumDropSessionController *_dropSessionController;
     NSUserActivity *_siriActionActivity;
 }
 
 @property (readonly, nonatomic) PUAlbumListViewControllerSpec *albumListViewControllerSpec;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) PUAlbumDropSessionController *dropSessionController; // @synthesize dropSessionController=_dropSessionController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PUPhotoPinchGestureRecognizer *pinchGestureRecognizer; // @synthesize pinchGestureRecognizer=_pinchGestureRecognizer;
 @property (readonly, nonatomic) PUAlbumsGadgetProvider *provider; // @synthesize provider=_provider;
@@ -39,6 +38,8 @@
 - (void)_updateCollectionViewLayout;
 - (id)accessoryButtonTitle;
 - (unsigned long long)accessoryButtonType;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (BOOL)canNavigateToCollection:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;

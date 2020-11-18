@@ -16,12 +16,13 @@
 @property (strong, nonatomic) CKNavbarCanvasViewController *navbarCanvasViewController; // @synthesize navbarCanvasViewController=_navbarCanvasViewController;
 
 - (void).cxx_destruct;
-- (void)_addressBookChanged:(id)arg1;
+- (void)_handleAddressBookChangedNotification:(id)arg1;
+- (void)_updateNavigationUI;
 - (void)cleanUpBizNavBarIfNecessary;
-- (void)dealloc;
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
 - (void)setupBizNavBarIfNecessary;
+- (BOOL)shouldListParticipantsInTitle;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(BOOL)arg1;
 

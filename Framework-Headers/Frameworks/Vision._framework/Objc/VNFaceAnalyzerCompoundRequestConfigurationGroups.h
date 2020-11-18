@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)allConfigurations;
-- (id)configurationForRequest:(id)arg1 withObservationGroup:(id)arg2;
+- (id)configurationForRequest:(id)arg1 withObservationGroup:(id)arg2 withCompoundRequestRevision:(unsigned long long)arg3;
 - (unsigned long long)count;
 - (id)init;
 

@@ -22,14 +22,14 @@ __attribute__((visibility("hidden")))
     long long _syncState;
     UIImpactFeedbackGenerator *_positiveFeedbackGenerator;
     UINotificationFeedbackGenerator *_negativeFeedbackGenerator;
-    UILongPressGestureRecognizer *_gestureRecognizer;
+    UILongPressGestureRecognizer *_longPressRecognizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MediaControlsMasterVolumeSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UILongPressGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressRecognizer; // @synthesize longPressRecognizer=_longPressRecognizer;
 @property (strong, nonatomic) UINotificationFeedbackGenerator *negativeFeedbackGenerator; // @synthesize negativeFeedbackGenerator=_negativeFeedbackGenerator;
 @property (strong, nonatomic) UIImpactFeedbackGenerator *positiveFeedbackGenerator; // @synthesize positiveFeedbackGenerator=_positiveFeedbackGenerator;
 @property (readonly) Class superclass;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)createThumbView;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleLongPress:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

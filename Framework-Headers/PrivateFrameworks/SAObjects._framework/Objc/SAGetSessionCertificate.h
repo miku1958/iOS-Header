@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface SAGetSessionCertificate : SABaseCommand <SAServerBoundCommand>
 {
@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSNumber *deviceAuthVersion;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;

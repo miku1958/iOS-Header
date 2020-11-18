@@ -86,6 +86,7 @@
 - (void)_handleUserGeneratedVibrationsDidChangeNotification;
 - (id)_identifierOfVibrationAtIndexPath:(id)arg1;
 - (id)_indexPathForVibrationWithIdentifier:(id)arg1;
+- (id)_initWithAlertType:(long long)arg1 tableViewStyle:(long long)arg2;
 - (id)_localizationIdentifierForHeaderInSection:(long long)arg1;
 - (id)_navigationItem;
 - (long long)_numberOfRowsInVibrationPickerSection:(long long)arg1;

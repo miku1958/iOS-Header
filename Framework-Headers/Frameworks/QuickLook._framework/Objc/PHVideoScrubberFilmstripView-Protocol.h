@@ -12,10 +12,10 @@
 
 @property (copy, nonatomic) AVAsset *asset;
 @property (strong, nonatomic) UIImage *placeholderImage;
-@property (copy, nonatomic) AVVideoComposition *videoComposition;
 @property (nonatomic) struct CGRect visibleRect;
 
 
 @optional
+- (void)setAsset:(AVAsset *)arg1 videoComposition:(AVVideoComposition *)arg2;
 @end
 

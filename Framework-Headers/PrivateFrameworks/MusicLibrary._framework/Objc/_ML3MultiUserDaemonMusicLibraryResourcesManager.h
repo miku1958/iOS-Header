@@ -8,7 +8,7 @@
 
 #import <MusicLibrary/_ML3MultiUserDaemonAccountChangeOperationDelegate-Protocol.h>
 
-@class NSObject, NSOperationQueue, NSString;
+@class ACAccountStore, NSObject, NSOperationQueue, NSString;
 @protocol ML3AccountInformationProviding, MLMediaLibraryAccountChangeObserver, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_accountChangeOperationQueue;
     id<ML3AccountInformationProviding> _accountInfo;
     id<MLMediaLibraryAccountChangeObserver> _accountChangeObserver;
+    ACAccountStore *_accountStore;
 }
 
 @property (weak, nonatomic) id<MLMediaLibraryAccountChangeObserver> accountChangeObserver; // @synthesize accountChangeObserver=_accountChangeObserver;
 @property (strong, nonatomic) NSOperationQueue *accountChangeOperationQueue; // @synthesize accountChangeOperationQueue=_accountChangeOperationQueue;
 @property (strong, nonatomic) id<ML3AccountInformationProviding> accountInfo; // @synthesize accountInfo=_accountInfo;
+@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property (copy, nonatomic) NSString *currentActiveAccountDSID; // @synthesize currentActiveAccountDSID=_currentActiveAccountDSID;
 @property (readonly, copy) NSString *debugDescription;

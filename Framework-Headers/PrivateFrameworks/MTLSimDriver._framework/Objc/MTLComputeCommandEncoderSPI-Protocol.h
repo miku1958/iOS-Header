@@ -14,5 +14,6 @@
 
 @optional
 - (void)dispatchThreadsWithIndirectBuffer:(id<MTLBuffer>)arg1 indirectBufferOffset:(unsigned long long)arg2;
+- (void)enableNullBufferBinds:(BOOL)arg1;
 @end
 

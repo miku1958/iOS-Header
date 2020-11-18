@@ -8,28 +8,33 @@
 
 #import <HealthUI/HKEmergencyCardContactUpdateDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardDeletionDelegate-Protocol.h>
+#import <HealthUI/HKEmergencyCardPrimaryLanguageUpdateDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardRowHeightChangeDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardSelectionTableItemDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDViewControllerDelegate-Protocol.h>
 #import <HealthUI/UITableViewDataSource-Protocol.h>
 #import <HealthUI/UITableViewDelegate-Protocol.h>
 
-@class HKEmergencyCardContactsTableItem, HKEmergencyCardGroupTableItem, HKEmergencyCardNameAndPictureTableItem, HKHealthStore, HKNavigationController, NSArray, NSString, _HKMedicalIDData;
+@class HKEmergencyCardContactsTableItem, HKEmergencyCardGroupTableItem, HKEmergencyCardNameAndPictureTableItem, HKEmergencyCardPrimaryLanguageTableItem, HKHealthStore, HKMedicalIDNavigationController, HKMedicalIDStore, HKProfileStore, NSArray, NSString, _HKMedicalIDData;
 @protocol HKMedicalIDViewControllerDelegate;
 
-@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKEmergencyCardContactUpdateDelegate, HKEmergencyCardSelectionTableItemDelegate>
+@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKEmergencyCardContactUpdateDelegate, HKEmergencyCardPrimaryLanguageUpdateDelegate, HKEmergencyCardSelectionTableItemDelegate>
 {
+    HKProfileStore *_profileStore;
     NSArray *_presentableTableItems;
     NSArray *_footers;
     NSArray *_headers;
-    HKEmergencyCardGroupTableItem *_groupItem;
+    HKEmergencyCardGroupTableItem *_informationDataGroupItem;
     HKEmergencyCardNameAndPictureTableItem *_nameAndPictureItem;
     HKEmergencyCardContactsTableItem *_contactsItem;
+    HKEmergencyCardPrimaryLanguageTableItem *_primaryLanguageItem;
     long long _tableViewStyle;
     BOOL _inBuddy;
+    BOOL _inBridge;
     NSArray *_localeItems;
+    NSArray *_accumulatedNumberOfRowsForItems;
     int _medicalIDChangedToken;
-    HKNavigationController *_medicalIDEditor;
+    HKMedicalIDNavigationController *_medicalIDEditor;
     NSArray *_organDonationItems;
     BOOL _organDonationSignupAvailable;
     BOOL _allowsEditing;
@@ -40,10 +45,13 @@
     BOOL _showsShowWhenLockedState;
     BOOL _showsEmergencyAccessState;
     BOOL _showsEditMedicalIDRowInViewMode;
+    BOOL _isSecondaryProfileMedicalID;
     BOOL _inEditMode;
     _HKMedicalIDData *_medicalID;
     HKHealthStore *_healthStore;
+    HKMedicalIDStore *_medicalIDStore;
     id<HKMedicalIDViewControllerDelegate> _delegate;
+    long long _internalAccessType;
     NSArray *_tableItems;
 }
 
@@ -53,8 +61,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property (nonatomic) BOOL inBridge; // @synthesize inBridge=_inBridge;
 @property (nonatomic) BOOL inEditMode; // @synthesize inEditMode=_inEditMode;
+@property (nonatomic) long long internalAccessType; // @synthesize internalAccessType=_internalAccessType;
+@property (nonatomic) BOOL isSecondaryProfileMedicalID; // @synthesize isSecondaryProfileMedicalID=_isSecondaryProfileMedicalID;
 @property (strong, nonatomic) _HKMedicalIDData *medicalID; // @synthesize medicalID=_medicalID;
+@property (strong, nonatomic) HKMedicalIDStore *medicalIDStore; // @synthesize medicalIDStore=_medicalIDStore;
 @property (nonatomic) BOOL modernAppearance; // @synthesize modernAppearance=_modernAppearance;
 @property (nonatomic) BOOL shouldShowHints; // @synthesize shouldShowHints=_shouldShowHints;
 @property (nonatomic) BOOL showsDeleteButton; // @synthesize showsDeleteButton=_showsDeleteButton;
@@ -81,17 +93,22 @@
 - (void)_doneTapped:(id)arg1;
 - (BOOL)_editable;
 - (void)_fetchDemographicInformation;
+- (id)_fetchProfileFirstName;
 - (void)_forceDisableBiometricIfDeviceLocked;
+- (id)_formatMedicalIDAccessPoint:(long long)arg1;
 - (id)_newViewForFooterInSection:(long long)arg1;
 - (id)_newViewForHeaderInSection:(long long)arg1;
 - (void)_nextButtonTapped:(id)arg1;
 - (long long)_preferredOrganDonationOrganization;
-- (void)_refreshEmergencyContactsAndReload:(BOOL)arg1;
+- (BOOL)_refreshEmergencyContacts:(BOOL)arg1;
+- (void)_refreshMedicalIDInViewMode;
 - (void)_reloadTableWithMedicalIDData:(id)arg1;
 - (long long)_rowIndexForTableItem:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)_shouldShowOrganDonation;
 - (void)_showMedicalIDPreviewAsNext;
+- (void)_submitAccessAnalytic;
 - (id)_tableItemForIndexPath:(id)arg1;
+- (void)_updateMedicalID;
 - (void)_updateMedicalIDNameWithDemographicsInformation:(id)arg1;
 - (void)dealloc;
 - (void)deletionTableItemDidTapDelete:(id)arg1;
@@ -129,9 +146,9 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)timeZoneDidChange:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateEmergencyContactTableItem;
 - (void)updateNavigationBar;
+- (void)updatePrimaryLanguageTableItem;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

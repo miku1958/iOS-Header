@@ -9,8 +9,12 @@
 @interface PXPhotoPickerSettings : PXSettings
 {
     BOOL _useLibraryPresentation;
+    BOOL _useGadgetsAlbumsTab;
+    BOOL _hideSearchBarWhenScrolling;
 }
 
+@property (nonatomic) BOOL hideSearchBarWhenScrolling; // @synthesize hideSearchBarWhenScrolling=_hideSearchBarWhenScrolling;
+@property (nonatomic) BOOL useGadgetsAlbumsTab; // @synthesize useGadgetsAlbumsTab=_useGadgetsAlbumsTab;
 @property (nonatomic) BOOL useLibraryPresentation; // @synthesize useLibraryPresentation=_useLibraryPresentation;
 
 + (id)settingsControllerModule;

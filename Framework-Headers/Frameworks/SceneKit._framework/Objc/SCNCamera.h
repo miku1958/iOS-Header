@@ -11,7 +11,7 @@
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
+@class MISSING_TYPE, NSArray, NSMutableDictionary, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
 @protocol MTLTexture;
 
 @interface SCNCamera : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
@@ -35,6 +35,7 @@
     float _fieldOfView;
     float _focalLength;
     float _sensorSize;
+    MISSING_TYPE *_lensShift;
     float _fStop;
     float _focusDistance;
     float _dofIntensity;
@@ -202,6 +203,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAnimationForKeyPaused:(id)arg1;
 - (BOOL)isPausedOrPausedByInheritance;
+- (MISSING_TYPE *)lensShift;
 - (void)pauseAnimationForKey:(id)arg1;
 - (id)presentationCamera;
 - (id)presentationInstance;
@@ -232,6 +234,7 @@
 - (void)setGrainSlice:(double)arg1;
 - (void)setGrainTexture:(id)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setLensShift: /* Error: Ran out of types for this method. */;
 - (void)setScreenSpaceAmbientOcclusionDownSample:(long long)arg1;
 - (void)setScreenSpaceAmbientOcclusionSampleCount:(long long)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;

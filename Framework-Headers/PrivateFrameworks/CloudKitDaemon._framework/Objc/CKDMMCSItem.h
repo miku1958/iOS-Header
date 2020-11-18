@@ -8,7 +8,6 @@
 
 @class CKAsset, CKAssetDownloadPreauthorization, CKDAssetZoneKey, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSDictionary, NSError, NSFileHandle, NSMutableArray, NSNumber, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItem : NSObject
 {
     BOOL _inMemoryDownloadLooksOkay;
@@ -136,7 +135,7 @@ __attribute__((visibility("hidden")))
 - (id)openWithError:(id *)arg1;
 - (id)openWithProxy:(id)arg1 error:(id *)arg2;
 - (id)readBytesOfInMemoryAssetContentWithProxy:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 error:(id *)arg4;
-- (void)setupForGetChunkKeysWithAsset:(id)arg1;
+- (void)setupForGetChunkKeysWithAsset:(id)arg1 destinationDatabaseScope:(long long)arg2;
 
 @end
 

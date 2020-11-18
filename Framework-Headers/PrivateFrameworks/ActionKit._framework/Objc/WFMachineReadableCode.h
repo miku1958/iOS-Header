@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <ActionKit/NSSecureCoding-Protocol.h>
 #import <ActionKit/WFNaming-Protocol.h>
 #import <ActionKit/WFSerializableContent-Protocol.h>
 
 @class NSString;
 
-@interface WFMachineReadableCode : NSObject <WFSerializableContent, WFNaming>
+@interface WFMachineReadableCode : NSObject <NSSecureCoding, WFSerializableContent, WFNaming>
 {
     NSString *_type;
     NSString *_stringValue;
@@ -26,7 +27,10 @@
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMachineReadableCodeObject:(id)arg1;
 - (id)initWithType:(id)arg1 stringValue:(id)arg2;
 - (id)wfSerializedRepresentation;

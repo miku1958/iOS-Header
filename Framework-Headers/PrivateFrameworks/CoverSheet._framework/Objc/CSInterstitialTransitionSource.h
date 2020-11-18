@@ -46,6 +46,9 @@
 - (void).cxx_destruct;
 - (void)cancelTransition;
 - (void)cleanupPresentation;
+- (void)conformsToCSAppearanceProviding;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)prepareForPresentation;
 - (void)updatePresentationWithProgress:(double)arg1;
 

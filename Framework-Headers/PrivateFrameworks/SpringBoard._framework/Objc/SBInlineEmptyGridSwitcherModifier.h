@@ -10,11 +10,12 @@
 {
 }
 
-- (long long)backdropBlurType;
-- (double)dimmingAlpha;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (id)init;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)visibleAppLayouts;
 
 @end
 

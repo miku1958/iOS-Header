@@ -57,12 +57,12 @@
 - (TSUBezierPath *)interiorClippingPath;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
+- (TSDLayout *)layoutForInlineDrawable:(id<TSDInfo>)arg1;
 - (void)markHiddenInlineDrawableLayout:(TSDLayout *)arg1;
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
 - (double)textScaleForChild:(TSDLayout *)arg1;
 - (TSDLayout *)validatedLayoutForAnchoredDrawable:(id<TSDInfo>)arg1;
-- (TSDLayout *)validatedLayoutForInlineDrawable:(id<TSDInfo>)arg1;
 
 @optional
 - (struct CGPoint)anchoredAttachmentPositionFromLayoutPosition:(struct CGPoint)arg1;

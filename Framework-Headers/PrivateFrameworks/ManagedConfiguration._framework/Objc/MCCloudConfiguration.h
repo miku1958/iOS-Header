@@ -39,6 +39,7 @@
 - (id)provisionalEnrollmentExpirationDate;
 - (void)refreshDetailsFromDisk;
 - (id)region;
+- (id)skipSetupKeys;
 - (id)tvProviderUserToken;
 - (int)userMode;
 

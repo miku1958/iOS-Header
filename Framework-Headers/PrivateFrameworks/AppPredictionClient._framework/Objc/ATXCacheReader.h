@@ -23,7 +23,6 @@
 - (id)initWithCacheBasePath:(id)arg1;
 - (id)readCacheFileForCachePath:(id)arg1;
 - (id)readCacheFileForConsumerSubtype:(unsigned char)arg1;
-- (id)readCacheFileForFilename:(id)arg1;
 
 @end
 

@@ -6,16 +6,22 @@
 
 #import <AuthenticationServices/_ASExtensionViewController.h>
 
-@class _ASIncomingCallObserver;
+#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
+
+@class NSString, _ASIncomingCallObserver;
 @protocol _ASCredentialListViewControllerDelegate;
 
-@interface _ASCredentialListViewController : _ASExtensionViewController
+@interface _ASCredentialListViewController : _ASExtensionViewController <_ASCredentialProviderExtensionHostContextDelegate>
 {
     _ASIncomingCallObserver *_callObserver;
     id<_ASCredentialListViewControllerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_ASCredentialListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_finishWithCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;

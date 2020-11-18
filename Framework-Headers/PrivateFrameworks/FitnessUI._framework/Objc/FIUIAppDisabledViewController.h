@@ -6,11 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-@class UITextView;
+@class FIUITextView;
 
 @interface FIUIAppDisabledViewController : UIViewController
 {
-    UITextView *_textView;
+    FIUITextView *_textView;
 }
 
 - (void).cxx_destruct;

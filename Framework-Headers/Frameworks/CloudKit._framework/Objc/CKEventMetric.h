@@ -12,15 +12,16 @@
 
 @interface CKEventMetric : NSObject <NSSecureCoding>
 {
+    BOOL _isPushTriggerFired;
     BOOL _hasBeenSubmitted;
     BOOL _inferredAllowsCellular;
     BOOL _inferredPreferAnonymousRequests;
     BOOL _isCKInternalMetric;
-    BOOL _isPushTriggerFired;
     NSString *_eventName;
     NSDate *_startTime;
     NSDate *_endTime;
     NSUUID *_metricUUID;
+    NSString *_inferredDeviceIdentifier;
     NSString *_inferredSourceApplicationBundleIdentifier;
     NSString *_inferredSourceApplicationSecondaryIdentifier;
     NSMutableDictionary *_attributes;
@@ -31,17 +32,18 @@
 @property (readonly, nonatomic) NSMutableDictionary *associatedOperationGroups; // @synthesize associatedOperationGroups=_associatedOperationGroups;
 @property (readonly, nonatomic) NSMutableDictionary *associatedOperations; // @synthesize associatedOperations=_associatedOperations;
 @property (readonly, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
-@property (strong) NSDate *endTime; // @synthesize endTime=_endTime;
-@property (readonly, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
+@property (copy) NSDate *endTime; // @synthesize endTime=_endTime;
+@property (readonly, copy, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
 @property (nonatomic) BOOL hasBeenSubmitted; // @synthesize hasBeenSubmitted=_hasBeenSubmitted;
 @property (nonatomic) BOOL inferredAllowsCellular; // @synthesize inferredAllowsCellular=_inferredAllowsCellular;
+@property (strong, nonatomic) NSString *inferredDeviceIdentifier; // @synthesize inferredDeviceIdentifier=_inferredDeviceIdentifier;
 @property (nonatomic) BOOL inferredPreferAnonymousRequests; // @synthesize inferredPreferAnonymousRequests=_inferredPreferAnonymousRequests;
 @property (strong, nonatomic) NSString *inferredSourceApplicationBundleIdentifier; // @synthesize inferredSourceApplicationBundleIdentifier=_inferredSourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier; // @synthesize inferredSourceApplicationSecondaryIdentifier=_inferredSourceApplicationSecondaryIdentifier;
 @property (nonatomic) BOOL isCKInternalMetric; // @synthesize isCKInternalMetric=_isCKInternalMetric;
 @property (nonatomic) BOOL isPushTriggerFired; // @synthesize isPushTriggerFired=_isPushTriggerFired;
 @property (readonly, nonatomic) NSUUID *metricUUID; // @synthesize metricUUID=_metricUUID;
-@property (strong) NSDate *startTime; // @synthesize startTime=_startTime;
+@property (copy) NSDate *startTime; // @synthesize startTime=_startTime;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

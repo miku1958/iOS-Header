@@ -12,6 +12,7 @@
 - (void)hostFocusableItem:(CRSDashboardFocusableItem *)arg1 focused:(BOOL)arg2;
 - (void)hostFocusableItem:(CRSDashboardFocusableItem *)arg1 pressed:(BOOL)arg2;
 - (void)hostSelectedFocusableItem:(CRSDashboardFocusableItem *)arg1;
+- (void)hostSetUseSystemPrimaryFocusColor:(BOOL)arg1;
 - (void)hostSetWidgetSizes:(NSArray *)arg1;
 @end
 

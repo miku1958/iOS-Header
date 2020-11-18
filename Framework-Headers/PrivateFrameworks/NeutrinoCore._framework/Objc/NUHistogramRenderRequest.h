@@ -13,13 +13,13 @@
 @interface NUHistogramRenderRequest : NURenderRequest <NUTimeBased>
 {
     NUHistogramParameters *_parameters;
-    NUColorSpace *_colorSpace;
+    NUColorSpace *_histogramCalculationColorSpace;
 }
 
-@property (strong, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NUColorSpace *histogramCalculationColorSpace; // @synthesize histogramCalculationColorSpace=_histogramCalculationColorSpace;
 @property (copy, nonatomic) NUHistogramParameters *parameters;
 @property (readonly) Class superclass;
 @property (nonatomic) CDStruct_1b6d18a9 time;

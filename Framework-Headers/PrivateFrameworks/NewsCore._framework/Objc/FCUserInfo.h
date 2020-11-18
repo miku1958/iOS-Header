@@ -61,6 +61,7 @@
 + (id)localStoreFilename;
 + (unsigned long long)localStoreVersion;
 + (id)overrideFeldsparID;
++ (unsigned long long)progressivePersonalization;
 + (BOOL)requiresBatchedSync;
 + (BOOL)requiresHighPriorityFirstSync;
 + (BOOL)requiresPushNotificationSupport;

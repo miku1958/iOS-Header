@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI15PageSwipeUpView : UIView
 {
     MISSING_TYPE *layout;
+    MISSING_TYPE *heightOfGradientView;
     MISSING_TYPE *$__lazy_storage_$_gradientView;
     MISSING_TYPE *$__lazy_storage_$_swipeUpLabel;
     MISSING_TYPE *$__lazy_storage_$_chevronView;

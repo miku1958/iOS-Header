@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class PPEventStorage, _PASLock;
+@class PPCalendarInternPool, PPEventStorage, _PASLock;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PPEventCache : NSObject
 {
     PPEventStorage *_storage;
     _PASLock *_data;
+    PPCalendarInternPool *_calendarInternPool;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     unsigned long long _memoryPressureStatus;

@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithConstructor:(CDUnknownBlockType)arg1;
+- (void)reset;
 
 @end
 

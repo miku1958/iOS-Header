@@ -11,11 +11,13 @@
 @protocol CAMDynamicShutterControlDelegate <NSObject>
 
 @optional
+- (BOOL)dynamicShutterControlCanStartOnTouchDown:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidDismissCounter:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidPresentCounter:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidPressLockButton:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidShortPress:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidStart:(CAMDynamicShutterControl *)arg1;
+- (void)dynamicShutterControlDidStart:(CAMDynamicShutterControl *)arg1 withGesture:(long long)arg2;
 - (void)dynamicShutterControlDidStop:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlGesturesDidBegin:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlGesturesDidCancel:(CAMDynamicShutterControl *)arg1;

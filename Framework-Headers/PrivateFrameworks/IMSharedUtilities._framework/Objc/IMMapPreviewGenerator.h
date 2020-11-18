@@ -4,22 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMSharedUtilities/IMPreviewGenerator.h>
+#import <IMSharedUtilities/IMContactCardPreviewGenerator.h>
 
 #import <IMSharedUtilities/IMPreviewGeneratorProtocol-Protocol.h>
 #import <IMSharedUtilities/IMUTITypeInformation-Protocol.h>
 
-@interface IMMapPreviewGenerator : IMPreviewGenerator <IMPreviewGeneratorProtocol, IMUTITypeInformation>
+@interface IMMapPreviewGenerator : IMContactCardPreviewGenerator <IMPreviewGeneratorProtocol, IMUTITypeInformation>
 {
 }
 
 + (id)UTITypes;
++ (struct CLLocationCoordinate2D)_legacyCoordinateForvCardURL:(id)arg1;
 + (struct CLLocationCoordinate2D)coordinateForvCardURL:(id)arg1;
 + (id)mapSnapshotterQueue;
 + (struct CGSize)mapThumbnailFillSizeForWidth:(double)arg1;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 interfaceStyle:(long long)arg3 error:(id *)arg4;
 + (struct CGSize)sizePreviewAtSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (BOOL)supportsBlastDoor;
 + (id)titleBarMaskImageForWidth:(double)arg1 constraints:(struct IMPreviewConstraints)arg2;
 + (id)vCardDataForURL:(id)arg1;
 + (id)vCardURLSForData:(id)arg1;

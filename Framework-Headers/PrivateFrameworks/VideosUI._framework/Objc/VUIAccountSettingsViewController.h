@@ -9,7 +9,7 @@
 #import <VideosUI/UITableViewDataSource-Protocol.h>
 #import <VideosUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, PSSpecifier, UITextField;
+@class NSString, NSURL, PSSpecifier, UITextField;
 
 __attribute__((visibility("hidden")))
 @interface VUIAccountSettingsViewController : PSListController <UITableViewDataSource, UITextFieldDelegate>
@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_createAccountSpecifier;
     UITextField *_credentialsAppleIDTextField;
     UITextField *_credentialsPasswordTextField;
+    NSURL *_addFundsUrl;
 }
 
+@property (strong, nonatomic) NSURL *addFundsUrl; // @synthesize addFundsUrl=_addFundsUrl;
 @property (nonatomic) BOOL authenticationInProgress; // @synthesize authenticationInProgress=_authenticationInProgress;
 @property (strong, nonatomic) PSSpecifier *createAccountSpecifier; // @synthesize createAccountSpecifier=_createAccountSpecifier;
 @property (strong, nonatomic) PSSpecifier *credentialsAppleIDSpecifier; // @synthesize credentialsAppleIDSpecifier=_credentialsAppleIDSpecifier;
@@ -40,7 +42,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_accountSpecifiers;
 - (long long)_alertStyle;
-- (void)_checkConnectedApps;
+- (void)_checkConnectedAppsWithDispatchGroup:(id)arg1;
+- (void)_checkExternalLinksWithDispatchGroup:(id)arg1;
 - (id)_clearHistorySpecifiers;
 - (void)_clearPlayHistory:(id)arg1;
 - (id)_createAccountSpecifiers;
@@ -49,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_dismissViewController;
 - (id)_externalSpecifiers;
 - (id)_getConnectedAppsCountString;
+- (void)_loadDynamicIdentifiers;
 - (void)_openiForgotAppleURL;
 - (id)_signInSpecifiers;
 - (id)_signOutSpecifiers;

@@ -32,11 +32,13 @@
     NSUUID *_uuid;
     HMDHome *_home;
     long long _lastAtHomeLevel;
+    HMDMessageDispatcher *_messageDispatcher;
 }
 
 @property (readonly, nonatomic) NSArray *availableResidentDevices;
 @property (nonatomic, getter=isConfirming) BOOL confirming; // @synthesize confirming=_confirming;
 @property (readonly, nonatomic, getter=isCurrentDeviceAvailableResident) BOOL currentDeviceAvailableResident;
+@property (readonly, nonatomic, getter=isCurrentDeviceConfirmedPrimaryResident) BOOL currentDeviceConfirmedPrimaryResident;
 @property (readonly, nonatomic, getter=isCurrentDevicePrimaryResident) BOOL currentDevicePrimaryResident;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDResidentDeviceManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -47,7 +49,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (nonatomic) long long lastAtHomeLevel; // @synthesize lastAtHomeLevel=_lastAtHomeLevel;
-@property (readonly) HMDMessageDispatcher *messageDispatcher;
+@property (readonly) HMDMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
@@ -85,6 +87,7 @@
 - (void)_removeResidentDevice:(id)arg1;
 - (void)_removeResidentDeviceWithModel:(id)arg1 message:(id)arg2;
 - (void)_run;
+- (void)_sendResidentDeviceNotificationWithName:(id)arg1 forResidentDevice:(id)arg2;
 - (void)_setupSessionWithPrimaryResidentDevice;
 - (void)_startMonitoringResident;
 - (void)_stopMonitoringResident;
@@ -96,7 +99,7 @@
 - (void)addDataSource:(id)arg1;
 - (void)atHomeLevelChanged:(long long)arg1;
 - (long long)compareResidentDeviceA:(id)arg1 electionParametersA:(id)arg2 residentDeviceB:(id)arg3 electionParametersB:(id)arg4;
-- (void)configureWithHome:(id)arg1;
+- (void)configureWithHome:(id)arg1 messageDispatcher:(id)arg2;
 - (void)confirmAsResident;
 - (void)confirmOnAvailability;
 - (void)confirmPrimaryResident;

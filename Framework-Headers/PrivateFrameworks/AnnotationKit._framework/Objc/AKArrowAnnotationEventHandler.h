@@ -13,7 +13,7 @@
 - (struct CGPoint)_updatedMidPointForAnnotation:(id)arg1 withNewStartPt:(struct CGPoint)arg2 andNewEndPt:(struct CGPoint)arg3;
 - (void)getInitialDraggedPoint:(struct CGPoint *)arg1 otherPoint:(struct CGPoint *)arg2 center:(struct CGPoint *)arg3 forEvent:(id)arg4 orRecognizer:(id)arg5;
 - (void)setupDraggingConstraints;
-- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1;
+- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 
 @end
 

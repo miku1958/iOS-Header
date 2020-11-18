@@ -14,9 +14,7 @@
 @property (copy, nonatomic) CDUnknownBlockType showViewControllerCompletionBlock; // @synthesize showViewControllerCompletionBlock=_showViewControllerCompletionBlock;
 
 - (void).cxx_destruct;
-- (void)didReceiveMemoryWarning;
 - (void)didShowViewController:(id)arg1 animated:(BOOL)arg2;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;

@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_departurePredicateCountdown:1;
         unsigned int read_departurePredicateStamp:1;
         unsigned int read_departureSequences:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_departurePredicateCountdown:1;
-        unsigned int wrote_departurePredicateStamp:1;
-        unsigned int wrote_departureSequences:1;
-        unsigned int wrote_operatingHoursRange:1;
-        unsigned int wrote_ttlSeconds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,10 +49,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (id)transitScheduleForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsDepartureSequence:(id)arg1;
-- (void)_readDeparturePredicateCountdown;
-- (void)_readDeparturePredicateStamp;
-- (void)_readDepartureSequences;
 - (void)addDepartureSequence:(id)arg1;
 - (void)clearDepartureSequences;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -70,7 +61,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

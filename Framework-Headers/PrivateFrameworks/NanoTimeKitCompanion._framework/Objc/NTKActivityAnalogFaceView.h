@@ -73,7 +73,6 @@
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (id)_highlightImage;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -82,6 +81,7 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_launchButtonPressed:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadChronoViewsIfNecessary;
 - (void)_loadDialIfNecessary;
 - (void)_loadLayoutRules;
@@ -108,8 +108,8 @@
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
-- (void)screenDidTurnOff;
-- (void)screenWillTurnOn;
+- (void)screenDidTurnOffAnimated:(BOOL)arg1;
+- (void)screenWillTurnOnAnimated:(BOOL)arg1;
 - (void)setDataMode:(long long)arg1;
 - (BOOL)slotUsesCurvedText:(id)arg1;
 

@@ -14,7 +14,7 @@
 - (void)addObserver:(id<SCKDatabaseStoreCoordinatorObserver>)arg1;
 - (void)readWithAccessor:(void (^)(id<SCKDatabaseStore>))arg1;
 - (void)readZone:(SCKZoneSchema *)arg1 withAccessor:(void (^)(id<SCKZoneStore>))arg2;
-- (void)reloadWithAccessor:(void (^)(id<SCKDatabaseStore>))arg1;
+- (void)reloadWithAccessor:(void (^)(id<SCKDatabaseStore>, BOOL))arg1;
 - (void)removeObserver:(id<SCKDatabaseStoreCoordinatorObserver>)arg1;
 - (void)writeWithAccessor:(void (^)(id<SCKDatabaseStore>))arg1;
 - (void)writeZone:(SCKZoneSchema *)arg1 withAccessor:(void (^)(id<SCKZoneStore>))arg2;

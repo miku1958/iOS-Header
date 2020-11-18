@@ -9,22 +9,31 @@
 #import <Vision/VNRequestCancelling-Protocol.h>
 #import <Vision/VNRequestWarming-Protocol.h>
 
-@class VNRequestPerformer;
+@class VNObservationsCache, VNRequestPerformer, VNSession;
 
 @interface VNPhotosRequestHandler : NSObject <VNRequestWarming, VNRequestCancelling>
 {
+    VNSession *_session;
     VNRequestPerformer *_requestPerformer;
+    VNObservationsCache *_observationsCache;
+    NSObject *modelContextObject;
     CDUnknownBlockType _burstAnalysisLoggingCallback;
-    NSObject *_modelContextObject;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType burstAnalysisLoggingCallback; // @synthesize burstAnalysisLoggingCallback=_burstAnalysisLoggingCallback;
-@property (strong, nonatomic) NSObject *modelContextObject; // @synthesize modelContextObject=_modelContextObject;
+@property (strong) NSObject *modelContextObject; // @synthesize modelContextObject;
 
++ (void)forcedCleanup;
++ (void)forcedCleanupWithOptions:(id)arg1;
++ (void)requestForcedCleanup;
++ (void)requestForcedCleanupWithOptions:(id)arg1;
++ (void)requestForcedCleanupWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)cancelAllRequests;
 - (id)init;
+- (id)initWithSession:(id)arg1;
 - (BOOL)performRequests:(id)arg1 error:(id *)arg2;
+- (BOOL)performRequests:(id)arg1 gatheredForensics:(id *)arg2 error:(id *)arg3;
 - (BOOL)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForPerformingRequestsOfClass:(id)arg1 error:(id *)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PGCurationCriteria, PGCurationOptions, PGDejunkerDeduperOptions, PGHighlightTailorContext, PGTitleTuple, PHAsset;
+@class NSArray, NSDictionary, NSString, PGCurationCriteria, PGCurationOptions, PGDejunkerDeduperOptions, PGHighlightTailorContext, PGMoodGenerationContext, PGTitleTuple, PHAsset;
 @protocol PGHighlightModel;
 
 @protocol PGEnrichmentProfile <NSObject>
@@ -27,7 +27,7 @@
 - (PGCurationCriteria *)keyAssetCurationCriteriaWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
 - (PHAsset *)keyAssetWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 progressBlock:(void (^)(double, BOOL *))arg2;
 - (NSDictionary *)momentTitleByMomentUUIDWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
-- (unsigned long long)moodWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
+- (unsigned long long)moodWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 moodGenerationContext:(PGMoodGenerationContext *)arg2;
 - (double)promotionScoreWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
 - (PGTitleTuple *)titleWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 curatedAssets:(NSArray *)arg2 keyAsset:(PHAsset *)arg3 createVerboseTitle:(BOOL)arg4;
 

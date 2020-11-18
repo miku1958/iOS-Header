@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class CSKeywordAnalyzerNDAPIResult, NSString;
 
 @interface CSVTSecondPassPhraseScore : NSObject
 {
@@ -24,14 +24,14 @@
     float _combinedScore;
     unsigned long long _phId;
     NSString *_phStr;
-    NSDictionary *_ndapiResult;
+    CSKeywordAnalyzerNDAPIResult *_ndapiResult;
 }
 
 @property (nonatomic) float combinedScore; // @synthesize combinedScore=_combinedScore;
 @property (nonatomic) float ctcCheckerScore; // @synthesize ctcCheckerScore=_ctcCheckerScore;
 @property (nonatomic) BOOL isMaximized; // @synthesize isMaximized=_isMaximized;
 @property (nonatomic) float loggingThreshold; // @synthesize loggingThreshold=_loggingThreshold;
-@property (strong, nonatomic) NSDictionary *ndapiResult; // @synthesize ndapiResult=_ndapiResult;
+@property (strong, nonatomic) CSKeywordAnalyzerNDAPIResult *ndapiResult; // @synthesize ndapiResult=_ndapiResult;
 @property (nonatomic) float ndapiScore; // @synthesize ndapiScore=_ndapiScore;
 @property (nonatomic) unsigned long long phId; // @synthesize phId=_phId;
 @property (strong, nonatomic) NSString *phStr; // @synthesize phStr=_phStr;

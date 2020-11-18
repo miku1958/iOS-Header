@@ -7,9 +7,11 @@
 #import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
 @class SBDockIconListView, SBFloatingDockPlatterView, UIView;
+@protocol SBFloatingDockViewDelegate;
 
 @interface SBFloatingDockView : SBFTouchPassThroughView
 {
+    id<SBFloatingDockViewDelegate> _delegate;
     SBDockIconListView *_userIconListView;
     SBDockIconListView *_recentIconListView;
     double _platterVerticalMargin;
@@ -23,6 +25,7 @@
 
 @property (strong, nonatomic) UIView *backgroundView;
 @property (readonly, nonatomic) double contentHeight;
+@property (weak, nonatomic) id<SBFloatingDockViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIView *dividerView; // @synthesize dividerView=_dividerView;
 @property (nonatomic) BOOL hasPlatterShadow;
 @property (nonatomic) double iconContentScale; // @synthesize iconContentScale=_iconContentScale;
@@ -43,7 +46,7 @@
 
 + (double)_referenceInterIconSpacingWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (double)contentHeightForBounds:(struct CGRect)arg1 mainPlatterViewFrame:(struct CGRect)arg2;
-+ (void)getMetrics:(CDStruct_c0971cc5 *)arg1 forBounds:(struct CGRect)arg2 numberOfUserIcons:(unsigned long long)arg3 numberOfRecentIcons:(unsigned long long)arg4 paddingEdgeInsets:(struct UIEdgeInsets)arg5 referenceIconSize:(struct CGSize)arg6 maximumIconSize:(struct CGSize)arg7 referenceInterIconSpacing:(double)arg8 maximumInterIconSpacing:(double)arg9 platterVerticalMargin:(double)arg10;
++ (void)getMetrics:(CDStruct_91a5d29a *)arg1 forBounds:(struct CGRect)arg2 numberOfUserIcons:(unsigned long long)arg3 numberOfRecentIcons:(unsigned long long)arg4 paddingEdgeInsets:(struct UIEdgeInsets)arg5 referenceIconSize:(struct CGSize)arg6 maximumIconSize:(struct CGSize)arg7 referenceInterIconSpacing:(double)arg8 maximumInterIconSpacing:(double)arg9 platterVerticalMargin:(double)arg10;
 + (double)maximumDockContinuousCornerRadiusWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (struct CGSize)maximumIconSizeWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (double)maximumInterIconSpacingWithIconImageInfo:(struct SBIconImageInfo)arg1;
@@ -56,7 +59,7 @@
 - (double)_referenceInterIconSpacing;
 - (void)bounce;
 - (double)contentHeightForBounds:(struct CGRect)arg1;
-- (void)getMetrics:(CDStruct_c0971cc5 *)arg1 forBounds:(struct CGRect)arg2;
+- (void)getMetrics:(CDStruct_91a5d29a *)arg1 forBounds:(struct CGRect)arg2;
 - (double)iconContentScaleForNumberOfUserIcons:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

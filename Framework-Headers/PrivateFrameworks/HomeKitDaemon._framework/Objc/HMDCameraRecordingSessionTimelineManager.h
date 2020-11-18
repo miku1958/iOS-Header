@@ -34,6 +34,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (id)creationDateForFragmentAtTimeOffset:(double)arg1;
 - (void)handleDoorbellDidActivateAtDate:(id)arg1;
 - (void)handleMotionActive:(BOOL)arg1 didChangeAtDate:(id)arg2;

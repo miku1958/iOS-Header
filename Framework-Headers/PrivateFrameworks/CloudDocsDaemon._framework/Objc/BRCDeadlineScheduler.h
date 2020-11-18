@@ -10,12 +10,12 @@
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCFairScheduler, BRCFairSource, BRCMinHeap, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_source, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCDeadlineScheduler : NSObject <BRCLifeCycle, BRCSuspendable>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_workloop;
     BRCMinHeap *_minHeap;
     NSString *_name;
     BRCFairSource *_source;
@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRCFairScheduler *fairScheduler; // @synthesize fairScheduler=_fairScheduler;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSObject<OS_dispatch_workloop> *workloop;
 
 - (void).cxx_destruct;
 - (void)_close;

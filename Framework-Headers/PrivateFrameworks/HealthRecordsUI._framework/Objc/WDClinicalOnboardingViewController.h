@@ -7,15 +7,15 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthRecordsUI/CLLocationManagerDelegate-Protocol.h>
+#import <HealthRecordsUI/HRWDUserActivityResponder-Protocol.h>
 #import <HealthRecordsUI/UISearchBarDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchControllerDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
-#import <HealthRecordsUI/WDUserActivityResponder-Protocol.h>
 
 @class CLLocation, CLLocationManager, HRProfile, HRWDSpinnerView, NSIndexPath, NSMutableDictionary, NSMutableOrderedSet, NSString, NSTimer, UISearchController, UIView, UIViewController, WDClinicalGatewayProxy, WDClinicalOnboardingNoGeoView, WDClinicalSampleAccountsLoader, _UIContentUnavailableView;
 
 __attribute__((visibility("hidden")))
-@interface WDClinicalOnboardingViewController : HKTableViewController <CLLocationManagerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, WDUserActivityResponder>
+@interface WDClinicalOnboardingViewController : HKTableViewController <CLLocationManagerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, HRWDUserActivityResponder>
 {
     long long _searchesInFlight;
     NSTimer *_searchTimer;
@@ -75,9 +75,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL wantsDefaultList;
 
 - (void).cxx_destruct;
+- (void)_applicationDidBecomeActive;
 - (void)_cacheFeaturedBrandLogos;
 - (id)_cacheKeyForSearchQuery:(id)arg1;
 - (void)_cancelSearch;
+- (void)_configureDeniedAuthorization;
 - (void)_configureLeftNavigationItemAsCancel;
 - (void)_configureLocationServices;
 - (void)_configureNavigationItems;
@@ -114,9 +116,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithProfile:(id)arg1;
 - (id)initWithProfile:(id)arg1 gatewayProxy:(id)arg2;
 - (void)loadView;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)searchResultAtIndexPath:(id)arg1;

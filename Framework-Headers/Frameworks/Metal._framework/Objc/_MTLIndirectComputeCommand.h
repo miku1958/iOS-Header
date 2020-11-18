@@ -25,7 +25,9 @@
 - (id)dispatchThreadgroupsArguments;
 - (id)dispatchThreadsArguments;
 - (unsigned long long)getCommandType;
+- (id)getImageBlockSize;
 - (void *)getKernelBufferAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getOptimizedStatus;
 - (unsigned long long)getPipelineStateUniqueIdentifier;
 - (CDStruct_caaed6bc)getStageInRegion;
 - (unsigned long long)getThreadgroupMemoryLengthAtIndex:(unsigned long long)arg1;
@@ -33,6 +35,7 @@
 - (void)reset;
 - (void)setBarrier;
 - (void)setComputePipelineState:(id)arg1;
+- (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (void)setKernelArgument:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setKernelBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setStageInRegion:(CDStruct_caaed6bc)arg1;

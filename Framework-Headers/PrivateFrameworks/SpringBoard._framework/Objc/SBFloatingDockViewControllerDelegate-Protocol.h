@@ -10,12 +10,12 @@
 @protocol SBViewControllerTransitionCoordinator, UIViewControllerAnimatedTransitioning;
 
 @protocol SBFloatingDockViewControllerDelegate <NSObject>
+- (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 didChangeContentFrame:(struct CGRect)arg2;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 didChangeContentHeight:(double)arg2;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 wantsToBePresented:(BOOL)arg2;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 willPerformTransitionWithFolder:(SBFolderController *)arg2 presenting:(BOOL)arg3 withTransitionCoordinator:(id<SBViewControllerTransitionCoordinator>)arg4;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 willUseAnimator:(id<UIViewControllerAnimatedTransitioning>)arg2 forTransitioningWithFolder:(SBFolderController *)arg3 presenting:(BOOL)arg4;
 - (BOOL)isFloatingDockViewControllerPresentedOverTransitioningContent:(SBFloatingDockViewController *)arg1;
 - (double)minimumHomeScreenScaleForFloatingDockViewController:(SBFloatingDockViewController *)arg1;
-- (double)statusBarHeightForFloatingDockViewController:(SBFloatingDockViewController *)arg1;
 @end
 

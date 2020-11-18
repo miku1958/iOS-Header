@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AFRemoteRequestWatcher, CMPocketStateManager, INUIAppIntentDeliverer;
+@class AFRemoteRequestWatcher, AFRequestInfo, CMPocketStateManager, INUIAppIntentDeliverer;
 
 @interface SASRemoteRequestManager : NSObject
 {
@@ -15,6 +15,7 @@
     INUIAppIntentDeliverer *_currentAppIntentDeliverer;
     unsigned long long _currentVoiceTriggerRestriction;
     unsigned long long _pendingVoiceTriggerRestrictionCount;
+    AFRequestInfo *_pendingVoiceTriggerActivationInfo;
     CMPocketStateManager *_pocketStateManager;
     long long _currentPocketState;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic) long long currentPocketState; // @synthesize currentPocketState=_currentPocketState;
 @property (nonatomic) unsigned long long currentVoiceTriggerRestriction; // @synthesize currentVoiceTriggerRestriction=_currentVoiceTriggerRestriction;
 @property (nonatomic) BOOL hasPendingVoiceTriggerActivation; // @synthesize hasPendingVoiceTriggerActivation=_hasPendingVoiceTriggerActivation;
+@property (strong, nonatomic) AFRequestInfo *pendingVoiceTriggerActivationInfo; // @synthesize pendingVoiceTriggerActivationInfo=_pendingVoiceTriggerActivationInfo;
 @property (nonatomic) unsigned long long pendingVoiceTriggerRestrictionCount; // @synthesize pendingVoiceTriggerRestrictionCount=_pendingVoiceTriggerRestrictionCount;
 @property (strong, nonatomic) CMPocketStateManager *pocketStateManager; // @synthesize pocketStateManager=_pocketStateManager;
 @property (strong, nonatomic) AFRemoteRequestWatcher *remoteRequestWatcher; // @synthesize remoteRequestWatcher=_remoteRequestWatcher;

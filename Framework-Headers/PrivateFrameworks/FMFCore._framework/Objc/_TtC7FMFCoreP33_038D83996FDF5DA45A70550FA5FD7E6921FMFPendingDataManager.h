@@ -13,7 +13,6 @@
     MISSING_TYPE *insertFriend;
     MISSING_TYPE *updateFriend;
     MISSING_TYPE *deleteFriend;
-    MISSING_TYPE *locationShareOverride;
     MISSING_TYPE *preferences;
     MISSING_TYPE *myInfo;
 }

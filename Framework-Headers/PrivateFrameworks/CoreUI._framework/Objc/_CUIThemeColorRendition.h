@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     NSString *_colorName;
 }
 
-- (struct CGColorSpace *)_colorSpaceWithID:(long long)arg1;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (struct CGColor *)cgColor;
 - (const struct _csicolor *)csiColor;

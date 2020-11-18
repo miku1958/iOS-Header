@@ -14,7 +14,9 @@
 @property (readonly, nonatomic) struct CGSize tv_imageScaleToSize;
 @property (readonly, nonatomic) long long tv_imageType;
 @property (readonly, nonatomic) BOOL tv_isResource;
+@property (readonly, nonatomic) BOOL tv_isSymbol;
 @property (readonly, nonatomic) UIImage *tv_resourceImage;
+@property (readonly, nonatomic) UIImage *tv_symbolImage;
 
 - (id)tv_associatedViewElement;
 - (id)tv_imageProxyWithLayout:(id)arg1;

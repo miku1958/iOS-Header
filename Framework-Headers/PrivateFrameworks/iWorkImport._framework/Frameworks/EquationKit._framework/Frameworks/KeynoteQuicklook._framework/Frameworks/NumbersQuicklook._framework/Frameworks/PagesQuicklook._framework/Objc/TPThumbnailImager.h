@@ -13,6 +13,7 @@
 - (void)canvasDidValidateLayouts:(id)arg1;
 - (void)canvasWillValidateLayouts:(id)arg1;
 - (struct CGImage *)newImage;
+- (BOOL)shouldShowInstructionalTextForLayout:(id)arg1;
 
 @end
 

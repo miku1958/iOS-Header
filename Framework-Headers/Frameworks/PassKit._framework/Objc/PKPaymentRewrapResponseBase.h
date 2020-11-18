@@ -16,7 +16,6 @@
 @property (copy, nonatomic) NSData *rewrappedPaymentData; // @synthesize rewrappedPaymentData=_rewrappedPaymentData;
 
 - (void).cxx_destruct;
-- (id)initWithData:(id)arg1;
 
 @end
 

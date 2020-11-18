@@ -6,15 +6,16 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
-@protocol AVTAvatarAttributeEditorHeaderPicker, AVTAvatarAttributeEditorSection;
+@class AVTAvatarAttributeEditorSectionOptions, NSArray, NSString;
+@protocol AVTAvatarAttributeEditorSection, AVTAvatarAttributeEditorSectionSupplementalPicker;
 
 @protocol AVTAvatarAttributeEditorSection <NSObject>
 
-@property (strong, nonatomic) id<AVTAvatarAttributeEditorHeaderPicker> headerAccessory;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *localizedName;
+@property (readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options;
 @property (readonly, copy, nonatomic) NSArray *sectionItems;
+@property (strong, nonatomic) id<AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker;
 
 - (BOOL)shouldDisplaySeparatorBeforeSection:(id<AVTAvatarAttributeEditorSection>)arg1;
 - (BOOL)shouldDisplayTitle;

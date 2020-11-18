@@ -37,9 +37,11 @@
 
 - (void).cxx_destruct;
 - (id)_connectionForIntent:(id)arg1;
+- (BOOL)_errorImpliesCloudRelay:(id)arg1;
 - (id)_extensionInputItems;
 - (void)_extensionRequestDidFinishForIntent:(id)arg1 error:(id)arg2;
 - (void)_extensionRequestWillStartForIntent:(id)arg1;
+- (BOOL)_isVoiceShortcutsRemoteExecutionUnavailable:(id)arg1;
 - (void)_logEventWithType:(long long)arg1 context:(id)arg2 contextNoCopy:(BOOL)arg3;
 - (void)_logPrewarmDidEndWithCommand:(id)arg1 applicationIdentifier:(id)arg2 wasPrewarmed:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_prewarmExtensionWithIntent:(id)arg1 applicationIdentifier:(id)arg2 command:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

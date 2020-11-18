@@ -29,8 +29,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_descriptionFont;
 - (double)_horizontalMargins;
 - (id)_textStyle;
+- (id)_titleFont;
 - (void)_updateImageViewLayout;
 - (double)imageSizeForImage:(id)arg1;
 - (id)initWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3;

@@ -20,7 +20,7 @@
 {
     NSString *mPrefixString;
     NSString *mSuffixString;
-    CDStruct_b1066b25 mFormatStruct;
+    CDStruct_4f52a90b mFormatStruct;
 }
 
 @property (readonly, nonatomic) unsigned int base;
@@ -30,7 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned int decimalPlaces;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) int formatType;
+@property (readonly, nonatomic) unsigned int formatType;
 @property (readonly, nonatomic) int fractionAccuracy;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBase;
@@ -56,10 +56,10 @@
 + (int)defaultFractionAccuracy;
 + (int)defaultNegativeNumberStyle;
 + (id)instanceWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
-+ (int)labelFormatTypeFromTSUFormatType:(int)arg1;
-+ (id)numberFormatWithFormatStruct:(CDStruct_b1066b25)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
-+ (id)numberFormatWithFormatType:(int)arg1 decimalPlaces:(unsigned int)arg2 showThousandsSeparator:(BOOL)arg3;
-+ (BOOL)supportsFormatType:(int)arg1;
++ (int)labelFormatTypeFromTSUFormatType:(unsigned int)arg1;
++ (id)numberFormatWithFormatStruct:(CDStruct_4f52a90b)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
++ (id)numberFormatWithFormatType:(unsigned int)arg1 decimalPlaces:(unsigned int)arg2 showThousandsSeparator:(BOOL)arg3;
++ (BOOL)supportsFormatType:(unsigned int)arg1;
 - (id)chartFormattedInspectorStringForValue:(id)arg1 locale:(id)arg2;
 - (id)chartFormattedStringForValue:(id)arg1 locale:(id)arg2;
 - (id)convertToPersistableStyleObject;
@@ -69,9 +69,9 @@
 - (id)customFormatListKey;
 - (id)dataFormatterForDocumentRoot:(id)arg1 pasteboardCustomFormatList:(id)arg2;
 - (void)dealloc;
-- (CDStruct_b1066b25)formatStruct;
+- (CDStruct_4f52a90b)formatStruct;
 - (id)initWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithFormatStruct:(CDStruct_b1066b25)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
+- (id)initWithFormatStruct:(CDStruct_4f52a90b)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
 - (BOOL)isCompatibleWithDataFormatter:(id)arg1;
 - (BOOL)isCustom;
 - (BOOL)isEqual:(id)arg1;
@@ -95,7 +95,7 @@
 - (int)p_fractionAccuracy;
 - (int)p_fractionAccuracyIfAvailable;
 - (BOOL)p_hasValidDecimalPlaces;
-- (id)p_initWithFormatStruct:(CDStruct_b1066b25)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
+- (id)p_initWithFormatStruct:(CDStruct_4f52a90b)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
 - (int)p_negativeStyle;
 - (int)p_negativeStyleIfAvailable;
 - (BOOL)p_showThousandsSeparator;

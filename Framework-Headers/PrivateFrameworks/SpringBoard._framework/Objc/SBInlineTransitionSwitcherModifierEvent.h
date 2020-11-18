@@ -17,6 +17,7 @@
 @property (nonatomic) struct CGSize fixedCardSize; // @synthesize fixedCardSize=_fixedCardSize;
 @property (nonatomic) unsigned long long scrollAxis; // @synthesize scrollAxis=_scrollAxis;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (long long)type;
 

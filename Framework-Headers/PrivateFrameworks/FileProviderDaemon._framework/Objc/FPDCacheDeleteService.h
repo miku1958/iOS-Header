@@ -20,13 +20,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)allStorageVolumes;
 - (void)dumpStateTo:(id)arg1;
+- (void)enumerateFPFSDomainsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateProviderDomainOnVolume:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumeratePurgeableFilesOnVolume:(id)arg1 forUrgency:(int)arg2 sizeOnly:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)enumeratePurgeableFilesOnVolume:(id)arg1 forUrgency:(int)arg2 sizeOnly:(BOOL)arg3 activity:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)evictItems:(id)arg1;
-- (id)evictableByProviderDomainID:(int)arg1;
+- (id)evictableByProviderDomainID:(int)arg1 activity:(id)arg2;
 - (BOOL)getVolume:(int *)arg1 forPath:(id)arg2;
 - (id)nonPurgableSpacePerProviderOnVolume:(id)arg1;
-- (id)purgableSpaceForAllUrgenciesOnVolume:(id)arg1;
+- (id)purgableSpaceForAllUrgenciesOnVolume:(id)arg1 activity:(id)arg2;
 - (id)queryWithAttributes:(id)arg1;
 - (void)registerActivity;
 - (BOOL)shouldSearchableItem:(id)arg1 beEvictedAtUrgency:(int)arg2;

@@ -6,7 +6,7 @@
 
 #import <SpringBoardHome/SBLiveIconImageView.h>
 
-@class CALayer, NSString, SBHClockIconVisualConfiguration, UIImage;
+@class CALayer, NSString, UIImage;
 
 @interface SBHClockApplicationIconImageView : SBLiveIconImageView
 {
@@ -19,33 +19,51 @@
     UIImage *_mappedContentsImage;
     UIImage *_squareMappedContentsImage;
     NSString *_currentNumberingSystem;
-    SBHClockIconVisualConfiguration *_visualConfiguration;
 }
 
 @property (copy, nonatomic) NSString *currentNumberingSystem; // @synthesize currentNumberingSystem=_currentNumberingSystem;
-@property (copy, nonatomic) SBHClockIconVisualConfiguration *visualConfiguration; // @synthesize visualConfiguration=_visualConfiguration;
 
 + (void)_handleTimeChange:(id)arg1;
 + (void)_timerFired:(id)arg1;
-+ (id)defaultConfiguration;
++ (id)backgroundImageName;
++ (void)configureHandLayer:(id)arg1 metrics:(const struct SBHClockApplicationIconImageMetrics *)arg2;
 + (id)effectiveDate;
-+ (id)generateProcessedMappedIconImageWithName:(id)arg1 imageInfo:(struct SBIconImageInfo)arg2 includingMask:(BOOL)arg3;
++ (void)getMetrics:(struct SBHClockApplicationIconImageMetrics *)arg1 forIconImageInfo:(struct SBIconImageInfo)arg2;
++ (id)hoursMinutesHandColor;
++ (id)iconImageWithImageInfo:(struct SBIconImageInfo)arg1 includingMask:(BOOL)arg2;
++ (id)imageSetForMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
 + (void)initialize;
++ (id)makeComponentImageWithMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1 size:(struct CGSize)arg2 actions:(CDUnknownBlockType)arg3;
++ (id)makeComponentImageWithMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1 size:(struct CGSize)arg2 path:(struct CGPath *)arg3 fillColor:(id)arg4 options:(unsigned long long)arg5;
++ (id)makeDotImageWithOuterDiameter:(double)arg1 innerDiameter:(double)arg2 color:(id)arg3 isSeconds:(BOOL)arg4 metrics:(const struct SBHClockApplicationIconImageMetrics *)arg5;
++ (id)makeDotLayerWithOuterDiameter:(double)arg1 innerDiameter:(double)arg2 isSeconds:(BOOL)arg3 imageSet:(id)arg4;
++ (id)makeHoursHandImageWithMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
++ (id)makeHoursHandLayerWithImageSet:(id)arg1;
++ (id)makeImageSetForMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
++ (id)makeMinutesHandImageWithMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
++ (id)makeMinutesHandLayerWithImageSet:(id)arg1;
++ (id)makeSecondsHandImageWithMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
++ (id)makeSecondsHandLayerWithImageSet:(id)arg1;
 + (id)overrideDate;
++ (double)overrideDateOffset;
++ (void)precacheDataWithIconImageInfo:(struct SBIconImageInfo)arg1;
++ (id)secondsHandColor;
 + (void)setOverrideDate:(id)arg1;
++ (void)setOverrideDateOffset:(double)arg1;
 + (id)systemNumberingSystem;
 - (void).cxx_destruct;
 - (void)_setAnimating:(BOOL)arg1;
 - (void)_timerFiredWithComponents:(id)arg1 flags:(unsigned long long)arg2;
 - (void)_updateUnanimatedWithComponents:(id)arg1;
-- (void)applyConfiguration:(id)arg1;
-- (id)backgroundImageName;
+- (void)applyMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
 - (id)contentsImage;
+- (void)getMetrics:(struct SBHClockApplicationIconImageMetrics *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAnimationAllowed;
 - (void)layoutSubviews;
 - (void)localeDidChange:(id)arg1;
 - (void)prepareForReuse;
+- (void)setIcon:(id)arg1 location:(id)arg2 animated:(BOOL)arg3;
 - (void)setJittering:(BOOL)arg1;
 - (void)setPaused:(BOOL)arg1;
 - (id)squareContentsImage;

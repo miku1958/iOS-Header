@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *defaultLeaderboardIdentifier; // @dynamic defaultLeaderboardIdentifier;
 @property (readonly, nonatomic) unsigned long long friendRank; // @dynamic friendRank;
 @property (readonly, strong) GKGameRecordInternal *internal; // @dynamic internal;
+@property (readonly, nonatomic) BOOL isArcadeGame; // @dynamic isArcadeGame;
 @property (readonly, nonatomic) NSDate *lastPlayedDate; // @dynamic lastPlayedDate;
 @property (readonly, nonatomic) unsigned long long maxAchievementPoints; // @dynamic maxAchievementPoints;
 @property (readonly, nonatomic) unsigned long long maxAchievements; // @dynamic maxAchievements;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) NSDate *purchaseDate; // @dynamic purchaseDate;
 @property (readonly, nonatomic) unsigned long long rank; // @dynamic rank;
 @property (readonly, nonatomic) BOOL supportsAchievements; // @dynamic supportsAchievements;
+@property (readonly, nonatomic) BOOL supportsChallenges; // @dynamic supportsChallenges;
 @property (readonly, nonatomic) BOOL supportsLeaderboardSets; // @dynamic supportsLeaderboardSets;
 @property (readonly, nonatomic) BOOL supportsLeaderboards; // @dynamic supportsLeaderboards;
 

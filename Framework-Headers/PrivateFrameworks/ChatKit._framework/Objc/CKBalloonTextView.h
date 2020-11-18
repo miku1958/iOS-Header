@@ -7,31 +7,57 @@
 #import <UIKit/UITextView.h>
 
 #import <ChatKit/NSLayoutManagerDelegate-Protocol.h>
+#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class NSAttributedString, NSString;
+@class NSAttributedString, NSString, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CKBalloonTextViewInteractionDelegate;
 
-@interface CKBalloonTextView : UITextView <NSLayoutManagerDelegate>
+@interface CKBalloonTextView : UITextView <NSLayoutManagerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
 {
+    BOOL _fakeSelected;
     NSAttributedString *_attributedText;
     id<CKBalloonTextViewInteractionDelegate> _interactionDelegate;
+    UITapGestureRecognizer *_tapGestureRecognizer;
+    UIPanGestureRecognizer *_dragGestureRecognizer;
+    struct _NSRange __selectedRange;
 }
 
+@property (nonatomic) struct _NSRange _selectedRange; // @synthesize _selectedRange=__selectedRange;
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIPanGestureRecognizer *dragGestureRecognizer; // @synthesize dragGestureRecognizer=_dragGestureRecognizer;
+@property (nonatomic, getter=isFakeSelected) BOOL fakeSelected; // @synthesize fakeSelected=_fakeSelected;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<CKBalloonTextViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 
 + (id)textView;
 - (void).cxx_destruct;
+- (id)_fakeSelectionBackgroundColor;
 - (void)_interactionStartedFromPreviewItemController:(id)arg1;
 - (void)_interactionStoppedFromPreviewItemController:(id)arg1;
+- (void)_removeFakeSelectionBackgroundColor;
+- (void)_removeFakeSelectionBackgroundColorForRange:(struct _NSRange)arg1;
+- (void)_setFakeSelectionBackgroundColor;
+- (void)_setFakeSelectionBackgroundColorForRange:(struct _NSRange)arg1;
 - (id)_textWithHyphenationAppliedForAttributedText:(id)arg1;
+- (void)_updateFakeSelectionBackgroundColor:(id)arg1;
+- (BOOL)becomeFirstResponder;
+- (BOOL)canBecomeFocused;
+- (void)copy:(id)arg1;
 - (void)didMoveToWindow;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initReadonlyAndUnselectableWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2 isSingleLine:(BOOL *)arg3;
+- (void)panGestureRecognized:(id)arg1;
+- (void)registerForEvents;
+- (BOOL)resignFirstResponder;
+- (void)setBalloonTextSelectedRange:(struct _NSRange)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2 isSingleLine:(BOOL *)arg3 isReplyPreview:(BOOL)arg4;
 
 @end
 

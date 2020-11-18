@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthExperienceUI/_TtC18HealthExperienceUI28DataTypeDetailViewController.h>
+#import <HealthExperienceUI/_TtC18HealthExperienceUI42CompoundDataSourceCollectionViewController.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC18HealthExperienceUI22CategoryViewController : _TtC18HealthExperienceUI28DataTypeDetailViewController
+@interface _TtC18HealthExperienceUI22CategoryViewController : _TtC18HealthExperienceUI42CompoundDataSourceCollectionViewController
 {
     MISSING_TYPE *typeGroup;
+    MISSING_TYPE *healthExperienceStore;
+    MISSING_TYPE *providedHealthStore;
+    MISSING_TYPE *categoryViewDataSource;
+    MISSING_TYPE *navigationBarStyle;
 }
 
 - (void).cxx_destruct;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)restoreUserActivityState:(id)arg1;
 - (void)viewDidLoad;
 
 @end

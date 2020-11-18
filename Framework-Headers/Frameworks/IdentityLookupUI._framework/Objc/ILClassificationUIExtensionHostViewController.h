@@ -9,8 +9,8 @@
 #import <IdentityLookupUI/ILClassificationExtensionShellViewControllerDelegate-Protocol.h>
 #import <IdentityLookupUI/ILClassificationUIExtensionHostContextDelegate-Protocol.h>
 
-@class ILClassificationExtensionShellViewController, ILClassificationReportingController, ILClassificationRequest, ILClassificationResponse, ILClassificationUIExtensionHostContext, NSExtension, NSObject, NSString, NSUUID, UINavigationController;
-@protocol ILClassificationUIExtensionHostViewControllerDelegate, OS_dispatch_queue;
+@class ILClassificationExtensionShellViewController, ILClassificationReportingController, ILClassificationRequest, ILClassificationResponse, ILClassificationUIExtensionHostContext, NSExtension, NSObject, NSString, UINavigationController;
+@protocol ILClassificationUIExtensionHostViewControllerDelegate, NSCopying, OS_dispatch_queue;
 
 @interface ILClassificationUIExtensionHostViewController : UIViewController <ILClassificationUIExtensionHostContextDelegate, ILClassificationExtensionShellViewControllerDelegate>
 {
@@ -21,7 +21,7 @@
     NSString *_sender;
     NSString *_isoCountryCode;
     NSExtension *_extension;
-    NSUUID *_extensionRequestIdentifier;
+    id<NSCopying> _extensionRequestIdentifier;
     UINavigationController *_navigationController;
     ILClassificationExtensionShellViewController *_shellViewController;
     ILClassificationUIExtensionHostContext *_extensionHostContext;
@@ -35,7 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (strong, nonatomic) ILClassificationUIExtensionHostContext *extensionHostContext; // @synthesize extensionHostContext=_extensionHostContext;
-@property (strong, nonatomic) NSUUID *extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
+@property (strong, nonatomic) id<NSCopying> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;

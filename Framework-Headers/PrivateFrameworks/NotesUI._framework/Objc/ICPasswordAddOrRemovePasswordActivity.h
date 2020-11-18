@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <NotesUI/ICRDActivity.h>
 
 @class ICNote, UIWindow;
 
-@interface ICPasswordAddOrRemovePasswordActivity : UIActivity
+@interface ICPasswordAddOrRemovePasswordActivity : ICRDActivity
 {
+    ICNote *_note;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _willPerformActivityBlock;
-    ICNote *_note;
     UIWindow *_displayWindow;
 }
 

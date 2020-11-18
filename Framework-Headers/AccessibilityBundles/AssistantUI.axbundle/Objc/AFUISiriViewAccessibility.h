@@ -16,6 +16,7 @@
 - (id)_accessibilityFuzzyHitTestElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityUserTestingChildren;
+- (void)_animateButtonsHidden:(BOOL)arg1;
 - (void)_axUpdateReportBug;
 - (id)accessibilityElements;
 - (void)configureReportBugButtonToShowHoldToTalkState:(BOOL)arg1;

@@ -20,7 +20,6 @@
         unsigned int workoutLocationType:1;
     } _has;
     BOOL _isOpenEnded;
-    BOOL __encodeLegacyGloryData;
     int _workoutGoalUnitType;
     int _workoutLocationType;
     _INPBDouble *_goalValue;
@@ -28,7 +27,6 @@
     _INPBDataString *_workoutName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDouble *goalValue; // @synthesize goalValue=_goalValue;

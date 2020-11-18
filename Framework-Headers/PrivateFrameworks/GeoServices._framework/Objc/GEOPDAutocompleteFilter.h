@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _placeTypeFilters;
     CDStruct_95bda58d _requestedEntryTypes;
     GEOPDPoiIconCategoryFilter *_poiIconCategoryFilter;
     unsigned int _readerMarkPos;
@@ -22,15 +23,16 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_placeTypeFilters:1;
         unsigned int read_requestedEntryTypes:1;
         unsigned int read_poiIconCategoryFilter:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_requestedEntryTypes:1;
-        unsigned int wrote_poiIconCategoryFilter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPoiIconCategoryFilter;
+@property (readonly, nonatomic) int *placeTypeFilters;
+@property (readonly, nonatomic) unsigned long long placeTypeFiltersCount;
 @property (strong, nonatomic) GEOPDPoiIconCategoryFilter *poiIconCategoryFilter;
 @property (readonly, nonatomic) int *requestedEntryTypes;
 @property (readonly, nonatomic) unsigned long long requestedEntryTypesCount;
@@ -38,11 +40,11 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsPlaceTypeFilters:(id)arg1;
 - (int)StringAsRequestedEntryTypes:(id)arg1;
-- (void)_addNoFlagsRequestedEntryType:(int)arg1;
-- (void)_readPoiIconCategoryFilter;
-- (void)_readRequestedEntryTypes;
+- (void)addPlaceTypeFilter:(int)arg1;
 - (void)addRequestedEntryType:(int)arg1;
+- (void)clearPlaceTypeFilters;
 - (void)clearRequestedEntryTypes;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -53,12 +55,18 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (int)placeTypeFilterAtIndex:(unsigned long long)arg1;
+- (id)placeTypeFiltersAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)requestedEntryTypeAtIndex:(unsigned long long)arg1;
 - (id)requestedEntryTypesAsString:(int)arg1;
+- (void)setPlaceTypeFilters:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setRequestedEntryTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

@@ -9,31 +9,39 @@
 #import <SafariShared/WBSHistoryConnectionProxy-Protocol.h>
 
 @class NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, WBSHistoryConnectionProxyDelegate;
 
 @interface WBSHistoryConnectionProxy : NSObject <WBSHistoryConnectionProxy>
 {
     NSXPCConnection *_connection;
+    id<WBSHistoryConnectionProxyDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_connectionProxyQueue;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *connectionProxyQueue; // @synthesize connectionProxyQueue=_connectionProxyQueue;
+@property (weak, nonatomic) id<WBSHistoryConnectionProxyDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (id)_createConnection;
 - (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_setupConnection;
 - (void)beginHistoryAccessSession:(CDUnknownBlockType)arg1;
 - (void)beginURLCompletionSession:(CDUnknownBlockType)arg1;
+- (void)connectWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)debugGetDatabaseURLWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ensureConnected:(CDUnknownBlockType)arg1;
+- (void)finishClearingHistoryIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServiceInfo:(CDUnknownBlockType)arg1;
 - (void)getVisitedLinksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)groupVisitsIntoSessionsBetweenStartDate:(id)arg1 endDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)initializeCloudHistoryWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)killService;
 - (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
 - (id)queryMemoryFootprintWithError:(id *)arg1;
+- (void)releaseCloudHistory:(CDUnknownBlockType)arg1;
 
 @end
 

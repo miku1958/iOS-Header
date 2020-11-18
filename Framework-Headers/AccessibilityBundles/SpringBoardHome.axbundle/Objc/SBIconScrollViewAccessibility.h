@@ -27,6 +27,8 @@
 - (long long)accessibilityContainerType;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)accessibilityScrollToTopSupported;
+- (BOOL)accessibilityScrollUpPage;
+- (BOOL)accessibilityScrollUpPageSupported;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

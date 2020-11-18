@@ -24,8 +24,6 @@
 @property (strong, nonatomic) id<NRNSXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -33,7 +31,6 @@
 - (id)initWithMachServiceName:(id)arg1;
 - (void)invalidate;
 - (void)resume;
-- (id)serverConnectionWithClientConnection:(id)arg1;
 - (void)suspend;
 
 @end

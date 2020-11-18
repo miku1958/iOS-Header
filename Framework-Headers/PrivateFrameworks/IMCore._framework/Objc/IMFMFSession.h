@@ -60,6 +60,7 @@
 - (BOOL)fmfHandleIsFollowingMyLocation:(id)arg1;
 - (BOOL)fmfHandleIsSharingLocationWithMe:(id)arg1;
 - (id)fmfHandlesForChat:(id)arg1;
+- (id)fmfOpenURLStringForChat:(id)arg1;
 - (void)friendshipRequestReceived:(id)arg1;
 - (void)friendshipWasRemoved:(id)arg1;
 - (BOOL)handleIsFollowingMyLocation:(id)arg1;

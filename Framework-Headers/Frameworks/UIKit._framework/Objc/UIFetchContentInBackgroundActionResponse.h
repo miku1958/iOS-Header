@@ -4,18 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSActionResponse.h>
+#import <UIKitServices/UISFetchContentInBackgroundActionResponse.h>
 
-@interface UIFetchContentInBackgroundActionResponse : BSActionResponse
+@interface UIFetchContentInBackgroundActionResponse : UISFetchContentInBackgroundActionResponse
 {
 }
-
-@property (readonly, nonatomic) unsigned long long result;
-
-+ (id)responseWithResult:(unsigned long long)arg1;
-- (id)initWithBackgroundFetchResult:(unsigned long long)arg1;
-- (id)initWithInfo:(id)arg1 error:(id)arg2;
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end
 

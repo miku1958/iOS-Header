@@ -10,6 +10,7 @@
 
 @interface _TtC18HealthExperienceUI33SuggestedActionTileViewController : UIViewController
 {
+    MISSING_TYPE *context;
     MISSING_TYPE *nibObjects;
     MISSING_TYPE *containerView;
     MISSING_TYPE *imageView;
@@ -26,6 +27,7 @@
     MISSING_TYPE *actionButton;
     MISSING_TYPE *actionButtonTopSpacingConstraint;
     MISSING_TYPE *actionButtonHeightConstraint;
+    MISSING_TYPE *actionButtonStyle;
     MISSING_TYPE *suggestedActionDelegate;
 }
 

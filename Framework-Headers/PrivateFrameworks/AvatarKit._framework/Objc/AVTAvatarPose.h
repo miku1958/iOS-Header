@@ -28,12 +28,18 @@
 
 + (id)friendlyPose;
 + (id)neutralPose;
++ (id)posesForAnimojiNamed:(id)arg1 inPosePack:(id)arg2;
++ (id)posesForMemojiInPosePack:(id)arg1;
++ (id)posesInPosePack:(id)arg1;
++ (id)posesInPosePack:(id)arg1 avatarSelectionBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (BOOL)affectsPhysicsSimulation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)init;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithScene:(id)arg1;
 - (id)initWithWeights:(id)arg1 neckPosition:(MISSING_TYPE **)arg2 neckOrientation:(struct *)arg3 bakedAnimationBlendFactor:(double)arg4;
 - (id)poseByMergingPose:(id)arg1;
 - (void)setWeight:(double)arg1 forBlendShapeNamed:(id)arg2;

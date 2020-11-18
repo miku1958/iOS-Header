@@ -51,8 +51,10 @@
 + (id)invalidLiveStockAttributeError;
 + (id)invalidMergeReference:(struct TSCERangeRef)arg1 contextEntityUID:(const UUIDData_5fbc143e *)arg2;
 + (id)invalidReferenceError;
++ (id)invalidReferenceNameAttributeError;
 + (id)invalidStockCodeError:(id)arg1;
 + (id)noTradingInformationErrorWithNextAvailableDate:(id)arg1;
++ (id)notAReferenceToAFormulaError;
 + (id)notReadyError;
 + (BOOL)p_DictionaryRepresentsInvalidMergeReference:(id)arg1;
 + (void)p_RaiseErrorForDictionary:(id)arg1;
@@ -111,6 +113,8 @@
 + (void)raiseInvalidMatchModeError;
 + (void)raiseInvalidProbabilityErrorForFunctionName:(id)arg1;
 + (void)raiseInvalidRangeUsageErrorForReference:(struct TSCERangeRef)arg1;
++ (void)raiseInvalidReferenceNameAttributeError;
++ (void)raiseInvalidRegexError:(id)arg1;
 + (void)raiseInvalidSubtotalFunctionNumberError;
 + (void)raiseInvalidTailErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
 + (void)raiseInvalidTimeError;
@@ -125,7 +129,8 @@
 + (void)raiseLocationServicesNotEnabledError;
 + (void)raiseLocationUnknownError;
 + (void)raiseLocationUserDeniedError;
-+ (void)raiseMatchNotFoundErrorForValue:(id)arg1 functionName:(id)arg2;
++ (void)raiseMatchNotFoundErrorForValue:(id)arg1 isRegex:(BOOL)arg2 afterMatch:(BOOL)arg3 previousValueToMatch:(id)arg4 previousValueIsRegex:(BOOL)arg5 occurrence:(int)arg6 matchesFound:(int)arg7 functionName:(id)arg8;
++ (void)raiseMatchNotFoundErrorForValue:(id)arg1 isRegex:(BOOL)arg2 functionName:(id)arg3;
 + (void)raiseMismatchedCurrenciesErrorForFunctionName:(id)arg1;
 + (void)raiseMismatchedMaxUnitsError;
 + (void)raiseMismatchedUnitsErrorForFunctionName:(id)arg1;
@@ -134,11 +139,13 @@
 + (void)raiseMultipleDurationsErrorForFunctionName:(id)arg1;
 + (void)raiseNegativeReceivedAmountError;
 + (void)raiseNegativeVectorValueErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
++ (void)raiseNoConditionIsTrueErrorForFunctionName:(id)arg1;
 + (void)raiseNoModeError;
 + (void)raiseNoSuitableArgumentsFoundErrorForFunctionName:(id)arg1 requiredType:(int)arg2;
 + (void)raiseNonEmptyStringRequiredErrorForFunctionName:(id)arg1;
 + (void)raiseNonMetricUnitPrefixErrorForUnitString:(id)arg1;
 + (void)raiseNotAReferenceErrorForFunctionName:(id)arg1;
++ (void)raiseNotAReferenceToAFormulaError;
 + (void)raiseNotAVectorError;
 + (void)raiseNotEnoughInputsErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2 required:(int)arg3;
 + (void)raiseNotReadyError;
@@ -166,6 +173,7 @@
 + (void)raiseStringTooLongError;
 + (void)raiseSumMixedDurationsAndUnitlessWithoutADateErrorForFunctionName:(id)arg1;
 + (void)raiseTooFewDataPointsErrorForFunctionName:(id)arg1;
++ (void)raiseTooManyArguments:(id)arg1 maximum:(int)arg2 provided:(int)arg3;
 + (void)raiseTypeExceptionForValue:(struct TSCEValue)arg1 functionSpec:(id)arg2 argumentIndex:(int)arg3 locale:(id)arg4;
 + (void)raiseUnionInsideIntersectionError;
 + (void)raiseUnitsNotAllowedErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;

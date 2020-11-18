@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/PKPaletteTool-Protocol.h>
 
-@protocol PKPaletteErasingTool <NSObject>
+@protocol PKPaletteErasingTool <PKPaletteTool>
 
 @property (nonatomic, getter=isBitmapEraser) BOOL bitmapEraser;
 

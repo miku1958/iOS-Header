@@ -31,6 +31,7 @@
 + (void)setupCallbackBlocksForExtension:(id)arg1 withParentViewController:(id)arg2;
 + (BOOL)shouldPropagateAppearanceCustomizations;
 + (void)viewControllerForExtension:(id)arg1 inputItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (long long)_desiredStatusBarStyle;
 - (void)cancelExtension;
 - (void)dealloc;
@@ -45,6 +46,7 @@
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)tearDownExtensionWithReply:(CDUnknownBlockType)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

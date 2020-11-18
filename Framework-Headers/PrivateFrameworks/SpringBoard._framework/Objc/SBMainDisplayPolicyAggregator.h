@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBPolicyAggregator.h>
 
-@class MCProfileConnection, SBAlertItemsController, SBApplicationController, SBAssistantController, SBCommandTabController, SBConferenceManager, SBLocalDefaults, SBLockScreenManager, SBLockStateAggregator, SBMainWorkspace, SBNotificationBannerDestination, SBRemoteTransientOverlaySessionManager, SBSetupManager, SBTelephonyManager;
+@class MCProfileConnection, SBAlertItemsController, SBApplicationController, SBAssistantController, SBBannerManager, SBCommandTabController, SBConferenceManager, SBLocalDefaults, SBLockScreenManager, SBLockStateAggregator, SBMainWorkspace, SBRemoteTransientOverlaySessionManager, SBSetupManager, SBTelephonyManager;
 
 @interface SBMainDisplayPolicyAggregator : SBPolicyAggregator
 {
@@ -22,7 +22,7 @@
     SBLockStateAggregator *_override_lockStateAggregator;
     SBTelephonyManager *_override_telephonyManager;
     SBMainWorkspace *_override_mainWorkspace;
-    SBNotificationBannerDestination *_override_bannerDestination;
+    SBBannerManager *_override_bannerManager;
     struct __CFBoolean *_hasCameraCapability;
     SBLocalDefaults *_defaults;
     BOOL _storeDemoAppLockEnabled;
@@ -31,7 +31,7 @@
 @property (strong, nonatomic, getter=_alertItemsController, setter=_setAlertItemsController:) SBAlertItemsController *alertItemsController; // @synthesize alertItemsController=_override_alertItemsController;
 @property (strong, nonatomic, getter=_applicationController, setter=_setApplicationController:) SBApplicationController *applicationController; // @synthesize applicationController=_override_applicationController;
 @property (strong, nonatomic, getter=_assistantController, setter=_setAssistantController:) SBAssistantController *assistantController; // @synthesize assistantController=_override_assistantController;
-@property (strong, nonatomic, getter=_bannerDestination, setter=_setBannerDestination:) SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_override_bannerDestination;
+@property (strong, nonatomic, getter=_bannerManager, setter=_setBannerManager:) SBBannerManager *bannerManager; // @synthesize bannerManager=_override_bannerManager;
 @property (strong, nonatomic, getter=_commandTabController, setter=_setCommandTabController:) SBCommandTabController *commandTabController; // @synthesize commandTabController=_override_commandTabController;
 @property (strong, nonatomic, getter=_conferenceManager, setter=_setConferenceManager:) SBConferenceManager *conferenceManager; // @synthesize conferenceManager=_override_conferenceManager;
 @property (strong, nonatomic, getter=_lockScreenManager, setter=_setLockScreenManager:) SBLockScreenManager *lockScreenManager; // @synthesize lockScreenManager=_override_lockScreenManager;

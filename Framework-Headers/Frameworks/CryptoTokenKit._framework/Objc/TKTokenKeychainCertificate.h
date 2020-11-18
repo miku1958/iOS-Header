@@ -30,6 +30,7 @@
 @property (strong) NSData *subjectKeyID; // @synthesize subjectKeyID=_subjectKeyID;
 
 - (void).cxx_destruct;
+- (id)encodedObjectID;
 - (id)initWithCertificate:(struct __SecCertificate *)arg1 objectID:(id)arg2;
 - (id)initWithItemInfo:(id)arg1;
 - (id)keychainAttributes;

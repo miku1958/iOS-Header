@@ -8,17 +8,17 @@
 
 #import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, TLKFormattedText, TLKLabel, TLKStackView, TLKTextAreaView;
+@class NSString, TLKFormattedText, TLKLabel, TLKStackView;
 
 @interface TLKAuxilliaryTextView : TLKView <NUIContainerViewDelegate>
 {
+    BOOL _useCompactMode;
     TLKFormattedText *_topText;
     TLKFormattedText *_middleText;
     TLKFormattedText *_bottomText;
     TLKLabel *_topLabel;
     TLKLabel *_middleLabel;
     TLKLabel *_bottomLabel;
-    TLKTextAreaView *_textAreaViewForAlignment;
 }
 
 @property (strong, nonatomic) TLKLabel *bottomLabel; // @synthesize bottomLabel=_bottomLabel;
@@ -30,18 +30,13 @@
 @property (strong, nonatomic) TLKLabel *middleLabel; // @synthesize middleLabel=_middleLabel;
 @property (strong, nonatomic) TLKFormattedText *middleText; // @synthesize middleText=_middleText;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) TLKTextAreaView *textAreaViewForAlignment; // @synthesize textAreaViewForAlignment=_textAreaViewForAlignment;
 @property (strong, nonatomic) TLKLabel *topLabel; // @synthesize topLabel=_topLabel;
 @property (strong, nonatomic) TLKFormattedText *topText; // @synthesize topText=_topText;
+@property (nonatomic) BOOL useCompactMode; // @synthesize useCompactMode=_useCompactMode;
 
-+ (BOOL)formattedTextHasTextContent:(id)arg1;
-+ (id)largeMiddleTextFont;
 - (void).cxx_destruct;
 - (id)bottomLabelFont;
 - (id)bottomLabelString;
-- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
-- (void)generateAndSizeTextAreaViewIfNeeded;
-- (void)matchBaselineOfLabel:(id)arg1 toView:(id)arg2;
 - (id)middleLabelFont;
 - (id)middleLabelString;
 - (void)observedPropertiesChanged;

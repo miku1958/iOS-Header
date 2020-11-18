@@ -20,6 +20,7 @@
 @property (readonly) NSOrderedSet *objectIDs;
 @property (readonly) NSArray *objects; // @synthesize objects=_objects;
 
++ (id)emptyFetchResultWithPhotoLibrary:(id)arg1;
 - (void).cxx_destruct;
 - (id)changeHandlingKey;
 - (id)changeHandlingValueUsingSeedOids:(id)arg1 withChange:(id)arg2 usingManagedObjectContext:(id)arg3;
@@ -29,6 +30,7 @@
 - (id)description;
 - (id)fetchRequest;
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
+- (id)fetchSortDescriptors;
 - (id)fetchUpdatedObjects;
 - (id)fetchedObjectIDs;
 - (id)fetchedObjectIDsSet;

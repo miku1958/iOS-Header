@@ -49,13 +49,16 @@
 - (BOOL)_accessibilitySearchControllerDimmingViewVisible;
 - (id)_accessibilitySearchResultsTableView;
 - (BOOL)_accessibilitySearchTableViewVisible;
+- (id)_accessibilitySelectedChildren;
+- (void)_accessibilitySetSelectedChildren:(id)arg1;
 - (void)_accessibilitySetUseOpaqueElements:(id)arg1;
 - (BOOL)_accessibilityShouldDisableCellReuse;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (BOOL)_accessibilityShouldVerifyTableViewCellsAreVisibleByHitTesting;
 - (BOOL)_accessibilitySkipItemsInSectionList:(id)arg1 view:(id)arg2;
 - (id)_accessibilitySortedElementsWithin;
-- (id)_accessibilitySortedElementsWithinPreservingFloatingHeader:(id)arg1;
+- (id)_accessibilitySortedElementsWithinPreservingFloatingHeader:(id)arg1 sortedElements:(id)arg2;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (BOOL)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
 - (id)_accessibilitySubviews;
 - (id)_accessibilitySupplementaryFooterViews;

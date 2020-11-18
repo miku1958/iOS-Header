@@ -10,13 +10,15 @@
 #import <PhotosUICore/PXCloudQuotaControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSString, PXCPLServiceUI, PXCloudQuotaController, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryItemCountsController, PXFooterSettings;
+@class NSArray, NSString, PXAssetsDataSourceCountsController, PXCPLUIStatusProvider, PXCloudQuotaController, PXContentFilterFooterController, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryViewModel, PXFooterSettings;
 @protocol PXCuratedLibraryFooterViewModelPresentationDelegate;
 
 @interface PXCuratedLibraryFooterViewModel : PXFooterViewModel <PXCloudQuotaControllerDelegate, PXChangeObserver, PXSettingsKeyObserver>
 {
-    PXCPLServiceUI *_cplServiceUI;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
     PXCloudQuotaController *_cloudQuotaController;
+    PXCuratedLibraryViewModel *_curatedLibraryViewModel;
+    PXContentFilterFooterController *_filterFooterController;
     long long _animatedGridCycleIndex;
     BOOL _hasImportantInformation;
     BOOL _isFooterShown;
@@ -24,7 +26,7 @@
     id<PXCuratedLibraryFooterViewModelPresentationDelegate> _presentingDelegate;
     long long _mode;
     PXCuratedLibraryAnalysisStatus *_analysisStatus;
-    PXCuratedLibraryItemCountsController *_itemCountsController;
+    PXAssetsDataSourceCountsController *_itemCountsController;
     PXFooterSettings *_settings;
 }
 
@@ -35,7 +37,7 @@
 @property (readonly, nonatomic) BOOL hasImportantInformation; // @synthesize hasImportantInformation=_hasImportantInformation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isFooterShown; // @synthesize isFooterShown=_isFooterShown;
-@property (readonly, nonatomic) PXCuratedLibraryItemCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
+@property (readonly, nonatomic) PXAssetsDataSourceCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (weak, nonatomic) id<PXCuratedLibraryFooterViewModelPresentationDelegate> presentingDelegate; // @synthesize presentingDelegate=_presentingDelegate;
 @property (readonly, nonatomic) PXFooterSettings *settings; // @synthesize settings=_settings;
@@ -43,19 +45,18 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *syncProgressAlbums; // @synthesize syncProgressAlbums=_syncProgressAlbums;
 
-+ (BOOL)_hasSyncProgressStatusForSyncAlbums:(id)arg1 outImportOperations:(int *)arg2;
-+ (id)_titleWithOptionalDescription:(id *)arg1 progress:(float *)arg2 forMode:(long long)arg3 itemCountsController:(id)arg4 analysisStatus:(id)arg5 serviceStatus:(id)arg6 inRebuild:(BOOL)arg7;
-+ (BOOL)hasAnalysisProgressForMode:(long long)arg1 analysisStatus:(id)arg2 serviceStatus:(id)arg3 serviceUIStatus:(id)arg4 userDefaults:(id)arg5 outAnimatedIconMode:(long long *)arg6 outProgress:(float *)arg7 outTitle:(id *)arg8 outDescription:(id *)arg9;
-+ (BOOL)hasCPLStatusForServiceStatus:(id)arg1 serviceUIStatus:(id)arg2;
++ (id)_titleWithOptionalDescription:(id *)arg1 progress:(float *)arg2 forMode:(long long)arg3 itemCountsController:(id)arg4 analysisStatus:(id)arg5 cplUIStatus:(id)arg6 inRebuild:(BOOL)arg7;
++ (BOOL)hasAnalysisProgressForMode:(long long)arg1 analysisStatus:(id)arg2 cplUIStatus:(id)arg3 userDefaults:(id)arg4 outAnimatedIconMode:(long long *)arg5 outProgress:(float *)arg6 outTitle:(id *)arg7 outDescription:(id *)arg8;
++ (BOOL)hasCPLStatusForCPLUIStatus:(id)arg1;
 - (void).cxx_destruct;
 - (void)_updateExposedProperties;
 - (void)_updateHasImportantInformation;
-- (void)cloudQuotaController:(id)arg1 presentInformationBanner:(id)arg2;
+- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
 - (void)didHideFooter;
 - (void)didShowFooter;
 - (void)footerAnimationCrossedGridCycleBoundary;
 - (id)init;
-- (id)initWithItemCountsController:(id)arg1 cplServiceUI:(id)arg2 analysisStatus:(id)arg3 mode:(long long)arg4;
+- (id)initWithItemCountsController:(id)arg1 cplUIStatusProvider:(id)arg2 analysisStatus:(id)arg3 mode:(long long)arg4 viewModel:(id)arg5;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)presentingViewControllerForCloudQuotaController:(id)arg1;
 - (void)setHasImportantInformation:(BOOL)arg1;

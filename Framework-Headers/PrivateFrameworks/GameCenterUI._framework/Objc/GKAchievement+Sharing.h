@@ -16,7 +16,6 @@
 - (id)activityViewControllerOperation:(id)arg1;
 - (id)activityViewControllerPlaceholderItems:(id)arg1;
 - (id)activityViewControllerSubject:(id)arg1;
-- (BOOL)canBeShared;
 - (id)challengeComposeControllerWithMessage:(id)arg1 players:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)challengeComposeControllerWithPlayers:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchSharingInfo;

@@ -96,7 +96,6 @@
 - (void)setNotificationTextInFooterView:(id)arg1;
 - (void)setupLater:(id)arg1;
 - (void)showEligibilityIssueWithReason:(long long)arg1 learnMoreURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)showPrivacy:(id)arg1;
 - (void)showProvisioningError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)suppressFooterViewManualEntryButton;
 - (void)suppressFooterViewSetupLaterButton;

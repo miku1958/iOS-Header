@@ -4,21 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 @class NSDate, NSString;
 
-@interface PGGraphContactNode : PGGraphNode
+@interface PGGraphContactNode : PGGraphOptimizedNode
 {
+    NSString *_name;
     NSString *_contactIdentifier;
+    NSDate *_birthdayDate;
+    NSDate *_potentialBirthdayDate;
 }
 
-@property (readonly) NSDate *birthdayDate;
-@property (readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
-@property (readonly) NSDate *potentialBirthdayDate;
+@property (readonly) NSDate *birthdayDate; // @synthesize birthdayDate=_birthdayDate;
+@property (readonly) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (readonly) NSString *name; // @synthesize name=_name;
+@property (readonly) NSDate *potentialBirthdayDate; // @synthesize potentialBirthdayDate=_potentialBirthdayDate;
 
 - (void).cxx_destruct;
-- (unsigned long long)genderHintForGivenName;
+- (id)description;
+- (unsigned short)domain;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
+- (unsigned long long)sexHintForGivenName;
 
 @end
 

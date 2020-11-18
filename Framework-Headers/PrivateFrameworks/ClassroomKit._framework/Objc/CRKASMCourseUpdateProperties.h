@@ -17,15 +17,20 @@
     NSNumber *_mascot;
     NSSet *_usersToAdd;
     NSSet *_usersToRemove;
+    NSSet *_trustedUsersToAdd;
+    NSSet *_trustedUsersToRemove;
 }
 
 @property (strong, nonatomic) NSNumber *color; // @synthesize color=_color;
 @property (strong, nonatomic) NSNumber *mascot; // @synthesize mascot=_mascot;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSSet *trustedUsersToAdd; // @synthesize trustedUsersToAdd=_trustedUsersToAdd;
+@property (copy, nonatomic) NSSet *trustedUsersToRemove; // @synthesize trustedUsersToRemove=_trustedUsersToRemove;
 @property (copy, nonatomic) NSSet *usersToAdd; // @synthesize usersToAdd=_usersToAdd;
 @property (copy, nonatomic) NSSet *usersToRemove; // @synthesize usersToRemove=_usersToRemove;
 
 - (void).cxx_destruct;
+- (BOOL)areFulfilledByCourse:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

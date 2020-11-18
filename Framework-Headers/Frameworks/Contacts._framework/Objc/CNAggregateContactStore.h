@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
 - (id)contactCountForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (id)currentHistoryAnchor;
+- (id)currentHistoryToken;
 - (id)defaultContainerIdentifier;
 - (void)didFetchContacts:(id)arg1 forPredicate:(id)arg2 fromStore:(id)arg3 unifiedFetch:(BOOL)arg4;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;

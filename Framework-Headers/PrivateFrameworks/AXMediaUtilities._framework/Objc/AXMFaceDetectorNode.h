@@ -33,7 +33,7 @@
 - (id)_faceDetectionResultsForVisionRequests:(id)arg1 canvasSize:(struct CGSize)arg2;
 - (id)_faceResultForUUID:(id)arg1 inFaceDictionary:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)evaluate:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)nodeInitialize;
 - (BOOL)requiresVisionFramework;

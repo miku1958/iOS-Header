@@ -18,9 +18,11 @@
     double _nominalFrameRate;
     struct CGSize _dimensions;
     CDStruct_1b6d18a9 _assetDuration;
+    CDStruct_1b6d18a9 _baseDecodeTimeStamp;
 }
 
 @property (readonly) CDStruct_1b6d18a9 assetDuration; // @synthesize assetDuration=_assetDuration;
+@property (readonly) CDStruct_1b6d18a9 baseDecodeTimeStamp; // @synthesize baseDecodeTimeStamp=_baseDecodeTimeStamp;
 @property (readonly) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,7 +38,7 @@
 - (id)initWithAssetData:(id)arg1 error:(id *)arg2;
 - (id)initWithAssetDuration:(CDStruct_1b6d18a9)arg1 creationDate:(id)arg2;
 - (id)initWithAssetDuration:(CDStruct_1b6d18a9)arg1 creationDate:(id)arg2 firstSequenceNumber:(unsigned long long)arg3 lastSequenceNumber:(unsigned long long)arg4;
-- (id)initWithAssetDuration:(CDStruct_1b6d18a9)arg1 creationDate:(id)arg2 firstSequenceNumber:(unsigned long long)arg3 lastSequenceNumber:(unsigned long long)arg4 nominalFrameRate:(double)arg5 dimensions:(struct CGSize)arg6;
+- (id)initWithAssetDuration:(CDStruct_1b6d18a9)arg1 creationDate:(id)arg2 firstSequenceNumber:(unsigned long long)arg3 lastSequenceNumber:(unsigned long long)arg4 nominalFrameRate:(double)arg5 dimensions:(struct CGSize)arg6 baseDecodeTimeStamp:(CDStruct_1b6d18a9)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

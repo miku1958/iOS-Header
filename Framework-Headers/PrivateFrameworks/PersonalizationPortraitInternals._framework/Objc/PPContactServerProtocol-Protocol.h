@@ -6,9 +6,11 @@
 
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 
-@class NSArray, NSString, PPContactQuery;
+@class NSArray, NSString, PPContactQuery, PPSource;
 
 @protocol PPContactServerProtocol <PPFeedbackAccepting>
+- (void)contactHandlesForSource:(PPSource *)arg1 queryId:(unsigned long long)arg2;
+- (void)contactHandlesForTopics:(NSArray *)arg1 queryId:(unsigned long long)arg2;
 - (void)contactNameRecordChangesForClient:(NSString *)arg1 completion:(void (^)(PPContactNameRecordChangeResult *, NSError *))arg2;
 - (void)contactNameRecordChangesForClient:(NSString *)arg1 queryId:(unsigned long long)arg2;
 - (void)contactNameRecordsForClient:(NSString *)arg1 queryId:(unsigned long long)arg2;

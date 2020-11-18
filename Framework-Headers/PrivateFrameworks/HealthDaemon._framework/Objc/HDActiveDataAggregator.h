@@ -18,11 +18,11 @@
 }
 
 - (void).cxx_destruct;
-- (void)_aggregateForAllDevicesForCollector:(id)arg1 date:(id)arg2 mode:(long long)arg3 freezeSeries:(BOOL)arg4;
-- (void)_aggregateForCollector:(id)arg1 device:(id)arg2 requestedAggregationDate:(id)arg3 mode:(long long)arg4 freezeSeries:(BOOL)arg5;
+- (void)_aggregateForAllDevicesForCollector:(id)arg1 date:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4;
+- (void)_aggregateForCollector:(id)arg1 device:(id)arg2 requestedAggregationDate:(id)arg3 mode:(long long)arg4 options:(unsigned long long)arg5;
 - (void)_reconsiderDelayedAggregation;
-- (void)_requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 freezeSeries:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 freezeSeries:(BOOL)arg6 error:(id *)arg7;
+- (void)_requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (double)aggregationInterval;
 - (double)aggregationIntervalForCollector:(id)arg1;
 - (id)configurationForCollector:(id)arg1;
@@ -31,7 +31,8 @@
 - (id)initWithDataCollectionManager:(id)arg1;
 - (id)initialAggregationState;
 - (void)recomputeCollectorConfiguration;
-- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 freezeSeries:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)registerDataCollector:(id)arg1 state:(id)arg2;
+- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (Class)sensorDatumClass;
 - (void)unregisterDataCollector:(id)arg1;
 

@@ -7,15 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <BoardServices/BSInvalidatable-Protocol.h>
-#import <BoardServices/BSXPCServiceConnectionMessaging-Protocol.h>
 #import <BoardServices/BSXPCServiceConnectionParent-Protocol.h>
 
-@class BSServiceInterface, BSServiceQuality, BSXPCServiceConnectionContext, BSXPCServiceConnectionEventHandler, BSXPCServiceConnectionMessage, BSXPCServiceConnectionMessageReply, BSXPCServiceConnectionPeer, NSMutableArray, NSString;
-@protocol BSServiceDispatchingQueue, BSXPCDecoding, BSXPCServiceConnectionParent, OS_dispatch_queue, OS_xpc_object;
+@class BSXPCServiceConnectionContext, BSXPCServiceConnectionEventHandler, BSXPCServiceConnectionMessage, BSXPCServiceConnectionMessageReply, BSXPCServiceConnectionPeer, NSMutableArray, NSString;
+@protocol BSServiceDispatchingQueue, BSXPCServiceConnectionParent, OS_xpc_object;
 
-@interface BSXPCServiceConnection : NSObject <BSXPCServiceConnectionParent, BSXPCServiceConnectionMessaging, BSInvalidatable>
+@interface BSXPCServiceConnection : NSObject <BSXPCServiceConnectionParent, BSInvalidatable>
 {
-    BSXPCServiceConnectionContext *_context;
     NSString *_proem;
     struct os_unfair_lock_s _lock;
     unsigned int _lock_activationGeneration;
@@ -37,55 +35,19 @@
     BOOL _lock_remotelyInvalidated;
     BOOL _lock_clientInvalidated;
     BOOL _lock_invalidated;
+    BSXPCServiceConnectionContext *_context;
 }
 
-@property (readonly, nonatomic) NSObject<OS_xpc_object> *_XPCConnection;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_XPCConnectionTargetQueue;
 @property (readonly, nonatomic, getter=_isClientInvalidated) BOOL _clientInvalidated;
-@property (readonly, nonatomic) BSXPCServiceConnectionContext *_context; // @synthesize _context;
 @property (readonly, nonatomic, getter=_isInvalidated) BOOL _invalidated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<BSXPCDecoding> initiatingContext;
-@property (readonly, copy, nonatomic) BSServiceInterface *interface; // @dynamic interface;
-@property (readonly, copy, nonatomic) NSString *name; // @dynamic name;
-@property (readonly, nonatomic) BSXPCServiceConnectionPeer *peer; // @synthesize peer=_lock_peer;
-@property (readonly, nonatomic) id remoteTarget; // @dynamic remoteTarget;
-@property (readonly, copy, nonatomic) BSServiceQuality *serviceQuality; // @dynamic serviceQuality;
 @property (readonly) Class superclass;
 
-+ (id)_connectionWithXPCConnection:(id)arg1 endpointDescription:(id)arg2;
-+ (id)connectionWithConnection:(id)arg1;
-+ (id)connectionWithEndpoint:(id)arg1 nonLaunching:(BOOL)arg2 description:(id)arg3;
-+ (id)connectionWithServiceName:(id)arg1 privileged:(BOOL)arg2;
-+ (id)currentContext;
 - (void).cxx_destruct;
-- (void)_connection_consumeLock_didActivateWithPeer:(id)arg1;
-- (void)_connection_consumeLock_handleError:(id)arg1 notYetLocked:(BOOL)arg2;
-- (void)_connection_consumeLock_runPendedEventsIfAppropriate;
-- (void)_connection_handleActivationMessage:(id)arg1 fromPeer:(id)arg2;
-- (void)_connection_handleEvent:(id)arg1;
-- (void)_connection_handleInvalidateMessage:(id)arg1 withHandoff:(id)arg2;
-- (void)_connection_handleMessage:(id)arg1 fromPeer:(id)arg2 withHandoff:(id)arg3;
-- (id)_eventHandler;
-- (id)_initWithContext:(id)arg1;
 - (void)_invalidateChildConnection:(id)arg1;
-- (BOOL)_lock_activateNowOrWhenReady:(CDUnknownBlockType)arg1 withParent:(id)arg2;
-- (void)_lock_associateNewChildConnection:(id)arg1;
-- (id)_lock_createMessageWithParent:(id)arg1;
-- (void)_lock_disconnect;
-- (void)_lock_enqueueChildActivateEvent:(CDUnknownBlockType)arg1 forHandoff:(id)arg2;
-- (void)_lock_enqueueConnectionEstablishedEvent:(CDUnknownBlockType)arg1;
-- (void)_lock_invalidate;
-- (void)_parentInvalidated;
-- (void)_setParent:(id)arg1;
-- (BOOL)activateNowOrWhenReady:(CDUnknownBlockType)arg1;
-- (void)configure:(CDUnknownBlockType)arg1;
-- (id)createMessage;
-- (id)createMessageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (BOOL)hasChildren;
 - (id)init;
 - (void)invalidate;
 

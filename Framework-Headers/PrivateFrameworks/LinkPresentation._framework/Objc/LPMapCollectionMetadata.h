@@ -20,6 +20,8 @@
     LPImage *_image;
     LPImage *_darkImage;
     NSArray *_addresses;
+    NSString *_publisherName;
+    LPImage *_publisherIcon;
 }
 
 @property (copy, nonatomic) NSArray *addresses; // @synthesize addresses=_addresses;
@@ -31,6 +33,8 @@
 @property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned int numberOfItems; // @synthesize numberOfItems=_numberOfItems;
+@property (strong, nonatomic) LPImage *publisherIcon; // @synthesize publisherIcon=_publisherIcon;
+@property (copy, nonatomic) NSString *publisherName; // @synthesize publisherName=_publisherName;
 @property (readonly) Class superclass;
 
 + (id)keyPathsForValuesAffecting_dummyPropertyForObservation;

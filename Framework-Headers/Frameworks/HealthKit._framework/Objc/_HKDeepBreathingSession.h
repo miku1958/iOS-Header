@@ -6,45 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class _HKDeepBreathingSessionConfiguration;
-@protocol NSXPCProxyCreating, OS_dispatch_queue, _HKDeepBreathingSessionDelegate, _HKDeepBreathingSessionLifecycleDelegate;
+#import <HealthKit/_HKDeepBreathingSessionClient-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@interface _HKDeepBreathingSession : NSObject
+@class HKTaskServerProxyProvider, NSString, _HKDeepBreathingSessionConfiguration;
+@protocol OS_dispatch_queue, _HKDeepBreathingSessionDelegate;
+
+@interface _HKDeepBreathingSession : NSObject <_HKXPCExportable, _HKDeepBreathingSessionClient>
 {
-    _HKDeepBreathingSessionConfiguration *_sessionConfiguration;
-    id<_HKDeepBreathingSessionLifecycleDelegate> _lifecycleDelegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     long long _serverState;
-    id<NSXPCProxyCreating> _server;
+    HKTaskServerProxyProvider *_proxyProvider;
     id<_HKDeepBreathingSessionDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<_HKDeepBreathingSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) long long serverState;
-@property (readonly) _HKDeepBreathingSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
+@property (readonly, copy) _HKDeepBreathingSessionConfiguration *sessionConfiguration;
+@property (readonly) Class superclass;
 
-+ (id)_clientInterface;
-+ (id)_serverInterface;
-+ (id)sessionWithConfiguration:(id)arg1 lifecycleDelegate:(id)arg2;
++ (id)taskIdentifier;
 - (void).cxx_destruct;
-- (void)_attachServerWithClientQueue:(id)arg1 healthStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_connectionDidEncounterError:(id)arg1;
-- (id)_initWithSessionConfiguration:(id)arg1 lifecycleDelegate:(id)arg2;
 - (BOOL)_isServerAttached;
-- (id)_lifecycleDelegate;
 - (void)_queue_alertDelegateDidEncounterError:(id)arg1;
 - (void)_queue_alertDelegateDidReceiveHeartRate:(double)arg1;
 - (void)_queue_deactivate;
 - (BOOL)_queue_isServerAttached;
 - (void)_queue_transitionToServerState:(long long)arg1;
-- (id)_serverProxy;
-- (id)_serverWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)_sessionConfiguration;
-- (id)description;
+- (void)clientRemote_sessionDidReceiveError:(id)arg1;
+- (void)clientRemote_sessionDidReceiveHeartRate:(double)arg1;
+- (void)connectionInvalidated;
 - (void)endSessionWithEndReason:(long long)arg1;
-- (void)sessionDidReceiveError:(id)arg1;
-- (void)sessionDidReceiveHeartRate:(double)arg1;
+- (id)exportedInterface;
+- (void)fetchProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)initWithHealthStore:(id)arg1 configuration:(id)arg2;
+- (id)remoteInterface;
 - (void)startGuiding;
 - (void)startSessionWithStartDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

@@ -121,7 +121,6 @@
 - (struct CGRect)_editingRectForStartTime:(double)arg1 endTime:(double)arg2;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_initSubviews;
-- (void)_sendDelayedActions;
 - (void)_setValue:(double)arg1 andSendAction:(BOOL)arg2;
 - (void)_setZoomAnimating:(BOOL)arg1;
 - (void)_sliderAnimationDidStop:(BOOL)arg1;

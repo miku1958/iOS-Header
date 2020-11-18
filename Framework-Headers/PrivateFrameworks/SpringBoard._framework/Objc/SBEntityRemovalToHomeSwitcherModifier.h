@@ -16,15 +16,17 @@
 }
 
 - (void).cxx_destruct;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
+- (id)_cornerRadiusSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (id)cornerRadiusSettingsForIndex:(unsigned long long)arg1;
-- (double)dimmingAlpha;
 - (double)dockProgress;
 - (long long)dockUpdateMode;
 - (id)handleTimerEvent:(id)arg1;
 - (double)homeScreenAlpha;
+- (double)homeScreenBackdropBlurProgress;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (double)homeScreenScale;
 - (id)initWithTransitionID:(id)arg1 homeAnimationDelay:(double)arg2 multitaskingModifier:(id)arg3;
 - (BOOL)isContainerStatusBarVisible;
@@ -33,7 +35,6 @@
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldFireTransitionCompletionInDefaultRunLoopMode;
 - (id)transitionWillBegin;

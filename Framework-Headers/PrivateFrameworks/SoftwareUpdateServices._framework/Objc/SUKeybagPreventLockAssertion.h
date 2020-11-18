@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SUKeybagPreventLockAssertion : NSObject <BSInvalidatable>
 {
     BOOL _invalidated;

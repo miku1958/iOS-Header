@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySceneKitScene;
 - (id)accessibilityElements;
+- (id)accessibilityProjectSCNVector3Points:(id)arg1;
 
 @end
 

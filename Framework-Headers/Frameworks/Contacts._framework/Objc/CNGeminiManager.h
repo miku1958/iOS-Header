@@ -22,27 +22,19 @@
     unsigned long long _dataSourceExclusions;
 }
 
-@property (strong, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
-@property (strong, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property (nonatomic) unsigned long long dataSourceExclusions; // @synthesize dataSourceExclusions=_dataSourceExclusions;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
-+ (id)cellularPlanManager;
 + (id)channelStringFromSenderIdentity:(id)arg1;
 + (id)descriptorForRequiredKeys;
 + (BOOL)deviceSupportsGemini;
-+ (BOOL)useFakeData;
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (id)badgeLabelForSenderIdentity:(id)arg1 error:(id *)arg2;
 - (id)badgeLabelForSubscription:(id)arg1 error:(id *)arg2;
-- (id)bestChannelIdentifierForPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2 defaultChannelIdentifier:(id)arg3;
 - (id)bestSenderIdentityForContact:(id)arg1 error:(id *)arg2;
 - (id)bestSenderIdentityForFavoritesEntry:(id)arg1 error:(id *)arg2;
 - (id)bestSenderIdentityForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
@@ -50,43 +42,21 @@
 - (id)bestSubscriptionForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)channelForContact:(id)arg1 error:(id *)arg2;
 - (id)channelForFavoritesEntry:(id)arg1 error:(id *)arg2;
-- (id)channelForFavoritesEntry:(id)arg1 includeDanglingChannels:(BOOL)arg2 error:(id *)arg3;
-- (id)channelForPreferredChannelString:(id)arg1 fromChannels:(id)arg2 synthesizeMissingChannels:(BOOL)arg3;
-- (id)channelIdentifierForMostRecentCallFromPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2;
-- (id)channelIdentifierForMostRecentSMSFromPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2;
-- (id)channelsByIdentifierIncludingDanglingPlans:(BOOL)arg1 defaultChannel:(id *)arg2 availableChannels:(id *)arg3;
-- (id)contactForPhoneString:(id)arg1 contactStore:(id)arg2;
-- (void)danglingPlansDidUpdate:(id)arg1;
-- (id)defaultSenderIdentityForInteractionsFromSenderIdentities:(id)arg1;
-- (id)fakeSenderIdentities;
 - (id)fetchedSenderIdentitiesWithError:(id *)arg1;
-- (id)fetchedSubscriptionForSenderIdentity:(id)arg1;
-- (id)fetchedSubscriptionsWithError:(id *)arg1;
 - (id)geminiResultForContact:(id)arg1 error:(id *)arg2;
 - (id)geminiResultForContact:(id)arg1 substituteDefaultForDangling:(BOOL)arg2 error:(id *)arg3;
 - (id)geminiResultForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
-- (id)geminiResultForHandle:(id)arg1 contactStore:(id)arg2 substituteDefaultForDangling:(BOOL)arg3 error:(id *)arg4;
 - (id)init;
 - (id)initWithCallProviderManager:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 coreTelephonyClient:(id)arg2 callProviderManager:(id)arg3;
-- (BOOL)isReferencedByCallHistoryForSenderLabelIdentifier:(id)arg1;
 - (BOOL)isReferencedByContactsForSenderLabelIdentifier:(id)arg1 store:(id)arg2;
-- (BOOL)isReferencedByMessagesForSenderLabelIdentifier:(id)arg1;
-- (BOOL)isReferencedSenderLabelIdentifier:(id)arg1;
-- (id)mostRecentChannelIdentifierForPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2;
-- (void)notifyDelegateOfChannelUpdates;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (BOOL)remapChannelIdentifier:(id)arg1 toIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)remapContactsHavingPreferredChannelIdentifier:(id)arg1 toPreferredChannelIdentifier:(id)arg2 contactStore:(id)arg3 error:(id *)arg4;
-- (BOOL)remapMessagesHavingChannelIdentifier:(id)arg1 toChannelIdentifier:(id)arg2 error:(id *)arg3;
-- (BOOL)remapRecentCallsHavingChannelIdentifier:(id)arg1 toChannelIdentifier:(id)arg2 error:(id *)arg3;
 - (id)remoteBestSenderIdentityForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)remoteGeminiResultForContact:(id)arg1 substituteDefaultForDangling:(BOOL)arg2 error:(id *)arg3;
 - (void)removeDelegate:(id)arg1;
-- (id)senderIdentityMatchingPhoneNumber:(id)arg1 fromSenderIdentities:(id)arg2;
-- (id)senderIdentityMatchingUUID:(id)arg1 fromSenderIdentities:(id)arg2;
 - (void)subscriptionInfoDidChange;
-- (void)updateOutgoingLocalParticipantUUID:(id)arg1 forCallsWithLocalParticipantUUID:(id)arg2;
 
 @end
 

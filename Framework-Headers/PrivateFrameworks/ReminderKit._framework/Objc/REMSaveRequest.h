@@ -13,12 +13,15 @@
 {
     BOOL _saved;
     BOOL _updateLastModifiedDates;
+    BOOL _saveIsNoopIfNoChangedKeys;
     BOOL _cloneCompletedRecurrentRemindersAtSave;
     BOOL _applyCRDTsWithoutMerging;
+    BOOL _syncToCloudKit;
     REMStore *_store;
     NSString *_author;
     NSMutableDictionary *_trackedAccountChangeItems;
     NSMutableDictionary *_trackedListChangeItems;
+    NSMutableDictionary *_trackedSmartListChangeItems;
     NSMutableDictionary *_trackedReminderChangeItems;
     NSMutableDictionary *_trackedAccountCapabilities;
     id<REMReplicaManagerProviding> _replicaManagerProvider;
@@ -28,12 +31,15 @@
 @property (copy, nonatomic) NSString *author; // @synthesize author=_author;
 @property (nonatomic) BOOL cloneCompletedRecurrentRemindersAtSave; // @synthesize cloneCompletedRecurrentRemindersAtSave=_cloneCompletedRecurrentRemindersAtSave;
 @property (strong, nonatomic) id<REMReplicaManagerProviding> replicaManagerProvider; // @synthesize replicaManagerProvider=_replicaManagerProvider;
+@property (nonatomic) BOOL saveIsNoopIfNoChangedKeys; // @synthesize saveIsNoopIfNoChangedKeys=_saveIsNoopIfNoChangedKeys;
 @property (nonatomic, getter=isSaved) BOOL saved; // @synthesize saved=_saved;
 @property (readonly, nonatomic) REMStore *store; // @synthesize store=_store;
+@property (nonatomic) BOOL syncToCloudKit; // @synthesize syncToCloudKit=_syncToCloudKit;
 @property (readonly, nonatomic) NSMutableDictionary *trackedAccountCapabilities; // @synthesize trackedAccountCapabilities=_trackedAccountCapabilities;
 @property (readonly, nonatomic) NSMutableDictionary *trackedAccountChangeItems; // @synthesize trackedAccountChangeItems=_trackedAccountChangeItems;
 @property (readonly, nonatomic) NSMutableDictionary *trackedListChangeItems; // @synthesize trackedListChangeItems=_trackedListChangeItems;
 @property (readonly, nonatomic) NSMutableDictionary *trackedReminderChangeItems; // @synthesize trackedReminderChangeItems=_trackedReminderChangeItems;
+@property (readonly, nonatomic) NSMutableDictionary *trackedSmartListChangeItems; // @synthesize trackedSmartListChangeItems=_trackedSmartListChangeItems;
 @property (nonatomic) BOOL updateLastModifiedDates; // @synthesize updateLastModifiedDates=_updateLastModifiedDates;
 
 - (void).cxx_destruct;
@@ -54,10 +60,12 @@
 - (void)_trackAccountChangeItem:(id)arg1;
 - (void)_trackListChangeItem:(id)arg1;
 - (void)_trackReminderChangeItem:(id)arg1;
+- (void)_trackSmartListChangeItem:(id)arg1;
 - (id)_trackedAccountCapabilitiesForObjectID:(id)arg1;
 - (id)_trackedAccountChangeItemForObjectID:(id)arg1;
 - (id)_trackedListChangeItemForObjectID:(id)arg1;
 - (id)_trackedReminderChangeItemForObjectID:(id)arg1;
+- (id)_trackedSmartListChangeItemForObjectID:(id)arg1;
 - (id)_updateAccountWithListChangeItem:(id)arg1;
 - (id)_updateListStorage:(id)arg1 accountCapabilities:(id)arg2;
 - (id)_updateListWithReminderChangeItem:(id)arg1;
@@ -65,7 +73,8 @@
 - (void)_updateTrackedAccountChangeItem:(id)arg1 withObjectID:(id)arg2;
 - (void)_updateTrackedListChangeItem:(id)arg1 withObjectID:(id)arg2;
 - (void)_updateTrackedReminderChangeItem:(id)arg1 withObjectID:(id)arg2;
-- (void)_willSaveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 reminderChangeItems:(id)arg3;
+- (void)_updateTrackedSmartListChangeItem:(id)arg1 withObjectID:(id)arg2;
+- (void)_willSaveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 smartListChangeItems:(id)arg3 reminderChangeItems:(id)arg4;
 - (id)addGroupWithName:(id)arg1 toAccountGroupContextChangeItem:(id)arg2;
 - (id)addGroupWithName:(id)arg1 toAccountGroupContextChangeItem:(id)arg2 groupObjectID:(id)arg3;
 - (id)addListWithName:(id)arg1 toAccountChangeItem:(id)arg2;
@@ -89,6 +98,7 @@
 - (id)updateReminder:(id)arg1;
 - (BOOL)updateReminderChangeItem:(id)arg1 fromICSData:(id)arg2 isNew:(BOOL)arg3 withOptions:(id)arg4 error:(id *)arg5;
 - (void)updateReminderChangeItem:(id)arg1 fromICSTodo:(id)arg2 icsCalendar:(id)arg3 isNew:(BOOL)arg4 withOptions:(id)arg5;
+- (id)updateSmartList:(id)arg1;
 - (void)updateUIDInReminderChangeItem:(id)arg1 fromICSComponent:(id)arg2 icsCalendar:(id)arg3;
 
 @end

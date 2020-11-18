@@ -17,6 +17,7 @@
 
 - (id)calendarFromEventStore:(id)arg1;
 - (id)initWithType:(long long)arg1;
+- (BOOL)isSharedCalendarInvitation;
 
 @end
 

@@ -12,10 +12,10 @@
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *contextBuilder;
 }
 
 - (void).cxx_destruct;
-- (id)createPluggableViewController;
 - (id)createViewController;
 - (id)init;
 

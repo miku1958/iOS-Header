@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewLayoutAttributes.h>
 
-@class CKChatItem, NSMutableArray;
+@class CKChatItem, NSArray, NSMutableArray;
 
 @interface CKTranscriptCollectionViewLayoutAttributes : UICollectionViewLayoutAttributes
 {
@@ -24,12 +24,15 @@
     double _associatedVerticalShift;
     NSMutableArray *_associatedLayoutAttributes;
     CKTranscriptCollectionViewLayoutAttributes *_initialParentLayoutAttributes;
+    NSArray *_threadGroupLayoutAttributes;
     CKChatItem *_chatItem;
+    BOOL _insertingReply;
     struct CGSize _parentChatItemSize;
 }
 
 @property (strong, nonatomic) CKChatItem *chatItem; // @synthesize chatItem=_chatItem;
 @property (readonly, nonatomic) struct CATransform3D contentTransform3D; // @synthesize contentTransform3D=_contentTransform3D;
+@property (nonatomic, getter=isInsertingReply) BOOL insertingReply; // @synthesize insertingReply=_insertingReply;
 @property (nonatomic) struct CGSize parentChatItemSize; // @synthesize parentChatItemSize=_parentChatItemSize;
 
 - (void).cxx_destruct;

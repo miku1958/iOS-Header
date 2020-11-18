@@ -41,18 +41,7 @@
         unsigned int read_entries:1;
         unsigned int read_queryTokens:1;
         unsigned int read_query:1;
-        unsigned int wrote_entries:1;
-        unsigned int wrote_overallLatencyInMs:1;
-        unsigned int wrote_queryTokens:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_keypressStatus:1;
-        unsigned int wrote_selectedIndex:1;
-        unsigned int wrote_selectedSectionIndex:1;
-        unsigned int wrote_trigger:1;
-        unsigned int wrote_withinSectionSelectedIndex:1;
-        unsigned int wrote_isRerankerTriggered:1;
-        unsigned int wrote_isRetainedQuery:1;
-        unsigned int wrote_shouldDifferentiateClientAndServerResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -85,11 +74,6 @@
 - (void).cxx_destruct;
 - (int)StringAsKeypressStatus:(id)arg1;
 - (int)StringAsTrigger:(id)arg1;
-- (void)_addNoFlagsEntries:(id)arg1;
-- (void)_addNoFlagsQueryTokens:(id)arg1;
-- (void)_readEntries;
-- (void)_readQuery;
-- (void)_readQueryTokens;
 - (void)addEntries:(id)arg1;
 - (void)addQueryTokens:(id)arg1;
 - (void)clearEntries;
@@ -103,7 +87,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)keypressStatusAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)queryTokensAtIndex:(unsigned long long)arg1;

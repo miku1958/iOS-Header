@@ -6,21 +6,19 @@
 
 #import <TSDrawables/TSDLayout.h>
 
-@class NSArray, NSObject;
+@class NSObject;
 @protocol TSDContainerInfo;
 
 @interface TSDContainerLayout : TSDLayout
 {
 }
 
-@property (readonly, nonatomic) NSArray *additionalInfosForChildLayouts;
-@property (readonly, nonatomic) NSArray *childInfosForChildLayouts;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 
-- (struct CGRect)frameForCulling;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
+- (id)childInfosForChildLayouts;
 - (id)initWithInfo:(id)arg1;
 - (void)processChangedProperty:(int)arg1;
-- (void)updateChildrenFromInfo;
 
 @end
 

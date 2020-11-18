@@ -19,15 +19,14 @@
 - (void).cxx_destruct;
 - (void)_handleBatches:(id)arg1;
 - (CDUnknownBlockType)completionHandler;
-- (id)filterQueries;
 - (unsigned long long)foundItemCount;
 - (CDUnknownBlockType)foundItemsHandler;
 - (void)handleCompletion:(id)arg1;
 - (void)handleFoundItems:(id)arg1;
+- (id)initWithQueryString:(id)arg1 context:(id)arg2;
 - (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 attributes:(id)arg3 hitCount:(unsigned long long)arg4;
 - (BOOL)isTopHitQuery;
 - (void)setCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setFilterQueries:(id)arg1;
 - (void)setFoundItemsHandler:(CDUnknownBlockType)arg1;
 - (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
 

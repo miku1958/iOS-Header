@@ -8,7 +8,7 @@
 
 #import <IMDaemonCore/INSpeakable-Protocol.h>
 
-@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
+@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
 
 @interface IMDChat : NSObject <INSpeakable>
 {
@@ -34,13 +34,12 @@
     NSString *_originalGroupID;
     NSString *_serverChangeToken;
     long long _lastReadMessageTimeStamp;
-    NSDate *_lastSentMessageDate;
     long long _lastMessageTimeStampOnLoad;
     unsigned char _style;
     BOOL _createEngramGroupOnMessageSend;
     BOOL _pendingENGroupParticipantUpdate;
     BOOL _isArchived;
-    BOOL _isFiltered;
+    long long _isFiltered;
     BOOL _isBlackholed;
     BOOL _hasHadSuccessfulQuery;
     BOOL _wasReportedAsJunk;
@@ -64,6 +63,7 @@
 @property BOOL createEngramGroupOnMessageSend; // @synthesize createEngramGroupOnMessageSend=_createEngramGroupOnMessageSend;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *deviceIndependentID;
 @property (readonly, strong) NSDictionary *dictionaryRepresentation;
 @property (copy) NSString *displayName;
 @property (copy, setter=setEngramID:) NSString *engramID;
@@ -74,7 +74,7 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly) BOOL isArchived;
 @property BOOL isBlackholed;
-@property BOOL isFiltered;
+@property long long isFiltered;
 @property (readonly, nonatomic) BOOL isUnnamedChat;
 @property (copy) NSString *lastAddressedLocalHandle;
 @property (copy) NSString *lastAddressedSIMID;
@@ -82,14 +82,15 @@
 @property long long lastMessageTimeStampOnLoad;
 @property (nonatomic) long long lastReadMessageTimeStamp;
 @property (readonly, copy) NSString *lastSeenMessageGuid; // @synthesize lastSeenMessageGuid=_lastSeenMessageGuid;
-@property (readonly, strong) NSDate *lastSentMessageDate;
 @property BOOL meCardUpdated; // @synthesize meCardUpdated=_meCardUpdated;
 @property (readonly, nonatomic) NSDictionary *nicknamesForParticipants; // @synthesize nicknamesForParticipants=_nicknamesForParticipants;
 @property unsigned long long numMessagesSent; // @synthesize numMessagesSent=_numMessagesSent;
 @property (readonly, copy) NSString *originalGroupID;
 @property (copy) NSArray *participants;
 @property BOOL pendingENGroupParticipantUpdate; // @synthesize pendingENGroupParticipantUpdate=_pendingENGroupParticipantUpdate;
+@property (readonly, nonatomic) NSString *persistentID;
 @property (readonly, nonatomic) NSString *personCentricID;
+@property (readonly, nonatomic) NSString *pinningIdentifier;
 @property (readonly, nonatomic) NSString *pronunciationHint;
 @property (strong) NSDictionary *properties;
 @property (copy) NSString *roomName;
@@ -115,6 +116,8 @@
 - (id)_copyCKRecordFromExistingCKMetadataIsUsingStringRay:(BOOL)arg1 zoneID:(id)arg2 salt:(id)arg3;
 - (void)_persistMergedIDMergedChatsIfNeeded:(id)arg1;
 - (id)_personIdentity;
+- (id)_sortedParticipantIDHashForParticipants:(id)arg1;
+- (id)_sortedParticipantIDHashForParticipants:(id)arg1 usesPersonCentricID:(BOOL)arg2;
 - (void)_updateCachedParticipants;
 - (void)_updateLastMessage:(id)arg1;
 - (void)addParticipant:(id)arg1;
@@ -130,21 +133,28 @@
 - (long long)engroupCreationDate;
 - (id)generateNewGroupID;
 - (int)getNumberOfTimesRespondedToThread;
-- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(BOOL)arg14 hasHadSuccessfulQuery:(BOOL)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25 isBlackholed:(BOOL)arg26;
+- (id)groupPhotoGuid;
+- (id)groupPhotoUploadFailureCount;
+- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(long long)arg14 hasHadSuccessfulQuery:(BOOL)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25 isBlackholed:(BOOL)arg26;
 - (id)initWithCKRecord:(id)arg1 isUsingStingRay:(BOOL)arg2;
 - (BOOL)isBusinessChat;
+- (BOOL)isGroupChat;
 - (BOOL)isNewerThan:(id)arg1;
 - (BOOL)isOlderThan:(id)arg1;
+- (BOOL)isSMS;
 - (BOOL)isSMSSpam;
 - (BOOL)isiMessageSpam;
 - (id)lastSeenMessageGUID;
+- (id)lastSentMessageDate;
 - (void)meCardHasUpdated;
 - (int)messageHandshakeState;
+- (unsigned long long)powerLogConversationType;
 - (BOOL)receivedBlackholeError;
 - (id)recordName;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
 - (void)resetCKSyncState;
+- (void)resetParticipants:(id)arg1;
 - (void)setLastSentMessageDate:(id)arg1;
 - (void)setOriginalGroupID:(id)arg1;
 - (int)smsHandshakeState;
@@ -153,13 +163,15 @@
 - (void)updateCloudKitRecordID:(id)arg1;
 - (void)updateCloudKitSyncState:(long long)arg1;
 - (void)updateDisplayName:(id)arg1;
+- (void)updateDisplayName:(id)arg1 sender:(id)arg2;
 - (void)updateEngramID:(id)arg1;
 - (void)updateEngroupCreationDate:(long long)arg1;
 - (void)updateGroupID:(id)arg1;
+- (void)updateGroupPhotoGuid:(id)arg1;
+- (void)updateGroupPhotoUploadFailureCount:(id)arg1;
 - (void)updateHasHadSuccessfulQuery:(BOOL)arg1;
 - (void)updateIsBlackholed:(BOOL)arg1;
-- (void)updateIsFiltered:(BOOL)arg1;
-- (void)updateIsSMSSpamChatProperty:(BOOL)arg1;
+- (void)updateIsFiltered:(long long)arg1;
 - (void)updateIsiMessageSpam:(BOOL)arg1;
 - (void)updateLastAddressedHandle:(id)arg1;
 - (void)updateLastAddressedHandle:(id)arg1 forceUpdate:(BOOL)arg2;
@@ -172,6 +184,7 @@
 - (void)updateOriginalGroupID:(id)arg1;
 - (void)updateProperties:(id)arg1;
 - (void)updateReceivedBlackholeError:(BOOL)arg1;
+- (void)updateSMSCategory:(long long)arg1;
 - (void)updateSMSHandshakeState:(int)arg1;
 - (void)updateSMSSpamExtensionNameChatProperty:(id)arg1;
 - (void)updateSRCloudKitSyncState:(long long)arg1;

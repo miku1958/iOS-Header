@@ -7,6 +7,7 @@
 #import <Home/HFItemSection.h>
 
 @class NSArray, NSAttributedString, NSDictionary, NSString;
+@protocol HFItemSectionAccessoryButtonHeaderDelegate;
 
 @interface HFMutableItemSection : HFItemSection
 {
@@ -14,6 +15,8 @@
 
 @property (copy, nonatomic) NSAttributedString *attributedFooterTitle; // @dynamic attributedFooterTitle;
 @property (copy, nonatomic) NSString *footerTitle; // @dynamic footerTitle;
+@property (weak, nonatomic) id<HFItemSectionAccessoryButtonHeaderDelegate> headerAccessoryButtonDelegate; // @dynamic headerAccessoryButtonDelegate;
+@property (copy, nonatomic) NSString *headerAccessoryButtonTitle; // @dynamic headerAccessoryButtonTitle;
 @property (copy, nonatomic) NSString *headerTitle; // @dynamic headerTitle;
 @property (copy, nonatomic) NSArray *items; // @dynamic items;
 @property (copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;

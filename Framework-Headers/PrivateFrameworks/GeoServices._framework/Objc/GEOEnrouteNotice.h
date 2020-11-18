@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEORouteAnnotation, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOEnrouteNotice : PBCodable <NSCopying>
 {
@@ -16,51 +16,58 @@
     PBUnknownFields *_unknownFields;
     NSMutableArray *_guidances;
     NSString *_objectIdentifier;
+    GEORouteAnnotation *_routeAnnotation;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _groupItemHorizontalDisplayOrder;
+    unsigned int _groupItemVerticalDisplayOrder;
     unsigned int _highlightDistance;
     unsigned int _objectGroupId;
     unsigned int _priority;
     int _type;
+    unsigned int _zilchPathIndex;
     struct {
+        unsigned int has_groupItemHorizontalDisplayOrder:1;
+        unsigned int has_groupItemVerticalDisplayOrder:1;
         unsigned int has_highlightDistance:1;
         unsigned int has_objectGroupId:1;
         unsigned int has_priority:1;
         unsigned int has_type:1;
+        unsigned int has_zilchPathIndex:1;
         unsigned int read_unknownFields:1;
         unsigned int read_guidances:1;
         unsigned int read_objectIdentifier:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_guidances:1;
-        unsigned int wrote_objectIdentifier:1;
-        unsigned int wrote_highlightDistance:1;
-        unsigned int wrote_objectGroupId:1;
-        unsigned int wrote_priority:1;
-        unsigned int wrote_type:1;
+        unsigned int read_routeAnnotation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (nonatomic) unsigned int groupItemHorizontalDisplayOrder;
+@property (nonatomic) unsigned int groupItemVerticalDisplayOrder;
 @property (strong, nonatomic) NSMutableArray *guidances;
+@property (nonatomic) BOOL hasGroupItemHorizontalDisplayOrder;
+@property (nonatomic) BOOL hasGroupItemVerticalDisplayOrder;
 @property (nonatomic) BOOL hasHighlightDistance;
 @property (nonatomic) BOOL hasObjectGroupId;
 @property (readonly, nonatomic) BOOL hasObjectIdentifier;
 @property (nonatomic) BOOL hasPriority;
+@property (readonly, nonatomic) BOOL hasRouteAnnotation;
 @property (nonatomic) BOOL hasType;
+@property (nonatomic) BOOL hasZilchPathIndex;
 @property (nonatomic) unsigned int highlightDistance;
 @property (nonatomic) unsigned int objectGroupId;
 @property (strong, nonatomic) NSString *objectIdentifier;
 @property (nonatomic) unsigned int priority;
+@property (strong, nonatomic) GEORouteAnnotation *routeAnnotation;
 @property (nonatomic) int type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) unsigned int zilchPathIndex;
 
 + (Class)guidanceType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_addNoFlagsGuidance:(id)arg1;
-- (void)_readGuidances;
-- (void)_readObjectIdentifier;
 - (void)addGuidance:(id)arg1;
 - (void)clearGuidances;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -73,7 +80,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

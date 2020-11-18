@@ -18,7 +18,6 @@
 @property (readonly, nonatomic, getter=isUnknown) BOOL unknown;
 @property (readonly, nonatomic) NSData *vCardRepresentation;
 
-+ (BOOL)contactRemindersEnabled;
 + (id)contactWithStateRestorationCoder:(id)arg1 store:(id)arg2 keys:(id)arg3;
 + (id)descriptorForAllUIKeys;
 + (BOOL)downtimeWhitelistUIEnabled;

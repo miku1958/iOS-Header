@@ -9,12 +9,12 @@
 #import <PassKitCore/PKPeerPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
 @class NSString, PKPeerPaymentService;
-@protocol PKPeerPaymentRegistrationDelegate;
+@protocol PKPeerPaymentTargetDeviceDelegate;
 
 @interface PKPeerPaymentWebServiceTargetDevice : NSObject <PKPeerPaymentWebServiceTargetDeviceProtocol>
 {
     PKPeerPaymentService *_peerPaymentService;
-    id<PKPeerPaymentRegistrationDelegate> _registrationDelegate;
+    id<PKPeerPaymentTargetDeviceDelegate> _targetDeviceDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,22 +24,25 @@
 
 - (void).cxx_destruct;
 - (void)_handleAccountChangedNotification:(id)arg1;
+- (void)_handlePreferencesChangedNotification:(id)arg1;
 - (id)account;
 - (id)appleAccountInformation;
 - (id)bridgedClientInfo;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)deviceClass;
 - (id)deviceRegion;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithRegistrationDelegate:(id)arg1;
-- (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
+- (id)initWithTargetDeviceDelegate:(id)arg1;
 - (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)preferences;
 - (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 peerPaymentWebService:(id)arg2 credential:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (id)secureElementIdentifiers;
+- (void)setPreferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setUserHasDisabledPeerPayment:(BOOL)arg1;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)userHasDisabledPeerPayment;

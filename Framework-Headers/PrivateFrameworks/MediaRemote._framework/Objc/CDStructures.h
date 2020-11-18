@@ -39,6 +39,11 @@ struct _MRTextInputTraits {
     unsigned long long PINEntrySeparatorIndexesCount;
 };
 
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -75,6 +80,10 @@ typedef struct {
 typedef struct {
     unsigned int errorCode:1;
 } CDStruct_70a7dc3e;
+
+typedef struct {
+    unsigned int lastPlayingTimestamp:1;
+} CDStruct_d7e5e336;
 
 typedef struct {
     unsigned int state:1;

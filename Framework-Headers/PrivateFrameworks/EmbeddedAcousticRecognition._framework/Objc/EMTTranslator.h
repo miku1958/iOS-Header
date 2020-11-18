@@ -18,11 +18,13 @@
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 
++ (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (vector_9492931a)_tokenizeString:(id)arg1;
 - (void)_translate:(vector_9492931a)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithModelURL:(id)arg1;
+- (id)initWithModelURL:(id)arg1 task:(id)arg2;
 - (void)loadTranslatorFrom:(id)arg1 to:(id)arg2;
 - (void)translateSpeech:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)translateSpeech:(id)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;

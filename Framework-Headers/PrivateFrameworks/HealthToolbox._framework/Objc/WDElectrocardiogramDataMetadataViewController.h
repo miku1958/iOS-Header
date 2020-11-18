@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface WDElectrocardiogramDataMetadataViewController : HKTableViewController <HKDataMetadataDeletionSectionDelegate, HKElectrocardiogramMetadataViewDelegate>
 {
+    BOOL _firstViewDidLayoutSubviews;
     BOOL _actionsEnabled;
     HKElectrocardiogram *_sample;
     id<HKDataMetadataViewControllerDelegate> _delegate;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL actionsEnabled; // @synthesize actionsEnabled=_actionsEnabled;
 @property (weak, nonatomic) id<HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property (strong, nonatomic) WDElectrocardiogramReportDataSource *reportDataSource; // @synthesize reportDataSource=_reportDataSource;
 @property (strong, nonatomic) HRElectrocardiogramReportGenerator *reportGenerator; // @synthesize reportGenerator=_reportGenerator;
 @property (strong, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
@@ -36,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)_loadSections;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
 - (void)_reloadElectrocardiogramMetadataTableHeaderView;
-- (id)_shortVersionNumberFromString:(id)arg1;
 - (void)dealloc;
 - (void)deleteSampleTriggeredBySection:(id)arg1;
 - (void)deletionSectionDidSelectRow:(id)arg1;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

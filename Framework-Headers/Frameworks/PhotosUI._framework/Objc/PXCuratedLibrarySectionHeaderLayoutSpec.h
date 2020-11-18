@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/PXFeatureSpec.h>
 
-@class PXCuratedLibraryStyleGuide, PXTitleSubtitleLabelSpec;
+@class NSDateFormatter, PXCuratedLibraryStyleGuide, PXExtendedImageConfiguration, PXTitleSubtitleLabelSpec;
 
 @interface PXCuratedLibrarySectionHeaderLayoutSpec : PXFeatureSpec
 {
+    BOOL _isFloating;
     BOOL _showZoomButtons;
     BOOL _showAspectFitButtons;
     BOOL _wantsTitle;
@@ -20,7 +21,7 @@
     BOOL _requiresTitleRenderedAsView;
     BOOL _swapTitleWithSubtitle;
     BOOL _shouldFadeOutWhenReachingTop;
-    BOOL _shouldAccomdateAccessibilityButtonLayout;
+    BOOL _shouldAccommodateLeadingButtonsLayout;
     BOOL _gradientRespectsSafeArea;
     double _buttonHeight;
     double _buttonSpacing;
@@ -29,9 +30,12 @@
     PXTitleSubtitleLabelSpec *_debugInterestingTitleSubtitleLabelSpec;
     PXTitleSubtitleLabelSpec *_debugNonInterestingTitleSubtitleLabelSpec;
     unsigned long long _inlineHeaderStyle;
+    NSDateFormatter *_titleDateFormatter;
+    NSDateFormatter *_subtitleDateFormatter;
     double _fadeOutDistanceFromSafeAreaTop;
     double _fadeOutDistance;
     double _fadeOutMinimumAlpha;
+    PXExtendedImageConfiguration *_headerGradientImageConfiguration;
     double _gradientAlpha;
     double _gradientHeight;
     double _minimumSpacingBetweenTopSafeAreaAndContentTop;
@@ -57,13 +61,15 @@
 @property (nonatomic) double gradientAlpha; // @synthesize gradientAlpha=_gradientAlpha;
 @property (nonatomic) double gradientHeight; // @synthesize gradientHeight=_gradientHeight;
 @property (nonatomic) BOOL gradientRespectsSafeArea; // @synthesize gradientRespectsSafeArea=_gradientRespectsSafeArea;
+@property (readonly, nonatomic) PXExtendedImageConfiguration *headerGradientImageConfiguration; // @synthesize headerGradientImageConfiguration=_headerGradientImageConfiguration;
 @property (nonatomic) unsigned long long inlineHeaderStyle; // @synthesize inlineHeaderStyle=_inlineHeaderStyle;
+@property (nonatomic) BOOL isFloating; // @synthesize isFloating=_isFloating;
 @property (readonly, nonatomic) double maximumTitleSubtitleHeight;
 @property (readonly, nonatomic) double minimumSpacingBetweenTopSafeAreaAndContentTop; // @synthesize minimumSpacingBetweenTopSafeAreaAndContentTop=_minimumSpacingBetweenTopSafeAreaAndContentTop;
 @property (readonly, nonatomic) double minimumSpacingBetweenTopSafeAreaAndTitleTop; // @synthesize minimumSpacingBetweenTopSafeAreaAndTitleTop=_minimumSpacingBetweenTopSafeAreaAndTitleTop;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (nonatomic) BOOL requiresTitleRenderedAsView; // @synthesize requiresTitleRenderedAsView=_requiresTitleRenderedAsView;
-@property (nonatomic) BOOL shouldAccomdateAccessibilityButtonLayout; // @synthesize shouldAccomdateAccessibilityButtonLayout=_shouldAccomdateAccessibilityButtonLayout;
+@property (nonatomic) BOOL shouldAccommodateLeadingButtonsLayout; // @synthesize shouldAccommodateLeadingButtonsLayout=_shouldAccommodateLeadingButtonsLayout;
 @property (nonatomic) BOOL shouldAvoidOverlapWithSecondaryToolbar; // @synthesize shouldAvoidOverlapWithSecondaryToolbar=_shouldAvoidOverlapWithSecondaryToolbar;
 @property (nonatomic) BOOL shouldFadeOutWhenReachingTop; // @synthesize shouldFadeOutWhenReachingTop=_shouldFadeOutWhenReachingTop;
 @property (nonatomic) BOOL shouldOmitYear; // @synthesize shouldOmitYear=_shouldOmitYear;
@@ -71,7 +77,9 @@
 @property (nonatomic) BOOL showZoomButtons; // @synthesize showZoomButtons=_showZoomButtons;
 @property (strong, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *smallVariantSpec; // @synthesize smallVariantSpec=_smallVariantSpec;
 @property (readonly, nonatomic) PXCuratedLibraryStyleGuide *styleGuide; // @synthesize styleGuide=_styleGuide;
+@property (copy, nonatomic) NSDateFormatter *subtitleDateFormatter; // @synthesize subtitleDateFormatter=_subtitleDateFormatter;
 @property (nonatomic) BOOL swapTitleWithSubtitle; // @synthesize swapTitleWithSubtitle=_swapTitleWithSubtitle;
+@property (copy, nonatomic) NSDateFormatter *titleDateFormatter; // @synthesize titleDateFormatter=_titleDateFormatter;
 @property (nonatomic) struct UIEdgeInsets titlePadding; // @synthesize titlePadding=_titlePadding;
 @property (copy, nonatomic) PXTitleSubtitleLabelSpec *titleSubtitleLabelSpec; // @synthesize titleSubtitleLabelSpec=_titleSubtitleLabelSpec;
 @property (nonatomic) BOOL wantsInlineHeader; // @synthesize wantsInlineHeader=_wantsInlineHeader;

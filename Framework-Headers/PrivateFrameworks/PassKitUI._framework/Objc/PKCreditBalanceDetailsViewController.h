@@ -8,11 +8,11 @@
 
 #import <PassKitUI/PKAccountServiceObserver-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSDictionary, NSString, PKAccount, PKBalanceSummary, PKBalanceSummaryFetcher, PKCreditAccountStatement, PKCreditAccountSummary, PKDashboardBalanceItem, PKDashboardBalancePresenter, PKDashboardBalanceSummaryItem, PKDashboardBalanceSummaryItemPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKDashboardTransactionFetcher, PKPaymentPass, PKPaymentWebService;
+@class NSArray, NSDateFormatter, NSDictionary, NSString, PKAccount, PKBalanceSummary, PKBalanceSummaryFetcher, PKCreditAccountStatement, PKCreditAccountSummary, PKDashboardBalanceItem, PKDashboardBalancePresenter, PKDashboardBalanceSummaryItem, PKDashboardBalanceSummaryItemPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKDashboardTransactionFetcher, PKPaymentWebService, PKTransactionSource;
 
 @interface PKCreditBalanceDetailsViewController : UICollectionViewController <PKAccountServiceObserver>
 {
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
     unsigned long long _feature;
     PKCreditAccountStatement *_statement;
@@ -45,7 +45,6 @@
     NSDictionary *_statementsByYear;
     NSArray *_sortedYears;
     NSDateFormatter *_monthYearFormatter;
-    NSDateFormatter *_dateFormatter;
     PKDashboardTitleHeaderView *_sampleHeaderView;
     PKDashboardFooterTextView *_sampleFooterView;
     NSArray *_sectionMap;
@@ -82,7 +81,7 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (id)initWithStyle:(long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
+- (id)initWithStyle:(long long)arg1 transactionSource:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)showStatement:(id)arg1 style:(long long)arg2;

@@ -8,6 +8,7 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
+@class TSTCellUIDLookupListWrapper;
 @protocol OS_dispatch_queue;
 
 @interface TSTCellUIDList : NSObject <NSCopying>
@@ -16,7 +17,7 @@
     vector_4dc5f307 _columnIdList;
     vector_12bd641b _rowUIDIndexList;
     vector_12bd641b _columnUIDIndexList;
-    vector_7670e6f2 _uncompressedCellUIDs;
+    TSTCellUIDLookupListWrapper *_uncompressedCellUIDs;
     unsigned long long _compressedSize;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -30,6 +31,8 @@
 - (void).cxx_destruct;
 - (void)addCellRegion:(id)arg1 withColumnUIDs:(const vector_4dc5f307 *)arg2 rowUIDs:(const vector_4dc5f307 *)arg3;
 - (void)addCellUID:(const struct TSTCellUID *)arg1;
+- (void)addCellUIDRanges:(const UUIDRect_d701734b *)arg1;
+- (void)addCellUIDs:(vector_0c3ec296 *)arg1;
 - (const vector_4dc5f307 *)columnUIDs;
 - (void)compress;
 - (void)compressUIDIndexListFrom:(const vector_12bd641b *)arg1 withUIDCount:(unsigned long long)arg2 to:(vector_12bd641b *)arg3;
@@ -40,7 +43,6 @@
 - (unsigned long long)computeValidCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (void)dealloc;
 - (void)enumerateCellUIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initFromMessage:(const struct CellUIDListArchive *)arg1 unarchiver:(id)arg2;
@@ -48,10 +50,11 @@
 - (void)p_compressUID:(const UUIDData_5fbc143e *)arg1 index:(unsigned long long)arg2 UIDtoIndexMap:(map_2cd530a9 *)arg3 UIDs:(vector_4dc5f307 *)arg4 compressedIndexes:(vector_12bd641b *)arg5 lastSameUIDIndex:(vector_06e666a8 *)arg6;
 - (id)pruneCellUIDListAgainstTable:(id)arg1 behavior:(unsigned long long)arg2;
 - (id)pruneCellUIDListAgainstTable:(id)arg1 behavior:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)reserve:(unsigned long long)arg1;
 - (const vector_4dc5f307 *)rowUIDs;
 - (void)saveToMessage:(struct CellUIDListArchive *)arg1 archiver:(id)arg2;
 - (void)setCompressedColumnIndexes:(const vector_12bd641b *)arg1;
-- (vector_7670e6f2 *)uncompressedCellUIDs;
+- (id)uncompressedCellUIDs;
 
 @end
 

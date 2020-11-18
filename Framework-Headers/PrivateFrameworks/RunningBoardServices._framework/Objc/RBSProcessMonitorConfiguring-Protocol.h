@@ -7,7 +7,9 @@
 @class NSArray, RBSProcessStateDescriptor;
 
 @protocol RBSProcessMonitorConfiguring
+- (void)setEvents:(unsigned long long)arg1;
 - (void)setPredicates:(NSArray *)arg1;
+- (void)setPreventLaunchUpdateHandle:(void (^)(RBSProcessMonitor *, NSSet *))arg1;
 - (void)setServiceClass:(unsigned int)arg1;
 - (void)setStateDescriptor:(RBSProcessStateDescriptor *)arg1;
 - (void)setUpdateHandler:(void (^)(RBSProcessMonitor *, RBSProcessHandle *, RBSProcessStateUpdate *))arg1;

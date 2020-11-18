@@ -25,10 +25,10 @@
 + (id)dataFromNDEFMessage:(id)arg1;
 + (id)decodeFromNDEFMessage:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addRecord:(id)arg1;
 - (void)addRecordArray:(id)arg1;
 - (id)asData;
-- (void)dealloc;
 - (id)decode;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

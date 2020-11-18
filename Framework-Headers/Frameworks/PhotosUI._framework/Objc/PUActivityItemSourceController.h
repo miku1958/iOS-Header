@@ -21,11 +21,15 @@
     NSArray *_activeItemSources;
     _Atomic int _taskId;
     unsigned long long _cloudSharedAssetCount;
+    long long _momentShareAssetCount;
     BOOL _shouldUseMomentShareLinkInMessagesIfThresholdMet;
     BOOL _shouldExcludeLivenessInAllItemSources;
-    BOOL _shouldExcludeLocationInAllItemSourcess;
+    BOOL _shouldExcludeLocationInAllItemSources;
+    BOOL _shouldExcludeCaptionInAllItemSources;
+    BOOL _shouldExcludeAccessibilityDescriptionInAllItemSources;
     BOOL _shouldShareAsOriginals;
     BOOL _momentSharePublishAttempted;
+    unsigned int _powerAssertionIdentifier;
     unsigned long long _preferredPreparationType;
     id<PUActivityItemSourceControllerDelegate> _delegate;
     unsigned long long _state;
@@ -53,14 +57,19 @@
 @property (strong) NSMutableArray *errors; // @synthesize errors=_errors;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *externalIsolation; // @synthesize externalIsolation=_externalIsolation;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isPreparingIndividualItems;
 @property (readonly, nonatomic) BOOL itemSourcesSupportMomentShareLinkCreation;
+@property (readonly, nonatomic) BOOL itemSourcesSupportSlideshow;
 @property (readonly, nonatomic) BOOL momentSharePublishAttempted; // @synthesize momentSharePublishAttempted=_momentSharePublishAttempted;
 @property (nonatomic) unsigned long long numSourcesDownloading; // @synthesize numSourcesDownloading=_numSourcesDownloading;
+@property (readonly, nonatomic) unsigned int powerAssertionIdentifier; // @synthesize powerAssertionIdentifier=_powerAssertionIdentifier;
 @property (nonatomic) unsigned long long preferredPreparationType; // @synthesize preferredPreparationType=_preferredPreparationType;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (strong, nonatomic, setter=_setPublishedURL:) NSURL *publishedURL; // @synthesize publishedURL=_publishedURL;
+@property (nonatomic) BOOL shouldExcludeAccessibilityDescriptionInAllItemSources; // @synthesize shouldExcludeAccessibilityDescriptionInAllItemSources=_shouldExcludeAccessibilityDescriptionInAllItemSources;
+@property (nonatomic) BOOL shouldExcludeCaptionInAllItemSources; // @synthesize shouldExcludeCaptionInAllItemSources=_shouldExcludeCaptionInAllItemSources;
 @property (nonatomic) BOOL shouldExcludeLivenessInAllItemSources; // @synthesize shouldExcludeLivenessInAllItemSources=_shouldExcludeLivenessInAllItemSources;
-@property (nonatomic) BOOL shouldExcludeLocationInAllItemSourcess; // @synthesize shouldExcludeLocationInAllItemSourcess=_shouldExcludeLocationInAllItemSourcess;
+@property (nonatomic) BOOL shouldExcludeLocationInAllItemSources; // @synthesize shouldExcludeLocationInAllItemSources=_shouldExcludeLocationInAllItemSources;
 @property (nonatomic) BOOL shouldShareAsOriginals; // @synthesize shouldShareAsOriginals=_shouldShareAsOriginals;
 @property (nonatomic) BOOL shouldUseMomentShareLinkInMessagesIfThresholdMet; // @synthesize shouldUseMomentShareLinkInMessagesIfThresholdMet=_shouldUseMomentShareLinkInMessagesIfThresholdMet;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -77,6 +86,7 @@
 - (id)activityItemSourceForAsset:(id)arg1;
 - (void)addAssetItem:(id)arg1;
 - (void)cancel;
+- (void)cleanUpExportedFiles;
 - (void)cmmActivityItemSource:(id)arg1 didFinishPreparationForActivityType:(id)arg2 preparationType:(unsigned long long)arg3 withItems:(id)arg4 didCancel:(BOOL)arg5 error:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)cmmActivityItemSource:(id)arg1 willBeginPreparationWithActivityType:(id)arg2 preparationType:(unsigned long long)arg3;
 - (void)configureItemSourcesForActivityIfNeeded:(id)arg1 forcePreparationAsMomentShareLink:(BOOL)arg2;
@@ -87,7 +97,7 @@
 - (struct PXAssetMediaTypeCount)requestAssetsMediaTypeCount;
 - (void)runExplicitly:(BOOL)arg1 withActivityType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setState:(unsigned long long)arg1;
-- (CDStruct_2a4d9400)synthesizedSharingPreferencesForAssetItem:(id)arg1;
+- (CDStruct_df7f102b)synthesizedSharingPreferencesForAssetItem:(id)arg1;
 - (void)updateSharingPreferencesInItemSources;
 - (void)updateState;
 

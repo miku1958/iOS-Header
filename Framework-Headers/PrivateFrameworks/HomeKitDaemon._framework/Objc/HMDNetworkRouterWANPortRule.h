@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDNetworkRouterWANRule-Protocol.h>
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDNetworkRouterProtocol, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddress, HMDNetworkRouterProtocol, NSString;
 
-@interface HMDNetworkRouterWANPortRule : NSObject <HMDNetworkRouterWANRule, NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterWANPortRule : NSObject <HMDNetworkRouterWANRule, NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterProtocol *_protocol;
     NSString *_hostDNSName;
     HMDNetworkRouterIPAddress *_hostIPStart;
     HMDNetworkRouterIPAddress *_hostIPEnd;
-    HMDTLVUnsignedNumberValue *_hostPortStart;
-    HMDTLVUnsignedNumberValue *_hostPortEnd;
+    HAPTLVUnsignedNumberValue *_hostPortStart;
+    HAPTLVUnsignedNumberValue *_hostPortEnd;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,8 +31,8 @@
 @property (strong, nonatomic) NSString *hostDNSName; // @synthesize hostDNSName=_hostDNSName;
 @property (strong, nonatomic) HMDNetworkRouterIPAddress *hostIPEnd; // @synthesize hostIPEnd=_hostIPEnd;
 @property (strong, nonatomic) HMDNetworkRouterIPAddress *hostIPStart; // @synthesize hostIPStart=_hostIPStart;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *hostPortEnd; // @synthesize hostPortEnd=_hostPortEnd;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *hostPortStart; // @synthesize hostPortStart=_hostPortStart;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *hostPortEnd; // @synthesize hostPortEnd=_hostPortEnd;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *hostPortStart; // @synthesize hostPortStart=_hostPortStart;
 @property (strong, nonatomic) HMDNetworkRouterProtocol *protocol; // @synthesize protocol=_protocol;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

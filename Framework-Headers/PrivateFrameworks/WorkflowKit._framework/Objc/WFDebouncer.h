@@ -13,6 +13,7 @@
 {
     double _delay;
     double _maximumDelay;
+    id _userInfo;
     NSObject<OS_dispatch_queue> *_queue;
     NSMapTable *_targetTable;
     NSObject<OS_dispatch_source> *_delayTimer;
@@ -25,11 +26,13 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *maximumDelayTimer; // @synthesize maximumDelayTimer=_maximumDelayTimer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) NSMapTable *targetTable; // @synthesize targetTable=_targetTable;
+@property (readonly, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (void)fire;
 - (id)initWithDelay:(double)arg1 maximumDelay:(double)arg2 queue:(id)arg3;
+- (id)initWithDelay:(double)arg1 maximumDelay:(double)arg2 queue:(id)arg3 userInfo:(id)arg4;
 - (id)initWithDelay:(double)arg1 queue:(id)arg2;
 - (void)poke;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;

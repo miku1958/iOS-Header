@@ -17,6 +17,7 @@
 - (void)createPath;
 - (void)fillPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (id)initWithPolygon:(id)arg1;
+- (void)strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 
 @end
 

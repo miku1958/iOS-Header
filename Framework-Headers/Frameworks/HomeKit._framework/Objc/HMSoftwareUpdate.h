@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
@@ -13,7 +14,7 @@
 @class HMAccessory, HMFSoftwareVersion, HMFUnfairLock, HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSString, NSUUID, _HMContext;
 @protocol HMSoftwareUpdateDelegate, OS_dispatch_queue;
 
-@interface HMSoftwareUpdate : NSObject <HMFMessageReceiver, HMObjectMerge, NSSecureCoding>
+@interface HMSoftwareUpdate : NSObject <HMFMessageReceiver, HMFLogging, HMObjectMerge, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSUUID *_identifier;
@@ -24,6 +25,7 @@
     id<HMSoftwareUpdateDelegate> _delegate;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
+    double _installDuration;
     _HMContext *_context;
     HMAccessory *_accessory;
 }
@@ -39,6 +41,7 @@
 @property (readonly) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property (readonly) unsigned long long hash;
 @property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly) double installDuration; // @synthesize installDuration=_installDuration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly) long long state; // @synthesize state=_state;
@@ -62,6 +65,7 @@
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 documentationMetadata:(id)arg4;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;

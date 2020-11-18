@@ -9,14 +9,16 @@
 @interface XBLaunchImageError : NSError
 {
     BOOL _fatal;
+    BOOL _shouldDeny;
 }
 
 @property (readonly, getter=isFatal) BOOL fatal; // @synthesize fatal=_fatal;
+@property (readonly) BOOL shouldDeny; // @synthesize shouldDeny=_shouldDeny;
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 fatal:(BOOL)arg4;
+- (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 fatal:(BOOL)arg4 shouldDeny:(BOOL)arg5;
 
 @end
 

@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_receivedTime:1;
         unsigned int read_incidents:1;
         unsigned int read_snapshotMetaData:1;
-        unsigned int wrote_incidents:1;
-        unsigned int wrote_receivedTime:1;
-        unsigned int wrote_snapshotMetaData:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,9 +37,6 @@ __attribute__((visibility("hidden")))
 + (Class)incidentsType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsIncidents:(id)arg1;
-- (void)_readIncidents;
-- (void)_readSnapshotMetaData;
 - (void)addIncidents:(id)arg1;
 - (void)clearIncidents;
 - (void)copyTo:(id)arg1;
@@ -53,7 +48,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)incidentsCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

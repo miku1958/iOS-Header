@@ -16,12 +16,14 @@
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 + (id)dc_dictionaryFromQueryString:(id)arg1;
++ (id)dc_queryItemsFromQueryDictionary:(id)arg1;
 + (id)dc_queryItemsFromQueryString:(id)arg1;
 + (id)dc_queryStringWithQueryDictionary:(id)arg1;
 + (id)dc_queryStringWithQueryDictionary:(id)arg1 addingPercentEscapes:(BOOL)arg2;
 + (id)realHomeDirectoryURL;
 + (id)realLibraryDirectoryURL;
 + (id)rootVolumeURL;
++ (id)wf_savedShortcutStatesURL;
 + (id)wf_shortcutsDirectoryURL;
 - (id)dc_fragmentQueryDictionary;
 - (BOOL)dc_matchesHost:(id)arg1;

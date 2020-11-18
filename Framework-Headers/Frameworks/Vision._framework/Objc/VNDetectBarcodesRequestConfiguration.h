@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface VNDetectBarcodesRequestConfiguration : VNImageBasedRequestConfiguration
 {
+    BOOL _stopAtFirstPyramidWith2DCode;
     NSArray *_symbologies;
     NSString *_locateMode;
 }
 
 @property (copy, nonatomic) NSString *locateMode; // @synthesize locateMode=_locateMode;
+@property (nonatomic) BOOL stopAtFirstPyramidWith2DCode; // @synthesize stopAtFirstPyramidWith2DCode=_stopAtFirstPyramidWith2DCode;
 @property (copy, nonatomic) NSArray *symbologies; // @synthesize symbologies=_symbologies;
 
 - (void).cxx_destruct;

@@ -31,6 +31,7 @@
 - (id)notesForServerIntIdsInRange:(struct _NSRange)arg1;
 - (id)notesForServerIntIdsInRange:(struct _NSRange)arg1 ascending:(BOOL)arg2 limit:(unsigned long long)arg3;
 - (id)predicateForNotes;
+- (id)searchDomainIdentifier;
 
 @end
 

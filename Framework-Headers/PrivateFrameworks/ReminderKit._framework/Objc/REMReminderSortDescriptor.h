@@ -21,6 +21,7 @@
 + (id)sortDescriptorSortingByDueDateAscending:(BOOL)arg1;
 + (id)sortDescriptorSortingByOrderingInListAscending:(BOOL)arg1;
 + (id)sortDescriptorSortingByPriorityAscending:(BOOL)arg1;
++ (id)sortDescriptorSortingByTitleAscending:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

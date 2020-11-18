@@ -32,6 +32,7 @@
 @property (readonly, nonatomic, getter=isShowingSearch) BOOL showingSearch;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
+@property (readonly, nonatomic, getter=isTracking) BOOL tracking;
 
 + (double)searchHeaderHeight;
 - (void).cxx_destruct;
@@ -44,6 +45,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
+- (struct CGPoint)locationInView:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)requireGestureRecognizerToFail:(id)arg1;
 - (void)resetAnimated:(BOOL)arg1;

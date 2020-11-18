@@ -6,8 +6,15 @@
 
 #import <PrintKit/NSObject-Protocol.h>
 
+@class NSData, NSDictionary, NSString;
+
 @protocol PKBrowserProtocol <NSObject>
-- (void)aggdDiscoveredPrinterStatistics;
+- (void)_http_closeConnection;
+- (void)_http_createConnection:(NSDictionary *)arg1 reply:(void (^)(int))arg2;
+- (void)_http_performRequest:(NSData *)arg1 resource:(NSString *)arg2 reply:(void (^)(NSData *, int))arg3;
+- (void)_mdns_queryTxtSynchronous:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
+- (void)_mdns_reconfirm:(NSString *)arg1 force:(BOOL)arg2;
+- (void)_mdns_resolveSynchronous:(NSString *)arg1 regType:(NSString *)arg2 domain:(NSString *)arg3 reply:(void (^)(NSDictionary *))arg4;
 - (void)startBrowsing;
 - (void)stopBrowsing;
 @end

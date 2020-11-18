@@ -7,7 +7,7 @@
 #import <WorkflowKit/WFWorkflowReference.h>
 
 @interface WFWorkflowReference (CSSearchableItem)
-- (id)searchableItemRepresentation;
+- (id)searchableItemRepresentationWithIconDrawerContext:(id)arg1;
 - (unsigned long long)spotlightHash;
 @end
 

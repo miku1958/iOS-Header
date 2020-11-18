@@ -30,6 +30,7 @@
     BOOL _allowsAccountCreation;
     BOOL _showServiceIcons;
     BOOL _canEditUsername;
+    BOOL _showingPasswordCell;
     long long _akServiceType;
     id<AAUISignInViewControllerDelegate> _delegate;
     NSString *_username;
@@ -45,6 +46,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UILabel *messageLabel;
 @property (nonatomic) BOOL showServiceIcons; // @synthesize showServiceIcons=_showServiceIcons;
+@property (nonatomic) BOOL showingPasswordCell; // @synthesize showingPasswordCell=_showingPasswordCell;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *titleLabel;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;

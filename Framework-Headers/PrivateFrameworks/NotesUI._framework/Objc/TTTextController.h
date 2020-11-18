@@ -37,7 +37,6 @@
 + (double)superscriptScaleFactor;
 - (void).cxx_destruct;
 - (void)addBIToStyle:(id)arg1;
-- (void)addLetterpressInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)bodyAttributes;
 - (id)bodyAttributesWithContentSizeCategory:(id)arg1;
 - (id)captionAttributes;
@@ -62,7 +61,6 @@
 - (id)preferredAttributesForTTTextStyle:(unsigned int)arg1;
 - (id)referenceAttributesForLocation:(unsigned long long)arg1 textStorage:(id)arg2 currentParagraphStart:(unsigned long long)arg3;
 - (id)removeAttribute:(id)arg1 ifInconsistentAtLocation:(unsigned long long)arg2 inTextStorage:(id)arg3 forNewTypingAttributes:(id)arg4;
-- (void)removeLetterpressInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)resetGuessedFontSizes;
 - (id)strippedTypingAttributesAtStartOfParagraph:(id)arg1 atTheEndOfDocument:(BOOL)arg2 isTyping:(BOOL)arg3;
 - (void)styleFontInAttributedString:(id)arg1 inRange:(struct _NSRange)arg2 contentSizeCategory:(id)arg3;
@@ -71,7 +69,6 @@
 - (id)styleForModelAttributes:(id)arg1 contentSizeCategory:(id)arg2;
 - (void)styleListsAndIndentsInAttributedString:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)styleText:(id)arg1 inExactRange:(struct _NSRange)arg2 fixModelAttributes:(BOOL)arg3;
-- (void)styleText:(id)arg1 inExactRange:(struct _NSRange)arg2 fixModelAttributes:(BOOL)arg3 enableLetterpress:(BOOL)arg4;
 - (void)styleText:(id)arg1 inRange:(struct _NSRange)arg2 fixModelAttributes:(BOOL)arg3;
 - (id)subheadingAttributes;
 - (id)subheadingAttributesWithContentSizeCategory:(id)arg1;

@@ -24,14 +24,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL lastSuggestionWasColliding;
 @property (readonly) Class superclass;
 
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
 - (void).cxx_destruct;
 - (void)_setDoFlagsWithOptions:(id)arg1;
-- (id)livePhotosBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
-- (id)nextSuggestion;
+- (id)livePhotosBetweenStartDate:(id)arg1 andEndDate:(id)arg2 progress:(CDUnknownBlockType)arg3;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (id)reasonsForSuggestion:(id)arg1;
 - (id)recipeForVariationWithLivePhoto:(id)arg1 inResults:(id)arg2 suggestionSubtype:(unsigned short *)arg3;
 - (void)reset;

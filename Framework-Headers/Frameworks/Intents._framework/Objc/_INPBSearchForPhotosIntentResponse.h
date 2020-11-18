@@ -15,13 +15,11 @@
 @interface _INPBSearchForPhotosIntentResponse : PBCodable <_INPBSearchForPhotosIntentResponse, NSSecureCoding, NSCopying>
 {
     CDStruct_a60b8694 _has;
-    BOOL __encodeLegacyGloryData;
     int _searchResultsCount;
     NSString *_albumName;
     _INPBLocation *_locationCreated;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

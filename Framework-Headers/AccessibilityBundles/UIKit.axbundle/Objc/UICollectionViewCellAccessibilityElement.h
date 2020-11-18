@@ -29,6 +29,7 @@
 - (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityHasTextOperations;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)_accessibilityImplementsDefaultRowRange;
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (BOOL)_accessibilityIsOutsideParentBounds;
 - (BOOL)_accessibilityIsScannerGroup;
@@ -53,6 +54,7 @@
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
 - (BOOL)_accessibilityUserTestingIsDestructiveButton;
 - (BOOL)_accessibilityUserTestingIsPreferredButton;
+- (id)_accessibilityUserTestingProxyView;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)accessibilityActivate;

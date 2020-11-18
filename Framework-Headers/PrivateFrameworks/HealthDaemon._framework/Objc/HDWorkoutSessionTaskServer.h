@@ -32,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL requiresCoreLocationAssertion;
+@property (readonly, nonatomic) BOOL shouldStopPreviousSession;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAppRelaunchForRecovery;
 @property (readonly, nonatomic) id<HDWorkoutDataAccumulator> workoutDataAccumulator;
@@ -59,7 +60,9 @@
 - (void)remote_setTargetState:(long long)arg1 date:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setAssociatedWorkoutBuilderEntity:(id)arg1;
 - (void)setWorkoutDataAccumulator:(id)arg1;
+- (void)updateWorkoutConfiguration:(id)arg1 dataSource:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)workoutDataDestination:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;

@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXPlacesMapControllerSelectionDelegate-Protocol.h>
 #import <PhotosUICore/PXPlacesMapFetchResultControllerAccess-Protocol.h>
 
-@class NSString, PHAsset, PXPlacesMapFetchResultController, UIBarButtonItem;
+@class NSString, PHAsset, PXPhotoKitAssetsDataSourceManager, PXPlacesMapFetchResultController, UIBarButtonItem;
 @protocol PXPlacesAssetsSelectionDelegate, PXPlacesGeotaggable, PXPlacesMapBarButtonsDelegate, PXPlacesMapGeotaggableInfoDelegate;
 
 @interface PXPlacesMapFetchResultViewController : UIViewController <PXPlacesMapControllerChangeDelegate, PXPlacesMapControllerSelectionDelegate, PXOneUpPresentationDelegate, PXPlacesMapFetchResultControllerAccess>
@@ -26,6 +26,7 @@
     PHAsset<PXPlacesGeotaggable> *_selectedGeotaggable;
     id<PXPlacesMapGeotaggableInfoDelegate> _geotaggableInfoDelegate;
     UIBarButtonItem *_filterAssetsBtn;
+    PXPhotoKitAssetsDataSourceManager *_oneUpDataSourceManager;
 }
 
 @property (weak, nonatomic) id<PXPlacesAssetsSelectionDelegate> assetSelectionDelegate; // @synthesize assetSelectionDelegate=_assetSelectionDelegate;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) id<PXPlacesMapGeotaggableInfoDelegate> geotaggableInfoDelegate; // @synthesize geotaggableInfoDelegate=_geotaggableInfoDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXPlacesMapFetchResultController *mapFetchResultsController; // @synthesize mapFetchResultsController=_mapFetchResultsController;
+@property (strong, nonatomic) PXPhotoKitAssetsDataSourceManager *oneUpDataSourceManager; // @synthesize oneUpDataSourceManager=_oneUpDataSourceManager;
 @property (weak, nonatomic) UIViewController *pxOneUpPresentationViewController; // @synthesize pxOneUpPresentationViewController=_pxOneUpPresentationViewController;
 @property (strong) PHAsset<PXPlacesGeotaggable> *selectedGeotaggable; // @synthesize selectedGeotaggable=_selectedGeotaggable;
 @property (nonatomic) BOOL showNavigationBar; // @synthesize showNavigationBar=_showNavigationBar;
@@ -61,6 +63,7 @@
 - (void)locationServiceAuthorizationChanged;
 - (void)mapRegionDidChange:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
+- (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)ppt_performPlacesScrollTest:(id)arg1 iterations:(long long)arg2 screenDelta:(long long)arg3 delay:(double)arg4 completion:(CDUnknownBlockType)arg5;

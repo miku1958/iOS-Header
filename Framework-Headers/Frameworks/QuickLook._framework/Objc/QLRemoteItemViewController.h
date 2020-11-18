@@ -10,14 +10,14 @@
 #import <QuickLook/QLPrintingProtocol-Protocol.h>
 #import <QuickLook/QLRemotePopoverTracker-Protocol.h>
 
-@class NSDictionary, NSExtension, NSLayoutConstraint, NSString, QLCustomItemViewControllerHostProxy, QLRemotePreviewHostContext, QLRemotePreviewHostViewController;
+@class NSDictionary, NSExtension, NSLayoutConstraint, NSString, QLCustomItemViewControllerHostProxy, QLPreviewExtensionHostContext, QLRemotePreviewHostViewController;
 @protocol QLPrintingProtocol, QLRemotePopoverTracker;
 
 __attribute__((visibility("hidden")))
 @interface QLRemoteItemViewController : QLItemViewController <QLPrintingProtocol, QLCustomItemViewControllerHost, QLRemotePopoverTracker>
 {
     NSExtension *_extension;
-    QLRemotePreviewHostContext *_hostContext;
+    QLPreviewExtensionHostContext *_hostContext;
     NSDictionary *_hostConfiguration;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;

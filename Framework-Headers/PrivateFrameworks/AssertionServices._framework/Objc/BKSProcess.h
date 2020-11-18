@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssertionServices/BSDescriptionProviding-Protocol.h>
-
-@class BKSLaunchdJobSpecification, BKSProcessAssertion, BKSProcessExitContext, BSProcessHandle, NSString, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessMonitor;
+@class BKSLaunchdJobSpecification, BKSProcessAssertion, BKSProcessExitContext, BSProcessHandle, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessMonitor;
 @protocol BKSProcessDelegate;
 
-@interface BKSProcess : NSObject <BSDescriptionProviding>
+@interface BKSProcess : NSObject
 {
     struct os_unfair_lock_s _lock;
     BOOL _bootstrapped;
@@ -38,15 +36,11 @@
 
 @property (readonly, nonatomic) double backgroundTimeRemaining;
 @property (nonatomic) BOOL connectedToExternalAccessories; // @synthesize connectedToExternalAccessories=_connectedToExternalAccessories;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BKSProcessDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BSProcessHandle *handle; // @synthesize handle=_handle;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BKSProcessExitContext *lastExitContext;
 @property (nonatomic) BOOL nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property (nonatomic) BOOL recordingAudio; // @synthesize recordingAudio=_recordingAudio;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long taskState; // @synthesize taskState=_taskState;
 @property (nonatomic) long long terminationReason; // @synthesize terminationReason=_terminationReason;
 @property (nonatomic) long long visibility; // @synthesize visibility=_visibility;
@@ -62,15 +56,12 @@
 - (void)bootstrapCurrentProcess;
 - (BOOL)bootstrapWithProcessHandle:(id)arg1 error:(out id *)arg2;
 - (BOOL)bootstrapWithSpecification:(id)arg1 error:(out id *)arg2;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)description;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithPID:(int)arg1 bundlePath:(id)arg2 visibility:(long long)arg3 workspaceLocked:(BOOL)arg4 queue:(id)arg5;
 - (id)initWithProcessIdentity:(id)arg1;
 - (void)invalidate;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

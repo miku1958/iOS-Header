@@ -6,16 +6,22 @@
 
 #import <HomeKit/HMCharacteristic.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
-@interface HMCharacteristic (HFDebugging) <HFStateDumpBuildable>
+@interface HMCharacteristic (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)_hf_alarmCharacteristicTypeToAbnormalValueMap;
 + (id)hf_abnormalValueForAlarmCharacteristicType:(id)arg1;

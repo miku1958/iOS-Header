@@ -40,7 +40,7 @@
 - (id)init;
 - (id)initWithStore:(id)arg1 context:(id)arg2;
 - (id)persistentStoreCoordinator;
-- (void)processObejctsInChangeDictionary:(id)arg1;
+- (void)processObjectsInChangeDictionary:(id)arg1;
 - (void)requestUpdate;
 - (void)startListeningForRemoteContextDidChangeNotifications;
 - (void)stopListeningForRemoteContextDidChangeNotifications;

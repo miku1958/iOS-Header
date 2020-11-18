@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, PBDataReader, PBUnknownFields;
+@class GEOLatLng, GEOMapRegion, GEOPDPoiIconCategoryFilter, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSpatialPlaceLookupParameters : PBCodable <NSCopying>
@@ -16,7 +16,11 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _categoryFilters;
+    CDStruct_9f2792e4 _excludeIconCategoryFilters;
+    CDStruct_9f2792e4 _includeIconCategoryFilters;
     GEOLatLng *_center;
+    GEOMapRegion *_mapRegion;
+    GEOPDPoiIconCategoryFilter *_poiIconCategoryFilter;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -27,12 +31,12 @@ __attribute__((visibility("hidden")))
         unsigned int has_radius:1;
         unsigned int read_unknownFields:1;
         unsigned int read_categoryFilters:1;
+        unsigned int read_excludeIconCategoryFilters:1;
+        unsigned int read_includeIconCategoryFilters:1;
         unsigned int read_center:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_categoryFilters:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_count:1;
-        unsigned int wrote_radius:1;
+        unsigned int read_mapRegion:1;
+        unsigned int read_poiIconCategoryFilter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,36 +44,52 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long categoryFiltersCount;
 @property (strong, nonatomic) GEOLatLng *center;
 @property (nonatomic) int count;
+@property (readonly, nonatomic) unsigned int *excludeIconCategoryFilters;
+@property (readonly, nonatomic) unsigned long long excludeIconCategoryFiltersCount;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasCount;
+@property (readonly, nonatomic) BOOL hasMapRegion;
+@property (readonly, nonatomic) BOOL hasPoiIconCategoryFilter;
 @property (nonatomic) BOOL hasRadius;
+@property (readonly, nonatomic) unsigned int *includeIconCategoryFilters;
+@property (readonly, nonatomic) unsigned long long includeIconCategoryFiltersCount;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (strong, nonatomic) GEOPDPoiIconCategoryFilter *poiIconCategoryFilter;
 @property (nonatomic) int radius;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategoryFilters:(id)arg1;
-- (void)_addNoFlagsCategoryFilter:(int)arg1;
-- (void)_readCategoryFilters;
-- (void)_readCenter;
 - (void)addCategoryFilter:(int)arg1;
+- (void)addExcludeIconCategoryFilter:(unsigned int)arg1;
+- (void)addIncludeIconCategoryFilter:(unsigned int)arg1;
 - (int)categoryFilterAtIndex:(unsigned long long)arg1;
 - (id)categoryFiltersAsString:(int)arg1;
 - (void)clearCategoryFilters;
+- (void)clearExcludeIconCategoryFilters;
+- (void)clearIncludeIconCategoryFilters;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (unsigned int)excludeIconCategoryFilterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hash;
+- (unsigned int)includeIconCategoryFilterAtIndex:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCategoryFilters:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setExcludeIconCategoryFilters:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (void)setIncludeIconCategoryFilters:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

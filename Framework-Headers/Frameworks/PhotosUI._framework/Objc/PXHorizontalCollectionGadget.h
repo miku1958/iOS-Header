@@ -15,6 +15,7 @@
 @interface PXHorizontalCollectionGadget : PXGadgetUIViewController <PXMutableHorizontalCollectionGadget, PXGadget>
 {
     BOOL _isFixedHeight;
+    BOOL _prefersPagingEnabled;
     BOOL _visibleGadgetsLoaded;
     BOOL _isPerformingChanges;
     BOOL _isResourceLoaded;
@@ -55,7 +56,6 @@
 @property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long headerStyle; // @synthesize headerStyle=_headerStyle;
 @property (weak, nonatomic) id<PXHorizontalCollectionGadgetDelegate> horizontalGadgetDelegate; // @synthesize horizontalGadgetDelegate=_horizontalGadgetDelegate;
@@ -63,6 +63,7 @@
 @property (nonatomic) BOOL isPerformingChanges; // @synthesize isPerformingChanges=_isPerformingChanges;
 @property (nonatomic) BOOL isResourceLoaded; // @synthesize isResourceLoaded=_isResourceLoaded;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) BOOL prefersPagingEnabled; // @synthesize prefersPagingEnabled=_prefersPagingEnabled;
 @property (strong, nonatomic) PXGadgetOrbContext *previewOrbContext; // @synthesize previewOrbContext=_previewOrbContext;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
@@ -77,6 +78,7 @@
 - (void)_updateColumnSettings;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
+- (struct CGPoint)collectionView:(id)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (void)commitPreviewViewController:(id)arg1;
 - (id)contentViewController;
 - (void)contentViewDidDisappear;
@@ -89,9 +91,9 @@
 - (void)gadgetControllerHasDisappeared;
 - (id)gadgetTransition;
 - (id)initWithDataSourceManager:(id)arg1;
+- (id)initWithLayout:(id)arg1 dataSourceManager:(id)arg2;
 - (id)initWithProviders:(id)arg1;
 - (BOOL)isRootGadgetViewController;
-- (BOOL)navigateToGadget:(id)arg1 animated:(BOOL)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;

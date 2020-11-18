@@ -36,10 +36,12 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)endPlacementForInputViewSet:(id)arg1;
+- (id)endPlacementForInputViewSet:(id)arg1 windowScene:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)launchAnimation:(CDUnknownBlockType)arg1 afterStarted:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 forHost:(id)arg4 fromCurrentPosition:(BOOL)arg5;
 - (id)legacyAnimationCopy;
 - (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2;
+- (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2 windowScene:(id)arg3;
 
 @end
 

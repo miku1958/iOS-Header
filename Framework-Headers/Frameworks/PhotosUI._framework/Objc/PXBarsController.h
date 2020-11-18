@@ -19,11 +19,15 @@
     id<PXActionPerformerDelegate> _actionPerformerDelegate;
     PXBarSpec *_barSpec;
     NSMutableDictionary *_barButtonItemCache;
+    NSMutableDictionary *_barButtonItemCachedPlacement;
 }
 
 @property (weak, nonatomic) id<PXActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
 @property (readonly, nonatomic) NSMutableDictionary *barButtonItemCache; // @synthesize barButtonItemCache=_barButtonItemCache;
+@property (readonly, nonatomic) NSMutableDictionary *barButtonItemCachedPlacement; // @synthesize barButtonItemCachedPlacement=_barButtonItemCachedPlacement;
 @property (strong, nonatomic) PXBarSpec *barSpec; // @synthesize barSpec=_barSpec;
+@property (readonly, nonatomic) double fixedSpaceForEndButtonSpacing;
+@property (readonly, nonatomic) double fixedSpaceForInterButtonSpacing;
 @property (readonly, nonatomic) NSArray *leftBarButtonItemIdentifiers;
 @property (readonly, nonatomic) NSArray *rightBarButtonItemIdentifiers;
 @property (readonly, nonatomic) NSArray *toolbarItemIdentifiers;
@@ -31,13 +35,15 @@
 @property (nonatomic) BOOL wantsAnimatedBarsUpdate; // @synthesize wantsAnimatedBarsUpdate=_wantsAnimatedBarsUpdate;
 
 - (void).cxx_destruct;
-- (id)_getCachedOrCreateNewBarButtonItemForIdentifier:(id)arg1;
+- (id)_getCachedOrCreateNewBarButtonItemForIdentifier:(id)arg1 placement:(unsigned long long)arg2;
 - (BOOL)_needsUpdate;
 - (void)_updateBarsIfNeeded;
-- (id)barButtonItemForIdentifier:(id)arg1;
+- (id)cachedBarButtonItemForIdentifier:(id)arg1;
+- (id)createBarButtonItemForIdentifier:(id)arg1 placement:(unsigned long long)arg2;
 - (id)init;
 - (void)invalidateBarButtonItemWithIdentifier:(id)arg1;
 - (void)invalidateBars;
+- (void)purgeCachedBarButtonItemsForIdentifiers:(id)arg1;
 - (void)updateBars;
 - (void)updateIfNeeded;
 

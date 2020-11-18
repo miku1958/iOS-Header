@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSString *tag; // @synthesize tag=_tag;
 
 + (id)dateToLastModified:(id)arg1;
-+ (BOOL)write:(id)arg1 tag:(id)arg2 date:(id)arg3 disabled:(BOOL)arg4 toURL:(id)arg5 keyId:(unsigned long long)arg6 multipart:(BOOL)arg7;
++ (BOOL)write:(id)arg1 tag:(id)arg2 date:(id)arg3 disabled:(BOOL)arg4 toURL:(id)arg5 keyId:(unsigned long long)arg6 privateKey:(id)arg7;
 - (void).cxx_destruct;
 - (id)getPublicationId;
 - (id)init;

@@ -16,6 +16,7 @@
 @property (strong, nonatomic) HMPresenceEvent *presenceEvent; // @synthesize presenceEvent=_presenceEvent;
 
 - (void).cxx_destruct;
+- (id)hf_naturalLanguageSummaryWithOptions:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
 - (id)initWithPresenceEvent:(id)arg1;
 

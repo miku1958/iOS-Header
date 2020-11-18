@@ -18,8 +18,14 @@
     NSDate *_lastPushDate;
     NSDate *_restoreCompletionDate;
     NSError *_errorRequiringUserAction;
+    long long _dataUploadRequestStatus;
+    NSDate *_dataUploadRequestStartDate;
+    NSDate *_dataUploadRequestCompletionDate;
 }
 
+@property (copy, nonatomic) NSDate *dataUploadRequestCompletionDate; // @synthesize dataUploadRequestCompletionDate=_dataUploadRequestCompletionDate;
+@property (copy, nonatomic) NSDate *dataUploadRequestStartDate; // @synthesize dataUploadRequestStartDate=_dataUploadRequestStartDate;
+@property (nonatomic) long long dataUploadRequestStatus; // @synthesize dataUploadRequestStatus=_dataUploadRequestStatus;
 @property (copy, nonatomic) NSError *errorRequiringUserAction; // @synthesize errorRequiringUserAction=_errorRequiringUserAction;
 @property (copy, nonatomic) NSDate *lastPullDate; // @synthesize lastPullDate=_lastPullDate;
 @property (copy, nonatomic) NSDate *lastPushDate; // @synthesize lastPushDate=_lastPushDate;
@@ -31,7 +37,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSyncEnabled:(BOOL)arg1 lastPullDate:(id)arg2 lastPushDate:(id)arg3 restoreCompletionDate:(id)arg4 errorRequiringUserAction:(id)arg5 dataUploadRequestStatus:(long long)arg6 dataUploadRequestStartDate:(id)arg7 dataUploadRequestCompletionDate:(id)arg8;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

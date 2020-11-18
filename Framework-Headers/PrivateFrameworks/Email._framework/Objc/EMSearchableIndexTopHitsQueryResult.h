@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CSTopHitSearchQuery, EFMutableInt64Set, NSArray;
+@class CSTopHitSearchQuery, NSArray;
 
 @interface EMSearchableIndexTopHitsQueryResult : NSObject
 {
     CSTopHitSearchQuery *_topHitSearchQuery;
     NSArray *_foundItems;
-    EFMutableInt64Set *_libraryIdentifiers;
+    NSArray *_searchableItemIdentifiers;
 }
 
 @property (copy, nonatomic) NSArray *foundItems; // @synthesize foundItems=_foundItems;
-@property (strong, nonatomic) EFMutableInt64Set *libraryIdentifiers; // @synthesize libraryIdentifiers=_libraryIdentifiers;
+@property (strong, nonatomic) NSArray *searchableItemIdentifiers; // @synthesize searchableItemIdentifiers=_searchableItemIdentifiers;
 @property (strong, nonatomic) CSTopHitSearchQuery *topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
 
 - (void).cxx_destruct;

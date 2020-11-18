@@ -21,7 +21,6 @@
 
 + (id)_allItemsForService:(id)arg1 serviceType:(id)arg2;
 + (id)_itemForService:(id)arg1 associatedServiceType:(id)arg2;
-+ (id)localizedAssociatedServiceTypeStringForServiceType:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithItems:(id)arg1;

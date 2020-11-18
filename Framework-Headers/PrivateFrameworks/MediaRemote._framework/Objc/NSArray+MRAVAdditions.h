@@ -7,9 +7,17 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (MRAVAdditions)
+- (id)changeDescriptionTo:(id)arg1 keyBlock:(CDUnknownBlockType)arg2 isUpdatedBlock:(CDUnknownBlockType)arg3 descriptionBlock:(CDUnknownBlockType)arg4;
+- (BOOL)mr_all:(CDUnknownBlockType)arg1;
+- (BOOL)mr_any:(CDUnknownBlockType)arg1;
+- (id)mr_compactMap:(CDUnknownBlockType)arg1;
 - (BOOL)mr_containsAnyOf:(id)arg1;
 - (id)mr_filter:(CDUnknownBlockType)arg1;
 - (id)mr_first:(CDUnknownBlockType)arg1;
+- (id)mr_flatMap:(CDUnknownBlockType)arg1;
+- (int)mr_ifDisabledWhyDisabled:(unsigned int)arg1;
+- (BOOL)mr_isCommandSupported:(unsigned int)arg1;
+- (BOOL)mr_isCommandSupportedAndEnabled:(unsigned int)arg1;
 - (BOOL)mr_isEqualToOutputDevicesArray:(id)arg1;
 - (id)mr_map:(CDUnknownBlockType)arg1;
 @end

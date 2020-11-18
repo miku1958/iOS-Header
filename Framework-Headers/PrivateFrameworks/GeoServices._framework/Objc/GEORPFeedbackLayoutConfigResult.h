@@ -8,23 +8,20 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray;
 
 @interface GEORPFeedbackLayoutConfigResult : PBCodable <NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     NSMutableArray *_forms;
 }
 
 @property (strong, nonatomic) NSMutableArray *forms;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)formType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addForm:(id)arg1;
 - (void)clearForms;
-- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,7 +29,10 @@
 - (id)formAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formsCount;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

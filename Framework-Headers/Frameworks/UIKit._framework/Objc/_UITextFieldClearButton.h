@@ -6,15 +6,21 @@
 
 #import <UIKitCore/UIButton.h>
 
+@protocol _UITextFieldClearButtonImageProviding;
+
 __attribute__((visibility("hidden")))
 @interface _UITextFieldClearButton : UIButton
 {
     BOOL _hasCustomImage;
+    id<_UITextFieldClearButtonImageProviding> _imageProvider;
 }
 
 @property (nonatomic) BOOL hasCustomImage; // @synthesize hasCustomImage=_hasCustomImage;
+@property (weak, nonatomic) id<_UITextFieldClearButtonImageProviding> imageProvider; // @synthesize imageProvider=_imageProvider;
 
 + (BOOL)_cursorInteractionEnabled;
+- (void).cxx_destruct;
+- (id)_defaultImageForState:(unsigned long long)arg1 withConfiguration:(id)arg2;
 - (BOOL)_isModernButton;
 - (BOOL)_shouldDefaultToTemplatesForImageViewBackground:(BOOL)arg1;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;

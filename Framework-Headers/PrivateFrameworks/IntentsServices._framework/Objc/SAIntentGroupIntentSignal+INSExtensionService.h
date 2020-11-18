@@ -11,6 +11,8 @@
 - (long long)ins_analyticsEndEventType;
 - (id)ins_jsonEncodedIntent;
 - (id)ins_protobufEncodedIntent;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 - (BOOL)ins_shouldUseExtendedFlowTimeout;
 @end
 

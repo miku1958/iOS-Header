@@ -8,13 +8,13 @@
 
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class NSString, UILabel, UIVisualEffectView;
+@class NSString, UILabel, UIView, UIVisualEffectView;
 @protocol HACCContentModuleDelegate;
 
 @interface HACCProgramsButton : UIControl <HACCContentModule>
 {
     UIVisualEffectView *_titleContainer;
-    UIVisualEffectView *_subtitleContainer;
+    UIView *_subtitleContainer;
     unsigned long long module;
     id<HACCContentModuleDelegate> delegate;
     UILabel *_titleLabel;
@@ -41,7 +41,6 @@
 - (BOOL)enabled;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
-- (void)updateConstraints;
 - (void)updateValue;
 
 @end

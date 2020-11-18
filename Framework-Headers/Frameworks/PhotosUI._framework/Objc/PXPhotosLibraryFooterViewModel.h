@@ -7,24 +7,23 @@
 #import <PhotosUICore/PXFooterViewModel.h>
 
 #import <PhotosUICore/PXAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/PXCPLServiceUIDelegate-Protocol.h>
 #import <PhotosUICore/PXCloudQuotaControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PXCPLServiceUI, PXCloudQuotaController, PXPhotoKitAssetsDataSourceManager;
+@class NSArray, NSString, PXCPLUIStatusProvider, PXCloudQuotaController, PXPhotoKitAssetsDataSourceManager;
 @protocol PXPhotosLibraryFooterViewModelPresentationDelegate;
 
-@interface PXPhotosLibraryFooterViewModel : PXFooterViewModel <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PXAssetsDataSourceManagerObserver>
+@interface PXPhotosLibraryFooterViewModel : PXFooterViewModel <PXCloudQuotaControllerDelegate, PXAssetsDataSourceManagerObserver>
 {
     NSArray *_syncProgressAlbums;
     id<PXPhotosLibraryFooterViewModelPresentationDelegate> _presentingDelegate;
     PXPhotoKitAssetsDataSourceManager *_assetsDataSourceManager;
-    PXCPLServiceUI *_cplServiceUI;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
     PXCloudQuotaController *_cloudQuotaController;
 }
 
 @property (readonly, nonatomic) PXPhotoKitAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
 @property (strong, nonatomic) PXCloudQuotaController *cloudQuotaController; // @synthesize cloudQuotaController=_cloudQuotaController;
-@property (strong, nonatomic) PXCPLServiceUI *cplServiceUI; // @synthesize cplServiceUI=_cplServiceUI;
+@property (strong, nonatomic) PXCPLUIStatusProvider *cplUIStatusProvider; // @synthesize cplUIStatusProvider=_cplUIStatusProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,14 +33,11 @@
 
 - (void).cxx_destruct;
 - (void)_updateExposedProperties;
-- (void)cloudQuotaController:(id)arg1 presentInformationBanner:(id)arg2;
+- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (BOOL)serviceUI:(id)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(id)arg1 progressDidChange:(float)arg2;
-- (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;
 
 @end
 

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIMutableApplicationSceneSettings.h>
+#import <UIKit/UIMutableCarPlayApplicationSceneSettings.h>
 
 #import <CarPlayUIServices/CRSUIApplicationSceneSettings-Protocol.h>
+#import <CarPlayUIServices/CRSUIMutableMapStyleProviding-Protocol.h>
 
 @class NSString;
 
-@interface CRSUIMutableApplicationSceneSettings : UIMutableApplicationSceneSettings <CRSUIApplicationSceneSettings>
+@interface CRSUIMutableApplicationSceneSettings : UIMutableCarPlayApplicationSceneSettings <CRSUIApplicationSceneSettings, CRSUIMutableMapStyleProviding>
 {
 }
 
@@ -18,9 +19,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long mapStyle;
 @property (readonly) Class superclass;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setMapStyle:(long long)arg1;
 
 @end
 

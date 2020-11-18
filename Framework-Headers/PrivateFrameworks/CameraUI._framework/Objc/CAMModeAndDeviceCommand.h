@@ -47,6 +47,7 @@
 - (id)initWithGraphConfiguration:(id)arg1 minimumExecutionTime:(double)arg2 requestID:(int)arg3;
 - (BOOL)requiresSessionModification;
 - (id)sessionModificationLogReason;
+- (double)sessionModificationMinimumExecutionTime;
 - (id)userInfo;
 
 @end

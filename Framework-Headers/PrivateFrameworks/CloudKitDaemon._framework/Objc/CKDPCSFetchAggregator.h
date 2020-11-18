@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface CKDPCSFetchAggregator : NSObject
 {
+    BOOL _skipQueuedFetchCycleDetection;
     CKDClientContext *_context;
     NSObject<OS_dispatch_queue> *_opQueue;
     NSOperationQueue *_queue;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableArray *queuedFetches; // @synthesize queuedFetches=_queuedFetches;
 @property (strong, nonatomic) NSMutableArray *runningFetches; // @synthesize runningFetches=_runningFetches;
+@property (nonatomic) BOOL skipQueuedFetchCycleDetection; // @synthesize skipQueuedFetchCycleDetection=_skipQueuedFetchCycleDetection;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
 
 - (void).cxx_destruct;

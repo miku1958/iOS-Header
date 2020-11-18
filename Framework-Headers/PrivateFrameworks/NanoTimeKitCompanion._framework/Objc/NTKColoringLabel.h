@@ -34,6 +34,7 @@
     BOOL _usesTextProviderSize;
     UIColor *_overrideColor;
     CLKTextProvider *_textProvider;
+    CLKFont *_monospacedDigitsFont;
     CLKFont *_textProviderFont;
     CLKFont *_textProviderSmallCapsBaseFont;
     double _maxWidth;
@@ -63,6 +64,7 @@
 @property (nonatomic) BOOL inTimeTravel; // @synthesize inTimeTravel=_inTimeTravel;
 @property (readonly, nonatomic) BOOL isTextTruncated; // @synthesize isTextTruncated=_isTextTruncated;
 @property (nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
+@property (strong, nonatomic) CLKFont *monospacedDigitsFont; // @synthesize monospacedDigitsFont=_monospacedDigitsFont;
 @property (copy, nonatomic) CDUnknownBlockType needsResizeHandler; // @synthesize needsResizeHandler=_needsResizeHandler;
 @property (copy, nonatomic) CDUnknownBlockType nowProvider; // @synthesize nowProvider=_nowProvider;
 @property (readonly, nonatomic) struct UIEdgeInsets opticalInsets;
@@ -110,6 +112,7 @@
 - (void)setShadowOffset:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)transitionToMonochromeWithFraction:(double)arg1 style:(long long)arg2;
 - (void)updateMonochromeColorWithStyle:(long long)arg1;
 - (BOOL)usesLegibility:(BOOL)arg1;

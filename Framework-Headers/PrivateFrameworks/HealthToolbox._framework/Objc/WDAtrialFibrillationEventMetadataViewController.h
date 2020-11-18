@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface WDAtrialFibrillationEventMetadataViewController : HKTableViewController <HKHeartbeatSequenceListMetadataSectionDelegate>
 {
+    BOOL _firstViewDidLayoutSubviews;
     HKCategorySample *_event;
     NSMutableArray *_sections;
     id<HKDataMetadataViewControllerDelegate> _delegate;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) id<HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HKCategorySample *event; // @synthesize event=_event;
+@property (nonatomic) BOOL firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 
 - (void).cxx_destruct;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

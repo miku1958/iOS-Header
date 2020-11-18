@@ -7,6 +7,7 @@
 #import <Foundation/NSURLComponents.h>
 
 @interface NSURLComponents (TelephonyUtilities)
+- (BOOL)containsPercentEncodedQueryItemWithName:(id)arg1;
 - (BOOL)containsQueryItemWithName:(id)arg1;
 - (id)firstQueryItemWithName:(id)arg1;
 @end

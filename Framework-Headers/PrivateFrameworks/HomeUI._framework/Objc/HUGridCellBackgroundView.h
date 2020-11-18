@@ -6,36 +6,48 @@
 
 #import <UIKit/UIView.h>
 
-@class HFWallpaperSlice, HUGridCellBackgroundDisplayOptions, UIVisualEffectView;
+@class HFWallpaperSlice, HUGridCellBackgroundDisplayOptions, UIBlurEffect, UIColor, UIVisualEffectView;
+@protocol HUBackgroundEffectViewGrouping;
 
 @interface HUGridCellBackgroundView : UIView
 {
     BOOL _pressed;
     unsigned long long _backgroundState;
     HUGridCellBackgroundDisplayOptions *_displayOptions;
+    UIColor *_backgroundTintColor;
+    UIBlurEffect *_overrideBackgroundEffect;
     HFWallpaperSlice *_blurredWallpaperSlice;
     HFWallpaperSlice *_darkModeBlurredWallpaperSlice;
+    id<HUBackgroundEffectViewGrouping> _backgroundEffectViewGrouper;
     double _cornerRadius;
     UIVisualEffectView *_effectView;
-    UIView *_ccMaterialView;
+    UIView *_ccOnMaterialView;
+    UIView *_ccOffMaterialView;
+    UIView *_ccHighlightMaterialView;
     struct CGRect _normalizedWallpaperRect;
 }
 
+@property (weak, nonatomic) id<HUBackgroundEffectViewGrouping> backgroundEffectViewGrouper; // @synthesize backgroundEffectViewGrouper=_backgroundEffectViewGrouper;
 @property (nonatomic) unsigned long long backgroundState; // @synthesize backgroundState=_backgroundState;
+@property (strong, nonatomic) UIColor *backgroundTintColor; // @synthesize backgroundTintColor=_backgroundTintColor;
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
-@property (strong, nonatomic) UIView *ccMaterialView; // @synthesize ccMaterialView=_ccMaterialView;
+@property (strong, nonatomic) UIView *ccHighlightMaterialView; // @synthesize ccHighlightMaterialView=_ccHighlightMaterialView;
+@property (strong, nonatomic) UIView *ccOffMaterialView; // @synthesize ccOffMaterialView=_ccOffMaterialView;
+@property (strong, nonatomic) UIView *ccOnMaterialView; // @synthesize ccOnMaterialView=_ccOnMaterialView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (strong, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice; // @synthesize darkModeBlurredWallpaperSlice=_darkModeBlurredWallpaperSlice;
 @property (strong, nonatomic) HUGridCellBackgroundDisplayOptions *displayOptions; // @synthesize displayOptions=_displayOptions;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (nonatomic) struct CGRect normalizedWallpaperRect; // @synthesize normalizedWallpaperRect=_normalizedWallpaperRect;
+@property (strong, nonatomic) UIBlurEffect *overrideBackgroundEffect; // @synthesize overrideBackgroundEffect=_overrideBackgroundEffect;
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;
 
 + (id)_sharedBlurEffect;
 - (void).cxx_destruct;
-- (void)_createCCMaterialViewIfNecessary;
 - (void)_createEffectViewIfNecessary;
-- (BOOL)_isUsingControlCenterDisplayStyle;
+- (void)_createHighlightCCMateriaViewIfNecessary;
+- (void)_createOffCCMaterialViewIfNecessary;
+- (void)_createOnCCMaterialViewIfNecessary;
 - (id)_normalBackgroundColor;
 - (BOOL)_shouldUseCCMaterialView;
 - (BOOL)_shouldUsePrecomputedWallpaperContents;
@@ -43,8 +55,10 @@
 - (void)_updateBackgroundColor;
 - (void)_updateCornerRadius;
 - (void)_updateDisplay;
+- (void)_updateHighlightView;
 - (void)_updateWallpaperContentsRect;
 - (void)_updateWallpaperContentsScale;
+- (void)dealloc;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SettingsCellularUI/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <SettingsCellularUI/CoreTelephonyClientRegistrationDelegate-Protocol.h>
 
 @class CoreTelephonyClient, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface PSUICoreTelephonyRegistrationCache : NSObject <CoreTelephonyClientRegistrationDelegate>
+@interface PSUICoreTelephonyRegistrationCache : NSObject <CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientDataDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     CoreTelephonyClient *_client;
@@ -39,21 +40,23 @@
 - (void).cxx_destruct;
 - (BOOL)IMSStatusSMS:(id)arg1;
 - (BOOL)IMSStatusVoice:(id)arg1;
+- (void)clearCache;
 - (void)fetchIMSStatus;
 - (void)fetchLocalizedOperatorName;
 - (void)fetchMaxDataRate;
 - (void)fetchRejectCauseCode;
 - (void)fetchSupportedDataRates;
+- (void)handleDataUsageChanged;
 - (void)imsRegistrationChanged:(id)arg1 info:(id)arg2;
 - (id)init;
 - (id)initPrivate;
 - (id)localizedOperatorName:(id)arg1;
 - (long long)maxDataRate:(id)arg1;
 - (void)operatorNameChanged:(id)arg1 name:(id)arg2;
+- (void)preferredDataSimChanged:(id)arg1;
 - (id)rejectCauseCode:(id)arg1;
 - (void)setMaxDataRate:(id)arg1 dataRate:(long long)arg2;
 - (id)supportedDataRates:(id)arg1;
-- (void)willEnterForeground;
 
 @end
 

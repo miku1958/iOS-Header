@@ -6,20 +6,20 @@
 
 #import <PhotosGraph/PGPotentialMemory.h>
 
-@class NSArray, NSMutableSet, PGGraphNode;
+@class NSArray, NSMutableSet, PGGraphPersonNode;
 
 @interface PGPotentialHobbyMemory : PGPotentialMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    NSArray *_hobbyAssets;
-    PGGraphNode *_person;
+    NSArray *_hobbyAssetLocalIdentifiers;
+    PGGraphPersonNode *_personNode;
     long long _year;
     long long _hobbyType;
 }
 
-@property (strong) NSArray *hobbyAssets; // @synthesize hobbyAssets=_hobbyAssets;
+@property (strong) NSArray *hobbyAssetLocalIdentifiers; // @synthesize hobbyAssetLocalIdentifiers=_hobbyAssetLocalIdentifiers;
 @property (readonly) long long hobbyType; // @synthesize hobbyType=_hobbyType;
-@property (readonly) PGGraphNode *person; // @synthesize person=_person;
+@property (readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 @property (readonly) long long year; // @synthesize year=_year;
 
 - (void).cxx_destruct;

@@ -23,7 +23,6 @@
         unsigned int valueType:1;
     } _has;
     BOOL _booleanValue;
-    BOOL __encodeLegacyGloryData;
     int _limitValue;
     int _unit;
     int _valueType;
@@ -33,7 +32,6 @@
     NSString *_stringValue;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL booleanValue; // @synthesize booleanValue=_booleanValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

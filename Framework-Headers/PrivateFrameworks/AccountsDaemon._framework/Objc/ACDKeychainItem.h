@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
 @property (copy, nonatomic) NSString *service;
 @property (nonatomic) BOOL synchronizable;
+@property (readonly, nonatomic) BOOL useDataProtectionKeychain;
 @property (nonatomic) long long version;
 
 + (id)new;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithPersistentRef:(const struct __CFData *)arg1;
 - (id)initWithPersistentRef:(const struct __CFData *)arg1 properties:(id)arg2;
+- (void)migrateToKeyBagFromLegacy;
 - (void)reload;
 - (BOOL)save:(id *)arg1;
 

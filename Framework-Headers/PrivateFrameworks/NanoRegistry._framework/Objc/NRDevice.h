@@ -24,22 +24,11 @@
     NSMutableArray *_promiscuousChangeBlocks;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *changeBlocks; // @synthesize changeBlocks=_changeBlocks;
-@property (strong, nonatomic) NSMutableDictionary *observers; // @synthesize observers=_observers;
-@property (strong, nonatomic) NSMutableDictionary *oldPropertiesForChangeNotifications; // @synthesize oldPropertiesForChangeNotifications=_oldPropertiesForChangeNotifications;
-@property (strong, nonatomic) NSUUID *pairingID; // @synthesize pairingID=_pairingID;
-@property (strong, nonatomic) NSMutableArray *promiscuousChangeBlocks; // @synthesize promiscuousChangeBlocks=_promiscuousChangeBlocks;
-@property (strong, nonatomic) NSPointerArray *promiscuousObservers; // @synthesize promiscuousObservers=_promiscuousObservers;
-@property (strong, nonatomic) NSMutableDictionary *properties; // @synthesize properties=_properties;
-@property (strong, nonatomic) NRRegistry *registry; // @synthesize registry=_registry;
+@property (readonly, nonatomic) NSUUID *pairingID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_fireChangeNotificationsForDiff:(id)arg1 secureProperties:(id)arg2 notify:(BOOL)arg3;
-- (void)_notifySecurePropertiesWithCollection:(id)arg1 secureProperties:(id)arg2;
-- (void)_queueFirePropertyObserversForProperty:(id)arg1 fromValue:(id)arg2;
 - (void)_setValue:(id)arg1 forProperty:(id)arg2;
-- (void)_updateSelfRetain;
 - (void)addPropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
 - (BOOL)archived;
 - (BOOL)canMigrate;
@@ -54,12 +43,7 @@
 - (BOOL)migrationConfirmed;
 - (id)migrationError;
 - (id)objectForKeyedSubscript:(id)arg1;
-- (void)postNotification:(id)arg1 withUserInfo:(id)arg2;
 - (id)propertyNames;
-- (void)queueAddPropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
-- (void)queueRegisterForPropertyChanges:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)queueRemovePropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
-- (void)queueUnregisterForPropertyChanges:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)registerForPropertyChanges:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)removePropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
 - (BOOL)setValue:(id)arg1 forProperty:(id)arg2;

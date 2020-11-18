@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) NSArray *arrayDescription;
 @property (readonly, nonatomic) long long flags; // @synthesize flags=_flags;
+@property (readonly, nonatomic) BOOL hasFlagUpdates;
 @property (readonly, nonatomic) long long updatedFlagsMask; // @synthesize updatedFlagsMask=_updatedFlagsMask;
 
 + (id)_arrayDescriptionForFlags:(long long)arg1 remainingFlags:(long long *)arg2;
@@ -24,7 +25,10 @@
 - (id)description;
 - (id)init;
 - (id)initWithFlags:(long long)arg1;
+- (id)redactedDescription;
 - (void)setValue:(BOOL)arg1 forFlag:(long long)arg2;
+- (void)updateFlags:(id)arg1;
+- (void)updateFlags:(long long)arg1 withFlagsValue:(long long)arg2;
 - (long long)updatedFlagsFromFlags:(long long)arg1;
 - (BOOL)valueForFlag:(long long)arg1;
 

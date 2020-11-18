@@ -95,6 +95,7 @@
 - (void)__openUsingInPlaceMechanismToTransferDocumentToApplication:(id)arg1;
 - (void)__performLaunchServiceDocumentOpenWithApplication:(id)arg1 launchServiceOptions:(id)arg2;
 - (BOOL)__presentPreviewAnimated:(BOOL)arg1;
+- (id)_appOpeningDocumentProxy;
 - (unsigned long long)_archiveExtractionOptions;
 - (BOOL)_canPreviewDecompressedArchive;
 - (BOOL)_canSaveToCameraRollForType;
@@ -109,7 +110,7 @@
 - (void)_dismissEverythingWithExtremePrejudiceAnimated:(BOOL)arg1;
 - (BOOL)_documentNeedsHelpDecompressingArchiveForPreview;
 - (id)_documentProxy;
-- (id)_documentProxyWithIsContentManaged:(BOOL)arg1;
+- (id)_documentProxyWithIsContentManaged:(BOOL)arg1 usingURL:(id)arg2;
 - (void)_fixupFileExtensionIfNeeded;
 - (void)_invalidate;
 - (void)_invokeDelegateDidFinishOpenWithApplicationIdentifier:(id)arg1;
@@ -155,6 +156,7 @@
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (void)openDocumentWithDefaultApplication;
 - (void)openResourceOperation:(id)arg1 didFinishCopyingResource:(id)arg2;
+- (id)physicalURL;
 - (void)popoverController:(id)arg1 animationCompleted:(long long)arg2;
 - (BOOL)presentOpenInMenuFromBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)presentOpenInMenuFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;

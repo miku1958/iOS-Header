@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class BSMachPortTaskNameRight;
+@class RBSProcessHandle;
 
 @interface FBProcessCPUStatistics : NSObject
 {
-    BSMachPortTaskNameRight *_taskNameRight;
+    RBSProcessHandle *_handle;
     struct FBProcessTimes _times;
     struct os_unfair_lock_s _lock;
 }
@@ -21,13 +21,11 @@
 @property (readonly, nonatomic) double totalElapsedUserTime;
 
 - (void).cxx_destruct;
-- (double)_elapsedCPUTime;
 - (void)_hostwideUserElapsedCPUTime:(out double *)arg1 systemElapsedCPUTime:(out double *)arg2 idleElapsedCPUTime:(out double *)arg3;
 - (void)_lock_getApplicationCPUTimesForUser:(out double *)arg1 system:(out double *)arg2 idle:(out double *)arg3;
-- (void)dealloc;
 - (id)descriptionForCrashReport;
-- (id)initWithTaskNameRight:(id)arg1;
-- (void)update;
+- (id)initWithProcessHandle:(id)arg1;
+- (void)reset;
 
 @end
 

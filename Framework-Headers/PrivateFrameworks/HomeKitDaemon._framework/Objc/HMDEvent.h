@@ -59,6 +59,7 @@
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)_updateTriggerType;
+- (id)analyticsTriggerEventData;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3 delegate:(id)arg4;
 - (id)createPayload;
 - (id)dumpState;
@@ -69,7 +70,6 @@
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

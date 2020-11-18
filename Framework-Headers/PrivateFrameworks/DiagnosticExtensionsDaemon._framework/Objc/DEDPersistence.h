@@ -30,6 +30,7 @@
 - (id)loadSavedSessionsFromPlist:(id)arg1;
 - (void)removeBugSession:(id)arg1;
 - (void)updateBugSession:(id)arg1;
+- (void)validateSandboxAccess;
 
 @end
 

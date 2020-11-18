@@ -42,6 +42,9 @@ __attribute__((visibility("hidden")))
 - (void)_handleAudioControlUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
+- (void)dealloc;
 - (id)initWithMediaSession:(id)arg1;
 - (id)messageDestination;
 - (void)updateMuted:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -11,7 +11,7 @@
 #import <ChatKit/CKStickerDetailViewControllerDelegate-Protocol.h>
 #import <ChatKit/PHLivePhotoViewDelegate-Protocol.h>
 
-@class CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, CKLivePhotoBalloonView, NSArray, NSString, UIView;
+@class CAShapeLayer, CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, CKLivePhotoBalloonView, NSArray, NSString, UIView, UIVisualEffectView;
 
 @interface CKFullScreenBalloonViewControllerPhone : CKFullScreenBalloonViewController <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate, PHLivePhotoViewDelegate>
 {
@@ -22,6 +22,11 @@
     UIView *_balloonView;
     NSArray *_interfaceActions;
     CKLivePhotoBalloonView *_livePhotoBalloonView;
+    UIVisualEffectView *_replyButtonEffectView;
+    CAShapeLayer *_replyButtonBorderLayer;
+    CAShapeLayer *_replyButtonMaskLayer;
+    CAShapeLayer *_tintViewMaskLayer;
+    UIView *_replyButtonView;
     double _balloonYOffsetFromTranscript;
 }
 
@@ -34,16 +39,27 @@
 @property (copy, nonatomic) NSArray *interfaceActions; // @synthesize interfaceActions=_interfaceActions;
 @property (strong, nonatomic) CKLivePhotoBalloonView *livePhotoBalloonView; // @synthesize livePhotoBalloonView=_livePhotoBalloonView;
 @property (strong, nonatomic) CKActionSheetMenuView *menuView; // @synthesize menuView=_menuView;
+@property (strong, nonatomic) CAShapeLayer *replyButtonBorderLayer; // @synthesize replyButtonBorderLayer=_replyButtonBorderLayer;
+@property (strong, nonatomic) UIVisualEffectView *replyButtonEffectView; // @synthesize replyButtonEffectView=_replyButtonEffectView;
+@property (strong, nonatomic) CAShapeLayer *replyButtonMaskLayer; // @synthesize replyButtonMaskLayer=_replyButtonMaskLayer;
+@property (strong, nonatomic) UIView *replyButtonView; // @synthesize replyButtonView=_replyButtonView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) CAShapeLayer *tintViewMaskLayer; // @synthesize tintViewMaskLayer=_tintViewMaskLayer;
 @property (strong, nonatomic) CKGroupAcknowledgmentVotingViewController *votingViewController; // @synthesize votingViewController=_votingViewController;
 
 - (void).cxx_destruct;
 - (BOOL)_shouldShowVotingView;
 - (void)_stickerDetailViewControllerCloseButtonPressed:(id)arg1;
 - (void)balloonEditMenuViewWasDismissed:(id)arg1;
+- (void)balloonView:(id)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
 - (void)balloonViewDoubleTapped:(id)arg1;
 - (void)balloonViewLongTouched:(id)arg1;
-- (void)balloonViewTapped:(id)arg1;
+- (void)balloonViewSelected:(id)arg1 keyModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewSelected:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewShouldCopyToPasteboard:(id)arg1;
+- (void)balloonViewShowInlineReply:(id)arg1;
+- (void)balloonViewTapped:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewTextViewDidChangeSelection:(id)arg1 selectedText:(id)arg2 textView:(id)arg3;
 - (void)dealloc;
 - (void)disableAnimationsForTesting;
 - (void)dismissTapGestureRecognized:(id)arg1;
@@ -53,11 +69,15 @@
 - (void)liveBalloonTouched:(id)arg1;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)loadLivePhotoBalloonViewIfNeeded;
-- (void)performClosingAnimationsWithSendAnimation:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)performClosingAnimationsAnimated:(BOOL)arg1 withSendAnimation:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)performInitialAnimations;
 - (void)presentStickerDetailControllerWithStickers:(id)arg1;
+- (void)setupReplyButton;
 - (void)stickerDetailViewController:(id)arg1 deletedStickerWithTransferGUID:(id)arg2;
 - (void)stickerDetailViewController:(id)arg1 selectedStickerPackWithAdamID:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateReplyButtonColor;
+- (void)updateReplyButtonSize:(struct CGRect)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

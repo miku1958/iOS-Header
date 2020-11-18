@@ -15,6 +15,7 @@
     BOOL _isYesterday;
     WFTemperature *_high;
     WFTemperature *_low;
+    double _percentPrecipitation;
     unsigned long long _icon;
     unsigned long long _dayOfWeek;
     unsigned long long _dayNumber;
@@ -26,6 +27,7 @@
 @property (nonatomic) unsigned long long icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL isYesterday; // @synthesize isYesterday=_isYesterday;
 @property (copy, nonatomic) WFTemperature *low; // @synthesize low=_low;
+@property (nonatomic) double percentPrecipitation; // @synthesize percentPrecipitation=_percentPrecipitation;
 
 + (id)dayForecastForLocation:(id)arg1 conditions:(id)arg2;
 - (void).cxx_destruct;

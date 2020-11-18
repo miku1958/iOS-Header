@@ -15,7 +15,9 @@
     PBUnknownFields *_unknownFields;
     NSString *_url;
     int _size;
-    CDStruct_3f61e687 _flags;
+    struct {
+        unsigned int has_size:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasSize;
@@ -33,8 +35,11 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithPlaceDataPhotoContent:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

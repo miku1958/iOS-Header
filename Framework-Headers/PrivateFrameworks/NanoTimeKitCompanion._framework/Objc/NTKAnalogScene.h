@@ -55,7 +55,7 @@
 - (BOOL)_canRasterize;
 - (void)_cleanupAfterEditing;
 - (void)_configureForEditMode:(long long)arg1;
-- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3 withScale:(double)arg4;
 - (void)_displayZoomScale:(double)arg1 fraction:(double)arg2;
 - (void)_prepareForEditing;
 - (void)_restoreToFullScreen;

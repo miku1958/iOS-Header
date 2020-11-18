@@ -14,6 +14,7 @@
 
 @interface SFResultSection : NSObject <SFJSONSerializable, NSSecureCoding, NSCopying>
 {
+    BOOL _isInitiallyHidden;
     NSArray *_results;
     unsigned long long _maxInitiallyVisibleResults;
     NSString *_identifier;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL isInitiallyHidden; // @synthesize isInitiallyHidden=_isInitiallyHidden;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long maxInitiallyVisibleResults; // @synthesize maxInitiallyVisibleResults=_maxInitiallyVisibleResults;
 @property (copy, nonatomic) NSString *moreText; // @synthesize moreText=_moreText;
@@ -39,6 +41,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)compareWithSection:(id)arg1 logger:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

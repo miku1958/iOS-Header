@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/CoreTelephonyClientDelegate-Protocol.h>
-#import <iTunesCloud/CoreTelephonyClientSuppServicesDelegate-Protocol.h>
 
 @class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString;
 @protocol OS_dispatch_queue;
 
-@interface ICTelephonyController : NSObject <CoreTelephonyClientDelegate, CoreTelephonyClientSuppServicesDelegate>
+@interface ICTelephonyController : NSObject <CoreTelephonyClientDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_telephonyCallbackQueue;

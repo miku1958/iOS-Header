@@ -29,7 +29,6 @@
 - (id)_displayNameForPass:(id)arg1;
 - (void)_endedViewingPass;
 - (id)_init;
-- (id)_searchableItemAttributeSetForPass:(id)arg1;
 - (BOOL)_shouldDonateActivity:(id)arg1;
 - (id)_templateNameForPass:(id)arg1;
 - (void)dealloc;

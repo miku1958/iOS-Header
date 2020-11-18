@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)addCell:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2;
 - (unsigned long long)cellCount;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)hasCells;
 - (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2 cellUIDRange:(UUIDRect_d701734b)arg3;
 - (void)p_accumulateCurrentCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;

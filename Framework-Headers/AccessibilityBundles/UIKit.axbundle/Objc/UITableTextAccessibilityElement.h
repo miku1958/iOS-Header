@@ -23,6 +23,7 @@
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (double)_accessibilityDelayBeforeUpdatingOnActivation;
 - (id)_accessibilityEquivalenceTag;
+- (BOOL)_accessibilityImplementsDefaultRowRange;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (BOOL)_accessibilityIsInTableCell;

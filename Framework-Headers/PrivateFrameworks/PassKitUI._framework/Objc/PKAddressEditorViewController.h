@@ -9,22 +9,26 @@
 #import <PassKitUI/MKLocalSearchCompleterDelegate-Protocol.h>
 #import <PassKitUI/PKAddressTextFieldDelegate-Protocol.h>
 #import <PassKitUI/PKCountryPickerViewControllerDelegate-Protocol.h>
+#import <PassKitUI/UIPickerViewDataSource-Protocol.h>
+#import <PassKitUI/UIPickerViewDelegate-Protocol.h>
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class CNMutablePostalAddress, CNPostalAddressFormattingSpecification, MKLocalSearchCompleter, NSArray, NSString, PKAddressTextField;
+@class CNMutablePostalAddress, CNPostalAddressFormattingSpecification, MKLocalSearchCompleter, NSArray, NSString, PKAddressTextField, PKContactFormatValidator;
 @protocol PKAddressEditorViewControllerDelegate;
 
-@interface PKAddressEditorViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKLocalSearchCompleterDelegate, PKCountryPickerViewControllerDelegate, PKAddressTextFieldDelegate>
+@interface PKAddressEditorViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MKLocalSearchCompleterDelegate, PKCountryPickerViewControllerDelegate, PKAddressTextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     BOOL _preselectedNameField;
     BOOL _displayGivenNameFirst;
     BOOL _displayPhoneticName;
+    BOOL _isEditingBlankField;
     BOOL _readOnly;
     BOOL _countryIsEditable;
     BOOL _requirementsMet;
     id<PKAddressEditorViewControllerDelegate> _delegate;
+    PKContactFormatValidator *_contactFormatValidator;
     NSString *_givenName;
     NSString *_familyName;
     NSString *_phoneticGivenName;
@@ -50,13 +54,16 @@
     PKAddressTextField *_familyNameTextField;
     PKAddressTextField *_phoneticGivenNameTextField;
     PKAddressTextField *_phoneticFamilyNameTextField;
+    PKAddressTextField *_street1TextField;
+    PKAddressTextField *_street2TextField;
 }
 
 @property (strong, nonatomic) CNPostalAddressFormattingSpecification *addressFormatter; // @synthesize addressFormatter=_addressFormatter;
+@property (strong, nonatomic) PKContactFormatValidator *contactFormatValidator; // @synthesize contactFormatValidator=_contactFormatValidator;
 @property (nonatomic) BOOL countryIsEditable; // @synthesize countryIsEditable=_countryIsEditable;
 @property (strong, nonatomic) PKAddressTextField *currentlySelectedField; // @synthesize currentlySelectedField=_currentlySelectedField;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKAddressEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKAddressEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *editingFields; // @synthesize editingFields=_editingFields;
 @property (strong, nonatomic) NSArray *errors; // @synthesize errors=_errors;
@@ -82,16 +89,21 @@
 @property (strong, nonatomic) NSArray *requiredFieldKeys; // @synthesize requiredFieldKeys=_requiredFieldKeys;
 @property (nonatomic) BOOL requirementsMet; // @synthesize requirementsMet=_requirementsMet;
 @property (strong, nonatomic) MKLocalSearchCompleter *searchCompleter; // @synthesize searchCompleter=_searchCompleter;
+@property (weak, nonatomic) PKAddressTextField *street1TextField; // @synthesize street1TextField=_street1TextField;
+@property (weak, nonatomic) PKAddressTextField *street2TextField; // @synthesize street2TextField=_street2TextField;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_checkFormatOfAddressTextField:(id)arg1;
 - (long long)_fieldIndexForNameComponent:(unsigned long long)arg1;
 - (unsigned long long)_nameComponentForFieldIndex:(unsigned long long)arg1;
 - (void)_showCountryPicker;
+- (void)_updateUniqueAddressField:(id)arg1 withNewString:(id)arg2;
 - (void)_updateWithPostalAddress:(id)arg1;
 - (void)_validateAddressRequirements;
+- (void)addressTextField:(id)arg1 didEndEditing:(id)arg2;
 - (void)addressTextField:(id)arg1 textDidChange:(id)arg2;
 - (void)assignErrorToField:(id)arg1;
 - (BOOL)canChangeCountry;
@@ -102,7 +114,11 @@
 - (void)donePressed;
 - (id)initWithContact:(id)arg1 requiredKeys:(id)arg2 highlightedKeys:(id)arg3 errors:(id)arg4 style:(long long)arg5;
 - (id)initWithContact:(id)arg1 style:(long long)arg2;
+- (long long)numberOfComponentsInPickerView:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
+- (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
+- (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (struct CGSize)preferredContentSize;
 - (void)recomputeEditingFields;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

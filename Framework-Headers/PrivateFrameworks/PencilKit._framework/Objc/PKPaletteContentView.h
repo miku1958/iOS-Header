@@ -7,22 +7,22 @@
 #import <UIKit/UIView.h>
 
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteColorPickerContainerViewDelegate-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
-#import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 #import <PencilKit/PKPaletteViewStateObserving-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKPaletteAdditionalOptionsView, PKPaletteColorPickerView, PKPaletteToolPickerAndColorPickerView, PKPaletteToolPickerView, PKPaletteUndoRedoView, UIStackView;
-@protocol PKPaletteViewStateObservable;
+@class NSLayoutConstraint, NSString, PKDrawingPaletteInputAssistantView, PKPaletteAdditionalOptionsView, PKPaletteColorPickerView, PKPaletteToolPickerAndColorPickerView, PKPaletteToolPickerView, PKPaletteUndoRedoView, UIStackView;
+@protocol PKDrawingPaletteViewStateSubject, PKPaletteContentViewInputAssistantDelegate;
 
-@interface PKPaletteContentView : UIView <PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling, PKPaletteViewStateObserving>
+@interface PKPaletteContentView : UIView <PKPaletteColorPickerContainerViewDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewStateObserving>
 {
     BOOL _usingSmallestSupportedWidth;
     unsigned long long _edgeLocation;
-    double _scalingFactor;
+    id<PKPaletteContentViewInputAssistantDelegate> _inputAssistantViewDelegate;
     PKPaletteUndoRedoView *_undoRedoView;
     PKPaletteAdditionalOptionsView *_additionalOptionsView;
     UIView *_contextualEditingView;
-    id<PKPaletteViewStateObservable> _paletteViewState;
+    id<PKDrawingPaletteViewStateSubject> _paletteViewState;
     UIStackView *_stackView;
     NSLayoutConstraint *_stackViewTopConstraint;
     NSLayoutConstraint *_stackViewBottomConstraint;
@@ -44,8 +44,9 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<PKPaletteViewStateObservable> paletteViewState; // @synthesize paletteViewState=_paletteViewState;
-@property (nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
+@property (weak, nonatomic) id<PKPaletteContentViewInputAssistantDelegate> inputAssistantViewDelegate; // @synthesize inputAssistantViewDelegate=_inputAssistantViewDelegate;
+@property (readonly, nonatomic) PKDrawingPaletteInputAssistantView *paletteInputAssistantView;
+@property (weak, nonatomic) id<PKDrawingPaletteViewStateSubject> paletteViewState; // @synthesize paletteViewState=_paletteViewState;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (strong, nonatomic) NSLayoutConstraint *stackViewBottomConstraint; // @synthesize stackViewBottomConstraint=_stackViewBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *stackViewCenterXConstraint; // @synthesize stackViewCenterXConstraint=_stackViewCenterXConstraint;
@@ -63,20 +64,40 @@
 @property (nonatomic, getter=isUsingSmallestSupportedWidth) BOOL usingSmallestSupportedWidth; // @synthesize usingSmallestSupportedWidth=_usingSmallestSupportedWidth;
 
 - (void).cxx_destruct;
+- (BOOL)_contextEditingModeWantsContextualEditingViewVisible;
 - (void)_dismissPalettePopoverUsingConfirmationBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleKeyboardButtonPressed;
+- (void)_handleReturnKeyButtonPressed;
 - (void)_installAdditionalOptionsView;
 - (void)_installContextualEditingView;
 - (void)_installStackView;
 - (void)_installUndoRedoButtonsView;
-- (void)_updateContextEditingViewVisibility;
+- (BOOL)_isAnnotationSupportEnabled;
+- (BOOL)_shouldShowEllipsisButtonBelowColorSwatch;
+- (double)_stackViewSpacing;
 - (void)_updateUI;
-- (void)didChangeAnnotationSupport:(id)arg1;
+- (BOOL)_useCompactSize;
+- (BOOL)_wantsCompactInputAssistantViewVisible;
+- (BOOL)_wantsInputAssistantViewVisible;
+- (void)colorPickerContainerView:(id)arg1 willDismissInputAssistantView:(id)arg2;
+- (void)colorPickerContainerView:(id)arg1 willPresentInputAssistantView:(id)arg2;
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPaletteViewStateObservable:(id)arg1;
 - (void)layoutSubviews;
+- (void)paletteViewStateDidChange:(id)arg1;
+- (void)paletteViewStateDidChangeAnnotationSupport:(id)arg1;
+- (void)paletteViewStateDidChangeAutoHide:(id)arg1;
+- (void)paletteViewStateDidChangeEnableKeyboardButtons:(id)arg1;
+- (void)paletteViewStateDidChangeFloatingKeyboardType:(id)arg1;
+- (void)paletteViewStateDidChangeInputAssistantItems:(id)arg1;
+- (void)paletteViewStateDidChangeIsVisible:(id)arg1;
+- (void)paletteViewStateDidChangeScaleFactor:(id)arg1;
+- (void)paletteViewStateDidChangeSelectedTool:(id)arg1;
+- (void)paletteViewStateDidChangeShowsHandwritingTool:(id)arg1;
 - (struct CGRect)plusButtonFrame;
 - (void)safeAreaInsetsDidChange;
+- (void)toggleColorSelectionPopover;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

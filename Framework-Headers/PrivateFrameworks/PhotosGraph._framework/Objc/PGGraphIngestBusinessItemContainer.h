@@ -8,7 +8,7 @@
 
 #import <PhotosGraph/PGGraphIngestBusiness-Protocol.h>
 
-@class CLSBusinessItem, CLSLocationOfInterestVisit, NSArray, NSDateInterval, NSString;
+@class CLCircularRegion, CLSBusinessItem, CLSLocationOfInterestVisit, NSArray, NSDateInterval, NSString;
 
 @interface PGGraphIngestBusinessItemContainer : NSObject <PGGraphIngestBusiness>
 {
@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long muid;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) CLCircularRegion *region;
 @property (readonly, nonatomic) double routineVisitConfidence;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long venueCapacity;

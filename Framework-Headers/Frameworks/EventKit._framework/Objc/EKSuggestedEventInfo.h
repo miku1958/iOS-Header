@@ -20,7 +20,9 @@
 @property (copy, nonatomic) NSString *uniqueKey;
 
 + (Class)frozenClass;
-- (id)copy;
++ (id)knownIdentityKeysForComparison;
++ (id)knownSingleValueKeysForComparison;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3;
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3 extractionGroupIdentifier:(id)arg4;

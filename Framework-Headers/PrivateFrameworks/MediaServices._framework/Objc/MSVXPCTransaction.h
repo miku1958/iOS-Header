@@ -7,10 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSString, NSUUID;
+@protocol OS_os_transaction;
 
 @interface MSVXPCTransaction : NSObject
 {
     NSUUID *_identifier;
+    NSObject<OS_os_transaction> *_transaction;
+    long long _transactionCount;
     NSString *_name;
 }
 
@@ -19,9 +22,7 @@
 
 + (id)activeTransactions;
 - (void).cxx_destruct;
-- (id)_identifier;
 - (void)beginTransaction;
-- (void)dealloc;
 - (id)description;
 - (void)endTransaction;
 - (void)endTransactionOnDate:(id)arg1;

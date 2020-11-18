@@ -25,20 +25,20 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (double)buttonModuleTopMargin;
-- (double)contentDescriptionBottomMargin;
+- (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
+- (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;
 - (id)contentDescriptionFont;
 - (int)contentDescriptionNumberOfLines;
-- (double)contentDescriptionTopMargin;
+- (double)contentDescriptionTopMarginForWindowWidth:(double)arg1;
 - (double)coverArtBottomPadding;
 - (double)coverArtImageRightMargin;
 - (struct CGSize)coverArtImageSize;
 - (long long)downloadButtonPosition;
 - (id)initWithLayoutType:(long long)arg1 entityType:(id)arg2;
-- (long long)layoutType;
+- (long long)layoutTypeForWindowWidth:(double)arg1;
 - (double)metadataTopMargin;
 - (BOOL)shouldShowTitleLabel;
-- (double)subtitleTopMargin;
+- (double)subtitleTopMarginForWindowWidth:(double)arg1;
 - (double)titleTopMargin;
 
 @end

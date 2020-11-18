@@ -8,16 +8,15 @@
 
 #import <VoiceShortcuts/VCDatabaseProvider-Protocol.h>
 
-@class NSPersistentStoreDescription, NSString;
+@class NSString;
 
 @interface WFDatabase (VCDatabaseProvider) <VCDatabaseProvider>
 
-@property (readonly, nonatomic) WFDatabase *database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSPersistentStoreDescription *storeDescription;
 @property (readonly) Class superclass;
 
+- (id)databaseWithError:(id *)arg1;
 @end
 

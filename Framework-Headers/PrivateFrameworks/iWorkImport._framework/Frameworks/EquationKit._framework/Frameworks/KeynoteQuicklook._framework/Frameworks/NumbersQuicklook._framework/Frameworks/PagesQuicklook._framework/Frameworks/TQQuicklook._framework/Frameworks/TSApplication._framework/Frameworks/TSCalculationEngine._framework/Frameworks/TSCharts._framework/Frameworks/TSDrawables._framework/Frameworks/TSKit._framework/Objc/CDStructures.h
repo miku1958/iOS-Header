@@ -46,6 +46,8 @@ struct CachedSize {
     struct atomic<int> _field1;
 };
 
+struct Color;
+
 struct CustomFormatArchive;
 
 struct DocumentArchive {
@@ -234,6 +236,20 @@ struct Operation {
     int _field19;
 };
 
+struct PencilAnnotationUIState {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadataWithArena _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct Color *_field5;
+    struct Color *_field6;
+    int _field7;
+    float _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+};
+
 struct Reference;
 
 struct Rep;
@@ -415,20 +431,14 @@ typedef struct {
 } CDStruct_1464e8ba;
 
 typedef struct {
-    long long _field1;
-    int _field2;
-    unsigned int _field3;
-    long long _field4;
-} CDStruct_198678f7;
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
 
 typedef struct {
-    long long majorVersion;
-    long long minorVersion;
-    long long patchVersion;
-} CDStruct_f6aba300;
-
-typedef struct {
-    int _field1;
+    unsigned int _field1;
     union {
         struct {
             unsigned int :16;
@@ -463,7 +473,7 @@ typedef struct {
             unsigned char _field4;
         } _field6;
     } _field2;
-} CDStruct_cf9a5aa8;
+} CDStruct_a4ff7456;
 
 // Template types
 typedef struct RepeatedField<unsigned int> {

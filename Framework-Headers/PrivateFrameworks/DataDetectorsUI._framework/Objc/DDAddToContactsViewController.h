@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     id<DDRemoteActionPresenter> _proxy;
     DDAction *_action;
     CNContactViewController *_personViewController;
+    BOOL _contactBeingAdded;
 }
 
 @property (strong) DDAction *action; // @synthesize action=_action;
@@ -32,14 +33,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)cancelPressed:(id)arg1;
-- (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contactViewControllerForUnknownContactDidBeginAddingToContacts:(id)arg1;
 - (void)contactViewControllerForUnknownContactDidEndAddingToContacts:(id)arg1;
-- (void)doneWithAddingContact;
+- (void)doneWithAddingContactShouldDismiss:(BOOL)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)prepareForAction:(id)arg1;
 - (void)setCancelButtonVisible:(BOOL)arg1;
 - (void)setCancellable:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

@@ -6,21 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString, _MRDeviceInfoMessageProtobuf;
+#import <MediaRemote/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRDeviceInfo : NSObject
+@class NSArray, NSData, NSDictionary, NSString, _MRDeviceInfoMessageProtobuf;
+
+@interface MRDeviceInfo : NSObject <NSCopying>
 {
-    BOOL _tightSyncGroup;
-    BOOL _pairingAllowed;
+    BOOL _hasDeviceClass;
+    BOOL _hasProtocolVersion;
+    BOOL _hasGroupedDeviceCount;
+    BOOL _hasSharedQueueVersion;
+    BOOL _hasGroupLogicalDeviceCount;
     BOOL _supportsSystemPairing;
+    BOOL _hasSupportsSystemPairing;
     BOOL _supportsACL;
+    BOOL _hasSupportsACL;
     BOOL _supportsSharedQueue;
-    BOOL _proxyGroupPlayer;
-    BOOL _connected;
+    BOOL _hasSupportsSharedQueue;
     BOOL _supportsExtendedMotion;
+    BOOL _hasSupportsExtendedMotion;
+    BOOL _tightSyncGroup;
+    BOOL _hasTightSyncGroup;
+    BOOL _pairingAllowed;
+    BOOL _hasPairingAllowed;
+    BOOL _proxyGroupPlayer;
+    BOOL _hasProxyGroupPlayer;
+    BOOL _connected;
+    BOOL _hasConnected;
     BOOL _groupLeader;
+    BOOL _hasGroupLeader;
     BOOL _airPlayActive;
+    BOOL _hasAirPlayActive;
+    long long _deviceClass;
+    unsigned long long _protocolVersion;
+    unsigned long long _groupedDeviceCount;
+    unsigned long long _sharedQueueVersion;
+    unsigned long long _groupLogicalDeviceCount;
     NSString *_name;
     NSString *_identifier;
     NSString *_localizedModelName;
@@ -28,23 +49,20 @@ __attribute__((visibility("hidden")))
     NSString *_bundleIdentifier;
     NSString *_bundleVersion;
     NSString *_systemMediaApplication;
+    NSString *_systemPodcastApplication;
     NSString *_deviceUID;
     NSString *_localReceiverPairingIdentity;
     NSString *_managedConfigurationDeviceIdentifier;
-    unsigned long long _protocolVersion;
-    long long _type;
-    unsigned long long _groupedDeviceCount;
     NSString *_tightSyncUID;
     NSString *_groupUID;
     NSString *_groupName;
     NSString *_senderDefaultGroupUID;
-    unsigned long long _sharedQueueVersion;
     NSData *_bluetoothAddress;
-    unsigned long long _groupLogicalDeviceCount;
     NSArray *_groupedDevices;
     NSArray *_airPlayReceivers;
     NSString *_linkAgent;
-    NSString *_systemPodcastApplication;
+    NSString *_clusterID;
+    NSString *_clusterLeaderID;
 }
 
 @property (nonatomic, getter=isAirPlayActive) BOOL airPlayActive; // @synthesize airPlayActive=_airPlayActive;
@@ -53,20 +71,42 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (copy, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
+@property (copy, nonatomic) NSString *clusterLeaderID; // @synthesize clusterLeaderID=_clusterLeaderID;
+@property (readonly, nonatomic, getter=isCompanion) BOOL companion;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (readonly, copy, nonatomic) NSData *data;
+@property (nonatomic) long long deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (copy, nonatomic) NSString *deviceUID; // @synthesize deviceUID=_deviceUID;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic, getter=isGizmo) BOOL gizmo;
 @property (nonatomic, getter=isGroupLeader) BOOL groupLeader; // @synthesize groupLeader=_groupLeader;
 @property (nonatomic) unsigned long long groupLogicalDeviceCount; // @synthesize groupLogicalDeviceCount=_groupLogicalDeviceCount;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (copy, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
-@property (readonly, nonatomic) unsigned long long groupedDeviceCount; // @synthesize groupedDeviceCount=_groupedDeviceCount;
+@property (nonatomic) unsigned long long groupedDeviceCount; // @synthesize groupedDeviceCount=_groupedDeviceCount;
 @property (copy, nonatomic) NSArray *groupedDevices; // @synthesize groupedDevices=_groupedDevices;
+@property (nonatomic) BOOL hasAirPlayActive; // @synthesize hasAirPlayActive=_hasAirPlayActive;
+@property (nonatomic) BOOL hasConnected; // @synthesize hasConnected=_hasConnected;
+@property (nonatomic) BOOL hasDeviceClass; // @synthesize hasDeviceClass=_hasDeviceClass;
+@property (nonatomic) BOOL hasGroupLeader; // @synthesize hasGroupLeader=_hasGroupLeader;
+@property (nonatomic) BOOL hasGroupLogicalDeviceCount; // @synthesize hasGroupLogicalDeviceCount=_hasGroupLogicalDeviceCount;
+@property (nonatomic) BOOL hasGroupedDeviceCount; // @synthesize hasGroupedDeviceCount=_hasGroupedDeviceCount;
+@property (nonatomic) BOOL hasPairingAllowed; // @synthesize hasPairingAllowed=_hasPairingAllowed;
+@property (nonatomic) BOOL hasProtocolVersion; // @synthesize hasProtocolVersion=_hasProtocolVersion;
+@property (nonatomic) BOOL hasProxyGroupPlayer; // @synthesize hasProxyGroupPlayer=_hasProxyGroupPlayer;
+@property (nonatomic) BOOL hasSharedQueueVersion; // @synthesize hasSharedQueueVersion=_hasSharedQueueVersion;
+@property (nonatomic) BOOL hasSupportsACL; // @synthesize hasSupportsACL=_hasSupportsACL;
+@property (nonatomic) BOOL hasSupportsExtendedMotion; // @synthesize hasSupportsExtendedMotion=_hasSupportsExtendedMotion;
+@property (nonatomic) BOOL hasSupportsSharedQueue; // @synthesize hasSupportsSharedQueue=_hasSupportsSharedQueue;
+@property (nonatomic) BOOL hasSupportsSystemPairing; // @synthesize hasSupportsSystemPairing=_hasSupportsSystemPairing;
+@property (nonatomic) BOOL hasTightSyncGroup; // @synthesize hasTightSyncGroup=_hasTightSyncGroup;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *linkAgent; // @synthesize linkAgent=_linkAgent;
-@property (readonly, copy, nonatomic) NSString *localReceiverPairingIdentity; // @synthesize localReceiverPairingIdentity=_localReceiverPairingIdentity;
+@property (copy, nonatomic) NSString *linkAgent; // @synthesize linkAgent=_linkAgent;
+@property (copy, nonatomic) NSString *localReceiverPairingIdentity; // @synthesize localReceiverPairingIdentity=_localReceiverPairingIdentity;
 @property (copy, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property (copy, nonatomic) NSString *managedConfigurationDeviceIdentifier; // @synthesize managedConfigurationDeviceIdentifier=_managedConfigurationDeviceIdentifier;
+@property (readonly, copy, nonatomic) NSString *minimalDescription;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic, getter=isPairingAllowed) BOOL pairingAllowed; // @synthesize pairingAllowed=_pairingAllowed;
 @property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *protobuf;
@@ -74,23 +114,33 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 @property (copy, nonatomic) NSString *senderDefaultGroupUID; // @synthesize senderDefaultGroupUID=_senderDefaultGroupUID;
 @property (nonatomic) unsigned long long sharedQueueVersion; // @synthesize sharedQueueVersion=_sharedQueueVersion;
+@property (readonly, nonatomic) MRDeviceInfo *skeleton;
 @property (nonatomic) BOOL supportsACL; // @synthesize supportsACL=_supportsACL;
 @property (nonatomic) BOOL supportsExtendedMotion; // @synthesize supportsExtendedMotion=_supportsExtendedMotion;
 @property (nonatomic) BOOL supportsSharedQueue; // @synthesize supportsSharedQueue=_supportsSharedQueue;
 @property (nonatomic) BOOL supportsSystemPairing; // @synthesize supportsSystemPairing=_supportsSystemPairing;
 @property (copy, nonatomic) NSString *systemMediaApplication; // @synthesize systemMediaApplication=_systemMediaApplication;
 @property (copy, nonatomic) NSString *systemPodcastApplication; // @synthesize systemPodcastApplication=_systemPodcastApplication;
-@property (readonly, nonatomic, getter=isTightSyncGroup) BOOL tightSyncGroup; // @synthesize tightSyncGroup=_tightSyncGroup;
+@property (nonatomic, getter=isTightSyncGroup) BOOL tightSyncGroup; // @synthesize tightSyncGroup=_tightSyncGroup;
 @property (copy, nonatomic) NSString *tightSyncUID; // @synthesize tightSyncUID=_tightSyncUID;
-@property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)_deviceIDFromData:(id)arg1;
 + (id)currentDeviceInfo;
++ (id)dataFromDeviceInfos:(id)arg1;
++ (long long)deviceClass;
++ (id)deviceInfosFromData:(id)arg1;
 + (id)networkIdentifier;
-+ (long long)type;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)deltaDescriptionFromDeviceInfo:(id)arg1;
+- (id)deltaDescriptionFromDeviceInfo:(id)arg1 minimal:(BOOL)arg2;
+- (id)description;
 - (id)initWithData:(id)arg1;
 - (id)initWithOutputDevice:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (void)mergeFrom:(id)arg1;
+- (id)minimalDeltaDescriptionFromDeviceInfo:(id)arg1;
 
 @end
 

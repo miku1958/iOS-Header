@@ -6,13 +6,18 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString, NSURL;
 
 @interface _TtC13NewsAnalytics15DynamicEndpoint : _TtCs12_SwiftObject
 {
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *environment;
 }
+
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *sharedContainerIdentifier;
+@property (nonatomic, readonly) NSURL *url;
+
 
 @end
 

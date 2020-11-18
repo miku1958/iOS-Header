@@ -24,11 +24,13 @@
 
 - (void).cxx_destruct;
 - (id)avatarForRecord:(id)arg1;
+- (id)dequeueStickerGeneratorForAvatarRecord:(id)arg1;
 - (id)dequeueStickerGeneratorForAvatarRecord:(id)arg1 needAvatar:(BOOL)arg2;
 - (void)didStopUsingStickerGeneratorForRecord:(id)arg1;
 - (void)flush;
 - (void)flushGeneratorForRecord:(id)arg1;
 - (id)generatorForAvatarRecord:(id)arg1 inGenerators:(id)arg2;
+- (id)initWithMaxStickerGeneratorCount:(long long)arg1;
 - (id)initWithMaxStickerGeneratorCount:(long long)arg1 logger:(id)arg2;
 - (id)stealGeneratorForAvatarRecord:(id)arg1 inGenerators:(id)arg2 needAvatar:(BOOL)arg3;
 

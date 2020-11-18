@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PLAssetContainer-Protocol.h>
+#import <PhotosUICore/PLAssetContainer-Protocol.h>
 
 @class NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSObject, NSOrderedSet, NSPredicate, NSString, NSURL, PLPhotoLibrary;
 
@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL isPanoramasAlbum;
 @property (readonly, nonatomic) BOOL isPendingPhotoStreamAlbum;
 @property (readonly, nonatomic) BOOL isPhotoStreamAlbum;
+@property (readonly, nonatomic) BOOL isProjectAlbum;
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;

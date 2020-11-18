@@ -6,23 +6,28 @@
 
 #import <Photos/PHAssetPropertySet.h>
 
-@class NSDate;
+@class NSArray, NSData, NSDate, NSString;
 
 @interface PHAssetCurationProperties : PHAssetPropertySet
 {
+    NSData *_objectSaliencyRectsData;
+    NSArray *_cachedObjectSaliencyRects;
     float _interestingSubjectScore;
     float _behavioralScore;
     float _semanticScore;
     float _interactionScore;
+    NSString *_creatorBundleID;
     NSDate *_addedDate;
     NSDate *_lastSharedDate;
 }
 
 @property (readonly, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
 @property (readonly, nonatomic) float behavioralScore; // @synthesize behavioralScore=_behavioralScore;
+@property (readonly, nonatomic) NSString *creatorBundleID; // @synthesize creatorBundleID=_creatorBundleID;
 @property (readonly, nonatomic) float interactionScore; // @synthesize interactionScore=_interactionScore;
 @property (readonly, nonatomic) float interestingSubjectScore; // @synthesize interestingSubjectScore=_interestingSubjectScore;
 @property (readonly, nonatomic) NSDate *lastSharedDate; // @synthesize lastSharedDate=_lastSharedDate;
+@property (readonly, nonatomic) NSArray *objectSaliencyRects;
 @property (readonly, nonatomic) float semanticScore; // @synthesize semanticScore=_semanticScore;
 
 + (id)entityName;

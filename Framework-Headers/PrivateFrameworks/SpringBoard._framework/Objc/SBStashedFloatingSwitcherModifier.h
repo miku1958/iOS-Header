@@ -15,11 +15,11 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
 
 @end
 

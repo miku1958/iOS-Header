@@ -13,7 +13,10 @@
     AAGrandSlamSigner *_grandSlamSigner;
     AIDAAccountManager *_accountManager;
     NSOperationQueue *_networkActivityQueue;
+    BOOL _allowsAuthenticationPrompt;
 }
+
+@property (nonatomic) BOOL allowsAuthenticationPrompt; // @synthesize allowsAuthenticationPrompt=_allowsAuthenticationPrompt;
 
 - (void).cxx_destruct;
 - (id)_accountStore;

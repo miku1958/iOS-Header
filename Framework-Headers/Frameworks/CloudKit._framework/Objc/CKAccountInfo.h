@@ -11,6 +11,8 @@
 @interface CKAccountInfo : NSObject <NSSecureCoding>
 {
     BOOL _hasValidCredentials;
+    BOOL _isFromCache;
+    long long _validationCounter;
     long long _accountStatus;
     long long _accountPartition;
     long long _deviceToDeviceEncryptionAvailability;
@@ -20,8 +22,14 @@
 @property (nonatomic) long long accountStatus; // @synthesize accountStatus=_accountStatus;
 @property (nonatomic) long long deviceToDeviceEncryptionAvailability; // @synthesize deviceToDeviceEncryptionAvailability=_deviceToDeviceEncryptionAvailability;
 @property (nonatomic) BOOL hasValidCredentials; // @synthesize hasValidCredentials=_hasValidCredentials;
+@property (nonatomic) BOOL isFromCache; // @synthesize isFromCache=_isFromCache;
 @property (nonatomic) BOOL supportsDeviceToDeviceEncryption;
+@property long long validationCounter; // @synthesize validationCounter=_validationCounter;
 
++ (id)cachedAccountInfoByContainerSetupHash;
++ (id)cachedAccountInfoForSetupInfoHash:(id)arg1;
++ (void)invalidateCachedAccountInfo;
++ (void)setCachedAccountInfoByContainerSetupHash:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)CKPropertiesDescription;
 - (id)description;
@@ -30,6 +38,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)setAsCachedAccountInfoForSetupInfoHash:(id)arg1;
 
 @end
 

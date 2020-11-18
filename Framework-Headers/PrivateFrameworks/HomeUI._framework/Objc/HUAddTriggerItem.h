@@ -6,9 +6,11 @@
 
 #import <Home/HFItem.h>
 
+#import <HomeUI/HUItemMapsToView-Protocol.h>
+
 @class HMHome;
 
-@interface HUAddTriggerItem : HFItem
+@interface HUAddTriggerItem : HFItem <HUItemMapsToView>
 {
     HMHome *_home;
     unsigned long long _mode;
@@ -21,6 +23,7 @@
 - (BOOL)_itemisHidden;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)initWithHome:(id)arg1 mode:(unsigned long long)arg2;
+- (Class)mapsToViewClass;
 
 @end
 

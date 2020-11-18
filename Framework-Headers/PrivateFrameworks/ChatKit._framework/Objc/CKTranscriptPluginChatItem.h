@@ -45,6 +45,7 @@
 - (Class)balloonViewClass;
 - (BOOL)canCopy;
 - (BOOL)canForward;
+- (BOOL)canInlineReply;
 - (Class)cellClass;
 - (id)cellIdentifier;
 - (id)composition;
@@ -54,6 +55,9 @@
 - (id)dragItemProvider;
 - (BOOL)handlePresentationAction;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptDrawerText;
 - (id)menuTitle;
@@ -66,6 +70,7 @@
 - (id)pluginDisplayContainer;
 - (void)releaseBalloonControllerIfNeeded;
 - (void)relinquishBalloonController;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)sender;
 - (BOOL)shouldSnapshot;
 - (id)snapshotGUIDForPluginPayload:(id)arg1;

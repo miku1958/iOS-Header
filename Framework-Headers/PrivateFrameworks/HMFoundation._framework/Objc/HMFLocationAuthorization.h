@@ -10,11 +10,11 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 
 @class CLLocationManager, NSBundle, NSMutableSet, NSObject, NSString, __HMFLocationAuthorizationRequest;
-@protocol HMFLocking, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface HMFLocationAuthorization : HMFObject <CLLocationManagerDelegate, HMFLogging>
 {
-    id<HMFLocking> _lock;
+    struct hmf_unfair_data_lock_s _lock;
     int _status;
     long long _state;
     NSMutableSet *_observers;

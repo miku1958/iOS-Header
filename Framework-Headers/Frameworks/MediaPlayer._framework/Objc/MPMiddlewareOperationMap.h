@@ -8,6 +8,7 @@
 
 @class NSMapTable, NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface MPMiddlewareOperationMap : NSObject
 {
     NSMapTable *_middlewareOperationMap;

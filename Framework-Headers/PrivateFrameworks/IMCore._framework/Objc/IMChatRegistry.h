@@ -9,7 +9,7 @@
 #import <IMCore/NSFastEnumeration-Protocol.h>
 #import <IMCore/TUConversationManagerDelegate-Protocol.h>
 
-@class IMTimer, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSUserActivity, TUConversationManager;
+@class IMContactStore, IMTimer, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSUserActivity, TUConversationManager;
 @protocol OS_dispatch_queue;
 
 @interface IMChatRegistry : NSObject <TUConversationManagerDelegate, NSFastEnumeration>
@@ -18,6 +18,7 @@
     NSMutableDictionary *_chatGUIDToCurrentThreadMap;
     NSMutableDictionary *_chatGUIDToInfoMap;
     NSMutableDictionary *_chatGUIDToChatMap;
+    NSMutableDictionary *_simulatedChatGUIDToChatMap;
     NSMutableDictionary *_threadNameToChatMap;
     NSMutableDictionary *_chatGUIDToiMessageSentOrReceivedMap;
     NSMutableArray *_allChatsInThreadNameMap;
@@ -45,6 +46,7 @@
     NSSet *_registryChangeHistoryChatsToObserve;
     NSSet *_registryChangeHistoryChatsToUnregister;
     BOOL _personaKitRetriveAPITimedOut;
+    IMContactStore *_contactStore;
     NSArray *_simulatedChats;
     IMChatRegistry *_batchProcessingRegistry;
     NSObject<OS_dispatch_queue> *_batchProcessingQueue;
@@ -62,6 +64,7 @@
 @property (strong, nonatomic) IMChatRegistry *batchProcessingRegistry; // @synthesize batchProcessingRegistry=_batchProcessingRegistry;
 @property (readonly, nonatomic) BOOL blackholedChatsExist;
 @property (strong, nonatomic) NSDictionary *chatIdToLastMessageItemMap; // @synthesize chatIdToLastMessageItemMap=_chatIdToLastMessageItemMap;
+@property (strong, nonatomic) IMContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -82,22 +85,23 @@
 + (void)setMessageClass:(Class)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_IMChatGetIdentifiersAndServicesTestHook:(id)arg1 identifiers:(id *)arg2 services:(id *)arg3 personCentricEnabled:(BOOL)arg4;
+- (void)_IMChatGetIdentifiersAndServicesTestHookWithChatRegistry:(id)arg1 chat:(id)arg2 identifiers:(id *)arg3 services:(id *)arg4 personCentricEnabled:(BOOL)arg5;
 - (void)__blockUntilQueriesComplete;
 - (void)__handleChatReconstructions:(id)arg1;
 - (void)__handleMergedChatReconstructions:(id)arg1;
-- (void)__handleMergedChatReconstructions:(id)arg1 fullReload:(BOOL)arg2;
 - (void)_account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 messagesUpdated:(id)arg5;
 - (id)_activeTUConversations;
 - (void)_addChat:(id)arg1 participantSet:(id)arg2;
 - (id)_allCreatedChats;
-- (id)_allGUIDsForChat:(id)arg1;
+- (void)_automation_markAsReadQuery:(id)arg1 finishedWithResult:(BOOL)arg2;
 - (void)_batchFetchRemainingContactsOnLaunch;
 - (void)_blockUntilQueriesComplete:(id)arg1;
 - (void)_chat:(id)arg1 handleCompletionOfQuery:(id)arg2 withUserInfo:(id)arg3 success:(BOOL)arg4 error:(id)arg5;
 - (void)_chat:(id)arg1 inviteParticipants:(id)arg2 reason:(id)arg3 toiMessageChat:(BOOL)arg4;
 - (void)_chat:(id)arg1 joinWithProperties:(id)arg2;
 - (void)_chat:(id)arg1 removeParticipants:(id)arg2 reason:(id)arg3 fromiMessageChat:(BOOL)arg4;
+- (void)_chat:(id)arg1 retryGroupPhotoUpload:(id)arg2;
+- (void)_chat:(id)arg1 sendGroupPhotoUpdate:(id)arg2;
 - (void)_chat:(id)arg1 sendMessage:(id)arg2;
 - (void)_chat:(id)arg1 sendPlayedReceiptForMessage:(id)arg2;
 - (void)_chat:(id)arg1 sendReadReceiptForMessages:(id)arg2;
@@ -107,10 +111,9 @@
 - (void)_chat:(id)arg1 setValue:(id)arg2 forChatProperty:(id)arg3;
 - (void)_chat:(id)arg1 updateDisplayName:(id)arg2;
 - (void)_chat:(id)arg1 updateIsBlackholed:(BOOL)arg2;
-- (void)_chat:(id)arg1 updateIsFiltered:(BOOL)arg2;
+- (void)_chat:(id)arg1 updateIsFiltered:(long long)arg2;
 - (void)_chat:(id)arg1 updateLastAddressedHandle:(id)arg2;
 - (void)_chat:(id)arg1 updateLastAddressedSIMID:(id)arg2;
-- (id)_chatForChatDictionary:(id)arg1 items:(id)arg2 allowCreate:(BOOL)arg3 createdChat:(BOOL *)arg4 outGUID:(id *)arg5;
 - (id)_chatForIdentifiers:(id)arg1;
 - (id)_chatGUIDToChatMap;
 - (id)_chatInstanceForGUID:(id)arg1;
@@ -123,8 +126,9 @@
 - (void)_chat_leave:(id)arg1 leavingiMessageChat:(BOOL)arg2;
 - (void)_chat_loadAttachments:(id)arg1 queryID:(id)arg2;
 - (void)_chat_loadFrequentReplies:(id)arg1 limit:(unsigned long long)arg2 queryID:(id)arg3;
-- (void)_chat_loadHistory:(id)arg1 limit:(unsigned long long)arg2 beforeGUID:(id)arg3 afterGUID:(id)arg4 queryID:(id)arg5;
-- (void)_chat_loadPagedHistory:(id)arg1 numberOfMessagesBefore:(unsigned long long)arg2 numberOfMessagesAfter:(unsigned long long)arg3 messageGUID:(id)arg4 queryID:(id)arg5;
+- (void)_chat_loadHistory:(id)arg1 limit:(unsigned long long)arg2 beforeGUID:(id)arg3 afterGUID:(id)arg4 threadIdentifier:(id)arg5 queryID:(id)arg6;
+- (void)_chat_loadHistory:(id)arg1 limit:(unsigned long long)arg2 beforeGUID:(id)arg3 afterGUID:(id)arg4 threadIdentifier:(id)arg5 queryID:(id)arg6 loadImmediately:(BOOL)arg7;
+- (void)_chat_loadPagedHistory:(id)arg1 numberOfMessagesBefore:(unsigned long long)arg2 numberOfMessagesAfter:(unsigned long long)arg3 messageGUID:(id)arg4 threadIdentifier:(id)arg5 queryID:(id)arg6;
 - (void)_chat_loadUncachedAttachmentsCount:(id)arg1 queryID:(id)arg2;
 - (void)_chat_loadUnreadMessages:(id)arg1 limit:(unsigned long long)arg2 fallbackGUID:(id)arg3 queryId:(id)arg4;
 - (void)_chat_markAsSpam:(id)arg1 queryID:(id)arg2;
@@ -189,6 +193,7 @@
 - (BOOL)_shouldShareMeCardForContactsOnlyAudienceWithChat:(id)arg1;
 - (BOOL)_shouldSwitchAccountAddingMessagesToChat:(id)arg1 messageItems:(id)arg2 messagesComingFromStorage:(BOOL)arg3 chatProperties:(id)arg4;
 - (id)_sortedParticipantIDHashForParticipants:(id)arg1;
+- (id)_sortedParticipantIDHashForParticipants:(id)arg1 usesPersonCentricID:(BOOL)arg2;
 - (void)_startBackgroundProcessingChats:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startMarkAsReadTimerIfNecessary;
 - (void)_trackUsageForMessage:(id)arg1;
@@ -213,11 +218,13 @@
 - (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 notifySentMessage:(id)arg5 sendTime:(id)arg6;
 - (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 updateProperties:(id)arg5;
 - (id)activeCallForConversationUUID:(id)arg1;
+- (id)allGUIDsForChat:(id)arg1;
 - (void)attachmentQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4;
 - (void)blackholedChatsExist:(BOOL)arg1;
-- (void)chat:(id)arg1 displayNameUpdated:(id)arg2;
+- (void)chat:(id)arg1 chatPersonCentricID:(id)arg2 displayNameUpdated:(id)arg3;
+- (void)chat:(id)arg1 chatPersonCentricID:(id)arg2 displayNameUpdated:(id)arg3 sender:(id)arg4;
 - (void)chat:(id)arg1 engramIDUpdated:(id)arg2;
-- (void)chat:(id)arg1 isFilteredUpdated:(BOOL)arg2;
+- (void)chat:(id)arg1 isFilteredUpdated:(long long)arg2;
 - (void)chat:(id)arg1 lastAddressedHandleUpdated:(id)arg2;
 - (void)chat:(id)arg1 lastAddressedSIMIDUpdated:(id)arg2;
 - (void)chat:(id)arg1 lastSeenMessageGuidUpdated:(id)arg2;
@@ -234,7 +241,7 @@
 - (id)chatForIMHandles:(id)arg1 lastAddressedHandle:(id)arg2 lastAddressedSIMID:(id)arg3;
 - (id)chatForRoom:(id)arg1 onAccount:(id)arg2;
 - (id)chatForURL:(id)arg1 outMessageText:(id *)arg2 outRecipientIDs:(id *)arg3 outService:(id *)arg4 outMessageGUID:(id *)arg5;
-- (id)chatGUIDsForChat:(id)arg1;
+- (id)chatGuidsForChat:(id)arg1;
 - (void)chatLoadedWithChatIdentifier:(id)arg1 chats:(id)arg2;
 - (id)chatPersonIDToChatMap;
 - (void)chatsNeedRemerging:(id)arg1 groupedChats:(id)arg2;
@@ -249,6 +256,7 @@
 - (void)enumerateAllChatsAndAttachmentSizesWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)exisitingChatForGroupID:(id)arg1;
 - (id)existingChatForAddresses:(id)arg1 allowRetargeting:(BOOL)arg2 bestHandles:(id *)arg3;
+- (id)existingChatForContacts:(id)arg1 bestHandles:(id *)arg2;
 - (id)existingChatForEngramID:(id)arg1;
 - (id)existingChatForIMHandle:(id)arg1;
 - (id)existingChatForIMHandle:(id)arg1 allowRetargeting:(BOOL)arg2;
@@ -262,13 +270,17 @@
 - (id)existingChatForRoom:(id)arg1 onAccount:(id)arg2;
 - (id)existingChatForRoom:(id)arg1 onAccount:(id)arg2 allowRetargeting:(BOOL)arg3;
 - (id)existingChatWithChatIdentifier:(id)arg1;
+- (id)existingChatWithDeviceIndependentID:(id)arg1;
 - (id)existingChatWithDisplayName:(id)arg1;
 - (id)existingChatWithGUID:(id)arg1;
 - (id)existingChatWithGroupID:(id)arg1;
+- (id)existingChatWithPinningIdentifier:(id)arg1;
+- (id)existingChatsWithChatGUIDs:(id)arg1;
 - (id)existingConversationForTUConversationUUID:(id)arg1;
 - (void)finishedDownloadingPurgedAssetsForChatIDs:(id)arg1;
 - (void)frequentRepliesQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4 limit:(unsigned long long)arg5;
 - (void)frequentRepliesQuery:(id)arg1 finishedWithResult:(id)arg2 limit:(unsigned long long)arg3;
+- (void)groupPhotoUpdatedForChatIdentifier:(id)arg1 style:(unsigned char)arg2 account:(id)arg3 userInfo:(id)arg4;
 - (void)handleIMChatParticipantsDidChange:(id)arg1;
 - (void)historicalMessageGUIDsDeleted:(id)arg1 chatGUIDs:(id)arg2 queryID:(id)arg3;
 - (void)historyQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4 limit:(unsigned long long)arg5;
@@ -278,6 +290,7 @@
 - (long long)lastFailedMessageDate;
 - (void)lastFailedMessageDateChanged:(long long)arg1;
 - (void)lastMessageForAllChats:(id)arg1;
+- (void)lastMessageForChats:(id)arg1;
 - (void)leftChat:(id)arg1;
 - (id)loadChatFromDaemonWithChatIdentifier:(id)arg1;
 - (void)loadedChats:(id)arg1;
@@ -286,13 +299,14 @@
 - (void)markMessageAsNotCorrupt:(id)arg1;
 - (void)mergeWithCopyRegistry:(id)arg1;
 - (id)messagesURLWithChat:(id)arg1 orHandles:(id)arg2 withMessageText:(id)arg3;
-- (void)pagedHistoryQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 finishedWithResult:(id)arg6;
+- (void)pagedHistoryQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 finishedWithResult:(id)arg6 hasMessagesBefore:(BOOL)arg7 hasMessagesAfter:(BOOL)arg8;
 - (id)performanceLogHandle;
 - (void)previouslyBlackholedChatLoadedWithHandleIDs:(id)arg1 chat:(id)arg2;
 - (id)registryChangeHistoryChatsToObserveSet;
 - (id)registryChangeHistoryChatsToUnregisterSet;
 - (void)screenTimeEnablementChanged:(BOOL)arg1;
 - (id)scrutinyInfo;
+- (void)service:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 messagesUpdated:(id)arg4;
 - (void)setActiveChatURL:(id)arg1;
 - (void)setUpInitialCallState;
 - (void)setUserActivityForChat:(id)arg1 message:(id)arg2 orHandles:(id)arg3 title:(id)arg4;

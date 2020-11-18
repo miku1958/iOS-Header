@@ -14,6 +14,7 @@
     CDUnknownBlockType _elementHandler;
     CDUnknownBlockType _deviceNotificationHandler;
     CDUnknownBlockType _inputReportHandler;
+    CDUnknownBlockType _cancelHandler;
 }
 
 @property (readonly) NSArray *devices;

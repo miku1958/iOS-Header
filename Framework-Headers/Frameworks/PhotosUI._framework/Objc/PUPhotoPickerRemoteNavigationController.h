@@ -8,18 +8,14 @@
 
 @protocol PUPhotoPickerRemoteNavigationControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface PUPhotoPickerRemoteNavigationController : UINavigationController
 {
-    BOOL _initialized;
-    id<PUPhotoPickerRemoteNavigationControllerDelegate> _remoteViewControllerdelegate;
+    id<PUPhotoPickerRemoteNavigationControllerDelegate> _remoteViewControllerDelegate;
 }
 
-@property (nonatomic, getter=isInitialized) BOOL initialized; // @synthesize initialized=_initialized;
-@property (weak, nonatomic) id<PUPhotoPickerRemoteNavigationControllerDelegate> remoteViewControllerdelegate; // @synthesize remoteViewControllerdelegate=_remoteViewControllerdelegate;
+@property (weak, nonatomic) id<PUPhotoPickerRemoteNavigationControllerDelegate> remoteViewControllerDelegate; // @synthesize remoteViewControllerDelegate=_remoteViewControllerDelegate;
 
 - (void).cxx_destruct;
-- (id)initWithRootViewController:(id)arg1;
 - (id)popToRootViewControllerAnimated:(BOOL)arg1;
 - (id)popToViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;

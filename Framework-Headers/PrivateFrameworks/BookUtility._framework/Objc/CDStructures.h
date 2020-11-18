@@ -50,6 +50,10 @@ struct _xmlNode;
 
 struct internal_state;
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct z_stream_s {
     char *next_in;
     unsigned int avail_in;

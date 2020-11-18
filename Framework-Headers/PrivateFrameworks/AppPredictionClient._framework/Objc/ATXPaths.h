@@ -14,9 +14,16 @@
 + (id)appPredictionCacheDirectory;
 + (id)appPredictionDirectory;
 + (id)appPredictionDirectoryFile:(id)arg1;
++ (id)biomeStreamsRootDirectory;
++ (id)clientModelCachesRootDirectory;
 + (void)createDataVault:(id)arg1;
 + (void)createDirectoriesIfNeeded;
++ (id)feedbackRootDirectory;
++ (id)focusModesAppScoresFile;
 + (id)magicalMomentsPredictionTablesRootDirectory;
++ (id)metricsRootDirectory;
++ (id)trialFolderResourcePath;
++ (id)uiCachesRootDirectory;
 
 @end
 

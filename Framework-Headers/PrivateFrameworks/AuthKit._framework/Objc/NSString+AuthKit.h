@@ -11,6 +11,7 @@
 - (id)ak_SHA256;
 - (id)ak_SHA256String;
 - (BOOL)ak_isEmailAddress;
+- (id)ak_stringByZeroPaddingOccurencesOfString:(id)arg1;
 - (id)ak_truncatedCopy;
 - (id)ak_urlEncoded;
 @end

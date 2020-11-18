@@ -11,9 +11,13 @@
 @interface SISchemaAudioStopRecording : PBCodable
 {
     int _endpointType;
+    struct {
+        unsigned int endpointType:1;
+    } _has;
 }
 
 @property (nonatomic) int endpointType; // @synthesize endpointType=_endpointType;
+@property (nonatomic) BOOL hasEndpointType;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (id)dictionaryRepresentation;

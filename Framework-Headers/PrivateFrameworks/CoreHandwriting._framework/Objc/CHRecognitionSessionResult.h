@@ -7,15 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
-@class CHStrokeClassificationResult, CHStrokeClutterFilter, CHStrokeGroupingResult, NSArray, NSDictionary, NSString;
+@class CHStrokeClassificationResult, CHStrokeClutterFilter, CHStrokeGroupingResult, NSArray, NSData, NSDictionary, NSString;
 @protocol CHStrokeProviderVersion;
 
-@interface CHRecognitionSessionResult : NSObject <NSCopying>
+@interface CHRecognitionSessionResult : NSObject <NSCopying, NSSecureCoding>
 {
     long long __transcriptionCapability;
+    NSData *_encodedStrokeProviderVersion;
+    BOOL __shouldUseCachedHasCompleteRecognitionResults;
+    BOOL __hasCompleteRecognitionResults;
     id<CHStrokeProviderVersion> _strokeProviderVersion;
     NSArray *_orderedStrokeIdentifiers;
+    long long _sessionMode;
     NSArray *_locales;
     NSArray *_preferredLocales;
     CHStrokeClutterFilter *_clutterFilter;
@@ -23,10 +28,12 @@
     CHStrokeClassificationResult *_strokeClassificationResult;
     CHStrokeGroupingResult *_strokeGroupingResult;
     NSDictionary *__recognitionResultsByGroupID;
+    NSDictionary *__textCorrectionResultsByGroupID;
     CDStruct_76929b14 _generationDuration;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *_recognitionResultsByGroupID; // @synthesize _recognitionResultsByGroupID=__recognitionResultsByGroupID;
+@property (readonly, copy, nonatomic) NSDictionary *_textCorrectionResultsByGroupID; // @synthesize _textCorrectionResultsByGroupID=__textCorrectionResultsByGroupID;
 @property (readonly, nonatomic) long long _transcriptionCapability;
 @property (readonly, nonatomic) NSString *allResultsDebugDescription;
 @property (readonly, nonatomic) NSArray *allResultsDebugDescriptionByGroup;
@@ -37,19 +44,32 @@
 @property (readonly, strong, nonatomic) NSArray *orderedStrokeIdentifiers; // @synthesize orderedStrokeIdentifiers=_orderedStrokeIdentifiers;
 @property (readonly, copy, nonatomic) NSArray *preferredLocales; // @synthesize preferredLocales=_preferredLocales;
 @property (readonly, nonatomic) long long recognitionEnvironment; // @synthesize recognitionEnvironment=_recognitionEnvironment;
+@property (readonly, nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
 @property (readonly, strong, nonatomic) CHStrokeClassificationResult *strokeClassificationResult; // @synthesize strokeClassificationResult=_strokeClassificationResult;
 @property (readonly, strong, nonatomic) CHStrokeGroupingResult *strokeGroupingResult; // @synthesize strokeGroupingResult=_strokeGroupingResult;
 @property (readonly, strong, nonatomic) id<CHStrokeProviderVersion> strokeProviderVersion; // @synthesize strokeProviderVersion=_strokeProviderVersion;
 
++ (BOOL)supportsSecureCoding;
 - (id)_resultsDebugDescriptionIntoGroupsArray:(id)arg1 groupHeaderBlock:(CDUnknownBlockType)arg2;
 - (id)allResultsDebugDescriptionWithGroupHeaderBlock:(CDUnknownBlockType)arg1;
+- (id)contextualResultsWithFullyCoveredStrokeGroups:(id)arg1 partiallyCoveredStrokeGroups:(id)arg2 drawingCanvasSize:(struct CGSize)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)encodedStrokeProviderVersion;
+- (id)fullyCoveredStrokeGroupsForContextStrokes:(id)arg1 partiallyCoveredStrokeGroups:(id *)arg2;
+- (BOOL)hasCompleteRecognitionResults;
 - (id)init;
-- (id)initWithStrokeProviderVersion:(id)arg1 orderedStrokeIdentifiers:(id)arg2 locales:(id)arg3 preferredLocales:(id)arg4 clutterFilter:(id)arg5 strokeClassificationResult:(id)arg6 strokeGroupingResult:(id)arg7 recognitionResults:(id)arg8 inlineContinuousModeResults:(id)arg9 generationDuration:(CDStruct_76929b14)arg10 recognitionEnvironment:(long long)arg11;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithResult:(id)arg1 validStrokes:(id)arg2;
+- (id)initWithStrokeProviderVersion:(id)arg1 encodedStrokeProviderVersion:(id)arg2 orderedStrokeIdentifiers:(id)arg3 sessionMode:(long long)arg4 locales:(id)arg5 preferredLocales:(id)arg6 clutterFilter:(id)arg7 strokeClassificationResult:(id)arg8 strokeGroupingResult:(id)arg9 recognitionResults:(id)arg10 inlineContinuousModeResults:(id)arg11 generationDuration:(CDStruct_76929b14)arg12 recognitionEnvironment:(long long)arg13;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToRecognitionSessionResult:(id)arg1;
+- (BOOL)isEqualToSerializableRecognitionSessionResult:(id)arg1;
 - (id)recognitionResultForStrokeGroupIdentifier:(long long)arg1;
+- (id)textCorrectionResultForStrokeGroupIdentifier:(long long)arg1;
 
 @end
 

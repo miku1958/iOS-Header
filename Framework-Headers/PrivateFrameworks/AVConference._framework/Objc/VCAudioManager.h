@@ -82,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllClientsForIO:(struct _VCAudioIOControllerIOState *)arg1;
 - (BOOL)removeClient:(id)arg1;
 - (void)resetAUIOWithProperties:(id)arg1;
-- (void)resetAudioSessionWithProperties:(id)arg1;
+- (void)resetAudioSessionWithProperties:(id)arg1 interruptSuccessful:(BOOL *)arg2;
 - (void)resetAudioTimestamps;
 - (void)setInputMetering;
 - (void)setOutputMetering;

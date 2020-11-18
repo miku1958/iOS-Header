@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryEntityTranslator;
 
+__attribute__((visibility("hidden")))
 @interface _MPMediaLibraryEntityRelationshipTranslator : NSObject
 {
     BOOL _transient;

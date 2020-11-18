@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (TSPersistence)
++ (id)tsu_fileURLWithPath:(id)arg1;
 - (id)URLExceptPrivate;
 - (BOOL)isAssetsLibraryURL;
 - (BOOL)isOnNonHFSVolume;

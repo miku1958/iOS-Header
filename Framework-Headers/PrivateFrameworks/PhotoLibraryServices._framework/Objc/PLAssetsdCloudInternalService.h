@@ -19,12 +19,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)acceptMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)acceptShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)cloudSharingSpaceManagementRequestWithType:(unsigned long long)arg1 optionalBytesToPurge:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)createPhotostreamAlbumWithStreamID:(id)arg1;
 - (void)emailAddressForKey:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)enablePhotostreamsWithStreamID:(id)arg1;
-- (void)fetchMomentShareWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)fetchShareWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)forceSyncMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
 - (void)getNotUploadedCount:(CDUnknownBlockType)arg1;
@@ -34,7 +34,7 @@
 - (void)keyForEmailAddress:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)overrideSystemBudgetsForSyncSession:(BOOL)arg1 systemBudgets:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)personInfoDictionaryForPersonID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)publishMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)publishShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)queryUserIdentitiesWithEmails:(id)arg1 phoneNumbers:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setCloudPhotoLibraryEnabledState:(BOOL)arg1;

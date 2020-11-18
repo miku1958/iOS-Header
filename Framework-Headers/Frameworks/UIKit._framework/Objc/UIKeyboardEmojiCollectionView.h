@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (double)_currentScreenScale;
 - (BOOL)_shouldReverseLayoutDirection;
+- (id)backgroundColor;
 - (id)closestCellForPoint:(struct CGPoint)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2 emojiGraphicsTraits:(id)arg3;

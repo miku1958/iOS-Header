@@ -10,7 +10,7 @@
 #import <ScreenReaderOutput/SCROBrailleDisplayCommandDispatcherDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDriverDelegate-Protocol.h>
 
-@class NSAttributedString, NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
+@class NSAttributedString, NSLock, NSMutableArray, NSString, NSTimer, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
 @protocol SCROBrailleDisplayCommandDispatcherProtocol, SCROBrailleDisplayDelegate, SCROBrailleDriverProtocol, SCROIOElementProtocol;
 
 @interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate, BRLTBrailleStateManagerDelegate>
@@ -29,6 +29,8 @@
     BOOL _needsUpdating;
     BOOL _automaticBrailleTranslationEnabled;
     BOOL _wordWrapEnabled;
+    BOOL _autoAdvanceEnabled;
+    double _autoAdvanceDuration;
     NSString *_driverIdentifier;
     NSString *_driverModelIdentifier;
     long long _mainSize;
@@ -52,8 +54,12 @@
     unsigned int _persistentKeyModifiers;
     CDUnknownBlockType _eventHandled;
     double _brailleKeyDebounceTimeout;
+    NSTimer *_autoAdvanceTimer;
 }
 
+@property (nonatomic) double autoAdvanceDuration; // @synthesize autoAdvanceDuration=_autoAdvanceDuration;
+@property (nonatomic) BOOL autoAdvanceEnabled;
+@property (strong, nonatomic) NSTimer *autoAdvanceTimer; // @synthesize autoAdvanceTimer=_autoAdvanceTimer;
 @property (nonatomic) BOOL automaticBrailleTranslationEnabled; // @synthesize automaticBrailleTranslationEnabled=_automaticBrailleTranslationEnabled;
 @property (nonatomic) double brailleKeyDebounceTimeout; // @synthesize brailleKeyDebounceTimeout=_brailleKeyDebounceTimeout;
 @property (readonly, nonatomic) unsigned long long brailleLineGenerationID;
@@ -80,6 +86,8 @@
 - (void).cxx_destruct;
 - (void)_aggregatedStatusHandler:(id)arg1;
 - (BOOL)_attemptLoad;
+- (void)_autoAdvancePanHandler:(id)arg1;
+- (void)_beginAutoAdvanceIfEnabled;
 - (void)_blinkerEventHandler;
 - (void)_bulkStatusAttributesHandler:(id)arg1;
 - (void)_configurationChangeHandler;

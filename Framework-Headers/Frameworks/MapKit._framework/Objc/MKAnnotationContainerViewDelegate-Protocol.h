@@ -23,7 +23,6 @@
 - (struct CGRect)annotationContainerVisibleRect:(MKAnnotationContainerView *)arg1;
 - (void)annotationContainerWillAnimateBubble:(MKAnnotationContainerView *)arg1;
 - (void)annotationContainerWillDropPins:(MKAnnotationContainerView *)arg1;
-- (double)annotationContainerZoomScale:(MKAnnotationContainerView *)arg1;
 - (void)calloutDidAppearForAnnotationView:(MKAnnotationView *)arg1 inContainer:(MKAnnotationContainerView *)arg2;
 - (struct CGPoint)convertCoordinate:(struct CLLocationCoordinate2D)arg1 toPointToView:(UIView *)arg2;
 - (struct CLLocationCoordinate2D)convertPoint:(struct CGPoint)arg1 toCoordinateFromView:(UIView *)arg2;

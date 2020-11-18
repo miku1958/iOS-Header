@@ -15,6 +15,7 @@
     unsigned long long _intent;
     CDUnknownBlockType _passwordEntryCompletionHandler;
     CDUnknownBlockType _passwordEntryFailedAttemptHandler;
+    unsigned long long _mode;
     UIImageView *_lockImage;
     UILabel *_titleLabel;
     UIButton *_unlockButton;
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL isAnimatingOut; // @synthesize isAnimatingOut=_isAnimatingOut;
 @property (weak, nonatomic) UIButton *largeUnlockButton; // @synthesize largeUnlockButton=_largeUnlockButton;
 @property (weak, nonatomic) UIImageView *lockImage; // @synthesize lockImage=_lockImage;
+@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) ICNote *note; // @synthesize note=_note;
 @property (copy, nonatomic) CDUnknownBlockType passwordEntryCompletionHandler; // @synthesize passwordEntryCompletionHandler=_passwordEntryCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType passwordEntryFailedAttemptHandler; // @synthesize passwordEntryFailedAttemptHandler=_passwordEntryFailedAttemptHandler;
@@ -43,6 +45,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (void)applyEntryViewMode;
 - (void)beginAuthentication;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
@@ -54,6 +57,7 @@
 - (void)updateTitleLabelPreferredMaxLayoutWidth;
 - (void)updateforAccessibilityDarkerSystemColors;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

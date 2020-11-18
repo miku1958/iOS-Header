@@ -50,13 +50,8 @@
     UIBarButtonItem *_filterButtonItemForNavBar;
     UIBarButtonItem *_trashButtonItemForNavBar;
     UIBarButtonItem *_rotateButtonItemForNavBar;
-    UIBarButtonItem *_compactRotateButtonItem;
-    UIBarButtonItem *_compactFilterButtonItem;
-    UIBarButtonItem *_compactRotateButtonItemForNavBar;
-    UIBarButtonItem *_compactFilterButtonItemForNavBar;
     UIBarButtonItem *_recropButtonItem;
     UIBarButtonItem *_recropButtonItemForNavBar;
-    UIBarButtonItem *_compactRecropButtonItemForNavBar;
     UILabel *_pageIndexLabel;
     UIButton *_collectionTitleButton;
     UIView *_titleViewWrapper;
@@ -102,11 +97,6 @@
 @property (weak, nonatomic) UIToolbar *bottomToolbar; // @synthesize bottomToolbar=_bottomToolbar;
 @property (nonatomic) BOOL cameraRestricted; // @synthesize cameraRestricted=_cameraRestricted;
 @property (strong, nonatomic) UIButton *collectionTitleButton; // @synthesize collectionTitleButton=_collectionTitleButton;
-@property (strong, nonatomic) UIBarButtonItem *compactFilterButtonItem; // @synthesize compactFilterButtonItem=_compactFilterButtonItem;
-@property (strong, nonatomic) UIBarButtonItem *compactFilterButtonItemForNavBar; // @synthesize compactFilterButtonItemForNavBar=_compactFilterButtonItemForNavBar;
-@property (strong, nonatomic) UIBarButtonItem *compactRecropButtonItemForNavBar; // @synthesize compactRecropButtonItemForNavBar=_compactRecropButtonItemForNavBar;
-@property (strong, nonatomic) UIBarButtonItem *compactRotateButtonItem; // @synthesize compactRotateButtonItem=_compactRotateButtonItem;
-@property (strong, nonatomic) UIBarButtonItem *compactRotateButtonItemForNavBar; // @synthesize compactRotateButtonItemForNavBar=_compactRotateButtonItemForNavBar;
 @property (readonly, nonatomic) UIImageView *currentImageView;
 @property (strong, nonatomic) UIColor *darkenedCollectionViewTitleTintColor; // @synthesize darkenedCollectionViewTitleTintColor=_darkenedCollectionViewTitleTintColor;
 @property (readonly, copy) NSString *debugDescription;
@@ -172,9 +162,10 @@
 @property (strong, nonatomic) UIBarButtonItem *trashButtonItem; // @synthesize trashButtonItem=_trashButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *trashButtonItemForNavBar; // @synthesize trashButtonItemForNavBar=_trashButtonItemForNavBar;
 
-+ (struct CGRect)targetRectForOrientation:(long long)arg1;
++ (struct CGRect)targetRectForOrientation:(long long)arg1 window:(id)arg2;
 - (void).cxx_destruct;
 - (id)_accessibilitySpeakThisElementsAndStrings;
+- (BOOL)_canShowWhileLocked;
 - (void)_pageViewControllerDidFinishTransitions:(id)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScrollLeftPage;
@@ -272,7 +263,6 @@
 - (void)speakAccessibilityAnnouncementForMovingItemFromIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)speakAccessibilityAnnouncementForReorderIfNecessaryForProposedIndexPath:(id)arg1;
 - (void)startMarkupViewController;
-- (void)suppressImageHairlineThickeningForBarButtonItems:(id)arg1;
 - (void)switchBarVisibilityForZoomablePageContentViewController:(id)arg1;
 - (struct CGRect)targetViewRect;
 - (void)thumbnailContainerView:(id)arg1 moveItemFromIndex:(long long)arg2 toIndex:(long long)arg3;
@@ -296,7 +286,6 @@
 - (void)updateLayout;
 - (void)updatePageIndicatorForPageIndex:(long long)arg1;
 - (void)updatePageViewControllerConstraints:(BOOL)arg1 animationBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)updateStatusBarFromWindowLevel;
 - (void)updateTitleView;
 - (id)viewControllerAtIndex:(unsigned long long)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

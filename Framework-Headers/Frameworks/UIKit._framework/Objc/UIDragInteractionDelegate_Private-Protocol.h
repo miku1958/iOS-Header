@@ -7,13 +7,14 @@
 #import <UIKitCore/UIDragInteractionDelegate-Protocol.h>
 
 @class NSArray, UIDragInteraction, UIDragItem, UIGestureRecognizer, UIView;
-@protocol UIDragSession;
+@protocol UIDragSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol UIDragInteractionDelegate_Private <UIDragInteractionDelegate>
 
 @optional
 - (BOOL)_dragInteraction:(UIDragInteraction *)arg1 canExcludeCompetingGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (BOOL)_dragInteraction:(UIDragInteraction *)arg1 competingGestureRecognizerShouldDelayLift:(UIGestureRecognizer *)arg2;
+- (id<UIViewSpringAnimationBehaviorDescribing>)_dragInteraction:(UIDragInteraction *)arg1 customSpringAnimationBehaviorForCancellingItem:(UIDragItem *)arg2;
 - (long long)_dragInteraction:(UIDragInteraction *)arg1 dataOwnerForAddingToSession:(id<UIDragSession>)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(UIDragInteraction *)arg1 dataOwnerForSession:(id<UIDragSession>)arg2;
 - (void)_dragInteraction:(UIDragInteraction *)arg1 liftAnimationDidChangeDirection:(long long)arg2;

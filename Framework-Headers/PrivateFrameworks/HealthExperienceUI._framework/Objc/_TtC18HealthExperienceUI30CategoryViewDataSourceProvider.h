@@ -10,9 +10,12 @@
 
 @interface _TtC18HealthExperienceUI30CategoryViewDataSourceProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *categoryPredicate;
+    MISSING_TYPE *summarySectionPredicate;
+    MISSING_TYPE *getMoreFromHealthPredicate;
     MISSING_TYPE *store;
     MISSING_TYPE *chrOnly;
+    MISSING_TYPE *sourceProfile;
+    MISSING_TYPE *showNoData;
 }
 
 @end

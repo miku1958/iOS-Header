@@ -10,6 +10,7 @@
 
 @class MPMediaLibrary;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaLibraryView : NSObject <NSCopying>
 {
     shared_ptr_6af3da69 _coreView;

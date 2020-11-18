@@ -43,9 +43,9 @@
 - (BOOL)archiverManager:(id)arg1 shouldDelayArchivingObject:(id)arg2;
 - (void)componentWriter:(id)arg1 canSkipArchivingStronglyReferencedObject:(id)arg2 fromComponentRootObject:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)componentWriter:(id)arg1 shouldDelayWritingObject:(id)arg2;
-- (void)componentWriter:(id)arg1 wantsComponentOfObject:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)componentWriter:(id)arg1 wantsComponentOfObject:(id)arg2 componentReadVersion:(unsigned long long *)arg3;
 - (id)componentWriter:(id)arg1 wantsExplicitComponentRootObjectForObject:(id)arg2 archiverOrNil:(id)arg3 claimingComponent:(id)arg4 hasArchiverAccessLock:(BOOL)arg5;
-- (void)componentWriterWantsDelayedObjects:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)componentWriterWantsDelayedObjects:(id)arg1;
 - (void)dealloc;
 - (void)delayArchivingOfObject:(id)arg1;
 - (id)init;
@@ -57,7 +57,7 @@
 - (BOOL)shouldDelayArchivingObject:(id)arg1;
 - (void)skipArchivingObject:(id)arg1;
 - (void)stopCapturingSnapshots;
-- (void)willModifyObject:(id)arg1 duringReadOperation:(BOOL)arg2 shouldCaptureSnapshot:(BOOL)arg3;
+- (void)willModifyObject:(id)arg1 options:(unsigned long long)arg2;
 - (void)writeRootObject:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

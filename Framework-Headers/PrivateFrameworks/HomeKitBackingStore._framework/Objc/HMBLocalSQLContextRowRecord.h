@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSData, NSString, NSUUID;
+@class NSData, NSNumber, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface HMBLocalSQLContextRowRecord : HMFObject
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_modelSchema;
     unsigned long long _pushEncoding;
     NSData *_pushData;
-    unsigned long long _pushBlockRow;
+    NSNumber *_pushBlockRow;
     NSString *_modelType;
 }
 
@@ -31,14 +31,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSUUID *modelID; // @synthesize modelID=_modelID;
 @property (readonly, nonatomic) NSUUID *modelSchema; // @synthesize modelSchema=_modelSchema;
 @property (readonly, nonatomic) NSString *modelType; // @synthesize modelType=_modelType;
-@property (readonly, nonatomic) unsigned long long pushBlockRow; // @synthesize pushBlockRow=_pushBlockRow;
+@property (readonly, nonatomic) NSNumber *pushBlockRow; // @synthesize pushBlockRow=_pushBlockRow;
 @property (readonly, nonatomic) NSData *pushData; // @synthesize pushData=_pushData;
 @property (readonly, nonatomic) unsigned long long pushEncoding; // @synthesize pushEncoding=_pushEncoding;
 @property (readonly, nonatomic) unsigned long long recordRow; // @synthesize recordRow=_recordRow;
 
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
-- (id)initWithRecordRow:(unsigned long long)arg1 externalID:(id)arg2 externalData:(id)arg3 modelID:(id)arg4 modelEncoding:(unsigned long long)arg5 modelData:(id)arg6 modelSchema:(id)arg7 modelType:(id)arg8 pushEncoding:(unsigned long long)arg9 pushData:(id)arg10 pushBlockRow:(unsigned long long)arg11;
+- (id)initWithRecordRow:(unsigned long long)arg1 externalID:(id)arg2 externalData:(id)arg3 modelID:(id)arg4 modelEncoding:(unsigned long long)arg5 modelData:(id)arg6 modelSchema:(id)arg7 modelType:(id)arg8 pushEncoding:(unsigned long long)arg9 pushData:(id)arg10 pushBlockRow:(id)arg11;
 - (id)initWithStatement:(struct sqlite3_stmt *)arg1 returning:(unsigned long long)arg2;
 
 @end

@@ -54,6 +54,7 @@
 @property (strong, nonatomic) NSURL *ringtoneSoundURL;
 @property (strong, nonatomic) TUSandboxExtendedURL *sandboxExtendedRingtoneSoundURL; // @synthesize sandboxExtendedRingtoneSoundURL=_sandboxExtendedRingtoneSoundURL;
 @property (nonatomic) long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
+@property (readonly, nonatomic, getter=isSuperboxProvider) BOOL superboxProvider;
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;
 @property (nonatomic) BOOL supportsAudioAndVideo; // @synthesize supportsAudioAndVideo=_supportsAudioAndVideo;
 @property (nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;

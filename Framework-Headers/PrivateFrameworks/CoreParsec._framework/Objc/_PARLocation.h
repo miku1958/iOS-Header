@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_PARLocation-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, _PARRevGeoResolution;
 
 __attribute__((visibility("hidden")))
 @interface _PARLocation : PBCodable <_PARLocation, NSSecureCoding>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     float _longitude;
     int _source;
     float _horizontalAccuracy;
+    _PARRevGeoResolution *_revGeoResolution;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,9 +28,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float latitude; // @synthesize latitude=_latitude;
 @property (nonatomic) float longitude; // @synthesize longitude=_longitude;
+@property (strong, nonatomic) _PARRevGeoResolution *revGeoResolution; // @synthesize revGeoResolution=_revGeoResolution;
 @property (nonatomic) int source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

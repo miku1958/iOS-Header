@@ -8,6 +8,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface SPRemoteInterfaceOpenParentRequest : NSObject
 {
     BOOL _waitingForReply;

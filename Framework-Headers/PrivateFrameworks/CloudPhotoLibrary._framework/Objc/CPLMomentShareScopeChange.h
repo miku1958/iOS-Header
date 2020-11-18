@@ -6,23 +6,40 @@
 
 #import <CloudPhotoLibrary/CPLScopeChange.h>
 
-#import <CloudPhotoLibrary/NSCopying-Protocol.h>
-#import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
+@class NSData, NSDate, NSString;
 
-@class CPLMomentShare;
-
-@interface CPLMomentShareScopeChange : CPLScopeChange <NSSecureCoding, NSCopying>
+@interface CPLMomentShareScopeChange : CPLScopeChange
 {
-    CPLMomentShare *_momentShare;
+    NSString *_title;
+    NSDate *_creationDate;
+    NSDate *_startDate;
+    NSDate *_endDate;
+    NSDate *_expiryDate;
+    long long _promisedAssetCount;
+    long long _promisedPhotosCount;
+    long long _promisedVideosCount;
+    NSData *_thumbnailImageData;
+    NSData *_previewImageData;
+    NSString *_originatingScopeIdentifier;
 }
 
-@property (copy, nonatomic) CPLMomentShare *momentShare; // @synthesize momentShare=_momentShare;
+@property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (copy, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
+@property (copy, nonatomic) NSString *originatingScopeIdentifier; // @synthesize originatingScopeIdentifier=_originatingScopeIdentifier;
+@property (copy, nonatomic) NSData *previewImageData; // @synthesize previewImageData=_previewImageData;
+@property (nonatomic) long long promisedAssetCount; // @synthesize promisedAssetCount=_promisedAssetCount;
+@property (nonatomic) long long promisedPhotosCount; // @synthesize promisedPhotosCount=_promisedPhotosCount;
+@property (nonatomic) long long promisedVideosCount; // @synthesize promisedVideosCount=_promisedVideosCount;
+@property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (copy, nonatomic) NSData *thumbnailImageData; // @synthesize thumbnailImageData=_thumbnailImageData;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_setupWithLibraryInfo:(id)arg1;
-- (id)description;
-- (id)updatedLibraryInfoFromLibraryInfo:(id)arg1 didUpdate:(BOOL *)arg2;
+- (id)momentShare;
+- (void)setLibraryInfo:(id)arg1;
+- (void)setMomentShare:(id)arg1;
+- (void)udpateScopeFromScopeChange:(id)arg1 direction:(unsigned long long)arg2 didHaveChanges:(BOOL *)arg3;
 
 @end
 

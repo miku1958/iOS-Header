@@ -12,6 +12,8 @@
 
 @optional
 - (BOOL)playerViewController:(AVPlayerViewController *)arg1 shouldExitFullScreenWithReason:(long long)arg2;
+- (void)playerViewControllerBeginReducingResourcesForPictureInPicture:(AVPlayerViewController *)arg1;
+- (void)playerViewControllerEndReducingResourcesForPictureInPicture:(AVPlayerViewController *)arg1;
 - (BOOL)playerViewControllerShouldStartPictureInPictureFromInlineWhenEnteringBackground:(AVPlayerViewController *)arg1;
 @end
 

@@ -10,6 +10,7 @@
 {
     BOOL _isCustomResponsesEnabled;
     BOOL _allowProfanity;
+    BOOL _useNonNegativeClassesOnly;
     unsigned long long _filterBatchSize;
     double _minimumTimeIntervalSecs;
     unsigned long long _minimumDistinctRecipients;
@@ -18,12 +19,14 @@
     double _countExponent;
     double _distanceThreshold;
     double _minDecayedCountForPruning;
-    unsigned long long _minDecayedCountForPrediction;
+    double _minDecayedCountForPrediction;
     unsigned long long _maxStoredMessages;
     unsigned long long _maxStoredCustomResponses;
+    unsigned long long _maxRowsInPerRecipientTable;
     unsigned long long _knowledgeStoreQueryLimit;
     unsigned long long _maxReplyLength;
     double _maxReplyGapSecs;
+    double _usageSpreadExponent;
     unsigned long long _compatibilityVersion;
 }
 
@@ -36,14 +39,17 @@
 @property (readonly, nonatomic) unsigned long long knowledgeStoreQueryLimit; // @synthesize knowledgeStoreQueryLimit=_knowledgeStoreQueryLimit;
 @property (readonly, nonatomic) double maxReplyGapSecs; // @synthesize maxReplyGapSecs=_maxReplyGapSecs;
 @property (readonly, nonatomic) unsigned long long maxReplyLength; // @synthesize maxReplyLength=_maxReplyLength;
+@property (readonly, nonatomic) unsigned long long maxRowsInPerRecipientTable; // @synthesize maxRowsInPerRecipientTable=_maxRowsInPerRecipientTable;
 @property (readonly, nonatomic) unsigned long long maxStoredCustomResponses; // @synthesize maxStoredCustomResponses=_maxStoredCustomResponses;
 @property (readonly, nonatomic) unsigned long long maxStoredMessages; // @synthesize maxStoredMessages=_maxStoredMessages;
-@property (readonly, nonatomic) unsigned long long minDecayedCountForPrediction; // @synthesize minDecayedCountForPrediction=_minDecayedCountForPrediction;
+@property (readonly, nonatomic) double minDecayedCountForPrediction; // @synthesize minDecayedCountForPrediction=_minDecayedCountForPrediction;
 @property (readonly, nonatomic) double minDecayedCountForPruning; // @synthesize minDecayedCountForPruning=_minDecayedCountForPruning;
 @property (readonly, nonatomic) unsigned long long minimumDistinctRecipients; // @synthesize minimumDistinctRecipients=_minimumDistinctRecipients;
 @property (readonly, nonatomic) unsigned long long minimumReplyOccurences; // @synthesize minimumReplyOccurences=_minimumReplyOccurences;
 @property (readonly, nonatomic) double minimumTimeIntervalSecs; // @synthesize minimumTimeIntervalSecs=_minimumTimeIntervalSecs;
 @property (readonly, nonatomic) double timeDecayFactor; // @synthesize timeDecayFactor=_timeDecayFactor;
+@property (readonly, nonatomic) double usageSpreadExponent; // @synthesize usageSpreadExponent=_usageSpreadExponent;
+@property (readonly, nonatomic) BOOL useNonNegativeClassesOnly; // @synthesize useNonNegativeClassesOnly=_useNonNegativeClassesOnly;
 
 - (id)initWithDictionary:(id)arg1;
 

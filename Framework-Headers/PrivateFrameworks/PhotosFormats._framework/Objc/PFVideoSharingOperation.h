@@ -22,10 +22,13 @@
     NSError *_operationError;
     BOOL _shouldStripMetadata;
     BOOL _shouldStripLocation;
+    BOOL _shouldStripCaption;
+    BOOL _shouldStripAccessibilityDescription;
     NSURL *_outputDirectoryURL;
     NSString *_outputFilename;
     CLLocation *_customLocation;
     NSDate *_customDate;
+    NSString *_customCaption;
     NSString *_customAccessibilityLabel;
     NSString *_exportPreset;
     NSString *_exportFileType;
@@ -36,6 +39,7 @@
 
 @property (strong, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
+@property (copy, nonatomic) NSString *customCaption; // @synthesize customCaption=_customCaption;
 @property (copy, nonatomic) NSDate *customDate; // @synthesize customDate=_customDate;
 @property (copy, nonatomic) CLLocation *customLocation; // @synthesize customLocation=_customLocation;
 @property (copy, nonatomic) NSString *exportFileType; // @synthesize exportFileType=_exportFileType;
@@ -45,6 +49,8 @@
 @property (copy, nonatomic) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property (readonly, nonatomic) float progress;
 @property (readonly, copy, nonatomic) NSURL *resultingFileURL; // @synthesize resultingFileURL=_resultingFileURL;
+@property (nonatomic) BOOL shouldStripAccessibilityDescription; // @synthesize shouldStripAccessibilityDescription=_shouldStripAccessibilityDescription;
+@property (nonatomic) BOOL shouldStripCaption; // @synthesize shouldStripCaption=_shouldStripCaption;
 @property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property (nonatomic) BOOL shouldStripMetadata; // @synthesize shouldStripMetadata=_shouldStripMetadata;
 @property (nonatomic, setter=_setSuccess:) BOOL success;

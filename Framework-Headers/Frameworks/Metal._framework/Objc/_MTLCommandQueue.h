@@ -28,7 +28,7 @@
     BOOL _StatEnabled;
     unsigned long long _StatOptions;
     unsigned long long _StatLocations;
-    unsigned long long _numCommandBuffers;
+    _Atomic int _numCommandBuffers;
     CDUnknownBlockType _perfSampleHandlerBlock;
     unsigned long long _listIndex;
     unsigned long long _maxCommandBufferCount;
@@ -58,15 +58,16 @@
 @property (copy) NSString *label; // @dynamic label;
 @property (nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
 @property (readonly) unsigned long long maxCommandBufferCount; // @synthesize maxCommandBufferCount=_maxCommandBufferCount;
-@property (nonatomic) unsigned long long numCommandBuffers; // @synthesize numCommandBuffers=_numCommandBuffers;
+@property (nonatomic) unsigned long long numCommandBuffers; // @dynamic numCommandBuffers;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled; // @synthesize profilingEnabled=_profilingEnabled;
 @property (readonly) unsigned long long qosLevel; // @synthesize qosLevel=_qosLevel;
 @property BOOL skipRender; // @synthesize skipRender=_skipRender;
 
 - (BOOL)_submitAvailableCommandBuffers;
 - (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
-- (void)availableCounters;
+- (id)availableCounters;
 - (void)commandBufferDidComplete:(id)arg1 startTime:(unsigned long long)arg2 completionTime:(unsigned long long)arg3 error:(id)arg4;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (void)commitCommandBuffer:(id)arg1 wake:(BOOL)arg2;
 - (void)completeCommandBuffers:(id *)arg1 count:(unsigned long long)arg2;
 - (void)dealloc;

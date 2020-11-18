@@ -32,8 +32,6 @@
 + (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
-- (void)authorizationPresentDeleteAllAlertWithTitle:(id)arg1 actionTitle:(id)arg2 cancelTitle:(id)arg3;
-- (void)authorizationPresentDownloadPath:(id)arg1 sandboxExtensionToken:(id)arg2;
 - (void)authorizationRequestCompleted;
 - (void)authorizationRequestDidDisappear;
 - (void)authorizationRequestFailedWithError:(id)arg1;
@@ -45,7 +43,7 @@
 - (void)requestAuthorizationForBundle:(id)arg1 services:(id)arg2;
 - (id)serviceViewControllerProxy;
 - (void)showAppsAndStudies;
-- (void)showPendingAuthUIForBundlePath:(id)arg1 services:(id)arg2;
+- (void)showFirstRunOnboarding;
 - (void)showResearchData;
 - (void)showStudyAuthorizationForBundlePath:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

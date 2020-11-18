@@ -10,8 +10,8 @@
 {
 }
 
-+ (BOOL)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollection:(id)arg2 person:(id)arg3;
++ (BOOL)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
 - (void)performUserInteractionTask;
 
 @end

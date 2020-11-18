@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class ARUIRingUniformsCache;
 @protocol MTLBuffer;
 
 __attribute__((visibility("hidden")))
@@ -14,15 +15,16 @@ __attribute__((visibility("hidden")))
     id<MTLBuffer> _vertexPositionsBuffer;
     id<MTLBuffer> _indexBuffer;
     unsigned long long _indexCount;
+    ARUIRingUniformsCache *_cache;
 }
 
-+ (void)clearCaches;
 - (void).cxx_destruct;
-- (void)_renderEntireRings:(id)arg1 withCommandEncoder:(id)arg2 forState:(id)arg3;
-- (void)_renderRingsFollowingPercent:(id)arg1 withCommandEncoder:(id)arg2 forState:(id)arg3;
+- (void)_renderEntireRings:(id)arg1 intoContext:(id)arg2 withCommandEncoder:(id)arg3 forState:(id)arg4;
+- (void)_renderRingsFollowingPercent:(id)arg1 intoContext:(id)arg2 withCommandEncoder:(id)arg3 forState:(id)arg4;
 - (void)beginRenderingWithCommandEncoder:(id)arg1;
-- (id)initWithDevice:(id)arg1 maximumRingCount:(unsigned long long)arg2;
-- (void)renderRings:(id)arg1 withCommandEncoder:(id)arg2 forState:(id)arg3;
+- (void)clearCaches;
+- (id)initWithDevice:(id)arg1;
+- (void)renderRings:(id)arg1 intoContext:(id)arg2 withCommandEncoder:(id)arg3 forState:(id)arg4;
 
 @end
 

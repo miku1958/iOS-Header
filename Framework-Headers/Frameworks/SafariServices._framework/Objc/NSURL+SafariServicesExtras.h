@@ -11,8 +11,10 @@
 @interface NSURL (SafariServicesExtras)
 
 @property (readonly, nonatomic) NSString *_sf_highLevelDomainFromHostFallingBackToHostOrAbsoluteString;
+@property (readonly, nonatomic) BOOL _sf_isAppleOneURL;
 @property (readonly, nonatomic) NSString *_sf_topLevelDomain;
 @property (readonly, nonatomic) NSString *sf_absoluteStringWithoutFragment;
+@property (readonly, nonatomic) BOOL sf_isAppleNewsURL;
 @property (readonly, nonatomic) BOOL sf_isFacetimeURL;
 @property (readonly, nonatomic) BOOL sf_isOfflineReadingListURL;
 @property (readonly, nonatomic) BOOL sf_isTestWebArchiveURL;

@@ -6,20 +6,35 @@
 
 #import <UIKit/UIView.h>
 
-@class HFWallpaperSlice;
+#import <HomeUI/HUBackgroundEffectViewGrouping-Protocol.h>
 
-@interface HUWallpaperView : UIView
+@class CABackdropLayer, HFWallpaperSlice, NSString, UIVisualEffect, UIVisualEffectView;
+
+@interface HUWallpaperView : UIView <HUBackgroundEffectViewGrouping>
 {
     HFWallpaperSlice *_wallpaperSlice;
     UIView *_wallpaperContentView;
+    UIVisualEffectView *_visualEffectView;
 }
 
+@property (readonly, nonatomic) CABackdropLayer *backdropLayer;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIVisualEffect *sharedEffect;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property (strong, nonatomic) UIView *wallpaperContentView; // @synthesize wallpaperContentView=_wallpaperContentView;
 @property (strong, nonatomic) HFWallpaperSlice *wallpaperSlice; // @synthesize wallpaperSlice=_wallpaperSlice;
 
++ (id)_sharedBlurEffect;
 - (void).cxx_destruct;
+- (void)_updateVisualEffectView;
+- (void)backgroundEffectAddCaptureDependent:(id)arg1;
+- (void)backgroundEffectRemoveCaptureDependent:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGRect)normalizedWallpaperRectForFrameInWindowSpace:(struct CGRect)arg1;
+- (void)updateConstraints;
 
 @end
 

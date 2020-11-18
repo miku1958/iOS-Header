@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HMFoundation/HMFVersion.h>
+#import <HMFoundation/HMFSoftwareVersion.h>
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface HMDAccessoryVersion : HMFVersion <NSCopying, NSSecureCoding>
+@interface HMDAccessoryVersion : HMFSoftwareVersion <NSCopying, NSSecureCoding>
 {
     NSString *_rawVersionString;
 }

@@ -7,10 +7,18 @@
 #import <AppAnalytics/AASessionManager.h>
 
 @interface AASessionManager (AppAnalytics)
+- (void)endSession;
+- (void)endSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)endSessionWithEndDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushSessionData:(id)arg1;
 - (void)pushSessionData:(id)arg1 submitEventQueues:(BOOL)arg2;
 - (void)pushSessionData:(id)arg1 traits:(id)arg2;
 - (void)pushSessionData:(id)arg1 traits:(id)arg2 submitEventQueues:(BOOL)arg3;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3 startDate:(id)arg4;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 startDate:(id)arg3;
 - (void)transaction:(CDUnknownBlockType)arg1;
 @end
 

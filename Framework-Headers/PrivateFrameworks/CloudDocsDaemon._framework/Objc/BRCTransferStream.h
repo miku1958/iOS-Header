@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCAccountSession, BRCDeadlineSource, BRCSyncContext, NSArray, NSMutableDictionary, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCTransferStream : NSObject <BRCLifeCycle, BRCSuspendable>
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     long long _nextFire;
     NSMutableDictionary *_inFlightOpByID;
     BRCDeadlineSource *_schedulingSource;
-    NSObject<OS_dispatch_queue> *_transferQueue;
+    NSObject<OS_dispatch_workloop> *_transferWorkloop;
     unsigned long long _inFlightSize;
     NSObject<OS_dispatch_group> *_transferBatchRequestWaiter;
     BOOL _isWaitingForTransferBatch;

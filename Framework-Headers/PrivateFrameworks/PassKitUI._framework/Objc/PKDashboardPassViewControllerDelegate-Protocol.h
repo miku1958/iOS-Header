@@ -9,6 +9,7 @@
 @class PKDashboardPassViewController, PKPaymentPass;
 
 @protocol PKDashboardPassViewControllerDelegate <NSObject>
-- (void)dashboardPassViewController:(PKDashboardPassViewController *)arg1 didRequestPaymentForPass:(PKPaymentPass *)arg2;
+- (BOOL)canRequestPaymentForPass:(PKPaymentPass *)arg1;
+- (void)dashboardPassViewController:(PKDashboardPassViewController *)arg1 didRequestPaymentForPass:(PKPaymentPass *)arg2 fromButton:(BOOL)arg3;
 @end
 

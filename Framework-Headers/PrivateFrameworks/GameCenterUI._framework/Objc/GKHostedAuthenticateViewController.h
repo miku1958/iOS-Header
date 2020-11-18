@@ -18,8 +18,6 @@
     CDUnknownBlockType _completionHandler;
     NSError *_error;
     CDUnknownBlockType _remoteViewReadyHandler;
-    NSString *_lastPersonalizationVersionDisplayed;
-    unsigned long long _lastPrivacyNoticeVersionDisplayed;
     GKAuthenticateHostViewController *_extensionHostViewController;
     long long _mode;
     CDUnknownBlockType _dismissCompletionHandler;
@@ -33,8 +31,6 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) GKAuthenticateHostViewController *extensionHostViewController; // @synthesize extensionHostViewController=_extensionHostViewController;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
-@property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (copy, nonatomic) CDUnknownBlockType remoteViewReadyHandler; // @synthesize remoteViewReadyHandler=_remoteViewReadyHandler;
 @property (nonatomic, getter=isRotationLocked) BOOL rotationLocked; // @synthesize rotationLocked=_rotationLocked;
@@ -57,6 +53,7 @@
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (BOOL)shouldAutorotate;
 - (void)showPasswordChangeAlertWithURL:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

@@ -14,6 +14,7 @@
     MISSING_TYPE *hkType;
     MISSING_TYPE *hideShowAll;
     MISSING_TYPE *collectionView;
+    MISSING_TYPE *healthStore;
 }
 
 @end

@@ -26,6 +26,7 @@
     NSString *_deviceManufacturer;
     NSString *_deviceModel;
     long long _amm;
+    NSString *_scwi;
 }
 
 @property (nonatomic) long long amm; // @synthesize amm=_amm;
@@ -38,13 +39,16 @@
 @property (nonatomic) unsigned long long goalType; // @synthesize goalType=_goalType;
 @property (nonatomic) BOOL isIndoorWorkout; // @synthesize isIndoorWorkout=_isIndoorWorkout;
 @property (nonatomic) BOOL isWatchWorkout; // @synthesize isWatchWorkout=_isWatchWorkout;
+@property (strong, nonatomic) NSString *scwi; // @synthesize scwi=_scwi;
 @property (strong, nonatomic) HKQuantity *totalBasalEnergyBurned; // @synthesize totalBasalEnergyBurned=_totalBasalEnergyBurned;
 @property (strong, nonatomic) HKQuantity *totalDistance; // @synthesize totalDistance=_totalDistance;
 @property (strong, nonatomic) HKQuantity *totalEnergyBurned; // @synthesize totalEnergyBurned=_totalEnergyBurned;
 @property (nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 
++ (BOOL)_isConcreteObjectClass;
 + (id)fitnessFriendWorkoutFromHKWorkout:(id)arg1;
 + (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(BOOL)arg12 isIndoorWorkout:(BOOL)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15 amm:(long long)arg16;
++ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(BOOL)arg12 isIndoorWorkout:(BOOL)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15 amm:(long long)arg16 scwi:(id)arg17;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

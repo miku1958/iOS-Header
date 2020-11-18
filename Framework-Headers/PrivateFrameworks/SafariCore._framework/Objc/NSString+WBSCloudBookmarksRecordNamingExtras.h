@@ -44,6 +44,7 @@
 - (id)safari_simplifiedUserVisibleURLStringWithSimplifications:(unsigned long long)arg1 forDisplayOnly:(BOOL)arg2 simplifiedStringOffset:(unsigned long long *)arg3;
 - (id)safari_stringByRedactingBookmarkDAVServerID;
 - (id)safari_stringByRemovingCharactersInSet:(id)arg1;
+- (id)safari_stringByRemovingWwwAndWildcardDotPrefixes;
 - (id)safari_stringByRemovingWwwDotPrefix;
 - (id)safari_stringByRepeatingWithCount:(unsigned long long)arg1 joinedByString:(id)arg2;
 - (id)safari_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;

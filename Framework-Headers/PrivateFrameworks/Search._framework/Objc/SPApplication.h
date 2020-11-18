@@ -13,23 +13,30 @@
 @interface SPApplication : NSObject <NSSecureCoding>
 {
     NSString *_longDisplayName;
-    BOOL _isWebClip;
     NSString *_displayIdentifier;
     NSMutableArray *_keywords;
     NSURL *_URL;
     NSString *_shortVersion;
+    NSString *_appBundleIdentifier;
+    long long _webClipType;
+    NSString *_subtitle;
     NSString *_displayNameInternal;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (strong, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (strong, nonatomic) NSString *displayIdentifier; // @synthesize displayIdentifier=_displayIdentifier;
 @property (strong, nonatomic) NSString *displayName;
 @property (strong) NSString *displayNameInternal; // @synthesize displayNameInternal=_displayNameInternal;
 @property (readonly, nonatomic) BOOL displayNameLoaded;
-@property (nonatomic) BOOL isWebClip; // @synthesize isWebClip=_isWebClip;
+@property (readonly) BOOL isAppClip;
+@property (readonly) BOOL isWebClip;
 @property (strong, nonatomic) NSMutableArray *keywords; // @synthesize keywords=_keywords;
 @property (strong, nonatomic) NSString *longDisplayName;
 @property (strong, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
+@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly) NSString *utiType;
+@property (nonatomic) long long webClipType; // @synthesize webClipType=_webClipType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

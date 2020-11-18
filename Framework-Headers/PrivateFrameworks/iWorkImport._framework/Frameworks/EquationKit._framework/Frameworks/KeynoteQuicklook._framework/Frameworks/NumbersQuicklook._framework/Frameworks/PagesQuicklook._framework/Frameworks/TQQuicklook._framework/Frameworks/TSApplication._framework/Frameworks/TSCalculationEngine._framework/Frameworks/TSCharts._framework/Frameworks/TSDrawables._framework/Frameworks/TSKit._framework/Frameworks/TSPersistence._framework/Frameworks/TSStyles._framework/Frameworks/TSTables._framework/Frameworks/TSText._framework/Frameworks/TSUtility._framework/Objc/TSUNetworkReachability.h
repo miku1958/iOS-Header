@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, TSUNetworkReachabilityCore;
 
 @interface TSUNetworkReachability : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    struct __SCNetworkReachability *_reachabilityRef;
+    id<TSUNetworkReachabilityCore> _core;
     long long _enableCount;
     NSString *_hostName;
     long long _cachedStatus;
@@ -33,11 +33,11 @@
 + (id)networkReachabilityForInternetConnection;
 + (id)networkReachabilityWithAddress:(const struct sockaddr_in *)arg1;
 + (id)networkReachabilityWithHostName:(id)arg1;
-+ (id)networkReachabilityWithNetworkReachabilityRef:(struct __SCNetworkReachability *)arg1 hostNameOrNil:(id)arg2;
++ (id)networkReachabilityWithNetworkReachabilityRef:(const struct __SCNetworkReachability *)arg1 hostNameOrNil:(id)arg2;
 + (long long)networkStatusForFlags:(unsigned int)arg1;
-+ (struct __SCNetworkReachability *)newNetworkReachabilityRefForInternetConnection;
-+ (struct __SCNetworkReachability *)newNetworkReachabilityRefWithAddress:(const struct sockaddr_in *)arg1;
-+ (struct __SCNetworkReachability *)newNetworkReachabilityRefWithHostName:(const char *)arg1;
++ (const struct __SCNetworkReachability *)newNetworkReachabilityRefForInternetConnection;
++ (const struct __SCNetworkReachability *)newNetworkReachabilityRefWithAddress:(const struct sockaddr_in *)arg1;
++ (const struct __SCNetworkReachability *)newNetworkReachabilityRefWithHostName:(const char *)arg1;
 + (id)p_stringForNetworkReachabilityFlags:(unsigned int)arg1;
 + (id)p_stringForNetworkReachabilityStatus:(long long)arg1;
 + (BOOL)synchronousHostLookup:(id)arg1;
@@ -46,9 +46,8 @@
 - (void)disableNotifier;
 - (void)enableNotifier;
 - (struct sockaddr_in)hostAddress;
-- (id)init;
-- (id)initWithReachabilityRef:(struct __SCNetworkReachability *)arg1;
-- (long long)localWiFiStatusForFlags:(unsigned int)arg1;
+- (id)initWithReachabilityRef:(const struct __SCNetworkReachability *)arg1;
+- (void)p_reachabilityFlagsDidChange:(unsigned int)arg1;
 - (void)p_startNotifier;
 - (void)p_stopNotifier;
 - (void)p_updateCachedStatus:(long long)arg1;

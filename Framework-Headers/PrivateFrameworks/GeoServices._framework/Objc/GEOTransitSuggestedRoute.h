@@ -50,22 +50,7 @@
         unsigned int read_sections:1;
         unsigned int read_steps:1;
         unsigned int read_transitIncidentMessage:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_routeBadges:1;
-        unsigned int wrote_displayStrings:1;
-        unsigned int wrote_engineDebugData:1;
-        unsigned int wrote_routeHandle:1;
-        unsigned int wrote_routePlanningArtworks:1;
-        unsigned int wrote_sectionOptions:1;
-        unsigned int wrote_sections:1;
-        unsigned int wrote_steps:1;
-        unsigned int wrote_transitIncidentMessage:1;
-        unsigned int wrote_absEndTime:1;
-        unsigned int wrote_absStartTime:1;
-        unsigned int wrote_rank:1;
-        unsigned int wrote_travelTimeAggressiveEstimate:1;
-        unsigned int wrote_travelTimeConservativeEstimate:1;
-        unsigned int wrote_supportsRouteUpdates:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -109,20 +94,6 @@
 + (Class)stepsType;
 - (void).cxx_destruct;
 - (int)StringAsRouteBadges:(id)arg1;
-- (void)_addNoFlagsRouteBadge:(int)arg1;
-- (void)_addNoFlagsRoutePlanningArtwork:(id)arg1;
-- (void)_addNoFlagsSection:(id)arg1;
-- (void)_addNoFlagsSectionOption:(id)arg1;
-- (void)_addNoFlagsSteps:(id)arg1;
-- (void)_readDisplayStrings;
-- (void)_readEngineDebugData;
-- (void)_readRouteBadges;
-- (void)_readRouteHandle;
-- (void)_readRoutePlanningArtworks;
-- (void)_readSectionOptions;
-- (void)_readSections;
-- (void)_readSteps;
-- (void)_readTransitIncidentMessage;
 - (void)addRouteBadge:(int)arg1;
 - (void)addRoutePlanningArtwork:(id)arg1;
 - (void)addSection:(id)arg1;
@@ -140,9 +111,13 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (id)nextOptionForOption:(id)arg1 withRideIndex:(unsigned long long)arg2;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)routeBadgeAtIndex:(unsigned long long)arg1;

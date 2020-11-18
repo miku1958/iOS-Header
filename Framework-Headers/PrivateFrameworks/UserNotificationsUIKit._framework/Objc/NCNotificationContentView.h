@@ -67,7 +67,7 @@
 @property (nonatomic) BOOL useSmallTopMargin; // @synthesize useSmallTopMargin=_useSmallTopMargin;
 
 - (void).cxx_destruct;
-- (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3;
+- (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3 scale:(double)arg4;
 - (void)_clearCacheForFont:(id)arg1;
 - (void)_configureTextSupportingView:(id)arg1;
 - (struct UIEdgeInsets)_contentInsets;
@@ -92,16 +92,16 @@
 - (struct CGRect)_primaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (struct CGRect)_primarySubtitleLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (double)_primarySubtitleTextBaselineOffsetForCurrentStyle;
-- (unsigned long long)_primarySubtitleTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_primarySubtitleTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (unsigned long long)_primarySubtitleTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
 - (double)_primaryTextBaselineOffsetForCurrentStyle;
 - (double)_primaryTextBaselineOffsetWithBaseValue:(double)arg1;
-- (unsigned long long)_primaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_primaryTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (unsigned long long)_primaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
 - (double)_secondaryTextBaselineOffsetForCurrentStyle;
 - (double)_secondaryTextBaselineOffsetFromBottomWithBaseValue:(double)arg1;
 - (double)_secondaryTextBaselineOffsetWithBaseValue:(double)arg1;
-- (unsigned long long)_secondaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_secondaryTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (unsigned long long)_secondaryTextNumberOfLines;
 - (unsigned long long)_secondaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
 - (id)_secondaryTextSupportingView;
@@ -110,7 +110,7 @@
 - (struct CGRect)_summaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (double)_summaryTextBaselineOffsetForCurrentStyle;
 - (double)_summaryTextBaselineOffsetWithBaseValue:(double)arg1;
-- (unsigned long long)_summaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_summaryTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (unsigned long long)_summaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
 - (void)_updateContentInsets;
 - (void)_updateContentModeForThumbnailImage:(id)arg1;

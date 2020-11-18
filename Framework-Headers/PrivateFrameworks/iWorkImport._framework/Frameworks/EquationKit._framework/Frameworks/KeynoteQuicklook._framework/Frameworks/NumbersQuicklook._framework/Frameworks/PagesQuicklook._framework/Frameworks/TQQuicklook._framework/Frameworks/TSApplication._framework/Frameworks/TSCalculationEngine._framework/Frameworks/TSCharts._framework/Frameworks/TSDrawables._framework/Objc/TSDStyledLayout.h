@@ -18,13 +18,13 @@
 
 - (struct CGRect)aliasedAlignmentFrameForScale:(double)arg1;
 - (struct CGRect)alignmentFrameInRoot;
-- (struct CGRect)frameForCulling;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
+- (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
 - (struct CGRect)i_baseFrame;
 - (BOOL)isInvisible;
 - (struct CGRect)reflectionBoundsForRect:(struct CGRect)arg1;
 - (struct CGRect)reflectionFrame;
 - (struct CGRect)reflectionFrameForSubRect:(struct CGRect)arg1;
-- (struct CGRect)reflectionFrameInRoot;
 - (double)scaleToApplyToPathSourceNaturalSizeApplyingLayoutTransform:(struct CGAffineTransform)arg1 withStartingPathSource:(id)arg2;
 - (struct CGRect)shadowedNaturalBoundsWithoutOffset;
 - (id)styledInfo;

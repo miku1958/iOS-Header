@@ -16,6 +16,7 @@
     NTKAstronomyVistaView *_astronomyVistaView;
     NTKAstronomyLocationDot *_locationDot;
     CLKDevice *_device;
+    long long _family;
     NSDate *_timelineDate;
     NSDate *_timeTravelDate;
     unsigned int _isPaused:1;
@@ -37,9 +38,9 @@
 - (void)astronomyVistaViewContentsAnimationFinished:(id)arg1;
 - (void)astronomyVistaViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (void)handleOrdinaryScreenWake;
-- (void)handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)handleTemplateMetadata:(id)arg1 reason:(long long)arg2;
 - (void)handleWristRaiseScreenWake;
-- (id)initForDevice:(id)arg1 diameter:(double)arg2;
+- (id)initForDevice:(id)arg1 family:(long long)arg2 diameter:(double)arg3;
 - (void)layoutSubviews;
 - (void)prepareWristRaiseAnimation;
 - (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;

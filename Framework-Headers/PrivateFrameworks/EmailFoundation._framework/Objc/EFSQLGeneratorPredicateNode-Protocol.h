@@ -7,10 +7,10 @@
 #import <EmailFoundation/NSObject-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @protocol EFSQLGeneratorPredicateNode <NSObject>
-- (id<EFSQLExpressable>)sqlExpressableWithTableExpressions:(NSMutableArray *)arg1;
+- (id<EFSQLValueExpressable>)sqlExpressableWithTableExpressions:(NSMutableArray *)arg1;
 - (void)traverseTreeWithAliasMap:(NSMutableDictionary *)arg1;
 @end
 

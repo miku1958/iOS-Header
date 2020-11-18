@@ -20,6 +20,7 @@
     struct LogCategory *_ucat;
     WiFiAwarePublisher *_wfaPublisher;
     BOOL _dataPathEnabled;
+    unsigned int _controlFlags;
     int _port;
     unsigned int _trafficFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -31,8 +32,10 @@
     CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _dataSessionStartedHandler;
     CDUnknownBlockType _dataSessionEndedHandler;
+    CDUnknownBlockType _receiveHandler;
 }
 
+@property (nonatomic) unsigned int controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (nonatomic) BOOL dataPathEnabled; // @synthesize dataPathEnabled=_dataPathEnabled;
 @property (copy, nonatomic) CDUnknownBlockType dataSessionEndedHandler; // @synthesize dataSessionEndedHandler=_dataSessionEndedHandler;
 @property (copy, nonatomic) CDUnknownBlockType dataSessionStartedHandler; // @synthesize dataSessionStartedHandler=_dataSessionStartedHandler;
@@ -45,6 +48,7 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int port; // @synthesize port=_port;
+@property (copy, nonatomic) CDUnknownBlockType receiveHandler; // @synthesize receiveHandler=_receiveHandler;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *textInfo; // @synthesize textInfo=_textInfo;
@@ -66,6 +70,8 @@
 - (void)publisher:(id)arg1 receivedMessage:(id)arg2 fromSubscriberID:(unsigned char)arg3 subscriberAddress:(id)arg4;
 - (void)publisher:(id)arg1 terminatedWithReason:(long long)arg2;
 - (void)publisherStarted:(id)arg1;
+- (void)reportIssue:(id)arg1;
+- (void)sendMessageData:(id)arg1 endpoint:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

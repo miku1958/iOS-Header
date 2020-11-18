@@ -50,21 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_hwMachine:1;
         unsigned int read_requestErrorDescription:1;
         unsigned int read_requestErrorDomain:1;
-        unsigned int wrote_tileUsages:1;
-        unsigned int wrote_sessionID:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_hwMachine:1;
-        unsigned int wrote_requestErrorCode:1;
-        unsigned int wrote_requestErrorDescription:1;
-        unsigned int wrote_requestErrorDomain:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_cellWifi:1;
-        unsigned int wrote_geoService:1;
-        unsigned int wrote_placeRequestType:1;
-        unsigned int wrote_requestDataSize:1;
-        unsigned int wrote_responseDataSize:1;
-        unsigned int wrote_responseTime:1;
-        unsigned int wrote_sessionIDIsPersistent:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -104,12 +90,6 @@ __attribute__((visibility("hidden")))
 - (int)StringAsCellWifi:(id)arg1;
 - (int)StringAsGeoService:(id)arg1;
 - (int)StringAsPlaceRequestType:(id)arg1;
-- (void)_addNoFlagsTileUsage:(struct GEOTileUsage)arg1;
-- (void)_readCountryCode;
-- (void)_readHwMachine;
-- (void)_readRequestErrorDescription;
-- (void)_readRequestErrorDomain;
-- (void)_readTileUsages;
 - (void)addTileUsage:(struct GEOTileUsage)arg1;
 - (id)cellWifiAsString:(int)arg1;
 - (void)clearTileUsages;
@@ -122,7 +102,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)placeRequestTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -65,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (id)_effectiveDropProposalForProposal:(id)arg1;
 - (void)_endInteractiveReorderingIfNeeded;
 - (BOOL)_hasGapLargeEnoughToRequireDropActionCallForCurrentItemAttributes:(id)arg1 proposedNextItemAttributes:(id)arg2;
-- (BOOL)_isCompatibilityMode;
 - (BOOL)_isLocalInteractiveMove;
 - (BOOL)_isMultiItemSource;
 - (void)_pauseReorderingDisplayLink;

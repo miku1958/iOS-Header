@@ -10,16 +10,14 @@
 #import <NanoTimeKitCompanion/NTKClockHardwareInput-Protocol.h>
 #import <NanoTimeKitCompanion/NTKClockIconZoomAnimator-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationPickerViewDataSource-Protocol.h>
-#import <NanoTimeKitCompanion/NTKFaceEditViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceViewDelegate-Protocol.h>
 
-@class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, UIView;
-@protocol NTKClockStatusBarViewController, NTKFaceViewControllerDelegate, OS_dispatch_source;
+@class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, NTKTritiumAnimationController, NTKTritiumViewController, UIView;
+@protocol NTKClockStatusBarViewController, NTKFaceViewControllerDelegate, NTKFaceViewControllerStatusBarDelegate, OS_dispatch_source;
 
-@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, CLKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
+@interface NTKFaceViewController : UIViewController <NTKComplicationPickerViewDataSource, CLKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
 {
-    NTKFaceView *_faceView;
     struct os_unfair_lock_s _normalComplicationControllersLock;
     NSMutableDictionary *_normalComplicationControllers;
     struct os_unfair_lock_s _detachedComplicationControllersLock;
@@ -40,6 +38,7 @@
     UIView *_zoomingIconCircleView;
     UIView *_zoomingIconTimeView;
     UIView *_zoomingContainerView;
+    double _zoomingDiagonalLength;
     NSDate *_scrubDate;
     NSObject<OS_dispatch_source> *_time_travel_update_timer;
     NTKComplicationDisplayWrapperView *_pptComplicationDisplay;
@@ -50,17 +49,23 @@
     BOOL _hasRemovedUnadornedSnapshot;
     NSString *_lastTappedSlotIdentifier;
     struct CGRect _faceLaunchRect;
+    BOOL _isOrbDisabled;
     BOOL _shouldShowSnapshot;
     BOOL _supressesNonSnapshotUI;
+    BOOL _shouldUseSampleTemplate;
     BOOL _showsCanonicalContent;
     BOOL _showContentForUnadornedSnapshot;
     BOOL _ignoreSnapshotImages;
     BOOL _showsLockedUI;
     id<NTKFaceViewControllerDelegate> _delegate;
+    id<NTKFaceViewControllerStatusBarDelegate> _statusBarDelegate;
     long long _dataMode;
     NSDate *_pauseDate;
     UIViewController<NTKClockStatusBarViewController> *_statusBarViewController;
     NTKFace *_face;
+    NTKFaceView *_faceView;
+    NTKTritiumAnimationController *_tritiumAnimationController;
+    NTKTritiumViewController *_tritiumViewController;
 }
 
 @property (nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
@@ -71,16 +76,21 @@
 @property (readonly, nonatomic) NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreSnapshotImages; // @synthesize ignoreSnapshotImages=_ignoreSnapshotImages;
+@property (readonly, nonatomic) BOOL isOrbDisabled; // @synthesize isOrbDisabled=_isOrbDisabled;
 @property (strong, nonatomic) NSDate *pauseDate; // @synthesize pauseDate=_pauseDate;
 @property (nonatomic) BOOL shouldShowSnapshot; // @synthesize shouldShowSnapshot=_shouldShowSnapshot;
+@property (nonatomic) BOOL shouldUseSampleTemplate; // @synthesize shouldUseSampleTemplate=_shouldUseSampleTemplate;
 @property (nonatomic) BOOL showContentForUnadornedSnapshot; // @synthesize showContentForUnadornedSnapshot=_showContentForUnadornedSnapshot;
 @property (nonatomic) BOOL showsCanonicalContent; // @synthesize showsCanonicalContent=_showsCanonicalContent;
 @property (nonatomic) BOOL showsLockedUI; // @synthesize showsLockedUI=_showsLockedUI;
+@property (weak, nonatomic) id<NTKFaceViewControllerStatusBarDelegate> statusBarDelegate; // @synthesize statusBarDelegate=_statusBarDelegate;
 @property (strong, nonatomic) UIViewController<NTKClockStatusBarViewController> *statusBarViewController; // @synthesize statusBarViewController=_statusBarViewController;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supressesNonSnapshotUI; // @synthesize supressesNonSnapshotUI=_supressesNonSnapshotUI;
+@property (readonly, nonatomic) NTKTritiumAnimationController *tritiumAnimationController; // @synthesize tritiumAnimationController=_tritiumAnimationController;
+@property (readonly, nonatomic) NTKTritiumViewController *tritiumViewController; // @synthesize tritiumViewController=_tritiumViewController;
 
-+ (double)_complicationPickerAlphaForTransitionFraction:(double)arg1;
++ (id)_controllerForComplication:(id)arg1 face:(id)arg2 slot:(id)arg3;
 + (id)_createNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2 face:(id)arg3 faceView:(id)arg4;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -93,30 +103,22 @@
 - (void)_clearFaceLaunchRect;
 - (void)_clearLastTappedComplication;
 - (void)_configureBackgroundFillAlpha:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureForEditMode:(long long)arg1;
-- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureLisaForSelectedSlot:(id)arg1 editMode:(long long)arg2 animated:(BOOL)arg3;
-- (void)_configureViewsForSelectedSlot:(id)arg1 editMode:(long long)arg2;
-- (id)_controllerForComplication:(id)arg1 slot:(id)arg2;
 - (id)_dailySnapshot;
-- (id)_deactivatePickerViewForSlot:(id)arg1;
 - (void)_defaultCleanupAfterZoom;
 - (void)_defaultPrepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_defaultSetZoomFraction:(double)arg1 iconDiameter:(double)arg2;
-- (void)_endTransitionToValue:(long long)arg1 forEditMode:(long long)arg2;
 - (void)_ensureComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_ensureDetachedComplication:(id)arg1;
 - (void)_ensureNormalComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_ensureNotLive;
 - (void)_ensurePauseDate;
-- (id)_ensurePickerViewForSlot:(id)arg1;
 - (void)_faceSnapshotDidChange:(id)arg1;
 - (void)_handleDeviceLockChange;
 - (BOOL)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (void)_handleStatusBarChange;
 - (void)_insertDetachedComplicationDisplay:(id)arg1 controller:(id)arg2 forSlot:(id)arg3;
 - (void)_insertNormalComplicationDisplay:(id)arg1 controller:(id)arg2 forSlot:(id)arg3;
-- (id)_keylineLabelTextForOption:(id)arg1 customEditMode:(long long)arg2;
+- (BOOL)_isCollectionPickerViewEnabled;
 - (void)_loadInitialComplicationVisibilityFromFace;
 - (id)_newNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2;
 - (void)_removeComplicationForSlot:(id)arg1;
@@ -125,18 +127,11 @@
 - (id)_selectedVisibleSlotForEditMode:(long long)arg1;
 - (void)_setDataMode:(long long)arg1 becomeLiveOnUnfreeze:(BOOL)arg2;
 - (void)_setFaceViewResourceDirectoryFromFace;
-- (void)_setupEditViewForComplications;
-- (void)_setupEditViewForCustomEditMode:(long long)arg1;
-- (void)_setupEditViewForHiddenComplications;
-- (void)_setupEditing;
 - (BOOL)_shouldHideFaceUI;
-- (BOOL)_shouldShowComplicationPickerForSlot:(id)arg1;
 - (void)_showStatusBarAfterWake;
-- (void)_tearDownEditing;
-- (void)_transitionFraction:(double)arg1 fromValue:(long long)arg2 toValue:(long long)arg3 forEditMode:(long long)arg4 slot:(id)arg5;
+- (void)_simplifiedCleanupAfterZoom;
+- (void)_simplifiedSetZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (id)_unadornedSnapshot;
-- (void)_updateComplicationLisaGesture;
-- (void)_updateFaceAndViewWithOption:(id)arg1 forMode:(long long)arg2 resourcePath:(id)arg3 slot:(id)arg4;
 - (void)_updateInteractivityOfComplicationDisplays;
 - (BOOL)_wheelChangedWithEvent:(id)arg1;
 - (void)_wrapperViewTapped:(id)arg1;
@@ -149,22 +144,16 @@
 - (void)complicationPickerView:(id)arg1 getDisplay:(id *)arg2 controller:(id *)arg3 forComplication:(id)arg4;
 - (id)complicationPickerView:(id)arg1 layoutRuleForComplicationDisplay:(id)arg2;
 - (void)configureWithDuration:(double)arg1 block:(CDUnknownBlockType)arg2;
-- (id)currentOrderedComplicationApplicationIdentifiers;
+- (id)currentOrderedClockComplicationCounts;
 - (id)customEditOptionContainerViewForComplicationPickerView:(id)arg1;
 - (BOOL)dailySnapshotShowsComplication:(id)arg1 forSlot:(id)arg2;
 - (void)dealloc;
 - (void)disableSlowMode;
-- (void)editView:(id)arg1 didScrollToFraction:(double)arg2 fromEditMode:(long long)arg3 toEditMode:(long long)arg4;
-- (void)editView:(id)arg1 didStopAtEditMode:(long long)arg2;
-- (void)editView:(id)arg1 didTapKeylineForKey:(id)arg2 editMode:(long long)arg3;
-- (void)editView:(id)arg1 keylineDidBreathe:(double)arg2 forKey:(id)arg3 editMode:(long long)arg4;
-- (void)editView:(id)arg1 keylineDidRubberBand:(double)arg2 forKey:(id)arg3 editMode:(long long)arg4;
-- (BOOL)editViewShouldShowPageDotsOnBottom:(id)arg1;
-- (void)editViewWillBeginScrolling:(id)arg1;
 - (void)enableSlowMode;
 - (void)enumerateComplicationControllersAndDisplaysWithBlock:(CDUnknownBlockType)arg1;
 - (void)face:(id)arg1 didChangeOptionsForEditMode:(long long)arg2;
 - (void)faceConfigurationDidChange:(id)arg1;
+- (void)faceConfigurationsDidChangeInTritiumViewController:(id)arg1;
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (BOOL)faceView:(id)arg1 wantsToDismissPresentedViewControllerAnimated:(BOOL)arg2;
 - (id)faceViewAllVisibleComplicationsForCurrentConfiguration;
@@ -177,7 +166,9 @@
 - (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewDidHideOrShowComplicationSlot;
 - (void)faceViewDidReloadSnapshotContentViews;
+- (id)faceViewDidRequestCustomDataForKey:(id)arg1;
 - (void)faceViewDidScrubToDate:(id)arg1 forced:(BOOL)arg2;
+- (void)faceViewDidUpdateCustomData:(id)arg1 forKey:(id)arg2;
 - (id)faceViewEditOptionThatHidesAllComplications;
 - (void)faceViewRequestedLaunchFromRect:(struct CGRect)arg1;
 - (BOOL)faceViewShouldIgnoreSnapshotImages;
@@ -200,6 +191,7 @@
 - (void)hideFaceEditingUIAnimated:(BOOL)arg1;
 - (void)hideFaceEditingUIAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFace:(id)arg1 configuration:(CDUnknownBlockType)arg2;
+- (void)invalidateFramesInTritiumViewController:(id)arg1 withReason:(id)arg2;
 - (struct CGRect)launchRectForComplicationApplicationIdentifier:(id)arg1;
 - (void)loadView;
 - (void)performComplicationBackgroundDataRefresh;
@@ -208,10 +200,13 @@
 - (void)prepareForSnapshotting;
 - (void)prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)prepareWristRaiseAnimation;
+- (id)removeStatusBarViewController;
 - (void)sensitiveUIStateChanged;
 - (void)setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (BOOL)shouldLoadLiveFaceAtNextScreenOff;
 - (void)showEditingUIAnimated:(BOOL)arg1;
+- (void)statusBarDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)unfreeze;
 - (void)viewDidLayoutSubviews;
 

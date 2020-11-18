@@ -10,6 +10,7 @@
 
 @class CNFRegLearnMoreButton, NSString, PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegSignInController : CNFRegFirstRunController <CNFRegCreateAccountControllerDelegate>
 {
     PSSpecifier *_usernameSpecifier;

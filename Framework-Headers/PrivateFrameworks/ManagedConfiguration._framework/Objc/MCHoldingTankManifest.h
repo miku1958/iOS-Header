@@ -17,13 +17,13 @@
 
 + (id)sharedManifest;
 - (void).cxx_destruct;
-- (void)_adjustManifestForDevice:(unsigned long long)arg1 withIdentifier:(id)arg2 addingIdentifer:(BOOL)arg3;
+- (BOOL)_adjustManifestForDevice:(unsigned long long)arg1 withIdentifier:(id)arg2 addingIdentifer:(BOOL)arg3 outError:(id *)arg4;
 - (void)_createDirectory:(id)arg1 withIntermediateDirectories:(BOOL)arg2;
 - (id)_manifestForDevice:(unsigned long long)arg1 createIfNil:(BOOL)arg2;
 - (id)_pathToHoldingTankDirectoryForDevice:(unsigned long long)arg1;
 - (id)_pathToHoldingTankManifestForDevice:(unsigned long long)arg1;
 - (id)_profileDataFileNameForProfileIdentifier:(id)arg1;
-- (void)addProfileData:(id)arg1 withIdentifier:(id)arg2 toHoldingTankForDevice:(unsigned long long)arg3;
+- (BOOL)addProfileData:(id)arg1 withIdentifier:(id)arg2 toHoldingTankForDevice:(unsigned long long)arg3 outError:(id *)arg4;
 - (void)dealloc;
 - (id)init;
 - (id)pathToHoldingTankProfileDataForIdentifier:(id)arg1 targetDevice:(unsigned long long)arg2 createDirectory:(BOOL)arg3;

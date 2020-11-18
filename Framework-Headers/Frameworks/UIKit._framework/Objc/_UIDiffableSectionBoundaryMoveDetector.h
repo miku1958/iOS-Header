@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSSet;
-@protocol UIDiffableDataSourceInfo, _UIIdentifierDiffer;
+@protocol _UIDiffableDataSourceState, _UIIdentifierDiffer;
 
 __attribute__((visibility("hidden")))
 @interface _UIDiffableSectionBoundaryMoveDetector : NSObject
 {
     id<_UIIdentifierDiffer> _differ;
-    id<UIDiffableDataSourceInfo> _beforeInfo;
-    id<UIDiffableDataSourceInfo> _afterInfo;
+    id<_UIDiffableDataSourceState> _beforeState;
+    id<_UIDiffableDataSourceState> _afterState;
     NSSet *_movePairs;
     BOOL _didShortCircuit;
 }
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_computeMovePairsFoundation;
 - (id)_computeMovePairsSTL;
-- (id)initWithItemDiffer:(id)arg1 beforeDataSourceInfo:(id)arg2 afterDataSourceInfo:(id)arg3;
+- (id)initWithItemDiffer:(id)arg1 beforeDataSourceState:(id)arg2 afterDataSourceState:(id)arg3;
 
 @end
 

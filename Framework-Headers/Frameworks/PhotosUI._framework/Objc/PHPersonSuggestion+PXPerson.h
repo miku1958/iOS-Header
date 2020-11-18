@@ -19,10 +19,10 @@
 @property (readonly) BOOL isVerified;
 @property (readonly) NSString *name;
 @property (readonly) unsigned long long numberOfAssets;
-@property (readonly) NSString *px_displayName;
 @property (readonly) NSDate *px_keyPhotoDate;
 @property (readonly) NSString *px_localIdentifier;
 @property (readonly) NSString *px_localizedName;
+@property (readonly) NSString *px_longStyleLocalizedName;
 @property (readonly) Class superclass;
 
 + (void)px_loadRepresentativeFacesForPersons:(id)arg1;

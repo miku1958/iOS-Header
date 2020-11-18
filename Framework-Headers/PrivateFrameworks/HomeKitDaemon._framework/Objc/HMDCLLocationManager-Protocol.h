@@ -17,6 +17,7 @@
 
 + (int)authorizationStatusForBundle:(NSBundle *)arg1;
 + (BOOL)locationServicesEnabled;
+- (int)authorizationStatus;
 - (void)requestLocation;
 - (void)requestStateForRegion:(CLRegion *)arg1;
 - (void)requestWhenInUseAuthorization;

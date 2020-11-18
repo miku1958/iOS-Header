@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedCryptographer;
 - (void).cxx_destruct;
 - (id)init;
+- (void)prewarmDeviceSalt;
 - (id)stringDigestForName:(id)arg1;
 
 @end

@@ -14,8 +14,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)_runPPTNamed:(id)arg1;
+- (void)_runPPTNamed:(id)arg1 numberOfRequiredScreenshots:(unsigned long long)arg2;
 - (id)init;
+- (void)showScreenshotUI;
 - (void)showScreenshotUIForImage:(id)arg1 options:(id)arg2;
 - (void)showScreenshotUIForImage:(id)arg1 options:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 

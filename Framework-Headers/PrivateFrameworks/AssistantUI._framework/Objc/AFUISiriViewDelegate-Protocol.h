@@ -20,5 +20,8 @@
 - (void)siriViewDidRecieveStatusViewHoldDidEndAction:(AFUISiriView *)arg1;
 - (void)siriViewDidRecieveStatusViewTappedAction:(AFUISiriView *)arg1;
 - (BOOL)siriViewShouldSupportTextInput:(AFUISiriView *)arg1;
+
+@optional
+- (void)collapseAndTriggerDismissalFromSiriView:(AFUISiriView *)arg1;
 @end
 

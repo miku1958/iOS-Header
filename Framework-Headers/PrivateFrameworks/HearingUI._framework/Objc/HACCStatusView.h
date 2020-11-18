@@ -6,12 +6,13 @@
 
 #import <UIKit/UIControl.h>
 
+#import <HearingUI/BCBatteryDeviceObserving-Protocol.h>
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class BCBatteryDevice, HACCBatteryGroupView, NSNumberFormatter, NSString, UIImageView, UILabel;
+@class BCBatteryDevice, BCBatteryDeviceController, HACCBatteryGroupView, NSNumberFormatter, NSString, UIImageView, UILabel;
 @protocol HACCContentModuleDelegate;
 
-@interface HACCStatusView : UIControl <HACCContentModule>
+@interface HACCStatusView : UIControl <BCBatteryDeviceObserving, HACCContentModule>
 {
     NSNumberFormatter *_numberFormatter;
     unsigned long long module;
@@ -20,8 +21,10 @@
     UIImageView *_iconView;
     HACCBatteryGroupView *_batteryView;
     BCBatteryDevice *_batteryDevice;
+    BCBatteryDeviceController *_batteryController;
 }
 
+@property (strong, nonatomic) BCBatteryDeviceController *batteryController; // @synthesize batteryController=_batteryController;
 @property (strong, nonatomic) BCBatteryDevice *batteryDevice; // @synthesize batteryDevice=_batteryDevice;
 @property (strong, nonatomic) HACCBatteryGroupView *batteryView; // @synthesize batteryView=_batteryView;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,6 +42,7 @@
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (void)buttonTapped:(id)arg1;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (id)contentValue;
 - (BOOL)enabled;
 - (id)initWithFrame:(struct CGRect)arg1;

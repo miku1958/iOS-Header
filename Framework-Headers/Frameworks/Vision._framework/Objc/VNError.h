@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)VNAssert:(BOOL)arg1 log:(id)arg2;
 + (id)errorForCVReturnCode:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForCancellationOfRequest:(id)arg1;
 + (id)errorForDataUnavailableWithLocalizedDescription:(id)arg1;
@@ -27,13 +28,16 @@ __attribute__((visibility("hidden")))
 + (id)errorForInvalidOperationWithLocalizedDescription:(id)arg1;
 + (id)errorForInvalidOption:(id)arg1 named:(id)arg2;
 + (id)errorForInvalidOption:(id)arg1 named:(id)arg2 localizedDescription:(id)arg3;
++ (id)errorForInvalidOptionWithLocalizedDescription:(id)arg1;
 + (id)errorForMemoryAllocationFailure;
 + (id)errorForMemoryAllocationFailureWithLocalizedDescription:(id)arg1;
 + (id)errorForMissingOptionNamed:(id)arg1;
 + (id)errorForOSStatus:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForOperationFailedErrorWithLocalizedDescription:(id)arg1;
 + (id)errorForOutOfBoundsErrorWithLocalizedDescription:(id)arg1;
++ (id)errorForUnavailableSession;
 + (id)errorForUnimplementedFunctionWithLocalizedDescription:(id)arg1;
++ (id)errorForUnimplementedMethod:(SEL)arg1 ofObject:(id)arg2;
 + (id)errorForUnknownErrorErrorWithLocalizedDescription:(id)arg1;
 + (id)errorForUnsupportedConfigurationOfRequest:(id)arg1;
 + (id)errorForUnsupportedPrivateRevision:(unsigned long long)arg1 ofRequest:(id)arg2;

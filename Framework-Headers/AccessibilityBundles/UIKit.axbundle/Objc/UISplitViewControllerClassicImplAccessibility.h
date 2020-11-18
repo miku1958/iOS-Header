@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilitySpeakThisViewController;
 - (void)_axApplyDisplayModeLabel;
 - (void)_loadNewSubviews:(id)arg1;
 - (void)_updateDisplayModeButtonItem;

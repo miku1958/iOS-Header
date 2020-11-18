@@ -18,15 +18,18 @@
     BOOL _invalidated;
     NSMutableDictionary *_generatedIconImagesByKey;
     NSMutableSet *_formatsPendingGeneration;
+    BOOL _appClip;
     FBSApplicationPlaceholder *_placeholderProxy;
     id<SBApplicationPlaceholderDelegate> _delegate;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
+@property (readonly, nonatomic, getter=isAppClip) BOOL appClip; // @synthesize appClip=_appClip;
 @property (readonly, copy, nonatomic) NSString *applicationBundleID;
 @property (readonly, copy, nonatomic) NSString *applicationDisplayName;
 @property (readonly, nonatomic, getter=isCancelable) BOOL cancelable;
 @property (readonly, nonatomic, getter=isCloudDemoted) BOOL cloudDemoted;
+@property (readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBApplicationPlaceholderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -40,6 +43,7 @@
 @property (readonly, nonatomic) FBSApplicationPlaceholder *placeholderProxy; // @synthesize placeholderProxy=_placeholderProxy;
 @property (readonly, nonatomic, getter=isPrioritizable) BOOL prioritizable;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic, getter=isWaiting) BOOL waiting;
 
 + (id)backgroundQueue;

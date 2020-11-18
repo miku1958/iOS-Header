@@ -61,6 +61,7 @@
 - (id)_timeTravelCaptionFontSizeOverrides;
 - (double)_timeTravelCaptionLabelMaxWidth;
 - (BOOL)_timeViewBehindContentForEditMode:(long long)arg1;
+- (double)_timeViewScale;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateDateComplicationPositionIfNecessary;
 - (BOOL)_usesCustomZoom;

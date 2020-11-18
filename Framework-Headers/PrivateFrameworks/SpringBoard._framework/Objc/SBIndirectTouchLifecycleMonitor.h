@@ -28,6 +28,7 @@
 - (void)handleHoverEvent:(id)arg1;
 - (id)initWithSystemGestureManager:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (struct CGPoint)systemGestureHoverLocationInView:(id)arg1;
 
 @end
 

@@ -28,9 +28,9 @@
 - (id)_createSourceEntityForBundleIdentifier:(id)arg1 owningAppBundleIdentifier:(id)arg2 name:(id)arg3 options:(unsigned long long)arg4 isCurrentDevice:(BOOL)arg5 productType:(id)arg6 error:(id *)arg7;
 - (id)_createSourceEntityForLocalDeviceWithError:(id *)arg1;
 - (id)_createSourceEntityForSpartanDeviceWithError:(id *)arg1;
-- (BOOL)_createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 sourceUUIDSToDelete:(id)arg3 deleteSamples:(BOOL)arg4 database:(id)arg5 error:(id *)arg6;
+- (BOOL)_createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 sourceUUIDSToDelete:(id)arg3 deleteSamples:(BOOL)arg4 transaction:(id)arg5 error:(id *)arg6;
 - (BOOL)_deleteSourceIfNoSampleFound:(id)arg1;
-- (BOOL)_deleteSourcesWithUUIDs:(id)arg1 localSourceEntityCacheKey:(id)arg2 deleteSamples:(BOOL)arg3 database:(id)arg4 error:(id *)arg5;
+- (BOOL)_deleteSourcesWithUUIDs:(id)arg1 localSourceEntityCacheKey:(id)arg2 deleteSamples:(BOOL)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)_fetchClientSourceForPersistentID:(id)arg1 error:(id *)arg2;
 - (id)_localSourcesForBundleIDs:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_predicateForSourceBundleIdentifier:(id)arg1 localOnly:(BOOL)arg2;

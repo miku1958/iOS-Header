@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_dataNetworkImage;
 - (id)_dataNetworkImageName;
 - (id)_stringForRSSI;
-- (BOOL)_updateWithData:(CDStruct_0942cde0 *)arg1 networkType:(int)arg2;
+- (BOOL)_updateWithData:(CDStruct_3fd7985f *)arg1 networkType:(int)arg2;
 - (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (double)extraLeftPadding;

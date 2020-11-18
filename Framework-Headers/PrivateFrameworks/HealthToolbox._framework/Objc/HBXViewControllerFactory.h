@@ -10,20 +10,22 @@
 
 @interface HBXViewControllerFactory : NSObject
 {
+    HKHealthChartFactory *_chartFactory;
     WDProfile *_profile;
     HBXUnitSupport *_unitSupport;
-    HKHealthChartFactory *_chartFactory;
 }
 
 @property (strong, nonatomic) HKHealthChartFactory *chartFactory; // @synthesize chartFactory=_chartFactory;
 @property (strong, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) HBXUnitSupport *unitSupport; // @synthesize unitSupport=_unitSupport;
 
++ (id)factories;
++ (struct os_unfair_recursive_lock_s)factoriesLock;
 + (id)sharedInstance;
++ (id)sharedInstanceForHealthStore:(id)arg1;
 - (void).cxx_destruct;
 - (id)createActivityChart:(id)arg1;
-- (id)createActivityViewController;
-- (id)createAddDataViewController:(id)arg1 with:(id)arg2;
+- (id)createActivityChartForActivityMoveMode:(long long)arg1 displayDate:(id)arg2;
 - (void)createAndStartExportForViewController:(id)arg1;
 - (id)createAppSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
 - (id)createBuddyViewController;
@@ -34,24 +36,27 @@
 - (id)createDetailViewControllerForType:(id)arg1;
 - (id)createDetailViewControllerForType:(id)arg1 displayDate:(id)arg2;
 - (id)createDeviceSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
+- (id)createDeviceStoredDataViewControllerForDevice:(id)arg1 withHealthStore:(id)arg2 usingInsetStyling:(BOOL)arg3;
 - (id)createElectrocardiogramDataMetadataViewControllerWithElectrocardiogram:(id)arg1 dataProvider:(id)arg2;
 - (id)createElectrocardiogramListDataProvider;
 - (id)createFavoritesController;
 - (id)createHKUnitPreferenceController;
-- (id)createHeartRoomViewControllerWithDisplayDate:(id)arg1;
-- (id)createInteractiveChartForType:(id)arg1 secondaryTypeIdentifier:(id)arg2 displayDate:(id)arg3;
-- (id)createInteractiveChartForType:(id)arg1 secondaryTypeIdentifier:(id)arg2 displayDateInterval:(id)arg3;
+- (id)createInteractiveChartForType:(id)arg1 preferredOverlay:(long long)arg2 displayDate:(id)arg3;
+- (id)createInteractiveChartForType:(id)arg1 preferredOverlay:(long long)arg2 displayDateInterval:(id)arg3;
 - (id)createListViewController:(id)arg1;
-- (id)createProfileViewController;
+- (id)createLocalDeviceStoredDataViewControllerForSource:(id)arg1 withHealthStore:(id)arg2 usingInsetStyling:(BOOL)arg3;
 - (id)createResearchStudySourcesViewControllerUsingInsetStyling:(BOOL)arg1 restorationStudyBundleIdentifier:(id)arg2;
 - (id)createSingleAppAuthorizationViewControllerUsingInsetStyling:(BOOL)arg1 restorationApplicationBundleIdentifier:(id)arg2;
 - (id)createSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
 - (id)createUnitPreferencesController:(id)arg1;
+- (id)createWatchStoredDataViewControllerForSource:(id)arg1 withHealthStore:(id)arg2 usingInsetStyling:(BOOL)arg3;
+- (id)detailViewControllerForSourceModel:(id)arg1 withHealthStore:(id)arg2;
 - (void)fetchUserDefaultForKey:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
 - (id)localizedDisplayNameForUnit:(id)arg1;
 - (id)localizedPreferredUnitDisplayNameForType:(id)arg1;
+- (id)localizedPreferredUnitDisplayNameForType:(id)arg1 nameContext:(long long)arg2;
 - (id)localizedUnitDisplayNameForDisplayType:(id)arg1;
 - (id)notificationManager;
 - (id)preferredUnitForType:(id)arg1;

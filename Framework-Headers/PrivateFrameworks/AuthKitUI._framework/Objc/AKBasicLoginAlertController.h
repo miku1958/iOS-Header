@@ -51,7 +51,6 @@
 - (void)_didEnterCode:(id)arg1;
 - (void)_dismissAndShowiForgot:(id)arg1;
 - (void)_endObservingDidEnterCodeNotifications;
-- (id)_interpolatedReasonString;
 - (id)_passwordField;
 - (void)_passwordFieldDidChange:(id)arg1;
 - (void)_setupAuthenticateAndCancelButtons;

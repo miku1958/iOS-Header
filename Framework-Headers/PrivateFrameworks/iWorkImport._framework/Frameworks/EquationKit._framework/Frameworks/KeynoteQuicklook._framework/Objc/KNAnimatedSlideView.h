@@ -8,18 +8,21 @@
 
 #import <KeynoteQuicklook/KNCanvasDelegate-Protocol.h>
 #import <KeynoteQuicklook/TSDConnectedInfoReplacing-Protocol.h>
-#import <KeynoteQuicklook/TSDLiveTexturedRectangleSource-Protocol.h>
+#import <KeynoteQuicklook/TSDMetalRenderer-Protocol.h>
 
 @class KNAnimatedSlideModel, KNAnimationDelayedCallbacks, KNPlaybackSession, KNSlide, KNSlideNode, NSArray, NSIndexSet, NSLock, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, TSDCanvas;
 @protocol OS_os_log, TSDCanvasProxyDelegate;
 
-@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing, TSDLiveTexturedRectangleSource>
+@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing, TSDMetalRenderer>
 {
     unsigned long long _animationsActive;
     unsigned long long _animationsStarted;
     NSMutableSet *_ambientBuildRenderers;
     NSMapTable *_buildsToStartAfterAmbientBuildStartsMap;
+    NSLock *_textureDescriptionAndSetForRepMapLock;
     NSMapTable *_textureDescriptionAndSetForRepMap;
+    NSArray *_precachedStaticTextureSets;
+    BOOL _didRenderPrecachedStaticTextures;
     double _transitionStartTime;
     NSMapTable *_eventToSlideTextureMap;
     NSMutableArray *_isMotionBlurEnabledForEvent;
@@ -58,8 +61,6 @@
     KNSlide *_slide;
     KNSlideNode *_slideNode;
     KNAnimationDelayedCallbacks *_delayedCallbacks;
-    NSArray *_movieControllers;
-    NSLock *_setTextureLock;
     NSLock *_canvasLock;
 }
 
@@ -67,8 +68,9 @@
 @property (readonly, nonatomic) NSSet *activeMovieHosts;
 @property (readonly, nonatomic) NSArray *allInfos;
 @property (readonly, nonatomic) NSArray *allInfosIncludingAudio;
+@property (readonly, nonatomic) NSArray *allReps;
 @property (readonly, nonatomic) unsigned long long buildEventCount;
-@property (readonly, nonatomic) TSDCanvas *canvas; // @synthesize canvas=_canvas;
+@property (strong, nonatomic) TSDCanvas *canvas; // @synthesize canvas=_canvas;
 @property (strong) NSLock *canvasLock; // @synthesize canvasLock=_canvasLock;
 @property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
 @property (nonatomic) unsigned long long currentEventIndex; // @synthesize currentEventIndex=_currentEventIndex;
@@ -88,18 +90,18 @@
 @property (readonly, nonatomic) BOOL isNonAmbientAnimationAnimating;
 @property (readonly) BOOL isPlayingMoviesWithMovieControllers;
 @property (readonly, nonatomic) BOOL isPrintingCanvas;
+@property (readonly) NSArray *mediaControllers;
 @property (readonly, nonatomic) KNAnimatedSlideModel *model; // @synthesize model=_model;
-@property (readonly) NSArray *movieControllers; // @synthesize movieControllers=_movieControllers;
+@property (readonly) NSArray *movieControllers;
 @property (readonly, nonatomic) NSSet *movieRenderers;
 @property (readonly, nonatomic) KNAnimatedSlideView *nextASV;
 @property (nonatomic) BOOL playsAutomaticTransitions; // @synthesize playsAutomaticTransitions=_playsAutomaticTransitions;
 @property (readonly, nonatomic) NSArray *repsCurrentlyVisible;
 @property (readonly, weak, nonatomic) KNPlaybackSession *session; // @synthesize session=_session;
-@property (strong) NSLock *setTextureLock; // @synthesize setTextureLock=_setTextureLock;
 @property (readonly, nonatomic) BOOL shouldPreCache;
 @property (readonly, nonatomic) BOOL shouldPrepareAnimationsAsynchronously;
-@property (readonly, weak, nonatomic) KNSlide *slide; // @synthesize slide=_slide;
-@property (readonly, weak, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
+@property (readonly, nonatomic) KNSlide *slide; // @synthesize slide=_slide;
+@property (readonly, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
 @property (readonly, nonatomic) unsigned long long slideNumber; // @synthesize slideNumber=_slideNumber;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL triggerQueued; // @synthesize triggerQueued=_triggerQueued;
@@ -109,15 +111,15 @@
 + (void)registerUserDefaults;
 - (void).cxx_destruct;
 - (void)addActiveAnimatedBuild:(id)arg1;
-- (id)allReps;
 - (struct CGRect)boundingRectOnCanvasForInfo:(id)arg1;
 - (void)buildHasFinishedAnimating:(id)arg1;
 - (void)clearActiveAnimatedBuilds;
 - (void)dealloc;
+- (void)didBecomeCurrent;
 - (id)documentRoot;
-- (void)drawToMetalTextureWithContext:(id)arg1;
 - (void)evictInactiveRenderers;
 - (void)generateTextures;
+- (BOOL)hasNewRenderingForTimingInfo:(CDStruct_39925896)arg1;
 - (BOOL)hasTransitionAtEventIndex:(long long)arg1;
 - (id)infoToConnectToForConnectionLineConnectedToInfo:(id)arg1;
 - (id)infosVisibleAtEvent:(unsigned long long)arg1 ignoreBuildVisibility:(BOOL)arg2;
@@ -128,6 +130,7 @@
 - (BOOL)isInfoAKeynoteMasterObject:(id)arg1;
 - (BOOL)isMotionBlurEnabledWithEvent:(unsigned long long)arg1;
 - (BOOL)isRenderingForKPF;
+- (id)mediaControllerForInfo:(id)arg1;
 - (id)movieControllerForInfo:(id)arg1;
 - (id)newSlideTextureForEvent:(unsigned long long)arg1;
 - (id)nonCachedTextureSetForRep:(id)arg1 description:(id)arg2 shouldRender:(BOOL)arg3;
@@ -161,7 +164,6 @@
 - (void)p_setMotionBlurStatus;
 - (void)p_setupSlideMetalRendererShouldReset:(BOOL)arg1;
 - (void)p_setupTransitionStartTime;
-- (BOOL)p_shouldAddInfoToTree:(id)arg1;
 - (BOOL)p_shouldSkipActionBuild:(id)arg1 onDrawable:(id)arg2;
 - (void)p_stopAllAmbientBuildRenderers;
 - (id)p_textureSetForRep:(id)arg1 shouldRender:(BOOL)arg2;
@@ -179,17 +181,18 @@
 - (void)renderCurrentEvent;
 - (void)renderIntoContext:(struct CGContext *)arg1 eventIndex:(unsigned long long)arg2 ignoreBuildVisibility:(BOOL)arg3;
 - (void)renderTextures;
+- (void)renderWithContext:(id)arg1;
 - (void)reset;
 - (void)resetAmbientBuildTextures;
 - (void)resumeAnimationsIfPaused;
 - (void)serializeTextures;
 - (void)setTexture:(id)arg1 forRep:(id)arg2 forDescription:(id)arg3;
-- (BOOL)shouldDrawToMetalTextureWithContext:(id)arg1;
-- (BOOL)shouldShowInstructionalText;
+- (BOOL)shouldShowInstructionalTextForLayout:(id)arg1;
 - (BOOL)shouldSuppressBackgrounds;
 - (void)stopAnimations;
 - (void)tearDown;
 - (void)tearDownTransition;
+- (id)textureSetForInfo:(id)arg1 eventIndex:(unsigned long long)arg2 ignoreBuildVisibility:(BOOL)arg3;
 - (id)textureSetForRep:(id)arg1 description:(id)arg2 shouldRender:(BOOL)arg3;
 - (void)transitionHasFinishedAnimating:(id)arg1;
 - (void)transitionHasImmediatelyFinishedAnimating:(id)arg1;

@@ -6,49 +6,42 @@
 
 #import <HomeKitDaemon/HMDCameraSnapshotIDSRelay.h>
 
-#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
-@class HMDDevice, HMDSnapshotFile, IDSSession, NSMutableData, NSObject, NSString;
-@protocol HMDCameraSnapshotIDSRelayInitiatorDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class HMDDevice, HMFActivity, IDSSession, NSMutableData, NSObject, NSString;
+@protocol HMDCameraSnapshotIDSRelayInitiatorDelegate, OS_dispatch_source;
 
-@interface HMDCameraSnapshotIDSRelayInitiator : HMDCameraSnapshotIDSRelay <IDSSessionDelegate, HMFLogging>
+@interface HMDCameraSnapshotIDSRelayInitiator : HMDCameraSnapshotIDSRelay <IDSSessionDelegate>
 {
+    HMFActivity *_activity;
     BOOL _idsSessionStarted;
-    HMDSnapshotFile *_snapshotFile;
-    HMDDevice *_device;
-    NSMutableData *_fileLengthAndData;
-    NSObject<OS_dispatch_source> *_socketSource;
     IDSSession *_idsSession;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
     id<HMDCameraSnapshotIDSRelayInitiatorDelegate> _delegate;
+    HMDDevice *_device;
+    NSMutableData *_data;
+    NSObject<OS_dispatch_source> *_socketSource;
 }
 
+@property (strong) NSMutableData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<HMDCameraSnapshotIDSRelayInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (readonly, weak) id<HMDCameraSnapshotIDSRelayInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
-@property (strong, nonatomic) NSMutableData *fileLengthAndData; // @synthesize fileLengthAndData=_fileLengthAndData;
+@property (readonly) HMDDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
-@property (nonatomic) BOOL idsSessionStarted; // @synthesize idsSessionStarted=_idsSessionStarted;
-@property (strong, nonatomic) HMDSnapshotFile *snapshotFile; // @synthesize snapshotFile=_snapshotFile;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *socketSource; // @synthesize socketSource=_socketSource;
+@property (strong) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
+@property BOOL idsSessionStarted; // @synthesize idsSessionStarted=_idsSessionStarted;
+@property (strong) NSObject<OS_dispatch_source> *socketSource; // @synthesize socketSource=_socketSource;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_callFileTransferFailed:(id)arg1;
-- (void)_sendFile;
-- (void)_sendInvitation;
-- (id)_smallData;
-- (void)_startFileTransfer;
+- (void)_sendData;
+- (void)_startDataTransfer;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 device:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
-- (id)logIdentifier;
-- (void)sendFile:(id)arg1;
-- (void)sendInvitation;
+- (id)initWithSessionID:(id)arg1 logIdentifier:(id)arg2 workQueue:(id)arg3 device:(id)arg4 delegate:(id)arg5;
+- (void)sendData:(id)arg1;
+- (void)sendIDSInvitation;
 - (void)session:(id)arg1 receivedInvitationAcceptFromID:(id)arg2;
 - (void)session:(id)arg1 receivedInvitationCancelFromID:(id)arg2;
 - (void)session:(id)arg1 receivedInvitationDeclineFromID:(id)arg2;

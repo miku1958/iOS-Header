@@ -10,6 +10,7 @@
 {
 }
 
++ (CDStruct_afa449f9)_calculateStatistics:(struct CGImage *)arg1 withSize:(struct CGSize)arg2;
 + (BOOL)isImageValid:(id)arg1 error:(id *)arg2;
 
 @end

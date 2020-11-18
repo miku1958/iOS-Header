@@ -22,6 +22,7 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

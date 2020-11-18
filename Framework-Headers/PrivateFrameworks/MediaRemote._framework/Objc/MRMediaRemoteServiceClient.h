@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableSet, _MRNowPlayingPlayerPathProtobuf;
+@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, MRPlayerPath, NSArray, NSMutableArray, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface MRMediaRemoteServiceClient : NSObject
@@ -14,8 +14,7 @@
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableArray *_registeredOrigins;
     MRAVRoutingClientController *_routingClientController;
-    _MRNowPlayingPlayerPathProtobuf *_activePlayerPath;
-    int _notifyRestoreClientStateForLaunch;
+    MRPlayerPath *_activePlayerPath;
     NSMutableSet *_playerPathInvalidationHandlers;
     MRNotificationServiceClient *_notificationService;
     MRMediaRemoteService *_service;
@@ -23,7 +22,7 @@
     NSObject<OS_dispatch_queue> *_playbackQueueDispatchQueue;
 }
 
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *activePlayerPath;
+@property (strong, nonatomic) MRPlayerPath *activePlayerPath;
 @property (readonly, nonatomic) MRNotificationClient *notificationClient; // @synthesize notificationClient=_notificationClient;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *playbackQueueDispatchQueue; // @synthesize playbackQueueDispatchQueue=_playbackQueueDispatchQueue;
 @property (readonly, nonatomic) NSArray *registeredOrigins;
@@ -32,14 +31,6 @@
 
 + (id)sharedServiceClient;
 - (void).cxx_destruct;
-- (void)_callInvalidationHandler:(id)arg1;
-- (void)_initializeConnectionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_invalidateConnection;
-- (void)_onQueue_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
-- (void)_onQueue_setActivePlayerPath:(id)arg1;
-- (void)_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
-- (void)_registerCallbacks;
-- (void)_resumeConnection;
 - (id)addPlayerPathInvalidationHandler:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;

@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)processMonitor:(id)arg1 didBecomeForeground:(BOOL)arg2;
 - (void)registerLifetimeExtensionForObject:(id)arg1;
 - (void)start;
+- (BOOL)terminateExtensionWithRetry:(long long)arg1 error:(id *)arg2;
 - (void)unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
 

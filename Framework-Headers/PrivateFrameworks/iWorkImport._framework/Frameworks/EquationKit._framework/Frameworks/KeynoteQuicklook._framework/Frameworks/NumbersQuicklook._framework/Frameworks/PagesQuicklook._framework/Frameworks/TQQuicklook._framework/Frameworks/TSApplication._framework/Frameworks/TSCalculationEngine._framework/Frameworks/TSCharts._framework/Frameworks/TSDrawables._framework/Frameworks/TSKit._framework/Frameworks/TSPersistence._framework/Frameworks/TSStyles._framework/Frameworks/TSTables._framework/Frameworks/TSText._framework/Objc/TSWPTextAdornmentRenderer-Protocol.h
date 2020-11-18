@@ -9,6 +9,6 @@
 @protocol TSWPTextAdornment;
 
 @protocol TSWPTextAdornmentRenderer <NSObject>
-- (void)drawAdornment:(id<TSWPTextAdornment>)arg1 inContext:(struct CGContext *)arg2 viewScale:(double)arg3 flipShadows:(BOOL)arg4;
+- (void)drawAdornment:(id<TSWPTextAdornment>)arg1 inContext:(struct CGContext *)arg2 viewScale:(double)arg3 flipShadows:(BOOL)arg4 blackAndWhite:(BOOL)arg5;
 @end
 

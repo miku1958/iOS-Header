@@ -16,12 +16,13 @@
 @interface PSPointerClientController : NSObject <PSPointerDefaultServiceServerToClientInterface, PSPointerDefaultLaunchingServiceServerToClientInterface, BSInvalidatable>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    BOOL _hasActivatedLaunchingConnection;
     BSServiceConnection *_nonLaunchingConnection;
     BSServiceConnection *_launchingConnection;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSCountedSet *_persistentPointerHideReasons;
     NSMutableArray *_serviceKeepAliveAssertions;
+    struct os_unfair_lock_s _invalidationAndConfigurationLock;
+    BOOL _hasActivatedLaunchingConnection;
     BOOL _isConnectionActive;
     unsigned int _systemCursorInteractionContextID;
     id<PSPointerClientControllerDelegate> _delegate;

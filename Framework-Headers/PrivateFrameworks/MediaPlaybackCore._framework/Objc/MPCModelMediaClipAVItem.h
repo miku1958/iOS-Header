@@ -13,7 +13,6 @@
 @interface MPCModelMediaClipAVItem : MPAVItem <MPRTCReportingItemSessionCreating>
 {
     MPModelGenericObject *_modelGenericObject;
-    id _rtcReportingParentHierarchyToken;
     MPModelMediaClip *_mediaClip;
 }
 

@@ -8,22 +8,36 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestAccountConfig : PBCodable <NSCopying>
 {
+    unsigned long long _accountFlags;
     long long _lastWebActivityUTCMills;
+    long long _photosWebAccessTimestamp;
+    NSString *_countryCode;
     BOOL _corporateSharingEnabled;
     struct {
+        unsigned int accountFlags:1;
         unsigned int lastWebActivityUTCMills:1;
+        unsigned int photosWebAccessTimestamp:1;
         unsigned int corporateSharingEnabled:1;
     } _has;
 }
 
+@property (nonatomic) unsigned long long accountFlags; // @synthesize accountFlags=_accountFlags;
 @property (nonatomic) BOOL corporateSharingEnabled; // @synthesize corporateSharingEnabled=_corporateSharingEnabled;
+@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (nonatomic) BOOL hasAccountFlags;
 @property (nonatomic) BOOL hasCorporateSharingEnabled;
+@property (readonly, nonatomic) BOOL hasCountryCode;
 @property (nonatomic) BOOL hasLastWebActivityUTCMills;
+@property (nonatomic) BOOL hasPhotosWebAccessTimestamp;
 @property (nonatomic) long long lastWebActivityUTCMills; // @synthesize lastWebActivityUTCMills=_lastWebActivityUTCMills;
+@property (nonatomic) long long photosWebAccessTimestamp; // @synthesize photosWebAccessTimestamp=_photosWebAccessTimestamp;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

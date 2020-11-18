@@ -45,7 +45,6 @@
 - (id)copyCurrentPath;
 - (id)copyError;
 - (id)description;
-- (void)dumpTimestamps;
 - (void)forceCancel;
 - (int)getConnectedSocket;
 - (id)initWithConnectedSocket:(int)arg1;

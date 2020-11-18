@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) NSURL *url;
 
 + (id)normalizedNameForName:(id)arg1;
++ (BOOL)supportsNonBodyBookmarks;
 + (id)uniqueBookmarkNameFromBase:(id)arg1 excludingNames:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)allowsEditing;
@@ -45,7 +46,7 @@
 - (void)resetTextAttributeUUIDString;
 - (void)saveToArchive:(struct BookmarkFieldArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 - (int)styleAttributeArrayKind;
 
 @end

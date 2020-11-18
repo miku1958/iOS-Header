@@ -6,8 +6,15 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC9TeaCharts29ColumnChartCoordinateProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *valueCoordinateCalculator;
+    MISSING_TYPE *coordinateSpace;
+    MISSING_TYPE *size;
+    MISSING_TYPE *options;
+    MISSING_TYPE *seriesDictionary;
 }
 
 @end

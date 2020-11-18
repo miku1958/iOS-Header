@@ -8,11 +8,19 @@
 
 @interface EKCalendarChange : EKObjectChange
 {
+    BOOL _titleChanged;
+    BOOL _colorChanged;
+    BOOL _orderChanged;
 }
+
+@property (readonly, nonatomic) BOOL colorChanged; // @synthesize colorChanged=_colorChanged;
+@property (readonly, nonatomic) BOOL orderChanged; // @synthesize orderChanged=_orderChanged;
+@property (readonly, nonatomic) BOOL titleChanged; // @synthesize titleChanged=_titleChanged;
 
 + (int)entityType;
 + (void)fetchCalendarChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (void)fetchCalendarChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (id)initWithChangeProperties:(id)arg1;
 
 @end
 

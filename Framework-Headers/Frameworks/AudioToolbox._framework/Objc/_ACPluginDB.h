@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL mDirty;
     NSObject<OS_dispatch_queue> *mDispatchQueue;
     struct function<void (AudioComponentVector &, AudioComponentVector &)> mNotificationCallback;
-    struct function<void ()> mScanHashCallback;
+    function_d3afe2e2 mScanHashCallback;
     NSData *mCarbonComponentHash;
 }
 

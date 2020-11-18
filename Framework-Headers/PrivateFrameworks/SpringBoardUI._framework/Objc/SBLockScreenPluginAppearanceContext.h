@@ -25,17 +25,17 @@
     struct CGRect presentationRegion;
 }
 
-@property (readonly, nonatomic) long long backgroundStyle;
+@property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSArray *elementOverrides;
+@property (copy, nonatomic) NSArray *elementOverrides; // @synthesize elementOverrides;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isHidden) BOOL hidden;
-@property (readonly, strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
-@property (readonly, nonatomic) long long notificationBehavior;
-@property (readonly, nonatomic) struct CGRect presentationRegion;
-@property (readonly, nonatomic) long long presentationStyle;
-@property (readonly, nonatomic) unsigned long long restrictedCapabilities;
+@property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden;
+@property (strong, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings; // @synthesize legibilitySettings;
+@property (nonatomic) long long notificationBehavior; // @synthesize notificationBehavior;
+@property (nonatomic) struct CGRect presentationRegion; // @synthesize presentationRegion;
+@property (nonatomic) long long presentationStyle; // @synthesize presentationStyle;
+@property (nonatomic) unsigned long long restrictedCapabilities; // @synthesize restrictedCapabilities;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -44,14 +44,6 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithAppearance:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (void)setBackgroundStyle:(long long)arg1;
-- (void)setElementOverrides:(id)arg1;
-- (void)setHidden:(BOOL)arg1;
-- (void)setLegibilitySettings:(id)arg1;
-- (void)setNotificationBehavior:(long long)arg1;
-- (void)setPresentationRegion:(struct CGRect)arg1;
-- (void)setPresentationStyle:(long long)arg1;
-- (void)setRestrictedCapabilities:(unsigned long long)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

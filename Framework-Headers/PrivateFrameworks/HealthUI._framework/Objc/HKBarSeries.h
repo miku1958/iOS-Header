@@ -6,35 +6,41 @@
 
 #import <HealthUI/HKGraphSeries.h>
 
-@class HKFillStyle, HKStrokeStyle;
+@class HKBarSeriesConfiguration, HKFillStyle, HKStrokeStyle, NSMutableArray;
 
 @interface HKBarSeries : HKGraphSeries
 {
+    HKBarSeriesConfiguration *_defaultConfiguration;
+    NSMutableArray *_overrideConfigurations;
     HKStrokeStyle *_unselectedStrokeStyle;
     HKStrokeStyle *_selectedStrokeStyle;
-    HKFillStyle *_unselectedFillStyle;
-    HKFillStyle *_selectedFillStyle;
     HKStrokeStyle *_tiledStrokeStyle;
     struct CGSize _cornerRadii;
 }
 
 @property (nonatomic) struct CGSize cornerRadii; // @synthesize cornerRadii=_cornerRadii;
-@property (strong, nonatomic) HKFillStyle *selectedFillStyle; // @synthesize selectedFillStyle=_selectedFillStyle;
+@property (strong, nonatomic) HKBarSeriesConfiguration *defaultConfiguration; // @synthesize defaultConfiguration=_defaultConfiguration;
+@property (strong, nonatomic) NSMutableArray *overrideConfigurations; // @synthesize overrideConfigurations=_overrideConfigurations;
+@property (strong, nonatomic) HKFillStyle *selectedFillStyle;
 @property (strong, nonatomic) HKStrokeStyle *selectedStrokeStyle; // @synthesize selectedStrokeStyle=_selectedStrokeStyle;
 @property (strong, nonatomic) HKStrokeStyle *tiledStrokeStyle; // @synthesize tiledStrokeStyle=_tiledStrokeStyle;
-@property (strong, nonatomic) HKFillStyle *unselectedFillStyle; // @synthesize unselectedFillStyle=_unselectedFillStyle;
+@property (strong, nonatomic) HKFillStyle *unselectedFillStyle;
 @property (strong, nonatomic) HKStrokeStyle *unselectedStrokeStyle; // @synthesize unselectedStrokeStyle=_unselectedStrokeStyle;
 
 - (void).cxx_destruct;
+- (id)_configurationForCoordinate:(id)arg1 inConfigurations:(id)arg2;
+- (void)_drawConfiguration:(id)arg1 strokeStyle:(id)arg2 axisRect:(struct CGRect)arg3 context:(struct CGContext *)arg4;
 - (void)_drawPath:(id)arg1 withFillStyle:(id)arg2 strokeStyle:(id)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
 - (double)barWidthForVisibleBarCount:(long long)arg1 axisRect:(struct CGRect)arg2 minimumSpacing:(double)arg3;
 - (BOOL)blockCoordinate:(id)arg1 greaterThan:(id)arg2;
 - (BOOL)blockCoordinate:(id)arg1 lessThan:(id)arg2;
 - (BOOL)blockCoordinateIsVisibleInsideOfChartRect:(struct CGRect)arg1 blockCoordinate:(id)arg2;
+- (void)clearCaches;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (double)distanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
 - (void)drawWithBlockCoordinates:(id)arg1 visibleBarCount:(long long)arg2 pointTransform:(struct CGAffineTransform)arg3 context:(struct CGContext *)arg4 axisRect:(struct CGRect)arg5;
+- (id)init;
 - (BOOL)supportsMultiTouchSelection;
 - (long long)visibleBarCountWithZoomLevelConfiguration:(id)arg1;
 - (double)xAxisDistanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;

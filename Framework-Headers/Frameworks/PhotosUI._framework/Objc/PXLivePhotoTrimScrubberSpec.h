@@ -18,8 +18,10 @@
     double _handleWidth;
     double _handleHeight;
     double _handleAnchorX;
+    double _loupeVerticalInset;
     double _loupeOuterCornerRadius;
     double _loupeInnerCornerRadius;
+    double _playheadWidth;
     double _filmstripCornerRadius;
     UIColor *_disabledOverlayColor;
     struct UIEdgeInsets _filmstripViewInsets;
@@ -36,6 +38,8 @@
 @property (nonatomic) double handleWidth; // @synthesize handleWidth=_handleWidth;
 @property (nonatomic) double loupeInnerCornerRadius; // @synthesize loupeInnerCornerRadius=_loupeInnerCornerRadius;
 @property (nonatomic) double loupeOuterCornerRadius; // @synthesize loupeOuterCornerRadius=_loupeOuterCornerRadius;
+@property (nonatomic) double loupeVerticalInset; // @synthesize loupeVerticalInset=_loupeVerticalInset;
+@property (nonatomic) double playheadWidth; // @synthesize playheadWidth=_playheadWidth;
 @property (nonatomic) double scrubberHeight; // @synthesize scrubberHeight=_scrubberHeight;
 @property (nonatomic) BOOL useMiniScrubberHeight; // @synthesize useMiniScrubberHeight=_useMiniScrubberHeight;
 

@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, PKAppleAccountInformation, PKPaymentProvisioningController, PKPeerPaymentAccount, PKPeerPaymentCredential, PKPeerPaymentWebService;
+@class NSArray, NSString, NSURL, PKAppleAccountInformation, PKPaymentProvisioningController, PKPeerPaymentAccount, PKPeerPaymentCredential, PKPeerPaymentPreferences, PKPeerPaymentWebService;
 
 @protocol PKPeerPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (PKPeerPaymentAccount *)account;
@@ -22,12 +22,14 @@
 @optional
 - (PKAppleAccountInformation *)appleAccountInformation;
 - (void)checkTLKsMissingWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSString *)deviceClass;
 - (NSString *)deviceRegion;
-- (void)initalizeCloudStoreIfNecessaryWithCompletion:(void (^)(BOOL))arg1;
-- (void)initalizeCloudStoreIfNecessaryWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)peerPaymentReRegisterWithURL:(NSURL *)arg1 pushToken:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)peerPaymentReRegisterWithURL:(NSURL *)arg1 pushToken:(NSString *)arg2 peerPaymentWebService:(PKPeerPaymentWebService *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (PKPeerPaymentPreferences *)preferences;
+- (void)provisionPeerPaymentPassWithProvisioningController:(PKPaymentProvisioningController *)arg1 peerPaymentWebService:(PKPeerPaymentWebService *)arg2 credential:(PKPeerPaymentCredential *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)setPreferences:(PKPeerPaymentPreferences *)arg1 completion:(void (^)(PKPeerPaymentPreferences *, NSError *))arg2;
 @end
 

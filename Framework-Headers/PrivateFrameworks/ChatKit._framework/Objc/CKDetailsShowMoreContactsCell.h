@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (Class)cellClass;
 + (double)preferredHeight;
 + (id)reuseIdentifier;
 + (BOOL)shouldHighlight;

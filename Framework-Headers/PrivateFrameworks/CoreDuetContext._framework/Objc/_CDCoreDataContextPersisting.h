@@ -25,9 +25,10 @@
 + (id)persistenceWithDirectory:(id)arg1;
 + (id)persistenceWithStorage:(id)arg1;
 - (void).cxx_destruct;
+- (void)_deleteKeyPaths:(id)arg1;
+- (BOOL)_withMOFromEntityWithName:(id)arg1 andUniqunessPredicate:(id)arg2 insert:(BOOL)arg3 update:(CDUnknownBlockType)arg4;
 - (void)deleteAllData;
 - (void)deleteDataCreatedBefore:(id)arg1;
-- (void)deleteKeyPaths:(id)arg1;
 - (void)deleteRegistration:(id)arg1;
 - (BOOL)fromEntityWithName:(id)arg1 deleteObjectsMatching:(id)arg2;
 - (BOOL)fromEntityWithName:(id)arg1 fetchAllObjectsMatchingPredicate:(id)arg2 handlingMOs:(CDUnknownBlockType)arg3;
@@ -40,6 +41,7 @@
 - (id)uniquenessPredicateForKeyPath:(id)arg1;
 - (id)uniqunessPredicateForRegistration:(id)arg1;
 - (BOOL)withMOFromEntityWithName:(id)arg1 andUniqunessPredicate:(id)arg2 insertOrUpdate:(CDUnknownBlockType)arg3;
+- (BOOL)withMOFromEntityWithName:(id)arg1 andUniqunessPredicate:(id)arg2 update:(CDUnknownBlockType)arg3;
 
 @end
 

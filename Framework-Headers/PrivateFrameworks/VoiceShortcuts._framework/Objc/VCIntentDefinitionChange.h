@@ -24,13 +24,13 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *files; // @synthesize files=_files;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *objectIdentifier;
+@property (readonly, nonatomic) NSString *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
 @property (readonly, nonatomic) NSString *sequencer;
 @property (readonly) Class superclass;
 
 + (int)messageType;
 - (void).cxx_destruct;
-- (id)initWithApplicationProxy:(id)arg1 changeType:(long long)arg2;
+- (id)initWithApplicationRecord:(id)arg1 changeType:(long long)arg2;
 - (id)initWithObjectIdentifier:(id)arg1 changeType:(long long)arg2;
 - (BOOL)readFrom:(id)arg1 error:(id *)arg2;
 - (BOOL)writeTo:(id)arg1 error:(id *)arg2;

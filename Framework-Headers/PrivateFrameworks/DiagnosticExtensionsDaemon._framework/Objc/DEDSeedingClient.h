@@ -44,7 +44,8 @@
 - (id)_formEncodedBodyForDictionary:(id)arg1;
 - (id)_keyValuePairsForKey:(id)arg1 value:(id)arg2;
 - (id)_serverErrorFromTask:(id)arg1;
-- (id)beginUploadWithRequest:(id)arg1 fromFileURL:(id)arg2;
+- (id)baseURL;
+- (id)beginUploadWithRequest:(id)arg1 fromFileURL:(id)arg2 error:(id *)arg3;
 - (id)bodyDataForParameters:(id)arg1 encoding:(unsigned long long)arg2 error:(id *)arg3;
 - (void)cancelPromise:(id)arg1 withSuccess:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)cleanup;
@@ -61,9 +62,10 @@
 - (void)jsonForURL:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)jsonForURLRequest:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (id)loginWithTokenURL;
-- (void)makePromiseWithUUID:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
+- (void)makePromiseWithUUID:(id)arg1 extensionID:(id)arg2 success:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
 - (id)newFilePromiseURL;
 - (id)newFilerTokenURL;
+- (id)ongoingUploads;
 - (void)performHTTPMethod:(id)arg1 toURL:(id)arg2 parameters:(id)arg3 encoding:(unsigned long long)arg4 success:(CDUnknownBlockType)arg5 error:(CDUnknownBlockType)arg6;
 - (void)postToURL:(id)arg1 parameters:(id)arg2 encoding:(unsigned long long)arg3 success:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (id)promiseConfiguration;
@@ -72,6 +74,7 @@
 - (id)seedingURL;
 - (void)sendFile:(id)arg1 promise:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)updatePromise:(id)arg1 withAttachmentGroup:(id)arg2 status:(long long)arg3 success:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
+- (void)updatePromise:(id)arg1 withFilename:(id)arg2 size:(long long)arg3 extensionID:(id)arg4 status:(long long)arg5 success:(CDUnknownBlockType)arg6 error:(CDUnknownBlockType)arg7;
 - (void)updatePromise:(id)arg1 withFilename:(id)arg2 size:(long long)arg3 status:(long long)arg4 success:(CDUnknownBlockType)arg5 error:(CDUnknownBlockType)arg6;
 
 @end

@@ -11,6 +11,7 @@
 @interface _PXUIScrollView : UIScrollView
 {
     BOOL _deferContentOffsetUpdates;
+    BOOL _respectsContentZOrder;
     id<PXUIScrollViewDelegate> _px_delegate;
     id<_PXUIScrollViewFocusItemProvider> _focusItemProvider;
     struct CGPoint _pagingOriginOffset;
@@ -20,10 +21,12 @@
 @property (weak, nonatomic) id<_PXUIScrollViewFocusItemProvider> focusItemProvider; // @synthesize focusItemProvider=_focusItemProvider;
 @property (nonatomic) struct CGPoint pagingOriginOffset; // @synthesize pagingOriginOffset=_pagingOriginOffset;
 @property (weak, nonatomic, setter=px_setDelegate:) id<PXUIScrollViewDelegate> px_delegate; // @synthesize px_delegate=_px_delegate;
+@property (nonatomic) BOOL respectsContentZOrder; // @synthesize respectsContentZOrder=_respectsContentZOrder;
 
 - (void).cxx_destruct;
 - (void)_updatePagingOrigin;
 - (id)focusItemsInRect:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (void)px_addSubview:(id)arg1;
 - (void)scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;

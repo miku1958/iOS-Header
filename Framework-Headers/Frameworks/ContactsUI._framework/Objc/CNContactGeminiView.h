@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (BOOL)_hasBaseline;
 - (void)calculateLayoutIfNeeded;
 - (BOOL)doesLayoutRequireTwoLines;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -59,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)twoLineLayoutConstraints;
 - (void)updateConstraints;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

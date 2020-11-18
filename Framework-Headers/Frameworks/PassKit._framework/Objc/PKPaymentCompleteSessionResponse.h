@@ -16,6 +16,7 @@
 @property (readonly, copy, nonatomic) NSString *retryNonce; // @synthesize retryNonce=_retryNonce;
 
 - (void).cxx_destruct;
+- (id)initWithData:(id)arg1;
 
 @end
 

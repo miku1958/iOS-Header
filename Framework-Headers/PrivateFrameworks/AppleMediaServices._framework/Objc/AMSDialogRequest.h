@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
 @class AMSDialogAction, AMSMetricsEvent, NSArray, NSDictionary, NSString, NSURL;
 
-@interface AMSDialogRequest : NSObject <NSSecureCoding>
+@interface AMSDialogRequest : NSObject <NSSecureCoding, NSCopying>
 {
     NSArray *_buttonActions;
     AMSDialogAction *_defaultAction;
@@ -42,12 +43,15 @@
 - (void).cxx_destruct;
 - (void)addButtonAction:(id)arg1;
 - (void)addTextField:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithError:(id)arg1;
 - (id)initWithTitle:(id)arg1 message:(id)arg2;
 - (id)locateActionWithIdentifier:(id)arg1;
+- (void)replaceAction:(id)arg1;
 
 @end
 

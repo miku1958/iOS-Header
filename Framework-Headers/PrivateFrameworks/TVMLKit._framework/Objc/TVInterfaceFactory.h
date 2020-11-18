@@ -60,6 +60,7 @@
 - (Class)_extendedCollectionViewCellClassForIKElement:(id)arg1;
 - (id)_getImageFromURLorBundle:(id)arg1;
 - (id)_imageProxyForResourceURL:(id)arg1 scaleToSize:(struct CGSize)arg2;
+- (id)_imageProxyForSymbolURL:(id)arg1 imageSymbolConfiguration:(id)arg2 scaleToSize:(struct CGSize)arg3;
 - (id)_imageProxyFromElement:(id)arg1;
 - (id)_imageProxyFromElement:(id)arg1 withLayout:(id)arg2;
 - (id)_navigationControllerForTabIdentifier:(id)arg1;

@@ -14,6 +14,9 @@
     int _newsCacheUpdatedNotificationToken;
     int _appStoreCacheUpdatedNotificationToken;
     int _appStoreArcadeSubscriptionBagUpdatedNotificationToken;
+    int _musicCacheUpdatedNotificationToken;
+    int _tvCacheUpdatedNotificationToken;
+    int _iCloudCacheUpdatedNotificationToken;
 }
 
 + (id)sharedInstance;
@@ -24,6 +27,7 @@
 - (void)getCachedSubscriptionEntitlementsForSegment:(unsigned long long)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionEntitlementsForActiveAccountWithResultAndExpiryHandler:(CDUnknownBlockType)arg1;
 - (void)getSubscriptionEntitlementsForActiveAccountWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 requestingBundleId:(id)arg3 withCacheInfoResultHandler:(CDUnknownBlockType)arg4;
 - (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 withCacheInfoResultHandler:(CDUnknownBlockType)arg3;
 - (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 - (void)getSubscriptionEntitlementsIgnoreCaches:(BOOL)arg1 forActiveAccountWithResultAndExpiryHandler:(CDUnknownBlockType)arg2;

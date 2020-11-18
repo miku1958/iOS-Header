@@ -8,38 +8,28 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerAppsTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
 @class NSArray, NSString, WFActionDrawerState;
-@protocol WFActionDrawerSearchResultsViewControllerDelegate;
 
-@interface WFActionDrawerSearchResultsViewController : WFActionDrawerCompositeResultsViewController <WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerAppsTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, UITableViewDelegate, UITableViewDataSource, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
+@interface WFActionDrawerSearchResultsViewController : WFActionDrawerCompositeResultsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
-    id<WFActionDrawerSearchResultsViewControllerDelegate> _delegate;
     NSArray *_combinedActionActivitySections;
 }
 
 @property (strong, nonatomic) NSArray *combinedActionActivitySections; // @synthesize combinedActionActivitySections=_combinedActionActivitySections;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerSearchResultsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WFActionDrawerState *state;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
-- (void)appsTableViewCell:(id)arg1 didSelectAppWithBundleIdentifier:(id)arg2;
 - (void)loadView;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadViews;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;

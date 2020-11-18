@@ -6,31 +6,31 @@
 
 #import <Notes/NSObject-Protocol.h>
 
-@class CSSearchableItem, NSArray, NSError, NSManagedObjectContext, NSPersistentStoreCoordinator, NSString;
+@class CSSearchableItem, NSArray, NSError, NSManagedObjectContext, NSManagedObjectID, NSPersistentStoreCoordinator, NSString;
 @protocol ICSearchIndexable;
 
 @protocol ICSearchIndexerDataSource <NSObject>
-- (NSArray *)allIndexableObjectIDsInReversedReindexingOrder;
+- (NSArray *)allIndexableObjectIDsInReversedReindexingOrderWithContext:(NSManagedObjectContext *)arg1;
 - (void)clearObjectIDsToProcess;
 - (NSString *)dataSourceIdentifier;
-- (NSArray *)indexableObjectIDsWithURIs:(NSArray *)arg1;
+- (long long)decisionOnObjectID:(NSManagedObjectID *)arg1 searchableItemToIndex:(id *)arg2 objectIDURIToDelete:(id *)arg3 context:(NSManagedObjectContext *)arg4;
+- (NSArray *)indexableObjectIDsWithURIs:(NSArray *)arg1 context:(NSManagedObjectContext *)arg2;
 - (unsigned long long)indexingPriority;
 - (BOOL)isObservingChanges;
 - (BOOL)needsReindexing;
 - (NSManagedObjectContext *)newManagedObjectContext;
 - (id<ICSearchIndexable>)objectForManagedObjectIDURI:(NSString *)arg1 context:(NSManagedObjectContext *)arg2;
 - (id<ICSearchIndexable>)objectForSearchableItem:(CSSearchableItem *)arg1 context:(NSManagedObjectContext *)arg2;
-- (NSArray *)objectIDURIsToBeDeleted;
-- (NSArray *)objectIDsNeedingIndexing;
+- (NSArray *)objectIDsNeedingProcessing;
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 - (void)searchIndexerDidFinishDeletingSearchableItemsWithObjectIDURIs:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)searchIndexerDidFinishIndexingObjectIDs:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)searchIndexerWillDeleteSearchableItemsWithObjectIDURIs:(NSArray *)arg1;
 - (void)searchIndexerWillIndexObjectIDs:(NSArray *)arg1;
-- (NSArray *)searchableItemsForObjectIDs:(NSArray *)arg1;
-- (void)stageForReindexing;
-- (void)stageObjectIDURIsForIndexing:(NSArray *)arg1;
+- (void)stageForReindexingWithContext:(NSManagedObjectContext *)arg1;
+- (void)stageObjectIDURIsForIndexing:(NSArray *)arg1 context:(NSManagedObjectContext *)arg2;
 - (void)startObservingChanges;
 - (void)stopObservingChanges;
+- (NSString *)uuid;
 @end
 

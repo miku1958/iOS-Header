@@ -8,11 +8,11 @@
 
 #import <WatchListKit/WLKInstallable-Protocol.h>
 
-@class NSArray, NSString, NSURL, SSLookupItem;
+@class AMSLookupItem, NSArray, NSString, NSURL;
 
 @interface WLKLookupBasedInstallable : NSObject <WLKInstallable>
 {
-    SSLookupItem *_item;
+    AMSLookupItem *_item;
 }
 
 @property (readonly, copy, nonatomic) NSArray *appAdamIDs;
@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SSLookupItem *item; // @synthesize item=_item;
+@property (readonly, nonatomic) AMSLookupItem *item; // @synthesize item=_item;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly) Class superclass;
 

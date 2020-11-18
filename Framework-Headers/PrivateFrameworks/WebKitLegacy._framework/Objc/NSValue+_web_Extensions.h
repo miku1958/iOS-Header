@@ -8,6 +8,6 @@
 
 @interface NSValue (_web_Extensions)
 + (id)_web_valueWithCGRect:(struct CGRect)arg1;
-- (struct CGRect)CGRectValue;
+- (struct CGRect)_web_CGRectValue;
 @end
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)_dictionaryRepresentation;
 - (id)_identifier;
 - (id)_initWithURLRepresentation:(id)arg1;
+- (BOOL)_isSystem;
 - (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_name;
 - (BOOL)_requiresRetrieval;

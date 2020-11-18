@@ -18,11 +18,17 @@
 + (id)learningRate;
 + (id)linkedModelFileName;
 + (id)linkedModelSearchPath;
++ (id)maxDepth;
++ (id)minChildWeight;
 + (id)miniBatchSize;
 + (id)momentum;
++ (id)numClasses;
++ (id)numTrees;
 + (id)numberOfNeighbors;
++ (id)objective;
 + (id)seed;
 + (id)shuffle;
++ (id)updateType;
 + (id)weights;
 - (id)deletingPrefixingScope:(id)arg1;
 - (id)initWithKeyName:(id)arg1;

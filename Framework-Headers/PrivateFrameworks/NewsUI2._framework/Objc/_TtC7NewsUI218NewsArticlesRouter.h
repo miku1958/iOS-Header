@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *navigator;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

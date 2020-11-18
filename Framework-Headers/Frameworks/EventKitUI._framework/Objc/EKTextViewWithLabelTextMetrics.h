@@ -22,6 +22,7 @@
 @property (nonatomic) long long textAlignment;
 @property (strong, nonatomic) UIColor *textColor;
 
+- (id)accessibilityValue;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setURL:(id)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2;

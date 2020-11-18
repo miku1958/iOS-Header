@@ -33,7 +33,7 @@
 @property (strong, nonatomic) NSMutableArray *allPlayers; // @synthesize allPlayers=_allPlayers;
 @property (strong, nonatomic) NSArray *allPlayersForDisplay; // @synthesize allPlayersForDisplay=_allPlayersForDisplay;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GKFriendListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GKFriendListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *friendPlayers; // @synthesize friendPlayers=_friendPlayers;
 @property (strong, nonatomic) NSArray *friendsForDisplay; // @synthesize friendsForDisplay=_friendsForDisplay;
@@ -68,8 +68,8 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (BOOL)tableViewHasFooter:(long long)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

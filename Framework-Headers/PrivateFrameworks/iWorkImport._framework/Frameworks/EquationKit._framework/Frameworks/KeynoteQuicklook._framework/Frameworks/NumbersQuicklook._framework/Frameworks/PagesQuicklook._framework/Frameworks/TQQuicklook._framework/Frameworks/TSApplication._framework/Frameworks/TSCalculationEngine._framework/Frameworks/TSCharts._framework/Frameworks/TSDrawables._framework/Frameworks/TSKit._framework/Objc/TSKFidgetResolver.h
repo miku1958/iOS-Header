@@ -9,15 +9,15 @@
 @interface TSKFidgetResolver : NSObject
 {
     double _fidgetThreshold;
-    id *_values;
-    double *_times;
+    id _values[10];
+    double _times[10];
     unsigned long long _head;
 }
 
 @property (nonatomic) double fidgetThreshold; // @synthesize fidgetThreshold=_fidgetThreshold;
 @property (readonly, nonatomic) id nonFidgetValue;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)p_advanceHead;
 - (unsigned long long)p_previousValidIndexFromIndex:(unsigned long long)arg1;

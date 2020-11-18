@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
+
 @class MISSING_TYPE, NSString, NTKSiderealSolarEvent;
 
-@interface NTKSiderealSector : NSObject
+@interface NTKSiderealSector : NSObject <NSSecureCoding>
 {
     NSString *_localizedName;
     unsigned long long _type;
@@ -24,8 +26,11 @@
 @property (strong, nonatomic) NTKSiderealSolarEvent *startingEvent; // @synthesize startingEvent=_startingEvent;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStartingEvent:(id)arg1 endingEvent:(id)arg2;
 - (id)localizedName;
 

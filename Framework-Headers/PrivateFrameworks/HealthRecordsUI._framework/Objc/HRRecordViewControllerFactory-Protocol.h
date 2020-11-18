@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKMedicalRecord, UIViewController;
+@class HKMedicalRecord, HRProfile, UIViewController;
 
 @protocol HRRecordViewControllerFactory
-- (UIViewController *)makeDetailViewControllerForRecord:(HKMedicalRecord *)arg1;
-- (UIViewController *)makeViewControllerForRecord:(HKMedicalRecord *)arg1;
+- (UIViewController *)makeDetailViewControllerForRecord:(HKMedicalRecord *)arg1 usingProfile:(HRProfile *)arg2;
+- (UIViewController *)makeViewControllerForRecord:(HKMedicalRecord *)arg1 usingProfile:(HRProfile *)arg2;
 @end
 

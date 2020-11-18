@@ -28,7 +28,6 @@
 - (id)physicsState;
 - (void)resetToPhysicsState:(id)arg1;
 - (void)setupPhysics;
-- (void)setupPhysicsDebugNodes;
 - (void)setupPhysicsIfNeeded;
 - (void)updateAtTime:(double)arg1 forceMultiplier:(double)arg2;
 

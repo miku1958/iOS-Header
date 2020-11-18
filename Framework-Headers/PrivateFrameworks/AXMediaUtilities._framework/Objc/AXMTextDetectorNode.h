@@ -8,31 +8,29 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMTextLayoutManager, NSArray;
+@class AXMSemanticTextFactory, AXMTextLayoutManager;
 
 @interface AXMTextDetectorNode : AXMEvaluationNode <NSSecureCoding>
 {
+    AXMSemanticTextFactory *_semanticTextFactory;
     AXMTextLayoutManager *_textLayoutManager;
-    NSArray *_recognitionLanguages;
-    NSArray *_customWords;
 }
 
-@property (copy, nonatomic) NSArray *customWords; // @synthesize customWords=_customWords;
-@property (copy, nonatomic) NSArray *recognitionLanguages; // @synthesize recognitionLanguages=_recognitionLanguages;
+@property (strong, nonatomic) AXMSemanticTextFactory *semanticTextFactory; // @synthesize semanticTextFactory=_semanticTextFactory;
+@property (strong, nonatomic) AXMTextLayoutManager *textLayoutManager; // @synthesize textLayoutManager=_textLayoutManager;
 
-+ (long long)_vnRequestTextRecognitionLevelForAXMTextRecognitionLevel:(unsigned long long)arg1;
++ (id)effectiveLanguagesFromOptions:(id)arg1;
++ (id)filterPreferredDetectionLanguages:(id)arg1 withSupportedDetectionLanguages:(id)arg2;
 + (BOOL)isSupported;
-+ (id)supportedRecognitionLanguagesForFlavor:(unsigned long long)arg1 textRecognitionLevel:(unsigned long long)arg2 error:(id *)arg3;
++ (long long)recognitionLevelFromOptions:(id)arg1;
++ (id)supportedDetectionLanguagesForLevel:(long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)textDetectionLanguagesFromOptions:(id)arg1;
 + (id)title;
 - (void).cxx_destruct;
-- (void)_evaluateByDetectingTextRectangles:(id)arg1 textDetectionOptions:(id)arg2;
-- (void)_evaluateByRecognizingText:(id)arg1 textDetectionOptions:(id)arg2;
-- (id)_visionTextDetectionOptionForLanguage:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)evaluate:(id)arg1;
-- (void)freeResources;
-- (id)initWithCoder:(id)arg1;
+- (id)_textDetectionOptions:(id)arg1;
+- (id)_textsForObservations:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (void)nodeInitialize;
 - (BOOL)requiresVisionFramework;
 - (BOOL)shouldEvaluate:(id)arg1;

@@ -30,6 +30,8 @@
 - (id)_cell;
 - (double)_cellFittedHeightWithWidth:(double)arg1;
 - (void)_editPhotoTapped:(id)arg1;
+- (id)_makeMedicalIDPhotoMenu;
+- (void)_updateMedicalIDPhotoMenu;
 - (void)commitEditing;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;

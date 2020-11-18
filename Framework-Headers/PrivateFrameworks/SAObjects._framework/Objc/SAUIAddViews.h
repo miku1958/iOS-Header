@@ -22,12 +22,14 @@
 @property (copy, nonatomic) NSString *dialogPhase;
 @property (copy, nonatomic) NSString *displayTarget;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL immersiveExperience;
 @property (nonatomic) BOOL mutatingCommand;
 @property (copy, nonatomic) NSString *refId;
 @property (strong, nonatomic) SASendCommands *refreshCommand;
 @property (nonatomic) BOOL requiresResponse;
 @property (nonatomic) BOOL scrollToTop;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supplemental;
 @property (nonatomic) BOOL temporary;
 @property (copy, nonatomic) NSArray *views;
 

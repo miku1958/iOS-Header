@@ -20,7 +20,6 @@
 + (id)interfaceWithProtocol:(id)arg1;
 + (id)signatureForBlock:(id)arg1;
 - (const struct _xpc_type_s *)XPCTypeForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
-- (id)_allowedClassesForSelector:(SEL)arg1 reply:(BOOL)arg2;
 - (Class)_customSubclass;
 - (id)_generateAndCacheMethodSignatureForRemoteSelector:(SEL)arg1;
 - (BOOL)_hasProxiesInArgumentsOfSelector:(SEL)arg1;

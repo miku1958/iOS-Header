@@ -8,26 +8,32 @@
 
 #import <TVPlayback/AVAssetDownloadDelegate-Protocol.h>
 
-@class AVAggregateAssetDownloadTask, NSArray, NSDictionary, NSError, NSMapTable, NSNumber, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
+@class AVAggregateAssetDownloadTask, NSArray, NSData, NSDictionary, NSError, NSMapTable, NSNumber, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
 @protocol TVPMediaItem;
 
 @interface TVPDownload : NSObject <AVAssetDownloadDelegate>
 {
     BOOL _performKeyFetchOnly;
     BOOL _allowCellularUsage;
+    BOOL _preferMostCompatibleRendition;
     BOOL _allowHDR;
     BOOL _allowMultichannelAudio;
+    BOOL _limitMultichannelAudioToSingleLanguage;
     BOOL _includeDefaultAudioOption;
     BOOL _includeOriginalAudio;
     BOOL _includeDeviceLanguageAudio;
-    BOOL _useLegacyAudioSettings;
+    BOOL _includesAllSubtitles;
     BOOL _downloadIsComplete;
     NSObject<TVPMediaItem> *_mediaItem;
     long long _state;
     NSError *_error;
-    NSNumber *_minimumRequiredMediaBitrate;
+    NSNumber *_minimumRequiredMediaBitrateForMostCompatibleFormat;
+    NSNumber *_minimumRequiredMediaBitrateForHEVC;
     NSArray *_preferredAudioLanguageCodes;
+    NSArray *_preferredSubtitleLanguageCodes;
+    NSData *_storageSettingsImageData;
     NSDictionary *_userInfo;
+    NSNumber *_minimumRequiredMediaBitrate;
     TVPStateMachine *_stateMachine;
     TVPMediaItemLoader *_mediaItemLoader;
     TVPDownloadSession *_downloadSession;
@@ -38,7 +44,8 @@
     unsigned long long _downloadInitiationBackgroundTask;
     unsigned long long _downloadTerminationBackgroundTask;
     TVPReportingSession *_reportingSession;
-    unsigned long long _numMediaSelectionsThatWillReceiveDownloadProgress;
+    unsigned long long _numAudioSelectionsToBeDownloaded;
+    unsigned long long _numSubtitleSelectionsToBeDownloaded;
     unsigned long long _numMediaSelectionsCompleted;
     struct CGSize _minimumRequiredPresentationSize;
 }
@@ -60,21 +67,28 @@
 @property (nonatomic) BOOL includeDefaultAudioOption; // @synthesize includeDefaultAudioOption=_includeDefaultAudioOption;
 @property (nonatomic) BOOL includeDeviceLanguageAudio; // @synthesize includeDeviceLanguageAudio=_includeDeviceLanguageAudio;
 @property (nonatomic) BOOL includeOriginalAudio; // @synthesize includeOriginalAudio=_includeOriginalAudio;
+@property (nonatomic) BOOL includesAllSubtitles; // @synthesize includesAllSubtitles=_includesAllSubtitles;
+@property (nonatomic) BOOL limitMultichannelAudioToSingleLanguage; // @synthesize limitMultichannelAudioToSingleLanguage=_limitMultichannelAudioToSingleLanguage;
 @property (strong, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (strong, nonatomic) TVPMediaItemLoader *mediaItemLoader; // @synthesize mediaItemLoader=_mediaItemLoader;
 @property (strong, nonatomic) NSMapTable *mediaSelectionToProgressMap; // @synthesize mediaSelectionToProgressMap=_mediaSelectionToProgressMap;
 @property (strong, nonatomic) NSNumber *minimumRequiredMediaBitrate; // @synthesize minimumRequiredMediaBitrate=_minimumRequiredMediaBitrate;
+@property (strong, nonatomic) NSNumber *minimumRequiredMediaBitrateForHEVC; // @synthesize minimumRequiredMediaBitrateForHEVC=_minimumRequiredMediaBitrateForHEVC;
+@property (strong, nonatomic) NSNumber *minimumRequiredMediaBitrateForMostCompatibleFormat; // @synthesize minimumRequiredMediaBitrateForMostCompatibleFormat=_minimumRequiredMediaBitrateForMostCompatibleFormat;
 @property (nonatomic) struct CGSize minimumRequiredPresentationSize; // @synthesize minimumRequiredPresentationSize=_minimumRequiredPresentationSize;
+@property (nonatomic) unsigned long long numAudioSelectionsToBeDownloaded; // @synthesize numAudioSelectionsToBeDownloaded=_numAudioSelectionsToBeDownloaded;
 @property (nonatomic) unsigned long long numMediaSelectionsCompleted; // @synthesize numMediaSelectionsCompleted=_numMediaSelectionsCompleted;
-@property (nonatomic) unsigned long long numMediaSelectionsThatWillReceiveDownloadProgress; // @synthesize numMediaSelectionsThatWillReceiveDownloadProgress=_numMediaSelectionsThatWillReceiveDownloadProgress;
+@property (nonatomic) unsigned long long numSubtitleSelectionsToBeDownloaded; // @synthesize numSubtitleSelectionsToBeDownloaded=_numSubtitleSelectionsToBeDownloaded;
 @property (nonatomic) BOOL performKeyFetchOnly; // @synthesize performKeyFetchOnly=_performKeyFetchOnly;
+@property (nonatomic) BOOL preferMostCompatibleRendition; // @synthesize preferMostCompatibleRendition=_preferMostCompatibleRendition;
 @property (strong, nonatomic) NSArray *preferredAudioLanguageCodes; // @synthesize preferredAudioLanguageCodes=_preferredAudioLanguageCodes;
+@property (strong, nonatomic) NSArray *preferredSubtitleLanguageCodes; // @synthesize preferredSubtitleLanguageCodes=_preferredSubtitleLanguageCodes;
 @property (readonly, nonatomic) double progress;
 @property (strong, nonatomic) TVPReportingSession *reportingSession; // @synthesize reportingSession=_reportingSession;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
+@property (strong, nonatomic) NSData *storageSettingsImageData; // @synthesize storageSettingsImageData=_storageSettingsImageData;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL useLegacyAudioSettings; // @synthesize useLegacyAudioSettings=_useLegacyAudioSettings;
 @property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (void)initialize;
@@ -85,6 +99,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)_addMediaSelectionOptionsIfNotAlreadyAdded:(id)arg1 toMediaSelections:(id)arg2 forMediaSelectionGroup:(id)arg3 baseMediaSelection:(id)arg4;
 - (void)_mediaItemLoaderStateDidChangeTo:(id)arg1;
+- (id)_newProgressForMediaSelection:(id)arg1;
 - (void)_registerStateMachineHandlers;
 - (void)addDelegate:(id)arg1;
 - (void)cancel;

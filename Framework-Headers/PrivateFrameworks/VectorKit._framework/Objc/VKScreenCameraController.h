@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_regionAnimation;
     VKAnnotationTrackingCameraController *_annotationTrackingCameraController;
     VKGestureCameraBehavior *_gestureCameraControllerBehavior;
-    long long _annotationTrackingZoomStyle;
+    CDStruct_211b8904 _annotationTrackingBehavior;
     long long _annotationTrackingHeadingAnimationDisplayRate;
     BOOL _isPitchIncreasing;
+    BOOL _userChangedZoomSinceLastProgrammaticRegionChange;
     VKCameraRegionRestriction *_regionRestriction;
     struct {
         double min;
@@ -32,8 +33,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic, getter=isAnimatingToTrackAnnotation) BOOL animatingToTrackAnnotation;
+@property (nonatomic) CDStruct_211b8904 annotationTrackingBehavior; // @synthesize annotationTrackingBehavior=_annotationTrackingBehavior;
 @property (nonatomic) long long annotationTrackingHeadingAnimationDisplayRate; // @synthesize annotationTrackingHeadingAnimationDisplayRate=_annotationTrackingHeadingAnimationDisplayRate;
-@property (nonatomic) long long annotationTrackingZoomStyle; // @synthesize annotationTrackingZoomStyle=_annotationTrackingZoomStyle;
 @property (nonatomic) CDStruct_c3b9c2ee centerCoordinateDistanceRange; // @synthesize centerCoordinateDistanceRange=_centerCoordinateDistanceRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<VKTrackableAnnotation> trackingAnnotation;
 @property (readonly, nonatomic, getter=isTrackingHeading) BOOL trackingHeading;
+@property (nonatomic) BOOL userChangedZoomSinceLastProgrammaticRegionChange; // @synthesize userChangedZoomSinceLastProgrammaticRegionChange=_userChangedZoomSinceLastProgrammaticRegionChange;
 
 - (BOOL)canEnter3DMode;
 - (void)clampZoomLevelIfNecessary;
@@ -59,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
-- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setYaw:(double)arg1 animated:(BOOL)arg2;
 - (BOOL)snapMapIfNecessary:(BOOL)arg1;
@@ -67,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startRotatingWithFocusPoint:(struct CGPoint)arg1;
-- (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3 duration:(double)arg4 timingFunction:(CDUnknownBlockType)arg5;
 - (void)stopAnimations;
 - (void)stopPanningAtPoint:(struct CGPoint)arg1;
 - (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;
@@ -81,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)transferGestureState:(id)arg1;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)updateRotationWithFocusPoint:(struct CGPoint)arg1 newValue:(double)arg2;
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;

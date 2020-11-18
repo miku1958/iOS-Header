@@ -6,26 +6,31 @@
 
 #import <WorkflowKit/WFAccessResource.h>
 
+@class NSArray, WFBluetoothSettingsClient;
+
 @interface WFListeningModeDeviceAccessResource : WFAccessResource
 {
-    unsigned long long _managerState;
+    struct os_unfair_lock_s _supportedDevicesLock;
+    WFBluetoothSettingsClient *_bluetoothClient;
+    NSArray *_supportedDevices;
     CDUnknownBlockType _availabilityCompletion;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType availabilityCompletion; // @synthesize availabilityCompletion=_availabilityCompletion;
-@property (nonatomic) unsigned long long managerState; // @synthesize managerState=_managerState;
+@property (readonly, nonatomic) WFBluetoothSettingsClient *bluetoothClient; // @synthesize bluetoothClient=_bluetoothClient;
+@property (readonly, nonatomic) NSArray *supportedDevices; // @synthesize supportedDevices=_supportedDevices;
+@property (readonly, nonatomic) struct os_unfair_lock_s supportedDevicesLock; // @synthesize supportedDevicesLock=_supportedDevicesLock;
 
 + (BOOL)isSingleton;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (unsigned long long)globalLevelStatus;
-- (void)handleNotification:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
-- (void)installObserversIfNecessary;
 - (id)localizedAccessResourceErrorString;
 - (id)localizedErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
 - (id)localizedImportErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)makeSettingsClientIfNecessary;
+- (BOOL)supportedDevicesAreFetched;
 - (id)unavailableAccessResourceError;
 - (unsigned long long)workflowLevelStatus;
 

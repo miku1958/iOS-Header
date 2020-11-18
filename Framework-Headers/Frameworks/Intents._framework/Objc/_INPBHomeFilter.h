@@ -17,13 +17,14 @@
     struct {
         unsigned int deviceType:1;
         unsigned int entityType:1;
+        unsigned int hasAllQuantifier:1;
         unsigned int isExcludeFilter:1;
         unsigned int outerDeviceType:1;
         unsigned int serviceType:1;
         unsigned int subServiceType:1;
     } _has;
+    BOOL _hasAllQuantifier;
     BOOL _isExcludeFilter;
-    BOOL __encodeLegacyGloryData;
     int _deviceType;
     int _entityType;
     int _outerDeviceType;
@@ -41,7 +42,6 @@
     _INPBDataString *_zone;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -52,10 +52,12 @@
 @property (nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property (strong, nonatomic) _INPBDataString *group; // @synthesize group=_group;
 @property (readonly, nonatomic) BOOL hasAccessory;
+@property (nonatomic) BOOL hasAllQuantifier; // @synthesize hasAllQuantifier=_hasAllQuantifier;
 @property (nonatomic) BOOL hasDeviceType;
 @property (readonly, nonatomic) BOOL hasEntityName;
 @property (nonatomic) BOOL hasEntityType;
 @property (readonly, nonatomic) BOOL hasGroup;
+@property (nonatomic) BOOL hasHasAllQuantifier;
 @property (readonly, nonatomic) BOOL hasHome;
 @property (nonatomic) BOOL hasIsExcludeFilter;
 @property (readonly, nonatomic) BOOL hasOuterDeviceName;

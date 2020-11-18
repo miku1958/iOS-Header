@@ -35,6 +35,7 @@
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithContext:(id)arg1 children:(id)arg2;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
+- (void)insertFormulaText:(id)arg1 includeWhitespace:(BOOL)arg2;
 - (BOOL)isEqualToExpressionNode:(id)arg1;
 - (void)loadFromArchive:(const struct LetNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

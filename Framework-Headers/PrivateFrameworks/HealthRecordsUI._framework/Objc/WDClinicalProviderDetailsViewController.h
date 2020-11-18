@@ -6,17 +6,18 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthRecordsUI/WDUserActivityResponder-Protocol.h>
+#import <HealthRecordsUI/HRWDUserActivityResponder-Protocol.h>
 
-@class HKClinicalProvider, HKClinicalProviderSearchResult, HRProfile, HRWDSpinnerView, NSArray, NSString;
+@class HKClinicalProvider, HKClinicalProviderSearchResult, HRProfile, HRWDSpinnerView, NSArray, NSCache, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDClinicalProviderDetailsViewController : HKTableViewController <WDUserActivityResponder>
+@interface WDClinicalProviderDetailsViewController : HKTableViewController <HRWDUserActivityResponder>
 {
     HRProfile *_profile;
     HKClinicalProviderSearchResult *_searchResult;
     long long _fetchesInFlight;
     HKClinicalProvider *_provider;
+    NSCache *_providerCache;
     NSArray *_connectedGateways;
     NSArray *_unconnectedGateways;
     NSArray *_sections;
@@ -30,13 +31,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) HKClinicalProvider *provider; // @synthesize provider=_provider;
+@property (strong, nonatomic) NSCache *providerCache; // @synthesize providerCache=_providerCache;
 @property (strong, nonatomic) HKClinicalProviderSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) HRWDSpinnerView *spinnerView; // @synthesize spinnerView=_spinnerView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *unconnectedGateways; // @synthesize unconnectedGateways=_unconnectedGateways;
 
-+ (id)providerCache;
 - (void).cxx_destruct;
 - (void)_computeSections;
 - (void)_fetchDetailsForSearchResult:(id)arg1;

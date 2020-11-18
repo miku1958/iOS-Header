@@ -28,25 +28,26 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property (strong, nonatomic) NSDate *expungeDate; // @dynamic expungeDate;
+@property (nonatomic) unsigned short featuredState; // @dynamic featuredState;
 @property (strong, nonatomic) NSData *featuresData; // @dynamic featuresData;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSSet *keyAssets; // @dynamic keyAssets;
-@property (nonatomic) short notificationState; // @dynamic notificationState;
+@property (nonatomic) unsigned short notificationState; // @dynamic notificationState;
 @property (strong, nonatomic) NSDate *relevantUntilDate; // @dynamic relevantUntilDate;
 @property (strong, nonatomic) NSSet *representativeAssets; // @dynamic representativeAssets;
 @property (strong, nonatomic) NSDate *startDate; // @dynamic startDate;
-@property (nonatomic) short state; // @dynamic state;
+@property (nonatomic) unsigned short state; // @dynamic state;
 @property (strong, nonatomic) NSString *subtitle; // @dynamic subtitle;
-@property (nonatomic) short subtype; // @dynamic subtype;
+@property (nonatomic) unsigned short subtype; // @dynamic subtype;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
-@property (nonatomic) short type; // @dynamic type;
+@property (nonatomic) unsigned short type; // @dynamic type;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 @property (nonatomic) short version; // @dynamic version;
 
 + (id)_representativeAssetIDsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
-+ (BOOL)_shouldPrefetchSuggestionKeyAssetsInManagedObjectContext:(id)arg1;
 + (id)_suggestionsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(long long)arg3 inManagedObjectContext:(id)arg4;
++ (id)_syncablePredicate;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
 + (unsigned long long)deleteAllMomentShareSuggestionsInManagedObjectContext:(id)arg1;
@@ -55,7 +56,7 @@
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2;
 + (id)predicateForAllAssetsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
 + (id)predicateForAllMomentsFromRepresentativeAssetsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (id)suggestionWithUUID:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)suggestionsToPrefetchInManagedObjectContext:(id)arg1;
 + (id)suggestionsToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;
@@ -66,7 +67,6 @@
 - (BOOL)isEmpty;
 - (BOOL)isPending;
 - (BOOL)isSyncableChange;
-- (id)momentShare;
 - (id)mutableKeyAssets;
 - (id)mutableRepresentativeAssets;
 - (void)prepareForDeletion;

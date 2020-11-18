@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *tagViewRenderer;
+    MISSING_TYPE *baseStyler;
 }
 
 @end

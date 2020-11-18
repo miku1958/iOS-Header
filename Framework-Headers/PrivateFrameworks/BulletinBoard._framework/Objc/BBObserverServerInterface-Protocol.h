@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BBResponse, BBThumbnailSizeConstraints, NSArray, NSDate, NSSet, NSString, NSUUID;
+@class BBResponse, NSArray, NSDate, NSSet, NSString;
 
 @protocol BBObserverServerInterface
 - (void)clearBulletinIDs:(NSSet *)arg1 inSection:(NSString *)arg2;
 - (void)clearBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 inSections:(NSSet *)arg3;
 - (void)clearSection:(NSString *)arg1;
 - (void)finishedWithBulletinID:(NSString *)arg1 transactionID:(unsigned long long)arg2;
-- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(float, NSError *))arg4;
 - (void)getBulletinsForPublisherMatchIDs:(NSArray *)arg1 sectionID:(NSString *)arg2 withHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)getBulletinsWithHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)getDataForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(NSData *, NSError *))arg4;
-- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(BBThumbnailSizeConstraints *)arg4 withHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(NSDate *)arg1 withHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getSectionInfoForSectionIDs:(NSSet *)arg1 withHandler:(void (^)(NSArray *, NSError *))arg2;

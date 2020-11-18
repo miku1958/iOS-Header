@@ -8,6 +8,6 @@
 
 @interface NSComparisonPredicate (SQLitePredicate)
 - (id)_checkTypeForValue:(id)arg1 inKeyPath:(id)arg2;
-- (id)_sqlPredicateForSelect;
+- (id)hd_sqlPredicateForSelect;
 @end
 

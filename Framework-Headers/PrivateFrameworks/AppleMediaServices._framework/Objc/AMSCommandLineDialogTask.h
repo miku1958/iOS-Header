@@ -14,8 +14,10 @@
     double _maximumDialogWidth;
     double _minimumDialogWidth;
     double _dialogPadding;
+    long long _automaticButtonSelection;
 }
 
+@property (nonatomic) long long automaticButtonSelection; // @synthesize automaticButtonSelection=_automaticButtonSelection;
 @property (nonatomic) double dialogPadding; // @synthesize dialogPadding=_dialogPadding;
 @property (nonatomic) double maximumDialogWidth; // @synthesize maximumDialogWidth=_maximumDialogWidth;
 @property (nonatomic) double minimumDialogWidth; // @synthesize minimumDialogWidth=_minimumDialogWidth;

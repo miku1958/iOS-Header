@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PRMonogramColor;
+@class NSIndexSet, PRMonogramColor;
 
 @interface CNUILikenessRenderingScope : NSObject
 {
@@ -15,11 +15,15 @@
     double _strokeWidth;
     struct CGColor *_strokeColor;
     unsigned long long _style;
+    unsigned long long _backgroundStyle;
     PRMonogramColor *_color;
+    NSIndexSet *_maskedAvatarIndices;
     struct CGSize _pointSize;
 }
 
+@property (readonly, nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) PRMonogramColor *color; // @synthesize color=_color;
+@property (readonly, nonatomic) NSIndexSet *maskedAvatarIndices; // @synthesize maskedAvatarIndices=_maskedAvatarIndices;
 @property (readonly, nonatomic) struct CGSize pointSize; // @synthesize pointSize=_pointSize;
 @property (readonly, nonatomic) BOOL rightToLeft; // @synthesize rightToLeft=_rightToLeft;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
@@ -28,11 +32,12 @@
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 
 + (id)renderingScopeWithPointSize:(struct CGSize)arg1 scale:(double)arg2 rightToLeft:(BOOL)arg3 style:(unsigned long long)arg4 color:(id)arg5;
++ (id)renderingScopeWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 backgroundStyle:(unsigned long long)arg7 color:(id)arg8 maskedAvatarIndices:(id)arg9;
 + (id)renderingScopeWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 color:(id)arg7;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
-- (id)initWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 color:(id)arg7;
+- (id)initWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 backgroundStyle:(unsigned long long)arg7 color:(id)arg8 maskedAvatarIndices:(id)arg9;
 - (void)setStrokeColor:(struct CGColor *)arg1;
 
 @end

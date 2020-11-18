@@ -6,11 +6,10 @@
 
 #import <HomeKitDaemon/HMDAccessoryTransaction.h>
 
-@class HAPAccessory, HMFConnectivityInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
+@class HAPAccessory, HMFConnectivityInfo, NSArray, NSData, NSDate, NSNumber, NSSet, NSString;
 
 @interface HMDHAPAccessoryTransaction : HMDAccessoryTransaction
 {
-    NSDictionary *_cameraClipCloudZoneUUIDByRecordingServiceUUID;
     HAPAccessory *_hapAccessoryLocal;
 }
 
@@ -18,11 +17,12 @@
 @property (strong, nonatomic) NSData *accessorySetupHash; // @dynamic accessorySetupHash;
 @property (strong, nonatomic) NSString *bridgeUUID; // @dynamic bridgeUUID;
 @property (strong, nonatomic) NSData *broadcastKey; // @dynamic broadcastKey;
-@property (strong, nonatomic) NSDictionary *cameraClipCloudZoneUUIDByRecordingServiceUUID; // @synthesize cameraClipCloudZoneUUIDByRecordingServiceUUID=_cameraClipCloudZoneUUIDByRecordingServiceUUID;
 @property (strong, nonatomic) NSNumber *certificationStatus; // @dynamic certificationStatus;
 @property (strong, nonatomic) HMFConnectivityInfo *connectivityInfo; // @dynamic connectivityInfo;
 @property (strong, nonatomic) HAPAccessory *hapAccessoryLocal; // @synthesize hapAccessoryLocal=_hapAccessoryLocal;
 @property (strong, nonatomic) NSNumber *hardwareSupport; // @dynamic hardwareSupport;
+@property (strong, nonatomic) NSNumber *hasOnboardedForNaturalLighting; // @dynamic hasOnboardedForNaturalLighting;
+@property (strong, nonatomic) NSSet *initialServiceTypeUUIDs; // @dynamic initialServiceTypeUUIDs;
 @property (strong, nonatomic) NSNumber *keyUpdatedStateNumber; // @dynamic keyUpdatedStateNumber;
 @property (strong, nonatomic) NSDate *keyUpdatedTime; // @dynamic keyUpdatedTime;
 @property (strong, nonatomic) NSString *pairingUsername; // @dynamic pairingUsername;
@@ -30,10 +30,12 @@
 @property (strong, nonatomic) NSData *relayAccessToken; // @dynamic relayAccessToken;
 @property (strong, nonatomic) NSString *relayIdentifier; // @dynamic relayIdentifier;
 @property (strong, nonatomic) NSNumber *relayState; // @dynamic relayState;
+@property (strong, nonatomic) NSNumber *sleepInterval; // @dynamic sleepInterval;
 @property (strong, nonatomic) NSNumber *supportsRelay; // @dynamic supportsRelay;
 @property (strong, nonatomic) NSArray *targetUUIDs; // @dynamic targetUUIDs;
 @property (strong, nonatomic) NSArray *transportInformation; // @dynamic transportInformation;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @dynamic uniqueIdentifier;
+@property (strong, nonatomic) NSNumber *wiFiTransportCapabilities; // @dynamic wiFiTransportCapabilities;
 
 + (id)properties;
 - (void).cxx_destruct;

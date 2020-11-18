@@ -15,8 +15,6 @@ __attribute__((visibility("hidden")))
 {
     id<_UISEGestureFeatureSettings> _settings;
     BOOL _hasDoneTest;
-    struct CGPoint _initialLocation;
-    double _initialTimestamp;
     unsigned long long _touchedEdges;
 }
 

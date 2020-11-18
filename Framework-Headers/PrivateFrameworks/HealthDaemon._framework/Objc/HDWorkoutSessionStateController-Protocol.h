@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSDate, NSDictionary, NSError, NSString, _HKWorkoutEvent;
+@class HKWorkoutConfiguration, NSData, NSDate, NSDictionary, NSError, NSString, _HKWorkoutEvent;
 @protocol HDWorkoutDataAccumulator;
 
 @protocol HDWorkoutSessionStateController
@@ -17,6 +17,7 @@
 - (BOOL)endWithError:(id *)arg1;
 - (void)finish;
 - (void)finishAggregationWithDate:(NSDate *)arg1;
+- (void)generateConfigurationUpdate:(HKWorkoutConfiguration *)arg1;
 - (void)generateError:(NSError *)arg1;
 - (void)generateEvent:(_HKWorkoutEvent *)arg1;
 - (void)generateMetadata:(NSDictionary *)arg1;

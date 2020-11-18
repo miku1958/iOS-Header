@@ -16,11 +16,8 @@ __attribute__((visibility("hidden")))
     NSString *_subsystem;
 }
 
-@property (readonly, copy, nonatomic) NSString *subsystem; // @synthesize subsystem=_subsystem;
-
 - (void).cxx_destruct;
 - (id)beginIntervalWithCategory:(id)arg1 name:(id)arg2;
-- (id)initWithSubsystem:(id)arg1;
 
 @end
 

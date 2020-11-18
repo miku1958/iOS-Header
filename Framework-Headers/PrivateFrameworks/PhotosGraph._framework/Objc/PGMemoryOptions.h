@@ -18,7 +18,6 @@
     NSArray *_blacklistedMemories;
     NSSet *_blacklistedFeatures;
     NSArray *_existingSuggestions;
-    unsigned long long _precision;
     NSDate *_lastMemoryCreationUniversalDate;
     NSDate *_baseMemoryCreationUniversalDate;
     NSDictionary *_extraParameters;
@@ -36,7 +35,6 @@
 @property (strong, nonatomic) NSDate *lastMemoryCreationUniversalDate; // @synthesize lastMemoryCreationUniversalDate=_lastMemoryCreationUniversalDate;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSArray *peopleNames; // @synthesize peopleNames=_peopleNames;
-@property (nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 @property (nonatomic) unsigned long long randomSeed; // @synthesize randomSeed=_randomSeed;
 @property unsigned long long reason; // @synthesize reason=_reason;
 @property (strong, nonatomic) NSDate *universalDate; // @synthesize universalDate=_universalDate;

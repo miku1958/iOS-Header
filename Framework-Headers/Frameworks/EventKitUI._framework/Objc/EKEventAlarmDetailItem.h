@@ -6,13 +6,14 @@
 
 #import <EventKitUI/EKEventDetailItem.h>
 
-@class EKAlarmsViewModel, NSArray;
+@class EKAlarmEditItemViewController, EKAlarmsViewModel, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface EKEventAlarmDetailItem : EKEventDetailItem
 {
     unsigned long long _disclosedSubitem;
     NSArray *_alarms;
+    EKAlarmEditItemViewController *_currentEditViewController;
     EKAlarmsViewModel *_alarmsViewModel;
 }
 
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSubitems;
 - (void)reset;
 - (void)setEvent:(id)arg1 store:(id)arg2;
+- (void)ttlLocationStatusChanged:(id)arg1;
 
 @end
 

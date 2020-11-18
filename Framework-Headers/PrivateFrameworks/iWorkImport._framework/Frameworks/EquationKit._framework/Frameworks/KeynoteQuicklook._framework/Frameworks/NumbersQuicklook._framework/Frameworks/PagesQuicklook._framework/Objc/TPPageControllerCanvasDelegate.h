@@ -28,6 +28,7 @@
 - (void)dealloc;
 - (id)documentRoot;
 - (id)initWithDocumentRoot:(id)arg1 canvas:(id)arg2;
+- (BOOL)shouldShowInstructionalTextForLayout:(id)arg1;
 - (void)tearDown;
 - (BOOL)textLayoutMustIncludeAdornments;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(id)arg1;

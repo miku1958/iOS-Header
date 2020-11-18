@@ -8,6 +8,6 @@
 
 @interface TSDFreehandDrawingInfo (TSTextAdditions)
 - (BOOL)containsDisallowedElementKind:(unsigned int)arg1;
-- (int)elementKind;
+- (unsigned int)elementKind;
 @end
 

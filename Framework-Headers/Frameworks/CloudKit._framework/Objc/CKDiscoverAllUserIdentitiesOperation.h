@@ -6,26 +6,31 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSMutableDictionary;
+#import <CloudKit/CKDiscoverAllUserIdentitiesOperationCallbacks-Protocol.h>
 
-@interface CKDiscoverAllUserIdentitiesOperation : CKOperation
+@class CKDiscoverUserIdentitiesOperationInfo, NSMutableDictionary;
+@protocol CKDiscoverAllUserIdentitiesOperationCallbacks;
+
+@interface CKDiscoverAllUserIdentitiesOperation : CKOperation <CKDiscoverAllUserIdentitiesOperationCallbacks>
 {
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverAllUserIdentitiesCompletionBlock;
     NSMutableDictionary *_identityToContactIdentifiers;
 }
 
+@property (readonly, nonatomic) id<CKDiscoverAllUserIdentitiesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType discoverAllUserIdentitiesCompletionBlock; // @synthesize discoverAllUserIdentitiesCompletionBlock=_discoverAllUserIdentitiesCompletionBlock;
 @property (strong, nonatomic) NSMutableDictionary *identityToContactIdentifiers; // @synthesize identityToContactIdentifiers=_identityToContactIdentifiers;
+@property (readonly, nonatomic) CKDiscoverUserIdentitiesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 
++ (Class)operationInfoClass;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
+- (void)handleUserIdentityDiscovery:(id)arg1;
 - (id)init;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

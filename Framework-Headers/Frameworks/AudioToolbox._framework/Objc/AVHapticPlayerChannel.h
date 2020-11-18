@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HapticClient;
+@class AVHapticClient;
 
 @interface AVHapticPlayerChannel : NSObject
 {
     unsigned long long _chanID;
     unsigned long long _behavior;
-    HapticClient *_client;
+    AVHapticClient *_client;
 }
 
 @property unsigned long long chanID; // @synthesize chanID=_chanID;
-@property (weak) HapticClient *client; // @synthesize client=_client;
+@property (weak) AVHapticClient *client; // @synthesize client=_client;
 @property unsigned long long eventBehavior;
 
 - (void).cxx_destruct;

@@ -6,20 +6,48 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBDistance, _INPBDouble, _INPBInteger;
+@class NSString, _INPBDateTime, _INPBDistance, _INPBDouble, _INPBEnergy, _INPBInteger, _INPBJSONDictionary;
 
 @protocol _INPBGetCarPowerLevelStatusIntentResponse <NSObject>
 
+@property (nonatomic) int activeConnector;
+@property (copy, nonatomic) NSString *carIdentifier;
 @property (strong, nonatomic) _INPBDouble *chargePercentRemaining;
 @property (nonatomic) BOOL charging;
+@property (strong, nonatomic) _INPBJSONDictionary *chargingFormulaArguments;
+@property (strong, nonatomic) _INPBJSONDictionary *consumptionFormulaArguments;
+@property (strong, nonatomic) _INPBEnergy *currentBatteryCapacity;
+@property (strong, nonatomic) _INPBDateTime *dateOfLastStateUpdate;
 @property (strong, nonatomic) _INPBDistance *distanceRemaining;
+@property (strong, nonatomic) _INPBDistance *distanceRemainingElectric;
+@property (strong, nonatomic) _INPBDistance *distanceRemainingFuel;
 @property (strong, nonatomic) _INPBDouble *fuelPercentRemaining;
+@property (nonatomic) BOOL hasActiveConnector;
+@property (readonly, nonatomic) BOOL hasCarIdentifier;
 @property (readonly, nonatomic) BOOL hasChargePercentRemaining;
 @property (nonatomic) BOOL hasCharging;
+@property (readonly, nonatomic) BOOL hasChargingFormulaArguments;
+@property (readonly, nonatomic) BOOL hasConsumptionFormulaArguments;
+@property (readonly, nonatomic) BOOL hasCurrentBatteryCapacity;
+@property (readonly, nonatomic) BOOL hasDateOfLastStateUpdate;
 @property (readonly, nonatomic) BOOL hasDistanceRemaining;
+@property (readonly, nonatomic) BOOL hasDistanceRemainingElectric;
+@property (readonly, nonatomic) BOOL hasDistanceRemainingFuel;
 @property (readonly, nonatomic) BOOL hasFuelPercentRemaining;
+@property (readonly, nonatomic) BOOL hasMaximumBatteryCapacity;
+@property (readonly, nonatomic) BOOL hasMaximumDistance;
+@property (readonly, nonatomic) BOOL hasMaximumDistanceElectric;
+@property (readonly, nonatomic) BOOL hasMaximumDistanceFuel;
+@property (readonly, nonatomic) BOOL hasMinimumBatteryCapacity;
 @property (readonly, nonatomic) BOOL hasMinutesToFull;
+@property (strong, nonatomic) _INPBEnergy *maximumBatteryCapacity;
+@property (strong, nonatomic) _INPBDistance *maximumDistance;
+@property (strong, nonatomic) _INPBDistance *maximumDistanceElectric;
+@property (strong, nonatomic) _INPBDistance *maximumDistanceFuel;
+@property (strong, nonatomic) _INPBEnergy *minimumBatteryCapacity;
 @property (strong, nonatomic) _INPBInteger *minutesToFull;
 
+- (int)StringAsActiveConnector:(NSString *)arg1;
+- (NSString *)activeConnectorAsString:(int)arg1;
 @end
 

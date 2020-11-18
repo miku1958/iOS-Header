@@ -6,11 +6,12 @@
 
 #import <Photos/PHAssetCollection.h>
 
-@class NSData, NSString;
+@class NSData, NSDate, NSString;
 
 @interface PHProject : PHAssetCollection
 {
     NSData *_projectExtensionData;
+    NSDate *_creationDate;
     NSString *_projectExtensionIdentifier;
     NSString *_projectDocumentType;
     NSString *_projectRenderUuid;
@@ -38,6 +39,7 @@
 - (void).cxx_destruct;
 - (BOOL)canContainCustomKeyAssets;
 - (BOOL)canPerformEditOperation:(long long)arg1;
+- (id)creationDate;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 
 @end

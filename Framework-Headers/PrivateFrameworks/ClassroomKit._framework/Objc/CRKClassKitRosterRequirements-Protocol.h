@@ -6,12 +6,12 @@
 
 #import <ClassroomKit/NSObject-Protocol.h>
 
-@class NSSet, NSString;
+@class NSArray, NSError, NSSet, NSString;
 @protocol CRKClassKitClass, CRKClassKitPerson, CRKClassKitQuery;
 
 @protocol CRKClassKitRosterRequirements <NSObject>
 
-@property (readonly, nonatomic, getter=isEligibleAccountSignedIn) BOOL eligibleAccountSignedIn;
+@property (readonly, nonatomic) long long accountState;
 
 - (id)addObserver:(void (^)(void))arg1;
 - (void)addPerson:(id<CRKClassKitPerson>)arg1 toClass:(id<CRKClassKitClass>)arg2;
@@ -22,10 +22,16 @@
 - (void)locationsWithManagePermissionsForUserWithObjectID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)locationsWithObjectIDs:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (id<CRKClassKitClass>)makeClassWithLocationID:(NSString *)arg1 name:(NSString *)arg2;
-- (id<CRKClassKitQuery>)makePersonQueryForSearchString:(NSString *)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id<CRKClassKitQuery>)makeInstructorQueryForSearchString:(NSString *)arg1 locationIDs:(NSArray *)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (id<CRKClassKitQuery>)makeQueryForPersonsWithIdentifiers:(NSArray *)arg1;
+- (id<CRKClassKitQuery>)makeStudentQueryForSearchString:(NSString *)arg1 locationIDs:(NSArray *)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (NSSet *)objectIDsOfPersonsInClass:(id<CRKClassKitClass>)arg1;
 - (NSSet *)objectIDsOfTrustedPersonsInClass:(id<CRKClassKitClass>)arg1;
+- (BOOL)ownsError:(NSError *)arg1;
+- (void)personsInClassWithObjectID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)removeClass:(id<CRKClassKitClass>)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeObserver:(id)arg1;
+- (void)removePerson:(id<CRKClassKitPerson>)arg1 fromClass:(id<CRKClassKitClass>)arg2;
 - (void)removeTrustedPerson:(id<CRKClassKitPerson>)arg1 fromClass:(id<CRKClassKitClass>)arg2;
 - (void)saveClass:(id<CRKClassKitClass>)arg1 completion:(void (^)(NSError *))arg2;
 - (void)trustedPersonsInClassWithObjectID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

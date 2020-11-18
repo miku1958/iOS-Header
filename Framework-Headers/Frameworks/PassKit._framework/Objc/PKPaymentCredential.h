@@ -12,8 +12,10 @@
 
 @interface PKPaymentCredential : NSObject <NSSecureCoding>
 {
+    BOOL _deletable;
     long long _credentialType;
     NSString *_sanitizedPrimaryAccountNumber;
+    NSString *_sanitizedPrimaryAccountName;
     NSString *_expiration;
     NSString *_longDescription;
     long long _cardType;
@@ -23,10 +25,12 @@
 
 @property (nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property (nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
+@property (nonatomic, getter=isDeletable) BOOL deletable; // @synthesize deletable=_deletable;
 @property (strong, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
 @property (copy, nonatomic) NSString *expiration; // @synthesize expiration=_expiration;
 @property (copy, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
 @property (strong, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
+@property (copy, nonatomic) NSString *sanitizedPrimaryAccountName; // @synthesize sanitizedPrimaryAccountName=_sanitizedPrimaryAccountName;
 @property (copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
 
 + (id)fakeRemoteCredentials;
@@ -36,20 +40,25 @@
 - (id)contactlessProductCredential;
 - (id)digitalIssuanceProductCredential;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAccountCredential;
 - (BOOL)isContactlessProductCredential;
 - (BOOL)isDigitalIssuanceProductCredential;
+- (BOOL)isIssuerProvisioningExtensionCredential;
 - (BOOL)isLocalAppletSubcredentialPassCredential;
 - (BOOL)isLocalPassCredential;
 - (BOOL)isPeerPaymentCredential;
 - (BOOL)isPurchasedProductCredential;
 - (BOOL)isRemoteCredential;
+- (BOOL)isShareableCredential;
+- (id)issuerProvisioningExtensionCredential;
 - (id)localAppletSubcredentialPassCredential;
 - (id)localPassCredential;
 - (id)peerPaymentCredential;
 - (id)purchasedProductCredential;
 - (id)remoteCredential;
+- (id)shareableCredential;
 
 @end
 

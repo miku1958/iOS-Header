@@ -36,8 +36,6 @@
 - (BOOL)hasAlignmentEdgeMargins;
 - (BOOL)hasOpaqueContentBounds;
 - (struct CGSize)imageSize;
-- (id)initWithImageSize:(struct CGSize)arg1 edgeBottomLeft:(struct CGSize)arg2 edgeTopRight:(struct CGSize)arg3 contentBottomLeft:(struct CGSize)arg4 contentTopRight:(struct CGSize)arg5 baseline:(double)arg6 auxiliary1BottomLeft:(struct CGSize)arg7 auxiliary1TopRight:(struct CGSize)arg8 auxiliary2BottomLeft:(struct CGSize)arg9 auxiliary2TopRight:(struct CGSize)arg10 scalesVertically:(BOOL)arg11 scalesHorizontally:(BOOL)arg12 scale:(double)arg13;
-- (id)initwithImageSize:(struct CGSize)arg1 scale:(double)arg2;
 - (struct CGRect)insetContentRectWithMetrics:(struct CGRect)arg1;
 - (struct CGRect)insetRectWithMetrics:(struct CGRect)arg1;
 - (double)scale;

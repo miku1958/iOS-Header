@@ -8,9 +8,9 @@
 
 @protocol TPNumberPadButtonProtocol <NSObject>
 
-@property unsigned int character;
+@property long long character;
 
-- (id)initForCharacter:(unsigned int)arg1;
+- (id)initForCharacter:(long long)arg1;
 
 @optional
 - (void)loadImagesForCurrentCharacter;

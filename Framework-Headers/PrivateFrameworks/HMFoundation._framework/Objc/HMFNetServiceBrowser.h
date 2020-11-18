@@ -8,12 +8,12 @@
 
 #import <HMFoundation/NSNetServiceBrowserDelegate-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSHashTable, NSMutableOrderedSet, NSNetServiceBrowser, NSObject, NSString;
+@class NSArray, NSHashTable, NSMutableOrderedSet, NSNetServiceBrowser, NSObject, NSString;
 @protocol HMFNetServiceBrowserDelegate, OS_dispatch_queue;
 
 @interface HMFNetServiceBrowser : HMFObject <NSNetServiceBrowserDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSHashTable *_netServices;
     NSMutableOrderedSet *_cachedNetServices;
     BOOL _browsing;

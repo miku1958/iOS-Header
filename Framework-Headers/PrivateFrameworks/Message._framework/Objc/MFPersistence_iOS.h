@@ -8,7 +8,7 @@
 
 #import <Message/EFLoggable-Protocol.h>
 
-@class EDConversationPersistence, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, MFMailMessageLibrary, NSString;
+@class EDConversationPersistence, EDListUnsubscribeHandler, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, MFMailMessageLibrary, NSString;
 @protocol EDAccountsProvider, EDRemoteSearchProvider, EMUserProfileProvider;
 
 @interface MFPersistence_iOS : EDPersistence <EFLoggable>
@@ -25,6 +25,7 @@
     EDServerMessagePersistenceFactory *_serverMessagePersistenceFactory;
     EDThreadPersistence *_threadPersistence;
     id<EMUserProfileProvider> _userProfileProvider;
+    EDListUnsubscribeHandler *_listUnsubscribeHandler;
     MFMailMessageLibrary *_library;
 }
 
@@ -33,6 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) MFMailMessageLibrary *library; // @synthesize library=_library;
+@property (strong, nonatomic) EDListUnsubscribeHandler *listUnsubscribeHandler; // @synthesize listUnsubscribeHandler=_listUnsubscribeHandler;
 @property (strong, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<EMUserProfileProvider> userProfileProvider; // @synthesize userProfileProvider=_userProfileProvider;
@@ -51,6 +53,7 @@
 - (id)searchableIndexManager;
 - (id)serverMessagePersistenceFactory;
 - (void)setUpWithMailboxProvider:(id)arg1 remoteSearchProvider:(id)arg2;
+- (void)test_tearDown;
 - (id)threadPersistence;
 
 @end

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (readonly, nonatomic) unsigned long long calendarUnit; // @synthesize calendarUnit=_calendarUnit;
-@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

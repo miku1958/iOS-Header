@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (BOOL)areUsersAtHome:(id)arg1;
 - (BOOL)areUsersNotAtHome:(id)arg1;
+- (id)attributeDescriptions;
 - (id)initWithHome:(id)arg1 userPresenceMap:(id)arg2 lastUpdateByDevice:(id)arg3;
 - (BOOL)isAnyUserAtHome;
 - (BOOL)isEqual:(id)arg1;

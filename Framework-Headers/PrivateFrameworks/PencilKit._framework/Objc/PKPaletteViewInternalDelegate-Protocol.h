@@ -5,19 +5,13 @@
 //
 
 #import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/PKPaletteViewStateObserving-Protocol.h>
 
-@class PKPaletteView, UIView;
+@class PKPaletteView;
 
-@protocol PKPaletteViewInternalDelegate <NSObject>
-
-@property (readonly, nonatomic) UIView *hostingView;
-@property (readonly, nonatomic, getter=isPaletteDragging) BOOL paletteDragging;
-@property (readonly, nonatomic, getter=isPaletteMinimized) BOOL paletteMinimized;
-@property (readonly, nonatomic, getter=isPaletteVisible) BOOL paletteVisible;
-
-- (struct CGSize)paletteSizeForEdge:(unsigned long long)arg1;
-- (void)paletteView:(PKPaletteView *)arg1 didChangeAnnotationSupport:(BOOL)arg2;
-- (void)paletteView:(PKPaletteView *)arg1 didToggleAutoHideOption:(BOOL)arg2;
+@protocol PKPaletteViewInternalDelegate <NSObject, PKPaletteViewStateObserving>
+- (void)paletteViewContentSizeDidChange:(PKPaletteView *)arg1;
+- (void)paletteViewReturnKeyTypeDidChange:(PKPaletteView *)arg1;
 - (void)paletteViewShowFeedbackForToolChange:(PKPaletteView *)arg1;
 @end
 

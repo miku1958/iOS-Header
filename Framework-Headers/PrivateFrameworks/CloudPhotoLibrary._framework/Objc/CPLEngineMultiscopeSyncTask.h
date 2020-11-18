@@ -8,7 +8,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
-@class CPLEngineScopeStorage, CPLEngineScopedTask, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CPLEngineScopeStorage, CPLEngineScopedTask, CPLScopeFilter, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineMultiscopeSyncTask : CPLEngineSyncTask <CPLEngineSyncTaskDelegate>
@@ -21,11 +21,13 @@
     NSMutableDictionary *_transportScopes;
     NSString *_clientCacheIdentifier;
     CPLEngineScopeStorage *_scopes;
+    CPLScopeFilter *_scopeFilter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
 @property (readonly, nonatomic) CPLEngineScopeStorage *scopes; // @synthesize scopes=_scopes;
 @property (readonly, nonatomic) BOOL shouldSkipScopesWithMissingTransportScope;
 @property (readonly) Class superclass;
@@ -42,6 +44,7 @@
 - (void)launch;
 - (id)newScopedTaskWithScope:(id)arg1 session:(id)arg2 transportScope:(id)arg3 clientCacheIdentifier:(id)arg4;
 - (id)phaseDescription;
+- (id)phaseDescriptionLastChangeDate:(id *)arg1;
 - (void)setForceSync:(BOOL)arg1;
 - (void)setForeground:(BOOL)arg1;
 - (BOOL)shouldContinueAfterError:(id)arg1 fromTask:(id)arg2;

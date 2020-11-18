@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSPersistentStoreCoordinator, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, RTPersistenceContainerDelegate;
 
 @interface RTPersistenceContainer : NSObject
 {
     NSArray *_configurations;
     BOOL _serveContexts;
     BOOL _setupFailed;
+    id<RTPersistenceContainerDelegate> _delegate;
     NSString *_name;
     NSObject<OS_dispatch_queue> *_contextRequestsQueue;
     NSPersistentStoreCoordinator *_coordinator;
@@ -21,6 +22,7 @@
 
 @property (strong) NSObject<OS_dispatch_queue> *contextRequestsQueue; // @synthesize contextRequestsQueue=_contextRequestsQueue;
 @property (strong) NSPersistentStoreCoordinator *coordinator; // @synthesize coordinator=_coordinator;
+@property (weak, nonatomic) id<RTPersistenceContainerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) NSString *name; // @synthesize name=_name;
 @property BOOL serveContexts; // @synthesize serveContexts=_serveContexts;
 @property BOOL setupFailed; // @synthesize setupFailed=_setupFailed;

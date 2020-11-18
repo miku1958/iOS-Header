@@ -41,6 +41,7 @@
 - (void)homeZoneWithName:(id)arg1 owner:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1 workQueue:(id)arg2;
+- (void)persistDatabaseServerChangeToken;
 
 @end
 

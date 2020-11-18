@@ -21,7 +21,6 @@ struct os_unfair_lock_s {
 
 #pragma mark Typedef'd Structures
 
-// Ambiguous groups
 typedef struct {
     unsigned int protocolVersion:1;
 } CDStruct_f86102d7;

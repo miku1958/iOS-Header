@@ -19,7 +19,7 @@
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-- (id)initWithEditOption:(id)arg1 overrideText:(id)arg2;
+- (id)initWithEditOption:(id)arg1;
 - (double)rowHeight;
 
 @end

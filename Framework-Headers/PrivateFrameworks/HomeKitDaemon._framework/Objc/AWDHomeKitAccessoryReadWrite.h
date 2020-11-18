@@ -13,6 +13,7 @@
 @interface AWDHomeKitAccessoryReadWrite : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    NSString *_appIdentifier;
     int _certified;
     NSMutableArray *_characteristics;
     unsigned int _consecutiveFailureCount;
@@ -28,10 +29,12 @@
     NSString *_underlyingErrorDomain;
     AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isCached;
+    BOOL _isNoeAccessory;
     BOOL _isRemote;
     BOOL _isRemoteAccessAllowed;
     BOOL _isRemotelyReachable;
     BOOL _isResidentAvailable;
+    BOOL _isSentOverNoe;
     BOOL _isTimedWrite;
     BOOL _isWrite;
     struct {
@@ -45,29 +48,35 @@
         unsigned int transportType:1;
         unsigned int underlyingErrorCode:1;
         unsigned int isCached:1;
+        unsigned int isNoeAccessory:1;
         unsigned int isRemote:1;
         unsigned int isRemoteAccessAllowed:1;
         unsigned int isRemotelyReachable:1;
         unsigned int isResidentAvailable:1;
+        unsigned int isSentOverNoe:1;
         unsigned int isTimedWrite:1;
         unsigned int isWrite:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (strong, nonatomic) NSMutableArray *characteristics; // @synthesize characteristics=_characteristics;
 @property (nonatomic) unsigned int consecutiveFailureCount; // @synthesize consecutiveFailureCount=_consecutiveFailureCount;
 @property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
+@property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasConsecutiveFailureCount;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
 @property (nonatomic) BOOL hasIsCached;
+@property (nonatomic) BOOL hasIsNoeAccessory;
 @property (nonatomic) BOOL hasIsRemote;
 @property (nonatomic) BOOL hasIsRemoteAccessAllowed;
 @property (nonatomic) BOOL hasIsRemotelyReachable;
 @property (nonatomic) BOOL hasIsResidentAvailable;
+@property (nonatomic) BOOL hasIsSentOverNoe;
 @property (nonatomic) BOOL hasIsTimedWrite;
 @property (nonatomic) BOOL hasIsWrite;
 @property (readonly, nonatomic) BOOL hasPrimaryServiceType;
@@ -81,10 +90,12 @@
 @property (readonly, nonatomic) BOOL hasUnderlyingErrorDomain;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
 @property (nonatomic) BOOL isCached; // @synthesize isCached=_isCached;
+@property (nonatomic) BOOL isNoeAccessory; // @synthesize isNoeAccessory=_isNoeAccessory;
 @property (nonatomic) BOOL isRemote; // @synthesize isRemote=_isRemote;
 @property (nonatomic) BOOL isRemoteAccessAllowed; // @synthesize isRemoteAccessAllowed=_isRemoteAccessAllowed;
 @property (nonatomic) BOOL isRemotelyReachable; // @synthesize isRemotelyReachable=_isRemotelyReachable;
 @property (nonatomic) BOOL isResidentAvailable; // @synthesize isResidentAvailable=_isResidentAvailable;
+@property (nonatomic) BOOL isSentOverNoe; // @synthesize isSentOverNoe=_isSentOverNoe;
 @property (nonatomic) BOOL isTimedWrite; // @synthesize isTimedWrite=_isTimedWrite;
 @property (nonatomic) BOOL isWrite; // @synthesize isWrite=_isWrite;
 @property (strong, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;

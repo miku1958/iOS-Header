@@ -29,6 +29,7 @@
 + (id)_mediaTypesForTracksWithPersistentIDs:(id)arg1 usingConnection:(id)arg2;
 + (void)_removeMediaTypesFromContainerWithPersistentID:(long long)arg1 mediaTypes:(id)arg2 connection:(id)arg3;
 + (void)_updateContainedMediaTypeInContainerWithPersistentID:(long long)arg1 connection:(id)arg2 itemUpdateBlock:(CDUnknownBlockType)arg3;
++ (BOOL)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (id)autoCreatedBuiltInSmartPlaylistsPIDs:(id)arg1;
 + (id)databaseTable;
 + (id)defaultFilterPredicates;
@@ -57,7 +58,7 @@
 + (id)sectionPropertyForProperty:(id)arg1;
 + (BOOL)smartCriteriaCanBeEvaluated:(id)arg1;
 + (unsigned int)trackOrderFromProtocolSortType:(int)arg1;
-+ (BOOL)updateBuiltInSmartPlaylistNamesForCurrentLanguage:(id)arg1;
++ (BOOL)updateBuiltInSmartPlaylistNamesForCurrentLanguageInLibrary:(id)arg1 usingConnection:(id)arg2;
 - (id)_addUnitesForCriterionInfo:(CDStruct_ca99c6a1)arg1;
 - (id)_booleanStringForCriteriaInfo:(CDStruct_ca99c6a1)arg1;
 - (id)_convertNumericValueFromCriterionMatchKey:(unsigned int)arg1 criteriaValue:(long long)arg2;

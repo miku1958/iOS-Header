@@ -15,6 +15,7 @@
 {
     int _metricToken;
     NSArray *_pastPayloads;
+    NSArray *_pastDiagnosticPayloads;
     NSObject<OS_dispatch_queue> *_iVarQueue;
     NSObject<OS_os_log> *_managerLogHandle;
     NSXPCConnection *_connection;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *iVarQueue; // @synthesize iVarQueue=_iVarQueue;
 @property (strong, nonatomic) NSObject<OS_os_log> *managerLogHandle; // @synthesize managerLogHandle=_managerLogHandle;
 @property (nonatomic) int metricToken; // @synthesize metricToken=_metricToken;
+@property (strong) NSArray *pastDiagnosticPayloads; // @synthesize pastDiagnosticPayloads=_pastDiagnosticPayloads;
 @property (strong) NSArray *pastPayloads; // @synthesize pastPayloads=_pastPayloads;
 @property (strong, nonatomic) NSHashTable *subscribers; // @synthesize subscribers=_subscribers;
 
@@ -32,6 +34,7 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (BOOL)_cachedPayloadAvailable;
+- (void)_checkAndDeliverDiagnosticReports;
 - (void)_checkAndDeliverMetricReports;
 - (id)_createXPCConnection;
 - (void)addSubscriber:(id)arg1;

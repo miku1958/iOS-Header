@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDPassLibraryInAppExportedInterface-Protocol.h>
 
-@class CLLocation, NSArray, NSNumber, NSSet, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPaymentSetupConfiguration, PKPaymentSetupRequest;
+@class CLLocation, NSArray, NSNumber, NSSet, NSString, PKContact, PKDisplayProfile, PKDisplayTraitCollection, PKFieldProperties, PKPaymentSetupConfiguration, PKPaymentSetupRequest;
 
 @protocol PDPassLibraryExtendedExportedInterface <PDPassLibraryInAppExportedInterface>
 - (void)enabledValueAddedServicePassesWithHandler:(void (^)(NSArray *))arg1;
@@ -15,7 +15,6 @@
 - (void)forceImmediateRevocationCheck;
 - (void)getDataForBundleResources:(NSSet *)arg1 objectUniqueIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *))arg3;
 - (void)getDiffForPassUpdateUserNotificationWithIdentifier:(NSString *)arg1 handler:(void (^)(PKDiff *))arg2;
-- (void)getImageSetContainerForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 suffix:(NSString *)arg4 handler:(void (^)(PKImageSetXPCContainer *))arg5;
 - (void)getMetadataForFieldWithProperties:(PKFieldProperties *)arg1 handler:(void (^)(PKFieldMetadata *))arg2;
 - (void)getPassesWithUniqueIdentifiers:(NSArray *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)getRouteRelevantPassesForLocation:(CLLocation *)arg1 handler:(void (^)(NSArray *, NSDictionary *))arg2;
@@ -23,12 +22,10 @@
 - (void)isPassbookVisibleWithHandler:(void (^)(BOOL))arg1;
 - (void)isRemovingPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
 - (void)issueWalletUserNotificationWithTitle:(NSString *)arg1 message:(NSString *)arg2 forPassUniqueIdentifier:(NSString *)arg3 customActionRoute:(NSString *)arg4;
-- (void)logDelayExitReasons;
 - (void)noteAccountChangedWithHandler:(void (^)(void))arg1;
 - (void)noteAccountDeletedWithHandler:(void (^)(void))arg1;
 - (void)noteObjectSharedWithUniqueID:(NSString *)arg1;
 - (void)notifyPassUsedWithIdentifier:(NSString *)arg1 fromSource:(long long)arg2;
-- (void)nukeDatabaseAndExit;
 - (void)openDigitalIssuanceUIForIdentifier:(NSString *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)openPaymentUIWithCompletion:(void (^)(BOOL))arg1;
 - (void)openWalletUIWithRelevantPass:(NSString *)arg1;
@@ -39,17 +36,25 @@
 - (void)presentContactlessInterfaceForDefaultPassFromSource:(long long)arg1 handler:(void (^)(BOOL))arg2;
 - (void)presentContactlessInterfaceForPassWithUniqueIdentifier:(NSString *)arg1 fromSource:(long long)arg2 handler:(void (^)(BOOL))arg3;
 - (void)presentPaymentSetupRequest:(PKPaymentSetupRequest *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)pushProvisioningNoncesWithCredentialCount:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)recomputeRelevantPassesWithSearchMode:(long long)arg1;
 - (void)removeAllScheduledActivities;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(NSString *)arg1;
 - (void)resetApplePayWithDiagnosticReason:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
-- (void)sendUserEditedCatalog:(PKCatalog *)arg1;
 - (void)shuffleGroups:(int)arg1;
-- (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(void (^)(NSError *))arg1;
-- (void)spotlightReindexAllPassesWithCompletion:(void (^)(NSError *))arg1;
-- (void)spotlightReindexPassesWithUniqueIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)spotlightReindexAllContentWithAcknowledgement:(void (^)(void))arg1;
+- (void)spotlightReindexContentWithIdentifiers:(NSArray *)arg1 acknowledgement:(void (^)(void))arg2;
+- (void)spotlightResetWithCompletion:(void (^)(void))arg1;
+- (void)spotlightStatusWithCompletion:(void (^)(NSString *))arg1;
 - (void)updateObjectWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(NSString *)arg2;
+- (void)usingSynchronousProxy:(BOOL)arg1 getCachedImageSetContainerForUniqueID:(NSString *)arg2 type:(long long)arg3 withDisplayProfile:(PKDisplayProfile *)arg4 displayTraits:(PKDisplayTraitCollection *)arg5 handler:(void (^)(PKImageSetXPCContainer *))arg6;
+- (void)usingSynchronousProxy:(BOOL)arg1 getContentForUniqueID:(NSString *)arg2 withHandler:(void (^)(PKContent *))arg3;
+- (void)usingSynchronousProxy:(BOOL)arg1 getImageSetContainerForUniqueID:(NSString *)arg2 type:(long long)arg3 withDisplayProfile:(PKDisplayProfile *)arg4 suffix:(NSString *)arg5 handler:(void (^)(PKImageSetXPCContainer *))arg6;
+- (void)usingSynchronousProxy:(BOOL)arg1 getPassForProvisioningCredentialHash:(NSString *)arg2 handler:(void (^)(PKPass *))arg3;
+- (void)usingSynchronousProxy:(BOOL)arg1 getPassesAndCatalogOfPassTypes:(unsigned long long)arg2 limitResults:(BOOL)arg3 withHandler:(void (^)(NSSet *, PKCatalog *))arg4;
+- (void)usingSynchronousProxy:(BOOL)arg1 getPassesOfStyles:(unsigned long long)arg2 handler:(void (^)(NSSet *))arg3;
+- (void)usingSynchronousProxy:(BOOL)arg1 getPaymentPassesPendingActivationWithHandler:(void (^)(NSSet *))arg2;
 @end
 

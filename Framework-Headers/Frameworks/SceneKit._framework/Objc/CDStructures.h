@@ -729,11 +729,12 @@ struct __C3DFXMetalProgram {
     struct __C3DFXProgram _field1;
     struct __CFString *_field2[2];
     struct __CFString *_field3;
-    struct __CFDictionary *_field4;
-    void *_field5;
-    struct __CFDictionary *_field6;
-    void *_field7;
-    struct __CFString *_field8;
+    struct __CFString *_field4;
+    struct __CFDictionary *_field5;
+    void *_field6;
+    struct __CFDictionary *_field7;
+    void *_field8;
+    struct __CFString *_field9;
 };
 
 struct __C3DFXPass {
@@ -967,7 +968,7 @@ struct __C3DGeometry {
         void *_field7;
         void *_field8;
     } _field9;
-    CDStruct_14ccb760 _field10;
+    CDStruct_9b587744 _field10;
     unsigned char _field11;
 };
 
@@ -1016,14 +1017,15 @@ struct __C3DMeshElement {
         unsigned char _field6;
         BOOL _field7;
     } _field8;
-    float _field9;
+    void *_field9;
     float _field10;
     float _field11;
-    void *_field12;
-    struct __C3DMeshSource *_field13;
-    MISSING_TYPE *_field14[2];
-    CDStruct_183601bc *_field15;
-    unsigned int _field16;
+    float _field12;
+    void *_field13;
+    struct __C3DMeshSource *_field14;
+    MISSING_TYPE *_field15[2];
+    CDStruct_183601bc *_field16;
+    unsigned int _field17;
 };
 
 struct __C3DMeshSource {
@@ -2105,19 +2107,6 @@ typedef struct {
     } _field1;
 } C3DColor4_0cad58d8;
 
-typedef struct {
-    union {
-        float rgba[4];
-        struct {
-            float r;
-            float g;
-            float b;
-            float a;
-        } ;
-        MISSING_TYPE *simd;
-    } ;
-} C3DColor4_a26f5c89;
-
 #endif
 
 #pragma mark Typedef'd Structures
@@ -2278,12 +2267,10 @@ typedef struct CDStruct_183601bc;
 typedef struct {
     id _field1;
     id _field2;
-    id _field3;
-    id _field4;
-    CDStruct_183601bc *_field5;
-    unsigned int _field6;
-    BOOL _field7;
-} CDStruct_f890dce7;
+    CDStruct_183601bc *_field3;
+    unsigned int _field4;
+    BOOL _field5;
+} CDStruct_0b08fa6a;
 
 typedef struct {
     id _field1;
@@ -2370,12 +2357,8 @@ typedef struct {
     id _field4;
     unsigned int _field5;
     id _field6;
-    id _field7;
-    id _field8;
-    id _field9;
-    id _field10;
-    unsigned char _field11;
-} CDStruct_d07ba996;
+    unsigned char _field7;
+} CDStruct_8a6a5118;
 
 typedef struct {
     CDStruct_14f26992 _field1;
@@ -2400,11 +2383,11 @@ typedef struct {
         } constrainedEdgeLength;
         struct {
             unsigned char tessellationLevel;
-            unsigned int wantsSingleCreasePatch:1;
+            unsigned int allowSingleCreasePatch:1;
             unsigned int useScreenSpaceTessellation:1;
         } subdivisionSurface;
     } parameters;
-} CDStruct_14ccb760;
+} CDStruct_9b587744;
 
 typedef struct {
     CDUnion_915c2b1f _field1[6];

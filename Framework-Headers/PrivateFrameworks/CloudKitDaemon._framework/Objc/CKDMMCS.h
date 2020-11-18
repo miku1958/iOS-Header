@@ -8,7 +8,6 @@
 
 @class CKDAssetCache, CKDClientContext, CKDMMCSEngineContext, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCS : NSObject
 {
     BOOL _didDrop;

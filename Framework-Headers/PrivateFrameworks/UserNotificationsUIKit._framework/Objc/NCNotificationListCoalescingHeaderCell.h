@@ -40,13 +40,12 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (struct CGSize)_coalescingControlsViewPreferredSize;
-+ (void)_contentSizeCategoryDidChange:(id)arg1;
 + (double)coalescingHeaderCellHeightForWidth:(double)arg1 title:(id)arg2;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (struct CGRect)_coalescingControlsViewFrameForBounds:(struct CGRect)arg1;
 - (void)_configureCoalescingControlsViewIfNecessary;
 - (void)_configureHeaderTitleViewIfNecessary;
+- (void)_contentSizeCategoryDidChange;
 - (void)_layoutCoalescingControlsView;
 - (void)_layoutHeaderTitleView;
 - (BOOL)adjustForContentSizeCategoryChange;
@@ -63,6 +62,7 @@
 - (void)notificationListCoalescingControlsViewRequestsRestack:(id)arg1;
 - (void)resetClearButtonStateAnimated:(BOOL)arg1;
 - (BOOL)shouldReceiveTouchAtPointInWindowSpace:(struct CGPoint)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

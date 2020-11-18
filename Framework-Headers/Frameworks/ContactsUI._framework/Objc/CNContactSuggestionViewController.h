@@ -44,10 +44,10 @@ __attribute__((visibility("hidden")))
 + (id)viewControllerWithDataSource:(id)arg1;
 - (void).cxx_destruct;
 - (void)addToContact:(id)arg1;
+- (id)alertMessageForIgnoreContactDetail;
 - (void)ignore:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (BOOL)sectionAtIndexContainsAddAndIgnoreControls:(unsigned long long)arg1;
-- (BOOL)shouldShowAddIgnoreControls;
+- (BOOL)shouldShowAddRejectActions;
 - (BOOL)shouldShowPreview;
 - (void)showSource:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)titleForIgnoreContactDetail;
 - (void)updatePreview;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

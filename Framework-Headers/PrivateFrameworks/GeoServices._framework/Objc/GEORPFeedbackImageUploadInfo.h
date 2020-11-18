@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     NSString *_clientImageUuid;
     NSString *_imageId;
+    NSString *_imageUploadHttpMethod;
     NSString *_imageUploadUrl;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -24,27 +25,24 @@
         unsigned int read_unknownFields:1;
         unsigned int read_clientImageUuid:1;
         unsigned int read_imageId:1;
+        unsigned int read_imageUploadHttpMethod:1;
         unsigned int read_imageUploadUrl:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientImageUuid:1;
-        unsigned int wrote_imageId:1;
-        unsigned int wrote_imageUploadUrl:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSString *clientImageUuid;
 @property (readonly, nonatomic) BOOL hasClientImageUuid;
 @property (readonly, nonatomic) BOOL hasImageId;
+@property (readonly, nonatomic) BOOL hasImageUploadHttpMethod;
 @property (readonly, nonatomic) BOOL hasImageUploadUrl;
 @property (strong, nonatomic) NSString *imageId;
+@property (strong, nonatomic) NSString *imageUploadHttpMethod;
 @property (strong, nonatomic) NSString *imageUploadUrl;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readClientImageUuid;
-- (void)_readImageId;
-- (void)_readImageUploadUrl;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -53,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

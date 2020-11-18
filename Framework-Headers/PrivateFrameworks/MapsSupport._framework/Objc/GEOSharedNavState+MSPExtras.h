@@ -8,7 +8,6 @@
 
 @interface GEOSharedNavState (MSPExtras)
 - (id)composedRoute;
-- (id)composedRouteTraffic;
 - (id)destinationName;
 - (CDUnknownBlockType)equalityTest;
 - (void)merge:(id)arg1;

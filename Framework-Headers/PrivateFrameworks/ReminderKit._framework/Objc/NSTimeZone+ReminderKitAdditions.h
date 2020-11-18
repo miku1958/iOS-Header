@@ -7,6 +7,9 @@
 #import <Foundation/NSTimeZone.h>
 
 @interface NSTimeZone (ReminderKitAdditions)
++ (id)remDebugTimeZone_GMT;
++ (id)remDebugTimeZone_LosAngeles;
++ (id)remDebugTimeZone_NewYork;
 - (BOOL)rem_isEquivalentTo:(id)arg1;
 @end
 

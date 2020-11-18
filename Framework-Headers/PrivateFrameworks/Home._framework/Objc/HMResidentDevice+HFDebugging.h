@@ -6,18 +6,24 @@
 
 #import <HomeKit/HMResidentDevice.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class HMAccessory, NSString;
+@class HMAccessory, NSString, NSUUID;
 
-@interface HMResidentDevice (HFDebugging) <HFStateDumpBuildable>
+@interface HMResidentDevice (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *hf_displayName;
 @property (readonly, nonatomic) HMAccessory *hf_linkedAccessory;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 - (BOOL)hf_isReachable;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

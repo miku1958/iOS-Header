@@ -26,7 +26,6 @@
 + (double)backgroundJobTimeout;
 + (BOOL)supportsBackgroundJob;
 - (void)_logFirstTimeExperienceMetricsIfNeededWithManager:(id)arg1;
-- (void)_updateHighlightTitlesForKind:(unsigned short)arg1 highlightTailor:(id)arg2 graphUpdateInventory:(id)arg3 alreadyEnrichedHighlights:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithHighlightTailorOptions:(unsigned long long)arg1;

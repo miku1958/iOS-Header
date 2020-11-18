@@ -19,7 +19,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property (strong, nonatomic) NSData *salt; // @synthesize salt=_salt;
 @property (readonly) Class superclass;
 

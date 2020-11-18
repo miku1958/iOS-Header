@@ -11,12 +11,14 @@
 @interface AMSFamilyInfoLookupResult : NSObject
 {
     BOOL _cached;
+    BOOL _headOfHouseholdSharingPayment;
     NSArray *_familyMembers;
 }
 
 @property (readonly, nonatomic, getter=isCached) BOOL cached; // @synthesize cached=_cached;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) NSArray *familyMembers; // @synthesize familyMembers=_familyMembers;
+@property (readonly, nonatomic, getter=isHeadOfHouseholdSharingPayment) BOOL headOfHouseholdSharingPayment; // @synthesize headOfHouseholdSharingPayment=_headOfHouseholdSharingPayment;
 
 + (id)_familyMembersFromDictionaryRepresentation:(id)arg1;
 - (void).cxx_destruct;

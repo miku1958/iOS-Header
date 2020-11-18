@@ -25,7 +25,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUser:(id)arg1 presenceRegionStatus:(id)arg2;

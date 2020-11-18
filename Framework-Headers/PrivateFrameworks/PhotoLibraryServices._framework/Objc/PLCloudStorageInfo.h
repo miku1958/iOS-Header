@@ -13,17 +13,19 @@
     long long _availableBytes;
     long long _usedBytes;
     long long _cameraRollBackupBytes;
+    long long _photosMediaUsageBytes;
 }
 
-@property (nonatomic) long long availableBytes; // @synthesize availableBytes=_availableBytes;
-@property (nonatomic) long long cameraRollBackupBytes; // @synthesize cameraRollBackupBytes=_cameraRollBackupBytes;
-@property (nonatomic) BOOL hasMaxQuotaTier; // @synthesize hasMaxQuotaTier=_hasMaxQuotaTier;
-@property (nonatomic) long long totalBytes; // @synthesize totalBytes=_totalBytes;
-@property (nonatomic) long long usedBytes; // @synthesize usedBytes=_usedBytes;
+@property (readonly, nonatomic) long long availableBytes; // @synthesize availableBytes=_availableBytes;
+@property (readonly, nonatomic) long long cameraRollBackupBytes; // @synthesize cameraRollBackupBytes=_cameraRollBackupBytes;
+@property (readonly, nonatomic) BOOL hasMaxQuotaTier; // @synthesize hasMaxQuotaTier=_hasMaxQuotaTier;
+@property (readonly, nonatomic) long long photosMediaUsageBytes; // @synthesize photosMediaUsageBytes=_photosMediaUsageBytes;
+@property (readonly, nonatomic) long long totalBytes; // @synthesize totalBytes=_totalBytes;
+@property (readonly, nonatomic) long long usedBytes; // @synthesize usedBytes=_usedBytes;
 
-+ (id)storageInfoWithTotal:(long long)arg1 available:(long long)arg2 used:(long long)arg3 cameraRollBackupBytes:(long long)arg4 hasMaxQuotaTier:(BOOL)arg5;
++ (id)storageInfoWithTotal:(long long)arg1 available:(long long)arg2 used:(long long)arg3 cameraRollBackupBytes:(long long)arg4 photosMediaUsage:(long long)arg5 hasMaxQuotaTier:(BOOL)arg6;
 - (id)description;
-- (id)initWithTotalQuotaBytes:(long long)arg1 totalAvailableBytes:(long long)arg2 totalUsedBytes:(long long)arg3 cameraRollBackupBytes:(long long)arg4 hasMaxQuotaTier:(BOOL)arg5;
+- (id)initWithTotalQuotaBytes:(long long)arg1 totalAvailableBytes:(long long)arg2 totalUsedBytes:(long long)arg3 cameraRollBackupBytes:(long long)arg4 photosMediaUsage:(long long)arg5 hasMaxQuotaTier:(BOOL)arg6;
 
 @end
 

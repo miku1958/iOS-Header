@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DADBuddyStateObserver, DADREMLocalDBWatcher, NSArray, NSMutableArray, NSMutableDictionary;
+@class DADBuddyStateObserver, DADREMLocalDBWatcher, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol DADREMStoreProvider, DADREMUserNotificationPresentingProvider, OS_dispatch_queue;
 
 @interface DADAgentManager : NSObject
@@ -20,6 +20,7 @@
     CDUnknownBlockType _startAgentsWhenSystemReadyBlock;
     NSObject<OS_dispatch_queue> *_CTCellularUsagePolicyNotificationQ;
     struct __CTServerConnection *_ctServerConnection;
+    NSDictionary *_wirelessPolicies;
     int _pendingAccountSetupCount;
     DADBuddyStateObserver *_buddyStateObserver;
     NSMutableArray *_subCalHandlers;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSMutableArray *subCalHandlers; // @synthesize subCalHandlers=_subCalHandlers;
 
 + (id)sharedManager;
++ (BOOL)wirelessPolicy:(id)arg1 isMorePermissiveThanPolicy:(id)arg2;
 - (void).cxx_destruct;
 - (id)_accountInfoPath;
 - (void)_addAccountAggdEntries;

@@ -28,6 +28,8 @@
     PXCMMPreviewAsset *_previewAsset;
     PXCMMPreviewUIImageProvider *_previewImageProvider;
     BOOL _readyForBubbleStateTransitions;
+    BOOL _isExpungingAndRefetching;
+    BOOL _triggeredForcedSync;
     BOOL _isSender;
     BOOL _isPending;
     BOOL _highlighted;
@@ -72,10 +74,12 @@
 - (void)_retryMomentShareFetch;
 - (id)_secondaryDescription;
 - (BOOL)_shouldNavigateToContent;
+- (BOOL)_shouldOpenCloudSettings;
 - (BOOL)_shouldOpenInSafari;
 - (BOOL)_shouldRetryOnTap;
 - (BOOL)_shouldShowContent;
 - (void)_tapGesture:(id)arg1;
+- (void)_triggerForcedSyncIfNeeded;
 - (void)_updateBubbleState;
 - (void)_updateBubbleView;
 - (void)_updateContent;

@@ -15,6 +15,7 @@
 - (void)reset;
 - (void)setBarrier;
 - (void)setComputePipelineState:(id<MTLComputePipelineState>)arg1;
+- (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (void)setKernelBuffer:(id<MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setStageInRegion:(CDStruct_caaed6bc)arg1;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

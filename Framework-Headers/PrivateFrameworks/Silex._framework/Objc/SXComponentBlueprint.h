@@ -10,7 +10,7 @@
 #import <Silex/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, SXComponentSizer, SXLayoutBlueprint;
-@protocol SXComponent, SXComponentLayout;
+@protocol SXComponent, SXComponentLayout, SXComponentState;
 
 @interface SXComponentBlueprint : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     BOOL _hasValidPosition;
     BOOL _hidden;
     id<SXComponent> _component;
+    id<SXComponentState> _componentState;
     SXComponentSizer *_componentSizer;
     id<SXComponentLayout> _componentLayout;
     SXLayoutBlueprint *_parentLayoutBlueprint;
@@ -42,14 +43,15 @@
 @property (readonly, nonatomic) id<SXComponent> component; // @synthesize component=_component;
 @property (readonly, nonatomic) id<SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 @property (readonly, nonatomic) SXComponentSizer *componentSizer; // @synthesize componentSizer=_componentSizer;
+@property (strong, nonatomic) id<SXComponentState> componentState; // @synthesize componentState=_componentState;
 @property (nonatomic) struct CGRect componentViewFrame; // @synthesize componentViewFrame=_componentViewFrame;
 @property (nonatomic) struct CGRect contentFrame; // @synthesize contentFrame=_contentFrame;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (nonatomic) struct CGRect contentViewFrame; // @synthesize contentViewFrame=_contentViewFrame;
-@property (nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) BOOL hasValidLayout;
-@property (nonatomic) BOOL hasValidPosition; // @synthesize hasValidPosition=_hasValidPosition;
-@property (nonatomic) BOOL hasValidSize; // @synthesize hasValidSize=_hasValidSize;
+@property (readonly, nonatomic) BOOL hasValidPosition;
+@property (readonly, nonatomic) BOOL hasValidSize;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic) NSDictionary *infoFromLayouting; // @synthesize infoFromLayouting=_infoFromLayouting;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;

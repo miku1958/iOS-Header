@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 
-@class NSString, NTKFace, UIImage, UIImageView;
+@class NSString, NTKFace, NTKFaceSnapshotCacheRequest, UIImage, UIImageView;
 
 @interface NTKFaceSnapshotViewController : UIViewController <NTKFaceObserver>
 {
@@ -16,6 +16,7 @@
     UIImageView *_imageView;
     UIImage *_snapshotImage;
     NSString *_snapshotKeyOfSnapshotImage;
+    NTKFaceSnapshotCacheRequest *_snapshotRequest;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) UIImage *snapshotImage; // @synthesize snapshotImage=_snapshotImage;
 @property (strong, nonatomic) NSString *snapshotKeyOfSnapshotImage; // @synthesize snapshotKeyOfSnapshotImage=_snapshotKeyOfSnapshotImage;
+@property (strong, nonatomic) NTKFaceSnapshotCacheRequest *snapshotRequest; // @synthesize snapshotRequest=_snapshotRequest;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) HKInteractiveChartDataFormatter *specifiedValueFormatter; // @synthesize specifiedValueFormatter=_specifiedValueFormatter;
 
 - (void).cxx_destruct;
-- (id)_initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitDisplayNameOverrides:(id)arg3 chartingRules:(id)arg4 unitName:(id)arg5 valueFormatter:(id)arg6 dataTypeCode:(long long)arg7;
+- (id)_initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitDisplayNameOverrides:(id)arg3 localizationTableOverride:(id)arg4 chartingRules:(id)arg5 unitName:(id)arg6 valueFormatter:(id)arg7 dataTypeCode:(long long)arg8;
 - (long long)_internalDisplayTypeIdentifier;
 - (id)colorWithDisplayCategoryController:(id)arg1;
 - (id)description;

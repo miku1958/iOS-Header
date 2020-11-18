@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithIdentifierString:(id)arg1;
 - (BOOL)isAuthenticated;
 - (BOOL)isEqual:(id)arg1;
+- (id)senderCorrelationIdentifier;
 
 @end
 

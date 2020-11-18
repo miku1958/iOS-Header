@@ -9,7 +9,7 @@
 #import <TSText/TSDInfo-Protocol.h>
 
 @class NSString, TSDInfoGeometry, TSPObject;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSWPTextParentInfo : NSObject <TSDInfo>
 {
@@ -23,10 +23,11 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly) Class superclass;
 
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;

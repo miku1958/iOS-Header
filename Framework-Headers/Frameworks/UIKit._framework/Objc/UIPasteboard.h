@@ -43,6 +43,8 @@
 + (id)pasteboardWithUniqueName;
 + (void)removePasteboardWithName:(id)arg1;
 - (void)_clearPinnedItemProviders;
+- (id)_detectedPasteboardTypeStringsForTypes:(id)arg1;
+- (id)_detectedPasteboardTypesForTypes:(id)arg1;
 - (BOOL)_hasStrings;
 - (void)_pinItemProviders:(id)arg1 expirationDate:(id)arg2;
 - (void)addItems:(id)arg1;
@@ -51,6 +53,10 @@
 - (BOOL)containsPasteboardTypes:(id)arg1 inItemSet:(id)arg2;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
+- (void)detectPatternsForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)detectPatternsForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectValuesForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)detectValuesForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)itemProvidersForInstantiatingObjectsOfClass:(Class)arg1;
 - (id)itemSetWithPasteboardTypes:(id)arg1;
 - (id)pasteboardTypesForItemSet:(id)arg1;

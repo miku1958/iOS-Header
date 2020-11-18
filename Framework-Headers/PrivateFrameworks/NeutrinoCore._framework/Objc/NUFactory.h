@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NUCacheNodeRegistry, NUGLContext, NUGLContextPool, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
-@protocol NUSlowMotionVideoFactory, NUStorageFactory;
+@class CIFilter, NSString, NUCacheNodeRegistry, NUGLContext, NUGLContextPool, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
+@protocol NUStorageFactory;
 
 @interface NUFactory : NSObject
 {
@@ -25,7 +25,7 @@
     NUPlatform *_platform;
     NUJSContextPool *_sharedJavaScriptContextPool;
     NUCacheNodeRegistry *_cacheNodeRegistry;
-    id<NUSlowMotionVideoFactory> _slomoFactory;
+    CIFilter *_repairMLFilter;
 }
 
 @property (strong, nonatomic) id<NUStorageFactory> bufferFactory; // @synthesize bufferFactory=_bufferFactory;
@@ -35,20 +35,21 @@
 @property (strong, nonatomic) NUPlatform *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NURenderNodeCache *renderNodeCache; // @synthesize renderNodeCache=_renderNodeCache;
 @property (strong, nonatomic) NURenderPipelineRegistry *renderPipelineRegistry; // @synthesize renderPipelineRegistry=_renderPipelineRegistry;
+@property (strong, nonatomic) CIFilter *repairMLFilter; // @synthesize repairMLFilter=_repairMLFilter;
 @property (strong, nonatomic) NUScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property (strong, nonatomic) NUSchemaRegistry *schemaRegistry; // @synthesize schemaRegistry=_schemaRegistry;
 @property (strong, nonatomic) NUJSContextPool *sharedJavaScriptContextPool; // @synthesize sharedJavaScriptContextPool=_sharedJavaScriptContextPool;
 @property (strong, nonatomic) NUGLContext *sharedOpenGLContext; // @synthesize sharedOpenGLContext=_sharedOpenGLContext;
 @property (strong, nonatomic) NUGLContextPool *sharedOpenGLContextPool; // @synthesize sharedOpenGLContextPool=_sharedOpenGLContextPool;
-@property (strong, nonatomic) id<NUSlowMotionVideoFactory> slomoFactory; // @synthesize slomoFactory=_slomoFactory;
 @property (strong, nonatomic) id<NUStorageFactory> surfaceFactory; // @synthesize surfaceFactory=_surfaceFactory;
 @property (strong, nonatomic) NUPurgeableStoragePool *surfaceStoragePool; // @synthesize surfaceStoragePool=_surfaceStoragePool;
 
++ (void)reapAllStoragePools;
 + (void)reset;
 + (void)setSharedFactory:(id)arg1;
 + (id)sharedFactory;
++ (void)shutdownSharedFactory;
 - (void).cxx_destruct;
-- (void)shutdown;
 - (void)start;
 
 @end

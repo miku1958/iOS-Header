@@ -6,6 +6,7 @@
 
 #import <Intents/INIntentResponse.h>
 
+__attribute__((visibility("hidden")))
 @interface WFSetLowPowerModeIntentResponse : INIntentResponse
 {
     long long _code;

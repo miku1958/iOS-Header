@@ -28,8 +28,11 @@
 - (void)_cancel;
 - (void)_deletePasswordAtIndexPath:(id)arg1;
 - (id)_passwordForIndexPath:(id)arg1;
+- (void)_passwordStoreDidChange;
+- (void)_reloadSavedPasswords;
 - (void)_updateMatchingPasswords;
 - (void)_updateSections;
+- (void)dealloc;
 - (void)handleContextMenuDeleteForIndexPath:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 - (void)acceptVisitor:(id)arg1;
+- (id)copyToInstantiateMasterPlaceholder;
 - (id)instructionalText;
 - (BOOL)isSelectable;
 - (int)kind;

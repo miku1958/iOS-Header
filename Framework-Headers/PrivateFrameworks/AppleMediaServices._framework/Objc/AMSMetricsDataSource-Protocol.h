@@ -9,7 +9,7 @@
 @protocol AMSMetricsDataSource
 - (void)cancel;
 - (void)didFinishBatching;
-- (void)enumerateSortedEventsForTopic:(NSString *)arg1 block:(void (^)(AMSMetricsEvent *, NSError *, BOOL *))arg2;
+- (void)enumerateSortedEventsForTopic:(NSString *)arg1 block:(void (^)(AMSMetricsEvent *, NSString *, NSError *, BOOL *))arg2;
 - (void)removeEvents:(NSArray *)arg1 error:(id *)arg2;
 - (void)skipEvents:(NSArray *)arg1 error:(id *)arg2;
 - (void)willStartBatchingWithLogKey:(NSString *)arg1 error:(id *)arg2;

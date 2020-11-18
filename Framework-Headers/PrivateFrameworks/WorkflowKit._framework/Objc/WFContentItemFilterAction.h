@@ -28,11 +28,11 @@
 - (id)inputParameterKey;
 - (BOOL)inputRequired;
 - (id)keywords;
+- (id)localizedName;
 - (id)localizedParameterSummaryStringForFilter;
 - (id)localizedParameterSummaryStringForFilterWithFilterConditions;
 - (id)localizedParameterSummaryStringForFind;
 - (id)localizedParameterSummaryStringForFindWithFilterConditions;
-- (id)name;
 - (id)outputContentClasses;
 - (unsigned long long)parameterCollapsingBehavior;
 - (id)parameterDefinitions;

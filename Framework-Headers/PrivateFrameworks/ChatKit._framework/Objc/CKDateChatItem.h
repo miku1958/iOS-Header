@@ -14,6 +14,7 @@
 
 @property (readonly, nonatomic) NSDate *date;
 
+- (unsigned long long)layoutType;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptText;
 - (id)now;

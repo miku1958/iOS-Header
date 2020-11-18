@@ -30,7 +30,7 @@
 - (BOOL)_paused;
 - (BOOL)_shouldReceivePress:(id)arg1;
 - (BOOL)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
-- (BOOL)_wantsHoverEvents;
+- (BOOL)_wantsHoverEventsWhilePointerIsLocked;
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

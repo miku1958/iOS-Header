@@ -12,10 +12,11 @@
 }
 
 + (id)maintenanceOperationWithName:(id)arg1 asynchronousBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
++ (id)maintenanceOperationWithName:(id)arg1 queue:(id)arg2 synchronousBlock:(CDUnknownBlockType)arg3;
+- (void)_operationDidFinish;
+- (void)_operationDidStart;
 - (id)init;
 - (id)initWithName:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

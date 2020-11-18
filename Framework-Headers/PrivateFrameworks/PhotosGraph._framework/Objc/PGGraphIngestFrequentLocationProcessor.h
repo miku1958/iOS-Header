@@ -19,7 +19,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)processFrequentLocationWithMomentNodes:(id)arg1 graph:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)processAndInsertFrequentLocationWithMomentNodes:(id)arg1 graph:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)processFrequentLocationWithMomentNodes:(id)arg1 graph:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)shouldRunWithGraphUpdate:(id)arg1;
 

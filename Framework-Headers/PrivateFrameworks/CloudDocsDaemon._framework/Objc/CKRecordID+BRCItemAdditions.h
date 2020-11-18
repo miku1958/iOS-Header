@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 + (id)brc_fetchShareIDWithSharedItem:(id)arg1;
++ (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 - (id)_itemIDWithLibraryRowID:(id)arg1 session:(id)arg2;
 - (id)brc_appLibraryDocumentsZoneName;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, RTDefaultsManager, RTHintManager, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPlatform, RTTimer, RTTimerManager, RTVisitFeedBuffer, RTVisitMonitorState;
+@class NSMutableDictionary, NSMutableSet, RTDefaultsManager, RTDeviceLocationPredictor, RTHintManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTPlatform, RTTimer, RTTimerManager, RTVisitFeedBuffer, RTVisitLabeler, RTVisitMonitorState;
 @protocol OS_dispatch_queue, RTVisitMonitorDelegate;
 
 @interface RTVisitMonitor : NSObject
@@ -18,28 +18,29 @@
     BOOL _monitoringLowConfidenceVisitIncidents;
     id<RTVisitMonitorDelegate> _delegate;
     RTDefaultsManager *_defaultsManager;
+    RTDeviceLocationPredictor *_deviceLocationPredictor;
     RTHintManager *_hintManager;
-    RTLearnedLocationManager *_learnedLocationManager;
     RTLocationAwarenessManager *_locationAwarenessManager;
     RTLocationManager *_locationManager;
     RTMetricManager *_metricManager;
-    RTMotionActivityManager *_motionActivityManager;
     RTPlatform *_platform;
     RTTimerManager *_timerManager;
+    RTVisitLabeler *_visitLabeler;
     RTVisitMonitorState *_state;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _feedBufferReferenceCounter;
     unsigned long long _lowConfidencePipelineReferenceCounter;
     unsigned long long _highConfidencePipelineReferenceCounter;
+    NSMutableSet *_pipelinesMonitoringRegion;
     NSMutableDictionary *_pipelines;
 }
 
 @property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property (weak, nonatomic) id<RTVisitMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
 @property (nonatomic) unsigned long long feedBufferReferenceCounter; // @synthesize feedBufferReferenceCounter=_feedBufferReferenceCounter;
 @property (nonatomic) unsigned long long highConfidencePipelineReferenceCounter; // @synthesize highConfidencePipelineReferenceCounter=_highConfidencePipelineReferenceCounter;
 @property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
-@property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property (strong, nonatomic) RTLocationAwarenessManager *locationAwarenessManager; // @synthesize locationAwarenessManager=_locationAwarenessManager;
 @property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (nonatomic) unsigned long long lowConfidencePipelineReferenceCounter; // @synthesize lowConfidencePipelineReferenceCounter=_lowConfidencePipelineReferenceCounter;
@@ -47,16 +48,20 @@
 @property (nonatomic) BOOL monitoringLeechedVisitIncidents; // @synthesize monitoringLeechedVisitIncidents=_monitoringLeechedVisitIncidents;
 @property (nonatomic) BOOL monitoringLowConfidenceVisitIncidents; // @synthesize monitoringLowConfidenceVisitIncidents=_monitoringLowConfidenceVisitIncidents;
 @property (nonatomic) BOOL monitoringVisitIncidents; // @synthesize monitoringVisitIncidents=_monitoringVisitIncidents;
-@property (strong, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property (strong, nonatomic) NSMutableDictionary *pipelines; // @synthesize pipelines=_pipelines;
+@property (strong, nonatomic) NSMutableSet *pipelinesMonitoringRegion; // @synthesize pipelinesMonitoringRegion=_pipelinesMonitoringRegion;
 @property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) RTVisitMonitorState *state; // @synthesize state=_state;
 @property (strong, nonatomic) RTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
+@property (strong, nonatomic) RTVisitLabeler *visitLabeler; // @synthesize visitLabeler=_visitLabeler;
 
 + (double)LocationHeartbeatWhileAwake;
 + (id)bucketLocations:(id)arg1 interval:(double)arg2;
++ (long long)hintSourceForRegionCallbackType:(long long)arg1;
 + (id)hyperParameterForPipelineType:(unsigned long long)arg1;
++ (id)regionMonitoringClientIdentifierForPipelineType:(unsigned long long)arg1;
++ (id)regionWithRegionIdentifier:(id)arg1 location:(id)arg2 shouldNotifyForEntry:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)_batchProcess:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_bootstrapPipeline:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -67,29 +72,36 @@
 - (void)_processLeechedLocations:(id)arg1;
 - (void)_processMatureLocations;
 - (void)_processRealtimeVisits:(id)arg1 pipeline:(id)arg2;
+- (void)_registerVisitMonitorForRegionEventsForPipelineType:(unsigned long long)arg1;
+- (BOOL)_setupGeoFencesForVisit:(id)arg1 pipelineType:(unsigned long long)arg2 error:(id *)arg3;
 - (void)_setupRealtimePipelineWithType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_shutdown;
 - (void)_startFeedBuffer;
 - (void)_startFeedBufferTimer;
 - (void)_stopFeedBuffer;
-- (void)fetchVisitIncidentsFromLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_stopMonitoringAllRegionsForPipelineType:(unsigned long long)arg1;
+- (void)_unregisterVisitMonitorForRegionEventsForPipelineType:(unsigned long long)arg1;
 - (void)fetchVisitMonitorState:(CDUnknownBlockType)arg1;
 - (void)fetchVisitMonitorStatusWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchVisitsFromDate:(id)arg1 toDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)handleLeechedVisitIncident:(id)arg1;
 - (void)handleLowConfidenceVisitIncident:(id)arg1;
+- (void)handleRegionCallback:(long long)arg1 region:(id)arg2 clientIdentifier:(id)arg3;
 - (void)handleVisitIncident:(id)arg1;
 - (id)init;
-- (id)initWithDefaultsManager:(id)arg1 hintManager:(id)arg2 learnedLocationManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 motionActivityManager:(id)arg7 platform:(id)arg8 queue:(id)arg9 state:(id)arg10;
-- (id)initWithDefaultsManager:(id)arg1 hintManager:(id)arg2 learnedLocationManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 motionActivityManager:(id)arg7 platform:(id)arg8 queue:(id)arg9 state:(id)arg10 timerManager:(id)arg11;
+- (id)initWithDefaultsManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 platform:(id)arg7 queue:(id)arg8 state:(id)arg9 timerManager:(id)arg10 visitLabeler:(id)arg11;
+- (id)initWithDefaultsManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 platform:(id)arg7 queue:(id)arg8 state:(id)arg9 visitLabeler:(id)arg10;
 - (void)logHintSourceUsageWithLocation:(id)arg1;
+- (double)maxHorizontalAccuracyOverride;
 - (void)onLeechedLocationsNotification:(id)arg1;
-- (void)shutdown;
+- (void)setupGeoFencesForVisit:(id)arg1 pipelineType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)startMonitoringLeechedVisitIncidents;
 - (void)startMonitoringLowConfidenceVisitIncidents;
 - (void)startMonitoringVisitIncidents;
 - (void)stopMonitoringLeechedVisitIncidents;
 - (void)stopMonitoringLowConfidenceVisitIncidents;
 - (void)stopMonitoringVisitIncidents;
+- (unsigned long long)visitPipelineTypeOverride;
 
 @end
 

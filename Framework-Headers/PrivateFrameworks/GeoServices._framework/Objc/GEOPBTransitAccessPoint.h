@@ -35,15 +35,7 @@
         unsigned int read_exitNameDisplayString:1;
         unsigned int read_exitZoomNames:1;
         unsigned int read_location:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_entranceNameDisplayString:1;
-        unsigned int wrote_entranceZoomNames:1;
-        unsigned int wrote_exitNameDisplayString:1;
-        unsigned int wrote_exitZoomNames:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_accessPointIndex:1;
-        unsigned int wrote_stationIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -67,13 +59,6 @@
 + (Class)exitZoomNameType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsEntranceZoomName:(id)arg1;
-- (void)_addNoFlagsExitZoomName:(id)arg1;
-- (void)_readEntranceNameDisplayString;
-- (void)_readEntranceZoomNames;
-- (void)_readExitNameDisplayString;
-- (void)_readExitZoomNames;
-- (void)_readLocation;
 - (void)addEntranceZoomName:(id)arg1;
 - (void)addExitZoomName:(id)arg1;
 - (id)bestEntranceName;
@@ -95,7 +80,10 @@
 - (id)identifier;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

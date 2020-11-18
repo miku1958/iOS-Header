@@ -11,8 +11,10 @@
 @interface SSUIRunPPTServiceRequest : SSUIServiceRequest
 {
     NSString *_testName;
+    unsigned long long _numberOfRequiredScreenshots;
 }
 
+@property (nonatomic) unsigned long long numberOfRequiredScreenshots; // @synthesize numberOfRequiredScreenshots=_numberOfRequiredScreenshots;
 @property (copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
 
 + (id)entitlement;

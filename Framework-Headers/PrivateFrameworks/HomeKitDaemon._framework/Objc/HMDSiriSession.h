@@ -32,7 +32,7 @@
 - (id)_createArgsDictionaryWithError:(id)arg1;
 - (BOOL)_startStream;
 - (void)_stopStream;
-- (BOOL)activate;
+- (BOOL)activateWithAccessory:(id)arg1;
 - (id)activeSessionToken;
 - (void)activeSiriSession:(id)arg1 didCreateAudioFrame:(id)arg2 sequenceNumber:(id)arg3 gain:(id)arg4;
 - (void)activeSiriSessionDidStop:(id)arg1;

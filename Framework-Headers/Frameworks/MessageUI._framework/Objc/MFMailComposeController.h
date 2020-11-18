@@ -84,15 +84,12 @@
     unsigned int _shouldAutosaveWithSuspendInfo:1;
     unsigned int _isSuspended:1;
     unsigned int _viewWasUnloaded:1;
-    unsigned int _fromAddressPickerWasVisible:1;
     unsigned int _stillLoading:1;
     unsigned int _hosted:1;
     unsigned int _hasViewAppeared:1;
     unsigned int _rotationSnapshotTaken:1;
     unsigned int _isPopoverVisible:1;
     unsigned int _useSuspended:1;
-    unsigned int _didShowNotifyConfirmation:1;
-    unsigned int _showingNotifyConfirmation:1;
     MFAddressPickerReformatter *_addressPickerReformatter;
     BOOL _contentVisible;
     BOOL _allowRestrictedAccounts;
@@ -346,7 +343,6 @@
 - (void)_updateSMIMEButtonEnabledForRecipientCount;
 - (void)_updateSMIMEButtonForEncryptionStatus:(int)arg1;
 - (void)_updateSendAndCloseEnabled;
-- (void)_updateTableCell:(id)arg1 isChecked:(BOOL)arg2;
 - (void)_updateTitleBarForEncryptionStatus:(int)arg1;
 - (BOOL)_wantsEncryption;
 - (void)_willPresentDocumentPicker;
@@ -408,9 +404,7 @@
 - (void)composeStyleSelectorDidCancel:(id)arg1;
 - (void)composeStyleSelectorDidDismissFontPicker:(id)arg1;
 - (void)composeStyleSelectorDidPresentColorPicker:(id)arg1;
-- (id)composeStyleSelectorPresentationContext:(id)arg1;
 - (void)composeSubjectViewDidSelectContentVariationButton:(id)arg1;
-- (void)composeSubjectViewDidSelectNotifyButton:(id)arg1;
 - (void)composeSubjectViewTextFieldDidBecomeFirstResponder:(id)arg1;
 - (void)composeSubjectViewTextFieldDidResignFirstResponder:(id)arg1;
 - (void)composeSubjectViewWillRemoveContent:(id)arg1;
@@ -438,7 +432,6 @@
 - (void)didInsertBodyText:(id)arg1;
 - (void)didRemoveAttachment:(id)arg1;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
-- (void)didSelectCellAtRow:(unsigned long long)arg1;
 - (id)dismissActionsForPreviewController:(id)arg1;
 - (void)dismissSearchResultsForComposeRecipientView:(id)arg1;
 - (void)dismissSheet;
@@ -477,14 +470,11 @@
 - (id)navigationControllerForRecentPersonCard;
 - (BOOL)needsDelivery;
 - (id)nextResponderForRecipientView:(id)arg1;
-- (int)numberOfComponentsInPickerView:(id)arg1;
 - (void)photoPicker:(id)arg1 didDeselectAssetWithIdentifier:(id)arg2;
 - (void)photoPicker:(id)arg1 didSelectAssetWithIdentifier:(id)arg2 mediaInfo:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
+- (void)photoPickerDidCancelSystemImagePicker:(id)arg1;
 - (void)pickInitialFirstResponder;
-- (id)pickerView:(id)arg1 attributedTitleForRow:(long long)arg2 forComponent:(long long)arg3;
-- (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
-- (unsigned long long)pickerView:(id)arg1 numberOfRowsInComponent:(unsigned long long)arg2;
 - (id)popoverManager;
 - (id)popoverManagerCreateIfNeeded:(BOOL)arg1;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
@@ -495,6 +485,8 @@
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (id)presentationViewController;
+- (id)presentingViewControllerForComposeStyleSelector:(id)arg1;
+- (id)presentingViewControllerForPhotoPicker:(id)arg1;
 - (void)previewController:(id)arg1 didSaveEditedCopyOfPreviewItem:(id)arg2 atURL:(id)arg3;
 - (long long)previewController:(id)arg1 editingModeForPreviewItem:(id)arg2;
 - (void)previewControllerDidDismiss:(id)arg1;
@@ -502,19 +494,16 @@
 - (void)recipientViewDidResignFirstResponder:(id)arg1;
 - (BOOL)recipientViewShouldIgnoreFirstResponderChanges:(id)arg1;
 - (struct CGRect)rectOfAttachment:(id)arg1;
-- (void)removeAddressAtIndex:(unsigned long long)arg1 field:(int)arg2;
+- (void)removeAddress:(id)arg1 field:(int)arg2;
 - (int)resolution;
-- (id)rotatingFooterView;
 - (id)rotatingHeaderView;
 - (void)saveAndResignFirstResponder;
 - (void)saveFirstResponder;
 - (id)savedHeaders;
 - (void)scanDocument;
-- (void)scrollToSelectedEntryInFromAddressTableView:(id)arg1;
 - (void)secureMIMECompositionManager:(id)arg1 encryptionStatusDidChange:(int)arg2 context:(id)arg3;
 - (void)secureMIMECompositionManager:(id)arg1 signingStatusDidChange:(int)arg2 context:(id)arg3;
 - (void)securityScopeForURL:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)selectCurrentEntryForFromAddressPickerView:(id)arg1;
 - (void)selectNextSearchResultForComposeRecipientView:(id)arg1;
 - (void)selectPreviousSearchResultForComposeRecipientView:(id)arg1;
 - (void)send:(id)arg1;
@@ -544,15 +533,12 @@
 - (void)setToRecipients:(id)arg1;
 - (id)shouldCreateRichTextRepresentation;
 - (BOOL)shouldShowSMIMEButton;
-- (void)showContentVariationPicker:(id)arg1;
 - (void)showMissingAttachmentDataAlert;
 - (void)showPhotoPickerWithSourceType:(long long)arg1 fromSource:(id)arg2;
 - (void)showStyleSelector:(id)arg1;
 - (unsigned long long)signpostID;
 - (id)subject;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)takeFocusFromComposeWebView:(id)arg1 inDirection:(unsigned long long)arg2;
 - (void)tappedSMIMEButton;
 - (id)toRecipients;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -567,9 +553,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillUnload;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

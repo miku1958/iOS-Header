@@ -10,7 +10,7 @@
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
 @class HKDataCollectorCollectionConfiguration, HKDevice, HKHealthStore, HKQuantityType, HKRetryableOperation, HKTaskServerProxyProvider, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol HKDataCollectorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HKDataCollector : NSObject <_HKXPCExportable, HKDataCollectorClientInterface>
 {
@@ -22,9 +22,12 @@
     HKTaskServerProxyProvider *_proxyProvider;
     NSString *_bundleIdentifier;
     HKRetryableOperation *_retryableOperation;
+    long long _totalDatumCount;
+    BOOL _delegateRespondsToFlushRequest;
     NSUUID *_registrationUUID;
     HKDataCollectorCollectionConfiguration *_collectionConfiguration;
     double _unitTest_maxDatumAgeOverride;
+    double _unitTest_clientFlushRequestTimeoutOverride;
     CDUnknownBlockType _unitTest_registrationCompleteHandler;
     BOOL _shouldFlushAll;
     NSMutableArray *_flushRequests;
@@ -33,13 +36,17 @@
     NSMutableDictionary *_unpersistedBatchesByUUID;
     NSObject<OS_dispatch_source> *_reconsiderationSource;
     BOOL _requiresRegistration;
+    BOOL _hasResumed;
     BOOL _invalidated;
+    CDUnknownBlockType _resumeCompletion;
     CDUnknownBlockType _finishCompletion;
     HKQuantityType *_quantityType;
+    id<HKDataCollectorDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HKDataCollectorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) HKDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
@@ -51,14 +58,19 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_combineCompletion:(CDUnknownBlockType)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_datumsInDateOrder:(id)arg1 secondDatum:(id)arg2;
+- (id)_prunedBatch:(id)arg1 maximumLength:(long long)arg2;
+- (void)_queue_checkForFinish;
 - (void)_queue_considerCompletingFlushRequests;
 - (void)_queue_considerSendingBatches;
 - (void)_queue_insertBatchForDatums:(id)arg1 device:(id)arg2 metadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_queue_pruneOldDatums;
 - (void)_queue_requestRegistration;
 - (void)_queue_sendBatch:(id)arg1;
 - (void)_queue_taskServer_insertDatums:(id)arg1 device:(id)arg2 metadata:(id)arg3 batchUUID:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_updateReconsiderationTimer;
+- (void)_removeBatch:(id)arg1;
 - (void)_requestRegistration;
+- (id)_timerForClientFlushRequest:(id)arg1;
 - (BOOL)_validateDatums:(id)arg1 error:(out id *)arg2;
 - (void)clientRemote_beginCollectionWithConfiguration:(id)arg1 lastPersistedDatum:(id)arg2 registrationUUID:(id)arg3;
 - (void)clientRemote_collectThroughDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -73,7 +85,9 @@
 - (id)initWithHealthStore:(id)arg1 bundleIdentifier:(id)arg2 quantityType:(id)arg3;
 - (void)insertDatums:(id)arg1 device:(id)arg2 metadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)remoteInterface;
+- (void)resumeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)unitTest_pendingBatches;
+- (void)unitTest_setClientFlushRequestTimeoutOverride:(double)arg1;
 - (void)unitTest_setMaxDatumAgeOverride:(double)arg1;
 - (void)unitTest_setRegistrationCompleteHandler:(CDUnknownBlockType)arg1;
 - (id)unitTest_unconfirmedBatches;

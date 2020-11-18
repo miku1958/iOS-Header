@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityElements;
 - (BOOL)canBecomeFocused;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

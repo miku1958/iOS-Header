@@ -8,14 +8,14 @@
 
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
-@class HMFUnfairLock, MPCAssistantDiscovery, NSArray, NSNumber, NSString;
+@class MPCAssistantDiscovery, NSArray, NSError, NSNumber, NSString;
 @protocol HMDMRSetEndpointVolumeOperationExternalObjectInterface;
 
 @interface HMDMRSetEndpointVolumeOperation : HMFOperation <HMFObject>
 {
-    HMFUnfairLock *_lock;
     NSNumber *_volume;
     NSArray *_routeIDs;
+    NSError *_partialExecutionError;
     MPCAssistantDiscovery *_discovery;
     id<HMDMRSetEndpointVolumeOperationExternalObjectInterface> _externalObjectInterface;
 }
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) MPCAssistantDiscovery *discovery; // @synthesize discovery=_discovery;
 @property (strong, nonatomic) id<HMDMRSetEndpointVolumeOperationExternalObjectInterface> externalObjectInterface; // @synthesize externalObjectInterface=_externalObjectInterface;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSError *partialExecutionError; // @synthesize partialExecutionError=_partialExecutionError;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly, copy, nonatomic) NSArray *routeIDs; // @synthesize routeIDs=_routeIDs;
@@ -36,8 +37,13 @@
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (BOOL)cancelOnSetup;
+- (id)connectToEndpoint:(id)arg1 connection:(id)arg2;
+- (id)discoverRemoteControlEndpointsForUIDs:(id)arg1;
+- (void)generateOverallResultAndFinishWithDeviceStatuses:(id)arg1;
+- (id)getVolumeCapabilitiesForEndpoint:(id)arg1 outputDeviceUID:(id)arg2;
 - (id)initWithRouteIDs:(id)arg1 volume:(id)arg2;
 - (void)main;
+- (id)setVolumeOnEndpoint:(id)arg1 outputDeviceUID:(id)arg2;
 
 @end
 

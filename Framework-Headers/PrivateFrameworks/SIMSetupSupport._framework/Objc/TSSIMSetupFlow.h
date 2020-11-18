@@ -30,6 +30,7 @@
 + (id)initWithSetupFlowWithIccid:(id)arg1 showAddPlan:(BOOL)arg2;
 + (void)needsToRun:(CDUnknownBlockType)arg1;
 + (void)needsToRunUsingMessageSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)needsToRunUsingMessageSession:(id)arg1 transferablePlanOnSource:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)firstViewController;
 - (void)firstViewController:(CDUnknownBlockType)arg1;

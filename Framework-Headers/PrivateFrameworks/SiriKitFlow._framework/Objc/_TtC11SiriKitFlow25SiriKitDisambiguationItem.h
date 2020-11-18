@@ -13,6 +13,9 @@
     MISSING_TYPE *components;
     MISSING_TYPE *utterance;
     MISSING_TYPE *allowLineWrapForDisplayText;
+    MISSING_TYPE *displayImage;
+    MISSING_TYPE *monogramLetters;
+    MISSING_TYPE *contactIdentifiers;
 }
 
 @end

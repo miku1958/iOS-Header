@@ -69,6 +69,7 @@
 - (void)_applyExtendedLayout:(const char *)arg1 withSize:(unsigned int)arg2;
 - (id)_copyWithInstanceSize:(unsigned int)arg1 superclassOffset:(unsigned int)arg2 asVariant:(BOOL)arg3 mutable:(BOOL)arg4;
 - (void)_demangleClassName;
+- (void)_determineBinaryPathUsingObjectIdentifier:(id)arg1 remoteClassNameLoc:(unsigned long long)arg2;
 - (void)_freeLocalIvarList;
 - (void)_identifyObjCClassStructureBlocksForIsa:(unsigned long long)arg1 isMetaclass:(BOOL)arg2 withScanner:(id)arg3 addressIdentifierBlock:(CDUnknownBlockType)arg4;
 - (id)_initWithClass:(unsigned long long)arg1 type:(unsigned int)arg2 realizedOnly:(BOOL)arg3 infoMap:(id)arg4 objectIdentifier:(id)arg5 reader:(CDUnknownBlockType)arg6;
@@ -78,7 +79,7 @@
 - (void)_processARRLayout:(const char *)arg1 scanType:(unsigned int)arg2;
 - (void)_replaceField:(id)arg1 withFields:(id)arg2;
 - (void)_replaceFieldRecursively:(id)arg1 withField:(id)arg2;
-- (void)_setBinaryPath:(id)arg1;
+- (void)_setBinaryPath:(id)arg1 sanitize:(BOOL)arg2;
 - (void)_setClassNameWithAddress:(unsigned long long)arg1 symbolicator:(struct _CSTypeRef)arg2;
 - (void)_setDefaultScanType:(unsigned int)arg1;
 - (void)_setDisplayName:(id)arg1;
@@ -109,7 +110,7 @@
 - (id)initWithClosureContext:(unsigned long long)arg1 typeInfo:(struct swift_typeinfo)arg2 infoMap:(id)arg3 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRealizedClass:(unsigned long long)arg1 type:(unsigned int)arg2 infoMap:(id)arg3 objectIdentifier:(id)arg4 reader:(CDUnknownBlockType)arg5;
-- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3;
+- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3 error:(id *)arg4;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 memoryReader:(CDUnknownBlockType)arg3;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 withScanner:(id)arg3 memoryReader:(CDUnknownBlockType)arg4;
 - (BOOL)isEqual:(id)arg1;

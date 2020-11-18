@@ -4,76 +4,80 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <PencilKit/PKAdornmentView.h>
 
 #import <PencilKit/UIDragInteractionDelegate_Private-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CAShapeLayer, NSMutableArray, NSString, PKSelectionController, PKStrokeSelection, UIBezierPath, UIDragInteraction, UIDragPreview, UIImage, UIImageView, UILongPressGestureRecognizer, UIResponder, UITapGestureRecognizer;
+@class NSString, UIDragInteraction, UIDragPreview, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
-@interface PKSelectionView : UIView <UIDragInteractionDelegate_Private, UIGestureRecognizerDelegate>
+@interface PKSelectionView : PKAdornmentView <UIDragInteractionDelegate_Private, UIGestureRecognizerDelegate>
 {
-    UIImageView *_strokeSelectionImageView;
-    UIDragInteraction *_dragInteraction;
+    UIDragPreview *_previewProvider;
     struct CGRect _originalStrokeFrame;
     struct CGPoint _initialDragPosition;
     double _initialRotation;
-    PKSelectionController *_selectionController;
-    BOOL _isClearingSelection;
-    UITapGestureRecognizer *_editMenuGR;
-    CAShapeLayer *_lassoLayer;
-    CAShapeLayer *_whiteLassoLayer;
-    NSMutableArray *_subLassoLayers;
-    UIDragPreview *_previewProvider;
     double _rotation;
     double _scale;
     struct CGPoint _originalTranslation;
     double _startRotation;
     double _startScale;
-    struct CGPoint _editMenuLocation;
-    UIResponder *_previousResponder;
+    BOOL _hasTranscription;
+    BOOL _menuVisible;
+    CDUnknownBlockType _finishDragToAttachmentBlock;
     BOOL _isDragging;
     BOOL _wantsDragPlatter;
-    PKStrokeSelection *_strokeSelection;
-    UIImage *_strokeSelectionImage;
     UILongPressGestureRecognizer *_dragGR;
-    UIBezierPath *_lassoPath;
-    CDUnknownBlockType _calculateSelectionHullBlock;
+    UITapGestureRecognizer *_editMenuGR;
+    UITapGestureRecognizer *_doubleTapGR;
+    UIDragInteraction *_dragInteraction;
+    long long _selectionType;
     struct CGPoint _offsetInTouchView;
     struct CGAffineTransform _selectionDrawingTransform;
     struct CGAffineTransform _userTransform;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType calculateSelectionHullBlock; // @synthesize calculateSelectionHullBlock=_calculateSelectionHullBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UITapGestureRecognizer *doubleTapGR; // @synthesize doubleTapGR=_doubleTapGR;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *dragGR; // @synthesize dragGR=_dragGR;
+@property (readonly, nonatomic) UIDragInteraction *dragInteraction; // @synthesize dragInteraction=_dragInteraction;
+@property (readonly, nonatomic) UITapGestureRecognizer *editMenuGR; // @synthesize editMenuGR=_editMenuGR;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDragging; // @synthesize isDragging=_isDragging;
-@property (strong, nonatomic) UIBezierPath *lassoPath; // @synthesize lassoPath=_lassoPath;
 @property (readonly, nonatomic) struct CGPoint offsetInTouchView; // @synthesize offsetInTouchView=_offsetInTouchView;
 @property (nonatomic) struct CGAffineTransform selectionDrawingTransform; // @synthesize selectionDrawingTransform=_selectionDrawingTransform;
-@property (strong, nonatomic) PKStrokeSelection *strokeSelection; // @synthesize strokeSelection=_strokeSelection;
-@property (strong, nonatomic) UIImage *strokeSelectionImage; // @synthesize strokeSelectionImage=_strokeSelectionImage;
+@property (nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGAffineTransform userTransform; // @synthesize userTransform=_userTransform;
 @property (nonatomic) BOOL wantsDragPlatter; // @synthesize wantsDragPlatter=_wantsDragPlatter;
 
 - (void).cxx_destruct;
+- (id)_accessibilityUserTestingChildren;
+- (void)_cleanupDragState;
 - (void)_clearSelection:(id)arg1;
+- (void)_commitDragToAttachment;
+- (void)_didAddNewAttachment;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_dragWillBegin;
+- (void)_findTranscriptionWithCompletion:(CDUnknownBlockType)arg1;
+- (struct CGPoint)_insertSpacePositionForMenuController:(id)arg1;
+- (id)_selectionViewGestures;
 - (void)_setupWindowNotificationsForScene:(id)arg1;
 - (void)_updateTransform;
-- (void)addAnimationsToSelectionLayer:(id)arg1 whiteLayer:(id)arg2;
 - (void)animateViewToOriginalPosition;
 - (BOOL)canBecomeFirstResponder;
+- (BOOL)canConvertToShapeWithAction:(SEL)arg1 withSender:(id)arg2 handled:(BOOL *)arg3;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (BOOL)containsPoint:(struct CGPoint)arg1 forInputType:(long long)arg2;
+- (void)convertToShapes:(id)arg1;
 - (void)copy:(id)arg1;
+- (void)copyTranscription:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)delete:(id)arg1;
 - (void)didBeginDraggingSelection;
+- (void)didDoubleTap;
 - (void)didEndGestureWithTranslation:(struct CGPoint)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (BOOL)dragInteraction:(id)arg1 prefersFullSizePreviewsForSession:(id)arg2;
@@ -84,25 +88,19 @@
 - (void)duplicate:(id)arg1;
 - (long long)editingInteractionConfiguration;
 - (void)generateStrokeImageForPasteAndDND;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
-- (void)hideStrokeSelectionImageView:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 strokeSelection:(id)arg2 selectionController:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 strokeSelection:(id)arg2 selectionController:(id)arg3 selectionType:(long long)arg4;
+- (void)insertSpace:(id)arg1;
 - (id)keyCommands;
 - (BOOL)lassoContainsPoint:(struct CGPoint)arg1;
 - (void)makeViewAliveAtLocation:(struct CGPoint)arg1;
 - (void)paste:(id)arg1;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (vector_e1abc270)pointsOfInterestForStrokes:(id)arg1;
 - (void)rotateSelection:(id)arg1;
 - (void)scaleSelection:(id)arg1;
-- (void)scrollContent:(struct CGPoint)arg1;
-- (struct CGColor *)selectionColor;
-- (void)setAlpha:(double)arg1;
-- (void)setupAnimatedLasso;
-- (void)setupAnimatedLassoForStrokes:(id)arg1 lassoLayer:(id)arg2 whiteLassoLayer:(id)arg3 isSelection:(BOOL)arg4 lassoStroke:(id)arg5;
-- (id)strokesContainedBySelection:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setupShapeMenuSupport;
+- (id)shapeSupportCache;
+- (BOOL)supportsCopyAsText;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (void)toggleEditMenu;
 - (void)updateLocationForDrop:(struct CGPoint)arg1;

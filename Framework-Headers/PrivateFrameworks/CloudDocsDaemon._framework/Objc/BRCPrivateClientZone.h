@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_syncBarriers;
     BRCServerZoneHealthState *_zoneHealthState;
     BRCProblemReport *_problemReport;
+    NSMutableArray *_lastResets;
     NSMutableArray *_faultsLiveBarriers;
     NSMutableSet *_appLibraries;
     BRCAppLibrary *_defaultAppLibrary;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isPrivateZone;
 @property (readonly, nonatomic) BOOL isSharedZone; // @dynamic isSharedZone;
 @property (readonly, nonatomic) BRCPrivateServerZone *privateServerZone;
+@property (readonly, nonatomic) BOOL resetFrequencyIsTooHigh;
 @property (readonly, nonatomic) BOOL zoneHealthNeedsSyncUp;
 @property (readonly, nonatomic) BRCServerZoneHealthState *zoneHealthState; // @synthesize zoneHealthState=_zoneHealthState;
 

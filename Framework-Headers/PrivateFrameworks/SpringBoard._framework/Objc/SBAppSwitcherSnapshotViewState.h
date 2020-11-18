@@ -15,10 +15,6 @@
     SBAppSwitcherSnapshotCacheEntry *_cacheEntry;
 }
 
-@property (nonatomic, getter=isAnimatingTransition) BOOL animatingTransition; // @synthesize animatingTransition=_animatingTransition;
-@property (strong, nonatomic) SBAppSwitcherSnapshotCacheEntry *cacheEntry; // @synthesize cacheEntry=_cacheEntry;
-@property (strong, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
-
 - (void).cxx_destruct;
 
 @end

@@ -10,35 +10,12 @@
 @protocol BRItemNotificationReceiving, BRNonLocalVersionReceiving, BROperationClient;
 
 @protocol BRProtocol <CKXPCShareDaemon>
-- (void)_t_addPackageExtension:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_blockSyncForContainerID:(NSString *)arg1 withPendingUpgradeToOSName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)_t_blockSyncUpOfItemWithID:(NSString *)arg1 containerID:(NSString *)arg2 withPendingUpgradeToOSName:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
-- (void)_t_copyGlobalProgressInfoWithReply:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)_t_copyItemIDFromItemAtURL:(NSURL *)arg1 toItemAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)_t_getPCSChainStateAtURL:(NSURL *)arg1 reply:(void (^)(unsigned int, NSError *))arg2;
-- (void)_t_getPerfValuesWithReply:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)_t_isAutomaticallyEvictable:(NSURL *)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
-- (void)_t_migrateAllZonesToClouddocsWithReset:(BOOL)arg1 onlyPrepare:(BOOL)arg2 reply:(void (^)(NSError *))arg3;
-- (void)_t_noopWithReply:(void (^)(NSError *))arg1;
-- (void)_t_pauseSyncDownOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_pauseSyncUpOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_removeAllSyncUpBlockingForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_removePackageExtension:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resetAllZonesWithReply:(void (^)(NSError *))arg1;
-- (void)_t_resetZoneForContainerID:(NSString *)arg1 waitUntilIdle:(BOOL)arg2 includingSharedZones:(BOOL)arg3 reply:(void (^)(NSError *))arg4;
-- (void)_t_resumeDownloadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resumeSyncDownOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resumeSyncUpOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resumeUploadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_setFSEventProcessingState:(BOOL)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_suspendDownloadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_suspendUploadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_waitForLostScanToFinishWithReply:(void (^)(NSError *))arg1;
-- (void)_t_waitUntilIdle:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_t_extractMetadataForAllContainersWithReply:(void (^)(NSError *))arg1;
+- (void)_t_getEntitledContainerIDsForBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_t_getEntitlementsForBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)addExternalDocumentReferenceTo:(NSURL *)arg1 inContainer:(NSString *)arg2 underParent:(NSURL *)arg3 reply:(void (^)(NSURL *, NSURL *, NSData *, NSURL *, NSData *, NSError *))arg4;
 - (void)boostFilePresenterAtURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(NSURL *)arg1 toNewParent:(NSURL *)arg2 reply:(void (^)(unsigned short, NSError *))arg3;
-- (void)checkIfFolderSharingEnabledWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(void (^)(NSDictionary *, NSNumber *, NSError *))arg1;
@@ -103,6 +80,7 @@
 - (void)iCloudDesktopSettingsChangedWithAttributes:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)iWorkForceSyncContainerID:(NSString *)arg1 ownedByMe:(BOOL)arg2 reply:(void (^)(NSError *))arg3;
 - (void)jetsamCloudDocsAppsWithReply:(void (^)(NSError *))arg1;
+- (void)launchTelemetryConsistencyChecksAtURL:(NSURL *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)lookupExcludedExtensionsForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
 - (void)lookupExcludedFilenamesForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
 - (void)lookupMinFileSizeForThumbnailTransferWithReply:(void (^)(NSNumber *, NSError *))arg1;

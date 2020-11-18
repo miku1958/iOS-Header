@@ -24,10 +24,7 @@
 @property (readonly, nonatomic) NSUUID *nwActivity;
 @property (readonly, nonatomic) NSUUID *taskUUID;
 
-+ (CDStruct_51b7dc78 *)createCFNetworkTaskMetrics_s:(id)arg1;
-+ (void)fillCFNetworkTransactionMetricStruct:(CDStruct_24822730 *)arg1 from:(id)arg2;
-+ (int)getNetworkProtocol:(id)arg1;
-+ (int)getTaskType:(id)arg1;
++ (struct CFNetworkTaskMetrics_s *)createCFNetworkTaskMetrics_s:(id)arg1;
 + (void)reportMetricsToSymptoms:(id)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;

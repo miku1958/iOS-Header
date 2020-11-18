@@ -9,8 +9,10 @@
 @interface FBSApplicationUninstallOptions : NSObject
 {
     BOOL _userInitiated;
+    BOOL _showsArchiveOption;
 }
 
+@property (nonatomic) BOOL showsArchiveOption; // @synthesize showsArchiveOption=_showsArchiveOption;
 @property (nonatomic, getter=isUserInitiated) BOOL userInitiated; // @synthesize userInitiated=_userInitiated;
 
 + (id)userInitiated;

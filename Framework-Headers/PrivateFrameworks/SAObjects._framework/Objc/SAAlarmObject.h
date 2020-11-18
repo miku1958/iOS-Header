@@ -6,12 +6,13 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSNumber, NSString, SADataSourceInfo;
 
 @interface SAAlarmObject : SADomainObject
 {
 }
 
+@property (strong, nonatomic) SADataSourceInfo *dataSourceInfo;
 @property (copy, nonatomic) NSNumber *enabled;
 @property (copy, nonatomic) NSNumber *firing;
 @property (copy, nonatomic) NSArray *frequency;

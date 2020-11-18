@@ -6,13 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, OBHeaderAccessoryButton, OBImageView, OBTemplateHeaderDetailLabel, OBTemplateLabel, UIImage;
+@class NSArray, OBAnimationView, OBHeaderAccessoryButton, OBImageView, OBTemplateHeaderDetailLabel, OBTemplateLabel, UIImage;
 
 @interface OBHeaderView : UIView
 {
     BOOL _usingSymbolImage;
     BOOL _iconInheritsTint;
+    BOOL _allowFullWidthIcon;
+    OBAnimationView *_animationView;
     OBImageView *_imageView;
+    UIView *_topAssetContainer;
+    NSArray *_topAssetContainerConstraints;
     OBTemplateLabel *_headerLabel;
     OBTemplateHeaderDetailLabel *_detailLabel;
     NSArray *_imageViewConstraints;
@@ -20,9 +24,13 @@
     OBHeaderAccessoryButton *_accessoryButton;
     unsigned long long _templateType;
     UIImage *_originalIconImage;
+    UIView *_customIconContainerView;
 }
 
 @property (strong, nonatomic) OBHeaderAccessoryButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
+@property (nonatomic) BOOL allowFullWidthIcon; // @synthesize allowFullWidthIcon=_allowFullWidthIcon;
+@property (strong, nonatomic) OBAnimationView *animationView; // @synthesize animationView=_animationView;
+@property (strong, nonatomic) UIView *customIconContainerView; // @synthesize customIconContainerView=_customIconContainerView;
 @property (strong, nonatomic) OBTemplateHeaderDetailLabel *detailLabel; // @synthesize detailLabel=_detailLabel;
 @property (strong, nonatomic) NSArray *detailLabelConstraints; // @synthesize detailLabelConstraints=_detailLabelConstraints;
 @property (strong, nonatomic) OBTemplateLabel *headerLabel; // @synthesize headerLabel=_headerLabel;
@@ -31,14 +39,19 @@
 @property (strong, nonatomic) NSArray *imageViewConstraints; // @synthesize imageViewConstraints=_imageViewConstraints;
 @property (strong, nonatomic) UIImage *originalIconImage; // @synthesize originalIconImage=_originalIconImage;
 @property (nonatomic) unsigned long long templateType; // @synthesize templateType=_templateType;
+@property (strong, nonatomic) UIView *topAssetContainer; // @synthesize topAssetContainer=_topAssetContainer;
+@property (strong, nonatomic) NSArray *topAssetContainerConstraints; // @synthesize topAssetContainerConstraints=_topAssetContainerConstraints;
 
 - (void).cxx_destruct;
+- (void)_animateDetailLabelAlpha:(double)arg1 duration:(double)arg2;
 - (id)_createDetailLabelIfNeeded;
 - (id)_createImageView:(id)arg1;
 - (id)_detailFont;
+- (void)_insertAndLayoutImageViewIfNeeded;
+- (void)_layoutTopAssetContainer;
+- (double)_setupAssistantIconHeight;
 - (id)_symbolIconForHeaderStyle:(id)arg1 configuration:(id)arg2;
 - (void)_updateConstraintsForDetailLabel;
-- (void)_updateConstraintsForImageView;
 - (void)addAccessoryButton:(id)arg1;
 - (double)bottomPadding;
 - (double)detailLabelToAccessoryButtonPadding;
@@ -52,13 +65,19 @@
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3;
 - (id)initWithTitle:(id)arg1 icon:(id)arg2;
 - (id)initWithTitle:(id)arg1 symbolName:(id)arg2;
+- (void)removeAccessoryButton;
+- (void)removeDetailLabel;
 - (void)setDetailText:(id)arg1;
 - (void)setDetailedTextHeader:(id)arg1 detailedTextBody:(id)arg2;
 - (void)setIcon:(id)arg1 accessibilityLabel:(id)arg2;
 - (void)setLanguage:(id)arg1;
+- (void)setSymbol:(id)arg1 accessibilityLabel:(id)arg2;
 - (void)setTitle:(id)arg1;
+- (void)setTitleHyphenationFactor:(float)arg1;
+- (void)setTitleTrailingSymbol:(id)arg1;
 - (id)symbolConfiguration;
 - (void)tintColorDidChange;
+- (id)title;
 - (double)topPadding;
 - (void)traitCollectionDidChange:(id)arg1;
 

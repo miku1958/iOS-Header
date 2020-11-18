@@ -27,13 +27,20 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
+- (id)_commerceUIArrayForKey:(id)arg1;
+- (id)_defaultWebAllowedForURL:(id)arg1;
+- (id)_dynamicUIAllowedForURL:(id)arg1;
+- (id)_legacyWebAllowedForURL:(id)arg1;
 - (BOOL)_matchURL:(id)arg1 toPatterns:(id)arg2;
+- (void)_waitForPromises:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)bagContract;
 - (id)initWithBag:(id)arg1;
 - (id)initWithBagContract:(id)arg1;
 - (id)isCommerceUIURL:(id)arg1;
 - (id)typeForCommerceUIURL:(id)arg1;
+- (id)typeForURL:(id)arg1;
 
 @end
 

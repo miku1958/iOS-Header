@@ -17,6 +17,7 @@
 @property (strong, nonatomic) AAStorableLoginContext *stashedContext;
 
 + (id)sharedManager;
++ (void)stashLoginResponseWithAuthenticationResults:(id)arg1 cloudKitToken:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;
 - (void)persistStashedContext;

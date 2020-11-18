@@ -9,17 +9,19 @@
 #import <CalendarNotification/CALNNotificationSource-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CALNCalendarIconIdentifierProvider, CALNEventInvitationNotificationDataSource, CALNNotificationManager;
+@protocol CALNCalendarIconIdentifierProvider, CALNEventInvitationNotificationDataSource, CALNNotificationManager, CalDateProvider;
 
 @interface CALNEventInvitationNotificationSource : NSObject <CALNNotificationSource>
 {
     id<CALNEventInvitationNotificationDataSource> _dataSource;
     id<CALNNotificationManager> _notificationManager;
     id<CALNCalendarIconIdentifierProvider> _iconIdentifierProvider;
+    id<CalDateProvider> _dateProvider;
 }
 
 @property (readonly, nonatomic) NSArray *categories;
 @property (readonly, nonatomic) id<CALNEventInvitationNotificationDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, nonatomic) id<CalDateProvider> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,7 +30,6 @@
 @property (readonly, nonatomic) NSString *sourceIdentifier;
 @property (readonly) Class superclass;
 
-+ (id)_notificationBodyForNotificationInfo:(id)arg1 contactIdentifier:(id *)arg2 summaryArgument:(id *)arg3;
 + (id)acceptActionIdentifier;
 + (id)couldBeJunkCategoryIdentifier;
 + (id)declineActionIdentifier;
@@ -36,10 +37,11 @@
 + (id)maybeActionIdentifier;
 + (id)reportJunkActionIdentifier;
 - (void).cxx_destruct;
+- (id)_notificationBodyForNotificationInfo:(id)arg1 contactIdentifier:(id *)arg2 summaryArgument:(id *)arg3;
 - (id)contentForNotificationWithInfo:(id)arg1;
 - (id)contentForNotificationWithSourceClientIdentifier:(id)arg1;
 - (void)didReceiveResponse:(id)arg1;
-- (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3;
+- (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3 dateProvider:(id)arg4;
 - (void)refreshNotifications:(id)arg1;
 
 @end

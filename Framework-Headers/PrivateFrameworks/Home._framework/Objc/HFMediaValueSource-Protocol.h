@@ -11,6 +11,7 @@
 
 @protocol HFMediaValueSource <NSObject>
 - (NSError *)cachedPlaybackStateWriteErrorForRouteID:(NSString *)arg1;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(NSString *)arg1 notifyDelegates:(BOOL)arg2;
 - (BOOL)hasPendingWritesForRouteID:(NSString *)arg1;
 - (long long)lastPlaybackStateForProfileForRouteID:(NSString *)arg1;
 - (id<HFMediaProfileContainer>)mediaProfileContainerForRouteID:(NSString *)arg1;

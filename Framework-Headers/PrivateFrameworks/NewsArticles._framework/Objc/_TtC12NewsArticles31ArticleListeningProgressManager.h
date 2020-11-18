@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *listeningProgressObservables;
     MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *cachedArticleTextRanges;
 }
 
 - (void).cxx_destruct;

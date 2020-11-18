@@ -15,7 +15,6 @@
 - (void)authenticateForConfiguration:(ICConnectionConfiguration *)arg1 startInitialImport:(BOOL)arg2 enableCloudLibraryPolicy:(long long)arg3 isExplicitUserAction:(BOOL)arg4 completion:(void (^)(NSError *))arg5;
 - (void)cancelUpdateJaliscoGeniusDataForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(NSDictionary *)arg2 trackList:(ICCloudItemIDList *)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(unsigned long long, NSError *))arg5;
-- (void)deauthenticateAndDisableActiveLockerAccountWithCompletion:(void (^)(NSError *))arg1;
 - (void)deauthenticateForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deprioritizeAlbumArtistHeroImageForPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2;
 - (void)deprioritizeArtistHeroImageForPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2;
@@ -27,6 +26,7 @@
 - (void)deprioritizeSubscriptionContainerArtworkForPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2;
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2;
 - (void)deprioritizeSubscriptionScreenshotForPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2;
+- (void)disableCloudLibraryWithReason:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)disableJaliscoGeniusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)enableJaliscoGeniusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)hideItemsWithPurchaseHistoryIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
@@ -42,6 +42,7 @@
 - (void)importSubscriptionScreenshotForPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)isMediaKindDisabledForJaliscoLibrary:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)isSagaAuthenticatedForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *, BOOL))arg2;
+- (void)listCloudServerOperations;
 - (void)loadArtworkInfoForContainerSagaIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *, NSArray *))arg3;
 - (void)loadArtworkInfoForPurchaseHistoryIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *, NSArray *))arg3;
 - (void)loadArtworkInfoForSagaIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *, NSArray *))arg3;

@@ -6,7 +6,7 @@
 
 #import <MapKit/MKPlaceSectionRowView.h>
 
-@class NSMutableArray, SSLookupItem, UIButton, UIImage, UIImageView, UIView, _MKUILabel;
+@class GEOAppStoreApp, NSMutableArray, UIButton, UIImage, UIImageView, UIView, _MKUILabel;
 @protocol MKOfficialAppViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,15 +20,15 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_constraintArray;
     BOOL _layoutShouldStack;
     BOOL _isAppInstalled;
-    SSLookupItem *_storeItem;
-    UIImage *_storeItemImage;
+    GEOAppStoreApp *_appStoreApp;
+    UIImage *_image;
     id<MKOfficialAppViewDelegate> _delegate;
 }
 
+@property (strong, nonatomic) GEOAppStoreApp *appStoreApp; // @synthesize appStoreApp=_appStoreApp;
 @property (weak, nonatomic) id<MKOfficialAppViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic) BOOL isAppInstalled; // @synthesize isAppInstalled=_isAppInstalled;
-@property (strong, nonatomic) SSLookupItem *storeItem; // @synthesize storeItem=_storeItem;
-@property (strong, nonatomic) UIImage *storeItemImage; // @synthesize storeItemImage=_storeItemImage;
 
 - (void).cxx_destruct;
 - (void)_commonInit;

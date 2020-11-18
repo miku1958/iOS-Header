@@ -10,11 +10,13 @@
 {
 }
 
++ (id)appGroupIdentifier;
 + (id)appIdentifier;
 + (id)bundleIdentifier;
 + (id)complicationApplicationIdentifier;
 + (id)legacyNTKComplicationType;
 + (id)localizedAppName;
++ (id)localizedComplicationName;
 - (id)complicationApplicationIdentifier;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 

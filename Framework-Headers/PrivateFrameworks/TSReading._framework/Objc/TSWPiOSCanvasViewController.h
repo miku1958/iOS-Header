@@ -9,11 +9,10 @@
 #import <TSReading/UIDragInteractionDelegate-Protocol.h>
 #import <TSReading/UITextInteractionDelegate-Protocol.h>
 #import <TSReading/UITextLinkInteraction-Protocol.h>
-#import <TSReading/_UINonEditableTextSelectionForceGestureDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, TSUColor, TSWPHardPressGestureRecognizer, TSWPHyperlinkField, TSWPInteractiveCanvasController, TSWPLongPressGestureRecognizer, TSWPRep, TSWPSwipeGestureRecognizer, TSWPTwoPartAction, UIGestureRecognizer, UITapGestureRecognizer, UITextInteraction;
+@class NSMutableArray, NSString, TSUColor, TSWPHyperlinkField, TSWPInteractiveCanvasController, TSWPLongPressGestureRecognizer, TSWPRep, TSWPSwipeGestureRecognizer, TSWPTwoPartAction, UIGestureRecognizer, UITapGestureRecognizer, UITextInteraction;
 
-@interface TSWPiOSCanvasViewController : TSDiOSCanvasViewController <UITextInteractionDelegate, UITextLinkInteraction, UIDragInteractionDelegate, _UINonEditableTextSelectionForceGestureDelegate>
+@interface TSWPiOSCanvasViewController : TSDiOSCanvasViewController <UITextInteractionDelegate, UITextLinkInteraction, UIDragInteractionDelegate>
 {
     UIGestureRecognizer *_hyperlinkGestureRecognizer;
     TSWPSwipeGestureRecognizer *_rightSwipeGestureRecognizer;
@@ -26,14 +25,12 @@
     TSWPHyperlinkField *_interactionHyperlinkField;
     TSWPRep *_interactionHyperLinkRep;
     UITapGestureRecognizer *_secondarySingleTapGestureRecognizer;
-    TSWPHardPressGestureRecognizer *_hardPressGesture;
     UITextInteraction *_textInteraction;
 }
 
 @property (readonly, nonatomic) TSUColor *backgroundColorForMagnifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) TSWPHardPressGestureRecognizer *hardPressGesture; // @synthesize hardPressGesture=_hardPressGesture;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIGestureRecognizer *hyperlinkGestureRecognizer; // @synthesize hyperlinkGestureRecognizer=_hyperlinkGestureRecognizer;
 @property (readonly) TSWPInteractiveCanvasController *interactiveCanvasController;
@@ -82,13 +79,10 @@
 - (BOOL)mightHaveLinks;
 - (BOOL)onlyAllowTextSwipesWhenEditing;
 - (void)p_addSwipeGestureRecognizer:(id)arg1 failRequiredFor:(id)arg2;
-- (void)p_endHardPressGestureRecognizer;
-- (void)p_handleHardPressGestureRecognizer:(id)arg1;
 - (id)p_newSwipeGestureRecognizerWithDirection:(int)arg1 numberOfTouchesRequired:(unsigned int)arg2;
 - (void)removeSwipeGestureRecognizers;
 - (void)setUpGestureDependenciesForNewCopyOfTextGesture:(id)arg1;
 - (void)setUpGestureRecognizers;
-- (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldHideCanvasLayerInMagnifier;
 - (void)startDelayedTapAction:(id)arg1;
 - (void)startInteractionWithLinkAtPoint:(struct CGPoint)arg1;
@@ -100,7 +94,6 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willBeginGesture;
 - (BOOL)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
 
 @end

@@ -14,6 +14,8 @@
 + (id)ak_deviceUDIDHeader;
 + (id)ak_localeHeader;
 + (id)ak_proxiedAnisetteHeadersWithData:(id)arg1;
++ (id)ak_proxiedClientInfoHeadersWithDevice:(id)arg1;
++ (id)ak_proxiedHeadersForDevice:(id)arg1 anisetteData:(id)arg2;
 + (id)ak_timeZoneHeader;
 - (void)_setAuthorizationHeaderWithToken:(id)arg1 altDSID:(id)arg2 key:(id)arg3;
 - (void)ak_addAbsintheHeaderWithValue:(id)arg1;
@@ -34,6 +36,7 @@
 - (void)ak_addContextHeaderForServiceType:(long long)arg1;
 - (void)ak_addContinutationKeyHeader:(id)arg1;
 - (void)ak_addCountryHeader;
+- (void)ak_addDataCenterHeaderWithIdentifier:(id)arg1;
 - (void)ak_addDeviceConfigurationModeHeader;
 - (void)ak_addDeviceMLBHeader;
 - (void)ak_addDeviceModel;
@@ -48,6 +51,7 @@
 - (void)ak_addLocalUserUUIDHashHeader;
 - (void)ak_addLocaleHeader;
 - (void)ak_addLoggedInServicesHeaderForServices:(id)arg1;
+- (void)ak_addOfferSecurityUpgrade:(BOOL)arg1;
 - (void)ak_addPRKRequestHeader;
 - (void)ak_addPasswordResetKeyHeader:(id)arg1;
 - (void)ak_addPhoneInformationHeaderWithValue:(id)arg1;
@@ -64,6 +68,8 @@
 - (void)ak_addProxiedDeviceUDIDHeader:(id)arg1;
 - (void)ak_addProxyApp:(id)arg1;
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
+- (void)ak_addRequestUUIDHeader:(id)arg1;
+- (void)ak_addSKUCountryHeader;
 - (void)ak_addShortLivedTokenHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addShowWarranty;
 - (void)ak_addTimeZoneHeaders;

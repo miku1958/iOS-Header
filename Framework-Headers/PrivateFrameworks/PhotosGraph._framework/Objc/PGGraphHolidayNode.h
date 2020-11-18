@@ -4,25 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 
 @class NSString;
 
-@interface PGGraphHolidayNode : PGGraphNode <PGGraphLocalizable>
+@interface PGGraphHolidayNode : PGGraphOptimizedNode <PGGraphLocalizable>
 {
+    unsigned int _category:8;
+    NSString *_name;
 }
 
-@property (readonly, nonatomic) unsigned long long category;
+@property (nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *localizedName;
+@property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (unsigned short)domain;
 - (void)enumerateCelebratingHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCelebratingMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

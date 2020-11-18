@@ -6,24 +6,33 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSString, VUILabel, VUISeparatorView;
+@class NSString, UIButton, VUILabel, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadShowTableHeaderView : UITableViewHeaderFooterView
 {
     NSString *_headerTitle;
+    NSString *_buttonTitle;
+    CDUnknownBlockType _selectionHandler;
     VUILabel *_titleLabel;
+    UIButton *_headerButton;
     VUISeparatorView *_separatorView;
 }
 
+@property (strong, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
+@property (strong, nonatomic) UIButton *headerButton; // @synthesize headerButton=_headerButton;
 @property (strong, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property (copy, nonatomic) CDUnknownBlockType selectionHandler; // @synthesize selectionHandler=_selectionHandler;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_buttonWithString:(id)arg1 existingButton:(id)arg2;
 - (struct CGSize)_layoutWithSize:(struct CGSize)arg1 metricsOnly:(BOOL)arg2;
+- (void)_selectButtonAction:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

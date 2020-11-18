@@ -7,30 +7,30 @@
 #import <SpringBoard/SBTransitionSwitcherModifier.h>
 
 @class SBAppLayout, SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBForcePressToHomeSwitcherModifier : SBTransitionSwitcherModifier
 {
     SBAppLayout *_selectedAppLayout;
     long long _startingEnvironmentMode;
     double _initalPanThreshold;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
 }
 
 - (void).cxx_destruct;
-- (long long)backdropBlurType;
+- (double)_switcherCardScale;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 initialPanThreshold:(double)arg4 multitaskingModifier:(id)arg5;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

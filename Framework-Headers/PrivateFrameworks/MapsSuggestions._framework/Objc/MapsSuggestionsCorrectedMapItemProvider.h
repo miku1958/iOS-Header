@@ -8,12 +8,13 @@
 
 #import <MapsSuggestions/MapsSuggestionsMeCardObserver-Protocol.h>
 
-@class MapsSuggestionsMeCard, MapsSuggestionsShortcutManager, NSString;
+@class MapsSuggestionsMeCard, NSString;
+@protocol MapsSuggestionsMeCardReader;
 
 @interface MapsSuggestionsCorrectedMapItemProvider : NSObject <MapsSuggestionsMeCardObserver>
 {
-    MapsSuggestionsShortcutManager *_shortcutManager;
     MapsSuggestionsMeCard *_meCard;
+    id<MapsSuggestionsMeCardReader> _meCardReader;
     CDUnknownBlockType _updateHandler;
 }
 
@@ -25,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithUpdateHandler:(CDUnknownBlockType)arg1;
+- (id)initWithMeCardReader:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)mapItemFormShortcutForCNIdentifier:(id)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 

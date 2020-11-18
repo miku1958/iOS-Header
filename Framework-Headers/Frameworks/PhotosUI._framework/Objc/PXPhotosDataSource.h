@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSPredicate, NSSet, NSString, PHAsset, PHFetchResult, PHPhotoLibrary, PXBackgroundFetchToken, PXLIFOQueue, PXPhotosDataSourceSectionCache;
+@class NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSNumber, NSPredicate, NSSet, NSString, PHAsset, PHAssetCollection, PHCollection, PHFetchResult, PHPhotoLibrary, PXBackgroundFetchToken, PXLIFOQueue, PXPhotosDataSourceSectionCache;
 @protocol OS_dispatch_queue;
 
 @interface PXPhotosDataSource : NSObject <PXPhotoLibraryUIChangeObserver>
@@ -32,6 +32,7 @@
     BOOL _interruptBackgroundFetch;
     BOOL _pauseBackgroundFetchResultsDelivery;
     NSMutableSet *_pauseLibraryChangeDeliveryTokens;
+    _Atomic int _backgroundFetchId;
     NSMutableDictionary *_pendingResultsByAssetCollection;
     NSObject<OS_dispatch_queue> *_pendingResultsIsolationQueue;
     BOOL _processAndPublishScheduledOnRunloop;
@@ -46,17 +47,22 @@
     NSArray *_fetchPropertySets;
     long long _curationType;
     PHFetchResult *_emptyAssetsFetchResult;
+    NSNumber *_cachedIsEmpty;
+    long long _nestedChanges;
     BOOL _reverseSortOrder;
     BOOL _wantsCurationByDefault;
     BOOL _isBackgroundFetching;
     BOOL _allowNextChangeDeliveryOnAllRunLoopModes;
+    PHCollection *_containerCollection;
     unsigned long long _options;
     unsigned long long _versionIdentifier;
     PHFetchResult *_collectionListFetchResult;
     PHAsset *_referenceAsset;
     long long _backgroundFetchOriginSection;
+    NSPredicate *_basePredicate;
     NSPredicate *_filterPredicate;
     NSSet *_allowedUUIDs;
+    NSSet *_allowedOIDs;
     unsigned long long _fetchLimit;
     NSArray *_sortDescriptors;
     unsigned long long __previousCollectionsCount;
@@ -65,10 +71,14 @@
 
 @property (nonatomic, setter=_setPreviousCollectionsCount:) unsigned long long _previousCollectionsCount; // @synthesize _previousCollectionsCount=__previousCollectionsCount;
 @property (nonatomic) BOOL allowNextChangeDeliveryOnAllRunLoopModes; // @synthesize allowNextChangeDeliveryOnAllRunLoopModes=_allowNextChangeDeliveryOnAllRunLoopModes;
+@property (copy, nonatomic) NSSet *allowedOIDs; // @synthesize allowedOIDs=_allowedOIDs;
 @property (copy, nonatomic) NSSet *allowedUUIDs; // @synthesize allowedUUIDs=_allowedUUIDs;
 @property (readonly, nonatomic) BOOL areAllSectionsConsideredAccurate;
 @property (nonatomic) long long backgroundFetchOriginSection; // @synthesize backgroundFetchOriginSection=_backgroundFetchOriginSection;
+@property (readonly, nonatomic) NSPredicate *basePredicate; // @synthesize basePredicate=_basePredicate;
 @property (strong, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
+@property (readonly, nonatomic) PHAssetCollection *containerAssetCollection;
+@property (readonly, nonatomic) PHCollection *containerCollection; // @synthesize containerCollection=_containerCollection;
 @property (readonly, nonatomic) BOOL containsMultipleAssets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -96,38 +106,44 @@
 + (id)backgroundFetchingGroup;
 + (void)waitForAllBackgroundFetchingToFinish;
 - (void).cxx_destruct;
-- (void)_addResultTuple:(id)arg1 forAssetCollection:(id)arg2 toMutableResultRecord:(id)arg3;
+- (BOOL)_addResultTuple:(id)arg1 forAssetCollection:(id)arg2 toMutableResultRecord:(id)arg3;
 - (BOOL)_allSectionsConsideredAccurate;
+- (id)_allowedOIDsForAssetCollection:(id)arg1;
 - (id)_allowedUUIDsForAssetCollection:(id)arg1;
 - (BOOL)_areFiltersDisabledForAssetCollection:(id)arg1;
+- (BOOL)_areSecondaryFetchesEnabled;
 - (unsigned long long)_assetCollectionFetchStatus:(id)arg1;
-- (id)_assetOidsByAssetCollectionForAssetsAtIndexPaths:(id)arg1;
+- (id)_assetOidsByAssetCollectionForAssetsAtIndexPathsInSet:(id)arg1;
 - (id)_assetsForAssetCollection:(id)arg1;
 - (unsigned long long)_cachedSectionForAssetCollection:(id)arg1;
 - (void)_cancelBackgroundFetchIfNeeded;
 - (id)_closestIndexPathToIndexPath:(id)arg1;
 - (void)_commonInit;
 - (id)_createResultRecordForAssetCollection:(id)arg1;
-- (void)_didFinishBackgroundFetching;
+- (void)_didFinishBackgroundFetchingForId:(long long)arg1;
 - (void)_enumerateChangeObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fetchAssetsStartingAtIndexPath:(id)arg1;
-- (void)_fetchRemainingCollectionsBackgroundLoop;
+- (void)_fetchRemainingCollectionsBackgroundLoopWithId:(long long)arg1;
 - (id)_fetchTupleForAssetCollection:(id)arg1 calledOnMainQueue:(BOOL)arg2 isLimitedInitialFetch:(BOOL)arg3;
 - (id)_fetcher;
 - (id)_filterPredicateForAssetCollection:(id)arg1;
 - (id)_finalFilterPredicateForAssetCollection:(id)arg1;
+- (BOOL)_forceAccurateSection:(long long)arg1 andNumberOfSurroundingSectionsWithContent:(long long)arg2;
 - (void)_getFetchLimit:(unsigned long long *)arg1 fetchWithReverseSortOrder:(BOOL *)arg2 forAssetCollection:(id)arg3 isLimitedInitialFetch:(BOOL)arg4;
 - (id)_inaccurateAssetCollections;
 - (id)_inclusionPredicateForAssetCollection:(id)arg1;
 - (void)_incrementVersionIdentifier;
+- (void)_initResultRecordsWithOldOptions:(unsigned long long)arg1 newOptions:(unsigned long long)arg2;
 - (void)_interruptBackgroundFetch;
-- (BOOL)_isCurationEnabled;
+- (BOOL)_isResulTupleApplicable:(id)arg1 forAssetCollection:(id)arg2;
 - (id)_keyAssetsForAssetCollection:(id)arg1;
 - (id)_mutableResultRecordForAssetCollection:(id)arg1;
+- (long long)_nextBackgroundFetchId;
 - (id)_observerInterestingAssetReferences;
 - (void)_observersQueue_copyChangeObserversForWriteIfNeeded;
 - (void)_performManualChangesForAssetCollections:(id)arg1 changeBlock:(CDUnknownBlockType)arg2;
 - (void)_performManualChangesForAssetCollections:(id)arg1 collectionsToDiff:(id)arg2 changeBlock:(CDUnknownBlockType)arg3;
+- (void)_performManualChangesForAssetCollections:(id)arg1 collectionsToDiff:(id)arg2 collectionsToChange:(id)arg3 changeBlock:(CDUnknownBlockType)arg4;
 - (void)_performManualReloadWithChangeBlock:(CDUnknownBlockType)arg1;
 - (void)_performProcessAndPublishSelectorInDefaultRunLoopMode;
 - (void)_prefetchIndexesByFetchResult:(id)arg1 onlyThumbnails:(BOOL)arg2;
@@ -152,6 +168,7 @@
 - (id)assetsInSection:(long long)arg1;
 - (id)assetsStartingAtIndexPath:(id)arg1;
 - (void)clearResultsForAssetCollection:(id)arg1;
+- (void)clearResultsForAssetCollections:(id)arg1;
 - (id)createDataSourceWithAssetsAtIndexPaths:(id)arg1;
 - (id)curatedAssetsForAssetCollection:(id)arg1;
 - (id)curatedAssetsInSection:(long long)arg1;
@@ -164,12 +181,15 @@
 - (id)fetchResultsByAssetCollection;
 - (id)firstAssetCollection;
 - (BOOL)forceAccurateAllSectionsIfNeeded;
+- (BOOL)forceAccurateAssetCollectionsIfNeeded:(id)arg1 reloadChanges:(BOOL)arg2;
 - (BOOL)forceAccurateIndexPath:(id)arg1 andAssetsBeforeAndAfter:(long long)arg2;
 - (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (BOOL)forceAccurateSectionsIfNeeded:(id)arg1;
 - (BOOL)forceAccurateSectionsIfNeeded:(id)arg1 reloadChanges:(BOOL)arg2;
 - (void)forceExcludeAssetsAtIndexPaths:(id)arg1;
+- (void)forceExcludeAssetsAtIndexes:(id)arg1;
 - (void)forceIncludeAssetsAtIndexPaths:(id)arg1;
+- (void)forceIncludeAssetsAtIndexes:(id)arg1;
 - (BOOL)hasCurationForAssetCollection:(id)arg1;
 - (long long)indexForAsset:(id)arg1 inCollection:(id)arg2 hintIndex:(long long)arg3;
 - (id)indexPathForAsset:(id)arg1 hintIndexPath:(id)arg2 hintCollection:(id)arg3;
@@ -204,13 +224,16 @@
 - (void)registerChangeObserver:(id)arg1;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
 - (unsigned long long)sectionForAssetCollection:(id)arg1;
+- (id)sectionsForAssetCollections:(id)arg1;
 - (void)setDisableFilters:(BOOL)arg1 forAssetCollection:(id)arg2;
+- (void)setFilterPredicate:(id)arg1 provideIncrementalChangeDetailsForAssetCollections:(id)arg2;
 - (void)setKeyAsset:(id)arg1 forAssetCollection:(id)arg2;
 - (void)setWantsCuration:(BOOL)arg1 forAssetCollection:(id)arg2;
 - (void)setWantsCurationForAllCollections:(BOOL)arg1 collectionsToDiff:(id)arg2;
 - (void)startBackgroundFetchIfNeeded;
 - (void)stopExcludingAssets:(id)arg1;
 - (void)stopForceIncludingAllAssets;
+- (BOOL)supportsDynamicBackgroundFetching;
 - (id)uncuratedAssetsForAssetCollection:(id)arg1;
 - (id)uncuratedAssetsInSection:(long long)arg1;
 - (void)unregisterChangeObserver:(id)arg1;

@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsMapType:(int)arg1 scale:(int)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_updateViewTransform;
 - (optional_44235073)_zoomLevelForCanvasSize:(struct CGSize)arg1;
 - (void)addOverlay:(id)arg1;
 - (CDUnknownBlockType)annotationCoordinateTest;
@@ -52,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)convertMapPointToPoint:(CDStruct_c3b9c2ee)arg1;
 - (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
-- (float)currentRoadSignOffset;
 - (void)dealloc;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (id)detailedDescription;
@@ -71,19 +69,17 @@ __attribute__((visibility("hidden")))
 - (void)populateDebugNode:(struct DebugTreeNode *)arg1 withOptions:(const bitset_dc343b9a *)arg2;
 - (void)reloadStylesheet;
 - (void)removeOverlay:(id)arg1;
-- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(BOOL)arg2;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;
 - (void)setContentsScale:(double)arg1;
 - (void)setMapType:(int)arg1;
 - (void)setMapType:(int)arg1 animated:(BOOL)arg2;
-- (void)setNavCameraIsDetached:(BOOL)arg1;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
 - (long long)tileSize;
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)updateCameraForFrameResize;
 - (void)updateOverlays;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 
 @end
 

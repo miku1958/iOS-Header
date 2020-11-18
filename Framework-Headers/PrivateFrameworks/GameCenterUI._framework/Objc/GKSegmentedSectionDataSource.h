@@ -46,7 +46,8 @@
 @property (nonatomic) BOOL usePlaceholder; // @synthesize usePlaceholder=_usePlaceholder;
 @property (nonatomic) BOOL waitingForAnimation; // @synthesize waitingForAnimation=_waitingForAnimation;
 
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (void).cxx_destruct;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)addDataSource:(id)arg1;
 - (id)allTitles;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -72,7 +73,6 @@
 - (void)dataSourceDidReloadData:(id)arg1;
 - (id)dataSourceForSection:(unsigned long long)arg1;
 - (void)dataSourceWillLoad;
-- (void)dealloc;
 - (id)description;
 - (void)groupDidLoad:(id)arg1;
 - (void)hoistSegmentedFactoryToRoot;

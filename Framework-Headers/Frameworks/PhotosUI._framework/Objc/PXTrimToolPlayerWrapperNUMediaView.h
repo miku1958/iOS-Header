@@ -14,6 +14,7 @@
 @interface PXTrimToolPlayerWrapperNUMediaView : NSObject <PXTrimToolPlayerWrapper>
 {
     CDStruct_42e984b2 _delegateFlags;
+    CDStruct_e83c9415 _trimRange;
     BOOL _didPlayBeforeSeek;
     BOOL _didLoopVideoBeforeSeek;
     BOOL _showsUntrimmed;
@@ -27,7 +28,6 @@
     _PXTrimToolPlayerWrapperAVPlayerView *_loupePlayerView;
     NSArray *_pipelineFiltersBeforeSeek;
     CDStruct_1b6d18a9 _seekTime;
-    CDStruct_e83c9415 _trimRange;
 }
 
 @property (readonly, nonatomic) AVPlayer *_currentAVPlayer;
@@ -50,7 +50,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 seekTime; // @synthesize seekTime=_seekTime;
 @property (nonatomic) BOOL showsUntrimmed; // @synthesize showsUntrimmed=_showsUntrimmed;
 @property (readonly) Class superclass;
-@property (nonatomic) CDStruct_e83c9415 trimRange; // @synthesize trimRange=_trimRange;
+@property (readonly, nonatomic) CDStruct_e83c9415 trimRange;
 
 - (void).cxx_destruct;
 - (void)_handleMediaPlayerObserverMediaChanged;
@@ -70,6 +70,8 @@
 - (void)requestPlayerItemWithCompletion:(CDUnknownBlockType)arg1;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(BOOL)arg2 exact:(BOOL)arg3;
+- (void)setPosterFrame:(CDStruct_1b6d18a9)arg1;
+- (void)setShowsUntrimmed:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startPeriodicTimeObserver;
 - (void)stopPeriodicTimeObserver;
 

@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)regionCursorIsPill;
 + (double)regionSpacing;
 + (struct CGSize)smallPillSize;
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
 - (void)_dateTimePreferencesUpdated;
 - (void)_updateConstraintsForAvoidanceFrame:(struct CGRect)arg1;
@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
+- (void)statusBarEnabledPartsUpdated;
 - (id)styleAttributesForStyle:(long long)arg1;
 
 @end

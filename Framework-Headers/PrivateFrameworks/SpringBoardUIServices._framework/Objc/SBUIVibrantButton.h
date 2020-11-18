@@ -38,7 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) long long lineBreakMode; // @synthesize lineBreakMode=_lineBreakMode;
 @property (nonatomic) double minimumTitleScaleFactor; // @synthesize minimumTitleScaleFactor=_minimumTitleScaleFactor;
 @property (nonatomic) long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;

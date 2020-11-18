@@ -12,9 +12,9 @@
 
 - (BOOL)alwaysShowsButton;
 - (id)defaultSupportedVariableTypes;
+- (id)importQuestionBehavior;
 - (id)possibleStates;
 - (Class)singleStateClass;
-- (BOOL)supportsImportQuestions;
 
 @end
 

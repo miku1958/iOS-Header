@@ -21,8 +21,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_resumeReaders;
-- (void)_suspendReadersAndWaitForDrain;
 - (void)enqueueReadWithBlock:(CDUnknownBlockType)arg1 bypassSuspend:(BOOL)arg2;
 - (void)enqueueReadWithBlock:(CDUnknownBlockType)arg1 bypassSuspend:(BOOL)arg2 async:(BOOL)arg3;
 - (void)enqueueReadWithBlockAsync:(CDUnknownBlockType)arg1 bypassSuspend:(BOOL)arg2;

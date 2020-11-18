@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (float)_idxToFloat:(unsigned long long)arg1;
 - (BOOL)_loadAssetData;
-- (void)dealloc;
 - (id)init;
 - (float)sentimentScoreForText:(id)arg1;
 

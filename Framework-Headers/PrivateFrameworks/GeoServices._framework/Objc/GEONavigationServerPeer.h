@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)requestRouteSummary;
 - (void)requestStepIndex;
 - (void)requestStepNameInfo;
-- (void)requestTrafficIncidentDetailsData;
 - (void)requestTransitSummary;
 - (void)requestUpdates;
 

@@ -7,20 +7,24 @@
 #import <HomeKit/HMActionSet.h>
 
 #import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
 @class NSDate, NSSet, NSString, NSUUID;
 @protocol HFIconDescriptor;
 
-@interface HMActionSet (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFReorderableHomeKitObject>
+@interface HMActionSet (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeKitObject, HFReorderableHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -35,11 +39,14 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)hf_standardIconDescriptorForActionSetType:(id)arg1;
 - (id)hf_affectedCharacteristics;
 - (id)hf_affectedMediaSessions;
+- (id)hf_affectedProfiles;
 - (id)hf_affectedServices;
 - (BOOL)hf_affectsServiceWithIdentifier:(id)arg1;
 - (BOOL)hf_isAnonymous;

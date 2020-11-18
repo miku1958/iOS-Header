@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVTMaterial, AVTMemoji, NSArray;
+@class AVTMaterial, AVTMemoji, NSArray, NSString;
 
 @interface AVTComponent : NSObject
 {
@@ -15,24 +15,27 @@
     BOOL _mirrored;
     AVTMemoji *_memoji;
     AVTMaterial *_materials[3];
-    double _intensity;
+    NSString *_morphVariant;
+    NSString *_imageVariant;
+    NSString *_materialVariant;
+    double _morphVariantIntensity;
+    double _textureAssetPresence;
 }
 
 @property (readonly) NSArray *assets; // @synthesize assets=_assets;
-@property (nonatomic) double intensity; // @synthesize intensity=_intensity;
-@property (nonatomic) BOOL mirrored; // @synthesize mirrored=_mirrored;
+@property (readonly, nonatomic) NSString *imageVariant; // @synthesize imageVariant=_imageVariant;
+@property (readonly, nonatomic) NSString *materialVariant; // @synthesize materialVariant=_materialVariant;
+@property (readonly, nonatomic) BOOL mirrored; // @synthesize mirrored=_mirrored;
+@property (readonly, nonatomic) NSString *morphVariant; // @synthesize morphVariant=_morphVariant;
+@property (readonly, nonatomic) double morphVariantIntensity; // @synthesize morphVariantIntensity=_morphVariantIntensity;
+@property (readonly, nonatomic) double textureAssetPresence; // @synthesize textureAssetPresence=_textureAssetPresence;
 @property (readonly) long long type;
 
-+ (BOOL)componentTypeSupportsIntensity:(long long)arg1;
-+ (id)componentWithAssets:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_decode:(id)arg1;
-- (void)_encode:(id)arg1;
 - (id)description;
-- (id)initWithAssets:(id)arg1;
+- (id)initWithType:(long long)arg1 assets:(id)arg2 morphVariant:(id)arg3 imageVariant:(id)arg4 materialVariant:(id)arg5 morphVariantIntensity:(double)arg6 textureAssetPresence:(double)arg7 mirrored:(BOOL)arg8;
 - (id)materialAtIndex:(unsigned long long)arg1;
 - (id)memoji;
-- (id)newComponentInstance;
 - (void)setMaterial:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setMemoji:(id)arg1;
 

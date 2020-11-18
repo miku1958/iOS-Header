@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEORouteInformation : PBCodable <NSCopying>
@@ -16,30 +16,38 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_detail;
+    GEOFormattedString *_distance;
     GEOFormattedString *_duration;
+    GEOFormattedString *_routeDescription;
+    NSString *_separator;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_detail:1;
+        unsigned int read_distance:1;
         unsigned int read_duration:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_detail:1;
-        unsigned int wrote_duration:1;
+        unsigned int read_routeDescription:1;
+        unsigned int read_separator:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) GEOFormattedString *detail;
+@property (strong, nonatomic) GEOFormattedString *distance;
 @property (strong, nonatomic) GEOFormattedString *duration;
 @property (readonly, nonatomic) BOOL hasDetail;
+@property (readonly, nonatomic) BOOL hasDistance;
 @property (readonly, nonatomic) BOOL hasDuration;
+@property (readonly, nonatomic) BOOL hasRouteDescription;
+@property (readonly, nonatomic) BOOL hasSeparator;
+@property (strong, nonatomic) GEOFormattedString *routeDescription;
+@property (strong, nonatomic) NSString *separator;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readDetail;
-- (void)_readDuration;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -48,7 +56,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

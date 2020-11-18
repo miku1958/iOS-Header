@@ -41,10 +41,10 @@
 + (id)recordsFromBytes:(const void *)arg1 length:(unsigned int)arg2;
 + (id)recordsWithTNF:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4 chunkSize:(unsigned long long)arg5 outError:(unsigned int *)arg6;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_idLengthPresent;
 - (void)_setIdLengthPresent:(BOOL)arg1;
 - (id)asData;
-- (void)dealloc;
 - (id)decode;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

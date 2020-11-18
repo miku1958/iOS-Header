@@ -48,15 +48,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *shieldDisplayGroup;
 @property (readonly, nonatomic) Matrix_6e1d3589 worldPoint;
 
-+ (id)artworkForEtaDescription:(id)arg1 navContext:(const struct NavContext *)arg2 styleQuery:(shared_ptr_c5d816ee)arg3 orientation:(unsigned char)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5 selected:(BOOL)arg6;
-+ (shared_ptr_c5d816ee)styleQueryForNavContext:(const struct NavContext *)arg1 selected:(BOOL)arg2 focused:(BOOL)arg3 etaComparison:(unsigned char)arg4 transportType:(unsigned char)arg5;
++ (id)artworkForEtaDescription:(id)arg1 navContext:(const struct NavContext *)arg2 roadSignStyleGroup:(const struct RoadSignStyleGroup *)arg3 mercatorPoint:(const Mercator2_57ec32b6 *)arg4 orientation:(unsigned char)arg5 isSelected:(BOOL)arg6 artworkCache:(struct VKLabelNavArtworkCache *)arg7;
++ (vector_44b9b83b)baseAttributesForEtaLabel:(BOOL)arg1 focused:(BOOL)arg2 etaComparison:(unsigned char)arg3 transportType:(unsigned char)arg4 additionalAttributes:(id)arg5;
++ (struct RoadSignStyleGroup)styleForNavContext:(const struct NavContext *)arg1 selected:(BOOL)arg2 focused:(BOOL)arg3 etaComparison:(unsigned char)arg4 transportType:(unsigned char)arg5 additionalAttributes:(id)arg6;
 + (unsigned char)toStyleEtaComparison:(unsigned char)arg1;
 - (id).cxx_construct;
 - (void)_clearLabel;
 - (void)createLabelWithNavContext:(const struct NavContext *)arg1 orientation:(unsigned char)arg2 etaDescription:(id)arg3 selected:(BOOL)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5;
 - (void)dealloc;
 - (id)initWithRouteInfo:(id)arg1 routeCoord:(struct PolylineCoordinate)arg2;
-- (Box_8bd38d92)labelRectForOrientation:(unsigned char)arg1 styleQuery:(const shared_ptr_c5d816ee *)arg2 navContext:(const struct NavContext *)arg3 anchorPosition:(Matrix_8746f91e)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
 - (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;
 - (void)repositionAtRouteCoord:(struct PolylineCoordinate)arg1;

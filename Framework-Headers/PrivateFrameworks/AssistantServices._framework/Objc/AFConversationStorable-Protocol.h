@@ -14,6 +14,8 @@
 - (AFDataStore *)associatedDataStore;
 - (AFDialogPhase *)dialogPhase;
 - (NSUUID *)identifier;
+- (BOOL)isImmersiveExperience;
+- (BOOL)isSupplemental;
 - (BOOL)isTransient;
 - (BOOL)isVirgin;
 - (long long)presentationState;

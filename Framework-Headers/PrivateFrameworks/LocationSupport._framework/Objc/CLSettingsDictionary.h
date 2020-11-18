@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_internal;
 
 + (id)settingsWithDictionary:(id)arg1;
+- (id)arrayForKey:(id)arg1 defaultValue:(id)arg2;
 - (BOOL)boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (void)dealloc;
 - (id)dictionaryForKey:(id)arg1 defaultValue:(id)arg2;

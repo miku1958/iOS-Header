@@ -26,7 +26,9 @@
     NSTimeZone *_timezoneOverride;
 }
 
+@property (strong, nonatomic) NSDate *dateOverride;
 @property (readonly) BOOL hasLoadedActivitySummaries;
+@property (strong, nonatomic) NSTimeZone *timezoneOverride;
 @property (readonly) HKActivitySummary *todayActivitySummary;
 @property (readonly) HKActivitySummary *yesterdayActivitySummary;
 
@@ -46,13 +48,9 @@
 - (void)_queue_updateYesterdayActivitySummary:(id)arg1;
 - (void)_registerForSignificantTimeChangeNotification;
 - (void)addObserver:(id)arg1;
-- (id)dateOverride;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)setDateOverride:(id)arg1;
-- (void)setTimezoneOverride:(id)arg1;
-- (id)timezoneOverride;
 
 @end
 

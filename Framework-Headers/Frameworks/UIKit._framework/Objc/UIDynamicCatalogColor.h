@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     _UIAssetManager *_assetManager;
     UIColor *_genericColor;
+    struct os_unfair_lock_s _cachedColorLock;
+    UIColor *_cachedColor;
+    unsigned long long _cachedThemeKey;
 }
 
 + (BOOL)supportsSecureCoding;

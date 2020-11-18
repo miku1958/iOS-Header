@@ -21,7 +21,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_bestVariantForFormat:(long long)arg1;
-- (id)_bestVariantForUIFormat:(int)arg1;
 - (void)addVariant:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

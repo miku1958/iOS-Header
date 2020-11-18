@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 - (id)dataArrayForKey:(id)arg1 error:(id *)arg2;
 - (float *)dataForKey:(id)arg1 error:(id *)arg2;
-- (id)initWithDictionary:(id)arg1;
 - (BOOL)setData:(float *)arg1 size:(unsigned long long)arg2 forKey:(id)arg3 freeWhenDone:(BOOL)arg4;
 - (BOOL)setImage:(struct vImage_Buffer)arg1 forKey:(id)arg2;
 

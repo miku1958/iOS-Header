@@ -10,7 +10,7 @@
 {
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (BOOL)appendBatchBarrier;
 - (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 batchNormalizationState:(id)arg3;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;

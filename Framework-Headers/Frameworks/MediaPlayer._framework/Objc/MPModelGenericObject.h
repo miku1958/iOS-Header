@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelArtist, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelPodcast, MPModelPodcastEpisode, MPModelRadioStation, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
+@class MPModelAlbum, MPModelArtist, MPModelComposer, MPModelCurator, MPModelGenre, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelPodcast, MPModelPodcastEpisode, MPModelRadioStation, MPModelSocialPerson, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
 
 @interface MPModelGenericObject : MPModelObject
 {
@@ -14,6 +14,9 @@
 
 @property (strong, nonatomic) MPModelAlbum *album; // @dynamic album;
 @property (strong, nonatomic) MPModelArtist *artist; // @dynamic artist;
+@property (strong, nonatomic) MPModelComposer *composer; // @dynamic composer;
+@property (strong, nonatomic) MPModelCurator *curator; // @dynamic curator;
+@property (strong, nonatomic) MPModelGenre *genre; // @dynamic genre;
 @property (strong, nonatomic) MPModelMediaClip *mediaClip; // @dynamic mediaClip;
 @property (strong, nonatomic) MPModelMovie *movie; // @dynamic movie;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
@@ -23,11 +26,15 @@
 @property (strong, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
 @property (strong, nonatomic) MPModelTVSeason *season; // @dynamic season;
 @property (strong, nonatomic) MPModelTVShow *show; // @dynamic show;
+@property (strong, nonatomic) MPModelSocialPerson *socialPerson; // @dynamic socialPerson;
 @property (strong, nonatomic) MPModelSong *song; // @dynamic song;
 @property (strong, nonatomic) MPModelTVEpisode *tvEpisode; // @dynamic tvEpisode;
 
 + (id)__album_KEY;
 + (id)__artist_KEY;
++ (id)__composer_KEY;
++ (id)__curator_KEY;
++ (id)__genre_KEY;
 + (id)__mediaClip_KEY;
 + (id)__movie_KEY;
 + (id)__playlistEntry_KEY;
@@ -37,18 +44,22 @@
 + (id)__radioStation_KEY;
 + (id)__season_KEY;
 + (id)__show_KEY;
++ (id)__socialPerson_KEY;
 + (id)__song_KEY;
 + (id)__tvEpisode_KEY;
 + (id)genericObjectWithModelObject:(id)arg1;
 + (id)kindWithRelationshipKinds:(id)arg1;
++ (id)relationshipKeyForGenericObjectType:(long long)arg1;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)anyObject;
 - (id)artworkCatalog;
 - (id)copyWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)copyWithIdentifiers:(id)arg1 propertySet:(id)arg2;
 - (id)flattenedGenericObject;
 - (id)humanDescription;
 - (id)identifiers;
 - (id)mediaItemPropertyValues;
+- (id)mergeWithObject:(id)arg1;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;

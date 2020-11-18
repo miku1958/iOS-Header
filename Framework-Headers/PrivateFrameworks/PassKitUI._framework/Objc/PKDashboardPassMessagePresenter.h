@@ -32,7 +32,7 @@
 - (unsigned long long)_indexForIdentifier:(id)arg1 inMessages:(id)arg2;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (id)initWithPassGroupView:(id)arg1;
 - (Class)itemClass;
 - (void)messagesView:(id)arg1 scrolledToMessageWithIdentifier:(id)arg2;

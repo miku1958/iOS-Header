@@ -13,15 +13,18 @@
     NSMutableArray *_destinations;
 }
 
-@property (strong, nonatomic) NSMutableArray *destinations; // @synthesize destinations=_destinations;
+@property (readonly, nonatomic) NSMutableArray *destinations; // @synthesize destinations=_destinations;
 
 - (void).cxx_destruct;
+- (void)_parseDestinationsFromConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
+- (id)_readConfiguration:(id)arg1;
 - (void)addDestination:(id)arg1;
 - (id)init;
-- (void)parseDestinationsFromConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
-- (id)readConfiguration:(id)arg1;
+- (void)removeDestination:(id)arg1;
+- (void)removePhotoLibraryFromDestinations;
 - (void)sendToAllDestinations:(id)arg1;
 - (void)setupWithConfigurationAtURL:(id)arg1 cpAnalyticsInstance:(id)arg2;
+- (void)updateWithConfigurationAtURL:(id)arg1 cpAnalyticsInstance:(id)arg2;
 
 @end
 

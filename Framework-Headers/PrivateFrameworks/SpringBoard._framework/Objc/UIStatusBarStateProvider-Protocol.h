@@ -11,7 +11,7 @@
 
 @protocol UIStatusBarStateProvider <NSObject>
 - (void)addStatusBarStateObserver:(id<UIStatusBarStateObserver>)arg1;
-- (void)getStatusBarData:(CDStruct_0942cde0 *)arg1;
+- (void)getStatusBarData:(CDStruct_3fd7985f *)arg1;
 - (void)removeStatusBarStateObserver:(id<UIStatusBarStateObserver>)arg1;
 
 @optional

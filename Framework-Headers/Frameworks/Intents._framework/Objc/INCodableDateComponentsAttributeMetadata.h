@@ -27,6 +27,24 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDateStyleKey;
+- (id)__INCodableDescriptionFormatKey;
+- (id)__INCodableDescriptionTemplateIDKey;
+- (id)__INCodableDescriptionTemplateKey;
+- (id)__INCodableDescriptionTimeStyleKey;
+- (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionDateStyleKey;
+- (id)__INIntentResponseCodableDescriptionFormatKey;
+- (id)__INIntentResponseCodableDescriptionTemplateIDKey;
+- (id)__INIntentResponseCodableDescriptionTemplateKey;
+- (id)__INIntentResponseCodableDescriptionTimeStyleKey;
+- (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionDateStyleKey;
+- (id)__INTypeCodableDescriptionFormatKey;
+- (id)__INTypeCodableDescriptionTemplateIDKey;
+- (id)__INTypeCodableDescriptionTemplateKey;
+- (id)__INTypeCodableDescriptionTimeStyleKey;
+- (id)__INTypeCodableDescriptionTypeKey;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

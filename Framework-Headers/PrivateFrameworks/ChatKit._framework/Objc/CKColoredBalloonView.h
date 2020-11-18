@@ -11,15 +11,13 @@
 
 @interface CKColoredBalloonView : CKBalloonView
 {
-    BOOL _color;
     BOOL _wantsGradient;
+    CKGradientView *_gradientView;
     CKBalloonImageView *_mask;
     CKBalloonImageView *_effectViewMask;
-    CKGradientView *_gradientView;
     struct CGRect _gradientOverrideFrame;
 }
 
-@property (nonatomic) BOOL color; // @synthesize color=_color;
 @property (strong, nonatomic) CKBalloonImageView *effectViewMask; // @synthesize effectViewMask=_effectViewMask;
 @property (nonatomic) struct CGRect gradientOverrideFrame; // @synthesize gradientOverrideFrame=_gradientOverrideFrame;
 @property (strong, nonatomic) UIView<CKGradientReferenceView> *gradientReferenceView;
@@ -45,6 +43,7 @@
 - (void)setBalloonDescriptor:(struct CKBalloonDescriptor_t)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCanUseOpaqueMask:(BOOL)arg1;
+- (void)setColor:(BOOL)arg1;
 - (void)setEffectViewMaskImage:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHasTail:(BOOL)arg1;

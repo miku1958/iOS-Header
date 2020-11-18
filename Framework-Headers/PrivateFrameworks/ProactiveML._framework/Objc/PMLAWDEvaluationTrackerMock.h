@@ -13,7 +13,7 @@
     PMLTrackerMockAdapter *_adapter;
 }
 
-@property (readonly) NSArray *trackedEvaluations; // @dynamic trackedEvaluations;
+@property (readonly, nonatomic) NSArray *trackedEvaluations; // @dynamic trackedEvaluations;
 
 + (id)mockTracker;
 + (id)mockTrackerForPlanId:(id)arg1;

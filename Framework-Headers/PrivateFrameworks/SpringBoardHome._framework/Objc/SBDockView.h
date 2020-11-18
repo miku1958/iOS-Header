@@ -35,17 +35,20 @@
 @property (readonly, nonatomic) struct CGRect dockListViewFrame;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 
-+ (double)defaultHeight;
-+ (double)defaultHeightPadding;
 - (void).cxx_destruct;
 - (void)_backgroundContrastDidChange:(id)arg1;
+- (struct UIEdgeInsets)_dockOverhangInsets;
+- (double)_layoutScale;
+- (id)_listLayout;
 - (double)_minimumHomeScreenScale;
 - (void)_updateCornerRadii;
+- (id)_visualConfiguration;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)getDockViewMetrics:(CDStruct_cafad96f *)arg1;
 - (id)initWithDockListView:(id)arg1 forSnapshot:(BOOL)arg2;
 - (void)layoutSubviews;
+- (void)minimumHomeScreenScaleDidChange;
 - (void)setBackgroundAlpha:(double)arg1;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;

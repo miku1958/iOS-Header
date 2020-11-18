@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
         unsigned int indefinite_set:1;
         unsigned int reuse_local_address:1;
         unsigned int receive_any_interface:1;
-        unsigned int enable_tls13:1;
         unsigned int is_probe:1;
         unsigned int custom_protocols_only:1;
         unsigned int bundle_id_to_uuid_mapping_failed:1;
@@ -54,9 +53,10 @@ __attribute__((visibility("hidden")))
         unsigned int multipath_force_enable:1;
         unsigned int allow_duplicate_state_updates:1;
         unsigned int always_open_listener_socket:1;
-        unsigned int enable_tls_experiments:1;
+        unsigned int disable_listener_datapath:1;
         unsigned int tls_should_trust_invalid_certificates:1;
         unsigned int skip_probe_sampling:1;
+        unsigned int __pad_bits:1;
     } value;
     NWConcrete_nw_path_parameters *path_parameters;
     char *e_bundle_id;
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *tls_session_id;
     NSObject<OS_xpc_object> *proxy_configuration;
     NSObject<OS_xpc_object> *effective_proxy_settings;
+    NSObject<OS_xpc_object> *extra_parent_ids;
     NSObject<OS_dispatch_data> *initial_data_payload;
     NWConcrete_nw_protocol_stack *default_stack;
     NSObject<OS_nw_array> *proxy_options;
@@ -78,8 +79,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithParameters:(id)arg1 stripConnected:(BOOL)arg2;
-- (id)initWithStack:(id)arg1;
 - (id)redactedDescription;
 
 @end

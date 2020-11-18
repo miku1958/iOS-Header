@@ -23,9 +23,7 @@
         unsigned int has_statusCode:1;
         unsigned int read_locationResults:1;
         unsigned int read_networkResults:1;
-        unsigned int wrote_locationResults:1;
-        unsigned int wrote_networkResults:1;
-        unsigned int wrote_statusCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,10 +37,6 @@
 + (Class)networkResultsType;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
-- (void)_addNoFlagsLocationResults:(id)arg1;
-- (void)_addNoFlagsNetworkResults:(id)arg1;
-- (void)_readLocationResults;
-- (void)_readNetworkResults;
 - (void)addLocationResults:(id)arg1;
 - (void)addNetworkResults:(id)arg1;
 - (void)clearLocationResults;
@@ -54,7 +48,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)locationResultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationResultsCount;
 - (void)mergeFrom:(id)arg1;

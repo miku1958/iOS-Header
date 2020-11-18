@@ -15,8 +15,8 @@
     struct {
         unsigned long long s[2];
     } _rng;
-    NSString *_targetMapping;
     NSString *_language;
+    long long _windowLength;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,11 +24,11 @@
 @property (readonly) unsigned long long hash;
 @property (strong) NSString *language; // @synthesize language=_language;
 @property (readonly) Class superclass;
-@property (strong) NSString *targetMapping; // @synthesize targetMapping=_targetMapping;
+@property long long windowLength; // @synthesize windowLength=_windowLength;
 
 - (void).cxx_destruct;
+- (id)initWithLanguage:(id)arg1 windowLength:(long long)arg2;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithTargetMapping:(id)arg1 language:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContactSharingTransformer:(id)arg1;
 - (id)toPlistWithChunks:(id)arg1;

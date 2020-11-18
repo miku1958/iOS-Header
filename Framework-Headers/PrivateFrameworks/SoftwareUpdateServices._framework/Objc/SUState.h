@@ -9,6 +9,7 @@
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
 @class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, _SUAutoInstallOperationModel;
+@protocol OS_dispatch_queue;
 
 @interface SUState : NSObject <NSKeyedUnarchiverDelegate>
 {
@@ -35,8 +36,11 @@
     NSString *_sessionID;
     NSString *_lastDeletedSUAssetID;
     NSString *_lastAssetAudience;
+    NSDate *_appliedTime;
+    NSObject<OS_dispatch_queue> *_stateQueue;
 }
 
+@property (strong, nonatomic) NSDate *appliedTime; // @synthesize appliedTime=_appliedTime;
 @property (nonatomic) BOOL autodownloadNeedsOneTimeRetry; // @synthesize autodownloadNeedsOneTimeRetry=_autodownloadNeedsOneTimeRetry;
 @property (copy, nonatomic) SUDescriptor *currentDescriptor; // @synthesize currentDescriptor=_currentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
@@ -67,8 +71,8 @@
 
 + (id)currentState;
 + (id)statePath;
+- (void).cxx_destruct;
 - (id)_stateAsDictionary;
-- (void)dealloc;
 - (id)init;
 - (void)load;
 - (void)resetAllHistory;

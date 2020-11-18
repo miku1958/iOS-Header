@@ -14,10 +14,12 @@
 {
     long long _type;
     NSString *_referenceObjectID;
+    unsigned long long _displayOrder;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long displayOrder; // @synthesize displayOrder=_displayOrder;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *referenceObjectID; // @synthesize referenceObjectID=_referenceObjectID;
 @property (readonly) Class superclass;
@@ -30,6 +32,7 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContext:(id)arg1;
 - (id)initWithHandout:(id)arg1;
 - (id)initWithType:(long long)arg1;
 - (void)mergeWithObject:(id)arg1;

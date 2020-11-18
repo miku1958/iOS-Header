@@ -15,8 +15,8 @@
 
 @interface HUSoftwareUpdateInfoCollectionViewCell : UICollectionViewCell <HUSoftwareUpdateInternalResizingDelegate, HUCellProtocol, HUCollectionViewCellSeparatorsProtocol>
 {
-    id<HUResizableCellDelegate> _resizingDelegate;
     HUSoftwareUpdateInfoView *_infoView;
+    id<HUResizableCellDelegate> _resizingDelegate;
     UIView *_topSeparatorView;
     UIView *_bottomSeparatorView;
 }

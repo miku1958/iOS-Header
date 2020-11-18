@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CNActionItem, UIView;
+@class CNActionItem, CNActionsView, UIView;
 
 @protocol CNActionsViewProtocol
 - (void)didSelectAction:(CNActionItem *)arg1 withSourceView:(UIView *)arg2 longPress:(BOOL)arg3;
+
+@optional
+- (BOOL)actionsView:(CNActionsView *)arg1 shouldPresentDisambiguationUIForAction:(CNActionItem *)arg2;
 @end
 

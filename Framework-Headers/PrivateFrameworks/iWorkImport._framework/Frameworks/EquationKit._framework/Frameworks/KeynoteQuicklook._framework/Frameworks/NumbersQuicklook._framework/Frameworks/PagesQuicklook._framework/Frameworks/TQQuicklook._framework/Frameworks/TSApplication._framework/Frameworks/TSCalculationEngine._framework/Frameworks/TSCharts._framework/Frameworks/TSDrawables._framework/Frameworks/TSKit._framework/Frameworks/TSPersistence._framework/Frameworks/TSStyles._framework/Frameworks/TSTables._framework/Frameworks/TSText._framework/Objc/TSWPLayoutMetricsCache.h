@@ -30,6 +30,7 @@
 - (void)storage:(id)arg1 didChangeParagraphsInIndexRange:(struct _NSRange)arg2;
 - (void)storage:(id)arg1 didDeleteParagraphsInIndexRange:(struct _NSRange)arg2;
 - (void)storage:(id)arg1 didInsertParagraphsInIndexRange:(struct _NSRange)arg2;
+- (void)tearDown;
 
 @end
 

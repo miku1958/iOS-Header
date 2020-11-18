@@ -10,7 +10,6 @@
 {
     BOOL _badgeAllItemsAsFavorites;
     BOOL _displayAllItemsAsBursts;
-    BOOL _simulateLongTitles;
     BOOL _allowDynamicDetailsTitles;
     BOOL _forceJPEGThumbnailsInDefaultGrid;
     BOOL _flashDegradedImages;
@@ -50,7 +49,6 @@
 @property (nonatomic) BOOL shouldExitEditingModeAfterDuplication; // @synthesize shouldExitEditingModeAfterDuplication=_shouldExitEditingModeAfterDuplication;
 @property (nonatomic) BOOL showTimelineScrubbers; // @synthesize showTimelineScrubbers=_showTimelineScrubbers;
 @property (nonatomic) BOOL simulateGlobalFooterImportantInformationUpdates; // @synthesize simulateGlobalFooterImportantInformationUpdates=_simulateGlobalFooterImportantInformationUpdates;
-@property (nonatomic) BOOL simulateLongTitles; // @synthesize simulateLongTitles=_simulateLongTitles;
 @property (nonatomic) double simulatedDetailsAttributesLoadingDelay; // @synthesize simulatedDetailsAttributesLoadingDelay=_simulatedDetailsAttributesLoadingDelay;
 @property (nonatomic, getter=isSwipeSelectionEnabled) BOOL swipeSelectionEnabled; // @synthesize swipeSelectionEnabled=_swipeSelectionEnabled;
 @property (nonatomic) BOOL useFloatingHeaders; // @synthesize useFloatingHeaders=_useFloatingHeaders;

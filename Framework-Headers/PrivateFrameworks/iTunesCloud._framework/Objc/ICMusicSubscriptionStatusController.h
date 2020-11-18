@@ -21,7 +21,7 @@
     NSXPCConnection *_remoteRequestingClientConnection;
     NSObject<OS_dispatch_source> *_remoteRequestingClientConnectionInvalidationTimer;
     NSMutableDictionary *_statusHandlersForPendingIdenticalRequests;
-    NSMutableDictionary *_statusHandlersForRemoteRequests;
+    NSMutableDictionary *_pendingRequests;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,12 +38,12 @@
 - (void)_handlePrivacyAcknowledgementRequirementChanged:(BOOL)arg1;
 - (void)_handleSubscriptionStatusCacheDidChangeNotification:(id)arg1;
 - (void)_handleSubscriptionStatusCacheUnderlyingCachingPropertiesDidChangeNotification:(id)arg1;
+- (void)_handleSubscriptionStatusDidChangeDistributedNotification:(id)arg1;
 - (void)_handleSubscriptionStatusDidChangeFollowingPrivacyAcknowledgementNotification:(id)arg1;
 - (void)_invalidateRemoteRequestingClientConnection;
 - (id)_remoteRequestingClientConnection;
 - (void)_remoteRequestingClientConnectionInvalidationTimerDidExpire;
 - (void)_scheduleInvalidationOfRemoteRequestingClientConnection;
-- (CDUnknownBlockType)_statusHandlerForRemoteRequestWithUniqueIdentifier:(id)arg1;
 - (void)_willBeginRemoteRequestWithUniqueIdentifier:(id)arg1 statusHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_willPerformSubscriptionStatusRequest:(id)arg1 withStatusHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

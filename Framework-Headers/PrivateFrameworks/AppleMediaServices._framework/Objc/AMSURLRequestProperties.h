@@ -9,7 +9,7 @@
 #import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSMutableCopying-Protocol.h>
 
-@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSPurchaseContext, NSDictionary, NSMutableDictionary, NSString;
+@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSPurchaseInfo, NSDictionary, NSMutableDictionary, NSString;
 @protocol AMSBagProtocol, AMSResponseDecoding;
 
 __attribute__((visibility("hidden")))
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     NSString *_logUUID;
     long long _maxRetryCount;
     long long _mescalType;
-    AMSPurchaseContext *_purchaseContext;
+    AMSPurchaseInfo *_purchaseInfo;
     id<AMSResponseDecoding> _responseDecoder;
     long long _reversePushType;
     NSMutableDictionary *_userInfo;
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property (nonatomic) long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property (nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;
-@property (strong, nonatomic) AMSPurchaseContext *purchaseContext; // @synthesize purchaseContext=_purchaseContext;
+@property (strong, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
 @property (nonatomic) BOOL remoteSecuritySigningEnabled; // @synthesize remoteSecuritySigningEnabled=_remoteSecuritySigningEnabled;
 @property (strong, nonatomic) id<AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
 @property (nonatomic) long long reversePushType; // @synthesize reversePushType=_reversePushType;

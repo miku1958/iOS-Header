@@ -13,9 +13,9 @@
 
 @interface BSObjCProtocol : NSObject <NSCopying, BSDescriptionProviding>
 {
+    NSArray *_inheritedProtocols;
     NSString *_name;
     Protocol *_protocol;
-    NSArray *_inheritedProtocols;
     NSArray *_methods;
 }
 
@@ -28,13 +28,8 @@
 @property (readonly, strong, nonatomic) Protocol *protocol; // @synthesize protocol=_protocol;
 @property (readonly) Class superclass;
 
-+ (id)_gatherAdoptedProtocolsForProtocol:(id)arg1;
-+ (id)_gatherMethodMetadataForProtocol:(id)arg1;
-+ (id)_gatherMethodMetadataForProtocol:(id)arg1 required:(BOOL)arg2;
 + (id)protocolForProtocol:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithName:(id)arg1 protocol:(id)arg2 inherited:(id)arg3 methods:(id)arg4;
-- (id)_unionMethodsIgnoringObjCProtocols:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

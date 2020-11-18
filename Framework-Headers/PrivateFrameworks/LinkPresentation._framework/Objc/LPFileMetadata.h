@@ -43,7 +43,9 @@
 - (id)_fileTypeStringForTransformer:(id)arg1;
 - (BOOL)_isImage;
 - (BOOL)_isPlainText;
+- (BOOL)_isWatchFace;
 - (id)_nameForTransformer:(id)arg1;
+- (BOOL)_shouldUseBackground;
 - (BOOL)_shouldUseCircularIcon;
 - (BOOL)_shouldUseSquareIcon;
 - (id)_singleLineDescriptionForRemoteFileWithTransformer:(id)arg1;

@@ -34,6 +34,7 @@
     BOOL _isConnectedToSystem;
     BOOL _visibleInSettings;
     BOOL _connectedToSystem;
+    unsigned short _appearance;
     unsigned int _writesPending;
     id<CBPeripheralDelegate> _delegate;
     NSString *_name;
@@ -47,6 +48,7 @@
 @property (strong) NSString *BDAddress; // @synthesize BDAddress=_BDAddress;
 @property (strong) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
 @property BOOL ancsAuthorized; // @synthesize ancsAuthorized=_ancsAuthorized;
+@property unsigned short appearance; // @synthesize appearance=_appearance;
 @property BOOL canSendWriteWithoutResponse; // @synthesize canSendWriteWithoutResponse=_canSendWriteWithoutResponse;
 @property (readonly, nonatomic, getter=isConnectedToSystem) BOOL connectedToSystem; // @synthesize connectedToSystem=_connectedToSystem;
 @property (weak, nonatomic) id<CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;

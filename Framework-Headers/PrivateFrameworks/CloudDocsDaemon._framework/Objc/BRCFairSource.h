@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class BRCFairScheduler, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCFairSource : NSObject
@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
     int _suspendCount;
     BOOL _cancelled;
     BOOL _signaled;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_workloop;
     CDUnknownBlockType _eventHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
 
 - (void).cxx_destruct;
 - (void)_runEventHandler;

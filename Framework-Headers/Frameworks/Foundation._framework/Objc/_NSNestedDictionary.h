@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
     id _bindings;
 }
 
-- (id)_recursiveAllKeys;
-- (id)_recursiveAllValues;
 - (unsigned long long)count;
 - (id)keyEnumerator;
 - (id)objectEnumerator;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFRecord.h>
+#import <VoiceShortcutClient/WFDatabaseObjectDescriptor.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, WFWorkflowReference;
 
-@interface WFWorkflowRunEvent : WFRecord
+@interface WFWorkflowRunEvent : WFDatabaseObjectDescriptor
 {
+    WFWorkflowReference *_workflow;
     NSString *_source;
     NSDate *_date;
     NSString *_triggerID;
@@ -20,8 +21,13 @@
 @property (readonly, nonatomic) long long outcome; // @synthesize outcome=_outcome;
 @property (readonly, nonatomic) NSString *source; // @synthesize source=_source;
 @property (readonly, copy, nonatomic) NSString *triggerID; // @synthesize triggerID=_triggerID;
+@property (readonly, nonatomic) WFWorkflowReference *workflow; // @synthesize workflow=_workflow;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 workflow:(id)arg2 source:(id)arg3 date:(id)arg4 triggerID:(id)arg5 outcome:(long long)arg6;
 
 @end
 

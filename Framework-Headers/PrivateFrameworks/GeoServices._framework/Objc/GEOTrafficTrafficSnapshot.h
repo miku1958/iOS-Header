@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     NSMutableArray *_colors;
     NSMutableArray *_incidents;
+    NSMutableArray *_predictedPaces;
     unsigned long long _receivedTime;
     GEOTrafficSnapshotMetaData *_snapshotMetaData;
     NSMutableArray *_speeds;
@@ -26,13 +27,10 @@ __attribute__((visibility("hidden")))
         unsigned int has_receivedTime:1;
         unsigned int read_colors:1;
         unsigned int read_incidents:1;
+        unsigned int read_predictedPaces:1;
         unsigned int read_snapshotMetaData:1;
         unsigned int read_speeds:1;
-        unsigned int wrote_colors:1;
-        unsigned int wrote_incidents:1;
-        unsigned int wrote_receivedTime:1;
-        unsigned int wrote_snapshotMetaData:1;
-        unsigned int wrote_speeds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasReceivedTime;
 @property (readonly, nonatomic) BOOL hasSnapshotMetaData;
 @property (strong, nonatomic) NSMutableArray *incidents;
+@property (strong, nonatomic) NSMutableArray *predictedPaces;
 @property (nonatomic) unsigned long long receivedTime;
 @property (strong, nonatomic) GEOTrafficSnapshotMetaData *snapshotMetaData;
 @property (strong, nonatomic) NSMutableArray *speeds;
@@ -47,20 +46,16 @@ __attribute__((visibility("hidden")))
 + (Class)colorsType;
 + (Class)incidentsType;
 + (BOOL)isValid:(id)arg1;
++ (Class)predictedPacesType;
 + (Class)speedsType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsColors:(id)arg1;
-- (void)_addNoFlagsIncidents:(id)arg1;
-- (void)_addNoFlagsSpeeds:(id)arg1;
-- (void)_readColors;
-- (void)_readIncidents;
-- (void)_readSnapshotMetaData;
-- (void)_readSpeeds;
 - (void)addColors:(id)arg1;
 - (void)addIncidents:(id)arg1;
+- (void)addPredictedPaces:(id)arg1;
 - (void)addSpeeds:(id)arg1;
 - (void)clearColors;
 - (void)clearIncidents;
+- (void)clearPredictedPaces;
 - (void)clearSpeeds;
 - (id)colorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)colorsCount;
@@ -73,8 +68,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)incidentsCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (id)predictedPacesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)predictedPacesCount;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)speedsAtIndex:(unsigned long long)arg1;

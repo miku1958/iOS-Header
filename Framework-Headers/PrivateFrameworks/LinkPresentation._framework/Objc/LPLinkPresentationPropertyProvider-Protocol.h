@@ -16,6 +16,7 @@
 - (UIColor *)backgroundColor;
 - (NSString *)bottomCaption;
 - (LPCaptionBarPresentationProperties *)captionBar;
+- (NSString *)domainNameForIndicator;
 - (LPImage *)icon;
 - (LPImage *)image;
 - (LPImagePresentationProperties *)imageProperties;

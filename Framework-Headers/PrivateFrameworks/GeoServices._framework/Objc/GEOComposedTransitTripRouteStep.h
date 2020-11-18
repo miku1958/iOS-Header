@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOComposedTransitRouteStep.h>
 
-@class GEOComposedTransitTripRouteLeg, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
+@class GEOComposedTransitTripRouteSegment, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
 @protocol GEOTransitLine, GEOTransitSystem;
 
 @interface GEOComposedTransitTripRouteStep : GEOComposedTransitRouteStep
@@ -42,7 +42,7 @@
 @property (readonly, nonatomic) id<GEOTransitLine> transitLine; // @synthesize transitLine=_transitLine;
 @property (readonly, nonatomic) id<GEOTransitSystem> transitSystem; // @synthesize transitSystem=_transitSystem;
 @property (readonly, nonatomic) GEOTransitVehicleInfo *transitVehicle; // @synthesize transitVehicle=_transitVehicle;
-@property (readonly, nonatomic) GEOComposedTransitTripRouteLeg *tripLeg;
+@property (readonly, nonatomic) GEOComposedTransitTripRouteSegment *tripSegment;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -52,7 +52,7 @@
 - (BOOL)hasDuration;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
-- (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4 line:(id)arg5 maneuverType:(int)arg6 significance:(int)arg7;
+- (id)initWithComposedRoute:(id)arg1 routeSegmentType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4 line:(id)arg5 maneuverType:(int)arg6 significance:(int)arg7;
 
 @end
 

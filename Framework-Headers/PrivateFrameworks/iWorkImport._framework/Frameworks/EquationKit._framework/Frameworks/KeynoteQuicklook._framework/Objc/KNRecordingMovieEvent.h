@@ -6,41 +6,31 @@
 
 #import <KeynoteQuicklook/KNRecordingEvent.h>
 
-@class TSDMovieInfo, TSPLazyReference;
+@class NSUUID, TSDMovieInfo, TSPLazyReference;
 
 @interface KNRecordingMovieEvent : KNRecordingEvent
 {
     TSPLazyReference *_movieInfoReference;
+    NSUUID *_movieSlideNodeUUID;
+    BOOL _didPlayAcrossSlides;
     long long _movieEventType;
     double _movieEventValue;
 }
 
-@property (readonly, nonatomic) BOOL beginsScrubbing;
-@property (readonly, nonatomic) BOOL endsScrubbing;
+@property (readonly, nonatomic) BOOL didPlayAcrossSlides; // @synthesize didPlayAcrossSlides=_didPlayAcrossSlides;
 @property (readonly, nonatomic) long long movieEventType; // @synthesize movieEventType=_movieEventType;
 @property (readonly, nonatomic) double movieEventValue; // @synthesize movieEventValue=_movieEventValue;
 @property (readonly, nonatomic) TSDMovieInfo *movieInfo;
-@property (readonly, nonatomic) double rate;
-@property (readonly, nonatomic) double seekTime;
-@property (readonly, nonatomic) BOOL startsPlayback;
-@property (readonly, nonatomic) BOOL stopsPlayback;
+@property (readonly, nonatomic) NSUUID *movieSlideNodeUUID; // @synthesize movieSlideNodeUUID=_movieSlideNodeUUID;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithParentEventTrack:(id)arg1 archive:(const struct RecordingEventArchive *)arg2 unarchiver:(id)arg3;
-- (id)initWithStartTime:(double)arg1;
-- (id)initWithStartTime:(double)arg1 beginningScrubbingForMovieInfo:(id)arg2;
-- (id)initWithStartTime:(double)arg1 endingScrubbingForMovieInfo:(id)arg2 withRate:(double)arg3;
-- (id)initWithStartTime:(double)arg1 movieInfo:(id)arg2 movieEventType:(long long)arg3 movieEventValue:(double)arg4;
-- (id)initWithStartTime:(double)arg1 movieInfo:(id)arg2 rate:(double)arg3;
-- (id)initWithStartTime:(double)arg1 movieInfo:(id)arg2 seekTime:(double)arg3;
-- (id)initWithStartTime:(double)arg1 startingPlaybackForMovieInfo:(id)arg2;
-- (id)initWithStartTime:(double)arg1 stoppingPlaybackForMovieInfo:(id)arg2;
+- (id)initWithStartTime:(double)arg1 movieInfo:(id)arg2 movieSlideNodeUUID:(id)arg3 didPlayAcrossSlides:(BOOL)arg4 movieEventType:(long long)arg5 movieEventValue:(double)arg6;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isIgnoredWhenSeeking;
-- (void)saveToArchive:(struct RecordingEventArchive *)arg1 archiver:(id)arg2;
+- (void)loadFromMessage:(const struct RecordingEventArchive *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
+- (void)saveToMessage:(struct RecordingEventArchive *)arg1 archiver:(id)arg2;
 
 @end
 

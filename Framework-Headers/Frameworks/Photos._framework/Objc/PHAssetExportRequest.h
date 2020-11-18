@@ -9,11 +9,13 @@
 #import <Photos/NSProgressReporting-Protocol.h>
 
 @class NSDictionary, NSProgress, NSString, NSURL, PHAsset;
-@protocol PHAssetExportRequestDelegate;
+@protocol OS_dispatch_queue, PHAssetExportRequestDelegate;
 
 @interface PHAssetExportRequest : NSObject <NSProgressReporting>
 {
     NSURL *_outputDirectory;
+    NSObject<OS_dispatch_queue> *_resourceProcessingQueue;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     PHAsset *_asset;
     NSProgress *_progress;
     unsigned long long _state;
@@ -35,12 +37,17 @@
 + (id)exportRequestForAsset:(id)arg1 error:(id *)arg2;
 + (id)exportRequestForAsset:(id)arg1 variants:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+- (void)bundleResourcesIfNeededForAsset:(id)arg1 withFileURLs:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)copyFileURLsIfNeeded:(id)arg1 toOutputDirectory:(id)arg2 options:(id)arg3 originalFilenameBase:(id)arg4 error:(id *)arg5;
 - (void)exportWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleResultWithFileURLs:(id)arg1 cancelled:(BOOL)arg2 withError:(id)arg3 forAsset:(id)arg4 withOptions:(id)arg5 progress:(id)arg6 processingUnitCount:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (id)init;
 - (id)initWithAsset:(id)arg1 variants:(id)arg2;
 - (id)outputDirectory;
 - (void)performCompletionWithFileURLs:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preflightExportWithOptions:(id)arg1 assetAvailability:(long long *)arg2 isProcessingRequired:(BOOL *)arg3 fileURLs:(id *)arg4 info:(id *)arg5;
+- (void)processResourcesAtFileURLs:(id)arg1 forAsset:(id)arg2 withOptions:(id)arg3 progress:(id)arg4 processingUnitCount:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)reassembleAdjustmentsPropertyListIfNeeded:(id)arg1 toOutputDirectory:(id)arg2 outputURL:(id *)arg3 error:(id *)arg4;
 - (void)setState:(unsigned long long)arg1;
 
 @end

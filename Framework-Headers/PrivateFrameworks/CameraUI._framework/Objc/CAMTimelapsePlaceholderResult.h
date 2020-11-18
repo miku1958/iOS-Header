@@ -17,6 +17,7 @@
     NSDate *_creationDate;
     long long _captureOrientation;
     long long _captureDevice;
+    double _timelapseDuration;
     void *_previewImageSurface;
     struct CGSize _videoDimensions;
 }
@@ -45,12 +46,13 @@
 @property (readonly, nonatomic) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *stillImageMetadata;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double timelapseDuration; // @synthesize timelapseDuration=_timelapseDuration;
 @property (readonly, nonatomic) NSString *uuid;
 @property (readonly, nonatomic) struct CGSize videoDimensions; // @synthesize videoDimensions=_videoDimensions;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 captureDevice:(long long)arg5 videoDimensions:(struct CGSize)arg6 previewImageSurface:(void *)arg7;
+- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 captureDevice:(long long)arg5 videoDimensions:(struct CGSize)arg6 duration:(double)arg7 previewImageSurface:(void *)arg8;
 
 @end
 

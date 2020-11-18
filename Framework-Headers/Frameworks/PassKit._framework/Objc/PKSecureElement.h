@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, NSLock, NSNumber, NSString, NSUUID;
+@class NSArray, NSHashTable, NSNumber, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PKSecureElement : NSObject
 {
     BOOL _deletingAllApplets;
     NSObject<OS_dispatch_source> *_deletingAllAppletsTimer;
-    NSObject<OS_dispatch_queue> *_deletingAllAppletsTimerConcurrentQueue;
-    NSObject<OS_dispatch_queue> *_deletingAllAppletsPropertyConcurrentQueue;
+    NSObject<OS_dispatch_queue> *_deletingAllAppletsTimerQueue;
+    struct os_unfair_lock_s _deletingAllAppletsPropertyLock;
     NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
     CDUnknownBlockType _secureElementSessionPrelude;
     CDUnknownBlockType _secureElementSessionPostlude;
     NSHashTable *_observers;
-    NSLock *_observersLock;
+    struct os_unfair_lock_s _observersLock;
     BOOL _registeredForHardwareUpdates;
 }
 

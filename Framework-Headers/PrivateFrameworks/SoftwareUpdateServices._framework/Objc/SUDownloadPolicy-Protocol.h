@@ -11,8 +11,10 @@
 
 @protocol SUDownloadPolicy <NSObject>
 
+@property (nonatomic) int cellularFeeAgreementStatus;
 @property (strong, nonatomic) SUDescriptor *descriptor;
 
+- (BOOL)allowExpensiveNetwork;
 - (BOOL)hasEnoughDiskSpace;
 - (id)initWithDescriptor:(SUDescriptor *)arg1;
 - (BOOL)isDownloadAllowableForCellular;
@@ -25,5 +27,6 @@
 - (BOOL)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(BOOL *)arg2 powerRequired:(BOOL *)arg3;
 - (BOOL)isPowerRequired;
 - (BOOL)isSamePolicy:(id<SUDownloadPolicy>)arg1;
+- (unsigned long long)wifiOnlyPeriodInDays;
 @end
 

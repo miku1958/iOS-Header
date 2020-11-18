@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 - (id)cpuParams;
 - (id)kernel;
+- (id)mtlKernel;
 - (id)outputImage;
 
 @end

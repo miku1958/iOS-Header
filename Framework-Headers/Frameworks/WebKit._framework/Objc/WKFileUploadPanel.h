@@ -6,19 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WebKit/UIDocumentMenuDelegate-Protocol.h>
+#import <WebKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <WebKit/UIDocumentPickerDelegate-Protocol.h>
 #import <WebKit/UIImagePickerControllerDelegate-Protocol.h>
 #import <WebKit/UINavigationControllerDelegate-Protocol.h>
 #import <WebKit/UIPopoverControllerDelegate-Protocol.h>
 
-@class NSString, WKContentView;
+@class NSString;
 @protocol WKFileUploadPanelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKFileUploadPanel : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate>
+@interface WKFileUploadPanel : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIAdaptivePresentationControllerDelegate, UIContextMenuInteractionDelegate>
 {
-    WKContentView *_view;
+    struct WeakObjCPtr<WKContentView> _view;
     struct RefPtr<WebKit::WebOpenPanelResultListenerProxy, WTF::DumbPtrTraits<WebKit::WebOpenPanelResultListenerProxy>> _listener;
     RetainPtr_f649c0c3 _mimeTypes;
     struct CGPoint _interactionPoint;
@@ -27,7 +28,8 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIImagePickerController> _imagePicker;
     struct RetainPtr<UIViewController> _presentationViewController;
     struct RetainPtr<UIPopoverController> _presentationPopover;
-    struct RetainPtr<UIDocumentMenuViewController> _documentMenuController;
+    BOOL _isPresentingSubMenu;
+    struct RetainPtr<UIContextMenuInteraction> _documentContextMenuInteraction;
     struct RetainPtr<UIDocumentPickerViewController> _documentPickerController;
     int _mediaCaptureType;
     id<WKFileUploadPanelDelegate> _delegate;
@@ -42,10 +44,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_adjustMediaCaptureType;
+- (id)_browseFilesButtonLabel;
 - (id)_cameraButtonLabelAllowingPhoto:(BOOL)arg1 allowingVideo:(BOOL)arg2;
 - (void)_cancel;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
 - (void)_configureImagePicker:(id)arg1;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (void)_dismissDisplayAnimated:(BOOL)arg1;
 - (void)_dispatchDidDismiss;
 - (id)_mediaTypesForPickerSourceType:(long long)arg1;
@@ -56,19 +60,20 @@ __attribute__((visibility("hidden")))
 - (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 processedImageCount:(unsigned long long)arg4 processedVideoCount:(unsigned long long)arg5 successBlock:(CDUnknownBlockType)arg6 failureBlock:(CDUnknownBlockType)arg7;
 - (void)_processMediaInfoDictionaries:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_shouldMediaCaptureOpenMediaDevice;
-- (void)_showDocumentPickerMenu;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (void)_uploadItemForImageData:(id)arg1 imageName:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_willMultipleSelectionDelegateBeCalled;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)currentAvailableActionTitles;
 - (void)dealloc;
 - (void)dismiss;
-- (void)documentMenu:(id)arg1 didPickDocumentPicker:(id)arg2;
-- (void)documentMenuWasCancelled:(id)arg1;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
 - (void)documentPickerWasCancelled:(id)arg1;
+- (void)ensureContextMenuInteraction;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
@@ -76,6 +81,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)platformSupportsPickerViewController;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)presentWithParameters:(struct OpenPanelParameters *)arg1 resultListener:(struct WebOpenPanelResultListenerProxy *)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)removeContextMenuInteraction;
+- (void)showDocumentPickerMenu;
+- (void)showFilePickerMenu;
 
 @end
 

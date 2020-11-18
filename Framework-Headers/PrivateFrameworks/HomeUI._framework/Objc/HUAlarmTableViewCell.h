@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MTUIAlarmView, UISwitch;
+@class MTUIAlarmView, UIStackView, UISwitch;
 @protocol HUAlarmTableViewCellDelegate;
 
 @interface HUAlarmTableViewCell : UITableViewCell
@@ -16,6 +16,7 @@
     id<HUAlarmTableViewCellDelegate> _delegate;
     MTUIAlarmView *_alarmView;
     UISwitch *_enabledSwitch;
+    UIStackView *_stackView;
 }
 
 @property (strong, nonatomic) MTUIAlarmView *alarmView; // @synthesize alarmView=_alarmView;
@@ -23,17 +24,22 @@
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) UISwitch *enabledSwitch; // @synthesize enabledSwitch=_enabledSwitch;
+@property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
 - (void).cxx_destruct;
 - (void)_alarmActiveChanged:(id)arg1;
+- (id)_alarmBackgroundColor;
+- (void)_setupConstraints;
 - (id)init;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)refreshUI:(id)arg1 animated:(BOOL)arg2;
+- (void)layoutSubviews;
+- (void)refreshUI:(id)arg1 accessoryName:(id)arg2 animated:(BOOL)arg3;
 - (void)setAlarmActiveDelegate:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToState:(unsigned long long)arg1;
 
 @end

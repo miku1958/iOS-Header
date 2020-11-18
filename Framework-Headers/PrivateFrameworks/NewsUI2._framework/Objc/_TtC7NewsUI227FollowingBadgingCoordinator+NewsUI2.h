@@ -8,5 +8,6 @@
 
 @interface _TtC7NewsUI227FollowingBadgingCoordinator (NewsUI2)
 - (void)readingList:(id)arg1 didAddArticles:(id)arg2 removeArticles:(id)arg3 eventInitiationLevel:(long long)arg4;
+- (void)userInfoDidChangeDateLastViewedSaved:(id)arg1 fromCloud:(BOOL)arg2;
 @end
 

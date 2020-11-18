@@ -29,12 +29,7 @@
         unsigned int read_addressIdentifier:1;
         unsigned int read_name:1;
         unsigned int read_spokenName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressIdentifier:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_spokenName:1;
-        unsigned int wrote_addressType:1;
-        unsigned int wrote_isMe:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,9 +48,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAddressType:(id)arg1;
-- (void)_readAddressIdentifier;
-- (void)_readName;
-- (void)_readSpokenName;
 - (id)addressTypeAsString:(int)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -65,7 +57,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

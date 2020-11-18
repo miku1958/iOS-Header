@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (BOOL)_contentType:(id)arg1 isEqualToContentTypeInArray:(id)arg2;
 - (BOOL)_contentTypeIsIWorkType:(id)arg1;
+- (BOOL)_contentTypeShouldBeHandledByAppleExtension:(id)arg1;
 - (unsigned long long)_itemTypeByUTIResolutionForContentType:(id)arg1;
 - (id)init;
 - (unsigned long long)itemTypeForContentType:(id)arg1;

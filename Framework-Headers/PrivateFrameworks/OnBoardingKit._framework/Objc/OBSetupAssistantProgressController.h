@@ -6,25 +6,34 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
-@class UILabel, UIProgressView;
+#import <OnBoardingKit/OBSetupAssistantSupport-Protocol.h>
 
-@interface OBSetupAssistantProgressController : OBWelcomeController
+@class NSLayoutConstraint, NSString, UILabel, UIProgressView;
+
+@interface OBSetupAssistantProgressController : OBWelcomeController <OBSetupAssistantSupport>
 {
     UIProgressView *_progressBar;
     UILabel *_progressLabel;
+    NSLayoutConstraint *_progressLabelTopAnchorConstraint;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIProgressView *progressBar; // @synthesize progressBar=_progressBar;
 @property (strong, nonatomic) UILabel *progressLabel; // @synthesize progressLabel=_progressLabel;
+@property (strong, nonatomic) NSLayoutConstraint *progressLabelTopAnchorConstraint; // @synthesize progressLabelTopAnchorConstraint=_progressLabelTopAnchorConstraint;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_progressFont;
-- (id)initWithTitle:(id)arg1;
+- (double)_progressLabelTopAnchorConstraintConstantWithFont:(id)arg1;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3;
 - (void)setProgress:(double)arg1;
 - (void)setProgressText:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

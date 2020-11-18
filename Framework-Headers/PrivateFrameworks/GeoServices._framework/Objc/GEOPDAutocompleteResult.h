@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteSessionData, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteSessionData, GEOPDParsecQueryRankingFeatures, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteResult : PBCodable <NSCopying>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     GEOPDAutocompleteSessionData *_autocompleteSessionData;
     NSMutableArray *_clientRankingFeatureMetadatas;
+    GEOPDParsecQueryRankingFeatures *_parsecQueryRankingFeatures;
     NSMutableArray *_sections;
     NSMutableArray *_sortPriorityMappings;
     unsigned int _readerMarkPos;
@@ -38,19 +39,10 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_autocompleteSessionData:1;
         unsigned int read_clientRankingFeatureMetadatas:1;
+        unsigned int read_parsecQueryRankingFeatures:1;
         unsigned int read_sections:1;
         unsigned int read_sortPriorityMappings:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_autocompleteSessionData:1;
-        unsigned int wrote_clientRankingFeatureMetadatas:1;
-        unsigned int wrote_sections:1;
-        unsigned int wrote_sortPriorityMappings:1;
-        unsigned int wrote_retainSearchTime:1;
-        unsigned int wrote_enableRap:1;
-        unsigned int wrote_isNoResultFromNegativeCache:1;
-        unsigned int wrote_isTopSectionTypeQuery:1;
-        unsigned int wrote_shouldDifferentiateClientAndServerResults:1;
-        unsigned int wrote_shouldDisplayNoResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -61,11 +53,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasEnableRap;
 @property (nonatomic) BOOL hasIsNoResultFromNegativeCache;
 @property (nonatomic) BOOL hasIsTopSectionTypeQuery;
+@property (readonly, nonatomic) BOOL hasParsecQueryRankingFeatures;
 @property (nonatomic) BOOL hasRetainSearchTime;
 @property (nonatomic) BOOL hasShouldDifferentiateClientAndServerResults;
 @property (nonatomic) BOOL hasShouldDisplayNoResults;
 @property (nonatomic) BOOL isNoResultFromNegativeCache;
 @property (nonatomic) BOOL isTopSectionTypeQuery;
+@property (strong, nonatomic) GEOPDParsecQueryRankingFeatures *parsecQueryRankingFeatures;
 @property (nonatomic) unsigned int retainSearchTime;
 @property (strong, nonatomic) NSMutableArray *sections;
 @property (nonatomic) BOOL shouldDifferentiateClientAndServerResults;
@@ -78,13 +72,6 @@ __attribute__((visibility("hidden")))
 + (Class)sectionsType;
 + (Class)sortPriorityMappingType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsClientRankingFeatureMetadata:(id)arg1;
-- (void)_addNoFlagsSections:(id)arg1;
-- (void)_addNoFlagsSortPriorityMapping:(id)arg1;
-- (void)_readAutocompleteSessionData;
-- (void)_readClientRankingFeatureMetadatas;
-- (void)_readSections;
-- (void)_readSortPriorityMappings;
 - (void)addClientRankingFeatureMetadata:(id)arg1;
 - (void)addSections:(id)arg1;
 - (void)addSortPriorityMapping:(id)arg1;
@@ -102,7 +89,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

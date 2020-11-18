@@ -66,12 +66,14 @@
 - (void).cxx_destruct;
 - (id)_attachmentUUIDsToUpload;
 - (id)_attachmentsByOwnerURL:(struct __CFArray *)arg1 calDAVItemsByOwnerURL:(id *)arg2;
+- (void)_beginAttachmentDownloads;
 - (void)_calendarCollectionsWereRefreshed;
 - (BOOL)_cleanUpDuplicateCalendar:(id)arg1 ofCalendar:(id)arg2;
 - (void)_cleanUpDuplicateCalendars;
 - (void)_cleanUpOrphanedPreferredUserAddressesPerCalendar;
 - (void)_clearMoveChange:(id)arg1;
 - (struct __CFArray *)_copyArrayOfAttachmentsToUpload;
+- (void)_downloadAttachments;
 - (id)_guidsOfExistingCalendars;
 - (void)_handleAttachmentUploadComplete:(id)arg1 attachmentUUID:(id)arg2;
 - (void)_handleMoveTaskComplete:(id)arg1 moveItem:(id)arg2;

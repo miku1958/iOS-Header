@@ -41,6 +41,8 @@
     long long _lastSyncedHash;
     NSString *_lastMigratedClientVersion;
     long long _remoteQuarantineStatus;
+    NSData *_cloudKitRecordMetadata;
+    NSNumber *_location;
 }
 
 @property (copy, nonatomic) NSSet *accessResourcePerWorkflowStates;
@@ -48,6 +50,7 @@
 @property (copy) NSData *actionsData; // @synthesize actionsData=_actionsData;
 @property (copy) NSString *actionsDescription; // @synthesize actionsDescription=_actionsDescription;
 @property (copy) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
+@property (copy) NSData *cloudKitRecordMetadata; // @synthesize cloudKitRecordMetadata=_cloudKitRecordMetadata;
 @property (strong) WFRealmWorkflow *conflictOf; // @synthesize conflictOf=_conflictOf;
 @property (readonly, nonatomic, getter=isConflictOfOtherWorkflow) BOOL conflictOfOtherWorkflow;
 @property (readonly) RLMLinkingObjects *conflictingWorkflows; // @synthesize conflictingWorkflows=_conflictingWorkflows;
@@ -69,7 +72,7 @@
 @property (copy) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
 @property long long lastSyncedHash; // @synthesize lastSyncedHash=_lastSyncedHash;
 @property (copy) NSString *legacyName; // @synthesize legacyName=_legacyName;
-@property (readonly, nonatomic) NSNumber *location;
+@property (readonly, nonatomic) NSNumber *location; // @synthesize location=_location;
 @property (copy) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
 @property (strong) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (copy) NSString *name; // @synthesize name=_name;
@@ -91,11 +94,11 @@
 + (id)ignoredProperties;
 + (id)linkingObjectsProperties;
 + (id)primaryKey;
++ (id)recordPropertyMap;
 + (id)requiredProperties;
 - (void).cxx_destruct;
-- (void)coordinatePropertyUpdatesForRecord:(id)arg1 duringBlock:(CDUnknownBlockType)arg2;
 - (id)descriptor;
-- (id)recordPropertyMap;
+- (id)identifier;
 
 @end
 

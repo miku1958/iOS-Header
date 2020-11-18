@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface CKDPCSMemoryCache : NSObject
 {
     BOOL _memoryStatusChanged;
+    int _fakeMemoryWarningToken;
     unsigned long long _maxEntries;
     double _minAge;
     NSMutableDictionary *_cacheEntries;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) NSMutableDictionary *cacheEntries; // @synthesize cacheEntries=_cacheEntries;
+@property int fakeMemoryWarningToken; // @synthesize fakeMemoryWarningToken=_fakeMemoryWarningToken;
 @property (nonatomic) unsigned long long maxEntries; // @synthesize maxEntries=_maxEntries;
 @property unsigned long long memoryCacheDeleteCount; // @synthesize memoryCacheDeleteCount=_memoryCacheDeleteCount;
 @property unsigned long long memoryCacheEvictCount; // @synthesize memoryCacheEvictCount=_memoryCacheEvictCount;

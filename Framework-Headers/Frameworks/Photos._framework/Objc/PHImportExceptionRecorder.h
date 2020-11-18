@@ -12,29 +12,22 @@
 
 @interface PHImportExceptionRecorder : NSObject <PHImportExceptionRecorder>
 {
-    BOOL _hasTerminalException;
     NSMutableArray *_exceptions;
 }
 
-@property (readonly, nonatomic) NSMutableArray *criticalExceptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableArray *exceptions; // @synthesize exceptions=_exceptions;
-@property (nonatomic) BOOL hasTerminalException; // @synthesize hasTerminalException=_hasTerminalException;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSMutableArray *terminalExceptions;
 
 - (void).cxx_destruct;
 - (void)addException:(id)arg1;
-- (id)addExceptionWithMessage:(id)arg1 path:(id)arg2 importance:(unsigned long long)arg3 nsError:(id)arg4 file:(char *)arg5 line:(unsigned long long)arg6;
+- (id)addExceptionWithType:(long long)arg1 path:(id)arg2 underlyingError:(id)arg3 file:(char *)arg4 line:(unsigned long long)arg5;
 - (void)addExceptions:(id)arg1;
-- (id)exceptionsOfImportance:(unsigned long long)arg1;
-- (id)exceptionsWithMinimumImportance:(unsigned long long)arg1;
 - (id)init;
-- (void)logErrors:(unsigned long long)arg1;
-- (id)logForExceptionsOfImportance:(unsigned long long)arg1;
-- (id)logForExceptionsOfMinImportance:(unsigned long long)arg1;
+- (void)logErrors;
+- (id)logForExceptions;
 
 @end
 

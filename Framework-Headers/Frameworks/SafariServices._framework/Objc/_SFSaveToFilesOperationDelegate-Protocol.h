@@ -14,6 +14,7 @@
 
 @optional
 - (_SFActivityItemCustomizationController *)customizationControllerForSaveToFilesOperation:(_SFSaveToFilesOperation *)arg1;
+- (BOOL)saveToFilesOperationShouldDismissViewControllerAfterCompletion:(_SFSaveToFilesOperation *)arg1;
 - (BOOL)saveToFilesOperationSupportsDownloads:(_SFSaveToFilesOperation *)arg1;
 @end
 

@@ -28,8 +28,11 @@
 - (BOOL)_permutationsWithCount:(long long)arg1 permutation:(id)arg2 depth:(long long)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
+- (BOOL)hk_allElementsEqual;
 - (BOOL)hk_allElementsUnique;
+- (BOOL)hk_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (id)hk_averageUsingEvaluationBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)hk_containsObjectsInArray:(id)arg1;
 - (id)hk_dataForAllUUIDs;
 - (void)hk_enumeratePermutationsOfSubsetsOfLength:(long long)arg1 block:(CDUnknownBlockType)arg2;
@@ -45,6 +48,7 @@
 - (id)hk_map:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)hk_mapToDictionary:(CDUnknownBlockType)arg1;
 - (id)hk_mapToSet:(CDUnknownBlockType)arg1;
+- (id)hk_mutableSubarrayWithRange:(struct _NSRange)arg1;
 - (id)hk_orPredicateWithPredicateBlock:(CDUnknownBlockType)arg1;
 - (void)hk_partitionArrayWithPartitionSetupBlock:(CDUnknownBlockType)arg1 partitionMembershipCheckBlock:(CDUnknownBlockType)arg2 partitionExtendBlock:(CDUnknownBlockType)arg3 partitionFinalizeBlock:(CDUnknownBlockType)arg4;
 - (id)hk_reversed;

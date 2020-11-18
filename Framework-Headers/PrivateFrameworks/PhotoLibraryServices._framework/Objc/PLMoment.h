@@ -36,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRegisteredWithUserInterfaceContext; // @synthesize didRegisteredWithUserInterfaceContext;
 @property (strong, nonatomic) NSDate *endDate; // @dynamic endDate;
+@property (nonatomic) double gpsHorizontalAccuracy; // @dynamic gpsHorizontalAccuracy;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<PLPhotosHighlightData> highlight; // @dynamic highlight;
 @property (nonatomic) BOOL isRegisteredForChanges; // @synthesize isRegisteredForChanges;

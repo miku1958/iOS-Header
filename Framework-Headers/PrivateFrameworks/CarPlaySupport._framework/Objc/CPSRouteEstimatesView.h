@@ -11,7 +11,6 @@
 @interface CPSRouteEstimatesView : UIView
 {
     CPSLabeledValueView *_timeRemainingView;
-    unsigned long long _tripEstimateStyle;
     CPSLabeledValueView *_arrivalTimeView;
     CPSLabeledValueView *_distanceRemainingView;
     CPSTravelEstimatesStringFormatter *_travelEstimatesStringFormatter;
@@ -24,17 +23,12 @@
 @property (nonatomic) unsigned long long timeRemainingColor; // @synthesize timeRemainingColor=_timeRemainingColor;
 @property (readonly, nonatomic) CPSLabeledValueView *timeRemainingView; // @synthesize timeRemainingView=_timeRemainingView;
 @property (readonly, nonatomic) CPSTravelEstimatesStringFormatter *travelEstimatesStringFormatter; // @synthesize travelEstimatesStringFormatter=_travelEstimatesStringFormatter;
-@property (nonatomic) unsigned long long tripEstimateStyle; // @synthesize tripEstimateStyle=_tripEstimateStyle;
 
 - (void).cxx_destruct;
-- (id)_defaultColorForStyle:(unsigned long long)arg1;
-- (id)_greenColorForStyle:(unsigned long long)arg1;
-- (id)_orangeColorForStyle:(unsigned long long)arg1;
-- (id)_redColorForStyle:(unsigned long long)arg1;
-- (id)_timeRemainingColorForColor:(unsigned long long)arg1 style:(unsigned long long)arg2;
 - (void)_updateTextColors;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)setCurrentTravelEstimates:(id)arg1;
+- (void)setTripEstimateStyle:(unsigned long long)arg1;
 
 @end
 

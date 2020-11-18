@@ -4,21 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoard/SBSwitcherToFullScreenSwitcherModifier.h>
+#import <SpringBoard/SBTransitionSwitcherModifier.h>
 
-@interface SBSwitcherToActiveFloatingSwitcherModifier : SBSwitcherToFullScreenSwitcherModifier
+@class SBAppLayout, SBSwitcherModifier;
+
+@interface SBSwitcherToActiveFloatingSwitcherModifier : SBTransitionSwitcherModifier
 {
+    long long _direction;
+    SBAppLayout *_fullScreenAppLayout;
+    SBSwitcherModifier *_floatingDeckModifier;
 }
 
+- (void).cxx_destruct;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)appLayoutToScrollToBeforeTransitioning;
-- (id)appLayoutToScrollToDuringTransition;
-- (long long)backdropBlurType;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettings;
+- (id)appLayoutsToCacheSnapshots;
+- (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 floatingDeckModifier:(id)arg4;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (long long)switcherBackdropBlurType;
 - (long long)transitionLiveContentRasterizationStyle;
-- (BOOL)wantsMinificationFilter;
+- (id)transitionWillBegin;
+- (id)visibleAppLayouts;
+- (BOOL)wantsSwitcherBackdropBlur;
+- (BOOL)wantsSwitcherDimmingView;
 
 @end
 

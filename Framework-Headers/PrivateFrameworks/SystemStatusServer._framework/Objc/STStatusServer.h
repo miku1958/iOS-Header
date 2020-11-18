@@ -10,13 +10,15 @@
 #import <SystemStatusServer/STStatusDomainPublisherServerHandle-Protocol.h>
 #import <SystemStatusServer/STStatusDomainServerHandle-Protocol.h>
 
-@class NSMutableDictionary, NSString, STStatusDomainPublisherXPCClientListener, STStatusDomainXPCClientListener;
+@class BSMutableIntegerMap, NSString, STStatusDomainPublisherXPCClientListener, STStatusDomainXPCClientListener;
 @protocol OS_dispatch_queue;
 
 @interface STStatusServer : NSObject <BSDescriptionProviding, STStatusDomainServerHandle, STStatusDomainPublisherServerHandle>
 {
-    NSMutableDictionary *_clientsByDomain;
-    NSMutableDictionary *_dataByDomain;
+    BSMutableIntegerMap *_clientsByDomain;
+    BSMutableIntegerMap *_publisherClientsByDomain;
+    BSMutableIntegerMap *_dataByDomain;
+    BSMutableIntegerMap *_volatileDataByDomain;
     STStatusDomainXPCClientListener *_xpcClientListener;
     STStatusDomainPublisherXPCClientListener *_publisherXPCClientListener;
     NSObject<OS_dispatch_queue> *_internalQueue;
@@ -24,32 +26,43 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, nonatomic) NSMutableDictionary *clientsByDomain; // @synthesize clientsByDomain=_clientsByDomain;
-@property (readonly, nonatomic) NSMutableDictionary *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
+@property (readonly, nonatomic) BSMutableIntegerMap *clientsByDomain; // @synthesize clientsByDomain=_clientsByDomain;
+@property (readonly, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property (readonly, nonatomic) BSMutableIntegerMap *publisherClientsByDomain; // @synthesize publisherClientsByDomain=_publisherClientsByDomain;
 @property (readonly, nonatomic) STStatusDomainPublisherXPCClientListener *publisherXPCClientListener; // @synthesize publisherXPCClientListener=_publisherXPCClientListener;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BSMutableIntegerMap *volatileDataByDomain; // @synthesize volatileDataByDomain=_volatileDataByDomain;
 @property (readonly, nonatomic) STStatusDomainXPCClientListener *xpcClientListener; // @synthesize xpcClientListener=_xpcClientListener;
 
 - (void).cxx_destruct;
 - (id)_internalQueue_dataForDomain:(unsigned long long)arg1;
-- (id)_internalQueue_dataForDomainCreatingIfNecessary:(unsigned long long)arg1;
-- (void)_internalQueue_enumerateClientsForDomain:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_internalQueue_enumerateClientsForDomain:(unsigned long long)arg1 withClientQueueBlock:(CDUnknownBlockType)arg2;
+- (void)_internalQueue_enumeratePublisherClientsForDomain:(unsigned long long)arg1 withClientQueueBlock:(CDUnknownBlockType)arg2;
 - (void)_internalQueue_notifyClient:(id)arg1 ofData:(id)arg2 forDomain:(unsigned long long)arg3;
-- (id)_newEmptyDataForDomain:(unsigned long long)arg1;
+- (id)_internalQueue_presentationDataForDomain:(unsigned long long)arg1;
+- (void)_internalQueue_publishData:(id)arg1 forDomain:(unsigned long long)arg2 inMap:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_internalQueue_volatileDataForDomain:(unsigned long long)arg1;
 - (id)dataForDomain:(unsigned long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
-- (void)publishData:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)publishData:(id)arg1 forPublisherClient:(id)arg2 domain:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)publishVolatileData:(id)arg1 forPublisherClient:(id)arg2 domain:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)publishedDataForDomain:(unsigned long long)arg1;
+- (id)publishedVolatileDataForDomain:(unsigned long long)arg1;
 - (void)registerClient:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)registerPublisherClient:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)removeClient:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)removePublisherClient:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)reportUserInteraction:(id)arg1 forClient:(id)arg2 domain:(unsigned long long)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (void)updateDataForPublisherClient:(id)arg1 domain:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3 fallbackDataProvider:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)updateVolatileDataForPublisherClient:(id)arg1 domain:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3 fallbackDataProvider:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

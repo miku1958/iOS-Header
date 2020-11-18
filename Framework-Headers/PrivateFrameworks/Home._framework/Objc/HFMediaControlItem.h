@@ -38,7 +38,6 @@
 - (id)normalizedValueForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;
 - (long long)sortPriority;
-- (id)togglePrimaryState;
 - (id)toggleValue;
 - (long long)toggledSceneStateFromPrimaryState:(long long)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;

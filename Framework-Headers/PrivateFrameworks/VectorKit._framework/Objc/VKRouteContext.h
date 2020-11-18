@@ -12,10 +12,10 @@
 {
     VKRouteInfo *_routeInfo;
     unsigned char _useType;
-    long long _inspectedLegIndex;
+    long long _inspectedSegmentIndex;
     long long _inspectedStepIndex;
     struct PolylineCoordinate _routeOffset;
-    long long _currentLegIndex;
+    long long _currentSegmentIndex;
     long long _currentStepIndex;
     BOOL _snappingToTransitLines;
     CDStruct_2c43369c _puckLocation;
@@ -37,9 +37,9 @@
 @property (strong, nonatomic) NSString *accessPointEntryName; // @synthesize accessPointEntryName=_accessPointEntryName;
 @property (strong, nonatomic) NSString *accessPointExitName; // @synthesize accessPointExitName=_accessPointExitName;
 @property (strong, nonatomic) NSArray *alternateRoutes; // @synthesize alternateRoutes=_alternateRoutes;
-@property (nonatomic) long long currentLegIndex; // @synthesize currentLegIndex=_currentLegIndex;
+@property (nonatomic) long long currentSegmentIndex; // @synthesize currentSegmentIndex=_currentSegmentIndex;
 @property (nonatomic) long long currentStepIndex; // @synthesize currentStepIndex=_currentStepIndex;
-@property (nonatomic) long long inspectedLegIndex; // @synthesize inspectedLegIndex=_inspectedLegIndex;
+@property (nonatomic) long long inspectedSegmentIndex; // @synthesize inspectedSegmentIndex=_inspectedSegmentIndex;
 @property (nonatomic) long long inspectedStepIndex; // @synthesize inspectedStepIndex=_inspectedStepIndex;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (nonatomic) CDStruct_c3b9c2ee puckLocation; // @synthesize puckLocation=_puckLocation;
@@ -58,6 +58,8 @@
 - (void)addObserver:(id)arg1 withType:(unsigned char)arg2;
 - (void)addShareSections:(const CDStruct_2c837fe9 *)arg1 shareCount:(unsigned int)arg2;
 - (void)dealloc;
+- (id)description;
+- (void)forEachRouteInfo:(CDUnknownBlockType)arg1;
 - (void)forEachSectionWithShareCount:(unsigned int)arg1 dothis:(CDUnknownBlockType)arg2;
 - (id)initWithComposedRoute:(id)arg1 useType:(unsigned char)arg2;
 - (id)initWithRouteInfo:(id)arg1 useType:(unsigned char)arg2;

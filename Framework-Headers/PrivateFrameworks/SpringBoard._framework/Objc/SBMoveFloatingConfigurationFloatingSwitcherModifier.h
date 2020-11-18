@@ -12,15 +12,16 @@
     long long _toFloatingConfiguration;
 }
 
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToResignActive;
 - (id)initWithTransitionID:(id)arg1 fromFloatingConfiguration:(long long)arg2 toFloatingConfiguration:(long long)arg3;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (long long)keyboardSuppressionMode;
-- (id)layoutSettings;
-- (long long)liveContentRasterizationStyle;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
-- (BOOL)wantsResignActiveAssertion;
+- (id)visibleAppLayouts;
 
 @end
 

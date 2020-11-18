@@ -16,23 +16,25 @@
     NSArray *_classKitClasses;
     NSDictionary *_classKitLocationsByLocationID;
     NSSet *_manageableLocationIDs;
+    NSDictionary *_classKitPersonsByClassID;
     NSDictionary *_trustedClassKitPersonsByClassID;
 }
 
 @property (strong, nonatomic) NSArray *classKitClasses; // @synthesize classKitClasses=_classKitClasses;
 @property (strong, nonatomic) id<CRKClassKitCurrentUser> classKitCurrentUser; // @synthesize classKitCurrentUser=_classKitCurrentUser;
 @property (copy, nonatomic) NSDictionary *classKitLocationsByLocationID; // @synthesize classKitLocationsByLocationID=_classKitLocationsByLocationID;
+@property (copy, nonatomic) NSDictionary *classKitPersonsByClassID; // @synthesize classKitPersonsByClassID=_classKitPersonsByClassID;
 @property (readonly, nonatomic) CRKASMRosterProviderConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (copy, nonatomic) NSSet *manageableLocationIDs; // @synthesize manageableLocationIDs=_manageableLocationIDs;
 @property (copy, nonatomic) NSDictionary *trustedClassKitPersonsByClassID; // @synthesize trustedClassKitPersonsByClassID=_trustedClassKitPersonsByClassID;
 
 + (id)makeErrorWithErrorsByObjectID:(id)arg1;
 - (void).cxx_destruct;
+- (void)buildAllClassKitPersonsByClassID;
 - (void)buildClassKitClasses;
 - (void)buildClassKitLocationsByLocationID;
 - (void)buildCurrentClassKitUser;
 - (void)buildManageableLocationIDs;
-- (void)buildTrustedClassKitPersonsByClassID;
 - (void)checkAccountEligibility;
 - (id)compileResult;
 - (void)finish;

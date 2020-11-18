@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (BOOL)_axInStatusBar;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

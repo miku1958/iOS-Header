@@ -16,10 +16,12 @@
     PARSession *_session;
     long long _contentFilter;
     BOOL _infinitePatience;
+    long long _maxUISuggestions;
 }
 
 @property (readonly) NSArray *disabledBundleIds;
 @property (nonatomic) BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
+@property long long maxUISuggestions; // @synthesize maxUISuggestions=_maxUISuggestions;
 
 + (void)initialize;
 + (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
@@ -28,11 +30,10 @@
 - (void)activate;
 - (long long)contentFilters;
 - (void)deactivate;
-- (void)dealloc;
 - (void)finishRanking:(id)arg1 blendingDuration:(double)arg2;
 - (id)init;
 - (void)preheat;
-- (id)queryWithContext:(id)arg1;
+- (id)queryTaskWithContext:(id)arg1;
 
 @end
 

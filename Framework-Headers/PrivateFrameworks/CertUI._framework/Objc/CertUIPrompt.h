@@ -44,6 +44,7 @@
 - (id)_titleFromTrust:(struct __SecTrust *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)init;
 - (void)setTrust:(struct __SecTrust *)arg1;
 - (int)showAndWaitForResponse;
 - (void)showPromptWithOptions:(id)arg1 responseBlock:(CDUnknownBlockType)arg2;

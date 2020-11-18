@@ -6,7 +6,6 @@
 
 #import <UIKit/UITableViewCell.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI241JournalAdditionalDetailValueTableViewCell : UITableViewCell
 {
 }

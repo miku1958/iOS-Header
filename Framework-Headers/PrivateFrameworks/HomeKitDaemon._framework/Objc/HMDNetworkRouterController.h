@@ -24,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDService *routerService; // @synthesize routerService=_routerService;
 @property (readonly) Class superclass;
+@property (readonly) NSString *wiFiSSID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
@@ -34,6 +35,7 @@
 - (void)_writeValueIfDifferent:(id)arg1 characteristicType:(id)arg2 operationName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addClientConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAccessViolationList:(CDUnknownBlockType)arg1;
+- (void)getClientStatusWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getClientStatusWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

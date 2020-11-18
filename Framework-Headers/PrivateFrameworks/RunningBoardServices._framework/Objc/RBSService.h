@@ -26,13 +26,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_init;
 - (void)dealloc;
 - (void)didLoseInheritances:(id)arg1;
 - (void)didReceiveInheritances:(id)arg1;
 - (id)inheritances;
 - (id)init;
-- (void)willTerminateProcessWithAcknowledgement:(CDUnknownBlockType)arg1;
 
 @end
 

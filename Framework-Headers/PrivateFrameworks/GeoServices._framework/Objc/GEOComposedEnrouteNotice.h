@@ -8,26 +8,30 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedTrafficCamera, GEOComposedTrafficSignal, GEOEnrouteNotice, GEOLatLng, NSArray, NSString;
+@class GEOComposedRouteAnnotation, GEOComposedTrafficCamera, GEOComposedTrafficSignal, GEOEnrouteNotice, GEOLatLng, NSArray, NSString;
 
 @interface GEOComposedEnrouteNotice : NSObject <NSSecureCoding>
 {
     GEOEnrouteNotice *_enrouteNotice;
-    GEOComposedRoute *_route;
     NSArray *_guidanceEvents;
     CDStruct_3f2a7a20 _routeCoordinate;
 }
 
 @property (readonly, nonatomic) unsigned int groupIdentifier;
+@property (readonly, nonatomic) unsigned int groupItemHorizontalDisplayOrder;
+@property (readonly, nonatomic) unsigned int groupItemVerticalDisplayOrder;
 @property (readonly, nonatomic) NSArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;
 @property (readonly, nonatomic) BOOL hasGroupIdentifier;
+@property (readonly, nonatomic) BOOL hasGroupItemHorizontalDisplayOrder;
+@property (readonly, nonatomic) BOOL hasGroupItemVerticalDisplayOrder;
 @property (readonly, nonatomic) BOOL hasHighlightDistance;
 @property (readonly, nonatomic) BOOL hasPriority;
 @property (readonly, nonatomic) unsigned int highlightDistance;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) GEOLatLng *position; // @dynamic position;
 @property (readonly, nonatomic) unsigned int priority;
-@property (readonly, nonatomic) CDStruct_3f2a7a20 routeCoordinate;
+@property (readonly, nonatomic) GEOComposedRouteAnnotation *routeAnnotation;
+@property (readonly, nonatomic) CDStruct_3f2a7a20 routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
 @property (readonly, nonatomic) GEOComposedTrafficCamera *trafficCamera;
 @property (readonly, nonatomic) GEOComposedTrafficSignal *trafficSignal;
 
@@ -37,8 +41,9 @@
 - (id)detailFormatForLocation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEnrouteNotice:(id)arg1 onRoute:(id)arg2;
-- (void)setRoute:(id)arg1;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4 withPolylineCoordinate:(CDStruct_3f2a7a20)arg5;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4 withPosition:(id)arg5;
 - (id)titleFormatForLocation:(id)arg1;
 
 @end

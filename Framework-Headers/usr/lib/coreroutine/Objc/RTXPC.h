@@ -10,12 +10,9 @@
 {
 }
 
-+ (id)allowInternalFrameworkAccessForConnection:(id)arg1;
-+ (BOOL)checkClientCodeSigning:(id)arg1 error:(id *)arg2;
-+ (id)checkClientConnection:(id)arg1 forEntitlements:(id)arg2;
++ (BOOL)clientCodeSignatureIsValid:(id)arg1 error:(id *)arg2;
 + (id)executablePathOfConnection:(id)arg1;
 + (id)signingIdentifierOfConnection:(id)arg1;
-+ (BOOL)xpcConnection:(id)arg1 hasEntitlement:(id)arg2;
 
 @end
 

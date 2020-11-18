@@ -39,6 +39,7 @@
 @property (readonly, copy, nonatomic) NSUUID *identifier;
 @property (readonly, nonatomic) BOOL isGymKitSession;
 @property (readonly) long long locationType;
+@property (nonatomic) BOOL shouldStopPreviousSession;
 @property (readonly) NSDate *startDate;
 @property (readonly) long long state;
 @property (readonly) Class superclass;
@@ -52,6 +53,7 @@
 + (id)targetWorkoutSessionStateMachineForSessionUUID:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithHealthStore:(id)arg1 taskConfiguration:(id)arg2 error:(id *)arg3;
+- (id)_privateDelegate;
 - (void)_queue_markRecoveryRequired;
 - (BOOL)_queue_shouldAttemptRecovery;
 - (void)_recoverWithCompletion:(CDUnknownBlockType)arg1;
@@ -64,6 +66,7 @@
 - (void)client_didFailWithError:(id)arg1;
 - (void)client_didGenerateEvents:(id)arg1;
 - (void)client_didUpdateStartDate:(id)arg1 endDate:(id)arg2;
+- (void)client_didUpdateWorkoutConfiguration:(id)arg1;
 - (void)client_synchronizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;

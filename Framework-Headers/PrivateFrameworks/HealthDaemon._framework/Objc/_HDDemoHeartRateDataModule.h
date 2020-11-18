@@ -6,6 +6,7 @@
 
 #import <HealthDaemon/_HDDemoDataModule.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDDemoHeartRateDataModule : _HDDemoDataModule
 {
 }

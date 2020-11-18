@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface LPCaptionBarAccessoryView : LPComponentView
 {
     long long _type;
-    BOOL _shouldFlipHorizontally;
     UIColor *_color;
     UIImageView *_accessoryView;
 }
@@ -21,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_createImageViewWithImage:(id)arg1;
-- (void)componentViewDidMoveToWindow;
 - (id)ensureAccessoryView;
 - (id)init;
 - (id)initWithType:(long long)arg1 side:(long long)arg2;

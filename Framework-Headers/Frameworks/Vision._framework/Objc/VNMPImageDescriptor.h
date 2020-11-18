@@ -57,7 +57,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)computeConvnetDescriptorForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (BOOL)computeDescriptorForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (float)computeFinalDescriptorBasedDistanceForColorDistance:(float)arg1 andSceneClassifierDistance:(float)arg2;
-- (BOOL)computeQualityForImageData:(id)arg1 andQualityCriteria:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (BOOL)computeRegistrationFeaturesForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (float)distanceFromDescriptor:(id)arg1;
@@ -65,10 +64,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImageData:(id)arg1 andCustomQualityScore:(float)arg2 context:(id)arg3 error:(id *)arg4;
-- (id)initWithImageData:(id)arg1 andQualityCriteria:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (id)initWithImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)initWithRawColorGaborDescriptor:(id)arg1;
-- (id)initWithState:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
 

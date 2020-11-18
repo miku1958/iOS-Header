@@ -6,25 +6,26 @@
 
 #import <UIKit/UIControl.h>
 
-#import <PhotosUICore/PXAccessibilityView-Protocol.h>
 #import <PhotosUICore/PXGReusableView-Protocol.h>
+#import <PhotosUICore/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSString, PXCuratedLibraryOverlayButtonConfiguration, UIImageView, UILabel, UIView, UIVisualEffectView;
+@class NSString, PXCuratedLibraryOverlayButtonConfiguration, UIImageView, UILabel, UIPointerInteraction, UIView, UIVisualEffectView;
 
-@interface PXCuratedLibraryOverlayButton : UIControl <PXGReusableView, PXAccessibilityView>
+@interface PXCuratedLibraryOverlayButton : UIControl <UIPointerInteractionDelegate, PXGReusableView>
 {
     PXCuratedLibraryOverlayButtonConfiguration *_userData;
+    UIPointerInteraction *_pointerInteraction;
     UIVisualEffectView *_effectView;
     UIView *_contentView;
     UIView *_solidBackgroundView;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
     UILabel *_captionLabel;
+    NSString *_axLabel;
     struct CGRect _clippingRect;
-    struct UIEdgeInsets _hitTestInsets;
 }
 
-@property (readonly, copy, nonatomic) NSString *accessibilityLabel;
+@property (strong, nonatomic) NSString *axLabel; // @synthesize axLabel=_axLabel;
 @property (strong, nonatomic) UILabel *captionLabel; // @synthesize captionLabel=_captionLabel;
 @property (nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
@@ -32,10 +33,8 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct UIEdgeInsets hitTestInsets; // @synthesize hitTestInsets=_hitTestInsets;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
-@property (readonly, nonatomic) BOOL isAccessible;
-@property (readonly, nonatomic) BOOL isContainedInAsset;
+@property (strong, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property (strong, nonatomic) UIView *solidBackgroundView; // @synthesize solidBackgroundView=_solidBackgroundView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -52,8 +51,8 @@
 - (void).cxx_destruct;
 - (void)_performAction:(id)arg1;
 - (void)_platformSpecificViewSetup;
-- (void)_setupEffectView;
 - (void)_setupViews;
+- (void)_updateBackgroundView;
 - (void)_updateButtonWithConfiguration:(id)arg1;
 - (void)_updateEffectView;
 - (void)_updateEffectViewBackgroundStyle;
@@ -61,9 +60,11 @@
 - (BOOL)canBecomeFocused;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

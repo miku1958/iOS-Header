@@ -35,8 +35,10 @@
 - (id)initWithLayer:(id)arg1;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)removeAnimationsForKey:(id)arg1;
+- (void)setCaptionsAvoidanceMargins:(struct FigGeometryMargins)arg1;
 - (void)setPlayer:(struct OpaqueFigPlayer *)arg1;
 - (void)setSubtitleGravityNonObscuring:(unsigned char)arg1;
+- (void)setVideoRelativeToViewport:(struct CGRect)arg1;
 - (void)setVideosize:(struct CGSize)arg1;
 - (void)setViewport:(struct CGRect)arg1;
 - (void)updateNonForcedSubtitleDisplayEnabled:(unsigned char)arg1;

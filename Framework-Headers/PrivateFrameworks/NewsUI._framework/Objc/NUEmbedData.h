@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) unsigned long long autoPlayMedia; // @dynamic autoPlayMedia;
 @property (readonly, nonatomic) NSURL *baseURL; // @dynamic baseURL;
+@property (readonly, nonatomic) NSString *bodyHTML; // @dynamic bodyHTML;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *enclosingHTML; // @dynamic enclosingHTML;

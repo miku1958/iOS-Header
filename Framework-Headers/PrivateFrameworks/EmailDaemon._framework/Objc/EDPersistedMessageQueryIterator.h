@@ -18,7 +18,7 @@
     EFCancelationToken *_cancelationToken;
     EFQueue *_persistedMessageQueue;
     long long _remaining;
-    NSMutableSet *_seenHashes;
+    NSMutableSet *_seenGlobalMessages;
     CDUnknownBlockType _handler;
 }
 

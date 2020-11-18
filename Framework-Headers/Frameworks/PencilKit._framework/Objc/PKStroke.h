@@ -7,21 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <PencilKit/NSCopying-Protocol.h>
-#import <PencilKit/NSMutableCopying-Protocol.h>
 
-@class NSArray, NSUUID, PKInk, _PKStrokeClipPlane, _PKStrokeData;
+@class NSArray, NSUUID, PKInk, PKStrokePath, PKStrokeRenderMask, UIBezierPath, _PKStrokeClipPlane;
 
-@interface PKStroke : NSObject <NSCopying, NSMutableCopying>
+@interface PKStroke : NSObject <NSCopying>
 {
     struct shared_ptr<PKProtobufUnknownFields> _unknownFields;
     struct CGRect _cachedBounds;
+    double _cachedMaxWidthForStroke;
     PKInk *_ink;
     CDStruct_87ef4b51 _flags;
     NSUUID *_strokeUUID;
-    _PKStrokeData *_strokeData;
+    PKStrokePath *_strokeData;
     NSArray *_substrokes;
-    _PKStrokeClipPlane *__clipPlane;
-    CDStruct_88b945db _tRange;
+    _PKStrokeClipPlane *_clipPlane;
+    PKStrokeRenderMask *_renderMask;
+    NSUUID *_groupID;
+    long long _shapeType;
     struct _PKStrokeID _version;
     struct _PKStrokeID _sortID;
     struct _PKStrokeID _substrokesVersion;
@@ -29,24 +31,31 @@
 }
 
 @property (nonatomic, setter=_setBounds:) struct CGRect _bounds;
-@property (strong, nonatomic) _PKStrokeClipPlane *_clipPlane; // @synthesize _clipPlane=__clipPlane;
+@property (copy, nonatomic) _PKStrokeClipPlane *_clipPlane; // @synthesize _clipPlane;
 @property (nonatomic) CDStruct_87ef4b51 _flags; // @synthesize _flags;
+@property (copy, nonatomic) NSUUID *_groupID; // @synthesize _groupID;
 @property (nonatomic, getter=_isHidden, setter=_setHidden:) BOOL _hidden;
 @property (readonly, nonatomic) BOOL _isFullyHidden;
+@property (readonly, nonatomic) BOOL _isInternal;
 @property (nonatomic, getter=_isNewCopy, setter=_setIsNewCopy:) BOOL _isNewCopy;
 @property (readonly, nonatomic) unsigned int _randomSeed;
+@property (copy, nonatomic) PKStrokeRenderMask *_renderMask; // @synthesize _renderMask;
+@property (nonatomic) long long _shapeType; // @synthesize _shapeType;
 @property (nonatomic) struct _PKStrokeID _sortID; // @synthesize _sortID;
-@property (strong, nonatomic) _PKStrokeData *_strokeData; // @synthesize _strokeData;
+@property (strong, nonatomic) PKStrokePath *_strokeData;
 @property (readonly, nonatomic) NSUUID *_strokeDataUUID;
 @property (strong, nonatomic, setter=_setStrokeUUID:) NSUUID *_strokeUUID; // @synthesize _strokeUUID;
 @property (strong, nonatomic) NSArray *_substrokes; // @synthesize _substrokes;
 @property (nonatomic) struct _PKStrokeID _substrokesVersion; // @synthesize _substrokesVersion;
-@property (nonatomic) CDStruct_88b945db _tRange; // @synthesize _tRange;
 @property (nonatomic, setter=_setTransform:) struct CGAffineTransform _transform; // @synthesize _transform;
 @property (readonly, nonatomic) struct CGRect _untransformedBounds;
 @property (nonatomic) struct _PKStrokeID _version; // @synthesize _version;
 @property (strong, nonatomic) PKInk *ink; // @synthesize ink=_ink;
-@property (readonly, nonatomic) double timestamp;
+@property (readonly, nonatomic) UIBezierPath *mask;
+@property (readonly, nonatomic) NSArray *maskedPathRanges;
+@property (readonly, nonatomic) PKStrokePath *path; // @synthesize path=_strokeData;
+@property (readonly, nonatomic) struct CGRect renderBounds;
+@property (readonly, nonatomic) struct CGAffineTransform transform;
 
 + (long long)_asciiBitfieldIndexForX:(long long)arg1 y:(long long)arg2 width:(long long)arg3;
 + (long long)_asciiDimensionForBoundsDimension:(double)arg1;
@@ -58,7 +67,7 @@
 - (void).cxx_destruct;
 - (void)_addTestDataToUnknownFields;
 - (void)_addVisibleSubstrokesTo:(id)arg1;
-- (void)_appendPointsOfInterestForSelection:(vector_e1abc270 *)arg1;
+- (void)_appendPointsOfInterestForSelection:(vector_2e7754b6 *)arg1;
 - (id)_ascii;
 - (struct CGRect)_calculateBounds;
 - (unique_ptr_5ffa53b3)_compressedStrokePoints;
@@ -66,24 +75,25 @@
 - (BOOL)_containsSamePointsAsStroke:(id)arg1;
 - (id)_dataInUnknownFields;
 - (id)_initWithPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3;
-- (id)_initWithPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3 velocityForDistanceFunction:(CDUnknownBlockType)arg4;
+- (id)_initWithPath:(struct CGPath *)arg1 ink:(id)arg2 maxSegmentLength:(double)arg3 inputScale:(double)arg4 velocityForDistanceFunction:(CDUnknownBlockType)arg5;
 - (id)_initWithStroke:(id)arg1 strokeData:(id)arg2;
 - (id)_ink;
 - (long long)_inputType;
 - (void)_invalidateBounds;
 - (struct CGPoint)_locationAtIndex:(unsigned long long)arg1;
 - (struct CGPoint)_locationAtIndex:(unsigned long long)arg1 applyStrokeTransform:(BOOL)arg2;
+- (double)_maxWidthForStroke;
 - (id)_mergeUnparentedWithStroke:(id)arg1;
 - (id)_mergeWithStroke:(id)arg1;
 - (BOOL *)_newAsciiBitfield;
 - (BOOL *)_newAsciiBitfieldWithWidth:(long long)arg1 height:(long long)arg2;
 - (struct CGPath *)_newPathRepresentation;
-- (const struct _PKStrokeDataPoints *)_points;
 - (unsigned long long)_pointsCount;
 - (void)_setInk:(id)arg1;
 - (BOOL)_shouldBeClippedAgainstLegacyCanvas;
 - (id)_sliceWithSlicingBlock:(CDUnknownBlockType)arg1 replica:(id)arg2;
 - (id)_substrokeWithRange:(struct _NSRange)arg1;
+- (double)_thresholdForPoint:(struct _PKStrokePoint)arg1;
 - (double)_timestamp;
 - (double)_timestampAtIndex:(unsigned long long)arg1;
 - (id)_updateStroke:(CDUnknownBlockType)arg1;
@@ -108,21 +118,26 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct StrokeDelta *)arg1 error:(id *)arg2;
-- (id)initWithArchive:(const struct Stroke *)arg1 sortedUUIDs:(id)arg2 inks:(id)arg3;
-- (id)initWithArchive:(const struct Stroke *)arg1 sortedUUIDs:(id)arg2 inks:(id)arg3 parent:(id)arg4 isHidden:(BOOL)arg5;
+- (id)initWithArchive:(const struct Stroke *)arg1 sortedUUIDs:(id)arg2 inks:(id)arg3 parent:(id)arg4 isHidden:(BOOL)arg5 transientArchiveDictionary:(id)arg6;
+- (id)initWithArchive:(const struct Stroke *)arg1 sortedUUIDs:(id)arg2 inks:(id)arg3 transientArchiveDictionary:(id)arg4;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
-- (id)initWithData:(id)arg1 id:(id)arg2 sortID:(struct _PKStrokeID)arg3 timestamp:(double)arg4 flags:(CDStruct_87ef4b51)arg5 version:(struct _PKStrokeID)arg6 ink:(id)arg7 transform:(struct CGAffineTransform)arg8 tRange:(CDStruct_88b945db)arg9 substrokes:(id)arg10 substrokesVersion:(struct _PKStrokeID)arg11;
-- (id)initWithData:(id)arg1 id:(id)arg2 sortID:(struct _PKStrokeID)arg3 timestamp:(double)arg4 hidden:(BOOL)arg5 version:(struct _PKStrokeID)arg6 ink:(id)arg7 transform:(struct CGAffineTransform)arg8 tRange:(CDStruct_88b945db)arg9 substrokes:(id)arg10 substrokesVersion:(struct _PKStrokeID)arg11;
+- (id)initWithData:(id)arg1 id:(id)arg2 sortID:(struct _PKStrokeID)arg3 timestamp:(double)arg4 flags:(CDStruct_87ef4b51)arg5 version:(struct _PKStrokeID)arg6 ink:(id)arg7 transform:(struct CGAffineTransform)arg8 substrokes:(id)arg9 substrokesVersion:(struct _PKStrokeID)arg10;
+- (id)initWithData:(id)arg1 id:(id)arg2 sortID:(struct _PKStrokeID)arg3 timestamp:(double)arg4 hidden:(BOOL)arg5 version:(struct _PKStrokeID)arg6 ink:(id)arg7 transform:(struct CGAffineTransform)arg8 substrokes:(id)arg9 substrokesVersion:(struct _PKStrokeID)arg10;
+- (id)initWithInk:(id)arg1 strokePath:(id)arg2 transform:(struct CGAffineTransform)arg3;
+- (id)initWithInk:(id)arg1 strokePath:(id)arg2 transform:(struct CGAffineTransform)arg3 mask:(id)arg4;
 - (id)initWithLegacyArchive:(const struct Command *)arg1 sortedUUIDs:(id)arg2;
 - (id)initWithStroke:(id)arg1;
 - (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3;
-- (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3 ink:(id)arg4 transform:(struct CGAffineTransform)arg5 tRange:(CDStruct_88b945db)arg6;
+- (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3 ink:(id)arg4 transform:(struct CGAffineTransform)arg5;
 - (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3 transform:(struct CGAffineTransform)arg4;
 - (id)initWithV1Archive:(const struct Stroke *)arg1 sortedUUIDs:(id)arg2 inks:(id)arg3;
 - (void)interpolatePointDataWithStep:(double)arg1 from:(double)arg2 to:(double)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)interpolatePointDataWithStep:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (struct CGPoint)intersectionFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 - (BOOL)intersectsClosedStroke:(id)arg1;
 - (BOOL)intersectsLineFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2 minThreshold:(double)arg3;
+- (BOOL)intersectsPoint:(struct CGPoint)arg1;
+- (BOOL)intersectsPoint:(struct CGPoint)arg1 boundsOutset:(double)arg2 minimumStrokeThreshold:(double)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (struct CGPoint)locationAtIndex:(unsigned long long)arg1;
 - (id)mergeArrayOfStrokes:(id)arg1 with:(id)arg2;
@@ -141,9 +156,11 @@
 - (unsigned int)saveToV1Archive:(struct Stroke *)arg1 sortedUUIDs:(id)arg2 inks:(id)arg3 withPathData:(BOOL)arg4 transient:(BOOL)arg5;
 - (void)saveUUIDsTo:(id)arg1;
 - (void)saveV1StrokeID:(const struct _PKStrokeID *)arg1 toArchive:(struct StrokeID *)arg2 withSortedUUIDs:(id)arg3;
+- (struct CGPath *)selectionPathRepresentationWithPointsCount:(int *)arg1;
 - (double)startTimestamp;
 - (id)strokeApplying:(id)arg1;
 - (id)substrokeWithRange:(struct _NSRange)arg1;
+- (double)timestamp;
 - (double)timestampAtIndex:(unsigned long long)arg1;
 
 @end

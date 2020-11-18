@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (long long)copyRegexFindSafePattern:(id)arg1 toBuffer:(unsigned short *)arg2;
 + (BOOL)doRegexForString:(id)arg1 pattern:(id)arg2 likeProtect:(BOOL)arg3 flags:(unsigned long long)arg4 context:(CDStruct_4829dca9 *)arg5;
-+ (void)escapeFullwidthRegexChars:(id)arg1;
 + (id)newStringFrom:(id)arg1 usingUnicodeTransforms:(unsigned long long)arg2;
 + (struct __CFLocale *)retainedLocale;
 

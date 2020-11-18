@@ -17,7 +17,7 @@
 }
 
 @property (nonatomic) long long count; // @synthesize count=_count;
-@property (strong, nonatomic) id<PXGImageRequestPerformer> imageRequestPerformer; // @synthesize imageRequestPerformer=_imageRequestPerformer;
+@property (weak, nonatomic) id<PXGImageRequestPerformer> imageRequestPerformer; // @synthesize imageRequestPerformer=_imageRequestPerformer;
 
 - (void).cxx_destruct;
 - (void)_discardIndexes:(id)arg1;

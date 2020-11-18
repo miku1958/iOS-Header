@@ -4,16 +4,82 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphOptimizedEdge.h>
 
-@interface PGGraphRelationshipEdge : PGGraphEdge
+@class NSString;
+
+@interface PGGraphRelationshipEdge : PGGraphOptimizedEdge
 {
+    unsigned int _numberOfMomentsAtHome:32;
+    unsigned int _numberOfLoveEmojisExchanged:32;
+    unsigned int _hasParentContactName:1;
+    unsigned int _hasSameFamilyNameAsMePerson:1;
+    unsigned int _hasAnniversaryDate:1;
+    unsigned int _isTopTwoPersonsSocialGroup:1;
+    unsigned int _isTopPerson:1;
+    unsigned int _isPersonAgeDifferentThanMeNode:1;
+    unsigned int _isPersonOldEnoughToBeParentOrGrandparent:1;
+    BOOL _isPersonYoungEnoughToBeMeNodeChild;
+    float _confidence;
+    NSString *_relationship;
+    double _familyHolidayAttendanceRate;
+    double _friendNightOutAttendanceRate;
+    double _partnerTripAttendanceRate;
+    double _friendsAndFamilyTripAttendanceRate;
+    double _weekendAppearanceRatio;
+    double _momentsAtWorkAppearanceRate;
+    double _calendarAttendanceRatio;
 }
 
+@property (readonly) double calendarAttendanceRatio; // @synthesize calendarAttendanceRatio=_calendarAttendanceRatio;
+@property (readonly) float confidence; // @synthesize confidence=_confidence;
+@property (readonly) double familyHolidayAttendanceRate; // @synthesize familyHolidayAttendanceRate=_familyHolidayAttendanceRate;
+@property (readonly) double friendNightOutAttendanceRate; // @synthesize friendNightOutAttendanceRate=_friendNightOutAttendanceRate;
+@property (readonly) double friendsAndFamilyTripAttendanceRate; // @synthesize friendsAndFamilyTripAttendanceRate=_friendsAndFamilyTripAttendanceRate;
+@property (readonly) BOOL hasAnniversaryDate; // @synthesize hasAnniversaryDate=_hasAnniversaryDate;
+@property (readonly) BOOL hasParentContactName; // @synthesize hasParentContactName=_hasParentContactName;
+@property (readonly) BOOL hasSameFamilyNameAsMePerson; // @synthesize hasSameFamilyNameAsMePerson=_hasSameFamilyNameAsMePerson;
+@property (readonly) BOOL isPersonAgeDifferentThanMeNode; // @synthesize isPersonAgeDifferentThanMeNode=_isPersonAgeDifferentThanMeNode;
+@property (readonly) BOOL isPersonOldEnoughToBeParentOrGrandparent; // @synthesize isPersonOldEnoughToBeParentOrGrandparent=_isPersonOldEnoughToBeParentOrGrandparent;
+@property (readonly) BOOL isPersonYoungEnoughToBeMeNodeChild; // @synthesize isPersonYoungEnoughToBeMeNodeChild=_isPersonYoungEnoughToBeMeNodeChild;
+@property (readonly) BOOL isTopPerson; // @synthesize isTopPerson=_isTopPerson;
+@property (readonly) BOOL isTopTwoPersonsSocialGroup; // @synthesize isTopTwoPersonsSocialGroup=_isTopTwoPersonsSocialGroup;
+@property (readonly) double momentsAtWorkAppearanceRate; // @synthesize momentsAtWorkAppearanceRate=_momentsAtWorkAppearanceRate;
+@property (readonly) unsigned long long numberOfLoveEmojisExchanged; // @synthesize numberOfLoveEmojisExchanged=_numberOfLoveEmojisExchanged;
+@property (readonly) unsigned long long numberOfMomentsAtHome; // @synthesize numberOfMomentsAtHome=_numberOfMomentsAtHome;
+@property (readonly) double partnerTripAttendanceRate; // @synthesize partnerTripAttendanceRate=_partnerTripAttendanceRate;
+@property (readonly) NSString *relationship; // @synthesize relationship=_relationship;
+@property (readonly) unsigned long long status;
+@property (readonly) double weekendAppearanceRatio; // @synthesize weekendAppearanceRatio=_weekendAppearanceRatio;
+
++ (id)acquaintanceFilter;
++ (id)brotherFilter;
++ (id)childFilter;
++ (id)coworkerFilter;
++ (id)coworkerSocialGroupFilter;
++ (id)daughterFilter;
++ (id)familyFilter;
++ (id)familySocialGroupFilter;
++ (id)fatherFilter;
++ (id)filter;
++ (id)friendFilter;
++ (id)motherFilter;
++ (id)parentFilter;
++ (id)partnerFilter;
++ (id)sisterFilter;
++ (id)sonFilter;
++ (id)vipFilter;
+- (void).cxx_destruct;
 - (id)_readableStringForProperty:(id)arg1;
-- (double)confidence;
-- (id)description;
-- (unsigned long long)status;
+- (unsigned short)domain;
+- (id)edgeDescription;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithRelationship:(id)arg1 fromPersonNode:(id)arg2 toPersonNode:(id)arg3 withConfidence:(float)arg4;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
+- (float)weight;
 
 @end
 

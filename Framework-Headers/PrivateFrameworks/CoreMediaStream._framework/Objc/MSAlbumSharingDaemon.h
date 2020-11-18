@@ -48,7 +48,6 @@
 - (void)addAssetCollections:(id)arg1 toAlbumWithGUID:(id)arg2 personID:(id)arg3 info:(id)arg4;
 - (void)addComments:(id)arg1 toAssetCollectionWithGUID:(id)arg2 personID:(id)arg3;
 - (void)addComments:(id)arg1 toAssetCollectionWithGUID:(id)arg2 personID:(id)arg3 info:(id)arg4;
-- (int)assetsInDownloadQueueCountForPersonID:(id)arg1;
 - (id)boundStateMachineForPersonID:(id)arg1;
 - (void)cancelActivitiesForPersonID:(id)arg1;
 - (void)deleteAlbumWithGUID:(id)arg1 inviterAddress:(id)arg2;
@@ -95,7 +94,7 @@
 - (void)modifyAlbumMetadata:(id)arg1 personID:(id)arg2 info:(id)arg3;
 - (id)nextActivityDate;
 - (id)persistentObjectForKey:(id)arg1 personID:(id)arg2;
-- (id)personIDsListeningToPushNotification;
+- (id)personIDListeningToPushNotification;
 - (void)pollForSubscriptionUpdatesTriggeredByPushNotificationForPersonID:(id)arg1;
 - (void)refreshAccessControlListOfAlbumWithGUID:(id)arg1 personID:(id)arg2;
 - (void)refreshAccessControlListOfAlbumWithGUID:(id)arg1 personID:(id)arg2 info:(id)arg3;

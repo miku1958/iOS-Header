@@ -5,6 +5,6 @@
 //
 
 @protocol MPExclusiveAccessToken
-- (void)assertHasExclusiveAccess;
+- (void)assertHasExclusiveAccessForOwner:(id)arg1;
 @end
 

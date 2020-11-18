@@ -16,6 +16,7 @@
 
 @interface HMDSignificantTimeEvent : HMDTimeEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
+    struct os_unfair_lock_s _lock;
     NSString *_significantEvent;
     NSDateComponents *_offset;
 }
@@ -26,8 +27,8 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) NSDateComponents *offset; // @synthesize offset=_offset;
-@property (strong, nonatomic) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
+@property (strong) NSDateComponents *offset; // @synthesize offset=_offset;
+@property (strong) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
@@ -37,12 +38,12 @@
 - (id)_nextTimerDate;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)analyticsTriggerEventData;
 - (id)createPayload;
 - (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end

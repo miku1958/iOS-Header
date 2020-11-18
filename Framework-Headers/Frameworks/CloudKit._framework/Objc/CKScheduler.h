@@ -25,12 +25,12 @@
 @property (strong, nonatomic) NSMutableDictionary *xpcActivitiesByCKActivityIdentifier; // @synthesize xpcActivitiesByCKActivityIdentifier=_xpcActivitiesByCKActivityIdentifier;
 
 + (id)activityFromXPCActivity:(id)arg1;
-+ (id)baseCoreAnalyticsEventPayloadForActivity:(id)arg1;
++ (id)baseCoreAnalyticsEventPayloadForActivity:(id)arg1 xpcActivityCriteria:(id)arg2;
 + (double)gracePeriodForPriority:(long long)arg1 deviceCount:(long long)arg2;
 + (id)identifierWithImmediateInvocationForIdentifier:(id)arg1;
 + (id)sharedScheduler;
 + (BOOL)shouldReportAnalyticsForActivity:(id)arg1;
-+ (BOOL)shouldReportAnalyticsForContainerIdentifier:(id)arg1;
++ (const char *)stringForDeviceCount:(long long)arg1;
 + (id)xpcActivityIdentifierForCKActivityIdentifier:(id)arg1;
 + (const char *)xpcActivityPriorityForPriority:(long long)arg1 deviceCount:(long long)arg2;
 - (void).cxx_destruct;

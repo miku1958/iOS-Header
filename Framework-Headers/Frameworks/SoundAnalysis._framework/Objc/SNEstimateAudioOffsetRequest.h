@@ -6,28 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
 @class NSString, SNAudioOffsetEstimator;
-@protocol SNAnalyzing;
 
-@interface SNEstimateAudioOffsetRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNEstimateAudioOffsetRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
     SNAudioOffsetEstimator *_detector;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) double maximumObservableOffset;
-@property (readonly, nonatomic) double minimumObservableOffset;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)init;
-- (double)offset;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToEstimateAudioOffsetRequest:(id)arg1;
 
 @end
 

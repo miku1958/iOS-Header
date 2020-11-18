@@ -9,7 +9,7 @@
 #import <PassKitCore/CBCentralManagerDelegate-Protocol.h>
 #import <PassKitCore/PKContinuityPaymentCoordinatorDelegate-Protocol.h>
 
-@class CBCentralManager, NSArray, NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession;
+@class CBCentralManager, NSArray, NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession, PKSecureElement;
 @protocol OS_dispatch_group, OS_dispatch_source, PKAggregateDictionaryProtocol, PKPaymentAuthorizationStateMachineDelegate;
 
 @interface PKPaymentAuthorizationStateMachine : NSObject <PKContinuityPaymentCoordinatorDelegate, CBCentralManagerDelegate>
@@ -38,6 +38,7 @@
     unsigned long long _prepareTransactionDetailsCounter;
     NSObject<OS_dispatch_group> *_delayAuthorizedStateGroup;
     NSArray *_remoteDevicesToUpdate;
+    PKSecureElement *_secureElement;
 }
 
 @property (strong, nonatomic) id<PKAggregateDictionaryProtocol> aggregateDictionary; // @synthesize aggregateDictionary=_aggregateDictionary;
@@ -65,6 +66,7 @@
 @property (strong, nonatomic) PKPeerPaymentSession *peerPaymentSession; // @synthesize peerPaymentSession=_peerPaymentSession;
 @property (nonatomic) unsigned long long prepareTransactionDetailsCounter; // @synthesize prepareTransactionDetailsCounter=_prepareTransactionDetailsCounter;
 @property (strong, nonatomic) NSArray *remoteDevicesToUpdate; // @synthesize remoteDevicesToUpdate=_remoteDevicesToUpdate;
+@property (strong, nonatomic) PKSecureElement *secureElement; // @synthesize secureElement=_secureElement;
 @property (nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) double updatePaymentDeviceTimeout; // @synthesize updatePaymentDeviceTimeout=_updatePaymentDeviceTimeout;
@@ -156,6 +158,7 @@
 - (void)didEncounterError:(id)arg1;
 - (void)didEncounterFatalError:(id)arg1;
 - (void)didReceiveMerchantSessionCompleteWithSession:(id)arg1 error:(id)arg2;
+- (void)didReceiveMerchantSessionCompleteWithUpdate:(id)arg1;
 - (void)didReceivePaymentAuthorizationResult:(id)arg1;
 - (void)didReceivePaymentAuthorizationStatus:(long long)arg1;
 - (void)didReceivePaymentMethodCompleteWithSummaryItems:(id)arg1;

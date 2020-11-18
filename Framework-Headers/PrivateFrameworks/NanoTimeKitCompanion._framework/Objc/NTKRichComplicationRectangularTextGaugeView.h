@@ -4,35 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationRectangularBaseView.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationRectangularLargeHeadlineBaseView.h>
 
-@class NTKColoringLabel, NTKRichComplicationImageView, NTKRichComplicationLineProgressView;
+@class NTKColoringLabel, NTKRichComplicationLineProgressView;
 
-@interface NTKRichComplicationRectangularTextGaugeView : NTKRichComplicationRectangularBaseView
+@interface NTKRichComplicationRectangularTextGaugeView : NTKRichComplicationRectangularLargeHeadlineBaseView
 {
-    NTKRichComplicationImageView *_headerImageView;
-    NTKColoringLabel *_headerLabel;
-    NTKColoringLabel *_line1Label;
+    NTKColoringLabel *_bodyLabel;
     NTKRichComplicationLineProgressView *_progressView;
 }
 
-@property (readonly, nonatomic) NTKRichComplicationImageView *headerImageView; // @synthesize headerImageView=_headerImageView;
-@property (readonly, nonatomic) NTKColoringLabel *headerLabel; // @synthesize headerLabel=_headerLabel;
-@property (readonly, nonatomic) NTKColoringLabel *line1Label; // @synthesize line1Label=_line1Label;
+@property (readonly, nonatomic) NTKColoringLabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property (readonly, nonatomic) NTKRichComplicationLineProgressView *progressView; // @synthesize progressView=_progressView;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (BOOL)isMeteredProgressView;
 + (long long)progressFillStyle;
-+ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)_handleTemplateUpdateWithReason:(long long)arg1 headerImageProvider:(id)arg2 headerTextProvider:(id)arg3 body1TextProvider:(id)arg4 gaugeProvider:(id)arg5;
+- (void)_handleTemplateUpdateWithReason:(long long)arg1 headerViewData:(id)arg2 headerImageProvider:(id)arg3 headerTextProvider:(id)arg4 bodyTextProvider:(id)arg5 gaugeProvider:(id)arg6;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setPaused:(BOOL)arg1;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
 

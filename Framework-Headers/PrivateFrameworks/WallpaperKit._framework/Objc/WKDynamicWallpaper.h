@@ -18,14 +18,18 @@
 
 @property (strong, nonatomic) NSDictionary *_dynamicDictionary; // @synthesize _dynamicDictionary=__dynamicDictionary;
 @property (strong, nonatomic) UIImage *_thumbnailImage; // @synthesize _thumbnailImage=__thumbnailImage;
-@property (readonly, nonatomic) unsigned long long identifier;
+@property (readonly, nonatomic) unsigned long long backingType;
+@property (readonly, nonatomic) long long identifier;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned long long type;
 
++ (id)na_identity;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 dictionary:(id)arg2;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2;
+- (unsigned long long)hash;
+- (id)initWithIdentifier:(long long)arg1 dictionary:(id)arg2;
+- (id)initWithIdentifier:(long long)arg1 name:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)thumbnailImage;
 - (id)wallpaperValue;
 

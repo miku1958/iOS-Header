@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) AMSBiometricsSignatureRequest *request; // @synthesize request=_request;
 
 - (void).cxx_destruct;
+- (BOOL)_performCardEnrollmentCheck:(id *)arg1;
 - (id)initWithRequest:(id)arg1;
 - (id)performSignature;
 

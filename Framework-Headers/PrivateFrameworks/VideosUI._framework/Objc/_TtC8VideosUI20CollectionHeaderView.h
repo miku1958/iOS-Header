@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI20CollectionHeaderView : UICollectionReusableView
 {
-    MISSING_TYPE *viewModel;
+    MISSING_TYPE *layout;
     MISSING_TYPE *titleView;
     MISSING_TYPE *subtitleView;
     MISSING_TYPE *imageView;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @interface NSCharacterSet (MailCoreAdditions)
 + (id)ef_asciiAlphaNumericCharacterSet;
++ (id)ef_rfc6376WhitespaceCharacterSet;
 + (id)ef_unsafeAddressLocalPartCharacterSet;
 + (id)ef_unsafeDomainNameCharacterSet;
 @end

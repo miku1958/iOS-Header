@@ -10,10 +10,11 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMDHomeManager, HMDUnassociatedMediaAccessory, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
-@protocol HMDMediaBrowserDelegate, OS_dispatch_queue;
+@protocol HMDMediaBrowserDataSource, HMDMediaBrowserDelegate, HMFLocking, OS_dispatch_queue;
 
 @interface HMDMediaBrowser : HMFObject <HMFLogging, HMFTimerDelegate>
 {
+    id<HMFLocking> _lock;
     NSMutableSet *_accessoryAdvertisements;
     BOOL _discoverUnassociatedAccessories;
     BOOL _discoverAssociatedAccessories;
@@ -21,17 +22,18 @@
     id<HMDMediaBrowserDelegate> _delegate;
     HMDHomeManager *_homeManager;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     void *_discoverySession;
     void *_discoverySessionCallbackToken;
     HMFTimer *_discoveryPollTimer;
     NSMutableSet *_identifiersOfAssociatedMediaAccessories;
     NSMutableSet *_mediaEndpoints;
+    id<HMDMediaBrowserDataSource> _dataSource;
 }
 
 @property (readonly, copy) NSArray *accessoryAdvertisements;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) HMDUnassociatedMediaAccessory *currentAccessory;
+@property (readonly) id<HMDMediaBrowserDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDMediaBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -43,7 +45,6 @@
 @property (strong, nonatomic) NSMutableSet *identifiersOfAssociatedMediaAccessories; // @synthesize identifiersOfAssociatedMediaAccessories=_identifiersOfAssociatedMediaAccessories;
 @property (strong, nonatomic) NSMutableSet *mediaEndpoints; // @synthesize mediaEndpoints=_mediaEndpoints;
 @property (readonly) HMFMessageDispatcher *messageDispatcher;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL updateAvailableOutputDevices; // @synthesize updateAvailableOutputDevices=_updateAvailableOutputDevices;
 
@@ -67,6 +68,7 @@
 - (id)descriptionWithPointer:(BOOL)arg1 additionalDescription:(id)arg2;
 - (id)dumpDescription;
 - (id)initWithHomeManager:(id)arg1;
+- (id)initWithHomeManager:(id)arg1 dataSource:(id)arg2;
 - (void)registerAccessories:(id)arg1;
 - (id)shortDescription;
 - (void)startDiscoveringAssociatedAccessories;

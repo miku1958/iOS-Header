@@ -10,6 +10,7 @@
 
 @class MPSectionedIdentifierList, NSArray, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPIdentifierListSectionProxy : NSObject <MPMutableIdentifierListSection>
 {
     NSString *_sectionIdentifier;

@@ -9,11 +9,10 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSData;
-@protocol OS_dispatch_queue;
 
 @interface PKImage : NSObject <NSSecureCoding>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     BOOL _shouldTile;
     BOOL _shouldStretch;
     struct PKEdgeInsets _capInsets;

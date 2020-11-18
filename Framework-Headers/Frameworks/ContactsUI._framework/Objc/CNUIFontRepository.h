@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)carPlayContactInfoViewPrimaryLabelFont;
++ (id)carPlayContactInfoViewSecondaryLabelFont;
 + (id)carPlayFontWithBoldWeightStyle:(id)arg1;
 + (id)carPlayFontWithMediumWeightStyle:(id)arg1;
 + (id)carPlayFontWithStyle:(id)arg1;
-+ (id)carPlayNameViewPrimaryLabelFont;
-+ (id)carPlayNameViewSecondaryLabelFont;
 + (id)carPlayNavigationBarContactNameFont;
 + (id)carPlayNoContentViewSiriButtonFont;
 + (id)carPlayNoContentViewTitleFont;
@@ -23,6 +23,9 @@ __attribute__((visibility("hidden")))
 + (id)carPlaySymbolImageFont;
 + (id)carPlayTableViewCellSubtitleFont;
 + (id)carPlayTableViewCellTitleFont;
++ (id)catalystAudienceDetailsLabelFont;
++ (id)catalystLabelsFont;
++ (id)catalystNameTextFieldsFont;
 + (id)contactCardPhotoPickerActionButtonFont;
 + (id)contactCardPhotoPickerCaptionFont;
 + (id)contactCardRecentBadgeFont;
@@ -34,10 +37,18 @@ __attribute__((visibility("hidden")))
 + (id)contactStyleDefaultItalicTextFont;
 + (id)contactStyleDefaultTextFont;
 + (id)fontWithBoldWeightStyle:(id)arg1;
++ (id)groupHeaderActionButtonFont;
++ (id)groupHeaderTitleFont;
++ (id)groupHeaderWrappedTitleFont;
++ (id)groupsAllButtonFont;
 + (id)navigationListCellSubtitleFontRegular;
 + (id)navigationListCellTitleFontRegular;
 + (id)navigationListDetailCellSubtitleFontRegular;
 + (id)navigationListDetailCellTitleFontRegular;
++ (id)visualIdentityEditorSegmentedControlFont;
++ (id)visualIdentityEditorTextFont;
++ (id)visualIdentityPickerHeaderPlaceholderFont;
++ (id)visualIdentityPickerHeaderTitleFont;
 
 @end
 

@@ -29,6 +29,11 @@
 @property (readonly, nonatomic) double parsecPopulationCeiling;
 @property (readonly, nonatomic) double parsecPopulationFloor;
 @property (copy, nonatomic) NTPBWidgetConfig *pbWidgetConfig; // @synthesize pbWidgetConfig=_pbWidgetConfig;
+@property (readonly, nonatomic) long long widgetSystemHoneymoonDuration;
+@property (readonly, nonatomic) long long widgetSystemReloadInterval;
+@property (readonly, nonatomic) long long widgetSystemReloadIntervalHoneymoon;
+@property (readonly, nonatomic) long long widgetSystemReloadJitterMax;
+@property (readonly, nonatomic) long long widgetSystemReloadJitterMaxHoneymoon;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

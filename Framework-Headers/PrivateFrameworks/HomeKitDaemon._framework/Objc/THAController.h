@@ -11,7 +11,7 @@
 @interface THAController : NSObject
 {
     BOOL _supportsSiri;
-    BOOL _reachable;
+    BOOL _connected;
     BOOL _selected;
     unsigned int _identifier;
     NSString *_name;
@@ -19,9 +19,9 @@
     NSSet *_selectedButtons;
 }
 
+@property (nonatomic) BOOL connected; // @synthesize connected=_connected;
 @property (readonly, nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) BOOL reachable; // @synthesize reachable=_reachable;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) NSSet *selectedButtons; // @synthesize selectedButtons=_selectedButtons;
 @property (nonatomic) BOOL supportsSiri; // @synthesize supportsSiri=_supportsSiri;

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BSXPCCoder, NSError, RBSXPCMessageReply;
+@class NSError, RBSXPCCoder, RBSXPCMessageReply;
 @protocol OS_xpc_object;
 
 @interface RBSXPCMessage : NSObject
 {
     NSObject<OS_xpc_object> *_xpc_message;
-    BSXPCCoder *_payload;
+    RBSXPCCoder *_payload;
     SEL _method;
 }
 
@@ -21,12 +21,9 @@
 @property (readonly, nonatomic) SEL method; // @synthesize method=_method;
 @property (readonly, nonatomic) RBSXPCMessageReply *reply;
 
-+ (id)messageForMethod:(SEL)arg1 arguments:(id)arg2;
 + (id)messageForMethod:(SEL)arg1 varguments:(id)arg2;
 + (id)messageForXPCMessage:(id)arg1;
-+ (id)messageWithEncoder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)_initWithMessage:(id)arg1;
 - (id)decodeArgumentCollection:(Class)arg1 withClass:(Class)arg2 atIndex:(unsigned long long)arg3 allowNil:(BOOL)arg4 error:(out id *)arg5;
 - (id)decodeArgumentWithClass:(Class)arg1 atIndex:(unsigned long long)arg2 allowNil:(BOOL)arg3 error:(out id *)arg4;
 - (id)init;

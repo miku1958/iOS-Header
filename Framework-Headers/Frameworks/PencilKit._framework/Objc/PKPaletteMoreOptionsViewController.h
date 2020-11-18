@@ -6,34 +6,65 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSLayoutConstraint, PKPaletteAutoMinimizeOptionCell, UIStackView, UITraitCollection;
+@class NSArray, PKPaletteOptionButtonCell, PKPaletteOptionSwitchCell, UIStackView, UITraitCollection;
 @protocol PKPaletteMoreOptionsViewControllerDelegate;
 
 @interface PKPaletteMoreOptionsViewController : UIViewController
 {
+    BOOL _shouldShowAutoMinimizeOption;
+    BOOL _shouldShowFingerDrawsOption;
     BOOL _autoHideOn;
+    BOOL _isFingerDrawsOn;
+    BOOL _shouldShowTapToRadarOption;
+    BOOL _shouldShowOpenPencilSettingsOption;
     id<PKPaletteMoreOptionsViewControllerDelegate> _delegate;
     UITraitCollection *_externalTraitCollection;
-    NSLayoutConstraint *_stackViewMinWidthConstraint;
     NSArray *_stackViewPositioningConstraints;
     UIStackView *_stackView;
-    PKPaletteAutoMinimizeOptionCell *_autoMinimizeCell;
+    PKPaletteOptionSwitchCell *_autoMinimizeCell;
+    PKPaletteOptionSwitchCell *_shapesCell;
+    PKPaletteOptionSwitchCell *_fingerDrawsCell;
+    PKPaletteOptionButtonCell *_tapToRadarCell;
+    PKPaletteOptionButtonCell *_openPencilSettingsCell;
 }
 
 @property (nonatomic, getter=isAutoHideOn) BOOL autoHideOn; // @synthesize autoHideOn=_autoHideOn;
-@property (strong, nonatomic) PKPaletteAutoMinimizeOptionCell *autoMinimizeCell; // @synthesize autoMinimizeCell=_autoMinimizeCell;
+@property (strong, nonatomic) PKPaletteOptionSwitchCell *autoMinimizeCell; // @synthesize autoMinimizeCell=_autoMinimizeCell;
 @property (weak, nonatomic) id<PKPaletteMoreOptionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UITraitCollection *externalTraitCollection; // @synthesize externalTraitCollection=_externalTraitCollection;
+@property (strong, nonatomic) PKPaletteOptionSwitchCell *fingerDrawsCell; // @synthesize fingerDrawsCell=_fingerDrawsCell;
+@property (nonatomic) BOOL isFingerDrawsOn; // @synthesize isFingerDrawsOn=_isFingerDrawsOn;
+@property (strong, nonatomic) PKPaletteOptionButtonCell *openPencilSettingsCell; // @synthesize openPencilSettingsCell=_openPencilSettingsCell;
+@property (strong, nonatomic) PKPaletteOptionSwitchCell *shapesCell; // @synthesize shapesCell=_shapesCell;
+@property (nonatomic) BOOL shouldShowAutoMinimizeOption; // @synthesize shouldShowAutoMinimizeOption=_shouldShowAutoMinimizeOption;
+@property (nonatomic) BOOL shouldShowFingerDrawsOption; // @synthesize shouldShowFingerDrawsOption=_shouldShowFingerDrawsOption;
+@property (nonatomic) BOOL shouldShowOpenPencilSettingsOption; // @synthesize shouldShowOpenPencilSettingsOption=_shouldShowOpenPencilSettingsOption;
+@property (nonatomic) BOOL shouldShowTapToRadarOption; // @synthesize shouldShowTapToRadarOption=_shouldShowTapToRadarOption;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
-@property (strong, nonatomic) NSLayoutConstraint *stackViewMinWidthConstraint; // @synthesize stackViewMinWidthConstraint=_stackViewMinWidthConstraint;
 @property (strong, nonatomic) NSArray *stackViewPositioningConstraints; // @synthesize stackViewPositioningConstraints=_stackViewPositioningConstraints;
+@property (strong, nonatomic) PKPaletteOptionButtonCell *tapToRadarCell; // @synthesize tapToRadarCell=_tapToRadarCell;
 
 - (void).cxx_destruct;
 - (void)_autoMinimizeCellDidChangeValue:(id)arg1;
 - (BOOL)_canShowWhileLocked;
+- (double)_contentSizeMinWidth;
+- (void)_fingerDrawsCellDidChangeValue:(id)arg1;
+- (void)_handleOpenPencilSettingsCellTapped;
+- (void)_handleTapToRadarCellTapped;
+- (void)_installCell:(id)arg1;
+- (BOOL)_isCellInstalled:(id)arg1;
+- (id)_makeAutoMinimizeCell;
+- (id)_makeOpenPencilSettingsCell;
+- (id)_makeTapToRadarCell;
 - (void)_reloadItems;
+- (void)_removeCell:(id)arg1;
+- (BOOL)_shouldInstallOpenPencilSettingsCell;
+- (BOOL)_shouldInstallTapToRadarCell;
+- (BOOL)_shouldRemoveOpenPencilSettingsCell;
+- (BOOL)_shouldRemoveTapToRadarCell;
 - (void)_updateAutoMinimizeCell;
 - (void)_updateContentSize;
+- (void)_updateFingerDrawsCell;
 - (void)updateUIForTraitCollection:(id)arg1;
 - (void)viewDidLoad;
 

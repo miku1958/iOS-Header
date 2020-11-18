@@ -13,6 +13,7 @@
 + (id)actionsForProviderDomain:(id)arg1;
 + (id)authenticationActionForProviderDomain:(id)arg1;
 + (id)extensionForPlugin:(id)arg1;
++ (id)extensionMatchingDictionaryForItems:(id)arg1;
 + (void)getUIExtensionPlugin:(id *)arg1 nonUIExtensionPlugin:(id *)arg2 forProviderDomain:(id)arg3;
 + (BOOL)isAction:(id)arg1 eligibleForItems:(id)arg2;
 + (id)uiActionsForProviderDomain:(id)arg1;

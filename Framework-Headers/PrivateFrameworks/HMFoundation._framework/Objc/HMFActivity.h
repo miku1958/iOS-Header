@@ -6,18 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/HMFActivityMarking-Protocol.h>
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSDate, NSMutableSet, NSObject, NSString, NSUUID;
+@class HMFLogEventSession, NSArray, NSDate, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol OS_os_activity, OS_voucher;
 
-@interface HMFActivity : HMFObject <HMFLogging, HMFObject>
+@interface HMFActivity : HMFObject <HMFLogging, HMFObject, HMFActivityMarking>
 {
-    HMFUnfairLock *_lock;
     NSObject<OS_os_activity> *_internal;
     NSObject<OS_voucher> *_voucher;
     NSMutableSet *_threadContexts;
+    struct os_unfair_lock_s _lock;
     BOOL _valid;
     NSUUID *_identifier;
     HMFActivity *_parent;
@@ -31,16 +32,17 @@
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=isEventReportingEnabled) BOOL eventReportingEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSArray *internalAssertions; // @synthesize internalAssertions=_internalAssertions;
+@property (readonly) HMFLogEventSession *logSession;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
 @property (readonly, weak) HMFActivity *parent; // @synthesize parent=_parent;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly, copy) NSString *shortDescription;
-@property (readonly) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, getter=hasStarted) BOOL started;
 @property (readonly) Class superclass;
 @property (readonly, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
@@ -50,16 +52,23 @@
 + (void)activityWithName:(id)arg1 parent:(id)arg2 options:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 + (id)bundleIdentifier;
 + (id)currentActivity;
++ (id)currentActivityForMarking;
 + (void)initialize;
 + (id)logCategory;
++ (void)markCurrentActivity;
++ (void)markCurrentActivityWithFormat:(id)arg1;
++ (void)markCurrentActivityWithReason:(id)arg1;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)begin;
 - (CDUnknownBlockType)blockWithBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)blockWithQualityOfService:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)enableReportingWithServiceName:(id)arg1;
+- (void)enableReportingWithServiceName:(id)arg1 rootUUID:(id)arg2;
 - (void)end;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 parent:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 parent:(id)arg2;
 - (id)initWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3;

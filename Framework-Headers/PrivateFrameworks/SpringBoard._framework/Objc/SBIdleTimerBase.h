@@ -29,6 +29,7 @@
 - (void)_logExpirationTimeout:(double)arg1;
 - (void)_makeObserversPerformSelector:(SEL)arg1;
 - (void)addIdleTimerObserver:(id)arg1;
+- (void)conformsToSBIdleTimerActivation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

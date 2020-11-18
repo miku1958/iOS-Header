@@ -7,15 +7,16 @@
 #import <UIKit/UIView.h>
 
 #import <PlatterKit/MTMaterialGrouping-Protocol.h>
+#import <PlatterKit/MTVisualStylingProviding-Protocol.h>
 #import <PlatterKit/MTVisualStylingRequiring-Protocol.h>
 #import <PlatterKit/PLPlatter-Protocol.h>
 #import <PlatterKit/PLPlatterInternal-Protocol.h>
 
-@class MTMaterialShadowView, MTMaterialView, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSString, PLShadowView;
+@class MTMaterialShadowView, MTMaterialView, MTShadowView, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSString;
 
-@interface PLPlatterView : UIView <PLPlatterInternal, PLPlatter, MTVisualStylingRequiring, MTMaterialGrouping>
+@interface PLPlatterView : UIView <PLPlatterInternal, PLPlatter, MTVisualStylingProviding, MTVisualStylingRequiring, MTMaterialGrouping>
 {
-    PLShadowView *_shadowView;
+    MTShadowView *_shadowView;
     UIView *_customContentView;
     BOOL _recipeDynamic;
     NSMutableDictionary *_categoriesToProviders;
@@ -47,18 +48,27 @@
 @property (nonatomic, getter=isRecipeDynamic) BOOL recipeDynamic;
 @property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 @property (nonatomic) CDStruct_b48b9fb5 shadowAttributes; // @synthesize shadowAttributes=_shadowAttributes;
+@property (readonly, nonatomic) struct UIEdgeInsets shadowOutsets;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesBackgroundView; // @synthesize usesBackgroundView=_usesBackgroundView;
 
++ (id)platterViewWithBlurEffectStyle:(long long)arg1;
++ (id)platterViewWithStyle:(id)arg1;
++ (id)platterViewWithStyle:(id)arg1 inBundle:(id)arg2;
 - (void).cxx_destruct;
 - (void)_configureBackgroundView:(id)arg1;
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureCustomContentView;
 - (void)_configureCustomContentViewIfNecessary;
 - (void)_configureShadowViewIfNecessary;
+- (id)_initWithBlurEffectStyle:(long long)arg1;
+- (id)_initWithCarPlayBannerStyle;
+- (id)_initWithNavigationBannerStyle;
+- (id)_initWithNotificationsBannerStyle;
 - (id)_initWithRecipe:(long long)arg1 orRecipeNamesByTraitCollection:(id)arg2 inBundle:(id)arg3;
 - (BOOL)_isMaterialViewSufficientlySpecified;
 - (void)_layoutShadowView;
+- (id)_newCarPlayBannerStrokeView;
 - (id)_newDefaultBackgroundView;
 - (void)_willRemoveCustomContent:(id)arg1;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 @class BSTimer, FBSDisplayLayoutMonitor, NSHashTable, RBSAssertion, RBSProcessHandle, SPUIAppService;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, SPUISpotlightSceneManagerDelegate;
 
 @interface SPUISpotlightSceneManager : NSObject
 {
     SPUIAppService *_appService;
+    id<SPUISpotlightSceneManagerDelegate> _delegate;
     NSHashTable *_managedScenes;
     NSHashTable *_foregroundScenes;
     FBSDisplayLayoutMonitor *_layoutMonitor;
@@ -21,6 +22,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (weak, nonatomic) id<SPUISpotlightSceneManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) NSHashTable *foregroundScenes; // @synthesize foregroundScenes=_foregroundScenes;
 @property (strong) RBSAssertion *initializationAssertions; // @synthesize initializationAssertions=_initializationAssertions;
 @property (strong) FBSDisplayLayoutMonitor *layoutMonitor; // @synthesize layoutMonitor=_layoutMonitor;

@@ -19,6 +19,7 @@
     int _paidSubscriptionConversionPointType;
     int _parentFeedType;
     NSString *_purchaseId;
+    int _purchaseType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
     int _subscriptionButtonTargetType;
@@ -26,6 +27,7 @@
         unsigned int groupType:1;
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
+        unsigned int purchaseType:1;
         unsigned int subscriptionButtonTargetType:1;
     } _has;
 }
@@ -40,6 +42,7 @@
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointType;
 @property (nonatomic) BOOL hasParentFeedType;
 @property (readonly, nonatomic) BOOL hasPurchaseId;
+@property (nonatomic) BOOL hasPurchaseType;
 @property (readonly, nonatomic) BOOL hasSectionId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (nonatomic) BOOL hasSubscriptionButtonTargetType;
@@ -47,6 +50,7 @@
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (strong, nonatomic) NSString *purchaseId; // @synthesize purchaseId=_purchaseId;
+@property (nonatomic) int purchaseType; // @synthesize purchaseType=_purchaseType;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (nonatomic) int subscriptionButtonTargetType; // @synthesize subscriptionButtonTargetType=_subscriptionButtonTargetType;
@@ -55,6 +59,7 @@
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (int)StringAsPurchaseType:(id)arg1;
 - (int)StringAsSubscriptionButtonTargetType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -65,6 +70,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)paidSubscriptionConversionPointTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
+- (id)purchaseTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)subscriptionButtonTargetTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -15,10 +15,10 @@
     BOOL _wifiActive;
     BOOL _fallingBackToCellular;
     STWifiStatusDomainPublisher *_wifiDataPublisher;
-    struct tcp_connection_fallback_watch_s *_cellularFallbackWatcher;
+    void *_cellularFallbackWatcher;
 }
 
-@property (nonatomic) struct tcp_connection_fallback_watch_s *cellularFallbackWatcher; // @synthesize cellularFallbackWatcher=_cellularFallbackWatcher;
+@property (nonatomic) void *cellularFallbackWatcher; // @synthesize cellularFallbackWatcher=_cellularFallbackWatcher;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFallingBackToCellular) BOOL fallingBackToCellular; // @synthesize fallingBackToCellular=_fallingBackToCellular;

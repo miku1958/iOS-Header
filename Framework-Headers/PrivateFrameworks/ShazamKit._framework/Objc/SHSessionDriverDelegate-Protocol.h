@@ -9,6 +9,6 @@
 @class SHSignature;
 
 @protocol SHSessionDriverDelegate <NSObject>
-- (void)match:(SHSignature *)arg1;
+- (void)matchSignature:(SHSignature *)arg1;
 @end
 

@@ -28,7 +28,6 @@
 @property (readonly) int width;
 
 - (int)structuralComplexityContribution;
-- (int)structuralComplexityContribution;
 
 @end
 

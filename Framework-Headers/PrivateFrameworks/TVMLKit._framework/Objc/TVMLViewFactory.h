@@ -28,7 +28,7 @@
 - (id)_labelViewForElement:(id)arg1 existingView:(id)arg2;
 - (id)_listItemLockupWithElement:(id)arg1 existingView:(id)arg2;
 - (id)_loadingImageViewForElement:(id)arg1 existingView:(id)arg2;
-- (id)_monogramViewForElement:(id)arg1 existingView:(id)arg2;
+- (id)_monogramViewForElement:(id)arg1 layout:(id)arg2 existingView:(id)arg3;
 - (id)_organizerViewForElement:(id)arg1 existingView:(id)arg2;
 - (id)_progressBarFromElement:(id)arg1 existingView:(id)arg2;
 - (id)_ratingBadgeFromElement:(id)arg1 existingView:(id)arg2;

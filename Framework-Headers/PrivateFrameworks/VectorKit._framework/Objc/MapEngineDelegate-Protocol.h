@@ -9,6 +9,7 @@
 @class NSError;
 
 @protocol MapEngineDelegate <NSObject>
+- (BOOL)canChangeVenueFocus;
 - (void)didFinishLoadingData;
 - (void)didFinishLoadingDataWithError:(NSError *)arg1;
 - (void)didPresent;
@@ -21,7 +22,7 @@
 - (void)venueCreated:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (BOOL)wantsTimerTick;
 - (void)willBecomeFullyDrawn;
-- (void)willLayoutWithTimestamp:(double)arg1;
+- (void)willLayoutWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 
 @optional
 - (void)muninJunctionDidChange:(const struct MuninJunction *)arg1 currentRoad:(const struct MuninRoadEdge *)arg2 localize:(BOOL)arg3;

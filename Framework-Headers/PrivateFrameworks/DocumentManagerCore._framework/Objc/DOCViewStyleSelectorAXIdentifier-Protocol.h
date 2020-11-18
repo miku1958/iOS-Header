@@ -10,6 +10,7 @@
 
 @protocol DOCViewStyleSelectorAXIdentifier <NSObject>
 + (NSString *)column;
++ (NSString *)commonPrefix;
 + (NSString *)grid;
 + (NSString *)list;
 @end

@@ -6,28 +6,34 @@
 
 #import <ContactsUI/CNPhotoPickerProviderItem.h>
 
-@class CNAvatarImageRenderer, CNContact, NSData;
+#import <ContactsUI/CNVisualIdentityPickerTextEditableProviderItem-Protocol.h>
+
+@class CNAvatarImageRenderer, CNVisualIdentity, NSData, NSString, UIColor;
 @protocol CNAvatarImageRenderingScope;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerMonogramProviderItem : CNPhotoPickerProviderItem
+@interface CNPhotoPickerMonogramProviderItem : CNPhotoPickerProviderItem <CNVisualIdentityPickerTextEditableProviderItem>
 {
     BOOL _isContactImage;
     BOOL _hasUnknownColor;
     BOOL _isVariantOptionItem;
-    CNContact *_contact;
+    NSString *_monogramText;
+    CNVisualIdentity *_visualIdentity;
     CNAvatarImageRenderer *_avatarRenderer;
     id<CNAvatarImageRenderingScope> _renderingScope;
     NSData *_monogramData;
 }
 
 @property (strong, nonatomic) CNAvatarImageRenderer *avatarRenderer; // @synthesize avatarRenderer=_avatarRenderer;
-@property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (readonly, nonatomic) UIColor *backgroundColor;
 @property (nonatomic) BOOL hasUnknownColor; // @synthesize hasUnknownColor=_hasUnknownColor;
 @property (nonatomic) BOOL isContactImage; // @synthesize isContactImage=_isContactImage;
 @property (nonatomic) BOOL isVariantOptionItem; // @synthesize isVariantOptionItem=_isVariantOptionItem;
+@property (readonly, nonatomic) NSString *itemText;
 @property (strong, nonatomic) NSData *monogramData; // @synthesize monogramData=_monogramData;
+@property (strong, nonatomic) NSString *monogramText; // @synthesize monogramText=_monogramText;
 @property (strong, nonatomic) id<CNAvatarImageRenderingScope> renderingScope; // @synthesize renderingScope=_renderingScope;
+@property (strong, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 
 - (void).cxx_destruct;
 - (BOOL)allowsEditing;
@@ -36,21 +42,23 @@ __attribute__((visibility("hidden")))
 - (id)contactImageForMetadataStore;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createColorVariantItems;
+- (id)createColorVariantItemsExcludingSelf;
 - (id)createVariantsItemsWithVariantsManager:(id)arg1;
 - (id)generateThumbnailImageDataIfNeeded;
 - (unsigned long long)hash;
 - (id)imageData;
 - (unsigned long long)imageType;
 - (id)initWithImageData:(id)arg1 thumbnailImageData:(id)arg2 fullscreenImageData:(id)arg3 cropRect:(struct CGRect)arg4 renderingScope:(id)arg5 avatarRenderer:(id)arg6 isVariantOptionItem:(BOOL)arg7;
-- (BOOL)isDefaultMonogramItem;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isGrayMonogramItem;
 - (id)localizedVariantsTitle;
 - (id)monogramVariantItemForColor:(id)arg1;
 - (void)renderMonogramData;
 - (BOOL)shouldShowCaption;
 - (id)thumbnailImageData;
-- (void)updateContact:(id)arg1;
+- (void)updateVisualIdentity:(id)arg1;
 - (void)updateWithMonogramData:(id)arg1;
+- (id)updatedProviderItemWithText:(id)arg1;
 - (id)variantIdentifier;
 
 @end

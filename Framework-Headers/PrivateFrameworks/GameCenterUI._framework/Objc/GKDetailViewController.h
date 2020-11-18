@@ -6,26 +6,13 @@
 
 #import <GameCenterUI/GKDashboardCollectionViewController.h>
 
-@class GKHorizontalBubbleControlsView;
-
 @interface GKDetailViewController : GKDashboardCollectionViewController
 {
-    GKHorizontalBubbleControlsView *_bubbleView;
 }
 
-@property (nonatomic) GKHorizontalBubbleControlsView *bubbleView; // @synthesize bubbleView=_bubbleView;
-@property (readonly, nonatomic) BOOL wantsBubbles;
-
-- (id)addBubbleWithType:(long long)arg1 useLargeSize:(BOOL)arg2 title:(id)arg3 target:(id)arg4 action:(SEL)arg5;
-- (BOOL)canShare;
-- (void)floatInBubbles;
-- (void)hideBubbles;
-- (void)pushBubble:(id)arg1;
 - (void)reportProblemAboutPlayer:(id)arg1;
 - (void)shareAchievement:(id)arg1 sendingView:(id)arg2;
 - (void)shareScore:(id)arg1 fromLeaderboard:(id)arg2 sendingView:(id)arg3;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

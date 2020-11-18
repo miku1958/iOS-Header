@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (double)_xAxisValueForNormalizedPosition:(double)arg1;
 - (id)initWithUnivariateFunction:(CDUnknownBlockType)arg1 sampleRate:(double)arg2 envelope:(id)arg3 xAxisDescriptor:(CDStruct_79de6ffd)arg4 yAxisDescriptor:(CDStruct_79de6ffd)arg5;
-- (void)renderInBuffer:(vector_3203cf93 *)arg1 atFrame:(unsigned long long)arg2;
+- (void)renderInBuffer:(vector_12bd641b *)arg1 atFrame:(unsigned long long)arg2;
 
 @end
 

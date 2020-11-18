@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
-    NSString *_debugDescription;
+    NSString *_moduleDebugDescription;
     GEOPDModuleOptions *_options;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -24,19 +24,16 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_type:1;
         unsigned int read_unknownFields:1;
-        unsigned int read_debugDescription:1;
+        unsigned int read_moduleDebugDescription:1;
         unsigned int read_options:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_debugDescription:1;
-        unsigned int wrote_options:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
-@property (strong, nonatomic) NSString *debugDescription;
-@property (readonly, nonatomic) BOOL hasDebugDescription;
+@property (readonly, nonatomic) BOOL hasModuleDebugDescription;
 @property (readonly, nonatomic) BOOL hasOptions;
 @property (nonatomic) BOOL hasType;
+@property (strong, nonatomic) NSString *moduleDebugDescription;
 @property (strong, nonatomic) GEOPDModuleOptions *options;
 @property (nonatomic) int type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -44,8 +41,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_readDebugDescription;
-- (void)_readOptions;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -54,7 +49,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -17,7 +17,6 @@
     struct {
         unsigned int accountType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _accountType;
     _INPBDataString *_accountNickname;
     NSString *_accountNumber;
@@ -27,7 +26,6 @@
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *accountNickname; // @synthesize accountNickname=_accountNickname;
 @property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property (nonatomic) int accountType; // @synthesize accountType=_accountType;

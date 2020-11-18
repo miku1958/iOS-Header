@@ -28,7 +28,10 @@
 + (void)launchApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (long long)launchMessagesExtensionForApp:(id)arg1;
 + (void)launchMessagesExtensionForApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
++ (void)lookupBundleIDsForDeletableSystemAppsWithItemIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
++ (void)lookupItemIDsForDeletableSystemAppsWithBundleIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (id)sharedInstance;
++ (void)uninstallApp:(id)arg1 requestUserConfirmation:(BOOL)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 + (void)uninstallApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)_initWithServiceBroker:(id)arg1 notificationCenter:(id)arg2;

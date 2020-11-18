@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBStartCallIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBIntentMetadata;
 
 @interface _INPBStartCallIntent : PBCodable <_INPBStartCallIntent, NSSecureCoding, NSCopying>
 {
@@ -22,20 +22,22 @@
         unsigned int recordTypeForRedialing:1;
         unsigned int ttyType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _audioRoute;
     int _callCapability;
     int _destinationType;
     int _preferredCallProvider;
     int _recordTypeForRedialing;
     int _ttyType;
+    _INPBCallRecordFilter *_callRecordFilter;
+    _INPBCallRecordValue *_callRecordToCallBack;
     NSArray *_contacts;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
 @property (nonatomic) int callCapability; // @synthesize callCapability=_callCapability;
+@property (strong, nonatomic) _INPBCallRecordFilter *callRecordFilter; // @synthesize callRecordFilter=_callRecordFilter;
+@property (strong, nonatomic) _INPBCallRecordValue *callRecordToCallBack; // @synthesize callRecordToCallBack=_callRecordToCallBack;
 @property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, nonatomic) unsigned long long contactsCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -43,6 +45,8 @@
 @property (nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
 @property (nonatomic) BOOL hasAudioRoute;
 @property (nonatomic) BOOL hasCallCapability;
+@property (readonly, nonatomic) BOOL hasCallRecordFilter;
+@property (readonly, nonatomic) BOOL hasCallRecordToCallBack;
 @property (nonatomic) BOOL hasDestinationType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasPreferredCallProvider;

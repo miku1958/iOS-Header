@@ -10,7 +10,7 @@
 #import <PassKitUI/PKSubcredentialPairingFlowControllerOperation-Protocol.h>
 
 @class NSString, PKExplanationView, PKSubcredentialPairingFlowControllerContext;
-@protocol PKSubcredentialPairingFlowControllerProtocol, PKSubcredentialProvisioningFlowController;
+@protocol PKSubcredentialPairingFlowControllerProtocol;
 
 @interface PKSubcredentialPairingErrorViewController : UIViewController <PKExplanationViewDelegate, PKSubcredentialPairingFlowControllerOperation>
 {
@@ -22,7 +22,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<PKSubcredentialProvisioningFlowController> flowController;
+@property (readonly, nonatomic) id<PKSubcredentialPairingFlowControllerProtocol> flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long operation;
 @property (strong, nonatomic) PKSubcredentialPairingFlowControllerContext *provisioningContext; // @synthesize provisioningContext=_provisioningContext;

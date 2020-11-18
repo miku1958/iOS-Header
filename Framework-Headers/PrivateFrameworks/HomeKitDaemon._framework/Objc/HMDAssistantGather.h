@@ -34,13 +34,11 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_gatherHomeKitObjects;
 - (id)_getCurrentHome;
 - (id)_getPrimaryHome;
-- (void)gatherHomeKitObjects;
-- (void)getSyncEntityObjectsWithValidity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)gatherHomeKitObjectsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getSyncEntityObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithHomeManager:(id)arg1 queue:(id)arg2;
-- (unsigned long long)numberOfHomeKitObjects;
 
 @end
 

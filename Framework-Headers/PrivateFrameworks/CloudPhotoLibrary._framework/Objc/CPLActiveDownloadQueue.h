@@ -14,25 +14,32 @@
     NSMutableArray *_transportTasks;
     BOOL _FIFOQueue;
     NSString *_name;
+    unsigned long long _type;
     unsigned long long _maximumBatchSize;
+    long long _coalescingInterval;
+    CDUnknownBlockType _groupConstructor;
     unsigned long long _maximumConcurrentTransportTasks;
 }
 
 @property (readonly, nonatomic, getter=isFIFOQueue) BOOL FIFOQueue; // @synthesize FIFOQueue=_FIFOQueue;
 @property (readonly, nonatomic) NSArray *allTransferTasks;
+@property (readonly, nonatomic) long long coalescingInterval; // @synthesize coalescingInterval=_coalescingInterval;
 @property (readonly, nonatomic) unsigned long long countOfTransferTasks;
 @property (readonly, nonatomic) unsigned long long countOfTransferTasksInTransportTasks;
 @property (readonly, nonatomic) unsigned long long countOfTransportTasks;
+@property (readonly, nonatomic) CDUnknownBlockType groupConstructor; // @synthesize groupConstructor=_groupConstructor;
+@property (readonly, nonatomic) BOOL isHighPriority;
 @property (readonly, nonatomic) unsigned long long maximumBatchSize; // @synthesize maximumBatchSize=_maximumBatchSize;
 @property (readonly, nonatomic) unsigned long long maximumConcurrentTransportTasks; // @synthesize maximumConcurrentTransportTasks=_maximumConcurrentTransportTasks;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (void)addTransferTask:(id)arg1;
 - (void)addTransportTask:(id)arg1;
 - (id)dequeueBatchOfTransferTasksDequeuedSize:(unsigned long long *)arg1;
 - (id)dequeueLastTransportTask;
-- (id)initWithName:(id)arg1 FIFOQueue:(BOOL)arg2 maximumBatchSize:(unsigned long long)arg3 maximumConcurrentTransportTasks:(unsigned long long)arg4;
+- (id)initWithName:(id)arg1 type:(unsigned long long)arg2 FIFOQueue:(BOOL)arg3 maximumBatchSize:(unsigned long long)arg4 maximumConcurrentTransportTasks:(unsigned long long)arg5 coalescingInterval:(long long)arg6 groupConstructor:(CDUnknownBlockType)arg7;
 - (void)removeAllTransferTasks;
 - (void)removeTransferTask:(id)arg1;
 - (void)removeTransportTask:(id)arg1;

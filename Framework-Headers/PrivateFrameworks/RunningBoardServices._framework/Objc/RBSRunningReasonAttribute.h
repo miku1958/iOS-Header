@@ -14,12 +14,11 @@
 @property (readonly, nonatomic) unsigned long long runningReason; // @synthesize runningReason=_runningReason;
 
 + (id)withReason:(unsigned long long)arg1;
-- (id)_initWithReason:(unsigned long long)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescriptionBuilder;
 
 @end
 

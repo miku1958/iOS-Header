@@ -29,6 +29,7 @@
 - (id)initWithChallenge:(id)arg1 defaultMessage:(id)arg2 players:(id)arg3;
 - (void)loadView;
 - (void)updateChallengeText;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

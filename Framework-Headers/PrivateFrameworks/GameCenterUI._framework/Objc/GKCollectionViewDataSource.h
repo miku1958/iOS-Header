@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSString *defaultSearchKey; // @synthesize defaultSearchKey=_defaultSearchKey;
 @property (copy, nonatomic) GKSectionMetrics *defaultSectionMetrics; // @dynamic defaultSectionMetrics;
 @property (strong, nonatomic) GKSectionMetrics *defaultSectionMetricsInternal; // @synthesize defaultSectionMetricsInternal=_defaultSectionMetricsInternal;
-@property (nonatomic) id<GKCollectionViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GKCollectionViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRootDataSource;
@@ -41,7 +41,8 @@
 @property (strong, nonatomic) NSMutableDictionary *sectionsToSearchKeys; // @synthesize sectionsToSearchKeys=_sectionsToSearchKeys;
 @property (readonly) Class superclass;
 
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (void).cxx_destruct;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 defaultViewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 evaluateFactoryForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3 isRecursive:(BOOL)arg4;
@@ -53,7 +54,6 @@
 - (BOOL)containsDataSource:(id)arg1;
 - (id)createMetricsTreeWithGridLayout:(id)arg1;
 - (id)dataSourceForSection:(unsigned long long)arg1;
-- (void)dealloc;
 - (void)enumerateItemsAndIndexPathsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)indexPathsForItem:(id)arg1;
 - (id)init;
@@ -69,6 +69,7 @@
 - (void)notifyItemMovedFromIndexPath:(id)arg1 toIndexPaths:(id)arg2;
 - (void)notifyItemsInsertedAtIndexPaths:(id)arg1;
 - (void)notifyItemsRefreshedAtIndexPaths:(id)arg1;
+- (void)notifyItemsRefreshedAtIndexPaths:(id)arg1 animated:(BOOL)arg2;
 - (void)notifyItemsRemovedAtIndexPaths:(id)arg1;
 - (void)notifyPlaceholderUpdated:(BOOL)arg1;
 - (void)notifySectionMovedFrom:(long long)arg1 to:(long long)arg2;

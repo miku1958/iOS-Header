@@ -28,6 +28,7 @@
 - (void)setGlTextureCache:(id)arg1;
 - (void)setMTLTextureCache:(id)arg1;
 - (void)setSize: /* Error: Ran out of types for this method. */;
+- (BOOL)shouldFlip;
 - (BOOL)supportsMetal;
 - (MISSING_TYPE *)textureSize;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;

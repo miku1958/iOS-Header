@@ -6,18 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class IKViewElement, NSAttributedString, NSTimer, UIImage, VUITextBadgeLayout, _TVImageView;
+@class IKViewElement, NSAttributedString, NSTimer, UIImage, VUIRentalExpirationLabel, VUITextBadgeLayout, _TVImageView;
 @protocol VUITextBadgeViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUITextBadgeView : UIView
 {
+    NSAttributedString *_attributedTitle;
     double _strokeSize;
     UIImage *_backgroundImage;
     _TVImageView *_imageView;
     VUITextBadgeLayout *_badgeLayout;
+    VUIRentalExpirationLabel *_rentalExpirationLabel;
     id<VUITextBadgeViewDelegate> _delegate;
-    NSAttributedString *_attributedTitle;
     IKViewElement *_viewElement;
     NSTimer *_expiryUpdateTimer;
     struct CGSize _glyphSize;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSTimer *expiryUpdateTimer; // @synthesize expiryUpdateTimer=_expiryUpdateTimer;
 @property (nonatomic) struct CGSize glyphSize; // @synthesize glyphSize=_glyphSize;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) VUIRentalExpirationLabel *rentalExpirationLabel; // @synthesize rentalExpirationLabel=_rentalExpirationLabel;
 @property (nonatomic) double strokeSize; // @synthesize strokeSize=_strokeSize;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)reset;
 - (void)setElement:(id)arg1 withBadgeLayout:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

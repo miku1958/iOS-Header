@@ -33,6 +33,7 @@
 - (void)_registerForMessages;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)analyticsTriggerEventData;
 - (void)checkFMFStatus:(id)arg1;
 - (id)createPayload;
 - (void)didEnterRegion:(id)arg1;
@@ -46,7 +47,6 @@
 - (id)initWithModel:(id)arg1 home:(id)arg2;
 - (BOOL)isActive;
 - (void)locationEventOccured;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end

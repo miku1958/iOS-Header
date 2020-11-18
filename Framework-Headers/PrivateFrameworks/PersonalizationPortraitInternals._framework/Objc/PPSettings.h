@@ -28,6 +28,7 @@
 + (id)cloudSyncDisabledFirstPartyBundleIds;
 + (void)disableBundleIdentifier:(id)arg1;
 + (void)initialize;
++ (BOOL)isCloudSyncEnabled;
 + (BOOL)isVoiceAssistantEnabled;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -35,6 +36,7 @@
 - (id)_cloudKitDisabledBundleIds;
 - (void)_disableBundleIdentifier:(id)arg1;
 - (id)_donationDisabledBundleIds;
+- (void)_handleCloudStorageDeletedByUser;
 - (void)_invokeChangeHandlersAsync;
 - (void)_purgeRecordsForDisabledBundleIdsAsync;
 - (void)_refreshCloudKitDisabledBundleIds;
@@ -67,7 +69,12 @@
 - (void)setEntitiesBackfilledTimestamp:(id)arg1;
 - (void)setEntitiesMappingTrieSha256:(id)arg1;
 - (void)setQueryPlanLoggingEnabled:(BOOL)arg1;
+- (void)setTrialPathOverrideForNamespaceName:(id)arg1 factorName:(id)arg2 path:(id)arg3;
+- (void)setTrialUseDefaultFiles:(BOOL)arg1;
 - (BOOL)showLocationsFoundInApps;
+- (id)trialPathOverrideForNamespaceName:(id)arg1 factorName:(id)arg2;
+- (id)trialPathOverrides;
+- (BOOL)trialUseDefaultFiles;
 - (void)triggerDelayedCloudSyncRewrite;
 - (id)userDefaults;
 - (double)weightMultiplier;

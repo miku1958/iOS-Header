@@ -13,5 +13,9 @@
     MISSING_TYPE *memoryCache;
 }
 
+- (void)cache:(id)arg1 forKey:(id)arg2;
+- (id)fetchImageForKey:(id)arg1;
+- (void)pruneImagesOlderThan:(double)arg1;
+
 @end
 

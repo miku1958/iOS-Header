@@ -22,6 +22,7 @@
 @property (nonatomic) double modificationTime; // @synthesize modificationTime=_modificationTime;
 @property (strong, nonatomic) NSUUID *replicaID; // @synthesize replicaID=_replicaID;
 
++ (id)resolutionTokenWithJSONObject:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;

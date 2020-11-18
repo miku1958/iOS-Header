@@ -29,12 +29,14 @@
 - (void)_unregisterForCatFlexingNotifications;
 - (id)initWithProfile:(id)arg1 delegate:(id)arg2;
 - (void)stop;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)workoutManager:(id)arg1 didFailWorkout:(id)arg2 withError:(id)arg3;
 - (void)workoutManager:(id)arg1 didStartWorkout:(id)arg2 atDate:(id)arg3;
 - (void)workoutManager:(id)arg1 didStopWorkout:(id)arg2 atDate:(id)arg3;
 - (void)workoutManager:(id)arg1 suggestedStopWorkout:(id)arg2 atDate:(id)arg3;
 - (void)workoutManager:(id)arg1 willPauseWorkout:(id)arg2 atDate:(id)arg3;
 - (void)workoutManager:(id)arg1 willResumeWorkout:(id)arg2 atDate:(id)arg3;
+- (void)workoutManager:(id)arg1 workoutLocationEventUpdate:(id)arg2;
 
 @end
 

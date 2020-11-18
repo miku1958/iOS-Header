@@ -15,7 +15,7 @@
     id<MTLBuffer> _preluBuffer;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (BOOL)accumulatesOverBatch;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
@@ -29,6 +29,7 @@
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 fusedNeuronDescriptor:(id)arg2;
 - (BOOL)isResultStateReusedAcrossBatch;
+- (unsigned long long)maxBatchSize;
 
 @end
 

@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 
++ (id)convertImage:(id)arg1 ofSize:(struct CGSize)arg2 withShape:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (id)generateImageWithFormat:(int)arg1;
 - (unsigned long long)hash;

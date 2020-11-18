@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL _isConnected; // @synthesize _isConnected;
 @property (nonatomic) BOOL _isSleeping; // @synthesize _isSleeping;
 
+- (void).cxx_destruct;
 - (void)_clearReachability:(id *)arg1 flags:(unsigned long long *)arg2;
 - (void)_doCallbackLater;
 - (void)_doCallbackNow;

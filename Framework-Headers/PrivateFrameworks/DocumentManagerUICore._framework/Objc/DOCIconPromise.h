@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)addListener:(id)arg1;
+- (id)averageColorInRect:(struct CGRect)arg1;
 - (id)initWithRequest:(id)arg1;
 - (BOOL)registerGenerationCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeListener:(id)arg1;

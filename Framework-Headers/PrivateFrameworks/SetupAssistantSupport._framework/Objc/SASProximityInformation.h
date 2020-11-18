@@ -14,6 +14,7 @@
 {
     BOOL _usesSameAccountForiTunes;
     BOOL _automaticTimeZoneEnabled;
+    BOOL _hasHomeButton;
     BOOL _restoring;
     BOOL _backupEnabled;
     BOOL _locationServicesOptIn;
@@ -65,6 +66,7 @@
 @property (strong) NSNumber *deviceToDeviceMigrationVersion; // @synthesize deviceToDeviceMigrationVersion=_deviceToDeviceMigrationVersion;
 @property (strong) NSNumber *findMyDeviceOptIn; // @synthesize findMyDeviceOptIn=_findMyDeviceOptIn;
 @property (copy) NSString *firstName; // @synthesize firstName=_firstName;
+@property BOOL hasHomeButton; // @synthesize hasHomeButton=_hasHomeButton;
 @property NSNumber *hasTransferrableTelephonyPlan; // @synthesize hasTransferrableTelephonyPlan=_hasTransferrableTelephonyPlan;
 @property (copy) NSArray *keyboards; // @synthesize keyboards=_keyboards;
 @property (copy) NSDictionary *localePreferences; // @synthesize localePreferences=_localePreferences;

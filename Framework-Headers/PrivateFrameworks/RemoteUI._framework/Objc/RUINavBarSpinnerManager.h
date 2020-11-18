@@ -19,8 +19,7 @@
 + (id)sharedSpinnerManager;
 - (void).cxx_destruct;
 - (id)init;
-- (void)startAnimatingInNavItem:(id)arg1 forIdentifier:(id)arg2;
-- (void)startAnimatingInNavItem:(id)arg1 title:(id)arg2 forIdentifier:(id)arg3 hideBackButton:(BOOL)arg4;
+- (void)startAnimatingInNavItem:(id)arg1 title:(id)arg2 forIdentifier:(id)arg3 hideBackButton:(BOOL)arg4 hideLeftItems:(BOOL)arg5;
 - (void)stopAnimatingForIdentifier:(id)arg1;
 
 @end

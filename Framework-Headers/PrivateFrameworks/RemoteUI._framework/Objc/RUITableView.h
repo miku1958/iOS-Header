@@ -12,7 +12,7 @@
 #import <RemoteUI/UITableViewDataSource-Protocol.h>
 #import <RemoteUI/UITableViewDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UIView, _UIBackdropView;
+@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UITraitCollection, UIView, _UIBackdropView;
 @protocol RUIHeader;
 
 @interface RUITableView : RUIElement <UITableViewDataSource, UITableViewDelegate, RUITableViewRowDelegate, RUITopLevelPageElement, RUIWebViewDelegate>
@@ -34,6 +34,8 @@
     RUIBarButtonItem *_oldRightBarButtonItemForPicker;
     NSDate *_oldPickerDate;
     UIView<RUIHeader> *_headerView;
+    UITraitCollection *_currentTraitCollection;
+    BOOL _sectionContentInsetInitialized;
     RUIObjectModel *_objectModel;
     RUIPage *_page;
     RUIHeaderElement *_header;
@@ -70,6 +72,7 @@
 - (void)_datePickerRevert;
 - (void)_enumerateRowsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_hideDatePickerNavBarButtonsIfNeeded;
+- (BOOL)_isRegularWidth;
 - (void)_loadHeaderView;
 - (id)_objectModelIndexPathForIndexPath:(id)arg1;
 - (void)_registerForNotifications:(BOOL)arg1;
@@ -78,6 +81,7 @@
 - (void)_showDatePickerNavBarButtonsIfNeededForRow:(id)arg1;
 - (struct CGSize)_tableHeaderSizeForHeader:(id)arg1;
 - (void)_textChanged:(id)arg1;
+- (void)_updateSectionContentInsetForSettingsWithAnimation:(BOOL)arg1;
 - (void)activateRowAtIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (void)automaticKeyboardDidHide:(id)arg1;
 - (void)automaticKeyboardDidShow:(id)arg1;
@@ -138,13 +142,16 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (long long)tableViewStyle;
 - (id)textFieldRow:(id)arg1 changeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldStartedEditing:(id)arg1;
 - (id)titleLabel;
+- (void)traitCollectionDidChangeFrom:(id)arg1 toTraitCollection:(id)arg2;
 - (id)view;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayout;
+- (id)viewForElementIdentifier:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)webViewOM:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;

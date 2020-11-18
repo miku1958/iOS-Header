@@ -8,10 +8,10 @@
 
 @interface TSTWrappedFormula : TSTFormula
 {
-    int mFunctionIndex;
+    int _functionIndex;
 }
 
-@property (nonatomic) int functionIndex; // @synthesize functionIndex=mFunctionIndex;
+@property (nonatomic) int functionIndex; // @synthesize functionIndex=_functionIndex;
 
 + (BOOL)storageExceedsMaxFormulaLength:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

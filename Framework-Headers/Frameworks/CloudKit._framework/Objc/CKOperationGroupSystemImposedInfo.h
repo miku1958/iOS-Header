@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class NSDictionary;
 
-@interface CKOperationGroupSystemImposedInfo : NSObject <NSSecureCoding>
+@interface CKOperationGroupSystemImposedInfo : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_networkServiceTypePerConfig;
     long long _expectedSendSize;
@@ -19,10 +20,11 @@
 
 @property (nonatomic) long long expectedReceiveSize; // @synthesize expectedReceiveSize=_expectedReceiveSize;
 @property (nonatomic) long long expectedSendSize; // @synthesize expectedSendSize=_expectedSendSize;
-@property (strong, nonatomic) NSDictionary *networkServiceTypePerConfig; // @synthesize networkServiceTypePerConfig=_networkServiceTypePerConfig;
+@property (copy, nonatomic) NSDictionary *networkServiceTypePerConfig; // @synthesize networkServiceTypePerConfig=_networkServiceTypePerConfig;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

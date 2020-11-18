@@ -13,6 +13,7 @@
     NSArray *_taiutc;
 }
 
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)initWithTAIUTCArray:(id)arg1;

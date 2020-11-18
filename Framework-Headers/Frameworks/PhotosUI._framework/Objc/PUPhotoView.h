@@ -16,10 +16,10 @@
 @property (readonly, nonatomic) PUPhotoViewContentHelper *contentHelper; // @synthesize contentHelper=_contentHelper;
 
 - (void).cxx_destruct;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

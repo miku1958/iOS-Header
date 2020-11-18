@@ -13,7 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface _LSPersonaDatabase : NSObject <UMUserPersonaUpdateObserver>
 {
-    struct os_unfair_lock_s _lock;
+    struct os_unfair_lock_s _ivarLock;
+    struct os_unfair_lock_s _uncachedCalloutLock;
     BOOL _registered;
     NSDictionary *_cachedBundleIDToPersonasMap;
     NSString *_cachedSystemPersonaIdentifier;

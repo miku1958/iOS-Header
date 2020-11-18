@@ -24,7 +24,6 @@
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
 - (id)payloadDescriptionKeyValueSections;
@@ -33,6 +32,7 @@
 - (id)subtitle1Label;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
+- (id)verboseDescription;
 
 @end
 

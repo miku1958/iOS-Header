@@ -27,23 +27,25 @@
 
 + (id)sharedMain;
 - (void).cxx_destruct;
-- (void)_configureAggdLogging;
+- (void)_configureAnalyticsLogging;
 - (void)_forceShutdownDaemonOnLogoutInTimeInterval:(int)arg1;
 - (void)_forceShutdownTimerFired:(id)arg1;
 - (void)_setRunLoopStopped:(BOOL)arg1;
 - (void)_shutdownDaemon;
-- (void)_shutdownNotification:(id)arg1;
 - (void)addLanguageChangeHandler;
 - (void)addSignalHandler;
 - (void)addToOperationsQueueDisabledCheckAndGoBlock:(CDUnknownBlockType)arg1 wrappedBlock:(CDUnknownBlockType)arg2;
+- (void)agentsStarted;
 - (void)dealloc;
 - (void)didFinishAllXPCTransactions;
 - (void)disable;
+- (void)evaluateConnectedStartupActivityStatus;
 - (id)init;
 - (void)setRunLoopStoppedRef:(BOOL *)arg1;
 - (void)shutdownDAD;
 - (void)waitForSystemAvailability;
 - (void)willSwitchUser;
+- (void)xpc_checkin;
 
 @end
 

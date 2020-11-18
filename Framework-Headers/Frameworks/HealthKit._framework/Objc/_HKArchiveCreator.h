@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/_HKArchiveWriter-Protocol.h>
+
 @class NSFileHandle, NSURL;
 
-@interface _HKArchiveCreator : NSObject
+@interface _HKArchiveCreator : NSObject <_HKArchiveWriter>
 {
     struct archive *_archive;
     NSURL *_archiveURL;

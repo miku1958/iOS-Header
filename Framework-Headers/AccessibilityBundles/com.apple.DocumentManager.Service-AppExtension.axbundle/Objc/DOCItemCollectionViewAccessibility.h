@@ -15,8 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (id)_accessibilitySupplementaryFooterViews;
-- (id)_accessibilityUserTestingChildren;
-- (id)_axDisplayOptionsView;
 - (id)accessibilityIdentifier;
 - (id)accessibilityValue;
 

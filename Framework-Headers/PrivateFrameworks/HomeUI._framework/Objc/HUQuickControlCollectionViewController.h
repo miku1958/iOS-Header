@@ -6,6 +6,7 @@
 
 #import <HomeUI/HUItemCollectionViewController.h>
 
+#import <HomeUI/HFAccessoryObserver-Protocol.h>
 #import <HomeUI/HUQuickControlCollectionViewDelegateLayout-Protocol.h>
 #import <HomeUI/HUQuickControlContentCharacteristicWriting-Protocol.h>
 #import <HomeUI/HUQuickControlInteractiveContentContaining-Protocol.h>
@@ -15,7 +16,7 @@
 @class HUQuickControlCollectionItemManager, HUQuickControlCollectionViewControllerLayoutOptions, HUQuickControlCollectionViewLayout, HUQuickControlContentCharacteristicWritingUpdateAdapter, NSMapTable, NSSet, NSString;
 @protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting;
 
-@interface HUQuickControlCollectionViewController : HUItemCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
+@interface HUQuickControlCollectionViewController : HUItemCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HFAccessoryObserver, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
 {
     BOOL _userInteractionEnabled;
     BOOL _disableItemUpdatesForOverrideCharacteristicValueChanges;
@@ -53,6 +54,7 @@
 - (void)_reconfigureLayoutOptions;
 - (unsigned long long)_titlePositionForItem:(id)arg1;
 - (id)_viewControllerForItem:(id)arg1;
+- (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
@@ -64,6 +66,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)loadView;
 - (id)overrideValueForCharacteristic:(id)arg1;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)quickControlItemHost:(id)arg1 didUpdateVisibility:(BOOL)arg2;
 - (void)viewDidLoad;
 - (id)viewForTouchContinuation;

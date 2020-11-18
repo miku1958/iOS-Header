@@ -7,6 +7,9 @@
 #import <CoreServices/LSApplicationProxy.h>
 
 @interface LSApplicationProxy (IconServicesAdditions)
++ (id)__IS_appClipIconDataWithUnmaskedIconData:(id)arg1 variant:(int)arg2;
++ (BOOL)appClipMetadataAvailableForBundleIdentifier:(id)arg1;
++ (BOOL)clipTreatmentIsWhitelisted;
 - (id)__IS_iconDataForVariant:(int)arg1 preferredIconName:(id)arg2 withOptions:(int)arg3;
 - (id)__IS_iconDataForVariant:(int)arg1 withOptions:(int)arg2;
 @end

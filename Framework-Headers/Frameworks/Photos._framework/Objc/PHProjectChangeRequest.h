@@ -20,10 +20,10 @@
     PHRelationshipChangeRequestHelper *_keyAssetHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *assetsHelper; // @synthesize assetsHelper=_assetsHelper;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,11 +34,11 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (strong, nonatomic) NSString *projectDocumentType;
 @property (copy, nonatomic) NSData *projectExtensionData;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
 + (void)_deleteProjects:(id)arg1 withOperation:(long long)arg2;
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)creationRequestForProjectCopyFromProject:(id)arg1;
 + (id)creationRequestForProjectWithDocumentType:(id)arg1 projectExtensionIdentifier:(id)arg2;
 + (id)creationRequestForProjectWithDocumentType:(id)arg1 projectExtensionIdentifier:(id)arg2 assets:(id)arg3 title:(id)arg4;
@@ -53,7 +53,6 @@
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
-- (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithProject:(id)arg1;
@@ -63,7 +62,6 @@
 - (void)moveAssetsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (id)placeholderForCreatedProject;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (id)projectData;
 - (id)projectExtensionIdentifier;
@@ -77,7 +75,6 @@
 - (void)setProjectExtensionIdentifier:(id)arg1;
 - (void)setProjectPreviewImage:(id)arg1;
 - (void)setProjectRenderUuid:(id)arg1;
-- (id)uuid;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 

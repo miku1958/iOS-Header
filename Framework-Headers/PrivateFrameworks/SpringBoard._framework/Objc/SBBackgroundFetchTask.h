@@ -23,8 +23,6 @@
 - (void)dealloc;
 - (id)description;
 - (void)execute;
-- (void)finishWithResult:(unsigned long long)arg1;
-- (id)initForApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

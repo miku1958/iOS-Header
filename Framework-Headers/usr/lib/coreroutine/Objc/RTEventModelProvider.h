@@ -87,7 +87,7 @@
 - (double)getOverlapTimeForIntervalStart1:(id)arg1 intervalEnd1:(id)arg2 intervalStart2:(id)arg3 intervalEnd2:(id)arg4;
 - (BOOL)highProbabilityHistogramItem:(id)arg1;
 - (id)init;
-- (id)initWithQueue:(id)arg1 learnedLocationManager:(id)arg2 eventManager:(id)arg3 metricManager:(id)arg4 managedObjectContext:(id)arg5 persistenceManager:(id)arg6 defaultsManager:(id)arg7;
+- (id)initWithDefaultsManager:(id)arg1 eventManager:(id)arg2 learnedLocationManager:(id)arg3 managedObjectContext:(id)arg4 metricManager:(id)arg5 persistenceManager:(id)arg6;
 - (id)keywordForCategory:(id)arg1 visited:(unsigned long long)arg2;
 - (id)lastDateOfLOIVisits:(id)arg1;
 - (unsigned long long)lengthOfEvent:(id)arg1;

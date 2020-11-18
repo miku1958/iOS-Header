@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSMutableSet, NSTimer, SGPatternDataFile;
+@class NSArray, NSDictionary, NSHashTable, NSMutableSet, SGPatternDataFile;
 
 @interface SGPatternGlobalData : NSObject
 {
@@ -17,7 +17,6 @@
     NSHashTable *patternInstances;
     BOOL useAllLanguages;
     NSMutableSet *regexesImmuneToDeath;
-    NSTimer *reinstateDeathTimer;
 }
 
 - (void).cxx_destruct;

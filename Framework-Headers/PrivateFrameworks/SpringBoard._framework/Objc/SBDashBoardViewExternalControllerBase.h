@@ -41,6 +41,7 @@
 - (id)_presenter;
 - (void)_registerAsExternalProviderIfNeeded;
 - (void)_unregisterAsExternalProvider;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

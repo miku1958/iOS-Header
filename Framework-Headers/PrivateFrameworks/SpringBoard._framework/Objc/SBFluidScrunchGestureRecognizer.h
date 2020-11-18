@@ -50,6 +50,7 @@
 - (double)animationDistance;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (double)incrementalGestureMotionForCandidate:(id)arg1 withTransformAnalyzerInfo:(id)arg2;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (struct CGPoint)locationInView:(id)arg1;

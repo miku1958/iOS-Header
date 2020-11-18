@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_searchBarSearchButtonClicked:(id)arg1;
 - (void)_updateVisibilityOfSearchResultsForSearchBar:(id)arg1;
 - (void)setActive:(BOOL)arg1;
 - (void)viewDidLoad;

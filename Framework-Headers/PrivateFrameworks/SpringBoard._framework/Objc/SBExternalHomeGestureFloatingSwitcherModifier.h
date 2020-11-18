@@ -26,13 +26,14 @@
 
 - (void).cxx_destruct;
 - (void)_updateForGestureDidBeginOrChangeWithEvent:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToResignActive;
 - (struct CGRect)containerViewBounds;
 - (long long)currentFinalDestination;
 - (void)didMoveToParentModifier:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 initialFloatingConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3;
 - (BOOL)isFloatingDockGesturePossible;
-- (long long)layoutUpdateMode;
 
 @end
 

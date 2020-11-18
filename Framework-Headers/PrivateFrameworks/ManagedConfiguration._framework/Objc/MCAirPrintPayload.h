@@ -21,13 +21,13 @@
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)restrictions;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
+- (id)verboseDescription;
 
 @end
 

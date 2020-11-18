@@ -7,6 +7,9 @@
 #import <HealthKit/_HKCompoundFilter.h>
 
 @interface _HKCompoundFilter (HealthDaemon)
+- (id)_filterByApplyingTransformationToSubfilters:(CDUnknownBlockType)arg1;
+- (id)filterIgnoringActivityCacheIndexFilter;
+- (id)filterIgnoringPrivateMetadata;
 - (id)predicateWithProfile:(id)arg1;
 @end
 

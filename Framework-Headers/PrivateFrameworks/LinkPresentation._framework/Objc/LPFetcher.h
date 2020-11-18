@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class LPEvent;
+
 __attribute__((visibility("hidden")))
 @interface LPFetcher : NSObject
 {
     unsigned int _loggingID;
+    LPEvent *_event;
     id _userData;
 }
 
+@property (strong, nonatomic) LPEvent *_event; // @synthesize _event;
 @property (readonly, nonatomic) unsigned int _loggingID; // @synthesize _loggingID;
 @property (strong, nonatomic) id userData; // @synthesize userData=_userData;
 

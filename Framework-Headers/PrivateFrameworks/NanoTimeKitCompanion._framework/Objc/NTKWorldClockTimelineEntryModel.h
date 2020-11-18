@@ -24,6 +24,7 @@
 - (id)_dayOffsetTextProvider;
 - (id)_differenceTextProvider;
 - (id)_differenceTextProviderWithSize:(long long)arg1 andCaps:(BOOL)arg2;
+- (id)_graphicCircularMetadata;
 - (id)_newCircularMediumTemplate;
 - (id)_newCircularSmallTemplate;
 - (id)_newExtraLargeTemplate;
@@ -31,6 +32,8 @@
 - (id)_newLargeUtilityTemplate;
 - (id)_newSignatureBezelTemplate;
 - (id)_newSignatureCircularTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
+- (id)_newSignatureRectangularTemplate;
 - (id)_newSmallFlatUtilityTemplate;
 - (id)_newSmallModularTemplate;
 - (id)_signatureCorner;

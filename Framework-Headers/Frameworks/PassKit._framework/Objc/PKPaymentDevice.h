@@ -36,7 +36,7 @@
 - (void)SEPParingInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_executeDeviceMetadataFetchTasksCompletionHandlers;
 - (void)_finishLocationFixWithLocation:(id)arg1;
-- (void)_populateDeviceMetdata:(id)arg1 withFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_populateDeviceMetadata:(id)arg1 withFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)configurationData;
 - (void)configurationDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -48,7 +48,7 @@
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)paymentDeviceMetadataFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)primarySecureElementIdentifier;
-- (void)provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provisioningDataIncludingDeviceMetadata:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)queueConnectionToTrustedServiceManagerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registrationDataWithAuthToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

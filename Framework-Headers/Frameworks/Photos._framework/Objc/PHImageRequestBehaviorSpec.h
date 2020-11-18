@@ -12,21 +12,27 @@
     BOOL _networkAccessAllowed;
     BOOL _allowPlaceholder;
     BOOL _onlyUseFetchedAssetPropertiesDuringChoosing;
+    BOOL _useLowMemoryMode;
+    BOOL _useLimitedLibraryMode;
     long long _choosingPolicy;
     unsigned long long _loadingOptions;
     long long _version;
     long long _resizeMode;
     double _minimumTableThumbnailLongSide;
+    long long _downloadIntent;
 }
 
 @property (nonatomic) BOOL allowPlaceholder; // @synthesize allowPlaceholder=_allowPlaceholder;
 @property (nonatomic) long long choosingPolicy; // @synthesize choosingPolicy=_choosingPolicy;
+@property (nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property (nonatomic) unsigned long long loadingOptions; // @synthesize loadingOptions=_loadingOptions;
 @property (nonatomic) double minimumTableThumbnailLongSide; // @synthesize minimumTableThumbnailLongSide=_minimumTableThumbnailLongSide;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (nonatomic) BOOL onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
 @property (nonatomic) long long resizeMode; // @synthesize resizeMode=_resizeMode;
 @property (nonatomic, getter=isSynchronous) BOOL synchronous; // @synthesize synchronous=_synchronous;
+@property (nonatomic) BOOL useLimitedLibraryMode; // @synthesize useLimitedLibraryMode=_useLimitedLibraryMode;
+@property (nonatomic) BOOL useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 + (unsigned long long)loadingOptionsFromLoadingMode:(long long)arg1;

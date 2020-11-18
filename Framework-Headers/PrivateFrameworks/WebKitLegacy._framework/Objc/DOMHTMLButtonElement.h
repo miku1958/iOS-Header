@@ -23,7 +23,6 @@
 
 - (void)click;
 - (int)structuralComplexityContribution;
-- (int)structuralComplexityContribution;
 
 @end
 

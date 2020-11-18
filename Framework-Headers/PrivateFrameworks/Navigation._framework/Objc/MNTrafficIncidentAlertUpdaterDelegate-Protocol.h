@@ -6,11 +6,11 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteTraffic, MNTrafficIncidentAlert, MNTrafficIncidentAlertUpdater;
+@class GEOComposedRoute, MNTrafficIncidentAlert, MNTrafficIncidentAlertUpdater;
 
 @protocol MNTrafficIncidentAlertUpdaterDelegate <NSObject>
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 didDismissAlert:(MNTrafficIncidentAlert *)arg2 withReroute:(BOOL)arg3;
-- (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 didSwitchToNewRoute:(GEOComposedRoute *)arg2 traffic:(GEOComposedRouteTraffic *)arg3 forAlert:(MNTrafficIncidentAlert *)arg4;
+- (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 didSwitchToNewRoute:(GEOComposedRoute *)arg2 forAlert:(MNTrafficIncidentAlert *)arg3;
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 invalidatedAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 receivedAlert:(MNTrafficIncidentAlert *)arg2 responseCallback:(void (^)(BOOL))arg3;
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 updatedAlert:(MNTrafficIncidentAlert *)arg2;

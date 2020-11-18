@@ -17,7 +17,9 @@
     AWDProactiveModelFittingMinibatchStats *_minibatchStats;
     AWDProactiveModelFittingModelInfo *_modelInfo;
     NSMutableArray *_precisionAtKs;
-    CDStruct_b5306035 _has;
+    struct {
+        unsigned int timestamp:1;
+    } _has;
 }
 
 @property (strong, nonatomic) AWDProactiveModelFittingEvalMetrics *evaluationMetrics; // @synthesize evaluationMetrics=_evaluationMetrics;

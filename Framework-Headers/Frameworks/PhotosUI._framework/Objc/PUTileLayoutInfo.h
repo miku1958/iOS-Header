@@ -54,8 +54,8 @@
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;
 - (id)layoutInfoByInterpolatingWithLayoutInfo:(id)arg1 mixFactor:(double)arg2 coordinateSystem:(id)arg3;
 - (id)layoutInfoWithAlpha:(double)arg1;
-- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 alpha:(double)arg3 tranform:(struct CGAffineTransform)arg4 zPosition:(double)arg5 coordinateSystem:(id)arg6;
-- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 tranform:(struct CGAffineTransform)arg3;
+- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 alpha:(double)arg3 transform:(struct CGAffineTransform)arg4 zPosition:(double)arg5 coordinateSystem:(id)arg6;
+- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 transform:(struct CGAffineTransform)arg3;
 - (id)layoutInfoWithCoordinateSystem:(id)arg1;
 - (id)layoutInfoWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3;
 - (id)layoutInfoWithZPosition:(double)arg1;

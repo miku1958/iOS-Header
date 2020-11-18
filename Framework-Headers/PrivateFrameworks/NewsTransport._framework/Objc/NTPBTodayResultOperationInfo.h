@@ -8,23 +8,25 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString, NTPBSectionSlotCostInfo;
+@class NSString, NTPBSectionSlotCostInfo, NTPBTodayModuleContentRequest;
 
 @interface NTPBTodayResultOperationInfo : PBCodable <NSCopying>
 {
     long long _embedsLimit;
     long long _leadingCellThumbnailSizePreset;
-    long long _nonLeadingCellThumbnailSizePreset;
+    double _maxHeadlineScale;
+    double _minHeadlineScale;
     long long _qualityOfService;
     double _scale;
     double _slotsLimit;
     long long _sourceNameImageSizePreset;
+    long long _thumbnailSizePreset;
     NSString *_assetsDirectoryFileURLString;
     unsigned int _dynamicThumbnailSizePresetMinimumHeightInPixels;
     unsigned int _dynamicThumbnailSizePresetMinimumWidthInPixels;
     NSString *_keyboardInputMode;
+    NTPBTodayModuleContentRequest *_request;
     NTPBSectionSlotCostInfo *_sectionSlotCostInfo;
-    BOOL _allowLeadingCell;
     BOOL _allowOnlyWatchEligibleSections;
     BOOL _allowSectionTitles;
     BOOL _fetchWidgetConfig;
@@ -35,14 +37,15 @@
     struct {
         unsigned int embedsLimit:1;
         unsigned int leadingCellThumbnailSizePreset:1;
-        unsigned int nonLeadingCellThumbnailSizePreset:1;
+        unsigned int maxHeadlineScale:1;
+        unsigned int minHeadlineScale:1;
         unsigned int qualityOfService:1;
         unsigned int scale:1;
         unsigned int slotsLimit:1;
         unsigned int sourceNameImageSizePreset:1;
+        unsigned int thumbnailSizePreset:1;
         unsigned int dynamicThumbnailSizePresetMinimumHeightInPixels:1;
         unsigned int dynamicThumbnailSizePresetMinimumWidthInPixels:1;
-        unsigned int allowLeadingCell:1;
         unsigned int allowOnlyWatchEligibleSections:1;
         unsigned int allowSectionTitles:1;
         unsigned int fetchWidgetConfig:1;
@@ -53,7 +56,6 @@
     } _has;
 }
 
-@property (nonatomic) BOOL allowLeadingCell; // @synthesize allowLeadingCell=_allowLeadingCell;
 @property (nonatomic) BOOL allowOnlyWatchEligibleSections; // @synthesize allowOnlyWatchEligibleSections=_allowOnlyWatchEligibleSections;
 @property (nonatomic) BOOL allowSectionTitles; // @synthesize allowSectionTitles=_allowSectionTitles;
 @property (strong, nonatomic) NSString *assetsDirectoryFileURLString; // @synthesize assetsDirectoryFileURLString=_assetsDirectoryFileURLString;
@@ -61,7 +63,6 @@
 @property (nonatomic) unsigned int dynamicThumbnailSizePresetMinimumWidthInPixels; // @synthesize dynamicThumbnailSizePresetMinimumWidthInPixels=_dynamicThumbnailSizePresetMinimumWidthInPixels;
 @property (nonatomic) long long embedsLimit; // @synthesize embedsLimit=_embedsLimit;
 @property (nonatomic) BOOL fetchWidgetConfig; // @synthesize fetchWidgetConfig=_fetchWidgetConfig;
-@property (nonatomic) BOOL hasAllowLeadingCell;
 @property (nonatomic) BOOL hasAllowOnlyWatchEligibleSections;
 @property (nonatomic) BOOL hasAllowSectionTitles;
 @property (readonly, nonatomic) BOOL hasAssetsDirectoryFileURLString;
@@ -71,28 +72,34 @@
 @property (nonatomic) BOOL hasFetchWidgetConfig;
 @property (readonly, nonatomic) BOOL hasKeyboardInputMode;
 @property (nonatomic) BOOL hasLeadingCellThumbnailSizePreset;
-@property (nonatomic) BOOL hasNonLeadingCellThumbnailSizePreset;
+@property (nonatomic) BOOL hasMaxHeadlineScale;
+@property (nonatomic) BOOL hasMinHeadlineScale;
 @property (nonatomic) BOOL hasPreferCompactSectionName;
 @property (nonatomic) BOOL hasPreferCompactSourceName;
 @property (nonatomic) BOOL hasQualityOfService;
+@property (readonly, nonatomic) BOOL hasRequest;
 @property (nonatomic) BOOL hasRespectsWidgetSlotsLimit;
 @property (nonatomic) BOOL hasRespectsWidgetVisibleSectionsPerQueueLimit;
 @property (nonatomic) BOOL hasScale;
 @property (readonly, nonatomic) BOOL hasSectionSlotCostInfo;
 @property (nonatomic) BOOL hasSlotsLimit;
 @property (nonatomic) BOOL hasSourceNameImageSizePreset;
+@property (nonatomic) BOOL hasThumbnailSizePreset;
 @property (strong, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
 @property (nonatomic) long long leadingCellThumbnailSizePreset; // @synthesize leadingCellThumbnailSizePreset=_leadingCellThumbnailSizePreset;
-@property (nonatomic) long long nonLeadingCellThumbnailSizePreset; // @synthesize nonLeadingCellThumbnailSizePreset=_nonLeadingCellThumbnailSizePreset;
+@property (nonatomic) double maxHeadlineScale; // @synthesize maxHeadlineScale=_maxHeadlineScale;
+@property (nonatomic) double minHeadlineScale; // @synthesize minHeadlineScale=_minHeadlineScale;
 @property (nonatomic) BOOL preferCompactSectionName; // @synthesize preferCompactSectionName=_preferCompactSectionName;
 @property (nonatomic) BOOL preferCompactSourceName; // @synthesize preferCompactSourceName=_preferCompactSourceName;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (strong, nonatomic) NTPBTodayModuleContentRequest *request; // @synthesize request=_request;
 @property (nonatomic) BOOL respectsWidgetSlotsLimit; // @synthesize respectsWidgetSlotsLimit=_respectsWidgetSlotsLimit;
 @property (nonatomic) BOOL respectsWidgetVisibleSectionsPerQueueLimit; // @synthesize respectsWidgetVisibleSectionsPerQueueLimit=_respectsWidgetVisibleSectionsPerQueueLimit;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (strong, nonatomic) NTPBSectionSlotCostInfo *sectionSlotCostInfo; // @synthesize sectionSlotCostInfo=_sectionSlotCostInfo;
 @property (nonatomic) double slotsLimit; // @synthesize slotsLimit=_slotsLimit;
 @property (nonatomic) long long sourceNameImageSizePreset; // @synthesize sourceNameImageSizePreset=_sourceNameImageSizePreset;
+@property (nonatomic) long long thumbnailSizePreset; // @synthesize thumbnailSizePreset=_thumbnailSizePreset;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

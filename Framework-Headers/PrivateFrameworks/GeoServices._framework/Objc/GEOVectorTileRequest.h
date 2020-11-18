@@ -50,22 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_accessKey:1;
         unsigned int read_countryCode:1;
         unsigned int read_languageCode:1;
-        unsigned int wrote_accessKey:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_languageCode:1;
-        unsigned int wrote_lineId:1;
-        unsigned int wrote_latitudeHint:1;
-        unsigned int wrote_longitudeHint:1;
-        unsigned int wrote_scale:1;
-        unsigned int wrote_size:1;
-        unsigned int wrote_style:1;
-        unsigned int wrote_version:1;
-        unsigned int wrote_x:1;
-        unsigned int wrote_y:1;
-        unsigned int wrote_z:1;
-        unsigned int wrote_preflight:1;
-        unsigned int wrote_venuesPreflight:1;
-        unsigned int wrote_vloc:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -104,9 +89,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAccessKey;
-- (void)_readCountryCode;
-- (void)_readLanguageCode;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -114,7 +96,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

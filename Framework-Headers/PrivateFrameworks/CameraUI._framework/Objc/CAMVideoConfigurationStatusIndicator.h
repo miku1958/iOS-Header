@@ -6,22 +6,25 @@
 
 #import <CameraUI/CAMControlStatusIndicator.h>
 
-@class UILabel;
+@class UIImageView, UILabel;
 @protocol CAMVideoConfigurationStatusIndicatorDelegate;
 
 @interface CAMVideoConfigurationStatusIndicator : CAMControlStatusIndicator
 {
+    long long _layoutStyle;
     id<CAMVideoConfigurationStatusIndicatorDelegate> _touchDelegate;
     long long _resolution;
     long long _framerate;
     UILabel *__resolutionLabel;
     UILabel *__separatorLabel;
     UILabel *__framerateLabel;
+    UIImageView *__borderImageView;
     struct CGSize __resolutionSize;
     struct CGSize __separatorSize;
     struct CGSize __framerateSize;
 }
 
+@property (readonly, nonatomic) UIImageView *_borderImageView; // @synthesize _borderImageView=__borderImageView;
 @property (readonly, nonatomic) UILabel *_framerateLabel; // @synthesize _framerateLabel=__framerateLabel;
 @property (nonatomic) struct CGSize _framerateSize; // @synthesize _framerateSize=__framerateSize;
 @property (readonly, nonatomic) UILabel *_resolutionLabel; // @synthesize _resolutionLabel=__resolutionLabel;
@@ -29,6 +32,7 @@
 @property (readonly, nonatomic) UILabel *_separatorLabel; // @synthesize _separatorLabel=__separatorLabel;
 @property (nonatomic) struct CGSize _separatorSize; // @synthesize _separatorSize=__separatorSize;
 @property (nonatomic) long long framerate; // @synthesize framerate=_framerate;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long resolution; // @synthesize resolution=_resolution;
 @property (weak, nonatomic) id<CAMVideoConfigurationStatusIndicatorDelegate> touchDelegate; // @synthesize touchDelegate=_touchDelegate;
 
@@ -43,9 +47,11 @@
 - (BOOL)_togglesResolutionForTouchAtLocation:(struct CGPoint)arg1;
 - (BOOL)_togglesResolutionOrFramerateForTouchAtLocation:(struct CGPoint)arg1;
 - (void)_updateAppearance;
+- (struct UIEdgeInsets)alignmentRectInsets;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)imageNameForCurrentState;
 - (id)init;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;

@@ -29,8 +29,8 @@
 @property (readonly, nonatomic) long long certifiedDeliveryVersion; // @synthesize certifiedDeliveryVersion=_certifiedDeliveryVersion;
 @property (strong, nonatomic) NSDictionary *deliveryStatusContext; // @synthesize deliveryStatusContext=_deliveryStatusContext;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
-@property (readonly, nonatomic) NSNumber *failureReason; // @synthesize failureReason=_failureReason;
-@property (readonly, nonatomic) NSString *failureReasonMessage; // @synthesize failureReasonMessage=_failureReasonMessage;
+@property (strong, nonatomic) NSNumber *failureReason; // @synthesize failureReason=_failureReason;
+@property (strong, nonatomic) NSString *failureReasonMessage; // @synthesize failureReasonMessage=_failureReasonMessage;
 @property (nonatomic) BOOL generateDeliveryReceipt; // @synthesize generateDeliveryReceipt=_generateDeliveryReceipt;
 @property (readonly, nonatomic) NSString *localURI; // @synthesize localURI=_localURI;
 @property (readonly, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;

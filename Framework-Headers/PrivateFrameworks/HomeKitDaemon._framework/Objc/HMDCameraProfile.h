@@ -9,16 +9,20 @@
 #import <HomeKitDaemon/HMDCameraClipManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraProfileSettingsManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraSettingProactiveReaderDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCameraSignificantEventListenerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraClipManager, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraProfileSettingsModel, HMDCameraRecordingManager, HMDCameraResidentMessageHandler, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, NSMutableArray, NSSet, NSString, NSUUID;
+@class HMDCameraClipManager, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraRecordingManager, HMDCameraRecordingReachabilityEventManager, HMDCameraResidentMessageHandler, HMDCameraSignificantEventListener, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, HMFTimer, NSMutableArray, NSSet, NSString, NSUUID, _HMCameraUserSettings;
 
-@interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraSettingProactiveReaderDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraClipManagerDelegate>
+@interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraSettingProactiveReaderDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraSignificantEventListenerDelegate, HMFNetMonitorDelegate, HMFTimerDelegate, HMDCameraClipManagerDelegate>
 {
     BOOL _microphonePresent;
     BOOL _speakerPresent;
     NSUUID *_cloudZoneUUID;
     HMDCameraClipManager *_clipManager;
     HMDService *_recordingManagementService;
+    HMDCameraSignificantEventListener *_significantEventListener;
     HMDHAPAccessory *_hapAccessory;
     NSSet *_cameraStreamManagers;
     HMDCameraSnapshotManager *_snapshotManager;
@@ -27,10 +31,13 @@
     HMFNetMonitor *_networkMonitor;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
     HMDCameraProfileSettingsManager *_cameraSettingsManager;
-    CDUnknownBlockType _recordingManagerFactory;
+    HMDCameraRecordingReachabilityEventManager *_reachabilityEventManager;
+    HMFTimer *_recordingEventsCleanupTimer;
     HMDCameraClipUserNotificationCenter *_clipUserNotificationCenter;
     HMDPredicateUtilities *_predicateUtilities;
     HMDCameraRecordingManager *_cameraRecordingManager;
+    CDUnknownBlockType _recordingEventsCleanupTimerFactory;
+    CDUnknownBlockType _recordingManagerFactory;
 }
 
 @property (strong) HMDCameraRecordingManager *cameraRecordingManager; // @synthesize cameraRecordingManager=_cameraRecordingManager;
@@ -39,7 +46,7 @@
 @property (strong) HMDCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
 @property (strong) HMDCameraClipUserNotificationCenter *clipUserNotificationCenter; // @synthesize clipUserNotificationCenter=_clipUserNotificationCenter;
 @property (strong) NSUUID *cloudZoneUUID; // @synthesize cloudZoneUUID=_cloudZoneUUID;
-@property (readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
+@property (readonly) _HMCameraUserSettings *currentSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak) HMDHAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
@@ -47,35 +54,43 @@
 @property (readonly, nonatomic, getter=isMicrophonePresent) BOOL microphonePresent; // @synthesize microphonePresent=_microphonePresent;
 @property (readonly) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property (strong) HMDPredicateUtilities *predicateUtilities; // @synthesize predicateUtilities=_predicateUtilities;
+@property (readonly) HMDCameraRecordingReachabilityEventManager *reachabilityEventManager; // @synthesize reachabilityEventManager=_reachabilityEventManager;
+@property (strong) HMFTimer *recordingEventsCleanupTimer; // @synthesize recordingEventsCleanupTimer=_recordingEventsCleanupTimer;
+@property (copy) CDUnknownBlockType recordingEventsCleanupTimerFactory; // @synthesize recordingEventsCleanupTimerFactory=_recordingEventsCleanupTimerFactory;
 @property (readonly) HMDService *recordingManagementService; // @synthesize recordingManagementService=_recordingManagementService;
-@property (readonly) CDUnknownBlockType recordingManagerFactory; // @synthesize recordingManagerFactory=_recordingManagerFactory;
+@property (copy) CDUnknownBlockType recordingManagerFactory; // @synthesize recordingManagerFactory=_recordingManagerFactory;
 @property (readonly) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly) NSMutableArray *settingProactiveReaders; // @synthesize settingProactiveReaders=_settingProactiveReaders;
+@property (strong) HMDCameraSignificantEventListener *significantEventListener; // @synthesize significantEventListener=_significantEventListener;
 @property (readonly) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 @property (readonly, nonatomic, getter=isSpeakerPresent) BOOL speakerPresent; // @synthesize speakerPresent=_speakerPresent;
 @property (readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isCameraRecordingFeatureSupported) BOOL supportsCameraRecordingFeature;
 
++ (id)bulletinBoard;
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
++ (void)setBulletinBoard:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configureForRecording;
 - (id)_createCameraManagers:(id)arg1;
+- (void)_createCameraRecordingManager;
+- (void)_createSignificantEventListener;
 - (void)_handleNegotiateStreamRequest:(id)arg1;
 - (void)_handleStreamControlRequest:(id)arg1;
 - (void)_setControlSupport;
+- (BOOL)_shouldNotifyForSignificantEvent:(id)arg1 homePresence:(id)arg2;
 - (id)assistantObject;
 - (void)cameraProfileSettingsManager:(id)arg1 canDisableRecordingWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cameraProfileSettingsManager:(id)arg1 canEnableRecordingWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
-- (void)clipManager:(id)arg1 didAddSignificantEventNotification:(id)arg2;
-- (void)clipManager:(id)arg1 didDeleteClip:(id)arg2;
-- (BOOL)clipManager:(id)arg1 shouldAddNotificationForSignificantEvent:(id)arg2 withHomePresence:(id)arg3;
-- (void)clipManagerDidBecomeAvailable:(id)arg1;
-- (void)clipManagerDidBecomeUnavailable:(id)arg1;
+- (void)clipManager:(id)arg1 didDeleteClipWithUUID:(id)arg2;
+- (void)clipManager:(id)arg1 didUpdateSignificantEvent:(id)arg2 withHomePresence:(id)arg3;
 - (void)clipManagerDidDisableCloudStorage:(id)arg1;
+- (void)clipManagerDidStart:(id)arg1;
+- (void)clipManagerDidStartUpCloudZone:(id)arg1;
+- (void)clipManagerDidStop:(id)arg1;
 - (void)createCameraClipUserNotificationCenter;
 - (void)dealloc;
 - (id)dumpState;
@@ -83,13 +98,18 @@
 - (void)handleCameraProfileSettingsDidChangeNotification:(id)arg1;
 - (void)handleResidentsChanged:(id)arg1;
 - (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5;
-- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5 recordingManagerFactory:(CDUnknownBlockType)arg6;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5 reachabilityEventManager:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
-- (id)logIdentifier;
+- (void)listener:(id)arg1 didReceiveSignificantEvent:(id)arg2 heroFrameData:(id)arg3;
 - (id)messageReceiverChildren;
+- (void)networkMonitorIsReachable:(id)arg1;
+- (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)registerForMessages;
 - (void)removeCloudData;
 - (void)setUp;
+- (void)tearDownWithReplacementCameraProfile:(id)arg1;
+- (void)timerDidFire:(id)arg1;
+- (void)unconfigure;
 - (id)urlString;
 
 @end

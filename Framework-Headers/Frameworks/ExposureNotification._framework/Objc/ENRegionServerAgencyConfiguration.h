@@ -21,6 +21,7 @@
     NSURL *_agencyWebsiteURL;
     ENRegionServerAgencyLocalizedConfiguration *_localizedConfiguration;
     NSString *_legalConsentVersion;
+    NSURL *_revokedClassificationURL;
     NSURL *_verificationCodeLearnMoreURL;
 }
 
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *legalConsentVersion; // @synthesize legalConsentVersion=_legalConsentVersion;
 @property (copy, nonatomic) ENRegionServerAgencyLocalizedConfiguration *localizedConfiguration; // @synthesize localizedConfiguration=_localizedConfiguration;
 @property (readonly, copy, nonatomic) ENRegion *region; // @synthesize region=_region;
+@property (readonly, copy, nonatomic) NSURL *revokedClassificationURL; // @synthesize revokedClassificationURL=_revokedClassificationURL;
 @property (readonly, copy, nonatomic) NSURL *verificationCodeLearnMoreURL; // @synthesize verificationCodeLearnMoreURL=_verificationCodeLearnMoreURL;
 
 + (BOOL)supportsSecureCoding;

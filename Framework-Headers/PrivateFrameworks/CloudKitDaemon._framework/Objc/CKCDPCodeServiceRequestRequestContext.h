@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKCDPCodeServiceRequestOperationGroup, NSString;
+@class CKCDPCodeServiceRequestDatabaseOwner, CKCDPCodeServiceRequestOperationGroup, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestRequestContext : PBCodable <NSCopying>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_clientInfo;
     NSString *_containerName;
     int _databaseEnvironment;
-    int _databasePartition;
+    CKCDPCodeServiceRequestDatabaseOwner *_databaseOwnerId;
     int _databaseType;
     NSString *_deviceId;
     CKCDPCodeServiceRequestOperationGroup *_operationGroup;
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int dsid:1;
         unsigned int databaseEnvironment:1;
-        unsigned int databasePartition:1;
         unsigned int databaseType:1;
     } _has;
 }
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (strong, nonatomic) NSString *containerName; // @synthesize containerName=_containerName;
 @property (nonatomic) int databaseEnvironment; // @synthesize databaseEnvironment=_databaseEnvironment;
-@property (nonatomic) int databasePartition; // @synthesize databasePartition=_databasePartition;
+@property (strong, nonatomic) CKCDPCodeServiceRequestDatabaseOwner *databaseOwnerId; // @synthesize databaseOwnerId=_databaseOwnerId;
 @property (nonatomic) int databaseType; // @synthesize databaseType=_databaseType;
 @property (strong, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
 @property (nonatomic) unsigned long long dsid; // @synthesize dsid=_dsid;
@@ -44,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasClientInfo;
 @property (readonly, nonatomic) BOOL hasContainerName;
 @property (nonatomic) BOOL hasDatabaseEnvironment;
-@property (nonatomic) BOOL hasDatabasePartition;
+@property (readonly, nonatomic) BOOL hasDatabaseOwnerId;
 @property (nonatomic) BOOL hasDatabaseType;
 @property (readonly, nonatomic) BOOL hasDeviceId;
 @property (nonatomic) BOOL hasDsid;

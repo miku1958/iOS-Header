@@ -11,8 +11,6 @@
 @interface _TtC18HealthExperienceUI38DataTypeDetailFavoritesDescriptionCell : UICollectionViewCell
 {
     MISSING_TYPE *descriptionLabel;
-    MISSING_TYPE *favoritesController;
-    MISSING_TYPE *parentViewController;
     MISSING_TYPE *item;
 }
 

@@ -6,9 +6,8 @@
 
 #import <NewsSubscription/_TtC16NewsSubscription23BundlePurchasePrewarmer.h>
 
-#import <NewsSubscription/FCNetworkReachabilityObserving-Protocol.h>
-
-@interface _TtC16NewsSubscription23BundlePurchasePrewarmer (NewsSubscription) <FCNetworkReachabilityObserving>
+@interface _TtC16NewsSubscription23BundlePurchasePrewarmer (NewsSubscription)
+- (void)bundleSubscriptionDidExpire:(id)arg1;
 - (void)networkReachabilityDidChange:(id)arg1;
 @end
 

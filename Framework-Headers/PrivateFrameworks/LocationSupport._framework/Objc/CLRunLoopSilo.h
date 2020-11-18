@@ -12,6 +12,7 @@
 {
     double _currentLatchedAbsoluteTimestamp;
     CLRunLoopSiloThread *_siloThread;
+    BOOL _useCLPermissiveTimer;
 }
 
 - (void).cxx_destruct;
@@ -22,9 +23,12 @@
 - (double)currentLatchedAbsoluteTimestamp;
 - (id)debugDescription;
 - (id)getTimeCoercibleVariantInstance;
+- (BOOL)inPermissiveMode;
 - (id)initWithCurrentRunLoopAndIdentifier:(id)arg1;
+- (id)initWithCurrentRunLoopAndIdentifier:(id)arg1 bePermissive:(BOOL)arg2;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithUnderlyingRunLoop:(struct __CFRunLoop *)arg1;
+- (BOOL)isSuspended;
 - (id)newTimer;
 - (void)resume;
 - (id)runloop;

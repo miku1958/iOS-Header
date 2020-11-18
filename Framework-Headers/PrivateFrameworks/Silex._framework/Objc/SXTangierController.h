@@ -11,11 +11,12 @@
 #import <Silex/SXTextTangierInteractiveCanvasControllerDataSource-Protocol.h>
 #import <Silex/SXTextTangierInteractiveCanvasControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
+#import <Silex/TSDiOSCanvasViewControllerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, SXScrollView, SXTangierRepDirectLayerHostProvider, SXTangierTextRenderCollector, SXTextTangierCanvasViewController, SXTextTangierDocumentRoot, SXTextTangierInteractiveCanvasController, SXViewport, TSKDocumentRoot, TSWPSelection, UIView;
-@protocol SXComponentActionHandler, SXComponentController, SXComponentInteractionManager, SXTangierControllerDelegate, SXTangierDragItemProvider;
+@protocol SXComponentActionHandler, SXComponentController, SXComponentInteractionManager, SXDOMObjectProviding, SXTangierControllerDelegate, SXTangierDragItemProvider;
 
-@interface SXTangierController : NSObject <SXTextTangierInteractiveCanvasControllerDelegate, SXTextTangierInteractiveCanvasControllerDataSource, SXViewportChangeListener, SXTextComponentLayoutHosting, SXTextSelecting>
+@interface SXTangierController : NSObject <SXTextTangierInteractiveCanvasControllerDelegate, SXTextTangierInteractiveCanvasControllerDataSource, SXViewportChangeListener, TSDiOSCanvasViewControllerDelegate, SXTextComponentLayoutHosting, SXTextSelecting>
 {
     SXTextTangierDocumentRoot *_documentRoot;
     BOOL _enclosingCanvasScrolling;
@@ -34,6 +35,7 @@
     id<SXTangierDragItemProvider> _dragItemProvider;
     id<SXComponentController> _componentController;
     id<SXComponentInteractionManager> _componentInteractionManager;
+    id<SXDOMObjectProviding> _DOMObjectProvider;
     SXTangierTextRenderCollector *_textRenderCollector;
     SXTangierRepDirectLayerHostProvider *_directLayerHostProvider;
     UIView *_underRepsHost;
@@ -43,6 +45,7 @@
     NSMutableSet *_presentedTextViews;
 }
 
+@property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, nonatomic) UIView *aboveRepsHost; // @synthesize aboveRepsHost=_aboveRepsHost;
 @property (readonly, nonatomic) BOOL allowEditMenuToAppear;
 @property (readonly, nonatomic) BOOL allowTextEditingToBegin;
@@ -55,7 +58,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) SXTangierRepDirectLayerHostProvider *directLayerHostProvider; // @synthesize directLayerHostProvider=_directLayerHostProvider;
 @property (nonatomic) BOOL disableClippingForTiles; // @synthesize disableClippingForTiles=_disableClippingForTiles;
-@property (readonly, strong, nonatomic) TSKDocumentRoot *documentRoot;
+@property (readonly, strong, nonatomic) TSKDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property (readonly, nonatomic) id<SXTangierDragItemProvider> dragItemProvider; // @synthesize dragItemProvider=_dragItemProvider;
 @property (nonatomic, getter=isEnclosingCanvasScrolling) BOOL enclosingCanvasScrolling; // @synthesize enclosingCanvasScrolling=_enclosingCanvasScrolling;
 @property (readonly) unsigned long long hash;
@@ -88,13 +91,14 @@
 
 - (void).cxx_destruct;
 - (void)_fixLayoutOffsets;
+- (id)backgroundColorForDragUIPlatter;
 - (void)clearSelection;
 - (void)dealloc;
 - (void)didStartPresentingTextView:(id)arg1;
 - (void)didStopPresentingTextView:(id)arg1;
 - (void)didTransitionToPresented;
 - (void)endSelection;
-- (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6;
+- (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6 DOMObjectProvider:(id)arg7;
 - (id)interactiveCanvasController:(id)arg1 delegateConformingToProtocol:(id)arg2 forRep:(id)arg3;
 - (id)interactiveCanvasController:(id)arg1 dragItemForSmartField:(id)arg2 interaction:(id)arg3 session:(id)arg4;
 - (struct CGRect)interactiveCanvasController:(id)arg1 expandVisibleBoundsForClippingReps:(struct CGRect)arg2;

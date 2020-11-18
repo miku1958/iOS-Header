@@ -6,28 +6,29 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDBackingStoreModelObject, HMDHome, NSDictionary, NSString;
+@class HMDHome, NSDictionary, NSString;
 
 @interface HMDHomeSaveRequest : HMFObject
 {
+    BOOL _objectChange;
     BOOL _incrementGeneration;
     HMDHome *_home;
     NSString *_reason;
     NSDictionary *_information;
     unsigned long long _saveOptions;
-    HMDBackingStoreModelObject *_objectChange;
 }
 
 @property (readonly, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) BOOL incrementGeneration; // @synthesize incrementGeneration=_incrementGeneration;
 @property (readonly, nonatomic) NSDictionary *information; // @synthesize information=_information;
-@property (readonly, nonatomic) HMDBackingStoreModelObject *objectChange; // @synthesize objectChange=_objectChange;
+@property (readonly, nonatomic) BOOL objectChange; // @synthesize objectChange=_objectChange;
 @property (readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) unsigned long long saveOptions; // @synthesize saveOptions=_saveOptions;
 
 - (void).cxx_destruct;
+- (id)_initWithHome:(id)arg1 reason:(id)arg2 information:(id)arg3 postSyncNotification:(BOOL)arg4 objectChange:(BOOL)arg5 saveOptions:(unsigned long long)arg6;
 - (void)_updateSaveOptions:(BOOL)arg1 reason:(id)arg2;
-- (id)initWithHome:(id)arg1 reason:(id)arg2 information:(id)arg3 postSyncNotification:(BOOL)arg4 objectChange:(id)arg5;
+- (id)initWithHome:(id)arg1 reason:(id)arg2 information:(id)arg3 postSyncNotification:(BOOL)arg4 objectChange:(BOOL)arg5;
 - (id)initWithReason:(id)arg1 information:(id)arg2 postSyncNotification:(BOOL)arg3;
 - (id)initWithReason:(id)arg1 information:(id)arg2 saveOptions:(unsigned long long)arg3;
 

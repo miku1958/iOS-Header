@@ -8,15 +8,15 @@
 
 #import <PhotoVision/PVFaceClusteringProtocol-Protocol.h>
 
-@class NSDate, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSURL, PVCanceler, PVContext, PVDataAccessor, PVEventManager, PVQueue, PVSuggestionRequest, VNCanceller, VNClustererBuilder;
-@protocol PVVisionIntegrating;
+@class NSDate, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSURL, PVCanceler, PVContext, PVEventManager, PVQueue, PVSuggestionRequest, VNCanceller, VNClustererBuilder;
+@protocol PVPersistenceDelegate, PVVisionIntegrating;
 
 @interface PVClusterer : NSObject <PVFaceClusteringProtocol>
 {
     id<PVVisionIntegrating> _visionIntegration;
+    id<PVPersistenceDelegate> _persistenceDelegate;
     PVQueue *_processingQueue;
     PVContext *_context;
-    PVDataAccessor *_dataAccessor;
     NSURL *_cacheDirUrl;
     NSURL *_cacheFileUrl;
     NSString *_clusteringType;
@@ -60,10 +60,9 @@
 - (void).cxx_destruct;
 - (void)_cancelClusteringAndRestoreClusterCache:(BOOL)arg1;
 - (id)_faceObservationsFromFaceCSNs:(id)arg1;
-- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(BOOL)arg2 updatedFaces:(id)arg3 excludeClustered:(BOOL)arg4 groupingIdentifiers:(id)arg5;
+- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(BOOL)arg2 updatedFaces:(id)arg3 groupingIdentifiers:(id)arg4;
 - (id)_faceObservationsFromFaces:(id)arg1 assignClusterSeqNumberIfNeeded:(BOOL)arg2 updatedFaces:(id)arg3;
 - (BOOL)_performAndPersistClustersByAddingFaceObs:(id)arg1 groupingIdentifiers:(id)arg2 removingFaceObs:(id)arg3 updateFaces:(id)arg4 canceler:(id)arg5 error:(id *)arg6;
-- (id)_persistenceDelegate;
 - (void)_processingQueueDetermineNextClusterTriggeringAccumulatedChangesCountIfNecessary;
 - (BOOL)_processingQueueGetFaceClusterSequenceNumbersInClusterCache:(id *)arg1 lastClusterSequenceNumber:(unsigned long long *)arg2 error:(id *)arg3;
 - (BOOL)_processingQueueGetVisionClusters:(id)arg1 minimumClusterSize:(unsigned long long)arg2 returnClusterAsCountedSet:(BOOL)arg3 error:(id *)arg4;
@@ -97,7 +96,7 @@
 - (id)distanceBetweenLevel0ClusterIdentifiedByFaceCSN:(unsigned long long)arg1 andLevel0ClusterIdentifiedByFaceCSN:(unsigned long long)arg2 error:(id *)arg3;
 - (id)distancesFromClustersIdentifiedByFaceCSNs:(id)arg1 toClustersIdentifiedByFaceCSNs:(id)arg2 error:(id *)arg3;
 - (BOOL)getClusters:(id *)arg1 threshold:(double *)arg2 utilizingGPU:(BOOL *)arg3 error:(id *)arg4;
-- (id)initWithContext:(id)arg1 dataAccessor:(id)arg2 cacheDirectoryURL:(id)arg3 visionIntegration:(id)arg4;
+- (id)initWithContext:(id)arg1 persistenceDelegate:(id)arg2 cacheDirectoryURL:(id)arg3 visionIntegration:(id)arg4;
 - (BOOL)isReadyToReturnSuggestions;
 - (id)level0ClusterAsFaceCSNsByLevel0KeyFaceCSNForClusterIdentifiedByFaceCSN:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)numberOfAccumulatedClusterChanges;

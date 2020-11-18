@@ -40,6 +40,8 @@
 - (void)registerForBytesAvailableWithHandler:(void (^)(void))arg1;
 - (NSString *)securityProtocol;
 - (BOOL)setSecurityProtocol:(NSString *)arg1;
+- (void)startActivity;
+- (void)stopActivity;
 - (void)unregisterForBytesAvailable;
 - (long long)writeBytes:(const char *)arg1 length:(unsigned long long)arg2;
 @end

@@ -19,8 +19,10 @@
     OBTrayButton *_setupButton;
     OBLinkTrayButton *_notNowButton;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
+    NSString *_buttonOneText;
 }
 
+@property (strong, nonatomic) NSString *buttonOneText; // @synthesize buttonOneText=_buttonOneText;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

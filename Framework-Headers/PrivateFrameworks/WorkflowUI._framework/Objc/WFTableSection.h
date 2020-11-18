@@ -8,7 +8,7 @@
 
 #import <WorkflowUI/WFTreeObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, WFTableDataSource, WFTableSectionTreeNode;
+@class NSMutableArray, NSString, WFTableDataSource, WFTableSectionTreeNode;
 
 @interface WFTableSection : NSObject <WFTreeObserver>
 {
@@ -16,21 +16,14 @@
     NSString *_footerText;
     WFTableSectionTreeNode *_node;
     NSMutableArray *_mutableItems;
-    long long _cellStyle;
-    Class _cellClass;
-    CDUnknownBlockType _configurationBlock;
 }
 
-@property (readonly, nonatomic) Class cellClass; // @synthesize cellClass=_cellClass;
-@property (readonly, nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
-@property (readonly, nonatomic) CDUnknownBlockType configurationBlock; // @synthesize configurationBlock=_configurationBlock;
 @property (readonly, weak, nonatomic) WFTableDataSource *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *footerText; // @synthesize footerText=_footerText;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
-@property (strong, nonatomic) NSArray *items;
 @property (readonly, nonatomic) NSMutableArray *mutableItems; // @synthesize mutableItems=_mutableItems;
 @property (readonly, nonatomic) WFTableSectionTreeNode *node; // @synthesize node=_node;
 @property (readonly) Class superclass;
@@ -40,16 +33,12 @@
 + (id)sectionWithItems:(id)arg1;
 + (id)sectionWithStyle:(long long)arg1 representedObjects:(id)arg2 configurationBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (void)addItem:(id)arg1;
+- (void)applyItems:(id)arg1;
 - (unsigned long long)currentIndex;
-- (id)initWithCellClass:(Class)arg1 cellStyle:(long long)arg2 items:(id)arg3 representedObjects:(id)arg4 configurationBlock:(CDUnknownBlockType)arg5;
-- (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)initWithItems:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (unsigned long long)recursiveChildrenCount;
-- (void)removeItem:(id)arg1;
-- (void)removeItemAtIndex:(unsigned long long)arg1;
-- (void)setRepresentedObjects:(id)arg1;
 - (id)tableView;
 - (void)treeNode:(id)arg1 flattenedDescendentsDidChangeFrom:(id)arg2 to:(id)arg3 changeSource:(id)arg4;
 - (void)updateCellForItem:(id)arg1;

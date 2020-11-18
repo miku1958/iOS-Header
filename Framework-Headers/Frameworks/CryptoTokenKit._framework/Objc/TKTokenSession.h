@@ -19,11 +19,13 @@
     NSDictionary *_parameters;
     NSXPCConnection *_caller;
     NSNumber *_callerPID;
+    CDStruct_4c969caf _creatorAuditToken;
 }
 
 @property (readonly, nonatomic) LAContext *LAContext; // @synthesize LAContext=_LAContext;
 @property (readonly, nonatomic) NSXPCConnection *caller; // @synthesize caller=_caller;
 @property (strong) NSNumber *callerPID; // @synthesize callerPID=_callerPID;
+@property (nonatomic) CDStruct_4c969caf creatorAuditToken; // @synthesize creatorAuditToken=_creatorAuditToken;
 @property (weak) id<TKTokenSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) id keepAlive; // @synthesize keepAlive=_keepAlive;
 @property (readonly, nonatomic) NSString *name;
@@ -34,7 +36,7 @@
 
 - (void).cxx_destruct;
 - (void)attestKey:(id)arg1 usingKey:(id)arg2 nonce:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 success:(BOOL)arg3;
+- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(BOOL)arg3;
 - (void)beginAuthForOperation:(long long)arg1 constraint:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)beginRequest;
 - (void)bumpKey:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -50,7 +52,7 @@
 - (void)evaluateAuthOperation:(id)arg1 retry:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)finalizeAuthOperation:(id)arg1 evaluatedAuthOperation:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getAdvertisedItemsWithReply:(CDUnknownBlockType)arg1;
-- (void)getAttributesOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getAttributesOfObject:(id)arg1 isCertificate:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithToken:(id)arg1;
 - (void)objectID:(id)arg1 operation:(long long)arg2 inputData:(id)arg3 algorithms:(id)arg4 parameters:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)performKeyExchangeWithPublicKey:(id)arg1 usingKey:(id)arg2 algorithm:(id)arg3 parameters:(id)arg4 reply:(CDUnknownBlockType)arg5;

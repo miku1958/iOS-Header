@@ -10,6 +10,7 @@
 
 @protocol HRElectrocardiogramReportDataSource <NSObject>
 
+@property (readonly, nonatomic) long long activeAlgorithmVersion;
 @property (readonly, nonatomic) NSDateComponents *dateOfBirthComponents;
 @property (readonly, nonatomic) NSString *firstName;
 @property (readonly, nonatomic) NSString *lastName;

@@ -8,11 +8,10 @@
 
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableEnum, NSDictionary, NSString;
+@class INCodableEnum, NSString;
 
 @interface INCodableEnumAttribute : INCodableAttribute <NSSecureCoding>
 {
-    NSDictionary *_valuesByIndex;
     INCodableEnum *_codableEnum;
     NSString *_enumNamespace;
 }
@@ -22,6 +21,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionEnumTypeKey;
+- (id)__INCodableDescriptionEnumTypeNamespaceKey;
+- (id)__INIntentResponseCodableDescriptionEnumTypeKey;
+- (id)__INIntentResponseCodableDescriptionEnumTypeNamespaceKey;
+- (id)__INTypeCodableDescriptionEnumTypeKey;
+- (id)__INTypeCodableDescriptionEnumTypeNamespaceKey;
 - (Class)_relationshipValueTransformerClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;

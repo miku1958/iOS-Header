@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) unsigned int sessionEndedReason;
 @property (readonly, nonatomic) NSString *sessionID;
 
++ (void)requestNWConnectionforIDSGroupSessionUnicastParameter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)_internal;
 - (id)_internal_sessionWithValidityCheck;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     _SYCountedSemaphore *_changeConcurrencySemaphore;
     NSObject<OS_os_activity> *_changeWaitActivity;
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     BOOL _errorIsLocal;
     BOOL _hasSentEnd;
     _SYMessageTimerTable *_timers;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_messageExpiredWithSeqno:(unsigned long long)arg1 identifier:(id)arg2;
 - (void)_notifySessionComplete;
 - (void)_processNextState;
-- (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
+- (void)_sendSyncBatch:(id)arg1 nextState:(unsigned int)arg2;
 - (void)_sendSyncCancelled;
 - (void)_sendSyncCompleteAndRunBlock:(CDUnknownBlockType)arg1;
 - (void)_sendSyncRestart;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_sessionComplete;
 - (void)_setMessageTimerForSeqno:(unsigned long long)arg1;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (void)_setupChangeConcurrency;
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
@@ -60,9 +60,9 @@ __attribute__((visibility("hidden")))
 - (double)remainingSessionTime;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 - (BOOL)wasCancelled;
 
 @end

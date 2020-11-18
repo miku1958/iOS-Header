@@ -17,6 +17,7 @@
 @property (readonly) float confidence; // @synthesize confidence=_confidence;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 
+- (void)dealloc;
 - (id)initWithText:(id)arg1 confidence:(float)arg2;
 
 @end

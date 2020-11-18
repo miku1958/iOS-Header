@@ -6,13 +6,13 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSDateInterval, NSSet;
+@class NSArray, NSDateInterval;
 
 @protocol PLFrequentLocationProtocol <NSObject>
 
 @property (readonly) struct CLLocationCoordinate2D coordinate;
 @property (readonly) NSDateInterval *dateInterval;
-@property (readonly) NSSet *items;
+@property (readonly) NSArray *sortedMoments;
 
 @end
 

@@ -19,11 +19,15 @@
     int _completionReason;
     AWDNWDeviceReport *_deviceReport;
     AWDNWL2Report *_l2Report;
+    int _underlyingErrorCode;
+    int _underlyingErrorDomain;
     struct {
         unsigned int durationMsecs:1;
         unsigned int fragmentsQuenched:1;
         unsigned int timestamp:1;
         unsigned int completionReason:1;
+        unsigned int underlyingErrorCode:1;
+        unsigned int underlyingErrorDomain:1;
     } _has;
 }
 
@@ -39,8 +43,12 @@
 @property (nonatomic) BOOL hasFragmentsQuenched;
 @property (readonly, nonatomic) BOOL hasL2Report;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL hasUnderlyingErrorCode;
+@property (nonatomic) BOOL hasUnderlyingErrorDomain;
 @property (strong, nonatomic) AWDNWL2Report *l2Report; // @synthesize l2Report=_l2Report;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) int underlyingErrorCode; // @synthesize underlyingErrorCode=_underlyingErrorCode;
+@property (nonatomic) int underlyingErrorDomain; // @synthesize underlyingErrorDomain=_underlyingErrorDomain;
 
 - (int)StringAsCompletionReason:(id)arg1;
 - (id)completionReasonAsString:(int)arg1;

@@ -11,8 +11,8 @@
 #import <MapKit/VKMapViewCameraDelegate-Protocol.h>
 #import <MapKit/VKMapViewDelegate-Protocol.h>
 
-@class GEOMuninViewState, GEOStorefrontView, MKCompassView, MKHapticEngine, MKMapItem, MKMuninBumpFlash, MKMuninGestureController, NSArray, NSDate, NSLayoutConstraint, NSString, NSURL, UIImageView, UITapGestureRecognizer, VKLabelMarker, VKMapView, VKMuninMarker, _MKMuninLayerHostingView;
-@protocol MKMapServiceTicket, MKMuninViewDelegate;
+@class GEOMuninViewState, GEOStorefrontView, MKHapticEngine, MKMapItem, MKMuninBumpFlash, MKMuninGestureController, NSArray, NSDate, NSLayoutConstraint, NSString, NSURL, UIImageView, UITapGestureRecognizer, VKLabelMarker, VKMapView, VKMuninMarker, _MKMuninLayerHostingView;
+@protocol MKCompassView, MKMapServiceTicket, MKMuninViewDelegate;
 
 @interface MKMuninView : UIView <MKMuninGestureControllerDelegate, VKMapViewCameraDelegate, VKMapViewDelegate, NSCoding>
 {
@@ -22,11 +22,12 @@
     UIImageView *_transitionStartImageview;
     UIImageView *_transitionEndImageview;
     UIImageView *_transitionGridImageview;
-    MKCompassView *_compassView;
-    NSLayoutConstraint *_compassTopConstraint;
+    UIView<MKCompassView> *_compassView;
+    NSLayoutConstraint *_compassTopOrBottomConstraint;
     NSLayoutConstraint *_compassTrailingConstraint;
     UITapGestureRecognizer *_compassTapGestureRecognizer;
     MKMuninGestureController *_gestureController;
+    MKMuninBumpFlash *_bumpFlashView;
     VKMapView *_muninView;
     struct CLLocationCoordinate2D _lastCoordinate;
     NSArray *_lastGroundViews;
@@ -45,7 +46,6 @@
     NSDate *_startTime;
     int _triggerAction;
     MKHapticEngine *_hapticEngine;
-    MKMuninBumpFlash *_bumpFlashView;
     BOOL _hasEnteredMunin;
     BOOL _navigatingEnabled;
     BOOL _panningEnabled;
@@ -75,6 +75,7 @@
 @property (nonatomic) BOOL panningEnabled; // @synthesize panningEnabled=_panningEnabled;
 @property (nonatomic) BOOL pinchingEnabled; // @synthesize pinchingEnabled=_pinchingEnabled;
 @property (nonatomic) double presentationYaw;
+@property (readonly, nonatomic) MKMapItem *revGeoMapItem; // @synthesize revGeoMapItem=_revGeoMapItem;
 @property (readonly, nonatomic) VKLabelMarker *selectedLabelMarker;
 @property (readonly, nonatomic) NSURL *sharingURL;
 @property (nonatomic) BOOL showsPointLabels;
@@ -96,6 +97,7 @@
 - (void)_refineLabelMarker:(id)arg1;
 - (void)_resetViewState;
 - (void)_reverseGeocodeCoordinate:(struct CLLocationCoordinate2D)arg1;
+- (void)_setInitialLocationInfo;
 - (void)_updateCameraFrame;
 - (void)_updateCompass;
 - (void)_updateCompassInsets;
@@ -110,6 +112,8 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)jumpToCloseUpView;
+- (void)jumpToStandOffView;
 - (id)labelMarkerForCustomFeatureAnnotation:(id)arg1;
 - (void)mapLayer:(id)arg1 nearestJunctionDidChange:(id)arg2 currentRoad:(id)arg3;
 - (void)mapLayerDidChangeRegionAnimated:(BOOL)arg1;
@@ -139,6 +143,7 @@
 - (void)setPresentationYaw:(double)arg1 pitch:(double)arg2 animated:(BOOL)arg3;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
 - (BOOL)tapAtPoint:(struct CGPoint)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

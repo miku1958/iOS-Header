@@ -55,11 +55,13 @@ struct Clipper {
 struct GKCDecisionNode {
     struct vector<std::__1::pair<id, GKCDecisionNode *>, std::__1::allocator<std::__1::pair<id, GKCDecisionNode *>>> _field1;
     struct GKCDecisionNode *_field2;
-    id _field3;
-    id _field4;
+    unsigned long long _field3;
+    unsigned long long _field4;
     id _field5;
     id _field6;
     id _field7;
+    id _field8;
+    id _field9;
 };
 
 struct GKCDecisionTree {

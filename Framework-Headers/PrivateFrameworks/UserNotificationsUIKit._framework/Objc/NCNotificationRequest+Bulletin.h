@@ -11,6 +11,10 @@
 @interface NCNotificationRequest (Bulletin)
 
 @property (readonly, nonatomic) BBBulletin *bulletin;
+@property (readonly, copy, nonatomic) NSString *carPlayMessage;
+@property (readonly, copy, nonatomic) NSString *carPlayRequestIdentifier;
+@property (readonly, copy, nonatomic) NSString *carPlaySubTitle;
+@property (readonly, copy, nonatomic) NSString *carPlayTitle;
 @property (readonly, nonatomic) NSString *contactIdentifier;
 @property (readonly, copy, nonatomic) NSArray *defaultEnvironmentActions;
 @property (readonly, nonatomic) BOOL hasAttachments;
@@ -23,6 +27,7 @@
 + (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(BOOL)arg5 hasPlayLightsAndSirens:(BOOL)arg6;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(BOOL)arg5;
++ (id)requesterIdentifier;
 - (BOOL)hasSameContactAsNotificationRequest:(id)arg1;
 @end
 

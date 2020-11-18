@@ -52,9 +52,7 @@
 - (void)addRecord:(id)arg1;
 - (void)deactivate;
 - (void)didRegisterForAlarms;
-- (void)didRegisterForBackgroundTaskAgentJobs;
 - (id)fetchRecordsWithSourceIdentifier:(id)arg1;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (id)initWithUserNotificationCenter:(id)arg1 storage:(id)arg2 analyticsHandler:(id)arg3 deviceLockObserver:(id)arg4;
 - (id)notificationSourceForSourceIdentifier:(id)arg1;
 - (void)protectedDataDidBecomeAvailable;

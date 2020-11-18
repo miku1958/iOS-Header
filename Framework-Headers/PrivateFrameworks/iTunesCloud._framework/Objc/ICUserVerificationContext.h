@@ -8,12 +8,13 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ACAccount, ACAccountStore, ICUserIdentityProperties, ICUserIdentityStore;
+@class ACAccount, ACAccountStore, ICUserIdentityProperties, ICUserIdentityStore, NSString;
 
 @interface ICUserVerificationContext : NSObject <NSCopying>
 {
     long long _interactionLevel;
     ICUserIdentityProperties *_identityProperties;
+    NSString *_debugReason;
     ACAccount *_ACAccount;
     ACAccountStore *_ACAccountStore;
     ICUserIdentityStore *_identityStore;
@@ -22,6 +23,7 @@
 
 @property (strong, nonatomic) ACAccount *ACAccount; // @synthesize ACAccount=_ACAccount;
 @property (strong, nonatomic) ACAccountStore *ACAccountStore; // @synthesize ACAccountStore=_ACAccountStore;
+@property (copy, nonatomic) NSString *debugReason; // @synthesize debugReason=_debugReason;
 @property (copy, nonatomic) ICUserIdentityProperties *identityProperties; // @synthesize identityProperties=_identityProperties;
 @property (strong, nonatomic) ICUserIdentityStore *identityStore; // @synthesize identityStore=_identityStore;
 @property (nonatomic) long long interactionLevel; // @synthesize interactionLevel=_interactionLevel;

@@ -14,10 +14,11 @@
 {
     BOOL _isAudiobook;
     BOOL _isRestore;
+    BOOL _canPause;
     BOOL _isSample;
     BOOL _isPurchase;
-    BOOL _canPause;
     NSNumber *_storeID;
+    NSNumber *_storePlaylistID;
     NSString *_permLink;
     NSString *_downloadID;
     NSNumber *_percentComplete;
@@ -31,6 +32,8 @@
     NSString *_artistName;
     NSString *_title;
     NSString *_subtitle;
+    NSString *_collectionArtistName;
+    NSString *_collectionTitle;
     NSString *_genre;
     NSString *_thumbnailImageURL;
     NSString *_assetKind;
@@ -39,6 +42,8 @@
 @property (copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
 @property (copy, nonatomic) NSString *assetKind; // @synthesize assetKind=_assetKind;
 @property (nonatomic) BOOL canPause; // @synthesize canPause=_canPause;
+@property (copy, nonatomic) NSString *collectionArtistName; // @synthesize collectionArtistName=_collectionArtistName;
+@property (copy, nonatomic) NSString *collectionTitle; // @synthesize collectionTitle=_collectionTitle;
 @property (copy, nonatomic) NSString *downloadID; // @synthesize downloadID=_downloadID;
 @property (nonatomic) long long downloadPhase; // @synthesize downloadPhase=_downloadPhase;
 @property (strong, nonatomic) NSNumber *estimatedTimeRemaining; // @synthesize estimatedTimeRemaining=_estimatedTimeRemaining;
@@ -53,6 +58,7 @@
 @property (strong, nonatomic) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property (strong, nonatomic) NSNumber *storeAccountIdentifier; // @synthesize storeAccountIdentifier=_storeAccountIdentifier;
 @property (strong, nonatomic) NSNumber *storeID; // @synthesize storeID=_storeID;
+@property (strong, nonatomic) NSNumber *storePlaylistID; // @synthesize storePlaylistID=_storePlaylistID;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

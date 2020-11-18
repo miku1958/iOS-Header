@@ -7,21 +7,32 @@
 #import <objc/NSObject.h>
 
 #import <UserNotifications/NSCopying-Protocol.h>
+#import <UserNotifications/NSMutableCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@interface UNNotificationAttachmentOptions : NSObject <NSCopying, NSSecureCoding>
+@class NSDictionary;
+
+@interface UNNotificationAttachmentOptions : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
+    unsigned long long _displayLocation;
+    NSDictionary *_thumbnailGeneratorUserInfo;
 }
 
-+ (Class)optionsClassForFamily:(unsigned long long)arg1;
-+ (id)optionsClasses;
-+ (id)optionsForFamily:(unsigned long long)arg1 fromOptionsDictionary:(id)arg2;
-+ (id)optionsFromOptionsDictionary:(id)arg1;
-+ (struct CGRect)santizedClippingRect:(struct CGRect)arg1;
+@property (readonly, nonatomic) unsigned long long displayLocation; // @synthesize displayLocation=_displayLocation;
+@property (readonly, copy, nonatomic) NSDictionary *thumbnailGeneratorUserInfo; // @synthesize thumbnailGeneratorUserInfo=_thumbnailGeneratorUserInfo;
+
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)_initWithDisplayLocation:(unsigned long long)arg1 thumbnailGeneratorUserInfo:(id)arg2;
+- (id)_initWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

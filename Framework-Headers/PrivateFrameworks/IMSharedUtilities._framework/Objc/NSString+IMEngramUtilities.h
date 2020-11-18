@@ -12,7 +12,7 @@
 - (id)__im_filePathWithVariant:(id)arg1;
 - (id)__im_stringBySafelyAppendingPathComponent:(id)arg1;
 - (id)im_lastPathComponent;
-- (id)im_stripSpamLabel;
+- (id)im_stripCategoryLabel;
 - (BOOL)isArchivable_im;
 @end
 

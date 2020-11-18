@@ -6,11 +6,12 @@
 
 #import <BarcodeSupport/BCSAction-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class CPSClipMetadataRequest, NSArray, NSDictionary, NSString;
 
 @protocol BCSActionPrivate <BCSAction>
 
 @property (readonly, copy, nonatomic) NSArray *appLinks;
+@property (strong, nonatomic) CPSClipMetadataRequest *clipMetadataRequest;
 @property (readonly, copy, nonatomic) NSDictionary *debugDescriptionDictionary;
 @property (readonly, copy, nonatomic) NSString *extraPreviewText;
 @property (readonly, nonatomic) BOOL isInvalidDataAction;

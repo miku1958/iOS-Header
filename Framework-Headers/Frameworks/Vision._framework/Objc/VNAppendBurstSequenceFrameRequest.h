@@ -17,7 +17,7 @@
 @property (copy, nonatomic) NSString *burstFrameIdentifier; // @synthesize burstFrameIdentifier=_burstFrameIdentifier;
 @property (copy, nonatomic) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
 
-+ (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
@@ -33,7 +33,7 @@
 - (id)initWithTargetedImageURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (id)sequencedRequestPreviousObservationsKey;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

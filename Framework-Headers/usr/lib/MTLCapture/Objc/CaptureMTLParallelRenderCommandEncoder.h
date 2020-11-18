@@ -40,11 +40,12 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureCommandBuffer:(id)arg2;
 - (void)insertDebugSignpost:(id)arg1;
+- (id)originalObject;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoder;
 - (BOOL)respondsToSelector:(SEL)arg1;
-- (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
+- (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setDepthStoreAction:(unsigned long long)arg1;

@@ -19,6 +19,7 @@
 
 @interface WFAutomationListViewController : UITableViewController <WFCreateAutomationCoordinatorDelegate, WFEditAutomationCoordinatorDelegate, WFDatabaseResultObserver, WFHomeManagerEventObserver, HMHomeDelegate, HUTriggerEditorDelegate, UITableViewDataSource, UITableViewDelegate>
 {
+    BOOL _showsAddNewAutomationButton;
     WFDatabase *_database;
     WFTriggerManager *_triggerManager;
     UIView *_subheadWrapperView;
@@ -38,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WFHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) WFDatabaseResult *personalAutomationsDatabaseResult; // @synthesize personalAutomationsDatabaseResult=_personalAutomationsDatabaseResult;
+@property (nonatomic) BOOL showsAddNewAutomationButton; // @synthesize showsAddNewAutomationButton=_showsAddNewAutomationButton;
 @property (copy, nonatomic) NSArray *sortedPersonalAutomations; // @synthesize sortedPersonalAutomations=_sortedPersonalAutomations;
 @property (readonly, nonatomic) UIView *subheadWrapperView; // @synthesize subheadWrapperView=_subheadWrapperView;
 @property (readonly) Class superclass;
@@ -49,7 +51,7 @@
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)createAutomationCoordinatorDidCancel:(id)arg1;
 - (void)createAutomationCoordinatorDidFinish:(id)arg1;
-- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (void)databaseResultDidChange:(id)arg1;
 - (void)dealloc;
 - (void)editAutomationCoordinatorDidCancel:(id)arg1;
 - (void)editAutomationCoordinatorDidFinish:(id)arg1;
@@ -63,7 +65,6 @@
 - (id)initWithDatabase:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)showAddNewAutomationButton:(BOOL)arg1;
 - (BOOL)showEditViewForItem:(id)arg1;
 - (BOOL)showHomeAutomationEditorForTriggerItem:(id)arg1;
 - (BOOL)showPersonalAutomationEditorForConfiguredTrigger:(id)arg1;
@@ -77,6 +78,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)updateSubheadLayoutMargins;
 - (void)updateTableViewLayoutMargins;

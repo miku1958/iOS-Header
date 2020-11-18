@@ -13,11 +13,11 @@
 
 @interface GKMatchmakerHostViewController : GKExtensionRemoteViewController <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol>
 {
-    GKMatchmakerViewController *_delegateWeak;
+    GKMatchmakerViewController *_delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) GKMatchmakerViewController *delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) GKMatchmakerViewController *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game;
 @property (readonly) unsigned long long hash;
@@ -25,8 +25,8 @@
 
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
 + (id)matchmakerExtension;
+- (void).cxx_destruct;
 - (void)applicationWillEnterForeground;
-- (void)dealloc;
 - (void)extensionIsCanceling;
 - (id)extensionObjectProxy;
 - (void)inviterCancelled;
@@ -34,12 +34,14 @@
 - (void)setAcceptedInviteInternal:(id)arg1;
 - (void)setAutomatchFailedWithError:(id)arg1;
 - (void)setAutomatchPlayerCount:(long long)arg1;
+- (void)setConnectingStateForPlayer:(id)arg1;
 - (void)setDefaultInvitationMessage:(id)arg1;
 - (void)setExistingPlayers:(id)arg1;
 - (void)setFailedWithError:(id)arg1;
 - (void)setHosted:(BOOL)arg1;
 - (void)setInvitesFailedWithError:(id)arg1;
 - (void)setMatchRequestInternal:(id)arg1;
+- (void)setMatchmakingMode:(long long)arg1;
 - (void)setNearbyPlayer:(id)arg1 reachable:(BOOL)arg2;
 - (void)setPlayer:(id)arg1 connected:(BOOL)arg2;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;

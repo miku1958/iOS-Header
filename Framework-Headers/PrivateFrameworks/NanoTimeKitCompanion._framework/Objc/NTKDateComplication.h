@@ -16,15 +16,17 @@
 + (id)complicationWithDateStyle:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_addKeysToJSONDictionary:(id)arg1;
+- (id)_generateUniqueIdentifier;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (void)_migrateFromSkiHillWithCoder:(id)arg1;
 - (BOOL)appearsInDailySnapshotForFamily:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
+- (id)initWithComplicationType:(unsigned long long)arg1;
+- (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(BOOL)arg2;
 - (BOOL)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 
 @end

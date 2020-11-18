@@ -7,8 +7,10 @@
 #import <EventKit/EKCalendarNotification.h>
 
 @interface EKCalendarNotification (CUIKDescription)
+- (id)_identityStringForIdentity:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)_identityStringWithOptions:(unsigned long long)arg1;
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
+- (id)descriptionStrings:(unsigned long long)arg1;
 - (id)importantDescriptionStringWithOptions:(unsigned long long)arg1;
 - (id)senderStringWithOptions:(unsigned long long)arg1;
 - (BOOL)supportsDisplay;

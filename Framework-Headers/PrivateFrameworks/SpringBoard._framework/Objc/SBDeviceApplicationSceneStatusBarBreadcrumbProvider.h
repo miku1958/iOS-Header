@@ -38,9 +38,12 @@
 - (void)_handleBreadcrumbAction:(unsigned long long)arg1 analyticsSide:(unsigned long long)arg2;
 - (BOOL)_hasPrimaryBreadcrumb;
 - (BOOL)_hasSecondaryBreadcrumb;
+- (void)_installedApplicationsDidChange:(id)arg1;
 - (long long)_openStrategyForAppLinkState:(id)arg1;
 - (void)_presentAssistantFromBreadcrumb;
-- (void)_presentSpotlightFromBreadcrumbWithSource:(unsigned long long)arg1;
+- (void)_presentSpotlightFromBreadcrumb;
+- (void)_setCurrentBreadcrumbActionContext:(id)arg1;
+- (BOOL)_showTransientOvelayInPlace;
 - (BOOL)activateBreadcrumbIfPossible;
 - (BOOL)activateSecondaryBreadcrumbIfPossible;
 - (void)addObserver:(id)arg1;

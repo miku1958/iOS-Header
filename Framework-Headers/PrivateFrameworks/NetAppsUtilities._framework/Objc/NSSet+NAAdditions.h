@@ -9,6 +9,7 @@
 @interface NSSet (NAAdditions)
 + (id)na_setWithSafeObject:(id)arg1;
 - (BOOL)na_all:(CDUnknownBlockType)arg1;
+- (BOOL)na_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (BOOL)na_any:(CDUnknownBlockType)arg1;
 - (id)na_dictionaryByBucketingObjectsUsingKeyGenerator:(CDUnknownBlockType)arg1;
 - (id)na_dictionaryWithKeyGenerator:(CDUnknownBlockType)arg1;

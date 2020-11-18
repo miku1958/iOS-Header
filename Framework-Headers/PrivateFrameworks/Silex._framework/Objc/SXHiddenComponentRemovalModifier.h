@@ -20,7 +20,6 @@
 @property (readonly) Class superclass;
 
 - (void)modifyDOM:(id)arg1 context:(id)arg2;
-- (void)removeHiddenComponents:(id)arg1;
 
 @end
 

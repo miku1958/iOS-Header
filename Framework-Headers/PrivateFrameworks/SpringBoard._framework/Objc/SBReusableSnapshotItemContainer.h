@@ -6,24 +6,25 @@
 
 #import <SpringBoard/SBFluidSwitcherItemContainer.h>
 
-#import <SpringBoard/SBReusableView-Protocol.h>
+#import <SpringBoard/SBFluidSwitcherItemContainerReusable-Protocol.h>
 
-@class NSString, SBAppLayout;
+@class NSString;
 
-@interface SBReusableSnapshotItemContainer : SBFluidSwitcherItemContainer <SBReusableView>
+@interface SBReusableSnapshotItemContainer : SBFluidSwitcherItemContainer <SBFluidSwitcherItemContainerReusable>
 {
-    SBAppLayout *_snapshotAppLayout;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SBAppLayout *snapshotAppLayout; // @synthesize snapshotAppLayout=_snapshotAppLayout;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (id)_snapshotView;
+- (void)_updateSnapshotViewWithAppLayout:(id)arg1;
+- (void)conformsToProtocolSBFluidSwitcherItemContainerReusable;
+- (id)initWithFrame:(struct CGRect)arg1 appLayout:(id)arg2 delegate:(id)arg3 active:(BOOL)arg4;
 - (void)prepareForReuse;
+- (void)setAppLayout:(id)arg1;
 - (void)setContentView:(id)arg1;
 
 @end

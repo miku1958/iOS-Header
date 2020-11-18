@@ -13,6 +13,10 @@
     CBScalablePipeManager *_pipeManager;
     int _socket;
     BOOL _reliablePipe;
+    unsigned char _localCLVersion;
+    unsigned char _peerCLVersion;
+    unsigned int _localCLFeatures;
+    unsigned int _peerCLFeatures;
     CBCentral *_central;
     CBPeer *_peer;
     NSString *_name;
@@ -26,9 +30,13 @@
 @property (readonly, nonatomic) CBCentral *central; // @synthesize central=_central;
 @property (readonly, nonatomic) void *channel; // @synthesize channel=_channel;
 @property (readonly, nonatomic) NSInputStream *input; // @synthesize input=_input;
+@property (readonly, nonatomic) unsigned int localCLFeatures; // @synthesize localCLFeatures=_localCLFeatures;
+@property (readonly, nonatomic) unsigned char localCLVersion; // @synthesize localCLVersion=_localCLVersion;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSOutputStream *output; // @synthesize output=_output;
 @property (readonly, nonatomic) CBPeer *peer; // @synthesize peer=_peer;
+@property (readonly, nonatomic) unsigned int peerCLFeatures; // @synthesize peerCLFeatures=_peerCLFeatures;
+@property (readonly, nonatomic) unsigned char peerCLVersion; // @synthesize peerCLVersion=_peerCLVersion;
 @property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) BOOL reliablePipe; // @synthesize reliablePipe=_reliablePipe;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;

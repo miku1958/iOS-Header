@@ -30,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (void)_adjustPreviewFrame;
-- (BOOL)_canActivate;
 - (void)_cleanUp;
 - (void)_gestureBegan;
 - (void)_gestureCanceled;

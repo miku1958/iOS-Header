@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <Accounts/ACAccountStoreProtocol-Protocol.h>
+#import <Accounts/ACAccountStoreClientProtocol-Protocol.h>
 
 @class NSString;
+@protocol ACRemoteAccountStoreSessionDelegate;
 
-@interface ACAccountStoreClientSideListener : NSObject <ACAccountStoreProtocol>
+@interface ACAccountStoreClientSideListener : NSObject <ACAccountStoreClientProtocol>
 {
+    id<ACRemoteAccountStoreSessionDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,9 +21,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)sharedClientSideListener;
+- (void).cxx_destruct;
 - (void)accountCredentialsDidChangeForAccountWithIdentifier:(id)arg1;
-- (void)accountDidChange:(id)arg1 forType:(id)arg2;
+- (void)accountDidChange:(id)arg1 withChangeType:(int)arg2;
+- (void)connectionWasInvalidated;
+- (id)initWithDelegate:(id)arg1;
 
 @end
 

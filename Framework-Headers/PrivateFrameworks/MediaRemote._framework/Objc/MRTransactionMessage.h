@@ -6,7 +6,7 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class NSArray, NSMutableArray, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, NSArray, NSMutableArray;
 
 @interface MRTransactionMessage : MRProtocolMessage
 {
@@ -15,7 +15,7 @@
 
 @property (readonly, nonatomic) unsigned long long name;
 @property (readonly, nonatomic) NSArray *packets;
-@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property (readonly, nonatomic) MRPlayerPath *playerPath;
 
 - (void).cxx_destruct;
 - (id)initWithContentItems:(id)arg1 forPlayerPath:(id)arg2;

@@ -19,6 +19,7 @@
     CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _bluetoothAddressChangedHandler;
     CDUnknownBlockType _callChangedHandler;
+    CDUnknownBlockType _clamshellModeChangedHandler;
     CDUnknownBlockType _consoleUserChangedHandler;
     CDUnknownBlockType _familyUpdatedHandler;
     CDUnknownBlockType _manateeChangedHandler;
@@ -45,6 +46,9 @@
 @property (copy) CDUnknownBlockType bluetoothAddressChangedHandler; // @synthesize bluetoothAddressChangedHandler=_bluetoothAddressChangedHandler;
 @property (readonly, copy) NSData *bluetoothAddressData;
 @property (copy) CDUnknownBlockType callChangedHandler; // @synthesize callChangedHandler=_callChangedHandler;
+@property (readonly) unsigned int callFlags;
+@property (readonly) BOOL clamshellMode;
+@property (copy) CDUnknownBlockType clamshellModeChangedHandler; // @synthesize clamshellModeChangedHandler=_clamshellModeChangedHandler;
 @property (readonly) int connectedCallCount;
 @property (copy) CDUnknownBlockType consoleUserChangedHandler; // @synthesize consoleUserChangedHandler=_consoleUserChangedHandler;
 @property (readonly) unsigned int consoleUserID;
@@ -54,6 +58,7 @@
 @property (copy) CDUnknownBlockType familyUpdatedHandler; // @synthesize familyUpdatedHandler=_familyUpdatedHandler;
 @property (copy) CDUnknownBlockType firstUnlockHandler; // @synthesize firstUnlockHandler=_firstUnlockHandler;
 @property (readonly, nonatomic) BOOL firstUnlocked;
+@property (readonly, nonatomic) BOOL firstUnlockedSync;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly) BOOL manateeAvailable;
 @property (copy) CDUnknownBlockType manateeChangedHandler; // @synthesize manateeChangedHandler=_manateeChangedHandler;

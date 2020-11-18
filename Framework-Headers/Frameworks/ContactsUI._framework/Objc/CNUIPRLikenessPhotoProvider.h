@@ -14,23 +14,27 @@
 {
     NSData *_originalPhotoData;
     CNCache *_cache;
+    NSString *_likenessFingerprint;
 }
 
 @property (readonly, nonatomic) CNCache *cache; // @synthesize cache=_cache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *likenessFingerprint; // @synthesize likenessFingerprint=_likenessFingerprint;
 @property (readonly, nonatomic) NSData *originalPhotoData; // @synthesize originalPhotoData=_originalPhotoData;
 @property (readonly) Class superclass;
 
 + (struct CGImage *)cgImageFromData:(id)arg1;
++ (struct CGImage *)cgImageFromData:(id)arg1 maxSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (struct CGImage *)_cnui_circularImageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (struct CGImage *)_cnui_image;
+- (struct CGImage *)_cnui_imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)_cnui_likenessForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (unsigned long long)_cnui_likenessType;
 - (struct CGImage *)_cnui_roundedRectImageForSize:(struct CGSize)arg1 scale:(double)arg2;
-- (id)initWithPhotoData:(id)arg1;
+- (id)initWithPhotoData:(id)arg1 fingerprint:(id)arg2;
 - (struct CGImage *)renderCircularImageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (struct CGImage *)renderRoundedRectImageForSize:(struct CGSize)arg1 scale:(double)arg2;
 

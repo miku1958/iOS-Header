@@ -10,14 +10,22 @@
 
 @interface SISchemaTextToSpeechBegin : PBCodable
 {
-    int _audioOutputRoute;
     NSString *_aceID;
+    int _audioOutputRoute;
     SISchemaHardwareInterfaceIdentifier *_hardwareInterfaceVendorID;
+    struct {
+        unsigned int audioOutputRoute:1;
+    } _has;
+    BOOL _hasAceID;
+    BOOL _hasHardwareInterfaceVendorID;
 }
 
 @property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
 @property (nonatomic) int audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
 @property (strong, nonatomic) SISchemaHardwareInterfaceIdentifier *hardwareInterfaceVendorID; // @synthesize hardwareInterfaceVendorID=_hardwareInterfaceVendorID;
+@property (nonatomic) BOOL hasAceID; // @synthesize hasAceID=_hasAceID;
+@property (nonatomic) BOOL hasAudioOutputRoute;
+@property (nonatomic) BOOL hasHardwareInterfaceVendorID; // @synthesize hasHardwareInterfaceVendorID=_hasHardwareInterfaceVendorID;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

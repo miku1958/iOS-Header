@@ -28,5 +28,6 @@
 - (BOOL)postprocessRegularDocumentRoot:(TSKDocumentRoot *)arg1 delegate:(id<TSDImportExportDelegate>)arg2;
 - (TSUImage *)thumbnailImage;
 - (NSUUID *)uuidOfImportedDocument;
+- (void)willStartThemeOnlyImportWithDocumentRoot:(TSKDocumentRoot *)arg1;
 @end
 

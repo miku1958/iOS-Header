@@ -23,7 +23,7 @@
 - (id)asBaseFormat;
 - (unsigned long long)hash;
 - (id)initWithBase:(unsigned char)arg1 basePlaces:(unsigned char)arg2 baseUseMinusSign:(BOOL)arg3;
-- (id)initWithFormatType:(int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringFromDouble:(double)arg1 locale:(id)arg2;
 

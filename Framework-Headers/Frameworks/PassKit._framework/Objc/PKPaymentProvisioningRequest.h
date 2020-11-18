@@ -14,6 +14,7 @@
     NSArray *_certChain;
     BOOL _devSigned;
     PKPaymentDeviceProvisioningData *_deviceData;
+    BOOL _disableDeviceScore;
     long long _style;
     PKPaymentEligibilityResponse *_eligibilityResponse;
     NSString *_nonce;
@@ -32,6 +33,8 @@
 @property (copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
 @property (copy, nonatomic) PKDSPContext *context; // @synthesize context=_context;
 @property (copy, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
+@property (readonly, nonatomic, getter=isDeviceProvisioningDataExpected) BOOL deviceProvisioningDataExpected;
+@property (nonatomic) BOOL disableDeviceScore; // @synthesize disableDeviceScore=_disableDeviceScore;
 @property (strong, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
 @property (copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property (copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
@@ -49,6 +52,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEligibilityResponse:(id)arg1;
+- (id)initWithEligibilityResponse:(id)arg1 addRequestConfiguration:(id)arg2 addRequest:(id)arg3;
+- (id)initWithEligibilityResponse:(id)arg1 style:(long long)arg2;
 
 @end
 

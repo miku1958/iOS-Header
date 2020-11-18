@@ -14,9 +14,9 @@
 
 @interface HKConceptRelationship : NSObject <NSObject, NSCopying, NSSecureCoding>
 {
-    long long _identifier;
-    HKConcept *_owner;
     NSString *_name;
+    long long _identifier;
+    long long _type;
     HKConcept *_destination;
 }
 
@@ -25,20 +25,18 @@
 @property (readonly, copy, nonatomic) HKConcept *destination; // @synthesize destination=_destination;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, weak, nonatomic) HKConcept *owner; // @synthesize owner=_owner;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (id)relationshipWithIdentifier:(long long)arg1 type:(long long)arg2 destination:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(long long)arg1 owner:(id)arg2 name:(id)arg3 destination:(id)arg4;
-- (id)initWithOwner:(id)arg1 name:(id)arg2 destination:(id)arg3;
+- (id)initWithIdentifier:(long long)arg1 type:(long long)arg2 name:(id)arg3 destination:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (void)setOwner:(id)arg1;
 
 @end
 

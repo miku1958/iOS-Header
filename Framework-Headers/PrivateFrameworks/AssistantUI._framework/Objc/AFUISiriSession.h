@@ -35,7 +35,7 @@
     id<AFUISiriSessionLocalDelegate> _localDelegate;
     AFUISiriSessionInfo *_siriSessionInfo;
     NSArray *_sessionDelegateContext;
-    NSArray *_directActionContext;
+    NSArray *_directActionApplicationContexts;
     NSObject<OS_dispatch_group> *_currentSpeechRequestGroup;
     AFAnalyticsTurnBasedInstrumentationContext *_instrumentationTurnContext;
 }
@@ -45,7 +45,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<AFUISiriSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSArray *directActionContext; // @synthesize directActionContext=_directActionContext;
+@property (strong, nonatomic) NSArray *directActionApplicationContexts; // @synthesize directActionApplicationContexts=_directActionApplicationContexts;
 @property (nonatomic, getter=isEyesFree) BOOL eyesFree; // @synthesize eyesFree=_eyesFree;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_instrumentationTurnContext, setter=_setInstrumentationTurnContext:) AFAnalyticsTurnBasedInstrumentationContext *instrumentationTurnContext; // @synthesize instrumentationTurnContext=_instrumentationTurnContext;
@@ -67,6 +67,7 @@
 - (void)_handleRequestUpdateViewsCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleUnlockDeviceCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_hasActiveRequest;
+- (id)_invocationContextFromDirectActionEvent:(long long)arg1 appBundleIdentifier:(id)arg2;
 - (void)_localAuthenticationUIPresented;
 - (int)_mapInvocationSource:(long long)arg1;
 - (void)_outputVoiceDidChange:(id)arg1;
@@ -90,11 +91,13 @@
 - (void)_startSpeechRequestWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startSpeechRequestWithSpeechFileAtURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startSpeechRequestWithSpeechRequestOptions:(id)arg1 isInitialBringUp:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_startingRecordingAlertPolicyForSoundID:(id)arg1;
 - (long long)_state;
 - (id)_stateMachine;
 - (void)_updateActiveAccount:(id)arg1;
 - (void)_updateActiveAccount:(id)arg1 withNumberOfActiveAccounts:(unsigned long long)arg2;
 - (void)_updateAssistantVersion:(id)arg1;
+- (void)assistantConnection:(id)arg1 appLaunchFailedWithBundleIdentifier:(id)arg2;
 - (void)assistantConnection:(id)arg1 didChangeAudioSessionID:(unsigned int)arg2;
 - (void)assistantConnection:(id)arg1 didFinishAcousticIDRequestWithSuccess:(BOOL)arg2;
 - (void)assistantConnection:(id)arg1 didLoadAssistant:(id)arg2;
@@ -115,6 +118,7 @@
 - (void)assistantConnection:(id)arg1 startPlaybackDidFail:(long long)arg2;
 - (void)assistantConnection:(id)arg1 startUIRequestWithText:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)assistantConnection:(id)arg1 wantsToCacheImage:(id)arg2;
+- (void)assistantConnection:(id)arg1 willProcessAppLaunchWithBundleIdentifier:(id)arg2;
 - (void)assistantConnection:(id)arg1 willProcessStartPlayback:(long long)arg2 intent:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)assistantConnectionAudioSessionDidBeginInterruption:(id)arg1;
 - (void)assistantConnectionDidChangeAudioRecordingPower:(id)arg1;
@@ -156,7 +160,6 @@
 - (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)rollbackClearContext;
 - (CDUnknownBlockType)safeWrapResponseCompletion:(CDUnknownBlockType)arg1;
-- (void)sendReplyCommand:(id)arg1;
 - (void)setAlertContext;
 - (void)setApplicationContext;
 - (void)setApplicationContextForDirectAction:(BOOL)arg1;
@@ -166,6 +169,7 @@
 - (void)settingsConnectionDidChangeActiveAccount:(id)arg1;
 - (void)siriUIDidPresentDynamicSnippetWithInfo:(id)arg1;
 - (id)speechSynthesis;
+- (void)speechSynthesis:(id)arg1 didUpdatePowerLevelTo:(float)arg2;
 - (void)speechSynthesis:(id)arg1 prepareForSpeakingWithOptions:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)speechSynthesisConnectionIsRecording:(id)arg1;
 - (void)speechSynthesisDidFinish:(id)arg1;

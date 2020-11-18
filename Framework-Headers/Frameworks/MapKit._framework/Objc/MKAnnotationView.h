@@ -10,7 +10,7 @@
 #import <MapKit/MKLocatableObject-Protocol.h>
 #import <MapKit/_MKKVOProxyDelegate-Protocol.h>
 
-@class CALayer, GEORouteMatch, MKCalloutView, MKUserLocationAnnotationViewProxy, NSMutableArray, NSString, UIImage, VKAnchorWrapper, _MKAnnotationViewAnchor, _MKAnnotationViewCustomFeatureAnnotation, _MKKVOProxy;
+@class CALayer, GEORouteMatch, MKCalloutView, MKUsageCounter, MKUserLocationAnnotationViewProxy, NSMutableArray, NSString, UIImage, VKAnchorWrapper, _MKAnnotationViewAnchor, _MKAnnotationViewCustomFeatureAnnotation, _MKKVOProxy, _MKStaticMapView;
 @protocol MKAnnotation;
 
 @interface MKAnnotationView : UIView <_MKKVOProxyDelegate, MKAnnotationRepresentation, MKLocatableObject>
@@ -35,6 +35,7 @@
     _MKAnnotationViewCustomFeatureAnnotation *_customFeatureAnnotation;
     BOOL _subclassImplementsAlignmentRectInsets;
     unsigned long long _allowedCalloutEdges;
+    BOOL _shouldKeepCalloutVisible;
     id<MKAnnotation> _annotation;
     float _displayPriority;
     struct CGRect _collisionFrame;
@@ -54,6 +55,7 @@
     struct CGPoint _leftCalloutOffset;
     struct CGPoint _rightCalloutOffset;
     unsigned long long _dragState;
+    long long _calloutStyle;
     struct {
         unsigned int pendingSelectionAnimated:1;
         unsigned int disabled:1;
@@ -63,7 +65,6 @@
         unsigned int canDisplayDisclosureInCallout:1;
         unsigned int canDisplayPlacemarkInCallout:1;
         unsigned int draggable:1;
-        unsigned int useBalloonCallouts:1;
         unsigned int customTransformApplied:1;
         unsigned int internalTransformApplied:1;
         unsigned int animatingToCoordinate:1;
@@ -78,7 +79,13 @@
     BOOL _animatingToCoordinate;
     BOOL _tracking;
     BOOL _pendingSelectionAnimated;
+    float _zPriority;
+    float _selectedZPriority;
     double _direction;
+    _MKStaticMapView *_staticMapView;
+    MKUsageCounter *_usageCounter;
+    struct CGPoint _bottomCalloutOffset;
+    struct UIEdgeInsets _annotationTrackingInsets;
 }
 
 @property (nonatomic, getter=_isAnimatingToCoordinate, setter=_setAnimatingToCoordinate:) BOOL _animatingToCoordinate; // @synthesize _animatingToCoordinate;
@@ -92,9 +99,13 @@
 @property (nonatomic, getter=_isTracking, setter=_setTracking:) BOOL _tracking; // @synthesize _tracking;
 @property (readonly, nonatomic) MKUserLocationAnnotationViewProxy *_userLocationProxy;
 @property (nonatomic, getter=_allowedCalloutEdges, setter=_setAllowedCalloutEdges:) unsigned long long allowedCalloutEdges; // @synthesize allowedCalloutEdges=_allowedCalloutEdges;
+@property (readonly, nonatomic, getter=_allowedToShowCallout) BOOL allowedToShowCallout;
 @property (readonly, nonatomic) VKAnchorWrapper *anchor;
 @property (strong, nonatomic) id<MKAnnotation> annotation;
+@property (nonatomic, getter=_annotationTrackingInsets) struct UIEdgeInsets annotationTrackingInsets; // @synthesize annotationTrackingInsets=_annotationTrackingInsets;
+@property (nonatomic, getter=_bottomCalloutOffset, setter=_setBottomCalloutOffset:) struct CGPoint bottomCalloutOffset; // @synthesize bottomCalloutOffset=_bottomCalloutOffset;
 @property (nonatomic) struct CGPoint calloutOffset;
+@property (nonatomic, getter=_calloutStyle, setter=_setCalloutStyle:) long long calloutStyle; // @synthesize calloutStyle=_calloutStyle;
 @property (nonatomic) BOOL canShowCallout;
 @property (nonatomic) struct CGPoint centerOffset;
 @property (readonly, weak, nonatomic) MKAnnotationView *clusterAnnotationView; // @synthesize clusterAnnotationView=_clusterAnnotationView;
@@ -123,13 +134,18 @@
 @property (readonly, nonatomic) NSString *reuseIdentifier;
 @property (strong, nonatomic) UIView *rightCalloutAccessoryView; // @synthesize rightCalloutAccessoryView=_rightCalloutAccessoryView;
 @property (nonatomic) struct CGPoint rightCalloutOffset; // @synthesize rightCalloutOffset=_rightCalloutOffset;
+@property (readonly, nonatomic, getter=_isSelectable) BOOL selectable;
 @property (nonatomic, getter=isSelected) BOOL selected;
+@property (nonatomic) float selectedZPriority; // @synthesize selectedZPriority=_selectedZPriority;
 @property (nonatomic, getter=_selectionPriority, setter=_setSelectionPriority:) float selectionPriority; // @synthesize selectionPriority=_selectionPriority;
+@property (nonatomic, getter=_shouldKeepCalloutVisible, setter=_setShouldKeepCalloutVisible:) BOOL shouldKeepCalloutVisible; // @synthesize shouldKeepCalloutVisible=_shouldKeepCalloutVisible;
 @property (readonly, nonatomic, getter=_significantBounds) struct CGRect significantBounds;
+@property (weak, nonatomic, getter=_staticMapView, setter=_setStaticMapView:) _MKStaticMapView *staticMapView; // @synthesize staticMapView=_staticMapView;
 @property (nonatomic) long long subtitleVisibility; // @synthesize subtitleVisibility=_subtitleVisibility;
 @property (readonly) Class superclass;
 @property (nonatomic) long long titleVisibility; // @synthesize titleVisibility=_titleVisibility;
-@property (nonatomic, getter=_useBalloonCallouts, setter=_setUseBalloonCallouts:) BOOL useBalloonCallouts;
+@property (weak, nonatomic, getter=_usageCounter, setter=_setUsageCounter:) MKUsageCounter *usageCounter; // @synthesize usageCounter=_usageCounter;
+@property (nonatomic) float zPriority; // @synthesize zPriority=_zPriority;
 
 + (float)_defaultDisplayPriority;
 + (id)_disclosureCalloutButton;
@@ -140,23 +156,27 @@
 + (unsigned long long)_zIndex;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (Class)calloutViewClass;
-+ (id)currentLocationTitle;
 - (void).cxx_destruct;
 - (void)_addAnnotationObservation;
 - (id)_annotationContainer;
 - (BOOL)_canChangeOrientation;
 - (BOOL)_canDisplayDisclosureInCallout;
 - (BOOL)_canDisplayPlacemarkInCallout;
+- (float)_clampZPriority:(float)arg1;
 - (void)_commonInit;
 - (id)_containerView;
 - (id)_contentLayer;
 - (id)_customFeatureAnnotation;
+- (float)_defaultSelectedZPriority;
+- (float)_defaultZPriority;
 - (void)_didDragWithVelocity:(struct CGPoint)arg1;
 - (void)_didUpdatePosition;
+- (void)_dismissCallout:(BOOL)arg1;
 - (struct CGPoint)_draggingDropOffset;
+- (long long)_effectiveCalloutStyle;
 - (id)_effectiveSubtitlesIsCollidable:(BOOL *)arg1;
 - (id)_effectiveTitleIsCollidable:(BOOL *)arg1;
-- (unsigned long long)_effectiveZIndex;
+- (float)_effectiveZPriority;
 - (void)_enableRotationForHeadingMode:(double)arg1;
 - (id)_getPopover:(id)arg1;
 - (BOOL)_hasAlternateOrientation;
@@ -165,6 +185,7 @@
 - (BOOL)_isHiddenForReason:(unsigned long long)arg1;
 - (unsigned long long)_mapType;
 - (id)_mapView;
+- (void)_mapVisibleCenteringRectChanged;
 - (struct CGRect)_mapkit_visibleRect;
 - (void)_mkObserveValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGPoint)_offsetToAnnotationView:(id)arg1;
@@ -175,8 +196,6 @@
 - (double)_pointsForDistance:(double)arg1;
 - (void)_removeAnnotationObservation;
 - (void)_removePopover;
-- (void)_resetZIndex;
-- (void)_resetZIndexNotify:(BOOL)arg1;
 - (void)_setCanDisplayDisclosureInCallout:(BOOL)arg1;
 - (void)_setCanDisplayPlacemarkInCallout:(BOOL)arg1;
 - (void)_setDragState:(unsigned long long)arg1 animated:(BOOL)arg2;
@@ -187,14 +206,17 @@
 - (void)_setPositionOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)_setRotationRadians:(double)arg1 withAnimation:(id)arg2;
 - (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setSelectedZPriority:(float)arg1;
 - (void)_setVKNavigationPuckMarker:(id)arg1;
 - (void)_setZIndex:(unsigned long long)arg1;
-- (void)_setZIndex:(unsigned long long)arg1 notify:(BOOL)arg2;
+- (void)_setZPriority:(float)arg1;
 - (BOOL)_shouldDeselectWhenDragged;
 - (BOOL)_shouldShowCalloutIfSelected;
+- (void)_showCallout:(BOOL)arg1;
 - (void)_transitionTo:(long long)arg1;
 - (void)_unhideForDisplay;
 - (void)_updateAnchorPosition:(struct CGPoint)arg1 alignToPixels:(BOOL)arg2;
+- (void)_updateEffectiveZPriority;
 - (void)_updateFromMap;
 - (void)_userTrackingModeDidChange:(id)arg1;
 - (id)_vkNavigationPuckMarker;
@@ -216,7 +238,6 @@
 - (BOOL)isHidden;
 - (BOOL)isPersistent;
 - (BOOL)isProvidingCustomFeature;
-- (BOOL)isSelectable;
 - (void)layoutSubviews;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;

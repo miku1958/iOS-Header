@@ -22,7 +22,6 @@
 @property (copy) NSString *label;
 @property (readonly) Class superclass;
 
-- (void)acceptVisitor:(id)arg1;
 
 @end
 

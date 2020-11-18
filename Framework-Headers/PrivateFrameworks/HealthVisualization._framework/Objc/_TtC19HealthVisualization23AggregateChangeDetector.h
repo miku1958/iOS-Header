@@ -16,6 +16,8 @@
     MISSING_TYPE *deliveryQueue;
     MISSING_TYPE *changesHandler;
     MISSING_TYPE *queries;
+    MISSING_TYPE *otherChangePublishers;
+    MISSING_TYPE *otherChanges;
     MISSING_TYPE *lock;
     MISSING_TYPE *lock_pendingChangeSet;
     MISSING_TYPE *lock_pendingError;

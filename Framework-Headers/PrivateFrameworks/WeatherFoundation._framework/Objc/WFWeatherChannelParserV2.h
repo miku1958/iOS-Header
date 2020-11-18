@@ -32,11 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)parseAirQualityData:(id)arg1 location:(id)arg2 error:(id *)arg3;
 - (void)parseCommonComponents:(id)arg1 data:(id)arg2;
-- (id)parseCurrentCondition:(id)arg1 high:(id)arg2 low:(id)arg3;
-- (id)parseDailyForecasts:(id)arg1 date:(id)arg2;
+- (id)parseCurrentCondition:(id)arg1;
+- (id)parseDailyForecasts:(id)arg1;
 - (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6;
 - (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6 rules:(id)arg7;
-- (id)parseHourlyForecasts:(id)arg1 date:(id)arg2;
+- (id)parseHourlyForecasts:(id)arg1;
 
 @end
 

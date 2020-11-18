@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol TIAnalyticsServiceProvider;
+@protocol OS_dispatch_queue, TIAnalyticsServiceProvider;
 
 @interface TIAnalyticsService : NSObject
 {
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_eventSpecs;
     id<TIAnalyticsServiceProvider> _provider;
 }
@@ -21,27 +22,34 @@
 + (void)setMockInstance:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)_dispatchEventWithName:(id)arg1 values:(id)arg2 inputMode:(id)arg3 error:(id *)arg4;
+- (void)_dispatchEventWithName:(id)arg1 payload:(id)arg2 values:(id)arg3 inputMode:(id)arg4 testingParameters:(id)arg5 allowSparsePayload:(BOOL)arg6 withCompletionHandler:(CDUnknownBlockType)arg7;
+- (void)_registerEventSpec:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)addSettings:(id)arg1 toPayload:(id)arg2 errors:(id)arg3;
 - (void)appendToErrors:(id)arg1 code:(long long)arg2 message:(id)arg3;
 - (void)dispatchEventWithName:(id)arg1;
 - (BOOL)dispatchEventWithName:(id)arg1 error:(id *)arg2;
 - (void)dispatchEventWithName:(id)arg1 inputMode:(id)arg2;
 - (BOOL)dispatchEventWithName:(id)arg1 inputMode:(id)arg2 error:(id *)arg3;
+- (void)dispatchEventWithName:(id)arg1 inputMode:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)dispatchEventWithName:(id)arg1 payload:(id)arg2 testingParameters:(id)arg3 allowSparsePayload:(BOOL)arg4;
+- (BOOL)dispatchEventWithName:(id)arg1 payload:(id)arg2 testingParameters:(id)arg3 allowSparsePayload:(BOOL)arg4 error:(id *)arg5;
+- (void)dispatchEventWithName:(id)arg1 payload:(id)arg2 testingParameters:(id)arg3 allowSparsePayload:(BOOL)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)dispatchEventWithName:(id)arg1 values:(id)arg2;
 - (BOOL)dispatchEventWithName:(id)arg1 values:(id)arg2 error:(id *)arg3;
 - (void)dispatchEventWithName:(id)arg1 values:(id)arg2 inputMode:(id)arg3;
 - (BOOL)dispatchEventWithName:(id)arg1 values:(id)arg2 inputMode:(id)arg3 error:(id *)arg4;
-- (id)eventSpecFromName:(id)arg1;
+- (void)dispatchEventWithName:(id)arg1 values:(id)arg2 inputMode:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)dispatchEventWithName:(id)arg1 values:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)dispatchEventWithName:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithProvider:(id)arg1;
-- (BOOL)isEventSpecRegisteredWithName:(id)arg1;
-- (void)logDispatchErrorsForEventWithName:(id)arg1 errors:(id)arg2;
+- (void)queueCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)registerEventSpec:(id)arg1;
 - (BOOL)registerEventSpec:(id)arg1 error:(id *)arg2;
+- (void)registerEventSpec:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)sendCoreAnalyticsEventWithName:(id)arg1 payload:(id)arg2;
-- (id)settingsFromEventSpec:(id)arg1 inputMode:(id)arg2 errors:(id)arg3;
-- (id)settingsFromEventSpec:(id)arg1 values:(id)arg2 errors:(id)arg3;
+- (id)settingsFromInputMode:(id)arg1 eventSpec:(id)arg2 errors:(id)arg3;
+- (id)settingsFromPayload:(id)arg1 andValues:(id)arg2 eventSpec:(id)arg3 allowSparsePayload:(BOOL)arg4 errors:(id)arg5;
 
 @end
 

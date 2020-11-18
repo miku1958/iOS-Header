@@ -7,10 +7,12 @@
 #import <PhotosUICore/PXAssetCollectionActionManager.h>
 
 #import <PhotosUICore/PXActivityActionDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotoKitAssetCollectionActionPerformerInput-Protocol.h>
 
-@class NSDictionary, NSMapTable, NSString, PXAssetCollectionActionPerformer;
+@class NSDictionary, NSMapTable, NSString, PHFetchResult, PXAssetCollectionActionPerformer, PXAssetReference, PXAssetsDataSource;
+@protocol UIDragSession, UIDropSession;
 
-@interface PXPhotoKitAssetCollectionActionManager : PXAssetCollectionActionManager <PXActivityActionDelegate>
+@interface PXPhotoKitAssetCollectionActionManager : PXAssetCollectionActionManager <PXActivityActionDelegate, PXPhotoKitAssetCollectionActionPerformerInput>
 {
     NSMapTable *__actionTypeByBarButtonItem;
     NSDictionary *__performerClassesByType;
@@ -20,26 +22,32 @@
 @property (readonly, nonatomic) NSMapTable *_actionTypeByBarButtonItem; // @synthesize _actionTypeByBarButtonItem=__actionTypeByBarButtonItem;
 @property (strong, nonatomic, setter=_setActivePerformer:) PXAssetCollectionActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
 @property (readonly, nonatomic) NSDictionary *_performerClassesByType; // @synthesize _performerClassesByType=__performerClassesByType;
+@property (readonly, nonatomic) PXAssetsDataSource *assetsDataSource;
+@property (readonly, nonatomic) PHFetchResult *assetsFetchResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<UIDragSession> dragSession;
+@property (readonly, nonatomic) id<UIDropSession> dropSession;
+@property (readonly, nonatomic) PXAssetReference *dropTargetAssetReference;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PHFetchResult *people;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_executeActionTypeIfPossible:(id)arg1;
-- (Class)_firstPossiblePerformerForActionType:(id)arg1;
+- (Class)_firstPossiblePerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2;
 - (void)_handleActionPerformerComplete:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
 - (void)_handleBarButtonItem:(id)arg1;
-- (id)actionPerformerForActionType:(id)arg1;
+- (id)actionPerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2;
 - (id)activityForActionType:(id)arg1;
 - (id)alertActionForActionType:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
-- (BOOL)canPerformActionType:(id)arg1;
+- (BOOL)canPerformActionType:(id)arg1 assetCollectionReference:(id)arg2;
 - (BOOL)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
-- (id)initWithAssetCollection:(id)arg1 displayTitleInfo:(id)arg2;
-- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
+- (id)initWithAssetCollectionReference:(id)arg1 displayTitleInfo:(id)arg2;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2 assetCollectionReference:(id)arg3;
 - (void)performActivity:(id)arg1;
-- (id)systemImageNameForActionType:(id)arg1;
+- (id)systemImageNameForActionType:(id)arg1 assetCollectionReference:(id)arg2;
 
 @end
 

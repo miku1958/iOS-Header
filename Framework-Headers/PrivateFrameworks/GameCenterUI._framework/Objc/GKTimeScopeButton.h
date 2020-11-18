@@ -9,15 +9,16 @@
 @interface GKTimeScopeButton : GKDynamicButton
 {
     long long _timeScope;
+    long long _leaderboardOccurrence;
 }
 
+@property (nonatomic) long long leaderboardOccurrence; // @synthesize leaderboardOccurrence=_leaderboardOccurrence;
 @property (nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
 
 - (void)_commonInit;
 - (void)awakeFromNib;
-- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
+- (void)updateWithTitle:(id)arg1;
 
 @end
 

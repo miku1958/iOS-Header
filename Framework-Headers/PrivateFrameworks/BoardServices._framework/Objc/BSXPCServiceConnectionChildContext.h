@@ -11,15 +11,11 @@
 @interface BSXPCServiceConnectionChildContext : BSXPCServiceConnectionContext
 {
     BSXPCServiceConnectionRootContext *_parent;
-    unsigned long long _identifier;
     BOOL _remote;
+    unsigned long long _identifier;
 }
 
-@property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isRemote) BOOL remote; // @synthesize remote=_remote;
-
 - (void).cxx_destruct;
-- (id)_initWithParent:(id)arg1 identifier:(unsigned long long)arg2 remote:(BOOL)arg3 proem:(id)arg4;
 - (id)debugDescription;
 - (id)endpointDescription;
 - (unsigned long long)hash;

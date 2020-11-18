@@ -8,6 +8,7 @@
 
 @class NSRegularExpression, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MCLURLRequestRewriteRule : NSObject
 {
     CDUnknownBlockType _block;

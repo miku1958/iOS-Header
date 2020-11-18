@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -36,6 +38,19 @@ struct _NSRange {
     unsigned long long location;
     unsigned long long length;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    MISSING_TYPE *circlePosition[20];
+    MISSING_TYPE *circleProperties[20];
+    MISSING_TYPE *textureRotationVector;
+} CDStruct_7104cd25;
+
+typedef struct {
+    MISSING_TYPE *_field1[20];
+    MISSING_TYPE *_field2[20];
+} CDStruct_cb976e3b;
 
 #pragma mark Named Unions
 

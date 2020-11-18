@@ -6,8 +6,12 @@
 
 #import <PhotosUICore/PXSettings.h>
 
+#import <PhotosUI/SBSRemoteAlertHandleObserver-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface PUWelcomeSettings : PXSettings
+@interface PUWelcomeSettings : PXSettings <SBSRemoteAlertHandleObserver>
 {
     BOOL _alwaysShowWhatsNewWelcome;
     BOOL _alwaysShowCloudPhotoWelcome;
@@ -15,10 +19,15 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL alwaysShowCloudPhotoWelcome; // @synthesize alwaysShowCloudPhotoWelcome=_alwaysShowCloudPhotoWelcome;
 @property (nonatomic) BOOL alwaysShowWhatsNewWelcome; // @synthesize alwaysShowWhatsNewWelcome=_alwaysShowWhatsNewWelcome;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (id)parentSettings;
+- (void)remoteAlertHandleDidDeactivate:(id)arg1;
 - (void)setDefaultValues;
 
 @end

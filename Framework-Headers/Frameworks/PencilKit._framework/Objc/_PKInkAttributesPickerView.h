@@ -16,6 +16,7 @@
     id<_PKInkAttributesPickerViewDelegate> _delegate;
     PKInk *_ink;
     unsigned long long _displayMode;
+    double _minimumOpacityValue;
     _PKInkThicknessPicker *_thicknessPicker;
     _PKColorAlphaSlider *_colorAlphaSlider;
     UIView *_separatorView;
@@ -29,6 +30,7 @@
 @property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKInk *ink; // @synthesize ink=_ink;
+@property (nonatomic) double minimumOpacityValue; // @synthesize minimumOpacityValue=_minimumOpacityValue;
 @property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _PKInkThicknessPicker *thicknessPicker; // @synthesize thicknessPicker=_thicknessPicker;
@@ -38,6 +40,7 @@
 - (void)_colorAlphaSliderUserDidStartDraggingSlider:(id)arg1;
 - (void)_opacityValueChanged:(id)arg1;
 - (void)_thicknessValueChanged:(id)arg1;
+- (void)_updateUI;
 - (id)initWithInk:(id)arg1;
 - (void)layoutSubviews;
 - (void)setInk:(id)arg1 animated:(BOOL)arg2;

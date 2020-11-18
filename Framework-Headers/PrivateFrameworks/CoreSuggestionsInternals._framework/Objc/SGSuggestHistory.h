@@ -33,14 +33,15 @@
 - (void)confirmEventFromExternalDevice:(id)arg1;
 - (void)confirmFieldValues:(id)arg1 forStorageEvent:(id)arg2;
 - (id)confirmHashesForOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 forMatching:(BOOL)arg3;
+- (id)confirmHashesForOpaqueKeyWithoutTimestamp:(id)arg1 forMatching:(BOOL)arg2;
 - (id)confirmHashesForRemindersOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 forMatching:(BOOL)arg3;
 - (void)confirmOrRejectContact:(id)arg1;
-- (void)confirmOrRejectCuratedDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetailHashes:(id)arg1;
 - (void)confirmOrRejectRecordForContact:(id)arg1;
 - (void)confirmRealtimeContact:(id)arg1;
 - (void)confirmReminder:(id)arg1;
+- (void)confirmReminderFromExternalDevice:(id)arg1;
 - (void)confirmStorageEvent:(id)arg1;
 - (id)description;
 - (void)handleSyncedDataChanged:(id)arg1;
@@ -61,10 +62,12 @@
 - (id)init;
 - (id)initWithKVS:(id)arg1;
 - (BOOL)isConfirmedEvent:(id)arg1;
+- (BOOL)isConfirmedEventWithoutTimeStamp:(id)arg1;
 - (BOOL)isConfirmedReminder:(id)arg1;
 - (BOOL)isRejectedEvent:(id)arg1;
 - (BOOL)isRejectedReminder:(id)arg1;
 - (BOOL)isUpdatableContact:(id)arg1;
+- (BOOL)isValidCancelledEvent:(id)arg1;
 - (BOOL)isValidNewEvent:(id)arg1;
 - (BOOL)isValidNewReminder:(id)arg1;
 - (BOOL)isValidSuggestion:(id)arg1;
@@ -77,7 +80,9 @@
 - (id)mutableSetForKey:(id)arg1;
 - (void)pushAll:(id)arg1;
 - (void)pushConfirmedEventFields:(id)arg1;
+- (void)pushConfirmedEventWithoutTimestampFields:(id)arg1;
 - (void)pushConfirmedEvents:(id)arg1;
+- (void)pushConfirmedEventsWithoutTimestamp:(id)arg1;
 - (void)pushConfirmedReminders:(id)arg1;
 - (void)pushContacts:(id)arg1;
 - (void)pushDontUpdate:(id)arg1;
@@ -91,6 +96,7 @@
 - (id)rejectHashesForOpaqueKey:(id)arg1 forMatching:(BOOL)arg2;
 - (void)rejectRealtimeContact:(id)arg1;
 - (void)rejectReminder:(id)arg1;
+- (void)rejectReminderFromExternalDevice:(id)arg1;
 - (void)rejectStorageEvent:(id)arg1;
 - (void)removeConfirmationHistoryForEntityWithOpaqueKey:(id)arg1 creationTimestamp:(struct SGUnixTimestamp_)arg2;
 - (void)removeConfirmationHistoryForEvent:(id)arg1;
@@ -99,6 +105,7 @@
 - (id)setForKey:(id)arg1;
 - (void)setInternalStateAccordingToKVS;
 - (void)writeAndPushConfirmedEventHashes:(id)arg1;
+- (void)writeAndPushConfirmedEventWithoutTimestampHashes:(id)arg1;
 - (void)writeAndPushConfirmedReminderHashes:(id)arg1;
 - (void)writeAndPushRejectedEventHashes:(id)arg1;
 - (void)writeAndPushRejectedReminderHashes:(id)arg1;

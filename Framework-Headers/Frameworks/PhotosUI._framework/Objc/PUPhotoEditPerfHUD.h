@@ -6,80 +6,58 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, NSTimer, UILabel;
+@class NSString, PXHUDBoxedValueVisualization, PXHUDTimeIntervalVisualization, PXHUDView, PXHUDVisualization, PXTimeInterval;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditPerfHUD : UIView
 {
-    UILabel *_detailLabel;
-    UILabel *_clockLabel;
-    UILabel *_mainTimerLabel;
-    UILabel *_resourceTimerLabel;
-    UILabel *_resourceCheckingLabel;
-    UILabel *_resourceDownloadingLabel;
-    UILabel *_filterTimerLabel;
-    UILabel *_autoCalcTimerLabel;
-    UILabel *_saveTimerLabel;
-    NSTimer *_timer;
-    CDStruct_3139860e _mainTimerState;
-    CDStruct_3139860e _resourceTimerState;
-    CDStruct_3139860e _resourceCheckingState;
-    CDStruct_3139860e _resourceDownloadingState;
-    CDStruct_3139860e _filterTimerState;
-    CDStruct_3139860e _autoCalcTimerState;
-    CDStruct_3139860e _saveTimerState;
+    BOOL _firstSinceBoot;
+    BOOL _firstSinceLaunch;
+    PXTimeInterval *_enterEditTimeInterval;
+    PXTimeInterval *_resourceCheckingInterval;
+    PXTimeInterval *_resourceDownloadInterval;
+    PXTimeInterval *_resourceLoadingInterval;
+    PXTimeInterval *_autoCalcInterval;
+    PXTimeInterval *_filterInterval;
+    PXTimeInterval *_exitEditTimeInterval;
+    PXHUDView *_hudView;
+    PXHUDVisualization *_detailVisualization;
+    PXHUDBoxedValueVisualization *_firstSinceBootVisualization;
+    PXHUDBoxedValueVisualization *_firstSinceLaunchVisualization;
+    PXHUDTimeIntervalVisualization *_enterEditVisualization;
+    PXHUDTimeIntervalVisualization *_resourceLoadingVisualization;
+    PXHUDTimeIntervalVisualization *_resourceCheckingVisualization;
+    PXHUDTimeIntervalVisualization *_resourceDownloadVisualization;
+    PXHUDTimeIntervalVisualization *_autoCalcVisualization;
+    PXHUDTimeIntervalVisualization *_filterVisualization;
+    PXHUDTimeIntervalVisualization *_exitEditVisualization;
 }
 
-@property (strong, nonatomic) UILabel *autoCalcTimerLabel; // @synthesize autoCalcTimerLabel=_autoCalcTimerLabel;
-@property (nonatomic) CDStruct_3139860e autoCalcTimerState; // @synthesize autoCalcTimerState=_autoCalcTimerState;
-@property (strong, nonatomic) UILabel *clockLabel; // @synthesize clockLabel=_clockLabel;
-@property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (strong, nonatomic) PXTimeInterval *autoCalcInterval; // @synthesize autoCalcInterval=_autoCalcInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *autoCalcVisualization; // @synthesize autoCalcVisualization=_autoCalcVisualization;
 @property (copy, nonatomic) NSString *detailText;
-@property (strong, nonatomic) UILabel *filterTimerLabel; // @synthesize filterTimerLabel=_filterTimerLabel;
-@property (nonatomic) CDStruct_3139860e filterTimerState; // @synthesize filterTimerState=_filterTimerState;
-@property (strong, nonatomic) UILabel *mainTimerLabel; // @synthesize mainTimerLabel=_mainTimerLabel;
-@property (nonatomic) CDStruct_3139860e mainTimerState; // @synthesize mainTimerState=_mainTimerState;
-@property (strong, nonatomic) UILabel *resourceCheckingLabel; // @synthesize resourceCheckingLabel=_resourceCheckingLabel;
-@property (nonatomic) CDStruct_3139860e resourceCheckingState; // @synthesize resourceCheckingState=_resourceCheckingState;
-@property (strong, nonatomic) UILabel *resourceDownloadingLabel; // @synthesize resourceDownloadingLabel=_resourceDownloadingLabel;
-@property (nonatomic) CDStruct_3139860e resourceDownloadingState; // @synthesize resourceDownloadingState=_resourceDownloadingState;
-@property (strong, nonatomic) UILabel *resourceTimerLabel; // @synthesize resourceTimerLabel=_resourceTimerLabel;
-@property (nonatomic) CDStruct_3139860e resourceTimerState; // @synthesize resourceTimerState=_resourceTimerState;
-@property (strong, nonatomic) UILabel *saveTimerLabel; // @synthesize saveTimerLabel=_saveTimerLabel;
-@property (nonatomic) CDStruct_3139860e saveTimerState; // @synthesize saveTimerState=_saveTimerState;
-@property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
+@property (strong, nonatomic) PXHUDVisualization *detailVisualization; // @synthesize detailVisualization=_detailVisualization;
+@property (strong, nonatomic) PXTimeInterval *enterEditTimeInterval; // @synthesize enterEditTimeInterval=_enterEditTimeInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *enterEditVisualization; // @synthesize enterEditVisualization=_enterEditVisualization;
+@property (strong, nonatomic) PXTimeInterval *exitEditTimeInterval; // @synthesize exitEditTimeInterval=_exitEditTimeInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *exitEditVisualization; // @synthesize exitEditVisualization=_exitEditVisualization;
+@property (strong, nonatomic) PXTimeInterval *filterInterval; // @synthesize filterInterval=_filterInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *filterVisualization; // @synthesize filterVisualization=_filterVisualization;
+@property (nonatomic, getter=isFirstSinceBoot) BOOL firstSinceBoot; // @synthesize firstSinceBoot=_firstSinceBoot;
+@property (strong, nonatomic) PXHUDBoxedValueVisualization *firstSinceBootVisualization; // @synthesize firstSinceBootVisualization=_firstSinceBootVisualization;
+@property (nonatomic, getter=isFirstSinceLaunch) BOOL firstSinceLaunch; // @synthesize firstSinceLaunch=_firstSinceLaunch;
+@property (strong, nonatomic) PXHUDBoxedValueVisualization *firstSinceLaunchVisualization; // @synthesize firstSinceLaunchVisualization=_firstSinceLaunchVisualization;
+@property (strong, nonatomic) PXHUDView *hudView; // @synthesize hudView=_hudView;
+@property (strong, nonatomic) PXTimeInterval *resourceCheckingInterval; // @synthesize resourceCheckingInterval=_resourceCheckingInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *resourceCheckingVisualization; // @synthesize resourceCheckingVisualization=_resourceCheckingVisualization;
+@property (strong, nonatomic) PXTimeInterval *resourceDownloadInterval; // @synthesize resourceDownloadInterval=_resourceDownloadInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *resourceDownloadVisualization; // @synthesize resourceDownloadVisualization=_resourceDownloadVisualization;
+@property (strong, nonatomic) PXTimeInterval *resourceLoadingInterval; // @synthesize resourceLoadingInterval=_resourceLoadingInterval;
+@property (strong, nonatomic) PXHUDTimeIntervalVisualization *resourceLoadingVisualization; // @synthesize resourceLoadingVisualization=_resourceLoadingVisualization;
 
-+ (void)_updateLabel:(id)arg1 withState:(CDStruct_3139860e)arg2 prefix:(id)arg3;
 - (void).cxx_destruct;
-- (BOOL)_needsTimer;
-- (void)_timerTick;
-- (void)_updateAutoCalcTimerLabel;
-- (void)_updateFilterTimerLabel;
-- (void)_updateMainTimerLabel;
-- (void)_updateResourceCheckingLabel;
-- (void)_updateResourceDownloadingLabel;
-- (void)_updateResourceTimerLabel;
-- (void)_updateSaveTimerLabel;
-- (void)_updateTimer;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)startAutoCalcTimer;
-- (void)startFilterTimer;
-- (void)startMainTimer;
-- (void)startMainTimerWithTime:(double)arg1;
-- (void)startResourceCheckingTimer;
-- (void)startResourceDownloadingTimer;
-- (void)startResourceLoadingTimer;
-- (void)startSaveTimer;
-- (void)stopAndClearAllTimers;
-- (void)stopAutoCalcTimer;
-- (void)stopFilterTimer;
-- (void)stopMainTimer;
-- (void)stopResourceCheckingTimer;
-- (void)stopResourceDownloadingTimer;
-- (void)stopResourceLoadingTimer;
-- (void)stopSaveTimer;
 
 @end
 

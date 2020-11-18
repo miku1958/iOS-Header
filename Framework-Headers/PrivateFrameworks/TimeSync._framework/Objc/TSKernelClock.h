@@ -6,29 +6,28 @@
 
 #import <TimeSync/TSClock.h>
 
-@class __TSKernelClockNotification;
+@class IOKConnection, IOKInterestNotification, IOKNotificationPort, IOKService;
 
 @interface TSKernelClock : TSClock
 {
-    unsigned int _service;
-    unsigned int _connection;
-    struct IONotificationPort *_notificationPort;
-    unsigned int _interestNotification;
-    BOOL _serviceIsAlive;
-    __TSKernelClockNotification *_clockForNotification;
+    IOKService *_service;
+    IOKConnection *_connection;
+    IOKNotificationPort *_notificationPort;
+    IOKInterestNotification *_interestNotification;
+    struct os_unfair_lock_s _serviceLock;
 }
 
-@property (readonly, nonatomic) unsigned int connection; // @dynamic connection;
-@property (readonly, nonatomic) unsigned int service; // @dynamic service;
-@property (readonly, nonatomic) BOOL serviceIsAlive; // @dynamic serviceIsAlive;
+@property (readonly, nonatomic) IOKConnection *connection;
+@property (readonly, nonatomic) IOKService *service;
 
 + (id)availableKernelClockIdentifiers;
 + (id)clockNameForClockIdentifier:(unsigned long long)arg1;
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)diagnosticInfoForClockIdentifier:(unsigned long long)arg1;
-+ (id)diagnosticInfoForService:(unsigned int)arg1;
++ (id)diagnosticInfoForService:(id)arg1;
 + (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
-+ (unsigned int)serviceForClockIdentifier:(unsigned long long)arg1;
++ (id)serviceForClockIdentifier:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_handleInterestNotification:(unsigned int)arg1 withArgument:(void *)arg2;
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
 - (void)_handleNotification:(unsigned int)arg1 withArgs:(unsigned long long *)arg2 ofCount:(unsigned int)arg3;
@@ -47,7 +46,6 @@
 - (double)hostRateRatio;
 - (id)initWithClockIdentifier:(unsigned long long)arg1;
 - (BOOL)registerAsyncCallback;
-- (void)setServiceIsAlive:(BOOL)arg1;
 
 @end
 

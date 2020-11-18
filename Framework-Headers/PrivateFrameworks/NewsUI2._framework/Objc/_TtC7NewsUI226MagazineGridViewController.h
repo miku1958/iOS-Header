@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226MagazineGridViewController : TUViewController
 {
     MISSING_TYPE *styler;
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *alertPresenter;
+    MISSING_TYPE *toolbarManager;
 }
 
 - (void).cxx_destruct;

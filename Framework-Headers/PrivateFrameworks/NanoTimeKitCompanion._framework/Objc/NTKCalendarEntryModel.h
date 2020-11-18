@@ -50,7 +50,6 @@
 + (id)_extraLargeConflictImageProvider;
 + (id)_modularSmallCalendarImageProvider;
 + (id)_modularSmallConflictImageProvider;
-+ (id)_signatureCircularCalendarProvider:(id)arg1;
 + (id)_signatureCornerImageProvider;
 + (id)_swapPlaceholderString:(id)arg1 withTimeStringForDate:(id)arg2 inString:(id)arg3 usingBaseFont:(id)arg4 smallCapsBaseFont:(id)arg5 timeZone:(id)arg6 options:(unsigned long long)arg7;
 + (id)_utilityCalendarImageProvider;
@@ -62,13 +61,19 @@
 + (id)largeUtility:(id)arg1;
 + (id)loadingEntryForFamily:(long long)arg1;
 + (id)lockedEntryForFamily:(long long)arg1;
++ (id)sampleEventTemplateForFamily:(long long)arg1;
 + (id)signatureBezel:(id)arg1;
 + (id)signatureCircular:(id)arg1;
 + (id)signatureCorner:(id)arg1;
 + (id)signatureRectangular:(id)arg1;
 + (id)smallModular:(id)arg1;
 + (id)smallUtility:(id)arg1;
++ (id)wrappedUserStringFrom:(id)arg1;
 - (void).cxx_destruct;
+- (id)_wrappedPrimaryEventLocation;
+- (id)_wrappedPrimaryEventOrganizerName;
+- (id)_wrappedPrimaryEventTitle;
+- (id)_wrappedSecondaryEventTitle;
 - (id)description;
 - (id)templateForComplicationFamily:(long long)arg1;
 

@@ -6,9 +6,12 @@
 
 #import <HomeKit/HMSymptom.h>
 
+@class NSString;
+
 @interface HMSymptom (HFAdditions)
 
 @property (nonatomic, setter=hf_setGeneratedByHomeAppForDebuggingPurposes:) BOOL hf_generatedByHomeAppForDebuggingPurposes;
+@property (readonly, nonatomic) NSString *hf_shortDescription;
 
 @end
 

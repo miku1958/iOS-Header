@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDClientAuthorizationOracle, HDProfile, HDXPCClient, HKHealthStoreConfiguration, NSString, NSXPCConnection, _HKEntitlements;
+@class HDClientAuthorizationOracle, HDProfile, HDXPCClient, HDXPCProcess, HKHealthStoreConfiguration, NSString, NSXPCConnection, _HKEntitlements;
 
 @interface HDHealthStoreClient : NSObject
 {
@@ -15,6 +15,7 @@
     HDClientAuthorizationOracle *_authorizationOracle;
     HKHealthStoreConfiguration *_configuration;
     NSString *_sourceBundleIdentifier;
+    NSString *_sourceVersion;
     NSString *_defaultSourceBundleIdentifier;
 }
 
@@ -24,19 +25,22 @@
 @property (readonly) NSXPCConnection *connection;
 @property (readonly, copy) NSString *defaultSourceBundleIdentifier; // @synthesize defaultSourceBundleIdentifier=_defaultSourceBundleIdentifier;
 @property (readonly) _HKEntitlements *entitlements;
+@property (readonly) HDXPCProcess *process;
 @property (readonly) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, copy) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
+@property (readonly, copy) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 
 - (void).cxx_destruct;
-- (id)_watchKitAvailabilityFilter;
+- (id)_watchKitAvailabilityFilterForSampleType:(id)arg1;
 - (id)baseDataEntityEncodingOptions;
 - (id)filterWithQueryFilter:(id)arg1 objectType:(id)arg2;
+- (BOOL)hasArrayEntitlement:(id)arg1 containing:(id)arg2;
 - (BOOL)hasEntitlement:(id)arg1;
 - (BOOL)hasPrivateMetadataAccess;
+- (BOOL)hasRequiredArrayEntitlement:(id)arg1 containing:(id)arg2 error:(id *)arg3;
 - (BOOL)hasRequiredEntitlement:(id)arg1 error:(id *)arg2;
 - (id)initWithXPCClient:(id)arg1 configuration:(id)arg2 profile:(id)arg3;
 - (BOOL)shouldBypassAuthorization;
-- (id)sourceVersionWithDaemon:(id)arg1;
 - (id)valueForEntitlement:(id)arg1;
 - (BOOL)verifyHealthRecordsPermissionGrantedWithError:(id *)arg1;
 

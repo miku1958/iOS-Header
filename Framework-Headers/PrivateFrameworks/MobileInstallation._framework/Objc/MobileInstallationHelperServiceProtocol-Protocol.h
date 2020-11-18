@@ -10,8 +10,8 @@
 - (void)createAppSnapshotWithBundleID:(NSString *)arg1 snapshotToURL:(NSURL *)arg2 onlyV1AppIfPresent:(BOOL)arg3 placeholderOnly:(BOOL)arg4 completion:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)createSafeHarborWithIdentifier:(NSString *)arg1 containerType:(long long)arg2 andMigrateDataFrom:(NSURL *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)dieForTesting;
+- (void)getPidForTestingWithCompletion:(void (^)(int))arg1;
 - (void)makeSymlinkFromAppDataContainerToBundleForIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)migrateMobileContentWithCompletion:(void (^)(NSError *))arg1;
 - (void)stageItemAtURL:(NSURL *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSURL *, BOOL, NSError *))arg3;
 - (void)wipeStagingRootWithCompletion:(void (^)(NSError *))arg1;
 @end

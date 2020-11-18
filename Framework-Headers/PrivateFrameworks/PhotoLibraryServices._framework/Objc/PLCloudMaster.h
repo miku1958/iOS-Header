@@ -41,23 +41,22 @@
 @property (nonatomic) short videoFrameRate; // @dynamic videoFrameRate;
 
 + (id)_originalTypes;
-+ (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 inManagedObjectContext:(id)arg3;
-+ (id)cloudMasterWithScopedIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 prefetchResources:(BOOL)arg3 inManagedObjectContext:(id)arg4;
++ (id)cloudMasterWithScopedIdentifier:(id)arg1 prefetchResources:(BOOL)arg2 inManagedObjectContext:(id)arg3;
++ (id)cloudMastersByScopedIdentifiers:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 inLibrary:(id)arg3;
++ (id)cloudMastersWithScopedIdentifiers:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 inLibrary:(id)arg3;
 + (void)deleteAllCloudMastersInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (unsigned long long)fullSizeJPEGSourceForUTI:(id)arg1 andImageDimensions:(struct CGSize)arg2;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2 inMomentShare:(id)arg3;
 + (id)listOfSyncedProperties;
-+ (void)resetCloudMastersStateInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetCloudMastersStateInManagedObjectContext:(id)arg1;
 - (void)_promptForNilScopeIdentifierRadar;
 - (id)allMasterResources;
 - (BOOL)allOriginalsAreLocallyAvailableForAssetUuid:(id)arg1 useOriginalAltInsteadOfOriginal:(BOOL)arg2;
 - (BOOL)allOriginalsAreUploaded;
 - (void)applyPropertiesFromCPLMasterChange:(id)arg1;
-- (id)assetUUIDToCloudResources;
 - (void)awakeFromInsert;
-- (id)cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
-- (id)cloudResourcesForResourceType:(unsigned long long)arg1;
 - (id)cplFullRecord;
 - (id)cplMasterPropertyChangeForAsset:(id)arg1;
 - (id)cplPropertyRecord;

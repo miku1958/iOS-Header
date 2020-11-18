@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CTCellularPlanItem, NSArray, NSDictionary;
+#import <SettingsCellularUI/Loggable-Protocol.h>
 
-@interface PSUICellularPlanManagerCache : NSObject
+@class CTCellularPlanItem, Logger, NSArray, NSDictionary, NSString;
+
+@interface PSUICellularPlanManagerCache : NSObject <Loggable>
 {
     BOOL _cacheIsValid;
     NSArray *_planItems;
@@ -23,6 +25,7 @@
     BOOL _isWebUIFlowSupported;
     BOOL _isActivationCodeFlowSupported;
     BOOL _isCarrierItemFlowSupported;
+    Logger *_logger;
     BOOL _carrierListFetchInProgress;
     NSArray *_cachedCarrierItems;
 }
@@ -31,8 +34,11 @@
 @property (readonly, nonatomic) NSArray *carrierItems;
 @property BOOL carrierListFetchInProgress; // @synthesize carrierListFetchInProgress=_carrierListFetchInProgress;
 @property (readonly, nonatomic) NSArray *danglingPlanItems;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *embeddedPlanItems;
 @property (readonly, nonatomic) BOOL hasSubscriptions;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActivationCodeFlowSupported;
 @property (readonly, nonatomic) BOOL isAnyLocalFlowTypeSupported;
 @property (readonly, nonatomic) BOOL isAnyPlanActivating;
@@ -48,6 +54,7 @@
 @property (readonly, nonatomic) BOOL shouldShowDataPlanList;
 @property (readonly, nonatomic) BOOL shouldShowNewUI;
 @property (readonly, nonatomic) BOOL shouldShowPlanSelector;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -59,6 +66,7 @@
 - (id)danglingPlanFromReference:(id)arg1;
 - (void)dealloc;
 - (void)didSelectDanglingPlan:(id)arg1;
+- (id)getLogger;
 - (id)init;
 - (id)planFromReference:(id)arg1;
 - (id)planFromReferenceSafe:(id)arg1;

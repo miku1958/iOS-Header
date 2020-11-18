@@ -11,16 +11,17 @@
 #import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 #import <VideosUI/VUILibrarySplitViewControllerDelegate-Protocol.h>
 
-@class NSString, UINavigationController, VUIDownloadViewController, VUIFamilyMember, VUILibraryMenuDataSource, VUILibrarySplitViewController, VUIMediaLibrary, VUIViewControllerContentPresenter;
+@class NSString, UINavigationController, VUIFamilyMember, VUILibraryMenuDataSource, VUILibrarySplitViewController, VUIMediaLibrary, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryIpadMainViewController : UIViewController <VUILibraryDataSourceDelegate, VUILibrarySplitViewControllerDelegate, UIGestureRecognizerDelegate, VUIFamilySharingContentProtocol>
 {
+    BOOL _ppt_isLoaded;
     BOOL _areLocalMediaItemsAvailable;
     VUIFamilyMember *_familyMember;
     VUILibraryMenuDataSource *_menuDataSource;
     VUILibrarySplitViewController *_librarySplitViewController;
-    VUIDownloadViewController *_downloadViewController;
+    UIViewController *_downloadViewController;
     UINavigationController *_downloadNavigationViewController;
     VUIViewControllerContentPresenter *_contentPresenter;
     VUIMediaLibrary *_mediaLibrary;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UINavigationController *downloadNavigationViewController; // @synthesize downloadNavigationViewController=_downloadNavigationViewController;
-@property (strong, nonatomic) VUIDownloadViewController *downloadViewController; // @synthesize downloadViewController=_downloadViewController;
+@property (strong, nonatomic) UIViewController *downloadViewController; // @synthesize downloadViewController=_downloadViewController;
 @property (strong, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUILibrarySplitViewController *librarySplitViewController; // @synthesize librarySplitViewController=_librarySplitViewController;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_accountsChanged:(id)arg1;
 - (void)_addMediaLibraryNotificationObservers;
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
+- (void)_declareLaunchDidFinish;
 - (id)_deviceMediaLibrary;
 - (void)_deviceMediaLibraryUpdateStateDidChange:(id)arg1;
 - (BOOL)_gestureRecognizerShouldBegin;

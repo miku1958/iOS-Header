@@ -20,8 +20,7 @@
 
 @property (readonly, nonatomic) NRMutableDevice *activeDevice;
 @property (strong, nonatomic) NSUUID *activeDeviceID;
-@property (strong, nonatomic) NSMutableDictionary *childMap; // @synthesize childMap=_childMap;
-@property (strong, nonatomic) NSMutableDictionary *deviceCollection; // @synthesize deviceCollection=_deviceCollection;
+@property (readonly, nonatomic, getter=allAltAccount) BOOL isAllAltAccount;
 @property (readonly, nonatomic, getter=paired) BOOL isPaired;
 @property (strong, nonatomic) NRPBMutableDeviceCollection *protobuf; // @synthesize protobuf=_protobuf;
 

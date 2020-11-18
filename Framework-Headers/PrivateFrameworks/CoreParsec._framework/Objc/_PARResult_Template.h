@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_PARResult_Template-Protocol.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _PARResult_Template : PBCodable <_PARResult_Template, NSSecureCoding>
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     NSData *_completionIcon;
     NSData *_thumbnail;
     NSData *_cardData;
+    NSString *_legacyTemplateName;
+    NSArray *_renderings;
 }
 
 @property (copy, nonatomic) NSData *cardData; // @synthesize cardData=_cardData;
@@ -28,16 +30,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *legacyTemplateName; // @synthesize legacyTemplateName=_legacyTemplateName;
+@property (copy, nonatomic) NSArray *renderings; // @synthesize renderings=_renderings;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSData *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (void)addRenderings:(id)arg1;
+- (void)clearRenderings;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)renderingsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)renderingsCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -26,7 +26,9 @@
 @property (nonatomic) BOOL useRelativeColorForSpeed; // @synthesize useRelativeColorForSpeed=_useRelativeColorForSpeed;
 
 - (void).cxx_destruct;
-- (CDStruct_90e2a262)_adjustedMapRectForPolyline:(id)arg1 withSize:(struct CGSize)arg2;
+- (CDStruct_90e2a262)_adjustRectForPolyline:(id)arg1 withSize:(struct CGSize)arg2;
+- (CDStruct_90e2a262)_adjustedMapRectForPolyline:(id)arg1 size:(struct CGSize)arg2;
+- (CDStruct_90e2a262)_adjustedMapRectForPolyline:(id)arg1 size:(struct CGSize)arg2 offsets:(struct CGRect)arg3;
 - (id)_annotationViewWithIsStartPoint:(BOOL)arg1;
 - (void)_drawLineFromPointA:(struct CGPoint)arg1 toPointB:(struct CGPoint)arg2 atSpeed:(double)arg3 context:(struct CGContext *)arg4 drawDashes:(BOOL)arg5 lineWidth:(double)arg6;
 - (id)_imageWithPolyline:(id)arg1 lineWidth:(double)arg2 mapRect:(CDStruct_90e2a262)arg3 onSnapshot:(id)arg4;
@@ -35,6 +37,7 @@
 - (id)init;
 - (id)relativeColorForSpeed:(double)arg1;
 - (void)snapshotWithSize:(struct CGSize)arg1 lineWidth:(double)arg2 traitCollection:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)snapshotWithSize:(struct CGSize)arg1 lineWidth:(double)arg2 traitCollection:(id)arg3 offsets:(struct CGRect)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

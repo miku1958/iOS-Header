@@ -10,7 +10,7 @@
 #import <CarPlay/_UIContextBinderContextCreationPolicyHolding-Protocol.h>
 #import <CarPlay/_UISceneUIWindowHosting-Protocol.h>
 
-@class CPDashboardController, NSString, UIScreen, UITraitCollection, UIWindow, _UIContextBinder;
+@class CPDashboardController, NSString, UIScreen, UIStatusBarManager, UITraitCollection, UIWindow, _UIContextBinder;
 @protocol CPTemplateApplicationDashboardSceneDelegate, NSObject, UICoordinateSpace;
 
 @interface CPTemplateApplicationDashboardScene : UIScene <_UISceneUIWindowHosting, _UIContextBinderContextCreationPolicyHolding, UICoordinateSpace>
@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) id<UICoordinateSpace> _coordinateSpace;
 @property (readonly, nonatomic) long long _interfaceOrientation;
 @property (readonly, nonatomic) UIScreen *_screen;
+@property (readonly, nonatomic) UIStatusBarManager *_statusBarManager;
 @property (readonly, nonatomic) UITraitCollection *_traitCollection;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) CPDashboardController *dashboardController; // @synthesize dashboardController=_dashboardController;

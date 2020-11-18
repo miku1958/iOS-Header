@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXPhotosGlobalFooterView, UIViewController;
+@class NSObject, PXPhotosGlobalFooterView;
+@protocol PXAnonymousViewController;
 
 @protocol PXPhotosGlobalFooterViewDelegate <NSObject>
-- (void)photosGlobalFooterView:(PXPhotosGlobalFooterView *)arg1 presentViewController:(UIViewController *)arg2;
+- (void)photosGlobalFooterView:(PXPhotosGlobalFooterView *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
 
 @optional
 - (void)photosGlobalFooterViewDidChangeHeight:(PXPhotosGlobalFooterView *)arg1;

@@ -14,21 +14,24 @@
 __attribute__((visibility("hidden")))
 @interface PUFilmstripTileViewController : PUImageTileViewController <PUAssetViewModelChangeObserver, PUBrowsingVideoPlayerTimeObserver>
 {
-    BOOL __isExpanded;
-    PUFilmstripWrapperView *__wrapperView;
-    struct CGSize __expandedSize;
+    BOOL _isExpanded;
+    PUFilmstripWrapperView *_wrapperView;
+    struct CGSize _expandedSize;
+    struct CGSize _unexpandedSize;
 }
 
-@property (nonatomic, setter=_setExpandedSize:) struct CGSize _expandedSize; // @synthesize _expandedSize=__expandedSize;
-@property (nonatomic, setter=_setExpanded:) BOOL _isExpanded; // @synthesize _isExpanded=__isExpanded;
-@property (readonly, nonatomic) PUFilmstripWrapperView *_wrapperView; // @synthesize _wrapperView=__wrapperView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGSize expandedSize; // @synthesize expandedSize=_expandedSize;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGSize unexpandedSize; // @synthesize unexpandedSize=_unexpandedSize;
+@property (readonly, nonatomic) PUFilmstripWrapperView *wrapperView; // @synthesize wrapperView=_wrapperView;
 
 - (void).cxx_destruct;
 - (id)_currentIndicatorInfos;
+- (void)_updateFilmStripContents;
 - (void)_updateFilmstripView;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
@@ -36,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)didChangeVisibleRect;
 - (id)loadView;
 - (void)setAssetViewModel:(id)arg1;
+- (void)setExpanded:(BOOL)arg1;
+- (struct CGSize)targetSizeForProposedTargetSize:(struct CGSize)arg1;
 - (void)videoPlayer:(id)arg1 currentTimeDidChange:(CDStruct_1b6d18a9)arg2;
 - (void)videoPlayer:(id)arg1 desiredSeekTimeDidChange:(CDStruct_1b6d18a9)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;

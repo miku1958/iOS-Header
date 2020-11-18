@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long deferredLogInfo;
+@property (readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property (readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (readonly, nonatomic) BOOL needsDeferredProcessing;
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets; // @synthesize numberOfRepresentedAssets=_numberOfRepresentedAssets;
 @property (readonly, nonatomic) unsigned long long originalFilesize;
 @property (readonly, copy, nonatomic) NSURL *persistenceURL; // @synthesize persistenceURL=_persistenceURL;

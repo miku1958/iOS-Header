@@ -23,6 +23,8 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_usesNonVibrantAppearance;
 - (void)didMoveToWindow;
+- (double)effectiveBaselineOffsetFromBottom;
+- (double)effectiveFirstBaselineOffsetFromTop;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
 - (void)setText:(id)arg1;

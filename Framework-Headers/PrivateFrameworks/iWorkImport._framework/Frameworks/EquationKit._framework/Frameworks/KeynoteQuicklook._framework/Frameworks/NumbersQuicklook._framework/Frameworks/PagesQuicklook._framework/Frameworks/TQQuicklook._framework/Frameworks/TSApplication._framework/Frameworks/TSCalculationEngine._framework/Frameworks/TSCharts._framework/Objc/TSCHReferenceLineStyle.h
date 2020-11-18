@@ -19,6 +19,8 @@
 + (id)imageFillProperties;
 + (int)muxDefaultPropertyForSpecificProperty:(int)arg1;
 + (id)overrideMapFromChartStyle:(id)arg1 seriesStyle:(id)arg2 paragraphStyles:(id)arg3 valueAxisStyle:(id)arg4;
++ (id)p_outsideSeriesLabelColorOfSeriesStyle:(id)arg1 paragraphStyles:(id)arg2;
++ (unsigned long long)p_valueAxisLabelParagraphStyleIndexWithValueAxisStyle:(id)arg1 paragraphStyles:(id)arg2;
 + (id)presetStyleDescriptorForOrdinal:(unsigned long long)arg1;
 + (id)properties;
 - (void)loadFromUnarchiver:(id)arg1;

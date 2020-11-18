@@ -13,9 +13,9 @@
 @interface NPKProtoPassSyncStateChange : PBCodable <NSCopying>
 {
     NSData *_baseManifestHashForPartialUpdate;
-    NPKProtoCatalog *_catalog;
     int _changeType;
     NSData *_changeUUID;
+    NPKProtoCatalog *_companionCatalog;
     NSData *_lastKnownReconciledPassSyncStateHash;
     NSData *_passData;
     unsigned int _passSegmentIndex;
@@ -23,6 +23,7 @@
     NSMutableArray *_remoteAssetsForPartialUpdates;
     NPKProtoPassSyncStateItem *_syncStateItem;
     NSString *_uniqueID;
+    NPKProtoCatalog *_watchCatalog;
     struct {
         unsigned int passSegmentIndex:1;
         unsigned int passSegmentTotal:1;
@@ -30,16 +31,17 @@
 }
 
 @property (strong, nonatomic) NSData *baseManifestHashForPartialUpdate; // @synthesize baseManifestHashForPartialUpdate=_baseManifestHashForPartialUpdate;
-@property (strong, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
 @property (nonatomic) int changeType; // @synthesize changeType=_changeType;
 @property (strong, nonatomic) NSData *changeUUID; // @synthesize changeUUID=_changeUUID;
+@property (strong, nonatomic) NPKProtoCatalog *companionCatalog; // @synthesize companionCatalog=_companionCatalog;
 @property (readonly, nonatomic) BOOL hasBaseManifestHashForPartialUpdate;
-@property (readonly, nonatomic) BOOL hasCatalog;
+@property (readonly, nonatomic) BOOL hasCompanionCatalog;
 @property (readonly, nonatomic) BOOL hasLastKnownReconciledPassSyncStateHash;
 @property (readonly, nonatomic) BOOL hasPassData;
 @property (nonatomic) BOOL hasPassSegmentIndex;
 @property (nonatomic) BOOL hasPassSegmentTotal;
 @property (readonly, nonatomic) BOOL hasSyncStateItem;
+@property (readonly, nonatomic) BOOL hasWatchCatalog;
 @property (strong, nonatomic) NSData *lastKnownReconciledPassSyncStateHash; // @synthesize lastKnownReconciledPassSyncStateHash=_lastKnownReconciledPassSyncStateHash;
 @property (strong, nonatomic) NSData *passData; // @synthesize passData=_passData;
 @property (nonatomic) unsigned int passSegmentIndex; // @synthesize passSegmentIndex=_passSegmentIndex;
@@ -47,6 +49,7 @@
 @property (strong, nonatomic) NSMutableArray *remoteAssetsForPartialUpdates; // @synthesize remoteAssetsForPartialUpdates=_remoteAssetsForPartialUpdates;
 @property (strong, nonatomic) NPKProtoPassSyncStateItem *syncStateItem; // @synthesize syncStateItem=_syncStateItem;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
+@property (strong, nonatomic) NPKProtoCatalog *watchCatalog; // @synthesize watchCatalog=_watchCatalog;
 
 + (Class)remoteAssetsForPartialUpdateType;
 - (void).cxx_destruct;

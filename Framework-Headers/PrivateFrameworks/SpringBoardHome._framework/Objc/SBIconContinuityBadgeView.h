@@ -8,25 +8,25 @@
 
 #import <SpringBoardHome/SBIconAccessoryView-Protocol.h>
 
-@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBIconAccessoryImage, UIImageView;
+@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBHIconAccessoryCountedMapImageTuple, UIImageView;
 @protocol SBIconListLayout;
 
 @interface SBIconContinuityBadgeView : UIView <SBIconAccessoryView>
 {
     id<SBIconListLayout> _listLayout;
     long long _badgeType;
-    SBIconAccessoryImage *_backgroundImage;
-    SBIconAccessoryImage *_foregroundImage;
+    SBHIconAccessoryCountedMapImageTuple *_backgroundImageTuple;
+    SBHIconAccessoryCountedMapImageTuple *_foregroundImageTuple;
     SBDarkeningImageView *_backgroundView;
     UIImageView *_foregroundView;
 }
 
-@property (readonly, nonatomic) SBIconAccessoryImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
+@property (readonly, nonatomic) SBHIconAccessoryCountedMapImageTuple *backgroundImageTuple; // @synthesize backgroundImageTuple=_backgroundImageTuple;
 @property (readonly, nonatomic) SBDarkeningImageView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) long long badgeType; // @synthesize badgeType=_badgeType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) SBIconAccessoryImage *foregroundImage; // @synthesize foregroundImage=_foregroundImage;
+@property (strong, nonatomic) SBHIconAccessoryCountedMapImageTuple *foregroundImageTuple; // @synthesize foregroundImageTuple=_foregroundImageTuple;
 @property (readonly, nonatomic) UIImageView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
@@ -36,9 +36,10 @@
 + (id)_checkoutImageForContinuityBadgeType:(long long)arg1 highlighted:(BOOL)arg2;
 + (id)backgroundImageCache;
 - (void).cxx_destruct;
-- (id)_checkoutBackgroundImage;
+- (id)_checkoutBackgroundImageTuple;
 - (void)_clearIcon;
 - (struct CGPoint)accessoryCenterForIconBounds:(struct CGRect)arg1;
+- (double)badgeContentScale;
 - (struct CGSize)badgeSize;
 - (void)configureAnimatedForIcon:(id)arg1 infoProvider:(id)arg2 animator:(id)arg3;
 - (void)configureForIcon:(id)arg1 infoProvider:(id)arg2;

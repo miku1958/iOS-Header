@@ -15,10 +15,12 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)bootstrapPlanTransferUsingMessageSession:(id)arg1;
+- (void)bootstrapPlanTransferUsingMessageSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)getTransferCapability:(unsigned long long)arg1;
+- (void)hideTransferPlan:(id)arg1 fromDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)installPendingPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)installPendingPlanList:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isAnyPlanOfTransferCapability:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)pendingInstallItemsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setDataFallbackEnabled:(BOOL)arg1 forIccid:(id)arg2;

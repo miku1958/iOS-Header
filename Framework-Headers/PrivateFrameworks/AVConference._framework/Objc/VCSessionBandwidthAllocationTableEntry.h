@@ -22,12 +22,13 @@ __attribute__((visibility("hidden")))
     BOOL _hasRepairStreamID;
     unsigned int _repairStreamID;
     unsigned int _repairMaxNetworkBitrate;
-    BOOL _enabled;
+    BOOL _onDemand;
+    BOOL _subscribedTo;
+    BOOL _startOnDemand;
 }
 
 @property unsigned int actualNetworkBitrate; // @synthesize actualNetworkBitrate=_actualNetworkBitrate;
 @property (readonly) id<VCSessionDownlinkBandwidthAllocatorClient> client; // @synthesize client=_client;
-@property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) BOOL hasRepairStreamID; // @synthesize hasRepairStreamID=_hasRepairStreamID;
 @property BOOL isLowestQualityAudio; // @synthesize isLowestQualityAudio=_isLowestQualityAudio;
 @property (readonly) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
@@ -35,7 +36,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property (readonly) unsigned int repairMaxNetworkBitrate; // @synthesize repairMaxNetworkBitrate=_repairMaxNetworkBitrate;
 @property (readonly) unsigned int repairStreamID; // @synthesize repairStreamID=_repairStreamID;
+@property (readonly, getter=isStartOnDemand) BOOL startOnDemand; // @synthesize startOnDemand=_startOnDemand;
 @property (readonly) unsigned int streamID; // @synthesize streamID=_streamID;
+@property (getter=isSubscribedTo) BOOL subscribedTo; // @synthesize subscribedTo=_subscribedTo;
 @property (readonly) unsigned char type; // @synthesize type=_type;
 
 + (long long)compareAudioEntry:(id)arg1 audioEntry:(id)arg2;
@@ -45,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(BOOL)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 enabled:(BOOL)arg10;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(BOOL)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 subscribedTo:(BOOL)arg10 startOnDemand:(BOOL)arg11;
 
 @end
 

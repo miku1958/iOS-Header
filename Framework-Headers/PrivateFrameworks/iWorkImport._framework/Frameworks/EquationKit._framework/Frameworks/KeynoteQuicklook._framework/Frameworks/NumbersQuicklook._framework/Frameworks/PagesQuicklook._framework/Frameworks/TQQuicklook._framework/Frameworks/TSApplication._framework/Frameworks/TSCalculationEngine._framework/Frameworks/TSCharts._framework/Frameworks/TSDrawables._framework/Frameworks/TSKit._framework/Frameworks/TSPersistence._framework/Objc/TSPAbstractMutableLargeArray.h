@@ -55,7 +55,9 @@
 - (id)convertSegmentElementToElement:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)createArraySegment;
+- (id)dequeue;
 - (unsigned long long)elementCount;
+- (void)enqueue:(id)arg1;
 - (id)firstObject;
 - (id)initDocumentObjectWithContext:(id)arg1;
 - (id)initWithArray:(id)arg1 context:(id)arg2;
@@ -72,6 +74,9 @@
 - (void)mergeSegmentIfNeededAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (id)peek;
+- (id)pop;
+- (void)push:(id)arg1;
 - (struct _NSRange)rangeOfSegmentIndex:(unsigned long long)arg1;
 - (void)removeAllObjects;
 - (void)removeLastObject;

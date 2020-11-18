@@ -33,6 +33,7 @@
     NSDictionary *_optionsDict;
     BOOL _enableButtons;
     BOOL _disableContents;
+    BOOL _disableParallax;
     SBSUIProgressHUD *_hud;
     _SBSUIOrientedImageView *_homeScreenPreviewView;
     BOOL _motionEnabled;
@@ -58,6 +59,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) SBFWallpaperConfiguration *wallpaperConfiguration; // @synthesize wallpaperConfiguration=_wallpaperConfiguration;
 @property (readonly) UIImage *wallpaperImage; // @synthesize wallpaperImage=_wallpaperImage;
+@property (readonly, copy, nonatomic) SBFWallpaperOptions *wallpaperOptions;
 @property (nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 
 - (void).cxx_destruct;
@@ -65,8 +67,10 @@
 - (id)_colorWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
 - (id)_dateView;
 - (void)_displaySettingWallpaperHUD;
+- (void)_enableIrisOrParallaxIfEligible;
 - (double)_parallaxFactor;
 - (id)_previewView;
+- (id)_previewViewIfLoaded;
 - (id)_proceduralWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
 - (void)_setImageWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setProceduralWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -78,6 +82,7 @@
 - (long long)_wallpaperType;
 - (id)_wallpaperTypeDescription;
 - (id)_wallpaperView;
+- (id)_wallpaperViewIfLoaded;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1 image:(id)arg2 video:(id)arg3 videoURL:(id)arg4 stillTimeInVideo:(double)arg5 supportsCropping:(BOOL)arg6 variant:(long long)arg7 needsWallpaperDimming:(BOOL)arg8;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 options:(id)arg3;
@@ -88,6 +93,7 @@
 - (id)initWithImage:(id)arg1 name:(id)arg2 video:(id)arg3 time:(double)arg4;
 - (id)initWithImage:(id)arg1 video:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(BOOL)arg5 enableButtons:(BOOL)arg6 disableContents:(BOOL)arg7;
 - (id)initWithImages:(id)arg1 videos:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(BOOL)arg5 enableButtons:(BOOL)arg6 disableContents:(BOOL)arg7;
+- (id)initWithImages:(id)arg1 videos:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(BOOL)arg5 enableButtons:(BOOL)arg6 disableContents:(BOOL)arg7 disableParallax:(BOOL)arg8;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithProceduralWallpaper:(id)arg1 options:(id)arg2;
 - (id)initWithProceduralWallpaper:(id)arg1 options:(id)arg2 variant:(long long)arg3 disableSegmentedControl:(BOOL)arg4 enableButtons:(BOOL)arg5 disableContents:(BOOL)arg6;

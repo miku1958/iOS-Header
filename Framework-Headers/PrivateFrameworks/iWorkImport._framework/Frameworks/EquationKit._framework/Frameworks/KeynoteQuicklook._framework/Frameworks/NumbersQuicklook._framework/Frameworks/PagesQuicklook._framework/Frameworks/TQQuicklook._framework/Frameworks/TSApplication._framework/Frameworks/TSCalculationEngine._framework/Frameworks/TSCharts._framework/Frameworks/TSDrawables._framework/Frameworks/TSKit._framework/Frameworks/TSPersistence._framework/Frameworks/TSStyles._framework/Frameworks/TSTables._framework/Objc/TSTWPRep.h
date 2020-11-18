@@ -10,7 +10,9 @@
 {
 }
 
+- (BOOL)masksToBounds;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
+- (id)tableLayout;
 
 @end
 

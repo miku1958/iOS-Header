@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI224ArticleLinkActionHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *navigator;
+    MISSING_TYPE *urlHandler;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

@@ -6,18 +6,14 @@
 
 #import <PhotosUICore/PXCuratedLibraryActionPerformer.h>
 
-@class PXGLayout;
-
 @interface PXCuratedLibraryToggleAspectFitActionPerformer : PXCuratedLibraryActionPerformer
 {
-    PXGLayout *_layout;
 }
 
-@property (readonly, weak, nonatomic) PXGLayout *layout; // @synthesize layout=_layout;
-
-- (void).cxx_destruct;
-- (id)initWithActionType:(id)arg1 viewModel:(id)arg2;
-- (id)initWithViewModel:(id)arg1 layout:(id)arg2;
+- (id)activitySystemImageName;
+- (id)activityType;
+- (BOOL)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
+- (id)initWithViewModel:(id)arg1;
 - (void)performActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

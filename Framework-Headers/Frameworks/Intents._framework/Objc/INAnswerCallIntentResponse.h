@@ -8,12 +8,13 @@
 
 #import <Intents/INAnswerCallIntentResponseExport-Protocol.h>
 
-@class NSArray, NSString;
+@class INConnectedCall, NSArray, NSString;
 
 @interface INAnswerCallIntentResponse : INIntentResponse <INAnswerCallIntentResponseExport>
 {
 }
 
+@property (copy, nonatomic) INConnectedCall *answeredCall;
 @property (copy, nonatomic) NSArray *callRecords;
 @property (readonly, nonatomic) long long code;
 @property (readonly, copy) NSString *debugDescription;

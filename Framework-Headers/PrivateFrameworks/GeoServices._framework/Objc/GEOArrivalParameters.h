@@ -27,11 +27,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_arrivalMapRegions:1;
         unsigned int read_arrivalPoints:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_arrivalMapRegions:1;
-        unsigned int wrote_arrivalPoints:1;
-        unsigned int wrote_arrivalParametersEndOfRouteDistanceThreshold:1;
-        unsigned int wrote_endOfRouteDistanceThreshold:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,10 +43,6 @@
 + (Class)arrivalPointsType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsArrivalMapRegions:(id)arg1;
-- (void)_addNoFlagsArrivalPoints:(id)arg1;
-- (void)_readArrivalMapRegions;
-- (void)_readArrivalPoints;
 - (void)addArrivalMapRegions:(id)arg1;
 - (void)addArrivalPoints:(id)arg1;
 - (id)arrivalMapRegionsAtIndex:(unsigned long long)arg1;
@@ -67,7 +59,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

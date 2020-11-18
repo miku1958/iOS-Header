@@ -11,6 +11,7 @@
 }
 
 + (id)alarmID;
++ (id)isSleep;
 
 @end
 

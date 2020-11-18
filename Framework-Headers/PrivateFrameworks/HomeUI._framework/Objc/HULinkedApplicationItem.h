@@ -6,16 +6,22 @@
 
 #import <Home/HFItem.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface HULinkedApplicationItem : HFItem
 {
+    NSSet *_associatedAccessories;
 }
 
+@property (strong, nonatomic) NSSet *associatedAccessories; // @synthesize associatedAccessories=_associatedAccessories;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 
+- (void).cxx_destruct;
 - (id)_failedUpdateOutcome;
 - (int)_iconVariantForScale:(double)arg1;
+- (id)_subclass_updateWithOptions:(id)arg1;
+- (id)init;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

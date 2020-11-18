@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) _SFPageZoomPreferenceManager *pageZoomManager;
 @property (readonly, nonatomic) _SFPerSitePreferencesVendor *perSitePreferencesVendor;
 @property (readonly, nonatomic, getter=isShowingReader) BOOL showingReader;
+@property (readonly, nonatomic) BOOL supportsPrivacyReport;
 
 - (void)toggleShowingReaderForUserAction;
 @end

@@ -34,6 +34,7 @@
 - (void)_queue_reportResult:(long long)arg1;
 - (void)_queue_runPendingCheckpointTasks:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addCheckpointTask:(CDUnknownBlockType)arg1;
+- (void)addCheckpointTaskOnQueue:(id)arg1 task:(CDUnknownBlockType)arg2;
 - (void)addTask:(CDUnknownBlockType)arg1;
 - (void)addTaskOnQueue:(id)arg1 task:(CDUnknownBlockType)arg2;
 - (void)addTaskOnQueue:(id)arg1 timeout:(double)arg2 task:(CDUnknownBlockType)arg3;

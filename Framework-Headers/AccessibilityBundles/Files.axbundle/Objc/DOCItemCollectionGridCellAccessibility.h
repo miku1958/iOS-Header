@@ -19,7 +19,7 @@
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityLabel;
-- (BOOL)isAccessibilityElement;
+- (id)accessibilityUserInputLabels;
 
 @end
 

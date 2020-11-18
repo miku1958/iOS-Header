@@ -11,7 +11,6 @@
 }
 
 + (id)interface;
-+ (id)remStorageClasses;
 
 @end
 

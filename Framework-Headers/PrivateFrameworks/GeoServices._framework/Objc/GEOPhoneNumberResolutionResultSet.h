@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class PNRPhoneNumberResolutionResultSet;
 
 @interface GEOPhoneNumberResolutionResultSet : NSObject
 {
-    NSMutableDictionary *_results;
+    PNRPhoneNumberResolutionResultSet *_pnrResultSet;
 }
 
 - (void).cxx_destruct;
 - (id)description;
 - (void)enumerateResolutionsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)init;
-- (id)initWithXPCDictionaryRepresentation:(id)arg1;
-- (void)setError:(id)arg1 forPhoneNumber:(id)arg2;
-- (void)setResult:(id)arg1 forPhoneNumber:(id)arg2;
-- (id)xpcDictionaryRepresentation;
+- (id)initWithPNRResultSet:(id)arg1;
 
 @end
 

@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *publisherLogoImageCache;
-    MISSING_TYPE *reuseProtector;
+    MISSING_TYPE *titleViewReuseProtector;
+    MISSING_TYPE *toolbarItemReuseProtector;
 }
 
 @end

@@ -15,13 +15,11 @@
 @interface _INPBAirportGate : PBCodable <_INPBAirportGate, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBAirport *_airport;
     NSString *_gate;
     NSString *_terminal;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBAirport *airport; // @synthesize airport=_airport;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

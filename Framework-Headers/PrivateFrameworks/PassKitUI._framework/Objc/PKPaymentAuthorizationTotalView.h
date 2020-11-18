@@ -32,17 +32,17 @@
 
 @property (nonatomic) BOOL isPendingTotal; // @synthesize isPendingTotal=_isPendingTotal;
 @property (nonatomic) long long labelNumberOfLines; // @synthesize labelNumberOfLines=_labelNumberOfLines;
-@property (nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
+@property (strong, nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic, getter=isProcessing) BOOL processing; // @synthesize processing=_processing;
 @property (nonatomic) BOOL showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (void)_createSubviews;
-- (BOOL)_hasAccessibilityLargeText;
 - (double)_initialLeading;
 - (id)_labelAttributedStringWithString:(id)arg1;
 - (void)_prepareConstraints;
+- (BOOL)_shouldUseLargeTextLayout;
 - (id)_valueAttributedStringWithString:(id)arg1;
 - (void)dealloc;
 - (id)init;

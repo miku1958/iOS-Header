@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBPrivateUpdateMediaAffinityIntentData;
 
 @protocol _INPBUpdateMediaAffinityIntent <NSObject>
 
@@ -14,10 +14,12 @@
 @property (nonatomic) BOOL hasAffinityType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasMediaSearch;
+@property (readonly, nonatomic) BOOL hasPrivateUpdateMediaAffinityIntentData;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property (copy, nonatomic) NSArray *mediaItems;
 @property (readonly, nonatomic) unsigned long long mediaItemsCount;
 @property (strong, nonatomic) _INPBMediaSearch *mediaSearch;
+@property (strong, nonatomic) _INPBPrivateUpdateMediaAffinityIntentData *privateUpdateMediaAffinityIntentData;
 
 + (Class)mediaItemsType;
 - (int)StringAsAffinityType:(NSString *)arg1;

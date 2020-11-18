@@ -21,6 +21,7 @@
 }
 
 @property (readonly, nonatomic) NUGLBuffer *buffer; // @synthesize buffer=_buffer;
+@property (strong, nonatomic) struct CGColorSpace *colorSpace;
 @property (readonly, nonatomic) NUPixelFormat *format; // @synthesize format=_format;
 @property (readonly, nonatomic) NUPixelFormat *internalFormat; // @synthesize internalFormat=_internalFormat;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;

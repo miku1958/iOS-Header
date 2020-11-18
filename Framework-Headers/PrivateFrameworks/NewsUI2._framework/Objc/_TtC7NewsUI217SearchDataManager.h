@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI217SearchDataManager : _TtCs12_SwiftObject
+@interface _TtC7NewsUI217SearchDataManager : NSObject
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *searchService;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *readingList;
+    MISSING_TYPE *subscriptionService;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

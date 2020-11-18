@@ -51,6 +51,7 @@
 - (id)_maximumValueForMonthlyChallengeType:(unsigned long long)arg1;
 - (id)_modelsDirectoryBasePathForTemplate:(id)arg1;
 - (id)_monthlyAchievementsAssetsDirectoryBasePath;
+- (long long)_monthlyChallengeTemplateSourceActionForDate:(id)arg1 existingTemplate:(id)arg2;
 - (unsigned long long)_numberOfDaysInMonthForDate:(id)arg1;
 - (void)_removeMonthlyChallengeTemplate:(id)arg1 monthlyChallengeTemplates:(id *)arg2 templatesToRemove:(id *)arg3;
 - (double)_roundedGoalValue:(double)arg1 monthlyChallengeType:(unsigned long long)arg2;

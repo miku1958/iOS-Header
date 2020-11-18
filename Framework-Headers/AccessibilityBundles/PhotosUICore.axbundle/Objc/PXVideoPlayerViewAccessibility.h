@@ -13,6 +13,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axPHAsset;
+- (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;

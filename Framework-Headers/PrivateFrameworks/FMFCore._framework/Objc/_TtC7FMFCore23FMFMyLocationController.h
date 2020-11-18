@@ -12,13 +12,16 @@ __attribute__((visibility("hidden")))
 @interface _TtC7FMFCore23FMFMyLocationController : NSObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *unshiftedLocation;
     MISSING_TYPE *currentMyLocation;
     MISSING_TYPE *myLocation;
+    MISSING_TYPE *myUnshiftedLocation;
+    MISSING_TYPE *locationShifter;
     MISSING_TYPE *accuracyThreshold;
     MISSING_TYPE *distanceThreshold;
     MISSING_TYPE *locationManager;
     MISSING_TYPE *myLocationUpdatingQueue;
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
 }
 
 - (void).cxx_destruct;

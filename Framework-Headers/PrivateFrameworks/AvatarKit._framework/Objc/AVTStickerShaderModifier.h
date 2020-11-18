@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface AVTStickerShaderModifier : NSObject
 {
@@ -15,9 +15,11 @@
     NSString *_geometryName;
     NSString *_data;
     NSArray *_properties;
+    NSDictionary *_dictionary;
 }
 
 @property (readonly, nonatomic) NSString *data; // @synthesize data=_data;
+@property (strong, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, nonatomic) NSString *entryPoint; // @synthesize entryPoint=_entryPoint;
 @property (readonly, nonatomic) BOOL forceDoubleSided; // @synthesize forceDoubleSided=_forceDoubleSided;
 @property (readonly, nonatomic) NSString *geometryName; // @synthesize geometryName=_geometryName;
@@ -34,6 +36,7 @@
 - (BOOL)applyToNodeHierarchy:(id)arg1;
 - (id)cloneWithProperties:(id)arg1;
 - (id)description;
+- (id)dictionaryWithTargetPath:(id)arg1;
 - (id)findMaterialsForGeometryName:(id)arg1 inAvatar:(id)arg2;
 - (id)initWithEntryPoint:(id)arg1 geometryName:(id)arg2 data:(id)arg3 properties:(id)arg4 forceDoubleSided:(BOOL)arg5;
 - (void)removeFromAvatar:(id)arg1 error:(id *)arg2;

@@ -14,13 +14,18 @@ __attribute__((visibility("hidden")))
     unsigned int _videoDegradedTotalCounter;
     double _videoDegradedTotalTime;
     double _videoDegradedMaxLength;
+    unsigned long long _totalCellRxDataBytes;
+    unsigned long long _totalCellDupRxDataBytes;
 }
 
 @property BOOL isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
+@property unsigned long long totalCellDupRxDataBytes; // @synthesize totalCellDupRxDataBytes=_totalCellDupRxDataBytes;
+@property unsigned long long totalCellRxDataBytes; // @synthesize totalCellRxDataBytes=_totalCellRxDataBytes;
 @property double videoDegradedStartTime; // @synthesize videoDegradedStartTime=_videoDegradedStartTime;
 @property unsigned int videoDegradedTotalCounter; // @synthesize videoDegradedTotalCounter=_videoDegradedTotalCounter;
 @property double videoDegradedTotalTime; // @synthesize videoDegradedTotalTime=_videoDegradedTotalTime;
 
+- (void)addCellByteCountStats:(id)arg1;
 - (void)dealloc;
 - (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 delegate:(id)arg3;
 - (void)processVideoDegraded:(BOOL)arg1;

@@ -18,7 +18,6 @@
     NSTimer *_syncTimer;
     BOOL _pendingChanges;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_timerQueue;
     double _lastChangedTimestamp;
     BOOL _changedIDsValid;
     NSMutableArray *_changedIDs;
@@ -30,18 +29,27 @@
     BOOL _filteredByShowsNotificationsFlag;
     BOOL _computeChangedNotificationSet;
     BOOL _automaticallyFaultNotifications;
+    BOOL _lastExpirationTimerFireDateWasInThePast;
+    BOOL _isMonitoringOnlyNotificationCount;
+    unsigned long long _notificationCount;
     NSArray *_notificationReferences;
+    NSObject<OS_dispatch_queue> *_callbackNotificationQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     EKTimedEventStorePurger *_eventStorePurger;
     EKEventStore *_eventStore;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackNotificationQueue; // @synthesize callbackNotificationQueue=_callbackNotificationQueue;
 @property (readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property (readonly, nonatomic) EKTimedEventStorePurger *eventStorePurger; // @synthesize eventStorePurger=_eventStorePurger;
-@property (readonly, nonatomic) unsigned long long notificationCount;
+@property (readonly, nonatomic) BOOL isMonitoringOnlyNotificationCount; // @synthesize isMonitoringOnlyNotificationCount=_isMonitoringOnlyNotificationCount;
+@property (readonly, nonatomic) unsigned long long notificationCount; // @synthesize notificationCount=_notificationCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property (readonly, nonatomic) NSArray *notificationReferences; // @synthesize notificationReferences=_notificationReferences;
 
++ (void)addBlacklistedNotificationObjectID:(id)arg1;
++ (id)blacklistedNotificationQueue;
++ (id)blacklistedRowIDs;
 + (id)logHandle;
 + (id)requestedDarwinNotifications;
 - (void).cxx_destruct;
@@ -51,26 +59,27 @@
 - (id)_eventStore;
 - (void)_eventStoreChanged;
 - (void)_eventStoreChangedNotification:(id)arg1;
-- (id)_fetchEventNotificationReferencesFromEventStore:(id)arg1;
+- (id)_fetchEventNotificationReferencesFromEventStore:(id)arg1 earliestExpiringNotification:(id *)arg2;
 - (id)_initWithOptions:(long long)arg1 eventStore:(id)arg2 eventStoreGetter:(CDUnknownBlockType)arg3;
 - (void)_killSyncTimer:(id)arg1;
+- (void)_killTimer;
 - (void)_notificationCountChangedExternally;
 - (void)_resetSyncTimer;
-- (void)_resetTimer;
 - (void)_syncDidEnd:(id)arg1;
 - (void)_syncDidStart;
 - (void)_syncTimerFired:(id)arg1;
 - (void)_timerFired;
+- (void)_updateTimerFireDate:(id)arg1;
 - (void)adjust;
 - (void)attemptReload;
 - (void)attemptReloadSynchronously:(BOOL)arg1;
 - (void)dealloc;
+- (id)effectiveCallbackQueue;
 - (void)handleDarwinNotification:(id)arg1;
 - (id)init;
 - (id)initWithOptions:(long long)arg1;
 - (id)initWithOptions:(long long)arg1 eventStore:(id)arg2;
 - (id)initWithOptions:(long long)arg1 eventStoreGetter:(CDUnknownBlockType)arg2;
-- (void)killTimer;
 - (void)start;
 - (void)stop;
 - (void)trackChangesInEventStore;

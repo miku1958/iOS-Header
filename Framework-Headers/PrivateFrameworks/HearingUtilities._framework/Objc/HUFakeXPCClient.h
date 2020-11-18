@@ -13,7 +13,7 @@
 
 - (void).cxx_destruct;
 - (void)registerMessageBlock:(CDUnknownBlockType)arg1;
-- (BOOL)sendMessage:(id)arg1 withError:(id *)arg2;
+- (BOOL)sendMessage:(id)arg1 errorBlock:(CDUnknownBlockType)arg2;
 - (BOOL)wantsUpdatesForIdentifier:(unsigned long long)arg1;
 
 @end

@@ -8,12 +8,14 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface MPMusicPlayerQueueDescriptor : NSObject <NSSecureCoding>
 {
     long long _shuffleType;
     long long _repeatType;
+    NSString *_requestingBundleIdentifier;
+    NSString *_requestingBundleVersion;
     NSDictionary *_startTimes;
     NSDictionary *_endTimes;
 }
@@ -21,6 +23,8 @@
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) NSDictionary *endTimes; // @synthesize endTimes=_endTimes;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
+@property (readonly, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
+@property (readonly, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (readonly, nonatomic) NSDictionary *startTimes; // @synthesize startTimes=_startTimes;
 

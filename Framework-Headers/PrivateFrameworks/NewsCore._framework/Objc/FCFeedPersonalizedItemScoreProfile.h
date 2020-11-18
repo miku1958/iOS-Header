@@ -16,6 +16,7 @@
     double _autoSubscribeCtr;
     double _computedGlobalScoreCoefficient;
     double _userFeedbackScore;
+    double _userConversionScore;
     double _personalizationScore;
     double _firstPassPersonalizationScore;
     double _agedPersonalizationScore;
@@ -37,6 +38,7 @@
 @property (nonatomic) double paidNonpaidSubscriptionCtr; // @synthesize paidNonpaidSubscriptionCtr=_paidNonpaidSubscriptionCtr;
 @property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
 @property (nonatomic) double subscribedChannelCtr; // @synthesize subscribedChannelCtr=_subscribedChannelCtr;
+@property (nonatomic) double userConversionScore; // @synthesize userConversionScore=_userConversionScore;
 @property (nonatomic) double userFeedbackScore; // @synthesize userFeedbackScore=_userFeedbackScore;
 
 - (void).cxx_destruct;

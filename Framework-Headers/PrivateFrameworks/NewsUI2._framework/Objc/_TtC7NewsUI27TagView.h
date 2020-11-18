@@ -6,22 +6,27 @@
 
 #import <UIKit/UIView.h>
 
+#import <NewsUI2/TSAXCustomReorderMessaging-Protocol.h>
+
 @class MISSING_TYPE, NSString;
 
-@interface _TtC7NewsUI27TagView : UIView
+@interface _TtC7NewsUI27TagView : UIView <TSAXCustomReorderMessaging>
 {
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *imageView;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *badgeView;
+    MISSING_TYPE *accessoryView;
     MISSING_TYPE *_notificationSwitch;
     MISSING_TYPE *_likeButton;
     MISSING_TYPE *_dislikeButton;
     MISSING_TYPE *isEditing;
     MISSING_TYPE *keyCommandBlocks;
+    MISSING_TYPE *tsaxAccessibilityLabelForReordering;
 }
 
 @property (nonatomic, readonly) NSString *title;
+@property (nonatomic, copy) NSString *tsaxAccessibilityLabelForReordering;
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

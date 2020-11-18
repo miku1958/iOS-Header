@@ -27,7 +27,7 @@
 - (id)description;
 - (void)finish;
 - (BOOL)highPriority;
-- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 sourceKey:(id)arg4 messageId:(id)arg5 highPriority:(BOOL)arg6 parentQueue:(id)arg7;
+- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 sourceKey:(id)arg4 messageId:(id)arg5 highPriority:(BOOL)arg6 customPriorityCriteria:(unsigned char)arg7 parentQueue:(id)arg8;
 - (void)markAsFailed;
 
 @end

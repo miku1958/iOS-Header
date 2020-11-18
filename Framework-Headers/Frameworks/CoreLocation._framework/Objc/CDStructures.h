@@ -43,6 +43,7 @@ struct _CLLocationManagerStateTrackerState {
     BOOL dynamicAccuracyReductionEnabled;
     BOOL previousAuthorizationStatusValid;
     int previousAuthorizationStatus;
+    BOOL limitsPrecision;
     long long activityType;
     int pausesLocationUpdatesAutomatically;
     BOOL paused;
@@ -54,7 +55,9 @@ struct _CLLocationManagerStateTrackerState {
     BOOL updatingVehicleHeading;
     BOOL matchInfoEnabled;
     BOOL groundAltitudeEnabled;
+    BOOL fusionInfoEnabled;
     BOOL courtesyPromptNeeded;
+    BOOL isAuthorizedForWidgetUpdates;
 };
 
 struct os_state_hints_s {
@@ -83,6 +86,10 @@ typedef struct {
 } CDStruct_14d5dc5e;
 
 typedef struct {
+    float v[6][6];
+} CDStruct_2972252c;
+
+typedef struct {
     double x;
     double y;
     double z;
@@ -102,6 +109,17 @@ typedef struct {
     double machContinuousTime;
     double machAbsoluteTime;
 } CDStruct_6a5f25ec;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    int _field4;
+} CDStruct_b141a4d0;
+
+typedef struct {
+    double coordinate__horizontalAccuracy;
+} CDStruct_c3074bf1;
 
 typedef struct {
     double _field1;
@@ -132,20 +150,32 @@ typedef struct {
         double _field1;
         double _field2;
     } _field17;
-    float _field18;
+    int _field18;
+    float _field19;
     struct {
         double _field1;
         double _field2;
-    } _field19;
-    double _field20;
+    } _field20;
     double _field21;
-    int _field22;
-    BOOL _field23;
-    double _field24;
+    double _field22;
+    int _field23;
+    BOOL _field24;
     double _field25;
     double _field26;
     double _field27;
-} CDStruct_f185aced;
+    double _field28;
+    double _field29;
+    double _field30;
+    BOOL _field31;
+    struct {
+        double _field1;
+        double _field2;
+    } _field32;
+    double _field33;
+    int _field34;
+    double _field35;
+    double _field36;
+} CDStruct_9ef4a103;
 
 typedef struct {
     int padding1;
@@ -195,6 +225,7 @@ typedef struct {
             double desiredAccuracy;
             int referenceFrame;
             BOOL allowMonitoringWhileNearby;
+            BOOL lowPower;
         } circularAttributes;
         struct {
             CDStruct_2c43369c vertices[101];
@@ -203,7 +234,7 @@ typedef struct {
             BOOL allowMonitoringWhileNearby;
         } polygonalAttributes;
     } ;
-} CDStruct_4c505072;
+} CDStruct_739493b2;
 
 // Ambiguous groups
 typedef struct {

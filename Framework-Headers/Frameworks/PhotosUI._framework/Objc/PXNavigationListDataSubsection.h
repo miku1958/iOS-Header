@@ -11,6 +11,7 @@
 @interface PXNavigationListDataSubsection : NSObject
 {
     NSMutableDictionary *_listItemsCache;
+    BOOL _skipAssetCountFetches;
     PXDataSection *_dataSection;
     PXNavigationListDataSection *_listDataSection;
     long long _indentationLevel;
@@ -25,10 +26,11 @@
 @property (readonly, nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
 @property (readonly, nonatomic) long long indexDelta; // @synthesize indexDelta=_indexDelta;
 @property (readonly, nonatomic) PXNavigationListDataSection *listDataSection; // @synthesize listDataSection=_listDataSection;
+@property (readonly, nonatomic) BOOL skipAssetCountFetches; // @synthesize skipAssetCountFetches=_skipAssetCountFetches;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithDataSection:(id)arg1 indexDelta:(long long)arg2 expandedIndex:(long long)arg3 indentationLevel:(long long)arg4 externalStartIndex:(long long)arg5;
+- (id)initWithDataSection:(id)arg1 indexDelta:(long long)arg2 expandedIndex:(long long)arg3 indentationLevel:(long long)arg4 externalStartIndex:(long long)arg5 skipAssetCountFetches:(BOOL)arg6;
 - (id)listItemAtExternalIndex:(long long)arg1;
 
 @end

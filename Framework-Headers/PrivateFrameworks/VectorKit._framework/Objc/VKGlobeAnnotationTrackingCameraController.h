@@ -32,11 +32,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 
 - (Matrix_443f5d51)_centerCursor;
-- (void)_goToAnnotationAnimated:(BOOL)arg1 duration:(double)arg2 isInitial:(BOOL)arg3;
+- (struct VKEdgeInsets)_effectiveEdgeInsets;
+- (void)_goToAnnotationAnimated:(BOOL)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3 isInitial:(BOOL)arg4;
 - (Matrix_443f5d51)_nonOffsetCenterCursor;
 - (void)_rotateToHeadingAnimated:(BOOL)arg1 duration:(double)arg2;
 - (void)dealloc;
 - (id)init;
+- (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 
 @end
 

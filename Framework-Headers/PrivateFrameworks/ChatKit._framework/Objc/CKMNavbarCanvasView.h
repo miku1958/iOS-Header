@@ -6,9 +6,28 @@
 
 #import <UIKit/UIView.h>
 
+@class UIButton, UISearchBar;
+
 @interface CKMNavbarCanvasView : UIView
 {
+    BOOL _shouldLayoutForCollapsedWidth;
+    UISearchBar *_searchBarView;
+    UIButton *_composeButtonView;
 }
+
+@property (readonly, nonatomic) UIButton *composeButtonView; // @synthesize composeButtonView=_composeButtonView;
+@property (readonly, nonatomic) UISearchBar *searchBarView; // @synthesize searchBarView=_searchBarView;
+@property (nonatomic) BOOL shouldLayoutForCollapsedWidth; // @synthesize shouldLayoutForCollapsedWidth=_shouldLayoutForCollapsedWidth;
+
+- (void).cxx_destruct;
+- (void)_layoutForDisplayBelowToolbar;
+- (void)_layoutForDisplayInNavbar;
+- (void)clearAllItemViews;
+- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (void)setComposeButtonView:(id)arg1;
+- (void)setSearchBarView:(id)arg1;
 
 @end
 

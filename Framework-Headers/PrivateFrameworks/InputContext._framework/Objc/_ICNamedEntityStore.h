@@ -19,7 +19,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType filteringBlock; // @synthesize filteringBlock=_filteringBlock;
-@property (strong, nonatomic) NSArray *lexicons; // @synthesize lexicons=_lexicons;
+@property (readonly, nonatomic) NSArray *lexicons; // @synthesize lexicons=_lexicons;
 
 + (id)lexiconViews;
 + (id)tokenize:(id)arg1;

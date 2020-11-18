@@ -29,12 +29,7 @@
         unsigned int read_latLngE7:1;
         unsigned int read_location:1;
         unsigned int read_qualities:1;
-        unsigned int wrote_attributes:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_latLngE7:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_qualities:1;
-        unsigned int wrote_uniqueIdentifier:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,13 +49,6 @@
 + (Class)qualitiesType;
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
-- (void)_addNoFlagsAttributes:(int)arg1;
-- (void)_addNoFlagsQualities:(id)arg1;
-- (void)_readAttributes;
-- (void)_readIdentifier;
-- (void)_readLatLngE7;
-- (void)_readLocation;
-- (void)_readQualities;
 - (void)addAttributes:(int)arg1;
 - (void)addQualities:(id)arg1;
 - (id)attributesAsString:(int)arg1;
@@ -75,7 +63,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)qualitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)qualitiesCount;

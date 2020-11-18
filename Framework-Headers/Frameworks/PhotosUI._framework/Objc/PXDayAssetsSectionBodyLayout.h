@@ -28,7 +28,9 @@
 
 + (struct CGSize)estimatedSizeWithReferenceSize:(struct CGSize)arg1 spec:(id)arg2 style:(long long)arg3 numberOfAssets:(long long)arg4;
 - (void).cxx_destruct;
+- (long long)_initialItemInDirection:(unsigned long long)arg1;
 - (id)_inputItemAtIndex:(unsigned int)arg1;
+- (long long)_itemClosestToItem:(long long)arg1 inDirection:(unsigned long long)arg2;
 - (struct CGSize)_minSizeOfDominantSprites;
 - (void)contentSizeDidChange;
 - (void)enumerateHeroSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;

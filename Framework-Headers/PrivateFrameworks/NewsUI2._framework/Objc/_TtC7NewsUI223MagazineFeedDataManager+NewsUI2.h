@@ -7,6 +7,10 @@
 #import <NewsUI2/_TtC7NewsUI223MagazineFeedDataManager.h>
 
 @interface _TtC7NewsUI223MagazineFeedDataManager (NewsUI2)
+- (void)bundleSubscriptionDidExpire:(id)arg1;
+- (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)plugin:(id)arg1 didResizePluginModel:(id)arg2;
+- (void)readingHistory:(id)arg1 didChangeFeaturesForArticles:(id)arg2;
+- (void)readingList:(id)arg1 didAddArticles:(id)arg2 removeArticles:(id)arg3 eventInitiationLevel:(long long)arg4;
 @end
 

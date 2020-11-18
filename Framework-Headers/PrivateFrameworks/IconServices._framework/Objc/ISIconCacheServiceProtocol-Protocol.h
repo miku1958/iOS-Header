@@ -6,10 +6,10 @@
 
 #import <IconServices/NSObject-Protocol.h>
 
-@class ISIconResourceLocator, NSString;
+@class ISIconResourceLocator, NSDate, NSString;
 
 @protocol ISIconCacheServiceProtocol <NSObject>
-- (void)clearCachedItemsForBundeID:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)clearCachedItemsForBundeID:(NSString *)arg1 olderThanDate:(NSDate *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)copyIconBitmapCacheConfigurationWithReply:(void (^)(NSURL *, NSString *, NSString *))arg1;
 - (void)getIconBitmapDataWithResourceLocator:(ISIconResourceLocator *)arg1 variant:(int)arg2 options:(int)arg3 reply:(void (^)(BOOL, NSData *))arg4;
 @end

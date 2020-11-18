@@ -17,7 +17,7 @@
 
 + (id)indexSample:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)insertConceptIndexEntries:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)sampleQueryDescriptionsFollowingAnchor:(id)arg1;
++ (id)sampleQueryDescriptionsFollowingAnchor:(id)arg1 futureMigrationEnabled:(BOOL)arg2;
 - (void).cxx_destruct;
 - (BOOL)_syncQueue_processDeletedSamplesWithLimit:(long long)arg1 sampleType:(id)arg2 countOfSamplesProcessed:(long long *)arg3 error:(id *)arg4;
 - (BOOL)_syncQueue_processSamplesWithLimit:(long long)arg1 countOfSamplesProcessed:(long long *)arg2 error:(id *)arg3;

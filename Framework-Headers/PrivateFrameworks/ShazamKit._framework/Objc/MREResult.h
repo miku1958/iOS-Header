@@ -15,15 +15,17 @@ __attribute__((visibility("hidden")))
     double _offset;
     NSNumber *_timeSkew;
     NSNumber *_freqSkew;
+    NSNumber *_score;
 }
 
 @property (readonly, strong, nonatomic) NSNumber *freqSkew; // @synthesize freqSkew=_freqSkew;
 @property (readonly, nonatomic) double offset; // @synthesize offset=_offset;
+@property (readonly, strong, nonatomic) NSNumber *score; // @synthesize score=_score;
 @property (readonly, strong, nonatomic) NSNumber *timeSkew; // @synthesize timeSkew=_timeSkew;
 @property (readonly, nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
 
 - (void)dealloc;
-- (id)initWithTrackId:(unsigned long long)arg1 offset:(double)arg2 timeSkew:(id)arg3 freqSkew:(id)arg4;
+- (id)initWithTrackId:(unsigned long long)arg1 offset:(double)arg2 timeSkew:(id)arg3 freqSkew:(id)arg4 score:(id)arg5;
 
 @end
 

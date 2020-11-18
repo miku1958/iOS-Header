@@ -21,8 +21,12 @@
 @property (strong, nonatomic) SearchUIDetailedRowModel *rowModel; // @dynamic rowModel;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsCustomUserReportRequestAfforance;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)footnoteButtonPressed;
+- (id)leadingTextView;
+- (id)leadingView;
 - (void)setFeedbackDelegate:(id)arg1;
 - (id)setupContentView;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;

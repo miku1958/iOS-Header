@@ -6,26 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class RBSProcessHandle, RBSProcessState;
+@class RBSProcessExitEvent, RBSProcessHandle, RBSProcessState;
 
 @interface RBSProcessStateUpdate : NSObject
 {
     RBSProcessHandle *_process;
     RBSProcessState *_state;
     RBSProcessState *_previousState;
+    RBSProcessExitEvent *_exitEvent;
 }
 
+@property (readonly, nonatomic) RBSProcessExitEvent *exitEvent; // @synthesize exitEvent=_exitEvent;
 @property (readonly, nonatomic) RBSProcessState *previousState; // @synthesize previousState=_previousState;
 @property (readonly, nonatomic) RBSProcessHandle *process; // @synthesize process=_process;
 @property (readonly, nonatomic) RBSProcessState *state; // @synthesize state=_state;
 
-+ (id)updateWithState:(id)arg1 previousState:(id)arg2;
++ (id)updateWithState:(id)arg1 previousState:(id)arg2 exitEvent:(id)arg3;
 - (void).cxx_destruct;
 - (id)description;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

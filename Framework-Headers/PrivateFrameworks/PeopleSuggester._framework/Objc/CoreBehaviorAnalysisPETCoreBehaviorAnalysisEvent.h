@@ -34,6 +34,8 @@
     NSString *_support;
     unsigned int _targetBundleIdContainingRuleCount;
     unsigned int _targetBundleIdRulesCardinality;
+    unsigned int _topicContainingRuleCount;
+    unsigned int _topicRulesCardinality;
     unsigned int _totalMessagesRecieved;
     unsigned int _totalMessagesSent;
     unsigned int _totalShares;
@@ -57,12 +59,20 @@
     BOOL _targetBundleIdOverlap;
     BOOL _timeOfDaySlotInRule;
     BOOL _timeOfDaySlotOverlap;
+    BOOL _topicInContext;
+    BOOL _topicInRule;
+    BOOL _topicOverlap;
     BOOL _utiTypeInContext;
     BOOL _utiTypeInRule;
     BOOL _utiTypeOverlap;
     struct {
+        unsigned int topicContainingRuleCount:1;
+        unsigned int topicRulesCardinality:1;
         unsigned int personAndAppMatched:1;
         unsigned int personMatched:1;
+        unsigned int topicInContext:1;
+        unsigned int topicInRule:1;
+        unsigned int topicOverlap:1;
     } _has;
 }
 
@@ -73,6 +83,11 @@
 @property (nonatomic) BOOL hasPersonAndAppMatched;
 @property (nonatomic) BOOL hasPersonMatched;
 @property (readonly, nonatomic) BOOL hasSessionId;
+@property (nonatomic) BOOL hasTopicContainingRuleCount;
+@property (nonatomic) BOOL hasTopicInContext;
+@property (nonatomic) BOOL hasTopicInRule;
+@property (nonatomic) BOOL hasTopicOverlap;
+@property (nonatomic) BOOL hasTopicRulesCardinality;
 @property (nonatomic) unsigned int highConfidenceRuleCount; // @synthesize highConfidenceRuleCount=_highConfidenceRuleCount;
 @property (nonatomic) BOOL isWeekendInRule; // @synthesize isWeekendInRule=_isWeekendInRule;
 @property (nonatomic) BOOL isWeekendOverlap; // @synthesize isWeekendOverlap=_isWeekendOverlap;
@@ -110,6 +125,11 @@
 @property (nonatomic) unsigned int targetBundleIdRulesCardinality; // @synthesize targetBundleIdRulesCardinality=_targetBundleIdRulesCardinality;
 @property (nonatomic) BOOL timeOfDaySlotInRule; // @synthesize timeOfDaySlotInRule=_timeOfDaySlotInRule;
 @property (nonatomic) BOOL timeOfDaySlotOverlap; // @synthesize timeOfDaySlotOverlap=_timeOfDaySlotOverlap;
+@property (nonatomic) unsigned int topicContainingRuleCount; // @synthesize topicContainingRuleCount=_topicContainingRuleCount;
+@property (nonatomic) BOOL topicInContext; // @synthesize topicInContext=_topicInContext;
+@property (nonatomic) BOOL topicInRule; // @synthesize topicInRule=_topicInRule;
+@property (nonatomic) BOOL topicOverlap; // @synthesize topicOverlap=_topicOverlap;
+@property (nonatomic) unsigned int topicRulesCardinality; // @synthesize topicRulesCardinality=_topicRulesCardinality;
 @property (nonatomic) unsigned int totalMessagesRecieved; // @synthesize totalMessagesRecieved=_totalMessagesRecieved;
 @property (nonatomic) unsigned int totalMessagesSent; // @synthesize totalMessagesSent=_totalMessagesSent;
 @property (nonatomic) unsigned int totalShares; // @synthesize totalShares=_totalShares;

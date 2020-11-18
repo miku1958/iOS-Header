@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
+- (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (void)beginTransitionForWorkspaceTransaction:(id)arg1;
 - (void)endTransitionWithError:(id)arg1;
 - (id)init;

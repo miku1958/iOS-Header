@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
 
 @class AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebBrowserPageModel : AMSUIWebModel <AMSUIWebPageProvider>
+@interface AMSUIWebBrowserPageModel : NSObject <AMSUIWebPageProvider>
 {
     AMSUIWebNavigationBarModel *_navigationBar;
     NSString *_backgroundColor;

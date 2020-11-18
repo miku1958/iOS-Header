@@ -18,12 +18,12 @@
 + (id)typeStrings;
 - (void).cxx_destruct;
 - (id)defaultsForDomain:(id)arg1;
-- (id)description;
 - (id)domains;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (BOOL)isAllowedToWriteDefaults;
 - (id)stubDictionary;
 - (id)title;
+- (id)verboseDescription;
 
 @end
 

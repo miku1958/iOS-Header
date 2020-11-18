@@ -19,6 +19,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_firePendingIconAnimationBlocks;
 - (BOOL)areAnyIconViewContextMenusAnimating;
 - (BOOL)areAnyIconViewContextMenusShowing;
 - (void)dismissAppIconForceTouchControllers:(CDUnknownBlockType)arg1;

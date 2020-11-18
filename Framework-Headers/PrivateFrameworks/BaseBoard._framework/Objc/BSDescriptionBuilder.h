@@ -16,9 +16,9 @@
     id<NSObject> _object;
     NSMutableString *_proem;
     NSMutableString *_description;
+    BOOL _useDebugDescription;
     int _activeComponent;
     NSString *_activePrefix;
-    BOOL _useDebugDescription;
 }
 
 @property (nonatomic) int activeComponent; // @synthesize activeComponent=_activeComponent;
@@ -58,9 +58,7 @@
 - (id)appendKeys:(id)arg1;
 - (id)appendObject:(id)arg1 withName:(id)arg2;
 - (id)appendObject:(id)arg1 withName:(id)arg2 skipIfNil:(BOOL)arg3;
-- (id)appendObjectWithName:(id)arg1 formatBlock:(CDUnknownBlockType)arg2;
 - (id)appendObjectsAndNames:(id)arg1;
-- (id)appendObjectsAndNames:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (id)appendPoint:(struct CGPoint)arg1 withName:(id)arg2;
 - (id)appendPointer:(void *)arg1 withName:(id)arg2;
 - (void)appendProem:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -78,11 +76,11 @@
 - (id)appendUnsignedInt:(unsigned int)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2 format:(long long)arg3;
+- (id)appendVersionedPID:(long long)arg1 withName:(id)arg2;
 - (id)build;
 - (id)initWithObject:(id)arg1;
 - (id)modifyBody:(CDUnknownBlockType)arg1;
 - (id)modifyProem:(CDUnknownBlockType)arg1;
-- (void)tryAppendKey:(id)arg1;
 
 @end
 

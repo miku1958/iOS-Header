@@ -40,6 +40,7 @@
 + (id)transitionContext;
 - (void).cxx_destruct;
 - (BOOL)_isEmpty;
+- (BOOL)appendDescriptionToBuilder:(id)arg1 forFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -50,6 +51,9 @@
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)otherSettings;
+- (BOOL)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
+- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
+- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)transientLocalClientSettings;

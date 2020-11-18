@@ -22,12 +22,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_checkAvailabilityAndAddToken;
+- (BOOL)_enableRecipientsAdditionBasedOnAvailability;
 - (void)_frecencySearch;
 - (void)_updateNavigationButton;
 - (BOOL)alwaysShowSearchResultsTable;
+- (void)composeRecipientViewReturnPressed:(id)arg1;
 - (id)handlesForScreenTimePolicyCheck;
 - (BOOL)homogenizePreferredServiceForiMessage;
 - (id)initWithConversation:(id)arg1;
+- (BOOL)isBeingPresentedInMacDetailsView;
 - (void)loadView;
 - (struct UIEdgeInsets)navigationBarInsetsForRecipientSelectionController:(id)arg1;
 - (void)recipientAvailibilitiesDidUpdate;
@@ -40,6 +44,7 @@
 - (void)recipientSelectionControllerRequestDismissKeyboard:(id)arg1;
 - (void)recipientSelectionControllerReturnPressed:(id)arg1;
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(id)arg1;
+- (void)recipientSelectionControllerTabPressed:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (BOOL)shouldSuppressSearchResultsTable;
 - (double)topInsetForNavBar;

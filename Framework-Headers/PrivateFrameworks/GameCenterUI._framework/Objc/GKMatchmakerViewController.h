@@ -8,15 +8,18 @@
 
 #import <GameCenterUI/GKExtensionParentViewControllerProtocol-Protocol.h>
 #import <GameCenterUI/GKMatchDelegate-Protocol.h>
+#import <GameCenterUI/GKMatchDelegatePrivate-Protocol.h>
 
-@class GKInvite, GKMatch, GKMatchRequest, GKMatchmakerHostViewController, NSMutableArray, NSString, UIAlertController;
-@protocol GKMatchmakerViewControllerDelegate;
+@class GKInvite, GKMatch, GKMatchRequest, GKMatchmakerHostViewController, NSMutableArray, NSObject, NSString, UIAlertController;
+@protocol GKMatchmakerViewControllerDelegate, OS_dispatch_queue;
 
-@interface GKMatchmakerViewController : UINavigationController <GKMatchDelegate, GKExtensionParentViewControllerProtocol>
+@interface GKMatchmakerViewController : UINavigationController <GKMatchDelegate, GKMatchDelegatePrivate, GKExtensionParentViewControllerProtocol>
 {
+    BOOL _userCancelledMatching;
     BOOL _hosted;
     id<GKMatchmakerViewControllerDelegate> matchmakerDelegate;
     GKMatchRequest *_matchRequest;
+    long long _matchmakingMode;
     GKMatchmakerHostViewController *_remoteViewController;
     GKInvite *_acceptedInvite;
     GKMatch *_match;
@@ -26,6 +29,7 @@
 
 @property (strong, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
 @property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+@property (readonly) NSObject<OS_dispatch_queue> *cancellingQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultInvitationMessage;
 @property (readonly, copy) NSString *description;
@@ -34,9 +38,11 @@
 @property (strong, nonatomic) NSMutableArray *hostedPlayers; // @synthesize hostedPlayers=_hostedPlayers;
 @property (strong, nonatomic) GKMatch *match; // @synthesize match=_match;
 @property (strong, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;
-@property (nonatomic) id<GKMatchmakerViewControllerDelegate> matchmakerDelegate; // @synthesize matchmakerDelegate;
+@property (weak, nonatomic) id<GKMatchmakerViewControllerDelegate> matchmakerDelegate; // @synthesize matchmakerDelegate;
+@property (nonatomic) long long matchmakingMode; // @synthesize matchmakingMode=_matchmakingMode;
 @property (strong, nonatomic) GKMatchmakerHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL userCancelledMatching; // @synthesize userCancelledMatching=_userCancelledMatching;
 
 + (BOOL)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
@@ -66,6 +72,7 @@
 - (void)playersToInvite:(id)arg1;
 - (void)sendData:(id)arg1;
 - (void)setBrowsingForNearbyPlayers:(BOOL)arg1;
+- (void)setConnectingStateForPlayer:(id)arg1;
 - (void)setHostedPlayer:(id)arg1 connected:(BOOL)arg2;
 - (void)setHostedPlayer:(id)arg1 didConnect:(BOOL)arg2;
 - (void)setHostedPlayerReady:(id)arg1;

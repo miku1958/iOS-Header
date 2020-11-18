@@ -14,13 +14,17 @@ __attribute__((visibility("hidden")))
     NSArray *_items;
     CDUnknownBlockType _titleProvider;
     NSString *_title;
+    NSString *_identifier;
 }
 
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) CDUnknownBlockType titleProvider; // @synthesize titleProvider=_titleProvider;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

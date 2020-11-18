@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICQOffer, ICQUpgradeFlowOptions;
+@class ICQOffer, ICQUpgradeFlowManager, ICQUpgradeFlowOptions;
 @protocol ICQUpgradeFlowManagerDelegate;
 
 @interface ICQRemoteUpgradeFlowManager : NSObject
@@ -14,9 +14,11 @@
     ICQOffer *_offer;
     ICQUpgradeFlowOptions *_flowOptions;
     id<ICQUpgradeFlowManagerDelegate> _delegate;
+    ICQUpgradeFlowManager *_flowManager;
 }
 
 @property (weak, nonatomic) id<ICQUpgradeFlowManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) ICQUpgradeFlowManager *flowManager; // @synthesize flowManager=_flowManager;
 @property (copy, nonatomic) ICQUpgradeFlowOptions *flowOptions; // @synthesize flowOptions=_flowOptions;
 @property (strong, nonatomic) ICQOffer *offer; // @synthesize offer=_offer;
 

@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputHueMagBM;
     CIFilter *inputLinearSpaceFilter;
     NSNumber *inputEnableEDRMode;
+    NSNumber *inputReturnDemosaiced;
 }
 
 @property (readonly, strong) NSArray *filters;
@@ -104,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputNoiseReductionContrastAmount;
 - (id)defaultInputNoiseReductionDetailAmount;
 - (id)defaultInputNoiseReductionSharpnessAmount;
+- (id)defaultInputReturnDemosaiced;
 - (id)defaultNeutralChromaticityX;
 - (id)defaultNeutralChromaticityY;
 - (id)defaultNeutralTemperature;
@@ -173,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputNoiseReductionDetailAmount:(id)arg1;
 - (void)setInputNoiseReductionSharpnessAmount:(id)arg1;
 - (void)setInputRequestedSushiMode:(id)arg1;
+- (void)setInputReturnDemosaiced:(id)arg1;
 - (void)setInputScaleFactor:(id)arg1;
 - (void)setTempTintAtPoint:(struct CGPoint)arg1;
 - (id)supportedDecoderVersions;

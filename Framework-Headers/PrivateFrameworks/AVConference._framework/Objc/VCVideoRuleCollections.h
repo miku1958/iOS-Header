@@ -13,6 +13,9 @@ __attribute__((visibility("hidden")))
 {
     NSMutableDictionary *_rules;
     NSMutableArray *_supportedPayloads;
+    int _payload;
+    unsigned char _transportType;
+    unsigned char _encodingType;
 }
 
 @property (readonly) NSDictionary *rules; // @synthesize rules=_rules;
@@ -23,11 +26,14 @@ __attribute__((visibility("hidden")))
 - (void)addVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
 - (void)appendVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
 - (void)dealloc;
+- (id)description;
 - (id)filterRules:(id)arg1 byBitrateRule:(id)arg2;
 - (id)getVideoRulesForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPayloadSupported:(int)arg1;
+- (void)limitRulesFromVideoRules:(int)arg1 frameHeight:(int)arg2 videoRules:(id)arg3;
+- (void)limitVideoRulesToMaxWidth:(int)arg1 maxHeight:(int)arg2 transportType:(unsigned char)arg3;
 - (void)removeVideoRulesWithWidth:(int)arg1 height:(int)arg2 transportType:(unsigned char)arg3 encodingType:(unsigned char)arg4;
 - (id)supportedVideoRulesForBitrate:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
 - (id)supportedVideoRulesSizesForBitrate:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;

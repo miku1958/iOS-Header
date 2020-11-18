@@ -19,6 +19,7 @@
 @property (nonatomic) long long participantType;
 @property (nonatomic) long long pendingStatus;
 @property (nonatomic) BOOL proposedStartDateChanged;
+@property (readonly, nonatomic) BOOL rsvpRequested;
 @property (nonatomic) BOOL statusChanged;
 
 + (int)_calAttendeeStatusFromEKParticipantStatus:(long long)arg1;
@@ -30,11 +31,13 @@
 + (id)attendeeWithName:(id)arg1 phoneNumber:(id)arg2;
 + (id)attendeeWithName:(id)arg1 url:(id)arg2;
 + (Class)frozenClass;
++ (id)knownSingleValueKeysForComparison;
 - (BOOL)_isParticipantStatusDirty;
 - (void)_setFlag:(unsigned int)arg1 value:(BOOL)arg2;
 - (BOOL)_valueForFlag:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)displayString;
 - (unsigned int)flags;
 - (BOOL)isCurrentUser;
 - (void)markAsForward;

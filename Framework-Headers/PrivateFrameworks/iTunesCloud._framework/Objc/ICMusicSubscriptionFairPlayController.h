@@ -21,7 +21,7 @@
 - (void)_handleSubscriptionFairPlayKeyStatusChangedDistributedNotification:(id)arg1;
 - (id)_init;
 - (void)generateSubscriptionBagRequestWithAccountUniqueIdentifier:(unsigned long long)arg1 transactionType:(unsigned int)arg2 machineIDData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)generateSubscriptionLeaseRequestWithAccountUniqueID:(unsigned long long)arg1 transactionType:(unsigned int)arg2 certificateData:(id)arg3 assetIDData:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)generateSubscriptionLeaseRequestWithAccountUniqueID:(unsigned long long)arg1 transactionType:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getKeyStatusForAccountUniqueIdentifier:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getKeyStatusListWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)importSubscriptionKeyBagData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

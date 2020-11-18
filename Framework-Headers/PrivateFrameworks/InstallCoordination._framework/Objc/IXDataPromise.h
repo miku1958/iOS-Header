@@ -51,6 +51,7 @@
 - (id)initWithSeed:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)preflightWithError:(id *)arg1;
 - (void)resetWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)resetWithError:(id *)arg1;
 

@@ -6,8 +6,13 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC8NewsFeed24FeedCursorCommandHandler : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

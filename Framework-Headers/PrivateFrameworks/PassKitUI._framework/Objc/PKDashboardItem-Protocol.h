@@ -6,6 +6,9 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol PKDashboardItem <NSObject>
++ (NSString *)identifier;
 @end
 

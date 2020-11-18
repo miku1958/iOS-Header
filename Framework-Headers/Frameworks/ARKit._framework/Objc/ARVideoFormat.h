@@ -8,39 +8,18 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureDeviceFormat, NSArray, NSString;
-
 @interface ARVideoFormat : NSObject <NSCopying>
 {
-    AVCaptureDevice *_device;
-    AVCaptureDeviceFormat *_deviceFormat;
-    struct CGSize _imageResolution;
     long long _captureDevicePosition;
-    NSArray *_frameRatesByPowerUsage;
-    AVCaptureDeviceFormat *_depthDataFormat;
-    NSString *_captureDeviceType;
+    long long _framesPerSecond;
+    struct CGSize _imageResolution;
 }
 
 @property (readonly, nonatomic) long long captureDevicePosition; // @synthesize captureDevicePosition=_captureDevicePosition;
-@property (readonly, nonatomic) NSString *captureDeviceType; // @synthesize captureDeviceType=_captureDeviceType;
-@property (strong, nonatomic) AVCaptureDeviceFormat *depthDataFormat; // @synthesize depthDataFormat=_depthDataFormat;
-@property (readonly, nonatomic) AVCaptureDevice *device;
-@property (readonly, nonatomic) AVCaptureDeviceFormat *deviceFormat;
-@property (strong, nonatomic) NSArray *frameRatesByPowerUsage; // @synthesize frameRatesByPowerUsage=_frameRatesByPowerUsage;
-@property (readonly, nonatomic) long long framesPerSecond;
-@property (readonly, nonatomic) struct CGSize imageResolution;
+@property (readonly, nonatomic) long long framesPerSecond; // @synthesize framesPerSecond=_framesPerSecond;
+@property (readonly, nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 
-+ (id)bestDepthFormatForDeviceFormat:(id)arg1;
-+ (id)bestVideoFormatForDevicePosition:(long long)arg1 deviceType:(id)arg2 resolution:(CDStruct_1ef3fb1f)arg3 frameRate:(double)arg4 videoBinned:(BOOL)arg5;
-+ (id)supportedVideoFormatsForDevicePosition:(long long)arg1 deviceType:(id)arg2;
-+ (id)supportedVideoFormatsForDevicePosition:(long long)arg1 deviceType:(id)arg2 videoBinned:(BOOL)arg3;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
-- (id)initWithCaptureDevice:(id)arg1 format:(id)arg2;
-- (id)initWithImageResolution:(struct CGSize)arg1 captureDevicePosition:(long long)arg2 captureDeviceType:(id)arg3;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

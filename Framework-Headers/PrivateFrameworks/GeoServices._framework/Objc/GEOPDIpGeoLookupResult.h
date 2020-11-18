@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_ipAddress:1;
         unsigned int read_location:1;
         unsigned int read_timeZome:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_ipAddress:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_timeZome:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,10 +49,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
-- (void)_readCountryCode;
-- (void)_readIpAddress;
-- (void)_readLocation;
-- (void)_readTimeZome;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -66,7 +57,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

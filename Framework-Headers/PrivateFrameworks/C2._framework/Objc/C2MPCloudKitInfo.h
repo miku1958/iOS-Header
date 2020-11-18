@@ -17,10 +17,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _reportClientOperationFrequencyBase;
     unsigned long long _reportOperationGroupFrequency;
     unsigned long long _reportOperationGroupFrequencyBase;
+    NSString *_applicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
     NSString *_clientBundleId;
     NSMutableArray *_clientOperations;
     NSString *_clientProcessVersion;
     NSString *_container;
+    NSString *_containerScopedDeviceIdentifier;
+    NSString *_containerScopedUserIdentifier;
     NSString *_environment;
     NSMutableArray *_operationGroups;
     BOOL _anonymous;
@@ -34,15 +38,23 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL anonymous; // @synthesize anonymous=_anonymous;
+@property (strong, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property (strong, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
 @property (strong, nonatomic) NSString *clientBundleId; // @synthesize clientBundleId=_clientBundleId;
 @property (strong, nonatomic) NSMutableArray *clientOperations; // @synthesize clientOperations=_clientOperations;
 @property (strong, nonatomic) NSString *clientProcessVersion; // @synthesize clientProcessVersion=_clientProcessVersion;
 @property (strong, nonatomic) NSString *container; // @synthesize container=_container;
+@property (strong, nonatomic) NSString *containerScopedDeviceIdentifier; // @synthesize containerScopedDeviceIdentifier=_containerScopedDeviceIdentifier;
+@property (strong, nonatomic) NSString *containerScopedUserIdentifier; // @synthesize containerScopedUserIdentifier=_containerScopedUserIdentifier;
 @property (strong, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property (nonatomic) BOOL hasAnonymous;
+@property (readonly, nonatomic) BOOL hasApplicationBundleIdentifierOverrideForContainerAccess;
+@property (readonly, nonatomic) BOOL hasApplicationBundleIdentifierOverrideForNetworkAttribution;
 @property (readonly, nonatomic) BOOL hasClientBundleId;
 @property (readonly, nonatomic) BOOL hasClientProcessVersion;
 @property (readonly, nonatomic) BOOL hasContainer;
+@property (readonly, nonatomic) BOOL hasContainerScopedDeviceIdentifier;
+@property (readonly, nonatomic) BOOL hasContainerScopedUserIdentifier;
 @property (readonly, nonatomic) BOOL hasEnvironment;
 @property (nonatomic) BOOL hasReportClientOperationFrequency;
 @property (nonatomic) BOOL hasReportClientOperationFrequencyBase;

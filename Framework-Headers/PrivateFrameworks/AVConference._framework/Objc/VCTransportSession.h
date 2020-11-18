@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TimingCollection, VCConnectionManager;
+@class NSMutableArray, NSString, TimingCollection, VCConnectionManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,10 +20,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     NSObject *_connectionSetupPiggybackBlob;
+    NSString *_localFrameworkVersion;
+    NSString *_remoteFrameworkVersion;
     struct opaqueRTCReporting *_reportingAgent;
     TimingCollection *_perfTimings;
     VCConnectionManager *_connectionManager;
     CDUnknownBlockType _eventHandler;
+    NSMutableArray *_streams;
+    struct _opaque_pthread_mutex_t _stateLock;
 }
 
 @property (readonly, nonatomic) unsigned int basebandNotificationRegistrationToken; // @synthesize basebandNotificationRegistrationToken=_basebandNotificationRegistrationToken;
@@ -34,18 +38,28 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
 @property (nonatomic, setter=setCallActive:) BOOL isCallActive;
 @property (readonly, nonatomic) BOOL isHandoverSupported;
+@property (readonly) BOOL isIPv6;
 @property (readonly, nonatomic) BOOL isRemoteOSPreLion;
+@property (readonly) int networkInterfaceType;
+@property (readonly) unsigned int networkMTU;
 @property (strong, nonatomic) TimingCollection *perfTimings; // @synthesize perfTimings=_perfTimings;
 @property (nonatomic) BOOL requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
 @property (nonatomic) BOOL useCompressedConnectionData; // @synthesize useCompressedConnectionData=_useCompressedConnectionData;
 
++ (unsigned int)trafficClassForStreamType:(unsigned int)arg1;
++ (int)vtpPacketTypeForStreamType:(unsigned int)arg1;
 - (void)callEventHandlerWithEvent:(unsigned int)arg1 info:(id)arg2;
+- (int)createTransportStream:(struct OpaqueVCTransportStream **)arg1 withType:(unsigned int)arg2 options:(id)arg3;
+- (int)createVFD:(int *)arg1 forStreamType:(unsigned int)arg2;
 - (void)dealloc;
+- (int)deregisterNotificationForTransportStream:(struct OpaqueVCTransportStream *)arg1;
 - (BOOL)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
+- (void)handleTransportStreamDeactivated:(struct OpaqueVCTransportStream *)arg1;
 - (id)initWithNotificationQueue:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 - (void)reportNetworkConditionsDegraded;
+- (void)setConnectionSelectionVersionWithLocalFrameworkVersion:(id)arg1 remoteFrameworkVersion:(id)arg2;
 - (void)start;
 - (void)stop;
 

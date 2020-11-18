@@ -7,9 +7,9 @@
 #import <ActionKit/NSObject-Protocol.h>
 
 @class WFRemoteQuarantinePolicyEvaluator;
-@protocol WFUserInterface;
+@protocol WFUserInterfaceHost;
 
 @protocol WFRemoteQuarantinePolicyEvaluatorDelegate <NSObject>
-- (id<WFUserInterface>)userInterfaceToPresentAlertForEvaluator:(WFRemoteQuarantinePolicyEvaluator *)arg1;
+- (id<WFUserInterfaceHost>)userInterfaceToPresentAlertForEvaluator:(WFRemoteQuarantinePolicyEvaluator *)arg1;
 @end
 

@@ -10,5 +10,7 @@
 
 @property (readonly, nonatomic) unsigned long long bl_hlsUnsignedIntegerValue;
 
++ (id)bl_numberWithItemIdentifier:(unsigned long long)arg1;
+- (unsigned long long)bl_itemIdentifierValue;
 @end
 

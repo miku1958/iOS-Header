@@ -13,6 +13,7 @@
 - (oneway void)aceConnectionWillRetryOnError:(NSError *)arg1;
 - (oneway void)acousticIDRequestDidFinishWithSuccess:(BOOL)arg1;
 - (oneway void)acousticIDRequestWillStart;
+- (oneway void)appLaunchFailedWithBundleIdentifier:(NSString *)arg1;
 - (oneway void)audioPlaybackRequestDidStart:(AFAudioPlaybackRequest *)arg1;
 - (oneway void)audioPlaybackRequestDidStop:(AFAudioPlaybackRequest *)arg1 error:(NSError *)arg2;
 - (oneway void)audioPlaybackRequestWillStart:(AFAudioPlaybackRequest *)arg1;
@@ -52,6 +53,7 @@
 - (oneway void)startPlaybackDidFail:(long long)arg1;
 - (oneway void)startUIRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(BOOL))arg2;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
+- (oneway void)willProcessAppLaunchWithBundleIdentifier:(NSString *)arg1;
 - (oneway void)willProcessStartPlayback:(long long)arg1 intent:(INIntent *)arg2 completion:(void (^)(BOOL, BOOL))arg3;
 @end
 

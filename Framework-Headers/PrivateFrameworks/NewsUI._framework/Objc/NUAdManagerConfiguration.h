@@ -10,9 +10,11 @@
 
 @interface NUAdManagerConfiguration : NSObject <NUAdManagerConfiguration>
 {
+    BOOL enabled;
     double timeout;
 }
 
+@property (nonatomic) BOOL enabled; // @synthesize enabled;
 @property (nonatomic) double timeout; // @synthesize timeout;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -30,29 +30,31 @@ struct sockaddr_storage {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned short _field5;
-    unsigned char _field6;
-    unsigned char _field7;
-    unsigned char _field8;
-    unsigned char _field9[16];
-    unsigned char _field10[16];
-    unsigned char _field11;
-    unsigned short _field12;
-    unsigned short _field13;
-    unsigned char _field14[3];
-} CDStruct_0310362a;
-
-typedef struct {
     unsigned short _field1;
     unsigned short _field2;
     unsigned short _field3;
     unsigned short _field4;
     unsigned short _field5;
 } CDStruct_9d3ac55b;
+
+typedef struct {
+    unsigned char _field1[16];
+    unsigned char _field2[16];
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5;
+    unsigned char _field6;
+    unsigned char _field7;
+    unsigned char _field8;
+    unsigned char _field9;
+    unsigned char _field10;
+    unsigned short _field11;
+    unsigned short _field12;
+    unsigned int _field13;
+    unsigned int _field14;
+    unsigned short _field15;
+    unsigned char _field16[2];
+} CDStruct_d2f8504d;
 
 typedef struct {
     char *_field1;

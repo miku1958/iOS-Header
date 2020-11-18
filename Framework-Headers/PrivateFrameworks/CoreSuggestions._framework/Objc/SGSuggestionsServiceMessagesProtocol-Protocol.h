@@ -12,7 +12,7 @@
 @property (weak) id<SGMessagesSuggestionsServiceDelegate> delegate;
 
 - (void)harvestedSuggestionsFromMessage:(CSSearchableItem *)arg1 bundleIdentifier:(NSString *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSError *, NSArray *, NSArray *))arg4;
-- (void)harvestedSuggestionsFromMessage:(CSSearchableItem *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(NSError *, NSArray *, NSArray *))arg3;
+- (void)harvestedSuggestionsFromMessage:(CSSearchableItem *)arg1 bundleIdentifier:(NSString *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(NSError *, SGSuggestions *))arg4;
 - (void)harvestedSuggestionsFromMessages:(NSArray *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(NSError *, NSArray *, NSArray *, NSArray *))arg3;
 - (void)suggestionsFromMessage:(CSSearchableItem *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(NSError *, NSArray *, NSArray *, NSArray *))arg3;
 @end

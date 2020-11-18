@@ -29,5 +29,6 @@
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(PUOneUpPresentationHelper *)arg1;
 - (UIView *)oneUpPresentationHelperViewHostingGestureRecognizers:(PUOneUpPresentationHelper *)arg1;
 - (UIView *)oneUpPresentationHelperViewHostingTilingView:(PUOneUpPresentationHelper *)arg1;
+- (BOOL)oneUpPresentationHelperWantsShowInLibraryButton:(PUOneUpPresentationHelper *)arg1;
 @end
 

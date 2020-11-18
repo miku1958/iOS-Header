@@ -8,7 +8,9 @@
 
 @protocol _UNNotificationExtensionHostInterface
 - (void)_extensionDidCompleteNotificationResponse:(UNNotificationResponse *)arg1 withOption:(unsigned long long)arg2;
-- (void)_extensionDidUpdateControls;
+- (void)_extensionDidUpdateNotificationActions:(NSArray *)arg1;
+- (void)_extensionDidUpdatePlayPauseMediaButton;
+- (void)_extensionDidUpdateTitle:(NSString *)arg1;
 - (void)_extensionMediaPlayingPaused;
 - (void)_extensionMediaPlayingStarted;
 - (void)_extensionRequestsDefaultAction;
@@ -16,8 +18,6 @@
 - (void)_extensionSetPlayPauseMediaButtonColor:(UIColor *)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect)arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;
-- (void)_extensionSetTitle:(NSString *)arg1;
-- (void)_extensionSetUserNotificationActions:(NSArray *)arg1;
 - (void)_extensionWantsToBecomeFirstResponder:(BOOL)arg1;
 - (void)_extensionWantsToReceiveActionResponses:(BOOL)arg1;
 @end

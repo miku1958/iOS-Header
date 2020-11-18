@@ -10,7 +10,6 @@
 
 @class MISSING_TYPE, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219MagazineFeedArticle : NSObject <FCHeadlineMetadata>
 {
     MISSING_TYPE *articleID;

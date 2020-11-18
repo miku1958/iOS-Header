@@ -76,6 +76,7 @@
 - (void)openURL:(id)arg1 applicationIdentifier:(id)arg2 pluginID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openURL:(id)arg1 pluginID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)positionSwitcherOffscreen:(BOOL)arg1;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentFullScreenModalAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;

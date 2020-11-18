@@ -7,7 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SGNSString)
-- (id)sg_deepCopy;
+- (id)sg_dataEnumeratorUsingEncoding:(unsigned long long)arg1;
+- (id)sg_dataEnumeratorUsingEncoding:(unsigned long long)arg1 nullTerminated:(BOOL)arg2;
 - (id)sg_md5Hash;
+- (void)sg_streamBytesUsingEncoding:(unsigned long long)arg1 nullTerminated:(BOOL)arg2 toBlock:(CDUnknownBlockType)arg3;
+- (void)sg_streamBytesUsingEncoding:(unsigned long long)arg1 toBlock:(CDUnknownBlockType)arg2;
 @end
 

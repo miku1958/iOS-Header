@@ -8,6 +8,7 @@
 
 @class NSLayoutConstraint, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface MCLRatingsView : UIView
 {
     double _imageaspect;

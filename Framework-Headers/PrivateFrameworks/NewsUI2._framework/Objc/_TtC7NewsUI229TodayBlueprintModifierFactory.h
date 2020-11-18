@@ -11,6 +11,9 @@
 @interface _TtC7NewsUI229TodayBlueprintModifierFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sectionFactory;
+    MISSING_TYPE *feedContextFactory;
+    MISSING_TYPE *policyValidator;
+    MISSING_TYPE *layoutCollectionProvider;
 }
 
 @end

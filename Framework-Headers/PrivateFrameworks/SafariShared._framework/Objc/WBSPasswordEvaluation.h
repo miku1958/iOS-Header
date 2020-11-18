@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, WBSPasswordPatternMatch;
 
 @interface WBSPasswordEvaluation : NSObject
 {
@@ -16,6 +16,7 @@
     long long _evaluationType;
 }
 
+@property (readonly, nonatomic) WBSPasswordPatternMatch *bestPatternMatchForUserFeedback;
 @property (readonly, nonatomic) long long evaluationType; // @synthesize evaluationType=_evaluationType;
 @property (readonly, nonatomic) double guessesRequired; // @synthesize guessesRequired=_guessesRequired;
 @property (readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
@@ -27,8 +28,9 @@
 
 - (void).cxx_destruct;
 - (id)_bestPatternMatchOfType:(unsigned long long)arg1;
-- (id)_passwordFeedbackStrings;
+- (id)_passwordFeedbackString;
 - (BOOL)_shouldShowUserFeedbackStringsForWordListPatternMatch:(id)arg1;
+- (unsigned long long)_userFeedbackLengthScoreForPatternMatch:(id)arg1;
 - (id)compactDescriptionWithPasswordColumnWidth:(unsigned long long)arg1 includePatternMatches:(BOOL)arg2;
 - (id)initWithEvaluationType:(long long)arg1 password:(id)arg2 patternMatches:(id)arg3 guessesRequired:(double)arg4;
 

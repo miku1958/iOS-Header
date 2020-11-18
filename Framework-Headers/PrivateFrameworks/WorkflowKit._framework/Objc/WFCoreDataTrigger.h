@@ -8,25 +8,28 @@
 
 #import <WorkflowKit/WFRecordStorage-Protocol.h>
 
-@class NSData, NSString, WFCoreDataRunEvent, WFCoreDataWorkflow;
+@class NSData, NSSet, NSString, WFCoreDataRunEvent, WFCoreDataWorkflow;
 
 @interface WFCoreDataTrigger : NSManagedObject <WFRecordStorage>
 {
 }
 
+@property (strong, nonatomic) NSData *data; // @dynamic data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @dynamic enabled;
+@property (strong, nonatomic) NSSet *events; // @dynamic events;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong, nonatomic) WFCoreDataRunEvent *runEvents; // @dynamic runEvents;
+@property (strong, nonatomic) WFCoreDataWorkflow *shortcut; // @dynamic shortcut;
 @property (nonatomic) BOOL shouldPrompt; // @dynamic shouldPrompt;
+@property (nonatomic) int source; // @dynamic source;
+@property (strong, nonatomic) NSData *suggestionData; // @dynamic suggestionData;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSData *triggerData; // @dynamic triggerData;
-@property (copy, nonatomic) NSString *triggerID; // @dynamic triggerID;
-@property (strong, nonatomic) WFCoreDataWorkflow *workflow; // @dynamic workflow;
-@property (strong, nonatomic) NSString *workflowID;
 
 + (id)fetchRequest;
++ (id)recordPropertyMap;
 - (id)descriptor;
 - (id)trigger;
 

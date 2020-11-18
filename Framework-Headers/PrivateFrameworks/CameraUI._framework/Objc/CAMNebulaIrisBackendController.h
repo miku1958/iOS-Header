@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *__linkWorkQueue;
     CAMPersistenceController *__persistenceController;
     CAMNebulaKeepAliveController *__keepAliveController;
+    NSMutableDictionary *__transactionForPersistenceUUID;
     NSMutableDictionary *__pendingOrInFlightJobsByUniqueIdentifier;
     NSMutableArray *__pendingExportVideoJobs;
     AVAssetExportSession *__activeExportSession;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) NSMutableDictionary *_pendingOrInFlightJobsByUniqueIdentifier; // @synthesize _pendingOrInFlightJobsByUniqueIdentifier=__pendingOrInFlightJobsByUniqueIdentifier;
 @property (readonly, nonatomic) CAMPersistenceController *_persistenceController; // @synthesize _persistenceController=__persistenceController;
 @property (nonatomic, getter=_coordinationQueue_shouldCheckMarkerFileForIOWorkSuspension, setter=_coordinationQueue_setShouldCheckMarkerFileForIOWorkSuspension:) BOOL _shouldCheckMarkerFileForIOWorkSuspension; // @synthesize _shouldCheckMarkerFileForIOWorkSuspension=__shouldCheckMarkerFileForIOWorkSuspension;
+@property (readonly, nonatomic) NSMutableDictionary *_transactionForPersistenceUUID; // @synthesize _transactionForPersistenceUUID=__transactionForPersistenceUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

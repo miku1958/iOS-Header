@@ -18,6 +18,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIncludeItem:(BOOL)arg1;
+- (void)applyCloudRecordObject:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)description;
 - (id)descriptionWithItem:(BOOL)arg1;

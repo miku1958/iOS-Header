@@ -6,7 +6,10 @@
 
 #import <NewsAnalytics/_TtC13NewsAnalytics15SessionObserver.h>
 
-@interface _TtC13NewsAnalytics15SessionObserver (NewsAnalytics4)
-- (void)pushUserSubscriptionContextData;
+#import <NewsAnalytics/NSSNewsAnalyticsSessionManagerObserving-Protocol.h>
+
+@interface _TtC13NewsAnalytics15SessionObserver (NewsAnalytics4) <NSSNewsAnalyticsSessionManagerObserving>
+- (void)sessionDidStartWithSessionID:(id)arg1;
+- (void)sessionWillEnd;
 @end
 

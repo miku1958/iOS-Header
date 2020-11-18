@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <EventKitUI/CNAutocompleteSearchConsumer-Protocol.h>
 #import <EventKitUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <EventKitUI/CNContactPickerDelegate-Protocol.h>
 #import <EventKitUI/CNContactViewControllerPrivateDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @protocol EKEventAttendeePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate, CNContactViewControllerPrivateDelegate>
+@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate, CNContactViewControllerPrivateDelegate, CNAutocompleteSearchConsumer>
 {
     NSArray *_recipients;
     CNComposeRecipientTextView *_composeRecipientView;
@@ -77,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_zeroKeyworkSearchEnabled;
 - (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
 - (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)beganNetworkActivity;
 - (void)commitRemainingText;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
@@ -94,7 +94,6 @@ __attribute__((visibility("hidden")))
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)contactViewControllerDidExecuteClearRecentsDataAction:(id)arg1;
 - (void)dealloc;
-- (void)endedNetworkActivity;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)finishedSearchingForCorecipients;
 - (void)finishedTaskWithID:(id)arg1;
@@ -108,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (void)searchWithText:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

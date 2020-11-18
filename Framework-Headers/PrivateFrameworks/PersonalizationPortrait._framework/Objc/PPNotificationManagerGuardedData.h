@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, EKEventStore, PPEventKitNotificationHandler, PPNotificationHandler;
+@class CNContactStore, EKEventStore, PPNotificationHandler;
 @protocol NSObject, SGSuggestionsServiceContactsProtocol;
 
 @interface PPNotificationManagerGuardedData : NSObject
@@ -21,7 +21,7 @@
     int _portraitChangeToken;
     PPNotificationHandler *_portraitInvalidationHandler;
     int _portraitInvalidationToken;
-    PPEventKitNotificationHandler *_eventKitHandler;
+    PPNotificationHandler *_eventKitHandler;
     id<NSObject> _eventKitToken;
     EKEventStore *_ekStore;
     long long _eventKitChangeTrackingToken;

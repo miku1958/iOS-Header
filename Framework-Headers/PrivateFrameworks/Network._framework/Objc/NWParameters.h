@@ -63,6 +63,7 @@
 @property (nonatomic) int multipathService;
 @property (nonatomic) BOOL noProxy;
 @property (strong, nonatomic) NSUUID *parentID;
+@property (readonly, nonatomic) NSArray *parentIDs;
 @property (nonatomic) int pid;
 @property (nonatomic) BOOL preferNoProxy;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
@@ -91,7 +92,6 @@
 @property (nonatomic) BOOL useAWDL;
 @property (nonatomic) BOOL useLongOutstandingQueries;
 @property (nonatomic) BOOL useP2P;
-@property (nonatomic) BOOL useTFOHeuristics;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)parametersWithCParameters:(id)arg1;

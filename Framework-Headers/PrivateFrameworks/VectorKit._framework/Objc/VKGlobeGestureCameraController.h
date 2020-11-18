@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)setCameraManager:(struct CameraManager *)arg1;
 - (void)setGlobeView:(struct GlobeView *)arg1;
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
 - (void)updateZoom:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;

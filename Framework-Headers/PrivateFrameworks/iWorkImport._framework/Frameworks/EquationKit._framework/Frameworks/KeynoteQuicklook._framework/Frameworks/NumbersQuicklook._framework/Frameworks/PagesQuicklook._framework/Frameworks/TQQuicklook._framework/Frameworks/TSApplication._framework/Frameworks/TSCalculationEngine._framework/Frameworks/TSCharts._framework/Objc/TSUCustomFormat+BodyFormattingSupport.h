@@ -7,6 +7,6 @@
 #import <TSUtility/TSUCustomFormat.h>
 
 @interface TSUCustomFormat (BodyFormattingSupport)
-- (id)formattedBodyStringForDoubleValue:(double)arg1 customFormatListKey:(id)arg2 formatType:(int)arg3 locale:(id)arg4;
+- (id)formattedBodyStringForDoubleValue:(double)arg1 customFormatListKey:(id)arg2 formatType:(unsigned int)arg3 locale:(id)arg4;
 @end
 

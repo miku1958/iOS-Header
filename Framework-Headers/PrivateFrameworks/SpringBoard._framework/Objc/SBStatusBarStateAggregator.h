@@ -10,7 +10,7 @@
 #import <SpringBoard/SBAVSystemControllerCacheObserver-Protocol.h>
 #import <SpringBoard/SBDateTimeOverrideObserver-Protocol.h>
 
-@class DNDState, DNDStateService, NSDateFormatter, NSHashTable, NSString, NSTimer, SBSStatusBarStyleOverridesAssertion, SBStatusBarDefaults, SBSystemStatusBatteryDataProvider, SBSystemStatusWifiDataProvider, SBTelephonyManager, SBUserSessionController, STBatteryStatusDomain, STTelephonyStatusDomain, STTelephonyStatusDomainDataProvider, STVoiceControlStatusDomain, STWifiStatusDomain;
+@class DNDState, DNDStateService, NSDateFormatter, NSHashTable, NSMutableDictionary, NSString, NSTimer, SBSStatusBarStyleOverridesAssertion, SBStatusBarDefaults, SBSystemStatusBatteryDataProvider, SBSystemStatusWifiDataProvider, SBTelephonyManager, SBUserSessionController, STBatteryStatusDomain, STCallingStatusDomain, STTelephonyStatusDomain, STTelephonyStatusDomainDataProvider, STVoiceControlStatusDomain, STWifiStatusDomain;
 
 @interface SBStatusBarStateAggregator : NSObject <SBDateTimeOverrideObserver, DNDStateUpdateListener, SBAVSystemControllerCacheObserver>
 {
@@ -19,13 +19,13 @@
     SBUserSessionController *_override_userSessionController;
     unsigned long long _coalescentBlockDepth;
     BOOL _hasPostedOnce;
-    unsigned long long _itemPostState[42];
+    unsigned long long _itemPostState[43];
     BOOL _nonItemDataChanged;
-    CDStruct_0942cde0 _data;
+    CDStruct_3fd7985f _data;
     int _actions;
     BOOL _performingAtomicUpdate;
-    unsigned long long _atomicUpdateItemPostState[42];
-    CDStruct_0942cde0 _atomicUpdateData;
+    unsigned long long _atomicUpdateItemPostState[43];
+    CDStruct_3fd7985f _atomicUpdateData;
     NSHashTable *_postObservers;
     BOOL _notifyingPostObservers;
     long long _showsRecordingOverrides;
@@ -56,6 +56,7 @@
     int _locationStatusBarIconType;
     unsigned int _locationIconPendingRequestCount;
     SBSStatusBarStyleOverridesAssertion *_tetheringStatusBarStyleOverrideAssertion;
+    NSMutableDictionary *_callingStatusBarStyleOverrideAssertionsByStyleOverride;
     SBUserSessionController *_lazy_userSessionController;
     NSString *_personName;
     NSString *_overridePersonName;
@@ -66,24 +67,26 @@
     STTelephonyStatusDomainDataProvider *_telephonyDataProvider;
     SBSystemStatusWifiDataProvider *_wifiDataProvider;
     STBatteryStatusDomain *_batteryDomain;
+    STCallingStatusDomain *_callingDomain;
     STTelephonyStatusDomain *_telephonyDomain;
     STVoiceControlStatusDomain *_voiceControlDomain;
     STWifiStatusDomain *_wifiDomain;
 }
 
 @property (readonly, nonatomic) SBSystemStatusBatteryDataProvider *batteryDataProvider; // @synthesize batteryDataProvider=_batteryDataProvider;
-@property (readonly, nonatomic) STBatteryStatusDomain *batteryDomain; // @synthesize batteryDomain=_batteryDomain;
+@property (strong, nonatomic, getter=_batteryDomain, setter=_setBatteryDomain:) STBatteryStatusDomain *batteryDomain; // @synthesize batteryDomain=_batteryDomain;
+@property (strong, nonatomic, getter=_callingDomain, setter=_setCallingDomain:) STCallingStatusDomain *callingDomain; // @synthesize callingDomain=_callingDomain;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) STTelephonyStatusDomainDataProvider *telephonyDataProvider; // @synthesize telephonyDataProvider=_telephonyDataProvider;
-@property (readonly, nonatomic) STTelephonyStatusDomain *telephonyDomain; // @synthesize telephonyDomain=_telephonyDomain;
+@property (strong, nonatomic, getter=_telephonyDomain, setter=_setTelephonyDomain:) STTelephonyStatusDomain *telephonyDomain; // @synthesize telephonyDomain=_telephonyDomain;
 @property (strong, nonatomic, getter=_telephonyManager, setter=_setTelephonyManager:) SBTelephonyManager *telephonyManager; // @synthesize telephonyManager=_override_telephonyManager;
 @property (strong, nonatomic, getter=_userSessionController, setter=_setUserSessionController:) SBUserSessionController *userSessionController; // @synthesize userSessionController=_override_userSessionController;
-@property (readonly, nonatomic) STVoiceControlStatusDomain *voiceControlDomain; // @synthesize voiceControlDomain=_voiceControlDomain;
+@property (strong, nonatomic, getter=_voiceControlDomain, setter=_setVoiceControlDomain:) STVoiceControlStatusDomain *voiceControlDomain; // @synthesize voiceControlDomain=_voiceControlDomain;
 @property (readonly, nonatomic) SBSystemStatusWifiDataProvider *wifiDataProvider; // @synthesize wifiDataProvider=_wifiDataProvider;
-@property (readonly, nonatomic) STWifiStatusDomain *wifiDomain; // @synthesize wifiDomain=_wifiDomain;
+@property (strong, nonatomic, getter=_wifiDomain, setter=_setWifiDomain:) STWifiStatusDomain *wifiDomain; // @synthesize wifiDomain=_wifiDomain;
 
 + (int)_thermalColorForLevel:(long long)arg1;
 + (id)sharedInstance;
@@ -103,7 +106,7 @@
 - (BOOL)_shouldShowEmergencyOnlyStatusForInfo:(id)arg1;
 - (BOOL)_shouldShowPersonName;
 - (int)_statusBarBatteryStateForSystemStatusChargingState:(unsigned long long)arg1;
-- (const CDStruct_0942cde0 *)_statusBarData;
+- (const CDStruct_3fd7985f *)_statusBarData;
 - (void)_stopTimeItemTimer;
 - (void)_tickRefCount:(long long *)arg1 up:(BOOL)arg2 withTransitionBlock:(CDUnknownBlockType)arg3;
 - (void)_updateActivityItem;
@@ -116,6 +119,7 @@
 - (void)_updateBluetoothItem;
 - (void)_updateCallForwardingItem;
 - (void)_updateCallForwardingItem:(int)arg1 withInfo:(id)arg2;
+- (void)_updateCallingStatusBarStyleOverrideAssertionsForStyleOverride:(int)arg1 callingAttributions:(id)arg2;
 - (void)_updateCarPlayItem;
 - (void)_updateDataNetworkItem;
 - (void)_updateDataNetworkItem:(int)arg1 withData:(id)arg2 primary:(BOOL)arg3 dataNetworkTypeGetter:(CDUnknownBlockType)arg4 dataNetworkTypeSetter:(CDUnknownBlockType)arg5;
@@ -130,6 +134,7 @@
 - (void)_updateSecondaryDataNetworkItem;
 - (void)_updateSecondaryServiceItem;
 - (void)_updateSecondarySignalStrengthItem;
+- (void)_updateSensorActivityItem;
 - (void)_updateServiceItem;
 - (void)_updateServiceItem:(int)arg1 withData:(id)arg2 SIMInfo:(id)arg3 otherSIMInfo:(id)arg4 serviceStringGetter:(CDUnknownBlockType)arg5 serviceStringSetter:(CDUnknownBlockType)arg6 serviceCrossfadeStringGetter:(CDUnknownBlockType)arg7 serviceCrossfadeStringSetter:(CDUnknownBlockType)arg8 serviceContentTypeGetter:(CDUnknownBlockType)arg9 serviceContentTypeSetter:(CDUnknownBlockType)arg10 serviceBadgeStringGetter:(CDUnknownBlockType)arg11 serviceBadgeStringSetter:(CDUnknownBlockType)arg12;
 - (void)_updateSignalStrengthItem;

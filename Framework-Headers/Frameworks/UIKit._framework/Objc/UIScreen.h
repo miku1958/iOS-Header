@@ -15,7 +15,7 @@
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 
-@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIFocusMovementPerformer, _UIFocusScrollManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace, _UIScreenFocusSystemManager;
+@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIDisplayInfoProviding, _UIFocusRegionContainer;
 
 @interface UIScreen : NSObject <_UIFallbackEnvironment, UICoordinateSpace, _UITraitEnvironmentInternal, _UIFocusEnvironmentInternal, _UIFocusRegionContainer, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UITraitEnvironment>
@@ -33,7 +33,6 @@
     _UIScreenFixedCoordinateSpace *_fixedCoordinateSpace;
     id<_UIDisplayInfoProviding> _displayInfoProvider;
     FBSDisplayConfiguration *__displayConfiguration;
-    CARSessionStatus *_currentCarSessionStatus;
     long long _lastUpdatedCanvasUserInterfaceStyle;
     struct {
         unsigned int bitsPerComponent:4;
@@ -62,12 +61,9 @@
     UITraitCollection *_overrideTraitCollection;
     UITraitCollection *_lastNotifiedTraitCollection;
     UISoftwareDimmingWindow *_softwareDimmingWindow;
-    _UIFocusScrollManager *_focusScrollManager;
-    _UIFocusMovementPerformer *_focusMovementPerformer;
-    _UIScreenFocusSystemManager *_focusSystemManager;
-    UIFocusSystem *_focusSystem;
     _UIDragManager *_dragManager;
     _UIInteractiveHighlightEnvironment *_interactiveHighlightEnvironment;
+    CARSessionStatus *_carSessionStatus;
     _UIScreenBoundingPathUtilities *_boundingPathUtilities;
     UIWindow<UIFocusEnvironment> *__focusedWindow;
 }
@@ -87,6 +83,7 @@
 @property (nonatomic) double brightness;
 @property (readonly, nonatomic) double calibratedLatency;
 @property (nonatomic, getter=isCaptured, setter=_setCaptured:) BOOL captured; // @synthesize captured=_captured;
+@property (strong, nonatomic, getter=_carSessionStatus) CARSessionStatus *carSessionStatus; // @synthesize carSessionStatus=_carSessionStatus;
 @property (readonly) id<UICoordinateSpace> coordinateSpace;
 @property (strong, nonatomic) UIScreenMode *currentMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -98,12 +95,10 @@
 @property (readonly, nonatomic, getter=_dragManager) _UIDragManager *dragManager; // @synthesize dragManager=_dragManager;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (readonly) id<UICoordinateSpace> fixedCoordinateSpace;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, weak, nonatomic, getter=_focusMapContainer) id<_UIFocusRegionContainer> focusMapContainer;
-@property (readonly, nonatomic, getter=_focusMovementPerformer) _UIFocusMovementPerformer *focusMovementPerformer; // @synthesize focusMovementPerformer=_focusMovementPerformer;
-@property (readonly, nonatomic, getter=_focusScrollManager) _UIFocusScrollManager *focusScrollManager; // @synthesize focusScrollManager=_focusScrollManager;
-@property (readonly, nonatomic, getter=_focusSystem) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
-@property (readonly, nonatomic, getter=_focusSystemManager) _UIScreenFocusSystemManager *focusSystemManager; // @synthesize focusSystemManager=_focusSystemManager;
+@property (readonly, nonatomic, getter=_focusSystem) UIFocusSystem *focusSystem;
 @property (readonly, weak, nonatomic) id<UIFocusItem> focusedItem;
 @property (readonly, weak, nonatomic) UIView *focusedView;
 @property (readonly) unsigned long long hash;
@@ -145,7 +140,6 @@
 + (void)_enumerateScreensWithBlock:(CDUnknownBlockType)arg1;
 + (BOOL)_isProbablyBeingRecorded;
 + (id)_mainScreenThreadSafeTraitCollection;
-+ (void)_prepareCarScreensForResume;
 + (void)_prepareScreensForAppResume;
 + (id)_screenForScene:(id)arg1;
 + (id)_screenWithDisplayID:(id)arg1;
@@ -192,11 +186,13 @@
 - (struct UIEdgeInsets)_displayPeripheryInsets;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endObservingBacklightLevelNotifications;
-- (void)_ensureFocusSystemIsLoaded;
 - (BOOL)_expectsSecureRendering;
 - (void)_externalDeviceNightModeDidChange:(id)arg1;
 - (id)_fallbackTraitCollection;
 - (void)_fetchInitialCarPlayHumanPresenceStatusIfNeeded;
+- (id)_focusMovementPerformer;
+- (id)_focusScrollManager;
+- (id)_focusSystemManager;
 - (long long)_forceTouchCapability;
 - (void)_handleEffectiveUserInterfaceStyleChanged:(id)arg1;
 - (void)_handleForcedUserInterfaceLayoutDirectionChanged:(id)arg1;
@@ -241,6 +237,7 @@
 - (double)_pointsPerInch;
 - (void)_postBrightnessDidChangeNotificationIfAppropriate;
 - (id)_preferredFocusRegionCoordinateSpace;
+- (id)_preferredFocusedWindowScene;
 - (void)_prepareForWindow;
 - (double)_refreshRate;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;

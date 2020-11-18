@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBHardwareButtonGestureParametersObserver-Protocol.h>
 
-@class NSString, SBHardwareButtonActionList, SBHardwareButtonGestureParameters, SBHardwareButtonService, SBNotificationBannerDestination, SBProximitySensorManager;
+@class NSString, SBHardwareButtonActionList, SBHardwareButtonGestureParameters, SBHardwareButtonService, SBProximitySensorManager;
 @protocol SBHardwareButtonInteraction><SBHardwareButtonGestureParametersProvider;
 
 @interface SBHomeHardwareButtonActions : SBHardwareButtonGestureParametersProviderBase <SBHardwareButtonGestureParametersObserver>
@@ -28,10 +28,8 @@
     SBHardwareButtonGestureParameters *_siriGestureParameters;
     BOOL _buttonDown;
     double _currentLongPressDuration;
-    SBNotificationBannerDestination *_bannerDestination;
 }
 
-@property (weak, nonatomic) SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_bannerDestination;
 @property (nonatomic, getter=isButtonDown) BOOL buttonDown; // @synthesize buttonDown=_buttonDown;
 @property (nonatomic) double currentLongPressDuration; // @synthesize currentLongPressDuration=_currentLongPressDuration;
 @property (readonly, copy) NSString *debugDescription;

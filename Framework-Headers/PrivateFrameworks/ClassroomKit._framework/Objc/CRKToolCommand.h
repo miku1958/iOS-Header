@@ -19,6 +19,7 @@
     CATOperation *mOperation;
     BOOL _printJSON;
     BOOL _printVerbose;
+    BOOL _useDMFRequest;
     id<CRKToolCommandDelegate> _delegate;
     NSString *_sessionIdentifier;
 }
@@ -31,6 +32,7 @@
 @property (nonatomic, getter=shouldPrintVerbose) BOOL printVerbose; // @synthesize printVerbose=_printVerbose;
 @property (copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=shouldUseDMFRequest) BOOL useDMFRequest; // @synthesize useDMFRequest=_useDMFRequest;
 
 + (id)aliases;
 + (id)description;
@@ -39,9 +41,11 @@
 + (BOOL)instructorCommand;
 + (void)printHelp;
 + (id)subcommandPath;
++ (BOOL)supportsDMFRequest;
 + (BOOL)supportsJSON;
 + (BOOL)supportsVerboseOutput;
 - (void).cxx_destruct;
+- (id)DMFRequestWithArguments:(id)arg1;
 - (void)_remoteTaskDidFinish:(id)arg1;
 - (void)_remoteTaskDidProgress:(id)arg1;
 - (id)arrayByParsingAndRemovingArgumentFlags:(id)arg1;

@@ -25,6 +25,7 @@
 - (BOOL)isValidSigningDestination;
 - (id)prekeyData;
 - (id)sealMessage:(id)arg1 signedByFullIdentity:(id)arg2 error:(id *)arg3;
+- (id)sealMessage:(id)arg1 withEncryptedAttributes:(id)arg2 signedByFullIdentity:(id)arg3 error:(id *)arg4;
 - (BOOL)verifySignature:(id)arg1 formatter:(id)arg2;
 
 @end

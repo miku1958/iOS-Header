@@ -55,22 +55,28 @@
 - (id)mapsShareEtaDefaultKnnSuggestions:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)mergedSuggestionsFromShares:(id)arg1 andInteractions:(id)arg2;
 - (id)neighborsFromTrainingData:(id)arg1 k:(unsigned long long)arg2 queryPoint:(id)arg3;
+- (id)normalizedScoresForInputDictionary:(id)arg1;
 - (id)normalizedStringFromString:(id)arg1;
 - (id)rankedAutocompleteSuggestionsWithPredictionContext:(id)arg1 candidates:(id)arg2;
+- (id)rankedGlobalSuggestionsForSiriNLWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)rankedGlobalSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 contactsOnly:(BOOL)arg3 interactions:(id)arg4 contactIdsCurrentlyInStore:(id)arg5;
+- (id)rankedHandlesFromCandidateHandles:(id)arg1;
 - (id)rankedLabelsFromInteractionsMaintainRecipientsArray:(id)arg1 andDistances:(id)arg2 freqOnly:(BOOL)arg3;
-- (id)rankedLabelsFromInteractionsSingleRecipientArray:(id)arg1 andDistances:(id)arg2 freqOnly:(BOOL)arg3 contactsOnly:(BOOL)arg4;
+- (id)rankedLabelsFromInteractionsSingleRecipientArray:(id)arg1 andDistances:(id)arg2 freqOnly:(BOOL)arg3 contactsOnly:(BOOL)arg4 scoreLikeShareSheet:(BOOL)arg5;
+- (id)rankedLabelsFromInteractionsSiriNLWithInteractions:(id)arg1 andDistances:(id)arg2 freqOnly:(BOOL)arg3;
 - (id)rankedMapsShareEtaSuggestions:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)rankedMessagesAutocompleteSuggestionsWithPredictionContext:(id)arg1 bundleId:(id)arg2 candidates:(id)arg3;
 - (id)rankedMessagesZkwSuggestionsWithPredictionContext:(id)arg1 bundleId:(id)arg2 maxSuggestions:(unsigned long long)arg3 frequencyOnly:(BOOL)arg4 interactions:(id)arg5;
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 forName:(id)arg2;
+- (id)rankedSiriMLCRHandles:(id)arg1 context:(id)arg2;
 - (id)rankedZkwSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)sliceStart:(unsigned long long)arg1 end:(unsigned long long)arg2 ofArray:(id)arg3;
+- (id)softmaxAppliedOnScoresForInputDictionary:(id)arg1;
 - (id)splitShareLabels:(id)arg1 suggestionDate:(id)arg2 contextBundleId:(id)arg3;
 - (long long)suggestionExists:(id)arg1 withValue:(id)arg2 inArray:(id)arg3;
 - (id)suggestionProxiesWithPredictionContext:(id)arg1;
 - (id)targetBundleIdsForFilterBundlesIds:(id)arg1;
-- (void)updateModelProperities:(id)arg1;
+- (void)updateModelProperties:(id)arg1;
 
 @end
 

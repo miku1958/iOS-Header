@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSObject;
+@class MISSING_TYPE, NSObject;
 
 #pragma mark Blocks
 
@@ -17,6 +17,10 @@ struct Address {
 };
 
 struct Allocator;
+
+struct AssetService {
+    CDUnknownFunctionPointerType *_field1;
+};
 
 struct AudioBuffer {
     unsigned int _field1;
@@ -42,27 +46,44 @@ struct AudioManager_AVAudioEngine {
     id _field2;
     struct unordered_map<unsigned long long, std::__1::unordered_map<unsigned long long, re::AudioMixGroupState, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioMixGroupState>>>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::unordered_map<unsigned long long, re::AudioMixGroupState, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioMixGroupState>>>>>> _field3;
     struct unordered_map<unsigned long long, std::__1::unordered_map<unsigned long long, float, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, float>>>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::unordered_map<unsigned long long, float, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, float>>>>>> _field4;
-    struct unordered_map<unsigned long long, long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, long long>>> _field5;
-    id _field6;
-    struct unordered_map<unsigned long long, re::AVAEAudioScene, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AVAEAudioScene>>> _field7;
+    struct unordered_map<unsigned long long, re::AudioManager::ReverbPreset, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioManager::ReverbPreset>>> _field5;
+    struct unordered_map<unsigned long long, re::AudioManager::ReverbPreset, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioManager::ReverbPreset>>> _field6;
+    struct weak_ptr<re::AudioManager_AVAudioEngine> _field7;
     id _field8;
-    id _field9;
-    struct vector<AVAudioUnitEffect *, std::__1::allocator<AVAudioUnitEffect *>> _field10;
-    double _field11;
-    unsigned int _field12;
-    struct atomic<bool> _field13;
-    struct atomic<int> _field14;
-    struct AudioUnitPool _field15;
+    struct unordered_map<unsigned long long, re::AVAEAudioScene, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AVAEAudioScene>>> _field9;
+    id _field10;
+    id _field11;
+    struct vector<AVAudioUnitEffect *, std::__1::allocator<AVAudioUnitEffect *>> _field12;
+    id _field13;
+    double _field14;
+    unsigned int _field15;
+    struct atomic<bool> _field16;
+    struct atomic<int> _field17;
+    struct unordered_map<unsigned long long, re::AVAENetworkPeer, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AVAENetworkPeer>>> _field18;
+    struct HashSet<unsigned long long, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false> _field19;
+    struct UnfairLock _field20;
+    struct SharedPtr<re::Session> _field21;
+    struct vector<unsigned char, std::__1::allocator<unsigned char>> _field22;
+    struct atomic<double> _field23;
+    struct AudioUnitPool _field24;
+    BOOL _field25;
+    BOOL _field26;
+    unsigned long long _field27;
+    struct {
+        MISSING_TYPE *_field1[4];
+    } _field28;
+    struct OpaqueFigSTS *_field29;
+    struct unordered_map<unsigned int, const __CFString *, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, const __CFString *>>> _field30;
 };
 
 struct AudioUnitPool {
     struct unordered_map<const void *, std::__1::unique_ptr<AudioUnitPool::Instantiator, std::__1::default_delete<AudioUnitPool::Instantiator>>, std::__1::hash<const void *>, std::__1::equal_to<const void *>, std::__1::allocator<std::__1::pair<const void *const, std::__1::unique_ptr<AudioUnitPool::Instantiator, std::__1::default_delete<AudioUnitPool::Instantiator>>>>> _field1;
+    id _field2;
+    id _field3;
 };
 
-struct Config {
-    struct ServiceLocator *serviceLocator;
-    NSObject *dispatchQueue;
-    struct DynamicString serviceID;
+struct Connection {
+    id _field1;
 };
 
 struct DiscoveryInvite;
@@ -84,7 +105,7 @@ struct DisplayLinkClock {
     float _field7;
     float _field8;
     struct Event<re::SimulationClock, const re::SimulationClockEventArgs &> _field9;
-    id _field10;
+    struct Queue _field10;
     id _field11;
     double _field12;
 };
@@ -169,6 +190,30 @@ struct DynamicArray<re::IDSInvite *> {
     struct IDSInvite **m_data;
 };
 
+struct DynamicArray<re::ResourceFetchManager::Connection> {
+    struct Allocator *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
+    struct Connection *_field5;
+};
+
+struct DynamicArray<re::ResourceSharingManager::Connection> {
+    struct Allocator *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
+    struct Connection *_field5;
+};
+
+struct DynamicArray<re::ResourceSharingManager::FetchRequest> {
+    struct Allocator *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
+    struct FetchRequest *_field5;
+};
+
 struct DynamicArray<re::SharedPtr<(anonymous namespace)::MCProtocolHandle>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
@@ -185,6 +230,14 @@ struct DynamicArray<re::SharedPtr<re::DiscoveryIdentity>> {
     struct SharedPtr<re::DiscoveryIdentity> *_field5;
 };
 
+struct DynamicArray<re::SharedPtr<re::ResourceRequest>> {
+    struct Allocator *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
+    struct SharedPtr<re::ResourceRequest> *_field5;
+};
+
 struct DynamicArray<unsigned char> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
@@ -199,6 +252,10 @@ struct DynamicString {
     unsigned long long m_capacity;
     unsigned long long m_length;
 };
+
+struct EntryWithHash;
+
+struct EntryWithoutHash;
 
 struct Event<re::DiscoveryView, re::SharedPtr<re::DiscoveryIdentity>> {
     struct DynamicArray<re::Event<re::DiscoveryView, re::SharedPtr<re::DiscoveryIdentity>>::Subscription> _field1;
@@ -218,6 +275,30 @@ struct Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>> {
 struct Event<re::SimulationClock, const re::SimulationClockEventArgs &> {
     struct DynamicArray<re::Event<re::SimulationClock, const re::SimulationClockEventArgs &>::Subscription> _field1;
     struct DynamicArray<re::Event<re::SimulationClock, const re::SimulationClockEventArgs &>::SubscriptionLegacy> _field2;
+};
+
+struct FetchRequest;
+
+struct HashSet<re::SharedPtr<re::NWProtocolHandle>, re::Hash<re::SharedPtr<re::NWProtocolHandle>>, re::EqualTo<re::SharedPtr<re::NWProtocolHandle>>, true, false> {
+    struct Allocator *_field1;
+    unsigned int *_field2;
+    union Entry _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+};
+
+struct HashSet<unsigned long long, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false> {
+    struct Allocator *_field1;
+    unsigned int *_field2;
+    union Entry _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
 };
 
 struct IDSDiscoveryIdentity;
@@ -249,6 +330,14 @@ struct IDSSessionService {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct Listener {
+    id _field1;
+};
+
+struct ListenerDelegate {
+    id _field1;
+};
+
 struct MultipeerProtocolLayer {
     CDUnknownFunctionPointerType *_field1;
     struct atomic<int> _field2;
@@ -263,9 +352,40 @@ struct MultipeerProtocolLayer {
     struct condition_variable _field11;
 };
 
+struct NWProtocolLayer {
+    CDUnknownFunctionPointerType *_field1;
+    struct atomic<int> _field2;
+    struct SharedPtr<re::internal::WeakCount> _field3;
+    struct Allocator *_field4;
+    struct SharedPtr<re::PacketPool> _field5;
+    struct Config {
+        BOOL _field1;
+        struct DynamicString _field2;
+        unsigned short _field3;
+        struct {
+            unsigned int _field1;
+            unsigned long long _field2;
+        } _field4;
+    } _field6;
+    unsigned int _field7;
+    double _field8;
+    struct ProtocolLayerListener *_field9;
+    id _field10;
+    id _field11;
+    id _field12;
+    id _field13;
+    struct queue _field14;
+    struct mutex _field15;
+    struct condition_variable _field16;
+    struct HashSet<re::SharedPtr<re::NWProtocolHandle>, re::Hash<re::SharedPtr<re::NWProtocolHandle>>, re::EqualTo<re::SharedPtr<re::NWProtocolHandle>>, true, false> _field17;
+    struct UnfairLock _field18;
+};
+
 struct ObjCObject {
     id _field1;
 };
+
+struct OpaqueFigSTS;
 
 struct Packet {
     struct atomic<re::Packet *> _field1;
@@ -282,7 +402,46 @@ struct PacketPool;
 
 struct ProtocolLayerListener;
 
+struct Queue {
+    id _field1;
+};
+
+struct REEncodePayloadPool;
+
+struct REJitterBuffer;
+
+struct REPacketEncoder;
+
+struct RERealTimePacket {
+    unsigned long long _field1;
+    double _field2;
+    void *_field3;
+};
+
+struct ResourceFetchManager {
+    CDUnknownFunctionPointerType *_field1;
+    BOOL _field2;
+    struct Queue _field3;
+    struct ListenerDelegate _field4;
+    struct Listener _field5;
+    struct Queue _field6;
+    struct DynamicArray<re::ResourceFetchManager::Connection> _field7;
+    struct DynamicArray<re::SharedPtr<re::ResourceRequest>> _field8;
+};
+
+struct ResourceSharingManager {
+    CDUnknownFunctionPointerType *_field1;
+    BOOL _field2;
+    struct AssetService *_field3;
+    struct Queue _field4;
+    unsigned long long _field5;
+    struct DynamicArray<re::ResourceSharingManager::FetchRequest> _field6;
+    struct DynamicArray<re::ResourceSharingManager::Connection> _field7;
+};
+
 struct ServiceLocator;
+
+struct Session;
 
 struct SharedPtr<(anonymous namespace)::MCProtocolHandle>;
 
@@ -304,6 +463,16 @@ struct SharedPtr<re::IDSDiscoveryView> {
     struct IDSDiscoveryView *_field1;
 };
 
+struct SharedPtr<re::PacketPool> {
+    struct PacketPool *_field1;
+};
+
+struct SharedPtr<re::ResourceRequest>;
+
+struct SharedPtr<re::Session> {
+    struct Session *_field1;
+};
+
 struct SharedPtr<re::internal::WeakCount> {
     struct WeakCount *_field1;
 };
@@ -319,6 +488,10 @@ struct Subscription;
 
 struct SubscriptionLegacy;
 
+struct UnfairLock {
+    struct os_unfair_lock_s _field1;
+};
+
 struct WeakCount;
 
 struct WeakPtr<re::IDSManager> {
@@ -329,12 +502,20 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const 
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const void *, std::__1::unique_ptr<AudioUnitPool::Instantiator, std::__1::default_delete<AudioUnitPool::Instantiator>>>, void *>*> *_field1;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*> *_field1;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAEAudioScene>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAEAudioScene>, void *>*> *_field1;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*> *_field1;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*> *_field1;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned long long, float, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, float>>>>, void *>*> {
@@ -343,6 +524,12 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsign
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned long long, re::AudioMixGroupState, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioMixGroupState>>>>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned long long, re::AudioMixGroupState, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioMixGroupState>>>>, void *>*> *_field1;
+};
+
+struct __shared_weak_count;
+
+struct array<std::__1::vector<float, std::__1::allocator<float>>, 2> {
+    struct vector<float, std::__1::allocator<float>> __elems_[2];
 };
 
 struct atomic<REAudioPlaybackState> {
@@ -394,11 +581,25 @@ struct condition_variable {
     } _field1;
 };
 
+struct messenger;
+
 struct mutex {
     struct _opaque_pthread_mutex_t {
         long long __sig;
         char __opaque[56];
     } __m_;
+};
+
+struct object {
+    NSObject *fObj;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct queue {
+    struct object fObj;
 };
 
 struct queue<GainRampCommand>;
@@ -408,9 +609,32 @@ struct shared_ptr<AudioStreamRecordingManager::StreamWriter> {
     struct __shared_weak_count *__cntrl_;
 };
 
+struct shared_ptr<REPacketEncoder> {
+    struct REPacketEncoder *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct unique_ptr<REEncodePayloadPool, std::__1::default_delete<REEncodePayloadPool>> {
+    struct __compressed_pair<REEncodePayloadPool *, std::__1::default_delete<REEncodePayloadPool>> {
+        struct REEncodePayloadPool *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<REJitterBuffer, std::__1::default_delete<REJitterBuffer>> {
+    struct __compressed_pair<REJitterBuffer *, std::__1::default_delete<REJitterBuffer>> {
+        struct REJitterBuffer *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<boost::lockfree::queue<GainRampCommand>, std::__1::default_delete<boost::lockfree::queue<GainRampCommand>>> {
     struct __compressed_pair<boost::lockfree::queue<GainRampCommand>*, std::__1::default_delete<boost::lockfree::queue<GainRampCommand>>> {
         struct queue<GainRampCommand> *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<caulk::concurrent::messenger, std::__1::default_delete<caulk::concurrent::messenger>> {
+    struct __compressed_pair<caulk::concurrent::messenger *, std::__1::default_delete<caulk::concurrent::messenger>> {
+        struct messenger *__value_;
     } __ptr_;
 };
 
@@ -425,11 +649,11 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*>> {
                 unsigned long long _field1;
             } _field1;
         } _field2;
@@ -441,6 +665,28 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAEAudioScene>, void *>*> **_field1;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAEAudioScene>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAEAudioScene>, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*>> {
                 unsigned long long _field1;
             } _field1;
         } _field2;
@@ -484,16 +730,16 @@ struct unordered_map<const void *, std::__1::unique_ptr<AudioUnitPool::Instantia
     } _field1;
 };
 
-struct unordered_map<unsigned long long, long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, long long>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long long, long long>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, long long>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, long long>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, long long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, long long>, void *>*> _field1;
+struct unordered_map<unsigned int, const __CFString *, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, const __CFString *>>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned int, const __CFString *>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, const __CFString *>, std::__1::hash<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, const __CFString *>, std::__1::equal_to<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, const __CFString *>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, const __CFString *>, void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, long long>, std::__1::hash<unsigned long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, const __CFString *>, std::__1::hash<unsigned int>, true>> {
             unsigned long long _field1;
         } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, long long>, std::__1::equal_to<unsigned long long>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, const __CFString *>, std::__1::equal_to<unsigned int>, true>> {
             float _field1;
         } _field4;
     } _field1;
@@ -509,6 +755,36 @@ struct unordered_map<unsigned long long, re::AVAEAudioScene, std::__1::hash<unsi
             unsigned long long _field1;
         } _field3;
         struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AVAEAudioScene>, std::__1::equal_to<unsigned long long>, true>> {
+            float _field1;
+        } _field4;
+    } _field1;
+};
+
+struct unordered_map<unsigned long long, re::AVAENetworkPeer, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AVAENetworkPeer>>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, std::__1::hash<unsigned long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AVAENetworkPeer>, std::__1::equal_to<unsigned long long>, true>> {
+            float _field1;
+        } _field4;
+    } _field1;
+};
+
+struct unordered_map<unsigned long long, re::AudioManager::ReverbPreset, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioManager::ReverbPreset>>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, std::__1::hash<unsigned long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, re::AudioManager::ReverbPreset>, std::__1::equal_to<unsigned long long>, true>> {
             float _field1;
         } _field4;
     } _field1;
@@ -551,6 +827,45 @@ struct vector<AVAudioUnitEffect *, std::__1::allocator<AVAudioUnitEffect *>> {
         id *_field1;
     } _field3;
 };
+
+struct vector<float, std::__1::allocator<float>> {
+    float *__begin_;
+    float *__end_;
+    struct __compressed_pair<float *, std::__1::allocator<float>> {
+        float *__value_;
+    } __end_cap_;
+};
+
+struct vector<int, std::__1::allocator<int>> {
+    int *__begin_;
+    int *__end_;
+    struct __compressed_pair<int *, std::__1::allocator<int>> {
+        int *__value_;
+    } __end_cap_;
+};
+
+struct vector<unsigned char, std::__1::allocator<unsigned char>> {
+    char *_field1;
+    char *_field2;
+    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
+        char *_field1;
+    } _field3;
+};
+
+struct weak_ptr<re::AudioManager_AVAudioEngine> {
+    struct AudioManager_AVAudioEngine *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+#if 0
+// Names with conflicting types:
+typedef struct {
+    struct ServiceLocator *_field1;
+    struct queue _field2;
+    struct DynamicString _field3;
+} Config_8ed34026;
+
+#endif
 
 #pragma mark Typedef'd Structures
 
@@ -608,4 +923,11 @@ typedef struct Slice<re::DynamicString> {
     struct DynamicString *_field1;
     unsigned long long _field2;
 } Slice_554aef03;
+
+#pragma mark Named Unions
+
+union Entry {
+    struct EntryWithoutHash *_field1;
+    struct EntryWithHash *_field2;
+};
 

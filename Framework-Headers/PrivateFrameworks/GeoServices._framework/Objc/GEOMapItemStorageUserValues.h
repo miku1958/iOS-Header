@@ -29,12 +29,7 @@
         unsigned int read_timeZoneData:1;
         unsigned int read_timeZoneName:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_phoneNumber:1;
-        unsigned int wrote_timeZoneData:1;
-        unsigned int wrote_timeZoneName:1;
-        unsigned int wrote_url:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,11 +47,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readName;
-- (void)_readPhoneNumber;
-- (void)_readTimeZoneData;
-- (void)_readTimeZoneName;
-- (void)_readUrl;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -65,7 +55,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

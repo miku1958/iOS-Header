@@ -8,35 +8,43 @@
 
 #import <SpringBoardHome/SBFolderObserver-Protocol.h>
 #import <SpringBoardHome/SBIconDelegate-Protocol.h>
+#import <SpringBoardHome/SBIconObserver-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSMutableDictionary, NSOrderedSet, NSSet, NSString, SBIcon, SBRootFolder;
+@class NSDictionary, NSHashTable, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSSet, NSString, NSTimer, SBIcon, SBRootFolder;
 @protocol SBHIconModelDelegate, SBIconModelStore;
 
-@interface SBHIconModel : NSObject <SBFolderObserver, SBIconDelegate>
+@interface SBHIconModel : NSObject <SBFolderObserver, SBIconObserver, SBIconDelegate>
 {
     NSMutableDictionary *_leafIconsByIdentifier;
-    NSMutableDictionary *_leafIdentifiersForMasqueradeIdentifier;
+    NSMutableDictionary *_widgetIconsByIdentifier;
     NSHashTable *_folders;
+    NSMutableSet *_autosaveDisableAssertions;
     NSSet *_hiddenIconTags;
     NSSet *_visibleIconTags;
     BOOL _tagsHaveBeenSet;
     NSMutableDictionary *_alternateListLayouts;
     BOOL _ignoresIconsNotInIconState;
     BOOL _sortsIconsAlphabetically;
+    BOOL _iconStateDirty;
     BOOL _layingOut;
     BOOL _restoring;
     BOOL _allowsDownloadingIcons;
+    BOOL _checkingModelConsistency;
     id<SBIconModelStore> _store;
     id<SBHIconModelDelegate> _delegate;
     SBRootFolder *_rootFolder;
     NSDictionary *_desiredIconState;
+    id<SBIconModelStore> _todayListsStore;
     NSSet *_archivedLeafIdentifiers;
     NSOrderedSet *_desiredIconStateFlattened;
     SBIcon *_rootFolderIcon;
+    NSTimer *_autosaveTimer;
 }
 
 @property (nonatomic) BOOL allowsDownloadingIcons; // @synthesize allowsDownloadingIcons=_allowsDownloadingIcons;
 @property (copy, nonatomic) NSSet *archivedLeafIdentifiers; // @synthesize archivedLeafIdentifiers=_archivedLeafIdentifiers;
+@property (strong, nonatomic) NSTimer *autosaveTimer; // @synthesize autosaveTimer=_autosaveTimer;
+@property (nonatomic, getter=isCheckingModelConsistency) BOOL checkingModelConsistency; // @synthesize checkingModelConsistency=_checkingModelConsistency;
 @property (readonly, copy, nonatomic) NSSet *currentLeafIdentifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSDictionary *defaultIconState;
@@ -45,9 +53,11 @@
 @property (copy, nonatomic) NSDictionary *desiredIconState; // @synthesize desiredIconState=_desiredIconState;
 @property (copy, nonatomic) NSOrderedSet *desiredIconStateFlattened; // @synthesize desiredIconStateFlattened=_desiredIconStateFlattened;
 @property (readonly, copy, nonatomic) NSSet *firstPageLeafIdentifiers;
+@property (readonly, nonatomic) struct SBHIconGridSizeClassSizes gridSizeClassSizes;
 @property (readonly, nonatomic) BOOL hasDesiredIconState;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSSet *hiddenIconTags; // @synthesize hiddenIconTags=_hiddenIconTags;
+@property (nonatomic, getter=isIconStateDirty) BOOL iconStateDirty; // @synthesize iconStateDirty=_iconStateDirty;
 @property (nonatomic) BOOL ignoresIconsNotInIconState; // @synthesize ignoresIconsNotInIconState=_ignoresIconsNotInIconState;
 @property (nonatomic, getter=isLayingOut) BOOL layingOut; // @synthesize layingOut=_layingOut;
 @property (readonly, copy, nonatomic) NSSet *leafIconIdentifiers;
@@ -60,9 +70,10 @@
 @property (readonly, nonatomic) SBRootFolder *rootFolder; // @synthesize rootFolder=_rootFolder;
 @property (strong, nonatomic) SBIcon *rootFolderIcon; // @synthesize rootFolderIcon=_rootFolderIcon;
 @property (nonatomic) BOOL sortsIconsAlphabetically; // @synthesize sortsIconsAlphabetically=_sortsIconsAlphabetically;
-@property (readonly, nonatomic) id<SBIconModelStore> store; // @synthesize store=_store;
+@property (strong, nonatomic) id<SBIconModelStore> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDock;
+@property (strong, nonatomic) id<SBIconModelStore> todayListsStore; // @synthesize todayListsStore=_todayListsStore;
 @property (readonly, copy, nonatomic) NSString *unlocalizedDefaultFolderName;
 @property (readonly, copy, nonatomic) NSSet *visibleIconIdentifiers;
 @property (readonly, copy, nonatomic) NSSet *visibleIconTags; // @synthesize visibleIconTags=_visibleIconTags;
@@ -74,8 +85,10 @@
 - (id)_adjustedPlatformIndexPathInRootFolder:(id)arg1 forIcon:(id)arg2;
 - (BOOL)_canAddDownloadingIconForBundleID:(id)arg1;
 - (id)_iconState;
+- (void)_removeIconStateAutosaveDisableAssertion:(id)arg1;
 - (void)_rootFolder:(id)arg1 moveIconsToFirstPage:(id)arg2 placeBumpedIconsSomewhereNice:(id)arg3;
 - (void)_saveIconState;
+- (BOOL)_shouldSkipAddingIcon:(id)arg1 toRootFolder:(id)arg2;
 - (id)_unarchiveRootFolder;
 - (id)addDownloadingIconForBundleID:(id)arg1 withIdentifier:(id)arg2;
 - (id)addDownloadingIconWithDataSource:(id)arg1;
@@ -91,16 +104,19 @@
 - (BOOL)deleteIconStateWithOptions:(unsigned long long)arg1;
 - (id)desiredFolderCreationActionsForInsertingNewIcon:(id)arg1;
 - (id)desiredIndexPathForIconWithIdentifier:(id)arg1;
+- (void)didAddIcon:(id)arg1;
 - (void)didUnarchiveMetadata:(id)arg1;
+- (id)disableIconStateAutosaveForReason:(id)arg1;
 - (id)downloadingIconForBundleIdentifier:(id)arg1;
 - (void)enumerateDownloadingIconsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateLeafIconsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateMasqueradeLeafIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)folder:(id)arg1 didAddIcons:(id)arg2 removedIcons:(id)arg3;
 - (void)folder:(id)arg1 didAddList:(id)arg2;
-- (void)folder:(id)arg1 didRemoveLists:(id)arg2 atIndexes:(id)arg3;
 - (void)folder:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
+- (void)folder:(id)arg1 willAddIcon:(id)arg2;
+- (void)folderIconStateDidDirty:(id)arg1;
 - (void)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
+- (void)iconArchivableStateDidChange:(id)arg1;
 - (id)iconModelMetadata;
 - (id)iconState;
 - (id)iconsOfClass:(Class)arg1;
@@ -111,31 +127,36 @@
 - (id)init;
 - (id)initWithStore:(id)arg1;
 - (BOOL)isIconVisible:(id)arg1;
-- (BOOL)isMasqueradedLeafIdentifier:(id)arg1;
 - (BOOL)isTrackingIcon:(id)arg1;
 - (void)layout;
 - (void)layoutIfNeeded;
 - (id)leafIconForIdentifier:(id)arg1;
 - (id)leafIconsForIdentifiers:(id)arg1;
-- (id)leafIdentifiersForMasqueradeIdentifier:(id)arg1;
+- (struct SBHIconGridSize)listGridSizeForFolderClass:(Class)arg1;
 - (void)loadAllIcons;
 - (id)localizedFolderNameForDefaultDisplayName:(id)arg1;
+- (id)makeFolderWithDisplayName:(id)arg1;
+- (void)markIconStateClean;
+- (void)markIconStateDirty;
 - (unsigned long long)maxColumnCountForListInRootFolderWithInterfaceOrientation:(long long)arg1;
-- (unsigned long long)maxIconCountForListInFolderClass:(Class)arg1;
 - (unsigned long long)maxRowCountForListInRootFolderWithInterfaceOrientation:(long long)arg1;
 - (id)modernizeRootArchive:(id)arg1;
-- (id)prioritizedMasqueradeIconForIdentifier:(id)arg1;
 - (void)reloadIcons;
 - (void)removeAllIcons;
 - (void)removeIcon:(id)arg1;
 - (void)removeIconForIdentifier:(id)arg1;
+- (void)removeIcons:(id)arg1;
 - (void)saveDesiredIconState;
 - (void)saveIconStateIfNeeded;
-- (void)setForecastedLeavesAndMasqueradesOnIconModel:(id)arg1 includingMissingIcons:(id)arg2;
+- (void)scheduleIconStateAutosave;
+- (void)setForecastedLeavesOnIconModel:(id)arg1 includingMissingIcons:(id)arg2;
 - (void)setLeafIconsByIdentifier:(id)arg1;
-- (void)setLeafIdentifiersForMasqueradeIdentifier:(id)arg1;
 - (void)setVisibilityOfIconsWithVisibleTags:(id)arg1 hiddenTags:(id)arg2;
 - (BOOL)shouldAvoidPlacingIconOnFirstPage:(id)arg1;
+- (BOOL)shouldPlaceIconOnIgnoredList:(id)arg1;
+- (id)widgetIcons;
+- (id)widgetIconsContainingWidgetsMatchingExtensionBundleIdentifier:(id)arg1 kind:(id)arg2 sizeClass:(long long)arg3;
+- (id)widgetIconsContainingWidgetsMatchingUniqueIdentifier:(id)arg1;
 - (void)willLayout;
 
 @end

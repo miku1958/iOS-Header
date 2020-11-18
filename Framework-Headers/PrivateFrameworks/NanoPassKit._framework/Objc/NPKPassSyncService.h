@@ -45,10 +45,10 @@
 - (void)_syncTimerFired;
 - (void)_syncWhenAppropriate;
 - (void)catalogChanged:(id)arg1;
-- (id)catalogToSend;
+- (id)companionCatalogToSendWithStateChange;
 - (id)currentLibraryPassSyncStateWithReconciledState:(id)arg1;
-- (void)handleCatalogChanged:(id)arg1;
-- (void)handleIncomingCatalog:(id)arg1;
+- (void)handleCatalogChangeWithCompanionCatalog:(id)arg1 watchCatalog:(id)arg2;
+- (void)handleIncomingCompanionCatalog:(id)arg1 watchCatalog:(id)arg2;
 - (void)handleIncomingPassSettings:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;
 - (void)handlePassLibraryChanged;
 - (void)handleSettingsChanged:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;
@@ -75,6 +75,7 @@
 - (void)suggestSync;
 - (void)syncStateChangeProcessed:(id)arg1;
 - (void)syncStateChanged:(id)arg1;
+- (id)watchCatalogToSendWithStateChange;
 
 @end
 

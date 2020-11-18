@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CLKDevice, CLKFont, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, UIColor, UIView;
+@class CLKDevice, CLKFont, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, UIColor, UITraitCollection, UIView;
 
 @protocol _CLKUITimeLabelManager
 
@@ -25,6 +25,7 @@
 - (void)setStyle:(CLKUITimeLabelStyle *)arg1;
 - (struct CGSize)sizeThatFits;
 - (void)sizeViewToFit;
+- (void)traitCollectionDidChange:(UITraitCollection *)arg1;
 - (void)updateTimeText;
 - (UIView *)viewForLastBaselineLayout;
 @end

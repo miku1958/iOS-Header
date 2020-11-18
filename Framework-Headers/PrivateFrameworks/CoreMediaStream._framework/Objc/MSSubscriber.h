@@ -77,6 +77,7 @@
 - (void)_updateMasterManifest;
 - (void)abort;
 - (void)checkForNewAssetCollections;
+- (void)checkForNewAssetCollectionsIfMissingCtag;
 - (void)checkForOutstandingActivities;
 - (void)deactivate;
 - (void)dealloc;

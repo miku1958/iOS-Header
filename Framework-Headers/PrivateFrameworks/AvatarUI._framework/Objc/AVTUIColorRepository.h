@@ -21,7 +21,7 @@
 + (id)groupDialCellSelectedTextColor;
 + (id)groupDialCellShimmeringTextColor;
 + (id)groupDialCellTextColor;
-+ (id)groupDialSelectionBackgroundColor;
++ (id)groupSidePickerCellSelectedBackgroundColor;
 + (id)modalBackgroundColor;
 + (id)paddleViewBackgroundColor;
 + (id)placeholderBackgroundColor;
@@ -31,7 +31,6 @@
 + (id)splashScreenButtonHighlightedTextColor;
 + (id)splashScreenButtonNormalTextColor;
 + (id)stickerPlaceholderBackgroundColor;
-+ (id)templateInstructionLabelTextColor;
 + (id)trapOverlayBackgroundColor;
 + (id)userInfoLabelColor;
 

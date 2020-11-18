@@ -23,6 +23,7 @@
 + (id)SDOFV3MetalKernelNamed:(id)arg1;
 + (id)allocForType:(int)arg1;
 + (id)colorMatrixBiasKernel;
++ (id)kernelNamesFromMetalLibraryData:(id)arg1;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 constants:(id)arg3 error:(id *)arg4;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 error:(id *)arg3;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 options:(id)arg3 error:(id *)arg4;
@@ -41,7 +42,7 @@
 - (SEL)ROISelector;
 - (id)_initWithInternalRepresentation:(void *)arg1;
 - (id)_initWithReflection:(struct CIKernelReflection)arg1;
-- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2 constantTypes:(id)arg3;
 - (id)_initWithString:(id)arg1 andMetalLibrary:(id)arg2 usingCruftCompatibility:(BOOL)arg3;
 - (id)_initWithString:(id)arg1 usingCruftCompatibility:(BOOL)arg2;
 - (void *)_internalRepresentation;

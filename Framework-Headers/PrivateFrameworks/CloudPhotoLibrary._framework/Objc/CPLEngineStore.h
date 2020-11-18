@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 
-@class CPLChangeBatch, CPLEngineChangePipe, CPLEngineClientCache, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineLibrary, CPLEngineOutgoingResources, CPLEnginePushRepository, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineScopeCleanupTasks, CPLEngineScopeStorage, CPLEngineStatusCenter, CPLEngineTransientRepository, CPLPlatformObject, CPLResetTracker, NSArray, NSDate, NSHashTable, NSMutableArray, NSSet, NSString, NSURL;
+@class CPLChangeBatch, CPLEngineChangePipe, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineInitialQueryTracker, CPLEngineLibrary, CPLEngineOutgoingResources, CPLEnginePushRepository, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineScopeCleanupTasks, CPLEngineScopeStorage, CPLEngineStatusCenter, CPLEngineTransientRepository, CPLPlatformObject, CPLRecordStorageView, CPLResetTracker, NSArray, NSDate, NSHashTable, NSMutableArray, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CPLEngineStore : NSObject <CPLAbstractObject, CPLEngineComponent>
@@ -24,6 +24,7 @@
     CPLResetTracker *_pendingTracker;
     CPLChangeBatch *_unacknowledgedBatch;
     BOOL _discardUnacknowledgedBatchOnTransactionFail;
+    BOOL _transactionClientCacheViewHasPushRepository;
     NSSet *_lastInvalidRecordScopedIdentifiers;
     NSDate *_lastInvalidRecordsDate;
     NSObject<OS_dispatch_source> *_pendingUpdateTimer;
@@ -43,13 +44,13 @@
     BOOL _shouldTriggerResetSyncAfterDisabledFeaturesUpdate;
     BOOL _shouldSyncScopeList;
     CPLPlatformObject *_platformObject;
+    CPLRecordStorageView *_transactionClientCacheView;
     CPLEngineLibrary *_engineLibrary;
     CPLEnginePushRepository *_pushRepository;
     CPLEngineScopeStorage *_scopes;
     CPLEngineScopeCleanupTasks *_cleanupTasks;
     CPLEngineChangePipe *_pullQueue;
     CPLEngineIDMapping *_idMapping;
-    CPLEngineClientCache *_clientCache;
     CPLEngineCloudCache *_cloudCache;
     CPLEngineTransientRepository *_transientPullRepository;
     CPLEngineResourceStorage *_resourceStorage;
@@ -58,12 +59,12 @@
     CPLEngineRemappedDeletes *_remappedDeletes;
     CPLEngineQuarantinedRecords *_quarantinedRecords;
     CPLEngineStatusCenter *_statusCenter;
+    CPLEngineInitialQueryTracker *_initialQueryTracker;
     CPLEngineDerivativesCache *_derivativesCache;
     unsigned long long _state;
 }
 
 @property (readonly, nonatomic) CPLEngineScopeCleanupTasks *cleanupTasks; // @synthesize cleanupTasks=_cleanupTasks;
-@property (readonly, nonatomic) CPLEngineClientCache *clientCache; // @synthesize clientCache=_clientCache;
 @property (readonly, nonatomic) CPLEngineCloudCache *cloudCache; // @synthesize cloudCache=_cloudCache;
 @property (readonly, nonatomic) id corruptionInfo;
 @property (readonly, copy) NSString *debugDescription;
@@ -75,6 +76,7 @@
 @property (readonly, nonatomic) BOOL hasPendingResetSync;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLEngineIDMapping *idMapping; // @synthesize idMapping=_idMapping;
+@property (readonly, nonatomic) CPLEngineInitialQueryTracker *initialQueryTracker; // @synthesize initialQueryTracker=_initialQueryTracker;
 @property (readonly) NSDate *libraryCreationDate;
 @property (readonly, nonatomic) CPLEngineOutgoingResources *outgoingResources; // @synthesize outgoingResources=_outgoingResources;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
@@ -92,6 +94,7 @@
 @property (readonly, nonatomic) CPLEngineStatusCenter *statusCenter; // @synthesize statusCenter=_statusCenter;
 @property (readonly, nonatomic) NSArray *storages;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) CPLRecordStorageView *transactionClientCacheView; // @synthesize transactionClientCacheView=_transactionClientCacheView;
 @property (readonly, nonatomic) CPLEngineTransientRepository *transientPullRepository; // @synthesize transientPullRepository=_transientPullRepository;
 
 + (id)platformImplementationProtocol;
@@ -103,8 +106,13 @@
 - (BOOL)_canWrite;
 - (void)_commitWriteTransaction:(id)arg1 commitError:(id)arg2;
 - (id)_currentTransaction;
+- (void)_dropTransactionClientCacheView;
+- (void)_finishTransaction;
+- (BOOL)_handleException:(id)arg1;
 - (void)_loadResetEvents;
+- (void)_performBarrierTransaction:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_performTransaction:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (id)_performWriteTransactionByPassBlocker:(id)arg1 WithBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_reallyPerformBatchedTransactionsLocked;
 - (void)_reallySchedulePendingUpdateApply;
 - (void)_reallyUnschedulePendingUpdateApply;
@@ -120,6 +128,7 @@
 - (void)_schedulePendingUpdateApply;
 - (void)_setTransactionOnCurrentThread:(id)arg1;
 - (BOOL)_shouldSyncScopeListWithOptions:(unsigned long long)arg1;
+- (BOOL)_storeChangeSessionUpdate:(id)arg1 error:(id *)arg2;
 - (void)_storeResetEvent:(id)arg1 scopeIdentifier:(id)arg2 date:(id)arg3 cause:(id)arg4;
 - (void)_storeResetEvent:(id)arg1 scopeIdentifier:(id)arg2 date:(id)arg3 pending:(BOOL)arg4 cause:(id)arg5;
 - (id)_storedDisabledFeatures;
@@ -128,7 +137,9 @@
 - (BOOL)applyPreviousChangeSessionUpdateWithExpectedLibraryVersion:(id)arg1 error:(id *)arg2;
 - (void)assertCanRead;
 - (void)assertCanWrite;
+- (void)assertNoUnacknowledgedChanges;
 - (BOOL)beginChangeSession:(id)arg1 withLibraryVersion:(id)arg2 resetTracker:(id)arg3 error:(id *)arg4;
+- (void)blockWriteTransactionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)checkExpectedLibraryVersion:(id)arg1 error:(id *)arg2;
 - (id)clientCacheIdentifier;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -141,6 +152,7 @@
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasPendingChangeSessionUpdate;
+- (BOOL)hasUnacknowledgedChanges;
 - (id)initWithEngineLibrary:(id)arg1;
 - (BOOL)isClientInSyncWithClientCache;
 - (BOOL)isFeatureDisabled:(id)arg1;
@@ -149,14 +161,18 @@
 - (unsigned long long)libraryOptions;
 - (id)libraryVersion;
 - (id)localResourceForCloudResource:(id)arg1 recordClass:(Class *)arg2;
+- (id)newClientCacheViewUsesPushRepository:(BOOL *)arg1;
 - (void)noteInvalidRecordScopedIdentifiersInPushSession:(id)arg1;
 - (void)noteOtherResetEvent:(id)arg1 cause:(id)arg2;
+- (void)notePushRepositoryStoredSomeChanges;
 - (void)noteResetSyncFinished;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performBarrier;
 - (void)performBatchedWriteTransactionBarrier;
+- (void)performBatchedWriteTransactionBarrierWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)performBatchedWriteTransactionWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)performReadTransactionWithBlock:(CDUnknownBlockType)arg1;
+- (id)performWriteTransactionByPassBlocker:(id)arg1 withBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)performWriteTransactionWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerStorage:(id)arg1;
 - (BOOL)resetCompleteSyncStateIncludingIDMappingWithCause:(id)arg1 error:(id *)arg2;
@@ -165,12 +181,15 @@
 - (BOOL)resetLocalSyncStateWithCause:(id)arg1 error:(id *)arg2;
 - (BOOL)resetSyncAnchorWithCause:(id)arg1 error:(id *)arg2;
 - (BOOL)setShouldUpdateDisabledFeaturesWithError:(id *)arg1;
+- (void)startVacuum;
+- (void)stopVacuum;
 - (BOOL)storeChangeSessionUpdate:(id)arg1 error:(id *)arg2;
 - (BOOL)storeClientIsInSyncWithClientCacheWithError:(id *)arg1;
 - (BOOL)storeDerivativesFilter:(id)arg1 error:(id *)arg2;
 - (BOOL)storeLastQuarantineCountReportDate:(id)arg1 error:(id *)arg2;
 - (BOOL)storeLibraryVersion:(id)arg1 withError:(id *)arg2;
 - (BOOL)storeUserIdentifier:(id)arg1 error:(id *)arg2;
+- (void)transactionDidFinish;
 - (id)unacknowledgedChangeWithLocalScopedIdentifier:(id)arg1;
 - (BOOL)updateDisabledFeatures:(id)arg1 didReset:(BOOL *)arg2 error:(id *)arg3;
 - (BOOL)updateLibraryOptions:(unsigned long long)arg1 error:(id *)arg2;

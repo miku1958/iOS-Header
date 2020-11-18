@@ -11,9 +11,9 @@
 
 @interface SOExtensionManager : NSObject
 {
-    NSArray *_loadedExtensions;
     NSObject<OS_dispatch_queue> *_extensionManagerQueue;
     SOExtensionFinder *_extensionFinder;
+    NSArray *_loadedExtensions;
 }
 
 @property (readonly, nonatomic) NSArray *loadedExtensions; // @synthesize loadedExtensions=_loadedExtensions;

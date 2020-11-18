@@ -9,15 +9,27 @@
 @protocol _LSDReadProtocol
 - (void)getAllUserActivityTypesAndDomainNamesWithCompletionHandler:(void (^)(NSSet *, NSSet *, NSError *))arg1;
 - (void)getBoundIconInfoForDocumentProxy:(LSDocumentProxy *)arg1 completionHandler:(void (^)(_LSBoundIconInfo *, NSError *))arg2;
+- (void)getBundleProxyForCurrentProcessWithCompletionHandler:(void (^)(LSBundleProxy *, NSError *))arg1;
+- (void)getBundleRecordForCoreTypesWithCompletionHandler:(void (^)(LSBundleRecord *))arg1;
+- (void)getBundleRecordForCurrentProcessWithCompletionHandler:(void (^)(LSBundleRecord *, NSError *))arg1;
 - (void)getDiskUsage:(_LSDiskUsage *)arg1 completionHandler:(void (^)(_LSDiskUsage *, NSError *))arg2;
+- (void)getExtensionPointRecordForCurrentProcessWithCompletionHandler:(void (^)(LSExtensionPointRecord *))arg1;
+- (void)getExtensionPointRecordWithIdentifier:(NSString *)arg1 platform:(unsigned int)arg2 completionHandler:(void (^)(LSExtensionPointRecord *, NSError *))arg3;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(void (^)(NSUUID *, NSNumber *))arg1;
 - (void)getLocalizedNameWithBundleType:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 bundleUUID:(NSString *)arg3 context:(NSString *)arg4 shortNameOnly:(BOOL)arg5 preferredLocalizations:(NSArray *)arg6 validationToken:(_LSBundleIDValidationToken *)arg7 completionHandler:(void (^)(NSString *, NSError *))arg8;
 - (void)getPreferencesWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)getRelatedTypesOfTypeWithIdentifier:(NSString *)arg1 maximumDegreeOfSeparation:(long long)arg2 completionHandler:(void (^)(NSArray *, NSArray *))arg3;
 - (void)getResourceValuesForKeys:(NSSet *)arg1 URL:(NSURL *)arg2 preferredLocalizations:(NSArray *)arg3 completionHandler:(void (^)(NSDictionary *, NSSet *, NSError *))arg4;
 - (void)getServerStatusWithCompletionHandler:(void (^)(unsigned int))arg1;
 - (void)getServerStoreNonBlockingWithCompletionHandler:(void (^)(id, FSNode *, NSError *))arg1;
 - (void)getServerStoreWithCompletionHandler:(void (^)(id, FSNode *, NSError *))arg1;
+- (void)getTypeRecordForImportedTypeWithIdentifier:(NSString *)arg1 conformingToIdentifier:(NSString *)arg2 completionHandler:(void (^)(UTTypeRecord *))arg3;
+- (void)getTypeRecordWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(UTTypeRecord *))arg2;
+- (void)getTypeRecordWithTag:(NSString *)arg1 ofClass:(NSString *)arg2 conformingToIdentifier:(NSString *)arg3 completionHandler:(void (^)(UTTypeRecord *))arg4;
+- (void)getTypeRecordsWithIdentifiers:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
+- (void)getTypeRecordsWithTag:(NSString *)arg1 ofClass:(NSString *)arg2 conformingToIdentifier:(NSString *)arg3 completionHandler:(void (^)(NSArray *))arg4;
+- (void)getWhetherTypeIdentifier:(NSString *)arg1 conformsToTypeIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL))arg3;
 - (void)mapBundleIdentifiers:(NSSet *)arg1 orMachOUUIDs:(NSSet *)arg2 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg3;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)resolveQueries:(NSSet *)arg1 legacySPI:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;

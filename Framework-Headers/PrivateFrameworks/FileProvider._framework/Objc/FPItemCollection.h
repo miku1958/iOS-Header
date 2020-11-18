@@ -36,6 +36,7 @@
     BOOL _observing;
     id<FPItemCollectionMinimalDelegate> _delegate;
     FPItemID *_enumeratedItemID;
+    NSMutableDictionary *_dsCopyProgressTokenMap;
     NSPredicate *_additionalItemFilteringPredicate;
     NSObject<OS_dispatch_queue> *_updateQueue;
     FPPacer *_updatePacer;
@@ -47,6 +48,7 @@
 @property (weak, nonatomic) id<FPItemCollectionMinimalDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSString *domainIdentifier;
+@property (strong, nonatomic) NSMutableDictionary *dsCopyProgressTokenMap; // @synthesize dsCopyProgressTokenMap=_dsCopyProgressTokenMap;
 @property (readonly) FPItemID *enumeratedItemID; // @synthesize enumeratedItemID=_enumeratedItemID;
 @property (nonatomic, getter=isGathering) BOOL gathering; // @synthesize gathering=_gathering;
 @property (readonly, nonatomic) BOOL hasMoreUpdates; // @synthesize hasMoreUpdates=_hasMoreUpdates;

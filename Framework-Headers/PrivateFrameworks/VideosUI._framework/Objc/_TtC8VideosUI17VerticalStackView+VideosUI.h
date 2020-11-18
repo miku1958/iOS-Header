@@ -10,5 +10,8 @@
 
 @interface _TtC8VideosUI17VerticalStackView (VideosUI) <UIGestureRecognizerDelegate>
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)panGestureHandler:(id)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 @end
 

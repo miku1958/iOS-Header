@@ -18,7 +18,7 @@
     BOOL _enabledEntryTypeCalendarEvent;
     BOOL _enabledEntryTypeFrequentLocation;
     BOOL _enabledEntryTypeRecentHistory;
-    BOOL _enabledEntryTypeFavoritePlace;
+    BOOL _enabledEntryTypeOldPreYukonFavorite;
     BOOL _enabledEntryTypeParkedCar;
     BOOL _enabledEntryTypeRestaurantReservation;
     BOOL _enabledEntryTypeRidesharing;
@@ -31,6 +31,9 @@
     BOOL _enabledEntryTypeTicketedEvent;
     BOOL _enabledEntryTypePortrait;
     BOOL _enabledEntryTypeUserPlace;
+    BOOL _enabledEntryTypeSchool;
+    BOOL _enabledEntryTypeVehicleSetup;
+    BOOL _enabledEntryTypeRatingRequest;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_createPrimaryViews;
-- (void)setIsPrimary:(BOOL)arg1;
+- (void)setText:(id)arg1;
 
 @end
 

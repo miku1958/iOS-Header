@@ -18,7 +18,10 @@
 - (BOOL)adjustsImageWhenDisabled;
 - (long long)controlType;
 - (id)imageNameForCurrentState;
+- (void)setDisabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
+- (BOOL)shouldUseSlash;
 
 @end
 

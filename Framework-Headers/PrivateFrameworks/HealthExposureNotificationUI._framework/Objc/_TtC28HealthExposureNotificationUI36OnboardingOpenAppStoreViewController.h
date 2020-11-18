@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *flow;
     MISSING_TYPE *healthAgencyModel;
+    MISSING_TYPE *appStoreURL;
     MISSING_TYPE *primaryButton;
 }
 

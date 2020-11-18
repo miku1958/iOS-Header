@@ -58,6 +58,7 @@
 - (id)copyHeadersForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodedHeaders;
+- (void)enumerateKeysAndBytesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)firstAddressForKey:(id)arg1;
 - (id)firstHeaderForKey:(id)arg1;
 - (id)firstSenderAddress;
@@ -65,6 +66,7 @@
 - (id)headerData;
 - (id)headersDictionary;
 - (id)headersForKey:(id)arg1;
+- (id)headersRequiringSMTPUTF8Support;
 - (id)init;
 - (id)initWithASCIIHeaderString:(id)arg1;
 - (id)initWithHeaderData:(id)arg1 encoding:(unsigned int)arg2;

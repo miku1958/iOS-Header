@@ -6,15 +6,16 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDIDSActivityMonitorObserverDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDAccountRegistry, HMFNetMonitor, HMFTimer, IDSService, NSArray, NSMapTable, NSObject, NSOperationQueue, NSString;
+@class HMDAccountRegistry, HMDIDSActivityMonitorObserver, HMFNetMonitor, HMFTimer, IDSService, NSArray, NSMapTable, NSObject, NSOperationQueue, NSString;
 @protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDRemoteDeviceMonitor : HMFObject <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, IDSServiceDelegate>
+@interface HMDRemoteDeviceMonitor : HMFObject <HMFLogging, HMFTimerDelegate, IDSServiceDelegate, HMDIDSActivityMonitorObserverDelegate, HMFNetMonitorDelegate>
 {
     id<HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,11 +25,13 @@
     BOOL _started;
     HMDAccountRegistry *_accountRegistry;
     IDSService *_service;
+    HMDIDSActivityMonitorObserver *_activityObserver;
     HMFNetMonitor *_netMonitor;
     HMFTimer *_deviceHealthTimer;
 }
 
 @property (readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
+@property (readonly, nonatomic) HMDIDSActivityMonitorObserver *activityObserver; // @synthesize activityObserver=_activityObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HMFTimer *deviceHealthTimer; // @synthesize deviceHealthTimer=_deviceHealthTimer;
@@ -59,10 +62,11 @@
 - (void)handleDeviceRemovedFromAccount:(id)arg1;
 - (void)handleRemovedDeviceInformation:(id)arg1;
 - (id)init;
-- (id)initWithAccountRegistry:(id)arg1;
+- (id)initWithAccountRegistry:(id)arg1 activityObserver:(id)arg2;
 - (void)networkMonitorIsReachable:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)notifyDeviceReachabilityChange:(BOOL)arg1 forDevice:(id)arg2;
+- (void)observer:(id)arg1 didUpdateDevice:(id)arg2 isOnline:(BOOL)arg3;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)setReachable:(BOOL)arg1;

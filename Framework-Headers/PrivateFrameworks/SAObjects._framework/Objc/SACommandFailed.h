@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *reason;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *turnId;
 
 + (id)commandFailed;
 + (id)commandFailedWithDictionary:(id)arg1 context:(id)arg2;

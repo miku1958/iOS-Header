@@ -6,6 +6,7 @@
 
 #import <SoftwareUpdateServices/SUDefaultDownloadPolicy.h>
 
+__attribute__((visibility("hidden")))
 @interface SUDefaultRoamingRestrictedDownloadPolicy : SUDefaultDownloadPolicy
 {
 }

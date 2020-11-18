@@ -61,6 +61,7 @@
 + (id)extantDatabasesLock;
 + (id)logCategory;
 - (void).cxx_destruct;
+- (BOOL)_retryCloudKitOperationAfterError:(id)arg1 retryBlock:(CDUnknownBlockType)arg2;
 - (id)_zonesWithScope:(long long)arg1;
 - (id)acceptInvitation:(id)arg1;
 - (id)acceptInvitations:(id)arg1;
@@ -87,11 +88,12 @@
 - (id)initWithLocalDatabase:(id)arg1 configuration:(id)arg2;
 - (id)initWithLocalDatabase:(id)arg1 stateZone:(id)arg2 container:(id)arg3 configuration:(id)arg4 databaseStateModelsByScope:(id)arg5 zoneStateModels:(id)arg6;
 - (id)logIdentifier;
+- (void)notifyDelegateOfError:(id)arg1 forOperation:(id)arg2;
 - (id)openExistingPrivateZoneWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (id)openExistingSharedZoneWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (id)openOrCreatePrivateZoneWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (id)operationConfigurationWithProcessingOptions:(id)arg1;
-- (id)peformFunctionInvokeOperationWithServiceName:(id)arg1 functionName:(id)arg2 serializedRequest:(id)arg3;
+- (id)peformCodeOperationWithServiceName:(id)arg1 functionName:(id)arg2 request:(id)arg3 responseClass:(Class)arg4;
 - (id)performAdministrativeFetchForAllDatabases:(BOOL)arg1;
 - (id)performAdministrativeFetchForDatabaseScope:(long long)arg1 withForce:(BOOL)arg2;
 - (id)performCloudPullForScope:(long long)arg1;
@@ -104,7 +106,7 @@
 - (id)removePrivateZoneWithID:(id)arg1;
 - (void)removeStateForZoneID:(id)arg1;
 - (id)removeZoneWithID:(id)arg1;
-- (BOOL)retryCloudKitOperationAfterError:(id)arg1 retryBlock:(CDUnknownBlockType)arg2;
+- (BOOL)retryCloudKitOperation:(id)arg1 afterError:(id)arg2 retryBlock:(CDUnknownBlockType)arg3;
 - (id)serverChangeTokenForZoneWithID:(id)arg1;
 - (id)shutdown;
 - (id)subscriptionIDForCloudID:(id)arg1 recordType:(id)arg2;

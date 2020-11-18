@@ -32,10 +32,14 @@
 @property (readonly) Class superclass;
 
 + (id)composeRecipientWithConversation:(id)arg1 searchTerm:(id)arg2 matchingRecipient:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)address;
 - (id)compositeName;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithGUID:(id)arg1 displayString:(id)arg2 detailsString:(id)arg3 handles:(id)arg4 lastMessageDate:(id)arg5 searchTerm:(id)arg6 matchingRecipient:(id)arg7;
 - (BOOL)isRemovableFromSearchResults;
 - (void)releaseIMReferences;

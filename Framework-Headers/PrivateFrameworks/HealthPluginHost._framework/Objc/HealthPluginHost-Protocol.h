@@ -15,8 +15,6 @@
 - (void)populateFeedWithFeedKinds:(NSArray *)arg1 for:(NSDateInterval *)arg2 completion:(void (^)(void))arg3;
 - (void)postNotificationWith:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
 - (NSProgress *)startInteractiveFeedItemGenerationWithCompletion:(void (^)(BOOL))arg1;
-- (void)submitFeedPersonalizationAnalyticsWithFeedsToPopulateWhenFinished:(NSArray *)arg1 completion:(void (^)(void))arg2;
-- (void)submitHighlightsAnalyticsWithCompletion:(void (^)(void))arg1;
 - (void)submitTrainingFor:(NSArray *)arg1 completion:(void (^)(void))arg2;
 @end
 

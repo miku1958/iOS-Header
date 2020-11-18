@@ -6,6 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
+@class PXCuratedLibrarySummaryHelper;
 @protocol PXBrowserVisibleContentSnapshot, PXDisplayAssetCollection;
 
 @protocol PXLibrarySummaryDataSource <NSObject>
@@ -15,5 +16,6 @@
 
 
 @optional
+- (BOOL)curatedLibrarySummaryHelperShouldUpdateImmediately:(PXCuratedLibrarySummaryHelper *)arg1;
 @end
 

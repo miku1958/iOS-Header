@@ -22,7 +22,6 @@
 @property (readonly, nonatomic) NSArray *iWorkAuthorPrivateIDs;
 @property (readonly, nonatomic) double maximumAspectRatioForPreviewImage;
 @property (readonly, nonatomic) double mimimumAspectRatioForPreviewImage;
-@property (readonly, nonatomic) BOOL showChineseNamedPointSizes;
 
 + (void)resetSharedConfigurations;
 + (id)sharedDelegate;

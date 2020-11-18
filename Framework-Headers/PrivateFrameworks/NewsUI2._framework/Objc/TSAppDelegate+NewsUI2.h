@@ -8,10 +8,17 @@
 
 @interface TSAppDelegate (NewsUI2)
 - (BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;
+- (void)application:(id)arg1 didReceiveRemoteNotification:(id)arg2 fetchCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)application:(id)arg1 handleIntent:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)application:(id)arg1 openURL:(id)arg2 options:(id)arg3;
+- (void)application:(id)arg1 performFetchWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)application:(id)arg1 willFinishLaunchingWithOptions:(id)arg2;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationDidEnterBackground:(id)arg1;
-- (void)applicationWillEnterForeground:(id)arg1;
-- (void)applicationWillResignActive:(id)arg1;
+- (void)buildMenuWithBuilder:(id)arg1;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)createBridgedAppResolver;
+- (id)createCarPlaySceneResolver;
+- (id)createSceneResolver;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+- (void)validateCommand:(id)arg1;
 @end
 

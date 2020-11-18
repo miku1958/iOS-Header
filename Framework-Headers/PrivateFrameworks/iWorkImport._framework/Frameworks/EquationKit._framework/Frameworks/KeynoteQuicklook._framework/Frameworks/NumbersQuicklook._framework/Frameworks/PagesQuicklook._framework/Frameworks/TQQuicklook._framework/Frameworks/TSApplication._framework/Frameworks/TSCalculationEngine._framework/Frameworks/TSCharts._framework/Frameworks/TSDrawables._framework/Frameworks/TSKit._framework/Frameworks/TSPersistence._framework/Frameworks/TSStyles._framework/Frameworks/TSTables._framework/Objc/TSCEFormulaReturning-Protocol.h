@@ -10,7 +10,6 @@
 
 @protocol TSCEFormulaReturning <NSObject>
 
-@property (readonly, nonatomic) struct TSCEFormula *formula;
 @property (readonly, nonatomic) TSCEFormulaObject *formulaObject;
 
 @end

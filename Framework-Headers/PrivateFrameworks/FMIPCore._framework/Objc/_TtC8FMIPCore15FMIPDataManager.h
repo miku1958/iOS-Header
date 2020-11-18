@@ -15,6 +15,7 @@
     MISSING_TYPE *devices;
     MISSING_TYPE *owner;
     MISSING_TYPE *familyMembers;
+    MISSING_TYPE *crowdSourcedOriginalLocations;
     MISSING_TYPE *crowdSourcedLocations;
     MISSING_TYPE *crowdSourcedLocating;
     MISSING_TYPE *devicesCache;

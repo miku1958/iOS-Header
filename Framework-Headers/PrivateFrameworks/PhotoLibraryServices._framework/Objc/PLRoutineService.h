@@ -36,6 +36,7 @@
 - (id)initWithFetchDateInterval:(id)arg1;
 - (void)invalidateLocationsOfInterest;
 - (BOOL)isRemoteLocation:(id)arg1 inDateInterval:(id)arg2;
+- (id)lastLocationOfInterestVisit;
 - (id)locationOfInterestAtLocation:(id)arg1;
 - (id)locationOfInterestCloseToLocation:(id)arg1 inDateInterval:(id)arg2;
 - (id)locationOfInterestVisitsAtLocation:(id)arg1 inDateInterval:(id)arg2;

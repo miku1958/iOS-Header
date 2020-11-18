@@ -11,13 +11,9 @@
 @interface DEDistribution : NSObject
 {
     NSString *_name;
-    NSString *_publicationURL;
-    NSString *_downloadURLPrefix;
 }
 
-@property (strong, nonatomic) NSString *downloadURLPrefix; // @synthesize downloadURLPrefix=_downloadURLPrefix;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *publicationURL; // @synthesize publicationURL=_publicationURL;
 
 - (void).cxx_destruct;
 

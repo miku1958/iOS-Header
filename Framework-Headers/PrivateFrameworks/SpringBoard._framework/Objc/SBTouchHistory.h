@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (id)init;
 - (id)initWithDepth:(unsigned long long)arg1;
 - (double)peakSpeed;

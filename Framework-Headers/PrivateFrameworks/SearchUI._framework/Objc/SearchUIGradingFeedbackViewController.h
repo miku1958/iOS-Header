@@ -27,6 +27,7 @@
 @property (strong, nonatomic) UIViewController *viewControllerForPresenting; // @synthesize viewControllerForPresenting=_viewControllerForPresenting;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)addActionForGrade:(unsigned long long)arg1 title:(id)arg2;
 - (id)initWithResult:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;

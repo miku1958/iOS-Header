@@ -89,6 +89,7 @@
 - (BOOL)supportsStartAngleRotation;
 - (BOOL)supportsSymbolOverhang;
 - (BOOL)supportsTrendLines;
+- (BOOL)supportsValueLabelSpacing;
 - (BOOL)supportsValueLabels;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
 - (id)userInterfaceNameForPlaceTitleAtCenter:(BOOL)arg1;

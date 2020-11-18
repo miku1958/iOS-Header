@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)channelAlreadyExists:(id)arg1 channelID:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_fetchConfigurationAndPresentVPPAIfRequired:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_getEligibleBulkChannels;
 - (id)_getVPPABulkChannels:(long long)arg1;
 - (BOOL)_isChannelVPPAPromptEligible:(id)arg1;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentVPPAConsentScreen:(id)arg1 vppaState:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_rootViewController;
 - (void)startVPPAConsentFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startVPPAConsentFlowForDeeplink:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

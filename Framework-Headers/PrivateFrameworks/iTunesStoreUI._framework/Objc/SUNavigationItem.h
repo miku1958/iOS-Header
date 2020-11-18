@@ -7,13 +7,20 @@
 #import <UIKit/UINavigationItem.h>
 
 @class UIBarButtonItem;
+@protocol SUNavigationItemDelegate;
 
 @interface SUNavigationItem : UINavigationItem
 {
+    id<SUNavigationItemDelegate> _delegate;
 }
 
+@property (nonatomic) id<SUNavigationItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIBarButtonItem *secondaryLeftBarButtonItem;
 
+- (void)setLeftBarButtonItem:(id)arg1;
+- (void)setLeftBarButtonItem:(id)arg1 animated:(BOOL)arg2;
+- (void)setLeftBarButtonItems:(id)arg1;
+- (void)setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setSecondaryLeftBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 
 @end

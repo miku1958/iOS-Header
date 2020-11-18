@@ -21,6 +21,7 @@
 - (void)transferGestureState:(id<VKGesturingCameraController>)arg1;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)updateRotationWithFocusPoint:(struct CGPoint)arg1 newValue:(double)arg2;
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(void (^)(void))arg3;

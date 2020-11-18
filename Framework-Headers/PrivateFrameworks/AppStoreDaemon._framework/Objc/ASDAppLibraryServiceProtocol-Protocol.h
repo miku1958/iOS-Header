@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class ASDApp, NSPredicate, NSUUID;
+@class ASDApp, NSArray, NSPredicate, NSUUID;
 
 @protocol ASDAppLibraryServiceProtocol
 - (void)cancelApp:(ASDApp *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSError *))arg3;
@@ -14,8 +14,10 @@
 - (void)launchApp:(ASDApp *)arg1 extensionType:(long long)arg2 withReplyHandler:(void (^)(long long))arg3;
 - (void)launchApp:(ASDApp *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(long long))arg3;
 - (void)launchApp:(ASDApp *)arg1 withReplyHandler:(void (^)(long long))arg2;
+- (void)lookupBundleIDsForDeletableSystemAppsWithItemIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)lookupItemIDsForDeletableSystemAppsWithBundleIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)pauseApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
 - (void)resumeApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
-- (void)uninstallApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
+- (void)uninstallApp:(ASDApp *)arg1 requestUserConfirmation:(BOOL)arg2 withReplyHandler:(void (^)(NSError *))arg3;
 @end
 

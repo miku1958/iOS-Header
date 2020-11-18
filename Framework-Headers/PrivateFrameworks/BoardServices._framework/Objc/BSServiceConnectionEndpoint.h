@@ -16,17 +16,14 @@
 
 @interface BSServiceConnectionEndpoint : NSObject <NSCopying, BSXPCCoding, BSXPCSecureCoding, NSSecureCoding>
 {
-    NSObject<OS_xpc_object> *_endpoint;
     NSString *_targetDescription;
+    BOOL _nonLaunching;
     NSString *_service;
     NSString *_instance;
-    BOOL _nonLaunching;
     NSString *_machName;
+    NSObject<OS_xpc_object> *_endpoint;
 }
 
-@property (readonly, nonatomic) NSObject<OS_xpc_object> *_endpoint; // @synthesize _endpoint;
-@property (readonly, nonatomic) NSString *_machName; // @synthesize _machName;
-@property (readonly, nonatomic, getter=_isNonLaunching) BOOL _nonLaunching; // @synthesize _nonLaunching;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -35,8 +32,6 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *targetDescription;
 
-+ (id)_endpointForManager:(id)arg1 domain:(id)arg2 service:(id)arg3 instance:(id)arg4;
-+ (id)_endpointFromEndowmentRepresentation:(id)arg1;
 + (id)defaultShellMachName;
 + (id)endpointForMachName:(id)arg1 service:(id)arg2 instance:(id)arg3;
 + (id)endpointForSystemMachName:(id)arg1 service:(id)arg2 instance:(id)arg3;
@@ -44,8 +39,6 @@
 + (BOOL)supportsBSXPCSecureCoding;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_endowmentRepresentation;
-- (id)_initWithEndpoint:(id)arg1 isNonLaunching:(BOOL)arg2 targetDescription:(id)arg3 service:(id)arg4 instance:(id)arg5;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;

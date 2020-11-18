@@ -6,23 +6,19 @@
 
 #import <HomeKitDaemon/HMDBackingStoreOperation.h>
 
-@class HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, NSArray;
+@class HMDBackingStoreCacheGroup, NSArray;
 
 @interface HMDBackingStoreCacheDeleteRecordOperation : HMDBackingStoreOperation
 {
     HMDBackingStoreCacheGroup *_group;
-    HMDBackingStoreCacheShareGroup *_share;
     NSArray *_recordNames;
 }
 
 @property (strong, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
 @property (strong, nonatomic) NSArray *recordNames; // @synthesize recordNames=_recordNames;
-@property (strong, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 
 - (void).cxx_destruct;
 - (id)initWithGroup:(id)arg1 recordNames:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
-- (id)initWithGroup:(id)arg1 share:(id)arg2 recordNames:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
-- (id)initWithShareGroup:(id)arg1 recordNames:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)mainReturningError;
 
 @end

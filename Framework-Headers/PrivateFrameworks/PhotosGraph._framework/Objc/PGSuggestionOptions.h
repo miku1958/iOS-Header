@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSIndexSet;
+@class NSDate, NSDictionary, NSIndexSet;
 
 @interface PGSuggestionOptions : NSObject
 {
@@ -17,6 +17,7 @@
     BOOL _ignoreCollisionsWithSameBatchSuggestions;
     BOOL _generatesInvalidSuggestions;
     BOOL _computesReasons;
+    BOOL _clearFeaturedSuggestions;
     NSDate *_localToday;
     NSDate *_universalStartDate;
     NSDate *_universalEndDate;
@@ -26,9 +27,12 @@
     NSIndexSet *_suggestionSubtypeWhitelist;
     NSIndexSet *_suggestionTypeBlacklist;
     NSIndexSet *_suggestionSubtypeBlacklist;
+    NSDictionary *_additionalOptions;
 }
 
+@property (strong, nonatomic) NSDictionary *additionalOptions; // @synthesize additionalOptions=_additionalOptions;
 @property (nonatomic) BOOL allowNotification; // @synthesize allowNotification=_allowNotification;
+@property (nonatomic) BOOL clearFeaturedSuggestions; // @synthesize clearFeaturedSuggestions=_clearFeaturedSuggestions;
 @property (nonatomic) BOOL computeReasons; // @synthesize computeReasons=_computesReasons;
 @property (nonatomic) BOOL discardGeneratedSuggestions; // @synthesize discardGeneratedSuggestions=_discardGeneratedSuggestions;
 @property (nonatomic) BOOL generateInvalidSuggestions; // @synthesize generateInvalidSuggestions=_generatesInvalidSuggestions;
@@ -47,6 +51,8 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)setDefaultStartAndEndDatesIfNeeded;
+- (void)setDefaultStartAndEndDatesIfNeededWithNumberOfDays:(long long)arg1;
 
 @end
 

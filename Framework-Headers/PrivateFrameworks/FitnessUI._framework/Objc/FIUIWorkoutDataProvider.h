@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class HKAnchoredObjectQuery, HKHealthStore, NSCalendar, NSDate, NSMutableArray, NSMutableDictionary, _HKAnchoredObjectQueryManager;
+@class HKAnchoredObjectQuery, HKHealthStore, NSCalendar, NSDate, NSMutableArray, NSMutableDictionary;
 
 @interface FIUIWorkoutDataProvider : NSObject
 {
     HKHealthStore *_healthStore;
-    _HKAnchoredObjectQueryManager *_queryManager;
     NSMutableDictionary *_workoutsByDay;
     NSMutableArray *_updateHandlers;
     HKAnchoredObjectQuery *_currentWorkoutAnchoredObjectQuery;

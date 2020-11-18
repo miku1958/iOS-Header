@@ -11,6 +11,7 @@
 @interface CSPrivateSearchableIndex : CSSearchableIndex
 {
     BOOL _attemptedIndexPathResolution;
+    int _resolvedIndexPathErrorCode;
     NSString *_resolvedIndexPath;
     NSString *_indexPath;
     CSIndexConnection *_savedConnection;
@@ -19,6 +20,7 @@
 @property BOOL attemptedIndexPathResolution; // @synthesize attemptedIndexPathResolution=_attemptedIndexPathResolution;
 @property (strong, nonatomic) NSString *indexPath; // @synthesize indexPath=_indexPath;
 @property (strong, nonatomic) NSString *resolvedIndexPath; // @synthesize resolvedIndexPath=_resolvedIndexPath;
+@property (nonatomic) int resolvedIndexPathErrorCode; // @synthesize resolvedIndexPathErrorCode=_resolvedIndexPathErrorCode;
 @property (strong, nonatomic) CSIndexConnection *savedConnection; // @synthesize savedConnection=_savedConnection;
 
 + (id)defaultSearchableIndex;

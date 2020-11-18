@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216TodayDataManager : NSObject
 {
     MISSING_TYPE *delegate;
@@ -20,6 +19,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pluginFactory;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *readingList;
+    MISSING_TYPE *appConfigManager;
+    MISSING_TYPE *subscriptionList;
+    MISSING_TYPE *prewarmer;
+    MISSING_TYPE *nativeAdService;
+    MISSING_TYPE *_subscribedTagIDsSinceLastRefresh;
 }
 
 - (void).cxx_destruct;

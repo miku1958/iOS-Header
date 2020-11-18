@@ -10,8 +10,11 @@
 
 @interface _TtC19NewsPersonalization16NewsPersonalizer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *feedPersonalizer;
+    MISSING_TYPE *trainer;
     MISSING_TYPE *context;
     MISSING_TYPE *queue;
+    MISSING_TYPE *xavierEnabled;
 }
 
 @end

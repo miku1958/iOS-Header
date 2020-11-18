@@ -41,10 +41,13 @@
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)fullscreenBackgroundColor;
 - (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(id)arg1;
 - (id)parallaxView;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (struct CGSize)preferredContentSize;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (void)prepareForActionSheetPresentation;
 - (void)prepareForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)previewDidAppear:(BOOL)arg1;

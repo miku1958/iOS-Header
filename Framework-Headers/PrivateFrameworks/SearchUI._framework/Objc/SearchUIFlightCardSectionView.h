@@ -26,6 +26,8 @@
 @property (strong, nonatomic) SFFlightCardSection *section; // @dynamic section;
 @property (readonly) Class superclass;
 
++ (int)defaultSeparatorStyleForCardSection:(id)arg1;
++ (BOOL)fillsBackgroundWithContentForCardSection:(id)arg1;
 - (void).cxx_destruct;
 - (void)flightController:(id)arg1 didSelectLeg:(long long)arg2 ofFlight:(long long)arg3;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;

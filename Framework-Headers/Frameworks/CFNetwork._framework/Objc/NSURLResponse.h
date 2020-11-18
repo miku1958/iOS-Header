@@ -9,7 +9,7 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL, NSURLResponseInternal;
+@class NSDictionary, NSString, NSURL, NSURLResponseInternal;
 
 @interface NSURLResponse : NSObject <NSSecureCoding, NSCopying>
 {
@@ -20,17 +20,19 @@
 @property (readonly, copy) NSString *MIMEType;
 @property (readonly, copy) NSURL *URL;
 @property struct URLResponse *_cf_resp_data; // @synthesize _cf_resp_data=__cf_resp_data;
+@property (readonly, copy) NSDictionary *allHeaderFields;
 @property (readonly) long long expectedContentLength;
+@property (readonly) long long statusCode;
 @property (readonly, copy) NSString *suggestedFilename;
 @property (readonly, copy) NSString *textEncodingName;
 
-+ (id)_responseWithCFURLResponse:(id)arg1;
-+ (id)getObjectKeyWithIndex:(long long)arg1;
++ (id)_responseWithCFURLResponse:(struct _CFURLResponse *)arg1;
++ (BOOL)instancesRespondToSelector:(SEL)arg1;
 + (BOOL)supportsSecureCoding;
-- (id)_CFURLResponse;
+- (struct _CFURLResponse *)_CFURLResponse;
 - (double)_calculatedExpiration;
 - (double)_freshnessLifetime;
-- (id)_initWithCFURLResponse:(id)arg1;
+- (id)_initWithCFURLResponse:(struct _CFURLResponse *)arg1;
 - (id)_initWithInternal:(id)arg1;
 - (struct URLResponse *)_inner;
 - (id)_lastModifiedDate;
@@ -45,6 +47,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1 MIMEType:(id)arg2 expectedContentLength:(long long)arg3 textEncodingName:(id)arg4;
+- (BOOL)respondsToSelector:(SEL)arg1;
 
 @end
 

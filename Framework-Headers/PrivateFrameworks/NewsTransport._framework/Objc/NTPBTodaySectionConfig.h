@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig;
+@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig, NTPBTagTodaySectionSpecificConfig;
 
 @interface NTPBTodaySectionConfig : PBCodable <NSCopying>
 {
@@ -28,28 +28,33 @@
     unsigned long long _seenArticlesMinimumTimeSinceFirstSeenToFilter;
     NTPBArticleIDsTodaySectionSpecificConfig *_articleIDsTodaySectionConfig;
     NTPBArticleListTodaySectionSpecificConfig *_articleListTodaySectionConfig;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSString *_backgroundGradientColor;
     NSString *_compactName;
     NTPBForYouTodaySectionSpecificConfig *_forYouTodaySectionConfig;
     NSString *_groupActionTitle;
     NSString *_groupActionUrl;
+    NSString *_groupNameActionUrl;
     NSString *_identifier;
     NTPBItemsTodaySectionSpecificConfig *_itemsTodaySectionConfig;
-    int _leadingCellPromotionPolicy;
+    NSString *_mutingTagID;
     NSString *_name;
-    NSString *_nameColor;
+    NSString *_nameColorDark;
+    NSString *_nameColorLight;
     NSString *_personalizationFeatureID;
     NTPBPersonalizedSectionPresenceConfig *_personalizedPresenceConfig;
     NSString *_personalizedPresenceFeatureID;
     NTPBPersonalizedTodaySectionSpecificConfig *_personalizedTodaySectionConfig;
+    int _promotionCriterion;
     int _readArticlesFilterMethod;
     NSString *_referralBarName;
     int _sectionType;
     int _seenArticlesFilterMethod;
+    NTPBTagTodaySectionSpecificConfig *_tagTodaySectionConfig;
     BOOL _glanceable;
     BOOL _presenceDeterminedByPersonalization;
     BOOL _shownInFavoritesOnlyMode;
-    BOOL _useNameColorInWidget;
     struct {
         unsigned int cachedResultCutoffTime:1;
         unsigned int fallbackOrder:1;
@@ -60,19 +65,20 @@
         unsigned int personalizedPresenceFeatureClickPrior:1;
         unsigned int personalizedPresenceFeatureImpressionPrior:1;
         unsigned int seenArticlesMinimumTimeSinceFirstSeenToFilter:1;
-        unsigned int leadingCellPromotionPolicy:1;
+        unsigned int promotionCriterion:1;
         unsigned int readArticlesFilterMethod:1;
         unsigned int sectionType:1;
         unsigned int seenArticlesFilterMethod:1;
         unsigned int glanceable:1;
         unsigned int presenceDeterminedByPersonalization:1;
         unsigned int shownInFavoritesOnlyMode:1;
-        unsigned int useNameColorInWidget:1;
     } _has;
 }
 
 @property (strong, nonatomic) NTPBArticleIDsTodaySectionSpecificConfig *articleIDsTodaySectionConfig; // @synthesize articleIDsTodaySectionConfig=_articleIDsTodaySectionConfig;
 @property (strong, nonatomic) NTPBArticleListTodaySectionSpecificConfig *articleListTodaySectionConfig; // @synthesize articleListTodaySectionConfig=_articleListTodaySectionConfig;
+@property (strong, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property (strong, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
 @property (strong, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
 @property (nonatomic) unsigned long long cachedResultCutoffTime; // @synthesize cachedResultCutoffTime=_cachedResultCutoffTime;
 @property (strong, nonatomic) NSString *compactName; // @synthesize compactName=_compactName;
@@ -81,8 +87,11 @@
 @property (nonatomic) BOOL glanceable; // @synthesize glanceable=_glanceable;
 @property (strong, nonatomic) NSString *groupActionTitle; // @synthesize groupActionTitle=_groupActionTitle;
 @property (strong, nonatomic) NSString *groupActionUrl; // @synthesize groupActionUrl=_groupActionUrl;
+@property (strong, nonatomic) NSString *groupNameActionUrl; // @synthesize groupNameActionUrl=_groupNameActionUrl;
 @property (readonly, nonatomic) BOOL hasArticleIDsTodaySectionConfig;
 @property (readonly, nonatomic) BOOL hasArticleListTodaySectionConfig;
+@property (readonly, nonatomic) BOOL hasBackgroundColorDark;
+@property (readonly, nonatomic) BOOL hasBackgroundColorLight;
 @property (readonly, nonatomic) BOOL hasBackgroundGradientColor;
 @property (nonatomic) BOOL hasCachedResultCutoffTime;
 @property (readonly, nonatomic) BOOL hasCompactName;
@@ -91,15 +100,17 @@
 @property (nonatomic) BOOL hasGlanceable;
 @property (readonly, nonatomic) BOOL hasGroupActionTitle;
 @property (readonly, nonatomic) BOOL hasGroupActionUrl;
+@property (readonly, nonatomic) BOOL hasGroupNameActionUrl;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasInterSectionFilteringOptions;
 @property (nonatomic) BOOL hasIntraSectionFilteringOptions;
 @property (readonly, nonatomic) BOOL hasItemsTodaySectionConfig;
-@property (nonatomic) BOOL hasLeadingCellPromotionPolicy;
 @property (nonatomic) BOOL hasMaximumStoriesAllocation;
 @property (nonatomic) BOOL hasMinimumStoriesAllocation;
+@property (readonly, nonatomic) BOOL hasMutingTagID;
 @property (readonly, nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasNameColor;
+@property (readonly, nonatomic) BOOL hasNameColorDark;
+@property (readonly, nonatomic) BOOL hasNameColorLight;
 @property (readonly, nonatomic) BOOL hasPersonalizationFeatureID;
 @property (readonly, nonatomic) BOOL hasPersonalizedPresenceConfig;
 @property (nonatomic) BOOL hasPersonalizedPresenceFeatureClickPrior;
@@ -107,22 +118,24 @@
 @property (nonatomic) BOOL hasPersonalizedPresenceFeatureImpressionPrior;
 @property (readonly, nonatomic) BOOL hasPersonalizedTodaySectionConfig;
 @property (nonatomic) BOOL hasPresenceDeterminedByPersonalization;
+@property (nonatomic) BOOL hasPromotionCriterion;
 @property (nonatomic) BOOL hasReadArticlesFilterMethod;
 @property (readonly, nonatomic) BOOL hasReferralBarName;
 @property (nonatomic) BOOL hasSectionType;
 @property (nonatomic) BOOL hasSeenArticlesFilterMethod;
 @property (nonatomic) BOOL hasSeenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property (nonatomic) BOOL hasShownInFavoritesOnlyMode;
-@property (nonatomic) BOOL hasUseNameColorInWidget;
+@property (readonly, nonatomic) BOOL hasTagTodaySectionConfig;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long interSectionFilteringOptions; // @synthesize interSectionFilteringOptions=_interSectionFilteringOptions;
 @property (nonatomic) unsigned long long intraSectionFilteringOptions; // @synthesize intraSectionFilteringOptions=_intraSectionFilteringOptions;
 @property (strong, nonatomic) NTPBItemsTodaySectionSpecificConfig *itemsTodaySectionConfig; // @synthesize itemsTodaySectionConfig=_itemsTodaySectionConfig;
-@property (nonatomic) int leadingCellPromotionPolicy; // @synthesize leadingCellPromotionPolicy=_leadingCellPromotionPolicy;
 @property (nonatomic) unsigned long long maximumStoriesAllocation; // @synthesize maximumStoriesAllocation=_maximumStoriesAllocation;
 @property (nonatomic) unsigned long long minimumStoriesAllocation; // @synthesize minimumStoriesAllocation=_minimumStoriesAllocation;
+@property (strong, nonatomic) NSString *mutingTagID; // @synthesize mutingTagID=_mutingTagID;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
+@property (strong, nonatomic) NSString *nameColorDark; // @synthesize nameColorDark=_nameColorDark;
+@property (strong, nonatomic) NSString *nameColorLight; // @synthesize nameColorLight=_nameColorLight;
 @property (strong, nonatomic) NSString *personalizationFeatureID; // @synthesize personalizationFeatureID=_personalizationFeatureID;
 @property (strong, nonatomic) NTPBPersonalizedSectionPresenceConfig *personalizedPresenceConfig; // @synthesize personalizedPresenceConfig=_personalizedPresenceConfig;
 @property (nonatomic) unsigned long long personalizedPresenceFeatureClickPrior; // @synthesize personalizedPresenceFeatureClickPrior=_personalizedPresenceFeatureClickPrior;
@@ -130,6 +143,7 @@
 @property (nonatomic) unsigned long long personalizedPresenceFeatureImpressionPrior; // @synthesize personalizedPresenceFeatureImpressionPrior=_personalizedPresenceFeatureImpressionPrior;
 @property (strong, nonatomic) NTPBPersonalizedTodaySectionSpecificConfig *personalizedTodaySectionConfig; // @synthesize personalizedTodaySectionConfig=_personalizedTodaySectionConfig;
 @property (nonatomic) BOOL presenceDeterminedByPersonalization; // @synthesize presenceDeterminedByPersonalization=_presenceDeterminedByPersonalization;
+@property (nonatomic) int promotionCriterion; // @synthesize promotionCriterion=_promotionCriterion;
 @property (readonly, nonatomic) unsigned long long *queueMemberships;
 @property (readonly, nonatomic) unsigned long long queueMembershipsCount;
 @property (nonatomic) int readArticlesFilterMethod; // @synthesize readArticlesFilterMethod=_readArticlesFilterMethod;
@@ -138,7 +152,7 @@
 @property (nonatomic) int seenArticlesFilterMethod; // @synthesize seenArticlesFilterMethod=_seenArticlesFilterMethod;
 @property (nonatomic) unsigned long long seenArticlesMinimumTimeSinceFirstSeenToFilter; // @synthesize seenArticlesMinimumTimeSinceFirstSeenToFilter=_seenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property (nonatomic) BOOL shownInFavoritesOnlyMode; // @synthesize shownInFavoritesOnlyMode=_shownInFavoritesOnlyMode;
-@property (nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
+@property (strong, nonatomic) NTPBTagTodaySectionSpecificConfig *tagTodaySectionConfig; // @synthesize tagTodaySectionConfig=_tagTodaySectionConfig;
 
 - (void)addQueueMembership:(unsigned long long)arg1;
 - (void)clearQueueMemberships;

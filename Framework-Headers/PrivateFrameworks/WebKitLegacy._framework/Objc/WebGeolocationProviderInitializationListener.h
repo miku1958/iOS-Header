@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithGeolocation:(struct Geolocation *)arg1;
+- (id)initWithGeolocation:(NakedRef_f8c98cc9)arg1;
 - (void)initializationAllowedWebView:(id)arg1;
 - (void)initializationDeniedWebView:(id)arg1;
 

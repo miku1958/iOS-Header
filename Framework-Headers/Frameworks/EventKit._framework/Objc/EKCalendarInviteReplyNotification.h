@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long allowedEntityTypes; // @synthesize allowedEntityTypes=_allowedEntityTypes;
 @property (nonatomic) unsigned long long status; // @synthesize status=_status;
 
+- (BOOL)acknowledgeWithEventStore:(id)arg1 error:(id *)arg2;
 - (id)initWithType:(long long)arg1;
 - (id)inviteReplyNotificationFromEventStore:(id)arg1;
 

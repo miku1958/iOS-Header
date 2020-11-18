@@ -47,7 +47,7 @@
 @property (nonatomic) unsigned long long projectionType; // @synthesize projectionType=_projectionType;
 @property (nonatomic) float roll; // @synthesize roll=_roll;
 @property (nonatomic) unsigned long long snap; // @dynamic snap;
-@property (readonly, nonatomic) NSArray *spheroids; // @synthesize spheroids=_spheroids;
+@property (readonly, copy, nonatomic) NSArray *spheroids; // @synthesize spheroids=_spheroids;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MISSING_TYPE *target; // @synthesize target=_target;
 @property (readonly, nonatomic) MISSING_TYPE *up; // @synthesize up=_up;

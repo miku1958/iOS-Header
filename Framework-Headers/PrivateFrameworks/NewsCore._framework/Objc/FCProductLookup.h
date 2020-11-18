@@ -6,29 +6,37 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsCore/FCProductLookup-Protocol.h>
 #import <NewsCore/SKProductsRequestDelegate-Protocol.h>
 
-@class NSString, SKProduct, SKProductsRequest;
+@class NSError, NSNumber, NSString, SKProduct, SKProductsRequest;
 @protocol OS_dispatch_group;
 
-@interface FCProductLookup : NSObject <SKProductsRequestDelegate, FCProductLookup>
+@interface FCProductLookup : NSObject <SKProductsRequestDelegate>
 {
+    NSString *_offerName;
+    NSNumber *_appAdamID;
+    NSNumber *_storeExternalVersionID;
     NSObject<OS_dispatch_group> *_productRequestGroup;
-    SKProduct *_product;
     SKProductsRequest *_request;
+    SKProduct *_product;
+    NSError *_productLookupError;
 }
 
+@property (readonly, nonatomic) NSNumber *appAdamID; // @synthesize appAdamID=_appAdamID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *offerName; // @synthesize offerName=_offerName;
 @property (strong, nonatomic) SKProduct *product; // @synthesize product=_product;
-@property (strong, nonatomic) NSObject<OS_dispatch_group> *productRequestGroup; // @synthesize productRequestGroup=_productRequestGroup;
-@property (strong, nonatomic) SKProductsRequest *request; // @synthesize request=_request;
+@property (strong, nonatomic) NSError *productLookupError; // @synthesize productLookupError=_productLookupError;
+@property (readonly, nonatomic) NSObject<OS_dispatch_group> *productRequestGroup; // @synthesize productRequestGroup=_productRequestGroup;
+@property (readonly, nonatomic) SKProductsRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) NSNumber *storeExternalVersionID; // @synthesize storeExternalVersionID=_storeExternalVersionID;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)productLookupWithOfferName:(id)arg1 appAdamID:(id)arg2 storeExternalVersionID:(id)arg3;
+- (id)initWithOfferName:(id)arg1 appAdamID:(id)arg2 storeExternalVersionID:(id)arg3;
+- (id)lookup;
 - (void)productsRequest:(id)arg1 didReceiveResponse:(id)arg2;
 - (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)requestDidFinish:(id)arg1;

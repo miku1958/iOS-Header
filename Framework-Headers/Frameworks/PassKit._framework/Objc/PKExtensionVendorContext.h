@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/PKExtensionBaseContext.h>
+#import <PassKitCore/PKExtensionBaseContext.h>
 
-#import <PassKit/PKExtensionVendorContextProtocol-Protocol.h>
+#import <PassKitCore/PKExtensionVendorContextProtocol-Protocol.h>
 
 @class NSString, PKEntitlementWhitelist;
 
@@ -22,12 +22,13 @@
 
 - (void).cxx_destruct;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
+- (void)authorizationDidAuthorizeContextCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
-- (void)authorizationDidRequestMerchantSessionCompleteWithSession:(id)arg1 error:(id)arg2;
+- (void)authorizationDidRequestMerchantSessionCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithStatus:(long long)arg1 shippingMethods:(id)arg2 paymentSummaryItems:(id)arg3;

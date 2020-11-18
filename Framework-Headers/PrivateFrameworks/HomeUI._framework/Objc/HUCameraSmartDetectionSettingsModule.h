@@ -39,8 +39,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_dispatchUpdateForCameraProfile:(id)arg1;
-- (id)_preferredConditionFromConditions:(id)arg1;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)didSelectItem:(id)arg1;
 - (id)enableSmartMotion:(BOOL)arg1 forItem:(id)arg2;
@@ -48,8 +46,8 @@
 - (id)initWithItemUpdater:(id)arg1 cameraProfiles:(id)arg2 conditionCollection:(id)arg3 settingsContext:(unsigned long long)arg4;
 - (BOOL)isItemHeader:(id)arg1;
 - (id)itemProviders;
-- (id)updateMotionDetectionSetting:(unsigned long long)arg1;
 - (id)updateMotionDetectionSettingForItem:(id)arg1;
+- (id)updateSignificantEventConfiguration:(id)arg1;
 
 @end
 

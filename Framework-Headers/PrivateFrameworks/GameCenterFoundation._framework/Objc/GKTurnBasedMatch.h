@@ -18,11 +18,11 @@
     NSArray *_exchanges;
 }
 
-@property (readonly, strong, nonatomic) NSArray *activeExchanges;
+@property (readonly, nonatomic) NSArray *activeExchanges;
 @property (strong, nonatomic) NSString *bundleID; // @dynamic bundleID;
 @property (strong, nonatomic) NSString *bundleVersion; // @dynamic bundleVersion;
-@property (readonly, strong, nonatomic) NSArray *completedExchanges;
-@property (readonly, strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property (readonly, nonatomic) NSArray *completedExchanges;
+@property (readonly, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) GKTurnBasedParticipant *currentParticipant;
 @property (readonly, nonatomic) GKPlayer *currentPlayer; // @dynamic currentPlayer;
 @property (readonly, nonatomic) NSDate *dateSortKey;
@@ -30,7 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long exchangeDataMaximumSize; // @dynamic exchangeDataMaximumSize;
 @property (readonly, nonatomic) unsigned long long exchangeMaxInitiatedExchangesPerPlayer; // @dynamic exchangeMaxInitiatedExchangesPerPlayer;
-@property (readonly, strong, nonatomic) NSArray *exchanges; // @synthesize exchanges=_exchanges;
+@property (readonly, nonatomic) NSArray *exchanges; // @synthesize exchanges=_exchanges;
 @property (readonly, nonatomic) GKTurnBasedParticipant *firstWinnerOrTiedOrLastLoser;
 @property (readonly, nonatomic) GKGame *game; // @dynamic game;
 @property (readonly) unsigned long long hash;
@@ -39,11 +39,11 @@
 @property (copy, nonatomic) NSDate *lastTurnDate; // @dynamic lastTurnDate;
 @property (readonly, nonatomic) BOOL localPlayerHasRecentTurn;
 @property (readonly, nonatomic) GKTurnBasedParticipant *localPlayerParticipant;
-@property (readonly, strong, nonatomic) NSData *matchData; // @dynamic matchData;
+@property (readonly, nonatomic) NSData *matchData; // @dynamic matchData;
 @property (nonatomic) unsigned long long matchDataMaximumSize; // @dynamic matchDataMaximumSize;
-@property (readonly, strong, nonatomic) NSString *matchID; // @dynamic matchID;
+@property (readonly, nonatomic) NSString *matchID; // @dynamic matchID;
 @property (copy, nonatomic) NSString *message;
-@property (readonly, strong, nonatomic) NSArray *participants; // @synthesize participants=_participants;
+@property (readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property (readonly, nonatomic) long long platform; // @dynamic platform;
 @property (readonly, nonatomic) GKTurnBasedParticipant *playingWithParticipantOrFirstKnownPlayer;
 @property (readonly, nonatomic) GKTurnBasedParticipant *previousParticipant;
@@ -69,14 +69,15 @@
 + (void)loadTurnBasedMatchSummariesIncludingCompatibleBundleID:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadTurnBasedMatchWithDetailsForMatchID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)matchesWithInternalRepresentations:(id)arg1;
+- (void).cxx_destruct;
 - (id)_exchangesForInternalRepresentation:(id)arg1 participants:(id)arg2;
 - (id)_participantsForInternalRepresentation:(id)arg1;
 - (void)_updateWithInternal:(id)arg1;
 - (void)acceptInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)compare:(id)arg1;
-- (void)dealloc;
 - (void)declineInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)endMatchInTurnWithMatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)endMatchInTurnWithMatchData:(id)arg1 leaderboardScores:(id)arg2 achievements:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)endMatchInTurnWithMatchData:(id)arg1 scores:(id)arg2 achievements:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)endTurnWithNextParticipant:(id)arg1 matchData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)endTurnWithNextParticipants:(id)arg1 turnTimeout:(double)arg2 matchData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

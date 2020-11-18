@@ -8,28 +8,44 @@
 
 #import <UIKitCore/_UIDiffableDataSourceDiffer-Protocol.h>
 
-@protocol UIDiffableDataSourceInfo;
+@class NSArray, NSHashTable, NSIndexSet, _UIIdentifierDiffer;
+@protocol _UIDiffableDataSourceState;
 
 __attribute__((visibility("hidden")))
 @interface _UIDiffableDataSourceDiffer : NSObject <_UIDiffableDataSourceDiffer>
 {
-    id<UIDiffableDataSourceInfo> _beforeDataSourceInfo;
-    id<UIDiffableDataSourceInfo> _afterDataSourceInfo;
+    id<_UIDiffableDataSourceState> _beforeDataSourceState;
+    id<_UIDiffableDataSourceState> _afterDataSourceState;
+    NSArray *_updates;
+    _UIIdentifierDiffer *_itemIdentifierDiffer;
+    _UIIdentifierDiffer *_sectionIdentifierDiffer;
+    NSIndexSet *_deletedSections;
+    NSIndexSet *_insertedSections;
+    NSHashTable *_affectedSectionIdentifiers;
 }
 
-@property (strong, nonatomic) id<UIDiffableDataSourceInfo> afterDataSourceInfo; // @synthesize afterDataSourceInfo=_afterDataSourceInfo;
-@property (strong, nonatomic) id<UIDiffableDataSourceInfo> beforeDataSourceInfo; // @synthesize beforeDataSourceInfo=_beforeDataSourceInfo;
+@property (strong, nonatomic) NSHashTable *affectedSectionIdentifiers; // @synthesize affectedSectionIdentifiers=_affectedSectionIdentifiers;
+@property (strong, nonatomic) id<_UIDiffableDataSourceState> afterDataSourceState; // @synthesize afterDataSourceState=_afterDataSourceState;
+@property (strong, nonatomic) id<_UIDiffableDataSourceState> beforeDataSourceState; // @synthesize beforeDataSourceState=_beforeDataSourceState;
+@property (strong, nonatomic) NSIndexSet *deletedSections; // @synthesize deletedSections=_deletedSections;
+@property (readonly, nonatomic) BOOL hasDifferences;
+@property (strong, nonatomic) NSIndexSet *insertedSections; // @synthesize insertedSections=_insertedSections;
+@property (strong, nonatomic) _UIIdentifierDiffer *itemIdentifierDiffer; // @synthesize itemIdentifierDiffer=_itemIdentifierDiffer;
+@property (strong, nonatomic) _UIIdentifierDiffer *sectionIdentifierDiffer; // @synthesize sectionIdentifierDiffer=_sectionIdentifierDiffer;
+@property (readonly, nonatomic) BOOL snapshotsAreRelated;
+@property (strong, nonatomic) NSArray *updates; // @synthesize updates=_updates;
 
-+ (id)differWithBeforeDataSourceInfo:(id)arg1 afterDataSourceInfo:(id)arg2;
++ (id)differWithBeforeDataSourceState:(id)arg1 afterDataSourceState:(id)arg2;
++ (id)differWithBeforeDataSourceState:(id)arg1 afterDataSourceState:(id)arg2 itemIdentifierDiffer:(id)arg3;
 - (void).cxx_destruct;
 - (id)_computeSectionBoundaryMovesForItemDiffer:(id)arg1;
+- (void)_computeUpdates;
 - (id)_computeUpdatesForIdentifierBasedDiff;
 - (id)_itemUpdatesForDiffResults:(id)arg1 sectionBoundaryMoves:(id)arg2 deletedSections:(id)arg3 insertedSections:(id)arg4;
 - (id)_sectionUpdatesForDiffResults:(id)arg1 deletedSections:(id)arg2 insertedSections:(id)arg3;
 - (BOOL)_verifyForUpdates:(id)arg1;
-- (id)computeUpdates;
 - (id)description;
-- (id)initWithBeforeDataSource:(id)arg1 afterDataSource:(id)arg2;
+- (id)initWithBeforeDataSource:(id)arg1 afterDataSource:(id)arg2 itemIdentifierDiffer:(id)arg3;
 
 @end
 

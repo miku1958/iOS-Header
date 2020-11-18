@@ -6,49 +6,51 @@
 
 #import <PhotoLibraryServices/PLJournalManagerCore.h>
 
-@class NSObject, NSPersistentHistoryToken, PLPhotoLibrary;
+@class NSObject, NSPersistentHistoryToken, PLChangeHandlingNotificationObserver, PLPhotoLibrary;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PLJournalManager : PLJournalManagerCore
 {
     PLPhotoLibrary *_photoLibrary;
     PLPhotoLibrary *_transientPhotoLibrary;
-    int _notifyToken;
+    PLChangeHandlingNotificationObserver *_changeHandlingNotificationObserver;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_group> *_startupWaitGroup;
     unsigned short _state;
     NSPersistentHistoryToken *_currentHistoryToken;
+    _Atomic BOOL _ignoreHistoryDuringSnapshot;
 }
 
-+ (BOOL)assetJournalExists:(id)arg1;
-+ (id)entriesByPayloadClassIDFromHistoryToken:(id)arg1 currentHistoryToken:(id *)arg2 withManagedObjectContext:(id)arg3 payloadIDsToSkipInserts:(id)arg4;
++ (BOOL)assetJournalExists:(id)arg1 error:(id *)arg2;
++ (id)entriesByPayloadClassIDFromHistoryToken:(id)arg1 currentHistoryToken:(id *)arg2 withManagedObjectContext:(id)arg3 payloadIDsToSkipInserts:(id)arg4 shouldStopBlock:(CDUnknownBlockType)arg5;
 + (BOOL)existingJournalsCompatibleForRebuild:(id)arg1 error:(id *)arg2;
++ (id)existingObjectWithID:(id)arg1 managedObjectContext:(id)arg2;
 + (Class)payloadClassForAdditionalEntityName:(id)arg1;
 + (id)payloadClasses;
 - (void).cxx_destruct;
 - (BOOL)_appendEntriesByPayloadClassID:(id)arg1 withCurrentHistoryToken:(id)arg2;
 - (id)_assetsToImportFromAssetJournalInManagedObjectContext:(id)arg1 outOnDiskURLs:(id)arg2;
 - (BOOL)_coalesceJournalsForPayloadClassIDs:(id)arg1 withChangeJournalOverThreshold:(float)arg2;
-- (BOOL)_createSnapshotsForceFull:(BOOL)arg1 error:(id *)arg2;
-- (void)_handleChangeHubNotification;
+- (void)_handleChangeHandlingNotificationWithTransaction:(id)arg1;
 - (void)_loadHistoryToken;
 - (BOOL)_needFullSnapshot;
 - (BOOL)_needPartialSnapshot:(id)arg1;
 - (BOOL)_needSnapshot;
+- (BOOL)_performSnapshotsForceFull:(BOOL)arg1 error:(id *)arg2;
 - (void)_recreateAssetsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2 progress:(id)arg3;
 - (void)_recreateNonAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
-- (unsigned int)_registerToChangeHubNotification;
+- (void)_registerForChangeHandlingNotifications;
 - (void)_removeLegacyPersistedMetadataIfNecessary;
 - (BOOL)_replayFromCurrentHistoryToken;
 - (BOOL)_replayFromCurrentHistoryTokenWithPayloadIDsToSkipInserts:(id)arg1;
 - (void)_start;
 - (void)_startAfterRebuild;
-- (id)_transientPhotoLibrary;
-- (void)_unregisterToChangeHubNotification;
+- (void)_unregisterForChangeHandlingNotifications;
 - (id)assetsToImportFromAssetJournalInManagedObjectContext:(id)arg1 outOnDiskURLs:(id)arg2;
 - (void)coalesceJournalsForPayloadClassIDs:(id)arg1 withChangeJournalOverThreshold:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)forceFullSnapshot:(id *)arg1;
 - (id)initWithPhotoLibrary:(id)arg1;
+- (id)newTransientContext;
 - (void)notifyDidImportFileSystemAssets;
 - (void)notifyWillImportFileSystemAssets;
 - (void)recreateAllObjectsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2;

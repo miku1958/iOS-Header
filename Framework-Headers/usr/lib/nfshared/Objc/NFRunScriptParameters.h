@@ -32,7 +32,7 @@
 @property (strong) NSArray *whitelistedAID; // @synthesize whitelistedAID=_whitelistedAID;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

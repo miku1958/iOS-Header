@@ -8,12 +8,13 @@
 
 @class NSArray, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDObjectAuthorizationRequest : NSObject
 {
+    CDUnknownBlockType _completion;
     NSUUID *_identifier;
     NSArray *_samples;
     NSArray *_authorizationRecords;
-    CDUnknownBlockType _completion;
 }
 
 @property (strong, nonatomic) NSArray *authorizationRecords; // @synthesize authorizationRecords=_authorizationRecords;

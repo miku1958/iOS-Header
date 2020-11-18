@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKThemeBrush.h>
+#import <GameCenterUICore/GKThemeBrush.h>
 
 @interface GKBadgedGameIconBrush : GKThemeBrush
 {

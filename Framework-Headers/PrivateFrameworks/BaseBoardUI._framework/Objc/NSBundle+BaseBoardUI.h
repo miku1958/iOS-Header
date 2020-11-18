@@ -7,6 +7,5 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (BaseBoardUI)
-+ (id)bs_baseBoardUIBundle;
 @end
 

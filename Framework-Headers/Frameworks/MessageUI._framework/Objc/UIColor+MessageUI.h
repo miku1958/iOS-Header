@@ -12,6 +12,7 @@
 + (id)mailComposeHeaderBackgroundColor;
 + (id)mailComposeSuggestionsListTintColor;
 + (id)mailGeneralBackgroundColor;
++ (id)mailInteractiveColor;
 + (id)mailMessageContentViewBackgroundColor;
 + (id)mailModernLabelledAddressAtomDefaultTextColor;
 + (id)mailModernLabelledAtomDefaultTextColor;

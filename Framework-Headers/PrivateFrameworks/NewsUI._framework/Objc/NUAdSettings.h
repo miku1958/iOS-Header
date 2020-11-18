@@ -14,20 +14,18 @@
 @interface NUAdSettings : NSObject <NUAdSettings>
 {
     BOOL _debugAdSlotsEnabled;
-    BOOL _debugInteractivityEnabled;
     id<SXAdvertisingSettings> _debugAdvertisementSettings;
 }
 
 @property (readonly, nonatomic) BOOL debugAdSlotsEnabled; // @synthesize debugAdSlotsEnabled=_debugAdSlotsEnabled;
 @property (readonly, nonatomic) id<SXAdvertisingSettings> debugAdvertisementSettings; // @synthesize debugAdvertisementSettings=_debugAdvertisementSettings;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) BOOL debugInteractivityEnabled; // @synthesize debugInteractivityEnabled=_debugInteractivityEnabled;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithDebugAdSlotsEnabled:(BOOL)arg1 debugInteractivityEnabled:(BOOL)arg2 debugAdvertisementSettings:(id)arg3;
+- (id)initWithDebugAdSlotsEnabled:(BOOL)arg1 debugAdvertisementSettings:(id)arg2;
 
 @end
 

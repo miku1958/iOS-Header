@@ -10,18 +10,19 @@
 #import <AuthKitUI/UITableViewDelegate-Protocol.h>
 
 @class AKAuthorizationPaneContext, NSLayoutConstraint, NSMutableArray, NSString, UIStackView, UITableView, UIVisualEffectView;
-@protocol AKAuthorizationEditableDataSources, AKAuthorizationPaneViewControllerDelegate><AKAuthorizationPaneAutomaticResizeDelegate;
+@protocol AKAuthorizationEditableDataSources, AKAuthorizationPaneDelegate;
 
 @interface AKAuthorizationPaneViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    UITableView *_tableView;
-    id<AKAuthorizationPaneViewControllerDelegate><AKAuthorizationPaneAutomaticResizeDelegate> _paneDelegate;
+    BOOL _isWristDetectionEnabled;
+    id<AKAuthorizationPaneDelegate> _paneDelegate;
     id<AKAuthorizationEditableDataSources> _editableDataSources;
     UIStackView *_paneHeaderStackView;
     UIStackView *_paneFooterStackView;
     AKAuthorizationPaneContext *_headerPaneContext;
     AKAuthorizationPaneContext *_footerPaneContext;
     NSMutableArray *_mutableConstraints;
+    UITableView *_tableView;
     NSLayoutConstraint *_headerWidthConstraint;
     NSLayoutConstraint *_footerWidthConstraint;
     UIVisualEffectView *_blurryTray;
@@ -36,8 +37,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) AKAuthorizationPaneContext *headerPaneContext; // @synthesize headerPaneContext=_headerPaneContext;
 @property (readonly, nonatomic) NSLayoutConstraint *headerWidthConstraint; // @synthesize headerWidthConstraint=_headerWidthConstraint;
+@property (readonly, nonatomic) BOOL isWristDetectionEnabled; // @synthesize isWristDetectionEnabled=_isWristDetectionEnabled;
 @property (strong, nonatomic) NSMutableArray *mutableConstraints; // @synthesize mutableConstraints=_mutableConstraints;
-@property (weak, nonatomic) id<AKAuthorizationPaneViewControllerDelegate><AKAuthorizationPaneAutomaticResizeDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
+@property (weak, nonatomic) id<AKAuthorizationPaneDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
 @property (readonly, nonatomic) UIStackView *paneFooterStackView; // @synthesize paneFooterStackView=_paneFooterStackView;
 @property (readonly, nonatomic) UIStackView *paneHeaderStackView; // @synthesize paneHeaderStackView=_paneHeaderStackView;
 @property (readonly) Class superclass;

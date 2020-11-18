@@ -6,18 +6,22 @@
 
 #import <ScreenReaderCore/SCRCArgumentSubcommand.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 
 @interface SCRCArgumentParser : SCRCArgumentSubcommand
 {
-    int _argc;
-    char **_argv;
-    NSMutableArray *_subcommandArray;
-    NSMutableArray *_argumentArray;
-    NSString *_appName;
-    SCRCArgumentSubcommand *_subcommand;
     BOOL _isLaunchedAtLogin;
+    NSString *_appName;
+    NSMutableArray *__subcommandArray;
+    SCRCArgumentSubcommand *__subcommand;
+    NSArray *__arguments;
 }
+
+@property (copy, nonatomic) NSArray *_arguments; // @synthesize _arguments=__arguments;
+@property (strong, nonatomic) SCRCArgumentSubcommand *_subcommand; // @synthesize _subcommand=__subcommand;
+@property (strong, nonatomic) NSMutableArray *_subcommandArray; // @synthesize _subcommandArray=__subcommandArray;
+@property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (nonatomic) BOOL isLaunchedAtLogin; // @synthesize isLaunchedAtLogin=_isLaunchedAtLogin;
 
 + (id)commandPath;
 + (id)processIdentifier;
@@ -26,15 +30,9 @@
 - (id)_displayHelp:(id)arg1;
 - (id)_displayVersion:(id)arg1;
 - (void)addSubcommand:(id)arg1;
-- (id)appName;
-- (int)argc;
-- (char **)argv;
-- (void)dealloc;
 - (id)initWithArgc:(int)arg1 argv:(const char **)arg2;
-- (BOOL)isLaunchedAtLogin;
 - (BOOL)parse;
 - (int)run;
-- (void)setAppName:(id)arg1;
 - (id)setRunningAtStartup:(id)arg1;
 - (void)stop;
 

@@ -16,12 +16,15 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) MLModel *model; // @synthesize model=_model;
 
-+ (id)urlOfModelInThisBundle;
++ (id)URLOfModelInThisBundle;
++ (void)loadContentsOfURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)loadWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
+- (id)initWithMLModel:(id)arg1;
 - (id)predictionFromAggregates:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;

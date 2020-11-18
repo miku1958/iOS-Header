@@ -9,6 +9,7 @@
 @class NSString;
 @protocol CNFRegChangeAccountPasswordDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegChangeAccountPasswordController : CNFRegAuthorizedAccountWebViewController
 {
     id<CNFRegChangeAccountPasswordDelegate> _delegate;

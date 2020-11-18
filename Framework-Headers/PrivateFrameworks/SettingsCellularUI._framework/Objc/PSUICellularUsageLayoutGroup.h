@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PSCellularManagementCache, PSDataUsageStatisticsCache, PSListController, PSUICallTimeGroup, PSUICarrierSpaceManager, PSUICellularUsageContentSpecifiers, PSUIResetStatisticsGroup, PSUITotalCellularUsageSubgroup;
-@protocol PSAppCellularUsageSpecifierDelegate, PSBillingPeriodSelectorSpecifierDelegate;
+#import <SettingsCellularUI/Loggable-Protocol.h>
+
+@class Logger, NSArray, NSString, PSCellularManagementCache, PSDataUsageStatisticsCache, PSListController, PSUICallTimeGroup, PSUICarrierSpaceManager, PSUICellularUsageContentSpecifiers, PSUIResetStatisticsGroup, PSUITotalCellularUsageSubgroup;
+@protocol PSAppCellularUsageSpecifierDelegate, PSBillingPeriodSelectorSpecifierDelegate, PSUIResetStatisticsGroupDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PSUICellularUsageLayoutGroup : NSObject
+@interface PSUICellularUsageLayoutGroup : NSObject <Loggable>
 {
+    Logger *_logger;
     PSCellularManagementCache *_managementCache;
     PSDataUsageStatisticsCache *_statisticsCache;
     PSUICarrierSpaceManager *_carrierSpaceManager;
     PSListController *_hostController;
     id<PSBillingPeriodSelectorSpecifierDelegate> _billingCycleDelegate;
     id<PSAppCellularUsageSpecifierDelegate> _policySpecifierDelegate;
+    id<PSUIResetStatisticsGroupDelegate> _resetStatisticsDelegate;
     NSString *_groupSpecifierTitle;
     NSArray *_savedHeaderSpecifiers;
     PSUICellularUsageContentSpecifiers *_savedContentSpecifiers;
@@ -29,20 +33,26 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<PSBillingPeriodSelectorSpecifierDelegate> billingCycleDelegate; // @synthesize billingCycleDelegate=_billingCycleDelegate;
 @property (strong, nonatomic) PSUICallTimeGroup *callTimeGroup; // @synthesize callTimeGroup=_callTimeGroup;
 @property (strong, nonatomic) PSUICarrierSpaceManager *carrierSpaceManager; // @synthesize carrierSpaceManager=_carrierSpaceManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *groupSpecifierTitle; // @synthesize groupSpecifierTitle=_groupSpecifierTitle;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) PSListController *hostController; // @synthesize hostController=_hostController;
 @property (strong, nonatomic) PSCellularManagementCache *managementCache; // @synthesize managementCache=_managementCache;
 @property (weak, nonatomic) id<PSAppCellularUsageSpecifierDelegate> policySpecifierDelegate; // @synthesize policySpecifierDelegate=_policySpecifierDelegate;
+@property (weak, nonatomic) id<PSUIResetStatisticsGroupDelegate> resetStatisticsDelegate; // @synthesize resetStatisticsDelegate=_resetStatisticsDelegate;
 @property (strong, nonatomic) PSUIResetStatisticsGroup *resetStatisticsGroup; // @synthesize resetStatisticsGroup=_resetStatisticsGroup;
 @property (strong) PSUICellularUsageContentSpecifiers *savedContentSpecifiers; // @synthesize savedContentSpecifiers=_savedContentSpecifiers;
 @property (strong) NSArray *savedHeaderSpecifiers; // @synthesize savedHeaderSpecifiers=_savedHeaderSpecifiers;
 @property (strong, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) PSUITotalCellularUsageSubgroup *totalUsageSubgroup; // @synthesize totalUsageSubgroup=_totalUsageSubgroup;
 
 - (void).cxx_destruct;
 - (id)contentSpecifiers;
+- (id)getLogger;
 - (id)headerSpecifiers;
-- (id)initWithGroupSpecifierTitle:(id)arg1 hostController:(id)arg2 managementCache:(id)arg3 statisticsCache:(id)arg4 carrierSpaceManager:(id)arg5 billingCycleDelegate:(id)arg6 policySpecifierDelegate:(id)arg7;
+- (id)initWithGroupSpecifierTitle:(id)arg1 hostController:(id)arg2 managementCache:(id)arg3 statisticsCache:(id)arg4 carrierSpaceManager:(id)arg5 billingCycleDelegate:(id)arg6 policySpecifierDelegate:(id)arg7 resetStatisticsDelegate:(id)arg8;
 - (void)refreshOrderingOfContentSpecifiers;
 
 @end

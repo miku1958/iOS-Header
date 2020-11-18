@@ -6,33 +6,72 @@
 
 #import <UIKit/UIView.h>
 
-@class CNContactPhotoView, NSArray, UIButton;
+#import <ContactsUI/UIDropInteractionDelegate-Protocol.h>
+#import <ContactsUI/UITextFieldDelegate-Protocol.h>
+
+@class CAShapeLayer, CNPhotoPickerHeaderViewTextField, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityAvatarViewController, NSArray, NSString, UIButton;
 @protocol CNPhotoPickerHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerHeaderView : UIView
+@interface CNPhotoPickerHeaderView : UIView <UITextFieldDelegate, UIDropInteractionDelegate>
 {
-    BOOL _allowsEditing;
-    CNContactPhotoView *_photoView;
     id<CNPhotoPickerHeaderViewDelegate> _delegate;
-    UIView *_headerDropShadowView;
+    CNPhotoPickerProviderItem *_placeholderProviderItem;
+    CNVisualIdentity *_visualIdentity;
     NSArray *_subviewsConstraints;
-    UIButton *_editButton;
+    CNVisualIdentityAvatarViewController *_avatarViewController;
+    UIButton *_clearAvatarImageButton;
+    UIView *_clearAvatarImageButtonBackground;
+    CAShapeLayer *_clearAvatarImageButtonClippingLayer;
+    CNPhotoPickerHeaderViewTextField *_identityNameTextField;
+    UIButton *_clearIdentityNameButton;
 }
 
-@property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
+@property (strong, nonatomic) CNVisualIdentityAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
+@property (strong, nonatomic) UIButton *clearAvatarImageButton; // @synthesize clearAvatarImageButton=_clearAvatarImageButton;
+@property (strong, nonatomic) UIView *clearAvatarImageButtonBackground; // @synthesize clearAvatarImageButtonBackground=_clearAvatarImageButtonBackground;
+@property (strong, nonatomic) CAShapeLayer *clearAvatarImageButtonClippingLayer; // @synthesize clearAvatarImageButtonClippingLayer=_clearAvatarImageButtonClippingLayer;
+@property (strong, nonatomic) UIButton *clearIdentityNameButton; // @synthesize clearIdentityNameButton=_clearIdentityNameButton;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNPhotoPickerHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UIButton *editButton; // @synthesize editButton=_editButton;
-@property (strong, nonatomic) UIView *headerDropShadowView; // @synthesize headerDropShadowView=_headerDropShadowView;
-@property (strong, nonatomic) CNContactPhotoView *photoView; // @synthesize photoView=_photoView;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CNPhotoPickerHeaderViewTextField *identityNameTextField; // @synthesize identityNameTextField=_identityNameTextField;
+@property (strong, nonatomic) CNPhotoPickerProviderItem *placeholderProviderItem; // @synthesize placeholderProviderItem=_placeholderProviderItem;
 @property (strong, nonatomic) NSArray *subviewsConstraints; // @synthesize subviewsConstraints=_subviewsConstraints;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 
 - (void).cxx_destruct;
 - (void)didMoveToWindow;
+- (void)didTapClearAvatarImageButton;
+- (void)didTapClearIdentityNameButton;
+- (void)didTapHeaderView;
+- (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
+- (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (id)initWithContact:(id)arg1;
-- (void)photoViewTapped;
+- (id)initWithVisualIdentity:(id)arg1;
+- (id)initWithVisualIdentity:(id)arg1 avatarViewController:(id)arg2;
+- (void)layoutSubviews;
+- (BOOL)resignFirstResponder;
+- (void)setClearAvatarImageButtonHidden:(BOOL)arg1;
+- (void)setupClearAvatarImageButton;
+- (void)setupDragAndDrop;
+- (void)setupHeaderViewWithPhotoView:(id)arg1;
+- (void)setupIdentityNameClearButtonIfNecessary;
+- (void)setupIdentityNameTextFieldAndClearButton;
+- (struct CGSize)sizeOfPrimaryAvatar;
+- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldDidEndEditing:(id)arg1;
+- (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)updateClearAvatarImageButtonFrame;
 - (void)updateConstraints;
-- (void)updatePhoto;
+- (void)updateIdentityNameTextFieldMaxWidth;
+- (void)updateIdentityNameTextFieldPlaceholderWithText:(id)arg1;
+- (void)updateIdentityNameTextFieldWithIdentity:(id)arg1;
+- (void)updateImageViewWithIdentity:(id)arg1;
+- (void)updatePhotoViewWithUpdatedIdentity:(id)arg1;
 
 @end
 

@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentWebServiceRequest.h>
+#import <PassKitCore/PKPaymentAugmentBaseRequest.h>
 
-@class PKPaymentPass;
+@class NSString;
 
-@interface PKPaymentNonceRequest : PKPaymentWebServiceRequest
+@interface PKPaymentNonceRequest : PKPaymentAugmentBaseRequest
 {
-    PKPaymentPass *_pass;
+    BOOL _useLegacyGetAPI;
+    NSString *_merchantIdentifier;
 }
 
-@property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
+@property (nonatomic) BOOL useLegacyGetAPI; // @synthesize useLegacyGetAPI=_useLegacyGetAPI;
 
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
-- (id)initWithPaymentPass:(id)arg1;
+- (id)_legacyGetURLRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
+- (id)bodyDictionary;
+- (id)endpointName;
 
 @end
 

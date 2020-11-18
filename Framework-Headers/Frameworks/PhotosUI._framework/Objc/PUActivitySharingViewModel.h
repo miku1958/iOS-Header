@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     id<PXDisplayAsset> _keyAsset;
-    unsigned long long _sourceOrigin;
+    long long _sourceOrigin;
     PUPhotoSelectionManager *_selectionManager;
 }
 
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (strong, nonatomic) PUPhotoSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
-@property (readonly, nonatomic) unsigned long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property (readonly, nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 
 - (void).cxx_destruct;
 - (id)init;

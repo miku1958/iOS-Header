@@ -21,11 +21,9 @@
     NSString *_incidentID;
     unsigned long long _timestamp;
     unsigned long long _appUptime;
-    ASDBetaAppVersion *_appVersion;
     NSString *_bundleID;
     NSString *_pairedWatchModel;
     NSString *_pairedWatchOSVersion;
-    NSString *_itemID;
     NSString *_architecture;
     NSString *_carrier;
     NSString *_cellularNetworkType;
@@ -36,6 +34,7 @@
     NSString *_networkConnectionType;
     NSString *_osVersion;
     NSString *_timeZone;
+    ASDBetaAppVersion *_appVersion;
 }
 
 @property unsigned long long appUptime; // @synthesize appUptime=_appUptime;
@@ -52,7 +51,6 @@
 @property (copy) NSString *email; // @synthesize email=_email;
 @property (copy) NSArray *imagesData; // @synthesize imagesData=_imagesData;
 @property (copy) NSString *incidentID; // @synthesize incidentID=_incidentID;
-@property (copy) NSString *itemID; // @synthesize itemID=_itemID;
 @property (copy) NSString *locale; // @synthesize locale=_locale;
 @property (copy) NSString *networkConnectionType; // @synthesize networkConnectionType=_networkConnectionType;
 @property (copy) NSString *osVersion; // @synthesize osVersion=_osVersion;

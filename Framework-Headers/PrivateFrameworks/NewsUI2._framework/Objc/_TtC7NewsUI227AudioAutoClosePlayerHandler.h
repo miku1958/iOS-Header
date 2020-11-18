@@ -8,13 +8,18 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227AudioAutoClosePlayerHandler : NSObject
 {
+    MISSING_TYPE *audioStatus;
     MISSING_TYPE *playbackState;
+    MISSING_TYPE *lazyPlayerViewController;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *carSessionStatus;
-    MISSING_TYPE *pausedAt;
+    MISSING_TYPE *idledAt;
+    MISSING_TYPE *autoCloseAt;
+    MISSING_TYPE *autoCloseTimer;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *logDateFormatter;
 }
 
 - (void).cxx_destruct;

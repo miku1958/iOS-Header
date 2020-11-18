@@ -6,26 +6,33 @@
 
 #import <TSDrawables/TSDGroupRep.h>
 
-@class NSCache;
+#import <TSDrawables/TSDPlayableRep-Protocol.h>
 
-@interface TSDFreehandDrawingRep : TSDGroupRep
+@class NSCache, NSString;
+
+@interface TSDFreehandDrawingRep : TSDGroupRep <TSDPlayableRep>
 {
     NSCache *_cachedClusteredShapeRepsForAnimationExport;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isPlayable) BOOL playable;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
-- (id)accessibilityLabel;
 - (struct CGRect)clipRect;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isAccessibilityElement;
 - (double)opacity;
+- (id)p_childrenToExcludeFromFlattenedDrawing;
 - (void)p_drawChildShapeReps:(id)arg1 togetherInContext:(struct CGContext *)arg2;
 - (id)p_freehandDrawingInfo;
 - (id)p_freehandDrawingLayout;
 - (id)p_shapeChildrenForDrawingRecursively;
 - (BOOL)p_shouldDrawShapeRep:(id)arg1 withOtherShapeRep:(id)arg2;
 - (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
-- (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (id)textureForDescription:(id)arg1;
 - (BOOL)tsaxAllowedToEditChildren;
 - (id)tsaxChildren;

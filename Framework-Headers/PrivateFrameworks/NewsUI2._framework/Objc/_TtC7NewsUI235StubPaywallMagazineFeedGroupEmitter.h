@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI235StubPaywallMagazineFeedGroupEmitter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *config;
+    MISSING_TYPE *feedPaywallConfigFactory;
 }
 
 @end

@@ -6,13 +6,10 @@
 
 #import <AppleMediaServicesUI/NSObject-Protocol.h>
 
-@class AMSUIWebModel;
+@class AMSUIWebAppearance;
 @protocol AMSUIWebPageProvider;
 
 @protocol AMSUIWebPagePresenter <NSObject>
-
-@property (readonly, nonatomic) AMSUIWebModel<AMSUIWebPageProvider> *model;
-
-- (void)applyPageModel:(AMSUIWebModel<AMSUIWebPageProvider> *)arg1;
+- (void)willPresentPageModel:(id<AMSUIWebPageProvider>)arg1 appearance:(AMSUIWebAppearance *)arg2;
 @end
 

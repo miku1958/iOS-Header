@@ -18,6 +18,7 @@
     BOOL _passcodeFieldDisabled;
     NSDictionary *_markedTextStyle;
     id<UITextInputDelegate> _inputDelegate;
+    CDUnknownBlockType _didEnterDigit;
     CDUnknownBlockType _didEnterCode;
     NSArray *_generatorFields;
     NSArray *_activeConstraints;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType didEnterCode; // @synthesize didEnterCode=_didEnterCode;
+@property (copy, nonatomic) CDUnknownBlockType didEnterDigit; // @synthesize didEnterDigit=_didEnterDigit;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
 @property (readonly, nonatomic) UILabel *firstGeneratorField;
@@ -58,6 +60,8 @@
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 
 + (id)generatorFieldFont;
++ (id)maximumContentSizeCategory;
++ (id)textStyle;
 - (void).cxx_destruct;
 - (void)_syncStringValueToLabels;
 - (void)_updateFonts:(id)arg1;

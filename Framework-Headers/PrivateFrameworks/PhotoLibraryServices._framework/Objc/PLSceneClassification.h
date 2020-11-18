@@ -14,12 +14,13 @@
 
 @property (strong, nonatomic) PLAdditionalAssetAttributes *assetAttributes; // @dynamic assetAttributes;
 @property (nonatomic) double confidence; // @dynamic confidence;
+@property (nonatomic) long long packedBoundingBoxRect; // @dynamic packedBoundingBoxRect;
 @property (nonatomic) unsigned int sceneIdentifier; // @dynamic sceneIdentifier;
 
 + (id)PLJunkSceneClassificationIDForLabel:(id)arg1;
 + (void)batchFetchScenesByAssetObjectIDWithAssetObjectIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)entityName;
-+ (id)insertIntoPhotoLibrary:(id)arg1 asset:(id)arg2 sceneIdentifier:(int)arg3 confidence:(double)arg4;
++ (id)insertIntoPhotoLibrary:(id)arg1 asset:(id)arg2 sceneIdentifier:(int)arg3 confidence:(double)arg4 packedBoundingBoxRect:(long long)arg5;
 - (id)debugLogDescription;
 
 @end

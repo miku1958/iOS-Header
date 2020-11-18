@@ -38,6 +38,8 @@
 @property (nonatomic) BOOL disableStudyLogPowerButtonLogging; // @dynamic disableStudyLogPowerButtonLogging;
 @property (nonatomic) BOOL disableStudyLogVolumeKeyLogging; // @dynamic disableStudyLogVolumeKeyLogging;
 @property (nonatomic, getter=isDitheringEnabled) BOOL ditheringEnabled; // @dynamic ditheringEnabled;
+@property (nonatomic) BOOL fenceArbiterDisabled; // @dynamic fenceArbiterDisabled;
+@property (nonatomic) BOOL fenceArbiterSkipPreFenceSynchronize; // @dynamic fenceArbiterSkipPreFenceSynchronize;
 @property (nonatomic) float fenceArbiterTimeoutInterval; // @dynamic fenceArbiterTimeoutInterval;
 @property (nonatomic) BOOL forceCloneMirroring; // @dynamic forceCloneMirroring;
 @property (weak, nonatomic) NSString *forceMirroredOrientation; // @dynamic forceMirroredOrientation;

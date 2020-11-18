@@ -6,28 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
-#import <Foundation/_NSExtensionContextVending-Protocol.h>
-
-@class NSMutableDictionary, NSString;
-
-@interface _NSExtensionContextVendor : NSObject <NSXPCListenerDelegate, _NSExtensionContextVending>
+@interface _NSExtensionContextVendor : NSObject
 {
-    NSMutableDictionary *__extensionServiceConnections;
-    NSMutableDictionary *__extensionContexts;
-    NSMutableDictionary *__extensionPrincipalObjects;
 }
 
-@property (strong, nonatomic, setter=_setExtensionContexts:) NSMutableDictionary *_extensionContexts; // @synthesize _extensionContexts=__extensionContexts;
-@property (strong, nonatomic, setter=_setExtensionPrincipalObjects:) NSMutableDictionary *_extensionPrincipalObjects; // @synthesize _extensionPrincipalObjects=__extensionPrincipalObjects;
-@property (strong, nonatomic, setter=_setExtensionServiceConnections:) NSMutableDictionary *_extensionServiceConnections; // @synthesize _extensionServiceConnections=__extensionServiceConnections;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (id)_completionConcurrentQueue;
-+ (id)_expirationConcurrentQueue;
 + (Class)_extensionContextClass;
 + (id)_extensionDictionary;
 + (id)_extensionMainStoryboard;
@@ -35,18 +17,12 @@
 + (id)_sharedExtensionContextVendor;
 + (void)_startListening;
 + (void)_startListening:(BOOL)arg1;
-- (void)_beginRequestWithExtensionItems:(id)arg1 listenerEndpoint:(id)arg2 withContextUUID:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)_extensionContextForUUID:(id)arg1;
-- (void)_hostDidBecomeActiveForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_hostDidEnterBackgroundForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_hostWillEnterForegroundForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_hostWillResignActiveForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_onGlobalStateQueueOnly_setPrincipalObject:(id)arg1 forUUID:(id)arg2;
+- (id)_init;
 - (void)_setPrincipalObject:(id)arg1 forUUID:(id)arg2;
-- (BOOL)_shouldCreatePrincipalObject;
 - (void)_tearDownContextWithUUID:(id)arg1;
-- (void)dealloc;
-- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (id)init;
 
 @end
 

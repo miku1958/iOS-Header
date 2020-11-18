@@ -22,6 +22,7 @@
 - (void)p_debugGenerateLayoutCacheWithPreset:(id)arg1 target:(int)arg2 imageSize:(struct CGSize)arg3 imageScale:(double)arg4 swatchFrame:(struct CGRect)arg5;
 - (id)p_imageRectAdjustments;
 - (id)p_rectAdjustmentForChartType:(id)arg1;
+- (BOOL)p_shouldLayoutInwardForInsertionIcons;
 - (struct CGRect)p_updateSwatchFrameForInwardLayoutIfNeeded:(struct CGRect)arg1 outImageSize:(struct CGSize *)arg2 outImageScale:(double *)arg3 outSwatchOffset:(struct CGPoint *)arg4 outCanvasScale:(double *)arg5;
 - (struct CGRect)p_updateSwatchFrameForRectAdjustmentIfNeeded:(struct CGRect)arg1 rectAdjustment:(id)arg2 outSwatchOffset:(struct CGPoint *)arg3;
 - (struct UIEdgeInsets)swatchImageEdgeInsetsForSize:(struct CGSize)arg1;

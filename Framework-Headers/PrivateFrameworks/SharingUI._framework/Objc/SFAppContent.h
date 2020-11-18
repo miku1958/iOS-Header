@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSBag, AMSMediaTask, LSApplicationProxy, NSArray, NSDictionary, NSError, NSMutableArray, NSString, NSURL, SFLaunchRequest;
+@class AMSBag, LSApplicationProxy, NSArray, NSDictionary, NSError, NSMutableArray, NSString, NSURL, SFLaunchRequest;
 @protocol OS_dispatch_queue;
 
 @interface SFAppContent : NSObject
@@ -19,7 +19,6 @@
     NSString *_amsLaunchURL;
     NSError *_amsResultsError;
     int _amsResultsState;
-    AMSMediaTask *_amsTask;
     NSMutableArray *_infoFetchRequests;
     SFLaunchRequest *_launchRequest;
     NSArray *_adamIDs;

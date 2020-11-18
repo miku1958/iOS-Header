@@ -10,7 +10,7 @@
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @protocol BSServiceDispatchingQueue <NSObject>
-- (void)assertOnQueue;
+- (void)assertBarrierOnQueue;
 - (NSObject<OS_dispatch_queue> *)backingQueueIfExists;
 - (void)performAsync:(void (^)(void))arg1;
 - (void)performAsync:(void (^)(void))arg1 withHandoff:(NSObject<OS_xpc_object> *)arg2;

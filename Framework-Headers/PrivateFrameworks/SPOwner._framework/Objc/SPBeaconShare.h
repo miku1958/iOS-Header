@@ -17,6 +17,8 @@
     NSUUID *_identifier;
     SPHandle *_handle;
     NSDate *_expiration;
+    NSDate *_shareDate;
+    unsigned long long _sharePrimaryIndex;
     NSString *_correlationIdentifier;
 }
 
@@ -25,6 +27,8 @@
 @property (copy, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (copy, nonatomic) SPHandle *handle; // @synthesize handle=_handle;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDate *shareDate; // @synthesize shareDate=_shareDate;
+@property (readonly, nonatomic) unsigned long long sharePrimaryIndex; // @synthesize sharePrimaryIndex=_sharePrimaryIndex;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -33,7 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 handle:(id)arg2 accepted:(BOOL)arg3 expiration:(id)arg4 correlationIdentifier:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 handle:(id)arg2 accepted:(BOOL)arg3 expiration:(id)arg4 correlationIdentifier:(id)arg5 shareDate:(id)arg6 sharePrimaryIndex:(unsigned long long)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

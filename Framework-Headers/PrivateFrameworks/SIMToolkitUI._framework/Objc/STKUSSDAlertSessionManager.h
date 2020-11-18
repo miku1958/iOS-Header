@@ -16,7 +16,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     struct __CTServerConnection *_serverConnection;
-    CoreTelephonyClient *_coreTelephonyClient;
+    CoreTelephonyClient *_telephonyClient;
     NSMutableArray *_activeUSSDSessions;
     NSMutableArray *_finishedUSSDSessions;
     STKUSSDAlertSession *_coalescingUSSDSession;

@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFCardSectionValue-Protocol.h>
 
-@class NSData, NSDictionary, NSString, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection;
+@class NSData, NSDictionary, NSString, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection, SFWorldMapCardSection;
 
 @interface SFCardSectionValue : NSObject <SFCardSectionValue, NSSecureCoding, NSCopying>
 {
@@ -52,10 +52,13 @@
     SFMediaRemoteControlCardSection *_mediaRemoteControlCardSection;
     SFMapPlaceCardSection *_mapPlaceCardSection;
     SFCompactRowCardSection *_compactRowCardSection;
+    SFWorldMapCardSection *_worldMapCardSection;
+    SFAttributionFooterCardSection *_attributionFooterCardSection;
 }
 
 @property (strong, nonatomic) SFActivityIndicatorCardSection *activityIndicatorCardSection; // @synthesize activityIndicatorCardSection=_activityIndicatorCardSection;
 @property (strong, nonatomic) SFAppLinkCardSection *appLinkCardSection; // @synthesize appLinkCardSection=_appLinkCardSection;
+@property (strong, nonatomic) SFAttributionFooterCardSection *attributionFooterCardSection; // @synthesize attributionFooterCardSection=_attributionFooterCardSection;
 @property (strong, nonatomic) SFAudioPlaybackCardSection *audioPlaybackCardSection; // @synthesize audioPlaybackCardSection=_audioPlaybackCardSection;
 @property (strong, nonatomic) SFButtonCardSection *buttonCardSection; // @synthesize buttonCardSection=_buttonCardSection;
 @property (strong, nonatomic) SFCompactRowCardSection *compactRowCardSection; // @synthesize compactRowCardSection=_compactRowCardSection;
@@ -98,6 +101,7 @@
 @property (strong, nonatomic) SFVerticalLayoutCardSection *verticalLayoutCardSection; // @synthesize verticalLayoutCardSection=_verticalLayoutCardSection;
 @property (strong, nonatomic) SFWatchListCardSection *watchListCardSection; // @synthesize watchListCardSection=_watchListCardSection;
 @property (strong, nonatomic) SFWebCardSection *webCardSection; // @synthesize webCardSection=_webCardSection;
+@property (strong, nonatomic) SFWorldMapCardSection *worldMapCardSection; // @synthesize worldMapCardSection=_worldMapCardSection;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

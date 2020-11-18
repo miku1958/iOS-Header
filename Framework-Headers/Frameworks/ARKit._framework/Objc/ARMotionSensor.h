@@ -24,13 +24,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)initWithMotionManager:(id)arg1;
-- (double)preferredInterval;
-- (unsigned long long)providedDataTypes;
-- (void)setInterval:(double)arg1;
-- (void)start;
-- (void)stop;
 
 @end
 

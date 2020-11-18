@@ -13,9 +13,17 @@
     SISchemaLocation *_location;
     NSString *_countryCode;
     double _timeIntervalSince1970;
+    struct {
+        unsigned int timeIntervalSince1970:1;
+    } _has;
+    BOOL _hasLocation;
+    BOOL _hasCountryCode;
 }
 
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (nonatomic) BOOL hasCountryCode; // @synthesize hasCountryCode=_hasCountryCode;
+@property (nonatomic) BOOL hasLocation; // @synthesize hasLocation=_hasLocation;
+@property (nonatomic) BOOL hasTimeIntervalSince1970;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaLocation *location; // @synthesize location=_location;
 @property (nonatomic) double timeIntervalSince1970; // @synthesize timeIntervalSince1970=_timeIntervalSince1970;

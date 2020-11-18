@@ -14,16 +14,16 @@
 @interface CKDiscretionaryOptions : NSObject <NSSecureCoding, NSCoding>
 {
     BOOL _allowsExpensiveAccess;
-    NSString *_sourceApplicationBundleId;
+    NSString *_applicationBundleIdentifierOverride;
     NSString *_secondarySourceAppplicationBundleId;
     double _timeoutIntervalForResource;
     unsigned long long _discretionaryNetworkBehavior;
 }
 
 @property (nonatomic) BOOL allowsExpensiveAccess; // @synthesize allowsExpensiveAccess=_allowsExpensiveAccess;
+@property (strong, nonatomic) NSString *applicationBundleIdentifierOverride; // @synthesize applicationBundleIdentifierOverride=_applicationBundleIdentifierOverride;
 @property (nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
 @property (strong, nonatomic) NSString *secondarySourceAppplicationBundleId; // @synthesize secondarySourceAppplicationBundleId=_secondarySourceAppplicationBundleId;
-@property (strong, nonatomic) NSString *sourceApplicationBundleId; // @synthesize sourceApplicationBundleId=_sourceApplicationBundleId;
 @property (nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 
 + (BOOL)supportsSecureCoding;

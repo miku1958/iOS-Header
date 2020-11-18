@@ -15,11 +15,9 @@
 @interface _INPBDeleteTasksIntentResponse : PBCodable <_INPBDeleteTasksIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_deletedTasks;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSArray *deletedTasks; // @synthesize deletedTasks=_deletedTasks;
 @property (readonly, nonatomic) unsigned long long deletedTasksCount;

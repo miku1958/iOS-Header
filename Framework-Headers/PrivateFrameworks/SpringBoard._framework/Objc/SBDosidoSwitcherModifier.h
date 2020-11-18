@@ -12,23 +12,26 @@
 {
     SBAppLayout *_fromAppLayout;
     SBAppLayout *_toAppLayout;
+    unsigned long long _direction;
 }
 
 - (void).cxx_destruct;
-- (long long)backdropBlurType;
+- (id)_layoutSettings;
+- (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
+- (long long)homeScreenBackdropBlurType;
+- (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 direction:(unsigned long long)arg4;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
 - (id)transitionWillUpdate;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

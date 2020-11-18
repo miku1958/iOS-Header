@@ -21,13 +21,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)address;
 - (id)commentedAddress;
 - (id)compositeName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)displayString;
-- (int)identifier;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithHandle:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isRemovableFromSearchResults;

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)create;
 - (void)dealloc;
 - (BOOL)do_ping:(id)arg1;
+- (id)get_async_proxy:(CDUnknownBlockType)arg1;
 - (id)get_proxy:(CDUnknownBlockType)arg1;
 - (void)handle_server_death;
 - (void)handle_server_resurrection;

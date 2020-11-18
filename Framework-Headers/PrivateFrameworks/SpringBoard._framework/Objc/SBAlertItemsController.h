@@ -27,6 +27,7 @@
     BOOL _isProcessingQueue;
     BOOL _delayProcessingQueue;
     BOOL _suppressAlertsForKeynote;
+    id<BSInvalidatable> _stateCaptureBlock;
     id<BSInvalidatable> _systemModalAlertVisibleAssertion;
     SBModalAlertPresenter *_systemModalAlertPresenter;
     id<SBAlertItemPresenter><SBLockScreenActionProvider> _lockScreenModalAlertItemPresenter;

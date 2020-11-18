@@ -18,7 +18,7 @@
 + (void)cleanUpOrphanAttachments;
 + (void)deleteDirectoryAtPath:(id)arg1;
 + (void)deleteMessagesAndAttachmentsAfterDays:(long long)arg1;
-+ (void)deleteSpolightArchivedFilesAfterDays:(long long)arg1;
++ (void)deleteSpolightArchivedFiles;
 + (BOOL)isDirCreationDateAtPath:(id)arg1 olderThanDays:(long long)arg2;
 + (BOOL)isFileAtDirPath:(id)arg1 olderThanDays:(long long)arg2;
 + (BOOL)isFileHeaderDateAtPath:(id)arg1 olderThanDays:(long long)arg2;

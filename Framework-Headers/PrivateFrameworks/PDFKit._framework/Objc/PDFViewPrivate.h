@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSMutableArray, PDFAKOverlayAdaptor, PDFAnnotation, PDFCoachMarkManager, PDFDocument, PDFDocumentViewController, PDFPage, PDFPasswordViewController, PDFRenderingProperties, PDFScrollView, PDFSelection, PDFTimer, PDFViewController, PDFViewLayout, UIDragInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
-@protocol PDFViewDelegate;
+@protocol OS_dispatch_queue, PDFViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PDFViewPrivate : NSObject
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     BOOL inhibitAutoScroll;
     PDFPage *fromPage;
     PDFTimer *pageSyncTimer;
+    NSObject<OS_dispatch_queue> *pagePreloadQueue;
     NSMutableArray *destinationHistory;
     long long historyIndex;
     NSArray *highlights;

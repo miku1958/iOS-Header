@@ -11,20 +11,29 @@
 }
 
 + (id)decrypt:(id)arg1;
++ (id)decrypt:(id)arg1 allowAllKeys:(BOOL)arg2 keyVersion:(id *)arg3;
 + (id)decrypt:(id)arg1 keyVersion:(id *)arg2;
++ (id)decryptAll:(id)arg1;
++ (BOOL)decryptAllFrom:(id)arg1 to:(id)arg2;
 + (id)decryptFrom:(id)arg1 name:(id)arg2 base:(id)arg3;
-+ (BOOL)decryptFrom:(id)arg1 to:(id)arg2 keyVersion:(id *)arg3;
++ (BOOL)decryptFrom:(id)arg1 to:(id)arg2 allowAllKeys:(BOOL)arg3 keyVersion:(id *)arg4;
 + (BOOL)decryptFrom:(id)arg1 to:(id)arg2 version:(id)arg3;
-+ (id)encrypt:(id)arg1 keyId:(unsigned long long)arg2 multipart:(BOOL)arg3;
-+ (id)encryptFrom:(id)arg1 name:(id)arg2 base:(id)arg3 keyId:(unsigned long long)arg4 multipart:(BOOL)arg5;
-+ (BOOL)encryptFrom:(id)arg1 to:(id)arg2 keyId:(unsigned long long)arg3 encrytpedPb:(struct Encrypted *)arg4;
-+ (BOOL)encryptFrom:(id)arg1 to:(id)arg2 keyId:(unsigned long long)arg3 multipart:(BOOL)arg4;
-+ (id)encryptedVersionAndSize:(id)arg1 keyId:(unsigned long long)arg2 multipart:(BOOL)arg3 size:(unsigned long long *)arg4;
++ (BOOL)decryptFrom:(id)arg1 to:(id)arg2 version:(id)arg3 allowAllKeys:(BOOL)arg4;
++ (id)encrypt:(id)arg1 keyId:(unsigned long long)arg2 privateKey:(id)arg3 multipart:(BOOL)arg4;
++ (id)encryptFrom:(id)arg1 name:(id)arg2 base:(id)arg3 keyId:(unsigned long long)arg4 privateKey:(id)arg5 multipart:(BOOL)arg6;
++ (BOOL)encryptFrom:(id)arg1 to:(id)arg2 keyId:(unsigned long long)arg3 privateKey:(id)arg4 encryptedPb:(struct Encrypted *)arg5;
++ (BOOL)encryptFrom:(id)arg1 to:(id)arg2 keyId:(unsigned long long)arg3 privateKey:(id)arg4 multipart:(BOOL)arg5;
 + (id)getKey:(unsigned long long)arg1;
 + (id)getKeyWithVersion:(id)arg1;
++ (id)getKeyWithVersion:(id)arg1 symmetric:(BOOL *)arg2;
++ (id)getSymmetricKey:(id)arg1 publicKey:(id)arg2 symmetricKeyIV:(id *)arg3 signature:(id *)arg4;
++ (id)getSymmetricKey:(id)arg1 symmetricKeyIV:(id)arg2 signature:(id)arg3;
++ (id)getSymmetricSrc:(id)arg1 publicKey:(id)arg2;
++ (BOOL)isPrivateKey:(id)arg1 publicKey:(id)arg2;
++ (BOOL)isSymmetric:(unsigned long long)arg1;
 + (id)toEnvelope:(BOOL)arg1 iv:(id)arg2 hmac:(id)arg3 keyVersion:(id)arg4 payload:(id)arg5;
 + (id)versionFile:(id)arg1;
-+ (BOOL)wrapFrom:(id)arg1 to:(id)arg2 encrytpedPb:(struct Encrypted *)arg3 multipart:(BOOL)arg4;
++ (BOOL)wrapFrom:(id)arg1 to:(id)arg2 encryptedPb:(struct Encrypted *)arg3 multipart:(BOOL)arg4;
 
 @end
 

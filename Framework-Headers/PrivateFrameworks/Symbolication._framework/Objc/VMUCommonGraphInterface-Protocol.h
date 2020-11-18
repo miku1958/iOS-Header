@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSString *binaryImagesDescription;
 @property (readonly, nonatomic) NSString *executablePath;
 @property (readonly, nonatomic) BOOL is64bit;
+@property (readonly, nonatomic) unsigned int kernelPageSize;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (readonly, nonatomic) unsigned long long physicalFootprint;

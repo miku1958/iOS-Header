@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL isCrossDocumentPaste;
 @property (readonly, nonatomic) BOOL isReadingFromDocument;
 @property (readonly, nonatomic) unsigned char packageIdentifier;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 
 - (TSPCancellationState *)cancellationStateForReader:(TSPReader *)arg1;

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_autoEnhanceAdjustmentInfo;
 - (id)_colorAdjustmentInfos;
 - (void)_createAdjustmentInfos;
+- (id)_debugAdjustmentInfos;
 - (id)_detailAdjustmentInfos;
 - (void)_enableNonAutoAjustments:(BOOL)arg1;
 - (id)_lightAdjustmentInfos;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)_newAdjustmentInfoWithIdentifier:(id)arg1 adjustmentKey:(id)arg2 settingKey:(id)arg3 attributeKey:(id)arg4;
 - (void)_resetEnabledStateForAutoEnhancedInfos;
 - (void)_setDefaultsForInfo:(id)arg1;
+- (id)_smartBlackAndWhiteAdjustmentInfos;
 - (void)_updateAdjustmentInfos;
 - (id)_vignetteAdjustmentInfos;
 - (BOOL)canModifyAdjustmentAtIndexPath:(id)arg1;

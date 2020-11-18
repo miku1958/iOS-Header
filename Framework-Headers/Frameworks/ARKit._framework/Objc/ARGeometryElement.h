@@ -15,21 +15,20 @@
     id<MTLBuffer> _buffer;
     long long _count;
     long long _bytesPerIndex;
+    long long _indexCountPerPrimitive;
     long long _primitiveType;
 }
 
-@property (strong, nonatomic) id<MTLBuffer> buffer; // @synthesize buffer=_buffer;
-@property (nonatomic) long long bytesPerIndex; // @synthesize bytesPerIndex=_bytesPerIndex;
-@property (nonatomic) long long count; // @synthesize count=_count;
-@property (readonly, nonatomic) long long indexCountPerPrimitive;
-@property (nonatomic) long long primitiveType; // @synthesize primitiveType=_primitiveType;
+@property (readonly, nonatomic) id<MTLBuffer> buffer; // @synthesize buffer=_buffer;
+@property (readonly, nonatomic) long long bytesPerIndex; // @synthesize bytesPerIndex=_bytesPerIndex;
+@property (readonly, nonatomic) long long count; // @synthesize count=_count;
+@property (readonly, nonatomic) long long indexCountPerPrimitive; // @synthesize indexCountPerPrimitive=_indexCountPerPrimitive;
+@property (readonly, nonatomic) long long primitiveType; // @synthesize primitiveType=_primitiveType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBuffer:(id)arg1 count:(long long)arg2 bytesPerIndex:(long long)arg3 primitiveType:(long long)arg4;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

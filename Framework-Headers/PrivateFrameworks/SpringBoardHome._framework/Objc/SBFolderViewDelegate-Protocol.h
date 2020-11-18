@@ -6,14 +6,17 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSString, SBFolderView, SBIconListView, SBIconView, UIColor, UIDragItem, UIDropProposal, UIPinchGestureRecognizer, UITargetedDragPreview;
-@protocol UIDragAnimating, UIDropSession;
+@class NSString, SBFolderView, SBIconListView, SBIconView, UIColor, UIDragItem, UIDropProposal, UIPinchGestureRecognizer, UITargetedDragPreview, UITextField;
+@protocol UIDragAnimating, UIDropSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol SBFolderViewDelegate <NSObject>
 - (BOOL)folderView:(SBFolderView *)arg1 canChangeCurrentPageIndexToIndex:(long long)arg2;
 - (void)folderView:(SBFolderView *)arg1 currentPageIndexDidChange:(long long)arg2;
 - (void)folderView:(SBFolderView *)arg1 currentPageIndexWillChange:(long long)arg2;
+- (void)folderView:(SBFolderView *)arg1 didAddIconListView:(SBIconListView *)arg2;
+- (void)folderView:(SBFolderView *)arg1 didRemoveIconListView:(SBIconListView *)arg2;
 - (BOOL)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 canHandleIconDropSession:(id<UIDropSession>)arg3;
+- (id<UIViewSpringAnimationBehaviorDescribing>)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 customSpringAnimationBehaviorForDroppingItem:(UIDragItem *)arg3;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDragItem:(UIDragItem *)arg3 willAnimateDropWithAnimator:(id<UIDragAnimating>)arg4;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDropSession:(id<UIDropSession>)arg3 didPauseAtLocation:(struct CGPoint)arg4;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDropSessionDidEnter:(id<UIDropSession>)arg3;
@@ -23,6 +26,7 @@
 - (UITargetedDragPreview *)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 previewForDroppingIconDragItem:(UIDragItem *)arg3 proposedPreview:(UITargetedDragPreview *)arg4;
 - (BOOL)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id<UIDropSession>)arg3 onIconView:(SBIconView *)arg4;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(SBIconView *)arg3;
+- (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 willUseIconView:(SBIconView *)arg3 forDroppingIconDragItem:(UIDragItem *)arg4;
 - (void)folderView:(SBFolderView *)arg1 willAnimateScrollToPageIndex:(long long)arg2;
 - (void)folderViewDidChangeOrientation:(SBFolderView *)arg1;
 - (void)folderViewDidEndScrolling:(SBFolderView *)arg1;
@@ -40,6 +44,8 @@
 @optional
 - (struct UIEdgeInsets)contentOverlayInsetsFromParentIfAvailableForFolderView:(SBFolderView *)arg1;
 - (UIColor *)folderView:(SBFolderView *)arg1 accessibilityTintColorForRect:(struct CGRect)arg2;
+- (void)folderView:(SBFolderView *)arg1 didBeginEditingTitle:(UITextField *)arg2;
+- (void)folderView:(SBFolderView *)arg1 didEndEditingTitle:(UITextField *)arg2;
 - (double)minimumHomeScreenScaleForFolderView:(SBFolderView *)arg1;
 @end
 

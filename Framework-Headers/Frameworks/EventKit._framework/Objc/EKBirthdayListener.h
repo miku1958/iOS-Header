@@ -18,6 +18,7 @@
     BOOL _needsReset;
 }
 
++ (BOOL)areBirthdaysEnabled;
 + (id)eventStoreProvider;
 + (id)sharedListener;
 - (void).cxx_destruct;
@@ -25,7 +26,6 @@
 - (void)_localeChanged;
 - (void)addBirthdayCalendars;
 - (id)allContactsWithBirthdays;
-- (BOOL)areBirthdaysEnabled;
 - (id)birthdayCalendarsCreateIfNeeded:(BOOL)arg1 inStore:(id)arg2 originalIdentifier:(id)arg3 originalAlarms:(id)arg4 ignoreAlarms:(BOOL)arg5;
 - (id)birthdayCalendarsInStore:(id)arg1;
 - (void)checkForFailures;

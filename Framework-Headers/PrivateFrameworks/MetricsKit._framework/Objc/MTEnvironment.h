@@ -33,6 +33,7 @@
 - (id)hardwareModel;
 - (id)hostApp;
 - (id)hostAppVersion;
+- (BOOL)isAnonymous;
 - (id)os;
 - (id)osBuildNumber;
 - (id)osLanguages;

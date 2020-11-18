@@ -11,7 +11,7 @@
 #import <MapKit/MKQuickRouteManagerDelegate-Protocol.h>
 #import <MapKit/MKQuickRouteTransportTypeFinding-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOTransitOptions, MKMapItem, NSHashTable, NSLock, NSNumber, NSString, NSTimer, _MKQuickRouteManager;
+@class CLLocation, GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKMapItem, NSHashTable, NSLock, NSNumber, NSString, NSTimer, _MKQuickRouteManager;
 @protocol GEOTransitLineItem, MKETAProviderDelegate, _MKPlaceItem;
 
 @interface MKETAProvider : NSObject <MKLocationManagerObserver, MKQuickRouteManagerDelegate, MKQuickRouteConfigurableView, MKQuickRouteTransportTypeFinding>
@@ -31,6 +31,7 @@
     id<MKETAProviderDelegate> _delegate;
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
+    GEOCyclingOptions *_cyclingOptions;
     id<_MKPlaceItem> _placeItem;
     id<GEOTransitLineItem> _lineItem;
     NSHashTable *_observers;
@@ -39,6 +40,7 @@
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (readonly, nonatomic) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
+@property (strong, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKETAProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

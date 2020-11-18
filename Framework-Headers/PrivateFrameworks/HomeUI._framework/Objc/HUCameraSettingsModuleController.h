@@ -8,17 +8,21 @@
 
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, UIColor;
 
 @interface HUCameraSettingsModuleController : HUItemTableModuleController <UITextViewDelegate>
 {
+    UIColor *_cellContentViewBackgroundColor;
 }
 
+@property (strong, nonatomic) UIColor *cellContentViewBackgroundColor; // @synthesize cellContentViewBackgroundColor=_cellContentViewBackgroundColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (BOOL)canSelectDisabledItem:(id)arg1;
 - (BOOL)canSelectItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;

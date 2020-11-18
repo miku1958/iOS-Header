@@ -18,11 +18,21 @@
 
 @property (readonly, copy) NSString *string;
 
++ (id)_attributedStringAttributesFromKnownAttributeKeys:(id)arg1;
++ (id)_attributedStringWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3 arguments:(struct __va_list_tag [1])arg4;
++ (id)_localizedAttributedStringWithFormat:(id)arg1;
++ (id)_localizedAttributedStringWithFormat:(id)arg1 options:(unsigned long long)arg2;
 + (void)_setAttributedDictionaryClass:(Class)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (id)attributedStringFromMarkupString:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (unsigned long long)_cfTypeID;
 - (id)_createAttributedSubstringWithRange:(struct _NSRange)arg1;
+- (id)_firstValueOfAttributeWithKey:(id)arg1 inRange:(struct _NSRange)arg2;
+- (id)_inflectedAttributedStringWithReplacements:(id)arg1;
+- (id)_inflectionLanguageForRange:(struct _NSRange)arg1;
+- (id)_initWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3;
+- (id)_initWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3 arguments:(struct __va_list_tag [1])arg4;
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 longestEffectiveRange:(struct _NSRange *)arg3 inRange:(struct _NSRange)arg4;
 - (id)attributedStringByWeaklyAddingAttributes:(id)arg1;

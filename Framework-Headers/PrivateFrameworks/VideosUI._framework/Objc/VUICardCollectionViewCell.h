@@ -6,22 +6,25 @@
 
 #import <VideosUI/VUIFocusableCollectionViewCell.h>
 
-@class IKViewElement, VUICardView, VUICardViewLayoutFactory;
+@class IKImageElement, IKViewElement, VUICardView, VUICardViewLayoutFactory;
 
 __attribute__((visibility("hidden")))
 @interface VUICardCollectionViewCell : VUIFocusableCollectionViewCell
 {
-    IKViewElement *_viewElement;
     VUICardView *_cardView;
     VUICardViewLayoutFactory *_layoutFactory;
+    IKViewElement *_viewElement;
+    IKImageElement *_mainImageViewElement;
 }
 
 @property (strong, nonatomic) VUICardView *cardView; // @synthesize cardView=_cardView;
 @property (strong, nonatomic) VUICardViewLayoutFactory *layoutFactory; // @synthesize layoutFactory=_layoutFactory;
 @property (readonly, nonatomic) double mainImageCornerRadius;
+@property (strong, nonatomic) IKImageElement *mainImageViewElement; // @synthesize mainImageViewElement=_mainImageViewElement;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 + (long long)_cardLayoutTypeForElement:(id)arg1;
++ (id)_imageLayoutForImageElement:(id)arg1 cardLayout:(id)arg2 cardWidth:(double)arg3;
 + (id)cardCellWithElement:(id)arg1 existingCell:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;

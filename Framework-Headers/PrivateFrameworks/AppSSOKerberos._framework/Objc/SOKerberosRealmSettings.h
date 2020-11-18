@@ -8,7 +8,7 @@
 
 #import <AppSSOKerberos/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSMutableArray, NSString, NSUUID;
+@class NSData, NSDate, NSMutableArray, NSNumber, NSString, NSUUID;
 
 @interface SOKerberosRealmSettings : NSObject <NSSecureCoding>
 {
@@ -24,6 +24,9 @@
     NSString *_dateLocalPasswordLastChanged;
     NSString *_datePasswordExpires;
     NSString *_networkHomeDirectory;
+    NSNumber *_delayUserSetupCleared;
+    NSNumber *_networkAvailable;
+    NSNumber *_userCancelledLogin;
     NSMutableArray *_siteCodeCache;
 }
 
@@ -33,11 +36,14 @@
 @property (strong, nonatomic) NSString *dateLocalPasswordLastChanged; // @synthesize dateLocalPasswordLastChanged=_dateLocalPasswordLastChanged;
 @property (strong, nonatomic) NSString *datePasswordExpires; // @synthesize datePasswordExpires=_datePasswordExpires;
 @property (strong, nonatomic) NSString *datePasswordLastChanged; // @synthesize datePasswordLastChanged=_datePasswordLastChanged;
+@property (strong, nonatomic) NSNumber *delayUserSetupCleared; // @synthesize delayUserSetupCleared=_delayUserSetupCleared;
+@property (strong, nonatomic) NSNumber *networkAvailable; // @synthesize networkAvailable=_networkAvailable;
 @property (strong, nonatomic) NSString *networkHomeDirectory; // @synthesize networkHomeDirectory=_networkHomeDirectory;
 @property (strong, nonatomic) NSMutableArray *siteCodeCache; // @synthesize siteCodeCache=_siteCodeCache;
 @property (strong, nonatomic) NSData *smartCardIssuer; // @synthesize smartCardIssuer=_smartCardIssuer;
 @property (strong, nonatomic) NSData *smartCardSerialNumber; // @synthesize smartCardSerialNumber=_smartCardSerialNumber;
 @property (strong, nonatomic) NSString *smartCardTokenID; // @synthesize smartCardTokenID=_smartCardTokenID;
+@property (strong, nonatomic) NSNumber *userCancelledLogin; // @synthesize userCancelledLogin=_userCancelledLogin;
 @property (strong, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property (strong, nonatomic) NSString *userPrincipalName; // @synthesize userPrincipalName=_userPrincipalName;
 

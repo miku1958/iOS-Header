@@ -8,23 +8,23 @@
 
 #import <NanoTimeKitCompanion/CAAnimationDelegate-Protocol.h>
 
-@class NSString, NTKBezierPathPointModel, UIBezierPath, UIColor;
+@class NSString, NTKBezierPathPointModel, NTKPromise, UIBezierPath, UIColor;
 
 @interface NTKBezierPathView : UIView <CAAnimationDelegate>
 {
     UIBezierPath *_path;
     UIBezierPath *_animateToPath;
-    NTKBezierPathPointModel *_pointModel;
+    NTKPromise *_pointModel;
     UIColor *_pathColor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *lineCap;
+@property (copy, nonatomic) NSString *lineCap;
 @property (strong, nonatomic) UIBezierPath *path; // @synthesize path=_path;
 @property (strong, nonatomic) UIColor *pathColor; // @synthesize pathColor=_pathColor;
-@property (readonly, nonatomic) NTKBezierPathPointModel *pointModel; // @synthesize pointModel=_pointModel;
+@property (readonly, nonatomic) NTKBezierPathPointModel *pointModel;
 @property (readonly) Class superclass;
 
 + (Class)layerClass;

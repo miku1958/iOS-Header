@@ -8,7 +8,7 @@
 
 #import <CarPlaySupport/CPSessionConfigurationDelegate-Protocol.h>
 
-@class CPSessionConfiguration, NSMutableArray, NSString;
+@class CPSessionConfiguration, NSArray, NSMutableArray, NSString;
 
 @interface CPSSectionedDataSource : CPSDataSource <CPSessionConfigurationDelegate>
 {
@@ -17,11 +17,13 @@
     long long _numberOfVisibleItemsInLastSection;
     NSMutableArray *_sections;
     CPSessionConfiguration *_sessionConfiguration;
+    NSArray *_sectionHeightCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSArray *sectionHeightCache; // @synthesize sectionHeightCache=_sectionHeightCache;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) CPSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
 @property (readonly) Class superclass;
@@ -31,20 +33,26 @@
 - (id)_sanitizedSectionIndexTitleForTitle:(id)arg1;
 - (void)appendSection:(id)arg1;
 - (void)deleteSectionAtIndex:(unsigned long long)arg1;
+- (id)firstItemIndexPath;
+- (double)heightForItemAtIndexPath:(id)arg1 inEnvironment:(id)arg2;
+- (id)indexPathForItemWithIdentifier:(id)arg1;
 - (id)initWithItems:(id)arg1;
 - (id)initWithSection:(id)arg1;
 - (id)initWithSections:(id)arg1;
 - (void)insertSection:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)invalidateHeightCache;
 - (BOOL)isLimitingLists;
 - (id)itemAtIndexPath:(id)arg1;
 - (id)items;
+- (long long)numberOfItems;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
+- (void)rebuildHeightCacheWithEnvironment:(id)arg1;
+- (void)reloadItems:(id)arg1;
 - (id)sectionAtIndex:(long long)arg1;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
 - (void)sessionConfiguration:(id)arg1 limitedUserInterfacesChanged:(unsigned long long)arg2;
 - (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)updateSections:(id)arg1;
 
 @end

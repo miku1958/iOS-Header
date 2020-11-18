@@ -13,6 +13,7 @@
 
 @interface CALNPersistentNotificationStorage : NSObject <CALNNotificationStorage>
 {
+    BOOL _protected;
     NSString *_path;
     CALNInMemoryNotificationStorage *_inMemoryStorage;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -27,13 +28,13 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)notificationRecordsFromPersistentNotificationStorageWithPath:(id)arg1 error:(id *)arg2;
-+ (id)persistentNotificationStorageWithPath:(id)arg1 error:(id *)arg2;
++ (id)persistentNotificationStorageWithPath:(id)arg1 isProtectedStorage:(BOOL)arg2;
 - (void).cxx_destruct;
 - (BOOL)_loadNotificationsWithError:(id *)arg1;
 - (BOOL)_saveNotificationsWithError:(id *)arg1;
 - (void)addNotificationRecord:(id)arg1;
 - (void)addNotificationRecords:(id)arg1;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 isProtectedStorage:(BOOL)arg2;
 - (id)notificationRecords;
 - (void)removeAllNotificationRecords;
 - (void)removeNotificationRecordsPassingTest:(CDUnknownBlockType)arg1;

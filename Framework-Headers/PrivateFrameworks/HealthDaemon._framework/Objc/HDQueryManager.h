@@ -48,6 +48,7 @@
 - (void)_lock_unregisterQueryServer:(id)arg1;
 - (void)_lock_willExecuteDatabaseAccessBlock:(id)arg1;
 - (void)_logQueryActivationWithServer:(id)arg1;
+- (id)_monitoringIdentifierForProcess:(id)arg1;
 - (void)_performAsyncWithUnitTestDelegate:(CDUnknownBlockType)arg1;
 - (void)_queryServerDidFinish:(id)arg1;
 - (void)dealloc;

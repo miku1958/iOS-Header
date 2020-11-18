@@ -28,6 +28,8 @@
     struct CGImage *_thumbnailIfAvailable;
     struct CGImage *_largeThumbnailIfAvailable;
     NSDictionary *_metadataIfAvailable;
+    unsigned long long _privMetadataState;
+    unsigned long long _privThumbnailState;
     CDUnknownBlockType _completionBlock;
     CDUnknownBlockType _completionBlock_deprecated;
     CDUnknownBlockType _downloadCompletionBlock;
@@ -54,6 +56,7 @@
 @property (nonatomic, getter=isLocked) BOOL locked; // @synthesize locked=_locked;
 @property (readonly, nonatomic) NSDictionary *metadata;
 @property (readonly) NSDictionary *metadataIfAvailable; // @synthesize metadataIfAvailable=_metadataIfAvailable;
+@property (readonly) unsigned long long metadataState;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned int objectHandle; // @synthesize objectHandle=_objectHandle;
@@ -61,11 +64,14 @@
 @property (readonly) unsigned long long ownerID; // @synthesize ownerID=_ownerID;
 @property (strong, nonatomic) ICCameraFolder *parentFolder; // @synthesize parentFolder=_parentFolder;
 @property (readonly) unsigned long long parentID; // @synthesize parentID=_parentID;
+@property (nonatomic) unsigned long long privMetadataState; // @synthesize privMetadataState=_privMetadataState;
+@property (nonatomic) unsigned long long privThumbnailState; // @synthesize privThumbnailState=_privThumbnailState;
 @property (readonly, nonatomic) unsigned int ptpObjectHandle; // @synthesize ptpObjectHandle=_ptpObjectHandle;
 @property (nonatomic, getter=isRaw) BOOL raw; // @synthesize raw=_raw;
 @property (readonly) NSString *relativeFileSystemPath; // @synthesize relativeFileSystemPath=_relativeFileSystemPath;
 @property (readonly, nonatomic) struct CGImage *thumbnail;
 @property (readonly) struct CGImage *thumbnailIfAvailable; // @synthesize thumbnailIfAvailable=_thumbnailIfAvailable;
+@property (readonly) unsigned long long thumbnailState;
 @property (readonly) unsigned long long twinID; // @synthesize twinID=_twinID;
 @property (readonly, nonatomic) unsigned long long unsignedIntegerValue;
 @property (strong, nonatomic) NSMutableDictionary *userData; // @synthesize userData=_userData;
@@ -80,9 +86,11 @@
 - (id)initWithName:(id)arg1 parentFolder:(id)arg2 device:(id)arg3;
 - (void)requestMetadata;
 - (void)requestThumbnail;
+- (void)setMetadataState:(unsigned long long)arg1;
 - (void)setObjectID:(unsigned long long)arg1;
 - (void)setOwnerID:(unsigned long long)arg1;
 - (void)setParentID:(unsigned long long)arg1;
+- (void)setThumbnailState:(unsigned long long)arg1;
 - (void)setTwinID:(unsigned long long)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 

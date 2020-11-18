@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <SoftwareUpdateServices/NSCopying-Protocol.h>
+#import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
+
 @class NSDate;
 
-@interface SUManagedDeviceUpdateDelay : NSObject
+@interface SUManagedDeviceUpdateDelay : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isDelayed;
     NSDate *_delayedStartDate;

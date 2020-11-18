@@ -114,9 +114,10 @@
 - (id)interiorClippingPath;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
+- (id)layoutForInlineDrawable:(id)arg1;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
 - (void)layoutManagerNeedsLayout:(id)arg1;
-- (id)layoutText:(id)arg1 context:(id)arg2 kind:(int)arg3 minSize:(struct CGSize)arg4 maxSize:(struct CGSize)arg5 anchor:(struct CGPoint)arg6 flags:(int)arg7;
+- (id)layoutText:(id)arg1 context:(id)arg2 kind:(unsigned char)arg3 minSize:(struct CGSize)arg4 maxSize:(struct CGSize)arg5 anchor:(struct CGPoint)arg6 flags:(int)arg7;
 - (id)layoutText:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 pageNumber:(unsigned long long)arg5 pageCount:(unsigned long long)arg6 flags:(int)arg7;
@@ -129,7 +130,6 @@
 - (double)textScaleForChild:(id)arg1;
 - (id)textWrapper;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
-- (id)validatedLayoutForInlineDrawable:(id)arg1;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 
 @end

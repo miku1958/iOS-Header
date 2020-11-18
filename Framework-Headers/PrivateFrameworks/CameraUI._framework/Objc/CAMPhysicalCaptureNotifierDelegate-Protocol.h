@@ -9,6 +9,6 @@
 @class CAMPhysicalCaptureNotifier;
 
 @protocol CAMPhysicalCaptureNotifierDelegate <NSObject>
-- (void)physicalCaptureNotifierDidChangeState:(CAMPhysicalCaptureNotifier *)arg1;
+- (void)physicalCaptureNotifierDidChangeState:(CAMPhysicalCaptureNotifier *)arg1 forButton:(long long)arg2;
 @end
 

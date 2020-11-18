@@ -34,11 +34,11 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_toolConstraints;
     NSDictionary *_cachedPortraitEffectSettings;
     BOOL _isStageLightEnabled;
-    double _majorVersion;
-    double _minorVersion;
     NSMutableDictionary *_lightingIntensityCache;
     CEKLightingControl *_lightingControl;
     long long _toolSelection;
+    unsigned long long _majorVersion;
+    unsigned long long _minorVersion;
 }
 
 @property (readonly, nonatomic) PUPhotoEditApertureToolbar *apertureToolbar; // @synthesize apertureToolbar=_apertureToolbar;
@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CEKLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
+@property (nonatomic) unsigned long long majorVersion; // @synthesize majorVersion=_majorVersion;
+@property (nonatomic) unsigned long long minorVersion; // @synthesize minorVersion=_minorVersion;
 @property (readonly) Class superclass;
 @property (nonatomic) long long toolSelection; // @synthesize toolSelection=_toolSelection;
 

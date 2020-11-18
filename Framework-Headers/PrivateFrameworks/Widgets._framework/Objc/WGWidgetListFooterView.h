@@ -9,26 +9,30 @@
 #import <Widgets/MTMaterialGrouping-Protocol.h>
 #import <Widgets/UITextViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIFont, WGNewWidgetsButton, WGShortLookStyleButton, _UILegibilitySettings;
+@class MTMaterialView, NSMutableDictionary, NSString, UIButton, UIFont, WGNewWidgetsButton, WGShortLookStyleButton, _UILegibilitySettings;
 @protocol WGWidgetListFooterViewDelegate;
 
 @interface WGWidgetListFooterView : UIView <UITextViewDelegate, MTMaterialGrouping>
 {
-    WGShortLookStyleButton *_editButton;
-    WGNewWidgetsButton *_newWidgetsButton;
     NSMutableDictionary *_widgetIDsToAttributionViews;
     UIFont *_referenceFont;
+    MTMaterialView *_customizeButtonBackground;
     BOOL _shouldSizeContent;
     UIView *_contentView;
     long long _layoutMode;
     _UILegibilitySettings *_legibilitySettings;
+    WGShortLookStyleButton *_editButton;
+    UIButton *_customizeButton;
     id<WGWidgetListFooterViewDelegate> _delegate;
+    WGNewWidgetsButton *_widgetAvailableButton;
 }
 
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (strong, nonatomic) UIButton *customizeButton; // @synthesize customizeButton=_customizeButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetListFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) WGShortLookStyleButton *editButton; // @synthesize editButton=_editButton;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutMode; // @synthesize layoutMode=_layoutMode;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
@@ -36,13 +40,14 @@
 @property (nonatomic) BOOL shouldBlurContent; // @dynamic shouldBlurContent;
 @property (nonatomic) BOOL shouldSizeContent; // @synthesize shouldSizeContent=_shouldSizeContent;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) WGNewWidgetsButton *widgetAvailableButton; // @synthesize widgetAvailableButton=_widgetAvailableButton;
 
 - (void).cxx_destruct;
+- (void)_addCustomizeButton;
 - (void)_availableWidgetsUpdated:(id)arg1;
 - (id)_referenceFont;
 - (void)_setAttributedString:(id)arg1 forWidgetIdentifier:(id)arg2;
 - (void)_updateForContentCategorySizeDidChange;
-- (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateSubviewGeometery;

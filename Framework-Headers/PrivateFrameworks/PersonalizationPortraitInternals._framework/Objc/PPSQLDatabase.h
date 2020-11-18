@@ -8,13 +8,15 @@
 
 #import <PersonalizationPortraitInternals/_PASDatabaseMigrationProtocol-Protocol.h>
 
-@class NSCondition, NSString, PPSQLDatabaseHandlePool;
+@class NSCondition, NSRecursiveLock, NSString, PPSQLDatabaseHandlePool;
 
 @interface PPSQLDatabase : NSObject <_PASDatabaseMigrationProtocol>
 {
+    NSRecursiveLock *_writeLock;
     PPSQLDatabaseHandlePool *_handlePool;
     NSCondition *_handlePoolCond;
     NSString *_path;
+    NSString *_parentDirectory;
     unsigned char _migrationCount;
 }
 
@@ -23,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)createTempTableContainingRowsFromQuery:(id)arg1 descriptiveTableName:(id)arg2 txnWitness:(id)arg3 bind:(CDUnknownBlockType)arg4;
 + (void)dropTableWithName:(id)arg1 txnWitness:(id)arg2;
 + (id)nonMigratingToolsInstance;
 + (id)nonMigratingToolsInstanceWithParentDirectory:(id)arg1;
@@ -51,12 +54,19 @@
 - (BOOL)isInMemory;
 - (unsigned long long)maxSchemaVersion;
 - (BOOL)migrateToVersion:(unsigned int)arg1;
+- (unsigned char)migration_ConvertLocationDescriptionsToLowercase;
 - (id)migrations;
+- (BOOL)optimizeDatabaseWithShouldContinueBlock:(CDUnknownBlockType)arg1;
+- (id)parentDirectory;
 - (id)queriesToSkipFromEmptyToVersion:(unsigned int *)arg1;
 - (void)readTransactionWithClient:(unsigned char)arg1 block:(CDUnknownBlockType)arg2;
+- (id)sourceStatsForTableWithName:(id)arg1 medianRefCountNeeded:(BOOL)arg2 txnWitness:(id)arg3;
+- (id)sourceStatsWithMedianRefCountNeeded:(BOOL)arg1;
+- (id)sourceStatsWithMedianRefCountNeeded:(BOOL)arg1 table:(id)arg2 txnWitness:(id)arg3;
 - (id)stats;
 - (BOOL)unmigrate;
 - (void)writeTransactionWithClient:(unsigned char)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)writeTransactionWithClient:(unsigned char)arg1 timeoutInSeconds:(double)arg2 block:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -8,14 +8,13 @@
 
 #import <PagesQuicklook/TSWPRepParent-Protocol.h>
 
-@class NSArray, NSObject, NSString;
+@class NSObject, NSString;
 @protocol TSDContainerInfo;
 
 @interface TPFootnoteContainerRep : TSDContainerRep <TSWPRepParent>
 {
 }
 
-@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

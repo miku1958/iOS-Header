@@ -15,6 +15,7 @@
 @property (nonatomic, getter=isAccessibilityReduceTransparencyEnabled) BOOL accessibilityReduceTransparencyEnabled; // @dynamic accessibilityReduceTransparencyEnabled;
 @property (nonatomic) BOOL canTighten; // @dynamic canTighten;
 @property (nonatomic) BOOL canTruncate; // @dynamic canTruncate;
+@property (nonatomic, getter=isColorspaceGrayscale) BOOL colorspaceGrayscale; // @dynamic colorspaceGrayscale;
 @property (nonatomic) BOOL containsEmoji; // @dynamic containsEmoji;
 @property (copy, nonatomic) NSString *contentSizeCategory; // @dynamic contentSizeCategory;
 @property (strong, nonatomic) UIColor *focusHighlightColor; // @dynamic focusHighlightColor;

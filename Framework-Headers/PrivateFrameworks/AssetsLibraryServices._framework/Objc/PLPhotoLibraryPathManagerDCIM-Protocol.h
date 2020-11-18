@@ -10,6 +10,9 @@
 
 @protocol PLPhotoLibraryPathManagerDCIM <NSObject>
 - (NSString *)assetBaseFilenameForAdjustmentFilePath:(NSString *)arg1;
+- (NSString *)cloudRestoreBackgroundPhaseInProgressTokenPath;
+- (NSString *)cloudRestoreCompleteTokenPath;
+- (NSString *)cloudRestoreForegroundPhaseCompleteTokenPath;
 - (NSString *)iTunesPhotosDirectory;
 - (NSString *)iTunesPhotosLastSyncMetadataFilePath;
 - (NSString *)iTunesPhotosSyncCurrentLibraryUUIDPath;
@@ -21,6 +24,7 @@
 - (NSString *)iTunesSyncedFaceDataDirectory;
 - (NSString *)legacyMemoriesRelatedSnapshotDirectory;
 - (NSString *)legacyModelInterestDatabasePath;
+- (NSString *)modelRestorePostProcessingCompleteTokenPath;
 - (NSDictionary *)pathsGroupedByAssetBasePathFromFilePaths:(NSArray *)arg1 populateInvalidAdjustmentPaths:(NSMutableArray *)arg2;
 - (NSString *)persistedAlbumDataDirectoryCreateIfNeeded:(BOOL)arg1 error:(id *)arg2;
 - (NSString *)photoMetadataDirectoryForMediaInMainDirectory:(NSString *)arg1;

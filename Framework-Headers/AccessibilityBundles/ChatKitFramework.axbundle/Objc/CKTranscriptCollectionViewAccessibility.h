@@ -18,6 +18,7 @@
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (void)_accessibilityScrollOpaqueElementIntoView:(long long)arg1 previousScroller:(id)arg2;
 - (BOOL)accessibilityElementsHidden;
+- (id)accessibilityLabel;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 
 @end

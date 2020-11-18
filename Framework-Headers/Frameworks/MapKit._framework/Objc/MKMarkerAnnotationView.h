@@ -6,17 +6,17 @@
 
 #import <MapKit/MKAnnotationView.h>
 
-@class GEOFeatureStyleAttributes, MKWalletMerchantStylingInfo, NSString, UIColor, UIImage, UIImageView, UILabel, UIView, _MKBezierPathView;
+@class GEOFeatureStyleAttributes, MKWalletMerchantStylingInfo, NSString, UIColor, UIImage, UIImageView, UIView, _MKBezierPathView, _MKUILabel;
 
 @interface MKMarkerAnnotationView : MKAnnotationView
 {
-    UIImageView *_shadowView;
+    UIImageView *_shadow;
     _MKBezierPathView *_markerView;
     UIImageView *_glyphImageView;
-    UILabel *_glyphLabel;
+    _MKUILabel *_glyphLabel;
     _MKBezierPathView *_selectedMarkerView;
     UIImageView *_selectedGlyphImageView;
-    UILabel *_selectedGlyphLabel;
+    _MKUILabel *_selectedGlyphLabel;
     _MKBezierPathView *_selectedDotView;
     UIView *_contentMaskView;
     GEOFeatureStyleAttributes *_customStyleAttributes;
@@ -50,7 +50,7 @@
 + (Class)_mapkitLeafClass;
 - (void).cxx_destruct;
 - (void)_configureAnimated:(BOOL)arg1 fromState:(long long)arg2 toState:(long long)arg3;
-- (void)_configureViewsForState:(long long)arg1 usesCallout:(BOOL)arg2;
+- (void)_configureViewsForState:(long long)arg1 usesCallout:(BOOL)arg2 animated:(BOOL)arg3;
 - (long long)_currentMarkerState;
 - (struct UIEdgeInsets)_defaultCollisionAlignmentRectInsets;
 - (void)_didDragWithVelocity:(struct CGPoint)arg1;
@@ -63,7 +63,9 @@
 - (double)_effectiveShadowAlphaForState:(long long)arg1;
 - (id)_effectiveSubtitlesIsCollidable:(BOOL *)arg1;
 - (BOOL)_hasDataRequiringCallout;
+- (CDStruct_45683352)_metricsForState:(long long)arg1;
 - (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setShadowAlpha:(double)arg1 transform:(struct CGAffineTransform)arg2 duration:(double)arg3;
 - (void)_setupNormalViewsIfNeeded;
 - (void)_setupSelectedViewsIfNeededUsesCallout:(BOOL)arg1;
 - (BOOL)_shouldDeselectWhenDragged;

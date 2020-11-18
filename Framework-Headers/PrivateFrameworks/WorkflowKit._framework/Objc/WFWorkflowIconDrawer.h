@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, WFColor;
+@class NSData, WFColor, WFWorkflowIconDrawerContext;
 
 @interface WFWorkflowIconDrawer : NSObject
 {
     BOOL _drawBackground;
     BOOL _useCustomImage;
     BOOL _rounded;
+    BOOL _dark;
+    BOOL _highContrast;
+    BOOL _outline;
     unsigned short _glyphCharacter;
+    WFWorkflowIconDrawerContext *_drawerContext;
     WFColor *_backgroundColor;
     NSData *_customImageData;
     WFColor *_glyphColor;
@@ -24,22 +28,31 @@
 @property (strong, nonatomic) WFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (copy, nonatomic) NSData *customImageData; // @synthesize customImageData=_customImageData;
+@property (nonatomic) BOOL dark; // @synthesize dark=_dark;
 @property (nonatomic) BOOL drawBackground; // @synthesize drawBackground=_drawBackground;
+@property (readonly, nonatomic) WFWorkflowIconDrawerContext *drawerContext; // @synthesize drawerContext=_drawerContext;
 @property (nonatomic) unsigned short glyphCharacter; // @synthesize glyphCharacter=_glyphCharacter;
 @property (strong, nonatomic) WFColor *glyphColor; // @synthesize glyphColor=_glyphColor;
 @property (nonatomic) struct CGSize glyphSize; // @synthesize glyphSize=_glyphSize;
+@property (nonatomic) BOOL highContrast; // @synthesize highContrast=_highContrast;
+@property (nonatomic) BOOL outline; // @synthesize outline=_outline;
 @property (nonatomic) BOOL rounded; // @synthesize rounded=_rounded;
 @property (nonatomic) BOOL useCustomImage; // @synthesize useCustomImage=_useCustomImage;
 
 + (id)glyphImageWithIcon:(id)arg1 size:(struct CGSize)arg2;
 + (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2;
++ (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2 background:(BOOL)arg3;
++ (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 glyphColor:(id)arg4 background:(BOOL)arg5;
 + (id)pngDataForImageWithIcon:(id)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (void)drawInContext:(id)arg1 inRect:(struct CGRect)arg2;
 - (id)imageWithSize:(struct CGSize)arg1;
+- (id)imageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)init;
+- (id)initWithDrawerContext:(id)arg1;
 - (id)initWithHomeScreenIcon:(id)arg1;
 - (id)initWithIcon:(id)arg1;
+- (id)initWithIcon:(id)arg1 drawerContext:(id)arg2;
 - (void)setIcon:(id)arg1;
 
 @end

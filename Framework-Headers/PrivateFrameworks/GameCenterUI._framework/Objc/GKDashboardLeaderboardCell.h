@@ -22,19 +22,19 @@
 }
 
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (nonatomic) UILabel *countLabel; // @synthesize countLabel=_countLabel;
-@property (nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
+@property (strong, nonatomic) UILabel *countLabel; // @synthesize countLabel=_countLabel;
+@property (strong, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property (strong, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property (strong, nonatomic) GKLeaderboard *leaderboard; // @synthesize leaderboard=_leaderboard;
 @property (strong, nonatomic) GKLeaderboardSet *leaderboardSet; // @synthesize leaderboardSet=_leaderboardSet;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property (readonly, nonatomic) UIView *popoverSourceView;
-@property (nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) UIColor *titleLabelColor; // @synthesize titleLabelColor=_titleLabelColor;
 
+- (void).cxx_destruct;
 - (void)awakeFromNib;
 - (BOOL)canBecomeFocused;
-- (void)dealloc;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)updateImage;

@@ -21,13 +21,8 @@
 }
 
 @property (strong, nonatomic) _DKContentProviderCache *contentProviderCache; // @synthesize contentProviderCache=_contentProviderCache;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *defaultResponseQueue; // @synthesize defaultResponseQueue=_defaultResponseQueue;
-@property (strong, nonatomic) _DKKnowledgeContentProvider *knowledgeContentProvider; // @synthesize knowledgeContentProvider=_knowledgeContentProvider;
-@property (strong, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queryQueue; // @synthesize queryQueue=_queryQueue;
 
 - (void).cxx_destruct;
-- (id)contentProviderQueriesFromQuery:(id)arg1 error:(id *)arg2;
 - (id)executeQuery:(id)arg1 error:(id *)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

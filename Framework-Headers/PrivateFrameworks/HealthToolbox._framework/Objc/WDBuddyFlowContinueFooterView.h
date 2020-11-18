@@ -8,7 +8,6 @@
 
 @class NSLayoutConstraint, UIButton;
 
-__attribute__((visibility("hidden")))
 @interface WDBuddyFlowContinueFooterView : UIView
 {
     double _width;

@@ -8,6 +8,7 @@
 
 @class MPModelForYouRecommendationGroupBuilder, MPModelStoreBrowseContentItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationItemBuilder : NSObject
 {
     struct {
@@ -16,6 +17,7 @@
         unsigned int backedByStoreItemMetadata:1;
         unsigned int album:1;
         unsigned int playlist:1;
+        unsigned int radioStation:1;
         unsigned int subgroup:1;
     } _requestedItemProperties;
     MPModelStoreBrowseContentItemBuilder *_contentItemBuilder;

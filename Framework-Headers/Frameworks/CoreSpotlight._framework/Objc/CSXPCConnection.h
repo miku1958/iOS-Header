@@ -14,6 +14,7 @@
     BOOL _machService;
     BOOL _listener;
     BOOL _nonLaunching;
+    BOOL _privateDaemon;
     unsigned int _user;
     NSString *_uuid;
     NSString *_serviceName;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) BOOL listener; // @synthesize listener=_listener;
 @property (readonly, nonatomic) BOOL machService; // @synthesize machService=_machService;
 @property (nonatomic) BOOL nonLaunching; // @synthesize nonLaunching=_nonLaunching;
+@property (nonatomic) BOOL privateDaemon; // @synthesize privateDaemon=_privateDaemon;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (nonatomic) unsigned int user; // @synthesize user=_user;
@@ -35,9 +37,14 @@
 + (id)copyNSStringArrayFromXPCArray:(id)arg1;
 + (id)copyNSStringForKey:(const char *)arg1 fromXPCDictionary:(id)arg2;
 + (id)copyNSStringSetFromXPCArray:(id)arg1;
++ (id)copyPlistFromXPCObject:(id)arg1;
 + (id)dataWrapperForKey:(const char *)arg1 sizeKey:(const char *)arg2 fromXPCDictionary:(id)arg3;
 + (BOOL)dictionary:(id)arg1 setSharedMemory:(void *)arg2 forKey:(const char *)arg3 size:(unsigned long long)arg4 forSizeKey:(const char *)arg5;
 + (void)dictionary:(id)arg1 setStringArray:(id)arg2 forKey:(const char *)arg3;
++ (void)journalDictionary:(id)arg1 toFolderPath:(const char *)arg2 forPID:(int)arg3 withLabel:(const char *)arg4 andID:(unsigned long long)arg5;
++ (BOOL)journalEnabled;
++ (id)processNameForPID:(int)arg1;
++ (void)setJournalEnabled:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_lostClientConnection:(id)arg1 error:(id)arg2;
 - (void)_setUser:(unsigned int)arg1;

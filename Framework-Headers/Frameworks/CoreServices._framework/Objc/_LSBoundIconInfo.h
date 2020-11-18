@@ -9,7 +9,7 @@
 #import <CoreServices/LSIconResourceLocator-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSBundleProxy, NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
+@class NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
 
 __attribute__((visibility("hidden")))
 @interface _LSBoundIconInfo : NSObject <LSIconResourceLocator, NSSecureCoding>
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     _LSLazyPropertyList *_iconsDictionary;
     NSString *_cacheKey;
     NSArray *_fileNames;
-    LSBundleProxy *_typeOwner;
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isPrerendered) BOOL prerendered; // @synthesize prerendered=_prerendered;
 @property (strong, nonatomic) NSURL *resourcesDirectoryURL; // @synthesize resourcesDirectoryURL=_resourcesDirectoryURL;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) LSBundleProxy *typeOwner; // @synthesize typeOwner=_typeOwner;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -12,24 +12,21 @@
 
 @interface AUParameter : AUParameterNode <NSSecureCoding>
 {
-    BOOL __localValueStale;
+    struct atomic<bool> _localValueStale;
+    struct atomic<int> _numUIObservers;
+    struct atomic<int> _numRecordingObservers;
     float _value;
-    int _numUIObservers;
-    int _numRecordingObservers;
     unsigned long long _address;
     NSArray *_dependentParameters;
     _AUStaticParameterInfo *_info;
 }
 
-@property (nonatomic) BOOL _localValueStale; // @synthesize _localValueStale=__localValueStale;
 @property (nonatomic) unsigned long long address; // @synthesize address=_address;
 @property (readonly, copy, nonatomic) NSArray *dependentParameters; // @synthesize dependentParameters=_dependentParameters;
 @property (readonly, nonatomic) unsigned int flags;
 @property (strong, nonatomic) _AUStaticParameterInfo *info; // @synthesize info=_info;
 @property (readonly, nonatomic) float maxValue;
 @property (readonly, nonatomic) float minValue;
-@property (nonatomic) int numRecordingObservers; // @synthesize numRecordingObservers=_numRecordingObservers;
-@property (nonatomic) int numUIObservers; // @synthesize numUIObservers=_numUIObservers;
 @property (readonly, nonatomic) unsigned int unit;
 @property (readonly, copy, nonatomic) NSString *unitName;
 @property (nonatomic) float value; // @synthesize value=_value;
@@ -38,19 +35,25 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned int)_clumpID;
+- (float)_defaultValue;
 - (float)_internalValue;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;
+- (unsigned int)_originalOrder;
 - (id)copyNodeWithOffset:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithID:(id)arg1 name:(id)arg2 address:(unsigned long long)arg3 min:(float)arg4 max:(float)arg5 unit:(unsigned int)arg6 unitName:(id)arg7 flags:(unsigned int)arg8 valueStrings:(id)arg9 dependentParameters:(id)arg10;
+- (BOOL)localValueStale;
+- (void)setLocalValueStale:(BOOL)arg1;
 - (void)setValue:(float)arg1 extOriginator:(struct AUParameterObserverExtendedToken)arg2 atHostTime:(unsigned long long)arg3 eventType:(unsigned int)arg4;
 - (void)setValue:(float)arg1 originator:(void *)arg2;
 - (void)setValue:(float)arg1 originator:(void *)arg2 atHostTime:(unsigned long long)arg3;
 - (void)setValue:(float)arg1 originator:(void *)arg2 atHostTime:(unsigned long long)arg3 eventType:(unsigned int)arg4;
 - (void)set_clumpID:(unsigned int)arg1;
+- (void)set_defaultValue:(float)arg1;
+- (void)set_originalOrder:(unsigned int)arg1;
 - (id)stringFromValue:(const float *)arg1;
 - (float)valueFromString:(id)arg1;
 

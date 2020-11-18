@@ -7,7 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (MSVLyricsParser)
-+ (BOOL)isString:(id)arg1 equalTo:(id)arg2;
 - (BOOL)msvl_isElementType:(id)arg1;
 - (double)msvl_timeValue;
 @end

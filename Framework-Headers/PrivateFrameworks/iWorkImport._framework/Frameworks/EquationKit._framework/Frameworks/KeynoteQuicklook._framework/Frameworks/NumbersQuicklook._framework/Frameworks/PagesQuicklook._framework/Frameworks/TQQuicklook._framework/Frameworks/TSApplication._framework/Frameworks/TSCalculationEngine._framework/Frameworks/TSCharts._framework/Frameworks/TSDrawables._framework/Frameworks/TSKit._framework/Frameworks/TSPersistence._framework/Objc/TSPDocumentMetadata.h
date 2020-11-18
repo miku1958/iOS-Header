@@ -11,6 +11,7 @@
     BOOL _isInCollaborationModeForArchiving;
 }
 
+- (unsigned char)componentRequiredPackageIdentifier;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)packageLocator;
 - (void)saveToArchiver:(id)arg1;

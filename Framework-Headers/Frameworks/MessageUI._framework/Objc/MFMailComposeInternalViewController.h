@@ -62,6 +62,7 @@
 - (void)_setPlaceHolderSubject:(id)arg1;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
+- (id)addAttachmentItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addContentVariationWithName:(id)arg1;
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;

@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCHeadlineMetadata, FCHeadlineProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCProxyHeadline : NSProxy <FCHeadlineProviding>
@@ -51,6 +51,7 @@
 @property (readonly, nonatomic) unsigned long long feedOrder;
 @property (readonly, nonatomic, getter=isFromBlockedStorefront) BOOL fromBlockedStorefront;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
 @property (readonly, nonatomic) BOOL hasAudioTrack;
@@ -96,6 +97,7 @@
 @property (readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property (readonly, nonatomic) long long publisherArticleVersion;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property (readonly, copy, nonatomic) NSString *referencedArticleID;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *headline;
     MISSING_TYPE *coreConfigurationManager;
     MISSING_TYPE *bundlePurchasePrewarmer;
+    MISSING_TYPE *offerManager;
     MISSING_TYPE *$__lazy_storage_$_title;
 }
 

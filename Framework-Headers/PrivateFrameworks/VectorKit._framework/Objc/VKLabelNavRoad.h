@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 @interface VKLabelNavRoad : NSObject <VKLabelNavFeature>
 {
     shared_ptr_702c344d _tile;
-    CDStruct_a190bee8 *_data;
+    CDStruct_887e071c *_data;
+    struct optional<gss::LineType> _lineType;
     unsigned long long _vertexIndexA;
     unsigned long long _vertexIndexB;
     CDStruct_3b01f0aa *_junctionA;
@@ -37,9 +38,9 @@ __attribute__((visibility("hidden")))
     NSString *_shieldGroup;
     VKLabelNavRoadLabel *_roadSign;
     VKLabelNavRoadLabel *_roadShield;
-    BOOL _isVisibilityCached[3];
-    BOOL _cachedSignVisibility[3];
-    BOOL _cachedShieldVisibility[3];
+    BOOL _isVisibilityCached[8];
+    BOOL _cachedSignVisibility[8];
+    BOOL _cachedShieldVisibility[8];
     BOOL _hasVisibleSigns;
     BOOL _hasVisibleShields;
     BOOL _suppressRoadSignIfShieldPresent;

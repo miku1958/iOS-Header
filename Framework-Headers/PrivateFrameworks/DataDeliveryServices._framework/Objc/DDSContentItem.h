@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DDSAsset, NSDictionary, NSURL;
+@class DDSAsset, NSDictionary, NSString, NSURL;
 
 @interface DDSContentItem : NSObject
 {
@@ -15,12 +15,19 @@
 }
 
 @property (strong, nonatomic) NSDictionary *contents; // @synthesize contents=_contents;
+@property (readonly, nonatomic) NSString *fileName;
+@property (readonly, nonatomic) NSString *locale;
 @property (strong, nonatomic) DDSAsset *parentAsset; // @synthesize parentAsset=_parentAsset;
 @property (readonly, nonatomic) NSURL *path;
+@property (readonly, nonatomic) NSDictionary *region;
+@property (readonly, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)init;
 - (id)initWithParentAsset:(id)arg1 contents:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToContentItem:(id)arg1;
 
 @end
 

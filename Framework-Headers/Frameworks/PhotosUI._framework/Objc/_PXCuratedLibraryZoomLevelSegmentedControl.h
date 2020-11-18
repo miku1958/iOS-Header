@@ -16,7 +16,7 @@
 + (double)_cornerRadiusForTraitCollection:(id)arg1 size:(int)arg2;
 + (BOOL)_cursorInteractionEnabled;
 + (double)_sectionIndicatorInsetForTraitCollection:(id)arg1 size:(int)arg2;
-- (void)highlightSegment:(int)arg1;
+- (void)_highlightSegment:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

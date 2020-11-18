@@ -31,7 +31,7 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (long long)dependencyProcessingOrdinality;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (void)setSortedResults:(id)arg1;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;

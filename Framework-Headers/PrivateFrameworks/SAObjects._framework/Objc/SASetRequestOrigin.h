@@ -25,6 +25,7 @@
 @property (nonatomic) double horizontalAccuracy;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
+@property (copy, nonatomic) NSNumber *preciseLocationEnabled;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (nonatomic) double speed;
 @property (copy, nonatomic) NSString *status;

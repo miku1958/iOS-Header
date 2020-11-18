@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_clearContents;
 - (id)_labelLayerToClipDuringBoundsSizeAnimation;
-- (void)_setFrameOrBounds:(struct CGRect)arg1 settingAction:(CDUnknownBlockType)arg2;
 - (void)_setLabelMasksToBoundsForAnimation:(BOOL)arg1;
 - (void)_updateContentLayer;
 - (void)invalidateContentInsets;
@@ -34,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setNeedsDisplayOnBoundsChange:(BOOL)arg1;
 - (void)updateContentInsets;
-- (void)updateContentLayerSize;
 
 @end
 

@@ -8,24 +8,20 @@
 
 #import <PassKitUI/PKObservableContentContainer-Protocol.h>
 
-@class NSHashTable, NSString, PKCompactNavigationContainerController, UIVisualEffectView;
+@class NSHashTable, NSString, UIVisualEffectView;
 
 @interface PKCompactNavigationContainedNavigationController : UINavigationController <PKObservableContentContainer>
 {
     UIVisualEffectView *_backdropView;
     struct os_unfair_lock_s _observersLock;
     NSHashTable *_observers;
-    BOOL _propagateParentNCCBottomSafeAreaInset;
     unsigned long long _style;
-    PKCompactNavigationContainerController *_parentNavigationContainerController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) PKCompactNavigationContainerController *parentNavigationContainerController; // @synthesize parentNavigationContainerController=_parentNavigationContainerController;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
-@property (nonatomic) BOOL propagateParentNCCBottomSafeAreaInset; // @synthesize propagateParentNCCBottomSafeAreaInset=_propagateParentNCCBottomSafeAreaInset;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 

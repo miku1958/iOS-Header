@@ -48,8 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)_handleRecordChanges:(id)arg1;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 recordZoneIDs:(id)arg2 configurationsByRecordZoneID:(id)arg3;
 - (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
+@protocol MTLBuffer, MTLCounterSampleBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
 
 @protocol MTLRenderCommandEncoder <MTLCommandEncoder>
 
@@ -30,6 +30,7 @@
 - (void)executeCommandsInBuffer:(id<MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
+- (void)sampleCountersInBuffer:(id<MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -51,8 +52,8 @@
 - (void)setFragmentTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
 - (void)setRenderPipelineState:(id<MTLRenderPipelineState>)arg1;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
 - (void)setStencilFrontReferenceValue:(unsigned int)arg1 backReferenceValue:(unsigned int)arg2;
 - (void)setStencilReferenceValue:(unsigned int)arg1;
 - (void)setStencilStoreAction:(unsigned long long)arg1;
@@ -71,7 +72,7 @@
 - (void)setTileTexture:(id<MTLTexture>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTileTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
-- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)setVertexBuffer:(id<MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;

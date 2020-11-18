@@ -44,7 +44,6 @@
 @property (readonly, nonatomic) NSUUID *uuid;
 
 - (void)_accumulateErrorDescription:(id)arg1;
-- (void)_binaryInsertList:(id)arg1;
 - (id)_copyStandardEffectDefinitions;
 - (void)_distill:(id)arg1;
 - (void)_distillChanges:(id)arg1;
@@ -61,14 +60,11 @@
 - (void)_logInfo:(id)arg1;
 - (void)_logWarning:(id)arg1;
 - (id)_productionForRenditionSpec:(id)arg1;
-- (BOOL)_recordRenditionEntryFromRendition:(id)arg1;
 - (unsigned long long)_removeRenditionsWithKeySpecs:(id)arg1;
 - (id)_renditionsFromProductions:(id)arg1 error:(id *)arg2;
 - (id)_renditionsWithError:(id *)arg1;
 - (void)_resetDocumentUuid:(id)arg1;
 - (BOOL)_setupWithOutputPath:(id)arg1 attemptIncremental:(BOOL)arg2;
-- (BOOL)_sortRenditionEntries;
-- (BOOL)_storeRenditions;
 - (id)_textureFaceExclusionPredicate;
 - (BOOL)assetStoreWriteToDisk;
 - (void)cancelDistill;
@@ -94,7 +90,7 @@
 - (void)performSelectorOnCallbackThread:(SEL)arg1 withObject:(id)arg2 waitUntilDone:(BOOL)arg3;
 - (void)removeRenditionsFromAssetStoreWithKey:(id)arg1;
 - (void)saveAndDistillWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setAsset:(id)arg1 withKey:(const struct _renditionkeytoken *)arg2 fromRenditionSpec:(id)arg3;
+- (BOOL)setAsset:(id)arg1 withKey:(const struct _renditionkeytoken *)arg2 fromRenditionSpec:(id)arg3;
 - (void)setAssetColorSpaceID:(unsigned int)arg1;
 - (void)setAssetSchemaVersion:(unsigned int)arg1;
 - (void)setAssetStorageVersion:(unsigned int)arg1;
@@ -104,7 +100,6 @@
 - (void)setAssetStoreKeySemantics:(int)arg1;
 - (void)setAssetStoreRenditionCount:(unsigned int)arg1;
 - (void)setAssetStoreUuid:(id)arg1;
-- (BOOL)sortAndStoreRenditions;
 - (void)waitTimerDidFire:(id)arg1;
 - (void)waitUntilFinished;
 

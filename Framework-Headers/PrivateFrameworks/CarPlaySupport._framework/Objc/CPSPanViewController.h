@@ -16,8 +16,8 @@
 @interface CPSPanViewController : UIViewController <CPSPanViewDelegate, UIGestureRecognizerDelegate, CPSLinearFocusProviding>
 {
     BOOL _rightHandDrive;
-    id<CPSPanEventDelegate> _panDelegate;
     CPSPanView *_panView;
+    id<CPSPanEventDelegate> _panDelegate;
     NSArray *_nudgeGestureRecognizers;
 }
 
@@ -29,12 +29,14 @@
 @property (strong, nonatomic) CPSPanView *panView; // @synthesize panView=_panView;
 @property (readonly, nonatomic) double sideButtonTopInset;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (void)_handleNudgeLongPress:(id)arg1;
 - (void)_handleNudgeTapped:(id)arg1;
 - (id)_linearFocusItems;
 - (id)_linearFocusItemsWithPresentedMapButtons:(id)arg1;
+- (void)loadView;
 - (void)panView:(id)arg1 panBeganWithDirection:(long long)arg2;
 - (void)panView:(id)arg1 panEndedWithDirection:(long long)arg2;
 - (void)panView:(id)arg1 panWithDirection:(long long)arg2;

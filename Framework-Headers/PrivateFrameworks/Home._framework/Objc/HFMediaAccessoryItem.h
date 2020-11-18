@@ -51,6 +51,8 @@
 - (void)_decorateWithMediaSystemSpecificKeys:(id)arg1;
 - (void)_decorateWithSoftwareUpdateStateKeys:(id)arg1;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
+- (BOOL)_isDumbSpeaker;
+- (BOOL)_isHAPCapableSpeaker;
 - (BOOL)_isInstallingSoftwareUpdate;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
@@ -60,6 +62,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createControlItems;
 - (id)currentStateActionBuildersForHome:(id)arg1;
+- (id)enableDoorbellChime:(BOOL)arg1;
 - (id)iconDescriptor:(id)arg1;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
@@ -68,12 +71,11 @@
 - (BOOL)isAppleTV;
 - (BOOL)isAudioReceiver;
 - (BOOL)isContainedWithinMediaSystem;
-- (BOOL)isHAPCapableSpeaker;
+- (BOOL)isDoorbellChimeEnabled;
 - (BOOL)isHomePod;
 - (BOOL)isHomePodAndIsInMediaSystem;
 - (BOOL)isHomePodMediaSystem;
 - (BOOL)isSiriDisabled;
-- (BOOL)isSpeaker;
 - (BOOL)isStandaloneHomePod;
 - (id)namingComponentForHomeKitObject;
 - (id)performStandardUpdateWithOptions:(id)arg1;

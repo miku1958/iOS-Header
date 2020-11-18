@@ -32,7 +32,7 @@
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
 - (unsigned long long)desiredDateComplicationDateStyle;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 - (void)layoutSubviews;
 - (void)setDateComplicationText:(id)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
 - (void)setStyle:(unsigned long long)arg1;

@@ -100,6 +100,7 @@
 - (void)sendGPRMCDataStatus:(BOOL)arg1 ValueV:(BOOL)arg2 ValueX:(BOOL)arg3 forUUID:(id)arg4;
 - (void)sendNMEAFilterList:(id)arg1 forUUID:(id)arg2;
 - (void)sendOutgoingEAData:(id)arg1 forSessionUUID:(id)arg2;
+- (void)sendWiredCarPlayAvailable:(id)arg1 usbIdentifier:(id)arg2 wirelessCarPlayAvailable:(id)arg3 bluetoothIdentifier:(id)arg4 forUUID:(id)arg5;
 - (void)setAreLocationAccessoriesEnabled:(BOOL)arg1;
 - (void)setShouldAllowCppRuntime:(BOOL)arg1;
 - (void)setShouldAllowInternalProtocols:(BOOL)arg1;

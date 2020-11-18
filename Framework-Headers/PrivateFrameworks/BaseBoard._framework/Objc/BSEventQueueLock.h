@@ -15,8 +15,7 @@
     BSEventQueue *_eventQueue;
 }
 
-@property (strong, nonatomic) BSEventQueue *eventQueue; // @synthesize eventQueue=_eventQueue;
-@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
 - (void).cxx_destruct;
 - (void)dealloc;

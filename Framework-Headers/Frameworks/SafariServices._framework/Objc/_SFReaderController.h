@@ -52,7 +52,7 @@
 - (void)_performActionsDelayedUntilReaderWebViewIsReadyDidTimeout:(id)arg1;
 - (BOOL)_readerWebViewIsReady;
 - (void)_saveConfigurationAndSendToWebProcess;
-- (void)_sendReaderAvailabilityNotificationForReason:(long long)arg1;
+- (void)_sendReaderAvailabilityNotificationForState:(id)arg1 reason:(long long)arg2;
 - (void)_setUpReaderActivityListener;
 - (void)_updateJavaScriptEnabled;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
@@ -65,6 +65,7 @@
 - (void)_webView:(id)arg1 dataInteractionOperationWasHandled:(BOOL)arg2 forSession:(id)arg3 itemProviders:(id)arg4;
 - (void)_webView:(id)arg1 getAlternateURLFromImage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_webView:(id)arg1 performDataInteractionOperationWithItemProviders:(id)arg2;
+- (BOOL)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (unsigned long long)_webView:(id)arg1 willUpdateDataInteractionOperationToOperation:(unsigned long long)arg2 forSession:(id)arg3;
 - (void)activateFont:(id)arg1;
 - (void)activateReader;
@@ -87,8 +88,8 @@
 - (void)didCollectReaderContentForMail:(id)arg1;
 - (void)didCollectReadingListItemInfo:(id)arg1 bookmarkID:(id)arg2;
 - (void)didCreateReaderWebView:(id)arg1;
-- (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
-- (void)didDetermineReaderAvailabilityForDynamicCheck:(BOOL)arg1;
+- (void)didDetermineReaderAvailability:(id)arg1;
+- (void)didDetermineReaderAvailabilityForDynamicCheck:(id)arg1;
 - (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;

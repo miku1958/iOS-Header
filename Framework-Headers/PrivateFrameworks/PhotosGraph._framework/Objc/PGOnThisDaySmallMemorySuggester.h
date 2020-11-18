@@ -22,13 +22,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL lastSuggestionWasColliding;
 @property (readonly) Class superclass;
 
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
 - (void).cxx_destruct;
 - (id)momentByMomentLocalIdentifierWithMomentLocalIdentifiers:(id)arg1;
-- (id)nextSuggestion;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)reset;
 - (id)sortedMomentLocalIdentifiersWithDateIgnoringYearBeforeDateYear:(id)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;

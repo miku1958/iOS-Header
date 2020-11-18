@@ -31,6 +31,7 @@
     NEVPNIKEv2SecurityAssociationParameters *_childSecurityAssociationParameters;
     long long _minimumTLSVersion;
     long long _maximumTLSVersion;
+    unsigned long long _mtu;
     NSString *_pluginType;
     NSArray *_IKESecurityAssociationParametersArray;
     NSArray *_childSecurityAssociationParametersArray;
@@ -53,6 +54,7 @@
 @property BOOL enableRevocationCheck; // @synthesize enableRevocationCheck=_enableRevocationCheck;
 @property long long maximumTLSVersion; // @synthesize maximumTLSVersion=_maximumTLSVersion;
 @property long long minimumTLSVersion; // @synthesize minimumTLSVersion=_minimumTLSVersion;
+@property unsigned long long mtu; // @synthesize mtu=_mtu;
 @property int natKeepAliveOffloadEnable; // @synthesize natKeepAliveOffloadEnable=_natKeepAliveOffloadEnable;
 @property int natKeepAliveOffloadInterval; // @synthesize natKeepAliveOffloadInterval=_natKeepAliveOffloadInterval;
 @property BOOL opportunisticPFS; // @synthesize opportunisticPFS=_opportunisticPFS;

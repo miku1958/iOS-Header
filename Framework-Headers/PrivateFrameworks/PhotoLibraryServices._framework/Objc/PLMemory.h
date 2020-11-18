@@ -32,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *extendedCuratedAssets; // @dynamic extendedCuratedAssets;
 @property (nonatomic) BOOL favorite; // @dynamic favorite;
+@property (nonatomic) unsigned short featuredState; // @dynamic featuredState;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
@@ -79,11 +80,12 @@
 + (id)entityName;
 + (BOOL)indexTitleForMemoryCategory:(unsigned long long)arg1;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 creationDate:(id)arg5;
++ (id)memoriesToPrefetchForWidgetInManagedObjectContext:(id)arg1;
 + (id)memoriesToPrefetchInPhotoLibrary:(id)arg1;
 + (id)memoriesToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;
 + (id)memoriesWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)memoryWithUUID:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 - (id)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
 - (id)calculateKeyAsset;
 - (id)cplFullRecord;

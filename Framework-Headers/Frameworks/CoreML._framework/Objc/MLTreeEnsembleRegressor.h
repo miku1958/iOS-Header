@@ -14,8 +14,8 @@
 
 @interface MLTreeEnsembleRegressor : MLRegressor <MLModelSpecificationLoader, MLCompiledModelLoader, MLSpecificationCompiler>
 {
-    struct shared_ptr<Archiver::MMappedFile> _mmapped_model;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _cached_model;
+    shared_ptr_0841df90 _mmapped_model;
+    vector_aab22ae2 _cached_model;
     unsigned long long num_dimensions;
     NSArray *output_classes;
 }

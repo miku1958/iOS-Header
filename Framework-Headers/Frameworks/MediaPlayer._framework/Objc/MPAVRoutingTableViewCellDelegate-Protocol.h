@@ -12,5 +12,6 @@
 
 @optional
 - (void)routingCell:(MPAVRoutingTableViewCell *)arg1 mirroringSwitchValueDidChange:(BOOL)arg2;
+- (void)routingCellDidTapToExpand:(MPAVRoutingTableViewCell *)arg1;
 @end
 

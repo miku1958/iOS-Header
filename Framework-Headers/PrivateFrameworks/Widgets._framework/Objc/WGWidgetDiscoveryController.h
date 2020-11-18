@@ -10,12 +10,11 @@
 #import <Widgets/WGWidgetDataSourceObserver-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDataSource-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDelegate-Protocol.h>
-#import <Widgets/WGWidgetViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, WGWidgetListEditViewController, WGWidgetPersistentStateController, WGWidgetStatsController;
 @protocol OS_dispatch_queue, WGWidgetDebugging, WGWidgetDiscoveryControllerDelegate;
 
-@interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
+@interface WGWidgetDiscoveryController : NSObject <WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
 {
     NSMutableDictionary *_archive;
     NSObject<OS_dispatch_queue> *_archiveWriteQueue;
@@ -45,23 +44,18 @@
 
 @property (nonatomic) BOOL bootstrapFavoriteWidgets;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetDebugging> debuggingHandler; // @synthesize debuggingHandler=_debuggingHandler;
 @property (weak, nonatomic) id<WGWidgetDiscoveryControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic, setter=_setPresentedEditViewController:) WGWidgetListEditViewController *presentedEditViewController; // @synthesize presentedEditViewController=_presentedEditViewController;
 @property (strong, nonatomic, getter=_presentedEditViewControllerStatusBarAssertion, setter=_setPresentedEditViewControllerStatusBarAssertion:) id presentedEditViewControllerStatusBarAssertion; // @synthesize presentedEditViewControllerStatusBarAssertion=_presentedEditViewControllerStatusBarAssertion;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *widgetIDsToPendingTestCompletions; // @synthesize widgetIDsToPendingTestCompletions=_widgetIDsToPendingTestCompletions;
 @property (strong, nonatomic) NSMutableDictionary *widgetIDsToPendingTestTearDowns; // @synthesize widgetIDsToPendingTestTearDowns=_widgetIDsToPendingTestTearDowns;
 @property (readonly, nonatomic, getter=_widgetIDsToWidgets) NSMutableDictionary *widgetIDsToWidgets; // @synthesize widgetIDsToWidgets=_widgetIDsToWidgets;
 
 + (long long)layoutModeForSize:(struct CGSize)arg1;
-+ (id)widgetViewControllerWithWidgetBundleID:(id)arg1 containingBundleID:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_addDefaultPinnedWidgets;
 - (void)_applicationIconChanged:(id)arg1;
@@ -104,7 +98,6 @@
 - (void)_widgetListEditViewControllerWillDisappear:(id)arg1;
 - (void)_widgetViewControllerDidRemoveSnapshot:(id)arg1;
 - (void)_widgetViewControllerRequestsAdd:(id)arg1;
-- (id)_widgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 didConnect:(CDUnknownBlockType)arg3 canTearDown:(CDUnknownBlockType)arg4;
 - (void)addDiscoveryObserver:(id)arg1;
 - (BOOL)alwaysShowsFavoriteWidgets;
 - (BOOL)areWidgetsPinned;
@@ -131,6 +124,7 @@
 - (void)remoteViewControllerDidConnectForWidgetViewController:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidgetViewController:(id)arg1;
 - (void)removeDiscoveryObserver:(id)arg1;
+- (void)removeWidgetIdentifiersFromToday:(id)arg1;
 - (void)setHasContent:(BOOL)arg1 forWidgetWithIdentifier:(id)arg2;
 - (void)setLargestAvailableDisplayMode:(long long)arg1 forWidgetWithIdentifier:(id)arg2;
 - (void)setUserSpecifiedDisplayMode:(long long)arg1 forWidgetWithIdentifier:(id)arg2;
@@ -142,6 +136,7 @@
 - (BOOL)shouldRemoveSnapshotWhenNotVisibleForWidget:(id)arg1;
 - (BOOL)shouldShowWidgetsPinButtonForWidgetListEditViewController:(id)arg1;
 - (BOOL)shouldShowWidgetsPinningTeachingView;
+- (id)todayWidgetIdentifiers;
 - (void)unregisterIdentifierForRefreshEvents:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidget:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidgetWithIdentifier:(id)arg1;

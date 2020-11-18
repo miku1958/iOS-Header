@@ -10,13 +10,19 @@
 
 @interface SISchemaUUFRPresented : PBCodable
 {
-    int _errorCode;
     SISchemaViewContainer *_viewContainer;
     NSString *_errorDomain;
+    int _errorCode;
+    CDStruct_70a7dc3e _has;
+    BOOL _hasViewContainer;
+    BOOL _hasErrorDomain;
 }
 
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
 @property (copy, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
+@property (nonatomic) BOOL hasErrorCode;
+@property (nonatomic) BOOL hasErrorDomain; // @synthesize hasErrorDomain=_hasErrorDomain;
+@property (nonatomic) BOOL hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 

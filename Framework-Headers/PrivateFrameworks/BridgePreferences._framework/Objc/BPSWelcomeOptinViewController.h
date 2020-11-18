@@ -8,48 +8,54 @@
 
 #import <BridgePreferences/BPSBuddyController-Protocol.h>
 
-@class BPSWatchView, NSString, OBTrayButton;
+@class BPSWatchView, NSString, NSUserActivity, OBHeaderAccessoryButton, OBTrayButton;
 @protocol BPSBuddyControllerDelegate;
 
 @interface BPSWelcomeOptinViewController : OBWelcomeController <BPSBuddyController>
 {
+    BOOL _isDisplayingInSkippedMiniFlow;
     BOOL _showSuggestedButton;
     BOOL _showAlternateButton;
     BOOL _showOkayButton;
-    BOOL _showLearnMoreButton;
     BOOL _hasFinishedLoadingView;
+    BOOL _hasDetailText;
     unsigned long long _style;
     BPSWatchView *_watchView;
     id<BPSBuddyControllerDelegate> _delegate;
     OBTrayButton *_suggestedChoiceButton;
     OBTrayButton *_alternateChoiceButton;
     OBTrayButton *_okayButton;
-    OBTrayButton *_learnMoreButton;
+    OBHeaderAccessoryButton *_learnMoreButton;
+    NSUserActivity *_tapToRadarActivity;
 }
 
 @property (strong, nonatomic) OBTrayButton *alternateChoiceButton; // @synthesize alternateChoiceButton=_alternateChoiceButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BPSBuddyControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasDetailText; // @synthesize hasDetailText=_hasDetailText;
 @property (nonatomic) BOOL hasFinishedLoadingView; // @synthesize hasFinishedLoadingView=_hasFinishedLoadingView;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) OBTrayButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property (nonatomic) BOOL isDisplayingInSkippedMiniFlow; // @synthesize isDisplayingInSkippedMiniFlow=_isDisplayingInSkippedMiniFlow;
+@property (strong, nonatomic) OBHeaderAccessoryButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property (strong, nonatomic) OBTrayButton *okayButton; // @synthesize okayButton=_okayButton;
 @property (nonatomic) BOOL showAlternateButton; // @synthesize showAlternateButton=_showAlternateButton;
-@property (nonatomic) BOOL showLearnMoreButton; // @synthesize showLearnMoreButton=_showLearnMoreButton;
 @property (nonatomic) BOOL showOkayButton; // @synthesize showOkayButton=_showOkayButton;
 @property (nonatomic) BOOL showSuggestedButton; // @synthesize showSuggestedButton=_showSuggestedButton;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (strong, nonatomic) OBTrayButton *suggestedChoiceButton; // @synthesize suggestedChoiceButton=_suggestedChoiceButton;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSUserActivity *tapToRadarActivity; // @synthesize tapToRadarActivity=_tapToRadarActivity;
 @property (strong, nonatomic) BPSWatchView *watchView; // @synthesize watchView=_watchView;
 
 - (void).cxx_destruct;
 - (void)_addButtonObservers;
 - (id)_baseIdentifier;
 - (void)_didTapPrivacyAccept:(id)arg1;
+- (void)_endTapToRadarActivity;
 - (void)_refreshButtonTray;
 - (void)_removeButtonObservers;
+- (void)_startTapToRadarActivity;
 - (void)addFollowUpForPageAndDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addFollowUpForPageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)alternateButtonPressed:(id)arg1;
@@ -71,9 +77,11 @@
 - (id)localizedInformativeText;
 - (id)localizedNotificationTitle;
 - (id)localizedTitle;
+- (void)markPaneAsSkipped;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)okayButtonPressed:(id)arg1;
 - (id)okayButtonTitle;
+- (void)openTapToRadar;
 - (id)optinLocalizationBundle;
 - (id)optinLocalizationStringsFile;
 - (id)privacyBundles;
@@ -82,12 +90,16 @@
 - (void)showOptinConfirmationAlert:(id)arg1 optinChoice:(BOOL)arg2;
 - (void)suggestedButtonPressed:(id)arg1;
 - (id)suggestedButtonTitle;
+- (id)tapToRadarMetadata;
 - (id)titleAttributedString;
 - (id)titleString;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)wantsAlternateChoicePillButton;
 - (BOOL)wantsAlternateChoiceSystemButton;
 - (BOOL)wantsFollowUpNotification;
+- (BOOL)wantsInternalFPOLabel;
 - (BOOL)wantsLearnMoreButton;
 - (BOOL)wantsLightenBlendedScreen;
 - (BOOL)wantsOkayPillButton;

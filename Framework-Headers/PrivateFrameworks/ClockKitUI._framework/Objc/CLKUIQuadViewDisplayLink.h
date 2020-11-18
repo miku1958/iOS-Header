@@ -6,22 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, CLKUIQuadView;
+@class CADisplayLink, CLKClockTimerToken, CLKUIQuadView;
 
 @interface CLKUIQuadViewDisplayLink : NSObject
 {
     CLKUIQuadView *_quadView;
     CADisplayLink *_displayLink;
+    BOOL _synchronizeWithClockTimer;
+    CLKClockTimerToken *_timerToken;
+    long long _preferredFramesPerSecond;
+    BOOL _paused;
 }
 
 - (void).cxx_destruct;
 - (void)_displayLinkFired:(id)arg1;
-- (id)initWithTarget:(id)arg1;
+- (void)_updatePausedState;
+- (id)initWithTarget:(id)arg1 synchronizeWithClockTimer:(BOOL)arg2;
 - (void)invalidate;
 - (BOOL)isPaused;
 - (unsigned long long)preferredFramesPerSecond;
 - (void)setPaused:(BOOL)arg1;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
+- (double)timestamp;
 
 @end
 

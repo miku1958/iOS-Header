@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPModelStoreGroupingsMusicKitRequestOperation.h>
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseMusicKitRequestOperation : MPModelStoreGroupingsMusicKitRequestOperation
 {
 }

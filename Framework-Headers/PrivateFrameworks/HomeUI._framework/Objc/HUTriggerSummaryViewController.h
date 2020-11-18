@@ -14,7 +14,7 @@
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 #import <HomeUI/WFHomeComposeViewControllerDelegate-Protocol.h>
 
-@class HFTriggerBuilder, HUForwardingTriggerActionBuilderDelegate, HUTriggerActionFlow, HUTriggerSummaryActionGridViewController, HUTriggerSummaryItemManager, NSString;
+@class HFTriggerBuilder, HUForwardingTriggerActionBuilderDelegate, HUTriggerActionFlow, HUTriggerSummaryActionGridViewController, HUTriggerSummaryItemManager, NSSet, NSString;
 @protocol HUTriggerEditorDelegate;
 
 @interface HUTriggerSummaryViewController : HUItemTableViewController <HUTriggerEditorDelegate, HUSwitchCellDelegate, HUTriggerSummaryActionGridViewControllerDelegate, HUTriggerDurationPickerDelegate, UITextViewDelegate, WFHomeComposeViewControllerDelegate, HUMediaSelectionViewControllerDelegate>
@@ -23,6 +23,7 @@
     BOOL _isEditingExistingTrigger;
     HUTriggerSummaryActionGridViewController *_actionSetsGridViewController;
     HUTriggerSummaryActionGridViewController *_serviceActionsGridViewController;
+    HUTriggerSummaryActionGridViewController *_prioritizedServiceActionsGridViewController;
     HFTriggerBuilder *_triggerBuilder;
     id<HUTriggerEditorDelegate> _delegate;
     HUForwardingTriggerActionBuilderDelegate *_forwardingTriggerActionBuilderDelegate;
@@ -38,6 +39,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isEditingExistingTrigger; // @synthesize isEditingExistingTrigger=_isEditingExistingTrigger;
 @property (readonly, nonatomic) HUTriggerSummaryItemManager *itemManager; // @dynamic itemManager;
+@property (readonly, nonatomic) HUTriggerSummaryActionGridViewController *prioritizedServiceActionsGridViewController; // @synthesize prioritizedServiceActionsGridViewController=_prioritizedServiceActionsGridViewController;
+@property (copy, nonatomic) NSSet *prioritizedServices;
 @property (readonly, nonatomic) HUTriggerSummaryActionGridViewController *serviceActionsGridViewController; // @synthesize serviceActionsGridViewController=_serviceActionsGridViewController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HFTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
@@ -85,6 +88,7 @@
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)triggerSummaryActionGridViewController:(id)arg1 didUpdateTriggerBuilder:(id)arg2;
+- (BOOL)triggerSummaryActionGridViewController:(id)arg1 shouldShowAction:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

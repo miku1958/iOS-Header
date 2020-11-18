@@ -12,8 +12,9 @@
 {
     MISSING_TYPE *conceptStore;
     MISSING_TYPE *healthRecordsStore;
-    MISSING_TYPE *recordCountProvider;
     MISSING_TYPE *healthExperienceStore;
+    MISSING_TYPE *recordCounts;
+    MISSING_TYPE *sub;
     MISSING_TYPE *loadState;
     MISSING_TYPE *changeHandler;
     MISSING_TYPE *isObserving;

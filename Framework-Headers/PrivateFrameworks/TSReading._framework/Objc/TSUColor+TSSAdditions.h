@@ -21,5 +21,7 @@
 + (id)p_defaultPresetColors:(int)arg1;
 + (id)presetKinds;
 - (BOOL)isThemeEquivalent:(id)arg1;
+- (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
+- (long long)mixingTypeWithObject:(id)arg1;
 @end
 

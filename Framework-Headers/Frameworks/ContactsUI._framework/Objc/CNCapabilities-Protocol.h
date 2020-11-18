@@ -14,5 +14,6 @@
 @property (readonly, nonatomic) BOOL isPaySupported;
 @property (readonly, nonatomic) BOOL isiMessageSupported;
 
++ (BOOL)shouldUseLegacyMessages;
 @end
 

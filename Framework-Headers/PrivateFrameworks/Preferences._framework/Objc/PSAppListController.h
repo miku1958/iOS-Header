@@ -8,7 +8,7 @@
 
 #import <Preferences/PSSystemPolicyForAppDelegate-Protocol.h>
 
-@class PSSystemPolicyForApp;
+@class NSString, PSSystemPolicyForApp;
 
 @interface PSAppListController : PSListController <PSSystemPolicyForAppDelegate>
 {
@@ -17,8 +17,13 @@
 }
 
 @property (strong, nonatomic) PSSystemPolicyForApp *appPolicy; // @synthesize appPolicy=_appPolicy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 
++ (id)_typeErrorStringForKeyWithName:(id)arg1 expectedType:(Class)arg2 actualType:(Class)arg3;
 + (id)allowedPrivacyBundles;
 + (BOOL)canUseOnBoardingKitForPrivacyDisplayForBundleID:(id)arg1;
 + (id)childPaneSpecifierFromDictionary:(id)arg1 stringsTable:(id)arg2 parentSpecifier:(id)arg3 target:(id)arg4;

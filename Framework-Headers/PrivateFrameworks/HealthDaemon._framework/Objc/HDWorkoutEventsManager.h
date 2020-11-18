@@ -30,6 +30,7 @@
 - (id)initWithProfile:(id)arg1;
 - (void)requestPendingEventsThroughDate:(id)arg1 sessionIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)takeSessionAssertionWithOwnerIdentifier:(id)arg1 activityType:(unsigned long long)arg2 sessionIdentifier:(id)arg3 eventsDelegate:(id)arg4;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 
 @end
 

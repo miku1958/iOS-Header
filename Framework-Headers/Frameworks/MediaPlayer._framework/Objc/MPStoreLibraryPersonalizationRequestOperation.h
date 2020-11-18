@@ -8,6 +8,7 @@
 
 @class MPStoreLibraryPersonalizationRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLibraryPersonalizationRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

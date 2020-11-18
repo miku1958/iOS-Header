@@ -10,13 +10,14 @@
 #import <PassKitUI/PKSpendingSummaryFetcherObserver-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, UIBarButtonItem, UIScrollView;
+@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, PKTransactionSource, UIBarButtonItem, UIScrollView;
 @protocol OS_dispatch_source, PKSpendingSummaryViewControllerDelegate;
 
 @interface PKSpendingSummaryViewController : UIViewController <PKSpendingSummaryFetcherObserver, UIScrollViewDelegate, PKSpendingSingleSummaryViewControllerDelegate>
 {
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
+    PKPaymentPass *_pass;
     PKSpendingSummaryFetcher *_summaryFetcher;
     NSCalendar *_currentCalendar;
     NSArray *_weeks;
@@ -86,7 +87,7 @@
 - (id)_visibileIndicesAtContentOffset:(struct CGPoint)arg1;
 - (double)_yPositionForNonPrimaryVCs;
 - (void)dealloc;
-- (id)initWithPaymentPass:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
+- (id)initWithTransactionSource:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
 - (void)invalidatedSpendingSummaryOfType:(unsigned long long)arg1 startingWithDate:(id)arg2;
 - (void)invalidatedSummariesAvailable;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

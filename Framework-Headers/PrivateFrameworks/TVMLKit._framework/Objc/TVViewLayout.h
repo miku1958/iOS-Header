@@ -69,6 +69,7 @@
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)defaultFocusSizeIncrease;
 - (CDUnknownBlockType)tv_layoutPropertyGetterForStyle:(id)arg1;
 - (CDUnknownBlockType)tv_layoutPropertySetterForStyle:(id)arg1;
 

@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBPlayMediaIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBString, _INPBTimestamp;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBPrivatePlayMediaIntentData, _INPBString, _INPBTimestamp;
 
 @interface _INPBPlayMediaIntent : PBCodable <_INPBPlayMediaIntent, NSSecureCoding, NSCopying>
 {
@@ -24,7 +24,6 @@
     } _has;
     BOOL _playShuffled;
     BOOL _resumePlayback;
-    BOOL __encodeLegacyGloryData;
     int _parsecCategory;
     int _playbackQueueLocation;
     int _playbackRepeatMode;
@@ -43,12 +42,12 @@
     _INPBString *_musicArtistName;
     double _playbackSpeed;
     _INPBString *_playlistTitle;
+    _INPBPrivatePlayMediaIntentData *_privatePlayMediaIntentData;
     NSString *_proxiedBundleIdentifier;
     NSString *_recoID;
     _INPBString *_showTitle;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *alternativeResults; // @synthesize alternativeResults=_alternativeResults;
 @property (readonly, nonatomic) unsigned long long alternativeResultsCount;
 @property (copy, nonatomic) NSArray *audioSearchResults; // @synthesize audioSearchResults=_audioSearchResults;
@@ -74,6 +73,7 @@
 @property (nonatomic) BOOL hasPlaybackRepeatMode;
 @property (nonatomic) BOOL hasPlaybackSpeed;
 @property (readonly, nonatomic) BOOL hasPlaylistTitle;
+@property (readonly, nonatomic) BOOL hasPrivatePlayMediaIntentData;
 @property (readonly, nonatomic) BOOL hasProxiedBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasRecoID;
 @property (nonatomic) BOOL hasResumePlayback;
@@ -94,6 +94,7 @@
 @property (nonatomic) int playbackRepeatMode; // @synthesize playbackRepeatMode=_playbackRepeatMode;
 @property (nonatomic) double playbackSpeed; // @synthesize playbackSpeed=_playbackSpeed;
 @property (strong, nonatomic) _INPBString *playlistTitle; // @synthesize playlistTitle=_playlistTitle;
+@property (strong, nonatomic) _INPBPrivatePlayMediaIntentData *privatePlayMediaIntentData; // @synthesize privatePlayMediaIntentData=_privatePlayMediaIntentData;
 @property (copy, nonatomic) NSString *proxiedBundleIdentifier; // @synthesize proxiedBundleIdentifier=_proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID; // @synthesize recoID=_recoID;
 @property (nonatomic) BOOL resumePlayback; // @synthesize resumePlayback=_resumePlayback;

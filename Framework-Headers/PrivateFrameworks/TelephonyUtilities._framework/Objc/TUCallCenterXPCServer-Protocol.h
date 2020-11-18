@@ -15,6 +15,7 @@
 - (oneway void)pullCallFromClientUsingHandoffActivityUserInfo:(NSDictionary *)arg1 reply:(void (^)(TUCall *, NSArray *))arg2;
 - (oneway void)reportLocalPreviewStoppedForCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)requestInitialState:(void (^)(NSArray *))arg1;
+- (oneway void)shouldAllowRingingCallStatusIndicator:(BOOL)arg1;
 - (oneway void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 @end
 

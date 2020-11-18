@@ -31,6 +31,8 @@
 - (void).cxx_destruct;
 - (unsigned long long)_cameraRestrictions;
 - (unsigned long long)_restrictedCapability:(unsigned long long)arg1 forAggregatorCapability:(long long)arg2;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)dealloc;
 - (id)initWithCoverSheetViewController:(id)arg1 policyAggregator:(id)arg2;
 

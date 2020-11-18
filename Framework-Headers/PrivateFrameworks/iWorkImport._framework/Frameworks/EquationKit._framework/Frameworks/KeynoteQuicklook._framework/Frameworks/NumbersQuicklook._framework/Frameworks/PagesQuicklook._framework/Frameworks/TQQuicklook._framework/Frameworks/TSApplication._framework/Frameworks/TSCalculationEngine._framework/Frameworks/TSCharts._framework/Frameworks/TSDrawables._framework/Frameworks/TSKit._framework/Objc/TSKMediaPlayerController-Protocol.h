@@ -16,11 +16,12 @@
 @property (readonly, nonatomic) BOOL canFastReverse;
 @property (readonly, nonatomic) BOOL canPlay;
 @property (readonly, nonatomic) double currentTime;
-@property (readonly, nonatomic) id<TSKMediaPlayerControllerDelegate> delegate;
+@property (readonly, weak, nonatomic) id<TSKMediaPlayerControllerDelegate> delegate;
 @property (readonly, nonatomic) double duration;
 @property (nonatomic) double endTime;
 @property (nonatomic, getter=isFastForwarding) BOOL fastForwarding;
 @property (nonatomic, getter=isFastReversing) BOOL fastReversing;
+@property (readonly, nonatomic) BOOL hasCurrentTime;
 @property (nonatomic, getter=isPlaying) BOOL playing;
 @property (nonatomic) float rate;
 @property (readonly, nonatomic) double remainingTime;
@@ -42,6 +43,7 @@
 - (void)seekForwardByOneFrame;
 - (void)seekToBeginning;
 - (void)seekToEnd;
+- (void)setVolume:(float)arg1 rampDuration:(double)arg2;
 - (void)stopSynchronously;
 - (void)teardown;
 @end

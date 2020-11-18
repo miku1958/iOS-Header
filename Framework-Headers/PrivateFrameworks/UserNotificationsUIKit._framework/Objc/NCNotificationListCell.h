@@ -108,7 +108,7 @@
 - (void)cellSettingsButtonPressed:(id)arg1;
 - (void)cellViewButtonPressed:(id)arg1;
 - (void)dealloc;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)hintSideSwipeForDefaultAction;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

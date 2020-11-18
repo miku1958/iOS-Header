@@ -9,7 +9,7 @@
 #import <MusicCarDisplayUI/MCDPCContainerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITabBarControllerDelegate-Protocol.h>
 
-@class MCDNowPlayingButtonWrapperView, MCDPCContainer, MCDPCModel, NSObject, NSString;
+@class CPUINowPlayingButtonWrapperView, MCDPCContainer, MCDPCModel, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentNavigationController : UITabBarController <UITabBarControllerDelegate, MCDPCContainerDelegate>
@@ -24,7 +24,7 @@
     UITabBarController *_hostTabBarController;
     MCDPCModel *_model;
     NSString *_bundleID;
-    MCDNowPlayingButtonWrapperView *_nowPlayingButtonView;
+    CPUINowPlayingButtonWrapperView *_nowPlayingButtonView;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
@@ -39,7 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UITabBarController *hostTabBarController; // @synthesize hostTabBarController=_hostTabBarController;
 @property (strong, nonatomic) MCDPCModel *model; // @synthesize model=_model;
-@property (strong, nonatomic) MCDNowPlayingButtonWrapperView *nowPlayingButtonView; // @synthesize nowPlayingButtonView=_nowPlayingButtonView;
+@property (strong, nonatomic) CPUINowPlayingButtonWrapperView *nowPlayingButtonView; // @synthesize nowPlayingButtonView=_nowPlayingButtonView;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITabBarController *tabBarController; // @synthesize tabBarController=_tabBarController;

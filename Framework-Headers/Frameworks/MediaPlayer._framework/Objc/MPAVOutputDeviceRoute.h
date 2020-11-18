@@ -27,12 +27,14 @@
 - (BOOL)canAccessRemoteAssets;
 - (BOOL)canFetchMediaDataFromSender;
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
+- (id)clusterComposition;
 - (id)description;
 - (id)groupUID;
 - (id)initWithOutputDevices:(id)arg1;
 - (BOOL)isAirPlayRoute;
 - (BOOL)isAppleTVRoute;
 - (BOOL)isCarplayRoute;
+- (BOOL)isClusterRoute;
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
@@ -42,6 +44,7 @@
 - (BOOL)isSplitterCapable;
 - (BOOL)isStereoPair;
 - (BOOL)isVolumeControlAvailable;
+- (long long)originalRouteSubtype;
 - (long long)pickableRouteType;
 - (id)playingPairedDeviceName;
 - (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;

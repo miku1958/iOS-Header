@@ -21,7 +21,7 @@
 + (void)fillOutConnectionInfo:(id)arg1 withPath:(id)arg2 interface:(id)arg3 remoteEndpoint:(id)arg4 parameters:(id)arg5 outputHandler:(struct nw_protocol *)arg6;
 + (id)getHashForObject:(id)arg1;
 + (id)getInterfaceName:(long long)arg1;
-+ (id)getInterfaceTypeString:(int)arg1;
++ (id)getInterfaceTypeString:(long long)arg1;
 + (BOOL)hasPacketDrop:(id)arg1;
 + (id)hexDumpBytes:(const void *)arg1 length:(unsigned long long)arg2;
 + (long long)interfaceTypeOfInterface:(id)arg1;

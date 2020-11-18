@@ -6,18 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HAPEncryptedSession-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
 @class HMFTimer, NSData, NSMutableData, NSObject, NSString;
 @protocol HAPPairSetupSessionDelegate, OS_dispatch_queue;
 
-@interface HAPPairSetupSession : HMFObject <HMFTimerDelegate>
+@interface HAPPairSetupSession : HMFObject <HMFTimerDelegate, HAPEncryptedSession>
 {
+    BOOL _handlingInvalidSetupCode;
     id<HAPPairSetupSessionDelegate> _delegate;
     long long _role;
     NSObject<OS_dispatch_queue> *_clientQueue;
     unsigned long long _state;
-    struct PairingSessionPrivate *_pairingSession;
     HMFTimer *_backoffTimer;
     unsigned long long _pairSetupType;
     NSData *_sessionReadKey;
@@ -25,6 +26,7 @@
     NSMutableData *_sessionReadNonce;
     NSMutableData *_sessionWriteNonce;
     NSData *_certificate;
+    struct PairingSessionPrivate *_pairingSession;
 }
 
 @property (strong, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
@@ -33,6 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HAPPairSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isHandlingInvalidSetupCode) BOOL handlingInvalidSetupCode; // @synthesize handlingInvalidSetupCode=_handlingInvalidSetupCode;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
 @property (readonly, nonatomic) struct PairingSessionPrivate *pairingSession; // @synthesize pairingSession=_pairingSession;
@@ -50,11 +53,14 @@
 - (void)_handleBackoffExpiration;
 - (id)_handleLocalPairingIdentityRequestWithStatus:(int *)arg1;
 - (void)_handlePairSetupExchangeComplete;
+- (void)_handleProductData:(id)arg1;
+- (void)_initializeServer;
 - (BOOL)_initializeSession;
 - (void)_initiateClientPairSetupExchange;
 - (void)_invalidate;
 - (void)_processSetupCode:(id)arg1 error:(id)arg2;
 - (void)_processSetupExchangeData:(id)arg1 error:(id)arg2;
+- (id)_showSetupCodeWithError:(id *)arg1;
 - (void)_stopWithError:(id)arg1;
 - (void)dealloc;
 - (id)decryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
@@ -63,7 +69,7 @@
 - (void)generateSessionKeys;
 - (id)getCertificate;
 - (void)handleBackoffRequestWithTimeout:(double)arg1;
-- (void)handleInvalidSetupCode;
+- (void)handleInvalidSetupCodeAndRestart:(BOOL)arg1;
 - (BOOL)handleSavePeerRequestWithPeerIdentity:(id)arg1 error:(id *)arg2;
 - (void)handleSetupCodeRequest;
 - (id)init;

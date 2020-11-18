@@ -10,6 +10,7 @@
 {
 }
 
++ (double)arcLengthForStroke:(id)arg1;
 + (struct CGRect)boundingBoxOfPoints:(const vector_2e7754b6 *)arg1 rotatedAroundPoint:(struct CGPoint)arg2 byAngle:(double)arg3;
 + (double)circumferenceRatioOfCircleFittedToPoints:(const list_9bacdeb6 *)arg1 circleCenter:(struct CGPoint *)arg2 circleRadius:(double *)arg3;
 + (vector_2e7754b6)convexHullForPoints:(vector_2e7754b6 *)arg1;
@@ -17,11 +18,14 @@
 + (vector_2e7754b6)convexHullForStrokes:(id)arg1 inDrawing:(id)arg2;
 + (double)distanceFromPoint:(struct CGPoint)arg1 toRectangle:(struct CGRect)arg2;
 + (double)distanceFromPoint:(struct CGPoint)arg1 toSegmentFromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3;
++ (double)durationOfStrokesInStrokeGroup:(id)arg1 strokeProvider:(id)arg2;
 + (vector_2e7754b6)enlargedConvexHull:(const vector_2e7754b6 *)arg1 withMargin:(double)arg2;
 + (void)enumeratePointsForStroke:(id)arg1 interpolationType:(long long)arg2 resolution:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 + (void)getAddedStrokes:(id *)arg1 removedStrokeIdentifiers:(id *)arg2 inStrokeProvider:(id)arg3 lastGroupingResult:(id)arg4;
 + (BOOL)isPointEnumerationSupportedForStroke:(id)arg1;
 + (double)lineOrientationForStrokePoints:(const vector_2e7754b6 *)arg1 error:(double *)arg2;
++ (vector_2e7754b6)regularizedPathFromPoints:(const vector_2e7754b6 *)arg1 delta:(double)arg2 gamma:(double)arg3 outError:(double *)arg4;
++ (double)speedForFinalTimeRange:(double)arg1 stroke:(id)arg2;
 + (id)strokeForIdentifier:(id)arg1 inStrokeProvider:(id)arg2;
 + (double)threePointsOrientationWithOrigin:(struct CGPoint)arg1 pointA:(struct CGPoint)arg2 pointB:(struct CGPoint)arg3;
 + (struct CGRect)unionStrokeBounds:(const vector_ea45b3ba *)arg1 aroundXPosition:(double)arg2 usingOneSideStrokeCountLimit:(long long)arg3;

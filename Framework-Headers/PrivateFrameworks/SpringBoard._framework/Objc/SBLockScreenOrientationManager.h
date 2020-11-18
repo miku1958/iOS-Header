@@ -14,6 +14,8 @@
 {
     NSDate *_updateForAmbiguousOrientationsAfterDate;
     BOOL _wasUILocked;
+    long long _lastOrientation;
+    long long _lastValidOrientation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +24,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_deviceOrientationChanged:(id)arg1;
 - (void)_lockStateChanged:(id)arg1;
+- (void)_updateCacheForDeviceOrientation:(long long)arg1;
 - (void)_updateDeviceOrientationIfNeededForPhoneUnlockToOrientation:(long long)arg1;
 - (void)assistantDidAppear:(id)arg1;
 - (id)init;

@@ -17,8 +17,6 @@
 @property (readonly, copy) NSURL *URL; // @dynamic URL;
 @property (readonly, copy) NSURL *destinationURL; // @dynamic destinationURL;
 
-- (void)setDestinationURL:(id)arg1;
-- (void)setURL:(id)arg1;
 
 @end
 

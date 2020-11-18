@@ -28,11 +28,7 @@
         unsigned int read_availablePaymentTypes:1;
         unsigned int read_availablePrioritizations:1;
         unsigned int read_transitSurchargeOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_availablePaymentTypes:1;
-        unsigned int wrote_availablePrioritizations:1;
-        unsigned int wrote_transitSurchargeOptions:1;
-        unsigned int wrote_showTransitSchedules:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,11 +48,6 @@
 - (void).cxx_destruct;
 - (int)StringAsAvailablePaymentTypes:(id)arg1;
 - (int)StringAsAvailablePrioritizations:(id)arg1;
-- (void)_addNoFlagsAvailablePaymentType:(int)arg1;
-- (void)_addNoFlagsAvailablePrioritization:(int)arg1;
-- (void)_readAvailablePaymentTypes;
-- (void)_readAvailablePrioritizations;
-- (void)_readTransitSurchargeOptions;
 - (void)addAvailablePaymentType:(int)arg1;
 - (void)addAvailablePrioritization:(int)arg1;
 - (int)availablePaymentTypeAtIndex:(unsigned long long)arg1;
@@ -74,7 +65,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

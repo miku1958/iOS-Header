@@ -9,6 +9,7 @@
 @class MPAVRoute, MPAVRoutingController, MPAVRoutingControllerSelection, MSVTimer, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPAVRoutingControllerSelectionQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
@@ -31,15 +32,15 @@
 - (void)_dequeueSelectionWhenPossible;
 - (void)_enqueue:(id)arg1;
 - (void)_processSelection:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)addPendingRoute:(id)arg1;
+- (void)addPendingRoutes:(id)arg1;
 - (void)cancelInProgressSelectionForRoute:(id)arg1;
-- (void)enqueueSelectionOperation:(long long)arg1 forRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)enqueueSelectionOperation:(long long)arg1 forRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasPendingRoutes;
 - (id)initWithRoutingController:(id)arg1;
 - (void)pickedRouteDidChange;
 - (void)removeAllPendingRoutes;
-- (void)removePendingRoute:(id)arg1;
-- (void)removePendingRoute:(id)arg1 withError:(BOOL)arg2;
+- (void)removePendingRoutes:(id)arg1;
+- (void)removePendingRoutes:(id)arg1 withError:(BOOL)arg2;
 - (BOOL)routeIsPendingPick:(id)arg1;
 
 @end

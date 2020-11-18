@@ -29,12 +29,7 @@
         unsigned int read_unactionableUiElements:1;
         unsigned int read_placeActionDetails:1;
         unsigned int read_placecardCategory:1;
-        unsigned int wrote_possibleActions:1;
-        unsigned int wrote_unactionableUiElements:1;
-        unsigned int wrote_placeActionDetails:1;
-        unsigned int wrote_placecardCategory:1;
-        unsigned int wrote_placecardType:1;
-        unsigned int wrote_transitAdvisoryBanner:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,12 +51,6 @@
 - (int)StringAsPlacecardType:(id)arg1;
 - (int)StringAsPossibleActions:(id)arg1;
 - (int)StringAsUnactionableUiElements:(id)arg1;
-- (void)_addNoFlagsPossibleAction:(int)arg1;
-- (void)_addNoFlagsUnactionableUiElement:(int)arg1;
-- (void)_readPlaceActionDetails;
-- (void)_readPlacecardCategory;
-- (void)_readPossibleActions;
-- (void)_readUnactionableUiElements;
 - (void)addPossibleAction:(int)arg1;
 - (void)addUnactionableUiElement:(int)arg1;
 - (void)clearPossibleActions;
@@ -74,7 +63,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)placecardTypeAsString:(int)arg1;
 - (int)possibleActionAtIndex:(unsigned long long)arg1;

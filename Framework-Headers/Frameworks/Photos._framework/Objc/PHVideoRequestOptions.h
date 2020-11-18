@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/PHMediaRequestLiveRenderingOptions-Protocol.h>
 #import <Photos/PHMediaRequestThreadingOptions-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface PHVideoRequestOptions : NSObject <PHMediaRequestThreadingOptions>
+@interface PHVideoRequestOptions : NSObject <PHMediaRequestLiveRenderingOptions, PHMediaRequestThreadingOptions>
 {
     BOOL _networkAccessAllowed;
     BOOL _streamingAllowed;
     BOOL _videoComplementAllowed;
     BOOL _allowMediumHighQuality;
     BOOL _restrictToPlayableOnCurrentDevice;
+    BOOL _liveRenderVideoIfNeeded;
+    BOOL _liveRenderAndOnDemandRenderVideoConcurrently;
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
@@ -30,15 +33,22 @@
 @property (nonatomic, getter=isMediumHighQualityAllowed) BOOL allowMediumHighQuality; // @synthesize allowMediumHighQuality=_allowMediumHighQuality;
 @property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL liveRenderAndOnDemandRenderVideoConcurrently; // @synthesize liveRenderAndOnDemandRenderVideoConcurrently=_liveRenderAndOnDemandRenderVideoConcurrently;
+@property (nonatomic) BOOL liveRenderVideoIfNeeded; // @synthesize liveRenderVideoIfNeeded=_liveRenderVideoIfNeeded;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
+@property (readonly, copy, nonatomic) CDUnknownBlockType progressHandler;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) BOOL restrictToPlayableOnCurrentDevice; // @synthesize restrictToPlayableOnCurrentDevice=_restrictToPlayableOnCurrentDevice;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property (nonatomic, getter=isStreamingAllowed) BOOL streamingAllowed; // @synthesize streamingAllowed=_streamingAllowed;
 @property (nonatomic) long long streamingVideoIntent; // @synthesize streamingVideoIntent=_streamingVideoIntent;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (nonatomic) long long version; // @synthesize version=_version;
@@ -47,7 +57,9 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (BOOL)isCurrentVersion;
 - (BOOL)isSynchronous;
+- (id)renderResultHandlerQueue;
 
 @end
 

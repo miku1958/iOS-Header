@@ -6,11 +6,12 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @protocol INVCVoiceShortcutClient <NSObject>
 - (void)getVoiceShortcutWithIdentifier:(NSString *)arg1 completion:(void (^)(VCVoiceShortcut *, NSError *))arg2;
 - (void)getVoiceShortcutsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)sendAceCommandDictionary:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 inDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setShortcutSuggestions:(NSArray *)arg1 forAppWithBundleIdentifier:(NSString *)arg2;
 @end

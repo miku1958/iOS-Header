@@ -40,7 +40,7 @@
 - (void)_resetViewControllers;
 - (id)_verificationErrorViewControllerWithError:(id)arg1;
 - (id)init;
-- (id)initWithPeerPaymentWebService:(id)arg1 identityVerificationResponse:(id)arg2 setupDelegate:(id)arg3 context:(long long)arg4;
+- (id)initWithPeerPaymentWebService:(id)arg1 identityVerificationResponse:(id)arg2 setupDelegate:(id)arg3 hideInitialSplashScreen:(BOOL)arg4 context:(long long)arg5;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

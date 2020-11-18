@@ -15,8 +15,10 @@
 {
     BOOL _threeDTouchEnabled;
     NSArray *_contactIdentifiers;
+    NSString *_appIconBadgeBundleIdentifier;
 }
 
+@property (copy, nonatomic) NSString *appIconBadgeBundleIdentifier; // @synthesize appIconBadgeBundleIdentifier=_appIconBadgeBundleIdentifier;
 @property (copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

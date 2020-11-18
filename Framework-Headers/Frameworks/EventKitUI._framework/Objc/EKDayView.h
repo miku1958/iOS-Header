@@ -154,12 +154,15 @@
 - (void)_timeViewTapped:(id)arg1;
 - (void)_updateContentForSizeCategoryChange:(id)arg1;
 - (double)_verticalOffset;
+- (BOOL)_viewContentShouldDrawSynchronously;
 - (void)addViewToScroller:(id)arg1 isAllDay:(BOOL)arg2;
 - (void)adjustForSignificantTimeChange;
 - (void)adjustFrameToSpanToMidnightFromStartDate:(id)arg1;
 - (double)allDayRegionHeight;
 - (void)allDayView:(id)arg1 didSelectEvent:(id)arg2;
+- (BOOL)allDayViewContentShouldDrawSynchronously:(id)arg1;
 - (void)allDayViewDidLayoutSubviews:(id)arg1;
+- (id)allDayViewRequestsCurrentDisplayDate:(id)arg1;
 - (void)bringEventToFront:(id)arg1;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsOccurrences;
@@ -175,6 +178,7 @@
 - (void)dayViewContent:(id)arg1 didTapPinnedOccurrence:(id)arg2;
 - (id)dayViewContent:(id)arg1 selectedCopyViewForOccurrenceView:(id)arg2;
 - (void)dayViewContentDidCompleteAsyncLoadAndLayout:(id)arg1;
+- (BOOL)dayViewContentShouldDrawSynchronously:(id)arg1;
 - (void)dealloc;
 - (BOOL)eventOccursOnThisDay:(id)arg1;
 - (void)firstVisibleSecondChanged;

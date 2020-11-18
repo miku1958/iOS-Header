@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSString;
+@class NSAttributedString, NSString, UIImage;
 
 @interface UIAccessibilityCustomAction : NSObject
 {
+    UIImage *_image;
     NSAttributedString *_attributedName;
     id _target;
     SEL _selector;
@@ -18,6 +19,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property (copy, nonatomic) NSAttributedString *attributedName; // @synthesize attributedName=_attributedName;
+@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) SEL selector; // @synthesize selector=_selector;
 @property (weak, nonatomic) id target; // @synthesize target=_target;
@@ -25,8 +27,12 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithAttributedName:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithAttributedName:(id)arg1 image:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithAttributedName:(id)arg1 image:(id)arg2 target:(id)arg3 selector:(SEL)arg4;
 - (id)initWithAttributedName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)initWithName:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithName:(id)arg1 image:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithName:(id)arg1 image:(id)arg2 target:(id)arg3 selector:(SEL)arg4;
 - (id)initWithName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface CRCarPlayAppPolicy : NSObject
 {
@@ -18,20 +18,22 @@
     BOOL _badgesAppIcon;
     BOOL _showsNotifications;
     BOOL _handlesCarIntents;
-    BOOL _launchUsingMapsTemplateUI;
+    BOOL _launchUsingTemplateUI;
     NSDictionary *_siriActivationOptions;
+    NSString *_bundlePath;
     unsigned long long _applicationCategory;
 }
 
 @property (nonatomic) unsigned long long applicationCategory; // @synthesize applicationCategory=_applicationCategory;
 @property (nonatomic) BOOL badgesAppIcon; // @synthesize badgesAppIcon=_badgesAppIcon;
+@property (readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (nonatomic) BOOL canDisplayOnCarScreen; // @synthesize canDisplayOnCarScreen=_canDisplayOnCarScreen;
 @property (nonatomic, getter=isCarPlaySupported) BOOL carPlaySupported; // @synthesize carPlaySupported=_carPlaySupported;
 @property (nonatomic) BOOL handlesCarIntents; // @synthesize handlesCarIntents=_handlesCarIntents;
 @property (nonatomic) BOOL launchNotificationsUsingSiri; // @synthesize launchNotificationsUsingSiri=_launchNotificationsUsingSiri;
-@property (nonatomic) BOOL launchUsingMapsTemplateUI; // @synthesize launchUsingMapsTemplateUI=_launchUsingMapsTemplateUI;
 @property (nonatomic) BOOL launchUsingMusicUIService; // @synthesize launchUsingMusicUIService=_launchUsingMusicUIService;
 @property (nonatomic) BOOL launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;
+@property (nonatomic) BOOL launchUsingTemplateUI; // @synthesize launchUsingTemplateUI=_launchUsingTemplateUI;
 @property (nonatomic) BOOL showsNotifications; // @synthesize showsNotifications=_showsNotifications;
 @property (copy, nonatomic) NSDictionary *siriActivationOptions; // @synthesize siriActivationOptions=_siriActivationOptions;
 

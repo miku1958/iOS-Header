@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AuthenticationServices/NSObject-Protocol.h>
+#import <AuthenticationServices/_ASExtensionHostContextDelegate-Protocol.h>
 
-@class ASPasswordCredential, NSError, _ASCredentialProviderExtensionHostContext;
+@class ASPasswordCredential, _ASCredentialProviderExtensionHostContext;
 
-@protocol _ASCredentialProviderExtensionHostContextDelegate <NSObject>
+@protocol _ASCredentialProviderExtensionHostContextDelegate <_ASExtensionHostContextDelegate>
 
 @optional
-- (void)prepareToCancelRequestWithHostContext:(_ASCredentialProviderExtensionHostContext *)arg1 error:(NSError *)arg2 completion:(void (^)(void))arg3;
 - (void)prepareToCompleteExtensionConfigurationRequestWithHost:(_ASCredentialProviderExtensionHostContext *)arg1 completion:(void (^)(void))arg2;
 - (void)prepareToCompleteRequestWithHostContext:(_ASCredentialProviderExtensionHostContext *)arg1 credential:(ASPasswordCredential *)arg2 completion:(void (^)(void))arg3;
 @end

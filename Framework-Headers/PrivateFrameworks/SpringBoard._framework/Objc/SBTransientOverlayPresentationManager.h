@@ -8,17 +8,18 @@
 
 #import <SpringBoard/SBButtonEventsHandler-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerCoordinating-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SBTransientOverlayViewControllerDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSNumber, NSString, SBAlertItemsController, SBAppStatusBarSettingsAssertion, SBBannerController, SBHomeGestureArbiter, SBHomeGestureParticipant, SBIdleTimerCoordinatorHelper, SBInAppStatusBarHiddenAssertion, SBLockStateAggregator, SBReachabilityManager, SBTransientOverlayViewController, UIScreen, UIStatusBarStyleRequest, UIWindow;
+@class NSMapTable, NSMutableArray, NSNumber, NSString, SBAlertItemsController, SBAppStatusBarSettingsAssertion, SBBannerManager, SBCoverSheetPresentationManager, SBHomeGestureArbiter, SBHomeGestureParticipant, SBIdleTimerCoordinatorHelper, SBInAppStatusBarHiddenAssertion, SBLockStateAggregator, SBReachabilityManager, SBTransientOverlayViewController, UIScreen, UIStatusBarStyleRequest, UIWindow;
 @protocol BSInvalidatable, CSExternalBehaviorProviding, SBIdleTimerCoordinating, SBTransientOverlayPresentationManagerDelegate;
 
-@interface SBTransientOverlayPresentationManager : NSObject <SBHomeGestureParticipantDelegate, SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate, SBIdleTimerProviding, SBButtonEventsHandler>
+@interface SBTransientOverlayPresentationManager : NSObject <SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate, SBIdleTimerProviding, SBButtonEventsHandler>
 {
     SBAlertItemsController *_alertItemsController;
-    SBBannerController *_bannerController;
+    SBBannerManager *_bannerManager;
     id<BSInvalidatable> _bannerSuppressionAssertion;
     NSMutableArray *_contentStatusBarHiddenAssertions;
     id<CSExternalBehaviorProviding> _coverSheetExternalBehaviorProvider;
@@ -41,11 +42,13 @@
     BOOL _prefersStatusBarActivityItemVisible;
     NSNumber *_preferredWhitePointAdaptivityStyleValue;
     long long _topmostViewControllerInterfaceOrientation;
+    SBCoverSheetPresentationManager *_coverSheetPresentationManager;
     id<SBTransientOverlayPresentationManagerDelegate> _delegate;
 }
 
-@property (strong, nonatomic) SBBannerController *bannerController; // @synthesize bannerController=_bannerController;
+@property (strong, nonatomic) SBBannerManager *bannerManager; // @synthesize bannerManager=_bannerManager;
 @property (readonly, nonatomic) BOOL canHandleButtonEvents;
+@property (strong, nonatomic) SBCoverSheetPresentationManager *coverSheetPresentationManager; // @synthesize coverSheetPresentationManager=_coverSheetPresentationManager;
 @property (readonly, copy, nonatomic) UIStatusBarStyleRequest *currentStatusBarStyleRequest;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBTransientOverlayPresentationManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -61,8 +64,9 @@
 @property (readonly, nonatomic) BOOL prefersStatusBarActivityItemVisible; // @synthesize prefersStatusBarActivityItemVisible=_prefersStatusBarActivityItemVisible;
 @property (readonly, nonatomic) long long presentedViewControllerCount;
 @property (readonly, nonatomic) BOOL shouldDisableControlCenter;
-@property (readonly, nonatomic) BOOL shouldDisableCoverSheet;
+@property (readonly, nonatomic) BOOL shouldDisableCoverSheetGesture;
 @property (readonly, nonatomic) BOOL shouldDisableSiri;
+@property (readonly, nonatomic) BOOL shouldUseSceneBasedKeyboardFocusForActivePresentation;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SBTransientOverlayViewController *topmostPresentedViewController;
 @property (readonly, nonatomic) long long topmostViewControllerInterfaceOrientation; // @synthesize topmostViewControllerInterfaceOrientation=_topmostViewControllerInterfaceOrientation;
@@ -76,7 +80,8 @@
 - (id)_buttonEventHandlingViewController;
 - (id)_currentExternalStatusBarSettings;
 - (void)_dismissEntity:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_getContentScale:(double *)arg1 translation:(struct CGPoint *)arg2 forEntity:(id)arg3;
+- (void)_getContentScale:(double *)arg1 translation:(struct CGPoint *)arg2 fromRect:(struct CGRect)arg3 entity:(id)arg4;
+- (void)_handleCoverSheetWillPresent:(id)arg1;
 - (void)_invalidateAssertionsForEntity:(id)arg1;
 - (BOOL)_isPresentationStatusBarHiddenForVisibility:(int)arg1 currentExternalStatusBarSettings:(id)arg2;
 - (id)_newSceneDeactivationAssertionWithReason:(long long)arg1;
@@ -90,6 +95,7 @@
 - (void)_updateHomeGestureStateAnimated:(BOOL)arg1;
 - (void)_updatePreferredWhitePointAdaptivityStyle;
 - (void)_updateStatusBarWithCurrentExternalStatusBarSettings:(id)arg1 animated:(BOOL)arg2;
+- (void)_updateWindowHitTestingForEntity:(id)arg1;
 - (double)_windowLevelForEntity:(id)arg1;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (void)dealloc;
@@ -106,6 +112,8 @@
 - (BOOL)handleVolumeUpButtonPress;
 - (BOOL)hasPresentationAboveWindowLevel:(double)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+- (void)homeGestureParticipantResolvedHomeAffordanceSuppressionDidChange:(id)arg1;
+- (void)homeGrabberViewDidReceiveClick:(id)arg1;
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
 - (id)initWithScreen:(id)arg1 alertItemsController:(id)arg2 lockStateAggregator:(id)arg3 homeGestureArbiter:(id)arg4 reachabilityManager:(id)arg5;
 - (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayViewController:(id)arg1;
@@ -124,6 +132,7 @@
 - (void)transientOverlayViewControllerNeedsSceneDeactivationUpdate:(id)arg1;
 - (void)transientOverlayViewControllerNeedsStatusBarAppearanceUpdate:(id)arg1;
 - (void)transientOverlayViewControllerNeedsWhitePointAdaptivityStyleUpdate:(id)arg1;
+- (void)transientOverlayViewControllerNeedsWindowHitTestingUpdate:(id)arg1;
 - (void)transientOverlayViewControllerWillBeginRotation:(id)arg1 toInterfaceOrientation:(long long)arg2;
 
 @end

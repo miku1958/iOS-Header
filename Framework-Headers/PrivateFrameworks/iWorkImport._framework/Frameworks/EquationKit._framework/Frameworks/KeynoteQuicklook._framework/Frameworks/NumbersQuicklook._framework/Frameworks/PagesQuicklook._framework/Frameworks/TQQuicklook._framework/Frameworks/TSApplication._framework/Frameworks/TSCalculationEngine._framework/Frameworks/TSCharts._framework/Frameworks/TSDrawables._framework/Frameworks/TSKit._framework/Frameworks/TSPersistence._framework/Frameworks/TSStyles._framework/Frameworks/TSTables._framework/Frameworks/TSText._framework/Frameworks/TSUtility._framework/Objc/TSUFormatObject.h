@@ -11,11 +11,11 @@
 
 @interface TSUFormatObject : NSObject <NSCopying, NSMutableCopying>
 {
-    CDStruct_b1066b25 mFormatStruct;
+    CDStruct_4f52a90b mFormatStruct;
     BOOL mUseExpandedContents;
 }
 
-@property (readonly, nonatomic) CDStruct_b1066b25 formatStruct;
+@property (readonly, nonatomic) CDStruct_4f52a90b formatStruct;
 @property (readonly, nonatomic) BOOL useExpandedContents; // @synthesize useExpandedContents=mUseExpandedContents;
 
 + (id)defaultDateFormat:(id)arg1;
@@ -24,11 +24,11 @@
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithTSUFormatFormatStruct:(CDStruct_b1066b25)arg1;
-- (id)initWithTSUFormatFormatStruct:(CDStruct_b1066b25)arg1 useExpandedContents:(BOOL)arg2;
+- (id)initWithTSUFormatFormatStruct:(CDStruct_4f52a90b)arg1;
+- (id)initWithTSUFormatFormatStruct:(CDStruct_4f52a90b)arg1 useExpandedContents:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (void)p_setFormatStruct:(CDStruct_b1066b25)arg1;
+- (void)p_setFormatStruct:(CDStruct_4f52a90b)arg1;
 
 @end
 

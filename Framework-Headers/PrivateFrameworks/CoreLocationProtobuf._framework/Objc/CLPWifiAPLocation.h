@@ -19,10 +19,12 @@
     CLPLocation *_location;
     NSString *_mac;
     int _rssi;
+    int _scanType;
     int _serverHash;
     struct {
         unsigned int scanTimestamp:1;
         unsigned int hidden:1;
+        unsigned int scanType:1;
         unsigned int serverHash:1;
     } _has;
 }
@@ -32,15 +34,18 @@
 @property (readonly, nonatomic) BOOL hasAppBundleId;
 @property (nonatomic) BOOL hasHidden;
 @property (nonatomic) BOOL hasScanTimestamp;
+@property (nonatomic) BOOL hasScanType;
 @property (nonatomic) BOOL hasServerHash;
 @property (nonatomic) int hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) CLPLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSString *mac; // @synthesize mac=_mac;
 @property (nonatomic) int rssi; // @synthesize rssi=_rssi;
 @property (nonatomic) double scanTimestamp; // @synthesize scanTimestamp=_scanTimestamp;
+@property (nonatomic) int scanType; // @synthesize scanType=_scanType;
 @property (nonatomic) int serverHash; // @synthesize serverHash=_serverHash;
 
 - (void).cxx_destruct;
+- (int)StringAsScanType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,6 +54,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)scanTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

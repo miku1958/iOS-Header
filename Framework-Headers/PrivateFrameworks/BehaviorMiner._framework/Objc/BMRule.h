@@ -6,25 +6,47 @@
 
 #import <objc/NSObject.h>
 
+#import <BehaviorMiner/NSSecureCoding-Protocol.h>
+
 @class NSSet;
 
-@interface BMRule : NSObject
+@interface BMRule : NSObject <NSSecureCoding>
 {
     NSSet *_antecedent;
     NSSet *_consequent;
     double _support;
     double _confidence;
+    unsigned long long _basketCount;
+    unsigned long long _absoluteSupport;
+    unsigned long long _absoluteAntecedentSupport;
+    unsigned long long _absoluteConsequentSupport;
+    unsigned long long _uniqueDaysLastWeek;
+    unsigned long long _uniqueDaysTotal;
 }
 
-@property (strong, nonatomic) NSSet *antecedent; // @synthesize antecedent=_antecedent;
-@property (nonatomic) double confidence; // @synthesize confidence=_confidence;
-@property (strong, nonatomic) NSSet *consequent; // @synthesize consequent=_consequent;
-@property (nonatomic) double support; // @synthesize support=_support;
+@property (readonly, nonatomic) unsigned long long absoluteAntecedentSupport; // @synthesize absoluteAntecedentSupport=_absoluteAntecedentSupport;
+@property (readonly, nonatomic) unsigned long long absoluteConsequentSupport; // @synthesize absoluteConsequentSupport=_absoluteConsequentSupport;
+@property (readonly, nonatomic) unsigned long long absoluteSupport; // @synthesize absoluteSupport=_absoluteSupport;
+@property (readonly, nonatomic) NSSet *antecedent; // @synthesize antecedent=_antecedent;
+@property (readonly, nonatomic) unsigned long long basketCount; // @synthesize basketCount=_basketCount;
+@property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
+@property (readonly, nonatomic) NSSet *consequent; // @synthesize consequent=_consequent;
+@property (readonly, nonatomic) double conviction;
+@property (readonly, nonatomic) double lift;
+@property (readonly, nonatomic) double rulePowerFactor;
+@property (readonly, nonatomic) double support; // @synthesize support=_support;
+@property (readonly, nonatomic) unsigned long long uniqueDaysLastWeek; // @synthesize uniqueDaysLastWeek=_uniqueDaysLastWeek;
+@property (readonly, nonatomic) unsigned long long uniqueDaysTotal; // @synthesize uniqueDaysTotal=_uniqueDaysTotal;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithAntecedent:(id)arg1 consequent:(id)arg2 support:(double)arg3 confidence:(double)arg4;
+- (id)initWithAntecedent:(id)arg1 consequent:(id)arg2 support:(double)arg3 confidence:(double)arg4 basketCount:(unsigned long long)arg5 absoluteSupport:(unsigned long long)arg6 absoluteAntecedentSupport:(unsigned long long)arg7 absoluteConsequentSupport:(unsigned long long)arg8;
+- (id)initWithAntecedent:(id)arg1 consequent:(id)arg2 support:(double)arg3 confidence:(double)arg4 basketCount:(unsigned long long)arg5 absoluteSupport:(unsigned long long)arg6 absoluteAntecedentSupport:(unsigned long long)arg7 absoluteConsequentSupport:(unsigned long long)arg8 uniqueDaysLastWeek:(unsigned long long)arg9 uniqueDaysTotal:(unsigned long long)arg10;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

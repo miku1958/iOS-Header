@@ -6,7 +6,7 @@
 
 #import <QuartzCore/CABackdropLayer.h>
 
-@class MTMaterialSettingsInterpolator, NSMutableDictionary, NSString;
+@class MTMaterialSettingsInterpolator, NSHashTable, NSMutableDictionary, NSString;
 @protocol MTRecipeMaterialSettingsProviding;
 
 @interface MTMaterialLayer : CABackdropLayer
@@ -21,6 +21,7 @@
     BOOL _contentReplacedWithSnapshot;
     NSMutableDictionary *_pendingChange;
     NSMutableDictionary *_visualStyleCategoriesToProviders;
+    NSHashTable *_prunePromises;
     struct {
         unsigned int delegateManagesWeighting:1;
         unsigned int delegateImplementsManagingOpacity:1;
@@ -28,6 +29,7 @@
     } _materialLayerDelegateFlags;
     BOOL _reduceTransparencyEnabled;
     BOOL _reduceMotionEnabled;
+    NSString *_debugIdentifier;
 }
 
 @property (readonly, nonatomic, getter=_backdropScale) double backdropScale;
@@ -36,6 +38,7 @@
 @property (copy, nonatomic) CDUnknownBlockType blurRadiusTransformer;
 @property (copy, nonatomic) NSString *configuration; // @dynamic configuration;
 @property (nonatomic, getter=isContentReplacedWithSnapshot) BOOL contentReplacedWithSnapshot;
+@property (copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType defaultBackdropScaleAdjustment; // @synthesize defaultBackdropScaleAdjustment=_defaultBackdropScaleAdjustment;
 @property (readonly, nonatomic, getter=_privateOpacity) double privateOpacity;
 @property (copy, nonatomic) NSString *recipe; // @dynamic recipe;
@@ -48,7 +51,6 @@
 @property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 
 + (id)_attributeKeys;
-+ (void)_pruneMaterialLayerAtCompletionOfCurrentTransaction:(id)arg1;
 + (id)_unserializedAttributeKeys;
 + (void)initialize;
 + (id)mt_animatableKeys;
@@ -61,9 +63,11 @@
 - (void)_configureIfNecessaryWithSettingsInterpolator:(id)arg1;
 - (BOOL)_delegateManagesWeighting;
 - (BOOL)_didValueChangeForKey:(id)arg1 withPendingChange:(id)arg2;
+- (id)_effectiveDebugIdentifier;
 - (BOOL)_isDelegateManagingInterpolation;
 - (BOOL)_isDelegateManagingOpacity;
 - (BOOL)_needsPruning;
+- (void)_pruneAtCompletionOfCurrentTransaction;
 - (void)_reevaluateDefaultShouldCrossfade;
 - (void)_setNeedsConfiguring;
 - (void)_setPrivateOpacity:(double)arg1 removingIfIdentity:(BOOL)arg2;
@@ -71,6 +75,7 @@
 - (void)_updateForChangeInWeighting;
 - (void)_updateVisualStylingProviders;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (id)description;
 - (void)didChangeValueForKey:(id)arg1;
 - (id)init;
 - (void)layoutSublayers;

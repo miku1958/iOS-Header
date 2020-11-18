@@ -11,22 +11,22 @@
 @interface OBAnalyticsManager : NSObject
 {
     BOOL _shouldStashMetrics;
-    NSMutableArray *_stagedMetrics;
+    NSMutableArray *_events;
 }
 
+@property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
 @property BOOL shouldStashMetrics; // @synthesize shouldStashMetrics=_shouldStashMetrics;
-@property (strong) NSMutableArray *stagedMetrics; // @synthesize stagedMetrics=_stagedMetrics;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)addEvent:(id)arg1;
+- (void)addEvent:(id)arg1 withPayload:(id)arg2;
 - (void)commit;
 - (id)init;
 - (void)logPresentationOfPrivacyLinkWithIdentifier:(id)arg1;
 - (void)logPresentationOfPrivacySplashWithIdentifier:(id)arg1;
 - (void)logPresentationOfPrivacyUnifiedAbout;
 - (void)logTapOnPrivacyLinkWithIdentifier:(id)arg1;
-- (void)postMetricID:(unsigned int)arg1 metric:(id)arg2;
-- (void)stageMetricID:(unsigned int)arg1 metric:(id)arg2;
 
 @end
 

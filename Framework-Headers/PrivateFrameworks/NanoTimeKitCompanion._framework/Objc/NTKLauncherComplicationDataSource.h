@@ -11,7 +11,6 @@
 }
 
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
-- (void)_addBackgroundColorToTemplate:(id)arg1;
 - (id)_appBackgroundColor;
 - (id)_appTintColor;
 - (id)_appTitle;
@@ -21,6 +20,7 @@
 - (id)_currentTimelineEntry;
 - (id)_extraLarge;
 - (id)_fullColorImageProvider;
+- (id)_graphicExtraLargeTemplate;
 - (id)_modularLargeTemplate;
 - (id)_modularSmallTemplate;
 - (id)_signatureBezelTemplate;
@@ -34,11 +34,6 @@
 - (id)currentSwitcherTemplate;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineEndDateWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineStartDateWithHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)timelineAnimationBehavior;
 
 @end

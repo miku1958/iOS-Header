@@ -22,8 +22,8 @@
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)createChildren;
 - (id)parentSettings;
-- (void)setDefaultValues;
 
 @end
 

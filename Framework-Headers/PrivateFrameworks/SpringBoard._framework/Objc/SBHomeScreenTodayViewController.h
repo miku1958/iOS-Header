@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/SBHLegibility-Protocol.h>
+#import <SpringBoard/SBHOccludable-Protocol.h>
 #import <SpringBoard/SBUICoronaAnimationControllerParticipant-Protocol.h>
 #import <SpringBoard/SBUISpotlightInitiating-Protocol.h>
 #import <SpringBoard/SPUISearchBarDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class FBDisplayLayoutElement, NSString, SBUISpotlightBarNavigationController, SBViewControllerTransitionContext, SPUISearchBarController, WGWidgetGroupViewController, _UILegibilitySettings;
 @protocol SBHomeScreenTodayViewControllerDelegate;
 
-@interface SBHomeScreenTodayViewController : UIViewController <WGWidgetGroupViewControllerDelegate, SPUISearchBarDelegate, SBUICoronaAnimationControllerParticipant, SBUISpotlightInitiating, SBHLegibility>
+@interface SBHomeScreenTodayViewController : UIViewController <WGWidgetGroupViewControllerDelegate, SPUISearchBarDelegate, SBUICoronaAnimationControllerParticipant, SBUISpotlightInitiating, SBHLegibility, SBHOccludable>
 {
     WGWidgetGroupViewController *_widgetViewController;
     SBUISpotlightBarNavigationController *_spotlightNavController;
@@ -23,6 +24,7 @@
     SPUISearchBarController *_searchBarViewController;
     BOOL _scrollViewContentOffsetDirty;
     struct CGPoint _scrollViewLastContentOffset;
+    BOOL _occluded;
     BOOL _showsSearchBar;
     BOOL _ignoresScrolling;
     SBViewControllerTransitionContext *_transitionContext;
@@ -38,6 +40,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoresScrolling; // @synthesize ignoresScrolling=_ignoresScrolling;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (nonatomic, getter=isOccluded) BOOL occluded; // @synthesize occluded=_occluded;
 @property (nonatomic) long long pullToSearchState; // @synthesize pullToSearchState=_pullToSearchState;
 @property (nonatomic) BOOL showsSearchBar; // @synthesize showsSearchBar=_showsSearchBar;
 @property (readonly, nonatomic) UIViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
@@ -55,6 +58,7 @@
 - (id)_majorScrollView;
 - (double)_maxClippingOffset;
 - (void)_removeMatchMoveAnimations;
+- (void)_resetScrollViewInsets;
 - (void)_setRequestDisableRootFolderParallax:(BOOL)arg1 reason:(id)arg2;
 - (void)_setRequestDisableRootFolderScrolling:(BOOL)arg1 reason:(id)arg2;
 - (void)_statusBarHeightDidChange:(id)arg1;

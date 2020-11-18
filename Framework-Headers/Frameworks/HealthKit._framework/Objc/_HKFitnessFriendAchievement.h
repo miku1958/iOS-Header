@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *templateUniqueName; // @synthesize templateUniqueName=_templateUniqueName;
 @property (strong, nonatomic) NSNumber *value; // @synthesize value=_value;
 
++ (BOOL)_isConcreteObjectClass;
 + (id)achievementWithTemplateUniqueName:(id)arg1 completedDate:(id)arg2 value:(id)arg3 friendUUID:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

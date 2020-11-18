@@ -8,9 +8,8 @@
 
 @protocol VCVideoCaptureClient
 - (void)avConferencePreviewError:(NSString *)arg1;
+- (void)cameraAvailabilityDidChange:(BOOL)arg1;
 - (VCVideoRule *)clientCaptureRule;
-- (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
-- (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 
 @optional

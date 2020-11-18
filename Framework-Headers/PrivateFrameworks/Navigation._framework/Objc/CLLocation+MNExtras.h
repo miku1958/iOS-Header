@@ -21,10 +21,12 @@
 
 + (BOOL)_navigation_isLocation:(id)arg1 equalTo:(id)arg2;
 + (id)_navigation_stringWithType:(int)arg1;
+- (CDStruct_39925896)_navigation_geoCoordinate3D;
 - (id)_navigation_geoLocation;
 - (BOOL)_navigation_isEqualToLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (double)_navigation_speedAccuracy;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 rawCoordinate:(struct CLLocationCoordinate2D)arg2 course:(double)arg3 rawCourse:(double)arg4 courseAccuracy:(double)arg5 speed:(double)arg6 speedAccuracy:(double)arg7 altitude:(double)arg8 timestamp:(double)arg9 horizontalAccuracy:(double)arg10 verticalAccuracy:(double)arg11 type:(int)arg12 referenceFrame:(int)arg13;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 rawCoordinate:(struct CLLocationCoordinate2D)arg2 course:(double)arg3 rawCourse:(double)arg4 courseAccuracy:(double)arg5 speed:(double)arg6 speedAccuracy:(double)arg7 altitude:(double)arg8 timestamp:(double)arg9 horizontalAccuracy:(double)arg10 verticalAccuracy:(double)arg11 type:(int)arg12 referenceFrame:(int)arg13 serializedCoarseMetaData:(id)arg14;
 - (id)initWithGeoLocation:(id)arg1;
 @end
 

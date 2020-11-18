@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL valid; // @synthesize valid=_valid;
 @property (nonatomic) unsigned char version; // @synthesize version=_version;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithMessage:(id)arg1;
 - (id)message;

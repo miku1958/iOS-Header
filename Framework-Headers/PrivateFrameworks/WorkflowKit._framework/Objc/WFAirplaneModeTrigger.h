@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL onEnable; // @synthesize onEnable=_onEnable;
 
 + (BOOL)isAllowedToRunAutomatically;
++ (BOOL)isUserInitiated;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (BOOL)supportsSecureCoding;

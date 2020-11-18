@@ -18,10 +18,12 @@
     NSString *_featureName;
     NSDictionary *_siriWHAMetricsInfo;
     ICUserIdentity *_userIdentity;
+    NSString *_homeKitUserIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
 @property (copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
+@property (copy, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
 @property (nonatomic) BOOL shouldImmediatelyStartPlayback; // @synthesize shouldImmediatelyStartPlayback=_shouldImmediatelyStartPlayback;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue; // @synthesize shouldOverrideManuallyCuratedQueue=_shouldOverrideManuallyCuratedQueue;
 @property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;

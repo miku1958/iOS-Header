@@ -138,7 +138,7 @@
 - (double)unitSpaceCenterValueForSeries:(id)arg1 groupIndex:(unsigned long long)arg2;
 - (double)unitSpaceCenterValueForValue:(double)arg1;
 - (double)unitSpaceCenterValueHalfOffsetWithCount:(double)arg1;
-- (double *)unitSpaceCenterValuesForSeries:(id)arg1 groupIndexSet:(id)arg2;
+- (double *)unitSpaceCenterValuesForSeries:(id)arg1 groupIndexSet:(id)arg2 count:(unsigned long long)arg3;
 - (double)unitSpaceValueForCountSpaceValue:(double)arg1;
 - (double)unitSpaceValueForCountSpaceValue:(double)arg1 min:(double)arg2 count:(double)arg3;
 - (double)unitSpaceValueForDataSpaceValue:(double)arg1;

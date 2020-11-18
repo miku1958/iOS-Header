@@ -10,8 +10,8 @@
 
 @protocol SXPresentationEnvironment <NSObject>
 
+@property (readonly, nonatomic) UITraitCollection *presentationTraitCollection;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsets;
-@property (readonly, nonatomic) UITraitCollection *traitCollection;
 @property (readonly, nonatomic) unsigned long long viewingLocation;
 @property (readonly, nonatomic) struct CGSize viewportSize;
 

@@ -6,12 +6,7 @@
 
 #import <UIKit/UITableView.h>
 
-@protocol TSSwipeActionControllerType;
-
 @interface UITableView (Bridge)
-
-@property (readonly, nonatomic) id<TSSwipeActionControllerType> ts_swipeActionController;
-
 + (long long)ts_bridgedAnimationForAnimation:(unsigned long long)arg1;
 - (void)deferWhenTouchingWithBlock:(CDUnknownBlockType)arg1;
 @end

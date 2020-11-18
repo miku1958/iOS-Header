@@ -24,6 +24,7 @@
 @property (strong, nonatomic) id<TSKModel> root; // @synthesize root=_root;
 
 - (void).cxx_destruct;
+- (void)addFilter:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)enumerateUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithEnumerator:(id)arg1 filter:(CDUnknownBlockType)arg2;

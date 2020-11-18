@@ -27,7 +27,8 @@
     MISSING_TYPE *channelPromotedArticlesService;
     MISSING_TYPE *newspaperGroupService;
     MISSING_TYPE *formatService;
-    MISSING_TYPE *feedPersonalizingEngine;
+    MISSING_TYPE *feedPaywallConfigFactory;
+    MISSING_TYPE *offerManager;
 }
 
 @end

@@ -72,11 +72,16 @@ __attribute__((visibility("hidden")))
 - (unsigned int)actualBitrateUpdateCounter;
 - (unsigned short)audioErasureCount;
 - (double)audioErasureTotalTime;
+- (double)avgJBDelay;
+- (double)avgJBTargetSizeChanges;
 - (void)dealloc;
 - (unsigned long long)downlinkRateSum;
 - (unsigned int)downlinkRateUpdateCounter;
-- (void)finalize;
 - (id)initCallWithRemoteParticipantID:(id)arg1;
+- (unsigned short)maxAudioErasureCount;
+- (unsigned short)maxJBTargetSizeChanges;
+- (unsigned short)maxVideoStallCount;
+- (unsigned short)minVideoFrameRate;
 - (void)processActualBitrateRateChange:(unsigned int)arg1;
 - (void)processDownlinkRateChange:(unsigned int)arg1;
 - (void)processVideoDegraded:(BOOL)arg1;

@@ -8,7 +8,7 @@
 
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator, UIVisualEffectView;
+@class AVLayoutItemAttributes, AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface AVButton : UIButton <AVPlaybackControlsViewItem>
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _disablesHighlightWhenLongPressed;
     BOOL _clampsHitRectInsetsWhenContainedInScrollableView;
     BOOL _wasForcePressTriggered;
+    AVLayoutItemAttributes *_layoutAttributes;
     long long _tintEffectStyle;
     double _forceThreshold;
     double _force;
@@ -69,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
 @property (copy, nonatomic) NSString *inlineAlternateImageName; // @synthesize inlineAlternateImageName=_inlineAlternateImageName;
 @property (copy, nonatomic) NSString *inlineImageName; // @synthesize inlineImageName=_inlineImageName;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (weak, nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
 @property (nonatomic) double maximumForceSinceTrackingBegan; // @synthesize maximumForceSinceTrackingBegan=_maximumForceSinceTrackingBegan;
 @property (strong, nonatomic) AVMicaPackage *micaPackage; // @synthesize micaPackage=_micaPackage;
@@ -95,18 +97,20 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackgroundEffectViewIsHidden;
 - (void)_updateEdgeInsets;
 - (void)_updateImageIfNeeded;
-- (void)_updateIsHiddenAndAlpha;
+- (void)_updateLayoutItem;
+- (void)_updateTintColorIfNeeded;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutAttributesDidChange;
 - (void)layoutSubviews;
+- (struct CGSize)minimumSize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1;
-- (void)setHidden:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;

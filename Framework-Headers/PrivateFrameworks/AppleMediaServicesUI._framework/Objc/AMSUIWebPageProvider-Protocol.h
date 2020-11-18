@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/NSObject-Protocol.h>
+#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
 
 @class AMSUIWebNavigationBarModel, UIViewController;
 @protocol AMSUIWebPagePresenter;
 
-@protocol AMSUIWebPageProvider <NSObject>
+@protocol AMSUIWebPageProvider <AMSUIWebModelInterface>
 
 @property (readonly, nonatomic) BOOL disableReappearPlaceholder;
 @property (readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar;

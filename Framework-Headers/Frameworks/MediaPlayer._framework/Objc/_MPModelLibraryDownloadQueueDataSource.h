@@ -10,6 +10,7 @@
 
 @class MPMediaLibraryEntityTranslationContext, MPMediaLibraryEntityTranslator, MPModelLibraryDownloadQueueRequest, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelLibraryDownloadQueueDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     MPModelLibraryDownloadQueueRequest *_request;

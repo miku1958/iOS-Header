@@ -21,6 +21,7 @@
 - (id)inverseTransform;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToGeometryTransformAffine:(id)arg1;
+- (BOOL)isIdentityImageTransform;
 - (void)nu_updateDigest:(id)arg1;
 - (id)transformByRotateZ:(double)arg1;
 - (id)transformByScaleX:(double)arg1 scaleY:(double)arg2;

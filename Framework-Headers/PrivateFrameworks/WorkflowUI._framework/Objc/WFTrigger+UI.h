@@ -7,6 +7,10 @@
 #import <WorkflowKit/WFTrigger.h>
 
 @interface WFTrigger (UI)
++ (id)offIcon;
++ (id)offLabel;
++ (id)onIcon;
++ (id)onLabel;
 + (id)triggerTypeIcon;
 - (Class)viewControllerClassForConfiguration;
 @end

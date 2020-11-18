@@ -11,11 +11,16 @@
 @interface _TtC8VideosUI9ViewModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *identifier;
+    MISSING_TYPE *debugIdentifier;
     MISSING_TYPE *type;
-    MISSING_TYPE *metrics;
+    MISSING_TYPE *viewLayout;
     MISSING_TYPE *children;
     MISSING_TYPE *childrenDictionary;
-    MISSING_TYPE *viewLayout;
+    MISSING_TYPE *valueData;
+    MISSING_TYPE *supplementaryData;
+    MISSING_TYPE *metrics;
+    MISSING_TYPE *legacyMetrics;
+    MISSING_TYPE *storageDict;
     MISSING_TYPE *parent;
     MISSING_TYPE *parentViewElement;
     MISSING_TYPE *jsonDictionary;

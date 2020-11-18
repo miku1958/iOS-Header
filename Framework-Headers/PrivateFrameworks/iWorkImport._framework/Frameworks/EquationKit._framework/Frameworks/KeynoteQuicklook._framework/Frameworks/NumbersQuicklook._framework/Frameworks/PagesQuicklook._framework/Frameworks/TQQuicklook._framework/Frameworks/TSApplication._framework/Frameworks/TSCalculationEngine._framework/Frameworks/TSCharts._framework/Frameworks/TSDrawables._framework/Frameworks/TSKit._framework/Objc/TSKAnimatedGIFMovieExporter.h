@@ -13,11 +13,12 @@
     TSPData *_data;
 }
 
-- (void)dealloc;
++ (BOOL)canInitWithDataType:(id)arg1;
+- (void).cxx_destruct;
 - (void)exportToMovieFileURL:(id)arg1 fileType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithData:(id)arg1;
-- (struct opaqueCMSampleBuffer *)p_createCMSampleBufferFromImageInCGImageSource:(struct CGImageSource *)arg1 atIndex:(unsigned long long)arg2 withPresentationTime:(CDStruct_198678f7)arg3 nextPresentationTime:(out CDStruct_198678f7 *)arg4;
+- (struct opaqueCMSampleBuffer *)p_createCMSampleBufferFromImageInCGImageSource:(struct CGImageSource *)arg1 atIndex:(unsigned long long)arg2 withPresentationTime:(CDStruct_1b6d18a9)arg3 nextPresentationTime:(out CDStruct_1b6d18a9 *)arg4;
 - (void)p_finishWithSuccess:(BOOL)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

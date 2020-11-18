@@ -13,13 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsPlaying;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilityUserTestingChildren;
-- (id)_axContextActionButton;
 - (id)_axEmbeddedView;
-- (id)_axPlayButton;
-- (id)_axSubscribeButton;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

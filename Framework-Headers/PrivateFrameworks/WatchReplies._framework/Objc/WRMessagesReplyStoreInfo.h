@@ -14,6 +14,7 @@
 - (id)defaultsChangedNotificationName;
 - (id)defaultsDomain;
 - (id)defaultsKey;
+- (id)hiddenTinkerReplyKeys;
 - (BOOL)supportsSmartReplies;
 
 @end

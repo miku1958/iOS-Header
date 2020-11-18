@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableSet;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CDMonitorManager : NSObject
 {
@@ -21,6 +21,7 @@
     NSMutableDictionary *_historicalHandlerMap;
     NSMutableSet *_shutdownHandlingMonitors;
     NSObject<OS_dispatch_queue> *_monitorWorkQueue;
+    NSObject<OS_dispatch_source> *_SIGTERMHandlerSource;
 }
 
 + (id)monitorManagerForEventStreams:(id)arg1 domain:(unsigned long long)arg2;

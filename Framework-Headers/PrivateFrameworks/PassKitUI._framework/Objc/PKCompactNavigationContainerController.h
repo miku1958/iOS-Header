@@ -12,7 +12,7 @@
 #import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, PKCompactNavigationContainedNavigationController, PKWrapperViewController, UITapGestureRecognizer, UIView;
+@class NSString, PKCompactNavigationContainedNavigationController, PKCompactNavigationContainedNavigationWrapperViewController, UITapGestureRecognizer, UIView;
 @protocol PKCompactNavigationContainerControllerDelegate, UICoordinateSpace;
 
 @interface PKCompactNavigationContainerController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, PKContentContainerObserver, PKViewWindowObserver>
@@ -23,7 +23,7 @@
     BOOL _requiresMasking;
     UIView *_maskingContainerView;
     struct CGRect _maximumModalPresentationFrame;
-    PKWrapperViewController *_presentationContextVC;
+    PKCompactNavigationContainedNavigationWrapperViewController *_presentationContextVC;
     CDStruct_47050b7f _topVCInfo;
     struct CGRect _statusBarFrame;
     unsigned short _layoutGroupCounter;

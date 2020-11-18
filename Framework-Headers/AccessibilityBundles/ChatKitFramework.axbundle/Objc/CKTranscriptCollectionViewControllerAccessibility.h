@@ -8,12 +8,17 @@
 
 @interface CKTranscriptCollectionViewControllerAccessibility : __CKTranscriptCollectionViewControllerAccessibility_super
 {
+    BOOL _axBuddyWasTyping;
 }
+
+@property (nonatomic) BOOL axBuddyWasTyping; // @synthesize axBuddyWasTyping=_axBuddyWasTyping;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisElementsAndStrings;
+- (BOOL)axIsShowingChatController;
+- (void)chatItemsDidChange:(id)arg1;
 - (void)effectManager:(id)arg1 didStartEffect:(id)arg2;
 
 @end

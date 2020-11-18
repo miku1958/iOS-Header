@@ -17,7 +17,6 @@
 
 - (void).cxx_destruct;
 - (void)_delayedHandleRunPPTRequest:(id)arg1;
-- (BOOL)_runPPTRequestRequiresTakingScreenshot:(id)arg1;
 - (void)handleRunPPTRequest:(id)arg1;
 
 @end

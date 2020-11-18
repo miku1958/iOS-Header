@@ -93,6 +93,7 @@
 - (void)setImageView:(id)arg1 placement:(unsigned long long)arg2 padding:(double)arg3;
 - (void)setNumberOfLines:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

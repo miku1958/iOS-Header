@@ -8,32 +8,34 @@
 
 #import <WorkflowUI/WFModuleTitleViewDelegate-Protocol.h>
 
-@class NSString, UIButton, WFAction, WFDragController, WFDragGestureRecognizer, WFModuleTitleView;
-@protocol WFActionDrawerActionTableViewCellDelegate;
+@class NSString, UIButton, UIViewController, WFAction, WFActionDrawerCoordinator, WFDragController, WFDragGestureRecognizer, WFModuleTitleView;
 
 @interface WFActionDrawerActionTableViewCell : UITableViewCell <WFModuleTitleViewDelegate>
 {
     WFAction *_action;
+    WFActionDrawerCoordinator *_coordinator;
+    UIViewController *_viewController;
     WFDragGestureRecognizer *_dragRecognizer;
-    id<WFActionDrawerActionTableViewCellDelegate> _delegate;
+    WFDragController *_dragController;
     WFModuleTitleView *_titleView;
     UIButton *_infoButton;
 }
 
-@property (readonly, nonatomic) WFAction *action; // @synthesize action=_action;
+@property (strong, nonatomic) WFAction *action; // @synthesize action=_action;
+@property (weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerActionTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) WFDragController *dragController;
-@property (weak, nonatomic) WFDragGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
+@property (strong, nonatomic) WFDragController *dragController; // @synthesize dragController=_dragController;
+@property (strong, nonatomic) WFDragGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) WFModuleTitleView *titleView; // @synthesize titleView=_titleView;
+@property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 + (double)preferredHeight;
 - (void).cxx_destruct;
-- (void)configureWithAction:(id)arg1;
+- (void)configureWithAction:(id)arg1 coordinator:(id)arg2 viewController:(id)arg3;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)infoButtonPressed;

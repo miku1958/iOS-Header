@@ -11,12 +11,13 @@
 }
 
 + (id)_contactRankMapWithRankedIdentifiers:(id)arg1;
-+ (id)_contactsWithIdentifiers:(id)arg1;
++ (id)_contactsWithIdentifiers:(id)arg1 store:(id)arg2;
 + (id)_scoreAndSortContacts:(id)arg1 rankMap:(id)arg2;
 + (double)_scoreWithInitialScore:(double)arg1 identifier:(id)arg2 rankMap:(id)arg3;
 + (id)_scoredLabeledValues:(id)arg1;
-+ (id)mostRelevantContacts;
-+ (id)mostRelevantContactsWithName:(id)arg1;
++ (id)mostRelevantContactsWithName:(id)arg1 store:(id)arg2;
++ (id)mostRelevantContactsWithStore:(id)arg1;
++ (id)mostRelevantContactsWithStore:(id)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
 + (void)scoreContactNameRecords:(id)arg1;
 + (id)scoredContactsWithContacts:(id)arg1;
 

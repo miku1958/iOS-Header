@@ -19,8 +19,11 @@
 - (void).cxx_destruct;
 - (id)_connection;
 - (id)_init;
+- (void)_onQueue_prewarmDevice;
 - (id)init;
 - (void)prewarm;
+- (void)prewarmDevice;
+- (void)prewarmDeviceAndNetwork;
 
 @end
 

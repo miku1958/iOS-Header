@@ -6,10 +6,9 @@
 
 #import <AppPredictionClient/NSObject-Protocol.h>
 
-@class ATXActionResponse, ATXResponse, NSArray, NSString;
+@class ATXSpotlightEvent;
 
 @protocol ATXSearchFeedbackListenerTarget <NSObject>
-- (void)logAppFeedback:(ATXResponse *)arg1 consumerSubType:(unsigned char)arg2 engagementType:(unsigned long long)arg3 bundleIdentifier:(NSString *)arg4 bundleIdsShown:(NSArray *)arg5;
-- (void)sendActionResponse:(ATXActionResponse *)arg1;
+- (void)writeSpotlightEvent:(ATXSpotlightEvent *)arg1;
 @end
 

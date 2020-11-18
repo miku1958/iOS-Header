@@ -9,13 +9,16 @@
 #import <network/OS_nw_connection-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue, OS_nw_array, OS_nw_endpoint, OS_nw_endpoint_handler, OS_nw_establishment_report, OS_nw_parameters, OS_nw_read_request, OS_nw_write_request;
+@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_workloop, OS_nw_array, OS_nw_context, OS_nw_endpoint, OS_nw_endpoint_handler, OS_nw_establishment_report, OS_nw_parameters, OS_nw_read_request, OS_nw_write_request;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_connection : NSObject <OS_nw_connection>
 {
     NSObject<OS_nw_endpoint> *endpoint;
     NSObject<OS_nw_parameters> *parameters;
+    NSObject<OS_nw_context> *context;
+    NSObject<OS_dispatch_queue> *request_queue;
+    NSObject<OS_dispatch_workloop> *workloop;
     NWConcrete_nw_connection *_internal_reference;
     unsigned long long start_time;
     int state;
@@ -28,6 +31,8 @@ __attribute__((visibility("hidden")))
     unsigned int hit_max_timestamps:1;
     unsigned int should_report_activities:1;
     unsigned int initial_writes_are_non_idempotent:1;
+    unsigned int should_report_probe_stats:1;
+    unsigned int attempted_probe:1;
     NSObject<OS_nw_write_request> *batched_sends;
     NSObject<OS_nw_read_request> *batched_receives;
     BOOL cancelled;
@@ -64,6 +69,8 @@ __attribute__((visibility("hidden")))
     unsigned int interface_time_delta;
     unsigned int connected_fallback_generation;
     unsigned long long pending_expected_progress_target;
+    unsigned long long estimated_bytes_download;
+    unsigned long long estimated_bytes_upload;
     struct nw_connection_timestamp_s *timestamps;
     unsigned short num_timestamps;
     unsigned short used_timestamps;
@@ -88,7 +95,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithEndpoint:(id)arg1 parameters:(id)arg2 identifier:(unsigned int)arg3;
 - (id)redactedDescription;
 
 @end

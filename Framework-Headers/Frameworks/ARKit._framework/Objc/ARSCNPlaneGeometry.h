@@ -6,16 +6,11 @@
 
 #import <SceneKit/SCNGeometry.h>
 
-@protocol MTLBuffer;
-
 @interface ARSCNPlaneGeometry : SCNGeometry
 {
-    id<MTLBuffer> _vertexBuffer;
-    id<MTLBuffer> _textureCoordinateBuffer;
 }
 
 + (id)planeGeometryWithDevice:(id)arg1;
-- (void).cxx_destruct;
 - (void)updateFromPlaneGeometry:(id)arg1;
 
 @end

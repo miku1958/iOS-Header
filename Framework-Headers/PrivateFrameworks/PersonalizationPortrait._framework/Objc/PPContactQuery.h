@@ -31,7 +31,7 @@
 @property (strong, nonatomic) NSString *matchingName; // @synthesize matchingName=_matchingName;
 @property (strong, nonatomic) NSString *matchingPhone; // @synthesize matchingPhone=_matchingPhone;
 @property (strong, nonatomic) NSString *matchingPostalAddress; // @synthesize matchingPostalAddress=_matchingPostalAddress;
-@property BOOL onlyQueryMostRelevantContacts; // @synthesize onlyQueryMostRelevantContacts=_onlyQueryMostRelevantContacts;
+@property (nonatomic) BOOL onlyQueryMostRelevantContacts; // @synthesize onlyQueryMostRelevantContacts=_onlyQueryMostRelevantContacts;
 @property (strong, nonatomic) NSString *targetBundleIdentifier; // @synthesize targetBundleIdentifier=_targetBundleIdentifier;
 
 + (BOOL)supportsSecureCoding;

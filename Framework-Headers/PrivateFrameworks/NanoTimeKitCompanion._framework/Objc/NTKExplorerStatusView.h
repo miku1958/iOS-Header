@@ -17,6 +17,7 @@
     BOOL _observing;
     long long _targetDotPosition;
     BOOL _showsFullSignalStrength;
+    BOOL _tritiumIsOn;
     id<CLKMonochromeFilterProvider> _filterProvider;
     NTKExplorerDotLayoutConstraints *_dotLayoutConstraints;
     NTKExplorerDotColorOptions *_dotColorOptions;
@@ -41,6 +42,7 @@
 @property (nonatomic) BOOL showsFullSignalStrength; // @synthesize showsFullSignalStrength=_showsFullSignalStrength;
 @property (nonatomic) long long signalStrengthBars; // @synthesize signalStrengthBars=_signalStrengthBars;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL tritiumIsOn; // @synthesize tritiumIsOn=_tritiumIsOn;
 
 + (id)connectedDotColor;
 + (double)dotBorderWidth;
@@ -51,6 +53,7 @@
 - (void).cxx_destruct;
 - (void)_layoutDotLayers;
 - (void)_updateDotFillStates;
+- (id)connectivityDotBackingColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 dotLayoutConstraints:(id)arg2 dotColorOptions:(id)arg3;
 - (void)setDotPosition:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

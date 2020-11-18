@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) NSString *contactIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *fullName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isInferredChild;
 @property (readonly, nonatomic) BOOL isVerified;

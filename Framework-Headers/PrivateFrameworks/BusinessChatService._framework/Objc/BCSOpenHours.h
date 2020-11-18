@@ -25,7 +25,6 @@
 - (id)_convertDateToLocalTimeZoneWithDate:(id)arg1;
 - (id)_convertDateToLocalTimeZoneWithDate:(id)arg1 timeZone:(id)arg2;
 - (id)_dateWhenOpenNextAfterDate:(id)arg1 timeZone:(id)arg2;
-- (void)_printOpenHoursForTheWeek;
 - (long long)_totalSecondsInLocalTimeFromPreviousMidnightWithDate:(id)arg1;
 - (long long)_totalSecondsInLocalTimeFromPreviousMidnightWithDate:(id)arg1 timeZone:(id)arg2;
 - (BOOL)_validTimeRange:(id)arg1;
@@ -35,6 +34,7 @@
 - (id)_weekdayStringFromWeekdayIndex:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateWhenOpenNextAfterDate:(id)arg1;
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHoursMessages:(id)arg1 timeZone:(id)arg2;

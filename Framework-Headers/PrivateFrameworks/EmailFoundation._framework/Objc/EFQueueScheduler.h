@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFScheduler-Protocol.h>
+#import <EmailFoundation/EFAssertableScheduler-Protocol.h>
+#import <EmailFoundation/EFSuspendableScheduler-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface EFQueueScheduler : NSObject <EFScheduler>
+@interface EFQueueScheduler : NSObject <EFSuspendableScheduler, EFAssertableScheduler>
 {
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -24,13 +25,17 @@
 
 - (void).cxx_destruct;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
+- (void)assertIsExecuting:(BOOL)arg1;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
+- (void)performSyncBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)performVoucherPreservingBlock:(CDUnknownBlockType)arg1;
 - (id)performWithObject:(id)arg1;
+- (void)resume;
+- (void)suspend;
 
 @end
 

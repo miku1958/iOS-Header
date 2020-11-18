@@ -35,6 +35,7 @@
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)touch;
 

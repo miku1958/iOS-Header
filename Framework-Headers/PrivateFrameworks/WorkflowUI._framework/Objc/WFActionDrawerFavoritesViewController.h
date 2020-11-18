@@ -6,18 +6,12 @@
 
 #import <WorkflowUI/WFActionDrawerResultsViewController.h>
 
-@class WFActionDrawerResultsController;
-
 @interface WFActionDrawerFavoritesViewController : WFActionDrawerResultsViewController
 {
-    WFActionDrawerResultsController *_actionDrawerResultsController;
 }
 
-@property (strong, nonatomic) WFActionDrawerResultsController *actionDrawerResultsController; // @synthesize actionDrawerResultsController=_actionDrawerResultsController;
-
-- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithTitle:(id)arg1 actionDrawerResultsController:(id)arg2;
+- (id)initWithCoordinator:(id)arg1;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (id)state;
 - (void)updateResults;

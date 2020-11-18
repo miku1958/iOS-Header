@@ -6,7 +6,6 @@
 
 #import <Metal/_MTLIndirectArgumentBufferLayout.h>
 
-__attribute__((visibility("hidden")))
 @interface MTLEmulationIndirectArgumentBufferLayout : _MTLIndirectArgumentBufferLayout
 {
     unsigned long long _stride;

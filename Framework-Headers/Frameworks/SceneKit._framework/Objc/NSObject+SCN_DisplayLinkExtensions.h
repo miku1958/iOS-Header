@@ -7,6 +7,6 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (SCN_DisplayLinkExtensions)
-- (id)SCN_setupDisplayLinkWithQueue:(id)arg1;
+- (id)SCN_setupDisplayLinkWithQueue:(id)arg1 screen:(id)arg2;
 @end
 

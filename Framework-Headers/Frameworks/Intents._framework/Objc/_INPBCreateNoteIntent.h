@@ -15,14 +15,12 @@
 @interface _INPBCreateNoteIntent : PBCodable <_INPBCreateNoteIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBNoteContent *_content;
     _INPBDataString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
     _INPBDataString *_title;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBNoteContent *content; // @synthesize content=_content;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

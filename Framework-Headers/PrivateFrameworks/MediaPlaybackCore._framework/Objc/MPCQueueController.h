@@ -7,38 +7,54 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/MPAVQueueController-Protocol.h>
+#import <MediaPlaybackCore/MPCContinueListeningRadioQueueProviding-Protocol.h>
+#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
+#import <MediaPlaybackCore/MPCQueueItemProviding-Protocol.h>
 #import <MediaPlaybackCore/MPSectionedIdentifierListAnnotationDelegate-Protocol.h>
 #import <MediaPlaybackCore/MPShuffleableSectionedIdentifierListDelegate-Protocol.h>
 #import <MediaPlaybackCore/MSVSegmentedCoding-Protocol.h>
 
-@class MPAVItem, MPShuffleableSectionedIdentifierList, NSError, NSMutableDictionary, NSString, NSUserDefaults;
+@class MPAVItem, MPCPlaybackEngine, MPSectionedIdentifierList, MPSectionedIdentifierListPosition, MPShuffleableSectionedIdentifierList, NSError, NSMutableDictionary, NSString, NSUserDefaults;
 @protocol MPAVQueueControllerDelegate, MPAVQueueCoordinating;
 
-@interface MPCQueueController : NSObject <MPShuffleableSectionedIdentifierListDelegate, MPSectionedIdentifierListAnnotationDelegate, MPAVQueueController, MSVSegmentedCoding>
+@interface MPCQueueController : NSObject <MPShuffleableSectionedIdentifierListDelegate, MPSectionedIdentifierListAnnotationDelegate, MPCContinueListeningRadioQueueProviding, MPCPlaybackEngineEventObserving, MPCQueueItemProviding, MPAVQueueController, MSVSegmentedCoding>
 {
     unsigned long long _stateHandle;
     NSUserDefaults *_defaults;
     BOOL _hasUserMutations;
     BOOL _allowsQueueModifications;
+    NSString *_preferredFirstContentItemID;
     MPAVItem *_currentItem;
     id<MPAVQueueControllerDelegate> _delegate;
     id<MPAVQueueCoordinating> _queueCoordinator;
     long long _repeatType;
     long long _shuffleType;
+    MPCPlaybackEngine *_playbackEngine;
     NSString *_nextContentItemID;
     NSString *_deferredNextContentItemAnchorID;
     NSError *_restorationError;
     NSMutableDictionary *_coderVersions;
     long long _nextContentItemIDReason;
     long long _state;
+    long long _autoPlayState;
+    MPSectionedIdentifierListPosition *_autoPlayEndPosition;
+    NSString *_restoreLastStartTimePositionToContentItemID;
+    double _lastSavedTime;
     MPShuffleableSectionedIdentifierList *_identifierList;
+    MPSectionedIdentifierList *_autoPlayIdentifierList;
     NSMutableDictionary *_dataSources;
 }
 
 @property (nonatomic) BOOL allowsQueueModifications; // @synthesize allowsQueueModifications=_allowsQueueModifications;
+@property (nonatomic) BOOL autoPlayEnabled;
+@property (strong, nonatomic) MPSectionedIdentifierListPosition *autoPlayEndPosition; // @synthesize autoPlayEndPosition=_autoPlayEndPosition;
+@property (strong, nonatomic) MPSectionedIdentifierList *autoPlayIdentifierList; // @synthesize autoPlayIdentifierList=_autoPlayIdentifierList;
+@property (nonatomic) long long autoPlayState; // @synthesize autoPlayState=_autoPlayState;
+@property (readonly, nonatomic, getter=_autoplayMode) long long autoplayMode;
 @property (strong, nonatomic) NSMutableDictionary *coderVersions; // @synthesize coderVersions=_coderVersions;
 @property (readonly, nonatomic) BOOL containsTransportableContent;
-@property (readonly, nonatomic) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
+@property (strong, nonatomic) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
+@property (readonly, nonatomic, getter=isCurrentItemFromAutoPlay) BOOL currentItemFromAutoPlay;
 @property (strong, nonatomic) NSMutableDictionary *dataSources; // @synthesize dataSources=_dataSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *deferredNextContentItemAnchorID; // @synthesize deferredNextContentItemAnchorID=_deferredNextContentItemAnchorID;
@@ -48,37 +64,54 @@
 @property (readonly, nonatomic) BOOL hasUserMutations; // @synthesize hasUserMutations=_hasUserMutations;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPShuffleableSectionedIdentifierList *identifierList; // @synthesize identifierList=_identifierList;
+@property (readonly, nonatomic) double lastSavedTime; // @synthesize lastSavedTime=_lastSavedTime;
 @property (copy, nonatomic) NSString *nextContentItemID; // @synthesize nextContentItemID=_nextContentItemID;
 @property (nonatomic) long long nextContentItemIDReason; // @synthesize nextContentItemIDReason=_nextContentItemIDReason;
+@property (weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+@property (readonly, copy, nonatomic) NSString *preferredFirstContentItemID; // @synthesize preferredFirstContentItemID=_preferredFirstContentItemID;
 @property (strong, nonatomic) id<MPAVQueueCoordinating> queueCoordinator; // @synthesize queueCoordinator=_queueCoordinator;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (copy, nonatomic) NSError *restorationError; // @synthesize restorationError=_restorationError;
+@property (copy, nonatomic) NSString *restoreLastStartTimePositionToContentItemID; // @synthesize restoreLastStartTimePositionToContentItemID=_restoreLastStartTimePositionToContentItemID;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long supportedInsertionPositions;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
+@property (readonly, nonatomic) BOOL userCanEnableAutoPlay;
 
 + (id)describePlayer:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_accountForAutoPlay;
+- (void)_addAutoPlayPlaybackContext:(id)arg1 atPosition:(long long)arg2 afterContentItemID:(id)arg3 sectionIdentifier:(id)arg4 actions:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_addPlaybackContext:(id)arg1 atPosition:(long long)arg2 afterContentItemID:(id)arg3 sectionIdentifier:(id)arg4 actions:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_allDataSourcesSupportInsertionPositionLast;
 - (void)_applyVolumeNormalizationForQueuedItems;
+- (id)_contentItemIDWithOffset:(long long)arg1 fromItem:(id)arg2 mode:(long long)arg3 didReachEnd:(BOOL *)arg4;
+- (void)_currentItemDidChangeFromItem:(id)arg1 toItem:(id)arg2;
+- (void)_emitEventsForAddingPlaybackContext:(id)arg1 sectionIdentifier:(id)arg2;
+- (void)_emitEventsForItemChangeFromItem:(id)arg1 toCurrentItem:(id)arg2;
+- (void)_emitEventsForPlaybackBehaviorChange;
 - (id)_firstContentItemID;
 - (id)_firstContentItemIDInSectionWithIdentifier:(id)arg1;
 - (void)_highQualityMusicStreamingOnCellularDidChange:(id)arg1;
+- (id)_identifierListForSection:(id)arg1;
 - (id)_itemForContentItemID:(id)arg1 allowReuse:(BOOL)arg2;
 - (id)_itemForPair:(id)arg1;
 - (id)_nextValidIdentifierPairStartingAtContentItemID:(id)arg1 wasInvalid:(BOOL *)arg2;
+- (long long)_privateListeningSourceForSection:(id)arg1;
 - (void)_soundCheckEnabledChangedNotification:(id)arg1;
 - (id)_stateDictionaryIncludingIdentifierList:(BOOL)arg1;
+- (void)_transitionToAutoPlayState:(long long)arg1;
 - (void)addPlaybackContext:(id)arg1 afterContentItemID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 userModification:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)canSkipInDirection:(long long)arg1 fromQueueItem:(id)arg2;
 - (BOOL)canSkipItem:(id)arg1;
+- (void)clearUpNext;
 - (id)contentItemIDAtIndex:(long long)arg1;
 - (id)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(BOOL *)arg3;
 - (id)contentItemIDsFromOffset:(long long)arg1 toOffset:(long long)arg2 nowPlayingIndex:(long long *)arg3;
@@ -89,6 +122,9 @@
 - (void)didRestoreVersion:(long long)arg1 forSegment:(id)arg2;
 - (long long)displayIndexForContentItemID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)engine:(id)arg1 didChangeItemElapsedTime:(double)arg2 rate:(float)arg3;
+- (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
+- (void)engine:(id)arg1 didReachEndOfQueueWithReason:(id)arg2;
 - (void)finalizeStateRestorationWithAccountManager:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstContentItemIDForItemIntersectingIdentifierSet:(id)arg1;
 - (void)incrementVersionForSegment:(id)arg1;
@@ -96,13 +132,22 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isPlaceholderItemForContentItemID:(id)arg1;
 - (id)itemForContentItemID:(id)arg1;
+- (id)itemForContentItemID:(id)arg1 allowReuse:(BOOL)arg2;
+- (id)itemToFollowItem:(id)arg1 direction:(long long)arg2 distance:(long long)arg3 jumpToItem:(BOOL)arg4;
 - (void)jumpToContentItemID:(id)arg1;
+- (void)jumpToContentItemID:(id)arg1 userInitiated:(BOOL)arg2;
 - (void)jumpToFirstContentItem;
 - (void)moveContentItemID:(id)arg1 afterContentItemID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)moveContentItemID:(id)arg1 beforeContentItemID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)player:(id)arg1 currentItemDidChangeFromItem:(id)arg2 toItem:(id)arg3;
+- (void)playerItemDidBecomeCurrent:(id)arg1;
+- (void)playerItemDidResignCurrent:(id)arg1;
+- (void)queueCoordinator:(id)arg1 didLoadItem:(id)arg2;
 - (void)queueCoordinator:(id)arg1 failedToLoadItem:(id)arg2;
 - (id)queueCoordinator:(id)arg1 itemToFollowItem:(id)arg2;
+- (void)queueCoordinator:(id)arg1 willLoadItem:(id)arg2;
 - (void)queueCoordinatorDidChangeItems:(id)arg1;
+- (id)queueReferencesWithMaxCount:(long long)arg1;
 - (void)reloadItemsKeepingCurrentItem:(BOOL)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeContentItemID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -111,6 +156,8 @@
 - (void)reshuffle;
 - (void)sectionedIdentifierList:(id)arg1 dataSourceDidAddItems:(id)arg2 toSection:(id)arg3;
 - (void)sectionedIdentifierList:(id)arg1 dataSourceDidChangeItems:(id)arg2 inSection:(id)arg3;
+- (void)sectionedIdentifierList:(id)arg1 dataSourceDidMoveItems:(id)arg2 inSection:(id)arg3;
+- (void)sectionedIdentifierList:(id)arg1 dataSourceDidRemoveItems:(id)arg2 fromSection:(id)arg3;
 - (void)sectionedIdentifierList:(id)arg1 dataSourceDidUpdateSection:(id)arg2;
 - (id)segmentForCodingKey:(id)arg1;
 - (void)updateLocationDependentPropertiesForItem:(id)arg1;

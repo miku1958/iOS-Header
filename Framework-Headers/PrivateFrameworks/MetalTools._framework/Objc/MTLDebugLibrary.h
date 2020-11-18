@@ -10,7 +10,7 @@
 
 @interface MTLDebugLibrary : MTLToolsLibrary
 {
-    unsigned long long _type;
+    unsigned long long _debugType;
     id _code;
     MTLCompileOptions *_compileOptions;
     NSArray *_imageFilterFunctions;
@@ -19,16 +19,22 @@
 
 @property (copy, nonatomic) id code; // @synthesize code=_code;
 @property (copy, nonatomic) MTLCompileOptions *compileOptions; // @synthesize compileOptions=_compileOptions;
+@property (nonatomic) unsigned long long debugType; // @synthesize debugType=_debugType;
 @property (readonly, nonatomic) CDStruct_dbc1e4aa *imageFilterFunctionInfo; // @synthesize imageFilterFunctionInfo=_imageFilterFunctionInfo;
 @property (readonly, nonatomic) NSArray *imageFilterFunctions; // @synthesize imageFilterFunctions=_imageFilterFunctions;
-@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
+- (id)copyConstantValues:(id)arg1;
 - (void)dealloc;
 - (id)initWithLibrary:(id)arg1 parent:(id)arg2 type:(unsigned long long)arg3 code:(id)arg4 options:(id)arg5;
+- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newFunctionWithName:(id)arg1;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
+- (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)setImageFilterFunctions:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2;
+- (void)validateDescriptor:(id)arg1 expectedClass:(Class)arg2;
 
 @end
 

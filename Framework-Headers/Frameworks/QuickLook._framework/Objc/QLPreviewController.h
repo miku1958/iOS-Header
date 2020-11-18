@@ -58,6 +58,7 @@
     BOOL _useCustomActionButton;
     BOOL _alwaysDisplayPreviewItemTitle;
     BOOL _showActionAsDefaultButton;
+    BOOL _forceModalPresentation;
     long long _currentPreviewItemIndex;
     id<QLPreviewControllerDataSource> _dataSource;
     id<QLPrintingProtocol> _printer;
@@ -93,6 +94,8 @@
     NSArray *_additionalLeftBarButtonItems;
     NSArray *_additionalRightBarButtonItems;
     unsigned long long _presentationMode;
+    unsigned long long _forcedSupportedInterfaceOrientations;
+    NSString *_overrideParentApplicationDisplayIdentifier;
 }
 
 @property (strong, nonatomic) NSURL *accessedUrlForDocumentInteractionController; // @synthesize accessedUrlForDocumentInteractionController=_accessedUrlForDocumentInteractionController;
@@ -125,6 +128,8 @@
 @property (nonatomic) BOOL didTransitionFromInternalView; // @synthesize didTransitionFromInternalView=_didTransitionFromInternalView;
 @property (weak, nonatomic) UIAlertController *doneButtonAlertController; // @synthesize doneButtonAlertController=_doneButtonAlertController;
 @property (readonly) NSArray *excludedToolbarButtonIdentifiers; // @synthesize excludedToolbarButtonIdentifiers=_excludedToolbarButtonIdentifiers;
+@property (nonatomic) BOOL forceModalPresentation; // @synthesize forceModalPresentation=_forceModalPresentation;
+@property (nonatomic) unsigned long long forcedSupportedInterfaceOrientations; // @synthesize forcedSupportedInterfaceOrientations=_forcedSupportedInterfaceOrientations;
 @property (nonatomic) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property (strong, nonatomic) UIColor *fullscreenBackgroundColor; // @synthesize fullscreenBackgroundColor=_fullscreenBackgroundColor;
 @property (readonly) unsigned long long hash;
@@ -141,6 +146,7 @@
 @property (strong) NSArray *originalLeftBarButtonItems; // @synthesize originalLeftBarButtonItems=_originalLeftBarButtonItems;
 @property (strong) NSArray *originalRightBarButtonItems; // @synthesize originalRightBarButtonItems=_originalRightBarButtonItems;
 @property (nonatomic) BOOL overlayHidden; // @synthesize overlayHidden=_overlayHidden;
+@property (copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property (strong) UIPinchGestureRecognizer *pinchGesture; // @synthesize pinchGesture=_pinchGesture;
 @property (strong) QLPinchRotationTracker *pinchRotationTracker; // @synthesize pinchRotationTracker=_pinchRotationTracker;
 @property (readonly, nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
@@ -191,10 +197,10 @@
 - (id)_buttonWithAccessibilityIdentifierPointer:(id)arg1 inButtons:(id)arg2;
 - (BOOL)_canPerformBarButtonAction;
 - (id)_childViewControllerForWhitePointAdaptivityStyle;
-- (void)_commontInit;
 - (unsigned long long)_computePresentationMode;
 - (void)_configurePreviewCollectionIfNeeded;
 - (id)_copyBarButtons:(id)arg1;
+- (void)_copyToButtonTapped:(id)arg1;
 - (void)_didEditCopyOfPreviewItemAtIndex:(unsigned long long)arg1 editedCopy:(id)arg2 synchronously:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_didObtainEditsFromService;
 - (void)_dismissQuickLookFromKeyboardCommand;
@@ -222,6 +228,9 @@
 - (void)_notifyPreviewCollectionOfDoneButtonTapWithSender:(id)arg1;
 - (unsigned long long)_numberOfButtonsExcludingSpacersInButtons:(id)arg1 disappearingOnTap:(BOOL)arg2;
 - (void)_obtainEditsFromServiceAndNotifyPreviewCollectionOfDoneButtonTappedWithSender:(id)arg1;
+- (id)_openInButton;
+- (void)_openInButtonTapped:(id)arg1;
+- (void)_performOpenInWithFileURL:(id)arg1 claimBinding:(id)arg2 additionalLaunchServicesOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performQuickLookDismissalAnimated:(BOOL)arg1;
 - (id)_preferredBackgroundColor;
 - (long long)_preferredModalPresentationStyle;
@@ -249,6 +258,7 @@
 - (void)_stopAccessingUrlForDocumentInteractionController;
 - (void)_synchronouslyUpdateContentsOfPreviewItem:(id)arg1 editedCopy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_toolBarButtonsWithTraitCollection:(id)arg1;
+- (BOOL)_toolbarButtonArray:(id)arg1 isEqualToArray:(id)arg2;
 - (void)_toolbarButtonPressed:(id)arg1;
 - (id)_topPreviewController;
 - (id)_topViewController;
@@ -290,7 +300,6 @@
 - (id)editedItems;
 - (id)excludedActivityTypesForDocumentInteractionController:(id)arg1;
 - (void)expandContentOfItemAtIndex:(unsigned long long)arg1 withUUID:(id)arg2 unarchivedItemsURLWrapper:(id)arg3;
-- (void)fetchPDFRepresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)flexibleSpace;
 - (void)forwardMessage:(id)arg1 toItemAtIndex:(unsigned long long)arg2 withUUID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)hasItemsToPreview;
@@ -325,6 +334,7 @@
 - (void)registerForScreenshotService;
 - (void)reloadData;
 - (void)remoteViewControllerWasInvalidated;
+- (void)screenshotService:(id)arg1 generatePDFRepresentationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)setAccessoryViewVisible:(BOOL)arg1;
 - (void)setCurrentOrbMode:(unsigned long long)arg1;
 - (void)setLoadingTextForMissingFiles:(id)arg1;
@@ -340,6 +350,7 @@
 - (void)showShareSheetFromRemoteViewWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
 - (void)showShareSheetWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)sourceIsManaged;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)triggerQuickLookDismissal;
 - (void)unregisterFromScreenshotService;
 - (void)updateKeyCommands;

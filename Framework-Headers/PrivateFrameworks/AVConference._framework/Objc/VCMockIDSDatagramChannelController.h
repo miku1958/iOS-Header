@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (id)datagramChannelRequiresOptions:(BOOL)arg1;
+- (void)dealloc;
 - (void)invalidate;
 - (void)setReadyToReadBlock:(CDUnknownBlockType)arg1;
 - (void)setWriteDatagramBlock:(CDUnknownBlockType)arg1;

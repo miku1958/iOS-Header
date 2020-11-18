@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDNumberParser.h>
+#import <CoreHAP/HAPNumberParser.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDPacketizationMode : HMDNumberParser <NSSecureCoding>
+@interface HMDPacketizationMode : HAPNumberParser <NSSecureCoding>
 {
     unsigned long long _packetizationMode;
 }

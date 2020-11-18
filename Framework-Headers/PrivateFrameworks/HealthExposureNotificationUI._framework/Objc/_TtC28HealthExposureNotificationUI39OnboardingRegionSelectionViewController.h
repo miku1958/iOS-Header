@@ -15,7 +15,6 @@
     MISSING_TYPE *flow;
     MISSING_TYPE *selectionType;
     MISSING_TYPE *statusView;
-    MISSING_TYPE *iconView;
     MISSING_TYPE *regionTableView;
     MISSING_TYPE *regionsProvider;
     MISSING_TYPE *canceller;
@@ -30,6 +29,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

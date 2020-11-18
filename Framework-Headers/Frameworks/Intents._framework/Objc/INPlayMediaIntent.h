@@ -8,7 +8,7 @@
 
 #import <Intents/INPlayMediaIntentExport-Protocol.h>
 
-@class INMediaItem, INMediaSearch, NSArray, NSDate, NSNumber, NSString;
+@class INMediaItem, INMediaSearch, INPrivatePlayMediaIntentData, NSArray, NSDate, NSNumber, NSString;
 
 @interface INPlayMediaIntent : INIntent <INPlayMediaIntentExport>
 {
@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) long long playbackQueueLocation;
 @property (readonly, nonatomic) long long playbackRepeatMode;
 @property (readonly, copy, nonatomic) NSNumber *playbackSpeed;
+@property (copy, nonatomic) INPrivatePlayMediaIntentData *privatePlayMediaIntentData;
 @property (copy, nonatomic) NSString *proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID;
 @property (readonly, copy, nonatomic) NSNumber *resumePlayback;
@@ -40,6 +41,8 @@
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;
+- (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
 - (id)_keyCodableAttributes;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;

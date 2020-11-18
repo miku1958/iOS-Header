@@ -27,6 +27,7 @@
 - (id)_main_deviceContext;
 - (id)_main_displayContext;
 - (long long)_main_effectiveClassicMode;
+- (unsigned long long)_main_effectiveScreenType;
 - (id)_main_persistenceIDs;
 - (id)initWithApplication:(id)arg1;
 - (id)initWithClient:(id)arg1 host:(id)arg2;

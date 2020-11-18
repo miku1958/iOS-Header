@@ -15,6 +15,7 @@
     BOOL _hasRemoteDevices;
     BOOL _inFailForward;
     BOOL _canMakeRemotePayments;
+    BOOL _isSRD;
     BOOL _canDecryptBAAEncryptedData;
 }
 
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL hasRemoteDevices; // @synthesize hasRemoteDevices=_hasRemoteDevices;
 @property (nonatomic) BOOL hasSecureElement; // @synthesize hasSecureElement=_hasSecureElement;
 @property (nonatomic, getter=isInFailForward) BOOL inFailForward; // @synthesize inFailForward=_inFailForward;
+@property (nonatomic) BOOL isSRD; // @synthesize isSRD=_isSRD;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

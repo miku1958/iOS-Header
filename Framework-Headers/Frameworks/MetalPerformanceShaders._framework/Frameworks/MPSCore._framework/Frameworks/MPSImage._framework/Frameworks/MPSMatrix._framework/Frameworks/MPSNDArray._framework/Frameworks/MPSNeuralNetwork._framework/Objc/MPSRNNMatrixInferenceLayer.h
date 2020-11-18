@@ -22,6 +22,7 @@
     MPSMatrixMultiplication *gemmKernelNonTranspose;
     BOOL _recurrentOutputIsTemporary;
     BOOL _storeAllIntermediateStates;
+    BOOL _propagateFullRecurrentRows;
     unsigned long long _numberOfLayers;
     unsigned long long _bidirectionalCombineMode;
     unsigned long long _inputFeatureChannels;
@@ -32,10 +33,11 @@
 @property (readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long numberOfLayers; // @synthesize numberOfLayers=_numberOfLayers;
 @property (readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
+@property (nonatomic) BOOL propagateFullRecurrentRows; // @synthesize propagateFullRecurrentRows=_propagateFullRecurrentRows;
 @property (nonatomic) BOOL recurrentOutputIsTemporary; // @synthesize recurrentOutputIsTemporary=_recurrentOutputIsTemporary;
 @property (nonatomic) BOOL storeAllIntermediateStates; // @synthesize storeAllIntermediateStates=_storeAllIntermediateStates;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (void)encodeBidirectionalSequenceToCommandBuffer:(id)arg1 sourceSequence:(id)arg2 destinationForwardMatrices:(id)arg3 destinationBackwardMatrices:(id)arg4;
@@ -45,6 +47,8 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 rnnDescriptor:(id)arg2;
 - (id)initWithDevice:(id)arg1 rnnDescriptors:(id)arg2;
+- (id)recurrentStateForBatchSize:(unsigned long long)arg1;
+- (id)temporaryRecurrentStateForCommandBuffer:(id)arg1 batchSize:(unsigned long long)arg2;
 
 @end
 

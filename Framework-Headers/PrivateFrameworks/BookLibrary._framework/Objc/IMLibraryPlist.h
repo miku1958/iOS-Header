@@ -36,8 +36,15 @@
 + (id)coverPathFromPlistEntry:(id)arg1;
 + (id)coverWritingModeFromPlistEntry:(id)arg1;
 + (id)deletesArrayFromPlistEntry:(id)arg1;
++ (id)endOfBookExperiencesFromItunesMetadataEntry:(id)arg1;
 + (id)entryForAssetID:(id)arg1 contents:(id)arg2;
 + (id)entryForAssetURL:(id)arg1 contents:(id)arg2;
++ (id)experienceConfidenceFromExperienceParamEntry:(id)arg1;
++ (id)experienceKindFromExperienceEntry:(id)arg1;
++ (id)experienceLocationFromExperienceEntry:(id)arg1;
++ (id)experienceLocationTypeFromExperienceEntry:(id)arg1;
++ (id)experienceParamsFromExperienceEntry:(id)arg1;
++ (id)experienceVersionFromExperienceEntry:(id)arg1;
 + (id)extensionFromPlistEntry:(id)arg1;
 + (id)feedURLFromPlistEntry:(id)arg1;
 + (id)folderNameFromPlistEntry:(id)arg1;

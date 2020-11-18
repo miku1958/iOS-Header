@@ -9,12 +9,13 @@
 #import <WorkflowUI/UIDocumentPickerDelegate-Protocol.h>
 #import <WorkflowUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <WorkflowUI/UINavigationControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFWorkflowWizardNameCellDataSource-Protocol.h>
 #import <WorkflowUI/WFWorkflowWizardNameCellDelegate-Protocol.h>
 
 @class NSString, WFAddToHomeIconPreviewCell, WFHomeScreenIcon, WFWorkflow, WFWorkflowWizardNameCell;
 @protocol WFAddToHomeScreenViewControllerDelegate;
 
-@interface WFAddToHomeScreenViewController : UITableViewController <WFWorkflowWizardNameCellDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate>
+@interface WFAddToHomeScreenViewController : UITableViewController <WFWorkflowWizardNameCellDelegate, WFWorkflowWizardNameCellDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate>
 {
     id<WFAddToHomeScreenViewControllerDelegate> _delegate;
     WFWorkflow *_workflow;
@@ -36,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)didTapAdd;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
+- (id)iconButtonDropdownMenuInWorkflowWizardNameCell:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (id)initWithWorkflow:(id)arg1;
@@ -48,7 +50,6 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)workflowWizardNameCell:(id)arg1 didUpdateName:(id)arg2;
-- (void)workflowWizardNameCellDidSelectEditIcon:(id)arg1;
 
 @end
 

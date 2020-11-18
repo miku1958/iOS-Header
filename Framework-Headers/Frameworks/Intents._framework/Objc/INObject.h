@@ -12,7 +12,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class INImage, NSArray, NSMutableDictionary, NSString;
 
 @interface INObject : NSObject <INRuntimeObject, INJSONSerializable, INSpeakable, NSCopying, NSSecureCoding>
 {
@@ -20,6 +20,8 @@
     NSString *_identifier;
     NSString *_displayString;
     NSString *_pronunciationHint;
+    NSString *_subtitleString;
+    INImage *_displayImage;
     NSArray *_alternativeSpeakableMatches;
 }
 
@@ -27,11 +29,14 @@
 @property (strong, nonatomic) NSArray *alternativeSpeakableMatches; // @synthesize alternativeSpeakableMatches=_alternativeSpeakableMatches;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *descriptionString;
+@property (strong, nonatomic) INImage *displayImage; // @synthesize displayImage=_displayImage;
 @property (readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
 @property (readonly, nonatomic) NSString *spokenPhrase;
+@property (copy, nonatomic) NSString *subtitleString; // @synthesize subtitleString=_subtitleString;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *vocabularyIdentifier;
 
@@ -40,15 +45,20 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (void)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+- (id)_intents_displayImageWithLocalizer:(id)arg1;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)_intents_localizedCopyWithLocalizer:(id)arg1;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableSubtitleWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 displayString:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3 subtitleString:(id)arg4 displayImage:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 subtitleString:(id)arg3 displayImage:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

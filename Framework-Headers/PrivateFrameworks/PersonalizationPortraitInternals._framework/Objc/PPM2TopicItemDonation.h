@@ -8,33 +8,45 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2TopicItemDonation : PBCodable <NSCopying>
 {
-    int _isNew;
-    int _source;
-    struct {
-        unsigned int isNew:1;
-        unsigned int source:1;
-    } _has;
+    NSString *_activeTreatments;
+    int _algorithm;
+    int _donationSource;
+    NSString *_groupId;
+    BOOL _newItem;
+    BOOL _userCreated;
+    CDStruct_f1067582 _has;
 }
 
-@property (nonatomic) BOOL hasIsNew;
-@property (nonatomic) BOOL hasSource;
-@property (nonatomic) int isNew; // @synthesize isNew=_isNew;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (strong, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
+@property (nonatomic) int algorithm; // @synthesize algorithm=_algorithm;
+@property (nonatomic) int donationSource; // @synthesize donationSource=_donationSource;
+@property (strong, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
+@property (readonly, nonatomic) BOOL hasActiveTreatments;
+@property (nonatomic) BOOL hasAlgorithm;
+@property (nonatomic) BOOL hasDonationSource;
+@property (readonly, nonatomic) BOOL hasGroupId;
+@property (nonatomic) BOOL hasNewItem;
+@property (nonatomic) BOOL hasUserCreated;
+@property (nonatomic) BOOL newItem; // @synthesize newItem=_newItem;
+@property (nonatomic) BOOL userCreated; // @synthesize userCreated=_userCreated;
 
-- (int)StringAsIsNew:(id)arg1;
-- (int)StringAsSource:(id)arg1;
+- (void).cxx_destruct;
+- (int)StringAsAlgorithm:(id)arg1;
+- (int)StringAsDonationSource:(id)arg1;
+- (id)algorithmAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)donationSourceAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)isNewAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

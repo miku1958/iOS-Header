@@ -14,14 +14,14 @@
 
 @interface HUSoftwareUpdateInfoTableViewCell : UITableViewCell <HUSoftwareUpdateInternalResizingDelegate, HUCellProtocol>
 {
-    id<HUResizableCellDelegate> _resizingDelegate;
     HUSoftwareUpdateInfoView *_infoView;
+    id<HUResizableCellDelegate> _resizingDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HUSoftwareUpdateInfoView *infoView; // @synthesize infoView=_infoView;
+@property (readonly, nonatomic) HUSoftwareUpdateInfoView *infoView; // @synthesize infoView=_infoView;
 @property (strong, nonatomic) HFItem *item;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate; // @synthesize resizingDelegate=_resizingDelegate;
 @property (readonly) Class superclass;

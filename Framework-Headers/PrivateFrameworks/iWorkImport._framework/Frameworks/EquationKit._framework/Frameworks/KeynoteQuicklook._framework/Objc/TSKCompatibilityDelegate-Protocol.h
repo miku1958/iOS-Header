@@ -14,6 +14,7 @@
 - (Class)exporterClassForType:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (Class)importerClassForType:(NSString *)arg1 path:(NSString *)arg2;
 - (NSString *)indexXmlFilename;
+- (BOOL)isIBADocumentType:(NSString *)arg1;
 - (BOOL)isSageDocumentType:(NSString *)arg1;
 - (BOOL)isTCMessageExceptionErrorDomain:(NSString *)arg1;
 - (BOOL)isTextOnlyType:(NSString *)arg1;

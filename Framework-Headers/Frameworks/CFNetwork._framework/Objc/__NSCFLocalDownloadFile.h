@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     BOOL _finished;
     NSString *_path;
+    BOOL _createdPlaceholder;
     BOOL _skipUnlink;
     BOOL _truncateFile;
     int _error;
@@ -23,26 +24,9 @@
     CDUnknownBlockType _finishCompletion;
 }
 
-@property int error; // @synthesize error=_error;
-@property id<__NSCFLocalDownloadFileOpener> fileProvider; // @synthesize fileProvider=_fileProvider;
-@property (copy) CDUnknownBlockType finishCompletion; // @synthesize finishCompletion=_finishCompletion;
 @property (strong) NSString *path; // @synthesize path=_path;
-@property BOOL skipUnlink; // @synthesize skipUnlink=_skipUnlink;
-@property BOOL truncateFile; // @synthesize truncateFile=_truncateFile;
 
-- (void)captureFile:(id *)arg1 outStat:(struct stat *)arg2;
 - (void)dealloc;
-- (id)fileURL;
-- (void)finishOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initQueues;
-- (id)initTempFileWithDirectory:(id)arg1;
-- (id)initWithExistingFile:(id)arg1 expectedSize:(long long)arg2;
-- (id)initWithExistingUnopenableFile:(id)arg1 fileProvider:(id)arg2;
-- (id)initWithFullPath:(id)arg1;
-- (id)ioChannel;
-- (void)setFinished;
-- (void)truncate;
-- (void)writeBytes:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

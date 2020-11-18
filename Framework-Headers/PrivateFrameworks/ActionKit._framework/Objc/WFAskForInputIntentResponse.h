@@ -8,6 +8,7 @@
 
 @class WFAskForInputResult;
 
+__attribute__((visibility("hidden")))
 @interface WFAskForInputIntentResponse : INIntentResponse
 {
     long long _code;

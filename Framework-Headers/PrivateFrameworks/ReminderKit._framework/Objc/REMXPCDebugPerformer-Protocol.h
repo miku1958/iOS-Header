@@ -8,8 +8,11 @@
 
 @protocol REMXPCDebugPerformer
 - (void)addGeofenceWithLatitude:(double)arg1 longitude:(double)arg2 radius:(double)arg3 uuid:(NSUUID *)arg4 completion:(void (^)(void))arg5;
+- (void)cancelCloudKitSync:(void (^)(NSError *))arg1;
+- (void)cloudKitStatus:(void (^)(NSString *, NSDictionary *, NSError *))arg1;
 - (void)crashDaemonWithMessage:(NSString *)arg1;
 - (void)createIsolatedStoreContainerWithCompletion:(void (^)(REMStoreContainerToken *, NSError *))arg1;
+- (void)daemonStatus:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)daemonVersion:(void (^)(NSString *))arg1;
 - (void)dataAccessStatusReports:(void (^)(NSArray *, NSError *))arg1;
 - (void)destroyIsolatedStoreContainerWithToken:(REMStoreContainerToken *)arg1 completion:(void (^)(NSError *))arg2;
@@ -25,5 +28,7 @@
 - (void)resetBabysitterWithRestrictedAccountID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)simulateCoreLocationEnterRegionWithIdentifier:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)simulateCoreLocationExitRegionWithIdentifier:(NSString *)arg1 completion:(void (^)(void))arg2;
+- (void)testInitialSyncWithAccountName:(NSString *)arg1 completion:(void (^)(long long, NSDictionary *, NSError *))arg2;
+- (void)testReinitializeCloudKitWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

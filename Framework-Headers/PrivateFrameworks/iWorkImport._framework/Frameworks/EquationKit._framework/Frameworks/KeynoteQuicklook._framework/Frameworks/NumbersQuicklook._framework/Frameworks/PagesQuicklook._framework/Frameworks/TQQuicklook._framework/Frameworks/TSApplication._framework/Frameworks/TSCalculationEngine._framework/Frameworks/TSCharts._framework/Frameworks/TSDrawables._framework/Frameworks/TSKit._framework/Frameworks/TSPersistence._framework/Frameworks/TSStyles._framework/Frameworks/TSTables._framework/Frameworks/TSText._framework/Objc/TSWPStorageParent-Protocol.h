@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (readonly, nonatomic) BOOL textIsLinked;
 
 - (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;

@@ -65,6 +65,7 @@
     struct CGSize _imageSize;
 }
 
+@property (readonly, nonatomic) NSString *accessibilityDescription;
 @property (readonly, nonatomic) NSNumber *aperture;
 @property (readonly, nonatomic) unsigned long long approximateBytesRequiredToImport;
 @property (readonly, nonatomic) NSString *assetDescription;
@@ -136,6 +137,7 @@
 @property (readonly, nonatomic) BOOL isTimelapse;
 @property (readonly, nonatomic) BOOL isViewable;
 @property (readonly, nonatomic) NSNumber *iso;
+@property (readonly, nonatomic) NSSet *keywordTitles;
 @property (strong, nonatomic) PHImportAsset *largeMovieRender; // @synthesize largeMovieRender=_largeMovieRender;
 @property (strong, nonatomic) PHImportAsset *largeRender; // @synthesize largeRender=_largeRender;
 @property (strong) NSDate *lastDuplicateCheck; // @synthesize lastDuplicateCheck=_lastDuplicateCheck;
@@ -175,7 +177,6 @@
 + (id)assetFileForURL:(id)arg1 source:(id)arg2;
 + (id)assetFileForURL:(id)arg1 source:(id)arg2 withUuid:(id)arg3;
 + (void)determineIfTIFFIsRAW:(id)arg1 url:(id)arg2;
-+ (id)importAssetFromAssetBundleAtURL:(id)arg1 withImportSource:(id)arg2;
 + (BOOL)isOriginalAdjustmentData:(id)arg1;
 + (BOOL)isValidAsSidecar:(id)arg1;
 + (id)loadDatesForAssetSequence:(id)arg1 atEnd:(CDUnknownBlockType)arg2;
@@ -196,17 +197,16 @@
 - (struct CGSize)cgImageSize;
 - (id)checkForSidecarWithExtension:(id)arg1;
 - (id)checkForSidecarWithName:(id)arg1;
-- (BOOL)configureWithUTI:(id)arg1 supportedType:(unsigned char)arg2 error:(id *)arg3;
+- (BOOL)configureWithUTI:(id)arg1 supportedType:(unsigned char)arg2;
 - (id)copyFromURL:(id)arg1 toURL:(id)arg2;
+- (void)copyToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct CGSize)cropEXIFThumbSize:(struct CGSize)arg1 originalSize:(struct CGSize)arg2;
 - (id)descriptionWithPrefix:(id)arg1;
-- (void)downloadToPathAsync:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)duplicateAssetsForLibrary:(id)arg1;
 - (id)groupingUUID;
 - (BOOL)hasOriginalResourceType;
 - (struct CGImage *)imageThumbnailOfSize:(unsigned long long)arg1 canceler:(id)arg2 error:(id *)arg3;
 - (id)importRecordForPrimaryAsset;
-- (void)informDelegateOfAssetUpdates;
 - (id)initWithSource:(id)arg1;
 - (id)initWithSource:(id)arg1 url:(id)arg2 uti:(id)arg3 supportedType:(unsigned char)arg4;
 - (BOOL)isAppropriateForUI;

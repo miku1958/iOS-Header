@@ -15,8 +15,6 @@
 - (long long)homeScreenInterfaceOrientation;
 - (void)killContainer:(SBFluidSwitcherItemContainer *)arg1 forReason:(long long)arg2;
 - (void)scrollViewKillingProgressUpdated:(double)arg1 ofContainer:(SBFluidSwitcherItemContainer *)arg2;
-- (BOOL)shouldUseBackgroundWallpaperTreatmentForItemContainer:(SBFluidSwitcherItemContainer *)arg1;
-- (double)switcherCardScale;
 - (long long)switcherInterfaceOrientation;
 @end
 

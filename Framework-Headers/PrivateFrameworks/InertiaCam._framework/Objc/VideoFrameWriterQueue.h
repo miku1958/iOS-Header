@@ -11,25 +11,25 @@
 
 @interface VideoFrameWriterQueue : NSObject
 {
+    AVAssetWriter *videoWriter;
+    AVAssetWriterInput *writerInput;
+    AVAssetWriterInputPixelBufferAdaptor *inputAdaptor;
+    NSMutableArray *frameArray;
+    NSLock *frameArrayLock;
+    NSObject<OS_dispatch_queue> *frameWriteQueue;
+    CDStruct_1b6d18a9 startTime;
+    CDStruct_1b6d18a9 endTime;
+    NSConditionLock *_writingDoneLock;
+    NSError *writeError;
     BOOL writeSuccess;
+    unsigned long long nextFrameIndex;
     BOOL canceled;
     BOOL _doneQueueing;
     unsigned int _drainMinimum;
     unsigned int _drainMaximum;
-    AVAssetWriterInputPixelBufferAdaptor *inputAdaptor;
-    AVAssetWriter *videoWriter;
-    AVAssetWriterInput *writerInput;
-    NSMutableArray *frameArray;
-    NSLock *frameArrayLock;
-    NSObject<OS_dispatch_queue> *frameWriteQueue;
-    NSError *writeError;
-    unsigned long long nextFrameIndex;
-    id<VideoFrameWriterProgressRecipient> frameWriterUpdateCallback;
-    NSConditionLock *_writingDoneLock;
     NSConditionLock *_drainConditionLock;
     unsigned long long _drainTarget;
-    CDStruct_1b6d18a9 startTime;
-    CDStruct_1b6d18a9 endTime;
+    id<VideoFrameWriterProgressRecipient> frameWriterUpdateCallback;
 }
 
 @property BOOL canceled; // @synthesize canceled;

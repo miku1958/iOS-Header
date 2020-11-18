@@ -38,7 +38,12 @@
 - (void)getSnapshot:(unsigned long long)arg1;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 options:(id)arg3 device:(id)arg4 accessory:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 uniqueIdentifier:(id)arg8 snapshotRequestHandler:(id)arg9;
 - (id)logIdentifier;
-- (void)relayInitiator:(id)arg1 didFailToSendFile:(id)arg2;
+- (void)relayInitiator:(id)arg1 didEndIDSSessionWithError:(id)arg2;
+- (void)relayInitiator:(id)arg1 didSendData:(id)arg2;
+- (void)relayInitiatorDidSendDataSuccessfully:(id)arg1;
+- (void)relayInitiatorDidSendIDSInvitation:(id)arg1;
+- (void)relayInitiatorDidStartDataSend:(id)arg1;
+- (void)relayInitiatorIDSSessionDidStart:(id)arg1;
 - (void)snapShotTransferComplete;
 - (void)snapshotLocal:(id)arg1 didSaveSnapshotFile:(id)arg2 error:(id)arg3 sessionID:(id)arg4;
 

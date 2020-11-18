@@ -8,6 +8,19 @@
 
 #pragma mark Named Structures
 
+struct BaseGraph;
+
+struct BaseOperation;
+
+struct BaseTensor {
+    unsigned long long _field1;
+    unsigned int _field2;
+    struct vector<long, std::__1::allocator<long>> *_field3;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field4;
+    struct BaseOperation *_field5;
+    struct vector<BaseOperation *, std::__1::allocator<BaseOperation *>> *_field6;
+};
+
 struct CacheFrame {
     struct CacheFrame *_field1;
     struct ResourceNode *_field2;
@@ -57,6 +70,19 @@ struct MPSAutoTexture {
     unsigned char _twiddled;
 };
 
+struct MPSDAGKernelOp {
+    CDUnknownFunctionPointerType *_field1;
+    struct vector<BaseTensor *, std::__1::allocator<BaseTensor *>> *_field2;
+    struct vector<BaseOperation *, std::__1::allocator<BaseOperation *>> *_field3;
+    struct vector<BaseTensor *, std::__1::allocator<BaseTensor *>> *_field4;
+    struct BaseGraph *_field5;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field6;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field7;
+    BOOL _field8;
+    int _field9;
+    unsigned long long _field10;
+};
+
 struct MPSDevice {
     CDUnknownFunctionPointerType *_field1;
     struct MPSDevice *_field2;
@@ -64,12 +90,13 @@ struct MPSDevice {
     struct MPSDeviceFreeList *_field4;
     struct atomic<MTLLibraryNode *> _field5;
     struct atomic<void *> _field6[2][2][2];
-    struct MPSPixelCapabilities _field7[563];
+    struct MPSPixelCapabilities _field7[590];
     struct atomic<void *> _field8;
     unsigned int _field9;
     int _field10;
-    struct MPSGPUInfo _field11;
-    struct atomic<MPSLibrary *> _field12[107];
+    unsigned int _field11;
+    struct MPSGPUInfo _field12;
+    struct atomic<MPSLibrary *> _field13[122];
 };
 
 struct MPSDeviceBehaviors;
@@ -93,13 +120,26 @@ struct MPSGPUInfo {
     unsigned int :8;
     unsigned int :16;
     unsigned int :4;
-    unsigned int :20;
+    unsigned int :10;
+    unsigned int :10;
 };
 
 struct MPSImageCoordinate {
     unsigned long long _field1;
     unsigned long long _field2;
     unsigned long long _field3;
+};
+
+struct MPSKernelDAG {
+    CDUnknownFunctionPointerType *_field1;
+    struct vector<BaseTensor *, std::__1::allocator<BaseTensor *>> *_field2;
+    struct vector<BaseOperation *, std::__1::allocator<BaseOperation *>> *_field3;
+    struct vector<BaseTensor *, std::__1::allocator<BaseTensor *>> *_field4;
+    struct BaseGraph *_field5;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field6;
+    struct vector<BaseOperation *, std::__1::allocator<BaseOperation *>> *_field7;
+    struct vector<MPSDAGKernelOp *, std::__1::allocator<MPSDAGKernelOp *>> *_field8;
+    struct vector<MPSDAGKernelOp *, std::__1::allocator<MPSDAGKernelOp *>> *_field9;
 };
 
 struct MPSKernelInfo;
@@ -115,7 +155,7 @@ struct MPSLibrary {
         struct MPSDeviceBehaviors *_field2;
     } _field4;
     unsigned long long _field5;
-    struct MPSKey_data *_field6[64];
+    struct MPSKey_data *_field6[128];
     struct _opaque_pthread_rwlock_t {
         long long _field1;
         char _field2[192];
@@ -146,6 +186,14 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field20;
     struct MPSDeviceSpecificInfo _field21;
     struct MPSDeviceSpecificInfo _field22;
+    struct MPSDeviceSpecificInfo _field23;
+    struct MPSDeviceSpecificInfo _field24;
+    struct MPSDeviceSpecificInfo _field25;
+    struct MPSDeviceSpecificInfo _field26;
+    struct MPSDeviceSpecificInfo _field27;
+    struct MPSDeviceSpecificInfo _field28;
+    struct MPSDeviceSpecificInfo _field29;
+    struct MPSDeviceSpecificInfo _field30;
 };
 
 struct MPSPixelCapabilities {
@@ -227,6 +275,34 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct __sFILE {
+    char *_field1;
+    int _field2;
+    int _field3;
+    short _field4;
+    short _field5;
+    struct __sbuf _field6;
+    int _field7;
+    void *_field8;
+    CDUnknownFunctionPointerType _field9;
+    CDUnknownFunctionPointerType _field10;
+    CDUnknownFunctionPointerType _field11;
+    CDUnknownFunctionPointerType _field12;
+    struct __sbuf _field13;
+    struct __sFILEX *_field14;
+    int _field15;
+    unsigned char _field16[3];
+    unsigned char _field17[1];
+    struct __sbuf _field18;
+    int _field19;
+    long long _field20;
+};
+
+struct __sbuf {
+    char *_field1;
+    int _field2;
+};
+
 struct atomic<MPSKey_data *>;
 
 struct atomic<MPSLibrary *> {
@@ -259,6 +335,49 @@ struct atomic<void *> {
     } __a_;
 };
 
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+};
+
+struct shared_ptr<MPSKernelDAG> {
+    struct MPSKernelDAG *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct unique_ptr<const std::__1::vector<long, std::__1::allocator<long>>, std::__1::default_delete<const std::__1::vector<long, std::__1::allocator<long>>>> {
+    struct __compressed_pair<const std::__1::vector<long, std::__1::allocator<long>>*, std::__1::default_delete<const std::__1::vector<long, std::__1::allocator<long>>>> {
+        struct vector<long, std::__1::allocator<long>> *_field1;
+    } _field1;
+};
+
+struct vector<BaseOperation *, std::__1::allocator<BaseOperation *>>;
+
+struct vector<BaseTensor *, std::__1::allocator<BaseTensor *>>;
+
+struct vector<MPSDAGKernelOp *, std::__1::allocator<MPSDAGKernelOp *>>;
+
+struct vector<long, std::__1::allocator<long>>;
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -283,6 +402,18 @@ typedef struct {
     CDStruct_14f26992 _field1;
     CDStruct_14f26992 _field2;
 } CDStruct_4c83c94d;
+
+// Template types
+typedef struct shared_ptr<MPSKernelDAG> {
+    struct MPSKernelDAG *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_d547ef79;
+
+typedef struct unique_ptr<const std::__1::vector<long, std::__1::allocator<long>>, std::__1::default_delete<const std::__1::vector<long, std::__1::allocator<long>>>> {
+    struct __compressed_pair<const std::__1::vector<long, std::__1::allocator<long>>*, std::__1::default_delete<const std::__1::vector<long, std::__1::allocator<long>>>> {
+        struct vector<long, std::__1::allocator<long>> *_field1;
+    } _field1;
+} unique_ptr_443eaf63;
 
 #pragma mark Typedef'd Unions
 

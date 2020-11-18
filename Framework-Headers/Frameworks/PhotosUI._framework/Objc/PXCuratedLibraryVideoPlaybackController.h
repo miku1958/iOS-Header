@@ -42,6 +42,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)pixelBufferSourceForDisplayAsset:(id)arg1 mediaProvider:(id)arg2 spriteReference:(id)arg3;
 - (void)recyclePixelBufferSourceForDisplayAssets:(id)arg1;
+- (BOOL)shouldDisplayPreviousNonnullPixelBufferForPixelBufferSource:(id)arg1;
 - (BOOL)shouldEnablePlayback;
 
 @end

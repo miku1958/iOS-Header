@@ -8,14 +8,14 @@
 
 #import <PassKitCore/PKAccountServiceExportedInterface-Protocol.h>
 
-@class NSHashTable, NSLock, PKXPCService;
+@class NSHashTable, PKXPCService;
 @protocol OS_dispatch_queue;
 
 @interface PKAccountService : NSObject <PKAccountServiceExportedInterface>
 {
     PKXPCService *_remoteService;
     NSObject<OS_dispatch_queue> *_replyQueue;
-    NSLock *_lockObservers;
+    struct os_unfair_lock_s _lockObservers;
     NSHashTable *_observers;
     long long _accountChangedNotificationSuspensionCount;
 }
@@ -67,7 +67,6 @@
 - (void)noteVirtualCardAutoFilledBySafari:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAccountAction:(id)arg1 withAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performVirtualCardAction:(long long)arg1 forVirtualCardIdentifier:(id)arg2 forAccountIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)preferencesForAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerObserver:(id)arg1;
 - (void)scheduleSetupReminderForAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)scheduledPaymentsChangedForAccountIdentifier:(id)arg1;
@@ -80,7 +79,6 @@
 - (void)updateAccountWithIdentifier:(id)arg1 extended:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateMockAccountWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updatePreferences:(id)arg1 forAccountWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateScheduledPaymentsWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateUserInfoForAccountIdentifier:(id)arg1 contact:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateVirtualCardsWithAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -13,9 +13,15 @@
     NSString *_viewID;
     SISchemaRedactableString *_spokenDialogOutput;
     SISchemaRedactableString *_displayedDialogOutput;
+    BOOL _hasViewID;
+    BOOL _hasSpokenDialogOutput;
+    BOOL _hasDisplayedDialogOutput;
 }
 
 @property (strong, nonatomic) SISchemaRedactableString *displayedDialogOutput; // @synthesize displayedDialogOutput=_displayedDialogOutput;
+@property (nonatomic) BOOL hasDisplayedDialogOutput; // @synthesize hasDisplayedDialogOutput=_hasDisplayedDialogOutput;
+@property (nonatomic) BOOL hasSpokenDialogOutput; // @synthesize hasSpokenDialogOutput=_hasSpokenDialogOutput;
+@property (nonatomic) BOOL hasViewID; // @synthesize hasViewID=_hasViewID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaRedactableString *spokenDialogOutput; // @synthesize spokenDialogOutput=_spokenDialogOutput;
 @property (copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;

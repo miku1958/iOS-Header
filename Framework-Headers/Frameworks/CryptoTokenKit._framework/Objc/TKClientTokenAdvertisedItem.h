@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, TKClientTokenSession;
+@class NSData, NSDictionary, NSString, TKClientTokenSession;
 
 @interface TKClientTokenAdvertisedItem : NSObject
 {
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSDictionary *keychainAttributes; // @synthesize keychainAttributes=_keychainAttributes;
 @property (readonly, nonatomic) id keychainClass;
 @property (readonly, nonatomic) NSString *localizedName;
+@property (readonly, nonatomic) NSData *objectID;
 @property (readonly, nonatomic) TKClientTokenSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;

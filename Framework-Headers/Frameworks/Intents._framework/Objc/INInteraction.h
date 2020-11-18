@@ -66,6 +66,7 @@
 - (id)_dictionaryRepresentation;
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_init;
+- (id)_initWithIntent:(id)arg1 response:(id)arg2;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_searchableItemIncludingData:(BOOL)arg1;

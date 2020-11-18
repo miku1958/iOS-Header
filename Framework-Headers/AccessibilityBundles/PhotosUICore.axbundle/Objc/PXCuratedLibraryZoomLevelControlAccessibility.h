@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_accessibilityServesAsFirstElement;
 - (void)_axAdjustZoomLevel:(BOOL)arg1;
 - (id)_axSiblingScrollView;
 - (void)_updateSegmentedControl;

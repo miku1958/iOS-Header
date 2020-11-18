@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @protocol _ICLexiconManaging
 - (void (^)(NSDictionary *))addContactObserver:(void (^)(NSDictionary *))arg1;
 - (void)hibernate;
 - (NSArray *)loadLexicons:(NSString * (^)(NSString *))arg1;
 - (NSArray *)loadLexiconsUsingFilter:(NSString * (^)(NSString *))arg1;
+- (void)provideFeedbackForString:(NSString *)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)removeContactObserver:(void (^)(NSDictionary *))arg1;
 - (void)unloadLexicons;
 - (void)warmUp;

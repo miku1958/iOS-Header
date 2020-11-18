@@ -7,6 +7,7 @@
 @class CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSString, REMDistributedEvaluationCollectionOptions, REMFetchRequest, REMObjectID, REMStoreInvocation, REMStoreSwiftInvocation;
 
 @protocol REMXPCStorePerformer
+- (void)MCIsManagedAccountWithObjectID:(REMObjectID *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)acceptCalDAVShareWithCalendarURL:(NSString *)arg1 acAccountID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)acceptShareWithMetadata:(CKShareMetadata *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)compressedDistributedEvaluationDataWithOptions:(REMDistributedEvaluationCollectionOptions *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
@@ -16,7 +17,6 @@
 - (void)fetchReplicaManagersForAccountID:(REMObjectID *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchShareForObjectWithID:(REMObjectID *)arg1 completion:(void (^)(CKShare *, NSError *))arg2;
 - (void)notifyOfInteractionWithPeople:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)notifyOfUserInterestInSiriSuggestedReminder:(REMObjectID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)performInvocation:(REMStoreInvocation *)arg1 completion:(void (^)(REMStoreInvocationResult *, NSError *))arg2;
 - (void)performSwiftInvocation:(REMStoreSwiftInvocation *)arg1 withParametersData:(NSData *)arg2 storages:(NSDictionary *)arg3 completion:(void (^)(REMStoreSwiftInvocationResult *, NSError *))arg4;
 - (void)rejectCalDAVShareWithCalendarURL:(NSString *)arg1 acAccountID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
@@ -24,8 +24,9 @@
 - (void)requestToDeleteLocalDataWithCompletion:(void (^)(NSError *))arg1;
 - (void)requestToDeleteSyncDataWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)requestToMergeLocalDataIntoSyncDataWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)saveAccountStorages:(NSArray *)arg1 listStorages:(NSArray *)arg2 reminderStorages:(NSArray *)arg3 changedKeys:(NSDictionary *)arg4 replicaManagers:(NSDictionary *)arg5 author:(NSString *)arg6 mode:(unsigned long long)arg7 synchronously:(BOOL)arg8 completion:(void (^)(NSError *))arg9;
+- (void)saveAccountStorages:(NSArray *)arg1 listStorages:(NSArray *)arg2 smartListStorages:(NSArray *)arg3 reminderStorages:(NSArray *)arg4 changedKeys:(NSDictionary *)arg5 replicaManagers:(NSDictionary *)arg6 author:(NSString *)arg7 mode:(unsigned long long)arg8 synchronously:(BOOL)arg9 syncToCloudKit:(BOOL)arg10 completion:(void (^)(NSError *))arg11;
 - (void)stopShare:(CKShare *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)uncachedSuggestedAttributesPerformerWithReason:(NSString *)arg1 completion:(void (^)(id<REMXPCSuggestedAttributesPerformer>, NSError *))arg2;
 - (void)updateAccountWithACAccountID:(NSString *)arg1 restartDA:(BOOL)arg2 completion:(void (^)(BOOL, BOOL, NSError *))arg3;
 - (void)updateAccountsAndFetchMigrationState:(BOOL)arg1 completion:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (void)updateShare:(CKShare *)arg1 completion:(void (^)(NSError *))arg2;

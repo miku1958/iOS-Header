@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_fallbackURLs;
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
-    unsigned long long _captureDeviceIconBeforeSuspension;
+    unsigned long long _mediaStateIconBeforeSuspension;
     _SFApplicationManifestFetcher *_applicationManifestFetcher;
     _SFInjectedJavaScriptController *_activityJSController;
     _SFWebClipMetadataFetcher *_webClipMetadataFetcher;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
+- (id)_canonicalPageURL;
 - (BOOL)_clientIsWebApp;
 - (void)_fetchApplicationManifestIfNeeded;
 - (void)_handleHostStateUpdate:(id)arg1;
@@ -58,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (id)processPool;
-- (void)setMediaCaptureDeviceIcon:(unsigned long long)arg1;
+- (void)setMediaStateIcon:(unsigned long long)arg1;
 - (void)setNeedsStatusBarAppearanceUpdate;
 - (void)setWebViewController:(id)arg1;
 - (void)statusBarIndicatorTappedWithCompletionHandler:(CDUnknownBlockType)arg1;

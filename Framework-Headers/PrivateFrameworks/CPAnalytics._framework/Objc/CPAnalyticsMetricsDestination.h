@@ -8,22 +8,23 @@
 
 #import <CPAnalytics/CPAnalyticsDestination-Protocol.h>
 
-@class CPAnalyticsEventMatcherSet, NSDictionary;
+@class NSMapTable, NSString;
 
 @interface CPAnalyticsMetricsDestination : NSObject <CPAnalyticsDestination>
 {
-    NSDictionary *_eventRoutes;
-    CPAnalyticsEventMatcherSet *_matcherSet;
+    NSMapTable *_eventRoutes;
 }
 
-@property (strong, nonatomic) NSDictionary *eventRoutes; // @synthesize eventRoutes=_eventRoutes;
-@property (strong, nonatomic) CPAnalyticsEventMatcherSet *matcherSet; // @synthesize matcherSet=_matcherSet;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSMapTable *eventRoutes; // @synthesize eventRoutes=_eventRoutes;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_buildCustomCoreAnalyticsPayloadForEvent:(id)arg1 withPropertiesToInclude:(id)arg2;
-- (BOOL)_hasCustomConfigForEvent:(id)arg1;
 - (void)_sendCoreAnalyticsEvent:(id)arg1 eventPayload:(id)arg2;
-- (void)_sendCoreAnalyticsEventWithCustomConfig:(id)arg1;
+- (void)_sendCoreAnalyticsEventWithCustomConfig:(id)arg1 eventRoute:(id)arg2;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (void)processEvent:(id)arg1;
 

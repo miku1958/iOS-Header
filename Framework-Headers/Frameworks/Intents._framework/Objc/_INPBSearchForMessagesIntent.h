@@ -16,7 +16,6 @@
 {
     CDStruct_95bda58d _attributes;
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBStringList *_content;
     _INPBStringList *_conversationIdentifier;
     _INPBDateTimeRange *_dateTimeRange;
@@ -30,7 +29,6 @@
     _INPBDataStringList *_speakableGroupName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
 @property (strong, nonatomic) _INPBStringList *content; // @synthesize content=_content;

@@ -33,8 +33,10 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (long long)biometricState;
 + (id)buildVersion;
 + (id)compatibleProductType;
++ (id)createBagForSubProfile;
 + (id)deviceGUID;
 + (BOOL)deviceIsAppleTV;
 + (BOOL)deviceIsAppleWatch;
@@ -60,6 +62,7 @@
 + (id)macAddress;
 + (id)macAddressData;
 + (id)operatingSystem;
++ (id)phoneNumber;
 + (BOOL)postAllDeviceOfferFollowUpsForAccount:(id)arg1 priority:(long long)arg2 bag:(id)arg3 logKey:(id)arg4;
 + (BOOL)postAllDeviceOfferFollowUpsForAccount:(id)arg1 priority:(long long)arg2 bagContract:(id)arg3 logKey:(id)arg4;
 + (BOOL)postDeviceOfferFollowUpWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bag:(id)arg4 logKey:(id)arg5;
@@ -75,6 +78,7 @@
 + (BOOL)saveDeviceOffersForAccount:(id)arg1 response:(id)arg2 logKey:(id)arg3;
 + (id)screenScale;
 + (id)serialNumber;
++ (void)setBiometricState:(long long)arg1;
 + (void)setDeviceOffersCheckEncodingForRequestParameters:(id)arg1;
 + (BOOL)shouldPresentSetupOffersForAccount:(id)arg1;
 + (BOOL)shouldPresentSetupOffersForAccount:(id)arg1 issues:(long long *)arg2;

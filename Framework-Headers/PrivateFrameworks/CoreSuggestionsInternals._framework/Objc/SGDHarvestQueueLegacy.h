@@ -15,7 +15,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 customPriorityCriteria:(unsigned char)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)close;
 - (unsigned long long)count;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;

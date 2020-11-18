@@ -38,6 +38,7 @@
 @property (nonatomic) long long tracklistSource; // @synthesize tracklistSource=_tracklistSource;
 @property (strong, nonatomic) id<NSSecureCoding> tracklistToken; // @synthesize tracklistToken=_tracklistToken;
 
++ (id)continueListeningRadioPlaybackIntent;
 + (id)intentFromQueueDescriptor:(id)arg1;
 + (id)radioPlaybackIntentFromAlbum:(id)arg1;
 + (id)radioPlaybackIntentFromArtist:(id)arg1;

@@ -8,7 +8,7 @@
 
 @interface NSArray (GKCollectionUtils)
 + (id)_gkArrayWithIndexSet:(id)arg1;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)_gkDistinctValuesForKeyPath:(id)arg1;
 - (id)_gkFilterWithBlock:(CDUnknownBlockType)arg1;
 - (id)_gkFirstObject;

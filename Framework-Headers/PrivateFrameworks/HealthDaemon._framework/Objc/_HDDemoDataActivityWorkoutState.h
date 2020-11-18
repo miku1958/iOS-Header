@@ -10,6 +10,7 @@
 
 @class HKQuantity, NSDate, NSMutableArray, NSMutableData;
 
+__attribute__((visibility("hidden")))
 @interface _HDDemoDataActivityWorkoutState : NSObject <NSSecureCoding>
 {
     NSMutableData *_associatedObjectUUIDs;

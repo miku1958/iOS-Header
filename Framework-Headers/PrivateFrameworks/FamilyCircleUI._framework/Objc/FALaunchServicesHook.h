@@ -8,12 +8,11 @@
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSSet, NSString;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FALaunchServicesHook : NSObject <AAUIServerHook>
 {
-    NSSet *_urlSchemeWhitelist;
     id<AAUIServerHookDelegate> _delegate;
 }
 
@@ -21,13 +20,12 @@
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_launchWithURLString:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)_shouldOpenURL:(id)arg1;
-- (id)initWithWhitelistedSchemes:(id)arg1;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldMatchElement:(id)arg1;

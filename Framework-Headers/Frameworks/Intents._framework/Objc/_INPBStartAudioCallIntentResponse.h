@@ -15,14 +15,12 @@
 @interface _INPBStartAudioCallIntentResponse : PBCodable <_INPBStartAudioCallIntentResponse, NSSecureCoding, NSCopying>
 {
     CDStruct_fbf2c6cd _has;
-    BOOL __encodeLegacyGloryData;
     int _audioRoute;
     _INPBCallMetrics *_metrics;
     NSString *_status;
     NSArray *_targetContacts;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

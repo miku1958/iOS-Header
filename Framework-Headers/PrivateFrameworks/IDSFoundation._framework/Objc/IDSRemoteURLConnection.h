@@ -40,6 +40,7 @@
 @property BOOL shouldReturnTimingData; // @synthesize shouldReturnTimingData=_shouldReturnTimingData;
 @property BOOL shouldUsePipelining; // @synthesize shouldUsePipelining=_shouldUsePipelining;
 
++ (id)alloc;
 - (void).cxx_destruct;
 - (BOOL)_connect;
 - (BOOL)_disconnect;

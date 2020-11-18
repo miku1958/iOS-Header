@@ -17,7 +17,6 @@
 @property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)aggregateDictionaryDomain;
 - (void)didParseData;
 - (void)failWithError:(id)arg1;
 - (id)initWithDelegate:(id)arg1;

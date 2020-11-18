@@ -14,6 +14,8 @@
 - (id)_multipleTriggeredRoomsFormatString;
 - (id)_serviceType;
 - (id)_singleTriggeredRoomFormatString;
+- (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
+- (id)title;
 
 @end
 

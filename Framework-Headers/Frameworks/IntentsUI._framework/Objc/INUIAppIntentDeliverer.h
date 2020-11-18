@@ -4,41 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Intents/INAppIntentDeliverer.h>
 
-@class AFSafetyBlock, BKSApplicationStateMonitor, BKSProcessAssertion, INWatchdogTimer, NSString;
-@protocol INUIIntentBackgroundHandlingAssertion, OS_dispatch_group, OS_dispatch_queue;
-
-@interface INUIAppIntentDeliverer : NSObject
+@interface INUIAppIntentDeliverer : INAppIntentDeliverer
 {
-    BKSApplicationStateMonitor *_appStateMonitor;
-    BKSProcessAssertion *_backgroundLaunchAssertion;
-    INWatchdogTimer *_assertionTimer;
-    NSObject<OS_dispatch_group> *_assertionSetupGroup;
-    NSObject<OS_dispatch_queue> *_queue;
-    INWatchdogTimer *_requestTimer;
-    AFSafetyBlock *_requestCompletionBlock;
-    id<INUIIntentBackgroundHandlingAssertion> _intentBackgroundHandlingAssertion;
-    NSString *_bundleIdentifier;
 }
 
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-
-+ (id)alloc;
-- (void).cxx_destruct;
-- (void)_handleSuccessfulAppLaunchForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_invalidateAssertionTimer;
-- (void)_invalidateBackboardServices;
-- (void)_invalidateIntentBackgroundHandlingAssertion;
-- (void)_invalidateRequestTimer;
-- (void)_processAssertionWasAcquired:(BOOL)arg1;
-- (void)_processAssertionWasInvalidatedWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_startRequestTimerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deliverIntent:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)init;
-- (id)initWithBundleIdentifier:(id)arg1;
-- (void)invalidateIntentDelivery;
-- (void)processAssertionWasInvalidatedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deliverIntentForwardingActionWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end
 

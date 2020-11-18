@@ -8,7 +8,7 @@
 
 #import <SafariCore/WBSRemotePlistControllerDelegate-Protocol.h>
 
-@class NSString, WBSAutoFillAssociatedDomainsManager, WBSPasswordAuditingEligibleDomainsManager, WBSPasswordGenerationManager, WBSRemotePlistController;
+@class NSString, WBSAutoFillAssociatedDomainsManager, WBSChangePasswordURLManager, WBSPasswordAuditingEligibleDomainsManager, WBSPasswordGenerationManager, WBSRemotePlistController;
 
 @interface WBSAutoFillQuirksManager : NSObject <WBSRemotePlistControllerDelegate>
 {
@@ -16,10 +16,12 @@
     WBSAutoFillAssociatedDomainsManager *_associatedDomainsManager;
     WBSRemotePlistController *_remotePlistController;
     WBSPasswordAuditingEligibleDomainsManager *_passwordAuditingEligibleDomainsManager;
+    WBSChangePasswordURLManager *_changePasswordURLManager;
     BOOL _shouldAttemptToDownloadConfiguration;
 }
 
 @property (readonly, nonatomic) WBSAutoFillAssociatedDomainsManager *associatedDomainsManager;
+@property (readonly, nonatomic) WBSChangePasswordURLManager *changePasswordURLManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,6 +31,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_changePasswordURLStringsFromCurrentSnapshot;
 - (id)_domainsIneligibleForPasswordAuditingFromCurrentSnapshot;
 - (id)_domainsToConsiderIdenticalFromCurrentSnapshot;
 - (id)_domainsWithAssociatedCredentialsFromCurrentSnapshot;

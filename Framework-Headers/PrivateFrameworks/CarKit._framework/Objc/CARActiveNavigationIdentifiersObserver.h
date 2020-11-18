@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CarKit/BSInvalidatable-Protocol.h>
 #import <CarKit/CRCarPlayNavigationOwnerClient-Protocol.h>
 
 @class CARObserverHashTable, NSArray, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface CARActiveNavigationIdentifiersObserver : NSObject <CRCarPlayNavigationOwnerClient>
+@interface CARActiveNavigationIdentifiersObserver : NSObject <CRCarPlayNavigationOwnerClient, BSInvalidatable>
 {
     NSArray *_activeNavigationIdentifiers;
     NSXPCConnection *_connection;
@@ -35,6 +36,7 @@
 - (void)activeNavigationIdentifiersChangedTo:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)init;
+- (void)invalidate;
 - (void)navigationOwnershipChangedTo:(unsigned long long)arg1;
 - (void)removeObserver:(id)arg1;
 

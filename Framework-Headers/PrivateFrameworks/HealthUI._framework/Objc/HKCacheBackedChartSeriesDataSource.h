@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)_resetCachedPaths;
-- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2 priorityDelegate:(id)arg3;
 - (id)cachedBlockForPath:(CDStruct_6ca94699)arg1 context:(id)arg2;
 - (void)chartCacheDidUpdate:(id)arg1;
 - (BOOL)hasAvailableBlocksBetweenStartPath:(CDStruct_6ca94699)arg1 endPath:(CDStruct_6ca94699)arg2;

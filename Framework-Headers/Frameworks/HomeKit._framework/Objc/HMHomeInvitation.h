@@ -37,6 +37,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_unconfigureContext;
 - (void)_updateInvitationState:(long long)arg1;
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;

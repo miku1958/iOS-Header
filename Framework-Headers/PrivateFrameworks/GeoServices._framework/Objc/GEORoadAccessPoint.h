@@ -14,12 +14,14 @@
 {
     PBUnknownFields *_unknownFields;
     GEOLatLng *_location;
+    int _cyclingDirection;
     int _drivingDirection;
     unsigned int _significance;
     int _transitDirection;
     int _walkingDirection;
     BOOL _isApproximate;
     struct {
+        unsigned int has_cyclingDirection:1;
         unsigned int has_drivingDirection:1;
         unsigned int has_significance:1;
         unsigned int has_transitDirection:1;
@@ -28,7 +30,9 @@
     } _flags;
 }
 
+@property (nonatomic) int cyclingDirection;
 @property (nonatomic) int drivingDirection;
+@property (nonatomic) BOOL hasCyclingDirection;
 @property (nonatomic) BOOL hasDrivingDirection;
 @property (nonatomic) BOOL hasIsApproximate;
 @property (readonly, nonatomic) BOOL hasLocation;
@@ -44,17 +48,22 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsCyclingDirection:(id)arg1;
 - (int)StringAsDrivingDirection:(id)arg1;
 - (int)StringAsTransitDirection:(id)arg1;
 - (int)StringAsWalkingDirection:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)cyclingDirectionAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)drivingDirectionAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

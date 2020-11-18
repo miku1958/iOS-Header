@@ -14,39 +14,57 @@
 {
     int _app;
     int _extracted;
+    unsigned int _extractionModelVersion;
     NSString *_key;
+    int _type;
+    int _uiType;
     BOOL _firstNameAdj;
     BOOL _isUpdate;
     BOOL _lastNameAdj;
     BOOL _middleNameAdj;
+    BOOL _selfId;
     struct {
         unsigned int app:1;
         unsigned int extracted:1;
+        unsigned int extractionModelVersion:1;
+        unsigned int type:1;
+        unsigned int uiType:1;
         unsigned int firstNameAdj:1;
         unsigned int isUpdate:1;
         unsigned int lastNameAdj:1;
         unsigned int middleNameAdj:1;
+        unsigned int selfId:1;
     } _has;
 }
 
 @property (nonatomic) int app; // @synthesize app=_app;
 @property (nonatomic) int extracted; // @synthesize extracted=_extracted;
+@property (nonatomic) unsigned int extractionModelVersion; // @synthesize extractionModelVersion=_extractionModelVersion;
 @property (nonatomic) BOOL firstNameAdj; // @synthesize firstNameAdj=_firstNameAdj;
 @property (nonatomic) BOOL hasApp;
 @property (nonatomic) BOOL hasExtracted;
+@property (nonatomic) BOOL hasExtractionModelVersion;
 @property (nonatomic) BOOL hasFirstNameAdj;
 @property (nonatomic) BOOL hasIsUpdate;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (nonatomic) BOOL hasLastNameAdj;
 @property (nonatomic) BOOL hasMiddleNameAdj;
+@property (nonatomic) BOOL hasSelfId;
+@property (nonatomic) BOOL hasType;
+@property (nonatomic) BOOL hasUiType;
 @property (nonatomic) BOOL isUpdate; // @synthesize isUpdate=_isUpdate;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (nonatomic) BOOL lastNameAdj; // @synthesize lastNameAdj=_lastNameAdj;
 @property (nonatomic) BOOL middleNameAdj; // @synthesize middleNameAdj=_middleNameAdj;
+@property (nonatomic) BOOL selfId; // @synthesize selfId=_selfId;
+@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) int uiType; // @synthesize uiType=_uiType;
 
 - (void).cxx_destruct;
 - (int)StringAsApp:(id)arg1;
 - (int)StringAsExtracted:(id)arg1;
+- (int)StringAsType:(id)arg1;
+- (int)StringAsUiType:(id)arg1;
 - (id)appAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,6 +75,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
+- (id)uiTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

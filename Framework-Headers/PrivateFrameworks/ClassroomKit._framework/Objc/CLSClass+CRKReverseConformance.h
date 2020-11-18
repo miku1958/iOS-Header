@@ -8,11 +8,12 @@
 
 #import <ClassroomKit/CRKClassKitClass-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface CLSClass (CRKReverseConformance) <CRKClassKitClass>
 
 @property (readonly, copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSDate *dateCreated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *displayName;

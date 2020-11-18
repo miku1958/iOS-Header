@@ -25,6 +25,7 @@
     NSSet *_startingPartitionedAttachments;
     NSObject<TSWPTopicNumberHints> *_topicNumbers;
     NSDictionary *_flowTopicNumbers;
+    BOOL _isCopyForCaching;
     BOOL _hasForcedFootnotes;
 }
 
@@ -53,6 +54,7 @@
 
 - (void).cxx_destruct;
 - (id)copyForArchiving;
+- (id)copyForCaching;
 - (id)firstColumn;
 - (id)firstHint;
 - (id)flowHints;

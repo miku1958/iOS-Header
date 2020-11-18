@@ -12,8 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface PSUIResetStatisticsGroup : NSObject
 {
-    id<PSUIResetStatisticsGroupDelegate> _delegate;
     unsigned long long _policy;
+    id<PSUIResetStatisticsGroupDelegate> _delegate;
     PSSpecifier *_groupSpecifier;
     PSConfirmationSpecifier *_resetButtonSpecifier;
     CHManager *_callHistoryManager;

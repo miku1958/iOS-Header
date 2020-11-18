@@ -7,7 +7,6 @@
 #import <WebInspector/RWIProtocolPageDomainEventDispatcher.h>
 
 @interface RWIProtocolPageDomainEventDispatcher (IKJSDependency)
-- (void)safe_defaultAppearanceDidChangeWithAppearance:(long long)arg1;
 - (void)safe_domContentEventFiredWithTimestamp:(double)arg1;
 - (void)safe_frameClearedScheduledNavigationWithFrameId:(id)arg1;
 - (void)safe_frameDetachedWithFrameId:(id)arg1;

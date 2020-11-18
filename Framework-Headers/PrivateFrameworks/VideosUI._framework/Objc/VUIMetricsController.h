@@ -55,6 +55,7 @@
 - (id)_createMetricsKitForTopic:(id)arg1;
 - (void)_flushMetrics;
 - (void)_flushUnreportedEvents:(id)arg1;
+- (id)_getCurrentMetricsTopic;
 - (id)_getLocationAuthorizationStatus;
 - (void)_handleServerConfigChange:(id)arg1;
 - (void)_handleTabBarChange:(id)arg1;
@@ -71,7 +72,10 @@
 - (void)_updateBaseFieldsWithData:(id)arg1;
 - (void)flushMetrics;
 - (void)forceGDPRConsentStatus:(BOOL)arg1;
+- (id)getMetricsEnhancedBuyParams:(id)arg1;
+- (id)getMetricsOverlayForBundleOffer;
 - (id)getRecentEventsForDebuggerUI;
+- (id)iTunesLibraryPlaybackMediaMetricsForAdamID:(id)arg1 mediaType:(id)arg2;
 - (id)init;
 - (void)jsDelegateRecordEvent:(id)arg1;
 - (void)jsDelegateRecordLogEvent:(id)arg1;
@@ -87,6 +91,7 @@
 - (void)recordMedia:(id)arg1;
 - (void)recordOpenUrlLaunchWithExtURL:(id)arg1 andOptions:(id)arg2;
 - (void)recordPage:(id)arg1;
+- (void)recordPerfEvent:(id)arg1;
 - (void)recordRawEvent:(id)arg1;
 - (void)registerForBaseFieldChanges;
 - (void)setupMetricsController;

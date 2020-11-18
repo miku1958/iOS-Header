@@ -6,12 +6,13 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
 
 @protocol SFSuggestionCardSection <SFCardSection>
 
 @property (strong, nonatomic) SFColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) SFRichText *detailText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
@@ -24,6 +25,7 @@
 @property (nonatomic) int separatorStyle;
 @property (strong, nonatomic) SFRichText *suggestionText;
 @property (nonatomic) int suggestionType;
+@property (strong, nonatomic) SFImage *thumbnail;
 @property (copy, nonatomic) NSString *type;
 
 @end

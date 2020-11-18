@@ -10,14 +10,26 @@
 
 @interface SearchUIContactsThumbnailView : CNAvatarView
 {
+    BOOL _usesCompactWidth;
+    BOOL _useCompactDisplay;
     SFContactImage *_contactImage;
 }
 
 @property (strong, nonatomic) SFContactImage *contactImage; // @synthesize contactImage=_contactImage;
+@property (nonatomic) BOOL useCompactDisplay; // @synthesize useCompactDisplay=_useCompactDisplay;
+@property (nonatomic) BOOL usesCompactWidth; // @synthesize usesCompactWidth=_usesCompactWidth;
 
++ (id)avatarSettings;
++ (void)clearAvatarSettings;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
 - (id)init;
+- (void)layoutSubviews;
+- (void)setContactImage:(id)arg1 useCompactDisplay:(BOOL)arg2;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

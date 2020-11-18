@@ -23,9 +23,9 @@
     NSSet *_systemAppPlaceholderBundleIDs;
     NSSet *_systemAppPlaceholderPluginBundleIDs;
     NSSet *_systemAppPlaceholderXPCServiceBundleIDs;
-    NSURL *_installdPath;
-    NSURL *_mobilePath;
     NSURL *_rootPath;
+    NSDictionary *_diskImageAppBundleIDToInfoMap;
+    NSURL *_installdPath;
 }
 
 @property (readonly, copy, nonatomic) NSSet *allFrameworksDirectories; // @synthesize allFrameworksDirectories=_allFrameworksDirectories;
@@ -43,8 +43,7 @@
 @property (readonly, nonatomic) NSURL *dataDirectory;
 @property (readonly, nonatomic) NSURL *developerAppsDirectory;
 @property (readonly, nonatomic) NSURL *developerFrameworksRootDirectory;
-@property (readonly, copy, nonatomic) NSDictionary *diskImageAppBundleIDToInfoMap;
-@property (readonly, copy, nonatomic) NSArray *diskImageApplicationsDirectories;
+@property (readonly, copy, nonatomic) NSDictionary *diskImageAppBundleIDToInfoMap; // @synthesize diskImageAppBundleIDToInfoMap=_diskImageAppBundleIDToInfoMap;
 @property (readonly, nonatomic) NSURL *factoryMountDirectory;
 @property (readonly, nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property (readonly, copy, nonatomic) NSSet *installationBlacklist;
@@ -52,14 +51,9 @@
 @property (readonly, copy, nonatomic) NSDictionary *internalAppBundleIDToInfoMap; // @synthesize internalAppBundleIDToInfoMap=_internalAppBundleIDToInfoMap;
 @property (readonly, nonatomic) NSURL *internalAppsDirectory;
 @property (readonly, nonatomic) NSURL *internalFrameworksRootDirectory;
-@property (readonly, copy, nonatomic) NSURL *lastBuildInfoFileURL;
+@property (readonly, nonatomic) NSURL *lastBuildInfoFileURL;
 @property (readonly, nonatomic) NSURL *logDirectory;
-@property (readonly, copy, nonatomic) NSURL *migrationPlistURL;
-@property (readonly, nonatomic) NSURL *mobilePath; // @synthesize mobilePath=_mobilePath;
-@property (readonly, nonatomic) NSURL *oldArchiveDirectory;
-@property (readonly, nonatomic) NSURL *oldDataDirectoryPath;
-@property (readonly, nonatomic) NSURL *oldLoggingPath;
-@property (readonly, nonatomic) NSURL *roleUserMigrationMarkerFilePath;
+@property (readonly, nonatomic) NSURL *migrationPlistURL;
 @property (readonly, nonatomic) NSURL *rootPath; // @synthesize rootPath=_rootPath;
 @property (readonly, copy, nonatomic) NSDictionary *stagedSystemAppBundleIDToInfoMap; // @synthesize stagedSystemAppBundleIDToInfoMap=_stagedSystemAppBundleIDToInfoMap;
 @property (readonly, nonatomic) NSURL *stagedSystemAppsDirectory;
@@ -82,11 +76,16 @@
 - (id)_bundleIDMapForAppsInDirectory:(id)arg1 loadingAdditionalKeys:(id)arg2;
 - (id)_bundleIDMapForBundlesInDirectory:(id)arg1 withExtension:(id)arg2;
 - (id)_bundleIDMapForBundlesInDirectory:(id)arg1 withExtension:(id)arg2 loadingAdditionalKeys:(id)arg3;
+- (id)_testModeSentinelURL;
+- (BOOL)_useInternalDiagnostics;
+- (BOOL)clearIsRunningInTestMode:(id *)arg1;
 - (id)disableSystemAppDeletionCanaryFile;
 - (id)init;
+- (BOOL)isRunningInTestMode:(BOOL *)arg1 outError:(id *)arg2;
 - (void)reScanCoreServicesApps;
 - (void)reScanInternalApps;
 - (void)reScanSystemApps;
+- (BOOL)setIsRunningInTestMode:(id *)arg1;
 
 @end
 

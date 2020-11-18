@@ -19,7 +19,10 @@
     NSDictionary *_displayTypesByObjectType;
 }
 
++ (id)controllers;
++ (struct os_unfair_lock_s)controllersLock;
 + (id)sharedInstance;
++ (id)sharedInstanceForHealthStore:(id)arg1;
 - (void).cxx_destruct;
 - (id)allDisplayTypes;
 - (id)displayTypeForObjectType:(id)arg1;
@@ -27,6 +30,7 @@
 - (id)displayTypeWithIdentifier:(id)arg1;
 - (id)displayTypesForCategoryIdentifier:(long long)arg1;
 - (id)init;
+- (id)initWithHealthStore:(id)arg1;
 - (void)setWheelchairUseCharacteristicCache:(id)arg1;
 - (void)wheelchairUseCharacteristicCache:(id)arg1 wheelchairUsageDidChange:(BOOL)arg2;
 

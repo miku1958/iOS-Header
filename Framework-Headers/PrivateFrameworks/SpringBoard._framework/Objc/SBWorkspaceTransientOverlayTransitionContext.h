@@ -12,7 +12,7 @@
 {
     BOOL _animated;
     BOOL _shouldDismissSiriUponPresentation;
-    BOOL _shouldDismissSwitcherUponPresentation;
+    BOOL _shouldPreserveAppSwitcher;
     SBTransientOverlayPresentationManager *_presentationManager;
     SBWorkspaceTransientOverlay *_transientOverlay;
     long long _transitionType;
@@ -21,7 +21,7 @@
 @property (nonatomic, getter=isAnimated) BOOL animated; // @synthesize animated=_animated;
 @property (strong, nonatomic) SBTransientOverlayPresentationManager *presentationManager; // @synthesize presentationManager=_presentationManager;
 @property (nonatomic) BOOL shouldDismissSiriUponPresentation; // @synthesize shouldDismissSiriUponPresentation=_shouldDismissSiriUponPresentation;
-@property (nonatomic) BOOL shouldDismissSwitcherUponPresentation; // @synthesize shouldDismissSwitcherUponPresentation=_shouldDismissSwitcherUponPresentation;
+@property (nonatomic) BOOL shouldPreserveAppSwitcher; // @synthesize shouldPreserveAppSwitcher=_shouldPreserveAppSwitcher;
 @property (strong, nonatomic) SBWorkspaceTransientOverlay *transientOverlay; // @synthesize transientOverlay=_transientOverlay;
 @property (nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
 

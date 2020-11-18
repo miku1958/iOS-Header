@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <DADaemonSupport/DAReachabilityClient-Protocol.h>
+
 @class DAAccount, DATrustHandler, NSString;
 
-@interface DAAgent : NSObject
+@interface DAAgent : NSObject <DAReachabilityClient>
 {
     BOOL _isMonitoring;
     BOOL _syncWhenReachable;
@@ -19,18 +21,22 @@
 }
 
 @property (strong, nonatomic) DAAccount *account; // @synthesize account=_account;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isMonitoring; // @synthesize isMonitoring=_isMonitoring;
 @property (nonatomic) BOOL isWaitingForPassword; // @synthesize isWaitingForPassword=_isWaitingForPassword;
 @property (nonatomic) double lastRetryTimeout; // @synthesize lastRetryTimeout=_lastRetryTimeout;
 @property (copy, nonatomic) CDUnknownBlockType networkReachableBlock; // @synthesize networkReachableBlock=_networkReachableBlock;
 @property (readonly, nonatomic) NSString *publicDescription;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL syncWhenReachable; // @synthesize syncWhenReachable=_syncWhenReachable;
 @property (readonly, nonatomic) DATrustHandler *trustHandler;
 
 - (void).cxx_destruct;
-- (void)_reachabilityChanged:(id)arg1;
 - (id)getDAAccount;
 - (id)initWithAccount:(id)arg1;
+- (void)networkReachable;
 - (void)observeReachabilityWithBlock:(CDUnknownBlockType)arg1;
 - (int)preferredEventDaysToSync;
 - (int)preferredToDoDaysToSync;

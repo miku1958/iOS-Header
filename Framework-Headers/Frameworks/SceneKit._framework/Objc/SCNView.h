@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, NSArray, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRecursiveLock, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
+@class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, MTLRenderPassDescriptor, NSArray, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRecursiveLock, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
 @protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, SCNCameraControlConfiguration, SCNEventHandler, SCNSceneRendererDelegate;
 
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport>
@@ -64,6 +64,7 @@
 @property (readonly, nonatomic) id<MTLCommandQueue> commandQueue;
 @property (readonly, nonatomic) void *context;
 @property (readonly, nonatomic) id<MTLRenderCommandEncoder> currentRenderCommandEncoder;
+@property (readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property (readonly, nonatomic) struct CGRect currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
@@ -125,7 +126,7 @@
 - (int)_ibPreferredRenderingAPI;
 - (id)_ibSceneName;
 - (BOOL)_ibWantsMultisampling;
-- (void)_initializeDisplayLinkWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_initializeDisplayLinkWithScreen:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_isEditor;
 - (void)_jitterRedisplay;
 - (long long)_preferredFocusMovementStyle;
@@ -155,7 +156,6 @@
 - (BOOL)asynchronousResizing;
 - (id)backgroundColor;
 - (struct CGSize)backingSizeForBoundSize:(struct CGSize)arg1;
-- (id)currentRenderPassDescriptor;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)displayLayer:(id)arg1;

@@ -30,6 +30,7 @@
     HRStackedButtonView *_stackedButtonView;
     NSLayoutConstraint *_contentViewBottomConstraint;
     NSString *_productType;
+    long long _provenance;
 }
 
 @property (strong, nonatomic) HKHeartRhythmAvailability *availability; // @synthesize availability=_availability;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) UIView *heroView; // @synthesize heroView=_heroView;
 @property (strong, nonatomic) UILabel *locationFooterLabel; // @synthesize locationFooterLabel=_locationFooterLabel;
 @property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property (nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property (strong, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -93,6 +95,7 @@
 - (id)disclaimerString;
 - (id)featureDisabledBodyString;
 - (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 WithProvenance:(long long)arg2;
 - (id)learnMoreString;
 - (id)locationFeatureIneligiblePromptBodyString;
 - (id)locationFooterString;

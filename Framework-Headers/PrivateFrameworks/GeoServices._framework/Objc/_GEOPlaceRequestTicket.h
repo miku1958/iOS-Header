@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     GEOPDPlaceRequest *_request;
     GEOPDPlaceResponse *_response;
     id<GEOMapItem> _mapItemToRefine;
+    CDUnknownBlockType _preSubmitUpdateRequestBlock;
+    CDUnknownBlockType _retryRequestForErrorBlock;
 }
 
 - (void).cxx_destruct;
@@ -26,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 mapItemToRefine:(id)arg3;
+- (id)initWithRequest:(id)arg1 traits:(id)arg2 mapItemToRefine:(id)arg3 preSubmitUpdateRequestBlock:(CDUnknownBlockType)arg4 retryForErrorBlock:(CDUnknownBlockType)arg5;
+- (id)initWithRequest:(id)arg1 traits:(id)arg2 preSubmitUpdateRequestBlock:(CDUnknownBlockType)arg3 retryForErrorBlock:(CDUnknownBlockType)arg4;
 - (id)initWithTraits:(id)arg1;
 - (id)resultSectionHeader;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;

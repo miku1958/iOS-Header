@@ -50,6 +50,7 @@
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1;
 - (void)notePasscodeUpgradeFlowDidEnd;
@@ -72,7 +73,7 @@
 - (BOOL)paymentWebService:(id)arg1 hasPassesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 passOwnershipTokenWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
-- (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 provisioningDataIncludingDeviceMetadata:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

@@ -6,7 +6,7 @@
 
 #import <RemoteUI/RUIElement.h>
 
-@class UIBarButtonItem;
+@class NSString, UIBarButtonItem;
 
 @interface RUIBarButtonItem : RUIElement
 {
@@ -16,9 +16,11 @@
 
 @property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 @property (readonly, nonatomic) UIBarButtonItem *barButtonItem;
+@property (readonly, nonatomic) NSString *itemType;
 
 - (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;
+- (id)_labelColor;
 - (void)setEnabled:(BOOL)arg1;
 
 @end

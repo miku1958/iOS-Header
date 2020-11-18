@@ -6,28 +6,46 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalysisPassStrategyProviding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
+#import <SoundAnalysis/SNTwoPassRequest-Protocol.h>
 
-@class NSString, SNSoundDetector;
-@protocol SNAnalyzing;
+@class MLModel, NSString, SNTwoPassConfiguration;
 
-@interface SNDetectSoundRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNDetectSoundRequest : NSObject <SNAnalysisPassStrategyProviding, SNAnalyzerCreating, SNTwoPassRequest, NSCopying, NSSecureCoding, SNRequest>
 {
-    SNSoundDetector *_detector;
+    MLModel *_model;
     NSString *_soundIdentifier;
+    long long _analysisPassStrategy;
+    SNTwoPassConfiguration *_twoPassConfiguration;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
+@property (readonly, nonatomic) long long analysisPassStrategy; // @synthesize analysisPassStrategy=_analysisPassStrategy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *soundIdentifier; // @synthesize soundIdentifier=_soundIdentifier;
 @property (readonly) Class superclass;
+@property (readonly) SNTwoPassConfiguration *twoPassConfiguration; // @synthesize twoPassConfiguration=_twoPassConfiguration;
 
++ (id)allValidSoundIdentifiers;
++ (id)createTwoPassConfigurationWithSoundIdentifier:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (id)createSecondPassController;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSoundIdentifier:(id)arg1;
+- (id)initWithSoundIdentifier:(id)arg1 analysisPassStrategy:(long long)arg2;
+- (id)initWithSoundIdentifier:(id)arg1 shouldUseTwoPassDetection:(BOOL)arg2;
 - (id)initWithVGGishBasedMLModel:(id)arg1 soundIdentifier:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDetectSoundRequest:(id)arg1;
 
 @end
 

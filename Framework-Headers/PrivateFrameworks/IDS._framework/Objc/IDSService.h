@@ -20,6 +20,8 @@
 
 + (BOOL)checkMessageSize:(unsigned long long)arg1 priority:(long long)arg2;
 + (id)removeSentinelFromAliases:(id)arg1;
++ (void)serviceWithIdentifier:(id)arg1 commands:(id)arg2 manuallyAckMessages:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)serviceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)_accountWithAlias:(id)arg1;
 - (id)accountMatchingSim:(id)arg1;
@@ -53,12 +55,13 @@
 - (id)initWithService:(id)arg1 serviceDomain:(id)arg2;
 - (id)internal;
 - (BOOL)isPretendingToBeFull;
+- (id)linkedDeviceForFromID:(id)arg1 withRelationship:(long long)arg2;
+- (id)linkedDevicesWithRelationship:(long long)arg1;
 - (long long)maxHomeKitPayloadSize;
 - (void)performGroupTask:(CDUnknownBlockType)arg1;
 - (SEL)protobufActionForIncomingRequestsOfType:(unsigned short)arg1;
 - (SEL)protobufActionForIncomingResponsesOfType:(unsigned short)arg1;
 - (void)removeDelegate:(id)arg1;
-- (void)requestConnectionForUnicastParameter:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)scheduleTransactionLogTask:(id)arg1;
 - (BOOL)sendAccessoryData:(id)arg1 toAccessoryID:(id)arg2 accessToken:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (void)sendAckForMessageWithContext:(id)arg1;

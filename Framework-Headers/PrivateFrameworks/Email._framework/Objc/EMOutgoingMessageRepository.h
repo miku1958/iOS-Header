@@ -7,35 +7,52 @@
 #import <objc/NSObject.h>
 
 #import <Email/EFLoggable-Protocol.h>
+#import <Email/EMOutgoingMessageRepositoryInterfaceObserver-Protocol.h>
 
-@class EMRemoteConnection, NSString;
+@class EMRemoteConnection, NSMutableArray, NSNumber, NSString;
+@protocol EFCancelable, EFScheduler;
 
-@interface EMOutgoingMessageRepository : NSObject <EFLoggable>
+@interface EMOutgoingMessageRepository : NSObject <EFLoggable, EMOutgoingMessageRepositoryInterfaceObserver>
 {
     EMRemoteConnection *_connection;
+    id<EFCancelable> _registrationCancelable;
+    id<EFScheduler> _scheduler;
+    NSMutableArray *_observers;
+    NSNumber *_pendingMessages;
 }
 
 @property (strong) EMRemoteConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) NSNumber *pendingMessages; // @synthesize pendingMessages=_pendingMessages;
+@property (strong, nonatomic) id<EFCancelable> registrationCancelable; // @synthesize registrationCancelable=_registrationCancelable;
+@property (strong, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
 
 + (id)log;
 + (id)remoteInterface;
 + (id)signpostLog;
 - (void).cxx_destruct;
+- (void)_restartObservingUnsentChangesIfNecessary;
+- (void)_startObservingUnsentChangesIfNecessary;
+- (void)addObserver:(id)arg1;
+- (void)dealloc;
 - (void)deleteDraftsInMailbox:(id)arg1 documentID:(id)arg2 previousDraftObjectID:(id)arg3;
 - (id)deliverMessage:(id)arg1 usingMailDrop:(BOOL)arg2;
 - (id)initWithRemoteConnection:(id)arg1;
 - (BOOL)isProcessing;
 - (unsigned long long)numberOfPendingMessages;
+- (void)numberOfPendingMessagesChanged:(id)arg1;
 - (BOOL)outboxContainsMessageFromAccount:(id)arg1;
 - (void)processAllQueuedMessages;
+- (void)removeObserver:(id)arg1;
 - (void)resumeDeliveryQueue;
 - (id)saveDraftMessage:(id)arg1 mailboxObjectID:(id)arg2 previousDraftObjectID:(id)arg3;
 - (unsigned long long)signpostID;
 - (void)suspendDeliveryQueue;
+- (void)updateObservers;
 
 @end
 

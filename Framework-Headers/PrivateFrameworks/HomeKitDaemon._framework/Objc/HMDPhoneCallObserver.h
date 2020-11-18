@@ -12,6 +12,7 @@
 
 + (id)sharedPhoneCallObserver;
 - (BOOL)hasActiveCalls;
+- (void)startObserving;
 
 @end
 

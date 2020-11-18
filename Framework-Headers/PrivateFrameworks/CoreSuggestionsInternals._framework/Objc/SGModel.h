@@ -6,46 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSuggestionsInternals/PMLPlistAndChunksSerializableProtocol-Protocol.h>
-
 @class NSString, SGModelSource;
-@protocol PMLRegressionModelProtocol><PMLPlistAndChunksSerializableProtocol, PMLTransformerProtocol;
+@protocol PMLMultiLabelClassifierProtocol, PMLTransformerProtocol;
 
-@interface SGModel : NSObject <PMLPlistAndChunksSerializableProtocol>
+@interface SGModel : NSObject
 {
+    id<PMLMultiLabelClassifierProtocol> _model;
     id<PMLTransformerProtocol> _featurizer;
     SGModelSource *_modelSource;
-    id<PMLRegressionModelProtocol><PMLPlistAndChunksSerializableProtocol> _model;
-    double _threshold;
     NSString *_locale;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly) id<PMLTransformerProtocol> featurizer; // @synthesize featurizer=_featurizer;
 @property (readonly, copy) NSString *locale; // @synthesize locale=_locale;
-@property (readonly) id<PMLRegressionModelProtocol><PMLPlistAndChunksSerializableProtocol> model; // @synthesize model=_model;
-@property (readonly) Class superclass;
-@property (readonly) double threshold; // @synthesize threshold=_threshold;
+@property (readonly) id<PMLMultiLabelClassifierProtocol> model; // @synthesize model=_model;
+@property (readonly) SGModelSource *modelSource; // @synthesize modelSource=_modelSource;
 
 + (id)featurize:(id)arg1;
 + (Class)modelClassForObjective:(unsigned long long)arg1;
-+ (id)modelForEntity:(id)arg1 type:(id)arg2 language:(id)arg3 class:(Class)arg4;
-+ (id)modelForName:(id)arg1 language:(id)arg2;
 + (id)newTransformerInstanceForLanguage:(id)arg1;
 + (id)trainingFeaturesOf:(id)arg1 inLanguage:(id)arg2;
 + (id)trainingFeaturesOf:(id)arg1 inLanguage:(id)arg2 withObjective:(unsigned long long)arg3;
 + (id)transformerInstanceForLanguage:(id)arg1;
 + (id)transformerInstanceForLanguage:(id)arg1 withObjective:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (id)_predict:(id)arg1;
-- (id)initWithModel:(id)arg1 decisionThreshold:(double)arg2 locale:(id)arg3 featurizer:(id)arg4 modelSource:(id)arg5;
-- (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (struct SGMFoundInMailModelType_)metricsFoundInMailModelType;
-- (struct SGMSelfIdModelType_)metricsSelfIdModelType;
+- (id)initWithModel:(id)arg1 locale:(id)arg2 featurizer:(id)arg3 modelSource:(id)arg4;
 - (id)predictForInput:(id)arg1;
-- (id)serialize;
-- (id)toPlistWithChunks:(id)arg1;
 - (id)trainingFeaturesOf:(id)arg1;
 
 @end

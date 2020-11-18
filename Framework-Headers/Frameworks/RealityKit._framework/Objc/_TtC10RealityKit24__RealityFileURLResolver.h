@@ -10,6 +10,7 @@
 
 @interface _TtC10RealityKit24__RealityFileURLResolver : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *assetService;
     MISSING_TYPE *resolvedURLByAssetPathPrefixQueue;
     MISSING_TYPE *resolvedURLByAssetPathPrefix;
 }

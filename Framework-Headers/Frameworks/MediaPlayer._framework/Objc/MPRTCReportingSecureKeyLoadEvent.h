@@ -8,6 +8,7 @@
 
 @class NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingSecureKeyLoadEvent : MPRTCReportingEvent
 {
     double _duration;

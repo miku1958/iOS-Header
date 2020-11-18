@@ -22,6 +22,7 @@
 @property struct CGPoint startPoint;
 @property (copy) NSString *type;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (BOOL)isGradientTree;
 - (void)p_createGradientTreeIfNeeded;

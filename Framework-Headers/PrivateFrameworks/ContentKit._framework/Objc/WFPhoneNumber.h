@@ -32,7 +32,6 @@
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
-+ (id)phoneNumberUtil;
 + (id)phoneNumberWithPhoneNumberString:(id)arg1;
 + (id)phoneNumberWithPhoneNumberString:(id)arg1 contactName:(id)arg2 label:(id)arg3;
 + (id)phoneNumberWithTextCheckingResult:(id)arg1;
@@ -46,7 +45,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPhoneNumberString:(id)arg1 contactName:(id)arg2 label:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)region;
 - (id)wfSerializedRepresentation;
 
 @end

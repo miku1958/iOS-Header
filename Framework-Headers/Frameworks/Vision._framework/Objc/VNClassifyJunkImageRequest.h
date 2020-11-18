@@ -6,11 +6,20 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@interface VNClassifyJunkImageRequest : VNImageBasedRequest
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface VNClassifyJunkImageRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long imageCropAndScaleOption;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
 
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
@@ -18,14 +27,12 @@
 + (id)knownClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (const CDStruct_7d93034e *)revisionAvailability;
 + (BOOL)supportsPrivateRevision:(unsigned long long)arg1;
-- (id)_applicableDetectorAndOptions:(id *)arg1 error:(id *)arg2;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (id)description;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
-- (id)supportedImageSizeSet;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

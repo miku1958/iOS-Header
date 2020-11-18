@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString;
+@class NSData, NSString, SYDStoreConfiguration;
 
 @protocol SYDDaemonProtocol
-- (void)changeDictionarySinceChangeToken:(NSData *)arg1 inStoreWithIdentifier:(NSString *)arg2 type:(long long)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
-- (void)deleteDataFromDiskForStoreIdentifier:(NSString *)arg1 type:(long long)arg2 reply:(void (^)(NSError *))arg3;
-- (void)dictionaryRepresentationForStoreWithIdentifier:(NSString *)arg1 type:(long long)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
-- (void)objectForKey:(NSString *)arg1 inStoreWithIdentifier:(NSString *)arg2 type:(long long)arg3 reply:(void (^)(id, NSError *))arg4;
+- (void)changeDictionarySinceChangeToken:(NSData *)arg1 inStoreWithConfiguration:(SYDStoreConfiguration *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)changeTokenForStoreWithConfiguration:(SYDStoreConfiguration *)arg1 reply:(void (^)(NSData *, NSError *))arg2;
+- (void)dictionaryRepresentationForStoreWithConfiguration:(SYDStoreConfiguration *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)objectForKey:(NSString *)arg1 inStoreWithConfiguration:(SYDStoreConfiguration *)arg2 reply:(void (^)(id, NSError *))arg3;
 - (void)processAccountChangesWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)registerForChangeNotificationsForStoreWithIdentifier:(NSString *)arg1 type:(long long)arg2 reply:(void (^)(NSError *))arg3;
-- (void)removeObjectForKey:(NSString *)arg1 inStoreWithIdentifier:(NSString *)arg2 type:(long long)arg3 reply:(void (^)(NSError *))arg4;
-- (void)setObject:(id)arg1 forKey:(NSString *)arg2 inStoreWithIdentifier:(NSString *)arg3 type:(long long)arg4 reply:(void (^)(NSError *))arg5;
-- (void)synchronizeStoreWithIdentifier:(NSString *)arg1 type:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)registerForChangeNotificationsForStoreWithConfiguration:(SYDStoreConfiguration *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)removeObjectForKey:(NSString *)arg1 inStoreWithConfiguration:(SYDStoreConfiguration *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)saveChangeToken:(NSData *)arg1 forStoreWithConfiguration:(SYDStoreConfiguration *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)setObject:(id)arg1 forKey:(NSString *)arg2 inStoreWithConfiguration:(SYDStoreConfiguration *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)synchronizeStoreWithConfiguration:(SYDStoreConfiguration *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

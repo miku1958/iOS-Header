@@ -21,6 +21,7 @@
     NSMutableArray *_changesWithResourceChanges;
     NSMutableDictionary *_fullRecords;
     NSMutableDictionary *_resourcesToUpload;
+    NSMutableDictionary *_recordWithStatusChangesToNotify;
     BOOL _checkScopeIdentifier;
     NSMutableSet *_validScopeIdentifiers;
     NSMutableSet *_invalidScopeIdentifiers;
@@ -50,15 +51,17 @@
 @property (readonly, nonatomic) CPLChangeBatch *incomingBatch; // @synthesize incomingBatch=_incomingBatch;
 @property (copy, nonatomic) NSDate *now; // @synthesize now=_now;
 @property (readonly, nonatomic) CPLPushChangeTasks *pushChangeTasks; // @synthesize pushChangeTasks=_pushChangeTasks;
+@property (readonly, nonatomic) NSDictionary *recordWithStatusChangesToNotify; // @synthesize recordWithStatusChangesToNotify=_recordWithStatusChangesToNotify;
 @property (readonly, nonatomic) NSDictionary *resourcesToUpload;
 @property (readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 @property (readonly, nonatomic) NSSet *unquarantinedRecordScopedIdentifiers; // @synthesize unquarantinedRecordScopedIdentifiers=_unquarantinedRecordScopedIdentifiers;
 @property (readonly, nonatomic) NSArray *updatedRecords;
 
++ (BOOL)notifyClientOfStore:(id)arg1 ofStatusChanges:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_realChangeFromChange:(id)arg1 comparedToStoredRecord:(id)arg2 changeType:(unsigned long long)arg3;
 - (id)_resourceIdentitiesFromChange:(id)arg1;
-- (BOOL)applyChangesToClientCacheWithError:(id *)arg1;
+- (void)acknowledgeNewClientRecord:(id)arg1 withScopedIdentifier:(id)arg2;
 - (BOOL)checkScopeIdentifier:(id)arg1;
 - (BOOL)computeDiff;
 - (BOOL)computeExpandedBatchWithError:(id *)arg1;
@@ -69,6 +72,7 @@
 - (BOOL)hasCloudRecordWithLocalScopedIdentifier:(id)arg1;
 - (id)initWithIncomingBatch:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (BOOL)knowsClientRecordWithScopedIdentifier:(id)arg1;
+- (BOOL)notifyClientOfStatusChangesIfNecessaryWithError:(id *)arg1;
 - (id)resourceIdentitiesForRecordWithLocalScopedIdentifier:(id)arg1;
 - (BOOL)shouldCancelSyncSessionTryingToUploadChange:(id)arg1;
 - (id)storedClientRecordWithLocalScopedIdentifier:(id)arg1;

@@ -14,6 +14,7 @@
 @interface MediaControlsExpandableButton : UIControl <MTVisualStylingProviderObservingPrivate, _UICursorInteractionDelegate>
 {
     BOOL _expanded;
+    BOOL _animating;
     BOOL _toggleEnabled;
     BOOL _displayMessage;
     BOOL _resetTracking;
@@ -34,6 +35,7 @@
     struct CGSize _maximumExpandedSize;
 }
 
+@property (nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) NSMutableArray *buttons; // @synthesize buttons=_buttons;

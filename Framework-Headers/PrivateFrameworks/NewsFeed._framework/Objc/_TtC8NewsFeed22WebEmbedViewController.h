@@ -16,6 +16,7 @@
     MISSING_TYPE *contentFrame;
     MISSING_TYPE *debugButton;
     MISSING_TYPE *interactionProvider;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *contentFrameChanged;
     MISSING_TYPE *embedURL;
     MISSING_TYPE *dataFeedURL;

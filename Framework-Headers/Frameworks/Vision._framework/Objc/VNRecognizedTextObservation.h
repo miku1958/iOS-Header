@@ -10,10 +10,12 @@
 
 @interface VNRecognizedTextObservation : VNRectangleObservation
 {
+    BOOL _isTitle;
     NSArray *_textObjects;
     NSString *_text;
 }
 
+@property (nonatomic) BOOL isTitle; // @synthesize isTitle=_isTitle;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (copy, nonatomic) NSArray *textObjects; // @synthesize textObjects=_textObjects;
 

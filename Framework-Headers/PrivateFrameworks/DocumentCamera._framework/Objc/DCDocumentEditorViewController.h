@@ -11,7 +11,7 @@
 #import <DocumentCamera/UINavigationControllerDelegate-Protocol.h>
 #import <DocumentCamera/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class DCScannedDocument, ICDocCamDocumentInfoCollection, ICDocCamExtractedDocumentViewController, ICDocCamImageCache, NSIndexPath, NSString, UIImage, UIView;
+@class ICDocCamDocumentInfoCollection, ICDocCamExtractedDocumentViewController, ICDocCamImageCache, NSIndexPath, NSString, UIImage, UIView, VNDocumentCameraScan;
 @protocol DCDocumentEditorViewControllerDelegate;
 
 @interface DCDocumentEditorViewController : UINavigationController <ICDocCamExtractedDocumentControllerDelegate, ICDocCamViewControllerDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
@@ -19,7 +19,7 @@
     BOOL _useCustomRecropTransition;
     ICDocCamExtractedDocumentViewController *_extractedDocumentController;
     id<DCDocumentEditorViewControllerDelegate> _docCamDelegate;
-    DCScannedDocument *_scannedDocument;
+    VNDocumentCameraScan *_scannedDocument;
     ICDocCamDocumentInfoCollection *_docInfoCollection;
     ICDocCamImageCache *_imageCache;
     long long _orientationForRecrop;
@@ -39,7 +39,7 @@
 @property (strong, nonatomic) ICDocCamImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (strong, nonatomic) NSIndexPath *indexPathForRecrop; // @synthesize indexPathForRecrop=_indexPathForRecrop;
 @property (nonatomic) long long orientationForRecrop; // @synthesize orientationForRecrop=_orientationForRecrop;
-@property (strong, nonatomic) DCScannedDocument *scannedDocument; // @synthesize scannedDocument=_scannedDocument;
+@property (strong, nonatomic) VNDocumentCameraScan *scannedDocument; // @synthesize scannedDocument=_scannedDocument;
 @property (strong, nonatomic) UIView *sourceViewForZoomTransition; // @synthesize sourceViewForZoomTransition=_sourceViewForZoomTransition;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *unfilteredImageForRecrop; // @synthesize unfilteredImageForRecrop=_unfilteredImageForRecrop;
@@ -50,6 +50,7 @@
 + (BOOL)isAvailable;
 - (void).cxx_destruct;
 - (void)_autoDismiss;
+- (BOOL)_canShowWhileLocked;
 - (void)didReceiveMemoryWarning;
 - (BOOL)documentCameraController:(id)arg1 canAddImages:(unsigned long long)arg2;
 - (void)documentCameraController:(id)arg1 didFinishWithDocInfoCollection:(id)arg2 imageCache:(id)arg3 warnUser:(BOOL)arg4;

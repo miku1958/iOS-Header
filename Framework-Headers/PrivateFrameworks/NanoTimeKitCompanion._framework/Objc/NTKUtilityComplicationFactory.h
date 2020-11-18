@@ -9,11 +9,12 @@
 #import <NanoTimeKitCompanion/NTKFaceViewComplicationFactory-Protocol.h>
 
 @class CLKDevice, CLKFont, NSString, NTKFaceView;
-@protocol NTKUtilityComplicationFactoryDelegate, NTKUtilityFlatComplicationViewDelegate;
+@protocol NTKUtilityComplicationFactoryDelegate;
 
 @interface NTKUtilityComplicationFactory : NSObject <NTKFaceViewComplicationFactory>
 {
     BOOL _accommodatesTwoTopComplications;
+    BOOL _includesDateComplicationLayoutRules;
     CLKDevice *_device;
     id<NTKUtilityComplicationFactoryDelegate> _delegate;
     double _normalSidePadding;
@@ -33,7 +34,7 @@
     double _bezelLabelTopPadding;
     double _bezelKeylineInnerCircleOffset;
     double _dialDiameter;
-    NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *_faceView;
+    NTKFaceView *_faceView;
     double _dateKeylineMaxWidth;
     double _dateHorizontalCenterOffset;
     double _dateVerticalCenterOffset;
@@ -59,10 +60,11 @@
 @property (nonatomic) double deselectedKeylineVerticalInnerPadding; // @synthesize deselectedKeylineVerticalInnerPadding=_deselectedKeylineVerticalInnerPadding;
 @property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (nonatomic) double dialDiameter; // @synthesize dialDiameter=_dialDiameter;
-@property (weak, nonatomic) NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *faceView; // @synthesize faceView=_faceView;
+@property (weak, nonatomic) NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property (nonatomic) double foregroundAlpha; // @synthesize foregroundAlpha=_foregroundAlpha;
 @property (nonatomic) double foregroundImageAlpha; // @synthesize foregroundImageAlpha=_foregroundImageAlpha;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includesDateComplicationLayoutRules; // @synthesize includesDateComplicationLayoutRules=_includesDateComplicationLayoutRules;
 @property (nonatomic) double maxNormalLongWidth; // @synthesize maxNormalLongWidth=_maxNormalLongWidth;
 @property (nonatomic) struct CGSize normalCircularPadding; // @synthesize normalCircularPadding=_normalCircularPadding;
 @property (nonatomic) double normalSidePadding; // @synthesize normalSidePadding=_normalSidePadding;
@@ -103,6 +105,7 @@
 - (id)_viewForDateComplication:(id)arg1;
 - (double)bezelComplicationMaxAngularWidth;
 - (double)bezelComplicationRadiusWithDialDiameter:(double)arg1;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (void)configureComplicationLayout:(id)arg1 forSlot:(long long)arg2 bounds:(struct CGRect)arg3 dialDiameter:(double)arg4;
 - (void)configureComplicationLayout:(id)arg1 forSlot:(long long)arg2 withBounds:(struct CGRect)arg3;

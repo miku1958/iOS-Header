@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SFDialogAction : NSObject
 {
+    CDUnknownBlockType _customAction;
     long long _activatingKeyboardShortcut;
     long long _actionType;
     NSString *_title;
@@ -18,11 +19,14 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (readonly, nonatomic) long long activatingKeyboardShortcut; // @synthesize activatingKeyboardShortcut=_activatingKeyboardShortcut;
+@property (readonly, nonatomic) BOOL hasCustomAction;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)actionWithTitle:(id)arg1 activatingKeyboardShortcut:(long long)arg2 type:(long long)arg3;
 - (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1 activatingKeyboardShortcut:(long long)arg2 type:(long long)arg3;
+- (void)setCustomAction:(CDUnknownBlockType)arg1;
+- (void)triggerCustomAction;
 
 @end
 

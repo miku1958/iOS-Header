@@ -35,6 +35,7 @@
 - (void)generateGadgets;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 workflowPresenter:(id)arg2;
+- (id)initWithIdentifier:(id)arg1;
 - (id)invitationForGadget:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 

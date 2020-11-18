@@ -17,7 +17,7 @@
 @property (nonatomic) unsigned long long destinationMatrixBatchIndex; // @synthesize destinationMatrixBatchIndex=_destinationMatrixBatchIndex;
 @property (nonatomic) CDStruct_14f26992 destinationMatrixOrigin; // @synthesize destinationMatrixOrigin=_destinationMatrixOrigin;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeBatchToCommandBuffer:(id)arg1 encoder:(id)arg2 sourceImages:(id)arg3 destinationMatrix:(id)arg4;

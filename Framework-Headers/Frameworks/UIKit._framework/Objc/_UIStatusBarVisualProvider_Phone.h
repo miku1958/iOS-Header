@@ -21,7 +21,7 @@
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *pillIconPlacement; // @synthesize pillIconPlacement=_pillIconPlacement;
 @property (strong, nonatomic) _UIStatusBarRegion *pillRegion; // @synthesize pillRegion=_pillRegion;
 
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
 - (id)_animationForBackgroundActivityIcon;
 - (id)_animationForBackgroundActivityPill;

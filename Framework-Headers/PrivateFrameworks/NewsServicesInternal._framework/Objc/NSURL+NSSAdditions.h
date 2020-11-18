@@ -29,6 +29,7 @@
 - (id)nss_URLWithVideoTarget:(BOOL)arg1;
 - (id)nss_campaignID;
 - (BOOL)nss_hasRefreshParameter;
+- (BOOL)nss_isAudioURL;
 - (BOOL)nss_isFollowNewsTagURL;
 - (BOOL)nss_isNewsArticleURL;
 - (BOOL)nss_isNewsArticleVideoURL;

@@ -6,61 +6,82 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/AVPlayerViewControllerDelegatePrivate-Protocol.h>
 #import <MediaPlayer/MPMediaPlayback-Protocol.h>
 
-@class NSURL, UIView;
+@class AVPlayerViewController, NSString, NSURL, UIView, _MPMoviePlayerProxyView;
 
-@interface MPMoviePlayerController : NSObject <MPMediaPlayback>
+@interface MPMoviePlayerController : NSObject <AVPlayerViewControllerDelegatePrivate, MPMediaPlayback>
 {
-    id _implementation;
+    _MPMoviePlayerProxyView *_proxyView;
+    UIView *_backgroundView;
+    BOOL _useApplicationAudioSession;
+    BOOL _isFullscreen;
+    BOOL _shouldAutoplay;
+    long long _movieSourceType;
+    NSURL *_contentURL;
+    long long _controlStyle;
+    long long _repeatMode;
+    double _initialPlaybackTime;
+    double _endPlaybackTime;
+    AVPlayerViewController *_playerViewController;
 }
 
 @property (readonly, nonatomic, getter=isAirPlayVideoActive) BOOL airPlayVideoActive;
 @property (nonatomic) BOOL allowsAirPlay;
 @property (readonly, nonatomic) UIView *backgroundView;
-@property (copy, nonatomic) NSURL *contentURL;
-@property (nonatomic) long long controlStyle;
+@property (copy, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
+@property (nonatomic) long long controlStyle; // @synthesize controlStyle=_controlStyle;
 @property (nonatomic) float currentPlaybackRate;
 @property (nonatomic) double currentPlaybackTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
-@property (nonatomic) double endPlaybackTime;
+@property (nonatomic) double endPlaybackTime; // @synthesize endPlaybackTime=_endPlaybackTime;
 @property (nonatomic, getter=isFullscreen) BOOL fullscreen;
-@property (nonatomic) double initialPlaybackTime;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) double initialPlaybackTime; // @synthesize initialPlaybackTime=_initialPlaybackTime;
 @property (readonly, nonatomic) BOOL isPreparedToPlay;
 @property (readonly, nonatomic) unsigned long long loadState;
 @property (readonly, nonatomic) unsigned long long movieMediaTypes;
-@property (nonatomic) long long movieSourceType;
+@property (nonatomic) long long movieSourceType; // @synthesize movieSourceType=_movieSourceType;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) double playableDuration;
 @property (readonly, nonatomic) long long playbackState;
+@property (readonly, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property (readonly, nonatomic) BOOL readyForDisplay;
-@property (nonatomic) long long repeatMode;
+@property (nonatomic) long long repeatMode; // @synthesize repeatMode=_repeatMode;
 @property (nonatomic) long long scalingMode;
-@property (nonatomic) BOOL shouldAutoplay;
+@property (nonatomic) BOOL shouldAutoplay; // @synthesize shouldAutoplay=_shouldAutoplay;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *view;
 
-+ (void)allInstancesResignActive;
 - (void).cxx_destruct;
-- (BOOL)_isReadyForDisplay;
-- (void)_resignActive;
+- (id)_advertisementView;
+- (void)_playerControllerPlaybackDidEndNotification:(id)arg1;
+- (id)_videoViewController;
+- (id)accessLog;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
+- (void)cancelAllThumbnailImageRequests;
 - (void)dealloc;
 - (void)endSeeking;
-- (void)forwardInvocation:(id)arg1;
+- (id)errorLog;
 - (id)init;
-- (id)initWithAsset:(id)arg1;
 - (id)initWithContentURL:(id)arg1;
-- (id)initWithPlayerItem:(id)arg1;
-- (id)methodSignatureForSelector:(SEL)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)play;
+- (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
 - (void)prepareToPlay;
+- (void)requestThumbnailImagesAtTimes:(id)arg1 timeOption:(long long)arg2;
 - (void)setFullscreen:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)skipToBeginning;
-- (void)skipToNextItem;
-- (void)skipToPreviousItem;
+- (void)setUseApplicationAudioSession:(BOOL)arg1;
 - (void)stop;
+- (id)thumbnailImageAtTime:(double)arg1 timeOption:(long long)arg2;
+- (id)timedMetadata;
+- (BOOL)useApplicationAudioSession;
 
 @end
 

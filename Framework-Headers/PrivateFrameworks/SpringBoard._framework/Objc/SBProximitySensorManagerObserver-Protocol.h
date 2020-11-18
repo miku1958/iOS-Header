@@ -11,6 +11,7 @@
 @protocol SBProximitySensorManagerObserver <NSObject>
 
 @optional
+- (void)proximitySensorManager:(SBProximitySensorManager *)arg1 crudeProximityDidChange:(BOOL)arg2;
 - (void)proximitySensorManager:(SBProximitySensorManager *)arg1 objectWithinProximityDidChange:(BOOL)arg2;
 - (void)proximitySensorManager:(SBProximitySensorManager *)arg1 proximityDetectionEnabledDidChange:(BOOL)arg2;
 - (void)proximitySensorManager:(SBProximitySensorManager *)arg1 proximityDetectionPermittedDidChange:(BOOL)arg2;

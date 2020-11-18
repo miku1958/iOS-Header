@@ -30,6 +30,7 @@
 @property (readonly) UIColor *primaryColor;
 @property (readonly) UIColor *quaternaryButtonColor;
 @property (readonly) UIColor *quaternaryColor;
+@property (readonly) UIColor *quinaryColor;
 @property (readonly) UIColor *secondaryButtonColor;
 @property (readonly) UIColor *secondaryColor;
 @property (readonly) unsigned long long style; // @synthesize style=_style;

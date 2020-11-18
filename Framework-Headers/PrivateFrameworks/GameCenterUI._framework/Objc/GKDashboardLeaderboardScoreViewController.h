@@ -25,9 +25,9 @@
 
 + (long long)initialTimeScope;
 + (void)setInitialTimeScope:(long long)arg1;
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)dataUpdated:(BOOL)arg1 withError:(id)arg2;
-- (void)dealloc;
 - (void)donePressed:(id)arg1;
 - (id)initWithGameRecord:(id)arg1 leaderboard:(id)arg2;
 - (void)setupNoContentView:(id)arg1 withError:(id)arg2;

@@ -6,15 +6,24 @@
 
 #import <TSStyles/TSSTheme.h>
 
+@class TSWPParagraphStyle;
+
 @interface TSATheme : TSSTheme
 {
 }
 
+@property (readonly, nonatomic) TSWPParagraphStyle *captionTextPreset;
+@property (readonly, nonatomic) TSWPParagraphStyle *titleTextPreset;
+
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
 + (id)localizedNameForPresetKind:(id)arg1;
 + (id)localizedNameForStylePickerTitle:(id)arg1;
 + (id)localizedTitleForApplyStyleMenuItem:(id)arg1;
 + (id)localizedTitleForCreateStyleMenuItem:(id)arg1;
++ (id)presetKinds;
 + (void)registerPresetSourceClasses;
+- (void)addCaptionTextStylePresets;
+- (void)addCaptionTextStylePresetsForPowerPointImport;
 - (void)loadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
 

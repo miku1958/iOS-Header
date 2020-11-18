@@ -6,21 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+@class PKDrawingAdjustmentKnob;
 
 @interface PKTextAttachmentDrawingResizeView : UIView
 {
     BOOL _top;
     BOOL _highlighted;
     BOOL _enabled;
-    UIImageView *_knobView;
+    PKDrawingAdjustmentKnob *_knobView;
     UIView *_separatorView;
     UIView *_separatorHighlightedView;
 }
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
-@property (strong, nonatomic) UIImageView *knobView; // @synthesize knobView=_knobView;
+@property (strong, nonatomic) PKDrawingAdjustmentKnob *knobView; // @synthesize knobView=_knobView;
 @property (strong, nonatomic) UIView *separatorHighlightedView; // @synthesize separatorHighlightedView=_separatorHighlightedView;
 @property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property (readonly, nonatomic) BOOL shown;

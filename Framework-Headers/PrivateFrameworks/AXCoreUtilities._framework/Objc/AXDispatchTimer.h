@@ -25,13 +25,13 @@
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (nonatomic) BOOL automaticallyCancelPendingBlockUponSchedulingNewBlock; // @synthesize automaticallyCancelPendingBlockUponSchedulingNewBlock=_automaticallyCancelPendingBlockUponSchedulingNewBlock;
-@property (copy, nonatomic) CDUnknownBlockType cancelBlock; // @synthesize cancelBlock=_cancelBlock;
+@property (copy) CDUnknownBlockType cancelBlock; // @synthesize cancelBlock=_cancelBlock;
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *dispatchTimer; // @synthesize dispatchTimer=_dispatchTimer;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
-@property (copy, nonatomic) CDUnknownBlockType processBlock; // @synthesize processBlock=_processBlock;
+@property (copy) CDUnknownBlockType processBlock; // @synthesize processBlock=_processBlock;
 @property (nonatomic) BOOL useWallTime; // @synthesize useWallTime=_useWallTime;
 
 - (void).cxx_destruct;

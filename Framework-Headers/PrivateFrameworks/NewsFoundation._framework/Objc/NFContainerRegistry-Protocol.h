@@ -10,9 +10,11 @@
 
 @protocol NFContainerRegistry <NSObject>
 
+@property (readonly, nonatomic) id bridgedContainer;
 @property (readonly, nonatomic) id<NFCallbackRegistration> callback;
 @property (readonly, nonatomic) id<NFRegistrationContainer> privateContainer;
 @property (readonly, nonatomic) id<NFRegistrationContainer> publicContainer;
+@property (readonly, nonatomic) id swiftContainer;
 
 @end
 

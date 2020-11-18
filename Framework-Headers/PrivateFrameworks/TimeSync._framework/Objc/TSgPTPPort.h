@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class __TSgPTPPortNotification;
+@class IOKInterestNotification, IOKNotificationPort, IOKService;
 @protocol OS_dispatch_queue;
 
 @interface TSgPTPPort : NSObject
 {
-    unsigned int _service;
+    IOKService *_service;
     NSObject<OS_dispatch_queue> *_notificationsQueue;
-    struct IONotificationPort *_notificationPort;
-    unsigned int _interestNotification;
-    __TSgPTPPortNotification *_portForNotification;
+    IOKNotificationPort *_notificationPort;
+    IOKInterestNotification *_interestNotification;
+    IOKInterestNotification *_terminationNotification;
     NSObject<OS_dispatch_queue> *_internalPropertyUpdateQueue;
     unsigned short _portNumber;
     int _portRole;
@@ -28,22 +28,22 @@
 @property (nonatomic) int portRole; // @synthesize portRole=_portRole;
 @property (readonly, nonatomic) int portType; // @dynamic portType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyUpdateQueue; // @synthesize propertyUpdateQueue=_propertyUpdateQueue;
-@property (readonly, nonatomic) unsigned int service;
+@property (readonly, nonatomic) IOKService *service;
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
-+ (id)diagnosticInfoForService:(unsigned int)arg1;
-+ (id)gPTPPortWithService:(unsigned int)arg1;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
++ (id)diagnosticInfoForService:(id)arg1;
++ (id)gPTPPortWithService:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)_clockIdentifier;
-- (BOOL)_commonInitWithService:(unsigned int)arg1;
-- (struct IONotificationPort *)_notificationPort;
+- (BOOL)_commonInitWithService:(id)arg1;
+- (id)_notificationPort;
 - (id)_notificationQueue;
-- (id)_portForNotification;
 - (unsigned short)_portNumber;
 - (int)_portRole;
 - (void)dealloc;
 - (id)init;
 - (id)initWithMatchingDictionary:(id)arg1;
-- (id)initWithService:(unsigned int)arg1;
+- (id)initWithService:(id)arg1;
 - (void)serviceTerminated;
 - (BOOL)startAutomaticPropertyUpdates;
 - (BOOL)stopAutomaticPropertyUpdates;

@@ -10,6 +10,8 @@
 {
 }
 
+- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (id)init;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 
 @end

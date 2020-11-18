@@ -10,7 +10,7 @@
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 #import <WorkflowKit/WFSortableGalleryObject-Protocol.h>
 
-@class CKRecordID, NSArray, NSDate, NSString;
+@class CKRecordID, NSArray, NSData, NSDate, NSString;
 
 @interface WFGalleryCollection : NSObject <WFCloudKitItem, WFSortableGalleryObject, NSMutableCopying>
 {
@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *workflows; // @synthesize workflows=_workflows;
 

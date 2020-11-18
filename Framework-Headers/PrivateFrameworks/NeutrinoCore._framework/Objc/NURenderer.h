@@ -35,7 +35,7 @@
 - (void).cxx_destruct;
 - (id)imageForSurface:(id)arg1 options:(id)arg2 owner:(id)arg3;
 - (id)init;
-- (id)initWithCIContext:(id)arg1;
+- (id)initWithCIContext:(id)arg1 priority:(long long)arg2;
 - (id)renderDestinationForSurface:(id)arg1 owner:(id)arg2;
 - (id)renderImage:(id)arg1 rect:(CDStruct_996ac03c)arg2 toDestination:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4 error:(out id *)arg5;
 

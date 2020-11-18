@@ -10,6 +10,6 @@
 
 @protocol TSPObjectModifyDelegate <NSObject>
 - (unsigned long long)objectTargetType;
-- (void)willModifyObject:(TSPObject *)arg1 duringReadOperation:(BOOL)arg2 shouldCaptureSnapshot:(BOOL)arg3;
+- (void)willModifyObject:(TSPObject *)arg1 options:(unsigned long long)arg2;
 @end
 

@@ -15,11 +15,13 @@
 @property (strong, nonatomic) SARemoteDevice *remoteDevice;
 @property (nonatomic) BOOL requiresResponseFromRemote;
 @property (copy, nonatomic) NSData *serializedCommand;
+@property (nonatomic) BOOL useGuaranteedDelivery;
 
 + (id)executeOnRemoteRequest;
 + (id)executeOnRemoteRequestWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

@@ -6,9 +6,11 @@
 
 #import <WorkflowKit/WFParameter.h>
 
-@class NSDate;
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
 
-@interface WFDatePickerParameter : WFParameter
+@class NSDate, NSString;
+
+@interface WFDatePickerParameter : WFParameter <WFParameterDialogProvider>
 {
     long long _datePickerMode;
     NSDate *_minimumDate;
@@ -16,12 +18,18 @@
 }
 
 @property (nonatomic) long long datePickerMode; // @synthesize datePickerMode=_datePickerMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *maximumDate; // @synthesize maximumDate=_maximumDate;
 @property (strong, nonatomic) NSDate *minimumDate; // @synthesize minimumDate=_minimumDate;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSupportedVariableTypes;
 - (id)initWithDefinition:(id)arg1;
+- (id)parameterStateFromDialogResponse:(id)arg1;
 - (Class)singleStateClass;
 
 @end

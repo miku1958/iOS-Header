@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSMutableArray, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDRating : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_appleRatingCategorys;
     double _maxScore;
     double _score;
     int _numRatingsUsedForScore;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
+@property (strong, nonatomic) NSMutableArray *appleRatingCategorys;
 @property (nonatomic) BOOL hasMaxScore;
 @property (nonatomic) BOOL hasNumRatingsUsedForScore;
 @property (nonatomic) BOOL hasRatingType;
@@ -36,17 +38,27 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double score;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)appleRatingCategoryType;
 + (BOOL)isValid:(id)arg1;
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
++ (id)ratingListForPlaceData:(id)arg1 type:(int)arg2;
 - (void).cxx_destruct;
 - (int)StringAsRatingType:(id)arg1;
+- (void)addAppleRatingCategory:(id)arg1;
+- (id)appleRatingCategoryAtIndex:(unsigned long long)arg1;
+- (unsigned long long)appleRatingCategorysCount;
+- (void)clearAppleRatingCategorys;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)displayTitle;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)ratingTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

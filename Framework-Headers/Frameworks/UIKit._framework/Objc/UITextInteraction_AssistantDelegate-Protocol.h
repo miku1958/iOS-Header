@@ -7,15 +7,17 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/UITextAutoscrolling-Protocol.h>
 
-@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UIResponder, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
+@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UITextCursorAssertionController, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
 @protocol UITextInput;
 
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
 
+@property (readonly, nonatomic) UITextCursorAssertionController *_assertionController;
 @property (readonly, nonatomic) _UIKeyboardTextSelectionController *activeSelectionController;
 @property (nonatomic) BOOL autoscrolled;
 @property (nonatomic) BOOL expectingCommit;
 @property (strong, nonatomic) id grabberSuppressionAssertion;
+@property (strong, nonatomic) id keyboardSuppressionAssertion;
 @property (nonatomic) struct CGPoint loupeGestureEndPoint;
 @property (nonatomic) BOOL needsGestureUpdate;
 @property (readonly, nonatomic) BOOL willHandoffLoupeMagnifier;
@@ -25,7 +27,6 @@
 - (void)checkEditabilityAndSetFirstResponderIfNecessary;
 - (void)clearStashedSelection;
 - (BOOL)containerAllowsSelectionTintOnly;
-- (BOOL)containerIsPlainStyleAtom;
 - (BOOL)containerIsTextField;
 - (void)didEndSelectionInteraction;
 - (BOOL)didUseStashedSelection;
@@ -56,7 +57,7 @@
 - (BOOL)useGesturesForEditableContent;
 - (BOOL)usesAsynchronousSelectionController;
 - (UIView *)view;
-- (BOOL)viewCouldBecomeEditable:(UIResponder<UITextInput> *)arg1;
+- (BOOL)viewCouldBecomeEditable:(id<UITextInput>)arg1;
 - (void)willBeginFloatingCursor:(BOOL)arg1;
 - (void)willBeginSelectionInteraction;
 

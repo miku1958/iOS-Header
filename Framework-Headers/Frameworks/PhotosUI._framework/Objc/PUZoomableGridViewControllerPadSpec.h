@@ -19,7 +19,6 @@
 - (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (struct UIEdgeInsets)fullMomentsLevelSectionHeaderHighlightInset;
 - (struct CGSize)fullMomentsLevelThumbnailSize;
-- (unsigned long long)fullMomentsSectionHeaderBackgroundStyle;
 - (long long)fullMomentsSectionHeaderStyle;
 - (struct UIEdgeInsets)magnifiedDragEdgeInsets;
 - (struct CGSize)magnifiedImageSize;

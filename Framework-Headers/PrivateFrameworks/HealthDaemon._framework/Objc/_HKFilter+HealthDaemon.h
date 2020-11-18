@@ -7,8 +7,6 @@
 #import <HealthKit/_HKFilter.h>
 
 @interface _HKFilter (HealthDaemon)
-- (id)_filterIgnoringActivityCacheIndexFilter;
-- (id)_filterIgnoringPrivateMetadata;
 - (id)filterIgnoringActivityCacheIndexFilter;
 - (id)filterIgnoringPrivateMetadata;
 - (id)predicateWithProfile:(id)arg1;

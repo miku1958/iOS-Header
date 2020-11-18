@@ -11,6 +11,7 @@
 
 @class UIColor;
 
+__attribute__((visibility("hidden")))
 @interface SPColorWrapper : NSObject <NSSecureCoding, NSCopying>
 {
     UIColor *_color;

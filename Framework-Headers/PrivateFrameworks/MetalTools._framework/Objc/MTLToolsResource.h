@@ -8,7 +8,7 @@
 
 #import <MetalTools/MTLResourceSPI-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLToolsHeap, NSString;
+@class MTLToolsHeap, NSString;
 @protocol MTLDevice, MTLHeap;
 
 @interface MTLToolsResource : MTLToolsObject <MTLResourceSPI>
@@ -19,7 +19,6 @@
 
 @property (readonly) unsigned long long allocatedSize;
 @property (readonly) unsigned long long allocationID;
-@property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,7 +32,6 @@
 @property (readonly) unsigned long long protectionOptions;
 @property (readonly) unsigned long long resourceOptions;
 @property int responsibleProcess;
-@property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long unfilteredResourceOptions;

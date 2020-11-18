@@ -45,6 +45,9 @@
 - (id)_moveColumn;
 - (id)_moveColumnAsNumber;
 - (id)_moveColumnValueString;
+- (id)_moveTimeColumn;
+- (id)_moveTimeColumnAsNumber;
+- (id)_moveTimeColumnValueString;
 - (id)_percentStringWithQuantity:(id)arg1 goalQuantity:(id)arg2;
 - (id)_ringColumn;
 - (id)_standColumn;

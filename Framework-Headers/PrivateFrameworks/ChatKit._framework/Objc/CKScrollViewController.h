@@ -12,17 +12,23 @@
 {
     BOOL _topInsetIncludesPalette;
     BOOL _keyboardVisible;
+    BOOL _enableContentPinning;
     BOOL _keyboardInteractionCancelled;
     UIScrollView *_scrollView;
     double _topInsetPadding;
     double _bottomInsetPadding;
     double _minimumBottomInset;
+    double _contentPinningThreshold;
     IMScheduledUpdater *_updater;
     CDUnknownBlockType _overrideScrollBlock;
+    struct CGSize _contentSizeForPinning;
     struct CGRect _keyboardScreenFrame;
 }
 
 @property (readonly, nonatomic) double bottomInsetPadding; // @synthesize bottomInsetPadding=_bottomInsetPadding;
+@property (nonatomic) double contentPinningThreshold; // @synthesize contentPinningThreshold=_contentPinningThreshold;
+@property (readonly, nonatomic) struct CGSize contentSizeForPinning; // @synthesize contentSizeForPinning=_contentSizeForPinning;
+@property (nonatomic) BOOL enableContentPinning; // @synthesize enableContentPinning=_enableContentPinning;
 @property (readonly, nonatomic) struct CGRect keyboardFrame;
 @property (readonly, nonatomic) struct CGRect keyboardFrameInViewCoordinates;
 @property (nonatomic) BOOL keyboardInteractionCancelled; // @synthesize keyboardInteractionCancelled=_keyboardInteractionCancelled;
@@ -44,6 +50,7 @@
 - (void)_updateScrollGeometryWithDuration:(double)arg1;
 - (double)_visibleKeyboardHeight;
 - (double)accessoryViewHeight;
+- (struct UIEdgeInsets)bannerInsets;
 - (void)beginHoldingScrollGeometryUpdatesForKey:(id)arg1;
 - (double)bottomInsetWithoutAccessoryView;
 - (void)contentInsetDidChange;
@@ -58,6 +65,7 @@
 - (void)keyboardVisibilityWillChange;
 - (void)keyboardWillHideViaGesture;
 - (void)keyboardWillShowOrHide:(id)arg1;
+- (struct UIEdgeInsets)macToolbarInsets;
 - (struct UIEdgeInsets)navigationBarInsets;
 - (struct UIEdgeInsets)navigationBarInsetsWithoutPalette;
 - (void)primeWithKeyboardFrame:(struct CGRect)arg1;

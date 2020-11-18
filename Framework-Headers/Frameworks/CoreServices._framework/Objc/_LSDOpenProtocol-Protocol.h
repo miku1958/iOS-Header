@@ -9,14 +9,14 @@
 
 @protocol _LSDOpenProtocol
 - (void)canOpenURL:(NSURL *)arg1 publicSchemes:(BOOL)arg2 privateSchemes:(BOOL)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
-- (void)failedToOpenApplication:(NSString *)arg1 withURL:(NSURL *)arg2;
-- (void)getURLOverrideForURL:(NSURL *)arg1 newsOnly:(BOOL)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
+- (void)failedToOpenApplication:(NSString *)arg1 withURL:(NSURL *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)getURLOverrideForURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)getiCloudHostNamesWithCompletionHandler:(void (^)(NSSet *))arg1;
 - (void)openAppLink:(LSAppLink *)arg1 state:(_LSAppLinkOpenState *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)openApplicationWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)openURL:(NSURL *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)openUserActivityWithUniqueIdentifier:(NSUUID *)arg1 activityData:(NSData *)arg2 activityType:(NSString *)arg3 bundleIdentifier:(NSString *)arg4 options:(NSDictionary *)arg5 completionHandler:(void (^)(BOOL, NSError *))arg6;
-- (void)performOpenOperationWithURL:(NSURL *)arg1 applicationIdentifier:(NSString *)arg2 documentIdentifier:(NSString *)arg3 isContentManaged:(BOOL)arg4 sourceAuditToken:(const CDStruct_4c969caf *)arg5 userInfo:(NSDictionary *)arg6 options:(NSDictionary *)arg7 delegate:(id<LSOpenResourceOperationDelegate>)arg8 completionHandler:(void (^)(BOOL, NSError *))arg9;
+- (void)performOpenOperationWithURL:(NSURL *)arg1 bundleIdentifier:(NSString *)arg2 documentIdentifier:(NSString *)arg3 isContentManaged:(BOOL)arg4 sourceAuditToken:(const CDStruct_4c969caf *)arg5 userInfo:(NSDictionary *)arg6 options:(NSDictionary *)arg7 delegate:(id<LSOpenResourceOperationDelegate>)arg8 completionHandler:(void (^)(BOOL, NSError *))arg9;
 - (void)resolveAppLinksForURL:(NSURL *)arg1 limit:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

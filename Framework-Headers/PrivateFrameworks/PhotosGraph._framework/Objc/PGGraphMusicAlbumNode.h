@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 @class NSString;
 
-@interface PGGraphMusicAlbumNode : PGGraphNode
+@interface PGGraphMusicAlbumNode : PGGraphOptimizedNode
 {
+    NSString *_title;
 }
 
-@property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
+- (void).cxx_destruct;
+- (id)description;
+- (unsigned short)domain;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

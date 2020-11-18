@@ -21,7 +21,7 @@
     id<PKAddPassesViewControllerDelegate> _delegate;
 }
 
-@property (nonatomic) id<PKAddPassesViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<PKAddPassesViewControllerDelegate> delegate;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 + (BOOL)canAddPasses;

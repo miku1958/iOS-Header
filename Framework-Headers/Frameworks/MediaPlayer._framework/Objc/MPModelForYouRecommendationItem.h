@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelForYouRecommendationGroup, MPModelPlaylist;
+@class MPModelAlbum, MPModelForYouRecommendationGroup, MPModelPlaylist, MPModelRadioStation, NSURL;
 
 @interface MPModelForYouRecommendationItem : MPModelObject
 {
@@ -17,15 +17,19 @@
 @property (nonatomic) unsigned long long itemType; // @dynamic itemType;
 @property (weak, nonatomic) MPModelForYouRecommendationGroup *parentGroup; // @dynamic parentGroup;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
+@property (strong, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
 @property (readonly, nonatomic) MPModelForYouRecommendationGroup *subgroup;
 @property (nonatomic) long long subgroupIndex; // @dynamic subgroupIndex;
+@property (copy, nonatomic) NSURL *url; // @dynamic url;
 
 + (id)__album_KEY;
 + (id)__backedByStoreItemMetadata_KEY;
 + (id)__itemType_KEY;
 + (id)__parentGroup_KEY;
 + (id)__playlist_KEY;
++ (id)__radioStation_KEY;
 + (id)__subgroupIndex_KEY;
++ (id)__url_KEY;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;

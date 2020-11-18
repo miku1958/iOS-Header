@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Social/SLComposeServiceViewController.h>
+#import <PhotosUICore/PXPhotoStreamComposeServiceViewController.h>
 
 #import <PhotosUI/PUCloudSharedCreateAlbumViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoStreamCreateTitleDelegate-Protocol.h>
@@ -12,10 +12,10 @@
 #import <PhotosUI/SLSheetViewHostProtocol-Protocol.h>
 
 @class NSArray, NSObject, NSString;
-@protocol PLAlbumContainer, PLAlbumProtocol, PUPhotoStreamComposeServiceDelegate;
+@protocol PLAlbumContainer, PLAlbumProtocol;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotoStreamComposeServiceViewController : SLComposeServiceViewController <PUPhotoStreamsAlbumsTableViewControllerDelegate, PUPhotoStreamCreateTitleDelegate, PUCloudSharedCreateAlbumViewControllerDelegate, SLSheetViewHostProtocol>
+@interface PUPhotoStreamComposeServiceViewController : PXPhotoStreamComposeServiceViewController <PUPhotoStreamsAlbumsTableViewControllerDelegate, PUPhotoStreamCreateTitleDelegate, PUCloudSharedCreateAlbumViewControllerDelegate, SLSheetViewHostProtocol>
 {
     struct {
         unsigned int hasDidPost:1;
@@ -28,21 +28,13 @@ __attribute__((visibility("hidden")))
     NSArray *_recipients;
     BOOL _shouldShowPost;
     NSString *_itemCountString;
-    BOOL _shouldAllowAlbumPicking;
-    BOOL _addToExistingWorkflow;
-    id<PUPhotoStreamComposeServiceDelegate> _delegate;
-    CDUnknownBlockType _completion;
-    NSString *_albumTitle;
+    NSString *_startingContentText;
 }
 
-@property (nonatomic) BOOL addToExistingWorkflow; // @synthesize addToExistingWorkflow=_addToExistingWorkflow;
-@property (strong, nonatomic) NSString *albumTitle; // @synthesize albumTitle=_albumTitle;
-@property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PUPhotoStreamComposeServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL shouldAllowAlbumPicking; // @synthesize shouldAllowAlbumPicking=_shouldAllowAlbumPicking;
+@property (readonly, copy, nonatomic) NSString *startingContentText; // @synthesize startingContentText=_startingContentText;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -50,24 +42,23 @@ __attribute__((visibility("hidden")))
 - (void)_pushTitleController;
 - (id)albumListAction;
 - (void)albumStreamingCreateViewController:(id)arg1 didSucceed:(BOOL)arg2;
-- (void)cancel;
 - (void)controller:(id)arg1 didSelectAlbum:(id)arg2;
 - (void)controllerWillCreateNewAlbum:(id)arg1;
 - (void)failWithError:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStartingContentText:(id)arg1;
+- (BOOL)isContentValid;
 - (void)send;
 - (id)serviceIconImage;
 - (void)setAssetsToShare:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setSourcesToShare:(id)arg1;
 - (id)sheetActions;
-- (void)sheetDidSendWithSucess:(id)arg1 error:(id)arg2;
-- (void)sheetFailedWithError:(id)arg1;
 - (void)shouldShowNetworkActivityIndicator:(id)arg1;
 - (id)title;
 - (void)titleController:(id)arg1 didSetTitle:(id)arg2;
 - (void)titleControllerDidCancel:(id)arg1;
 - (void)userDidCancel;
-- (void)userDidCancelWithoutAnimation;
 - (void)userDidPost;
 - (void)viewDidLoad;
 

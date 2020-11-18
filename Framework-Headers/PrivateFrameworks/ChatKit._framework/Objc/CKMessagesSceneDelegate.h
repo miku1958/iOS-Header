@@ -40,13 +40,13 @@
 - (void)_handleAccountsChanged:(id)arg1;
 - (void)_handleDaemonConnected:(id)arg1;
 - (void)_handleDaemonDisconnected:(id)arg1;
-- (BOOL)_messageFilteringEnabled;
+- (BOOL)_messageUnknownFilteringEnabled;
 - (id)_oldInputContextIdentifiers;
 - (void)_prepareForResume:(BOOL)arg1;
 - (void)_prepareForSuspend;
 - (BOOL)_restoreState:(id)arg1;
 - (void)_scheduleDeferredSetup;
-- (BOOL)_shouldShowInboxView;
+- (void)_setMessageFilterModeBy:(id)arg1;
 - (BOOL)_shouldShowMadridRegistrationView;
 - (void)_showMadridRegistrationViewIfNecessary;
 - (void)_updateAppSnapshot;

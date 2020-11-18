@@ -41,6 +41,7 @@
     KNSlideTree *_slideTree;
 }
 
+@property (readonly, nonatomic) long long bodyParagraphCount;
 @property (readonly, nonatomic) unsigned long long buildEventCount;
 @property (readonly, nonatomic) NSArray *children;
 @property (strong, nonatomic) NSString *classicUniqueID;
@@ -67,6 +68,7 @@
 @property (copy, nonatomic) NSString *previousIdentifier;
 @property (readonly, nonatomic) KNSlideNode *previousSkippingCollapsed;
 @property (readonly, nonatomic) KNSlideNode *previousSkippingHidden;
+@property (readonly, nonatomic) unsigned long long safeBuildEventCount;
 @property (strong, nonatomic) KNAbstractSlide *slide;
 @property (readonly, nonatomic) KNAbstractSlide *slideIfLoaded;
 @property (readonly, nonatomic) NSDictionary *slideSpecificHyperlinkMap; // @synthesize slideSpecificHyperlinkMap=_slideSpecificHyperlinkMap;
@@ -92,7 +94,6 @@
 - (void)cleanOutInvalidSlideSpecificInfoEntries;
 - (void)clearRemappedTableNames;
 - (void)clearSlideSpecificLinkMap;
-- (void)dealloc;
 - (id)descendants;
 - (id)descendantsOmittingSkippedSlideNodes:(BOOL)arg1 omittingCollapsedSlideNodes:(BOOL)arg2;
 - (void)didLoadSlide:(id)arg1;
@@ -114,6 +115,7 @@
 - (void)p_removeHyperlinkForObjectReferencedByMapping:(id)arg1 toSlideNode:(id)arg2;
 - (id)p_slideNodeWithUUIDString:(id)arg1 inSlideNodes:(id)arg2;
 - (void)p_updateHasExplicitBuilds;
+- (id)paragraphIndexesOfTopLevelBullets;
 - (void)purgeU15ModelIfNeeded;
 - (id)remappedTableNames;
 - (void)removeAllThumbnails;
@@ -129,7 +131,6 @@
 - (BOOL)resolverNameIsUsed:(id)arg1;
 - (id)resolversMatchingPrefix:(id)arg1;
 - (void)rollbackNextUntitledResolverIndex:(unsigned int)arg1;
-- (unsigned long long)safeBuildEventCount;
 - (BOOL)safeHasBuildEvents;
 - (unsigned int)saveNextUntitledResolverIndex;
 - (void)saveToArchive:(struct SlideNodeArchive *)arg1 archiver:(id)arg2;

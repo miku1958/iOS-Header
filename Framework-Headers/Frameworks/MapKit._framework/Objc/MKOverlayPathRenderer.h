@@ -6,7 +6,7 @@
 
 #import <MapKit/MKOverlayRenderer.h>
 
-@class NSArray, NSMutableDictionary, UIColor;
+@class MKUsageCounter, NSArray, NSMutableDictionary, UIColor;
 
 @interface MKOverlayPathRenderer : MKOverlayRenderer
 {
@@ -23,6 +23,7 @@
     struct os_unfair_lock_s _runningVectorGeometryAnimationsLock;
     NSMutableDictionary *_runningVectorGeometryAnimations;
     BOOL _externalSubclassOverridesDrawingMethods;
+    MKUsageCounter *_usageCounter;
 }
 
 @property (readonly, nonatomic, getter=_externalSubclassOverridesDrawingMethods) BOOL externalSubclassOverridesDrawingMethods; // @synthesize externalSubclassOverridesDrawingMethods=_externalSubclassOverridesDrawingMethods;
@@ -36,6 +37,7 @@
 @property const struct CGPath *path;
 @property (nonatomic) BOOL shouldRasterize; // @synthesize shouldRasterize=_shouldRasterize;
 @property (strong) UIColor *strokeColor;
+@property (weak, nonatomic, getter=_usageCounter, setter=_setUsageCounter:) MKUsageCounter *usageCounter; // @synthesize usageCounter=_usageCounter;
 
 + (BOOL)_externalSubclassOverridesDrawingMethods;
 + (Class)_mapkitLeafClass;

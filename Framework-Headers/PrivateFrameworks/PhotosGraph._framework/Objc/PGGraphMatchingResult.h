@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSDictionary *keywords; // @synthesize keywords=_keywords;
 @property (nonatomic) double score; // @synthesize score=_score;
 
++ (id)matchingDescriptionWithEventNode:(id)arg1;
 - (void).cxx_destruct;
 - (id)_contextItemsSortedByScoreAscending:(BOOL)arg1;
 - (id)_highestScoredContextItemWithPreferredRelatedType:(unsigned long long)arg1;

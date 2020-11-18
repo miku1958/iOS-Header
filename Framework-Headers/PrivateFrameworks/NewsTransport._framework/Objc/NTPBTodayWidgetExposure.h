@@ -13,6 +13,7 @@
 @interface NTPBTodayWidgetExposure : PBCodable <NSCopying>
 {
     long long _contentFetchDate;
+    NSString *_contentId;
     int _widgetAppearanceType;
     int _widgetArticleCount;
     int _widgetHeadlineExposureCount;
@@ -28,7 +29,9 @@
 }
 
 @property (nonatomic) long long contentFetchDate; // @synthesize contentFetchDate=_contentFetchDate;
+@property (strong, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property (nonatomic) BOOL hasContentFetchDate;
+@property (readonly, nonatomic) BOOL hasContentId;
 @property (nonatomic) BOOL hasWidgetAppearanceType;
 @property (nonatomic) BOOL hasWidgetArticleCount;
 @property (nonatomic) BOOL hasWidgetHeadlineExposureCount;

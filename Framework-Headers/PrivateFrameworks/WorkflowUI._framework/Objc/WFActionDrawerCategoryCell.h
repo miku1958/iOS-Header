@@ -6,9 +6,11 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSArray, UIImageView, UILabel, WFActionDrawerCategoriesMetrics;
+#import <WorkflowUI/UIPointerInteractionDelegate-Protocol.h>
 
-@interface WFActionDrawerCategoryCell : UICollectionViewCell
+@class NSArray, NSString, UIImageView, UILabel, WFActionDrawerCategoriesMetrics;
+
+@interface WFActionDrawerCategoryCell : UICollectionViewCell <UIPointerInteractionDelegate>
 {
     BOOL _shouldStackVertically;
     UIImageView *_iconImageView;
@@ -18,10 +20,14 @@
     NSArray *_horizontalStackConstraints;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *horizontalStackConstraints; // @synthesize horizontalStackConstraints=_horizontalStackConstraints;
 @property (weak, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (strong, nonatomic) WFActionDrawerCategoriesMetrics *metrics; // @synthesize metrics=_metrics;
 @property (nonatomic) BOOL shouldStackVertically; // @synthesize shouldStackVertically=_shouldStackVertically;
+@property (readonly) Class superclass;
 @property (weak, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSArray *verticalStackConstraints; // @synthesize verticalStackConstraints=_verticalStackConstraints;
 
@@ -29,6 +35,7 @@
 - (void)adjustStackingStyle;
 - (void)configureWithWorkflowCategoryTitle:(id)arg1 icon:(id)arg2 shouldStackVertically:(BOOL)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 
 @end

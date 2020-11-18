@@ -18,10 +18,14 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)fetchContentCutoutBoundsForVariant:(long long)arg1 orientation:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchOriginalImageForVariant:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchOriginalVideoURLForVariant:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchThumbnailForVariant:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
 - (void)restoreDefaultWallpaperWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)setWallpaperColor:(id)arg1 darkColor:(id)arg2 forVariants:(unsigned long long)arg3;
 - (BOOL)setWallpaperColorName:(id)arg1 forVariants:(unsigned long long)arg2;
 - (BOOL)setWallpaperGradient:(id)arg1 forVariants:(unsigned long long)arg2;
 - (BOOL)setWallpaperWithVideoWithWallpaperMode:(id)arg1 cropRect:(struct CGRect)arg2 wallpaperMode:(long long)arg3;

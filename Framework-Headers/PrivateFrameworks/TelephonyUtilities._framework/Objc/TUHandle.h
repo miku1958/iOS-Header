@@ -53,6 +53,7 @@
 - (BOOL)isCanonicallyEqualToHandle:(id)arg1 isoCountryCode:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToHandle:(id)arg1;
+- (BOOL)isEquivalentToHandle:(id)arg1;
 - (BOOL)isValidForISOCountryCode:(id)arg1;
 - (id)personHandle;
 

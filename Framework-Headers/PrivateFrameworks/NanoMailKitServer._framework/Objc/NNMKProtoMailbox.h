@@ -17,6 +17,7 @@
     unsigned int _filterType;
     NSString *_mailboxId;
     unsigned int _type;
+    NSString *_url;
     BOOL _syncEnabled;
     BOOL _syncRequested;
     struct {
@@ -37,10 +38,12 @@
 @property (nonatomic) BOOL hasSyncEnabled;
 @property (nonatomic) BOOL hasSyncRequested;
 @property (nonatomic) BOOL hasType;
+@property (readonly, nonatomic) BOOL hasUrl;
 @property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property (nonatomic) BOOL syncEnabled; // @synthesize syncEnabled=_syncEnabled;
 @property (nonatomic) BOOL syncRequested; // @synthesize syncRequested=_syncRequested;
 @property (nonatomic) unsigned int type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
 + (id)protoMailboxFromMailbox:(id)arg1;
 - (void).cxx_destruct;

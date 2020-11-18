@@ -17,10 +17,12 @@
     NSHashTable *_observers;
     NSArray *_orderedFixedModuleIdentifiers;
     NSArray *_orderedUserEnabledModuleIdentifiers;
+    NSArray *_orderedUserEnabledFixedModuleIdentifiers;
     NSArray *_userDisabledModuleIdentifiers;
 }
 
 @property (readonly, copy, nonatomic) NSArray *orderedFixedModuleIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *orderedUserEnabledFixedModuleIdentifiers;
 @property (readonly, copy, nonatomic) NSArray *orderedUserEnabledModuleIdentifiers;
 @property (readonly, copy, nonatomic) NSArray *userDisabledModuleIdentifiers;
 
@@ -28,9 +30,10 @@
 + (id)_configurationFileURL;
 + (id)_defaultEnabledModuleOrder;
 + (id)_defaultFixedModuleIdentifiers;
++ (id)_defaultUserEnabledFixedModuleIdentifiers;
 + (id)_defaultUserEnabledModuleIdentifiers;
 + (id)_readSettings;
-+ (void)_writeOrderedIdentifiers:(id)arg1 userDisabledIdentifiers:(id)arg2;
++ (void)_writeOrderedIdentifiers:(id)arg1 userEnabledFixedIdentifiers:(id)arg2 userDisabledIdentifiers:(id)arg3;
 + (void)initialize;
 + (id)sharedProvider;
 - (void).cxx_destruct;
@@ -45,6 +48,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)removeObserver:(id)arg1;
+- (void)setAndSaveOrderedUserEnabledFixedModuleIdentifiers:(id)arg1;
 - (void)setAndSaveOrderedUserEnabledModuleIdentifiers:(id)arg1;
 
 @end

@@ -4,27 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Intents/INExecutionInfoResolver.h>
 
-@class INCExecutionCounterpartMapper, NSDictionary;
-
-@interface INCExecutionInfoResolver : NSObject
+@interface INCExecutionInfoResolver : INExecutionInfoResolver
 {
-    INCExecutionCounterpartMapper *_counterpartMapper;
-    NSDictionary *__counterpartMapping;
 }
 
-@property (readonly, nonatomic) INCExecutionCounterpartMapper *_counterpartMapper; // @synthesize _counterpartMapper;
-@property (readonly, copy, nonatomic) NSDictionary *_counterpartMapping; // @synthesize _counterpartMapping=__counterpartMapping;
-
-+ (id)defaultResolver;
-+ (void)initialize;
-- (void).cxx_destruct;
-- (id)_resolveIntentExecutionInfoByLinkingExtensionToApp:(id)arg1;
-- (id)_resolveIntentExecutionInfoBySwappingIdentifiers:(id)arg1;
-- (id)_resolveIntentExecutionInfoUsingCounterparts:(id)arg1;
-- (id)_resolveUserActivityExecutionInfoUsingCounterparts:(id)arg1;
-- (id)counterpartBundleIdentifiersForBundleIdentifier:(id)arg1;
 - (id)resolveIntentExecutionInfo:(id)arg1;
 - (id)resolveUserActivityExecutionInfo:(id)arg1;
 

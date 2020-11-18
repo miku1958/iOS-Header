@@ -11,7 +11,7 @@
 }
 
 - (void)loadFromUnarchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 
 @end
 

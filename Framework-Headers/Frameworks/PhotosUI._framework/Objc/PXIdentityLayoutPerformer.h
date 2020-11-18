@@ -15,14 +15,13 @@
     NSArray *children;
 }
 
-@property (readonly, nonatomic) NSArray *children;
+@property (strong, nonatomic) NSArray *children; // @synthesize children;
 @property (nonatomic) CDStruct_392cfed4 layoutInput;
 @property (strong, nonatomic) PXLayoutPerformerOutput *layoutOutput;
 
 + (struct CGSize)performLayoutWithLayoutInput:(CDStruct_392cfed4)arg1 layoutOutput:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (struct CGSize)performLayout;
-- (void)setChildren:(id)arg1;
 
 @end
 

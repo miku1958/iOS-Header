@@ -10,7 +10,7 @@
 #import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKRoundedButton, NSString, UIColor, UILabel, UITextField, UIView;
+@class AKRoundedButton, NSString, UIButton, UIColor, UILabel, UITextField, UIView;
 
 @interface AKModalSignInViewController : AKBaseSignInViewController <AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, UITextFieldDelegate>
 {
@@ -19,6 +19,7 @@
     UILabel *_bodyLabel;
     UITextField *_passwordField;
     AKRoundedButton *_signInButton;
+    UIButton *_iForgotButton;
     UIView *_containerView;
     UIColor *_backgroundColor;
     NSString *_customBodyText;
@@ -34,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
+@property (strong, nonatomic) UIButton *iForgotButton; // @synthesize iForgotButton=_iForgotButton;
 @property (strong, nonatomic) UITextField *passwordField; // @synthesize passwordField=_passwordField;
 @property (strong, nonatomic) AKRoundedButton *signInButton; // @synthesize signInButton=_signInButton;
 @property (readonly) Class superclass;
@@ -44,11 +46,9 @@
 - (id)_buttonTitle;
 - (void)_createViews;
 - (BOOL)_isSignInAllowed;
-- (void)_passwordFieldDidChange:(id)arg1;
 - (void)_passwordRecoveryButtonWasTapped:(id)arg1;
 - (void)_setupConstraints;
 - (void)_setupViews;
-- (BOOL)_shouldShowForgotGlyph;
 - (void)_signInButtonTapped:(id)arg1;
 - (void)_updateViewConstraints;
 - (BOOL)becomeFirstResponder;

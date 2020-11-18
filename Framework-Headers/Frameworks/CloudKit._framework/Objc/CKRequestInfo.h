@@ -17,9 +17,9 @@
     NSDictionary *_w3cNavigationTiming;
 }
 
-@property (readonly, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
-@property (readonly, nonatomic) NSDictionary *responseHTTPHeaders; // @synthesize responseHTTPHeaders=_responseHTTPHeaders;
-@property (readonly, nonatomic) NSDictionary *w3cNavigationTiming; // @synthesize w3cNavigationTiming=_w3cNavigationTiming;
+@property (readonly, copy, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
+@property (readonly, copy, nonatomic) NSDictionary *responseHTTPHeaders; // @synthesize responseHTTPHeaders=_responseHTTPHeaders;
+@property (readonly, copy, nonatomic) NSDictionary *w3cNavigationTiming; // @synthesize w3cNavigationTiming=_w3cNavigationTiming;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

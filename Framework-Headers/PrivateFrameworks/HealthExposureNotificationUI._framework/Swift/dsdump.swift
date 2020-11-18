@@ -55,13 +55,13 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : q…
+	var top : W◊
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : q…
+	var left : W◊
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : q…
+	var bottom : W◊
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : q…
+	var right : W◊
  }
 
  enum __C.ENDiagnosisReportType { }
@@ -70,6 +70,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum __C.ENStatus { }
 
+ class __C.CFBundle {
+ class __C.CFString {
  struct __C.AnimationOptions {
 
 	// Properties
@@ -78,6 +80,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum __C.Code { }
 
+ struct __C.UIDataDetectorTypes {
+
+	// Properties
+	let rawValue : UInt
+ }
+
  struct __C.Key {
 
 	// Properties
@@ -85,6 +93,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  enum __C.Code { }
+
+ struct __C.CGRect {
+
+	// Properties
+	var origin : CGPoint
+	var size : CGSize
+ }
+
+ struct __C.OpenExternalURLOptionsKey {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ struct __C.UILayoutPriority {
+
+	// Properties
+	let rawValue : Float
+ }
 
  struct __C.TraitKey {
 
@@ -102,14 +129,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : =Œ
+	let rawValue : ã‹
  }
 
  struct __C.Weight {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : q…
+	let rawValue : W◊
+ }
+
+ struct __C.CGSize {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : W◊
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : W◊
+ }
+
+ struct __C.CGPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : W◊
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : W◊
  }
 
  class HealthExposureNotificationUI.VerificationSymptomDateEntryViewController : OBTableWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
@@ -119,36 +164,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x10 (0x8)
 	var hasSymptoms : Bool? // +0x18 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var symptomOnsetDate : ≥… // +0x0 (0x0)
+	var symptomOnsetDate : Û◊ // +0x0 (0x0)
 	var isShowingDatePicker : Bool // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataSource : À // +0x0 (0x8)
+	var dataSource : ˝ÿ // +0x0 (0x8)
 	var primaryButton : OBBoldTrayButton // +0x0 (0x8)
 	var secondaryButton : OBLinkTrayButton // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5e20  @objc VerificationSymptomDateEntryViewController.viewDidLoad <stripped>
-	0x6ae0  @objc VerificationSymptomDateEntryViewController.datePickerValueChanged: <stripped>
-	0x6c20  @objc VerificationSymptomDateEntryViewController.viewDidLayoutSubviews <stripped>
-	0x6c60  @objc VerificationSymptomDateEntryViewController.tableView:shouldHighlightRowAtIndexPath: <stripped>
-	0x7020  @objc VerificationSymptomDateEntryViewController.tableView:didSelectRowAtIndexPath: <stripped>
-	0x70f0  @objc VerificationSymptomDateEntryViewController.tableView:heightForHeaderInSection: <stripped>
-	0x7170  @objc VerificationSymptomDateEntryViewController.tableView:heightForFooterInSection: <stripped>
-	0x7340  @objc VerificationSymptomDateEntryViewController.didTapPrimaryButton <stripped>
-	0x7370  @objc VerificationSymptomDateEntryViewController.didTapSecondaryButton <stripped>
-	0x73a0  @objc VerificationSymptomDateEntryViewController.didTapCancel <stripped>
-	0x7530  @objc VerificationSymptomDateEntryViewController.initWithTitle:detailText:icon: <stripped>
-	0x7680  @objc VerificationSymptomDateEntryViewController.initWithTitle:detailText:symbolName: <stripped>
-	0x73e0  @objc VerificationSymptomDateEntryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81e400029270 (0x1e400029270) in binary!
+	0x7b18  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x81cc000294e0 (0x1cc000294e0) in binary!
+	0x6352  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x635400028fa8 (0x35400028fa8) in binary!
+	0x6356  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+	0x8190  variable initialization expression of StandardOnboardingFlow.healthAgencyModel
+WARNING: couldn't find address 0x8184000295d0 (0x184000295d0) in binary!
+	0x8178  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x632c00029498 (0x32c00029498) in binary!
+	0x6320  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x8154000290c0 (0x154000290c0) in binary!
+	0x38000000c  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0xbef2000294a0 (0x6f2000294a0) in binary!
+	0x9b50  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x812400029090 (0x12400029090) in binary!
+	0x28000000c  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0xbec200029470 (0x6c200029470) in binary!
+	0x9b20  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x114fffa1bb8  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
+	0xfffa2110  @objc VerificationSymptomDateEntryViewController.ˇ”LâÁˇ”Lâ˜ˇ”Hçeÿ[A\A]A^A_]√D <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x4dcfffa3858  @objc VerificationSymptomDateEntryViewController.(null) <stripped>
 
 	// Swift methods
-	0x4900  class func VerificationSymptomDateEntryViewController.__allocating_init(flow:agencyModel:) // init 
+	0x4ec0  class func VerificationSymptomDateEntryViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  class HealthExposureNotificationUI.SymptomOnsetDateCell : VerificationCell {
 	// ObjC -> Swift bridged methods
-	0x76d0  @objc SymptomOnsetDateCell.initWithStyle:reuseIdentifier: <stripped>
-	0x7720  @objc SymptomOnsetDateCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0xbec200029470 (0x6c200029470) in binary!
+	0x9b20  @objc SymptomOnsetDateCell.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x114fffa1bb8  @objc SymptomOnsetDateCell.(null) <stripped>
  }
 
  class HealthExposureNotificationUI.DatePickerCell : VerificationCell {
@@ -157,9 +215,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let datePicker : UIDatePicker
 
 	// ObjC -> Swift bridged methods
-	0x7780  @objc DatePickerCell.initWithStyle:reuseIdentifier: <stripped>
-	0x77e0  @objc DatePickerCell.initWithCoder: <stripped>
-	0x78e0  @objc DatePickerCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0xbef2000294a0 (0x6f2000294a0) in binary!
+	0x9b50  @objc DatePickerCell.(null) <stripped>
+WARNING: couldn't find address 0x812400029090 (0x12400029090) in binary!
+	0x28000000c  @objc DatePickerCell.(null) <stripped>
+WARNING: couldn't find address 0xbec200029470 (0x6c200029470) in binary!
+	0x9b20  @objc DatePickerCell.(null) <stripped>
  }
 
  enum HealthExposureNotificationUI.Item {
@@ -183,19 +244,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthExposureNotificationUI.LoadingStatusView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	let spinnerView : UIActivityIndicatorView // +0x8 (0x8)
-	let statusLabel : UILabel // +0x10 (0x8)
+	let spinnerView : UIActivityIndicatorView
+	let statusLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0xb960  @objc LoadingStatusView.initWithCoder: <stripped>
-	0xc000  @objc LoadingStatusView.initWithFrame: <stripped>
-	0xbf10  @objc LoadingStatusView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9b0c000295f8 (0x30c000295f8) in binary!
+	0x73b0  @objc LoadingStatusView.(null) <stripped>
+WARNING: couldn't find address 0x80d400029040 (0xd400029040) in binary!
+	0x58000000c  @objc LoadingStatusView.(null) <stripped>
+WARNING: couldn't find address 0x80bc00029148 (0xbc00029148) in binary!
+	0x80b0  @objc LoadingStatusView.(null) <stripped>
 
 	// Swift methods
-	0xb8f0  class func LoadingStatusView.__allocating_init(with:) // init 
-	0xba40  func <stripped> // method 
-	0xbe60  func LoadingStatusView.startAnimating() // method 
-	0xbe80  func LoadingStatusView.stopAnimating() // method 
+	0xbf80  class func LoadingStatusView.__allocating_init(with:backgroundColor:) // init 
+	0xc0f0  func <stripped> // method 
+	0xc4d0  func LoadingStatusView.startAnimating() // method 
+	0xc4f0  func LoadingStatusView.stopAnimating() // method 
  }
 
  struct HealthExposureNotificationUI.PreApprovalDialogue {
@@ -214,19 +278,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthExposureNotificationUI.OnboardingSummaryViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x18 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x20 (0x8)
+	let flow : OnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let primaryButton : OBBoldTrayButton
 
 	// ObjC -> Swift bridged methods
-	0xd7a0  @objc OnboardingSummaryViewController.viewDidLoad <stripped>
-	0xd840  @objc OnboardingSummaryViewController.didTapPrimaryButton <stripped>
-	0xd8b0  @objc OnboardingSummaryViewController.didTapCancel <stripped>
-	0xda80  @objc OnboardingSummaryViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0xd950  @objc OnboardingSummaryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x80bc00029148 (0xbc00029148) in binary!
+	0x80b0  @objc OnboardingSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x80a400029508 (0xa400029508) in binary!
+	0x75c8  @objc OnboardingSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x808c00028ff8 (0x8c00028ff8) in binary!
+	0x98000000c  @objc OnboardingSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x700800028d38 (0x800028d38) in binary!
+	0x79a8  @objc OnboardingSummaryViewController.(null) <stripped>
+	0x7990  VerificationSymptomDateEntryViewController.tableView(_:heightForFooterInSection:)
 
 	// Swift methods
-	0xd490  class func OnboardingSummaryViewController.__allocating_init(flow:agencyModel:) // init 
+	0xda50  class func OnboardingSummaryViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  enum HealthExposureNotificationUI.ENUIPublicHealthHeaderStyle { }
@@ -239,39 +307,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundColor : UIColor
 	let textColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let logoURL : ô√
+	let logoURL : ã“
 	let style : ENUIPublicHealthHeaderStyle
 
 	// ObjC -> Swift bridged methods
-	0xe570  @objc ENUIPublicHealthHeader.title <stripped>
-	0xe5b0  @objc ENUIPublicHealthHeader.subtitle <stripped>
-	0xe5f0  @objc ENUIPublicHealthHeader.backgroundColor <stripped>
-	0xe630  @objc ENUIPublicHealthHeader.textColor <stripped>
-	0xe670  @objc ENUIPublicHealthHeader.logoURL <stripped>
-	0xe730  @objc ENUIPublicHealthHeader.style <stripped>
-	0xe970  @objc ENUIPublicHealthHeader.initWithTitle:subtitle:backgroundColor:textColor:logoURL:style: <stripped>
-	0xeb80  @objc ENUIPublicHealthHeader.init <stripped>
-	0xeae0  @objc ENUIPublicHealthHeader..cxx_destruct <stripped>
+WARNING: couldn't find address 0x6f2000028d68 (0x72000028d68) in binary!
+	0x6f14  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x6f0800028d40 (0x70800028d40) in binary!
+	0x6efc  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x6ef000028d18 (0x6f000028d18) in binary!
+	0x9b02  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x769400028cf0 (0x69400028cf0) in binary!
+	0x6ecc  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x7f2c00028e98 (0x72c00028e98) in binary!
+	0x188000000c  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x6ea8000294c8 (0x6a8000294c8) in binary!
+	0x6e9c  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x6e9000028c60 (0x69000028c60) in binary!
+	0x6e84  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x6e7800028c38 (0x67800028c38) in binary!
+	0x6e6c  @objc ENUIPublicHealthHeader.(null) <stripped>
+WARNING: couldn't find address 0x6e6000028c10 (0x66000028c10) in binary!
+	0x9d90  @objc ENUIPublicHealthHeader.(null) <stripped>
 
 	// Swift methods
-	0xe770  class func ENUIPublicHealthHeader.__allocating_init(title:subtitle:backgroundColor:textColor:logoURL:style:) // init 
+	0xe700  class func ENUIPublicHealthHeader.__allocating_init(title:subtitle:backgroundColor:textColor:logoURL:style:) // init 
  }
 
  class HealthExposureNotificationUI.ENUIPublicHealthLegalDocument : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let text : String // +0x8 (0x10)
-	let version : String // +0x18 (0x10)
+	let text : String
+	let version : String
 
 	// ObjC -> Swift bridged methods
-	0xebb0  @objc ENUIPublicHealthLegalDocument.text <stripped>
-	0xebf0  @objc ENUIPublicHealthLegalDocument.version <stripped>
-	0xed20  @objc ENUIPublicHealthLegalDocument.initWithText:version: <stripped>
-	0xee60  @objc ENUIPublicHealthLegalDocument.init <stripped>
-	0xedf0  @objc ENUIPublicHealthLegalDocument..cxx_destruct <stripped>
+WARNING: couldn't find address 0x6d6800028b78 (0x56800028b78) in binary!
+	0x6d5c  @objc ENUIPublicHealthLegalDocument.(null) <stripped>
+WARNING: couldn't find address 0x87f000028b50 (0x7f000028b50) in binary!
+	0x6d44  @objc ENUIPublicHealthLegalDocument.(null) <stripped>
+WARNING: couldn't find address 0x7da400028d10 (0x5a400028d10) in binary!
+	0x58000000c  @objc ENUIPublicHealthLegalDocument.(null) <stripped>
+WARNING: couldn't find address 0x705c00028dc0 (0x5c00028dc0) in binary!
+	0x97a0  @objc ENUIPublicHealthLegalDocument.(null) <stripped>
+WARNING: couldn't find address 0x7d74000291a0 (0x574000291a0) in binary!
+	0x7d68  @objc ENUIPublicHealthLegalDocument.(null) <stripped>
 
 	// Swift methods
-	0xec30  class func ENUIPublicHealthLegalDocument.__allocating_init(text:version:) // init 
+	0xeb80  class func ENUIPublicHealthLegalDocument.__allocating_init(text:version:) // init 
  }
 
  class HealthExposureNotificationUI.ENUIUserConsentStatus : NSObject /usr/lib/libobjc.A.dylib {
@@ -280,18 +362,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let textConsented : String
 	let versionConsented : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateConsented : ù√
+	let dateConsented : Ì–
 
 	// ObjC -> Swift bridged methods
-	0xee90  @objc ENUIUserConsentStatus.textConsented <stripped>
-	0xeed0  @objc ENUIUserConsentStatus.versionConsented <stripped>
-	0xef10  @objc ENUIUserConsentStatus.dateConsented <stripped>
-	0xf0f0  @objc ENUIUserConsentStatus.initWithTextConsented:versionConsented:dateConsented: <stripped>
-	0xf270  @objc ENUIUserConsentStatus.init <stripped>
-	0xf1f0  @objc ENUIUserConsentStatus..cxx_destruct <stripped>
+WARNING: couldn't find address 0x6f7000028d68 (0x77000028d68) in binary!
+	0x6f64  @objc ENUIUserConsentStatus.(null) <stripped>
+WARNING: couldn't find address 0x6f5800028d40 (0x75800028d40) in binary!
+	0x6178  @objc ENUIUserConsentStatus.(null) <stripped>
+WARNING: couldn't find address 0x6f40000292f0 (0x740000292f0) in binary!
+	0x7fa0  @objc ENUIUserConsentStatus.(null) <stripped>
+WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
+	0x554fffa3f88  @objc ENUIUserConsentStatus.(null) <stripped>
+	0x52cfffa3ff0  @objc ENUIUserConsentStatus.â˜æ <stripped>
+	0x504fffa4058  @objc ENUIUserConsentStatus.“1…ËÙ! <stripped>
 
 	// Swift methods
-	0xefb0  class func ENUIUserConsentStatus.__allocating_init(textConsented:versionConsented:dateConsented:) // init 
+	0xeef0  class func ENUIUserConsentStatus.__allocating_init(textConsented:versionConsented:dateConsented:) // init 
  }
 
  class HealthExposureNotificationUI.ENUIPublicHealthAgencyModel : NSObject /usr/lib/libobjc.A.dylib {
@@ -307,82 +393,110 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isAuthorized : Bool
 	let regionVersion : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let regionWebsiteURL : ô√
+	let regionWebsiteURL : ã“
 	let verificationIntroductoryText : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let verificationCodeHelpURL : ô√
+	let verificationCodeHelpURL : ã“
 	let verificationSymptomOnsetText : String
 	let verificationTravelStatusText : String
 
 	// ObjC -> Swift bridged methods
-	0xf2a0  @objc ENUIPublicHealthAgencyModel.region <stripped>
-	0xf2e0  @objc ENUIPublicHealthAgencyModel.name <stripped>
-	0xf320  @objc ENUIPublicHealthAgencyModel.appBundleId <stripped>
-	0xf3d0  @objc ENUIPublicHealthAgencyModel.introductoryText <stripped>
-	0xf410  @objc ENUIPublicHealthAgencyModel.header <stripped>
-	0xf450  @objc ENUIPublicHealthAgencyModel.legalese <stripped>
-	0xf4b0  @objc ENUIPublicHealthAgencyModel.consentStatus <stripped>
-	0xf510  @objc ENUIPublicHealthAgencyModel.isAuthorized <stripped>
-	0xf540  @objc ENUIPublicHealthAgencyModel.regionVersion <stripped>
-	0xf580  @objc ENUIPublicHealthAgencyModel.regionWebsiteURL <stripped>
-	0xf5c0  @objc ENUIPublicHealthAgencyModel.verificationIntroductoryText <stripped>
-	0xf600  @objc ENUIPublicHealthAgencyModel.verificationCodeHelpURL <stripped>
-	0xf6e0  @objc ENUIPublicHealthAgencyModel.verificationSymptomOnsetText <stripped>
-	0xf720  @objc ENUIPublicHealthAgencyModel.verificationTravelStatusText <stripped>
-	0xf7d0  @objc ENUIPublicHealthAgencyModel.isSymptomOnsetNeeded <stripped>
-	0xf810  @objc ENUIPublicHealthAgencyModel.isTravelStatusNeeded <stripped>
-	0xfbd0  @objc ENUIPublicHealthAgencyModel.initWithRegion:name:appBundleId:introductoryText:header:legalese:consentStatus:isAuthorized:regionVersion:regionWebsiteURL:verificationIntroductoryText:verificationCodeHelpURL:verificationSymptomOnsetText:verificationTravelStatusText: <stripped>
-	0xfe20  @objc ENUIPublicHealthAgencyModel.isAppInstalled <stripped>
-	0xff50  @objc ENUIPublicHealthAgencyModel.installedAppName <stripped>
-	0x10190  @objc ENUIPublicHealthAgencyModel.installedAppIcon <stripped>
-	0x10420  @objc ENUIPublicHealthAgencyModel.regionIsPlaceholder <stripped>
-	0x10c90  @objc ENUIPublicHealthAgencyModel.init <stripped>
-	0x10b60  @objc ENUIPublicHealthAgencyModel..cxx_destruct <stripped>
+WARNING: couldn't find address 0x6ea8000294c8 (0x6a8000294c8) in binary!
+	0x6e9c  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6e9000028c60 (0x69000028c60) in binary!
+	0x6e84  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6e7800028c38 (0x67800028c38) in binary!
+	0x6e6c  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6e6000028c10 (0x66000028c10) in binary!
+	0x9d90  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x9a6600028be8 (0x26600028be8) in binary!
+	0x6e3c  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6e3000028bc0 (0x63000028bc0) in binary!
+	0x6e24  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6e1800028b98 (0x61800028b98) in binary!
+	0x6e0c  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x9d3c00028b70 (0x53c00028b70) in binary!
+	0x9d30  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x78a400028b48 (0xa400028b48) in binary!
+	0x9d18  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x9d0c00028b20 (0x50c00028b20) in binary!
+	0x6dc4  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6db800028af8 (0x5b800028af8) in binary!
+	0x9ce8  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x6da000029150 (0x5a000029150) in binary!
+	0x7e00  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffa7cc8  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x364fffa4390  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+	0xf4fffa44d8  @objc ENUIPublicHealthAgencyModel.Ö$ <stripped>
+	0xfffa4590  @objc ENUIPublicHealthAgencyModel.–HãÃ˜ <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x28cfffaa368  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+	0x1b4fffaaba0  @objc ENUIPublicHealthAgencyModel.A\A^A_]√Ñ <stripped>
+	0xfffaacb8  @objc ENUIPublicHealthAgencyModel.Ñ <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x164fffab0d0  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+	0x48cfffab328  @objc ENUIPublicHealthAgencyModel.ã}–Ëæ <stripped>
+	0x72c00029218  @objc ENUIPublicHealthAgencyModel.â«Lã}»Lâ˙Lâ·MâË@ <stripped>
+WARNING: couldn't find address 0x29444fffb7998 (0x444fffb7998) in binary!
+	0x59400028970  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
+WARNING: couldn't find address 0x293dcfffb7e40 (0x3dcfffb7e40) in binary!
+	0x61c00029220  @objc ENUIPublicHealthAgencyModel.(null) <stripped>
 
 	// Swift methods
-	0xf7f0  func ENUIPublicHealthAgencyModel.isSymptomOnsetNeeded.getter // getter 
-	0xf870  func ENUIPublicHealthAgencyModel.isTravelStatusNeeded.getter // getter 
-	0xf8d0  class func ENUIPublicHealthAgencyModel.__allocating_init(region:name:appBundleId:introductoryText:header:legalese:consentStatus:isAuthorized:regionVersion:regionWebsiteURL:verificationIntroductoryText:verificationCodeHelpURL:verificationSymptomOnsetText:verificationTravelStatusText:) // init 
-	0xfe60  func ENUIPublicHealthAgencyModel.isAppInstalled.getter // getter 
-	0xffb0  func ENUIPublicHealthAgencyModel.installedAppName.getter // getter 
-	0x101d0  func ENUIPublicHealthAgencyModel.installedAppIcon.getter // getter 
-	0x104e0  func ENUIPublicHealthAgencyModel.regionIsPlaceholder.getter // getter 
+	0xf6f0  func ENUIPublicHealthAgencyModel.isSymptomOnsetNeeded.getter // getter 
+	0xf770  func ENUIPublicHealthAgencyModel.isTravelStatusNeeded.getter // getter 
+	0xf7d0  class func ENUIPublicHealthAgencyModel.__allocating_init(region:name:appBundleId:introductoryText:header:legalese:consentStatus:isAuthorized:regionVersion:regionWebsiteURL:verificationIntroductoryText:verificationCodeHelpURL:verificationSymptomOnsetText:verificationTravelStatusText:) // init 
+	0xfd60  func ENUIPublicHealthAgencyModel.isAppInstalled.getter // getter 
+	0xfe80  func ENUIPublicHealthAgencyModel.isRegionUsingApp.getter // getter 
+	0x10050  func ENUIPublicHealthAgencyModel.installedAppName.getter // getter 
+	0x10240  func ENUIPublicHealthAgencyModel.installedAppIcon.getter // getter 
+	0x10520  func ENUIPublicHealthAgencyModel.regionIsPlaceholder.getter // getter 
  }
 
  class HealthExposureNotificationUI.AuthorizationFooterView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	var delegate : AuthorizationFooterViewDelegate // +0x8 (0x10)
-	let primaryButton : OBBoldTrayButton // +0x18 (0x8)
-	let secondaryButton : OBBoldTrayButton // +0x20 (0x8)
-	let visualEffectView : UIVisualEffectView // +0x28 (0x8)
+	var delegate : AuthorizationFooterViewDelegate
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBBoldTrayButton
+	let visualEffectView : UIVisualEffectView
 
 	// ObjC -> Swift bridged methods
-	0x15ae0  @objc AuthorizationFooterView.initWithFrame: <stripped>
-	0x15b10  @objc AuthorizationFooterView.initWithCoder: <stripped>
-	0x16330  @objc AuthorizationFooterView.didTapPrimaryButton <stripped>
-	0x163c0  @objc AuthorizationFooterView.didTapSecondaryButton <stripped>
-	0x16480  @objc AuthorizationFooterView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x705c00028dc0 (0x5c00028dc0) in binary!
+	0x97a0  @objc AuthorizationFooterView.(null) <stripped>
+WARNING: couldn't find address 0x7d74000291a0 (0x574000291a0) in binary!
+	0x7d68  @objc AuthorizationFooterView.(null) <stripped>
+WARNING: couldn't find address 0x7d5c00028cc8 (0x55c00028cc8) in binary!
+	0x48000000c  @objc AuthorizationFooterView.(null) <stripped>
+WARNING: couldn't find address 0x7d4400028dd0 (0x54400028dd0) in binary!
+	0x7d38  @objc AuthorizationFooterView.(null) <stripped>
+WARNING: couldn't find address 0x725c00029258 (0x25c00029258) in binary!
+	0x7d20  @objc AuthorizationFooterView.(null) <stripped>
 
 	// Swift methods
-	0x15b50  func <stripped> // method 
+	0x14b90  func <stripped> // method 
  }
 
  class HealthExposureNotificationUI.OnboardingRegionChangeSummaryViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x18 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x20 (0x8)
+	let flow : OnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let primaryButton : OBBoldTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x16960  @objc OnboardingRegionChangeSummaryViewController.viewDidLoad <stripped>
-	0x16a00  @objc OnboardingRegionChangeSummaryViewController.didTapPrimaryButton <stripped>
-	0x16bd0  @objc OnboardingRegionChangeSummaryViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x16aa0  @objc OnboardingRegionChangeSummaryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7d4400028dd0 (0x54400028dd0) in binary!
+	0x7d38  @objc OnboardingRegionChangeSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x725c00029258 (0x25c00029258) in binary!
+	0x7d20  @objc OnboardingRegionChangeSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
+	0x444fffb7998  @objc OnboardingRegionChangeSummaryViewController.(null) <stripped>
+	0x3dcfffb7e40  @objc OnboardingRegionChangeSummaryViewController.Ö€Ñ‰ <stripped>
 
 	// Swift methods
-	0x16650  class func OnboardingRegionChangeSummaryViewController.__allocating_init(flow:agencyModel:) // init 
+	0x15640  class func OnboardingRegionChangeSummaryViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  class HealthExposureNotificationUI.StandardOnboardingFlow : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -395,27 +509,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isFromAvailabilityAlert : Bool
 
 	// Swift methods
-	0x177e0  func StandardOnboardingFlow.completionHandler.getter // getter 
-	0x17820  func StandardOnboardingFlow.completionHandler.setter // setter 
-	0x17860  func StandardOnboardingFlow.completionHandler.modify // modifyCoroutine 
-	0x178a0  func StandardOnboardingFlow.healthAgencyModel.getter // getter 
-	0x178e0  func StandardOnboardingFlow.healthAgencyModel.setter // setter 
-	0x17920  func StandardOnboardingFlow.healthAgencyModel.modify // modifyCoroutine 
-	0x17950  func StandardOnboardingFlow.currentSelectedRegion.getter // getter 
-	0x179e0  func StandardOnboardingFlow.currentSelectedRegion.setter // setter 
-	0x17ac0  func StandardOnboardingFlow.currentSelectedRegion.modify // modifyCoroutine 
-	0x17b00  class func StandardOnboardingFlow.__allocating_init(agencyModel:exposureManager:isFromAvailabilityAlert:completion:) // init 
-	0x17ce0  func StandardOnboardingFlow.initialViewController.getter // getter 
-	0x17d30  func StandardOnboardingFlow.didTapNext(from:) // method 
-	0x17d60  func StandardOnboardingFlow.didTapCancel(from:) // method 
-	0x18610  func <stripped> // method 
+	0x160c0  func StandardOnboardingFlow.completionHandler.getter // getter 
+	0x16100  func StandardOnboardingFlow.completionHandler.setter // setter 
+	0x16140  func StandardOnboardingFlow.completionHandler.modify // modifyCoroutine 
+	0x16180  func StandardOnboardingFlow.healthAgencyModel.getter // getter 
+	0x161c0  func StandardOnboardingFlow.healthAgencyModel.setter // setter 
+	0x16200  func StandardOnboardingFlow.healthAgencyModel.modify // modifyCoroutine 
+	0x16230  func StandardOnboardingFlow.currentSelectedRegion.getter // getter 
+	0x162c0  func StandardOnboardingFlow.currentSelectedRegion.setter // setter 
+	0x163a0  func StandardOnboardingFlow.currentSelectedRegion.modify // modifyCoroutine 
+	0x163e0  class func StandardOnboardingFlow.__allocating_init(agencyModel:exposureManager:isFromAvailabilityAlert:completion:) // init 
+	0x165c0  func StandardOnboardingFlow.initialViewController.getter // getter 
+	0x16610  func StandardOnboardingFlow.didTapNext(from:) // method 
+	0x16640  func StandardOnboardingFlow.didTapCancel(from:) // method 
+	0x16d90  func <stripped> // method 
  }
 
  enum HealthExposureNotificationUI.SymptomOnset {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case date : ù√
+	case date : Ì–
 	case noSymptoms  
  }
 
@@ -428,20 +542,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let exposureManager : ExposureNotifying
 
 	// Swift methods
-	0x21210  func AddRegionOnboardingFlow.completionHandler.getter // getter 
-	0x21350  func AddRegionOnboardingFlow.completionHandler.setter // setter 
-	0x19020  func AddRegionOnboardingFlow.completionHandler.modify // modifyCoroutine 
-	0x211c0  func AddRegionOnboardingFlow.healthAgencyModel.getter // getter 
-	0x214d0  func AddRegionOnboardingFlow.healthAgencyModel.setter // setter 
-	0x19050  func AddRegionOnboardingFlow.healthAgencyModel.modify // modifyCoroutine 
-	0x212f0  func AddRegionOnboardingFlow.currentSelectedRegion.getter // getter 
-	0x214c0  func AddRegionOnboardingFlow.currentSelectedRegion.setter // setter 
-	0x19080  func AddRegionOnboardingFlow.currentSelectedRegion.modify // modifyCoroutine 
-	0x190b0  class func AddRegionOnboardingFlow.__allocating_init(agencyModel:exposureManager:completion:) // init 
-	0x19270  func AddRegionOnboardingFlow.initialViewController.getter // getter 
-	0x19300  func AddRegionOnboardingFlow.didTapNext(from:) // method 
-	0x196a0  func AddRegionOnboardingFlow.didTapCancel(from:) // method 
-	0x19a90  func <stripped> // method 
+	0x20ad0  func AddRegionOnboardingFlow.completionHandler.getter // getter 
+	0x20c20  func AddRegionOnboardingFlow.completionHandler.setter // setter 
+	0x17540  func AddRegionOnboardingFlow.completionHandler.modify // modifyCoroutine 
+	0x20aa0  func AddRegionOnboardingFlow.healthAgencyModel.getter // getter 
+	0x20da0  func AddRegionOnboardingFlow.healthAgencyModel.setter // setter 
+	0x17570  func AddRegionOnboardingFlow.healthAgencyModel.modify // modifyCoroutine 
+	0x20bb0  func AddRegionOnboardingFlow.currentSelectedRegion.getter // getter 
+	0x20d90  func AddRegionOnboardingFlow.currentSelectedRegion.setter // setter 
+	0x175a0  func AddRegionOnboardingFlow.currentSelectedRegion.modify // modifyCoroutine 
+	0x175d0  class func AddRegionOnboardingFlow.__allocating_init(agencyModel:exposureManager:completion:) // init 
+	0x17790  func AddRegionOnboardingFlow.initialViewController.getter // getter 
+	0x17820  func AddRegionOnboardingFlow.didTapNext(from:) // method 
+	0x17bd0  func AddRegionOnboardingFlow.didTapCancel(from:) // method 
+	0x17e30  func <stripped> // method 
  }
 
  class HealthExposureNotificationUI.VerificationOnboardingFlow : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -449,7 +563,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var completionHandler : OnboardingResult
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sessionIdentifier : ç¬
+	var sessionIdentifier : ;–
 	var healthAgencyModel : ENUIPublicHealthAgencyModel
 	let nonNilAgencyModel : ENUIPublicHealthAgencyModel
 	var currentSelectedRegion : RegionNameAndCode
@@ -458,51 +572,74 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var hasTraveled : Bool?
 
 	// Swift methods
-	0x21220  func VerificationOnboardingFlow.completionHandler.getter // getter 
-	0x21360  func VerificationOnboardingFlow.completionHandler.setter // setter 
-	0x1a280  func VerificationOnboardingFlow.completionHandler.modify // modifyCoroutine 
-	0x1a2b0  func VerificationOnboardingFlow.sessionIdentifier.getter // getter 
-	0x1a2d0  func VerificationOnboardingFlow.sessionIdentifier.setter // setter 
-	0x1a2f0  func VerificationOnboardingFlow.sessionIdentifier.modify // modifyCoroutine 
-	0x1a330  func VerificationOnboardingFlow.healthAgencyModel.getter // getter 
-	0x1a370  func VerificationOnboardingFlow.healthAgencyModel.setter // setter 
-	0x1a3c0  func VerificationOnboardingFlow.healthAgencyModel.modify // modifyCoroutine 
-	0x1a400  func VerificationOnboardingFlow.currentSelectedRegion.getter // getter 
-	0x1a470  func VerificationOnboardingFlow.currentSelectedRegion.setter // setter 
-	0x1a530  func VerificationOnboardingFlow.currentSelectedRegion.modify // modifyCoroutine 
-	0x1a590  func VerificationOnboardingFlow.symptomOnset.getter // getter 
-	0x1a5f0  func VerificationOnboardingFlow.symptomOnset.setter // setter 
-	0x1a660  func VerificationOnboardingFlow.symptomOnset.modify // modifyCoroutine 
-	0x1a6a0  func VerificationOnboardingFlow.hasTraveled.getter // getter 
-	0x1a6d0  func VerificationOnboardingFlow.hasTraveled.setter // setter 
-	0x1a710  func VerificationOnboardingFlow.hasTraveled.modify // modifyCoroutine 
-	0x1a750  class func VerificationOnboardingFlow.__allocating_init(sessionIdentifier:agencyModel:exposureManager:completion:) // init 
-	0x1a9d0  func VerificationOnboardingFlow.initialViewController.getter // getter 
-	0x1aa40  func VerificationOnboardingFlow.didTapNext(from:) // method 
-	0x1aa70  func VerificationOnboardingFlow.didTapCancel(from:) // method 
-	0x1b0f0  func VerificationOnboardingFlow.fetchTestMetadata(_:completionHandler:) // method 
+	0x20ae0  func VerificationOnboardingFlow.completionHandler.getter // getter 
+	0x20c30  func VerificationOnboardingFlow.completionHandler.setter // setter 
+	0x183b0  func VerificationOnboardingFlow.completionHandler.modify // modifyCoroutine 
+	0x183e0  func VerificationOnboardingFlow.sessionIdentifier.getter // getter 
+	0x18400  func VerificationOnboardingFlow.sessionIdentifier.setter // setter 
+	0x18420  func VerificationOnboardingFlow.sessionIdentifier.modify // modifyCoroutine 
+	0x18460  func VerificationOnboardingFlow.healthAgencyModel.getter // getter 
+	0x184a0  func VerificationOnboardingFlow.healthAgencyModel.setter // setter 
+	0x184f0  func VerificationOnboardingFlow.healthAgencyModel.modify // modifyCoroutine 
+	0x18530  func VerificationOnboardingFlow.currentSelectedRegion.getter // getter 
+	0x185a0  func VerificationOnboardingFlow.currentSelectedRegion.setter // setter 
+	0x18660  func VerificationOnboardingFlow.currentSelectedRegion.modify // modifyCoroutine 
+	0x186c0  func VerificationOnboardingFlow.symptomOnset.getter // getter 
+	0x18730  func VerificationOnboardingFlow.symptomOnset.setter // setter 
+	0x187b0  func VerificationOnboardingFlow.symptomOnset.modify // modifyCoroutine 
+	0x187f0  func VerificationOnboardingFlow.hasTraveled.getter // getter 
+	0x18820  func VerificationOnboardingFlow.hasTraveled.setter // setter 
+	0x18860  func VerificationOnboardingFlow.hasTraveled.modify // modifyCoroutine 
+	0x188a0  class func VerificationOnboardingFlow.__allocating_init(sessionIdentifier:agencyModel:exposureManager:completion:) // init 
+	0x18b30  func VerificationOnboardingFlow.initialViewController.getter // getter 
+	0x18ba0  func VerificationOnboardingFlow.didTapNext(from:) // method 
+	0x18bd0  func VerificationOnboardingFlow.didTapCancel(from:) // method 
+	0x19150  func VerificationOnboardingFlow.fetchTestMetadata(_:completionHandler:) // method 
+ }
+
+ class HealthExposureNotificationUI.NumberedTextView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
+
+	// Properties
+	let number : Int
+	let title : String?
+	let details : String
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x96cc000291b8 (0x6cc000291b8) in binary!
+	0x6f70  @objc NumberedTextView.(null) <stripped>
+WARNING: couldn't find address 0x7c9400028c00 (0x49400028c00) in binary!
+	0x58000000c  @objc NumberedTextView.(null) <stripped>
+WARNING: couldn't find address 0x7c7c00028d08 (0x47c00028d08) in binary!
+	0x9b48  @objc NumberedTextView.(null) <stripped>
+
+	// Swift methods
  }
 
  class HealthExposureNotificationUI.IconTextView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	let icon : UIImage? // +0x8 (0x8)
-	let title : String? // +0x10 (0x10)
-	let details : String // +0x20 (0x10)
-	let footer : String? // +0x30 (0x10)
-	let highlightedText : String? // +0x40 (0x10)
-	var delegate : IconTextViewDelegate // +0x50 (0x10)
-	let textStack : UIStackView // +0x60 (0x8)
-	let iconView : UIImageView // +0x68 (0x8)
+	let icon : UIImage?
+	let details : String
+	let highlightedText : String?
+	var delegate : IconTextViewDelegate
+	let textStack : UIStackView
+	let iconView : UIImageView
 
 	// ObjC -> Swift bridged methods
-	0x22150  @objc IconTextView.initWithCoder: <stripped>
-	0x22570  @objc IconTextView.didTapText: <stripped>
-	0x22600  @objc IconTextView.intrinsicContentSize <stripped>
-	0x22640  @objc IconTextView.tintColor <stripped>
-	0x22680  @objc IconTextView.setTintColor: <stripped>
-	0x22840  @objc IconTextView.initWithFrame: <stripped>
-	0x227a0  @objc IconTextView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x972c00029218 (0x72c00029218) in binary!
+	0x7640  @objc IconTextView.(null) <stripped>
+WARNING: couldn't find address 0x859400028970 (0x59400028970) in binary!
+	0x6c7c  @objc IconTextView.(null) <stripped>
+WARNING: couldn't find address 0x761c00029220 (0x61c00029220) in binary!
+	0x6fa0  @objc IconTextView.(null) <stripped>
+WARNING: couldn't find address 0x7cc400028c30 (0x4c400028c30) in binary!
+	0x38000000c  @objc IconTextView.(null) <stripped>
+WARNING: couldn't find address 0x96cc000291b8 (0x6cc000291b8) in binary!
+	0x6f70  @objc IconTextView.(null) <stripped>
+WARNING: couldn't find address 0x7c9400028c00 (0x49400028c00) in binary!
+	0x58000000c  @objc IconTextView.(null) <stripped>
+WARNING: couldn't find address 0x7c7c00028d08 (0x47c00028d08) in binary!
+	0x9b48  @objc IconTextView.(null) <stripped>
 
 	// Swift methods
  }
@@ -513,36 +650,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let scrollView : UIScrollView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x251b0  @objc OnboardingInfoViewController.viewDidLoad <stripped>
-	0x25270  @objc OnboardingInfoViewController.viewDidDisappear: <stripped>
-	0x25420  @objc OnboardingInfoViewController.initWithNibName:bundle: <stripped>
-	0x25580  @objc OnboardingInfoViewController.initWithCoder: <stripped>
-	0x25350  @objc OnboardingInfoViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7c7c00028d08 (0x47c00028d08) in binary!
+	0x9b48  @objc OnboardingInfoViewController.(null) <stripped>
+WARNING: couldn't find address 0x869800029178 (0x69800029178) in binary!
+	0x9678  @objc OnboardingInfoViewController.(null) <stripped>
+WARNING: couldn't find address 0x7c4c00028bb8 (0x44c00028bb8) in binary!
+	0x18000000c  @objc OnboardingInfoViewController.(null) <stripped>
+WARNING: couldn't find address 0x7c3400029410 (0x43400029410) in binary!
+	0xb8000000c  @objc OnboardingInfoViewController.(null) <stripped>
+WARNING: couldn't find address 0x963c00029128 (0x63c00029128) in binary!
+	0x7c10  @objc OnboardingInfoViewController.(null) <stripped>
  }
 
  class HealthExposureNotificationUI.OnboardingWelcomeViewController : UIViewController /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	let flow : StandardOnboardingFlow // +0x8 (0x8)
-	let notificationPreview : NotificationPreviewView // +0x10 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x18 (0x8)
-	let secondaryButton : OBLinkTrayButton // +0x20 (0x8)
+	let flow : StandardOnboardingFlow
+	var isFromAvailabilityAlert : Bool
+	let notificationPreview : NotificationPreviewView
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x25c70  @objc OnboardingWelcomeViewController.initWithCoder: <stripped>
-	0x280d0  @objc OnboardingWelcomeViewController.viewDidLoad <stripped>
-	0x282d0  @objc OnboardingWelcomeViewController.viewWillAppear: <stripped>
-	0x28360  @objc OnboardingWelcomeViewController.viewDidDisappear: <stripped>
-	0x28f20  @objc OnboardingWelcomeViewController.didTapHowExposureNotificationsWork <stripped>
-	0x29210  @objc OnboardingWelcomeViewController.didTapFooterLabel <stripped>
-	0x29240  @objc OnboardingWelcomeViewController.didTapPrimaryButton <stripped>
-	0x29260  @objc OnboardingWelcomeViewController.didTapSecondaryButton <stripped>
-	0x292c0  @objc OnboardingWelcomeViewController.didTapDone <stripped>
-	0x29380  @objc OnboardingWelcomeViewController.initWithNibName:bundle: <stripped>
-	0x293e0  @objc OnboardingWelcomeViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x963c00029128 (0x63c00029128) in binary!
+	0x7c10  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x9adc00029428 (0x2dc00029428) in binary!
+	0x9ad0  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7bec00029430 (0x3ec00029430) in binary!
+	0x7be0  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7bd400029000 (0x3d400029000) in binary!
+	0x7bc8  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7bbc00029398 (0x3bc00029398) in binary!
+	0x85e4  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7ba400028b10 (0x3a400028b10) in binary!
+	0x58000000c  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x95ac00029098 (0x5ac00029098) in binary!
+	0x7b80  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x8b6400029420 (0x36400029420) in binary!
+	0x6e38  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7b5c00028ac8 (0x35c00028ac8) in binary!
+	0xc8000000c  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x956400029050 (0x56400029050) in binary!
+	0x7b38  @objc OnboardingWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7b2c00028bb8 (0x32c00028bb8) in binary!
+	0x99f8  @objc OnboardingWelcomeViewController.(null) <stripped>
 
 	// Swift methods
-	0x25c00  class func OnboardingWelcomeViewController.__allocating_init(flow:) // init 
+	0x251b0  class func OnboardingWelcomeViewController.__allocating_init(flow:fromAvailabilityAlert:) // init 
  }
 
  enum HealthExposureNotificationUI.SelectionType {
@@ -552,71 +706,115 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case stateSelection  
  }
 
+ class HealthExposureNotificationUI.RegionSelectionHeaderView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let imageDimension : W◊
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let iconTitlePadding : W◊
+	let title : String
+	let globeImageView : UIImageView
+	let titleLabel : UILabel
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x95ac00029098 (0x5ac00029098) in binary!
+	0x7b80  @objc RegionSelectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x8b6400029420 (0x36400029420) in binary!
+	0x6e38  @objc RegionSelectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x7b5c00028ac8 (0x35c00028ac8) in binary!
+	0xc8000000c  @objc RegionSelectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x956400029050 (0x56400029050) in binary!
+	0x7b38  @objc RegionSelectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x7b2c00028bb8 (0x32c00028bb8) in binary!
+	0x99f8  @objc RegionSelectionHeaderView.(null) <stripped>
+
+	// Swift methods
+	0x28d70  func <stripped> // method 
+ }
+
  class HealthExposureNotificationUI.OnboardingRegionSelectionViewController : UIViewController /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let selectionType : SelectionType // +0x18 (0x1)
-	let statusView : LoadingStatusView // +0x20 (0x8)
-	let iconView : UIImageView // +0x28 (0x8)
-	let regionTableView : UITableView // +0x30 (0x8)
-	let regionsProvider : RegionsProvider // +0x38 (0x8)
+	let flow : OnboardingFlow
+	let selectionType : SelectionType
+	let statusView : LoadingStatusView
+	let regionTableView : UITableView
+	let regionsProvider : RegionsProvider
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var canceller : π¡ // +0x40 (0x8)
+	var canceller : ≈Œ
 
 	// ObjC -> Swift bridged methods
-	0x29c00  @objc OnboardingRegionSelectionViewController.initWithCoder: <stripped>
-	0x29c90  @objc OnboardingRegionSelectionViewController.dealloc <stripped>
-	0x2af90  @objc OnboardingRegionSelectionViewController.viewDidLoad <stripped>
-	0x2b070  @objc OnboardingRegionSelectionViewController.viewWillAppear: <stripped>
-	0x2b130  @objc OnboardingRegionSelectionViewController.didTapDone <stripped>
-	0x2b150  @objc OnboardingRegionSelectionViewController.didTapCancel <stripped>
-	0x2b1f0  @objc OnboardingRegionSelectionViewController.tableView:numberOfRowsInSection: <stripped>
-	0x2b680  @objc OnboardingRegionSelectionViewController.tableView:cellForRowAtIndexPath: <stripped>
-	0x2bae0  @objc OnboardingRegionSelectionViewController.tableView:didSelectRowAtIndexPath: <stripped>
-	0x2c4d0  @objc OnboardingRegionSelectionViewController.initWithNibName:bundle: <stripped>
-	0x29d10  @objc OnboardingRegionSelectionViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x956400029050 (0x56400029050) in binary!
+	0x7b38  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x7b2c00028bb8 (0x32c00028bb8) in binary!
+	0x99f8  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x7b14000292f0 (0x314000292f0) in binary!
+	0x7b08  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x8bb300028770 (0x3b300028770) in binary!
+	0x8524  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x5c84000288d8 (0x484000288d8) in binary!
+	0x7418  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x850000028fe0 (0x50000028fe0) in binary!
+	0x7ac0  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x3acfffc2c98  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+	0x6d4fffc3c80  @objc OnboardingRegionSelectionViewController. <stripped>
+	0x1dcfffc47e8  @objc OnboardingRegionSelectionViewController. <stripped>
+	0x25c00028ae8  @objc OnboardingRegionSelectionViewController.LâÁLâÓ1…Ë{ <stripped>
+WARNING: couldn't find address 0x28e7cfffc81d8 (0x67cfffc81d8) in binary!
+	0x77400028f70  @objc OnboardingRegionSelectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x289a4fffc8370 (0x1a4fffc8370) in binary!
+	0x58000000c  @objc OnboardingRegionSelectionViewController.(null) <stripped>
 
 	// Swift methods
-	0x29740  class func OnboardingRegionSelectionViewController.__allocating_init(flow:type:) // init 
+	0x28ac0  class func OnboardingRegionSelectionViewController.__allocating_init(flow:type:) // init 
  }
 
  class HealthExposureNotificationUI.VerificationSummaryViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : VerificationOnboardingFlow // +0x8 (0x8)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x10 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x18 (0x8)
-	let secondaryButton : OBBoldTrayButton // +0x20 (0x8)
+	let flow : VerificationOnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let statusView : LoadingStatusView
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x2e5d0  @objc VerificationSummaryViewController.viewDidLoad <stripped>
-	0x2e630  @objc VerificationSummaryViewController.didTapLearnMoreButton <stripped>
-	0x2f580  @objc VerificationSummaryViewController.didTapPrimaryButton <stripped>
-	0x308e0  @objc VerificationSummaryViewController.didTapSecondaryButton <stripped>
-	0x309f0  @objc VerificationSummaryViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x30a60  @objc VerificationSummaryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7aac00028b38 (0x2ac00028b38) in binary!
+	0x7aa0  @objc VerificationSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x7a9400028ec0 (0x29400028ec0) in binary!
+	0x7a88  @objc VerificationSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x6fac00028fa8 (0x7ac00028fa8) in binary!
+	0x7a70  @objc VerificationSummaryViewController.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x67cfffc81d8  @objc VerificationSummaryViewController.(null) <stripped>
+	0x1a4fffc8370  @objc VerificationSummaryViewController.Oãd= <stripped>
+	0x72c00028680  @objc VerificationSummaryViewController.Hâ„HÉ¿HÉ‡H)√Hâ‹Lã=PÏ <stripped>
 
 	// Swift methods
-	0x2da40  class func VerificationSummaryViewController.__allocating_init(flow:agencyModel:) // init 
+	0x2c8b0  class func VerificationSummaryViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  class HealthExposureNotificationUI.AuthorizationViewController {
  class HealthExposureNotificationUI.OnboardingRegionNotAvailableViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let region : RegionNameAndCode // +0x18 (0x20)
-	let primaryButton : OBBoldTrayButton // +0x38 (0x8)
+	let flow : OnboardingFlow
+	let region : RegionNameAndCode
+	let primaryButton : OBBoldTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x351c0  @objc OnboardingRegionNotAvailableViewController.viewDidLoad <stripped>
-	0x35220  @objc OnboardingRegionNotAvailableViewController.didTapPrimaryButton <stripped>
-	0x35370  @objc OnboardingRegionNotAvailableViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x353e0  @objc OnboardingRegionNotAvailableViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7a5c00028ae8 (0x25c00028ae8) in binary!
+	0x7a50  @objc OnboardingRegionNotAvailableViewController.(null) <stripped>
+WARNING: couldn't find address 0x6f7400028f70 (0x77400028f70) in binary!
+	0x7a38  @objc OnboardingRegionNotAvailableViewController.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x66cfffca390  @objc OnboardingRegionNotAvailableViewController.(null) <stripped>
+	0x644fffca9f8  @objc OnboardingRegionNotAvailableViewController. <stripped>
 
 	// Swift methods
-	0x34eb0  class func OnboardingRegionNotAvailableViewController.__allocating_init(flow:region:) // init 
+	0x32a30  class func OnboardingRegionNotAvailableViewController.__allocating_init(flow:region:) // init 
  }
 
  enum HealthExposureNotificationUI.AppStoreAssetError {
@@ -630,119 +828,163 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExposureNotificationUI.AppStoreAssetManager : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x38150  @objc AppStoreAssetManager.init <stripped>
+WARNING: couldn't find address 0x697000028d20 (0x17000028d20) in binary!
+	0x28000000c  @objc AppStoreAssetManager.(null) <stripped>
  }
 
  class HealthExposureNotificationUI.ENManagerAdapter : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var exposureNotificationStatus : ENStatus // +0x8 (0x8)
-	var isExposureLoggingDataPresent : Bool // +0x10 (0x1)
-	var areAvailabilityAlertsEnabled : Bool // +0x11 (0x1)
-	var statusChangeHandler : ENStatus // +0x18 (0x10)
-	let manager : ENManager // +0x28 (0x8)
-	let activationGroup : OS_dispatch_group // +0x30 (0x8)
+	var exposureNotificationStatus : ENStatus
+	var isExposureLoggingDataPresent : Bool
+	var areAvailabilityAlertsEnabled : Bool
+	var isAvailabilityAlertsSwitchEnabled : Bool
+	var statusChangeHandler : ENStatus
+	let manager : ENManager
+	let activationGroup : OS_dispatch_group
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var statusObservation : ±ª // +0x38 (0x8)
+	var statusObservation : ù»
 
 	// ObjC -> Swift bridged methods
-	0x39a20  @objc ENManagerAdapter.exposureNotificationStatus <stripped>
-	0x39a90  @objc ENManagerAdapter.setExposureNotificationStatus: <stripped>
-	0x39b50  @objc ENManagerAdapter.isExposureLoggingDataPresent <stripped>
-	0x39b90  @objc ENManagerAdapter.setIsExposureLoggingDataPresent: <stripped>
-	0x39c20  @objc ENManagerAdapter.areAvailabilityAlertsEnabled <stripped>
-	0x39cc0  @objc ENManagerAdapter.setAreAvailabilityAlertsEnabled: <stripped>
-	0x39dc0  @objc ENManagerAdapter.statusChangeHandler <stripped>
-	0x39f00  @objc ENManagerAdapter.setStatusChangeHandler: <stripped>
-	0x3a300  @objc ENManagerAdapter.manager <stripped>
-	0x3a8f0  @objc ENManagerAdapter.init <stripped>
-	0x3a9d0  @objc ENManagerAdapter.dealloc <stripped>
-	0x3b1e0  @objc ENManagerAdapter.refreshStatusWithCompletion: <stripped>
-	0x3b2c0  @objc ENManagerAdapter.setExposureNotificationEnabled:completion: <stripped>
-	0x3b640  @objc ENManagerAdapter.onboardingDidStartForRegion:source: <stripped>
-	0x3b740  @objc ENManagerAdapter.setActiveRegion:completion: <stripped>
-	0x3b990  @objc ENManagerAdapter.setActivePhaseOneAppWithBundleIdentifier:completion: <stripped>
-	0x3bc40  @objc ENManagerAdapter.latestExposureNotification: <stripped>
-	0x3e3a0  @objc ENManagerAdapter.fetchAgencyModelForRegionCode:completion: <stripped>
-	0x3e670  @objc ENManagerAdapter.fetchAllEntities: <stripped>
-	0x3e9e0  @objc ENManagerAdapter.getAgencyModelForBundleID:completion: <stripped>
-	0x3ed00  @objc ENManagerAdapter.getAgencyModelForRegionCode:completion: <stripped>
-	0x3ef90  @objc ENManagerAdapter.allRegionConfigurations: <stripped>
-	0x3f0d0  @objc ENManagerAdapter.isShareStatisticsEnabledForRegion:completion: <stripped>
-	0x3f2a0  @objc ENManagerAdapter.setShareStatisticsEnabled:region:completion: <stripped>
-	0x3f470  @objc ENManagerAdapter.isTravelStatusEnabledForRegion:completion: <stripped>
-	0x3f650  @objc ENManagerAdapter.setTravelStatusEnabled:region:completion: <stripped>
-	0x3f8e0  @objc ENManagerAdapter.isPreReleaseAuthorizedForRegion:completion: <stripped>
-	0x3fb60  @objc ENManagerAdapter.setPreReleaseAuthorized:region:completion: <stripped>
-	0x3fed0  @objc ENManagerAdapter.resetAllDataAndDisableExposureNotifications: <stripped>
-	0x40220  @objc ENManagerAdapter.setAvailabilityAlertsEnabled:completion: <stripped>
-	0x403c0  @objc ENManagerAdapter.setWeeklySummaryEnabled:completion: <stripped>
-	0x407d0  @objc ENManagerAdapter.setUserConsent:region:text:version:completion: <stripped>
-	0x3a9f0  @objc ENManagerAdapter..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9556000294f8 (0x556000294f8) in binary!
+	0x6687  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x985c000285b8 (0x5c000285b8) in binary!
+	0x9858  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x984400028590 (0x4400028590) in binary!
+	0x9840  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x982c00028568 (0x2c00028568) in binary!
+	0x9828  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x982700028540 (0x2700028540) in binary!
+	0x770c  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x68c0000293c0 (0xc0000293c0) in binary!
+	0x68b4  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x7914000288a8 (0x114000288a8) in binary!
+	0x76dc  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x97ec000284e0 (0x7ec000284e0) in binary!
+	0x6648  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x65ec00029468 (0x5ec00029468) in binary!
+	0x65e0  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x76a000028498 (0x6a000028498) in binary!
+	0x65c8  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x768800028470 (0x68800028470) in binary!
+	0x65b0  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x65a400028448 (0x5a400028448) in binary!
+	0x7664  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x658c00028420 (0x58c00028420) in binary!
+	0x6598  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x6574000283f8 (0x574000283f8) in binary!
+	0x6580  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x655c000283d0 (0x55c000283d0) in binary!
+	0x6568  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x7610000283a8 (0x610000283a8) in binary!
+	0x9720  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x971400028380 (0x71400028380) in binary!
+	0x6558  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x8c9400028360 (0x49400028360) in binary!
+	0x7800  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
+	0x40cfffd63e8  @objc ENManagerAdapter.(null) <stripped>
+	0x42cfffd7350  @objc ENManagerAdapter.Lâˆ1…Ë <stripped>
+	0x2e4fffd7648  @objc ENManagerAdapter.S8HãØÓ <stripped>
+	0x704fffd7800  @objc ENManagerAdapter.ãX¯Lãe»LâÁæ <stripped>
+	0x1a400028c90  @objc ENManagerAdapter.‹Ó <stripped>
+WARNING: couldn't find address 0x2870cfffd88e0 (0x70cfffd88e0) in binary!
+	0x76c000287f8  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x28f84fffda278 (0x784fffda278) in binary!
+	0x754000292f0  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x2937cfffdae30 (0x37cfffdae30) in binary!
+	0x73c00029330  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x28b94fffdb3f8 (0x394fffdb3f8) in binary!
+	0x15800028c38  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x28684fffddb10 (0x684fffddb10) in binary!
+	0x48000000c  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x770400028790 (0x70400028790) in binary!
+	0x76f8  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x6c1c00028c18 (0x41c00028c18) in binary!
+	0x76e0  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x3ccfffded68  @objc ENManagerAdapter.(null) <stripped>
+	0x614fffe1370  @objc ENManagerAdapter.UHâÂHã∂ <stripped>
+	0xb400028ba0  @objc ENManagerAdapter.È± <stripped>
+WARNING: couldn't find address 0x286bcfffe1380 (0x6bcfffe1380) in binary!
+	0x67c000285e8  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0xfffe1498 (0xfffe1498) in binary!
+	0x13400028698  @objc ENManagerAdapter.(null) <stripped>
+WARNING: couldn't find address 0x28b64fffe35f0 (0x364fffe35f0) in binary!
+	0x64c000285b8  @objc ENManagerAdapter.(null) <stripped>
 
 	// Swift methods
-	0x39a60  func ENManagerAdapter.exposureNotificationStatus.getter // getter 
-	0x39ad0  func ENManagerAdapter.exposureNotificationStatus.setter // setter 
-	0x39b10  func ENManagerAdapter.exposureNotificationStatus.modify // modifyCoroutine 
-	0x39b70  func ENManagerAdapter.isExposureLoggingDataPresent.getter // getter 
-	0x39bb0  func ENManagerAdapter.isExposureLoggingDataPresent.setter // setter 
-	0x39bd0  func ENManagerAdapter.isExposureLoggingDataPresent.modify // modifyCoroutine 
-	0x39c70  func ENManagerAdapter.areAvailabilityAlertsEnabled.getter // getter 
-	0x39d20  func ENManagerAdapter.areAvailabilityAlertsEnabled.setter // setter 
-	0x39d80  func ENManagerAdapter.areAvailabilityAlertsEnabled.modify // modifyCoroutine 
-	0x39e70  func ENManagerAdapter.statusChangeHandler.getter // getter 
-	0x39f90  func ENManagerAdapter.statusChangeHandler.setter // setter 
-	0x39ff0  func ENManagerAdapter.statusChangeHandler.modify // modifyCoroutine 
-	0x3aa50  func <stripped> // method 
-	0x3ac10  func ENManagerAdapter.refreshStatus(_:) // method 
-	0x3b230  func ENManagerAdapter.setExposureNotification(enabled:completion:) // method 
-	0x3b330  func ENManagerAdapter.onboardingDidStart(forRegion:source:) // method 
-	0x3b6e0  func ENManagerAdapter.set(activeRegion:completion:) // method 
-	0x3b7c0  func ENManagerAdapter.setActivePhaseOneApp(with:completion:) // method 
-	0x3baa0  func ENManagerAdapter.latestExposureNotification(_:) // method 
-	0x3bc80  func <stripped> // method 
-	0x3ce60  func ENManagerAdapter.fetchAgencyModel(for:completionHandler:) // method 
-	0x3e440  func ENManagerAdapter.fetchAllEntities(_:) // method 
-	0x3e7d0  func ENManagerAdapter.getAgencyModel(forBundleID:completion:) // method 
-	0x3ea30  func ENManagerAdapter.getAgencyModel(forRegionCode:completion:) // method 
-	0x3ee40  func ENManagerAdapter.allRegionConfigurations(_:) // method 
-	0x3f030  func ENManagerAdapter.isShareStatisticsEnabled(for:completion:) // method 
-	0x3f200  func ENManagerAdapter.setShareStatistics(_:region:completion:) // method 
-	0x3f370  func ENManagerAdapter.isTravelStatusEnabled(for:completion:) // method 
-	0x3f4a0  func ENManagerAdapter.setTravelStatus(_:region:completion:) // method 
-	0x3f740  func ENManagerAdapter.isPreReleaseAuthorized(for:completion:) // method 
-	0x3fa00  func ENManagerAdapter.setPreRelease(_:region:completion:) // method 
-	0x3fc30  func ENManagerAdapter.resetAllDataAndDisableExposureNotifications(_:) // method 
-	0x3ffd0  func ENManagerAdapter.setAvailabilityAlertsEnabled(_:completion:) // method 
-	0x40250  func ENManagerAdapter.setWeeklySummaryEnabled(_:completion:) // method 
-	0x404c0  func ENManagerAdapter.setUserConsent(_:region:text:version:completion:) // method 
-	0x40980  func ENManagerAdapter.startTestVerificationSession(verificationCode:region:completionHandler:) // method 
-	0x40f90  func ENManagerAdapter.fetchTestMetadata(for:completionHandler:) // method 
-	0x41a40  func ENManagerAdapter.finishSession(_:userDidConsent:symptomOnset:hasTraveled:completionHandler:) // method 
+	0x36840  func ENManagerAdapter.exposureNotificationStatus.getter // getter 
+	0x368b0  func ENManagerAdapter.exposureNotificationStatus.setter // setter 
+	0x368f0  func ENManagerAdapter.exposureNotificationStatus.modify // modifyCoroutine 
+	0x36950  func ENManagerAdapter.isExposureLoggingDataPresent.getter // getter 
+	0x36990  func ENManagerAdapter.isExposureLoggingDataPresent.setter // setter 
+	0x369b0  func ENManagerAdapter.isExposureLoggingDataPresent.modify // modifyCoroutine 
+	0x36a20  func ENManagerAdapter.areAvailabilityAlertsEnabled.getter // getter 
+	0x36a60  func ENManagerAdapter.areAvailabilityAlertsEnabled.setter // setter 
+	0x36a80  func ENManagerAdapter.areAvailabilityAlertsEnabled.modify // modifyCoroutine 
+	0x36b10  func ENManagerAdapter.isAvailabilityAlertsSwitchEnabled.getter // getter 
+	0x36bc0  func ENManagerAdapter.isAvailabilityAlertsSwitchEnabled.setter // setter 
+	0x36c20  func ENManagerAdapter.isAvailabilityAlertsSwitchEnabled.modify // modifyCoroutine 
+	0x36d10  func ENManagerAdapter.statusChangeHandler.getter // getter 
+	0x36e10  func ENManagerAdapter.statusChangeHandler.setter // setter 
+	0x36e70  func ENManagerAdapter.statusChangeHandler.modify // modifyCoroutine 
+	0x378d0  func <stripped> // method 
+	0x37a90  func ENManagerAdapter.refreshStatus(_:) // method 
+	0x381e0  func ENManagerAdapter.setExposureNotification(enabled:completion:) // method 
+	0x382d0  func ENManagerAdapter.onboardingDidStart(forRegion:source:) // method 
+	0x38650  func ENManagerAdapter.set(activeRegion:completion:) // method 
+	0x38710  func ENManagerAdapter.setActivePhaseOneApp(with:completion:) // method 
+	0x389e0  func ENManagerAdapter.latestExposureNotification(_:) // method 
+	0x38bb0  func <stripped> // method 
+	0x39ad0  func ENManagerAdapter.fetchAgencyModel(for:completionHandler:) // method 
+	0x3aab0  func ENManagerAdapter.fetchAllEntities(_:) // method 
+	0x3adc0  func ENManagerAdapter.getAgencyModel(forBundleID:completion:) // method 
+	0x3aff0  func ENManagerAdapter.getAgencyModel(forRegionCode:completion:) // method 
+	0x3b430  func ENManagerAdapter.allRegionConfigurations(_:) // method 
+	0x3b620  func ENManagerAdapter.isShareStatisticsEnabled(for:completion:) // method 
+	0x3b7e0  func ENManagerAdapter.setShareStatistics(_:region:completion:) // method 
+	0x3b950  func ENManagerAdapter.isTravelStatusEnabled(for:completion:) // method 
+	0x3ba10  func ENManagerAdapter.setTravelStatus(_:region:completion:) // method 
+	0x3bca0  func ENManagerAdapter.isPreReleaseAuthorized(for:completion:) // method 
+	0x3bf60  func ENManagerAdapter.setPreRelease(_:region:completion:) // method 
+	0x3c190  func ENManagerAdapter.resetAllDataAndDisableExposureNotifications(_:) // method 
+	0x3c510  func ENManagerAdapter.setAvailabilityAlertsEnabled(_:completion:) // method 
+	0x3c790  func ENManagerAdapter.setWeeklySummaryEnabled(_:completion:) // method 
+	0x3c9f0  func ENManagerAdapter.setUserConsent(_:region:text:version:completion:) // method 
+	0x3ce70  func ENManagerAdapter.startTestVerificationSession(verificationCode:region:completionHandler:) // method 
+	0x3d450  func ENManagerAdapter.fetchTestMetadata(for:completionHandler:) // method 
+	0x3dfd0  func ENManagerAdapter.finishSession(_:userDidConsent:symptomOnset:hasTraveled:completionHandler:) // method 
+	0x3ec30  func ENManagerAdapter.tccContainsRecord(forBundleIdentifier:) // method 
  }
 
  class HealthExposureNotificationUI.OnboardingLegalConsentViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x18 (0x8)
-	let showsTurnOnExposureNotificationsAlert : Bool // +0x20 (0x1)
-	let shouldSetActiveRegion : Bool // +0x21 (0x1)
-	let primaryButton : OBBoldTrayButton // +0x28 (0x8)
-	let secondaryButton : OBLinkTrayButton // +0x30 (0x8)
+	let flow : OnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let showsTurnOnExposureNotificationsAlert : Bool
+	let shouldSetActiveRegion : Bool
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x467d0  @objc OnboardingLegalConsentViewController.viewDidLoad <stripped>
-	0x47250  @objc OnboardingLegalConsentViewController.didTapPrimaryButton <stripped>
-	0x47b70  @objc OnboardingLegalConsentViewController.didTapSecondaryButton <stripped>
-	0x47ba0  @objc OnboardingLegalConsentViewController.didTapCancel <stripped>
-	0x47ec0  @objc OnboardingLegalConsentViewController.didConfirmAgree <stripped>
-	0x47fb0  @objc OnboardingLegalConsentViewController.didConfirmDontAgree <stripped>
-	0x480c0  @objc OnboardingLegalConsentViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x48130  @objc OnboardingLegalConsentViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x77ec00028878 (0x7ec00028878) in binary!
+	0x77e0  @objc OnboardingLegalConsentViewController.(null) <stripped>
+WARNING: couldn't find address 0x77d400028c20 (0x7d400028c20) in binary!
+	0x77c8  @objc OnboardingLegalConsentViewController.(null) <stripped>
+WARNING: couldn't find address 0x77bc000282f8 (0x7bc000282f8) in binary!
+	0x77b0  @objc OnboardingLegalConsentViewController.(null) <stripped>
+WARNING: couldn't find address 0x6cd400028cd0 (0x4d400028cd0) in binary!
+	0x7798  @objc OnboardingLegalConsentViewController.(null) <stripped>
+WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
+	0x70cfffd88e0  @objc OnboardingLegalConsentViewController.(null) <stripped>
+	0x784fffda278  @objc OnboardingLegalConsentViewController. <stripped>
+	0x37cfffdae30  @objc OnboardingLegalConsentViewController.Ñ <stripped>
+	0x394fffdb3f8  @objc OnboardingLegalConsentViewController.  <stripped>
 
 	// Swift methods
-	0x45eb0  class func OnboardingLegalConsentViewController.__allocating_init(flow:agencyModel:showsTurnOnExposureNotificationsAlert:shouldSetActiveRegion:) // init 
+	0x40920  class func OnboardingLegalConsentViewController.__allocating_init(flow:agencyModel:showsTurnOnExposureNotificationsAlert:shouldSetActiveRegion:) // init 
  }
 
  struct HealthExposureNotificationUI.LocalizationSource {
@@ -752,40 +994,60 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let table : String // +0x8
  }
 
- class HealthExposureNotificationUI.VerificationCodeEntryViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
+ class HealthExposureNotificationUI.VerificationCodeEntryViewController : OBBaseWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : VerificationOnboardingFlow // +0x8 (0x8)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x10 (0x8)
-	let statusView : LoadingStatusView // +0x18 (0x8)
-	var entryView : ENUIVerificationCodeEntryView? // +0x20 (0x8)
+	let flow : VerificationOnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let statusView : LoadingStatusView
+	var scrollView : UIScrollView?
+	var entryView : ENUIVerificationCodeEntryView?
+	var contentLayoutGuideBottomConstraint : NSLayoutConstraint?
+	var itemStackTopConstraint : NSLayoutConstraint?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyboardHeight : W◊
 
 	// ObjC -> Swift bridged methods
-	0x4a380  @objc VerificationCodeEntryViewController.viewDidLoad <stripped>
-	0x4a6f0  @objc VerificationCodeEntryViewController.viewWillAppear: <stripped>
-	0x4a8b0  @objc VerificationCodeEntryViewController.didTapHelpButton <stripped>
-	0x4ac50  @objc VerificationCodeEntryViewController.didTapCancel <stripped>
-	0x4e2d0  @objc VerificationCodeEntryViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x4e340  @objc VerificationCodeEntryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x91a400028c90 (0x1a400028c90) in binary!
+	0x7778  @objc VerificationCodeEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x776c000287f8 (0x76c000287f8) in binary!
+	0x9638  @objc VerificationCodeEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x7754000292f0 (0x754000292f0) in binary!
+	0x7088  @objc VerificationCodeEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x773c00029330 (0x73c00029330) in binary!
+	0x7730  @objc VerificationCodeEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x815800028c38 (0x15800028c38) in binary!
+	0x7718  @objc VerificationCodeEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x324fffde6c0  @objc VerificationCodeEntryViewController.(null) <stripped>
+	0x64cfffde898  @objc VerificationCodeEntryViewController.Á1ˆ∫ <stripped>
+	0x6fc000281f8  @objc VerificationCodeEntryViewController.0É¯ÖÄ <stripped>
+WARNING: couldn't find address 0x28bccfffded68 (0x3ccfffded68) in binary!
+	0x184000286e8  @objc VerificationCodeEntryViewController.(null) <stripped>
+WARNING: couldn't find address 0x28614fffe1370 (0x614fffe1370) in binary!
+	0x38000000c  @objc VerificationCodeEntryViewController.(null) <stripped>
 
 	// Swift methods
-	0x49500  class func VerificationCodeEntryViewController.__allocating_init(flow:agencyModel:) // init 
+	0x43610  class func VerificationCodeEntryViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  class HealthExposureNotificationUI.VerificationFinishedViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : VerificationOnboardingFlow // +0x8 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x10 (0x8)
+	let flow : VerificationOnboardingFlow
+	let primaryButton : OBBoldTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x4f900  @objc VerificationFinishedViewController.viewDidLoad <stripped>
-	0x4faa0  @objc VerificationFinishedViewController.didTapPrimaryButton <stripped>
-	0x4fbb0  @objc VerificationFinishedViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x4fc20  @objc VerificationFinishedViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x770400028790 (0x70400028790) in binary!
+	0x76f8  @objc VerificationFinishedViewController.(null) <stripped>
+WARNING: couldn't find address 0x6c1c00028c18 (0x41c00028c18) in binary!
+	0x76e0  @objc VerificationFinishedViewController.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x3ccfffded68  @objc VerificationFinishedViewController.(null) <stripped>
+	0x614fffe1370  @objc VerificationFinishedViewController.UHâÂHã∂ <stripped>
 
 	// Swift methods
-	0x4f5a0  class func VerificationFinishedViewController.__allocating_init(flow:) // init 
+	0x49230  class func VerificationFinishedViewController.__allocating_init(flow:) // init 
  }
 
  class HealthExposureNotificationUI.OnboardingHeaderView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
@@ -796,19 +1058,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let insets : UIEdgeInsets
 	var imageViewWidthConstraint : NSLayoutConstraint?
 	var labelContainerLeadingConstraint : NSLayoutConstraint?
+	var imageWidthConstraint : NSLayoutConstraint?
+	var imageHeightConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-	0x50150  @objc OnboardingHeaderView.initWithHeader:insets:corners: <stripped>
-	0x501e0  @objc OnboardingHeaderView.initWithCoder: <stripped>
-	0x52050  @objc OnboardingHeaderView.initWithFrame: <stripped>
-	0x51f50  @objc OnboardingHeaderView..cxx_destruct <stripped>
+WARNING: couldn't find address 0xa6fc000281f8 (0x6fc000281f8) in binary!
+	0x90e0  @objc OnboardingHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x6984000286e8 (0x184000286e8) in binary!
+	0x76a8  @objc OnboardingHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x6bcfffe1380  @objc OnboardingHeaderView.(null) <stripped>
+	0xfffe1498  @objc OnboardingHeaderView. <stripped>
 
 	// Swift methods
-	0x500b0  class func OnboardingHeaderView.__allocating_init(header:insets:corners:) // init 
-	0x50200  func <stripped> // method 
-	0x506f0  func <stripped> // method 
-	0x512a0  func <stripped> // method 
-	0x51640  func <stripped> // method 
+	0x49b40  class func OnboardingHeaderView.__allocating_init(header:insets:corners:) // init 
+	0x49c90  func <stripped> // method 
+	0x4a140  func <stripped> // method 
+	0x4ac30  func <stripped> // method 
+	0x4b6b0  func <stripped> // method 
+	0x4bf90  func <stripped> // method 
  }
 
  enum HealthExposureNotificationUI.Constants { }
@@ -820,9 +1088,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let textView : UITextView
 
 	// ObjC -> Swift bridged methods
-	0x52080  @objc OnboardingAuthorityTextView.initWithCoder: <stripped>
-	0x52130  @objc OnboardingAuthorityTextView.initWithFrame: <stripped>
-	0x521b0  @objc OnboardingAuthorityTextView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x90b400028ba0 (0xb400028ba0) in binary!
+	0x6958  @objc OnboardingAuthorityTextView.(null) <stripped>
+WARNING: couldn't find address 0x767c000285e8 (0x67c000285e8) in binary!
+	0x38000000c  @objc OnboardingAuthorityTextView.(null) <stripped>
+WARNING: couldn't find address 0x693400028698 (0x13400028698) in binary!
+	0x9078  @objc OnboardingAuthorityTextView.(null) <stripped>
 
 	// Swift methods
  }
@@ -830,20 +1101,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthExposureNotificationUI.AuthorizationHeaderView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	let iconImageView : UIImageView // +0x8 (0x8)
-	let arrowImageView : UIImageView // +0x10 (0x8)
-	let peopleImageView : UIImageView // +0x18 (0x8)
-	var $__lazy_storage_$_iconStack : UIStackView? // +0x20 (0x8)
-	let titleLabel : UILabel // +0x28 (0x8)
-	let bodyLabel : UILabel // +0x30 (0x8)
+	let iconImageView : UIImageView
+	let arrowImageView : UIImageView
+	let peopleImageView : UIImageView
+	var $__lazy_storage_$_iconStack : UIStackView?
+	let titleLabel : UILabel
+	let bodyLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x538c0  @objc AuthorizationHeaderView.initWithFrame: <stripped>
-	0x538f0  @objc AuthorizationHeaderView.initWithCoder: <stripped>
-	0x547b0  @objc AuthorizationHeaderView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x693400028698 (0x13400028698) in binary!
+	0x9078  @objc AuthorizationHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x764c000285b8 (0x64c000285b8) in binary!
+	0xd8000000c  @objc AuthorizationHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x7634000286c0 (0x634000286c0) in binary!
+	0x7628  @objc AuthorizationHeaderView.(null) <stripped>
 
 	// Swift methods
-	0x53930  func <stripped> // method 
+	0x4e220  func <stripped> // getter 
+	0x4e540  func <stripped> // method 
  }
 
  enum HealthExposureNotificationUI.OnboardingStep {
@@ -878,15 +1153,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _countries : ùÀ // +0x0 (0x0)
+	var _countries : ÉŸ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _states : ùÀ // +0x0 (0x0)
+	var _states : ÉŸ // +0x0 (0x0)
 
 	// Swift methods
-	0x55310  func <stripped> // getter 
-	0x55330  func <stripped> // getter 
-	0x553b0  func RegionsProvider.loadCountries() // method 
-	0x555e0  func RegionsProvider.loadStates() // method 
+	0x4fea0  func <stripped> // getter 
+	0x4fef0  func <stripped> // getter 
+	0x4ff70  func RegionsProvider.loadCountries() // method 
+	0x50750  func RegionsProvider.loadStates() // method 
  }
 
  enum HealthExposureNotificationUI.CodingKeys {
@@ -933,30 +1208,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthExposureNotificationUI.VerificationTravelStatusViewController : OBTableWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : VerificationOnboardingFlow // +0x8 (0x8)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x10 (0x8)
-	var hasTraveled : Bool? // +0x18 (0x1)
+	let flow : VerificationOnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	var hasTraveled : Bool?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataSource : Á∏ // +0x20 (0x8)
-	var primaryButton : OBBoldTrayButton // +0x28 (0x8)
-	var secondaryButton : OBLinkTrayButton // +0x30 (0x8)
+	var dataSource : óƒ
+	let traveledCell : VerificationCheckmarkCell
+	let notTraveledCell : VerificationCheckmarkCell
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x5eac0  @objc VerificationTravelStatusViewController.viewDidLoad <stripped>
-	0x5f400  @objc VerificationTravelStatusViewController.viewDidLayoutSubviews <stripped>
-	0x5f4e0  @objc VerificationTravelStatusViewController.tableView:shouldHighlightRowAtIndexPath: <stripped>
-	0x5f6d0  @objc VerificationTravelStatusViewController.tableView:didSelectRowAtIndexPath: <stripped>
-	0x5f7a0  @objc VerificationTravelStatusViewController.tableView:heightForHeaderInSection: <stripped>
-	0x5f820  @objc VerificationTravelStatusViewController.tableView:heightForFooterInSection: <stripped>
-	0x5f9b0  @objc VerificationTravelStatusViewController.didTapPrimaryButton <stripped>
-	0x5fae0  @objc VerificationTravelStatusViewController.didTapSecondaryButton <stripped>
-	0x5fb10  @objc VerificationTravelStatusViewController.didTapCancel <stripped>
-	0x5fc30  @objc VerificationTravelStatusViewController.initWithTitle:detailText:icon: <stripped>
-	0x5fd80  @objc VerificationTravelStatusViewController.initWithTitle:detailText:symbolName: <stripped>
-	0x5fde0  @objc VerificationTravelStatusViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7634000286c0 (0x634000286c0) in binary!
+	0x7628  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x57ae00028418 (0x7ae00028418) in binary!
+	0x57b0  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x57b2000283f0 (0x7b2000283f0) in binary!
+	0x57a6  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x5bed00028110 (0x3ed00028110) in binary!
+	0x75e0  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x75d400028a20 (0x5d400028a20) in binary!
+	0x75c8  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x577c000288e8 (0x77c000288e8) in binary!
+	0x5770  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x75a400028510 (0x5a400028510) in binary!
+	0x58000000c  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x758c00028618 (0x58c00028618) in binary!
+	0x7580  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x7574000289d8 (0x574000289d8) in binary!
+	0x6a98  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x755c000284c8 (0x55c000284c8) in binary!
+	0x18000000c  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x64d800028020 (0x4d800028020) in binary!
+	0xa8000000c  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x64c000028048 (0x4c000028048) in binary!
+	0x6e60  @objc VerificationTravelStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x64a800028020 (0x4a800028020) in binary!
+	0x6e48  @objc VerificationTravelStatusViewController.(null) <stripped>
 
 	// Swift methods
-	0x5e170  class func VerificationTravelStatusViewController.__allocating_init(flow:agencyModel:) // init 
+	0x5b180  class func VerificationTravelStatusViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  enum HealthExposureNotificationUI.Item {
@@ -977,20 +1268,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthExposureNotificationUI.VerificationWelcomeViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : VerificationOnboardingFlow // +0x8 (0x8)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x10 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x18 (0x8)
-	let secondaryButton : OBLinkTrayButton // +0x20 (0x8)
+	let flow : VerificationOnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x612c0  @objc VerificationWelcomeViewController.viewDidLoad <stripped>
-	0x61730  @objc VerificationWelcomeViewController.didTapPrimaryButton <stripped>
-	0x61760  @objc VerificationWelcomeViewController.didTapCancel <stripped>
-	0x61880  @objc VerificationWelcomeViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x618f0  @objc VerificationWelcomeViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x758c00028618 (0x58c00028618) in binary!
+	0x7580  @objc VerificationWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x7574000289d8 (0x574000289d8) in binary!
+	0x6a98  @objc VerificationWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x755c000284c8 (0x55c000284c8) in binary!
+	0x18000000c  @objc VerificationWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x64d800028020 (0x4d800028020) in binary!
+	0xa8000000c  @objc VerificationWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x64c000028048 (0x4c000028048) in binary!
+	0x6e60  @objc VerificationWelcomeViewController.(null) <stripped>
 
 	// Swift methods
-	0x60a80  class func VerificationWelcomeViewController.__allocating_init(flow:agencyModel:) // init 
+	0x5db40  class func VerificationWelcomeViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  enum HealthExposureNotificationUI.OnboardingResult { }
@@ -998,37 +1294,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum HealthExposureNotificationUI.OnboardingSource { }
 
  class HealthExposureNotificationUI.ViewControllerFactory : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var inflightOnboardingStack : weak UIViewController? // +0x8 (0x8)
+	var inflightVerificationStack : weak UIViewController? // +0x10 (0x8)
+
 	// ObjC -> Swift bridged methods
-	0x61f80  @objc ViewControllerFactory.createOnboardingStackForAgencyModel:exposureManager:fromAvailabilityAlert:completion: <stripped>
-	0x62050  @objc ViewControllerFactory.createVerificationStackForAgencyModel:exposureManager:sessionIdentifier:completion: <stripped>
-	0x62260  @objc ViewControllerFactory.createKeyReleaseDialogueWithBundleIdentifier:region:completion: <stripped>
-	0x62490  @objc ViewControllerFactory.createPreApprovalDialogueWithBundleIdentifier:region:completion: <stripped>
-	0x62650  @objc ViewControllerFactory.init <stripped>
-	0x62610  @objc ViewControllerFactory..cxx_destruct <stripped>
+WARNING: couldn't find address 0x64c000028048 (0x4c000028048) in binary!
+	0x6e60  @objc ViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x64a800028020 (0x4a800028020) in binary!
+	0x6e48  @objc ViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0xadac00027ff8 (0x5ac00027ff8) in binary!
+	0xadc0  @objc ViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0xadd400027fd0 (0x5d400027fd0) in binary!
+	0xadc8  @objc ViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x646000028810 (0x46000028810) in binary!
+	0x74c0  @objc ViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x214ffff6068  @objc ViewControllerFactory.(null) <stripped>
+	0x1b4ffff6390  @objc ViewControllerFactory. <stripped>
+	0xffff6538  @objc ViewControllerFactory.â∆ËA" <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x164ffff76a0  @objc ViewControllerFactory.(null) <stripped>
+	0xffff7778  @objc ViewControllerFactory.[A]]√ <stripped>
 
 	// Swift methods
-	0x61f70  func ViewControllerFactory.createOnboardingStack(forAgencyModel:exposureManager:fromAvailabilityAlert:completion:) // method 
-	0x62040  func ViewControllerFactory.createVerificationStack(forAgencyModel:exposureManager:sessionIdentifier:completion:) // method 
-	0x62180  func ViewControllerFactory.createKeyReleaseDialogue(with:region:completion:) // method 
-	0x623b0  func ViewControllerFactory.createPreApprovalDialogue(with:region:completion:) // method 
+	0x5f570  func ViewControllerFactory.inflightOnboardingStack.getter // getter 
+	0x5f5b0  func ViewControllerFactory.inflightOnboardingStack.setter // setter 
+	0x5f5d0  func ViewControllerFactory.inflightOnboardingStack.modify // modifyCoroutine 
+	0x5f700  func ViewControllerFactory.inflightVerificationStack.getter // getter 
+	0x5f7b0  func ViewControllerFactory.inflightVerificationStack.setter // setter 
+	0x5f820  func ViewControllerFactory.inflightVerificationStack.modify // modifyCoroutine 
+	0x5f890  func ViewControllerFactory.createOnboardingStack(forAgencyModel:exposureManager:fromAvailabilityAlert:completion:) // method 
+	0x5fd90  func ViewControllerFactory.createVerificationStack(forAgencyModel:exposureManager:sessionIdentifier:completion:) // method 
+	0x60100  func ViewControllerFactory.createKeyReleaseDialogue(with:region:completion:) // method 
+	0x60330  func ViewControllerFactory.createPreApprovalDialogue(with:region:completion:) // method 
  }
 
  class HealthExposureNotificationUI.OnboardingOpenAppStoreViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x18 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x20 (0x8)
+	let flow : OnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let appStoreURL : String
+	let primaryButton : OBBoldTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x635e0  @objc OnboardingOpenAppStoreViewController.viewDidLoad <stripped>
-	0x63640  @objc OnboardingOpenAppStoreViewController.openAppStoreButtonTapped <stripped>
-	0x636f0  @objc OnboardingOpenAppStoreViewController.didTapPrimaryButton <stripped>
-	0x63840  @objc OnboardingOpenAppStoreViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x638b0  @objc OnboardingOpenAppStoreViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x74ac00028538 (0x4ac00028538) in binary!
+	0x74a0  @objc OnboardingOpenAppStoreViewController.(null) <stripped>
+WARNING: couldn't find address 0x7494000288c0 (0x494000288c0) in binary!
+	0x69b8  @objc OnboardingOpenAppStoreViewController.(null) <stripped>
+WARNING: couldn't find address 0x747c000283e8 (0x47c000283e8) in binary!
+	0x38000000c  @objc OnboardingOpenAppStoreViewController.(null) <stripped>
+WARNING: couldn't find address 0x673400028498 (0x73400028498) in binary!
+	0x8e78  @objc OnboardingOpenAppStoreViewController.(null) <stripped>
+WARNING: couldn't find address 0x744c000283b8 (0x44c000283b8) in binary!
+	0x48000000c  @objc OnboardingOpenAppStoreViewController.(null) <stripped>
 
 	// Swift methods
-	0x62d40  class func OnboardingOpenAppStoreViewController.__allocating_init(flow:agencyModel:) // init 
+	0x60940  class func OnboardingOpenAppStoreViewController.__allocating_init(flow:agencyModel:) // init 
  }
 
  class HealthExposureNotificationUI.NotificationPreviewView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
@@ -1038,16 +1362,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isPresented : Bool
 
 	// ObjC -> Swift bridged methods
-	0x64fa0  @objc NotificationPreviewView.initWithFrame: <stripped>
-	0x64fd0  @objc NotificationPreviewView.initWithCoder: <stripped>
-	0x65090  @objc NotificationPreviewView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x673400028498 (0x73400028498) in binary!
+	0x8e78  @objc NotificationPreviewView.(null) <stripped>
+WARNING: couldn't find address 0x744c000283b8 (0x44c000283b8) in binary!
+	0x48000000c  @objc NotificationPreviewView.(null) <stripped>
+WARNING: couldn't find address 0x670400028468 (0x70400028468) in binary!
+	0x8e48  @objc NotificationPreviewView.(null) <stripped>
  }
 
  class HealthExposureNotificationUI.NotificationCapsuleView : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 	// ObjC -> Swift bridged methods
-	0x651e0  @objc NotificationCapsuleView.initWithFrame: <stripped>
-	0x65260  @objc NotificationCapsuleView.initWithCoder: <stripped>
-	0x652b0  @objc NotificationCapsuleView.intrinsicContentSize <stripped>
+WARNING: couldn't find address 0x66cc00028430 (0x6cc00028430) in binary!
+	0x8e10  @objc NotificationCapsuleView.(null) <stripped>
+WARNING: couldn't find address 0x7c8400028060 (0x48400028060) in binary!
+	0x48000000c  @objc NotificationCapsuleView.(null) <stripped>
+WARNING: couldn't find address 0xb18200028730 (0x18200028730) in binary!
+	0x8de0  @objc NotificationCapsuleView.(null) <stripped>
  }
 
  class HealthExposureNotificationUI.NotificationContent : UIView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
@@ -1056,25 +1386,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let notificationContainer : NotificationCapsuleView
 
 	// ObjC -> Swift bridged methods
-	0x66180  @objc NotificationContent.initWithFrame: <stripped>
-	0x66270  @objc NotificationContent.initWithCoder: <stripped>
-	0x66330  @objc NotificationContent.intrinsicContentSize <stripped>
-	0x663b0  @objc NotificationContent..cxx_destruct <stripped>
+WARNING: couldn't find address 0x670400028468 (0x70400028468) in binary!
+	0x8e48  @objc NotificationContent.(null) <stripped>
+WARNING: couldn't find address 0x7cbc00028098 (0x4bc00028098) in binary!
+	0x7410  @objc NotificationContent.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0xfcffff7878  @objc NotificationContent.(null) <stripped>
+	0xffff7930  @objc NotificationContent.UHâÂ]ÈV0 <stripped>
  }
 
  class HealthExposureNotificationUI.VerificationTableView : UITableView /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 
 	// Properties
-	var $__lazy_storage_$_heightConstraint : NSLayoutConstraint?
+	var $__lazy_storage_$_heightConstraint : NSLayoutConstraint? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x66ae0  @objc VerificationTableView.init <stripped>
-	0x66b00  @objc VerificationTableView.initWithCoder: <stripped>
-	0x66d50  @objc VerificationTableView.layoutSubviews <stripped>
-	0x66d80  @objc VerificationTableView.initWithFrame:style: <stripped>
-	0x66dd0  @objc VerificationTableView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x62f8000286a8 (0x2f8000286a8) in binary!
+	0x8d78  @objc VerificationTableView.(null) <stripped>
+WARNING: couldn't find address 0x734c00028c00 (0x34c00028c00) in binary!
+	0xb060  @objc VerificationTableView.(null) <stripped>
+WARNING: couldn't find address 0x7334000282a0 (0x334000282a0) in binary!
+	0x48000000c  @objc VerificationTableView.(null) <stripped>
+WARNING: couldn't find address 0xb0d200028680 (0xd200028680) in binary!
+	0x8d30  @objc VerificationTableView.(null) <stripped>
+WARNING: couldn't find address 0x730400028bb8 (0x30400028bb8) in binary!
+	0x72f8  @objc VerificationTableView.(null) <stripped>
 
 	// Swift methods
+	0x63dd0  func <stripped> // getter 
  }
 
  class HealthExposureNotificationUI.AuthorityTextCell : UITableViewCell /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
@@ -1083,19 +1422,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var authorityTextView : OnboardingAuthorityTextView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x67200  @objc AuthorityTextCell.initWithStyle:reuseIdentifier: <stripped>
-	0x672c0  @objc AuthorityTextCell.initWithCoder: <stripped>
-	0x671e0  @objc AuthorityTextCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0xb14a000286f8 (0x14a000286f8) in binary!
+	0x8da8  @objc AuthorityTextCell.(null) <stripped>
+WARNING: couldn't find address 0x737c000282e8 (0x37c000282e8) in binary!
+	0x58000000c  @objc AuthorityTextCell.(null) <stripped>
+WARNING: couldn't find address 0x62f8000286a8 (0x2f8000286a8) in binary!
+	0x8d78  @objc AuthorityTextCell.(null) <stripped>
 
 	// Swift methods
  }
 
  class HealthExposureNotificationUI.VerificationCell : UITableViewCell /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
 	// ObjC -> Swift bridged methods
-	0x674c0  @objc VerificationCell.initWithStyle:reuseIdentifier: <stripped>
-	0x674e0  @objc VerificationCell.initWithCoder: <stripped>
-	0x67530  @objc VerificationCell.layoutSubviews <stripped>
-	0x67610  @objc VerificationCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0xb18200028730 (0x18200028730) in binary!
+	0x8de0  @objc VerificationCell.(null) <stripped>
+WARNING: couldn't find address 0x73b400028c68 (0x3b400028c68) in binary!
+	0x73a8  @objc VerificationCell.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x94ffff9100  @objc VerificationCell.(null) <stripped>
+	0xffff94f8  @objc VerificationCell.ã!¡9¡î¿]√f.Ñ <stripped>
  }
 
  class HealthExposureNotificationUI.VerificationCheckmarkCell : VerificationCell {
@@ -1106,49 +1451,69 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isChecked : Bool
 
 	// ObjC -> Swift bridged methods
-	0x67640  @objc VerificationCheckmarkCell.initWithStyle:reuseIdentifier: <stripped>
-	0x676c0  @objc VerificationCheckmarkCell.initWithCoder: <stripped>
-	0x67830  @objc VerificationCheckmarkCell.layoutSubviews <stripped>
-	0x678d0  @objc VerificationCheckmarkCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0xb0d200028680 (0xd200028680) in binary!
+	0x8d30  @objc VerificationCheckmarkCell.(null) <stripped>
+WARNING: couldn't find address 0x730400028bb8 (0x30400028bb8) in binary!
+	0x72f8  @objc VerificationCheckmarkCell.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x31cffffaf60  @objc VerificationCheckmarkCell.(null) <stripped>
+	0x70cffffb058  @objc VerificationCheckmarkCell.â}¿Hç=ÜÛ <stripped>
  }
 
  class HealthExposureNotificationUI.OnboardingAddRegionWelcomeViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let primaryButton : OBBoldTrayButton // +0x18 (0x8)
-	let secondaryButton : OBLinkTrayButton // +0x20 (0x8)
+	let flow : OnboardingFlow
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x68e90  @objc OnboardingAddRegionWelcomeViewController.viewDidLoad <stripped>
-	0x68ef0  @objc OnboardingAddRegionWelcomeViewController.didTapHowExposureNotificationsWork <stripped>
-	0x68fa0  @objc OnboardingAddRegionWelcomeViewController.didTapPrimaryButton <stripped>
-	0x69010  @objc OnboardingAddRegionWelcomeViewController.didTapSecondaryButton <stripped>
-	0x69160  @objc OnboardingAddRegionWelcomeViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x691d0  @objc OnboardingAddRegionWelcomeViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x72e400028370 (0x2e400028370) in binary!
+	0x72d8  @objc OnboardingAddRegionWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x72cc000286f8 (0x2cc000286f8) in binary!
+	0x72c0  @objc OnboardingAddRegionWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x67e4000287e0 (0x7e4000287e0) in binary!
+	0x72a8  @objc OnboardingAddRegionWelcomeViewController.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x6b4ffffc100  @objc OnboardingAddRegionWelcomeViewController.(null) <stripped>
+	0xecffffc2c8  @objc OnboardingAddRegionWelcomeViewController.=ãÚ <stripped>
+	0x1c4ffffc5b0  @objc OnboardingAddRegionWelcomeViewController.=£Ú <stripped>
 
 	// Swift methods
-	0x68390  class func OnboardingAddRegionWelcomeViewController.__allocating_init(flow:) // init 
+	0x65820  class func OnboardingAddRegionWelcomeViewController.__allocating_init(flow:) // init 
  }
 
  class HealthExposureNotificationUI.OnboardingAnalyticsViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	let flow : OnboardingFlow // +0x8 (0x10)
-	let healthAgencyModel : ENUIPublicHealthAgencyModel // +0x18 (0x8)
-	let primaryButton : OBBoldTrayButton // +0x20 (0x8)
-	let secondaryButton : OBLinkTrayButton // +0x28 (0x8)
+	let flow : OnboardingFlow
+	let healthAgencyModel : ENUIPublicHealthAgencyModel
+	let primaryButton : OBBoldTrayButton
+	let secondaryButton : OBLinkTrayButton
 
 	// ObjC -> Swift bridged methods
-	0x6a710  @objc OnboardingAnalyticsViewController.viewDidLoad <stripped>
-	0x6a770  @objc OnboardingAnalyticsViewController.didTapPrimaryButton <stripped>
-	0x6a8f0  @objc OnboardingAnalyticsViewController.didTapSecondaryButton <stripped>
-	0x6aa50  @objc OnboardingAnalyticsViewController.didTapLearnMore <stripped>
-	0x6abf0  @objc OnboardingAnalyticsViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x6aab0  @objc OnboardingAnalyticsViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x729400028320 (0x29400028320) in binary!
+	0x7288  @objc OnboardingAnalyticsViewController.(null) <stripped>
+WARNING: couldn't find address 0x727c000286c8 (0x27c000286c8) in binary!
+	0x7270  @objc OnboardingAnalyticsViewController.(null) <stripped>
+WARNING: couldn't find address 0x679400028790 (0x79400028790) in binary!
+	0x7258  @objc OnboardingAnalyticsViewController.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x744ffffcc50  @objc OnboardingAnalyticsViewController.(null) <stripped>
+	0x224000282b0  @objc OnboardingAnalyticsViewController.Ë <stripped>
+WARNING: couldn't find address 0x28644ffffcd00 (0x644ffffcd00) in binary!
+	0x20c00029090  @objc OnboardingAnalyticsViewController.(null) <stripped>
 
 	// Swift methods
-	0x69c00  class func OnboardingAnalyticsViewController.__allocating_init(flow:agencyModel:) // init 
+	0x669e0  class func OnboardingAnalyticsViewController.__allocating_init(flow:agencyModel:) // init 
+ }
+
+ class HealthExposureNotificationUI.MultilineButton : UIButton /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x651400028278 (0x51400028278) in binary!
+	0x8c58  @objc MultilineButton.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x644ffffcd00  @objc MultilineButton.(null) <stripped>
  }
 
  class HealthExposureNotificationUI.OnboardingRegionAlreadyExistsViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
@@ -1159,13 +1524,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let primaryButton : OBBoldTrayButton // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6b280  @objc OnboardingRegionAlreadyExistsViewController.viewDidLoad <stripped>
-	0x6bae0  @objc OnboardingRegionAlreadyExistsViewController.didTapPrimaryButton <stripped>
-	0x6bc10  @objc OnboardingRegionAlreadyExistsViewController.openAppButtonTapped <stripped>
-	0x6bc40  @objc OnboardingRegionAlreadyExistsViewController.initWithTitle:detailText:icon:contentLayout: <stripped>
-	0x6bcb0  @objc OnboardingRegionAlreadyExistsViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7224000282b0 (0x224000282b0) in binary!
+	0x7218  @objc OnboardingRegionAlreadyExistsViewController.(null) <stripped>
+WARNING: couldn't find address 0x720c00029090 (0x20c00029090) in binary!
+	0x6730  @objc OnboardingRegionAlreadyExistsViewController.(null) <stripped>
+WARNING: couldn't find address 0x71f400028160 (0x1f400028160) in binary!
+	0x0  @objc OnboardingRegionAlreadyExistsViewController.(null) <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x77078456874  @objc OnboardingRegionAlreadyExistsViewController.(null) <stripped>
+WARNING: couldn't find address 0x696669746f4e6572 (0x1746f4e6572) in binary!
+	0x24f52502020  @objc OnboardingRegionAlreadyExistsViewController.(null) <stripped>
 
 	// Swift methods
-	0x6b2e0  func <stripped> // method 
-	0x6bb50  func <stripped> // method 
+	0x68080  func <stripped> // method 
+	0x688a0  func <stripped> // method 
  }

@@ -29,6 +29,7 @@
 @property (readonly, copy, nonatomic) HFMediaAccessoryItem *mediaAccessoryItem; // @synthesize mediaAccessoryItem=_mediaAccessoryItem;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (nonatomic, getter=isPresentedModally) BOOL presentedModally; // @synthesize presentedModally=_presentedModally;
+@property (nonatomic) BOOL requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -42,8 +43,6 @@
 - (id)initWithMediaAccessoryContainerItem:(id)arg1 isPresentedModally:(BOOL)arg2 valueSource:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;
-- (BOOL)requiresPresentingViewControllerDismissal;
-- (void)setRequiresPresentingViewControllerDismissal:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

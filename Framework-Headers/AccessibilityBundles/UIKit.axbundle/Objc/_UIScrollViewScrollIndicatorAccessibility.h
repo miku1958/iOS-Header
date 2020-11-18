@@ -20,7 +20,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityCanAppearInContextMenuPreview;
-- (BOOL)_accessibilityCanShowContextMenuForInteraction:(id)arg1 atLocation:(struct CGPoint)arg2;
 - (BOOL)_accessibilityOverridesInvisibility;
 - (long long)_accessibilitySortPriority;
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;

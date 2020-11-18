@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+#import <PersonalizationPortraitInternals/MLFeatureProvider-Protocol.h>
 
-@interface PPSourceStats : NSObject
+@class NSDate, NSSet;
+
+@interface PPSourceStats : NSObject <MLFeatureProvider>
 {
     long long _minRefCount;
     long long _maxRefCount;
@@ -22,6 +24,7 @@
 
 @property (readonly, nonatomic) double avgRefCount; // @synthesize avgRefCount=_avgRefCount;
 @property (readonly, nonatomic) NSDate *earliestDate; // @synthesize earliestDate=_earliestDate;
+@property (readonly, nonatomic) NSSet *featureNames;
 @property (readonly, nonatomic) NSDate *latestDate; // @synthesize latestDate=_latestDate;
 @property (readonly, nonatomic) long long maxRefCount; // @synthesize maxRefCount=_maxRefCount;
 @property (readonly, nonatomic) double medianRefCount; // @synthesize medianRefCount=_medianRefCount;
@@ -30,6 +33,7 @@
 @property (readonly, nonatomic) long long uniqueDocIdCount; // @synthesize uniqueDocIdCount=_uniqueDocIdCount;
 
 - (void).cxx_destruct;
+- (id)featureValueForName:(id)arg1;
 - (id)initWithMinRefCount:(long long)arg1 maxRefCount:(long long)arg2 avgRefCount:(double)arg3 medianRefCount:(double)arg4 earliestDate:(id)arg5 latestDate:(id)arg6 uniqueBundleIdCount:(long long)arg7 uniqueDocIdCount:(long long)arg8;
 - (id)toDictionary;
 

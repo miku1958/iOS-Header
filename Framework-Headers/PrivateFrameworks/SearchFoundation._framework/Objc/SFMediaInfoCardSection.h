@@ -42,16 +42,16 @@
     SFRichText *_specialOfferButtonLabel;
 }
 
-@property (strong, nonatomic) SFColor *backgroundColor;
-@property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *details; // @synthesize details=_details;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
-@property (nonatomic) BOOL hasBottomPadding;
-@property (nonatomic) BOOL hasTopPadding;
+@property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider;
 @property (nonatomic) BOOL isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
@@ -61,14 +61,14 @@
 @property (copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (strong, nonatomic) SFActionItem *playAction; // @synthesize playAction=_playAction;
-@property (copy, nonatomic) NSArray *punchoutOptions;
-@property (copy, nonatomic) NSString *punchoutPickerDismissText;
-@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (copy, nonatomic) NSString *resultIdentifier;
-@property (nonatomic) int separatorStyle;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (strong, nonatomic) SFRichText *specialOfferButtonLabel; // @synthesize specialOfferButtonLabel=_specialOfferButtonLabel;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (copy, nonatomic) NSString *watchListButtonLabel; // @synthesize watchListButtonLabel=_watchListButtonLabel;
 @property (copy, nonatomic) NSString *watchListConfirmationText; // @synthesize watchListConfirmationText=_watchListConfirmationText;

@@ -21,6 +21,7 @@
     NSString *_firmwareRevisionPending;
     NSString *_hardwareRevision;
     NSString *_dockType;
+    long long _transportType;
     NSString *_macAddress;
     NSString *_preferredApp;
     NSData *_certSerial;
@@ -90,6 +91,7 @@
 @property (strong, nonatomic) NSDictionary *protocols; // @synthesize protocols=_protocols;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly, nonatomic) NSArray *sessionsList;
+@property (nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property (strong, nonatomic) NSDictionary *vehicleInfoInitialData; // @synthesize vehicleInfoInitialData=_vehicleInfoInitialData;
 @property (strong, nonatomic) NSDictionary *vehicleInfoSupportedTypes; // @synthesize vehicleInfoSupportedTypes=_vehicleInfoSupportedTypes;
 

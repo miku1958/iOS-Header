@@ -10,13 +10,15 @@
 #import <SpotlightUI/FBProcessWatchdogProviding-Protocol.h>
 #import <SpotlightUI/FBSceneObserver-Protocol.h>
 #import <SpotlightUI/SBUIActiveOrientationObserver-Protocol.h>
+#import <SpotlightUI/SPUISpotlightSceneManagerDelegate-Protocol.h>
 
 @class FBApplicationUpdateScenesTransaction, FBScene, NSMutableArray, NSString, UIView, _UILegibilitySettings;
 @protocol UIScenePresentation, UIScenePresenter;
 
-@interface SPUISpotlightRemoteViewController : UIViewController <SBUIActiveOrientationObserver, FBProcessWatchdogProviding, FBApplicationUpdateScenesTransactionObserver, FBSceneObserver>
+@interface SPUISpotlightRemoteViewController : UIViewController <SBUIActiveOrientationObserver, FBProcessWatchdogProviding, SPUISpotlightSceneManagerDelegate, FBApplicationUpdateScenesTransactionObserver, FBSceneObserver>
 {
     BOOL _crashedWhileForeground;
+    BOOL _prewarmSceneInTheBackground;
     _UILegibilitySettings *_legibilitySettings;
     NSString *_sceneIdentifier;
     FBScene *_scene;
@@ -28,13 +30,14 @@
 }
 
 @property BOOL crashedWhileForeground; // @synthesize crashedWhileForeground=_crashedWhileForeground;
-@property long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
+@property (nonatomic) long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) UIView<UIScenePresentation> *hostView; // @synthesize hostView=_hostView;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong) id<UIScenePresenter> presenter; // @synthesize presenter=_presenter;
+@property (readonly, nonatomic) BOOL prewarmSceneInTheBackground; // @synthesize prewarmSceneInTheBackground=_prewarmSceneInTheBackground;
 @property (strong) FBScene *scene; // @synthesize scene=_scene;
 @property (strong) NSMutableArray *sceneEventsQueue; // @synthesize sceneEventsQueue=_sceneEventsQueue;
 @property (strong) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
@@ -66,6 +69,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
 - (id)watchdogTerminationRequestForProcess:(id)arg1 error:(id)arg2;
+- (void)willLaunchSpotlightInBackground;
 
 @end
 

@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithSearchableItem:(id)arg1 inSection:(id)arg2 withConversation:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) int direction;
-@property (readonly) BOOL drawEdgesFirst;
+@property int direction; // @synthesize direction;
+@property BOOL drawEdgesFirst; // @synthesize drawEdgesFirst;
 @property (readonly) unsigned long long hash;
-@property (readonly) struct CGSize separation;
+@property struct CGSize separation; // @synthesize separation;
 @property (readonly) Class superclass;
 
 - (void)dealloc;
@@ -35,11 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)flushRender;
 - (id)init;
 - (BOOL)setCanvasWidth:(unsigned int)arg1 height:(unsigned int)arg2;
-- (void)setDirection:(int)arg1;
-- (void)setDrawEdgesFirst:(BOOL)arg1;
 - (void)setFileTitle:(id)arg1;
 - (void)setFileURL:(id)arg1;
-- (void)setSeparation:(struct CGSize)arg1;
 
 @end
 

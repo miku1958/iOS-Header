@@ -10,11 +10,13 @@
 
 @interface HKDataCollectorTaskServerConfiguration : HKTaskConfiguration
 {
+    BOOL _canResumeFromLastDatum;
     HKQuantityType *_quantityType;
     NSString *_bundleIdentifier;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, nonatomic) BOOL canResumeFromLastDatum; // @synthesize canResumeFromLastDatum=_canResumeFromLastDatum;
 @property (copy, nonatomic) HKQuantityType *quantityType; // @synthesize quantityType=_quantityType;
 
 + (BOOL)supportsSecureCoding;
@@ -22,7 +24,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithQuantityType:(id)arg1 bundleIdentifier:(id)arg2;
+- (id)initWithQuantityType:(id)arg1 bundleIdentifier:(id)arg2 canResumeFromLastDatum:(BOOL)arg3;
 
 @end
 

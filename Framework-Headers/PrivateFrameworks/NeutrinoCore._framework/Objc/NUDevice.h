@@ -15,6 +15,8 @@
 {
     NURenderer *_renderer;
     NURenderer *_lowPriorityRenderer;
+    NURenderer *_noIntermediatesRenderer;
+    NURenderer *_lowPriorityNoIntermediatesRenderer;
     NSObject<OS_dispatch_queue> *_queue;
     long long _defaultSampleMode;
     NSString *_name;
@@ -43,16 +45,22 @@
 - (long long)_computeDefaultSampleMode;
 - (long long)_defaultSampleMode;
 - (id)_lowPriorityRenderer:(out id *)arg1;
+- (id)_lowPriorityRendererWithoutIntermediateCaching:(out id *)arg1;
+- (id)_newLowPriorityNoIntermediatesRenderer:(out id *)arg1;
 - (id)_newLowPriorityRenderer:(out id *)arg1;
+- (id)_newNoIntermediatesRenderer:(out id *)arg1;
 - (id)_newRenderer:(out id *)arg1;
 - (long long)_openGLVirtualScreen;
 - (long long)_preferredSampleMode;
 - (id)_renderer:(out id *)arg1;
+- (id)_rendererWithoutIntermediateCaching:(out id *)arg1;
 - (void)clearCaches;
 - (id)init;
 - (id)initWithName:(id)arg1 model:(id)arg2 metalDevice:(id)arg3;
 - (id)lowPriorityRenderer:(out id *)arg1;
+- (id)lowPriorityRendererWithoutIntermediateCaching:(out id *)arg1;
 - (id)renderer:(out id *)arg1;
+- (id)rendererWithoutIntermediateCaching:(out id *)arg1;
 - (BOOL)shouldLogRendererUsed;
 
 @end

@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class SBAlertItem;
+#import <SpringBoard/BSDescriptionProviding-Protocol.h>
+
+@class NSString, SBAlertItem;
 @protocol SBAlertItemPresenter;
 
-@interface SBAlertItemPresentation : NSObject
+@interface SBAlertItemPresentation : NSObject <BSDescriptionProviding>
 {
     SBAlertItem *_alertItem;
     id<SBAlertItemPresenter> _presenter;
 }
 
 @property (strong, nonatomic) SBAlertItem *alertItem; // @synthesize alertItem=_alertItem;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<SBAlertItemPresenter> presenter; // @synthesize presenter=_presenter;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithAlertItem:(id)arg1 presenter:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)succinctDescription;

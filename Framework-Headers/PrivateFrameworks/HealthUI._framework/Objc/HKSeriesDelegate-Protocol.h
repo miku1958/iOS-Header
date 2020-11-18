@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKGraphSeries;
+@class HKGraphSeries, HKValueRange;
 
 @protocol HKSeriesDelegate
 - (void)autoscaleStateChangedForSeries:(HKGraphSeries *)arg1;
+- (BOOL)measuringStartupTime;
+- (void)nonemptyDrawComplete;
+- (BOOL)rangeIsVisible:(HKValueRange *)arg1;
 - (struct CGRect)screenRectForSeries:(HKGraphSeries *)arg1;
 - (void)seriesDidInvalidatePaths:(HKGraphSeries *)arg1 newDataArrived:(BOOL)arg2;
 - (BOOL)seriesDrawingDuringAutoscale;

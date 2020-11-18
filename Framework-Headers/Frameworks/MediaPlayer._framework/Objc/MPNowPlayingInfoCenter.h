@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPMediaRemoteEntityArtworkGenerator-Protocol.h>
 
-@class MPArtworkResizeUtility, MPMRNowPlayingPlayerPathWrapper, MPNowPlayingContentItem, MPNowPlayingInfoCenterArtworkContext, MSVLRUDictionary, MSVTimer, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class MPArtworkResizeUtility, MPNowPlayingContentItem, MPNowPlayingInfoCenterArtworkContext, MRPlayerPath, MSVLRUDictionary, MSVTimer, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 @protocol MPNowPlayingInfoLyricsDelegate, MPNowPlayingPlaybackQueueDataSource, MPNowPlayingPlaybackQueueDelegate, OS_dispatch_queue;
 
 @interface MPNowPlayingInfoCenter : NSObject <MPMediaRemoteEntityArtworkGenerator>
@@ -45,7 +45,7 @@
     } _callbacks;
     void *_fallbackActivity;
     unsigned long long _stateHandle;
-    MPMRNowPlayingPlayerPathWrapper *_playerPath;
+    MRPlayerPath *_playerPath;
     id<MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
     NSString *_playerID;
     NSString *_representedApplicationBundleIdentifier;
@@ -63,7 +63,7 @@
 @property (weak, nonatomic) id<MPNowPlayingPlaybackQueueDelegate> playbackQueueDelegate; // @synthesize playbackQueueDelegate=_playbackQueueDelegate;
 @property (nonatomic) unsigned long long playbackState;
 @property (readonly, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
-@property (readonly, nonatomic) MPMRNowPlayingPlayerPathWrapper *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) NSString *representedApplicationBundleIdentifier; // @synthesize representedApplicationBundleIdentifier=_representedApplicationBundleIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsArtworkCatalogLoading;
@@ -73,6 +73,7 @@
 + (id)serviceQueue;
 - (void).cxx_destruct;
 - (id)_artworkCatalogForContentItem:(id)arg1;
+- (void)_becomeActiveIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_becomeActiveWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_childContentItemForContentItem:(id)arg1 index:(long long)arg2;
 - (void)_contentItemChangedNotification:(id)arg1;

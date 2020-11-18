@@ -20,6 +20,8 @@
     long long _authorization;
     NSData *_advertisingAddress;
     long long _advertisingAddressType;
+    NSData *_nonConnectableAdvertisingAddress;
+    long long _nonConnectableAdvertisingAddressType;
     NSString *_localAddressString;
     NSString *_localName;
 }
@@ -32,12 +34,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *localAddressString; // @synthesize localAddressString=_localAddressString;
 @property (readonly) NSString *localName; // @synthesize localName=_localName;
+@property (copy, nonatomic) NSData *nonConnectableAdvertisingAddress; // @synthesize nonConnectableAdvertisingAddress=_nonConnectableAdvertisingAddress;
+@property (readonly, nonatomic) long long nonConnectableAdvertisingAddressType; // @synthesize nonConnectableAdvertisingAddressType=_nonConnectableAdvertisingAddressType;
 @property (readonly, strong, nonatomic) CBPairingAgent *sharedPairingAgent; // @dynamic sharedPairingAgent;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL tccComplete; // @synthesize tccComplete=_tccComplete;
 
 + (long long)authorization;
++ (BOOL)tccAvailable;
 - (void).cxx_destruct;
 - (void)_handleAdvertisingAddressChanged:(id)arg1;
 - (void)closeL2CAPChannelForPeerUUID:(id)arg1 withPsm:(unsigned short)arg2;

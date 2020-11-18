@@ -7,7 +7,11 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HomeLocation)
++ (id)dictionaryWithActionExecutionError:(id)arg1;
+- (BOOL)isValidResponseForWriteRequest:(id)arg1 naturalLightingEnabled:(BOOL)arg2 error:(id *)arg3;
 - (id)locationFromDataForKey:(id)arg1;
 - (id)regionFromDataForKey:(id)arg1;
+- (id)responseByRemovingEntriesForCharacteristics:(id)arg1;
+- (id)valueOfCharacteristic:(id)arg1 error:(id *)arg2;
 @end
 

@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <EmailFoundation/EFSQLBitExpressable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSString;
 @protocol EFSQLExpressable;
 
-@interface EFSQLBitExpression : NSObject <EFSQLBitExpressable, EFSQLExpressable>
+@interface EFSQLBitExpression : NSObject <EFSQLBitExpressable, EFSQLValueExpressable>
 {
     id<EFSQLExpressable> _left;
     id<EFSQLExpressable> _right;
@@ -33,7 +33,8 @@
 + (id)or:(id)arg1 with:(id)arg2;
 + (id)rightShift:(id)arg1 by:(id)arg2;
 - (void).cxx_destruct;
-- (id)_stringForOperator:(unsigned long long)arg1;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)initWithLeft:(id)arg1 bitwiseOperator:(unsigned long long)arg2 right:(id)arg3;
 - (void)setColumnExpression:(id)arg1;
 

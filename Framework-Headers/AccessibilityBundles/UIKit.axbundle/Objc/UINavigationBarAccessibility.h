@@ -19,6 +19,7 @@
 - (id)_accessibilityFauxBackButton;
 - (id)_accessibilityFetchCachedNavBarElements;
 - (BOOL)_accessibilityHasLeftRightButtonCountChanged;
+- (BOOL)_accessibilityHasStaticNavBarButtonChanged;
 - (BOOL)_accessibilityHasTitleViewChanged;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityLeftButtonElements;
@@ -27,11 +28,14 @@
 - (id)_accessibilityRightButtonElements;
 - (void)_accessibilitySetFauxBackButton:(id)arg1;
 - (void)_accessibilitySetNavBarElements:(id)arg1;
+- (id)_accessibilityStaticBarButtonItem;
+- (id)_accessibilityStaticBarButtonItemWithContents:(id)arg1;
 - (void)_accessibility_navigationBarContentsDidChange;
+- (id)_axGetCachedStaticNavBarButton;
+- (void)_axSetCachedStaticNavBarButton:(id)arg1;
 - (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (id)accessibilityIdentifier;
-- (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 - (void)addSubview:(id)arg1;
 - (void)insertSubview:(id)arg1 aboveSubview:(id)arg2;

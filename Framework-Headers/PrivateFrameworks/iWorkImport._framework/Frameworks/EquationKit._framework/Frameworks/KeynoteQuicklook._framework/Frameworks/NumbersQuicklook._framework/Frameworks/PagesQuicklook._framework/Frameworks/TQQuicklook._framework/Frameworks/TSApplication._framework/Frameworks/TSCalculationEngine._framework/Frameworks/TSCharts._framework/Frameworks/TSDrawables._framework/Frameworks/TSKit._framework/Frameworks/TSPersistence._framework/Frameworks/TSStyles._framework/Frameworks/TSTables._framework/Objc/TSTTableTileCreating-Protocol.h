@@ -11,7 +11,7 @@
 @property (readonly, nonatomic) struct TSUModelColumnIndex numberOfColumns;
 @property (readonly, nonatomic) struct TSUModelRowIndex numberOfRows;
 
-- (void)enumerateDataStoreCellsWithBlock:(void (^)(TSTCell *, struct TSUCellCoord, BOOL *))arg1;
+- (void)enumerateCellsForSOSSerializationWithBlock:(void (^)(TSTCell *, struct TSUCellCoord, BOOL *))arg1;
 - (struct TSUModelCellRect)range;
 - (TSWPParagraphStyle *)textStyleAtBaseCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out BOOL *)arg2;
 @end

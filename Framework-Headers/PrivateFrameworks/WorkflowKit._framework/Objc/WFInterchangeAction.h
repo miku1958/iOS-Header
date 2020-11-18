@@ -25,6 +25,7 @@
 - (id)creationDate;
 - (id)description;
 - (id)descriptionDictionary;
+- (id)disabledPlatformsForInterchangeActionWithIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (id)initWithInterchangeAction:(id)arg1 identifier:(id)arg2 definition:(id)arg3 serializedParameters:(id)arg4;
 - (id)initWithInterchangeAction:(id)arg1 serializedParameters:(id)arg2;
@@ -52,7 +53,6 @@
 - (id)specifiedInputContentClasses;
 - (id)specifiedOutputContentClasses;
 - (id)subcategoryForCategory:(id)arg1;
-- (id)unsupportedEnvironments;
 - (id)userInterfaceTypes;
 
 @end

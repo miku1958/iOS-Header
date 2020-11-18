@@ -18,11 +18,23 @@
     NSArray *_keyboardLocalesEnableds;
     NSArray *_dictationLocalesEnableds;
     NSString *_bundleId;
+    BOOL _hasKeyboardLanguage;
+    BOOL _hasKeyboardLocale;
+    BOOL _hasDictationLocale;
+    BOOL _hasUserSelectedLocale;
+    BOOL _hasSiriSelectedLocale;
+    BOOL _hasBundleId;
 }
 
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong, nonatomic) SISchemaLocaleIdentifier *dictationLocale; // @synthesize dictationLocale=_dictationLocale;
 @property (copy, nonatomic) NSArray *dictationLocalesEnableds; // @synthesize dictationLocalesEnableds=_dictationLocalesEnableds;
+@property (nonatomic) BOOL hasBundleId; // @synthesize hasBundleId=_hasBundleId;
+@property (nonatomic) BOOL hasDictationLocale; // @synthesize hasDictationLocale=_hasDictationLocale;
+@property (nonatomic) BOOL hasKeyboardLanguage; // @synthesize hasKeyboardLanguage=_hasKeyboardLanguage;
+@property (nonatomic) BOOL hasKeyboardLocale; // @synthesize hasKeyboardLocale=_hasKeyboardLocale;
+@property (nonatomic) BOOL hasSiriSelectedLocale; // @synthesize hasSiriSelectedLocale=_hasSiriSelectedLocale;
+@property (nonatomic) BOOL hasUserSelectedLocale; // @synthesize hasUserSelectedLocale=_hasUserSelectedLocale;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (strong, nonatomic) SISchemaLocaleIdentifier *keyboardLocale; // @synthesize keyboardLocale=_keyboardLocale;

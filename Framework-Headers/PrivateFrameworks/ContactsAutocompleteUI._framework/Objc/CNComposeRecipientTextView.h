@@ -9,12 +9,13 @@
 #import <ContactsAutocompleteUI/CNComposeRecipientAtomDelegate-Protocol.h>
 #import <ContactsAutocompleteUI/CNRecipientDraggingDelegate-Protocol.h>
 #import <ContactsAutocompleteUI/NSLayoutManagerDelegate-Protocol.h>
+#import <ContactsAutocompleteUI/UIContextMenuInteractionDelegate-Protocol.h>
 #import <ContactsAutocompleteUI/UITextViewDelegate-Protocol.h>
 
 @class CNComposeDragSource, CNComposeDropTarget, NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSUndoManager, UIButton, UIColor, UIFont, UITextView, UIView, _CNAtomTextAttachment, _CNAtomTextView;
 @protocol CNComposeRecipientTextViewDelegate;
 
-@interface CNComposeRecipientTextView : CNComposeHeaderView <UITextViewDelegate, NSLayoutManagerDelegate, CNComposeRecipientAtomDelegate, CNRecipientDraggingDelegate>
+@interface CNComposeRecipientTextView : CNComposeHeaderView <UIContextMenuInteractionDelegate, UITextViewDelegate, NSLayoutManagerDelegate, CNComposeRecipientAtomDelegate, CNRecipientDraggingDelegate>
 {
     _CNAtomTextView *_textView;
     UITextView *_inactiveTextView;
@@ -116,6 +117,7 @@
 - (struct _NSRange)_placeholderAttachmentRange;
 - (id)_placeholderAttachmentWithStaticWidth;
 - (struct _NSRange)_rangeForComposeRecipientAtom:(id)arg1;
+- (BOOL)_recipientAtomHitInView:(id)arg1 atLocation:(struct CGPoint)arg2;
 - (void)_recomputeTextContainerExclusionPaths;
 - (void)_removeAddressAtomSubview:(id)arg1;
 - (void)_removeAllRecipients;
@@ -149,7 +151,9 @@
 - (void)composeRecipientAtomSelectPrevious:(id)arg1;
 - (void)composeRecipientAtomShowPersonCard:(id)arg1;
 - (BOOL)containsAddress:(id)arg1;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)dealloc;
+- (void)deselectAllAtoms;
 - (void)deselectComposeRecipientAtom:(id)arg1;
 - (void)dragEnteredAtPoint:(struct CGPoint)arg1;
 - (void)dragExited;
@@ -166,11 +170,14 @@
 - (BOOL)isFirstResponder;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(BOOL)arg3;
 - (void)layoutSubviews;
+- (id)menuConfigurationForAtomView:(id)arg1;
 - (void)parentDidClose;
 - (void)parentWillClose;
 - (void)reflow;
 - (void)refreshPreferredContentSize;
 - (void)removeRecipient:(id)arg1;
+- (void)selectAtom:(id)arg1;
+- (void)selectAtomForRecipient:(id)arg1;
 - (void)selectComposeRecipientAtom:(id)arg1;
 - (id)selectedAtoms;
 - (void)setBounds:(struct CGRect)arg1;
@@ -178,7 +185,6 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setUsingActiveAppearance:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)settrailingButtonMidlineInsetFromLayoutMargin:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)textFieldOffsetForNumberOfRowsToScroll:(unsigned long long)arg1 numberOfRowsAboveField:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;

@@ -11,10 +11,13 @@
 }
 
 + (void)_addLeafNodesForNode:(id)arg1 toSet:(id)arg2;
++ (void)_addValuesForCustomIconElement:(id)arg1 toRepresentation:(id)arg2;
 + (id)_folderTypeForFolder:(id)arg1;
 + (BOOL)_iconContainsMultipleRepresentations:(id)arg1;
++ (id)_metadataForList:(id)arg1 inModel:(id)arg2;
 + (id)_nodeAtPath:(id)arg1 inNode:(id)arg2;
 + (id)_pathForNode:(id)arg1 toIdentifier:(id)arg2;
++ (id)_representationForCustomIcon:(id)arg1 inModel:(id)arg2;
 + (id)_representationForFolder:(id)arg1 inModel:(id)arg2;
 + (id)_representationForIcon:(id)arg1 inModel:(id)arg2;
 + (id)_representationForList:(id)arg1 inModel:(id)arg2;

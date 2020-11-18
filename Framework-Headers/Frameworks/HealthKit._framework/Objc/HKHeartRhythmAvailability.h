@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKActiveWatchFeatureAvailabilityDataSource, HKHealthStore, HKKeyValueDomain, HKMobileCountryCodeManager, HKObserverSet, HKWatchAppAvailability, NSDate, NSMutableSet, NSNumber, NSUserDefaults;
+@class HKActiveWatchRemoteFeatureAvailabilityDataSource, HKHealthStore, HKKeyValueDomain, HKMobileCountryCodeManager, HKObserverSet, HKWatchAppAvailability, NSDate, NSMutableSet, NSNumber, NSUserDefaults;
 
 @interface HKHeartRhythmAvailability : NSObject
 {
@@ -21,7 +21,7 @@
     HKKeyValueDomain *_keyValueDomain;
     NSUserDefaults *_heartRhythmUserDefaults;
     HKObserverSet *_heartRhythmAvailabilityObservers;
-    HKActiveWatchFeatureAvailabilityDataSource *_availabilityDataSource;
+    HKActiveWatchRemoteFeatureAvailabilityDataSource *_availabilityDataSource;
     NSMutableSet *_onboardingKeysReadSet;
     HKMobileCountryCodeManager *_mobileCountryCodeManager;
     HKWatchAppAvailability *_ecgAppAvailability;
@@ -29,7 +29,7 @@
 
 @property (readonly, nonatomic, getter=isAtrialFibrillationDetectionDisabled) BOOL atrialFibrillationDetectionDisabled;
 @property (readonly, nonatomic, getter=isAtrialFibrillationDetectionOnboardingCompleted) BOOL atrialFibrillationDetectionOnboardingCompleted;
-@property (strong, nonatomic) HKActiveWatchFeatureAvailabilityDataSource *availabilityDataSource; // @synthesize availabilityDataSource=_availabilityDataSource;
+@property (strong, nonatomic) HKActiveWatchRemoteFeatureAvailabilityDataSource *availabilityDataSource; // @synthesize availabilityDataSource=_availabilityDataSource;
 @property (strong, nonatomic) HKWatchAppAvailability *ecgAppAvailability; // @synthesize ecgAppAvailability=_ecgAppAvailability;
 @property (readonly, nonatomic) NSDate *electrocardiogramFirstOnboardingCompletedDate;
 @property (nonatomic, getter=isElectrocardiogramFirstRecordingCompleted) BOOL electrocardiogramFirstRecordingCompleted;

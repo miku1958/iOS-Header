@@ -10,7 +10,7 @@
 #import <ContentKit/WFNaming-Protocol.h>
 #import <ContentKit/WFSerializableContent-Protocol.h>
 
-@class NSData, NSItemProvider, NSString, NSURL;
+@class NSData, NSString, NSURL;
 
 @interface WFSafariWebPage : NSObject <NSCopying, WFNaming, WFSerializableContent>
 {
@@ -19,7 +19,7 @@
     NSString *_selectionText;
     NSData *_selectionHTML;
     NSData *_documentHTML;
-    NSItemProvider *_itemProvider;
+    NSString *_javaScriptRunnerIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -27,7 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSData *documentHTML; // @synthesize documentHTML=_documentHTML;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
+@property (readonly, copy, nonatomic) NSString *javaScriptRunnerIdentifier; // @synthesize javaScriptRunnerIdentifier=_javaScriptRunnerIdentifier;
 @property (readonly, copy, nonatomic) NSString *pageTitle; // @synthesize pageTitle=_pageTitle;
 @property (readonly, copy, nonatomic) NSData *selectionHTML; // @synthesize selectionHTML=_selectionHTML;
 @property (readonly, copy, nonatomic) NSString *selectionText; // @synthesize selectionText=_selectionText;
@@ -35,11 +35,10 @@
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
-+ (void)retrieveWebPageFromItemProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (id)webPageFromItemDictionary:(id)arg1;
++ (id)webPageFromPreprocessingResult:(id)arg1 javaScriptRunnerIdentifier:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithURL:(id)arg1 pageTitle:(id)arg2 selectionText:(id)arg3 selectionHTML:(id)arg4 documentHTML:(id)arg5;
+- (id)initWithURL:(id)arg1 pageTitle:(id)arg2 selectionText:(id)arg3 selectionHTML:(id)arg4 documentHTML:(id)arg5 javaScriptRunnerIdentifier:(id)arg6;
 - (id)wfSerializedRepresentation;
 
 @end

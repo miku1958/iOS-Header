@@ -7,24 +7,30 @@
 #import <UIKit/UIView.h>
 
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <MapKit/UITextViewDelegate-Protocol.h>
 
 @class NSAttributedString, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIColor, UIFont, UITapGestureRecognizer, UITextView, _MKUILabel;
 
-@interface MKExpandingLabel : UIView <UIGestureRecognizerDelegate>
+@interface MKExpandingLabel : UIView <UIGestureRecognizerDelegate, UITextViewDelegate>
 {
     unsigned long long _expansionMode;
     NSTextContainer *_textContainer;
     NSTextStorage *_textStorage;
     NSLayoutManager *_textLayoutManager;
     _MKUILabel *_showMoreLabel;
+    NSString *_showLessText;
+    UIFont *_showLessFont;
     UITapGestureRecognizer *_showMoreTapRecognizer;
     BOOL _isPerformingLayout;
+    BOOL _allowLessText;
     UITextView *_textView;
     UIColor *_showMoreTextColor;
+    UIColor *_showLessTextColor;
     unsigned long long _numberOfLinesWhenCollapsed;
     CDUnknownBlockType _labelResizedBlock;
 }
 
+@property (nonatomic) BOOL allowLessText; // @synthesize allowLessText=_allowLessText;
 @property (copy, nonatomic) NSAttributedString *attributedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,6 +39,9 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType labelResizedBlock; // @synthesize labelResizedBlock=_labelResizedBlock;
 @property (nonatomic) unsigned long long numberOfLinesWhenCollapsed; // @synthesize numberOfLinesWhenCollapsed=_numberOfLinesWhenCollapsed;
+@property (strong, nonatomic) UIFont *showLessFont;
+@property (copy, nonatomic) NSString *showLessText;
+@property (strong, nonatomic) UIColor *showLessTextColor; // @synthesize showLessTextColor=_showLessTextColor;
 @property (strong, nonatomic) UIFont *showMoreFont;
 @property (copy, nonatomic) NSString *showMoreText;
 @property (strong, nonatomic) UIColor *showMoreTextColor; // @synthesize showMoreTextColor=_showMoreTextColor;
@@ -44,10 +53,13 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowAllText;
+- (BOOL)_canShowLess;
 - (void)_expand;
+- (BOOL)_isShowingUserExpanded;
 - (void)_mkExpandingLabelComonInit;
 - (void)_setExpansionMode:(unsigned long long)arg1;
 - (void)_setTextExclusionPath;
+- (id)_showLessTextSeparator;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)infoCardThemeChanged;
 - (id)init;
@@ -55,6 +67,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isShowingExpanded;
 - (void)layoutSubviews;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

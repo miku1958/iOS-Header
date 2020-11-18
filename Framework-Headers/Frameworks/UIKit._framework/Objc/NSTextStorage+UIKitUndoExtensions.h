@@ -7,7 +7,7 @@
 #import <UIFoundation/NSTextStorage.h>
 
 @interface NSTextStorage (UIKitUndoExtensions)
-- (id)_undoRedoAttributedSubstringFromRange:(struct _NSRange)arg1;
-- (void)_undoRedoTextOperation:(id)arg1;
+- (id)_UIUndoRedoAttributedSubstringFromRange:(struct _NSRange)arg1;
+- (void)_UIUndoRedoTextOperation:(id)arg1;
 @end
 

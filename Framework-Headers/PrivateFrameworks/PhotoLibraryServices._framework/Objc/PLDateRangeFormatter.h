@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLMutableDateRangeFormatter-Protocol.h>
+@class NSDateFormatter, NSLocale, NSTimeZone;
 
-@class NSDateFormatter, NSLocale, NSString, NSTimeZone;
-
-@interface PLDateRangeFormatter : NSObject <PLMutableDateRangeFormatter>
+@interface PLDateRangeFormatter : NSObject
 {
+    struct os_unfair_lock_s _lock;
+    long long _preset;
+    NSLocale *_locale;
+    BOOL _useLocalDates;
+    NSTimeZone *_timeZone;
     BOOL _includeDayNumbers;
     BOOL _includeDayNumbersWhenMonthsDiffer;
     BOOL _useRelativeDayFormatting;
@@ -21,11 +24,14 @@
     BOOL _yearOnly;
     BOOL _monthOnly;
     BOOL _timeOnly;
+    BOOL _omitYear;
+    BOOL _monthWithDelimiterAndYear;
     NSDateFormatter *_sameDayDateFormatter;
     NSDateFormatter *_sameDayNoYearDateFormatter;
     NSDateFormatter *_dayOfTheWeekDateFormatter;
     NSDateFormatter *_yearDateFormatter;
     NSDateFormatter *_monthDateFormatter;
+    NSDateFormatter *_monthYearDateFormatter;
     NSDateFormatter *_relativeDateFormatter;
     struct UDateIntervalFormat *_monthDayIntervalFormat;
     struct UDateIntervalFormat *_monthDayNoYearIntervalFormat;
@@ -34,58 +40,49 @@
     struct UDateIntervalFormat *_dayOfTheWeekIntervalFormat;
     struct UDateIntervalFormat *_timeIntervalFormat;
     struct UDateIntervalFormat *_monthIntervalFormat;
+    struct UDateIntervalFormat *_monthYearIntervalFormat;
     struct UDateIntervalFormat *_yearIntervalFormat;
-    id _currentLocaleDidChangeNotificationObserver;
-    id _currentTimeZoneDidChangeNotificationObserver;
-    id _significantTimeChangeNotificationObserver;
-    BOOL _autoUpdateOnChanges;
-    BOOL _useLocalDates;
-    BOOL _shouldOmitYear;
-    NSLocale *_locale;
-    NSTimeZone *_timeZone;
 }
 
-@property (nonatomic) BOOL autoUpdateOnChanges; // @synthesize autoUpdateOnChanges=_autoUpdateOnChanges;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-@property (nonatomic) BOOL shouldOmitYear; // @synthesize shouldOmitYear=_shouldOmitYear;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
-@property (nonatomic) BOOL useLocalDates; // @synthesize useLocalDates=_useLocalDates;
+@property (strong, nonatomic) NSLocale *locale;
+@property (nonatomic) long long preset;
+@property (nonatomic) BOOL useLocalDates;
 
++ (id)autoupdatingFormatterWithPreset:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_currentLocaleDidChange:(id)arg1;
 - (id)_dayDifferentMonthsTemplate;
+- (id)_dayOfTheWeekDateFormatter;
+- (struct UDateIntervalFormat *)_dayOfTheWeekIntervalFormat;
 - (id)_dayTemplate;
-- (id)_formattedDateRangeWithStartDate:(id)arg1 endDate:(id)arg2;
-- (id)_formattedDateRangeWithStartDate:(id)arg1 endDate:(id)arg2 currentDate:(id)arg3;
-- (void)_handleNotification:(id)arg1;
+- (struct UDateIntervalFormat *)_differentMonthDayIntervalFormat;
+- (struct UDateIntervalFormat *)_differentMonthDayNoYearIntervalFormat;
+- (void)_handlePresetDidChange;
+- (void)_handleUseLocalDatesDidChange;
+- (id)_monthDateFormatter;
+- (struct UDateIntervalFormat *)_monthDayIntervalFormat;
+- (struct UDateIntervalFormat *)_monthDayNoYearIntervalFormat;
+- (struct UDateIntervalFormat *)_monthIntervalFormat;
+- (id)_monthYearDateFormatter;
+- (struct UDateIntervalFormat *)_monthYearIntervalFormat;
+- (id)_relativeDateFormatter;
+- (void)_resetFormatters;
+- (id)_sameDayDateFormatter;
+- (id)_sameDayNoYearDateFormatter;
 - (id)_sameMonthTemplate;
-- (void)_updateDayOfTheWeekDateFormatter;
-- (void)_updateDayOfTheWeekIntervalFormat;
-- (void)_updateDifferentMonthDayIntervalFormat;
-- (void)_updateDifferentMonthDayNoYearIntervalFormat;
-- (void)_updateFormatters;
-- (void)_updateMonthDateFormatter;
-- (void)_updateMonthDayIntervalFormat;
-- (void)_updateMonthDayNoYearIntervalFormat;
-- (void)_updateMonthIntervalFormat;
-- (void)_updateRelativeDateFormatter;
-- (void)_updateSameDayDateFormatter;
-- (void)_updateSameDayNoYearDateFormatter;
-- (void)_updateTimeIntervalFormat;
-- (void)_updateTimeZone;
-- (void)_updateYearDateFormatter;
-- (void)_updateYearIntervalFormat;
-- (void)configureForFormatPreset:(unsigned long long)arg1;
+- (void)_significantTimeChange:(id)arg1;
+- (id)_stringFromDate:(id)arg1 toDate:(id)arg2 currentDate:(id)arg3;
+- (void)_systemTimeZoneDidChange:(id)arg1;
+- (struct UDateIntervalFormat *)_timeIntervalFormat;
+- (id)_yearDateFormatter;
+- (struct UDateIntervalFormat *)_yearIntervalFormat;
 - (void)dealloc;
-- (id)formattedDate:(id)arg1;
-- (id)formattedDateRangeWithStartDate:(id)arg1 endDate:(id)arg2;
 - (id)init;
-- (id)initWithFormatPreset:(unsigned long long)arg1 autoUpdateOnChanges:(BOOL)arg2;
-- (id)initWithFormatPreset:(unsigned long long)arg1 configurationBlock:(CDUnknownBlockType)arg2;
-- (void)performChanges:(CDUnknownBlockType)arg1;
+- (id)initWithPreset:(long long)arg1;
+- (id)localTimeZone;
+- (id)stringFromDate:(id)arg1;
+- (id)stringFromDate:(id)arg1 toDate:(id)arg2;
+- (id)stringFromDate:(id)arg1 toDate:(id)arg2 currentDate:(id)arg3;
 
 @end
 

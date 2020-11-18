@@ -6,24 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class HDDaemon, NSArray, NSDictionary;
+@class HDDaemon, NSArray;
 
 @interface HDPluginManager : NSObject
 {
     NSArray *_plugins;
-    NSArray *_legacyPlugins;
     HDDaemon *_daemon;
     NSArray *_allowablePluginDirectoryPaths;
-    NSDictionary *_legacyPluginsByIdentifier;
 }
 
 @property (copy, nonatomic) NSArray *allowablePluginDirectoryPaths; // @synthesize allowablePluginDirectoryPaths=_allowablePluginDirectoryPaths;
 @property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
-@property (strong, nonatomic) NSDictionary *legacyPluginsByIdentifier; // @synthesize legacyPluginsByIdentifier=_legacyPluginsByIdentifier;
 
 - (void).cxx_destruct;
 - (id)_builtInPluginClasses;
-- (id)_createLegacyPluginsFromClasses:(id)arg1;
 - (id)_createPluginsFromClasses:(id)arg1;
 - (id)_internalPluginsDirectoryPaths;
 - (void)_loadPlugins;
@@ -36,10 +32,7 @@
 - (id)createExtensionsForDaemon:(id)arg1;
 - (id)createExtensionsForProfile:(id)arg1;
 - (id)initWithDaemon:(id)arg1;
-- (id)legacyPlugins;
-- (id)pluginForIdentifier:(id)arg1;
 - (id)pluginsConformingToProtocol:(id)arg1;
-- (id)pluginsForProtocol:(id)arg1;
 
 @end
 

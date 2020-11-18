@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_groupID;
     unsigned long long _nbClients;
     NSMutableSet *_liveModeParticipantIdentifiers;
-    IDSService *_sharingService;
+    IDSService *_sharingIDSService;
     NSMutableSet *_identifiers;
     NSObject<OS_os_transaction> *_transaction;
     NSString *_initiatorIdentifier;
@@ -36,22 +36,22 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_currentRoutePath;
-- (void)_joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2;
-- (void)_leaveLivemode;
-- (void)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3;
+- (BOOL)_joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2 error:(id *)arg3;
+- (BOOL)_leaveLiveMode:(id *)arg1;
+- (BOOL)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3 error:(id *)arg4;
 - (void)_sharingEnded;
 - (void)_sharingEndedWithError:(id)arg1;
 - (BOOL)_validParticipant:(id)arg1;
 - (void)addSharingWith:(id)arg1;
 - (void)dealloc;
 - (id)initWithService:(id)arg1 groupID:(id)arg2 initiator:(BOOL)arg3 initiatorIdentifier:(id)arg4;
-- (void)joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2;
-- (void)leaveLiveModeForced;
-- (BOOL)leaveLiveModeIfNeeded;
+- (BOOL)joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2 error:(id *)arg3;
+- (BOOL)leaveLiveModeForced:(id *)arg1;
+- (BOOL)leaveLiveModeIfNeeded:(id *)arg1;
 - (void)participantDidJoin:(id)arg1;
 - (void)participantDidLeave:(id)arg1;
-- (void)sendChunkedMessage:(id)arg1 to:(id)arg2;
-- (void)sendCommand:(id)arg1 fromHandle:(id)arg2 fromAccountID:(id)arg3;
+- (BOOL)sendChunkedMessage:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (BOOL)sendCommand:(id)arg1 fromHandle:(id)arg2 fromAccountID:(id)arg3 error:(id *)arg4;
 - (BOOL)sessionIsAliveAfterRemovingSharingIdentifiers:(id)arg1;
 
 @end

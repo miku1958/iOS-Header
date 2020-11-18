@@ -15,6 +15,7 @@
 
 + (BOOL)isAllowedToRunAutomatically;
 + (BOOL)isSupportedOnThisDevice;
++ (BOOL)isUserInitiated;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (BOOL)supportsSecureCoding;

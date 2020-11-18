@@ -25,7 +25,7 @@
     UILabel *_publisherNameLabel;
     UILabel *_sizeLabel;
     HUInlineWebContainerView *_releaseNotesSummaryView;
-    NSLayoutConstraint *_releaseNotesSummaryHeightConstraint;
+    NSLayoutConstraint *_releaseNotesHeightConstraint;
 }
 
 @property (strong, nonatomic) HUSoftwareUpdateAnimatedIcon *animatedGearView; // @synthesize animatedGearView=_animatedGearView;
@@ -38,7 +38,7 @@
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) UIStackView *labelStackView; // @synthesize labelStackView=_labelStackView;
 @property (strong, nonatomic) UILabel *publisherNameLabel; // @synthesize publisherNameLabel=_publisherNameLabel;
-@property (strong, nonatomic) NSLayoutConstraint *releaseNotesSummaryHeightConstraint; // @synthesize releaseNotesSummaryHeightConstraint=_releaseNotesSummaryHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *releaseNotesHeightConstraint; // @synthesize releaseNotesHeightConstraint=_releaseNotesHeightConstraint;
 @property (strong, nonatomic) HUInlineWebContainerView *releaseNotesSummaryView; // @synthesize releaseNotesSummaryView=_releaseNotesSummaryView;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (strong, nonatomic) UILabel *sizeLabel; // @synthesize sizeLabel=_sizeLabel;

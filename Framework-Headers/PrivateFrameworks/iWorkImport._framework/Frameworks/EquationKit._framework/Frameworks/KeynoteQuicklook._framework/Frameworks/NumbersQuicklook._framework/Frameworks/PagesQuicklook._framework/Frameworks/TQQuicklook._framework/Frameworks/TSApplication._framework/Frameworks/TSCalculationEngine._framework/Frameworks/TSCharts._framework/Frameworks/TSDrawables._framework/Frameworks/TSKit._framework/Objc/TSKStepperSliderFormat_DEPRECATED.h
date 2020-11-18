@@ -10,21 +10,21 @@
 
 @interface TSKStepperSliderFormat_DEPRECATED : TSKFormat <NSCopying>
 {
-    int _displayFormatType;
+    unsigned int _displayFormatType;
     double _minimum;
     double _maximum;
     double _increment;
 }
 
-@property (readonly, nonatomic) int displayFormatType; // @synthesize displayFormatType=_displayFormatType;
+@property (readonly, nonatomic) unsigned int displayFormatType; // @synthesize displayFormatType=_displayFormatType;
 @property (readonly, nonatomic) double increment; // @synthesize increment=_increment;
 @property (readonly, nonatomic) double maximum; // @synthesize maximum=_maximum;
 @property (readonly, nonatomic) double minimum; // @synthesize minimum=_minimum;
 
 - (id)asStepperSliderFormat;
 - (unsigned long long)hash;
-- (id)initWithFormatType:(int)arg1;
-- (id)initWithFormatType:(int)arg1 minimum:(double)arg2 maximum:(double)arg3 increment:(double)arg4 displayFormatType:(int)arg5;
+- (id)initWithFormatType:(unsigned int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1 minimum:(double)arg2 maximum:(double)arg3 increment:(double)arg4 displayFormatType:(unsigned int)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -19,19 +19,22 @@
 
 - (void).cxx_destruct;
 - (id)_appLayoutToScrollToDuringTransition;
-- (long long)backdropBlurType;
+- (id)_dismissForEmptySwitcherResponseName;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)containerStatusBarAnimationDuration;
-- (struct _NSRange)fullSizeSnapshotsRange;
+- (id)handleTimerEvent:(id)arg1;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 multitaskingModifier:(id)arg2 selectedAppLayout:(id)arg3 startingEnvironmentMode:(long long)arg4 liftOfVelocity:(struct CGPoint)arg5 liftOffTranslation:(struct CGPoint)arg6;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

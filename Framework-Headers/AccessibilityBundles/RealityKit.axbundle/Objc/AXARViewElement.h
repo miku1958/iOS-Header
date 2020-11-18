@@ -17,6 +17,7 @@
 - (id)_accessibilityScrollStatus;
 - (id)_arView;
 - (struct CGRect)_boundingRect;
+- (BOOL)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

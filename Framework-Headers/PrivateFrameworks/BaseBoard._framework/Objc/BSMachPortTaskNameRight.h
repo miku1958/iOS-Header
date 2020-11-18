@@ -10,11 +10,11 @@
 
 @interface BSMachPortTaskNameRight : BSMachPortSendRight
 {
-    int _pid;
     BSAuditToken *_critical_auditToken;
+    int _pid;
 }
 
-@property (readonly, nonatomic) BSAuditToken *auditToken; // @dynamic auditToken;
+@property (readonly, nonatomic) BSAuditToken *auditToken;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 
 + (BOOL)supportsSecureCoding;

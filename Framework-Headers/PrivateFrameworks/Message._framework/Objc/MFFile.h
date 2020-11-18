@@ -25,7 +25,6 @@
 
 + (id)log;
 - (void).cxx_destruct;
-- (BOOL)_isPurgeableAccount:(id)arg1;
 - (id)initWithFile:(id)arg1 account:(id)arg2;
 - (BOOL)markPurgeableWithError:(id *)arg1;
 

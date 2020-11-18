@@ -7,9 +7,9 @@
 #import <WorkflowKit/NSObject-Protocol.h>
 
 @class NSError;
-@protocol WFUserInterface;
+@protocol WFUserInterfaceHost;
 
 @protocol WFErrorRecoveryAttempting <NSObject>
-- (void)attemptRecoveryFromError:(NSError *)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id<WFUserInterface>)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)attemptRecoveryFromError:(NSError *)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id<WFUserInterfaceHost>)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 @end
 

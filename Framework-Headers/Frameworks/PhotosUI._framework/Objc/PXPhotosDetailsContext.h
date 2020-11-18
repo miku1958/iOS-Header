@@ -22,7 +22,7 @@
     PXDisplayTitleInfo *_displayTitleInfo;
     PXPhotosDetailsContext *_parentContext;
     PHFetchResult *_keyAssetsFetchResult;
-    unsigned long long _viewSourceOrigin;
+    long long _viewSourceOrigin;
     PXPhotosDetailsViewModel *_viewModel;
     unsigned long long _contextHierarchyDepth;
     PHFetchResult *_assetCollections;
@@ -53,11 +53,11 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
 @property (readonly, nonatomic) PXPhotosDetailsViewModel *viewModel; // @synthesize viewModel=_viewModel;
-@property (readonly, nonatomic) unsigned long long viewSourceOrigin; // @synthesize viewSourceOrigin=_viewSourceOrigin;
+@property (readonly, nonatomic) long long viewSourceOrigin; // @synthesize viewSourceOrigin=_viewSourceOrigin;
 
 + (id)photosDetailsContextForAsset:(id)arg1 parentContext:(id)arg2;
-+ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 keyAssets:(id)arg3 enableCuration:(BOOL)arg4 enableKeyAssets:(BOOL)arg5 useVerboseSmartDescription:(BOOL)arg6 viewSourceOrigin:(unsigned long long)arg7;
-+ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 viewSourceOrigin:(unsigned long long)arg3;
++ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 keyAssets:(id)arg3 enableCuration:(BOOL)arg4 enableKeyAssets:(BOOL)arg5 useVerboseSmartDescription:(BOOL)arg6 viewSourceOrigin:(long long)arg7;
++ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 viewSourceOrigin:(long long)arg3;
 + (id)photosDetailsContextForMemory:(id)arg1;
 + (id)photosDetailsContextForMemory:(id)arg1 enableCuration:(BOOL)arg2 enableKeyAssets:(BOOL)arg3;
 - (void).cxx_destruct;
@@ -80,7 +80,7 @@
 - (void)setShouldShowMovieHeader:(BOOL)arg1;
 - (void)setTitleFontName:(id)arg1;
 - (void)setViewModel:(id)arg1;
-- (void)setViewSourceOrigin:(unsigned long long)arg1;
+- (void)setViewSourceOrigin:(long long)arg1;
 
 @end
 

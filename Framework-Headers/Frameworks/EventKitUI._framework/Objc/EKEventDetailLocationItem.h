@@ -34,6 +34,7 @@
 - (id)initWithLocationName:(id)arg1 forEvent:(id)arg2;
 - (id)locationView;
 - (void)textViewDidChangeSelection:(id)arg1;
+- (void)updateAttributedString;
 - (void)updateLocation:(id)arg1 forEvent:(id)arg2;
 
 @end

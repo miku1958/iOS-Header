@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <AudioToolbox/NSSecureCoding-Protocol.h>
+
 @class NSArray;
 
-@interface AVHapticPlayerParameterCurve : NSObject
+@interface AVHapticPlayerParameterCurve : NSObject <NSSecureCoding>
 {
     unsigned long long _type;
     double _time;
@@ -21,8 +23,11 @@
 @property double time; // @synthesize time=_time;
 @property unsigned long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithType:(unsigned long long)arg1 relativeTime:(double)arg2 shape:(unsigned long long)arg3 controlPoints:(id)arg4;
 
 @end

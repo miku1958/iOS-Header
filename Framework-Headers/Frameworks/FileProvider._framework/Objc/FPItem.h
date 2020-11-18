@@ -12,7 +12,7 @@
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
-@class FPItemID, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSProgress, NSSet, NSString, NSURL;
+@class FPItemID, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSProgress, NSSet, NSString, NSURL, UTType;
 @protocol NSFileProviderItemFlags;
 
 @interface FPItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating, NSFileProviderItem, NSCopying, NSSecureCoding>
@@ -53,7 +53,7 @@
     NSDictionary *_userInfo;
     NSNumber *_documentSize;
     NSDate *_creationDate;
-    NSString *_typeIdentifier;
+    UTType *_contentType;
     NSData *_versionIdentifier;
     NSFileProviderItemVersion *_itemVersion;
     NSPersonNameComponents *_ownerNameComponents;
@@ -94,6 +94,7 @@
 @property (readonly, nonatomic, getter=isCloudItem) BOOL cloudItem;
 @property (strong, nonatomic) NSString *containerDisplayName; // @synthesize containerDisplayName=_containerDisplayName;
 @property (copy, nonatomic) NSDate *contentModificationDate; // @synthesize contentModificationDate=_contentModificationDate;
+@property (readonly, copy, nonatomic) UTType *contentType; // @synthesize contentType=_contentType;
 @property (readonly, nonatomic) NSProgress *copyingProgress;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic, getter=isDataless) BOOL dataless; // @synthesize dataless=_dataless;
@@ -186,7 +187,7 @@
 @property (copy, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property (nonatomic, getter=isTopLevelSharedItem) BOOL topLevelSharedItem; // @synthesize topLevelSharedItem=_topLevelSharedItem;
 @property (nonatomic, getter=isTrashed) BOOL trashed; // @synthesize trashed=_trashed;
-@property (copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
+@property (copy, nonatomic) NSString *typeIdentifier;
 @property (nonatomic, getter=isUbiquitous) BOOL ubiquitous; // @synthesize ubiquitous=_isUbiquitous;
 @property (nonatomic, getter=isUploaded) BOOL uploaded; // @synthesize uploaded=_uploaded;
 @property (nonatomic, getter=isUploading) BOOL uploading; // @synthesize uploading=_uploading;
@@ -221,8 +222,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProviderDomainID:(id)arg1 itemIdentifier:(id)arg2 parentItemIdentifier:(id)arg3 filename:(id)arg4 isDirectory:(BOOL)arg5;
 - (id)initWithProviderDomainID:(id)arg1 itemIdentifier:(id)arg2 parentItemIdentifier:(id)arg3 filename:(id)arg4 typeIdentifier:(id)arg5;
+- (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 contentType:(id)arg6;
 - (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 isDirectory:(BOOL)arg6;
-- (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 typeIdentifier:(id)arg6;
 - (id)initWithSearchableItem:(id)arg1;
 - (id)initWithVendorItem:(id)arg1 provider:(id)arg2 domain:(id)arg3 extensionCapabilities:(unsigned long long)arg4 useFPFS:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;

@@ -31,13 +31,7 @@
         unsigned int read_waypointId:1;
         unsigned int read_waypointLocation:1;
         unsigned int read_waypointPlace:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_waypointId:1;
-        unsigned int wrote_waypointLocation:1;
-        unsigned int wrote_waypointPlace:1;
-        unsigned int wrote_waypointType:1;
-        unsigned int wrote_isCurrentLocation:1;
-        unsigned int wrote_isLocationOfInterest:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,9 +52,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsWaypointType:(id)arg1;
-- (void)_readWaypointId;
-- (void)_readWaypointLocation;
-- (void)_readWaypointPlace;
 - (void)clearLocations;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -71,7 +62,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)locationForWaypoint;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

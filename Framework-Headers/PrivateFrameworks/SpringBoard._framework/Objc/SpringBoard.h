@@ -6,7 +6,6 @@
 
 #import <UIKit/UISystemShellApplication.h>
 
-#import <SpringBoard/CCUIPPTHostDelegate-Protocol.h>
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
 #import <SpringBoard/RSPeerToPeerConnectionControllerDataSource-Protocol.h>
 #import <SpringBoard/SBAVSystemControllerCacheObserver-Protocol.h>
@@ -22,10 +21,10 @@
 #import <SpringBoard/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <SpringBoard/_UIApplicationInitializationContextFactory-Protocol.h>
 
-@class DNDAWDMetricsService, DNDNotificationsService, NSArray, NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableSet, NSNumberFormatter, NSObject, NSSet, NSString, NSTimer, RSPeerToPeerServerController, SBAccessibilityWindowHostingControllerServer, SBAccountStoreManager, SBAppStatusBarSettingsAssertion, SBAppSwitcherSystemService, SBApplication, SBApplicationAutoLaunchService, SBApplicationLaunchAlertService, SBBluetoothAccessoryBatteryMonitor, SBCameraHardwareButton, SBCarDoNotDisturbController, SBCardItemsController, SBCombinationHardwareButton, SBDeveloperBuildExpirationTrigger, SBDeviceOrientationUpdateManager, SBDisplayBrightnessController, SBExternalDisplayManager, SBFUserAuthenticationController, SBHomeHardwareButton, SBHomeScreenService, SBIdleTimerPolicyAggregator, SBInteractiveScreenshotGestureManager, SBLockHardwareButton, SBLockScreenService, SBMainDisplayInterfaceOrientationAggregator, SBMainWorkspace, SBModalAlertPresentationCoordinator, SBModalAlertPresenter, SBModalUIFluidDismissGestureManager, SBMousePointerManager, SBNCNotificationDispatcher, SBPressPrecedenceArbiter, SBProximitySensorManager, SBRemoteAlertHandleServer, SBRemoteTransientOverlaySessionManager, SBRestartManager, SBSStatusBarStyleOverridesAssertion, SBScreenTimeTrackingController, SBScreenshotManager, SBSoftwareUpdatePasscodePolicyManager, SBSpotlightTransientOverlayViewController, SBSpuriousScreenUndimmingAssertion, SBStateDumpService, SBSynchronizeCloudCriticalDataOperation, SBSystemCursorInteractionManager, SBTestAutomationService, SBUIController, SBUserAgent, SBUserSessionController, SBVolumeHardwareButton, SBWidgetController, SSScreenCapturer, STStatusServer, STTelephonyStateProvider, UIWindow;
-@protocol BSInvalidatable, OS_dispatch_source, SBFLockOutStatusProvider, SBIdleTimer, SBProximityBacklightPolicy, SBUIUserAgent;
+@class DNDAWDMetricsService, DNDNotificationsService, DNDToggleManager, NSArray, NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableSet, NSNumberFormatter, NSObject, NSSet, NSString, NSTimer, RSPeerToPeerServerController, SBAccessibilityWindowHostingControllerServer, SBAccountStoreManager, SBAppClipOverlayCoordinator, SBAppStatusBarSettingsAssertion, SBAppSwitcherSystemService, SBApplication, SBApplicationAutoLaunchService, SBApplicationLaunchAlertService, SBAvocadoDebuggingController, SBBannerManager, SBBluetoothAccessoryBatteryMonitor, SBCameraHardwareButton, SBCarDoNotDisturbController, SBCardItemsController, SBChronoApplicationProcessStateObserver, SBChronoHomeScreenUsageObserver, SBCombinationHardwareButton, SBDeveloperBuildExpirationTrigger, SBDeviceOrientationUpdateManager, SBDisplayBrightnessController, SBExternalDisplayManager, SBFUserAuthenticationController, SBHomeHardwareButton, SBHomeScreenService, SBIdleTimerPolicyAggregator, SBInteractiveScreenshotGestureManager, SBLockHardwareButton, SBLockScreenService, SBLockedPointerManager, SBMainDisplayInterfaceOrientationAggregator, SBMainWorkspace, SBModalAlertPresentationCoordinator, SBModalAlertPresenter, SBModalUIFluidDismissGestureManager, SBMousePointerManager, SBNCNotificationDispatcher, SBPressPrecedenceArbiter, SBProximitySensorManager, SBRecordingIndicatorManager, SBRemoteAlertHandleServer, SBRemoteTransientOverlaySessionManager, SBRestartManager, SBSStatusBarStyleOverridesAssertion, SBScreenTimeTrackingController, SBScreenshotManager, SBSensorActivityDataProvider, SBSoftwareUpdatePasscodePolicyManager, SBSpotlightTransientOverlayViewController, SBSpuriousScreenUndimmingAssertion, SBStateDumpService, SBSynchronizeCloudCriticalDataOperation, SBSystemPointerInteractionManager, SBTestAutomationService, SBUIController, SBUserAgent, SBUserSessionController, SBVolumeHardwareButton, SBWebClipService, SBWidgetController, SSScreenCapturer, STDynamicActivityAttributionManager, STMediaStatusDomain, STStatusServer, STTelephonyStateProvider, UIWindow;
+@protocol BSInvalidatable, OS_dispatch_source, OS_os_transaction, SBFLockOutStatusProvider, SBIdleTimer, SBProximityBacklightPolicy, SBUIUserAgent;
 
-@interface SpringBoard : UISystemShellApplication <CCUIPPTHostDelegate, MCProfileConnectionObserver, RSPeerToPeerConnectionControllerDataSource, SBRestartManagerDelegate, SBModalAlertPresentationCoordinatorDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, SSScreenCapturerDelegate, SBBacklightControllerObserver, SBInteractiveScreenshotGestureManagerDelegate, SBRemoteTransientOverlaySessionManagerDelegate, SBSpotlightTransientOverlayViewControllerDelegate, _UIApplicationInitializationContextFactory, SBAVSystemControllerCacheObserver, UIApplicationDelegate, SBIdleTimerProviding>
+@interface SpringBoard : UISystemShellApplication <MCProfileConnectionObserver, RSPeerToPeerConnectionControllerDataSource, SBRestartManagerDelegate, SBModalAlertPresentationCoordinatorDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, SSScreenCapturerDelegate, SBBacklightControllerObserver, SBInteractiveScreenshotGestureManagerDelegate, SBRemoteTransientOverlaySessionManagerDelegate, SBSpotlightTransientOverlayViewControllerDelegate, _UIApplicationInitializationContextFactory, SBAVSystemControllerCacheObserver, UIApplicationDelegate, SBIdleTimerProviding>
 {
     SBUIController *_uiController;
     double _headsetButtonDownTime;
@@ -42,7 +41,7 @@
     int _mediaSeekDirection;
     unsigned int _springBoardRequestsAccelerometerEvents;
     long long _activeInterfaceOrientation;
-    NSMutableSet *_activeInterfaceOrientationObservers;
+    NSHashTable *_activeInterfaceOrientationObservers;
     NSMutableArray *_activeInterfaceOrientationOverrideStack;
     BOOL _wantsOrientationEvents;
     int _notifyDontAnimateREOToken;
@@ -115,6 +114,8 @@
     id<BSInvalidatable> _deferOrientationUpdatesForKeybagAssertion;
     SBLockScreenService *_lockScreenService;
     SBHomeScreenService *_homeScreenService;
+    SBChronoHomeScreenUsageObserver *_widgetHomeScreenUsageObserver;
+    SBChronoApplicationProcessStateObserver *_widgetApplicationProcessStateObserver;
     SBAppSwitcherSystemService *_appSwitcherSystemService;
     long long _lastSeekRequestSource;
     DNDAWDMetricsService *_dndAWDMetricsService;
@@ -124,19 +125,30 @@
     SBStateDumpService *_stateDumpService;
     unsigned long long _stateDumpServiceRevision;
     int _currentOverrides;
+    NSCountedSet *_spotlightTransientOverlayRequiringReasons;
     SBSpotlightTransientOverlayViewController *_spotlightTransientOverlayViewController;
     NSHashTable *_activeRemoteTransientOverlayViewProviders;
     CDUnknownBlockType _headsetButtonUpHandler;
     SBMousePointerManager *_mousePointerManager;
     SBAccessibilityWindowHostingControllerServer *_accessibilityWindowHostingController;
+    id<BSInvalidatable> _pipSpotlightWindowLevelAssertionInvalidatable;
     SBDisplayBrightnessController *_displayBrightnessController;
+    NSMutableSet *_keyboardUsagePairsDown;
+    BOOL _swallowKeyboardEvents;
     BOOL _requestingStatusBarStyleWithoutConsideringAlerts;
+    DNDToggleManager *_dndToggleManager;
+    STMediaStatusDomain *_mediaDomain;
+    id _userHasAuthenticatedForTheFirstTimeNotificationObserver;
+    NSObject<OS_os_transaction> *_takingScreenshotTransaction;
     BOOL _typingActive;
     BOOL _batterySaverModeActive;
     int _nowPlayingProcessPID;
     NSMutableArray *_nowLocatingApps;
     SBWidgetController *_widgetController;
-    SBSystemCursorInteractionManager *_systemCursorInteractionManager;
+    SBAvocadoDebuggingController *_avocadoController;
+    SBSystemPointerInteractionManager *_systemPointerInteractionManager;
+    SBLockedPointerManager *_lockedPointerManager;
+    SBBannerManager *_bannerManager;
     double _bottomEdgeAmbiguousActivationMargin;
     SBHomeHardwareButton *_homeHardwareButton;
     SBLockHardwareButton *_lockHardwareButton;
@@ -146,7 +158,12 @@
     SBInteractiveScreenshotGestureManager *_interactiveScreenshotGestureManager;
     SBSoftwareUpdatePasscodePolicyManager *_softwareUpdatePasscodePolicyManager;
     STStatusServer *_systemStatusServer;
+    STDynamicActivityAttributionManager *_dynamicAttributionManager;
     STTelephonyStateProvider *_telephonyStateProvider;
+    SBSensorActivityDataProvider *_sensorActivityDataProvider;
+    SBRecordingIndicatorManager *_recordingIndicatorManager;
+    SBWebClipService *_webClipService;
+    SBAppClipOverlayCoordinator *_appClipOverlayCoordinator;
     SBRemoteTransientOverlaySessionManager *_remoteTransientOverlaySessionManager;
     NSTimer *_daylightSavingsTimer;
     SBCombinationHardwareButton *_combinationHardwareButton;
@@ -154,21 +171,23 @@
 }
 
 @property (readonly, nonatomic) SBAccountStoreManager *accountStoreController; // @synthesize accountStoreController=_accountStoreController;
+@property (readonly, nonatomic) SBAppClipOverlayCoordinator *appClipOverlayCoordinator; // @synthesize appClipOverlayCoordinator=_appClipOverlayCoordinator;
 @property (readonly, nonatomic) SBApplicationAutoLaunchService *applicationAutoLaunchService; // @synthesize applicationAutoLaunchService=_applicationAutoLaunchService;
 @property (readonly, nonatomic) SBApplicationLaunchAlertService *applicationLaunchAlertService; // @synthesize applicationLaunchAlertService=_applicationLaunchAlertService;
 @property (readonly, nonatomic) NSArray *appsRegisteredForLockButtonEvents; // @synthesize appsRegisteredForLockButtonEvents=_appsRegisteredForLockButtonEvents;
 @property (readonly, nonatomic) NSArray *appsRegisteredForVolumeEvents; // @synthesize appsRegisteredForVolumeEvents=_appsRegisteredForVolumeEvents;
 @property (readonly, nonatomic) SBFUserAuthenticationController *authenticationController; // @synthesize authenticationController=_authenticationController;
+@property (readonly, nonatomic) SBAvocadoDebuggingController *avocadoController; // @synthesize avocadoController=_avocadoController;
+@property (readonly, nonatomic) SBBannerManager *bannerManager; // @synthesize bannerManager=_bannerManager;
 @property (nonatomic, getter=isBatterySaverModeActive) BOOL batterySaverModeActive; // @synthesize batterySaverModeActive=_batterySaverModeActive;
 @property (nonatomic) double bottomEdgeAmbiguousActivationMargin; // @synthesize bottomEdgeAmbiguousActivationMargin=_bottomEdgeAmbiguousActivationMargin;
 @property (readonly, nonatomic) SBCameraHardwareButton *cameraHardwareButton; // @synthesize cameraHardwareButton=_cameraHardwareButton;
 @property (readonly, nonatomic) SBCombinationHardwareButton *combinationHardwareButton; // @synthesize combinationHardwareButton=_combinationHardwareButton;
 @property (strong, nonatomic) NSTimer *daylightSavingsTimer; // @synthesize daylightSavingsTimer=_daylightSavingsTimer;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) STDynamicActivityAttributionManager *dynamicAttributionManager; // @synthesize dynamicAttributionManager=_dynamicAttributionManager;
+@property BOOL hasFinishedLaunching; // @synthesize hasFinishedLaunching=_hasFinishedLaunching;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBHomeHardwareButton *homeHardwareButton; // @synthesize homeHardwareButton=_homeHardwareButton;
 @property (strong, nonatomic, setter=_setIdleTimer:) id<SBIdleTimer> idleTimer; // @synthesize idleTimer=_idleTimer;
@@ -178,6 +197,7 @@
 @property (readonly, nonatomic) SBLockHardwareButton *lockHardwareButton; // @synthesize lockHardwareButton=_lockHardwareButton;
 @property (readonly, nonatomic) id<SBFLockOutStatusProvider> lockOutController; // @synthesize lockOutController=_lockOutController;
 @property (readonly, nonatomic) SBLockScreenService *lockScreenService; // @synthesize lockScreenService=_lockScreenService;
+@property (readonly, nonatomic) SBLockedPointerManager *lockedPointerManager; // @synthesize lockedPointerManager=_lockedPointerManager;
 @property (readonly, nonatomic) SBModalAlertPresentationCoordinator *modalAlertPresentationCoordinator; // @synthesize modalAlertPresentationCoordinator=_modalAlertPresentationCoordinator;
 @property (readonly, nonatomic) SBNCNotificationDispatcher *notificationDispatcher; // @synthesize notificationDispatcher=_notificationDispatcher;
 @property (strong, nonatomic) NSMutableArray *nowLocatingApps; // @synthesize nowLocatingApps=_nowLocatingApps;
@@ -185,21 +205,23 @@
 @property (readonly, nonatomic) SBMainDisplayInterfaceOrientationAggregator *orientationAggregator;
 @property (readonly, nonatomic) id<SBUIUserAgent> pluginUserAgent; // @synthesize pluginUserAgent=_pluginUserAgent;
 @property (readonly, nonatomic) SBProximitySensorManager *proximitySensorManager; // @synthesize proximitySensorManager=_proximitySensorManager;
+@property (readonly, nonatomic) SBRecordingIndicatorManager *recordingIndicatorManager; // @synthesize recordingIndicatorManager=_recordingIndicatorManager;
 @property (readonly, nonatomic) SBRemoteTransientOverlaySessionManager *remoteTransientOverlaySessionManager; // @synthesize remoteTransientOverlaySessionManager=_remoteTransientOverlaySessionManager;
 @property (readonly, nonatomic) SBRestartManager *restartManager; // @synthesize restartManager=_restartManager;
 @property (readonly, nonatomic) int ringerSwitchState; // @synthesize ringerSwitchState=_ringerSwitchState;
 @property (readonly, nonatomic) SBScreenshotManager *screenshotManager; // @synthesize screenshotManager=_screenshotManager;
+@property (readonly, nonatomic) SBSensorActivityDataProvider *sensorActivityDataProvider; // @synthesize sensorActivityDataProvider=_sensorActivityDataProvider;
 @property (readonly, nonatomic) SBSoftwareUpdatePasscodePolicyManager *softwareUpdatePasscodePolicyManager; // @synthesize softwareUpdatePasscodePolicyManager=_softwareUpdatePasscodePolicyManager;
 @property (strong, nonatomic) RSPeerToPeerServerController *stateDumpServerController; // @synthesize stateDumpServerController=_stateDumpServerController;
 @property (readonly) Class superclass;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) SBSystemCursorInteractionManager *systemCursorInteractionManager; // @synthesize systemCursorInteractionManager=_systemCursorInteractionManager;
+@property (readonly, nonatomic) SBSystemPointerInteractionManager *systemPointerInteractionManager; // @synthesize systemPointerInteractionManager=_systemPointerInteractionManager;
 @property (readonly, nonatomic) STStatusServer *systemStatusServer; // @synthesize systemStatusServer=_systemStatusServer;
 @property (readonly, nonatomic) STTelephonyStateProvider *telephonyStateProvider; // @synthesize telephonyStateProvider=_telephonyStateProvider;
 @property (nonatomic, getter=isTypingActive) BOOL typingActive; // @synthesize typingActive=_typingActive;
 @property (readonly, nonatomic) SBUserSessionController *userSessionController; // @synthesize userSessionController=_userSessionController;
 @property (readonly, nonatomic) SBVolumeHardwareButton *volumeHardwareButton; // @synthesize volumeHardwareButton=_volumeHardwareButton;
 @property (readonly, nonatomic) BOOL wantsOrientationEvents;
+@property (readonly, nonatomic) SBWebClipService *webClipService; // @synthesize webClipService=_webClipService;
 @property (readonly, nonatomic) SBWidgetController *widgetController; // @synthesize widgetController=_widgetController;
 @property (strong, nonatomic) UIWindow *window;
 
@@ -207,7 +229,8 @@
 + (id)_newApplicationInitializationContext;
 + (void)initializeSystemServicesBeforeApplicationDidFinishLaunching;
 - (void).cxx_destruct;
-- (BOOL)__handleHIDEvent:(struct __IOHIDEvent *)arg1;
+- (BOOL)__handleHIDEvent:(struct __IOHIDEvent *)arg1 withUIEvent:(id)arg2;
+- (void)__performPanGesturesOnScreenFromPage:(unsigned long long)arg1 toPage:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (double)_accessibilityActivationAnimationStartDelay;
 - (void)_accessibilityActivationAnimationWillBegin;
 - (double)_accessibilityDeactivationAnimationStartDelay;
@@ -230,16 +253,14 @@
 - (id)_applicationToUseForScrollTesting;
 - (void)_basicRotationTestForCurrentConfigurationWithTeardown:(CDUnknownBlockType)arg1;
 - (void)_batterySaverModeChanged:(int)arg1;
-- (void)_bringUpCoverSheetWithBeforePresent:(CDUnknownBlockType)arg1 afterPresent:(CDUnknownBlockType)arg2 beforeDismiss:(CDUnknownBlockType)arg3 afterDismiss:(CDUnknownBlockType)arg4;
+- (void)_beginRequiringSpotlightTransientOverlayForReason:(id)arg1;
 - (void)_broadcastStateCaptureToConnectedRemotePeers:(id)arg1;
 - (void)_caseLatchWantsToAttemptLock;
-- (long long)_classicMode;
 - (void)_cleanUpLaunchTestState;
 - (void)_cleanupMainWorkspaceForMedusaTestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_combinedListViewController;
 - (void)_continueRunningDismissAppSwitcherTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_continueRunningScrollAppSwitcherTest:(id)arg1 runColdTest:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_coverSheetBringUpEventStream;
 - (void)_createInitialAppScene;
 - (long long)_currentNonFlatDeviceOrientation;
 - (id)_dashBoardCombinedListViewController;
@@ -254,18 +275,22 @@
 - (void)_dumpLoggingStateCaptureWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_dumpStateCaptureData;
 - (void)_enableRemoteStateDumpWithTimeout:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_endRequiringSpotlightTransientOverlayForReason:(id)arg1;
 - (void)_enqueueWorkspaceEvent:(CDUnknownBlockType)arg1 withName:(id)arg2 ifSatisfiesCondition:(CDUnknownBlockType)arg3 cancelingEventsWithNames:(id)arg4 failureBlock:(CDUnknownBlockType)arg5;
 - (id)_flickTimingFunction;
 - (void)_forceRotateToOrientation:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_frontBoardWantsKeyboardSceneLayerOrderedIntoScene;
 - (long long)_frontMostAppOrientation;
 - (void)_handleApplicationExit:(id)arg1;
+- (void)_handleApplicationProcessStateDidChangeNotification:(id)arg1;
 - (void)_handleCommandQ:(id)arg1;
 - (void)_handleCommandTab:(id)arg1;
 - (void)_handleDeviceOrientationChangedEvent:(struct __GSEvent *)arg1;
-- (void)_handleEndOfScrollingTest;
+- (void)_handleEndOfScrollingTest:(id)arg1;
 - (void)_handleGotoHomeScreenShortcut:(id)arg1;
 - (void)_handleHIDEvent:(struct __IOHIDEvent *)arg1;
+- (void)_handleKeyDownEvent_DisplayBrightnessChange:(struct __IOHIDEvent *)arg1 modifiers:(long long)arg2;
+- (void)_handleKeyDownEvent_KeyboardBrightnessChange:(struct __IOHIDEvent *)arg1 modifiers:(long long)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (void)_handleLockShortcut:(id)arg1;
 - (BOOL)_handlePhysicalButtonEvent:(id)arg1;
@@ -273,6 +298,7 @@
 - (void)_handleShiftCommandTab:(id)arg1;
 - (void)_handleShutDownAndReboot;
 - (void)_handleSnapshotButtonHIDEvent:(struct __IOHIDEvent *)arg1 buttonIsDown:(BOOL)arg2 fromSource:(int)arg3;
+- (void)_handleStandardFunctionKeyActionWithPreferencesURLString:(id)arg1 modifiers:(long long)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)_handleStatusBarHoverActionForRegion:(long long)arg1;
 - (BOOL)_hasForegroundAppWithPID:(int)arg1;
 - (void)_headsetButtonDown:(struct __IOHIDEvent *)arg1;
@@ -282,9 +308,11 @@
 - (void)_iapServerConnectionDiedNotification:(id)arg1;
 - (void)_initializeAndStartObservingDefaultsIfNecessary;
 - (void)_initializeDeferredItems;
-- (void)_installSwitcherModelForSwitcherTests;
+- (id)_installSwitcherModelForSwitcherTests;
+- (long long)_interfaceOrientationForRawOrientation:(long long)arg1 validOrientation:(long long)arg2 ignoringHomeScreenRotationStyle:(BOOL)arg3;
 - (BOOL)_isDim;
 - (BOOL)_isRemoteStateDumpEnabled;
+- (BOOL)_isStatusBarEffectivelyHiddenForContentOverlayInsetsForWindow:(id)arg1;
 - (id)_keyWindowForScreen:(id)arg1;
 - (void)_keyboardAvailabilityChanged;
 - (void)_keyboardOrCaseLatchWantsToAttemptUnlock:(int)arg1;
@@ -292,7 +320,7 @@
 - (id)_leadingNotificationRequest;
 - (void)_localeChanged;
 - (void)_lockdownActivationChanged:(id)arg1;
-- (void)_logReliabilityInfoForEvent:(struct __IOHIDEvent *)arg1;
+- (void)_logReliabilityInfoForEvent:(struct __IOHIDEvent *)arg1 source:(int)arg2;
 - (void)_medusaTestWithName:(id)arg1 testOptions:(id)arg2;
 - (void)_midnightPassed;
 - (void)_nowPlayingAppDidChangeNotification:(id)arg1;
@@ -302,17 +330,27 @@
 - (void)_performArcSwipeWithComposer:(id)arg1;
 - (void)_performDeferredLaunchWork;
 - (void)_performDelayedHeadsetClickTimeout;
+- (void)_performDragFromPoint:(struct CGPoint)arg1 andDragTo:(struct CGPoint)arg2 duration:(double)arg3 fromView:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)_performExpandingCoalescedBundleForNotificationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_performFiveFingerScrunchWithComposer:(id)arg1 scrunchProgress:(double)arg2 duration:(double)arg3 withContinuationBlock:(CDUnknownBlockType)arg4;
 - (void)_performFourFingerSwipeWithComposer:(id)arg1 vertically:(BOOL)arg2 duration:(double)arg3;
+- (void)_performLeftToRightPanGestureOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performMainWorkspaceTransitionWithPrimaryWorkspaceEntity:(id)arg1 sideWorkspaceEntity:(id)arg2 floatingWorkspaceEntity:(id)arg3 spaceConfiguration:(long long)arg4 floatingConfiguration:(long long)arg5 animated:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_performMultiFingerDragWithComposer:(id)arg1 startLocations:(struct CGPoint *)arg2 endLocations:(struct CGPoint *)arg3 touchCount:(unsigned long long)arg4 duration:(double)arg5 timingFunction:(id)arg6 startWithTouchDown:(BOOL)arg7 intermediateTransformer:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)_performNotificationPublishingWithCount:(unsigned long long)arg1 uniqueThreadCount:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_performPanGestureAwayFromUserInterfaceLayoutDirectionOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performPanGestureTowardsUserInterfaceLayoutDirectionOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performPanGesturesOnScreenUntilOnDefaultHomeScreenIconPageWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performPanGesturesOnScreenUntilOnDeweyOverlayWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performPanGesturesOnScreenUntilOnPage:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_performPanWithComposer:(id)arg1 startLocation:(struct CGPoint)arg2 endLocation:(struct CGPoint)arg3 duration:(double)arg4;
 - (void)_performRestackingExpandedBundleForNotificationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_performRightToLeftPanGestureOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performScrunchAndSwipeWithComposer:(id)arg1;
 - (void)_performSwipeHomeWithComposer:(id)arg1;
 - (void)_performSwipeWithComposer:(id)arg1 startLocation:(struct CGPoint)arg2 endLocation:(struct CGPoint)arg3 duration:(double)arg4;
 - (void)_performSwipeWithComposer:(id)arg1 startLocation:(struct CGPoint)arg2 endLocation:(struct CGPoint)arg3 duration:(double)arg4 timingFunction:(id)arg5 intermediateTransformer:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_performTapAtPoint:(struct CGPoint)arg1 fromView:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_postActiveInterfaceOrientationChangedNotificationAnimated:(BOOL)arg1;
 - (void)_postSpringBoardSignificantTimeChangedNotificationWithLogMessage:(id)arg1;
 - (void)_preheatScreenshotsWithPresentationOptions:(id)arg1;
@@ -327,6 +365,8 @@
 - (void)_removeRecordingStatusBarStyleOverrideAssertion;
 - (void)_removeTransientActiveInterfaceOrientationOverrideForReason:(id)arg1;
 - (void)_resetForceRotate;
+- (void)_resetHomeScreenToPageIndex:(unsigned long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_resetToHomeScreen;
 - (void)_retryLaunchTestWithOptions:(id)arg1;
 - (void)_returnToHomeScreenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_returnToHomescreenWithCompletion:(CDUnknownBlockType)arg1;
@@ -342,17 +382,9 @@
 - (void)_runArcSwipeMultipleAppsTest;
 - (void)_runArcSwipeTestFromHomeScreen:(BOOL)arg1;
 - (void)_runAutoPiPWithGestureTest:(CDUnknownBlockType)arg1;
-- (void)_runBannerTestWithBlock:(CDUnknownBlockType)arg1;
 - (void)_runBottomEdgeSwipeMultipleAppsTest;
 - (void)_runBottomEdgeSwipeTestFromHomeScreen:(BOOL)arg1;
-- (void)_runClearLongLookTest;
-- (void)_runCoverSheetDismissTestWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_runCoverSheetDismissToSafariTest;
 - (void)_runCoverSheetNotificationListHistoryRevealTest;
-- (void)_runCoverSheetPresentOverSafariTest;
-- (void)_runCoverSheetPresentTestWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_runCoverSheetTestPresenting:(BOOL)arg1;
-- (void)_runCoverSheetTestPresenting:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_runDashBoardDismissFromPasscodeViewAfterAuthenticationTest;
 - (void)_runDashBoardDismissFromTodayViewWhileAuthenticatedTest;
 - (void)_runDashBoardDismissTestFromPageIndex:(unsigned long long)arg1 showPasscodeView:(BOOL)arg2;
@@ -361,27 +393,25 @@
 - (void)_runDashBoardRotateCameraPage;
 - (void)_runDashBoardRotateMainPage;
 - (void)_runDashBoardRotateTodayViewPage;
-- (void)_runDashBoardRotationTestOnPageAtIndex:(unsigned long long)arg1;
-- (void)_runDashBoardRotationTestOnPageAtIndex:(unsigned long long)arg1 showSpotlight:(BOOL)arg2;
+- (void)_runDashBoardRotationTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runDashBoardScrollFromLeftToRightPageTestWithBlur:(BOOL)arg1;
-- (void)_runDashBoardScrollTestFromPageIndex:(unsigned long long)arg1 toPageWithIndex:(unsigned long long)arg2 subTestName:(id)arg3 backSubTestName:(id)arg4 withBlur:(BOOL)arg5;
 - (void)_runDashBoardScrollToLeftPageTestWithBlur:(BOOL)arg1;
 - (void)_runDashBoardScrollToRightPageTestWithBlur:(BOOL)arg1;
 - (void)_runDashboardTodayViewScrollWidgetsTestWithOptions:(id)arg1;
-- (void)_runDismissContinuityBannerInSwitcherTest;
+- (void)_runDeweyPullToLibrarySearchWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_runDismissContinuityBannerInSwitcherTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runDoSiDoTest;
-- (void)_runFloatingDockPresent:(BOOL)arg1 testName:(id)arg2;
+- (void)_runEnterPageHiding;
+- (void)_runExitPageHiding;
 - (void)_runFourFingerSwipeMultipleAppsTest;
 - (void)_runFourFingerSwipeTest;
-- (void)_runHomeScreenIconPullToSpotlight;
 - (void)_runHomeScreenIconPullToSpotlightDismiss;
+- (void)_runHomeScreenIconPullToSpotlightWithTestName:(id)arg1 cold:(BOOL)arg2;
 - (void)_runHomeScreenSearchDismiss;
 - (void)_runHomeScreenSearchPresent;
 - (void)_runHomeScreenSwipeLeftToTodayView;
 - (void)_runHomeScreenSwipeRightFromTodayView;
 - (void)_runLockScreenScrollNotificationsTestWithOptions:(id)arg1;
-- (void)_runLockScreenTodayViewPullDownToSpotlight;
-- (void)_runLockScreenTodayViewPullDownToSpotlightDismiss;
 - (void)_runMedusaMoveFloatingApplicationTest:(id)arg1 withOptions:(id)arg2;
 - (void)_runMedusaPinFloatingApplicationTest:(id)arg1 withOptions:(id)arg2;
 - (void)_runMedusaSplitViewResizeTest:(id)arg1 withOptions:(id)arg2;
@@ -392,36 +422,37 @@
 - (void)_runNotificationCoalescingExpandingTestWithOptions:(id)arg1;
 - (void)_runNotificationCoalescingRestackingFromBottomTestWithOptions:(id)arg1;
 - (void)_runNotificationCoalescingRestackingTestWithOptions:(id)arg1;
-- (void)_runPresentBannerTest;
-- (void)_runPresentContinuityBannerInSwitcherTest;
-- (void)_runPresentLongLookTest;
-- (void)_runReParkLongLookTest;
+- (void)_runPresentContinuityBannerInSwitcherTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runScrollAppSwitcherLandscapeTest:(id)arg1 overApp:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_runScrollAppSwitcherTest:(id)arg1 overApp:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_runScrollIconListTestEditing:(BOOL)arg1;
+- (void)_runScrollDeweyLibrarySearchWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_runScrollDeweyTestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_runScrollDeweyWithinExpandedPodWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_runScrollIconListTestEditing:(BOOL)arg1 withFolders:(BOOL)arg2 withWidgets:(BOOL)arg3;
 - (void)_runScrollTestWithScrollView:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_runScrunchAndSwipeMultipleAppsTest;
 - (void)_runScrunchAndSwipeTest;
 - (void)_runScrunchHomeToAutoPiPTest;
 - (void)_runScrunchToAppSwitcherTest;
 - (void)_runScrunchToHomeTest;
-- (void)_runSiriBringUpImmediateBeepTest:(id)arg1;
-- (void)_runSiriBringUpTest:(id)arg1 testOptions:(id)arg2;
 - (void)_runSpotlightCoverSheetTodayViewRotation;
 - (void)_runSpotlightPulldownRotation;
 - (void)_runSpotlightTodayViewRotation;
 - (void)_runSwipeAndPauseForSwitcherOverFolderTest;
 - (void)_runSwipeAndPauseForSwitcherTestFromHomeScreen:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_runSwipeFromDeweyTestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_runSwipeToDeweyTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runSwipeToHomeOverFolderTest;
 - (void)_runSwipeToHomeTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runSwipeUpHomeToAutoPiPTest;
-- (void)_runTapContinuityBannerInSwitcherTest;
+- (void)_runTapContinuityBannerInSwitcherTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runTestWithVariableFinish:(CDUnknownBlockType)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_runTodayViewFocusSearchFieldToSpotlight;
 - (void)_runTodayViewPullDownToSpotlight;
 - (void)_runTodayViewScrollWidgetsTestWithOptions:(id)arg1;
 - (void)_runToggleSearchTest;
-- (void)_runWidgetLaunchTestNamed:(id)arg1 options:(id)arg2;
+- (void)_screenshotWindowWasDismissed;
+- (void)_screenshotWindowWillBeDisplayed;
 - (void)_setAmbiguousControlCenterActivationMargin:(double)arg1;
 - (void)_setDeferredHeadsetButtonDownEvent:(struct __IOHIDEvent *)arg1;
 - (void)_setDeviceOrientation:(long long)arg1 animated:(BOOL)arg2 logMessage:(id)arg3;
@@ -458,11 +489,12 @@
 - (void)_turnScreenOnAndAuthenticateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_turnScreenOnAndUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_turnScreenOnOnDashBoardWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_uninstallModelForTestsAndRestoreAppLayouts:(id)arg1;
 - (void)_unlockAnimationDidFinish:(id)arg1;
 - (void)_unscatterWillBegin:(id)arg1;
 - (void)_updateHomeScreenPresenceNotification:(id)arg1;
 - (void)_updateOrientationDetectionSettings;
-- (void)_updateRecordingPID:(int)arg1;
+- (void)_updateRecordingPIDFromActivities:(id)arg1;
 - (void)_updateRingerState:(int)arg1 withVisuals:(BOOL)arg2 updatePreferenceRegister:(BOOL)arg3;
 - (void)_waitForCloudCriticalData;
 - (id)_windowForSystemAppButtonEventsForScreen:(id)arg1;
@@ -479,14 +511,12 @@
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (void)applicationOpenURL:(id)arg1;
 - (void)applicationOpenURL:(id)arg1 withApplication:(id)arg2 animating:(BOOL)arg3 activationSettings:(id)arg4 origin:(id)arg5 notifyLSOnFailure:(BOOL)arg6 withResult:(CDUnknownBlockType)arg7;
-- (void)assistantDidAppear:(id)arg1;
-- (void)assistantWillAppear:(id)arg1;
 - (void)backlightController:(id)arg1 willAnimateBacklightToFactor:(float)arg2 source:(long long)arg3;
 - (void)batteryStatusDidChange:(id)arg1;
 - (void)beginIgnoringInteractionEvents;
 - (void)beginIgnoringInteractionEventsForReason:(id)arg1;
+- (void)beginInteractiveSpotlightTransientOverlayPresentationWithValidator:(CDUnknownBlockType)arg1 beginHandler:(CDUnknownBlockType)arg2;
 - (void)cache:(id)arg1 didUpdateActiveAudioRoute:(id)arg2;
-- (void)cache:(id)arg1 didUpdateRecordingPID:(int)arg2;
 - (BOOL)canOpenURL:(id)arg1;
 - (BOOL)canShowLockScreenCameraGrabber;
 - (BOOL)caseIsEnabledAndLatched;
@@ -506,13 +536,13 @@
 - (id)formattedDecimalStringForNumber:(id)arg1;
 - (id)formattedPercentStringForNumber:(id)arg1;
 - (void)frontDisplayDidChange:(id)arg1;
+- (void)handleDeferredUILockForInCallPresentation;
+- (void)handleDeferredUILockForInCallPresentationAnimateIfNeeded:(BOOL)arg1 inCallPresentationActive:(BOOL)arg2;
 - (BOOL)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
 - (void)handleKeyHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)handleLockButtonPressFromTransientOverlayViewController:(id)arg1;
-- (void)handleSignal:(int)arg1;
 - (BOOL)handleStatusBarHoverActionForRegion:(long long)arg1;
 - (BOOL)hasDisableActiveInterfaceOrientationChangeAssertions;
-- (BOOL)hasFinishedLaunching;
 - (long long)homeScreenRotationStyle;
 - (BOOL)homeScreenRotationStyleWantsUIKitRotation;
 - (BOOL)homeScreenSupportsRotation;
@@ -523,6 +553,7 @@
 - (void)interactiveScreenshotGestureManager:(id)arg1 requestsScreenshotPreheatWithPresentationOptions:(id)arg2;
 - (void)interactiveScreenshotGestureManager:(id)arg1 requestsScreenshotWithOptionsCollection:(id)arg2 presentationOptions:(id)arg3;
 - (long long)interfaceOrientationForCurrentDeviceOrientation:(BOOL)arg1;
+- (long long)interfaceOrientationForRawOrientation:(long long)arg1 validOrientation:(long long)arg2 ignoringHomeScreenRotationStyle:(BOOL)arg3;
 - (BOOL)isBundleIdentifierRestrictionDisabled:(id)arg1;
 - (BOOL)isCurrentlyDeferringOrientationUpdates;
 - (BOOL)isDeterminingBootTransition;
@@ -558,7 +589,6 @@
 - (void)nowLocatingAppDidEnterForeground:(id)arg1;
 - (id)nowRecordingApp;
 - (void)popTransientActiveInterfaceOrientationForReason:(id)arg1;
-- (void)prepareForControlCenterPPTHostState:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)profileConnectionDidReceivePasscodePolicyChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)pushTransientActiveInterfaceOrientation:(long long)arg1 forReason:(id)arg2;
 - (long long)rawDeviceOrientationIgnoringOrientationLocks;
@@ -606,8 +636,9 @@
 - (void)showAlertForUnhandledURL:(id)arg1 error:(int)arg2;
 - (void)significantTimeChange;
 - (BOOL)smartCoverIsClosed;
-- (void)spotlightTransientOverlayViewControllerDidDismiss:(id)arg1;
+- (void)spotlightTransientOverlayViewControllerDidPresent:(id)arg1;
 - (void)spotlightTransientOverlayViewControllerRequestsDismissal:(id)arg1;
+- (void)spotlightTransientOverlayViewControllerWillDismiss:(id)arg1;
 - (void)startLaunchTestNamed:(id)arg1 options:(id)arg2;
 - (void)startLaunchTestNamed:(id)arg1 options:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)startResumeTestNamed:(id)arg1 options:(id)arg2;
@@ -618,7 +649,7 @@
 - (id)supportedStateTypes;
 - (BOOL)supportsPortraitUpsideDownOrientation;
 - (void)takeScreenshot;
-- (void)toggleSearchWithWillBeginHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)toggleSearchFromBreadcrumbSource:(BOOL)arg1 withWillBeginHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)transactionForDismissingSearchTransientOverlay;
 - (BOOL)underMemoryPressure;
 - (void)unregisterRemoteAlertSceneViewProvider:(id)arg1;

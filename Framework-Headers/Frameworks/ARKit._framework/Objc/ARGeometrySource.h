@@ -20,20 +20,17 @@
     long long _stride;
 }
 
-@property (strong, nonatomic) id<MTLBuffer> buffer; // @synthesize buffer=_buffer;
-@property (nonatomic) long long componentsPerVector; // @synthesize componentsPerVector=_componentsPerVector;
-@property (nonatomic) long long count; // @synthesize count=_count;
-@property (nonatomic) unsigned long long format; // @synthesize format=_format;
-@property (nonatomic) long long offset; // @synthesize offset=_offset;
-@property (nonatomic) long long stride; // @synthesize stride=_stride;
+@property (readonly, nonatomic) id<MTLBuffer> buffer; // @synthesize buffer=_buffer;
+@property (readonly, nonatomic) long long componentsPerVector; // @synthesize componentsPerVector=_componentsPerVector;
+@property (readonly, nonatomic) long long count; // @synthesize count=_count;
+@property (readonly, nonatomic) unsigned long long format; // @synthesize format=_format;
+@property (readonly, nonatomic) long long offset; // @synthesize offset=_offset;
+@property (readonly, nonatomic) long long stride; // @synthesize stride=_stride;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (unsigned long long)componentSize;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBuffer:(id)arg1 count:(long long)arg2 format:(unsigned long long)arg3 componentsPerVector:(long long)arg4 offset:(long long)arg5 stride:(long long)arg6;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

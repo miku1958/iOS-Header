@@ -18,6 +18,7 @@
 
 - (void)insertNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)modifyNotificationRequest:(NCNotificationRequest *)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(NSString *)arg1;
 - (void)reloadNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)removeNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)updateNotificationSectionSettings:(NCNotificationSectionSettings *)arg1 previousSectionSettings:(NCNotificationSectionSettings *)arg2;

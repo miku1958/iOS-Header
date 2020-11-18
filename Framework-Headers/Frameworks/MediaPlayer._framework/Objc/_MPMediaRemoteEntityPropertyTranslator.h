@@ -6,16 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@interface _MPMediaRemoteEntityPropertyTranslator : NSObject
+#import <MediaPlayer/MPEntityPropertyTranslator-Protocol.h>
+
+@class NSString;
+
+__attribute__((visibility("hidden")))
+@interface _MPMediaRemoteEntityPropertyTranslator : NSObject <MPEntityPropertyTranslator>
 {
-    CDUnknownBlockType _valueTransformer;
-    CDUnknownBlockType _artworkValueTransformer;
+    NSString *_keyPath;
+    CDUnknownBlockType _valueTransformBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType artworkValueTransformer; // @synthesize artworkValueTransformer=_artworkValueTransformer;
-@property (copy, nonatomic) CDUnknownBlockType valueTransformer; // @synthesize valueTransformer=_valueTransformer;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) CDUnknownBlockType valueTransformBlock; // @synthesize valueTransformBlock=_valueTransformBlock;
 
++ (id)translatorWithBlock:(CDUnknownBlockType)arg1;
++ (id)translatorWithKeyPath:(id)arg1;
 - (void).cxx_destruct;
+- (id)valueFromSource:(id)arg1 context:(id)arg2;
 
 @end
 

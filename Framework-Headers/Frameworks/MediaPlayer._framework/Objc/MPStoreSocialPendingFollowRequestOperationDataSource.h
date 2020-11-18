@@ -10,6 +10,7 @@
 
 @class MPModelSocialPerson, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreSocialPendingFollowRequestOperationDataSource : NSObject <MPStoreSocialRequestOperationDataSource>
 {
     long long _action;

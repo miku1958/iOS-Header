@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *headlineConverter;
     MISSING_TYPE *listeningProgressManager;
+    MISSING_TYPE *commandCenter;
 }
 
 - (void).cxx_destruct;

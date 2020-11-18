@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)animation;
 + (id)glExport;
 + (id)interactiveCanvas;
++ (id)sharegroupMapWithDevice:(id)arg1;
 + (id)sharegroupPool;
 - (BOOL)canBeCreatedFromOtherThread;
 - (BOOL)forceGL;

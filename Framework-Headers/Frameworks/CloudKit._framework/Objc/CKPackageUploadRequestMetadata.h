@@ -16,7 +16,7 @@
     NSArray *_referenceSignatures;
 }
 
-@property (readonly, nonatomic) NSArray *fileSignatures; // @synthesize fileSignatures=_fileSignatures;
+@property (readonly, copy, nonatomic) NSArray *fileSignatures; // @synthesize fileSignatures=_fileSignatures;
 @property (readonly, nonatomic) NSArray *referenceSignatures; // @synthesize referenceSignatures=_referenceSignatures;
 
 + (BOOL)supportsSecureCoding;

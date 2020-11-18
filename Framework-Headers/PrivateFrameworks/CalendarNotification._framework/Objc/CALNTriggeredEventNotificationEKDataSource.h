@@ -11,7 +11,7 @@
 #import <CalendarNotification/CALNTriggeredEventNotificationDataSource-Protocol.h>
 
 @class CALNCalendarCoreLocationManager, CALNTriggeredEventNotificationMailtoURLProvider, NSString;
-@protocol CALNAlarmEngineMonitor, CALNDataSourceEventRepresentationProvider, CALNDebugPreferences, CALNFoundInAppsEventTracker, CALNRemoteMutator, CALNRouteHypothesizerProvider, CALNStats, CALNSuggestionsServiceLogger, CALNTTLEventTracker, CALNTimeToLeaveRefreshMonitor, CALNTravelEngine, CALNTriggeredEventNotificationDataSourceDelegate, EKEventStoreProvider;
+@protocol CALNAlarmEngineMonitor, CALNDataSourceEventRepresentationProvider, CALNDebugPreferences, CALNFoundInAppsEventTracker, CALNRemoteMutator, CALNRouteHypothesizerProvider, CALNSuggestionsServiceLogger, CALNTTLEventTracker, CALNTimeToLeaveRefreshMonitor, CALNTravelEngine, CALNTriggeredEventNotificationDataSourceDelegate, EKEventStoreProvider;
 
 @interface CALNTriggeredEventNotificationEKDataSource : NSObject <CALNTravelEngineDelegate, CALNTimeToLeaveRefreshMonitorDelegate, CALNTriggeredEventNotificationDataSource>
 {
@@ -20,7 +20,6 @@
     id<CALNRemoteMutator> _remoteMutator;
     id<CALNDataSourceEventRepresentationProvider> _dataSourceEventRepresentationProvider;
     CALNCalendarCoreLocationManager *_coreLocationManager;
-    id<CALNStats> _stats;
     id<CALNTTLEventTracker> _ttlEventTracker;
     id<CALNAlarmEngineMonitor> _alarmEngineMonitor;
     id<CALNTravelEngine> _travelEngine;
@@ -45,7 +44,6 @@
 @property (readonly, nonatomic) CALNTriggeredEventNotificationMailtoURLProvider *mailtoURLProvider; // @synthesize mailtoURLProvider=_mailtoURLProvider;
 @property (readonly, nonatomic) id<CALNRemoteMutator> remoteMutator; // @synthesize remoteMutator=_remoteMutator;
 @property (readonly, nonatomic) id<CALNRouteHypothesizerProvider> routeHypothesizerProvider; // @synthesize routeHypothesizerProvider=_routeHypothesizerProvider;
-@property (readonly, nonatomic) id<CALNStats> stats; // @synthesize stats=_stats;
 @property (readonly, nonatomic) id<CALNSuggestionsServiceLogger> suggestionsServiceLogger; // @synthesize suggestionsServiceLogger=_suggestionsServiceLogger;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<CALNTimeToLeaveRefreshMonitor> timeToLeaveRefreshMonitor; // @synthesize timeToLeaveRefreshMonitor=_timeToLeaveRefreshMonitor;
@@ -62,6 +60,7 @@
 - (void)_didSetUpTimeToLeaveRefreshTimerForEventID:(id)arg1 triggerDate:(id)arg2;
 - (id)_eventForEventID:(id)arg1;
 - (id)_eventForSourceClientIdentifier:(id)arg1;
+- (id)_filterDuplicateAlerts:(id)arg1;
 - (void)_handleNotificationActionForSourceClientIdentifier:(id)arg1 acknowledgeAlarm:(BOOL)arg2 eventActions:(CDUnknownBlockType)arg3;
 - (id)_notificationExpirationDateForAlarmDate:(id)arg1 eventEndDate:(id)arg2;
 - (id)_notificationExpirationDateForNullableAlarmDate:(id)arg1 eventEndDate:(id)arg2;
@@ -77,7 +76,7 @@
 - (void)handleConferenceCallActionWithSourceClientIdentifier:(id)arg1;
 - (void)handleDirectionsActionWithSourceClientIdentifier:(id)arg1 hypothesis:(id)arg2 lastFireTimeOfAlertOffsetFromTravelTime:(id)arg3;
 - (void)handleMailOrganizerActionWithSourceClientIdentifier:(id)arg1 hypothesis:(id)arg2;
-- (id)initWithEventStoreProvider:(id)arg1 remoteMutator:(id)arg2 dataSourceEventRepresentationProvider:(id)arg3 coreLocationProvider:(id)arg4 stats:(id)arg5 ttlEventTracker:(id)arg6 alarmEngineMonitor:(id)arg7 travelEngine:(id)arg8 foundInAppsEventTracker:(id)arg9 suggestionsServiceLogger:(id)arg10 routeHypothesizerProvider:(id)arg11 timeToLeaveRefreshMonitor:(id)arg12 debugPreferences:(id)arg13 mailtoURLProvider:(id)arg14;
+- (id)initWithEventStoreProvider:(id)arg1 remoteMutator:(id)arg2 dataSourceEventRepresentationProvider:(id)arg3 coreLocationProvider:(id)arg4 ttlEventTracker:(id)arg5 alarmEngineMonitor:(id)arg6 travelEngine:(id)arg7 foundInAppsEventTracker:(id)arg8 suggestionsServiceLogger:(id)arg9 routeHypothesizerProvider:(id)arg10 timeToLeaveRefreshMonitor:(id)arg11 debugPreferences:(id)arg12 mailtoURLProvider:(id)arg13;
 - (id)notificationExpirationDateForEventID:(id)arg1 alarmID:(id)arg2;
 - (void)removeTimeToLeaveRefreshTimerForEventID:(id)arg1;
 - (void)removeTimeToLeaveRefreshTimerForSourceClientIdentifier:(id)arg1;

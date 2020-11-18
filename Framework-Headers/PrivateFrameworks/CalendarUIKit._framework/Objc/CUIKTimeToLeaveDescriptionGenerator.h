@@ -35,7 +35,7 @@
 + (id)_travelTimeWalkingStringWithEta:(id)arg1 location:(id)arg2;
 + (id)_travelTimeWalkingStringWithHypothesis:(id)arg1 eta:(id)arg2 location:(id)arg3;
 + (id)departureDateString:(id)arg1;
-+ (id)explanatoryText;
++ (id)explanatoryTextForTTLStatus:(unsigned long long)arg1;
 + (id)timeToLeaveAttributedStringWithAttributes:(id)arg1 hypothesis:(id)arg2 location:(id)arg3;
 + (id)timeToLeaveStringWithEta:(double)arg1 transportType:(int)arg2 runningLate:(BOOL)arg3;
 + (id)timeToLeaveStringWithHypothesis:(id)arg1 eta:(id)arg2 location:(id)arg3;

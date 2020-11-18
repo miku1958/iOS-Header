@@ -9,22 +9,24 @@
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 
 @class HFWallpaperSlice, HUGridActionSetItemManager, HUGridLayoutOptions, HUWallpaperView, NSString, UILabel;
-@protocol HUGridActionSetListViewControllerItemUpdateDelegate;
+@protocol HUGridActionSetListViewControllerDelegate;
 
 @interface HUGridActionSetListViewController : HUControllableItemCollectionViewController <HFItemManagerDelegate>
 {
-    id<HUGridActionSetListViewControllerItemUpdateDelegate> _itemUpdateDelegate;
+    BOOL _shouldAllowItemPresentation;
+    id<HUGridActionSetListViewControllerDelegate> _actionSetListViewControllerDelegate;
     UILabel *_titleLabel;
 }
 
 @property (readonly, nonatomic) HUGridActionSetItemManager *actionSetItemManager;
+@property (weak, nonatomic) id<HUGridActionSetListViewControllerDelegate> actionSetListViewControllerDelegate; // @synthesize actionSetListViewControllerDelegate=_actionSetListViewControllerDelegate;
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice;
 @property (strong, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<HUGridActionSetListViewControllerItemUpdateDelegate> itemUpdateDelegate; // @synthesize itemUpdateDelegate=_itemUpdateDelegate;
 @property (copy, nonatomic) HUGridLayoutOptions *layoutOptions;
+@property (nonatomic) BOOL shouldAllowItemPresentation; // @synthesize shouldAllowItemPresentation=_shouldAllowItemPresentation;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) HUWallpaperView *wallpaperView;
@@ -32,8 +34,10 @@
 + (double)requiredHeightWithLayoutOptions:(id)arg1 numberOfItems:(unsigned long long)arg2;
 + (unsigned long long)updateMode;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_detailsViewControllerForActionSetItem:(id)arg1;
 - (void)_internalSetLayoutOptions:(id)arg1;
+- (id)_performTapActionForItem:(id)arg1;
 - (long long)_scrollDirectionForLayoutOptions:(id)arg1;
 - (void)_updateLayoutScrollDirectionIfNeeded;
 - (BOOL)canReorderItemAtIndexPath:(id)arg1;
@@ -49,6 +53,7 @@
 - (void)itemManager:(id)arg1 didInsertItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didRemoveItem:(id)arg2 atIndexPath:(id)arg3;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
+- (BOOL)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
 - (id)reorderableHomeKitItemListForSection:(long long)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setReorderableHomeKitItemList:(id)arg1 forSection:(long long)arg2;

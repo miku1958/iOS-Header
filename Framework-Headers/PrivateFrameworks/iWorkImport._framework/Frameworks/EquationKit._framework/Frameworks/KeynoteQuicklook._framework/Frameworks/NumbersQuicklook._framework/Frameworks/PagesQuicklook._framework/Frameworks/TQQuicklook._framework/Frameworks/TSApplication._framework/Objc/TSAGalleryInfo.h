@@ -15,7 +15,7 @@
 #import <TSApplication/TSWPStorageParent-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSDInfoGeometry, TSDMediaStyle, TSPObject, TSWPStorage;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSAGalleryInfo : TSDDrawableInfo <TSWPStorageParent, TSDContainerInfo, TSDModelContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer, TSDMixing, TSDDrawableInfoCustomUnarchivingSubclassProviding>
 {
@@ -41,32 +41,34 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (readonly, nonatomic) BOOL textIsLinked;
 
-+ (void)addDefaultGalleryCaptionParagraphStyleIfNeededWithFontSize:(double)arg1 toStylesheet:(id)arg2;
 + (id)defaultGalleryCaptionParagraphStyleInStylesheet:(id)arg1;
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 + (void)i_configureCaptionStorage:(id)arg1;
 + (id)i_newCaptionStorageWithContext:(id)arg1;
-+ (id)p_defaultCaptionParagraphStylePropertiesWithFontSize:(double)arg1;
 + (id)p_overrideCaptionParagraphStyleIdentifier;
 + (id)p_paragraphStyleWithLocalizedNameKey:(id)arg1 inStylesheet:(id)arg2;
 + (BOOL)p_stylesAreEqualForOutgoingStorage:(id)arg1 incomingStorage:(id)arg2;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (id)animationFilters;
 - (BOOL)canCopyData;
 - (id)childEnumerator;
@@ -74,7 +76,7 @@
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 animationFilter:(id)arg2;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 byGlyphStyle:(int)arg2 animationFilter:(id)arg3;
 - (id)copyWithContext:(id)arg1;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 captionStorage:(id)arg3;
 - (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -94,6 +96,7 @@
 - (BOOL)supportsParentRotation;
 - (struct CGSize)targetSizeForImageData:(id)arg1 associatedHint:(id)arg2;
 - (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
+- (BOOL)wantsCounterRotationWhenNotSupportingParentRotationInRotatedParent;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

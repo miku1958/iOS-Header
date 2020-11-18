@@ -15,7 +15,6 @@
 @interface HKClinicalAccount : NSObject <NSCopying, NSSecureCoding, HKClinicalBrandable>
 {
     BOOL _userEnabled;
-    BOOL _needsRelogin;
     NSUUID *_identifier;
     long long _state;
     NSDate *_lastFetchDate;
@@ -31,7 +30,8 @@
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property (readonly, copy, nonatomic) NSDate *lastFullFetchDate; // @synthesize lastFullFetchDate=_lastFullFetchDate;
-@property (readonly, nonatomic) BOOL needsRelogin; // @synthesize needsRelogin=_needsRelogin;
+@property (readonly, nonatomic) BOOL needsRelogin;
+@property (readonly, nonatomic) BOOL needsScopeUpgrade;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
@@ -44,7 +44,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(BOOL)arg3 needsRelogin:(BOOL)arg4 lastFetchDate:(id)arg5 lastFullFetchDate:(id)arg6 gateway:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(BOOL)arg3 lastFetchDate:(id)arg4 lastFullFetchDate:(id)arg5 gateway:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

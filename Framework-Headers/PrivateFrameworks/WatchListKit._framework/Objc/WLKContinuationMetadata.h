@@ -4,41 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <WatchListKit/WLKContinuationMetadataBase.h>
 
-@class NSArray, NSNumber, NSString, NSURL, WLKBasicContentMetadata, WLKPlayable;
+@class NSArray, NSNumber, NSString, WLKPlayable;
 
-@interface WLKContinuationMetadata : NSObject
+@interface WLKContinuationMetadata : WLKContinuationMetadataBase
 {
-    BOOL _isRental;
-    BOOL _isPurchase;
     WLKPlayable *_playable;
-    WLKBasicContentMetadata *_movieOrShowContent;
-    NSURL *_contentTVAppDeeplinkURL;
-    long long _contextEnum;
-    NSString *_context;
-    NSString *_localizedContext;
     NSString *_deleteID;
     NSNumber *_siriActionsExpirationEpochMillis;
     NSArray *_siriActionsCategories;
 }
 
-@property (readonly, nonatomic) NSURL *contentTVAppDeeplinkURL; // @synthesize contentTVAppDeeplinkURL=_contentTVAppDeeplinkURL;
-@property (readonly, copy, nonatomic) NSString *context; // @synthesize context=_context;
-@property (readonly, nonatomic) long long contextEnum; // @synthesize contextEnum=_contextEnum;
 @property (readonly, copy, nonatomic) NSString *deleteID; // @synthesize deleteID=_deleteID;
-@property (readonly, nonatomic) BOOL isPurchase; // @synthesize isPurchase=_isPurchase;
-@property (readonly, nonatomic) BOOL isRental; // @synthesize isRental=_isRental;
-@property (readonly, copy, nonatomic) NSString *localizedContext; // @synthesize localizedContext=_localizedContext;
-@property (readonly, nonatomic) WLKBasicContentMetadata *movieOrShowContent; // @synthesize movieOrShowContent=_movieOrShowContent;
 @property (readonly, nonatomic) WLKPlayable *playable; // @synthesize playable=_playable;
 @property (readonly, copy, nonatomic) NSArray *siriActionsCategories; // @synthesize siriActionsCategories=_siriActionsCategories;
 @property (readonly, copy, nonatomic) NSNumber *siriActionsExpirationEpochMillis; // @synthesize siriActionsExpirationEpochMillis=_siriActionsExpirationEpochMillis;
 
-+ (long long)_contextForString:(id)arg1;
 - (void).cxx_destruct;
-- (id)description;
-- (id)init;
 - (id)initWithDictionary:(id)arg1 context:(id)arg2;
 
 @end

@@ -184,7 +184,7 @@
 - (id)defaultProperties;
 - (int)defaultPropertyForGeneric:(int)arg1;
 - (void)deleteReferenceLineForAxisID:(id)arg1 uuid:(id)arg2;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (id)fillsForSeriesAndTheme;
 - (float)floatValueForProperty:(int)arg1 defaultValue:(float)arg2;
 - (id)g_genericToDefaultPropertyMap;
@@ -197,6 +197,7 @@
 - (BOOL)hasRoundedCorners;
 - (BOOL)hasTractReference;
 - (BOOL)hasTwoYValueAxes;
+- (void)hideAllTitles;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1 omitLabelPlacement:(BOOL)arg2;
 - (id)infoGeometryForDesiredPureLayoutGeometry:(id)arg1;
@@ -243,7 +244,7 @@
 - (id)p_init;
 - (void)p_invalidateCachesInLayouts:(id)arg1;
 - (unsigned long long)p_paragraphStyleIndexOfFirstCategoryAxisParagraphStyle;
-- (id)p_presetByAdoptingStylesheet:(id)arg1 forPreset:(id)arg2 withMapper:(id)arg3;
+- (id)p_presetByAdoptingStylesheet:(id)arg1 forPreset:(id)arg2 withMapper:(id)arg3 paragraphStyles:(id)arg4;
 - (unsigned long long)p_refLineIndexWithUUID:(id)arg1 nonStyleItems:(id)arg2;
 - (BOOL)p_refLineNonStyleMapIsValid;
 - (void)p_saveToUnityArchive:(struct ChartArchive *)arg1 persistentChartInfo:(id)arg2 archiver:(id)arg3;

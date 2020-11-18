@@ -15,12 +15,10 @@
 @interface _INPBScoredValue : PBCodable <_INPBScoredValue, NSSecureCoding, NSCopying>
 {
     CDStruct_4b1634df _has;
-    BOOL __encodeLegacyGloryData;
     long long _score;
     NSString *_value;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasScore;

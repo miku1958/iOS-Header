@@ -27,7 +27,7 @@
     BOOL _isUpdatingDisplayedContent;
     BOOL _isFavorite;
     BOOL _accessoryViewVisible;
-    BOOL _isInEditMode;
+    BOOL _lowMemoryMode;
     BOOL _toggleCTM;
     BOOL __needsUpdateVideoPlayers;
     id<PUDisplayAsset> _asset;
@@ -42,6 +42,8 @@
     long long _lastAccessoryViewVisibilityChangeReason;
     long long _lastContentOffsetChangeReason;
     double _contentOffsetOverrideFactor;
+    long long _editStyle;
+    long long _lastEditStyleChangeReason;
     long long _flippingFullSizeRenderState;
     long long __currentFavoriteOverrideRequest;
     long long _displayedContentUpdateCount;
@@ -69,6 +71,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayedContentUpdateCount; // @synthesize displayedContentUpdateCount=_displayedContentUpdateCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *displayedContentUpdateGroup; // @synthesize displayedContentUpdateGroup=_displayedContentUpdateGroup;
+@property (readonly, nonatomic) long long editStyle; // @synthesize editStyle=_editStyle;
 @property (nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
 @property (nonatomic) double focusValue; // @synthesize focusValue=_focusValue;
 @property (nonatomic) BOOL forceBadgesVisible; // @synthesize forceBadgesVisible=_forceBadgesVisible;
@@ -77,12 +80,14 @@
 @property (readonly, nonatomic) PUBrowsingIrisPlayer *irisPlayer;
 @property (nonatomic, setter=_setFavorite:) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (copy, nonatomic) NSNumber *isFavoriteOverride; // @synthesize isFavoriteOverride=_isFavoriteOverride;
-@property (nonatomic) BOOL isInEditMode; // @synthesize isInEditMode=_isInEditMode;
+@property (readonly, nonatomic) BOOL isInEditMode;
 @property (nonatomic) BOOL isUpdatingDisplayedContent; // @synthesize isUpdatingDisplayedContent=_isUpdatingDisplayedContent;
 @property (nonatomic, setter=setUserTransformingTile:) BOOL isUserTransformingTile; // @synthesize isUserTransformingTile=_isUserTransformingTile;
 @property (nonatomic, setter=_setLastAccessoryViewVisibilityChangeReason:) long long lastAccessoryViewVisibilityChangeReason; // @synthesize lastAccessoryViewVisibilityChangeReason=_lastAccessoryViewVisibilityChangeReason;
 @property (nonatomic, setter=_setLastContentOffsetChangeReason:) long long lastContentOffsetChangeReason; // @synthesize lastContentOffsetChangeReason=_lastContentOffsetChangeReason;
+@property (readonly, nonatomic) long long lastEditStyleChangeReason; // @synthesize lastEditStyleChangeReason=_lastEditStyleChangeReason;
 @property (copy, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
+@property (readonly, nonatomic) BOOL lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (copy, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
 @property (nonatomic) struct CGPoint overridingContentOffset; // @synthesize overridingContentOffset=_overridingContentOffset;
@@ -110,10 +115,12 @@
 - (void)didPerformChanges;
 - (void)didUpdateDisplayedContent;
 - (id)init;
+- (id)initWithLowMemoryMode:(BOOL)arg1;
 - (id)newViewModelChange;
 - (void)registerChangeObserver:(id)arg1;
 - (void)resetContentOffset;
 - (void)setAccessoryViewVisible:(BOOL)arg1 changeReason:(long long)arg2;
+- (void)setEditStyle:(long long)arg1 changeReason:(long long)arg2;
 - (void)setPreferredContentOffset:(struct CGPoint)arg1 changeReason:(long long)arg2;
 - (void)setSaveState:(long long)arg1;
 - (void)unregisterChangeObserver:(id)arg1;

@@ -9,29 +9,30 @@
 #import <PencilKit/PKStrokeRenderCache-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
-@protocol MTLTexture;
 
 @interface PKMetalLiveStrokePaintRenderCache : NSObject <PKStrokeRenderCache>
 {
     NSMutableArray *_buffers;
     unsigned long long _totalCost;
-    id<MTLTexture> _liveStrokeDestinationTexture;
-    struct CGRect _liveStrokeDestinationFrame;
+    double _startTime;
+    double _duration;
+    struct CGRect _animatedStrokeBounds;
 }
 
+@property (nonatomic) struct CGRect animatedStrokeBounds; // @synthesize animatedStrokeBounds=_animatedStrokeBounds;
 @property (readonly, nonatomic) NSArray *buffers; // @dynamic buffers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct CGRect liveStrokeDestinationFrame; // @synthesize liveStrokeDestinationFrame=_liveStrokeDestinationFrame;
-@property (strong, nonatomic) id<MTLTexture> liveStrokeDestinationTexture; // @synthesize liveStrokeDestinationTexture=_liveStrokeDestinationTexture;
+@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addBuffer:(id)arg1;
 - (unsigned long long)cacheCost;
 - (id)init;
-- (unsigned long long)inkVersion;
+- (BOOL)isCompatibleWithInk:(id)arg1;
 - (BOOL)lockPurgeableResourcesAddToSet:(id)arg1;
 - (BOOL)needsCompute;
 

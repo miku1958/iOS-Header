@@ -6,30 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class LAContext, NSData, NSError;
-@protocol OS_dispatch_queue;
+#import <NanoPassKit/LAUIDelegate-Protocol.h>
 
-@interface NPKQuickPaymentSessionLocalAuthenticationCoordinator : NSObject
+@class LAContext, NSData, NSError, NSMutableArray, NSNumber;
+@protocol NPKQuickPaymentSessionLocalAuthenticationCoordinatorCredentialDelegate, OS_dispatch_queue;
+
+@interface NPKQuickPaymentSessionLocalAuthenticationCoordinator : NSObject <LAUIDelegate>
 {
+    id<NPKQuickPaymentSessionLocalAuthenticationCoordinatorCredentialDelegate> _credentialDelegate;
     NSObject<OS_dispatch_queue> *_localAuthenticationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CDUnknownBlockType _completionHandler;
     LAContext *_completedContext;
     NSData *_completedCredential;
     NSError *_completedError;
+    LAContext *_inProgressContext;
+    NSMutableArray *_pendingLocalAuthenticationEvents;
+    NSNumber *_activeLocalAuthenticationEvent;
 }
 
+@property (strong, nonatomic) NSNumber *activeLocalAuthenticationEvent; // @synthesize activeLocalAuthenticationEvent=_activeLocalAuthenticationEvent;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) LAContext *completedContext; // @synthesize completedContext=_completedContext;
 @property (strong, nonatomic) NSData *completedCredential; // @synthesize completedCredential=_completedCredential;
 @property (strong, nonatomic) NSError *completedError; // @synthesize completedError=_completedError;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (weak, nonatomic) id<NPKQuickPaymentSessionLocalAuthenticationCoordinatorCredentialDelegate> credentialDelegate; // @synthesize credentialDelegate=_credentialDelegate;
+@property (strong, nonatomic) LAContext *inProgressContext; // @synthesize inProgressContext=_inProgressContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *localAuthenticationQueue; // @synthesize localAuthenticationQueue=_localAuthenticationQueue;
+@property (strong, nonatomic) NSMutableArray *pendingLocalAuthenticationEvents; // @synthesize pendingLocalAuthenticationEvents=_pendingLocalAuthenticationEvents;
 
 - (void).cxx_destruct;
-- (void)_invokeCompletionHandlerForInvalidation;
+- (void)_activateLocalAuthenticationEvent:(long long)arg1;
+- (void)_cancelLocalAuthentication;
+- (long long)_credentialTypeForEvent:(long long)arg1;
+- (void)_deactivateLocalAuthenticationEvent:(long long)arg1;
+- (void)_handleLocalAuthenticationPolicyEvaluatedWithContext:(id)arg1 error:(id)arg2;
+- (void)_invokeCompletionHandlerForInvalidationWithError:(id)arg1;
+- (id)_nameForLocalAuthenticationEvent:(long long)arg1;
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
+- (void)_presentNextLocalAuthenticationEvent;
 - (void)beginLocalAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)event:(long long)arg1 params:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithCallbackQueue:(id)arg1;
 - (void)invalidateLocalAuthenticationContexts;
 

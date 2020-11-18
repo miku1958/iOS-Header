@@ -23,11 +23,13 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 
-+ (id)contextForBTLE;
++ (id)contextForBTLEWithDeviceId:(id)arg1;
 + (id)contextForBuiltInVoiceTrigger;
 + (id)contextForHearstVoiceTriggerWithDeviceId:(id)arg1;
++ (id)contextForHomeButton;
 + (id)contextForJarvisWithDeviceId:(id)arg1;
 + (id)contextForOpportuneSpeakerListener;
++ (id)contextForRemoraVoiceTriggerWithDeviceId:(id)arg1;
 + (id)contextForServerInvoke;
 + (id)contextForVoiceTriggerTraining;
 + (id)defaultContext;
@@ -43,10 +45,12 @@
 - (id)initWithRecordType:(long long)arg1 deviceId:(id)arg2;
 - (id)initWithXPCObject:(id)arg1;
 - (BOOL)isBuiltInVoiceTriggered;
+- (BOOL)isDictation;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHearstDoubleTapTriggered;
 - (BOOL)isHearstVoiceTriggered;
 - (BOOL)isJarvisVoiceTriggered;
+- (BOOL)isPluginContext;
 - (BOOL)isRTSTriggered;
 - (BOOL)isServerInvoked;
 - (BOOL)isStarkTriggered;

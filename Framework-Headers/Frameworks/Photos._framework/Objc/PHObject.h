@@ -13,8 +13,8 @@
 
 @interface PHObject : NSObject <PLLocalUUIDConverter, NSCopying>
 {
-    BOOL _deleted;
     NSString *_uuid;
+    BOOL _deleted;
     NSManagedObjectID *_objectID;
     unsigned long long _propertyHint;
     PHPhotoLibrary *_photoLibrary;
@@ -48,17 +48,19 @@
 + (id)localIdentifierExpressionForFetchRequests;
 + (id)localIdentifierWithUUID:(id)arg1;
 + (id)managedEntityName;
++ (BOOL)managedObjectSupportsAllowedForAnalysis;
 + (BOOL)managedObjectSupportsBursts;
++ (BOOL)managedObjectSupportsContributor;
 + (BOOL)managedObjectSupportsFaceState;
 + (BOOL)managedObjectSupportsHiddenState;
 + (BOOL)managedObjectSupportsKeyFaces;
-+ (BOOL)managedObjectSupportsMomentShareExpiredState;
-+ (BOOL)managedObjectSupportsMomentShareTrashedState;
 + (BOOL)managedObjectSupportsMontage;
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsPersonFilters;
 + (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsSavedAssetType;
++ (BOOL)managedObjectSupportsShareExpiredState;
++ (BOOL)managedObjectSupportsShareTrashedState;
 + (BOOL)managedObjectSupportsTrashedState;
 + (BOOL)managedObjectSupportsVisibilityState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;

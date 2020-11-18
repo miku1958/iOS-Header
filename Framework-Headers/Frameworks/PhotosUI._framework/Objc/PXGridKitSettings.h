@@ -14,8 +14,8 @@
     BOOL _includeLayoutsLocalSpritesInDebugHierarchy;
     BOOL _enableMetalRenderer;
     BOOL _enableViewRenderer;
-    BOOL _enableAccessibilityRenderer;
     BOOL _lowLatency;
+    BOOL _lowMemoryMode;
     BOOL _enableRoundedCorners;
     BOOL _enableColorMatching;
     BOOL _debugExtendedColorRange;
@@ -50,12 +50,13 @@
     BOOL _enableRectDiagnosticsForViewSprites;
     BOOL _wantsPerspectiveDebug;
     BOOL _shouldShowBoundariesOfTextTextures;
-    BOOL _shouldIncludeSpecialCharactersInTextTextures;
+    double _inactivityTimeout;
     long long _sampleCount;
     long long _thumbnailCacheSize;
     double _opportunisticPreheatRequiredIdleTime;
     double _blockingWhileScrollingTimeout;
     double _blockingWhileScrubbingTimeout;
+    double _blockingWhileInitialLoadTimeout;
     long long _blockOnMissingThumbnailsAtSpeedRegime;
     long long _videoAllowedAtOrBelowSpeed;
     long long _videoAllowedAtOrBelowSpeedForLowSpec;
@@ -64,11 +65,13 @@
     double _maxCornerRadius;
     double _cameraZoomFactor;
     double _perspectiveAngle;
+    double _livePhotoInitialCrossfadeDuration;
 }
 
 @property (nonatomic) BOOL allowBlockingDueToFences; // @synthesize allowBlockingDueToFences=_allowBlockingDueToFences;
 @property (nonatomic) BOOL allowBlockingDuringScrolling; // @synthesize allowBlockingDuringScrolling=_allowBlockingDuringScrolling;
 @property (nonatomic) long long blockOnMissingThumbnailsAtSpeedRegime; // @synthesize blockOnMissingThumbnailsAtSpeedRegime=_blockOnMissingThumbnailsAtSpeedRegime;
+@property (nonatomic) double blockingWhileInitialLoadTimeout; // @synthesize blockingWhileInitialLoadTimeout=_blockingWhileInitialLoadTimeout;
 @property (nonatomic) double blockingWhileScrollingTimeout; // @synthesize blockingWhileScrollingTimeout=_blockingWhileScrollingTimeout;
 @property (nonatomic) double blockingWhileScrubbingTimeout; // @synthesize blockingWhileScrubbingTimeout=_blockingWhileScrubbingTimeout;
 @property (nonatomic) double cameraZoomFactor; // @synthesize cameraZoomFactor=_cameraZoomFactor;
@@ -79,7 +82,6 @@
 @property (nonatomic) BOOL debugOpaque; // @synthesize debugOpaque=_debugOpaque;
 @property (nonatomic) BOOL debugResolution; // @synthesize debugResolution=_debugResolution;
 @property (nonatomic) BOOL disableLowResThumbnails; // @synthesize disableLowResThumbnails=_disableLowResThumbnails;
-@property (nonatomic) BOOL enableAccessibilityRenderer; // @synthesize enableAccessibilityRenderer=_enableAccessibilityRenderer;
 @property (nonatomic) BOOL enableAnchoringRectDiagnostics; // @synthesize enableAnchoringRectDiagnostics=_enableAnchoringRectDiagnostics;
 @property (nonatomic) BOOL enableAssetsRectDiagnostics; // @synthesize enableAssetsRectDiagnostics=_enableAssetsRectDiagnostics;
 @property (nonatomic) BOOL enableColorMatching; // @synthesize enableColorMatching=_enableColorMatching;
@@ -99,9 +101,12 @@
 @property (nonatomic) BOOL enableRoundedCorners; // @synthesize enableRoundedCorners=_enableRoundedCorners;
 @property (nonatomic) BOOL enableViewRenderer; // @synthesize enableViewRenderer=_enableViewRenderer;
 @property (nonatomic) BOOL enableXcodeCustomDebugHierarchy; // @synthesize enableXcodeCustomDebugHierarchy=_enableXcodeCustomDebugHierarchy;
+@property (nonatomic) double inactivityTimeout; // @synthesize inactivityTimeout=_inactivityTimeout;
 @property (nonatomic) BOOL includeLayoutsLocalSpritesInDebugHierarchy; // @synthesize includeLayoutsLocalSpritesInDebugHierarchy=_includeLayoutsLocalSpritesInDebugHierarchy;
+@property (nonatomic) double livePhotoInitialCrossfadeDuration; // @synthesize livePhotoInitialCrossfadeDuration=_livePhotoInitialCrossfadeDuration;
 @property (nonatomic) BOOL loadThumbnailsAsync; // @synthesize loadThumbnailsAsync=_loadThumbnailsAsync;
 @property (nonatomic) BOOL lowLatency; // @synthesize lowLatency=_lowLatency;
+@property (nonatomic) BOOL lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
 @property (nonatomic) long long lowSpecProcessorCountLimit; // @synthesize lowSpecProcessorCountLimit=_lowSpecProcessorCountLimit;
 @property (nonatomic) double maxCornerRadius; // @synthesize maxCornerRadius=_maxCornerRadius;
 @property (nonatomic) double opportunisticPreheatRequiredIdleTime; // @synthesize opportunisticPreheatRequiredIdleTime=_opportunisticPreheatRequiredIdleTime;
@@ -110,7 +115,6 @@
 @property (nonatomic) BOOL requestMasterThumbsOnly; // @synthesize requestMasterThumbsOnly=_requestMasterThumbsOnly;
 @property (nonatomic) BOOL requestThumbnailsOnly; // @synthesize requestThumbnailsOnly=_requestThumbnailsOnly;
 @property (nonatomic) long long sampleCount; // @synthesize sampleCount=_sampleCount;
-@property (nonatomic) BOOL shouldIncludeSpecialCharactersInTextTextures; // @synthesize shouldIncludeSpecialCharactersInTextTextures=_shouldIncludeSpecialCharactersInTextTextures;
 @property (nonatomic) BOOL shouldShowBoundariesOfTextTextures; // @synthesize shouldShowBoundariesOfTextTextures=_shouldShowBoundariesOfTextTextures;
 @property (nonatomic) BOOL simulateSomeAssetsInCloud; // @synthesize simulateSomeAssetsInCloud=_simulateSomeAssetsInCloud;
 @property (nonatomic) double slowAnimationsSpeed; // @synthesize slowAnimationsSpeed=_slowAnimationsSpeed;

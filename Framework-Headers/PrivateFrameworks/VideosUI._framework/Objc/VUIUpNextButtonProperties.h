@@ -12,8 +12,9 @@
 __attribute__((visibility("hidden")))
 @interface VUIUpNextButtonProperties : NSObject
 {
-    BOOL _dismissOnSelect;
     BOOL _isWatchListed;
+    BOOL _dismissOnSelect;
+    BOOL _confirmationShouldWaitCompletion;
     VUIUpNextStateView *_addedStateView;
     VUIUpNextStateView *_removedStateView;
     VUIButton<VUIUpNextButtonProtocol> *_delegate;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) VUIUpNextStateView *addedStateView; // @synthesize addedStateView=_addedStateView;
 @property (strong, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
+@property (nonatomic) BOOL confirmationShouldWaitCompletion; // @synthesize confirmationShouldWaitCompletion=_confirmationShouldWaitCompletion;
 @property (weak, nonatomic) VUIButton<VUIUpNextButtonProtocol> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL dismissOnSelect; // @synthesize dismissOnSelect=_dismissOnSelect;
 @property (nonatomic) BOOL isWatchListed; // @synthesize isWatchListed=_isWatchListed;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)callAPIAndToggleUpNextState;
 - (void)dealloc;
 - (id)init;
+- (void)setupNotificationObserver;
 - (void)updateButtonContentView;
 
 @end

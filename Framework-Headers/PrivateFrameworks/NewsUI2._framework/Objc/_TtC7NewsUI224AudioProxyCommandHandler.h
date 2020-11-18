@@ -14,6 +14,7 @@
     MISSING_TYPE *dataManager;
     MISSING_TYPE *playNowIgnoringPlaylistSlot;
     MISSING_TYPE *audioPlaybackTracker;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

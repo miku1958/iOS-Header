@@ -18,6 +18,7 @@
     NSString *_description;
     NEUserNotification *_notification;
     BOOL _stopped;
+    BOOL _isHostingSystemExtension;
     id<NEExtensionProviderHostDelegate> _delegate;
     NSXPCConnection *_vendorConnection;
 }
@@ -27,7 +28,9 @@
 @property (weak) id<NEExtensionProviderHostDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isHostingSystemExtension; // @synthesize isHostingSystemExtension=_isHostingSystemExtension;
 @property (readonly) int pid;
+@property (readonly) int requiredEntitlement;
 @property (nonatomic) BOOL stopped; // @synthesize stopped=_stopped;
 @property (readonly) Class superclass;
 @property (readonly) NSUUID *uuid;
@@ -41,12 +44,14 @@
 - (void)displayMessage:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dispose;
 - (id)initWithVendorEndpoint:(id)arg1 delegate:(id)arg2;
+- (BOOL)isSignedWithDeveloperID;
 - (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2;
 - (void)setDescription:(id)arg1;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startedWithError:(id)arg1;
 - (void)stopWithReason:(int)arg1;
+- (void)validateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)vendorContext;
 - (void)wake;
 

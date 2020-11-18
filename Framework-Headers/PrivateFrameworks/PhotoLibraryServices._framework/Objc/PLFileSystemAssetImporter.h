@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSString, PLPhotoLibrary;
+@class NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSString, PLLibraryServicesManager, PLPhotoLibrary;
 
 @interface PLFileSystemAssetImporter : NSObject
 {
     PLPhotoLibrary *_photoLibrary;
+    PLLibraryServicesManager *_libraryServicesManager;
     NSString *_libraryBundlePath;
     NSString *_photoLibraryStoreUUID;
     NSMutableIndexSet *_thumbIndexes;
@@ -27,7 +28,7 @@
 @property (nonatomic) unsigned long long thumbnailBatchFetchSize; // @synthesize thumbnailBatchFetchSize=_thumbnailBatchFetchSize;
 
 - (void).cxx_destruct;
-- (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2 isPlaceholder:(BOOL)arg3;
+- (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2 assetUUID:(id)arg3 isPlaceholder:(BOOL)arg4;
 - (id)_assetAdjustmentsIfExistsForAsset:(id)arg1;
 - (BOOL)_setupAdjustmentsFromAdjustmentFileForAsset:(id)arg1;
 - (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2 isPlaceholder:(BOOL)arg3 hasVideoComplementResource:(BOOL)arg4;
@@ -39,7 +40,7 @@
 - (void)addAvailableThumbnailIndex:(unsigned long long)arg1;
 - (id)assetURLisInDatabase:(id)arg1 deferredPreviewURL:(id)arg2;
 - (void)dealloc;
-- (id)initWithPhotoLibrary:(id)arg1;
+- (id)initWithPhotoLibrary:(id)arg1 libraryServicesManager:(id)arg2;
 - (id)libraryBundlePathWithPhotoLibrary:(id)arg1;
 - (unsigned long long)nextThumbnailIndex;
 - (void)setModificationAndCreationDateOnAsset:(id)arg1 withURL:(id)arg2;

@@ -69,8 +69,8 @@
 - (void)layoutSubviews;
 - (void)payStateView:(id)arg1 revealingCheckmark:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;
 - (void)willBecomeVisibleAnimated:(BOOL)arg1;
 

@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 
 + (id)modelWithProposedContactsFromFamilyInfo:(id)arg1;
++ (id)proposedContactsFromFamilyInfo:(id)arg1;
 - (void).cxx_destruct;
 - (id)allContactsModel;
 - (id)initWithModelFetcher:(id)arg1 familyInfoFetcher:(id)arg2 schedulerProvider:(id)arg3;

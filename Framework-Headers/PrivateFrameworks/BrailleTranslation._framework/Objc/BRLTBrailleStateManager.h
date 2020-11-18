@@ -27,6 +27,7 @@
     struct _NSRange _brailleSelection;
     struct _NSRange _brailleFocus;
     BOOL _brailleDirty;
+    BOOL _brailleDirtyForMixedMode;
     BOOL _scriptDirty;
     id<BRLTBrailleStateManagerDelegate> _delegate;
     id<BRLTBrailleTranslationDelegateProtocol> _translationDelegate;
@@ -53,7 +54,7 @@
 - (void)_generateBrailleBufferForInsert;
 - (BOOL)_selectionIsValidForDelete;
 - (BOOL)_selectionIsValidForInsert;
-- (BOOL)_setBrailleSelection:(struct _NSRange)arg1;
+- (BOOL)_setBrailleSelection:(struct _NSRange)arg1 newScriptLocation:(out unsigned long long *)arg2;
 - (struct _NSRange)_textRangeForBrailleRange:(struct _NSRange)arg1 textPositions:(id)arg2 scriptLength:(long long)arg3;
 - (void)_translate:(BOOL)arg1;
 - (struct _NSRange)backwardEditingAtomForScriptString:(id)arg1;
@@ -78,7 +79,7 @@
 - (struct _NSRange)scriptRangeForBrailleRange:(struct _NSRange)arg1;
 - (struct _NSRange)scriptRangeOfBrailleCellRepresentingCharacterAtScriptIndex:(unsigned long long)arg1;
 - (void)setBrailleSelection:(struct _NSRange)arg1;
-- (void)setBrailleSelection:(struct _NSRange)arg1 needsForwardToScreenReader:(out BOOL *)arg2;
+- (void)setBrailleSelection:(struct _NSRange)arg1 needsForwardToScreenReader:(out BOOL *)arg2 newScriptLocation:(out unsigned long long *)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setScriptString:(id)arg1;
 - (void)setTranslationDelegate:(id)arg1;

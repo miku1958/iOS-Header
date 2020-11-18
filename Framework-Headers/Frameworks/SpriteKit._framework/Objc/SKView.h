@@ -70,7 +70,8 @@
 @property (nonatomic) BOOL allowsTransparency;
 @property (nonatomic, getter=isAsynchronous) BOOL asynchronous;
 @property (weak, nonatomic) NSObject<SKViewDelegate> *delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL disableStencilBuffers;
+@property (nonatomic) BOOL disableDepthStencilBuffer;
+@property (nonatomic, getter=disableDepthStencilBuffer, setter=setDisableDepthStencilBuffer:) BOOL disableStencilBuffers;
 @property (nonatomic) long long frameInterval;
 @property (nonatomic) BOOL ignoresSiblingOrder;
 @property (readonly) NSMutableDictionary *options;

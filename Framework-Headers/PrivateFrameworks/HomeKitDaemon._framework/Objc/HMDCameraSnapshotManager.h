@@ -17,7 +17,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDNotificationRegistration, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotRequestHandler, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
+@class HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDNotificationRegistration, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotRequestHandler, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraSnapshotManager : HMFObject <HMDCameraSnapshotLocalDelegate, HMDCameraSnapshotRemoteRelaySenderDelegate, HMDCameraSnapshotRemoteRelayReceiverDelegate, HMDCameraSnapshotRemoteStreamSenderDelegate, HMDCameraSnapshotRemoteStreamReceiverDelegate, HMDCameraSnapshotRemoteRelayStreamDelegate, HMFTimerDelegate, HMFLogging, HMDCameraStreamSnapshotHandlerDelegate, HMDHomeMessageReceiver>
@@ -47,6 +47,7 @@
 @property (strong, nonatomic) NSMutableDictionary *currentRemoteSessions; // @synthesize currentRemoteSessions=_currentRemoteSessions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSDictionary *encodedMostRecentSnapshot;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *imageCacheDirectory; // @synthesize imageCacheDirectory=_imageCacheDirectory;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
@@ -62,7 +63,7 @@
 @property (readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly, nonatomic) HMDSnapshotCacheRequestHandler *snapshotCacheRequestHandler; // @synthesize snapshotCacheRequestHandler=_snapshotCacheRequestHandler;
 @property (readonly, nonatomic) HMDSnapshotRequestHandler *snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
-@property (readonly, nonatomic) HMDSnapshotSlotManager *snapshotSlotManager; // @synthesize snapshotSlotManager=_snapshotSlotManager;
+@property (readonly) HMDSnapshotSlotManager *snapshotSlotManager; // @synthesize snapshotSlotManager=_snapshotSlotManager;
 @property (readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -92,10 +93,8 @@
 - (void)_sendSnapshotRequestStreamInitiator:(id)arg1 snapshotSessionID:(id)arg2;
 - (void)_sendSnapshotRequestStreamReceiver:(id)arg1 snapshotSessionID:(id)arg2;
 - (void)_sendStreamSnapshotRequest:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_startedGettingImageFor:(id)arg1 error:(id)arg2;
 - (void)dealloc;
-- (id)getMostRecentSnapshotRequest;
-- (void)handleAccessoryIsNotReachable:(id)arg1;
+- (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6 networkMonitor:(id)arg7 residentMessageHandler:(id)arg8;
 - (id)logIdentifier;

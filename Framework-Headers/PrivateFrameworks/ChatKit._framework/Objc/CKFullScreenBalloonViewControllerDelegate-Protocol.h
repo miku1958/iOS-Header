@@ -15,11 +15,14 @@
 @optional
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 deleteStickerWithTransferGUID:(NSString *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 didAppearAnimated:(BOOL)arg2;
+- (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 replyButtonPressedForChatItem:(CKChatItem *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 stickerPackTappedWithAdamID:(NSNumber *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 verticallyScrollTranscriptByAmount:(double)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 willAppearAnimated:(BOOL)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 willDisappearWithSendAnimation:(BOOL)arg2;
 - (void)fullScreenBalloonViewControllerDidDisappear:(CKFullScreenBalloonViewController *)arg1;
 - (void)fullScreenBalloonViewControllerHandleDismissTap:(CKFullScreenBalloonViewController *)arg1;
+- (struct CGRect)fullScreenBalloonViewControllerSafeAreaLayoutFrame:(CKFullScreenBalloonViewController *)arg1;
+- (BOOL)fullScreenBalloonViewControllerShouldShowReplyButton:(CKFullScreenBalloonViewController *)arg1;
 @end
 

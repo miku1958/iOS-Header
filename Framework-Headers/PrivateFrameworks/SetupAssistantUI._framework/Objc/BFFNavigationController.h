@@ -19,13 +19,17 @@
     BOOL _animating;
     BOOL _pushWithoutDeferringTransitionsWhileInBackground;
     BOOL _inBackground;
+    BOOL _ignoreDismissals;
+    struct CGSize _forcedPreferredContentSize;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (strong, nonatomic) UIColor *backgroundColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGSize forcedPreferredContentSize; // @synthesize forcedPreferredContentSize=_forcedPreferredContentSize;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreDismissals; // @synthesize ignoreDismissals=_ignoreDismissals;
 @property (nonatomic, getter=isInBackground) BOOL inBackground; // @synthesize inBackground=_inBackground;
 @property (nonatomic) BOOL pushWithoutDeferringTransitionsWhileInBackground; // @synthesize pushWithoutDeferringTransitionsWhileInBackground=_pushWithoutDeferringTransitionsWhileInBackground;
 @property (readonly) Class superclass;
@@ -35,14 +39,18 @@
 - (void)_reapObservers;
 - (BOOL)_usesTransitionController;
 - (void)addDelegateObserver:(id)arg1;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initIgnoringDismissals:(BOOL)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)popToRootViewControllerAnimated:(BOOL)arg1;
 - (id)popToViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)popToViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)popViewControllerAnimated:(BOOL)arg1;
+- (struct CGSize)preferredContentSize;
 - (long long)preferredStatusBarStyle;
+- (BOOL)prefersStatusBarHidden;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeDelegateObserver:(id)arg1;

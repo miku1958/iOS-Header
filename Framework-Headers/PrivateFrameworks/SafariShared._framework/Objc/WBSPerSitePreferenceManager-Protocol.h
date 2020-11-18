@@ -24,6 +24,9 @@
 - (NSArray *)valuesForPreference:(WBSPerSitePreference *)arg1;
 
 @optional
+- (void)getDomainsAllowedToRemoveForPreference:(WBSPerSitePreference *)arg1 usingBlock:(void (^)(NSSet *))arg2;
+- (NSString *)localizedWarningTextForPreference:(WBSPerSitePreference *)arg1;
 - (BOOL)preferenceAppliesToHighLevelDomains:(WBSPerSitePreference *)arg1;
+- (BOOL)preferenceOnlyShowsConfiguredSites:(WBSPerSitePreference *)arg1;
 @end
 

@@ -9,7 +9,7 @@
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 #import <CloudKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData;
+@class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface CKDZonePCSData : CKDPCSData <NSSecureCoding, NSCopying>
@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
     NSData *_zoneishPublicKeyID;
     CKDSharePCSData *_sharePCSData;
     CKRecordID *_shareID;
+    NSDate *_zonePCSModificationDate;
 }
 
 @property (strong, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property (strong, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
 @property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property (strong, nonatomic) NSDate *zonePCSModificationDate; // @synthesize zonePCSModificationDate=_zonePCSModificationDate;
 @property (nonatomic) struct _OpaquePCSShareProtection *zoneishPCS;
 @property (copy, nonatomic) NSData *zoneishPCSData; // @synthesize zoneishPCSData=_zoneishPCSData;
 @property (strong, nonatomic) NSData *zoneishPublicKeyID; // @synthesize zoneishPublicKeyID=_zoneishPublicKeyID;

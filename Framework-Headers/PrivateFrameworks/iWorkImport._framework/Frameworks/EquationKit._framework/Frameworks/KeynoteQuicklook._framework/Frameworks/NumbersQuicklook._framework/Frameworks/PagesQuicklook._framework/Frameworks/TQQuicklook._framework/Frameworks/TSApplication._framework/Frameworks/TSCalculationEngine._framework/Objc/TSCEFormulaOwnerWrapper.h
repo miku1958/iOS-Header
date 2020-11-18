@@ -13,7 +13,7 @@
     UUIDData_5fbc143e _ownerUID;
 }
 
-@property (readonly, nonatomic) UUIDData_5fbc143e ownerUID;
+@property (readonly, nonatomic) const UUIDData_5fbc143e *ownerUID;
 
 - (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

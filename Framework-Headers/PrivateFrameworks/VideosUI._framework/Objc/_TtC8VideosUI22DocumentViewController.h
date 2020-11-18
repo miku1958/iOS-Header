@@ -11,11 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22DocumentViewController : UIViewController
 {
-    MISSING_TYPE *document;
     MISSING_TYPE *templateViewController;
+    MISSING_TYPE *document;
     MISSING_TYPE *isTransitioning;
     MISSING_TYPE *loadingView;
-    MISSING_TYPE *opaqueBackground;
+    MISSING_TYPE *navBarOpacity;
+    MISSING_TYPE *navBarTitleOpacity;
+    MISSING_TYPE *navBarTintColor;
+    MISSING_TYPE *pagePerformanceReporter;
 }
 
 @property (nonatomic, readonly) UIViewController *childViewControllerForStatusBarHidden;
@@ -27,12 +30,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
 - (id)overrideTraitCollectionForChildViewController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

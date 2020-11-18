@@ -11,7 +11,7 @@
 @interface PUActivityItemSourceConfiguration : NSObject
 {
     BOOL _requiresAssetExport;
-    CDStruct_7f880b36 _sharingPreferences;
+    CDStruct_915a387c _sharingPreferences;
     unsigned long long _maxFileSizeLimit;
     long long _outputType;
     long long _assetExportKind;
@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) unsigned long long maxFileSizeLimit; // @synthesize maxFileSizeLimit=_maxFileSizeLimit;
 @property (readonly, nonatomic) long long outputType; // @synthesize outputType=_outputType;
 @property (readonly, nonatomic) BOOL requiresAssetExport; // @synthesize requiresAssetExport=_requiresAssetExport;
-@property (nonatomic) CDStruct_2a4d9400 sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
+@property (nonatomic) CDStruct_df7f102b sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
 @property (copy, nonatomic) NSDictionary *sharingVariants; // @synthesize sharingVariants=_sharingVariants;
 
 + (id)_activitiesThatDontRequireAssetExport;
@@ -37,8 +37,6 @@
 + (id)_activitiesThatSupportAssetBundles;
 + (id)_activitiesThatSupportHEIFHEVC;
 + (id)_activitiesThatSupportLivePhotoBundles;
-+ (id)_activitiesThatSupportWideColorInImages;
-+ (id)_activitiesThatSupportWideColorInLivePhotos;
 + (id)_photosActionSheetActivities;
 + (id)_photosInternalActivities;
 + (id)_systemActivitiesThatDontSupportMomentShareLinks;
@@ -62,10 +60,8 @@
 - (id)_videoExportFileTypeForActivityType:(id)arg1;
 - (id)_videoExportPresetForActivityType:(id)arg1;
 - (BOOL)_wantsAssetBundleForActivityType:(id)arg1;
-- (BOOL)_wantsColorSpaceConversionForActivityType:(id)arg1;
 - (BOOL)_wantsLivePhotoBundleForActivityType:(id)arg1;
-- (BOOL)_wantsLivePhotoColorSpaceConversionForActivityType:(id)arg1;
-- (id)initWithAsset:(id)arg1 availableSharingVariants:(id)arg2 activityType:(id)arg3 preferences:(CDStruct_2a4d9400)arg4;
+- (id)initWithAsset:(id)arg1 availableSharingVariants:(id)arg2 activityType:(id)arg3 preferences:(CDStruct_df7f102b)arg4;
 
 @end
 

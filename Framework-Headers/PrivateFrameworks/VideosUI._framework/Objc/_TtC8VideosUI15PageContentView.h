@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playbackDidStartObserver;
     MISSING_TYPE *playbackDidStopObserver;
     MISSING_TYPE *verticalStackView;
+    MISSING_TYPE *preferredInterfaceStyle;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *backgroundViewModel;
+    MISSING_TYPE *lastViewWidth;
 }
 
 - (void).cxx_destruct;

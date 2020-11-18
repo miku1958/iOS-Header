@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *contents;
     BOOL deviceIsiPhone;
     BOOL deviceIsiPad;
+    id savedFirstResponder;
 }
 
 - (void).cxx_destruct;

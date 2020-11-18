@@ -7,6 +7,7 @@
 #import <NewsArticles/_TtC12NewsArticles22SubscribeActionHandler.h>
 
 @interface _TtC12NewsArticles22SubscribeActionHandler (NewsArticles)
+- (void)handleAMSPurchaseCompletion;
 - (void)handleSubscribeActionOnPresenter:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 @end
 

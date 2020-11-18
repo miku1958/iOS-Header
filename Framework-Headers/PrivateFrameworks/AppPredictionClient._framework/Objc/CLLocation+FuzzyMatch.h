@@ -8,5 +8,7 @@
 
 @interface CLLocation (FuzzyMatch)
 - (BOOL)atx_isFuzzyMatch:(id)arg1;
+- (unsigned int)atx_locationHash;
+- (unsigned long long)atx_locationHashWithLevel:(int)arg1;
 @end
 

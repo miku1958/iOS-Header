@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 @property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
++ (long long)compareMemoryInfo:(id)arg1 byRelevanceScoreToMemoryInfo:(id)arg2;
 + (long long)compareMemoryInfo:(id)arg1 toMemoryInfo:(id)arg2;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;

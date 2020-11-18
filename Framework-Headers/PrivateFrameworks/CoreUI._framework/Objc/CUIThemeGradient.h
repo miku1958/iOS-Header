@@ -16,23 +16,16 @@
     struct CGImage *_gradientImage;
 }
 
-- (id)_colorFromPSDGradientColor:(struct _psdGradientColor)arg1;
 - (struct CGImage *)_createRadialGradientImageWithWidth:(double)arg1 height:(double)arg2;
 - (id)_initWithGradientEvaluator:(id)arg1 colorSpace:(struct CGColorSpace *)arg2;
-- (struct CGFunction *)_newColorShaderForDistance:(double)arg1;
-- (id)_psdGradientColorStopsWithColors:(id)arg1 locations:(id)arg2 colorSpace:(struct CGColorSpace *)arg3;
-- (struct _psdGradientColor)_psdGradientColorWithColor:(id)arg1 colorSpace:(struct CGColorSpace *)arg2;
-- (id)_psdGradientOpacityStopsWithOpacities:(id)arg1 locations:(id)arg2;
-- (void)_tintColorStopsWithEffects:(id)arg1;
 - (int)blendMode;
 - (id)colorLocations;
-- (struct CGFunction *)colorShader;
 - (id)colorStops;
 - (void)dealloc;
 - (void)drawAngleGradientInRect:(struct CGRect)arg1 relativeCenterPosition:(struct CGPoint)arg2 withContext:(struct CGContext *)arg3;
-- (void)drawFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 options:(unsigned long long)arg3;
 - (void)drawFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 options:(unsigned long long)arg3 withContext:(struct CGContext *)arg4;
 - (void)drawInRect:(struct CGRect)arg1 angle:(double)arg2;
+- (void)drawInRect:(struct CGRect)arg1 angle:(double)arg2 options:(unsigned long long)arg3 withContext:(struct CGContext *)arg4;
 - (void)drawInRect:(struct CGRect)arg1 angle:(double)arg2 withContext:(struct CGContext *)arg3;
 - (void)drawRadialGradientInRect:(struct CGRect)arg1 relativeCenterPosition:(struct CGPoint)arg2 withContext:(struct CGContext *)arg3;
 - (id)fillColor;

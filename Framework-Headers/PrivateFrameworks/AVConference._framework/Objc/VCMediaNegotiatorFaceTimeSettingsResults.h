@@ -12,12 +12,19 @@ __attribute__((visibility("hidden")))
     BOOL _SIPDisabled;
     BOOL _secureMessagingRequired;
     unsigned int _faceTimeSwitches;
+    BOOL _oneToOneModeSupported;
+    unsigned char mediaControlInfoFECFeedbackVersion;
+    unsigned char _remoteLinkProbingCapabilityVersion;
+    unsigned char _mediaControlInfoFECFeedbackVersion;
     BOOL _remoteFaceTimeSwitchesAvailable;
 }
 
 @property (nonatomic) BOOL SIPDisabled; // @synthesize SIPDisabled=_SIPDisabled;
 @property (nonatomic) unsigned int faceTimeSwitches; // @synthesize faceTimeSwitches=_faceTimeSwitches;
+@property (nonatomic) unsigned char mediaControlInfoFECFeedbackVersion; // @synthesize mediaControlInfoFECFeedbackVersion=_mediaControlInfoFECFeedbackVersion;
+@property (nonatomic) BOOL oneToOneModeSupported; // @synthesize oneToOneModeSupported=_oneToOneModeSupported;
 @property (nonatomic) BOOL remoteFaceTimeSwitchesAvailable; // @synthesize remoteFaceTimeSwitchesAvailable=_remoteFaceTimeSwitchesAvailable;
+@property (nonatomic) unsigned char remoteLinkProbingCapabilityVersion; // @synthesize remoteLinkProbingCapabilityVersion=_remoteLinkProbingCapabilityVersion;
 @property (nonatomic) BOOL secureMessagingRequired; // @synthesize secureMessagingRequired=_secureMessagingRequired;
 
 

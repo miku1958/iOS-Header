@@ -6,7 +6,7 @@
 
 #import <AssetsLibraryServices/PLThumbnailManagerCore.h>
 
-@class NSArray, NSLock, NSMutableArray, NSMutableSet, PLPhotoLibrary, PLThrottleTimer;
+@class NSArray, NSLock, NSMutableArray, NSMutableSet;
 
 @interface PLThumbnailManager : PLThumbnailManagerCore
 {
@@ -14,9 +14,8 @@
     NSMutableSet *_requestedThumbnailFixAssets;
     NSMutableArray *_alreadyFailedAssetObjectIDsForRebuild;
     NSLock *_fixLock;
-    PLThrottleTimer *_timer;
-    PLPhotoLibrary *_throttleTimerCameraPreviewWellLibrary;
     BOOL _shouldRebuildThumbnails;
+    BOOL _didCheckShouldRebuildThumbnails;
     BOOL _hasExceededThumbnailRebuildRequestLimit;
     BOOL _isRebuildingThumbnails;
     id _observerToken;
@@ -26,40 +25,24 @@
 @property (strong, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
 @property (strong, nonatomic) NSArray *slowPersistenceManagers; // @synthesize slowPersistenceManagers=_slowPersistenceManagers;
 
-+ (id)_allowedForCameraPreviewWellPredicate;
-+ (BOOL)assetIsAllowedForCameraPreviewWell:(id)arg1;
-+ (BOOL)assetIsCameraPreviewWellAsset:(id)arg1;
-+ (id)cameraPreviewWellAssetFetchRequest;
-+ (id)cameraPreviewWellAssetUUIDFromPersistedFile;
-+ (id)cameraPreviewWellImageQueue;
-+ (BOOL)cameraPreviewWellSupportedOnCurrentDevice;
-+ (void)saveCameraPreviewWellImageForAsset:(id)arg1 library:(id)arg2;
 + (id)supportedThumbnailFormats;
 - (void).cxx_destruct;
 - (id)_allPossibleThumbnailFormatIDs;
-- (BOOL)_cameraPreviewWellMetadataLoadAndUpdateIfNeeded:(id *)arg1 libraryURL:(id)arg2;
-- (id)_cameraPreviewWellMetadataQueue;
-- (BOOL)_compareAsset:(id)arg1 toMetadata:(id)arg2;
 - (unsigned short)_configurationThumbnailFormat;
 - (int)_configurationThumbnailVersion;
 - (id)_dataForAsset:(id)arg1 format:(unsigned short)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8 imageDataFormat:(unsigned short *)arg9;
 - (void)_discardAlreadyFailedAssetObjectIDsForRebuild;
 - (long long)_diskFootprintOfTableThumbnailTables;
 - (BOOL)_downscaleAndWriteTableAndFileBackedThumbnailsWithIdentifier:(id)arg1 thumbnailIndex:(unsigned long long)arg2 image:(id)arg3 assetUUID:(id)arg4;
-- (id)_fetchCameraPreviewWellMetadataInLibrary:(id)arg1;
 - (id)_missingThumbnailPredicate;
 - (BOOL)_performDownscaleIntoDatas:(id)arg1 image:(id)arg2 assetUUID:(id)arg3;
 - (long long)_rebuildAssetThumbnailsWithLimit:(int)arg1 library:(id)arg2 error:(id *)arg3;
 - (id)_rebuildThumbnailsQueue;
 - (void)_recordRebuildThumbnailsAttempt;
-- (void)_refetchAndSaveCameraPreviewWellImage;
 - (void)_removeMasterThumbDirectories;
-- (void)_saveCameraPreviewWellImage:(struct CGImage *)arg1 assetUUID:(id)arg2;
 - (unsigned short)_supportedThumbnailFormatIDFromGeneralFormatID:(unsigned short)arg1;
 - (id)_tableDescriptions;
-- (id)_throttleTimerCameraPreviewWellLibrary;
 - (BOOL)_thumbnailChangeContainsOnlyTableDeprecationsFromVersion:(int)arg1 toVersion:(int)arg2 fromFormat:(int)arg3 toFormat:(int)arg4;
-- (void)_updateCameraPreviewWellMetadataFromAsset:(id)arg1;
 - (void)addRebuildThumbnailsRequest;
 - (id)beginThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(id)arg1;
 - (id)dataForPhoto:(id)arg1 format:(unsigned short)arg2 allowPlaceholder:(BOOL)arg3 width:(int *)arg4 height:(int *)arg5 bytesPerRow:(int *)arg6 dataWidth:(int *)arg7 dataHeight:(int *)arg8 imageDataOffset:(int *)arg9;
@@ -81,12 +64,13 @@
 - (id)placeholderDataForFormat:(unsigned short)arg1 photoImageSize:(struct CGSize)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (void)preheatThumbnailDataWithFormat:(unsigned short)arg1 thumbnailIndexes:(id)arg2;
 - (void)rebuildAllMissingThumbnailsInLibrary:(id)arg1;
-- (void)refetchAndSaveCameraPreviewWellImageIfNecessaryForAssetDidSave:(id)arg1;
 - (void)removeObsoleteMetadata;
 - (void)removeRebuildThumbnailsRequest:(const char *)arg1;
 - (void)removeThumbnailTablesUnsupportedOnly:(BOOL)arg1;
 - (BOOL)resetThumbnailsWithModelMigrator:(id)arg1;
+- (BOOL)resetThumbnailsWithModelMigrator:(id)arg1 forced:(BOOL)arg2;
 - (void)setThumbnailsForAsset:(id)arg1 withImage:(id)arg2;
+- (BOOL)setThumbnailsForThumbIdentifier:(id)arg1 thumbnailIndex:(unsigned long long)arg2 assetUUID:(id)arg3 kind:(short)arg4 extension:(id)arg5 withImage:(id)arg6;
 - (id)thumbManagerForFormatID:(unsigned short)arg1;
 - (id)thumbnailJPEGPathForPhoto:(id)arg1;
 - (id)thumbnailRebuildIndicatorPath;

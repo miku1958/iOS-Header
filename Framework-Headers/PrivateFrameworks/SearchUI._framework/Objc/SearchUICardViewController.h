@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, SearchUICardTableViewController, TLKLabel, UIActivityIndicatorView;
+#import <SearchUI/SearchUISizingDelegate-Protocol.h>
+
+@class NSString, NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, SearchUICardTableViewController, TLKLabel, UIActivityIndicatorView;
 @protocol SFFeedbackListener, SearchUICardViewDelegate;
 
-@interface SearchUICardViewController : UIViewController
+@interface SearchUICardViewController : UIViewController <SearchUISizingDelegate>
 {
     NUIContainerBoxView *_loadingView;
     UIActivityIndicatorView *_loadingSpinner;
@@ -20,27 +22,35 @@
 }
 
 @property (strong, nonatomic) SFCard *card;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SearchUICardViewDelegate> delegate;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<SFFeedbackListener> feedbackListener;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInPreviewPlatter) BOOL inPreviewPlatter;
 @property (nonatomic) unsigned long long level; // @synthesize level=_level;
 @property (strong, nonatomic) TLKLabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
 @property (strong, nonatomic) NSTimer *loadingScreenTimer; // @synthesize loadingScreenTimer=_loadingScreenTimer;
 @property (strong, nonatomic) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
 @property (strong, nonatomic) NUIContainerBoxView *loadingView; // @synthesize loadingView=_loadingView;
+@property (nonatomic) BOOL rowSelectionAppearanceEnabled;
 @property (nonatomic) BOOL shouldUseInsetRoundedSections;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) SearchUICardTableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
 @property (nonatomic) BOOL threeDTouchEnabled;
+@property (readonly, nonatomic) BOOL topRowWillFillBackgroundWithContent;
 @property (strong, nonatomic) SearchUIBackgroundView *view; // @dynamic view;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (void)cardViewDidAppear;
 - (double)contentHeightForWidth:(double)arg1;
+- (void)contentSizeDidChange:(struct CGSize)arg1 animated:(BOOL)arg2;
 - (void)displayLoadingViewAfterDelay:(double)arg1 withSpinner:(BOOL)arg2;
 - (id)init;
 - (id)initWithCard:(id)arg1 feedbackListener:(id)arg2;
 - (id)initWithCard:(id)arg1 style:(unsigned long long)arg2 feedbackListener:(id)arg3;
+- (struct CGSize)preferredContentSize;
 - (void)prepareLoadingView;
 - (id)testingTableViewController;
 - (void)updateTimerAndCardSections:(id)arg1;

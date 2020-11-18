@@ -12,6 +12,11 @@
 - (void)biometricUnlockBehaviorConfigurationDidChange:(id<SBBiometricUnlockBehaviorConfiguration>)arg1;
 
 @optional
+- (void)fillRestToOpenWithDuration:(double)arg1;
 - (BOOL)isLockScreenShowingDefaultContent;
+- (BOOL)isRestToOpenAvailable;
+- (int)lockScreenWakeSource;
+- (void)resetRestToOpen;
+- (void)startRestToOpenCoachingWithCompletion:(void (^)(BOOL))arg1;
 @end
 

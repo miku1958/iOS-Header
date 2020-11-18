@@ -46,6 +46,7 @@
         unsigned int appearanceNeedsUpdate:1;
         unsigned int selectionIndicatorDragged:1;
         unsigned int useInnerSegmentSpacing:1;
+        unsigned int adjustsForContentSizeCategory:1;
         unsigned int useDynamicShadow:1;
         unsigned int animatingOutDynamicShadow:1;
         unsigned int animatingSeleciton:1;
@@ -103,6 +104,8 @@
 + (double)defaultHeightForStyle:(long long)arg1;
 + (double)defaultHeightForStyle:(long long)arg1 size:(int)arg2;
 - (void).cxx_destruct;
+- (void)__initWithFrameCommonOperations;
+- (BOOL)_alwaysEmitValueChanged;
 - (void)_animateContentChangeWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_attributedTitleForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_axLongPressHandler:(id)arg1;
@@ -128,6 +131,7 @@
 - (BOOL)_focusSystem:(id)arg1 containsChildOfHostEnvironment:(id)arg2;
 - (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (BOOL)_hasEnabledSegment;
+- (void)_highlightSegment:(long long)arg1;
 - (double)_innerSegmentSpacing;
 - (void)_insertSegment:(int)arg1 withInfo:(id)arg2 animated:(BOOL)arg3;
 - (void)_insertSegmentWithAttributedTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
@@ -140,6 +144,9 @@
 - (void)_selectFocusedSegment;
 - (id)_selectedSegmentVibrancyEffect;
 - (void)_sendDelayedFocusActionIfNecessary;
+- (void)_sendValueChanged;
+- (void)_setAction:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
+- (void)_setAlwaysEmitValueChanged:(BOOL)arg1;
 - (void)_setAppearanceIsTiled:(BOOL)arg1 leftCapWidth:(unsigned long long)arg2 rightCapWidth:(unsigned long long)arg3;
 - (void)_setAttributedTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)_setAutosizeText:(BOOL)arg1;
@@ -176,9 +183,11 @@
 - (void)_updateSelectionToSegment:(id)arg1 highlight:(BOOL)arg2 shouldAnimate:(BOOL)arg3 sameSegment:(BOOL)arg4;
 - (BOOL)_usesNewAnimations;
 - (id)_viewForLoweringBaselineLayoutAttribute:(int)arg1;
+- (id)actionForSegmentAtIndex:(unsigned long long)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addSegmentWithTitle:(id)arg1;
+- (BOOL)adjustsForContentSizeCategory;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)backgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
@@ -199,7 +208,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)highlightSegment:(int)arg1;
 - (void)hoverOffSegment:(long long)arg1;
 - (void)hoverOnSegment:(long long)arg1;
 - (id)imageForSegment:(unsigned long long)arg1;
@@ -207,10 +215,12 @@
 - (id)infoViewForSegment:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 withStyle:(long long)arg2 withItems:(id)arg3;
 - (id)initWithItems:(id)arg1;
 - (void)insertSegment:(unsigned long long)arg1 withImage:(id)arg2 animated:(BOOL)arg3;
 - (void)insertSegment:(unsigned long long)arg1 withTitle:(id)arg2 animated:(BOOL)arg3;
+- (void)insertSegmentWithAction:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)insertSegmentWithImage:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)insertSegmentWithTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (BOOL)isEnabledForSegment:(unsigned long long)arg1;
@@ -226,8 +236,11 @@
 - (void)removeSegment:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)removeSegmentAtIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (long long)segmentControlStyle;
+- (long long)segmentIndexForActionIdentifier:(id)arg1;
 - (void)selectSegment:(int)arg1;
 - (long long)selectedSegment;
+- (void)setAction:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
+- (void)setAdjustsForContentSizeCategory:(BOOL)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setAlwaysNotifiesDelegateOfSegmentClicks:(BOOL)arg1;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;

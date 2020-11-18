@@ -10,10 +10,12 @@
 
 @interface HKCumulativeQuantitySeriesSample : HKCumulativeQuantitySample
 {
+    HKQuantity *_sum;
 }
 
-@property (readonly, copy) HKQuantity *sum;
+@property (readonly, copy) HKQuantity *sum; // @synthesize sum=_sum;
 
+- (void).cxx_destruct;
 
 @end
 

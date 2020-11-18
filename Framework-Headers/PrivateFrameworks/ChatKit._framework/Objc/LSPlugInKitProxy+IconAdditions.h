@@ -9,6 +9,5 @@
 @interface LSPlugInKitProxy (IconAdditions)
 - (id)iconDataForInterfaceStyle:(long long)arg1;
 - (id)iconForInterfaceStyle:(long long)arg1;
-- (void)prefetchIconData;
 @end
 

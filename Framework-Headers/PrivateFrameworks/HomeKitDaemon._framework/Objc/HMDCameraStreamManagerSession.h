@@ -29,7 +29,8 @@
 @property (readonly, nonatomic) NSString *streamShowingAppIdentifier; // @synthesize streamShowingAppIdentifier=_streamShowingAppIdentifier;
 
 - (void).cxx_destruct;
-- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(unsigned long long)arg5 error:(id *)arg6;
+- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 error:(id *)arg6;
+- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 timerFactory:(CDUnknownBlockType)arg6 error:(id *)arg7;
 
 @end
 

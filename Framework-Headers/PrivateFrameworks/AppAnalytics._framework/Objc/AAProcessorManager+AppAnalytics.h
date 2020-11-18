@@ -8,6 +8,8 @@
 
 @interface AAProcessorManager (AppAnalytics)
 - (void)addEventProcessor:(id)arg1;
+- (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeEventProcessor:(id)arg1;
+- (void)resumeBackgroundProcessingForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

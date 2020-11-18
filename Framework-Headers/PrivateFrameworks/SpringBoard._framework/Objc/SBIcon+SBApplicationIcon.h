@@ -8,8 +8,8 @@
 
 @interface SBIcon (SBApplicationIcon)
 - (id)application;
+- (id)iTunesCategoriesOrderedByRelevancy;
 - (BOOL)isApplicationIcon;
 - (BOOL)isBookmarkIcon;
-- (id)masqueradeIdentifier;
 @end
 

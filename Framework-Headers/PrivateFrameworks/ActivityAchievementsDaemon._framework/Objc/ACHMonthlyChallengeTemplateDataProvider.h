@@ -26,6 +26,8 @@
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 
 - (void).cxx_destruct;
+- (long long)currentActivityMoveMode;
+- (unsigned long long)currentExperienceType;
 - (id)existingMonthlyChallengeTemplates;
 - (BOOL)hasMinimumActiveDays;
 - (id)initWithProfile:(id)arg1 achievementStore:(id)arg2 activitySummaryUtility:(id)arg3;

@@ -20,7 +20,7 @@
 + (id)title;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (void)evaluate:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)validateVisionKitSoftLinkSymbols;
 

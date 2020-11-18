@@ -69,6 +69,7 @@
 - (void)applicationSceneViewController:(id)arg1 didUpdateStatusBarSettings:(id)arg2;
 - (BOOL)canHostAnApp;
 - (void)configureDisplayLayoutElement:(id)arg1;
+- (void)conformsToSBApplicationHosting;
 - (long long)containerInterfaceOrientation;
 - (long long)contentInterfaceOrientation;
 - (void)dealloc;

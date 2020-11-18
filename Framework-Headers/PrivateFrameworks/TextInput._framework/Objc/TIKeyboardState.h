@@ -9,7 +9,7 @@
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
+@class BKSHIDEventAuthenticationMessage, NSArray, NSDictionary, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -35,6 +35,9 @@
             unsigned int needAutofill:1;
             unsigned int needOneTimeCodeAutofill:1;
             unsigned int landscapeOrientation:1;
+            unsigned int omitEmojiCandidates:1;
+            unsigned int emojiSearchMode:1;
+            unsigned int emojiPopoverMode:1;
         } fields;
     } _mask;
     union {
@@ -55,6 +58,7 @@
     TIKeyboardLayoutState *_layoutState;
     TIDocumentState *_documentState;
     TIKeyboardSecureCandidateRenderTraits *_secureCandidateRenderTraits;
+    BKSHIDEventAuthenticationMessage *_eventAuthenticationMessage;
     NSString *_inputForMarkedText;
     NSString *_searchStringForMarkedText;
     TIKeyboardCandidate *_currentCandidate;
@@ -63,6 +67,7 @@
     unsigned long long _autofillMode;
     NSDictionary *_autofillContext;
     NSArray *_supportedPayloadIds;
+    NSArray *_statisticChanges;
 }
 
 @property (nonatomic) BOOL autocapitalizationEnabled;
@@ -79,6 +84,9 @@
 @property (strong, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
 @property (strong, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
 @property (strong, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
+@property (nonatomic) BOOL emojiPopoverMode;
+@property (nonatomic) BOOL emojiSearchMode;
+@property (copy, nonatomic) BKSHIDEventAuthenticationMessage *eventAuthenticationMessage; // @synthesize eventAuthenticationMessage=_eventAuthenticationMessage;
 @property (nonatomic) BOOL floatingKeyboardMode;
 @property (nonatomic) BOOL hardwareKeyboardMode;
 @property (strong, nonatomic) TIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory=_inputContextHistory;
@@ -92,8 +100,10 @@
 @property (copy, nonatomic) TIKeyboardLayoutState *layoutState; // @synthesize layoutState=_layoutState;
 @property (nonatomic) BOOL longPredictionListEnabled;
 @property (nonatomic) BOOL needAutofill;
+@property (readonly, nonatomic) BOOL needContactAutofill;
 @property (nonatomic) BOOL needOneTimeCodeAutofill;
 @property (nonatomic) BOOL needsCandidateMetadata;
+@property (nonatomic) BOOL omitEmojiCandidates;
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
 @property (copy, nonatomic) NSString *searchStringForMarkedText; // @synthesize searchStringForMarkedText=_searchStringForMarkedText;
@@ -104,6 +114,7 @@
 @property (readonly, nonatomic) BOOL shouldOutputFullwidthSpace;
 @property (nonatomic) BOOL shouldSkipCandidateSelection;
 @property (nonatomic) BOOL splitKeyboardMode;
+@property (copy, nonatomic) NSArray *statisticChanges; // @synthesize statisticChanges=_statisticChanges;
 @property (copy, nonatomic) NSArray *supportedPayloadIds; // @synthesize supportedPayloadIds=_supportedPayloadIds;
 @property (nonatomic) BOOL suppressingCandidateSelection;
 @property (strong, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;

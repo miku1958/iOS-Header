@@ -13,11 +13,9 @@
     BOOL _shouldUpdateContentOnlyWhenAuthenticated;
     GKViewController *_rootViewController;
     GKColorPalette *_colorPalette;
-    long long _gkFocusBubbleType;
 }
 
 @property (strong, nonatomic) GKColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
-@property (nonatomic) long long gkFocusBubbleType; // @synthesize gkFocusBubbleType=_gkFocusBubbleType;
 @property (strong, nonatomic) GKViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
 @property (nonatomic) BOOL shouldUpdateContentOnlyWhenAuthenticated; // @synthesize shouldUpdateContentOnlyWhenAuthenticated=_shouldUpdateContentOnlyWhenAuthenticated;
 

@@ -12,6 +12,7 @@
 @protocol HDSyncChange <NSObject>
 
 @property (readonly, nonatomic) BOOL done;
+@property (readonly, nonatomic) long long encodedByteCount;
 @property (readonly, nonatomic) NSNumber *sequenceNumber;
 @property (readonly, nonatomic, getter=isSpeculative) BOOL speculative;
 @property (readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;

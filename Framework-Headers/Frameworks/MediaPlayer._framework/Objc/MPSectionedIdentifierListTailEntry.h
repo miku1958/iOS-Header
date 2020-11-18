@@ -10,6 +10,7 @@
 
 @class MPSectionedIdentifierListHeadEntry, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListTailEntry : MPSectionedIdentifierListEntry <MPSectionedIdentifierListEnumerationTrackingEntry>
 {
     MPSectionedIdentifierListHeadEntry *_sectionHeadEntry;

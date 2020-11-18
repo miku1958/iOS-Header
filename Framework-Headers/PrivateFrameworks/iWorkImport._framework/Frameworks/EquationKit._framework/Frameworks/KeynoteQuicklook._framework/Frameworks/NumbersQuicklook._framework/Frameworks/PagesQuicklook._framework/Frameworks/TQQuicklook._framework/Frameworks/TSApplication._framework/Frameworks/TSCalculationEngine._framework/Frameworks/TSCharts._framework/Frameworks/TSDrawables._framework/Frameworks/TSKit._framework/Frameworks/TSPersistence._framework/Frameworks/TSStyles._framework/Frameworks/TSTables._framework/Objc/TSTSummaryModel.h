@@ -69,9 +69,9 @@
 - (void)didRemoveGroup:(id)arg1;
 - (void)didRemoveRowUID:(const UUIDData_5fbc143e *)arg1 fromGroup:(id)arg2;
 - (void)endOfGroupingChangesBatch;
-- (void)enumerateDataStoreCellsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateCellsForSOSSerializationWithBlock:(CDUnknownBlockType)arg1;
 - (id)explicitFormatOfKind:(unsigned int)arg1 atBaseCellCoord:(struct TSUModelCellCoord)arg2 currencyIsMostRecentlySet:(BOOL *)arg3;
-- (struct TSCEFormula *)formulaAtCellCoord:(struct TSUModelCellCoord)arg1;
+- (id)formulaAtCellCoord:(struct TSUModelCellCoord)arg1;
 - (int)getCell:(id)arg1 atCellCoord:(struct TSUModelCellCoord)arg2;
 - (BOOL)hasFormulaAtCellCoord:(struct TSUModelCellCoord)arg1;
 - (id)initWithContext:(id)arg1;
@@ -86,10 +86,11 @@
 - (id)metadataForRowIndex:(struct TSUModelRowIndex)arg1 hidingAction:(unsigned char)arg2;
 - (id)newCell;
 - (unsigned long long)numberOfPopulatedCells;
+- (void)p_removeRows:(struct _NSRange)arg1;
 - (struct TSUModelCellRect)range;
 - (void)registerAllFormulasWithCalculationEngine:(id)arg1 wasCrossDocumentPaste:(BOOL)arg2;
+- (void)removeCategoryColumnCellsForRows:(vector_4dc5f307 *)arg1;
 - (void)removeColumnsAtSummaryIndexes:(id)arg1;
-- (void)removeRows:(struct _NSRange)arg1;
 - (void)reset;
 - (void)resetWithForce:(BOOL)arg1;
 - (void)runChange:(id)arg1 withSummaryChangeState:(id)arg2 migrationHelper:(id)arg3;

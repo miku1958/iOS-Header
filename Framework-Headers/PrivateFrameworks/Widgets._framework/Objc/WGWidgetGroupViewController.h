@@ -13,7 +13,7 @@
 #import <Widgets/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 #import <Widgets/WGWidgetListViewControllerDelegatePrivate-Protocol.h>
 
-@class NSArray, NSString, UIControl, UILabel, UIScrollView, UIView, WGCarouselListViewController, WGWidgetDiscoveryController;
+@class NSArray, NSString, UIControl, UILabel, UIScrollView, WGCarouselListViewController, WGWidgetDiscoveryController;
 @protocol WGWidgetGroupViewControllerDelegate;
 
 @interface WGWidgetGroupViewController : UIViewController <WGWidgetDebugging, WGWidgetDiscoveryObserving, WGWidgetListViewControllerDelegatePrivate, WGMajorListViewControllerDelegate, WGWidgetExtensionVisibilityProviding, WGWidgetIconAnimationExtraViewsProviding>
@@ -39,7 +39,7 @@
 @property (strong, nonatomic) UIControl *editButton; // @synthesize editButton=_editButton;
 @property (nonatomic, getter=isEditingIcons) BOOL editingIcons;
 @property (readonly, copy, nonatomic) NSArray *extraViews;
-@property (readonly, nonatomic) UIView *extraViewsContainer;
+@property (readonly, copy, nonatomic) NSArray *extraViewsContainers;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *headerContentViewController;
@@ -65,7 +65,6 @@
 - (void)editViewWillAppear:(id)arg1;
 - (void)editViewWillDisappear:(id)arg1;
 - (id)initWithWidgetDiscoveryController:(id)arg1 listSettings:(struct WGWidgetListSettings)arg2;
-- (void)invalidateVisibleWidgets;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
 - (void)majorListViewControllerDidChangeHeaderVisibility:(id)arg1;
 - (void)makeVisibleWidgetWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -86,8 +85,6 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeHiddenInGroup:(id)arg3;
-- (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeVisibleInGroup:(id)arg3;
 - (struct UIEdgeInsets)widgetListViewController:(id)arg1 contentOccludingInsetsForInterfaceOrientation:(long long)arg2;
 - (struct CGSize)widgetListViewController:(id)arg1 sizeForInterfaceOrientation:(long long)arg2;
 

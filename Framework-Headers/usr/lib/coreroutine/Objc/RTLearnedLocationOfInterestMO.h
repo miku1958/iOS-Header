@@ -17,10 +17,12 @@
 @property (copy, nonatomic) NSNumber *confidence; // @dynamic confidence;
 @property (copy, nonatomic) NSNumber *dataPointCount; // @dynamic dataPointCount;
 @property (strong, nonatomic) NSUUID *identifier; // @dynamic identifier;
+@property (copy, nonatomic) NSNumber *locationAltitude; // @dynamic locationAltitude;
+@property (copy, nonatomic) NSNumber *locationHorizontalUncertainty; // @dynamic locationHorizontalUncertainty;
 @property (copy, nonatomic) NSNumber *locationLatitude; // @dynamic locationLatitude;
 @property (copy, nonatomic) NSNumber *locationLongitude; // @dynamic locationLongitude;
 @property (copy, nonatomic) NSNumber *locationReferenceFrame; // @dynamic locationReferenceFrame;
-@property (copy, nonatomic) NSNumber *locationUncertainty; // @dynamic locationUncertainty;
+@property (copy, nonatomic) NSNumber *locationVerticalUncertainty; // @dynamic locationVerticalUncertainty;
 @property (copy, nonatomic) NSDate *placeCreationDate; // @dynamic placeCreationDate;
 @property (copy, nonatomic) NSString *placeCustomLabel; // @dynamic placeCustomLabel;
 @property (copy, nonatomic) NSDate *placeExpirationDate; // @dynamic placeExpirationDate;

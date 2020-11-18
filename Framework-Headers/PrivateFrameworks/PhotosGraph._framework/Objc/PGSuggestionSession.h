@@ -16,12 +16,13 @@
     PGManager *_graphManager;
     NSObject<OS_os_log> *_loggingConnection;
     NSArray *_existingSuggestions;
-    NSArray *_existingMemories;
+    NSArray *_collidableMemories;
     PGSuggestionNotificationProfile *_notificationProfile;
+    NSArray *_deniedSuggestions;
 }
 
-@property (readonly, nonatomic) NSArray *assetPropertySetsForCuration;
-@property (strong, nonatomic) NSArray *existingMemories; // @synthesize existingMemories=_existingMemories;
+@property (strong, nonatomic) NSArray *collidableMemories; // @synthesize collidableMemories=_collidableMemories;
+@property (strong, nonatomic) NSArray *deniedSuggestions; // @synthesize deniedSuggestions=_deniedSuggestions;
 @property (strong, nonatomic) NSArray *existingSuggestions; // @synthesize existingSuggestions=_existingSuggestions;
 @property (readonly, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
@@ -31,13 +32,17 @@
 
 + (id)availableSuggestionTypeInfosWithProfile:(unsigned char)arg1;
 + (id)suggesterClassesWithProfile:(unsigned char)arg1;
++ (id)suggestionSubtypesWithProfile:(unsigned char)arg1;
 + (id)suggestionTypesWithProfile:(unsigned char)arg1;
 - (void).cxx_destruct;
+- (BOOL)_suggestionIsColliding:(id)arg1 relaxCollisionRules:(BOOL)arg2;
 - (id)activeSuggestersWithOptions:(id)arg1;
 - (id)anySuggestionCollidingWithSuggestion:(id)arg1 inSuggestions:(id)arg2 relaxCollisionRules:(BOOL)arg3 collisionReason:(unsigned long long *)arg4;
 - (id)bestSuggestionBetween:(id)arg1 and:(id)arg2;
 - (id)coordinatedSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (unsigned long long)deniedSuggestion:(id)arg1 collidesWithSuggestion:(id)arg2;
 - (id)electedSuggestionsFromSuggestions:(id)arg1 options:(id)arg2 progress:(CDUnknownBlockType)arg3;
+- (id)existingSuggestionsWithState:(unsigned short)arg1 count:(unsigned long long)arg2;
 - (id)infoWithSuggestion:(id)arg1;
 - (id)infosWithSuggestions:(id)arg1;
 - (id)initWithProfile:(unsigned char)arg1 graphManager:(id)arg2;

@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSNumber, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions, SiriUILockStateTransport;
+@class NSNumber, NSString, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions, SiriUILockStateTransport;
 
 @protocol SASPresentationServerInterface
 - (oneway void)bulletinManagerDidChangeBulletins;
 - (oneway void)cancelPendingActivationEventWithReason:(SiriPresentationActivationCancelReasonTransport *)arg1;
 - (oneway void)cancelPreheat;
 - (oneway void)cancelTTS;
+- (oneway void)deviceWonMyriadElection;
 - (oneway void)handleButtonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
-- (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
+- (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)handleButtonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
-- (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
+- (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)handleRequestWithOptions:(SASRequestOptions *)arg1;
 - (BOOL)handleTestingActivation:(SASActivationRequest *)arg1;
+- (oneway void)ping;
+- (oneway void)pocketStateFetchDeterminedShouldCancelWake:(NSNumber *)arg1;
 - (oneway void)preheat;
 - (oneway void)presentationDismissalRequestedWithOptions:(SiriDismissalOptions *)arg1;
 - (oneway void)presentationRequestedWithPresentationOptions:(SiriPresentationOptions *)arg1 requestOptions:(SASRequestOptions *)arg2;
 - (BOOL)presentationisIdleAndQuiet;
-- (oneway void)turnOnScreenAfterPocketStateFetch;
 - (oneway void)updateActiveInterfaceOrientation:(NSNumber *)arg1 willAnimationWithDuration:(SASTimeIntervalTransport *)arg2;
 - (oneway void)updateCurrentLockState:(SiriUILockStateTransport *)arg1;
+- (oneway void)wakeScreenAfterActivation;
 @end
 

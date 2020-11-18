@@ -6,30 +6,29 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLocking-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMAccessoryCategory, HMDAccessoryAdvertisement, HMFMessageDispatcher, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, NSSecureCoding>
+@interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, HMFLocking, NSSecureCoding>
 {
     NSUUID *_uuid;
+    id<HMFLocking> _lock;
     NSString *_name;
     HMAccessoryCategory *_category;
     NSString *_identifier;
     long long _associationOptions;
     HMDAccessoryAdvertisement *_accessoryAdvertisement;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_messageDispatcher;
 }
 
 @property (strong, nonatomic) HMDAccessoryAdvertisement *accessoryAdvertisement; // @synthesize accessoryAdvertisement=_accessoryAdvertisement;
 @property (readonly) long long associationOptions; // @synthesize associationOptions=_associationOptions;
 @property (strong) HMAccessoryCategory *category; // @synthesize category=_category;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -38,9 +37,9 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, getter=isReachable) BOOL reachable;
 @property (readonly) Class superclass;
+@property (readonly) unsigned long long transportTypes;
 @property (copy, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)logCategory;
@@ -60,11 +59,12 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)lock;
 - (id)logIdentifier;
 - (id)messageDestination;
-- (void)notifyClientOfUpdatedCategory:(id)arg1;
-- (void)notifyClientOfUpdatedName:(id)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)shortDescription;
+- (void)unlock;
 - (void)updateCategoryWithCategoryIdentifier:(id)arg1;
 
 @end

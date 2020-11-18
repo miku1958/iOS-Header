@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLCommandQueue-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject;
+@class MTLCommandQueueSPIStats, NSArray, NSDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol MTLCommandQueueSPI <MTLCommandQueue>
@@ -20,7 +20,7 @@
 @property (readonly) NSObject<OS_dispatch_queue> *completionQueue;
 @property (readonly) BOOL disableCrossQueueHazardTracking;
 @property BOOL executionEnabled;
-@property BOOL isOpenGLQueue;
+@property (readonly) BOOL isOpenGLQueue;
 @property (readonly) unsigned long long maxCommandBufferCount;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
 @property (readonly) unsigned long long qosLevel;
@@ -42,6 +42,7 @@
 - (NSArray *)availableCountersAndDict;
 - (NSDictionary *)counterInfo;
 - (NSArray *)getRequestedCounters;
+- (MTLCommandQueueSPIStats *)getSPIStats;
 - (int)requestCounters:(NSArray *)arg1;
 - (int)requestCounters:(NSArray *)arg1 withIndex:(unsigned long long)arg2;
 - (NSArray *)subdivideCounterList:(NSArray *)arg1;

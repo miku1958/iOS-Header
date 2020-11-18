@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct _NSRange columnRange; // @synthesize columnRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct CGRect frame;
+@property (nonatomic) struct CGRect frame; // @synthesize frame;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double horizontalCompressionResistance; // @synthesize horizontalCompressionResistance;
 @property (nonatomic) double horizontalHuggingPriority; // @synthesize horizontalHuggingPriority;

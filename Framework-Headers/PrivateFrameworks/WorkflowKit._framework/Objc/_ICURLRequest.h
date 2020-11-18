@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class ICScheme, NSDictionary, NSString, NSURL, NSUUID;
-@protocol WFUserInterface;
+@protocol WFUserInterfaceHost;
 
 @interface _ICURLRequest : NSObject
 {
@@ -20,7 +20,7 @@
     NSURL *_URL;
     ICScheme *_scheme;
     NSString *_bundleIdentifier;
-    id<WFUserInterface> _userInterface;
+    id<WFUserInterfaceHost> _userInterface;
     CDUnknownBlockType _successHandler;
     CDUnknownBlockType _failureHandler;
     NSDictionary *_parameters;
@@ -47,7 +47,7 @@
 @property (copy, nonatomic) CDUnknownBlockType successHandler; // @synthesize successHandler=_successHandler;
 @property (copy, nonatomic) NSString *successURLQueryString; // @synthesize successURLQueryString=_successURLQueryString;
 @property (readonly, nonatomic) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
-@property (readonly, weak, nonatomic) id<WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
+@property (readonly, weak, nonatomic) id<WFUserInterfaceHost> userInterface; // @synthesize userInterface=_userInterface;
 
 + (id)requestWithURL:(id)arg1;
 + (id)requestWithURL:(id)arg1 fromSourceApplication:(id)arg2;

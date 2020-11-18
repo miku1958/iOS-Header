@@ -16,8 +16,8 @@
 
 @property (copy, nonatomic) CDUnknownBlockType correlationBlock; // @synthesize correlationBlock=_correlationBlock;
 
+- (void).cxx_destruct;
 - (void)_calculateUpsamplerCoefficients:(float **)arg1 length:(long long *)arg2;
-- (void)dealloc;
 - (id)initWithMaxCorrelationLength:(long long)arg1 andUpscaleFactor:(long long)arg2 forSamplingRate:(double)arg3;
 
 @end

@@ -6,10 +6,11 @@
 
 #import <ITMLKit/NSObject-Protocol.h>
 
-@class NSString;
+@class JSValue, NSString;
 
 @protocol IKAppKeyboardBridge <NSObject>
 
+@property (copy, nonatomic, setter=setJSHints:) JSValue *jsHints;
 @property (copy, nonatomic, setter=setJSSource:) NSString *jsSource;
 @property (copy, nonatomic, setter=setJSText:) NSString *jsText;
 

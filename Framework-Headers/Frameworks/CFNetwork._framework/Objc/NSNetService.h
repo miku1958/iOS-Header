@@ -28,12 +28,6 @@
 + (id)dataFromTXTRecordDictionary:(id)arg1;
 + (id)dictionaryFromTXTRecordData:(id)arg1;
 - (id)TXTRecordData;
-- (void)_dispatchCallBackWithError:(CDStruct_59046461)arg1;
-- (BOOL)_includesAWDL;
-- (struct __CFNetService *)_internalNetService;
-- (void)_internal_publishWithOptions:(unsigned long long)arg1;
-- (id)_monitors;
-- (void)_scheduleInDefaultRunLoopForMode:(id)arg1;
 - (void)_setIncludesAWDL:(BOOL)arg1;
 - (void)dealloc;
 - (id)description;
@@ -44,10 +38,8 @@
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3;
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3 port:(int)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)normalizedType;
 - (void)publish;
 - (void)publishWithOptions:(unsigned long long)arg1;
-- (void)publishWithServer:(unsigned long long)arg1;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)resolve;
 - (void)resolveWithTimeout:(double)arg1;

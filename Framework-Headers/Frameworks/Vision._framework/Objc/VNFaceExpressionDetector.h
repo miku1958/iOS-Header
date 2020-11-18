@@ -6,14 +6,11 @@
 
 #import <Vision/VNDetector.h>
 
-@protocol VNModelFile;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceExpressionDetector : VNDetector
 {
     struct shared_ptr<vision::mod::LandmarkAttributes> m_FaceAttributesImpl;
-    BOOL modelFilesWereMemmapped;
-    id<VNModelFile> m_LandmarkRefinerModelFileHandle;
+    BOOL _modelFilesWereMemmapped;
 }
 
 + (id)createExpressionAndConfidencesDictionaryFromScores:(id)arg1;
@@ -21,7 +18,7 @@ __attribute__((visibility("hidden")))
 + (int)expressionTypeFromString:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 

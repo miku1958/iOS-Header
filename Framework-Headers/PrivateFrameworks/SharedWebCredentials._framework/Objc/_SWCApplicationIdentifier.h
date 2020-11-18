@@ -34,7 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initForBundleProxy:(id)arg1;
+- (id)initForBundleRecord:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -20,16 +20,13 @@
 
 + (id)_fullAggDKeyWithPrefix:(id)arg1 error:(id)arg2;
 + (BOOL)_hadUserEventSinceIntervalAgo:(double)arg1;
-+ (void)_logFeature:(id)arg1 setTo:(BOOL)arg2 by:(id)arg3;
 + (id)_stringForGatekeeperType:(unsigned long long)arg1;
 + (BOOL)_timestamp:(id)arg1 isAfter:(id)arg2;
-+ (void)logAssistantEnabledSetTo:(BOOL)arg1 by:(id)arg2;
 + (void)logCDMAssetEvictedForAssetType:(id)arg1 language:(id)arg2;
 + (void)logCreateAssistant;
 + (void)logDESEvaluationForLanguage:(id)arg1 error:(id)arg2;
 + (void)logDESRecordingForLanguage:(id)arg1 error:(id)arg2;
 + (void)logDictationCancelled;
-+ (void)logDictationEnabledSetTo:(BOOL)arg1 by:(id)arg2;
 + (void)logDictationFailedWithError:(id)arg1;
 + (void)logDictationFollowedByContinueOccurredForLanguage:(id)arg1;
 + (void)logDictationFollowedByKeyboardDeleteOccurredForLanguage:(id)arg1;

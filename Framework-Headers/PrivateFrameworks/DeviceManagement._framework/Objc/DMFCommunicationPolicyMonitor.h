@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) DMFApplicationPolicyMonitor *applicationPolicyMonitor; // @synthesize applicationPolicyMonitor=_applicationPolicyMonitor;
 @property (nonatomic) BOOL didFetchInitialPolicies; // @synthesize didFetchInitialPolicies=_didFetchInitialPolicies;
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSDictionary *policiesByBundleIdentifier; // @synthesize policiesByBundleIdentifier=_policiesByBundleIdentifier;
 @property (readonly, copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 
@@ -29,6 +29,7 @@
 + (id)_transformEffectivePoliciesIntoCommunicationPolicies:(id)arg1;
 + (id)communicationBundleIdentifiers;
 + (unsigned long long)communicationPolicyForApplicationPolicy:(id)arg1 downtimeEnforced:(BOOL)arg2;
++ (id)new;
 - (void).cxx_destruct;
 - (void)_updatePoliciesByBundleIdentifier;
 - (void)_updateWithPoliciesByBundleIdentifier:(id)arg1 categoryEffectivePolicy:(id)arg2;

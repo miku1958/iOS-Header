@@ -19,6 +19,8 @@
     int _indicator;
     int _indicatorOverride;
     int _radioTechnology;
+    int _dataBearerTechnology;
+    unsigned int _dataBearerSoMask;
     unsigned int _activeContexts;
     unsigned int _totalActiveContexts;
 }
@@ -26,6 +28,8 @@
 @property (nonatomic) unsigned int activeContexts; // @synthesize activeContexts=_activeContexts;
 @property (nonatomic) BOOL attached; // @synthesize attached=_attached;
 @property (nonatomic) BOOL cellularDataPossible; // @synthesize cellularDataPossible=_cellularDataPossible;
+@property (nonatomic) unsigned int dataBearerSoMask; // @synthesize dataBearerSoMask=_dataBearerSoMask;
+@property (nonatomic) int dataBearerTechnology; // @synthesize dataBearerTechnology=_dataBearerTechnology;
 @property (nonatomic) BOOL dataPlanSignalingReductionOverride; // @synthesize dataPlanSignalingReductionOverride=_dataPlanSignalingReductionOverride;
 @property (nonatomic) BOOL inHomeCountry; // @synthesize inHomeCountry=_inHomeCountry;
 @property (nonatomic) int indicator; // @synthesize indicator=_indicator;

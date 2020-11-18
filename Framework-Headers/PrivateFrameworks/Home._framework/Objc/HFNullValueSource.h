@@ -7,32 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileValueSource-Protocol.h>
 #import <Home/HFMediaValueSource-Protocol.h>
 
 @class NSString;
 @protocol HFCharacteristicOperationContextProviding;
 
-@interface HFNullValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
+@interface HFNullValueSource : NSObject <HFLightProfileValueSource, HFCharacteristicValueSource, HFMediaValueSource>
 {
 }
 
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)na_identity;
 - (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
 - (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(BOOL)arg2;
 - (void)commitTransactionWithReason:(id)arg1;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 lightProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasPendingWritesForRouteID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isNaturalLightingEnabledForProfile:(id)arg1;
+- (BOOL)isNaturalLightingSupportedForProfile:(id)arg1;
 - (long long)lastPlaybackStateForProfileForRouteID:(id)arg1;
 - (id)mediaProfileContainerForRouteID:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
+- (id)writeNaturalLightEnabledState:(BOOL)arg1 forProfile:(id)arg2;
 - (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;
 - (id)writeValuesForCharacteristics:(id)arg1;
 

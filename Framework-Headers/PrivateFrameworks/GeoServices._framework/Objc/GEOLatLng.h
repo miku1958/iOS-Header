@@ -37,8 +37,11 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

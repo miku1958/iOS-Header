@@ -32,12 +32,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_bundleIdentifierForThemeRef:(unsigned long long)arg1;
 + (id)_facetWithKeyList:(const struct _renditionkeytoken *)arg1 andRenditionKeyClass:(Class)arg2 orRenditionKey:(id)arg3 fromTheme:(unsigned long long)arg4;
 + (void)_invalidateArtworkCaches;
 + (id)_themeStoreForThemeIndex:(unsigned long long)arg1;
 + (BOOL)assetExistsForRenditionKey:(id)arg1 fromTheme:(unsigned long long)arg2;
 + (id)cursorFacetWithName:(id)arg1 fromTheme:(unsigned long long)arg2;
-+ (id)debug_bundleIdentifierForThemeRef:(unsigned long long)arg1;
 + (id)facetWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4 fromTheme:(unsigned long long)arg5;
 + (id)facetWithElement:(long long)arg1 part:(long long)arg2 fromTheme:(unsigned long long)arg3;
 + (id)facetWithRenditionKey:(id)arg1 fromTheme:(unsigned long long)arg2;
@@ -48,19 +48,11 @@
 + (unsigned long long)themeWithBytes:(const void *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 + (unsigned long long)themeWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (void)_applyFixedAttributesToKey:(id)arg1;
-- (id)_approximateRenditionForRenditionKey:(id)arg1;
 - (BOOL)_canGetRenditionForKey:(id)arg1 withDrawingLayer:(long long)arg2;
-- (void)_drawAsMaskSpecificRenditionKey:(id)arg1 inFrame:(struct CGRect)arg2 context:(struct CGContext *)arg3 alpha:(double)arg4 operation:(int)arg5 isFocused:(int)arg6;
-- (void)_drawMaskFromSpecificRenditionKey:(id)arg1 inFrame:(struct CGRect)arg2 alpha:(double)arg3 operation:(int)arg4 isFocused:(int)arg5 context:(struct CGContext *)arg6;
 - (void)_drawSlice:(long long)arg1 inFrame:(struct CGRect)arg2 withKeyAdjustment:(id)arg3 context:(struct CGContext *)arg4;
 - (void)_drawSpecificRenditionKey:(id)arg1 inFrame:(struct CGRect)arg2 context:(struct CGContext *)arg3 alpha:(double)arg4 operation:(int)arg5 isFocused:(int)arg6 isFlipped:(BOOL)arg7 effects:(id)arg8;
-- (void)_drawSpecificRenditionKey:(id)arg1 inFrame:(struct CGRect)arg2 context:(struct CGContext *)arg3 isFocused:(int)arg4 isFlipped:(BOOL)arg5 effects:(id)arg6;
-- (void)_drawSpecificRenditionKey:(id)arg1 rendition:(id)arg2 inFrame:(struct CGRect)arg3 context:(struct CGContext *)arg4 alpha:(double)arg5 operation:(int)arg6 isFocused:(int)arg7 isFlipped:(BOOL)arg8 effects:(id)arg9;
 - (struct CGPoint)_hotSpot;
-- (id)_imageForRenditionFromKey:(id)arg1 withSize:(struct CGSize)arg2 isMask:(BOOL)arg3;
-- (void)_initWithRenditionKey:(id)arg1;
 - (BOOL)_isButtonGlyph;
-- (id)_makeLayerFromCAPackageData;
 - (id)_rendition;
 - (id)_renditionForSpecificKey:(id)arg1;
 - (void)_setHasCheckedButtonGlyph:(BOOL)arg1;
@@ -76,7 +68,6 @@
 - (id)blendModeAsCAFilterString;
 - (id)blendModeAsCAFilterStringWithKeyAjustment:(id)arg1;
 - (int)blendModeWithKeyAdjustment:(id)arg1;
-- (long long)controlSize;
 - (struct CGImage *)copyLayerImageContentsAndCenter:(struct CGRect *)arg1;
 - (struct CGImage *)copyLayerImageContentsAndCenter:(struct CGRect *)arg1 renditionKey:(id)arg2;
 - (struct CGImage *)copySegmentLayerContents:(int)arg1 andCenter:(struct CGRect *)arg2 leftSeparatorWidth:(double)arg3 rightSeparatorWidth:(double)arg4 renditionKey:(id)arg5 effects:(id)arg6;
@@ -85,6 +76,7 @@
 - (id)displayName;
 - (void)drawAbsoluteAnimationFrame:(double)arg1 destinationFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4;
 - (void)drawAnimationFrameMappedFrom0_1RangedValue:(double)arg1 destinationFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4;
+- (void)drawAnimationFrameMappedFrom0_1RangedValue:(double)arg1 destinationFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4 effects:(id)arg5;
 - (void)drawAsOnePartWithSlice:(int)arg1 inFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4 effects:(id)arg5;
 - (void)drawGradientInFrame:(struct CGRect)arg1 angle:(double)arg2 alpha:(double)arg3 operation:(int)arg4 isFocused:(int)arg5 keyAdjustment:(id)arg6 context:(struct CGContext *)arg7 effects:(id)arg8;
 - (void)drawHighlightInFrame:(struct CGRect)arg1 alpha:(double)arg2 keyAdjustment:(id)arg3 context:(struct CGContext *)arg4;
@@ -122,14 +114,12 @@
 - (id)imageForState:(long long)arg1 value:(long long)arg2 size:(unsigned long long)arg3;
 - (id)imageForState:(long long)arg1 withValue:(long long)arg2;
 - (struct CGSize)imageSize;
-- (id)imageWithKeyAdjustment:(id)arg1;
 - (id)imageWithSize:(struct CGSize)arg1 keyAdjustment:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRenditionKey:(id)arg1 fromTheme:(unsigned long long)arg2;
 - (BOOL)isTintable;
 - (BOOL)isValidButtonImageSource;
-- (BOOL)isValidButtonImageSourceForSize:(unsigned long long)arg1;
 - (id)makeLayer;
 - (id)maskForSlice:(long long)arg1 withKeyAdjustment:(id)arg2;
 - (id)maskWithSize:(struct CGSize)arg1 keyAdjustment:(id)arg2;
@@ -139,7 +129,6 @@
 - (id)renditionMetricsWithKeyAdjustment:(id)arg1;
 - (id)renditionSliceInformationForRect:(struct CGRect)arg1 keyAdjustment:(id)arg2;
 - (long long)renditionType;
-- (void)setControlSize:(long long)arg1;
 - (struct CGSize)sizeForSegmentOfType:(int)arg1;
 - (unsigned long long)themeIndex;
 - (id)themeRendition;

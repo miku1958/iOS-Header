@@ -6,12 +6,11 @@
 
 #import <Photos/PHMediaRequestDelegate-Protocol.h>
 
-@class NSArray, NSManagedObjectID, PHImageRequest;
-@protocol PLResourceDataStore, PLResourceDataStoreKey;
+@class PHImageRequest;
 
 @protocol PHImageRequestDelegate <PHMediaRequestDelegate>
 - (void)imageRequest:(PHImageRequest *)arg1 isQueryingCacheAndDidWait:(BOOL *)arg2 didFindImage:(BOOL *)arg3 resultHandler:(void (^)(struct CGImage *, BOOL, NSError *))arg4;
-- (BOOL)imageRequest:(PHImageRequest *)arg1 isRequestingRepairAndRetryForDataStoreKey:(id<PLResourceDataStoreKey>)arg2 inStore:(id<PLResourceDataStore>)arg3 assetObjectID:(NSManagedObjectID *)arg4 forValidationErrors:(NSArray *)arg5;
 - (void)imageRequest:(PHImageRequest *)arg1 isRequestingScheduledWorkBlock:(void (^)(PHImageRequest *))arg2;
+- (BOOL)imageRequestCanRequestRepair:(PHImageRequest *)arg1;
 @end
 

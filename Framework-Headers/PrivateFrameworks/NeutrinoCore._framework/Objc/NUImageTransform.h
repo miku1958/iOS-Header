@@ -14,6 +14,7 @@
 - (unsigned long long)hash;
 - (id)inverseTransform;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isIdentityImageTransform;
 - (id)transformByRotateX:(double)arg1 y:(double)arg2 z:(double)arg3;
 - (id)transformByRotateZ:(double)arg1;
 - (id)transformByScaleX:(double)arg1 scaleY:(double)arg2;

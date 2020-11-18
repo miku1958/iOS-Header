@@ -16,24 +16,14 @@
     SCNNode *_drivingReadMorpherNode1;
     SCNNode *_drivingReadMorpherNode2;
     SCNNode *_drivingReadMorpherNode3;
+    SCNNode *_drivingReadMorpherNode4;
     long long _drivingTargetIndex0;
     long long _drivingTargetIndex1;
     long long _drivingTargetIndex2;
     long long _drivingTargetIndex3;
+    long long _drivingTargetIndex4;
     long long _drivingTargetCount;
 }
-
-@property (nonatomic) long long correctiveTargetIndex; // @synthesize correctiveTargetIndex=_correctiveTargetIndex;
-@property (strong, nonatomic) SCNMorpher *correctiveWriteMorpher; // @synthesize correctiveWriteMorpher=_correctiveWriteMorpher;
-@property (strong, nonatomic) SCNNode *drivingReadMorpherNode0; // @synthesize drivingReadMorpherNode0=_drivingReadMorpherNode0;
-@property (strong, nonatomic) SCNNode *drivingReadMorpherNode1; // @synthesize drivingReadMorpherNode1=_drivingReadMorpherNode1;
-@property (strong, nonatomic) SCNNode *drivingReadMorpherNode2; // @synthesize drivingReadMorpherNode2=_drivingReadMorpherNode2;
-@property (strong, nonatomic) SCNNode *drivingReadMorpherNode3; // @synthesize drivingReadMorpherNode3=_drivingReadMorpherNode3;
-@property (nonatomic) long long drivingTargetCount; // @synthesize drivingTargetCount=_drivingTargetCount;
-@property (nonatomic) long long drivingTargetIndex0; // @synthesize drivingTargetIndex0=_drivingTargetIndex0;
-@property (nonatomic) long long drivingTargetIndex1; // @synthesize drivingTargetIndex1=_drivingTargetIndex1;
-@property (nonatomic) long long drivingTargetIndex2; // @synthesize drivingTargetIndex2=_drivingTargetIndex2;
-@property (nonatomic) long long drivingTargetIndex3; // @synthesize drivingTargetIndex3=_drivingTargetIndex3;
 
 - (void).cxx_destruct;
 

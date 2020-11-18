@@ -13,30 +13,31 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAccessory, HMDSoftwareUpdateModel, HMFMessageDispatcher, HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSArray, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSoftwareUpdate : HMFObject <HMFLogging, HMFObject, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
 {
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
     NSUUID *_identifier;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    double _installDuration;
     HMFMessageDispatcher *_messageDispatcher;
     HMDAccessory *_accessory;
 }
 
 @property (weak) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @synthesize documentationMetadata=_documentationMetadata;
 @property (readonly) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property (readonly) unsigned long long hash;
 @property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly) double installDuration; // @synthesize installDuration=_installDuration;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -44,7 +45,6 @@
 @property (readonly, copy) HMDSoftwareUpdateModel *model;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -55,16 +55,17 @@
 + (id)modelNamespace;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)__init;
 - (void)_handleDocumentationRequest:(id)arg1;
 - (void)_handleDocumentationStateNotification:(id)arg1;
 - (void)_handleUpdateDocumentationMetadata:(id)arg1;
 - (void)_handleUpdateState:(id)arg1;
+- (void)_updateState:(long long)arg1 message:(id)arg2 options:(id)arg3;
 - (void)configureWithAccessory:(id)arg1 messageDispatcher:(id)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5;
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
@@ -75,6 +76,7 @@
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
+- (void)updateLocalState:(long long)arg1;
 
 @end
 

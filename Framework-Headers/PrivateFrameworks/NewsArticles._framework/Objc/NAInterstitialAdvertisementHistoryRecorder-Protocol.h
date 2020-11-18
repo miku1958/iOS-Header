@@ -5,7 +5,9 @@
 //
 
 @protocol NAInterstitialAdvertisementHistoryRecorder
-- (long long)numberOfArticlesViewedSinceLastInterstitialAd;
+
+@property (nonatomic, readonly) long long articlesSeenSinceLastInterstitial;
+
 - (void)recordArticleView;
 - (void)recordInterstitialAdView;
 @end

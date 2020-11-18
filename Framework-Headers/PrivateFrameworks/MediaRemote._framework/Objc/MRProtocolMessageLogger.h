@@ -9,9 +9,11 @@
 @interface MRProtocolMessageLogger : NSObject
 {
     BOOL _shouldLog;
+    BOOL _shouldVerboselyLog;
 }
 
 @property (nonatomic) BOOL shouldLog; // @synthesize shouldLog=_shouldLog;
+@property (nonatomic) BOOL shouldVerboselyLog; // @synthesize shouldVerboselyLog=_shouldVerboselyLog;
 
 + (id)sharedLogger;
 - (id)init;

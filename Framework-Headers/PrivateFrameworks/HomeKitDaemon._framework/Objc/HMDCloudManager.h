@@ -7,11 +7,12 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/APSConnectionDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class APSConnection, CKContainer, CKDatabase, HMDCloudCache, HMDCloudDataSyncStateFilter, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDHomeManager, HMDSyncOperationManager, HMFMessageDispatcher, NSData, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class APSConnection, CKContainer, CKDatabase, HMDCloudCache, HMDCloudDataSyncStateFilter, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDSyncOperationManager, HMFMessageDispatcher, NSData, NSMutableArray, NSObject, NSString;
+@protocol HMDCloudManagerDataSource, HMDCloudManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDCloudManager : HMFObject <APSConnectionDelegate>
+@interface HMDCloudManager : HMFObject <HMFLogging, APSConnectionDelegate>
 {
     BOOL _accountActive;
     BOOL _cloudHomeDataRecordExists;
@@ -19,6 +20,8 @@
     BOOL _firstV3FetchRun;
     BOOL _firstDBQueryRun;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    id<HMDCloudManagerDelegate> _delegate;
+    id<HMDCloudManagerDataSource> _dataSource;
     CKContainer *_container;
     CKDatabase *_database;
     HMDCloudCache *_cloudCache;
@@ -36,7 +39,6 @@
     CDUnknownBlockType _controllerKeyAvailableNotificationHandler;
     HMDCloudDataSyncStateFilter *_cloudDataSyncStateFilter;
     HMFMessageDispatcher *_msgDispatcher;
-    HMDHomeManager *_homeManager;
     HMDSyncOperationManager *_syncManager;
     NSMutableArray *_currentBackoffTimerValuesInMinutes;
     CDUnknownBlockType _dataDecryptionFailedHandler;
@@ -58,15 +60,16 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *controllerKeyPollTimer; // @synthesize controllerKeyPollTimer=_controllerKeyPollTimer;
 @property (strong, nonatomic) NSMutableArray *currentBackoffTimerValuesInMinutes; // @synthesize currentBackoffTimerValuesInMinutes=_currentBackoffTimerValuesInMinutes;
 @property (copy, nonatomic) CDUnknownBlockType dataDecryptionFailedHandler; // @synthesize dataDecryptionFailedHandler=_dataDecryptionFailedHandler;
+@property (readonly, weak) id<HMDCloudManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) BOOL decryptionFailed;
+@property (readonly, weak) id<HMDCloudManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property (nonatomic, getter=isFirstDBQueryRun) BOOL firstDBQueryRun; // @synthesize firstDBQueryRun=_firstDBQueryRun;
 @property (nonatomic, getter=isFirstV3FetchRun) BOOL firstV3FetchRun; // @synthesize firstV3FetchRun=_firstV3FetchRun;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) HMDCloudHomeManagerZone *homeManagerZone;
 @property (nonatomic) BOOL keychainSyncEnabled; // @synthesize keychainSyncEnabled=_keychainSyncEnabled;
 @property (readonly, nonatomic) HMDCloudLegacyZone *legacyZone;
@@ -81,7 +84,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *watchdogControllerKeyPollTimer; // @synthesize watchdogControllerKeyPollTimer=_watchdogControllerKeyPollTimer;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (BOOL)isControllerKeyAvailable;
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)__addCKDatabaseOperation:(id)arg1;
 - (void)__deleteRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -136,9 +139,12 @@
 - (void)_uploadLegacyTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_uploadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_validFetchRetryCKErrorCode:(long long)arg1;
+- (void)_verifyAndRemoveAllHomeZonesCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_verifyAndRemoveZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_verifyZoneHasBeenDeletedTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_verifyZonesExist:(id)arg1 zoneIndex:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addHomeZoneName:(id)arg1 owner:(id)arg2;
+- (void)cacheDatabaseServerToken;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
@@ -148,7 +154,8 @@
 - (void)fetchLegacyTransaction:(id)arg1 forceFetch:(BOOL)arg2 accountCompletionHandler:(CDUnknownBlockType)arg3 dataCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeychainStateChangedNotification:(id)arg1;
-- (id)initWithMessageDispatcher:(id)arg1 cloudDataSyncStateFilter:(id)arg2 cloudCache:(id)arg3 homeManager:(id)arg4 syncManager:(id)arg5 callbackQueue:(id)arg6;
+- (id)initWithMessageDispatcher:(id)arg1 cloudDataSyncStateFilter:(id)arg2 cloudCache:(id)arg3 delegate:(id)arg4 dataSource:(id)arg5 syncManager:(id)arg6 callbackQueue:(id)arg7;
+- (id)initWithMessageDispatcher:(id)arg1 cloudDataSyncStateFilter:(id)arg2 cloudCache:(id)arg3 delegate:(id)arg4 dataSource:(id)arg5 syncManager:(id)arg6 callbackQueue:(id)arg7 container:(id)arg8 workQueue:(id)arg9;
 - (void)initializeServerTokenStatusOnCloudFilter;
 - (BOOL)legacyZoneHasRecordsAvaliable;
 - (void)removeHomeZoneName:(id)arg1;

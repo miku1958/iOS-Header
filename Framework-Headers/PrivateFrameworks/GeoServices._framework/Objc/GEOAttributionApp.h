@@ -27,11 +27,7 @@
         unsigned int has_supportsRestaurantReservations:1;
         unsigned int read_appBundleIdentifier:1;
         unsigned int read_handledSchemes:1;
-        unsigned int wrote_appBundleIdentifier:1;
-        unsigned int wrote_handledSchemes:1;
-        unsigned int wrote_restaurantReservationExtensionSupport:1;
-        unsigned int wrote_supportsRestaurantQueueing:1;
-        unsigned int wrote_supportsRestaurantReservations:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,9 +44,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsRestaurantReservationExtensionSupport:(id)arg1;
-- (void)_addNoFlagsHandledSchemes:(id)arg1;
-- (void)_readAppBundleIdentifier;
-- (void)_readHandledSchemes;
 - (void)addHandledSchemes:(id)arg1;
 - (void)clearHandledSchemes;
 - (void)copyTo:(id)arg1;
@@ -62,7 +55,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

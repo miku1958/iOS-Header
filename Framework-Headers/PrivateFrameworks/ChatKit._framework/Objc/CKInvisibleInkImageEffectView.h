@@ -39,8 +39,12 @@ __attribute__((visibility("hidden")))
 - (void)enableBlending;
 - (void)endDrawEmitterEffects;
 - (void)endDustEmitterFingerEffects;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
+- (void)endEmittersForTouchesEnded:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
 - (void)moveEmittersWithTouches:(id)arg1;
 - (void)reset;
 - (void)setImage:(id)arg1;

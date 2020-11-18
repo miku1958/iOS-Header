@@ -26,7 +26,7 @@
 @property (nonatomic) MISSING_TYPE *minPixelThresholdValue; // @synthesize minPixelThresholdValue=_minPixelThresholdValue;
 @property (nonatomic) BOOL zeroHistogram; // @synthesize zeroHistogram=_zeroHistogram;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 histogram:(id)arg3 histogramOffset:(unsigned long long)arg4;

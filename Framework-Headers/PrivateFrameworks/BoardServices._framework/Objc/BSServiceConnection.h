@@ -16,14 +16,14 @@
 @interface BSServiceConnection : NSObject <BSServiceConnectionContext, BSXPCServiceConnectionMessaging, BSInvalidatable>
 {
     BSXPCServiceConnection *_connection;
-    NSString *_service;
-    NSString *_instance;
     id<NSCopying> _userInfo;
     struct os_unfair_lock_s _lock;
     _BSServiceConnectionConfiguration *_lock_config;
     BSAtomicSignal *_lock_activatedSignal;
     BOOL _lock_invalidated;
     BOOL _lock_noAssertInvalidatedOnDealloc;
+    NSString *_service;
+    NSString *_instance;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,17 +36,11 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<NSCopying> userInfo;
 
-+ (id)_connectionFromIncomingConnection:(id)arg1;
-+ (id)_connectionWithEndpoint:(id)arg1 clientContextBuilder:(CDUnknownBlockType)arg2;
-+ (id)_currentConnection;
-+ (id)_nameForService:(id)arg1 instance:(id)arg2 host:(BOOL)arg3;
 + (id)connectionWithEndpoint:(id)arg1;
 + (id)connectionWithEndpoint:(id)arg1 clientContextBuilder:(CDUnknownBlockType)arg2;
 + (id)currentContext;
 - (void).cxx_destruct;
-- (id)_clientContext;
 - (void)_configureConnection:(CDUnknownBlockType)arg1;
-- (id)_initWithConnection:(id)arg1 service:(id)arg2 instance:(id)arg3 clientContext:(id)arg4;
 - (void)activate;
 - (void)configureConnection:(CDUnknownBlockType)arg1;
 - (id)createMessage;

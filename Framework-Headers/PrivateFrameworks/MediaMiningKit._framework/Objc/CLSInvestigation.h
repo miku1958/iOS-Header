@@ -29,7 +29,6 @@
         unsigned int delegateDidEnd:1;
         unsigned int delegateNumberOfItems:1;
         unsigned int delegateSampleOfItems:1;
-        unsigned int delegateItemThumbnailAtIndexWithResolution:1;
     } _investigationFlags;
 }
 
@@ -57,7 +56,6 @@
 - (id)initWithClueCollection:(id)arg1 profiles:(id)arg2;
 - (id)initWithFeeder:(id)arg1 profiles:(id)arg2;
 - (id)initWithProfiles:(id)arg1;
-- (id)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
 - (unsigned long long)numberOfItems;
 - (id)sampleOfItems;
 - (id)tracesDescription;

@@ -14,6 +14,7 @@
 - (id)initWithInts:(int *)arg1 count:(unsigned long long)arg2;
 - (id)tsu_arrayByFlattening;
 - (id)tsu_arrayByMakingObjectsPerformSelector:(SEL)arg1;
+- (id)tsu_arrayByMappingObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_arrayByRemovingObjectsIdenticalToObjectsInArray:(id)arg1;
 - (id)tsu_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)tsu_arrayByReversingOrder;

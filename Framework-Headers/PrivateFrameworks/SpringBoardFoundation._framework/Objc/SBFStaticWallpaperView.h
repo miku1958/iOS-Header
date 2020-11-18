@@ -12,7 +12,6 @@
 {
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
-    BOOL _needsWallpaperDimmingTreatment;
     UIImage *_displayedImage;
     UIImage *_sampleImage;
     NSData *_displayedImageHashData;

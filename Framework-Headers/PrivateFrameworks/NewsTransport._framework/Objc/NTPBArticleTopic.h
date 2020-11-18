@@ -8,11 +8,12 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, NSString;
 
 @interface NTPBArticleTopic : PBCodable <NSCopying>
 {
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_cohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_conversionStats;
     NSString *_tagID;
     BOOL _isEligibleForGrouping;
     BOOL _isEligibleForGroupingIfFavorited;
@@ -21,7 +22,9 @@
 }
 
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *cohorts; // @synthesize cohorts=_cohorts;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property (readonly, nonatomic) BOOL hasCohorts;
+@property (readonly, nonatomic) BOOL hasConversionStats;
 @property (nonatomic) BOOL hasIsEligibleForGrouping;
 @property (nonatomic) BOOL hasIsEligibleForGroupingIfFavorited;
 @property (nonatomic) BOOL hasIsHidden;

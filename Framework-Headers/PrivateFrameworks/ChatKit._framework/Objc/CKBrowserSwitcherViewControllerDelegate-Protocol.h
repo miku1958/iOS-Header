@@ -16,11 +16,8 @@
 @optional
 - (void)switcherViewController:(CKBrowserSwitcherViewController *)arg1 didSelectPluginAtIndexPath:(NSIndexPath *)arg2;
 - (void)switcherViewController:(CKBrowserSwitcherViewController *)arg1 hasUpdatedLastTouchDate:(NSDate *)arg2;
-- (void)switcherViewController:(CKBrowserSwitcherViewController *)arg1 willHideSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
-- (void)switcherViewController:(CKBrowserSwitcherViewController *)arg1 willShowSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
 - (void)switcherViewControllerDidSelectAppManager:(CKBrowserSwitcherViewController *)arg1 shouldRestoreAppSwitcher:(BOOL)arg2;
 - (void)switcherViewControllerDidSelectAppStore:(CKBrowserSwitcherViewController *)arg1 shouldRestoreAppSwitcher:(BOOL)arg2;
-- (void)switcherViewControllerDidStartSwitching:(CKBrowserSwitcherViewController *)arg1;
 - (BOOL)switcherViewControllerShouldShowIconAndTitleWhenCompact:(CKBrowserSwitcherViewController *)arg1;
 @end
 

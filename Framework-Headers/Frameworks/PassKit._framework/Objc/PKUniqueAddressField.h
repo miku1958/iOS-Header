@@ -10,6 +10,7 @@
 
 @interface PKUniqueAddressField : NSObject
 {
+    BOOL _formatIsInvalid;
     NSString *_key;
     long long _index;
     NSError *_error;
@@ -17,6 +18,7 @@
 }
 
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) BOOL formatIsInvalid; // @synthesize formatIsInvalid=_formatIsInvalid;
 @property (nonatomic) long long index; // @synthesize index=_index;
 @property (strong, nonatomic) NSString *invalidText; // @synthesize invalidText=_invalidText;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;

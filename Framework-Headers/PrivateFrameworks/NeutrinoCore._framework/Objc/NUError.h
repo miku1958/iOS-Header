@@ -25,6 +25,7 @@
 + (id)mismatchError:(id)arg1 object:(id)arg2;
 + (id)missingError:(id)arg1 object:(id)arg2;
 + (id)rangeError:(id)arg1 object:(id)arg2;
++ (id)resourceUnavailableError:(id)arg1 object:(id)arg2;
 + (id)rootError:(id)arg1;
 + (id)timeoutError:(id)arg1 object:(id)arg2;
 + (id)underlyingError:(id)arg1;

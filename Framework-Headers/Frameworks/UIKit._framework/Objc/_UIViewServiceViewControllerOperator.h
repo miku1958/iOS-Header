@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BOOL __automatic_invalidation_invalidated;
     NSMutableArray *_deferredToViewDidAppear;
     int _hostPID;
+    int _mediaPID;
     NSString *_hostBundleID;
     CDStruct_4c969caf _hostAuditToken;
     id _remoteViewControllerProxyToOperator;
@@ -44,7 +45,7 @@ __attribute__((visibility("hidden")))
     UIPopoverController *_displayedPopoverController;
     _UIViewServiceDummyPopoverController *_dummyPopoverController;
     unsigned long long _supportedOrientations;
-    BOOL _canShowTextServices;
+    long long _availableTextServices;
     struct UIEdgeInsets _localViewControllerRequestedInsets;
     double _localViewControllerRequestedLeftMargin;
     double _localViewControllerRequestedRightMargin;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UIViewServiceViewControllerOperatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIViewController *localViewController;
 @property (readonly) Class superclass;
 
 + (id)XPCInterface;
@@ -69,8 +71,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)__automatic_invalidation_logic;
 - (void)__cancelAlertActionWithToken:(long long)arg1;
-- (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 hostAccessibilityServerPort:(id)arg3 canShowTextServices:(BOOL)arg4 replyHandler:(CDUnknownBlockType)arg5;
-- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 traitCollection:(id)arg5 initialInterfaceOrientation:(long long)arg6 hostAccessibilityServerPort:(id)arg7 canShowTextServices:(BOOL)arg8 replyHandler:(CDUnknownBlockType)arg9;
+- (void)__createViewControllerWithOptions:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)__dimmingViewWasTapped;
 - (void)__exchangeAccessibilityPortInformation:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)__hostDidAttachDisplay:(id)arg1;
@@ -112,16 +113,17 @@ __attribute__((visibility("hidden")))
 - (void)__setHostTintColor:(id)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__setHostTraitCollection:(id)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
+- (void)__setMediaOverridePID:(int)arg1;
 - (void)__setServiceInPopover:(BOOL)arg1;
 - (void)__setSheetConfiguration:(id)arg1;
 - (void)__showEditAlertView;
 - (void)__textServiceDidDismiss;
 - (void)__undoActionWithToken:(long long)arg1;
 - (id)_appearanceSource;
-- (BOOL)_canShowTextServices;
+- (long long)_availableTextServices;
 - (BOOL)_canShowWhileLocked;
 - (double)_canvasSystemMinimumMargin;
-- (void)_completeInteractiveSheetTransitionInHost:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
+- (id)_childViewControllerForMultitaskingDragExclusionRects;
 - (struct UIEdgeInsets)_customBasePresentationInsetsForView:(id)arg1;
 - (id)_dataFromPressesEvent:(id)arg1;
 - (void)_didBecomeContentViewControllerOfPopover:(id)arg1;
@@ -143,15 +145,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)_providesCustomBasePresentationInsets;
 - (id)_queue;
 - (id)_sessionForStateRestoration:(id)arg1;
+- (void)_setNeedsUpdateOfMultitaskingDragExclusionRects;
 - (void)_setNeedsUserInterfaceAppearanceUpdate;
+- (void)_sheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(BOOL)arg2 dismissible:(BOOL)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id)arg6;
 - (BOOL)_shouldForwardLegacyRotationOnly;
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
-- (void)_startInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
 - (id)_supportedInterfaceOrientationsForViewController:(id)arg1;
 - (BOOL)_tryRetain;
-- (void)_updateInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
 - (void)_updateSupportedInterfaceOrientationsIfNecessary;
 - (BOOL)_validateSessionIdentifier:(id)arg1 restorationAnchor:(id)arg2 functionName:(const char *)arg3;
 - (id)_viewControllersForRotationCallbacks;
@@ -167,6 +169,7 @@ __attribute__((visibility("hidden")))
 - (id)autorelease;
 - (BOOL)becomeFirstResponder;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
+- (id)childViewControllerForPointerLock;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
@@ -194,6 +197,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (void)setNeedsStatusBarAppearanceUpdate;
 - (void)setNeedsUpdateOfHomeIndicatorAutoHidden;
+- (void)setNeedsUpdateOfPrefersPointerLocked;
 - (void)setNeedsUpdateOfScreenEdgesDeferringSystemGestures;
 - (void)setNeedsWhitePointAdaptivityStyleUpdate;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

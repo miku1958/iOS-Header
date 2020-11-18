@@ -5,7 +5,7 @@
 //
 
 @class NSAttributedString, NSString, UIColor, UIFont, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
-@protocol UITextInput, UITextInputPrivate;
+@protocol UIPointerInteractionDelegate, UITextInput, UITextInputPrivate;
 
 @protocol UITextInput_Internal
 
@@ -21,6 +21,7 @@
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(BOOL)arg1;
+- (void)_deleteForwardByWord;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
@@ -77,7 +78,6 @@
 - (BOOL)_selectionAtDocumentEnd;
 - (BOOL)_selectionAtDocumentStart;
 - (BOOL)_selectionAtWordStart;
-- (struct CGRect)_selectionClipRect;
 - (void)_setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setGestureRecognizers;
@@ -95,6 +95,7 @@
 @optional
 - (BOOL)_isInteractiveTextSelectionDisabled;
 - (struct CGRect)_lastRectForRange:(UITextRange *)arg1;
+- (id<UIPointerInteractionDelegate>)_pointerInteractionDelegate;
 - (void)_setInternalGestureRecognizers;
 - (BOOL)_shouldSuppressSelectionHandles;
 @end

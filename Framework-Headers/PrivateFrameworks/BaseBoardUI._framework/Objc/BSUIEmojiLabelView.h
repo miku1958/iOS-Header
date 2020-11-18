@@ -10,9 +10,9 @@
 
 @interface BSUIEmojiLabelView : UIView
 {
-    UILabel *_contentLabel;
     UILabel *_emojiLabel;
     NSString *_rawText;
+    UILabel *_contentLabel;
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth;
@@ -26,7 +26,6 @@
 
 - (void).cxx_destruct;
 - (double)_firstLineBaselineOffsetFromBoundsTop;
-- (id)_newLabel;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

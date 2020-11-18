@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)download;
 - (void)ignore;
-- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4;
-- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
+- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4;
+- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
 - (void)invalidate;
 - (void)receivedPolicyDecision:(unsigned char)arg1;
 - (void)use;

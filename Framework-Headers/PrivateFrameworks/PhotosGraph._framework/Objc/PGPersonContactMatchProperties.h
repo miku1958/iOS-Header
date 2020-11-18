@@ -25,7 +25,7 @@
     double _socialGroupsOverlapScore;
     unsigned long long _numberOfMatchedRelationships;
     NSMutableSet *_matchedRelationships;
-    unsigned long long _genderMatch;
+    unsigned long long _sexMatch;
     double _matchScore;
     double _birthdayScore;
     double _potentialBirthdayScore;
@@ -44,7 +44,6 @@
 @property (nonatomic) BOOL contactFaceprintMatch; // @synthesize contactFaceprintMatch=_contactFaceprintMatch;
 @property (readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (nonatomic) double faceTimeFaceprintConfidence; // @synthesize faceTimeFaceprintConfidence=_faceTimeFaceprintConfidence;
-@property (nonatomic) unsigned long long genderMatch; // @synthesize genderMatch=_genderMatch;
 @property (readonly, nonatomic) double matchScore; // @synthesize matchScore=_matchScore;
 @property (strong, nonatomic) NSMutableSet *matchedRelationships; // @synthesize matchedRelationships=_matchedRelationships;
 @property (nonatomic) double mentionedAddressScore; // @synthesize mentionedAddressScore=_mentionedAddressScore;
@@ -60,6 +59,7 @@
 @property (nonatomic) double potentialBirthdayScore; // @synthesize potentialBirthdayScore=_potentialBirthdayScore;
 @property (nonatomic) double relationshipScore; // @synthesize relationshipScore=_relationshipScore;
 @property (nonatomic) double scoreAfterMessagePenalty; // @synthesize scoreAfterMessagePenalty=_scoreAfterMessagePenalty;
+@property (nonatomic) unsigned long long sexMatch; // @synthesize sexMatch=_sexMatch;
 @property (nonatomic) double sharedAssetScore; // @synthesize sharedAssetScore=_sharedAssetScore;
 @property (nonatomic) double sharedCMMScore; // @synthesize sharedCMMScore=_sharedCMMScore;
 @property (strong, nonatomic) NSMutableSet *socialGroupDescriptions; // @synthesize socialGroupDescriptions=_socialGroupDescriptions;
@@ -73,12 +73,12 @@
 - (id)description;
 - (id)edgeProperties;
 - (id)initWithContactIdentifier:(id)arg1;
+- (void)registerBiologicalSexMatch:(unsigned long long)arg1;
 - (void)registerBirthdayWithPeopleCount:(unsigned long long)arg1;
 - (void)registerCMMWithPeopleCount:(unsigned long long)arg1;
 - (void)registerCalendarEventWithPeopleCount:(unsigned long long)arg1;
 - (void)registerContactFaceprintMatch;
 - (void)registerFacetimeFaceprintMatchConfidence:(double)arg1;
-- (void)registerGenderMatch:(unsigned long long)arg1;
 - (void)registerMatchedRelationship:(unsigned long long)arg1 withPeopleCount:(unsigned long long)arg2;
 - (void)registerMessageFrequencyPenaltyNewScore:(double)arg1;
 - (void)registerMomentAtAddressWithPeopleCount:(unsigned long long)arg1;

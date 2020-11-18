@@ -40,12 +40,14 @@
 - (void).cxx_destruct;
 - (id)_defaultVibrancyEffect;
 - (void)_updateVisualEffectStateForVibrancyEffectChange:(BOOL)arg1;
+- (void)_updateVisualEffectStateForVibrancyEffectChange:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)contentContainerView;
 - (void)iconContentView:(id)arg1 didChangeAspectRatio:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 contentMode:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setVibrancyEffect:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
 

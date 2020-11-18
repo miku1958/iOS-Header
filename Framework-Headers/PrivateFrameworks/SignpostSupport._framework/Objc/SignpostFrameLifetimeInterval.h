@@ -14,10 +14,12 @@
 @interface SignpostFrameLifetimeInterval : SignpostAnimationSubInterval <SignpostCARenderServerFrameMetadata>
 {
     unsigned char _bufferCount;
+    BOOL _frameStallSkipRequest;
     unsigned int _frameSeed;
     unsigned int _swapID;
     unsigned long long _displayRefreshIntervalDurationMachTime;
     unsigned long long _previousFramePresentationMCT;
+    NSArray *_commits;
     NSDictionary *_pidToContextInfoArrayDict;
     SignpostHIDLatencyInterval *_hidLatencyInterval;
     SignpostRenderServerRenderInterval *_renderInterval;
@@ -28,6 +30,7 @@
 }
 
 @property (readonly, nonatomic) unsigned char bufferCount; // @synthesize bufferCount=_bufferCount;
+@property (strong, nonatomic) NSArray *commits; // @synthesize commits=_commits;
 @property (readonly, nonatomic) SignpostContextInfo *contextInfoForHIDInput; // @synthesize contextInfoForHIDInput=_contextInfoForHIDInput;
 @property (readonly, nonatomic) NSSet *contributingPIDs;
 @property (readonly, nonatomic) unsigned int displayID;
@@ -39,6 +42,7 @@
 @property (readonly, nonatomic) id<SignpostSupportTimeInterval> frameOverrunInactiveDisplayInterval;
 @property (readonly, nonatomic) id<SignpostSupportTimeInterval> frameOverrunInterval;
 @property (readonly, nonatomic) unsigned int frameSeed; // @synthesize frameSeed=_frameSeed;
+@property (readonly, nonatomic) BOOL frameStallSkipRequest; // @synthesize frameStallSkipRequest=_frameStallSkipRequest;
 @property (readonly, nonatomic) SignpostHIDLatencyInterval *hidLatencyInterval; // @synthesize hidLatencyInterval=_hidLatencyInterval;
 @property (readonly, nonatomic) BOOL hidLatencyIsLong;
 @property (readonly, nonatomic) BOOL mayBeFirstFrame;

@@ -27,6 +27,7 @@
 @property (strong, nonatomic) _SFPBFormattedText *secondaryTitle;
 @property (strong, nonatomic) _SFPBImage *secondaryTitleImage;
 @property (nonatomic) int separatorStyle;
+@property (nonatomic) BOOL shouldUseCompactDisplay;
 @property (strong, nonatomic) _SFPBImage *thumbnail;
 @property (strong, nonatomic) _SFPBRichText *title;
 @property (strong, nonatomic) _SFPBFormattedText *trailingBottomText;

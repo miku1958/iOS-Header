@@ -8,7 +8,7 @@
 
 @interface WBSFormMetadataController : NSObject
 {
-    struct HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::PtrHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>> _framesToMetadataMap;
+    struct HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>> _framesToMetadataMap;
 }
 
 + (BOOL)convertNumber:(id)arg1 toFormMetadataRequestType:(unsigned long long *)arg2;
@@ -39,7 +39,7 @@
 - (void)creditCardFieldFocused:(id)arg1 inFrame:(id)arg2;
 - (void)disableSpellCheckInField:(id)arg1 inFrame:(id)arg2;
 - (void)fillField:(id)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
-- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3;
+- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3 focusedFieldControlID:(id)arg4;
 - (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(BOOL)arg3;
 - (void)focusField:(id)arg1 inFrame:(id)arg2;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;
@@ -64,6 +64,7 @@
 - (void)passwordFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
 - (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2 isPasswordFieldForUserCredentials:(BOOL)arg3;
 - (void)recursivelyClearMetadataForFrames:(id)arg1;
+- (BOOL)recursivelyCollectAncestorFramesOfFrame:(id)arg1 startingFromFrame:(id)arg2 ancestorFrames:(id)arg3;
 - (void)recursivelyCollectMetadataInFrame:(id)arg1 requestType:(unsigned long long)arg2 frames:(id)arg3 formMetadata:(id)arg4;
 - (void)recursivelyCountUserEditedTextControlsInFrame:(id)arg1 textFields:(unsigned long long *)arg2 textAreas:(unsigned long long *)arg3;
 - (void)removeAutomaticPasswordElementsInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2 passwordControlUniqueIDs:(id)arg3 blurAfterRemoval:(BOOL)arg4;

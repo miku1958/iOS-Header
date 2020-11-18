@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumIntervalFallbackStateTimeout;
 @property (nonatomic) double minimumKeepAliveInterval;
+@property (readonly, nonatomic) int previousAction;
 @property (nonatomic) double serverStatsExpectedKeepAliveInterval;
 @property (nonatomic) double serverStatsMaxKeepAliveInterval;
 @property (nonatomic) double serverStatsMinKeepAliveInterval;

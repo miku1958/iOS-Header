@@ -15,15 +15,10 @@
     NSString *_locationId;
 }
 
-@property (nonatomic) double entryTime; // @synthesize entryTime=_entryTime;
-@property (nonatomic) double exitTime; // @synthesize exitTime=_exitTime;
-@property (strong, nonatomic) NSString *locationId; // @synthesize locationId=_locationId;
-
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToVisit:(id)arg1;
 
 @end
 

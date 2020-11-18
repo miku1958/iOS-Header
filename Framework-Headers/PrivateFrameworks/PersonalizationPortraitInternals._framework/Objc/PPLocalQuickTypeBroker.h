@@ -9,7 +9,7 @@
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 #import <PersonalizationPortraitInternals/PPFeedbackProcessing-Protocol.h>
 
-@class PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, PPQuickTypeConnectionsServant, PPQuickTypeContactsServant, PPQuickTypeEventsServant, PPQuickTypeNavigationServant, _PASLock;
+@class PPQuickTypeConnectionsServant, PPQuickTypeContactsServant, PPQuickTypeEventsServant, PPQuickTypeNavigationServant, _PASLock;
 
 @interface PPLocalQuickTypeBroker : NSObject <PPFeedbackAccepting, PPFeedbackProcessing>
 {
@@ -18,8 +18,6 @@
     PPQuickTypeEventsServant *_eventsServant;
     PPQuickTypeConnectionsServant *_connectionsServant;
     _PASLock *_cacheLock;
-    PPMFeedbackRegistered *_feedbackTracker;
-    PPM2FeedbackPortraitRegistered *_feedbackTracker2;
 }
 
 + (id)sharedInstance;
@@ -35,7 +33,7 @@
 - (id)filterFeedback:(id)arg1;
 - (void)hibernateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)processFeedback:(id)arg1;
+- (void)processfeedbackItems:(id)arg1 scoringDate:(id)arg2 clientIdentifier:(id)arg3 clientBundleId:(id)arg4 mappingId:(id)arg5;
 - (void)quickTypeItemsWithLanguageModelingTokens:(id)arg1 localeIdentifier:(id)arg2 recipients:(id)arg3 bundleIdentifier:(id)arg4 limit:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)quickTypeItemsWithQuery:(id)arg1 limit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)recentQuickTypeItemsForRecipients:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -18,10 +18,12 @@
     NSString *_prerequisiteBuildVersion;
     NSString *_prerequisiteProductVersion;
     NSString *_prerequisiteReleaseType;
+    NSString *_downloadAuthorizationHeader;
 }
 
 @property (nonatomic) BOOL allowSameVersion; // @synthesize allowSameVersion=_allowSameVersion;
 @property (nonatomic) long long delayPeriod; // @synthesize delayPeriod=_delayPeriod;
+@property (strong, nonatomic) NSString *downloadAuthorizationHeader; // @synthesize downloadAuthorizationHeader=_downloadAuthorizationHeader;
 @property (strong, nonatomic) NSString *prerequisiteBuildVersion; // @synthesize prerequisiteBuildVersion=_prerequisiteBuildVersion;
 @property (strong, nonatomic) NSString *prerequisiteProductVersion; // @synthesize prerequisiteProductVersion=_prerequisiteProductVersion;
 @property (strong, nonatomic) NSString *prerequisiteReleaseType; // @synthesize prerequisiteReleaseType=_prerequisiteReleaseType;
@@ -31,10 +33,10 @@
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)logOptions;
 
 @end
 

@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (void)showTestNotesWithTitle:(id)arg1 lockup:(id)arg2 testNotesTitle:(id)arg3 testNotesText:(id)arg4 primaryButtonTitle:(id)arg5 primaryButtonEvent:(unsigned long long)arg6 animated:(BOOL)arg7 fetchingOnImageFetcher:(id)arg8;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

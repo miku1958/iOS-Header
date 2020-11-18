@@ -8,32 +8,50 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface NTPBTodayWidgetConfig : PBCodable <NSCopying>
 {
     long long _minimumArticleExposureDurationToBePreseen;
     double _prerollLoadingTimeout;
+    long long _widgetSystemReloadInterval;
+    long long _widgetSystemReloadJitterMax;
+    NSString *_audioIndicatorColor;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSData *_externalAnalyticsConfigurationsData;
     unsigned int _minimumNumberOfTimesPreseenToBeSeen;
-    NSData *_videoGroupsConfigData;
+    BOOL _contentPrefetchEnabled;
     struct {
         unsigned int minimumArticleExposureDurationToBePreseen:1;
         unsigned int prerollLoadingTimeout:1;
+        unsigned int widgetSystemReloadInterval:1;
+        unsigned int widgetSystemReloadJitterMax:1;
         unsigned int minimumNumberOfTimesPreseenToBeSeen:1;
+        unsigned int contentPrefetchEnabled:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *audioIndicatorColor; // @synthesize audioIndicatorColor=_audioIndicatorColor;
+@property (strong, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property (strong, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
+@property (nonatomic) BOOL contentPrefetchEnabled; // @synthesize contentPrefetchEnabled=_contentPrefetchEnabled;
 @property (strong, nonatomic) NSData *externalAnalyticsConfigurationsData; // @synthesize externalAnalyticsConfigurationsData=_externalAnalyticsConfigurationsData;
+@property (readonly, nonatomic) BOOL hasAudioIndicatorColor;
+@property (readonly, nonatomic) BOOL hasBackgroundColorDark;
+@property (readonly, nonatomic) BOOL hasBackgroundColorLight;
+@property (nonatomic) BOOL hasContentPrefetchEnabled;
 @property (readonly, nonatomic) BOOL hasExternalAnalyticsConfigurationsData;
 @property (nonatomic) BOOL hasMinimumArticleExposureDurationToBePreseen;
 @property (nonatomic) BOOL hasMinimumNumberOfTimesPreseenToBeSeen;
 @property (nonatomic) BOOL hasPrerollLoadingTimeout;
-@property (readonly, nonatomic) BOOL hasVideoGroupsConfigData;
+@property (nonatomic) BOOL hasWidgetSystemReloadInterval;
+@property (nonatomic) BOOL hasWidgetSystemReloadJitterMax;
 @property (nonatomic) long long minimumArticleExposureDurationToBePreseen; // @synthesize minimumArticleExposureDurationToBePreseen=_minimumArticleExposureDurationToBePreseen;
 @property (nonatomic) unsigned int minimumNumberOfTimesPreseenToBeSeen; // @synthesize minimumNumberOfTimesPreseenToBeSeen=_minimumNumberOfTimesPreseenToBeSeen;
 @property (nonatomic) double prerollLoadingTimeout; // @synthesize prerollLoadingTimeout=_prerollLoadingTimeout;
-@property (strong, nonatomic) NSData *videoGroupsConfigData; // @synthesize videoGroupsConfigData=_videoGroupsConfigData;
+@property (nonatomic) long long widgetSystemReloadInterval; // @synthesize widgetSystemReloadInterval=_widgetSystemReloadInterval;
+@property (nonatomic) long long widgetSystemReloadJitterMax; // @synthesize widgetSystemReloadJitterMax=_widgetSystemReloadJitterMax;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

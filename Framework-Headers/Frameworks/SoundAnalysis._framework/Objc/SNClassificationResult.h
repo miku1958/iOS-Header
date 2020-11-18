@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SNClassificationResult : NSObject <SNTimeRangeProvidingWritable, SNResult>
+@interface SNClassificationResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNResult>
 {
     NSArray *_classifications;
     CDStruct_e83c9415 _timeRange;
@@ -25,9 +27,15 @@
 @property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 
 + (id)new;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToClassificationResult:(id)arg1;
 
 @end
 

@@ -6,19 +6,17 @@
 
 #import <EventKit/EKObject.h>
 
-#import <EventKit/NSCopying-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface EKExceptionDate : EKObject <NSCopying>
+@interface EKExceptionDate : EKObject
 {
 }
 
 @property (strong, nonatomic) NSDate *date;
 
 + (Class)frozenClass;
-- (id)copyWithZone:(struct _NSZone *)arg1;
++ (id)knownIdentityKeysForComparison;
 - (id)description;
 - (id)initWithDate:(id)arg1;
 

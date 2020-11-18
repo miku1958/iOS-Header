@@ -6,7 +6,7 @@
 
 #import <ContactsUICore/NSObject-Protocol.h>
 
-@class CNContact, CNContactProperty, CNFuture, CNObservable, CNUIUserActionItem, NSArray, NSString, UIImage;
+@class CNContact, CNContactProperty, CNFuture, CNObservable, CNUIUserActionItem, CNUIUserActionListModel, NSArray, NSString, UIImage;
 @protocol CNCancelable, CNCapabilities, CNUIUserActionListConsumer;
 
 @protocol CNUIUserActionListDataSource <NSObject>
@@ -17,15 +17,18 @@
 + (NSArray *)allSupportedActionTypes;
 + (NSArray *)allSupportedActionTypesWithCapabilities:(id<CNCapabilities>)arg1;
 - (NSArray *)actionTypesForConsumer:(id<CNUIUserActionListConsumer>)arg1;
-- (CNObservable *)consumer:(id<CNUIUserActionListConsumer>)arg1 actionModelsForActionType:(NSString *)arg2;
-- (id<CNCancelable>)consumer:(id<CNUIUserActionListConsumer>)arg1 actionModelsForActionType:(NSString *)arg2 handler:(void (^)(CNUIUserActionListModel *))arg3;
+- (CNObservable *)consumer:(id<CNUIUserActionListConsumer>)arg1 actionModelsForContact:(CNContact *)arg2 actionType:(NSString *)arg3;
+- (id<CNCancelable>)consumer:(id<CNUIUserActionListConsumer>)arg1 actionModelsForContact:(CNContact *)arg2 actionType:(NSString *)arg3 handler:(void (^)(CNUIUserActionListModel *))arg4;
+- (CNUIUserActionListModel *)consumer:(id<CNUIUserActionListConsumer>)arg1 currentActionModelForContact:(CNContact *)arg2 actionType:(NSString *)arg3;
 - (UIImage *)consumer:(id<CNUIUserActionListConsumer>)arg1 imageForActionType:(NSString *)arg2;
 - (NSString *)consumer:(id<CNUIUserActionListConsumer>)arg1 localizedButtonDisplayNameForActionType:(NSString *)arg2;
 - (NSString *)consumer:(id<CNUIUserActionListConsumer>)arg1 localizedDisplayNameForActionType:(NSString *)arg2;
 - (NSString *)consumer:(id<CNUIUserActionListConsumer>)arg1 localizedDisplayNameForButtonWithDefaultAction:(CNUIUserActionItem *)arg2 actionType:(NSString *)arg3;
-- (void)setContact:(CNContact *)arg1;
+- (void)setCacheCapacity:(unsigned long long)arg1;
+- (void)setCacheEntryExpirationAge:(double)arg1;
+- (void)setCacheEntryRefreshAge:(double)arg1;
+- (CNFuture *)thirdPartyActionsForContact:(CNContact *)arg1 propertyKey:(NSString *)arg2 identifier:(NSString *)arg3;
 - (CNFuture *)thirdPartyActionsForContactProperty:(CNContactProperty *)arg1;
-- (CNFuture *)thirdPartyActionsForCurrentContactAndPropertyKey:(NSString *)arg1 identifier:(NSString *)arg2;
 - (CNFuture *)thirdPartyTargetsForActionTypes:(NSArray *)arg1;
 @end
 

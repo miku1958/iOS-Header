@@ -33,6 +33,7 @@
 - (BOOL)_isCenterComplicationForSlot:(id)arg1;
 - (BOOL)_isCornerComplicationForSlot:(id)arg1;
 - (struct CGPoint)circularComplicationCenterForSlot:(id)arg1 inFaceBounds:(struct CGRect)arg2;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;

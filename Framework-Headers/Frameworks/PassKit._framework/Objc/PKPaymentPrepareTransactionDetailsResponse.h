@@ -6,20 +6,18 @@
 
 #import <PassKitCore/PKPaymentWebServiceResponse.h>
 
-@class NSData, NSDecimalNumber, NSString;
+@class NSDecimalNumber, NSDictionary, NSString;
 
 @interface PKPaymentPrepareTransactionDetailsResponse : PKPaymentWebServiceResponse
 {
     NSDecimalNumber *_amount;
     NSString *_secureElementIdentifier;
-    NSData *_instructions;
-    NSData *_signature;
+    NSDictionary *_instructionsDictionary;
 }
 
 @property (readonly, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
-@property (readonly, nonatomic) NSData *instructions; // @synthesize instructions=_instructions;
+@property (readonly, nonatomic) NSDictionary *instructionsDictionary; // @synthesize instructionsDictionary=_instructionsDictionary;
 @property (readonly, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
-@property (readonly, nonatomic) NSData *signature; // @synthesize signature=_signature;
 
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;

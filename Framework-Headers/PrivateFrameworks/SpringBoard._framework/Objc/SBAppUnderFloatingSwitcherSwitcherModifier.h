@@ -14,14 +14,12 @@
 }
 
 - (void).cxx_destruct;
+- (id)appLayoutsToResignActive;
 - (id)initWithActiveAppLayout:(id)arg1;
-- (BOOL)isHomeGrabberVisible;
-- (long long)keyboardSuppressionMode;
-- (long long)liveContentRasterizationStyle;
-- (long long)sceneDeactivationReason;
+- (BOOL)isHomeGrabberVisibleForIndex:(unsigned long long)arg1;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
-- (BOOL)wantsMinificationFilter;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

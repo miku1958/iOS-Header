@@ -21,15 +21,11 @@
 
 - (void).cxx_destruct;
 - (void)addComponentNode:(id)arg1;
-- (void)addDependency:(id)arg1;
-- (id)componentNodeForComponentIdentifier:(id)arg1 andAttribute:(long long)arg2;
-- (id)componentNodesDependentOnComponentNode:(id)arg1;
 - (id)createComponentNodesForComponentIdentifiers:(id)arg1;
 - (id)debugDescription;
 - (id)initWithComponentIdentifiers:(id)arg1;
 - (void)reset;
 - (void)resolveStack:(id)arg1 withSolvedNodes:(id)arg2;
-- (id)solvableOrder;
 - (id)solvedOrderForComponentNodes:(id)arg1;
 
 @end

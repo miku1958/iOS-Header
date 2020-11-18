@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)cancelTask;
 - (void)finishWithData:(id)arg1 error:(id)arg2;
-- (id)initWithLaunchHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithResource:(id)arg1 taskIdentifier:(id)arg2 launchHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)launch;
 - (void)launchTransportTask:(id)arg1;
 

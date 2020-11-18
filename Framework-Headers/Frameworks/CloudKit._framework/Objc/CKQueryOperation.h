@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray, NSDictionary;
+#import <CloudKit/CKQueryOperationCallbacks-Protocol.h>
 
-@interface CKQueryOperation : CKDatabaseOperation
+@class CKQuery, CKQueryCursor, CKQueryOperationInfo, CKRecordZoneID, NSArray, NSDictionary;
+@protocol CKQueryOperationCallbacks;
+
+@interface CKQueryOperation : CKDatabaseOperation <CKQueryOperationCallbacks>
 {
     BOOL _shouldFetchAssetContent;
     BOOL _fetchAllResults;
@@ -24,27 +27,32 @@
     NSDictionary *_assetTransferOptionsByKey;
 }
 
-@property (strong, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
+@property (copy, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
+@property (readonly, nonatomic) id<CKQueryOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;
+@property (readonly, nonatomic) CKQueryOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType queryCursorFetchedBlock; // @synthesize queryCursorFetchedBlock=_queryCursorFetchedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
-@property (strong, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
+@property (copy, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property (copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
++ (SEL)daemonCallbackCompletionSelector;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleOperationDidCompleteWithCursor:(id)arg1 metrics:(id)arg2 error:(id)arg3;
+- (void)handleQueryDidFetchCursor:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)handleQueryDidFetchRecord:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithCursor:(id)arg1;

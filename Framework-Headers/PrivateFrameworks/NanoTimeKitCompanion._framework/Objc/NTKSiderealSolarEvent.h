@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
+
 @class NSDate;
 
-@interface NTKSiderealSolarEvent : NSObject
+@interface NTKSiderealSolarEvent : NSObject <NSSecureCoding>
 {
     double _degree;
     NSDate *_time;
@@ -22,10 +24,13 @@
 
 + (id)eventWithType:(long long)arg1 degree:(double)arg2;
 + (id)eventWithType:(long long)arg1 time:(id)arg2 degree:(double)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)debugNameForType:(long long)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -109,7 +109,6 @@
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (BOOL)_dismissPresentedViewControllerIfNecessary:(BOOL)arg1;
 - (unsigned long long)_distanceForIndexPathFromNow:(id)arg1;
-- (void)_ensureContentLoadedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_finalizeForSnapshotting:(CDUnknownBlockType)arg1;
 - (void)_handleEngineChangeNotification;
 - (void)_handleOrdinaryScreenWake;
@@ -138,6 +137,7 @@
 - (void)_reloadCollectionViewData;
 - (void)_reloadContentIfNeeded;
 - (void)_removeUnmanagedCollectionViewCells;
+- (void)_replaceDataSourceElement:(id)arg1 withReloadedREElement:(id)arg2;
 - (void)_resetVisibilityForCells;
 - (id)_sectionEnumerationOrder;
 - (void)_setSiriBlurColor;
@@ -192,6 +192,8 @@
 - (void)layoutSubviews;
 - (void)performScrollTestNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)presentedViewControllerShouldBecomeFirstResponder:(id)arg1;
+- (void)screenDidTurnOffAnimated:(BOOL)arg1;
+- (void)screenWillTurnOnAnimated:(BOOL)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

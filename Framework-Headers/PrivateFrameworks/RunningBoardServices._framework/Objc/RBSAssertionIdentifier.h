@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSAssertionIdentifier : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSAssertionIdentifier : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     NSString *_desc;
     unsigned long long _hash;
@@ -28,15 +28,13 @@
 @property (readonly, nonatomic) int serverPid; // @synthesize serverPid=_serverPid;
 @property (readonly) Class superclass;
 
-+ (unsigned long long)_next;
 + (id)identifierWithClientPid:(int)arg1;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithServerPid:(int)arg1 clientPid:(int)arg2 count:(unsigned long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

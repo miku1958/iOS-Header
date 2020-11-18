@@ -86,12 +86,15 @@
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (void)dealloc;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
+- (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentDatabase:(id)arg3 contentHostDirectory:(id)arg4 networkBehaviorMonitor:(id)arg5 setupCustomURLProtocols:(BOOL)arg6 desiredHeadlineFieldOptions:(unsigned long long)arg7 feedUsage:(long long)arg8 assetKeyManagerDelegate:(id)arg9 appActivityMonitor:(id)arg10 backgroundTaskable:(id)arg11 preferredMediaQuality:(long long)arg12 pptContext:(id)arg13;
+- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 appActivityMonitor:(id)arg7 backgroundTaskable:(id)arg8 preferredMediaQuality:(long long)arg9 pptContext:(id)arg10;
 - (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 assetKeyManagerDelegate:(id)arg7 appActivityMonitor:(id)arg8 backgroundTaskable:(id)arg9 preferredMediaQuality:(long long)arg10 pptContext:(id)arg11;
 - (id)magazinesConfigurationManager;
 - (void)networkReachabilityRequirementDidBecomeDirty:(id)arg1;
 - (id)news_core_ConfigurationManager;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
+- (void)ppt_prewarmFeedDatabase;
 - (id)recordSourceWithSchema:(id)arg1;
 - (id)recordTreeSourceWithRecordSources:(id)arg1;
 - (id)webArchiveSourceAllowingNil;

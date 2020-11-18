@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface AFSiriActivationContext : NSObject <NSCopying, NSSecureCoding>
+@interface AFSiriActivationContext : NSObject <NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     unsigned long long _timestamp;
     long long _source;
@@ -21,10 +22,14 @@
     NSDictionary *_userInfo;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (readonly, nonatomic) long long event; // @synthesize event=_event;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) long long source; // @synthesize source=_source;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
@@ -32,11 +37,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
+- (id)buildDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithTimestamp:(unsigned long long)arg1 source:(long long)arg2 event:(long long)arg3 options:(unsigned long long)arg4 deviceID:(id)arg5 userInfo:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;

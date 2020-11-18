@@ -42,7 +42,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)listTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)proactiveItemAtIndex:(unsigned long long)arg1;

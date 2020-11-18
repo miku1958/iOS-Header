@@ -13,12 +13,14 @@
     BOOL _supportsUSBCarPlay;
     BOOL _supportsWirelessCarPlay;
     BOOL _supportsWiredBluetoothPairing;
+    BOOL _supportsCarPlayConnectionRequest;
     BOOL _supportsEnhancedIntegration;
     NSString *_vehicleName;
     NSString *_vehicleModelName;
     NSData *_certificateSerialNumber;
     NSArray *_accessoryProtocols;
     NSString *_bluetoothAddress;
+    long long _transportType;
     NSString *_PPID;
     NSNumber *_connectionID;
     EAAccessory *_accessory;
@@ -32,15 +34,18 @@
 @property (strong, nonatomic) NSString *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (strong, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property (strong, nonatomic) NSNumber *connectionID; // @synthesize connectionID=_connectionID;
+@property (nonatomic) BOOL supportsCarPlayConnectionRequest; // @synthesize supportsCarPlayConnectionRequest=_supportsCarPlayConnectionRequest;
 @property (nonatomic) BOOL supportsEnhancedIntegration; // @synthesize supportsEnhancedIntegration=_supportsEnhancedIntegration;
 @property (nonatomic) BOOL supportsUSBCarPlay; // @synthesize supportsUSBCarPlay=_supportsUSBCarPlay;
 @property (nonatomic) BOOL supportsWiredBluetoothPairing; // @synthesize supportsWiredBluetoothPairing=_supportsWiredBluetoothPairing;
 @property (nonatomic) BOOL supportsWirelessCarPlay; // @synthesize supportsWirelessCarPlay=_supportsWirelessCarPlay;
+@property (nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property (copy, nonatomic) NSDictionary *vehicleAccessoryInfoKeysCache; // @synthesize vehicleAccessoryInfoKeysCache=_vehicleAccessoryInfoKeysCache;
 @property (copy, nonatomic) NSDictionary *vehicleInfoDataCache; // @synthesize vehicleInfoDataCache=_vehicleInfoDataCache;
 @property (strong, nonatomic) NSString *vehicleModelName; // @synthesize vehicleModelName=_vehicleModelName;
 @property (strong, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
 
++ (id)_descriptionForTransportType:(long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)_updateName;
 - (id)analyticsDescription;
@@ -51,6 +56,7 @@
 - (id)radarDescription;
 - (void)requestWiFiCredentials;
 - (void)sendDeviceTransportIdentifiers;
+- (void)sendWiredCarPlayAvailable:(id)arg1 wirelessCarPlayAvailable:(id)arg2;
 - (id)vehicleAccessoryInfoKeys;
 
 @end

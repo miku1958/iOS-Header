@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) CDStruct_5577c19c histogramInfo;
 @property (nonatomic) BOOL zeroHistogram; // @synthesize zeroHistogram=_zeroHistogram;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

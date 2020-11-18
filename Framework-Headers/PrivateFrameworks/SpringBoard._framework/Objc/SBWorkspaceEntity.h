@@ -46,6 +46,7 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_generator;
 - (BOOL)_supportsLayoutRole:(long long)arg1;
+- (id)appClipPlaceholderEntity;
 - (id)applicationSceneEntity;
 - (void)applyActivationSettings:(id)arg1;
 - (void)applyDeactivationSettings:(id)arg1;
@@ -66,6 +67,7 @@
 - (id)initWithIdentifier:(id)arg1 displayChangeSettings:(id)arg2;
 - (id)inlineAppExposeWorkspaceEntity;
 - (BOOL)isAnalogousToEntity:(id)arg1;
+- (BOOL)isAppClipPlaceholderEntity;
 - (BOOL)isApplicationSceneEntity;
 - (BOOL)isDeviceApplicationSceneEntity;
 - (BOOL)isInlineAppExposeWorkspaceEntity;

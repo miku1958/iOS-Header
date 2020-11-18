@@ -4,14 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
+#import <PhotosUI/PXPhotosSectionHeaderViewDelegate-Protocol.h>
 
-@class PUPhotosSectionHeaderView;
-
-@protocol PUPhotosSectionHeaderViewDelegate <NSObject>
-
-@optional
-- (void)didTapHeaderView:(PUPhotosSectionHeaderView *)arg1;
-- (void)headerView:(PUPhotosSectionHeaderView *)arg1 actionButtonPressed:(id)arg2;
+@protocol PUPhotosSectionHeaderViewDelegate <PXPhotosSectionHeaderViewDelegate>
 @end
 

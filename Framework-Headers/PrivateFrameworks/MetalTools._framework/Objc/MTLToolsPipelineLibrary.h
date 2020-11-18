@@ -8,16 +8,13 @@
 
 #import <MetalTools/MTLPipelineLibrarySPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSArray, NSString;
+@class NSArray, NSString;
 @protocol MTLDevice, MTLPipelineCache;
 
 @interface MTLToolsPipelineLibrary : MTLToolsObject <MTLPipelineLibrarySPI>
 {
-    MTLToolsPointerArray *_pipelineStates;
-    MTLToolsPointerArray *_computePipelineStates;
 }
 
-@property (readonly, nonatomic) MTLToolsPointerArray *computePipelineStates; // @synthesize computePipelineStates=_computePipelineStates;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
@@ -27,12 +24,8 @@
 @property (copy) NSString *label;
 @property (readonly, nonatomic) id<MTLPipelineCache> pipelineCache;
 @property (readonly) NSArray *pipelineNames;
-@property (readonly, nonatomic) MTLToolsPointerArray *pipelineStates; // @synthesize pipelineStates=_pipelineStates;
 @property (readonly) Class superclass;
 
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (id)newComputePipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
 - (id)newComputePipelineStateWithName:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newRenderPipelineDescriptorWithName:(id)arg1 error:(id *)arg2;

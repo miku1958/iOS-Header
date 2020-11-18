@@ -6,12 +6,15 @@
 
 #import <UIKitCore/UIDynamicColor.h>
 
-@class NSDictionary;
+@class NSDictionary, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface UIDynamicSystemColor : UIDynamicColor
 {
     NSDictionary *_colorsByThemeKey;
+    struct os_unfair_lock_s _cachedColorLock;
+    UIColor *_cachedColor;
+    unsigned long long _cachedThemeKey;
 }
 
 - (void).cxx_destruct;

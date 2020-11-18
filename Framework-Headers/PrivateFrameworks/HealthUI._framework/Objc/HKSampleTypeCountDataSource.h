@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (void)_handleCounts:(id)arg1 blockStart:(id)arg2 blockEnd:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 
 @end
 

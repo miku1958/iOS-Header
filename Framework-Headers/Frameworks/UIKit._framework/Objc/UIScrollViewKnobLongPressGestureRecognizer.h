@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL forPointer; // @synthesize forPointer=_forPointer;
 
+- (BOOL)_isGestureType:(long long)arg1;
 - (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 
 @end

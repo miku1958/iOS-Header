@@ -9,11 +9,12 @@
 @class NSDictionary, NSIndexPath, NSSet, NSString, SBHIconModel, SBIcon, SBLeafIcon, SBRootFolder;
 
 @protocol SBHIconModelDelegate <NSObject>
+- (struct SBHIconGridSizeClassSizes)gridSizeClassSizesForIconModel:(SBHIconModel *)arg1;
 - (NSIndexPath *)iconModel:(SBHIconModel *)arg1 customInsertionIndexPathForIcon:(SBIcon *)arg2 inRootFolder:(SBRootFolder *)arg3;
 - (void)iconModel:(SBHIconModel *)arg1 launchIcon:(SBIcon *)arg2 fromLocation:(NSString *)arg3 context:(id)arg4;
+- (struct SBHIconGridSize)iconModel:(SBHIconModel *)arg1 listGridSizeForFolderClass:(Class)arg2;
 - (NSString *)iconModel:(SBHIconModel *)arg1 localizedFolderNameForDefaultDisplayName:(NSString *)arg2;
 - (unsigned long long)iconModel:(SBHIconModel *)arg1 maxColumnCountForListInRootFolderWithInterfaceOrientation:(long long)arg2;
-- (unsigned long long)iconModel:(SBHIconModel *)arg1 maxIconCountForListInFolderClass:(Class)arg2;
 - (unsigned long long)iconModel:(SBHIconModel *)arg1 maxRowCountForListInRootFolderWithInterfaceOrientation:(long long)arg2;
 - (unsigned long long)maxIconCountForDockForIconModel:(SBHIconModel *)arg1;
 - (unsigned long long)maxListCountForFoldersForIconModel:(SBHIconModel *)arg1;
@@ -25,7 +26,9 @@
 - (void)didDeleteIconState:(SBHIconModel *)arg1;
 - (void)didSaveIconState:(SBHIconModel *)arg1;
 - (NSSet *)firstPageLeafIdentifiersForIconModel:(SBHIconModel *)arg1;
+- (void)iconModel:(SBHIconModel *)arg1 didAddIcon:(SBIcon *)arg2;
 - (BOOL)iconModel:(SBHIconModel *)arg1 shouldAvoidPlacingIconOnFirstPage:(SBLeafIcon *)arg2;
+- (BOOL)iconModel:(SBHIconModel *)arg1 shouldPlaceIconOnIgnoredList:(SBLeafIcon *)arg2;
 - (void)iconModel:(SBHIconModel *)arg1 willRemoveIcon:(SBIcon *)arg2;
 - (void)willUnarchiveIconModel:(SBHIconModel *)arg1 withMetadata:(NSDictionary *)arg2;
 @end

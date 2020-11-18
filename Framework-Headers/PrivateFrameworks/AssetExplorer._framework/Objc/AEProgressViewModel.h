@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_createSnapshot;
+- (void)cancelProgressForAssetUUIDs:(id)arg1;
 - (void)dealloc;
 - (id)initWithDataSourceManager:(id)arg1;
 - (id)mutableChangeObject;

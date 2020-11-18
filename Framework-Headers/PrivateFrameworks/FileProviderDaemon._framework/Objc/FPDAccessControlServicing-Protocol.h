@@ -8,8 +8,6 @@
 
 @protocol FPDAccessControlServicing
 - (void)bundleIdentifiersWithAccessToAnyItemCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)fetchEnumeratorForItemsAccessibleByBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(id<FPXEnumerator>, NSError *))arg2;
-- (void)revokeAccessToAllBundlesCompletionHandler:(void (^)(NSError *))arg1;
 - (void)revokeAccessToAllItemsForBundle:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

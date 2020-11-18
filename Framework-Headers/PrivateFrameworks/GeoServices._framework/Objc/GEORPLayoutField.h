@@ -8,12 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackLayoutFieldName, NSString, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackLayoutFieldName, NSString, PBDataReader;
 
 @interface GEORPLayoutField : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    PBUnknownFields *_unknownFields;
     NSString *_displayText;
     GEORPFeedbackLayoutFieldName *_name;
     unsigned int _readerMarkPos;
@@ -26,15 +25,9 @@
         unsigned int has_ordinal:1;
         unsigned int has_type:1;
         unsigned int has_enabled:1;
-        unsigned int read_unknownFields:1;
         unsigned int read_displayText:1;
         unsigned int read_name:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayText:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_ordinal:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_enabled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,14 +41,10 @@
 @property (strong, nonatomic) GEORPFeedbackLayoutFieldName *name;
 @property (nonatomic) unsigned int ordinal;
 @property (nonatomic) int type;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_readDisplayText;
-- (void)_readName;
-- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -63,7 +52,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

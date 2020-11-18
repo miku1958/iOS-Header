@@ -16,13 +16,13 @@
 @property (readonly, nonatomic) NSDate *birthdayDate;
 @property (readonly, nonatomic) NSString *contactID;
 @property (readonly, nonatomic) NSString *fullName;
-@property (readonly, nonatomic) unsigned long long gender;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) BOOL isMe;
 @property (readonly, nonatomic) BOOL isUserCreated;
 @property (readonly, nonatomic) NSDictionary *locationsByAddressTypes;
 @property (readonly, nonatomic) NSDate *potentialBirthdayDate;
 @property (readonly, nonatomic) unsigned long long relationship;
+@property (readonly, nonatomic) unsigned long long sex;
 
 @end
 

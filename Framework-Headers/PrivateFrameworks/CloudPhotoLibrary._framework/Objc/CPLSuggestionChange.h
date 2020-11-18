@@ -42,7 +42,6 @@
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 + (id)_createTestSuggestionWithKeyAssets:(id)arg1 representativeAssets:(id)arg2;
-+ (BOOL)serverSupportsSuggestion;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (id)propertiesDescription;

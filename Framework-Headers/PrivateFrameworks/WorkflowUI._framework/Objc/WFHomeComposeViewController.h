@@ -26,6 +26,7 @@
 - (id)initWithHomeWorkflow:(id)arg1 actionSetBuilder:(id)arg2;
 - (id)initWithHomeWorkflow:(id)arg1 actionSetBuilder:(id)arg2 home:(id)arg3;
 - (id)initWithWorkflow:(id)arg1;
+- (unsigned long long)navigationUpdateBehavior;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

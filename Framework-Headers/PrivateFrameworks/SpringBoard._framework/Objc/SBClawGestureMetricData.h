@@ -15,12 +15,5 @@
     unsigned long long _duration;
 }
 
-@property (nonatomic) BOOL didPressLock; // @synthesize didPressLock=_didPressLock;
-@property (nonatomic) BOOL didPressVolumeDown; // @synthesize didPressVolumeDown=_didPressVolumeDown;
-@property (nonatomic) BOOL didPressVolumeUp; // @synthesize didPressVolumeUp=_didPressVolumeUp;
-@property (nonatomic) BOOL didTriggerSOS; // @synthesize didTriggerSOS=_didTriggerSOS;
-@property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
-
-
 @end
 

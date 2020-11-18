@@ -6,14 +6,14 @@
 
 #import <ActionKit/NSObject-Protocol.h>
 
-@class NSProgress, NSString, WFContentCollection, WFContentSource;
-@protocol WFFileStorageServiceOperation, WFUserInterface;
+@class NSArray, NSProgress, NSString, WFContentAttributionSet, WFContentCollection;
+@protocol WFFileStorageServiceOperation, WFUserInterfaceHost;
 
 @protocol WFFileStorageService <NSObject>
 
 @property (readonly, nonatomic) Class accessResourceClass;
 @property (readonly, nonatomic) NSString *associatedAppBundleIdentifier;
-@property (readonly, nonatomic) WFContentSource *contentSource;
+@property (readonly, nonatomic) WFContentAttributionSet *contentAttributionSet;
 @property (readonly, nonatomic) BOOL hasPublicURLs;
 @property (readonly, nonatomic) Class objectRepresentationClass;
 @property (readonly, nonatomic) NSString *storageLocationPrefix;
@@ -21,16 +21,16 @@
 
 + (Class)resultItemClass;
 + (NSString *)serviceName;
-- (void)appendText:(NSString *)arg1 toPath:(NSString *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(WFContentCollection *, NSError *))arg4;
-- (void)createFolderAtPath:(NSString *)arg1 completionHandler:(void (^)(WFContentCollection *, NSError *))arg2;
+- (void)appendText:(NSString *)arg1 toPath:(NSString *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
+- (void)createFolderAtPath:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)deleteFiles:(WFContentCollection *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getSharingURLsForFiles:(WFContentCollection *)arg1 usePublicURLs:(BOOL)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
-- (void)retrieveFilesAtPath:(NSString *)arg1 options:(unsigned long long)arg2 progress:(NSProgress *)arg3 completionHandler:(void (^)(WFContentCollection *, NSError *))arg4;
-- (id<WFFileStorageServiceOperation>)saveFiles:(WFContentCollection *)arg1 toPath:(NSString *)arg2 options:(unsigned long long)arg3 progress:(NSProgress *)arg4 completionHandler:(void (^)(WFContentCollection *, NSError *))arg5;
-- (void)searchFiles:(NSString *)arg1 inPath:(NSString *)arg2 completionHandler:(void (^)(WFContentCollection *, NSError *))arg3;
+- (void)retrieveFilesAtPath:(NSString *)arg1 options:(unsigned long long)arg2 progress:(NSProgress *)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
+- (id<WFFileStorageServiceOperation>)saveFiles:(NSArray *)arg1 withManagedLevel:(unsigned long long)arg2 toPath:(NSString *)arg3 options:(unsigned long long)arg4 progress:(NSProgress *)arg5 completionHandler:(void (^)(NSArray *, NSError *))arg6;
+- (void)searchFiles:(NSString *)arg1 inPath:(NSString *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 
 @optional
-- (void)retrieveFilesWithUserInterface:(id<WFUserInterface>)arg1 initialDirectoryPath:(NSString *)arg2 options:(unsigned long long)arg3 progress:(NSProgress *)arg4 completionHandler:(void (^)(WFContentCollection *, NSError *))arg5;
-- (id<WFFileStorageServiceOperation>)saveFiles:(WFContentCollection *)arg1 withUserInterface:(id<WFUserInterface>)arg2 options:(unsigned long long)arg3 progress:(NSProgress *)arg4 completionHandler:(void (^)(WFContentCollection *, NSError *))arg5;
+- (void)retrieveFilesWithUserInterface:(id<WFUserInterfaceHost>)arg1 initialDirectoryPath:(NSString *)arg2 consumingBundleID:(NSString *)arg3 options:(unsigned long long)arg4 progress:(NSProgress *)arg5 completionHandler:(void (^)(NSArray *, NSError *))arg6;
+- (id<WFFileStorageServiceOperation>)saveFiles:(NSArray *)arg1 withManagedLevel:(unsigned long long)arg2 userInterface:(id<WFUserInterfaceHost>)arg3 consumingBundleID:(NSString *)arg4 options:(unsigned long long)arg5 progress:(NSProgress *)arg6 completionHandler:(void (^)(NSArray *, NSError *))arg7;
 @end
 

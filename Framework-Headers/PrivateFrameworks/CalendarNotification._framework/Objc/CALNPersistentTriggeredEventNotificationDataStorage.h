@@ -13,6 +13,7 @@
 
 @interface CALNPersistentTriggeredEventNotificationDataStorage : NSObject <CALNTriggeredEventNotificationDataStorage>
 {
+    BOOL _protected;
     NSString *_path;
     CALNInMemoryTriggeredEventNotificationDataStorage *_inMemoryStorage;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -27,7 +28,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)notificationDataFromPersistentStorageWithPath:(id)arg1 error:(id *)arg2;
-+ (id)persistentStorageWithPath:(id)arg1 error:(id *)arg2;
++ (id)persistentStorageWithPath:(id)arg1 isProtectedStorage:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_addNotificationData:(id)arg1 withIdentifier:(id)arg2;
 - (BOOL)_loadDataWithError:(id *)arg1;
@@ -35,7 +36,7 @@
 - (void)_removeNotificationDataWithIdentifier:(id)arg1;
 - (BOOL)_saveDataWithError:(id *)arg1;
 - (void)addNotificationData:(id)arg1 withIdentifier:(id)arg2;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 isProtectedStorage:(BOOL)arg2;
 - (id)notificationData;
 - (id)notificationDataWithIdentifier:(id)arg1;
 - (void)removeNotificationData;

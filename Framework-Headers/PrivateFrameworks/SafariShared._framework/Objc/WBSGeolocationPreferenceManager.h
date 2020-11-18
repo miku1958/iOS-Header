@@ -37,11 +37,13 @@
 - (id)preferences;
 - (long long)preferencesStoreKeyForPreference:(id)arg1;
 - (void)removeAllPermissions;
+- (void)removeAllPermissionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeAllTemporaryPermissions;
 - (void)removePermissionsAddedAfterDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removePreferenceValuesForDomains:(id)arg1 fromPreference:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeTemporaryPermissionsAddedAfterDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDefaultGeolocationSetting:(long long)arg1;
+- (void)setDefaultGeolocationSetting:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setGeolocationSetting:(long long)arg1 forDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setValue:(id)arg1 ofPreference:(id)arg2 forDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)valuesForPreference:(id)arg1;

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface HMDNetworkRouterClientControlResponse : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientControlResponse : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSMutableArray *_operationResponses;
 }

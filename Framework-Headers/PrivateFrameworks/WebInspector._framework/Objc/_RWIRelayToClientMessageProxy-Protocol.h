@@ -20,6 +20,7 @@
 - (void)_rpc_reportAutomaticInspectionCandidate:(NSDictionary *)arg1;
 - (void)_rpc_reportConnectedApplicationList:(NSDictionary *)arg1;
 - (void)_rpc_reportConnectedDriverList:(NSDictionary *)arg1;
+- (void)_rpc_reportCurrentState:(NSDictionary *)arg1;
 - (void)_rpc_reportSetup:(NSDictionary *)arg1;
 - (void)_rpc_requestDriverStateChange:(NSDictionary *)arg1;
 @end

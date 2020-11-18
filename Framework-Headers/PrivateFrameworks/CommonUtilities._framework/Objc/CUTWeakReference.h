@@ -8,16 +8,18 @@
 
 @interface CUTWeakReference : NSObject
 {
-    id _internal;
+    id _object;
+    unsigned long long _objectAddress;
 }
+
+@property (weak, nonatomic) id object; // @synthesize object=_object;
+@property (nonatomic) unsigned long long objectAddress; // @synthesize objectAddress=_objectAddress;
 
 + (id)weakRefWithObject:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithObject:(id)arg1;
-- (id)internal;
 - (BOOL)isEqual:(id)arg1;
-- (id)object;
 
 @end
 

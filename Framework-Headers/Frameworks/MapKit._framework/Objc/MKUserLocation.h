@@ -44,6 +44,7 @@
 - (id)annotation;
 - (double)course;
 - (void)dealloc;
+- (BOOL)hasValidHeading;
 - (id)init;
 - (BOOL)isEqualToLocation:(id)arg1;
 - (void)reset;

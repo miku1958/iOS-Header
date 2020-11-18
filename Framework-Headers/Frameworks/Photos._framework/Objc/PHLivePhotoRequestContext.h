@@ -12,13 +12,13 @@
 {
     NSProgress *_imageProgress;
     NSProgress *_videoProgress;
-    PHImageRequest *_initialImageRequest;
-    PHImageRequest *_finalImageRequest;
-    PHVideoRequest *_videoRequest;
     PHLivePhotoResult *_livePhotoResult;
-    _Atomic BOOL _finalImageRequestStarted;
-    _Atomic BOOL _finalImageReceived;
-    _Atomic BOOL _finalVideoReceived;
+    PHImageRequest *_fastImageRequest;
+    PHImageRequest *_highQualityImageRequest;
+    PHVideoRequest *_videoRequest;
+    struct os_unfair_lock_s _lock;
+    BOOL _imagePartCompleted;
+    BOOL _videoPartCompleted;
     PHLivePhotoRequestOptions *_livePhotoOptions;
 }
 
@@ -27,7 +27,6 @@
 - (void).cxx_destruct;
 - (id)_lazyImageProgress;
 - (id)_lazyVideoProgress;
-- (void)_setFinalImageRequestFromRequest:(id)arg1;
 - (BOOL)_shouldRequestVideo;
 - (id)initWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 displaySpec:(id)arg4 options:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (id)initialRequests;

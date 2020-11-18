@@ -7,5 +7,6 @@
 #import <ReminderKit/REMDAChangeTrackableModel-Protocol.h>
 
 @protocol REMDAChangeTrackableFetchableModel <REMDAChangeTrackableModel>
++ (BOOL)isChangeTrackableFetchableModel;
 @end
 

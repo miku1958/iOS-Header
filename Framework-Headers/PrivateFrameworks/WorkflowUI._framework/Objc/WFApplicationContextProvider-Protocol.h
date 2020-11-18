@@ -10,6 +10,7 @@
 
 @protocol WFApplicationContextProvider <NSObject>
 
+@property (readonly, nonatomic) long long userInterfaceStyle;
 @property (nonatomic) BOOL wfIdleTimerDisabled;
 
 - (UIApplication *)applicationForWFApplicationContext:(WFApplicationContext *)arg1;

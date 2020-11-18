@@ -8,7 +8,7 @@
 
 @protocol MTLSerializerResource <NSObject>
 
-@property (readonly) unsigned int resourceRef;
+@property (readonly) unsigned int serializerResourceRef;
 
 @end
 

@@ -65,11 +65,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long withinAppSourceOperationMask; // @synthesize withinAppSourceOperationMask=_withinAppSourceOperationMask;
 
 - (void).cxx_destruct;
+- (BOOL)_canHandOffCancelledItems:(id)arg1;
 - (void)_didBeginDrag;
 - (void)_getOperationMaskFromDelegate;
 - (void)_handOffCancelledItems:(id)arg1;
 - (void)_hostDidDeactivate;
 - (void)_hostWillBecomeActive;
+- (BOOL)_routingPolicyHasSpecificTouchContextIDs;
 - (void)_sendDataTransferFinished;
 - (void)_sendDidEndWithOperation:(unsigned long long)arg1;
 - (void)_sendDidMove;

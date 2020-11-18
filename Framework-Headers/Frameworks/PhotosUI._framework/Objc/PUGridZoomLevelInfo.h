@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
 @property (readonly, nonatomic) long long cellFillMode;
 @property (readonly, nonatomic) PUSectionedGridLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
-@property (readonly, nonatomic) unsigned long long dateRangeFormatterPreset;
+@property (readonly, nonatomic) long long dateRangeFormatterPreset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -62,7 +62,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUZoomableGridViewController *zoomableGridViewController; // @synthesize zoomableGridViewController=_zoomableGridViewController;
 
 - (void).cxx_destruct;
-- (unsigned long long)_detailViewSourceOriginWithZoomLevel:(unsigned long long)arg1;
+- (long long)_detailViewSourceOriginWithZoomLevel:(unsigned long long)arg1;
 - (void)_updateBackdropGroupNameForHeaderView:(id)arg1;
 - (id)assetsToDisplayInMapForVisualSection:(long long)arg1;
 - (double)cellAspectRatioHint;

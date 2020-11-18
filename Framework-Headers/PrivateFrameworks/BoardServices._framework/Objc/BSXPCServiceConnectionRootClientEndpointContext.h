@@ -11,16 +11,11 @@
 
 @interface BSXPCServiceConnectionRootClientEndpointContext : BSXPCServiceConnectionRootContext
 {
-    NSObject<OS_xpc_object> *_endpoint;
     BOOL _nonLaunching;
+    NSObject<OS_xpc_object> *_endpoint;
 }
 
-@property (readonly, nonatomic) NSObject<OS_xpc_object> *endpoint; // @synthesize endpoint=_endpoint;
-@property (readonly, nonatomic, getter=isNonLaunching) BOOL nonLaunching; // @synthesize nonLaunching=_nonLaunching;
-
-+ (id)uniqueClientContextWithEndpoint:(id)arg1 nonLaunching:(BOOL)arg2 description:(id)arg3;
 - (void).cxx_destruct;
-- (id)_initWithEndpoint:(id)arg1 nonLaunching:(BOOL)arg2 eDesc:(id)arg3;
 - (BOOL)isClient;
 
 @end

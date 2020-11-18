@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame; // @dynamic frame;
 @property (readonly) unsigned long long hash;
@@ -40,11 +41,8 @@
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_axAreChildrenFocused;
 - (id)_axCalendarModel;
-- (id)_axDefaultFocusGroupDescriptor;
 - (id)_axEventStore;
-- (id)_axGetStoredDefaultFocusGroupDescriptor;
 - (void)_axSetAreChildrenFocused:(BOOL)arg1;
-- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
 - (id)_axStringForNumberOfEvents:(unsigned long long)arg1;
 - (void)_destroyFocusLayer;
 - (id)_focusGroupDescriptor;

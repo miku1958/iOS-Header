@@ -15,10 +15,12 @@
     NSArray *_response;
     NSDictionary *_meta;
     NSNumber *_elapsedTimeMs;
+    NSNumber *_elapsedTimeThreadMs;
     NSString *_json;
 }
 
 @property (strong, nonatomic) NSNumber *elapsedTimeMs; // @synthesize elapsedTimeMs=_elapsedTimeMs;
+@property (strong, nonatomic) NSNumber *elapsedTimeThreadMs; // @synthesize elapsedTimeThreadMs=_elapsedTimeThreadMs;
 @property (strong, nonatomic) NSString *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *json; // @synthesize json=_json;
 @property (strong, nonatomic) NSDictionary *meta; // @synthesize meta=_meta;

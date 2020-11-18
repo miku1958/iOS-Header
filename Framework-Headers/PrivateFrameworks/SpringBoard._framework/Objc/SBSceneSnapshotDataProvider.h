@@ -28,10 +28,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)IOSurface;
+- (id)IOSurfaceForFormat:(long long)arg1;
 - (void)_invalidateSnapshotData;
 - (id)fallbackSnapshotDataProvider;
-- (id)fetchImage;
+- (id)fetchImageForFormat:(long long)arg1;
 - (BOOL)hasProtectedContent;
 - (id)initWithSceneSnapshot:(id)arg1 scaleFactor:(double)arg2;
 

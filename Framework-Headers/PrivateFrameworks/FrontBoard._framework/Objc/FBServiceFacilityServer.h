@@ -10,17 +10,16 @@
 #import <FrontBoard/FBSServiceFacilityManaging-Protocol.h>
 
 @class BSServiceConnectionListener, BSServiceDomainSpecification, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
 
 @interface FBServiceFacilityServer : NSObject <BSServiceConnectionListenerDelegate, FBSServiceFacilityManaging>
 {
+    struct os_unfair_lock_s _lock;
     BSServiceDomainSpecification *_domain;
-    NSObject<OS_dispatch_queue> *_queue;
     BSServiceConnectionListener *_serviceListener;
-    NSMutableDictionary *_facilitiesByIdentifier;
-    NSMutableSet *_completedMilestones;
-    NSMutableDictionary *_suspendedFacilitiesByIdentifier;
-    NSMutableSet *_pendingConnects;
+    NSMutableDictionary *_lock_facilitiesByIdentifier;
+    NSMutableSet *_lock_completedMilestones;
+    NSMutableDictionary *_lock_suspendedFacilitiesByIdentifier;
+    NSMutableSet *_lock_pendingConnects;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,9 +32,8 @@
 - (void).cxx_destruct;
 - (void)_facilityQueue_facility:(id)arg1 handleMessage:(id)arg2 client:(id)arg3;
 - (id)_initWithDomain:(id)arg1;
-- (BOOL)_queue_areFacilityPrerequisitesSatisfied:(id)arg1;
-- (void)_queue_evaluateSuspendedFacilities;
-- (void)_queue_evaluateSuspendedFacility:(id)arg1;
+- (BOOL)_lock_areFacilityPrerequisitesSatisfied:(id)arg1;
+- (void)_lock_evaluateSuspendedFacility:(id)arg1;
 - (void)addFacility:(id)arg1;
 - (void)dealloc;
 - (id)init;

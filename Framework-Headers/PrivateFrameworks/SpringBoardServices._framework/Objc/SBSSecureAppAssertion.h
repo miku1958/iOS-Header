@@ -16,6 +16,7 @@
 + (id)acquireSecureAppAssertionWithType:(unsigned long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
 + (id)acquireSecureAppAssertionWithType:(unsigned long long)arg1 supportedOrientations:(unsigned long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (BOOL)_supportsReacquisition;
 
 @end
 

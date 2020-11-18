@@ -8,7 +8,6 @@
 
 @class CKContainerID, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKDContainerPrivacySettings : NSObject
 {
     CKContainerID *_containerID;

@@ -6,6 +6,7 @@
 
 #import <CommunicationsSetupUI/CNFRegModernAppearanceController.h>
 
+__attribute__((visibility("hidden")))
 @interface CNFRegModernTransparentDarkAppearanceController : CNFRegModernAppearanceController
 {
 }

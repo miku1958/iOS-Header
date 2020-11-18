@@ -6,6 +6,7 @@
 
 #import <JITAppKit/TKPage.h>
 
+__attribute__((visibility("hidden")))
 @interface TKDefaultPage : TKPage
 {
 }

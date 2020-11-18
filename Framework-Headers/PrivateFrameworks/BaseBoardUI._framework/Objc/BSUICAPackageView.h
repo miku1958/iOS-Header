@@ -27,8 +27,6 @@
 @property (weak, nonatomic) NSObject<CAStateControllerDelegate> *stateControllerDelegate;
 
 - (void).cxx_destruct;
-- (void)_clearPendingCompletion;
-- (void)_setPendingCompletion:(CDUnknownBlockType)arg1 fromState:(id)arg2 toState:(id)arg3;
 - (id)initWithPackageName:(id)arg1 inBundle:(id)arg2;
 - (void)layoutSubviews;
 - (id)publishedObjectWithName:(id)arg1;

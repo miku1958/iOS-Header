@@ -13,6 +13,7 @@
     NSDictionary *_serverDict;
     BOOL _forAccountGroup;
     BOOL _zeroAction;
+    BOOL _badgeApp;
     NSString *_title;
     NSString *_message;
     NSString *_altMessage;
@@ -26,6 +27,7 @@
 
 @property (strong, nonatomic) NSString *altMessage; // @synthesize altMessage=_altMessage;
 @property (strong, nonatomic) NSString *altNoteMessage; // @synthesize altNoteMessage=_altNoteMessage;
+@property (nonatomic) BOOL badgeApp; // @synthesize badgeApp=_badgeApp;
 @property (nonatomic, getter=isForAccountGroup) BOOL forAccountGroup; // @synthesize forAccountGroup=_forAccountGroup;
 @property (strong, nonatomic) NSArray *links; // @synthesize links=_links;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;

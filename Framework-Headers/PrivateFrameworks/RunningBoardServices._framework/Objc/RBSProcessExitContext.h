@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSDate, NSString, RBSProcessExitStatus, RBSTerminateContext;
 
-@interface RBSProcessExitContext : NSObject <BSXPCSecureCoding>
+@interface RBSProcessExitContext : NSObject <RBSXPCSecureCoding, NSSecureCoding>
 {
+    int _legacyCode;
     NSDate *_timestamp;
     long long _type;
     RBSProcessExitStatus *_status;
@@ -21,20 +23,22 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) int legacyCode; // @synthesize legacyCode=_legacyCode;
 @property (strong, nonatomic) RBSProcessExitStatus *status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) RBSTerminateContext *terminationContext; // @synthesize terminationContext=_terminationContext;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (BOOL)supportsBSXPCSecureCoding;
++ (id)exitContextForNamespace:(unsigned int)arg1 code:(unsigned long long)arg2 wait4Status:(int)arg3;
++ (BOOL)supportsRBSXPCSecureCoding;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
+- (void)encodeWithCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)imageBagWithResourcesNamed:(id)arg1 directory:(id)arg2;
 + (id)imageBagWithResourcesNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)imageBagWithResourcesNamed:(id)arg1 fromBundle:(id)arg2 subdirectory:(id)arg3;
++ (id)imageBagWithResourcesNames:(id)arg1 fromBundle:(id)arg2;
 - (void).cxx_destruct;
 - (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)imagesForScale:(double)arg1;

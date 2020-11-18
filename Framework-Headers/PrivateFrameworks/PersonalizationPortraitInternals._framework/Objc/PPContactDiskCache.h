@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface PPContactDiskCache : NSObject
 {
     long long _lastCreatedAt;
+    NSString *_path;
 }
 
-+ (id)sharedInstance;
-- (BOOL)deleteNameRecordCache;
+- (void).cxx_destruct;
+- (id)_cacheObjectFromFilePath:(id)arg1 error:(id *)arg2;
 - (id)init;
-- (id)loadNameRecordCache;
-- (BOOL)writeNameRecordCache:(id)arg1 fullLoadFromSource:(BOOL)arg2;
+- (id)initWithPath:(id)arg1;
+- (BOOL)isEmpty;
+- (BOOL)iterNameRecordCacheWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (id)path;
 
 @end
 

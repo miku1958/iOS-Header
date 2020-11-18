@@ -102,6 +102,11 @@ __attribute__((visibility("hidden")))
     BOOL _cellularAllowRedLowBitratesEnabled;
     BOOL _wifiAllowRedLowBitratesEnabled;
     struct tagVCMemoryPool *_audioBundlePool;
+    unsigned long long _remoteIDSParticipantID;
+    BOOL _useChannelDataFormat;
+    BOOL _useWiFiTiers;
+    unsigned int _rtpTimestampBase;
+    BOOL _shouldApplyRedAsBoolean;
 }
 
 @property (readonly, nonatomic) int actualAudioSendingBitrate; // @synthesize actualAudioSendingBitrate=_actualAudioSendingBitrate;
@@ -134,6 +139,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *supportedNumRedundantPayload; // @synthesize supportedNumRedundantPayload=_supportedNumRedundantPayload;
 @property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
+@property (nonatomic) BOOL useWiFiTiers; // @synthesize useWiFiTiers=_useWiFiTiers;
 
 - (BOOL)allocateLastInputSampleBuffer:(unsigned int)arg1;
 - (int)bundleAndSendSamples:(char *)arg1 numEncodedBytes:(int)arg2 withPayload:(int)arg3 timeStamp:(unsigned int)arg4 bufferedSamples:(int)arg5 hasNewSamples:(BOOL)arg6 voiceActivity:(BOOL)arg7 priority:(unsigned char)arg8;
@@ -141,12 +147,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (int)encodeAudio:(struct opaqueVCAudioBufferList *)arg1 numInputSamples:(int)arg2 outputBytes:(void *)arg3 numOutputBytes:(int)arg4 withPayload:(int *)arg5 isTalking:(BOOL)arg6;
 - (void)encodeBundleAndSendAudio:(struct opaqueVCAudioBufferList *)arg1 sampleCount:(unsigned int)arg2;
+- (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
 - (void *)generateControlInfo;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (BOOL)handleCodecRateModeChange:(unsigned char)arg1 withBitrate:(unsigned int)arg2;
 - (void)initAudioValues;
 - (id)initWithConfig:(id)arg1;
-- (BOOL)isLocalOrRemoteOnCellular;
 - (void)logTierInfo:(int)arg1;
 - (unsigned int)maximumSamplesPerFrame;
 - (float)nextAudioInterval:(int)arg1;

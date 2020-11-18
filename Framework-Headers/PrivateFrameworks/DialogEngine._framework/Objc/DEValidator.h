@@ -16,7 +16,9 @@
 @property (strong, nonatomic) NSString *templateDir; // @synthesize templateDir=_templateDir;
 
 - (void).cxx_destruct;
+- (id)jsonToResult:(id)arg1;
 - (id)validate:(id)arg1 locale:(id)arg2;
+- (id)validateFile:(id)arg1 locale:(id)arg2;
 - (id)validateString:(id)arg1 localeString:(id)arg2;
 - (id)validateWithParams:(id)arg1 locale:(id)arg2;
 

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessAssertionInfo : NSObject <NSCopying, BSXPCSecureCoding>
+@interface RBSProcessAssertionInfo : NSObject <NSCopying, RBSXPCSecureCoding>
 {
     unsigned char _type;
     unsigned long long _reason;
@@ -30,18 +30,14 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (id)initWithType:(unsigned char)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLegacyAssertionReason:(unsigned long long)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

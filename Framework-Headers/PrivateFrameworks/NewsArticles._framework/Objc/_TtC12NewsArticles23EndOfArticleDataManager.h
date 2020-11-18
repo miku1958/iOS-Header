@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *articleRecirculationService;
-    MISSING_TYPE *nativeAdService;
+    MISSING_TYPE *legacyNativeAdService;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *readingList;
 }

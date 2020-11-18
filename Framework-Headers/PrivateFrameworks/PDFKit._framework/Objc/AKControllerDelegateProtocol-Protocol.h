@@ -47,6 +47,7 @@
 - (void)positionSketchOverlay:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (NSArray *)quadPointsForCharacterIndexes:(NSIndexSet *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (void)removeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
+- (BOOL)requestPermissionForController:(AKController *)arg1 toPerformActionFromSender:(long long)arg2;
 - (void)rotateLeft:(AKController *)arg1;
 - (void)rotateRight:(AKController *)arg1;
 - (void)setAllowsNativeRenderingOfHighlightableSelection:(BOOL)arg1 forAnnotationController:(AKController *)arg2;

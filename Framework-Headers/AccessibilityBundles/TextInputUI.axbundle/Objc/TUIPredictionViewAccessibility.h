@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityScannerGroupTraits;
+- (void)_accessibilitySendCandidateNotificationIfNecessary:(BOOL)arg1;
 - (void)_reloadCellsAnimated:(BOOL)arg1;
 - (id)accessibilityLabel;
 - (long long)accessibilityNavigationStyle;

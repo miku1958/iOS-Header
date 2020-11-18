@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <ManagedConfigurationUI/MCUITableViewController.h>
 
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-
-@class MCProfile, NSString;
+@class MCProfile;
 @protocol MCInstallationConsentDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MCInstallationConsentViewController : UITableViewController <PSStateRestoration>
+@interface MCInstallationConsentViewController : MCUITableViewController
 {
     BOOL _showInstall;
     MCProfile *_profile;
@@ -20,26 +18,19 @@ __attribute__((visibility("hidden")))
 }
 
 @property (weak, nonatomic) id<MCInstallationConsentDelegate> consentDelegate; // @synthesize consentDelegate=_consentDelegate;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MCProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) BOOL showInstall; // @synthesize showInstall=_showInstall;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelInstallProfile;
 - (void)_installProfile;
 - (void)_setup;
-- (BOOL)canBeShownFromSuspendedState;
-- (void)didReceiveMemoryWarning;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (void)viewDidLoad;
 
 @end
 

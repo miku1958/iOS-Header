@@ -18,12 +18,13 @@
 @property (weak, nonatomic) id<NFAWDLoggerDelegate> delegate;
 
 + (id)sharedAWDLogger;
+- (void).cxx_destruct;
 - (void)_postAWDHCIEndOfTransactionEventWithParametersLegacy:(id)arg1 currentTimestamp:(unsigned long long)arg2;
 - (void)_postAWDHCIStartOfTransactionEventWithParametersLegacy:(id)arg1 currentTimestamp:(unsigned long long)arg2;
 - (void)_updateStats:(id)arg1 reset:(BOOL)arg2;
-- (void)dealloc;
 - (void)enableQueryMetricsListener;
 - (id)generateUUID;
+- (void)getAWDUniversityCode:(id)arg1 universityCodes:(unsigned int *)arg2;
 - (unsigned long long)getTimestamp;
 - (BOOL)incrementMiddlewareExceptionCountWithReset:(BOOL)arg1;
 - (id)init;
@@ -36,6 +37,7 @@
 - (void)postAWDCardIngestionReaderStateChangeWithType:(unsigned int)arg1 errorCode:(unsigned int)arg2;
 - (void)postAWDCardIngestionSessionStateChange:(id)arg1;
 - (void)postAWDExpressTransactionEvent:(id)arg1;
+- (void)postAWDFelicaHCIEndOfTransactionEventWithParameters:(id)arg1;
 - (void)postAWDFelicaStateChangeEvent:(id)arg1;
 - (void)postAWDFieldEventWithFieldOn:(BOOL)arg1 withTechnology:(unsigned int)arg2;
 - (void)postAWDHCEEndEvent;

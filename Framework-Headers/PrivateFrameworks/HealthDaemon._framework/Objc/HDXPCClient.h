@@ -6,47 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/NSCopying-Protocol.h>
+@class HDXPCProcess, NSXPCConnection;
 
-@class NSMutableSet, NSString, NSUUID, NSXPCConnection, _HKEntitlements;
-
-@interface HDXPCClient : NSObject <NSCopying>
+@interface HDXPCClient : NSObject
 {
-    NSString *_entitlementsApplicationIdentifier;
-    BOOL _isExtension;
+    HDXPCProcess *_process;
     NSXPCConnection *_connection;
-    _HKEntitlements *_entitlements;
-    NSString *_name;
-    NSString *_processBundleIdentifier;
-    NSString *_containerAppBundleIdentifier;
-    NSUUID *_UUID;
-    NSMutableSet *_droppedEntitlements;
 }
 
-@property (readonly) NSUUID *UUID; // @synthesize UUID=_UUID;
-@property (readonly, copy) NSString *applicationIdentifier;
 @property (readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (readonly, copy) NSString *containerAppBundleIdentifier; // @synthesize containerAppBundleIdentifier=_containerAppBundleIdentifier;
-@property (strong, nonatomic) NSMutableSet *droppedEntitlements; // @synthesize droppedEntitlements=_droppedEntitlements;
-@property (readonly) _HKEntitlements *entitlements; // @synthesize entitlements=_entitlements;
-@property (readonly) BOOL isExtension; // @synthesize isExtension=_isExtension;
-@property (readonly, copy) NSString *name; // @synthesize name=_name;
-@property (readonly, copy) NSString *processBundleIdentifier; // @synthesize processBundleIdentifier=_processBundleIdentifier;
-@property (readonly) int processIdentifier;
+@property (readonly) HDXPCProcess *process; // @synthesize process=_process;
 
 + (id)clientWithConnection:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)_initWithConnection:(id)arg1 entitlements:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_initWithConnection:(id)arg1 process:(id)arg2;
 - (id)description;
-- (void)dropEntitlement:(id)arg1;
-- (BOOL)hasEntitlement:(id)arg1;
-- (BOOL)hasRequiredEntitlement:(id)arg1 error:(id *)arg2;
-- (id)initWithConnection:(id)arg1 entitlements:(id)arg2;
-- (id)initWithEntitlements:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (void)restoreEntitlement:(id)arg1;
-- (id)valueForEntitlement:(id)arg1;
+- (id)initWithConnection:(id)arg1 process:(id)arg2;
+- (id)initWithProcess:(id)arg1;
 
 @end
 

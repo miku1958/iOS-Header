@@ -25,10 +25,8 @@
 @property (strong, nonatomic) NSArray *mainStoreContactIdentifiers; // @synthesize mainStoreContactIdentifiers=_mainStoreContactIdentifiers;
 @property (readonly) Class superclass;
 
-+ (id)_convertSuggestions:(id)arg1 withSortOrder:(long long)arg2 mutableObjects:(BOOL)arg3;
 + (id)os_log;
 - (void).cxx_destruct;
-- (void)_convertContactMatches:(id)arg1 withService:(id)arg2 intoSuggestions:(id)arg3;
 - (id)cn_predicate;
 - (CDUnknownBlockType)cn_resultTransformWithMatchInfos:(id)arg1;
 - (id)contactsFromDonationStore:(id)arg1;
@@ -42,7 +40,6 @@
 - (void)mainStoreDidFetchContacts:(id)arg1 unifiedFetch:(BOOL)arg2;
 - (id)predicateFormat;
 - (id)shortDebugDescription;
-- (id)suggestedContactsWithSortOrder:(long long)arg1 keysToFetch:(id)arg2 mutableObjects:(BOOL)arg3 service:(id)arg4 error:(id *)arg5;
 
 @end
 

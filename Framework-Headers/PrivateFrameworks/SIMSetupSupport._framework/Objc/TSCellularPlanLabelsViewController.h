@@ -11,7 +11,7 @@
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, OBBoldTrayButton, TSCellularPlanLabelPickerViewController, UITableViewCell;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, OBBoldTrayButton, TSCellularPlanLabelPickerTableViewController, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
 @interface TSCellularPlanLabelsViewController : OBTableWelcomeController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
@@ -22,7 +22,7 @@
     NSLayoutConstraint *_heightAnchor;
     UITableViewCell *_sectionFooter;
     NSMutableArray *_sortedPlanItemsWithPendingLabels;
-    TSCellularPlanLabelPickerViewController *_labelPickerViewController;
+    TSCellularPlanLabelPickerTableViewController *_labelPickerViewController;
     NSArray *_planItemBadges;
     NSString *_iccid;
 }
@@ -34,7 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (readonly) NSString *iccid; // @synthesize iccid=_iccid;
-@property (strong) TSCellularPlanLabelPickerViewController *labelPickerViewController; // @synthesize labelPickerViewController=_labelPickerViewController;
+@property (strong) TSCellularPlanLabelPickerTableViewController *labelPickerViewController; // @synthesize labelPickerViewController=_labelPickerViewController;
 @property (strong) NSArray *planItemBadges; // @synthesize planItemBadges=_planItemBadges;
 @property (strong) UITableViewCell *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property (strong) NSMutableArray *sortedPlanItemsWithPendingLabels; // @synthesize sortedPlanItemsWithPendingLabels=_sortedPlanItemsWithPendingLabels;
@@ -57,8 +57,8 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

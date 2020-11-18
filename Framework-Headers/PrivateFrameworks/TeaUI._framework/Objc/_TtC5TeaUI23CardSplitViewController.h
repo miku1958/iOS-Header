@@ -11,6 +11,7 @@
 @interface _TtC5TeaUI23CardSplitViewController : UISplitViewController
 {
     MISSING_TYPE *primaryCardContainerController;
+    MISSING_TYPE *commands;
     MISSING_TYPE *preservedItems;
     MISSING_TYPE *eventManager;
 }
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (void)loadView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
 
@@ -12,7 +12,7 @@
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebCameraReaderPageModel : AMSUIWebModel <AMSUIWebPageProvider>
+@interface AMSUIWebCameraReaderPageModel : NSObject <AMSUIWebPageProvider>
 {
     AMSUIWebNavigationBarModel *_navigationBar;
     NSString *_bottomLinkLabel;

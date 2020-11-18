@@ -32,7 +32,6 @@
 
 - (void).cxx_destruct;
 - (void)_setupCameraRecording:(id)arg1;
-- (void)dismissTextViewController;
 - (id)hu_preloadContent;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 itemTableViewController:(id)arg4 home:(id)arg5;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;

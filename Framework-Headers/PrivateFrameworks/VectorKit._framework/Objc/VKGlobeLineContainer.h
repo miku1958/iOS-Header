@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class VKPolylineOverlay;
 @protocol VKGlobeLineContainerDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -18,8 +17,8 @@ __attribute__((visibility("hidden")))
     set_f5697f57 _persistentOverlays;
     set_f5697f57 _nonPersistentOverlays;
     struct RouteRenderLayer *_routeRenderLayer;
-    struct map<VKPolylineOverlay *, std::__1::weak_ptr<altitude::RouteLineData>, std::__1::less<VKPolylineOverlay *>, std::__1::allocator<std::__1::pair<VKPolylineOverlay *const, std::__1::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
-    VKPolylineOverlay *_selectedPolyline;
+    struct map<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::weak_ptr<altitude::RouteLineData>, std::__1::less<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<std::__1::pair<const geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
+    _retain_ptr_7ea4e41c _selectedPolyline;
     struct VKGlobeRouteSplit *_routeSplit;
 }
 
@@ -29,10 +28,11 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_addOverlay:(id)arg1;
+- (void)_destroyLinesIfNeeded;
 - (void)_recreateLinesIfNeeded;
 - (void)_removeOverlay:(id)arg1;
 - (void)_updateRouteSplit;
-- (void)addLine:(id)arg1;
+- (void)addLine:(_retain_ptr_7ea4e41c)arg1;
 - (void)addNonPersistentOverlay:(id)arg1;
 - (void)addPersistentOverlay:(id)arg1;
 - (void)clearLineSelection;
@@ -45,10 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (const set_f5697f57 *)overlays;
 - (const set_f5697f57 *)persistentOverlays;
-- (void)removeLine:(id)arg1;
+- (void)removeLine:(_retain_ptr_7ea4e41c)arg1;
 - (void)removeNonPersistentOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;
-- (void)setSelected:(id)arg1 selected:(BOOL)arg2;
+- (void)setSelected:(_retain_ptr_7ea4e41c)arg1 selected:(BOOL)arg2;
 - (void)update;
 
 @end

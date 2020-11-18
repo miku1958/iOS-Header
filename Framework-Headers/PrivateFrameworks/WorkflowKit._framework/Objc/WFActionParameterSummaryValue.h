@@ -28,6 +28,7 @@
 - (id)initWithKey:(id)arg1 summaryString:(id)arg2;
 - (id)mapPossibleValuesToKeys:(id)arg1;
 - (BOOL)matchesVisibleParameterKeys:(id)arg1 checkingRequiredValuesInAction:(id)arg2;
+- (id)namedRequiredValuesInAction:(id)arg1;
 
 @end
 

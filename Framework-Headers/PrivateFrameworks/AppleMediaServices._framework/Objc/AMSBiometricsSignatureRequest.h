@@ -7,12 +7,15 @@
 #import <objc/NSObject.h>
 
 @class ACAccount, AMSKeychainOptions, AMSProcessInfo, LAContext, NSDictionary, NSString;
+@protocol AMSBagProtocol;
 
 __attribute__((visibility("hidden")))
 @interface AMSBiometricsSignatureRequest : NSObject
 {
+    BOOL _dualAction;
     struct __SecAccessControl *_localAuthAccessControlRef;
     ACAccount *_account;
+    id<AMSBagProtocol> _bag;
     NSString *_challenge;
     AMSProcessInfo *_clientInfo;
     AMSKeychainOptions *_keychainOptions;
@@ -21,8 +24,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (readonly, copy, nonatomic) NSString *challenge; // @synthesize challenge=_challenge;
 @property (readonly, copy, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property (nonatomic, getter=isDualAction) BOOL dualAction; // @synthesize dualAction=_dualAction;
 @property (readonly, nonatomic) AMSKeychainOptions *keychainOptions; // @synthesize keychainOptions=_keychainOptions;
 @property (readonly, nonatomic) struct __SecAccessControl *localAuthAccessControlRef; // @synthesize localAuthAccessControlRef=_localAuthAccessControlRef;
 @property (readonly, nonatomic) LAContext *localAuthContext; // @synthesize localAuthContext=_localAuthContext;

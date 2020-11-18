@@ -9,13 +9,9 @@
 @interface NSUserDefaults (Workflow)
 + (id)siriAssistantUserDefaults;
 + (id)systemShortcutsUserDefaults;
++ (BOOL)useNewLayout;
 + (id)workflowUserDefaults;
 - (void)setWorkflowIdentifier:(id)arg1 forToken:(id)arg2;
-- (BOOL)wf_isCurrentDeviceModelDisabledInSiri;
-- (BOOL)wf_isDeviceIdiomDisabledInSiri:(long long)arg1;
-- (id)wf_keyForDisablingDeviceIdiom:(long long)arg1;
-- (void)wf_registerDefaultDisabledDevices;
-- (BOOL)wf_voiceParametersDisabled;
 - (id)workflowIdentifierConsumingSingleUseToken:(id)arg1;
 @end
 

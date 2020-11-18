@@ -6,9 +6,12 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUSliderValueTableViewCell;
+@class HFItem, HUSliderValueTableViewCell, NSString;
 
 @protocol HUSliderValueTableViewCellDelegate <NSObject>
 - (void)sliderValueTableViewCell:(HUSliderValueTableViewCell *)arg1 didChangeValue:(double)arg2;
+
+@optional
+- (NSString *)valueDescriptionForItem:(HFItem *)arg1 value:(double)arg2;
 @end
 

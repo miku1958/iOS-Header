@@ -6,13 +6,14 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEODirectionIntent, GEOMapItemIdentifier, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 @protocol GEOCompletionItem <NSObject>
 
 @property (readonly, nonatomic) long long autocompleteCellType;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolved;
+@property (readonly, nonatomic) GEOCollectionResult *collectionResult;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
 @property (readonly, nonatomic) float disambiguationRadiusMeters;
 @property (readonly, nonatomic) NSArray *displayLines;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSData *metadata;
 @property (readonly, nonatomic) int placeType;
+@property (readonly, nonatomic) GEOPublisherResult *publisherResult;
 @property (readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;

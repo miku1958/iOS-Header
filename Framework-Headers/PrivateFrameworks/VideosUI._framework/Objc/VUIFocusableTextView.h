@@ -6,12 +6,12 @@
 
 #import <TVMLKit/TVFocusableTextView.h>
 
-#import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 
-@class VUILabel, VUITextLayout;
+@class NSString, VUILabel, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIFocusableTextView : TVFocusableTextView <VUILabelTopMarginCalculationProtocol>
+@interface VUIFocusableTextView : TVFocusableTextView <VUILabelBaselineProtocol>
 {
     VUILabel *_computationLabel;
     VUITextLayout *_textLayout;
@@ -19,6 +19,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) VUILabel *computationLabel; // @synthesize computationLabel=_computationLabel;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property (strong, nonatomic) VUITextLayout *titleTextLayout; // @synthesize titleTextLayout=_titleTextLayout;
 
@@ -28,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)textViewWithString:(id)arg1 textLayout:(id)arg2 titleString:(id)arg3 titleLayout:(id)arg4 existingTextView:(id)arg5;
 - (void).cxx_destruct;
 - (void)_updateTextColor;
+- (double)baselineOffsetFromBottom;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;

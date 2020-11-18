@@ -9,11 +9,13 @@
 @interface CKTranscriptCollectionView : CKEditableCollectionView
 {
     BOOL _ignoresContentOffsetChanges;
+    BOOL _ignoresReloadDataRequests;
     BOOL _dynamicsDisabled;
 }
 
 @property (nonatomic) BOOL dynamicsDisabled; // @synthesize dynamicsDisabled=_dynamicsDisabled;
 @property (nonatomic) BOOL ignoresContentOffsetChanges; // @synthesize ignoresContentOffsetChanges=_ignoresContentOffsetChanges;
+@property (nonatomic) BOOL ignoresReloadDataRequests; // @synthesize ignoresReloadDataRequests=_ignoresReloadDataRequests;
 
 - (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;

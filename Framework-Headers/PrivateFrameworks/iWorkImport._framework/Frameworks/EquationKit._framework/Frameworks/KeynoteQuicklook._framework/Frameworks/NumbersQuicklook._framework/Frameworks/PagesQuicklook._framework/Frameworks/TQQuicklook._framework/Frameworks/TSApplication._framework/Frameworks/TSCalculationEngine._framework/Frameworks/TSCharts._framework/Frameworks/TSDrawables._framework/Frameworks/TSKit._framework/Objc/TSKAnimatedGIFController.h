@@ -9,36 +9,39 @@
 #import <TSKit/TSKLayerMediaPlayerController-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString;
-@protocol TSKMediaPlayerControllerDelegate;
+@protocol OS_dispatch_source, TSKMediaPlayerControllerDelegate;
 
 @interface TSKAnimatedGIFController : NSObject <TSKLayerMediaPlayerController>
 {
-    id<TSKMediaPlayerControllerDelegate> mDelegate;
-    struct CGImageSource *mSource;
-    NSArray *mFrames;
-    NSMutableSet *mLayers;
-    BOOL mPlaying;
-    double mLastDisplayUpdateTime;
-    double mAbsoluteCurrentTime;
-    float mRate;
-    float mRateBeforeScrubbing;
-    unsigned long long mScrubbingCount;
-    double mStartTime;
-    double mEndTime;
-    float mVolume;
-    long long mRepeatMode;
-    NSMutableSet *mObservationTokens;
-    BOOL fastReversing;
-    BOOL fastForwarding;
+    id<TSKMediaPlayerControllerDelegate> _delegate;
+    struct CGImageSource *_imageSource;
+    NSArray *_frames;
+    NSMutableSet *_layers;
+    float _rateBeforeScrubbing;
+    unsigned long long _scrubbingCount;
+    struct os_unfair_lock_s _timebaseLock;
+    struct OpaqueCMTimebase *_timebase;
+    NSObject<OS_dispatch_source> *_timebaseTimerSource;
+    CDStruct_1b6d18a9 _timebaseStartTime;
+    CDStruct_1b6d18a9 _timebaseEndTime;
+    long long _timebaseRepeatMode;
+    NSMutableSet *_observationTokens;
+    BOOL _playing;
+    BOOL _fastForwarding;
+    BOOL _fastReversing;
+    float _volume;
+    double _startTime;
+    double _endTime;
+    long long _repeatMode;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGImage *imageForCurrentTime;
-@property (nonatomic) double lastDisplayUpdateTime; // @synthesize lastDisplayUpdateTime=mLastDisplayUpdateTime;
 @property (readonly) Class superclass;
 
++ (BOOL)canInitWithDataType:(id)arg1;
 - (void).cxx_destruct;
 - (double)absoluteCurrentTime;
 - (double)absoluteDuration;
@@ -56,8 +59,9 @@
 - (double)duration;
 - (void)endScrubbing;
 - (double)endTime;
+- (BOOL)hasCurrentTime;
+- (BOOL)hasNewImageForTime:(double)arg1 sinceTime:(double)arg2;
 - (struct CGImage *)imageForTime:(double)arg1;
-- (id)init;
 - (id)initWithData:(id)arg1 delegate:(id)arg2;
 - (id)initWithImageSource:(struct CGImageSource *)arg1 delegate:(id)arg2;
 - (BOOL)isFastForwarding;
@@ -65,9 +69,14 @@
 - (BOOL)isPlaying;
 - (BOOL)isScrubbing;
 - (id)newLayer;
-- (void)p_prepareFrameTimes;
+- (id)p_frameAtTime:(double)arg1 fromIndex:(unsigned long long)arg2 frameIndex:(out unsigned long long *)arg3;
+- (void)p_prepareFrames;
 - (void)p_setAbsoluteCurrentTime:(double)arg1;
+- (void)p_setRate:(float)arg1;
+- (void)p_timebaseTimeDidChangeToStartOrEndTime;
+- (CDStruct_1b6d18a9)p_timebaseTimeForHostTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 updatedRate:(out double *)arg3 anchorTime:(out CDStruct_1b6d18a9 *)arg4;
 - (void)p_updateLayers;
+- (void)p_updateTimebaseTimerSourceNextFireTime;
 - (float)rate;
 - (double)remainingTime;
 - (void)removeLayer:(id)arg1;
@@ -88,9 +97,11 @@
 - (void)setRepeatMode:(long long)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setVolume:(float)arg1;
+- (void)setVolume:(float)arg1 rampDuration:(double)arg2;
 - (double)startTime;
 - (void)stopSynchronously;
 - (void)teardown;
+- (double)timeForHostTime:(double)arg1;
 - (float)volume;
 
 @end

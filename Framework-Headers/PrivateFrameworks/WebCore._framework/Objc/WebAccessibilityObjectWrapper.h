@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_accessibilityActivate;
 - (id)_accessibilityArticleAncestor;
 - (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
+- (id)_accessibilityDescriptionListAncestor;
 - (id)_accessibilityFieldsetAncestor;
 - (id)_accessibilityFrameAncestor;
 - (BOOL)_accessibilityHasTouchEventListener;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)_accessibilityPath;
 - (id)_accessibilityPreviousElementsWithCount:(unsigned int)arg1;
 - (struct CGRect)_accessibilityRelativeFrame;
+- (id)_accessibilityResolvedEditingStyles;
 - (struct CGPoint)_accessibilityScrollPosition;
 - (struct CGSize)_accessibilityScrollSize;
 - (BOOL)_accessibilityScrollToVisible;
@@ -72,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axUpdatesFrequentlyTrait;
 - (unsigned long long)_axVisitedTrait;
 - (unsigned long long)_axWebContentTrait;
-- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
+- (Optional_b9c62d53)_convertToDOMRange:(struct _NSRange)arg1;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (BOOL)_prepareAccessibilityCall;
 - (id)_stringForRange:(struct _NSRange)arg1 attributed:(BOOL)arg2;
@@ -96,7 +98,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)accessibilityColumnRange;
 - (id)accessibilityContainer;
 - (id)accessibilityDatetimeValue;
-- (void)accessibilityDecreaseSelection:(int)arg1;
+- (void)accessibilityDecreaseSelection:(unsigned char)arg1;
 - (void)accessibilityDecrement;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
@@ -112,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityHint;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityIdentifier;
-- (void)accessibilityIncreaseSelection:(int)arg1;
+- (void)accessibilityIncreaseSelection:(unsigned char)arg1;
 - (void)accessibilityIncrement;
 - (BOOL)accessibilityInsertText:(id)arg1;
 - (id)accessibilityInvalidStatus;
@@ -120,6 +122,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilityIsComboBox;
 - (BOOL)accessibilityIsDialog;
 - (BOOL)accessibilityIsExpanded;
+- (BOOL)accessibilityIsInDescriptionListDefinition;
+- (BOOL)accessibilityIsInDescriptionListTerm;
+- (BOOL)accessibilityIsIndeterminate;
 - (BOOL)accessibilityIsMathTopObject;
 - (BOOL)accessibilityIsMediaMuted;
 - (BOOL)accessibilityIsMediaPlaying;
@@ -145,9 +150,10 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityMathSuperscriptObject;
 - (id)accessibilityMathType;
 - (id)accessibilityMathUnderObject;
-- (void)accessibilityModifySelection:(int)arg1 increase:(BOOL)arg2;
+- (void)accessibilityModifySelection:(unsigned char)arg1 increase:(BOOL)arg2;
 - (void)accessibilityMoveSelectionToMarker:(id)arg1;
 - (id)accessibilityObjectForTextMarker:(id)arg1;
+- (BOOL)accessibilityPerformEscape;
 - (id)accessibilityPlaceholderValue;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (id)accessibilityPlatformMathSuperscriptKey;
@@ -213,9 +219,8 @@ __attribute__((visibility("hidden")))
 - (void)postValueChangedNotification;
 - (id)previousMarkerForCharacterOffset:(struct CharacterOffset *)arg1;
 - (id)previousMarkerForMarker:(id)arg1;
-- (RefPtr_033e7b31)rangeForTextMarkers:(id)arg1;
-- (RefPtr_033e7b31)rangeFromMarkers:(id)arg1 withText:(id)arg2;
-- (id)rectsForSelectionRects:(const Vector_be121512 *)arg1;
+- (Optional_b9c62d53)rangeForTextMarkers:(id)arg1;
+- (Optional_b9c62d53)rangeFromMarkers:(id)arg1 withText:(id)arg2;
 - (id)selectedTextMarker;
 - (id)selectionRangeString;
 - (id)startOrEndTextMarkerForTextMarkers:(id)arg1 isStart:(BOOL)arg2;
@@ -230,7 +235,7 @@ __attribute__((visibility("hidden")))
 - (id)textMarkerRangeForMarkers:(id)arg1;
 - (id)textMarkerRangeForSelection;
 - (id)textMarkerRangeFromMarkers:(id)arg1 withText:(id)arg2;
-- (id)textMarkersForRange:(RefPtr_033e7b31)arg1;
+- (id)textMarkersForRange:(const Optional_b9c62d53 *)arg1;
 - (id)textRectsFromMarkers:(id)arg1 withText:(id)arg2;
 - (struct AXCoreObject *)treeItemParentForObject:(struct AXCoreObject *)arg1;
 

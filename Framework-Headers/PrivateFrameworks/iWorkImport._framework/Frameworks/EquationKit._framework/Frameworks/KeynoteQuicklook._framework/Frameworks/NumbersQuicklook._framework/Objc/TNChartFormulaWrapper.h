@@ -17,9 +17,9 @@
     NSArray *_cachedPlotwiseLabels;
     BOOL _cachedSkipHiddenData;
     BOOL _cachedLabelsByRow;
+    BOOL _cachedChromeCoordsRealized;
 }
 
-@property (readonly) struct TSCEFormula *formula;
 @property (readonly, strong, nonatomic) TSCEFormulaObject *formulaObject;
 
 + (id)chartFormulaForCellReference:(struct TSCECellRef)arg1;
@@ -28,8 +28,7 @@
 + (id)chartFormulaForString:(id)arg1;
 + (id)chartFormulaForTractAsRangeReferences:(id)arg1;
 + (id)chartFormulaForTractReference:(id)arg1;
-+ (id)chartFormulaWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;
-+ (id)chartFormulaWithTSCEFormulaObject:(id)arg1;
++ (id)chartFormulaWithFormulaObject:(id)arg1;
 + (id)emptyChartFormula;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -43,13 +42,13 @@
 - (id)formulaByTrimmingCategoryLabels:(unsigned long long)arg1 plotByRow:(BOOL)arg2 calcEngine:(id)arg3 inChart:(UUIDData_5fbc143e *)arg4;
 - (BOOL)formulaIsEqualTo:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;
-- (id)initWithTSCEFormulaObject:(id)arg1;
+- (id)initWithFormulaObject:(id)arg1;
 - (BOOL)isAllStaticValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)numberOfTotalPlotwiseLabelValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2 byRow:(BOOL)arg3 shouldSkipHiddenData:(BOOL)arg4;
 - (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
 - (id)outputValue:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(BOOL)arg2;
+- (id)outputValue:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(BOOL)arg2 requiresChromeCoords:(BOOL)arg3;
 - (vector_06892659)outputVectorValuesWithChromeCoords:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(BOOL)arg2;
 - (id)plotwiseLabelValuesWithEvaluationContext:(struct TSCEEvaluationContext *)arg1 byRow:(BOOL)arg2 shouldSkipHiddenData:(BOOL)arg3;
 - (struct TSCERangeRef)rangeCircumscribingPrecedentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;

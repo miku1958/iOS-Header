@@ -12,6 +12,27 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGPoint {
+    double _field1;
+    double _field2;
+};
+
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
+struct HMDWatchConnectivityLogEventManagerSnapshot {
+    BOOL _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+};
+
 struct _HMFRate {
     unsigned long long value;
     double period;
@@ -27,6 +48,70 @@ struct in6_addr {
 
 struct in_addr {
     unsigned int s_addr;
+};
+
+struct jetsam_snapshot {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    struct memorystatus_kernel_stats _field4;
+    unsigned long long _field5;
+    struct jetsam_snapshot_entry _field6[0];
+};
+
+struct jetsam_snapshot_entry {
+    int _field1;
+    char _field2[33];
+    int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned char _field6[16];
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned long long _field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
+    unsigned long long _field13;
+    unsigned long long _field14;
+    unsigned long long _field15;
+    unsigned long long _field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    unsigned long long _field19;
+    unsigned long long _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
+    unsigned long long _field24;
+    unsigned long long _field25;
+    struct timeval64 _field26;
+    unsigned long long _field27;
+    unsigned long long _field28;
+};
+
+struct memorystatus_kernel_stats {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
+    unsigned long long _field13;
+    unsigned long long _field14;
+    unsigned long long _field15;
+    unsigned long long _field16;
+    char _field17[80];
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct sockaddr {
@@ -52,6 +137,11 @@ struct sockaddr_in6 {
     unsigned int sin6_scope_id;
 };
 
+struct timeval64 {
+    long long _field1;
+    long long _field2;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -60,6 +150,10 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 
 // Ambiguous groups
 typedef struct {

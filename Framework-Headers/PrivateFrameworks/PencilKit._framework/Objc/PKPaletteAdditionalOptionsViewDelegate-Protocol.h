@@ -5,13 +5,14 @@
 //
 
 #import <PencilKit/NSObject-Protocol.h>
-#import <PencilKit/PKPaletteShapesViewControllerDelegate-Protocol.h>
-#import <PencilKit/PKPaletteTextOptionsViewControllerDelegate-Protocol.h>
 
 @class PKPaletteAdditionalOptionsView;
 
-@protocol PKPaletteAdditionalOptionsViewDelegate <NSObject, PKPaletteShapesViewControllerDelegate, PKPaletteTextOptionsViewControllerDelegate>
+@protocol PKPaletteAdditionalOptionsViewDelegate <NSObject>
 - (void)additionalOptionsView:(PKPaletteAdditionalOptionsView *)arg1 didToggleAutoHideOption:(BOOL)arg2;
+- (void)additionalOptionsViewDidPressKeyboardButton:(PKPaletteAdditionalOptionsView *)arg1;
+- (void)additionalOptionsViewDidPressReturnKeyButton:(PKPaletteAdditionalOptionsView *)arg1;
+- (void)additionalOptionsViewDidPressTapToRadarButton:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsViewDidSelectPlusButton:(PKPaletteAdditionalOptionsView *)arg1;
 @end
 

@@ -20,7 +20,10 @@
 - (id)_axBarButtonImagePath;
 - (void)_axRememberTargetter:(id)arg1;
 - (void)_setAXBarButtonImagePath:(id)arg1;
+- (void)_setAccessibilityHintBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityIsNotFirstElement:(BOOL)arg1;
+- (void)_setAccessibilityLabelBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityValueBlock:(CDUnknownBlockType)arg1;
 - (void)_updateAccessibilityLabelForImage:(id)arg1;
 - (id)accessibilityLabel;
 - (id)accessibilityLocalizationBundleID;

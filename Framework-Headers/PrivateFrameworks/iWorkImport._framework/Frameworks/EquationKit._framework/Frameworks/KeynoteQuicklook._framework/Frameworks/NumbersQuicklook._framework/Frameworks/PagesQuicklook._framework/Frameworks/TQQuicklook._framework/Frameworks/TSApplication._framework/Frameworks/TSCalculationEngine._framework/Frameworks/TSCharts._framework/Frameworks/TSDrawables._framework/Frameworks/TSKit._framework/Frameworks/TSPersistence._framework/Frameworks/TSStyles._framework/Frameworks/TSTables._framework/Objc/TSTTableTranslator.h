@@ -83,6 +83,7 @@
 - (struct TSUViewCellRect)cellRangeForTableArea:(unsigned long long)arg1;
 - (BOOL)cellStyle:(id)arg1 isEqualToDefaultCellStyleForCellID:(struct TSUViewCellCoord)arg2;
 - (id)cellStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)cellStyleAtCellUID:(const struct TSTCellUID *)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleForCellWithEmptyStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfColumnAtIndex:(struct TSUViewColumnIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfRowAtIndex:(struct TSUViewRowIndex)arg1 isDefault:(out BOOL *)arg2;
@@ -90,6 +91,7 @@
 - (struct TSTCellUID)cellUIDforBaseCellCoord:(const struct TSUModelCellCoord *)arg1;
 - (id)cellValueFromCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2;
 - (int)cellValueTypeAtCellID:(struct TSUViewCellCoord)arg1;
+- (int)cellValueTypeAtCellUID:(const struct TSTCellUID *)arg1;
 - (id)characterFillAtCellID:(struct TSUViewCellCoord)arg1 optionalCell:(id)arg2;
 - (BOOL)checkMapsAndAssert:(BOOL)arg1;
 - (struct TSUChromeCellCoord)chromeCellCoordForBaseCellCoord:(struct TSUModelCellCoord)arg1;
@@ -123,10 +125,11 @@
 - (struct TSUViewCellRect)expandCellRangeToCoverMergedCells:(struct TSUViewCellRect)arg1;
 - (id)expandCellRegionToCoverMergedCells:(id)arg1;
 - (void)forceGroupingChangeReset;
-- (struct TSCEFormula *)formulaAtCellID:(struct TSUViewCellCoord)arg1;
+- (id)formulaAtCellID:(struct TSUViewCellCoord)arg1;
 - (int)getCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2;
 - (int)getCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2 suppressCellBorder:(BOOL)arg3;
 - (int)getCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2;
+- (int)getCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 suppressCellBorder:(BOOL)arg3;
 - (int)getDefaultCell:(out id)arg1 forCellID:(struct TSUViewCellCoord)arg2;
 - (int)getDefaultCell:(out id)arg1 forCellUID:(const struct TSTCellUID *)arg2;
 - (int)getDefaultCell:(out id)arg1 forTableStyleArea:(unsigned long long)arg2;
@@ -181,6 +184,7 @@
 - (UUIDData_5fbc143e)rowUIDForViewRowIndex:(const struct TSUViewRowIndex *)arg1;
 - (vector_4dc5f307)rowUIDsForBaseRowIndexes:(id)arg1;
 - (int)setCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 ignoreFormula:(BOOL)arg3 clearImportWarnings:(BOOL)arg4;
+- (int)setCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 ignoreFormula:(BOOL)arg3 clearImportWarnings:(BOOL)arg4 formulaReplacer:(id)arg5;
 - (int)setCellStyle:(id)arg1 ofColumnAtUID:(const UUIDData_5fbc143e *)arg2;
 - (int)setCellStyle:(id)arg1 ofRowAtUID:(const UUIDData_5fbc143e *)arg2;
 - (int)setCellsWithCellMap:(id)arg1 ignoreFormulas:(BOOL)arg2 skipDirtyingNonFormulaCells:(BOOL)arg3;
@@ -204,6 +208,7 @@
 - (void)teardown;
 - (BOOL)textStyle:(id)arg1 isEqualToDefaultTextStyleForCellID:(struct TSUViewCellCoord)arg2;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)textStyleAtCellUID:(const struct TSTCellUID *)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleForCellWithEmptyStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfColumnAtIndex:(struct TSUViewColumnIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfRowAtIndex:(struct TSUViewRowIndex)arg1 isDefault:(out BOOL *)arg2;

@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccountHandle, NSString, NSUUID, _HMDDeviceHandle;
+@class HMDAccountHandle, NSData, NSString, NSUUID, _HMDDeviceHandle;
 
 @interface HMDDeviceHandle : HMFObject <NSCopying, NSSecureCoding>
 {
@@ -22,6 +22,7 @@
 @property (readonly, copy) NSUUID *identifier;
 @property (readonly, copy) _HMDDeviceHandle *internal; // @synthesize internal=_internal;
 @property (readonly, getter=isLocal) BOOL local;
+@property (readonly, copy) NSData *pushToken;
 
 + (id)deviceHandleForDestination:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -34,6 +35,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInternal:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)matchesPushToken:(id)arg1;
 - (id)shortDescription;
 
 @end

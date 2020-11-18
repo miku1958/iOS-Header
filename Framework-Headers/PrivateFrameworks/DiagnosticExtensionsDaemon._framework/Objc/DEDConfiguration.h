@@ -20,20 +20,12 @@
 - (id)classClusterAPIVersion;
 - (unsigned long long)connectionType;
 - (id)dedDirectory;
-- (id)deviceClass;
-- (id)deviceColor;
-- (id)deviceEnclosureColor;
-- (id)deviceModel;
-- (id)deviceName;
-- (id)deviceProductType;
 - (id)errorDomain;
 - (id)identifier;
 - (void)invalidateTestListeners;
 - (const char *)loggingSubsystem;
 - (id)machServiceName;
-- (id)platform;
 - (id)sharedAnonymousListener;
-- (id)uniqueDeviceSpecifier;
 
 @end
 

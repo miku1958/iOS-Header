@@ -6,18 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@interface PhotosAnalyticsSystemPropertyProvider : NSObject
+#import <CPAnalytics/CPAnalyticsDynamicPropertyProvider-Protocol.h>
+
+@class NSString;
+
+@interface PhotosAnalyticsSystemPropertyProvider : NSObject <CPAnalyticsDynamicPropertyProvider>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id)_deviceFreeSpaceDescription;
 - (id)_deviceModel;
-- (id)_fetchLibrarySummary;
-- (id)_librarySizeRange:(long long)arg1;
+- (id)_lowPowerModeEnabled;
 - (id)_osVersion;
 - (id)_percentageOfFreeSpaceOnDevice;
 - (id)_process;
-- (void)_registerLibrarySummary:(id)arg1;
+- (id)getDynamicProperty:(id)arg1 forEventName:(id)arg2 payloadForSystemPropertyExtraction:(id)arg3;
 - (void)registerSystemProperties:(id)arg1;
 
 @end

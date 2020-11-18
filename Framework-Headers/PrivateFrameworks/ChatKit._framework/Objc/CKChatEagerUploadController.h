@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_newTransferForURL:(id)arg1 transcoderUserInfo:(id)arg2 attributionInfo:(id)arg3;
-- (void)_uploadFileURL:(id)arg1 filename:(id)arg2 transcoderUserInfo:(id)arg3 videoComplementURL:(id)arg4 attributionInfo:(id)arg5 identifier:(id)arg6;
+- (void)_uploadFileURL:(id)arg1 filename:(id)arg2 transcoderUserInfo:(id)arg3 videoComplementURL:(id)arg4 attributionInfo:(id)arg5 identifier:(id)arg6 recipients:(id)arg7;
 - (void)addURLToIdentifierMap:(id)arg1 forIdentifier:(id)arg2;
 - (void)asyncCopyFileAtURL:(id)arg1 toDestinationURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cancelAll;
@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)didSendComposition;
 - (id)init;
 - (void)removeTemporaryURLForURL:(id)arg1;
-- (void)uploadFileURL:(id)arg1 filename:(id)arg2 transcoderUserInfo:(id)arg3 videoComplementURL:(id)arg4 attributionInfo:(id)arg5 identifier:(id)arg6;
-- (void)uploadPayload:(id)arg1 identifier:(id)arg2 replace:(BOOL)arg3;
+- (void)uploadFileURL:(id)arg1 filename:(id)arg2 transcoderUserInfo:(id)arg3 videoComplementURL:(id)arg4 attributionInfo:(id)arg5 identifier:(id)arg6 recipients:(id)arg7;
+- (void)uploadPayload:(id)arg1 identifier:(id)arg2 replace:(BOOL)arg3 recipients:(id)arg4;
 
 @end
 

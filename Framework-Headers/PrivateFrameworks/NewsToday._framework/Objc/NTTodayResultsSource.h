@@ -33,10 +33,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fetchLatestResultsWithOperationInfo:(id)arg1 prefetchedContent:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchTodayModuleDescriptorsWithContentRequests:(id)arg1 requireRefreshedAppConfig:(BOOL)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithFetchDescriptor:(id)arg1 privateDataStorage:(id)arg2 contentContext:(id)arg3 fetchQueue:(id)arg4;
+- (id)placeholderResultsWithOperationInfo:(id)arg1;
 
 @end
 

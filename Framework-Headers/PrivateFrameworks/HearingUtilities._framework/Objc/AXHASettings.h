@@ -12,6 +12,10 @@
 @interface AXHASettings : NSObject
 {
     ACAccountStore *_accountStore;
+    int _contentProtectionNotifyToken;
+    BOOL _finishediCloudSetup;
+    struct os_unfair_lock_s _syncLock;
+    NSMutableDictionary *_soundDetectionSnoozeDictionary;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
@@ -21,17 +25,23 @@
 @property (nonatomic) BOOL allowHearingAidControlOnLockScreen;
 @property (nonatomic) long long callAudioRoute;
 @property (nonatomic) long long complicationPreferredDisplayMode;
-@property (strong, nonatomic) NSArray *detectableUltronTypes;
+@property (strong, nonatomic) NSArray *enabledSoundDetectionTypes;
 @property (nonatomic) BOOL exportsLiveListenToFile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *icloudInitializationQueue; // @synthesize icloudInitializationQueue=_icloudInitializationQueue;
 @property (nonatomic) BOOL independentHearingAidSettings;
+@property (strong, nonatomic) NSDictionary *knownPeripheralUUIDs;
 @property (nonatomic) long long mediaAudioRoute;
 @property (nonatomic) BOOL multideviceAudioEnabled;
 @property (nonatomic) BOOL multideviceSettingsEnabled;
 @property (strong, nonatomic) NSDictionary *pairedHearingAids;
 @property (strong, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
+@property (nonatomic) BOOL shouldStreamSystemSounds;
 @property (nonatomic) BOOL shouldStreamToLeftAid;
 @property (nonatomic) BOOL shouldStreamToRightAid;
+@property (readonly, nonatomic) BOOL soundDetectionEnabled;
+@property (strong, nonatomic) NSMutableDictionary *soundDetectionSnoozeDictionary; // @synthesize soundDetectionSnoozeDictionary=_soundDetectionSnoozeDictionary;
+@property (nonatomic) int soundDetectionState;
+@property (readonly, nonatomic) NSArray *supportedSoundDetectionTypes;
 @property (strong, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
 @property (nonatomic) BOOL ultronIsRunning;
 @property (nonatomic) BOOL ultronSupportEnabled;
@@ -40,6 +50,7 @@
 
 + (void)initialize;
 + (id)sharedInstance;
++ (id)stringForSoundDetectionState:(int)arg1;
 - (void).cxx_destruct;
 - (void)_handlePreferenceChanged:(id)arg1;
 - (void)_initializeICloudSetup;
@@ -51,6 +62,8 @@
 - (void)_updateTripleClickOptionsForPairedAids:(id)arg1;
 - (id)_valueForPreferenceKey:(id)arg1;
 - (void)addDeviceIDToCloudBlacklist:(id)arg1;
+- (void)addSnoozeDateToSnoozeDictionary:(id)arg1 forKey:(id)arg2;
+- (void)addSoundDetectionType:(id)arg1;
 - (id)convertPersistentRepresentation:(id)arg1 fromVersion:(float)arg2 toVersion:(float)arg3;
 - (void)dealloc;
 - (id)deviceIDForPairingInformation:(id)arg1;
@@ -64,8 +77,11 @@
 - (BOOL)isiCloudPaired;
 - (void)pushLocalHearingAidsToiCloud;
 - (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;
+- (void)removeAllSoundDetectionTypes;
 - (void)removeDeviceIDFromCloudBlacklist:(id)arg1;
+- (void)removeSoundDetectionType:(id)arg1;
 - (void)setLocalHearingAidsFromiCloud:(id)arg1;
+- (void)setSupportedSoundDetectionTypes:(id)arg1;
 - (BOOL)shouldPushLocalAidsToiCloud;
 - (BOOL)shouldUseiCloud;
 

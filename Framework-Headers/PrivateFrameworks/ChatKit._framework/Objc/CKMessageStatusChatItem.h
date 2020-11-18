@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) struct CGSize labelSize; // @synthesize labelSize=_labelSize;
 @property (nonatomic, getter=isLabelSizeLoaded) BOOL labelSizeLoaded; // @synthesize labelSizeLoaded=_labelSizeLoaded;
 @property (readonly, nonatomic) struct UIEdgeInsets labelTextAlignmentInsets; // @synthesize labelTextAlignmentInsets=_labelTextAlignmentInsets;
+@property (readonly, nonatomic) BOOL shouldHideDuringDarkFSM;
 @property (readonly, nonatomic) BOOL statusAlignment;
 @property (copy, nonatomic) NSAttributedString *transcriptButtonText; // @synthesize transcriptButtonText=_transcriptButtonText;
 
@@ -41,6 +42,8 @@
 - (id)effectsControlStatusTextForEffectStyleID:(id)arg1;
 - (long long)expireStatusType;
 - (BOOL)isFromMe;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 - (struct CGSize)loadButtonSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (struct CGSize)loadLabelSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;

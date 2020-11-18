@@ -16,13 +16,11 @@
     NSLayoutConstraint *_inputViewHeightConstraint;
     NSLayoutConstraint *_promptTextToProgressIndicatorTopConstraint;
     NSLayoutConstraint *_signInFormToSignInLabelTopConstraint;
-    NSLayoutConstraint *_privacyLinkToSignInFormTopConstraint;
     NSLayoutConstraint *_signInInputViewHeightConstraint;
 }
 
 @property (strong, nonatomic) NSLayoutConstraint *bottomToSignInBaselineConstraint; // @synthesize bottomToSignInBaselineConstraint=_bottomToSignInBaselineConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *inputViewHeightConstraint; // @synthesize inputViewHeightConstraint=_inputViewHeightConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *privacyLinkToSignInFormTopConstraint; // @synthesize privacyLinkToSignInFormTopConstraint=_privacyLinkToSignInFormTopConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *promptTextToProgressIndicatorTopConstraint; // @synthesize promptTextToProgressIndicatorTopConstraint=_promptTextToProgressIndicatorTopConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *signInBaselineToPromptTextTopConstraint; // @synthesize signInBaselineToPromptTextTopConstraint=_signInBaselineToPromptTextTopConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *signInFormToSignInLabelTopConstraint; // @synthesize signInFormToSignInLabelTopConstraint=_signInFormToSignInLabelTopConstraint;

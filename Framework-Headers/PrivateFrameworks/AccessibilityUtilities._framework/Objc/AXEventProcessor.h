@@ -21,6 +21,7 @@
     NSThread *_HIDEventReceiveThread;
     CDUnknownBlockType _HIDEventHandler;
     unsigned long long _HIDEventFilterMask;
+    CDUnknownBlockType _failedToHandleEventInTime;
     NSString *_systemEventTapIdentifier;
     CDUnknownBlockType _systemEventHandler;
     NSMutableArray *_hidActualEventTapEnabledReasons;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) NSThread *HIDEventReceiveThread; // @synthesize HIDEventReceiveThread=_HIDEventReceiveThread;
 @property (strong, nonatomic) NSString *HIDEventTapIdentifier; // @synthesize HIDEventTapIdentifier=_HIDEventTapIdentifier;
 @property (nonatomic) int HIDEventTapPriority; // @synthesize HIDEventTapPriority=_HIDEventTapPriority;
+@property (copy, nonatomic) CDUnknownBlockType failedToHandleEventInTime; // @synthesize failedToHandleEventInTime=_failedToHandleEventInTime;
 @property (nonatomic, getter=isHandlingHIDEvents) BOOL handlingHIDEvents; // @synthesize handlingHIDEvents=_handlingHIDEvents;
 @property (nonatomic, getter=isHandlingSystemEvents) BOOL handlingSystemEvents; // @synthesize handlingSystemEvents=_handlingSystemEvents;
 @property (strong, nonatomic) NSMutableArray *hidActualEventTapEnabledReasons; // @synthesize hidActualEventTapEnabledReasons=_hidActualEventTapEnabledReasons;

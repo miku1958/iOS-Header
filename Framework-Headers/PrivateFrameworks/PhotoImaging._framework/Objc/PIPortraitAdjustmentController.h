@@ -23,6 +23,7 @@
 + (id)strengthKey;
 - (BOOL)canRenderPortraitEffect;
 - (id)initWithAdjustment:(id)arg1;
+- (BOOL)isSettingEqual:(id)arg1 forKey:(id)arg2;
 
 @end
 

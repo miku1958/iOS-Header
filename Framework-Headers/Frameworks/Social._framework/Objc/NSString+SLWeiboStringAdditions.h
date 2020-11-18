@@ -7,12 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SLWeiboStringAdditions)
-- (unsigned long long)SLTencentWeiboCharacterCountWithShortenedURLLength:(unsigned long long)arg1;
 - (unsigned long long)SLTwitterCharacterCountWithShortenedURLLength:(unsigned long long)arg1;
 - (unsigned long long)SLWeiboCharacterCountWithShortenedURLLength:(unsigned long long)arg1;
 - (id)_SHA256String;
 - (BOOL)hasCaseInsensitiveSuffix:(id)arg1;
-- (BOOL)isTencentWeiboDuplicatePostError;
 - (BOOL)isTwitterDuplicatePostError;
 - (BOOL)isWeiboDuplicatePostError;
 - (id)sl_urlEncodedSHA256;

@@ -6,9 +6,9 @@
 
 #import <SpringBoard/SBApplicationSceneIdentityProviding-Protocol.h>
 
-@class FBSSceneIdentity, SBApplication, SBApplicationSceneHandle;
+@class SBApplicationSceneHandle, SBApplicationSceneHandleRequest;
 
 @protocol SBApplicationSceneHandleProviding <SBApplicationSceneIdentityProviding>
-- (SBApplicationSceneHandle *)fetchOrCreateApplicationSceneHandleForApplication:(SBApplication *)arg1 withIdentity:(FBSSceneIdentity *)arg2;
+- (SBApplicationSceneHandle *)fetchOrCreateApplicationSceneHandleForRequest:(SBApplicationSceneHandleRequest *)arg1;
 @end
 

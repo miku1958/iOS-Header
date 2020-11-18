@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)_removesDependenciesAfterFinish;
 - (void)dealloc;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (void)main;
 - (long long)queuePriority;
 

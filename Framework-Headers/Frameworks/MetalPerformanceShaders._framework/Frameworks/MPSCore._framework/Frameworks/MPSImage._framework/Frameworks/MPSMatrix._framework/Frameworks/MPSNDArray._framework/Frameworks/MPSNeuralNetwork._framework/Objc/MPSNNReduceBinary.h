@@ -17,7 +17,7 @@
 @property (nonatomic) CDStruct_1e3be3a8 primarySourceClipRect; // @synthesize primarySourceClipRect=_primarySourceClipRect;
 @property (nonatomic) CDStruct_1e3be3a8 secondarySourceClipRect; // @synthesize secondarySourceClipRect=_secondarySourceClipRect;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;

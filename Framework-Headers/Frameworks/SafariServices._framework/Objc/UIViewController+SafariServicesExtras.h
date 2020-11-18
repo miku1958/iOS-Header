@@ -22,6 +22,7 @@
 
 - (void)_sf_animateAlongsideTransitionOrPerform:(CDUnknownBlockType)arg1;
 - (void)_sf_presentViewControllerOnTopOfPresentedViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)safari_dismissPresentedAlert;
 - (BOOL)safari_isEventuallyPresentedByViewControllerClass:(Class)arg1;
 - (BOOL)safari_isHorizontallyConstrained;
 - (BOOL)safari_isHorizontallyConstrainedFallingBackToRootViewControllerIfNecessary;

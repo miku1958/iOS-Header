@@ -13,6 +13,7 @@
 
 @class MPAVItem, MPInlineVideoController, MPSwipableView, MPVideoPlaybackOverlayView, MPVolumeController, MPWeakTimer, NSString, UIActivityIndicatorView, UIPinchGestureRecognizer, UITapGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface MPInlineVideoFullscreenViewController : UIViewController <MPSwipableViewDelegate, MPVolumeControllerDelegate, MPVideoOverlayDelegate, MPTransportControlsTarget>
 {
     BOOL _disableTaps;

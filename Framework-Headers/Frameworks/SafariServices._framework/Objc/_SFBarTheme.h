@@ -36,6 +36,7 @@
 + (id)themeWithTheme:(id)arg1;
 - (void).cxx_destruct;
 - (void)applyBackdropEffectsToView:(id)arg1;
+- (id)description;
 - (id)initWithBarTintStyle:(unsigned long long)arg1 preferredBarTintColor:(id)arg2 controlsTintColor:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 

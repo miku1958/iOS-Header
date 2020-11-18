@@ -19,6 +19,7 @@
 - (void)checkStatusOfAllBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)checkStatusOfBudgets:(id)arg1 clientIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)checkStatusOfBudgets:(id)arg1 clientIdentifiers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)checkStatusOfBudgets:(id)arg1 clientIdentifiers:(id)arg2 error:(id *)arg3;
 - (void)checkStatusOfBudgets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)checkStatusOfBudgets:(id)arg1 error:(id *)arg2;
 - (void)dealloc;

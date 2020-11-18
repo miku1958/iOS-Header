@@ -13,6 +13,9 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *interactor;
     MISSING_TYPE *router;
+    MISSING_TYPE *urlHandler;
+    MISSING_TYPE *paywallModel;
+    MISSING_TYPE *offerOverrideProvider;
 }
 
 @end

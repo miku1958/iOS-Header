@@ -18,6 +18,7 @@
 - (void)workoutManager:(CMWorkoutManager *)arg1 suggestedStopWorkout:(CMWorkout *)arg2 atDate:(NSDate *)arg3;
 - (void)workoutManager:(CMWorkoutManager *)arg1 willPauseWorkout:(CMWorkout *)arg2 atDate:(NSDate *)arg3;
 - (void)workoutManager:(CMWorkoutManager *)arg1 willResumeWorkout:(CMWorkout *)arg2 atDate:(NSDate *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 workoutLocationEventUpdate:(CMWorkout *)arg2;
 - (void)workoutManagerDidFail:(CMWorkoutManager *)arg1 workout:(CMWorkout *)arg2 error:(NSError *)arg3;
 - (void)workoutManagerDidStartWorkout:(CMWorkoutManager *)arg1 workout:(CMWorkout *)arg2 startDate:(NSDate *)arg3;
 - (void)workoutManagerDidStopWorkout:(CMWorkoutManager *)arg1 workout:(CMWorkout *)arg2 stopDate:(NSDate *)arg3;

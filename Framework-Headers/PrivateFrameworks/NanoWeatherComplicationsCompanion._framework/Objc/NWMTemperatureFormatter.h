@@ -9,18 +9,17 @@
 #import <NanoWeatherComplicationsCompanion/NWMDataFormatter-Protocol.h>
 
 @class NSLocale, NSMeasurement, NSMeasurementFormatter, NSNumberFormatter, NSString;
-@protocol OS_dispatch_queue;
 
 @interface NWMTemperatureFormatter : NSObject <NWMDataFormatter>
 {
-    BOOL _isCelsiusPreferred;
-    BOOL _shouldAvoidDegreeSymbolOnly;
-    NSLocale *_referenceLocale;
-    NSObject<OS_dispatch_queue> *_queue;
+    BOOL _celsiusPreferred;
+    BOOL _avoidDegreeSymbolOnly;
+    int _temperatureUnit;
+    NSLocale *_locale;
+    NSMeasurement *_noMeasurement;
     NSNumberFormatter *_noUnitFormatter;
     NSMeasurementFormatter *_degreeSymbolOnlyFormatter;
     NSMeasurementFormatter *_unitFormatter;
-    NSMeasurement *_noMeasurement;
     NSString *_formattedStaleTemperatureWithDegreeSymbol;
     NSString *_formattedStaleTemperatureWithDegreeSymbolRoundedVariant;
     NSString *_formattedStaleTemperatureWithUnit;
@@ -29,6 +28,8 @@
     NSString *_formattedStaleTemperatureWithoutUnitRoundedVariant;
 }
 
+@property (getter=shouldAvoidDegreeSymbolOnly) BOOL avoidDegreeSymbolOnly; // @synthesize avoidDegreeSymbolOnly=_avoidDegreeSymbolOnly;
+@property (getter=isCelsiusPreferred) BOOL celsiusPreferred; // @synthesize celsiusPreferred=_celsiusPreferred;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMeasurementFormatter *degreeSymbolOnlyFormatter; // @synthesize degreeSymbolOnlyFormatter=_degreeSymbolOnlyFormatter;
 @property (readonly, copy) NSString *description;
@@ -39,25 +40,23 @@
 @property (strong, nonatomic) NSString *formattedStaleTemperatureWithoutUnit; // @synthesize formattedStaleTemperatureWithoutUnit=_formattedStaleTemperatureWithoutUnit;
 @property (strong, nonatomic) NSString *formattedStaleTemperatureWithoutUnitRoundedVariant; // @synthesize formattedStaleTemperatureWithoutUnitRoundedVariant=_formattedStaleTemperatureWithoutUnitRoundedVariant;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL isCelsiusPreferred; // @synthesize isCelsiusPreferred=_isCelsiusPreferred;
+@property (readonly) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSMeasurement *noMeasurement; // @synthesize noMeasurement=_noMeasurement;
 @property (strong, nonatomic) NSNumberFormatter *noUnitFormatter; // @synthesize noUnitFormatter=_noUnitFormatter;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSLocale *referenceLocale; // @synthesize referenceLocale=_referenceLocale;
-@property (readonly) BOOL shouldAvoidDegreeSymbolOnly; // @synthesize shouldAvoidDegreeSymbolOnly=_shouldAvoidDegreeSymbolOnly;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int temperatureUnit; // @synthesize temperatureUnit=_temperatureUnit;
 @property (strong, nonatomic) NSMeasurementFormatter *unitFormatter; // @synthesize unitFormatter=_unitFormatter;
 
-+ (id)sharedFormatter;
++ (id)autoupdatingFormatter;
++ (id)autoupdatingSharedFormatter;
 - (void).cxx_destruct;
 - (id)_formattedStaleTemperatureWithDegreeSymbol:(unsigned long long)arg1;
 - (id)_formattedStaleTemperatureWithUnit:(unsigned long long)arg1;
 - (id)_formattedStaleTemperatureWithoutUnit:(unsigned long long)arg1;
-- (id)_localizedMeasurementForTemperature:(id)arg1;
-- (id)_locked_degreeSymbolOnlyFormatter;
-- (id)_locked_noUnitFormatter;
-- (id)_locked_unitFormatter;
-- (void)_locked_updateStaleTemperatureWithUnit;
+- (void)_localeChanged:(id)arg1;
+- (id)_measurementForTemperature:(id)arg1;
+- (double)_value:(id)arg1;
+- (void)dealloc;
 - (id)formattedWithDegreeSymbol:(id)arg1 fallbackStyle:(unsigned long long)arg2;
 - (id)formattedWithDegreeSymbol:(id)arg1 style:(unsigned long long)arg2 fallbackStyle:(unsigned long long)arg3;
 - (id)formattedWithUnit:(id)arg1;
@@ -65,7 +64,9 @@
 - (id)formattedWithoutUnit:(id)arg1;
 - (id)formattedWithoutUnit:(id)arg1 style:(unsigned long long)arg2;
 - (id)init;
-- (double)value:(id)arg1;
+- (id)initWithLocale:(id)arg1;
+- (id)initWithLocale:(id)arg1 temperatureUnit:(int)arg2;
+- (void)reloadWithLocale:(id)arg1;
 
 @end
 

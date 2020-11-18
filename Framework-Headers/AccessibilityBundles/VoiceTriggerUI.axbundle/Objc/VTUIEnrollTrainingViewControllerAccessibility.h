@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)AXSuspendAudioTimer;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilitySetAccessibilityElementsIfNeeded;
 - (void)_accessibilitySuperShowTrainingInstruction:(long long)arg1 afterDelay:(double)arg2 isRetry:(BOOL)arg3 animate:(BOOL)arg4;
 - (void)_axAnnounceInstructionWithNumber:(long long)arg1;
 - (void)_axAnnounceString:(id)arg1;
@@ -26,11 +27,13 @@
 - (CDUnknownBlockType)_axShowTrainingInstructionBlock;
 - (void)_axSuspendAudio:(BOOL)arg1;
 - (void)_continueFromIntro:(id)arg1;
+- (void)_setLanguageOptionsAndContinue:(id)arg1;
 - (void)_setupEnrollTrainingView;
 - (void)_showEnrollmentSuccessView;
 - (void)_showIntroView;
 - (void)_showStatusMessage:(id)arg1 afterDelay:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_showTrainingInstruction:(long long)arg1 afterDelay:(double)arg2 isRetry:(BOOL)arg3 animate:(BOOL)arg4;
+- (void)_startEnrollment;
 - (void)dealloc;
 - (void)setAXSuspendAudioTimer:(id)arg1;
 

@@ -7,42 +7,67 @@
 #import <objc/NSObject.h>
 
 #import <iCloudQuotaUI/AAUIServerHook-Protocol.h>
+#import <iCloudQuotaUI/AMSPurchaseResponseProtocol-Protocol.h>
 #import <iCloudQuotaUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
 
-@class AAUIServerHookResponse, ICQOffer, NSDictionary, NSString, NSURLSession, PSCloudStorageOffersManager;
+@class AAUIServerHookResponse, ICQOffer, NSArray, NSDictionary, NSString, NSTimer, NSURLSession, PSCloudStorageOffersManager, RUIElement, RUIObjectModel;
 @protocol AAUIServerHookDelegate, ICQServerHookDelegate;
 
-@interface ICQUpgradeStorageHook : NSObject <PSCloudStorageOffersManagerDelegate, AAUIServerHook>
+@interface ICQUpgradeStorageHook : NSObject <PSCloudStorageOffersManagerDelegate, AMSPurchaseResponseProtocol, AAUIServerHook>
 {
     ICQOffer *_offer;
     NSURLSession *_session;
     PSCloudStorageOffersManager *_cloudStorageOffersManager;
-    CDUnknownBlockType _completionHandler;
     id<ICQServerHookDelegate> _flowDelegate;
     NSDictionary *_clientInfo;
     long long _statusCode;
+    long long _amsServerErrorCode;
+    RUIElement *_ruiElement;
+    NSTimer *_stopActivityIndicatorTimer;
+    CDUnknownBlockType _interruptedCompletion;
+    BOOL _isListeningToAMS;
+    NSArray *_interruptedBuyErrorCodes;
     id<AAUIServerHookDelegate> _delegate;
+    CDUnknownBlockType _completionHandler;
+    NSString *_buttonId;
+    NSString *_flowtype;
 }
 
+@property (strong, nonatomic) NSString *buttonId; // @synthesize buttonId=_buttonId;
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSString *flowtype; // @synthesize flowtype=_flowtype;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_appGoesToBackground:(id)arg1;
 - (void)_enableCloudPhotoLibraryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_firedStopActivityIndicatorTimer:(id)arg1;
+- (void)_handlePurchaseRequestSucceededNotification;
+- (void)_registerForDarwinNotifications;
+- (void)_stopActivityIndicator;
+- (void)beginLegacyPurchaseFlow;
+- (void)beginOsloPurchaseFlow;
 - (void)beginPurchaseFlow;
 - (id)dummyRequestWithAccount:(id)arg1 token:(id)arg2;
+- (void)handleAuthenticateRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleDialogRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithOffer:(id)arg1 flowDelegate:(id)arg2;
 - (void)manager:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;
 - (void)manager:(id)arg1 willPresentViewController:(id)arg2;
 - (void)managerDidCancel:(id)arg1;
-- (id)parseParameters:(id)arg1;
+- (void)mockPurchaseFlow;
+- (long long)offerAction;
+- (id)parseParameters:(id)arg1 action:(long long)arg2;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)registerAMSBagKeySets;
 - (BOOL)shouldMatchElement:(id)arg1;
 - (BOOL)shouldMatchModel:(id)arg1;
 - (id)storageContextJSONString;

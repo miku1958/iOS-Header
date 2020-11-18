@@ -33,6 +33,7 @@
 + (id)_photoPathCustomKey;
 + (BOOL)isSent:(id)arg1;
 - (void).cxx_destruct;
+- (id)author;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSearchableItem:(id)arg1;

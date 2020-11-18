@@ -19,6 +19,7 @@
 @property (readonly, copy, nonatomic) NSString *extensionPointIdentifier;
 @property (readonly, nonatomic) BOOL hasPreferredJetsamBand;
 @property (readonly, nonatomic) BOOL isExtension;
+@property (readonly, nonatomic) int platform;
 @property (readonly, nonatomic) int preferredJetsamBand;
 @property (readonly, nonatomic) BOOL supportsBackgroundAudio;
 @property (readonly, nonatomic) BOOL supportsBackgroundContentFetching;

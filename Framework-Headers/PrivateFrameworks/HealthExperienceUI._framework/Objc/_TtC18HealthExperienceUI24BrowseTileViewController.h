@@ -15,9 +15,9 @@
     MISSING_TYPE *categoryIconImageView;
     MISSING_TYPE *categoryLabel;
     MISSING_TYPE *disclosureImageView;
-    MISSING_TYPE *topAndBottomDistance;
     MISSING_TYPE *margin;
-    MISSING_TYPE *maxIconWidth;
+    MISSING_TYPE *topAndBottomDistance;
+    MISSING_TYPE *iconWidth;
     MISSING_TYPE *labelLeadingConstraint;
     MISSING_TYPE *iconAspectConstraint;
 }

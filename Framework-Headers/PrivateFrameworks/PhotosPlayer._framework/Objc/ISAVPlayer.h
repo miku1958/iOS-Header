@@ -6,17 +6,26 @@
 
 #import <AVFoundation/AVPlayer.h>
 
-@class ISRateCurveRequest;
+@class ISRateCurveRequest, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface ISAVPlayer : AVPlayer
 {
     ISRateCurveRequest *_currentRequest;
+    NSObject<OS_dispatch_queue> *_initializedDispatchQueue;
+    NSObject<OS_dispatch_queue> *_actualDispatchQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *actualDispatchQueue; // @synthesize actualDispatchQueue=_actualDispatchQueue;
+
++ (BOOL)isAppleInternal;
++ (BOOL)isSpringBoard;
 - (void).cxx_destruct;
 - (void)_cancelRateCurveRequest;
 - (void)_setRate:(float)arg1;
 - (void)dealloc;
+- (id)dispatchQueue;
+- (id)init;
 - (id)initWithDispatchQueue:(id)arg1;
 - (void)playToTime:(CDStruct_1b6d18a9)arg1 withInitialRate:(float)arg2 overDuration:(double)arg3 progressHandler:(CDUnknownBlockType)arg4;
 - (void)setRate:(float)arg1;

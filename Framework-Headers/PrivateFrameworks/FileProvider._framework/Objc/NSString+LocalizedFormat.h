@@ -10,6 +10,7 @@
 + (id)_fpd_pathWithFileSystemRepresentation:(const char *)arg1;
 + (id)fp_commonParentPathForItemURLs:(id)arg1;
 + (id)fp_defaultProviderDomainID;
++ (id)fp_hashForToken:(id)arg1;
 + (unsigned long long)fp_maximumBounceLevel;
 + (id)fp_pathWithFileSystemRepresentation:(const char *)arg1;
 + (id)fp_providerDomainIDFromProviderID:(id)arg1 domainIdentifier:(id)arg2;

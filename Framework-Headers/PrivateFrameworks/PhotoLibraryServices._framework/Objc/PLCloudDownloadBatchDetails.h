@@ -11,6 +11,7 @@
 @interface PLCloudDownloadBatchDetails : NSObject
 {
     BOOL _hasResourceChanges;
+    BOOL _needsWidgetTimelineReload;
     long long _numberOfPhotos;
     long long _numberOfVideos;
     NSArray *_cmmUUIDsToNotify;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) NSSet *confirmedResourceIDs; // @synthesize confirmedResourceIDs=_confirmedResourceIDs;
 @property (copy, nonatomic) NSArray *flippedPlaceholderAssetUUIDs; // @synthesize flippedPlaceholderAssetUUIDs=_flippedPlaceholderAssetUUIDs;
 @property (nonatomic) BOOL hasResourceChanges; // @synthesize hasResourceChanges=_hasResourceChanges;
+@property (nonatomic) BOOL needsWidgetTimelineReload; // @synthesize needsWidgetTimelineReload=_needsWidgetTimelineReload;
 @property (nonatomic) long long numberOfPhotos; // @synthesize numberOfPhotos=_numberOfPhotos;
 @property (nonatomic) long long numberOfVideos; // @synthesize numberOfVideos=_numberOfVideos;
 

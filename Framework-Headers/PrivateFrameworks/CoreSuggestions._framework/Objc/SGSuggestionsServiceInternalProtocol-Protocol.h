@@ -6,7 +6,7 @@
 
 #import <CoreSuggestions/_SGSuggestionsServiceBaseProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString, NSURL, _PASDomainSelection;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSURL, SGSimpleMailMessage, _PASDomainSelection;
 
 @protocol SGSuggestionsServiceInternalProtocol <_SGSuggestionsServiceBaseProtocol>
 - (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
@@ -24,6 +24,7 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 uniqueIdentifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)drainQueueCompletelyWithCompletion:(void (^)(NSError *))arg1;
 - (void)emailAddressIsSignificant:(NSString *)arg1 withCompletion:(void (^)(NSNumber *, NSError *))arg2;
+- (NSDictionary *)powerState;
 - (void)realtimeSuggestionsFromURL:(NSURL *)arg1 title:(NSString *)arg2 HTMLPayload:(NSString *)arg3 extractionDate:(NSDate *)arg4 withCompletion:(void (^)(NSArray *, NSError *))arg5;
 - (void)removeAllStoredPseudoContactsWithCompletion:(void (^)(NSError *))arg1;
 - (BOOL)resetConfirmationAndRejectionHistory:(id *)arg1;
@@ -42,5 +43,7 @@
 - (void)suggestionsFromMockData:(id)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (NSArray *)suggestionsFromRFC822Data:(NSData *)arg1 source:(NSString *)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (void)suggestionsFromRFC822Data:(NSData *)arg1 source:(NSString *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
+- (NSArray *)suggestionsFromSimpleMailMessage:(SGSimpleMailMessage *)arg1 headers:(NSData *)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
+- (void)suggestionsFromSimpleMailMessage:(SGSimpleMailMessage *)arg1 headers:(NSData *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 @end
 

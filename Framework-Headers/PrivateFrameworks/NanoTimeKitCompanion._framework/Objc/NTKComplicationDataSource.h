@@ -19,6 +19,7 @@
 + (Class)dataSourceClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
+- (id)sampleTemplate;
 
 @end
 

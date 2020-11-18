@@ -14,6 +14,7 @@
 }
 
 @property long long eventType; // @synthesize eventType=_eventType;
+@property (readonly) struct CGPoint midpoint;
 @property (readonly) struct CGVector motion; // @synthesize motion=_motion;
 @property (readonly) struct CGPoint origin; // @synthesize origin=_origin;
 @property (readonly) struct CGPoint target;

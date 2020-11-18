@@ -16,6 +16,8 @@
 
 @property (readonly, nonatomic) NSString *localizedOffDisplayName; // @synthesize localizedOffDisplayName=_localizedOffDisplayName;
 @property (readonly, nonatomic) NSString *localizedOnDisplayName; // @synthesize localizedOnDisplayName=_localizedOnDisplayName;
+@property (readonly, nonatomic) NSString *offDisplayName;
+@property (readonly, nonatomic) NSString *onDisplayName;
 
 + (id)defaultOffDisplayName;
 + (id)defaultOnDisplayName;

@@ -17,21 +17,30 @@
     NSArray *_tokenColumns;
     NSArray *_transcriptionPaths;
     NSArray *_transcriptionPathScores;
+    long long _recognizerGenerationIdentifier;
+    long long _precedingLineBreaks;
+    long long _changeableCount;
+    NSString *_trailingSeparator;
 }
 
+@property (readonly, nonatomic) long long changeableTokenColumnCount;
+@property (readonly, nonatomic) NSString *recognizerDebugDescription;
 @property (readonly, nonatomic) long long tokenColumnCount;
 @property (readonly, copy, nonatomic) NSString *topTranscription;
+@property (readonly, copy, nonatomic) NSString *trailingSeparator; // @synthesize trailingSeparator=_trailingSeparator;
 @property (readonly, copy, nonatomic) NSArray *transcriptionPathScores; // @synthesize transcriptionPathScores=_transcriptionPathScores;
 @property (readonly, copy, nonatomic) NSArray *transcriptionPaths; // @synthesize transcriptionPaths=_transcriptionPaths;
 
 + (long long)_characterCountInToken:(id)arg1 filteringCharacterSet:(id)arg2 filteredCharacterCount:(long long *)arg3;
 + (pair_b2618ff2)_scoreMeanAndStdForToken:(id)arg1 forLocale:(id)arg2;
++ (BOOL)areTokenRowsEquivalent:(id)arg1 otherRow:(id)arg2;
++ (id)extendedToken:(id)arg1 withStrokeIndexSet:(id)arg2 alignmentScore:(double)arg3;
++ (long long)mergeTokenRow:(id)arg1 intoUniqueRows:(id)arg2;
 + (BOOL)supportsSecureCoding;
-+ (id)tokenizedTextResultWithString:(id)arg1 strokeIndexes:(id)arg2;
++ (id)tokenizedTextResultWithString:(id)arg1 strokeIndexes:(id)arg2 trailingSeparator:(id)arg3 recognizerGenerationIdentifier:(long long)arg4;
 - (BOOL)_isGibberishToken:(id)arg1;
 - (id)_legacyTextRecognitionResultForTranscriptionIndex:(long long)arg1;
 - (double)_normalizedLanguageFitness:(double)arg1;
-- (BOOL)_shouldFilterOutStringForToken:(id)arg1 isGibberish:(BOOL *)arg2;
 - (long long)_tokenCountInTranscriptionPath:(id)arg1 columnRange:(struct _NSRange)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -40,8 +49,12 @@
 - (void)enumerateTokensInTranscriptionPath:(id)arg1 columnRange:(struct _NSRange)arg2 tokenProcessingBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithBestPathTokens:(id)arg1 pathProbabilities:(id)arg2 trailingSeparator:(id)arg3 recognizerGenerationIdentifier:(long long)arg4;
+- (id)initWithBestPathTokens:(id)arg1 pathProbabilities:(id)arg2 trailingSeparator:(id)arg3 recognizerGenerationIdentifier:(long long)arg4 changeableColumnCount:(long long)arg5;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTokenColumns:(id)arg1 transcriptionPaths:(id)arg2 scores:(id)arg3;
+- (id)initWithTokenColumns:(id)arg1 transcriptionPaths:(id)arg2 scores:(id)arg3 recognizerGenerationIdentifier:(long long)arg4;
+- (id)initWithTokenColumns:(id)arg1 transcriptionPaths:(id)arg2 scores:(id)arg3 trailingSeparator:(id)arg4 recognizerGenerationIdentifier:(long long)arg5;
+- (id)initWithTokenColumns:(id)arg1 transcriptionPaths:(id)arg2 scores:(id)arg3 trailingSeparator:(id)arg4 recognizerGenerationIdentifier:(long long)arg5 changeableColumnCount:(long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTokenizedTextResult:(id)arg1;
 - (BOOL)isValid;
@@ -49,12 +62,18 @@
 - (double)languageFitnessForTranscriptionPath:(id)arg1 locale:(id)arg2 recognitionMode:(int)arg3;
 - (id)legacyTextRecognitionResults;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)phraseCaseCorrectedResultWithHistory:(id)arg1 phraseLexicon:(struct _LXLexicon *)arg2 maxPhraseLength:(long long)arg3;
+- (long long)precedingLineBreaks;
 - (id)precedingSeparatorForToken:(id)arg1;
 - (id)precedingSeparatorForTopTranscriptionPath;
+- (long long)recognizerGenerationIdentifier;
+- (BOOL)shouldFilterOutStringForToken:(id)arg1 isGibberish:(BOOL *)arg2;
 - (id)strokeIndexesForColumnsInRange:(struct _NSRange)arg1;
 - (id)tokenAtLocation:(CDStruct_2ec95fd7)arg1;
 - (id)tokenColumns;
 - (id)tokenRowsAtColumnIndex:(long long)arg1;
+- (id)tokenizedResultWithFilteredPaths:(double)arg1;
+- (id)tokensFromTopTranscriptionWithCharacterRange:(struct _NSRange)arg1;
 - (id)tokensInTranscriptionPath:(id)arg1 atColumnIndex:(long long)arg2;
 - (id)transcriptionWithPath:(id)arg1 columnRange:(struct _NSRange)arg2 filterLowConfidence:(BOOL)arg3;
 - (id)transcriptionWithPath:(id)arg1 columnRange:(struct _NSRange)arg2 filterLowConfidence:(BOOL)arg3 excludeGibberish:(BOOL)arg4 rejectionRate:(double *)arg5 tokenProcessingBlock:(CDUnknownBlockType)arg6;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *type;
     MISSING_TYPE *reuseIdentifier;
+    MISSING_TYPE *healthStore;
 }
 
 @end

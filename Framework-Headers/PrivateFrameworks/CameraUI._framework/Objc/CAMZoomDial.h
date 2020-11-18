@@ -75,6 +75,7 @@
 @property (readonly, nonatomic) UIImageView *_ticksView; // @synthesize _ticksView=__ticksView;
 @property (readonly, nonatomic) BOOL _useDots;
 @property (readonly, nonatomic) BOOL _useTicks;
+@property (readonly, nonatomic) NSArray *activeZoomFactorLabels;
 @property (readonly, nonatomic) double angleDeltaForZoomRange;
 @property (nonatomic) double contentMaskingHeight; // @synthesize contentMaskingHeight=_contentMaskingHeight;
 @property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;

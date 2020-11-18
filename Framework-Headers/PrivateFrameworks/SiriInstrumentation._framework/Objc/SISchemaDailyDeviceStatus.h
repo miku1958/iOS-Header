@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, NSString, SISchemaActiveStatus, SISchemaEnabledStatus, SISchemaMultiUserState, SISchemaPersonalization;
+@class NSData, NSString, SISchemaActiveStatus, SISchemaAggregatedMetrics, SISchemaEnabledStatus, SISchemaMultiUserState, SISchemaPersonalization;
 
 @interface SISchemaDailyDeviceStatus : PBCodable
 {
-    BOOL _spokenNotificationsproxCardSeen;
-    BOOL _spokenNotificationsControlCenterModuleEnabled;
-    int _spokenNotificationsWhitelistSettings;
     NSString *_siriDeviceID;
     NSString *_siriSpeechID;
     NSString *_sharedUserId;
@@ -26,15 +23,56 @@
     SISchemaActiveStatus *_activeStatus;
     SISchemaPersonalization *_personalization;
     SISchemaMultiUserState *_multiUserState;
+    BOOL _spokenNotificationsproxCardSeen;
+    BOOL _spokenNotificationsControlCenterModuleEnabled;
+    int _spokenNotificationsWhitelistSettings;
+    SISchemaAggregatedMetrics *_aggregatedMetrics;
+    struct {
+        unsigned int clientDeviceSamplingTimestampMs:1;
+        unsigned int assistantRecordPublishTimestampMs:1;
+        unsigned int spokenNotificationsproxCardSeen:1;
+        unsigned int spokenNotificationsControlCenterModuleEnabled:1;
+        unsigned int spokenNotificationsWhitelistSettings:1;
+    } _has;
+    BOOL _hasSiriDeviceID;
+    BOOL _hasSiriSpeechID;
+    BOOL _hasSharedUserId;
+    BOOL _hasLocale;
+    BOOL _hasDeviceType;
+    BOOL _hasDeviceOs;
+    BOOL _hasDeviceBuild;
+    BOOL _hasEnabledStatus;
+    BOOL _hasActiveStatus;
+    BOOL _hasPersonalization;
+    BOOL _hasMultiUserState;
+    BOOL _hasAggregatedMetrics;
 }
 
 @property (strong, nonatomic) SISchemaActiveStatus *activeStatus; // @synthesize activeStatus=_activeStatus;
+@property (strong, nonatomic) SISchemaAggregatedMetrics *aggregatedMetrics; // @synthesize aggregatedMetrics=_aggregatedMetrics;
 @property (nonatomic) long long assistantRecordPublishTimestampMs; // @synthesize assistantRecordPublishTimestampMs=_assistantRecordPublishTimestampMs;
 @property (nonatomic) long long clientDeviceSamplingTimestampMs; // @synthesize clientDeviceSamplingTimestampMs=_clientDeviceSamplingTimestampMs;
 @property (copy, nonatomic) NSString *deviceBuild; // @synthesize deviceBuild=_deviceBuild;
 @property (copy, nonatomic) NSString *deviceOs; // @synthesize deviceOs=_deviceOs;
 @property (copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
 @property (strong, nonatomic) SISchemaEnabledStatus *enabledStatus; // @synthesize enabledStatus=_enabledStatus;
+@property (nonatomic) BOOL hasActiveStatus; // @synthesize hasActiveStatus=_hasActiveStatus;
+@property (nonatomic) BOOL hasAggregatedMetrics; // @synthesize hasAggregatedMetrics=_hasAggregatedMetrics;
+@property (nonatomic) BOOL hasAssistantRecordPublishTimestampMs;
+@property (nonatomic) BOOL hasClientDeviceSamplingTimestampMs;
+@property (nonatomic) BOOL hasDeviceBuild; // @synthesize hasDeviceBuild=_hasDeviceBuild;
+@property (nonatomic) BOOL hasDeviceOs; // @synthesize hasDeviceOs=_hasDeviceOs;
+@property (nonatomic) BOOL hasDeviceType; // @synthesize hasDeviceType=_hasDeviceType;
+@property (nonatomic) BOOL hasEnabledStatus; // @synthesize hasEnabledStatus=_hasEnabledStatus;
+@property (nonatomic) BOOL hasLocale; // @synthesize hasLocale=_hasLocale;
+@property (nonatomic) BOOL hasMultiUserState; // @synthesize hasMultiUserState=_hasMultiUserState;
+@property (nonatomic) BOOL hasPersonalization; // @synthesize hasPersonalization=_hasPersonalization;
+@property (nonatomic) BOOL hasSharedUserId; // @synthesize hasSharedUserId=_hasSharedUserId;
+@property (nonatomic) BOOL hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property (nonatomic) BOOL hasSiriSpeechID; // @synthesize hasSiriSpeechID=_hasSiriSpeechID;
+@property (nonatomic) BOOL hasSpokenNotificationsControlCenterModuleEnabled;
+@property (nonatomic) BOOL hasSpokenNotificationsWhitelistSettings;
+@property (nonatomic) BOOL hasSpokenNotificationsproxCardSeen;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) SISchemaMultiUserState *multiUserState; // @synthesize multiUserState=_multiUserState;

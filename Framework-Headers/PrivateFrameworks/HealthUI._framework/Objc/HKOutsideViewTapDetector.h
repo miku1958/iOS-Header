@@ -8,28 +8,26 @@
 
 #import <HealthUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UITapGestureRecognizer, UIView;
+@class NSMutableArray, NSString;
 
 @interface HKOutsideViewTapDetector : NSObject <UIGestureRecognizerDelegate>
 {
-    UITapGestureRecognizer *_recognizer;
-    UIView *_view;
-    CDUnknownBlockType _outsideTapBlock;
+    NSMutableArray *_windowCallbacks;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType outsideTapBlock; // @synthesize outsideTapBlock=_outsideTapBlock;
-@property (strong, nonatomic) UITapGestureRecognizer *recognizer; // @synthesize recognizer=_recognizer;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIView *view; // @synthesize view=_view;
+@property (strong, nonatomic) NSMutableArray *windowCallbacks; // @synthesize windowCallbacks=_windowCallbacks;
 
++ (id)_detectorSingleton;
++ (void)addOutsideTouchCallbackForView:(id)arg1 outsideTapBlock:(CDUnknownBlockType)arg2;
++ (void)removeOutsideTouchCallbackForView:(id)arg1;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)handleTap:(id)arg1;
-- (id)initWithView:(id)arg1 outsideTapBlock:(CDUnknownBlockType)arg2;
+- (id)_callbacksForWindow:(id)arg1;
+- (void)_removeCallbacksForView:(id)arg1;
+- (id)init;
 
 @end
 

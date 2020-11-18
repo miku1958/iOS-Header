@@ -18,12 +18,10 @@
         unsigned int deleteMultiple:1;
     } _has;
     BOOL _deleteMultiple;
-    BOOL __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     _INPBTimer *_targetTimer;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deleteMultiple; // @synthesize deleteMultiple=_deleteMultiple;
 @property (readonly, copy) NSString *description;

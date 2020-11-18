@@ -32,17 +32,14 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_cacheDisplayScaleIfNeeded;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (void)dealloc;
 - (id)initWithContainer:(id)arg1 dataSource:(id)arg2;
-- (BOOL)isBaselineRelativeArrangement;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)layoutSizeFittingSize:(struct CGSize)arg1;
 - (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
 - (void)positionItemsInBounds:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
 - (void)reloadData;
-- (void)setBaselineRelativeArrangement:(BOOL)arg1;
 
 @end
 

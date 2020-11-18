@@ -9,17 +9,19 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @interface ENRegionServerAgencyExposureNotificationConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_classificationName;
+    NSURL *_classificationURL;
     NSString *_localizedExposureDetailBody;
     NSString *_localizedNotificationSubject;
     NSString *_localizedNotificationBody;
 }
 
 @property (readonly, copy, nonatomic) NSString *classificationName; // @synthesize classificationName=_classificationName;
+@property (readonly, copy, nonatomic) NSURL *classificationURL; // @synthesize classificationURL=_classificationURL;
 @property (readonly, copy, nonatomic) NSString *localizedExposureDetailBody; // @synthesize localizedExposureDetailBody=_localizedExposureDetailBody;
 @property (readonly, copy, nonatomic) NSString *localizedNotificationBody; // @synthesize localizedNotificationBody=_localizedNotificationBody;
 @property (readonly, copy, nonatomic) NSString *localizedNotificationSubject; // @synthesize localizedNotificationSubject=_localizedNotificationSubject;

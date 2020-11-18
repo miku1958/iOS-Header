@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, NSHashTable;
+@class HKSourceStore, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface WDSourceOrderController : NSObject
 {
-    HKHealthStore *_healthStore;
+    HKSourceStore *_sourceStore;
     NSHashTable *_observers;
 }
 

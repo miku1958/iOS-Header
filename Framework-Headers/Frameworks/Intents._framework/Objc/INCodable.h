@@ -12,12 +12,10 @@
 
 @interface INCodable : PBCodable <NSCopying>
 {
-    BOOL __encodeLegacyGloryData;
     INCodableDescription *_objectDescription;
     NSMutableDictionary *_customValueForKeyDictionary;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic, setter=_setObjectDescription:) INCodableDescription *_objectDescription; // @synthesize _objectDescription;
 @property (strong, nonatomic) NSMutableDictionary *customValueForKeyDictionary; // @synthesize customValueForKeyDictionary=_customValueForKeyDictionary;
 

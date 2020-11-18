@@ -22,9 +22,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
-- (void)updateAtUIPriorityWithQueryContext:(id)arg1;
 - (void)updateWithQueryContext:(id)arg1;
-- (void)updateWithQueryContext:(id)arg1 uiPriority:(BOOL)arg2;
 
 @end
 

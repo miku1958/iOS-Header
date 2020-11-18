@@ -45,12 +45,12 @@
 - (void)_handleRoomAddedNotification:(id)arg1;
 - (void)_handleRoomRemovedNotification:(id)arg1;
 - (void)_handleZoneRenamedNotification:(id)arg1;
-- (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_removeRoom:(id)arg1;
 - (void)_removeRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

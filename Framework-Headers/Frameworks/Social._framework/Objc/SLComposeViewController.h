@@ -45,7 +45,6 @@
 @property (readonly) Class superclass;
 
 + (id)_extensionIdentifierForServiceType:(id)arg1;
-+ (BOOL)_isAvailableForMediaShareExtension:(id)arg1;
 + (BOOL)_isAvailableForServiceType:(id)arg1 inHostApplicationBundleID:(id)arg2;
 + (BOOL)_isMultiUserDevice;
 + (BOOL)_isServiceType:(id)arg1;

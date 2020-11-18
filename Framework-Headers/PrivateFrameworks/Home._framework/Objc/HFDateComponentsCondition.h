@@ -28,6 +28,7 @@
 - (long long)compare:(id)arg1;
 - (id)initWithDateComponents:(id)arg1 comparisonType:(unsigned long long)arg2;
 - (id)initWithPredicate:(id)arg1;
+- (unsigned long long)timeConditionType;
 
 @end
 

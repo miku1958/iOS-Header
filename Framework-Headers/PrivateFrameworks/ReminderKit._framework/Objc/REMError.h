@@ -25,6 +25,8 @@
 + (id)noSuchObjectErrorWithDACalendarItemUniqueIdentifier:(id)arg1;
 + (id)noSuchObjectErrorWithExternalIdentifier:(id)arg1;
 + (id)noSuchObjectErrorWithObjectID:(id)arg1;
++ (id)noSuchSmartListErrorWithSmartListTag:(id)arg1;
++ (id)nullifiedRelationshipErrorWithRelationshipName:(id)arg1;
 + (id)retryLaterErrorWithInterval:(double)arg1;
 + (id)saveErrorWithCoreDataError:(id)arg1;
 + (id)throttledErrorWithRemainingTimeInterval:(double)arg1;

@@ -8,7 +8,7 @@
 
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 
-@class FPItem, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@class FPItem, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
 @protocol NSFileProviderItemFlags;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSNumber *childItemCount;
 @property (readonly, copy) NSString *containerDisplayName;
 @property (readonly, copy, nonatomic) NSDate *contentModificationDate;
+@property (readonly, copy, nonatomic) UTType *contentType;
 @property (readonly, copy, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

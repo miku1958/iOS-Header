@@ -23,7 +23,7 @@
 
 + (id)metrics;
 - (id)_gkDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)addSupplementaryMetrics:(id)arg1 forKey:(id)arg2 atLocation:(unsigned long long)arg3;
 - (void)configureCollectionView:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

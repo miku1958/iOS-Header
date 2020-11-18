@@ -50,7 +50,7 @@
 - (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (void)setExerciseGraphData:(id)arg1;
-- (void)setMoveGraphData:(id)arg1;
+- (void)setMoveGraphData:(id)arg1 activityMoveMode:(long long)arg2;
 - (void)setStandGraphData:(id)arg1;
 
 @end

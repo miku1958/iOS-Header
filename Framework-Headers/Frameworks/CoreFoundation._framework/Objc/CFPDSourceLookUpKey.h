@@ -9,14 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface CFPDSourceLookUpKey : NSObject
 {
-    struct __CFString *domain;
-    struct __CFString *userName;
-    struct __CFString *containerPath;
+    struct __CFString *uncanonicalizedPath;
     struct __CFString *cloudPath;
-    BOOL byHost;
-    BOOL managed;
-    BOOL managedUsesContainer;
-    BOOL cloud;
 }
 
 - (void)dealloc;

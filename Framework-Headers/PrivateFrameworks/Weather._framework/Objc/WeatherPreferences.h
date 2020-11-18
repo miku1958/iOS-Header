@@ -15,7 +15,6 @@
 @interface WeatherPreferences : NSObject <WFTemperatureUnitObserver, NSURLConnectionDelegate>
 {
     NSString *_UUID;
-    NSString *_serviceHost;
     BOOL _serviceDebugging;
     NSArray *_lastUbiquitousWrittenDefaults;
     id<WeatherPreferencesPersistence> _persistence;
@@ -77,7 +76,6 @@
 - (void)saveToDiskWithLocalWeatherCity:(id)arg1;
 - (void)saveToUbiquitousStore;
 - (BOOL)serviceDebugging;
-- (id)serviceHost;
 - (void)setActiveCity:(unsigned long long)arg1;
 - (void)setCelsius:(BOOL)arg1;
 - (void)setDefaultCities:(id)arg1;

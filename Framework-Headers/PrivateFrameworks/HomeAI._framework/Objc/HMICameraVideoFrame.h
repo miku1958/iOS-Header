@@ -20,6 +20,7 @@
     NSArray *_motionDetections;
     struct CGSize _size;
     CDStruct_1b6d18a9 _presentationTime;
+    CDStruct_1b6d18a9 _sessionPresentationTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@
 @property (strong) NSArray *motionDetections; // @synthesize motionDetections=_motionDetections;
 @property (readonly) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (readonly) CDStruct_1b6d18a9 presentationTime; // @synthesize presentationTime=_presentationTime;
+@property CDStruct_1b6d18a9 sessionPresentationTime; // @synthesize sessionPresentationTime=_sessionPresentationTime;
 @property (readonly) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
 
@@ -38,7 +40,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JPEGRepresentationWithDownscaleFactor:(float)arg1 outSize:(struct CGSize *)arg2;
-- (BOOL)convertToJPEGWithError:(id *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

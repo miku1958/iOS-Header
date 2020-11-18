@@ -7,6 +7,7 @@
 #import <GameCenterFoundation/GKScore.h>
 
 @interface GKScore (Sharing)
++ (void)reportLeaderboardScores:(id)arg1 withEligibleChallenges:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (void)reportScores:(id)arg1 withEligibleChallenges:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_gkSetSharingInfo:(id)arg1;
 - (id)_gkSharingInfo;

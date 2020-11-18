@@ -16,6 +16,7 @@
     BOOL _showPhoneButton;
     BOOL _showFaceTimeVideoButton;
     BOOL _showInfoButton;
+    BOOL _showScreenSharingButton;
     CKAvatarView *_contactAvatarView;
     id<CKDetailsContactsTableViewCellDelegate> _delegate;
     CKLabel *_nameLabel;
@@ -25,6 +26,7 @@
     UIButton *_messageButton;
     UIButton *_phoneButton;
     UIButton *_facetimeVideoButton;
+    UIButton *_screenSharingButton;
     CNContact *_contact;
     UIActivityIndicatorView *_updatingParticipantSpinner;
 }
@@ -39,10 +41,12 @@
 @property (strong, nonatomic) UIButton *messageButton; // @synthesize messageButton=_messageButton;
 @property (strong, nonatomic) CKLabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (strong, nonatomic) UIButton *phoneButton; // @synthesize phoneButton=_phoneButton;
+@property (strong, nonatomic) UIButton *screenSharingButton; // @synthesize screenSharingButton=_screenSharingButton;
 @property (nonatomic) BOOL showFaceTimeVideoButton; // @synthesize showFaceTimeVideoButton=_showFaceTimeVideoButton;
 @property (nonatomic) BOOL showInfoButton; // @synthesize showInfoButton=_showInfoButton;
 @property (nonatomic) BOOL showMessageButton; // @synthesize showMessageButton=_showMessageButton;
 @property (nonatomic) BOOL showPhoneButton; // @synthesize showPhoneButton=_showPhoneButton;
+@property (nonatomic) BOOL showScreenSharingButton; // @synthesize showScreenSharingButton=_showScreenSharingButton;
 @property (nonatomic) BOOL showsLocation; // @synthesize showsLocation=_showsLocation;
 @property (strong, nonatomic) UIActivityIndicatorView *updatingParticipantSpinner; // @synthesize updatingParticipantSpinner=_updatingParticipantSpinner;
 
@@ -56,9 +60,12 @@
 - (void)_configureButtonLayer:(id)arg1;
 - (void)_dismissUpdatingParticipantSpinner;
 - (void)_handleCommunicationAction:(id)arg1;
+- (void)_hideAllButtons;
+- (id)_imageNamed:(id)arg1;
 - (void)_showUpdatingParticipantSpinner;
 - (void)_updateVisibleButtons;
 - (void)configureWithViewModel:(id)arg1;
+- (void)didHoverOverCell:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -18,14 +18,7 @@ __attribute__((visibility("hidden")))
     id<AEPerformancePrimitives> _performancePrimitives;
 }
 
-@property (readonly, copy, nonatomic) NSArray *activations; // @synthesize activations=_activations;
-@property (readonly, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (readonly, nonatomic) id<AEPerformancePrimitives> performancePrimitives; // @synthesize performancePrimitives=_performancePrimitives;
-@property (readonly, nonatomic) id<AEPolicyStore> policyStore; // @synthesize policyStore=_policyStore;
-
 - (void).cxx_destruct;
-- (void)activateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 invalidationHandler:(CDUnknownBlockType)arg3 activations:(id)arg4;
 
 @end
 

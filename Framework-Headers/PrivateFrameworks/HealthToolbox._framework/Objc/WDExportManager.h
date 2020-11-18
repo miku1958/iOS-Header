@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     NSString *_archivePath;
     NSDateFormatter *_xmlDateFormatter;
     NSDateFormatter *_cdaDateFormatter;
-    NSDictionary *_timePeriodsBySampleType;
+    NSDictionary *_dateIntervalsBySampleType;
     BOOL _exportInProgress;
     BOOL _exportFailed;
 }
@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeDataForMedicalRecords:(id)arg1;
 - (void)_writeDataForWorkoutRoutes:(id)arg1 semaphore:(id)arg2;
 - (void)_writeDataForWorkoutType;
-- (BOOL)_writeElectrocardiogramsToDisk:(id)arg1 header:(id)arg2;
+- (BOOL)_writeElectrocardiogramsToDisk:(id)arg1 header:(id)arg2 version:(id)arg3;
 - (void)_writeHRVAndTachograms;
 - (void)_writeHealthRecord:(id)arg1 documentDirectory:(id)arg2 fileNamesInUse:(id)arg3;
 - (void)_writeMedicalRecords;
@@ -89,7 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeXMLMedicalRecordWithType:(id)arg1 identifier:(id)arg2 sourceName:(id)arg3 sourceURL:(id)arg4 fhirVersion:(id)arg5 receivedDate:(id)arg6 jsonFilePath:(id)arg7;
 - (void)_writeXMLMetadataEntries:(id)arg1;
 - (void)_writeXMLObjectAttributes:(id)arg1;
-- (void)_writeXMLPersonWithDateOfBirth:(id)arg1 biologicalSex:(long long)arg2 bloodType:(long long)arg3 skinType:(long long)arg4;
+- (void)_writeXMLPersonWithDateOfBirth:(id)arg1 biologicalSex:(long long)arg2 bloodType:(long long)arg3 skinType:(long long)arg4 cardioFitnessMedicationsUse:(id)arg5;
 - (void)_writeXMLRecordWithType:(id)arg1 sourceName:(id)arg2 sourceVersion:(id)arg3 device:(id)arg4 unit:(id)arg5 metadata:(id)arg6 hrvMetadataList:(id)arg7 creationDate:(id)arg8 startDate:(id)arg9 endDate:(id)arg10 value:(id)arg11;
 - (void)_writeXMLSampleAttributes:(id)arg1;
 - (void)_writeXMLWorkoutEnd;

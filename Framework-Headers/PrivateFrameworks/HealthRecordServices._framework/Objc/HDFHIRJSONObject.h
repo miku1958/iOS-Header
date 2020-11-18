@@ -9,16 +9,16 @@
 #import <HealthRecordServices/NSCopying-Protocol.h>
 #import <HealthRecordServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class HKFHIRVersion, NSData, NSDictionary, NSString, NSURL;
 
 @interface HDFHIRJSONObject : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_JSONObject;
-    NSString *_FHIRVersion;
+    HKFHIRVersion *_FHIRVersion;
     NSURL *_sourceURL;
 }
 
-@property (readonly, copy, nonatomic) NSString *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
+@property (readonly, copy, nonatomic) HKFHIRVersion *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
 @property (readonly, copy, nonatomic) NSDictionary *JSONObject; // @synthesize JSONObject=_JSONObject;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (readonly, copy, nonatomic) NSString *detectedResourceType;

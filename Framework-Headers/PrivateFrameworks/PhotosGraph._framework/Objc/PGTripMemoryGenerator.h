@@ -25,6 +25,8 @@
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 - (id)_tripNodeForPotentialMemory:(id)arg1;
+- (id)curationOptionsWithKeyAsset:(id)arg1;
+- (unsigned long long)durationForCuration;
 - (id)initWithSubcategory:(unsigned long long)arg1 controller:(id)arg2;
 - (id)potentialMemoryWithTripNode:(id)arg1;
 

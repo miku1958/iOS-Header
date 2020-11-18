@@ -12,6 +12,8 @@
 @protocol PUSharingHeaderDataProvider <NSObject>
 
 @property (readonly, nonatomic) struct PXAssetMediaTypeCount assetTypeCount;
+@property (readonly, nonatomic) BOOL excludeAccessibilityDescription;
+@property (readonly, nonatomic) BOOL excludeCaption;
 @property (readonly, nonatomic) BOOL excludeLiveness;
 @property (readonly, nonatomic) BOOL excludeLocation;
 @property (readonly, nonatomic) BOOL isActionSheet;
@@ -21,7 +23,7 @@
 @property (readonly, copy, nonatomic) NSOrderedSet *orderedSelectedAssets;
 @property (readonly, nonatomic) BOOL sendAsOriginals;
 @property (readonly, nonatomic) BOOL shareAsCMM;
-@property (readonly, nonatomic) unsigned long long sourceOrigin;
+@property (readonly, nonatomic) long long sourceOrigin;
 
 @end
 

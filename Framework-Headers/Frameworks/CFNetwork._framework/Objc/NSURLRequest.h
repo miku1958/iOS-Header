@@ -29,6 +29,7 @@
 @property (readonly) BOOL allowsConstrainedNetworkAccess;
 @property (readonly) BOOL allowsExpensiveNetworkAccess;
 @property (readonly) unsigned long long cachePolicy;
+@property (readonly, getter=isKnownHTTP3Capable) BOOL knownHTTP3Capable;
 @property (readonly, copy) NSURL *mainDocumentURL;
 @property (readonly) unsigned long long networkServiceType;
 @property (readonly) double timeoutInterval;
@@ -36,7 +37,6 @@
 + (BOOL)allowsAnyHTTPSCertificateForHost:(id)arg1;
 + (id)allowsSpecificHTTPSCertificateForHost:(id)arg1;
 + (double)defaultTimeoutInterval;
-+ (id)getObjectKeyWithIndex:(long long)arg1;
 + (id)requestWithURL:(id)arg1;
 + (id)requestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
 + (void)setAllowsAnyHTTPSCertificate:(BOOL)arg1 forHost:(id)arg2;
@@ -47,13 +47,12 @@
 - (id)HTTPExtraCookies;
 - (id)HTTPReferrer;
 - (id)HTTPUserAgent;
-- (id)_CFURLRequest;
+- (struct _CFURLRequest *)_CFURLRequest;
 - (BOOL)_URLHasScheme:(id)arg1;
 - (id)_allHTTPHeaderFieldsAsArrays;
-- (id)_bodyParts;
 - (id)_copyReplacingURLWithURL:(id)arg1;
 - (BOOL)_ignoreHSTS;
-- (id)_initWithCFURLRequest:(id)arg1;
+- (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 - (id)_initWithInternal:(id)arg1;
 - (BOOL)_isIdempotent;
 - (BOOL)_isSafeRequestForBackgroundDownload;

@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDDaemonTransaction, HDIDSMessageCenter, IDSDevice, NSData, NSDictionary, NSString;
+@class HDDaemonTransaction, HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString;
 
 @interface HDIDSOutgoingResponse : NSObject <HDNanoSyncDescription>
 {
@@ -20,7 +20,7 @@
     unsigned short _messageID;
     NSString *_requestIdsIdentifier;
     HDIDSMessageCenter *_messageCenter;
-    IDSDevice *_toDevice;
+    HDIDSParticipant *_toParticipant;
     NSString *_idsIdentifier;
     NSData *_data;
     unsigned long long _priority;
@@ -46,7 +46,7 @@
 @property (nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property (getter=isSent) BOOL sent; // @synthesize sent=_sent;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) IDSDevice *toDevice; // @synthesize toDevice=_toDevice;
+@property (strong, nonatomic) HDIDSParticipant *toParticipant; // @synthesize toParticipant=_toParticipant;
 
 - (void).cxx_destruct;
 - (void)configureWithActivationRestore:(id)arg1 syncStore:(id)arg2;

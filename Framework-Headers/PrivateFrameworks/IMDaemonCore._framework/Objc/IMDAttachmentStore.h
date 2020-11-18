@@ -11,9 +11,15 @@
 }
 
 + (id)sharedInstance;
+- (id)_IMTransferGUIDForMessageGUID:(id)arg1 andIndex:(unsigned long long)arg2;
 - (BOOL)_cloudkitSyncingEnabled;
 - (BOOL)_fileEligibleForCacheDelete:(id)arg1;
+- (struct _IMDAttachmentRecordStruct *)_loadAttachmentRecordForGUID:(id)arg1;
+- (id)_newFileTransferFromIMDAttachmentRecordRef:(struct _IMDAttachmentRecordStruct *)arg1;
+- (void)_reindexMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldEarlyReturnForWrongItemType:(id)arg1;
+- (BOOL)_transferCanBeMarkedPurgable:(id)arg1;
+- (BOOL)_updateAttachmentGUID:(id)arg1 withGUID:(id)arg2;
 - (BOOL)_updateLegacyTransferGUIDOnMessageIfNeeded:(id)arg1 andUpdateTransfer:(id)arg2;
 - (id)_updatedMessageBody:(id)arg1 replacingGuid:(id)arg2 withGuid:(id)arg3;
 - (id)attachmentWithGUID:(id)arg1;
@@ -29,7 +35,9 @@
 - (void)markFileAsPurgeable:(id)arg1;
 - (BOOL)removeAttachment:(id)arg1 fromMessageWithGUID:(id)arg2;
 - (BOOL)storeAttachment:(id)arg1 associateWithMessageWithGUID:(id)arg2;
+- (BOOL)storeAttachment:(id)arg1 associateWithMessageWithGUID:(id)arg2 chatGUID:(id)arg3 storeAtExternalLocation:(BOOL)arg4;
 - (BOOL)updateAttachment:(id)arg1;
+- (BOOL)updateAttachment:(id)arg1 chatGUID:(id)arg2 storeAtExternalPath:(BOOL)arg3;
 - (BOOL)updateLegacyTransferGUIDIfNeeded:(id)arg1;
 - (BOOL)updateLegacyTransferGUIDOnMessageIfNeeded:(id)arg1;
 

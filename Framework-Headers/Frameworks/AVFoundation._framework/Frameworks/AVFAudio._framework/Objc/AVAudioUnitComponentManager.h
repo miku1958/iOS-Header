@@ -19,7 +19,6 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)privateAllocInitSingleton;
 + (id)sharedAudioUnitComponentManager;
-- (id)autorelease;
 - (id)componentsMatchingDescription:(struct AudioComponentDescription)arg1;
 - (id)componentsMatchingPredicate:(id)arg1;
 - (id)componentsPassingTest:(CDUnknownBlockType)arg1;
@@ -27,9 +26,6 @@
 - (id)init;
 - (void)localeChanged:(id)arg1;
 - (void)registrationsChanged:(id)arg1;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
 
 @end
 

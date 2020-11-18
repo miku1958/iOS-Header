@@ -10,9 +10,6 @@
 {
 }
 
-@property (nonatomic, setter=_setIsLegacyFBSystemApp:) BOOL _isLegacyFBSystemApp; // @dynamic _isLegacyFBSystemApp;
-@property (copy, nonatomic, setter=_setRegisterLegacyPostInitCallbackBlock:) CDUnknownBlockType _registerLegacyPostInitCallbackBlock; // @dynamic _registerLegacyPostInitCallbackBlock;
-@property (copy, nonatomic, setter=_setRegisterPostCheckInPreServiceInitializationCallbackBlock:) CDUnknownBlockType _registerPostCheckInPreServiceInitializationCallbackBlock; // @dynamic _registerPostCheckInPreServiceInitializationCallbackBlock;
 @property (nonatomic) BOOL initializeReadyForInteraction; // @dynamic initializeReadyForInteraction;
 @property (copy, nonatomic) CDUnknownBlockType registerAdditionalServicesBlock; // @dynamic registerAdditionalServicesBlock;
 @property (nonatomic) BOOL resetDarkBootState; // @dynamic resetDarkBootState;

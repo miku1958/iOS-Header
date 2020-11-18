@@ -16,6 +16,7 @@
 {
     BOOL _isPerformingChanges;
     BOOL _invalidGadgets;
+    NSString *_identifier;
     id<PXGadgetProviderDelegate> _delegate;
     id<PXGadgetDelegate> _nextGadgetResponder;
     NSArray *_gadgets;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) id<PXGadgetTransition> gadgetTransition;
 @property (copy) NSArray *gadgets; // @synthesize gadgets=_gadgets;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL invalidGadgets; // @synthesize invalidGadgets=_invalidGadgets;
 @property (nonatomic) BOOL isPerformingChanges; // @synthesize isPerformingChanges=_isPerformingChanges;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder; // @synthesize nextGadgetResponder=_nextGadgetResponder;
@@ -45,9 +47,11 @@
 - (id)gadgetViewControllerHostingGadget:(id)arg1;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (void)insertGadgets:(id)arg1 atIndexes:(id)arg2;
 - (void)loadDataForGadgets;
 - (void)loadDataForPriority;
+- (void)pauseLoadingRemainingData;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)presentGadgetViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAllGadgets;

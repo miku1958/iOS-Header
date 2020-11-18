@@ -10,11 +10,12 @@
 #import <RemoteUI/RUIObjectModelDelegate-Protocol.h>
 #import <RemoteUI/RUIParserDelegate-Protocol.h>
 #import <RemoteUI/UINavigationControllerDelegate-Protocol.h>
+#import <RemoteUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, NSUUID, RUILoader, RUINavigationController, RUIPage, RUIStyle, UINavigationController, UIViewController;
 @protocol RemoteUIControllerDelegate;
 
-@interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate>
+@interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 {
     RUINavigationController *_modalNavigationController;
     NSMutableArray *_objectModels;
@@ -54,6 +55,7 @@
 - (void)_didPresentObjectModel:(id)arg1 modally:(BOOL)arg2;
 - (void)_didRemoveObjectModel:(id)arg1;
 - (void)_enableTestMode;
+- (void)_invalidateModalObjectModels;
 - (void)_loadURL:(id)arg1 fromObjectModel:(id)arg2 postBody:(id)arg3;
 - (void)_loadURL:(id)arg1 postBody:(id)arg2 fromObjectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_modalNavigationWasDismissed;
@@ -63,7 +65,9 @@
 - (BOOL)_objectModelPageWantsHSATokens:(id)arg1;
 - (id)_objectModelStack;
 - (id)_objectModels;
+- (void)_presentModalRUIController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removePreviousObjectModelsBackToIdentifier:(id)arg1;
+- (void)_replaceModalRUIController:(id)arg1 byController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_replaceObjectModelWithObjectModel:(id)arg1;
 - (void)_setHandlerWithKey:(id)arg1 forElementsMatching:(CDUnknownBlockType)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)_shouldAnimate;
@@ -78,9 +82,10 @@
 - (void)loadRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadURL:(id)arg1 postBody:(id)arg2;
 - (void)loadURL:(id)arg1 postBody:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)loader:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)loader:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 - (void)loader:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2;
+- (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2 forRequest:(id)arg3;
+- (void)loader:(id)arg1 loadResourcesForObjectModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 topActionSignal:(id)arg3;
 - (void)loader:(id)arg1 willLoadRequest:(id)arg2 redirectResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)objectModel:(id)arg1 didNavigateBackFromController:(id)arg2 withGesture:(BOOL)arg3;
@@ -92,6 +97,7 @@
 - (id)parser:(id)arg1 createPageWithName:(id)arg2 attributes:(id)arg3;
 - (id)popObjectModelAnimated:(BOOL)arg1;
 - (id)popObjectModelAnimated:(BOOL)arg1 stopListeningForHSATokens:(BOOL)arg2;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)pushObjectModel:(id)arg1 animated:(BOOL)arg2;
 - (void)refreshTopModelWithModel:(id)arg1;
 - (void)removeHandlerForKey:(id)arg1;

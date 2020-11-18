@@ -8,7 +8,7 @@
 
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class EDLocalActionPersistence, EDPersistenceDatabase, EDServerMessagePersistenceFactory, NSString;
+@class EDLocalActionPersistence, EDMessagePersistence, EDPersistenceDatabase, EDServerMessagePersistenceFactory, NSString;
 @protocol EDMessageChangeHookResponder, OS_dispatch_queue;
 
 @interface EDMessageChangeManager : NSObject <EFLoggable>
@@ -17,6 +17,7 @@
     EDLocalActionPersistence *_localActionPersistence;
     EDServerMessagePersistenceFactory *_serverMessagePersistenceFactory;
     NSObject<OS_dispatch_queue> *_markAllWorkQueue;
+    EDMessagePersistence *_messagePersistence;
     id<EDMessageChangeHookResponder> _hookResponder;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly, weak, nonatomic) id<EDMessageChangeHookResponder> hookResponder; // @synthesize hookResponder=_hookResponder;
 @property (readonly, nonatomic) EDLocalActionPersistence *localActionPersistence; // @synthesize localActionPersistence=_localActionPersistence;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *markAllWorkQueue; // @synthesize markAllWorkQueue=_markAllWorkQueue;
+@property (readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property (readonly, nonatomic) EDServerMessagePersistenceFactory *serverMessagePersistenceFactory; // @synthesize serverMessagePersistenceFactory=_serverMessagePersistenceFactory;
 @property (readonly) Class superclass;
 
@@ -37,7 +39,6 @@
 - (void)_handleFailedCopyItems:(id)arg1 transferAction:(id)arg2 generationWindow:(id)arg3;
 - (void)_handleFailedDownload:(id)arg1 generationWindow:(id)arg2;
 - (BOOL)_hookResponderRespondsToRequiredMethods:(id)arg1;
-- (void)_invokeHookResponderForDeletedMessages:(id)arg1 generationWindow:(id)arg2;
 - (BOOL)_needToStoreServerMessagesForMailboxURL:(id)arg1;
 - (BOOL)_persistResults:(id)arg1 forFlagChangeAction:(id)arg2;
 - (BOOL)_persistResults:(id)arg1 forLabelChangeAction:(id)arg2;
@@ -55,8 +56,9 @@
 - (void)deleteAllMessageFromMailboxes:(id)arg1 exceptMessages:(id)arg2;
 - (void)deleteMessages:(id)arg1;
 - (void)didFinishPersistenceDidAddMessages:(id)arg1;
+- (void)didReflectNewMessages:(id)arg1;
 - (id)init;
-- (id)initWithDatabase:(id)arg1 localActionPersistence:(id)arg2 serverMessagePersistenceFactory:(id)arg3 hookResponder:(id)arg4;
+- (id)initWithDatabase:(id)arg1 localActionPersistence:(id)arg2 messagePersistence:(id)arg3 serverMessagePersistenceFactory:(id)arg4 hookResponder:(id)arg5;
 - (BOOL)mailboxURL:(id)arg1 isInSameAccountAsMailboxURL:(id)arg2;
 - (BOOL)mailboxURLIsInRemoteAccount:(id)arg1;
 - (id)messagesToJournalForMessages:(id)arg1 inMailbox:(id)arg2;

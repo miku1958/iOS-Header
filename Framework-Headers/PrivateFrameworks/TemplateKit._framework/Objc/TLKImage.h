@@ -6,27 +6,30 @@
 
 #import <TemplateKit/TLKObject.h>
 
-@class UIImage;
+@class NSHashTable, UIImage;
 
 @interface TLKImage : TLKObject
 {
     BOOL _isTemplate;
-    BOOL _shouldCropToCircle;
     BOOL _useFastPathShadow;
     UIImage *_uiImage;
+    unsigned long long _cornerRoundingStyle;
     double _cornerRadius;
+    NSHashTable *_completionTable;
     struct CGSize _size;
 }
 
+@property (strong, nonatomic) NSHashTable *completionTable; // @synthesize completionTable=_completionTable;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (nonatomic) unsigned long long cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property (nonatomic) BOOL isTemplate; // @synthesize isTemplate=_isTemplate;
-@property (nonatomic) BOOL shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (strong, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
 @property (readonly, nonatomic) UIImage *uiImageToRender;
 @property (nonatomic) BOOL useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
 
 - (void).cxx_destruct;
+- (void)didLoadImageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithImage:(id)arg1;
 

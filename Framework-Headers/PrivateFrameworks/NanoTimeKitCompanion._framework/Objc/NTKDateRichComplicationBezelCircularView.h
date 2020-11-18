@@ -10,7 +10,6 @@
 {
 }
 
-- (id)_circularTemplateFromTemplate:(id)arg1;
 - (Class)_circularViewClassFromFromTemplate:(id)arg1;
 
 @end

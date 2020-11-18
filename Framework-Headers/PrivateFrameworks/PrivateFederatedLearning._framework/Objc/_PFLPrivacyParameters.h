@@ -11,6 +11,7 @@
 @interface _PFLPrivacyParameters : NSObject
 {
     NSString *_identifier;
+    BOOL _shouldUseCustomEpsilon;
     double _rho;
     double _precision;
     double _minCDProduct;
@@ -18,15 +19,18 @@
     double _normmax;
     unsigned long long _dimension;
     double _reconstructionProbability;
+    double _epsilon;
 }
 
 @property (nonatomic) unsigned long long dimension; // @synthesize dimension=_dimension;
+@property (nonatomic) double epsilon; // @synthesize epsilon=_epsilon;
 @property (nonatomic) long long maxRejection; // @synthesize maxRejection=_maxRejection;
 @property (nonatomic) double minCDProduct; // @synthesize minCDProduct=_minCDProduct;
 @property (nonatomic) double normmax; // @synthesize normmax=_normmax;
 @property (nonatomic) double precision; // @synthesize precision=_precision;
 @property (nonatomic) double reconstructionProbability; // @synthesize reconstructionProbability=_reconstructionProbability;
 @property (nonatomic) double rho; // @synthesize rho=_rho;
+@property (nonatomic) BOOL shouldUseCustomEpsilon; // @synthesize shouldUseCustomEpsilon=_shouldUseCustomEpsilon;
 
 - (void).cxx_destruct;
 - (id)initWithIdentifier:(id)arg1;

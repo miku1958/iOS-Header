@@ -35,6 +35,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)_callCompletionHandlersForAssetID:(id)arg1 interestToken:(id)arg2 error:(id)arg3;
 - (void)_completeRequestForAssetID:(id)arg1 withDownloadedURL:(id)arg2 remoteURL:(id)arg3 error:(id)arg4;
+- (void)_ensureAssetIsPurgeable:(id)arg1;
 - (id)_handleAssetDownloadFromNetwork:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_isAssetInCache:(id)arg1;
 - (id)_restoreBackgroundDownloadsWithCompletionHandler:(CDUnknownBlockType)arg1;

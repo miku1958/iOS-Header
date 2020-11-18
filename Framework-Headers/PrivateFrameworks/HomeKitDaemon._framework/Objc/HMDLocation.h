@@ -7,12 +7,13 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCLLocationManagerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMFMessageDispatcher, HMFTimer, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol HMDCLLocationManager, OS_dispatch_queue;
 
-@interface HMDLocation : HMFObject <HMFTimerDelegate, HMDCLLocationManagerDelegate>
+@interface HMDLocation : HMFObject <HMFLogging, HMFTimerDelegate, HMDCLLocationManagerDelegate>
 {
     BOOL _beingConfigured;
     int _locationAuthorized;
@@ -58,6 +59,7 @@
 + (id)bundleForLocationManager;
 + (id)findEvent:(id)arg1 withGeo:(id)arg2;
 + (BOOL)isValidLocation:(id)arg1;
++ (id)logCategory;
 + (id)nextSunriseTimeForLocation:(id)arg1 date:(id)arg2;
 + (id)nextSunsetTimeForLocation:(id)arg1 date:(id)arg2;
 + (id)sharedManager;
@@ -83,10 +85,10 @@
 - (void)deregisterForRegionUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithLocationManager:(id)arg1;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)registerForRegionUpdate:(id)arg1 withDelegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startExtractingBatchLocationsWithDelegate:(id)arg1;
 - (void)startExtractingSingleLocationWithDelegate:(id)arg1;

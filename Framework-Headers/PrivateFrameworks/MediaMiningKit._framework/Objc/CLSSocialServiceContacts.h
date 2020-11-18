@@ -8,14 +8,14 @@
 
 #import <MediaMiningKit/PVVisionIntegrating-Protocol.h>
 
-@class CLSContactCache, CLSPerson, CNContact, CNContactStore, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
+@class CLSContactCache, CLSPersonIdentity, CNContact, CNContactStore, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol CLSSocialServiceContactsDelegate;
 
 @interface CLSSocialServiceContacts : CLSSocialService <PVVisionIntegrating>
 {
     CNContactStore *_contactStore;
     CNContact *_meContact;
-    CLSPerson *_mePerson;
+    CLSPersonIdentity *_mePerson;
     NSMutableArray *_allPersons;
     NSMutableDictionary *_personsForCNIdentifiers;
     NSMutableDictionary *_personsForPHIdentifiers;
@@ -50,7 +50,6 @@
 - (id)_fullNameForPersonRecord:(id)arg1;
 - (id)_fullNameWithContact:(id)arg1;
 - (float)_fuzzyMatchingScoreBetweenNameComponents:(id)arg1 andNameComponents:(id)arg2;
-- (unsigned long long)_genderFromFaceGender:(unsigned short)arg1;
 - (id)_lastNameForPersonRecord:(id)arg1;
 - (id)_maidenNameForPersonRecord:(id)arg1;
 - (id)_nicknameForPersonRecord:(id)arg1;
@@ -60,6 +59,7 @@
 - (id)_personWithContactIdentifier:(id)arg1;
 - (id)_personsMatchingPredicate:(id)arg1;
 - (unsigned long long)_relationshipForContact:(id)arg1;
+- (unsigned long long)_sexFromFaceBiologicalSex:(unsigned short)arg1;
 - (id)cachedPersonLocalIdentifierMatchingContactPictureForContactIdentifier:(id)arg1;
 - (void)configureRequest:(id)arg1 algorithmUmbrellaVersion:(unsigned int)arg2;
 - (id)contactHistoryCollector;

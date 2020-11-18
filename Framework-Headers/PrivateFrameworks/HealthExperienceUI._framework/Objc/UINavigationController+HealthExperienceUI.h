@@ -10,6 +10,6 @@
 
 @interface UINavigationController (HealthExperienceUI) <UIInterfaceOrientationMaskOverride>
 - (unsigned long long)overrideMask;
-- (id)providedHealthStoreFor:(id)arg1;
+- (void)restoreUserActivityState:(id)arg1;
 @end
 

@@ -7,17 +7,20 @@
 #import <UIKit/UIViewController.h>
 
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
+#import <VideosUI/VUICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionConfiguration, VUICollectionView, VUIMenuDataSource, VUIMenuSectionHeaderCollectionViewCell;
+@class NSArray, NSString, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionConfiguration, VUICollectionView, VUIMenuDataSource, VUIMenuSectionHeaderCollectionViewCell, _UIDiffableDataSourceSectionController;
 @protocol VUIMenuCollectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIMenuCollectionViewController : UIViewController <UICollectionViewDelegate>
+@interface VUIMenuCollectionViewController : UIViewController <UICollectionViewDelegate, VUICollectionViewDelegate>
 {
+    BOOL _shouldShowLeftBarButton;
     BOOL _shouldShowBackButton;
     BOOL _shouldDeselectOnViewAppear;
     BOOL _shouldMarkFirstCategorySelected;
     BOOL _genresOnlyMenu;
+    BOOL _isDesignedForIpadEnabled;
     id<VUIMenuCollectionViewControllerDelegate> _delegate;
     VUIMenuDataSource *_categories;
     VUICollectionConfiguration *_collectionConfiguration;
@@ -27,6 +30,7 @@ __attribute__((visibility("hidden")))
     UICollectionViewDiffableDataSource *_diffableDataSource;
     NSArray *_mainMenuItems;
     NSArray *_genreMenuItems;
+    _UIDiffableDataSourceSectionController *_sectionController;
 }
 
 @property (strong, nonatomic) VUIMenuDataSource *categories; // @synthesize categories=_categories;
@@ -38,22 +42,31 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *genreMenuItems; // @synthesize genreMenuItems=_genreMenuItems;
 @property (nonatomic) BOOL genresOnlyMenu; // @synthesize genresOnlyMenu=_genresOnlyMenu;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isDesignedForIpadEnabled; // @synthesize isDesignedForIpadEnabled=_isDesignedForIpadEnabled;
 @property (strong, nonatomic) NSArray *mainMenuItems; // @synthesize mainMenuItems=_mainMenuItems;
 @property (strong, nonatomic) VUICollectionView *menuCollectionView; // @synthesize menuCollectionView=_menuCollectionView;
+@property (strong, nonatomic) _UIDiffableDataSourceSectionController *sectionController; // @synthesize sectionController=_sectionController;
 @property (strong, nonatomic) VUIMenuSectionHeaderCollectionViewCell *sectionHeaderSizingCell; // @synthesize sectionHeaderSizingCell=_sectionHeaderSizingCell;
 @property (nonatomic) BOOL shouldDeselectOnViewAppear; // @synthesize shouldDeselectOnViewAppear=_shouldDeselectOnViewAppear;
 @property (nonatomic) BOOL shouldMarkFirstCategorySelected; // @synthesize shouldMarkFirstCategorySelected=_shouldMarkFirstCategorySelected;
 @property (nonatomic) BOOL shouldShowBackButton; // @synthesize shouldShowBackButton=_shouldShowBackButton;
+@property (nonatomic) BOOL shouldShowLeftBarButton; // @synthesize shouldShowLeftBarButton=_shouldShowLeftBarButton;
 @property (strong, nonatomic) UICollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_applySnapshotsToSectionController:(BOOL)arg1;
+- (id)_backButton;
 - (void)_backSelected:(id)arg1;
 - (id)_createDiffableDataSource;
 - (id)_createDiffableDataSourceSnapshot;
+- (id)_leftBarButton;
+- (void)_leftBarButtonSelected:(id)arg1;
 - (BOOL)_menuHasContent;
+- (void)_selectFirstMenuItemIfNecessary;
+- (void)_setGenreMenuItemsForCategories:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
+- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
@@ -62,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (void)setTitle:(id)arg1;
 - (void)updateWithCategories:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

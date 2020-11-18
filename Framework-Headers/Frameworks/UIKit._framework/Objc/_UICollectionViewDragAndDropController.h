@@ -153,7 +153,6 @@ __attribute__((visibility("hidden")))
 - (id)sourceIndexPaths;
 - (void)transferOwnershipOfCellForDeferredReuseAfterDropAnimations:(id)arg1;
 - (void)updateAppearanceForCell:(id)arg1 atIndexPath:(id)arg2;
-- (void)updateAppearanceForCell:(id)arg1 withAppearance:(long long)arg2;
 - (void)updateReorderingTargetIndexPath:(id)arg1;
 - (BOOL)updateWillCauseInternalInconsistency:(id)arg1;
 

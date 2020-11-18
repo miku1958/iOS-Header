@@ -15,6 +15,7 @@
 + (id)_beachingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_birthdayCriteriaWithPersonIdentifier:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 + (id)_breakfastCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
++ (id)_climbingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_compulsoryRequiredTraitsFromBaseSceneNames:(id)arg1 leafSceneNames:(id)arg2;
 + (id)_concertCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_dinnerCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
@@ -47,6 +48,8 @@
 + (id)babyCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 + (id)curationCriteriaWithCollection:(id)arg1 meaningLabel:(id)arg2 inGraph:(id)arg3 client:(unsigned long long)arg4;
 + (id)curationCriteriaWithGraph:(id)arg1 seasonName:(id)arg2 client:(unsigned long long)arg3;
++ (id)foodieCurationCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
++ (id)foodieCurationCriteriaWithPersonLocalIdentifier:(id)arg1 graph:(id)arg2 client:(unsigned long long)arg3;
 + (id)petCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 + (id)tripCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 

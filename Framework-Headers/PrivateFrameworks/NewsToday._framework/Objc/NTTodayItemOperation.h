@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NSArray, NSDictionary, NSObject, NSSet, NTCatchUpOperationForYouFetchInfo;
+@class NSArray, NSDictionary, NSObject, NTCatchUpOperationForYouFetchInfo;
 @protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration, FCTodayPrivateData, NTTodayResultOperationInfoProviding;
 
 @interface NTTodayItemOperation : FCOperation
@@ -14,7 +14,6 @@
     NSDictionary *_catchUpOperationResultsBySectionDescriptor;
     id<FCNewsAppConfiguration> _appConfiguration;
     id<FCContentContext> _contentContext;
-    NSSet *_itemIDsOfLeadingCells;
     NSDictionary *_slotAllocationByDynamicSlotItemID;
     id<FCFeedPersonalizing> _feedPersonalizer;
     id<FCTodayPrivateData> _todayData;
@@ -34,7 +33,6 @@
 @property (copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property (strong, nonatomic) id<FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
 @property (copy, nonatomic) NTCatchUpOperationForYouFetchInfo *forYouFetchInfo; // @synthesize forYouFetchInfo=_forYouFetchInfo;
-@property (copy, nonatomic) NSSet *itemIDsOfLeadingCells; // @synthesize itemIDsOfLeadingCells=_itemIDsOfLeadingCells;
 @property (copy, nonatomic) id<NTTodayResultOperationInfoProviding> operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (strong, nonatomic) NSDictionary *resultAssetFileURLsByRemoteURL; // @synthesize resultAssetFileURLsByRemoteURL=_resultAssetFileURLsByRemoteURL;
 @property (strong, nonatomic) NSObject *resultAssetsHoldToken; // @synthesize resultAssetsHoldToken=_resultAssetsHoldToken;

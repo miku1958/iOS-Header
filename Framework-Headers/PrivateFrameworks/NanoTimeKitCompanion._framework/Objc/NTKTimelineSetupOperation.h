@@ -10,8 +10,6 @@
 
 @interface NTKTimelineSetupOperation : NTKTimelineDataOperation
 {
-    unsigned long long _directions;
-    NSDate *_startDate;
     NSDate *_endDate;
     unsigned long long _privacyBehavior;
     unsigned long long _timelineAnimationBehavior;
@@ -28,8 +26,6 @@
 - (void)_getCurrentEntry;
 - (void)_getEndDate;
 - (void)_getPrivacyBehavior;
-- (void)_getStartDate;
-- (void)_getTimeTravelDirections;
 - (void)_getTimelineAnimationBehavior;
 - (void)_invokeHandler;
 - (void)_start;

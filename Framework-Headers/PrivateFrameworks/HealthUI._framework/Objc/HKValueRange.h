@@ -23,7 +23,7 @@
 
 + (id)valueRangeWithMinValue:(id)arg1 maxValue:(id)arg2;
 - (void).cxx_destruct;
-- (BOOL)containsValue:(id)arg1;
+- (BOOL)containsValue:(id)arg1 exclusiveStart:(BOOL)arg2 exclusiveEnd:(BOOL)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;

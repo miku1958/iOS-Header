@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityAllowsSiblingsWhenOvergrown;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (void)_accessibilityZoomIn:(BOOL)arg1;
 - (BOOL)_axIsBackFacing;
 - (BOOL)_axIsFocusLocked;

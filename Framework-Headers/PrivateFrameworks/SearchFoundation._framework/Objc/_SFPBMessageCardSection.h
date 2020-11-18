@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBMessageCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBColor;
+@class NSArray, NSData, NSString, _SFPBColor, _SFPBMessageAttachment, _SFPBURL;
 
 @interface _SFPBMessageCardSection : PBCodable <_SFPBMessageCardSection, NSSecureCoding>
 {
@@ -25,8 +25,11 @@
     NSString *_type;
     _SFPBColor *_backgroundColor;
     NSString *_messageText;
+    _SFPBURL *_audioMessageURL;
+    _SFPBMessageAttachment *_messageAttachment;
 }
 
+@property (strong, nonatomic) _SFPBURL *audioMessageURL; // @synthesize audioMessageURL=_audioMessageURL;
 @property (strong, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,6 +38,7 @@
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (strong, nonatomic) _SFPBMessageAttachment *messageAttachment; // @synthesize messageAttachment=_messageAttachment;
 @property (nonatomic) int messageServiceType; // @synthesize messageServiceType=_messageServiceType;
 @property (nonatomic) int messageStatus; // @synthesize messageStatus=_messageStatus;
 @property (copy, nonatomic) NSString *messageText; // @synthesize messageText=_messageText;

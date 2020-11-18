@@ -12,18 +12,20 @@
 {
     long long _rootObjectIdentifier;
     unsigned long long _version;
+    unsigned long long _readVersion;
     TSPComponentObjectUUIDMap *_componentObjectUUIDMap;
     NSDictionary *_cachedDataMap;
 }
 
 @property (readonly, nonatomic) NSDictionary *cachedDataMap; // @synthesize cachedDataMap=_cachedDataMap;
 @property (readonly, nonatomic) TSPComponentObjectUUIDMap *componentObjectUUIDMap; // @synthesize componentObjectUUIDMap=_componentObjectUUIDMap;
+@property (readonly, nonatomic) unsigned long long readVersion; // @synthesize readVersion=_readVersion;
 @property (readonly, nonatomic) long long rootObjectIdentifier; // @synthesize rootObjectIdentifier=_rootObjectIdentifier;
 @property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 - (id)initWithContext:(id)arg1;
-- (id)initWithRootObject:(id)arg1 version:(unsigned long long)arg2 componentObjectUUIDMap:(id)arg3 cachedDataMap:(id)arg4;
+- (id)initWithRootObject:(id)arg1 version:(unsigned long long)arg2 readVersion:(unsigned long long)arg3 componentObjectUUIDMap:(id)arg4 cachedDataMap:(id)arg5;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 

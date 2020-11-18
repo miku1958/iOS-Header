@@ -60,6 +60,7 @@
 @property (nonatomic) short questionType; // @dynamic questionType;
 @property (strong, nonatomic) NSSet *rejectedFaces; // @dynamic rejectedFaces;
 @property (strong, nonatomic) NSSet *rejectedFacesNeedingFaceCrops; // @dynamic rejectedFacesNeedingFaceCrops;
+@property (nonatomic) unsigned short suggestedForClientType; // @dynamic suggestedForClientType;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @dynamic type;
@@ -99,7 +100,7 @@
 + (id)predicateForPersonsNeedingFaceCropGenerationForFaceObjectID:(id)arg1;
 + (id)predicateForVisibleKeyFace;
 + (BOOL)resetAllInLibrary:(id)arg1 error:(id *)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 - (void)_basicMergePersons:(id)arg1;
 - (id)_nameRelatedMetadataKeys;
 - (void)_refreshRelationshipForKey:(id)arg1;
@@ -108,6 +109,7 @@
 - (id)cplPersonChange;
 - (id)debugLogDescription;
 - (BOOL)dedupeGraphPersons:(id)arg1 error:(id *)arg2;
+- (void)disconnectFaceGroup;
 - (id)faceGroupDescription;
 - (id)finalMergeTargetPerson;
 - (BOOL)isSyncableChange;

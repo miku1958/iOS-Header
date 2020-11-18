@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *titleViewRenderer;
     MISSING_TYPE *titleViewLayoutAttributesFactory;
+    MISSING_TYPE *toolbarManager;
     MISSING_TYPE *titleView;
 }
 

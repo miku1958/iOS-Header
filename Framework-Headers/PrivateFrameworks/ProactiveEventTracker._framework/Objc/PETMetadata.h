@@ -18,8 +18,10 @@
     NSString *_country;
     NSString *_device;
     NSString *_language;
+    NSString *_messageGroup;
     NSString *_platform;
     NSString *_pseudoDeviceId;
+    BOOL _isConfigEnabled;
     BOOL _isGm;
     BOOL _isInternal;
     BOOL _isInternalCarry;
@@ -29,6 +31,7 @@
     struct {
         unsigned int uploadTime:1;
         unsigned int configVersion:1;
+        unsigned int isConfigEnabled:1;
         unsigned int isGm:1;
         unsigned int isInternal:1;
         unsigned int isInternalCarry:1;
@@ -46,6 +49,7 @@
 @property (nonatomic) BOOL hasConfigVersion;
 @property (readonly, nonatomic) BOOL hasCountry;
 @property (readonly, nonatomic) BOOL hasDevice;
+@property (nonatomic) BOOL hasIsConfigEnabled;
 @property (nonatomic) BOOL hasIsGm;
 @property (nonatomic) BOOL hasIsInternal;
 @property (nonatomic) BOOL hasIsInternalCarry;
@@ -53,9 +57,11 @@
 @property (nonatomic) BOOL hasIsTestingData;
 @property (nonatomic) BOOL hasIsTrialUpload;
 @property (readonly, nonatomic) BOOL hasLanguage;
+@property (readonly, nonatomic) BOOL hasMessageGroup;
 @property (readonly, nonatomic) BOOL hasPlatform;
 @property (readonly, nonatomic) BOOL hasPseudoDeviceId;
 @property (nonatomic) BOOL hasUploadTime;
+@property (nonatomic) BOOL isConfigEnabled; // @synthesize isConfigEnabled=_isConfigEnabled;
 @property (nonatomic) BOOL isGm; // @synthesize isGm=_isGm;
 @property (nonatomic) BOOL isInternal; // @synthesize isInternal=_isInternal;
 @property (nonatomic) BOOL isInternalCarry; // @synthesize isInternalCarry=_isInternalCarry;
@@ -63,6 +69,7 @@
 @property (nonatomic) BOOL isTestingData; // @synthesize isTestingData=_isTestingData;
 @property (nonatomic) BOOL isTrialUpload; // @synthesize isTrialUpload=_isTrialUpload;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (strong, nonatomic) NSString *messageGroup; // @synthesize messageGroup=_messageGroup;
 @property (strong, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NSString *pseudoDeviceId; // @synthesize pseudoDeviceId=_pseudoDeviceId;
 @property (nonatomic) unsigned long long uploadTime; // @synthesize uploadTime=_uploadTime;

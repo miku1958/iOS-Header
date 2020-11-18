@@ -35,9 +35,10 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (struct TSTCellUID)_nextCellUID_NoDispatch;
 - (id)initWithCellUIDList:(id)arg1;
 - (struct TSTCellUID)nextCellUID;
+- (BOOL)nextCellUIDsBatch:(vector_0c3ec296 *)arg1 batchSize:(unsigned long long)arg2;
 - (UUIDData_5fbc143e)p_nextCellRefIdWithUIDIndexList:(const vector_12bd641b *)arg1 UIDs:(const vector_4dc5f307 *)arg2 index:(unsigned long long *)arg3 remainDup:(unsigned long long *)arg4 lastDiffPos:(unsigned long long *)arg5 recentResults:(deque_5668141c *)arg6;
 
 @end

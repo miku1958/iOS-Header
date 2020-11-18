@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface VCSessionParticipantRemote : VCSessionParticipant <VCSessionDownlinkBandwidthAllocatorClient>
 {
     NSNumber *_optedInVideoStreamID;
+    NSNumber *_previousOptedInVideoStreamID;
     NSNumber *_optedInAudioStreamID;
     unsigned short _activeDownlinkVideoStreamID;
     unsigned short _activeDownlinkAudioStreamID;
     BOOL _remoteVideoEnabled;
     BOOL _remoteVideoPaused;
+    BOOL _receivedFirstFrame;
     unsigned char _videoQuality;
     unsigned int _visibilityIndex;
     unsigned int _prominenceIndex;
@@ -32,7 +34,7 @@ __attribute__((visibility("hidden")))
     BOOL _videoSuspended;
     BOOL _isRedundancyRequested;
     BOOL _isRemoteMediaStalled;
-    struct _VCSessionParticipantProminenceInfo _prominenceInfo;
+    struct _VCSessionParticipantMediaPriorityInfo _mediaPriorityInfo;
     TimingCollection *_perfTimers;
     BOOL _haveReportedPerfTimers;
     struct _VCSessionParticipantSourceIO _sourceIO;
@@ -66,11 +68,12 @@ __attribute__((visibility("hidden")))
 - (void)collectAudioChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (BOOL)configureAudioIOWithDeviceRole:(int)arg1;
+- (BOOL)configureWithOneToOneParticipantConfig:(id)arg1;
 - (void)dealloc;
 - (void)debounceAudioPriority:(unsigned char)arg1;
 - (id)entryForStreamID:(id)arg1;
 - (id)getAudioDumpName;
-- (id)initWithIDSDestination:(id)arg1 idsParticipantID:(unsigned long long)arg2 mediaNegotiator:(id)arg3 opaqueData:(id)arg4 delegate:(id)arg5 processId:(int)arg6 transportSessionID:(unsigned int)arg7 sessionUUID:(id)arg8 config:(id)arg9;
+- (id)initWithIDSDestination:(id)arg1 idsParticipantID:(unsigned long long)arg2 mediaNegotiator:(id)arg3 opaqueData:(id)arg4 delegate:(id)arg5 processId:(int)arg6 transportSessionID:(unsigned int)arg7 sessionUUID:(id)arg8 config:(id)arg9 isGKVoiceChat:(BOOL)arg10;
 - (BOOL)isAudioActive;
 - (BOOL)isVideoActive;
 - (void)negotiateAudioRules:(id)arg1;
@@ -93,11 +96,14 @@ __attribute__((visibility("hidden")))
 - (void)setShouldEnableFaceZoom:(BOOL)arg1;
 - (void)setVideoDegraded:(BOOL)arg1;
 - (void)setVideoPaused:(BOOL)arg1;
-- (BOOL)setupAudioStreamConfiguration:(id)arg1 audioRules:(id)arg2;
 - (BOOL)setupAudioStreamFromMediaBlobWithIDSDestination:(id)arg1;
+- (BOOL)setupAudioStreamMultiwayConfigurations:(id)arg1;
+- (BOOL)setupAudioStreamOneToOneConfigurations:(id)arg1;
 - (BOOL)setupBandwidthAllocationTableForMediaStreamConfigs:(id)arg1 entryType:(unsigned char)arg2;
 - (id)setupStreamRTP:(id)arg1;
 - (BOOL)setupVideoStreamFromMediaBlobWithIDSDestination:(id)arg1;
+- (BOOL)setupVideoStreamMultiwayConfigurations:(id)arg1;
+- (BOOL)setupVideoStreamOneToOneConfigurations:(id)arg1;
 - (void)stopAudioIOCompletion;
 - (void)updateAudioSpectrumState;
 - (void)updateDownlinkBandwithAllocatorClientConfigurations:(id)arg1;

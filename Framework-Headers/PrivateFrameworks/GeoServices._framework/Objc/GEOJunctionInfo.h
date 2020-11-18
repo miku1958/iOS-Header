@@ -51,7 +51,10 @@
 - (id)dictionaryRepresentation;
 - (id)drivingSideAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
 - (id)junctionTypeAsString:(int)arg1;
 - (id)maneuverTypeAsString:(int)arg1;

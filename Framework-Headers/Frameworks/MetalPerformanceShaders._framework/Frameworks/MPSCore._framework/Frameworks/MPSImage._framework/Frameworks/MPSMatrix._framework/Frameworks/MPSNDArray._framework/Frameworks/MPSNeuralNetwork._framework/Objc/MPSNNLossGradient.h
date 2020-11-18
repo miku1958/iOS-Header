@@ -6,11 +6,15 @@
 
 #import <MPSNeuralNetwork/MPSCNNBinaryKernel.h>
 
-@protocol MPSNNLossCallback;
+@class MPSMatrix;
+@protocol MPSNNLossCallback, MTLTexture;
 
 @interface MPSNNLossGradient : MPSCNNBinaryKernel
 {
+    BOOL _reduceAcrossBatch;
     id<MPSNNLossCallback> _propertyCallback;
+    MPSMatrix *_reductionBuffer;
+    id<MTLTexture> _firstLossGradientImage;
     BOOL _computeLabelGradients;
     unsigned int _lossType;
     int _reductionType;
@@ -27,10 +31,11 @@
 @property (nonatomic) float labelSmoothing; // @synthesize labelSmoothing=_labelSmoothing;
 @property (readonly, nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 @property (readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
+@property (readonly, nonatomic) BOOL reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property (readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property (nonatomic) float weight; // @synthesize weight=_weight;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

@@ -17,6 +17,7 @@
     BOOL _forcePayment;
     BOOL _persistentCardEmulation;
     BOOL _wasAutomaticallySelected;
+    BOOL _forcedFromButton;
     BOOL _limitServerLoad;
     NSArray *_additionalPassUniqueIdentifiers;
     id<NSCopying> _userInfo;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL animated; // @synthesize animated=_animated;
 @property (nonatomic, getter=isFieldDetect) BOOL fieldDetect; // @synthesize fieldDetect=_fieldDetect;
 @property (nonatomic, getter=wantsForcedPayment) BOOL forcePayment; // @synthesize forcePayment=_forcePayment;
+@property (nonatomic, getter=wasForcedFromButton) BOOL forcedFromButton; // @synthesize forcedFromButton=_forcedFromButton;
 @property (nonatomic) BOOL limitServerLoad; // @synthesize limitServerLoad=_limitServerLoad;
 @property (nonatomic, getter=wantsPersistentCardEmulation) BOOL persistentCardEmulation; // @synthesize persistentCardEmulation=_persistentCardEmulation;
 @property (nonatomic, getter=isPostPayment) BOOL postPayment; // @synthesize postPayment=_postPayment;

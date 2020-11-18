@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_containerID;
     NSSet *_identifiers;
+    NSSet *_supportedFileTypes;
     NSExtension *_extension;
     NSString *_containerPath;
     NSString *_extensionID;
@@ -31,12 +32,14 @@
 @property (readonly) BOOL isEnabled;
 @property (readonly) BOOL isInternal;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (copy) NSSet *supportedFileTypes; // @synthesize supportedFileTypes=_supportedFileTypes;
 
 - (void).cxx_destruct;
 - (void)_performJob:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_verifyIntegrityWithHostContext:(id)arg1;
 - (id)description;
 - (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4;
+- (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4 supportedFileTypes:(id)arg5;
 - (void)performJob:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end

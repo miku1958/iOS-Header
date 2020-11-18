@@ -15,12 +15,12 @@
 + (id)sectionIdentifier;
 + (id)sectionTitle;
 + (BOOL)supportsMenuInteraction;
-+ (BOOL)supportsQuicklook;
++ (BOOL)supportsQuicklookForResult:(id)arg1;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;
+- (id)customLayoutSectionForEnvironment:(id)arg1;
 - (id)fetchAttributes;
-- (id)layoutGroupWithEnvironment:(id)arg1;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
 - (id)queryAttributesForText:(id)arg1;
 - (void)searchWithText:(id)arg1 mode:(unsigned long long)arg2;

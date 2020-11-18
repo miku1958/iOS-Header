@@ -8,7 +8,6 @@
 
 @class UINavigationItem, _UINavigationBarLayout;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationBarItemStackEntry : NSObject
 {
     BOOL _searchActive;

@@ -16,7 +16,7 @@
 @property (strong, nonatomic) UIView *underlineView; // @synthesize underlineView=_underlineView;
 
 + (BOOL)requiresConstraintBasedLayout;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

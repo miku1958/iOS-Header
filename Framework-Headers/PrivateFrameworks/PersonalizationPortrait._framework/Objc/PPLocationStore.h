@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) NSString *clientIdentifier; // @dynamic clientIdentifier;
 
++ (id)_mergedThoroughfareForThorughfare:(id)arg1 subThoroughfare:(id)arg2 subPremises:(id)arg3;
 + (id)defaultStore;
 + (id)describeLocationConsumer:(unsigned long long)arg1;
 + (id)placemarkWithLatitudeDegrees:(id)arg1 longitudeDegrees:(id)arg2 name:(id)arg3 thoroughfare:(id)arg4 subthoroughFare:(id)arg5 locality:(id)arg6 subLocality:(id)arg7 administrativeArea:(id)arg8 subAdministrativeArea:(id)arg9 postalCode:(id)arg10 countryCode:(id)arg11 country:(id)arg12 inlandWater:(id)arg13 ocean:(id)arg14 areasOfInterest:(id)arg15;

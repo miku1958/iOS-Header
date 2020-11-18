@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)completedWithResults:(id)arg1 error:(id)arg2;
-- (id)initWithHealthStore:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithHealthStore:(id)arg1 operationDescription:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startOperationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopOperation;
 

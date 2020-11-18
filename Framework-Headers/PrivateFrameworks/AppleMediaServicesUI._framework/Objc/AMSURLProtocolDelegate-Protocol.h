@@ -6,7 +6,7 @@
 
 #import <AppleMediaServicesUI/NSObject-Protocol.h>
 
-@class ACAccount, AMSAuthenticateRequest, AMSDialogRequest, AMSURLSession, NSDictionary, NSError, NSURLSessionTask;
+@class ACAccount, AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, AMSURLSession, NSDictionary, NSError, NSURLSessionTask;
 
 @protocol AMSURLProtocolDelegate <NSObject>
 
@@ -18,6 +18,7 @@
 - (BOOL)AMSURLSession:(AMSURLSession *)arg1 shouldHandleDialogDictionary:(NSDictionary *)arg2;
 - (void)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 handleAuthenticateRequest:(AMSAuthenticateRequest *)arg3 completion:(void (^)(AMSAuthenticateResult *, NSError *))arg4;
 - (void)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 handleDialogRequest:(AMSDialogRequest *)arg3 completion:(void (^)(AMSDialogResult *, NSError *))arg4;
+- (void)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 handleEngagementRequest:(AMSEngagementRequest *)arg3 completion:(void (^)(AMSEngagementResult *, NSError *))arg4;
 - (BOOL)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 shouldFailWithServerError:(NSError *)arg3;
 @end
 

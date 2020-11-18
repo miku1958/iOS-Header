@@ -13,17 +13,26 @@
 
 @property (nonatomic, getter=isContentManaged) BOOL contentManaged; // @synthesize contentManaged=_contentManaged;
 
++ (id)userInterfaceProtocol;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
-- (void)generateContentForIntents:(CDUnknownBlockType)arg1;
+- (BOOL)checkManagementLevel:(id)arg1 error:(id *)arg2;
+- (void)generateBodyFromCollection:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateEmailFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateFilesFromCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)generatedAccessResource;
-- (void)getRecipientsFromParameterKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRecipientsFromParameterValue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleWatchResponse:(id)arg1;
+- (BOOL)parameterCombinationForIntentSupportsBackgroundExecution:(id)arg1;
 - (BOOL)populatesInputFromInputParameter;
+- (void)prepareEmailContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)prioritizedParameterKeysForRemoteExecution;
+- (id)requiredResourcesForIntentAvailableResource;
+- (BOOL)requiresRemoteExecution;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 
 @end
 

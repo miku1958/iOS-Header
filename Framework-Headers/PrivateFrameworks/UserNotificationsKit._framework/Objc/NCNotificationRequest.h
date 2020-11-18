@@ -31,6 +31,7 @@
     NSDictionary *_context;
     NSSet *_settingsSections;
     NCNotificationSound *_sound;
+    NCNotificationAction *_cancelAction;
     NCNotificationAction *_clearAction;
     NCNotificationAction *_closeAction;
     NCNotificationAction *_defaultAction;
@@ -43,6 +44,7 @@
     BOOL _criticalAlert;
 }
 
+@property (readonly, nonatomic) NCNotificationAction *cancelAction; // @synthesize cancelAction=_cancelAction;
 @property (readonly, copy, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (readonly, nonatomic) NCNotificationAction *clearAction; // @synthesize clearAction=_clearAction;
 @property (readonly, nonatomic) NCNotificationAction *closeAction; // @synthesize closeAction=_closeAction;

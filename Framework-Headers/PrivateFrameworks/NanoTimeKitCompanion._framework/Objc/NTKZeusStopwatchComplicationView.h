@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKZeusFramedComplicationView.h>
+#import <NanoTimeKitCompanion/NTKZeusComplicationView.h>
 
 #import <NanoTimeKitCompanion/NTKStopwatchComplicationDisplay-Protocol.h>
 
 @class NSString, NTKColoringLabel;
 @protocol NTKComplicationDisplayObserver;
 
-@interface NTKZeusStopwatchComplicationView : NTKZeusFramedComplicationView <NTKStopwatchComplicationDisplay>
+@interface NTKZeusStopwatchComplicationView : NTKZeusComplicationView <NTKStopwatchComplicationDisplay>
 {
     NTKColoringLabel *_label;
     long long _stopwatchState;
@@ -31,8 +31,9 @@
 - (void)applyPalette:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 - (void)layoutSubviews;
+- (struct CGRect)padContentFrame:(struct CGRect)arg1;
 - (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(BOOL)arg3 timeTravelDate:(id)arg4;
 
 @end

@@ -6,11 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationCornerBaseCircularView.h>
 
-@class NTKWorkoutRichComplicationBaseCircularView;
+@class NTKWorkoutRichComplicationCircularContentView;
 
 @interface NTKWorkoutRichComplicationCornerView : NTKRichComplicationCornerBaseCircularView
 {
-    NTKWorkoutRichComplicationBaseCircularView *_richView;
+    NTKWorkoutRichComplicationCircularContentView *_richView;
 }
 
 - (void).cxx_destruct;

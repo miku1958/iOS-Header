@@ -18,8 +18,10 @@
     BOOL _didGenerateGadgets;
     PXMessagesExtensionViewModel *_viewModel;
     NSArray *_suggestionGadgets;
+    double _contentHeightAdjustment;
 }
 
+@property (nonatomic) double contentHeightAdjustment; // @synthesize contentHeightAdjustment=_contentHeightAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,10 +32,12 @@
 - (void).cxx_destruct;
 - (id)_createSuggestionGadgetWithSuggestion:(id)arg1;
 - (void)_setDataSource:(id)arg1 changes:(id)arg2;
+- (void)_updateNoContentGadgetIfNeeded;
 - (void)didSelectSuggestionGadget:(id)arg1;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (id)initWithViewModel:(id)arg1 suggestionsDataSourceManager:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 

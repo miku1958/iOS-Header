@@ -12,32 +12,34 @@
 
 @interface AFUISceneConfiguration : NSObject <NSCopying>
 {
-    FBSDisplayConfiguration *_displayConfigruation;
+    FBSDisplayConfiguration *_displayConfiguration;
     BOOL _foreground;
-    BOOL _takeAssertionsWhenInBackground;
     BOOL _cancelSceneLoadingAfterTimeout;
     long long _launchIntent;
     long long _preferredDeferralMode;
     double _sceneLoadingTimeOutDuration;
     FBSSceneParameters *_sceneParameters;
     long long _userInterfaceStyle;
+    unsigned long long _deactivationReasonMask;
     struct CGRect _initialBounds;
+    struct UIEdgeInsets _initialSafeAreaInsets;
     struct CGRect _bounds;
 }
 
 @property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (nonatomic) BOOL cancelSceneLoadingAfterTimeout; // @synthesize cancelSceneLoadingAfterTimeout=_cancelSceneLoadingAfterTimeout;
+@property (nonatomic) unsigned long long deactivationReasonMask; // @synthesize deactivationReasonMask=_deactivationReasonMask;
 @property (nonatomic) BOOL foreground; // @synthesize foreground=_foreground;
 @property (readonly, nonatomic) struct CGRect initialBounds; // @synthesize initialBounds=_initialBounds;
+@property (nonatomic) struct UIEdgeInsets initialSafeAreaInsets; // @synthesize initialSafeAreaInsets=_initialSafeAreaInsets;
 @property (nonatomic) long long launchIntent; // @synthesize launchIntent=_launchIntent;
 @property (nonatomic) long long preferredDeferralMode; // @synthesize preferredDeferralMode=_preferredDeferralMode;
 @property (nonatomic) double sceneLoadingTimeOutDuration; // @synthesize sceneLoadingTimeOutDuration=_sceneLoadingTimeOutDuration;
 @property (copy, nonatomic) FBSSceneParameters *sceneParameters; // @synthesize sceneParameters=_sceneParameters;
-@property (nonatomic) BOOL takeAssertionsWhenInBackground; // @synthesize takeAssertionsWhenInBackground=_takeAssertionsWhenInBackground;
 @property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 
 + (id)defaultSiriSceneConfigurationWithInitialBounds:(struct CGRect)arg1 onDisplay:(id)arg2;
-+ (id)stringForDeactivationReason:(unsigned long long)arg1;
++ (id)stringForInvalidationReason:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_initWithInitialBounds:(struct CGRect)arg1 displayConfiguration:(id)arg2;
 - (void)_setupPlatformSpecificDefaultSettings;

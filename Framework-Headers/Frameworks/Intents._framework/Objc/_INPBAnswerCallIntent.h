@@ -14,14 +14,15 @@
 
 @interface _INPBAnswerCallIntent : PBCodable <_INPBAnswerCallIntent, NSSecureCoding, NSCopying>
 {
-    struct _has;
-    BOOL __encodeLegacyGloryData;
+    CDStruct_fbf2c6cd _has;
+    int _audioRoute;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasAudioRoute;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
@@ -29,6 +30,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsAudioRoute:(id)arg1;
+- (id)audioRouteAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

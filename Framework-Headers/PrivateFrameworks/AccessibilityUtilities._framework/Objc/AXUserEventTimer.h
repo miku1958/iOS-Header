@@ -17,6 +17,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (BOOL)_canUseIdleTimerServices;
 - (void)_startTrackingPoorMansAssertion:(id)arg1;
 - (void)_stopTrackingPoorMansAssertion:(id)arg1;
 - (id)acquireAssertionToDisableIdleTimerWithReason:(id)arg1;

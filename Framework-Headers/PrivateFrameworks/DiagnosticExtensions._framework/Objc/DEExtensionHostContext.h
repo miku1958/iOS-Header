@@ -24,6 +24,9 @@
 - (void)attachmentListWithHandler:(CDUnknownBlockType)arg1;
 - (void)attachmentsForParameters:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasEntitlement;
+- (void)isExtensionEnhancedLoggingStateOnWithHandler:(CDUnknownBlockType)arg1;
+- (void)setupForParameters:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)teardownForParameters:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 
 @end
 

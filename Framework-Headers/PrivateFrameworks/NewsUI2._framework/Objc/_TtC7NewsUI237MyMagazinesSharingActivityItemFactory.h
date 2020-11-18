@@ -13,6 +13,7 @@
     MISSING_TYPE *sharingActivityItemFactory;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *issueSubscriptionController;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

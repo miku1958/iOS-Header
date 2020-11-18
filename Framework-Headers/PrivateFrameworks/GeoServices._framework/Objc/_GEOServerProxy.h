@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_setServer:(id)arg1 daemon:(id)arg2;
 - (id)description;
-- (BOOL)handleIncomingMessage:(id)arg1 fromPeer:(id)arg2;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToServerProxy:(id)arg1;

@@ -6,17 +6,19 @@
 
 #import <ScreenTimeSettingsUI/STPINListViewController.h>
 
-@class STEnableScreenTimeGroupSpecifierProvider, STScreenTimeGroupSpecifierProvider;
+@class STEnableScreenTimeGroupSpecifierProvider, STNoUsageReportedGroupSpecifierProvider, STScreenTimeGroupSpecifierProvider;
 
 __attribute__((visibility("hidden")))
 @interface STRootViewController : STPINListViewController
 {
     BOOL _shouldRefreshUsageData;
     STEnableScreenTimeGroupSpecifierProvider *_enableScreenTimeGroupSpecifierProvider;
+    STNoUsageReportedGroupSpecifierProvider *_noUsageReportedGroupSpecifierProvider;
     STScreenTimeGroupSpecifierProvider *_screenTimeGroupSpecifierProvider;
 }
 
 @property (readonly) STEnableScreenTimeGroupSpecifierProvider *enableScreenTimeGroupSpecifierProvider; // @synthesize enableScreenTimeGroupSpecifierProvider=_enableScreenTimeGroupSpecifierProvider;
+@property (readonly) STNoUsageReportedGroupSpecifierProvider *noUsageReportedGroupSpecifierProvider; // @synthesize noUsageReportedGroupSpecifierProvider=_noUsageReportedGroupSpecifierProvider;
 @property (readonly) STScreenTimeGroupSpecifierProvider *screenTimeGroupSpecifierProvider; // @synthesize screenTimeGroupSpecifierProvider=_screenTimeGroupSpecifierProvider;
 @property (nonatomic) BOOL shouldRefreshUsageData; // @synthesize shouldRefreshUsageData=_shouldRefreshUsageData;
 
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRootViewModelCoordinator:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

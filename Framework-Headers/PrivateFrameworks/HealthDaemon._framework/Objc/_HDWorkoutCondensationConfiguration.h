@@ -8,6 +8,7 @@
 
 @class HDProfile, HDSQLitePredicate, _HDWorkoutCondenserAnalyticsAccumulator;
 
+__attribute__((visibility("hidden")))
 @interface _HDWorkoutCondensationConfiguration : NSObject
 {
     HDProfile *_profile;

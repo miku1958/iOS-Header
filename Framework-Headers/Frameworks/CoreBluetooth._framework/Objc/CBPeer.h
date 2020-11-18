@@ -38,7 +38,9 @@
 - (void)handleMTUChanged:(id)arg1;
 - (void)handleMsg:(int)arg1 args:(id)arg2;
 - (BOOL)hasTag:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithInfo:(id)arg1 manager:(id)arg2;
+- (id)peerStateToString:(long long)arg1;
 - (void)sendInternalMsg:(int)arg1 args:(id)arg2;
 - (id)sendInternalSyncMsg:(int)arg1 args:(id)arg2;
 - (void)tag:(id)arg1;

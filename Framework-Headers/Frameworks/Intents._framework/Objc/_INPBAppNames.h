@@ -15,14 +15,12 @@
 @interface _INPBAppNames : PBCodable <_INPBAppNames, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_appName;
     NSString *_axSpokenName;
     NSString *_displayName;
     NSString *_spotlightName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (copy, nonatomic) NSString *axSpokenName; // @synthesize axSpokenName=_axSpokenName;
 @property (readonly, copy) NSString *debugDescription;

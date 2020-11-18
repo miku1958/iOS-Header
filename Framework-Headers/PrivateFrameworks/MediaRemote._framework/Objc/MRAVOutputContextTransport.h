@@ -6,7 +6,7 @@
 
 #import <MediaRemote/MRExternalDeviceTransport.h>
 
-@class AVOutputContext, AVOutputDevice, MRAVInputStream, MRAVOutputDevice, MRAVOutputStream, NSError, NSObject, _MRDeviceInfoMessageProtobuf;
+@class AVOutputContext, AVOutputDevice, MRAVInputStream, MRAVOutputDevice, MRAVOutputStream, MRDeviceInfo, NSError, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface MRAVOutputContextTransport : MRExternalDeviceTransport
@@ -14,7 +14,7 @@
     unsigned long long _state;
     NSObject<OS_dispatch_queue> *_serialQueue;
     AVOutputContext *_outputContext;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     NSError *_error;
     MRAVInputStream *_inputStream;
     MRAVOutputStream *_outputStream;
@@ -27,18 +27,12 @@
 @property (readonly, nonatomic) MRAVOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
 
 - (void).cxx_destruct;
-- (void)_destroyRemoteControlContext;
-- (id)_onQueue_createRemoteControlContextWithID:(id)arg1;
-- (void)_onQueue_initializeOutputContext;
-- (void)_onQueue_resetStreams;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
-- (void)_registerNotificationsForOutputContext:(id)arg1;
-- (void)_unregisterNotificationsForOutputContext:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)deviceInfo;
 - (id)error;
-- (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (id)hostname;
 - (id)initWithOutputDevice:(id)arg1 avOutputDevice:(id)arg2 connectionType:(long long)arg3;
 - (id)name;

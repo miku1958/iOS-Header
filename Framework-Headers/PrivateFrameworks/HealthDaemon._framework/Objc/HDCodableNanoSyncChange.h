@@ -37,6 +37,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL done;
+@property (readonly, nonatomic) long long encodedByteCount;
 @property (nonatomic) long long endAnchor; // @synthesize endAnchor=_endAnchor;
 @property (strong, nonatomic) HDCodableEntityIdentifier *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property (nonatomic) BOOL hasComplete;

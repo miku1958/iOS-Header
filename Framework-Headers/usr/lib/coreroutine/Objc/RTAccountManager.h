@@ -36,7 +36,6 @@
 @property (nonatomic) BOOL siriCloudSyncEnabled; // @synthesize siriCloudSyncEnabled=_siriCloudSyncEnabled;
 @property (strong, nonatomic) AFPreferences *siriPreferences; // @synthesize siriPreferences=_siriPreferences;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)supportsNotificationName:(id)arg1;
 - (void).cxx_destruct;
 - (void)_handleSiriCloudSyncPreferenceChangedNotification;

@@ -19,6 +19,8 @@
     BOOL _isBlankForKeyboardInsertion;
     BOOL _suppressAutomaticNamedReferenceInvalidation;
     BOOL _isCategoryRef;
+    BOOL _hasCachedIsValidReference;
+    BOOL _cachedIsValidReference;
     TSCECalculationEngine *_calcEngine;
     TSTUIDRectRef *_uidRectRef;
     TSTReferenceColorHelper *_referenceColorHelper;
@@ -30,12 +32,14 @@
 @property (readonly) struct TSCERangeCoordinate baseBoundingBox;
 @property (nonatomic) unsigned char basePreserveFlags;
 @property (readonly) struct TSUModelCellCoord baseTopLeftCoord;
+@property (nonatomic) BOOL cachedIsValidReference; // @synthesize cachedIsValidReference=_cachedIsValidReference;
 @property (readonly, weak, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property (nonatomic) struct TSCECategoryRef categoryRef; // @synthesize categoryRef=_categoryRef;
 @property (readonly, nonatomic) UUIDData_5fbc143e categoryRefTableUID;
 @property (readonly, nonatomic) TSKChangeNotifier *changeNotifier;
 @property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
 @property (readonly, nonatomic) TSTGroupBy *groupBy;
+@property (nonatomic) BOOL hasCachedIsValidReference; // @synthesize hasCachedIsValidReference=_hasCachedIsValidReference;
 @property (nonatomic) struct TSCECellRef hostCellRef; // @synthesize hostCellRef=_hostCellRef;
 @property (nonatomic) UUIDData_5fbc143e hostTableUID;
 @property (nonatomic) BOOL isBlankForKeyboardInsertion; // @synthesize isBlankForKeyboardInsertion=_isBlankForKeyboardInsertion;

@@ -18,6 +18,7 @@
     NSString *_purchaseID;
     NSDate *_dateOfExpiration;
     unsigned long long _purchaseValidationState;
+    NSString *_servicesBundlePurchaseID;
     NSArray *_bundleChannelIDs;
 }
 
@@ -30,13 +31,14 @@
 @property (nonatomic) BOOL isPurchaser; // @synthesize isPurchaser=_isPurchaser;
 @property (copy, nonatomic) NSString *purchaseID; // @synthesize purchaseID=_purchaseID;
 @property (nonatomic) unsigned long long purchaseValidationState; // @synthesize purchaseValidationState=_purchaseValidationState;
+@property (copy, nonatomic) NSString *servicesBundlePurchaseID; // @synthesize servicesBundlePurchaseID=_servicesBundlePurchaseID;
 
 - (void).cxx_destruct;
 - (id)bundleSubscription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)initWithEntryID:(id)arg1 bundleChannelIDs:(id)arg2 purchaseID:(id)arg3 purchaseValidationState:(unsigned long long)arg4 dateOfExpiration:(id)arg5 hasShownRenewalNotice:(BOOL)arg6 inTrialPeriod:(BOOL)arg7 isPurchaser:(BOOL)arg8 isAmplifyUser:(BOOL)arg9;
+- (id)initWithEntryID:(id)arg1 bundleChannelIDs:(id)arg2 purchaseID:(id)arg3 purchaseValidationState:(unsigned long long)arg4 dateOfExpiration:(id)arg5 hasShownRenewalNotice:(BOOL)arg6 inTrialPeriod:(BOOL)arg7 isPurchaser:(BOOL)arg8 servicesBundlePurchaseID:(id)arg9 isAmplifyUser:(BOOL)arg10;
 - (id)initWithEntryID:(id)arg1 dictionaryRepresentation:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

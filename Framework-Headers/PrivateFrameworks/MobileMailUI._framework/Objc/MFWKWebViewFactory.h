@@ -22,6 +22,7 @@
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (id)_instantiateWebView;
 - (id)init;
+- (void)preallocateWebViewIfNeeded;
 - (void)preallocateWebViews;
 - (id)webView;
 

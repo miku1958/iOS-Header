@@ -16,6 +16,7 @@
 @property (strong, nonatomic) RTAddressMO *address; // @dynamic address;
 @property (strong, nonatomic) RTMapItemExtendedAttributesMO *cachedExtendedAttributes; // @synthesize cachedExtendedAttributes;
 @property (copy, nonatomic) NSString *displayLanguage; // @dynamic displayLanguage;
+@property (nonatomic) BOOL disputed; // @dynamic disputed;
 @property (copy, nonatomic) NSUUID *extendedAttributesIdentifier; // @dynamic extendedAttributesIdentifier;
 @property (strong, nonatomic) NSData *geoMapItemHandle; // @dynamic geoMapItemHandle;
 @property (copy, nonatomic) NSNumber *latitude; // @dynamic latitude;

@@ -21,7 +21,7 @@
 - (long long)applePayStatus;
 - (id)initWithMessage:(id)arg1 delegate:(id)arg2;
 - (id)message;
-- (void)presentApplePay;
+- (void)presentApplePayWithWindow:(id)arg1;
 
 @end
 

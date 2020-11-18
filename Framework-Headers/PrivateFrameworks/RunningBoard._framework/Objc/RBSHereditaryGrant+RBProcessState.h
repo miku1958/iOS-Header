@@ -7,7 +7,6 @@
 #import <RunningBoardServices/RBSHereditaryGrant.h>
 
 @interface RBSHereditaryGrant (RBProcessState)
-- (void)_withEndowmentFromContext:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)applyToAssertionIntransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 - (void)applyToAssertionTransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 - (void)applyToProcessState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;

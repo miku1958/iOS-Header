@@ -29,6 +29,7 @@
 @property (nonatomic) BOOL usesLanguageCorrection;
 
 + (Class)configurationClass;
++ (const CDStruct_7d93034e *)revisionAvailability;
 + (id)supportedRecognitionLanguagesForTextRecognitionLevel:(long long)arg1 revision:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)_detectTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;

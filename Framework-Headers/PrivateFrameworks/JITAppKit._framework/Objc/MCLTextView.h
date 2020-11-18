@@ -8,6 +8,7 @@
 
 @class UILongPressGestureRecognizer, UITapGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface MCLTextView : UITextView
 {
     UITapGestureRecognizer *_tapGestureRecognizer;

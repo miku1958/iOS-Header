@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelArtist, MPModelPlaylist, MPModelRadioStation, NSDate;
+@class MPModelAlbum, MPModelArtist, MPModelPlaylist, MPModelRadioStation, NSDate, NSString;
 
 @interface MPModelPlayEvent : MPModelObject
 {
@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSDate *datePlayed; // @dynamic datePlayed;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
 @property (strong, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
+@property (readonly, copy, nonatomic) NSString *title;
 
 + (id)__album_KEY;
 + (id)__artist_KEY;

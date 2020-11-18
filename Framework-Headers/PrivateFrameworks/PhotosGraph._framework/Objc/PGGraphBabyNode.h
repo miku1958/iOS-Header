@@ -4,19 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
-@class NSSet;
+@class NSSet, NSString;
 
-@interface PGGraphBabyNode : PGGraphNode
+@interface PGGraphBabyNode : PGGraphOptimizedNode
 {
+    NSString *_uuid;
 }
 
 @property (readonly, nonatomic) NSSet *caretakerNodes;
 @property (readonly, nonatomic) NSSet *momentNodes;
 
+- (void).cxx_destruct;
+- (id)description;
+- (unsigned short)domain;
 - (void)enumerateCaretakerNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

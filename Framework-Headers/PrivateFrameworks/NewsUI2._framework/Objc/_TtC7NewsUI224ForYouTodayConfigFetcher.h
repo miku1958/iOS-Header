@@ -10,7 +10,7 @@
 
 @interface _TtC7NewsUI224ForYouTodayConfigFetcher : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *name;
+    MISSING_TYPE *logName;
     MISSING_TYPE *todayFeedServiceConfig;
 }
 

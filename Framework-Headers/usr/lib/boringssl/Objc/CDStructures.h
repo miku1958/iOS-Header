@@ -12,11 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct SSLCertificate {
-    struct SSLCertificate *_field1;
-    CDStruct_061587d8 _field2;
-};
-
 struct __SecKey {
     struct __CFRuntimeBase {
         unsigned long long _field1;
@@ -28,6 +23,7 @@ struct __SecKey {
 
 struct boringssl_ctx_alert {
     int ssl_alert_type;
+    unsigned char ssl_alert_level;
     unsigned char ssl_alert_code;
     unsigned char ssl_warning_count;
 };
@@ -92,13 +88,6 @@ struct sockaddr_in6 {
     struct in6_addr sin6_addr;
     unsigned int sin6_scope_id;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long length;
-    char *data;
-} CDStruct_061587d8;
 
 #pragma mark Named Unions
 

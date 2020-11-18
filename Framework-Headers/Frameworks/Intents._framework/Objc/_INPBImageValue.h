@@ -16,10 +16,11 @@
 {
     struct {
         unsigned int height:1;
+        unsigned int renderingMode:1;
         unsigned int type:1;
         unsigned int width:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
+    int _renderingMode;
     int _type;
     NSData *_data;
     double _height;
@@ -29,13 +30,13 @@
     double _width;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasData;
 @property (nonatomic) BOOL hasHeight;
 @property (readonly, nonatomic) BOOL hasProxyServiceIdentifier;
+@property (nonatomic) BOOL hasRenderingMode;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUri;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
@@ -43,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
 @property (copy, nonatomic) NSString *proxyServiceIdentifier; // @synthesize proxyServiceIdentifier=_proxyServiceIdentifier;
+@property (nonatomic) int renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *uri; // @synthesize uri=_uri;
@@ -51,6 +53,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsRenderingMode:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
@@ -58,6 +61,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)renderingModeAsString:(int)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

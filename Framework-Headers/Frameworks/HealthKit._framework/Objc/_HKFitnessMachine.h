@@ -9,7 +9,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKDevice, NSArray, NSString, NSUUID;
+@class HKDevice, NSString, NSUUID;
 
 @interface _HKFitnessMachine : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,14 +18,12 @@
     unsigned long long _activityType;
     HKDevice *_device;
     NSString *_brand;
-    NSArray *_requestedTypes;
 }
 
 @property (readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
 @property (readonly, nonatomic) NSString *brand; // @synthesize brand=_brand;
 @property (readonly, nonatomic) HKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSArray *requestedTypes; // @synthesize requestedTypes=_requestedTypes;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
@@ -33,7 +31,6 @@
 - (void)_setActivityType:(unsigned long long)arg1;
 - (void)_setBrand:(id)arg1;
 - (void)_setDevice:(id)arg1;
-- (void)_setRequestedTypes:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

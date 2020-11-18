@@ -15,8 +15,9 @@
  {
 	// method
  }
- protocol NewsFeed.FormatNodeStyleSelectorType // 3 requirements
+ protocol NewsFeed.FormatNodeStyleSelectorType // 4 requirements
  {
+	// class base protocol
 	// class base protocol
 	// getter
 	// method
@@ -25,12 +26,25 @@
  {
 	// method
  }
- protocol NewsFeed.FeedServiceConfigType // 7 requirements
+ protocol NewsFeed.FeedServiceConfigType // 14 requirements
  {
+	// class base protocol
+	// class associated conformance access function
 	// class associated conformance access function
 	// class associated type access function
 	// class associated type access function
 	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// method
+	// method
+	// method
+ }
+ protocol NewsFeed.FeedGroupNativeAdInsertable // 3 requirements
+ {
 	// getter
 	// getter
 	// getter
@@ -39,11 +53,9 @@
  {
 	// method
  }
- protocol NewsFeed.FeedPoolServiceType // 6 requirements
+ protocol NewsFeed.FeedPoolServiceType // 4 requirements
  {
 	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
 	// class associated type access function
 	// getter
 	// method
@@ -52,8 +64,14 @@
  {
 	// method
  }
- protocol NewsFeed.FeedPersonalizationServiceType // 1 requirements
+ protocol NewsFeed.FeedPersonalizationServiceType // 7 requirements
  {
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsFeed.GroupLayoutFactoryType // 6 requirements
@@ -74,6 +92,13 @@
  }
  protocol NewsFeed.FormatTypeProviderType // 1 requirements
  {
+	// getter
+ }
+ protocol NewsFeed.FeedAdGroupDataProviding // 4 requirements
+ {
+	// getter
+	// getter
+	// getter
 	// getter
  }
  protocol NewsFeed.AudioTrackViewRendererType // 3 requirements
@@ -98,20 +123,23 @@
  {
 	// method
  }
- protocol NewsFeed.FormatTraversalContextType // 1 requirements
+ protocol NewsFeed.FeedGroupEmitterRuleType // 3 requirements
  {
-	// getter
+	// class associated conformance access function
+	// class associated type access function
+	// method
  }
  protocol NewsFeed.FeedLayoutContextFactoryType // 1 requirements
  {
 	// method
  }
- protocol NewsFeed.AudioTrackViewStylerType // 15 requirements
+ protocol NewsFeed.AudioTrackViewStylerType // 16 requirements
  {
 	// class base protocol
 	// class base protocol
 	// getter
 	// getter
+	// method
 	// method
 	// method
 	// method
@@ -132,6 +160,10 @@
  {
 	// method
 	// method
+ }
+ protocol NewsFeed.FormatTraversalContextType // 1 requirements
+ {
+	// getter
  }
  protocol NewsFeed.CoverChannelViewStylerType // 17 requirements
  {
@@ -163,8 +195,9 @@
  protocol NewsFeed.FormatAlphaRendererType // 0 requirements
  {
  }
- protocol NewsFeed.FormatEquationOperandType // 7 requirements
+ protocol NewsFeed.FormatEquationOperandType // 8 requirements
  {
+	// class base protocol
 	// class base protocol
 	// class base protocol
 	// class base protocol
@@ -173,13 +206,9 @@
 	// class init
 	// method
  }
- protocol NewsFeed.FeedServiceType // 7 requirements
+ protocol NewsFeed.FeedServiceType // 3 requirements
  {
 	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
-	// class associated type access function
 	// class associated type access function
 	// method
  }
@@ -190,11 +219,24 @@
  {
 	// method
  }
+ protocol NewsFeed.FeedNativeAdManagerType // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol NewsFeed.FeedJournalConfigProviding // 1 requirements
+ {
+	// getter
+ }
  protocol NewsFeed.FormatLayoutViewRendererType // 4 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
+	// method
+ }
+ protocol NewsFeed.FeedBannerAdIntegrating // 1 requirements
+ {
 	// method
  }
  protocol NewsFeed.FormatCustomNodeRendererType // 1 requirements
@@ -205,6 +247,10 @@
  {
 	// method
  }
+ protocol NewsFeed.FeedAppConfigManagerType // 1 requirements
+ {
+	// getter
+ }
  protocol NewsFeed.LayeredMediaVariant // 1 requirements
  {
 	// getter
@@ -213,7 +259,7 @@
  {
 	// method
  }
- protocol NewsFeed.FeedRulesType // 0 requirements
+ protocol NewsFeed.FeedServiceContextType // 0 requirements
  {
  }
  protocol NewsFeed.GapOfflineViewRendererType // 1 requirements
@@ -233,8 +279,18 @@
 	// method
 	// method
  }
- protocol NewsFeed.FeedGroupConfigType // 1 requirements
+ protocol NewsFeed.FeedGroupConfigType // 11 requirements
  {
+	// class base protocol
+	// class base protocol
+	// class base protocol
+	// class base protocol
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
 	// getter
  }
  protocol NewsFeed.FormatMergable // 2 requirements
@@ -277,6 +333,16 @@
 	// getter
 	// getter
  }
+ protocol NewsFeed.FeedGroupAdInsertable // 1 requirements
+ {
+	// class method
+ }
+ protocol NewsFeed.FeedScoringContextType // 3 requirements
+ {
+	// class base protocol
+	// getter
+	// method
+ }
  protocol NewsFeed.PaidBundleConfigManagerType // 2 requirements
  {
 	// getter
@@ -287,9 +353,8 @@
 	// method
 	// method
  }
- protocol NewsFeed.FormatBindable // 2 requirements
+ protocol NewsFeed.FormatBindable // 1 requirements
  {
-	// class base protocol
 	// method
  }
  protocol NewsFeed.FormatLayoutContextType // 2 requirements
@@ -305,8 +370,9 @@
 	// getter
 	// getter
  }
- protocol NewsFeed.FormatNodeStyleType // 5 requirements
+ protocol NewsFeed.FormatNodeStyleType // 6 requirements
  {
+	// class base protocol
 	// class base protocol
 	// class base protocol
 	// getter
@@ -334,6 +400,10 @@
 	// getter
 	// getter
 	// getter
+ }
+ protocol NewsFeed.FormatImageRendererType // 1 requirements
+ {
+	// method
  }
  protocol NewsFeed.FormatColorExpressionType // 1 requirements
  {
@@ -373,8 +443,10 @@
 	// method
 	// method
  }
- protocol NewsFeed.FeatureAvailabilityType // 6 requirements
+ protocol NewsFeed.FeatureAvailabilityType // 8 requirements
  {
+	// getter
+	// getter
 	// getter
 	// getter
 	// getter
@@ -405,11 +477,9 @@
 	// getter
 	// getter
  }
- protocol NewsFeed.FeedPoolManagerType // 5 requirements
+ protocol NewsFeed.FeedPoolManagerType // 3 requirements
  {
 	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
 	// class associated type access function
 	// method
  }
@@ -472,6 +542,16 @@
  {
 	// method
  }
+ protocol NewsFeed.FeedBannerAdInsertable // 2 requirements
+ {
+	// getter
+	// class method
+ }
+ protocol NewsFeed.FeedNativeAdInsertable // 2 requirements
+ {
+	// getter
+	// class method
+ }
  protocol NewsFeed.CardShineImageRequestProviding // 1 requirements
  {
 	// method
@@ -481,19 +561,21 @@
 	// method
 	// method
  }
+ protocol NewsFeed.FeedGroupDebuggable // 3 requirements
+ {
+	// getter
+	// getter
+	// getter
+ }
  protocol NewsFeed.FormatBindingType // 1 requirements
  {
 	// getter
  }
- protocol NewsFeed.FeedGroupEmitterType // 14 requirements
+ protocol NewsFeed.FeedGroupEmitterType // 10 requirements
  {
 	// class base protocol
 	// class base protocol
 	// class associated conformance access function
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
 	// class associated type access function
 	// getter
 	// getter
@@ -502,7 +584,7 @@
 	// method
 	// method
  }
- protocol NewsFeed.FeedContentConfigType // 6 requirements
+ protocol NewsFeed.FeedContentConfigType // 7 requirements
  {
 	// class associated conformance access function
 	// class associated conformance access function
@@ -510,6 +592,7 @@
 	// class associated type access function
 	// getter
 	// getter
+	// method
  }
  protocol NewsFeed.AudioDailyBriefingViewStylerType // 12 requirements
  {
@@ -530,6 +613,10 @@
  {
 	// method
  }
+ protocol NewsFeed.FeedContextFactoryType // 1 requirements
+ {
+	// method
+ }
  protocol NewsFeed.IssueViewStylerType // 10 requirements
  {
 	// class base protocol
@@ -542,6 +629,10 @@
 	// method
 	// method
 	// method
+ }
+ protocol NewsFeed.AdPresentationDelegateProviding // 1 requirements
+ {
+	// getter
  }
  protocol NewsFeed.FeedGroupDescribing // 5 requirements
  {
@@ -570,6 +661,14 @@
 	// method
 	// method
  }
+ protocol NewsFeed.OfflineModelProviding // 5 requirements
+ {
+	// class getter
+	// class getter
+	// class getter
+	// class getter
+	// class getter
+ }
  protocol NewsFeed.FeedCatalogTraits // 2 requirements
  {
 	// class base protocol
@@ -597,20 +696,6 @@
  protocol NewsFeed.FormatBorderRendererType // 0 requirements
  {
  }
- protocol NewsFeed.FormatTraversable // 3 requirements
- {
-	// method
-	// method
-	// getter
- }
- protocol NewsFeed.AutomationDecorationType // 2 requirements
- {
-	// getter
-	// getter
- }
- protocol NewsFeed.AutomationViewDecoratorType // 0 requirements
- {
- }
  protocol NewsFeed.FormatPrefetchableResource // 1 requirements
  {
 	// getter
@@ -619,19 +704,22 @@
  {
 	// method
  }
- protocol NewsFeed.FeedGroupType // 6 requirements
+ protocol NewsFeed.FeedGroupType // 10 requirements
  {
 	// class base protocol
 	// class base protocol
-	// class base protocol
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// getter
 	// getter
 	// getter
 	// getter
  }
- protocol NewsFeed.FeedGroupDebuggable // 2 requirements
+ protocol NewsFeed.NativeAdServiceType // 1 requirements
  {
-	// getter
-	// getter
+	// method
  }
  protocol NewsFeed.GapOfflineViewStylerType // 2 requirements
  {
@@ -648,6 +736,17 @@
  }
  protocol NewsFeed.FeaturedIssueSupplementViewRendererType // 1 requirements
  {
+	// method
+ }
+ protocol NewsFeed.FeedDataPrewarmerType // 8 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// getter
+	// method
+	// method
+	// method
+	// method
 	// method
  }
  protocol NewsFeed.FormatTextFillRendererType // 0 requirements
@@ -668,22 +767,13 @@
  {
 	// method
  }
- protocol NewsFeed.FormatCodable // 4 requirements
- {
-	// class base protocol
-	// class base protocol
-	// class base protocol
-	// class base protocol
- }
  protocol NewsFeed.FormatCornerRadiusRendererType // 0 requirements
  {
  }
- protocol NewsFeed.FormatNodeType // 5 requirements
+ protocol NewsFeed.FormatNodeType // 3 requirements
  {
 	// class base protocol
 	// class base protocol
-	// class base protocol
-	// method
 	// method
  }
  protocol NewsFeed.WebArchiveServiceType // 2 requirements
@@ -699,8 +789,9 @@
  {
 	// method
  }
- protocol NewsFeed.HeadlineServiceType // 9 requirements
+ protocol NewsFeed.HeadlineServiceType // 10 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -714,15 +805,33 @@
  protocol NewsFeed.FeedLayoutDebugging // 0 requirements
  {
  }
+ protocol NewsFeed.FeedNativeAdIntegrating // 1 requirements
+ {
+	// method
+ }
+ protocol NewsFeed.FormatAdMetricsNodeRendererType // 1 requirements
+ {
+	// method
+ }
  protocol NewsFeed.WebEmbedViewRendererType // 1 requirements
  {
 	// method
  }
- protocol NewsFeed.TagServiceType // 4 requirements
+ protocol NewsFeed.TagServiceType // 5 requirements
  {
 	// method
 	// method
 	// method
+	// method
+	// method
+ }
+ protocol NewsFeed.FeedServiceConfigFetcherType // 6 requirements
+ {
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// getter
 	// method
  }
  protocol NewsFeed.PublisherLogoImageRequestProviding // 1 requirements
@@ -743,9 +852,16 @@
  {
 	// method
  }
- protocol NewsFeed.FeedItemRendererType // 4 requirements
+ protocol NewsFeed.FeedBannerAdFactoryType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsFeed.FeedItemRendererType // 7 requirements
  {
 	// class base protocol
+	// getter
+	// setter
+	// modify coroutine
 	// method
 	// method
 	// method
@@ -755,9 +871,13 @@
 	// getter
 	// method
  }
- protocol NewsFeed.FormatCompilable // 2 requirements
+ protocol NewsFeed.OfflineProviding // 2 requirements
  {
 	// class base protocol
+	// method
+ }
+ protocol NewsFeed.FormatCompilable // 1 requirements
+ {
 	// method
  }
  protocol NewsFeed.FormatInspectable // 1 requirements
@@ -796,7 +916,7 @@
 	// getter
 	// getter
  }
- protocol NewsFeed.FeedConfigType // 7 requirements
+ protocol NewsFeed.FeedConfigType // 8 requirements
  {
 	// class associated conformance access function
 	// class associated conformance access function
@@ -804,6 +924,7 @@
 	// class associated type access function
 	// getter
 	// getter
+	// method
 	// method
  }
  protocol NewsFeed.GapViewStylerType // 2 requirements
@@ -831,23 +952,17 @@
  {
 	// method
  }
- protocol NewsFeed.FeedGroupKnobsRulesType // 3 requirements
+ protocol NewsFeed.FeedGroupNativeAdTransformable // 1 requirements
  {
-	// class associated conformance access function
-	// class associated type access function
-	// method
+	// class method
  }
  protocol NewsFeed.IssueCoverViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
  }
- protocol NewsFeed.FeedGroupEmitterFactoryType // 7 requirements
+ protocol NewsFeed.FeedGroupEmitterFactoryType // 3 requirements
  {
 	// class associated conformance access function
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
 	// class associated type access function
 	// method
  }
@@ -859,13 +974,23 @@
  {
 	// method
  }
- protocol NewsFeed.FeedPoolType // 5 requirements
+ protocol NewsFeed.FeedPoolType // 6 requirements
  {
 	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
 	// class associated type access function
 	// method
+	// method
+	// method
+	// method
+ }
+ protocol NewsFeed.FeedGroupable // 6 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class base protocol
+	// getter
+	// getter
+	// getter
  }
  protocol NewsFeed.ColorPaletteProviding // 11 requirements
  {
@@ -908,11 +1033,9 @@
  {
 	// method
  }
- protocol NewsFeed.FeedCursorFactoryType // 5 requirements
+ protocol NewsFeed.FeedCursorFactoryType // 3 requirements
  {
 	// class associated conformance access function
-	// class associated type access function
-	// class associated type access function
 	// class associated type access function
 	// method
  }
@@ -928,36 +1051,36 @@
 	// method
  }
 
- enum __C.UIUserInterfaceLayoutDirection { }
+ enum __C.FCOfflineReason { }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : Ô
+	var top : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : Ô
+	var left : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : Ô
+	var bottom : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : Ô
+	var right : ıó
  }
 
  struct __C.CGAffineTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var a : Ô
+	var a : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var b : Ô
+	var b : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c : Ô
+	var c : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var d : Ô
+	var d : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tx : Ô
+	var tx : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ty : Ô
+	var ty : ıó
  }
 
  enum __C.FCFetchOperationStatus { }
@@ -988,17 +1111,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum __C.UIUserInterfaceIdiom { }
 
+ enum __C.UIUserInterfaceLayoutDirection { }
+
+ enum __C.FCFeedPersonalizationConfigurationSet { }
+
  struct __C.UIContentSizeCategory {
 
 	// Properties
 	var _rawValue : NSString
  }
 
- struct __C.Unit {
-
-	// Properties
-	let rawValue : UInt
- }
+ enum __C.FCFeedBin { }
 
  enum __C.QualityOfService { }
 
@@ -1008,16 +1131,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Ô
+	var x : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Ô
- }
-
- struct __C._NSRange {
-
-	// Properties
-	var location : Int
-	var length : Int
+	var y : ıó
  }
 
  struct __C.Key {
@@ -1026,13 +1142,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _rawValue : NSString
  }
 
+ class __C.CGColor {
  struct __C.UIRectCorner {
 
 	// Properties
 	let rawValue : UInt
  }
 
- class __C.CGColor {
+ struct __C.UIKeyModifierFlags {
+
+	// Properties
+	let rawValue : Int
+ }
+
  struct __C.CGRect {
 
 	// Properties
@@ -1044,19 +1166,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Ô
+	var width : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Ô
+	var height : ıó
  }
 
  enum __C.ComparisonResult { }
 
- struct __C._ConditionalAllocationBuffer {
+ struct __C._NSRange {
 
 	// Properties
-	var memory : UnsafeMutableRawPointer
-	var capacity : Int
-	var onStack : Bool
+	var location : Int
+	var length : Int
  }
 
  struct __C.NSStringDrawingOptions {
@@ -1076,11 +1197,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaParser : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaParserType {
 
 	// Properties
-	let identifier : String // +0x10 (0x10)
-	let json : String // +0x20 (0x10)
+	let identifier : String
+	let json : String
 
 	// Swift methods
-	0x25b0  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
+	0x2960  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -1089,13 +1210,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case failedToCreateData  
  }
 
+ struct NewsFeed.A8_V26 {
+
+	// Properties
+	let groupLayoutPriority : GroupLayoutPriority // +0x0
+	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x8
+ }
+
+ struct NewsFeed.Bound {
+
+	// Properties
+	let groupLayoutKey : GroupLayoutKey
+	let creator : GroupLayoutFactoryType
+	let context : GroupLayoutContext
+	let feedThumbnailHeadlines : FeedHeadline
+ }
+
+ struct NewsFeed.Attributes {
+
+	// Properties
+	let frame : CGRect // +0x0
+	let headlineLayoutAttributes : Attributes // +0x20
+ }
+
+ struct NewsFeed.Layout {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : ¡ê // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Ôí // +0x8
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case frame  
+	case headlineLayoutAttributes  
+ }
+
  class NewsFeed.LayeredMediaViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let layerRenderer : LayeredMediaLayerRenderer // +0x10 (0x8)
+	let layerRenderer : LayeredMediaLayerRenderer
 
 	// Swift methods
-	0x45a0  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
+	0xab90  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
  }
 
  struct NewsFeed.AlertEnableNotifications {
@@ -1104,21 +1264,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let name : String // +0x0
  }
 
+ class NewsFeed.FeedRefreshBounceAnimation {
  class NewsFeed.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xbca0  @objc RendererAssembly.init <stripped>
+WARNING: couldn't find address 0x928ec002364c8 (0xec002364c8) in binary!
+	0x18000000c  @objc RendererAssembly.(null) <stripped>
  }
 
+ struct NewsFeed.CellAutomation {
+
+	// Properties
+	let type : String
+	let data : A
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case data  
+ }
+
+ class NewsFeed.PublishDateFeedRefreshStrategy {
  class NewsFeed.FormatStateMachineData : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let definition : FormatStateMachineDefinition // +0x10 (0x31)
-	let output : FormatStateMachineOutput // +0x48 (0x81)
+	let definition : FormatStateMachineDefinition
+	let output : FormatStateMachineOutput
 
 	// Swift methods
  }
 
- enum NewsFeed.FormatTextNodeImage {
+ class NewsFeed.ForceFeedRefreshStrategy {
+ enum NewsFeed.FormatSyncImageContent {
 
 	// Properties
 	case system : FormatSymbolImage
@@ -1142,14 +1320,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rendererEnvironment : ≥	 // +0x10 (0x28)
-	let styler : IssueCoverViewStylerType // +0x38 (0x28)
-	let coverImageImageCache : TSImageCacheType // +0x60 (0x8)
-	let layeredCoverViewProvider : LayeredMediaViewProvider // +0x68 (0x8)
-	let layeredCoverLayerProviderFactory : LayeredMediaLayerProviderFactoryType // +0x70 (0x28)
-	let layeredCoverViewRenderer : LayeredMediaViewRenderer // +0x98 (0x8)
+	var rendererEnvironment : Øù
+	let styler : IssueCoverViewStylerType
+	let coverImageImageCache : TSImageCacheType
+	let layeredCoverViewProvider : LayeredMediaViewProvider
+	let layeredCoverLayerProviderFactory : LayeredMediaLayerProviderFactoryType
+	let layeredCoverViewRenderer : LayeredMediaViewRenderer
 
 	// Swift methods
+ }
+
+ enum NewsFeed.FeedGroupEmitterRuleResult {
+
+	// Properties
+	case remove : (reason: String)
+	case skip : (reason: String)
+	case allow  
  }
 
  enum NewsFeed.DebugFormatUploadTarget {
@@ -1194,7 +1380,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatBehaviorRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatBehaviorRendererType {
 
 	// Properties
-	let visibilityRenderer : FormatBehaviorVisibilityRendererType // +0x10 (0x28)
+	let visibilityRenderer : FormatBehaviorVisibilityRendererType
 
 	// Swift methods
  }
@@ -1205,7 +1391,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case videoLayoutsNotSupported : GroupLayoutFactoryType
 	case contentSizeCategoryRequirement : GroupLayoutFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minViewportHeightRequirement : 
+	case minViewportHeightRequirement : )í
 	case noThumbnailsRequirement  
 	case notImplemented  
  }
@@ -1224,6 +1410,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case sponsoredBy  
 	case storyType  
 	case language  
+	case automation  
  }
 
  enum NewsFeed.Image {
@@ -1253,6 +1440,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case showPremiumBadge  
+	case showSubscriptionBadge  
 	case hasAccess  
 	case hasAudio  
 	case hasVideo  
@@ -1277,6 +1465,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case showPremiumBadge  
+	case showSubscriptionBadge  
 	case hasAccess  
 	case hasAudio  
 	case hasVideo  
@@ -1320,6 +1509,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case sponsoredBy  
 	case storyType  
 	case language  
+	case automation  
  }
 
  enum NewsFeed.FormatBlendMode {
@@ -1346,15 +1536,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatServiceType {
 
 	// Properties
-	let headlineService : HeadlineServiceType // +0x10 (0x28)
-	let tagService : TagServiceType // +0x38 (0x28)
-	let assetManager : FCAssetManager // +0x60 (0x8)
-	let fontManager : FeedFontManager // +0x68 (0x8)
-	let cloudContext : FCCloudContext // +0x70 (0x8)
-	let resourceService : ResourceServiceType // +0x78 (0x28)
-	let webArchiveService : WebArchiveServiceType // +0xa0 (0x28)
-	var $__lazy_storage_$_ignoreCache : Bool? // +0xc8 (0x1)
-	var $__lazy_storage_$_loadPackagesFromDebugServerDropbox : Bool? // +0xc9 (0x1)
+	let headlineService : HeadlineServiceType
+	let tagService : TagServiceType
+	let assetManager : FCAssetManager
+	let fontManager : FeedFontManager
+	let cloudContext : FCCloudContext
+	let resourceService : ResourceServiceType
+	let webArchiveService : WebArchiveServiceType
+	let subscriptionController : FCSubscriptionController
+	var $__lazy_storage_$_ignoreCache : Bool?
+	var $__lazy_storage_$_loadPackagesFromDebugServerDropbox : Bool?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fileCache : gí
 
 	// Swift methods
  }
@@ -1394,9 +1587,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let frame : CGRect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowRadius : Ô // +0x20
+	let shadowRadius : ıó // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Ô // +0x28
+	let cornerRadius : ıó // +0x28
  }
 
  enum NewsFeed.CodingKeys {
@@ -1414,15 +1607,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case completed  
  }
 
+ struct NewsFeed.Output {
+
+	// Properties
+	let option : FormatOption // +0x0
+	let usedProperties : FormatCompilerUsedProperties // +0x18
+ }
+
+ struct NewsFeed.FormatOptionCompilerScope {
+
+	// Properties
+	let option : FormatOption // +0x0
+	var context : FormatCompilerScopeContext // +0x18
+	var usedProperties : FormatCompilerUsedProperties // +0x68
+ }
+
  class NewsFeed.WebEmbedErrorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let label : UILabel // +0x8 (0x8)
+	let label : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x44550  @objc WebEmbedErrorView.initWithFrame: <stripped>
-	0x44580  @objc WebEmbedErrorView.initWithCoder: <stripped>
-	0x44600  @objc WebEmbedErrorView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ff6c00236438 (0x76c00236438) in binary!
+	0x8f7e0  @objc WebEmbedErrorView.(null) <stripped>
+WARNING: couldn't find address 0x98e1400236350 (0x61400236350) in binary!
+	0x58000000c  @objc WebEmbedErrorView.(null) <stripped>
+WARNING: couldn't find address 0x98dfc002369b0 (0x5fc002369b0) in binary!
+	0x90eb1  @objc WebEmbedErrorView.(null) <stripped>
  }
 
  struct NewsFeed.FormatButtonNode {
@@ -1435,10 +1646,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let children : FormatNode // +0x28
 	let stateMasks : FormatButtonNodeStateMask // +0x30
 	let action : FormatButtonNodeAction // +0x38
-	let actionName : FormatTextNodeContent // +0x40
+	let actionName : FormatTextContent // +0x40
 	let behaviors : FormatNodeBehavior // +0x48
 	let accessibilityRole : FormatNodeAccessibilityRole // +0x50
-	let selectors : [String] // +0x68
+	let selectors : [String] // +0x60
  }
 
  enum NewsFeed.CodingKeys {
@@ -1481,7 +1692,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case selector  
  }
 
- struct NewsFeed.GroupLayoutInventory: GroupLayoutInventoryType { }
+ struct NewsFeed.GroupLayoutInventory: GroupLayoutInventoryType {
+
+	// Properties
+	let featureAvailability : FeatureAvailabilityType // +0x0
+ }
 
  struct NewsFeed.A12_V1 {
 
@@ -1510,11 +1725,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1524,12 +1737,126 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case headlineLayoutAttributes  
  }
 
+ struct NewsFeed.FeedScoringConfiguration {
+
+	// Properties
+	let baselineRatePrior : Double // +0x0
+	let decayFactor : Double // +0x8
+	let democratizationFactor : Double // +0x10
+	let halfLifeCoefficient : Double // +0x18
+	let subscribedChannelScoreCoefficient : Double // +0x20
+	let mutedVoteCoefficient : Double // +0x28
+	let personalizationCoefficient : Double // +0x30
+	let publisherAggregateWeight : Double // +0x38
+	let articleLengthAggregateWeight : Double // +0x40
+	let globalScoreCoefficientFree : Double // +0x48
+	let globalScoreCoefficientPaid : Double // +0x50
+	let globalScoreCoefficientHalfLife : Double // +0x58
+	let globalScoreCoefficientInitialMultiplier : Double // +0x60
+	let subscribedTopicsScoreCoefficient : Double // +0x68
+	let ctrWithSubscribedChannel : Double // +0x70
+	let ctrWithZeroSubscribed : Double // +0x78
+	let ctrWithOneSubscribed : Double // +0x80
+	let ctrWithTwoSubscribed : Double // +0x88
+	let ctrWithThreeSubscribed : Double // +0x90
+	let autofavoritedVoteCoefficient : Double // +0x98
+	let ctrWithZeroAutofavorited : Double // +0xa0
+	let ctrWithOneAutofavorited : Double // +0xa8
+	let ctrWithTwoAutofavorited : Double // +0xb0
+	let ctrWithThreeAutofavorited : Double // +0xb8
+	let diversificationInitialPenalty : Double // +0xc0
+	let diversificationPenalty : Double // +0xc8
+	let diversificationPenaltyHalfLife : Double // +0xd0
+	let channelTopicDiversificationInitialPenalty : Double // +0xd8
+	let channelTopicDiversificationPenalty : Double // +0xe0
+	let channelTopicDiversificationPenaltyHalfLife : Double // +0xe8
+	let firstPassHalfLifeCoefficient : Double // +0xf0
+	let firstPassDiversificationPenalty : Double // +0xf8
+	let firstPassArticleFilter : Double // +0x100
+	let bundlePaidMultiplierForFreeUsers : Double // +0x108
+	let bundlePaidMultiplierForTrialUsers : Double // +0x110
+	let bundlePaidMultiplierForPaidUsers : Double // +0x118
+	let bundleFreeMultiplierForFreeUsers : Double // +0x120
+	let bundleFreeMultiplierForTrialUsers : Double // +0x128
+	let bundleFreeMultiplierForPaidUsers : Double // +0x130
+	let featuredMultiplierForFreeUsers : Double // +0x138
+	let featuredMultiplierForTrialUsers : Double // +0x140
+	let featuredMultiplierForPaidUsers : Double // +0x148
+	let audioMultiplierForFreeUsers : Double // +0x150
+	let audioMultiplierForTrialUsers : Double // +0x158
+	let audioMultiplierForPaidUsers : Double // +0x160
+	let headlineSeenPenalty : Double // +0x168
+	let articleReadPenalty : Double // +0x170
+	let conversionCoefficientForFreeUsers : Double // +0x178
+	let conversionCoefficientForTrialUsers : Double // +0x180
+	let conversionCoefficientForPaidUsers : Double // +0x188
+	let conversionCohort : FeedCohortConfiguration // +0x190
+	let userCohort : FeedCohortConfiguration // +0x1c8
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case baselineRatePrior  
+	case decayFactor  
+	case democratizationFactor  
+	case halfLifeCoefficient  
+	case subscribedChannelScoreCoefficient  
+	case mutedVoteCoefficient  
+	case personalizationCoefficient  
+	case publisherAggregateWeight  
+	case articleLengthAggregateWeight  
+	case globalScoreCoefficientFree  
+	case globalScoreCoefficientPaid  
+	case globalScoreCoefficientHalfLife  
+	case globalScoreCoefficientInitialMultiplier  
+	case subscribedTopicsScoreCoefficient  
+	case ctrWithSubscribedChannel  
+	case ctrWithZeroSubscribed  
+	case ctrWithOneSubscribed  
+	case ctrWithTwoSubscribed  
+	case ctrWithThreeSubscribed  
+	case autofavoritedVoteCoefficient  
+	case ctrWithZeroAutofavorited  
+	case ctrWithOneAutofavorited  
+	case ctrWithTwoAutofavorited  
+	case ctrWithThreeAutofavorited  
+	case diversificationInitialPenalty  
+	case diversificationPenalty  
+	case diversificationPenaltyHalfLife  
+	case channelTopicDiversificationInitialPenalty  
+	case channelTopicDiversificationPenalty  
+	case channelTopicDiversificationPenaltyHalfLife  
+	case firstPassHalfLifeCoefficient  
+	case firstPassDiversificationPenalty  
+	case firstPassArticleFilter  
+	case bundlePaidMultiplierForFreeUsers  
+	case bundlePaidMultiplierForTrialUsers  
+	case bundlePaidMultiplierForPaidUsers  
+	case bundleFreeMultiplierForFreeUsers  
+	case bundleFreeMultiplierForTrialUsers  
+	case bundleFreeMultiplierForPaidUsers  
+	case featuredMultiplierForFreeUsers  
+	case featuredMultiplierForTrialUsers  
+	case featuredMultiplierForPaidUsers  
+	case audioMultiplierForFreeUsers  
+	case audioMultiplierForTrialUsers  
+	case audioMultiplierForPaidUsers  
+	case headlineSeenPenalty  
+	case articleReadPenalty  
+	case conversionCoefficientForFreeUsers  
+	case conversionCoefficientForTrialUsers  
+	case conversionCoefficientForPaidUsers  
+	case conversionCohort  
+	case userCohort  
+ }
+
  struct NewsFeed.FeedSlot {
 
 	// Properties
 	let identifier : String // +0x0
 	let feedItemIdentifiers : Set<String> // +0x10
-	let feedProperties : FeedProperty // +0x18
+	let feedOptions : FormatOption // +0x18
  }
 
  struct NewsFeed.FormatSpaceNode {
@@ -1548,6 +1875,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case adjustments  
  }
 
+ class NewsFeed.ChronologicalFeedRefreshStrategy {
+ struct NewsFeed.A18_V16 {
+
+	// Properties
+	let groupLayoutPriority : GroupLayoutPriority // +0x0
+	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x8
+ }
+
+ struct NewsFeed.Bound {
+
+	// Properties
+	let groupLayoutKey : GroupLayoutKey
+	let creator : GroupLayoutFactoryType
+	let context : GroupLayoutContext
+	let feedHeadlines : FeedHeadline
+ }
+
+ struct NewsFeed.Attributes {
+
+	// Properties
+	let frame : CGRect // +0x0
+	let headlineLayoutAttributes : Attributes // +0x20
+ }
+
+ struct NewsFeed.Layout {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : ¡ê // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Ôí // +0x8
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case frame  
+	case headlineLayoutAttributes  
+ }
+
  enum NewsFeed.DebugFormatUploadItem {
 
 	// Properties
@@ -1559,16 +1926,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FeedHeadline {
 
 	// Properties
-	let identifier : String // +0x0
-	let layoutDirection : FeedLayoutDirection // +0x10
-	let traits : FeedItemTraits // +0x20
-	let headline : FCHeadlineProviding // +0x28
-	let metadata : Swift.AnyObject? // +0x30
-	let badge : Badge // +0x38
-	let premiumBadge : PremiumBadge // +0x39
-	let state : State // +0x3a
-	let style : FeaturedStyle // +0x40
-	let kind : Kind // +0x48
+	let identifier : String
+	let layoutDirection : FeedLayoutDirection
+	let traits : FeedItemTraits
+	let headline : FCHeadlineProviding
+	let metadata : Swift.AnyObject?
+	let badge : Badge
+	let premiumBadge : PremiumBadge
+	let state : State
+	let style : FeaturedStyle
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let nativeAdInfo : !ô
+	let kind : Kind
  }
 
  enum NewsFeed.Badge {
@@ -1598,11 +1967,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accessLevel : AccessLevel // +0x3
  }
 
+ enum NewsFeed.FeedRefreshUpdateBehavior {
+
+	// Properties
+	case immediate  
+	case deferred  
+ }
+
  struct NewsFeed.DebugFormatErrorModel {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let error : ÂR // +0x0
+	let error : eº // +0x0
 	let title : String // +0x8
 	let sections : Section // +0x18
  }
@@ -1617,11 +1993,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case network : ÂR
+	case network : eº
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case codingFormat : ÂR
+	case codingFormat : eº
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case layout : ÂR
+	case layout : eº
  }
 
  struct NewsFeed.Section {
@@ -1648,8 +2024,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FormatProperty {
 
 	// Properties
-	let identifier : String
-	let value : FormatPropertyValue
+	let identifier : String // +0x0
+	let value : FormatPropertyValue // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -1674,7 +2050,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let name : String? // +0x0
-	let coverImage : TSAssetHandleType? // +0x10
+	let coverImage : Image // +0x10
+ }
+
+ struct NewsFeed.Image {
+
+	// Properties
+	let assetHandle : TSAssetHandleType // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let aspectRatio : }à // +0x8
  }
 
  struct NewsFeed.Traits {
@@ -1687,23 +2071,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case shadow : ◊Ò
-
+	case shadow : ˘ê
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case shine : Y˜
-
+	case shine : só
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gradient : SÓ
-
+	case gradient : ’å
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case image : i¢
  }
 
  class NewsFeed.DebugNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x93c40  @objc DebugNavigationController.viewDidLoad <stripped>
-	0x93cd0  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x93d60  @objc DebugNavigationController.initWithRootViewController: <stripped>
-	0x93da0  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
-	0x93e70  @objc DebugNavigationController.initWithCoder: <stripped>
+WARNING: couldn't find address 0x98dfc002369b0 (0x5fc002369b0) in binary!
+	0x90eb1  @objc DebugNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x8f7a400236988 (0x7a400236988) in binary!
+	0x9a478  @objc DebugNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x8f78c00236960 (0x78c00236960) in binary!
+	0x18000000c  @objc DebugNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x90e8400236218 (0x68400236218) in binary!
+	0x68000000c  @objc DebugNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x8f75c00236930 (0x75c00236930) in binary!
+	0x98d90  @objc DebugNavigationController.(null) <stripped>
+ }
+
+ struct NewsFeed.Ad {
+
+	// Properties
+	let groupLayoutPriority : GroupLayoutPriority // +0x0
+	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x8
+ }
+
+ struct NewsFeed.Bound {
+
+	// Properties
+	let creator : GroupLayoutFactoryType
+	let context : GroupLayoutContext
+	let feedAd : FeedBannerAd
+	let groupLayoutKey : GroupLayoutKey
  }
 
  struct NewsFeed.IssueFontBook {
@@ -1713,6 +2117,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let excerptFont : UIFont // +0x8
 	let accessoryFont : UIFont // +0x10
 	let publisherFont : UIFont // +0x18
+ }
+
+ enum NewsFeed.FeedGroupNativeAdInsertionLocation {
+
+	// Properties
+	case leading  
+	case trailing  
+	case none  
  }
 
  enum NewsFeed.FormatColorProcessor {
@@ -1762,11 +2174,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverIssueLayoutAttributes : WÊ
- // +0x8
+	let coverIssueLayoutAttributes : Ñ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1774,20 +2184,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case coverIssueLayoutAttributes  
- }
-
- enum NewsFeed.FormatPathItem {
-
-	// Properties
-	case property : String
-	case element : Int
-	case unknown  
- }
-
- struct NewsFeed.FormatPath {
-
-	// Properties
-	var items : FormatPathItem // +0x0
  }
 
  enum NewsFeed.FeedPoolCachePolicy {
@@ -1828,17 +2224,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1877,11 +2269,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1896,42 +2286,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let alignment : FormatTextAlignment // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let firstLineHeadIndent : i‰
- // +0x8
+	let firstLineHeadIndent : }à // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headIndent : i‰
- // +0x18
+	let headIndent : }à // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tailIndent : i‰
- // +0x28
+	let tailIndent : }à // +0x28
 	let lineBreakMode : FormatTextLineBreakMode // +0x31
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maximumLineHeight : i‰
- // +0x38
+	let maximumLineHeight : }à // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumLineHeight : i‰
- // +0x48
+	let minimumLineHeight : }à // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lineSpacing : i‰
- // +0x58
+	let lineSpacing : }à // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paragraphSpacing : i‰
- // +0x68
+	let paragraphSpacing : }à // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paragraphSpacingBefore : i‰
- // +0x78
+	let paragraphSpacingBefore : }à // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lineHeightMultiple : i‰
- // +0x88
+	let lineHeightMultiple : }à // +0x88
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumLineHeightMultiple : i‰
- // +0x98
+	let minimumLineHeightMultiple : }à // +0x98
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let defaultTabInterval : i‰
- // +0xa8
+	let defaultTabInterval : }à // +0xa8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hyphenationFactor : i‰
- // +0xb8
+	let hyphenationFactor : }à // +0xb8
 	let allowsDefaultTighteningForTruncation : Bool? // +0xc1
  }
 
@@ -1982,11 +2360,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1999,31 +2375,101 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatUploadConfirmViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let editor : DebugFormatEditor // +0x8 (0x8)
-	let uploadService : DebugFormatUploadService // +0x10 (0x8)
-	let tableView : UITableView // +0x18 (0x8)
-	let sections : DebugFormatUploadSection // +0x20 (0x8)
-	let results : CompileResult // +0x28 (0x8)
-	var $__lazy_storage_$_versionLabel : UILabel? // +0x30 (0x8)
+	let editor : DebugFormatEditor
+	let uploadService : DebugFormatUploadService
+	let tableView : UITableView
+	let sections : DebugFormatUploadSection
+	let results : CompileResult
+	var $__lazy_storage_$_versionLabel : UILabel?
 
 	// ObjC -> Swift bridged methods
-	0xb6ff0  @objc DebugFormatUploadConfirmViewController.initWithCoder: <stripped>
-	0xb7770  @objc DebugFormatUploadConfirmViewController.viewDidLoad <stripped>
-	0xb77a0  @objc DebugFormatUploadConfirmViewController.viewWillAppear: <stripped>
-	0xb7850  @objc DebugFormatUploadConfirmViewController.viewWillLayoutSubviews <stripped>
-	0xb79e0  @objc DebugFormatUploadConfirmViewController.initWithNibName:bundle: <stripped>
-	0xb7960  @objc DebugFormatUploadConfirmViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f75c00236930 (0x75c00236930) in binary!
+	0x98d90  @objc DebugFormatUploadConfirmViewController.(null) <stripped>
+WARNING: couldn't find address 0x97e0000236a60 (0x60000236a60) in binary!
+	0x98d78  @objc DebugFormatUploadConfirmViewController.(null) <stripped>
+WARNING: couldn't find address 0x9a40c00236908 (0x40c00236908) in binary!
+	0x98d60  @objc DebugFormatUploadConfirmViewController.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x1b4ff3a0ff8  @objc DebugFormatUploadConfirmViewController.(null) <stripped>
+	0x1acff3a0750  @objc DebugFormatUploadConfirmViewController.K≈ <stripped>
+	0x1ccff39ff48  @objc DebugFormatUploadConfirmViewController.çÖˇˇˇLâ˜ËJòM <stripped>
 
 	// Swift methods
+ }
+
+ enum NewsFeed.FormatMenuImageResolved {
+
+	// Properties
+	case image : UIImage
+	case command : FormatCommandActionValue
+ }
+
+ enum NewsFeed.FeedGroupConfigDataKind {
+
+	// Properties
+	case content  
+	case seenContentMarker  
+ }
+
+ struct NewsFeed.FeedGroupKnobsRuleValue {
+
+	// Properties
+	let value : A
+	let selectors : Selector
+ }
+
+ struct NewsFeed.Selector {
+
+	// Properties
+	let selector : String
+	let value : A1
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case selector  
+	case value  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case value  
+	case selectors  
+ }
+
+ struct NewsFeed.LegacyFeedGroupKnobsRuleValue {
+
+	// Properties
+	let subscribed : A?
+	let notSubscribed : A?
+	let expired : A?
+	let trial : A?
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case notConfigured  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case subscribed  
+	case notSubscribed  
+	case expired  
+	case trial  
  }
 
  class NewsFeed.FeaturedIssueHeadlineViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueHeadlineViewRendererType {
 
 	// Properties
-	let thumbnailImageCache : TSImageCacheType // +0x10 (0x8)
-	let publisherLogoImageCache : TSImageCacheType // +0x18 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x20 (0x8)
-	let issueCoverViewRenderer : IssueCoverViewRendererType // +0x28 (0x28)
+	let thumbnailImageCache : TSImageCacheType
+	let publisherLogoImageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
+	let issueCoverViewRenderer : IssueCoverViewRendererType
 
 	// Swift methods
  }
@@ -2114,17 +2560,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2166,17 +2608,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2218,17 +2656,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2243,10 +2677,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedPersonalizationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedPersonalizationServiceType {
 
 	// Properties
-	let feedPersonalizingEngine : FCFeedPersonalizing // +0x10 (0x8)
+	let feedPersonalizingEngine : FCFeedPersonalizing
 
 	// Swift methods
-	0xe4fb0  class func FeedPersonalizationService.__allocating_init(feedPersonalizingEngine:) // init 
+	0xc7740  class func FeedPersonalizationService.__allocating_init(feedPersonalizingEngine:) // init 
  }
 
  struct NewsFeed.B18_V2 {
@@ -2279,17 +2713,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x10
+	let headlineLayoutAttributes : «z // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2301,6 +2731,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case spacerFrame  
  }
 
+ struct NewsFeed.FormatAdMetricsNode {
+
+	// Properties
+	let identifier : String // +0x0
+	let content : FormatAdMetricsNodeContent // +0x0
+	let privacyMarkerFrameIdentifier : String // +0x10
+	let size : FormatSize // +0x20
+	let adjustments : FormatAdjustment // +0x28
+	let zIndex : Int // +0x30
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case identifier  
+	case content  
+	case privacyMarkerFrameIdentifier  
+	case size  
+	case adjustments  
+	case zIndex  
+ }
+
  struct NewsFeed.DebugInspectionScoreProfile {
 
 	// Properties
@@ -2310,10 +2762,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let autoSubscribeCtr : Double // +0x18
 	let computedGlobalScoreCoefficient : Double // +0x20
 	let userFeedbackScore : Double // +0x28
-	let personalizationScore : Double // +0x30
-	let firstPassPersonalizationScore : Double // +0x38
-	let agedPersonalizationScore : Double // +0x40
-	let diversifiedPersonalizationScore : Double // +0x48
+	let userConversionScore : Double // +0x30
+	let personalizationScore : Double // +0x38
+	let firstPassPersonalizationScore : Double // +0x40
+	let agedPersonalizationScore : Double // +0x48
+	let diversifiedPersonalizationScore : Double // +0x50
  }
 
  enum NewsFeed.CodingKeys {
@@ -2325,6 +2778,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case autoSubscribeCtr  
 	case computedGlobalScoreCoefficient  
 	case userFeedbackScore  
+	case userConversionScore  
 	case personalizationScore  
 	case firstPassPersonalizationScore  
 	case agedPersonalizationScore  
@@ -2336,8 +2790,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var filename : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : ü’
- // +0x10
+	let data : Îw // +0x10
 	let contentType : String // +0x20
  }
 
@@ -2391,20 +2844,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -2463,15 +2911,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case columnMultiple : Ô
+	case columnMultiple : ıó
  }
 
  enum NewsFeed.FeedAction {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case command : W‡
-
 	case route : FormatRoute
  }
 
@@ -2479,9 +2924,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let x : Ô // +0x0
+	let x : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let y : Ô // +0x8
+	let y : ıó // +0x8
  }
 
  struct NewsFeed.FormatPointEquation {
@@ -2535,17 +2980,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2573,7 +3014,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let identifier : String // +0x0
-	let content : FormatTextNodeContent // +0x10
+	let content : FormatTextContent // +0x10
 	let logic : FormatTextNodeAlternativeLogic // +0x18
  }
 
@@ -2615,17 +3056,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2643,13 +3080,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case ready  
 	case disabled  
 	case refreshing  
+	case refreshed  
  }
 
  enum NewsFeed.FeedRefreshEvent {
 
 	// Properties
-	case refreshed : (newContentCount: Int)
 	case refresh  
+	case refreshed  
+	case reset  
  }
 
  enum NewsFeed.FormatImageAdjustment {
@@ -2681,7 +3120,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let state : String // +0x0
 	let layoutAttributes : FormatDataLayoutAttributes // +0x10
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x68
  }
 
  struct NewsFeed.FormatStateMachineInlineInput {
@@ -2745,26 +3184,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeaturedIssueHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-	let excerptLabel : UILabel // +0x10 (0x8)
+	let titleLabel : UILabel
+	let excerptLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailImageView : ﬂ // +0x18 (0x8)
-	let issueCoverView : IssueCoverView // +0x20 (0x8)
+	let thumbnailImageView : i¢
+	let issueCoverView : IssueCoverView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageView : ﬂ // +0x28 (0x8)
-	let publisherLabel : UILabel // +0x30 (0x8)
-	let dateLabel : UILabel // +0x38 (0x8)
-	let premiumBadgeView : PremiumBadgeView // +0x40 (0x8)
-	let debugButton : DebugButton // +0x48 (0x8)
+	let publisherLogoImageView : i¢
+	let publisherLabel : UILabel
+	let dateLabel : UILabel
+	let premiumBadgeView : PremiumBadgeView
+	let debugButton : DebugButton
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorView : +÷
- // +0x50 (0x8)
-	let cardView : CardView // +0x58 (0x8)
+	let segmentedColorView : É
+	let cardView : CardView
 
 	// ObjC -> Swift bridged methods
-	0x11f5a0  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
-	0x11f620  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
-	0x11f670  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8fdf4002362c0 (0x5f4002362c0) in binary!
+	0x8f668  @objc FeaturedIssueHeadlineView.(null) <stripped>
+WARNING: couldn't find address 0x98c9c002361d8 (0x49c002361d8) in binary!
+	0x58000000c  @objc FeaturedIssueHeadlineView.(null) <stripped>
+WARNING: couldn't find address 0x92714002372c8 (0x714002372c8) in binary!
+	0x929b8  @objc FeaturedIssueHeadlineView.(null) <stripped>
  }
 
  struct NewsFeed.FormatItemCollection {
@@ -2807,16 +3248,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let default : DefaultValue
  }
 
+ struct NewsFeed.DefaultValue {
+
+	// Properties
+	let value : A
+ }
+
  struct NewsFeed.CaseValue {
 
 	// Properties
 	let state : FormatCommandState
-	let value : A
- }
-
- struct NewsFeed.DefaultValue {
-
-	// Properties
 	let value : A
  }
 
@@ -2843,6 +3284,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct NewsFeed.Saving { }
 
+ struct NewsFeed.FeedRefreshStrategyCursorFactory {
+
+	// Properties
+	let factoryBlock : FeedCursor
+ }
+
  class NewsFeed.ThumbnailProcessorRequest : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -2850,23 +3297,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let thumbnailFrame : CGRect // +0x10 (0x20)
 	let focalFrame : CGRect // +0x30 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x50 (0x8)
+	let scale : ıó // +0x50 (0x8)
 	let roundedCorners : UIRectCorner // +0x58 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Ô // +0x60 (0x8)
+	let cornerRadius : ıó // +0x60 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let border : Ø–
- // +0x3 (0x0)
+	let border : _} // +0x3 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x127ea0  @objc ThumbnailProcessorRequest.assetHandles <stripped>
-	0x128320  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
-	0x128590  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
-	0x1289d0  @objc ThumbnailProcessorRequest.init <stripped>
-	0x128a30  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
+WARNING: couldn't find address 0x92714002372c8 (0x714002372c8) in binary!
+	0x929b8  @objc ThumbnailProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x926fc00236830 (0x6fc00236830) in binary!
+	0x926f0  @objc ThumbnailProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x98c5400236190 (0x45400236190) in binary!
+	0x18000000c  @objc ThumbnailProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x926cc002362a8 (0x6cc002362a8) in binary!
+	0x18000000c  @objc ThumbnailProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x9ab1400236080 (0x31400236080) in binary!
+	0x38000000c  @objc ThumbnailProcessorRequest.(null) <stripped>
 
 	// Swift methods
-	0x128490  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:border:) // init 
+	0x10c350  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:border:) // init 
  }
 
  class NewsFeed.HeadlineView {
@@ -2949,6 +3400,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case production  
  }
 
+ struct NewsFeed.Feed {
+
+	// Properties
+	let name : String // +0x0
+	let log : OS_os_log // +0x10
+ }
+
  enum NewsFeed.FormatInteger {
 
 	// Properties
@@ -2981,7 +3439,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let name : String
 	let url : FormatURL
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : Ô
+	let size : ıó
 	let scaling : FormatFontScaling
  }
 
@@ -2998,9 +3456,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case point : Ô
+	case point : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case pixel : Ô
+	case pixel : ıó
 	case scaled : FormatFloat
 	case macUnscaled : FormatFloat
 	case option : String
@@ -3057,17 +3515,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3099,20 +3553,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case regions  
 	case audioTracks  
 	case dailyBriefings  
+	case ad  
  }
 
  class NewsFeed.AudioTrackViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioTrackViewRendererType {
 
 	// Properties
-	let artworkCache : TSImageCacheType // +0x10 (0x8)
-	let logoCache : TSImageCacheType // +0x18 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x20 (0x8)
-	var traitCollection : UITraitCollection? // +0x28 (0x8)
-	let durationFormatter : AudioDurationFormatter // +0x30 (0x8)
-	var layoutAttributes : Attributes // +0x38 (0x179)
+	let artworkCache : TSImageCacheType
+	let logoCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
+	var traitCollection : UITraitCollection?
+	var layoutAttributes : Attributes
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailFallbackAssetHandle : üŒ
- // +0x1b8 (0x8)
+	let thumbnailFallbackAssetHandle : k}
 
 	// Swift methods
  }
@@ -3144,11 +3597,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3185,11 +3636,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3213,7 +3662,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x155f10  @objc CommandAssembly.init <stripped>
+WARNING: couldn't find address 0x926cc002362a8 (0x6cc002362a8) in binary!
+	0x18000000c  @objc CommandAssembly.(null) <stripped>
  }
 
  struct NewsFeed.E6_V2 {
@@ -3246,17 +3696,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3295,11 +3741,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3312,11 +3756,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FollowingManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingManagerType {
 
 	// Properties
-	let notificationPrompter : TSNotificationManagerType? // +0x10 (0x8)
-	let subscriptionController : FCSubscriptionController // +0x18 (0x8)
+	let notificationPrompter : TSNotificationManagerType?
+	let subscriptionController : FCSubscriptionController
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : √œ
- // +0x20 (0x28)
+	let alertPresenter : i
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sceneProvider : È{
 
 	// Swift methods
  }
@@ -3326,6 +3771,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String // +0x0
 	let property : FormatAccessibilityProperty // +0x10
+	let invalidation : FormatComputedInvalidation // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3333,14 +3779,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case identifier  
 	case property  
+	case invalidation  
  }
 
  class NewsFeed.NewsroomService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_urlSessionPool : Ôƒ
- // +0x10 (0x8)
+	var $__lazy_storage_$_urlSessionPool : u
 
 	// Swift methods
  }
@@ -3353,8 +3799,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var filename : String? // +0x20
 	var contentType : String? // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let body : ü’
- // +0x40
+	let body : Îw // +0x40
  }
 
  enum NewsFeed.NewsroomServiceError {
@@ -3367,16 +3812,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case missingCookies :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case missingResponseBody : •ª
-
+	case missingResponseBody : Gk
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unableToCreateURLComponents : º
-
+	case unableToCreateURLComponents : ük
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unableToCreateURLFromURLComponents : Òª
-
+	case unableToCreateURLFromURLComponents : sk
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unknown : +
+	case unknown : ¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case uploadFailed : message
 	case emptyUsername  
@@ -3484,12 +3926,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.GapOfflineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let offlineLabel : UILabel // +0x8 (0x8)
+	let offlineLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x1733d0  @objc GapOfflineView.initWithFrame: <stripped>
-	0x173450  @objc GapOfflineView.initWithCoder: <stripped>
-	0x1734a0  @objc GapOfflineView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8fd4c00236218 (0x54c00236218) in binary!
+	0x8f5c0  @objc GapOfflineView.(null) <stripped>
+WARNING: couldn't find address 0x98bf400236130 (0x3f400236130) in binary!
+	0x48000000c  @objc GapOfflineView.(null) <stripped>
+WARNING: couldn't find address 0x9266c00237300 (0x66c00237300) in binary!
+	0x933b0  @objc GapOfflineView.(null) <stripped>
  }
 
  enum NewsFeed.FormatOptionExpression {
@@ -3502,9 +3947,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.Compare {
 
 	// Properties
-	let identifier : String
-	let value : FormatOptionValue
-	let operator : FormatOperator
+	let identifier : String // +0x0
+	let value : FormatOptionValue // +0x10
+	let operator : FormatOperator // +0x18
  }
 
  struct NewsFeed.Exists {
@@ -3598,11 +4043,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3656,7 +4099,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatNotificationCenterObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let observer : NSObject // +0x10 (0x8)
+	let observer : NSObject
 
 	// Swift methods
  }
@@ -3713,6 +4156,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsFeed.FormatViewNodeRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatViewNodeRendererType {
+
+	// Properties
+	let imageRenderer : FormatImageRendererType
+
 	// Swift methods
  }
 
@@ -3728,6 +4175,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case option  
  }
 
+ struct NewsFeed.FeedDataPrewarmerResult {
+
+	// Properties
+	let fetchResults : FeedServiceFetchResult
+	let serviceConfig : FeedServiceType
+ }
+
  enum NewsFeed.GroupLayoutPriority {
 
 	// Properties
@@ -3740,13 +4194,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.PremiumBadgeMask : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let image : UIImage // +0x8 (0x8)
+	let image : UIImage
 
 	// ObjC -> Swift bridged methods
-	0x1917b0  @objc PremiumBadgeMask.image <stripped>
-	0x1917f0  @objc PremiumBadgeMask.size <stripped>
-	0x1918b0  @objc PremiumBadgeMask.init <stripped>
-	0x191840  @objc PremiumBadgeMask..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9266c00237300 (0x66c00237300) in binary!
+	0x933b0  @objc PremiumBadgeMask.(null) <stripped>
+WARNING: couldn't find address 0x9265400236230 (0x65400236230) in binary!
+	0x98bb8  @objc PremiumBadgeMask.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x74cff4bac40  @objc PremiumBadgeMask.(null) <stripped>
+	0x4fcff4bb318  @objc PremiumBadgeMask.úáÈ <stripped>
 
 	// Swift methods
  }
@@ -3792,6 +4249,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case placeholder  
  }
 
+ enum NewsFeed.FeedGroupEmitterRule {
+
+	// Properties
+	case featureAvailable : Bool
+	case notFeatureAvailable : Bool
+	case maxOccurrence : FeedServiceConfigType
+	case precededBy : FeedServiceConfigType
+	case preferredPrecededBy : FeedServiceConfigType
+	case notPrecededBy : FeedServiceConfigType
+	case preferredNotPrecededBy : FeedServiceConfigType
+	case groupDistance : FeedServiceConfigType
+	case preferredGroupDistance : FeedServiceConfigType
+	case cursorKinds : FeedCursorKind
+	case notCursorKinds : FeedCursorKind
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minAppVersion : -q
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxAppVersion : -q
+	case uniqueGroup : (identifier: String)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case allowedSegmentSetIds :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case blockedSegmentSetIds :  empty-list 
+	case custom : FeedGroupEmitterCustomRule
+	case bundleSubscribed  
+	case notBundleSubscribed  
+	case weekday  
+	case notWeekday  
+ }
+
+ class NewsFeed.FeedGroupEmitterCustomRule {
  struct NewsFeed.FormatAudioTrack {
 
 	// Properties
@@ -3823,26 +4311,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedLayoutContextFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedLayoutContextFactoryType {
 
 	// Properties
-	let colorPaletteProvider : ColorPaletteProviding // +0x10 (0x28)
-	let fontBookFactory : FontBookFactoryType // +0x38 (0x28)
-	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x60 (0x8)
+	let colorPaletteProvider : ColorPaletteProviding
+	let fontBookFactory : FontBookFactoryType
+	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider
 
 	// Swift methods
-	0x19b040  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
-	0x19b100  func <stripped> // method 
-	0x19b150  func <stripped> // method 
+	0x1816d0  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
+	0x181810  func <stripped> // method 
+	0x181860  func <stripped> // method 
  }
 
  class NewsFeed.AudioTrackViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioTrackViewStylerType {
 
 	// Properties
-	let maskedCorners : CACornerMask // +0x10 (0x8)
+	let maskedCorners : CACornerMask
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maskedCornerRadius : Ô // +0x18 (0x8)
-	let durationFormatter : AudioDurationFormatter // +0x20 (0x8)
-	let countdownFormatter : AudioCountdownFormatter // +0x28 (0x8)
-	let audioTrackFontBook : AudioTrackFontBook // +0x30 (0x18)
-	let colorPaletteProvider : ColorPaletteProviding // +0x48 (0x28)
+	let maskedCornerRadius : ıó
+	let audioTrackFontBook : AudioTrackFontBook
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -3851,6 +4337,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let clusters : FeedTopicCluster // +0x0
+	let orphanedHeadlines : [FCHeadlineProviding] // +0x8
  }
 
  struct NewsFeed.FormatTextNode {
@@ -3860,10 +4347,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let size : FormatTextSize // +0x10
 	let adjustments : FormatAdjustment // +0x18
 	let style : FormatTextNodeStyle // +0x20
-	let content : FormatTextNodeContent // +0x1d0
-	let zIndex : Int // +0x1d8
-	let accessibility : FormatAccessibility // +0x1e0
-	let accessibilityRole : FormatNodeAccessibilityRole // +0x1e8
+	let content : FormatTextContent // +0x1d0
+	let invalidation : FormatComputedInvalidation // +0x1d8
+	let zIndex : Int // +0x1e0
+	let accessibility : FormatAccessibility // +0x1e8
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x1f0
 	let selectors : [String] // +0x200
  }
 
@@ -3875,6 +4363,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case adjustments  
 	case style  
 	case content  
+	case invalidation  
 	case zIndex  
 	case accessibility  
 	case accessibilityRole  
@@ -3908,11 +4397,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3929,9 +4416,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutIdentifier : String // +0x10
 	let frame : CGRect // +0x20
 	let style : FormatViewNodeStyle // +0x40
-	let zIndex : Int // +0x120
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x128
-	let accessibilityRole : FormatNodeAccessibilityRole // +0x148
+	let zIndex : Int // +0xf0
+	let contextLayoutOptions : FormatContextLayoutOptions // +0xf8
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x118
  }
 
  enum NewsFeed.CodingKeys {
@@ -3973,11 +4460,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -4079,7 +4564,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaVariantFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaVariantFactoryType {
 
 	// Properties
-	let assetHandleFactory : AssetHandleFactoryType // +0x10 (0x28)
+	let assetHandleFactory : AssetHandleFactoryType
 
 	// Swift methods
  }
@@ -4089,7 +4574,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : Ô // +0x10
+	let size : ıó // +0x10
 	let scaling : FormatFontScaling // +0x18
  }
 
@@ -4099,6 +4584,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case name  
 	case size  
 	case scaling  
+ }
+
+ struct NewsFeed.FeedGroupKnobsRules {
+
+	// Properties
+	let rankMultiplier : FeedGroupKnobsRuleValue
+	let maxOccurrence : FeedGroupKnobsRuleValue
+	let precededBy : FeedGroupKnobsRuleSet
+	let preferredPrecededBy : FeedGroupKnobsRuleSet
+	let notPrecededBy : FeedGroupKnobsRuleSet
+	let preferredNotPrecededBy : FeedGroupKnobsRuleSet
+	let groupDistance : FeedGroupKnobsRuleValue
+	let preferredGroupDistance : FeedGroupKnobsRuleValue
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case rankMultiplier  
+	case maxOccurrence  
+	case precededBy  
+	case preferredPrecededBy  
+	case notPrecededBy  
+	case preferredNotPrecededBy  
+	case groupDistance  
+	case preferredGroupDistance  
  }
 
  struct NewsFeed.A12_V5 {
@@ -4128,11 +4639,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -4146,10 +4655,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Ô // +0x10 (0x8)
-	let fontBook : CoverIssueFontBook // +0x18 (0x30)
-	let colorPalette : CoverIssueColorPalette // +0x48 (0x48)
-	let colorPaletteProvider : ColorPaletteProviding // +0x90 (0x28)
+	let cornerRadius : ıó
+	let fontBook : CoverIssueFontBook
+	let colorPalette : CoverIssueColorPalette
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -4159,23 +4668,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var reuseIdentifier : String? // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onReuse : ˜ÿ
- // +0x18 (0x8)
+	let onReuse : á // +0x18 (0x8)
 	var webLinkPresentingViewController : weak UIViewController? // +0x20 (0x8)
 	var contentFrame : CGRect // +0x28 (0x20)
 	let debugButton : DebugButton // +0x48 (0x8)
 	let interactionProvider : SWInteractionProvider // +0x50 (0x8)
-	var contentFrameChanged : Bool // +0x58 (0x1)
+	let delegate : WebEmbedURLHandlerDelegate // +0x58 (0x8)
+	var contentFrameChanged : Bool // +0x60 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var embedURL : ıØ
- // +0x0 (0x0)
+	var embedURL : ∑á // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataFeedURL : ıØ
- // +0x0 (0x0)
+	var dataFeedURL : ∑á // +0x0 (0x0)
 	var location : SWLocation? // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sourceURL : ıØ
- // +0x0 (0x0)
+	var sourceURL : ∑á // +0x0 (0x0)
 	let webContentViewController : SWContainerViewController // +0x0 (0x8)
 	let configurationManager : SWConfigurationManager // +0x0 (0x8)
 	let errorProvider : SWErrorProvider // +0x0 (0x8)
@@ -4188,16 +4694,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tapGestureRecognizer : UITapGestureRecognizer // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c7c20  @objc WebEmbedViewController.initWithCoder: <stripped>
-	0x1c8060  @objc WebEmbedViewController.viewDidLoad <stripped>
-	0x1c8480  @objc WebEmbedViewController.viewDidLayoutSubviews <stripped>
-	0x1c8ad0  @objc WebEmbedViewController.handleTapWithRecognizer: <stripped>
-	0x1c8bc0  @objc WebEmbedViewController.initWithNibName:bundle: <stripped>
-	0x1c8c20  @objc WebEmbedViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f56400236738 (0x56400236738) in binary!
+	0x98b98  @objc WebEmbedViewController.(null) <stripped>
+WARNING: couldn't find address 0x98b8c00236c80 (0x38c00236c80) in binary!
+	0x9aa70  @objc WebEmbedViewController.(null) <stripped>
+WARNING: couldn't find address 0x9a21400236710 (0x21400236710) in binary!
+	0x98b68  @objc WebEmbedViewController.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x1b4ff4bc100  @objc WebEmbedViewController.(null) <stripped>
+	0xff4bc1a8  @objc WebEmbedViewController.]A^A_]√Iø <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x6acff4cf790  @objc WebEmbedViewController.(null) <stripped>
 
 	// Swift methods
  }
 
+ class NewsFeed.WebEmbedURLHandlerDelegate : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var webLinkPresentingViewController : weak UIViewController?
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x90c2400235e58 (0x42400235e58) in binary!
+	0x925d8  @objc WebEmbedURLHandlerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x98b3c00236078 (0x33c00236078) in binary!
+	0x58000000c  @objc WebEmbedURLHandlerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8fc6400236130 (0x46400236130) in binary!
+	0x8f4d8  @objc WebEmbedURLHandlerDelegate.(null) <stripped>
+ }
+
+ class NewsFeed.DebugJournalGroupViewController {
  struct NewsFeed.FormatShineBlend {
 
 	// Properties
@@ -4241,11 +4767,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -4260,26 +4784,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let backgroundColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleColor : i∑
-
+	let titleColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptColor : i∑
-
+	let excerptColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryColor : i∑
-
+	let accessoryColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherNameColor : i∑
-
+	let publisherNameColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailPlaceholderColor : i∑
-
+	let thumbnailPlaceholderColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowColor : U∑
-
+	let shadowColor : qk
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let theme : G∑
-
+	let theme : ck
  }
 
  enum NewsFeed.Theme {
@@ -4290,6 +4807,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsFeed.OpenURLCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let urlHandler : ±m
+
 	// Swift methods
  }
 
@@ -4320,11 +4842,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -4337,30 +4857,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.CoverIssueView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let moreActionsButton : CoverViewActionButton // +0x8 (0x8)
-	let followButton : CoverViewFollowSwitch // +0x10 (0x8)
-	let titleLabel : UILabel // +0x18 (0x8)
-	let issueCoverView : IssueCoverView // +0x20 (0x8)
-	let accessoryLabel : UILabel // +0x28 (0x8)
-	let downloadProgressBar : UIProgressView // +0x30 (0x8)
-	let cloudIcon : UIImageView // +0x38 (0x8)
-	let debugButton : DebugButton // +0x40 (0x8)
+	let moreActionsButton : CoverViewActionButton
+	let followButton : CoverViewFollowSwitch
+	let titleLabel : UILabel
+	let issueCoverView : IssueCoverView
+	let accessoryLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var downloadButtonDataProvider : +ª
- // +0x48 (0x10)
+	let downloadProgressBar : Àj
+	let cloudIcon : UIImageView
+	let debugButton : DebugButton
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var downloadStateDisposable : ≤
- // +0x58 (0x28)
+	var downloadButtonDataProvider : 3q
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var downloadProgressDisposable : ≤
- // +0x80 (0x28)
+	var downloadStateDisposable : wf
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var downloadProgressDisposable : wf
 
 	// ObjC -> Swift bridged methods
-	0x1db4c0  @objc CoverIssueView.initWithFrame: <stripped>
-	0x1db540  @objc CoverIssueView.initWithCoder: <stripped>
-	0x1db560  @objc CoverIssueView.accessibilityValue <stripped>
-	0x1dbac0  @objc CoverIssueView.setAccessibilityValue: <stripped>
-	0x1dbd30  @objc CoverIssueView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8fc6400236130 (0x46400236130) in binary!
+	0x8f4d8  @objc CoverIssueView.(null) <stripped>
+WARNING: couldn't find address 0x9259c00236d68 (0x59c00236d68) in binary!
+	0x9a9f0  @objc CoverIssueView.(null) <stripped>
+WARNING: couldn't find address 0x98af400236030 (0x2f400236030) in binary!
+	0x38000000c  @objc CoverIssueView.(null) <stripped>
+WARNING: couldn't find address 0x8fc1c002360e8 (0x41c002360e8) in binary!
+	0x8f490  @objc CoverIssueView.(null) <stripped>
+WARNING: couldn't find address 0x98ac400236000 (0x2c400236000) in binary!
+	0x48000000c  @objc CoverIssueView.(null) <stripped>
  }
 
  struct NewsFeed.FormatLocalization {
@@ -4386,7 +4909,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let emittedGroups : FeedJournalGroup
-	let position : FeedGroupPosition
+	let slots : FeedGroupSlots
+	let durationInMilliseconds : Double
  }
 
  struct NewsFeed.DebugInspectViewSection {
@@ -4511,7 +5035,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let issue : FCIssue // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let aspectRatio : Ô // +0x8
+	let aspectRatio : ıó // +0x8
 	let assetHandle : FCAssetHandle // +0x10
  }
 
@@ -4520,7 +5044,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let issue : FCIssue // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let aspectRatio : Ô // +0x8
+	let aspectRatio : ıó // +0x8
 	let json : String // +0x10
  }
 
@@ -4538,13 +5062,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let emitter : FeedGroupEmitter
 	let output : FeedGroupEmitterOutput
+	let rules : FeedGroupEmitterRuleOutput
+	let durationInMilliseconds : Double
  }
 
  struct NewsFeed.FeedScoredResult {
 
 	// Properties
 	let score : Double
+	let rankMultipler : Double
 	let result : FeedEmitterResult
+ }
+
+ class NewsFeed.FeedBannerAdView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bannerView : Ωq
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_debugView : wr
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x8fc1c002360e8 (0x41c002360e8) in binary!
+	0x8f490  @objc FeedBannerAdView.(null) <stripped>
+WARNING: couldn't find address 0x98ac400236000 (0x2c400236000) in binary!
+	0x48000000c  @objc FeedBannerAdView.(null) <stripped>
+WARNING: couldn't find address 0x9253c00236360 (0x53c00236360) in binary!
+	0x92530  @objc FeedBannerAdView.(null) <stripped>
  }
 
  enum NewsFeed.FormatShineSizer {
@@ -4574,12 +5118,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case linePattern  
  }
 
+ struct NewsFeed.FormatSelectorValue {
+
+	// Properties
+	let value : A
+	let selectors : FormatSelectorValueSelector
+ }
+
+ struct NewsFeed.FormatSelectorValueSelector {
+
+	// Properties
+	let selector : String
+	let value : A
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case selector  
+	case value  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case value  
+	case selectors  
+ }
+
  enum NewsFeed.FeedLocation {
 
 	// Properties
 	case topOfFeed : A
 	case cursor : FeedCursor
 	case refresh : FeedCursor
+	case expand : FeedCursor
  }
 
  struct NewsFeed.FormatGroupBinding { }
@@ -4607,6 +5180,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case weather : Bool
+	case tag : Bool
  }
 
  enum NewsFeed.Command {
@@ -4637,6 +5211,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case weather  
+	case tag  
  }
 
  enum NewsFeed.CodingType {
@@ -4695,8 +5270,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case otherFirstBaselineIntegral : FormatTextAdjustmentOtherBaseline
 	case otherBaseline : FormatTextAdjustmentOtherBaseline
 	case otherBaselineIntegral : FormatTextAdjustmentOtherBaseline
-	case minTextLines : Int
-	case maxTextLines : Int
+	case minTextLines : FormatEquation
+	case maxTextLines : FormatEquation
 	case switch : FormatSwitchListValue
 	case invert  
 	case resize  
@@ -4778,13 +5353,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case selectors  
  }
 
- struct NewsFeed.FormatNodeBinder {
+ class NewsFeed.FormatNodeBinder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var nodeBindings : FormatNodeBindings
-	var bindingContext : GroupLayoutBindingContext
-	let slotOptions : FormatMerge
-	let wildcardSlotFallback : Bool
+	var nodeBindings : FormatNodeBindings // +0x10 (0x30)
+	var bindingContext : GroupLayoutBindingContext // +0x0 (0x0)
+	let slotOptions : FormatMerge // +0x0 (0x8)
+	let wildcardSlotFallback : Bool // +0x0 (0x1)
+
+	// Swift methods
  }
 
  struct NewsFeed.FormatNumberFormat {
@@ -4833,29 +5410,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let specialEffectsFrame : °Ó
- // +0x8
+	let specialEffectsFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headerLabelFrame : °Ó
- // +0x10
+	let headerLabelFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x18
+	let titleLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headphoneImageFrame : °Ó
- // +0x20
+	let headphoneImageFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trackDurationLabelFrame : °Ó
- // +0x28
+	let trackDurationLabelFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progressViewFrame : °Ó
- // +0x30
+	let progressViewFrame : ¡ê // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let remainingTimeLabelFrame : °Ó
- // +0x38
+	let remainingTimeLabelFrame : ¡ê // +0x38
  }
 
  struct NewsFeed.Attributes {
@@ -4880,7 +5449,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let cachedHeaderText : CachedText
 	let cachedTitleText : CachedText
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minTitleHeight : Ô
+	let minTitleHeight : ıó
 	let cachedDurationText : CachedText
 	let cachedPlayedText : CachedText
 	let cachedRemainingTimeText : CachedText
@@ -4957,16 +5526,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FeedContext {
 
 	// Properties
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x0
-	let subscription : FCBundleSubscription // +0x8
-	let paidAccessChecker : FCPaidAccessCheckerType // +0x10
-	let badgeOptions : BadgeOptions // +0x18
- }
-
- struct NewsFeed.BadgeOptions {
-
-	// Properties
-	let rawValue : Int // +0x0
+	let subscription : FCBundleSubscription // +0x0
+	let isSubscribed : Bool // +0x8
+	let displayFreeBadges : Bool // +0x9
+	let displayPremiumBadges : Bool // +0xa
+	let displayAudioBadges : Bool // +0xb
+	let debugForcePremiumBadging : Bool // +0xc
+	let selectors : [String] // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentSetIds :  empty-list  // +0x18
  }
 
  struct NewsFeed.A12_V8 {
@@ -4996,11 +5564,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5017,6 +5583,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let orderFont : UIFont // +0x8
 	let accessoryFont : UIFont // +0x10
 	let publisherFont : UIFont // +0x18
+ }
+
+ struct NewsFeed.FeedNativeAdInsertion {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let nativeAd : 9n
+	let sectionIdentifier : String
+ }
+
+ class NewsFeed.FeedNativeAdManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedNativeAdManagerType {
+
+	// Properties
+	let nativeAdService : NativeAdServiceType
+	var observers : DisposableObserver
+
+	// Swift methods
+ }
+
+ class NewsFeed.DisposableObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var observer : FeedNativeAdInsertion
+	var keepAliveObject : weak Swift.AnyObject?
+
+	// Swift methods
+ }
+
+ struct NewsFeed.FeedJournalConfig {
+
+	// Properties
+	let entries : FeedJournalConfigEntry // +0x0
  }
 
  enum NewsFeed.FormatSymbolWeight {
@@ -5038,9 +5636,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutAttributes : FormatDataLayoutAttributes // +0x0
-	let stateLayoutAttributes : FormatStateViewNodeStateDataLayoutAttributes // +0x68
-	let zIndex : Int // +0x70
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
+	let stateLayoutAttributes : FormatStateViewNodeStateDataLayoutAttributes // +0x58
+	let zIndex : Int // +0x60
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x68
  }
 
  struct NewsFeed.A8_V8 {
@@ -5070,11 +5668,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x8
+	let headlineLayoutAttributes : «z // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5095,25 +5691,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stateViewNodeRenderer : FormatStateViewNodeRendererType
 	let customNodeRenderer : FormatCustomNodeRendererType
 	let webEmbedNodeRenderer : FormatWebEmbedNodeRendererType
+	let adMetricsNodeRenderer : FormatAdMetricsNodeRendererType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webEmbedViewControllerReuseManager : Ÿ	
+	let webEmbedViewControllerReuseManager : c
 	let rendererTool : FeedItemRendererTool
 	let behaviorRenderer : FormatBehaviorRendererType
-
-	// Swift methods
- }
-
- class NewsFeed.FormatLayoutViewAXElement : UIAccessibilityElement /System/Library/Frameworks/UIKit.framework/UIKit {
-
-	// Properties
-	var layoutView : FormatLayoutView
-
-	// ObjC -> Swift bridged methods
-	0x2477b0  @objc FormatLayoutViewAXElement.accessibilityFrame <stripped>
-	0x247830  @objc FormatLayoutViewAXElement.setAccessibilityFrame: <stripped>
-	0x247890  @objc FormatLayoutViewAXElement.initWithAccessibilityContainer: <stripped>
-	0x2478e0  @objc FormatLayoutViewAXElement.init <stripped>
-	0x247870  @objc FormatLayoutViewAXElement..cxx_destruct <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
+	let timer : FormatTimer
 
 	// Swift methods
  }
@@ -5149,20 +5734,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -5227,14 +5807,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -5266,7 +5843,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let headline : FCHeadlineProviding // +0x0
-	let score : Double // +0x8
+	let scoreProfile : FCFeedPersonalizedItemScoreProfile // +0x8
  }
 
  enum NewsFeed.FormatTemperature {
@@ -5285,15 +5862,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let config : FormatConfig
 	let assetManager : FCAssetManager
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : óõ
-
+	let layoutOptions : GV
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columnOptions : aõ
-
+	let columnOptions : V
 	let options : FormatMerge
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lazyContextLayoutOptions : π˚
-
+	let lazyContextLayoutOptions : [
  }
 
  struct NewsFeed.E12_V1 {
@@ -5327,20 +5901,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -5410,6 +5979,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case customViewClassEnumOptionNotSupported : (optionIdentifier: String, styleClass: String)
  }
 
+ enum NewsFeed.FormatMenuTitleResolved {
+
+	// Properties
+	case text : String
+	case command : FormatCommandActionValue
+ }
+
  enum NewsFeed.FormatQueryValue {
 
 	// Properties
@@ -5428,25 +6004,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x26d9c0  @objc StubAssetHandle.dataProvider <stripped>
-	0x26dac0  @objc StubAssetHandle.uniqueKey <stripped>
-	0x26dc70  @objc StubAssetHandle.init <stripped>
-	0x26db70  @objc StubAssetHandle..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9253c00236360 (0x53c00236360) in binary!
+	0x92530  @objc StubAssetHandle.(null) <stripped>
+WARNING: couldn't find address 0x9252400236100 (0x52400236100) in binary!
+	0x98a88  @objc StubAssetHandle.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x134ff555030  @objc StubAssetHandle.(null) <stripped>
+	0xff5550c8  @objc StubAssetHandle. <stripped>
  }
 
  class NewsFeed.StubAssetDataProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : ßï
-
+	let data : ©P
 	let filePath : String?
 	let isRawFileConsumable : Bool
 
 	// ObjC -> Swift bridged methods
-	0x26d8c0  @objc StubAssetDataProvider.data <stripped>
-	0x26d920  @objc StubAssetDataProvider.filePath <stripped>
-	0x26d970  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
+WARNING: couldn't find address 0x9250400236330 (0x50400236330) in binary!
+	0x924f8  @objc StubAssetDataProvider.(null) <stripped>
+WARNING: couldn't find address 0x9deac00236938 (0x6ac00236938) in binary!
+	0x68000000c  @objc StubAssetDataProvider.(null) <stripped>
+WARNING: couldn't find address 0x8f404002365d8 (0x404002365d8) in binary!
+	0x98a38  @objc StubAssetDataProvider.(null) <stripped>
 
 	// Swift methods
  }
@@ -5480,7 +6061,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FormatTextNodeFormat {
 
 	// Properties
-	let format : FormatTextNodeContent // +0x0
+	let format : FormatTextContent // +0x0
 	let tokens : Token // +0x8
  }
 
@@ -5488,7 +6069,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let identifier : String // +0x0
-	let content : FormatTextNodeContent // +0x10
+	let content : FormatTextContent // +0x10
 	let style : FormatTextNodeStyle // +0x18
  }
 
@@ -5507,30 +6088,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case style  
  }
 
+ enum NewsFeed.FeedGroupConfigError {
+
+	// Properties
+	case notImplemented  
+ }
+
  struct NewsFeed.OrderedHeadlineViewLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orderNumberFrame : °Ó
- // +0x8
+	let orderNumberFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x10
+	let titleLabelFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryLabelFrame : °Ó
- // +0x18
+	let accessoryLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x20
+	let publisherLogoImageViewFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let roundedCornerRadius : ˜€
- // +0x28
+	let roundedCornerRadius : â| // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let premiumBadgeViewFrame : °Ó
- // +0x30
+	let premiumBadgeViewFrame : ¡ê // +0x30
  }
 
  struct NewsFeed.Attributes {
@@ -5541,7 +6121,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let orderNumberFrame : CGRect // +0x40
 	let accessoryLabelFrame : CGRect // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let roundedCornerRadius : Ô // +0x80
+	let roundedCornerRadius : ıó // +0x80
 	let premiumBadgeViewFrame : CGRect // +0x88
 	let publisherLogoImageViewFrame : CGRect // +0xa8
  }
@@ -5599,26 +6179,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Ô // +0x8 (0x8)
+	var scale : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edge : Ô // +0x10 (0x8)
-	var contentBounds : CGRect // +0x18 (0x20)
-	var canvasOffset : CGPoint // +0x38 (0x10)
-	var selectionFrame : CGRect // +0x48 (0x20)
-	let direction : Direction // +0x68 (0x1)
-	let markerLayer : CAShapeLayer // +0x70 (0x8)
-	let markerLabels : [UILabel] // +0x78 (0x8)
-	let indicatorView : DebugFormatRulerIndicatorView // +0x80 (0x8)
-	let contentView : UIView // +0x88 (0x8)
-	let selectionView : UIView // +0x90 (0x8)
+	var edge : ıó
+	var contentBounds : CGRect
+	var canvasOffset : CGPoint
+	var selectionFrame : CGRect
+	let direction : Direction
+	let markerLayer : CAShapeLayer
+	let markerLabels : [UILabel]
+	let indicatorView : DebugFormatRulerIndicatorView
+	let contentView : UIView
+	let selectionView : UIView
 
 	// ObjC -> Swift bridged methods
-	0x280610  @objc DebugFormatRulerEdgeView.initWithCoder: <stripped>
-	0x281af0  @objc DebugFormatRulerEdgeView.layoutSubviews <stripped>
-	0x281b20  @objc DebugFormatRulerEdgeView.traitCollectionDidChange: <stripped>
-	0x2824b0  @objc DebugFormatRulerEdgeView.didUpdatePan: <stripped>
-	0x282590  @objc DebugFormatRulerEdgeView.initWithFrame: <stripped>
-	0x282530  @objc DebugFormatRulerEdgeView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f404002365d8 (0x404002365d8) in binary!
+	0x98a38  @objc DebugFormatRulerEdgeView.(null) <stripped>
+WARNING: couldn't find address 0x9a91c00236e90 (0x11c00236e90) in binary!
+	0x9a910  @objc DebugFormatRulerEdgeView.(null) <stripped>
+WARNING: couldn't find address 0x8fb5400236020 (0x35400236020) in binary!
+	0x98a08  @objc DebugFormatRulerEdgeView.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x57cff63adf0  @objc DebugFormatRulerEdgeView.(null) <stripped>
+	0x69cff63b3c8  @objc DebugFormatRulerEdgeView. <stripped>
+	0x6f4ff63b550  @objc DebugFormatRulerEdgeView. <stripped>
 
 	// Swift methods
  }
@@ -5635,7 +6219,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let divisor : Int // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Ô // +0x8
+	let height : ıó // +0x8
 	let hasLabel : Bool // +0x10
  }
 
@@ -5644,8 +6228,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.Content { }
 
  struct NewsFeed.Layout { }
-
- struct NewsFeed.Scaling { }
 
  struct NewsFeed.Badging { }
 
@@ -5690,11 +6272,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5718,12 +6298,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case repeat  
  }
 
+ class NewsFeed.FeedAppConfigManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedAppConfigManagerType {
+
+	// Properties
+	let appConfigManager : FCNewsAppConfigurationManager
+
+	// Swift methods
+	0x2fc030  class func FeedAppConfigManager.__allocating_init(appConfigManager:) // init 
+ }
+
  enum NewsFeed.FormatCompilerScopeContext {
 
 	// Properties
 	case decoration : Decoration
 	case group : Group
 	case item : Item
+	case option : Option
 	case slot : Slot
 	case style : Style
 	case supplementary : Supplementary
@@ -5753,6 +6343,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let options : FormatCompilerScopedOption // +0x0
 	let slotDefinition : FormatSlotDefinition // +0x8
+ }
+
+ struct NewsFeed.Option {
+
+	// Properties
+	let options : FormatCompilerScopedOption // +0x0
  }
 
  struct NewsFeed.Item {
@@ -5825,11 +6421,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5870,11 +6464,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5882,6 +6474,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case headlineLayoutAttributes  
+ }
+
+ struct NewsFeed.FeedBannerAdViewLayout {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : ¡ê // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bannerAdViewLayoutAttributes : cN // +0x8
+ }
+
+ struct NewsFeed.Attributes {
+
+	// Properties
+	let frame : CGRect
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bannerAdViewLayoutAttributes : ød
+ }
+
+ struct NewsFeed.Context {
+
+	// Properties
+	let model : FeedBannerAd
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case frame  
+	case bannerAdViewLayoutAttributes  
  }
 
  enum NewsFeed.FormatBundleImageSize {
@@ -5906,7 +6528,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let nativeScreenSize : CGSize // +0x0
 	let boundingSize : CGSize // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x20
+	let scale : ıó // +0x20
  }
 
  struct NewsFeed.GroupLayoutBindingContext {
@@ -5923,8 +6545,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let maxNoAccessItems : Int
 	var returnedNoAccessItems : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var layoutSize : ±ë
-
+	var layoutSize : YP
  }
 
  enum NewsFeed.Errors {
@@ -5943,29 +6564,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let feedItem : FeedItemType // +0x10
  }
 
- class NewsFeed.DebugInspectionReporter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let cloudContext : FCCloudContext // +0x10 (0x8)
-
-	// Swift methods
- }
-
- enum NewsFeed.DebugInspectionReporterError {
-
-	// Properties
-	case failedToCreateURL  
- }
-
  struct NewsFeed.GapViewLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let activityIndicatorViewFrame : °Ó
- // +0x8
+	let activityIndicatorViewFrame : ¡ê // +0x8
  }
 
  struct NewsFeed.Attributes {
@@ -5993,8 +6598,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
  }
 
  struct NewsFeed.Attributes {
@@ -6020,37 +6624,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Ô // +0x8 (0x8)
-	var contentSize : CGSize // +0x10 (0x10)
-	var contentBounds : CGRect // +0x20 (0x20)
-	var canvasOffset : CGPoint // +0x40 (0x10)
-	var selectionFrame : CGRect // +0x50 (0x20)
-	var rulersHidden : Bool // +0x70 (0x1)
+	var scale : ıó
+	var contentSize : CGSize
+	var contentBounds : CGRect
+	var canvasOffset : CGPoint
+	var selectionFrame : CGRect
+	var rulersHidden : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rulerSize : Ô // +0x78 (0x8)
-	let verticalRulerEdgeView : DebugFormatRulerEdgeView // +0x80 (0x8)
-	let horizontalRulerEdgeView : DebugFormatRulerEdgeView // +0x88 (0x8)
-	let gridView : DebugFormatGridView // +0x90 (0x8)
-	let cornerView : UIView // +0x98 (0x8)
-	let borderLayer : CAShapeLayer // +0xa0 (0x8)
+	let rulerSize : ıó
+	let verticalRulerEdgeView : DebugFormatRulerEdgeView
+	let horizontalRulerEdgeView : DebugFormatRulerEdgeView
+	let gridView : DebugFormatGridView
+	let cornerView : UIView
+	let borderLayer : CAShapeLayer
 
 	// ObjC -> Swift bridged methods
-	0x2d38d0  @objc DebugFormatRulerView.initWithFrame: <stripped>
-	0x2d38f0  @objc DebugFormatRulerView.initWithCoder: <stripped>
-	0x2d3f30  @objc DebugFormatRulerView.layoutSubviews <stripped>
-	0x2d3f60  @objc DebugFormatRulerView.pointInside:withEvent: <stripped>
-	0x2d40d0  @objc DebugFormatRulerView.traitCollectionDidChange: <stripped>
-	0x2d41f0  @objc DebugFormatRulerView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8fb3400236000 (0x33400236000) in binary!
+	0x8f3a8  @objc DebugFormatRulerView.(null) <stripped>
+WARNING: couldn't find address 0x989dc00236860 (0x1dc00236860) in binary!
+	0x95f50  @objc DebugFormatRulerView.(null) <stripped>
+WARNING: couldn't find address 0x9a8b400236e28 (0xb400236e28) in binary!
+	0x989b8  @objc DebugFormatRulerView.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x4ff644e60  @objc DebugFormatRulerView.(null) <stripped>
+	0x34400236518  @objc DebugFormatRulerView.f«G <stripped>
+WARNING: couldn't find address 0x2367fcff68ebd0 (0x7fcff68ebd0) in binary!
+	0x2ac00235f78  @objc DebugFormatRulerView.(null) <stripped>
  }
 
  class NewsFeed.FormatJSONDecoder {
- struct NewsFeed.MappedKey {
-
-	// Properties
-	let stringValue : String // +0x0
-	let intValue : Int? // +0x10
- }
-
  enum NewsFeed.Errors {
 
 	// Properties
@@ -6094,17 +6696,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6118,8 +6716,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.ThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2de880  @objc ThumbnailProcessor.process: <stripped>
-	0x2de900  @objc ThumbnailProcessor.init <stripped>
+WARNING: couldn't find address 0x8f36400235cb0 (0x36400235cb0) in binary!
+	0x92428  @objc ThumbnailProcessor.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x7fcff68ebd0  @objc ThumbnailProcessor.(null) <stripped>
  }
 
  struct NewsFeed.FormatCustomNode {
@@ -6149,19 +6749,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum NewsFeed.FormatMenuItemTitle {
+
+	// Properties
+	case switch : FormatSwitchValue
+	case text : FormatTextContent
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case switch  
+	case text  
+ }
+
  enum NewsFeed.FormatAccessibilityRole {
 
 	// Properties
 	case container : FormatAccessibilityContainer
-	case containerElement : FormatAccessibilityContainerElement
 	case element  
  }
 
  enum NewsFeed.FormatNodeAccessibilityRole {
 
 	// Properties
-	case containerElement : FormatAccessibilityContainerElement
 	case element : Int?
+	case containerElement  
  }
 
  struct NewsFeed.Position {
@@ -6251,10 +6864,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let naImage : UIImage // +0x30 (0x8)
 	var desiredItemIdentifiers : Set<String> // +0x38 (0x8)
 	var undesiredItemIdentifiers : Set<String> // +0x40 (0x8)
+	var visibleItemIdentifiers : Set<String> // +0x48 (0x8)
 	let key : DebugGroupLayoutKey // +0x0 (0x0)
-	var sections : DebugInspectViewSection // +0xe47000 (0x8)
+	var sections : DebugInspectViewSection // +0x14 (0x8)
 	var feedItemImages : [String : UIImage] // +0x0 (0x8)
 	var layoutImages : [String : UIImage] // +0x0 (0x8)
+	let featureAvailability : FeatureAvailabilityType // +0x0 (0x28)
 
 	// Swift methods
  }
@@ -6263,11 +6878,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let stateMaskLayoutAttributes : FormatButtonNodeStateMask // +0x78
-	let zIndex : Int // +0x80
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x88
-	let behaviors : FormatNodeBehavior // +0xa8
-	let accessibilityRole : FormatNodeAccessibilityRole // +0xb0
+	let stateMaskLayoutAttributes : FormatButtonNodeStateMask // +0x68
+	let zIndex : Int // +0x70
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
+	let behaviors : FormatNodeBehavior // +0x98
+	let accessibilityRole : FormatNodeAccessibilityRole // +0xa0
  }
 
  enum NewsFeed.CodingKeys {
@@ -6311,17 +6926,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6333,7 +6944,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case spacerFrame  
  }
 
- enum NewsFeed.FeedGroupPosition {
+ enum NewsFeed.FeedGroupSlots {
 
 	// Properties
 	case slot : [Int]
@@ -6349,6 +6960,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let limitUnpaidArticles : Bool // +0x18
  }
 
+ enum NewsFeed.DebugJournalGroupItem {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case key :  first-element-marker 
+	case rule : FeedGroupEmitterRuleResult
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case json :  first-element-marker 
+	case feedItem : FeedItemType
+	case selector : String
+ }
+
  enum NewsFeed.FormatImage {
 
 	// Properties
@@ -6356,8 +6979,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case assetHandleProvider : FormatAssetHandleProvider
 	case command : FormatCommandActionValue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case remote : ˜¨
-
+	case remote : ìÜ
 	case userInterface : FormatImage
 	case style : FormatImage
 	case empty  
@@ -6386,53 +7008,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chinFrame : °Ó
- // +0x8
+	let chinFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chinRoundedCorners : ‹
- // +0x10
+	let chinRoundedCorners : ó| // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x18
+	let titleLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryLabelFrame : °Ó
- // +0x20
+	let accessoryLabelFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptLabelFrame : °Ó
- // +0x28
+	let excerptLabelFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x30
+	let publisherLogoImageViewFrame : ¡ê // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLabelFrame : °Ó
- // +0x38
+	let publisherLabelFrame : ¡ê // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewFrame : °Ó
- // +0x40
+	let mediaViewFrame : ¡ê // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCorners : ‹
- // +0x48
+	let mediaViewRoundedCorners : ó| // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : ˜€
- // +0x50
+	let mediaViewRoundedCornerRadius : â| // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryDataStyle : ◊À
- // +0x58
+	let accessoryDataStyle : 5v // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let numberOfSegmentedColors : È€
- // +0x60
+	let numberOfSegmentedColors : {| // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewFrame : °Ó
- // +0x68
+	let segmentedColorViewFrame : ¡ê // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewDirection : ﬂ€
- // +0x70
+	let segmentedColorViewDirection : q| // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewCorner : ‹
- // +0x78
+	let segmentedColorViewCorner : ó| // +0x78
  }
 
  struct NewsFeed.Attributes {
@@ -6449,13 +7055,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let numberOfSegmentedColors : Int // +0xd0
 	let segmentedColorViewFrame : CGRect // +0xd8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewDirection : °ì
- // +0xf8
+	let segmentedColorViewDirection : ;X // +0xf8
 	let segmentedColorViewCorner : UIRectCorner // +0x100
 	let mediaViewFrame : CGRect // +0x108
 	let mediaViewRoundedCorners : UIRectCorner // +0x128
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : Ô // +0x130
+	let mediaViewRoundedCornerRadius : ıó // +0x130
 	let publisherLogoImageViewFrame : CGRect // +0x138
  }
 
@@ -6478,8 +7083,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let traits : Traits
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailAspectRatio : ıà
-
+	let thumbnailAspectRatio : -K
 	let accessory : Option
 	let maxTitleLines : Int
 	let maxExcerptLines : Int
@@ -6537,6 +7141,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case accessibilityRole  
  }
 
+ struct NewsFeed.FeedScoredIssue {
+
+	// Properties
+	let issue : FCIssue // +0x0
+	let scoreProfile : FCFeedPersonalizedItemScoreProfile // +0x8
+ }
+
  enum NewsFeed.DebugFormatLayoutOrderingModel {
 
 	// Properties
@@ -6582,17 +7193,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6634,17 +7241,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6731,14 +7334,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case notFollowing  
  }
 
+ struct NewsFeed.FollowingNotificationContext {
+
+	// Properties
+	let tag : FCTagProviding // +0x0
+	let result : Result // +0x8
+ }
+
+ enum NewsFeed.Result {
+
+	// Properties
+	case none  
+	case autoSubscribe  
+	case notNow  
+	case enabled  
+	case disabled  
+ }
+
  struct NewsFeed.Following { }
 
  struct NewsFeed.FormatAbsoluteURL {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let value : ˜¨
-
+	let value : ìÜ
 	let parameters : FormatQueryParameter
  }
 
@@ -6747,6 +7366,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case value  
 	case parameters  
+ }
+
+ struct NewsFeed.FormatContentSubgroupCollection {
+
+	// Properties
+	let subgroups : FormatContentSubgroup // +0x0
+ }
+
+ struct NewsFeed.MetadataContainer {
+
+	// Properties
+	let metadata : FormatMetadata
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case metadata  
  }
 
  class NewsFeed.DebugFormatRulerIndicatorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6758,10 +7395,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let fill : Component
 
 	// ObjC -> Swift bridged methods
-	0x337740  @objc DebugFormatRulerIndicatorView.initWithCoder: <stripped>
-	0x338450  @objc DebugFormatRulerIndicatorView.layoutSubviews <stripped>
-	0x338610  @objc DebugFormatRulerIndicatorView.initWithFrame: <stripped>
-	0x338670  @objc DebugFormatRulerIndicatorView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f34400236518 (0x34400236518) in binary!
+	0x98978  @objc DebugFormatRulerIndicatorView.(null) <stripped>
+WARNING: couldn't find address 0x8faac00235f78 (0x2ac00235f78) in binary!
+	0x98960  @objc DebugFormatRulerIndicatorView.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xff693808  @objc DebugFormatRulerIndicatorView.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x4dcff6d86f0  @objc DebugFormatRulerIndicatorView.(null) <stripped>
 
 	// Swift methods
  }
@@ -6781,17 +7422,55 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let pixel : Int // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let point : Ô // +0x8
+	let point : ıó // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Ô // +0x10
+	let height : ıó // +0x10
+ }
+
+ struct NewsFeed.FeedGroupConfig {
+
+	// Properties
+	let type : String
+	let identifier : String
+	let slots : FeedGroupSlots
+	let paidVisibility : FeedGroupPaidVisibility
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minNewsVersion : -q
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxNewsVersion : -q
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let allowedSegmentSetIds :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blockedSegmentSetIds :  empty-list 
+	let data : A
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case identifier  
+	case slots  
+	case paidVisibility  
+	case maxNewsVersion  
+	case minNewsVersion  
+	case allowedSegmentSetIds  
+	case blockedSegmentSetIds  
+ }
+
+ struct NewsFeed.AdFeedGroup {
+
+	// Properties
+	let identifier : String // +0x0
  }
 
  class NewsFeed.LayeredMediaLayerProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x338ef0  @objc LayeredMediaLayerProcessor.process: <stripped>
+WARNING: couldn't find address 0x8f30c00235c58 (0x30c00235c58) in binary!
+	0x68000000c  @objc LayeredMediaLayerProcessor.(null) <stripped>
 
 	// Swift methods
-	0x338eb0  class func LayeredMediaLayerProcessor.__allocating_init() // init 
+	0x38cb90  class func LayeredMediaLayerProcessor.__allocating_init() // init 
  }
 
  enum NewsFeed.FormatMerge {
@@ -6821,14 +7500,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let groupLayoutKey : GroupLayoutKey
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rendererEnvironment : Ò
-
+	let rendererEnvironment : oR
  }
 
  class NewsFeed.LayeredMediaLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaLoaderType {
 
 	// Properties
-	let parser : LayeredMediaParserType // +0x10 (0x28)
+	let parser : LayeredMediaParserType
 
 	// Swift methods
  }
@@ -6837,35 +7515,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x8
+	let titleLabelFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptLabelFrame : °Ó
- // +0x10
+	let excerptLabelFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateLabelFrame : °Ó
- // +0x18
+	let dateLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let premiumBadgeViewFrame : °Ó
- // +0x20
+	let premiumBadgeViewFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributes : õ€
- // +0x28
+	let issueCoverViewLayoutAttributes : O| // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewVideoPlayback : õ
- // +0x30
+	let issueCoverViewVideoPlayback : ÁB // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x38
+	let publisherLogoImageViewFrame : ¡ê // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let roundedCornerRadius : ˜€
- // +0x40
+	let roundedCornerRadius : â| // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hideCard : õ
- // +0x48
+	let hideCard : ÁB // +0x48
  }
 
  struct NewsFeed.Attributes {
@@ -6879,7 +7547,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let issueCoverViewLayoutAttributes : IssueCoverViewLayoutAttributes // +0xa0
 	let issueCoverViewVideoPlayback : Bool // +0xd0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let roundedCornerRadius : Ô // +0xd8
+	let roundedCornerRadius : ıó // +0xd8
 	let hideCard : Bool // +0xe0
 	let publisherLogoImageViewFrame : CGRect // +0xe8
  }
@@ -6903,8 +7571,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let traits : Traits
 	let maxDescriptionLines : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailAspectRatio : ıà
-
+	let thumbnailAspectRatio : -K
  }
 
  struct NewsFeed.Traits {
@@ -6932,7 +7599,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case tag : FeedGroupTag
-	case properties : FeedPropertyList
+	case options : FeedOptionList
 	case weather : FeedWeather
  }
 
@@ -6966,17 +7633,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7000,53 +7663,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chinFrame : °Ó
- // +0x8
+	let chinFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chinRoundedCorners : ‹
- // +0x10
+	let chinRoundedCorners : ó| // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x18
+	let titleLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptLabelFrame : °Ó
- // +0x20
+	let excerptLabelFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x28
+	let publisherLogoImageViewFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewFrame : °Ó
- // +0x30
+	let mediaViewFrame : ¡ê // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributes : õ€
- // +0x38
+	let issueCoverViewLayoutAttributes : O| // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateLabelFrame : °Ó
- // +0x40
+	let dateLabelFrame : ¡ê // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let premiumBadgeViewFrame : °Ó
- // +0x48
+	let premiumBadgeViewFrame : ¡ê // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCorners : ‹
- // +0x50
+	let mediaViewRoundedCorners : ó| // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : ˜€
- // +0x58
+	let mediaViewRoundedCornerRadius : â| // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let numberOfSegmentedColors : È€
- // +0x60
+	let numberOfSegmentedColors : {| // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewFrame : °Ó
- // +0x68
+	let segmentedColorViewFrame : ¡ê // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewDirection : ﬂ€
- // +0x70
+	let segmentedColorViewDirection : q| // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewCorner : ‹
- // +0x78
+	let segmentedColorViewCorner : ó| // +0x78
  }
 
  struct NewsFeed.Attributes {
@@ -7063,13 +7710,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let numberOfSegmentedColors : Int // +0xf8
 	let segmentedColorViewFrame : CGRect // +0x100
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorViewDirection : °ì
- // +0x120
+	let segmentedColorViewDirection : ;X // +0x120
 	let segmentedColorViewCorner : UIRectCorner // +0x128
 	let mediaViewFrame : CGRect // +0x130
 	let mediaViewRoundedCorners : UIRectCorner // +0x150
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : Ô // +0x158
+	let mediaViewRoundedCornerRadius : ıó // +0x158
 	let publisherLogoImageViewFrame : CGRect // +0x160
  }
 
@@ -7091,8 +7737,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let traits : Traits
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailAspectRatio : gÄ
-
+	let thumbnailAspectRatio : E
 	let numberOfSegmentedColors : Int
 	let maxExcerptLines : Int
  }
@@ -7128,9 +7773,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let stateLayoutAttributes : FormatStateViewNodeStateLayoutAttributes // +0x78
-	let zIndex : Int // +0x80
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x88
+	let stateLayoutAttributes : FormatStateViewNodeStateLayoutAttributes // +0x68
+	let zIndex : Int // +0x70
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
  }
 
  enum NewsFeed.CodingKeys {
@@ -7167,12 +7812,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String // +0x0
 	let class : String // +0x10
-	let background : FormatBackground // +0x20
-	let cornerRadius : FormatCornerRadius // +0x58
-	let shadow : FormatShadow // +0x70
-	let selectors : Selector // +0xc8
-	let borders : FormatBorder // +0xd0
-	let alpha : FormatEquation // +0xd8
+	let selectors : Selector // +0x20
+	let alpha : FormatEquation // +0x28
+	let background : FormatBackground // +0x30
+	let borders : FormatBorder // +0x38
+	let cornerRadius : FormatCornerRadius // +0x40
+	let shadow : FormatShadow // +0x58
  }
 
  struct NewsFeed.Selector {
@@ -7180,10 +7825,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let selector : String // +0x0
 	let background : FormatBackground // +0x10
-	let borders : FormatBorder // +0x48
-	let cornerRadius : FormatCornerRadius // +0x50
-	let shadow : FormatShadow // +0x68
-	let alpha : FormatEquation // +0xc0
+	let borders : FormatBorder // +0x18
+	let cornerRadius : FormatCornerRadius // +0x20
+	let shadow : FormatShadow // +0x38
+	let alpha : FormatEquation // +0x90
  }
 
  enum NewsFeed.CodingKeys {
@@ -7202,12 +7847,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case identifier  
 	case class  
+	case selectors  
+	case alpha  
 	case background  
+	case borders  
 	case cornerRadius  
 	case shadow  
-	case selectors  
-	case borders  
-	case alpha  
  }
 
  struct NewsFeed.B12_V1 {
@@ -7240,17 +7885,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7270,6 +7911,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case requirement : RequirementMatch
 	case feedItem : FeedItemType
 	case layoutFactory : GroupLayoutFactoryType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case json :  first-element-marker 
  }
 
  enum NewsFeed.GroupLayoutFactoryMatch {
@@ -7277,8 +7920,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case valid : (description: String)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case invalid : s 
-
+	case invalid : —w
 	case unsupported : (description: String)
  }
 
@@ -7319,17 +7961,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7368,11 +8006,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7428,17 +8064,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7450,24 +8082,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case spacerFrame  
  }
 
- struct NewsFeed.GroupLayout { }
-
  class NewsFeed.DebugFormatUploadViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let editor : DebugFormatEditor // +0x8 (0x8)
-	let tableView : UITableView // +0x10 (0x8)
-	var sections : DebugFormatUploadSection // +0x18 (0x8)
-	var $__lazy_storage_$_selectBarButtonItem : UIBarButtonItem? // +0x20 (0x8)
-	var $__lazy_storage_$_nextBarButtonItem : UIBarButtonItem? // +0x28 (0x8)
+	let editor : DebugFormatEditor
+	let tableView : UITableView
+	var sections : DebugFormatUploadSection
+	var $__lazy_storage_$_selectBarButtonItem : UIBarButtonItem?
+	var $__lazy_storage_$_nextBarButtonItem : UIBarButtonItem?
 
 	// ObjC -> Swift bridged methods
-	0x3846d0  @objc DebugFormatUploadViewController.initWithCoder: <stripped>
-	0x385180  @objc DebugFormatUploadViewController.viewDidLoad <stripped>
-	0x3851b0  @objc DebugFormatUploadViewController.viewWillAppear: <stripped>
-	0x385260  @objc DebugFormatUploadViewController.viewWillLayoutSubviews <stripped>
-	0x3853e0  @objc DebugFormatUploadViewController.initWithNibName:bundle: <stripped>
-	0x385370  @objc DebugFormatUploadViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f2f4002364c8 (0x2f4002364c8) in binary!
+	0x98928  @objc DebugFormatUploadViewController.(null) <stripped>
+WARNING: couldn't find address 0x97998002365f8 (0x198002365f8) in binary!
+	0x98910  @objc DebugFormatUploadViewController.(null) <stripped>
+WARNING: couldn't find address 0x99fa4002364a0 (0x7a4002364a0) in binary!
+	0x988f8  @objc DebugFormatUploadViewController.(null) <stripped>
+WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
+	0x564ff6daf90  @objc DebugFormatUploadViewController.(null) <stripped>
+	0x55cff6db178  @objc DebugFormatUploadViewController.HâÿHÉƒX[A\A]A^A_]√fD <stripped>
+	0x554ff6dbef0  @objc DebugFormatUploadViewController.∆ <stripped>
 
 	// Swift methods
  }
@@ -7510,11 +8144,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7554,17 +8186,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7595,7 +8223,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatCompiler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let compilerQueue : OS_dispatch_queue // +0x10 (0x8)
+	let compilerQueue : OS_dispatch_queue
 
 	// Swift methods
  }
@@ -7603,11 +8231,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatUploadService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let newsroomService : NewsroomService // +0x10 (0x8)
+	let newsroomService : NewsroomService
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_urlSessionPool : Ôƒ
- // +0x18 (0x8)
-	let uploadQueue : OS_dispatch_queue // +0x20 (0x8)
+	var $__lazy_storage_$_urlSessionPool : u
+	let uploadQueue : OS_dispatch_queue
 
 	// Swift methods
  }
@@ -7616,11 +8243,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unknownError : ≠√
-
+	case unknownError : t
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case codingError : ≠√
-
+	case codingError : t
 	case badURLResponse : (NSURLResponse?, filename: String)
 	case failedUpload : (Int, filename: String)
 	case missingIDForPackage : DebugFormatBackendEnvironment
@@ -7632,8 +8257,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let thumbnailImageCache : TSImageCacheType // +0x10 (0x8)
 	let publisherLogoImageCache : TSImageCacheType // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rendererEnvironment : Ò
- // +0x20 (0x28)
+	let rendererEnvironment : oR // +0x20 (0x28)
 
 	// Swift methods
  }
@@ -7654,22 +8278,64 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onHistoryTap : ˜ÿ
- // +0x8 (0x8)
-	let historyButton : UIButton // +0x10 (0x8)
-	let errorButton : UIButton // +0x18 (0x8)
-	let statusLabel : UILabel // +0x20 (0x8)
-	let editor : DebugFormatEditor // +0x28 (0x8)
-	let activityIndicatorView : UIActivityIndicatorView // +0x30 (0x8)
+	let onHistoryTap : á
+	let historyButton : UIButton
+	let errorButton : UIButton
+	let statusLabel : UILabel
+	let editor : DebugFormatEditor
+	let activityIndicatorView : UIActivityIndicatorView
 
 	// ObjC -> Swift bridged methods
-	0x3a4780  @objc DebugFormatEditorStatusView.initWithCoder: <stripped>
-	0x3a4c10  @objc DebugFormatEditorStatusView.layoutSubviews <stripped>
-	0x3a4c40  @objc DebugFormatEditorStatusView.sizeThatFits: <stripped>
-	0x3a4d00  @objc DebugFormatEditorStatusView.initWithFrame: <stripped>
-	0x3a4c90  @objc DebugFormatEditorStatusView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f1fc002363d0 (0x1fc002363d0) in binary!
+	0x98830  @objc DebugFormatEditorStatusView.(null) <stripped>
+WARNING: couldn't find address 0x96e4400235b38 (0x64400235b38) in binary!
+	0x8f958  @objc DebugFormatEditorStatusView.(null) <stripped>
+WARNING: couldn't find address 0x9880c00235d48 (0xc00235d48) in binary!
+	0x18000000c  @objc DebugFormatEditorStatusView.(null) <stripped>
+WARNING: couldn't find address 0x8f76c00235b10 (0x76c00235b10) in binary!
+	0x28000000c  @objc DebugFormatEditorStatusView.(null) <stripped>
+WARNING: couldn't find address 0x9226c00235e48 (0x26c00235e48) in binary!
+	0x987d0  @objc DebugFormatEditorStatusView.(null) <stripped>
 
 	// Swift methods
+ }
+
+ enum NewsFeed.FeedScoringContext {
+
+	// Properties
+	case headline : FeedHeadlineScoringContext
+	case issue : FeedIssueScoringContext
+	case item : FeedHeadlineScoringContext
+	case unknown  
+ }
+
+ enum NewsFeed.FeedItemScoringContext {
+
+	// Properties
+	case unknown  
+	case magazineFeed  
+ }
+
+ enum NewsFeed.FeedHeadlineScoringContext {
+
+	// Properties
+	case unknown  
+	case audioFeed  
+	case articleRecirculationPrimaryGroup  
+	case articleRecirculationSecondaryGroup  
+	case bestOfBundleGroup  
+	case forYouGroup  
+	case greatStoriesYouMissedGroup  
+	case localNewsGroup  
+	case magazineFeed  
+	case topicFeed  
+ }
+
+ enum NewsFeed.FeedIssueScoringContext {
+
+	// Properties
+	case unknown  
+	case magazineFeed  
  }
 
  struct NewsFeed.A8_V12 {
@@ -7699,11 +8365,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7716,7 +8380,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.PaidBundleConfigManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaidBundleConfigManagerType {
 
 	// Properties
-	let configurationManager : FCNewsAppConfigurationManager // +0x10 (0x8)
+	let configurationManager : FCNewsAppConfigurationManager
 
 	// Swift methods
  }
@@ -7732,14 +8396,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let URL : ˜¨
-
+	let URL : ìÜ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexFileURL : ıØ
-
+	let indexFileURL : ∑á
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataURL : ıØ
-
+	let dataURL : ∑á
 	let headline : DebugInspectionHeadline
  }
 
@@ -7756,10 +8417,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.ResourceService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ResourceServiceType {
 
 	// Properties
-	let cloudContext : FCCloudContext // +0x10 (0x8)
+	let cloudContext : FCCloudContext
 
 	// Swift methods
-	0x3af330  class func ResourceService.__allocating_init(cloudContext:) // init 
+	0x3f7540  class func ResourceService.__allocating_init(cloudContext:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -7767,7 +8428,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case missingResource : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fetchFailed : ÂR
+	case fetchFailed : eº
 	case unknownFetchFailure  
  }
 
@@ -7798,11 +8459,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7853,11 +8512,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7936,8 +8593,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.PremiumBadgeMaskGenerator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c8ef0  @objc PremiumBadgeMaskGenerator.init <stripped>
-	0x3c8e90  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9226c00235e48 (0x26c00235e48) in binary!
+	0x987d0  @objc PremiumBadgeMaskGenerator.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x344ff71b748  @objc PremiumBadgeMaskGenerator.(null) <stripped>
+ }
+
+ struct NewsFeed.FeedScoredTag {
+
+	// Properties
+	let tagID : String // +0x0
+	let score : Double // +0x10
+ }
+
+ struct NewsFeed.DebugInspectionGroup {
+
+	// Properties
+	let name : String?
+	let title : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let config : ©J
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case name  
+	case title  
+	case config  
  }
 
  enum NewsFeed.FeedItem {
@@ -7945,6 +8628,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case gap : FeedGap
 	case gapOffline : FeedGapOffline
+	case bannerAd : FeedBannerAd
 	case headline : FeedHeadline
 	case webEmbed : FeedWebEmbed
 	case issue : FeedIssue
@@ -7959,6 +8643,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case gap  
 	case gapOffline  
+	case bannerAd  
 	case headline  
 	case webEmbed  
 	case issue  
@@ -8034,13 +8719,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatBezelView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let bezelLayer : CAShapeLayer // +0x8 (0x8)
+	let bezelLayer : CAShapeLayer
 
 	// ObjC -> Swift bridged methods
-	0x3d3710  @objc DebugFormatBezelView.initWithFrame: <stripped>
-	0x3d3740  @objc DebugFormatBezelView.initWithCoder: <stripped>
-	0x3d3b10  @objc DebugFormatBezelView.layoutSubviews <stripped>
-	0x3d3b70  @objc DebugFormatBezelView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f8fc00235dc8 (0xfc00235dc8) in binary!
+	0x8f170  @objc DebugFormatBezelView.(null) <stripped>
+WARNING: couldn't find address 0x987a400236628 (0x7a400236628) in binary!
+	0x98798  @objc DebugFormatBezelView.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x30cff722980  @objc DebugFormatBezelView.(null) <stripped>
+	0x49cff722a68  @objc DebugFormatBezelView.IâGhIcE8Mç$I∆1ˇË@@∆ <stripped>
  }
 
  enum NewsFeed.FormatCommandState {
@@ -8057,18 +8745,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case string  
  }
 
- struct NewsFeed.FormatAccessibilityContainerElement {
+ struct NewsFeed.FormatStringListSelector {
 
 	// Properties
-	let container : FormatAccessibilityContainer // +0x0
-	let position : Int? // +0x8
- }
-
- enum NewsFeed.CodingKeys {
-
-	// Properties
-	case container  
-	case position  
+	let selector : String // +0x0
+	let multiSelector : Set<String> // +0x10
  }
 
  struct NewsFeed.FormatStringSelector {
@@ -8076,13 +8757,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let selector : String // +0x0
 	let listSelectors : FormatStringListSelector // +0x10
- }
-
- struct NewsFeed.FormatStringListSelector {
-
-	// Properties
-	let selector : String // +0x0
-	let multiSelector : Set<String> // +0x10
  }
 
  struct NewsFeed.J8_V1 {
@@ -8112,11 +8786,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverIssueLayoutAttributes : WÊ
- // +0x8
+	let coverIssueLayoutAttributes : Ñ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8124,6 +8796,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case coverIssueLayoutAttributes  
+ }
+
+ class NewsFeed.FormatAdMetricsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var contentView : FormatAdMetricsContentView
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var metricsView : ï=
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x8f8c400235d90 (0xc400235d90) in binary!
+	0x8f138  @objc FormatAdMetricsView.(null) <stripped>
+WARNING: couldn't find address 0x9876c002365f0 (0x76c002365f0) in binary!
+	0x98760  @objc FormatAdMetricsView.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x54cff722b78  @objc FormatAdMetricsView.(null) <stripped>
+	0xff722bf0  @objc FormatAdMetricsView.UHâÂIãUËC∫ˇˇ]√êUHâÂAVSHâÛIâ˛Hæ <stripped>
+ }
+
+ class NewsFeed.FormatAdMetricsContentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let privacyMarkerPosition : |
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x9252c00235a70 (0x52c00235a70) in binary!
+	0x8f880  @objc FormatAdMetricsContentView.(null) <stripped>
+WARNING: couldn't find address 0x8f0f4002362c8 (0xf4002362c8) in binary!
+	0x28000000c  @objc FormatAdMetricsContentView.(null) <stripped>
+WARNING: couldn't find address 0x8ce5c00235a48 (0x65c00235a48) in binary!
+	0x921a0  @objc FormatAdMetricsContentView.(null) <stripped>
  }
 
  enum NewsFeed.FormatNodeStyle {
@@ -8177,11 +8881,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8246,14 +8948,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverIssueLayoutAttributes : WÊ
- // +0x8
+	let coverIssueLayoutAttributes : Ñ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -8292,12 +8991,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case blue  
  }
 
+ class NewsFeed.FeedConfigCoderFormatter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  enum NewsFeed.FeedServiceError {
 
 	// Properties
 	case failedToScore : FeedGroupEmitter
 	case notImplemented  
 	case cursorRefreshNoNewContent  
+	case offline  
  }
 
  struct NewsFeed.FormatBindExpression {
@@ -8322,7 +9026,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let radius : Ô // +0x0
+	let radius : ıó // +0x0
 	let opacity : Float // +0x8
 	let offset : Offset // +0x10
 	let color : FormatColor // +0x20
@@ -8333,9 +9037,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Ô // +0x0
+	let height : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let width : Ô // +0x8
+	let width : ıó // +0x8
  }
 
  enum NewsFeed.OffsetKeys {
@@ -8357,16 +9061,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.StubImageDownloader : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3f7340  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
-	0x3f7380  @objc StubImageDownloader.init <stripped>
+WARNING: couldn't find address 0x8ce5c00235a48 (0x65c00235a48) in binary!
+	0x921a0  @objc StubImageDownloader.(null) <stripped>
+WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
+	0x5c4ff74f478  @objc StubImageDownloader.(null) <stripped>
  }
 
  struct NewsFeed.FormatSupplementaryNodeLayoutAttributes {
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let style : FormatSupplementaryNodeStyle // +0x78
-	let contextLayoutOptions : FormatContextLayoutOptions // +0xa8
+	let style : FormatSupplementaryNodeStyle // +0x68
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x98
  }
 
  enum NewsFeed.CodingKeys {
@@ -8406,8 +9112,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let localizations : FormatFileReferenceCollection
 	let compilerOptions : FormatCompilerOptions
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let formatVersion : kk
-
+	let formatVersion : :
  }
 
  enum NewsFeed.CodingKeys {
@@ -8451,18 +9156,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let fontBook : IssueFontBook // +0x10 (0x20)
 	let colorPalette : IssueColorPalette // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x0 (0x8)
+	let scaleFactor : ıó // +0x0 (0x8)
 	let style : Style // +0x0 (0x8)
 	let colorPaletteProvider : ColorPaletteProviding // +0x0 (0x28)
 
 	// Swift methods
  }
 
+ enum NewsFeed.FeedGroupFreezeError {
+
+	// Properties
+	case maxGroupsOfKind : FeedPoolType
+	case duplicateGroupIdentifier : String
+	case disallowed  
+ }
+
  struct NewsFeed.FeedCursorResult {
 
 	// Properties
 	let cursor : FeedCursor
-	let groups : FeedPoolType
+	let groups : FeedServiceConfigType
  }
 
  class NewsFeed.DebugFormatEditorBarButtonItem {
@@ -8496,21 +9209,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˜ÿ
- // +0x8 (0x8)
-	let coverView : IssueCoverView // +0x10 (0x8)
+	let onTap : á
+	let coverView : IssueCoverView
 
 	// ObjC -> Swift bridged methods
-	0x40e670  @objc IssueCoverViewButton.isHighlighted <stripped>
-	0x40e6d0  @objc IssueCoverViewButton.setHighlighted: <stripped>
-	0x40ec20  @objc IssueCoverViewButton.frame <stripped>
-	0x40ecd0  @objc IssueCoverViewButton.setFrame: <stripped>
-	0x40f210  @objc IssueCoverViewButton.initWithCoder: <stripped>
-	0x40f3d0  @objc IssueCoverViewButton.initWithFrame: <stripped>
-	0x40f2f0  @objc IssueCoverViewButton..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9db4c00236dc8 (0x34c00236dc8) in binary!
+	0x9776c  @objc IssueCoverViewButton.(null) <stripped>
+WARNING: couldn't find address 0x8a75400235c68 (0x75400235c68) in binary!
+	0x97768  @objc IssueCoverViewButton.(null) <stripped>
+WARNING: couldn't find address 0x8f08c00236260 (0x8c00236260) in binary!
+	0x8f800  @objc IssueCoverViewButton.(null) <stripped>
+WARNING: couldn't find address 0x986b400235bf0 (0x6b400235bf0) in binary!
+	0x48000000c  @objc IssueCoverViewButton.(null) <stripped>
+WARNING: couldn't find address 0x8f05c00236230 (0x5c00236230) in binary!
+	0x98690  @objc IssueCoverViewButton.(null) <stripped>
+WARNING: couldn't find address 0x8f7c400235c90 (0x7c400235c90) in binary!
+	0x98678  @objc IssueCoverViewButton.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x1ecff7ab8b0  @objc IssueCoverViewButton.(null) <stripped>
 
 	// Swift methods
-	0x40f1a0  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
+	0x449410  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
  }
 
  enum NewsFeed.Value {
@@ -8523,10 +9242,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case dualColor : FormatColor
 	case gradient : FormatGradient
 	case shine : FormatShine
+	case image : FormatAsyncImageContent
 	case boolean : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : ˜¨
-
+	case url : ìÜ
 	case frame : FormatInspectionFrame
 	case list : FormatInspectionList
 	case code : FormatInspectionCode
@@ -8540,6 +9259,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let title : String?
 	let subtitle : String?
 	let value : Value
+ }
+
+ class NewsFeed.FormatImageRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatImageRendererType {
+
+	// Properties
+	let imageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
+	let assetManager : FCAssetManager
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
+
+	// Swift methods
  }
 
  enum NewsFeed.FormatColorExpression {
@@ -8591,17 +9322,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8655,11 +9382,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8673,16 +9398,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let executeBlock :  empty-list  // +0x0
+	let canExecuteBlock : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let evaluateWithObserverBlock : md
- // +0x10
+	let executeBlock :  empty-list  // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let addChangeObserverBlock : Md
- // +0x20
+	let evaluateWithObserverBlock : W3 // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let evaluateBlock : Bool // +0x30
-	let descriptionBlock : () // +0x40
+	let addChangeObserverBlock : 73 // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let evaluateBlock : Bool // +0x40
+	let descriptionBlock : () // +0x50
  }
 
  struct NewsFeed.FormatGroupBindExpression {
@@ -8726,11 +9451,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8743,8 +9466,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FormatOption {
 
 	// Properties
-	let identifier : String
-	let value : FormatOptionValue
+	let identifier : String // +0x0
+	let value : FormatOptionValue // +0x10
  }
 
  enum NewsFeed.FormatOptionType {
@@ -8771,10 +9494,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : a
- // +0x10 (0x28)
-	let fontManager : FeedFontManager // +0x38 (0x8)
-	let cloudContext : FCCloudContext // +0x40 (0x8)
+	let resolver : õ2
+	let fontManager : FeedFontManager
+	let cloudContext : FCCloudContext
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sceneProvider : È{
+	let featureAvailability : FeatureAvailabilityType
 
 	// Swift methods
  }
@@ -8782,28 +9507,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugGroupLayoutView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let contentView : UIScrollView // +0x8 (0x8)
+	let contentView : UIScrollView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columnDebugView : k]
- // +0x10 (0x8)
+	let columnDebugView : á.
 
 	// ObjC -> Swift bridged methods
-	0x440b30  @objc DebugGroupLayoutView.initWithCoder: <stripped>
-	0x440d30  @objc DebugGroupLayoutView.layoutSubviews <stripped>
-	0x440dd0  @objc DebugGroupLayoutView.initWithFrame: <stripped>
-	0x440d90  @objc DebugGroupLayoutView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f05c00236230 (0x5c00236230) in binary!
+	0x98690  @objc DebugGroupLayoutView.(null) <stripped>
+WARNING: couldn't find address 0x8f7c400235c90 (0x7c400235c90) in binary!
+	0x98678  @objc DebugGroupLayoutView.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x1ecff7ab8b0  @objc DebugGroupLayoutView.(null) <stripped>
+	0x624ff7ae818  @objc DebugGroupLayoutView.L$(HâK(HâC 1ˇËv˛X <stripped>
 
 	// Swift methods
+ }
+
+ enum NewsFeed.FailureReason {
+
+	// Properties
+	case itemKindDoesNotMatch : Kind
+	case itemMissingTraits : FeedItemTraits
+	case noGroupAvailable : (type: String)
+	case notEnoughItems : (actual: Int, expected: Int, slot: String?)
+ }
+
+ enum NewsFeed.FormatBindResult {
+
+	// Properties
+	case notBound : FailureReason
+	case bound  
  }
 
  class NewsFeed.FeedLayoutContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let stylerFactory : FeedLayoutStylerFactory // +0x10 (0x8)
-	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x18 (0x8)
+	let stylerFactory : FeedLayoutStylerFactory
+	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider
 
 	// Swift methods
-	0x441800  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
+	0x470320  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
  }
 
  struct NewsFeed.FormatItemCompilerScope {
@@ -8818,9 +9561,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let group : FormatGroup // +0x0
 	let inventory : FormatPackageInventory // +0x70
-	let device : DebugFormatDevice // +0x178
-	var measurements : DebugFormatHistoryMeasurement // +0x180
-	var colors : [UIColor] // +0x188
+	let device : DebugFormatDevice // +0x78
+	var measurements : DebugFormatHistoryMeasurement // +0x80
+	var colors : [UIColor] // +0x88
  }
 
  struct NewsFeed.C12_V11 {
@@ -8853,17 +9596,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8878,10 +9617,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaLayerRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let conditionValidator : LayeredMediaConditionValidatorType // +0x10 (0x28)
-	let imageVariantSelector : LayeredMediaImageVariantSelectorType // +0x38 (0x28)
-	let videoVariantSelector : LayeredMediaVariantSelectorType // +0x60 (0x28)
-	let imageCache : TSImageCacheType // +0x88 (0x8)
+	let conditionValidator : LayeredMediaConditionValidatorType
+	let imageVariantSelector : LayeredMediaImageVariantSelectorType
+	let videoVariantSelector : LayeredMediaVariantSelectorType
+	let imageCache : TSImageCacheType
 
 	// Swift methods
  }
@@ -8965,11 +9704,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9106,14 +9843,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -9151,11 +9885,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9174,16 +9906,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let publisherName : String? // +0x28
 	let publishDate : Double? // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let halfLife : ±•
- // +0x48
+	let halfLife : ·` // +0x48
 	let publisherTagIdentifier : String? // +0x50
 	let accessible : Bool // +0x60
 	let isPaid : Bool // +0x61
 	let inBundle : Bool // +0x62
 	let inALaCarte : Bool // +0x63
 	let scoreProfile : DebugInspectionScoreProfile // +0x68
-	let topics : DebugInspectionTag // +0xc0
-	let features : DebugInspectionAggregate // +0xc8
+	let topics : DebugInspectionTag // +0xc8
+	let features : DebugInspectionAggregate // +0xd0
  }
 
  enum NewsFeed.CodingKeys {
@@ -9221,14 +9952,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let kind : Kind
 	var identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let URL : ˜¨
-
+	let URL : ìÜ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexFileURLPromise : ˇZ
-
+	let indexFileURLPromise : C/
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataURLPromise : ˇZ
-
+	let dataURLPromise : C/
 	let headline : FeedHeadline
  }
 
@@ -9267,31 +9995,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatInspectorFrameCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var displayFrame : FormatInspectionFrame // +0x8 (0x31)
-	var delegate : DebugFormatInspectorFrameCellDelegate // +0x40 (0x10)
-	let frameLayer : CAShapeLayer // +0x50 (0x8)
-	let frameLabel : UILabel // +0x58 (0x8)
-	let zIndexLabel : UILabel // +0x60 (0x8)
-	var borderLayers : [CAShapeLayer] // +0x68 (0x8)
+	var displayFrame : FormatInspectionFrame
+	var delegate : DebugFormatInspectorFrameCellDelegate
+	let frameLayer : CAShapeLayer
+	let frameLabel : UILabel
+	let zIndexLabel : UILabel
+	var borderLayers : [CAShapeLayer]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let leftBorderButton : ß^
- // +0x70 (0x8)
+	let leftBorderButton : K4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rightBorderButton : ß^
- // +0x78 (0x8)
+	let rightBorderButton : K4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topBorderButton : ß^
- // +0x80 (0x8)
+	let topBorderButton : K4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomBorderButton : ß^
- // +0x88 (0x8)
+	let bottomBorderButton : K4
 
 	// ObjC -> Swift bridged methods
-	0x47bcd0  @objc DebugFormatInspectorFrameCell.initWithStyle:reuseIdentifier: <stripped>
-	0x47bd30  @objc DebugFormatInspectorFrameCell.initWithCoder: <stripped>
-	0x47eda0  @objc DebugFormatInspectorFrameCell.layoutSubviews <stripped>
-	0x480780  @objc DebugFormatInspectorFrameCell.didTapBorderButtonWithSender: <stripped>
-	0x480800  @objc DebugFormatInspectorFrameCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0x920a400236520 (0xa400236520) in binary!
+	0x8f018  @objc DebugFormatInspectorFrameCell.(null) <stripped>
+WARNING: couldn't find address 0x9864c002364d0 (0x64c002364d0) in binary!
+	0x9a530  @objc DebugFormatInspectorFrameCell.(null) <stripped>
+WARNING: couldn't find address 0x9863400235b70 (0x63400235b70) in binary!
+	0x58000000c  @objc DebugFormatInspectorFrameCell.(null) <stripped>
+WARNING: couldn't find address 0x8efdc002361b0 (0x7dc002361b0) in binary!
+	0x98610  @objc DebugFormatInspectorFrameCell.(null) <stripped>
+WARNING: couldn't find address 0x98604002362d8 (0x604002362d8) in binary!
+	0x99c98  @objc DebugFormatInspectorFrameCell.(null) <stripped>
  }
 
  struct NewsFeed.FormatSnippetCollection {
@@ -9359,10 +10088,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaViewProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let layerRenderableProvider : LayeredMediaLayerRenderableProvider // +0x10 (0x8)
+	let layerRenderableProvider : LayeredMediaLayerRenderableProvider
 
 	// Swift methods
-	0x48ba70  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
+	0x4b3670  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
  }
 
  enum NewsFeed.FormatSystemColor {
@@ -9464,17 +10193,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9489,7 +10214,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaImageVariantSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaImageVariantSelectorType {
 
 	// Properties
-	let layeredMediaSelector : LayeredMediaVariantSelectorType // +0x10 (0x28)
+	let layeredMediaSelector : LayeredMediaVariantSelectorType
 
 	// Swift methods
  }
@@ -9498,14 +10223,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case color : k\
-
+	case color : w5
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gradient : ›]
-
+	case gradient : ˘6
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case pattern : ó]
-
+	case pattern : ≥6
  }
 
  struct NewsFeed.FeedAudio { }
@@ -9513,7 +10235,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FeedAudioCommandContext {
 
 	// Properties
-	let track : FeedAudioTrack // +0x0
+	let track : FeedAudioTrack
  }
 
  enum NewsFeed.FeedAudioPlaybackState {
@@ -9559,11 +10281,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x8
+	let headlineLayoutAttributes : «z // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9577,20 +10297,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ˜¨
-
+	let url : ìÜ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexFileURLPromise : ˇZ
-
+	let indexFileURLPromise : C/
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataURLPromise : ˇZ
-
+	let dataURLPromise : C/
  }
 
  class NewsFeed.FormatNodeContextData : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var data : Data // +0x10 (0x8)
+	var data : Data
 
 	// Swift methods
  }
@@ -9598,8 +10315,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.Data {
 
 	// Properties
+	case adMetrics : FormatAdMetricsData
 	case image : FormatImage
-	case text : FormatText
+	case text : FormatComputed
 	case webEmbed : FormatWebEmbedData
 	case item : FormatItem
 	case supplementary : FormatSupplementary
@@ -9607,6 +10325,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case accessibility : FormatAccessibilityData
 	case stateView : FormatStateViewNodeData
 	case custom : FormatCustomNodeData
+	case view : FormatViewData
  }
 
  class NewsFeed.FormatTextNodeRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatTextNodeRendererType {
@@ -9629,11 +10348,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô
+	let scale : ıó
 	let traitCollection : UITraitCollection
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let border : Ø–
-
+	let border : _}
  }
 
  class NewsFeed.VideoView {
@@ -9658,8 +10376,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conditions : LayeredMediaConditions // +0x8
 	let effects : LayeredMediaEffects // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let safeArea : i‰
- // +0x68
+	let safeArea : }à // +0x68
  }
 
  struct NewsFeed.Video {
@@ -9670,14 +10387,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let conditions : LayeredMediaConditions // +0x10
 	let effects : LayeredMediaEffects // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let safeArea : i‰
- // +0x70
+	let safeArea : }à // +0x70
  }
 
  class NewsFeed.InternalErrorViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, InternalErrorViewRendererType {
 
 	// Properties
-	let rendererTool : FeedItemRendererTool // +0x10 (0x8)
+	let rendererTool : FeedItemRendererTool
 
 	// Swift methods
  }
@@ -9686,8 +10402,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : °ã
- // +0x10 (0x28)
+	let commandCenter : go
 
 	// Swift methods
  }
@@ -9696,50 +10411,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewFrame : °Ó
- // +0x8
+	let mediaViewFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCorners : ‹
- // +0x10
+	let mediaViewRoundedCorners : ó| // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : ˜€
- // +0x18
+	let mediaViewRoundedCornerRadius : â| // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x20
+	let publisherLogoImageViewFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLabelFrame : °Ó
- // +0x28
+	let publisherLabelFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x30
+	let titleLabelFrame : ¡ê // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headphoneImageFrame : °Ó
- // +0x38
+	let headphoneImageFrame : ¡ê // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trackDurationLabelFrame : °Ó
- // +0x40
+	let trackDurationLabelFrame : ¡ê // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progressViewFrame : °Ó
- // +0x48
+	let progressViewFrame : ¡ê // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let remainingTimeLabelFrame : °Ó
- // +0x50
+	let remainingTimeLabelFrame : ¡ê // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let premiumBadgeViewFrame : °Ó
- // +0x58
+	let premiumBadgeViewFrame : ¡ê // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorViewFrame : °Ó
- // +0x60
+	let separatorViewFrame : ¡ê // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dragHandleImageFrame : °Ó
- // +0x68
+	let accessoryViewFrame : ¡ê // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let roundedCornerRadius : ˜€
- // +0x70
+	let dragHandleImageFrame : ¡ê // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let ellipsisButtonFrame : ¡ê // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let roundedCornerRadius : â| // +0x80
  }
 
  struct NewsFeed.Attributes {
@@ -9749,7 +10453,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mediaViewFrame : CGRect // +0x20
 	let mediaViewRoundedCorners : UIRectCorner // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : Ô // +0x48
+	let mediaViewRoundedCornerRadius : ıó // +0x48
 	let publisherLogoImageViewFrame : CGRect // +0x50
 	let publisherLabelFrame : CGRect // +0x70
 	let titleLabelFrame : CGRect // +0x90
@@ -9758,9 +10462,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let progressViewFrame : CGRect // +0xf0
 	let remainingTimeLabelFrame : CGRect // +0x110
 	let premiumBadgeViewFrame : CGRect // +0x130
-	let dragHandleImageFrame : CGRect // +0x150
+	let accessoryViewFrame : CGRect // +0x150
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let roundedCornerRadius : Ô // +0x170
+	let roundedCornerRadius : ıó // +0x170
  }
 
  struct NewsFeed.Context {
@@ -9771,7 +10475,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : AudioTrackViewStylerType
 	let cachedTitleText : CachedText
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minTitleHeight : Ô
+	let minTitleHeight : ıó
 	let cachedPublisherText : CachedText
 	let cachedDurationText : CachedText
 	let cachedPlayedText : CachedText
@@ -9793,7 +10497,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case progressViewFrame  
 	case remainingTimeLabelFrame  
 	case premiumBadgeViewFrame  
-	case dragHandleImageFrame  
+	case accessoryViewFrame  
 	case roundedCornerRadius  
  }
 
@@ -9802,29 +10506,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.CondensedFontBook: FontBookProviding { }
 
  class NewsFeed.ScalingFontBook : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FontBookProviding {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : óõ
- // +0x0 (0x0)
-	var enabled : Bool? // +0x0 (0x1)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxScale : i‰
- // +0x0 (0x9)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var breakpoint : i‰
- // +0x0 (0x9)
-
 	// Swift methods
-	0x4b2500  func <stripped> // method 
-	0x4b2db0  func <stripped> // method 
-	0x4b34a0  func <stripped> // method 
-	0x4b35a0  func <stripped> // method 
-	0x4b36a0  func <stripped> // method 
-	0x4b3720  func <stripped> // method 
-	0x4b3e80  func <stripped> // method 
-	0x4b3f10  func <stripped> // method 
-	0x4b45e0  func <stripped> // method 
+	0x4da470  func <stripped> // method 
+	0x4da6f0  func <stripped> // method 
+	0x4dabf0  func <stripped> // method 
+	0x4dacf0  func <stripped> // method 
+	0x4dadf0  func <stripped> // method 
+	0x4dae70  func <stripped> // method 
+	0x4db590  func <stripped> // method 
+	0x4dbac0  func <stripped> // method 
  }
 
  class NewsFeed.FeatureAvailability : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeatureAvailabilityType {
@@ -9835,36 +10525,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columnOptions : aõ
- // +0x65745f5f (0x0)
-	var layout : FormatPackageInventory // +0x0 (0x108)
+	var columnOptions : V // +0x2610 (0x0)
+	var layout : FormatPackageInventory // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var result : WQ
- // +0x0 (0x0)
+	var result : {) // +0x0 (0x0)
 	let tableView : UITableView // +0x0 (0x8)
 	var sections : DebugFormatGroupSection // +0x0 (0x8)
 	let editor : DebugFormatEditor // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4b7250  @objc DebugFormatGroupViewController.initWithCoder: <stripped>
-	0x4b7580  @objc DebugFormatGroupViewController.viewDidLoad <stripped>
-	0x4b75b0  @objc DebugFormatGroupViewController.viewWillLayoutSubviews <stripped>
-	0x4b7a10  @objc DebugFormatGroupViewController.initWithNibName:bundle: <stripped>
-	0x4b76c0  @objc DebugFormatGroupViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8efdc002361b0 (0x7dc002361b0) in binary!
+	0x98610  @objc DebugFormatGroupViewController.(null) <stripped>
+WARNING: couldn't find address 0x98604002362d8 (0x604002362d8) in binary!
+	0x99c98  @objc DebugFormatGroupViewController.(null) <stripped>
+WARNING: couldn't find address 0x985ec00235b28 (0x5ec00235b28) in binary!
+	0x58000000c  @objc DebugFormatGroupViewController.(null) <stripped>
+WARNING: couldn't find address 0x9b4a400235a40 (0x4a400235a40) in binary!
+	0x8cd08  @objc DebugFormatGroupViewController.(null) <stripped>
+WARNING: couldn't find address 0x9fb2c00235a30 (0x32c00235a30) in binary!
+	0x9b468  @objc DebugFormatGroupViewController.(null) <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.DebugFormatSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x4b9240  @objc DebugFormatSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x4b9250  @objc DebugFormatSubtitleTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x91fac00236428 (0x7ac00236428) in binary!
+	0x8ef20  @objc DebugFormatSubtitleTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x47cff7edac8  @objc DebugFormatSubtitleTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.DebugFormatValue1TableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x4b92d0  @objc DebugFormatValue1TableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x4b9380  @objc DebugFormatValue1TableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x91fcc00236448 (0x7cc00236448) in binary!
+	0x8ef40  @objc DebugFormatValue1TableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0xf4ff7e50c8  @objc DebugFormatValue1TableViewCell.(null) <stripped>
  }
 
  struct NewsFeed.GapOffline {
@@ -9908,8 +10605,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let alternate : FormatArticle
 
 	// Swift methods
-	0x4c48c0  class func FormatArticle.__allocating_init(from:) // init 
-	0x4c5270  class func FormatArticle.__allocating_init(identifier:overrides:alternate:) // init 
+	0x4e5a30  class func FormatArticle.__allocating_init(from:) // init 
+	0x4e61a0  class func FormatArticle.__allocating_init(identifier:overrides:alternate:) // init 
  }
 
  struct NewsFeed.Overrides {
@@ -9917,8 +10614,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let displayDate : ?H
-
+	let displayDate : £
 	let storyType : StoryType
 	let shortExcerpt : String?
  }
@@ -9938,18 +10634,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let displayDate : ?H
-
+	let displayDate : £
 	let storyType : String?
 	let shortExcerpt : String?
 
 	// ObjC -> Swift bridged methods
-	0x4c6250  @objc HeadlineMetadata.title <stripped>
-	0x4c6270  @objc HeadlineMetadata.displayDate <stripped>
-	0x4c6300  @objc HeadlineMetadata.storyType <stripped>
-	0x4c6320  @objc HeadlineMetadata.shortExcerpt <stripped>
-	0x4c6430  @objc HeadlineMetadata.init <stripped>
-	0x4c63d0  @objc HeadlineMetadata..cxx_destruct <stripped>
+WARNING: couldn't find address 0x91fdc00235c98 (0x7dc00235c98) in binary!
+	0x91fd0  @objc HeadlineMetadata.(null) <stripped>
+WARNING: couldn't find address 0x91fc400235c30 (0x7c400235c30) in binary!
+	0x91fb8  @objc HeadlineMetadata.(null) <stripped>
+WARNING: couldn't find address 0x91fac00235b88 (0x7ac00235b88) in binary!
+	0x98510  @objc HeadlineMetadata.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x84ff812b58  @objc HeadlineMetadata.(null) <stripped>
+	0x214ff812f00  @objc HeadlineMetadata.ãM∏HcAHâÀHã}¿HãL Lãm∞IâL HãLIâLHãLIâLHãHãtIâtIâL <stripped>
+	0x68400236058  @objc HeadlineMetadata.M–HãqHãAHçVH—ËH9Lãm»vQHâQHãEàHâM–H»HØuêH∆Hã}∞HçÃ"d <stripped>
 
 	// Swift methods
  }
@@ -9969,6 +10668,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case identifier  
 	case overrides  
 	case alternate  
+ }
+
+ struct NewsFeed.DebugFormatAssetSection {
+
+	// Properties
+	let title : String // +0x0
+	let items : DebugFormatAsset // +0x10
  }
 
  enum NewsFeed.FormatGroupPriority {
@@ -10021,11 +10727,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10065,17 +10769,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10100,7 +10800,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let component : FormatColorComponent // +0x0
 	let operator : FormatOperator // +0x1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let value : Ô // +0x8
+	let value : ıó // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10141,17 +10841,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10193,17 +10889,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10221,26 +10913,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let titleLabel : UILabel // +0x8 (0x8)
 	var borderColor : UIColor? // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˜ÿ
- // +0x18 (0x8)
+	let onTap : á // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var toggleState : ≥M
- // +0x2230 (0x0)
+	var toggleState : ·( // +0x45545f5f (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x4edea0  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
-	0x4eded0  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
-	0x4ee1c0  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
-	0x4ee240  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f63c00235b08 (0x63c00235b08) in binary!
+	0x8eeb0  @objc CoverViewFollowSwitch.(null) <stripped>
+WARNING: couldn't find address 0x9a3d400236948 (0x3d400236948) in binary!
+	0x984d8  @objc CoverViewFollowSwitch.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x6cff8337a0  @objc CoverViewFollowSwitch.(null) <stripped>
+	0x3cff833fe8  @objc CoverViewFollowSwitch.ÔHãu∞Hâ⁄Ë' <stripped>
+ }
+
+ struct NewsFeed.FeedGroupKnobsRuleSet {
+
+	// Properties
+	let value : Set<A>
+	let selectors : Selector
+ }
+
+ struct NewsFeed.Selector {
+
+	// Properties
+	let selector : String
+	let value : Set<A1>
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case selector  
+	case value  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case value  
+	case selectors  
  }
 
  class NewsFeed.FormatStateMachineStateStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var states : [String : String] // +0x10 (0x8)
+	var states : [String : String]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : J
- // +0x18 (0x8)
+	let lock : o$
 
 	// Swift methods
  }
@@ -10315,17 +11035,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10365,11 +11081,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10382,20 +11096,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.OrderedHeadlineViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, OrderedHeadlineViewRendererType {
 
 	// Properties
-	let publisherLogoImageCache : TSImageCacheType // +0x10 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x18 (0x8)
+	let publisherLogoImageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
 
 	// Swift methods
  }
 
  class NewsFeed.CachedText {
+ class NewsFeed.StubFeedPersonalizationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+	0x52aac0  class func StubFeedPersonalizationService.__allocating_init() // init 
+ }
+
  struct NewsFeed.FeedIssueHeadline {
 
 	// Properties
-	let identifier : String // +0x0
-	let feedIssue : FeedIssue // +0x10
-	let feedHeadline : FeedHeadline // +0xb8
-	let kind : Kind // +0x101
+	let identifier : String
+	let feedIssue : FeedIssue
+	let feedHeadline : FeedHeadline
+	let kind : Kind
+ }
+
+ class NewsFeed.DebugFormatAssetViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let editor : DebugFormatEditor
+	let assetManager : DebugFormatAssetManager
+	var sections : DebugFormatAssetSection
+	let tableView : UITableView
+	let placeholderImage : UIImage
+	let textImage : UIImage
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x8ee8400236058 (0x68400236058) in binary!
+	0x984b8  @objc DebugFormatAssetViewController.(null) <stripped>
+WARNING: couldn't find address 0x984ac00236180 (0x4ac00236180) in binary!
+	0x99b40  @objc DebugFormatAssetViewController.(null) <stripped>
+WARNING: couldn't find address 0x98494002359d0 (0x494002359d0) in binary!
+	0x48000000c  @objc DebugFormatAssetViewController.(null) <stripped>
+WARNING: couldn't find address 0x9b34c002358e8 (0x34c002358e8) in binary!
+	0x9f9e0  @objc DebugFormatAssetViewController.(null) <stripped>
+WARNING: couldn't find address 0x9b31c002358e0 (0x31c002358e0) in binary!
+	0x99af8  @objc DebugFormatAssetViewController.(null) <stripped>
+
+	// Swift methods
  }
 
  struct NewsFeed.E18_V6 {
@@ -10430,20 +11174,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -10459,28 +11198,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatEditorViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var delegate : DebugFormatEditorViewControllerDelegate // +0x8 (0x10)
-	let editor : DebugFormatEditor // +0x18 (0x8)
-	var packages : DebugFormatPackages // +0x20 (0x60)
-	let errorViewController : DebugFormatErrorViewController // +0x80 (0x8)
-	let canvasViewController : DebugFormatCanvasViewController // +0x88 (0x8)
-	let scrollView : UIScrollView // +0x90 (0x8)
-	let rulerView : DebugFormatRulerView // +0x98 (0x8)
-	var $__lazy_storage_$_overlayView : DebugFormatOverlayView // +0xa0 (0x8)
-	let contentView : UIView // +0xa8 (0x8)
-	let statusView : DebugFormatEditorStatusView // +0xb0 (0x8)
-	let zoomLabel : UILabel // +0xb8 (0x8)
+	var delegate : DebugFormatEditorViewControllerDelegate
+	let editor : DebugFormatEditor
+	var packages : DebugFormatPackages
+	let errorViewController : DebugFormatErrorViewController
+	let canvasViewController : DebugFormatCanvasViewController
+	let scrollView : UIScrollView
+	let rulerView : DebugFormatRulerView
+	var $__lazy_storage_$_overlayView : DebugFormatOverlayView
+	let contentView : UIView
+	let statusView : DebugFormatEditorStatusView
+	let zoomLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x516d30  @objc DebugFormatEditorViewController.initWithCoder: <stripped>
-	0x5186e0  @objc DebugFormatEditorViewController.viewDidLoad <stripped>
-	0x5189d0  @objc DebugFormatEditorViewController.viewWillAppear: <stripped>
-	0x5194f0  @objc DebugFormatEditorViewController.viewWillLayoutSubviews <stripped>
-	0x51b8a0  @objc DebugFormatEditorViewController.viewDidLayoutSubviews <stripped>
-	0x51bbf0  @objc DebugFormatEditorViewController.viewLayoutMarginsDidChange <stripped>
-	0x51bd50  @objc DebugFormatEditorViewController.overrideTraitCollectionForChildViewController: <stripped>
-	0x51bf20  @objc DebugFormatEditorViewController.initWithNibName:bundle: <stripped>
-	0x51bde0  @objc DebugFormatEditorViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ee0400235fd8 (0x60400235fd8) in binary!
+	0x98438  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x974a800236108 (0x4a800236108) in binary!
+	0x98420  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x9841400236508 (0x41400236508) in binary!
+	0x98408  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x8edbc00235730 (0x5bc00235730) in binary!
+	0x99a90  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x983e400235920 (0x3e400235920) in binary!
+	0xa8000000c  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x8ed8c00235880 (0x58c00235880) in binary!
+	0x9a2b0  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x915a400235878 (0x5a400235878) in binary!
+	0x9a298  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x9839c00236d38 (0x39c00236d38) in binary!
+	0x98390  @objc DebugFormatEditorViewController.(null) <stripped>
+WARNING: couldn't find address 0x9a27400236d38 (0x27400236d38) in binary!
+	0x9a268  @objc DebugFormatEditorViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -10489,8 +11237,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : ˝7
-
+	case url : e
 	case inline : FormatMetadata
  }
 
@@ -10527,12 +11274,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case duplicateLocalizedString : FormatLocalizationString
  }
 
- struct NewsFeed.FormatText {
-
-	// Properties
-	let attributedText : NSAttributedString // +0x0
- }
-
  struct NewsFeed.B18_V6 {
 
 	// Properties
@@ -10563,17 +11304,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10599,29 +11336,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let origin : CGPoint // +0x0
 	let sizeConstraint : SizeConstraint // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowRadius : Ô // +0x28
+	let shadowRadius : ıó // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Ô // +0x30
+	let cornerRadius : ıó // +0x30
  }
 
  enum NewsFeed.SizeConstraint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case width : Ô
+	case width : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case height : Ô
+	case height : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case size : C•
-
+	case size : â]
  }
 
  struct NewsFeed.FormatStyleImage {
 
 	// Properties
-	let content : FormatImageNodeContent // +0x0
+	let content : FormatAsyncImageContent // +0x0
 	let style : FormatImageNodeStyle // +0x8
-	let selectors : [String] // +0x108
+	let selectors : [String] // +0xe0
  }
 
  enum NewsFeed.CodingKeys {
@@ -10662,17 +11398,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10687,11 +11419,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.BlockingCommandHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let subscriptionController : FCSubscriptionController // +0x8 (0x8)
+	let subscriptionController : FCSubscriptionController
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
 
 	// ObjC -> Swift bridged methods
-	0x539e60  @objc BlockingCommandHandler.init <stripped>
-	0x539ec0  @objc BlockingCommandHandler..cxx_destruct <stripped>
+WARNING: couldn't find address 0x91ddc002359b8 (0x5dc002359b8) in binary!
+	0x98340  @objc BlockingCommandHandler.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xff860568  @objc BlockingCommandHandler.(null) <stripped>
 
 	// Swift methods
  }
@@ -10700,32 +11436,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.Key {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : #A
-
 	let cachePolicy : FeedPoolCachePolicy
+	let identifier : String
  }
 
  class NewsFeed.AudioCountdownFormatter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let formatter : NSDateComponentsFormatter // +0x10 (0x8)
-
 	// Swift methods
-	0x53df00  func <stripped> // method 
  }
 
  class NewsFeed.DebugFormatInspectorSplitView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let left : UIView // +0x8 (0x8)
-	let right : UIView // +0x10 (0x8)
+	let left : UIView
+	let right : UIView
 
 	// ObjC -> Swift bridged methods
-	0x53e2b0  @objc DebugFormatInspectorSplitView.initWithFrame: <stripped>
-	0x53e2e0  @objc DebugFormatInspectorSplitView.initWithCoder: <stripped>
-	0x53e820  @objc DebugFormatInspectorSplitView.layoutSubviews <stripped>
-	0x53e880  @objc DebugFormatInspectorSplitView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f45400235920 (0x45400235920) in binary!
+	0x8ecc8  @objc DebugFormatInspectorSplitView.(null) <stripped>
+WARNING: couldn't find address 0x982fc00236180 (0x2fc00236180) in binary!
+	0x982f0  @objc DebugFormatInspectorSplitView.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x13cff87ade8  @objc DebugFormatInspectorSplitView.(null) <stripped>
+	0xff87aeb0  @objc DebugFormatInspectorSplitView.àE–∆EÿHãíJ‹ <stripped>
  }
 
  struct NewsFeed.OrderedHeadlineColorPalette {
@@ -10763,6 +11495,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case visibility  
  }
 
+ class NewsFeed.FeedDataMultiPrewarmer {
+ class NewsFeed._ResultPromise {
+ struct NewsFeed.Result {
+
+	// Properties
+	let didSeal : Bool
+	let seal : Seal
+ }
+
+ enum NewsFeed.Seal {
+
+	// Properties
+	case resolved : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case rejected : eº
+ }
+
  struct NewsFeed.B18_V10 {
 
 	// Properties
@@ -10793,17 +11542,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10844,6 +11589,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case decoration  
 	case group  
 	case style  
+	case option  
  }
 
  enum NewsFeed.FormatAuxiliaryViewRequirement {
@@ -10852,17 +11598,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case shadow  
 	case shine  
 	case gradient  
+	case image  
  }
 
  struct NewsFeed.FormatRadialGradient {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let from : kC
-
+	let from : k%
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let to : kC
-
+	let to : k%
 	let colors : ColorData
  }
 
@@ -10898,63 +11643,67 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FeedCursorCommandContext {
 
 	// Properties
-	let viewControllerBlock : () // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewControllerBlock :  first-element-marker  // +0x0
  }
 
  class NewsFeed.FeedCursorCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sceneProvider : È{
+	let cloudContext : FCCloudContext
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
+
 	// Swift methods
+ }
+
+ struct NewsFeed.PublisherLogoImageLayoutAttributes: PublisherLogoImageLayoutAttributesType {
+
+	// Properties
+	let publisherLogoImageViewFrame : CGRect // +0x0
  }
 
  enum NewsFeed.FeedItemRendererResult {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case emptyViewCell : {=
-
+	case emptyViewCell : ß
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gapViewCell : m=
-
+	case gapViewCell : ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gapOfflineViewCell : _=
-
+	case gapOfflineViewCell : ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case webEmbedViewCell : ë9
-
+	case bannerAdViewCell : }
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case imageHeadlineViewCell : C=
-
+	case webEmbedViewCell : œ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case videoHeadlineViewCell : /=
-
+	case imageHeadlineViewCell : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case featuredHeadlineViewCell : =
-
+	case videoHeadlineViewCell : M
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case featuredIssueHeadlineViewCell : =
-
+	case featuredHeadlineViewCell : 9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case orderedHeadlineViewCell : ˇ<
-
+	case featuredIssueHeadlineViewCell : +
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case issueViewCell : Ò<
-
+	case orderedHeadlineViewCell : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case coverIssueViewCell : „<
-
+	case issueViewCell : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case coverChannelViewCell : ’<
-
+	case coverIssueViewCell : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case formatLayoutView : «<
-
+	case coverChannelViewCell : Û
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case audioTrackView : π<
-
+	case formatLayoutView : Â
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case audioDailyBriefingView : ´<
-
+	case audioTrackView : ◊
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case audioDailyBriefingView : …
  }
 
+ class NewsFeed.FeedConfigEncoder {
+ class NewsFeed.FeedConfigDecoder {
  struct NewsFeed.FormatSupplementaryCollection {
 
 	// Properties
@@ -10973,22 +11722,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.Assembly : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let assemblies : [NFAssembly] // +0x8 (0x8)
+	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-	0x553230  @objc Assembly.assemblies <stripped>
-	0x553480  @objc Assembly.init <stripped>
-	0x5532d0  @objc Assembly..cxx_destruct <stripped>
+WARNING: couldn't find address 0x91d6c00235618 (0x56c00235618) in binary!
+	0x91d60  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x982c400235800 (0x2c400235800) in binary!
+	0x78000000c  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x8ec6c00235e40 (0x46c00235e40) in binary!
+	0x982a0  @objc Assembly.(null) <stripped>
  }
 
  class NewsFeed.HeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineViewStylerType {
 
 	// Properties
-	let fontBook : HeadlineFontBook // +0x10 (0x28)
-	let colorPalette : HeadlineColorPalette // +0x38 (0x58)
+	let fontBook : HeadlineFontBook
+	let colorPalette : HeadlineColorPalette
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x90 (0x8)
-	let colorPaletteProvider : ColorPaletteProviding // +0x98 (0x28)
+	let scaleFactor : ıó
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -11002,33 +11754,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let editor : DebugFormatEditor
 
 	// ObjC -> Swift bridged methods
-	0x5558e0  @objc DebugFormatLayoutViewController.initWithCoder: <stripped>
-	0x555b10  @objc DebugFormatLayoutViewController.viewDidLoad <stripped>
-	0x555b40  @objc DebugFormatLayoutViewController.viewWillAppear: <stripped>
-	0x555c50  @objc DebugFormatLayoutViewController.viewWillLayoutSubviews <stripped>
-	0x557570  @objc DebugFormatLayoutViewController.didTapOnOverlay: <stripped>
-	0x557610  @objc DebugFormatLayoutViewController.initWithNibName:bundle: <stripped>
-	0x5575c0  @objc DebugFormatLayoutViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ec6c00235e40 (0x46c00235e40) in binary!
+	0x982a0  @objc DebugFormatLayoutViewController.(null) <stripped>
+WARNING: couldn't find address 0x9731000235f70 (0x31000235f70) in binary!
+	0x98288  @objc DebugFormatLayoutViewController.(null) <stripped>
+WARNING: couldn't find address 0x9a16c00236cb8 (0x16c00236cb8) in binary!
+	0x99910  @objc DebugFormatLayoutViewController.(null) <stripped>
+WARNING: couldn't find address 0x98264002357a0 (0x264002357a0) in binary!
+	0x48000000c  @objc DebugFormatLayoutViewController.(null) <stripped>
+WARNING: couldn't find address 0x8c98c002356e8 (0x18c002356e8) in binary!
+	0x9f7b0  @objc DebugFormatLayoutViewController.(null) <stripped>
+WARNING: couldn't find address 0x9b0ec002356b0 (0xec002356b0) in binary!
+	0x998c8  @objc DebugFormatLayoutViewController.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x59cff87f640  @objc DebugFormatLayoutViewController.(null) <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.DebugFormatLayoutTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x557d50  @objc DebugFormatLayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x557df0  @objc DebugFormatLayoutTableViewCell.initWithCoder: <stripped>
- }
-
- enum NewsFeed.InternalErrorViewModel {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case formatError : ÖÄ
-
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case debugFormatError : ÖÄ
-
-	case noMatchedLayouts : Group
+WARNING: couldn't find address 0x91c54002360d0 (0x454002360d0) in binary!
+	0x8ebc8  @objc DebugFormatLayoutTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x59cff8a73b0  @objc DebugFormatLayoutTableViewCell.(null) <stripped>
  }
 
  struct NewsFeed.Group {
@@ -11036,6 +11785,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String // +0x0
 	let feedGroupKind : FeedGroupKind // +0x10
+ }
+
+ enum NewsFeed.InternalErrorViewModel {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case formatError : ÛG
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case debugFormatError : ÛG
+	case noMatchedLayouts : Group
  }
 
  struct NewsFeed.C18_V6 {
@@ -11068,17 +11827,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11118,16 +11873,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.Command {
 
 	// Properties
-	case moreActions : FormatTagMoreActions
 	case navigate : FormatTagNavigate
+	case moreActions : FormatTagMoreActions
 	case follow  
 	case block  
+	case ignore  
+ }
+
+ enum NewsFeed.Bool {
+
+	// Properties
+	case isChannel  
+	case isTopic  
+	case isLocal  
  }
 
  struct NewsFeed.FormatTagMoreActions {
 
 	// Properties
-	let title : FormatTextNodeContent // +0x0
+	let title : FormatTextContent // +0x0
 	let actions : Action // +0x8
  }
 
@@ -11160,8 +11924,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.CodingType {
 
 	// Properties
+	case isChannel  
+	case isTopic  
+	case isLocal  
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
 	case follow  
 	case block  
+	case ignore  
 	case moreActions  
 	case navigate  
  }
@@ -11189,11 +11962,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case sourceType  
  }
 
- enum NewsFeed.FeedJournalGroupResult {
+ struct NewsFeed.FeedJournalGroupResult {
 
 	// Properties
-	case next : FeedPoolType
-	case last : FeedPoolType
+	let emitter : FeedGroupEmitter
+	let rules : FeedGroupEmitterRuleOutput
+	let output : Output
+	let durationInMilliseconds : Double
+ }
+
+ enum NewsFeed.Output {
+
+	// Properties
+	case next : FeedServiceConfigType
+	case last : FeedServiceConfigType
+	case unfrozen : FeedServiceConfigType
 	case skip : FeedGroupEmitter
 	case none : FeedGroupEmitter
  }
@@ -11225,11 +12008,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11243,44 +12024,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x8
+	let titleLabelFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryLabelFrame : °Ó
- // +0x10
+	let accessoryLabelFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptLabelFrame : °Ó
- // +0x18
+	let excerptLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x20
+	let publisherLogoImageViewFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLabelFrame : °Ó
- // +0x28
+	let publisherLabelFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewFrame : °Ó
- // +0x30
+	let mediaViewFrame : ¡ê // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCorners : ‹
- // +0x38
+	let mediaViewRoundedCorners : ó| // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : ˜€
- // +0x40
+	let mediaViewRoundedCornerRadius : â| // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryDataStyle : ◊À
- // +0x48
+	let accessoryDataStyle : 5v // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoButtonFrame : °Ó
- // +0x50
+	let videoButtonFrame : ¡ê // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adButtonFrame : °Ó
- // +0x58
+	let adButtonFrame : ¡ê // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusIconViewFrame : °Ó
- // +0x60
+	let statusIconViewFrame : ¡ê // +0x60
  }
 
  struct NewsFeed.Attributes {
@@ -11298,7 +12066,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mediaViewFrame : CGRect // +0x108
 	let mediaViewRoundedCorners : UIRectCorner // +0x128
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaViewRoundedCornerRadius : Ô // +0x130
+	let mediaViewRoundedCornerRadius : ıó // +0x130
 	let publisherLogoImageViewFrame : CGRect // +0x138
  }
 
@@ -11322,10 +12090,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let traits : Traits
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailAspectRatio : ıà
-
+	let thumbnailAspectRatio : -K
 	let accessory : Option
 	let maxTitleLines : Int
+	let contentSizeCategory : UIContentSizeCategory
  }
 
  struct NewsFeed.Traits {
@@ -11372,8 +12140,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let style : FormatItemNodeStyle // +0x78
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x128
+	let style : FormatItemNodeStyle // +0x68
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x118
  }
 
  enum NewsFeed.CodingKeys {
@@ -11387,47 +12155,58 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatInspectorPaneViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var groups : FormatInspectionGroup // +0x8 (0x8)
-	let tableView : UITableView // +0x10 (0x8)
-	let placeholderImage : UIImage // +0x18 (0x8)
-	let naImage : UIImage // +0x20 (0x8)
-	var images : [String : UIImage] // +0x28 (0x8)
-	let editor : DebugFormatEditor // +0x30 (0x8)
+	var groups : FormatInspectionGroup
+	let tableView : UITableView
+	let placeholderImage : UIImage
+	let naImage : UIImage
+	var images : [String : UIImage]
+	let editor : DebugFormatEditor
 
 	// ObjC -> Swift bridged methods
-	0x586790  @objc DebugFormatInspectorPaneViewController.initWithCoder: <stripped>
-	0x586b60  @objc DebugFormatInspectorPaneViewController.viewDidLoad <stripped>
-	0x586b90  @objc DebugFormatInspectorPaneViewController.viewWillLayoutSubviews <stripped>
-	0x587330  @objc DebugFormatInspectorPaneViewController.initWithNibName:bundle: <stripped>
-	0x5872c0  @objc DebugFormatInspectorPaneViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ebb400235d88 (0x3b400235d88) in binary!
+	0x981e8  @objc DebugFormatInspectorPaneViewController.(null) <stripped>
+WARNING: couldn't find address 0x981dc00235eb0 (0x1dc00235eb0) in binary!
+	0x99870  @objc DebugFormatInspectorPaneViewController.(null) <stripped>
+WARNING: couldn't find address 0x981c400235700 (0x1c400235700) in binary!
+	0x78000000c  @objc DebugFormatInspectorPaneViewController.(null) <stripped>
+WARNING: couldn't find address 0x9b07c00235618 (0x7c00235618) in binary!
+	0x9b070  @objc DebugFormatInspectorPaneViewController.(null) <stripped>
+WARNING: couldn't find address 0x9977c00235670 (0x77c00235670) in binary!
+	0x8c8c8  @objc DebugFormatInspectorPaneViewController.(null) <stripped>
 
 	// Swift methods
-	0x586720  class func <stripped> // init 
-	0x586c70  func <stripped> // getter 
-	0x586d20  func <stripped> // method 
+	0x5a0e60  class func <stripped> // init 
+	0x5a13a0  func <stripped> // getter 
+	0x5a1450  func <stripped> // method 
  }
 
  class NewsFeed.DebugFormatMainViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let editor : DebugFormatEditor // +0x8 (0x8)
-	var reloadState : ReloadState // +0x10 (0x1)
-	let inventoryViewController : DebugFormatInventoryViewController // +0x18 (0x8)
-	let inventoryContainerController : DebugNavigationController // +0x20 (0x8)
-	let editorViewController : DebugFormatEditorViewController // +0x28 (0x8)
+	let editor : DebugFormatEditor
+	var reloadState : ReloadState
+	let inventoryViewController : DebugFormatInventoryViewController
+	let inventoryContainerController : DebugNavigationController
+	let editorViewController : DebugFormatEditorViewController
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let editorContainerController : o7
- // +0x30 (0x8)
-	let layoutViewController : DebugFormatLayoutViewController // +0x38 (0x8)
-	let bindingViewController : DebugFormatBindingViewController // +0x40 (0x8)
-	let formatManager : DebugFormatManager // +0x48 (0x8)
-	var packages : DebugFormatPackages // +0x50 (0x60)
+	let editorContainerController : ≈
+	let layoutViewController : DebugFormatLayoutViewController
+	let bindingViewController : DebugFormatBindingViewController
+	let assetViewController : DebugFormatAssetViewController
+	let formatManager : DebugFormatManager
+	var packages : DebugFormatPackages
 
 	// ObjC -> Swift bridged methods
-	0x58df70  @objc DebugFormatMainViewController.initWithCoder: <stripped>
-	0x58e500  @objc DebugFormatMainViewController.viewWillLayoutSubviews <stripped>
-	0x58e5d0  @objc DebugFormatMainViewController.initWithNibName:bundle: <stripped>
-	0x58e630  @objc DebugFormatMainViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8eb0c00235ce0 (0x30c00235ce0) in binary!
+	0x98140  @objc DebugFormatMainViewController.(null) <stripped>
+WARNING: couldn't find address 0x997d400235cd0 (0x7d400235cd0) in binary!
+	0x8f0a0  @objc DebugFormatMainViewController.(null) <stripped>
+WARNING: couldn't find address 0x9811c00235658 (0x11c00235658) in binary!
+	0x28000000c  @objc DebugFormatMainViewController.(null) <stripped>
+WARNING: couldn't find address 0x8eac4002355e8 (0x2c4002355e8) in binary!
+	0x8eab8  @objc DebugFormatMainViewController.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x46cff8b9da0  @objc DebugFormatMainViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -11476,17 +12255,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11518,25 +12293,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Ô // +0x8 (0x8)
-	var contentSize : CGSize // +0x10 (0x10)
-	var contentBounds : CGRect // +0x20 (0x20)
-	let gridLayer : CAShapeLayer // +0x40 (0x8)
+	var scale : ıó
+	var contentSize : CGSize
+	var contentBounds : CGRect
+	let gridLayer : CAShapeLayer
 
 	// ObjC -> Swift bridged methods
-	0x59cd30  @objc DebugFormatGridView.initWithFrame: <stripped>
-	0x59cd60  @objc DebugFormatGridView.initWithCoder: <stripped>
-	0x59d520  @objc DebugFormatGridView.layoutSubviews <stripped>
-	0x59d550  @objc DebugFormatGridView.traitCollectionDidChange: <stripped>
-	0x59d8f0  @objc DebugFormatGridView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8f224002356f0 (0x224002356f0) in binary!
+	0x8ea98  @objc DebugFormatGridView.(null) <stripped>
+WARNING: couldn't find address 0x980cc00235f50 (0xcc00235f50) in binary!
+	0x99fb0  @objc DebugFormatGridView.(null) <stripped>
+WARNING: couldn't find address 0x980b4002355f0 (0xb4002355f0) in binary!
+	0x68000000c  @objc DebugFormatGridView.(null) <stripped>
+WARNING: couldn't find address 0x8ea5c00235c30 (0x25c00235c30) in binary!
+	0x98090  @objc DebugFormatGridView.(null) <stripped>
+WARNING: couldn't find address 0x9710000235d60 (0x10000235d60) in binary!
+	0x98078  @objc DebugFormatGridView.(null) <stripped>
  }
 
  class NewsFeed.FeedLayoutAttributesFactoryProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let issueCoverViewLayoutAttributesFactory : IssueCoverViewLayoutAttributesFactory // +0x10 (0x8)
+	let issueCoverViewLayoutAttributesFactory : IssueCoverViewLayoutAttributesFactory
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bannerAdLayoutAttributesFactory : u!
 
 	// Swift methods
+ }
+
+ struct NewsFeed.FormatMenuItem {
+
+	// Properties
+	let title : FormatMenuItemTitle // +0x0
+	let image : FormatMenuItemImage // +0x20
+	let action : FormatMenuItemAction // +0x68
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case title  
+	case image  
+	case action  
  }
 
  struct NewsFeed.I12_V2 {
@@ -11566,11 +12364,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11580,10 +12376,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case headlineLayoutAttributes  
  }
 
+ struct NewsFeed.OfflineModel {
+
+	// Properties
+	let identifier : String // +0x0
+	let title : String // +0x10
+	let description : String // +0x20
+	let traits : Traits // +0x30
+ }
+
+ enum NewsFeed.Traits {
+
+	// Properties
+	case configurable  
+ }
+
  struct NewsFeed.FeedGroupTag {
 
 	// Properties
 	let tag : FCTagProviding // +0x0
+	let subscription : FCSubscription? // +0x8
+ }
+
+ class NewsFeed.RepoolFeedRefreshStrategy {
+ struct NewsFeed.RepoolFeedData {
+
+	// Properties
+	let pinnedCursorGroupIDs : Set<String>
+	let pinnedCursorGroups : FeedCursorGroup
+	let pinnedJournalEntries : FeedJournalEntry
+	let unseenCursorGroups : FeedCursorGroup
+	let unfrozenCursorGroups : FeedCursorGroup
  }
 
  struct NewsFeed.FormatPattern {
@@ -11606,10 +12429,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Ô // +0x10 (0x8)
-	let fontBook : CoverIssueFontBook // +0x18 (0x30)
-	let colorPalette : CoverIssueColorPalette // +0x48 (0x48)
-	let colorPaletteProvider : ColorPaletteProviding // +0x90 (0x28)
+	let cornerRadius : ıó
+	let fontBook : CoverIssueFontBook
+	let colorPalette : CoverIssueColorPalette
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -11635,116 +12458,105 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var packages : DebugFormatPackages // +0x8 (0x60)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columnOptions : W)
- // +0x80000400 (0x0)
+	var columnOptions : I // +0x80000408 (0x0)
 	var sections : DebugFormatRolePackages // +0x0 (0x8)
 	let tableView : UITableView // +0x0 (0x8)
 	var groupViewController : DebugFormatGroupViewController // +0x0 (0x8)
 	let versionLabel : UILabel // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : É1
- // +0x0 (0x8)
+	let coverViewManager :  // +0x0 (0x8)
 	var $__lazy_storage_$_uploadBarButtonItem : UIBarButtonItem? // +0x0 (0x8)
 	var $__lazy_storage_$_updatedLabel : UILabel? // +0x0 (0x8)
 	let styler : DebugFormatStyler // +0x0 (0x8)
 	let editor : DebugFormatEditor // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5a9410  @objc DebugFormatInventoryViewController.initWithCoder: <stripped>
-	0x5a9ce0  @objc DebugFormatInventoryViewController.viewDidLoad <stripped>
-	0x5a9d10  @objc DebugFormatInventoryViewController.viewWillAppear: <stripped>
-	0x5aa080  @objc DebugFormatInventoryViewController.viewWillLayoutSubviews <stripped>
-	0x5aa0b0  @objc DebugFormatInventoryViewController.initWithNibName:bundle: <stripped>
-	0x5aa0e0  @objc DebugFormatInventoryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ea5c00235c30 (0x25c00235c30) in binary!
+	0x98090  @objc DebugFormatInventoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x9710000235d60 (0x10000235d60) in binary!
+	0x98078  @objc DebugFormatInventoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x9970c00235c08 (0x70c00235c08) in binary!
+	0x98060  @objc DebugFormatInventoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
+	0x4e4ff8cc698  @objc DebugFormatInventoryViewController.(null) <stripped>
+	0x494ff8cc2f0  @objc DebugFormatInventoryViewController.ˇ1ˆLã•ê˛ˇˇLâ‚HãùˇˇˇHâŸLã∫÷‹ <stripped>
+	0x48cff8cb7e8  @objc DebugFormatInventoryViewController.5Î_Í <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.DebugFormatInventoryTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x5ab880  @objc DebugFormatInventoryTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x5ab920  @objc DebugFormatInventoryTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x91a1400235e90 (0x21400235e90) in binary!
+	0x8e988  @objc DebugFormatInventoryTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x33cff95b1b0  @objc DebugFormatInventoryTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.DebugFormatEditor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let key : DebugGroupLayoutKey // +0x0 (0x0)
+	let key : DebugGroupLayoutKey // +0x6 (0x0)
 	let factory : DebugGroupLayoutViewFactoryType // +0x74735f5f (0x28)
-	let fontManager : FeedFontManager // +0x0 (0x8)
+	let fontManager : FeedFontManager // +0x65706c65 (0x8)
+	let featureAvailablity : FeatureAvailabilityType // +0x45545f5f (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _statusMessage : %-
- // +0x0 (0x8)
+	var _statusMessage : Û // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _canvasDevice : [&
- // +0x0 (0x8)
+	var _canvasDevice : Q // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _showMissingOptionBindings : M&
- // +0x0 (0x8)
+	var _showMissingOptionBindings : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _wildcardSlotFallback : M&
- // +0x0 (0x8)
+	var _wildcardSlotFallback : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutIdentifier : C&
- // +0x0 (0x8)
+	var _layoutIdentifier : 9 // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _groupIdentifier : C&
- // +0x0 (0x8)
+	var _groupIdentifier : 9 // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _allowSelection : M&
- // +0x0 (0x8)
+	var _allowSelection : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _alwaysBounceVertical : M&
- // +0x0 (0x8)
+	var _alwaysBounceVertical : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _alwaysBounceHorizontal : M&
- // +0x0 (0x8)
+	var _alwaysBounceHorizontal : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _showColumns : M&
- // +0x0 (0x8)
+	var _showColumns : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _showLayoutMargins : M&
- // +0x0 (0x8)
+	var _showLayoutMargins : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _userInterfaceStyle : 9&
- // +0x0 (0x8)
+	var _userInterfaceStyle : / // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _showFullCanvas : M&
- // +0x0 (0x8)
+	var _showFullCanvas : C // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _inventorySearchTerm : C&
- // +0x0 (0x8)
+	var _inventorySearchTerm : 9 // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _history : ◊,
- // +0x0 (0x8)
+	var _history : • // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isCompiling : ≈,
- // +0x0 (0x8)
+	var _isCompiling : ì // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _compilerResult : ª,
- // +0x0 (0x8)
+	var _compilerResult : â // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _themeIdentifiers : ≠,
- // +0x0 (0x8)
+	var _themeIdentifiers : { // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uploadTarget : ﬂ%
- // +0x0 (0x8)
+	var _uploadTarget : ’ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uploadEnvironment : —%
- // +0x0 (0x8)
+	var _uploadEnvironment : « // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uploadUsername : C&
- // +0x0 (0x8)
+	var _uploadUsername : 9 // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uploadPassword : C&
- // +0x0 (0x8)
+	var _uploadPassword : 9 // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _themeIdentifier : C&
- // +0x0 (0x8)
+	var _featureAppleNews : π // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _featureAppleNewsPrivateData : π // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _featureAppleNewsAudio : π // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _featureAppleNewsMagazines : π // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _themeIdentifier : 9 // +0x0 (0x8)
 	let compiler : DebugFormatCompiler // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_fonts : -
- // +0x0 (0x8)
+	var $__lazy_storage_$_fonts : € // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -11795,17 +12607,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11844,11 +12652,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioDailyBriefingViewLayoutAttributes : «&
- // +0x8
+	let audioDailyBriefingViewLayoutAttributes : „	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11861,9 +12667,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeaturedHeadlineViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedHeadlineViewRendererType {
 
 	// Properties
-	let thumbnailImageCache : TSImageCacheType // +0x10 (0x8)
-	let publisherLogoImageCache : TSImageCacheType // +0x18 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x20 (0x8)
+	let thumbnailImageCache : TSImageCacheType
+	let publisherLogoImageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
 
 	// Swift methods
  }
@@ -11915,14 +12721,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -11960,11 +12763,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x8
+	let headlineLayoutAttributes : «z // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11982,13 +12783,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let default : DefaultValue
  }
 
- struct NewsFeed.CaseValue {
-
-	// Properties
-	let state : FormatCommandState
-	let value : A
- }
-
  enum NewsFeed.CodingKeys {
 
 	// Properties
@@ -12000,6 +12794,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.DefaultValue {
 
 	// Properties
+	let value : A
+ }
+
+ struct NewsFeed.CaseValue {
+
+	// Properties
+	let state : FormatCommandState
 	let value : A
  }
 
@@ -12020,14 +12821,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let red : Ô // +0x0
+	let red : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let green : Ô // +0x8
+	let green : ıó // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blue : Ô // +0x10
+	let blue : ıó // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alpha : i‰
- // +0x18
+	let alpha : }à // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -12055,7 +12855,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let action : FormatAction // +0x0
-	let name : NSAttributedString? // +0x80
+	let name : NSAttributedString? // +0x88
  }
 
  struct NewsFeed.FormatSlotNode {
@@ -12103,11 +12903,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12122,40 +12920,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case unknown : FCFetchOperationStatus
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case noData : º
-
+	case noData : ük
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case codingFailure : m
-
+	case codingFailure : ?
 	case wrongFileType : (expected: String, actual: String)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cacheMiss : º
-
+	case cacheMiss : ük
 	case fontCacheMiss : (fonts: [FCLoadableFont])
 	case fontDownloadFailure : (fonts: [FCLoadableFont])
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case cancelled : º
-
+	case cancelled : ük
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fetchError : y7
+	case fetchError : o<
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case notWifi : º
-
+	case notWifi : ük
  }
 
  struct NewsFeed.GroupLayoutContext {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : óõ
-
+	let layoutOptions : GV
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columnOptions : aõ
-
+	let columnOptions : V
 	let solverOptions : FeedLayoutSolverOptions
 	let offset : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô
+	let scaleFactor : ıó
 	let layoutOrder : FeedLayoutOrder
 	let layoutContext : FeedLayoutContext
  }
@@ -12177,7 +12968,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FormatTextNodeAttachment {
 
 	// Properties
-	let image : FormatTextNodeImage // +0x0
+	let image : FormatSyncImageContent // +0x0
 	let alignment : FormatTextNodeAttachmentAlignment // +0x32
  }
 
@@ -12205,13 +12996,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let environment : NewsEnvironment // +0x1
  }
 
+ class NewsFeed.FeedBannerAdIntegrator {
  class NewsFeed.SavingCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let readingList : FCReadingList // +0x10 (0x8)
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
-	let paidAccessChecker : FCPaidAccessCheckerType // +0x20 (0x8)
-	let featureAvailability : FeatureAvailabilityType // +0x28 (0x28)
+	let readingList : FCReadingList
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
+	let paidAccessChecker : FCPaidAccessCheckerType
+	let featureAvailability : FeatureAvailabilityType
 
 	// Swift methods
  }
@@ -12243,11 +13035,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12268,25 +13058,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case truncateMiddle  
  }
 
- struct NewsFeed.FormatNodeContext {
+ struct NewsFeed.FeedSuggestionClusteringResult {
 
 	// Properties
-	let key : GroupLayoutKey
-	let layoutContext : GroupLayoutContext
-	let inventory : FormatPackageInventory
-	let bindings : FormatNodeBindings
-	let namespace : FormatNamespace
-	let selectors : FormatMerge
-	let slotIdentifier : String?
-	let config : FormatConfig
-	let options : FormatMerge
-	let data : FormatNodeContextData
-	let behaviorData : FormatNodeContextBehaviorData
-	let boundItemStack : FeedItemType
-	let boundStateMachines : FormatStateMachineBinding
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lazyContextLayoutOptions : π˚
+	let clusters : FeedSuggestionCluster // +0x0
+ }
 
+ class NewsFeed.FormatNodeContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let key : GroupLayoutKey // +0x0 (0x0)
+	let layoutContext : GroupLayoutContext // +0xcf50d4 (0x0)
+	let inventory : FormatPackageInventory // +0x3d6e (0x8)
+	let bindings : FormatNodeBindings // +0xcf50d4 (0x30)
+	let namespace : FormatNamespace // +0x0 (0x20)
+	let selectors : FormatMerge // +0x80000400 (0x8)
+	let slotIdentifier : String? // +0x0 (0x10)
+	let config : FormatConfig // +0x6c687465 (0x2)
+	let options : FormatMerge // +0x626f5f5f (0x8)
+	let data : FormatNodeContextData // +0x0 (0x8)
+	let behaviorData : FormatNodeContextBehaviorData // +0x0 (0x8)
+	let boundItemStack : FeedItemType // +0x0 (0x8)
+	let boundStateMachines : FormatStateMachineBinding // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lazyContextLayoutOptions : [ // +0x0 (0x8)
+
+	// Swift methods
  }
 
  enum NewsFeed.Errors {
@@ -12323,11 +13120,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12367,17 +13162,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -12387,6 +13178,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
 	case spacerFrame  
+ }
+
+ struct NewsFeed.FeedJournalConfigEntry {
+
+	// Properties
+	let key : String // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let value : 9 // +0x10
  }
 
  struct NewsFeed.AlertSubscriptionLimitReached { }
@@ -12416,6 +13215,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layouts : FormatLatestCompatibleFileReference
 	let properties : FormatProperty
 	let contents : FormatContentSlot
+	let metadata : FormatMetadata
  }
 
  struct NewsFeed.Resolved {
@@ -12423,8 +13223,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String // +0x0
 	let layout : FormatPackageInventory // +0x10
-	let options : FormatOption // +0x118
-	let contents : Resolved // +0x120
+	let options : FormatOption // +0x18
+	let contents : Resolved // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -12434,6 +13234,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case layouts  
 	case properties  
 	case contents  
+	case metadata  
  }
 
  class NewsFeed.DebugInspectViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -12445,45 +13246,60 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let factory : DebugGroupLayoutViewFactoryType // +0x0 (0x28)
 	let dataSource : DebugInspectViewDataSource // +0x0 (0x8)
 	let inspector : DebugInspector // +0x0 (0x8)
-	let reporter : DebugInspectionReporter // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go // +0x0 (0x28)
+	let featureAvailability : FeatureAvailabilityType // +0x0 (0x28)
 	let tableView : UITableView // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x644280  @objc DebugInspectViewController.initWithCoder: <stripped>
-	0x6442a0  @objc DebugInspectViewController.initWithNibName:bundle: <stripped>
-	0x6442d0  @objc DebugInspectViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e8d400235aa8 (0xd400235aa8) in binary!
+	0x995a8  @objc DebugInspectViewController.(null) <stripped>
+WARNING: couldn't find address 0x97efc00235438 (0x6fc00235438) in binary!
+	0xd8000000c  @objc DebugInspectViewController.(null) <stripped>
+WARNING: couldn't find address 0x9adb400235350 (0x5b400235350) in binary!
+	0x9ada8  @objc DebugInspectViewController.(null) <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.KeyValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x649040  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x649050  @objc KeyValueTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x919b400235e30 (0x1b400235e30) in binary!
+	0x8e928  @objc KeyValueTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x2dcff95b140  @objc KeyValueTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.SubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x64b2f0  @objc SubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x6490d0  @objc SubtitleTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x9199400235e10 (0x19400235e10) in binary!
+	0x8e908  @objc SubtitleTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x2bcff95b110  @objc SubtitleTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.RequirementTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x64b2e0  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x649150  @objc RequirementTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x9197400235df0 (0x17400235df0) in binary!
+	0x8e8e8  @objc RequirementTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x2a4ff9515c0  @objc RequirementTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.FeedItemTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x6491d0  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x649280  @objc FeedItemTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x919d400235e50 (0x1d400235e50) in binary!
+	0x8e948  @objc FeedItemTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x2fcff957200  @objc FeedItemTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.LayoutTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x64b300  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x649330  @objc LayoutTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x919f400235e70 (0x1f400235e70) in binary!
+	0x8e968  @objc LayoutTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x31cff957380  @objc LayoutTableViewCell.(null) <stripped>
  }
 
  struct NewsFeed.FormatColorAndExpression {
@@ -12536,14 +13352,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverIssueLayoutAttributes : WÊ
- // +0x8
+	let coverIssueLayoutAttributes : Ñ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -12589,11 +13402,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12608,11 +13419,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let webEmbed : FormatWebEmbed
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexFileURLPromise : ˇZ
-
+	let indexFileURLPromise : C/
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataURLPromise : ˇZ
-
+	let dataURLPromise : C/
 	let headline : FCHeadlineProviding?
  }
 
@@ -12621,7 +13430,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let component : FormatColorComponent // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let value : Ô // +0x8
+	let value : ıó // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12734,11 +13543,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueLayoutAttributes : ª
- // +0x8
+	let issueLayoutAttributes : W // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12778,17 +13585,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -12857,11 +13660,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12881,8 +13682,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let clicks : Double // +0x30
 	let impressions : Double // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventCount : c
- // +0x40
+	let eventCount : ã5 // +0x40
 	let isMuted : Bool? // +0x49
  }
 
@@ -12902,9 +13702,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.HeadlineViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineViewRendererType {
 
 	// Properties
-	let thumbnailImageCache : TSImageCacheType // +0x10 (0x8)
-	let publisherLogoImageCache : TSImageCacheType // +0x18 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x20 (0x8)
+	let thumbnailImageCache : TSImageCacheType
+	let publisherLogoImageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
 
 	// Swift methods
  }
@@ -12937,14 +13737,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -12953,6 +13750,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case frame  
 	case headlineLayoutAttributes  
 	case separatorFrames  
+ }
+
+ struct NewsFeed.FormatMenuAction {
+
+	// Properties
+	let title : FormatMenuTitleResolved // +0x0
+	let image : FormatMenuImageResolved // +0x80
+	let action : FormatCommandAction // +0xf8
  }
 
  struct NewsFeed.B8_V1 {
@@ -12985,17 +13790,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13034,11 +13835,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueLayoutAttributes : ª
- // +0x8
+	let issueLayoutAttributes : W // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13051,20 +13850,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatOverlayView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var selectionFrame : CGRect // +0x8 (0x20)
-	var selectionContentFrame : CGRect // +0x28 (0x20)
-	var contentOffset : CGPoint // +0x48 (0x10)
-	var contentFrame : CGRect // +0x58 (0x20)
-	var contentTransformation : CGAffineTransform // +0x78 (0x30)
-	let selectionView : DebugFormatSelectionView // +0xa8 (0x8)
-	var rulerView : DebugFormatRulerView // +0xb0 (0x8)
+	var selectionFrame : CGRect
+	var selectionContentFrame : CGRect
+	var contentOffset : CGPoint
+	var contentFrame : CGRect
+	var contentTransformation : CGAffineTransform
+	let selectionView : DebugFormatSelectionView
+	var rulerView : DebugFormatRulerView
 
 	// ObjC -> Swift bridged methods
-	0x68e220  @objc DebugFormatOverlayView.isUserInteractionEnabled <stripped>
-	0x68e250  @objc DebugFormatOverlayView.setUserInteractionEnabled: <stripped>
-	0x68e290  @objc DebugFormatOverlayView.initWithCoder: <stripped>
-	0x68e2b0  @objc DebugFormatOverlayView.initWithFrame: <stripped>
-	0x68e310  @objc DebugFormatOverlayView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9d28c00236800 (0x28c00236800) in binary!
+	0x96eac  @objc DebugFormatOverlayView.(null) <stripped>
+WARNING: couldn't find address 0x8e7e4002359b8 (0x7e4002359b8) in binary!
+	0x8ef58  @objc DebugFormatOverlayView.(null) <stripped>
+WARNING: couldn't find address 0x97e0c00235348 (0x60c00235348) in binary!
+	0x78000000c  @objc DebugFormatOverlayView.(null) <stripped>
+WARNING: couldn't find address 0x91bd400235140 (0x3d400235140) in binary!
+	0x91878  @objc DebugFormatOverlayView.(null) <stripped>
+WARNING: couldn't find address 0x9186c00235138 (0x6c00235138) in binary!
+	0x9b0e0  @objc DebugFormatOverlayView.(null) <stripped>
 
 	// Swift methods
  }
@@ -13072,9 +13876,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.FormatAction {
 
 	// Properties
+	case contextMenu : FormatMenuAction
 	case command : FormatCommandAction
 	case route : FormatRoute
 	case stateMachineEvent : FormatStateMachineAction
+	case passthrough  
  }
 
  struct NewsFeed.FormatStateViewNodeState {
@@ -13101,39 +13907,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.DebugInspection {
 
 	// Properties
-	let items : DebugInspectionItem // +0x0
-	let desiredItemIdentifiers : Set<String> // +0x8
-	let undesiredItemIdentifiers : Set<String> // +0x10
+	let group : DebugInspectionGroup
+	let items : DebugInspectionItem
+	let desiredItemIdentifiers : Set<String>
+	let undesiredItemIdentifiers : Set<String>
+	var visibleItemIdentifiers : Set<String>
  }
 
  enum NewsFeed.CodingKeys {
 
 	// Properties
+	case group  
 	case items  
 	case desiredItemIdentifiers  
 	case undesiredItemIdentifiers  
+	case visibleItemIdentifiers  
  }
 
  class NewsFeed.PremiumBadgeRequest : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let style : PremiumBadgeStyle // +0x8 (0x8)
+	let style : PremiumBadgeStyle
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shineImageRequest : ÎÁ
- // +0x10 (0x8)
-	let mask : PremiumBadgeMask // +0x18 (0x8)
+	let shineImageRequest : ﬂâ
+	let mask : PremiumBadgeMask
 
 	// ObjC -> Swift bridged methods
-	0x691fc0  @objc PremiumBadgeRequest.style <stripped>
-	0x692000  @objc PremiumBadgeRequest.shineImageRequest <stripped>
-	0x692040  @objc PremiumBadgeRequest.mask <stripped>
-	0x692890  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
-	0x692a50  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
-	0x692b80  @objc PremiumBadgeRequest.init <stripped>
-	0x692be0  @objc PremiumBadgeRequest..cxx_destruct <stripped>
+WARNING: couldn't find address 0x91bd400235140 (0x3d400235140) in binary!
+	0x91878  @objc PremiumBadgeRequest.(null) <stripped>
+WARNING: couldn't find address 0x9186c00235138 (0x6c00235138) in binary!
+	0x9b0e0  @objc PremiumBadgeRequest.(null) <stripped>
+WARNING: couldn't find address 0x9b11400235130 (0x11400235130) in binary!
+	0x91848  @objc PremiumBadgeRequest.(null) <stripped>
+WARNING: couldn't find address 0x97dac002352e8 (0x5ac002352e8) in binary!
+	0x28000000c  @objc PremiumBadgeRequest.(null) <stripped>
+WARNING: couldn't find address 0x8e754002350a0 (0x754002350a0) in binary!
+	0x91818  @objc PremiumBadgeRequest.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffa1d330  @objc PremiumBadgeRequest.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0xe4ffa339f8  @objc PremiumBadgeRequest.(null) <stripped>
 
 	// Swift methods
-	0x691f40  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
+	0x6991e0  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
  }
 
  enum NewsFeed.Style {
@@ -13175,20 +13991,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -13225,8 +14036,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let resourceIdentifier : String
 	let size : Size
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let colorSpace : √
-
+	let colorSpace : ˝
  }
 
  enum NewsFeed.Layer {
@@ -13330,9 +14140,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let width : Ô // +0x0
+	let width : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Ô // +0x8
+	let height : ıó // +0x8
  }
 
  struct NewsFeed.ImageLayer {
@@ -13342,8 +14152,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let effects : LayeredMediaEffects // +0x10
 	let conditions : LayeredMediaConditions // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let safeArea : i‰
- // +0x70
+	let safeArea : }à // +0x70
  }
 
  struct NewsFeed.VideoLayer {
@@ -13353,8 +14162,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stillImageIdentifier : String // +0x10
 	let effects : LayeredMediaEffects // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let safeArea : i‰
- // +0x40
+	let safeArea : }à // +0x40
  }
 
  struct NewsFeed.ImageLayer {
@@ -13363,8 +14171,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let imageIdentifier : String // +0x0
 	let effects : LayeredMediaEffects // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let safeArea : i‰
- // +0x30
+	let safeArea : }à // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -13393,7 +14200,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let state : String // +0x0
 	let layoutAttributes : FormatLayoutAttributes // +0x10
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x88
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
  }
 
  enum NewsFeed.CodingKeys {
@@ -13434,17 +14241,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13531,11 +14334,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverIssueLayoutAttributes : WÊ
- // +0x8
+	let coverIssueLayoutAttributes : Ñ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13549,13 +14350,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let top : Ô // +0x0
+	let top : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let left : Ô // +0x8
+	let left : ıó // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottom : Ô // +0x10
+	let bottom : ıó // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let right : Ô // +0x18
+	let right : ıó // +0x18
  }
 
  struct NewsFeed.FormatEdgeInsetsEquation {
@@ -13594,6 +14395,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case failedToCompileDecoration :  first-element-marker 
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case failedToCompileStyle :  first-element-marker 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failedToCompileOption :  first-element-marker 
 	case invalidScope : FormatCompilerScope
 	case unknownSlotDefinition : (groupIdentifier: String, slotIdentifier: String, allowedSlotIdentifiers: [String])
 	case duplicateSlotDefinition : (groupIdentifier: String, slotIdentifier: String)
@@ -13669,13 +14472,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedLayoutStylerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let fontBookProvider : FontBookProviding // +0x10 (0x28)
-	let colorPaletteProvider : ColorPaletteProviding // +0x38 (0x28)
+	let fontBookProvider : FontBookProviding
+	let colorPaletteProvider : ColorPaletteProviding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x60 (0x8)
+	let scaleFactor : ıó
 
 	// Swift methods
-	0x6bec80  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
+	0x6c04b0  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
  }
 
  struct NewsFeed.Options {
@@ -13687,13 +14490,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.AudioDailyBriefingViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioDailyBriefingViewStylerType {
 
 	// Properties
-	let durationFormatter : AudioDurationFormatter // +0x10 (0x8)
-	let countdownFormatter : AudioCountdownFormatter // +0x18 (0x8)
-	let fontBook : DailyBriefingFontBook // +0x20 (0x18)
-	let colorPaletteProvider : ColorPaletteProviding // +0x38 (0x28)
+	let fontBook : DailyBriefingFontBook
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
-	0x6bfb60  class func AudioDailyBriefingViewStyler.__allocating_init(fontBook:colorPaletteProvider:) // init 
+	0x6c1080  class func AudioDailyBriefingViewStyler.__allocating_init(fontBook:colorPaletteProvider:) // init 
  }
 
  struct NewsFeed.I8_V1 {
@@ -13723,11 +14524,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13775,10 +14574,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let size : FormatSize // +0x10
 	let adjustments : FormatAdjustment // +0x18
 	let style : FormatImageNodeStyle // +0x20
-	let content : FormatImageNodeContent // +0x120
-	let zIndex : Int // +0x128
-	let accessibilityRole : FormatNodeAccessibilityRole // +0x130
-	let selectors : [String] // +0x148
+	let content : FormatAsyncImageContent // +0xf8
+	let zIndex : Int // +0x100
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x108
+	let selectors : [String] // +0x118
  }
 
  enum NewsFeed.CodingKeys {
@@ -13797,9 +14596,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaLayerProviderFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaLayerProviderFactoryType {
 
 	// Properties
-	let variantFactory : LayeredMediaVariantFactoryType // +0x10 (0x28)
+	let variantFactory : LayeredMediaVariantFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layersCache : á // +0x38 (0x8)
+	let layersCache : ©˜
+
 
 	// Swift methods
  }
@@ -13820,6 +14620,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case direction  
  }
 
+ struct NewsFeed.FeedSuggestionClusteringRequest {
+
+	// Properties
+	let configuration : FCCoreConfiguration // +0x0
+	let feedItems : [NTPBFeedItem] // +0x8
+	let feedItemScoreProfiles : NSMapTable<NTPBFeedItem, FCFeedPersonalizedItemScoreProfile> // +0x10
+	let feedContextByFeedID : [String : FCFeedContext] // +0x18
+	let ignoreTagIDs : Set<String> // +0x20
+ }
+
+ struct NewsFeed.FeedNativeAdBlueprintModifier {
+
+	// Properties
+	let nativeAdInsertion : FeedNativeAdInsertion
+	let feedContext : FeedContext
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let policyValidator : Â
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutCollectionProvider : Õ
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case failed  
+ }
+
+ struct NewsFeed.FeedContextTraits {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ class NewsFeed.FeedContextFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedContextFactoryType {
+
+	// Properties
+	let paidBundleConfigManager : PaidBundleConfigManagerType // +0x10 (0x28)
+	let paidAccessChecker : FCPaidAccessCheckerType // +0x38 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x40 (0x8)
+	let featureAvailability : FeatureAvailabilityType // +0x48 (0x28)
+	let appConfigManager : FeedAppConfigManagerType // +0x70 (0x28)
+
+	// Swift methods
+	0x6d28a0  class func FeedContextFactory.__allocating_init(paidBundleConfigManager:paidAccessChecker:bundleSubscriptionManager:featureAvailability:appConfigManager:) // init 
+ }
+
  struct NewsFeed.FormatPlaceholder {
 
 	// Properties
@@ -13830,6 +14676,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case identifier  
+ }
+
+ enum NewsFeed.FormatComputedInvalidation {
+
+	// Properties
+	case seconds : FormatEquation
+ }
+
+ enum NewsFeed.Result {
+
+	// Properties
+	case interval : Double
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case seconds  
  }
 
  enum NewsFeed.FormatTypeDefinition {
@@ -13874,6 +14738,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case stateMachine  
  }
 
+ struct NewsFeed.TagAutomation {
+
+	// Properties
+	let identifier : String // +0x0
+	let tagType : TagType // +0x10
+ }
+
+ enum NewsFeed.TagType {
+
+	// Properties
+	case topic  
+	case channel  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case identifier  
+	case tagType  
+ }
+
  enum NewsFeed.FormatFile {
 
 	// Properties
@@ -13893,33 +14778,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.FormatOptionValue {
 
 	// Properties
-	case boolean : Bool
-	case enum : EnumValue
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case date : #A
-
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case float : Ô
-	case integer : Int
-	case string : String
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : ˜¨
-
+	case boolean : FormatSelectorValue
+	case enum : FormatOptionEnum
+	case date : FormatSelectorValue
+	case float : FormatSelectorValue
+	case integer : FormatSelectorValue
+	case string : FormatSelectorValue
+	case url : FormatSelectorValue
 	case color : FormatColor
- }
-
- struct NewsFeed.EnumValue {
-
-	// Properties
-	let name : String // +0x0
-	let value : String // +0x10
- }
-
- enum NewsFeed.CodingKeys {
-
-	// Properties
-	case name  
-	case value  
+	case unbound : FormatUnboundValue
  }
 
  enum NewsFeed.DebugFormatHistoryItem {
@@ -13960,17 +14827,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13982,28 +14845,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case spacerFrame  
  }
 
- struct NewsFeed.FormatNodeBinderContext {
+ class NewsFeed.FormatNodeBinderContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let inventory : FormatPackageInventory // +0x0
-	let namespace : FormatNamespace // +0x108
-	let slotIdentifier : String? // +0x128
-	let config : FormatConfig // +0x138
-	let options : FormatMerge // +0x140
+	let inventory : FormatPackageInventory
+	let namespace : FormatNamespace
+	let slotIdentifier : String?
+	let config : FormatConfig
+	let options : FormatMerge
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x148
+	let scale : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x150
+	let scaleFactor : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lazyContextLayoutOptions : π˚
- // +0x158
+	let lazyContextLayoutOptions : [
+
+	// Swift methods
  }
 
  struct NewsFeed.FormatSystemFont {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : Ô // +0x0
+	let size : ıó // +0x0
 	let scaling : FormatFontScaling // +0x8
 	let weight : FormatFontWeight // +0x12
 	let traits : FormatFontTrait // +0x18
@@ -14016,6 +14880,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case scaling  
 	case weight  
 	case traits  
+ }
+
+ enum NewsFeed.FeedPersonalizationServiceError {
+
+	// Properties
+	case unableToPersonalizeGroup  
  }
 
  struct NewsFeed.B18_V3 {
@@ -14048,17 +14918,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14068,6 +14934,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
 	case spacerFrame  
+ }
+
+ enum NewsFeed.FeedRefreshStrategy {
+
+	// Properties
+	case repool  
+	case publishDate  
+	case force  
+	case chronological  
+ }
+
+ enum NewsFeed.FeedRefreshStrategyOption {
+
+	// Properties
+	case repool  
+	case publishDate  
+	case force  
+	case chronological  
+	case config  
+ }
+
+ enum NewsFeed.FeedAutoRefreshStrategy {
+
+	// Properties
+	case enabled  
+	case disabled  
+	case force  
  }
 
  struct NewsFeed.A8_V15 {
@@ -14097,11 +14990,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -14123,7 +15014,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let package : FormatPackageInventory
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let result : œÓ
+	let result : ÁÚ
 
  }
 
@@ -14143,8 +15034,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.StubIssueCoverImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x701b50  @objc StubIssueCoverImageProcessor.process: <stripped>
-	0x701bd0  @objc StubIssueCoverImageProcessor.init <stripped>
+WARNING: couldn't find address 0x8e754002350a0 (0x754002350a0) in binary!
+	0x91818  @objc StubIssueCoverImageProcessor.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffa1d330  @objc StubIssueCoverImageProcessor.(null) <stripped>
  }
 
  struct NewsFeed.C12_V8 {
@@ -14177,17 +15070,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14212,7 +15101,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let colorPalette : IssueColorPalette // +0x0 (0x0)
 	let style : Style // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x0 (0x8)
+	let scaleFactor : ıó // +0x0 (0x8)
 	let onCard : Bool // +0x0 (0x1)
 	let colorPaletteProvider : ColorPaletteProviding // +0x0 (0x28)
 
@@ -14247,14 +15136,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -14295,17 +15181,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14315,6 +15197,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
 	case spacerFrame  
+ }
+
+ class NewsFeed.AdPresentationDelegateProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var viewController : weak UIViewController?
+
+	// Swift methods
+	0x7171a0  class func AdPresentationDelegateProvider.__allocating_init() // init 
+ }
+
+ class NewsFeed.AdPresentationDelegate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let viewController : UIViewController
+
+	// ObjC -> Swift bridged methods
+	0x38000000c  @objc AdPresentationDelegate.âƒHç5Ø„‹ˇHç=Ä±– <stripped>
+
+	// Swift methods
  }
 
  struct NewsFeed.LayeredMediaEffects {
@@ -14387,17 +15289,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14414,10 +15312,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publishDate : #A
-
+	let publishDate : a
 	let tagID : String?
 	let equivalentTopicIDs : [String]
+	let iAdKeywords : [String]
 	let themes : FormatFileReferenceCollection
 	let subgroups : FormatContentSubgroup
 	let properties : FormatProperty
@@ -14434,10 +15332,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publishDate : #A
-
+	let publishDate : a
 	let tag : FCTagProviding?
+	let subscription : FCSubscription?
 	let equivalentTopics : [FCTagProviding]
+	let iAdKeywords : [String]
 	let themes : FormatPackageInventory
 	let subgroups : Resolved
 	let options : FormatOption
@@ -14450,6 +15349,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case publishDate  
 	case tagID  
 	case equivalentTopicIDs  
+	case iAdKeywords  
 	case themes  
 	case subgroups  
 	case properties  
@@ -14461,6 +15361,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case color : FormatColor
 	case gradient : FormatGradient
 	case shine : FormatShine
+	case image : FormatAsyncImageContent
+ }
+
+ struct NewsFeed.Image {
+
+	// Properties
+	let content : FormatAsyncImageContent // +0x0
+	let style : FormatImageNodeStyle // +0x8
  }
 
  enum NewsFeed.CodingType {
@@ -14469,14 +15377,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case color  
 	case gradient  
 	case shine  
+	case image  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case content  
+	case style  
  }
 
  class NewsFeed.FormatImageNodeRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatImageNodeRendererType {
 
 	// Properties
-	let imageCache : TSImageCacheType // +0x10 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x18 (0x8)
-	let assetManager : FCAssetManager // +0x20 (0x8)
+	let imageRenderer : FormatImageRendererType
 
 	// Swift methods
  }
@@ -14484,21 +15398,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.IssueView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-	let dateLabel : UILabel // +0x10 (0x8)
-	let excerptLabel : UILabel // +0x18 (0x8)
-	let issueCoverView : IssueCoverView // +0x20 (0x8)
-	let publisherLabel : UILabel // +0x28 (0x8)
+	let titleLabel : UILabel
+	let dateLabel : UILabel
+	let excerptLabel : UILabel
+	let issueCoverView : IssueCoverView
+	let publisherLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageView : ﬂ // +0x30 (0x8)
-	let premiumBadgeView : PremiumBadgeView // +0x38 (0x8)
-	let cardView : CardView // +0x40 (0x8)
-	let debugButton : DebugButton // +0x48 (0x8)
+	let publisherLogoImageView : i¢
+	let premiumBadgeView : PremiumBadgeView
+	let cardView : CardView
+	let debugButton : DebugButton
 
 	// ObjC -> Swift bridged methods
-	0x73ae00  @objc IssueView.initWithFrame: <stripped>
-	0x73ae80  @objc IssueView.initWithCoder: <stripped>
-	0x73aed0  @objc IssueView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ee9c00235368 (0x69c00235368) in binary!
+	0x8e710  @objc IssueView.(null) <stripped>
+WARNING: couldn't find address 0x97d4400235280 (0x54400235280) in binary!
+	0x28000000c  @objc IssueView.(null) <stripped>
+WARNING: couldn't find address 0x8e6ec00235038 (0x6ec00235038) in binary!
+	0x917b0  @objc IssueView.(null) <stripped>
  }
 
  class NewsFeed.FeaturedIssueHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueHeadlineViewStylerType {
@@ -14514,14 +15431,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.PublisherLogoProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x73d530  @objc PublisherLogoProcessor.process: <stripped>
-	0x73d5b0  @objc PublisherLogoProcessor.init <stripped>
+WARNING: couldn't find address 0x8e6ec00235038 (0x6ec00235038) in binary!
+	0x917b0  @objc PublisherLogoProcessor.(null) <stripped>
+WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
+	0xb4ffa3aca8  @objc PublisherLogoProcessor.(null) <stripped>
  }
 
  class NewsFeed.FormatNodeContextBehaviorData : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var data : Resolved // +0x10 (0x8)
+	var data : Resolved
 
 	// Swift methods
  }
@@ -14530,26 +15449,71 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : ßï
- // +0x10 (0x10)
+	let data : ©P
 
 	// Swift methods
+ }
+
+ struct NewsFeed.A8_V25 {
+
+	// Properties
+	let groupLayoutPriority : GroupLayoutPriority // +0x0
+	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x8
+ }
+
+ struct NewsFeed.Bound {
+
+	// Properties
+	let groupLayoutKey : GroupLayoutKey
+	let creator : GroupLayoutFactoryType
+	let context : GroupLayoutContext
+	let feedThumbnailHeadlines : FeedHeadline
+ }
+
+ struct NewsFeed.Attributes {
+
+	// Properties
+	let frame : CGRect // +0x0
+	let headlineLayoutAttributes : Attributes // +0x20
+ }
+
+ struct NewsFeed.Layout {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : ¡ê // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Ôí // +0x8
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case frame  
+	case headlineLayoutAttributes  
  }
 
  class NewsFeed.DebugFormatCodeDisplayViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let loader : DebugFormatCodeLoaderType // +0x8 (0x28)
-	let textView : UITextView // +0x30 (0x8)
+	let loader : DebugFormatCodeLoaderType
+	let textView : UITextView
 
 	// ObjC -> Swift bridged methods
-	0x73dae0  @objc DebugFormatCodeDisplayViewController.initWithCoder: <stripped>
-	0x73dd70  @objc DebugFormatCodeDisplayViewController.viewDidLoad <stripped>
-	0x73dda0  @objc DebugFormatCodeDisplayViewController.viewWillLayoutSubviews <stripped>
-	0x73de80  @objc DebugFormatCodeDisplayViewController.viewLayoutMarginsDidChange <stripped>
-	0x73dfc0  @objc DebugFormatCodeDisplayViewController.doDismiss <stripped>
-	0x73dfe0  @objc DebugFormatCodeDisplayViewController.initWithNibName:bundle: <stripped>
-	0x73e040  @objc DebugFormatCodeDisplayViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e6cc002358a0 (0x6cc002358a0) in binary!
+	0x97d00  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
+WARNING: couldn't find address 0x97cf4002359c8 (0x4f4002359c8) in binary!
+	0x97ce8  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
+WARNING: couldn't find address 0x97cdc002359f8 (0x4dc002359f8) in binary!
+	0x99370  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
+WARNING: couldn't find address 0x97cc400235200 (0x4c400235200) in binary!
+	0x58000000c  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
+WARNING: couldn't find address 0x8e66c00235840 (0x66c00235840) in binary!
+	0x97ca0  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
+WARNING: couldn't find address 0x97c9400235968 (0x49400235968) in binary!
+	0x99328  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
+WARNING: couldn't find address 0x97c7c002351b8 (0x47c002351b8) in binary!
+	0x68000000c  @objc DebugFormatCodeDisplayViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -14586,20 +15550,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -14615,27 +15574,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugInspectionViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let inspector : DebugInspector // +0x8 (0x8)
-	let reporter : DebugInspectionReporter // +0x10 (0x8)
-	let feedItem : FeedItemType // +0x18 (0x28)
-	let tableView : UITableView // +0x40 (0x8)
-	var sections : DebugInspectionDataSection // +0x48 (0x8)
+	let inspector : DebugInspector
+	let feedItem : FeedItemType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
+	let tableView : UITableView
+	var sections : DebugInspectionDataSection
 
 	// ObjC -> Swift bridged methods
-	0x748700  @objc DebugInspectionViewController.initWithCoder: <stripped>
-	0x748d60  @objc DebugInspectionViewController.viewDidLoad <stripped>
-	0x748d90  @objc DebugInspectionViewController.viewWillLayoutSubviews <stripped>
-	0x748e70  @objc DebugInspectionViewController.initWithNibName:bundle: <stripped>
-	0x748ed0  @objc DebugInspectionViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e66c00235840 (0x66c00235840) in binary!
+	0x97ca0  @objc DebugInspectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x97c9400235968 (0x49400235968) in binary!
+	0x99328  @objc DebugInspectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x97c7c002351b8 (0x47c002351b8) in binary!
+	0x68000000c  @objc DebugInspectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x9ab34002350d0 (0x334002350d0) in binary!
+	0x9f1c8  @objc DebugInspectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x9ab04002350c8 (0x304002350c8) in binary!
+	0x992e0  @objc DebugInspectionViewController.(null) <stripped>
 
 	// Swift methods
+ }
+
+ struct NewsFeed.FeedCursorGroup {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let createdDate : a
+	let group : FeedServiceConfigType
+	let config : FeedServiceConfigType
  }
 
  struct NewsFeed.FormatLayoutViewContainer {
 
 	// Properties
 	let viewModel : FormatLayoutViewModel // +0x0
-	let view : View // +0x30
+	let view : View // +0x28
  }
 
  enum NewsFeed.View {
@@ -14644,11 +15618,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case view : UIView
 	case text : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case image : ﬂ
+	case image : i¢
 	case button : FormatButton
 	case webEmbed : WebEmbedViewController
 	case aux : View
 	case stateView : FormatStateView
+	case adMetrics : FormatAdMetricsView
 	case custom : UIView
  }
 
@@ -14682,17 +15657,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14747,11 +15718,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -14765,11 +15734,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offlineLabelFrame : °Ó
- // +0x8
+	let offlineLabelFrame : ¡ê // +0x8
  }
 
  struct NewsFeed.Attributes {
@@ -14821,26 +15788,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.IssueCoverImageProcessorRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var assetHandles : [String : TSAssetHandleType] // +0x10 (0x8)
-	let size : CGSize // +0x18 (0x10)
+	var assetHandles : [String : TSAssetHandleType]
+	let size : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x28 (0x8)
-	let corners : Corners // +0x30 (0x11)
+	let scale : ıó
+	let corners : Corners
 
 	// ObjC -> Swift bridged methods
-	0x767540  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
-	0x7675e0  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
-	0x7676d0  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
+WARNING: couldn't find address 0x916a400236258 (0x6a400236258) in binary!
+	0x99af8  @objc IssueCoverImageProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x9168c002357c0 (0x68c002357c0) in binary!
+	0x48000000c  @objc IssueCoverImageProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x9162400235aa0 (0x62400235aa0) in binary!
+	0x8e598  @objc IssueCoverImageProcessorRequest.(null) <stripped>
 
 	// Swift methods
-	0x767520  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
+	0x764310  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
  }
 
  enum NewsFeed.Corners {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case round : Áı	
+	case round : „È
+
 	case square  
  }
 
@@ -14874,17 +15845,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14923,11 +15890,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -14943,6 +15908,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case any  
 	case noAX  
 	case onlyAX  
+ }
+
+ enum NewsFeed.FeedGroupFreezing {
+
+	// Properties
+	case disallow : FeedGroupFreezingDisallow
+	case kind : FeedGroupFreezingKind
+ }
+
+ struct NewsFeed.FeedGroupFreezingKind {
+
+	// Properties
+	let count : Int // +0x0
+ }
+
+ struct NewsFeed.FeedGroupFreezingDisallow {
+
+	// Properties
+	let rehydrate : Bool // +0x0
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case rehydrate  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case count  
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case disallow  
+	case kind  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case data  
  }
 
  enum NewsFeed.FormatRatio {
@@ -14996,6 +16006,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case underlyingModel  
  }
 
+ struct NewsFeed.FeedGroupRepooling {
+
+	// Properties
+	let pinning : FeedGroupPinning // +0x0
+	let freezing : FeedGroupFreezing // +0x10
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case pinning  
+	case freezing  
+ }
+
  struct NewsFeed.FormatPatternPosition {
 
 	// Properties
@@ -15042,6 +16066,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case frame : FormatFrameNodeLayoutAttributes
 	case stateView : FormatStateViewNodeLayoutAttributes
 	case custom : FormatCustomNodeLayoutAttributes
+	case adMetrics : FormatAdMetricsNodeLayoutAttributes
 	case hidden  
  }
 
@@ -15059,21 +16084,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case hidden  
 	case stateView  
 	case custom  
+	case adMetrics  
  }
 
- class NewsFeed.DebugFeedJournalViewController {
- class NewsFeed.JournalTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+ class NewsFeed.DebugJournalViewController {
+ class NewsFeed.DebugJournalTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let stripView : UIView
+
 	// ObjC -> Swift bridged methods
-	0x78b830  @objc JournalTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x78b8d0  @objc JournalTableViewCell.initWithCoder: <stripped>
+WARNING: couldn't find address 0x9162400235aa0 (0x62400235aa0) in binary!
+	0x8e598  @objc DebugJournalTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x97bcc00235a50 (0x3cc00235a50) in binary!
+	0x97bc0  @objc DebugJournalTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffa9b988  @objc DebugJournalTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x71cffaaa0e0  @objc DebugJournalTableViewCell.(null) <stripped>
  }
 
  class NewsFeed.DebugFormatCodeYAMLLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : ßï
- // +0x10 (0x10)
+	let data : ©P
 
 	// Swift methods
  }
@@ -15082,19 +16117,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_inspection : °Ù	 // +0x10 (0x8)
+	var $__lazy_storage_$_inspection : £È
+ // +0x10 (0x8)
 	let cloudContext : FCCloudContext // +0x18 (0x8)
-	let key : DebugGroupLayoutKey // +0x0 (0x0)
+	let feedItems : FeedItem // +0x20 (0x8)
+	let inspectionGroup : DebugInspectionGroup // +0x0 (0x0)
 
 	// Swift methods
  }
 
  class NewsFeed.IssueCoverImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x79d800  @objc IssueCoverImageProcessor.process: <stripped>
+WARNING: couldn't find address 0x8e56c00234eb8 (0x56c00234eb8) in binary!
+	0x68000000c  @objc IssueCoverImageProcessor.(null) <stripped>
 
 	// Swift methods
-	0x79d7c0  class func IssueCoverImageProcessor.__allocating_init() // init 
+	0x795ab0  class func IssueCoverImageProcessor.__allocating_init() // init 
  }
 
  struct NewsFeed.A12_V22 {
@@ -15124,11 +16162,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15169,20 +16205,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -15220,8 +16251,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let assetURL : ˜¨
-
+	let assetURL : ìÜ
  }
 
  class NewsFeed.DebugFormatCanvasViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -15230,20 +16260,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : DebugFormatCanvasViewControllerDelegate // +0x8 (0x10)
 	let contentView : DebugFormatContentView // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columnSystem : ﬂÍ	 // +0xcf6cd0 (0x0)
+	let columnSystem : Ø·
+ // +0xcf8e48 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_columnView : !Î	 // +0x0 (0x8)
+	var $__lazy_storage_$_columnView : Ò·
+ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewportMonitor : …ı	 // +0x0 (0x8)
+	let viewportMonitor : ÒÓ
+ // +0x0 (0x8)
 	let editor : DebugFormatEditor // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7ac8e0  @objc DebugFormatCanvasViewController.dealloc <stripped>
-	0x7aca00  @objc DebugFormatCanvasViewController.initWithCoder: <stripped>
-	0x7ad020  @objc DebugFormatCanvasViewController.viewDidLoad <stripped>
-	0x7ad5f0  @objc DebugFormatCanvasViewController.viewWillLayoutSubviews <stripped>
-	0x7af4c0  @objc DebugFormatCanvasViewController.initWithNibName:bundle: <stripped>
-	0x7ac940  @objc DebugFormatCanvasViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x97b94002351f8 (0x394002351f8) in binary!
+	0x8e548  @objc DebugFormatCanvasViewController.(null) <stripped>
+WARNING: couldn't find address 0x97b7c00235730 (0x37c00235730) in binary!
+	0x97b70  @objc DebugFormatCanvasViewController.(null) <stripped>
+WARNING: couldn't find address 0x9920400235700 (0x20400235700) in binary!
+	0x97b58  @objc DebugFormatCanvasViewController.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x6ccffab94c0  @objc DebugFormatCanvasViewController.(null) <stripped>
+	0xecffab96d8  @objc DebugFormatCanvasViewController.Hâ{ËÃi∆ <stripped>
+	0x44ffab9940  @objc DebugFormatCanvasViewController.UHâÂ]È <stripped>
 
 	// Swift methods
  }
@@ -15284,11 +16321,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15309,10 +16344,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : ΩÌ	 // +0x10 (0x8)
+	var cache : √Â
+
 
 	// Swift methods
-	0x7b8880  class func FeedLayoutCache.__allocating_init() // init 
+	0x7ad080  class func FeedLayoutCache.__allocating_init() // init 
+ }
+
+ struct NewsFeed.CacheKey {
+
+	// Properties
+	let feedGroupIdentifier : String // +0x0
+	let feedGroupKindIdentifier : String // +0x10
+	let feedGroupContextIdentifier : String // +0x20
+	let feedGroupItemIdentifiers : [String] // +0x30
+	let columns : Int // +0x38
+	let origin : CGPoint // +0x40
+	let boundingSize : CGSize // +0x50
+	let viewportSize : CGSize // +0x60
+	let contentSizeCategory : UIContentSizeCategory // +0x70
+	let userInterfaceStyle : UIUserInterfaceStyle // +0x78
  }
 
  struct NewsFeed.FormatSwitchListValue {
@@ -15328,13 +16379,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let values : [A]
  }
 
- struct NewsFeed.CaseValue {
-
-	// Properties
-	let expression : FormatExpression
-	let values : [A]
- }
-
  enum NewsFeed.CodingKeys {
 
 	// Properties
@@ -15346,6 +16390,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case values  
+ }
+
+ struct NewsFeed.CaseValue {
+
+	// Properties
+	let expression : FormatExpression
+	let values : [A]
  }
 
  enum NewsFeed.CodingKeys {
@@ -15387,44 +16438,64 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case contentSizeCategory  
  }
 
+ class NewsFeed.FeedJournalFormatter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  class NewsFeed.IssueCoverView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let staticContentView : ﬂ // +0x8 (0x8)
-	let dynamicContentView : UIView // +0x10 (0x8)
-	var dynamicView : UIView? // +0x18 (0x8)
+	let staticContentView : i¢
+	let dynamicContentView : UIView
+	var dynamicView : UIView?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let backgroundLayer : ô	 // +0x20 (0x8)
+	let backgroundLayer : 	Í
+
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowView : ◊Ò
- // +0x28 (0x8)
+	let shadowView : ˘ê
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowMotionLayer : ±b
- // +0x30 (0x8)
-	var observingMotion : Bool // +0x38 (0x1)
-	var identifier : String? // +0x40 (0x10)
+	let shadowMotionLayer : ≥Ê
+
+	var observingMotion : Bool
+	var identifier : String?
 
 	// ObjC -> Swift bridged methods
-	0x7bfa50  @objc IssueCoverView.initWithFrame: <stripped>
-	0x7bfad0  @objc IssueCoverView.initWithCoder: <stripped>
-	0x7bfc80  @objc IssueCoverView.layoutSubviews <stripped>
-	0x7bfe20  @objc IssueCoverView.didMoveToSuperview <stripped>
-	0x7bff00  @objc IssueCoverView.removeFromSuperview <stripped>
-	0x7bff60  @objc IssueCoverView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ec8400235150 (0x48400235150) in binary!
+	0x8e4f8  @objc IssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x97b2c002359b0 (0x32c002359b0) in binary!
+	0x97b20  @objc IssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x97b1400235108 (0x31400235108) in binary!
+	0x97b08  @objc IssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x7fcffab9b30  @objc IssueCoverView.(null) <stripped>
+	0x414002350e0  @objc IssueCoverView.ÏÈ <stripped>
+WARNING: couldn't find address 0x23565cffabc700 (0x65cffabc700) in binary!
+	0x2bc00234ff8  @objc IssueCoverView.(null) <stripped>
+ }
+
+ struct NewsFeed.FeedModel {
+
+	// Properties
+	let model : A
+	let context : FeedContext
+	let namespace : String?
+	let metadata : B
+	let metdataEqualBlock : (_:_:)
  }
 
  class NewsFeed.DebugButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˜ÿ
- // +0x8 (0x8)
+	let onTap : á
 
 	// ObjC -> Swift bridged methods
-	0x7c12b0  @objc DebugButton.initWithFrame: <stripped>
-	0x7c13b0  @objc DebugButton.initWithCoder: <stripped>
-	0x7c1490  @objc DebugButton..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8ec14002350e0 (0x414002350e0) in binary!
+	0x8e488  @objc DebugButton.(null) <stripped>
+WARNING: couldn't find address 0x97abc00234ff8 (0x2bc00234ff8) in binary!
+	0x58000000c  @objc DebugButton.(null) <stripped>
+	0x9c136  @objc DebugButton.ÖH˛ˇˇ(Ö–¸ˇˇÖX˛ˇˇ(Ö‡¸ˇˇÖh˛ˇˇ(Ö¸ˇˇÖx˛ˇˇ(Ö <stripped>
  }
 
  struct NewsFeed.I18_V1 {
@@ -15454,11 +16525,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15468,25 +16537,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case headlineLayoutAttributes  
  }
 
- struct NewsFeed.FeedPropertyList {
+ struct NewsFeed.FeedOptionList {
 
 	// Properties
-	let contentProperties : FeedProperty // +0x0
-	let contentGroupProperties : FeedProperty // +0x8
+	let contentOptions : FormatOption // +0x0
+	let contentGroupOptions : FormatOption // +0x8
  }
 
  class NewsFeed.DebugFormatContentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var contentFrame : CGRect // +0x8 (0x20)
-	let bezelView : DebugFormatBezelView // +0x28 (0x8)
+	var contentFrame : CGRect
+	let bezelView : DebugFormatBezelView
 
 	// ObjC -> Swift bridged methods
-	0x7cda10  @objc DebugFormatContentView.contentScaleFactor <stripped>
-	0x7cda40  @objc DebugFormatContentView.setContentScaleFactor: <stripped>
-	0x7cdde0  @objc DebugFormatContentView.initWithFrame: <stripped>
-	0x7cde10  @objc DebugFormatContentView.initWithCoder: <stripped>
-	0x7cde60  @objc DebugFormatContentView..cxx_destruct <stripped>
+	0x9c136  @objc DebugFormatContentView.ÖH˛ˇˇ(Ö–¸ˇˇÖX˛ˇˇ(Ö‡¸ˇˇÖh˛ˇˇ(Ö¸ˇˇÖx˛ˇˇ(Ö <stripped>
+WARNING: couldn't find address 0x8ebcc00235098 (0x3cc00235098) in binary!
+	0x8e440  @objc DebugFormatContentView.(null) <stripped>
+WARNING: couldn't find address 0x97a7400234fb0 (0x27400234fb0) in binary!
+	0x38000000c  @objc DebugFormatContentView.(null) <stripped>
+WARNING: couldn't find address 0x8eb9c00235068 (0x39c00235068) in binary!
+	0x8e410  @objc DebugFormatContentView.(null) <stripped>
+WARNING: couldn't find address 0x97a4400234f80 (0x24400234f80) in binary!
+	0x18000000c  @objc DebugFormatContentView.(null) <stripped>
  }
 
  struct NewsFeed.FormatNotExpression {
@@ -15522,6 +16595,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case switch : FormatSwitchValue
 	case altText : FormatTextNodeAlternative
 	case altFlexibleText : FormatTextNodeAlternative
+	case placeholderFlexibleText : FormatTextContent
+	case placeholderText : FormatTextContent
 	case flexibleText  
 	case text  
 	case singleLine  
@@ -15537,13 +16612,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case singleLine  
 	case altText  
 	case altFlexibleText  
+	case placeholderText  
+	case placeholderFlexibleText  
  }
 
  class NewsFeed.AssetHandleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AssetHandleFactoryType {
 
 	// Properties
-	let assetManager : FCAssetManager // +0x10 (0x8)
-	let contentContext : FCContentContext // +0x18 (0x8)
+	let assetManager : FCAssetManager
+	let contentContext : FCContentContext
 
 	// Swift methods
  }
@@ -15552,7 +16629,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : Ô // +0x0
+	let size : ıó // +0x0
 	let scaling : FormatFontScaling // +0x8
  }
 
@@ -15579,13 +16656,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let badge : CoverViewBadge // +0x18
 	let premiumBadge : PremiumBadge // +0x19
 	let layoutDirection : FeedLayoutDirection // +0x20
-	let issueCover : IssueCover // +0x30
-	let issueTraits : Traits // +0x58
-	let style : Style // +0x60
-	let issueSubstring : String // +0x68
-	let scoreProfile : FCFeedPersonalizedItemScoreProfile // +0x78
-	let overrides : Overrides // +0x80
-	let kind : Kind // +0xa0
+	let issueTraits : Traits // +0x30
+	let style : Style // +0x38
+	let issueSubstring : String // +0x40
+	let scoreProfile : FCFeedPersonalizedItemScoreProfile // +0x50
+	let overrides : Overrides // +0x58
+	let kind : Kind // +0x88
  }
 
  struct NewsFeed.Overrides {
@@ -15593,6 +16669,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String? // +0x0
 	let coverDate : String? // +0x10
+	let image : Image // +0x20
+ }
+
+ struct NewsFeed.Image {
+
+	// Properties
+	let assetHandle : FCAssetHandle // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let aspectRatio : ıó // +0x8
  }
 
  struct NewsFeed.Traits {
@@ -15644,17 +16729,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -15727,10 +16808,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let attributes : ≥„	 // +0x8
+	let attributes : !›
+ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15785,11 +16866,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x8
+	let headlineLayoutAttributes : «z // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15802,18 +16881,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.CoverChannelView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let followButton : CoverViewFollowSwitch // +0x8 (0x8)
-	let moreActionsButton : CoverViewActionButton // +0x10 (0x8)
-	let titleLabel : UILabel // +0x18 (0x8)
+	let moreActionsButton : CoverViewActionButton
+	let followButton : CoverViewFollowSwitch
+	let titleLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverImage : ﬂ // +0x20 (0x8)
-	let accessoryLabel : UILabel // +0x28 (0x8)
-	let debugButton : DebugButton // +0x30 (0x8)
+	let coverImage : i¢
+	let accessoryLabel : UILabel
+	let debugButton : DebugButton
 
 	// ObjC -> Swift bridged methods
-	0x7f1fe0  @objc CoverChannelView.initWithFrame: <stripped>
-	0x7f2060  @objc CoverChannelView.initWithCoder: <stripped>
-	0x7f20b0  @objc CoverChannelView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8eb9c00235068 (0x39c00235068) in binary!
+	0x8e410  @objc CoverChannelView.(null) <stripped>
+WARNING: couldn't find address 0x97a4400234f80 (0x24400234f80) in binary!
+	0x18000000c  @objc CoverChannelView.(null) <stripped>
+WARNING: couldn't find address 0x914bc00235098 (0x4bc00235098) in binary!
+	0x18000000c  @objc CoverChannelView.(null) <stripped>
  }
 
  struct NewsFeed.C18_V5 {
@@ -15846,17 +16928,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -15947,17 +17025,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -15981,6 +17055,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case trait : FormatValue
  }
 
+ struct NewsFeed.FeedBannerAdBlueprintModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let update : ˜Ï
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let policyValidator : Â
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutCollection : áÁ
+
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case failed  
+ }
+
  struct NewsFeed.DebugFormatHistoryMeasurement {
 
 	// Properties
@@ -15991,14 +17084,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x80ddc0  @objc ManagerAssembly.init <stripped>
+WARNING: couldn't find address 0x914bc00235098 (0x4bc00235098) in binary!
+	0x18000000c  @objc ManagerAssembly.(null) <stripped>
+ }
+
+ class NewsFeed.OfflineManager {
+ enum NewsFeed.State {
+
+	// Properties
+	case offline : OfflineModel
+	case online  
  }
 
  class NewsFeed.FormatBorderLayer : CAShapeLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0x80e0f0  @objc FormatBorderLayer.init <stripped>
-	0x80e120  @objc FormatBorderLayer.initWithLayer: <stripped>
-	0x80e1c0  @objc FormatBorderLayer.initWithCoder: <stripped>
+WARNING: couldn't find address 0x9148c00235068 (0x48c00235068) in binary!
+	0x8e3b0  @objc FormatBorderLayer.(null) <stripped>
+WARNING: couldn't find address 0x8e3a400235578 (0x3a400235578) in binary!
+	0x128000000c  @objc FormatBorderLayer.(null) <stripped>
+WARNING: couldn't find address 0x9145c00234d50 (0x45c00234d50) in binary!
+	0x91450  @objc FormatBorderLayer.(null) <stripped>
  }
 
  enum NewsFeed.FormatOptionsNodeStatementValue {
@@ -16015,17 +17120,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case float  
  }
 
- struct NewsFeed.FormatTraversableEntry {
-
-	// Properties
-	let key : FormatPathItem // +0x0
-	let value : FormatTraversable // +0x18
- }
-
  class NewsFeed.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x8fb150  @objc Images.init <stripped>
-	0x8fb0f0  @objc Images..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9137c00234f58 (0x37c00234f58) in binary!
+	0x978e0  @objc Images.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffbd5de8  @objc Images.(null) <stripped>
  }
 
  struct NewsFeed.E12_V3 {
@@ -16058,17 +17158,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16109,8 +17205,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case binding : FormatWebEmbedNodeBinding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case inline : ˜¨
-
+	case inline : ìÜ
  }
 
  enum NewsFeed.CodingType {
@@ -16124,12 +17219,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : J
- // +0x10 (0x8)
-	var cache : DebugFormatCacheFile // +0x18 (0x8)
-	let service : DebugFormatService // +0x20 (0x8)
-	let fontManager : FeedFontManager // +0x28 (0x8)
-	var $__lazy_storage_$_environment : NewsEnvironment // +0x30 (0x1)
+	let lock : o$
+	var cache : DebugFormatCacheFile
+	let service : DebugFormatService
+	let fontManager : FeedFontManager
+	var $__lazy_storage_$_environment : NewsEnvironment
 
 	// Swift methods
  }
@@ -16184,6 +17278,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case url  
  }
 
+ struct NewsFeed.FormatViewData {
+
+	// Properties
+	let backgroundImage : BackgroundImage // +0x0
+ }
+
+ struct NewsFeed.BackgroundImage {
+
+	// Properties
+	let image : FormatImage // +0x0
+	let layoutAttributes : FormatImageNodeLayoutAttributes // +0x8
+ }
+
+ class NewsFeed.AdsAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x9135c00234f38 (0x35c00234f38) in binary!
+	0x18000000c  @objc AdsAssembly.(null) <stripped>
+ }
+
  enum NewsFeed.FormatResource {
 
 	// Properties
@@ -16201,8 +17314,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : ◊	 // +0x0 (0x0)
-	let storeFront : String? // +0xcf8b24 (0x10)
+	let locale : +”
+ // +0x87360 (0x0)
+	let storeFront : String? // +0xcfaec0 (0x10)
 
 	// Swift methods
  }
@@ -16215,11 +17329,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let feedItems : FeedItem // +0x20
 	let feedGroupItems : FeedGroupItem // +0x28
 	let feedGroupKind : FeedGroupKind // +0x30
-	let feedGroupContextIdentifier : String // +0x138
-	let feedSlots : FeedSlot // +0x148
-	let layoutOrder : FeedLayoutOrder // +0x150
-	let feedGroupDebug : FeedGroupDebuggable // +0x158
-	var feedGroupBindingOptions : FeedGroupBindingOptions // +0x180
+	let feedGroupContextIdentifier : String // +0x38
+	let feedSlots : FeedSlot // +0x48
+	let layoutOrder : FeedLayoutOrder // +0x50
+	let feedGroupDebug : FeedGroupDebuggable // +0x58
+	var feedGroupBindingOptions : FeedGroupBindingOptions // +0x80
  }
 
  struct NewsFeed.FormatContentPool {
@@ -16253,53 +17367,59 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutAttributes : FormatDataLayoutAttributes // +0x0
-	let stateMaskLayoutAttributes : FormatButtonNodeStateMask // +0x68
-	let zIndex : Int // +0x70
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
-	let behaviors : Resolved // +0x98
-	let accessibilityRole : FormatNodeAccessibilityRole // +0xa0
+	let stateMaskLayoutAttributes : FormatButtonNodeStateMask // +0x58
+	let zIndex : Int // +0x60
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x68
+	let behaviors : Resolved // +0x88
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x90
  }
 
  class NewsFeed.CardView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cornerRadius : Ô // +0x8 (0x8)
+	var cornerRadius : ıó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shineView : Y˜
- // +0x10 (0x8)
+	let shineView : só
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowView : ◊Ò
- // +0x18 (0x8)
+	let shadowView : ˘ê
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowMotionLayer : ±b
- // +0x20 (0x8)
+	let shadowMotionLayer : ≥Ê
+
 
 	// ObjC -> Swift bridged methods
-	0x9315a0  @objc CardView.initWithFrame: <stripped>
-	0x9315d0  @objc CardView.initWithCoder: <stripped>
-	0x931850  @objc CardView.layoutSubviews <stripped>
-	0x931880  @objc CardView.backgroundColor <stripped>
-	0x931900  @objc CardView.setBackgroundColor: <stripped>
-	0x931bb0  @objc CardView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e9dc00234ea8 (0x1dc00234ea8) in binary!
+	0x8e250  @objc CardView.(null) <stripped>
+WARNING: couldn't find address 0x9788400235708 (0x8400235708) in binary!
+	0x91308  @objc CardView.(null) <stripped>
+WARNING: couldn't find address 0x9975c00234e90 (0x75c00234e90) in binary!
+	0x97860  @objc CardView.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x714ffbfe908  @objc CardView.(null) <stripped>
+	0x3bcffbfec30  @objc CardView.ê/‹ <stripped>
+	0x54cffbfecb8  @objc CardView.ã@¯Hã@HâE∞Hã}®Ë“l∆ <stripped>
  }
 
  class NewsFeed.CoverViewActionButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˜ÿ
- // +0x8 (0x8)
-	var touchInsets : UIEdgeInsets // +0x10 (0x20)
-	var tintColorForNormalState : UIColor // +0x30 (0x8)
+	let onTap : á
+	var touchInsets : UIEdgeInsets
+	var tintColorForNormalState : UIColor
 
 	// ObjC -> Swift bridged methods
-	0x932420  @objc CoverViewActionButton.isHighlighted <stripped>
-	0x932480  @objc CoverViewActionButton.setHighlighted: <stripped>
-	0x932660  @objc CoverViewActionButton.initWithFrame: <stripped>
-	0x9326e0  @objc CoverViewActionButton.initWithCoder: <stripped>
-	0x932700  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
-	0x932840  @objc CoverViewActionButton..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9cc9c00235f18 (0x49c00235f18) in binary!
+	0x968bc  @objc CoverViewActionButton.(null) <stripped>
+WARNING: couldn't find address 0x8e97400234e40 (0x17400234e40) in binary!
+	0x8e1e8  @objc CoverViewActionButton.(null) <stripped>
+WARNING: couldn't find address 0x94d9c00235ce8 (0x59c00235ce8) in binary!
+	0x97810  @objc CoverViewActionButton.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x384ffc326b8  @objc CoverViewActionButton.(null) <stripped>
+	0xffc32510  @objc CoverViewActionButton.EÄIâFHäCPAàFPCXAFXHãChIâFhIcG8IçHâMêH√1ˇË™O∆ <stripped>
+WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
+	0x50cffc33008  @objc CoverViewActionButton.(null) <stripped>
 
 	// Swift methods
  }
@@ -16315,7 +17435,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let radius : Ô // +0x0
+	let radius : ıó // +0x0
 	let corners : FormatCorner // +0x8
 	let continuous : Bool // +0x10
  }
@@ -16378,9 +17498,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let iconColor : UIColor
 	let thumbnailPlaceholderColor : UIColor
 	let headphoneImageColor : UIColor
+	let ellipsisImageColor : UIColor
 	let separatorColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let theme : ¿
+	let theme : +›
 
  }
 
@@ -16401,8 +17522,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let publisherName : String? // +0x40
 	let publishDate : Double? // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let halfLife : ±•
- // +0x60
+	let halfLife : ·` // +0x60
 	let publisherTagIdentifier : String? // +0x68
 	let accessible : Bool // +0x78
 	let isPaid : Bool // +0x79
@@ -16414,11 +17534,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let hasAudio : Bool? // +0x7f
 	let groupingReason : String // +0x80
 	let scoreProfile : DebugInspectionScoreProfile // +0x90
-	let topics : DebugInspectionTag // +0xe8
-	let features : DebugInspectionAggregate // +0xf0
-	let globalCohorts : DebugInspectionAggregate // +0xf8
-	let articleCohorts : DebugInspectionAggregate // +0x100
-	let userCohorts : DebugInspectionCohort // +0x108
+	let topics : DebugInspectionTag // +0xf0
+	let features : DebugInspectionAggregate // +0xf8
+	let globalCohorts : DebugInspectionAggregate // +0x100
+	let articleCohorts : DebugInspectionAggregate // +0x108
+	let userCohorts : DebugInspectionCohort // +0x110
  }
 
  enum NewsFeed.CodingKeys {
@@ -16462,8 +17582,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let transforms : FormatTextNodeTransform // +0xc8
 	let paragraphStyle : FormatParagraphStyle // +0xd0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracking : i‰
- // +0x198
+	let tracking : }à // +0x198
 	let alpha : FormatEquation // +0x1a8
  }
 
@@ -16478,8 +17597,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let transforms : FormatTextNodeTransform // +0xb0
 	let paragraphStyle : FormatParagraphStyle // +0xb8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracking : i‰
- // +0x180
+	let tracking : }à // +0x180
 	let alpha : FormatEquation // +0x190
  }
 
@@ -16513,6 +17631,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case alpha  
  }
 
+ enum NewsFeed.FeedCursorKind {
+
+	// Properties
+	case active  
+	case seen  
+	case frozen  
+	case endOfFeed  
+ }
+
+ class NewsFeed.NativeAdService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NativeAdServiceType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let contextBuilder : 1Ë
+
+	let headlineService : HeadlineServiceType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let adManager : ·Ê
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var providers : String
+
+	// Swift methods
+	0x9121c0  class func NativeAdService.__allocating_init(contextBuilder:headlineService:adManager:) // init 
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case headlineConversionFailed  
+ }
+
  struct NewsFeed.C8_V5 {
 
 	// Properties
@@ -16543,17 +17693,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16585,8 +17731,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.OrderedFeedHeadline {
 
 	// Properties
-	let feedHeadline : FeedHeadline // +0x0
-	let order : Int // +0x50
+	let feedHeadline : FeedHeadline
+	let order : Int
  }
 
  struct NewsFeed.FormatBindingTextExpression {
@@ -16608,7 +17754,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let component : FormatColorComponent // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let value : Ô // +0x8
+	let value : ıó // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16645,11 +17791,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16662,9 +17806,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.GapOfflineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, GapOfflineViewStylerType {
 
 	// Properties
-	let fontBook : GapFontBook // +0x10 (0x10)
-	let colorPalette : GapColorPalette // +0x20 (0x10)
-	let colorPaletteProvider : ColorPaletteProviding // +0x30 (0x28)
+	let fontBook : GapFontBook
+	let colorPalette : GapColorPalette
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -16699,17 +17843,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16724,13 +17864,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatStateView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var stateViewFormatLayoutViews : FormatLayoutView // +0x8 (0x8)
-	var state : String? // +0x10 (0x10)
+	var stateViewFormatLayoutViews : FormatLayoutView
+	var state : String?
 
 	// ObjC -> Swift bridged methods
-	0x9665e0  @objc FormatStateView.initWithFrame: <stripped>
-	0x966770  @objc FormatStateView.initWithCoder: <stripped>
-	0x966450  @objc FormatStateView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e93c00234e08 (0x13c00234e08) in binary!
+	0x8e1b0  @objc FormatStateView.(null) <stripped>
+WARNING: couldn't find address 0x977e400234d20 (0x7e400234d20) in binary!
+	0xc8000000c  @objc FormatStateView.(null) <stripped>
+WARNING: couldn't find address 0x9cc1c00236648 (0x41c00236648) in binary!
+	0x9683c  @objc FormatStateView.(null) <stripped>
  }
 
  enum NewsFeed.BlockingCommandState {
@@ -16746,10 +17889,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let complexImageProcessor : -›	 // +0x10 (0x8)
+	let complexImageProcessor : âﬁ
+
 
 	// ObjC -> Swift bridged methods
-	0x96a9a0  @objc FormatImageProcessor.process: <stripped>
+WARNING: couldn't find address 0x8e0f400234a40 (0xf400234a40) in binary!
+	0x38000000c  @objc FormatImageProcessor.(null) <stripped>
 
 	// Swift methods
  }
@@ -16757,19 +17902,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.OrderedHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-	let orderLabel : UILabel // +0x10 (0x8)
-	let accessoryLabel : UILabel // +0x18 (0x8)
-	let publisherLabel : UILabel // +0x20 (0x8)
+	let titleLabel : UILabel
+	let orderLabel : UILabel
+	let accessoryLabel : UILabel
+	let publisherLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageView : ﬂ // +0x28 (0x8)
-	let premiumBadgeView : PremiumBadgeView // +0x30 (0x8)
-	let debugButton : DebugButton // +0x38 (0x8)
+	let publisherLogoImageView : i¢
+	let premiumBadgeView : PremiumBadgeView
+	let debugButton : DebugButton
 
 	// ObjC -> Swift bridged methods
-	0x96b660  @objc OrderedHeadlineView.initWithFrame: <stripped>
-	0x96b6e0  @objc OrderedHeadlineView.initWithCoder: <stripped>
-	0x96b730  @objc OrderedHeadlineView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e85c00234d28 (0x5c00234d28) in binary!
+	0x8e0d0  @objc OrderedHeadlineView.(null) <stripped>
+WARNING: couldn't find address 0x9770400234c40 (0x70400234c40) in binary!
+	0x18000000c  @objc OrderedHeadlineView.(null) <stripped>
+WARNING: couldn't find address 0x9117c00234d58 (0x17c00234d58) in binary!
+	0x28000000c  @objc OrderedHeadlineView.(null) <stripped>
+ }
+
+ class NewsFeed.NotificationCommandHandler : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x9117c00234d58 (0x17c00234d58) in binary!
+	0x28000000c  @objc NotificationCommandHandler.(null) <stripped>
  }
 
  struct NewsFeed.FormatPrefetchResources {
@@ -16782,9 +17936,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.IssueViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueViewRendererType {
 
 	// Properties
-	let issueCoverViewRenderer : IssueCoverViewRendererType // +0x10 (0x28)
-	let publisherLogoImageCache : TSImageCacheType // +0x38 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x40 (0x8)
+	let issueCoverViewRenderer : IssueCoverViewRendererType
+	let publisherLogoImageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
 
 	// Swift methods
  }
@@ -16819,17 +17973,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16871,17 +18021,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16891,6 +18037,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
 	case spacerFrame  
+ }
+
+ struct NewsFeed.FeedGroupEmitterRuleOutput {
+
+	// Properties
+	let rule : FeedGroupEmitterRule
+	let result : FeedGroupEmitterRuleResult
  }
 
  struct NewsFeed.I8_V2 {
@@ -16920,11 +18073,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16953,8 +18104,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let color : FormatSystemColor // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alpha : i‰
- // +0x8
+	let alpha : }à // +0x8
  }
 
  struct NewsFeed.FixedColor {
@@ -16962,8 +18112,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let color : FormatFixedColor // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alpha : i‰
- // +0x8
+	let alpha : }à // +0x8
  }
 
  enum NewsFeed.CodingType {
@@ -16997,8 +18146,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeaturedIssueSupplementViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueSupplementViewRendererType {
 
 	// Properties
-	let publisherLogoImageCache : TSImageCacheType // +0x10 (0x8)
-	let rendererTool : FeedItemRendererTool // +0x18 (0x8)
+	let publisherLogoImageCache : TSImageCacheType
+	let rendererTool : FeedItemRendererTool
 
 	// Swift methods
  }
@@ -17037,10 +18186,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let attributes : ≥„	 // +0x8
+	let attributes : !›
+ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17067,13 +18216,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedFontManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let assetManager : FCAssetManager // +0x10 (0x8)
-	let resourceManager : FCFlintResourceManager // +0x18 (0x8)
-	let registrationManager : NUFontRegistration // +0x20 (0x8)
+	let assetManager : FCAssetManager
+	let resourceManager : FCFlintResourceManager
+	let registrationManager : NUFontRegistration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : J
- // +0x28 (0x8)
-	var loadedFonts : LoadedFont // +0x30 (0x8)
+	let lock : o$
+	var loadedFonts : LoadedFont
 
 	// Swift methods
  }
@@ -17102,8 +18250,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let loadableFont : FCLoadableFont
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fileURL : ˜¨
+	let fileURL : ìÜ
+ }
 
+ struct NewsFeed.FormatOptionEnum {
+
+	// Properties
+	let name : String // +0x0
+	let value : String // +0x10
+	let selectors : FormatSelectorValueSelector // +0x20
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case name  
+	case value  
+	case selectors  
  }
 
  enum NewsFeed.FeedJournalGroupResultKind {
@@ -17111,6 +18274,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case next  
 	case last  
+	case unfrozen  
 	case skip  
 	case none  
  }
@@ -17142,11 +18306,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17170,6 +18332,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case iPadPro_10_5  
 	case iPadPro_11  
 	case iPadPro_12_9  
+	case mac  
 	case inferred  
  }
 
@@ -17183,6 +18346,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case halfEven  
 	case halfDown  
 	case halfUp  
+ }
+
+ enum NewsFeed.FormatAccessibilityData {
+
+	// Properties
+	case string : FormatComputed
+	case command : FormatCommandActionValue
  }
 
  struct NewsFeed.FormatTextNodeLayoutAttributes {
@@ -17214,10 +18384,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let frame : CGRect // +0x10 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let kind : ÿ	 // +0x0 (0x0)
+	let kind : ø‹
+ // +0x0 (0x0)
 
 	// Swift methods
-	0x9a8950  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
+	0x976ae0  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
  }
 
  enum NewsFeed.FormatLayoutOption {
@@ -17276,17 +18447,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -17298,15 +18465,70 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case spacerFrame  
  }
 
+ enum NewsFeed.FormatMenuItemImage {
+
+	// Properties
+	case command : FormatCommandValue
+	case image : FormatSyncImageContent
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case command  
+	case image  
+ }
+
+ struct NewsFeed.FeedCohortConfiguration {
+
+	// Properties
+	let favoritedBoost : Double // +0x0
+	let globalWeight : Double // +0x8
+	let userBaseline : Double // +0x10
+	let preBaselineCurvature : Double // +0x18
+	let postBaselineCurvature : Double // +0x20
+	let dilutionFactor : Double // +0x28
+	let paddingFactor : Double // +0x30
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case favoritedBoost  
+	case globalWeight  
+	case userBaseline  
+	case preBaselineCurvature  
+	case postBaselineCurvature  
+	case dilutionFactor  
+	case paddingFactor  
+ }
+
+ class NewsFeed.FeedDataPrewarmer {
+ class NewsFeed.Session {
+ enum NewsFeed.State {
+
+	// Properties
+	case notStarted  
+	case running  
+	case ready  
+	case cancelled  
+ }
+
  class NewsFeed.FollowingCommandHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let subscriptionController : FCSubscriptionController // +0x8 (0x8)
-	let followingManager : FollowingManagerType // +0x10 (0x28)
+	let subscriptionController : FCSubscriptionController
+	let followingManager : FollowingManagerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let sceneProvider : È{
 
 	// ObjC -> Swift bridged methods
-	0x9caa60  @objc FollowingCommandHandler.init <stripped>
-	0x9caac0  @objc FollowingCommandHandler..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9116400234d40 (0x16400234d40) in binary!
+	0x976c8  @objc FollowingCommandHandler.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffc902c0  @objc FollowingCommandHandler.(null) <stripped>
 
 	// Swift methods
  }
@@ -17318,9 +18540,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let size : FormatSize // +0x10
 	let adjustments : FormatAdjustment // +0x18
 	let style : FormatViewNodeStyle // +0x20
-	let zIndex : Int // +0x100
-	let accessibilityRole : FormatNodeAccessibilityRole // +0x108
-	let selectors : [String] // +0x120
+	let zIndex : Int // +0xd0
+	let accessibilityRole : FormatNodeAccessibilityRole // +0xd8
+	let selectors : [String] // +0xe8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17339,37 +18561,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailImageView : ﬂ
+	let thumbnailImageView : i¢
 	let premiumBadgeView : PremiumBadgeView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageView : ﬂ
+	let publisherLogoImageView : i¢
 	let publisherLabel : UILabel
+	let accessoryView : UIView
 	let dragHandleImageView : DragHandleImageView
+	let ellipsisButton : EllipsisButton
 	let titleLabel : UILabel
 	let trackDurationLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progressView : ÁŒ	
+	let progressView : Àj
 	let remainingTimeLabel : UILabel
 	let headphoneImageView : UIImageView
 	let contentView : UIView
+	var accessory : Accessory
 	var token : NSObject
-	var isDragHandleHidden : Bool
+	var isAccessoryViewHidden : Bool
 
 	// ObjC -> Swift bridged methods
-	0x9d0640  @objc AudioTrackView.initWithFrame: <stripped>
-	0x9d0670  @objc AudioTrackView.initWithCoder: <stripped>
-	0x9d06c0  @objc AudioTrackView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e7dc00234ca8 (0x7dc00234ca8) in binary!
+	0x8e050  @objc AudioTrackView.(null) <stripped>
+WARNING: couldn't find address 0x9768400234bc0 (0x68400234bc0) in binary!
+	0x58000000c  @objc AudioTrackView.(null) <stripped>
+WARNING: couldn't find address 0x8e7ac00234c78 (0x7ac00234c78) in binary!
+	0x8e020  @objc AudioTrackView.(null) <stripped>
+ }
+
+ enum NewsFeed.Accessory {
+
+	// Properties
+	case none  
+	case dragHandle  
+	case ellipsisButton  
  }
 
  class NewsFeed.DragHandleImageView : UIImageView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x9d09a0  @objc DragHandleImageView.initWithFrame: <stripped>
-	0x9d0a20  @objc DragHandleImageView.initWithCoder: <stripped>
-	0x9d0a70  @objc DragHandleImageView.pointInside:withEvent: <stripped>
-	0x9d0b60  @objc DragHandleImageView.initWithImage: <stripped>
-	0x9d0b90  @objc DragHandleImageView.initWithImage:highlightedImage: <stripped>
+WARNING: couldn't find address 0x8e7ac00234c78 (0x7ac00234c78) in binary!
+	0x8e020  @objc DragHandleImageView.(null) <stripped>
+WARNING: couldn't find address 0x94bd400235b20 (0x3d400235b20) in binary!
+	0x8e008  @objc DragHandleImageView.(null) <stripped>
+WARNING: couldn't find address 0x98cdc00234a58 (0x4dc00234a58) in binary!
+	0x28000000c  @objc DragHandleImageView.(null) <stripped>
+WARNING: couldn't find address 0x910b400234c90 (0xb400234c90) in binary!
+	0x97618  @objc DragHandleImageView.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x174ffce78e0  @objc DragHandleImageView.(null) <stripped>
  }
 
+ class NewsFeed.EllipsisButton {
  enum NewsFeed.FormatWeatherConditionCode {
 
 	// Properties
@@ -17424,11 +18666,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatLayoutViewToken : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var children : [NSObject] // +0x8 (0x8)
+	var children : [NSObject]
 
 	// ObjC -> Swift bridged methods
-	0x9d2420  @objc FormatLayoutViewToken.init <stripped>
-	0x9d2370  @objc FormatLayoutViewToken..cxx_destruct <stripped>
+WARNING: couldn't find address 0x910b400234c90 (0xb400234c90) in binary!
+	0x97618  @objc FormatLayoutViewToken.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x174ffce78e0  @objc FormatLayoutViewToken.(null) <stripped>
  }
 
  struct NewsFeed.F18_V1 {
@@ -17459,14 +18703,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -17480,10 +18721,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaAssetHandlesProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaAssetHandlesProviderType {
 
 	// Properties
-	let variantFactory : LayeredMediaVariantFactoryType // +0x10 (0x28)
-	let imageVariantSelector : LayeredMediaImageVariantSelectorType // +0x38 (0x28)
-	let videoVariantSelector : LayeredMediaVariantSelectorType // +0x60 (0x28)
-	let options : LayeredMediaViewOptions // +0x88 (0x28)
+	let variantFactory : LayeredMediaVariantFactoryType
+	let imageVariantSelector : LayeredMediaImageVariantSelectorType
+	let videoVariantSelector : LayeredMediaVariantSelectorType
+	let options : LayeredMediaViewOptions
 
 	// Swift methods
  }
@@ -17492,9 +18733,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x0
+	let scale : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x8
+	let scaleFactor : ıó // +0x8
 	let options : FormatOption // +0x10
 	let selectors : [String] // +0x18
  }
@@ -17547,17 +18788,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -17596,11 +18833,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17608,6 +18843,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case headlineLayoutAttributes  
+ }
+
+ struct NewsFeed.FeedNativeAdModel {
+
+	// Properties
+	let model : A
+	let context : FeedNativeAdContext
+ }
+
+ struct NewsFeed.FeedNativeAdContext {
+
+	// Properties
+	let identifierToReplace : String // +0x0
+	let nativeAdIdentifier : String // +0x10
  }
 
  struct NewsFeed.FormatStateMachineBinding {
@@ -17632,11 +18881,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case radial  
  }
 
+ class NewsFeed.FormatComputed {
  struct NewsFeed.FeedActionSender {
 
 	// Properties
-	let action : FeedAction
-	let sourceView : UIView
+	let action : FeedAction // +0x0
+	let sourceView : UIView // +0x0
  }
 
  struct NewsFeed.FormatFrameNodeLayoutAttributes {
@@ -17685,21 +18935,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.FeedServiceFetchResult {
 
 	// Properties
-	case nextGroup : FeedPoolType
-	case nextGroups : FeedPoolType
-	case lastGroup : FeedPoolType
+	case nextGroup : FeedServiceConfigType
+	case nextGroups : FeedServiceConfigType
+	case lastGroup : FeedServiceConfigType
+	case lastGroups : FeedServiceConfigType
 	case endOfFeed : FeedCursor
  }
 
  enum NewsFeed.Internal {
 
 	// Properties
-	case nextGroup : FeedPoolType
-	case lastGroup : FeedPoolType
+	case nextGroup : FeedServiceConfigType
+	case lastGroup : FeedServiceConfigType
 	case endOfFeed : FeedCursor
  }
 
- enum NewsFeed.FormatTextNodeContent {
+ enum NewsFeed.FormatTextContent {
 
 	// Properties
 	case binding : FormatTextNodeBinding
@@ -17755,32 +19006,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case playback  
  }
 
- struct NewsFeed.FormatPackageInventory {
+ class NewsFeed.FormatPackageInventory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let identifier : String // +0x0
-	let role : FormatPackageRole // +0x10
-	let name : String? // +0x18
-	let comment : String? // +0x28
-	let groups : FormatGroupCollection // +0x38
-	let items : FormatItemCollection // +0x50
-	let snippets : FormatSnippetCollection // +0x60
-	let supplementaries : FormatSupplementaryCollection // +0x70
-	let styles : FormatNodeStyleCollection // +0x80
-	let types : FormatTypeCollection // +0x90
-	let decorations : FormatDecorationCollection // +0xa0
-	let options : FormatOption // +0xa8
-	let localizations : FormatLocalizationCollection // +0xb0
-	let compilerOptions : FormatCompilerOptions // +0xc0
-	var additionalAssetHandles : [FCAssetHandle] // +0x100
+	let identifier : String // +0x10 (0x10)
+	let role : FormatPackageRole // +0x20 (0x1)
+	let name : String? // +0x28 (0x10)
+	let comment : String? // +0x38 (0x10)
+	let groups : FormatGroupCollection // +0x48 (0x18)
+	let items : FormatItemCollection // +0x60 (0x10)
+	let snippets : FormatSnippetCollection // +0x70 (0x10)
+	let supplementaries : FormatSupplementaryCollection // +0x80 (0x10)
+	let styles : FormatNodeStyleCollection // +0x90 (0x10)
+	let types : FormatTypeCollection // +0xa0 (0x10)
+	let decorations : FormatDecorationCollection // +0xb0 (0x8)
+	let options : FormatOption // +0xb8 (0x8)
+	let localizations : FormatLocalizationCollection // +0xc0 (0x10)
+	let compilerOptions : FormatCompilerOptions // +0xd0 (0x40)
+	var additionalAssetHandles : [FCAssetHandle] // +0x110 (0x8)
+
+	// Swift methods
  }
 
  class NewsFeed.DebugFormatService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_urlSessionPool : Ôƒ
- // +0x10 (0x8)
+	var $__lazy_storage_$_urlSessionPool : u
 
 	// Swift methods
  }
@@ -17796,17 +19048,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unknown : ÂR
+	case unknown : eº
 	case invalidURLResponse : NSURLResponse?
 	case formatError : ServerMessage
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case codingFailure : m
+	case codingFailure : ?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case notAPackage : 3¿
 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case notAPackage : ’Ω	
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case missingPackageList : ˜¨
-
+	case missingPackageList : ìÜ
 	case noData  
  }
 
@@ -17847,17 +19098,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -17893,6 +19140,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case options : FormatOptionsNode
 	case stateView : FormatStateViewNode
 	case custom : FormatCustomNode
+	case print : FormatPrintNode
+	case adMetrics : FormatAdMetricsNode
  }
 
  enum NewsFeed.CodingType {
@@ -17919,20 +19168,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case options  
 	case stateView  
 	case custom  
+	case print  
+	case adMetrics  
  }
 
  struct NewsFeed.FeedAudioTrack {
 
 	// Properties
-	let identifier : String // +0x0
-	let headline : FCHeadlineProviding // +0x10
-	let title : String // +0x18
-	let duration : Double // +0x28
-	let feedHeadline : FeedHeadline // +0x30
-	let featureName : String // +0x80
-	let premiumBadge : PremiumBadge // +0x90
-	let artworkRequestProvider : CGSize // +0x98
-	let feedContext : FeedContext // +0xa8
+	let identifier : String
+	let headline : FCHeadlineProviding
+	let title : String
+	let duration : Double
+	let feedHeadline : FeedHeadline
+	let featureName : String
+	let hasAccess : Bool
+	let premiumBadge : PremiumBadge
+	let artworkRequestProvider : CGSize
+	let feedContext : FeedContext
  }
 
  struct NewsFeed.B12_V10 {
@@ -17965,17 +19217,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -17989,25 +19237,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum NewsFeed.PublisherLogoTheme { }
 
+ struct NewsFeed.PublisherLogoProcessorOptions {
+
+	// Properties
+	let requestOptions : ImageRequestOptions
+	let background : BackgroundColorDriver
+ }
+
+ enum NewsFeed.BackgroundColorDriver {
+
+	// Properties
+	case design  
+	case publisher  
+ }
+
  class NewsFeed.PublisherLogoProcessorRequest : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var assetHandles : [String : TSAssetHandleType] // +0x8 (0x8)
-	let publisherLogoImageSize : CGSize // +0x10 (0x10)
+	var assetHandles : [String : TSAssetHandleType]
+	let publisherLogoImageSize : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x20 (0x8)
-	let theme : PublisherLogoTheme // +0x28 (0x8)
+	let scale : ıó
+	let theme : PublisherLogoTheme
 
 	// ObjC -> Swift bridged methods
-	0xa39bd0  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
-	0xa39c90  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
-	0xa39e50  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
-	0xa39ed0  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
-	0xa3a1b0  @objc PublisherLogoProcessorRequest.init <stripped>
-	0xa3a210  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9109400235c48 (0x9400235c48) in binary!
+	0x994e8  @objc PublisherLogoProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x9e38c00234a10 (0x38c00234a10) in binary!
+	0x91070  @objc PublisherLogoProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x9106400234c40 (0x6400234c40) in binary!
+	0x975c8  @objc PublisherLogoProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x13cffce9530  @objc PublisherLogoProcessorRequest.(null) <stripped>
+	0xffce95e8  @objc PublisherLogoProcessorRequest.âÔHâ∆ˇQIc\$ L˚1ˇËëÕX <stripped>
+WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
+	0x51cffd033d0  @objc PublisherLogoProcessorRequest.(null) <stripped>
 
 	// Swift methods
-	0xa39da0  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
+	0x9e21b0  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
  }
 
  struct NewsFeed.FormatNamespace {
@@ -18028,44 +19295,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.InternalErrorView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-	let subtitleLabel : UILabel // +0x10 (0x8)
-	let messageLabel : UILabel // +0x18 (0x8)
-	let debugButton : DebugButton // +0x20 (0x8)
+	let titleLabel : UILabel
+	let subtitleLabel : UILabel
+	let messageLabel : UILabel
+	let debugButton : DebugButton
 
 	// ObjC -> Swift bridged methods
-	0xa3af20  @objc InternalErrorView.initWithFrame: <stripped>
-	0xa3afa0  @objc InternalErrorView.initWithCoder: <stripped>
-	0xa3aff0  @objc InternalErrorView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e6f400234bc0 (0x6f400234bc0) in binary!
+	0x8df68  @objc InternalErrorView.(null) <stripped>
+WARNING: couldn't find address 0x9759c00234ad8 (0x59c00234ad8) in binary!
+	0x98000000c  @objc InternalErrorView.(null) <stripped>
+WARNING: couldn't find address 0x91014002349b0 (0x14002349b0) in binary!
+	0x90078  @objc InternalErrorView.(null) <stripped>
  }
 
  struct NewsFeed.CoverIssueViewLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x8
+	let titleLabelFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryFrame : °Ó
- // +0x10
+	let accessoryFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let moreActionsButtonFrame : °Ó
- // +0x18
+	let moreActionsButtonFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followButtonFrame : °Ó
- // +0x20
+	let followButtonFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadProgressBarFrame : °Ó
- // +0x28
+	let downloadProgressBarFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cloudIconFrame : °Ó
- // +0x30
+	let cloudIconFrame : ¡ê // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributes : õ€
- // +0x38
+	let issueCoverViewLayoutAttributes : O| // +0x38
  }
 
  struct NewsFeed.Attributes {
@@ -18164,7 +19426,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatStateViewNodeStateMapper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var stateLayoutAttributes : FormatStateViewNodeStateLayoutAttributes // +0x10 (0x8)
+	var stateLayoutAttributes : FormatStateViewNodeStateLayoutAttributes
 
 	// Swift methods
  }
@@ -18187,6 +19449,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case zero : String
 	case gap : Context
 	case gapOffline : Context
+	case bannerAd : Context
 	case webEmbedView : Context
 	case imageHeadlineView : Context
 	case featuredHeadlineView : Context
@@ -18216,30 +19479,84 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tokens : FormatEquationToken
  }
 
- class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
-	// ObjC -> Swift bridged methods
-	0xa58f40  @objc RandomTag.currentIssueIDs <stripped>
-	0xa59040  @objc RandomTag.initWithTagRecord:assetManager:interestToken: <stripped>
-	0xa59060  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0xa59090  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0xa590c0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0xa590f0  @objc RandomTag.initWithData:context: <stripped>
-	0xa59110  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0xa59140  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0xa59160  @objc RandomTag.init <stripped>
+ struct NewsFeed.FeedScoredItem {
+
+	// Properties
+	let item : FCFeedPersonalizingItem // +0x0
+	let scoreProfile : FCFeedPersonalizedItemScoreProfile // +0x8
+ }
+
+ struct NewsFeed.FormatPrintNode {
+
+	// Properties
+	let identifier : String // +0x0
+	let message : String? // +0x10
+	let values : FormatPrintNodeValue // +0x20
+ }
+
+ enum NewsFeed.FormatPrintNodeValue {
+
+	// Properties
+	case options  
+	case optionsAtBind  
+	case optionsAtLayout  
+	case cursor  
+	case template  
+	case context  
+	case bindings  
+	case all  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case identifier  
+	case message  
+	case values  
  }
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0xa5a520  @objc RandomTag.currentIssueIDs <stripped>
-	0xa591d0  @objc RandomTag.initWithTagRecord:assetManager:interestToken: <stripped>
-	0xa59290  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0xa592c0  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0xa594c0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0xa595e0  @objc RandomTag.initWithData:context: <stripped>
-	0xa596d0  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0xa597b0  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0xa598c0  @objc RandomTag.init <stripped>
+WARNING: couldn't find address 0x91014002349b0 (0x14002349b0) in binary!
+	0x90078  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9e66c002364b0 (0x66c002364b0) in binary!
+	0x8ac90  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x90054002364e8 (0x54002364e8) in binary!
+	0x98be8  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9e63c002364c0 (0x63c002364c0) in binary!
+	0x9e650  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x90fb400234b90 (0x7b400234b90) in binary!
+	0x98000000c  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x90f9c00234938 (0x79c00234938) in binary!
+	0x90000  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9e5f400236438 (0x5f400236438) in binary!
+	0x8ac18  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x8ffdc00236470 (0x7dc00236470) in binary!
+	0x98b70  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9e5c400236448 (0x5c400236448) in binary!
+	0x9e5d8  @objc RandomTag.(null) <stripped>
+ }
+
+ class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x90f9c00234938 (0x79c00234938) in binary!
+	0x90000  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9e5f400236438 (0x5f400236438) in binary!
+	0x8ac18  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x8ffdc00236470 (0x7dc00236470) in binary!
+	0x98b70  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9e5c400236448 (0x5c400236448) in binary!
+	0x9e5d8  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x90f3c00234b18 (0x73c00234b18) in binary!
+	0x38000000c  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x90f2400235ad8 (0x72400235ad8) in binary!
+	0x99378  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x90f0c00235040 (0x70c00235040) in binary!
+	0x68000000c  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9746400235018 (0x46400235018) in binary!
+	0x97458  @objc RandomTag.(null) <stripped>
+WARNING: couldn't find address 0x9933c00235530 (0x33c00235530) in binary!
+	0x98ae0  @objc RandomTag.(null) <stripped>
  }
 
  struct NewsFeed.FormatShineOptions {
@@ -18252,7 +19569,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let motion : FormatMotion // +0x28
 	let blends : FormatShineBlend // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x60
+	let scale : ıó // +0x60
  }
 
  enum NewsFeed.CodingKeys {
@@ -18274,6 +19591,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stringsByIdentifier : FormatLocalizationString // +0x8
  }
 
+ class NewsFeed.FormatTimer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var timers : [Double : NSTimer]
+	var observers : FormatTimerObserver
+
+	// Swift methods
+ }
+
+ class NewsFeed.FormatTimerObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var token : FormatLayoutViewToken
+	let block : ()
+
+	// Swift methods
+ }
+
  struct NewsFeed.FeedJournalGroup {
 
 	// Properties
@@ -18283,18 +19618,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaLayerProcessorRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var assetHandles : [String : TSAssetHandleType] // +0x10 (0x8)
-	let size : CGSize // +0x18 (0x10)
+	var assetHandles : [String : TSAssetHandleType]
+	let size : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x28 (0x8)
+	let scale : ıó
 
 	// ObjC -> Swift bridged methods
-	0xa5f480  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
-	0xa5f520  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
-	0xa5f610  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
+WARNING: couldn't find address 0x90f2400235ad8 (0x72400235ad8) in binary!
+	0x99378  @objc LayeredMediaLayerProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x90f0c00235040 (0x70c00235040) in binary!
+	0x68000000c  @objc LayeredMediaLayerProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x9746400235018 (0x46400235018) in binary!
+	0x97458  @objc LayeredMediaLayerProcessorRequest.(null) <stripped>
 
 	// Swift methods
-	0xa5f460  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
+	0xa03e20  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
  }
 
  struct NewsFeed.WebArchiveRequest {
@@ -18310,20 +19648,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let resourceID : String
 	let params : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let archiveBaseURL : ˜¨
-
+	let archiveBaseURL : ìÜ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let archiveIndexFileURL : ˜¨
-
+	let archiveIndexFileURL : ìÜ
  }
 
  class NewsFeed.WebArchiveService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebArchiveServiceType {
 
 	// Properties
-	let resourceService : ResourceServiceType // +0x10 (0x28)
+	let resourceService : ResourceServiceType
 
 	// Swift methods
-	0xa60090  class func WebArchiveService.__allocating_init(resourceService:) // init 
+	0xa04750  class func WebArchiveService.__allocating_init(resourceService:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -18333,11 +19669,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case missingResource : (identifier: String)
  }
 
+ class NewsFeed.FeedScaling : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  class NewsFeed.LayeredMediaConditionValidator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaConditionValidatorType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let versionProvider : ø√	 // +0x10 (0x28)
+	let versionProvider : ﬂ…
+
 
 	// Swift methods
  }
@@ -18346,17 +19687,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x8
+	let titleLabelFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleLabelFrame : °Ó
- // +0x10
+	let subtitleLabelFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let messageLabelFrame : °Ó
- // +0x18
+	let messageLabelFrame : ¡ê // +0x18
  }
 
  struct NewsFeed.Attributes {
@@ -18414,11 +19751,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18455,11 +19790,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18499,17 +19832,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -18547,13 +19876,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioTrackLayoutAttributes : _∂	 // +0x8
+	let audioTrackLayoutAttributes : Ω
+ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  struct NewsFeed.Bound {
@@ -18587,12 +19915,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case image : FormatImage
-	case text : FormatText
-	case view : FormatViewNodeLayoutAttributes
+	case text : FormatComputed
+	case view : FormatViewData
 	case button : FormatLayoutAction
 	case webEmbed : FormatWebEmbedData
 	case stateView : FormatStateViewNodeData
 	case custom : FormatCustomNodeData
+	case adMetrics : FormatAdMetricsData
  }
 
  struct NewsFeed.IssueColorPalette {
@@ -18600,19 +19929,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let backgroundColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleColor : i∑
-
+	let titleColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptColor : i∑
-
+	let excerptColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryColor : i∑
-
+	let accessoryColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherNameColor : i∑
-
+	let publisherNameColor : Ök
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let theme : }k
+	let theme : ?√
 
  }
 
@@ -18621,6 +19946,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case light  
 	case dark  
+ }
+
+ enum NewsFeed.FeedConfigCoderError {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalidDateString :  empty-list 
+	case missingSegmentSetIds  
  }
 
  struct NewsFeed.A12_V14 {
@@ -18650,11 +19983,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18667,18 +19998,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatErrorViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var errorModel : DebugFormatErrorModel // +0x8 (0x20)
-	let tableView : UITableView // +0x28 (0x8)
+	var errorModel : DebugFormatErrorModel
+	let tableView : UITableView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_cardViewScrollViewCoordinator : _π	 // +0x30 (0x8)
+	var $__lazy_storage_$_cardViewScrollViewCoordinator : ß¡
+
 
 	// ObjC -> Swift bridged methods
-	0xa99820  @objc DebugFormatErrorViewController.viewDidLoad <stripped>
-	0xa99850  @objc DebugFormatErrorViewController.viewWillLayoutSubviews <stripped>
-	0xa99a00  @objc DebugFormatErrorViewController.didMoveToParentViewController: <stripped>
-	0xa99a50  @objc DebugFormatErrorViewController.initWithNibName:bundle: <stripped>
-	0xa99ad0  @objc DebugFormatErrorViewController.initWithCoder: <stripped>
-	0xa99b40  @objc DebugFormatErrorViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x9746400235018 (0x46400235018) in binary!
+	0x97458  @objc DebugFormatErrorViewController.(null) <stripped>
+WARNING: couldn't find address 0x9933c00235530 (0x33c00235530) in binary!
+	0x98ae0  @objc DebugFormatErrorViewController.(null) <stripped>
+WARNING: couldn't find address 0x8ddf400234fc8 (0x5f400234fc8) in binary!
+	0x97428  @objc DebugFormatErrorViewController.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x124ffd43510  @objc DebugFormatErrorViewController.(null) <stripped>
+	0x64ffd43498  @objc DebugFormatErrorViewController. <stripped>
+	0x5cffd43170  @objc DebugFormatErrorViewController.db≈ <stripped>
  }
 
  struct NewsFeed.FormatPackageList {
@@ -18705,7 +20041,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.FontBookFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FontBookFactoryType {
 	// Swift methods
-	0xa9bb20  class func FontBookFactory.__allocating_init() // init 
+	0xa3f360  class func FontBookFactory.__allocating_init() // init 
  }
 
  enum NewsFeed.FormatAccessibilityContent {
@@ -18714,13 +20050,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case binding : FormatTextNodeBinding
 	case command : FormatCommandValue
 	case inline : String
- }
-
- enum NewsFeed.FormatAccessibilityData {
-
-	// Properties
-	case string : String
-	case command : FormatCommandActionValue
  }
 
  enum NewsFeed.CodingType {
@@ -18734,21 +20063,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.HeadlineService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineServiceType {
 
 	// Properties
-	let tagService : TagServiceType // +0x10 (0x28)
-	let coreConfigurationManager : FCCoreConfigurationManager // +0x38 (0x8)
-	let cloudContext : FCCloudContext // +0x40 (0x8)
-	let paidAccessChecker : FCPaidAccessCheckerType // +0x48 (0x8)
+	let tagService : TagServiceType
+	let coreConfigurationManager : FCCoreConfigurationManager
+	let cloudContext : FCCloudContext
+	let paidAccessChecker : FCPaidAccessCheckerType
 
 	// Swift methods
-	0xa9d5b0  class func HeadlineService.__allocating_init(tagService:coreConfigurationManager:cloudContext:paidAccessChecker:) // init 
+	0xa41010  class func HeadlineService.__allocating_init(tagService:coreConfigurationManager:cloudContext:paidAccessChecker:) // init 
  }
 
  enum NewsFeed.Errors {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case headlinesFetchOperation : s 
-
+	case headlinesFetchOperation : —w
 	case headlinesServiceError : (message: String)
 	case unknown  
  }
@@ -18783,8 +20111,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let assetHandle : FCAssetHandle
 	let size : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let colorSpace : √
-
+	let colorSpace : ˝
  }
 
  struct NewsFeed.FormatSlotDefinition {
@@ -18883,11 +20210,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18895,6 +20220,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case headlineLayoutAttributes  
+ }
+
+ class NewsFeed.FormatAdMetricsNodeRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatAdMetricsNodeRendererType {
+	// Swift methods
  }
 
  struct NewsFeed.FormatStyle {
@@ -18936,16 +20265,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatHistoryViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let editor : DebugFormatEditor // +0x8 (0x8)
-	var sections : DebugFormatHistorySection // +0x10 (0x8)
-	let tableView : UITableView // +0x18 (0x8)
+	let editor : DebugFormatEditor
+	var sections : DebugFormatHistorySection
+	let tableView : UITableView
 
 	// ObjC -> Swift bridged methods
-	0xabe350  @objc DebugFormatHistoryViewController.initWithCoder: <stripped>
-	0xabef30  @objc DebugFormatHistoryViewController.viewDidLoad <stripped>
-	0xabef60  @objc DebugFormatHistoryViewController.viewWillLayoutSubviews <stripped>
-	0xabf040  @objc DebugFormatHistoryViewController.initWithNibName:bundle: <stripped>
-	0xabf0a0  @objc DebugFormatHistoryViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8dd8400234f58 (0x58400234f58) in binary!
+	0x973b8  @objc DebugFormatHistoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x973ac00235080 (0x3ac00235080) in binary!
+	0x98a40  @objc DebugFormatHistoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x97394002348d0 (0x394002348d0) in binary!
+	0x38000000c  @objc DebugFormatHistoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x9e8ec002347f0 (0xec002347f0) in binary!
+	0x9a228  @objc DebugFormatHistoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x98a04002347e8 (0x204002347e8) in binary!
+	0x38000000c  @objc DebugFormatHistoryViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -18953,32 +20287,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeaturedHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let titleLabel : UILabel // +0x8 (0x8)
-	let excerptLabel : UILabel // +0x10 (0x8)
+	let titleLabel : UILabel
+	let excerptLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thumbnailImageView : ﬂ // +0x18 (0x8)
-	let publisherLabel : UILabel // +0x20 (0x8)
+	let thumbnailImageView : i¢
+	let publisherLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageView : ﬂ // +0x28 (0x8)
-	let accessoryLabel : UILabel // +0x30 (0x8)
+	let publisherLogoImageView : i¢
+	let accessoryLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let segmentedColorView : +÷
- // +0x38 (0x8)
-	let premiumBadgeView : PremiumBadgeView // +0x40 (0x8)
-	let cardView : CardView // +0x48 (0x8)
-	let debugButton : DebugButton // +0x50 (0x8)
+	let segmentedColorView : É
+	let premiumBadgeView : PremiumBadgeView
+	let cardView : CardView
+	let debugButton : DebugButton
 
 	// ObjC -> Swift bridged methods
-	0xac0820  @objc FeaturedHeadlineView.initWithFrame: <stripped>
-	0xac08a0  @objc FeaturedHeadlineView.initWithCoder: <stripped>
-	0xac08f0  @objc FeaturedHeadlineView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e48c00234958 (0x48c00234958) in binary!
+	0x8dd00  @objc FeaturedHeadlineView.(null) <stripped>
+WARNING: couldn't find address 0x9733400234870 (0x33400234870) in binary!
+	0x48000000c  @objc FeaturedHeadlineView.(null) <stripped>
+WARNING: couldn't find address 0x90d5c002351d8 (0x55c002351d8) in binary!
+	0x8dcd0  @objc FeaturedHeadlineView.(null) <stripped>
  }
 
  enum NewsFeed.DebugFormatGroupSection {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case compileError : ÂR
+	case compileError : eº
 	case columns : Int
 	case slot : DebugFormatGroupSlotItem
  }
@@ -18995,17 +20331,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatHistoryMeasurementCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var timeInMilliseconds : Double // +0x8 (0x8)
-	var totalTimeInMilliseconds : Double // +0x10 (0x8)
-	let titleLabel : UILabel // +0x18 (0x8)
-	let timeLabel : UILabel // +0x20 (0x8)
-	let barView : UIView // +0x28 (0x8)
+	var timeInMilliseconds : Double
+	var totalTimeInMilliseconds : Double
+	let titleLabel : UILabel
+	let timeLabel : UILabel
+	let barView : UIView
 
 	// ObjC -> Swift bridged methods
-	0xac4d60  @objc DebugFormatHistoryMeasurementCell.initWithStyle:reuseIdentifier: <stripped>
-	0xac4dc0  @objc DebugFormatHistoryMeasurementCell.initWithCoder: <stripped>
-	0xac52e0  @objc DebugFormatHistoryMeasurementCell.layoutSubviews <stripped>
-	0xac5340  @objc DebugFormatHistoryMeasurementCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0x90d5c002351d8 (0x55c002351d8) in binary!
+	0x8dcd0  @objc DebugFormatHistoryMeasurementCell.(null) <stripped>
+WARNING: couldn't find address 0x9730400235188 (0x30400235188) in binary!
+	0x972f8  @objc DebugFormatHistoryMeasurementCell.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffd81750  @objc DebugFormatHistoryMeasurementCell.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffd817e8  @objc DebugFormatHistoryMeasurementCell.(null) <stripped>
  }
 
  enum NewsFeed.DebugInspectViewResult {
@@ -19045,6 +20385,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsFeed.LayeredMediaView {
+ struct NewsFeed.ViewAutomation {
+
+	// Properties
+	let type : String
+	let data : A
+ }
+
+ struct NewsFeed.BasicViewAutomation {
+
+	// Properties
+	let type : String // +0x0
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case data  
+ }
+
  struct NewsFeed.FormatOptionBinding {
 
 	// Properties
@@ -19062,20 +20428,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedCursor {
  class NewsFeed.LayoutAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xad2f40  @objc LayoutAssembly.init <stripped>
+WARNING: couldn't find address 0x90d7400234950 (0x57400234950) in binary!
+	0x18000000c  @objc LayoutAssembly.(null) <stripped>
  }
 
  class NewsFeed.WebEmbedViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedViewRendererType {
 
 	// Properties
-	let rendererTool : FeedItemRendererTool // +0x10 (0x8)
+	let rendererTool : FeedItemRendererTool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reuseProtector : [ // +0x18 (0x8)
+	let reuseProtector : U∏
+
 
 	// Swift methods
  }
 
- enum NewsFeed.FormatImageNodeContent {
+ enum NewsFeed.FormatAsyncImageContent {
 
 	// Properties
 	case binding : FormatImageNodeBinding
@@ -19137,11 +20505,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19154,11 +20520,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.TagService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TagServiceType {
 
 	// Properties
-	let tagController : FCTagController // +0x10 (0x8)
-	let subscriptionController : FCSubscriptionController // +0x18 (0x8)
+	let tagController : FCTagController
+	let subscriptionController : FCSubscriptionController
 
 	// Swift methods
-	0xadbfe0  class func TagService.__allocating_init(tagController:subscriptionController:) // init 
+	0xa89a60  class func TagService.__allocating_init(tagController:subscriptionController:) // init 
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case emptyTagList  
  }
 
  enum NewsFeed.FormatFontScaling {
@@ -19172,8 +20544,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxSize : i‰
- // +0x0
+	let maxSize : }à // +0x0
 	let style : FormatFontScalingStyle // +0x9
  }
 
@@ -19235,11 +20606,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19281,10 +20650,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let white : Ô // +0x0
+	let white : ıó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alpha : i‰
- // +0x8
+	let alpha : }à // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19292,6 +20660,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case white  
 	case alpha  
+ }
+
+ struct NewsFeed.FormatAdMetricsData {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let nativeAdInfo : √Ê
+
  }
 
  struct NewsFeed.A18_V13 {
@@ -19321,11 +20697,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19340,20 +20714,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let seenIdentifiers : Set<String> // +0x0
- }
-
- struct NewsFeed.FormatTraversalErrors {
-
-	// Properties
-	let errors : FormatTraversalError // +0x0
- }
-
- struct NewsFeed.FormatTraversalError {
-
-	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let error : ÂR // +0x0
-	let path : FormatPath // +0x8
+	let seenDates : String // +0x8
  }
 
  struct NewsFeed.FormatInspectionFrame {
@@ -19375,8 +20737,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.EmptyView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0xaef530  @objc EmptyView.initWithFrame: <stripped>
-	0xaef620  @objc EmptyView.initWithCoder: <stripped>
+WARNING: couldn't find address 0x8e3f4002348c0 (0x3f4002348c0) in binary!
+	0x8dc68  @objc EmptyView.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x61cffe932c0  @objc EmptyView.(null) <stripped>
  }
 
  enum NewsFeed.FormatItemTrait {
@@ -19430,20 +20794,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -19487,20 +20846,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -19516,12 +20870,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedItemRendererPipelineProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let thumbnailImageCache : TSImageCacheType // +0x10 (0x8)
-	let publisherLogoImageCache : TSImageCacheType // +0x18 (0x8)
-	let formatImageCache : TSImageCacheType // +0x20 (0x8)
+	let thumbnailImageCache : TSImageCacheType
+	let publisherLogoImageCache : TSImageCacheType
+	let formatImageCache : TSImageCacheType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rendererEnvironment : Ò
- // +0x28 (0x28)
+	let rendererEnvironment : oR
 
 	// Swift methods
  }
@@ -19546,16 +20899,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x0
 	let class : String // +0x10
 	let selectors : Selector // +0x20
-	let background : FormatBackground // +0x28
-	let borders : FormatBorder // +0x60
-	let cornerRadius : FormatCornerRadius // +0x68
-	let shadow : FormatShadow // +0x80
-	let tintColor : FormatColor // +0xd8
-	let resize : FormatImageResize // +0xe0
-	let contentMode : FormatContentMode // +0xe1
-	let renderingMode : FormatImageRenderingMode // +0xe8
-	let alpha : FormatEquation // +0xf0
-	let adjustments : FormatImageAdjustment // +0xf8
+	let alpha : FormatEquation // +0x28
+	let adjustments : FormatImageAdjustment // +0x30
+	let background : FormatBackground // +0x38
+	let borders : FormatBorder // +0x40
+	let contentMode : FormatContentMode // +0x48
+	let cornerRadius : FormatCornerRadius // +0x50
+	let renderingMode : FormatImageRenderingMode // +0x68
+	let resize : FormatImageResize // +0x70
+	let shadow : FormatShadow // +0x78
+	let tintColor : FormatColor // +0xd0
  }
 
  struct NewsFeed.Selector {
@@ -19563,15 +20916,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let selector : String // +0x0
 	let background : FormatBackground // +0x10
-	let borders : FormatBorder // +0x48
-	let cornerRadius : FormatCornerRadius // +0x50
-	let shadow : FormatShadow // +0x68
-	let tintColor : FormatColor // +0xc0
-	let resize : FormatImageResize // +0xc8
-	let contentMode : FormatContentMode // +0xc9
-	let renderingMode : FormatImageRenderingMode // +0xd0
-	let alpha : FormatEquation // +0xd8
-	let adjustments : FormatImageAdjustment // +0xe0
+	let borders : FormatBorder // +0x18
+	let cornerRadius : FormatCornerRadius // +0x20
+	let shadow : FormatShadow // +0x38
+	let tintColor : FormatColor // +0x90
+	let resize : FormatImageResize // +0x98
+	let contentMode : FormatContentMode // +0x99
+	let renderingMode : FormatImageRenderingMode // +0xa0
+	let alpha : FormatEquation // +0xa8
+	let adjustments : FormatImageAdjustment // +0xb0
  }
 
  enum NewsFeed.CodingKeys {
@@ -19596,16 +20949,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case identifier  
 	case class  
 	case selectors  
-	case background  
-	case borders  
-	case cornerRadius  
-	case shadow  
-	case tintColor  
-	case resize  
-	case contentMode  
-	case renderingMode  
 	case alpha  
 	case adjustments  
+	case background  
+	case borders  
+	case contentMode  
+	case cornerRadius  
+	case renderingMode  
+	case resize  
+	case shadow  
+	case tintColor  
  }
 
  struct NewsFeed.A12_V3 {
@@ -19635,11 +20988,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19653,9 +21004,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case image : Ÿ¶	
+	case image : Øµ
+
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case video : ß¶	
+	case video : }µ
+
+ }
+
+ class NewsFeed.AnyFeedServiceConfigFetcher {
+ enum NewsFeed.FormatMenuItemAction {
+
+	// Properties
+	case command : FormatCommand
+	case switch : FormatSwitchValue
+	case none  
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case none  
+	case command  
+	case switch  
+ }
+
+ struct NewsFeed.FormatMenu {
+
+	// Properties
+	let items : FormatMenuItem // +0x0
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case items  
  }
 
  enum NewsFeed.FormatGroupLayoutFactoryOption {
@@ -19673,7 +21055,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let builder : È
+	let builder : Ÿ√
 
 	let group : FormatGroup
 	let inventory : FormatPackageInventory
@@ -19688,7 +21070,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let group : FormatGroup // +0x0
 	let inventory : FormatPackageInventory // +0x70
-	let options : FormatGroupLayoutFactoryOption // +0x178
+	let options : FormatGroupLayoutFactoryOption // +0x78
+	let featureAvailability : FeatureAvailabilityType // +0x80
  }
 
  enum NewsFeed.FormatImageRenderingMode {
@@ -19750,11 +21133,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19767,21 +21148,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.AudioDailyBriefingViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AudioDailyBriefingViewRendererType {
 
 	// Properties
-	let durationFormatter : AudioDurationFormatter // +0x10 (0x8)
-	var layoutAttributes : Attributes // +0x18 (0x101)
+	var layoutAttributes : Attributes
 
 	// Swift methods
-	0xb44f70  class func AudioDailyBriefingViewRenderer.__allocating_init() // init 
-	0xb45030  func <stripped> // method 
-	0xb45ab0  func <stripped> // method 
-	0xb45c30  func <stripped> // method 
-	0xb45de0  func <stripped> // method 
+	0xb407d0  class func AudioDailyBriefingViewRenderer.__allocating_init() // init 
+	0xb40840  func <stripped> // method 
+	0xb413f0  func <stripped> // method 
+	0xb41400  func <stripped> // method 
  }
 
  struct NewsFeed.FormatCustomNodeData {
 
 	// Properties
 	let viewClass : UIView.Type // +0x0
+ }
+
+ struct NewsFeed.FeedBannerAd {
+
+	// Properties
+	let identifier : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bannerAd : Ì¿
+
+	let traits : FeedItemTraits
+	let layoutDirection : FeedLayoutDirection
+	let kind : Kind
+ }
+
+ class NewsFeed.DebugFormatAssetManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let editor : DebugFormatEditor // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var imageCache : ±
+ // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let imageDeduper : 	∞
+ // +0x20 (0x8)
+
+	// Swift methods
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case failedToCreateAssetURL : DebugFormatAsset
+	case failedtoCreateAssetsURL  
+	case failedToCreateImage  
  }
 
  struct NewsFeed.FormatURLParameterOptionModifier {
@@ -19799,10 +21212,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.CoverChannelViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CoverChannelViewRendererType {
 
 	// Properties
-	let rendererTool : FeedItemRendererTool // +0x10 (0x8)
-	let imageCache : TSImageCacheType // +0x18 (0x8)
+	let rendererTool : FeedItemRendererTool
+	let imageCache : TSImageCacheType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : Ö∏
+
 
 	// Swift methods
+ }
+
+ enum NewsFeed.FeedGroupPinning {
+
+	// Properties
+	case duration : Double
+	case fixed  
+ }
+
+ struct NewsFeed.FeedGroupPinningDuration {
+
+	// Properties
+	let value : Double // +0x0
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case value  
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case fixed  
+	case duration  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case data  
  }
 
  class NewsFeed.InternalErrorGroupLayoutFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -19843,10 +21292,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let attributes : ≥„	 // +0x8
+	let attributes : !›
+ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -19854,6 +21303,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case attributes  
+ }
+
+ struct NewsFeed.DebugFormatAssetDirectory {
+
+	// Properties
+	let assets : DebugFormatAsset // +0x0
+ }
+
+ struct NewsFeed.DebugFormatAsset {
+
+	// Properties
+	let type : Kind // +0x0
+	let name : String // +0x8
+	let path : String // +0x18
+	let assetServerPath : String // +0x28
+	let timestamp : Double // +0x38
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case name  
+	case path  
+	case assetServerPath  
+	case timestamp  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case assets  
+ }
+
+ enum NewsFeed.Kind {
+
+	// Properties
+	case font  
+	case image  
+ }
+
+ class NewsFeed.FeedBannerAdFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedBannerAdFactoryType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let journal : %
+
+	// Swift methods
  }
 
  enum NewsFeed.FormatBorderEdge {
@@ -19876,23 +21373,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedItemRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedItemRendererType {
 
 	// Properties
-	var colorPaletteProvider : ColorPaletteProviding // +0x10 (0x28)
-	let imageHeadlineViewRenderer : HeadlineViewRendererType // +0x38 (0x10)
-	let featuredHeadlineViewRenderer : FeaturedHeadlineViewRendererType // +0x48 (0x10)
-	let featuredIssueHeadlineViewRenderer : FeaturedIssueHeadlineViewRendererType // +0x58 (0x10)
-	let gapViewRenderer : GapViewRendererType // +0x68 (0x10)
-	let gapOfflineViewRenderer : GapOfflineViewRendererType // +0x78 (0x10)
-	let orderedHeadlineViewRenderer : OrderedHeadlineViewRendererType // +0x88 (0x10)
-	let issueViewRenderer : IssueViewRendererType // +0x98 (0x10)
-	let coverIssueViewRenderer : CoverIssueViewRendererType // +0xa8 (0x10)
-	let coverChannelViewRenderer : CoverChannelViewRendererType // +0xb8 (0x10)
-	let formatLayoutViewRenderer : FormatLayoutViewRendererType // +0xc8 (0x10)
-	let webEmbedViewRenderer : WebEmbedViewRendererType // +0xd8 (0x10)
-	let audioTrackViewRenderer : AudioTrackViewRendererType // +0xe8 (0x10)
-	let audioDailyBriefingViewRenderer : AudioDailyBriefingViewRendererType // +0xf8 (0x10)
+	var presentingViewController : weak UIViewController?
+	var colorPaletteProvider : ColorPaletteProviding
+	let imageHeadlineViewRenderer : HeadlineViewRendererType
+	let featuredHeadlineViewRenderer : FeaturedHeadlineViewRendererType
+	let featuredIssueHeadlineViewRenderer : FeaturedIssueHeadlineViewRendererType
+	let gapViewRenderer : GapViewRendererType
+	let gapOfflineViewRenderer : GapOfflineViewRendererType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webEmbedViewControllerReuseManager : Ÿ	 // +0x108 (0x8)
-	var formatRegistrationIdentifiers : Set<String> // +0x110 (0x8)
+	let bannerAdViewRenderer : EΩ
+
+	let orderedHeadlineViewRenderer : OrderedHeadlineViewRendererType
+	let issueViewRenderer : IssueViewRendererType
+	let coverIssueViewRenderer : CoverIssueViewRendererType
+	let coverChannelViewRenderer : CoverChannelViewRendererType
+	let formatLayoutViewRenderer : FormatLayoutViewRendererType
+	let webEmbedViewRenderer : WebEmbedViewRendererType
+	let audioTrackViewRenderer : AudioTrackViewRendererType
+	let audioDailyBriefingViewRenderer : AudioDailyBriefingViewRendererType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bannerAdViewManager : eº
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webEmbedViewControllerReuseManager : c
+	var formatRegistrationIdentifiers : Set<String>
 
 	// Swift methods
  }
@@ -19922,7 +21426,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let stateMachine : πQ
+	let stateMachine : }¨
  // +0x0
 	let scope : Scope // +0x8
  }
@@ -19937,12 +21441,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedTopicClusteringService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let cloudContext : FCCloudContext // +0x10 (0x8)
-	let headlineClusterer : FCHeadlineClustering // +0x18 (0x8)
-	let headlineClusterOrderer : FCHeadlineClusterOrdering // +0x20 (0x8)
+	let cloudContext : FCCloudContext
+	let headlineClusterer : FCHeadlineClustering
+	let headlineClusterOrderer : FCHeadlineClusterOrdering
 
 	// Swift methods
-	0xb5d280  class func FeedTopicClusteringService.__allocating_init(cloudContext:headlineClusterer:headlineClusterOrderer:) // init 
+	0xb5c6b0  class func FeedTopicClusteringService.__allocating_init(cloudContext:headlineClusterer:headlineClusterOrderer:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -19950,6 +21454,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case failedFetchingSubscribedTags  
 	case failedFetchingTags  
+ }
+
+ struct NewsFeed.FeedPluginModel {
+
+	// Properties
+	let identifier : String
+	let group : A
+	let metadata : B
+	let metdataEqualBlock : (_:_:)
  }
 
  struct NewsFeed.B6_V1 {
@@ -19982,17 +21495,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -20031,11 +21540,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverIssueLayoutAttributes : WÊ
- // +0x8
+	let coverIssueLayoutAttributes : Ñ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -20052,6 +21559,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.SubscribeNotificationPrompt { }
 
  enum NewsFeed.NotificationPrompt { }
+
+ struct NewsFeed.NotificationPromptResult {
+
+	// Properties
+	let enableNotifications : Bool // +0x0
+	let showHUD : Bool // +0x1
+	let action : Action // +0x2
+ }
+
+ enum NewsFeed.Action {
+
+	// Properties
+	case auto  
+	case explicit  
+	case notNow  
+	case none  
+ }
 
  struct NewsFeed.C12_V9 {
 
@@ -20083,17 +21607,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -20105,6 +21625,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case spacerFrame  
  }
 
+ class NewsFeed.StubOfflineProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, OfflineProviding {
+
+	// Properties
+	var offlineReason : FCOfflineReason
+
+	// Swift methods
+	0xb87500  class func StubOfflineProvider.__allocating_init(offlineReason:) // init 
+ }
+
  struct NewsFeed.DailyBriefingFontBook {
 
 	// Properties
@@ -20113,18 +21642,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accessoryFont : UIFont // +0x10
  }
 
+ struct NewsFeed.FeedGroupKnobsRepool {
+
+	// Properties
+	let pinning : FeedGroupKnobsRuleValue
+	let freezing : FeedGroupKnobsRuleValue
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case pinning  
+	case freezing  
+ }
+
  class NewsFeed.FormatLayoutView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let debugButton : DebugButton // +0x8 (0x8)
-	var token : FormatLayoutViewToken // +0x10 (0x8)
-	var viewContainers : FormatLayoutViewContainer // +0x18 (0x8)
-	var viewModels : FormatLayoutViewModel // +0x20 (0x8)
+	let debugButton : DebugButton
+	var token : FormatLayoutViewToken
+	var viewContainers : FormatLayoutViewContainer
+	var viewModels : FormatLayoutViewModel
 
 	// ObjC -> Swift bridged methods
-	0xb92430  @objc FormatLayoutView.initWithFrame: <stripped>
-	0xb924d0  @objc FormatLayoutView.initWithCoder: <stripped>
-	0xb92540  @objc FormatLayoutView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e3d4002348a0 (0x3d4002348a0) in binary!
+	0x8dc48  @objc FormatLayoutView.(null) <stripped>
+WARNING: couldn't find address 0x9727c002347b8 (0x27c002347b8) in binary!
+	0x48000000c  @objc FormatLayoutView.(null) <stripped>
+WARNING: couldn't find address 0x90cf4002358a8 (0x4f4002358a8) in binary!
+	0x90ce8  @objc FormatLayoutView.(null) <stripped>
  }
 
  struct NewsFeed.FormatLatestCompatibleFileReference {
@@ -20161,11 +21707,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -20209,7 +21753,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let behavior : Behavior // +0x0
 	let expression : Expression // +0x8
-	let identifier : String // +0x68
+	let identifier : String // +0x78
  }
 
  enum NewsFeed.Expression {
@@ -20252,8 +21796,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : °ã
- // +0x10 (0x28)
+	let commandCenter : go
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : √£
+
 
 	// Swift methods
  }
@@ -20261,21 +21807,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugGroupLayoutViewFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DebugGroupLayoutViewFactoryType {
 
 	// Properties
-	let colorPaletteProvider : ColorPaletteProviding // +0x10 (0x28)
-	let imageHeadlineViewRenderer : HeadlineViewRendererType // +0x38 (0x10)
-	let featuredHeadlineViewRenderer : FeaturedHeadlineViewRendererType // +0x48 (0x10)
-	let featuredIssueHeadlineViewRenderer : FeaturedIssueHeadlineViewRendererType // +0x58 (0x10)
-	let orderedHeadlineViewRenderer : OrderedHeadlineViewRendererType // +0x68 (0x10)
-	let issueViewRenderer : IssueViewRendererType // +0x78 (0x10)
-	let coverIssueViewRenderer : CoverIssueViewRendererType // +0x88 (0x10)
-	let coverChannelViewRenderer : CoverChannelViewRendererType // +0x98 (0x10)
-	let featuredIssueSupplementaryViewRenderer : FeaturedIssueSupplementViewRendererType // +0xa8 (0x10)
-	let formatLayoutViewRenderer : FormatLayoutViewRendererType // +0xb8 (0x10)
-	let webEmbedViewRenderer : WebEmbedViewRendererType // +0xc8 (0x10)
-	let webEmbedViewControllerFactory : WebEmbedViewControllerFactory // +0xd8 (0x8)
-	let internalErrorViewRenderer : InternalErrorViewRendererType // +0xe0 (0x10)
-	let audioTrackViewRenderer : AudioTrackViewRendererType // +0xf0 (0x10)
-	let audioDailyBriefingViewRenderer : AudioDailyBriefingViewRendererType // +0x100 (0x10)
+	let colorPaletteProvider : ColorPaletteProviding
+	let imageHeadlineViewRenderer : HeadlineViewRendererType
+	let featuredHeadlineViewRenderer : FeaturedHeadlineViewRendererType
+	let featuredIssueHeadlineViewRenderer : FeaturedIssueHeadlineViewRendererType
+	let orderedHeadlineViewRenderer : OrderedHeadlineViewRendererType
+	let issueViewRenderer : IssueViewRendererType
+	let coverIssueViewRenderer : CoverIssueViewRendererType
+	let coverChannelViewRenderer : CoverChannelViewRendererType
+	let featuredIssueSupplementaryViewRenderer : FeaturedIssueSupplementViewRendererType
+	let formatLayoutViewRenderer : FormatLayoutViewRendererType
+	let webEmbedViewRenderer : WebEmbedViewRendererType
+	let webEmbedViewControllerFactory : WebEmbedViewControllerFactory
+	let internalErrorViewRenderer : InternalErrorViewRendererType
+	let audioTrackViewRenderer : AudioTrackViewRendererType
+	let audioDailyBriefingViewRenderer : AudioDailyBriefingViewRendererType
 
 	// Swift methods
  }
@@ -20399,11 +21945,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.OrderedHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, OrderedHeadlineViewStylerType {
 
 	// Properties
-	let fontBook : OrderedHeadlineFontBook // +0x10 (0x20)
-	let colorPalette : OrderedHeadlineColorPalette // +0x30 (0x28)
+	let fontBook : OrderedHeadlineFontBook
+	let colorPalette : OrderedHeadlineColorPalette
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : Ô // +0x58 (0x8)
-	let colorPaletteProvider : ColorPaletteProviding // +0x60 (0x28)
+	let scaleFactor : ıó
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -20414,6 +21960,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let frame : CGRect // +0x0
 	let feedItemLayoutAttributes : FeedItemLayoutAttributes // +0x20
 	let feedItemSupplementaryAttributes : FeedItemSupplementaryAttributes // +0x28
+ }
+
+ struct NewsFeed.FormatAdMetricsNodeLayoutAttributes {
+
+	// Properties
+	let identifier : String // +0x0
+	let layoutIdentifier : String // +0x10
+	let frame : CGRect // +0x20
+	let zIndex : Int // +0x40
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x48
+	let privacyMarkerFrameIdentifier : String? // +0x68
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case identifier  
+	case layoutIdentifier  
+	case frame  
+	case zIndex  
+	case contextLayoutOptions  
+	case privacyMarkerFrameIdentifier  
  }
 
  struct NewsFeed.C18_V2 {
@@ -20446,17 +22014,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x10
+	let headlineLayoutAttributes : «z // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -20472,7 +22036,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fixed : Ô
+	case fixed : ıó
 	case none  
 	case luminance  
  }
@@ -20495,8 +22059,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.GapViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, GapViewStylerType {
 
 	// Properties
-	let colorPalette : GapColorPalette // +0x10 (0x10)
-	let colorPaletteProvider : ColorPaletteProviding // +0x20 (0x28)
+	let colorPalette : GapColorPalette
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
@@ -20504,24 +22068,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatImageRequest : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let size : CGSize // +0x8 (0x10)
+	let size : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Ô // +0x18 (0x8)
-	let style : FormatImageNodeStyle // +0x20 (0x100)
-	let inventory : FormatPackageInventory // +0x120 (0x108)
-	let focalFrame : CGRect // +0x228 (0x21)
-	let renderingMode : RenderingMode // +0x250 (0x8)
-	let traitCollection : UITraitCollection // +0x258 (0x8)
-	let assetHandles : [String : TSAssetHandleType] // +0x260 (0x8)
-	let assetHandle : TSAssetHandleType // +0x268 (0x8)
+	let scale : ıó
+	let style : FormatImageNodeStyle
+	let inventory : FormatPackageInventory
+	let focalFrame : CGRect
+	let renderingMode : RenderingMode
+	let traitCollection : UITraitCollection
+	let assetHandles : [String : TSAssetHandleType]
+	let assetHandle : TSAssetHandleType
 
 	// ObjC -> Swift bridged methods
-	0xbc9f10  @objc FormatImageRequest.assetHandles <stripped>
-	0xbc9f70  @objc FormatImageRequest.cacheIdentifier <stripped>
-	0xbca650  @objc FormatImageRequest.init <stripped>
-	0xbca6b0  @objc FormatImageRequest..cxx_destruct <stripped>
+WARNING: couldn't find address 0x90cf4002358a8 (0x4f4002358a8) in binary!
+	0x90ce8  @objc FormatImageRequest.(null) <stripped>
+WARNING: couldn't find address 0x90cdc002348b8 (0x4dc002348b8) in binary!
+	0x97240  @objc FormatImageRequest.(null) <stripped>
+WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
+	0x5b4ffed7518  @objc FormatImageRequest.(null) <stripped>
+	0x6d4ffed75e0  @objc FormatImageRequest.>MÁ1ˇË%—X <stripped>
 
 	// Swift methods
+ }
+
+ struct NewsFeed.Output {
+
+	// Properties
+	let style : FormatStyle // +0x0
+	let usedProperties : FormatCompilerUsedProperties // +0x48
  }
 
  struct NewsFeed.FormatStyleCompilerScope {
@@ -20532,35 +22106,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var usedProperties : FormatCompilerUsedProperties // +0x98
  }
 
- struct NewsFeed.Output {
+ struct NewsFeed.IssueAutomation {
 
 	// Properties
-	let style : FormatStyle // +0x0
-	let usedProperties : FormatCompilerUsedProperties // +0x48
+	let identifier : String // +0x0
+	let issueType : IssueType // +0x10
+	let isPaid : Bool // +0x11
+	let isBundlePaid : Bool // +0x12
+	let sourceChannel : TagAutomation // +0x18
  }
 
- struct NewsFeed.FeedProperty {
+ enum NewsFeed.IssueType {
 
 	// Properties
-	let identifier : String
-	let value : Value
+	case anf  
+	case pdf  
+	case unknown  
  }
 
- enum NewsFeed.Value {
+ enum NewsFeed.CodingKeys {
 
 	// Properties
-	case boolean : Bool
+	case identifier  
+	case issueType  
+	case isPaid  
+	case isBundlePaid  
+	case sourceChannel  
+ }
+
+ class NewsFeed.FeedBannerAdPipelineProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var integrator : FeedBannerAdIntegrating
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case date : #A
+	let requestManager : „Ø
+
+	let nativeAdManager : FeedNativeAdManagerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutEnvironmentProvider : ±
 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case float : Ô
-	case integer : Int
-	case string : String
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : ˜¨
+	var queuedUpdates :  empty-list 
 
-	case color : FormatColor
+	// Swift methods
+	0xbbff70  class func FeedBannerAdPipelineProcessor.__allocating_init(requestManager:nativeAdManager:layoutEnvironmentProvider:) // init 
+	0xbc00a0  func <stripped> // method 
  }
 
  struct NewsFeed.FormatAccessibilityLayoutValue {
@@ -20580,10 +22170,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FormatBehaviorVisibilityRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatBehaviorVisibilityRendererType {
 
 	// Properties
-	var sessionEvaluatedExpressions : State // +0x10 (0x8)
+	var sessionEvaluatedExpressions : State
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : °ã
- // +0x18 (0x28)
+	let commandCenter : go
 
 	// Swift methods
  }
@@ -20591,24 +22180,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.FeedGroupEmitterCursor {
 
 	// Properties
-	let priorGroups : FeedPoolType
+	let serviceConfig : A
+	let priorGroups : FeedCursorGroup
+	let nextGroups : FeedCursorGroup
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pool : ìÆ	
+	let pool : ßπ
+
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cursor : ?ç	
+	let cursor : ª†
+
 	let context : FeedContext
 	let cachePolicy : FeedCachePolicy
+	let kind : FeedCursorKind
  }
 
  struct NewsFeed.FormatWebEmbed {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ˜¨
-
+	let url : ìÜ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionUrl : ıØ
-
+	let actionUrl : ∑á
 	let article : FormatArticle
 	let webArchiveResourceID : String?
 	let dataResourceID : String?
@@ -20649,20 +22241,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case openEmitters : FeedGroupEmitter
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case key :  first-element-marker 
-	case cursor : FeedCursor
  }
 
  struct NewsFeed.FormatMetadata {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minNewsVersion : kk
-
+	let minNewsVersion : :
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxNewsVersion : kk
-
+	let maxNewsVersion : :
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let formatVersion : [å	
+	let formatVersion : -q
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let allowedSegmentSetIds :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blockedSegmentSetIds :  empty-list 
  }
 
  enum NewsFeed.CodingKeys {
@@ -20671,6 +22264,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case formatVersion  
 	case minNewsVersion  
 	case maxNewsVersion  
+	case allowedSegmentSetIds  
+	case blockedSegmentSetIds  
  }
 
  enum NewsFeed.FormatStateMachineInput {
@@ -20705,22 +22300,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ˜ÿ
- // +0x8 (0x8)
-	let formatLayoutView : FormatLayoutView // +0x10 (0x8)
-	var stateMaskFormatLayoutViews : FormatButtonNodeStateMask // +0x18 (0x8)
+	let onTap : á
+	let formatLayoutView : FormatLayoutView
+	var stateMaskFormatLayoutViews : FormatButtonNodeStateMask
+	var actions : ()?
 
 	// ObjC -> Swift bridged methods
-	0xbd9a80  @objc FormatButton.initWithFrame: <stripped>
-	0xbd9ab0  @objc FormatButton.initWithCoder: <stripped>
-	0xbd9b60  @objc FormatButton.layoutSubviews <stripped>
-	0xbd9c10  @objc FormatButton.isSelected <stripped>
-	0xbd9c50  @objc FormatButton.setSelected: <stripped>
-	0xbd9f80  @objc FormatButton.isHighlighted <stripped>
-	0xbd9fc0  @objc FormatButton.setHighlighted: <stripped>
-	0xbda080  @objc FormatButton.isEnabled <stripped>
-	0xbda130  @objc FormatButton.setEnabled: <stripped>
-	0xbda3b0  @objc FormatButton..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e36c00234838 (0x36c00234838) in binary!
+	0x8dbe0  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9721400235098 (0x21400235098) in binary!
+	0x94788  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9c64c00236478 (0x64c00236478) in binary!
+	0x9626c  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9c634002358b0 (0x634002358b0) in binary!
+	0x96254  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9c61c00236458 (0x61c00236458) in binary!
+	0x9623c  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x971b4002346f0 (0x1b4002346f0) in binary!
+	0xd8000000c  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0xa0d6c002346c0 (0x56c002346c0) in binary!
+	0x9c5e0  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9620000234ed0 (0x20000234ed0) in binary!
+	0x90c08  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9905c00234eb0 (0x5c00234eb0) in binary!
+	0x90bf0  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9904400234ea8 (0x4400234ea8) in binary!
+	0x90bd8  @objc FormatButton.(null) <stripped>
+WARNING: couldn't find address 0x9902c00234e98 (0x2c00234e98) in binary!
+	0x90bc0  @objc FormatButton.(null) <stripped>
+ }
+
+ enum NewsFeed.Errors {
+
+	// Properties
+	case missingAdInfo  
+ }
+
+ enum NewsFeed.FormatAdMetricsNodeBinding {
+
+	// Properties
+	case headline  
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case headline  
  }
 
  enum NewsFeed.FormatShineColor {
@@ -20764,10 +22389,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let attributes : ≥„	 // +0x8
+	let attributes : !›
+ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -20780,32 +22405,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatDeviceViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let tableView : UITableView // +0x8 (0x8)
+	let tableView : UITableView
 
 	// ObjC -> Swift bridged methods
-	0xbe3280  @objc DebugFormatDeviceViewController.viewDidLoad <stripped>
-	0xbe32b0  @objc DebugFormatDeviceViewController.viewWillLayoutSubviews <stripped>
-	0xbe3390  @objc DebugFormatDeviceViewController.doDismiss <stripped>
-	0xbe33b0  @objc DebugFormatDeviceViewController.initWithNibName:bundle: <stripped>
-	0xbe3430  @objc DebugFormatDeviceViewController.initWithCoder: <stripped>
-	0xbe34a0  @objc DebugFormatDeviceViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x970f400234ca8 (0xf400234ca8) in binary!
+	0x970e8  @objc DebugFormatDeviceViewController.(null) <stripped>
+WARNING: couldn't find address 0x970dc00234df8 (0xdc00234df8) in binary!
+	0x98770  @objc DebugFormatDeviceViewController.(null) <stripped>
+WARNING: couldn't find address 0x8da8400234c58 (0x28400234c58) in binary!
+	0x970b8  @objc DebugFormatDeviceViewController.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x514ffee33a0  @objc DebugFormatDeviceViewController.(null) <stripped>
+	0xffee32c8  @objc DebugFormatDeviceViewController.-cˇ€ <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffeeeb80  @objc DebugFormatDeviceViewController.(null) <stripped>
+ }
+
+ struct NewsFeed.FeedSuggestionCluster {
+
+	// Properties
+	let tagID : String // +0x0
+	let feedItems : [NTPBFeedItem] // +0x10
+	let feedContextByFeedID : [String : FCFeedContext] // +0x18
  }
 
  struct NewsFeed.FormatInspectionCode {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let block : =Ç	 // +0x0
+	let block : øî
+ // +0x0
  }
 
  class NewsFeed.AudioDurationFormatter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let formatter : NSDateComponentsFormatter // +0x10 (0x8)
-	let accesssibilityFormatter : NSDateComponentsFormatter // +0x18 (0x8)
-
 	// Swift methods
-	0xbe4130  class func AudioDurationFormatter.__allocating_init() // init 
  }
 
  struct NewsFeed.E12_V2 {
@@ -20839,20 +22472,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -20863,6 +22491,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case featuredSupplementaryDetailLayoutAttributes  
 	case headlineLayoutAttributes  
 	case separatorFrames  
+ }
+
+ struct NewsFeed.FeedEdition {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let date : a
+	let dateRange : FCDateRange
  }
 
  class NewsFeed.IssueCoverViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueCoverViewLayoutAttributesFactoryType {
@@ -20882,39 +22518,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let sizeConstraint : SizeConstraint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shadowRadius : Ô // +0x8
+	let shadowRadius : ıó // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Ô // +0x10
+	let cornerRadius : ıó // +0x10
  }
 
  class NewsFeed.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xbef400  @objc FactoryAssembly.init <stripped>
+WARNING: couldn't find address 0x90b04002346e0 (0x304002346e0) in binary!
+	0x18000000c  @objc FactoryAssembly.(null) <stripped>
  }
 
  struct NewsFeed.FormatLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let identifier : √Ï
- // +0x8
+	let identifier : á // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let itemIdentifier : OÒ	 // +0x10
+	let itemIdentifier : „‰
+ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutIdentifier : √Ï
- // +0x18
+	let layoutIdentifier : á // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutValues : !Ô
- // +0x20
+	let layoutValues : _â // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessibilityValues : {¡
- // +0x28
+	let accessibilityValues : /q // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessibilityRole : óë
- // +0x30
+	let accessibilityRole : °O // +0x30
  }
 
  enum NewsFeed.FormatLineCap {
@@ -20958,11 +22590,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : ÿ
- // +0x8
+	let headlineLayoutAttributes : «z // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -20970,6 +22600,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case headlineLayoutAttributes  
+ }
+
+ struct NewsFeed.FeedAutomation {
+
+	// Properties
+	let type : String // +0x0
+	let identifier : String? // +0x10
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case type  
+	case identifier  
  }
 
  enum NewsFeed.FormatShine {
@@ -21059,13 +22703,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case webEmbed  
 	case custom  
 	case stateView  
+	case adMetrics  
  }
 
  class NewsFeed.FormatWebEmbedNodeRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatWebEmbedNodeRendererType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reuseProtector : [ // +0x10 (0x8)
+	let reuseProtector : U∏
+
 
 	// Swift methods
  }
@@ -21174,23 +22820,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var premiumBadgeMask : PremiumBadgeMask // +0x8 (0x8)
 	var isMotionEnabled : Bool // +0x10 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shineView : Y˜
- // +0x18 (0x8)
+	let shineView : só // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_shineMaskLayer : Øâ	 // +0x20 (0x8)
+	var $__lazy_storage_$_shineMaskLayer : '†
+ // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : /è	 // +0x0 (0x0)
+	let context : ¶
+ // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0xc11270  @objc PremiumBadgeView.premiumBadgeMask <stripped>
-	0xc11300  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
-	0xc11510  @objc PremiumBadgeView.isMotionEnabled <stripped>
-	0xc11580  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
-	0xc117e0  @objc PremiumBadgeView.shineView <stripped>
-	0xc11be0  @objc PremiumBadgeView.initWithFrame: <stripped>
-	0xc11c10  @objc PremiumBadgeView.initWithCoder: <stripped>
-	0xc11e80  @objc PremiumBadgeView.layoutSubviews <stripped>
-	0xc11ee0  @objc PremiumBadgeView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x90ad400234478 (0x2d400234478) in binary!
+	0x98f28  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x9c47c00234470 (0x47c00234470) in binary!
+	0x9609c  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x90aa400234468 (0x2a400234468) in binary!
+	0x8e148  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x8d9bc00234b90 (0x1bc00234b90) in binary!
+	0x96ff0  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x96fe400234520 (0x7e400234520) in binary!
+	0x18000000c  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x98ebc002344f8 (0x6bc002344f8) in binary!
+	0x38000000c  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x8e0f4002345c0 (0xf4002345c0) in binary!
+	0x8d968  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x96f9c002344d8 (0x79c002344d8) in binary!
+	0x58000000c  @objc PremiumBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x8e0c400234590 (0xc400234590) in binary!
+	0x8d938  @objc PremiumBadgeView.(null) <stripped>
  }
 
  enum NewsFeed.FormatDurationFormat {
@@ -21237,17 +22893,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : o·
- // +0x8
+	let featuredHeadlineLayoutAttributes : kÄ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -21266,9 +22918,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutIdentifier : String // +0x10
 	let frame : CGRect // +0x20
 	let style : FormatImageNodeStyle // +0x40
-	let zIndex : Int // +0x140
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x148
-	let accessibilityRole : FormatNodeAccessibilityRole // +0x168
+	let zIndex : Int // +0x118
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x120
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x140
  }
 
  enum NewsFeed.CodingKeys {
@@ -21286,20 +22938,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.AudioDailyBriefingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let contentView : UIVisualEffectView // +0x8 (0x8)
-	let headerLabel : UILabel // +0x10 (0x8)
-	let titleLabel : UILabel // +0x18 (0x8)
-	let trackDurationLabel : UILabel // +0x20 (0x8)
+	let contentView : UIVisualEffectView
+	let headerLabel : UILabel
+	let titleLabel : UILabel
+	let trackDurationLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progressView : ÁŒ	 // +0x28 (0x8)
-	let remainingTimeLabel : UILabel // +0x30 (0x8)
-	let headphoneImageView : UIImageView // +0x38 (0x8)
-	var token : NSObject // +0x40 (0x8)
+	let progressView : Àj
+	let remainingTimeLabel : UILabel
+	let headphoneImageView : UIImageView
+	var token : NSObject
 
 	// ObjC -> Swift bridged methods
-	0xc21340  @objc AudioDailyBriefingView.initWithFrame: <stripped>
-	0xc21370  @objc AudioDailyBriefingView.initWithCoder: <stripped>
-	0xc213c0  @objc AudioDailyBriefingView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e0f4002345c0 (0xf4002345c0) in binary!
+	0x8d968  @objc AudioDailyBriefingView.(null) <stripped>
+WARNING: couldn't find address 0x96f9c002344d8 (0x79c002344d8) in binary!
+	0x58000000c  @objc AudioDailyBriefingView.(null) <stripped>
+WARNING: couldn't find address 0x8e0c400234590 (0xc400234590) in binary!
+	0x8d938  @objc AudioDailyBriefingView.(null) <stripped>
  }
 
  struct NewsFeed.FormatWebArchiveResource {
@@ -21314,31 +22969,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let baseURL : ˜¨
-
+	let baseURL : ìÜ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let indexURL : ˜¨
-
+	let indexURL : ìÜ
  }
 
  class NewsFeed.DebugFormatSelectionView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var contentFrame : CGRect // +0x8 (0x20)
-	let contentView : UIView // +0x28 (0x8)
-	let topLeftView : UIView // +0x30 (0x8)
-	let topRightView : UIView // +0x38 (0x8)
-	let bottomLeftView : UIView // +0x40 (0x8)
-	let bottomRightView : UIView // +0x48 (0x8)
-	let borderView : UIView // +0x50 (0x8)
-	let cornerSize : CGSize // +0x58 (0x10)
+	var contentFrame : CGRect
+	let contentView : UIView
+	let topLeftView : UIView
+	let topRightView : UIView
+	let bottomLeftView : UIView
+	let bottomRightView : UIView
+	let borderView : UIView
+	let cornerSize : CGSize
 
 	// ObjC -> Swift bridged methods
-	0xc230d0  @objc DebugFormatSelectionView.initWithFrame: <stripped>
-	0xc23100  @objc DebugFormatSelectionView.initWithCoder: <stripped>
-	0xc237e0  @objc DebugFormatSelectionView.layoutSubviews <stripped>
-	0xc23a40  @objc DebugFormatSelectionView.traitCollectionDidChange: <stripped>
-	0xc23ac0  @objc DebugFormatSelectionView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e0c400234590 (0xc400234590) in binary!
+	0x8d938  @objc DebugFormatSelectionView.(null) <stripped>
+WARNING: couldn't find address 0x96f6c00234df0 (0x76c00234df0) in binary!
+	0x98e50  @objc DebugFormatSelectionView.(null) <stripped>
+WARNING: couldn't find address 0x96f5400234490 (0x75400234490) in binary!
+	0x28000000c  @objc DebugFormatSelectionView.(null) <stripped>
+WARNING: couldn't find address 0x8d8fc00234ad0 (0xfc00234ad0) in binary!
+	0x96f30  @objc DebugFormatSelectionView.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffb7c18  @objc DebugFormatSelectionView.(null) <stripped>
+ }
+
+ struct NewsFeed.ArticleAutomation {
+
+	// Properties
+	let identifier : String // +0x0
+	let hasVideo : Bool // +0x10
+	let hasAudioTrack : Bool // +0x11
+	let articleType : ArticleType // +0x12
+	let isPaid : Bool // +0x13
+	let isBundlePaid : Bool // +0x14
+ }
+
+ enum NewsFeed.ArticleType {
+
+	// Properties
+	case unknown  
+	case anf  
+	case rss  
+	case video  
+ }
+
+ enum NewsFeed.CodingKeys {
+
+	// Properties
+	case identifier  
+	case hasVideo  
+	case hasAudioTrack  
+	case articleType  
+	case isPaid  
+	case isBundlePaid  
  }
 
  struct NewsFeed.E18_V4 {
@@ -21372,20 +23061,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredCoverIssueLayoutAttributes : á÷
- // +0x8
+	let featuredCoverIssueLayoutAttributes : ’y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredSupplementaryDetailLayoutAttributes : aÿ
- // +0x10
+	let featuredSupplementaryDetailLayoutAttributes : Á{ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x18
+	let headlineLayoutAttributes : Ôí // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x20
+	let separatorFrames : Ÿ{ // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -21401,11 +23085,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatBindingViewController : DebugFormatInspectorPaneViewController {
 
 	// Properties
-	let editor : DebugFormatEditor // +0x38 (0x8)
+	let editor : DebugFormatEditor
 
 	// ObjC -> Swift bridged methods
-	0xc2f890  @objc DebugFormatBindingViewController.initWithCoder: <stripped>
-	0xc2f960  @objc DebugFormatBindingViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8d8fc00234ad0 (0xfc00234ad0) in binary!
+	0x96f30  @objc DebugFormatBindingViewController.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffb7c18  @objc DebugFormatBindingViewController.(null) <stripped>
+
+	// Swift methods
+ }
+
+ class NewsFeed.AdPolicyViewportEnvironmentProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let scrollView : UIScrollView
 
 	// Swift methods
  }
@@ -21413,11 +23107,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsFeed.FormatButtonNodeAction {
 
 	// Properties
+	case menu : FormatMenu
 	case command : FormatCommand
 	case openURL : FormatCommandOpenURL
 	case route : FormatRoute
 	case switch : FormatSwitchValue
 	case stateMachineEvent : FormatStateMachineActionEvent
+	case passthrough  
  }
 
  enum NewsFeed.CodingType {
@@ -21428,6 +23124,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case route  
 	case switch  
 	case stateMachineEvent  
+	case menu  
+	case passthrough  
  }
 
  struct NewsFeed.GapColorPalette {
@@ -21495,11 +23193,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -21544,8 +23240,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alpha : i‰
- // +0x0
+	let alpha : }à // +0x0
  }
 
  struct NewsFeed.Background {
@@ -21562,8 +23257,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let color : UIColor? // +0x0
 	let edgeInsets : UIEdgeInsets // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : i‰
- // +0x30
+	let cornerRadius : }à // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -21599,13 +23293,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case cannotCreateSystemImage : (name: String, configuration: UIImageConfiguration?)
 	case cannotCreateBundle : (identifier: String?)
 	case cannotCreateBundleImage : (bundle: NSBundle?, name: String)
-	case switchThrow : FormatSwitchNode
+	case buildingSwitchThrow : FormatSwitchNode
+	case bindingSwitchThrow : FormatSwitchNode
 	case notImplemented : String
-	case typeMissingForName : FormatOptionValue
+	case typeMissingForName : FormatOptionEnum
 	case typeMissingForNameInProperty : FormatCompilerProperty
 	case typeNotEnum : FormatCompilerProperty
+	case unexpectedType : FormatType
 	case typeMismatchComparison : FormatType
 	case typeEnumValueNotValidCase : Enum
+	case typeEnumValueNotValidPropertyCase : FormatEnumPropertyDefinition
+	case typeEnumNameMismatch : Enum
 	case typeNotStateMachine : (name: String)
 	case typeNotSupported : (name: String, message: String)
 	case optionValueMismatchComparison : FormatOptionValue
@@ -21619,14 +23317,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case incorrectTypeForOption : (identifier: String, expectedType: String, actualType: String)
 	case incorrectTypeForOptionBindingModifier : (expectedType: String, actualType: String)
 	case invalidOptionForSizeValue : FormatOption
-	case invalidEquation : (String, failingToken: String)
+	case invalidEquation : String
 	case unbalancedOperands : String
 	case unbalancedOperators : String
 	case unableToComputeEquation : String
 	case unbalancedParentheses : String
 	case internalEquationError : String
 	case missingOperatorBetweenOperands : String
-	case missingTokenInFormattedText : (String, token: String)
 	case unableToCreateRouteURL : (message: String)
 	case itemBindingOutsideOfBoundContext : (message: String)
 	case missingGroupItem : (forKey: String, availableKeys: [String])
@@ -21679,6 +23376,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case webEmbed  
 	case headline  
 	case group  
+ }
+
+ enum NewsFeed.FormatAdMetricsNodeContent {
+
+	// Properties
+	case binding : FormatAdMetricsNodeBinding
+ }
+
+ enum NewsFeed.CodingType {
+
+	// Properties
+	case binding  
  }
 
  class NewsFeed.FeedLayoutSolver {
@@ -21773,12 +23482,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rendererEnvironment : Ò
- // +0x10 (0x28)
-	var debugEnabled : Bool // +0x38 (0x1)
-	var debugColors : FeedItemDebugColors // +0x40 (0x8)
+	let rendererEnvironment : oR
+	var debugEnabled : Bool
+	var debugColors : FeedItemDebugColors
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var shineImageFactory : Å	 // +0x48 (0x8)
+	var shineImageFactory : ”ò
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : √£
+
 
 	// Swift methods
  }
@@ -21812,11 +23526,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.LayeredMediaLayerProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let loader : LayeredMediaLoaderType // +0x10 (0x28)
-	let traits : LayeredMediaTraits // +0x38 (0x8)
-	let variantFactory : LayeredMediaVariantFactoryType // +0x40 (0x28)
+	let loader : LayeredMediaLoaderType
+	let traits : LayeredMediaTraits
+	let variantFactory : LayeredMediaVariantFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cache : á // +0x68 (0x8)
+	let cache : ©˜
+
 
 	// Swift methods
  }
@@ -21854,11 +23569,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -21871,8 +23584,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct NewsFeed.DebugJournalSection {
 
 	// Properties
+	let identifier : String
 	let title : String
 	let items : DebugJournalItem
+	let color : UIColor
+	let position : Int?
  }
 
  struct NewsFeed.FormatButtonNodeStateMask {
@@ -21885,14 +23601,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x68
  }
 
  struct NewsFeed.FormatButtonNodeStateMaskDataLayoutAttributes {
 
 	// Properties
 	let layoutAttributes : FormatDataLayoutAttributes // +0x0
-	let contextLayoutOptions : FormatContextLayoutOptions // +0x68
+	let contextLayoutOptions : FormatContextLayoutOptions // +0x58
  }
 
  enum NewsFeed.CodingKeys {
@@ -21979,7 +23695,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.DebugFormatStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var $__lazy_storage_$_updateDateFormatter : NSDateFormatter? // +0x10 (0x8)
+	var $__lazy_storage_$_updateDateFormatter : NSDateFormatter?
 
 	// Swift methods
  }
@@ -21988,8 +23704,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : a
- // +0x10 (0x28)
+	let resolver : õ2
 
 	// Swift methods
  }
@@ -21999,12 +23714,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeedItemSupplementaryRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedItemSupplementaryRendererType {
 
 	// Properties
-	var colorPaletteProvider : ColorPaletteProviding // +0x10 (0x28)
-	let featuredIssueSupplementaryViewRenderer : FeaturedIssueSupplementViewRendererType // +0x38 (0x10)
-	let formatLayoutViewRenderer : FormatLayoutViewRendererType // +0x48 (0x10)
-	let internalErrorViewRenderer : InternalErrorViewRendererType // +0x58 (0x10)
-	var formatHeaderRegistrationIdentifiers : Set<String> // +0x68 (0x8)
-	var formatFooterRegistrationIdentifiers : Set<String> // +0x70 (0x8)
+	var colorPaletteProvider : ColorPaletteProviding
+	let featuredIssueSupplementaryViewRenderer : FeaturedIssueSupplementViewRendererType
+	let formatLayoutViewRenderer : FormatLayoutViewRendererType
+	let internalErrorViewRenderer : InternalErrorViewRendererType
+	var formatHeaderRegistrationIdentifiers : Set<String>
+	var formatFooterRegistrationIdentifiers : Set<String>
 
 	// Swift methods
  }
@@ -22072,17 +23787,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -22107,13 +23818,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let value : A
  }
 
- struct NewsFeed.CaseValue {
-
-	// Properties
-	let expression : FormatExpression
-	let value : A
- }
-
  enum NewsFeed.CodingKeys {
 
 	// Properties
@@ -22125,6 +23829,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case value  
+ }
+
+ struct NewsFeed.CaseValue {
+
+	// Properties
+	let expression : FormatExpression
+	let value : A
  }
 
  enum NewsFeed.CodingKeys {
@@ -22161,11 +23872,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -22181,7 +23890,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var itemBindings : FeedItemType // +0x0
 	let groupItemBindings : FeedGroupItemType // +0x8
 	let slotOptions : FormatMerge // +0x10
-	var evaluationBindings : [String : Bool] // +0x18
+	var evaluationBindings : FormatBindResult // +0x18
 	var iterationBindings : [String : (count: Int, stride: Int)] // +0x20
 	var stateMachineBindings : FormatStateMachineBinding // +0x28
  }
@@ -22200,8 +23909,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.CoverIssueViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CoverIssueViewRendererType {
 
 	// Properties
-	let rendererTool : FeedItemRendererTool // +0x10 (0x8)
-	let issueCoverViewRenderer : IssueCoverViewRendererType // +0x18 (0x28)
+	let rendererTool : FeedItemRendererTool
+	let issueCoverViewRenderer : IssueCoverViewRendererType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : Ö∏
+
 
 	// Swift methods
  }
@@ -22210,11 +23922,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minWidth : i‰
- // +0x0
+	let minWidth : }à // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxWidth : i‰
- // +0x10
+	let maxWidth : }à // +0x10
 	let minAppVersion : String? // +0x20
 	let maxAppVersion : String? // +0x30
  }
@@ -22232,23 +23942,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabelFrame : °Ó
- // +0x8
+	let titleLabelFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryFrame : °Ó
- // +0x10
+	let accessoryFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let moreActionsButtonFrame : °Ó
- // +0x18
+	let moreActionsButtonFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followButtonFrame : °Ó
- // +0x20
+	let followButtonFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverImageFrame : °Ó
- // +0x28
+	let coverImageFrame : ¡ê // +0x28
  }
 
  struct NewsFeed.Attributes {
@@ -22323,6 +24027,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case vSpacing  
 	case hSpacing  
 	case zero  
+	case adPrivacyMarker  
 	case flexible  
  }
 
@@ -22351,6 +24056,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case flexibleMaxHeight  
 	case flexibleMaxWidth  
 	case flexibleMaxSize  
+	case adPrivacyMarker  
  }
 
  struct NewsFeed.A6_V3 {
@@ -22380,11 +24086,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -22439,11 +24143,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -22451,6 +24153,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case frame  
 	case headlineLayoutAttributes  
+ }
+
+ struct NewsFeed.DebugFormatFeatureAvailablity {
+
+	// Properties
+	let editor : DebugFormatEditor // +0x0
  }
 
  enum NewsFeed.FormatRepeatNodeIteration {
@@ -22470,12 +24178,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.IssueCoverViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueCoverViewStylerType {
 
 	// Properties
-	let issueCoverColorPalette : IssueCoverColorPalette // +0x10 (0x18)
-	let colorPaletteProvider : ColorPaletteProviding // +0x28 (0x28)
+	let issueCoverColorPalette : IssueCoverColorPalette
+	let colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
  }
 
+ class NewsFeed.AnyFeedPrewarmer {
  struct NewsFeed.C12_V2 {
 
 	// Properties
@@ -22506,17 +24215,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -22540,7 +24245,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xcb58e0  @objc ServiceAssembly.init <stripped>
+WARNING: couldn't find address 0x909ac00234588 (0x1ac00234588) in binary!
+	0x18000000c  @objc ServiceAssembly.(null) <stripped>
  }
 
  struct NewsFeed.FormatInspectionList {
@@ -22554,10 +24260,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case minimumItemRequirement : (requirement: Int, count: Int)
+	case duplicateGroupIdentifier : String
+	case unmetRequirement : (reason: String)
 	case noPool  
 	case noCursor  
 	case cursorMismatch  
 	case noMoreGroups  
+	case noMoreContent  
+	case unneededContent  
  }
 
  enum NewsFeed.FormatNumberFormatStyle {
@@ -22602,14 +24312,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -22624,19 +24331,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.FeaturedIssueSupplementView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let headlinesHeader : UILabel // +0x8 (0x8)
-	let excerptLabel : UILabel // +0x10 (0x8)
+	let headlinesHeader : UILabel
+	let excerptLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageView : ﬂ // +0x18 (0x8)
-	let publisherLabel : UILabel // +0x20 (0x8)
-	let dateLabel : UILabel // +0x28 (0x8)
-	let premiumBadgeView : PremiumBadgeView // +0x30 (0x8)
-	let debugButton : DebugButton // +0x38 (0x8)
+	let publisherLogoImageView : i¢
+	let publisherLabel : UILabel
+	let dateLabel : UILabel
+	let premiumBadgeView : PremiumBadgeView
+	let debugButton : DebugButton
 
 	// ObjC -> Swift bridged methods
-	0xcc2090  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
-	0xcc2110  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
-	0xcc2160  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8e02c002344f8 (0x2c002344f8) in binary!
+	0x8d8a0  @objc FeaturedIssueSupplementView.(null) <stripped>
+WARNING: couldn't find address 0x96ed400234410 (0x6d400234410) in binary!
+	0x38000000c  @objc FeaturedIssueSupplementView.(null) <stripped>
+WARNING: couldn't find address 0x8dffc002344c8 (0x7fc002344c8) in binary!
+	0x8d870  @objc FeaturedIssueSupplementView.(null) <stripped>
  }
 
  struct NewsFeed.F12_V2 {
@@ -22667,14 +24377,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : Qú
- // +0x8
+	let headlineLayoutAttributes : ˚V // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let separatorFrames : Sÿ
- // +0x10
+	let separatorFrames : Ÿ{ // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -22689,26 +24396,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlinesHeaderFrame : °Ó
- // +0x8
+	let headlinesHeaderFrame : ¡ê // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let excerptLabelFrame : °Ó
- // +0x10
+	let excerptLabelFrame : ¡ê // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateLabelFrame : °Ó
- // +0x18
+	let dateLabelFrame : ¡ê // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherLogoImageViewFrame : °Ó
- // +0x20
+	let publisherLogoImageViewFrame : ¡ê // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let premiumBadgeViewFrame : °Ó
- // +0x28
+	let premiumBadgeViewFrame : ¡ê // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryDataStyle : ◊À
- // +0x30
+	let accessoryDataStyle : 5v // +0x30
  }
 
  struct NewsFeed.Attributes {
@@ -22762,6 +24462,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case publisherLogoImageViewFrame  
  }
 
+ struct NewsFeed.DebugJournalGroupSection {
+
+	// Properties
+	let title : String // +0x0
+	let items : DebugJournalGroupItem // +0x10
+ }
+
  struct NewsFeed.A12_V4 {
 
 	// Properties
@@ -22789,11 +24496,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -22810,8 +24515,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
 	let paidAccessChecker : FCPaidAccessCheckerType // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : √œ
- // +0x28 (0x28)
+	let alertPresenter : i // +0x28 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : go // +0x50 (0x28)
 
 	// Swift methods
  }
@@ -22825,6 +24531,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case style  
 	case switch  
 	case item  
+	case option  
  }
 
  enum NewsFeed.NewsEnvironment {
@@ -22840,7 +24547,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case demo2  
  }
 
- struct NewsFeed.Enviroment { }
+ struct NewsFeed.Environment { }
 
  struct NewsFeed.FeedLayoutResult {
 
@@ -22854,18 +24561,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsFeed.GapView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let activityIndicatorView : UIActivityIndicatorView // +0x8 (0x8)
+	let activityIndicatorView : UIActivityIndicatorView
 
 	// ObjC -> Swift bridged methods
-	0xcdacb0  @objc GapView.initWithFrame: <stripped>
-	0xcdae70  @objc GapView.initWithCoder: <stripped>
-	0xcdaf50  @objc GapView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8dffc002344c8 (0x7fc002344c8) in binary!
+	0x8d870  @objc GapView.(null) <stripped>
+WARNING: couldn't find address 0x96ea4002343e0 (0x6a4002343e0) in binary!
+	0x28000000c  @objc GapView.(null) <stripped>
+WARNING: couldn't find address 0x8d84c00234198 (0x4c00234198) in binary!
+	0x90910  @objc GapView.(null) <stripped>
  }
 
  class NewsFeed.StubThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xcdb290  @objc StubThumbnailProcessor.process: <stripped>
-	0xcdb310  @objc StubThumbnailProcessor.init <stripped>
+WARNING: couldn't find address 0x8d84c00234198 (0x4c00234198) in binary!
+	0x90910  @objc StubThumbnailProcessor.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x4ccffff79e8  @objc StubThumbnailProcessor.(null) <stripped>
  }
 
  struct NewsFeed.A18_V6 {
@@ -22895,11 +24607,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -22909,19 +24619,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case headlineLayoutAttributes  
  }
 
+ struct NewsFeed.Output {
+
+	// Properties
+	let decoration : FormatDecoration // +0x0
+	let usedProperties : FormatCompilerUsedProperties // +0x78
+ }
+
  struct NewsFeed.FormatDecorationCompilerScope {
 
 	// Properties
 	let decoration : FormatDecoration // +0x0
 	var context : FormatCompilerScopeContext // +0x78
 	var usedProperties : FormatCompilerUsedProperties // +0xc8
- }
-
- struct NewsFeed.Output {
-
-	// Properties
-	let decoration : FormatDecoration // +0x0
-	let usedProperties : FormatCompilerUsedProperties // +0x78
  }
 
  enum NewsFeed.FormatAccessibility {
@@ -22988,17 +24698,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featuredHeadlineLayoutAttributes : ãŸ
- // +0x8
+	let featuredHeadlineLayoutAttributes : }{ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x10
+	let headlineLayoutAttributes : Ôí // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacerFrame : °Ó
- // +0x18
+	let spacerFrame : ¡ê // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -23040,6 +24746,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case selectors  
  }
 
+ class NewsFeed.FeedSuggestionClusteringService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let cloudContext : FCCloudContext
+	let paidAccessChecker : FCPaidAccessCheckerType
+
+	// Swift methods
+	0xcea750  class func FeedSuggestionClusteringService.__allocating_init(cloudContext:paidAccessChecker:) // init 
+ }
+
+ struct NewsFeed.Suggestions { }
+
  struct NewsFeed.A8_V13 {
 
 	// Properties
@@ -23067,11 +24785,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : °Ó
- // +0x0
+	let frame : ¡ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineLayoutAttributes : 9Î
- // +0x8
+	let headlineLayoutAttributes : Ôí // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -23083,6 +24799,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsFeed.StubImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xcf64b0  @objc StubImageProcessor.process: <stripped>
-	0xcf6530  @objc StubImageProcessor.init <stripped>
+WARNING: couldn't find address 0x8d82c00234178 (0x2c00234178) in binary!
+	0x908f0  @objc StubImageProcessor.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x54e3a4d4152  @objc StubImageProcessor.(null) <stripped>
  }

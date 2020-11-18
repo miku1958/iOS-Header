@@ -4,7 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol PSSystemPolicyForAppDelegate
+#import <Preferences/NSObject-Protocol.h>
+
+@class UIViewController;
+
+@protocol PSSystemPolicyForAppDelegate <NSObject>
 - (void)reloadSpecifiers;
+
+@optional
+- (void)showController:(UIViewController *)arg1 animate:(BOOL)arg2;
 @end
 

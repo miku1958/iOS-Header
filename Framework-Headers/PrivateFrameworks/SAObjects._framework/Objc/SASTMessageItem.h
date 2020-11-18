@@ -8,12 +8,13 @@
 
 #import <SAObjects/SASTTemplateItem-Protocol.h>
 
-@class NSString, SAUIDecoratedText;
+@class NSString, NSURL, SAUIDecoratedText;
 
 @interface SASTMessageItem : AceObject <SASTTemplateItem>
 {
 }
 
+@property (copy, nonatomic) NSURL *audioMessageURL;
 @property (copy, nonatomic) NSString *bundleId;
 @property (strong, nonatomic) SAUIDecoratedText *content;
 @property (readonly, copy) NSString *debugDescription;

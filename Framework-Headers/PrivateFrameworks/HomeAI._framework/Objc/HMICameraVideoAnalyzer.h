@@ -8,7 +8,7 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class HMFUnfairLock, HMIAnalysisService, HMICameraVideoAnalyzerConfiguration, HMICameraVideoAnalyzerHistory, HMICameraVideoAnalyzerScheduler, NSArray, NSDate, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMFUnfairLock, HMIAnalysisService, HMICameraVideoAnalyzerConfiguration, HMICameraVideoAnalyzerHistory, HMICameraVideoAnalyzerRequest, HMICameraVideoAnalyzerScheduler, HMIHomePersonManager, HMIVideoAnalyzer, NSArray, NSDate, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol HMICameraVideoAnalyzerDelegate, OS_dispatch_queue;
 
 @interface HMICameraVideoAnalyzer : HMFObject <HMFLogging>
@@ -22,26 +22,36 @@
     BOOL _sessionEnded;
     BOOL _uploadVideoAnalysisEvent;
     BOOL _saveVideoFramesToDisk;
+    BOOL _transcodeFragment;
     id<HMICameraVideoAnalyzerDelegate> _delegate;
     NSUUID *_identifier;
+    HMIHomePersonManager *_homePersonManager;
+    NSSet *_externalPersonManagers;
     HMFUnfairLock *_lock;
     NSMutableArray *_internalPendingRequests;
     NSDate *_lastRequestSubmissionTime;
     HMICameraVideoAnalyzerHistory *_history;
+    HMIVideoAnalyzer *_streamAnalyzer;
+    HMICameraVideoAnalyzerRequest *_currentRequest;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMICameraVideoAnalyzerScheduler *_scheduler;
     unsigned long long _mediaIntegritySequenceNumber;
     HMICameraVideoAnalyzerConfiguration *_configuration;
     HMIAnalysisService *_remoteAnalysisService;
+    CDStruct_1b6d18a9 _currentSessionDuration;
 }
 
 @property BOOL analysisInProgress; // @synthesize analysisInProgress=_analysisInProgress;
 @property (strong) HMICameraVideoAnalyzerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (strong) HMICameraVideoAnalyzerRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
+@property CDStruct_1b6d18a9 currentSessionDuration; // @synthesize currentSessionDuration=_currentSessionDuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMICameraVideoAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong) NSSet *externalPersonManagers; // @synthesize externalPersonManagers=_externalPersonManagers;
 @property (readonly) unsigned long long hash;
 @property (readonly) HMICameraVideoAnalyzerHistory *history; // @synthesize history=_history;
+@property (strong) HMIHomePersonManager *homePersonManager; // @synthesize homePersonManager=_homePersonManager;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property BOOL inBypassMode; // @synthesize inBypassMode=_inBypassMode;
 @property BOOL inErrorState; // @synthesize inErrorState=_inErrorState;
@@ -56,10 +66,13 @@
 @property (readonly) HMICameraVideoAnalyzerScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property BOOL sessionEnded; // @synthesize sessionEnded=_sessionEnded;
 @property (readonly) BOOL skipSequentialMediaIntegrityCheck; // @synthesize skipSequentialMediaIntegrityCheck=_skipSequentialMediaIntegrityCheck;
+@property (readonly) HMIVideoAnalyzer *streamAnalyzer; // @synthesize streamAnalyzer=_streamAnalyzer;
 @property (readonly) Class superclass;
+@property (readonly) BOOL transcodeFragment; // @synthesize transcodeFragment=_transcodeFragment;
 @property (readonly, getter=shouldUploadVideoAnalysisEvent) BOOL uploadVideoAnalysisEvent; // @synthesize uploadVideoAnalysisEvent=_uploadVideoAnalysisEvent;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)classHierarchyMap;
 + (long long)confidenceThatEventOccurred:(long long)arg1 events:(long long)arg2 annotationScores:(id)arg3;
 + (id)logCategory;
 + (id)queryVersionInformation;
@@ -73,6 +86,7 @@
 - (BOOL)_analyzeVideoFrame:(id)arg1 request:(id)arg2 result:(id *)arg3 error:(id *)arg4;
 - (BOOL)_checkRequest:(id)arg1;
 - (void)_enterErrorState;
+- (void)_finishEncodingSessionForRequest:(id)arg1 withResult:(id)arg2;
 - (id)_flagCountsAsString;
 - (void)_handleDidAnalyzeRequest:(id)arg1;
 - (void)_handleDidAnalyzeRequest:(id)arg1 withResult:(id)arg2;
@@ -90,17 +104,18 @@
 - (id)_outcomeCountsAsString;
 - (void)_predictRequest:(id)arg1;
 - (void)_requestDidEnd:(id)arg1 outcome:(long long)arg2;
-- (BOOL)_saveVideoFrame:(id)arg1 videoFragment:(id)arg2 error:(id *)arg3;
 - (void)_scheduleRequest:(id)arg1;
 - (void)_sendAnalyticsEventForRequest:(id)arg1 outcome:(long long)arg2 result:(id)arg3 error:(id)arg4;
 - (BOOL)_shouldContinueAnalyzingRequest:(id)arg1 resultCode:(long long *)arg2;
 - (void)_willAnalyzeRequest:(id)arg1;
 - (void)analyzeFragment:(id)arg1;
 - (void)clearPendingFragments;
+- (id)filterDetectedObjects:(id)arg1 request:(id)arg2 result:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 identifier:(id)arg2;
 - (id)logIdentifier;
 - (unsigned long long)pendingRequestsCount;
 - (void)processPendingRequests;
+- (void)saveActivityZoneresultsInJSON:(id)arg1 result:(id)arg2 videoFrame:(id)arg3 motionDetection:(id)arg4;
 
 @end
 

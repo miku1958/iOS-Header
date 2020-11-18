@@ -19,8 +19,6 @@
 
 + (double)decayValue:(double)arg1 withDecayRate:(double)arg2 forTimeElapsed:(double)arg3;
 + (id)defaultStore;
-+ (double)squash:(double)arg1 usingHalfSigmoidWithScalingFactor:(double)arg2;
-+ (double)squash:(double)arg1 withSigmoidWidth:(double)arg2 withPeakAt:(double)arg3;
 - (id)_initFromSubclass;
 - (BOOL)clearWithError:(id *)arg1;
 - (BOOL)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
@@ -30,7 +28,7 @@
 - (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThan:(id)arg3 deletedCount:(unsigned long long *)arg4 error:(id *)arg5;
 - (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
 - (BOOL)deleteAllTopicsWithTopicId:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
-- (BOOL)donateTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 sentimentScore:(double)arg5 error:(id *)arg6;
+- (BOOL)donateTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 sentimentScore:(double)arg5 exactMatchesInSourceText:(id)arg6 error:(id *)arg7;
 - (id)init;
 - (BOOL)iterRankedTopicsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)iterScoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
@@ -38,6 +36,7 @@
 - (id)rankedTopicsWithQuery:(id)arg1 error:(id *)arg2;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)scoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3;
+- (id)topicExtractionsFromText:(id)arg1 error:(id *)arg2;
 - (id)topicRecordsWithQuery:(id)arg1 error:(id *)arg2;
 - (id)unmapMappedTopicIdentifier:(id)arg1 mappingIdentifier:(id)arg2 error:(id *)arg3;
 

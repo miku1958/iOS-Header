@@ -22,6 +22,7 @@
     FBSceneMonitor *_sceneMonitor;
     NSHashTable *_observers;
     NSMapTable *_observersToObserverBehaviors;
+    NSHashTable *_actionConsumers;
 }
 
 @property (readonly, nonatomic, getter=isContentReady) BOOL contentReady;
@@ -48,12 +49,14 @@
 - (void)_didUpdatePairingStatusForExternalSceneIdentifiers:(id)arg1;
 - (void)_didUpdateSettingsWithDiff:(id)arg1 previousSettings:(id)arg2;
 - (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_handleSceneAction:(id)arg1;
 - (id)_initWithDefinition:(id)arg1 displayIdentity:(id)arg2;
 - (id)_initWithDefinition:(id)arg1 scene:(id)arg2 displayIdentity:(id)arg3;
 - (id)_initWithScene:(id)arg1 displayIdentity:(id)arg2;
 - (void)_noteSceneCreated:(id)arg1;
 - (void)_noteSceneDestroyed:(id)arg1;
 - (void)_setScene:(id)arg1;
+- (void)addActionConsumer:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -61,6 +64,7 @@
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPairedWithExternalSceneWithIdentifier:(id)arg1;
+- (void)removeActionConsumer:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)sceneContentStateDidChange:(id)arg1;
 - (void)sceneMonitor:(id)arg1 pairingStatusDidChangeForExternalSceneIDs:(id)arg2;

@@ -16,17 +16,23 @@
     BOOL mIsMaxColumnValid;
     BOOL mIsMaxRowValid;
     TNPageCoordinateDictionary *mHintCacheEntryDictionary;
+    set_ad2bbc7b _pageCoordinatesWithAnnotations;
+    BOOL _pageCoordinatesWithAnnotationsIsValid;
 }
 
 @property (strong) TSDDrawableInfo *info; // @synthesize info=mInfo;
 @property (readonly) TNPageController *pageController; // @synthesize pageController=mPageController;
+@property (nonatomic) BOOL pageCoordinatesWithAnnotationsIsValid; // @synthesize pageCoordinatesWithAnnotationsIsValid=_pageCoordinatesWithAnnotationsIsValid;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)_infoPartitioner;
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1 pageController:(id)arg2;
 - (void)invalidate;
 - (id)layoutAtCoordinate:(struct TSUCellCoord)arg1 parentLayout:(id)arg2;
 - (id)p_hintCacheEntryAtCoordinate:(struct TSUCellCoord)arg1;
+- (set_ad2bbc7b)pageCoordinatesWithAnnotations;
 - (CDStruct_39acd760)pageRangeWithUpperBound:(struct TSUCellCoord)arg1;
 
 @end

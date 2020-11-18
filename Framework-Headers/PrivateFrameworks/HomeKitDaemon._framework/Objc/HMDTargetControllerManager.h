@@ -9,10 +9,11 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDHAPAccessory, NSArray, NSMutableSet, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDTargetControllerManager : HMFObject <HMFLogging>
 {
+    id<HMFLocking> _lock;
     unsigned char _maximumTargets;
     BOOL _configurationRefreshed;
     HMDHAPAccessory *_controller;
@@ -20,7 +21,6 @@
     unsigned long long _ticksPerSecond;
     NSArray *_buttonConfiguration;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSString *_logID;
 }
 
@@ -33,7 +33,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (nonatomic) unsigned char maximumTargets; // @synthesize maximumTargets=_maximumTargets;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *targetUUIDs;
 @property (nonatomic) unsigned long long ticksPerSecond; // @synthesize ticksPerSecond=_ticksPerSecond;
@@ -41,8 +40,8 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)__accessoryIsNotReachable:(id)arg1;
-- (void)__accessoryIsReachable:(id)arg1;
+- (void)__accessoryConnected:(id)arg1;
+- (void)__accessoryDisconnected:(id)arg1;
 - (void)__accessoryNameUpdated:(id)arg1;
 - (void)__accessoryRemoved:(id)arg1;
 - (void)__characteristicEventsReceived:(id)arg1;

@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)oneUpPresentationHelperShouldAutoPlay:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (id)oneUpPresentationHelperViewHostingTilingView:(id)arg1;
+- (BOOL)oneUpPresentationHelperWantsShowInLibraryButton:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)presentingViewControllerViewDidAppear:(BOOL)arg1;
 - (void)presentingViewControllerViewDidDisappear:(BOOL)arg1;

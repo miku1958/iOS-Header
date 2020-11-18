@@ -7,7 +7,9 @@
 #import <FileProvider/FPItem.h>
 
 @interface FPItem (DOCThumbnailAdditions)
-- (BOOL)doc_isSMBSharepoint;
-- (unsigned long long)doc_thumbnailFolderType;
+
+@property (readonly, nonatomic) unsigned long long doc_folderIconType;
+@property (readonly, nonatomic) BOOL doc_isSMBSharepoint;
+
 @end
 

@@ -6,15 +6,19 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+#import <NewsUI2/FCAudioPlaylistObserving-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI218AudioPlaylistStore : _TtCs12_SwiftObject
+@interface _TtC7NewsUI218AudioPlaylistStore : _TtCs12_SwiftObject <FCAudioPlaylistObserving>
 {
     MISSING_TYPE *playlistUpdatedSignal;
     MISSING_TYPE *audioPlaylist;
     MISSING_TYPE *headlineService;
     MISSING_TYPE *headlineCache;
 }
+
+- (void)audioPlaylistDidChange:(id)arg1;
 
 @end
 

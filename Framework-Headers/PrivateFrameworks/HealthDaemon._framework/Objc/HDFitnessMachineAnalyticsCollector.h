@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HDAWDHealthKitGymKitWorkoutEvent, HKPersistentTimer;
+@class HDGymKitWorkoutAnalyticEvent, HKPersistentTimer;
 
 @interface HDFitnessMachineAnalyticsCollector : NSObject
 {
-    HDAWDHealthKitGymKitWorkoutEvent *_gymKitWorkoutEvent;
     HKPersistentTimer *_authorizationTimer;
+    HDGymKitWorkoutAnalyticEvent *_gymKitWorkoutEvent;
 }
 
 @property (strong, nonatomic) HKPersistentTimer *authorizationTimer; // @synthesize authorizationTimer=_authorizationTimer;
-@property (strong, nonatomic) HDAWDHealthKitGymKitWorkoutEvent *gymKitWorkoutEvent; // @synthesize gymKitWorkoutEvent=_gymKitWorkoutEvent;
+@property (strong, nonatomic) HDGymKitWorkoutAnalyticEvent *gymKitWorkoutEvent; // @synthesize gymKitWorkoutEvent=_gymKitWorkoutEvent;
 
 - (void).cxx_destruct;
 - (long long)_failureReasonForError:(id)arg1;
@@ -25,7 +25,7 @@
 - (void)setFitnessMachineType:(unsigned long long)arg1 manufacturer:(id)arg2;
 - (void)userBeganPairing;
 - (void)userIsAuthorized;
-- (void)workoutEnded;
+- (void)workoutEndedSubmitMetricsWith:(id)arg1;
 - (void)workoutFailedWithError:(id)arg1;
 
 @end

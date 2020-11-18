@@ -52,12 +52,13 @@
 - (id)_initWithPasteConfiguration:(id)arg1;
 - (void)_prepareItemsInSessionForDrop:(id)arg1;
 - (void)_sendSessionDidEnd:(id)arg1;
+- (id)_setDownAnimation:(id)arg1 customSpringAnimationBehaviorForSetDownOfDragItem:(id)arg2;
 - (id)_setDownAnimation:(id)arg1 prepareForSetDownOfDragItem:(id)arg2 visibleDroppedItem:(id)arg3;
 - (BOOL)_setDownAnimation:(id)arg1 shouldDelaySetDownOfDragItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setDownAnimation:(id)arg1 willAnimateSetDownOfDragItem:(id)arg2 withAnimator:(id)arg3;
-- (id)_setDownAnimation:(id)arg1 windowForSetDownOfDragItem:(id)arg2;
 - (unsigned long long)_setLastDragOperation:(unsigned long long)arg1 forbidden:(BOOL)arg2 precise:(BOOL)arg3 prefersFullSizePreview:(BOOL)arg4 preferredBadgeStyle:(long long)arg5 onSession:(id)arg6;
 - (unsigned long long)_validateDragOperation:(unsigned long long)arg1 forSelector:(SEL)arg2 delegate:(id)arg3 dropSession:(id)arg4 onSession:(id)arg5 forbidden:(BOOL *)arg6;
+- (id)_windowForSetDownOfDragItem:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isActive;

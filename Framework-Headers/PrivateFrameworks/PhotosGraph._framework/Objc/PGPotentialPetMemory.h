@@ -6,18 +6,18 @@
 
 #import <PhotosGraph/PGPotentialMemory.h>
 
-@class NSArray, NSMutableSet, PGGraphNode;
+@class NSArray, NSMutableSet, PGGraphPersonNode;
 
 @interface PGPotentialPetMemory : PGPotentialMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    NSArray *_petAssets;
-    PGGraphNode *_owner;
+    NSArray *_petAssetLocalIdentifiers;
+    PGGraphPersonNode *_ownerPersonNode;
     long long _year;
 }
 
-@property (readonly) PGGraphNode *owner; // @synthesize owner=_owner;
-@property (strong) NSArray *petAssets; // @synthesize petAssets=_petAssets;
+@property (readonly) PGGraphPersonNode *ownerPersonNode; // @synthesize ownerPersonNode=_ownerPersonNode;
+@property (strong) NSArray *petAssetLocalIdentifiers; // @synthesize petAssetLocalIdentifiers=_petAssetLocalIdentifiers;
 @property (readonly) long long year; // @synthesize year=_year;
 
 - (void).cxx_destruct;

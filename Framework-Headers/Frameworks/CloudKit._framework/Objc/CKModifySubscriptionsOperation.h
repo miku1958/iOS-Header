@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKModifySubscriptionsOperationCallbacks-Protocol.h>
 
-@interface CKModifySubscriptionsOperation : CKDatabaseOperation
+@class CKModifySubscriptionsOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifySubscriptionsOperationCallbacks;
+
+@interface CKModifySubscriptionsOperation : CKDatabaseOperation <CKModifySubscriptionsOperationCallbacks>
 {
     CDUnknownBlockType _modifySubscriptionsCompletionBlock;
     NSArray *_subscriptionsToSave;
@@ -19,21 +22,25 @@
     NSMutableDictionary *_subscriptionErrors;
 }
 
+@property (readonly, nonatomic) id<CKModifySubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableArray *deletedSubscriptionIDs; // @synthesize deletedSubscriptionIDs=_deletedSubscriptionIDs;
 @property (copy, nonatomic) CDUnknownBlockType modifySubscriptionsCompletionBlock; // @synthesize modifySubscriptionsCompletionBlock=_modifySubscriptionsCompletionBlock;
+@property (readonly, nonatomic) CKModifySubscriptionsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableArray *savedSubscriptions; // @synthesize savedSubscriptions=_savedSubscriptions;
 @property (strong, nonatomic) NSMutableDictionary *subscriptionErrors; // @synthesize subscriptionErrors=_subscriptionErrors;
 @property (copy, nonatomic) NSArray *subscriptionIDsToDelete; // @synthesize subscriptionIDsToDelete=_subscriptionIDsToDelete;
 @property (strong, nonatomic) NSMutableDictionary *subscriptionsBySubscriptionIDs; // @synthesize subscriptionsBySubscriptionIDs=_subscriptionsBySubscriptionIDs;
 @property (copy, nonatomic) NSArray *subscriptionsToSave; // @synthesize subscriptionsToSave=_subscriptionsToSave;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleSubscriptionDeleteForSubscriptionID:(id)arg1 error:(id)arg2;
+- (void)handleSubscriptionSaveForSubscriptionID:(id)arg1 error:(id)arg2;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithSubscriptionsToSave:(id)arg1 subscriptionIDsToDelete:(id)arg2;

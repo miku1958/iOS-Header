@@ -6,26 +6,24 @@
 
 #import <PhotosUICore/PXGadgetProvider.h>
 
-@class NSArray;
-
 @interface PXSampleGadgetProvider : PXGadgetProvider
 {
-    BOOL _includeHorizontal;
     BOOL _hasLoadedData;
-    NSArray *_sampleGadgets;
+    unsigned long long _sampleGadgetType;
     double _minimumHeight;
 }
 
 @property (nonatomic) BOOL hasLoadedData; // @synthesize hasLoadedData=_hasLoadedData;
-@property (readonly, nonatomic) BOOL includeHorizontal; // @synthesize includeHorizontal=_includeHorizontal;
 @property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
-@property (strong, nonatomic) NSArray *sampleGadgets; // @synthesize sampleGadgets=_sampleGadgets;
+@property (nonatomic) unsigned long long sampleGadgetType; // @synthesize sampleGadgetType=_sampleGadgetType;
 
-- (void).cxx_destruct;
++ (id)defaultSampleGadgetProviders;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
-- (id)initWithMinimumHeight:(double)arg1;
+- (id)initWithIdentifier:(id)arg1;
+- (id)initWithSampleGadgetType:(unsigned long long)arg1;
+- (id)initWithSampleGadgetType:(unsigned long long)arg1 minimumHeight:(double)arg2;
 - (void)loadDataForGadgets;
 
 @end

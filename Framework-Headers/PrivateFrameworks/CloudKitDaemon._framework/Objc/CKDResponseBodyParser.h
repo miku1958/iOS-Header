@@ -13,6 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_parseQueue;
     NSMutableData *_parserData;
+    BOOL _testRepeatedParseResults;
     NSError *_parserError;
     CDUnknownBlockType _objectParsedBlock;
     long long _qualityOfService;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSMutableData *parserData;
 @property (strong, nonatomic) NSError *parserError; // @synthesize parserError=_parserError;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (nonatomic) BOOL testRepeatedParseResults; // @synthesize testRepeatedParseResults=_testRepeatedParseResults;
 
 - (void).cxx_destruct;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;

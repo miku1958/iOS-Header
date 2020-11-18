@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
+@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardRemoteContentSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
 
 @interface CSLockScreenSettings : PTSettings
 {
@@ -25,6 +25,10 @@
     BOOL _prewarmsCameraHardwareOnTap;
     BOOL _prelaunchesCameraAppOnSwipe;
     BOOL _prelaunchesCameraAppOnTap;
+    double _minTouchIDDuration;
+    double _idleUntilShimmerDuration;
+    double _restToOpenDuration;
+    double _restToOpenIdleDuration;
     PTOutlet *_addNotificationOutlet;
     CSBounceSettings *_verticalBounceSettings;
     CSBounceSettings *_horizontalBounceSettings;
@@ -36,6 +40,7 @@
     CSDashBoardScrollModifierSettings *_dashBoardScrollModifierSettings;
     CSDashBoardNotificationVersusPagingScrollSettings *_dashBoardNotificationScrollSettings;
     CSDashBoardQuickActionsButtonSettings *_dashBoardQuickActionButtonSettings;
+    CSDashBoardRemoteContentSettings *_dashBoardRemoteContentSettings;
     CSCoverSheetDismissGestureSettings *_coverSheetDismissGestureSettings;
     SBFAnimationSettings *_unlockToPhoneWallpaperOutSettings;
     SBFAnimationSettings *_unlockToPhoneWallpaperInSettings;
@@ -59,6 +64,8 @@
     double _unlockSwipeWallpaperAlpha;
     double _cameraPrewarmThresholdOnSwipe;
     double _cameraPrelaunchThresholdOnSwipe;
+    double _cameraPrewarmDebounceTimeInterval;
+    double _cameraPrewarmAutoCancelTimeInterval;
 }
 
 @property (strong) PTOutlet *addNotificationOutlet; // @synthesize addNotificationOutlet=_addNotificationOutlet;
@@ -66,20 +73,25 @@
 @property double appGrabberSlideUpVelocityThreshold; // @synthesize appGrabberSlideUpVelocityThreshold=_appGrabberSlideUpVelocityThreshold;
 @property BOOL autoDismissUnlockedLockScreen; // @synthesize autoDismissUnlockedLockScreen=_autoDismissUnlockedLockScreen;
 @property double cameraPrelaunchThresholdOnSwipe; // @synthesize cameraPrelaunchThresholdOnSwipe=_cameraPrelaunchThresholdOnSwipe;
+@property double cameraPrewarmAutoCancelTimeInterval; // @synthesize cameraPrewarmAutoCancelTimeInterval=_cameraPrewarmAutoCancelTimeInterval;
+@property double cameraPrewarmDebounceTimeInterval; // @synthesize cameraPrewarmDebounceTimeInterval=_cameraPrewarmDebounceTimeInterval;
 @property double cameraPrewarmThresholdOnSwipe; // @synthesize cameraPrewarmThresholdOnSwipe=_cameraPrewarmThresholdOnSwipe;
 @property (strong) CSCoverSheetDismissGestureSettings *coverSheetDismissGestureSettings; // @synthesize coverSheetDismissGestureSettings=_coverSheetDismissGestureSettings;
 @property (strong) CSCoverSheetTransitionsSettings *coverSheetTransitionsSettings; // @synthesize coverSheetTransitionsSettings=_coverSheetTransitionsSettings;
 @property (strong) CSDashBoardNotificationVersusPagingScrollSettings *dashBoardNotificationScrollSettings; // @synthesize dashBoardNotificationScrollSettings=_dashBoardNotificationScrollSettings;
 @property (strong) CSDashBoardQuickActionsButtonSettings *dashBoardQuickActionButtonSettings; // @synthesize dashBoardQuickActionButtonSettings=_dashBoardQuickActionButtonSettings;
+@property (strong) CSDashBoardRemoteContentSettings *dashBoardRemoteContentSettings; // @synthesize dashBoardRemoteContentSettings=_dashBoardRemoteContentSettings;
 @property (strong) CSDashBoardScrollModifierSettings *dashBoardScrollModifierSettings; // @synthesize dashBoardScrollModifierSettings=_dashBoardScrollModifierSettings;
 @property (strong) CSBounceSettings *horizontalBounceSettings; // @synthesize horizontalBounceSettings=_horizontalBounceSettings;
 @property (strong) CSHorizontalScrollFailureRecognizerSettings *horizontalScrollFailureRecognizerSettings; // @synthesize horizontalScrollFailureRecognizerSettings=_horizontalScrollFailureRecognizerSettings;
+@property double idleUntilShimmerDuration; // @synthesize idleUntilShimmerDuration=_idleUntilShimmerDuration;
 @property BOOL killsInsecureDrawingApps; // @synthesize killsInsecureDrawingApps=_killsInsecureDrawingApps;
 @property double lockJiggleAnimationDelay; // @synthesize lockJiggleAnimationDelay=_lockJiggleAnimationDelay;
 @property double lockJiggleHapticDelay; // @synthesize lockJiggleHapticDelay=_lockJiggleHapticDelay;
 @property double mainToCameraViewSlideCompletionPercentage; // @synthesize mainToCameraViewSlideCompletionPercentage=_mainToCameraViewSlideCompletionPercentage;
 @property double mainToTodayViewSlideCompletionPercentage; // @synthesize mainToTodayViewSlideCompletionPercentage=_mainToTodayViewSlideCompletionPercentage;
 @property (strong) CSLockScreenMesaSettings *mesaSettings; // @synthesize mesaSettings=_mesaSettings;
+@property double minTouchIDDuration; // @synthesize minTouchIDDuration=_minTouchIDDuration;
 @property double notificationScrollForIdleTimerDisabledOffset; // @synthesize notificationScrollForIdleTimerDisabledOffset=_notificationScrollForIdleTimerDisabledOffset;
 @property double notificationScrollForIdleTimerDisabledOffsetIPad; // @synthesize notificationScrollForIdleTimerDisabledOffsetIPad=_notificationScrollForIdleTimerDisabledOffsetIPad;
 @property double nowPlayingHeight; // @synthesize nowPlayingHeight=_nowPlayingHeight;
@@ -89,6 +101,8 @@
 @property BOOL prelaunchesCameraAppOnTap; // @synthesize prelaunchesCameraAppOnTap=_prelaunchesCameraAppOnTap;
 @property BOOL prewarmsCameraHardwareOnSwipe; // @synthesize prewarmsCameraHardwareOnSwipe=_prewarmsCameraHardwareOnSwipe;
 @property BOOL prewarmsCameraHardwareOnTap; // @synthesize prewarmsCameraHardwareOnTap=_prewarmsCameraHardwareOnTap;
+@property double restToOpenDuration; // @synthesize restToOpenDuration=_restToOpenDuration;
+@property double restToOpenIdleDuration; // @synthesize restToOpenIdleDuration=_restToOpenIdleDuration;
 @property BOOL showBlockedUI; // @synthesize showBlockedUI=_showBlockedUI;
 @property BOOL showEmergencyDialer; // @synthesize showEmergencyDialer=_showEmergencyDialer;
 @property BOOL showLogoutButton; // @synthesize showLogoutButton=_showLogoutButton;

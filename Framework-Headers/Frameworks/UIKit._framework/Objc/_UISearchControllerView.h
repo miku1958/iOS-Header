@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface _UISearchControllerView : UIView
 {
-    BOOL __disableSearchBarContainerViewOrdering;
+    BOOL __ensureSystemInputViewAboveSearchBarContainerView;
 }
 
-@property (nonatomic) BOOL _disableSearchBarContainerViewOrdering; // @synthesize _disableSearchBarContainerViewOrdering=__disableSearchBarContainerViewOrdering;
+@property (nonatomic) BOOL _ensureSystemInputViewAboveSearchBarContainerView; // @synthesize _ensureSystemInputViewAboveSearchBarContainerView=__ensureSystemInputViewAboveSearchBarContainerView;
 
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (void)_ensureCarPlayLimitedUIIsOnTop;

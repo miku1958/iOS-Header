@@ -6,10 +6,16 @@
 
 #import <NeutrinoCore/NUVideoCompositor.h>
 
+@class NSString;
+
 @interface NUVideoPlaybackCompositor : NUVideoCompositor
 {
+    NSString *_label;
 }
 
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+
+- (void).cxx_destruct;
 - (void)fulfillVideoCompositionRequest:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <FrontBoardServices/FBSProcessExecutionProvision.h>
 
-@class BSMachPortSendRight, BSTimer, NSObject;
+@class BSTimer, NSObject, RBSProcessHandle;
 @protocol OS_dispatch_queue;
 
 @interface FBSProcessResourceProvision : FBSProcessExecutionProvision
@@ -16,7 +16,7 @@
     unsigned long long _consumedValue;
     NSObject<OS_dispatch_queue> *_queue;
     BSTimer *_timer;
-    BSMachPortSendRight *_taskRight;
+    RBSProcessHandle *_processHandle;
 }
 
 @property (nonatomic) CDStruct_4e83c7bf allowance; // @synthesize allowance=_allowance;
@@ -26,7 +26,6 @@
 + (id)provisionWithResourceType:(long long)arg1 timeInterval:(double)arg2;
 - (void).cxx_destruct;
 - (void)_beginMonitoring;
-- (double)_getElapsedCPUTimeForTaskPort:(unsigned int)arg1;
 - (void)_prepareForReuse;
 - (BOOL)_queue_calculateValueConsumed:(out unsigned long long *)arg1;
 - (void)_queue_evaluateConsumption;

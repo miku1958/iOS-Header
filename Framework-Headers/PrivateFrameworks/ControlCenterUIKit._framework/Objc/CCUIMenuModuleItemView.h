@@ -6,11 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-#import <ControlCenterUIKit/_UICursorInteractionDelegate-Protocol.h>
+#import <ControlCenterUIKit/UIPointerInteractionDelegate-Protocol.h>
 
 @class BSUIEmojiLabelView, CCUIMenuModuleItem, MTVisualStylingProvider, NSString, UIView;
 
-@interface CCUIMenuModuleItemView : UIControl <_UICursorInteractionDelegate>
+@interface CCUIMenuModuleItemView : UIControl <UIPointerInteractionDelegate>
 {
     BSUIEmojiLabelView *_titleLabel;
     BSUIEmojiLabelView *_subtitleLabel;
@@ -24,6 +24,7 @@
     BOOL _useTallLayout;
     BOOL _useTrailingCheckmarkLayout;
     BOOL _useTrailingInset;
+    BOOL _shouldLimitContentSizeCategory;
     double _preferredMaxLayoutWidth;
     unsigned long long _indentation;
 }
@@ -36,17 +37,20 @@
 @property (strong, nonatomic) CCUIMenuModuleItem *menuItem; // @synthesize menuItem=_menuItem;
 @property (nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
 @property (nonatomic) BOOL separatorVisible; // @synthesize separatorVisible=_separatorVisible;
+@property (nonatomic) BOOL shouldLimitContentSizeCategory; // @synthesize shouldLimitContentSizeCategory=_shouldLimitContentSizeCategory;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *trailingView; // @synthesize trailingView=_trailingView;
 @property (nonatomic) BOOL useTallLayout; // @synthesize useTallLayout=_useTallLayout;
 @property (nonatomic) BOOL useTrailingCheckmarkLayout; // @synthesize useTrailingCheckmarkLayout=_useTrailingCheckmarkLayout;
 @property (nonatomic) BOOL useTrailingInset; // @synthesize useTrailingInset=_useTrailingInset;
 
-+ (id)_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2 contentSizeCategory:(id)arg3;
-+ (BOOL)_shouldLimitContentSizeCategory:(id)arg1;
++ (id)_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2 contentSizeCategory:(id)arg3 shouldLimitContentSizeCategory:(BOOL)arg4;
++ (BOOL)_shouldLimitContentSizeCategory:(id)arg1 forceLimitContentSizeCategory:(BOOL)arg2;
 + (id)_subtitleFontForContentSizeCategory:(id)arg1;
++ (id)_subtitleFontForContentSizeCategory:(id)arg1 shouldLimitContentSizeCategory:(BOOL)arg2;
 + (id)_titleFontForContentSizeCategory:(id)arg1;
-+ (double)defaultMenuItemHeightForContentSizeCategory:(id)arg1 useTallLayout:(BOOL)arg2;
++ (id)_titleFontForContentSizeCategory:(id)arg1 shouldLimitContentSizeCategory:(BOOL)arg2;
++ (double)defaultMenuItemHeightForContentSizeCategory:(id)arg1;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;
 - (struct NSDirectionalEdgeInsets)_labelInsets;
@@ -59,7 +63,6 @@
 - (void)_setSubtitle:(id)arg1;
 - (void)_setTitle:(id)arg1;
 - (BOOL)_shouldHorizontallyCenterText;
-- (BOOL)_shouldUseTallLayout;
 - (void)_stopAutomaticallyUpdatingView:(id)arg1 recursivelyIfNeeded:(BOOL)arg2;
 - (id)_subtitleFont;
 - (double)_textHeightForEmojiLabel:(id)arg1 width:(double)arg2;
@@ -70,19 +73,20 @@
 - (void)_updateForStateChange;
 - (void)_updateVisualStyleOfView:(id)arg1 withStyle:(long long)arg2 recursivelyIfNeeded:(BOOL)arg3;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)didMoveToWindow;
 - (id)initWithMenuItem:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isEqual:(id)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)subtitle;
 - (id)title;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateSubviewsAlpha:(double)arg1;
 
 @end

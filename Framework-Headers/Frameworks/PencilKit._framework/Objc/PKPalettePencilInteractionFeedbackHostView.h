@@ -54,6 +54,8 @@
 - (void)hideFeedbackView;
 - (id)initWithDelegate:(id)arg1;
 - (void)layoutSubviews;
+- (double)minimizedPaletteScaleFactor;
+- (struct CGSize)minimizedPaletteSize;
 - (void)showFeedbackForCurrentlySelectedToolInPaletteView;
 
 @end

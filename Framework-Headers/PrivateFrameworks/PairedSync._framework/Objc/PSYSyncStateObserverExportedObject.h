@@ -11,6 +11,7 @@
 @class NSString;
 @protocol PSYSyncStateObserverInterface;
 
+__attribute__((visibility("hidden")))
 @interface PSYSyncStateObserverExportedObject : NSObject <PSYSyncStateObserverInterface>
 {
     id<PSYSyncStateObserverInterface> _delegate;

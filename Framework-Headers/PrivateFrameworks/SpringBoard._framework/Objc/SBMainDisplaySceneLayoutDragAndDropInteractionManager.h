@@ -11,17 +11,16 @@
 #import <SpringBoard/SBDragAndDropAppActivationWorkspaceTransactionDelegate-Protocol.h>
 #import <SpringBoard/UIDragInteractionDelegate_ForWebKitOnly-Protocol.h>
 #import <SpringBoard/UIDragInteractionDelegate_Private-Protocol.h>
-#import <SpringBoard/UIDropInteractionDelegate-Protocol.h>
+#import <SpringBoard/UIDropInteractionDelegate_Private-Protocol.h>
 
 @class NSMapTable, NSString, SBDragAndDropAppActivationWorkspaceTransaction, SBFluidSwitcherViewController, SBMainDisplaySceneLayoutViewController, SBWindowDragInteraction, UIDropInteraction;
 @protocol SBMainDisplaySceneLayoutDragAndDropInteractionManagerDelegate, UIDragSession;
 
-@interface SBMainDisplaySceneLayoutDragAndDropInteractionManager : NSObject <BSTransactionObserver, SBApplicationDropSessionSceneProviding, UIDropInteractionDelegate, UIDragInteractionDelegate_Private, UIDragInteractionDelegate_ForWebKitOnly, SBDragAndDropAppActivationWorkspaceTransactionDelegate>
+@interface SBMainDisplaySceneLayoutDragAndDropInteractionManager : NSObject <BSTransactionObserver, SBApplicationDropSessionSceneProviding, UIDropInteractionDelegate_Private, UIDragInteractionDelegate_Private, UIDragInteractionDelegate_ForWebKitOnly, SBDragAndDropAppActivationWorkspaceTransactionDelegate>
 {
     BOOL _windowDragHandledByDruid;
     SBFluidSwitcherViewController *_mainSwitcherContentController;
     SBMainDisplaySceneLayoutViewController *_sceneLayoutViewController;
-    SBFluidSwitcherViewController *_floatingSwitcherContentController;
     id<SBMainDisplaySceneLayoutDragAndDropInteractionManagerDelegate> _delegate;
     UIDropInteraction *_dropInteraction;
     SBDragAndDropAppActivationWorkspaceTransaction *_activeTransaction;
@@ -38,7 +37,6 @@
 @property (readonly, weak, nonatomic) id<SBMainDisplaySceneLayoutDragAndDropInteractionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
-@property (readonly, weak, nonatomic) SBFluidSwitcherViewController *floatingSwitcherContentController; // @synthesize floatingSwitcherContentController=_floatingSwitcherContentController;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) SBFluidSwitcherViewController *mainSwitcherContentController; // @synthesize mainSwitcherContentController=_mainSwitcherContentController;
 @property (readonly, weak, nonatomic) SBMainDisplaySceneLayoutViewController *sceneLayoutViewController; // @synthesize sceneLayoutViewController=_sceneLayoutViewController;
@@ -54,8 +52,10 @@
 - (BOOL)_anyActiveAndVisibleSceneEntityMatches:(CDUnknownBlockType)arg1;
 - (void)_beginTrackingDropSessionIfNeeded:(id)arg1;
 - (void)_dismissInlineAppExposeIfNeeded;
+- (id)_dragInteraction:(id)arg1 customSpringAnimationBehaviorForCancellingItem:(id)arg2;
 - (void)_dragInteraction:(id)arg1 prepareForSession:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_dragInteractionDidCancelLiftWithoutDragging:(id)arg1;
+- (id)_dropInteraction:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
 - (void)_windowDragSessionDidEnd;
 - (BOOL)_workspaceWouldAllowTransitionToApplication:(id)arg1;
@@ -83,7 +83,7 @@
 - (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)handleWindowDragGestureRecognizer:(id)arg1;
-- (id)initWithMainSwitcherContentController:(id)arg1 floatingSwitcherContentController:(id)arg2 sceneLayoutViewController:(id)arg3 delegate:(id)arg4;
+- (id)initWithMainSwitcherContentController:(id)arg1 sceneLayoutViewController:(id)arg2 delegate:(id)arg3;
 - (BOOL)isApplicationActiveAndVisible:(id)arg1;
 - (id)mostRecentSceneIdentityExcludingLiveScenesForApplication:(id)arg1;
 - (id)newSceneIdentityForApplication:(id)arg1;

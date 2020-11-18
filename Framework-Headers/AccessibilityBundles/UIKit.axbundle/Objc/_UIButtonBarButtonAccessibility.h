@@ -14,8 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityNativeFocusPreferredElement;
 - (BOOL)_axIsInvisibleButton;
 - (BOOL)accessibilityElementsHidden;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (BOOL)accessibilityRespondsToUserInteraction;

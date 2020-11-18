@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     double _serverStatsExpectedKeepAliveInterval;
     double _minimumIntervalFallbackStateTimeout;
     BOOL _usingServerStatsAggressively;
+    int _previousAction;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *cacheInfo;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled; // @synthesize minimumIntervalFallbackEnabled=_minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumIntervalFallbackStateTimeout; // @synthesize minimumIntervalFallbackStateTimeout=_minimumIntervalFallbackStateTimeout;
 @property (nonatomic) double minimumKeepAliveInterval; // @synthesize minimumKeepAliveInterval=_minimumKeepAliveInterval;
+@property (nonatomic) int previousAction; // @synthesize previousAction=_previousAction;
 @property (nonatomic) double serverStatsExpectedKeepAliveInterval; // @synthesize serverStatsExpectedKeepAliveInterval=_serverStatsExpectedKeepAliveInterval;
 @property (nonatomic) double serverStatsMaxKeepAliveInterval; // @synthesize serverStatsMaxKeepAliveInterval=_serverStatsMaxKeepAliveInterval;
 @property (nonatomic) double serverStatsMinKeepAliveInterval; // @synthesize serverStatsMinKeepAliveInterval=_serverStatsMinKeepAliveInterval;

@@ -29,6 +29,7 @@
 + (id)builtInMicVoiceTriggerEvent:(id)arg1 hostTime:(unsigned long long)arg2;
 + (id)jarvisVoiceTriggerEvent:(id)arg1 activationInfo:(id)arg2 hostTime:(unsigned long long)arg3;
 + (id)mediaserverdLaunchedEvent:(unsigned long long)arg1;
++ (id)remoraVoiceTriggerEvent:(id)arg1 hostTime:(unsigned long long)arg2;
 + (id)remoteMicVADEvent:(id)arg1 vadScore:(float)arg2 hostTime:(unsigned long long)arg3;
 + (id)remoteMicVoiceTriggerEvent:(id)arg1 activationInfo:(id)arg2 hostTime:(unsigned long long)arg3;
 - (void).cxx_destruct;

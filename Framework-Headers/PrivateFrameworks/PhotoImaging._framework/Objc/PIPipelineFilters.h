@@ -19,8 +19,10 @@
 + (id)noCropFilter;
 + (id)noGeometryFilter;
 + (id)noMuteFilter;
++ (id)noOrientationFilter;
 + (id)noRedEyeFilter;
 + (id)noTrimFilter;
++ (id)oneShotPortraitV2ExportFilter;
 + (id)overcaptureSourceFilter;
 + (id)perspectiveStraightenWithoutCropFilter;
 + (id)postGeometryFilter;

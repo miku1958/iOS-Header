@@ -14,8 +14,10 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityAutomationHitTest;
 - (id)_accessibilityHitTestStartsAtElement;
+- (unsigned short)_accessibilityHitTestType;
 - (void)_setAccessibilityAutomationHitTest:(BOOL)arg1;
 - (void)_setAccessibilityHitTestStartsAtElement:(id)arg1;
+- (void)_setAccessibilityHitTestType:(unsigned short)arg1;
 
 @end
 

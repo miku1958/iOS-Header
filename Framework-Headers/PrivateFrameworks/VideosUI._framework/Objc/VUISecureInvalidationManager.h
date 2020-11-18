@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendInvalidationRequestsForDeletionInfoArrays:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_sendInvalidationRequestsForFirstArray:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_validateParamsForDeletionInfo:(id)arg1;
+- (void)addDeletionInfoToPenaltyBox:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidateKeysForDeletedVideos;

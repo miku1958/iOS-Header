@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 @interface BRCSharingProcessFolderSubitemsOperation : _BRCFrameworkOperation <BRCOperationSubclass>
 {
     unsigned long long _rowID;
+    unsigned long long _processType;
     unsigned long long _batchSize;
     unsigned long long _failedSubitemsLeft;
-    unsigned long long _processType;
     NSMutableArray *_sharedClientSubitems;
     NSMutableArray *_aliasItemsToDelete;
     NSMutableArray *_shareIDsToDelete;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BRCItemID *_rootItemID;
     BRCALRowID *_appLibraryRowID;
     BOOL _isFSRoot;
+    BOOL _alreadyHasShareID;
 }
 
 @property (readonly, copy) NSString *debugDescription;

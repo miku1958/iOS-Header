@@ -8,6 +8,7 @@
 
 @class GCControllerAxisInput;
 
+__attribute__((visibility("hidden")))
 @interface _GCControllerAxisButtonInput : GCControllerButtonInput
 {
     BOOL _positive;
@@ -18,12 +19,13 @@
 @property (readonly, nonatomic, getter=isPositive) BOOL positive; // @synthesize positive=_positive;
 
 - (void).cxx_destruct;
+- (BOOL)_commitPendingValueOnQueue:(id)arg1;
+- (void)_setPendingValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
 - (BOOL)_setValueFromAxisButton:(float)arg1;
 - (BOOL)_setValueFromAxisButton:(float)arg1 queue:(id)arg2;
 - (id)collection;
-- (id)description;
 - (id)initWithAxis:(id)arg1 positive:(BOOL)arg2;
 - (BOOL)isAnalog;
 - (float)value;

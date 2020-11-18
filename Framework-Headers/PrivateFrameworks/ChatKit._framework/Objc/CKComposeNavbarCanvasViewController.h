@@ -29,12 +29,14 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_initializeForTraitCollection:(id)arg1;
 - (double)_preferredHeightForTraitCollection:(id)arg1;
 - (void)_setupDefaultCanvasView;
 - (BOOL)_shouldUseRTL;
 - (id)_windowTraitCollection;
 - (void)loadView;
+- (BOOL)shouldShowAvatarView;
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForView:(id)arg1;
 - (void)updateTitle:(id)arg1 animated:(BOOL)arg2;
 - (void)viewDidLoad;

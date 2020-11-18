@@ -16,6 +16,7 @@
     NSURL *_libraryURL;
     NSObject<OS_dispatch_group> *_group;
     PLPhotosCTL *_ctl;
+    struct _NSRange _argumentRangeForRunOnManagedObjects;
 }
 
 @property (readonly) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
@@ -43,12 +44,14 @@
 - (id)photosCtl;
 - (id)plPhotoLibrary;
 - (id)processBooleanOptionArg:(id)arg1;
-- (BOOL)processOption:(BOOL)arg1 arg:(id)arg2;
+- (BOOL)processOption:(int)arg1 arg:(id)arg2;
 - (int)runOnAssetArgumentsAllowAll:(BOOL)arg1 additionalPredicate:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (int)runOnManagedObjectArgumentsWithEntityName:(id)arg1 identifierPropertyKey:(id)arg2 allowAll:(BOOL)arg3 additionalPredicate:(id)arg4 sortDescriptors:(id)arg5 block:(CDUnknownBlockType)arg6;
+- (int)runOnManagedObjectArgumentsWithEntityName:(id)arg1 identifierPropertyKey:(id)arg2 allowAll:(BOOL)arg3 additionalPredicate:(id)arg4 sortDescriptors:(id)arg5 relationshipKeyPathsForPrefetching:(id)arg6 block:(CDUnknownBlockType)arg7;
 - (int)runOnManagedObjectArgumentsWithEntityName:(id)arg1 identifierPropertyKey:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (int)runOnPhotoKitAssetArgumentsAllowAll:(BOOL)arg1 propertySets:(id)arg2 additionalPredicate:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (int)save;
+- (void)setArgumentRangeForRunOnManagedObjects:(struct _NSRange)arg1;
 - (void)waitForGroup;
 
 @end

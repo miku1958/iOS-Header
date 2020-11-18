@@ -6,89 +6,119 @@
 
 #import <objc/NSObject.h>
 
+#import <MapsSupport/MSPSharedTripContactControllerDelegate-Protocol.h>
 #import <MapsSupport/MSPSharedTripXPCClient-Protocol.h>
 #import <MapsSupport/MSPSharedTripXPCServer-Protocol.h>
 
-@class GEOObserverHashTable, NSArray, NSMutableArray, NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@class GEOObserverHashTable, MSPMapsPaths, MSPSharedTripContactController, MSPSharedTripSharingIdentity, NSArray, NSDate, NSMutableArray, NSString, NSXPCConnection;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface MSPSharedTripService : NSObject <MSPSharedTripXPCClient, MSPSharedTripXPCServer>
+@interface MSPSharedTripService : NSObject <MSPSharedTripXPCServer, MSPSharedTripXPCClient, MSPSharedTripContactControllerDelegate>
 {
     NSXPCConnection *_connection;
+    BOOL _connectionError;
     NSObject<OS_dispatch_queue> *_isolationQueue;
+    unsigned long long _connectionRetryCounter;
+    NSDate *_reconnectionBackoffUntilDate;
     GEOObserverHashTable *_receivingObservers;
     GEOObserverHashTable *_sendingObservers;
     NSMutableArray *_receivedTrips;
-    BOOL _sendingAccountAvailable;
-    NSArray *_aliases;
+    MSPSharedTripContactController *_sharingContactController;
+    struct os_unfair_lock_s _sharingIdentityLock;
+    unsigned long long _permissions;
+    MSPSharedTripSharingIdentity *_sharingIdentity;
+    NSObject<OS_dispatch_group> *_checkinDispatchGroup;
+    id _userDisabledDefaultListener;
+    id _serverDisabledDefaultListener;
+    MSPMapsPaths *_mapsPaths;
+    BOOL _confirmedMapsIsInstalled;
 }
 
-@property (readonly, nonatomic) NSArray *aliases; // @synthesize aliases=_aliases;
+@property (readonly, nonatomic) BOOL canReceiveTrips;
+@property (readonly, nonatomic) BOOL canShareTrip;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasValidSharingAccount;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *receivedTrips;
+@property (readonly, nonatomic) NSArray *receivers;
+@property (readonly, nonatomic) MSPSharedTripSharingIdentity *sharingIdentity;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_blockSharedTrip:(id)arg1;
+- (void)_checkEnabledState;
 - (void)_checkin;
-- (void)_fetchAccountAliasesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchActiveHandlesOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_checkinWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchSharedTripsOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_fetchRequiresUserConfirmationOfSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_fetchSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleCheckinWithSharingIdentity:(id)arg1 activeRecipients:(id)arg2 receivedTrips:(id)arg3 permissions:(unsigned long long)arg4;
 - (void)_insertOrUpdateTrip:(id)arg1;
+- (BOOL)_isMapsInstalled;
 - (void)_openConnectionIfNeeded;
+- (void)_performBlockAfterInitialSync:(CDUnknownBlockType)arg1;
+- (void)_performBlockWhenCheckinCompleted:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxy;
-- (void)_startSharingTripWithContacts:(id)arg1;
-- (void)_startSharingTripWithMessagesContacts:(id)arg1;
-- (void)_startSharingTripWithMessagesGroup:(id)arg1;
+- (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_reportUserConfirmationOfSharingIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_resetCheckinIdentityAndPermissions;
+- (void)_startSharingTripWithContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_startSharingTripWithMessagesContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_startSharingTripWithMessagesGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_startSharingWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_stopAllSharingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_stopSharingTrip;
 - (void)_stopSharingTripWithContacts:(id)arg1;
 - (void)_stopSharingTripWithMessagesContacts:(id)arg1;
 - (void)_stopSharingTripWithMessagesGroup:(id)arg1;
-- (void)_subscribeToSharedTripUpdatesWithIdentifier:(id)arg1;
-- (void)_unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1;
-- (void)accountAvailabilityDidChange:(BOOL)arg1;
+- (void)_stopSharingWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_subscribeToSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_validateCurrentConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addReceivingObserver:(id)arg1;
 - (void)addSendingObserver:(id)arg1;
 - (void)blockSharedTrip:(id)arg1;
+- (void)blockSharedTripWithIdentifier:(id)arg1;
 - (void)checkin;
+- (void)checkinWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)destinationDidUpdateForSharedTrip:(id)arg1;
 - (void)destinationReachedDidUpdateForSharedTrip:(id)arg1;
 - (void)etaDidUpdateForSharedTrip:(id)arg1;
-- (void)fetchAccountAliasesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchRequiresUserConfirmationOfSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)initializeAccountAvailability;
-- (void)initializeTrips;
-- (void)invalidateActiveHandles;
+- (BOOL)isSharingWithContact:(id)arg1;
+- (void)performBlockAfterInitialSync:(CDUnknownBlockType)arg1;
+- (void)refreshReceivedTripsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)refreshSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeReceivingObserver:(id)arg1;
 - (void)removeSendingObserver:(id)arg1;
+- (void)reportUserConfirmationOfSharingIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)routeDidUpdateForSharedTrip:(id)arg1;
-- (void)sendMessage:(id)arg1 toGroup:(id)arg2;
-- (void)sendMessage:(id)arg1 toParticipant:(id)arg2;
+- (void)sharedTripContactController:(id)arg1 didUpdateActiveContactsValues:(id)arg2;
 - (void)sharedTripDidBecomeAvailable:(id)arg1;
 - (void)sharedTripDidBecomeUnavailable:(id)arg1;
 - (void)sharedTripDidClose:(id)arg1;
+- (void)sharedTripDidUpdateRecipients:(id)arg1;
 - (void)sharedTripInvalidatedWithError:(id)arg1;
-- (void)startSharingTripWithContacts:(id)arg1;
-- (void)startSharingTripWithMessagesContacts:(id)arg1;
-- (void)startSharingTripWithMessagesGroup:(id)arg1;
+- (void)sharingIdentityDidChange:(id)arg1;
+- (void)startSharingTripWithContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSharingTripWithMessagesContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSharingTripWithMessagesGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSharingWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stopAllSharingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopSharingTrip;
 - (void)stopSharingTripWithContacts:(id)arg1;
 - (void)stopSharingTripWithMessagesContacts:(id)arg1;
 - (void)stopSharingTripWithMessagesGroup:(id)arg1;
-- (void)subscribeToSharedTripUpdatesWithIdentifier:(id)arg1;
-- (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1;
+- (void)stopSharingWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)subscribeToSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

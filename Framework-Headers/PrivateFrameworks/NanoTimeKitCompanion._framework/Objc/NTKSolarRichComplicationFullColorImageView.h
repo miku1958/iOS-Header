@@ -8,12 +8,13 @@
 
 #import <NanoTimeKitCompanion/CLKFullColorImageView-Protocol.h>
 
-@class CAGradientLayer, CALayer, CLKDevice, CLLocation, NSDate, NSDictionary, NSNumber, NSString, NTKBezierPathPointModel, NTKBezierPathView, NTKSolarPath, NTKSolarTimeModel;
+@class CAGradientLayer, CALayer, CLKClockTimerToken, CLKDevice, CLLocation, NSDate, NSDictionary, NSString, NTKBezierPathPointModel, NTKBezierPathView, NTKSolarPath, NTKSolarTimeModel;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKSolarRichComplicationFullColorImageView : UIView <CLKFullColorImageView>
 {
     struct {
+        double complicationContentDiameter;
         double curveLineWidth;
         struct CGSize curveMaxSize;
         double lineTop;
@@ -44,7 +45,7 @@
     double _sunsetXInCurve;
     struct CGRect _solarPathViewRect;
     double _prevDiskTimePercentage;
-    NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
     CLKDevice *_device;
     BOOL _paused;
     BOOL _solarPathNeedsUpdate;
@@ -78,6 +79,7 @@
 - (void)configureWithImageProvider:(id)arg1 reason:(long long)arg2;
 - (void)dealloc;
 - (id)initFullColorImageViewWithDevice:(id)arg1;
+- (id)initFullColorImageViewWithDevice:(id)arg1 family:(long long)arg2;
 - (void)layoutSubviews;
 - (void)pauseLiveFullColorImageView;
 - (void)resumeLiveFullColorImageView;

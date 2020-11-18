@@ -9,7 +9,7 @@
 #import <Navigation/MNGuidanceManager-Protocol.h>
 #import <Navigation/MNTimeManagerObserver-Protocol.h>
 
-@class GEOComposedGuidanceEvent, MNAnnouncementPlanEvent, MNGuidanceSignInfo, MNJunctionViewImageLoader, MNLocation, MNNavigationSession, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, MNAnnouncementPlanEvent, MNGuidanceSignInfo, MNJunctionViewImageLoader, MNLocation, MNNavigationSession, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol MNAnnoucementStrategy, MNGuidanceManagerDelegate;
 
 @interface MNGuidanceEventManager : NSObject <MNGuidanceManager, MNTimeManagerObserver>
@@ -20,7 +20,6 @@
     NSMutableArray *_events;
     GEOComposedGuidanceEvent *_nextEvent;
     NSDictionary *_eventIndexes;
-    NSUUID *_injectedUUID;
     id<MNAnnoucementStrategy> _announcementStrategy;
     NSMutableDictionary *_announcementsSpoken;
     NSMutableSet *_exclusiveSetAnnouncementsSpoken;
@@ -31,11 +30,7 @@
     GEOComposedGuidanceEvent *_pendingJunctionViewGuidanceEvent;
     GEOComposedGuidanceEvent *_currentJunctionViewGuidanceEvent;
     NSMutableDictionary *_specialSpokenEvents;
-    NSMutableArray *_startSignGuidanceEvents;
-    GEOComposedGuidanceEvent *_preArrivalSignGuidanceEvent;
-    GEOComposedGuidanceEvent *_endSignGuidanceEvent;
-    GEOComposedGuidanceEvent *_previousArrivalSignGuidanceEvent;
-    GEOComposedGuidanceEvent *_returnToRouteSignGuidanceEvent;
+    NSMutableDictionary *_specialSignEvents;
     BOOL _hasBeenOnRouteOnce;
     BOOL _canSpeakReturnToRouteAnnouncement;
     BOOL _isInPreArrivalState;
@@ -50,6 +45,7 @@
     NSMutableDictionary *_feedback;
     NSArray *_previousSignEvents;
     GEOComposedGuidanceEvent *_previousLaneGuidanceEvent;
+    BOOL _shouldShowChargingInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -59,6 +55,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInPreArrivalState; // @synthesize isInPreArrivalState=_isInPreArrivalState;
 @property (strong, nonatomic) MNLocation *location; // @synthesize location=_location;
+@property (nonatomic) BOOL shouldShowChargingInfo; // @synthesize shouldShowChargingInfo=_shouldShowChargingInfo;
 @property (nonatomic) double speed; // @synthesize speed=_speed;
 @property (readonly) Class superclass;
 
@@ -74,27 +71,31 @@
 - (void)_considerLaneGuidance;
 - (void)_considerSignGuidance;
 - (void)_considerStickiness;
+- (double)_distanceToEndOfRoute;
+- (double)_distanceToRouteCoordinate:(CDStruct_3f2a7a20)arg1;
 - (void)_filterValidEvents;
 - (void)_handleJunctionViewInfo:(id)arg1;
 - (BOOL)_hasSpokenEvent:(id)arg1;
 - (int)_indexForEventUUID:(id)arg1;
 - (void)_initSpecialGuidanceEvents;
-- (BOOL)_isEventValid:(id)arg1 start:(double)arg2 end:(double)arg3;
+- (BOOL)_isEVChargingEvent:(id)arg1;
+- (BOOL)_isSpecialGuidanceEvent:(id)arg1;
 - (BOOL)_isValidEvent:(id)arg1;
 - (id)_junctionViewEvents;
-- (id)_maneuverWithTitle:(id)arg1 detail:(id)arg2 type:(int)arg3 shieldText:(id)arg4 shieldID:(int)arg5;
 - (void)_markEventSpoken:(id)arg1;
 - (void)_notifyAnalyticsForNewEvents:(id)arg1 previousEvents:(id)arg2;
 - (void)_notifySpeechEvent:(id)arg1 variant:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3;
 - (id)_selectAnnouncementForEvent:(id)arg1 withTimeRemaining:(double)arg2 withMinIndex:(unsigned long long)arg3 selectedIndex:(out unsigned long long *)arg4;
+- (id)_serverStringDictionaryForChargingEvent:(id)arg1;
 - (id)_serverStringDictionaryForEvent:(id)arg1 spoken:(BOOL)arg2;
 - (BOOL)_shouldUseLocation:(id)arg1;
+- (id)_specialSignEvents:(int)arg1 forLeg:(unsigned long long)arg2;
+- (id)_specialSpokenEvents:(int)arg1 forLeg:(unsigned long long)arg2;
 - (id)_spokenEventsRemainingInStep;
 - (void)_stepDidChange;
 - (double)_timeRemainingForEvent:(id)arg1;
 - (double)_timeUntilEventTrigger:(id)arg1;
 - (unsigned int)_trafficColorForRoute:(id)arg1 traffic:(id)arg2 distanceRemaining:(double)arg3;
-- (void)addInjectedEvent:(id)arg1;
 - (void)dealloc;
 - (double)durationOfEvent:(id)arg1 announcementIndex:(unsigned long long)arg2 distance:(double)arg3;
 - (id)initWithNavigationSession:(id)arg1 isReconnecting:(BOOL)arg2;
@@ -107,7 +108,6 @@
 - (double)timeUntilNextAnnouncement;
 - (void)updateDestination:(id)arg1;
 - (void)updateForReroute:(id)arg1;
-- (void)updateForReturnToRoute;
 - (void)updateGuidanceForLocation:(id)arg1 navigatorState:(int)arg2;
 
 @end

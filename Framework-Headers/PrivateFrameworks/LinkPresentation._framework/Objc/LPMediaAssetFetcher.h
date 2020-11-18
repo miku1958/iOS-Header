@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)audioProperties;
 - (void)cancel;
 - (void)fetchWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopLoading;
 - (id)videoProperties;
 
 @end

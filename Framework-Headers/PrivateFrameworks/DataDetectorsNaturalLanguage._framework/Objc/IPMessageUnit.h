@@ -20,7 +20,7 @@
     NSIndexSet *_proposalAndAcceptationRanges;
     NSIndexSet *_neutralRanges;
     NSString *_bestLanguage;
-    NSString *_lowercaseText;
+    NSString *_lowercaseTextTruncated;
     NSString *_text;
     IPMessageUnit *_previous;
     IPMessage *_originalMessage;
@@ -34,7 +34,7 @@
 @property (readonly) long long indexInOriginalMessage; // @synthesize indexInOriginalMessage=_indexInOriginalMessage;
 @property struct _NSRange interactedDateRange; // @synthesize interactedDateRange=_interactedDateRange;
 @property (readonly) NSArray *keywordFeatures; // @synthesize keywordFeatures=_keywordFeatures;
-@property (readonly, copy) NSString *lowercaseText;
+@property (readonly, copy) NSString *lowercaseTextTruncated;
 @property (readonly, weak) IPMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (readonly, weak) IPMessageUnit *previous; // @synthesize previous=_previous;
 @property (readonly) NSArray *sentenceFeatures; // @synthesize sentenceFeatures=_sentenceFeatures;

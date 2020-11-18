@@ -42,11 +42,12 @@
 - (id)_newSignatureBezelTemplate;
 - (id)_newSignatureCircularTemplate;
 - (id)_newSignatureCornerTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSignatureRectangularTemplate;
 - (id)_newUtilitarianLargeTemplate;
 - (id)_newUtilitarianSmallFlatTemplate;
 - (id)_newUtilitarianSmallTemplate;
-- (id)_signaturebezelTextProvider;
+- (id)_signatureBezelTextProvider;
 - (id)templateForComplicationFamily:(long long)arg1;
 
 @end

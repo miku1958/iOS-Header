@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class NSString, PLForegroundMonitor, PLPhotoAnalysisServiceClient;
+@class NSString, NSURL, PLForegroundMonitor, PLPhotoAnalysisServiceClient;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PLConstraintsDirector : NSObject <PLForegroundMonitorDelegate>
@@ -20,6 +20,8 @@
     NSObject<OS_dispatch_source> *_bonusTimer;
     PLForegroundMonitor *_foregroundMonitor;
     PLPhotoAnalysisServiceClient *_photoAnalysisServiceClient;
+    long long _faceQuickClassificationRequestID;
+    NSURL *_photoLibraryURL;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,7 +38,7 @@
 - (void)informCameraAppCameraViewControllerVisibilityChanged:(BOOL)arg1;
 - (void)informCameraAppForegroundState:(BOOL)arg1;
 - (void)informOpportunisticTasksAllowed:(BOOL)arg1;
-- (id)initWithPhotoAnalysisClient:(id)arg1;
+- (id)initWithPhotoAnalysisClient:(id)arg1 photoLibraryURL:(id)arg2;
 - (BOOL)shouldScheduleUserInitiatedAnalysisForAssets;
 
 @end

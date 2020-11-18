@@ -22,10 +22,11 @@
 - (BOOL)_axAddPageViewControllerIsActive;
 - (BOOL)_axCanUseOverlayButton:(id)arg1;
 - (BOOL)_axDeactivateAddFace;
+- (BOOL)_axShareFace;
 - (BOOL)_axStartEditing;
 - (void)_deactivateAddFaceAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_scrollToAndSetupFaceAtIndex:(unsigned long long)arg1 updateLibraryFaceCollection:(BOOL)arg2;
-- (void)endInteractiveLibraryPresentation;
+- (void)endInteractiveLibraryPresentationLatched:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

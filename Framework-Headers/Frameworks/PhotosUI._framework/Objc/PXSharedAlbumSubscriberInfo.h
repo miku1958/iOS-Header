@@ -31,7 +31,7 @@
 
 + (id)_allSubscribersForAlbum:(id)arg1 includeMyself:(BOOL)arg2;
 + (id)allSubscribersForAlbum:(id)arg1;
-+ (id)allSubscribersForAvatarViewWithAlbumWithObjectID:(id)arg1 managedObjectContext:(id)arg2;
++ (id)allSubscribersForAlbumWithObjectID:(id)arg1 includingCurrentUser:(BOOL)arg2 managedObjectContext:(id)arg3;
 - (void).cxx_destruct;
 - (id)contactStore;
 - (id)init;

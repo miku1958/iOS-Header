@@ -8,7 +8,7 @@
 
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface INSchema : NSObject <NSSecureCoding>
 {
@@ -20,10 +20,14 @@
     NSDictionary *_typeForSemanticKeypathDictionary;
     NSMutableDictionary *_enums;
     NSMutableDictionary *_types;
+    NSString *_mainBundleIdentifier;
+    NSArray *_definitionFileURLs;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *_configurableParameterCombinationDictionary; // @synthesize _configurableParameterCombinationDictionary;
+@property (readonly, nonatomic) NSArray *_definitionFileURLs; // @synthesize _definitionFileURLs;
 @property (readonly, nonatomic) NSMutableDictionary *_enums; // @synthesize _enums;
+@property (readonly, nonatomic) NSString *_mainBundleIdentifier; // @synthesize _mainBundleIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_parameterCombinationDictionary; // @synthesize _parameterCombinationDictionary;
 @property (readonly, nonatomic) NSMutableDictionary *_schemaDictionary; // @synthesize _schemaDictionary;
 @property (readonly, nonatomic) NSDictionary *_typeForClassDictionary; // @synthesize _typeForClassDictionary;
@@ -31,14 +35,17 @@
 @property (readonly, nonatomic) NSMutableDictionary *_types; // @synthesize _types;
 @property (readonly, nonatomic, getter=isSystem) BOOL system; // @synthesize system=_system;
 
++ (id)_applicationBundleIdentifierFromBundleIdentifier:(id)arg1;
 + (id)_cache;
 + (BOOL)_defaultSchemaCanSupportIntent:(id)arg1;
 + (id)_defaultSchemaForBundle:(id)arg1;
 + (id)_defaultSchemaForBundle:(id)arg1 contentOptions:(unsigned long long)arg2;
 + (void)_resetCache;
-+ (id)_schemaWithIntentDefinitionURLs:(id)arg1 bundleIdentifier:(id)arg2 contentOptions:(unsigned long long)arg3;
++ (id)_schemaWithIntentDefinitionURLs:(id)arg1 bundleIdentifier:(id)arg2 mainBundleIdentifier:(id)arg3 contentOptions:(unsigned long long)arg4;
++ (id)_supportedClasses;
 + (id)_supportedTypesDictionary;
 + (id)defaultSchema;
++ (id)schemaWithBundleRecord:(id)arg1 fallbackToSystemSchema:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 + (id)systemSchema;
 - (void).cxx_destruct;
@@ -50,7 +57,8 @@
 - (id)_dictionaryRepresentationForIntentCodableDescription:(id)arg1 intentResponseCodableDescription:(id)arg2 appInfo:(id)arg3 localizer:(id)arg4;
 - (id)_initWithContentsOfURLs:(id)arg1;
 - (id)_initWithContentsOfURLs:(id)arg1 bundleIdentifier:(id)arg2;
-- (id)_initWithContentsOfURLs:(id)arg1 bundleIdentifier:(id)arg2 contentOptions:(unsigned long long)arg3;
+- (id)_initWithContentsOfURLs:(id)arg1 bundleIdentifier:(id)arg2 mainBundleIdentifier:(id)arg3;
+- (id)_initWithContentsOfURLs:(id)arg1 bundleIdentifier:(id)arg2 mainBundleIdentifier:(id)arg3 contentOptions:(unsigned long long)arg4;
 - (id)_intentResponseWithDictionary:(id)arg1 intentDefinitionNamespace:(id)arg2 className:(id)arg3 filename:(id)arg4 bundleIdentifier:(id)arg5 referencedCodableDescriptions:(id)arg6;
 - (id)_intentWithDictionary:(id)arg1 intentDefinitionNamespace:(id)arg2 filename:(id)arg3 bundleIdentifier:(id)arg4;
 - (void)_loadIntentsFromArrayOfDictionaries:(id)arg1 intentDefinitionNamespace:(id)arg2 fromFile:(id)arg3 bundleIdentifier:(id)arg4 referencedCodableDescriptions:(id)arg5 contentOptions:(unsigned long long)arg6;

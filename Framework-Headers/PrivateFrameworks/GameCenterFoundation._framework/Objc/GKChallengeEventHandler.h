@@ -11,22 +11,22 @@
 
 @interface GKChallengeEventHandler : NSObject
 {
-    id<GKChallengeEventHandlerDelegate> _delegateWeak;
+    id<GKChallengeEventHandlerDelegate> _delegate;
     id<GKChallengeEventHandlerUIDelegate> _uiDelegate;
     GKChallengeInternal *_pendingReceivedChallenge;
     GKChallengeInternal *_pendingCompletedChallenge;
 }
 
-@property (nonatomic) id<GKChallengeEventHandlerDelegate> delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) id<GKChallengeEventHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) GKChallengeInternal *pendingCompletedChallenge; // @synthesize pendingCompletedChallenge=_pendingCompletedChallenge;
 @property (strong, nonatomic) GKChallengeInternal *pendingReceivedChallenge; // @synthesize pendingReceivedChallenge=_pendingReceivedChallenge;
 @property (strong, nonatomic) id<GKChallengeEventHandlerUIDelegate> uiDelegate; // @synthesize uiDelegate=_uiDelegate;
 
 + (id)challengeEventHandler;
+- (void).cxx_destruct;
 - (void)challengeCompleted:(id)arg1;
 - (void)challengeReceived:(id)arg1;
 - (void)completedChallengeSelected:(id)arg1;
-- (void)dealloc;
 - (void)receivedChallengeSelected:(id)arg1;
 - (void)showBannerForChallenge:(id)arg1 complete:(CDUnknownBlockType)arg2;
 

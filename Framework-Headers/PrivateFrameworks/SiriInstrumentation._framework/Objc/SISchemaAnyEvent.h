@@ -12,9 +12,15 @@
 {
     int _anyEventType;
     NSData *_payload;
+    struct {
+        unsigned int anyEventType:1;
+    } _has;
+    BOOL _hasPayload;
 }
 
 @property (nonatomic) int anyEventType; // @synthesize anyEventType=_anyEventType;
+@property (nonatomic) BOOL hasAnyEventType;
+@property (nonatomic) BOOL hasPayload; // @synthesize hasPayload=_hasPayload;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *payload; // @synthesize payload=_payload;
 

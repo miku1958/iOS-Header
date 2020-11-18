@@ -27,11 +27,13 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_refreshConversationCache;
 - (void)chatStateChanged:(id)arg1;
 - (void)contactsSearchManager:(id)arg1 finishedSearchingWithResults:(id)arg2;
 - (id)conversationCacheForContactsSearchManager:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)shortcutItemForConversation:(id)arg1;
 - (void)updateShortcutItems;
 
 @end

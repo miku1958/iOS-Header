@@ -23,6 +23,8 @@
     NSNumber *_unseen;
     long long _callCapability;
     NSNumber *_numberOfCalls;
+    long long _preferredCallProvider;
+    NSString *_providerId;
 }
 
 @property (readonly, nonatomic) long long callCapability; // @synthesize callCapability=_callCapability;
@@ -38,6 +40,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSNumber *numberOfCalls; // @synthesize numberOfCalls=_numberOfCalls;
+@property (readonly, nonatomic) long long preferredCallProvider; // @synthesize preferredCallProvider=_preferredCallProvider;
+@property (readonly, copy, nonatomic) NSString *providerBundleId;
+@property (readonly, copy, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSNumber *unseen; // @synthesize unseen=_unseen;
@@ -55,6 +60,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7;
 - (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7 numberOfCalls:(id)arg8;
+- (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7 preferredCallProvider:(long long)arg8 numberOfCalls:(id)arg9 providerBundleId:(id)arg10;
+- (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7 preferredCallProvider:(long long)arg8 numberOfCalls:(id)arg9 providerId:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
 
 @end

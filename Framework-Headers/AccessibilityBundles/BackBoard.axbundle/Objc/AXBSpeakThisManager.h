@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class BSProcessDeathWatcher;
 @protocol OS_dispatch_queue;
 
 @interface AXBSpeakThisManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_speakThisQueue;
+    BSProcessDeathWatcher *_accessibilityUIServerDeathWatcher;
 }
 
++ (void)didUpdateAccessibilityUIServerPID;
 + (void)initializeMonitor;
 - (void).cxx_destruct;
 - (void)_notifySpeakThisOfSettingsChange;
-- (void)_registerForSpeakFingerSettingsUpdate;
+- (void)_startWatchingForDeathOfAccessibilityUIServerPID;
+- (id)init;
 
 @end
 

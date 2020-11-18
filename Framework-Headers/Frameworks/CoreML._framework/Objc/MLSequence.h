@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class NSArray;
 
-@interface MLSequence : NSObject
+@interface MLSequence : NSObject <NSSecureCoding>
 {
     long long _type;
     NSArray *_values;
@@ -24,8 +26,11 @@
 + (id)sequenceFromArray:(id)arg1 error:(id *)arg2;
 + (id)sequenceWithInt64Array:(id)arg1;
 + (id)sequenceWithStringArray:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithArray:(id)arg1 type:(long long)arg2;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

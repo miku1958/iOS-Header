@@ -8,7 +8,7 @@
 
 #import <ContactsUI/UIDragInteractionDelegate-Protocol.h>
 
-@class CNContact, CNContactFormatter, CNContactListStyleApplier, CNContactStore, NSArray, NSLayoutConstraint, NSString, UIDragInteraction, UIGestureRecognizer, UILabel;
+@class CALayer, CNContact, CNContactFormatter, CNContactListStyleApplier, CNContactStore, NSArray, NSLayoutConstraint, NSString, UIDragInteraction, UIGestureRecognizer, UILabel;
 @protocol CNContactListBannerViewDelegate;
 
 @interface CNContactListBannerView : UIView <UIDragInteractionDelegate>
@@ -26,6 +26,7 @@
     UIView *_footnoteContainer;
     UILabel *_footnoteLabel;
     UILabel *_footnoteValueLabel;
+    CALayer *_topSeparator;
     NSLayoutConstraint *_footnoteTitleToTitleVerticalConstraint;
     NSLayoutConstraint *_footnoteTitleToValueHorizontalSpaceConstraint;
     NSArray *_constraintsPendingActivation;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) CALayer *topSeparator; // @synthesize topSeparator=_topSeparator;
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
@@ -70,8 +72,10 @@
 - (id)init;
 - (void)menuDidHide:(id)arg1;
 - (void)setMeContact:(id)arg1 footnoteTitle:(id)arg2 footnoteValue:(id)arg3;
+- (void)setTopSeparatorWithInset:(double)arg1 andLength:(double)arg2;
 - (void)showMenu;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFontRelatedConstraints;
 
 @end

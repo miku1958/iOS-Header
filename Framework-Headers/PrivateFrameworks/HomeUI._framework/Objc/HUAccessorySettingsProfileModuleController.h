@@ -28,6 +28,7 @@
 - (unsigned long long)didSelectItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
 - (void)profileViewControllerDidSelectRemoveProfile:(id)arg1;
+- (BOOL)profileViewControllerIsProfileInstalled;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 
 @end

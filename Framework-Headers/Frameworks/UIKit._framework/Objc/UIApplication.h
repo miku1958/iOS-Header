@@ -15,7 +15,7 @@
 #import <UIKitCore/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <UIKitCore/_UIApplicationInitializationContextFactory-Protocol.h>
 
-@class BKSAnimationFenceHandle, BKSProcessAssertion, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIIdleModeController;
+@class BKSAnimationFenceHandle, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIFenceTask, _UIIdleModeController;
 @protocol BSInvalidatable, FBSWorkspaceFencing, OS_dispatch_queue, UIApplicationDelegate;
 
 @interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSDisplayLayoutObserver, PKPushRegistryDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIRepeatedActionDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, _UIApplicationInitializationContextFactory>
@@ -55,7 +55,6 @@
         unsigned int systemIsAnimatingApplicationLifecycleEvent:1;
         unsigned int isActivating:1;
         unsigned int shouldExitAfterSendSuspend:1;
-        unsigned int terminating:1;
         unsigned int isHandlingShortCutURL:1;
         unsigned int idleTimerDisabled:1;
         unsigned int deviceOrientation:3;
@@ -141,7 +140,7 @@
     double _currentTimestampWhenFirstTouchCameDown;
     struct CGPoint _currentLocationWhereFirstTouchCameDown;
     BOOL _saveStateRestorationArchiveWithFileProtectionCompleteUntilFirstUserAuthentication;
-    BKSProcessAssertion *_fenceTaskAssertion;
+    _UIFenceTask *_fenceTask;
     BKSAnimationFenceHandle *_cachedSystemAnimationFence;
     UISystemNavigationAction *_systemNavigationAction;
     UIActivityContinuationManager *_activityContinuationManager;
@@ -209,7 +208,6 @@
 + (long long)_classicMode;
 + (long long)_debugUserInterfaceStyleOverride;
 + (id)_defaultContentSizeCategory;
-+ (void)_installAfterCACommitHandler;
 + (BOOL)_isAfterCACommitHandlerInstalled;
 + (BOOL)_isBackgroundStyleTransparent:(long long)arg1;
 + (BOOL)_isClassic;
@@ -277,8 +275,10 @@
 - (void)_applicationOpenURL:(id)arg1 payload:(id)arg2;
 - (void)_applicationOpenURLAction:(id)arg1 payload:(id)arg2 origin:(id)arg3;
 - (void)_applicationShouldRequestHealthAuthorization;
+- (BOOL)_areFrontBoardInputOverlaysEnabled;
 - (BOOL)_areFrontBoardKeyboardHUDsEnabled;
 - (BOOL)_areSystemWindowsSecure;
+- (long long)_availableTextServices;
 - (id)_backgroundModes;
 - (unsigned long long)_beginBackgroundTaskWithExpirationHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)_beginBackgroundTaskWithName:(id)arg1 expirationHandler:(CDUnknownBlockType)arg2;
@@ -291,7 +291,6 @@
 - (BOOL)_canAnimateDragCancelInApp;
 - (BOOL)_canOpenURL:(id)arg1 publicURLsOnly:(BOOL)arg2;
 - (BOOL)_canReceiveDeviceOrientationEvents;
-- (BOOL)_canShowTextServices;
 - (void)_cancelAllEventsOfType:(long long)arg1 onWindowScene:(id)arg2;
 - (void)_cancelAllInputs;
 - (void)_cancelAllPressesForTVOnly;
@@ -301,6 +300,8 @@
 - (void)_cancelPhysicalButtonsWithType:(long long)arg1 forPressesEvent:(id)arg2;
 - (void)_cancelTouchesOrPresses:(id)arg1 withEvent:(id)arg2;
 - (void)_cancelTouchesOrPresses:(id)arg1 withEvent:(id)arg2 includingGestures:(BOOL)arg3 notificationBlock:(CDUnknownBlockType)arg4;
+- (void)_cancelUnfinishedPhysicalKeyboardPresses;
+- (void)_cancelUnfinishedPhysicalKeyboardPressesForWindowScene:(id)arg1;
 - (void)_cancelUnfinishedPressesForEvent:(id)arg1;
 - (void)_cancelUnfinishedTouchesForEvent:(id)arg1;
 - (void)_cancelViewProcessingOfTouchesOrPresses:(id)arg1 withEvent:(id)arg2 sendingCancelToViewsOfTouchesOrPresses:(id)arg3;
@@ -323,19 +324,20 @@
 - (long long)_currentExpectedInterfaceOrientation;
 - (id)_currentFrameCountForTestDisplay;
 - (id)_currentOpenApplicationEndpointForEnvironment:(id)arg1;
-- (id)_currentSceneSessions;
 - (id)_currentTests;
 - (void)_deactivateForReason:(int)arg1;
 - (void)_deactivateForReason:(int)arg1 notify:(BOOL)arg2;
 - (void)_deactivateReachability;
 - (id)_defaultSceneIfExists;
+- (long long)_defaultSceneInterfaceOrientationReturningUnknownForNilScene:(BOOL)arg1;
 - (id)_defaultTopNavBarTintColor;
 - (id)_defaultUISceneOrMainScreenPlaceholderIfExists;
+- (id)_defaultUIWindowHostingUISceneOrMainScreenPlaceholderIfExists;
 - (void)_deliverRemainingKeyUpEvents;
 - (BOOL)_didEatCurrentTouchForWindow:(id)arg1;
 - (BOOL)_disableBecomeFirstResponder;
 - (void)_discardSceneSessions:(id)arg1;
-- (void)_discardSceneSessionsWithIdentifiers:(id)arg1;
+- (void)_discardSceneSessionsWithIdentifiers:(id)arg1 skippingPersistenceDeletion:(BOOL)arg2;
 - (id)_discardedSceneSessionIdentifiersSinceLastRunWithContext:(id)arg1 knownSessions:(id)arg2;
 - (BOOL)_doRestorationIfNecessary;
 - (id)_dragEvents;
@@ -343,7 +345,6 @@
 - (BOOL)_eatCurrentTouchForWindow:(id)arg1 ifPredicate:(CDUnknownBlockType)arg2;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endBackgroundTask:(unsigned long long)arg1;
-- (void)_endFenceTask:(id)arg1;
 - (void)_endShowingNetworkActivityIndicator;
 - (void)_enqueueHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_event;
@@ -393,7 +394,7 @@
 - (void)_handlePlatformSpecificActions:(id)arg1 forScene:(id)arg2 withTransitionContext:(id)arg3;
 - (void)_handleScreenshot;
 - (void)_handleSuspensionActions;
-- (void)_handleTaskCompletionSuspensionEvents:(id)arg1;
+- (void)_handleTaskCompletionAndTerminate:(id)arg1;
 - (void)_handleUnicodeEvent:(struct __IOHIDEvent *)arg1;
 - (void)_handleUserDefaultsDidChange:(id)arg1;
 - (struct __GSKeyboard *)_hardwareKeyboard;
@@ -414,8 +415,8 @@
 - (id)_implicitStatusBarStyleAnimationParametersWithViewController:(id)arg1;
 - (id)_infoPlistCanvasDefinitions;
 - (id)_infoPlistSceneConfigurations;
+- (double)_initialTouchTimestampForWindow:(id)arg1;
 - (void)_initiateLaunchActionsBackgrounded:(BOOL)arg1 firstActivation:(BOOL)arg2;
-- (void)_installAutoreleasePoolsIfNecessaryForMode:(struct __CFString *)arg1;
 - (BOOL)_isActivated;
 - (BOOL)_isActivatedIgnoringReason:(int)arg1;
 - (BOOL)_isActivating;
@@ -471,6 +472,7 @@
 - (void)_observeDebugOrTestUserInterfaceStyleChanged;
 - (void)_openCanvasDefinition:(id)arg1 withUserActivity:(id)arg2 options:(id)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (id)_openSessionForPersistenceIdentifier:(id)arg1;
+- (id)_openSessionsIncludingInternal:(BOOL)arg1;
 - (BOOL)_openURL:(id)arg1;
 - (void)_openURL:(id)arg1 options:(id)arg2 openApplicationEndpoint:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_openURL:(id)arg1 originatingView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -671,8 +673,6 @@
 - (BOOL)activityContinuationManager:(id)arg1 willContinueUserActivityWithType:(id)arg2;
 - (BOOL)activityContinuationManagerHandleErrorsByConfiguringProgressUI:(id)arg1;
 - (id)activityContinuationManagerUserCancelledError:(id)arg1;
-- (void)addStatusBarImageNamed:(id)arg1;
-- (void)addStatusBarImageNamed:(id)arg1 removeOnExit:(BOOL)arg2;
 - (void)addStatusBarItem:(int)arg1;
 - (void)addStatusBarItem:(int)arg1 removeOnExit:(BOOL)arg2;
 - (void)addStatusBarStyleOverrides:(int)arg1;
@@ -824,7 +824,6 @@
 - (void)removeApplicationPreservationStateWithSessionIdentifier:(id)arg1;
 - (BOOL)removeDefaultImage:(id)arg1;
 - (BOOL)removeDefaultImage:(id)arg1 forScreen:(id)arg2;
-- (void)removeStatusBarImageNamed:(id)arg1;
 - (void)removeStatusBarItem:(int)arg1;
 - (void)removeStatusBarStyleOverrides:(int)arg1;
 - (id)repeatedActionWillInvokeWithObject:(id)arg1 forPhase:(unsigned long long)arg2;
@@ -922,6 +921,7 @@
 - (double)statusBarHeightForOrientation:(long long)arg1 ignoreHidden:(BOOL)arg2;
 - (id)statusBarSystemNavigationAction:(id)arg1;
 - (id)statusBarWindow;
+- (id)statusBarWithWindow:(id)arg1;
 - (void)stopAndReportResultsForTest:(id)arg1 extraResults:(id)arg2 waitForNotification:(id)arg3 withTeardownBlock:(CDUnknownBlockType)arg4;
 - (void)stopCHUDRecording;
 - (void)stopLeaking;
@@ -950,7 +950,6 @@
 - (void)workspace:(id)arg1 didLaunchWithCompletion:(CDUnknownBlockType)arg2;
 - (void)workspace:(id)arg1 didReceiveActions:(id)arg2;
 - (void)workspace:(id)arg1 willDestroyScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)workspaceDidEndTransaction:(id)arg1;
 - (void)workspaceNoteAssertionExpirationImminent:(id)arg1;
 - (void)workspaceShouldExit:(id)arg1;
 - (void)workspaceShouldExit:(id)arg1 withTransitionContext:(id)arg2;

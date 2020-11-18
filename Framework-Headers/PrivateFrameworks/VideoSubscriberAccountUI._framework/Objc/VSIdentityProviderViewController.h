@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <VideoSubscriberAccountUI/PSStateRestoration-Protocol.h>
 #import <VideoSubscriberAccountUI/VSAuthenticationViewControllerDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSIdentityProviderRequestManagerDelegate-Protocol.h>
 
 @class NSOperationQueue, NSString, UIBarButtonItem, VSAuditToken, VSIdentityProvider, VSIdentityProviderRequestManager, VSImageLoadOperation, VSViewModel;
 @protocol VSIdentityProviderViewControllerDelegate;
 
-@interface VSIdentityProviderViewController : UIViewController <VSAuthenticationViewControllerDelegate, VSIdentityProviderRequestManagerDelegate>
+@interface VSIdentityProviderViewController : UIViewController <VSAuthenticationViewControllerDelegate, VSIdentityProviderRequestManagerDelegate, PSStateRestoration>
 {
     BOOL _canIssuePrivacyVouchers;
     BOOL _cancellationAllowed;
@@ -60,6 +61,7 @@
 - (void)_stopObservingViewModel:(id)arg1;
 - (void)_stopValidationAndShowButtons:(BOOL)arg1;
 - (void)authenticationViewControllerDidCancel:(id)arg1;
+- (BOOL)canBeShownFromSuspendedState;
 - (BOOL)currentAuthenticationViewControllerSupportsPreAuth;
 - (void)dealloc;
 - (void)enqueueRequest:(id)arg1;

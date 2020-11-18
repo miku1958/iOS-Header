@@ -9,7 +9,7 @@
 #import <MapKit/VKCustomFeatureDataSource-Protocol.h>
 #import <MapKit/_MKPinAnnotationViewDelegate-Protocol.h>
 
-@class MKAnnotationView, MKPinAnnotationView, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
+@class MKAnnotationView, MKPinAnnotationView, MKPriorityToIndexMap, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 @protocol MKAnnotationContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -45,6 +45,8 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_collidableAnnotationViews;
     NSMutableDictionary *_collidingAnnotationViews;
     NSMutableDictionary *_existingClusterAnnotationViews;
+    MKPriorityToIndexMap *_priorityMap;
+    NSMutableSet *_prioritiesToAdd;
 }
 
 @property (readonly, nonatomic) NSMutableOrderedSet *annotationViews;
@@ -67,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) MKAnnotationView *userLocationView;
 
 - (void).cxx_destruct;
+- (void)_addPrioritiesForAnnotationViewIfNeeded:(id)arg1;
 - (id)_annotationViewForSelectionAtPoint:(struct CGPoint)arg1 avoidCurrent:(BOOL)arg2 maxDistance:(double)arg3;
 - (void)_draggingAnnotationViewDidPause:(id)arg1;
 - (void)_dropDraggingAnnotationViewAnimated:(BOOL)arg1;
@@ -80,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_updateAnnotationViews:(id)arg1;
 - (void)_updateClusterableAnnotationViews:(id)arg1 withID:(id)arg2;
 - (void)_updateCollidableAnnotationViews;
+- (BOOL)_updatePriorityMapIfNeeded;
 - (void)_updateZPositionForAnnotationView:(id)arg1 inBounds:(struct CGRect)arg2;
 - (struct CGRect)_visibleCenteringRect;
 - (struct CGRect)_visibleCenteringRectInView:(id)arg1;
@@ -90,7 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)addObserver:(id)arg1;
 - (void)annotationViewDidChangeCenterOffset:(id)arg1;
 - (void)annotationViewDidChangeHidden:(id)arg1;
-- (void)annotationViewDidChangeZIndex:(id)arg1;
+- (void)annotationViewDidChangeZPriority:(id)arg1;
 - (id)annotationViewForPoint:(struct CGPoint)arg1;
 - (id)annotationsInMapRect:(CDStruct_02837cd9)arg1;
 - (BOOL)calloutContainsPoint:(struct CGPoint)arg1;
@@ -130,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (void)updateAnnotationViewsWithDelay;
 - (void)updateCalloutStateForSelectedAnnotationView:(id)arg1;
 - (void)updateUserLocationView;
+- (void)visibleCenteringRectChanged;
 
 @end
 

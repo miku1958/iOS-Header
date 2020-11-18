@@ -40,6 +40,7 @@
 - (id)managerInterface;
 - (void)sendExtensionFailed;
 - (void)sendStatus:(long long)arg1 withDisconnectError:(id)arg2;
+- (void)setAppUUIDMap:(id)arg1;
 
 @end
 

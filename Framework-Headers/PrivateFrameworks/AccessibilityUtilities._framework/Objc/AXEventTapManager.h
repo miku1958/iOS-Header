@@ -56,6 +56,7 @@
 - (void)sendHIDSystemEvent:(id)arg1 repostCreatorHIDEvent:(BOOL)arg2 senderID:(unsigned long long)arg3;
 - (void)sendHIDSystemEvent:(id)arg1 senderID:(unsigned long long)arg2;
 - (void)setEventTapPriority:(id)arg1 priority:(int)arg2;
+- (void)setFailedToProcessInTimeCallback:(id)arg1 callback:(CDUnknownBlockType)arg2;
 
 @end
 

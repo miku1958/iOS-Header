@@ -66,9 +66,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ±?
+	var width : K
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ±?
+	var height : K
  }
 
  struct __C.CGRect {
@@ -82,9 +82,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : ±?
+	var x : K
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : ±?
+	var y : K
  }
 
  class TeaDB.KeyValueStore {
@@ -151,7 +151,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bool : Bool
 	case double : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case blob : —=
+	case blob : ·H
 	case null  
  }
 
@@ -169,11 +169,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class TeaDB.Database : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var connection : Connection // +0x10 (0x8)
-	let queue : OS_dispatch_queue // +0x18 (0x8)
+	var connection : Connection
+	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x12050  class func Database.__allocating_init(location:) // init 
+	0x12f20  class func Database.__allocating_init(location:) // init 
  }
 
  enum TeaDB.Location {
@@ -251,7 +251,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : Ù= // +0x10 (0x8)
+	let handle : UH
 
 	// Swift methods
  }
@@ -339,7 +339,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : Ù= // +0x10 (0x8)
+	let handle : UH
 
 	// Swift methods
  }

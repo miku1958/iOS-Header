@@ -42,7 +42,6 @@
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2 forKey:(struct _GEOTileKey)arg3;
 - (void)tileRequesterFinished:(id)arg1;
 - (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
-- (void)tryFinish;
 
 @end
 

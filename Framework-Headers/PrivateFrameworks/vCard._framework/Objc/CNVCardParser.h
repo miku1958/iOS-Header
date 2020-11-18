@@ -143,6 +143,8 @@
 - (BOOL)parse_X_GTALK;
 - (BOOL)parse_X_ICQ;
 - (BOOL)parse_X_ICQ_ID;
+- (BOOL)parse_X_IMAGEHASH;
+- (BOOL)parse_X_IMAGETYPE;
 - (BOOL)parse_X_JABBER;
 - (BOOL)parse_X_JABBER_ID;
 - (BOOL)parse_X_MAIDENNAME;

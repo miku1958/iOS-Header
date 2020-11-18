@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSDescriptionProviding-Protocol.h>
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSSet, NSString, RBSProcessHandle;
 @protocol OS_xpc_object;
 
-@interface RBSProcessState : NSObject <BSXPCSecureCoding, BSDescriptionProviding, NSCopying>
+@interface RBSProcessState : NSObject <RBSXPCSecureCoding, NSCopying>
 {
-    struct os_unfair_lock_s _lock;
     NSObject<OS_xpc_object> *_codedState;
     unsigned long long _codedValues;
     NSMutableDictionary *_codedStateCache;
+    struct os_unfair_lock_s _lock;
     unsigned char _taskState;
     unsigned char _debugState;
-    unsigned char _preventLaunchState;
     unsigned char _terminationResistance;
+    BOOL _preventedFromLaunching;
     RBSProcessHandle *_process;
     NSSet *_endowmentNamespaces;
     NSSet *_tags;
@@ -31,6 +30,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSSet *assertions;
+@property (readonly, copy, nonatomic) NSObject<OS_xpc_object> *codedState; // @synthesize codedState=_codedState;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned char debugState; // @synthesize debugState=_debugState;
 @property (readonly, nonatomic, getter=isDebugging) BOOL debugging;
@@ -39,8 +39,7 @@
 @property (copy, nonatomic) NSSet *endowmentNamespaces; // @synthesize endowmentNamespaces=_endowmentNamespaces;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSSet *legacyAssertions; // @synthesize legacyAssertions=_legacyAssertions;
-@property (nonatomic) unsigned char preventLaunchState; // @synthesize preventLaunchState=_preventLaunchState;
-@property (readonly, nonatomic, getter=isPreventedFromLaunching) BOOL preventedFromLaunching;
+@property (readonly, nonatomic, getter=isPreventedFromLaunching) BOOL preventedFromLaunching; // @synthesize preventedFromLaunching=_preventedFromLaunching;
 @property (copy, nonatomic) NSSet *primitiveAssertions; // @synthesize primitiveAssertions=_primitiveAssertions;
 @property (readonly, nonatomic) RBSProcessHandle *process; // @synthesize process=_process;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
@@ -51,22 +50,15 @@
 
 + (void)setActiveStateDescriptor:(id)arg1;
 + (id)stateWithProcess:(id)arg1;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)_lock_encodedStateForDescriptor:(id)arg1;
-- (void)_lock_finalizeCodingForValues:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithPreviousState:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (id)initWithProcess:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isDifferentFromState:(id)arg1 significantly:(out BOOL *)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

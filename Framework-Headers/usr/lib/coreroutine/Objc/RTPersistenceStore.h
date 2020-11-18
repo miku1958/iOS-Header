@@ -52,6 +52,7 @@
 - (id)storeName;
 - (id)storeURLsMatchingStoreName;
 - (id)storeURLsMatchingStoreNameAtURL:(id)arg1;
+- (BOOL)updateMetadata:(id)arg1 context:(id)arg2 coordinator:(id)arg3 error:(id *)arg4;
 - (BOOL)updateMetadata:(id)arg1 coordinator:(id)arg2 error:(id *)arg3;
 
 @end

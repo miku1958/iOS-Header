@@ -12,6 +12,7 @@
 {
     BOOL _onDarkBackground;
     GKPlayer *_player;
+    UIColor *_defaultContentBackgroundColor;
     GKDashboardPlayerShadowView *_playerView;
     NSLayoutConstraint *_playerViewBottomToNameLabelTopConstraint;
     UILabel *_nameLabel;
@@ -21,6 +22,7 @@
     double _playerViewBottomToNameLabelTopConstant;
 }
 
+@property (strong, nonatomic) UIColor *defaultContentBackgroundColor; // @synthesize defaultContentBackgroundColor=_defaultContentBackgroundColor;
 @property (strong, nonatomic) UIColor *nameColor; // @synthesize nameColor=_nameColor;
 @property (nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (nonatomic) BOOL onDarkBackground; // @synthesize onDarkBackground=_onDarkBackground;

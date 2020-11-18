@@ -6,19 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class DEFilter, NSData, NSString;
 
 @interface DEUpdaterState : NSObject
 {
     BOOL _disabled;
     NSData *_builtinVersion;
     NSData *_syncedVersion;
+    NSString *_publicationURL;
     NSString *_publicationId;
+    DEFilter *_filter;
+    NSData *_latestVersion;
+    NSData *_promotedVersion;
 }
 
 @property (strong, nonatomic) NSData *builtinVersion; // @synthesize builtinVersion=_builtinVersion;
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
+@property (strong, nonatomic) DEFilter *filter; // @synthesize filter=_filter;
+@property (strong, nonatomic) NSData *latestVersion; // @synthesize latestVersion=_latestVersion;
+@property (strong, nonatomic) NSData *promotedVersion; // @synthesize promotedVersion=_promotedVersion;
 @property (strong, nonatomic) NSString *publicationId; // @synthesize publicationId=_publicationId;
+@property (strong, nonatomic) NSString *publicationURL; // @synthesize publicationURL=_publicationURL;
 @property (strong, nonatomic) NSData *syncedVersion; // @synthesize syncedVersion=_syncedVersion;
 
 + (id)stateFromPb:(const struct State *)arg1;

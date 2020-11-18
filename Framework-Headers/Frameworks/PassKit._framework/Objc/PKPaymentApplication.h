@@ -15,6 +15,7 @@
 {
     BOOL _supportsContactlessPayment;
     BOOL _supportsInAppPayment;
+    BOOL _supportsBarcodePayment;
     BOOL _supportsOptionalAuthentication;
     BOOL _supportsServiceMode;
     BOOL _requiresDeferredAuthorization;
@@ -38,6 +39,7 @@
     NSString *_displayName;
     long long _contactlessPriority;
     long long _inAppPriority;
+    NSString *_transactionSourceIdentifier;
     NSString *_appletDataFormat;
     PKTransitPassProperties *_transitProperties;
     NSArray *_supportedTransitNetworkIdentifiers;
@@ -71,9 +73,8 @@
 @property (copy, nonatomic) NSSet *subcredentials; // @synthesize subcredentials=_subcredentials;
 @property (copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
 @property (copy, nonatomic) NSArray *supportedTransitNetworkIdentifiers; // @synthesize supportedTransitNetworkIdentifiers=_supportedTransitNetworkIdentifiers;
+@property (nonatomic) BOOL supportsBarcodePayment; // @synthesize supportsBarcodePayment=_supportsBarcodePayment;
 @property (nonatomic) BOOL supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
-@property (readonly, nonatomic) BOOL supportsExpressSuica;
-@property (readonly, nonatomic) BOOL supportsExpressTransit;
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
 @property (nonatomic) BOOL supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property (nonatomic) BOOL supportsOptionalAuthentication; // @synthesize supportsOptionalAuthentication=_supportsOptionalAuthentication;
@@ -82,6 +83,7 @@
 @property (readonly, nonatomic) BOOL supportsTransit;
 @property (readonly, nonatomic) BOOL supportsTransitHistory;
 @property (copy, nonatomic) NSString *suspendedReason; // @synthesize suspendedReason=_suspendedReason;
+@property (copy, nonatomic) NSString *transactionSourceIdentifier; // @synthesize transactionSourceIdentifier=_transactionSourceIdentifier;
 @property (copy, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
 
 + (id)applicationWithProtobuf:(id)arg1;
@@ -102,8 +104,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentApplication:(id)arg1;
 - (id)protobuf;
+- (BOOL)supportsAutomaticSelectionForTCI:(id)arg1;
 - (BOOL)supportsExpress;
-- (BOOL)supportsExpressForAutomaticPresentationTechnologyType:(long long)arg1;
+- (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;

@@ -12,18 +12,30 @@
 
 @interface HDCodableFHIRResourceForAPI : PBCodable <NSCopying>
 {
+    long long _fhirVersionMajor;
+    long long _fhirVersionMinor;
+    long long _fhirVersionPatch;
     double _lastUpdatedDate;
     NSData *_data;
     NSString *_identifier;
     NSString *_resourceType;
     NSString *_sourceURL;
     struct {
+        unsigned int fhirVersionMajor:1;
+        unsigned int fhirVersionMinor:1;
+        unsigned int fhirVersionPatch:1;
         unsigned int lastUpdatedDate:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (nonatomic) long long fhirVersionMajor; // @synthesize fhirVersionMajor=_fhirVersionMajor;
+@property (nonatomic) long long fhirVersionMinor; // @synthesize fhirVersionMinor=_fhirVersionMinor;
+@property (nonatomic) long long fhirVersionPatch; // @synthesize fhirVersionPatch=_fhirVersionPatch;
 @property (readonly, nonatomic) BOOL hasData;
+@property (nonatomic) BOOL hasFhirVersionMajor;
+@property (nonatomic) BOOL hasFhirVersionMinor;
+@property (nonatomic) BOOL hasFhirVersionPatch;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasLastUpdatedDate;
 @property (readonly, nonatomic) BOOL hasResourceType;

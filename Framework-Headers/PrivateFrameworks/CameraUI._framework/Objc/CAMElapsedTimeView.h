@@ -10,19 +10,16 @@
 
 @interface CAMElapsedTimeView : UIView
 {
-    BOOL _usingBadgeAppearance;
     long long _layoutStyle;
     long long _backgroundStyle;
     NSString *_contentSizeCategory;
     UILabel *__timeLabel;
-    UIImageView *__recordingImageView;
     UIImageView *__backgroundView;
     NSTimer *__updateTimer;
     NSDate *__startTime;
 }
 
 @property (readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
-@property (readonly, nonatomic) UIImageView *_recordingImageView; // @synthesize _recordingImageView=__recordingImageView;
 @property (readonly, nonatomic) NSDate *_startTime; // @synthesize _startTime=__startTime;
 @property (readonly, nonatomic) UILabel *_timeLabel; // @synthesize _timeLabel=__timeLabel;
 @property (readonly, nonatomic) NSTimer *_updateTimer; // @synthesize _updateTimer=__updateTimer;
@@ -30,13 +27,9 @@
 @property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic, getter=isShowingBackground) BOOL showingBackground;
-@property (readonly, nonatomic) BOOL usingBadgeAppearance; // @synthesize usingBadgeAppearance=_usingBadgeAppearance;
 
 - (void).cxx_destruct;
-- (id)_backgroundRedColor;
-- (void)_beginRecordingAnimation;
-- (void)_commonCAMElapsedTimeViewInitializationWithLayoutStyle:(long long)arg1 usingBadgeAppearance:(BOOL)arg2;
-- (void)_endRecordingAnimation;
+- (void)_commonCAMElapsedTimeViewInitializationWithLayoutStyle:(long long)arg1;
 - (void)_setStartTime:(id)arg1;
 - (void)_updateBackgroundViewAnimated:(BOOL)arg1;
 - (void)_updateFont;
@@ -45,6 +38,7 @@
 - (void)dealloc;
 - (void)endTimer;
 - (id)initWithBadgeAppearance;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

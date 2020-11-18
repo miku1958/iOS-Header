@@ -15,11 +15,13 @@
 @interface HROnboardingManager : NSObject <UINavigationControllerDelegate, HROnboardingPageViewControllerDelegate>
 {
     BOOL _firstTimeOnboarding;
+    BOOL _isSampleInteractive;
     NSMutableDictionary *_userInfo;
     UINavigationController *_navigationController;
     HROnboardingSequence *_sequence;
     unsigned long long _currentPageNumber;
     long long _onboardingIntent;
+    long long _provenance;
     NPSManager *_nanoPreferenceSyncManager;
     HKHealthStore *_healthStore;
     HKHeartRhythmAvailability *_availability;
@@ -36,11 +38,13 @@
 @property (nonatomic) BOOL firstTimeOnboarding; // @synthesize firstTimeOnboarding=_firstTimeOnboarding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property (readonly, nonatomic) BOOL isSampleInteractive; // @synthesize isSampleInteractive=_isSampleInteractive;
 @property (strong, nonatomic) NPSManager *nanoPreferenceSyncManager; // @synthesize nanoPreferenceSyncManager=_nanoPreferenceSyncManager;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (nonatomic) long long onboardingIntent; // @synthesize onboardingIntent=_onboardingIntent;
 @property (weak, nonatomic) id<HROnboardingManagerDelegate> onboardingManagerDelegate; // @synthesize onboardingManagerDelegate=_onboardingManagerDelegate;
 @property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property (nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property (strong, nonatomic) HROnboardingSequence *sequence; // @synthesize sequence=_sequence;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
@@ -49,9 +53,16 @@
 - (void)_advancingToOnboardingPageNumber:(long long)arg1;
 - (void)_didStepBackward;
 - (void)_wrapUpOnboardingWithAtrialFibrillationDetectionEnabled:(BOOL)arg1;
+- (void)dismissOnboarding;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 delegate:(id)arg4;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 delegate:(id)arg4 firstTimeOnboarding:(BOOL)arg5;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 delegate:(id)arg4 isSampleInteractive:(BOOL)arg5;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 provenance:(long long)arg4;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 provenance:(long long)arg4 delegate:(id)arg5;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 provenance:(long long)arg4 delegate:(id)arg5 firstTimeOnboarding:(BOOL)arg6;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 provenance:(long long)arg4 delegate:(id)arg5 firstTimeOnboarding:(BOOL)arg6 isSampleInteractive:(BOOL)arg7;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 provenance:(long long)arg4 delegate:(id)arg5 isSampleInteractive:(BOOL)arg6;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (void)notNowTapped;

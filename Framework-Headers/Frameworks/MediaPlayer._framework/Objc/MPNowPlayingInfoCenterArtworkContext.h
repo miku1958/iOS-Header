@@ -8,6 +8,7 @@
 
 @class MPMediaItemArtwork, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPNowPlayingInfoCenterArtworkContext : NSObject
 {
     NSString *_artworkIdentifier;

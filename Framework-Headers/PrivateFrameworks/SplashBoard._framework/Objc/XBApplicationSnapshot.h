@@ -10,7 +10,7 @@
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
-@protocol XBSnapshotManifestStore;
+@protocol OS_os_transaction, XBSnapshotManifestStore;
 
 @interface XBApplicationSnapshot : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
@@ -18,7 +18,6 @@
     id<XBSnapshotManifestStore> _store;
     NSMutableDictionary *_variantsByID;
     NSString *_identifier;
-    NSString *_logIdentifier;
     NSString *_groupID;
     NSString *_variantID;
     NSString *_launchInterfaceIdentifier;
@@ -55,6 +54,10 @@
     BOOL _keepImageAccessForPreHeat;
     BOOL _hasProtectedContent;
     struct os_unfair_lock_s _loadImageLock;
+    NSString *_baseLogIdentifier;
+    NSString *_logIdentifier;
+    BOOL _logContainerIdentifierDirty;
+    NSObject<OS_os_transaction> *_cachedImageTransaction;
     XBDisplayEdgeInsetsWrapper *_customSafeAreaInsets;
     CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
@@ -99,7 +102,7 @@
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property (copy, nonatomic) NSString *launchInterfaceIdentifier; // @synthesize launchInterfaceIdentifier=_launchInterfaceIdentifier;
-@property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property (readonly, nonatomic) NSString *logIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (copy, nonatomic, setter=_setPath:) NSString *path; // @synthesize path=_path;
@@ -133,6 +136,7 @@
 - (id)_determineRelativePathForPath:(id)arg1 location:(long long *)arg2;
 - (void)_endPreHeatImageAccess;
 - (long long)_fileLocation;
+- (BOOL)_generateImageIfPossible;
 - (BOOL)_hasGenerationContext;
 - (id)_initWithContainerIdentity:(id)arg1 store:(id)arg2 groupID:(id)arg3 generationContext:(id)arg4;
 - (void)_invalidate;
@@ -141,10 +145,12 @@
 - (BOOL)_path:(id)arg1 isRelativeToPath:(id)arg2 outRelativePath:(id *)arg3;
 - (void)_purgeCachedImageIfAppropriate:(BOOL)arg1;
 - (struct CGRect)_referenceBounds;
+- (id)_sanitizedPathForPath:(id)arg1;
 - (void)_setFileLocation:(long long)arg1;
 - (void)_setHasProtectedContent:(BOOL)arg1;
-- (BOOL)_shouldDeleteFileOnPurge;
-- (void)_snynchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(BOOL)arg1;
+- (BOOL)_shouldDeleteFileOnPurge:(id *)arg1;
+- (void)_synchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(BOOL)arg1;
+- (BOOL)_synchronized_hasCachedImage:(id *)arg1;
 - (BOOL)_synchronized_isExpired;
 - (BOOL)_validateWithContainerIdentity:(id)arg1;
 - (void)beginImageAccess;
@@ -152,18 +158,22 @@
 - (id)cachedImageForInterfaceOrientation:(long long)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionForStateCaptureWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithoutVariants;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endImageAccess;
 - (BOOL)hasCachedImage;
 - (id)imageForInterfaceOrientation:(long long)arg1;
+- (id)imageForInterfaceOrientation:(long long)arg1 generationOptions:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
+- (BOOL)isValidWithReason:(id *)arg1;
 - (void)loadImage;
 - (void)loadImageForPreHeat;
+- (void)loadImageWithGenerationOptions:(unsigned long long)arg1;
 - (void)purgeImage;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

@@ -26,7 +26,8 @@
 - (id)initWithDefinition:(id)arg1;
 - (void)logOut;
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)makeAvailableAtGlobalLevelWithWebAuthenticationSession:(CDUnknownBlockType)arg1;
+- (void)makeAvailableAtGlobalLevelWithWebAuthenticationSessionInUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)name;
 - (id)protectedResourceDescription;
 - (id)resourceName;
 - (id)settingsUIDefinition;

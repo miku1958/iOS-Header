@@ -28,12 +28,10 @@
 + (double)defaultDistanceThresholdForAlgorithm:(long long)arg1 similarity:(long long)arg2;
 + (CDUnknownBlockType)distanceBlockForAlgorithm:(long long)arg1 sceneprintGetterBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (BOOL)_canUseSceneprintSimilarStackingWithItems:(id)arg1;
 - (id)adaptiveStackSimilarItems:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (double)distanceBetweenItem:(id)arg1 andItem:(id)arg2;
 - (double)distanceThresholdForSimilarity:(long long)arg1;
 - (id)initWithAlgorithm:(long long)arg1;
-- (id)legacyStackSimilarItems:(id)arg1 withThreshold:(double)arg2;
 - (CDUnknownBlockType)similarGroupComparator;
 - (id)stackSimilarItems:(id)arg1 withSimilarity:(long long)arg2 timestampSupport:(BOOL)arg3 progressBlock:(CDUnknownBlockType)arg4;
 

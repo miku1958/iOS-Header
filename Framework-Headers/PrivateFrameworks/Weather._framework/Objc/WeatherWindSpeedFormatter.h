@@ -23,12 +23,13 @@
 - (id)fallbackStringForWindSpeed:(float)arg1;
 - (id)fallbackUnitString;
 - (id)formattedStringForSpeed:(float)arg1 direction:(float)arg2;
+- (id)formattedStringForSpeed:(float)arg1 direction:(float)arg2 shortDescription:(BOOL)arg3;
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (id)init;
 - (double)speedByConvertingToUserUnit:(double)arg1;
 - (id)speedStringByConvertingToUserUnits:(float)arg1;
 - (id)stringForObjectValue:(id)arg1;
-- (id)stringForWindDirection:(float)arg1;
+- (id)stringForWindDirection:(float)arg1 shortDescription:(BOOL)arg2;
 - (id)stringForWindSpeed:(float)arg1;
 - (id)templateStringForSpeed:(float)arg1 direction:(float)arg2;
 - (int)windSpeedUnit;

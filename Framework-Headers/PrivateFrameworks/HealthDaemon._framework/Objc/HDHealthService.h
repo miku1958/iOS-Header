@@ -14,7 +14,6 @@
 @interface HDHealthService : NSObject <HDHSCharacteristicsDelegate>
 {
     NSObject<OS_dispatch_queue> *_dataQueue;
-    NSMutableArray *_pendingObjectBuffer;
     NSMutableArray *_pendingCharacteristicBuffer;
     HDDeviceEntity *_deviceEntity;
     _Atomic BOOL _deviceInformationLoaded;
@@ -46,11 +45,9 @@
 + (id)serviceUUID;
 - (void).cxx_destruct;
 - (void)_bufferCharacteristicToBeNotified:(id)arg1;
-- (void)_bufferObjectToBePersisted:(id)arg1;
 - (void)_dataQueue_deliverDataIfPossible;
 - (id)_dataQueue_deviceEntity;
 - (void)_dataQueue_notifyCharacteristic:(id)arg1;
-- (void)_dataQueue_persistData:(id)arg1;
 - (BOOL)_shouldNotifyReceivedData;
 - (void)characteristicDataReceived:(id)arg1;
 - (id)description;
@@ -68,7 +65,6 @@
 - (BOOL)processAdvertisementData:(id)arg1;
 - (void)readProperty:(id)arg1;
 - (void)respondFirstWriteWithData:(id)arg1 error:(id)arg2;
-- (void)serviceDataReceived:(id)arg1;
 - (id)servicesInProfile;
 - (void)setWritableCharacteristic:(id)arg1;
 - (BOOL)supportsOperation:(id)arg1;

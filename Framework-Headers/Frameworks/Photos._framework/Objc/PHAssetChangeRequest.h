@@ -8,7 +8,7 @@
 
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class CLLocation, NSArray, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
 @interface PHAssetChangeRequest : PHChangeRequest <PHUpdateChangeRequest>
 {
@@ -18,6 +18,7 @@
     NSURL *_editorBundleURL;
     CLLocation *_updatedLocation;
     NSString *_assetDescription;
+    NSString *_accessibilityDescription;
     NSString *_title;
     CDStruct_1b6d18a9 _bestKeyFrameTime;
     NSData *_bestKeyFrameJPEGData;
@@ -28,7 +29,6 @@
     short _sceneAnalysisVersion;
     NSDate *_sceneAnalysisTimestamp;
     NSData *_distanceIdentity;
-    NSMutableDictionary *_analysisStatesByWorkerType;
     BOOL _allowUnsafeSetProcessed;
     BOOL _incrementPlayCount;
     BOOL _incrementShareCount;
@@ -70,13 +70,16 @@
     BOOL _didUntrashAllSpatialOverCaptureResources;
     BOOL _didExpungeTrashedSpatialOverCaptureResources;
     BOOL _didSetReframeVariation;
-    BOOL _performReframe;
+    BOOL _performCameraProcessingAdjustment;
+    NSData *_objectSaliencyRectsData;
+    BOOL _didSetObjectSaliencyRectsData;
     BOOL _didSetTimeZone;
     NSString *_timeZoneName;
     long long _timeZoneOffsetValue;
     NSSet *_keywordTitles;
     BOOL _didSetKeywordTitles;
     PHRelationshipChangeRequestHelper *_keywordsHelper;
+    BOOL _didSetGpsHorizontalAccuracy;
     BOOL _didChangeAdjustments;
     BOOL _duplicateAllowsPrivateMetadata;
     BOOL _reverseLocationDataIsValid;
@@ -97,6 +100,8 @@
     PHRelationshipChangeRequestHelper *_facesHelper;
     NSDate *_alternateImportImageDate;
     unsigned long long _reframeVariation;
+    double _gpsHorizontalAccuracy;
+    NSArray *_objectSaliencyRects;
     NSDate *_mediaAnalysisTimeStamp;
     unsigned long long _mediaAnalysisVersion;
     unsigned long long _faceCount;
@@ -108,7 +113,10 @@
     CDStruct_e83c9415 _bestVideoTimeRange;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
+@property (strong, nonatomic) NSString *accessibilityDescription;
 @property (nonatomic) float activityScore; // @synthesize activityScore=_activityScore;
+@property (strong, nonatomic) NSDate *addedDate;
 @property (strong, nonatomic) NSDate *alternateImportImageDate; // @synthesize alternateImportImageDate=_alternateImportImageDate;
 @property (strong, nonatomic) NSString *assetDescription;
 @property (nonatomic) short audioClassification; // @synthesize audioClassification=_audioClassification;
@@ -132,6 +140,7 @@
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
 @property (nonatomic) float failureScore;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
+@property (nonatomic) double gpsHorizontalAccuracy; // @synthesize gpsHorizontalAccuracy=_gpsHorizontalAccuracy;
 @property (nonatomic) float harmoniousColorScore;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden;
@@ -153,6 +162,7 @@
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (nonatomic) float noiseScore;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
+@property (strong, nonatomic) NSArray *objectSaliencyRects; // @synthesize objectSaliencyRects=_objectSaliencyRects;
 @property (nonatomic) unsigned long long originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
 @property (nonatomic) float overallAestheticScore;
 @property (strong, nonatomic) NSString *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
@@ -205,6 +215,7 @@
 - (BOOL)_validateAndGenerateStillImageForLoopingLivePhotoWithContentEditingOutput:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateAsyncContentEditingOutputPreviewRenderURLs:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateImageURLForAssetMutation:(id)arg1 error:(id *)arg2;
+- (void)_validateObjectSaliencyRects:(id)arg1;
 - (void)addFaces:(id)arg1;
 - (void)addKeywords:(id)arg1;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
@@ -223,9 +234,8 @@
 - (BOOL)isHiding;
 - (BOOL)isRevertingContentToOriginal;
 - (void)markDidChangeAdjustments;
-- (void)performReframe;
+- (void)performCameraProcessingAdjustment;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeFaces:(id)arg1;
 - (void)removeFromMyPhotoStream;
 - (void)removeKeywords:(id)arg1;
@@ -236,8 +246,6 @@
 - (void)setAcceptableCropRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setAdjustmentData:(id)arg1 withRenderedJPEGData:(id)arg2 orRenderedContentURL:(id)arg3 penultimateRenderedJPEGData:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6 renderedVideoComplementURL:(id)arg7 penultimateRenderedVideoComplementURL:(id)arg8;
 - (void)setAdjustmentData:(id)arg1 withRenderedJPEGData:(id)arg2 orRenderedContentURL:(id)arg3 penultimateRenderedJPEGData:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6 renderedVideoComplementURL:(id)arg7 penultimateRenderedVideoComplementURL:(id)arg8 optionalOriginalResourceChoice:(id)arg9;
-- (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4;
-- (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4 allowUnsafeSetProcessed:(BOOL)arg5;
 - (void)setBestKeyFrame:(struct CGImage *)arg1 time:(CDStruct_1b6d18a9)arg2;
 - (void)setBestPlaybackRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setPreferredCropRectWithNormalizedRect:(struct CGRect)arg1;
@@ -248,6 +256,7 @@
 - (void)setVariationSuggestionStates:(unsigned long long)arg1 forVariationType:(unsigned long long)arg2;
 - (void)trashAllSpatialOverCaptureResources;
 - (void)untrashAllSpatialOverCaptureResources;
+- (BOOL)validateAccessibilityDescription:(id)arg1 error:(id *)arg2;
 - (BOOL)validateAdjustmentDataForAssetMutation:(id)arg1 error:(id *)arg2;
 - (BOOL)validateAssetDescription:(id)arg1 error:(id *)arg2;
 - (BOOL)validateContentEditingOutput:(id)arg1 error:(id *)arg2;

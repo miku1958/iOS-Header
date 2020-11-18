@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HeartRhythmUI/HROnboardingBulletPointViewController.h>
+#import <HeartRhythmUI/HRSpeedBumpViewController.h>
 
-@interface HROnboardingElectrocardiogramFeatureLimitationsViewController : HROnboardingBulletPointViewController
+@interface HROnboardingElectrocardiogramFeatureLimitationsViewController : HRSpeedBumpViewController
 {
 }
 
-- (id)bodyString;
-- (id)bulletPoints;
-- (id)buttonTitleString;
+- (BOOL)_hasOnboardedBeforeWithStore:(id)arg1;
+- (id)_makeSpeedBumpItemForUpdateOnboarding:(BOOL)arg1;
 - (id)initForOnboarding:(BOOL)arg1;
-- (id)titleString;
+- (void)setDelegate:(id)arg1;
 
 @end
 

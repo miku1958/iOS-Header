@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UAPasteboardFileItemProvider : NSObject <UAPasteboardFileItemProviding>
 {
     BOOL _preferFileRep;
+    BOOL _isDir;
     NSString *_type;
     NSUUID *_uuid;
     NSURL *_fileURL;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly) unsigned long long hash;
+@property BOOL isDir; // @synthesize isDir=_isDir;
 @property (nonatomic) BOOL preferFileRep; // @synthesize preferFileRep=_preferFileRep;
 @property (strong) NSData *sandboxExtension; // @synthesize sandboxExtension=_sandboxExtension;
 @property (readonly) Class superclass;

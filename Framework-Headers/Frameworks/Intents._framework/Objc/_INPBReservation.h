@@ -10,15 +10,15 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBReservation-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString, _INPBTimestamp;
+@class NSArray, NSString, _INPBDataString, _INPBTimestamp, _INPBURLValue;
 
 @interface _INPBReservation : PBCodable <_INPBReservation, NSSecureCoding, NSCopying>
 {
     struct {
         unsigned int reservationStatus:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _reservationStatus;
+    _INPBURLValue *_url;
     NSArray *_actions;
     _INPBTimestamp *_bookingTime;
     _INPBDataString *_itemReference;
@@ -26,7 +26,6 @@
     NSString *_reservationNumber;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, nonatomic) unsigned long long actionsCount;
 @property (strong, nonatomic) _INPBTimestamp *bookingTime; // @synthesize bookingTime=_bookingTime;
@@ -37,12 +36,14 @@
 @property (readonly, nonatomic) BOOL hasReservationHolderName;
 @property (readonly, nonatomic) BOOL hasReservationNumber;
 @property (nonatomic) BOOL hasReservationStatus;
+@property (readonly, nonatomic) BOOL hasUrl;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBDataString *itemReference; // @synthesize itemReference=_itemReference;
 @property (copy, nonatomic) NSString *reservationHolderName; // @synthesize reservationHolderName=_reservationHolderName;
 @property (copy, nonatomic) NSString *reservationNumber; // @synthesize reservationNumber=_reservationNumber;
 @property (nonatomic) int reservationStatus; // @synthesize reservationStatus=_reservationStatus;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _INPBURLValue *url; // @synthesize url=_url;
 
 + (Class)actionsType;
 + (BOOL)supportsSecureCoding;

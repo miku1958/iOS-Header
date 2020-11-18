@@ -8,9 +8,14 @@
 
 @interface NSString (IC)
 
+@property (readonly, nonatomic) BOOL ic_containsAlphanumericCharacters;
+@property (readonly, nonatomic) BOOL ic_containsNonWhitespaceAndAttachmentCharacters;
+@property (readonly, nonatomic) BOOL ic_containsNonWhitespaceCharacters;
 @property (readonly, nonatomic) NSString *ic_htmlStringEscapingQuotesAndLineBreaks;
 @property (readonly, nonatomic) BOOL ic_isLastCharacterANewline;
 @property (readonly, nonatomic) NSString *ic_leadingTrimmedString;
+@property (readonly, nonatomic) unsigned long long ic_lengthOfLongestLine;
+@property (readonly, nonatomic) unsigned long long ic_numberOfLines;
 @property (readonly, nonatomic) NSString *ic_quotedString;
 @property (readonly, nonatomic) struct _NSRange ic_range;
 @property (readonly, nonatomic) NSString *ic_sanitizedFilenameString;
@@ -24,17 +29,15 @@
 + (id)ic_NSAttachmentCharacterString;
 - (struct _NSRange)_HTMLRangeOfLastTagBeforeIndex:(unsigned long long)arg1;
 - (id)_HTMLTagNameClosing:(BOOL *)arg1;
-- (void)enumerateContentLineRangesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateParagraphsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)ic_HTMLInsertionPoint;
 - (id)ic_checkedSubstringWithRange:(struct _NSRange)arg1;
-- (BOOL)ic_containsAlphanumericCharacters;
-- (BOOL)ic_containsNonWhitespaceAndAttachmentCharacters;
-- (BOOL)ic_containsNonWhitespaceCharacters;
 - (unsigned long long)ic_countOfCharactersInSet:(id)arg1;
+- (void)ic_enumerateContentLineRangesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)ic_enumerateParagraphsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)ic_isLastCharacterInRangeANewlineForRange:(struct _NSRange)arg1;
 - (struct _NSRange)ic_lineRangeIgnoringLineBreakCharactersForIndex:(unsigned long long)arg1;
 - (id)ic_md5;
+- (struct _NSRange)ic_paragraphRangeForRange:(struct _NSRange)arg1 contentEnd:(unsigned long long *)arg2;
 - (BOOL)ic_rangeIsValid:(struct _NSRange)arg1;
 - (struct _NSRange)ic_safeCharacterRangeForRange:(struct _NSRange)arg1;
 - (id)ic_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
@@ -46,8 +49,5 @@
 - (id)ic_substringWithRange:(struct _NSRange)arg1;
 - (id)ic_truncatedStringWithMaxLength:(unsigned long long)arg1 truncated:(BOOL *)arg2;
 - (id)ic_uniqueWordsWithMinLength:(unsigned long long)arg1;
-- (unsigned long long)lengthOfLongestLine;
-- (unsigned long long)numberOfLines;
-- (struct _NSRange)paragraphRangeForRange:(struct _NSRange)arg1 contentEnd:(unsigned long long *)arg2;
 @end
 

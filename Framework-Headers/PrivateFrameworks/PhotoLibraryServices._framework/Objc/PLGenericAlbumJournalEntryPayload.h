@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSString *importSessionID;
 @property (readonly, nonatomic) BOOL isInTrash;
 @property (readonly, nonatomic) BOOL isPinned;
+@property (readonly, nonatomic) BOOL isPrototype;
 @property (readonly, nonatomic) NSNumber *kind;
 @property (readonly, nonatomic) NSString *title;
 @property (strong, nonatomic) NSData *userQueryData;

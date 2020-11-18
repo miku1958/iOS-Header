@@ -19,7 +19,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *fileCompressionQueue; // @synthesize fileCompressionQueue=_fileCompressionQueue;
-@property (nonatomic) struct os_unfair_lock_s fileCompressionQueueLock; // @synthesize fileCompressionQueueLock=_fileCompressionQueueLock;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

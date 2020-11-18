@@ -15,10 +15,6 @@
     long long _type;
 }
 
-@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
-@property (nonatomic) long long type; // @synthesize type=_type;
-
 - (void).cxx_destruct;
 
 @end

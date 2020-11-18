@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)_uniquedDefinedDimensionWithName:(id)arg1;
 + (id)_uniquedDimensionWithName:(id)arg1 configuration:(CDUnknownBlockType)arg2;
 + (id)conductance;
++ (id)electricPotentialDifference;
 + (id)energy;
 + (id)equivalents;
 + (id)frequency;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)_baseDimensions;
 - (id)_initWithName:(id)arg1;
 - (BOOL)canBeReduced;
+- (id)dimension;
 - (BOOL)isEqual:(id)arg1;
 - (id)unitString;
 

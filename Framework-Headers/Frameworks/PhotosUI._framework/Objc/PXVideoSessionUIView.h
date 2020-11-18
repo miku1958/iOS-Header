@@ -6,13 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-#import <PhotosUICore/ISChangeObserver-Protocol.h>
 #import <PhotosUICore/PXVideoViewDelegate-Protocol.h>
 
 @class NSString, PXVideoSession, PXVideoView, UIImage, UIImageView;
 @protocol PXVideoSessionUIViewDelegate;
 
-@interface PXVideoSessionUIView : UIView <PXVideoViewDelegate, ISChangeObserver>
+@interface PXVideoSessionUIView : UIView <PXVideoViewDelegate>
 {
     UIView *_videoContainerView;
     PXVideoView *_videoView;
@@ -49,7 +48,6 @@
 - (id)generateSnapshotImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)setContentMode:(long long)arg1;
 - (void)videoViewReadinessDidChange:(id)arg1;
 

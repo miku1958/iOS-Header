@@ -8,7 +8,7 @@
 
 #import <TSReading/TSDMTLDataBuffer-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, TSDGLShader;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
 @protocol MTLBuffer, MTLDevice;
 
 @interface TSDGPUDataBuffer : NSObject <TSDMTLDataBuffer>
@@ -29,7 +29,6 @@
     BOOL _isUpdatingRawDataBuffer;
     BOOL _didTeardown;
     BOOL _isEnabled;
-    TSDGLShader *_enabledShader;
     BOOL _isDynamicallyBuffered;
     unsigned int _drawMode;
     unsigned long long _vertexCount;
@@ -53,51 +52,56 @@
 @property (readonly) NSArray *vertexAttributes; // @synthesize vertexAttributes=_vertexAttributes;
 @property (readonly) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
 
++ (id)newDataBufferWithVertexAttributes:(id)arg1 meshSize:(struct CGSize)arg2;
 + (id)newDataBufferWithVertexAttributes:(id)arg1 meshSize:(struct CGSize)arg2 device:(id)arg3;
++ (id)newDataBufferWithVertexAttributes:(id)arg1 quadParticleCount:(unsigned long long)arg2;
 + (id)newDataBufferWithVertexAttributes:(id)arg1 quadParticleCount:(unsigned long long)arg2 device:(id)arg3;
++ (id)newDataBufferWithVertexAttributes:(id)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3;
 + (id)newDataBufferWithVertexAttributes:(id)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 device:(id)arg4;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 device:(id)arg3;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 device:(id)arg4;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 device:(id)arg5;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6 device:(id)arg7;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 device:(id)arg6;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(BOOL)arg3;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(BOOL)arg3 device:(id)arg4;
++ (void)p_addTransparentBorderInsetToTextureRect:(struct CGRect *)arg1 vertexRect:(struct CGRect *)arg2;
 - (void).cxx_destruct;
-- (CDStruct_6e3f967a)GLPoint2DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
-- (CDStruct_03942939)GLPoint3DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
-- (CDStruct_f2e236b6)GLPoint4DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
-- (float)GLfloatForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
-- (unsigned short)GLushortForIndexElement:(unsigned long long)arg1;
+- (CDStruct_869f9c67)GLPoint3DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
+- (CDStruct_83984b6f)GLPoint4DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)dealloc;
-- (void)disableDataBufferWithShader:(id)arg1;
-- (void)disableGLElementArrayBuffer;
 - (void)disableWithDevice:(id)arg1;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 advanceDynamicBuffer:(BOOL)arg3;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3 advanceDynamicBuffer:(BOOL)arg4;
-- (void)drawWithShader:(id)arg1;
-- (void)drawWithShader:(id)arg1 advanceDynamicBuffer:(BOOL)arg2;
-- (void)drawWithShader:(id)arg1 deactivateShaderWhenDone:(BOOL)arg2;
-- (void)drawWithShader:(id)arg1 deactivateShaderWhenDone:(BOOL)arg2 advanceDynamicBuffer:(BOOL)arg3;
-- (void)drawWithShader:(id)arg1 range:(struct _NSRange)arg2 deactivateShaderWhenDone:(BOOL)arg3;
-- (void)drawWithShader:(id)arg1 range:(struct _NSRange)arg2 deactivateShaderWhenDone:(BOOL)arg3 advanceDynamicBuffer:(BOOL)arg4;
 - (void)enableDataBuffer;
-- (void)enableDataBufferWithShader:(id)arg1;
-- (void)enableGLElementArrayBuffer;
 - (void)encodeWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)initWithVertexAttributes:(id)arg1 meshSize:(struct CGSize)arg2 bufferCount:(unsigned long long)arg3;
 - (id)initWithVertexAttributes:(id)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 bufferCount:(unsigned long long)arg4;
 - (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
+- (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6;
+- (float)metalFloatForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
+- (CDStruct_6e3f967a)metalPoint2DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
+- (CDStruct_869f9c67)metalPoint3DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
+- (CDStruct_83984b6f)metalPoint4DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)p_setAttributeUpdateData:(CDStruct_64113493 *)arg1 fromAttribute:(id)arg2;
 - (void)p_setupElementArrayBufferIfNecessary;
-- (void)p_setupGLElementArrayBufferIfNecessary;
 - (void)setCGFloat:(double)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setDataForAttribute:(id)arg1 atIndex:(unsigned long long)arg2 fromAttribute:(id)arg3 dataBuffer:(id)arg4 index:(unsigned long long)arg5;
 - (void)setGLPoint2D:(CDStruct_6e3f967a)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)setGLPoint3D:(CDStruct_03942939)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)setGLPoint4D:(CDStruct_f2e236b6)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)setGLfloat:(float)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)setGLPoint3D:(CDStruct_869f9c67)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)setGLPoint4D:(CDStruct_83984b6f)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setGLushort:(unsigned short)arg1 forIndexElement:(unsigned long long)arg2;
+- (void)setMetalFloat:(float)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)setMetalPoint2D:(CDStruct_6e3f967a)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)setMetalPoint3D:(CDStruct_869f9c67)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)setMetalPoint4D:(CDStruct_83984b6f)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)teardown;
 - (void)updateDataBufferAttributes:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)updateDataBufferAttributesWithBlock:(CDUnknownBlockType)arg1;

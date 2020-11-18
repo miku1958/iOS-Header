@@ -15,6 +15,7 @@
 @interface IAMWebMessagePresentationCoordinator : NSObject <IAMWebMessageControllerDelegate, IAMViewControllerMetricsDelegate>
 {
     NSURL *_webArchiveURL;
+    CDUnknownBlockType _modalViewControllerDismissedCompletion;
     BOOL _isPresenting;
     id<IAMWebMessagePresentationCoordinatorDelegate> _delegate;
     IAMWebMessageController *_webMessageController;
@@ -31,8 +32,10 @@
 @property (strong, nonatomic) ICInAppMessageEntry *webMessageEntry; // @synthesize webMessageEntry=_webMessageEntry;
 
 - (void).cxx_destruct;
+- (void)_dismissModalViewController:(CDUnknownBlockType)arg1;
 - (void)_handleOpenURL:(id)arg1;
-- (void)_handleWebMessageClose;
+- (void)_handleWebMessageDismissed;
+- (void)_modalViewControllerDismissalTransitionDidEnd:(id)arg1;
 - (id)initWithWebMessageEntry:(id)arg1 webArchiveURL:(id)arg2;
 - (void)load;
 - (BOOL)present;

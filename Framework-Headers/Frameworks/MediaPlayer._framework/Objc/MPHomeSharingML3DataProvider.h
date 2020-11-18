@@ -58,6 +58,7 @@
 - (void)setTokenData:(id)arg1 forAuthorizedDSID:(unsigned long long)arg2;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 ofItemWithIdentifier:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)uniqueIdentifier;
+- (BOOL)writable;
 
 @end
 

@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)predicateForSupportedAttachments;
-+ (id)predicateForSupportedFolders;
-+ (id)predicateForSupportedNotes;
++ (id)predicateForSupportedAttachmentsInContext:(id)arg1;
++ (id)predicateForSupportedFoldersInContext:(id)arg1;
++ (id)predicateForSupportedNotesInContext:(id)arg1;
 + (void)recursivelyAddAttachment:(id)arg1 toMutableSet:(id)arg2;
 + (void)recursivelyAddFolder:(id)arg1 toMutableSet:(id)arg2;
 + (id)unitTest_unsupportedAttachmentIdentifiersWithContext:(id)arg1;

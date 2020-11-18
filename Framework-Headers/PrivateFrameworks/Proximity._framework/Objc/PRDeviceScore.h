@@ -30,6 +30,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithValues:(id)arg1 proximity:(long long)arg2 range:(id)arg3 angle:(id)arg4 score:(double)arg5 scoreUncertainty:(double)arg6;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPRDeviceScore:(id)arg1;
 
 @end
 

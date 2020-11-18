@@ -29,6 +29,7 @@
 - (double)currentLatchedAbsoluteTimestamp;
 - (id)debugDescription;
 - (id)initWithIdentifier:(id)arg1;
+- (BOOL)isSuspended;
 - (id)newTimer;
 - (void)resume;
 - (void)suspend;

@@ -18,6 +18,9 @@
 
 @property (readonly, nonatomic) BOOL HTTPShouldUsePipelining;
 @property (nonatomic) BOOL _shouldSynchronizeOnNextRead; // @synthesize _shouldSynchronizeOnNextRead;
+@property (nonatomic) BOOL accessPointIsOnAutomatically;
+@property (nonatomic) long long accessPointLocation;
+@property (nonatomic) BOOL accessPointShowHighlights;
 @property (readonly, nonatomic, getter=isAccountModificationRestricted) BOOL accountModificationRestricted;
 @property (readonly, nonatomic, getter=isAddingFriendsRestricted) BOOL addingFriendsRestricted;
 @property (nonatomic) BOOL allowUnsignedBag;
@@ -25,14 +28,21 @@
 @property (nonatomic) double cacheTTLOverride;
 @property (nonatomic, getter=isClipGestureEnabled) BOOL clipGestureEnabled;
 @property (nonatomic, getter=isComprehensiveLoggingEnabled) BOOL comprehensiveLoggingEnabled;
+@property (nonatomic) unsigned long long coreRecentMultiplier;
+@property (nonatomic) unsigned long long coreRecentUpperLimit;
+@property (readonly, nonatomic, getter=isCustomizedCommunicationRestricted) BOOL customizedCommunicationRestricted;
+@property (nonatomic) BOOL dashboardDeepLinkEnabled;
 @property (nonatomic) double debugRequestTimeout;
+@property (nonatomic) BOOL enterSandbox;
 @property (nonatomic) long long environment;
 @property (readonly, nonatomic) unsigned long long exchangeDataDefaultMaximumSize;
 @property (nonatomic) unsigned long long exchangeDataMaximumSize;
 @property (readonly, nonatomic) unsigned long long exchangeDefaultMaxInitiatedExchangesPerPlayer;
 @property (nonatomic) unsigned long long exchangeMaxInitiatedExchangesPerPlayer;
 @property (nonatomic) BOOL forceDefaultNickname;
+@property (nonatomic) BOOL forceDefaultPrivacy;
 @property (nonatomic) BOOL forceRelay;
+@property (nonatomic) BOOL forceUnderage;
 @property (readonly, nonatomic, getter=isGameCenterRestricted) BOOL gameCenterRestricted;
 @property (nonatomic) double garbageCollectionInterval;
 @property (nonatomic) unsigned int logFilter;
@@ -49,7 +59,12 @@
 @property (nonatomic) double maxRecentPlayersTime;
 @property (nonatomic) unsigned long long mescalSetupRetries;
 @property (nonatomic) double minimumCacheTTL;
+@property (readonly, nonatomic) unsigned long long multiplayerAllowedPlayerType;
 @property (readonly, nonatomic, getter=isMultiplayerGamingRestricted) BOOL multiplayerGamingRestricted;
+@property (readonly, nonatomic, getter=isNearbyMultiplayerRestricted) BOOL nearbyMultiplayerRestricted;
+@property (nonatomic) long long networkManagerStateOverride;
+@property (nonatomic) NSString *networkManagerUserOverride;
+@property (nonatomic) BOOL newDashboardUI;
 @property (nonatomic) BOOL notificationAlertsEnabled;
 @property (nonatomic) BOOL notificationBadgesEnabled;
 @property (nonatomic, getter=isNotificationCenterEnabled) BOOL notificationCenterEnabled;
@@ -60,13 +75,18 @@
 @property (copy) NSDictionary *overrideValues; // @synthesize overrideValues=_overrideValues;
 @property (nonatomic) long long pipeliningSetting;
 @property (nonatomic) BOOL preemptiveRelay;
-@property (nonatomic) id<GKPreferencesDelegate> preferencesDelegate;
+@property (weak, nonatomic) id<GKPreferencesDelegate> preferencesDelegate;
+@property (readonly, nonatomic, getter=isProfileModificationRestricted) BOOL profileModificationRestricted;
+@property (readonly, nonatomic, getter=isProfilePrivacyModificationRestricted) BOOL profilePrivacyModificationRestricted;
 @property (nonatomic) long long pushEnvironment;
 @property (nonatomic) unsigned long long recentNumberOfPlayers;
 @property (nonatomic) BOOL restrictToAutomatch;
 @property (nonatomic) BOOL restrictToTournamentPlayers;
+@property (readonly, nonatomic, getter=isSharingRestricted) BOOL sharingRestricted;
 @property (nonatomic) BOOL shouldAddPlayerInfoToAddressBook;
+@property (readonly, nonatomic) BOOL shouldAllowCustomCommunication;
 @property (nonatomic) BOOL shouldAllowNearbyMultiplayer;
+@property (readonly, nonatomic) BOOL shouldAllowSharing;
 @property (nonatomic) BOOL shouldAnnotateImageUsage;
 @property (readonly, nonatomic) BOOL shouldDisallowInvitesFromStrangers;
 @property (nonatomic) BOOL shouldLinkPlayerToFacebook;
@@ -76,6 +96,7 @@
 @property (nonatomic) BOOL shouldUseTestIcons;
 @property (strong, nonatomic) NSString *storeBagURL;
 @property (readonly, nonatomic, getter=isStoreDemoModeEnabled) BOOL storeDemoModeEnabled;
+@property (nonatomic) BOOL supportsChallenges;
 @property (nonatomic) double terminationInterval;
 @property (copy, nonatomic) NSString *testRunID;
 @property (nonatomic) long long tournamentAutoDuration;
@@ -132,6 +153,7 @@
 - (void)synchronize;
 - (double)timeIntervalForKey:(struct __CFString *)arg1 defaultValue:(double)arg2;
 - (long long)unsignedIntegerValueForKey:(struct __CFString *)arg1 defaultValue:(long long)arg2;
+- (id)valueRestrictionForKey:(id)arg1;
 
 @end
 

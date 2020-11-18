@@ -25,10 +25,8 @@
 @property (strong) GKChallengeInternal *internal; // @synthesize internal=_internal;
 @property (readonly, strong, nonatomic) NSDate *issueDate; // @dynamic issueDate;
 @property (readonly, copy, nonatomic) GKPlayer *issuingPlayer; // @dynamic issuingPlayer;
-@property (readonly, copy, nonatomic) NSString *issuingPlayerID;
 @property (readonly, copy, nonatomic) NSString *message; // @dynamic message;
 @property (readonly, copy, nonatomic) GKPlayer *receivingPlayer; // @dynamic receivingPlayer;
-@property (readonly, copy, nonatomic) NSString *receivingPlayerID;
 @property (readonly, nonatomic) long long state; // @dynamic state;
 
 + (id)challengeForGame:(id)arg1 andPlayer:(id)arg2 withAchievement:(id)arg3;
@@ -40,6 +38,7 @@
 + (void)loadChallengesForGame:(id)arg1 receivingPlayer:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (void)loadChallengesForReceivingPlayer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadReceivedChallengesWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)loadReceivedPendingChallengesWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)stringForState:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
@@ -54,9 +53,11 @@
 - (id)initWithInternalRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)issueToPlayers:(id)arg1 message:(id)arg2;
+- (id)issuingPlayerID;
 - (void)loadDetailsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadUIDetailsWithHandler:(CDUnknownBlockType)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (id)receivingPlayerID;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;

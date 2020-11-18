@@ -8,35 +8,27 @@
 
 #import <ARKit/ARTrackable-Protocol.h>
 
-@class ARBody2D, ARCoreRESkeletonResult, ARSkeleton3D, NSString;
+@class ARSkeleton3D, NSString;
 
 @interface ARBodyAnchor : ARAnchor <ARTrackable>
 {
-    BOOL _tracked;
-    double _estimatedScaleFactor;
-    ARCoreRESkeletonResult *_skeletonData;
-    ARBody2D *_referenceBody;
+    BOOL isTracked;
     ARSkeleton3D *_skeleton;
+    double _estimatedScaleFactor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) double estimatedScaleFactor;
+@property (readonly, nonatomic) double estimatedScaleFactor; // @synthesize estimatedScaleFactor=_estimatedScaleFactor;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isTracked;
-@property (readonly, nonatomic) ARBody2D *referenceBody;
+@property (readonly, nonatomic) BOOL isTracked; // @synthesize isTracked;
 @property (readonly, nonatomic) ARSkeleton3D *skeleton; // @synthesize skeleton=_skeleton;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithTrackedState:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 tracked:(BOOL)arg3 skeletonData:(id)arg4;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToARBodyAnchor:(id)arg1;
 
 @end
 

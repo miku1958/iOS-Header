@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     BOOL _cachedIsShareable;
 }
 
+@property (readonly, nonatomic) BOOL containsOnlyInternalObservationHelpers;
+
 - (id)_copyByAddingObservance:(id)arg1;
 - (id)_initWithObservances:(id *)arg1 count:(unsigned long long)arg2 hashValue:(unsigned long long)arg3;
 - (void)dealloc;

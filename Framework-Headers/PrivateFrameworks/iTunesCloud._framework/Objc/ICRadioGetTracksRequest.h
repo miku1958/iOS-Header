@@ -22,12 +22,14 @@
     NSNumber *_delegatedPrivateListeningEnabled;
     long long _reasonType;
     ICStoreRequestContext *_requestContext;
+    long long _requestedTrackCount;
     NSString *_stationHash;
     long long _stationID;
     NSString *_stationStringID;
     NSURL *_stationURL;
     ICRadioContentReference *_seedContentReference;
     ICRadioContentReference *_nowPlayingContentReference;
+    NSArray *_queueContentReferences;
 }
 
 @property (copy, nonatomic) NSDictionary *additionalRequestParameters; // @synthesize additionalRequestParameters=_additionalRequestParameters;
@@ -38,8 +40,10 @@
 @property (copy, nonatomic) ICRadioPlaybackHistory *playbackContext; // @synthesize playbackContext=_playbackContext;
 @property (nonatomic, getter=isPreservingCurrentlyPlayingItem) BOOL preservingCurrentlyPlayingItem; // @synthesize preservingCurrentlyPlayingItem=_preservingCurrentlyPlayingItem;
 @property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
+@property (copy, nonatomic) NSArray *queueContentReferences; // @synthesize queueContentReferences=_queueContentReferences;
 @property (nonatomic) long long reasonType; // @synthesize reasonType=_reasonType;
 @property (copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
+@property (nonatomic) long long requestedTrackCount; // @synthesize requestedTrackCount=_requestedTrackCount;
 @property (copy, nonatomic) ICRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
 @property (nonatomic) BOOL shouldResponseContainStationMetadata; // @synthesize shouldResponseContainStationMetadata=_shouldResponseContainStationMetadata;
 @property (copy, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;

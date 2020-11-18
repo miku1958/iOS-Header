@@ -10,19 +10,22 @@
 #import <MapKit/VKRouteMatchedAnnotationPresentation-Protocol.h>
 #import <MapKit/VKTrackableAnnotationPresentation-Protocol.h>
 
-@class GEORouteMatch, MKAnnotationView, NSHashTable, NSString;
+@class GEORouteMatch, MKAnnotationView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MKUserLocationAnnotationViewProxy : NSObject <VKPuckAnimatorTarget, VKTrackableAnnotationPresentation, VKRouteMatchedAnnotationPresentation>
 {
     MKAnnotationView *_annotationView;
-    NSHashTable *_presentationCoordinateObservers;
 }
 
+@property (nonatomic, getter=isAnimatingAccuracy) BOOL animatingAccuracy;
+@property (readonly, nonatomic) struct VKEdgeInsets annotationTrackingEdgeInsets;
 @property (weak, nonatomic) MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double minimumAccuracy;
+@property (nonatomic) double presentationAccuracy;
 @property (nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
 @property (nonatomic) double presentationCourse;
 @property (strong, nonatomic) GEORouteMatch *routeMatch;
@@ -30,8 +33,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL tracking;
 
 - (void).cxx_destruct;
-- (void)addPresentationCoordinateChangedObserver:(id)arg1;
-- (void)removePresentationCoordinateChangedObserver:(id)arg1;
 - (void)setAnimatingToCoordinate:(BOOL)arg1;
 
 @end

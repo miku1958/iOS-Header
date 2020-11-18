@@ -18,12 +18,16 @@
 + (id)createAccountAlreadyExistsErrorWithIdentifier:(id)arg1;
 + (id)createAlreadyEnrolledInMDMv1Error;
 + (id)createBootstrapURINotFound;
++ (id)createCMSDecodeErrorWithStatusCode:(int)arg1 reason:(id)arg2;
 + (id)createCannotChangeValueErrorForPropertyNamed:(id)arg1 onObject:(id)arg2;
 + (id)createConnectionNotEntitledWithName:(id)arg1;
++ (id)createCouldNotInstallApp;
 + (id)createCouldNotInstallAppWithUnderlyingError:(id)arg1;
 + (id)createCouldNotParseURLErrorWithString:(id)arg1;
 + (id)createDeviceIdentityNotFoundError;
++ (id)createDisallowedStatusValueErrorWithKeyPath:(id)arg1;
 + (id)createErrorWithCode:(long long)arg1 userInfo:(id)arg2 descriptionKey:(id)arg3;
++ (id)createFeatureDisabledError:(id)arg1;
 + (id)createHTTPErrorWithStatusCode:(long long)arg1 reason:(id)arg2;
 + (id)createIncorrectPayloadTypeErrorWithExpectedType:(id)arg1 actualType:(id)arg2;
 + (id)createInternalError;
@@ -42,6 +46,9 @@
 + (id)createMultipleValidationErrorOrReturnTheSingleErrorWithErrors:(id)arg1;
 + (id)createNotImplementedErrorForFeature:(id)arg1;
 + (id)createOrganizationProofInvalidError;
++ (id)createServiceDiscoveryInvalidUserIdentifierWithReason:(id)arg1;
++ (id)createServiceDiscoveryWellKnownFailedWithReason:(id)arg1;
++ (id)createServiceDiscoveryWellKnownInvalidWithReason:(id)arg1;
 + (id)createStatePreventsSyncingError;
 + (id)createTooManyDeviceManagementSourcesError;
 + (id)createTooManyFailedAuthenticationsError;
@@ -52,7 +59,8 @@
 + (id)createUnhandledContentTypeErrorWithContentType:(id)arg1;
 + (id)createUnsupportedAuthenticationSchemeErrorWithScheme:(id)arg1;
 + (id)createUnsupportedStatusValueErrorWithKeyPath:(id)arg1;
-+ (id)createUnverifiedDownloadErrorWithURL:(id)arg1;
++ (id)createUnverifiedDownloadHashErrorWithURL:(id)arg1;
++ (id)createUnverifiedDownloadSizeErrorWithURL:(id)arg1;
 
 @end
 

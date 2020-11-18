@@ -14,20 +14,27 @@
 {
     NSURL *_fullsizeImageURL;
     NSURL *_thumbnailImageURL;
+    NSURL *_renderedImageURL;
 }
 
+@property (readonly, nonatomic) unsigned long long backingType;
 @property (copy, nonatomic) NSURL *fullsizeImageURL; // @synthesize fullsizeImageURL=_fullsizeImageURL;
-@property (readonly, nonatomic) unsigned long long identifier;
+@property (readonly, nonatomic) long long identifier;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSURL *renderedImageURL; // @synthesize renderedImageURL=_renderedImageURL;
 @property (readonly, nonatomic) double stillTimeInVideo;
 @property (copy, nonatomic) NSURL *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
 @property (readonly, nonatomic) unsigned long long type;
 @property (readonly, copy, nonatomic) NSURL *videoAssetURL;
 
++ (id)na_identity;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2 thumbnailImageURL:(id)arg3 fullsizeImageURL:(id)arg4;
+- (CDUnknownBlockType)descriptionBuilderBlock;
+- (unsigned long long)hash;
+- (id)initWithIdentifier:(long long)arg1 name:(id)arg2 thumbnailImageURL:(id)arg3 fullsizeImageURL:(id)arg4 renderedImageURL:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (id)renderedVideoAssetURL;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <MetricKit/NSSecureCoding-Protocol.h>
 
-@class MXAppLaunchMetric, MXAppResponsivenessMetric, MXAppRunTimeMetric, MXCPUMetric, MXCellularConditionMetric, MXDiskIOMetric, MXDisplayMetric, MXGPUMetric, MXLocationActivityMetric, MXMemoryMetric, MXMetaData, MXNetworkTransferMetric, NSArray, NSDate, NSString;
+@class MXAnimationMetric, MXAppExitMetric, MXAppLaunchMetric, MXAppResponsivenessMetric, MXAppRunTimeMetric, MXCPUMetric, MXCellularConditionMetric, MXDiskIOMetric, MXDisplayMetric, MXGPUMetric, MXLocationActivityMetric, MXMemoryMetric, MXMetaData, MXNetworkTransferMetric, NSArray, NSDate, NSString;
 
 @interface MXMetricPayload : NSObject <NSSecureCoding>
 {
@@ -27,10 +27,14 @@
     MXDiskIOMetric *_diskIOMetrics;
     MXMemoryMetric *_memoryMetrics;
     MXDisplayMetric *_displayMetrics;
+    MXAnimationMetric *_animationMetrics;
+    MXAppExitMetric *_applicationExitMetrics;
     NSArray *_signpostMetrics;
     MXMetaData *_metaData;
 }
 
+@property (strong) MXAnimationMetric *animationMetrics; // @synthesize animationMetrics=_animationMetrics;
+@property (strong) MXAppExitMetric *applicationExitMetrics; // @synthesize applicationExitMetrics=_applicationExitMetrics;
 @property (strong) MXAppLaunchMetric *applicationLaunchMetrics; // @synthesize applicationLaunchMetrics=_applicationLaunchMetrics;
 @property (strong) MXAppResponsivenessMetric *applicationResponsivenessMetrics; // @synthesize applicationResponsivenessMetrics=_applicationResponsivenessMetrics;
 @property (strong) MXAppRunTimeMetric *applicationTimeMetrics; // @synthesize applicationTimeMetrics=_applicationTimeMetrics;
@@ -53,6 +57,7 @@
 - (void).cxx_destruct;
 - (id)DictionaryRepresentation;
 - (id)JSONRepresentation;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAppVersion:(id)arg1 withMutipleAppVersions:(BOOL)arg2 withTimeStampBegin:(id)arg3 withTimeStampEnd:(id)arg4;
 - (id)initWithCoder:(id)arg1;

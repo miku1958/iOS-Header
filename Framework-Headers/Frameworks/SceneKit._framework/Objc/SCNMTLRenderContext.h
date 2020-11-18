@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface SCNMTLRenderContext : NSObject <SCNBufferStream>
 {
-    C3DColor4_a26f5c89 _rendererPremultipliedBackgroundColor;
     long long _currentFrameIndex;
     struct __C3DEngineStats *__engineStats;
     double _superSamplingFactor;
@@ -294,13 +293,12 @@ __attribute__((visibility("hidden")))
 - (void)renderSKSceneWithRenderer:(id)arg1 overlay:(BOOL)arg2 atTime:(double)arg3;
 - (MISSING_TYPE *)renderSize;
 - (float)renderTime;
-- (void)renderVideoBackground:(struct __C3DImageProxy *)arg1 engineContext:(struct __C3DEngineContext *)arg2;
+- (void)renderVideoBackground:(struct __C3DImageProxy *)arg1 engineContext:(struct __C3DEngineContext *)arg2 slot:(struct __C3DEffectSlot *)arg3;
 - (void)resetVolatileMeshElements;
 - (void)resetVolatileMeshes;
 - (void)setCurrentPassHash:(unsigned long long)arg1;
 - (void)setCurrentPassMaterial:(struct __C3DMaterial *)arg1;
 - (void)setRasterizerStates:(struct __C3DRasterizerStates *)arg1;
-- (void)setRendererPremultipliedBackgroundColor:(C3DColor4_0cad58d8)arg1;
 - (void)startProcessingRendererElementsWithEngineIterationContext:(CDStruct_65434d98 *)arg1;
 - (struct __C3DEngineStats *)stats;
 - (void)stopProcessingRendererElements:(BOOL)arg1;

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPHomeSharingArtworkCacheKey : NSObject
 {
     unsigned long long _persistentID;

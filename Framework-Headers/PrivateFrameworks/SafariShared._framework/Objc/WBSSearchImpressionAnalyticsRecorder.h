@@ -19,9 +19,9 @@
 
 + (id)sharedRecorder;
 - (void).cxx_destruct;
-- (id)_searchProviderForURL:(id)arg1;
-- (void)didActualizeImpressionForURL:(id)arg1 isFromUnifiedField:(BOOL)arg2;
+- (void)didActualizeImpressionForURL:(id)arg1 provenance:(long long)arg2;
 - (id)init;
+- (id)searchProviderForURL:(id)arg1;
 
 @end
 

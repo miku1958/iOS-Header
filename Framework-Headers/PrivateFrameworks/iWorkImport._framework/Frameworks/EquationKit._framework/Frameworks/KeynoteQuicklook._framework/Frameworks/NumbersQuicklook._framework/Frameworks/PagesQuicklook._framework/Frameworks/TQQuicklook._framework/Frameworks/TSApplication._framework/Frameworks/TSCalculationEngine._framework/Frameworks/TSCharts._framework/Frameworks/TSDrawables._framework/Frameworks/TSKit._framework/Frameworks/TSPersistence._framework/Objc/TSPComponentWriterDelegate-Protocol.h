@@ -6,20 +6,19 @@
 
 #import <TSPersistence/NSObject-Protocol.h>
 
-@class NSObject, TSPArchiver, TSPComponent, TSPComponentWriter, TSPObject;
-@protocol OS_dispatch_queue;
+@class NSArray, NSString, TSPArchiver, TSPComponent, TSPComponentWriter, TSPObject;
 
 @protocol TSPComponentWriterDelegate <NSObject>
 - (void)componentWriter:(TSPComponentWriter *)arg1 canSkipArchivingStronglyReferencedObject:(TSPObject *)arg2 fromComponentRootObject:(TSPObject *)arg3 completion:(void (^)(BOOL))arg4;
-- (void)componentWriter:(TSPComponentWriter *)arg1 wantsComponentOfObject:(TSPObject *)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3 completion:(void (^)(TSPComponent *, unsigned long long))arg4;
+- (TSPComponent *)componentWriter:(TSPComponentWriter *)arg1 wantsComponentOfObject:(TSPObject *)arg2 componentReadVersion:(unsigned long long *)arg3;
 - (TSPObject *)componentWriter:(TSPComponentWriter *)arg1 wantsExplicitComponentRootObjectForObject:(TSPObject *)arg2 archiverOrNil:(TSPArchiver *)arg3 claimingComponent:(TSPComponent *)arg4 hasArchiverAccessLock:(BOOL)arg5;
-- (void)componentWriterWantsDelayedObjects:(TSPComponentWriter *)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 completion:(void (^)(NSArray *))arg3;
+- (NSArray *)componentWriterWantsDelayedObjects:(TSPComponentWriter *)arg1;
 - (unsigned long long)objectTargetTypeForComponentWriter:(TSPComponentWriter *)arg1;
 
 @optional
 - (BOOL)componentWriter:(TSPComponentWriter *)arg1 externalPackageDidWriteObject:(TSPObject *)arg2 claimingComponent:(id *)arg3 componentReadVersion:(unsigned long long *)arg4;
-- (void)componentWriter:(TSPComponentWriter *)arg1 locatorForClaimingComponent:(TSPComponent *)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3 completion:(void (^)(NSString *))arg4;
-- (BOOL)componentWriter:(TSPComponentWriter *)arg1 object:(TSPObject *)arg2 belongsToLinkedComponent:(TSPComponent *)arg3;
+- (NSString *)componentWriter:(TSPComponentWriter *)arg1 locatorForClaimingComponent:(TSPComponent *)arg2;
+- (BOOL)componentWriter:(TSPComponentWriter *)arg1 object:(TSPObject *)arg2 belongsToCopiedComponent:(TSPComponent *)arg3;
 - (BOOL)componentWriter:(TSPComponentWriter *)arg1 shouldDelayWritingObject:(TSPObject *)arg2;
 - (void)componentWriterNeedsDocumentRecovery:(TSPComponentWriter *)arg1;
 @end

@@ -6,24 +6,29 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFSpeechCorrectionInfo, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class AFSpeechCorrectionInfo, NSArray, NSData, NSDictionary, NSSet, NSString, NSURL;
 
 @protocol AFSpeechService <NSObject>
 - (oneway void)addAudioPacket:(NSData *)arg1;
-- (oneway void)createSpeechProfileWithLanguage:(NSString *)arg1 JSONData:(NSData *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
+- (oneway void)createSpeechProfileWithLanguage:(NSString *)arg1 modelOverridePath:(NSString *)arg2 JSONData:(NSData *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
+- (oneway void)deleteAllDESRecordsForDictationPersonalizationWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)fetchAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)fetchUserDataForLanguage:(NSString *)arg1 completion:(void (^)(NSData *))arg2;
 - (oneway void)finishAudio;
 - (oneway void)getInstalledAssetSizeWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)getOfflineDictationStatusIgnoringCache:(BOOL)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
-- (oneway void)preheatSpeechRecognitionWithLanguage:(NSString *)arg1;
-- (oneway void)purgeInstalledAssetsWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
+- (oneway void)invalidatePersonalizedLM;
+- (oneway void)preheatSpeechRecognitionWithLanguage:(NSString *)arg1 modelOverrideURL:(NSURL *)arg2;
+- (oneway void)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (oneway void)readProfileAndUserDataWithLanguage:(NSString *)arg1 allowOverride:(BOOL)arg2 completion:(void (^)(NSData *, NSString *))arg3;
+- (oneway void)removePersonalizedLMForFidesOnly:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (oneway void)resetCacheAndCompileAllAssetsWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 recordData:(NSData *)arg2 attachments:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSData *, NSError *))arg4;
+- (oneway void)runEvaluationWithDESRecordDatas:(NSDictionary *)arg1 language:(NSString *)arg2 recipe:(NSDictionary *)arg3 fidesPersonalizedLMPath:(NSString *)arg4 fidesPersonalizedLMTrainingAsset:(NSString *)arg5 scrubResult:(BOOL)arg6 completion:(void (^)(NSDictionary *, NSError *))arg7;
 - (oneway void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 interactionIdentifier:(NSString *)arg2;
 - (oneway void)startRequestActivityWithCompletion:(void (^)(void))arg1;
-- (oneway void)startSpeechRecognitionWithLanguage:(NSString *)arg1 interactionIdentifier:(NSString *)arg2 task:(NSString *)arg3 context:(NSArray *)arg4 profile:(NSData *)arg5 narrowband:(BOOL)arg6 detectUtterances:(BOOL)arg7 censorSpeech:(BOOL)arg8 maximumRecognitionDuration:(double)arg9 farField:(BOOL)arg10 overrides:(NSDictionary *)arg11 modelOverrideURL:(NSURL *)arg12 secureOfflineOnly:(BOOL)arg13 originalAudioFileURL:(NSURL *)arg14 didStartHandler:(void (^)(NSString *, NSError *))arg15;
-- (oneway void)updateSpeechProfileWithLanguage:(NSString *)arg1 existingProfile:(NSData *)arg2 existingAssetPath:(NSString *)arg3 completion:(void (^)(NSData *, NSString *, NSError *))arg4;
+- (oneway void)startSpeechRecognitionWithLanguage:(NSString *)arg1 interactionIdentifier:(NSString *)arg2 task:(NSString *)arg3 context:(NSArray *)arg4 profile:(NSData *)arg5 narrowband:(BOOL)arg6 detectUtterances:(BOOL)arg7 censorSpeech:(BOOL)arg8 maximumRecognitionDuration:(double)arg9 farField:(BOOL)arg10 overrides:(NSDictionary *)arg11 modelOverrideURL:(NSURL *)arg12 secureOfflineOnly:(BOOL)arg13 originalAudioFileURL:(NSURL *)arg14 applicationName:(NSString *)arg15 shouldStoreAudioOnDevice:(BOOL)arg16 didStartHandler:(void (^)(NSString *, NSString *, NSError *))arg17;
+- (oneway void)updateSpeechProfileWithLanguage:(NSString *)arg1 modelOverridePath:(NSString *)arg2 existingProfile:(NSData *)arg3 existingAssetPath:(NSString *)arg4 completion:(void (^)(NSData *, NSString *, NSError *))arg5;
 - (oneway void)writeDESRecord;
 @end
 

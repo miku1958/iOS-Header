@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
 - (void)willMoveToParentViewController:(id)arg1;
+- (void)willOpenCurrentPageInBrowser;
 - (void)willOpenURLInHostApplication:(id)arg1;
 
 @end

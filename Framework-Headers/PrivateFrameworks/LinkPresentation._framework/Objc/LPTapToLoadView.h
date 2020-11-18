@@ -22,14 +22,14 @@ __attribute__((visibility("hidden")))
     UILongPressGestureRecognizer *_highlightGestureRecognizer;
     BOOL _wasTapped;
     CDUnknownBlockType _animateOutCompletionHandler;
-    id<LPTapToLoadViewDelegate> _delegate;
+    id<LPTapToLoadViewDelegate> _tapToLoadViewDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<LPTapToLoadViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id<LPTapToLoadViewDelegate> tapToLoadViewDelegate; // @synthesize tapToLoadViewDelegate=_tapToLoadViewDelegate;
 
 - (void).cxx_destruct;
 - (void)_animateToProgressView;

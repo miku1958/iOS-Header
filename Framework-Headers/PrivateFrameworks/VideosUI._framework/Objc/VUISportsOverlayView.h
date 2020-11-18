@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
     UIImage *_backgroundImageForMaterialRendering;
     VUISportsOverlayLayout *_overlayLayout;
     VUISportsScoreboardViewModel *_scoreboardViewModel;
-    IKViewElement *_viewElement;
     VUIScorecardView *_scorecardView;
     VUITextBadgeView *_textBadge;
     _TVImageView *_logoView;
+    IKViewElement *_viewElement;
     IKImageElement *_logoElement;
     NSOperation *_pendingOperation;
     UIImage *_scorecardViewBackgroundImage;
@@ -63,15 +63,12 @@ __attribute__((visibility("hidden")))
 - (void)_registerOverlayView;
 - (BOOL)_scorecardViewBackgroundImageNeedsUpdating;
 - (BOOL)_scorecardViewRequiresBackgroundImage;
-- (void)_setupHosting;
 - (void)_teardownHosting;
 - (BOOL)_textBadgeBackgroundImageNeedsUpdating;
 - (BOOL)_textBadgeRequiresBackgroundImage;
 - (void)_unregisterOverlayView;
 - (void)_updateBackgroundImagesWithCompletedOperation:(id)arg1;
-- (void)_updateBackgroundMaterialImagesWithBackgroundImageSize:(struct CGSize)arg1 performSynchronously:(BOOL)arg2;
 - (void)_updateBadgePosition;
-- (BOOL)_updateScoreView:(id)arg1;
 - (BOOL)_updateTextBadge:(id)arg1;
 - (int)backgroundBlendModeForScoreValueInRow:(long long)arg1 atIndex:(long long)arg2;
 - (id)backgroundImageForScorecardViewMaterial:(id)arg1;
@@ -86,8 +83,12 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reset;
 - (id)scoreValue:(id)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
+- (void)setupHosting;
 - (long long)styleForScorecardView:(id)arg1;
+- (void)updateBackgroundMaterialImagesWithBackgroundImageSize:(struct CGSize)arg1 performSynchronously:(BOOL)arg2;
+- (BOOL)updateScoreView:(id)arg1;
 - (void)updateScoreboard:(id)arg1;
+- (BOOL)updateTextBadge;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

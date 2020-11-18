@@ -7,36 +7,28 @@
 #import <objc/NSObject.h>
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
-#import <FamilyCircleUI/AIDAAccountManagerDelegate-Protocol.h>
-#import <FamilyCircleUI/FAChildAccountCreationDelegate-Protocol.h>
+#import <FamilyCircleUI/FACreateChildControllerDelegate-Protocol.h>
 
-@class AAUIServerHookResponse, FAChildAccountCreationController, NSString, UIViewController;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
-@interface FACreateChildAccountHook : NSObject <AIDAAccountManagerDelegate, FAChildAccountCreationDelegate, AAUIServerHook>
+@interface FACreateChildAccountHook : NSObject <FACreateChildControllerDelegate, AAUIServerHook>
 {
-    CDUnknownBlockType _completion;
-    FAChildAccountCreationController *_childCreateController;
-    UIViewController *_initialViewController;
     id<AAUIServerHookDelegate> _delegate;
+    RUIObjectModel *_objectModel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_callCompletion:(BOOL)arg1 error:(id)arg2;
-- (void)_handleCreateChildAccount:(CDUnknownBlockType)arg1;
-- (id)_presentationContext;
-- (void)_tearDownChildAccountCreateController:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
-- (id)accountsForAccountManager:(id)arg1;
-- (void)childAccountCreationController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
-- (void)childAccountCreationController:(id)arg1 didLoadRemoteUIWithSuccess:(BOOL)arg2;
-- (id)navigationItemToShowInitialLoadingForChildAccountCreationController:(id)arg1;
+- (void)_handleCreateChildAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)createChildControllerDidPresentInitialViewController:(id)arg1;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldMatchElement:(id)arg1;

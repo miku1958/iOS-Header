@@ -15,21 +15,12 @@
     NSMutableArray *_applayouts;
 }
 
-@property (strong, nonatomic) NSMutableArray *applayouts; // @synthesize applayouts=_applayouts;
-
-+ (Class)applayoutsType;
 - (void).cxx_destruct;
-- (void)addApplayouts:(id)arg1;
-- (id)applayoutsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)applayoutsCount;
-- (void)clearApplayouts;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

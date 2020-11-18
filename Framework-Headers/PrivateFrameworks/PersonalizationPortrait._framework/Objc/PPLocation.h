@@ -6,28 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class CLPlacemark, PPLocationRecord;
+@class CLPlacemark, NSSet, NSString, PPLocationRecord;
 
-@interface PPLocation : NSObject <NSCopying, NSSecureCoding>
+@interface PPLocation : NSObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     unsigned short _category;
     CLPlacemark *_placemark;
     PPLocationRecord *_mostRelevantRecord;
+    NSString *_clusterIdentifier;
 }
 
 @property (readonly, nonatomic) unsigned short category; // @synthesize category=_category;
+@property (readonly, nonatomic) NSString *clusterIdentifier; // @synthesize clusterIdentifier=_clusterIdentifier;
+@property (readonly, nonatomic) NSSet *featureNames;
 @property (readonly, nonatomic) PPLocationRecord *mostRelevantRecord; // @synthesize mostRelevantRecord=_mostRelevantRecord;
 @property (readonly, nonatomic) CLPlacemark *placemark; // @synthesize placemark=_placemark;
 
++ (id)clusterIdentifierFromPlacemark:(id)arg1;
 + (id)describeCategory:(unsigned short)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customizedDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureValueForName:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

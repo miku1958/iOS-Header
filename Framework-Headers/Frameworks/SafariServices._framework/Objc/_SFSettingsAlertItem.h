@@ -15,6 +15,7 @@
     long long _type;
     NSString *_title;
     NSAttributedString *_attributedTitle;
+    NSString *_subtitle;
     NSString *_textStyle;
     UIColor *_tintColor;
     UIImage *_icon;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (copy, nonatomic) NSArray *subItems; // @synthesize subItems=_subItems;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
 @property (copy, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -50,6 +52,7 @@
 + (id)optionsGroupWithTitle:(id)arg1 controller:(id)arg2;
 + (id)stepperWithController:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)_updateButtonTitle;
 - (id)initWithType:(long long)arg1;
 - (void)updateOptionsGroupDetailLabel;
 

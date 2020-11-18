@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UILabel *iconTitleLabel; // @synthesize iconTitleLabel=_iconTitleLabel;
 @property (strong, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 
++ (id)_appleInternalLabelText;
 + (double)_preferredHeightOfAppleInternalTextWithWidth:(double)arg1;
 + (double)preferredHeightForText:(id)arg1 buttonType:(unsigned long long)arg2 fittingWidth:(double)arg3 style:(unsigned long long)arg4 dividerHidden:(BOOL)arg5;
 - (void).cxx_destruct;

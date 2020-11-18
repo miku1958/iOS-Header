@@ -10,14 +10,15 @@
 #import <WorkflowUI/WFAddToHomeScreenActivityDelegate-Protocol.h>
 #import <WorkflowUI/WFContentClassesViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFGalleryImportViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFHealthFeatureObserver-Protocol.h>
 #import <WorkflowUI/WFTableViewFooterLinkViewDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowSettingsViewDataSourceDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowWizardNameCellDelegate-Protocol.h>
 
-@class NSString, UINavigationController, WFAddToHomeScreenActivity, WFDatabase, WFWorkflow, WFWorkflowSettingsLayoutMetrics, WFWorkflowSettingsViewDataSource;
+@class NSString, UINavigationController, WFAddToHomeScreenActivity, WFDatabase, WFHealthFeatureAvailability, WFWorkflow, WFWorkflowSettingsLayoutMetrics, WFWorkflowSettingsViewDataSource;
 @protocol WFWorkflowSettingsViewControllerDelegate;
 
-@interface WFWorkflowSettingsViewController : UITableViewController <WFAddToHomeScreenActivityDelegate, UIViewControllerTransitioningDelegate, WFContentClassesViewControllerDelegate, WFGalleryImportViewControllerDelegate, WFWorkflowWizardNameCellDelegate, WFWorkflowSettingsViewDataSourceDelegate, WFTableViewFooterLinkViewDelegate>
+@interface WFWorkflowSettingsViewController : UITableViewController <WFAddToHomeScreenActivityDelegate, UIViewControllerTransitioningDelegate, WFContentClassesViewControllerDelegate, WFGalleryImportViewControllerDelegate, WFWorkflowWizardNameCellDelegate, WFWorkflowSettingsViewDataSourceDelegate, WFTableViewFooterLinkViewDelegate, WFHealthFeatureObserver>
 {
     WFWorkflowSettingsLayoutMetrics *_layoutMetrics;
     id<WFWorkflowSettingsViewControllerDelegate> _delegate;
@@ -26,6 +27,7 @@
     WFAddToHomeScreenActivity *_homeScreenActivity;
     UINavigationController *_cardPresentationNavigationController;
     WFWorkflowSettingsViewDataSource *_dataSource;
+    WFHealthFeatureAvailability *_healthFeatureAvailability;
 }
 
 @property (strong, nonatomic) UINavigationController *cardPresentationNavigationController; // @synthesize cardPresentationNavigationController=_cardPresentationNavigationController;
@@ -35,6 +37,7 @@
 @property (weak, nonatomic) id<WFWorkflowSettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) WFHealthFeatureAvailability *healthFeatureAvailability; // @synthesize healthFeatureAvailability=_healthFeatureAvailability;
 @property (strong, nonatomic) WFAddToHomeScreenActivity *homeScreenActivity; // @synthesize homeScreenActivity=_homeScreenActivity;
 @property (readonly, nonatomic) WFWorkflowSettingsLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
 @property (readonly) Class superclass;
@@ -49,11 +52,13 @@
 - (void)didSelectSettingsSectionHelpAtRow:(long long)arg1;
 - (void)didSelectSettingsSectionImportQuestionsAtRow:(long long)arg1;
 - (void)didSelectSettingsSectionShowInAtRow:(long long)arg1;
+- (void)didTapDone;
 - (void)dismissIconViewController;
-- (void)done;
+- (void)finishByDismissing:(BOOL)arg1;
 - (void)footerLinkView:(id)arg1 didTapURL:(id)arg2;
 - (void)galleryImportViewController:(id)arg1 didFinishWithWorkflow:(id)arg2;
 - (void)galleryImportViewControllerDidCancel:(id)arg1;
+- (void)healthFeatureAvailability:(id)arg1 sleepOnboardingStatusDidChange:(unsigned long long)arg2;
 - (void)homeScreenActivityDidFinish:(id)arg1 success:(BOOL)arg2;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2;
 - (void)invalidateLayoutMetrics;
@@ -64,10 +69,13 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)toggleWorkflowType:(id)arg1 sender:(id)arg2;
 - (void)toggledActionExtensionSwitch:(id)arg1;
-- (void)toggledWidgetSwitch:(id)arg1;
+- (void)toggledBedSheetSwitch:(id)arg1;
+- (void)toggledWatchSwitch:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
+- (id)watchIneligibleActions;
 - (void)workflowWizardNameCell:(id)arg1 didUpdateName:(id)arg2;
 - (void)workflowWizardNameCellDidSelectEditIcon:(id)arg1;
 

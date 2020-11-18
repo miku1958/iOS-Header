@@ -20,6 +20,7 @@
 - (id)errors;
 - (id)errorsForContactFields:(id)arg1;
 - (BOOL)isValidWithError:(id *)arg1;
+- (id)paymentContactFormatErrors;
 - (id)requiredContactFields;
 
 @end

@@ -11,15 +11,15 @@
 #import <HomeKitDaemon/HMDSettingsMessageController-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSArray, NSMapTable, NSString;
-@protocol HMDSettingGroupOwnerProtocol, HMDSettingsControllerDelegate, HMDSettingsControllerDependency, HMDSettingsMessageHandlerProtocol;
+@class HMDSettingGroup, NSArray, NSMapTable, NSString;
+@protocol HMDSettingsControllerDelegate, HMDSettingsControllerDependency, HMDSettingsMessageHandlerProtocol;
 
 @interface HMDSettingsController : HMFObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
 {
     id<HMDSettingsMessageHandlerProtocol> _messageHandler;
     id<HMDSettingsControllerDependency> _dependency;
     id<HMDSettingsControllerDelegate> _delegate;
-    id<HMDSettingGroupOwnerProtocol> _rootGroup;
+    HMDSettingGroup *_rootGroup;
     NSMapTable *_groupsMap;
     NSMapTable *_settingsMap;
 }
@@ -35,7 +35,7 @@
 @property (readonly) id<HMDSettingsMessageHandlerProtocol> messageHandler; // @synthesize messageHandler=_messageHandler;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (strong) id<HMDSettingGroupOwnerProtocol> rootGroup; // @synthesize rootGroup=_rootGroup;
+@property (strong) HMDSettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property (strong) NSMapTable *settingsMap; // @synthesize settingsMap=_settingsMap;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;

@@ -18,13 +18,11 @@
         unsigned int length:1;
         unsigned int location:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     unsigned long long _length;
     unsigned long long _location;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasLength;

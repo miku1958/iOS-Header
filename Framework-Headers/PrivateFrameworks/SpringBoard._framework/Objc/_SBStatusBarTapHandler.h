@@ -16,14 +16,7 @@
     _SBStatusBarTapApplicationDestination *_applicationDestination;
 }
 
-@property (readonly, copy, nonatomic) _SBStatusBarTapApplicationDestination *applicationDestination; // @synthesize applicationDestination=_applicationDestination;
-@property (readonly, nonatomic) BOOL canRequestUnlock;
-
 - (void).cxx_destruct;
-- (BOOL)handleTap;
-- (id)initWithApplicationDestination:(id)arg1;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithURL:(id)arg1;
 
 @end
 

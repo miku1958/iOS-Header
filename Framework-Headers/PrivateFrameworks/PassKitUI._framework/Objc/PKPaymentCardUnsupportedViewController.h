@@ -17,7 +17,7 @@
     id<PKPaymentSetupViewControllerDelegate> _delegate;
 }
 
-@property (nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 
 - (void).cxx_destruct;

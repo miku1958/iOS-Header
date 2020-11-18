@@ -11,6 +11,7 @@
 @interface PLPersistedFolderMetadata : NSObject
 {
     BOOL _pinned;
+    BOOL _prototype;
     BOOL _inTrash;
     BOOL _customSortAscending;
     int _customSortKey;
@@ -30,10 +31,12 @@
 @property (nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
 @property (strong, nonatomic) PLManagedFolder *folder; // @synthesize folder=_folder;
 @property (nonatomic, getter=isInTrash) BOOL inTrash; // @synthesize inTrash=_inTrash;
+@property (readonly, nonatomic) BOOL isProjectAlbumRootFolder;
 @property (readonly, nonatomic) BOOL isRootFolder;
 @property (strong, nonatomic) NSNumber *kind; // @synthesize kind=_kind;
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property (nonatomic, getter=isPinned) BOOL pinned; // @synthesize pinned=_pinned;
+@property (nonatomic, getter=isPrototype) BOOL prototype; // @synthesize prototype=_prototype;
 @property (readonly, strong, nonatomic) NSString *remappedUUID; // @synthesize remappedUUID=_remappedUUID;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;

@@ -29,24 +29,18 @@
 - (void)conceptIndexManagerDidChangeExecutionState:(unsigned long long)arg1;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)remoteInterface;
 - (void)remote_breakAssociationFromSample:(id)arg1 toConcept:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_cleanUpAfterUnitTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_currentIndexingState:(CDUnknownBlockType)arg1;
 - (void)remote_makeAssociationFromSample:(id)arg1 toConcept:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_ontologyVersionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_queryConceptByID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_queryConceptsAssociatedToUserRecordsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_queryConceptsByAttribute:(long long)arg1 withValue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_queryConceptsByRelationship:(id)arg1 fromNodeWithID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_queryConceptsByRelationship:(id)arg1 toNodeWithID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_queryConceptByIdentifier:(id)arg1 loadRelationships:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_queryCountOfConceptsAssociatedToUserRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_queryRelationshipsForNodeWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_resetOntologyUsingAssetAtLocation:(id)arg1 rememberLocation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_startTaskServerIfNeeded;
 - (void)remote_testTaskServerWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_unitTest_queryConceptByExactNameMatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

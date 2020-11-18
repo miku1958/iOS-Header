@@ -15,6 +15,7 @@
 @property (nonatomic) float level; // @synthesize level=_level;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
+- (id)_graphicExtraLargeCircularTemplate;
 - (id)_levelTintColor;
 - (id)_newBatteryTemplateForFamily:(long long)arg1;
 - (id)_newUtilitarianLargeTemplate;

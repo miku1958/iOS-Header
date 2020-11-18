@@ -12,7 +12,7 @@
 @class AIDAAccountManager, NSArray, NSString, PSSpecifier;
 @protocol AAUISpecifierProviderDelegate;
 
-@interface AMSUIManageSubsriptionSpecifierProvider : NSObject <AMSUIWebDelegate, AAUISpecifierProvider>
+@interface AMSUIManageSubsriptionSpecifierProvider : NSObject <AAUISpecifierProvider, AMSUIWebDelegate>
 {
     id<AAUISpecifierProviderDelegate> _delegate;
     NSArray *_specifiers;

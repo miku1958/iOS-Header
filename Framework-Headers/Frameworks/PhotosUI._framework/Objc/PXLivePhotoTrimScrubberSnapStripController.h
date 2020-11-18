@@ -22,8 +22,8 @@
 @property (strong, nonatomic) PXLivePhotoTrimScrubber *trimScrubber; // @synthesize trimScrubber=_trimScrubber;
 
 - (void).cxx_destruct;
-- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 style:(unsigned long long)arg3 skipSingleIndicatorWithCurrentTime:(BOOL)arg4;
-- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 suggestedTime:(CDStruct_1b6d18a9)arg3 style:(unsigned long long)arg4 skipSingleIndicatorWithCurrentTime:(BOOL)arg5;
+- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 style:(unsigned long long)arg3 skipSingleIndicatorWithCurrentTime:(BOOL)arg4 skipDefaultTimeIndicator:(BOOL)arg5;
+- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 suggestedTime:(CDStruct_1b6d18a9)arg3 style:(unsigned long long)arg4 skipSingleIndicatorWithCurrentTime:(BOOL)arg5 skipDefaultTimeIndicator:(BOOL)arg6;
 - (void)updateSnapStripView;
 - (void)updateSnapStripViewAnimated:(BOOL)arg1;
 

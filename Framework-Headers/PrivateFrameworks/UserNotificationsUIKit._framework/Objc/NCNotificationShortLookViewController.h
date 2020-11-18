@@ -6,34 +6,27 @@
 
 #import <UserNotificationsUIKit/NCNotificationViewController.h>
 
-#import <UserNotificationsUIKit/NCBannerPresentationTransitioningDelegateObserver-Protocol.h>
-#import <UserNotificationsUIKit/NCLongLookDefaultPresentationControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
 #import <UserNotificationsUIKit/PLClickPresentationInteractionManagerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLClickPresentationInteractionPresenting-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLViewControllerAnimatorDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIDragInteractionDelegate-Protocol.h>
+#import <UserNotificationsUIKit/UIPointerInteractionDelegate-Protocol.h>
 
-@class NCBannerPresentationTransitionDelegate, NCNotificationLongLookViewController, NSDate, NSString, PLClickPresentationInteractionManager, UIHoverGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView, UIViewController;
-@protocol UIViewControllerContextTransitioning;
+@class NCNotificationLongLookViewController, NSDate, NSString, PLClickPresentationInteractionManager, UIPointerInteraction, UITapGestureRecognizer, UIView;
 
-@interface NCNotificationShortLookViewController : NCNotificationViewController <NCNotificationViewControllerObserving, PLViewControllerAnimatorDelegate, UIDragInteractionDelegate, PLClickPresentationInteractionManagerDelegate, NCBannerPresentationTransitioningDelegateObserver, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, PLClickPresentationInteractionPresenting>
+@interface NCNotificationShortLookViewController : NCNotificationViewController <NCNotificationViewControllerObserving, PLViewControllerAnimatorDelegate, UIDragInteractionDelegate, UIPointerInteractionDelegate, PLClickPresentationInteractionManagerDelegate, PLExpandedPlatterPresentationControllerDelegate, PLClickPresentationInteractionPresenting>
 {
-    NCBannerPresentationTransitionDelegate *_bannerPresentationTransitionDelegate;
     NCNotificationLongLookViewController *_longLookNotificationViewController;
-    UIView *_contextDefiningContainerView;
-    UIViewController *_contextDefiningViewController;
     UITapGestureRecognizer *_tapGesture;
-    UIHoverGestureRecognizer *_hoverGestureRecognizer;
+    UIPointerInteraction *_pointerInteraction;
     NSDate *_tapBeginTime;
-    id<UIViewControllerContextTransitioning> _scrollPresentationTransitionContext;
     struct CGRect _finalPresentedFrameOfViewForPreview;
     UIView *_lookViewWrapper;
     long long _trigger;
     BOOL _didScrollPresentLongLookViewController;
     PLClickPresentationInteractionManager *_clickPresentationInteractionManager;
-    UIScrollView *_scrollView;
 }
 
 @property (readonly, nonatomic) PLClickPresentationInteractionManager *clickPresentationInteractionManager; // @synthesize clickPresentationInteractionManager=_clickPresentationInteractionManager;
@@ -46,23 +39,17 @@
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (readonly, nonatomic) struct CGRect initialPresentedFrameOfViewForPreview;
 @property (readonly, nonatomic, getter=_presentedLongLookViewController) NCNotificationViewController *presentedLongLookViewController;
-@property (strong, nonatomic, getter=_scrollView) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *viewForPreview;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)_completeScrollPresentation;
-- (void)_configureScrollViewIfNecessary;
 - (void)_expandCoalescedNotificationBundle;
-- (struct CGRect)_frameForTransitionViewInScrollView;
-- (void)_handleHoverGestureRecognizerEvent:(id)arg1;
 - (void)_handlePresentedContentDismissalWithTrigger:(long long)arg1;
 - (void)_handleTapOnView:(id)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(BOOL)arg2;
 - (BOOL)_isPresentingCustomContentProvidingViewController;
 - (void)_loadLookView;
-- (void)_loadPresentationContainerViewIfNecessary;
 - (id)_longLookNotificationViewController;
 - (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
 - (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
@@ -77,13 +64,13 @@
 - (void)_presentLongLookViaClickPresentationInteraction:(CDUnknownBlockType)arg1;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
 - (BOOL)_setNotificationRequest:(id)arg1;
-- (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (BOOL)_shouldPerformHoverHighlighting;
 - (BOOL)_shouldUseHapticTouch;
-- (BOOL)_tryDismissingShortLookInScrollView:(id)arg1;
-- (void)_updateScrollViewContentSize;
 - (void)_updateShortLookShadow;
 - (void)_updateWithProvidedAuxiliaryOptionsContent;
+- (BOOL)becomeFirstResponder;
+- (BOOL)canBecomeFirstResponder;
+- (BOOL)canResignFirstResponder;
 - (void)clickPresentationInteractionManager:(id)arg1 declinedDismissingPresentedContentWithTrigger:(long long)arg2;
 - (BOOL)clickPresentationInteractionManager:(id)arg1 shouldBeginInteractionWithTouchAtLocation:(struct CGPoint)arg2;
 - (void)clickPresentationInteractionManager:(id)arg1 shouldFinishInteractionThatReachedForceThreshold:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
@@ -92,8 +79,9 @@
 - (BOOL)clickPresentationInteractionManagerShouldAllowLongPressGesture:(id)arg1;
 - (void)clickPresentationInteractionManagerWillBeginUserInteraction:(id)arg1;
 - (id)containerViewForClickPresentationInteractionManager:(id)arg1;
+- (id)customBackgroundContainerViewForExpandedPlatterPresentationController:(id)arg1;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
-- (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)dismissPresentedViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
@@ -104,7 +92,6 @@
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
 - (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
 - (void)expandAndPlayMedia;
-- (struct CGRect)expandedPlatterPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
 - (BOOL)expandedPlatterPresentationControllerShouldProvideBackground:(id)arg1;
 - (BOOL)hasCommittedToPresentingCustomContentProvidingViewController;
 - (BOOL)isCoalescedNotificationBundle;
@@ -115,12 +102,13 @@
 - (void)notificationViewControllerDidPresent:(id)arg1;
 - (void)notificationViewControllerWillDismiss:(id)arg1;
 - (void)notificationViewControllerWillPresent:(id)arg1;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)presentLongLookAnimated:(BOOL)arg1 trigger:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)presentedViewControllerForClickPresentationInteractionManager:(id)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewWillBeginDragging:(id)arg1;
+- (BOOL)resignFirstResponder;
 - (void)setContentReplacedWithSnapshot:(BOOL)arg1;
 - (void)setCustomContentHomeAffordanceGestureRecognizer:(id)arg1;
 - (void)setCustomContentHomeAffordanceVisible:(BOOL)arg1;
@@ -128,11 +116,12 @@
 - (void)setInteractionEnabled:(BOOL)arg1;
 - (void)setMaterialGroupNameBase:(id)arg1;
 - (void)setNotificationContentViewHidden:(BOOL)arg1;
+- (void)setPlatterHighlighted:(BOOL)arg1;
 - (BOOL)shouldRestorePresentingShortLookOnDismiss;
 - (id)transitioningDelegateForClickPresentationInteractionManager:(id)arg1;
 - (void)viewControllerAnimator:(id)arg1 didEndPresentationAnimation:(BOOL)arg2 withTransitionContext:(id)arg3;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
-- (BOOL)wantsUseableContainerBoundsForTransitionWithDelegate:(id)arg1;
 
 @end
 

@@ -19,14 +19,13 @@
     double _level;
     long long _interfaceOrientation;
     BOOL _foreground;
+    long long _interruptionPolicy;
     BSSettings *_otherSettings;
     BSSettings *_transientLocalSettings;
     BOOL _prefersProcessTaskSuspensionWhileSceneForeground;
     long long _isOccluded;
     BOOL _occluded;
-    BOOL _occludedHasBeenCalculated;
     NSSet *_ignoreOcclusionReasons;
-    NSArray *_occlusions;
 }
 
 @property (readonly, nonatomic, getter=isBackgrounded) BOOL backgrounded;
@@ -38,14 +37,16 @@
 @property (readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (readonly, nonatomic) long long interruptionPolicy; // @synthesize interruptionPolicy=_interruptionPolicy;
 @property (readonly, nonatomic) double level; // @synthesize level=_level;
-@property (readonly, copy, nonatomic) NSArray *occlusions; // @synthesize occlusions=_occlusions;
+@property (readonly, copy, nonatomic) NSArray *occlusions;
 @property (readonly) Class superclass;
 
 + (BOOL)_isMutable;
 + (id)settings;
 - (void).cxx_destruct;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 debug:(BOOL)arg2;
+- (BOOL)appendDescriptionToBuilder:(id)arg1 forFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (struct CGRect)bounds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -63,6 +64,9 @@
 - (id)otherSettings;
 - (BOOL)prefersProcessTaskSuspensionWhileSceneForeground;
 - (void)setPrefersProcessTaskSuspensionWhileSceneForeground:(BOOL)arg1;
+- (BOOL)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
+- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
+- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)transientLocalSettings;

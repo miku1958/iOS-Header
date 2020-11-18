@@ -8,14 +8,15 @@
 
 @class NSMapTable;
 
-__attribute__((visibility("hidden")))
 @interface UIHoverEvent : UIEvent
 {
     NSMapTable *_touchesByContextId;
     NSMapTable *_deliveryTableByTouch;
+    BOOL _pointerLocked;
     BOOL _hasOutstandingUpdates;
 }
 
+@property (nonatomic, getter=_isPointerLocked, setter=_setPointerLocked:) BOOL _pointerLocked; // @synthesize _pointerLocked;
 @property (nonatomic) BOOL hasOutstandingUpdates; // @synthesize hasOutstandingUpdates=_hasOutstandingUpdates;
 
 - (void).cxx_destruct;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (id)_gestureRecognizersForWindow:(id)arg1;
 - (id)_init;
+- (unsigned long long)_inputPrecision;
 - (void)_pointerStateDidChange:(id)arg1;
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_setNeedsUpdateForWindow:(id)arg1 forcingHitTest:(BOOL)arg2;
@@ -36,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)removeHoverTouchForContextId:(unsigned int)arg1 pathIndex:(long long)arg2;
 - (void)removeTouch:(id)arg1 fromGestureRecognizer:(id)arg2;
 - (void)setHoverTouch:(id)arg1 forContextId:(unsigned int)arg2 pathIndex:(long long)arg3;
-- (void)setNeedsHitTestReset;
 - (void)setNeedsHitTestResetForWindow:(id)arg1;
 - (void)setNeedsUpdateForWindow:(id)arg1;
 - (long long)subtype;

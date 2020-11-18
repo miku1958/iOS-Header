@@ -15,7 +15,6 @@
 @interface _INPBTransferMoneyIntentResponse : PBCodable <_INPBTransferMoneyIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBFinancialAccountValue *_fromAccount;
     _INPBFinancialAccountValue *_toAccount;
     _INPBPaymentAmountValue *_transactionAmount;
@@ -24,7 +23,6 @@
     _INPBCurrencyAmountValue *_transferFee;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBFinancialAccountValue *fromAccount; // @synthesize fromAccount=_fromAccount;

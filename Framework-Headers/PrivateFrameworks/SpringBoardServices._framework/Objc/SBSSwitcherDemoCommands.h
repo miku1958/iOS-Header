@@ -25,11 +25,12 @@
 - (void).cxx_destruct;
 - (void)_connectionQueue_invalidate;
 - (void)_connectionQueue_setupAndActivate;
+- (id)_standardizedAbsolutePathForPath:(id)arg1;
 - (id)init;
 - (void)invalidate;
-- (BOOL)loadStashedSwitcherModelFromFilename:(id)arg1;
+- (BOOL)loadStashedSwitcherModelFromPath:(id)arg1;
 - (BOOL)setShouldDisableSwitcherModelUpdates:(BOOL)arg1;
-- (BOOL)stashSwitcherModelToFilename:(id)arg1;
+- (BOOL)stashSwitcherModelToPath:(id)arg1;
 - (BOOL)updateHiddenApplicationBundleIDs:(id)arg1;
 
 @end

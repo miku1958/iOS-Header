@@ -14,12 +14,14 @@
 @interface AFDictationOptions : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _forceOfflineRecognition;
+    BOOL _preferOnlineRecognition;
     BOOL _detectUtterances;
     BOOL _secureOfflineOnly;
     BOOL _farField;
     BOOL _releaseAudioSessionOnRecordingCompletion;
     BOOL _incremental;
     NSString *_applicationName;
+    NSString *_applicationDisplayName;
     NSString *_applicationVersion;
     STSiriContext *_context;
     NSString *_fieldLabel;
@@ -49,8 +51,10 @@
     NSURL *_modelOverrideURL;
     AFLanguageDetectionUserContext *_languageDetectionUserContext;
     long long _dictationInputOrigin;
+    NSString *_samplingInfo;
 }
 
+@property (copy, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
 @property (copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property (strong, nonatomic) STSiriContext *context; // @synthesize context=_context;
@@ -74,11 +78,13 @@
 @property (copy, nonatomic) NSURL *originalAudioFileURL; // @synthesize originalAudioFileURL=_originalAudioFileURL;
 @property (copy, nonatomic) NSString *orthography; // @synthesize orthography=_orthography;
 @property (copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
+@property (nonatomic) BOOL preferOnlineRecognition; // @synthesize preferOnlineRecognition=_preferOnlineRecognition;
 @property (copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;
 @property (copy, nonatomic) NSDictionary *recognitionOverrides; // @synthesize recognitionOverrides=_recognitionOverrides;
 @property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property (copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
+@property (copy, nonatomic) NSString *samplingInfo; // @synthesize samplingInfo=_samplingInfo;
 @property (nonatomic) BOOL secureOfflineOnly; // @synthesize secureOfflineOnly=_secureOfflineOnly;
 @property (copy, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
 @property (nonatomic) long long taskHint; // @synthesize taskHint=_taskHint;

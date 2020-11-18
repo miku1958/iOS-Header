@@ -68,7 +68,6 @@
 - (void)dealloc;
 - (void)dismissCandidatePicker;
 - (id)initWithController:(id)arg1;
-- (void)logLastDrawingToDisk;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performRecognitionOnDrawing:(id)arg1 withDrawing:(id)arg2 annotation:(id)arg3 boundsInInputView:(struct CGRect)arg4 center:(struct CGPoint)arg5;
 - (void)performRecognitionOnDrawing:(id)arg1 withPath:(struct CGPath *)arg2 boundsInInputView:(struct CGRect)arg3 center:(struct CGPoint)arg4 isPrestroked:(BOOL)arg5;

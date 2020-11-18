@@ -26,11 +26,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)generateRequestOperations;
-- (id)initWithRecoveredAssetRepairRecordID:(id)arg1 size:(unsigned long long)arg2 putReceipt:(id)arg3;
-- (id)initWithRecoveredPackageRepairRecordID:(id)arg1 sizes:(id)arg2 putReceipts:(id)arg3;
-- (id)initWithRepairRecordID:(id)arg1 recovered:(BOOL)arg2 package:(BOOL)arg3 sizes:(id)arg4 putReceipts:(id)arg5;
-- (id)initWithUnrecoveredRepairRecordID:(id)arg1;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 recoveredAssetRepairRecordID:(id)arg2 size:(unsigned long long)arg3 putReceipt:(id)arg4;
+- (id)initWithOperation:(id)arg1 recoveredPackageRepairRecordID:(id)arg2 sizes:(id)arg3 putReceipts:(id)arg4;
+- (id)initWithOperation:(id)arg1 repairRecordID:(id)arg2 recovered:(BOOL)arg3 package:(BOOL)arg4 sizes:(id)arg5 putReceipts:(id)arg6;
+- (id)initWithOperation:(id)arg1 unrecoveredRepairRecordID:(id)arg2;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
 

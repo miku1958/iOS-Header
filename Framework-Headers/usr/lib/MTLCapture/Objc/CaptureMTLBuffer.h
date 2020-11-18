@@ -10,7 +10,7 @@
 #import <MTLCapture/MTLBufferSPI-Protocol.h>
 #import <MTLCapture/MTLResourceSPI-Protocol.h>
 
-@class MTLResourceAllocationInfo, NSString;
+@class NSString;
 @protocol MTLBuffer, MTLBufferSPI><MTLResourceSPI, MTLDevice, MTLHeap;
 
 @interface CaptureMTLBuffer : NSObject <MTLBufferSPI, MTLResourceSPI, CaptureMTLObject>
@@ -26,7 +26,6 @@
 @property (readonly) unsigned long long allocatedSize;
 @property (readonly) unsigned long long allocationID;
 @property (readonly) id<MTLBuffer> baseObject;
-@property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,10 +39,9 @@
 @property (copy) NSString *label;
 @property (readonly) unsigned long long length;
 @property (readonly) unsigned long long protectionOptions;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long resourceOptions;
 @property int responsibleProcess;
-@property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) unsigned long long streamReference;
 @property (readonly) Class superclass;
@@ -57,7 +55,6 @@
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void *)contents;
 - (void)dealloc;
-- (void)didModifyRange:(struct _NSRange)arg1;
 - (BOOL)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (BOOL)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (BOOL)doesAliasResource:(id)arg1;
@@ -71,6 +68,7 @@
 - (void)makeAliasable;
 - (id)newLinearTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3;
+- (id)originalObject;
 - (void)removeAllDebugMarkers;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;

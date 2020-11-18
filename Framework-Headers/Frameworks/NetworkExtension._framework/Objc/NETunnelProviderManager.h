@@ -15,16 +15,21 @@
     NSArray *_calendarDomains;
     NSArray *_contactsDomains;
     NSArray *_appRules;
+    NSArray *_excludedDomains;
+    NSArray *_associatedDomains;
 }
 
 @property (copy) NSArray *appRules; // @synthesize appRules=_appRules;
+@property (copy) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
 @property (copy) NSArray *calendarDomains; // @synthesize calendarDomains=_calendarDomains;
 @property (copy) NSArray *contactsDomains; // @synthesize contactsDomains=_contactsDomains;
+@property (copy) NSArray *excludedDomains; // @synthesize excludedDomains=_excludedDomains;
 @property (copy) NSArray *mailDomains; // @synthesize mailDomains=_mailDomains;
 @property (readonly) long long routingMethod;
 @property (copy) NSArray *safariDomains; // @synthesize safariDomains=_safariDomains;
 
-+ (id)copyDesignatedRequirementForProvider:(id *)arg1 extensionPoint:(id)arg2;
++ (id)copyDesignatedRequirementForProvider:(id *)arg1 extensionPoint:(id)arg2 appPermission:(long long *)arg3;
++ (long long)extensionPointToAppPermission:(id)arg1;
 + (id)forPerAppVPN;
 + (void)loadAllFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;

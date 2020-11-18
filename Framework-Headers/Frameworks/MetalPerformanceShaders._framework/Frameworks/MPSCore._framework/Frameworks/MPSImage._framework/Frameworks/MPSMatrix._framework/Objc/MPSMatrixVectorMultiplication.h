@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) double beta; // @synthesize beta=_beta;
 @property (readonly, nonatomic) BOOL transpose; // @synthesize transpose=_transpose;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (unsigned long long)batchSize;
 - (unsigned long long)batchStart;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

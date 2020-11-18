@@ -10,7 +10,6 @@
 
 @interface NTKTimelineExtendDataOperation : NTKTimelineDataOperation
 {
-    BOOL _extendsLeft;
     NSDate *_boundaryDate;
     CDUnknownBlockType _handler;
 }
@@ -19,11 +18,9 @@
 
 - (void).cxx_destruct;
 - (void)_cancel;
-- (void)_extendLeft;
 - (void)_extendRight;
 - (void)_invokeHandlerWithEntries:(id)arg1;
 - (void)_start;
-- (void)setExtendsLeftFromDate:(id)arg1;
 - (void)setExtendsRightFromDate:(id)arg1;
 
 @end

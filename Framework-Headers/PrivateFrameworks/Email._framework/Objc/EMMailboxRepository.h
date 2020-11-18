@@ -10,7 +10,7 @@
 #import <Email/EMMailboxChangeObserver-Protocol.h>
 #import <Email/EMMailboxTypeResolver-Protocol.h>
 
-@class EFPromise, EMAccountRepository, EMRemoteConnection, NSMapTable, NSMutableDictionary, NSOrderedSet, NSString;
+@class EFPromise, EMAccountRepository, EMRemoteConnection, NSMapTable, NSMutableDictionary, NSOrderedSet, NSSet, NSString;
 @protocol EFCancelable;
 
 @interface EMMailboxRepository : EMRepository <EFLoggable, EMMailboxChangeObserver, EMMailboxTypeResolver>
@@ -26,6 +26,7 @@
 }
 
 @property (readonly, nonatomic) EMAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
+@property (readonly, nonatomic) NSSet *allMailboxObjectIDs;
 @property (strong) EMRemoteConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,8 +44,6 @@
 - (id)_filterIDsFromMailbox:(id)arg1 withQuery:(id)arg2;
 - (id)_mailboxesFuture;
 - (void)_prepareMailboxes:(id)arg1;
-- (id)_remoteMailboxObjectIDsForMailboxType:(long long)arg1;
-- (long long)_remoteMailboxTypeForMailboxObjectID:(id)arg1;
 - (void)_restartObservingMailboxChangesIfNecessary;
 - (void)_startObservingMailboxChangesIfNecessary;
 - (void)dealloc;
@@ -61,6 +60,9 @@
 - (void)performQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)performQuery:(id)arg1 withObserver:(id)arg2;
 - (void)refreshMailboxList;
+- (id)remoteAllMailboxObjectIDs;
+- (id)remoteMailboxObjectIDsForMailboxType:(long long)arg1;
+- (long long)remoteMailboxTypeForMailboxObjectID:(id)arg1;
 
 @end
 

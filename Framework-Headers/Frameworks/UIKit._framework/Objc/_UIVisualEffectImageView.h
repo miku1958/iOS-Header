@@ -6,13 +6,13 @@
 
 #import <UIKitCore/UIImageView.h>
 
-#import <UIKitCore/_UIVisualEffectViewParticipating-Protocol.h>
+#import <UIKitCore/_UIVisualEffectViewParticipatingInternal-Protocol.h>
 
 @class NSArray, NSString, UIView, _UIVisualEffectViewBackdropCaptureGroup;
 @protocol _UIVisualEffectViewParticipating, _UIVisualEffectViewSubviewMonitoring;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectImageView : UIImageView <_UIVisualEffectViewParticipating>
+@interface _UIVisualEffectImageView : UIImageView <_UIVisualEffectViewParticipatingInternal>
 {
     _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
     NSArray *_viewEffects;

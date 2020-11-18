@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSSet;
 
-@interface CHStrokeClassificationResult : NSObject <NSCopying>
+@interface CHStrokeClassificationResult : NSObject <NSCopying, NSSecureCoding>
 {
     NSSet *_textStrokeIdentifiers;
     NSDictionary *_strokeClassificationsByStrokeIdentifier;
@@ -23,11 +24,16 @@
 @property (readonly, copy, nonatomic) NSDictionary *substrokesByStrokeIdentifier; // @synthesize substrokesByStrokeIdentifier=_substrokesByStrokeIdentifier;
 @property (readonly, copy, nonatomic) NSSet *textStrokeIdentifiers;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStrokeClassificationsByStrokeIdentifier:(id)arg1 substrokesByStrokeIdentifier:(id)arg2 nontextCandidates:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToStrokeClassificationResult:(id)arg1;
 - (BOOL)isEquivalentToStrokeClassificationResult:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

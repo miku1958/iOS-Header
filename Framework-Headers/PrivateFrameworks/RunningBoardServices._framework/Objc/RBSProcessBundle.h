@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString, RBSProcessInstance;
 @protocol RBSProcessBundleDataSource;
 
-@interface RBSProcessBundle : NSObject <BSXPCSecureCoding>
+@interface RBSProcessBundle : NSObject <RBSXPCSecureCoding>
 {
     NSDictionary *_plistValues;
     NSString *_identifier;
@@ -34,16 +34,12 @@
 @property (readonly) Class superclass;
 
 + (id)bundleWithDataSource:(id)arg1;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)bundleInfoValueForKey:(id)arg1;
 - (id)bundleInfoValuesForKeys:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 
 @end
 

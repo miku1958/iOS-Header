@@ -52,22 +52,7 @@
         unsigned int read_modeArtwork:1;
         unsigned int read_nameDisplayString:1;
         unsigned int read_styleAttributes:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_operatingHours:1;
-        unsigned int wrote_alternateArtwork:1;
-        unsigned int wrote_artwork:1;
-        unsigned int wrote_displayHints:1;
-        unsigned int wrote_lineColor:1;
-        unsigned int wrote_modeArtwork:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_nameDisplayString:1;
-        unsigned int wrote_styleAttributes:1;
-        unsigned int wrote_guidanceSnappingType:1;
-        unsigned int wrote_lineIndex:1;
-        unsigned int wrote_placeDisplayStyle:1;
-        unsigned int wrote_preferredDepartureTimeStyle:1;
-        unsigned int wrote_systemIndex:1;
-        unsigned int wrote_transitType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -114,15 +99,6 @@
 - (int)StringAsGuidanceSnappingType:(id)arg1;
 - (int)StringAsPlaceDisplayStyle:(id)arg1;
 - (int)StringAsPreferredDepartureTimeStyle:(id)arg1;
-- (void)_addNoFlagsOperatingHours:(struct GEOPBTransitTimeRange)arg1;
-- (void)_readAlternateArtwork;
-- (void)_readArtwork;
-- (void)_readDisplayHints;
-- (void)_readLineColor;
-- (void)_readModeArtwork;
-- (void)_readNameDisplayString;
-- (void)_readOperatingHours;
-- (void)_readStyleAttributes;
 - (void)addOperatingHours:(struct GEOPBTransitTimeRange)arg1;
 - (id)bestName;
 - (void)clearOperatingHours;
@@ -136,7 +112,10 @@
 - (id)identifierWithLocationHint:(CDStruct_c3b9c2ee)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOPBTransitTimeRange)operatingHoursAtIndex:(unsigned long long)arg1;
 - (id)placeDisplayStyleAsString:(int)arg1;

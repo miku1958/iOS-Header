@@ -31,8 +31,6 @@
 
 + (id)defaultActionForKey:(id)arg1;
 - (void).cxx_destruct;
-- (void)applicationDidEnterBackground;
-- (void)applicationWillEnterForeground;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -43,6 +41,8 @@
 - (void)play;
 - (void)playWithPlaybackKind:(unsigned long long)arg1 looping:(BOOL)arg2;
 - (void)reduceMotionStatusDidChange;
+- (void)sceneDidEnterBackground;
+- (void)sceneWillEnterForeground;
 
 @end
 

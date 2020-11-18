@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_glyphLayerForButtonAnimationWithGlyphName:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 hasDarkVibrancy:(BOOL)arg2 color:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 hasDarkVibrancy:(BOOL)arg2 isInDarkMode:(BOOL)arg3 color:(id)arg4 sendColor:(BOOL)arg5;
 
 @end
 

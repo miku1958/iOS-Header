@@ -12,6 +12,7 @@
 @interface _TtC7NewsUI221TodayBridgedFeedGroup : _TtCs12_SwiftObject
 {
     MISSING_TYPE *group;
+    MISSING_TYPE *emitter;
 }
 
 @property (nonatomic, readonly) NSArray *assetHandles;

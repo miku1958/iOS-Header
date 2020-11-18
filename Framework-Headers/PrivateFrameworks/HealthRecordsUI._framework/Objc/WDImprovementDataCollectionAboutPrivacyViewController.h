@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <HealthRecordsUI/_TtC15HealthRecordsUI18TextViewController.h>
 
-__attribute__((visibility("hidden")))
-@interface WDImprovementDataCollectionAboutPrivacyViewController : UIViewController
+@interface WDImprovementDataCollectionAboutPrivacyViewController : _TtC15HealthRecordsUI18TextViewController
 {
 }
 
-- (void)done:(id)arg1;
-- (void)loadView;
-- (unsigned long long)supportedInterfaceOrientations;
+@property (nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
+
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
 
 @end

@@ -16,6 +16,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
 
 @end
 

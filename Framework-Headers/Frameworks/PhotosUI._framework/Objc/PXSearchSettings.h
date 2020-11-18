@@ -15,6 +15,8 @@
     BOOL _preventUnnecessaryImplicitTokenization;
     BOOL _exactMatchIgnoreUntokenizedCharacters;
     BOOL _lastImplicitTokenAllowsWordEmbeddings;
+    BOOL _newSearchUIEnabled;
+    BOOL _forceIndexingFooter;
     unsigned long long _maxNumberOfSuggestionsToShow;
     unsigned long long _maxNumberOfTopAssetColumns;
     unsigned long long _maxNumberOfResultColumns;
@@ -25,6 +27,7 @@
 @property (nonatomic) BOOL alwaysTrySiriSearch; // @synthesize alwaysTrySiriSearch=_alwaysTrySiriSearch;
 @property (nonatomic) BOOL enableImplicitTokenization; // @synthesize enableImplicitTokenization=_enableImplicitTokenization;
 @property (nonatomic) BOOL exactMatchIgnoreUntokenizedCharacters; // @synthesize exactMatchIgnoreUntokenizedCharacters=_exactMatchIgnoreUntokenizedCharacters;
+@property (nonatomic) BOOL forceIndexingFooter; // @synthesize forceIndexingFooter=_forceIndexingFooter;
 @property (nonatomic) BOOL implicitTokenizationLastTokenUsesPrefixMatch; // @synthesize implicitTokenizationLastTokenUsesPrefixMatch=_implicitTokenizationLastTokenUsesPrefixMatch;
 @property (nonatomic) BOOL implicitTokenizationUsePrefixMatch; // @synthesize implicitTokenizationUsePrefixMatch=_implicitTokenizationUsePrefixMatch;
 @property (nonatomic) BOOL lastImplicitTokenAllowsWordEmbeddings; // @synthesize lastImplicitTokenAllowsWordEmbeddings=_lastImplicitTokenAllowsWordEmbeddings;
@@ -32,6 +35,7 @@
 @property (nonatomic) unsigned long long maxNumberOfSuggestionsToShow; // @synthesize maxNumberOfSuggestionsToShow=_maxNumberOfSuggestionsToShow;
 @property (nonatomic) unsigned long long maxNumberOfTopAssetColumns; // @synthesize maxNumberOfTopAssetColumns=_maxNumberOfTopAssetColumns;
 @property (nonatomic) unsigned long long maxNumberOfTopAssetRows; // @synthesize maxNumberOfTopAssetRows=_maxNumberOfTopAssetRows;
+@property (nonatomic, getter=isNewSearchUIEnabled) BOOL newSearchUIEnabled; // @synthesize newSearchUIEnabled=_newSearchUIEnabled;
 @property (nonatomic) BOOL preventUnnecessaryImplicitTokenization; // @synthesize preventUnnecessaryImplicitTokenization=_preventUnnecessaryImplicitTokenization;
 @property (nonatomic) unsigned long long standardNumberOfTopAssetRows; // @synthesize standardNumberOfTopAssetRows=_standardNumberOfTopAssetRows;
 

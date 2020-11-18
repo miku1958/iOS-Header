@@ -10,10 +10,10 @@
 {
 }
 
-- (id)_presentServiceListForTopic:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)canSelectItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;
+- (id)presentNotificationSettingsForTopic:(id)arg1 animated:(BOOL)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(BOOL)arg2;
 

@@ -21,8 +21,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *tc_network_endpoint;
     NSObject<OS_nw_parameters> *tc_network_parameters;
     int tc_tls_mode;
-    CDUnknownBlockType tc_nw_tls_prepare;
-    CDUnknownBlockType tc_nw_tls_message;
     NSObject<OS_dispatch_queue> *tc_client_queue;
     CDUnknownBlockType tc_event;
     CDUnknownBlockType tc_cancel_handler;
@@ -67,7 +65,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithParameters:(id)arg1;
 
 @end
 

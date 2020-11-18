@@ -9,18 +9,18 @@
 #import <PassKitCore/PKPaymentAuthorizationHostProtocol-Protocol.h>
 
 @class NSString, PKPaymentAuthorizationCoordinator;
-@protocol OS_dispatch_queue, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentAuthorizationServiceProtocol;
+@protocol PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentAuthorizationServiceProtocol;
 
 @interface PKPaymentAuthorizationCoordinatorExportedObject : NSObject <PKPaymentAuthorizationHostProtocol>
 {
-    NSObject<OS_dispatch_queue> *_delegateQueue;
+    struct os_unfair_lock_s _delegateLock;
     id<PKPaymentAuthorizationCoordinatorDelegate> _delegate;
     id<PKPaymentAuthorizationCoordinatorPrivateDelegate> _privateDelegate;
     PKPaymentAuthorizationCoordinator *_controller;
     id<PKPaymentAuthorizationServiceProtocol> _serviceProxy;
 }
 
-@property (nonatomic) PKPaymentAuthorizationCoordinator *controller; // @synthesize controller=_controller;
+@property (weak, nonatomic) PKPaymentAuthorizationCoordinator *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPaymentAuthorizationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -44,9 +44,9 @@
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
 - (void)authorizationDidUpdateAccountServicePaymentMethod:(id)arg1;
 - (void)authorizationWillStart;
-- (void)connectionDidOpen;
 - (void)dealloc;
 - (void)didEncounterAuthorizationEvent:(unsigned long long)arg1;
+- (void)handleConnectionDidOpenWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithController:(id)arg1;
 

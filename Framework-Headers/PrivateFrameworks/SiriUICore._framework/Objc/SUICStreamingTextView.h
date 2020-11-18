@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutManager, NSMutableArray, NSMutableSet, NSString, NSTextContainer, NSTextStorage, UIColor, UIFont;
+@class NSArray, NSLayoutManager, NSMutableArray, NSMutableSet, NSString, NSTextContainer, NSTextStorage, UIColor, UIFont, UIImage;
 
 @interface SUICStreamingTextView : UIView
 {
@@ -17,7 +17,11 @@
     NSMutableArray *_wordsToShow;
     NSMutableSet *_wordsToDelete;
     BOOL _animatedInternal;
+    UIImage *_chevronImage;
     BOOL _animated;
+    BOOL _showChevron;
+    BOOL _renderEmojisOnly;
+    BOOL _renderEmojis;
     UIFont *_font;
     double _hyphenationFactor;
     UIColor *_startTextColor;
@@ -31,6 +35,9 @@
 @property (strong, nonatomic) UIColor *endTextColor; // @synthesize endTextColor=_endTextColor;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic) double hyphenationFactor; // @synthesize hyphenationFactor=_hyphenationFactor;
+@property (nonatomic) BOOL renderEmojis; // @synthesize renderEmojis=_renderEmojis;
+@property (nonatomic) BOOL renderEmojisOnly; // @synthesize renderEmojisOnly=_renderEmojisOnly;
+@property (nonatomic) BOOL showChevron; // @synthesize showChevron=_showChevron;
 @property (strong, nonatomic) UIColor *startTextColor; // @synthesize startTextColor=_startTextColor;
 @property (readonly, nonatomic) NSString *text;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
@@ -40,11 +47,13 @@
 - (void)_animateLayers;
 - (void)_animateWordIn:(id)arg1;
 - (void)_animateWordOut:(id)arg1;
+- (id)_createChevronImage;
 - (id)_createGlyphImage:(struct CGRect)arg1 glyphRange:(struct _NSRange)arg2 layoutManager:(id)arg3;
 - (id)_glyphImageForWord:(id)arg1 frame:(struct CGRect)arg2 glyphRange:(struct _NSRange)arg3 textColor:(id)arg4;
 - (void)_layoutFrames;
 - (void)_resetState;
 - (void)_sharedInit;
+- (id)_substringRangesContainingEmojiInString:(id)arg1 startingIndex:(long long)arg2;
 - (void)_updateAnimatedInternal;
 - (void)_updateText:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -13,9 +13,6 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dissect:(id)arg1;
-- (void)dissect:(id)arg1 inContext:(id)arg2;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
 
 @end
 

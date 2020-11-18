@@ -12,6 +12,13 @@
 
 @interface MAAbsoluteAssetId : NSObject <NSSecureCoding>
 {
+    NSString *_allAttributesHash;
+    NSString *_assetIdHash;
+    NSString *_nonAssetIdHash;
+    NSString *_downloadContentHash;
+    NSString *_downloadUrlHash;
+    NSString *_downloadPolicyHash;
+    NSString *_pallasAssetIdHash;
     NSString *_assetId;
     NSString *_assetType;
 }
@@ -20,11 +27,25 @@
 @property (strong, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 
 + (BOOL)supportsSecureCoding;
+- (id)allAttributesHash;
+- (id)assetIdHash;
+- (id)contentHash;
+- (void)dealloc;
 - (id)description;
+- (id)diffFrom:(id)arg1;
+- (id)diffFromAsset:(id)arg1;
+- (id)diffFromAssetId:(id)arg1 assetType:(id)arg2 attributes:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasOnlyAssetTypeAndId;
 - (id)initWithAssetId:(id)arg1 forAssetType:(id)arg2;
+- (id)initWithAssetId:(id)arg1 forAssetType:(id)arg2 attributes:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)nonIdHash;
+- (id)pallasDynamicAssetIdHash;
+- (id)policyHash;
+- (id)summary;
+- (id)urlHash;
 
 @end
 

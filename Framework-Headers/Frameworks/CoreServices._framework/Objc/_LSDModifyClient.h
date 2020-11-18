@@ -18,9 +18,12 @@ __attribute__((visibility("hidden")))
 - (void)garbageCollectDatabaseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)installApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 installType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)rebuildApplicationDatabasesForSystem:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)refreshContentInFrameworkAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)registerContainerURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerExtensionPoint:(id)arg1 platform:(unsigned int)arg2 withInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)registerItemInfo:(id)arg1 alias:(id)arg2 diskImageAlias:(id)arg3 bundleURL:(id)arg4 installationPlist:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)relaxApplicationTypeRequirements:(BOOL)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removeAllHandlersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeHandlerForContentType:(id)arg1 roles:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeHandlerForURLScheme:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetServerStoreWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -9,19 +9,19 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLCommandQueueSPI-Protocol.h>
 
-@class CaptureMTLDevice, NSString;
-@protocol MTLCommandQueue, MTLCommandQueueSPI, MTLDevice, MTLSharedEvent;
+@class CaptureMTLDevice, NSMutableArray, NSString;
+@protocol MTLCommandQueue, MTLCommandQueueSPI, MTLDevice, OS_dispatch_queue;
 
 @interface CaptureMTLCommandQueue : NSObject <MTLCommandQueueSPI, CaptureMTLObject>
 {
     id<MTLCommandQueueSPI> _baseObject;
     CaptureMTLDevice *_captureDevice;
     struct GTTraceContext *_traceContext;
-    unsigned long long _traceStream;
-    BOOL _insertDebugBoundaryUsed;
-    _Atomic unsigned long long _downloadSignal;
-    id<MTLSharedEvent> _downloadEvent;
+    struct GTTraceStream *_traceStream;
+    NSMutableArray *_pendingQueue;
+    NSObject<OS_dispatch_queue> *_pendingQueueLock;
     id<MTLCommandQueue> _downloadQueue;
+    BOOL _insertDebugBoundaryUsed;
 }
 
 @property (nonatomic, getter=isStatEnabled) BOOL StatEnabled;
@@ -29,9 +29,9 @@
 @property (nonatomic, getter=getStatOptions) unsigned long long StatOptions;
 @property int backgroundTrackingPID;
 @property (readonly) id<MTLCommandQueue> baseObject;
-@property (readonly) struct dispatch_queue_s *commitQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *commitQueue;
 @property (readonly) BOOL commitSynchronously;
-@property (readonly) struct dispatch_queue_s *completionQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *completionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
@@ -39,7 +39,7 @@
 @property BOOL executionEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL insertDebugBoundaryUsed;
-@property BOOL isOpenGLQueue;
+@property (readonly) BOOL isOpenGLQueue;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long maxCommandBufferCount;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
@@ -54,10 +54,13 @@
 - (id)availableCounters;
 - (id)availableCountersAndDict;
 - (id)commandBuffer;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)commandBufferWithUnretainedReferences;
+- (void)commitCommandBuffer:(id)arg1;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (id)counterInfo;
 - (void)dealloc;
+- (void)enqueueCommandBuffer:(id)arg1;
 - (void)finish;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (unsigned long long)getBackgroundGPUPriority;
@@ -65,16 +68,16 @@
 - (id)getRequestedCounters;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (void)insertDebugCaptureBoundary;
-- (id)newDownloadPoint;
+- (id)originalObject;
 - (int)requestCounters:(id)arg1;
 - (int)requestCounters:(id)arg1 withIndex:(unsigned long long)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)setBackgroundGPUPriority:(unsigned long long)arg1;
 - (BOOL)setBackgroundGPUPriority:(unsigned long long)arg1 offset:(unsigned short)arg2;
-- (void)setCompletionQueue:(struct dispatch_queue_s *)arg1;
+- (void)setCompletionQueue:(id)arg1;
 - (BOOL)setGPUPriority:(unsigned long long)arg1;
 - (BOOL)setGPUPriority:(unsigned long long)arg1 offset:(unsigned short)arg2;
-- (void)setSubmissionQueue:(struct dispatch_queue_s *)arg1;
+- (void)setSubmissionQueue:(id)arg1;
 - (id)subdivideCounterList:(id)arg1;
 - (void)touch;
 

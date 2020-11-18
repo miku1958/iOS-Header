@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSObject<OS_xpc_object> *endpoint;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long mapStyle;
 @property (readonly, copy, nonatomic) NSString *proxiedApplicationBundleIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSObject<OS_xpc_object> *templateEndpoint;

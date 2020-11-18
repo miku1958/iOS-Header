@@ -10,9 +10,13 @@
 
 @protocol _INPBSendMessageAttachment <NSObject>
 
+@property (strong, nonatomic) _INPBFileDataAttachment *audioMessageFile;
+@property (strong, nonatomic) _INPBURLValue *audioMessageFileURL;
 @property (nonatomic) BOOL currentLocation;
 @property (strong, nonatomic) _INPBFileDataAttachment *file;
 @property (strong, nonatomic) _INPBURLValue *fileURL;
+@property (readonly, nonatomic) BOOL hasAudioMessageFile;
+@property (readonly, nonatomic) BOOL hasAudioMessageFileURL;
 @property (readonly, nonatomic) BOOL hasCurrentLocation;
 @property (readonly, nonatomic) BOOL hasFile;
 @property (readonly, nonatomic) BOOL hasFileURL;

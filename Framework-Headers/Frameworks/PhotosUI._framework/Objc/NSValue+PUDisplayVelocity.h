@@ -8,8 +8,10 @@
 
 @interface NSValue (PUDisplayVelocity)
 
+@property (readonly, nonatomic) CDStruct_8e0628e6 pu_PUPerspectiveTransformValue;
 @property (readonly, nonatomic) struct PUDisplayVelocity pu_displayVelocityValue;
 
 + (id)pu_valueWithDisplayVelocity:(struct PUDisplayVelocity)arg1;
++ (id)pu_valueWithPUPerspectiveTransform:(CDStruct_8e0628e6)arg1;
 @end
 

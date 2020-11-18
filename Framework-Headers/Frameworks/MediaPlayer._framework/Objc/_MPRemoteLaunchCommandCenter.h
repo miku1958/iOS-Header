@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPRemoteCommandCenter.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPRemoteLaunchCommandCenter : MPRemoteCommandCenter
 {
 }

@@ -9,9 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface AVCTestMonitorReport : NSObject
 {
+    unsigned long long _initialMemoryUsageMB;
     unsigned long long _memoryUsageMB;
 }
 
+@property (nonatomic) unsigned long long initialMemoryUsageMB; // @synthesize initialMemoryUsageMB=_initialMemoryUsageMB;
 @property (nonatomic) unsigned long long memoryUsageMB; // @synthesize memoryUsageMB=_memoryUsageMB;
 
 

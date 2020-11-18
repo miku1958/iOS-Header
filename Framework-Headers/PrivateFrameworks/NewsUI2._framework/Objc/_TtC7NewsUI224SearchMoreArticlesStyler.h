@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI224SearchMoreArticlesStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *baseStyler;
+    MISSING_TYPE *titleText;
 }
 
 @end

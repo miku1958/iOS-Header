@@ -7,23 +7,6 @@
 #import <RunningBoardServices/RBSLegacyAttribute.h>
 
 @interface RBSLegacyAttribute (RBProcessState)
-- (BOOL)_definesRelativeStartTime;
-- (unsigned long long)_endPolicy;
-- (BOOL)_gpuAllowed;
-- (double)_invalidationDurationExpiringTaskCompletionsQuickly:(BOOL)arg1;
-- (BOOL)_isLegacyReasonFinishableTask:(unsigned long long)arg1;
-- (BOOL)_isOriginatorValidForContext:(id)arg1 errorReason:(out id *)arg2;
-- (BOOL)_isTargetValidForContext:(id)arg1 errorReason:(out id *)arg2;
-- (unsigned char)_jetsamBand;
-- (unsigned long long)_maxCPUDuration;
-- (unsigned long long)_maxCPUPercentage;
-- (unsigned long long)_maxCPUUsageViolationPolicy;
-- (void)_mutateReasonWithContext:(id)arg1;
-- (BOOL)_preventIdleSleep;
-- (unsigned char)_role;
-- (unsigned long long)_startPolicy;
-- (BOOL)_suspendsOnTaskSuspension;
-- (unsigned char)_terminationResistance;
 - (void)applyToAcquisitionContext:(id)arg1;
 - (void)applyToAssertionIntransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 - (void)applyToAssertionTransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;

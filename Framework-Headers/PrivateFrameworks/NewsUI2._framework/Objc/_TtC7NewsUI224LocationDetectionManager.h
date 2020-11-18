@@ -10,17 +10,17 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI224LocationDetectionManager : NSObject <CLLocationManagerDelegate>
 {
     MISSING_TYPE *locationManager;
 }
 
+@property (nonatomic, readonly) BOOL authorized;
+@property (nonatomic, readonly) BOOL locationServicesEnabled;
+
 - (void).cxx_destruct;
-- (BOOL)authorized;
 - (void)fetchLocationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (BOOL)locationServicesEnabled;
 
 @end
 

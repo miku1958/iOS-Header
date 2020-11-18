@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) NSString *containerIdentifier;
 @property (readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 @property (readonly, nonatomic) BOOL isAllNotesContainer;
+@property (readonly, nonatomic) BOOL isSharedReadOnly;
 @property (readonly, nonatomic) BOOL isSharedViaICloud;
 @property (readonly, nonatomic) BOOL isTrashFolder;
 @property (readonly) NSManagedObjectContext *managedObjectContext;
@@ -24,7 +25,6 @@
 @property (readonly, nonatomic) NSArray *visibleSubFolders;
 
 - (NSString *)accountName;
-- (NSString *)detailForTableViewCell;
 - (BOOL)isDeleted;
 - (BOOL)isModernCustomFolder;
 - (BOOL)mergeWithSubFolderMergeableData:(NSData *)arg1;

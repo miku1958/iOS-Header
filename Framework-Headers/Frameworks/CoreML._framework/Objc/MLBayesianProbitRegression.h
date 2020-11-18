@@ -59,8 +59,8 @@
 - (BOOL)setFeatureCount:(unsigned long long)arg1;
 - (BOOL)setInputFeatureName:(id *)arg1 to:(id)arg2;
 - (BOOL)setOutputFeatureName:(id *)arg1 to:(id)arg2;
-- (void)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 error:(id *)arg3;
-- (void)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (BOOL)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 error:(id *)arg3;
+- (BOOL)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 options:(id)arg3 error:(id *)arg4;
 
 @end
 

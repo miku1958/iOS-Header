@@ -9,38 +9,30 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class HMDApplicationMonitor, LSApplicationWorkspace, NSMutableDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class LSApplicationWorkspace, NSArray, NSMutableSet, NSString;
+@protocol HMFLocking;
 
-@interface HMDApplicationRegistry : HMFObject <LSApplicationWorkspaceObserverProtocol, HMFLogging>
+@interface HMDApplicationRegistry : HMFObject <HMFLogging, LSApplicationWorkspaceObserverProtocol>
 {
-    HMDApplicationMonitor *_monitor;
-    NSObject<OS_dispatch_queue> *_xpcQueue;
-    LSApplicationWorkspace *_appWorkspace;
-    NSMutableDictionary *_applications;
+    id<HMFLocking> _lock;
+    NSMutableSet *_applications;
+    LSApplicationWorkspace *_workspace;
 }
 
-@property (strong, nonatomic) LSApplicationWorkspace *appWorkspace; // @synthesize appWorkspace=_appWorkspace;
-@property (strong, nonatomic) NSMutableDictionary *applications; // @synthesize applications=_applications;
+@property (readonly, copy) NSArray *applications;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HMDApplicationMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
 + (id)logCategory;
++ (id)sharedRegistry;
 - (void).cxx_destruct;
-- (void)_startObservingAppUninstalls;
-- (void)_stopObservingAppUninstalls;
+- (id)applicationInfoForBundleIdentifier:(id)arg1;
+- (id)applicationInfoForBundleURL:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)dealloc;
-- (id)ignoredForegroundAppBundleIdentifiers;
 - (id)init;
-- (id)initQueue:(id)arg1;
-- (void)processTerminated:(id)arg1;
-- (void)startMonitoringConnection:(id)arg1;
-- (void)stopMonitoringConnection:(id)arg1;
 
 @end
 

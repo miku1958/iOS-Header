@@ -41,6 +41,7 @@
 - (void)seekStoppedAtOverallPosition:(unsigned long long)arg1 type:(id)arg2 reason:(id)arg3 eventData:(id)arg4;
 - (id)startActivity:(long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
 - (void)stopActivity:(long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
+- (void)synchronizeAtOverallPosition:(unsigned long long)arg1;
 - (void)synchronizePlaybackRate:(float)arg1 overallPosition:(unsigned long long)arg2;
 - (void)updateEventData:(id)arg1;
 

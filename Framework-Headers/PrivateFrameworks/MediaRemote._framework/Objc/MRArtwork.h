@@ -6,21 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+#import <MediaRemote/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRArtwork : NSObject
+@class NSData, NSDictionary;
+
+@interface MRArtwork : NSObject <NSCopying>
 {
     NSData *_imageData;
     long long _height;
     long long _width;
 }
 
-@property (readonly, nonatomic) long long height; // @synthesize height=_height;
-@property (readonly, copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
-@property (readonly, nonatomic) long long width; // @synthesize width=_width;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) long long height; // @synthesize height=_height;
+@property (copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
+@property (nonatomic) long long width; // @synthesize width=_width;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithImageData:(id)arg1 height:(long long)arg2 width:(long long)arg3;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

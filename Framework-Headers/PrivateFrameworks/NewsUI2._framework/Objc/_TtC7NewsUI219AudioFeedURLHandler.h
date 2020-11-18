@@ -16,6 +16,7 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

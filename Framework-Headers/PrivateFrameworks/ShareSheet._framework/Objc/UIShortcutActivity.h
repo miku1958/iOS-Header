@@ -6,13 +6,12 @@
 
 #import <ShareSheet/UIApplicationExtensionActivity.h>
 
-#import <ShareSheet/NSSecureCoding-Protocol.h>
+@class NSArray, NSNumber, NSString, UIImage;
 
-@class NSArray, NSString, UIImage;
-
-@interface UIShortcutActivity : UIApplicationExtensionActivity <NSSecureCoding>
+@interface UIShortcutActivity : UIApplicationExtensionActivity
 {
     NSString *_identifier;
+    NSNumber *_sortValue;
     UIImage *_iconImage;
     NSString *_singleUseToken;
     NSString *_name;
@@ -24,17 +23,15 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSArray *photosAssetIdentifiers; // @synthesize photosAssetIdentifiers=_photosAssetIdentifiers;
 @property (strong, nonatomic) NSString *singleUseToken; // @synthesize singleUseToken=_singleUseToken;
+@property (strong, nonatomic) NSNumber *sortValue; // @synthesize sortValue=_sortValue;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_actionImage;
 - (long long)_defaultSortGroup;
 - (id)activityTitle;
 - (id)activityType;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initPartialShortcutFromXPCHelperWithName:(id)arg1 identifier:(id)arg2 image:(id)arg3;
+- (id)initPartialShortcutWithName:(id)arg1 identifier:(id)arg2 image:(id)arg3 sortValue:(id)arg4;
 - (id)initWithApplicationExtension:(id)arg1 singleUseToken:(id)arg2 photosAssetIdentifiers:(id)arg3;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithPartial:(id)arg1;
 - (void)prepareWithActivityExtensionItemData:(id)arg1;
 

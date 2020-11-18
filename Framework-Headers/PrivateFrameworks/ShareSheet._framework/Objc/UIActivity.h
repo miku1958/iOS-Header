@@ -104,6 +104,7 @@
 - (void)_willPresentAsFormSheet;
 - (void)activityDidFinish:(BOOL)arg1;
 - (void)activityDidFinish:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
+- (id)applicationProxy;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (id)init;
 - (void)performActivity;

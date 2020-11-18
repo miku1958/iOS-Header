@@ -14,7 +14,6 @@
     BOOL _enableManualRefreshUI;
     BOOL _fakePeopleProximity;
     BOOL _recoverBlacklistedMemories;
-    BOOL _useUnifiedFont;
     BOOL _showMemoryTitleLayer;
     BOOL _enableIPadWideHeader;
     double _refreshPhotoKitTimeout;
@@ -24,6 +23,7 @@
     long long _minimumNumberOfCuratedAssetsForMovieHeader;
     unsigned long long _deleteBehavior;
     long long _subtitleFontSize;
+    unsigned long long _timelineSchedulerMode;
 }
 
 @property (nonatomic) unsigned long long deleteBehavior; // @synthesize deleteBehavior=_deleteBehavior;
@@ -40,11 +40,13 @@
 @property (nonatomic) double refreshPhotoKitTimeout; // @synthesize refreshPhotoKitTimeout=_refreshPhotoKitTimeout;
 @property (nonatomic) BOOL showMemoryTitleLayer; // @synthesize showMemoryTitleLayer=_showMemoryTitleLayer;
 @property (nonatomic) long long subtitleFontSize; // @synthesize subtitleFontSize=_subtitleFontSize;
-@property (nonatomic) BOOL useUnifiedFont; // @synthesize useUnifiedFont=_useUnifiedFont;
+@property (nonatomic) unsigned long long timelineSchedulerMode; // @synthesize timelineSchedulerMode=_timelineSchedulerMode;
 @property (nonatomic) double widgetRefreshTimeInterval; // @synthesize widgetRefreshTimeInterval=_widgetRefreshTimeInterval;
 
++ (void)_generateQuestionsWithOptions:(long long)arg1 count:(unsigned long long)arg2 inModuleController:(id)arg3;
 + (void)_presentAlertForMemoriesGenerationResult:(id)arg1 error:(id)arg2 inModuleController:(id)arg3;
 + (void)_presentAlertWithTitle:(id)arg1 andMessage:(id)arg2 inModuleController:(id)arg3;
++ (id)schedulerOptionsFromTimelineSchedulerMode:(unsigned long long)arg1;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (id)parentSettings;

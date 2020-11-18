@@ -6,11 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC8NewsFeed23AudioCountdownFormatter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *formatter;
 }
 
 @end

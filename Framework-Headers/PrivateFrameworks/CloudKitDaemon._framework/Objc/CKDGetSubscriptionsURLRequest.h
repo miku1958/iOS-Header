@@ -24,8 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)generateRequestOperations;
-- (id)initWithSubscriptionIDs:(id)arg1;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 subscriptionIDs:(id)arg2;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;

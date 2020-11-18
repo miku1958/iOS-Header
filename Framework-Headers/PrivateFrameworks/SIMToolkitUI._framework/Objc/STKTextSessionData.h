@@ -13,18 +13,20 @@
 @interface STKTextSessionData : NSObject <BSXPCCoding>
 {
     NSString *_text;
+    NSString *_simLabel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *simLabel; // @synthesize simLabel=_simLabel;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
-- (id)initWithText:(id)arg1;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

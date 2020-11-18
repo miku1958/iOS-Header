@@ -24,6 +24,7 @@
     int _maximumDisplays;
     int _messageType;
     int _modalPresentationStyle;
+    NSMutableArray *_presentationTriggers;
     int _priority;
     ICIAMMessageRule *_rule;
     NSMutableArray *_targets;
@@ -75,6 +76,7 @@
 @property (nonatomic) int maximumDisplays; // @synthesize maximumDisplays=_maximumDisplays;
 @property (nonatomic) int messageType; // @synthesize messageType=_messageType;
 @property (nonatomic) int modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
+@property (strong, nonatomic) NSMutableArray *presentationTriggers; // @synthesize presentationTriggers=_presentationTriggers;
 @property (nonatomic) int priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) ICIAMMessageRule *rule; // @synthesize rule=_rule;
 @property (nonatomic) double startDate; // @synthesize startDate=_startDate;
@@ -83,6 +85,7 @@
 @property (strong, nonatomic) NSString *webArchiveURL; // @synthesize webArchiveURL=_webArchiveURL;
 
 + (Class)contentPagesType;
++ (Class)presentationTriggersType;
 + (Class)targetType;
 - (void).cxx_destruct;
 - (int)StringAsAssetPrefetchStrategy:(id)arg1;
@@ -90,9 +93,11 @@
 - (int)StringAsMessageType:(id)arg1;
 - (int)StringAsModalPresentationStyle:(id)arg1;
 - (void)addContentPages:(id)arg1;
+- (void)addPresentationTriggers:(id)arg1;
 - (void)addTarget:(id)arg1;
 - (id)assetPrefetchStrategyAsString:(int)arg1;
 - (void)clearContentPages;
+- (void)clearPresentationTriggers;
 - (void)clearTargets;
 - (id)contentPagesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)contentPagesCount;
@@ -106,6 +111,8 @@
 - (void)mergeFrom:(id)arg1;
 - (id)messageTypeAsString:(int)arg1;
 - (id)modalPresentationStyleAsString:(int)arg1;
+- (id)presentationTriggersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)presentationTriggersCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)targetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)targetsCount;

@@ -17,7 +17,6 @@
     struct {
         unsigned int fileType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _fileType;
     _INPBDateTimeRange *_dateTime;
     _INPBContact *_person;
@@ -25,7 +24,6 @@
     _INPBString *_value;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

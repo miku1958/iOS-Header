@@ -10,12 +10,15 @@
 {
     BOOL _backgroundColorFollowsTintColor;
     BOOL _borderColorFollowsTintColor;
+    UIView *_controlCenterMaterialView;
 }
 
 @property (nonatomic) BOOL backgroundColorFollowsTintColor; // @synthesize backgroundColorFollowsTintColor=_backgroundColorFollowsTintColor;
 @property (nonatomic) BOOL borderColorFollowsTintColor; // @synthesize borderColorFollowsTintColor=_borderColorFollowsTintColor;
+@property (strong, nonatomic) UIView *controlCenterMaterialView; // @synthesize controlCenterMaterialView=_controlCenterMaterialView;
 
 + (BOOL)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

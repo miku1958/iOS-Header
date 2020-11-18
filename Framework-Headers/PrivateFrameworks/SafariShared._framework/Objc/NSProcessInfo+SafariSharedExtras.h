@@ -10,7 +10,7 @@
 
 @property (readonly, nonatomic) BOOL safari_systemSupportsBroadway;
 
-- (id)_safari_operatingSystemVersionStringFromOperatingSystemVersion:(CDStruct_f6aba300)arg1;
+- (id)_safari_operatingSystemVersionStringFromOperatingSystemVersion:(CDStruct_2ec95fd7)arg1;
 - (id)safari_operatingSystemVersionString;
 @end
 

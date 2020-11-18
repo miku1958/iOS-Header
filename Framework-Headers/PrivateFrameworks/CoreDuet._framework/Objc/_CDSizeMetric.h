@@ -25,18 +25,6 @@
     _CDSizeMetricFamily *_family;
 }
 
-@property (readonly) double averageSize;
-@property (readonly) unsigned long long count;
-@property (readonly, weak) _CDSizeMetricFamily *family; // @synthesize family=_family;
-@property (readonly) unsigned long long firstSize;
-@property (readonly) NSDate *firstUpdate;
-@property (readonly) unsigned long long lastSize;
-@property (readonly) NSDate *lastUpdate;
-@property (readonly) unsigned long long maximumSize;
-@property (readonly) unsigned long long minimumSize;
-@property (readonly) NSString *name; // @synthesize name=_name;
-@property (readonly) NSString *string; // @synthesize string=_string;
-
 - (void).cxx_destruct;
 - (id)initWithName:(id)arg1 string:(id)arg2 scale:(unsigned long long)arg3 family:(id)arg4;
 

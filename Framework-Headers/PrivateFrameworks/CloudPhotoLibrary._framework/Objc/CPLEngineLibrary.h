@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLStatusDelegate-Protocol.h>
 
-@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
+@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol CPLEngineLibraryOwner, OS_dispatch_queue;
 
 @interface CPLEngineLibrary : NSObject <CPLStatusDelegate, CPLAbstractObject>
@@ -17,6 +17,7 @@
     NSArray *_components;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_closingQueue;
+    NSMutableDictionary *_blocksToDispatchWhenLibraryAttaches;
     NSHashTable *_attachedObjects;
     NSError *_openingError;
     CPLStatus *_status;
@@ -72,12 +73,15 @@
 
 + (id)platformImplementationProtocol;
 - (void).cxx_destruct;
+- (void)_cancelBlockWhenLibraryAttaches:(id)arg1;
 - (void)_closeNextComponent:(id)arg1 deactivate:(BOOL)arg2 lastError:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_fillStatus:(id)arg1 forComponents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fillStatusArray:(id)arg1 forComponents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_libraryObject;
 - (void)_openNextComponent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_performBlockOnLibrary:(CDUnknownBlockType)arg1;
+- (id)_performBlockWhenLibraryAttaches:(CDUnknownBlockType)arg1;
 - (void)_performBlockWithLibrary:(BOOL)arg1 enumerateAttachedObjects:(CDUnknownBlockType)arg2;
+- (void)_performPendingBlockForWhenLibraryAttaches;
 - (void)_reportQuarantineCountIfNecessaryWithLastReportDate:(id)arg1;
 - (void)_setCurrentClosingComponentName:(id)arg1;
 - (void)_updateTotalAssetCountWithAssetCounts:(id)arg1;
@@ -86,6 +90,7 @@
 - (id)componentName;
 - (id)corruptionInfo;
 - (void)detachObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)forceBackupWithActivity:(id)arg1 forceClientPush:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forceFetchAccountFlags;
 - (void)getListOfComponentsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusArrayForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -102,15 +107,18 @@
 - (void)notifyAttachedObjectsUploadTask:(id)arg1 didProgress:(float)arg2;
 - (void)notifyAttachedObjectsUploadTaskDidStart:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)performBlockOnLibrary:(CDUnknownBlockType)arg1;
+- (void)performMaintenanceCleanupWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideScopeChangeForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reportLibraryCorrupted;
 - (void)reportQuarantineCountIfNecessary;
 - (void)reportRadar:(unsigned long long)arg1;
 - (void)reportUnsuccessfulSync;
 - (void)requestAttachedLibrary;
-- (void)setConnectedToNetwork:(BOOL)arg1;
+- (void)requestClientToPushAllChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setConnectedToNetwork:(BOOL)arg1 cellularIsRestricted:(BOOL)arg2 inAirplaneMode:(BOOL)arg3;
 - (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isConstrainedNetwork:(BOOL)arg3 isBudgetValid:(BOOL)arg4;
 - (void)setLowDiskSpace:(BOOL)arg1;
 - (void)startSyncSession;

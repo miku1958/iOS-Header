@@ -15,7 +15,7 @@
     CDUnknownBlockType _selectionHandler;
 }
 
-@property (nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
+@property (strong, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 @property (copy, nonatomic) CDUnknownBlockType selectionHandler; // @synthesize selectionHandler=_selectionHandler;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

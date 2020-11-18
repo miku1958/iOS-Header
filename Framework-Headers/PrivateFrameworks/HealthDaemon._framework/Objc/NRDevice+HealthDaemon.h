@@ -8,6 +8,7 @@
 
 @interface NRDevice (HealthDaemon)
 - (BOOL)hd_isActive;
+- (BOOL)hd_isAltAccount;
 - (id)hd_lastActiveDate;
 - (id)hd_lastInactiveDate;
 - (id)hd_name;

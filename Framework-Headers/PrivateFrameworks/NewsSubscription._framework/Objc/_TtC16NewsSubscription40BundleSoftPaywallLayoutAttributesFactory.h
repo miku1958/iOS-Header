@@ -11,15 +11,9 @@
 @interface _TtC16NewsSubscription40BundleSoftPaywallLayoutAttributesFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *styler;
+    MISSING_TYPE *componentSizeProvider;
     MISSING_TYPE *smallMarginWidth;
     MISSING_TYPE *largeMarginWidth;
-    MISSING_TYPE *smallHeaderImageHeight;
-    MISSING_TYPE *largeHeaderImageHeight;
-    MISSING_TYPE *maxHeaderImageViewWidth;
-    MISSING_TYPE *compactBadgeImageWidth;
-    MISSING_TYPE *regularBadgeImageWidth;
-    MISSING_TYPE *compactBadgeImageHeight;
-    MISSING_TYPE *regularBadgeImageHeight;
     MISSING_TYPE *smallSubscribeButtonSize;
     MISSING_TYPE *largeSubscribeButtonSize;
     MISSING_TYPE *smallButtonCapMarginWidth;

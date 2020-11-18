@@ -50,6 +50,7 @@
 - (id)liveView;
 - (void)loadView;
 - (void)prepareToTransitionToVisible:(BOOL)arg1 completionHandler:(CDUnknownBlockType *)arg2;
+- (void)prepareViewWithLayout:(id)arg1;
 - (void)reloadData;
 - (void)stopUsingAVTViewSessionSynchronously:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)transitionLiveViewToFront;

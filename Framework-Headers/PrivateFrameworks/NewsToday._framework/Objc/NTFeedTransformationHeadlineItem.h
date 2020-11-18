@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTFeedTransformationItem-Protocol.h>
 
-@class NSDate, NSString, NTPBFeedItem, SFSearchResult;
+@class NSDate, NSString, NSURL, NTPBFeedItem, SFSearchResult;
 @protocol FCFeedTransformationItem, FCHeadlineProviding;
 
 @interface NTFeedTransformationHeadlineItem : NSObject <NTFeedTransformationItem>
@@ -16,14 +16,15 @@
     NSDate *_cacheExpirationDate;
     SFSearchResult *_searchResult;
     id<FCHeadlineProviding> _headline;
+    NSURL *_actionURL;
 }
 
+@property (readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property (readonly, copy, nonatomic) NSDate *cacheCutoffTimeRelativeDate;
 @property (readonly, copy, nonatomic) NSDate *cacheExpirationDate; // @synthesize cacheExpirationDate=_cacheExpirationDate;
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEligibleForLeadingCellAppearance) BOOL eligibleForLeadingCellAppearance;
 @property (readonly, copy, nonatomic) NTPBFeedItem *feedItemForHeadlineFetch;
 @property (readonly, nonatomic) id<FCFeedTransformationItem> feedTransformationItem;
 @property (readonly) unsigned long long hash;
@@ -37,10 +38,9 @@
 @property (readonly, nonatomic) BOOL usesDynamicSlotAllocation;
 
 - (void).cxx_destruct;
-- (id)copyWithCacheExpirationDate:(id)arg1 searchResult:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithHeadline:(id)arg1 cacheExpirationDate:(id)arg2 searchResult:(id)arg3;
+- (id)initWithHeadline:(id)arg1 cacheExpirationDate:(id)arg2 searchResult:(id)arg3 actionURL:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)protoitemWithFetchedFeedItemHeadline:(id)arg1;
 

@@ -6,18 +6,22 @@
 
 #import <HomeKit/HMRoom.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFWallaperHost-Protocol.h>
 
 @class HMCameraProfile, HMHome, NSArray, NSDate, NSSet, NSString, NSUUID, UIImage;
 
-@interface HMRoom (HFDebugging) <HFStateDumpBuildable, HFWallaperHost, HFReorderableHomeKitObject>
+@interface HMRoom (HFDebugging) <HFStateDumpBuildable, HFWallaperHost, HFHomeKitObject, HFReorderableHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *hf_allCameraProfiles;
@@ -26,15 +30,20 @@
 @property (readonly, nonatomic) NSArray *hf_allZones;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
+@property (readonly, nonatomic) BOOL hf_hasAtleastOneHomePod;
+@property (readonly, nonatomic) BOOL hf_hasAtleastOneReachableHomePod;
+@property (readonly, nonatomic) NSArray *hf_pairedHomePods;
 @property (readonly, weak, nonatomic) HMCameraProfile *hf_unitaryCameraProfile;
-@property (readonly, nonatomic) NSArray *hf_unpairedHomePods;
 @property (readonly, nonatomic) NSArray *hf_visibleAccessories;
 @property (readonly, nonatomic) UIImage *hf_wallpaperImage;
 @property (readonly, weak, nonatomic) HMHome *home; // @dynamic home;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+- (id)availableHomePodsSupportingStereoPairingVersions:(unsigned long long)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateWallpaperImage:(id)arg1;

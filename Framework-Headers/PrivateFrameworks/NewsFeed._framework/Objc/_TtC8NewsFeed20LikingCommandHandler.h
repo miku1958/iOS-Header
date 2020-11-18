@@ -14,6 +14,7 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *alertPresenter;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

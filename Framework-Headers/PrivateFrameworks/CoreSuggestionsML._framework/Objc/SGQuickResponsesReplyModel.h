@@ -10,6 +10,7 @@
 
 @interface SGQuickResponsesReplyModel : NSObject
 {
+    BOOL _dynamicLabel;
     unsigned long long _semanticClassIndex;
     NSArray *_semanticClasses;
     NSArray *_selectedPseudocounts;
@@ -18,6 +19,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
+@property (readonly, nonatomic) BOOL dynamicLabel; // @synthesize dynamicLabel=_dynamicLabel;
 @property (readonly, nonatomic) double scoreWeight; // @synthesize scoreWeight=_scoreWeight;
 @property (readonly, nonatomic) NSArray *selectedPseudocounts; // @synthesize selectedPseudocounts=_selectedPseudocounts;
 @property (readonly, nonatomic) unsigned long long semanticClassIndex; // @synthesize semanticClassIndex=_semanticClassIndex;

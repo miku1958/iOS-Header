@@ -13,19 +13,22 @@
     NSObject<OS_dispatch_source> *_timer;
     BOOL _repeats;
     double _interval;
+    double _startDelay;
     CDUnknownBlockType _handler;
 }
 
 @property (readonly, copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (readonly, nonatomic) double interval; // @synthesize interval=_interval;
 @property (readonly, nonatomic) BOOL repeats; // @synthesize repeats=_repeats;
+@property (readonly, nonatomic) double startDelay; // @synthesize startDelay=_startDelay;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
++ (id)scheduledRepeatingTimerWithStartDelay:(double)arg1 interval:(double)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)scheduledTimerWithInterval:(double)arg1 repeats:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_initWithStartDelay:(double)arg1 interval:(double)arg2 repeats:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_scheduleTimer;
 - (void)dealloc;
-- (id)initWithInterval:(double)arg1 repeats:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (void)resetFireDate;
 - (void)schedule;

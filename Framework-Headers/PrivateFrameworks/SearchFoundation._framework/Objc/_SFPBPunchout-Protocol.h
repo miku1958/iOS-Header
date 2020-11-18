@@ -12,6 +12,7 @@
 
 @property (copy, nonatomic) NSString *actionTarget;
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (nonatomic) BOOL hasClip;
 @property (nonatomic) BOOL isRunnableInBackground;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *label;

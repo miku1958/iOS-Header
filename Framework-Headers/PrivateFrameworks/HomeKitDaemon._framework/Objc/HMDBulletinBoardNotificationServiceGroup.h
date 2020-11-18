@@ -12,20 +12,20 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDBulletinBoardNotification, HMFMessageDispatcher, NSArray, NSHashTable, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDBulletinBoardNotificationServiceGroup : HMFObject <NSSecureCoding, HMFMessageReceiver, HMFLogging, HMFDumpState>
 {
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     NSSet *_cameraProfileUUIDs;
     NSSet *_associatedServiceUUIDs;
     NSHashTable *_cameraProfilesTable;
     NSHashTable *_associatedServicesTable;
     HMDBulletinBoardNotification *_bulletinBoardNotification;
-    NSUUID *_targetUUID;
+    NSUUID *_messageTargetUUID;
     NSArray *_associatedServices;
     NSArray *_cameraProfiles;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_msgDispatcher;
 }
 
@@ -40,12 +40,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;

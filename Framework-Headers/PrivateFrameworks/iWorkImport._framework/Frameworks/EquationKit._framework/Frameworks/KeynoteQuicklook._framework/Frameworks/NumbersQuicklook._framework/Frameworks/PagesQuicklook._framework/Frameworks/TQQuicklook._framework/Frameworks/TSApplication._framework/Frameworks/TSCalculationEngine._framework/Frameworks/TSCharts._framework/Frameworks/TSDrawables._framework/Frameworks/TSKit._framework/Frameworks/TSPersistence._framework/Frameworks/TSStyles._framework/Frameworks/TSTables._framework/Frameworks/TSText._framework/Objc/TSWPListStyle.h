@@ -79,6 +79,7 @@
 - (id)resolvedValueForProperty:(int)arg1 inStyles:(id)arg2;
 - (void)saveToArchive:(struct ListStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (void)setLocalizedArray:(id)arg1 forProperty:(int)arg2;
 - (double)textIndentForLevel:(unsigned long long)arg1 fontSize:(double)arg2;
 - (BOOL)wantsCustomResolveLogicForProperty:(int)arg1 forStyles:(id)arg2;
 

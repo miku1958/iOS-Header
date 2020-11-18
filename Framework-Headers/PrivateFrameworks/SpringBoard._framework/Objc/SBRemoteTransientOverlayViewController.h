@@ -46,6 +46,7 @@
 - (id)_initWithContentViewController:(id)arg1;
 - (BOOL)_needsWallpaperEffectView;
 - (int)_preferredStatusBarVisibility;
+- (void)_setMediaOverridePID:(int)arg1;
 - (BOOL)allowsStackingOverlayContentAbove;
 - (BOOL)becomeFirstResponder;
 - (void)beginIgnoringAppearanceUpdates;
@@ -62,6 +63,7 @@
 - (void)endIgnoringAppearanceUpdates;
 - (void)endIgnoringContentOverlayInsetUpdates;
 - (BOOL)handleDoubleHeightStatusBarTap;
+- (void)handleGestureDismissal;
 - (BOOL)handleHeadsetButtonPress:(BOOL)arg1;
 - (BOOL)handleHomeButtonDoublePress;
 - (BOOL)handleHomeButtonLongPress;
@@ -80,7 +82,6 @@
 - (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredLockedGestureDismissalStyle;
 - (id)preferredSceneDeactivationReasonValue;
-- (id)preferredStatusBarLegibilitySettings;
 - (long long)preferredStatusBarStyle;
 - (int)preferredStatusBarStyleOverridesToCancel;
 - (long long)preferredUnlockedGestureDismissalStyle;

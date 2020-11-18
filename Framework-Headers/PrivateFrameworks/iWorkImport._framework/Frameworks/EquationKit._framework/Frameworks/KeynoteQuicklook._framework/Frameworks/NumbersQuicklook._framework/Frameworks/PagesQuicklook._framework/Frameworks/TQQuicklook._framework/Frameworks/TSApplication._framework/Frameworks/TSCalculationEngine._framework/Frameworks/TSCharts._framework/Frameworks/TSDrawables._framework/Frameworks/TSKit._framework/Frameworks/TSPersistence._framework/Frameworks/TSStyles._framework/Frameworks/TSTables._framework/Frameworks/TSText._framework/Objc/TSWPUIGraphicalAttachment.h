@@ -13,7 +13,7 @@
 @property (readonly, nonatomic) double baselineOffset;
 @property (readonly, nonatomic) struct CGSize size;
 
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (void)invalidate;
 - (void)loadFromArchive:(const struct UIGraphicalAttachment *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

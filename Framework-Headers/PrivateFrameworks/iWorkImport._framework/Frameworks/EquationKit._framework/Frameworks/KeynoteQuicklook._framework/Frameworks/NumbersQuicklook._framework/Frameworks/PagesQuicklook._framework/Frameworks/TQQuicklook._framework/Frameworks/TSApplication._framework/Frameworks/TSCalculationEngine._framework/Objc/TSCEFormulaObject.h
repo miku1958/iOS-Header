@@ -19,14 +19,12 @@
     UUIDData_5fbc143e _hostTableUID;
     UUIDData_5fbc143e _hostColumnUID;
     UUIDData_5fbc143e _hostRowUID;
-    struct TSCEFormula *_cachedFormula;
 }
 
 @property (readonly) BOOL containsInvalidRef;
 @property (readonly) BOOL containsUidReferences;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) struct TSCEFormula *formula;
 @property (readonly, nonatomic) TSCEFormulaObject *formulaObject;
 @property (readonly) BOOL hasBadRefWithUidInfo;
 @property (readonly) BOOL hasHostCell;
@@ -45,6 +43,7 @@
 + (id)parseFormula:(id)arg1 calcEngine:(id)arg2 containingCell:(const struct TSCECellRef *)arg3 outError:(id *)arg4;
 + (id)parseFormula:(id)arg1 calcEngine:(id)arg2 unqualifiedReferenceTableUID:(const UUIDData_5fbc143e *)arg3 containingCell:(const struct TSUCellCoord *)arg4 outError:(id *)arg5 outNeedsImportRewrite:(BOOL *)arg6 isChartFormula:(BOOL)arg7 isSageUpgrade:(BOOL)arg8;
 - (id).cxx_construct;
+- (void)appendExternalTableUIDs:(unordered_set_c6a929bd *)arg1 groupByUIDs:(unordered_set_c6a929bd *)arg2;
 - (struct TSCEASTNodeArray *)astNodeArrayCopy;
 - (const struct TSCEASTNodeArray *)const_astNodeArray;
 - (id)copyByClearingHostCell;
@@ -64,7 +63,7 @@
 - (id)copyByRemovingNumberToDateCoercion:(struct TSCEEvaluationContext *)arg1 outFormulaResult:(struct TSCEValue *)arg2 outDidModifyFormula:(BOOL *)arg3;
 - (id)copyByRepairingBadReferences:(struct TSCEFormulaRewriteContext *)arg1;
 - (id)copyByRewritingForExcelExport:(struct TSCEEvaluationContext *)arg1;
-- (id)copyByRewritingForExcelImport:(struct TSCEEvaluationContext *)arg1 outFormulaResult:(struct TSCEValue *)arg2 outDidModifyFormula:(BOOL *)arg3 formulaFormatFromCell:(int)arg4;
+- (id)copyByRewritingForExcelImport:(struct TSCEEvaluationContext *)arg1 outFormulaResult:(struct TSCEValue *)arg2 outDidModifyFormula:(BOOL *)arg3 outFormulaReplacedForExcelCompatWarning:(BOOL *)arg4 functionNameReplacedForExcelCompat:(id *)arg5 formulaFormatFromCell:(unsigned int)arg6;
 - (id)copyByRewritingForSageExport:(struct TSCEEvaluationContext *)arg1 targetDocumentSupportsCrossTableReferences:(BOOL)arg2 outshouldBakeWholeFormula:(BOOL *)arg3 outFeaturesUsed:(char *)arg4;
 - (id)copyByRewritingForSageImport:(id)arg1 containingCell:(const struct TSCECellRef *)arg2;
 - (id)copyByRewritingForTranspose:(id)arg1 calcEngine:(id)arg2 containingCell:(const struct TSCEFormulaContainingCell *)arg3 outTransposeWarning:(BOOL *)arg4;
@@ -85,6 +84,7 @@
 - (struct TSCEValue)evaluateWithContext:(struct TSCEEvaluationContext *)arg1;
 - (struct TSCEValue)evaluateWithContext:(struct TSCEEvaluationContext *)arg1 isInACycle:(BOOL)arg2 outErrorIsDueToCycle:(BOOL *)arg3;
 - (struct TSCEValue)evaluateWithContextVectorResult:(struct TSCEEvaluationContext *)arg1;
+- (vector_2431c21e)getCategoryReferencesWithCalcEngine:(id)arg1;
 - (void)getPrecedents:(struct TSCEReferenceSet *)arg1 calcEngine:(id)arg2 hostCell:(const struct TSCECellRef *)arg3 doImplicitIntersection:(BOOL)arg4 returnUidReferences:(BOOL)arg5;
 - (id)hostedDescriptionAtCell:(const struct TSCECellRef *)arg1;
 - (id)hostedDescriptionAtCell:(const struct TSCECellRef *)arg1 hideUids:(BOOL)arg2;
@@ -92,7 +92,6 @@
 - (id)initWithCreator:(struct TSCEFormulaCreator)arg1;
 - (id)initWithCreator:(struct TSCEFormulaCreator)arg1 argInfo:(struct TSCEASTNodeArgInfo *)arg2 translationFlags:(struct TSCEFormulaTranslationFlags)arg3;
 - (id)initWithCreator:(struct TSCEFormulaCreator)arg1 translationFlags:(struct TSCEFormulaTranslationFlags)arg2;
-- (id)initWithFormula:(const struct TSCEFormula *)arg1;
 - (id)initWithNodeArray:(const struct TSCEASTNodeArray *)arg1;
 - (id)initWithNodeArray:(const struct TSCEASTNodeArray *)arg1 translationFlags:(struct TSCEFormulaTranslationFlags)arg2;
 - (BOOL)isEqual:(id)arg1;

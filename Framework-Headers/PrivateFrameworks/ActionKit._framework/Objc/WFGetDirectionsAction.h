@@ -25,6 +25,7 @@
 - (id)appIdentifier;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (void)getMapsURLForMapsLink:(id)arg1 appName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getStartAddressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)initializeParameters;
 - (void)openMapsLink:(id)arg1 inAppNamed:(id)arg2;
 - (void)openMapsURL:(id)arg1 withAppIdentifier:(id)arg2;

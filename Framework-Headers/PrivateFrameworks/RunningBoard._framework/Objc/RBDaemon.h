@@ -8,12 +8,14 @@
 
 #import <RunningBoard/RBAssertionManagerDelegate-Protocol.h>
 #import <RunningBoard/RBBundlePropertiesManagerDelegate-Protocol.h>
+#import <RunningBoard/RBDaemonContextProviding-Protocol.h>
 #import <RunningBoard/RBPowerAssertionManagerDelegate-Protocol.h>
 #import <RunningBoard/RBProcessManagerDelegate-Protocol.h>
 
-@class NSString, RBAssertionDescriptorValidator, RBAssertionManager, RBAssertionOriginatorPidStore, RBBundlePropertiesManager, RBConnectionListener, RBDomainAttributeManager, RBEntitlementManager, RBJetsamBandProvider, RBPowerAssertionManager, RBProcessManager, RBProcessMonitor, RBProcessReconnectManager, RBStateCaptureManager, RBThrottleBestEffortNetworkingManager;
+@class NSString, RBAssertionDescriptorValidator, RBAssertionManager, RBAssertionOriginatorPidStore, RBBundlePropertiesManager, RBConnectionListener, RBDomainAttributeManager, RBEntitlementManager, RBJetsamBandProvider, RBPowerAssertionManager, RBProcess, RBProcessManager, RBProcessMonitor, RBProcessReconnectManager, RBStateCaptureManager, RBThrottleBestEffortNetworkingManager;
+@protocol RBAssertionManaging, RBEntitlementManaging, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
 
-@interface RBDaemon : NSObject <RBAssertionManagerDelegate, RBProcessManagerDelegate, RBBundlePropertiesManagerDelegate, RBPowerAssertionManagerDelegate>
+@interface RBDaemon : NSObject <RBAssertionManagerDelegate, RBProcessManagerDelegate, RBBundlePropertiesManagerDelegate, RBPowerAssertionManagerDelegate, RBDaemonContextProviding>
 {
     RBAssertionDescriptorValidator *_assertionDescriptorValidator;
     RBAssertionManager *_assertionManager;
@@ -31,17 +33,19 @@
     RBThrottleBestEffortNetworkingManager *_throttleBestEffortNetworkingManager;
 }
 
+@property (readonly, nonatomic) id<RBAssertionManaging> assertionManager; // @synthesize assertionManager=_assertionManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<RBEntitlementManaging> entitlementManager; // @synthesize entitlementManager=_entitlementManager;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) RBProcess *process;
+@property (readonly, nonatomic) id<RBProcessManaging> processManager; // @synthesize processManager=_processManager;
+@property (readonly, nonatomic) id<RBProcessMonitoring> processMonitor; // @synthesize processMonitor=_processMonitor;
+@property (readonly, nonatomic) id<RBStateCaptureManaging> stateCaptureManager; // @synthesize stateCaptureManager=_stateCaptureManager;
 @property (readonly) Class superclass;
 
-+ (id)_sharedInstance;
 + (void)run;
 - (void).cxx_destruct;
-- (id)_init;
-- (id)_reconnectOriginatorProcess;
-- (void)_start;
 - (void)assertionManager:(id)arg1 didAddProcess:(id)arg2 withState:(id)arg3;
 - (void)assertionManager:(id)arg1 didBeginTrackingInFightUpdatesForProcessIdentity:(id)arg2;
 - (void)assertionManager:(id)arg1 didBeginTrackingStateForProcessIdentity:(id)arg2;
@@ -55,14 +59,12 @@
 - (void)assertionManager:(id)arg1 willExpireAssertionsSoonForProcess:(id)arg2 expirationTime:(double)arg3;
 - (void)assertionManager:(id)arg1 willInvalidateAssertion:(id)arg2;
 - (void)bundlePropertiesManager:(id)arg1 didChangePropertiesForProcessIdentities:(id)arg2;
-- (void)emitAssertionSignpostForLegacyReason:(id)arg1;
 - (id)init;
 - (void)powerAssertionManagerDidAllowIdleSleep:(id)arg1;
 - (void)powerAssertionManagerDidPreventIdleSleep:(id)arg1;
 - (void)processManager:(id)arg1 didAddProcess:(id)arg2;
 - (void)processManager:(id)arg1 didReconnectProcesses:(id)arg2;
 - (void)processManager:(id)arg1 didRemoveProcess:(id)arg2;
-- (void)watchdogRegister;
 
 @end
 

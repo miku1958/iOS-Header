@@ -8,13 +8,13 @@
 
 #import <SpringBoard/UITextFieldDelegate-Protocol.h>
 
-@class BKSProcessAssertion, BSAuditToken, NSArray, NSDictionary, NSObject, NSString, NSTimer, NSURL, SBUISound, UIViewController, _SBLegacyRemoteAlertContentHostViewController, _SBSUICFUserNotificationContentHostViewController, _SBUserNotificationImageDescriptor;
+@class BKSProcessAssertion, NSArray, NSDictionary, NSObject, NSString, NSTimer, NSURL, SBUISound, UIAlertControllerVisualStyle, UIViewController, _SBLegacyRemoteAlertContentHostViewController, _SBSUICFUserNotificationContentHostViewController, _SBUserNotificationImageDescriptor;
 @protocol BSInvalidatable, OS_dispatch_source;
 
 @interface SBUserNotificationAlert : SBAlertItem <UITextFieldDelegate>
 {
     NSString *_alertSource;
-    BSAuditToken *_auditToken;
+    int _originatingPID;
     unsigned int _replyPort;
     NSObject<OS_dispatch_source> *_portWatcher;
     NSObject<OS_dispatch_source> *_expirationTimer;
@@ -85,6 +85,7 @@
     _SBUserNotificationImageDescriptor *_headerImageDescriptor;
     _SBUserNotificationImageDescriptor *_iconImageDescriptor;
     _SBUserNotificationImageDescriptor *_attachmentImageDescriptor;
+    UIAlertControllerVisualStyle *_visualStyle;
     NSString *_extensionIdentifier;
     UIViewController *_contentViewControllerForAlertController;
 }
@@ -139,6 +140,7 @@
 - (void)_sendResponseAndCleanUp:(int)arg1;
 - (void)_sendResponseAndCleanUp:(int)arg1 customButtonResponse:(int)arg2;
 - (void)_setActivated:(BOOL)arg1;
+- (long long)_uiAlertActionLayoutDirectionFromSBUserNotificationButtonLayoutDirection:(unsigned int)arg1;
 - (long long)_uiAlertActionStyleFromSBUserNotificationButtonPresentationStyle:(int)arg1;
 - (BOOL)allowInLoginWindow;
 - (BOOL)allowLockScreenDismissal;
@@ -157,7 +159,8 @@
 - (BOOL)forcesModalAlertAppearance;
 - (BOOL)hideOnClonedDisplay;
 - (id)iconImage;
-- (id)initWithMessage:(id)arg1 replyPort:(unsigned int)arg2 requestFlags:(int)arg3 auditToken:(CDStruct_6ad76789)arg4;
+- (id)initWithMessage:(id)arg1 replyPort:(unsigned int)arg2 requestFlags:(int)arg3 auditToken:(id)arg4;
+- (id)parseVisualStyleForMessage:(id)arg1;
 - (void)performUnlockAction;
 - (void)presentationStateDidChangeFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (BOOL)reappearsAfterLock;
@@ -167,6 +170,7 @@
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (int)token;
 - (void)updateWithMessage:(id)arg1 requestFlags:(int)arg2;
+- (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
 - (BOOL)wakeDisplay;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)arg1;

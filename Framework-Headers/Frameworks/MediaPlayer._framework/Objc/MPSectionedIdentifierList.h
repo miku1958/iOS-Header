@@ -10,7 +10,7 @@
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 #import <MediaPlayer/_MPSectionedIdentifierListEncodableNextEntriesProviding-Protocol.h>
 
-@class MPSectionedIdentifierListEntry, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class MPSectionedIdentifierListEntry, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol MPSectionedIdentifierListAnnotationDelegate, MPSectionedIdentifierListDelegate, OS_dispatch_queue;
 
 @interface MPSectionedIdentifierList : NSObject <_MPSectionedIdentifierListEncodableNextEntriesProviding, MPExclusiveAccessible, NSSecureCoding>
@@ -26,6 +26,7 @@
     id<MPSectionedIdentifierListAnnotationDelegate> _annotationDelegate;
 }
 
+@property (readonly, nonatomic) NSSet *allSectionIdentifiers;
 @property (weak, nonatomic) id<MPSectionedIdentifierListAnnotationDelegate> annotationDelegate; // @synthesize annotationDelegate=_annotationDelegate;
 @property (nonatomic) BOOL automaticallyReversesNonDestructiveDataSourceEdits; // @synthesize automaticallyReversesNonDestructiveDataSourceEdits=_automaticallyReversesNonDestructiveDataSourceEdits;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,6 +52,7 @@
 - (id)_debugDescriptionWithEnumerator:(id)arg1 lengths:(CDStruct_a734b2e2 *)arg2;
 - (id)_encodeEntry:(id)arg1 withExclusiveAccessToken:(id)arg2;
 - (id)_endEntryWithExclusiveAccessToken:(id)arg1;
+- (id)_entryForPosition:(id)arg1 withExclusiveAccessToken:(id)arg2;
 - (void)_enumerator:(id)arg1 didEncounterEntry:(id)arg2 withExclusiveAccessToken:(id)arg3;
 - (void)_insertDataSource:(id)arg1 forSection:(id)arg2 afterEntry:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (void)_insertDataSourceHead:(id)arg1 afterEntry:(id)arg2 withExclusiveAccessToken:(id)arg3;
@@ -84,11 +86,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1 withExclusiveAccessToken:(id)arg2;
 - (id)enumeratorWithOptions:(unsigned long long)arg1;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtItem:(id)arg2 inSection:(id)arg3;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtItem:(id)arg2 inSection:(id)arg3 withExclusiveAccessToken:(id)arg4;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtTailOfSection:(id)arg2;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtTailOfSection:(id)arg2 withExclusiveAccessToken:(id)arg3;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 withExclusiveAccessToken:(id)arg2;
+- (id)enumeratorWithOptions:(unsigned long long)arg1 startPosition:(id)arg2 endPosition:(id)arg3;
+- (id)enumeratorWithOptions:(unsigned long long)arg1 startPosition:(id)arg2 endPosition:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (BOOL)hasItem:(id)arg1 inSection:(id)arg2;
 - (BOOL)hasSection:(id)arg1;
 - (id)init;

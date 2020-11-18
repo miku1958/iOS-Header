@@ -24,7 +24,7 @@
 @property unsigned long long bytesInboundCount; // @synthesize bytesInboundCount=_bytesInboundCount;
 @property unsigned long long bytesOutboundCount; // @synthesize bytesOutboundCount=_bytesOutboundCount;
 @property (readonly) long long event; // @synthesize event=_event;
-@property (copy) NEFilterFlow *flow; // @synthesize flow=_flow;
+@property (strong) NEFilterFlow *flow; // @synthesize flow=_flow;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

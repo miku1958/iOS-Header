@@ -8,49 +8,68 @@
 
 #import <WorkflowKit/WFRecordStorage-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSSet, NSString, WFCoreDataWorkflowIcon, WFCoreDataWorkflowLayout, WFCoreDataWorkflowQuarantine, WFWorkflowIcon, WFWorkflowQuarantine;
+@class NSArray, NSData, NSDate, NSSet, NSString, WFCoreDataRunEvent, WFCoreDataWorkflowActions, WFCoreDataWorkflowIcon, WFCoreDataWorkflowQuarantine, WFWorkflowIcon, WFWorkflowQuarantine;
 
 @interface WFCoreDataWorkflow : NSManagedObject <WFRecordStorage>
 {
 }
 
-@property (strong, nonatomic) NSDictionary *accessResourcePermissions; // @dynamic accessResourcePermissions;
-@property (strong, nonatomic) NSArray *actions; // @dynamic actions;
+@property (copy, nonatomic) NSSet *accessResourcePerWorkflowStates;
+@property (strong, nonatomic) NSSet *accessResourcePermissions; // @dynamic accessResourcePermissions;
+@property (nonatomic) long long actionCount; // @dynamic actionCount;
+@property (strong, nonatomic) WFCoreDataWorkflowActions *actions; // @dynamic actions;
 @property (copy, nonatomic) NSString *actionsDescription; // @dynamic actionsDescription;
 @property (copy, nonatomic) NSString *associatedAppBundleIdentifier; // @dynamic associatedAppBundleIdentifier;
+@property (strong, nonatomic) NSData *cloudKitRecordMetadata; // @dynamic cloudKitRecordMetadata;
 @property (strong, nonatomic) WFCoreDataWorkflow *conflictOf; // @dynamic conflictOf;
+@property (readonly, nonatomic, getter=isConflictOfOtherWorkflow) BOOL conflictOfOtherWorkflow;
 @property (strong, nonatomic) NSSet *conflicts; // @dynamic conflicts;
 @property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) BOOL deleted; // @dynamic deleted;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *deserializedActions;
+@property (copy, nonatomic) NSArray *deserializedImportQuestions;
+@property (copy, nonatomic) NSArray *deserializedInputClasses;
+@property (readonly, nonatomic) unsigned long long estimatedSize;
+@property (copy, nonatomic) NSString *galleryIdentifier; // @dynamic galleryIdentifier;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL hiddenFromLibraryAndSync; // @dynamic hiddenFromLibraryAndSync;
+@property (nonatomic) BOOL hiddenFromLibraryAndSync;
+@property (nonatomic) BOOL hiddenFromWidget; // @dynamic hiddenFromWidget;
 @property (strong, nonatomic) WFCoreDataWorkflowIcon *icon; // @dynamic icon;
-@property (strong, nonatomic) NSArray *importQuestions; // @dynamic importQuestions;
-@property (strong, nonatomic) NSArray *inputClasses; // @dynamic inputClasses;
+@property (strong, nonatomic) NSData *importQuestionsData; // @dynamic importQuestionsData;
+@property (strong, nonatomic) NSData *inputClassesData; // @dynamic inputClassesData;
 @property (copy, nonatomic) NSString *lastMigratedClientVersion; // @dynamic lastMigratedClientVersion;
 @property (copy, nonatomic) NSString *lastSavedOnDeviceName; // @dynamic lastSavedOnDeviceName;
 @property (nonatomic) long long lastSyncedHash; // @dynamic lastSyncedHash;
-@property (strong, nonatomic) WFCoreDataWorkflowLayout *layout; // @dynamic layout;
 @property (copy, nonatomic) NSString *minimumClientVersion; // @dynamic minimumClientVersion;
 @property (copy, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (strong, nonatomic) NSSet *parents; // @dynamic parents;
 @property (copy, nonatomic) NSString *phrase; // @dynamic phrase;
 @property (strong, nonatomic) WFCoreDataWorkflowQuarantine *quarantine; // @dynamic quarantine;
+@property (nonatomic) long long remoteQuarantineStatus;
+@property (nonatomic) int remoteQuarantineStatusValue; // @dynamic remoteQuarantineStatusValue;
+@property (strong, nonatomic) WFCoreDataRunEvent *runEvents; // @dynamic runEvents;
+@property (copy, nonatomic) NSString *source; // @dynamic source;
+@property (copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
+@property (nonatomic) long long syncHash; // @dynamic syncHash;
+@property (nonatomic) BOOL tombstoned; // @dynamic tombstoned;
 @property (strong, nonatomic) NSSet *triggers; // @dynamic triggers;
-@property (strong, nonatomic) NSArray *trustedDomains; // @dynamic trustedDomains;
+@property (strong, nonatomic) NSSet *trustedDomains; // @dynamic trustedDomains;
 @property (copy, nonatomic) NSString *workflowID; // @dynamic workflowID;
 @property (strong, nonatomic) WFWorkflowIcon *workflowIcon;
 @property (strong, nonatomic) WFWorkflowQuarantine *workflowQuarantine;
 @property (copy, nonatomic) NSString *workflowSubtitle; // @dynamic workflowSubtitle;
-@property (strong, nonatomic) NSArray *workflowTypes; // @dynamic workflowTypes;
+@property (strong, nonatomic) NSArray *workflowTypes;
 
++ (id)descriptorFetchRequest;
 + (id)fetchRequest;
-- (void)coordinatePropertyUpdatesForRecord:(id)arg1 duringBlock:(CDUnknownBlockType)arg2;
++ (id)recordPropertyMap;
+- (long long)computedSyncHash;
 - (id)descriptor;
-- (id)recordPropertyMap;
+- (void)didUpdateProperties:(id)arg1;
+- (id)identifier;
 
 @end
 

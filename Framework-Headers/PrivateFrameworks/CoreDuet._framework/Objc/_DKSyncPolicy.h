@@ -29,36 +29,28 @@
     unsigned long long _policyDownloadIntervalInDays;
 }
 
-@property (nonatomic) BOOL alwaysSyncUpAndDown; // @synthesize alwaysSyncUpAndDown=_alwaysSyncUpAndDown;
-@property (nonatomic) unsigned long long assetThresholdInBytes; // @synthesize assetThresholdInBytes=_assetThresholdInBytes;
-@property (nonatomic) unsigned long long firstSyncPeriodInDays; // @synthesize firstSyncPeriodInDays=_firstSyncPeriodInDays;
-@property (nonatomic) BOOL forceSync; // @synthesize forceSync=_forceSync;
-@property (nonatomic) unsigned long long maxSyncDownIntervalInDays; // @synthesize maxSyncDownIntervalInDays=_maxSyncDownIntervalInDays;
-@property (nonatomic) unsigned long long maxSyncsPerDay; // @synthesize maxSyncsPerDay=_maxSyncsPerDay;
-@property (nonatomic) unsigned long long minSyncIntervalInSeconds; // @synthesize minSyncIntervalInSeconds=_minSyncIntervalInSeconds;
-@property (nonatomic) unsigned long long minSyncsPerDay; // @synthesize minSyncsPerDay=_minSyncsPerDay;
-@property (nonatomic) unsigned long long numChangesTriggeringSync; // @synthesize numChangesTriggeringSync=_numChangesTriggeringSync;
-@property (nonatomic) unsigned long long policyDownloadIntervalInDays; // @synthesize policyDownloadIntervalInDays=_policyDownloadIntervalInDays;
-@property (nonatomic) BOOL pushTriggersSync; // @synthesize pushTriggersSync=_pushTriggersSync;
-@property (nonatomic) unsigned long long singleDeviceSyncIntervalInDays; // @synthesize singleDeviceSyncIntervalInDays=_singleDeviceSyncIntervalInDays;
-@property (strong, nonatomic) NSArray *streamNamesWithAdditionsTriggeringSync; // @synthesize streamNamesWithAdditionsTriggeringSync=_streamNamesWithAdditionsTriggeringSync;
-@property (strong, nonatomic) NSArray *streamNamesWithDeletionsTriggeringSync; // @synthesize streamNamesWithDeletionsTriggeringSync=_streamNamesWithDeletionsTriggeringSync;
-@property (nonatomic) BOOL syncDisabled; // @synthesize syncDisabled=_syncDisabled;
-@property (nonatomic) unsigned long long syncTimeoutInSeconds; // @synthesize syncTimeoutInSeconds=_syncTimeoutInSeconds;
-@property (nonatomic) unsigned long long triggeredSyncDelayInSeconds; // @synthesize triggeredSyncDelayInSeconds=_triggeredSyncDelayInSeconds;
+@property (readonly, nonatomic) BOOL alwaysSyncUpAndDown;
+@property (readonly, nonatomic) unsigned long long assetThresholdInBytes;
+@property (readonly, nonatomic) unsigned long long firstSyncPeriodInDays;
+@property (readonly, nonatomic) BOOL forceSync;
+@property (readonly, nonatomic) unsigned long long maxSyncDownIntervalInDays;
+@property (readonly, nonatomic) unsigned long long maxSyncsPerDay;
+@property (readonly, nonatomic) unsigned long long minSyncIntervalInSeconds;
+@property (readonly, nonatomic) unsigned long long minSyncsPerDay;
+@property (readonly, nonatomic) unsigned long long numChangesTriggeringSync;
+@property (readonly, nonatomic) BOOL pushTriggersSync;
+@property (readonly, nonatomic) unsigned long long singleDeviceSyncIntervalInDays;
+@property (readonly, nonatomic) NSArray *streamNamesWithAdditionsTriggeringSync;
+@property (readonly, nonatomic) NSArray *streamNamesWithDeletionsTriggeringSync;
+@property (readonly, nonatomic) BOOL syncDisabled;
+@property (readonly, nonatomic) unsigned long long syncTimeoutInSeconds;
+@property (readonly, nonatomic) unsigned long long triggeredSyncDelayInSeconds;
 
-+ (id)configurationPlist;
 + (id)forceSyncPolicy;
-+ (void)handleDownloadSyncPolicyResponse:(id)arg1 data:(id)arg2 error:(id)arg3;
 + (id)policy;
-+ (id)policyFromDictionary:(id)arg1;
-+ (void)possiblyDownloadSyncPolicyWithPolicyDownloadIntervalInDays:(unsigned long long)arg1;
-+ (id)syncPolicyConfigPath;
-+ (id)userDefaults;
 - (void).cxx_destruct;
 - (id)description;
 - (double)hoursBetweenSyncsWhenIsSingleDevice:(BOOL)arg1;
-- (id)initWithSyncDisabled:(id)arg1 alwaysSyncUpAndDown:(id)arg2 assetThresholdInBytes:(id)arg3 firstSyncPeriodInDays:(id)arg4 maxSyncDownIntervalInDays:(id)arg5 minSyncIntervalInSeconds:(id)arg6 minSyncsPerDay:(id)arg7 maxSyncsPerDay:(id)arg8 numChangesTriggeringSync:(id)arg9 policyDownloadIntervalInDays:(id)arg10 pushTriggersSync:(id)arg11 singleDeviceSyncIntervalInDays:(id)arg12 streamNamesWithAdditionsTriggeringSync:(id)arg13 streamNamesWithDeletionsTriggeringSync:(id)arg14 syncTimeoutInSeconds:(id)arg15 triggeredSyncDelayInSeconds:(id)arg16;
 - (id)queryStartDateFromLastDaySyncDates:(id)arg1 lastSyncDate:(id)arg2 isSingleDevice:(BOOL)arg3 isTriggeredSync:(BOOL)arg4;
 
 @end

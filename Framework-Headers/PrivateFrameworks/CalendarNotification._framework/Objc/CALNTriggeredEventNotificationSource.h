@@ -55,6 +55,7 @@
 
 + (id)_conferenceURLForNotification:(id)arg1;
 + (id)_mapItemURLForNotification:(id)arg1;
++ (id)_mergeDataFromUnprotectedStore:(id)arg1 withDataInProtectedStore:(id)arg2;
 + (id)conferenceCallActionIdentifier;
 + (id)conferenceURLUserInfoKey;
 + (id)directionsActionIdentifier;
@@ -125,6 +126,7 @@
 - (void)dataSource:(id)arg1 triggeredWithSourceClientIdentifier:(id)arg2 triggerData:(id)arg3;
 - (void)didReceiveResponse:(id)arg1;
 - (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3 sourceEventRepresentationProvider:(id)arg4 triggerHelper:(id)arg5 transitionProvider:(id)arg6 bodyDescriptionProvider:(id)arg7 travelAdvisoryTimelinessAuthority:(id)arg8 dateProvider:(id)arg9 notificationDataStorage:(id)arg10 urlHandler:(id)arg11 mapItemURLProvider:(id)arg12 timeToLeaveRefreshStorage:(id)arg13;
+- (BOOL)migrateToStorage:(id)arg1;
 - (void)refreshNotifications:(id)arg1;
 - (BOOL)sourceClientIdentifier:(id)arg1 matchesEventForSourceClientIdentifier:(id)arg2;
 

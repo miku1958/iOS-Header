@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _showPlaceholderString;
     BOOL _marqueeEnabled;
     BOOL _routing;
+    BOOL _scalePlaceholderImage;
     BOOL _shouldUseOverrideSize;
     MPCPlayerPath *_playerPath;
     UIImageView *_artworkView;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) MPRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
 @property (nonatomic, getter=isRouting) BOOL routing; // @synthesize routing=_routing;
 @property (strong, nonatomic) MediaControlsRoutingButtonView *routingButton; // @synthesize routingButton=_routingButton;
+@property (nonatomic) BOOL scalePlaceholderImage; // @synthesize scalePlaceholderImage=_scalePlaceholderImage;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) MPUMarqueeView *secondaryMarqueeView; // @synthesize secondaryMarqueeView=_secondaryMarqueeView;
 @property (copy, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;

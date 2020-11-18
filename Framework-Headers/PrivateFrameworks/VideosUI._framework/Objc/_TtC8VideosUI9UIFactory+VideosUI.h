@@ -7,8 +7,17 @@
 #import <VideosUI/_TtC8VideosUI9UIFactory.h>
 
 #import <VideosUI/VUIDocumentCreator-Protocol.h>
+#import <VideosUI/_TVInterfaceCreatingPrivate-Protocol.h>
 
-@interface _TtC8VideosUI9UIFactory (VideosUI) <VUIDocumentCreator>
+@interface _TtC8VideosUI9UIFactory (VideosUI) <VUIDocumentCreator, _TVInterfaceCreatingPrivate>
+- (id)URLForResource:(id)arg1;
+- (Class)_collectionViewCellClassForIKElement:(id)arg1;
+- (id)_imageProxyForIKElement:(id)arg1 withLayout:(id)arg2;
+- (void)_parseAppConfigurationForIKElement:(id)arg1;
+- (id)_styleSheetURLForTemplate:(id)arg1;
+- (id)_viewControllerForIKElement:(id)arg1 existingViewController:(id)arg2;
+- (id)_viewForIKElement:(id)arg1 existingView:(id)arg2;
+- (id)imageForResource:(id)arg1;
 - (id)viewControllerWithDocumentDataSource:(id)arg1 appContext:(id)arg2 viewElement:(id)arg3 documentOptions:(id)arg4;
 @end
 

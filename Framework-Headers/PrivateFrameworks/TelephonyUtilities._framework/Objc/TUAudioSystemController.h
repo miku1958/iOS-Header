@@ -50,6 +50,7 @@
 @property (readonly, copy, nonatomic) NSArray *bestGuessPickableRoutesForAnyCall;
 @property (weak, nonatomic) id<TUAudioSystemControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isDownlinkMuted) BOOL downlinkMuted;
+@property (readonly, nonatomic) BOOL otherSessionsRequestNoRingtoneInterruption;
 @property (readonly, copy, nonatomic) NSArray *pickableRoutesForTTY;
 @property (readonly, copy, nonatomic) NSDictionary *pickedRouteAttribute;
 @property (readonly, nonatomic, getter=isTTY) BOOL tty;

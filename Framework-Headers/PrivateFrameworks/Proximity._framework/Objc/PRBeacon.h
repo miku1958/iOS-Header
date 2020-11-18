@@ -37,7 +37,7 @@
 - (void)didReceiveNewSolutions:(id)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)startBeaconingWithOptions:(id)arg1;
 - (void)stopBeaconing;
 

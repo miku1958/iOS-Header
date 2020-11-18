@@ -6,15 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AvatarUI/AVTAvatarActionsModelDelegate-Protocol.h>
-#import <AvatarUI/AVTFaceTrackingManagerDelegate-Protocol.h>
+#import <AvatarUI/AVTAvatarActionsControllerDelegate-Protocol.h>
+#import <AvatarUI/AVTToolBarDelegate-Protocol.h>
 #import <AvatarUI/AVTUIControllerPresentationDelegate-Protocol.h>
 #import <AvatarUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AVTAvatarActionButton, AVTAvatarActionsModel, AVTAvatarEditorViewController, AVTImageTransitioningContainerView, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, NSString, UIImageView, UIStackView, UITapGestureRecognizer;
+@class AVTAvatarEditorViewController, AVTAvatarInlineActionsController, AVTImageTransitioningContainerView, AVTToolBar, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, NSString, UIImageView, UIStackView, UITapGestureRecognizer;
 @protocol AVTAvatarActionsViewControllerDelegate, AVTAvatarActionsViewControllerLayout;
 
-@interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsModelDelegate, UINavigationControllerDelegate, AVTFaceTrackingManagerDelegate, AVTUIControllerPresentationDelegate>
+@interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsControllerDelegate, UINavigationControllerDelegate, AVTToolBarDelegate, AVTUIControllerPresentationDelegate>
 {
     BOOL _isAnimating;
     BOOL _allowFacetracking;
@@ -22,10 +22,8 @@
     id<AVTAvatarActionsViewControllerLayout> _currentLayout;
     UIStackView *_buttonsView;
     AVTImageTransitioningContainerView *_avatarContainer;
-    AVTAvatarActionButton *_editButton;
-    AVTAvatarActionButton *_duplicateButton;
-    AVTAvatarActionButton *_deleteButton;
-    AVTAvatarActionsModel *_actionsModel;
+    AVTToolBar *_toolbar;
+    AVTAvatarInlineActionsController *_actionsController;
     AVTViewSessionProvider *_sessionProvider;
     AVTViewSession *_avtViewSession;
     CDUnknownBlockType _postSessionDidBecomeActiveHandler;
@@ -35,7 +33,7 @@
     AVTAvatarEditorViewController *_editorViewController;
 }
 
-@property (strong, nonatomic) AVTAvatarActionsModel *actionsModel; // @synthesize actionsModel=_actionsModel;
+@property (strong, nonatomic) AVTAvatarInlineActionsController *actionsController; // @synthesize actionsController=_actionsController;
 @property (nonatomic) BOOL allowFacetracking; // @synthesize allowFacetracking=_allowFacetracking;
 @property (strong, nonatomic) AVTImageTransitioningContainerView *avatarContainer; // @synthesize avatarContainer=_avatarContainer;
 @property (strong, nonatomic) AVTViewSession *avtViewSession; // @synthesize avtViewSession=_avtViewSession;
@@ -43,10 +41,7 @@
 @property (strong, nonatomic) id<AVTAvatarActionsViewControllerLayout> currentLayout; // @synthesize currentLayout=_currentLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVTAvatarActionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) AVTAvatarActionButton *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) AVTAvatarActionButton *duplicateButton; // @synthesize duplicateButton=_duplicateButton;
-@property (strong, nonatomic) AVTAvatarActionButton *editButton; // @synthesize editButton=_editButton;
 @property (weak, nonatomic) AVTAvatarEditorViewController *editorViewController; // @synthesize editorViewController=_editorViewController;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
@@ -55,23 +50,25 @@
 @property (readonly, nonatomic) AVTViewSessionProvider *sessionProvider; // @synthesize sessionProvider=_sessionProvider;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
+@property (strong, nonatomic) AVTToolBar *toolbar; // @synthesize toolbar=_toolbar;
 @property (strong, nonatomic) UIImageView *transitionImageView; // @synthesize transitionImageView=_transitionImageView;
 
 - (void).cxx_destruct;
-- (void)actionsModel:(id)arg1 didAddRecord:(id)arg2;
-- (void)actionsModel:(id)arg1 didCancelEditingRecord:(id)arg2;
-- (void)actionsModel:(id)arg1 didDeleteRecord:(id)arg2 withRecordUpdate:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)actionsModel:(id)arg1 didDuplicateToRecord:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)actionsModel:(id)arg1 didEditRecord:(id)arg2;
+- (void)actionsController:(id)arg1 didAddRecord:(id)arg2;
+- (void)actionsController:(id)arg1 didCancelEditingRecord:(id)arg2;
+- (void)actionsController:(id)arg1 didDeleteRecord:(id)arg2 withRecordUpdate:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)actionsController:(id)arg1 didDuplicateToRecord:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)actionsController:(id)arg1 didEditRecord:(id)arg2;
+- (void)actionsController:(id)arg1 presentAlertController:(id)arg2;
+- (void)actionsControllerDidFinish:(id)arg1;
+- (void)actionsControllerDidUpdateActions:(id)arg1;
 - (id)actionsModel:(id)arg1 recordUpdateForDeletingRecord:(id)arg2;
-- (void)actionsModel:(id)arg1 shouldDeleteRecord:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
-- (void)actionsModelDidFinish:(id)arg1;
-- (void)actionsModelDidUpdateInlineActionButtons:(id)arg1;
+- (struct UIEdgeInsets)additionalSafeAreaInsets;
 - (void)applyLayout:(id)arg1;
 - (void)beginAVTViewSessionWithDidBeginBlock:(CDUnknownBlockType)arg1;
 - (void)beginUsingAVTViewFromSession:(id)arg1;
 - (void)configureAVTViewSession:(id)arg1 withAvatarRecord:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)configureUserInfoLabel;
+- (void)configureNavigationItems;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)controllerPresentationWillObstructView:(id)arg1;
 - (void)createTransitionImageViewIfNeeded;
@@ -79,20 +76,21 @@
 - (double)deleteMoveInDuration;
 - (void)didTapAvatarView:(id)arg1;
 - (void)didTapDone:(id)arg1;
-- (void)dismissEditorViewController:(id)arg1 forActionsModel:(id)arg2 wasCreate:(BOOL)arg3 didEdit:(BOOL)arg4 animated:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)dismissEditorViewController:(id)arg1 forActionsController:(id)arg2 wasCreate:(BOOL)arg3 didEdit:(BOOL)arg4 animated:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (double)duplicateScaleDelay;
 - (double)duplicateScaleDuration;
-- (id)initWithAVTViewSessionProvider:(id)arg1 actionsModel:(id)arg2 environment:(id)arg3;
+- (id)initWithAVTViewSessionProvider:(id)arg1 actionsController:(id)arg2 environment:(id)arg3;
 - (long long)interfaceOrientationForFaceTrackingManager:(id)arg1;
-- (void)layoutViewFromModel:(id)arg1;
+- (void)layoutViewForActionsController;
 - (void)loadView;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (void)performEdit;
 - (void)performTransitionAfterDeleteToRecord:(id)arg1 fromLeft:(BOOL)arg2 previousRecordImage:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)performTransitionAfterDuplicateToRecord:(id)arg1 previousRecordImage:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)presentEditorViewController:(id)arg1 forActionsModel:(id)arg2 isCreate:(BOOL)arg3;
+- (void)presentEditorViewController:(id)arg1 forActionsController:(id)arg2 isCreate:(BOOL)arg3;
 - (void)rebuildLayout;
+- (void)toolbar:(id)arg1 didSelectButton:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class HMHomeManager, NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupAppleTVSession : NSObject
@@ -39,6 +39,7 @@
     int _homeKitSetupState;
     double _homeKitSetupSecs;
     NSString *_homeKitSelectedRoomName;
+    HMHomeManager *_homeManager;
     int _trSessionState;
     TRSession *_trSession;
     NSMutableArray *_trOperations;
@@ -109,6 +110,7 @@
 - (int)_runTRSessionStart;
 - (int)_runTRSetupConfiguration;
 - (BOOL)_verifyiCloudMatch:(unsigned long long)arg1 error:(id *)arg2;
+- (id)_videoSubscriberAccountData;
 - (void)activate;
 - (void)dealloc;
 - (void)homeKitSelectHome:(id)arg1;

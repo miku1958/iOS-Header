@@ -12,6 +12,7 @@
 
 - (id)initWithEvent:(id)arg1;
 - (BOOL)shouldAutorotate;
+- (BOOL)wantsManagement;
 - (void)willCommitPreview;
 
 @end

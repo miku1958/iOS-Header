@@ -16,7 +16,6 @@
 - (id)_accessibilityFirstQuickControlElementForFocus;
 - (void)_updateColorPicker;
 - (id)accessibilityElements;
-- (id)accessibilitySelectedSwatch;
 
 @end
 

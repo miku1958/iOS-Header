@@ -11,9 +11,9 @@
 @interface _TtC8VideosUI19ErrorTemplateLayout : _TtC8VideosUI10ViewLayout
 {
     MISSING_TYPE *titleTextLayout;
-    MISSING_TYPE *descriptionTextlayout;
+    MISSING_TYPE *bodyTextLayout;
     MISSING_TYPE *debugTextLayout;
-    MISSING_TYPE *debugTextLayout2;
+    MISSING_TYPE *debugText1Layout;
 }
 
 @end

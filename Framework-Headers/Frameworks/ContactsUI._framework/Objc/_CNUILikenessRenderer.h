@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property (readonly) Class superclass;
 
-+ (struct CGImage *)cgImageForLikenessProvider:(id)arg1 pointSize:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4;
++ (struct CGImage *)cgImageForLikenessProvider:(id)arg1 pointSize:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 alwaysUsePointSize:(BOOL)arg5;
 + (id)descriptorForRequiredKeys;
 + (id)renderedLikenessesForProviders:(id)arg1 scope:(id)arg2;
 - (void).cxx_destruct;
@@ -34,7 +34,7 @@
 - (id)renderedBasicMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)renderedBasicMonogramFromString:(id)arg1 scope:(id)arg2;
 - (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
-- (id)renderedLikenessesForLikenessProviders:(id)arg1 scope:(id)arg2;
+- (id)renderedLikenessesForLikenessProviders:(id)arg1 scope:(id)arg2 likenessFingerprint:(id)arg3;
 - (id)renderedLoadingPlaceholderForContactCount:(unsigned long long)arg1 provider:(id)arg2 scope:(id)arg3;
 
 @end

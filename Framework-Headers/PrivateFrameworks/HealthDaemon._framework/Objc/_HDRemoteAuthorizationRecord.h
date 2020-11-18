@@ -8,6 +8,7 @@
 
 @class HKAuthorizationRequestRecord;
 
+__attribute__((visibility("hidden")))
 @interface _HDRemoteAuthorizationRecord : NSObject
 {
     HKAuthorizationRequestRecord *_record;

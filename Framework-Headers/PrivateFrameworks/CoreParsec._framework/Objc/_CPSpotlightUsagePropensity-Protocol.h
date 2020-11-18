@@ -6,21 +6,34 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, _CPEngagementShareRatio, _CPEngagementTriggerRatio;
 
 @protocol _CPSpotlightUsagePropensity <NSObject>
 
 @property (nonatomic) float appLaunch;
+@property (strong, nonatomic) _CPEngagementShareRatio *engagementShareRatio;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float onDeviceAddressBookData;
 @property (nonatomic) float onDeviceOtherPersonalData;
 @property (nonatomic) float other;
 @property (nonatomic) float parsec;
+@property (nonatomic) float parsecAppStore;
+@property (nonatomic) float parsecMaps;
+@property (nonatomic) float parsecNews;
+@property (nonatomic) float parsecOther;
+@property (nonatomic) float parsecStocks;
+@property (nonatomic) float parsecWeather;
+@property (nonatomic) float parsecWeb;
+@property (nonatomic) float parsecWiki;
 @property (nonatomic) float punchout;
 @property (nonatomic) float querySuggestion;
+@property (strong, nonatomic) _CPEngagementTriggerRatio *querySuggestionTriggerRatio;
 @property (nonatomic) float siriSuggestions;
 @property (nonatomic) float thirdPartyInAppContent;
+@property (strong, nonatomic) _CPEngagementTriggerRatio *topHitTriggerRatio;
 @property (nonatomic) int totalEngagements;
+@property (nonatomic) int totalTopHitEngagements;
+@property (nonatomic) float webSuggestions;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

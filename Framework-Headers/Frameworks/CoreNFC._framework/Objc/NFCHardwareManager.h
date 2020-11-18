@@ -26,9 +26,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)sharedHardwareManager;
+- (void).cxx_destruct;
 - (void)addNFCHardwareManagerCallbacksListener:(id)arg1;
 - (BOOL)areFeaturesSupported:(unsigned long long)arg1 outError:(id *)arg2;
-- (void)dealloc;
 - (void)dequeueReaderSession:(id)arg1;
 - (void)didInvalidate;
 - (id)getReaderSessionWithKey:(id)arg1;

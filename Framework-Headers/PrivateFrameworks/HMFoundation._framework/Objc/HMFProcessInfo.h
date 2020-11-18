@@ -8,7 +8,7 @@
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 
-@class HMFBoolean, NSString;
+@class HMFBoolean, NSBundle, NSString, NSURL;
 
 @interface HMFProcessInfo : HMFObject <HMFLogging>
 {
@@ -16,14 +16,19 @@
     NSString *_applicationIdentifier;
     int _identifier;
     NSString *_name;
+    NSURL *_executableURL;
+    NSURL *_mainBundleURL;
 }
 
 @property (readonly, copy) NSString *applicationIdentifier;
 @property (readonly, copy, getter=isCodeSigned) HMFBoolean *codeSigned;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSURL *executableURL; // @synthesize executableURL=_executableURL;
 @property (readonly) unsigned long long hash;
 @property (readonly) int identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSBundle *mainBundle;
+@property (readonly, copy) NSURL *mainBundleURL; // @synthesize mainBundleURL=_mainBundleURL;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, getter=isPlatformBinary) HMFBoolean *platformBinary;
 @property (readonly) Class superclass;
@@ -39,6 +44,7 @@
 - (id)initWithAuditToken:(CDStruct_6ad76789)arg1;
 - (id)initWithIdentifier:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (id)shortDescription;
 - (id)valueForEntitlement:(id)arg1;
 

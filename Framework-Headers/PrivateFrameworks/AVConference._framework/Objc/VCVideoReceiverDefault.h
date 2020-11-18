@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes;
 @property (nonatomic) BOOL shouldEnableFaceZoom; // @synthesize shouldEnableFaceZoom=_shouldEnableFaceZoom;
 
+- (void)cleanUpDisplayLink;
 - (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)dealloc;
 - (void)didSwitchFromStreamID:(unsigned short)arg1 toStreamID:(unsigned short)arg2;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)handleRemoteFrame:(struct __CVBuffer *)arg1 timestamp:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)handleRequestingKeyFrameGenerationWithStreamID:(unsigned short)arg1;
 - (id)initWithConfig:(struct tagVCVideoReceiverConfig *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 statisticsCollector:(id)arg4 transmitterHandle:(struct tagHANDLE *)arg5;
+- (BOOL)initializeDisplayLink;
 - (unsigned int)lastDisplayedFrameRTPTimestamp;
 - (double)lastReceivedVideoRTCPPacketTime;
 - (double)lastReceivedVideoRTPPacketTime;

@@ -8,7 +8,7 @@
 
 #import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 
-@class NSString, UIImageView;
+@class CAMSlashMaskView, CAMSlashView, NSString, UIImageView;
 
 @interface CAMControlDrawerButton : UIControl <CAMAccessibilityHUDItemProvider>
 {
@@ -17,10 +17,14 @@
     long long _orientation;
     UIImageView *__imageView;
     UIImageView *__backgroundView;
+    CAMSlashView *__slashView;
+    CAMSlashMaskView *__slashMaskView;
 }
 
 @property (readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (readonly, nonatomic) CAMSlashMaskView *_slashMaskView; // @synthesize _slashMaskView=__slashMaskView;
+@property (readonly, nonatomic) CAMSlashView *_slashView; // @synthesize _slashView=__slashView;
 @property (nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) long long controlType;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,6 +38,7 @@
 + (id)_backgroundImage;
 + (struct CGSize)buttonSize;
 - (void).cxx_destruct;
+- (void)_updateSlashAnimated:(BOOL)arg1;
 - (void)didChangeContentSize;
 - (void)handleButtonReleased:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
@@ -45,8 +50,11 @@
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldScaleImageWhileHighlighted;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
+- (BOOL)shouldUseSlash;
 - (void)updateImage;
+- (void)updateImageAnimated:(BOOL)arg1;
 
 @end
 

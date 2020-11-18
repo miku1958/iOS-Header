@@ -19,7 +19,11 @@
 
 + (id)_statusItemClasses;
 + (BOOL)hasStatusItemForServiceType:(id)arg1;
++ (id)sortOrderForStatusItemCategory:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (id)_buildStatusItemWithClass:(Class)arg1 home:(id)arg2 room:(id)arg3;
+- (void)_buildStatusItemsForGroupedStatusItem:(id)arg1;
+- (id)_createStatusItemsForHome:(id)arg1 room:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1 room:(id)arg2;
 - (id)initWithItems:(id)arg1;

@@ -21,6 +21,7 @@
 + (id)createCheckmarkView;
 + (id)identifier;
 - (void).cxx_destruct;
+- (BOOL)canCollapseRecipient;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setRecipient:(id)arg1;
 - (id)titleTextStyle;

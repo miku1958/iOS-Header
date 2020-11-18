@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *store;
     MISSING_TYPE *typeGroups;
+    MISSING_TYPE *healthStore;
 }
 
 @end

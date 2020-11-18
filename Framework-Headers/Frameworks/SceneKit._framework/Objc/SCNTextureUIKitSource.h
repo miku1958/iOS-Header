@@ -6,25 +6,28 @@
 
 #import <SceneKit/SCNTextureCoreAnimationSource.h>
 
-@class UIView, UIWindow;
+@class CALayer, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface SCNTextureUIKitSource : SCNTextureCoreAnimationSource
 {
-    BOOL _setup;
     BOOL _windowReady;
     id _source;
     UIWindow *_uiWindow;
     UIView *_uiView;
     struct CGSize _sizeCache;
     unsigned int _textureID;
+    CALayer *_uiWindowLayer;
+    BOOL _isOpaque;
     struct __C3DEngineContext *_engineContext;
     struct __C3DTextureSampler *_textureSampler;
 }
 
+@property (nonatomic) BOOL isOpaque; // @synthesize isOpaque=_isOpaque;
 @property (strong, nonatomic) id source; // @synthesize source=_source;
 @property (strong, nonatomic) UIView *uiView; // @synthesize uiView=_uiView;
 @property (strong, nonatomic) UIWindow *uiWindow; // @synthesize uiWindow=_uiWindow;
+@property (strong, nonatomic) CALayer *uiWindowLayer; // @synthesize uiWindowLayer=_uiWindowLayer;
 
 - (void)_layerTreeDidUpdate;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
@@ -34,7 +37,9 @@ __attribute__((visibility("hidden")))
 - (double)layerContentsScaleFactor;
 - (struct CGSize)layerSizeInPixels;
 - (id)layerToFocusForRenderedLayer:(id)arg1;
+- (BOOL)requiresMainThreadUpdates;
 - (void)setup;
+- (BOOL)shouldFlip;
 - (BOOL)supportsMetal;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 

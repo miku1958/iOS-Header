@@ -12,6 +12,7 @@
     BOOL _simulateCPLDisabled;
     BOOL _simulateImportantInformation;
     BOOL _simulateAnimatedIconMode;
+    BOOL _showFilterView;
     float _minimumDisplayedProgress;
     long long _alternateTitleGridCycleCount;
     double _alternateTitleGridCycleDelay;
@@ -26,6 +27,7 @@
 @property (nonatomic) double animationDelay; // @synthesize animationDelay=_animationDelay;
 @property (nonatomic) float minimumDisplayedProgress; // @synthesize minimumDisplayedProgress=_minimumDisplayedProgress;
 @property (nonatomic) BOOL shouldAlternateTitleWithGridCycle; // @synthesize shouldAlternateTitleWithGridCycle=_shouldAlternateTitleWithGridCycle;
+@property (nonatomic) BOOL showFilterView; // @synthesize showFilterView=_showFilterView;
 @property (nonatomic) BOOL simulateAnimatedIconMode; // @synthesize simulateAnimatedIconMode=_simulateAnimatedIconMode;
 @property (nonatomic) BOOL simulateCPLDisabled; // @synthesize simulateCPLDisabled=_simulateCPLDisabled;
 @property (nonatomic) BOOL simulateImportantInformation; // @synthesize simulateImportantInformation=_simulateImportantInformation;

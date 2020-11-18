@@ -13,7 +13,6 @@
     unsigned long long _blobSizes[4];
     struct nw_protocol _protocol;
     struct nw_frame_array_s _currentInputFrames;
-    BOOL _outputFinished;
     NSObject<OS_nw_context> *_context;
     unsigned long long _currentBlobSizeIndex;
     unsigned long long _totalBytesReceived;
@@ -21,12 +20,11 @@
 
 @property (readonly) NSObject<OS_nw_context> *context; // @synthesize context=_context;
 @property unsigned long long currentBlobSizeIndex; // @synthesize currentBlobSizeIndex=_currentBlobSizeIndex;
-@property BOOL outputFinished; // @synthesize outputFinished=_outputFinished;
 @property (readonly) struct nw_protocol *protocol;
 @property unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
 
 - (void).cxx_destruct;
-- (unsigned int)addInputFramesToArray:(struct nw_frame_array_s *)arg1 maximumBytes:(unsigned int)arg2 minimumBytes:(unsigned int)arg3 maximumFrameCount:(unsigned int)arg4 outIsEOF:(BOOL *)arg5;
+- (unsigned int)addInputFramesToArray:(struct nw_frame_array_s *)arg1 maximumBytes:(unsigned int)arg2 minimumBytes:(unsigned int)arg3 maximumFrameCount:(unsigned int)arg4;
 - (unsigned int)addOutputFramesToArray:(struct nw_frame_array_s *)arg1 maximumBytes:(unsigned int)arg2 minimumBytes:(unsigned int)arg3 maximumFrameCount:(unsigned int)arg4;
 - (void)dealloc;
 - (void)handleDetachedFromProtocol;

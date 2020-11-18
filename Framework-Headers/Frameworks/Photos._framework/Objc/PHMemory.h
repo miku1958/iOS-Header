@@ -19,6 +19,7 @@
     unsigned long long _category;
     unsigned long long _subcategory;
     unsigned long long _notificationState;
+    unsigned long long _featuredState;
     BOOL _rejected;
     BOOL _favorite;
     BOOL _pending;
@@ -42,13 +43,17 @@
     NSDictionary *_photosGraphProperties;
 }
 
+@property (readonly, copy, nonatomic) NSString *URLNavigationSourceIdentifier;
 @property (readonly, nonatomic) NSData *assetListPredicate; // @synthesize assetListPredicate=_assetListPredicate;
 @property (readonly, nonatomic) NSArray *blacklistableFeatures;
 @property (readonly, nonatomic) PHMemoryFeature *blacklistedFeature; // @synthesize blacklistedFeature=_blacklistedFeature;
 @property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
+@property (readonly, nonatomic) double currentRelevanceScore;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (readonly, nonatomic) NSSet *featuredPeopleIdentifiers;
+@property (readonly, nonatomic) unsigned long long featuredState; // @synthesize featuredState=_featuredState;
 @property (readonly, nonatomic) BOOL isContiguous;
+@property (readonly, nonatomic) BOOL isCurrentlyRelevant;
 @property (readonly, nonatomic) BOOL isGreat;
 @property (readonly, nonatomic) BOOL isMustSee;
 @property (readonly, nonatomic) BOOL isStellar;
@@ -61,6 +66,7 @@
 @property (readonly, nonatomic) NSDictionary *photosGraphProperties; // @synthesize photosGraphProperties=_photosGraphProperties;
 @property (readonly, nonatomic) long long photosGraphVersion; // @synthesize photosGraphVersion=_photosGraphVersion;
 @property (readonly, nonatomic) long long playCount;
+@property (readonly, nonatomic, getter=isPresentedFromURLNavigation) BOOL presentedFromURLNavigation;
 @property (readonly, nonatomic, getter=isRejected) BOOL rejected; // @synthesize rejected=_rejected;
 @property (readonly, nonatomic) double score; // @synthesize score=_score;
 @property (readonly, nonatomic) long long shareCount;
@@ -72,21 +78,30 @@
 + (unsigned long long)_contextualScoreForMemory:(id)arg1;
 + (id)_fetchOptionsForTransientMemoryAssetsWithOptions:(id)arg1;
 + (id)assetListPredicateFromQueryHintObjects:(id)arg1;
++ (id)blockedPersonLocalIdentifiersInPhotoLibrary:(id)arg1;
++ (void)clearCurrentMemoryForURLNavigation;
 + (id)entityKeyMap;
 + (id)fetchBestRecentMemoryWithOptions:(id)arg1;
 + (id)fetchBlacklistedMemoriesWithOptions:(id)arg1;
++ (id)fetchMostRelevantMemoryAtDate:(id)arg1 options:(id)arg2;
++ (id)fetchMostRelevantMemoryWithOptions:(id)arg1;
 + (id)fetchType;
 + (void)generateMemoriesWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)identifierCode;
++ (BOOL)isTriggeredMemoryCategory:(unsigned long long)arg1;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsTrashedState;
 + (id)memoryInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)memoryTreeLevelWithOptions:(id)arg1 photoLibrary:(id)arg2;
++ (id)mostRelevantMemoryInMemories:(id)arg1 atDate:(id)arg2;
 + (id)movieDataWithTitleFontName:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (void)setCurrentMemoryForURLNavigation:(id)arg1;
 + (id)stringForCategory:(unsigned long long)arg1;
++ (id)stringForFeaturedState:(unsigned long long)arg1;
++ (id)stringForNotificationState:(unsigned long long)arg1;
 + (id)stringForSubcategory:(unsigned long long)arg1;
 + (id)titleFontNameFromMovieData:(id)arg1;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
@@ -105,6 +120,7 @@
 - (id)description;
 - (BOOL)hasBlacklistableFeature;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (BOOL)isRelevantAtDate:(id)arg1;
 - (BOOL)isTransient;
 - (id)localizedSubtitle;
 - (id)meaningLabels;
@@ -118,6 +134,7 @@
 - (id)queryForExtendedCuratedAssetsWithOptions:(id)arg1;
 - (id)queryForKeyAssetWithOptions:(id)arg1;
 - (id)rejectionCause;
+- (double)relevanceScoreAtDate:(id)arg1;
 - (void)setupTransientMemory;
 - (unsigned long long)suggestedMood;
 - (long long)titleCategory;

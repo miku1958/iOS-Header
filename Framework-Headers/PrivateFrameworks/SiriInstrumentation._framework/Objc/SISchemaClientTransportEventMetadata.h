@@ -14,11 +14,21 @@
     long long _eventTransmittedRelativeToBootTimeTimestampNs;
     long long _serverArrivedTimestampNs;
     NSString *_arrivedServerPod;
+    struct {
+        unsigned int eventTransmittedRelativeToBootTimeTimestampNs:1;
+        unsigned int serverArrivedTimestampNs:1;
+    } _has;
+    BOOL _hasEventTransmittedTimestampRefId;
+    BOOL _hasArrivedServerPod;
 }
 
 @property (copy, nonatomic) NSString *arrivedServerPod; // @synthesize arrivedServerPod=_arrivedServerPod;
 @property (nonatomic) long long eventTransmittedRelativeToBootTimeTimestampNs; // @synthesize eventTransmittedRelativeToBootTimeTimestampNs=_eventTransmittedRelativeToBootTimeTimestampNs;
 @property (copy, nonatomic) NSString *eventTransmittedTimestampRefId; // @synthesize eventTransmittedTimestampRefId=_eventTransmittedTimestampRefId;
+@property (nonatomic) BOOL hasArrivedServerPod; // @synthesize hasArrivedServerPod=_hasArrivedServerPod;
+@property (nonatomic) BOOL hasEventTransmittedRelativeToBootTimeTimestampNs;
+@property (nonatomic) BOOL hasEventTransmittedTimestampRefId; // @synthesize hasEventTransmittedTimestampRefId=_hasEventTransmittedTimestampRefId;
+@property (nonatomic) BOOL hasServerArrivedTimestampNs;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) long long serverArrivedTimestampNs; // @synthesize serverArrivedTimestampNs=_serverArrivedTimestampNs;
 

@@ -8,7 +8,10 @@
 
 @interface SBSpotlightTransientOverlaySpotlightViewController : SBSpotlightMultiplexingViewController
 {
+    unsigned long long _presentationSource;
 }
+
+@property (nonatomic) unsigned long long presentationSource; // @synthesize presentationSource=_presentationSource;
 
 - (BOOL)_canShowWhileLocked;
 - (unsigned long long)level;

@@ -17,6 +17,7 @@
     unsigned int ref_cnt;
     CDUnknownFunctionPointerType read_func;
     CDUnknownFunctionPointerType write_func;
+    CDUnknownFunctionPointerType handshake_func;
     struct nw_frame_array_s input_frame_array;
     struct nw_frame_array_s unassigned_input_frame_array;
     struct nw_frame_array_s read_frame_array;
@@ -34,11 +35,10 @@
     NSObject<OS_nw_parameters> *parameters;
     void *handshake_timer;
     NSObject<OS_nw_association> *association;
-    void *boringssl_ctx_handle;
+    void *context;
     void *boringssl_bio;
     const char *address_string;
     NSObject<OS_dispatch_queue> *client_queue;
-    CDUnknownBlockType boringssl_prepare_block;
     unsigned int input_frame_byte_count;
     int stack_error;
     unsigned int message_mode:1;
@@ -50,12 +50,15 @@
     unsigned int input_available_unacknowledged:1;
     unsigned int input_suspended:1;
     unsigned int servicing_reads:1;
+    unsigned int servicing_handshake:1;
     unsigned int server:1;
     unsigned int external_frames:1;
     unsigned int early_data_enabled:1;
     unsigned int did_receive_data_once:1;
     unsigned int output_protocol_supports_early_data:1;
     unsigned int received_connect:1;
+    unsigned int connected:1;
+    unsigned int sent_error:1;
     char log_str[84];
 }
 

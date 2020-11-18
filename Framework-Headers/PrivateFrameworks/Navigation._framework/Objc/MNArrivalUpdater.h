@@ -8,7 +8,7 @@
 
 #import <Navigation/MNArrivalRegionTimerDelegate-Protocol.h>
 
-@class GEOComposedRoute, MNLocation, MNObserverHashTable, NSMutableArray, NSString;
+@class GEOComposedRoute, MNLocation, MNObserverHashTable, NSDate, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MNArrivalUpdater : NSObject <MNArrivalRegionTimerDelegate>
@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     MNLocation *_lastLocation;
     BOOL _useLegacyArrival;
     unsigned long long _arrivalState;
+    unsigned long long _arrivalLegIndex;
+    NSDate *_arrivalDate;
+    double _closestDistanceToWaypoint;
     NSMutableArray *_timeoutRegions;
 }
 
@@ -28,17 +31,20 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_checkArrivalForLocation:(id)arg1 remainingDistanceAlongRoute:(double)arg2;
-- (BOOL)_isInPreArrivalRegionForLocation:(id)arg1 remainingDistanceAlongRoute:(double)arg2;
+- (BOOL)_checkArrival:(id)arg1 forLocation:(id)arg2;
+- (BOOL)_checkPreArrival:(id)arg1 forLocation:(id)arg2;
+- (double)_distanceToEndOfLeg:(id)arg1 fromLocation:(id)arg2;
 - (BOOL)_legacyCheckArrivalForLocation:(id)arg1;
 - (BOOL)_legacyCheckDrivingArrivalForLocation:(id)arg1;
 - (BOOL)_legacyCheckNonDrivingArrivalForLocation:(id)arg1;
 - (BOOL)_shouldUseNewArrivalLogic;
+- (BOOL)allowDepartureForLocation:(id)arg1;
 - (void)arrivalRegionTimerDidFire:(id)arg1;
 - (id)init;
 - (id)initWithRoute:(id)arg1 useLegacyArrival:(BOOL)arg2;
 - (void)setDelegate:(id)arg1;
-- (void)updateForLocation:(id)arg1 remainingDistanceAlongRoute:(double)arg2;
+- (void)updateForDepartureFromWaypoint;
+- (void)updateForLocation:(id)arg1;
 - (void)updateForRoute:(id)arg1;
 
 @end

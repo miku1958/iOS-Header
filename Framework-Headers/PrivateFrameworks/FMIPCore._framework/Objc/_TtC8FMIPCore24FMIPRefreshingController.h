@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *selectedDevice;
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
     MISSING_TYPE *apsConnectionHandler;
     MISSING_TYPE *refreshQueue;
     MISSING_TYPE *tapContexts;

@@ -6,8 +6,6 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer;
-
 __attribute__((visibility("hidden")))
 @interface SFToggleBackgroundView : UIView
 {
@@ -15,13 +13,9 @@ __attribute__((visibility("hidden")))
     long long _cornerRoundingMode;
 }
 
-@property (nonatomic) long long cornerRoundingMode; // @synthesize cornerRoundingMode=_cornerRoundingMode;
-@property (readonly, nonatomic) CAShapeLayer *shapeLayer;
-
 + (Class)layerClass;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_setContinuousCornerRadius:(double)arg1;
-- (void)_updateShape;
 - (void)layoutSubviews;
 - (void)tintColorDidChange;
 

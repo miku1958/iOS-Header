@@ -6,11 +6,22 @@
 
 #import <PhotosUICore/PXGCGImageTextureProvider.h>
 
+@class NSDateComponentsFormatter;
+@protocol PXGViewSource;
+
 @interface PXGDecorationTextureProvider : PXGCGImageTextureProvider
 {
+    id<PXGViewSource> _overlayViewSource;
+    NSDateComponentsFormatter *_videoDurationFormatter;
 }
 
+@property (weak, nonatomic) id<PXGViewSource> overlayViewSource; // @synthesize overlayViewSource=_overlayViewSource;
+@property (readonly, nonatomic) NSDateComponentsFormatter *videoDurationFormatter; // @synthesize videoDurationFormatter=_videoDurationFormatter;
+
+- (void).cxx_destruct;
 - (void)_requestTextureForDecorationInfo:(struct PXGDecorationSpriteInfo)arg1 debugDecoration:(id)arg2 targetSize:(struct CGSize)arg3 cornerRadius:(CDStruct_2bd92d94)arg4 screenScale:(double)arg5 requestID:(int)arg6 viewEnvironment:(id)arg7 userInterfaceDirection:(unsigned long long)arg8;
+- (void)_requestViewTextureForDecorationInfo:(struct PXGDecorationSpriteInfo)arg1 customViewClass:(Class)arg2 userData:(id)arg3 decorationOptions:(unsigned long long)arg4 requestID:(int)arg5;
+- (id)init;
 - (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
 
 @end

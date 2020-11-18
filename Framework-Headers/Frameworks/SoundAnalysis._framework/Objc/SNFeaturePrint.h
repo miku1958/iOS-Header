@@ -15,7 +15,7 @@
 {
     long long _featurePrintType;
     MLMultiArray *_featureVector;
-    CDStruct_e83c9415 timeRange;
+    CDStruct_e83c9415 _timeRange;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,11 +24,16 @@
 @property (readonly, nonatomic) MLMultiArray *featureVector; // @synthesize featureVector=_featureVector;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFeaturePrintType:(long long)arg1 featureVector:(id)arg2;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToFeaturePrint:(id)arg1;
 
 @end
 

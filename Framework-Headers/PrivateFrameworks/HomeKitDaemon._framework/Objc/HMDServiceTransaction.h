@@ -25,6 +25,8 @@
 @property (strong, nonatomic) NSNumber *labelIndex; // @dynamic labelIndex;
 @property (strong, nonatomic) NSNumber *labelNamespace; // @dynamic labelNamespace;
 @property (strong, nonatomic) NSNumber *lastKnownDiscoveryMode; // @dynamic lastKnownDiscoveryMode;
+@property (strong, nonatomic) NSNumber *lastKnownOperatingState; // @dynamic lastKnownOperatingState;
+@property (strong, nonatomic) NSNumber *lastKnownOperatingStateAbnormalReasons; // @dynamic lastKnownOperatingStateAbnormalReasons;
 @property (strong, nonatomic) NSString *lastSeenConfiguredNameLocal; // @synthesize lastSeenConfiguredNameLocal=_lastSeenConfiguredNameLocal;
 @property (strong, nonatomic) NSArray *linkedServices; // @dynamic linkedServices;
 @property (strong, nonatomic) NSArray *mediaSourceDisplayOrder; // @dynamic mediaSourceDisplayOrder;
@@ -32,6 +34,7 @@
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSNumber *primary; // @dynamic primary;
 @property (strong, nonatomic) NSString *providedName; // @dynamic providedName;
+@property (strong, nonatomic) NSNumber *serviceProperties; // @dynamic serviceProperties;
 @property (strong, nonatomic) NSString *serviceSubtype; // @dynamic serviceSubtype;
 @property (strong, nonatomic) NSString *serviceType; // @dynamic serviceType;
 

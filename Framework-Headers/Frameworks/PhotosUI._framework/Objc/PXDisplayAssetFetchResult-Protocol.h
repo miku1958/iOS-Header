@@ -12,7 +12,9 @@
 @protocol PXDisplayAssetFetchResult <PXSectionedFetchResult>
 
 @property (readonly, nonatomic) id<PXDisplayAsset> firstObject;
+@property (readonly, nonatomic) id<PXDisplayAsset> lastObject;
 
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (BOOL)containsObject:(id<PXDisplayAsset>)arg1;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
 - (id<PXDisplayAsset>)objectAtIndex:(unsigned long long)arg1;

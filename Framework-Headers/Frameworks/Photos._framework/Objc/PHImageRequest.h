@@ -6,7 +6,7 @@
 
 #import <Photos/PHMediaRequest.h>
 
-@class NSObject, NSString, NSURL, PHImageDecoderAsyncDecodeRequestHandle, PHImageDisplaySpec, PHImageRequestBehaviorSpec, PHImageResourceChooser, PHImageResult;
+@class NSObject, NSString, NSURL, PHImageDecoderAsyncDecodeRequestHandle, PHImageDisplaySpec, PHImageRequestBehaviorSpec, PHImageResourceChooser, PHImageResult, PLProgressFollower;
 @protocol OS_dispatch_semaphore, PHImageRequestDelegate;
 
 @interface PHImageRequest : PHMediaRequest
@@ -21,6 +21,7 @@
     NSURL *_configuredImageURL;
     NSString *_configuredImageUTI;
     long long _configuredExifOrientation;
+    PLProgressFollower *_progressFollower;
     id<PHImageRequestDelegate> _delegate;
     PHImageDisplaySpec *_displaySpec;
     PHImageRequestBehaviorSpec *_behaviorSpec;
@@ -37,8 +38,10 @@
 - (void)configureWithURL:(id)arg1;
 - (void)configureWithURL:(id)arg1 uniformTypeIdentifier:(id)arg2 exifOrientation:(int)arg3;
 - (id)description;
+- (long long)downloadIntent;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
-- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 displaySpec:(id)arg6 behaviorSepc:(id)arg7 chooser:(id)arg8 delegate:(id)arg9;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 displaySpec:(id)arg6 behaviorSpec:(id)arg7 chooser:(id)arg8 delegate:(id)arg9;
+- (BOOL)isNetworkAccessAllowed;
 - (BOOL)isSynchronous;
 - (void)startRequest;
 

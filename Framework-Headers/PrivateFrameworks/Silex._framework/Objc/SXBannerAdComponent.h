@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) BOOL hidden;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *layout;
+@property (readonly, nonatomic) NSString *placementIdentifier;
 @property (readonly, nonatomic) unsigned long long placementType;
 @property (readonly, nonatomic) int role;
 @property (readonly, nonatomic) NSString *style;

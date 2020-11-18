@@ -17,10 +17,13 @@
 - (BOOL)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_accessibilityIsAppReadyToBeProbed;
 - (BOOL)_accessibilityIsSystemAppServer;
+- (double)_accessibilityMaximumAllowedOutOfBoundsPercent;
 - (BOOL)_accessibilitySystemAppServerIsReady;
 - (id)_accessibilityTraversalWindows;
+- (void)_accessibilityUpdateIsSystemAppServer;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1 referenceWindow:(id)arg2;
+- (BOOL)_axApplicationIsWidgetExtension;
 - (id)accessibilityPresentingViewController;
 @end
 

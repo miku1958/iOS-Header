@@ -23,6 +23,7 @@
 + (id)predicateForEventsContainingDateRangeFrom:(id)arg1 to:(id)arg2;
 + (id)predicateForEventsExcludingIntegerValue:(long long)arg1;
 + (id)predicateForEventsIntersectingDateRangeFrom:(id)arg1 to:(id)arg2;
++ (id)predicateForEventsWithBundleID:(id)arg1;
 + (id)predicateForEventsWithCategoryValue:(id)arg1;
 + (id)predicateForEventsWithCreationInDateRangeFrom:(id)arg1 toBefore:(id)arg2;
 + (id)predicateForEventsWithCreationInDateRangeFromAfter:(id)arg1 to:(id)arg2;
@@ -39,7 +40,6 @@
 + (id)predicateForEventsWithNoSource;
 + (id)predicateForEventsWithNullSourceDeviceID;
 + (id)predicateForEventsWithQuantityValue:(id)arg1;
-+ (id)predicateForEventsWithSourceDeviceID:(id)arg1 userID:(id)arg2;
 + (id)predicateForEventsWithSourceDeviceIDs:(id)arg1;
 + (id)predicateForEventsWithSourceGroupIDs:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1;
@@ -65,15 +65,9 @@
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 andValue:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 inValues:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 likeStringValue:(id)arg2;
-+ (id)predicateForObjectsWithStructuredMetadataKey:(id)arg1 andValue:(id)arg2;
 + (id)predicateForObjectsWithUUIDs:(id)arg1;
-+ (id)predicateForSpotlightEventsWithBundleID:(id)arg1;
-+ (id)predicateForSpotlightEventsWithBundleID:(id)arg1 sinceDate:(id)arg2;
-+ (id)predicateForSpotlightEventsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
-+ (id)predicateForSpotlightEventsWithItemIdentifiers:(id)arg1 bundleID:(id)arg2;
 + (id)queryNotExecutableError;
 + (id)startDateSortDescriptorAscending:(BOOL)arg1;
-+ (id)structuredMetadataKeyPathForMetadataKey:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

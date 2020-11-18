@@ -6,31 +6,36 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKitDaemon/HMDaemonConnection-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMXPCMessageTransport-Protocol.h>
 
-@class HMDApplicationRegistry, HMDProcessInfo, HMDXPCRequestTracker, NSObject, NSSet, NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@class HMDProcessInfo, HMDXPCMessageCountTracker, HMDXPCMessageSendPolicyParameters, HMDXPCRequestTracker, NSDictionary, NSObject, NSSet, NSString, NSXPCConnection;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDXPCClientConnection : HMFMessageTransport <HMDaemonConnection, HMFLogging>
+@interface HMDXPCClientConnection : HMFMessageTransport <HMXPCMessageTransport, HMFLogging>
 {
+    id<HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
+    HMDXPCMessageCountTracker *_counterTracker;
+    NSString *_signature;
     BOOL _activated;
     BOOL _entitledForAPIAccess;
     BOOL _entitledForBackgroundMode;
     BOOL _entitledForCameraClipsAccess;
     BOOL _entitledForMultiUserSetupAccess;
-    NSXPCConnection *_xpcConnection;
+    BOOL _entitledForPersonManagerAccess;
+    HMDXPCMessageSendPolicyParameters *_sendPolicyParameters;
+    NSDictionary *_userInfo;
     HMDProcessInfo *_processInfo;
+    NSXPCConnection *_xpcConnection;
     unsigned long long _entitlements;
     NSString *_clientName;
     HMDXPCRequestTracker *_requestTracker;
-    HMDApplicationRegistry *_appRegistry;
+    NSDictionary *_privateAccessEntitlement;
 }
 
 @property (nonatomic, getter=isActivated) BOOL activated; // @synthesize activated=_activated;
 @property (readonly, nonatomic) NSSet *activeRequests;
-@property (weak, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (readonly, nonatomic) NSString *applicationBundleIdentifier;
 @property (readonly, nonatomic, getter=isAuthorizedForHomeDataAccess) BOOL authorizedForHomeDataAccess;
 @property (readonly, nonatomic, getter=isAuthorizedForLocationAccess) BOOL authorizedForLocationAccess;
@@ -45,38 +50,48 @@
 @property (readonly, nonatomic, getter=isEntitledForCameraClipsAccess) BOOL entitledForCameraClipsAccess; // @synthesize entitledForCameraClipsAccess=_entitledForCameraClipsAccess;
 @property (readonly, nonatomic, getter=isEntitledForHomeLocationAccess) BOOL entitledForHomeLocationAccess;
 @property (readonly, nonatomic, getter=isEntitledForMultiUserSetupAccess) BOOL entitledForMultiUserSetupAccess; // @synthesize entitledForMultiUserSetupAccess=_entitledForMultiUserSetupAccess;
+@property (readonly, nonatomic, getter=isEntitledForPersonManagerAccess) BOOL entitledForPersonManagerAccess; // @synthesize entitledForPersonManagerAccess=_entitledForPersonManagerAccess;
 @property (readonly, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
+@property (readonly, nonatomic, getter=isEntitledForSecureAccess) BOOL entitledForSecureAccess;
 @property (readonly, nonatomic, getter=isEntitledForShortcutsAutomationAccess) BOOL entitledForShortcutsAutomationAccess;
 @property (readonly, nonatomic, getter=isEntitledToProvideAccessorySetupPayload) BOOL entitledToProvideAccessorySetupPayload;
 @property (readonly) unsigned long long entitlements; // @synthesize entitlements=_entitlements;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, getter=isPlatformBinary) BOOL platformBinary;
-@property (weak, nonatomic) HMDProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
+@property (readonly) Class principalClass;
+@property (strong, nonatomic) NSDictionary *privateAccessEntitlement; // @synthesize privateAccessEntitlement=_privateAccessEntitlement;
+@property (strong) HMDProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property (readonly, nonatomic) id remoteProxy;
 @property (readonly, nonatomic) HMDXPCRequestTracker *requestTracker; // @synthesize requestTracker=_requestTracker;
+@property (strong, nonatomic) HMDXPCMessageSendPolicyParameters *sendPolicyParameters; // @synthesize sendPolicyParameters=_sendPolicyParameters;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *teamIdentifier;
+@property (readonly, copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (weak, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (unsigned long long)entitlementsForConnection:(id)arg1;
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)__handleApplicationStateChange:(id)arg1;
 - (id)_displayName;
-- (id)_extractBundleIdentifier;
 - (void)_notifyOfNewIncomingClientMessage;
-- (void)activate;
+- (void)activateWithCompletion:(CDUnknownBlockType)arg1;
+- (id)attributeDescriptions;
 - (BOOL)canSendMessage:(id)arg1;
-- (void)checkinWithName:(id)arg1;
+- (id)counterIdentifierForMessage:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
-- (id)extractTeamIdentifier;
 - (void)handleMessage:(id)arg1;
 - (void)handleMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
-- (id)initWithConnection:(id)arg1 appRegistry:(id)arg2;
+- (unsigned long long)homeManagerOptions;
+- (id)initWithConnection:(id)arg1 counterTracker:(id)arg2;
+- (void)initiateRefresh;
 - (id)logIdentifier;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)shortDescription;
 - (BOOL)shouldSendResponseForMessageIdentifier:(id)arg1;
+- (void)updateSendPolicyParameters:(id)arg1;
+- (void)updateUserInfo:(id)arg1;
 
 @end
 

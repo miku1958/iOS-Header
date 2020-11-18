@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, UINotificationFeedbackGenerator;
+@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, UINotificationFeedbackGenerator;
 
 @interface SBSoundController : NSObject
 {
     NSMutableDictionary *_soundsBySystemSoundIDs;
+    NSMutableSet *_usedNotificationTypes;
     UINotificationFeedbackGenerator *_hapticFeedbackGenerator;
     NSMapTable *_toneAlertsBySounds;
     NSMapTable *_soundsByToneAlerts;

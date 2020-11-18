@@ -8,12 +8,12 @@
 
 #import <AppleMediaServicesUI/AMSBagConsumer-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, AMSUIDynamicViewController, NSDictionary, NSString;
+@class ACAccount, AMSProcessInfo, AMSUIWebViewController, NSDictionary, NSString;
 @protocol AMSBagProtocol;
 
 @interface AMSUISubscriptionsViewController : UIViewController <AMSBagConsumer>
 {
-    AMSUIDynamicViewController *_dynamicViewController;
+    AMSUIWebViewController *_webViewController;
 }
 
 @property (strong, nonatomic) ACAccount *account;
@@ -21,20 +21,25 @@
 @property (strong, nonatomic) AMSProcessInfo *clientInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) AMSUIDynamicViewController *dynamicViewController; // @synthesize dynamicViewController=_dynamicViewController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *metricsOverlay;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) AMSUIWebViewController *webViewController; // @synthesize webViewController=_webViewController;
 
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
 + (id)createBagForSubProfile;
 - (void).cxx_destruct;
+- (void)_setChildViewController:(id)arg1;
 - (void)_setup;
-- (void)_setupChildViewController:(id)arg1;
+- (void)_setupChildViewController;
+- (void)_setupLayout;
+- (void)_startLoading;
 - (id)initWithAccount:(id)arg1 bag:(id)arg2;
+- (id)initWithAccount:(id)arg1 bag:(id)arg2 clientInfo:(id)arg3;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

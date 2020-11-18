@@ -11,10 +11,10 @@
 @interface PKPaymentAuthorizationServiceCompactNavigationContainerController : PKCompactNavigationContainerController
 {
     unsigned char _rotationCount;
+    BOOL _attemptedSecondaryViewCreation;
     BOOL _cameraOrientationSupported;
-    BOOL _attemptedFaceIDViewCreation;
-    LAUIPhysicalButtonView *_physicalButtonView;
     LAUIHorizontalArrowView *_cameraArrowView;
+    LAUIPhysicalButtonView *_physicalButtonView;
     BOOL _showPhysicalButtonIndicator;
     BOOL _showCameraIndicator;
 }
@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)_createFaceIDViewsIfNecessary;
+- (void)_createSecondaryViewsIfNecessary;
 - (BOOL)_effectiveShowCameraIndicator;
 - (BOOL)_effectiveShowPhysicalButtonIndicator;
 - (void)loadView;

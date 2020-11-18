@@ -10,6 +10,7 @@
 
 @protocol MCCloudConfigurationDaemonServiceInterface <NSObject>
 - (void)fetchConfigurationWithCompletionBlock:(void (^)(BOOL, NSDictionary *, NSError *))arg1;
+- (void)fetchConfigurationWithoutValidationWithCompletionBlock:(void (^)(BOOL, NSDictionary *, NSError *))arg1;
 - (void)provisionallyEnrollWithNonce:(NSString *)arg1 completionBlock:(void (^)(BOOL, NSDictionary *, NSError *))arg2;
 - (void)retrieveDeviceUploadOrganizationsWithCredentials:(MCDeviceUploadCredentials *)arg1 completionBlock:(void (^)(BOOL, NSDictionary *, NSError *))arg2;
 - (void)retrieveDeviceUploadRequestTypesWithCredentials:(MCDeviceUploadCredentials *)arg1 completionBlock:(void (^)(BOOL, NSDictionary *, NSError *))arg2;

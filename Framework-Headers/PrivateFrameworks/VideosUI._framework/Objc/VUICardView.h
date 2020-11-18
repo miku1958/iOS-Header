@@ -12,19 +12,19 @@ __attribute__((visibility("hidden")))
 @interface VUICardView : UIView
 {
     VUICardViewLayoutFactory *_layoutFactory;
+    CDUnknownBlockType _imageSize;
     _TVImageView *_imageView;
     _TVImageView *_appImageView;
     NSArray *_labelViews;
     UIView *_overlayView;
     VUIButton *_button;
     NSString *_debugString;
-    struct CGSize _imageSize;
 }
 
 @property (strong, nonatomic) _TVImageView *appImageView; // @synthesize appImageView=_appImageView;
 @property (strong, nonatomic) VUIButton *button; // @synthesize button=_button;
 @property (copy, nonatomic) NSString *debugString; // @synthesize debugString=_debugString;
-@property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property (copy, nonatomic) CDUnknownBlockType imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (copy, nonatomic) NSArray *labelViews; // @synthesize labelViews=_labelViews;
 @property (readonly, nonatomic) VUICardViewLayoutFactory *layoutFactory; // @synthesize layoutFactory=_layoutFactory;

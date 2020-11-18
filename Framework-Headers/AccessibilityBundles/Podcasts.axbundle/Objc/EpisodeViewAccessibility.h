@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityActivateShouldPerformPlayPause;
 - (id)_accessibilityLabelForPlaybackState:(BOOL)arg1;
 - (BOOL)_accessibilityPerformSummaryButton:(id)arg1;
 - (id)_accessibilitySupplementaryFooterViews;
@@ -20,6 +21,7 @@
 - (void)_axAddExtraButtonsToArray:(id)arg1;
 - (id)_axSummaryButton;
 - (id)accessibilityCustomActions;
+- (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

@@ -20,10 +20,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)handleEvent:(id)arg1;
 - (id)init;
-- (void)reloadCarrierSettings:(BOOL)arg1;
 - (void)reloadMNS;
 - (void)reloadNetworkdSettings;
-- (BOOL)updateSettingsFromCarrierFile:(id)arg1 prefix:(id)arg2 settings:(id)arg3;
 
 @end
 

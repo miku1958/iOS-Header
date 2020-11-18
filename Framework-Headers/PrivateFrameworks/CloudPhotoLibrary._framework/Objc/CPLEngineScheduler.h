@@ -21,7 +21,7 @@
     double _intervalForRetry;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _currentSyncState;
-    BOOL _needsToUpdateScopeList;
+    unsigned long long _pendingRequiredFirstState;
     BOOL _shouldNoteServerHasChanges;
     CPLSyncSession *_currentSession;
     BOOL _opened;
@@ -72,6 +72,7 @@
 - (id)_minimalDateForFirstSync;
 - (void)_noteServerIsUnavailableWithErrorLocked:(id)arg1;
 - (void)_noteSyncSessionNeededFromState:(unsigned long long)arg1;
+- (void)_noteSyncSessionNeededFromStateDontRewindImmediately:(unsigned long long)arg1;
 - (id)_pathToFirstSynchronizationMarker;
 - (void)_reallyNoteServerHasChangesLocked;
 - (void)_reallyStartSyncSession:(id)arg1;
@@ -93,6 +94,7 @@
 - (void)enableMingling;
 - (void)enableSynchronizationWithReason:(id)arg1;
 - (void)forceStartSyncSession:(id)arg1 withMinimalPhase:(unsigned long long)arg2;
+- (void)getCurrentRequiredStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;

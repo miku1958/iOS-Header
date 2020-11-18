@@ -9,13 +9,14 @@
 @interface MPSNNOptimizerStochasticGradientDescent : MPSNNOptimizer
 {
     float _momentumScale;
-    BOOL _useNestrovMomentum;
+    BOOL _useNesterovMomentum;
 }
 
 @property (readonly, nonatomic) float momentumScale; // @synthesize momentumScale=_momentumScale;
-@property (readonly, nonatomic) BOOL useNestrovMomentum; // @synthesize useNestrovMomentum=_useNestrovMomentum;
+@property (readonly, nonatomic) BOOL useNesterovMomentum; // @synthesize useNesterovMomentum=_useNesterovMomentum;
+@property (readonly, nonatomic) BOOL useNestrovMomentum;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 batchNormalizationGradientState:(id)arg2 batchNormalizationSourceState:(id)arg3 inputMomentumVectors:(id)arg4 resultState:(id)arg5;
@@ -26,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 learningRate:(float)arg2;
+- (id)initWithDevice:(id)arg1 momentumScale:(float)arg2 useNesterovMomentum:(BOOL)arg3 optimizerDescriptor:(id)arg4;
 - (id)initWithDevice:(id)arg1 momentumScale:(float)arg2 useNestrovMomentum:(BOOL)arg3 optimizerDescriptor:(id)arg4;
 - (id)initWithDevice:(id)arg1 optimizerDescriptor:(id)arg2;
 

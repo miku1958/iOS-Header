@@ -6,26 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController, UIWindow;
+@class CKStarkConversationController;
 
 @interface CKStarkManager : NSObject
 {
-    UIViewController *_starkRootViewController;
-    UIWindow *_starkWindow;
+    CKStarkConversationController *_conversationController;
 }
 
-@property (readonly, nonatomic) BOOL isStarkConnected;
-@property (strong, nonatomic) UIViewController *starkRootViewController; // @synthesize starkRootViewController=_starkRootViewController;
-@property (strong, nonatomic) UIWindow *starkWindow; // @synthesize starkWindow=_starkWindow;
+@property (strong, nonatomic) CKStarkConversationController *conversationController; // @synthesize conversationController=_conversationController;
 
-+ (id)sharedInstance;
++ (void)activateForConversation:(id)arg1;
++ (void)activateForRecipient:(id)arg1;
++ (BOOL)isCarPlayConnected;
 - (void).cxx_destruct;
-- (id)_assistantContextForConversation:(id)arg1;
-- (id)_assistantContextForRecipientID:(id)arg1;
-- (void)activateForConversation:(id)arg1;
-- (void)activateForRecipient:(id)arg1;
-- (void)attachStarkToWindow:(id)arg1;
-- (void)detachStarkFromWindow:(id)arg1;
+- (void)openSMSURL:(id)arg1;
+- (void)openURL:(id)arg1 sourceApplication:(id)arg2;
+- (void)scene:(id)arg1 openURLContexts:(id)arg2;
+- (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
 
 @end
 

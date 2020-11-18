@@ -40,8 +40,16 @@
 
 - (void).cxx_destruct;
 - (void)_evaluateAsynchronousRenderingEnablement;
+- (id)_sceneHandleForHardwareButtonEvents;
 - (void)dealloc;
 - (void)disableAsynchronousRenderingForNextCommit;
+- (BOOL)handleHeadsetButtonPress:(BOOL)arg1;
+- (BOOL)handleHomeButtonDoublePress;
+- (BOOL)handleHomeButtonLongPress;
+- (BOOL)handleHomeButtonPress;
+- (BOOL)handleLockButtonPress;
+- (BOOL)handleVolumeDownButtonPress;
+- (BOOL)handleVolumeUpButtonPress;
 - (id)initWithSceneLayoutViewController:(id)arg1;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;

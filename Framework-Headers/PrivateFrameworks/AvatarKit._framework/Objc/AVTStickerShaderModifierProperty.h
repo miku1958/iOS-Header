@@ -13,18 +13,21 @@
     NSString *_name;
     NSString *_type;
     id _value;
+    id _originalValue;
     SCNMaterialProperty *_materialProperty;
 }
 
 @property (readonly, nonatomic) SCNMaterialProperty *materialProperty; // @synthesize materialProperty=_materialProperty;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) id originalValue; // @synthesize originalValue=_originalValue;
 @property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 
 + (id)shaderModifierPropertyCache;
 + (id)shaderModifierPropertyFromDictionary:(id)arg1 assetsPath:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithName:(id)arg1 type:(id)arg2 value:(id)arg3;
+- (id)dictionaryWithTargetPath:(id)arg1;
+- (id)initWithName:(id)arg1 type:(id)arg2 value:(id)arg3 originalValue:(id)arg4;
 
 @end
 

@@ -7,16 +7,17 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol PGPictureInPictureViewControllerContentContainer <NSObject>
-- (void)performStartAnimationWithAnimationHandler:(void (^)(void))arg1 completionHandler:(void (^)(void))arg2;
-- (void)performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 animationHandler:(void (^)(void))arg3 completionHandler:(void (^)(void))arg4;
+- (void)performStartAnimationWithCompletionHandler:(void (^)(void))arg1;
+- (void)performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 completionHandler:(void (^)(void))arg3;
 - (void)preferredContentSizeDidChangeForPictureInPictureViewController;
 - (void)prepareStartAnimationWithInitialInterfaceOrientation:(long long)arg1 initialLayerFrame:(struct CGRect)arg2 completionHandler:(void (^)(void))arg3;
 
 @optional
 - (void)acquireInterfaceOrientationLock;
 - (BOOL)handleDoubleTapGesture;
-- (BOOL)handleTapGesture;
+- (BOOL)handleTapWhileStashedGesture;
 - (void)performRotateAnimationWithRotation:(long long)arg1 completionHandler:(void (^)(void))arg2;
+- (void)playbackSourceDidUpdateIsRoutingVideoToHostedWindow:(BOOL)arg1;
 - (void)prepareStopAnimationWithCompletionHandler:(void (^)(void))arg1;
 - (void)relinquishInterfaceOrientationLock;
 @end

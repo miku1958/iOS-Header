@@ -30,21 +30,10 @@
     SBLongPressGestureRecognizer *_shutdownGestureRecognizer;
 }
 
-@property (weak, nonatomic) SBBacklightController *backlightController; // @synthesize backlightController=_backlightController;
-@property (strong, nonatomic) SBCombinationHardwareButtonActions *buttonActions; // @synthesize buttonActions=_buttonActions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) SBHomeHardwareButton *homeHardwareButton; // @synthesize homeHardwareButton=_homeHardwareButton;
-@property (weak, nonatomic) SBLockHardwareButton *lockHardwareButton; // @synthesize lockHardwareButton=_lockHardwareButton;
-@property (weak, nonatomic) SBProximitySensorManager *proximitySensorManager; // @synthesize proximitySensorManager=_proximitySensorManager;
-@property (strong, nonatomic) SBClickGestureRecognizer *screenshotGestureRecognizer; // @synthesize screenshotGestureRecognizer=_screenshotGestureRecognizer;
-@property (strong, nonatomic) SBLongPressGestureRecognizer *shutdownGestureRecognizer; // @synthesize shutdownGestureRecognizer=_shutdownGestureRecognizer;
-@property (strong, nonatomic) SBSOSClawGestureObserver *sosClawGestureObserver; // @synthesize sosClawGestureObserver=_sosClawGestureObserver;
-@property (strong, nonatomic) SBPressGestureRecognizer *sosGestureRecognizer; // @synthesize sosGestureRecognizer=_sosGestureRecognizer;
-@property (strong, nonatomic) SBSOSLockGestureObserver *sosLockGestureObserver; // @synthesize sosLockGestureObserver=_sosLockGestureObserver;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) SBVolumeHardwareButton *volumeHardwareButton; // @synthesize volumeHardwareButton=_volumeHardwareButton;
 
 - (void).cxx_destruct;
 - (void)_backlightChanged:(id)arg1;

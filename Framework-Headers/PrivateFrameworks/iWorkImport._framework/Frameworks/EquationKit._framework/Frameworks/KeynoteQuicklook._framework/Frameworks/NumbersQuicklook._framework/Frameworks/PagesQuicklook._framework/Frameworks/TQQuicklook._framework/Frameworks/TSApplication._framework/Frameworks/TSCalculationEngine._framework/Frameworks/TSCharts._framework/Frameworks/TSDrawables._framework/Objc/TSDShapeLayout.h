@@ -84,6 +84,7 @@
 - (struct CGRect)aliasedAlignmentFrameForScale:(double)arg1;
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)alignmentFrameInRoot;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)boundsForStandardKnobs;
 - (BOOL)canBeIntersected;
 - (BOOL)canResetTextAndObjectHandles;
@@ -92,7 +93,8 @@
 - (struct CGAffineTransform)computeLayoutTransform;
 - (void)dealloc;
 - (id)editablePathSource;
-- (struct CGRect)frameForCulling;
+- (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
+- (struct CGRect)frameForPartitioning;
 - (id)i_computeWrapPath;
 - (id)i_computeWrapPathClosed:(BOOL)arg1;
 - (id)initWithInfo:(id)arg1;
@@ -116,7 +118,7 @@
 - (void)p_invalidateClippedPath;
 - (void)p_invalidateHead;
 - (void)p_invalidateTail;
-- (BOOL)p_isInlineInsideResizingParentContainer;
+- (BOOL)p_isInlineInsideParentContainerDynamicallyChangingAvailableSpace;
 - (id)p_unitePath:(id)arg1 withLineEndForHead:(BOOL)arg2 stroke:(id)arg3;
 - (struct CGRect)p_updatedCachedClipRectIfNeededForRotation:(struct CGAffineTransform)arg1;
 - (void)p_validateHeadAndTail;

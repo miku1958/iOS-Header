@@ -8,8 +8,8 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMDiagnosticMetricToken, AXMDiagnostics, AXMPipelineContextInput, AXMSequenceRequestManager, AXMVisionAnalysisOptions, AXMVisionResult, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableSet, NSNumber, VNImageRequestHandler, VNSceneObservation;
-@protocol NSCopying, NSSecureCoding, OS_dispatch_queue;
+@class AXBookendMetric, AXMPipelineContextInput, AXMSequenceRequestManager, AXMVisionAnalysisOptions, AXMVisionResult, AXMetricSession, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSNumber, VNImageRequestHandler, VNSceneObservation;
+@protocol AXMetricContainer, NSCopying, NSSecureCoding, OS_dispatch_queue;
 
 @interface AXMVisionPipelineContext : NSObject <NSSecureCoding>
 {
@@ -17,20 +17,22 @@
     NSDictionary *_sourceParameters;
     BOOL _sourceProvidesOwnResults;
     NSMutableArray *_resultHandlers;
-    AXMDiagnosticMetricToken *_processingDiagnosticToken;
+    AXBookendMetric *_piplelineMetric;
     VNSceneObservation *_sceneObservation;
     NSObject<OS_dispatch_queue> *_sceneObservationQueue;
+    NSMutableOrderedSet *_auxiliaryDetectors;
     BOOL _shouldProcessRemotely;
     BOOL _shouldCallCompletionHandlersForEngineBusyError;
     BOOL _shouldCallCompletionHandlersForEmptyResultSet;
     BOOL _evaluationExclusivelyUsesVisionFramework;
     NSError *_error;
     AXMVisionAnalysisOptions *_analysisOptions;
+    NSArray *_effectiveTextDetectionLocales;
     long long _imageRegistrationState;
     NSObject<NSSecureCoding> *_userContext;
     id<NSCopying> _cacheKey;
     unsigned long long _sequenceID;
-    AXMDiagnostics *_diagnostics;
+    AXMetricSession *_metricSession;
     NSMutableArray *_features;
     NSMutableSet *_evaluatedFeatureTypes;
     AXMVisionResult *_result;
@@ -42,12 +44,14 @@
 @property (strong, nonatomic) AXMVisionAnalysisOptions *analysisOptions; // @synthesize analysisOptions=_analysisOptions;
 @property (strong, nonatomic) NSNumber *appliedImageOrientation; // @synthesize appliedImageOrientation=_appliedImageOrientation;
 @property (strong, nonatomic) id<NSCopying> cacheKey; // @synthesize cacheKey=_cacheKey;
-@property (strong, nonatomic) AXMDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
+@property (strong, nonatomic) NSArray *effectiveTextDetectionLocales; // @synthesize effectiveTextDetectionLocales=_effectiveTextDetectionLocales;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSMutableSet *evaluatedFeatureTypes; // @synthesize evaluatedFeatureTypes=_evaluatedFeatureTypes;
 @property (nonatomic) BOOL evaluationExclusivelyUsesVisionFramework; // @synthesize evaluationExclusivelyUsesVisionFramework=_evaluationExclusivelyUsesVisionFramework;
 @property (strong, nonatomic) NSMutableArray *features; // @synthesize features=_features;
 @property (nonatomic) long long imageRegistrationState; // @synthesize imageRegistrationState=_imageRegistrationState;
+@property (strong, nonatomic) AXMetricSession *metricSession; // @synthesize metricSession=_metricSession;
+@property (readonly, nonatomic) id<AXMetricContainer> pipelineMetric;
 @property (strong, nonatomic) AXMVisionResult *result; // @synthesize result=_result;
 @property (readonly, nonatomic) NSArray *resultHandlers;
 @property (nonatomic) unsigned long long sequenceID; // @synthesize sequenceID=_sequenceID;
@@ -65,12 +69,15 @@
 + (id)contextWithSourceParameters:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_commonInit;
+- (BOOL)_addSignificantEventFeatureGateIfNeededToFeature:(id)arg1 category:(id)arg2 minimumConfidence:(double)arg3;
+- (void)_commonInitWithDiagnosticsEnabled:(BOOL)arg1;
 - (id)_makeRequestHandlerForInput:(id)arg1 options:(id)arg2;
+- (void)addAuxiliaryDetector:(id)arg1;
 - (void)addEvaluatedFeatureType:(unsigned long long)arg1;
 - (void)addResultHandler:(CDUnknownBlockType)arg1;
 - (void)addResultHandlers:(id)arg1;
 - (void)appendFeature:(id)arg1;
+- (id)auxiliaryDetectors;
 - (void)createSceneObservationIfNilWithBlock:(CDUnknownBlockType)arg1;
 - (id)description;
 - (void)didFinishProcessingContext;
@@ -81,7 +88,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSourceParameters:(id)arg1 options:(id)arg2;
 - (void)produceImage:(CDUnknownBlockType)arg1;
+- (void)removeAllAuxiliaryDetectors;
 - (id)sceneObservation;
+- (void)setEquivalenceToken:(id)arg1;
 - (id)visionImageRequestHandlerWithOptions:(id)arg1;
 - (void)willBeginProcessingContext;
 

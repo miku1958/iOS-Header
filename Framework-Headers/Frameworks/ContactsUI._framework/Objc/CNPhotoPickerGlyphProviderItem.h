@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerGlyphProviderItem : CNPhotoPickerProviderItem
 {
+    unsigned long long _addItemType;
     UIView *_symbolImageView;
     NSString *_symbolImageName;
     UIColor *_tintColor;
 }
 
+@property (nonatomic) unsigned long long addItemType; // @synthesize addItemType=_addItemType;
 @property (strong, nonatomic) NSString *symbolImageName; // @synthesize symbolImageName=_symbolImageName;
 @property (strong, nonatomic) UIView *symbolImageView; // @synthesize symbolImageView=_symbolImageView;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
@@ -26,7 +28,9 @@ __attribute__((visibility("hidden")))
 - (id)imageForImageNamed:(id)arg1 withTintColor:(id)arg2;
 - (unsigned long long)imageType;
 - (id)initWithSymbolImageNamed:(id)arg1;
+- (id)initWithSymbolImageNamed:(id)arg1 withAddItemType:(unsigned long long)arg2;
 - (long long)scaleForImageNamed:(id)arg1;
+- (void)setupSymbolImageView;
 - (void)thumbnailViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateTintColorIfNeeded:(id)arg1;
 

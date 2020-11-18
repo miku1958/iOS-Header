@@ -11,6 +11,9 @@
 @interface _TtC12FMNetworking30FMNServerInteractionController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *authenticationProvider;
+    MISSING_TYPE *httpClient;
+    MISSING_TYPE *httpClientQueue;
+    MISSING_TYPE *redirectHostStore;
     MISSING_TYPE *mockingPreferences;
     MISSING_TYPE *urlSessionFactory;
 }

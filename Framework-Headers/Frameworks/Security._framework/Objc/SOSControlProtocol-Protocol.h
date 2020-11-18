@@ -17,17 +17,20 @@
 - (void)ghostBustInfo:(void (^)(NSData *, NSError *))arg1;
 - (void)ghostBustPeriodic:(unsigned int)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)ghostBustTriggerTimed:(unsigned int)arg1 complete:(void (^)(BOOL, NSError *))arg2;
+- (void)iCloudIdentityStatus:(void (^)(NSData *, NSError *))arg1;
+- (void)iCloudIdentityStatus_internal:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)importInitialSyncCredentials:(NSArray *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)initialSyncCredentials:(unsigned int)arg1 complete:(void (^)(NSArray *, NSError *))arg2;
 - (void)joinCircleWithBlob:(NSData *)arg1 version:(int)arg2 complete:(void (^)(BOOL, NSError *))arg3;
 - (void)kvsPerformanceCounters:(void (^)(NSDictionary *))arg1;
 - (void)myPeerInfo:(void (^)(NSData *, NSError *))arg1;
 - (void)rateLimitingPerformanceCounters:(void (^)(NSDictionary *))arg1;
+- (void)rpcTriggerBackup:(NSArray *)arg1 complete:(void (^)(NSError *))arg2;
+- (void)rpcTriggerRingUpdate:(void (^)(NSError *))arg1;
+- (void)rpcTriggerSync:(NSArray *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)setWatchdogParmeters:(NSDictionary *)arg1 complete:(void (^)(NSError *))arg2;
 - (void)stashAccountCredential:(NSData *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)stashedCredentialPublicKey:(void (^)(NSData *, NSError *))arg1;
-- (void)triggerBackup:(NSArray *)arg1 complete:(void (^)(NSError *))arg2;
-- (void)triggerSync:(NSArray *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)userPublicKey:(void (^)(BOOL, NSData *, NSError *))arg1;
 - (void)validatedStashedAccountCredential:(void (^)(NSData *, NSError *))arg1;
 @end

@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) unsigned long long autoPlayMedia;
 @property (readonly, nonatomic) NSURL *baseURL;
+@property (readonly, nonatomic) NSString *bodyHTML;
 @property (readonly, nonatomic) NSString *enclosingHTML;
 @property (readonly, nonatomic) NSString *javaScript;
 @property (readonly, nonatomic) double maximumWidth;

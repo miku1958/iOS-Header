@@ -16,24 +16,26 @@
 __attribute__((visibility("hidden")))
 @interface TLKRichTextField : TLKStackView <NUIContainerViewDelegate, TLKObservable, TLKObserver>
 {
-    BOOL inBatchUpdate;
     id<TLKObserver> observer;
+    long long batchUpdateCount;
     TLKRichText *_richText;
+    unsigned long long _roundedCornerLabelSizeConfiguration;
     TLKLabel *_textLabel;
     TLKRoundedCornerLabels *_roundedCornerLabels;
     TLKStarsView *_starRatingView;
     TLKIconsView *_iconView;
 }
 
+@property (nonatomic) long long batchUpdateCount; // @synthesize batchUpdateCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKIconsView *iconView; // @synthesize iconView=_iconView;
-@property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
 @property (weak) id<TLKObserver> observer; // @synthesize observer;
 @property (nonatomic) unsigned long long prominence;
 @property (strong, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
+@property (nonatomic) unsigned long long roundedCornerLabelSizeConfiguration; // @synthesize roundedCornerLabelSizeConfiguration=_roundedCornerLabelSizeConfiguration;
 @property (strong, nonatomic) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
 @property (strong, nonatomic) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property (readonly) Class superclass;
@@ -48,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)updateRoundedCornerLabels:(id)arg1;
 - (void)updateStarRating:(id)arg1;
 - (void)updateWithRichText:(id)arg1;
-- (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 
 @end

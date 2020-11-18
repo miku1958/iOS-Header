@@ -12,6 +12,7 @@
 
 - (id)_presentationViewController;
 - (id)init;
+- (id)initWithWindowScene:(id)arg1;
 - (BOOL)isInternalWindow;
 - (void)presentAlertController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

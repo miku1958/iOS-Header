@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *tracker;
     MISSING_TYPE *processorManager;
+    MISSING_TYPE *appSessionProvider;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *suspendCount;
     MISSING_TYPE *state;
@@ -20,6 +21,8 @@
     MISSING_TYPE *options;
     MISSING_TYPE *flushProcessor;
 }
+
+- (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -8,13 +8,12 @@
 
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIViewController;
+@class NSString, UIViewController;
 @protocol TSSetupFlowItem;
 
 @interface TSTransferFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate>
 {
     UIViewController<TSSetupFlowItem> *_currentViewController;
-    NSMutableArray *_transferItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,8 +22,8 @@
 @property (readonly) Class superclass;
 
 + (void)needsToRunUsingMessageSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)needsToRunUsingMessageSession:(id)arg1 transferablePlanOnSource:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (void)_getTransferPlanList;
 - (id)firstViewController;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)nextViewControllerFrom:(id)arg1;

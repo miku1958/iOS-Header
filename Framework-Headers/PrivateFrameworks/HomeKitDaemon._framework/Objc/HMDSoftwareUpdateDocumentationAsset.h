@@ -13,16 +13,16 @@
 #import <HomeKitDaemon/SZExtractorDelegate-Protocol.h>
 
 @class HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSArray, NSInputStream, NSObject, NSString, NSURL, NSURLSession, NSUUID, SZExtractor;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSoftwareUpdateDocumentationAsset : HMFObject <HMFLogging, HMFObject, NSURLSessionDownloadDelegate, SZExtractorDelegate, NSSecureCoding>
 {
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _shouldAutomaticallyCache;
     long long _state;
     NSUUID *_identifier;
     HMSoftwareUpdateDocumentationMetadata *_metadata;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSURLSession *_URLSession;
     SZExtractor *_extrator;
     NSInputStream *_archivedFileStream;
@@ -32,7 +32,6 @@
 @property (strong, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (strong, nonatomic) NSInputStream *archivedFileStream; // @synthesize archivedFileStream=_archivedFileStream;
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) HMSoftwareUpdateDocumentation *documentation;
@@ -42,7 +41,6 @@
 @property (readonly) HMSoftwareUpdateDocumentationMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy) NSString *shortDescription;
 @property BOOL shouldAutomaticallyCache; // @synthesize shouldAutomaticallyCache=_shouldAutomaticallyCache;
 @property (readonly) long long state; // @synthesize state=_state;

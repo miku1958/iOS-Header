@@ -10,7 +10,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAssignmentContextChangeItem, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
 
 @interface REMReminderChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
 {
@@ -23,6 +23,8 @@
 @property (strong, nonatomic) REMObjectID *accountID; // @dynamic accountID;
 @property (readonly, nonatomic) NSArray *alarms; // @dynamic alarms;
 @property (readonly, nonatomic) BOOL allDay; // @dynamic allDay;
+@property (readonly, nonatomic) REMReminderAssignmentContextChangeItem *assignmentContext;
+@property (strong, nonatomic) NSSet *assignments; // @dynamic assignments;
 @property (readonly, nonatomic) REMReminderAttachmentContextChangeItem *attachmentContext;
 @property (strong, nonatomic) NSArray *attachments; // @dynamic attachments;
 @property (strong, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
@@ -62,6 +64,7 @@
 @property (strong, nonatomic) NSArray *recurrenceRules; // @dynamic recurrenceRules;
 @property (readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property (readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
 @property (copy, nonatomic) NSData *siriFoundInAppsData; // @dynamic siriFoundInAppsData;
 @property (nonatomic) long long siriFoundInAppsUserConfirmation; // @dynamic siriFoundInAppsUserConfirmation;
@@ -87,6 +90,7 @@
 - (id)_editDocument:(id)arg1 replicaIDSource:(id)arg2 newString:(id)arg3;
 - (double)_timeIntervalToAddSinceStartDate:(id)arg1 withNow:(id)arg2 step:(double)arg3;
 - (void)addAlarm:(id)arg1;
+- (void)addAlarm:(id)arg1 updateDisplayDate:(BOOL)arg2;
 - (id)addAlarmWithTrigger:(id)arg1;
 - (void)addRecurrenceRule:(id)arg1;
 - (id)addRecurrenceRuleWithFrequency:(long long)arg1 interval:(long long)arg2 daysOfTheWeek:(id)arg3 daysOfTheMonth:(id)arg4 monthsOfTheYear:(id)arg5 weeksOfTheYear:(id)arg6 daysOfTheYear:(id)arg7 setPositions:(id)arg8 end:(id)arg9;
@@ -95,6 +99,7 @@
 - (id)changedKeys;
 - (id)confirmForSiriFoundInAppsAppendingToList:(id)arg1;
 - (void)copyInto:(id)arg1;
+- (id)datesDebugDescriptionInTimeZone:(id)arg1;
 - (id)duplicateForRecurrenceUsingReminderID:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithObjectID:(id)arg1 title:(id)arg2 insertIntoListChangeItem:(id)arg3;
@@ -110,6 +115,7 @@
 - (id)nextRecurrentDueDateComponentsAfter:(id)arg1;
 - (void)rejectForSiriFoundInApps;
 - (void)removeAlarm:(id)arg1;
+- (void)removeAlarm:(id)arg1 updateDisplayDate:(BOOL)arg2;
 - (void)removeAllAlarms;
 - (void)removeAllRecurrenceRules;
 - (void)removeAllSnoozeAlarms;
@@ -130,6 +136,7 @@
 - (void)snoozeToDate:(id)arg1;
 - (void)snoozeToNextThirds;
 - (void)updateAccountCapabilities:(id)arg1;
+- (void)updateDisplayDate;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

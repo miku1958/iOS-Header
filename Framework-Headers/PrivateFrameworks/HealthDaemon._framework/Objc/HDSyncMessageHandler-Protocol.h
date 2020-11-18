@@ -7,6 +7,6 @@
 @class NSArray;
 
 @protocol HDSyncMessageHandler
-- (BOOL)sendCodableObjects:(NSArray *)arg1 resultAnchor:(long long)arg2 done:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)sendCodableChange:(NSArray *)arg1 resultAnchor:(long long)arg2 sequence:(long long)arg3 done:(BOOL)arg4 error:(id *)arg5;
 @end
 

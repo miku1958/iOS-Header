@@ -6,7 +6,7 @@
 
 #import <TVMLKit/TVViewLayout.h>
 
-@class VUIAppleTVChannelLogoLayout, VUIButtonLayout, VUITextLayout;
+@class VUIAppleTVChannelLogoLayout, VUIButtonLayout, VUIProductUberBackgroundViewLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIChannelBannerLayout : TVViewLayout
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_textLayout;
     VUITextLayout *_disclaimerTextLayout;
     VUIButtonLayout *_subscribeButtonLayout;
+    VUIProductUberBackgroundViewLayout *_uberBackgroundViewLayout;
 }
 
 @property (strong, nonatomic) VUIAppleTVChannelLogoLayout *channelLogoLayout; // @synthesize channelLogoLayout=_channelLogoLayout;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isSubscribed; // @synthesize isSubscribed=_isSubscribed;
 @property (strong, nonatomic) VUIButtonLayout *subscribeButtonLayout; // @synthesize subscribeButtonLayout=_subscribeButtonLayout;
 @property (strong, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
+@property (strong, nonatomic) VUIProductUberBackgroundViewLayout *uberBackgroundViewLayout; // @synthesize uberBackgroundViewLayout=_uberBackgroundViewLayout;
 
 + (void)_updateTextColorForDescriptionLayout:(id)arg1 hasBgImage:(BOOL)arg2;
 + (void)_updateTextColorForDisclaimerLayout:(id)arg1 hasBgImage:(BOOL)arg2;

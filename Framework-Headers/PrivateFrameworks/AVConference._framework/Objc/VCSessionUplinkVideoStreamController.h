@@ -32,11 +32,13 @@ __attribute__((visibility("hidden")))
     NSArray *_streamIDsWifi;
     NSArray *_streamIDsCell;
     unsigned int _captureFrameRate;
+    BOOL _dynamicVideoPriorityEnabled;
 }
 
 @property (readonly) NSMutableDictionary *activeVideoStreams; // @synthesize activeVideoStreams=_activeVideoStreams;
 @property unsigned int captureFrameRate; // @synthesize captureFrameRate=_captureFrameRate;
 @property (nonatomic) float currentFrameTime; // @synthesize currentFrameTime=_currentFrameTime;
+@property (nonatomic) BOOL dynamicVideoPriorityEnabled; // @synthesize dynamicVideoPriorityEnabled=_dynamicVideoPriorityEnabled;
 @property (copy, nonatomic) NSDictionary *pendingVideoStreams; // @synthesize pendingVideoStreams=_pendingVideoStreams;
 @property (copy, nonatomic) NSArray *streamIDsCell; // @synthesize streamIDsCell=_streamIDsCell;
 @property (copy, nonatomic) NSArray *streamIDsWifi; // @synthesize streamIDsWifi=_streamIDsWifi;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)pauseStreams;
 - (BOOL)resumeStreams;
 - (id)schedulerStreamWithVideoStream:(id)arg1;
+- (void)selectVideoStreamForVideoPriority;
 - (void)setIsLocalOnCellular:(BOOL)arg1 cappedVideoStreamIDs:(id)arg2;
 - (BOOL)shouldGenerateIDRWithStreamSchedule:(id)arg1;
 - (void)unlock;

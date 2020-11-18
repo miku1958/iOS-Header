@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly, nonatomic) struct Device *rb_device;
 
++ (id)allDevices;
 + (BOOL)isSupported;
 + (id)sharedDefaultDevice;
 + (id)sharedDevice:(id)arg1;
@@ -28,6 +29,7 @@
 - (void)collectResources;
 - (void)dealloc;
 - (id)initWithDevice:(id)arg1;
+- (id)pipelineDescriptions:(id)arg1 extraColorFormats:(id)arg2;
 
 @end
 

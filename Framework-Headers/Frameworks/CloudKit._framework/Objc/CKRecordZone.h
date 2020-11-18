@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKContainerAssignment-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKContainerID, CKRecordZoneID, CKReference, CKServerChangeToken, NSArray, NSData, NSDate, NSString;
 
-@interface CKRecordZone : NSObject <NSSecureCoding, NSCopying>
+@interface CKRecordZone : NSObject <CKContainerAssignment, NSSecureCoding, NSCopying>
 {
     BOOL _needsZoneishPCSRolled;
     BOOL _zoneKeyRollAllowed;
@@ -20,19 +21,19 @@
     CKRecordZoneID *_zoneID;
     unsigned long long _capabilities;
     CKContainerID *_containerID;
-    CKReference *_share;
     CKServerChangeToken *_currentServerChangeToken;
     NSData *_clientChangeToken;
     NSData *_protectionData;
     NSString *_protectionEtag;
     NSData *_zoneishProtectionData;
-    NSDate *_zonePCSModificationDate;
-    NSString *_zonePCSLastModifierDevice;
     NSData *_pcsKeyID;
     NSData *_zoneishKeyID;
+    CKReference *_share;
+    NSString *_zonePCSLastModifierDevice;
     NSString *_previousProtectionEtag;
     long long _assetQuotaUsage;
     long long _metadataQuotaUsage;
+    NSDate *_zonePCSModificationDate;
     NSArray *_invitedKeysToRemove;
 }
 
@@ -41,7 +42,6 @@
 @property (strong, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
 @property (copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (strong, nonatomic) CKServerChangeToken *currentServerChangeToken; // @synthesize currentServerChangeToken=_currentServerChangeToken;
-@property (readonly, nonatomic) NSData *currentServerContinuationToken;
 @property (nonatomic) int deviceCount; // @synthesize deviceCount=_deviceCount;
 @property (strong, nonatomic) NSArray *invitedKeysToRemove; // @synthesize invitedKeysToRemove=_invitedKeysToRemove;
 @property (nonatomic) long long metadataQuotaUsage; // @synthesize metadataQuotaUsage=_metadataQuotaUsage;
@@ -52,7 +52,7 @@
 @property (strong, nonatomic) NSString *protectionEtag; // @synthesize protectionEtag=_protectionEtag;
 @property (nonatomic) BOOL serializeProtectionData; // @synthesize serializeProtectionData=_serializeProtectionData;
 @property (strong, nonatomic) CKReference *share; // @synthesize share=_share;
-@property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property (copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property (nonatomic) BOOL zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
 @property (strong, nonatomic) NSString *zonePCSLastModifierDevice; // @synthesize zonePCSLastModifierDevice=_zonePCSLastModifierDevice;
 @property (strong, nonatomic) NSDate *zonePCSModificationDate; // @synthesize zonePCSModificationDate=_zonePCSModificationDate;

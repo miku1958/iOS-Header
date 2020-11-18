@@ -18,9 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_fetchData;
 - (id)init;
-- (long long)personaIDForManagedPersona:(id)arg1;
 
 @end
 

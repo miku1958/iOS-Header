@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL _cn_isCardDAV;
 @property (readonly, nonatomic) BOOL _cn_isChildDelegateAccount;
 @property (readonly, nonatomic) BOOL _cn_isLDAP;
+@property (readonly, nonatomic) BOOL _cn_isManaged;
 @property (readonly, nonatomic) BOOL _cn_isPrimaryAccount;
 @property (copy, nonatomic) NSString *_cn_lastName;
 @property (copy, nonatomic) NSString *_cn_principalPath;

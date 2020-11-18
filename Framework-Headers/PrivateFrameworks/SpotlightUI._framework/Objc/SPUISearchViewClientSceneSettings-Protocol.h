@@ -9,6 +9,8 @@
 @protocol SPUISearchViewClientSceneSettings <NSObject>
 
 @property (readonly) double distanceToTopOfIcons;
+@property (readonly) unsigned int searchHeaderContextID;
+@property (readonly) unsigned long long searchHeaderLayerRenderID;
 
 @end
 

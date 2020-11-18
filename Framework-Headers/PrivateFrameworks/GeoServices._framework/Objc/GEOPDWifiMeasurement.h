@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_locations:1;
         unsigned int read_wifiAccessPoints:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_entryTime:1;
-        unsigned int wrote_exitTime:1;
-        unsigned int wrote_locations:1;
-        unsigned int wrote_wifiAccessPoints:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,10 +44,6 @@ __attribute__((visibility("hidden")))
 + (Class)locationType;
 + (Class)wifiAccessPointType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsLocation:(id)arg1;
-- (void)_addNoFlagsWifiAccessPoint:(id)arg1;
-- (void)_readLocations;
-- (void)_readWifiAccessPoints;
 - (void)addLocation:(id)arg1;
 - (void)addWifiAccessPoint:(id)arg1;
 - (void)clearLocations;
@@ -65,7 +57,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationsCount;
 - (void)mergeFrom:(id)arg1;

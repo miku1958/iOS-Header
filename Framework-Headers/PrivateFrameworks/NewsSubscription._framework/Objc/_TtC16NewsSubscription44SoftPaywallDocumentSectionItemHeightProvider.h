@@ -6,12 +6,16 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+#import <NewsSubscription/NUDocumentSectionItemHeightProvider-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC16NewsSubscription44SoftPaywallDocumentSectionItemHeightProvider : _TtCs12_SwiftObject
+@interface _TtC16NewsSubscription44SoftPaywallDocumentSectionItemHeightProvider : _TtCs12_SwiftObject <NUDocumentSectionItemHeightProvider>
 {
     MISSING_TYPE *heightProvider;
 }
+
+- (double)sectionItemHeightForSize:(struct CGSize)arg1 traitCollection:(id)arg2;
 
 @end
 

@@ -14,7 +14,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKEventDateEditItem, EKInviteeAlternativeTimeSearcher, EKUIEventStatusButtonsView, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString, SingleToolbarItemContainerView;
+@class EKEvent, EKEventDateEditItem, EKInviteeAlternativeTimeSearcher, EKUIEventStatusButtonsView, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewMessageSendingManager, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString, SingleToolbarItemContainerView;
 @protocol EKEditItemViewControllerDelegate;
 
 @interface EKEventProposeNewTimeViewController : UITableViewController <EKEditItemViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, EKCalendarItemEditItemDelegate, EKEventDateEditItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEditItemViewControllerProtocol>
@@ -35,6 +35,7 @@
     EKUIInviteesViewSomeInviteesCanAttendSection *_someInviteesCanAttendSection;
     EKUIInviteesViewAllInviteesCanAttendSection *_allInviteesCanAttendSection;
     EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
 }
 
 @property (strong, nonatomic) EKUIInviteesViewAllInviteesCanAttendSection *allInviteesCanAttendSection; // @synthesize allInviteesCanAttendSection=_allInviteesCanAttendSection;
@@ -45,6 +46,7 @@
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
 @property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property (strong, nonatomic) EKUIInviteesViewOriginalConflictSection *originalConflictSection; // @synthesize originalConflictSection=_originalConflictSection;
 @property (strong, nonatomic) NSDate *originalDate; // @synthesize originalDate=_originalDate;
 @property (nonatomic) BOOL presentModally;
@@ -84,6 +86,7 @@
 - (void)editItem:(id)arg1 wantsRowInsertions:(id)arg2 rowDeletions:(id)arg3 rowReloads:(id)arg4;
 - (void)editItem:(id)arg1 wantsRowReload:(id)arg2;
 - (void)editItem:(id)arg1 wantsRowsScrolledToVisible:(id)arg2;
+- (id)editItemEventToDetach;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
 - (void)eventStatusButtonsView:(id)arg1 calculatedFontSizeToFit:(double)arg2;

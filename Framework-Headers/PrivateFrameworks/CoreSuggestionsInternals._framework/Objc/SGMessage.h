@@ -10,14 +10,20 @@
 #import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 #import <CoreSuggestionsInternals/SGSpotlightIdentifiers-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class CSPerson, NSArray, NSDate, NSString, SGCachedResult;
 
 @interface SGMessage : NSObject <NSSecureCoding, NSCopying, SGSpotlightIdentifiers>
 {
+    SGCachedResult *_isInhumanSenderCached;
+    SGCachedResult *_isInhumanContentCached;
+    SGCachedResult *_taggedCharacterRangesCached;
+    SGCachedResult *_messageSubjectDetectedDataCached;
+    SGCachedResult *_dataDetectorMatchesWithSignatureForContentCached;
     BOOL _isSent;
     BOOL _isStoredEncrypted;
     NSString *_subject;
     NSString *_textContent;
+    NSString *_source;
     NSDate *_date;
     NSString *_bundleIdentifier;
     NSString *_uniqueIdentifier;
@@ -30,16 +36,24 @@
 @property (copy, nonatomic) NSArray *accountHandles; // @synthesize accountHandles=_accountHandles;
 @property (copy, nonatomic) NSString *accountType; // @synthesize accountType=_accountType;
 @property (readonly, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+@property (readonly, nonatomic) CSPerson *author;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct _NSRange detectedDataSignatureRange;
 @property (copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInhumanContent;
+@property (readonly, nonatomic) BOOL isInhumanSender;
 @property (nonatomic) BOOL isSent; // @synthesize isSent=_isSent;
 @property (nonatomic) BOOL isStoredEncrypted; // @synthesize isStoredEncrypted=_isStoredEncrypted;
+@property (readonly, nonatomic) NSArray *messageSubjectDetectedData;
+@property (readonly, nonatomic) NSArray *plainTextDetectedData;
+@property (copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *taggedCharacterRanges;
 @property (copy, nonatomic) NSString *textContent; // @synthesize textContent=_textContent;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
@@ -48,14 +62,16 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)asDictionary;
-- (unsigned long long)contentLength;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dataDetectorMatchesWithSignature;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initForBuilding;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSearchableItem:(id)arg1;
 - (BOOL)isEqualToMessage:(id)arg1;
+- (BOOL)isInhumanContentNoncached;
 - (id)spotlightBundleIdentifier;
 - (id)spotlightDomainIdentifier;
 - (id)spotlightReference;

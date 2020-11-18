@@ -14,6 +14,7 @@
     KNSlideNode *_slideNodeToEdit;
 }
 
+@property (readonly, nonatomic, getter=isContiguous) BOOL contiguous;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) KNSlideNode *slideNodeToEdit; // @synthesize slideNodeToEdit=_slideNodeToEdit;
 @property (readonly, nonatomic) NSOrderedSet *slideNodes; // @synthesize slideNodes=_slideNodes;

@@ -25,18 +25,20 @@
 
 + (id)sharedFormatter;
 - (void).cxx_destruct;
-- (id)_graphicRectangularTemplateWithTextProvider:(id)arg1 hourlyForecastedConditions:(id)arg2 timeZone:(id)arg3;
+- (id)_graphicRectangularTemplateWithTextProvider:(id)arg1 hourlyForecastEntryModels:(id)arg2 timeZone:(id)arg3;
+- (id)_richCircularTemplateForComplicationFamily:(long long)arg1 entryModel:(id)arg2;
 - (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
-- (id)circularMediumTemplateForConditions:(id)arg1;
-- (id)circularSmallTemplateForConditions:(id)arg1;
-- (id)extraLargeTemplateForConditions:(id)arg1;
-- (id)graphicBezelTemplateForConditions:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)graphicCircularTemplateForConditions:(id)arg1;
-- (id)graphicCornerTemplateForConditions:(id)arg1;
-- (id)graphicRectangularTemplateForLocalLocation:(BOOL)arg1 timeZone:(id)arg2 conditions:(id)arg3 dailyForecastedConditions:(id)arg4 hourlyForecastedConditions:(id)arg5;
-- (id)modularSmallTemplateForConditions:(id)arg1;
+- (id)circularMediumTemplateForEntryModel:(id)arg1;
+- (id)circularSmallTemplateForEntryModel:(id)arg1;
+- (id)extraLargeTemplateForEntryModel:(id)arg1;
+- (id)graphicBezelTemplateForEntryModel:(id)arg1;
+- (id)graphicCircularTemplateForEntryModel:(id)arg1;
+- (id)graphicCornerTemplateForEntryModel:(id)arg1;
+- (id)graphicExtraLargeCircularTemplateForEntryModel:(id)arg1;
+- (id)graphicRectangularTemplateForLocalLocation:(BOOL)arg1 timeZone:(id)arg2 entryModel:(id)arg3;
+- (id)modularSmallTemplateForEntryModel:(id)arg1;
 - (id)switcherTemplateWithFamily:(long long)arg1;
-- (id)utilitarianSmallTemplateForConditions:(id)arg1;
+- (id)utilitarianSmallTemplateForEntryModel:(id)arg1;
 
 @end
 

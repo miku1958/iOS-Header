@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@protocol NSCopying;
+
 @interface AVCSessionConfiguration : NSObject
 {
-    unsigned long long _maxRemoteParticipants;
     long long _sessionMode;
-    id _reportingHierarchyToken;
+    NSObject<NSCopying> *_reportingHierarchyToken;
+    BOOL _oneToOneModeEnabled;
 }
 
-@property (nonatomic) unsigned long long maxRemoteParticipants; // @synthesize maxRemoteParticipants=_maxRemoteParticipants;
-@property (copy, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
-@property (nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
+@property (nonatomic, getter=isOneToOneModeEnabled) BOOL oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
+@property (copy, nonatomic) NSObject<NSCopying> *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property (nonatomic) long long sessionMode;
 
 + (long long)clientSessionModeWithSessionMode:(long long)arg1;
 + (long long)sessionModeWithClientSessionMode:(long long)arg1;

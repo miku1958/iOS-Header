@@ -9,32 +9,41 @@
 #import <DataDeliveryServices/NSSecureCoding-Protocol.h>
 
 @class DDSAttributeFilter, NSString;
+@protocol OS_dispatch_queue;
 
 @interface DDSAssetQuery : NSObject <NSSecureCoding>
 {
     BOOL _localOnly;
     BOOL _installedOnly;
     BOOL _latestOnly;
+    BOOL _cachedOnly;
+    NSString *_description;
     NSString *_assetType;
     DDSAttributeFilter *_filter;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
+@property (readonly, nonatomic) NSString *cacheKey;
+@property (nonatomic) BOOL cachedOnly; // @synthesize cachedOnly=_cachedOnly;
 @property (readonly, nonatomic) DDSAttributeFilter *filter; // @synthesize filter=_filter;
 @property (nonatomic) BOOL installedOnly; // @synthesize installedOnly=_installedOnly;
 @property (nonatomic) BOOL latestOnly; // @synthesize latestOnly=_latestOnly;
 @property (nonatomic) BOOL localOnly; // @synthesize localOnly=_localOnly;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)assetType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithAssetType:(id)arg1;
 - (id)initWithAssetType:(id)arg1 filter:(id)arg2;
+- (id)initWithAssetType:(id)arg1 filter:(id)arg2 localOnly:(BOOL)arg3 installedOnly:(BOOL)arg4 latestOnly:(BOOL)arg5 cachedOnly:(BOOL)arg6;
 - (id)initWithCoder:(id)arg1;
+- (void)invalidateDescription;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAssetQuery:(id)arg1;
 

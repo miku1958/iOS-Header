@@ -34,7 +34,6 @@
 @property (nonatomic) BOOL overridesQuietMode; // @dynamic overridesQuietMode;
 @property (nonatomic) BOOL playMediaWhenRaised; // @dynamic playMediaWhenRaised;
 @property (nonatomic) BOOL preemptsPresentedNotification; // @dynamic preemptsPresentedNotification;
-@property (nonatomic) BOOL preemptsSTAR; // @dynamic preemptsSTAR;
 @property (nonatomic) BOOL preventsAutomaticLock; // @dynamic preventsAutomaticLock;
 @property (nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property (nonatomic) BOOL requestsFullScreenPresentation; // @dynamic requestsFullScreenPresentation;

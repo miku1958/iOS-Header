@@ -13,7 +13,6 @@
 @interface VUIInAppMessagingManager : NSObject <IAMMessageMetricsDelegate>
 {
     NSMutableDictionary *messageRegistry;
-    BOOL _enabled;
     VUIInAppMessagingContextProvider *_context;
     IAMMessageCoordinator *_coordinator;
     VUIInAppMessagesConfig *_config;
@@ -24,12 +23,19 @@
 @property (strong, nonatomic) IAMMessageCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_debouncedLibraryContentsDidChange;
+- (id)_getMessageGroups;
+- (void)_handleActiveDownloadButtonsDidChange:(id)arg1;
+- (void)_handleHasFavoriteTeamsDidChange:(id)arg1;
+- (void)_handleIsPlaybackUIBeingShownDidChange:(id)arg1;
+- (void)_handleLibraryContentsDidChange:(id)arg1;
+- (void)_handleLocationStatusDidChange:(id)arg1;
+- (void)_handleNetworkStatusDidChange:(id)arg1;
 - (void)_handleSubscriptionDataDidChangeNotification:(id)arg1;
 - (id)_normalizedPageDetailsForEventProperties:(id)arg1;
 - (void)addMessage:(id)arg1 forTargetID:(id)arg2;
@@ -37,13 +43,17 @@
 - (id)init;
 - (void)messageDidReportMetricsEvent:(id)arg1 eventProperties:(id)arg2;
 - (id)messageForTargetID:(id)arg1;
+- (id)messageJSONForTargetID:(id)arg1;
 - (void)registerMessageTarget:(id)arg1;
 - (void)removeMessageForTargetID:(id)arg1;
-- (void)reportApplicationDidBecomeActive;
+- (void)reportApplicationDidBecomeActiveEvent;
+- (void)reportCountableEventNamed:(id)arg1;
+- (void)reportDocumentAppearance:(id)arg1;
 - (void)reportMessageDidAppearWithIdentifier:(id)arg1 fromTargetWithIdentifier:(id)arg2;
 - (void)reportMessageDidDisappearWithIdentifier:(id)arg1 fromTargetWithIdentifier:(id)arg2;
 - (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2;
 - (void)reportMetricsEvent:(id)arg1;
+- (void)reportValueEventNamed:(id)arg1 value:(id)arg2;
 - (void)unregisterMessageTarget:(id)arg1;
 
 @end

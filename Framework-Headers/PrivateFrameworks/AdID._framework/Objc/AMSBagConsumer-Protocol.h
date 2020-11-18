@@ -6,11 +6,14 @@
 
 #import <AdID/NSObject-Protocol.h>
 
-@class AMSBagKeySet, NSString;
+@class AMSBag, AMSBagKeySet, NSString;
 
 @protocol AMSBagConsumer <NSObject>
 + (AMSBagKeySet *)bagKeySet;
 + (NSString *)bagSubProfile;
 + (NSString *)bagSubProfileVersion;
+
+@optional
++ (AMSBag *)createBagForSubProfile;
 @end
 

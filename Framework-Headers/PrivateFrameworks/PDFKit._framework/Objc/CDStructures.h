@@ -57,3 +57,9 @@ typedef struct {
     struct CGPoint _field2;
 } CDStruct_e3b9714e;
 
+typedef struct {
+    struct CGRect visibleTextViewRectInScrollView;
+    double animationDuration;
+    double originDelta;
+} CDStruct_c23cc2dc;
+

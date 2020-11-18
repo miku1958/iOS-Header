@@ -16,6 +16,7 @@
     BOOL _allowsFormalPaymentRequests;
     NSString *_identifier;
     unsigned long long _status;
+    unsigned long long _statusReason;
     unsigned long long _receiveMethod;
     NSString *_receiveCurrency;
     NSDecimalNumber *_minimumReceiveAmount;
@@ -35,6 +36,7 @@
 @property (copy, nonatomic) NSString *receiveCurrency; // @synthesize receiveCurrency=_receiveCurrency;
 @property (nonatomic) unsigned long long receiveMethod; // @synthesize receiveMethod=_receiveMethod;
 @property (nonatomic) unsigned long long status; // @synthesize status=_status;
+@property (nonatomic) unsigned long long statusReason; // @synthesize statusReason=_statusReason;
 
 + (id)recipientWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;

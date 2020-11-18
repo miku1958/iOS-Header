@@ -41,7 +41,7 @@
 - (id)_chronoVariantForTimeScale:(unsigned long long)arg1;
 - (void)_cleanupAfterEditing;
 - (void)_configureForEditMode:(long long)arg1;
-- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3 withScale:(double)arg4;
 - (id)_createDensityVariantWitElements:(id)arg1 parent:(id)arg2 hidden:(BOOL)arg3;
 - (BOOL)_getTicks:(id *)arg1 labels:(id *)arg2 otherNodes:(id *)arg3 fromParentNode:(id)arg4;
 - (id)_localizedStringForTimeScaleSeconds:(unsigned long long)arg1;

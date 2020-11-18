@@ -22,7 +22,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_disableCloudServicesInPhotoLibraryBundle:(id)arg1 withReason:(id)arg2;
 - (void)closeAndDeletePhotoLibraryAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getActivePhotoLibrariesWithReply:(CDUnknownBlockType)arg1;
 - (void)getPhotoLibraryURLsWithReply:(CDUnknownBlockType)arg1;

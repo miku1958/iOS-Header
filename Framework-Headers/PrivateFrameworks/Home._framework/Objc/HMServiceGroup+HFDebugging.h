@@ -10,12 +10,13 @@
 #import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFHomeStatusVisible-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
+#import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
 @class HFServiceDescriptor, HFServiceNameComponents, HFUserNotificationServiceSettings, NSDate, NSString, NSUUID;
 
-@interface HMServiceGroup (HFDebugging) <HFStateDumpBuildable, HFHomeStatusVisible, HFFavoritable, HFHomeKitObject, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject>
+@interface HMServiceGroup (HFDebugging) <HFStateDumpBuildable, HFHomeStatusVisible, HFFavoritable, HFHomeKitObject, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,11 +36,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hf_areAllServicesInSameRoom;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_isForcedVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isSupported;
 @property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
 @property (readonly, nonatomic) HFServiceDescriptor *hf_serviceDescriptor;
@@ -58,8 +61,12 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 - (id)_hf_allBulletinBoardNotifications;
+- (id)hf_accessories;
 - (BOOL)hf_isValidObject;
+- (id)hf_profiles;
+- (id)hf_services;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_topLevelAccessoryLikeHomeObject;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 - (id)hf_updateIsVisibleInHomeStatus:(BOOL)arg1;

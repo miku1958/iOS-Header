@@ -6,30 +6,33 @@
 
 #import <WorkflowKit/WFEnumerationParameter.h>
 
-@class NSArray, NSError;
+@class INObjectCollection, NSArray, NSError;
 @protocol WFDynamicEnumerationDataSource;
 
 @interface WFDynamicEnumerationParameter : WFEnumerationParameter
 {
     NSArray *_possibleStates;
+    INObjectCollection *_possibleStatesCollection;
     id _defaultSerializedRepresentation;
     id<WFDynamicEnumerationDataSource> _dataSource;
-    unsigned long long _possibleStatesLoadingState;
     unsigned long long _defaultValueLoadingState;
+    unsigned long long _possibleStatesLoadingState;
     NSError *_possibleStatesLoadingError;
 }
 
 @property (weak, nonatomic) id<WFDynamicEnumerationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (nonatomic) unsigned long long defaultValueLoadingState; // @synthesize defaultValueLoadingState=_defaultValueLoadingState;
-@property (strong, nonatomic) NSArray *possibleStates; // @synthesize possibleStates=_possibleStates;
-@property (strong, nonatomic) NSError *possibleStatesLoadingError; // @synthesize possibleStatesLoadingError=_possibleStatesLoadingError;
-@property (nonatomic) unsigned long long possibleStatesLoadingState; // @synthesize possibleStatesLoadingState=_possibleStatesLoadingState;
+@property (readonly, nonatomic) NSArray *possibleStates; // @synthesize possibleStates=_possibleStates;
+@property (strong, nonatomic) INObjectCollection *possibleStatesCollection; // @synthesize possibleStatesCollection=_possibleStatesCollection;
+@property (readonly, nonatomic) NSError *possibleStatesLoadingError; // @synthesize possibleStatesLoadingError=_possibleStatesLoadingError;
+@property (readonly, nonatomic) unsigned long long possibleStatesLoadingState; // @synthesize possibleStatesLoadingState=_possibleStatesLoadingState;
 
 - (void).cxx_destruct;
 - (id)accessoryColorForPossibleState:(id)arg1;
 - (BOOL)allowsMultipleValues;
 - (BOOL)alwaysShowsButton;
 - (void)clearPossibleStates;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSerializedRepresentation;
 - (void)defaultSerializedRepresentationDidChange;
 - (BOOL)isAsynchronous;
@@ -37,6 +40,9 @@
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (BOOL)parameterStateIsValid:(id)arg1;
 - (void)possibleStatesDidChange;
+- (void)reloadPossibleStates;
+- (void)setPossibleStates:(id)arg1;
+- (void)setPossibleStatesFromRemoteSource:(id)arg1;
 
 @end
 

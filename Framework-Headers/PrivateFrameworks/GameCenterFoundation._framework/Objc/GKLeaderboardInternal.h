@@ -6,26 +6,38 @@
 
 #import <GameCenterFoundation/GKInternalRepresentation.h>
 
-@class GKScoreInternal, NSArray, NSDate, NSDictionary, NSString;
+@class GKPlayerInternal, GKScoreInternal, NSArray, NSDate, NSDictionary, NSString;
 
 @interface GKLeaderboardInternal : GKInternalRepresentation
 {
-    NSString *_identifier;
-    NSString *_groupIdentifier;
-    NSString *_title;
-    NSString *_leaderboardSetIdentifier;
-    NSDate *_lastSubmittedDate;
-    NSDictionary *_icons;
-    unsigned int _overallRank;
-    unsigned int _overallRankCount;
     unsigned short _friendRank;
     unsigned short _friendRankCount;
+    unsigned int _overallRank;
+    unsigned int _overallRankCount;
     unsigned int _maxRank;
+    NSString *_recordID;
+    NSString *_identifier;
+    NSString *_baseLeaderboardID;
+    NSString *_groupIdentifier;
+    NSString *_leaderboardSetIdentifier;
+    NSString *_title;
+    NSDate *_lastSubmittedDate;
+    NSDictionary *_icons;
     NSArray *_scores;
     GKScoreInternal *_playerScore;
+    long long _type;
+    NSDate *_startDate;
+    NSDate *_nextStartDate;
+    double _duration;
+    GKPlayerInternal *_creator;
+    NSString *_context;
 }
 
+@property (strong, nonatomic) NSString *baseLeaderboardID; // @synthesize baseLeaderboardID=_baseLeaderboardID;
 @property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSString *context; // @synthesize context=_context;
+@property (strong, nonatomic) GKPlayerInternal *creator; // @synthesize creator=_creator;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) unsigned short friendRank; // @synthesize friendRank=_friendRank;
 @property (nonatomic) unsigned short friendRankCount; // @synthesize friendRankCount=_friendRankCount;
 @property (strong, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
@@ -36,14 +48,18 @@
 @property (strong, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) unsigned long long maxRange;
 @property (nonatomic) unsigned int maxRank; // @synthesize maxRank=_maxRank;
+@property (strong, nonatomic) NSDate *nextStartDate; // @synthesize nextStartDate=_nextStartDate;
 @property (nonatomic) unsigned int overallRank; // @synthesize overallRank=_overallRank;
 @property (nonatomic) unsigned int overallRankCount; // @synthesize overallRankCount=_overallRankCount;
 @property (strong, nonatomic) GKScoreInternal *playerScore; // @synthesize playerScore=_playerScore;
+@property (strong, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) NSArray *scores; // @synthesize scores=_scores;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)secureCodedPropertyKeys;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 

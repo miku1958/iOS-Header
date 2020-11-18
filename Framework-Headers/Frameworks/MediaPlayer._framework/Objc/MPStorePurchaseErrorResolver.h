@@ -8,6 +8,7 @@
 
 @class NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface MPStorePurchaseErrorResolver : MPAVErrorResolver
 {
     NSNumber *_storeAccountIdentifier;

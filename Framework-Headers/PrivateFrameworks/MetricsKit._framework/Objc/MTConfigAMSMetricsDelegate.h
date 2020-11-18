@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MetricsKit/MTObject.h>
+#import <objc/NSObject.h>
 
 #import <MetricsKit/MTConfigDelegate-Protocol.h>
 
 @class NSString;
 @protocol AMSBagProtocol;
 
-@interface MTConfigAMSMetricsDelegate : MTObject <MTConfigDelegate>
+@interface MTConfigAMSMetricsDelegate : NSObject <MTConfigDelegate>
 {
     id<AMSBagProtocol> _bag;
 }

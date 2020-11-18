@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleChangedRecords:(id)arg1 perRequestSchedulerInfo:(id)arg2;
 - (void)_handleFetchChangesRequestFinishedWithSchedulerInfo:(id)arg1;
 - (void)_handleRecordDelete:(id)arg1 recordType:(id)arg2 perRequestSchedulerInfo:(id)arg3;
-- (void)_noteChangedRecordWithID:(id)arg1 recordType:(id)arg2 record:(id)arg3 error:(id)arg4;
+- (void)_noteChangedRecordWithID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)_noteCompletedURLRequest:(id)arg1 withSchedulerInfo:(id)arg2;
 - (void)_noteDeletedRecordWithID:(id)arg1 recordType:(id)arg2;
 - (void)_noteOperationBeginning;
@@ -67,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (id)relevantZoneIDs;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

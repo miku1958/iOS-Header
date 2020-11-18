@@ -108,13 +108,15 @@
 - (id)dictionaryRepresentation;
 - (long long)geoIdAtIndex:(unsigned long long)arg1;
 - (id)initWithAddressDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithPostalAddress:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEmpty;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)postalAddress;
-- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setGeoIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (id)subPremiseAtIndex:(unsigned long long)arg1;

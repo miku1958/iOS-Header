@@ -32,9 +32,13 @@
 + (id)logCategory;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 error:(id *)arg3;
+- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(BOOL)arg3 sessionIdentifier:(id)arg4 homeUUID:(id)arg5 error:(id *)arg6;
 - (BOOL)ensureFrameAnalyzerWithError:(id *)arg1;
+- (double)eventConfidenceFaceThresholdFromTrial;
+- (id)eventConfidenceThresholdsHighFromTrial;
+- (id)eventConfidenceThresholdsMediumFromTrial;
 - (id)getConfidenceThresholdPreferenceForKey:(id)arg1 defaultConfidenceThreshold:(double)arg2;
+- (void)handleMotionDetection:(id)arg1 sessionPTS:(CDStruct_1b6d18a9)arg2 frameDimensions:(struct CGSize)arg3 sessionIdentifier:(id)arg4;
 - (id)init;
 - (double)modelTimeoutPreference;
 - (void)preAnalyze:(id)arg1;

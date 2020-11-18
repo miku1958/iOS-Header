@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (Email)
++ (BOOL)em_defaultExistsForKey:(id)arg1;
 + (void)em_migrateDefault:(id)arg1;
 + (id)em_userDefaults;
 @end

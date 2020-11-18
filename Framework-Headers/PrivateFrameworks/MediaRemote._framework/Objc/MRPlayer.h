@@ -6,29 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, _MRNowPlayingPlayerProtobuf;
+#import <MediaRemote/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRPlayer : NSObject
+@class NSData, NSSet, NSString;
+
+@interface MRPlayer : NSObject <NSCopying>
 {
     NSString *_identifier;
     NSString *_displayName;
     long long _audioSessionType;
+    NSSet *_mxSessionIDs;
 }
 
 @property (nonatomic) long long audioSessionType; // @synthesize audioSessionType=_audioSessionType;
 @property (readonly, copy, nonatomic) NSData *data;
+@property (readonly, nonatomic, getter=isDefaultPlayer) BOOL defaultPlayer;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) BOOL hasAuxiliaryProperties;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) _MRNowPlayingPlayerProtobuf *protobuf;
+@property (copy, nonatomic) NSSet *mxSessionIDs; // @synthesize mxSessionIDs=_mxSessionIDs;
+@property (readonly, nonatomic) MRPlayer *skeleton;
 
 + (id)defaultPlayer;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithData:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 displayName:(id)arg2;
-- (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)mergeFrom:(id)arg1;
 
 @end
 

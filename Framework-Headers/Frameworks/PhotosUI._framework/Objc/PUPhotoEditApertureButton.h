@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)_cursorInteractionEnabled;
-- (struct CGRect)_cursorRect;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (struct CGRect)_pointerRect;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 
 @end
 

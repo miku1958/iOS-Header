@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class OSLogEventLiveStream, SignpostIntervalBuilder, SignpostSupportExactProcessNameFilter, SignpostSupportObjectFilter, SignpostSupportPIDFilter, SignpostSupportSubsystemCategoryFilter, SignpostSupportUniquePIDFilter;
+@class NSUUID, OSLogEventLiveStream, SignpostIntervalBuilder, SignpostSupportExactProcessNameFilter, SignpostSupportObjectFilter, SignpostSupportPIDFilter, SignpostSupportSubsystemCategoryFilter, SignpostSupportUniquePIDFilter;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface SignpostSupportObjectExtractor : NSObject
@@ -32,6 +32,7 @@
     CDUnknownBlockType _timedOutBeginEventProcessingBlock;
     NSObject<OS_dispatch_semaphore> *_completionSemaphore;
     NSObject<OS_dispatch_semaphore> *_syncSem;
+    NSUUID *_currentBootUUID;
     unsigned long long __notificationTimeout;
     NSObject<OS_dispatch_queue> *_notificationProcessingQueue;
     OSLogEventLiveStream *__liveStream;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) CDUnknownBlockType beginEventProcessingBlock; // @synthesize beginEventProcessingBlock=_beginEventProcessingBlock;
 @property (nonatomic) BOOL buildAnimationCompositeIntervalTimelines;
 @property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *completionSemaphore; // @synthesize completionSemaphore=_completionSemaphore;
+@property (strong, nonatomic) NSUUID *currentBootUUID; // @synthesize currentBootUUID=_currentBootUUID;
 @property (copy, nonatomic) CDUnknownBlockType deviceRebootProcessingBlock; // @synthesize deviceRebootProcessingBlock=_deviceRebootProcessingBlock;
 @property (copy, nonatomic) CDUnknownBlockType emitEventProcessingBlock; // @synthesize emitEventProcessingBlock=_emitEventProcessingBlock;
 @property (copy, nonatomic) CDUnknownBlockType endEventProcessingBlock; // @synthesize endEventProcessingBlock=_endEventProcessingBlock;
@@ -72,6 +74,7 @@
 - (BOOL)_eventPassesWithPid:(int)arg1 uniquePid:(unsigned long long)arg2 processName:(id)arg3 subsystem:(id)arg4 category:(id)arg5;
 - (BOOL)_generateIntervalFromEnd:(id)arg1 shouldReport:(BOOL)arg2;
 - (BOOL)_hasNonObjectFilters;
+- (BOOL)_hasProcessingBlock;
 - (BOOL)_hasSignpostProcessingBlock;
 - (BOOL)_isTrackingIntervals;
 - (id)_loggingSupportStreamPredicateFromFiltersWithForLiveStreaming:(BOOL)arg1;

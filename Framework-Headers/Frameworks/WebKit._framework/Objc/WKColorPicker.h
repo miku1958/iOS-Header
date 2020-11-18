@@ -9,14 +9,15 @@
 #import <WebKit/WKColorMatrixViewDelegate-Protocol.h>
 #import <WebKit/WKFormControl-Protocol.h>
 
-@class WKContentView;
+@class WKColorPopover, WKContentView;
 
 __attribute__((visibility("hidden")))
 @interface WKColorPicker : NSObject <WKFormControl, WKColorMatrixViewDelegate>
 {
     WKContentView *_view;
-    struct RetainPtr<UIView> _colorPicker;
-    struct RetainPtr<UIView> _colorSelectionIndicator;
+    WKColorPopover *_popover;
+    RetainPtr_1ac284e4 _colorPicker;
+    RetainPtr_1ac284e4 _colorSelectionIndicator;
     struct RetainPtr<CAShapeLayer> _colorSelectionIndicatorBorder;
     struct RetainPtr<WKColorMatrixView> _topColorMatrix;
     struct RetainPtr<WKColorMatrixView> _mainColorMatrix;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)didPanColors:(id)arg1;
 - (void)drawSelectionIndicatorForColorButton:(id)arg1;
 - (id)initWithView:(id)arg1;
+- (id)initWithView:(id)arg1 inPopover:(id)arg2;
 - (void)setControlValueFromUIColor:(id)arg1;
 
 @end

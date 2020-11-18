@@ -9,10 +9,12 @@
 @interface AVAsset (TSUAdditions)
 
 @property (readonly, nonatomic) struct CGSize naturalSizeWithPreferredTransforms;
+@property (readonly, nonatomic) BOOL tsu_containsHDRContent;
 @property (readonly, nonatomic) BOOL tsu_isPlayable;
 
 + (id)keyPathsForValuesAffectingNaturalSizeWithPreferredTransforms;
 + (id)keyPathsForValuesAffectingTsu_isPlayable;
++ (id)tsu_containsHDRContentKeys;
 + (id)tsu_playableKeysWithKeys:(id)arg1;
 - (BOOL)p_doesTrack:(id)arg1 matchCodecTypes:(id)arg2;
 - (void)tsu_loadValuesAsynchronouslyForKeys:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

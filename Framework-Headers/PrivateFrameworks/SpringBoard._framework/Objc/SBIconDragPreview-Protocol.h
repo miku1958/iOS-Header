@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class SBIcon;
+@class NSString, SBIcon;
 
 @protocol SBIconDragPreview
 
@@ -12,11 +12,14 @@
 @property (nonatomic, getter=isFlocked) BOOL flocked;
 @property (strong, nonatomic) SBIcon *icon;
 @property (nonatomic) BOOL iconAllowsLabelArea;
+@property (nonatomic) BOOL iconCanShowCloseBox;
 @property (nonatomic) double iconContentScale;
 @property (nonatomic) BOOL iconIsEditing;
 
 - (void)draggingSourceCancelAnimationCompleted;
 - (void)draggingSourceDroppedWithOperation:(unsigned long long)arg1;
 - (void)dropDestinationAnimationCompleted;
+- (void)setIconIsEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)updateDestinationIconLocation:(NSString *)arg1 animated:(BOOL)arg2;
 @end
 

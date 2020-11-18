@@ -36,6 +36,7 @@
 - (BOOL)_canPopulateCacheForResult:(id)arg1;
 - (void)_commitCacheChanges;
 - (void)_handleCachingImageRequestResult:(id)arg1 request:(id)arg2 context:(id)arg3;
+- (void)_handleMemoryWarning;
 - (id)_imageTableForPreheatingDegradedOpportunisticRequestsWithPhotoLibrary:(id)arg1;
 - (void)_preheatImageTable:(id)arg1 forAssets:(id)arg2;
 - (void)_scheduleOrCommitCacheChangesIfNeeded;

@@ -16,6 +16,7 @@
     BOOL _isSandboxAccount;
     NSString *_aidaAlternateDSID;
     NSString *_aidaToken;
+    NSString *_aaDSID;
     NSString *_aaAlternateDSID;
     NSString *_appleID;
     NSString *_firstName;
@@ -24,6 +25,7 @@
 }
 
 @property (copy, nonatomic) NSString *aaAlternateDSID; // @synthesize aaAlternateDSID=_aaAlternateDSID;
+@property (copy, nonatomic) NSString *aaDSID; // @synthesize aaDSID=_aaDSID;
 @property (copy, nonatomic) NSString *aidaAlternateDSID; // @synthesize aidaAlternateDSID=_aidaAlternateDSID;
 @property (copy, nonatomic) NSString *aidaToken; // @synthesize aidaToken=_aidaToken;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;

@@ -7,6 +7,8 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (NUIContainerView)
+- (double)_nui_lineHeight;
+- (BOOL)canUseFastLayoutSizeCalulation;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 @end
 

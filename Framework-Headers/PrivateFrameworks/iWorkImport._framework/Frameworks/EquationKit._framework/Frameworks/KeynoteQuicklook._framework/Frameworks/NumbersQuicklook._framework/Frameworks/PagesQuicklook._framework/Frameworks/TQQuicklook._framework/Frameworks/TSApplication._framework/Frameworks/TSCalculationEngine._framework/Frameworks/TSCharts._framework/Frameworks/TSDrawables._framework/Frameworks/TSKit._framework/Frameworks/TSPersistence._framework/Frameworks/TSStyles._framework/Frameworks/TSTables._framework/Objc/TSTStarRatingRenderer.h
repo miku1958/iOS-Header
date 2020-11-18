@@ -12,6 +12,7 @@
 
 + (struct CGPath *)p_newStarPath:(double)arg1;
 + (void)renderRating:(double)arg1 intoContext:(struct CGContext *)arg2 rect:(struct CGRect)arg3 showDots:(BOOL)arg4 color:(struct CGColor *)arg5;
++ (void)renderRating:(double)arg1 intoContext:(struct CGContext *)arg2 rect:(struct CGRect)arg3 showDots:(BOOL)arg4 color:(struct CGColor *)arg5 useMinimalSpace:(BOOL)arg6;
 
 @end
 

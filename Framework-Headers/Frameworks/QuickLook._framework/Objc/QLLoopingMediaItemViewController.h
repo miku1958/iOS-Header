@@ -6,19 +6,17 @@
 
 #import <QuickLook/QLMediaItemBaseViewController.h>
 
-@class AVQueuePlayer, UIColor;
+@class AVQueuePlayer;
 
 __attribute__((visibility("hidden")))
 @interface QLLoopingMediaItemViewController : QLMediaItemBaseViewController
 {
     AVQueuePlayer *_queuePlayer;
     BOOL _addedObservers;
-    UIColor *_fullscreenBackgroundColor;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)fullscreenBackgroundColor;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)pause;

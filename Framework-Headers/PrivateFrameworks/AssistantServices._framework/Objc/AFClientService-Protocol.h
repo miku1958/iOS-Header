@@ -19,7 +19,6 @@
 - (oneway void)_pingServiceForIdentifier:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (oneway void)_refreshAssistantValidation;
 - (oneway void)_requestBarrierWithReply:(void (^)(void))arg1;
-- (oneway void)_sendFeedbackToAppPreferencesPredictorForMetricsContext:(NSString *)arg1 selectedBundleId:(NSString *)arg2;
 - (oneway void)_sendLargeData:(NSData *)arg1 reply:(void (^)(NSString *, NSData *))arg2;
 - (oneway void)_startSpeechWithURL:(NSURL *)arg1 isNarrowBand:(BOOL)arg2;
 - (oneway void)adviseSessionArbiterToContinueWithPreviousWinner:(BOOL)arg1;
@@ -45,6 +44,8 @@
 - (oneway void)recordFailureMetricsForError:(NSError *)arg1;
 - (oneway void)recordUIMetrics:(AFMetrics *)arg1;
 - (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 context:(NSDictionary *)arg3;
+- (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 subtype:(NSString *)arg3 context:(NSDictionary *)arg4;
+- (oneway void)reportIssueForType:(NSString *)arg1 subtype:(NSString *)arg2 context:(NSDictionary *)arg3;
 - (oneway void)requestStateUpdateWithReply:(void (^)(BOOL, unsigned int))arg1;
 - (oneway void)resumeInterruptedAudioPlaybackIfNeeded;
 - (oneway void)rollbackClearContext;

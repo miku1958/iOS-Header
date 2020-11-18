@@ -31,8 +31,8 @@
 - (void)_transitionToInactiveState;
 - (void)dealloc;
 - (id)init;
-- (void)messageEntry:(id)arg1 didAppearFromTargetWithIdentifier:(id)arg2;
-- (void)messageWithIdentifier:(id)arg1 didDisappearFromTargetWithIdentifier:(id)arg2;
+- (void)messageEntry:(id)arg1 didAppearFromTargetWithIdentifier:(id)arg2 atTime:(id)arg3;
+- (void)messageWithIdentifier:(id)arg1 didDisappearFromTargetWithIdentifier:(id)arg2 atTime:(id)arg3;
 
 @end
 

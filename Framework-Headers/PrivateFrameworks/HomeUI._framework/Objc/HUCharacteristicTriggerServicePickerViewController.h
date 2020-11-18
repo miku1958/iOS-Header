@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) HFCharacteristicTriggerBuilder *characteristicTriggerBuilder;
 @property (weak, nonatomic) id<HUTriggerEditorDelegate> delegate;
+@property (copy, nonatomic) CDUnknownBlockType filter;
 @property (readonly, nonatomic) unsigned long long mode;
 @property (readonly, nonatomic) HUCharacteristicTriggerServicePickerContentViewController *servicePickerContentViewController;
 @property (readonly, nonatomic) unsigned long long source;

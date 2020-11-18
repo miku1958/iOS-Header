@@ -31,6 +31,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(int)arg1 data:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)validateObject:(id *)arg1;
 
 @end

@@ -25,12 +25,12 @@
 - (id)_axMessageForBalloon;
 - (id)_axMessageSender;
 - (id)_axMessageTime;
-- (void)_axPerformInterfaceAction:(id)arg1;
 - (id)_axStickerDescription;
 - (void)_axTapback;
 - (id)accessibilityCustomActions;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityTextualContext;
+- (void)axPerformInterfaceAction:(id)arg1;
 - (BOOL)isAccessibilityElement;
 
 @end

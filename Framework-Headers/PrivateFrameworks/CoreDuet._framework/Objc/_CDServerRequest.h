@@ -24,28 +24,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSHTTPURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
-@property (strong) NSMutableURLRequest *request; // @synthesize request=_request;
-@property (strong) NSMutableData *responseData; // @synthesize responseData=_responseData;
-@property (copy) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
-@property (strong) NSURLSession *session; // @synthesize session=_session;
-@property (strong) NSOperationQueue *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
 @property (readonly) Class superclass;
 
-+ (void)addHTTPIfModifiedSinceToHeaders:(id)arg1 date:(id)arg2;
-+ (id)getHTTPModifiedSinceFromHeaders:(id)arg1;
 - (void).cxx_destruct;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
-- (id)_newDefaultSession;
-- (id)_requestForMethod:(id)arg1 URI:(id)arg2 queryItems:(id)arg3 headers:(id)arg4 body:(id)arg5 timeoutInterval:(double)arg6;
 - (id)init;
-- (id)startDataTaskWithURI:(id)arg1 headers:(id)arg2 timeoutInterval:(double)arg3 responseHandler:(CDUnknownBlockType)arg4;
-- (id)startDownloadTaskWithURI:(id)arg1 headers:(id)arg2 timeoutInterval:(double)arg3 responseHandler:(CDUnknownBlockType)arg4;
 
 @end
 

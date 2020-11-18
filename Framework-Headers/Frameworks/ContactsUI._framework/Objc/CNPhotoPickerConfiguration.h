@@ -15,16 +15,20 @@ __attribute__((visibility("hidden")))
     BOOL _includeMonograms;
     BOOL _includeAnimoji;
     BOOL _includeRecents;
+    BOOL _includeEmoji;
     BOOL _allowPhotoCapture;
+    BOOL _allowPhotoFromLibrary;
     BOOL _allowAnimojiCreation;
     BOOL _allowRotation;
 }
 
 @property (readonly, nonatomic) BOOL allowAnimojiCreation; // @synthesize allowAnimojiCreation=_allowAnimojiCreation;
 @property (readonly, nonatomic) BOOL allowPhotoCapture; // @synthesize allowPhotoCapture=_allowPhotoCapture;
+@property (readonly, nonatomic) BOOL allowPhotoFromLibrary; // @synthesize allowPhotoFromLibrary=_allowPhotoFromLibrary;
 @property (readonly, nonatomic) BOOL allowRotation; // @synthesize allowRotation=_allowRotation;
 @property (readonly, nonatomic) BOOL includeAnimoji; // @synthesize includeAnimoji=_includeAnimoji;
 @property (readonly, nonatomic) BOOL includeContactImage; // @synthesize includeContactImage=_includeContactImage;
+@property (readonly, nonatomic) BOOL includeEmoji; // @synthesize includeEmoji=_includeEmoji;
 @property (readonly, nonatomic) BOOL includeFaces; // @synthesize includeFaces=_includeFaces;
 @property (readonly, nonatomic) BOOL includeMonograms; // @synthesize includeMonograms=_includeMonograms;
 @property (readonly, nonatomic) BOOL includeRecents; // @synthesize includeRecents=_includeRecents;
@@ -34,7 +38,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultConfiguration;
 + (id)gameCenterConfiguration;
 - (id)configurationBySettingAllowsPhotoCapture:(BOOL)arg1;
-- (id)initWithIncludeContactImage:(BOOL)arg1 includeUnifiedContactImages:(BOOL)arg2 includeFaces:(BOOL)arg3 includeMonograms:(BOOL)arg4 includeAnimoji:(BOOL)arg5 includeRecents:(BOOL)arg6 allowPhotoCapture:(BOOL)arg7 allowAnimojiCreation:(BOOL)arg8 allowRotation:(BOOL)arg9;
+- (id)initWithIncludeContactImage:(BOOL)arg1 includeUnifiedContactImages:(BOOL)arg2 includeFaces:(BOOL)arg3 includeMonograms:(BOOL)arg4 includeAnimoji:(BOOL)arg5 includeRecents:(BOOL)arg6 includeEmoji:(BOOL)arg7 allowPhotoCapture:(BOOL)arg8 allowPhotoFromLibrary:(BOOL)arg9 allowAnimojiCreation:(BOOL)arg10 allowRotation:(BOOL)arg11;
 
 @end
 

@@ -35,7 +35,6 @@
 - (void)_createDefaultSession;
 - (void)_loadDefaultSessionIfNeeded;
 - (id)_yahooDoppelganger_taskForRequest:(id)arg1 delegate:(id)arg2;
-- (id)aggregateDictionaryDomain;
 - (void)cancel;
 - (void)cancelAndInvalidate;
 - (void)dealloc;

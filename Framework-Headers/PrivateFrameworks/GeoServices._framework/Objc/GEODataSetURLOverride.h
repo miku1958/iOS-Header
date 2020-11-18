@@ -52,23 +52,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_problemSubmissionURL:1;
         unsigned int read_simpleETAURL:1;
         unsigned int read_spatialLookupURL:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressCorrectionInitURL:1;
-        unsigned int wrote_addressCorrectionUpdateURL:1;
-        unsigned int wrote_announcementsURL:1;
-        unsigned int wrote_batchReverseGeocoderURL:1;
-        unsigned int wrote_businessPortalBaseURL:1;
-        unsigned int wrote_directionsURL:1;
-        unsigned int wrote_dispatcherURL:1;
-        unsigned int wrote_etaURL:1;
-        unsigned int wrote_logMessageUsageURL:1;
-        unsigned int wrote_problemCategoriesURL:1;
-        unsigned int wrote_problemOptInURL:1;
-        unsigned int wrote_problemStatusURL:1;
-        unsigned int wrote_problemSubmissionURL:1;
-        unsigned int wrote_simpleETAURL:1;
-        unsigned int wrote_spatialLookupURL:1;
-        unsigned int wrote_dataSet:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -108,21 +92,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAddressCorrectionInitURL;
-- (void)_readAddressCorrectionUpdateURL;
-- (void)_readAnnouncementsURL;
-- (void)_readBatchReverseGeocoderURL;
-- (void)_readBusinessPortalBaseURL;
-- (void)_readDirectionsURL;
-- (void)_readDispatcherURL;
-- (void)_readEtaURL;
-- (void)_readLogMessageUsageURL;
-- (void)_readProblemCategoriesURL;
-- (void)_readProblemOptInURL;
-- (void)_readProblemStatusURL;
-- (void)_readProblemSubmissionURL;
-- (void)_readSimpleETAURL;
-- (void)_readSpatialLookupURL;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -131,7 +100,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

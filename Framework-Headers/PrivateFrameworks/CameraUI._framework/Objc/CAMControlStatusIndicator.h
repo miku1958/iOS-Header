@@ -8,7 +8,7 @@
 
 #import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 
-@class NSString, UIImageView, UILabel;
+@class CAMSlashMaskView, CAMSlashView, NSString, UIImageView, UILabel, UIView;
 @protocol CAMControlStatusIndicatorDelegate;
 
 @interface CAMControlStatusIndicator : UIControl <CAMAccessibilityHUDItemProvider>
@@ -20,12 +20,18 @@
     UIImageView *__imageView;
     UIImageView *__outlineView;
     UILabel *__valueLabel;
+    CAMSlashView *__slashView;
+    CAMSlashMaskView *__slashMaskView;
+    UIView *__slashMaskContainer;
     struct CGSize __valueLabelSize;
 }
 
 @property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property (nonatomic, setter=_setNeedsUpdateValueText:) BOOL _needsUpdateValueText; // @synthesize _needsUpdateValueText=__needsUpdateValueText;
 @property (readonly, nonatomic) UIImageView *_outlineView; // @synthesize _outlineView=__outlineView;
+@property (readonly, nonatomic) UIView *_slashMaskContainer; // @synthesize _slashMaskContainer=__slashMaskContainer;
+@property (readonly, nonatomic) CAMSlashMaskView *_slashMaskView; // @synthesize _slashMaskView=__slashMaskView;
+@property (readonly, nonatomic) CAMSlashView *_slashView; // @synthesize _slashView=__slashView;
 @property (readonly, nonatomic) UILabel *_valueLabel; // @synthesize _valueLabel=__valueLabel;
 @property (nonatomic, setter=_setValueLabelSize:) struct CGSize _valueLabelSize; // @synthesize _valueLabelSize=__valueLabelSize;
 @property (readonly, nonatomic) BOOL canAnimate;
@@ -46,6 +52,7 @@
 - (void).cxx_destruct;
 - (double)_additionalWidthForValue;
 - (void)_updateImageOrientationAnimated:(BOOL)arg1;
+- (void)_updateSlashAnimated:(BOOL)arg1;
 - (void)_updateValueLabelVisibilityAnimated:(BOOL)arg1;
 - (void)_updateValueText;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
@@ -61,11 +68,15 @@
 - (void)setShowingValue:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldFillOutlineForCurrentState;
 - (BOOL)shouldShowOutlineForCurrentState;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
 - (BOOL)shouldUseOutline;
+- (BOOL)shouldUseSlash;
 - (void)startAnimating;
 - (void)stopAnimating;
+- (BOOL)supportsOrientations;
 - (void)updateImage;
+- (void)updateImageAnimated:(BOOL)arg1;
 - (id)valueText;
 
 @end

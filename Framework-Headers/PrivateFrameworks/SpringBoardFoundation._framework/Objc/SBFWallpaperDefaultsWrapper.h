@@ -20,6 +20,7 @@
     NSString *_wallpaperName;
     NSData *_imageHashData;
     long long _wallpaperMode;
+    NSDictionary *_wallpaperKitData;
     double _stillTimeInVideo;
     NSString *_wallpaperIdentifier;
     NSDictionary *_wallpaperOptions;
@@ -41,6 +42,7 @@
 @property (nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
 @property (nonatomic) BOOL supportsCropping; // @synthesize supportsCropping=_supportsCropping;
 @property (strong, nonatomic) NSString *wallpaperIdentifier; // @synthesize wallpaperIdentifier=_wallpaperIdentifier;
+@property (strong, nonatomic) NSDictionary *wallpaperKitData; // @synthesize wallpaperKitData=_wallpaperKitData;
 @property (nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
 @property (strong, nonatomic) NSString *wallpaperName; // @synthesize wallpaperName=_wallpaperName;
 @property (strong, nonatomic) NSDictionary *wallpaperOptions; // @synthesize wallpaperOptions=_wallpaperOptions;

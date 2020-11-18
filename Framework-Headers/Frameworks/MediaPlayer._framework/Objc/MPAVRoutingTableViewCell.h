@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
-@class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
+@class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel, UIView;
 @protocol MPAVRoutingTableViewCellDelegate;
 
 @interface MPAVRoutingTableViewCell : MPAVClippingTableViewCell <MPAVRoutingThemeableCellView>
@@ -20,6 +20,8 @@
     UIActivityIndicatorView *_spinnerView;
     UIImageView *_smartAudioImageView;
     UIImageView *_checkmarkImageView;
+    UIImageView *_chevronImageView;
+    UIView *_expandTargetView;
     BOOL _mirroringSwitchVisible;
     BOOL _pendingSelection;
     BOOL _isDisplayedAsPicked;
@@ -61,12 +63,14 @@
 - (void)_configureLabel:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_iconImageForRoute:(id)arg1;
+- (id)_iconImageForRoutes:(id)arg1;
 - (id)_pairedDeviceTextForRoute:(id)arg1;
 - (BOOL)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
 - (void)_updateAccessory;
 - (void)_updateSpinnerColor;
 - (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
 - (void)dealloc;
+- (void)didTapToExpand;
 - (id)iconView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

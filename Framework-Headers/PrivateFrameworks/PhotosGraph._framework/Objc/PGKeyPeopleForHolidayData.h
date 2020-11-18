@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSString, PGGraphNode, PGGraphPersonNode;
+@class NSMutableSet, NSString, PGGraphPersonNode, PGGraphSocialGroupNode;
 
 @interface PGKeyPeopleForHolidayData : NSObject
 {
     NSMutableSet *_holidayRules;
-    PGGraphNode *_socialGroupNode;
+    PGGraphSocialGroupNode *_socialGroupNode;
     PGGraphPersonNode *_personNode;
     NSMutableSet *_momentNodes;
 }
@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSMutableSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property (strong, nonatomic) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 @property (readonly) double score;
-@property (strong, nonatomic) PGGraphNode *socialGroupNode; // @synthesize socialGroupNode=_socialGroupNode;
+@property (strong, nonatomic) PGGraphSocialGroupNode *socialGroupNode; // @synthesize socialGroupNode=_socialGroupNode;
 @property (readonly) NSString *uuid;
 
 - (void).cxx_destruct;

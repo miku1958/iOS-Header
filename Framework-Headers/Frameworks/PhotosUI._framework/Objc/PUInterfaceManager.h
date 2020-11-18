@@ -30,10 +30,8 @@
 + (void)_handleInteractionDisablingTimeoutForStartSlideshowFromGrid;
 + (id)beginDisablingUserInteractionForReason:(long long)arg1;
 + (id)beginDisablingUserInteractionForReason:(long long)arg1 withExpectedTimeout:(double)arg2;
-+ (void)beginUsingOrbTheme;
 + (id)currentTheme;
 + (void)endDisablingUserInteraction:(id)arg1;
-+ (void)endUsingOrbTheme;
 + (BOOL)shouldUseAccessibilityLargeTextLayoutWithTraitCollecton:(id)arg1;
 + (BOOL)shouldUsePhoneLayoutWithTraitCollection:(id)arg1;
 

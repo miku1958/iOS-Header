@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface STKTextInputSessionData : STKTextSessionData
 {
     NSString *_defaultText;
@@ -25,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithText:(id)arg1;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

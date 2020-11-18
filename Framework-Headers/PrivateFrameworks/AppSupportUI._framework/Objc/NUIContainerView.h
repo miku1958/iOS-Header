@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSMutableArray, NUIMultilineSizingHelper;
+@class NSArray, NSMutableArray;
 @protocol NUIContainerViewDelegate;
 
 @interface NUIContainerView : UIView
@@ -16,7 +16,6 @@
     struct map<UIView *, _NUIContainerViewArrangedSubview, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, _NUIContainerViewArrangedSubview>>> _arrangedSubviewInfo;
     NSMutableArray *_arrangedSubviews;
     NSArray *_visibleArrangedSubviews;
-    NUIMultilineSizingHelper *_multilineSizeHelper;
     struct UIEdgeInsets _effectiveLayoutMargins;
     UIView *_firstBaselineView;
     UIView *_lastBaselineView;
@@ -28,7 +27,11 @@
         unsigned int inLayoutPass:2;
         unsigned int inMeasurementPass:2;
         unsigned int layoutDependency:2;
+        unsigned int removalPolicy:2;
+        unsigned int removalPolicyHasBeenSet:1;
+        unsigned int additionPolicy:1;
         unsigned int inEnsureArranged:1;
+        unsigned int inEffectiveSize:1;
         unsigned int hasMargins:1;
         unsigned int sizeIsInvalid:1;
         unsigned int debugBoundingBoxes:1;
@@ -44,6 +47,8 @@
     } _containerFlags;
 }
 
+@property (nonatomic) long long arrangedSubviewAdditionPolicy;
+@property (nonatomic) long long arrangedSubviewRemovalPolicy;
 @property (copy, nonatomic) NSArray *arrangedSubviews;
 @property (nonatomic, getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement;
 @property (nonatomic, getter=hasBaselineRelativeLayoutMarginsForArrangement) BOOL baselineRelativeLayoutMarginsForArrangement;
@@ -60,23 +65,16 @@
 + (void)setEnableAPIMisuseAssertions:(BOOL)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addAsSubviewIfNeeded:(id)arg1;
-- (unsigned int)_countHiddenArrangesSubviews;
+- (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
-- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (BOOL)_isContainerView;
-- (BOOL)_needsDoubleUpdateConstraintsPass;
-- (void)_prepareForFirstIntrinsicContentSizeCalculation;
-- (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
-- (void)_resetToBeginningOfDoublePass;
-- (void)_setInSecondConstraintsPass:(BOOL)arg1;
-- (void)_updateDebugBoundingBoxesIfNeeded;
-- (BOOL)_verifyInternalConsistencyWarningOnly:(BOOL)arg1;
+- (BOOL)_layoutHeightDependsOnWidth;
+- (void)_setHasValidSize;
 - (void)addArrangedSubview:(id)arg1;
 - (long long)alignmentForView:(id)arg1 inAxis:(long long)arg2;
 - (id)arrangedDescription;
 - (void)assertNotInLayoutPass:(BOOL)arg1;
-- (void)beginBatchUpdates;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (id)calculateViewForFirstBaselineLayout;
 - (id)calculateViewForLastBaselineLayout;
@@ -92,18 +90,16 @@
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (struct CGRect)effectiveLayoutBounds;
 - (struct UIEdgeInsets)effectiveLayoutMargins;
-- (void)endBatchUpdates;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)ensureArrangedSubviewsAreValid;
 - (unsigned long long)indexOfArrangedSubview:(id)arg1;
 - (id)initWithArrangedSubviews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertArrangedSubview:(id)arg1 atIndex:(unsigned long long)arg2;
-- (struct CGSize)intrinsicContentSize;
 - (void)intrinsicContentSizeDidInvalidateForArrangedSubview:(id)arg1;
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isInBatchUpdate;
-- (BOOL)isInLayoutPass;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
@@ -114,6 +110,7 @@
 - (BOOL)needsBaselineDebugBoundingBoxesForArrangedSubview:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (struct CGPoint)positionAdjustmentOffsetForView:(id)arg1;
 - (void)removeArrangedSubview:(id)arg1;
 - (void)replaceArrangedSubview:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)replaceArrangedSubviewAtIndex:(unsigned long long)arg1 withView:(id)arg2;
@@ -121,10 +118,10 @@
 - (void)setMinimumSpacing:(struct NSDirectionalEdgeInsets)arg1 adjacentToView:(id)arg2;
 - (BOOL)setNeedsInvalidation:(long long)arg1;
 - (void)setNeedsLayout;
+- (void)setPositionAdjustmentOffset:(struct CGPoint)arg1 forView:(id)arg2;
 - (BOOL)shouldCancelMeasurementForCompressionInAxis:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
-- (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 - (void)visibilityDidChangeForArrangedSubview:(id)arg1;

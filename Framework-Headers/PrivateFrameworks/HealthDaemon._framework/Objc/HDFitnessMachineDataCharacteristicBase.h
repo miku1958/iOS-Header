@@ -9,12 +9,13 @@
 #import <HealthDaemon/HDDatumRendering-Protocol.h>
 #import <HealthDaemon/HDHealthServiceCharacteristic-Protocol.h>
 
-@class NSDate, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface HDFitnessMachineDataCharacteristicBase : HDHealthServiceCharacteristic <HDDatumRendering, HDHealthServiceCharacteristic>
 {
 }
 
+@property (readonly, copy, nonatomic) NSArray *allFields;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned short elapsedTime;
@@ -26,7 +27,6 @@
 + (id)_buildWithBinaryValue:(id)arg1 error:(id *)arg2;
 + (unsigned char)flagFieldLength;
 + (id)uuid;
-- (id)allFields;
 - (id)generateDatums:(id)arg1;
 - (id)getBinaryValueWithError:(id *)arg1;
 

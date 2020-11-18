@@ -6,13 +6,14 @@
 
 #import <AXMediaUtilities/NSObject-Protocol.h>
 
-@class AXMAVCaptureSessionNode, AXMSourceNode, AXMVisionPipelineContext;
+@class AXMAVCaptureSessionNode, AXMSourceNode, AXMVisionEngineNode, AXMVisionPipelineContext;
 
 @protocol AXMVisionEngineNodeConnectionDelegate <NSObject>
 - (void)captureSessionNodeDidBeginProcessingFrames:(AXMAVCaptureSessionNode *)arg1;
 - (void)captureSessionNodeDidDropFrame:(AXMAVCaptureSessionNode *)arg1;
 - (void)captureSessionNodeDidEndProcessingFrames:(AXMAVCaptureSessionNode *)arg1;
 - (void)captureSessionNodeWillProcessFrame:(AXMAVCaptureSessionNode *)arg1;
+- (BOOL)diagnosticsEnabled:(AXMVisionEngineNode *)arg1;
 - (BOOL)engineWillAcceptTiggerWithSource:(AXMSourceNode *)arg1;
 - (void)triggerWithSource:(AXMSourceNode *)arg1 context:(AXMVisionPipelineContext *)arg2;
 @end

@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) long long absoluteSupport; // @dynamic absoluteSupport;
 @property (strong, nonatomic) NSSet *antecedentOfRules; // @dynamic antecedentOfRules;
 @property (strong, nonatomic) NSSet *consequentOfRules; // @dynamic consequentOfRules;
 @property (copy, nonatomic) NSString *normalizedValue; // @dynamic normalizedValue;

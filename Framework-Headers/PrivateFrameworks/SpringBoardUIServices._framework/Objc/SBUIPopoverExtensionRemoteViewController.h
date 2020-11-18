@@ -23,6 +23,7 @@
 + (BOOL)_isSecureForRemoteViewService;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_setupChildViewController:(id)arg1;
 - (void)_updateForBundleIdentifier:(id)arg1;
 - (void)_willAppearInRemoteViewController:(id)arg1;

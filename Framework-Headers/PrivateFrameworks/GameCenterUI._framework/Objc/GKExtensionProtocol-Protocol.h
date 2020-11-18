@@ -21,5 +21,6 @@
 - (void)remoteViewControllerDidCancel;
 - (void)remoteViewControllerDidFinish;
 - (void)setValue:(NSObject *)arg1 forKeyPath:(NSString *)arg2 withReply:(void (^)(BOOL))arg3;
+- (void)tearDownExtensionWithReply:(void (^)(BOOL))arg1;
 @end
 

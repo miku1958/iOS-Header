@@ -12,18 +12,23 @@
 #import <SpringBoard/SBFAuthenticationResponder-Protocol.h>
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
 #import <SpringBoard/SBFluidGestureDismissable-Protocol.h>
+#import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
+#import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/SiriPresentationSpringBoardMainScreenViewControllerDelegate-Protocol.h>
+#import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantWindow, SBFAuthenticationAssertion, SBFluidDismissalState, SBHomeGestureParticipant, SBSystemAnimationSettings, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion;
+@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantActiveInterfaceOrientationWindow, SBAssistantWindow, SBFAuthenticationAssertion, SBFluidDismissalState, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant, SBSystemAnimationSettings, SBTransientOverlayViewController, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol BSInvalidatable, SBIdleTimer, SBIdleTimerCoordinating;
 
-@interface SBAssistantController : NSObject <SBFluidGestureDismissable, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
+@interface SBAssistantController : NSObject <SBFluidGestureDismissable, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
 {
     BSEventQueue *_operationQueue;
     NSString *_appDisplayIDBeingHosted;
     SBAssistantWindow *_assistantWindow;
+    SBAssistantActiveInterfaceOrientationWindow *_assistantActiveInterfaceOrientationWindow;
     BOOL _unlockedDevice;
     BOOL _isHidingOtherWindows;
     SBFAuthenticationAssertion *_disableAssertion;
@@ -42,10 +47,22 @@
     SBSystemAnimationSettings *_settings;
     id<SBIdleTimer> _idleTimer;
     NSMutableArray *_windowLevelAssertions;
+    UITapGestureRecognizer *_tapToDismissSiriGestureRecognizer;
+    SBHomeGesturePanGestureRecognizer *_bottomEdgeDismissGestureRecognizer;
+    BOOL _shouldPassTapsThroughToSiri;
+    BOOL _shareHomeGesture;
+    BOOL _tapsDismissSiri;
+    BOOL _swipesDismissSiri;
+    UIPanGestureRecognizer *_panToDismissSiriGestureRecognizer;
+    long long _homeAffordanceSuppression;
+    BOOL _siriWantsToShowHomeAffordance;
+    SBTransientOverlayViewController *_topmostTransientViewControllerAtPresentation;
+    BOOL _screenShotServicesIsRunning;
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
     id<BSInvalidatable> _suspendWallpaperAnimationAssertion;
 }
 
+@property (readonly, nonatomic) BOOL contentObscuresScreen;
 @property (readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 @property (readonly, nonatomic) double customIdleExpirationTimeout;
 @property (readonly, nonatomic) double customIdleWarningTimeout;
@@ -63,6 +80,7 @@
 @property (readonly, nonatomic) long long idleWarnMode;
 @property (readonly, nonatomic) long long notificationBehavior;
 @property (readonly, nonatomic) long long participantState;
+@property (readonly, nonatomic) BOOL preventsCoverSheetPresentation;
 @property (readonly, nonatomic) long long proximityDetectionMode;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly, nonatomic) long long scrollingStrategy;
@@ -77,28 +95,53 @@
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 + (BOOL)shouldBreadcrumbLaunchedApplicationWithBundleIdentifier:(id)arg1;
++ (BOOL)shouldDismissSiriForGestureTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void).cxx_destruct;
 - (id)_activationSettingsWithPunchoutStyle:(long long)arg1;
 - (void)_bioAuthenticated:(id)arg1;
-- (void)_createAssistantWindowIfNecessary;
+- (void)_commonHandlerForSiriDismissalGesture:(id)arg1;
+- (void)_configureHomeGesture;
+- (void)_configurePanToDismissGestureDependencies;
+- (void)_createAssistantWindowIfNecessaryForSiriPresentationOptions:(id)arg1;
+- (id)_createPanToDismissSiriGestureRecognizer;
+- (id)_createTapToDimissSiriGestureRecognizer;
 - (double)_defaultAnimatedDismissDurationForMainScreen;
 - (void)_deviceBlocked:(id)arg1;
-- (void)_dismissForMainScreenWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_dismissForMainScreenWithFactory:(id)arg1 dismissalOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_dockFrameDidChange:(id)arg1;
+- (void)_handleBottomEdgeDismissGesture:(id)arg1;
 - (id)_idleTimerBehavior;
 - (id)_init;
 - (void)_noteDeviceLockedOrBlocked;
+- (void)_pannedToDismissSiri:(id)arg1;
 - (void)_presentForMainScreenAnimated:(BOOL)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prototypeSettingsChanged;
 - (void)_remoteLocked:(id)arg1;
+- (void)_removeHomeGesture;
+- (void)_removeScreenEdgePanGestureRecognizerIfNecessary;
+- (void)_resetSystemGestures;
 - (void)_restoreOrientation;
+- (void)_setShareHomeGesture:(BOOL)arg1;
 - (void)_setStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setTouchesPassThroughToSpringBoard:(BOOL)arg1;
 - (void)_setUnlockedDevice:(BOOL)arg1;
 - (void)_setVisible:(BOOL)arg1;
+- (void)_setupSystemGestures;
+- (id)_siriHomeAffordanceSuppressionAsString:(long long)arg1;
+- (void)_tappedToDismissSiri:(id)arg1;
+- (void)_tearDownSystemGestures;
+- (void)_teardownWindowInUse;
 - (void)_toggleModalAlertHidingAssertion:(BOOL)arg1;
+- (void)_turnScreenOffWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_uiLocked:(id)arg1;
+- (void)_updateDockViewFrame:(struct CGRect)arg1;
+- (void)_updateHomeGestureParticipant;
+- (void)_updateOrbLocation:(id)arg1;
 - (void)_updateOrientationLock;
 - (void)_updateRootViewControllerOwnsHomeGesture;
+- (void)_updateRootViewControllerShowsHomeAffordance:(BOOL)arg1;
 - (void)_updateSceneClientSettings;
+- (void)_updateShouldPassTapsThrough;
 - (void)_updateWindowLevel;
 - (void)_viewDidAppearOnMainScreen:(BOOL)arg1;
 - (void)_viewDidDisappearOnMainScreen:(BOOL)arg1;
@@ -107,35 +150,55 @@
 - (id)acquireWindowLevelAssertionWithPriority:(long long)arg1 windowLevel:(double)arg2 reason:(id)arg3;
 - (id)activationSettings;
 - (void)addObserver:(id)arg1;
+- (void)applicationProcessDidChangeState:(id)arg1;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSExternalBehaviorProviding;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (void)dealloc;
 - (void)deviceUnlockRequestedWithPassword:(id)arg1;
 - (void)dismissAssistantViewIfNecessary;
+- (void)dismissAssistantViewIfNecessaryForGestureTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)dismissAssistantViewIfNecessaryWithAnimation:(long long)arg1;
 - (void)dismissAssistantViewIfNecessaryWithAnimation:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissAssistantViewIfNecessaryWithAnimation:(long long)arg1 factory:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dismissAssistantViewIfNecessaryWithAnimation:(long long)arg1 factory:(id)arg2 dismissalOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)dismissAssistantViewIfNecessaryWithDismissalOptions:(id)arg1;
 - (void)dismissOverlayForDashBoardAnimated:(BOOL)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleFailedAuthenticationRequest:(id)arg1 error:(id)arg2;
 - (void)handleInvalidAuthenticationRequest:(id)arg1;
 - (void)handleSuccessfulAuthenticationRequest:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+- (void)homeGestureParticipantResolvedHomeAffordanceSuppressionDidChange:(id)arg1;
+- (void)homeGrabberViewDidReceiveClick:(id)arg1;
 - (id)init;
 - (id)mainScreenView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)overrideInterfaceOrientation:(long long *)arg1;
 - (void)removeObserver:(id)arg1;
 - (BOOL)requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
+- (id)rootViewController;
 - (void)screenWakeIdleTimerResetRequested;
 - (void)screenWakeRequested;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (BOOL)shouldShowLockStatusBarTime;
 - (BOOL)shouldShowSystemVolumeHUDForCategory:(id)arg1;
 - (void)siriPresentation:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
+- (void)siriPresentation:(id)arg1 didUpdateHomeGestureSharing:(BOOL)arg2;
+- (void)siriPresentation:(id)arg1 didUpdateShouldDismissForSwipesOutsideContent:(BOOL)arg2;
+- (void)siriPresentation:(id)arg1 didUpdateShouldDismissForTapsOutsideContent:(BOOL)arg2;
+- (void)siriPresentation:(id)arg1 didUpdateShouldPassTapsThroughTo:(BOOL)arg2;
+- (void)siriPresentation:(id)arg1 didUpdateShouldPassTouchesThroughToSpringBoard:(BOOL)arg2;
 - (void)siriPresentation:(id)arg1 isEnabledDidChange:(BOOL)arg2;
 - (BOOL)siriPresentation:(id)arg1 requestsDeviceUnlockWithPassword:(id)arg2;
 - (void)siriPresentation:(id)arg1 requestsDismissalWithOptions:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)siriPresentation:(id)arg1 requestsPresentationWithOptions:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)siriPresentation:(id)arg1 requestsPunchout:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)siriPresentation:(id)arg1 setHomeAffordanceSuppression:(long long)arg2;
+- (void)siriPresentation:(id)arg1 setShowsHomeAffordance:(BOOL)arg2;
+- (long long)touchInterfaceOrientationForGestureRecognizer:(id)arg1;
+- (id)viewForSystemGestureRecognizer:(id)arg1;
 - (id)window;
 
 @end

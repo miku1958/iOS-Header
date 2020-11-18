@@ -4,84 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <ChatKit/CKBlackholeConversationListCommonViewController.h>
 
 #import <ChatKit/PSController-Protocol.h>
-#import <ChatKit/UITableViewDelegate-Protocol.h>
 
-@class NSString, PSRootController, PSSpecifier, UIBarButtonItem, UILabel, UIViewController, _UITableViewDiffableDataSource;
+@class NSString, PSRootController, PSSpecifier, UIViewController;
 @protocol PSController;
 
-@interface CKBlackholeConversationListViewController : UITableViewController <UITableViewDelegate, PSController>
+@interface CKBlackholeConversationListViewController : CKBlackholeConversationListCommonViewController <PSController>
 {
     UIViewController<PSController> *_parentController;
     PSRootController *_rootController;
     PSSpecifier *_specifier;
-    _UITableViewDiffableDataSource *_tableViewDataSource;
-    UIBarButtonItem *_clearAllButton;
-    UILabel *_emptyConversationListLabel;
 }
 
-@property (strong, nonatomic) UIBarButtonItem *clearAllButton; // @synthesize clearAllButton=_clearAllButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UILabel *emptyConversationListLabel; // @synthesize emptyConversationListLabel=_emptyConversationListLabel;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _UITableViewDiffableDataSource *tableViewDataSource; // @synthesize tableViewDataSource=_tableViewDataSource;
 
 - (void).cxx_destruct;
-- (id)_alertTitleForClearAll;
-- (id)_alertTitleForDelete;
-- (void)_batchDeleteConversationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_clearAllTapped;
-- (void)_clearAllTappedWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_confirmDeleteConversation:(id)arg1 view:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (id)_conversationList;
-- (id)_conversations;
-- (void)_deleteConversation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_updateConversationList;
 - (BOOL)canBeShownFromSuspendedState;
-- (void)dealloc;
-- (void)didLock;
-- (void)didUnlock;
-- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)didWake;
-- (void)encodeWithCoder:(id)arg1;
 - (void)handleURL:(id)arg1;
 - (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)init;
 - (id)parentController;
-- (void)popViewControllerIfNecessary;
-- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)readPreferenceValue:(id)arg1;
 - (id)rootController;
-- (void)setNeedsFocusUpdate;
 - (void)setParentController:(id)arg1;
 - (void)setPreferenceValue:(id)arg1 specifier:(id)arg2;
 - (void)setRootController:(id)arg1;
 - (void)setSpecifier:(id)arg1;
-- (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)showController:(id)arg1;
 - (void)showController:(id)arg1 animate:(BOOL)arg2;
-- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (id)specifier;
-- (void)statusBarWillAnimateByHeight:(double)arg1;
-- (void)suspend;
-- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateFocusIfNeeded;
-- (void)viewDidLoad;
-- (void)viewSafeAreaInsetsDidChange;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willBecomeActive;
-- (void)willResignActive;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willUnlock;
 
 @end
 

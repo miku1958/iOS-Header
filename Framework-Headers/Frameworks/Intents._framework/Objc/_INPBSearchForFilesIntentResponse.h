@@ -16,13 +16,11 @@
 {
     CDStruct_f2ecb737 _has;
     BOOL _success;
-    BOOL __encodeLegacyGloryData;
     NSArray *_entities;
     _INPBInteger *_numResults;
     _INPBString *_query;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *entities; // @synthesize entities=_entities;

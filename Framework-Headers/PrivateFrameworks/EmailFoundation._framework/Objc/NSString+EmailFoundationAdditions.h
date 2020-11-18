@@ -7,12 +7,11 @@
 #import <Foundation/NSString.h>
 
 #import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
 #import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class EFSQLBinding, NSData;
 
-@interface NSString (EmailFoundationAdditions) <EFSQLBindable, EFSQLExpressable, EFSQLValueExpressable>
+@interface NSString (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +36,9 @@
 + (id)ef_UUID;
 + (id)ef_stringByIsolatingDirectionalityForString:(id)arg1;
 - (id)_ef_sqliteFormattedWithFormatSpecifier:(const char *)arg1;
+- (id)ef_SQLIsolatedExpression;
 - (BOOL)ef_caseInsensitiveIsEqualToString:(id)arg1;
+- (id)ef_componentsSeparatedByString:(id)arg1 maxSeparations:(unsigned long long)arg2;
 - (BOOL)ef_conformsToUTType:(struct __CFString *)arg1;
 - (BOOL)ef_hasCaseInsensitivePrefix:(id)arg1;
 - (BOOL)ef_isUnsignedIntegerString;
@@ -45,6 +46,7 @@
 - (const void *)ef_lossyDefaultCStringBytes;
 - (id)ef_pathByReplacingRelativePathWithFolderName:(id)arg1;
 - (id)ef_quotedWordComponentsForLanguages:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)ef_sanitizedFileName;
 - (const char *)ef_sqliteAllocatedStringWithHexFromUTF8;
 - (id)ef_stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
@@ -52,13 +54,19 @@
 - (id)ef_stringByEscapingForXML;
 - (id)ef_stringByEscapingSQLLikeSpecialCharactersWithEscapeCharater:(unsigned short)arg1;
 - (id)ef_stringByEscapingSingleQuotes;
+- (id)ef_stringByRFC5322Unfolding;
 - (id)ef_stringByRemovingCharactersInSet:(id)arg1;
+- (id)ef_stringByRemovingCharactersInSet:(id)arg1 beforeOccurrencesOfString:(id)arg2;
 - (id)ef_stringByRemovingQuotedSubstringsForLocales:(id)arg1 tokenizationHandler:(CDUnknownBlockType)arg2;
 - (id)ef_stringByRemovingQuotesForLanguages:(id)arg1;
 - (id)ef_stringByRemovingTokenizedLinksUsingTokenizationHandler:(CDUnknownBlockType)arg1;
 - (id)ef_stringByRemovingUnbalancedOpenQuote:(id)arg1 closeQuote:(id)arg2;
 - (id)ef_stringByRemovingUnbalancedQuotesForLanguages:(id)arg1;
+- (id)ef_stringByReplacingContiguousSequencesOfCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)ef_stringByReplacingPercentEscapesUsingEncoding:(unsigned long long)arg1;
+- (id)ef_stringByTrimmingLeadingCharactersInSet:(id)arg1;
+- (id)ef_stringByTrimmingOuterQuotes;
+- (id)ef_stringByTrimmingTrailingCharactersInSet:(id)arg1;
 - (id)ef_stringWithNoExtraSpaces;
 - (id)ef_substringWithIndexes:(id)arg1;
 - (id)ef_wordComponentsForLocale:(id)arg1;

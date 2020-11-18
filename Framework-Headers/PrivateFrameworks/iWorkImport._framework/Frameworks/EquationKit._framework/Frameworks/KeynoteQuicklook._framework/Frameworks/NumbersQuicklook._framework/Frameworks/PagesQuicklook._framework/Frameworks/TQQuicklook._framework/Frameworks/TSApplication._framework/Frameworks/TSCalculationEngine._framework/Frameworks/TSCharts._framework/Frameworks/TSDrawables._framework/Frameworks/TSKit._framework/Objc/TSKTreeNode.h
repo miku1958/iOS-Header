@@ -19,11 +19,11 @@
 @property (strong, nonatomic) id dataObject;
 @property (strong, nonatomic) NSString *name;
 
+- (void).cxx_destruct;
 - (void)addChildWithName:(id)arg1 object:(id)arg2;
 - (void)addNode:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)childEnumerator;
-- (void)dealloc;
 - (id)description;
 - (void)enumerateAllChildrenWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasChildWithName:(id)arg1;

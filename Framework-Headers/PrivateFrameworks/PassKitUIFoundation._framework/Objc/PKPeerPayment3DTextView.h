@@ -8,7 +8,7 @@
 
 #import <PassKitUIFoundation/SCNSceneRendererDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKPeerPayment3DScene, PKPeerPayment3DStore, SCNView;
+@class MISSING_TYPE, NSMutableArray, NSString, PKPeerPayment3DScene, PKPeerPayment3DStore, SCNView;
 
 @interface PKPeerPayment3DTextView : UIView <SCNSceneRendererDelegate>
 {
@@ -42,6 +42,7 @@
 
 + (id)supportedCharacterSet;
 - (void).cxx_destruct;
+- (MISSING_TYPE *)_fakeAnimationRollPitchWithElapsedTime:(double)arg1;
 - (void)dealloc;
 - (void)didBecomeActive;
 - (void)didMoveToWindow;

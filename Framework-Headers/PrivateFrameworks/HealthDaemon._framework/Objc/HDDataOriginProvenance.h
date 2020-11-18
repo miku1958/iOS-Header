@@ -9,7 +9,7 @@
 #import <HealthDaemon/NSCopying-Protocol.h>
 #import <HealthDaemon/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class HDContributorReference, NSNumber, NSString;
 
 @interface HDDataOriginProvenance : NSObject <NSSecureCoding, NSCopying>
 {
@@ -20,9 +20,11 @@
     NSString *_timeZoneName;
     NSNumber *_sourceID;
     NSNumber *_deviceID;
+    HDContributorReference *_contributorReference;
     CDStruct_f6aba300 _operatingSystemVersion;
 }
 
+@property (strong, nonatomic) HDContributorReference *contributorReference; // @synthesize contributorReference=_contributorReference;
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property (nonatomic) CDStruct_2ec95fd7 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
 @property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
@@ -32,7 +34,7 @@
 @property (copy, nonatomic) NSString *systemBuild; // @synthesize systemBuild=_systemBuild;
 @property (copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 
-+ (id)dataProvenanceWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 operatingSystemVersion:(CDStruct_2ec95fd7)arg4 sourceVersion:(id)arg5 timeZoneName:(id)arg6 sourceID:(id)arg7 deviceID:(id)arg8;
++ (id)dataProvenanceWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 operatingSystemVersion:(CDStruct_2ec95fd7)arg4 sourceVersion:(id)arg5 timeZoneName:(id)arg6 sourceID:(id)arg7 deviceID:(id)arg8 contributorReference:(id)arg9;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -21,6 +21,7 @@
 + (id)sharedAssetsSaver;
 - (void).cxx_destruct;
 - (id)_addCameraAssetToLibraryWithPath:(id)arg1 thumbnailImage:(id)arg2 assetUUID:(id)arg3 metadata:(id)arg4 assetType:(short)arg5 kind:(short)arg6 kindSubtype:(short)arg7 avalancheUUID:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
+- (id)_assetsdClientForJobDictionary:(id)arg1;
 - (CDUnknownBlockType)_createWriteImageCompletionBlockWithImage:(id)arg1 target:(id)arg2 selector:(SEL)arg3 contextInfo:(void *)arg4;
 - (CDUnknownBlockType)_createWriteVideoCompletionBlockWithVideoPath:(id)arg1 target:(id)arg2 selector:(SEL)arg3 contextInfo:(void *)arg4;
 - (id)_photoLibrary;
@@ -33,8 +34,6 @@
 - (void)dealloc;
 - (void)deletePhotoStreamAssetsWithUUIDs:(id)arg1 streamID:(id)arg2;
 - (void)deletePhotoStreamDataForStreamID:(id)arg1;
-- (void)importFilesWithMasterPath:(id)arg1 sidecarFileInfo:(id)arg2 importSessionIdentifier:(id)arg3 importedBy:(short)arg4 alternateImportImageDate:(id)arg5 isPhotoStreamsPublishCandidate:(BOOL)arg6 avalancheUUID:(id)arg7 destinationAlbumUUID:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
-- (void)importFilesWithMasterPath:(id)arg1 sidecarFileInfo:(id)arg2 intoEventWithName:(id)arg3 importSessionIdentifier:(id)arg4 isPhotoStreamsPublishCandidate:(BOOL)arg5 avalancheUUID:(id)arg6;
 - (id)init;
 - (void)queuePhotoStreamJobDictionary:(id)arg1;
 - (void)reenqueueAssetUUIDsForPhotoStreamPublication:(id)arg1;

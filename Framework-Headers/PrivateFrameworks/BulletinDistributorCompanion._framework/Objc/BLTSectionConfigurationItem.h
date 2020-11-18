@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber;
+@class NSArray, NSMutableDictionary, NSNumber;
 
 @interface BLTSectionConfigurationItem : NSObject
 {
@@ -29,6 +29,7 @@
     NSNumber *_watchVersionThatUsesUserInfoForContext;
     NSArray *_additionalBridgeSectionIDs;
     NSNumber *_watchVersionThatUsesAttachmentURL;
+    NSMutableDictionary *_blacklistedCategoriesWithVersion;
 }
 
 @property (strong, nonatomic) NSArray *additionalBridgeSectionIDs; // @synthesize additionalBridgeSectionIDs=_additionalBridgeSectionIDs;
@@ -36,6 +37,7 @@
 @property (nonatomic) BOOL alwaysSyncSettings; // @synthesize alwaysSyncSettings=_alwaysSyncSettings;
 @property (nonatomic) BOOL applyWhitelistToChildSections; // @synthesize applyWhitelistToChildSections=_applyWhitelistToChildSections;
 @property (strong, nonatomic) NSArray *blacklistedCategories; // @synthesize blacklistedCategories=_blacklistedCategories;
+@property (strong, nonatomic) NSMutableDictionary *blacklistedCategoriesWithVersion; // @synthesize blacklistedCategoriesWithVersion=_blacklistedCategoriesWithVersion;
 @property unsigned long long coordinationType; // @synthesize coordinationType=_coordinationType;
 @property (nonatomic) BOOL hasLegacyMapInContext; // @synthesize hasLegacyMapInContext=_hasLegacyMapInContext;
 @property (nonatomic) BOOL hasLegacyMapInUserInfo; // @synthesize hasLegacyMapInUserInfo=_hasLegacyMapInUserInfo;

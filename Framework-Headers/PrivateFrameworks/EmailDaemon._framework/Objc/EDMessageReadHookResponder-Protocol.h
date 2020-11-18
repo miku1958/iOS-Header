@@ -7,9 +7,9 @@
 #import <EmailDaemon/NSObject-Protocol.h>
 
 @class EFSQLRow;
-@protocol EDLibraryMessage;
+@protocol EDPersistedMessage;
 
 @protocol EDMessageReadHookResponder <NSObject>
-- (void)persistenceWillReadMessage:(id<EDLibraryMessage>)arg1 fromRow:(EFSQLRow *)arg2;
+- (void)persistenceWillReadMessage:(id<EDPersistedMessage>)arg1 fromRow:(EFSQLRow *)arg2;
 @end
 

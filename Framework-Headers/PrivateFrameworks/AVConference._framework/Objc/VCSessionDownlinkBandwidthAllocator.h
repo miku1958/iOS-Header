@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     unsigned int _maxConcurrentVideoClients;
 }
 
+@property (readonly, nonatomic) unsigned long long simultaneousTalkers;
+
 - (void)actualNetworkBitrateAudioDidChangeForClient:(id)arg1;
 - (void)actualNetworkBitrateVideoDidChangeForClient:(id)arg1;
 - (void)dealloc;
@@ -33,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)reportingSessionParticipantEventBitrateChanged:(id)arg1 optedInNetworkBitrate:(unsigned int)arg2 actualNetworkBitrate:(unsigned int)arg3 optedInStreamID:(unsigned short)arg4 actualStreamID:(unsigned short)arg5;
 - (unsigned int)requiredAudioBitrate:(unsigned int)arg1 highestAudioBitrates:(id)arg2;
 - (void)reset;
-- (unsigned long long)simultaneousTalkers;
 - (void)sortMediaEntries;
 - (void)updateClient:(id)arg1 bandwidthConstrained:(BOOL)arg2 decoderConstrained:(BOOL)arg3;
 - (void)updateHighestAudioBitrates:(id)arg1 bitrate:(unsigned int)arg2;

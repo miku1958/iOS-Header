@@ -23,7 +23,7 @@
 }
 
 @property (strong, nonatomic) PMLSparseMatrix *covariates; // @synthesize covariates=_covariates;
-@property BOOL intercept; // @synthesize intercept=_intercept;
+@property (nonatomic) BOOL intercept; // @synthesize intercept=_intercept;
 @property (strong, nonatomic) PMLModelRegressor *objective; // @synthesize objective=_objective;
 @property (strong, nonatomic) PMLModelWeights *weights; // @synthesize weights=_weights;
 
@@ -32,7 +32,6 @@
 - (id)computeAvgGradientWithIterations:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithLearningRate:(float)arg1 minIterations:(unsigned long long)arg2 stoppingThreshold:(float)arg3 weights:(id)arg4 intercept:(BOOL)arg5 gradientCalculator:(CDUnknownBlockType)arg6 predictionCalculator:(CDUnknownBlockType)arg7 batchPredictionCalculator:(CDUnknownBlockType)arg8;
-- (float)meanSquaredError;
 - (float)predict:(id)arg1;
 - (void)solve;
 - (void)solveForCovariates:(id)arg1 objectives:(id)arg2;

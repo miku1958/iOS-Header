@@ -6,25 +6,27 @@
 
 #import <Foundation/NSEnumerator.h>
 
+@class NSPredicate;
+
 @interface LSEnumerator : NSEnumerator
 {
+    CDUnknownBlockType _filter;
     struct atomic_flag _hasFiredErrorHandler;
     CDUnknownBlockType _errorHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property (copy, nonatomic) CDUnknownBlockType filter;
+@property (copy, nonatomic) NSPredicate *predicate;
 
-+ (id)_log;
-+ (id)enumeratorForAllExtensionPoints;
-+ (id)enumeratorForApplicationProxiesOnVolume:(id)arg1 options:(unsigned long long)arg2;
 + (id)enumeratorForApplicationProxiesWithOptions:(unsigned long long)arg1;
 + (id)enumeratorForPlugInKitProxiesWithExtensionPoint:(id)arg1 options:(unsigned long long)arg2;
 + (id)enumeratorForPlugInKitProxiesWithExtensionPoint:(id)arg1 options:(unsigned long long)arg2 filter:(CDUnknownBlockType)arg3;
-+ (id)enumeratorForPlugInKitProxiesWithOptions:(unsigned long long)arg1;
++ (void)initialize;
 + (id)new;
 - (void).cxx_destruct;
 - (void)_fireErrorHandlerWithError:(id)arg1;
-- (id)_init;
+- (id)_initWithContext:(struct LSContext *)arg1;
 - (id)init;
 - (id)nextObject;
 

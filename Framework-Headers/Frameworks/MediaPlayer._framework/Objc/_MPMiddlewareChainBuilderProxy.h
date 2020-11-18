@@ -8,6 +8,7 @@
 
 @class Protocol;
 
+__attribute__((visibility("hidden")))
 @interface _MPMiddlewareChainBuilderProxy : NSProxy
 {
     Protocol *_protocol;

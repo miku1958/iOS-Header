@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <TSPersistence/NSCopying-Protocol.h>
+#import <TSPersistence/NSMutableCopying-Protocol.h>
+
 @class NSMutableArray, NSMutableIndexSet;
 
-@interface TSPReferenceOrderedSet : NSObject
+@interface TSPReferenceOrderedSet : NSObject <NSCopying, NSMutableCopying>
 {
     unsigned long long _capacity;
     NSMutableArray *_items;
@@ -25,10 +28,12 @@
 - (BOOL)addItem:(id)arg1;
 - (id)allObjects;
 - (BOOL)containsItem:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (void)minusSet:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (BOOL)removeItem:(id)arg1;
 - (void)unionSet:(id)arg1;
 

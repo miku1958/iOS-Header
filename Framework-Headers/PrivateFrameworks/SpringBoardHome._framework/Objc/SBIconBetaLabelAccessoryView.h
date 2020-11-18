@@ -10,7 +10,9 @@
 {
 }
 
++ (id)_cachedDotImage;
 + (id)_dotColor;
++ (void)_setCachedDotImage:(id)arg1;
 + (struct CAColorMatrix)_vibrantColorMatrixInput;
 
 @end

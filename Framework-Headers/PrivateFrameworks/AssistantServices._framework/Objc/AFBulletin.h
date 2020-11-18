@@ -20,7 +20,6 @@
     BOOL _previewRestricted;
     NSString *_displayName;
     BBBulletin *_bbBulletin;
-    unsigned long long _feed;
     NSString *_bulletinID;
     NSString *_recordID;
     NSDate *_date;
@@ -37,6 +36,7 @@
     NSString *_publisherBulletinID;
     NSString *_threadID;
     NSString *_internalID;
+    unsigned long long _feed;
 }
 
 @property (readonly, nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;

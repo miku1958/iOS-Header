@@ -12,6 +12,7 @@
 @class NSMapTable, NSMutableArray, NSString, SSDownloadHandler;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPStorePlayWhileDownloadController : NSObject <MPStoreDownloadManagerObserver, SSDownloadHandlerDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

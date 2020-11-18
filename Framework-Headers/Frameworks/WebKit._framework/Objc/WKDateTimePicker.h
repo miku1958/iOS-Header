@@ -6,37 +6,65 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <WebKit/WKFormControl-Protocol.h>
 
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKDateTimePicker : NSObject <WKFormControl>
+@interface WKDateTimePicker : NSObject <WKFormControl, UIContextMenuInteractionDelegate>
 {
     struct RetainPtr<UIDatePicker> _datePicker;
     NSString *_formatString;
+    NSString *_initialValue;
+    double _initialValueAsNumber;
     BOOL _shouldRemoveTimeZoneInformation;
     BOOL _isTimeInput;
     WKContentView *_view;
+    struct CGPoint _interactionPoint;
+    struct RetainPtr<WKDateTimeContextMenuViewController> _viewController;
+    struct RetainPtr<UIContextMenuInteraction> _dateTimeContextMenuInteraction;
+    BOOL _presenting;
+    BOOL _preservingFocus;
 }
+
+@property (readonly, nonatomic) NSString *calendarType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double hour;
+@property (readonly, nonatomic) double minute;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (void)_dateChangeHandler:(id)arg1;
 - (void)_dateChanged;
 - (void)_dateChangedSetAsNumber;
 - (void)_dateChangedSetAsString;
 - (id)_sanitizeInputValueForFormatter:(id)arg1;
 - (long long)_timeZoneOffsetFromGMT:(id)arg1;
-- (id)calendarType;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)controlBeginEditing;
 - (void)controlEndEditing;
 - (id)controlView;
 - (RetainPtr_6b9d0b10)dateFormatterForPicker;
-- (id)datePicker;
+- (long long)datePickerStyle;
 - (void)dealloc;
+- (void)ensureContextMenuInteraction;
 - (id)initWithView:(id)arg1 datePickerMode:(long long)arg2;
+- (void)ok:(id)arg1;
+- (void)removeContextMenuInteraction;
+- (void)reset:(id)arg1;
+- (void)setDateTimePickerToInitialValue;
+- (void)setHour:(long long)arg1 minute:(long long)arg2;
 - (BOOL)shouldPresentGregorianCalendar:(const struct FocusedElementInformation *)arg1;
+- (void)showDateTimePicker;
+- (id)viewController;
 
 @end
 

@@ -12,7 +12,7 @@
 
 @interface RMModelAccountMailDeclaration : RMModelConfigurationBase <RMModelRegisteredTypeProtocol>
 {
-    NSString *_payloadDescription;
+    NSString *_payloadVisibleName;
     NSString *_payloadUserIdentityAssetReference;
     RMModelAccountMailDeclaration_IncomingServer *_payloadIncomingServer;
     RMModelAccountMailDeclaration_OutgoingServer *_payloadOutgoingServer;
@@ -21,15 +21,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
 @property (copy, nonatomic) RMModelAccountMailDeclaration_IncomingServer *payloadIncomingServer; // @synthesize payloadIncomingServer=_payloadIncomingServer;
 @property (copy, nonatomic) RMModelAccountMailDeclaration_OutgoingServer *payloadOutgoingServer; // @synthesize payloadOutgoingServer=_payloadOutgoingServer;
 @property (copy, nonatomic) NSString *payloadUserIdentityAssetReference; // @synthesize payloadUserIdentityAssetReference=_payloadUserIdentityAssetReference;
+@property (copy, nonatomic) NSString *payloadVisibleName; // @synthesize payloadVisibleName=_payloadVisibleName;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 incomingServer:(id)arg2 outgoingServer:(id)arg3;
-+ (id)buildWithIdentifier:(id)arg1 description:(id)arg2 userIdentityAssetReference:(id)arg3 incomingServer:(id)arg4 outgoingServer:(id)arg5;
++ (id)buildWithIdentifier:(id)arg1 visibleName:(id)arg2 userIdentityAssetReference:(id)arg3 incomingServer:(id)arg4 outgoingServer:(id)arg5;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

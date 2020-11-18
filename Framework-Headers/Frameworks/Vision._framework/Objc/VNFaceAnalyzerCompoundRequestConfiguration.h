@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequestClass:(Class)arg1;
 - (void)setDetectorConfigurationOption:(id)arg1 value:(id)arg2;
+- (void)setResolvedRevision:(unsigned long long)arg1;
 
 @end
 

@@ -13,9 +13,11 @@
     NSMutableArray *_objects;
 }
 
+@property (strong, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
+
 + (id)aggregateEnumeratorWithObjects:(id)arg1;
+- (void).cxx_destruct;
 - (void)addObject:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithFirstObject:(id)arg1 argumentList:(struct __va_list_tag [1])arg2;
 - (id)initWithObjects:(id)arg1;

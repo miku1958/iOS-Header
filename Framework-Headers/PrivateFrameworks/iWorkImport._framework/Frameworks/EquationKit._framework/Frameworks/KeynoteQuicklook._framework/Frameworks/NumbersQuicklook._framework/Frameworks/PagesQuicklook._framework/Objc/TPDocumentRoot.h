@@ -52,6 +52,7 @@
     TPPageController *_paginatedPageController;
     TPPageLayoutNotifier *_pageLayoutNotifier;
     BOOL _newDocument;
+    BOOL _viewDidAppear;
     TPDocumentViewController *_viewController;
     unsigned int _tableNameCounter;
     NSMutableDictionary *_tablesWithUniqueNames;
@@ -63,8 +64,7 @@
     BOOL _suppressViewStateCapture;
     BOOL initiallyShowRuler;
     BOOL initiallyShowTwoUp;
-    BOOL _needsAdditionalViewStateValidation;
-    TPUIState *_uiState;
+    BOOL _forceChangeTrackingMarkupHidden;
     id<TSWPTOCController> _tocController;
     TSDThumbnailController *_thumbnailController;
     TPBookmarkController *_bookmarkController;
@@ -92,6 +92,7 @@
 @property (strong, nonatomic) TPFloatingDrawables *floatingDrawables; // @synthesize floatingDrawables=_floatingDrawables;
 @property (strong, nonatomic) TSWPFlowInfoContainer *flowInfoContainer; // @synthesize flowInfoContainer=_flowInfoContainer;
 @property (nonatomic) double footerMargin;
+@property (nonatomic) BOOL forceChangeTrackingMarkupHidden; // @synthesize forceChangeTrackingMarkupHidden=_forceChangeTrackingMarkupHidden;
 @property (readonly, nonatomic) BOOL hasTrackedChanges;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double headerMargin;
@@ -101,7 +102,6 @@
 @property (readonly, nonatomic) BOOL isTrackingChanges;
 @property (nonatomic) double leftMargin;
 @property (strong, nonatomic) TSWPChangeSession *mostRecentChangeSession; // @synthesize mostRecentChangeSession=_mostRecentChangeSession;
-@property (nonatomic) BOOL needsAdditionalViewStateValidation; // @synthesize needsAdditionalViewStateValidation=_needsAdditionalViewStateValidation;
 @property (readonly, nonatomic) NSArray *nonHiddenSections;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (readonly, nonatomic) TPPageController *pageController; // @synthesize pageController=_paginatedPageController;
@@ -123,13 +123,14 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (nonatomic) BOOL suppressViewStateCapture; // @synthesize suppressViewStateCapture=_suppressViewStateCapture;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (strong, nonatomic) TPTheme *theme;
 @property (readonly, nonatomic) TSDThumbnailController *thumbnailController; // @synthesize thumbnailController=_thumbnailController;
 @property (nonatomic) double topMargin;
 @property (readonly, nonatomic, getter=isTrackingChanges) BOOL trackingChanges;
-@property (copy, nonatomic) TPUIState *uiState; // @synthesize uiState=_uiState;
+@property (copy, nonatomic) TPUIState *uiState; // @dynamic uiState;
 @property (readonly, nonatomic) struct CGSize unrotatedPaperSize;
 @property (nonatomic) BOOL usesSingleHeaderFooter;
 @property (readonly, weak, nonatomic) TPDocumentViewController *viewController; // @dynamic viewController;
@@ -167,6 +168,8 @@
 - (BOOL)hasPencilAnnotations;
 - (BOOL)hasViewState;
 - (const struct __CFLocale *)hyphenationLocale;
+- (void)i_assignBlankPageTemplateToAllSections;
+- (void)i_removeAllPageTemplates;
 - (void)i_upgradeSectionsForPageTemplates;
 - (int)indexForObject:(id)arg1;
 - (unsigned long long)inheritedSectionIndexForSectionIndex:(unsigned long long)arg1;
@@ -218,6 +221,7 @@
 - (BOOL)pageMastersAllowDrawable:(id)arg1;
 - (unsigned long long)pageTemplateIndexForModelObject:(id)arg1;
 - (id)pageTemplateWithName:(id)arg1;
+- (id)pencilAnnotationUIState;
 - (BOOL)prepareAndValidateSidecarViewStateRootWithVersionUUIDMismatch:(id)arg1 sidecarDocumentRevision:(id)arg2 originalDocumentViewStateRoot:(id)arg3;
 - (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (id)previewImageForSize:(struct CGSize)arg1;
@@ -236,6 +240,7 @@
 - (unsigned long long)rootIndexForObject:(id)arg1;
 - (unsigned int)saveNextUntitledResolverIndex;
 - (void)saveToArchiver:(id)arg1;
+- (id)selectionPathForSearchReference:(id)arg1;
 - (void)setBodyStorage:(id)arg1 dolcContext:(id)arg2;
 - (void)setIndex:(int)arg1 forObject:(id)arg2;
 - (void)setLaysOutBodyVertically:(BOOL)arg1;
@@ -244,7 +249,6 @@
 - (void)setThemeForTemplateImport:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 - (void)setValue:(double)arg1 forMargin:(long long)arg2;
-- (BOOL)shouldAllowDrawableInGroups:(id)arg1 forImport:(BOOL)arg2;
 - (BOOL)shouldHyphenate;
 - (BOOL)shouldShowChangeKind:(int)arg1 date:(id)arg2;
 - (BOOL)shouldShowMarkupForChangeKind:(int)arg1 date:(id)arg2;

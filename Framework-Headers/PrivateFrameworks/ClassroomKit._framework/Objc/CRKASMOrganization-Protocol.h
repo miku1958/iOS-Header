@@ -6,11 +6,12 @@
 
 #import <ClassroomKit/NSObject-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 @protocol CRKASMOrganization <NSObject>
 
 @property (readonly, nonatomic) NSUUID *UUID;
+@property (readonly, copy, nonatomic) NSString *name;
 
 @end
 

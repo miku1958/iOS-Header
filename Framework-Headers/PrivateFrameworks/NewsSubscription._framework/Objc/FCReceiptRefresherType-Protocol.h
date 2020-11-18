@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FCPurchase;
+@class FCPurchase, NFPromise;
 
 @protocol FCReceiptRefresherType
-- (id)refreshForPurchase:(FCPurchase *)arg1;
+- (NFPromise *)refreshForPurchase:(FCPurchase *)arg1;
 @end
 

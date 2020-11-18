@@ -10,17 +10,14 @@
 
 @interface SKInstallSheetStatusUpdateRequest : SKRequest
 {
-    BOOL _isInstallSheetOpen;
-    CDUnknownBlockType _completionHandler;
     NSString *_bundleId;
+    CDUnknownBlockType _completionHandler;
 }
 
-@property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (nonatomic) BOOL isInstallSheetOpen; // @synthesize isInstallSheetOpen=_isInstallSheetOpen;
 
 - (void).cxx_destruct;
-- (void)_handleReply:(id)arg1;
 - (void)_start;
 - (id)initWithAppBundleId:(id)arg1 isInstallSheetOpen:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

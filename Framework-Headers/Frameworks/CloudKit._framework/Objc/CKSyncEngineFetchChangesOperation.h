@@ -6,16 +6,17 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKDatabase, CKOperationGroup, CKServerChangeToken, NSError, NSOperationQueue;
+@class CKDatabase, CKOperationGroup, CKServerChangeToken, NSError, NSOperationQueue, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKSyncEngineFetchChangesOperation : NSOperation
 {
+    BOOL _shouldFetchDatabaseChanges;
     BOOL _isExecuting;
     BOOL _isFinished;
     CKDatabase *_database;
     CKServerChangeToken *_previousDatabaseServerChangeToken;
     CKOperationGroup *_group;
+    NSSet *_zoneIDs;
     CDUnknownBlockType _recordZoneWithIDChangedBlock;
     CDUnknownBlockType _recordZoneWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneWithIDWasPurgedBlock;
@@ -50,11 +51,17 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType recordZoneWithIDChangedBlock; // @synthesize recordZoneWithIDChangedBlock=_recordZoneWithIDChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedBlock; // @synthesize recordZoneWithIDWasDeletedBlock=_recordZoneWithIDWasDeletedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasPurgedBlock; // @synthesize recordZoneWithIDWasPurgedBlock=_recordZoneWithIDWasPurgedBlock;
+@property (nonatomic) BOOL shouldFetchDatabaseChanges; // @synthesize shouldFetchDatabaseChanges=_shouldFetchDatabaseChanges;
 @property (copy, nonatomic) CDUnknownBlockType willEnqueueOperationBlock; // @synthesize willEnqueueOperationBlock=_willEnqueueOperationBlock;
+@property (strong, nonatomic) NSSet *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
++ (unsigned long long)maxZonesPerOperation;
++ (void)setMaxZonesPerOperation:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)cancelledError;
+- (void)fetchDatabaseChangesThenRecordZoneChanges;
+- (void)fetchRecordZoneChanges;
 - (void)finishWithError:(id)arg1;
 - (id)init;
 - (id)initWithDatabase:(id)arg1;

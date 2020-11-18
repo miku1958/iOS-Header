@@ -16,6 +16,7 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (nonatomic) BOOL allowsContentJavaScript;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,6 +34,7 @@
 - (id)_customUserAgent;
 - (id)_customUserAgentAsSiteSpecificQuirks;
 - (unsigned long long)_deviceOrientationAndMotionAccessPolicy;
+- (unsigned long long)_mouseEventPolicy;
 - (unsigned long long)_popUpPolicy;
 - (void)_setAllowSiteSpecificQuirksToOverrideCompatibilityMode:(BOOL)arg1;
 - (void)_setAllowedAutoplayQuirks:(unsigned long long)arg1;
@@ -44,8 +46,11 @@
 - (void)_setCustomUserAgent:(id)arg1;
 - (void)_setCustomUserAgentAsSiteSpecificQuirks:(id)arg1;
 - (void)_setDeviceOrientationAndMotionAccessPolicy:(unsigned long long)arg1;
+- (void)_setMouseEventPolicy:(unsigned long long)arg1;
 - (void)_setPopUpPolicy:(unsigned long long)arg1;
+- (void)_setUserContentController:(id)arg1;
 - (void)_setWebsiteDataStore:(id)arg1;
+- (id)_userContentController;
 - (id)_websiteDataStore;
 - (void)dealloc;
 - (id)init;

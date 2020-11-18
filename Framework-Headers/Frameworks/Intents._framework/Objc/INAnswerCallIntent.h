@@ -14,6 +14,7 @@
 {
 }
 
+@property (readonly, nonatomic) long long audioRoute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,8 +26,9 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
-- (id)init;
+- (id)initWithAudioRoute:(long long)arg1;
 - (id)parametersByName;
+- (void)setAudioRoute:(long long)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setVerb:(id)arg1;

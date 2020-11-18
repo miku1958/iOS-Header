@@ -58,8 +58,8 @@
 - (void)_executeNextCommand;
 - (BOOL)_isEmpty;
 - (void)_loadFromDisk;
-- (long long)_qualityOfServiceForCommand:(id)arg1;
-- (void)_savePendingCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (long long)_qualityOfServiceForNextCommand;
+- (void)_savePendingCommands;
 - (void)_scheduleCommandExecution;
 - (void)_serializeCommands:(id)arg1 toStore:(id)arg2;
 - (void)activityObservingApplicationDidEnterBackground;

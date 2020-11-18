@@ -6,21 +6,21 @@
 
 #import <PhotosUICore/PXActivity.h>
 
-#import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
-#import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
+#import <PhotosUI/PXPhotoStreamComposeServiceDelegate-Protocol.h>
+#import <PhotosUI/PXVideoTrimQueueControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, PUPhotoStreamComposeServiceViewController, PUVideoTrimQueueController, UIViewController;
+@class NSObject, NSString, PUPhotoStreamComposeServiceViewController, PXVideoTrimQueueController, UIViewController;
 @protocol PLUserEditableAlbumProtocol, PUAlbumStreamActivityDelegate, PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUAlbumStreamActivity : PXActivity <PUPhotoStreamComposeServiceDelegate, PUVideoTrimQueueControllerDelegate>
+@interface PUAlbumStreamActivity : PXActivity <PXPhotoStreamComposeServiceDelegate, PXVideoTrimQueueControllerDelegate>
 {
-    PUPhotoStreamComposeServiceViewController *_streamComposeVc;
+    PUPhotoStreamComposeServiceViewController *_streamComposeViewController;
     double _startTime;
     double _endTime;
     UIViewController *_presenterViewController;
     UIViewController *_activityController;
-    PUVideoTrimQueueController *_trimController;
+    PXVideoTrimQueueController *_trimController;
     BOOL _isPresentedFromActivityViewController;
     BOOL _destinationAlbumWasCreated;
     id<PXActivityItemSourceController> _itemSourceController;
@@ -54,12 +54,15 @@ __attribute__((visibility("hidden")))
 - (id)_selectedVideo;
 - (BOOL)_sharedAlbumAllowsAdding:(id)arg1;
 - (id)_systemImageName;
+- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (void)controller:(id)arg1 didCancelTrimmingVideoSources:(id)arg2;
 - (void)controller:(id)arg1 didFinishTrimmingVideoSources:(id)arg2;
+- (void)controller:(id)arg1 dismissViewControllerWithCompletion:(CDUnknownBlockType)arg2;
+- (void)controller:(id)arg1 presentViewController:(id)arg2;
 - (id)init;
 - (id)itemSourceController;
 - (void)photoStreamComposeService:(id)arg1 didPostComment:(id)arg2;

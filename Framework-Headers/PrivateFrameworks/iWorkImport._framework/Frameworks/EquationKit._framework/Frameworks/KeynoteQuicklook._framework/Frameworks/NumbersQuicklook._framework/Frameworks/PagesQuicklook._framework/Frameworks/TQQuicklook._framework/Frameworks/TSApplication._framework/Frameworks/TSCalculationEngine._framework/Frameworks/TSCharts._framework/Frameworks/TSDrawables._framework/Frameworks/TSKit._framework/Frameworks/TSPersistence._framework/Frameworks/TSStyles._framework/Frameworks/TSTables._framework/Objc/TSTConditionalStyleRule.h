@@ -8,21 +8,21 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class NSString, TSTCellStyle, TSTFormulaPredicate, TSWPParagraphStyle;
+@class NSString, TSCEFormulaObject, TSTCellStyle, TSTFormulaPredicate, TSWPParagraphStyle;
 
 @interface TSTConditionalStyleRule : NSObject <NSCopying>
 {
     TSTFormulaPredicate *_predicate;
     TSWPParagraphStyle *_textStyle;
     TSTCellStyle *_cellStyle;
-    int mPredicateType;
+    unsigned char mPredicateType;
 }
 
 @property (readonly, copy, nonatomic) TSTCellStyle *cellStyle;
-@property (readonly, nonatomic) struct TSCEFormula *formula;
+@property (readonly, nonatomic) TSCEFormulaObject *formula;
 @property (readonly, copy, nonatomic) TSTFormulaPredicate *predicate;
 @property (readonly, nonatomic) NSString *predicateDescription;
-@property (readonly, nonatomic) int predicateType; // @synthesize predicateType=mPredicateType;
+@property (readonly, nonatomic) unsigned char predicateType; // @synthesize predicateType=mPredicateType;
 @property (readonly, copy, nonatomic) TSWPParagraphStyle *textStyle;
 
 + (id)conditionalStyleRuleWithRule:(id)arg1;

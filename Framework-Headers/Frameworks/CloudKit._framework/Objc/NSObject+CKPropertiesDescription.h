@@ -11,9 +11,13 @@
 - (void)CKAssignToContainerWithID:(id)arg1;
 - (id)CKDescription;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (id)CKExpandedDescription;
+- (id)CKHashedDescription;
 - (id)CKPropertiesDescription;
 - (id)CKPropertiesDescriptionStringFromProperties:(id)arg1;
+- (id)CKSingleLineDescription;
 - (id)CKStatusReport;
-- (id)hashedDescription;
+- (id)_CKDescriptionWithExpansion:(BOOL)arg1;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @end
 

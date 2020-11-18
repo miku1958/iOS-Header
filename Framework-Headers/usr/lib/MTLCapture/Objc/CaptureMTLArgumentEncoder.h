@@ -40,7 +40,9 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (id)newArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)setAccelerationStructure:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)setArgumentBuffer:(id)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
@@ -49,12 +51,16 @@
 - (void)setComputePipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setIndirectCommandBuffer:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setIndirectCommandBuffers:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setRenderPipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setRenderPipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)touch;
 
 @end

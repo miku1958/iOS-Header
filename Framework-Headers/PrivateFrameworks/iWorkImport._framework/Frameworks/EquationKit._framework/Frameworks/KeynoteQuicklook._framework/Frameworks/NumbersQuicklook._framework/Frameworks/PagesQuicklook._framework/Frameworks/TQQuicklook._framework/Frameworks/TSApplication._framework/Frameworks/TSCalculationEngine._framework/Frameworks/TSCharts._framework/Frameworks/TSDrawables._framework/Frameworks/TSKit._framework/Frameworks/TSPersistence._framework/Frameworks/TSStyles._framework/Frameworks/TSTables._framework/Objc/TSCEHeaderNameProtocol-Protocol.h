@@ -10,6 +10,8 @@
 
 @protocol TSCEHeaderNameProtocol <NSObject>
 - (UUIDData_5fbc143e)NRM_formulaOwnerUID;
+- (struct TSCERangeRef)baseHeaderColumnsForCell:(const struct TSCECellRef *)arg1;
+- (struct TSCERangeRef)baseHeaderRowsForCell:(const struct TSCECellRef *)arg1;
 - (void)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
 - (void)endTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;

@@ -28,12 +28,14 @@
     BOOL _wantsAppAck;
     BOOL _compressPayload;
     BOOL _compressed;
+    BOOL _didWakeHint;
     NSString *_peerResponseIdentifier;
     NSString *_messageUUID;
     NSDate *_expiryDate;
 }
 
 @property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL didWakeHint;
 @property (readonly, nonatomic) BOOL expectsPeerResponse;
 @property (strong, nonatomic) NSDate *expiryDate;
 @property (readonly, nonatomic) BOOL isDone; // @synthesize isDone=_done;
@@ -53,7 +55,7 @@
 - (unsigned char)command;
 - (void)dealloc;
 - (id)description;
-- (id)initWithResourceAtPath:(id)arg1 metadata:(id)arg2 sequenceNumber:(unsigned int)arg3 streamID:(unsigned short)arg4 expectsPeerResponse:(BOOL)arg5 wantsAppAck:(BOOL)arg6 compressPayload:(BOOL)arg7 compressed:(BOOL)arg8 peerResponseIdentifier:(id)arg9 messageUUID:(id)arg10 expiryDate:(id)arg11;
+- (id)initWithResourceAtPath:(id)arg1 metadata:(id)arg2 sequenceNumber:(unsigned int)arg3 streamID:(unsigned short)arg4 expectsPeerResponse:(BOOL)arg5 wantsAppAck:(BOOL)arg6 compressPayload:(BOOL)arg7 compressed:(BOOL)arg8 didWakeHint:(BOOL)arg9 peerResponseIdentifier:(id)arg10 messageUUID:(id)arg11 expiryDate:(id)arg12;
 - (id)nextMessage;
 - (id)nextMessage_old;
 - (id)readNextBytes;

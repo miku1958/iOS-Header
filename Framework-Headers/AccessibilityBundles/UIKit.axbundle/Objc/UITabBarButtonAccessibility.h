@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
+- (BOOL)_accessibilityRetainsFocusOnScreenChange;
 - (BOOL)_axIsSelected:(id)arg1;
 - (long long)_currentItemState;
 - (id)accessibilityHint;

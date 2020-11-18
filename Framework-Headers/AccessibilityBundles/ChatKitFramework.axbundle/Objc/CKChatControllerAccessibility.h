@@ -19,19 +19,23 @@
 - (long long)_axCurrentLayoutIntent;
 - (id)_axCurrentTargetBalloonView;
 - (id)_axDescriptionForMessageEffectIdentifier:(id)arg1;
+- (id)_axFocusedChatItemElement;
 - (unsigned long long)_axLayoutIntentForTarget:(id)arg1 inBalloonView:(id)arg2;
 - (void)_axSetCurrentLayoutIntent:(long long)arg1;
 - (void)_axSetCurrentTargetBalloonView:(id)arg1;
+- (void)_axSetFocusedChatItemElement:(id)arg1;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (void)_showVCalViewerForMediaObject:(id)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (void)actionMenuGestureRecognizerButtonGestureDidEnd:(id)arg1;
+- (void)dismissInlineReplyController:(BOOL)arg1;
 - (void)dragManager:(id)arg1 draggedItemWithTarget:(id)arg2;
 - (void)dragManagerDidBeginDragging:(id)arg1;
 - (void)dragManagerDidEndDragging:(id)arg1;
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (void)sendSticker:(id)arg1 withDragTarget:(id)arg2;
 - (void)setEffectPickerWindow:(id)arg1;
+- (void)showInlineReplyControllerForChatItem:(id)arg1 presentKeyboard:(BOOL)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 
 @end

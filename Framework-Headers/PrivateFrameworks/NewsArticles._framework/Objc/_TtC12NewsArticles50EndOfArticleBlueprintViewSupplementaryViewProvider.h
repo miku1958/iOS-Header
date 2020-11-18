@@ -15,6 +15,7 @@
     MISSING_TYPE *publisherViewRenderer;
     MISSING_TYPE *titleViewRenderer;
     MISSING_TYPE *didTapButton;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

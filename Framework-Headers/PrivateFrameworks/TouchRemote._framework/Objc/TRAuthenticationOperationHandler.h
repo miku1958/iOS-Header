@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithCompanionAuthHandler:(CDUnknownBlockType)arg1 proxyAuthHandler:(CDUnknownBlockType)arg2;
+- (id)initWithCompanionAuthHandlerWithError:(CDUnknownBlockType)arg1 proxyAuthHandler:(CDUnknownBlockType)arg2;
 - (void)registerMessageHandlersForSession:(id)arg1;
 
 @end

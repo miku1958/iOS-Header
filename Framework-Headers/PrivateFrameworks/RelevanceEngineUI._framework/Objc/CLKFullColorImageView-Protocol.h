@@ -6,7 +6,8 @@
 
 #import <RelevanceEngineUI/CLKMonochromeComplicationView-Protocol.h>
 
-@class CLKDevice, CLKFullColorImageProvider;
+@class CLKDevice, CLKFullColorImageProvider, NSObject;
+@protocol OS_dispatch_group;
 
 @protocol CLKFullColorImageView <CLKMonochromeComplicationView>
 - (void)configureWithImageProvider:(CLKFullColorImageProvider *)arg1 reason:(long long)arg2;
@@ -16,5 +17,7 @@
 
 @optional
 + (BOOL)tritium_wantsCrossfadeAnimation;
+- (void)enumerateQuadViewsWithBlock:(void (^)(CLKUIQuadView *))arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(NSObject<OS_dispatch_group> *)arg2;
 @end
 

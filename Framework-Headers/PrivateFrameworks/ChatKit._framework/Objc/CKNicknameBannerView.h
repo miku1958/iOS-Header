@@ -4,58 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <ChatKit/CKUpdateBannerView.h>
 
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKAvatarView, NSArray, NSDictionary, NSString, UIButton, UIImageView, UITextView, UIVisualEffectView;
+@class NSArray, NSString, UIButton, UIView;
 @protocol CKNicknameBannerViewDelegate;
 
-@interface CKNicknameBannerView : UIView <UITextViewDelegate>
+@interface CKNicknameBannerView : CKUpdateBannerView <UITextViewDelegate>
 {
-    BOOL _useNamedTitles;
-    BOOL _useNamedSubtitles;
-    BOOL _inUpdatesMode;
     id<CKNicknameBannerViewDelegate> _delegate;
-    unsigned long long _style;
     NSArray *_nicknameUpdates;
-    UITextView *_titleLabel;
-    UITextView *_subtitleLabel;
-    NSDictionary *_contactMap;
-    UIVisualEffectView *_blurView;
-    CKAvatarView *_avatarView;
-    CKAvatarView *_secondaryAvatarView;
-    UIView *_avatarCutoutView;
-    UIImageView *_contactsIconView;
-    UIButton *_cancelButton;
+    UIButton *_updateButton;
+    UIView *_bottomSeparatorView;
+    UIView *_topSeparatorView;
 }
 
-@property (strong, nonatomic) UIView *avatarCutoutView; // @synthesize avatarCutoutView=_avatarCutoutView;
-@property (strong, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
-@property (strong, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
-@property (strong, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property (strong, nonatomic) NSDictionary *contactMap; // @synthesize contactMap=_contactMap;
-@property (strong, nonatomic) UIImageView *contactsIconView; // @synthesize contactsIconView=_contactsIconView;
+@property (strong, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<CKNicknameBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL inUpdatesMode; // @synthesize inUpdatesMode=_inUpdatesMode;
 @property (strong, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
-@property (strong, nonatomic) CKAvatarView *secondaryAvatarView; // @synthesize secondaryAvatarView=_secondaryAvatarView;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
-@property (strong, nonatomic) UITextView *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITextView *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (readonly, nonatomic) double titleLabelAlignmentX;
-@property (readonly, nonatomic) BOOL useNamedSubtitles; // @synthesize useNamedSubtitles=_useNamedSubtitles;
-@property (nonatomic) BOOL useNamedTitles; // @synthesize useNamedTitles=_useNamedTitles;
+@property (strong, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
+@property (strong, nonatomic) UIButton *updateButton; // @synthesize updateButton=_updateButton;
 
 - (void).cxx_destruct;
 - (id)_avatarContactForUpdate:(id)arg1;
 - (void)_updateAvatarView;
 - (void)_updateSubtitleLabel;
 - (void)_updateTitleLabel;
+- (double)avatarViewAlignmentX;
 - (void)cancelButtonTapped:(id)arg1;
 - (id)cancelGlyph;
 - (id)contactStore;
@@ -66,9 +46,13 @@
 - (void)layoutSubviews;
 - (double)maxLabelWidthForSize:(struct CGSize)arg1;
 - (id)nicknameController;
+- (void)overlayUpdateButtonOnSubtitleLinkAttribute;
+- (id)setAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1 withActionButtonString:(id)arg2;
+- (id)setCatalystAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1;
 - (void)setupViews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (double)titleLabelAlignmentX;
+- (void)updateButtonTapped:(id)arg1;
 
 @end
 

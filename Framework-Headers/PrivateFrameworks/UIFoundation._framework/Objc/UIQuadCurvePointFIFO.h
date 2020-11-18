@@ -22,14 +22,14 @@
     UIView *_view;
 }
 
-@property (nonatomic) _UIPointVector *controlPoints; // @synthesize controlPoints=_controlPoints;
+@property (strong, nonatomic) _UIPointVector *controlPoints; // @synthesize controlPoints=_controlPoints;
 @property (copy) CDUnknownBlockType emissionHandler; // @synthesize emissionHandler=_emissionHandler;
 @property (nonatomic) BOOL emitInterpolatedPoints; // @synthesize emitInterpolatedPoints=_emitInterpolatedPoints;
 @property (nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
 @property (nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property (nonatomic) struct CGPath *path; // @synthesize path=_path;
-@property (nonatomic) _UIPointVector *points; // @synthesize points=_points;
-@property (nonatomic) _UIPointVector *prevPoints; // @synthesize prevPoints=_prevPoints;
+@property (strong, nonatomic) _UIPointVector *points; // @synthesize points=_points;
+@property (strong, nonatomic) _UIPointVector *prevPoints; // @synthesize prevPoints=_prevPoints;
 @property (nonatomic) float unitScale; // @synthesize unitScale=_unitScale;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 

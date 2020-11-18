@@ -16,7 +16,7 @@
 - (long long)_accessibilitySortPriority;
 - (id)_axMapsDelegate;
 - (void)_didEndZoom;
-- (void)_setCompassVisible:(BOOL)arg1 animated:(BOOL)arg2 force:(BOOL)arg3;
+- (void)_setCompassVisible:(BOOL)arg1 animationAllowed:(BOOL)arg2 force:(BOOL)arg3;
 - (id)accessibilityElements;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)canBecomeFocused;

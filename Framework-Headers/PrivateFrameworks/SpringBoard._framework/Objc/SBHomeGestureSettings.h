@@ -15,6 +15,8 @@
     BOOL _snapToMaxVelocityThresholdAfterAccelerationDip;
     BOOL _injectGestureVelocityForZoomDown;
     BOOL _onlyInjectVelocityForShortFlicks;
+    BOOL _morphShouldShowBlackCurtainOverSource;
+    BOOL _morphShouldMatchMove;
     BOOL _preventMultipleEdgesAfterAppInteraction;
     BOOL _resetSwitcherListAfterAppInteraction;
     double _hysteresis;
@@ -42,11 +44,11 @@
     double _velocitySlopeThresholdForScrunchArc;
     double _velocitySlopeThresholdForCurrentLayout;
     double _edgeDistanceToCorrectGestureFinalDestination;
+    double _edgeAngleWindow;
     double _cardFlyInMaximumVelocityThreshold;
     double _cardFlyInDelayAfterEnteringAppSwitcher;
     double _maximumDistanceYThresholdToPresentDock;
-    double _centerYOffsetPercentOfScreenHeightPhone;
-    double _centerYOffsetPercentOfScreenHeightPad;
+    double _homeGestureCenterZoomDownCenterYOffsetFactor;
     double _verticalRubberbandStart;
     double _verticalRubberbandEnd;
     double _verticalRubberbandDistance;
@@ -61,6 +63,8 @@
     double _maximumScaleVelocity;
     double _morphSourceClipDuration;
     double _morphTargetUnclipDuration;
+    double _morphSourceUnclipDuration;
+    double _morphTargetClipDuration;
     double _secondsToAllowMultipleEdges;
     double _secondsToResetSwitcherListAfterTransition;
     double _travelDistanceForTranslatingScreenHeight;
@@ -72,11 +76,11 @@
 @property (nonatomic) double appSwitcherVelocityThresholdIncreasingRateFraction; // @synthesize appSwitcherVelocityThresholdIncreasingRateFraction=_appSwitcherVelocityThresholdIncreasingRateFraction;
 @property (nonatomic) double cardFlyInDelayAfterEnteringAppSwitcher; // @synthesize cardFlyInDelayAfterEnteringAppSwitcher=_cardFlyInDelayAfterEnteringAppSwitcher;
 @property (nonatomic) double cardFlyInMaximumVelocityThreshold; // @synthesize cardFlyInMaximumVelocityThreshold=_cardFlyInMaximumVelocityThreshold;
-@property (nonatomic) double centerYOffsetPercentOfScreenHeightPad; // @synthesize centerYOffsetPercentOfScreenHeightPad=_centerYOffsetPercentOfScreenHeightPad;
-@property (nonatomic) double centerYOffsetPercentOfScreenHeightPhone; // @synthesize centerYOffsetPercentOfScreenHeightPhone=_centerYOffsetPercentOfScreenHeightPhone;
 @property (nonatomic) double dockVelocityThresholdIncreasingRateFraction; // @synthesize dockVelocityThresholdIncreasingRateFraction=_dockVelocityThresholdIncreasingRateFraction;
+@property (nonatomic) double edgeAngleWindow; // @synthesize edgeAngleWindow=_edgeAngleWindow;
 @property (nonatomic) double edgeDistanceToCorrectGestureFinalDestination; // @synthesize edgeDistanceToCorrectGestureFinalDestination=_edgeDistanceToCorrectGestureFinalDestination;
 @property (strong, nonatomic) SBHomeGestureExclusionTrapezoidSettings *exclusionTrapezoidSettings; // @synthesize exclusionTrapezoidSettings=_exclusionTrapezoidSettings;
+@property (nonatomic) double homeGestureCenterZoomDownCenterYOffsetFactor; // @synthesize homeGestureCenterZoomDownCenterYOffsetFactor=_homeGestureCenterZoomDownCenterYOffsetFactor;
 @property (nonatomic, getter=isHomeGestureEnabled) BOOL homeGestureEnabled; // @synthesize homeGestureEnabled=_homeGestureEnabled;
 @property (nonatomic) double horizontalRubberbandDistance; // @synthesize horizontalRubberbandDistance=_horizontalRubberbandDistance;
 @property (nonatomic) double horizontalRubberbandEnd; // @synthesize horizontalRubberbandEnd=_horizontalRubberbandEnd;
@@ -98,7 +102,11 @@
 @property (nonatomic) double minimumYDistanceToConsiderAccelerationDip; // @synthesize minimumYDistanceToConsiderAccelerationDip=_minimumYDistanceToConsiderAccelerationDip;
 @property (nonatomic) double minimumYVelocityForArcSwipe; // @synthesize minimumYVelocityForArcSwipe=_minimumYVelocityForArcSwipe;
 @property (nonatomic) double minimumYVelocityForHome; // @synthesize minimumYVelocityForHome=_minimumYVelocityForHome;
+@property (nonatomic) BOOL morphShouldMatchMove; // @synthesize morphShouldMatchMove=_morphShouldMatchMove;
+@property (nonatomic) BOOL morphShouldShowBlackCurtainOverSource; // @synthesize morphShouldShowBlackCurtainOverSource=_morphShouldShowBlackCurtainOverSource;
 @property (nonatomic) double morphSourceClipDuration; // @synthesize morphSourceClipDuration=_morphSourceClipDuration;
+@property (nonatomic) double morphSourceUnclipDuration; // @synthesize morphSourceUnclipDuration=_morphSourceUnclipDuration;
+@property (nonatomic) double morphTargetClipDuration; // @synthesize morphTargetClipDuration=_morphTargetClipDuration;
 @property (nonatomic) double morphTargetUnclipDuration; // @synthesize morphTargetUnclipDuration=_morphTargetUnclipDuration;
 @property (nonatomic) double normalizedDistanceYThresholdForUnconditionalHome; // @synthesize normalizedDistanceYThresholdForUnconditionalHome=_normalizedDistanceYThresholdForUnconditionalHome;
 @property (nonatomic) double normalizedDistanceYThresholdRangeForUnconditionalHome; // @synthesize normalizedDistanceYThresholdRangeForUnconditionalHome=_normalizedDistanceYThresholdRangeForUnconditionalHome;

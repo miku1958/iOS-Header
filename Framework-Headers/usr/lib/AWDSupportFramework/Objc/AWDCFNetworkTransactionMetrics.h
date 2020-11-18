@@ -22,6 +22,7 @@
     unsigned long long _totalBytesRead;
     unsigned long long _totalBytesWritten;
     NSString *_connectionUUID;
+    int _http3Status;
     int _networkLoadType;
     int _networkProtocolName;
     BOOL _apsRelayAttempted;
@@ -38,6 +39,7 @@
         unsigned int totalBytesExpectedToWrite:1;
         unsigned int totalBytesRead:1;
         unsigned int totalBytesWritten:1;
+        unsigned int http3Status:1;
         unsigned int networkLoadType:1;
         unsigned int networkProtocolName:1;
         unsigned int apsRelayAttempted:1;
@@ -53,6 +55,7 @@
 @property (nonatomic) BOOL hasApsRelayAttempted;
 @property (nonatomic) BOOL hasApsRelaySucceeded;
 @property (readonly, nonatomic) BOOL hasConnectionUUID;
+@property (nonatomic) BOOL hasHttp3Status;
 @property (nonatomic) BOOL hasIsRedirected;
 @property (nonatomic) BOOL hasNetworkLoadType;
 @property (nonatomic) BOOL hasNetworkProtocolName;
@@ -66,6 +69,7 @@
 @property (nonatomic) BOOL hasTotalBytesExpectedToWrite;
 @property (nonatomic) BOOL hasTotalBytesRead;
 @property (nonatomic) BOOL hasTotalBytesWritten;
+@property (nonatomic) int http3Status; // @synthesize http3Status=_http3Status;
 @property (nonatomic) BOOL isRedirected; // @synthesize isRedirected=_isRedirected;
 @property (nonatomic) int networkLoadType; // @synthesize networkLoadType=_networkLoadType;
 @property (nonatomic) int networkProtocolName; // @synthesize networkProtocolName=_networkProtocolName;
@@ -80,6 +84,7 @@
 @property (nonatomic) unsigned long long totalBytesRead; // @synthesize totalBytesRead=_totalBytesRead;
 @property (nonatomic) unsigned long long totalBytesWritten; // @synthesize totalBytesWritten=_totalBytesWritten;
 
+- (int)StringAsHttp3Status:(id)arg1;
 - (int)StringAsNetworkLoadType:(id)arg1;
 - (int)StringAsNetworkProtocolName:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -88,6 +93,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)http3StatusAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)networkLoadTypeAsString:(int)arg1;

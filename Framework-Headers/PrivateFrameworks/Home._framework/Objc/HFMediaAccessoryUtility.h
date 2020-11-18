@@ -19,7 +19,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_hf_allHomePodProfiles;
 - (BOOL)checkIfAccessoryisPartofHomeAndHasLanguageSettings:(id)arg1;
 - (BOOL)checkIfLanguageSetupIsDoneForAccessory:(id)arg1;
 - (id)init;

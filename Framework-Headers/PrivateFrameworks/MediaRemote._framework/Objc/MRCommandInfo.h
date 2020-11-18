@@ -8,28 +8,27 @@
 
 @class NSData, NSDictionary, _MRCommandInfoProtobuf;
 
-__attribute__((visibility("hidden")))
 @interface MRCommandInfo : NSObject
 {
-    BOOL _hasCommand;
     BOOL _enabled;
-    BOOL _hasEnabled;
     unsigned int _command;
     NSDictionary *_options;
 }
 
 @property (nonatomic) unsigned int command; // @synthesize command=_command;
 @property (readonly, copy, nonatomic) NSData *data;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (nonatomic) BOOL hasCommand; // @synthesize hasCommand=_hasCommand;
-@property (nonatomic) BOOL hasEnabled; // @synthesize hasEnabled=_hasEnabled;
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property (readonly, copy, nonatomic) NSData *propertyListData;
 @property (readonly, nonatomic) _MRCommandInfoProtobuf *protobuf;
 
 + (id)commandInfosFromData:(id)arg1;
 + (id)dataFromCommandInfos:(id)arg1;
++ (BOOL)isCommandActuallySupportedEvenWhenDisabled:(unsigned int)arg1;
 - (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)hash;
 - (id)initWithData:(id)arg1;
 - (id)initWithPropertyListData:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;

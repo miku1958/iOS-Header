@@ -41,10 +41,12 @@
     NSString *_merchantAdditionalData;
     NSString *_merchantCanl;
     NSNumber *_fuzzyMatched;
+    NSNumber *_coarseLocationUsed;
     GEOMapServiceTraits *_traits;
 }
 
 @property (copy, nonatomic) NSString *adamId; // @synthesize adamId=_adamId;
+@property (copy, nonatomic) NSNumber *coarseLocationUsed; // @synthesize coarseLocationUsed=_coarseLocationUsed;
 @property (copy, nonatomic) NSNumber *fuzzyMatched; // @synthesize fuzzyMatched=_fuzzyMatched;
 @property (copy, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
 @property (copy, nonatomic) NSNumber *industryCode; // @synthesize industryCode=_industryCode;

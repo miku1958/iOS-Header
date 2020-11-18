@@ -6,32 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableDictionary;
+@class NSMapTable, NSMutableDictionary, NSMutableOrderedSet, NTKFaceSnapshotCacheRequest;
 @protocol OS_dispatch_queue;
 
 @interface NTKFaceSnapshotCache : NSObject
 {
     NSMutableDictionary *_snapshots;
-    NSMapTable *_callbacks;
-    NSMapTable *_faceQOS;
-    NSMapTable *_callCount;
     NSObject<OS_dispatch_queue> *_snapshotQueue;
+    NSMapTable *_requestsByFace;
+    NSMapTable *_callCountsByFace;
+    NTKFaceSnapshotCacheRequest *_servicingRequest;
+    NSMutableOrderedSet *_highPriorityRequests;
+    NSMutableOrderedSet *_lowPriorityRequests;
 }
 
-@property (readonly, nonatomic) NSMapTable *callCount; // @synthesize callCount=_callCount;
-@property (readonly, nonatomic) NSMapTable *callbacks; // @synthesize callbacks=_callbacks;
-@property (readonly, nonatomic) NSMapTable *faceQOS; // @synthesize faceQOS=_faceQOS;
+@property (readonly, nonatomic) NSMapTable *callCountsByFace; // @synthesize callCountsByFace=_callCountsByFace;
+@property (strong, nonatomic) NSMutableOrderedSet *highPriorityRequests; // @synthesize highPriorityRequests=_highPriorityRequests;
+@property (strong, nonatomic) NSMutableOrderedSet *lowPriorityRequests; // @synthesize lowPriorityRequests=_lowPriorityRequests;
+@property (readonly, nonatomic) NSMapTable *requestsByFace; // @synthesize requestsByFace=_requestsByFace;
+@property (strong, nonatomic) NTKFaceSnapshotCacheRequest *servicingRequest; // @synthesize servicingRequest=_servicingRequest;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *snapshotQueue; // @synthesize snapshotQueue=_snapshotQueue;
 @property (readonly, nonatomic) NSMutableDictionary *snapshots; // @synthesize snapshots=_snapshots;
 
 + (id)snapshotCache;
 - (void).cxx_destruct;
-- (void)_attemptSnapshotOfFace:(id)arg1;
+- (void)_attemptSnapshotForRequest:(id)arg1;
+- (void)_attemptSnapshotOfFace:(id)arg1 atQOS:(unsigned int)arg2;
 - (void)_invokeCallbacksOfFace:(id)arg1 withSnapshot:(id)arg2;
+- (void)_serviceRequestsIfIdle;
 - (void)_snapshotProcessInterrupted:(id)arg1;
 - (id)cachedSnapshotOfFace:(id)arg1;
+- (void)cancelSnapshotRequest:(id)arg1;
 - (void)dealloc;
-- (void)fetchSnapshotOfFace:(id)arg1 atQOS:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchSnapshotWithRequest:(id)arg1;
 - (id)init;
 
 @end

@@ -15,7 +15,7 @@
 @property (readonly, nonatomic) BOOL lower; // @synthesize lower=_lower;
 @property (readonly, nonatomic) unsigned long long order; // @synthesize order=_order;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeToCommandBuffer:(id)arg1 sourceMatrix:(id)arg2 resultMatrix:(id)arg3 status:(id)arg4;
 - (id)initWithDevice:(id)arg1 lower:(BOOL)arg2 order:(unsigned long long)arg3;
 

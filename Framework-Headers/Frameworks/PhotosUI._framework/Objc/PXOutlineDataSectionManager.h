@@ -18,9 +18,10 @@
 @property (weak, nonatomic) id<PXOutlineDataSectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)_changeDetailsForNewDataSection;
+- (id)_changeDetailsForNewDataSection:(id)arg1;
 - (id)changeDetailsForChangedChildDataSectionManager:(id)arg1 childChangeDetails:(id)arg2;
 - (id)changeDetailsForChildDataSectionManagersChangeDetails:(id)arg1;
+- (unsigned long long)childChangeDescriptorsInvalidatingDataSection;
 - (id)childDataSectionManagerForOutlineObject:(id)arg1;
 - (id)createDataSection;
 - (void)rearrangeSectionContent;

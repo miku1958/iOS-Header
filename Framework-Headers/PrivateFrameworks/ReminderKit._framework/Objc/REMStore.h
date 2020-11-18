@@ -38,15 +38,15 @@
 + (BOOL)isEventKitSyncEnabledForReminderKit;
 + (BOOL)notificationsEnabled;
 + (void)notifyOfInteractionWithPeople:(id)arg1;
-+ (void)notifyOfUserInterestInSiriSuggestedReminder:(id)arg1;
 + (BOOL)siriShouldRouteIntentsToNewRemindersApp;
 + (id)storeDidChangeNotificationName;
 - (void).cxx_destruct;
+- (id)MCIsManagedAccountWithObjectID:(id)arg1 error:(id *)arg2;
 - (void)_enumerateAllListsIncludingGroups:(BOOL)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_incrementStoreGeneration;
 - (BOOL)_isUserInteractiveStore;
 - (void)_respondToCalDAVSharedList:(id)arg1 withResponse:(long long)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_saveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 reminderChangeItems:(id)arg3 author:(id)arg4 replicaManagerProvider:(id)arg5 synchronously:(BOOL)arg6 performer:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)_saveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 smartListChangeItems:(id)arg3 reminderChangeItems:(id)arg4 author:(id)arg5 replicaManagerProvider:(id)arg6 synchronously:(BOOL)arg7 syncToCloudKit:(BOOL)arg8 performer:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (void)_triggerSyncWithReason:(id)arg1 forcingCloudKitReload:(BOOL)arg2 discretionary:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_withInProgressSaveRequestContainer:(CDUnknownBlockType)arg1;
 - (id)_xpcSyncStorePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
@@ -56,6 +56,7 @@
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)createShareForListWithID:(id)arg1 error:(id *)arg2;
 - (id)debugDescription;
+- (id)debugFetchPhantomListsWithError:(id *)arg1;
 - (void)deleteAccountWithAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)description;
 - (void)enumerateAllGroupsAndListsWithBlock:(CDUnknownBlockType)arg1;
@@ -72,6 +73,7 @@
 - (id)fetchAccountsWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchAllListsWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchAllRemindersWithExternalIdentifier:(id)arg1 error:(id *)arg2;
+- (id)fetchAssignmentsWithObjectIDs:(id)arg1 includeLazyDeleteObjects:(BOOL)arg2 error:(id *)arg3;
 - (id)fetchCompletedRemindersForEventKitBridgingWithCompletionDateFrom:(id)arg1 to:(id)arg2 withListIDs:(id)arg3 error:(id *)arg4;
 - (id)fetchDefaultAccountWithError:(id *)arg1;
 - (id)fetchDefaultListWithError:(id *)arg1;
@@ -88,6 +90,7 @@
 - (id)fetchReminderWithExternalIdentifier:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchReminderWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchRemindersForEventKitBridgingWithListIDs:(id)arg1 error:(id *)arg2;
+- (id)fetchRemindersMatchingPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)fetchRemindersMatchingTitle:(id)arg1 dueAfter:(id)arg2 dueBefore:(id)arg3 isCompleted:(id)arg4 hasLocation:(id)arg5 location:(id)arg6 error:(id *)arg7;
 - (id)fetchRemindersWithDACalendarItemUniqueIdentifiers:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchRemindersWithExternalIdentifiers:(id)arg1 inList:(id)arg2 error:(id *)arg3;
@@ -98,6 +101,8 @@
 - (id)fetchResultByExecutingFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)fetchShareForListWithID:(id)arg1 error:(id *)arg2;
 - (id)fetchSiriFoundInAppsListWithError:(id *)arg1;
+- (id)fetchSmartListWithSmartListTag:(id)arg1 createIfNeeded:(BOOL)arg2 error:(id *)arg3;
+- (id)fetchSmartListWithSmartListTag:(id)arg1 reminderIDs:(id)arg2 createIfNeeded:(BOOL)arg3 error:(id *)arg4;
 - (id)init;
 - (id)initUserInteractive:(BOOL)arg1;
 - (id)initWithDaemonController:(id)arg1;
@@ -105,7 +110,6 @@
 - (id)initWithStoreContainerToken:(id)arg1;
 - (void)invalidate;
 - (void)notifyOfInteractionWithPeople:(id)arg1 force:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)notifyOfUserInterestInSiriSuggestedReminder:(id)arg1;
 - (void)nukeDatabase;
 - (id)optimisticallyMaterializeReminderChangeItem:(id)arg1;
 - (id)provideAnonymousChangeTrackingWithTransactionAuthorKeysToExclude:(id)arg1;
@@ -123,8 +127,9 @@
 - (id)resultFromPerformingInvocation:(id)arg1 error:(id *)arg2;
 - (id)resultFromPerformingSwiftInvocation:(id)arg1 parametersData:(id)arg2 storages:(id)arg3 error:(id *)arg4;
 - (id)resultsIndexedByObjectIDFromExecutingFetchRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)saveSaveRequest:(id)arg1 accountChangeItems:(id)arg2 listChangeItems:(id)arg3 reminderChangeItems:(id)arg4 author:(id)arg5 replicaManagerProvider:(id)arg6 error:(id *)arg7;
-- (void)saveSaveRequest:(id)arg1 accountChangeItems:(id)arg2 listChangeItems:(id)arg3 reminderChangeItems:(id)arg4 author:(id)arg5 replicaManagerProvider:(id)arg6 queue:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (BOOL)saveSaveRequest:(id)arg1 accountChangeItems:(id)arg2 listChangeItems:(id)arg3 smartListChangeItems:(id)arg4 reminderChangeItems:(id)arg5 author:(id)arg6 replicaManagerProvider:(id)arg7 error:(id *)arg8;
+- (void)saveSaveRequest:(id)arg1 accountChangeItems:(id)arg2 listChangeItems:(id)arg3 smartListChangeItems:(id)arg4 reminderChangeItems:(id)arg5 author:(id)arg6 replicaManagerProvider:(id)arg7 queue:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (id)smartListWithSmartListTag:(id)arg1 objectID:(id)arg2 ordering:(id)arg3 error:(id *)arg4;
 - (void)stopShare:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)storeGeneration;
 - (void)triggerSyncForDataAccessAccountsWithAccountIDs:(id)arg1;

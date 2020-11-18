@@ -11,7 +11,6 @@
 @class HMCameraView, HMFUnfairLock, NSNumber, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface _HMCameraSource : NSObject <HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;

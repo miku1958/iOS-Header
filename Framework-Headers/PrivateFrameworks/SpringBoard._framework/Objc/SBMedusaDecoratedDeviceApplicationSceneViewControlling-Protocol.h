@@ -6,10 +6,11 @@
 
 #import <SpringBoard/SBDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
+#import <SpringBoard/SBSceneLayoutMedusaStatusBarAssertionProviding-Protocol.h>
 
-@class BSUIAnimationFactory, SBInlineAppExposeContainerViewController, SBMainWorkspaceTransitionRequest, SBSceneViewStatusBarAssertion, SBUIAnimationController;
+@class BSUIAnimationFactory, SBInlineAppExposeContainerViewController, SBMainWorkspaceTransitionRequest, SBUIAnimationController;
 
-@protocol SBMedusaDecoratedDeviceApplicationSceneViewControlling <SBDeviceApplicationSceneViewControlling, SBLayoutStateTransitionObserver>
+@protocol SBMedusaDecoratedDeviceApplicationSceneViewControlling <SBDeviceApplicationSceneViewControlling, SBLayoutStateTransitionObserver, SBSceneLayoutMedusaStatusBarAssertionProviding>
 
 @property (readonly, nonatomic, getter=isBlurred) BOOL blurred;
 @property (nonatomic, getter=isNubViewHidden) BOOL nubViewHidden;
@@ -18,6 +19,5 @@
 - (SBUIAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
 - (void)blurApplicationContent:(BOOL)arg1 withAnimationFactory:(BSUIAnimationFactory *)arg2 completion:(void (^)(void))arg3;
 - (void)setInlineAppExposeContainerViewController:(SBInlineAppExposeContainerViewController *)arg1;
-- (SBSceneViewStatusBarAssertion *)statusBarAssertionWithStatusBarHidden:(BOOL)arg1 nubViewHidden:(long long)arg2 atLevel:(unsigned long long)arg3;
 @end
 

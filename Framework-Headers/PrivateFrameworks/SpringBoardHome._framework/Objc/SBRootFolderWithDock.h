@@ -13,6 +13,9 @@
 @interface SBRootFolderWithDock : SBRootFolder <SBIconIndexNodeObserver>
 {
     SBIconListModel *_dock;
+    SBIconListModel *_todayList;
+    SBIconListModel *_favoriteTodayList;
+    SBIconListModel *_ignoredList;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,31 +26,20 @@
 - (void).cxx_destruct;
 - (void)_notifyIndexChange:(int)arg1 identifiers:(id)arg2 withValidationBlock:(CDUnknownBlockType)arg3;
 - (void)_setDock:(id)arg1;
-- (void)addIconsOfClass:(Class)arg1 toSet:(id)arg2;
-- (id)containedNodeIdentifiers;
-- (BOOL)containsNodeIdentifier:(id)arg1;
+- (void)_setFavoriteTodayList:(id)arg1;
+- (void)_setIgnoredList:(id)arg1;
+- (void)_setTodayList:(id)arg1;
 - (id)dock;
-- (void)enumerateAllIconsWithBaseIndexPath:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (unsigned long long)indexOfList:(id)arg1;
-- (id)indexPathsForContainedNodeIdentifier:(id)arg1 prefixPath:(id)arg2;
-- (id)initWithUniqueIdentifier:(id)arg1 displayName:(id)arg2 maxListCount:(unsigned long long)arg3 maxIconCountInLists:(unsigned long long)arg4;
-- (BOOL)isIconStateDirty;
-- (BOOL)isValidPageIndex:(unsigned long long)arg1;
-- (void)list:(id)arg1 didAddContainedNodeIdentifiers:(id)arg2;
-- (void)list:(id)arg1 didRemoveContainedNodeIdentifiers:(id)arg2;
-- (id)listAtIndex:(unsigned long long)arg1;
-- (void)listDidMoveNodes:(id)arg1;
-- (id)listsContainingIcon:(id)arg1;
-- (id)listsContainingLeafIconWithIdentifier:(id)arg1;
-- (void)markIconStateClean;
+- (id)favoriteTodayList;
+- (id)ignoredList;
+- (id)initWithUniqueIdentifier:(id)arg1 displayName:(id)arg2 maxListCount:(unsigned long long)arg3 listGridSize:(struct SBHIconGridSize)arg4 iconGridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg5;
 - (void)node:(id)arg1 didAddContainedNodeIdentifiers:(id)arg2;
 - (void)node:(id)arg1 didRemoveContainedNodeIdentifiers:(id)arg2;
 - (void)nodeDidMoveContainedNodes:(id)arg1;
-- (id)nodesAlongIndexPath:(id)arg1 consumedIndexes:(unsigned long long)arg2;
-- (void)removeList:(id)arg1;
-- (void)setIcon:(id)arg1;
-- (void)sort;
 - (BOOL)supportsDock;
+- (BOOL)supportsIgnoredList;
+- (BOOL)supportsTodayList;
+- (id)todayList;
 
 @end
 

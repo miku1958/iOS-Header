@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)markupMenuControllerDeleteAnnotation:(id)arg1;
 - (void)markupMenuControllerDidHide:(id)arg1;
 - (void)markupMenuControllerEditNote:(id)arg1;
+- (void)markupMenuControllerLayoutDidChange:(id)arg1;
 - (void)markupMenuControllerShowTextSelectionMenu:(id)arg1;
 - (id)markupMenuPDFView:(id)arg1;
 - (void)removeControlForAnnotation:(id)arg1;

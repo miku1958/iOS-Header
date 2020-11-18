@@ -10,6 +10,7 @@
 {
 }
 
+- (id)_actionManager;
 - (void)_prepareFetchResultsForPhotoLibrary:(id)arg1;
 - (id)initWithPhotoKitMomentShare:(id)arg1;
 - (id)owner;

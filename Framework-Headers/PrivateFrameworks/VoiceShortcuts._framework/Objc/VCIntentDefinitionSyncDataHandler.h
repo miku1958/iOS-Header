@@ -15,9 +15,7 @@
 
 @property (readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
 
-+ (id)definitionDirectoryURL;
 + (int)messageType;
-+ (id)syncDirectoryURLForBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)applyChanges:(id)arg1 fromSyncService:(id)arg2 error:(id *)arg3;
 - (void)dealloc;

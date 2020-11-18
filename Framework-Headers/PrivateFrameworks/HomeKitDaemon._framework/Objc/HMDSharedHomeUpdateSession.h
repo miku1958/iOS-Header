@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMDMessageDispatcher, HMFTimer, NSDictionary, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, HMFTimer, NSDictionary, NSString, NSUUID;
 @protocol HMDSharedHomeUpdateSessionDelegate, OS_dispatch_queue;
 
 @interface HMDSharedHomeUpdateSession : NSObject <HMFLogging, HMFTimerDelegate, HMFDumpState>
@@ -20,7 +20,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHome *_home;
     NSDictionary *_messagePayload;
-    HMDMessageDispatcher *_remoteMessageDispatcher;
+    HMFMessageDispatcher *_messageDispatcher;
     HMFTimer *_timer;
     unsigned long long _retryCount;
     double _currentTimerValue;
@@ -33,8 +33,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSString *homeIdentifier;
+@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
-@property (readonly, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) Class superclass;
@@ -48,7 +48,7 @@
 - (id)_selectResident;
 - (void)dealloc;
 - (id)dumpState;
-- (id)initWithHome:(id)arg1 delegate:(id)arg2 workQueue:(id)arg3 messagePayload:(id)arg4 remoteMessageDispatcher:(id)arg5;
+- (id)initWithHome:(id)arg1 delegate:(id)arg2 workQueue:(id)arg3 messagePayload:(id)arg4 messageDispatcher:(id)arg5;
 - (id)logIdentifier;
 - (void)requestDataSync;
 - (void)startTimer;

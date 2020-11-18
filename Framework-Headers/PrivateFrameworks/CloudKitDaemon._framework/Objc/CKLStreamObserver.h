@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL colorOutput; // @synthesize colorOutput=_colorOutput;
 @property (strong, nonatomic) CKLEventFilter *filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) NSDateFormatter *formatter; // @synthesize formatter=_formatter;
+@property (nonatomic) BOOL onlyTestLogs;
 @property (strong, nonatomic) NSString *processName;
 @property (strong, nonatomic) NSMutableDictionary *processNamesByPath; // @synthesize processNamesByPath=_processNamesByPath;
 @property (nonatomic) BOOL simulatorOnly;

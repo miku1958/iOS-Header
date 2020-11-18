@@ -27,7 +27,7 @@
     BOOL _retriedAfterVoluntaryExit;
     BOOL _applicationStateNeedsCapture;
     BOOL _dismissedOverlays;
-    BOOL _shouldDismissOverlays;
+    BOOL _shouldSerialDismissOverlays;
     BOOL _touchCancellationDisabled;
     SBSceneLayoutWorkspaceTransaction *_layoutTransaction;
     SBFloatingDockBehaviorAssertion *_floatingDockBehaviorAssertion;
@@ -57,6 +57,7 @@
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_clearAnimation;
 - (void)_completeCurrentTransition;
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (void)_configureAnimation;
 - (id)_customizedDescriptionProperties;
 - (void)_delayTransitionCompletionForRequester:(id)arg1;
@@ -75,11 +76,11 @@
 - (void)_relinquishResignActiveAssertion;
 - (id)_scenesToBackground;
 - (unsigned long long)_serialOverlayPreDismissalOptions;
-- (void)_setShouldDismissOverlays:(BOOL)arg1;
+- (void)_setShouldSerialDismissOverlays:(BOOL)arg1;
 - (id)_setupAnimation;
-- (BOOL)_shouldDismissOverlays;
 - (BOOL)_shouldFailForChildTransaction:(id)arg1;
 - (BOOL)_shouldResignActiveForAnimation;
+- (BOOL)_shouldSerialDismissOverlays;
 - (void)_stopDelayingTransitionCompletionForRequester:(id)arg1;
 - (void)_synchronizeWithSceneUpdates;
 - (id)_transitionContext;

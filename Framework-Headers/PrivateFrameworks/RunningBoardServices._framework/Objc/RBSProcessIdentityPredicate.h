@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithIdentity:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesProcess:(id)arg1;
 - (id)processPredicate;

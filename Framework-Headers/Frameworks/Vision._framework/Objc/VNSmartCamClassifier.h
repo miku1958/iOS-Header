@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 + (Class)espressoModelImageprintClass;
 + (void)initDumpDebugIntermediates:(id *)arg1 debugInfo:(id *)arg2;
 + (id)returnAllResultsOptionKey;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 
 @end

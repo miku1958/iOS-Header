@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (BOOL)containsDocumentPageIndex:(unsigned long long)arg1;
 - (id)copyForArchiving;
+- (id)copyForCaching;
 - (BOOL)hasEndOfTextLayoutBeforePageIndex:(unsigned long long)arg1;
 - (BOOL)hasPageHintOfKind:(long long)arg1 atPageIndex:(unsigned long long)arg2;
 - (BOOL)hasPageHintOfKind:(long long)arg1 beforePageIndex:(unsigned long long)arg2;

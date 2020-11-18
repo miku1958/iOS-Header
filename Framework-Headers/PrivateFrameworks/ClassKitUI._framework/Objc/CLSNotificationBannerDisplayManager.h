@@ -18,7 +18,7 @@
 + (id)shared;
 - (void).cxx_destruct;
 - (void)showBannerWithTitle:(id)arg1 message:(id)arg2;
-- (void)showPrivacyModalView;
+- (void)showPrivacyModalViewWithInfo:(id)arg1;
 
 @end
 

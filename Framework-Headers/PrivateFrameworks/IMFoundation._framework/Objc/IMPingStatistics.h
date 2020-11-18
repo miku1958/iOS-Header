@@ -8,16 +8,16 @@
 
 @interface IMPingStatistics : NSObject
 {
-    double _packetLossRate;
+    double _sumRoundtripTimes;
+    int _numPacketsSuccessfullySent;
+    int _numPingsTransmitted;
+    int _numPingsReceived;
+    int _packetsSuccessfullySent;
     double _medianRoundtripTime;
     double _averageRoundtripTime;
     double _minRoundtripTime;
     double _maxRoundtripTime;
     double _standardDeviationRoundtripTime;
-    double _sumRoundtripTimes;
-    int _numPingsTransmitted;
-    int _numPingsReceived;
-    int _numPacketsSuccessfullySent;
 }
 
 @property (readonly, nonatomic) double averageRoundtripTime; // @synthesize averageRoundtripTime=_averageRoundtripTime;
@@ -26,8 +26,8 @@
 @property (nonatomic, setter=_setMinRoundtripTime:) double minRoundtripTime; // @synthesize minRoundtripTime=_minRoundtripTime;
 @property (readonly, nonatomic) int numPingsReceived; // @synthesize numPingsReceived=_numPingsReceived;
 @property (readonly, nonatomic) int numPingsTransmitted; // @synthesize numPingsTransmitted=_numPingsTransmitted;
-@property (readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
-@property (readonly, nonatomic) int packetsSuccessfullySent; // @synthesize packetsSuccessfullySent=_numPacketsSuccessfullySent;
+@property (readonly, nonatomic) double packetLossRate;
+@property (readonly, nonatomic) int packetsSuccessfullySent; // @synthesize packetsSuccessfullySent=_packetsSuccessfullySent;
 @property (nonatomic, setter=_setStandardDeviationRoundtripTime:) double standardDeviationRoundtripTime; // @synthesize standardDeviationRoundtripTime=_standardDeviationRoundtripTime;
 
 - (void)_addReceivedPacket:(double)arg1;

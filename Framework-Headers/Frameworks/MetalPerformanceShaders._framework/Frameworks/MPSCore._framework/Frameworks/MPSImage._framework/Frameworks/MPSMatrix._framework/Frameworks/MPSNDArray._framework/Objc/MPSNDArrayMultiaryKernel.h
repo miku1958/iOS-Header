@@ -8,14 +8,23 @@
 
 @interface MPSNDArrayMultiaryKernel : MPSNDArrayMultiaryBase
 {
+    CDUnknownFunctionPointerType _encode;
 }
 
+- (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
+- (id)destinationGradientArrayDescriptorsForSourceArrays:(id)arg1 sourceGradient:(id)arg2 sourceState:(id)arg3;
+- (id)destinationGradientsSupported;
+- (id)encodeGradientsToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4;
+- (void)encodeGradientsToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4 destinationGradients:(id)arg5;
+- (void)encodeGradientsToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4 destinationGradients:(id)arg5 kernelDAGObject:(id)arg6;
 - (id)encodeToCommandBuffer:(id)arg1 sourceArrays:(id)arg2;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 destinationArray:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 resultState:(id)arg3 destinationArray:(id)arg4;
+- (void)encodeToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 resultState:(id)arg3 destinationArray:(id)arg4 kernelDAGObject:(id)arg5;
 - (id)encodeToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 resultState:(id *)arg3 outputStateIsTemporary:(BOOL)arg4;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 sourceCount:(unsigned long long)arg2;
+- (BOOL)supportsGradientForSourceIndex:(unsigned long long)arg1;
 
 @end
 

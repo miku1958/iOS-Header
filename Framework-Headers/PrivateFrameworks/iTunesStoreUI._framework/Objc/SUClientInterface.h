@@ -25,6 +25,7 @@
     NSString *_localStoragePath;
     SUPurchaseManager *_purchaseManager;
     SUQueueSessionManager *_queueSessionManager;
+    BOOL _showDialogOnError;
     NSMutableDictionary *_urlBagKeys;
     NSString *_userAgent;
     SUViewControllerFactory *_viewControllerFactory;
@@ -52,6 +53,7 @@
 @property (readonly, nonatomic) SUPreviewOverlayViewController *previewOverlay;
 @property (strong) SUPurchaseManager *purchaseManager;
 @property (strong) SUQueueSessionManager *queueSessionManager;
+@property BOOL showDialogOnError; // @synthesize showDialogOnError=_showDialogOnError;
 @property (readonly, nonatomic) SUTabBarController *tabBarController;
 @property (copy) NSString *userAgent;
 @property (strong) SUViewControllerFactory *viewControllerFactory; // @synthesize viewControllerFactory=_viewControllerFactory;

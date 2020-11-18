@@ -139,6 +139,7 @@
 - (unsigned long long)nsli_autoresizingMask;
 - (id)nsli_boundsHeightVariable;
 - (id)nsli_boundsWidthVariable;
+- (id)nsli_constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 toAnchor:(id)arg3 withSystemSpacingMultipliedBy:(double)arg4;
 - (id)nsli_contentHeightVariable;
 - (id)nsli_contentWidthVariable;
 - (struct CGSize)nsli_convertSizeFromEngineSpace:(struct CGSize)arg1;

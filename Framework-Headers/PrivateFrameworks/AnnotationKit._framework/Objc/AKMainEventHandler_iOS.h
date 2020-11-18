@@ -6,11 +6,12 @@
 
 #import <AnnotationKit/AKMainEventHandler.h>
 
+#import <AnnotationKit/PKSelectionInteractionDelegate-Protocol.h>
 #import <AnnotationKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class AKPanGestureRecognizer, AKRotationGestureRecognizer, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
-@interface AKMainEventHandler_iOS : AKMainEventHandler <UIGestureRecognizerDelegate>
+@interface AKMainEventHandler_iOS : AKMainEventHandler <UIGestureRecognizerDelegate, PKSelectionInteractionDelegate>
 {
     UITapGestureRecognizer *_tapRecognizer;
     UITapGestureRecognizer *_doubleTapRecognizer;
@@ -32,13 +33,16 @@
 @property (strong) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
 - (void).cxx_destruct;
-- (void)_penDrawingQuiesced;
+- (BOOL)_doubleTapRecognizerCanBeginAtPoint:(struct CGPoint)arg1;
+- (BOOL)_shouldAllowTapAtLocationInWindow:(struct CGPoint)arg1;
+- (BOOL)_tapRecognizerCanBeginAtPoint:(struct CGPoint)arg1;
 - (void)applyToAllSelectedAnnotationsRotateEvent:(id)arg1 orRecognizer:(id)arg2;
 - (void)forwardRecognizerToMainHandleEvent:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithController:(id)arg1;
+- (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2 forGestureRecognizer:(id)arg3;
 - (void)teardown;
 
 @end

@@ -9,7 +9,7 @@
 #import <FrontBoard/FBApplicationDataStoreRepository-Protocol.h>
 
 @class BSSqliteDatabaseConnection, NSString, NSURL;
-@protocol FBApplicationDataStoreRepositoryDelegate, FBApplicationDataStoreRepositoryReadingDelegate, OS_dispatch_queue;
+@protocol FBApplicationDataStoreRepositoryDelegate, OS_dispatch_queue;
 
 @interface FBSqliteApplicationDataStoreRepository : NSObject <FBApplicationDataStoreRepository>
 {
@@ -23,7 +23,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<FBApplicationDataStoreRepositoryReadingDelegate> delegate;
+@property (weak, nonatomic) id<FBApplicationDataStoreRepositoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

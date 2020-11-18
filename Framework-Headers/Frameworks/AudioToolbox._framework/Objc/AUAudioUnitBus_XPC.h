@@ -8,12 +8,12 @@
 
 #import <AudioToolboxCore/NSSecureCoding-Protocol.h>
 
-@class AUAudioUnit_XH, AVAudioFormat, NSArray, NSXPCConnection;
+@class AUAudioUnit_XPC, AVAudioFormat, NSArray, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
 @interface AUAudioUnitBus_XPC : AUAudioUnitBus <NSSecureCoding>
 {
-    AUAudioUnit_XH *_audioUnit;
+    AUAudioUnit_XPC *_audioUnit;
     NSXPCConnection *_remoteAUXPCConnection;
     unsigned int _scope;
     unsigned int _element;

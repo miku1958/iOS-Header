@@ -27,6 +27,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setSnippetViewController:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)snippetViewController;
 
 @end

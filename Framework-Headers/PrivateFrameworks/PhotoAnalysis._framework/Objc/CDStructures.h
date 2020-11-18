@@ -10,14 +10,19 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
 struct CLLocationCoordinate2D {
     double _field1;
     double _field2;
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct os_unfair_lock_s {

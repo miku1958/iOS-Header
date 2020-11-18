@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, PKAccount, PKAssertion, PKFeatureApplication, PKPaymentInstallmentConfiguration, PKPaymentProvisioningController, PKPaymentService, PKPaymentWebService;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, NSURL, PKAccount, PKAssertion, PKFeatureApplication, PKPaymentInstallmentConfiguration, PKPaymentProvisioningController, PKPaymentService, PKPaymentWebService;
 @protocol OS_dispatch_queue, PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
 
 @interface PKApplyController : NSObject <PKSetupFlowControllerProtocol, PKPaymentServiceDelegate>
@@ -35,8 +35,10 @@
     PKPaymentProvisioningController *_provisioningController;
     id<PKSetupFlowControllerProtocol> _parentFlowController;
     PKPaymentInstallmentConfiguration *_installmentConfiguration;
+    NSURL *_applyServiceURL;
 }
 
+@property (strong, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

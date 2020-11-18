@@ -8,16 +8,24 @@
 
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
-@class SBBarSwipeAffordanceView, SBHomeGestureParticipant;
+@class NSString, SBBarSwipeAffordanceView, SBHomeGestureParticipant;
+@protocol SBHomeGrabberPointerClickDelegate;
 
 @interface SBBarSwipeAffordanceViewController : UIViewController <SBHomeGestureParticipantDelegate>
 {
     long long _homeGestureParticipantIdentifier;
-    SBHomeGestureParticipant *_homeGestureParticipant;
     BOOL _wantsToBeActiveAffordance;
     BOOL _suppressAffordance;
+    SBHomeGestureParticipant *_homeGestureParticipant;
+    id<SBHomeGrabberPointerClickDelegate> _pointerClickDelegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) SBHomeGestureParticipant *homeGestureParticipant;
+@property (weak, nonatomic) id<SBHomeGrabberPointerClickDelegate> pointerClickDelegate; // @synthesize pointerClickDelegate=_pointerClickDelegate;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressAffordance; // @synthesize suppressAffordance=_suppressAffordance;
 @property (strong, nonatomic) SBBarSwipeAffordanceView *view; // @dynamic view;
 @property (nonatomic) BOOL wantsToBeActiveAffordance; // @synthesize wantsToBeActiveAffordance=_wantsToBeActiveAffordance;

@@ -13,8 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_axPerformEscape;
-- (id)backgroundEffectView;
+- (void)_createActionsViewIfNecessary;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (id)platterContainerView;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;

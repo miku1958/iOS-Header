@@ -8,7 +8,6 @@
 
 @class UIAlertControllerDescriptor, UIInterfaceActionVisualStyle, UITraitCollection;
 
-__attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyle : NSObject
 {
     UIAlertControllerDescriptor *_descriptor;

@@ -6,7 +6,7 @@
 
 #import <BulletinBoard/NSObject-Protocol.h>
 
-@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBThumbnailSizeConstraints, NSDate, NSDictionary, NSSet, NSString, NSUUID;
+@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, NSDate, NSDictionary, NSSet, NSString;
 
 @protocol BBRemoteDataProviderClientProxy <NSObject>
 - (void)bulletinsWithRequestParameters:(BBBulletinRequestParameters *)arg1 lastCleared:(id)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
@@ -16,9 +16,6 @@
 - (void)dataProviderDidLoad;
 - (void)deliverBulletinActionResponse:(BBActionResponse *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)deliverMessageWithName:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
-- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(float, NSError *))arg4;
-- (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(NSData *, NSError *))arg4;
-- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(BBThumbnailSizeConstraints *)arg4 withHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)noteSectionInfoDidChange:(BBSectionInfo *)arg1;
 @end
 

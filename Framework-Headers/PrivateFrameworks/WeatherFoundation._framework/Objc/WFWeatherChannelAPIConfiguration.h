@@ -31,10 +31,10 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 error:(id *)arg4 rules:(id)arg5;
+- (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 units:(int)arg3 date:(id)arg4 error:(id *)arg5 rules:(id)arg6;
 - (id)hostUrl;
 - (id)initWithVersion:(id)arg1;
-- (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6 rules:(id)arg7;
+- (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 units:(int)arg4 locale:(id)arg5 date:(id)arg6 error:(id *)arg7 rules:(id)arg8;
 - (void)setDefaultForecastFormatter:(Class)arg1;
 - (void)setRequestFormatter:(Class)arg1 forForecastType:(unsigned long long)arg2;
 - (void)setRequestParser:(id)arg1 forForecastType:(unsigned long long)arg2;

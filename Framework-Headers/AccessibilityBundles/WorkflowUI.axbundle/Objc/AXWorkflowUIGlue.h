@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPostScreenChangedAfterAnimation;
 + (void)accessibilityInitializeBundle;
 
 @end

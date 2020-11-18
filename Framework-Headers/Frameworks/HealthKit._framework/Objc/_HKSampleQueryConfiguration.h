@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface _HKSampleQueryConfiguration : HKQueryServerConfiguration
 {
     BOOL _includeAutomaticTimeZones;
+    BOOL _includeContributorInformation;
     NSArray *_sortDescriptors;
     unsigned long long _limit;
 }
 
 @property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
+@property (nonatomic) BOOL includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 

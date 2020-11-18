@@ -38,6 +38,7 @@
 - (void)avkit_hitTestControlForPoint:(struct CGPoint)arg1 withEvent:(id)arg2 bestSoFar:(inout id *)arg3 shortestDistanceSoFar:(inout double *)arg4;
 - (BOOL)avkit_isAncestorOfViewPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)avkit_isBeingDismissed;
+- (BOOL)avkit_isBeingPresented;
 - (BOOL)avkit_isBeingScrollTested;
 - (BOOL)avkit_isBeingScrolled;
 - (BOOL)avkit_isBeingScrolledQuickly;
@@ -52,6 +53,8 @@
 - (void)avkit_makeSubtreeDisallowGroupBlending;
 - (void)avkit_needsUpdateBackdropCaptureViewHidden;
 - (struct UIEdgeInsets)avkit_overrideLayoutMarginsForCounterRotation;
+- (void)avkit_reevaluateHiddenStateOfItem:(id)arg1;
+- (void)avkit_sizeWasInvalidatedNeedingLayoutIfNeeded:(id)arg1;
 - (BOOL)avkit_wantsAnimatedViewTransitions;
 @end
 

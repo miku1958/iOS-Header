@@ -6,11 +6,12 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class NSArray, PSListController, PSSimStatusCache, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
+@class NSArray, PSListController, PSSimStatusCache, PSUICellularDataListItemsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataSpecifier : PSSpecifier
 {
+    PSUICellularDataListItemsController *_detailController;
     PSListController *_hostController;
     PSSimStatusCache *_simStatusCache;
     PSUICellularPlanManagerCache *_planManagerCache;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *cachedPlanItems; // @synthesize cachedPlanItems=_cachedPlanItems;
 @property (strong, nonatomic) PSUICoreTelephonyCallCache *callCache; // @synthesize callCache=_callCache;
 @property (strong, nonatomic) PSUICoreTelephonyDataCache *dataCache; // @synthesize dataCache=_dataCache;
+@property (weak, nonatomic) PSUICellularDataListItemsController *detailController; // @synthesize detailController=_detailController;
 @property (weak, nonatomic) PSListController *hostController; // @synthesize hostController=_hostController;
 @property (strong, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property (strong, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
@@ -39,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithHostController:(id)arg1;
 - (id)initWithHostController:(id)arg1 simStatusCache:(id)arg2 planManagerCache:(id)arg3 callCache:(id)arg4 dataCache:(id)arg5 wifiState:(id)arg6;
 - (id)isCellularDataEnabled:(id)arg1;
-- (BOOL)isSubcontrollerNeeded;
+- (BOOL)isDetailControllerNeeded;
 - (id)planItemForListItem:(id)arg1;
 - (void)setAirplaneMode:(BOOL)arg1;
 - (void)setCellularDataEnabled:(id)arg1 specifier:(id)arg2;

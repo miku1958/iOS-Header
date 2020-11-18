@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSString *_prefixText;
     NSString *_selectedText;
     NSString *_postfixText;
+    id _turnIdentifier;
 }
 
 @property (nonatomic) BOOL acceptsDictationSearchResults; // @synthesize acceptsDictationSearchResults=_acceptsDictationSearchResults;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
 @property (nonatomic) BOOL secureInput; // @synthesize secureInput=_secureInput;
 @property (copy, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
+@property (copy, nonatomic) id turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;
 

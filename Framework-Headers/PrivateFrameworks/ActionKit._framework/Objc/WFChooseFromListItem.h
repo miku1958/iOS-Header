@@ -6,6 +6,7 @@
 
 #import <Intents/INObject.h>
 
+__attribute__((visibility("hidden")))
 @interface WFChooseFromListItem : INObject
 {
 }

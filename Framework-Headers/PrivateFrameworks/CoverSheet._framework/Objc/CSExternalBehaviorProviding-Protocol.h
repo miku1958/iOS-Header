@@ -8,5 +8,6 @@
 #import <CoverSheet/CSCoverSheetParticipating-Protocol.h>
 
 @protocol CSExternalBehaviorProviding <CSBehaviorProviding, CSCoverSheetParticipating>
+- (void)conformsToCSExternalBehaviorProviding;
 @end
 

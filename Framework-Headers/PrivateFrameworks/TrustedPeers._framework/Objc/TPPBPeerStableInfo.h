@@ -23,10 +23,12 @@
     NSData *_recoveryEncryptionPublicKey;
     NSData *_recoverySigningPublicKey;
     NSString *_serialNumber;
+    int _userControllableViewStatus;
     struct {
         unsigned int clock:1;
         unsigned int flexiblePolicyVersion:1;
         unsigned int frozenPolicyVersion:1;
+        unsigned int userControllableViewStatus:1;
     } _has;
 }
 
@@ -46,14 +48,17 @@
 @property (readonly, nonatomic) BOOL hasRecoveryEncryptionPublicKey;
 @property (readonly, nonatomic) BOOL hasRecoverySigningPublicKey;
 @property (readonly, nonatomic) BOOL hasSerialNumber;
+@property (nonatomic) BOOL hasUserControllableViewStatus;
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property (strong, nonatomic) NSMutableArray *policySecrets; // @synthesize policySecrets=_policySecrets;
 @property (strong, nonatomic) NSData *recoveryEncryptionPublicKey; // @synthesize recoveryEncryptionPublicKey=_recoveryEncryptionPublicKey;
 @property (strong, nonatomic) NSData *recoverySigningPublicKey; // @synthesize recoverySigningPublicKey=_recoverySigningPublicKey;
 @property (strong, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (nonatomic) int userControllableViewStatus; // @synthesize userControllableViewStatus=_userControllableViewStatus;
 
 + (Class)policySecretsType;
 - (void).cxx_destruct;
+- (int)StringAsUserControllableViewStatus:(id)arg1;
 - (void)addPolicySecrets:(id)arg1;
 - (void)clearPolicySecrets;
 - (void)copyTo:(id)arg1;
@@ -66,6 +71,7 @@
 - (id)policySecretsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)policySecretsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)userControllableViewStatusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

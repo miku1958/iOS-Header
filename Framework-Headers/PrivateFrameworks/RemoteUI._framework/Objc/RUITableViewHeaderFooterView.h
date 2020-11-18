@@ -16,6 +16,7 @@
 @property (weak) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (struct UIEdgeInsets)insetsForHeaderFooter;
 - (void)layoutSubviews;
 
 @end

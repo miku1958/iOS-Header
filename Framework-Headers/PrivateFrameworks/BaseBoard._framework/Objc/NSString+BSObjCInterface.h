@@ -7,8 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BSObjCInterface)
-+ (id)bsobjc_typeQualifiers;
 - (id)_initWithUTF8String:(const char *)arg1 maxLength:(unsigned long long)arg2;
-- (id)bsobjc_stripTypeQualifiers:(out id *)arg1;
 @end
 

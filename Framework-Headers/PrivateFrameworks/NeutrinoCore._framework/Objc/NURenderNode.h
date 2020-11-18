@@ -68,6 +68,7 @@
 - (id)_generateSpaceMapKey;
 - (unsigned long long)_hash;
 - (BOOL)canPropagateOriginalAuxiliaryData;
+- (BOOL)canPropagateOriginalLivePhotoMetadataTrack;
 - (id)debugDescription;
 - (id)debugQuickLookObject;
 - (id)description;

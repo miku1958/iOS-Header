@@ -14,6 +14,7 @@
 {
     int _uiTarget;
     NSArray *_sections;
+    NSArray *_resultCardSections;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +24,8 @@
 
 + (id)feedbackListenerForParsec;
 - (void).cxx_destruct;
+- (void)cardViewDidAppear:(id)arg1;
+- (void)didEngageCardSection:(id)arg1;
 - (void)didEngageResult:(id)arg1;
 - (void)didEngageSection:(id)arg1;
 - (void)didRankSections:(id)arg1;

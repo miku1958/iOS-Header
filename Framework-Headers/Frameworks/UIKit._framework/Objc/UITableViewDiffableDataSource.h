@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)_applySnapshot:(id)arg1 animatingDifferences:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_diffableDataSourceImpl;
 - (BOOL)_isDiffableDataSource;
 - (void)applySnapshot:(id)arg1 animatingDifferences:(BOOL)arg2;
 - (void)applySnapshot:(id)arg1 animatingDifferences:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

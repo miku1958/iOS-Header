@@ -8,7 +8,7 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class NSDate, NSString, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSTStockDetails, TSULocale, TSWPParagraphStyle, TSWPStorage;
+@class NSDate, NSString, TSCEFormulaObject, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSTStockDetails, TSULocale, TSWPParagraphStyle, TSWPStorage;
 
 @interface TSTCell : NSObject <NSCopying>
 {
@@ -87,10 +87,10 @@
 @property (nonatomic) double durationTimeIntervalValue;
 @property (readonly, nonatomic) TSWPParagraphStyle *effectiveTextStyle;
 @property (nonatomic) unsigned short explicitFormatFlags; // @synthesize explicitFormatFlags=_explicitFormatFlags;
-@property (readonly, nonatomic) int formatType;
+@property (readonly, nonatomic) unsigned int formatType;
 @property (readonly, nonatomic) NSString *formattedValue;
-@property (nonatomic) struct TSCEFormula *formula;
 @property (nonatomic) unsigned int formulaID; // @synthesize formulaID=_formulaID;
+@property (strong, nonatomic) TSCEFormulaObject *formulaObject;
 @property (strong, nonatomic) TSWPStorage *formulaSyntaxError;
 @property (nonatomic) unsigned int formulaSyntaxErrorID;
 @property (readonly, nonatomic) NSString *formulaSyntaxErrorString;
@@ -122,11 +122,12 @@
 @property (readonly, nonatomic) BOOL hasValueOrError;
 @property (strong, nonatomic) TSTImportWarningSet *importWarningSet; // @synthesize importWarningSet=_importWarningSet;
 @property (nonatomic) unsigned int importWarningSetID; // @synthesize importWarningSetID=_importWarningSetID;
-@property (readonly, nonatomic) int interactionType;
+@property (readonly, nonatomic) unsigned int interactionType;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isEmptyForDataStore;
 @property (readonly, nonatomic) BOOL isMostRecentlyExplicitPercent;
 @property (strong, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
+@property (readonly, nonatomic) BOOL mightBeInterestedInMigration;
 @property (nonatomic) struct TSUDecimal numberDecimalValue;
 @property (nonatomic) double numberDoubleValue;
 @property (readonly, nonatomic) TSKFormat *numberFormat; // @synthesize numberFormat=_numberFormat;
@@ -153,9 +154,9 @@
 @property (nonatomic) int valueType; // @synthesize valueType=_valueType;
 @property (readonly, nonatomic) int writingDirection;
 
-+ (BOOL)formatType:(int)arg1 isSameCellFormatKindAs:(int)arg2;
-+ (BOOL)formatType:(int)arg1 isSameCellFormatKindAs:(int)arg2 allowNumberCurrencyMismatch:(BOOL)arg3;
-+ (BOOL)mismatchBetweenValueType:(int)arg1 andFormatType:(int)arg2;
++ (BOOL)formatType:(unsigned int)arg1 isSameCellFormatKindAs:(unsigned int)arg2;
++ (BOOL)formatType:(unsigned int)arg1 isSameCellFormatKindAs:(unsigned int)arg2 allowNumberCurrencyMismatch:(BOOL)arg3;
++ (BOOL)mismatchBetweenValueType:(int)arg1 andFormatType:(unsigned int)arg2;
 + (unsigned int)p_cellFormatKindForValueType:(int)arg1;
 + (BOOL)p_mismatchBetweenValueType:(int)arg1 andCellFormatKind:(unsigned int)arg2;
 + (id)stringForCellValueType:(int)arg1;
@@ -168,20 +169,20 @@
 - (void)applyPopupChoiceIndex:(unsigned long long)arg1;
 - (void)bakeFormulaToValue;
 - (id)candidateFormatForSliderStepperControlWithIsCurrent:(BOOL *)arg1;
-- (id)cellByApplyingCellDiff:(id)arg1 context:(id)arg2 andUpdateInverse:(id)arg3 optionalConcurrentStylesheet:(id)arg4;
+- (id)cellByApplyingCellDiff:(id)arg1 toTable:(id)arg2 andUpdateInverse:(id)arg3 optionalConcurrentStylesheet:(id)arg4;
 - (id)cellFillComparedToDefault:(id)arg1 suppressCS:(BOOL)arg2 isDefault:(BOOL *)arg3;
 - (id)cellValueDescription;
 - (id)cellValueTypeDescription;
 - (void)clear;
 - (void)clearAllFormats;
 - (void)clearDataListIDs;
-- (void)clearFormatOfType:(int)arg1;
+- (void)clearFormatOfType:(unsigned int)arg1;
 - (void)clearStrokes;
 - (void)clearValue;
-- (BOOL)coerceCellToFormatTypeUsingSpares:(int)arg1;
+- (BOOL)coerceCellToFormatTypeUsingSpares:(unsigned int)arg1;
 - (BOOL)coerceTextCellToBestNumberFormatUsingLimitedParsing:(BOOL)arg1;
 - (BOOL)coerceToBaseFormat:(id)arg1;
-- (BOOL)coerceToFormatType:(int)arg1;
+- (BOOL)coerceToFormatType:(unsigned int)arg1;
 - (void)copyAllFormatsToCell:(id)arg1;
 - (void)copyJustStrokesToCell:(id)arg1;
 - (void)copyJustStyleAndStrokesToCell:(id)arg1;
@@ -193,21 +194,22 @@
 - (id)formatForStorageFlag:(unsigned int)arg1;
 - (unsigned int)formatIDForStorageFlag:(unsigned int)arg1;
 - (id)formatOfCellFormatKind:(unsigned int)arg1 isExplicit:(BOOL *)arg2;
-- (id)formatOfType:(int)arg1 allowMismatchedSpare:(BOOL)arg2;
+- (id)formatOfType:(unsigned int)arg1 allowMismatchedSpare:(BOOL)arg2;
 - (BOOL)hasEqualContentToCell:(id)arg1;
 - (BOOL)hasEqualContentToCell:(id)arg1 usingRichTextStyleComparisonBlock:(CDUnknownBlockType)arg2;
 - (BOOL)hasEqualValueToCell:(id)arg1;
-- (BOOL)hasExplicitFormatOfType:(int)arg1 allowMismatchedSpare:(BOOL)arg2;
-- (BOOL)hasFormatOfType:(int)arg1 allowMismatchedSpare:(BOOL)arg2;
+- (BOOL)hasExplicitFormatOfType:(unsigned int)arg1 allowMismatchedSpare:(BOOL)arg2;
+- (BOOL)hasFormatOfType:(unsigned int)arg1 allowMismatchedSpare:(BOOL)arg2;
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2;
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2 suppressingTransmutation:(BOOL)arg3;
 - (id)initWithLocale:(id)arg1;
 - (id)initWithStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2;
 - (void)p_TSTCellSetMostRecentlySetNumberFormatWithCurrencyFlag:(BOOL)arg1;
 - (void)p_clearFormatOfCellFormatKind:(unsigned int)arg1;
+- (BOOL)p_clearIfImplicitAndNotCurrentForKind:(unsigned int)arg1 format:(id)arg2 explicitFormatMask:(unsigned short)arg3;
 - (BOOL)p_currentFormatIsEqualToOtherCellFormat:(id)arg1;
 - (id)p_formatOfCellFormatKind:(unsigned int)arg1 create:(BOOL)arg2 created:(BOOL *)arg3;
-- (BOOL)p_formatTypeIsANumberFormatTypeForMostRecentlySet:(int)arg1;
+- (BOOL)p_formatTypeIsANumberFormatTypeForMostRecentlySet:(unsigned int)arg1;
 - (BOOL)p_hasExplicitFormatOfCellFormatKind:(unsigned int)arg1;
 - (void)p_setFormatExplicit:(BOOL)arg1 fromCellFormatKind:(unsigned int)arg2 setMostRecentlySet:(BOOL)arg3;
 - (void)p_setFormatFlags:(unsigned short)arg1 explicit:(BOOL)arg2;
@@ -230,8 +232,7 @@
 - (void)setFormat:(id)arg1 isExplicit:(BOOL)arg2;
 - (void)setFormat:(id)arg1 shouldSetExplFlags:(BOOL)arg2 isExplicit:(BOOL)arg3 makeCurrent:(BOOL)arg4 clearingID:(BOOL)arg5;
 - (void)setFormatID:(unsigned int)arg1 forStorageFlag:(unsigned int)arg2;
-- (void)setFormula:(struct TSCEFormula *)arg1 clearingID:(BOOL)arg2;
-- (void)setFormulaByRef:(const struct TSCEFormula *)arg1;
+- (void)setFormulaObject:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setFormulaSyntaxError:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setImportWarningSet:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setNumberDecimalValue:(struct TSUDecimal)arg1 roundToDoublePrecision:(BOOL)arg2;

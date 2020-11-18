@@ -10,6 +10,7 @@
 
 @class MCLURLDataLoaderTask, NSString;
 
+__attribute__((visibility("hidden")))
 @interface TKNetworkDefaultTask : NSObject <TKNetworkTask>
 {
     MCLURLDataLoaderTask *_task;

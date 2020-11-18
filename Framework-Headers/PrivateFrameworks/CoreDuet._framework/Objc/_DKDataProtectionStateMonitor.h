@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, _DKDataProtectionMaster;
+@class NSUUID, _DKDataProtectionMonitor;
 
 @interface _DKDataProtectionStateMonitor : NSObject
 {
-    _DKDataProtectionMaster *_master;
+    _DKDataProtectionMonitor *_main;
     NSUUID *_handlerUUID;
     CDUnknownBlockType _changeHandler;
 }

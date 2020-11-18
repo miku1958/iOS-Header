@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXFeatureSpec.h>
 
-@class NSShadow, PXDayAssetsSectionConfigurator, PXMonthCardSectionConfigurator, PXMonthChapterSectionConfigurator, PXYearAssetsSectionConfigurator;
+@class NSShadow, PXAssetsSectionGridConfigurator, PXDayAssetsSectionConfigurator, PXMonthCardSectionConfigurator, PXMonthChapterSectionConfigurator, PXYearAssetsSectionConfigurator, PXZoomablePhotosLayoutSpec;
 
 @interface PXAssetsSectionLayoutSpec : PXFeatureSpec
 {
@@ -14,20 +14,29 @@
     PXMonthCardSectionConfigurator *_monthSectionConfigurator;
     PXMonthChapterSectionConfigurator *_monthsChapterConfigurator;
     PXDayAssetsSectionConfigurator *_daySectionConfigurator;
-    BOOL _userInterfaceStyleAllowsShadow;
+    PXAssetsSectionGridConfigurator *_gridConfigurator;
     NSShadow *_shadow;
+    BOOL _userInterfaceStyleAllowsShadow;
+    BOOL _disableConfigurators;
+    PXZoomablePhotosLayoutSpec *_zoomableSpec;
     double _shadowCornerRadius;
     struct UIEdgeInsets _padding;
 }
 
+@property (readonly, nonatomic) BOOL disableConfigurators; // @synthesize disableConfigurators=_disableConfigurators;
 @property (readonly, nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
-@property (readonly, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
+@property (readonly, nonatomic) NSShadow *shadow;
 @property (readonly, nonatomic) double shadowCornerRadius; // @synthesize shadowCornerRadius=_shadowCornerRadius;
+@property (readonly, nonatomic) BOOL supportsGridAspectRatioToggle;
 @property (readonly, nonatomic) BOOL userInterfaceStyleAllowsShadow; // @synthesize userInterfaceStyleAllowsShadow=_userInterfaceStyleAllowsShadow;
+@property (readonly, nonatomic) PXZoomablePhotosLayoutSpec *zoomableSpec; // @synthesize zoomableSpec=_zoomableSpec;
 
 - (void).cxx_destruct;
+- (id)_configuratorForZoomLevel:(long long)arg1;
 - (BOOL)allowsPositionDependentHeaderContentOpacityInZoomLevel:(long long)arg1;
+- (id)gridConfigurator;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
+- (long long)numberOfGridZoomStepsWithDataSource:(id)arg1;
 - (id)sectionConfiguratorForAssetCollection:(id)arg1 inZoomLevel:(long long)arg2;
 
 @end

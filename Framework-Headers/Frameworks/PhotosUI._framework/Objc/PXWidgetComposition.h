@@ -62,7 +62,6 @@
 - (void)_invalidateElements;
 - (void)_invalidateElementsSpec;
 - (void)_invalidateElementsToLoad;
-- (void)_invalidateFocusedTilingController;
 - (long long)_loadingPriorityForElement:(id)arg1;
 - (void)_setNeedsUpdateWidgetLoading;
 - (BOOL)_shouldFocusOnTilingController:(id)arg1;
@@ -82,6 +81,7 @@
 - (id)headerTilingControllerForWidget:(id)arg1;
 - (id)init;
 - (id)initWithScrollViewController:(id)arg1;
+- (void)invalidateFocusedTilingController;
 - (void)performWidgetLoadingChange:(CDUnknownBlockType)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (id)tilingControllers;

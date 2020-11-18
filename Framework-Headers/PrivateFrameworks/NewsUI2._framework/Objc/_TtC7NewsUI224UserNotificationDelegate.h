@@ -8,12 +8,12 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI224UserNotificationDelegate : NSObject
 {
     MISSING_TYPE *notificationHandlerManager;
     MISSING_TYPE *notificationOpenSettingsHandler;
     MISSING_TYPE *navigator;
+    MISSING_TYPE *bootstrapper;
 }
 
 - (void).cxx_destruct;

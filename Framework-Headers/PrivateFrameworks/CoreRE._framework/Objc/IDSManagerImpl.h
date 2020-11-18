@@ -20,10 +20,14 @@ __attribute__((visibility("hidden")))
     struct DynamicArray<re::IDSDiscoveryView *> m_views;
     BOOL _isListeningForInvites;
     IDSService *_service;
-    struct Config _config;
+    struct Config {
+        struct ServiceLocator *serviceLocator;
+        struct queue dispatchQueue;
+        struct DynamicString serviceID;
+    } _config;
 }
 
-@property (nonatomic) struct Config config; // @synthesize config=_config;
+@property (nonatomic) Config_8ed34026 config; // @synthesize config=_config;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

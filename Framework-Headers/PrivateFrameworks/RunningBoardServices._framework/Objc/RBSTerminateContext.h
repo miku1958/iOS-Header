@@ -6,23 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSArray, NSSet, NSString;
+@class NSArray, NSString;
 
-@interface RBSTerminateContext : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSTerminateContext : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     unsigned char _maximumTerminationResistance;
-    BOOL _graceful;
-    unsigned char _maximumRole;
     BOOL _preventIfBeingDebugged;
     unsigned int _exceptionDomain;
     NSString *_explanation;
     unsigned long long _reportType;
     unsigned long long _exceptionCode;
     NSArray *_attributes;
-    NSSet *_preventingEndowmentNamespaces;
 }
 
 @property (copy, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
@@ -31,28 +28,22 @@
 @property (nonatomic) unsigned long long exceptionCode; // @synthesize exceptionCode=_exceptionCode;
 @property (nonatomic) unsigned int exceptionDomain; // @synthesize exceptionDomain=_exceptionDomain;
 @property (copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
-@property (nonatomic) BOOL graceful; // @synthesize graceful=_graceful;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned char maximumRole; // @synthesize maximumRole=_maximumRole;
 @property (nonatomic) unsigned char maximumTerminationResistance; // @synthesize maximumTerminationResistance=_maximumTerminationResistance;
 @property (nonatomic) BOOL preventIfBeingDebugged; // @synthesize preventIfBeingDebugged=_preventIfBeingDebugged;
-@property (strong, nonatomic) NSSet *preventingEndowmentNamespaces; // @synthesize preventingEndowmentNamespaces=_preventingEndowmentNamespaces;
 @property (nonatomic) unsigned long long reportType; // @synthesize reportType=_reportType;
 @property (readonly, nonatomic) BOOL shouldTerminatePlugIns;
 @property (readonly) Class superclass;
 
-+ (id)defaultContext;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (id)defaultContextWithExplanation:(id)arg1;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithExplanation:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

@@ -8,12 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI225EmailSignupViewController : UIViewController
 {
     MISSING_TYPE *model;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *obController;
+    MISSING_TYPE *signMeUpButton;
+    MISSING_TYPE *notNowButton;
 }
 
 - (void).cxx_destruct;

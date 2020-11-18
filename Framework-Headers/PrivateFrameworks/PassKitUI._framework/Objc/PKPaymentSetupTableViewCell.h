@@ -6,23 +6,27 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class UIImageView, UILabel;
+@class UIImage, UIImageView, UILabel;
 
 @interface PKPaymentSetupTableViewCell : PKTableViewCell
 {
     UILabel *_betaLabel;
+    UIImageView *_cardImageView;
+    UIImageView *_iconImageView;
+    long long _thumbnailType;
     BOOL _showBetaBadge;
-    UIImageView *_thumbnailImageView;
+    UIImage *_thumbnail;
 }
 
 @property (nonatomic) BOOL showBetaBadge; // @synthesize showBetaBadge=_showBetaBadge;
-@property (readonly, nonatomic) UIImageView *thumbnailImageView; // @synthesize thumbnailImageView=_thumbnailImageView;
+@property (readonly, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 
 + (struct CGSize)defaultImageViewSize;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setThumbnail:(id)arg1 type:(long long)arg2 animated:(BOOL)arg3;
 
 @end
 

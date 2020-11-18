@@ -28,7 +28,9 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateLock; // @synthesize stateLock=_stateLock;
 @property (readonly) Class superclass;
 
++ (id)fifoScheduler;
 + (id)fifoSchedulerWithEnvironment:(id)arg1;
++ (id)lifoScheduler;
 + (id)lifoSchedulerWithEnvironment:(id)arg1;
 + (CDUnknownBlockType)nextTaskToRunForPriorityTasks:(id)arg1 backlogTasks:(id)arg2 order:(long long)arg3;
 - (void).cxx_destruct;

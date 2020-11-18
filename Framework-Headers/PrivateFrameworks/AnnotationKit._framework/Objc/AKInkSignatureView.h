@@ -8,14 +8,14 @@
 
 #import <AnnotationKit/PKCanvasViewDelegate-Protocol.h>
 
-@class NSString, PKCanvasView, PKDrawing, PKInk, UIColor;
+@class NSString, PKCanvasView, PKDrawing, PKTool, UIColor;
 
 @interface AKInkSignatureView : UIView <PKCanvasViewDelegate>
 {
     BOOL _hasStrokes;
     UIColor *_strokeColor;
     PKCanvasView *_canvasView;
-    PKInk *_ink;
+    PKTool *_tool;
     PKDrawing *_latestDrawing;
 }
 
@@ -24,14 +24,14 @@
 @property (readonly, copy) NSString *description;
 @property BOOL hasStrokes; // @synthesize hasStrokes=_hasStrokes;
 @property (readonly) unsigned long long hash;
-@property (copy) PKInk *ink; // @synthesize ink=_ink;
 @property (strong) PKDrawing *latestDrawing; // @synthesize latestDrawing=_latestDrawing;
 @property (strong, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property (readonly) Class superclass;
+@property (copy) PKTool *tool; // @synthesize tool=_tool;
 
 - (void).cxx_destruct;
 - (void)_commonInit;
-- (void)_updateInk;
+- (void)_updateTool;
 - (void)canvasViewDrawingDidChange:(id)arg1;
 - (void)clear;
 - (struct CGPath *)copyPotracedPathAndReturnDrawing:(id *)arg1;

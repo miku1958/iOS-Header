@@ -44,7 +44,6 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_allAnnotations:(id)arg1 all:(BOOL *)arg2 atLeastOneShare:(BOOL *)arg3 attributeFromTag:(long long)arg4;
-- (void)_disableInkPicker:(BOOL)arg1;
 - (BOOL)_isEnabledForSender:(id)arg1 segment:(long long)arg2 withSelectedAnnotations:(id)arg3;
 - (void)_persistCurrentAttributes;
 - (void)_restorePersistedAttributes;
@@ -55,8 +54,6 @@
 - (BOOL)_updateStateOnSender:(id)arg1 segment:(long long)arg2 fromSelectedAnnotations:(id)arg3;
 - (void)_updateStateOnSenderFromSelf:(id)arg1 segment:(long long)arg2;
 - (void)annotationEditingDidEndWithCompletion:(CDUnknownBlockType)arg1;
-- (void)beganDrawingStroke;
-- (void)didEndOrCancelStroke;
 - (void)forceHideRuler;
 - (id)initWithController:(id)arg1;
 - (BOOL)isAttributeSenderEnabled:(id)arg1 segment:(long long)arg2;

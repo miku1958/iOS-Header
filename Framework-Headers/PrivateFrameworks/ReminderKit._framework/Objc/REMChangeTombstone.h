@@ -19,8 +19,10 @@
     NSUUID *_shareeOwningListIdentifier;
     NSString *_shareeDisplayName;
     NSString *_shareeAddress;
+    NSUUID *_assignmentOwningReminderIdentifier;
 }
 
+@property (readonly, nonatomic) NSUUID *assignmentOwningReminderIdentifier; // @synthesize assignmentOwningReminderIdentifier=_assignmentOwningReminderIdentifier;
 @property (readonly, nonatomic) NSNumber *daIsEventOnlyContainer; // @synthesize daIsEventOnlyContainer=_daIsEventOnlyContainer;
 @property (readonly, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (readonly, nonatomic) NSUUID *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;

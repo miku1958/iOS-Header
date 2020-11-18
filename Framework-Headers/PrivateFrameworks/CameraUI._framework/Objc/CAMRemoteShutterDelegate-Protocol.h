@@ -20,6 +20,7 @@
 - (BOOL)remoteShutterBeginBurstCapture:(CAMRemoteShutterController *)arg1;
 - (void)remoteShutterCancelCountdown:(CAMRemoteShutterController *)arg1;
 - (BOOL)remoteShutterEndBurstCapture:(CAMRemoteShutterController *)arg1;
+- (BOOL)remoteShutterShouldSuspendApp:(CAMRemoteShutterController *)arg1;
 - (BOOL)remoteShutterStartCapture:(CAMRemoteShutterController *)arg1;
 - (BOOL)remoteShutterStopCapture:(CAMRemoteShutterController *)arg1;
 @end

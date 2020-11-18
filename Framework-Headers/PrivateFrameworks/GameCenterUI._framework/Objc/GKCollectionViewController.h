@@ -33,7 +33,6 @@
     GKLoadableContentStateMachine *_loadingMachine;
     UICollectionViewLayout *_defaultLayout;
     UIActivityIndicatorView *_loadingIndicatorView;
-    long long _gkFocusBubbleType;
     long long _previousOrientation;
     long long _appearCount;
     NSMapTable *_reusableViewsIHaveSeen;
@@ -56,7 +55,6 @@
 @property (strong, nonatomic) UICollectionViewLayout *defaultLayout; // @synthesize defaultLayout=_defaultLayout;
 @property (readonly, copy) NSString *description;
 @property BOOL didSlideIn; // @synthesize didSlideIn=_didSlideIn;
-@property (nonatomic) long long gkFocusBubbleType; // @synthesize gkFocusBubbleType=_gkFocusBubbleType;
 @property BOOL hasViewFactories; // @synthesize hasViewFactories=_hasViewFactories;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIActivityIndicatorView *loadingIndicatorView; // @synthesize loadingIndicatorView=_loadingIndicatorView;
@@ -83,7 +81,7 @@
 - (BOOL)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_loadDataWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;
 - (void)_reallyStartLoadingIndicator;
-- (void)_systemContentSizeSettingDidChange:(id)arg1;
+- (void)_systemContentSizeSettingDidChange;
 - (void)addPlaceholderViewToView:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)applyShowMoreLayoutAttributesForShowMoreView:(id)arg1 atIndexPath:(id)arg2;
@@ -102,6 +100,7 @@
 - (void)dataSource:(id)arg1 didMoveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (void)dataSource:(id)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;
 - (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2;
+- (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2 animated:(BOOL)arg3;
 - (void)dataSource:(id)arg1 didRefreshSections:(id)arg2;
 - (void)dataSource:(id)arg1 didRemoveItemsAtIndexPaths:(id)arg2;
 - (void)dataSource:(id)arg1 didRemoveSections:(id)arg2;
@@ -158,13 +157,13 @@
 - (void)stopLoadingIndicator;
 - (void)stopLoadingIndicatorWithoutAnimation;
 - (void)swipeToDeleteCell:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateDynamicColumnCountsForViewSize:(struct CGSize)arg1;
 - (void)updateLayoutGuideOffsets;
 - (void)updateMetrics;
 - (void)updateSelectionHighlight;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidDisappearAnimated:(BOOL)arg1 bubbleFlow:(BOOL)arg2;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;

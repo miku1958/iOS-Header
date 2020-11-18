@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_uRL;
     double _maxScore;
     NSString *_provider;
+    NSString *_ratingCategoryId;
     NSMutableArray *_reviews;
     double _score;
     unsigned int _readerMarkPos;
@@ -33,15 +34,9 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_uRL:1;
         unsigned int read_provider:1;
+        unsigned int read_ratingCategoryId:1;
         unsigned int read_reviews:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_uRL:1;
-        unsigned int wrote_maxScore:1;
-        unsigned int wrote_provider:1;
-        unsigned int wrote_reviews:1;
-        unsigned int wrote_score:1;
-        unsigned int wrote_numberOfRatings:1;
-        unsigned int wrote_numberOfReviews:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,12 +44,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasNumberOfRatings;
 @property (nonatomic) BOOL hasNumberOfReviews;
 @property (readonly, nonatomic) BOOL hasProvider;
+@property (readonly, nonatomic) BOOL hasRatingCategoryId;
 @property (nonatomic) BOOL hasScore;
 @property (readonly, nonatomic) BOOL hasURL;
 @property (nonatomic) double maxScore;
 @property (nonatomic) int numberOfRatings;
 @property (nonatomic) int numberOfReviews;
 @property (strong, nonatomic) NSString *provider;
+@property (strong, nonatomic) NSString *ratingCategoryId;
 @property (strong, nonatomic) NSMutableArray *reviews;
 @property (nonatomic) double score;
 @property (strong, nonatomic) NSString *uRL;
@@ -63,10 +60,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)reviewType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsReview:(id)arg1;
-- (void)_readProvider;
-- (void)_readReviews;
-- (void)_readURL;
 - (void)addReview:(id)arg1;
 - (void)clearReviews;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -77,8 +70,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithSampleSizeForUserRatingScore:(unsigned int)arg1 normalizedUserRatingScore:(float)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

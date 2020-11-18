@@ -13,8 +13,9 @@
 @interface __CFN_TaskMetrics : NSObject <NSSecureCoding>
 {
     struct os_unfair_lock_s _lock;
-    BOOL _ignoreNextRedirection;
     BOOL _completed;
+    BOOL _ignoreNextRedirection;
+    __CFN_SessionMetrics *_sessionMetrics;
     NSUUID *_UUID;
     unsigned long long _identifier;
     NSMutableArray *_transactionMetrics;
@@ -24,37 +25,15 @@
     long long _options;
     long long _schedulingTier;
     __CFN_TransactionMetrics *_currentTransactionMetrics;
-    __CFN_SessionMetrics *_sessionMetrics;
 }
 
-@property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-@property (nonatomic) double completeTime; // @synthesize completeTime=_completeTime;
-@property (nonatomic) BOOL completed; // @synthesize completed=_completed;
-@property (nonatomic) double createTime; // @synthesize createTime=_createTime;
-@property (strong) __CFN_TransactionMetrics *currentTransactionMetrics; // @synthesize currentTransactionMetrics=_currentTransactionMetrics;
-@property (nonatomic) double firstResumeTime; // @synthesize firstResumeTime=_firstResumeTime;
-@property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) BOOL ignoreNextRedirection; // @synthesize ignoreNextRedirection=_ignoreNextRedirection;
-@property (nonatomic) long long options; // @synthesize options=_options;
-@property (nonatomic) long long schedulingTier; // @synthesize schedulingTier=_schedulingTier;
-@property (strong, nonatomic) __CFN_SessionMetrics *sessionMetrics; // @synthesize sessionMetrics=_sessionMetrics;
-@property (strong, nonatomic) NSMutableArray *transactionMetrics; // @synthesize transactionMetrics=_transactionMetrics;
+@property (strong) __CFN_TransactionMetrics *_daemon_currentTransactionMetrics;
+@property (strong, nonatomic) NSMutableArray *_daemon_transactionMetrics;
 
-+ (long long)optionsFromTask:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)completeWithError:(id)arg1;
-- (void)completionHandlerEvent;
-- (void)delegateBegin:(SEL)arg1;
-- (void)delegateEnd:(SEL)arg1;
-- (void)delegateEvent:(SEL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTask:(id)arg1 sessionMetrics:(id)arg2;
-- (void)lockTransactionMetrics:(CDUnknownBlockType)arg1;
-- (void)nextTransaction:(unsigned long long)arg1 withNewRequest:(id)arg2;
-- (void)resume;
-- (void)suspend;
 
 @end
 

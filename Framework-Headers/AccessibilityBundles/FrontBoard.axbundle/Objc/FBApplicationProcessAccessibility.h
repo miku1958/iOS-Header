@@ -15,8 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilitySetWasJustLaunched:(BOOL)arg1;
 - (BOOL)_accessibilityWasJustLaunched;
-- (void)_queue_bootstrapAndExec;
-- (void)_queue_setVisibility:(long long)arg1;
+- (void)_bootstrapAndExec;
+- (void)_setSceneLifecycleState:(unsigned char)arg1;
 
 @end
 

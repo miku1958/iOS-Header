@@ -30,7 +30,7 @@
 - (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
 - (id)assistantObject;
-- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(BOOL)arg4;
 - (id)dumpSimpleState;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
@@ -49,6 +49,7 @@
 - (void)removeAdvertisement:(id)arg1;
 - (void)setAdvertisement:(id)arg1;
 - (void)setRemotelyReachable:(BOOL)arg1;
+- (unsigned long long)supportedTransports;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 - (id)urlString;

@@ -22,8 +22,6 @@
 
 + (BOOL)isEnabled;
 - (BOOL)improveEntry:(id)arg1;
-- (BOOL)improveUndecoratedSubtitle:(id)arg1 forEntry:(id)arg2;
-- (BOOL)improveUndecoratedTitle:(id)arg1 forEntry:(id)arg2;
 
 @end
 

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) id<WFExtensionApplicationContextProviderDelegate> extensionApplicationContextProviderDelegate;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long userInterfaceStyle;
 @property (nonatomic) BOOL wfIdleTimerDisabled;
 
 - (id)applicationForWFApplicationContext:(id)arg1;

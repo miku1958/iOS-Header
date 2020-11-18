@@ -21,7 +21,17 @@
     unsigned int _payloadSize;
     unsigned int _receiveOffset;
     NSString *_topic;
-    CDStruct_f8f5923d _has;
+    int _wakeStatus;
+    struct {
+        unsigned int timestamp:1;
+        unsigned int connectionType:1;
+        unsigned int dualChannelState:1;
+        unsigned int isFromStorage:1;
+        unsigned int linkQuality:1;
+        unsigned int payloadSize:1;
+        unsigned int receiveOffset:1;
+        unsigned int wakeStatus:1;
+    } _has;
 }
 
 @property (nonatomic) unsigned int connectionType; // @synthesize connectionType=_connectionType;
@@ -36,13 +46,16 @@
 @property (nonatomic) BOOL hasReceiveOffset;
 @property (nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) BOOL hasTopic;
+@property (nonatomic) BOOL hasWakeStatus;
 @property (nonatomic) unsigned int isFromStorage; // @synthesize isFromStorage=_isFromStorage;
 @property (nonatomic) int linkQuality; // @synthesize linkQuality=_linkQuality;
 @property (nonatomic) unsigned int payloadSize; // @synthesize payloadSize=_payloadSize;
 @property (nonatomic) unsigned int receiveOffset; // @synthesize receiveOffset=_receiveOffset;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
+@property (nonatomic) int wakeStatus; // @synthesize wakeStatus=_wakeStatus;
 
+- (int)StringAsWakeStatus:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -52,6 +65,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)wakeStatusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

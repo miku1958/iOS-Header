@@ -10,9 +10,14 @@
 @protocol HACCContentModule;
 
 @protocol HACCContentModuleDelegate <NSObject>
+
+@property (readonly, nonatomic) BOOL shouldDisplayOtherDevice;
+
 - (void)controlDidActivate:(UIView<HACCContentModule> *)arg1;
 - (AXRemoteHearingAidDevice *)currentHearingDevice;
 - (double)preferredContentWidth;
+- (void)updateView;
+- (void)updateViewForModule:(unsigned long long)arg1;
 - (void)updateViewForProperties:(NSArray *)arg1;
 @end
 

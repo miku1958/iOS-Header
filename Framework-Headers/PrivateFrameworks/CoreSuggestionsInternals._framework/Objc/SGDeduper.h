@@ -17,7 +17,9 @@
 + (CDUnknownBlockType)bucketerWithMapping:(CDUnknownBlockType)arg1;
 + (id)dedupe:(id)arg1 bucketer:(CDUnknownBlockType)arg2 resolver:(CDUnknownBlockType)arg3;
 + (id)dedupeContactDetails:(id)arg1;
-+ (void)enumerateEKEventsForPseudoEventBySimilarTitleAndStartTime:(id)arg1 store:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (void)enumerateEKEventsForPseudoEventBySimilarStartAndEndTime:(id)arg1 store:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (unsigned char)eventsHaveIdenticalReservationIds:(id)arg1 ekEventFromStore:(id)arg2;
++ (BOOL)eventsHaveSimilarTitles:(id)arg1 ekEventFromStore:(id)arg2;
 + (CDUnknownBlockType)resolveByPairs:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)resolveByScoreBreakTiesArbitrarily:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)resolveSGContactDetailsPreferringPhraseExtractionsAndLabels;

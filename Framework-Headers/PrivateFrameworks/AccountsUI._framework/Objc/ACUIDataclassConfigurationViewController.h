@@ -54,9 +54,10 @@
 - (id)_navigationTitle;
 - (void)_notifyOfAccountSetupCompletion;
 - (id)_orderDataclassList:(id)arg1;
+- (void)_presentUndoAlert:(id)arg1 reason:(id)arg2;
 - (BOOL)_promptUserToConfirmAccountDeletion;
 - (long long)_promptUserToConfirmAccountSyncDeletion;
-- (void)_setDataclass:(id)arg1 enabled:(BOOL)arg2;
+- (void)_setDataclass:(id)arg1 enabled:(BOOL)arg2 onAccount:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_setupSpinnerTimerForSpecifier:(id)arg1;
 - (id)_specifiersForDataclasses:(id)arg1;
 - (Class)accountInfoControllerClass;

@@ -37,7 +37,6 @@
 - (BOOL)inputRequired;
 - (id)inputSourceInWorkflow:(id)arg1;
 - (id)intermediaryActions;
-- (id)localizedName;
 - (id)name;
 - (id)newIntermediaryActionWithMenuItemTitle:(id)arg1;
 - (unsigned long long)numberOfActionsIncludedWithAction:(id)arg1;

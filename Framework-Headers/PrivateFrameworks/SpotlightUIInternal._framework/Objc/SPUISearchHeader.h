@@ -6,14 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpotlightUIInternal/SearchUITextFieldDelegate-Protocol.h>
+#import <SpotlightUIInternal/SPUITextFieldDelegate-Protocol.h>
 #import <SpotlightUIInternal/UITextPasteDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, SPSearchEntity, SPUITextField, UIButton, _UILegibilitySettings;
-@protocol SPUIHeaderInteractionDelegate, SPUISearchHeaderDelegate;
+@class NSLayoutConstraint, NSString, SPSearchEntity, SPUITextField, UIButton, UIResponder, _UILegibilitySettings;
+@protocol SBIconListLayout, SPUIHeaderInteractionDelegate, SPUISearchHeaderDelegate;
 
-@interface SPUISearchHeader : UIView <SearchUITextFieldDelegate, UITextPasteDelegate>
+@interface SPUISearchHeader : UIView <SPUITextFieldDelegate, UITextPasteDelegate>
 {
+    BOOL _isReturnKeyPressedInGoMode;
     BOOL _willClear;
     BOOL _searchTextScheduledForProcessing;
     BOOL _offersCompletions;
@@ -26,6 +27,12 @@
     NSLayoutConstraint *_widthConstraint;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
+    NSLayoutConstraint *_leadingConstraint;
+    NSString *_lastSearchText;
+    SPSearchEntity *_lastSearchEntity;
+    unsigned long long _lastSearchHeaderQueryKind;
+    unsigned long long _queryId;
+    id<SBIconListLayout> _iconListLayout;
     id<SPUISearchHeaderDelegate> _delegate;
     unsigned long long _suggestionID;
     SPSearchEntity *_searchEntity;
@@ -38,14 +45,24 @@
 @property (strong) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (strong) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (strong) NSLayoutConstraint *cancelButtonTrailingConstraint; // @synthesize cancelButtonTrailingConstraint=_cancelButtonTrailingConstraint;
+@property (readonly) BOOL completionResultIsPotentiallyPunchout;
 @property (readonly, nonatomic) NSString *currentQuery;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SPUISearchHeaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) id<SBIconListLayout> iconListLayout; // @synthesize iconListLayout=_iconListLayout;
 @property (weak, nonatomic) id<SPUIHeaderInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
+@property BOOL isReturnKeyPressedInGoMode; // @synthesize isReturnKeyPressedInGoMode=_isReturnKeyPressedInGoMode;
+@property (strong) SPSearchEntity *lastSearchEntity; // @synthesize lastSearchEntity=_lastSearchEntity;
+@property unsigned long long lastSearchHeaderQueryKind; // @synthesize lastSearchHeaderQueryKind=_lastSearchHeaderQueryKind;
+@property (strong) NSString *lastSearchText; // @synthesize lastSearchText=_lastSearchText;
+@property (strong) NSLayoutConstraint *leadingConstraint; // @synthesize leadingConstraint=_leadingConstraint;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property BOOL offersCompletions; // @synthesize offersCompletions=_offersCompletions;
+@property (readonly) BOOL optOutOfGoButton;
+@property unsigned long long queryId; // @synthesize queryId=_queryId;
+@property (weak, nonatomic) UIResponder *responderForKeyboardInput;
 @property (strong, nonatomic) SPSearchEntity *searchEntity; // @synthesize searchEntity=_searchEntity;
 @property (strong) SPUITextField *searchField; // @synthesize searchField=_searchField;
 @property (strong) NSLayoutConstraint *searchFieldTrailingConstraint; // @synthesize searchFieldTrailingConstraint=_searchFieldTrailingConstraint;
@@ -53,16 +70,18 @@
 @property unsigned long long suggestionID; // @synthesize suggestionID=_suggestionID;
 @property (readonly) Class superclass;
 @property (strong) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
+@property (nonatomic) BOOL useChunkyMetrics;
 @property (nonatomic) BOOL useInPlaceFilteredBlur;
 @property (strong) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property BOOL willClear; // @synthesize willClear=_willClear;
 
++ (unsigned long long)asYouTypeSearchQueryKind;
++ (unsigned long long)committedSearchQueryKind;
 + (id)tokenFromSearchEntity:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_searchTextField:(id)arg1 itemProviderForCopyingToken:(id)arg2;
 - (void)_searchWithSearchEntity:(id)arg1 fromSuggestion:(BOOL)arg2;
-- (void)_updateClearButtonVisibility;
 - (void)addInputMethodInformationToQueryContext:(id)arg1;
 - (id)backdropVisualEffectView;
 - (void)beginDictation;
@@ -70,27 +89,32 @@
 - (void)cancelButtonClicked:(id)arg1;
 - (BOOL)cancelButtonIsVisible;
 - (void)clearSearchFieldWhyQuery:(unsigned long long)arg1 allowZKW:(BOOL)arg2;
+- (void)commitSearch;
 - (id)currentQueryContextWithString:(id)arg1;
 - (void)dictationButtonPressed;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)enableDictationIfRequired;
 - (void)escapeKeyPressed;
-- (void)focusSearchField;
-- (void)focusSearchFieldAndBeginDictation:(BOOL)arg1;
+- (void)focusSearchFieldAndBeginDictation:(BOOL)arg1 selectAll:(BOOL)arg2;
+- (void)focusSearchFieldAndSelectAll:(BOOL)arg1;
+- (double)horizontalSpacingForChunkyHeight;
 - (id)init;
 - (BOOL)isFirstResponder;
 - (BOOL)isOnDarkBackground;
-- (void)performActionAfterCommit:(CDUnknownBlockType)arg1;
-- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(unsigned long long)arg3;
+- (BOOL)lastQueryKindSupportsOptionKey;
+- (void)performAction:(CDUnknownBlockType)arg1 afterCommit:(BOOL)arg2;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 queryKind:(unsigned long long)arg3;
+- (void)performWebSearch;
+- (void)removeCompletionAndHighlightAsTyped:(BOOL)arg1;
 - (void)returnKeyPressed;
-- (void)searchForSuggestion:(id)arg1;
+- (void)searchForSuggestion:(id)arg1 isBuildingQuery:(BOOL)arg2;
 - (void)setSearchEntity:(id)arg1 fromSuggestion:(BOOL)arg2;
-- (void)setupKeyboardSupportForResultViewController:(id)arg1;
 - (void)showCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)switchToSuggestions;
 - (void)textDidChange:(id)arg1;
-- (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3;
-- (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3 sourcePreference:(unsigned long long)arg4 engagedSuggestion:(id)arg5;
+- (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3 queryKind:(unsigned long long)arg4;
+- (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3 sourcePreference:(unsigned long long)arg4 engagedSuggestion:(id)arg5 searchEntities:(id)arg6 queryKind:(unsigned long long)arg7;
 - (void)textFieldDidBeginEditing;
 - (BOOL)textFieldShouldClear:(id)arg1;
 - (BOOL)textFieldShouldReturn;
@@ -100,6 +124,8 @@
 - (void)triggerSearchForUnlock;
 - (void)unfocusSearchField;
 - (void)updateBlurProgress;
+- (void)updateFocusResult:(id)arg1 cardSection:(id)arg2 focusIsOnFirstResult:(BOOL)arg3;
+- (void)updateSearchFieldModel;
 
 @end
 

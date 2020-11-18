@@ -17,6 +17,7 @@
     NSString *_generatorID;
     NSString *_generatorVersion;
     NSData *_versionIdentifier;
+    unsigned long long _ino;
 }
 
 @property (readonly, getter=isAutomaticallyGenerated) BOOL automaticallyGenerated;
@@ -24,6 +25,7 @@
 @property unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property (copy) NSString *generatorID; // @synthesize generatorID=_generatorID;
 @property (copy) NSString *generatorVersion; // @synthesize generatorVersion=_generatorVersion;
+@property unsigned long long ino; // @synthesize ino=_ino;
 @property (copy) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (copy) NSData *versionIdentifier; // @synthesize versionIdentifier=_versionIdentifier;
 
@@ -41,7 +43,7 @@
 - (id)initWithFPItem:(id)arg1 generatorID:(id)arg2 generatorVersion:(id)arg3;
 - (id)initWithFileURL:(id)arg1 automaticallyGenerated:(BOOL)arg2;
 - (id)initWithFileURL:(id)arg1 generatorID:(id)arg2 generatorVersion:(id)arg3;
-- (id)initWithModificationDate:(id)arg1 fileSize:(unsigned long long)arg2 versionIdentifier:(id)arg3 generatorID:(id)arg4 generatorVersion:(id)arg5;
+- (id)initWithModificationDate:(id)arg1 fileSize:(unsigned long long)arg2 versionIdentifier:(id)arg3 ino:(unsigned long long)arg4 generatorID:(id)arg5 generatorVersion:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)shouldBeInvalidatedByThumbnailWithVersion:(id)arg1;
 

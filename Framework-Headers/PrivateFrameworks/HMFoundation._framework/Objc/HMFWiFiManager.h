@@ -6,36 +6,39 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFWiFiManagerDataSourceDelegate-Protocol.h>
 
-@class HMFMACAddress, HMFUnfairLock, NSObject, NSString;
+@class HMFMACAddress, NSHashTable, NSObject, NSString;
 @protocol HMFWiFiManagerDataSource, OS_dispatch_queue;
 
-@interface HMFWiFiManager : HMFObject <HMFWiFiManagerDataSourceDelegate>
+@interface HMFWiFiManager : HMFObject <HMFLogging, HMFWiFiManagerDataSourceDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     BOOL _shouldAssertWoW;
     NSString *_currentNetworkSSID;
     HMFMACAddress *_MACAddress;
     NSObject<OS_dispatch_queue> *_workQueue;
     id<HMFWiFiManagerDataSource> _dataSource;
+    NSHashTable *_activeAssertions;
 }
 
 @property (readonly, copy) HMFMACAddress *MACAddress; // @synthesize MACAddress=_MACAddress;
-@property (copy, nonatomic) NSString *currentNetworkSSID; // @synthesize currentNetworkSSID=_currentNetworkSSID;
-@property (readonly, nonatomic) id<HMFWiFiManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, getter=isActive) BOOL active;
+@property (readonly, copy) NSString *currentNetworkSSID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL shouldAssertWoW; // @synthesize shouldAssertWoW=_shouldAssertWoW;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (id)beginActiveAssertionWithOptions:(unsigned long long)arg1 reason:(id)arg2;
 - (void)currentNetworkDidChangeForDataSource:(id)arg1;
 - (void)dataSource:(id)arg1 didChangeLinkAvailability:(BOOL)arg2;
 - (void)dataSource:(id)arg1 didChangeWoWState:(BOOL)arg2;
+- (void)endActiveAssertion:(id)arg1;
 - (id)init;
 - (id)initWithWorkQueue:(id)arg1 dataSource:(id)arg2;
 - (void)releaseWoWAssertion;

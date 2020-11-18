@@ -15,6 +15,7 @@
 @class NSArray, NSString, PSRootController, PSSpecifier, UISearchController, UIViewController;
 @protocol CNFRegRegionChooserDelegate, PSController;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegRegionChooserController : UITableViewController <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CNFRegRegionChooserDelegate, PSController>
 {
     NSString *_selectedRegionID;

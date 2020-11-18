@@ -17,26 +17,26 @@
 #import <NumbersQuicklook/TSWPStorageParent-Protocol.h>
 
 @class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TNSheetStyle, TSDColorFill, TSDInfoGeometry, TSDLayoutController, TSWPStorage;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TNSheet : TSPObject <TNPrintableInfoProviding, TSKDocumentObject, TSKModel, TSCEResolverContainer, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSSStyleClient, TSWPHeaderFooterProvider, TSWPStorageParent>
 {
-    NSString *mName;
-    NSMutableArray *mChildInfos;
-    BOOL mInDocument;
-    unsigned int mTableNameCounter;
-    TSWPStorage *mHeaderFooters[2][3];
-    NSMutableSet *mRemappedTableNames;
+    NSMutableArray *_childInfos;
+    unsigned int _tableNameCounter;
+    TSWPStorage *_headerFooters[2][3];
+    NSMutableSet *_remappedTableNames;
     BOOL _printBackgrounds;
-    BOOL mInPortraitPageOrientation;
-    BOOL mShowPageNumbers;
-    BOOL mIsAutofitOn;
+    BOOL _inPortraitPageOrientation;
+    BOOL _showPageNumbers;
+    BOOL _isAutofitOn;
     BOOL _usingStartPageNumber;
-    BOOL mUsesSingleHeaderFooter;
+    BOOL _usesSingleHeaderFooter;
     BOOL _shouldPrintComments;
+    BOOL _inDocument;
+    NSString *_name;
     unsigned long long _layoutDirection;
-    double mContentScale;
-    unsigned long long mPageOrder;
+    double _contentScale;
+    unsigned long long _pageOrder;
     long long _startPageNumber;
     double _pageHeaderInset;
     double _pageFooterInset;
@@ -54,7 +54,7 @@
 @property (readonly, nonatomic) double bodyWidth;
 @property (copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) NSArray *containedModels;
-@property (nonatomic) double contentScale; // @synthesize contentScale=mContentScale;
+@property (nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -65,39 +65,43 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSEnumerator *headerFooterFragmentEnumerator;
 @property (readonly, nonatomic) NSArray *headerStorages;
-@property (nonatomic) BOOL inPortraitPageOrientation; // @synthesize inPortraitPageOrientation=mInPortraitPageOrientation;
+@property (nonatomic) BOOL inDocument; // @synthesize inDocument=_inDocument;
+@property (nonatomic) BOOL inPortraitPageOrientation; // @synthesize inPortraitPageOrientation=_inPortraitPageOrientation;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
-@property (nonatomic) BOOL isAutofitOn; // @synthesize isAutofitOn=mIsAutofitOn;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
+@property (nonatomic) BOOL isAutofitOn; // @synthesize isAutofitOn=_isAutofitOn;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) BOOL isTopmostContainerInfo;
 @property (nonatomic) unsigned long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
-@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property double pageFooterInset; // @synthesize pageFooterInset=_pageFooterInset;
 @property double pageHeaderInset; // @synthesize pageHeaderInset=_pageHeaderInset;
-@property unsigned long long pageOrder; // @synthesize pageOrder=mPageOrder;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property unsigned long long pageOrder; // @synthesize pageOrder=_pageOrder;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) BOOL printBackgrounds; // @synthesize printBackgrounds=_printBackgrounds;
 @property (nonatomic) struct UIEdgeInsets printMargins; // @synthesize printMargins=_printMargins;
 @property (readonly, nonatomic) NSArray *printableInfos;
 @property (nonatomic) BOOL shouldPrintComments; // @synthesize shouldPrintComments=_shouldPrintComments;
-@property (nonatomic) BOOL showPageNumbers; // @synthesize showPageNumbers=mShowPageNumbers;
+@property (nonatomic) BOOL showPageNumbers; // @synthesize showPageNumbers=_showPageNumbers;
 @property long long startPageNumber; // @synthesize startPageNumber=_startPageNumber;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (strong, nonatomic) TNSheetStyle *style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (readonly, nonatomic) BOOL textIsLinked;
-@property (nonatomic) BOOL usesSingleHeaderFooter; // @synthesize usesSingleHeaderFooter=mUsesSingleHeaderFooter;
+@property (nonatomic) BOOL usesSingleHeaderFooter; // @synthesize usesSingleHeaderFooter=_usesSingleHeaderFooter;
 @property (getter=isUsingStartPageNumber) BOOL usingStartPageNumber; // @synthesize usingStartPageNumber=_usingStartPageNumber;
 
 + (BOOL)needsObjectUUID;
 + (id)sheetForSelectionModel:(id)arg1 outIsPaginated:(BOOL *)arg2;
+- (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)addChildInfo:(id)arg1;
 - (void)addRemappedTableName:(id)arg1;
@@ -109,7 +113,6 @@
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (void)clearRemappedTableNames;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (void)enumerateHeaderFooterStoragesWithBlock:(CDUnknownBlockType)arg1;
 - (struct CGRect)frame;
 - (BOOL)hasReferenceToTables:(id)arg1;

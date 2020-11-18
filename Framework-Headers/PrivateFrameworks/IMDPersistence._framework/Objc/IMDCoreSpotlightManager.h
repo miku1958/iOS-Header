@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+@class NSMutableOrderedSet;
 
 @interface IMDCoreSpotlightManager : NSObject
 {
-    NSMutableSet *_blacklistMessageGUIDs;
+    NSMutableOrderedSet *_blocklistMessageGUIDs;
 }
 
-@property (strong, nonatomic) NSMutableSet *blacklistMessageGUIDs; // @synthesize blacklistMessageGUIDs=_blacklistMessageGUIDs;
+@property (strong, nonatomic) NSMutableOrderedSet *blocklistMessageGUIDs; // @synthesize blocklistMessageGUIDs=_blocklistMessageGUIDs;
 
 + (id)chatStyleCustomKey;
 + (id)sharedInstance;
@@ -24,14 +24,16 @@
 - (id)_chatDictionaryForChatGUID:(id)arg1;
 - (struct __CFArray *)_copyMessagesForIndexingWithLastRowID:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
 - (unsigned long long)_currentIndexVersion;
+- (id)_donationManager;
 - (unsigned long long)_expectedIndexVersion;
 - (void)_geocodeItems:(id)arg1;
-- (void)_indexSearchableChatItems:(id)arg1;
-- (void)_indexSearchableItems:(id)arg1 lastIndexedRowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3 lastBatch:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_indexSearchableChatItems:(id)arg1 withIndex:(id)arg2;
+- (void)_indexSearchableItems:(id)arg1 lastIndexedRowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3 lastBatch:(BOOL)arg4 withIndex:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (unsigned long long)_lastIndexedRowID;
 - (id)_newLegacySearchableIndexesForMessages:(struct __CFArray *)arg1;
 - (id)_newSearchableChatItemsForChats:(struct __CFArray *)arg1;
 - (id)_newSearchableIndexesForMessages:(struct __CFArray *)arg1;
+- (void)_postProcessIndexingForItem:(id)arg1 chatDictionary:(id)arg2 isReindexing:(BOOL)arg3;
 - (void)_sanitizeIndexesForCurrentVersionIfNeeded:(CDUnknownBlockType)arg1;
 - (void)_setBypassIndexVersionCheck;
 - (void)_setCurrentIndexVersion:(unsigned long long)arg1;

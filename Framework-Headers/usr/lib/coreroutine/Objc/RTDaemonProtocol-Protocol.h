@@ -6,7 +6,7 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSSet, NSString, NSUUID, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
+@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSNumber, NSSet, NSString, NSUUID, RTEnumerationOptions, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
 
 @protocol RTDaemonProtocol <NSObject>
 - (void)addLocationOfInterestOfType:(long long)arg1 mapItemStorage:(GEOMapItemStorage *)arg2 customLabel:(NSString *)arg3 reply:(void (^)(RTLocationOfInterest *, NSError *))arg4;
@@ -18,6 +18,8 @@
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)fetchCloudSyncAuthorizationStateWithReply:(void (^)(long long, NSError *))arg1;
 - (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchEnumerableObjectsWithOptions:(RTEnumerationOptions *)arg1 offset:(NSNumber *)arg2 reply:(void (^)(NSArray *, NSNumber *, NSError *))arg3;
+- (void)fetchFormattedPostalAddressesFromMeCard:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchLastVehicleEventsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchLocationOfInterestAtLocation:(CLLocation *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;

@@ -10,15 +10,17 @@
 
 @interface ECExchangeAccount : ECAccount
 {
+    NSDate *_lastSyncDate;
 }
 
 @property (copy, nonatomic) NSString *folderHierarchySyncState;
 @property (copy, nonatomic) NSString *inboxMailboxName;
 @property (copy, nonatomic) NSString *journalMailboxName;
-@property (copy, nonatomic) NSDate *lastSyncDate;
+@property (copy, nonatomic) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
 
 + (id)standardPorts;
 + (id)standardSSLPorts;
+- (void).cxx_destruct;
 - (long long)defaultPortNumber;
 - (long long)defaultSecurePortNumber;
 

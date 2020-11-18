@@ -7,11 +7,11 @@
 #import <UIKit/UIControl.h>
 
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <ControlCenterUIKit/_UICursorInteractionDelegate-Protocol.h>
+#import <ControlCenterUIKit/UIPointerInteractionDelegate-Protocol.h>
 
 @class CCUICAPackageDescription, CCUICAPackageView, MTVisualStylingProvider, NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIView;
 
-@interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate, _UICursorInteractionDelegate>
+@interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate, UIPointerInteractionDelegate>
 {
     MTVisualStylingProvider *_visualStylingProvider;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
@@ -51,8 +51,6 @@
 - (void)_setCornerRadius:(double)arg1;
 - (void)_updateForStateChange;
 - (void)_updateVisualStylingOfGlyphView:(id)arg1;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -64,6 +62,8 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

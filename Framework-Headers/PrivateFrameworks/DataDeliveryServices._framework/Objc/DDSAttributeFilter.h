@@ -19,6 +19,9 @@
 
 + (id)attributeFilter;
 + (id)attributeFilterWithDictionary:(id)arg1;
++ (unsigned long long)hashDictionary:(id)arg1;
++ (unsigned long long)hashObject:(id)arg1;
++ (unsigned long long)hashSet:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_setForKey:(id)arg1;

@@ -12,6 +12,7 @@
 
 @property (nonatomic) unsigned long long contactSource;
 @property (strong, nonatomic) CRRecentContact *recentContact;
+@property (nonatomic) BOOL recentFromContactInformation;
 
 + (id)contactWithABRecordRef:(void *)arg1;
 + (id)contactWithPkDictionary:(id)arg1;
@@ -29,6 +30,7 @@
 - (id)localizedDisplayNameWithLabel:(id)arg1;
 - (id)nameComponents;
 - (void)pkAddLabeledValues:(id)arg1 withProperty:(id)arg2;
+- (id)pkContactWithCleanedUpCountryCode;
 - (id)pkDeconstructContactUsingKey:(id)arg1;
 - (id)pkDeconstructContactUsingKey:(id)arg1 substring:(id)arg2;
 - (id)pkDictionaryForProperty:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/BSXPCCoding-Protocol.h>
 #import <SplashBoard/NSCopying-Protocol.h>
 
 @class FBSDisplayConfiguration, NSString, XBDisplayEdgeInsetsWrapper;
 
-@interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying>
+@interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying, BSDescriptionProviding>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     NSString *_groupID;
@@ -42,9 +43,13 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI217IssueModelFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *issueReadingHistory;
-    MISSING_TYPE *personalizer;
+    MISSING_TYPE *personalizationService;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *subscriptionService;

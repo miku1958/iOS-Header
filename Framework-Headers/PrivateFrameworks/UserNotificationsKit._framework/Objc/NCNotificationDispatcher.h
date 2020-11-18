@@ -9,14 +9,13 @@
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 #import <UserNotificationsKit/NCNotificationDestinationDelegate-Protocol.h>
 
-@class NCLayoutLoopDetector, NCNotificationAlertQueue, NCNotificationDestinationsRegistry, NCNotificationStore, NSHashTable, NSMutableDictionary, NSString;
+@class NCLayoutLoopDetector, NCNotificationAlertQueue, NCNotificationDestinationsRegistry, NSHashTable, NSMutableDictionary, NSString;
 @protocol NCAlertingController, NCNotificationDispatcherDelegate;
 
 @interface NCNotificationDispatcher : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate>
 {
     id<NCNotificationDispatcherDelegate> _delegate;
     NCNotificationDestinationsRegistry *_destinationsRegistry;
-    NCNotificationStore *_notificationStore;
     NCNotificationAlertQueue *_alertQueue;
     NSMutableDictionary *_sectionSettings;
     NSHashTable *_sourceDelegates;
@@ -32,7 +31,6 @@
 @property (strong, nonatomic) NCNotificationDestinationsRegistry *destinationsRegistry; // @synthesize destinationsRegistry=_destinationsRegistry;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCLayoutLoopDetector *layoutDetector; // @synthesize layoutDetector=_layoutDetector;
-@property (strong, nonatomic) NCNotificationStore *notificationStore; // @synthesize notificationStore=_notificationStore;
 @property (strong, nonatomic) NSMutableDictionary *sectionSettings; // @synthesize sectionSettings=_sectionSettings;
 @property (strong, nonatomic) NSHashTable *sourceDelegates; // @synthesize sourceDelegates=_sourceDelegates;
 @property (readonly) Class superclass;
@@ -69,6 +67,7 @@
 - (void)modifyNotificationWithRequest:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1 forSectionIdentifier:(id)arg2;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)postNotificationWithRequest:(id)arg1;
 - (void)registerDestination:(id)arg1;
 - (void)removeDispatcherSourceDelegate:(id)arg1;

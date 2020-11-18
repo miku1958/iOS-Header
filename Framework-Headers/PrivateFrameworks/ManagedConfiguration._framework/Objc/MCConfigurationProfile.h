@@ -47,9 +47,11 @@
 - (id)payloadWithUUID:(id)arg1;
 - (id)payloads;
 - (void)replacePayloadWithUUID:(id)arg1 withPayload:(id)arg2;
+- (id)serializedDictionary;
 - (id)stubDictionary;
 - (id)subjectSummaryFromCertificatePayloadWithUUID:(id)arg1;
 - (id)subjectSummaryFromCertificateWithPersistentID:(id)arg1;
+- (id)verboseDescription;
 
 @end
 

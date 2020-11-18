@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles33ArticleViewerPageBlueprintFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tracker;
+    MISSING_TYPE *contextBuilder;
     MISSING_TYPE *articleAccessMap;
 }
 

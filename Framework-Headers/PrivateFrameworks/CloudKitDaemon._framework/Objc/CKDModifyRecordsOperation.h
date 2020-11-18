@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class C2RequestOptions, CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
-@protocol OS_dispatch_queue;
+@protocol CKModifyRecordsOperationCallbacks, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyRecordsOperation : CKDDatabaseOperation
@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *cachedUserBoundaryKeyData; // @synthesize cachedUserBoundaryKeyData=_cachedUserBoundaryKeyData;
 @property (nonatomic) BOOL canSetPreviousProtectionEtag; // @synthesize canSetPreviousProtectionEtag=_canSetPreviousProtectionEtag;
 @property (copy, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
+@property (strong, nonatomic) id<CKModifyRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property (strong, nonatomic) NSMapTable *handlersByAsset; // @synthesize handlersByAsset=_handlersByAsset;
@@ -88,6 +89,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (copy, nonatomic) C2RequestOptions *streamingAssetRequestOptions; // @synthesize streamingAssetRequestOptions=_streamingAssetRequestOptions;
 @property (strong, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property (nonatomic) BOOL trustProtectionData; // @synthesize trustProtectionData=_trustProtectionData;
@@ -99,7 +101,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_applySideEffects;
 - (void)_clearProtectionDataIfNotEntitled;
-- (id)_containerIDsNotToTopoSort;
 - (void)_continueRecordsModify;
 - (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 handlersByRecordID:(id)arg4;
 - (void)_determineEnvironment;
@@ -143,8 +144,10 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
 - (id)requestedFieldsByRecordIDForRecords:(id)arg1;
 - (void)saveCallbackWithMetadata:(id)arg1 error:(id)arg2;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

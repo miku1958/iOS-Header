@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _serializedSize;
     id<VCMediaControlInfoDelegate> _delegate;
     unsigned char _version;
+    unsigned char _fecFeedbackVersion;
 }
 
 @property id<VCMediaControlInfoDelegate> delegate; // @synthesize delegate=_delegate;
+@property unsigned char fecFeedbackVersion; // @synthesize fecFeedbackVersion=_fecFeedbackVersion;
 @property (readonly) unsigned long long serializedSize; // @synthesize serializedSize=_serializedSize;
 @property unsigned char version; // @synthesize version=_version;
 

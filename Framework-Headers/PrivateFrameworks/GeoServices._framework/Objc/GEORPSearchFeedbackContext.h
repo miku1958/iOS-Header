@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_autocompleteSuggestionLists:1;
         unsigned int read_requestContext:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_autocompleteSuggestionLists:1;
-        unsigned int wrote_requestContext:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,9 +35,6 @@
 + (Class)autocompleteSuggestionListType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAutocompleteSuggestionList:(id)arg1;
-- (void)_readAutocompleteSuggestionLists;
-- (void)_readRequestContext;
 - (void)addAutocompleteSuggestionList:(id)arg1;
 - (id)autocompleteSuggestionListAtIndex:(unsigned long long)arg1;
 - (unsigned long long)autocompleteSuggestionListsCount;
@@ -52,7 +47,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

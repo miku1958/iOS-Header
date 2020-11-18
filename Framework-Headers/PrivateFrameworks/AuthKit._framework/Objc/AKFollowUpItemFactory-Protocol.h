@@ -9,6 +9,11 @@
 @class FLFollowUpItem, NSArray, NSString;
 
 @protocol AKFollowUpItemFactory <NSObject>
+
+@property (copy, nonatomic) NSString *bundleIconName;
+@property (copy, nonatomic) NSString *extensionIdentifier;
+@property (copy, nonatomic) NSString *representingBundlePath;
+
 - (BOOL)IsFollowUpItemNotificationForced:(FLFollowUpItem *)arg1;
 - (NSArray *)itemIdentifiersRequiringNotificationClearFromPayload:(NSArray *)arg1;
 - (NSArray *)itemsForAltDSID:(NSString *)arg1 fromIDMSPayload:(NSArray *)arg2;

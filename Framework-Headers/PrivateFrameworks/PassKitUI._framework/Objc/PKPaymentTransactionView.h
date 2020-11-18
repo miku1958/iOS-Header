@@ -21,6 +21,7 @@
     BOOL _hideRewardsBackground;
     BOOL _showsAvatarView;
     BOOL _showsDisclosureView;
+    BOOL _allowPrimaryStringExpansion;
     BOOL _strokeImage;
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
@@ -31,6 +32,7 @@
     CNAvatarView *_avatarView;
 }
 
+@property (nonatomic) BOOL allowPrimaryStringExpansion; // @synthesize allowPrimaryStringExpansion=_allowPrimaryStringExpansion;
 @property (readonly, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property (nonatomic) BOOL hideRewardsBackground; // @synthesize hideRewardsBackground=_hideRewardsBackground;
 @property (strong, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
@@ -54,6 +56,7 @@
 - (BOOL)_shouldUseStackedLayout;
 - (void)_updateAvatarView;
 - (void)_updateImageViewDynamicColors;
+- (void)_updatePrimaryLabelString;
 - (void)createSubviews;
 - (id)defaultPrimaryColor;
 - (id)defaultSecondaryColor;

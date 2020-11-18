@@ -21,7 +21,6 @@
 - (void)calloutOptionInvoked:(long long)arg1 sender:(id)arg2;
 - (BOOL)canBecomeFirstResponder;
 - (void)ic_evaluateJavaScript:(id)arg1;
-- (id)ic_evaluateJavaScriptAndWait:(id)arg1 error:(id *)arg2;
 - (void)paste:(id)arg1;
 - (void)select:(id)arg1;
 - (void)selectAll:(id)arg1;

@@ -6,18 +6,22 @@
 
 #import <FrontBoardServices/FBSProcessWatchdog.h>
 
-@class FBProcessWatchdogEventContext;
+@class FBProcessCPUStatistics, FBProcessWatchdogEventContext, RBSProcessHandle;
 
 @interface FBProcessWatchdog : FBSProcessWatchdog
 {
+    RBSProcessHandle *_handle;
     long long _event;
     FBProcessWatchdogEventContext *_eventContext;
+    FBProcessCPUStatistics *_cpuStatistics;
 }
 
+@property (readonly, strong, nonatomic) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
 @property (readonly, nonatomic) long long event; // @synthesize event=_event;
 @property (readonly, strong, nonatomic) FBProcessWatchdogEventContext *eventContext; // @synthesize eventContext=_eventContext;
 
 - (void).cxx_destruct;
+- (void)activate;
 - (id)initWithProcess:(id)arg1 context:(id)arg2 policy:(id)arg3;
 
 @end

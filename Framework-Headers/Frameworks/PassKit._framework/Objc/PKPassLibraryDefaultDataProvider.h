@@ -23,7 +23,6 @@
 
 - (void).cxx_destruct;
 - (BOOL)canAddSecureElementPassWithConfiguration:(id)arg1;
-- (BOOL)canProvisionAccessPassWithConfiguration:(id)arg1;
 - (id)init;
 - (id)initWithPassLibrary:(id)arg1;
 - (id)passWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;

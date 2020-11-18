@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class CKDDecryptRecordsOperation, CKDRecordCache, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet;
-@protocol OS_dispatch_group;
+@protocol CKFetchRecordsOperationCallbacks, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordsOperation : CKDDatabaseOperation
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _skipDecryption;
     BOOL _shouldFetchAssetContent;
     BOOL _shouldFetchAssetContentInMemory;
+    BOOL _shouldRollSharePCSOnFetch;
     NSArray *_fullRecordsToFetch;
     CDUnknownBlockType _recordFetchProgressBlock;
     CDUnknownBlockType _recordFetchCommandBlock;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
     CKDRecordCache *_cache;
     NSMutableArray *_recordIDsToRefetch;
     NSMutableDictionary *_keyOrErrorForHostname;
-    NSMutableArray *_shareRecordsToUpdate;
+    NSMutableDictionary *_shareRecordsToUpdateByRecordID;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property (strong, nonatomic) CKDRecordCache *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) NSMutableDictionary *cachedRecords; // @synthesize cachedRecords=_cachedRecords;
+@property (strong, nonatomic) id<CKFetchRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSSet *desiredKeySet; // @synthesize desiredKeySet=_desiredKeySet;
 @property (strong, nonatomic) NSDictionary *desiredPackageFileIndices; // @synthesize desiredPackageFileIndices=_desiredPackageFileIndices;
 @property (strong, nonatomic) NSMapTable *downloadTasksByRecordID; // @synthesize downloadTasksByRecordID=_downloadTasksByRecordID;
@@ -66,10 +68,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *recordIDsToRefetch; // @synthesize recordIDsToRefetch=_recordIDsToRefetch;
 @property (strong, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
-@property (strong, nonatomic) NSMutableArray *shareRecordsToUpdate; // @synthesize shareRecordsToUpdate=_shareRecordsToUpdate;
+@property (strong, nonatomic) NSMutableDictionary *shareRecordsToUpdateByRecordID; // @synthesize shareRecordsToUpdateByRecordID=_shareRecordsToUpdateByRecordID;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
+@property (nonatomic) BOOL shouldRollSharePCSOnFetch; // @synthesize shouldRollSharePCSOnFetch=_shouldRollSharePCSOnFetch;
 @property (nonatomic) BOOL skipDecryption; // @synthesize skipDecryption=_skipDecryption;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (nonatomic) BOOL useCachedEtags; // @synthesize useCachedEtags=_useCachedEtags;
 @property (nonatomic) BOOL useRecordCache; // @synthesize useRecordCache=_useRecordCache;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
@@ -98,7 +102,9 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
 - (void)setError:(id)arg1 forRecordID:(id)arg2;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

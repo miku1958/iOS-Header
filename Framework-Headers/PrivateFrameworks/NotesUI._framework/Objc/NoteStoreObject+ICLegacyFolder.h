@@ -8,19 +8,28 @@
 
 #import <NotesUI/ICLegacyFolder-Protocol.h>
 
-@class NSString;
+@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@protocol ICLegacyAccount, ICLegacyFolder;
 
 @interface NoteStoreObject (ICLegacyFolder) <ICLegacyFolder>
 
+@property (readonly, nonatomic) id<ICLegacyAccount> account;
+@property (readonly, nonatomic) NSSet *changes;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) long long depth;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isDefaultFolder;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
+@property (readonly, nonatomic) BOOL isTrashFolder;
+@property (readonly, copy, nonatomic) NSString *localizedTitle;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSManagedObjectID *objectID;
+@property (readonly, nonatomic) id<ICLegacyFolder> parentFolder;
 @property (readonly) Class superclass;
 
 - (void)addNotesObject:(id)arg1;
-- (BOOL)isDeletedOrInTrash;
 - (id)newNoteInContext:(id)arg1;
-- (id)parentFolder;
-- (id)title;
 @end
 

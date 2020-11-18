@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSString *contactIdentifier; // @dynamic contactIdentifier;
 @property (strong, nonatomic) NSString *cropRectString; // @dynamic cropRectString;
+@property (strong, nonatomic) NSString *displayString; // @dynamic displayString;
 @property (strong, nonatomic) NSUUID *identifier; // @dynamic identifier;
 @property (strong, nonatomic) NSData *imageData; // @dynamic imageData;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @dynamic lastUsedDate;

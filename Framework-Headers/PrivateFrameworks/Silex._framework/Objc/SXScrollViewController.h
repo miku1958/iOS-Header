@@ -20,7 +20,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOrderedSet, NSString, SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXContext, SXDocumentProvider, SXFontIndex, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXScrollPosition, SXTangierController, SXVideoPlayerViewControllerManager, SXViewControllerPresentingManager, SXViewport, SXViewportDebugger, UIResponder, UIScrollView, UITraitCollection;
+@class NSMutableArray, NSOrderedSet, NSString, SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXContext, SXDocumentProvider, SXFontIndex, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXScrollPosition, SXTangierController, SXVideoPlayerViewControllerManager, SXViewControllerPresentingManager, SXViewport, SXViewportDebugger, UIColor, UIResponder, UIScrollView, UITraitCollection;
 @protocol SXAdControllerContainer, SXAdDocumentStateManager, SXAnalyticsReportingContainer, SXAppStateMonitor, SXComponentController, SXComponentInteractionManager, SXContextMenuManager, SXDOMObjectProviding, SXDocumentControllerContainer, SXDocumentSectionBlueprint, SXDocumentSectionManager, SXDocumentStyleRenderer, SXFormatInteractor, SXMediaSharingPolicyProvider, SXPresentationAttributesManager, SXPresentationDelegateContainer, SXResourceDataSourceContainer, SXScrollPositionManager, SXScrollReporting, SXScrollViewControllerDelegate, SXTextSelectionManager, SXTransitionDataSourceProvider, UIViewControllerPreviewing;
 
 @interface SXScrollViewController : UIViewController <SXFormatInteractorDelegate, SXDocumentSectionHosting, SXPresentationDelegate, SXScrollViewDelegate, SXComponentHosting, UIGestureRecognizerDelegate, SXTangierControllerDelegate, SXViewportChangeListener, SXAdControllerPresentationDelegate, SXContextMenuManagerDelegate, SXPresentationEnvironment, SXKeyboardSupport, SXScrollPositionRestoring>
@@ -63,6 +63,7 @@
     SXFullscreenCanvasViewController *_fullscreenCanvasViewController;
     SXFullscreenCanvasController *_currentCanvasController;
     SXScrollPosition *_restoredScrollPosition;
+    SXScrollPosition *_previouslyRestoredScrollPosition;
     NSOrderedSet *_snapLines;
     id<SXDocumentStyleRenderer> _documentStyleRenderer;
     SXTangierController *_tangierController;
@@ -95,6 +96,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SXScrollViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIColor *documentBackgroundColor;
 @property (readonly, nonatomic) id<SXDocumentControllerContainer> documentControllerContainer; // @synthesize documentControllerContainer=_documentControllerContainer;
 @property (readonly, nonatomic) SXDocumentProvider *documentProvider; // @synthesize documentProvider=_documentProvider;
 @property (readonly, nonatomic) id<SXDocumentSectionManager> documentSectionManager; // @synthesize documentSectionManager=_documentSectionManager;
@@ -115,7 +117,9 @@
 @property (readonly, nonatomic) SXPresentationAttributes *presentationAttributes; // @synthesize presentationAttributes=_presentationAttributes;
 @property (readonly, nonatomic) id<SXPresentationAttributesManager> presentationAttributesManager; // @synthesize presentationAttributesManager=_presentationAttributesManager;
 @property (readonly, nonatomic) id<SXPresentationDelegateContainer> presentationDelegateContainer; // @synthesize presentationDelegateContainer=_presentationDelegateContainer;
+@property (readonly, nonatomic) UITraitCollection *presentationTraitCollection;
 @property (strong, nonatomic) id<UIViewControllerPreviewing> previewingContext; // @synthesize previewingContext=_previewingContext;
+@property (strong, nonatomic) SXScrollPosition *previouslyRestoredScrollPosition; // @synthesize previouslyRestoredScrollPosition=_previouslyRestoredScrollPosition;
 @property (readonly, nonatomic) id<SXResourceDataSourceContainer> resourceDataSourceContainer; // @synthesize resourceDataSourceContainer=_resourceDataSourceContainer;
 @property (readonly, nonatomic) UIResponder *responder;
 @property (nonatomic) BOOL restoreScrollPositionOnNextLayout; // @synthesize restoreScrollPositionOnNextLayout=_restoreScrollPositionOnNextLayout;
@@ -129,7 +133,6 @@
 @property (strong, nonatomic) SXTangierController *tangierController; // @synthesize tangierController=_tangierController;
 @property (nonatomic) BOOL textSelectionEnabled;
 @property (readonly, nonatomic) id<SXTextSelectionManager> textSelectionManager; // @synthesize textSelectionManager=_textSelectionManager;
-@property (readonly, nonatomic) UITraitCollection *traitCollection;
 @property (readonly, nonatomic) id<SXTransitionDataSourceProvider> transitionDataSourceProvider; // @synthesize transitionDataSourceProvider=_transitionDataSourceProvider;
 @property (nonatomic) BOOL transitioning; // @synthesize transitioning=_transitioning;
 @property (readonly, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
@@ -176,6 +179,7 @@
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 canvasController:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (BOOL)resignFirstResponder;
+- (void)screenTraitCollectionDidChange:(id)arg1;
 - (id)scrollPosition;
 - (id)scrollPositionForComponentViews:(id)arg1;
 - (id)scrollPositionForPlayingVideoComponentInComponentViews:(id)arg1;
@@ -215,7 +219,9 @@
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
+- (void)willDismissFullscreenCanvasForComponent:(id)arg1;
 - (void)willEndPreviewingForContextMenuManager:(id)arg1;
+- (void)willReturnToFullscreenForComponent:(id)arg1;
 - (void)willStartPreviewingForContextMenuManager:(id)arg1;
 
 @end

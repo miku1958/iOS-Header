@@ -12,14 +12,24 @@
 
 @interface ICIAMImage : PBCodable <NSCopying>
 {
+    unsigned int _height;
     NSString *_identifier;
     NSString *_uRL;
+    unsigned int _width;
+    struct {
+        unsigned int height:1;
+        unsigned int width:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasHeight;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasURL;
+@property (nonatomic) BOOL hasWidth;
+@property (nonatomic) unsigned int height; // @synthesize height=_height;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *uRL; // @synthesize uRL=_uRL;
+@property (nonatomic) unsigned int width; // @synthesize width=_width;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

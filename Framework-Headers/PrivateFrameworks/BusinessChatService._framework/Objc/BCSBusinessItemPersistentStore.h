@@ -10,23 +10,24 @@
 {
 }
 
++ (const char *)debugQueueName;
 - (id)_databasePath;
-- (BOOL)_executeDeleteBusinessItemSQLQuery:(const char *)arg1 forDatabase:(struct sqlite3 *)arg2;
-- (id)_executeFetchPersistentBusinessItemObjectSQLQuery:(const char *)arg1 forDatabase:(struct sqlite3 *)arg2;
-- (BOOL)_insertBusinessItem:(id)arg1 withTTL:(double)arg2 inDatabase:(struct sqlite3 *)arg3;
-- (BOOL)_insertOrReplaceBusinessItem:(id)arg1 withTTL:(double)arg2 fromDatabase:(struct sqlite3 *)arg3;
-- (BOOL)_updateToLastRetrievedDate:(id)arg1 forBusinessItem:(id)arg2 inDatabase:(struct sqlite3 *)arg3;
+- (BOOL)_executeDeleteBusinessItemSQLQuery:(const char *)arg1;
+- (id)_executeFetchPersistentBusinessItemObjectSQLQuery:(const char *)arg1;
+- (BOOL)_insertBusinessItem:(id)arg1 withTTL:(double)arg2;
+- (BOOL)_insertOrReplaceBusinessItem:(id)arg1 withTTL:(double)arg2;
+- (BOOL)_updateToLastRetrievedDate:(id)arg1 forBusinessItem:(id)arg2;
 - (id)databasePath;
-- (BOOL)deleteBusinessItem:(id)arg1 fromDatabase:(struct sqlite3 *)arg2;
-- (BOOL)deleteBusinessItemWithBizID:(id)arg1 fromDatabase:(struct sqlite3 *)arg2;
-- (BOOL)deleteBusinessItemWithPhoneNumber:(id)arg1 fromDatabase:(struct sqlite3 *)arg2;
-- (id)fetchPersistentBusinessItemObjectWithBizID:(id)arg1 fromDatabase:(struct sqlite3 *)arg2;
-- (id)fetchPersistentBusinessItemObjectWithPhoneNumber:(id)arg1 fromDatabase:(struct sqlite3 *)arg2;
-- (BOOL)insertOrReplaceBusinessItem:(id)arg1 withTTL:(double)arg2 fromDatabase:(struct sqlite3 *)arg3;
+- (BOOL)deleteBusinessItem:(id)arg1;
+- (BOOL)deleteBusinessItemWithBizID:(id)arg1;
+- (BOOL)deleteBusinessItemWithPhoneNumber:(id)arg1;
+- (id)fetchPersistentBusinessItemObjectWithBizID:(id)arg1;
+- (id)fetchPersistentBusinessItemObjectWithPhoneNumber:(id)arg1;
+- (BOOL)insertOrReplaceBusinessItem:(id)arg1 withTTL:(double)arg2;
 - (const char *)schema;
 - (long long)schemaVersion;
-- (BOOL)updateLastRetrievedDateForBusinessItem:(id)arg1 inDatabase:(struct sqlite3 *)arg2;
-- (BOOL)updateTTL:(double)arg1 forBusinessItem:(id)arg2 inDatabase:(struct sqlite3 *)arg3;
+- (BOOL)updateLastRetrievedDateForBusinessItem:(id)arg1;
+- (BOOL)updateTTL:(double)arg1 forBusinessItem:(id)arg2;
 
 @end
 

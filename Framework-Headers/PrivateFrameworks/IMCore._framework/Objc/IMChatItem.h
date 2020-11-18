@@ -17,15 +17,24 @@
 
 @property (readonly, strong, nonatomic) NSString *balloonBundleID;
 @property (readonly, nonatomic) BOOL canDelete;
+@property (readonly, nonatomic) BOOL canReply;
 
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1;
 - (id)_item;
+- (id)_parentItem;
 - (void)_setTimeAdded:(id)arg1;
 - (id)_timeAdded;
 - (id)_timeStale;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (BOOL)isReplyContextPreview;
+- (BOOL)itemIsReply;
+- (BOOL)itemIsReplyContextPreview;
+- (BOOL)itemIsReplyCount;
+- (BOOL)itemIsThreadOriginator;
+- (BOOL)itemIsThreadOriginatorWithThreadIdentifier:(id *)arg1;
+- (id)threadGroupIdentifier;
 
 @end
 

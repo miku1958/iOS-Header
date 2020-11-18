@@ -8,7 +8,7 @@
 
 @protocol PPRecord
 
-@property (readonly, nonatomic) unsigned long long extractionAssetVersion;
+@property (readonly, nonatomic) unsigned int extractionAssetVersion;
 @property (readonly, nonatomic) NSString *extractionOsBuild;
 @property (readonly, nonatomic) double initialScore;
 @property (readonly, nonatomic) PPSource *source;

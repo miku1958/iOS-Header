@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)_shouldDisplayPrivacySection;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

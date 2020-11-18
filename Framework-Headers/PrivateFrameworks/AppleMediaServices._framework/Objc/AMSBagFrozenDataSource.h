@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
+#import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
-@class AMSBagKeySet, NSArray, NSDate, NSDictionary, NSString;
+@class AMSBagKeySet, AMSProcessInfo, NSArray, NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSBagFrozenDataSource : NSObject <AMSBagDataSourceProtocol, NSSecureCoding>
+@interface AMSBagFrozenDataSource : NSObject <AMSBagDataSourceProtocol, NSCopying, NSSecureCoding>
 {
     NSDate *_expirationDate;
+    AMSProcessInfo *_processInfo;
     NSString *_profile;
     NSString *_profileVersion;
     AMSBagKeySet *_bagKeySet;
@@ -29,17 +31,20 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSString *descriptionExtended;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property (readonly, copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithProfile:(id)arg1 profileVersion:(id)arg2 data:(id)arg3 expirationDate:(id)arg4 bagKeySet:(id)arg5 cookies:(id)arg6;
+- (id)_initWithProfile:(id)arg1 profileVersion:(id)arg2 data:(id)arg3 expirationDate:(id)arg4 bagKeySet:(id)arg5 cookies:(id)arg6 processInfo:(id)arg7;
 - (id)bagKeyInfoForKey:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;

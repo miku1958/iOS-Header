@@ -17,10 +17,14 @@
     NSArray *_arguments;
 }
 
+@property (strong, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
+@property (nonatomic) unsigned long long savedHash; // @synthesize savedHash=_savedHash;
+@property (nonatomic) SEL selector; // @synthesize selector=_selector;
+
 + (id)requestIdentifierForInvocation:(id)arg1;
+- (void).cxx_destruct;
 - (id)_argumentsForInvocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithInvocation:(id)arg1;

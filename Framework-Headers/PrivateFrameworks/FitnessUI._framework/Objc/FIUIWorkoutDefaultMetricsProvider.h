@@ -11,6 +11,7 @@
 @interface FIUIWorkoutDefaultMetricsProvider : NSObject
 {
     FIUIWorkoutActivityType *_activityType;
+    long long _activityMoveMode;
     BOOL _supportsElevationMetrics;
     BOOL _supportsGroundElevationMetrics;
     long long _metricsVersion;
@@ -34,7 +35,7 @@
 - (id)_machineProvidedMetricsForActivityType:(id)arg1;
 - (id)_supportedMetricsForActivityType:(id)arg1 metricsVersion:(long long)arg2;
 - (id)appendMachineMetricsToMetrics:(id)arg1 maxNumMetrics:(long long)arg2 activityType:(id)arg3;
-- (id)initWithMetricsVersion:(long long)arg1 activityType:(id)arg2 deviceSupportsElevationMetrics:(BOOL)arg3 deviceSupportsGroundElevationMetrics:(BOOL)arg4;
+- (id)initWithMetricsVersion:(long long)arg1 activityType:(id)arg2 activityMoveMode:(long long)arg3 deviceSupportsElevationMetrics:(BOOL)arg4 deviceSupportsGroundElevationMetrics:(BOOL)arg5;
 - (BOOL)isMetricTypeSupported:(unsigned long long)arg1 isMachineWorkout:(BOOL)arg2 activityType:(id)arg3;
 - (id)supportedMetricsWithIsMachineWorkout:(BOOL)arg1 activityType:(id)arg2;
 

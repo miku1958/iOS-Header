@@ -18,27 +18,35 @@
     NSArray *_textRanges;
     long long _granularity;
     long long _affinity;
-    double _anchorPoint;
+    double _anchorPositionOffset;
     id<NSTextLocation> _secondarySelectionLocation;
     NSDictionary *_typingAttributes;
+    id<NSTextLocation> _selectionAnchorLocation;
 }
 
 @property (readonly) long long affinity; // @synthesize affinity=_affinity;
-@property double anchorPoint; // @synthesize anchorPoint=_anchorPoint;
+@property double anchorPositionOffset; // @synthesize anchorPositionOffset=_anchorPositionOffset;
 @property (readonly) long long granularity; // @synthesize granularity=_granularity;
 @property (getter=isLogical) BOOL logical; // @synthesize logical=_logical;
 @property (strong) id<NSTextLocation> secondarySelectionLocation; // @synthesize secondarySelectionLocation=_secondarySelectionLocation;
+@property (strong) id<NSTextLocation> selectionAnchorLocation; // @synthesize selectionAnchorLocation=_selectionAnchorLocation;
 @property (readonly, copy) NSArray *textRanges; // @synthesize textRanges=_textRanges;
-@property (readonly, getter=isTransient) BOOL transient; // @synthesize transient=_transient;
+@property (getter=isTransient) BOOL transient; // @synthesize transient=_transient;
 @property (copy) NSDictionary *typingAttributes; // @synthesize typingAttributes=_typingAttributes;
 
++ (id)descriptionForAffinity:(long long)arg1;
++ (id)descriptionForGranularity:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (BOOL)containsLocation:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocation:(id)arg1 affinity:(long long)arg2;
 - (id)initWithRange:(id)arg1 affinity:(long long)arg2 granularity:(long long)arg3;
 - (id)initWithRanges:(id)arg1 affinity:(long long)arg2 granularity:(long long)arg3;
+- (id)textRangeContainingLocation:(id)arg1;
+- (id)textSelectionWithTextRanges:(id)arg1;
 
 @end
 

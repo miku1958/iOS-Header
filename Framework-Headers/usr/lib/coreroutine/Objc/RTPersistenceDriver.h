@@ -109,7 +109,6 @@
 - (void)persistenceStoreResetSyncWithUserInfo:(id)arg1;
 - (id)prepareForDatabaseRekey:(id *)arg1;
 - (BOOL)prepareStore:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
-- (BOOL)purgeExpiredRecordsFromPersistenceStore:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
 - (id)remoteServerOptionsForStoreWithType:(unsigned long long)arg1;
 - (void)shutdown;
 - (void)start;

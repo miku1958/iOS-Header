@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableArray, NSString, WFAlertButton;
+@class NSArray, NSDate, NSError, NSMutableArray, NSString, WFAlertButton, WFDatePickerConfiguration, WFTextFieldConfiguration;
 @protocol WFAlertPresenter;
 
 @interface WFAlert : NSObject
@@ -15,7 +15,10 @@
     NSString *_title;
     NSString *_message;
     long long _preferredStyle;
+    WFTextFieldConfiguration *_textFieldConfiguration;
+    WFDatePickerConfiguration *_datePickerConfiguration;
     NSArray *_textFieldResults;
+    NSDate *_datePickerResult;
     id<WFAlertPresenter> _presenter;
     NSMutableArray *_mutableButtons;
     NSMutableArray *_mutableTextFieldConfigurationHandlers;
@@ -23,6 +26,8 @@
 
 @property (readonly, nonatomic) NSError *associatedError;
 @property (copy, nonatomic) NSArray *buttons;
+@property (strong, nonatomic) WFDatePickerConfiguration *datePickerConfiguration; // @synthesize datePickerConfiguration=_datePickerConfiguration;
+@property (copy, nonatomic) NSDate *datePickerResult; // @synthesize datePickerResult=_datePickerResult;
 @property (readonly, nonatomic) WFAlertButton *escapeButton;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) NSMutableArray *mutableButtons; // @synthesize mutableButtons=_mutableButtons;
@@ -31,6 +36,7 @@
 @property (nonatomic) BOOL prefersItemPickerSheetPresentation; // @synthesize prefersItemPickerSheetPresentation=_prefersItemPickerSheetPresentation;
 @property (weak, nonatomic) id<WFAlertPresenter> presenter;
 @property (weak, nonatomic) id<WFAlertPresenter> presenter; // @synthesize presenter=_presenter;
+@property (strong, nonatomic) WFTextFieldConfiguration *textFieldConfiguration; // @synthesize textFieldConfiguration=_textFieldConfiguration;
 @property (readonly, nonatomic) NSArray *textFieldConfigurationHandlers;
 @property (copy, nonatomic) NSArray *textFieldResults; // @synthesize textFieldResults=_textFieldResults;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

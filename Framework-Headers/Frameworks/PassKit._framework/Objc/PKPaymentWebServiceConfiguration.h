@@ -47,9 +47,11 @@
 - (BOOL)buddyManualProvisioningEnabledForRegion:(id)arg1;
 - (BOOL)buddyProvisioningEnabledForRegion:(id)arg1;
 - (BOOL)cameraFirstProvisioningEnabledForRegion:(id)arg1;
+- (id)contactFormatConfiguration;
 - (id)defaultServerURL;
 - (BOOL)deviceCheckInDisabledForRegion:(id)arg1;
 - (double)deviceCheckInIntervalForRegion:(id)arg1;
+- (double)deviceUpgradeTaskEnablementPercentageForRegion:(id)arg1;
 - (id)discoveryManifestURLForRegion:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)featureWithType:(long long)arg1 inRegion:(id)arg2;
@@ -62,10 +64,7 @@
 - (id)initWithConfiguration:(id)arg1 url:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)manualProvisioningEnabledForRegion:(id)arg1;
-- (id)marketGeoRegionNotificationDisabledNetworksForRegion:(id)arg1;
-- (id)marketGeoRegionNotificationHourForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationNetworkThresholdsForRegion:(id)arg1;
-- (id)marketGeoRegionNotificationSendLimitForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationTimeRangeForRegion:(id)arg1;
 - (id)marketsURL;
 - (id)maxRefreshIntervalForRegion:(id)arg1;

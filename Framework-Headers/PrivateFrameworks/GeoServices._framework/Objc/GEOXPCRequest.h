@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 
 @class GEOApplicationAuditToken, GEODataRequestThrottlerToken, GEOMapServiceTraits, GEOPeer, NSError, NSProgress, NSString;
 @protocol OS_xpc_object;
 
-@interface GEOXPCRequest : NSObject <NSSecureCoding>
+@interface GEOXPCRequest : NSObject <GEOXPCSerializable>
 {
     unsigned char _flags;
     NSObject<OS_xpc_object> *_object;
@@ -25,7 +25,10 @@
     NSProgress *_progressToMirrorOverXPC;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *method; // @synthesize method=_method;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *object; // @synthesize object=_object;
 @property (strong, nonatomic) GEOPeer *peer; // @synthesize peer=_peer;
@@ -33,19 +36,18 @@
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progressToMirrorOverXPC;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *replyDictionary;
 @property (strong, nonatomic) NSString *service; // @synthesize service=_service;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) GEODataRequestThrottlerToken *throttleToken; // @synthesize throttleToken=_throttleToken;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 
 + (BOOL)reportsProgress;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_createConnectionWithQueue:(id)arg1;
 - (id)_prepareRequest;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithMessage:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 throttleToken:(id)arg4;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (void)send:(id)arg1;
 - (void)send:(id)arg1 withReply:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)sendSync:(id)arg1 error:(id *)arg2;

@@ -29,7 +29,6 @@
 - (void)setAutocomplete:(id)arg1;
 - (void)setNoValidate:(BOOL)arg1;
 - (int)structuralComplexityContribution;
-- (int)structuralComplexityContribution;
 - (void)submit;
 
 @end

@@ -15,6 +15,6 @@
 @property (readonly) NSArray *parameterCurves;
 @property (readonly) NSArray *parameters;
 
-- (BOOL)resolveExternalResources:(CHHapticEngine *)arg1 error:(id *)arg2;
+- (NSArray *)resolveExternalResources:(CHHapticEngine *)arg1 error:(id *)arg2;
 @end
 

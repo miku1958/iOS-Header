@@ -10,30 +10,31 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBAddMediaIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaDestination, _INPBMediaSearch;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaDestination, _INPBMediaSearch, _INPBPrivateAddMediaIntentData;
 
 @interface _INPBAddMediaIntent : PBCodable <_INPBAddMediaIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     _INPBMediaDestination *_mediaDestination;
     NSArray *_mediaItems;
     _INPBMediaSearch *_mediaSearch;
+    _INPBPrivateAddMediaIntentData *_privateAddMediaIntentData;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasMediaDestination;
 @property (readonly, nonatomic) BOOL hasMediaSearch;
+@property (readonly, nonatomic) BOOL hasPrivateAddMediaIntentData;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBMediaDestination *mediaDestination; // @synthesize mediaDestination=_mediaDestination;
 @property (copy, nonatomic) NSArray *mediaItems; // @synthesize mediaItems=_mediaItems;
 @property (readonly, nonatomic) unsigned long long mediaItemsCount;
 @property (strong, nonatomic) _INPBMediaSearch *mediaSearch; // @synthesize mediaSearch=_mediaSearch;
+@property (strong, nonatomic) _INPBPrivateAddMediaIntentData *privateAddMediaIntentData; // @synthesize privateAddMediaIntentData=_privateAddMediaIntentData;
 @property (readonly) Class superclass;
 
 + (Class)mediaItemsType;

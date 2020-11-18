@@ -18,10 +18,11 @@
 }
 
 - (void).cxx_destruct;
-- (BOOL)_handleVolumeButtonDownForIncrease:(BOOL)arg1;
+- (BOOL)_handleVolumeButtonDownForIncrease:(BOOL)arg1 modifiers:(long long)arg2;
 - (BOOL)_handleVolumeButtonUpForIncrease:(BOOL)arg1;
 - (BOOL)_handleVolumeDecreaseUp;
 - (BOOL)_handleVolumeIncreaseUp;
+- (void)_launchVolumeSettings;
 - (void)_sendBanditsVolumeDecreased;
 - (void)_sendBanditsVolumeIncreased;
 - (BOOL)_sendVolumeButtonDownToLegacyRegisteredClientsForIncrease:(BOOL)arg1;
@@ -31,9 +32,9 @@
 - (void)addVolumePressBandit:(id)arg1;
 - (void)cancelVolumePress;
 - (void)removeVolumePressBandit:(id)arg1;
-- (void)volumeDecreasePressDown;
+- (void)volumeDecreasePressDownWithModifiers:(long long)arg1;
 - (void)volumeDecreasePressUp;
-- (void)volumeIncreasePressDown;
+- (void)volumeIncreasePressDownWithModifiers:(long long)arg1;
 - (void)volumeIncreasePressUp;
 
 @end

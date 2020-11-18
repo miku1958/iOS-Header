@@ -14,6 +14,7 @@
 @interface NTKDateRichComplicationFullColorImageView : UIView <CLKFullColorImageView>
 {
     CLKDevice *_device;
+    long long _family;
     NTKColoringLabel *_weekdayLabel;
     NTKColoringLabel *_dayLabel;
     id<CLKMonochromeFilterProvider> _filterProvider;
@@ -35,6 +36,7 @@
 - (void)configureWithImageProvider:(id)arg1 reason:(long long)arg2;
 - (void)dealloc;
 - (id)initFullColorImageViewWithDevice:(id)arg1;
+- (id)initFullColorImageViewWithDevice:(id)arg1 family:(long long)arg2;
 - (void)layoutSubviews;
 - (void)pauseLiveFullColorImageView;
 - (void)resumeLiveFullColorImageView;

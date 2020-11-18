@@ -6,13 +6,14 @@
 
 #import <SearchUI/SearchUIFeedbackDelegate-Protocol.h>
 
-@class SearchUIRowModel;
+@class NSString, SearchUICommandEnvironment, SearchUIRowModel;
 
 @protocol SearchUIFeedbackDelegateInternal <SearchUIFeedbackDelegate>
 
 @optional
-- (void)dismissIfNecessaryForIconDrag;
+- (NSString *)queryString;
 - (void)removeRowModel:(SearchUIRowModel *)arg1;
 - (void)resignTextField;
+- (SearchUICommandEnvironment *)searchUICommandEnvironment;
 @end
 

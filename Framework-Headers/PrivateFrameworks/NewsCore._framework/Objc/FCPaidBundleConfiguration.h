@@ -17,9 +17,8 @@
     NSString *_localizedStorefrontID;
     NSArray *_defaultSupportedStoreFronts;
     NSDictionary *_keyedPaywallConfigurationsByType;
-    NSDictionary *_paywallConfigurationsByType;
+    NSDictionary *_keyedSubscriptionButtonConfigurationsByType;
     NSDictionary *_magazineGenresByGenre;
-    NSDictionary *_subscriptionButtonConfigurationsByType;
 }
 
 @property (readonly, nonatomic) NSString *appLaunchUpsellArticleID;
@@ -28,6 +27,7 @@
 @property (readonly, nonatomic) unsigned long long appLaunchUpsellPaidVisibility;
 @property (readonly, nonatomic) long long appLaunchUpsellRequiredAppLaunchCount;
 @property (readonly, nonatomic) unsigned long long articleHardPaywallType;
+@property (readonly, nonatomic) NSArray *audioChannelPaywallOverrideAllowedTagIDs;
 @property (readonly, nonatomic) long long audioCloseIdlePlayerAfterTime;
 @property (readonly, nonatomic) NSString *audioDailyBriefingFeatureName;
 @property (readonly, nonatomic) NSArray *audioFeedPaywallPositions;
@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) long long audioRefreshForceWakeRandomizationWindow;
 @property (readonly, nonatomic) long long audioRefreshTimeGMT;
 @property (readonly, nonatomic) long long audioRewindToParagraphStartAfterTime;
+@property (readonly, nonatomic) NSDictionary *audioServicesBundlePaywallConfigurationsByType;
 @property (readonly, nonatomic) long long audioSuggestionsMaxAge;
 @property (readonly, nonatomic) long long audioSuggestionsMaxCount;
 @property (readonly, nonatomic) long long audioSuggestionsRecycleAfterTime;
@@ -54,6 +55,7 @@
 @property (readonly, nonatomic) long long criticalStorageAutomaticIssueDownloadTTL;
 @property (readonly, nonatomic) long long criticalStorageManualIssueDownloadTTL;
 @property (readonly, nonatomic) NSString *defaultLandingPageArticleID;
+@property (readonly, nonatomic) NSString *defaultServicesBundleLandingPageArticleID;
 @property (readonly, copy, nonatomic) NSArray *defaultSupportedStoreFronts; // @synthesize defaultSupportedStoreFronts=_defaultSupportedStoreFronts;
 @property (readonly, nonatomic) long long deferredHardPaywallMinimumBodyTextLength;
 @property (readonly, nonatomic) NSString *endOfPurchaseFamilySharingSetupArticleID;
@@ -76,12 +78,14 @@
 @property (readonly, nonatomic) NSString *freeBadgeTitle;
 @property (readonly, nonatomic) NSArray *groupWhitelistedTagIds;
 @property (strong, nonatomic) NSDictionary *keyedPaywallConfigurationsByType; // @synthesize keyedPaywallConfigurationsByType=_keyedPaywallConfigurationsByType;
+@property (strong, nonatomic) NSDictionary *keyedSubscriptionButtonConfigurationsByType; // @synthesize keyedSubscriptionButtonConfigurationsByType=_keyedSubscriptionButtonConfigurationsByType;
 @property (readonly, copy, nonatomic) NSString *localizedStorefrontID; // @synthesize localizedStorefrontID=_localizedStorefrontID;
 @property (readonly, nonatomic) long long lowStorageAutomaticIssueDownloadTTL;
 @property (readonly, nonatomic) long long lowStorageManualIssueDownloadTTL;
 @property (readonly, nonatomic) unsigned long long magazineFeedPaywallSubtype;
 @property (strong, nonatomic) NSDictionary *magazineGenresByGenre; // @synthesize magazineGenresByGenre=_magazineGenresByGenre;
 @property (readonly, nonatomic, getter=areMagazinesEnabled) BOOL magazinesEnabled;
+@property (readonly, nonatomic) double maxPriceDeltaThreshold;
 @property (readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsCompact;
 @property (readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsRegular;
 @property (readonly, nonatomic) long long minimumArticlesBeforeArticleSoftPaywall;
@@ -100,14 +104,19 @@
 @property (readonly, nonatomic) NSString *paidBadgeTitle;
 @property (readonly, nonatomic, getter=isPaidBundleVisible) BOOL paidBundleVisible;
 @property (readonly, nonatomic) NSString *paidFeedID;
-@property (strong, nonatomic) NSDictionary *paywallConfigurationsByType; // @synthesize paywallConfigurationsByType=_paywallConfigurationsByType;
+@property (readonly, nonatomic) unsigned long long paywallConfigsOfferType;
+@property (readonly, nonatomic) NSDictionary *paywallConfigurationsByType;
 @property (readonly, nonatomic) long long recentIssuesMaxAge;
 @property (readonly, nonatomic) NSString *recommendableIssuesTagList;
 @property (readonly, nonatomic) NSString *renewalLandingPageArticleID;
 @property (readonly, nonatomic) NSArray *restorableBundlePurchaseIDs;
+@property (readonly, nonatomic) NSString *servicesBundleMetricsTopicName;
+@property (readonly, nonatomic) NSDictionary *servicesBundlePaywallConfigurationsByType;
+@property (readonly, nonatomic) NSDictionary *servicesBundleSubscriptionButtonConfigurationsByType;
 @property (readonly, nonatomic, getter=isSharingIssuesEnabled) BOOL sharingIssuesEnabled;
 @property (readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
-@property (strong, nonatomic) NSDictionary *subscriptionButtonConfigurationsByType; // @synthesize subscriptionButtonConfigurationsByType=_subscriptionButtonConfigurationsByType;
+@property (readonly, nonatomic) NSDictionary *subscriptionButtonConfigurationsByType;
+@property (readonly, nonatomic) unsigned long long subscriptionLinkTargetType;
 @property (readonly, nonatomic, getter=isTemporaryAccessEnabled) BOOL temporaryAccessEnabled;
 @property (readonly, nonatomic) long long vanityURLMappingRefreshRate;
 @property (readonly, nonatomic) NSString *vanityURLMappingResourceID;
@@ -118,6 +127,7 @@
 + (id)defaultFamilySharingLandingPageByLocalizedStorefrontID;
 + (id)defaultLandingPageByLocalizedStorefrontID;
 + (id)defaultPaidFeedIDByLocalizedStorefrontID;
++ (id)defaultServicesBundleLandingPageByLocalizedStorefrontID;
 + (id)defaultTagListIDByLocalizedStorefrontID;
 + (id)defaultVanityURLMappingResourceIDByLocalizedStorefrontID;
 + (id)renewalLandingPageByLocalizedStorefrontID;
@@ -126,6 +136,7 @@
 - (id)defaultAudioPaywallConfigs;
 - (id)defaultMagazineGenres;
 - (id)defaultPaywallConfigs;
+- (id)defaultServicesBundleSubscriptionButtonConfigs;
 - (id)defaultSubscriptionButtonConfigs;
 - (unsigned long long)hash;
 - (id)init;
@@ -134,6 +145,7 @@
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 localizedStorefrontID:(id)arg3 defaultSupportedStoreFronts:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)paywallConfigurationsByTypeForKey:(id)arg1;
+- (id)subscriptionButtonConfigurationsByTypeForKey:(id)arg1;
 
 @end
 

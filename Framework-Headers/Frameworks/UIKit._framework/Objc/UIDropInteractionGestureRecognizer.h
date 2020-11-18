@@ -6,10 +6,19 @@
 
 #import <UIKitCore/UIDragGestureRecognizer.h>
 
+#import <UIKitCore/_UIDragEventRespondable-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface UIDropInteractionGestureRecognizer : UIDragGestureRecognizer
+@interface UIDropInteractionGestureRecognizer : UIDragGestureRecognizer <_UIDragEventRespondable>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)_draggingEndedWithEvent:(id)arg1;
 - (void)_draggingEnteredWithEvent:(id)arg1;

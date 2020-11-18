@@ -13,6 +13,7 @@
     BOOL _settingSublayouts;
     BOOL _isUpdatingSublayouts;
     BOOL _isPerformingAdditionalUpdate;
+    BOOL _floatingModesRespectSafeArea;
     BOOL _shouldExcludeTopAndBottomPaddingFromReferenceSize;
     PXGLayout *_firstSublayout;
     PXGLayout *_secondSublayout;
@@ -23,22 +24,26 @@
 }
 
 @property (strong, nonatomic) PXGLayout *firstSublayout; // @synthesize firstSublayout=_firstSublayout;
+@property (readonly, nonatomic) long long firstSublayoutIndex;
+@property (nonatomic) BOOL floatingModesRespectSafeArea; // @synthesize floatingModesRespectSafeArea=_floatingModesRespectSafeArea;
 @property (nonatomic) double interlayoutSpacing; // @synthesize interlayoutSpacing=_interlayoutSpacing;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (readonly, nonatomic) struct UIEdgeInsets presentedPadding; // @synthesize presentedPadding=_presentedPadding;
 @property (strong, nonatomic) PXGLayout *secondSublayout; // @synthesize secondSublayout=_secondSublayout;
+@property (readonly, nonatomic) long long secondSublayoutIndex;
 @property (nonatomic) BOOL shouldExcludeTopAndBottomPaddingFromReferenceSize; // @synthesize shouldExcludeTopAndBottomPaddingFromReferenceSize=_shouldExcludeTopAndBottomPaddingFromReferenceSize;
 
 - (void).cxx_destruct;
 - (void)_replaceSublayout:(id)arg1 withSublayout:(id)arg2 atIndex:(long long)arg3;
 - (void)_updateSublayoutGeometries;
-- (void)containingScrollViewDidScroll:(struct CGPoint)arg1;
 - (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (void)didChangeSublayoutOrigins;
 - (void)referenceSizeDidChange;
+- (void)removeSublayoutsInRange:(struct _NSRange)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)screenScaleDidChange;
+- (void)scrollSpeedRegimeDidChange;
 - (void)sublayoutDidChangeContentSize:(id)arg1;
 - (void)sublayoutDidChangeLastBaseline:(id)arg1;
 - (void)sublayoutNeedsUpdate:(id)arg1;

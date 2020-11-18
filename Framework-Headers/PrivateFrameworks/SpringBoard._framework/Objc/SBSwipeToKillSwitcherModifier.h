@@ -7,12 +7,10 @@
 #import <SpringBoard/SBSwitcherModifier.h>
 
 @class SBAppLayout;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBSwipeToKillSwitcherModifier : SBSwitcherModifier
 {
     SBAppLayout *_appLayout;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
     double _progress;
     BOOL _hasPrepared;
     BOOL _simulatingPostRemovalState;
@@ -23,15 +21,12 @@
 - (void)_calculateInterpolationDirection;
 - (unsigned long long)_interpolatingAdjacentIndexForIndex:(unsigned long long)arg1;
 - (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
-- (id)appLayouts;
-- (id)appLayoutsForInsertionOrRemoval;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleSwipeToKillEvent:(id)arg1;
-- (id)initWithAppLayout:(id)arg1 multitaskingModifier:(id)arg2;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
+- (id)initWithAppLayout:(id)arg1;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
@@ -39,7 +34,8 @@
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
+- (id)visibleAppLayouts;
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
 
 @end

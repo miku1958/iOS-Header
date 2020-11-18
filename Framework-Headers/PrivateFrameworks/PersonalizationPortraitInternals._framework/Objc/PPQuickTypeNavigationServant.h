@@ -23,7 +23,6 @@
     NSObject<OS_dispatch_semaphore> *_stateSemaphore;
     NSObject<OS_dispatch_semaphore> *_streetSemaphore;
     NSObject<OS_dispatch_semaphore> *_summarySemaphore;
-    NSObject<OS_dispatch_semaphore> *_initializationComplete;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -13,26 +13,26 @@
     PLLazyObject *_lazyRecentDateRangeFormatter;
     PLLazyObject *_lazyDateRangeFormatter;
     PLLazyObject *_lazyYearlessDateRangeFormatter;
-    PLLazyObject *_lazyMonthDateRangeFormatter;
-    PLLazyObject *_lazyShortMonthDateRangeFormatter;
+    PLLazyObject *_lazyMonthYearDateRangeFormatter;
+    PLLazyObject *_lazyShortMonthYearDateRangeFormatter;
     PLLazyObject *_lazyYearDateRangeFormatter;
 }
 
 - (void).cxx_destruct;
-- (id)_dateRangeFormatterForCategory:(unsigned short)arg1 kind:(unsigned short)arg2 options:(unsigned long long)arg3;
 - (id)dateRangeFormatter;
+- (id)dateRangeFormatterForCategory:(unsigned short)arg1 kind:(unsigned short)arg2 options:(unsigned long long)arg3;
 - (id)dateRangeTitleWithStartDate:(id)arg1 endDate:(id)arg2 category:(unsigned short)arg3 kind:(unsigned short)arg4;
 - (id)dateRangeTitleWithStartDate:(id)arg1 endDate:(id)arg2 category:(unsigned short)arg3 kind:(unsigned short)arg4 options:(unsigned long long)arg5;
 - (id)init;
-- (id)monthDateRangeFormatter;
+- (id)monthYearDateRangeFormatter;
 - (id)newDateRangeFormatter;
-- (id)newMonthDateRangeFormatter;
+- (id)newMonthYearDateRangeFormatter;
 - (id)newRecentDateRangeFormatter;
-- (id)newShortMonthDateRangeFormatter;
+- (id)newShortMonthYearDateRangeFormatter;
 - (id)newYearDateRangeFormatter;
 - (id)newYearlessDateRangeFormatter;
 - (id)recentDateRangeFormatter;
-- (id)shortMonthDateRangeFormatter;
+- (id)shortMonthYearDateRangeFormatter;
 - (id)yearDateRangeFormatter;
 - (id)yearlessDateRangeFormatter;
 

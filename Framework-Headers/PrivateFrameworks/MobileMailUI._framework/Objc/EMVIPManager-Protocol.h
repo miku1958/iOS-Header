@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <MobileMailUI/EMVIPReader-Protocol.h>
 #import <MobileMailUI/NSObject-Protocol.h>
 
 @class EAEmailAddressSet, EMVIP, NSSet, NSString;
 
-@protocol EMVIPManager <NSObject>
+@protocol EMVIPManager <EMVIPReader, NSObject>
 
 @property (readonly, copy, nonatomic) EAEmailAddressSet *allVIPEmailAddresses;
 @property (readonly, copy, nonatomic) NSSet *allVIPs;
-@property (readonly, nonatomic) BOOL hasVIPs;
 
-- (BOOL)isVIPAddress:(NSString *)arg1;
 - (void)removeVIPsWithEmailAddresses:(EAEmailAddressSet *)arg1;
 - (void)removeVIPsWithIdentifiers:(NSSet *)arg1;
 - (void)saveVIPs:(NSSet *)arg1;

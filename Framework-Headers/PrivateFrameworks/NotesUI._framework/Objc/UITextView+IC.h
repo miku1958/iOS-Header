@@ -6,10 +6,11 @@
 
 #import <UIKit/UITextView.h>
 
-@class PKTiledView;
+@class PKSelectionInteraction, PKTiledView;
 
 @interface UITextView (IC)
 
+@property (readonly, nonatomic) PKSelectionInteraction *ic_pkSelectionInteraction;
 @property (readonly, nonatomic) PKTiledView *ic_pkTiledView;
 @property (readonly, nonatomic) struct CGPoint ic_textContainerOrigin;
 

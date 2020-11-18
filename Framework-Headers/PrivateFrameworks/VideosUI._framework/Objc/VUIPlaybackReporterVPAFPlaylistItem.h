@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long overallPosition; // @synthesize overallPosition=_overallPosition;
 @property (readonly, nonatomic) unsigned long long startOverallPosition;
-@property (readonly, nonatomic) long long startPosition;
+@property (readonly, nonatomic) unsigned long long startPosition;
 @property (readonly) Class superclass;
 @property (nonatomic) struct _NSRange timeRange; // @synthesize timeRange=_timeRange;
 

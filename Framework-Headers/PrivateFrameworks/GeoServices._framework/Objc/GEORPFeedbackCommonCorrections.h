@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_comments:1;
         unsigned int read_imageIds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_imageIds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,9 +35,6 @@
 + (Class)imageIdType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsImageId:(id)arg1;
-- (void)_readComments;
-- (void)_readImageIds;
 - (void)addImageId:(id)arg1;
 - (void)clearImageIds;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -52,7 +47,10 @@
 - (unsigned long long)imageIdsCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

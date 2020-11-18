@@ -11,8 +11,10 @@
 @interface SISchemaConversationTrace : PBCodable
 {
     NSData *_previousTurnID;
+    BOOL _hasPreviousTurnID;
 }
 
+@property (nonatomic) BOOL hasPreviousTurnID; // @synthesize hasPreviousTurnID=_hasPreviousTurnID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *previousTurnID; // @synthesize previousTurnID=_previousTurnID;
 

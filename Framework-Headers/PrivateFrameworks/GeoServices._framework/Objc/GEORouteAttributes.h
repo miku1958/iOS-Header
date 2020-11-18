@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEODestinationInfo, GEOTransitOptions, GEOWalkingOptions, NSString, PBDataReader, PBUnknownFields;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEODestinationInfo, GEOTransitOptions, GEOWalkingOptions, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORouteAttributes : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     CDStruct_95bda58d _uiContexts;
     struct GEOTimepoint _timepoint;
     GEOAutomobileOptions *_automobileOptions;
+    GEOCyclingOptions *_cyclingOptions;
     GEODestinationInfo *_destinationInfo;
     NSString *_phoneticLocaleIdentifier;
     GEOTransitOptions *_transitOptions;
@@ -67,37 +68,12 @@
         unsigned int read_additionalTransportTypes:1;
         unsigned int read_uiContexts:1;
         unsigned int read_automobileOptions:1;
+        unsigned int read_cyclingOptions:1;
         unsigned int read_destinationInfo:1;
         unsigned int read_phoneticLocaleIdentifier:1;
         unsigned int read_transitOptions:1;
         unsigned int read_walkingOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_additionalTransportTypes:1;
-        unsigned int wrote_uiContexts:1;
-        unsigned int wrote_timepoint:1;
-        unsigned int wrote_automobileOptions:1;
-        unsigned int wrote_destinationInfo:1;
-        unsigned int wrote_phoneticLocaleIdentifier:1;
-        unsigned int wrote_transitOptions:1;
-        unsigned int wrote_walkingOptions:1;
-        unsigned int wrote_basicPointsToBeIncluded:1;
-        unsigned int wrote_destinationType:1;
-        unsigned int wrote_mainTransportType:1;
-        unsigned int wrote_trafficType:1;
-        unsigned int wrote_walkingLimitMeters:1;
-        unsigned int wrote_directZilchByLaneFlowlines:1;
-        unsigned int wrote_enableExperimentalMode:1;
-        unsigned int wrote_includeContingencyRoutes:1;
-        unsigned int wrote_includeHistoricTravelTime:1;
-        unsigned int wrote_includeLaneGuidance:1;
-        unsigned int wrote_includeManeuverIcons:1;
-        unsigned int wrote_includePhonetics:1;
-        unsigned int wrote_includeTrafficAlongRoute:1;
-        unsigned int wrote_includeTrafficIncidents:1;
-        unsigned int wrote_includeZilchPoints:1;
-        unsigned int wrote_includeCrossLanguagePhonetics:1;
-        unsigned int wrote_includeLaneWidths:1;
-        unsigned int wrote_useMetricThreshold:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -105,12 +81,14 @@
 @property (readonly, nonatomic) unsigned long long additionalTransportTypesCount;
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions;
 @property (nonatomic) int basicPointsToBeIncluded;
+@property (strong, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property (strong, nonatomic) GEODestinationInfo *destinationInfo;
 @property (nonatomic) int destinationType;
 @property (nonatomic) BOOL directZilchByLaneFlowlines;
 @property (nonatomic) BOOL enableExperimentalMode;
 @property (readonly, nonatomic) BOOL hasAutomobileOptions;
 @property (nonatomic) BOOL hasBasicPointsToBeIncluded;
+@property (readonly, nonatomic) BOOL hasCyclingOptions;
 @property (readonly, nonatomic) BOOL hasDestinationInfo;
 @property (nonatomic) BOOL hasDestinationType;
 @property (nonatomic) BOOL hasDirectZilchByLaneFlowlines;
@@ -164,20 +142,13 @@
 - (int)StringAsMainTransportType:(id)arg1;
 - (int)StringAsTrafficType:(id)arg1;
 - (int)StringAsUiContexts:(id)arg1;
-- (void)_addNoFlagsAdditionalTransportType:(int)arg1;
-- (void)_addNoFlagsUiContext:(int)arg1;
-- (void)_readAdditionalTransportTypes;
-- (void)_readAutomobileOptions;
-- (void)_readDestinationInfo;
-- (void)_readPhoneticLocaleIdentifier;
-- (void)_readTransitOptions;
-- (void)_readUiContexts;
-- (void)_readWalkingOptions;
 - (void)addAdditionalTransportType:(int)arg1;
 - (void)addUiContext:(int)arg1;
 - (int)additionalTransportTypeAtIndex:(unsigned long long)arg1;
 - (id)additionalTransportTypesAsString:(int)arg1;
 - (id)basicPointsToBeIncludedAsString:(int)arg1;
+- (void)buildRouteAttributes:(id)arg1 result:(CDUnknownBlockType)arg2;
+- (void)buildRouteAttributesForETAUpdateRequest:(id)arg1 queue:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (void)clearAdditionalTransportTypes;
 - (void)clearUiContexts;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -190,13 +161,17 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)mainTransportTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAdditionalTransportTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setUiContexts:(int *)arg1 count:(unsigned long long)arg2;
+- (BOOL)shouldRetryForError:(id)arg1;
 - (id)trafficTypeAsString:(int)arg1;
 - (int)uiContextAtIndex:(unsigned long long)arg1;
 - (id)uiContextsAsString:(int)arg1;

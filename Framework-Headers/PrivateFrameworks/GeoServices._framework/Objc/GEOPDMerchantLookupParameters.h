@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     int _transactionStatus;
     int _transactionType;
+    BOOL _coarseLocationUsed;
     BOOL _enableBrandMuidFallback;
     BOOL _fuzzyMatched;
     struct {
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_transactionTimestamp:1;
         unsigned int has_transactionStatus:1;
         unsigned int has_transactionType:1;
+        unsigned int has_coarseLocationUsed:1;
         unsigned int has_enableBrandMuidFallback:1;
         unsigned int has_fuzzyMatched:1;
         unsigned int read_unknownFields:1;
@@ -56,32 +58,16 @@ __attribute__((visibility("hidden")))
         unsigned int read_transactionId:1;
         unsigned int read_transactionLocation:1;
         unsigned int read_warsawMerchantIdentifier:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_appIdentifier:1;
-        unsigned int wrote_industryCategory:1;
-        unsigned int wrote_industryCode:1;
-        unsigned int wrote_merchantCode:1;
-        unsigned int wrote_merchantInformation:1;
-        unsigned int wrote_paymentNetwork:1;
-        unsigned int wrote_rawMerchantCode:1;
-        unsigned int wrote_terminalId:1;
-        unsigned int wrote_transactionCurrencyCode:1;
-        unsigned int wrote_transactionId:1;
-        unsigned int wrote_transactionLocationAge:1;
-        unsigned int wrote_transactionLocation:1;
-        unsigned int wrote_transactionTimestamp:1;
-        unsigned int wrote_warsawMerchantIdentifier:1;
-        unsigned int wrote_transactionStatus:1;
-        unsigned int wrote_transactionType:1;
-        unsigned int wrote_enableBrandMuidFallback:1;
-        unsigned int wrote_fuzzyMatched:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) GEOPDAdamAppIdentifier *appIdentifier;
+@property (nonatomic) BOOL coarseLocationUsed;
 @property (nonatomic) BOOL enableBrandMuidFallback;
 @property (nonatomic) BOOL fuzzyMatched;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
+@property (nonatomic) BOOL hasCoarseLocationUsed;
 @property (nonatomic) BOOL hasEnableBrandMuidFallback;
 @property (nonatomic) BOOL hasFuzzyMatched;
 @property (readonly, nonatomic) BOOL hasIndustryCategory;
@@ -120,17 +106,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsTransactionStatus:(id)arg1;
 - (int)StringAsTransactionType:(id)arg1;
-- (void)_readAppIdentifier;
-- (void)_readIndustryCategory;
-- (void)_readMerchantCode;
-- (void)_readMerchantInformation;
-- (void)_readPaymentNetwork;
-- (void)_readRawMerchantCode;
-- (void)_readTerminalId;
-- (void)_readTransactionCurrencyCode;
-- (void)_readTransactionId;
-- (void)_readTransactionLocation;
-- (void)_readWarsawMerchantIdentifier;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -140,7 +115,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

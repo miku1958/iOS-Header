@@ -7,8 +7,6 @@
 #import <iTunesCloud/ICIAMMessageRule.h>
 
 @interface ICIAMMessageRule (Utilities)
-
-@property (readonly, nonatomic) BOOL isExactMatchRule;
-
+- (BOOL)isExactMatchRule;
 @end
 

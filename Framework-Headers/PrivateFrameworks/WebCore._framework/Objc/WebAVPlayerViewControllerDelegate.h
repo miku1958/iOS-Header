@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerViewControllerDelegate : NSObject <AVPlayerViewControllerDelegate_WebKitOnly>
 {
-    struct RefPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::DumbPtrTraits<WebCore::VideoFullscreenInterfaceAVKit>> _fullscreenInterface;
+    struct WeakPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::EmptyCounter> _fullscreenInterface;
 }
 
 @property (readonly, copy) NSString *debugDescription;

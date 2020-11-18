@@ -6,7 +6,7 @@
 
 #import <TVMLKit/TVViewLayout.h>
 
-@class TVImageLayout, VUITextLayout;
+@class TVImageLayout, VUIProductUberBackgroundViewLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUISportsProductBannerLayout : TVViewLayout
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_footerTextLayout;
     VUITextLayout *_availabilityTextLayout;
     TVImageLayout *_availabilityImageLayout;
+    VUIProductUberBackgroundViewLayout *_uberBackgroundViewLayout;
 }
 
 @property (readonly, nonatomic) TVImageLayout *availabilityImageLayout; // @synthesize availabilityImageLayout=_availabilityImageLayout;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUITextLayout *rowTextLayout; // @synthesize rowTextLayout=_rowTextLayout;
 @property (readonly, nonatomic) VUITextLayout *scoreTextLayout; // @synthesize scoreTextLayout=_scoreTextLayout;
 @property (readonly, nonatomic) VUITextLayout *titleTextLayout; // @synthesize titleTextLayout=_titleTextLayout;
+@property (readonly, nonatomic) VUIProductUberBackgroundViewLayout *uberBackgroundViewLayout; // @synthesize uberBackgroundViewLayout=_uberBackgroundViewLayout;
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2 sizeClass:(long long)arg3;
 + (BOOL)shouldDisplayScoresBelowLabels;

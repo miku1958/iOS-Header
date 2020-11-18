@@ -16,6 +16,7 @@
 + (id)cjkSpacersToWhiteSpace:(id)arg1;
 + (id)cleanName:(id)arg1;
 + (id)handleLastNameFirstOrder:(id)arg1;
++ (BOOL)isCapitalized:(id)arg1;
 + (BOOL)isCommonNameWord:(id)arg1;
 + (BOOL)isCommonVietnameseSurname:(id)arg1;
 + (BOOL)isDifficultName:(id)arg1;
@@ -27,10 +28,10 @@
 + (id)nameFromEmail:(id)arg1;
 + (CDStruct_a2e78aaa)namePayload:(id)arg1;
 + (double)nameSimilarity:(id)arg1 and:(id)arg2;
-+ (id)nameStringFromEmailAddress:(id)arg1 inContext:(id)arg2;
++ (id)nameStringFromEmailAddress:(id)arg1;
 + (BOOL)namesApproximatelyMatch:(id)arg1 and:(id)arg2;
 + (BOOL)namesApproximatelyMatch:(id)arg1 and:(id)arg2 threshold:(double)arg3;
-+ (id)possibleNameStringFromEmailAddress:(id)arg1 inContext:(id)arg2;
++ (id)possibleNameStringFromEmailAddress:(id)arg1;
 + (id)sgNameFromString:(id)arg1 origin:(id)arg2 recordId:(id)arg3 extractionInfo:(id)arg4;
 + (BOOL)shouldInvertOrderOfFirst:(id)arg1 last:(id)arg2;
 + (id)sketchesForName:(id)arg1;

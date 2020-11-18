@@ -15,6 +15,7 @@
     MISSING_TYPE *defaultAvatarImageSymbolConfiguration;
     MISSING_TYPE *contactsAvatarViewController;
     MISSING_TYPE *defaultAvatarImageView;
+    MISSING_TYPE *avatarSize;
 }
 
 - (void).cxx_destruct;

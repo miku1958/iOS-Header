@@ -8,6 +8,7 @@
 
 @class MPMediaItem;
 
+__attribute__((visibility("hidden")))
 @interface MPSSLookupResponseTransformContext : NSObject
 {
     MPMediaItem *_collectionRepresentativeItem;

@@ -13,7 +13,6 @@
 
 + (id)defaultFontProvider;
 + (id)preferredFontProvider;
-- (id)initForProvidingDefaultFonts:(BOOL)arg1;
 - (id)preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2;
 - (id)preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2 contentSizeCategory:(id)arg3;
 

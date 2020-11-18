@@ -10,14 +10,14 @@
 {
 }
 
-+ (BOOL)_shouldDisplayBalanceAndTransactionsForPaymentPass:(id)arg1;
++ (BOOL)_shouldDisplayBalanceAndTransactionsForTransactionSource:(id)arg1;
 + (BOOL)_shouldDisplayBalanceForAccount:(id)arg1;
 + (BOOL)_shouldDisplayTransactionsForAccount:(id)arg1;
 + (unsigned long long)paymentEducationStateForAccount:(id)arg1 mostRecentTransactions:(id)arg2 upcomingScheduledPayments:(id)arg3;
 + (id)relevantScheduledPaymentFromScheduledPayments:(id)arg1 account:(id)arg2;
 + (void)resolutionToReceiveCashbackForAccount:(id)arg1 withPeerPaymentAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (BOOL)shouldDisplayAccountInformationForPaymentPass:(id)arg1 withAccount:(id)arg2;
-+ (BOOL)shouldDisplayTransactionsForPaymentPass:(id)arg1 withAccount:(id)arg2;
++ (BOOL)shouldDisplayAccountInformationForTransactionSource:(id)arg1 withAccount:(id)arg2;
++ (BOOL)shouldDisplayTransactionsForTransactionSource:(id)arg1 withAccount:(id)arg2;
 
 @end
 

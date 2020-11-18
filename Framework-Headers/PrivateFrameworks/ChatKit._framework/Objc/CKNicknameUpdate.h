@@ -22,8 +22,12 @@
 @property (nonatomic) unsigned long long updateType; // @synthesize updateType=_updateType;
 
 - (void).cxx_destruct;
+- (id)_updatedName;
+- (id)contactWithUpdatedInformation;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;
+- (id)listSubtitleText;
+- (id)listTitleText;
 
 @end
 

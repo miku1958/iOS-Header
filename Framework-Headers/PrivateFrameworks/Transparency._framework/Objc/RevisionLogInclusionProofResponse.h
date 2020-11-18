@@ -6,7 +6,7 @@
 
 #import <Transparency/GPBMessage.h>
 
-@class LogEntry, NSMutableArray;
+@class LogEntry, NSDictionary, NSMutableArray;
 
 @interface RevisionLogInclusionProofResponse : GPBMessage
 {
@@ -15,10 +15,13 @@
 @property (nonatomic) BOOL hasTopLevelTreeEntry; // @dynamic hasTopLevelTreeEntry;
 @property (strong, nonatomic) NSMutableArray *logEntryArray; // @dynamic logEntryArray;
 @property (readonly, nonatomic) unsigned long long logEntryArray_Count; // @dynamic logEntryArray_Count;
+@property (readonly) NSDictionary *metadata;
 @property (nonatomic) int status; // @dynamic status;
 @property (strong, nonatomic) LogEntry *topLevelTreeEntry; // @dynamic topLevelTreeEntry;
 
 + (id)descriptor;
+- (void)setMetadata:(id)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
 
 @end
 

@@ -20,6 +20,7 @@
     BOOL _shouldNeverLock;
     BOOL _forSimulator;
     BOOL _isLoginSession;
+    long long _homeButtonType;
     SBBootDefaults *_bootDefaults;
 }
 
@@ -31,6 +32,7 @@
 @property (nonatomic, getter=isForSimulator) BOOL forSimulator; // @synthesize forSimulator=_forSimulator;
 @property (nonatomic) BOOL hasPasscodeSet; // @synthesize hasPasscodeSet=_hasPasscodeSet;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long homeButtonType; // @synthesize homeButtonType=_homeButtonType;
 @property (nonatomic, getter=isInLostMode) BOOL inLostMode; // @synthesize inLostMode=_isInLostMode;
 @property (nonatomic, getter=isLoginSession) BOOL loginSession; // @synthesize loginSession=_isLoginSession;
 @property (nonatomic) BOOL requiresSetup; // @synthesize requiresSetup=_requiresSetup;

@@ -31,6 +31,7 @@
     NSData *_atqa;
     NSData *_sak;
     NSData *_historicalBytes;
+    BOOL _isSilent;
 }
 
 @property (readonly, copy, nonatomic) NSData *AppData;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) unsigned int type;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_getSystemCodeListString;
 - (void)_setAppData:(id)arg1;
 - (void)_setAtqa:(id)arg1;
@@ -73,18 +75,20 @@
 - (void)_setPMm:(id)arg1;
 - (void)_setSak:(id)arg1;
 - (void)_setSelectedAID:(id)arg1;
+- (void)_setSilent:(BOOL)arg1;
 - (void)_setSystemCode:(id)arg1;
 - (void)_setSystemCodes:(id)arg1;
 - (void)_setTechnology:(unsigned int)arg1;
 - (void)_setType:(unsigned int)arg1;
 - (void)_setUID:(id)arg1;
-- (void)dealloc;
+- (id)asDictionary;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithNFTag:(id)arg1;
 - (id)initWithNFTagForUIDOnly:(id)arg1;
 - (BOOL)isEqualToNFTag:(id)arg1;
+- (BOOL)isSilent;
 
 @end
 

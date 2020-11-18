@@ -11,7 +11,6 @@
 
 @interface HRStackedButtonView : UIView
 {
-    BOOL _bottomAdjustsForHomeButtonlessScreen;
     BOOL _fixedBottomButtonSpacing;
     BOOL _blurHidden;
     NSArray *_buttons;
@@ -39,7 +38,6 @@
 @property (strong, nonatomic) NSLayoutConstraint *backgroundBlurViewTrailingConstraint; // @synthesize backgroundBlurViewTrailingConstraint=_backgroundBlurViewTrailingConstraint;
 @property (nonatomic, getter=isBlurHidden) BOOL blurHidden; // @synthesize blurHidden=_blurHidden;
 @property (copy, nonatomic) NSString *boldFooterText; // @synthesize boldFooterText=_boldFooterText;
-@property (nonatomic) BOOL bottomAdjustsForHomeButtonlessScreen; // @synthesize bottomAdjustsForHomeButtonlessScreen=_bottomAdjustsForHomeButtonlessScreen;
 @property (strong, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (nonatomic) long long buttonMode; // @synthesize buttonMode=_buttonMode;
 @property (strong, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;

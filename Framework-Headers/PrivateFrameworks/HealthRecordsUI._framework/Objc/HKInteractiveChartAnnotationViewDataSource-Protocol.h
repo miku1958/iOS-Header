@@ -14,5 +14,8 @@
 - (long long)numberOfValuesForAnnotationView:(HKInteractiveChartAnnotationView *)arg1;
 - (BOOL)showSeparators;
 - (UIView *)valueViewForColumnAtIndex:(long long)arg1 orientation:(long long)arg2;
+
+@optional
+- (BOOL)pendingData;
 @end
 

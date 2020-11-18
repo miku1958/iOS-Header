@@ -8,10 +8,11 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBIssueData;
+@class NSData, NSMutableArray, NSString, NTPBIssueData;
 
 @interface NTPBPaidSubscriptionResult : PBCodable <NSCopying>
 {
+    int _amsPurchaseErrorCode;
     NSString *_articleId;
     NSData *_articleViewingSessionId;
     NSString *_campaignId;
@@ -25,18 +26,24 @@
     NSString *_parentFeedId;
     int _parentFeedType;
     NSString *_purchaseId;
+    int _purchaseType;
     int _resultType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
     int _storekitError;
     NSData *_subscriptionPurchaseSessionId;
+    NSString *_surfacedByChannelId;
+    NSString *_surfacedByTopicId;
+    NSMutableArray *_topicIds;
     BOOL _arrivedFromAd;
     BOOL _sawSubscriptionSheet;
     BOOL _subscriptionOnlyArticlePreview;
     struct {
+        unsigned int amsPurchaseErrorCode:1;
         unsigned int groupType:1;
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
+        unsigned int purchaseType:1;
         unsigned int resultType:1;
         unsigned int storekitError:1;
         unsigned int arrivedFromAd:1;
@@ -45,6 +52,7 @@
     } _has;
 }
 
+@property (nonatomic) int amsPurchaseErrorCode; // @synthesize amsPurchaseErrorCode=_amsPurchaseErrorCode;
 @property (nonatomic) BOOL arrivedFromAd; // @synthesize arrivedFromAd=_arrivedFromAd;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
@@ -53,6 +61,7 @@
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (nonatomic) BOOL hasAmsPurchaseErrorCode;
 @property (nonatomic) BOOL hasArrivedFromAd;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
@@ -67,6 +76,7 @@
 @property (readonly, nonatomic) BOOL hasParentFeedId;
 @property (nonatomic) BOOL hasParentFeedType;
 @property (readonly, nonatomic) BOOL hasPurchaseId;
+@property (nonatomic) BOOL hasPurchaseType;
 @property (nonatomic) BOOL hasResultType;
 @property (nonatomic) BOOL hasSawSubscriptionSheet;
 @property (readonly, nonatomic) BOOL hasSectionId;
@@ -74,12 +84,15 @@
 @property (nonatomic) BOOL hasStorekitError;
 @property (nonatomic) BOOL hasSubscriptionOnlyArticlePreview;
 @property (readonly, nonatomic) BOOL hasSubscriptionPurchaseSessionId;
+@property (readonly, nonatomic) BOOL hasSurfacedByChannelId;
+@property (readonly, nonatomic) BOOL hasSurfacedByTopicId;
 @property (strong, nonatomic) NSString *iadQtoken; // @synthesize iadQtoken=_iadQtoken;
 @property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
 @property (strong, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (strong, nonatomic) NSString *purchaseId; // @synthesize purchaseId=_purchaseId;
+@property (nonatomic) int purchaseType; // @synthesize purchaseType=_purchaseType;
 @property (nonatomic) int resultType; // @synthesize resultType=_resultType;
 @property (nonatomic) BOOL sawSubscriptionSheet; // @synthesize sawSubscriptionSheet=_sawSubscriptionSheet;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
@@ -87,12 +100,19 @@
 @property (nonatomic) int storekitError; // @synthesize storekitError=_storekitError;
 @property (nonatomic) BOOL subscriptionOnlyArticlePreview; // @synthesize subscriptionOnlyArticlePreview=_subscriptionOnlyArticlePreview;
 @property (strong, nonatomic) NSData *subscriptionPurchaseSessionId; // @synthesize subscriptionPurchaseSessionId=_subscriptionPurchaseSessionId;
+@property (strong, nonatomic) NSString *surfacedByChannelId; // @synthesize surfacedByChannelId=_surfacedByChannelId;
+@property (strong, nonatomic) NSString *surfacedByTopicId; // @synthesize surfacedByTopicId=_surfacedByTopicId;
+@property (strong, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 
++ (Class)topicIdsType;
 - (void).cxx_destruct;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (int)StringAsPurchaseType:(id)arg1;
 - (int)StringAsStorekitError:(id)arg1;
+- (void)addTopicIds:(id)arg1;
+- (void)clearTopicIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -102,8 +122,11 @@
 - (void)mergeFrom:(id)arg1;
 - (id)paidSubscriptionConversionPointTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
+- (id)purchaseTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)storekitErrorAsString:(int)arg1;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -11,7 +11,6 @@
 @class EKEventStore, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, REMStore;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface EKReminderStore : NSObject <EKUpdatedReminderBackingObjectProvider>
 {
     NSObject<OS_dispatch_queue> *_queue;
@@ -71,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)frozenCalendarFromCalendar:(id)arg1 error:(id *)arg2;
 - (id)frozenObjectForReminderObject:(id)arg1;
 - (id)initWithEventStore:(id)arg1 token:(id)arg2;
+- (BOOL)isSourceManaged:(id)arg1;
 - (id)newFrozenObjectForReminderObject:(id)arg1 withChanges:(id)arg2;
 - (id)predicateForCompletedRemindersWithCompletionDateStarting:(id)arg1 ending:(id)arg2 calendars:(id)arg3;
 - (id)predicateForIncompleteRemindersWithDueDateStarting:(id)arg1 ending:(id)arg2 calendars:(id)arg3;

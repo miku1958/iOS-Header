@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSString;
+@class ACAccountStore, NSArray, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ACPersonaManager : NSObject
@@ -15,6 +15,8 @@
     BOOL _registered;
     NSString *_enterprisePersonaUID;
     NSString *_personalPersonaUID;
+    NSSet *_guestPersonasUID;
+    NSArray *_dataSeparatedPersonasUIDs;
     ACAccountStore *_store;
 }
 

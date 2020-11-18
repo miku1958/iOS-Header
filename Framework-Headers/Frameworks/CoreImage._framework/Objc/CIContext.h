@@ -57,6 +57,7 @@
 - (void)abort;
 - (struct CGRect)bounds;
 - (void)clearCaches;
+- (id)clientCommandQueue;
 - (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2;
 - (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3;
 - (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4;
@@ -81,6 +82,7 @@
 - (id)initWithMTLDevice:(id)arg1 options:(id)arg2;
 - (id)initWithOptions:(id)arg1;
 - (struct CGSize)inputImageMaximumSize;
+- (id)internalCommandQueue;
 - (void)invalidate;
 - (void)lock;
 - (unsigned long long)maximumInputImageSize;

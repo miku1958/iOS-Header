@@ -92,8 +92,8 @@
 - (id)cloudMetadataForModel:(id)arg1 usingEncoding:(unsigned long long)arg2;
 - (id)createShareModel;
 - (void)dealloc;
-- (id)decodeManateeCloudFrom:(id)arg1 recordSource:(unsigned long long)arg2 error:(id *)arg3;
-- (id)decodeModelFrom:(id)arg1 recordSource:(unsigned long long)arg2 error:(id *)arg3;
+- (id)decodeManateeCloudFromRecord:(id)arg1 externalRecordFields:(id)arg2 source:(unsigned long long)arg3 error:(id *)arg4;
+- (id)decodeModelFromRecord:(id)arg1 externalRecordFields:(id)arg2 source:(unsigned long long)arg3 error:(id *)arg4;
 - (id)decodeShareModelFromShare:(id)arg1;
 - (id)destroy;
 - (id)encodeManateeCloudModel:(id)arg1 existingRecord:(id)arg2 encodingContext:(id)arg3 error:(id *)arg4;
@@ -114,6 +114,7 @@
 - (void)handleDeletion;
 - (void)handleLostKeys;
 - (void)handleUpdatedInternalModels:(id)arg1;
+- (void)handleUpdatedRebuilderModel:(id)arg1;
 - (BOOL)handleUpdatedShare:(id)arg1 error:(id *)arg2;
 - (void)handleUpdatedShareModel:(id)arg1;
 - (void)handleUpdatedShareParticipantModels:(id)arg1;
@@ -124,6 +125,7 @@
 - (BOOL)isInternalModel:(id)arg1;
 - (id)leaveCloudShareRequestingNewInvitationToken:(BOOL)arg1;
 - (id)logIdentifier;
+- (void)notifyDelegateOfError:(id)arg1 forOperation:(id)arg2;
 - (id)participantWithClientIdentifier:(id)arg1;
 - (id)performCloudPullWithFetchToken:(id)arg1 options:(id)arg2;
 - (id)performCloudPullWithOptions:(id)arg1;
@@ -135,7 +137,7 @@
 - (id)recordIDForModel:(id)arg1;
 - (id)registerSubscriptionForExternalRecordType:(id)arg1;
 - (BOOL)resolveConflicts:(id)arg1 options:(id)arg2;
-- (BOOL)retryCloudKitOperationAfterError:(id)arg1 retryBlock:(CDUnknownBlockType)arg2;
+- (BOOL)retryCloudKitOperation:(id)arg1 afterError:(id)arg2 retryBlock:(CDUnknownBlockType)arg3;
 - (id)revokeShareForParticipant:(id)arg1;
 - (id)setWriteAccessEnabled:(BOOL)arg1 forParticipant:(id)arg2;
 - (id)shutdown;

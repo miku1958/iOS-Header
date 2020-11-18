@@ -6,10 +6,12 @@
 
 #import <Preferences/PSSpecifier.h>
 
+#import <SettingsCellular/PSSpecifierDataUsageReporter-Protocol.h>
+
 @class NSString, PSDataUsageStatisticsCache;
 @protocol PSBillingPeriodSource;
 
-@interface PSDataUsageSpecifier : PSSpecifier
+@interface PSDataUsageSpecifier : PSSpecifier <PSSpecifierDataUsageReporter>
 {
     id<PSBillingPeriodSource> _billingPeriodSource;
     PSDataUsageStatisticsCache *_statisticsCache;

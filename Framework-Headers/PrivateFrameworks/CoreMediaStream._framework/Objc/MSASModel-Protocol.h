@@ -38,7 +38,6 @@
 - (MSASModelEnumerator *)assetCollectionGUIDsInAlbumWithGUID:(NSString *)arg1;
 - (MSASAssetCollection *)assetCollectionWithGUID:(NSString *)arg1;
 - (MSASModelEnumerator *)assetCollectionsInAlbumWithGUID:(NSString *)arg1;
-- (int)assetsInDownloadQueueCount;
 - (void)cancel;
 - (MSASComment *)captionForAssetCollectionWithGUID:(NSString *)arg1;
 - (MSASComment *)commentWithGUID:(NSString *)arg1;

@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithPipelineLibrary:(id)arg1;
 - (id)name;
 - (id)renderPipelineDescriptorFromLibrary:(id)arg1;
-- (BOOL)shouldRunStateForIcon:(id)arg1;
 
 @end
 

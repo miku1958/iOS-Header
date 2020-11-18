@@ -6,9 +6,10 @@
 
 #import <AppleMediaServicesUI/NSObject-Protocol.h>
 
-@class AMSPromise;
+@class AMSPromise, AMSUIWebClientContext, NSDictionary;
 
 @protocol AMSUIWebActionRunnable <NSObject>
+- (id)initWithJSObject:(NSDictionary *)arg1 context:(AMSUIWebClientContext *)arg2;
 - (AMSPromise *)runAction;
 @end
 

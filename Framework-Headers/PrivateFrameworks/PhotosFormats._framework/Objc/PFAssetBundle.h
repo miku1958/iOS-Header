@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL;
+@class NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone, NSURL;
 
 @interface PFAssetBundle : NSObject
 {
@@ -34,6 +34,7 @@
     CDStruct_1b6d18a9 _livePhotoOriginalVideoDuration;
 }
 
+@property (copy, nonatomic) NSString *accessibilityDescription;
 @property (readonly, nonatomic) NSURL *adjustmentBasePairedVideoURL; // @synthesize adjustmentBasePairedVideoURL=_adjustmentBasePairedVideoURL;
 @property (readonly, nonatomic) NSURL *adjustmentBasePhotoURL; // @synthesize adjustmentBasePhotoURL=_adjustmentBasePhotoURL;
 @property (readonly, nonatomic) NSURL *adjustmentBaseVideoURL; // @synthesize adjustmentBaseVideoURL=_adjustmentBaseVideoURL;
@@ -47,7 +48,8 @@
 @property (readonly, nonatomic) NSURL *fullSizePhotoURL; // @synthesize fullSizePhotoURL=_fullSizePhotoURL;
 @property (readonly, nonatomic) NSURL *fullSizeVideoURL; // @synthesize fullSizeVideoURL=_fullSizeVideoURL;
 @property (copy, nonatomic) NSSet *keywordTitles;
-@property (copy, nonatomic) NSDate *libraryCreationDate;
+@property (readonly, nonatomic) NSDate *libraryCreationDate;
+@property (readonly, nonatomic) NSTimeZone *libraryCreationDateTimeZone;
 @property (strong, nonatomic) id libraryLocation;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 livePhotoImageDisplayTime;
 @property (nonatomic) CDStruct_1b6d18a9 livePhotoOriginalImageDisplayTime; // @synthesize livePhotoOriginalImageDisplayTime=_livePhotoOriginalImageDisplayTime;
@@ -72,6 +74,7 @@
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
 + (id)currentFormatVersion;
++ (id)insertAuxiliaryResourceTypeMarker:(id)arg1 intoFileName:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_pathExtension:(id)arg1 matchesUTIType:(struct __CFString *)arg2 error:(id *)arg3;
 - (void)_readLivePhotoVideoMetadataIfNeeded;
@@ -80,6 +83,7 @@
 - (BOOL)_writeFileAtURL:(id)arg1 toDirectory:(id)arg2 withUpdatedFilename:(id)arg3 writtenFileURL:(id *)arg4 error:(id *)arg5;
 - (BOOL)_writeFileAtURL:(id)arg1 toDirectory:(id)arg2 writtenFileURL:(id *)arg3 error:(id *)arg4;
 - (id)createAssetBundleWritingErrorWithDescription:(id)arg1;
+- (id)generateCustomFilenamesByPathKey;
 - (id)init;
 - (id)initWithAssetBundleAtURL:(id)arg1;
 - (id)initWithOriginalPhotoURL:(id)arg1 alternatePhotoURL:(id)arg2 fullSizePhotoURL:(id)arg3 adjustmentBaseFullSizePhotoURL:(id)arg4 spatialOvercapturePhotoURL:(id)arg5 originalPairedVideoURL:(id)arg6 fullSizePairedVideoURL:(id)arg7 adjustmentBaseFullSizePairedVideoURL:(id)arg8 spatialOvercapturePairedVideoURL:(id)arg9 fullSizeVideoURL:(id)arg10 adjustmentsURL:(id)arg11 originalAdjustmentsURL:(id)arg12 mediaSubtypes:(unsigned long long)arg13 playbackStyle:(long long)arg14 playbackVariation:(unsigned long long)arg15 videoComplementVisibilityState:(unsigned short)arg16 reframeVariation:(unsigned long long)arg17;
@@ -87,6 +91,7 @@
 - (id)initWithPropertyList:(id)arg1;
 - (BOOL)isMediaSubtype:(unsigned long long)arg1;
 - (BOOL)linkOrCopyURL:(id)arg1 toURL:(id)arg2 forceCopy:(BOOL)arg3 error:(id *)arg4;
+- (void)setLibraryCreationDate:(id)arg1 inTimeZone:(id)arg2;
 - (id)urlsByPathKey;
 - (id)writeDowngradedRepresentationToDirectory:(id)arg1 error:(id *)arg2;
 - (BOOL)writeToBundleAtURL:(id)arg1 error:(id *)arg2;

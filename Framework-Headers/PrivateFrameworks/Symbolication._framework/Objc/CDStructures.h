@@ -12,6 +12,14 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct SwiftReflectionInteropContext;
 
+struct VMUAutoreleasePoolPageLayout {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned long long _field4;
+    unsigned int _field5;
+};
+
 struct _CSTypeRef {
     unsigned long long _opaque_1;
     unsigned long long _opaque_2;
@@ -81,13 +89,6 @@ struct _VMURegionNode {
     unsigned int _field6;
     unsigned long long _field7;
     unsigned long long _field8;
-};
-
-struct _VMUThreadNode {
-    unsigned long long _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned long long *_field4;
 };
 
 struct _VMUVMRegionData {

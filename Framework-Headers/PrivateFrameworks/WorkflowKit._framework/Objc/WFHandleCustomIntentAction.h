@@ -6,63 +6,84 @@
 
 #import <WorkflowKit/WFHandleIntentAction.h>
 
-#import <WorkflowKit/WFDynamicEnumerationDataSource-Protocol.h>
+#import <WorkflowKit/WFCustomIntentDynamicEnumerationDataSource-Protocol.h>
 #import <WorkflowKit/WFDynamicResolveParameterDataSource-Protocol.h>
 #import <WorkflowKit/WFIntentDynamicResolverDataSource-Protocol.h>
 
-@class INSchema, NSString, WFIntentDynamicResolutionRequest, WFIntentDynamicResolver;
+@class INIntentCodableDescription, INIntentExecutionInfo, INIntentResponseCodableDescription, INSchema, NSArray, NSDictionary, NSString, WFIntentDynamicResolutionRequest, WFIntentDynamicResolver;
 
-@interface WFHandleCustomIntentAction : WFHandleIntentAction <WFDynamicEnumerationDataSource, WFDynamicResolveParameterDataSource, WFIntentDynamicResolverDataSource>
+@interface WFHandleCustomIntentAction : WFHandleIntentAction <WFCustomIntentDynamicEnumerationDataSource, WFDynamicResolveParameterDataSource, WFIntentDynamicResolverDataSource>
 {
-    NSString *_appIdentifier;
-    long long _intentCategory;
+    INIntentCodableDescription *_codableDescription;
+    INIntentResponseCodableDescription *_responseCodableDescription;
     NSString *_localizedName;
-    NSString *_className;
-    NSString *_bundleIdentifier;
+    NSString *_localizedKeyParameterDisplayName;
+    NSDictionary *_descriptionDictionary;
+    NSArray *_parameterDefinitions;
+    id _parameterSummaryDefinition;
+    NSDictionary *_inputDictionary;
+    NSDictionary *_outputDictionary;
+    NSString *_appIdentifier;
+    INIntentExecutionInfo *_intentExecutionInfo;
     INSchema *_schema;
     WFIntentDynamicResolver *_dynamicResolver;
     WFIntentDynamicResolutionRequest *_lastDynamicResolutionRequest;
 }
 
 @property (readonly, copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, copy, nonatomic) NSString *className; // @synthesize className=_className;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) WFIntentDynamicResolver *dynamicResolver; // @synthesize dynamicResolver=_dynamicResolver;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) INIntentExecutionInfo *intentExecutionInfo; // @synthesize intentExecutionInfo=_intentExecutionInfo;
 @property (strong, nonatomic) WFIntentDynamicResolutionRequest *lastDynamicResolutionRequest; // @synthesize lastDynamicResolutionRequest=_lastDynamicResolutionRequest;
-@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
-@property (readonly, copy, nonatomic) INSchema *schema; // @synthesize schema=_schema;
+@property (readonly, nonatomic) INSchema *schema; // @synthesize schema=_schema;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)codableDescription;
+- (void)configureResourcesForParameter:(id)arg1;
 - (id)copyWithSerializedParameters:(id)arg1;
+- (id)createBundleAccessGrant;
+- (id)createResourceManager;
 - (id)createStateForParameter:(id)arg1 fromSerializedRepresentation:(id)arg2;
+- (id)descriptionDictionary;
 - (void)dynamicResolveParameterDidEndResolutionSession:(id)arg1;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (BOOL)enumerationAllowsMultipleValues:(id)arg1;
 - (void)generateSkeletonIntentForDynamicResolver:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
-- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 schema:(id)arg4 className:(id)arg5 bundleIdentifier:(id)arg6;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 schema:(id)arg4 className:(id)arg5 bundleIdentifier:(id)arg6 stringLocalizer:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 schema:(id)arg4 resolvedIntentExecutionInfo:(id)arg5 stringLocalizer:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 stringLocalizer:(id)arg4;
 - (void)initializeParameters;
+- (id)inputDictionary;
 - (long long)intentCategory;
 - (id)intentDescription;
+- (BOOL)isDiscontinued;
 - (void)loadDefaultSerializedRepresentationForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)localizedConfigurationPromptDialogForPamameter:(id)arg1;
 - (void)localizedDisambiguationPromptForItems:(id)arg1 intent:(id)arg2 dynamicResolveParameter:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)localizedKeyParameterDisplayName;
+- (id)localizedName;
+- (id)name;
+- (id)outputDictionary;
 - (void)parameterDefaultSerializedRepresentationDidChange:(id)arg1;
+- (id)parameterDefinitions;
 - (id)parameterKeysIgnoredForParameterSummary;
+- (id)parameterSummaryDefinition;
 - (id)parametersByIntentSlotName;
 - (BOOL)populatesInputFromInputParameter;
 - (id)prettyErrorForIntentsExtensionError:(id)arg1;
+- (id)requiredResourcesForIntentAvailableResource;
 - (void)resolveOptionsForUserInput:(id)arg1 forDynamicResolveParameter:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)responseCodableDescription;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
 - (void)setUpResolverIfNeededForParameter:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)setupParameter:(id)arg1;
+- (BOOL)shouldCreateIntentAvailableResource;
+- (BOOL)shouldInsertExpandingParameterForParameter:(id)arg1;
 - (id)slots;
 - (void)startExecutingIntent:(id)arg1;
 

@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 @class CKContainer, CKDatabase;
+@protocol OS_xpc_object;
 
 @interface WFCloudKitItemRequest : NSObject
 {
     BOOL _performExpensiveFetchOperations;
     CKContainer *_container;
     CKDatabase *_database;
+    NSObject<OS_xpc_object> *_xpcActivity;
 }
 
 @property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (nonatomic) BOOL performExpensiveFetchOperations; // @synthesize performExpensiveFetchOperations=_performExpensiveFetchOperations;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
 
 + (void)assignRecordValue:(id)arg1 toItem:(id)arg2 withProperty:(id)arg3 resolvedReferences:(id)arg4;
 + (id)createRecordFromItem:(id)arg1 zoneID:(id)arg2;
@@ -38,6 +41,7 @@
 - (id)fetchRecordIDs:(id)arg1 desiredKeys:(id)arg2 operationGroup:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initWithContainer:(id)arg1 database:(id)arg2;
 - (id)updateItems:(id)arg1 setNilValues:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)updateItems:(id)arg1 setNilValues:(BOOL)arg2 qualityOfService:(long long)arg3 timeoutIntervalForRequest:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

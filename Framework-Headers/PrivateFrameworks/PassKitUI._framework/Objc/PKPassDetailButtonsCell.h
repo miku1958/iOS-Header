@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (id)initWithReuseIdentifier:(id)arg1 widgetViewStyle:(unsigned long long)arg2;
 - (void)layoutSubviews;
+- (void)setCurrentUser:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPaymentPass:(id)arg1;
 - (void)setPeerPaymentAccount:(id)arg1;

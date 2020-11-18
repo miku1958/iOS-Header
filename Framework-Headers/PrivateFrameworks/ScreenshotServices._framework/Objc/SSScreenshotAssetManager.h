@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 - (id)backend;
 - (void)imageWithPreviouslyRegisteredIdentifier:(id)arg1 withAccessBlock:(CDUnknownBlockType)arg2;
-- (void)recordEditsToPersistable:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)recordEditsToPersistable:(id)arg1 inTransition:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)recordEditsToPersistableForPDF:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)recordPersistableToTemporaryLocation:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)registerImageForPersistable:(id)arg1 options:(id)arg2 withRegistrationBlock:(CDUnknownBlockType)arg3;

@@ -39,6 +39,9 @@ __attribute__((visibility("hidden")))
     int _reportingParentID;
     VCTransportSession *_transportSession;
     BOOL _ignoreSilence;
+    BOOL _shouldCreateRedundancyController;
+    BOOL _useChannelDataFormat;
+    BOOL _shouldUseRedAsBoolean;
     unsigned int _maxIDSStreamIdCount;
     NSArray *_streamIDs;
     unsigned int _tierNetworkBitrate;
@@ -50,6 +53,8 @@ __attribute__((visibility("hidden")))
     BOOL _alwaysOnAudioRedundancyEnabled;
     BOOL _cellularAllowRedLowBitratesEnabled;
     BOOL _wifiAllowRedLowBitratesEnabled;
+    unsigned long long _remoteIDSParticipantID;
+    BOOL _shouldApplyRedAsBoolean;
 }
 
 @property (nonatomic) struct tagHANDLE *afrcHandle; // @synthesize afrcHandle=_afrcHandle;
@@ -77,11 +82,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isRedEnabled) BOOL redEnabled; // @synthesize redEnabled=_redEnabled;
 @property (nonatomic) unsigned int redMaxDelay20ms; // @synthesize redMaxDelay20ms=_redMaxDelay20ms;
 @property (nonatomic) unsigned int redNumPayloads; // @synthesize redNumPayloads=_redNumPayloads;
+@property (nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property (nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
 @property (nonatomic) int reportingParentID; // @synthesize reportingParentID=_reportingParentID;
 @property (nonatomic) struct tagHANDLE *rtpHandle; // @synthesize rtpHandle=_rtpHandle;
 @property (nonatomic) struct tagHANDLE *rtpVideo; // @synthesize rtpVideo=_rtpVideo;
 @property (nonatomic) BOOL sendActiveVoiceOnly; // @synthesize sendActiveVoiceOnly=_sendActiveVoiceOnly;
+@property (nonatomic) BOOL shouldApplyRedAsBoolean; // @synthesize shouldApplyRedAsBoolean=_shouldApplyRedAsBoolean;
+@property (nonatomic) BOOL shouldCreateRedundancyController; // @synthesize shouldCreateRedundancyController=_shouldCreateRedundancyController;
 @property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 @property (strong, nonatomic) NSArray *streamIDs; // @synthesize streamIDs=_streamIDs;
 @property (strong, nonatomic) NSArray *supportedNumRedundantPayload; // @synthesize supportedNumRedundantPayload=_supportedNumRedundantPayload;
@@ -89,6 +97,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int tierNetworkBitrate; // @synthesize tierNetworkBitrate=_tierNetworkBitrate;
 @property (nonatomic) BOOL transmitROC; // @synthesize transmitROC=_transmitROC;
 @property (strong, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
+@property (nonatomic) BOOL useChannelDataFormat; // @synthesize useChannelDataFormat=_useChannelDataFormat;
 @property (nonatomic) BOOL useRateControl; // @synthesize useRateControl=_useRateControl;
 @property (nonatomic) BOOL wifiAllowRedLowBitratesEnabled; // @synthesize wifiAllowRedLowBitratesEnabled=_wifiAllowRedLowBitratesEnabled;
 

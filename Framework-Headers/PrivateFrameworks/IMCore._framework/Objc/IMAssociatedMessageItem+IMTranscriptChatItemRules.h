@@ -8,7 +8,7 @@
 
 @interface IMAssociatedMessageItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;
-- (id)_newChatItemsWithFilteredChat:(BOOL)arg1 isBusiness:(BOOL)arg2 parentChatIsSpam:(BOOL)arg3 hasKnownParticipants:(BOOL)arg4;
+- (id)_newChatItemsWithLink:(BOOL)arg1 isBusiness:(BOOL)arg2 parentChatIsSpam:(BOOL)arg3 hasKnownParticipants:(BOOL)arg4;
 - (BOOL)isCancelTypingMessage;
 - (BOOL)isIncomingTypingMessage;
 - (BOOL)isIncomingTypingOrCancelTypingMessage;

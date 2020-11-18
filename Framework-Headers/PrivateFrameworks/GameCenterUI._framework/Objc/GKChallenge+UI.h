@@ -7,6 +7,7 @@
 #import <GameCenterFoundation/GKChallenge.h>
 
 @interface GKChallenge (UI)
++ (id)challengesNotSupportedAlertController;
 - (id)alertGoalText;
 - (id)composeGoalText;
 - (id)detailFromText;

@@ -6,40 +6,64 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMFUnfairLock, NSMutableDictionary;
+@class HMDHome, HMFUnfairLock, NSHashTable, NSMutableDictionary, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HMDNotificationRegistry : HMFObject <NSSecureCoding>
+@interface HMDNotificationRegistry : HMFObject <HMFLogging, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSMutableDictionary *_notificationRegistry;
+    NSHashTable *_delegates;
+    HMDHome *_home;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (copy) NSHashTable *delegates; // @synthesize delegates=_delegates;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, weak) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSMutableDictionary *notificationRegistry; // @synthesize notificationRegistry=_notificationRegistry;
+@property (readonly) Class superclass;
+@property (strong) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)_createCharacteristicsMapForCharacteristics:(id)arg1;
++ (id)_reachabilityEventNotificationRegistryKeyForAccessoryUUID:(id)arg1;
++ (id)_reachabilityEventNotificationRegistryKeysForAccessoryUUIDs:(id)arg1;
 + (BOOL)doesKey:(id)arg1 matchMediaProfile:(id)arg2;
 + (id)keyForCharacteristic:(id)arg1;
 + (id)keyForProperty:(id)arg1 mediaProfile:(id)arg2;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_delayedBlocksCollectedWhileDeregisteringUsers:(id)arg1 forHome:(id)arg2 isiOS:(BOOL)arg3 isResident:(BOOL)arg4;
+- (void)addDelegate:(id)arg1;
 - (id)allCharacteristicIdentifiers;
 - (void)auditUsersForNotifications:(id)arg1 forHome:(id)arg2;
+- (void)clearAllRegistrations;
+- (void)configureWithHome:(id)arg1;
 - (void)deregisterUsers:(id)arg1 forHome:(id)arg2;
 - (void)disableNotification:(id)arg1 user:(id)arg2 ignoreLockReq:(BOOL)arg3 home:(id)arg4;
 - (BOOL)disableNotificationForCharacteristics:(id)arg1 forUser:(id)arg2 characteristicsToDisableEvents:(id *)arg3;
 - (BOOL)disableNotificationForProperties:(id)arg1 forUser:(id)arg2;
+- (BOOL)disableReachabilityEventNotificationForAccessoryUUIDs:(id)arg1 forUserID:(id)arg2;
 - (BOOL)enableNotificationForCharacteristics:(id)arg1 forUser:(id)arg2;
 - (BOOL)enableNotificationForProperties:(id)arg1 forUser:(id)arg2;
+- (BOOL)enableReachabilityEventNotificationForAccessoryUUIDs:(id)arg1 forUserID:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filterCharacteristics:(id)arg1 forUser:(id)arg2;
 - (id)filterProperties:(id)arg1 forUser:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)notifyDelegatesOfRegistryUpdates;
+- (void)removeAllReachabilityEventNotificationRegistrations;
+- (BOOL)removeRegistrationsForCharacteristic:(id)arg1;
 - (BOOL)removeRegistrationsForMediaProfile:(id)arg1;
 - (id)shortDescription;
+- (id)userIDsRegisteredForReachabilityEventNotificationsForAccessoryUUIDs:(id)arg1;
 - (id)usersRegisteredForNotificationsForCharacteristics:(id)arg1;
 - (id)usersRegisteredForNotificationsForProperties:(id)arg1;
 

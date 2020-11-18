@@ -26,6 +26,7 @@
 @property (weak, nonatomic) UIAlertController *containingAlertController; // @synthesize containingAlertController=_containingAlertController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;

@@ -6,20 +6,24 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFStaticItem, HFStatusItemProvider;
+@class HFStaticItem, HFStatusItemProvider, HMRoom, NSTimer;
 
 @interface HFHomeStatusItemManager : HFItemManager
 {
     HFStaticItem *_showDetailsItem;
+    HMRoom *_room;
     unsigned long long _maxStatusItemCount;
     HFStatusItemProvider *_statusItemProvider;
     long long _latestOverallPriority;
     unsigned long long _latestOverallLoadingState;
+    NSTimer *_invalidationTimer;
 }
 
+@property (strong, nonatomic) NSTimer *invalidationTimer; // @synthesize invalidationTimer=_invalidationTimer;
 @property (nonatomic) unsigned long long latestOverallLoadingState; // @synthesize latestOverallLoadingState=_latestOverallLoadingState;
 @property (nonatomic) long long latestOverallPriority; // @synthesize latestOverallPriority=_latestOverallPriority;
 @property (nonatomic) unsigned long long maxStatusItemCount; // @synthesize maxStatusItemCount=_maxStatusItemCount;
+@property (strong, nonatomic) HMRoom *room; // @synthesize room=_room;
 @property (strong, nonatomic) HFStaticItem *showDetailsItem; // @synthesize showDetailsItem=_showDetailsItem;
 @property (strong, nonatomic) HFStatusItemProvider *statusItemProvider; // @synthesize statusItemProvider=_statusItemProvider;
 
@@ -27,13 +31,18 @@
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
+- (void)_invalidateItemsIfNecessary;
 - (id)_itemsToHideInSet:(id)arg1;
 - (long long)_overallPriority;
 - (unsigned long long)_overflowStatusItemCount;
 - (BOOL)_requiresNotificationsForCharacteristic:(id)arg1;
 - (id)_showDetailsItemTitle;
+- (void)_updateInvalidationTimer;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
-- (id)initWithMaxStatusItems:(unsigned long long)arg1 delegate:(id)arg2;
+- (id)initWithRoom:(id)arg1 maxStatusItems:(unsigned long long)arg2 delegate:(id)arg3;
+- (id)matchingItemForHomeKitObject:(id)arg1;
+- (id)statusItems;
+- (void)updateNeedsInvalidation:(BOOL)arg1 forStatusItem:(id)arg2;
 
 @end
 

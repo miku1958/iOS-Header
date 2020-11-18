@@ -17,7 +17,6 @@
 @property (readonly, copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
 @property (readonly, strong, nonatomic) BSObjCArgument *returnValue; // @synthesize returnValue=_returnValue;
 
-+ (id)argumentWithSignature:(id)arg1 atIndex:(long long)arg2;
 - (void).cxx_destruct;
 - (id)_prettyTypeString;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

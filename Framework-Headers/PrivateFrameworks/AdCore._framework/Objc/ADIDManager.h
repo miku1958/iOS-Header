@@ -8,7 +8,7 @@
 
 #import <AdCore/ADIDManager_XPC-Protocol.h>
 
-@class DSIDRecord, NSArray, NSDictionary, NSString;
+@class DSIDRecord, NSArray, NSDictionary;
 
 @interface ADIDManager : ADSingleton <ADIDManager_XPC>
 {
@@ -17,8 +17,7 @@
     NSArray *_monthlyResetArray;
 }
 
-@property (readonly, nonatomic) NSString *IDFA;
-@property (readonly, nonatomic) long long IDFAMonthResetCount;
+@property (readonly, nonatomic) long long PersonalizedAdsMonthResetCount;
 @property (strong) DSIDRecord *activeDSIDRecord; // @synthesize activeDSIDRecord=_activeDSIDRecord;
 @property (strong) NSArray *monthlyResetArray; // @synthesize monthlyResetArray=_monthlyResetArray;
 @property (strong, nonatomic) NSDictionary *usageVectors; // @synthesize usageVectors=_usageVectors;

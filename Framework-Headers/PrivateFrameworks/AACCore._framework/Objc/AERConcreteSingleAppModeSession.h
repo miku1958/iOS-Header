@@ -16,11 +16,8 @@ __attribute__((visibility("hidden")))
     UIAutonomousSingleAppModeSession *_session;
 }
 
-@property (readonly, nonatomic) UIAutonomousSingleAppModeSession *session; // @synthesize session=_session;
-
 - (void).cxx_destruct;
 - (void)deactivateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithSession:(id)arg1;
 
 @end
 

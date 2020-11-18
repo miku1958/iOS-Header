@@ -6,21 +6,26 @@
 
 #import <ProactiveSupport/_PASZonedObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@interface PPNamedEntityMetadata : _PASZonedObject <NSCopying, NSSecureCoding>
+@class NSSet;
+
+@interface PPNamedEntityMetadata : _PASZonedObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     unsigned short _impressionCount;
     unsigned short _occurrencesInSource;
 }
 
+@property (readonly, nonatomic) NSSet *featureNames;
 @property (readonly, nonatomic) unsigned short impressionCount; // @synthesize impressionCount=_impressionCount;
 @property (readonly, nonatomic) unsigned short occurrencesInSource; // @synthesize occurrencesInSource=_occurrencesInSource;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureValueForName:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

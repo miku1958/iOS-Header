@@ -18,12 +18,11 @@
 @property (readonly, nonatomic) unsigned char role; // @synthesize role=_role;
 
 + (id)grantForRole:(unsigned char)arg1 withPercentage:(unsigned long long)arg2 duration:(double)arg3;
-- (id)_initWithRole:(unsigned char)arg1 percentage:(unsigned long long)arg2 duration:(double)arg3;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescriptionBuilder;
 
 @end
 

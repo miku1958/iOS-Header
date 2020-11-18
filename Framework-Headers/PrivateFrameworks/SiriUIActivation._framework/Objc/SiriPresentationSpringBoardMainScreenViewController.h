@@ -10,18 +10,43 @@
 
 @interface SiriPresentationSpringBoardMainScreenViewController : SiriPresentationViewController
 {
+    BOOL _shouldDismissForTapOutsideContent;
+    BOOL _shouldDismissForTapsOutsideContent;
+    BOOL _tapsOutsideContentDismissAssistant;
+    BOOL _shouldPassTapsThrough;
+    BOOL _shouldPassTouchesThroughToSpringBoard;
+    BOOL _shouldDismissForSwipesOutsideContent;
+    BOOL _shareHomeGesture;
 }
 
-@property (strong, nonatomic) id<SiriPresentationSpringBoardMainScreenViewControllerDelegate> siriPresentationControllerDelegate; // @dynamic siriPresentationControllerDelegate;
+@property (readonly, nonatomic) BOOL shareHomeGesture; // @synthesize shareHomeGesture=_shareHomeGesture;
+@property (readonly, nonatomic) BOOL shouldDismissForSwipesOutsideContent; // @synthesize shouldDismissForSwipesOutsideContent=_shouldDismissForSwipesOutsideContent;
+@property (readonly, nonatomic) BOOL shouldPassTapsThrough; // @synthesize shouldPassTapsThrough=_shouldPassTapsThrough;
+@property (readonly, nonatomic) BOOL shouldPassTouchesThroughToSpringBoard; // @synthesize shouldPassTouchesThroughToSpringBoard=_shouldPassTouchesThroughToSpringBoard;
+@property (weak, nonatomic) id<SiriPresentationSpringBoardMainScreenViewControllerDelegate> siriPresentationControllerDelegate; // @dynamic siriPresentationControllerDelegate;
+@property (readonly, nonatomic) BOOL tapsOutsideContentDismissAssistant; // @synthesize tapsOutsideContentDismissAssistant=_tapsOutsideContentDismissAssistant;
 
 - (BOOL)_canShowWhileLocked;
+- (void)_commonInit;
+- (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithIdentifier:(long long)arg1;
 - (id)initWithIdentifier:(long long)arg1 hostedPresentationFrame:(struct CGRect)arg2;
-- (void)prewarmFlamesWithPresentationFrame:(struct CGRect)arg1;
+- (void)loadView;
 - (void)requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
+- (void)requestStatusBarVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setDockFrame:(struct CGRect)arg1;
 - (void)setFluidDismissalState:(id)arg1;
+- (void)setShareHomeGesture:(BOOL)arg1;
+- (void)setShouldDismissForSwipesOutsideContent:(BOOL)arg1;
+- (void)setShouldDismissForTapOutsideContent:(BOOL)arg1;
+- (void)setShouldDismissForTapsOutsideContent:(BOOL)arg1;
+- (void)setShouldPassTouchesThroughToSpringBoard:(BOOL)arg1;
 - (void)setShowsStatusBar:(BOOL)arg1;
+- (BOOL)shouldDismissForTapOutsideContent;
+- (BOOL)shouldDismissForTapsOutsideContent;
+- (BOOL)showAppsBehindSiri;
+- (void)updateHomeGestureSharingForSiriSetup:(BOOL)arg1;
 
 @end
 

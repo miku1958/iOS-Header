@@ -38,14 +38,13 @@
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
-- (id)barButtonItemForIdentifier:(id)arg1;
 - (id)createAssetActionManagerForAssetReference:(id)arg1;
+- (id)createBarButtonItemForIdentifier:(id)arg1 placement:(unsigned long long)arg2;
 - (id)curatedLibraryViewController;
 - (void)handleCancelBarButtonItem:(id)arg1;
 - (void)handleSelectBarButtonItem:(id)arg1;
 - (id)init;
 - (id)initWithCuratedLibraryViewController:(id)arg1 viewModel:(id)arg2;
-- (id)leftBarButtonItemIdentifiers;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)rightBarButtonItemIdentifiers;
 - (id)toolbarItemIdentifiers;

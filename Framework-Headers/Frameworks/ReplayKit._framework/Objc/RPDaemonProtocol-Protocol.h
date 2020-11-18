@@ -6,27 +6,53 @@
 
 #import <ReplayKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, NSURL, NSXPCListenerEndpoint;
+@class NSData, NSDictionary, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
 
 @protocol RPDaemonProtocol <NSObject>
-- (oneway void)discardRecordingWithHandler:(void (^)(void))arg1;
+- (oneway void)consumeSandboxExtension:(NSString *)arg1 processNewConnection:(BOOL)arg2;
+- (oneway void)discardInAppRecordingWithHandler:(void (^)(void))arg1;
+- (oneway void)generateClipWithSeconds:(double)arg1 handler:(void (^)(NSURL *, NSError *))arg2;
 - (oneway void)getSystemBroadcastExtensionInfo:(void (^)(NSArray *, NSError *))arg1;
-- (oneway void)macApplicationDidBecomeActiveWithContextID:(unsigned int)arg1 completionHandler:(void (^)(BOOL))arg2;
+- (oneway void)getSystemBroadcastPickerInfo:(void (^)(NSString *, BOOL))arg1;
+- (oneway void)macApplicationDidBecomeActiveWithContextID:(unsigned int)arg1 completionHandler:(void (^)(NSError *, BOOL, BOOL))arg2;
 - (oneway void)macApplicationDidResignActive;
-- (oneway void)pauseRecording;
+- (oneway void)openControlCenterSystemRecordingView;
+- (oneway void)pauseInAppBroadcast;
+- (oneway void)pauseInAppCapture;
+- (oneway void)pauseInAppRecording;
 - (oneway void)reportCameraUsage:(long long)arg1;
-- (oneway void)resumeRecordingWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(void (^)(BOOL))arg2;
+- (oneway void)resumeInAppBroadcastWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(void (^)(NSError *, BOOL, BOOL))arg2;
+- (oneway void)resumeInAppCaptureWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(void (^)(NSError *, BOOL, BOOL))arg2;
+- (oneway void)resumeInAppRecordingWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(void (^)(NSError *, BOOL, BOOL))arg2;
+- (oneway void)resumeSystemBroadcastWithCompletionHandler:(void (^)(BOOL))arg1;
+- (oneway void)resumeSystemRecordingWithCompletionHandler:(void (^)(BOOL))arg1;
+- (oneway void)saveVideo:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)saveVideoToCameraRoll:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
-- (oneway void)setBroadcastURL:(NSString *)arg1;
-- (oneway void)setHasUserConsentForCamera:(BOOL)arg1;
-- (oneway void)setHasUserConsentForMicrophone:(BOOL)arg1;
+- (oneway void)setBroadcastPickerPreferredExt:(NSString *)arg1 showsMicButton:(BOOL)arg2;
+- (oneway void)setBroadcastURL:(NSURL *)arg1;
 - (oneway void)setMicrophoneEnabled:(BOOL)arg1;
 - (oneway void)setupBroadcastWithHostBundleID:(NSString *)arg1 broadcastExtensionBundleID:(NSString *)arg2 broadcastConfigurationData:(NSData *)arg3 userInfo:(NSDictionary *)arg4 handler:(void (^)(NSError *))arg5;
-- (oneway void)startRecordingWindowLayerContextIDs:(NSArray *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 broadcast:(BOOL)arg5 systemRecording:(BOOL)arg6 captureEnabled:(BOOL)arg7 listenerEndpoint:(NSXPCListenerEndpoint *)arg8 withHandler:(void (^)(NSError *, BOOL, BOOL))arg9;
-- (oneway void)stopRecordingWithHandler:(void (^)(NSURL *, NSError *))arg1;
-- (oneway void)stopRecordingWithStartClipDuration:(double)arg1 endClipDuration:(double)arg2 handler:(void (^)(NSURL *, NSError *))arg3;
-- (oneway void)synchronousGetCurrentState:(void (^)(NSDictionary *))arg1;
-- (oneway void)synchronousIsBroadcastingWithPreferredExtension:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
+- (oneway void)setupSystemBroadcastWithHostBundleID:(NSString *)arg1 broadcastExtensionBundleID:(NSString *)arg2 broadcastConfigurationData:(NSData *)arg3 userInfo:(NSDictionary *)arg4 handler:(void (^)(NSError *))arg5;
+- (oneway void)startClipBufferingWithMicrophoneEnabled:(BOOL)arg1 windowSize:(struct CGSize)arg2 withHandler:(void (^)(NSError *))arg3;
+- (oneway void)startInAppBroadcastWithContextID:(NSNumber *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 listenerEndpoint:(NSXPCListenerEndpoint *)arg5 withHandler:(void (^)(NSError *, BOOL, BOOL))arg6;
+- (oneway void)startInAppCaptureWithContextID:(NSNumber *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 withHandler:(void (^)(NSError *, BOOL, BOOL))arg5;
+- (oneway void)startInAppRecordingWithContextID:(NSNumber *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 withHandler:(void (^)(NSError *, BOOL, BOOL))arg5;
+- (oneway void)startSystemBroadcastWithContextID:(NSNumber *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 listenerEndpoint:(NSXPCListenerEndpoint *)arg5 withHandler:(void (^)(NSError *))arg6;
+- (oneway void)startSystemRecordingWithContextID:(NSNumber *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 withHandler:(void (^)(NSError *))arg5;
+- (oneway void)stopAllActiveClients;
+- (oneway void)stopClipBufferingWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)stopCurrentActiveSessionWithHandler:(void (^)(BOOL))arg1;
+- (oneway void)stopInAppBroadcastWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)stopInAppCaptureWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)stopInAppRecordingWithHandler:(void (^)(NSURL *, NSError *))arg1;
+- (oneway void)stopInAppRecordingWithUrl:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)stopSystemBroadcastWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)stopSystemRecordingWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)stopSystemRecordingWithURLHandler:(void (^)(NSURL *, NSError *))arg1;
 - (oneway void)updateProcessIDForAudioCaptureWithPID:(int)arg1;
+
+@optional
+- (oneway void)saveVideo:(NSURL *)arg1 extensionToken:(NSString *)arg2 handler:(void (^)(NSError *))arg3;
+- (oneway void)stopInAppRecordingWithUrl:(NSURL *)arg1 extensionToken:(NSString *)arg2 handler:(void (^)(NSError *))arg3;
 @end
 

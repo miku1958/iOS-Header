@@ -11,7 +11,7 @@
 @protocol FTPasswordManager <NSObject>
 - (ACAccount *)acAccountWithProfileID:(NSString *)arg1 username:(NSString *)arg2 accountStore:(ACAccountStore *)arg3;
 - (void)cancelRequestID:(NSString *)arg1 serviceIdentifier:(NSString *)arg2;
-- (void)cleanUpAccountsBasedOnInUseUsernames:(NSArray *)arg1 profileIDs:(NSArray *)arg2 completionBlock:(void (^)(BOOL))arg3;
+- (void)cleanUpAccountsBasedOnInUseUsernamesBlock:(NSArray * (^)(void))arg1 profileIDBlock:(NSArray * (^)(void))arg2 completionBlock:(void (^)(BOOL))arg3;
 - (void)cleanUpAccountsWithUsername:(NSString *)arg1 orProfileID:(NSString *)arg2 basedOnInUseUsernames:(NSArray *)arg3 profileIDs:(NSArray *)arg4 completionBlock:(void (^)(BOOL))arg5;
 - (void)fetchAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 outRequestID:(id *)arg4 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *))arg5;
 - (void)fetchPasswordForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 outRequestID:(id *)arg4 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *))arg5;
@@ -20,6 +20,7 @@
 - (NSString *)profileIDForACAccount:(ACAccount *)arg1;
 - (void)removeAuthTokenAllowingGracePeriodForProfileID:(NSString *)arg1 username:(NSString *)arg2;
 - (void)requestAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 failIfNotSilent:(BOOL)arg6 outRequestID:(id *)arg7 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *, BOOL, BOOL, BOOL))arg8;
+- (void)requestAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 forceRenewal:(BOOL)arg6 failIfNotSilent:(BOOL)arg7 outRequestID:(id *)arg8 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *, BOOL, BOOL, BOOL))arg9;
 - (void)requestAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *, BOOL, BOOL, BOOL))arg7;
 - (void)requestPasswordForUsername:(NSString *)arg1 service:(NSString *)arg2 badPassword:(BOOL)arg3 showForgotPassword:(BOOL)arg4 shouldRememberPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, BOOL, BOOL, BOOL))arg7;
 - (void)setAccountStatus:(NSNumber *)arg1 forProfileID:(NSString *)arg2 username:(NSString *)arg3 service:(NSString *)arg4;

@@ -7,12 +7,10 @@
 #import <MessageUI/UIDocumentPickerDelegate-Protocol.h>
 #import <MessageUI/UIPickerViewDelegate-Protocol.h>
 #import <MessageUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <MessageUI/UITableViewDataSource-Protocol.h>
-#import <MessageUI/UITableViewDelegate-Protocol.h>
 
-@class MFAttachment, MFComposeWebView, MFFromAddressTableView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIBarButtonItem, UIPickerView, UIView, UIViewController, _MFMailCompositionContext;
+@class MFAttachment, MFComposeWebView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIBarButtonItem, UIViewController, _MFMailCompositionContext;
 
-@protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
+@protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 - (BOOL)bccAddressesDirtied;
 - (BOOL)canShowAttachmentPicker;
 - (BOOL)canShowFromField;
@@ -33,8 +31,6 @@
 - (MFMailPopoverManager *)popoverManager;
 - (UIViewController *)presentationViewController;
 - (void)scanDocument;
-- (void)scrollToSelectedEntryInFromAddressTableView:(MFFromAddressTableView *)arg1;
-- (void)selectCurrentEntryForFromAddressPickerView:(UIPickerView *)arg1;
 - (MFMailAccountProxy *)sendingAccountProxy;
 - (NSString *)sendingEmailAddress;
 - (NSString *)sendingEmailAddressIfExists;
@@ -51,8 +47,8 @@
 - (void)composeWebViewDidFinishLoad;
 - (void)composeWebViewDidResignFirstResponder;
 - (NSString *)contentVariationName;
-- (void)showContentVariationPickerFromRect:(struct CGRect)arg1 inView:(UIView *)arg2;
 - (void)showMissingAttachmentDataAlert;
 - (void)showStyleSelector:(UIBarButtonItem *)arg1;
+- (void)takeFocusFromComposeWebView:(MFComposeWebView *)arg1 inDirection:(unsigned long long)arg2;
 @end
 

@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)schedulerFor12_1MigrationActivity;
++ (id)schedulerForPostInstallMigrationActivity;
 + (id)schedulerForUserRequestedBackupActivity;
 
 @end

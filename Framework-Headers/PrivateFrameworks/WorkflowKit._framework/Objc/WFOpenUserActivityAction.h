@@ -18,6 +18,7 @@
     NSData *_activityImageData;
     NSString *_activitySubtitle;
     NSString *_bundleIdentifier;
+    NSString *_launchableAppBundleId;
 }
 
 @property (readonly, copy, nonatomic) NSData *activityData; // @synthesize activityData=_activityData;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *launchOrigin; // @synthesize launchOrigin=_launchOrigin;
+@property (readonly, copy, nonatomic) NSString *launchableAppBundleId; // @synthesize launchableAppBundleId=_launchableAppBundleId;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
@@ -36,6 +38,7 @@
 + (id)userActivityActionWithShortcut:(id)arg1 launchOrigin:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)appIdentifier;
+- (id)disabledPlatformsForUserActivityWithType:(id)arg1;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (id)localizedName;

@@ -6,12 +6,14 @@
 
 #import <RealityKit/NSObject-Protocol.h>
 
-@class MTLCompileOptions, MTLComputePipelineDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
-@protocol MTLArgumentEncoder, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDepthStencilState, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
+@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
 
 @protocol MTLDevice <NSObject>
 
 @property (nonatomic, readonly) unsigned long long argumentBuffersSupport;
+@property (nonatomic, readonly) BOOL barycentricCoordsSupported;
+@property (nonatomic, readonly) NSArray *counterSets;
 @property (nonatomic, readonly) long long currentAllocatedSize;
 @property (nonatomic, readonly) BOOL depth24Stencil8PixelFormatSupported;
 @property (nonatomic, readonly) BOOL hasUnifiedMemory;
@@ -29,37 +31,53 @@
 @property (nonatomic, readonly) unsigned long long registryID;
 @property (nonatomic, readonly) BOOL removable;
 @property (nonatomic, readonly) long long sparseTileSizeInBytes;
+@property (nonatomic, readonly) BOOL supports32BitFloatFiltering;
+@property (nonatomic, readonly) BOOL supports32BitMSAA;
+@property (nonatomic, readonly) BOOL supportsBCTextureCompression;
+@property (nonatomic, readonly) BOOL supportsDynamicLibraries;
+@property (nonatomic, readonly) BOOL supportsFunctionPointers;
+@property (nonatomic, readonly) BOOL supportsPullModelInterpolation;
+@property (nonatomic, readonly) BOOL supportsRaytracing;
+@property (nonatomic, readonly) BOOL supportsShaderBarycentricCoordinates;
 
+- (CDStruct_14f26992)accelerationStructureSizesWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
+- (BOOL)areBarycentricCoordsSupported;
 - (BOOL)areProgrammableSamplePositionsSupported;
 - (BOOL)areRasterOrderGroupsSupported;
-- (void)getDefaultSamplePositions:(CDStruct_b2fbf00d *)arg1 count:(long long)arg2;
-- (CDStruct_4bcfbbae)heapBufferSizeAndAlignWithLength:(long long)arg1 options:(unsigned long long)arg2;
+- (void)getDefaultSamplePositions:(CDStruct_b2fbf00d *)arg1 count:(unsigned long long)arg2;
+- (CDStruct_4bcfbbae)heapBufferSizeAndAlignWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(MTLTextureDescriptor *)arg1;
 - (BOOL)isDepth24Stencil8PixelFormatSupported;
 - (BOOL)isHeadless;
 - (BOOL)isLowPower;
 - (BOOL)isRemovable;
-- (long long)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
-- (long long)minimumTextureBufferAlignmentForPixelFormat:(unsigned long long)arg1;
+- (unsigned long long)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
+- (unsigned long long)minimumTextureBufferAlignmentForPixelFormat:(unsigned long long)arg1;
+- (id<MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
+- (id<MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (id<MTLArgumentEncoder>)newArgumentEncoderWithArguments:(NSArray *)arg1;
-- (id<MTLBuffer>)newBufferWithBytes:(void *)arg1 length:(long long)arg2 options:(unsigned long long)arg3;
-- (id<MTLBuffer>)newBufferWithBytesNoCopy:(void *)arg1 length:(long long)arg2 options:(unsigned long long)arg3 deallocator:(void (^)(void *, long long))arg4;
-- (id<MTLBuffer>)newBufferWithLength:(long long)arg1 options:(unsigned long long)arg2;
+- (id<MTLBinaryArchive>)newBinaryArchiveWithDescriptor:(MTLBinaryArchiveDescriptor *)arg1 error:(id *)arg2;
+- (id<MTLBuffer>)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id<MTLBuffer>)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(void (^)(void *, unsigned long long))arg4;
+- (id<MTLBuffer>)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id<MTLCommandQueue>)newCommandQueue;
-- (id<MTLCommandQueue>)newCommandQueueWithMaxCommandBufferCount:(long long)arg1;
+- (id<MTLCommandQueue>)newCommandQueueWithMaxCommandBufferCount:(unsigned long long)arg1;
 - (void)newComputePipelineStateWithDescriptor:(MTLComputePipelineDescriptor *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id<MTLComputePipelineState>, MTLComputePipelineReflection *, NSError *))arg3;
 - (id<MTLComputePipelineState>)newComputePipelineStateWithDescriptor:(MTLComputePipelineDescriptor *)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (void)newComputePipelineStateWithFunction:(id<MTLFunction>)arg1 completionHandler:(void (^)(id<MTLComputePipelineState>, NSError *))arg2;
 - (id<MTLComputePipelineState>)newComputePipelineStateWithFunction:(id<MTLFunction>)arg1 error:(id *)arg2;
 - (void)newComputePipelineStateWithFunction:(id<MTLFunction>)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id<MTLComputePipelineState>, MTLComputePipelineReflection *, NSError *))arg3;
 - (id<MTLComputePipelineState>)newComputePipelineStateWithFunction:(id<MTLFunction>)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
+- (id<MTLCounterSampleBuffer>)newCounterSampleBufferWithDescriptor:(MTLCounterSampleBufferDescriptor *)arg1 error:(id *)arg2;
 - (id<MTLLibrary>)newDefaultLibrary;
 - (id<MTLLibrary>)newDefaultLibraryWithBundle:(NSBundle *)arg1 error:(id *)arg2;
 - (id<MTLDepthStencilState>)newDepthStencilStateWithDescriptor:(MTLDepthStencilDescriptor *)arg1;
+- (id<MTLDynamicLibrary>)newDynamicLibrary:(id<MTLLibrary>)arg1 error:(id *)arg2;
+- (id<MTLDynamicLibrary>)newDynamicLibraryWithURL:(NSURL *)arg1 error:(id *)arg2;
 - (id<MTLEvent>)newEvent;
 - (id<MTLFence>)newFence;
 - (id<MTLHeap>)newHeapWithDescriptor:(MTLHeapDescriptor *)arg1;
-- (id<MTLIndirectCommandBuffer>)newIndirectCommandBufferWithDescriptor:(MTLIndirectCommandBufferDescriptor *)arg1 maxCommandCount:(long long)arg2 options:(unsigned long long)arg3;
+- (id<MTLIndirectCommandBuffer>)newIndirectCommandBufferWithDescriptor:(MTLIndirectCommandBufferDescriptor *)arg1 maxCommandCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id<MTLLibrary>)newLibraryWithData:(OS_dispatch_data *)arg1 error:(id *)arg2;
 - (id<MTLLibrary>)newLibraryWithFile:(NSString *)arg1 error:(id *)arg2;
 - (void)newLibraryWithSource:(NSString *)arg1 options:(MTLCompileOptions *)arg2 completionHandler:(void (^)(id<MTLLibrary>, NSError *))arg3;
@@ -76,16 +94,18 @@
 - (id<MTLSharedEvent>)newSharedEvent;
 - (id<MTLSharedEvent>)newSharedEventWithHandle:(MTLSharedEventHandle *)arg1;
 - (id<MTLTexture>)newTextureWithDescriptor:(MTLTextureDescriptor *)arg1;
-- (id<MTLTexture>)newTextureWithDescriptor:(MTLTextureDescriptor *)arg1 iosurface:(struct __IOSurface *)arg2 plane:(long long)arg3;
-- (CDStruct_14f26992)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(long long)arg3;
+- (id<MTLTexture>)newTextureWithDescriptor:(MTLTextureDescriptor *)arg1 iosurface:(struct __IOSurface *)arg2 plane:(unsigned long long)arg3;
+- (void)sampleTimestamps:(unsigned long long *)arg1 gpuTimestamp:(unsigned long long *)arg2;
+- (CDStruct_14f26992)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3;
+- (BOOL)supportsCounterSampling:(unsigned long long)arg1;
 - (BOOL)supportsFamily:(long long)arg1;
 - (BOOL)supportsFeatureSet:(unsigned long long)arg1;
-- (BOOL)supportsRasterizationRateMapWithLayerCount:(long long)arg1;
-- (BOOL)supportsTextureSampleCount:(long long)arg1;
-- (BOOL)supportsVertexAmplificationCount:(long long)arg1;
+- (BOOL)supportsRasterizationRateMapWithLayerCount:(unsigned long long)arg1;
+- (BOOL)supportsTextureSampleCount:(unsigned long long)arg1;
+- (BOOL)supportsVertexAmplificationCount:(unsigned long long)arg1;
 
 @optional
-- (void)convertSparsePixelRegions:(const CDStruct_4c83c94d *)arg1 toTileRegions:(CDStruct_4c83c94d *)arg2 withTileSize:(CDStruct_14f26992)arg3 alignmentMode:(unsigned long long)arg4 numRegions:(long long)arg5;
-- (void)convertSparseTileRegions:(const CDStruct_4c83c94d *)arg1 toPixelRegions:(CDStruct_4c83c94d *)arg2 withTileSize:(CDStruct_14f26992)arg3 numRegions:(long long)arg4;
+- (void)convertSparsePixelRegions:(const CDStruct_4c83c94d *)arg1 toTileRegions:(CDStruct_4c83c94d *)arg2 withTileSize:(CDStruct_14f26992)arg3 alignmentMode:(unsigned long long)arg4 numRegions:(unsigned long long)arg5;
+- (void)convertSparseTileRegions:(const CDStruct_4c83c94d *)arg1 toPixelRegions:(CDStruct_4c83c94d *)arg2 withTileSize:(CDStruct_14f26992)arg3 numRegions:(unsigned long long)arg4;
 @end
 

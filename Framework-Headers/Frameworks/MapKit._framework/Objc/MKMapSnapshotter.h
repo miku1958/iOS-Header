@@ -28,8 +28,11 @@
 - (void)_enterBackground:(id)arg1;
 - (void)_exitBackground:(id)arg1;
 - (void)_failWithError:(id)arg1;
+- (BOOL)_isWidget;
 - (void)_performSnapshot;
 - (void)_setupCustomFeaturesForAnnotationViewsIfNeeded;
+- (BOOL)_shouldDefaultToDarkContent;
+- (BOOL)_shouldRenderLogoForSnapshotDimensions;
 - (BOOL)_shouldShowDarkContent;
 - (void)_succeedWithSnapshot:(id)arg1;
 - (void)cancel;

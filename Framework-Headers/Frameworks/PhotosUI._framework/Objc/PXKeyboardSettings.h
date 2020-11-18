@@ -8,12 +8,14 @@
 
 @interface PXKeyboardSettings : PXSettings
 {
-    BOOL _enableSelectionShortcuts;
+    BOOL _enableTungstenKeyboardNavigation;
+    BOOL _enableTungstenShiftClickSelection;
+    BOOL _enableTungstenFocusEnvironmentSupport;
     BOOL _enableAssetSelectionShortcuts;
-    BOOL _enableBackgroundDimming;
     BOOL _enableFocusRing;
     BOOL _enableShadow;
-    double _focusChangeAnimationDuration;
+    double _animationDuration;
+    double _dampingRatio;
     double _dimmingFactor;
     double _shadowYOffset;
     double _shadowBlurRadius;
@@ -35,16 +37,18 @@
 @property (nonatomic) double allPhotosAspectFillFocusPadding; // @synthesize allPhotosAspectFillFocusPadding=_allPhotosAspectFillFocusPadding;
 @property (nonatomic) long long allPhotosAspectFitFocusAnimationStyle; // @synthesize allPhotosAspectFitFocusAnimationStyle=_allPhotosAspectFitFocusAnimationStyle;
 @property (nonatomic) double allPhotosAspectFitFocusPadding; // @synthesize allPhotosAspectFitFocusPadding=_allPhotosAspectFitFocusPadding;
+@property (nonatomic) double animationDuration; // @synthesize animationDuration=_animationDuration;
+@property (nonatomic) double dampingRatio; // @synthesize dampingRatio=_dampingRatio;
 @property (nonatomic) long long daysFocusAnimationStyle; // @synthesize daysFocusAnimationStyle=_daysFocusAnimationStyle;
 @property (nonatomic) double daysFocusPadding; // @synthesize daysFocusPadding=_daysFocusPadding;
 @property (nonatomic) double detailsViewOverlayAlpha; // @synthesize detailsViewOverlayAlpha=_detailsViewOverlayAlpha;
 @property (nonatomic) double dimmingFactor; // @synthesize dimmingFactor=_dimmingFactor;
 @property (nonatomic) BOOL enableAssetSelectionShortcuts; // @synthesize enableAssetSelectionShortcuts=_enableAssetSelectionShortcuts;
-@property (nonatomic) BOOL enableBackgroundDimming; // @synthesize enableBackgroundDimming=_enableBackgroundDimming;
 @property (nonatomic) BOOL enableFocusRing; // @synthesize enableFocusRing=_enableFocusRing;
-@property (nonatomic) BOOL enableSelectionShortcuts; // @synthesize enableSelectionShortcuts=_enableSelectionShortcuts;
 @property (nonatomic) BOOL enableShadow; // @synthesize enableShadow=_enableShadow;
-@property (nonatomic) double focusChangeAnimationDuration; // @synthesize focusChangeAnimationDuration=_focusChangeAnimationDuration;
+@property (nonatomic) BOOL enableTungstenFocusEnvironmentSupport; // @synthesize enableTungstenFocusEnvironmentSupport=_enableTungstenFocusEnvironmentSupport;
+@property (nonatomic) BOOL enableTungstenKeyboardNavigation; // @synthesize enableTungstenKeyboardNavigation=_enableTungstenKeyboardNavigation;
+@property (nonatomic) BOOL enableTungstenShiftClickSelection; // @synthesize enableTungstenShiftClickSelection=_enableTungstenShiftClickSelection;
 @property (nonatomic) long long monthsFocusAnimationStyle; // @synthesize monthsFocusAnimationStyle=_monthsFocusAnimationStyle;
 @property (nonatomic) double monthsFocusPadding; // @synthesize monthsFocusPadding=_monthsFocusPadding;
 @property (nonatomic) double shadowBlurRadius; // @synthesize shadowBlurRadius=_shadowBlurRadius;

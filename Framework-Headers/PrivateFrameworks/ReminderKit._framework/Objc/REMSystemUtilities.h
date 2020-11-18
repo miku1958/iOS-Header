@@ -11,6 +11,7 @@
 }
 
 + (BOOL)isInternalInstall;
++ (id)systemBuildVersion;
 
 @end
 

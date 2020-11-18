@@ -34,13 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_realTimeStatus:1;
         unsigned int read_vehicleNumber:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_absDepartureTime:1;
-        unsigned int wrote_absLiveDepartureTime:1;
-        unsigned int wrote_realTimeStatus:1;
-        unsigned int wrote_referenceTripId:1;
-        unsigned int wrote_vehicleNumber:1;
-        unsigned int wrote_isCanceled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -73,16 +67,17 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readRealTimeStatus;
-- (void)_readVehicleNumber;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPastDepartureRelativeToDate:(id)arg1 usingGracePeriod:(BOOL)arg2;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

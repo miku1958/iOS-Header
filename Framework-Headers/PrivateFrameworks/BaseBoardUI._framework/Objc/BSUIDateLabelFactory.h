@@ -15,7 +15,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_labelWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(BOOL)arg4 forStyle:(long long)arg5 forType:(long long)arg6;
 - (void)_purgeRecycledLabels;
 - (id)combinedDateLabelWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(BOOL)arg4 forStyle:(long long)arg5;
 - (void)dealloc;

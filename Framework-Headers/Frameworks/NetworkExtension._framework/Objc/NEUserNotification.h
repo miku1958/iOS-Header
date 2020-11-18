@@ -10,7 +10,7 @@
 
 @interface NEUserNotification : NSObject
 {
-    BOOL _isBanner;
+    BOOL _isAlert;
     id _notification;
     id _notificationSource;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -19,21 +19,22 @@
 
 @property (copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
 @property (strong) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property BOOL isBanner; // @synthesize isBanner=_isBanner;
+@property BOOL isAlert; // @synthesize isAlert=_isAlert;
 @property (strong) id notification; // @synthesize notification=_notification;
 @property (strong) id notificationSource; // @synthesize notificationSource=_notificationSource;
 
++ (void)cancelCurrentNotificationWithDefaultResponse:(BOOL)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)createLAContext;
++ (void)executeOnMainLoop:(CDUnknownBlockType)arg1;
 + (Class)getUIDeviceClass;
 + (void)promptForLocalAuthenticationWithReason:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (BOOL)shouldPromptForLocalAuthentication;
 - (void).cxx_destruct;
 - (void)cancel;
-- (void)executeOnMainLoop:(CDUnknownBlockType)arg1;
-- (id)initAddConfigurationsForApp:(id)arg1 warningHeader:(id)arg2 warning:(id)arg3;
-- (id)initAuthenticationWithHeader:(id)arg1 options:(id)arg2 flags:(unsigned long long)arg3;
-- (id)initBannerWithHeader:(id)arg1 message:(id)arg2 alternateMessage:(id)arg3 defaultMessage:(id)arg4;
-- (id)initObsoleteAlertWithAppName:(id)arg1;
+- (id)initAndShowAddConfigurationsForApp:(id)arg1 warningHeader:(id)arg2 warning:(id)arg3 callbackQueue:(id)arg4 callbackHandler:(CDUnknownBlockType)arg5;
+- (id)initAndShowAlertWithHeader:(id)arg1 message:(id)arg2 alternateMessage:(id)arg3 defaultMessage:(id)arg4 noBoldDefault:(BOOL)arg5 callbackQueue:(id)arg6 callbackHandler:(CDUnknownBlockType)arg7;
+- (id)initAndShowAuthenticationWithHeader:(id)arg1 options:(id)arg2 flags:(unsigned long long)arg3 callbackQueue:(id)arg4 callbackHandler:(CDUnknownBlockType)arg5;
+- (id)initAndShowLocalNetworkAlertWithAppName:(id)arg1 reasonString:(id)arg2 callbackQueue:(id)arg3 callbackHandler:(CDUnknownBlockType)arg4;
 - (BOOL)postNotificationWithCallbackQueue:(id)arg1 callbackHandler:(CDUnknownBlockType)arg2;
 
 @end

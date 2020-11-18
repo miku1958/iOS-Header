@@ -153,7 +153,9 @@
 - (void)setJSGlobalContext:(struct OpaqueJSContext *)arg1;
 - (void)setPages:(id)arg1;
 - (void)showModalWebViewWithLinkURL:(id)arg1 scaleToFit:(BOOL)arg2 loadCompletion:(CDUnknownBlockType)arg3 doneHandler:(CDUnknownBlockType)arg4;
+- (void)startActivityIndicator;
 - (void)startNavigationBarSpinnerWithTitle:(id)arg1;
+- (void)stopActivityIndicator;
 - (void)stopNavigationBarSpinner;
 - (id)stringForAttributeName:(id)arg1 withAttributes:(id)arg2;
 - (id)subElementWithID:(id)arg1;

@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)errors;
 - (BOOL)isValidWithError:(id *)arg1;
+- (id)paymentContactFormatErrors;
 - (long long)status;
 
 @end

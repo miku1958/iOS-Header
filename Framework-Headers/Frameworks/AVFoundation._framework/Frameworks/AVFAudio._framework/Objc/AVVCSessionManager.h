@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)changeDuckOthersOption:(BOOL)arg1;
+- (int)enableSmartRoutingConsideration:(BOOL)arg1;
 - (void)getHypotheticalRouteAndUpdateStates;
 - (unsigned int)getSessionActivationOptions;
 - (id)init;
@@ -35,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (int)setSessionActivationContext:(id)arg1;
 - (void)setSessionActivationOptions:(unsigned int)arg1;
 - (int)setSessionAudioHWControlFlagsForActivationMode:(long long)arg1;
-- (int)setSessionBufferSizeForRecordingEngine:(struct AVVCRecordingEngine *)arg1;
+- (int)setSessionBufferSize:(int)arg1;
 - (int)setSessionCategoryModeOptionsForActivationMode:(long long)arg1;
 - (int)setSessionSampleRateForActivationMode:(long long)arg1;
 - (int)setupOneTimeSessionSettings;

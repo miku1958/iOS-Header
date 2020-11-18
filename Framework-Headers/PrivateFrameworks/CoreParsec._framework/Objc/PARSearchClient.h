@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreParsec/PARClientXPC-Protocol.h>
+@class NSMutableArray, NSXPCConnection, PARImageLoader;
+@protocol OS_dispatch_queue;
 
-@class NSMutableArray, NSString, NSXPCConnection, PARImageLoader;
-@protocol OS_dispatch_queue, PARDaemonXPC;
-
-@interface PARSearchClient : NSObject <PARClientXPC>
+@interface PARSearchClient : NSObject
 {
-    id<PARDaemonXPC> _remoteObject;
     NSMutableArray *_sessions;
     NSObject<OS_dispatch_queue> *_queue;
     _Atomic BOOL _configured;
@@ -22,11 +19,7 @@
 }
 
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly) PARImageLoader *imageLoader; // @synthesize imageLoader=_imageLoader;
-@property (readonly) Class superclass;
 
 + (id)sharedClient;
 - (void).cxx_destruct;
@@ -48,8 +41,7 @@
 - (void)listSessions:(CDUnknownBlockType)arg1;
 - (void)reportFeedback:(id)arg1 feedback:(id)arg2 queryId:(unsigned long long)arg3;
 - (unsigned long long)request:(id)arg1 request:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)sessionDidChange:(id)arg1;
-- (void)updateParameters:(double)arg1 safariLast1day:(double)arg2 safariLast1week:(double)arg3 safariLast1month:(double)arg4 safariAll:(double)arg5 safariMostRecent:(double)arg6 minThresholdToSend:(double)arg7;
+- (void)updateParametersForSmartSearchV1:(id)arg1 smartSearchV2:(id)arg2;
 
 @end
 

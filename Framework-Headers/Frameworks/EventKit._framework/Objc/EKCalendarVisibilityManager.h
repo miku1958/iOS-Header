@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <EventKit/CalActivatable-Protocol.h>
+
 @class CalDarwinNotificationListener, EKEventStore, EKSource, NSArray;
 
-@interface EKCalendarVisibilityManager : NSObject
+@interface EKCalendarVisibilityManager : NSObject <CalActivatable>
 {
+    BOOL _active;
     NSArray *_invisibleCalendars;
     EKSource *_limitedToSource;
     EKEventStore *_eventStore;
@@ -17,23 +20,29 @@
     CalDarwinNotificationListener *_notificationListener;
 }
 
-@property (strong, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
+@property BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property (strong, nonatomic) NSArray *invisibleCalendars; // @synthesize invisibleCalendars=_invisibleCalendars;
 @property (readonly, nonatomic) NSArray *invisibleCalendarsForAllIdentities;
 @property (strong, nonatomic) EKSource *limitedToSource; // @synthesize limitedToSource=_limitedToSource;
-@property (strong, nonatomic) CalDarwinNotificationListener *notificationListener; // @synthesize notificationListener=_notificationListener;
-@property (copy, nonatomic) CDUnknownBlockType visibilityChangedCallback; // @synthesize visibilityChangedCallback=_visibilityChangedCallback;
+@property (readonly, nonatomic) CalDarwinNotificationListener *notificationListener; // @synthesize notificationListener=_notificationListener;
+@property (readonly, nonatomic) CDUnknownBlockType visibilityChangedCallback; // @synthesize visibilityChangedCallback=_visibilityChangedCallback;
 @property (readonly, nonatomic) NSArray *visibleCalendars;
 @property (readonly, nonatomic) NSArray *visibleCalendarsForAllIdentities;
 
++ (id)_defaultQueue;
 + (id)visibilityChangedNotificationName;
 - (void).cxx_destruct;
 - (id)_calendarsThatAreVisible:(BOOL)arg1 filteredByIdentity:(BOOL)arg2;
 - (id)_deselectedCalendarIdentifiers;
+- (void)activate;
+- (void)deactivate;
 - (void)dealloc;
-- (id)init;
 - (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3;
+- (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3 queue:(id)arg4;
+- (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3 queue:(id)arg4 activate:(BOOL)arg5;
 - (id)initWithEventStore:(id)arg1 visibilityChangedCallback:(CDUnknownBlockType)arg2;
+- (id)initWithEventStore:(id)arg1 visibilityChangedCallback:(CDUnknownBlockType)arg2 queue:(id)arg3;
 
 @end
 

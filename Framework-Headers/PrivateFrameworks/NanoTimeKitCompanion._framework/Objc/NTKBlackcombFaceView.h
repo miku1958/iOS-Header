@@ -45,7 +45,6 @@
 - (long long)_editMode;
 - (void)_forceUpdateColors;
 - (BOOL)_isComplicationSlotInsideDial:(id)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -53,6 +52,7 @@
 - (id)_keylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
@@ -64,6 +64,7 @@
 - (void)_removeBackgroundView;
 - (id)_renderBackgroundViewSwatchImageForBlackcombDialColor:(unsigned long long)arg1;
 - (void)_reorderSwitcherSnapshotView;
+- (id)_secondHandColorFor:(unsigned long long)arg1;
 - (void)_setupBackgroundView;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (BOOL)_timeViewBehindContentForEditMode:(long long)arg1;
@@ -72,7 +73,6 @@
 - (void)_updateTickLengths;
 - (double)_verticalPaddingForStatusBar;
 - (BOOL)_wantsConstantSpeedZoom;
-- (BOOL)_wantsStatusBarIconShadow;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;

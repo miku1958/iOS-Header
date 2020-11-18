@@ -17,7 +17,8 @@
 - (oneway void)invalidateCachedProfileForLocalPlayerWithHandler:(void (^)(void))arg1;
 - (oneway void)setFindable:(BOOL)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setPhotoData:(NSData *)arg1 avatarType:(NSNumber *)arg2 handler:(void (^)(NSError *))arg3;
-- (oneway void)setPlayerNickname:(NSString *)arg1 suggestionsCount:(long long)arg2 handler:(void (^)(NSArray *, unsigned long long, NSError *))arg3;
+- (oneway void)setPlayerNickname:(NSString *)arg1 suggestionsCount:(long long)arg2 handler:(void (^)(NSArray *, long long, NSError *))arg3;
+- (oneway void)setProfilePrivacy:(int)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setStatus:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
 @end
 

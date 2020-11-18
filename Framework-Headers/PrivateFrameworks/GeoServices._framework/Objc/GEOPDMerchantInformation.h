@@ -50,22 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_merchantState:1;
         unsigned int read_merchantType:1;
         unsigned int read_merchantZip:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_merchantAdditionalData:1;
-        unsigned int wrote_merchantAddress:1;
-        unsigned int wrote_merchantCanl:1;
-        unsigned int wrote_merchantCity:1;
-        unsigned int wrote_merchantCountryCode:1;
-        unsigned int wrote_merchantDoingBusinessAsName:1;
-        unsigned int wrote_merchantEnhancedName:1;
-        unsigned int wrote_merchantId:1;
-        unsigned int wrote_merchantRawAddress:1;
-        unsigned int wrote_merchantRawCity:1;
-        unsigned int wrote_merchantRawState:1;
-        unsigned int wrote_merchantState:1;
-        unsigned int wrote_merchantType:1;
-        unsigned int wrote_merchantZip:1;
-        unsigned int wrote_merchantCleanConfidenceLevel:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -103,20 +88,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readMerchantAdditionalData;
-- (void)_readMerchantAddress;
-- (void)_readMerchantCanl;
-- (void)_readMerchantCity;
-- (void)_readMerchantCountryCode;
-- (void)_readMerchantDoingBusinessAsName;
-- (void)_readMerchantEnhancedName;
-- (void)_readMerchantId;
-- (void)_readMerchantRawAddress;
-- (void)_readMerchantRawCity;
-- (void)_readMerchantRawState;
-- (void)_readMerchantState;
-- (void)_readMerchantType;
-- (void)_readMerchantZip;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -125,7 +96,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

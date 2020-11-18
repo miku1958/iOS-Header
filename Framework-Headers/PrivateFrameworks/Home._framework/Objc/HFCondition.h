@@ -23,6 +23,7 @@
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
+- (id)hf_naturalLanguageSummaryWithOptions:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

@@ -17,6 +17,7 @@
 - (void)_invalidateCacheForEventWithIdentifier:(id)arg1;
 - (void)_invalidateCacheForEventWithIdentifier:(id)arg1 precision:(unsigned long long)arg2;
 - (void)_invalidateCacheForEventsWithIdentifiers:(id)arg1;
+- (BOOL)_isMomentLocalIdentifierInteresting:(id)arg1 withAlternateJunking:(BOOL)arg2 precision:(unsigned long long)arg3 isCached:(BOOL *)arg4;
 - (void)_setCuratedAssets:(id)arg1 forEventWithIdentifier:(id)arg2 options:(id)arg3;
 - (void)_setCuratedKeyAsset:(id)arg1 forEventWithIdentifier:(id)arg2 options:(id)arg3;
 - (void)_setProperties:(id)arg1 forCurationObjectWithEntityName:(id)arg2 eventIdentifier:(id)arg3 precision:(unsigned long long)arg4 predicate:(id)arg5;
@@ -33,7 +34,7 @@
 - (void)invalidateCacheForMomentIdentifier:(id)arg1;
 - (void)invalidateCacheForMomentIdentifier:(id)arg1 precision:(unsigned long long)arg2;
 - (BOOL)isMomentInteresting:(id)arg1 precision:(unsigned long long)arg2 isCached:(BOOL *)arg3;
-- (BOOL)isMomentLocalIdentifierInteresting:(id)arg1 precision:(unsigned long long)arg2 isCached:(BOOL *)arg3;
+- (BOOL)isMomentInteresting:(id)arg1 withAlternateJunking:(BOOL)arg2 precision:(unsigned long long)arg3 isCached:(BOOL *)arg4;
 - (void)setContentScore:(double)arg1 forMoment:(id)arg2 precision:(unsigned long long)arg3;
 - (void)setCuratedAssets:(id)arg1 forCollectionWithIdentifier:(id)arg2 options:(id)arg3;
 - (void)setCuratedAssets:(id)arg1 forMoment:(id)arg2 options:(id)arg3;
@@ -41,6 +42,7 @@
 - (void)setCuratedKeyAsset:(id)arg1 forMoment:(id)arg2 options:(id)arg3;
 - (void)setMeanContentScore:(double)arg1 forMoment:(id)arg2 precision:(unsigned long long)arg3;
 - (void)setMomentInteresting:(BOOL)arg1 forMoment:(id)arg2 precision:(unsigned long long)arg3;
+- (void)setMomentInteresting:(BOOL)arg1 withAlternateJunking:(BOOL)arg2 forMoment:(id)arg3 precision:(unsigned long long)arg4;
 
 @end
 

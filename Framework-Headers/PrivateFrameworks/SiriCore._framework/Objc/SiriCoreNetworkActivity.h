@@ -15,19 +15,24 @@
     long long _state;
     long long _parentLabel;
     NSMutableSet *_connections;
+    BOOL _hasStarted;
 }
 
 - (void).cxx_destruct;
+- (int)_completionReasonToNWActivityCompletionReason:(long long)arg1;
 - (void)_networkActivityAbort;
 - (void)_networkActivityRestart;
 - (void)_networkActivityState:(long long)arg1;
 - (void)activate;
 - (void)addConnection:(id)arg1;
+- (BOOL)hasStarted;
 - (id)initWithLabel:(long long)arg1 parent:(id)arg2;
 - (id)nwActivity;
+- (id)nwActivityToken;
 - (long long)parentLabel;
 - (void)removeConnection:(id)arg1;
-- (void)stop;
+- (void)setHasStarted:(BOOL)arg1;
+- (void)stopWithCompletionReason:(long long)arg1;
 
 @end
 

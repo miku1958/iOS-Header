@@ -9,13 +9,15 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDate, NSDictionary;
 
 @interface BBSectionInfoSettings : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _showsOnExternalDevices;
     BOOL _showsCustomSettingsLink;
     long long _authorizationStatus;
+    NSDate *_authorizationExpirationDate;
+    NSDate *_lastUserGrantedAuthorizationDate;
     long long _notificationCenterSetting;
     long long _lockScreenSetting;
     long long _contentPreviewSetting;
@@ -29,11 +31,14 @@
 
 @property (nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
 @property (nonatomic) BOOL allowsNotifications;
+@property (strong, nonatomic) NSDate *authorizationExpirationDate; // @synthesize authorizationExpirationDate=_authorizationExpirationDate;
 @property (nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (nonatomic) long long bulletinGroupingSetting; // @synthesize bulletinGroupingSetting=_bulletinGroupingSetting;
 @property (nonatomic) long long carPlaySetting; // @synthesize carPlaySetting=_carPlaySetting;
 @property (nonatomic) long long contentPreviewSetting; // @synthesize contentPreviewSetting=_contentPreviewSetting;
 @property (nonatomic) long long criticalAlertSetting; // @synthesize criticalAlertSetting=_criticalAlertSetting;
+@property (readonly, nonatomic) BOOL isAuthorizedTemporarily;
+@property (strong, nonatomic) NSDate *lastUserGrantedAuthorizationDate; // @synthesize lastUserGrantedAuthorizationDate=_lastUserGrantedAuthorizationDate;
 @property (nonatomic) long long lockScreenSetting; // @synthesize lockScreenSetting=_lockScreenSetting;
 @property (nonatomic) long long notificationCenterSetting; // @synthesize notificationCenterSetting=_notificationCenterSetting;
 @property (nonatomic) unsigned long long pushSettings; // @synthesize pushSettings=_pushSettings;
@@ -47,6 +52,7 @@
 
 + (id)sectionInfoSettingsForManagedBundleID:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_alertTypeDescription;
 - (id)_authorizationStatusDescription;
 - (id)_bulletinGroupingSettingDescription;

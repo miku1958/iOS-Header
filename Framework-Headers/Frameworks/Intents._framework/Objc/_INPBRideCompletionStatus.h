@@ -27,13 +27,11 @@
     BOOL _completed;
     BOOL _missedPickup;
     BOOL _outstanding;
-    BOOL __encodeLegacyGloryData;
     _INPBUserActivity *_completionUserActivity;
     NSArray *_defaultTippingOptions;
     _INPBCurrencyAmountValue *_paymentAmount;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
 @property (nonatomic) BOOL canceledByService; // @synthesize canceledByService=_canceledByService;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;

@@ -9,12 +9,13 @@
 #import <CarPlay/CPWindowProviding-Protocol.h>
 #import <CarPlay/UICoordinateSpace-Protocol.h>
 #import <CarPlay/_UIContextBinderContextCreationPolicyHolding-Protocol.h>
+#import <CarPlay/_UISceneSettingsDiffAction-Protocol.h>
 #import <CarPlay/_UISceneUIWindowHosting-Protocol.h>
 
-@class CPInterfaceController, CPWindow, NSString, UIScreen, UITraitCollection, _UIContextBinder;
+@class CPInterfaceController, CPWindow, NSString, UIApplicationSceneSettingsDiffInspector, UIScreen, UIStatusBarManager, UITraitCollection, _UIContextBinder;
 @protocol CPTemplateApplicationSceneDelegate, NSObject, UICoordinateSpace;
 
-@interface CPTemplateApplicationScene : UIScene <_UISceneUIWindowHosting, _UIContextBinderContextCreationPolicyHolding, UICoordinateSpace, CPWindowProviding>
+@interface CPTemplateApplicationScene : UIScene <_UISceneUIWindowHosting, _UIContextBinderContextCreationPolicyHolding, UICoordinateSpace, _UISceneSettingsDiffAction, CPWindowProviding>
 {
     id<NSObject> _sceneWillConnectObserver;
     id<NSObject> _didFinishLaunchingObserver;
@@ -25,19 +26,23 @@
     long long _screenRequestedOverscanCompensation;
     CPWindow *_carWindow;
     CPInterfaceController *_interfaceController;
+    UIApplicationSceneSettingsDiffInspector *_sceneSettingsInterfaceStyleDiffInspector;
 }
 
 @property (readonly, nonatomic) id<UICoordinateSpace> _coordinateSpace;
 @property (readonly, nonatomic) long long _interfaceOrientation;
 @property (readonly, nonatomic) UIScreen *_screen;
+@property (readonly, nonatomic) UIStatusBarManager *_statusBarManager;
 @property (readonly, nonatomic) UITraitCollection *_traitCollection;
 @property (readonly, nonatomic) struct CGRect bounds;
+@property (readonly, nonatomic) UITraitCollection *carTraitCollection;
 @property (strong, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<CPTemplateApplicationSceneDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPInterfaceController *interfaceController; // @synthesize interfaceController=_interfaceController;
+@property (strong, nonatomic) UIApplicationSceneSettingsDiffInspector *sceneSettingsInterfaceStyleDiffInspector; // @synthesize sceneSettingsInterfaceStyleDiffInspector=_sceneSettingsInterfaceStyleDiffInspector;
 @property (readonly) Class superclass;
 
 + (BOOL)_hostsWindows;
@@ -51,10 +56,14 @@
 - (void)_detachWindow:(id)arg1;
 - (id)_fbsSceneLayerForWindow:(id)arg1;
 - (void)_invalidate;
+- (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
 - (BOOL)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
 - (void)_readySceneForConnection;
+- (void)_refreshTraitCollection;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
 - (BOOL)_sceneWillConnect;
+- (BOOL)_shouldCallAppDelegate;
+- (BOOL)_shouldCreateCarWindow;
 - (void)_updateVisibleWindowOrderWithTest:(CDUnknownBlockType)arg1;
 - (void)_windowUpdatedProperties:(id)arg1;
 - (void)_windowUpdatedVisibility:(id)arg1;

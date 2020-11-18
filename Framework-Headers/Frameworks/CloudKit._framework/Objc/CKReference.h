@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+@property (readonly, copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (readonly, nonatomic) unsigned long long referenceAction; // @synthesize referenceAction=_referenceAction;
 @property (readonly) Class superclass;
 

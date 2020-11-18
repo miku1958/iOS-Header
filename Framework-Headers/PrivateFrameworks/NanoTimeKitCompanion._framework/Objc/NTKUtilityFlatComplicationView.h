@@ -46,6 +46,7 @@
 - (void)_updateHighlightViewCornerRadius;
 - (void)_updateLabelMaxWidth;
 - (double)_widthThatFits;
+- (struct CGSize)boundingSizeOfCurrentComplicationTemplate;
 - (id)colorForView:(id)arg1 accented:(BOOL)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;

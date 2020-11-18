@@ -8,6 +8,7 @@
 
 @class ICUserIdentity, MPChangeDetails, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, MPStoreItemMetadataResponse, NSArray, NSDictionary, NSSet;
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseResponseParser : NSObject
 {
     MPSectionedCollection *_additionalContentIdentifiers;

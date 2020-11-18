@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     unsigned int is_flow_divert:1;
     unsigned int multilayer_packet_logging:1;
     unsigned int has_progress_target:1;
+    unsigned int path_is_direct:1;
     NWConcrete_nw_endpoint_flow *clone_from_flow;
     struct nw_protocol_identifier protocol_identifier;
     struct nw_protocol_callbacks protocol_callbacks;

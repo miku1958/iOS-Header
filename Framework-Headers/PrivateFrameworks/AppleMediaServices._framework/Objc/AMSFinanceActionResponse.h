@@ -35,7 +35,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_performCreditDisplayUpdate;
 - (id)_performGotoURL;
-- (id)_performOpenURL;
+- (id)_performOpenAppURL;
+- (id)_performOpenStandardURL;
 - (id)initWithTaskInfo:(id)arg1;
 - (id)performWithTaskInfo:(id)arg1;
 

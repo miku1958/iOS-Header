@@ -15,6 +15,7 @@
 
 @property (nonatomic) struct PLPrimaryDataStore_UniformFileStrategy_KeyStruct_V1 keyStruct; // @synthesize keyStruct=_keyStruct;
 
++ (id)_fileURLFromKeyStruct:(struct PLPrimaryDataStore_UniformFileStrategy_KeyStruct_V1 *)arg1 assetID:(id)arg2;
 + (id)fileURLForPayloadKeyData:(unsigned long long)arg1 assetID:(id)arg2;
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 - (id)fileURLForAssetID:(id)arg1;

@@ -44,6 +44,7 @@
 - (id)_adjustmentControllerForKey:(id)arg1 creatingIfNecessary:(BOOL)arg2 expectedClass:(Class)arg3;
 - (void)addAdjustmentWithKey:(id)arg1;
 - (id)adjustmentControllerForKey:(id)arg1;
+- (id)adjustmentKeys;
 - (void)applyChangesFromCompositionController:(id)arg1;
 - (id)autoLoopAdjustmentController;
 - (id)autoLoopAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
@@ -75,6 +76,7 @@
 - (id)noiseReductionAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)orientationAdjustmentController;
 - (id)orientationAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
+- (id)overcaptureSource;
 - (id)portraitAdjustmentController;
 - (id)portraitAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)rawNoiseReductionAdjustmentController;
@@ -95,15 +97,20 @@
 - (id)smartColorAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)smartToneAdjustmentController;
 - (id)smartToneAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
+- (id)source;
 - (id)sourceSelectAdjustmentController;
 - (id)sourceSelectAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)trimAdjustmentController;
 - (id)trimAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (long long)userOrientation;
+- (id)videoCrossfadeLoopAdjustmentController;
+- (id)videoCrossfadeLoopAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)videoPosterFrameAdjustmentController;
 - (id)videoPosterFrameAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)videoReframeAdjustmentController;
 - (id)videoReframeAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
+- (id)videoStabilizeAdjustmentController;
+- (id)videoStabilizeAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)vignetteAdjustmentController;
 - (id)vignetteAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (id)whiteBalanceAdjustmentController;

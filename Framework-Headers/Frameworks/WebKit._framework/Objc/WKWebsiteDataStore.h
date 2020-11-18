@@ -22,7 +22,6 @@
 @property (nonatomic, setter=_setAllowsTLSFallback:) BOOL _allowsTLSFallback;
 @property (readonly) struct Object *_apiObject;
 @property (nonatomic, setter=_setBoundInterfaceIdentifier:) NSString *_boundInterfaceIdentifier;
-@property (nonatomic, setter=_setCacheStorageDirectory:) NSString *_cacheStorageDirectory;
 @property (readonly, copy, nonatomic) _WKWebsiteDataStoreConfiguration *_configuration;
 @property (weak, nonatomic) id<_WKWebsiteDataStoreDelegate> _delegate;
 @property (readonly, nonatomic) NSURL *_indexedDBDatabaseDirectory;
@@ -30,9 +29,6 @@
 @property (nonatomic, setter=_setProxyConfiguration:) NSDictionary *_proxyConfiguration;
 @property (nonatomic, setter=_setResourceLoadStatisticsDebugMode:) BOOL _resourceLoadStatisticsDebugMode;
 @property (nonatomic, setter=_setResourceLoadStatisticsEnabled:) BOOL _resourceLoadStatisticsEnabled;
-@property (nonatomic, setter=_setServiceWorkerRegistrationDirectory:) NSString *_serviceWorkerRegistrationDirectory;
-@property (copy, nonatomic, setter=_setSourceApplicationBundleIdentifier:) NSString *_sourceApplicationBundleIdentifier;
-@property (copy, nonatomic, setter=_setSourceApplicationSecondaryIdentifier:) NSString *_sourceApplicationSecondaryIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -50,6 +46,9 @@
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_appBoundDomains:(CDUnknownBlockType)arg1;
+- (void)_appBoundSchemes:(CDUnknownBlockType)arg1;
+- (void)_clearLoadedThirdPartyDomainsFor:(id)arg1;
 - (void)_clearPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_clearResourceLoadStatistics:(CDUnknownBlockType)arg1;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -59,15 +58,20 @@
 - (BOOL)_hasRegisteredServiceWorker;
 - (id)_initWithConfiguration:(id)arg1;
 - (void)_isRegisteredAsSubresourceUnderFirstParty:(id)arg1 thirdParty:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_loadedThirdPartyDomainsFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_logUserInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_processStatisticsAndDataRecords:(CDUnknownBlockType)arg1;
+- (void)_renameOrigin:(id)arg1 to:(id)arg2 forDataOfTypes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_scheduleCookieBlockingUpdate:(CDUnknownBlockType)arg1;
 - (void)_setPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResourceLoadStatisticsTestingCallback:(CDUnknownBlockType)arg1;
+- (void)_setThirdPartyCookieBlockingMode:(BOOL)arg1 onlyOnSitesWithoutUserInteraction:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setUseITPDatabase:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_statisticsDatabaseHasAllTables:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchDataRecordsOfTypes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)removeDataOfTypes:(id)arg1 forDataRecords:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeDataOfTypes:(id)arg1 modifiedSince:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

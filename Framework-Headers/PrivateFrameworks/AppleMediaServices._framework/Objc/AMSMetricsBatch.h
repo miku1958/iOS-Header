@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSMetricsBatch : NSObject
 {
+    BOOL _anonymous;
     BOOL _containsLoadURL;
     ACAccount *_account;
     NSString *_canaryIdentifier;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (nonatomic) BOOL anonymous; // @synthesize anonymous=_anonymous;
 @property (strong, nonatomic) NSString *canaryIdentifier; // @synthesize canaryIdentifier=_canaryIdentifier;
 @property (nonatomic) BOOL containsLoadURL; // @synthesize containsLoadURL=_containsLoadURL;
 @property (strong, nonatomic) NSArray *droppedEvents; // @synthesize droppedEvents=_droppedEvents;

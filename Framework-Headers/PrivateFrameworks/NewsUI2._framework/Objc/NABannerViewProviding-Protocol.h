@@ -9,6 +9,7 @@
 @protocol NABannerViewProviding
 
 @property (nonatomic) BOOL na_displayed;
+@property (nonatomic) long long na_endOfArticleSection;
 @property (nonatomic, readonly) UIView *view;
 
 - (void)na_reportNativeClickEvent;

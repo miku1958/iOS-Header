@@ -52,7 +52,7 @@
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)debugDraw:(float)arg1 matrix:(union _GLKMatrix4)arg2 showsPhysics:(BOOL)arg3 showsOutlineInterior:(BOOL)arg4 showsFields:(BOOL)arg5;
+- (void)debugDraw:(float)arg1 matrix:(union _GLSKMatrix4)arg2 showsPhysics:(BOOL)arg3 showsOutlineInterior:(BOOL)arg4 showsFields:(BOOL)arg5;
 - (const struct PKDebugDrawPacket *)debugDrawPacket;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateBodiesAlongRayStart:(struct CGPoint)arg1 end:(struct CGPoint)arg2 usingBlock:(CDUnknownBlockType)arg3;

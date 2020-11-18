@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/NSObject-Protocol.h>
+#import <VideosUI/IAMContextProvider-Protocol.h>
 
-@class IAMMessageCoordinator, IAMPresentationPolicy, NSDictionary, NSString, UIViewController;
+@class UIViewController;
 
-@protocol IAMApplicationContextProvider <NSObject>
+@protocol IAMApplicationContextProvider <IAMContextProvider>
 
 @property (readonly) BOOL allowsModalMessageDisplay;
 @property (nonatomic) double lastMessageDisplayTime;
 
-- (id)contextPropertyWithName:(NSString *)arg1;
 
 @optional
-- (void)messageCoordinator:(IAMMessageCoordinator *)arg1 didRequestAction:(NSDictionary *)arg2;
-- (IAMPresentationPolicy *)presentationPolicyForPolicyGroup:(long long)arg1;
 - (UIViewController *)viewControllerForModalPresentation;
 @end
 

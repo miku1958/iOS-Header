@@ -26,7 +26,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HMDVideoStreamInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long direction;
 @property (readonly) unsigned long long hash;
 @property (weak) id<HMDVideoStreamLastDecodedFrameDelegate> lastFrameDelegate; // @synthesize lastFrameDelegate=_lastFrameDelegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *lastFrameDelegateQueue; // @synthesize lastFrameDelegateQueue=_lastFrameDelegateQueue;
@@ -49,7 +48,6 @@
 - (void)_callDidUpdateConfiguration;
 - (void)_callNetworkDeteriorated;
 - (void)_callNetworkImproved;
-- (void)_callRelayStarted:(id)arg1;
 - (void)_callStarted:(id)arg1;
 - (void)_callStopped:(id)arg1;
 - (BOOL)_createLocalSocket;

@@ -67,6 +67,7 @@
 - (void)participant:(id)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 frequencyLevelsDidChange:(id)arg2;
+- (void)participant:(id)arg1 mediaPrioritiesDidChange:(id)arg2;
 - (void)participant:(id)arg1 videoEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 videoPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)registerBlocksForNotifications;
@@ -77,6 +78,7 @@
 - (void)stop;
 - (void)stopWithError:(id)arg1;
 - (void)updateConfiguration:(id)arg1;
+- (void)validateParticipantConfiguration;
 - (BOOL)validateParticipantToAdd:(id)arg1;
 - (BOOL)validateParticipantToRemove:(id)arg1;
 

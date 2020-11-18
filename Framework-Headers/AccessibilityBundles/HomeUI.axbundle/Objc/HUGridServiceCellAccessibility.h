@@ -13,6 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axComposedString;
+- (id)_axServiceIconDescription;
+- (id)_axServiceNameComponents;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

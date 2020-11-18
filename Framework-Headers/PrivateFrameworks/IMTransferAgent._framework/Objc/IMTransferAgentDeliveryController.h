@@ -16,6 +16,7 @@
 @property (strong, nonatomic) FTMessageDelivery *messageDelivery; // @synthesize messageDelivery=_messageDelivery;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)sendFTMessage:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

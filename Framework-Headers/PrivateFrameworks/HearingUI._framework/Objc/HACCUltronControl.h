@@ -37,7 +37,6 @@
 - (BOOL)enabled;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isRunning;
-- (void)updateConstraints;
 - (void)updateValue;
 
 @end

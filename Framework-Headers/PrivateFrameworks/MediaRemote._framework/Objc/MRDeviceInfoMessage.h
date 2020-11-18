@@ -6,19 +6,17 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class MRSupportedProtocolMessages, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRSupportedProtocolMessages;
 
 @interface MRDeviceInfoMessage : MRProtocolMessage
 {
     MRSupportedProtocolMessages *_supportedProtocolMessages;
 }
 
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property (readonly, nonatomic) MRDeviceInfo *deviceInfo;
 @property (readonly, nonatomic) MRSupportedProtocolMessages *supportedProtocolMessages;
 
 - (void).cxx_destruct;
-- (unsigned long long)_lastSupportedMessageType;
-- (unsigned long long)_lastSupportedMessageTypeBeforeSupportedMessagesWereAddedToDeviceInfo;
 - (unsigned long long)encryptionType;
 - (id)initWithDeviceInfo:(id)arg1;
 - (unsigned long long)type;

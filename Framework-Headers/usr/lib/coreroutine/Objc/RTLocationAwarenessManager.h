@@ -6,8 +6,7 @@
 
 #import <coreroutine/RTService.h>
 
-@class CLLocation, NSDate, NSMapTable, NSNumber, NSObject, RTAuthorizationManager, RTInvocationDispatcher, RTLocationAwarenessManagerConfig, RTLocationAwarenessMetrics, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPowerAssertion, RTWiFiManager, RTXPCActivityManager;
-@protocol OS_dispatch_source;
+@class CLLocation, NSDate, NSMapTable, NSNumber, RTAuthorizationManager, RTInvocationDispatcher, RTLocationAwarenessManagerConfig, RTLocationAwarenessMetrics, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPowerAssertion, RTTimer, RTTimerManager, RTWiFiManager, RTXPCActivityManager;
 
 @interface RTLocationAwarenessManager : RTService
 {
@@ -32,8 +31,9 @@
     NSMapTable *_requesterToHeartbeatBucket;
     NSMapTable *_heartbeatBucketToRequesters;
     RTLocationManager *_locationManager;
-    NSObject<OS_dispatch_source> *_heartbeatTimer;
-    NSObject<OS_dispatch_source> *_restTimer;
+    RTTimer *_heartbeatTimer;
+    RTTimer *_restTimer;
+    RTTimerManager *_timerManager;
     NSDate *_activeOnset;
     NSNumber *_minHeartbeatBucket;
     CLLocation *_lastValidLocation;
@@ -55,7 +55,7 @@
 @property (readonly, nonatomic) RTLocationAwarenessManagerConfig *config; // @synthesize config=_config;
 @property (strong, nonatomic) NSMapTable *heartbeatBucketToRequesters; // @synthesize heartbeatBucketToRequesters=_heartbeatBucketToRequesters;
 @property (copy, nonatomic) RTInvocationDispatcher *heartbeatBuffer; // @synthesize heartbeatBuffer=_heartbeatBuffer;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *heartbeatTimer; // @synthesize heartbeatTimer=_heartbeatTimer;
+@property (strong, nonatomic) RTTimer *heartbeatTimer; // @synthesize heartbeatTimer=_heartbeatTimer;
 @property (strong, nonatomic) CLLocation *lastLocationAnyPositive; // @synthesize lastLocationAnyPositive=_lastLocationAnyPositive;
 @property (strong, nonatomic) CLLocation *lastLocationLessThan10m; // @synthesize lastLocationLessThan10m=_lastLocationLessThan10m;
 @property (strong, nonatomic) CLLocation *lastLocationLessThan200m; // @synthesize lastLocationLessThan200m=_lastLocationLessThan200m;
@@ -68,18 +68,16 @@
 @property (strong, nonatomic) NSNumber *minHeartbeatBucket; // @synthesize minHeartbeatBucket=_minHeartbeatBucket;
 @property (strong, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property (strong, nonatomic) NSMapTable *requesterToHeartbeatBucket; // @synthesize requesterToHeartbeatBucket=_requesterToHeartbeatBucket;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *restTimer; // @synthesize restTimer=_restTimer;
+@property (strong, nonatomic) RTTimer *restTimer; // @synthesize restTimer=_restTimer;
 @property (strong, nonatomic) NSDate *scheduledHeartbeatFiringTime; // @synthesize scheduledHeartbeatFiringTime=_scheduledHeartbeatFiringTime;
 @property (strong, nonatomic) NSDate *scheduledRestTimerFiringTime; // @synthesize scheduledRestTimerFiringTime=_scheduledRestTimerFiringTime;
 @property (copy, nonatomic) NSDate *stationaryStartTimestamp; // @synthesize stationaryStartTimestamp=_stationaryStartTimestamp;
+@property (strong, nonatomic) RTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
 @property (strong, nonatomic) RTWiFiManager *wifiManager; // @synthesize wifiManager=_wifiManager;
 @property (strong, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 @property (strong, nonatomic) RTPowerAssertion *xpcActivityPowerAssertion; // @synthesize xpcActivityPowerAssertion=_xpcActivityPowerAssertion;
 
-+ (id)createDefaultDispatchTimerWithQueue:(id)arg1;
-+ (void)invalidateDispatchTimer:(id)arg1;
 + (long long)localHourFromTimestamp:(id)arg1;
-+ (void)pauseDispatchTimer:(id)arg1;
 + (id)powerAssertion;
 - (void).cxx_destruct;
 - (void)_setup;
@@ -98,7 +96,7 @@
 - (void)hourlySingleShotWithHandler:(CDUnknownBlockType)arg1;
 - (void)incrementBasicHistogram:(id)arg1 forTimestamp:(id)arg2;
 - (id)init;
-- (id)initWithLocationManager:(id)arg1 config:(id)arg2 metricManager:(id)arg3 motionActivityManager:(id)arg4 authorizationManager:(id)arg5 wifiManager:(id)arg6 xpcActivityManager:(id)arg7;
+- (id)initWithLocationManager:(id)arg1 config:(id)arg2 metricManager:(id)arg3 motionActivityManager:(id)arg4 authorizationManager:(id)arg5 wifiManager:(id)arg6 xpcActivityManager:(id)arg7 timerManager:(id)arg8;
 - (double)intervalForHeartbeatBucket:(id)arg1;
 - (double)metricAge;
 - (double)nextFiringDelayWithHeartbeatInterval:(double)arg1 starvingDuration:(double)arg2;
@@ -109,7 +107,6 @@
 - (void)onRest;
 - (void)removeLocationHeartbeatRequester:(id)arg1;
 - (void)resetActiveRequestSummaryVariables;
-- (void)resetOneShotDispatchTimer:(id)arg1 withStart:(unsigned long long)arg2 eventHandler:(CDUnknownBlockType)arg3;
 - (double)starvingDurationTillNow;
 - (void)updateHeartbeatTimerDelayForTimestamp:(id)arg1 withDelay:(double)arg2;
 - (void)updateLocationAwarenessHistogramsWithLocations:(id)arg1;

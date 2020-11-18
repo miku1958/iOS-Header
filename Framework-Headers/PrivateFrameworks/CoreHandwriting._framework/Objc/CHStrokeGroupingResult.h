@@ -7,14 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSSet;
 
-@interface CHStrokeGroupingResult : NSObject <NSCopying>
+@interface CHStrokeGroupingResult : NSObject <NSCopying, NSSecureCoding>
 {
     NSArray *_strokeGroupsSortedTopBottomLeftRight;
     NSArray *_textStrokeGroupsSortedByWritingOrientation;
     NSArray *_strokeGroupsSortedByWritingOrientation;
+    NSArray *_textStrokeGroupClusters;
+    NSArray *_strokeGroupClusters;
     NSSet *_textStrokeGroups;
     NSSet *_strokeGroups;
     NSSet *_createdStrokeGroups;
@@ -23,18 +26,25 @@
 
 @property (readonly, copy, nonatomic) NSSet *createdStrokeGroups; // @synthesize createdStrokeGroups=_createdStrokeGroups;
 @property (readonly, copy, nonatomic) NSSet *deletedStrokeGroups; // @synthesize deletedStrokeGroups=_deletedStrokeGroups;
+@property (readonly, copy, nonatomic) NSArray *strokeGroupClusters;
 @property (readonly, copy, nonatomic) NSSet *strokeGroups; // @synthesize strokeGroups=_strokeGroups;
 @property (readonly, copy, nonatomic) NSArray *strokeGroupsSortedByWritingOrientation;
+@property (readonly, copy, nonatomic) NSArray *textStrokeGroupClusters;
 @property (readonly, copy, nonatomic) NSSet *textStrokeGroups;
 @property (readonly, copy, nonatomic) NSArray *textStrokeGroupsSortedByWritingOrientation;
 @property (readonly, copy, nonatomic) NSArray *textStrokeGroupsSortedTopBottomLeftRight;
 
++ (BOOL)supportsSecureCoding;
 - (id)_sortedStrokeGroupsByWritingOrientationTextOnly:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToStrokeGroupingResult:(id)arg1;
 
 @end
 

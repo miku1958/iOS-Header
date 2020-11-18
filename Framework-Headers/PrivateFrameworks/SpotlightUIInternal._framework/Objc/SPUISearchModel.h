@@ -17,9 +17,8 @@
     NSString *_lastQueryString;
     BOOL _springBoardIsActive;
     BOOL _infinitePatience;
+    BOOL _queryPartiallyComplete;
     BOOL _queryComplete;
-    BOOL _queryDelayedFinished;
-    BOOL _queryDidFinish;
     BOOL _forceStableResults;
     SFResultSection *_searchThroughSection;
     NSObject<SPSearchAgentDelegate> *_delegate;
@@ -31,9 +30,9 @@
 @property BOOL forceStableResults; // @synthesize forceStableResults=_forceStableResults;
 @property BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 @property (strong) SPQueryResponse *lastResponse; // @synthesize lastResponse=_lastResponse;
+@property long long maxUISuggestions;
 @property BOOL queryComplete; // @synthesize queryComplete=_queryComplete;
-@property BOOL queryDelayedFinished; // @synthesize queryDelayedFinished=_queryDelayedFinished;
-@property BOOL queryDidFinish; // @synthesize queryDidFinish=_queryDidFinish;
+@property BOOL queryPartiallyComplete; // @synthesize queryPartiallyComplete=_queryPartiallyComplete;
 @property (strong) SPQueryTask *queryTask; // @synthesize queryTask=_queryTask;
 @property (readonly) SFResultSection *searchThroughSection; // @synthesize searchThroughSection=_searchThroughSection;
 @property (readonly) NSArray *sections;

@@ -9,6 +9,7 @@
 @protocol NTKComplicationDisplay;
 
 @protocol NTKComplicationDisplayObserver <NSObject>
+- (void)complicationDisplay:(id<NTKComplicationDisplay>)arg1 renderStatsWithTime:(double)arg2 cost:(double)arg3;
 - (void)complicationDisplayNeedsResize:(id<NTKComplicationDisplay>)arg1;
 @end
 

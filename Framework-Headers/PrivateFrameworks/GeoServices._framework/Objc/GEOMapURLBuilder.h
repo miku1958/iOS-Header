@@ -31,6 +31,7 @@
 + (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(BOOL)arg5;
 + (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(BOOL)arg5 muninViewState:(id)arg6;
 + (id)URLForCoordinate:(CDStruct_c3b9c2ee)arg1 label:(id)arg2;
++ (id)URLForCuratedCollection:(unsigned long long)arg1 provider:(int)arg2;
 + (id)URLForDirectionsFrom:(id)arg1 to:(id)arg2;
 + (id)URLForDirectionsFrom:(id)arg1 to:(id)arg2 transport:(int)arg3;
 + (id)URLForDirectionsFromHereTo:(id)arg1;
@@ -42,6 +43,7 @@
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(CDStruct_c3b9c2ee)arg4 address:(id)arg5 extraStorage:(id)arg6;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(CDStruct_c3b9c2ee)arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(BOOL)arg7;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(CDStruct_c3b9c2ee)arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(BOOL)arg7 muninViewState:(id)arg8;
++ (id)URLForPublisher:(unsigned long long)arg1 provider:(int)arg2;
 + (id)URLForSearch:(id)arg1;
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 span:(CDStruct_c3b9c2ee)arg3;
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 zoomLevel:(double)arg3;
@@ -63,9 +65,11 @@
 - (id)initForCollectionStorage:(id)arg1;
 - (id)initForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(id)arg2 label:(id)arg3;
 - (id)initForCoordinate:(CDStruct_c3b9c2ee)arg1 label:(id)arg2;
+- (id)initForCuratedCollection:(unsigned long long)arg1 provider:(int)arg2;
 - (id)initForDirectionsTo:(id)arg1;
 - (id)initForExternalBusiness:(id)arg1 id:(id)arg2 ofContentProvider:(id)arg3;
 - (id)initForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3;
+- (id)initForPublisher:(unsigned long long)arg1 provider:(int)arg2;
 - (id)initForSearch:(id)arg1;
 - (id)initForShowFavoritesType:(long long)arg1;
 - (id)initForTransitLine:(unsigned long long)arg1 withName:(id)arg2 mapRegion:(id)arg3;

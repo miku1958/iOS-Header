@@ -8,6 +8,7 @@
 
 @protocol AVTAvatarAttributeEditorLayout
 
+@property (readonly, nonatomic) BOOL RTL;
 @property (readonly, nonatomic) struct CGRect attributesContentViewFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewScrollIndicatorInsets;
@@ -20,6 +21,8 @@
 @property (readonly, nonatomic) double headerMaskingViewAlpha;
 @property (readonly, nonatomic) struct CGRect headerMaskingViewFrame;
 @property (readonly, nonatomic) double screenScale;
+@property (readonly, nonatomic) BOOL showSideGroupPicker;
+@property (readonly, nonatomic) struct CGRect sideGroupContainerFrame;
 @property (readonly, nonatomic) unsigned long long supportedLayoutOrientation;
 @property (readonly, nonatomic) struct CGRect userInfoFrame;
 @property (readonly, nonatomic) double verticalRuleAlpha;

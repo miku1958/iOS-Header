@@ -15,7 +15,7 @@
     BOOL _isService;
     BOOL _isChildService;
     BOOL _isServiceGroup;
-    BOOL _isMediaContainer;
+    BOOL _isMediaAccessoryOrStereoPair;
     BOOL _isTelevision;
     BOOL _allowsEmptyNameTextField;
     BOOL _allowsNullResettableName;
@@ -30,7 +30,7 @@
 @property (nonatomic) BOOL isAccessory; // @synthesize isAccessory=_isAccessory;
 @property (nonatomic) BOOL isChildService; // @synthesize isChildService=_isChildService;
 @property (nonatomic) BOOL isDiscoveredAccessory; // @synthesize isDiscoveredAccessory=_isDiscoveredAccessory;
-@property (nonatomic) BOOL isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
+@property (nonatomic) BOOL isMediaAccessoryOrStereoPair; // @synthesize isMediaAccessoryOrStereoPair=_isMediaAccessoryOrStereoPair;
 @property (nonatomic) BOOL isService; // @synthesize isService=_isService;
 @property (nonatomic) BOOL isServiceGroup; // @synthesize isServiceGroup=_isServiceGroup;
 @property (nonatomic) BOOL isTelevision; // @synthesize isTelevision=_isTelevision;

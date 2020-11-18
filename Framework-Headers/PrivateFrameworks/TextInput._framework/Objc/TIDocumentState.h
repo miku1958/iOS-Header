@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface TIDocumentState : NSObject <NSSecureCoding>
+@interface TIDocumentState : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_contextBeforeInput;
     NSString *_markedText;
@@ -37,6 +38,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)unboundedDocumentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)deletingBackwardsWillRemoveText;
 - (id)description;
 - (BOOL)documentIsEmpty;

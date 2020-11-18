@@ -13,8 +13,10 @@
 }
 
 @property (readonly, nonatomic) unsigned long long availableBytes;
+@property (readonly, copy, nonatomic) NSString *buildVersion;
 @property (readonly, nonatomic) double mainScreenScale;
 @property (readonly, nonatomic) struct CGSize mainScreenSizeInPixels;
+@property (readonly, copy, nonatomic) NSString *productVersion;
 @property (readonly, copy, nonatomic) NSString *serialNumber;
 
 + (id)sharedGestalt;

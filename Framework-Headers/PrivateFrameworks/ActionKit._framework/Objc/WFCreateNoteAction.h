@@ -11,17 +11,21 @@
 }
 
 + (void)getNoteContentFromInput:(id)arg1 includingImages:(BOOL)arg2 actionName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)userInterfaceProtocol;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)groupParameter;
 - (void)initializeParameters;
 - (id)inputContentClasses;
 - (BOOL)inputPassthrough;
 - (id)localizedKeyParameterDisplayName;
+- (id)prioritizedParameterKeysForRemoteExecution;
+- (BOOL)requiresRemoteExecution;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)selectedAppDidChange;
+- (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
 - (BOOL)skipsProcessingHiddenParameters;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 
 @end
 

@@ -9,7 +9,6 @@
 @class CKDServerConfiguration, NSObject;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDGlobalConfigurationOperation : CKDOperation
 {
     CKDServerConfiguration *_configuration;

@@ -19,11 +19,13 @@
 @property (readonly) BOOL has_enableTravelAdvisoriesForAutomaticBehavior;
 @property (readonly) BOOL has_kCalPreferredDaysToSyncKey;
 @property (readonly) BOOL has_kCalRemindersPreferredDaysToSyncKey;
+@property (readonly) BOOL has_privacyPaneHasBeenAcknowledgedVersion;
 @property (readonly) BOOL has_sqlProfileLoggingEnabled;
 @property (readonly) BOOL has_suggestEventLocations;
 @property (readonly) BOOL has_suggestedLocationsTestMode;
 @property (nonatomic, getter=get_kCalPreferredDaysToSyncKey, setter=set_kCalPreferredDaysToSyncKey:) long long kCalPreferredDaysToSyncKey;
 @property (nonatomic, getter=get_kCalRemindersPreferredDaysToSyncKey, setter=set_kCalRemindersPreferredDaysToSyncKey:) long long kCalRemindersPreferredDaysToSyncKey;
+@property (nonatomic, getter=get_privacyPaneHasBeenAcknowledgedVersion, setter=set_privacyPaneHasBeenAcknowledgedVersion:) long long privacyPaneHasBeenAcknowledgedVersion;
 @property (nonatomic, getter=get_sqlProfileLoggingEnabled, setter=set_sqlProfileLoggingEnabled:) BOOL sqlProfileLoggingEnabled;
 @property (nonatomic, getter=get_suggestEventLocations, setter=set_suggestEventLocations:) BOOL suggestEventLocations;
 @property (nonatomic, getter=get_suggestedLocationsTestMode, setter=set_suggestedLocationsTestMode:) BOOL suggestedLocationsTestMode;

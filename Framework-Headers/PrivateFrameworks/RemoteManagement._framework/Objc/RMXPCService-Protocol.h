@@ -11,6 +11,7 @@
 - (void)enrollDeviceChannelWithURI:(NSURL *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)enrollUserChannelWithURI:(NSURL *)arg1 authenticationCredential:(RMGenericAuthenticationCredential *)arg2 withDataSeparation:(BOOL)arg3 passcodeData:(NSData *)arg4 completionHandler:(void (^)(NSString *, NSError *))arg5;
 - (void)fetchConfigurationsWithTypes:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)managementChannelWithAccountIdentifier:(NSString *)arg1 completionHandler:(void (^)(RMManagementChannel *, NSError *))arg2;
 - (void)queryForStatusSubscriptionsWithIdentifiers:(NSArray *)arg1 fromManagementSourceWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)queryForStatusWithKeyPaths:(NSArray *)arg1 fromManagementSourceWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)sendStatusData:(NSData *)arg1 toManagementSourceWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;

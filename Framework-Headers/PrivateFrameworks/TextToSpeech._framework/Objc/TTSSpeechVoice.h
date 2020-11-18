@@ -42,6 +42,7 @@
 @property (strong, nonatomic) NSString *nonCombinedVoiceId; // @synthesize nonCombinedVoiceId=_nonCombinedVoiceId;
 @property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 
++ (id)localizedName:(id)arg1 forLanguage:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -50,6 +51,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)localizedNameForLanguage:(id)arg1;
 - (id)service;
 - (void)setService:(id)arg1;
 

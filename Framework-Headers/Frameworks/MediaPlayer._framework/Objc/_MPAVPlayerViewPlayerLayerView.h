@@ -8,6 +8,7 @@
 
 @class AVPlayerLayer;
 
+__attribute__((visibility("hidden")))
 @interface _MPAVPlayerViewPlayerLayerView : UIView
 {
 }

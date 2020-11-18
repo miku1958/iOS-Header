@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface PUDuplicateActionController : NSObject
 {
     long long _itemCount;
-    NSMutableArray *_resourceDownloadRequests;
+    NSMutableArray *_resourceLocalAvailabilityRequests;
     BOOL __canDuplicate;
     BOOL __canExtractStill;
     BOOL __didCheckDuplicateCapabilities;

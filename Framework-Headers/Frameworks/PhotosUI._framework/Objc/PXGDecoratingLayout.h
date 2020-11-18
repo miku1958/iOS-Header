@@ -16,12 +16,15 @@
     NSMutableIndexSet *_invalidatedDecoratedSpriteIndexes;
     BOOL _wantsCaptionDecorations;
     long long _selectionDecorationStyle;
-    unsigned long long _selectionDecorationAdditions;
+    unsigned long long _selectionDecorationOptions;
     id<PXGShadowSource> _shadowSource;
+    BOOL _isChangingDecoratedLayout;
+    BOOL _enabled;
     unsigned int _numberOfDecoratingSpritesPerDecoratedSprite;
     PXGLayout *_decoratedLayout;
     id<PXGLayoutContentSource> _decorationSource;
     id<PXGAssetBadgeDecorationSource> _assetBadgeDecorationSource;
+    id<PXGAssetBadgeDecorationSource> _assetProgressDecorationSource;
     id<PXGCaptionDecorationSource> _captionDecorationSource;
     id<PXGSelectionDecorationSource> _selectionDecorationSource;
     id<PXGHighlightDecorationSource> _highlightDecorationSource;
@@ -30,21 +33,28 @@
 }
 
 @property (readonly, weak, nonatomic) id<PXGAssetBadgeDecorationSource> assetBadgeDecorationSource; // @synthesize assetBadgeDecorationSource=_assetBadgeDecorationSource;
+@property (readonly, weak, nonatomic) id<PXGAssetBadgeDecorationSource> assetProgressDecorationSource; // @synthesize assetProgressDecorationSource=_assetProgressDecorationSource;
 @property (readonly, weak, nonatomic) id<PXGCaptionDecorationSource> captionDecorationSource; // @synthesize captionDecorationSource=_captionDecorationSource;
 @property (readonly, nonatomic) unsigned int debugDecorationIndex;
 @property (readonly, weak, nonatomic) id<PXGDebugDecorationSource> debugDecorationSource; // @synthesize debugDecorationSource=_debugDecorationSource;
 @property (strong, nonatomic) PXGLayout *decoratedLayout; // @synthesize decoratedLayout=_decoratedLayout;
 @property (weak, nonatomic) id<PXGLayoutContentSource> decorationSource; // @synthesize decorationSource=_decorationSource;
 @property (readonly, weak, nonatomic) id<PXGDragDecorationSource> dragDecorationSource; // @synthesize dragDecorationSource=_dragDecorationSource;
+@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, weak, nonatomic) id<PXGHighlightDecorationSource> highlightDecorationSource; // @synthesize highlightDecorationSource=_highlightDecorationSource;
 @property (readonly, nonatomic) unsigned int numberOfDecoratingSpritesPerDecoratedSprite; // @synthesize numberOfDecoratingSpritesPerDecoratedSprite=_numberOfDecoratingSpritesPerDecoratedSprite;
 @property (readonly, weak, nonatomic) id<PXGSelectionDecorationSource> selectionDecorationSource; // @synthesize selectionDecorationSource=_selectionDecorationSource;
 
 - (void).cxx_destruct;
+- (void)_applyDecoratedLayoutChangeDetails:(id)arg1;
 - (void)_invalidateDecorationForSpriteRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (void)_updateDecoratedLayout;
 - (void)_updateDecorationSources;
 - (void)_updateDecorationSprites;
+- (void)_updateReloadSprites;
+- (void)alphaDidChange;
+- (id)axContentInfoAtSpriteIndex:(unsigned int)arg1;
+- (id)axSpriteIndexes;
 - (BOOL)canHandleVisibleRectRejection;
 - (struct PXGDecorationSpriteInfo)decorationSpriteInfoForDecoratedSpriteIndex:(unsigned int)arg1 decorationIndex:(unsigned int)arg2 assetBadgeInfo:(struct PXAssetBadgeInfo)arg3 isItemSelected:(BOOL)arg4 isItemHighlighted:(BOOL)arg5 isItemDragged:(BOOL)arg6;
 - (id)description;
@@ -61,7 +71,10 @@
 - (void)screenScaleDidChange;
 - (void)setContentSource:(id)arg1;
 - (void)setLastBaseline:(double)arg1;
-- (void)sublayout:(id)arg1 didApplySpriteChangeDetails:(id)arg2;
+- (unsigned int)spriteIndexForDecorationIndex:(unsigned int)arg1 decoratingSpriteIndex:(unsigned int)arg2;
+- (unsigned int)spriteIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
+- (BOOL)spritesAreInSyncWithDecoratedLayout;
+- (void)sublayout:(id)arg1 didApplySpriteChangeDetails:(id)arg2 fromDescendentSublayout:(id)arg3;
 - (struct CGRect)sublayout:(id)arg1 visibleRectForRequestedVisibleRect:(struct CGRect)arg2;
 - (void)sublayoutDidChangeContentSize:(id)arg1;
 - (void)sublayoutDidChangeLastBaseline:(id)arg1;

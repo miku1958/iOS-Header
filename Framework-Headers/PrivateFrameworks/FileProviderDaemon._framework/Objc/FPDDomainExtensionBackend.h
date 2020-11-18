@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface FPDDomainExtensionBackend : NSObject <FPDDomainBackend>
 {
     FPDDomain *_domain;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _invalidated;
     NSMutableDictionary *_provideFileCompletionsByURL;
 }
@@ -43,13 +44,14 @@ __attribute__((visibility("hidden")))
 - (void)fetchOperationServiceOrEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithDomain:(id)arg1;
 - (void)invalidate;
-- (BOOL)isAllowedToProvideItemID:(id)arg1 toConsumerWithIdentifier:(id)arg2;
 - (BOOL)isProviderForURL:(id)arg1;
 - (void)itemChangedAtURL:(id)arg1 request:(id)arg2;
 - (void)itemForItemID:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)itemForURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)itemIDForURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)needsRootCreation;
+- (id)newFileProviderProxyWithRequest:(id)arg1;
+- (id)newFileProviderProxyWithTimeout:(BOOL)arg1 request:(id)arg2;
 - (void)reimportItemsBelowItemWithID:(id)arg1 removeCachedItems:(BOOL)arg2 markItemDataless:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)removeAllFilesWithError:(id *)arg1;
 - (void)resolveProviderItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

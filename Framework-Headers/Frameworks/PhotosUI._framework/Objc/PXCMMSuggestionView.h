@@ -38,7 +38,6 @@
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 viewModel:(id)arg2;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize)_performLayoutInWidth:(double)arg1 updateSubviewFrames:(BOOL)arg2;
 - (void)_tapGesture:(id)arg1;
 - (BOOL)_updateCombinedFaceTileImage;
@@ -53,6 +52,7 @@
 - (BOOL)test_selected;
 - (id)test_subtitle;
 - (id)test_title;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -11,7 +11,6 @@
 - (GEOURLWithHeaders *)urlForTileKey:(const struct _GEOTileKey *)arg1;
 
 @optional
-- (BOOL)allowsCookies;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)downloadsDataToDisk;
 - (NSString *)editionHeader;
@@ -23,7 +22,7 @@
 - (NSString *)mergeBaseTileEtag:(NSString *)arg1 withLocalizationTileEtag:(NSString *)arg2;
 - (BOOL)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
 - (NSObject<OS_xpc_object> *)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
-- (GEOTileData *)processTileData:(GEOTileData *)arg1 error:(id *)arg2;
+- (GEOTileData *)processTileData:(GEOTileData *)arg1 forKey:(const struct _GEOTileKey *)arg2 error:(id *)arg3;
 - (BOOL)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;

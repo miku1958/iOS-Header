@@ -8,19 +8,23 @@
 
 #import <Transparency/NSURLSessionDelegate-Protocol.h>
 
-@class NSString, TransparencyManagedDataStore;
+@class KTContextStore, KTLogClient, NSString, TransparencyManagedDataStore;
 @protocol OS_dispatch_workloop;
 
 @interface TransparencyLogSessionDelegate : NSObject <NSURLSessionDelegate>
 {
+    KTContextStore *_contextStore;
+    KTLogClient *_logClient;
     TransparencyManagedDataStore *_dataStore;
     NSObject<OS_dispatch_workloop> *_workloop;
 }
 
+@property (strong) KTContextStore *contextStore; // @synthesize contextStore=_contextStore;
 @property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak) KTLogClient *logClient; // @synthesize logClient=_logClient;
 @property (readonly) Class superclass;
 @property (strong) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
 
@@ -28,13 +32,9 @@
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)handleConsistencyProofDownload:(id)arg1 downloadData:(id)arg2;
-- (void)handleConsistencyProofDownloadFailure:(id)arg1 task:(id)arg2 error:(id)arg3;
-- (void)handleQueryResponseDownload:(id)arg1 downloadData:(id)arg2;
-- (void)handleQueryResponseDownloadFailure:(id)arg1 task:(id)arg2 error:(id)arg3;
+- (void)handleDownloadRecord:(id)arg1 downloadData:(id)arg2 downloadMetadata:(id)arg3;
+- (void)handleDownloadRecordFailure:(id)arg1 task:(id)arg2 downloadMetadata:(id)arg3 error:(id)arg4;
 - (id)initWithDataStore:(id)arg1 workloop:(id)arg2;
-- (BOOL)isResponseForConsistencyProofDownload:(id)arg1;
-- (void)markRequestDownloadFailure:(id)arg1 error:(id)arg2;
 
 @end
 

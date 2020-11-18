@@ -14,6 +14,8 @@
     NSDictionary *_appleAccountInfo;
 }
 
+@property (readonly, nonatomic) NSString *fmipDsid;
+@property (readonly, nonatomic) NSString *fmipUrl;
 @property (readonly, nonatomic) NSString *fmipWipeToken;
 
 - (void).cxx_destruct;

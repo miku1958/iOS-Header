@@ -13,13 +13,11 @@
 + (BOOL)hasCellularCapability;
 + (id)sharedInfo;
 - (void)_updateMapsAuthed;
-- (id)cellularCarrier;
 - (id)cellularCarrierIfAvailable;
 - (int)cellularDataStateIfAvailable;
 - (id)init;
-- (BOOL)isDeviceAuthorizedForCellular;
 - (id)isDeviceAuthorizedForCellularIfAvailable;
-- (BOOL)isMapsAuthorizedForCellular;
+- (void)isMapsAuthorizedForCellular:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (id)isMapsAuthorizedForCellularIfAvailable;
 
 @end

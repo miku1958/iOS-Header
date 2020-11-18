@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarView, LPComponentView, LPTextView, UIView;
+@class LPCaptionBarView, LPComponentView, LPDomainNameIndicator, LPTextView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface LPLinkViewComponents : NSObject
@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     LPCaptionBarView *_mediaTopCaptionBar;
     LPCaptionBarView *_mediaBottomCaptionBar;
     LPTextView *_quote;
+    LPDomainNameIndicator *_domainNameIndicator;
 }
 
 @property (strong, nonatomic) LPCaptionBarView *captionBar; // @synthesize captionBar=_captionBar;
+@property (strong, nonatomic) LPDomainNameIndicator *domainNameIndicator; // @synthesize domainNameIndicator=_domainNameIndicator;
 @property (strong, nonatomic) LPComponentView *media; // @synthesize media=_media;
 @property (strong, nonatomic) UIView *mediaBackground; // @synthesize mediaBackground=_mediaBackground;
 @property (strong, nonatomic) LPCaptionBarView *mediaBottomCaptionBar; // @synthesize mediaBottomCaptionBar=_mediaBottomCaptionBar;

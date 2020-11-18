@@ -8,7 +8,7 @@
 
 #import <Preferences/PSSystemPolicyForAppDelegate-Protocol.h>
 
-@class PSSystemPolicyForApp;
+@class NSString, PSSystemPolicyForApp;
 
 @interface PSThirdPartyAppController : PSSpecifierController <PSSystemPolicyForAppDelegate>
 {
@@ -17,6 +17,10 @@
 }
 
 @property (strong, nonatomic) PSSystemPolicyForApp *appPolicy; // @synthesize appPolicy=_appPolicy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 
 - (void).cxx_destruct;
@@ -28,6 +32,7 @@
 - (id)loadSpecifiers;
 - (void)postThirdPartySettingDidChangeNotificationForSpecifier:(id)arg1;
 - (void)setPreferenceValue:(id)arg1 specifier:(id)arg2;
+- (void)showController:(id)arg1 animate:(BOOL)arg2;
 - (void)showPrivacyControllerForSpecifier:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

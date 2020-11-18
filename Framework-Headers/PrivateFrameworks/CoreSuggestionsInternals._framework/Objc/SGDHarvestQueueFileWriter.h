@@ -23,6 +23,7 @@
 - (void)dealloc;
 - (id)initWithDirectory:(id)arg1 fileId:(int)arg2;
 - (void)write:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)writeEnumerator:(id)arg1 callback:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -15,12 +15,10 @@
 @interface _INPBIdentifyIncomingCallerIntentResponse : PBCodable <_INPBIdentifyIncomingCallerIntentResponse, NSSecureCoding, NSCopying>
 {
     CDStruct_bcb1eac0 _has;
-    BOOL __encodeLegacyGloryData;
     int _statusCode;
     NSArray *_callRecords;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *callRecords; // @synthesize callRecords=_callRecords;
 @property (readonly, nonatomic) unsigned long long callRecordsCount;
 @property (readonly, copy) NSString *debugDescription;

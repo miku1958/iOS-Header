@@ -19,12 +19,14 @@
     long long _type;
     UIScrollView *_scrollView;
     UIStackView *_stackView;
+    BOOL _expanded;
     id<MKPlaceServiceHoursViewControllerProtocol> _placeServiceDelegate;
     MKMapItem *_mapItem;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (weak, nonatomic) id<MKPlaceServiceHoursViewControllerProtocol> placeServiceDelegate; // @synthesize placeServiceDelegate=_placeServiceDelegate;
@@ -36,6 +38,7 @@
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (void)_contentSizeDidChange;
+- (unsigned long long)_maxRows;
 - (void)_showAllHeaderButtonTapped;
 - (void)_updateServiceHourRows;
 - (void)captureCloseAnalytics;

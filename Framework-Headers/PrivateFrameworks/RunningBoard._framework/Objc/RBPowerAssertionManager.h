@@ -30,10 +30,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_queue_didAcquireAssertion;
-- (void)_queue_invalidateAssertion:(id)arg1;
-- (void)_queue_updateProcessAssertion:(id)arg1 withState:(id)arg2;
-- (void)_queue_willInvalidateAssertion;
 - (BOOL)_unitTest_hasPowerAssertionForProcess:(id)arg1;
 - (BOOL)_unitTest_hasSystemPowerAssertion;
 - (id)_unitTest_nameOfPowerAssertionForProcess:(id)arg1;

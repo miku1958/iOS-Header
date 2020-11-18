@@ -7,7 +7,6 @@
 #import <CDDataAccess/DAAccount.h>
 
 @interface DAAccount (ReminderKitExtensions)
-- (void)_debug_resetBabysitterWithRestrictedAccountID:(id)arg1;
 - (id)rem_account;
 - (id)rem_provideAccountInfo;
 - (id)rem_saveRequest;

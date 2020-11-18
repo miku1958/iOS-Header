@@ -13,9 +13,6 @@
     UITraitCollection *_traitCollection;
 }
 
-@property (readonly, nonatomic) double emptySizeButtonHeight;
-@property (readonly, nonatomic) UIFont *emptyStateButtonFont;
-@property (readonly, nonatomic) UIFont *emptyStateFont;
 @property (readonly, nonatomic) UIFont *textFieldFont;
 @property (readonly, nonatomic) struct CGSize tileSize;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;

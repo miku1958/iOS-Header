@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <NetworkExtension/NEIKEv2RequestContext.h>
 
-@class NSArray;
+@class NSArray, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface NEIKEv2InformationalContext : NSObject
+@interface NEIKEv2InformationalContext : NEIKEv2RequestContext
 {
     unsigned int _maxRetries;
     NSArray *_privateNotifies;
@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithPrivateNotifies:(id)arg1 maxRetries:(unsigned int)arg2 retryIntervalMilliseconds:(unsigned long long)arg3 callbackQueue:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)sendCallbackSuccess:(BOOL)arg1 session:(id)arg2;
 
 @end

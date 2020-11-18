@@ -12,7 +12,8 @@
 #import <RTTUI/UITableViewDelegate-Protocol.h>
 #import <RTTUI/UITextViewDelegate-Protocol.h>
 
-@class AXDispatchTimer, CAShapeLayer, DDParsecCollectionViewController, NSDictionary, NSMutableCharacterSet, NSMutableString, NSString, RTTConversation, RTTUITextView, RTTUtterance, TUCall, UIButton, UITableView;
+@class AXDispatchTimer, CAShapeLayer, DDParsecCollectionViewController, NSDictionary, NSMutableArray, NSMutableCharacterSet, NSMutableString, NSString, RTTConversation, RTTUITextView, RTTUtterance, TUCall, UIButton, UITableView;
+@protocol BSInvalidatable;
 
 @interface RTTUIConversationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RTTUIUtteranceCellDelegate, UITextViewDelegate, RTTUIServiceCellDelegate>
 {
@@ -21,14 +22,16 @@
     UIButton *_gaButton;
     AXDispatchTimer *_ttyPredictionsTimer;
     AXDispatchTimer *_realTimeTimeout;
+    AXDispatchTimer *_muteStatusTimeout;
     NSMutableCharacterSet *_unsupportedCharacterSet;
     NSDictionary *_asciiSubstitutions;
     AXDispatchTimer *_voAnnouncementTimer;
     NSMutableString *_voAnnouncementBuffer;
-    BOOL _serviceMessageVisible;
+    NSMutableArray *_serviceUpdates;
+    id<BSInvalidatable> _sleepTimerDisabledAssertion;
     AXDispatchTimer *_arouetQuickCoalescer;
     RTTConversation *_conversation;
-    NSString *_currentServiceMessage;
+    CDUnknownBlockType _rttConversationAvailabilityCallback;
     DDParsecCollectionViewController *_lookupController;
     UITableView *_tableView;
     RTTUtterance *_currentUtterance;
@@ -37,12 +40,12 @@
 
 @property (strong, nonatomic) TUCall *call; // @synthesize call=_call;
 @property (strong, nonatomic) RTTConversation *conversation; // @synthesize conversation=_conversation;
-@property (strong, nonatomic) NSString *currentServiceMessage; // @synthesize currentServiceMessage=_currentServiceMessage;
 @property (strong, nonatomic) RTTUtterance *currentUtterance; // @synthesize currentUtterance=_currentUtterance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) DDParsecCollectionViewController *lookupController; // @synthesize lookupController=_lookupController;
+@property (copy, nonatomic) CDUnknownBlockType rttConversationAvailabilityCallback; // @synthesize rttConversationAvailabilityCallback=_rttConversationAvailabilityCallback;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
@@ -50,32 +53,41 @@
 + (id)viewControllerForCall:(id)arg1;
 + (id)viewControllerForConversation:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addServiceCellWithUpdate:(id)arg1 options:(id)arg2;
 - (BOOL)_canShowWhileLocked;
 - (void)_define:(id)arg1;
 - (void)_processRealtimeTimeout;
+- (void)_removeServiceCellWithUpdate:(id)arg1;
+- (void)_replaceServiceCellWithOldUpdate:(id)arg1 withNewUpdate:(id)arg2 options:(id)arg3;
 - (void)_scrollToIndexPathIfNecessary:(id)arg1 animated:(BOOL)arg2;
-- (void)_updateServiceCellWithString:(id)arg1;
+- (void)_updateMuteButtonState;
+- (void)addServiceCellWithUpdate:(id)arg1 options:(id)arg2;
 - (id)addUtterance:(id)arg1;
 - (void)callDidConnect:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)cannedResponses;
-- (id)cellAtIndexPath:(id)arg1;
 - (id)contactDisplayString;
 - (id)currentCall;
+- (BOOL)currentCallIsDowngraded;
+- (BOOL)currentCallIsOnHold;
 - (id)currentContactPath;
 - (void)dealloc;
 - (void)deviceDidReceiveString:(id)arg1 forUtterance:(id)arg2;
 - (void)gaButtonPressed:(id)arg1;
 - (id)init;
 - (id)inputTextView;
-- (id)lastRowPathForUtterance:(id)arg1;
+- (id)lastCellRowPathForUtterance:(id)arg1;
+- (id)lastConversationRowPathForUtterance:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)onHoldMessage;
 - (void)realtimeTextDidChange;
+- (void)removeServiceCellWithUpdate:(id)arg1;
+- (void)replaceServiceCellWithOldUpdate:(id)arg1 withNewUpdate:(id)arg2 options:(id)arg3;
 - (void)replyCell:(id)arg1 didActivateWithReplyButtonType:(unsigned long long)arg2;
+- (id)serviceUpdateCellAtIndexPath:(id)arg1;
 - (void)setTextViewUtterance:(id)arg1;
 - (void)setupTableView;
 - (void)shareCallInfo:(id)arg1;
+- (void)showCallEnded;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -86,16 +98,20 @@
 - (id)textViewUtterance;
 - (void)toggleMute:(id)arg1;
 - (void)updateCallActiveStatus:(BOOL)arg1;
-- (void)updateGAButton:(BOOL)arg1;
+- (void)updateCallDowngradeStatus;
+- (void)updateCallHold:(id)arg1;
+- (void)updateGAButton;
+- (void)updateInputEnabled;
 - (void)updateMuteButton;
-- (void)updateServiceCellWithString:(id)arg1;
 - (void)updateTableViewSizeAnimated:(BOOL)arg1;
 - (void)updateUtterance:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateViewForKeyboard:(id)arg1;
 - (void)updateVoiceOverAnnouncement:(id)arg1;
+- (id)utteranceCellAtIndexPath:(id)arg1;
 - (void)utteranceCellDidUpdateContent:(id)arg1;
 - (BOOL)utteranceIsSelected;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -8,6 +8,7 @@
 
 @protocol CADAccessInterface
 - (void)CADDatabaseGetAccess:(void (^)(int, BOOL, BOOL))arg1;
+- (void)CADDatabaseResetWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSetInitializationOptions:(CADDatabaseInitializationOptions *)arg1 reply:(void (^)(int))arg2;
 @end
 

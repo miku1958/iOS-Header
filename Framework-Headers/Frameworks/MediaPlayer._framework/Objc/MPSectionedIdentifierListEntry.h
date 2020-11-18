@@ -12,6 +12,7 @@
 
 @class MPSectionedIdentifierListEntryPositionKey, NSArray, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListEntry : NSObject <_MPSectionedIdentifierListEncodableNextEntriesProviding, NSSecureCoding, MPSectionedIdentifierListEnumerationResult>
 {
     NSMutableArray *_nextEntries;

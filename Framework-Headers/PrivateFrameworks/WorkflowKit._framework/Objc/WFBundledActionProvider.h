@@ -6,9 +6,13 @@
 
 #import <WorkflowKit/WFActionProvider.h>
 
+@class NSSet;
+
 @interface WFBundledActionProvider : WFActionProvider
 {
 }
+
+@property (readonly, nonatomic) NSSet *identifiersOfActionsDisabledOnWatch;
 
 - (id)actionDefinitionsWithIdentifiers:(id)arg1;
 - (id)availableActionIdentifiers;

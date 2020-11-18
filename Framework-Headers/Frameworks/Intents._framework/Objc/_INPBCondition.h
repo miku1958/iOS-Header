@@ -17,11 +17,9 @@
     struct {
         unsigned int conditionalOperator:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _conditionalOperator;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int conditionalOperator; // @synthesize conditionalOperator=_conditionalOperator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

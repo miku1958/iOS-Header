@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_hasOngoingMorphRestore;
 - (long long)_interfaceOrientationForContainerViewController:(id)arg1;
 - (void)_layoutContainerViewControllers:(id)arg1;
 - (void)_layoutInterfaceOrientationUnlockedContainerViewControllers;
@@ -37,6 +38,7 @@
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)addContainerViewController:(id)arg1;
 - (void)containerViewControllerAcquireInterfaceOrientationLock:(id)arg1;
+- (id)containerViewControllerForPictureInPictureViewController:(id)arg1;
 - (void)containerViewControllerRelinquishInterfaceOrientationLock:(id)arg1;
 - (void)containerViewControllerRequiredInterfaceOrientationDidChange:(id)arg1;
 - (void)dealloc;

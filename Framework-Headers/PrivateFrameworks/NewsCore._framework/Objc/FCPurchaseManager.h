@@ -49,10 +49,9 @@
 - (void)_purchaseFailedWithProductID:(id)arg1 transactionState:(long long)arg2 transactionError:(id)arg3 ongoingPurchaseEntry:(id)arg4;
 - (void)activityObservingApplicationDidEnterBackground;
 - (BOOL)anyOngoingPurchases;
-- (void)authenticateAppleIDWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cleanupStaleOngoingPurchaseEntries;
 - (void)clearAllOngoingPurchaseEntries;
-- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurcase:(BOOL)arg2;
+- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurchase:(BOOL)arg2;
 - (void)finishPurchaseTransactionWithProductID:(id)arg1;
 - (id)init;
 - (id)initWithCloudContext:(id)arg1 purchaseIntegrityChecker:(id)arg2 purchaseReceiptProvider:(id)arg3 paymentTransactionManager:(id)arg4 bundleSubscriptionManager:(id)arg5 keyValueStoreOption:(unsigned long long)arg6;

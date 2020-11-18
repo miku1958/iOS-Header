@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXAssetActionPerformer.h>
 
-@class NSArray, NSDictionary, PHPerson, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource;
+@class NSArray, NSDictionary, NSString, PHPerson, PXPhotoKitAssetsDataSourceManager, PXPhotoKitImportStatusManager, PXPhotosDataSource, PXSectionedObjectReference;
 
 @interface PXPhotoKitAssetActionPerformer : PXAssetActionPerformer
 {
@@ -15,22 +15,31 @@
     NSDictionary *_assetsByAssetCollection;
     PXPhotoKitAssetsDataSourceManager *_photoKitDataSourceManager;
     PHPerson *_person;
+    PXSectionedObjectReference *_objectReference;
+    PXPhotoKitImportStatusManager *_importStatusManager;
+    NSString *_importSessionID;
 }
 
 @property (readonly, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property (readonly, nonatomic) NSDictionary *assetsByAssetCollection; // @synthesize assetsByAssetCollection=_assetsByAssetCollection;
+@property (strong, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
+@property (strong, nonatomic) PXPhotoKitImportStatusManager *importStatusManager; // @synthesize importStatusManager=_importStatusManager;
+@property (strong, nonatomic) PXSectionedObjectReference *objectReference; // @synthesize objectReference=_objectReference;
 @property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property (strong, nonatomic) PXPhotoKitAssetsDataSourceManager *photoKitDataSourceManager; // @synthesize photoKitDataSourceManager=_photoKitDataSourceManager;
 @property (readonly, nonatomic) PXPhotosDataSource *photosDataSourceSnapshot;
 @property (nonatomic) BOOL shouldSkipUserConfirmation; // @synthesize shouldSkipUserConfirmation=_shouldSkipUserConfirmation;
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (BOOL)canPerformOnImplicitSelection;
 + (BOOL)canPerformOnSubsetOfSelection;
 + (BOOL)canPerformWithActionManager:(id)arg1;
++ (BOOL)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
++ (id)createActivityWithActionManager:(id)arg1;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
-+ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
 + (id)createPreviewActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 selectionSnapshot:(id)arg2 person:(id)arg3;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
 - (void).cxx_destruct;
 - (id)_indexPathsInPhotosDataSource:(id)arg1;
 - (id)createPerformerWithClass:(Class)arg1 actionType:(id)arg2;

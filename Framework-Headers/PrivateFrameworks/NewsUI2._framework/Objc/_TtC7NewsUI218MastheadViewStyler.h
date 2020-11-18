@@ -11,7 +11,6 @@
 @interface _TtC7NewsUI218MastheadViewStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *baseStyler;
-    MISSING_TYPE *scrollingBehavior;
 }
 
 @end

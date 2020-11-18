@@ -15,5 +15,6 @@
 - (void)_cnui_applyContactStyle;
 - (void)abSetLayoutDebuggingColor:(id)arg1;
 - (id)tintColorOverride;
+- (id)tintColorOverrideDarkened;
 @end
 

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface ICMasterDeviceBrowser : NSObject
@@ -15,6 +16,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_browsers;
     NSMutableArray *_suspendedBrowsers;
     long long _numberOfBrowsingBrowsers;
+    NSObject<OS_dispatch_source> *_suspensionTimer;
+    NSObject<OS_dispatch_queue> *_suspensionTimerQueue;
     id _ptpDevManager;
     id _msDevManager;
 }
@@ -30,7 +33,9 @@ __attribute__((visibility("hidden")))
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
 - (id)init;
+- (void)notifySuspension:(unsigned long long)arg1;
 - (void)removeBrowser:(id)arg1;
+- (void)runSuspensionTimer:(BOOL)arg1;
 - (int)start:(id)arg1;
 - (BOOL)startMSCameraBrowser;
 - (BOOL)startPTPCameraBrowser;

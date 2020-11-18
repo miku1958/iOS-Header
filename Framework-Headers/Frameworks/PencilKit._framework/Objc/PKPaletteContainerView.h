@@ -20,7 +20,6 @@
     NSLayoutConstraint *_contentViewBottomConstraint;
     NSLayoutConstraint *_contentViewLeftConstraint;
     NSLayoutConstraint *_contentViewRightConstraint;
-    NSLayoutConstraint *_contentViewHeightConstraint;
     PKAccessoryView *_accessoryView;
     NSLayoutConstraint *_accessoryViewTopConstraint;
     NSLayoutConstraint *_accessoryViewBottomConstraint;
@@ -39,7 +38,6 @@
 @property (strong, nonatomic) NSLayoutConstraint *accessoryViewWidthConstraint; // @synthesize accessoryViewWidthConstraint=_accessoryViewWidthConstraint;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *contentViewHeightConstraint; // @synthesize contentViewHeightConstraint=_contentViewHeightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewLeftConstraint; // @synthesize contentViewLeftConstraint=_contentViewLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewRightConstraint; // @synthesize contentViewRightConstraint=_contentViewRightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewTopConstraint; // @synthesize contentViewTopConstraint=_contentViewTopConstraint;

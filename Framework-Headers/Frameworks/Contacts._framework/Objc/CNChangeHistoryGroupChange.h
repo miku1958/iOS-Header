@@ -18,12 +18,16 @@
     CNChangeHistoryAnchor *_changeAnchor;
     NSNumber *_changeID;
     NSString *_externalID;
+    NSString *_externalURI;
+    NSString *_externalModificationTag;
 }
 
 @property (strong, nonatomic) CNChangeHistoryAnchor *changeAnchor; // @synthesize changeAnchor=_changeAnchor;
 @property (strong, nonatomic) NSNumber *changeID; // @synthesize changeID=_changeID;
 @property (nonatomic) long long changeType; // @synthesize changeType=_changeType;
 @property (strong, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
+@property (strong, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag=_externalModificationTag;
+@property (strong, nonatomic) NSString *externalURI; // @synthesize externalURI=_externalURI;
 @property (strong, nonatomic) CNGroup *group; // @synthesize group=_group;
 @property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 

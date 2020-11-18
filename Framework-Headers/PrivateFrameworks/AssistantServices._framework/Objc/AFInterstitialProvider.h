@@ -27,7 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)_invalidate;
-- (void)_performNextAction;
+- (void)_performNextActionWithExpectedDelay:(double)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 recordRoute:(id)arg2 isVoiceTrigger:(BOOL)arg3 isDucking:(BOOL)arg4 isTwoShot:(BOOL)arg5 speechEndHostTime:(unsigned long long)arg6 context:(id)arg7 delegate:(id)arg8;
 - (void)invalidate;

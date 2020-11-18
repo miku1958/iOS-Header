@@ -10,15 +10,15 @@
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString, PUAbstractNavigationBanner, UIViewController, _UINavigationControllerPalette;
-@protocol PXNavigationRoot;
 
 @interface PUNavigationController : UINavigationController <PXForcedDismissableViewController, UINavigationControllerDelegate>
 {
     BOOL _pu_preventsAutorotation;
+    BOOL _pu_alwaysForwardsPreferredStatusBarStyle;
+    BOOL _pu_alwaysForwardsPrefersStatusBarHidden;
     CDUnknownBlockType _ppt_onDidShowViewControllerBlock;
     PUAbstractNavigationBanner *__banner;
     _UINavigationControllerPalette *__palette;
-    id<PXNavigationRoot> _navigationRoot;
     unsigned long long _pu_supportedInterfaceOrientations;
     long long __barStyle;
     UIViewController *__currentToolbarViewController;
@@ -31,8 +31,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<PXNavigationRoot> navigationRoot; // @synthesize navigationRoot=_navigationRoot;
 @property (copy, nonatomic, setter=ppt_setOnDidShowViewControllerBlock:) CDUnknownBlockType ppt_onDidShowViewControllerBlock; // @synthesize ppt_onDidShowViewControllerBlock=_ppt_onDidShowViewControllerBlock;
+@property (nonatomic, setter=pu_setAlwaysForwardsPreferredStatusBarStyle:) BOOL pu_alwaysForwardsPreferredStatusBarStyle; // @synthesize pu_alwaysForwardsPreferredStatusBarStyle=_pu_alwaysForwardsPreferredStatusBarStyle;
+@property (nonatomic, setter=pu_setAlwaysForwardsPreferredStatusBarHidden:) BOOL pu_alwaysForwardsPrefersStatusBarHidden; // @synthesize pu_alwaysForwardsPrefersStatusBarHidden=_pu_alwaysForwardsPrefersStatusBarHidden;
 @property (readonly, nonatomic) BOOL pu_preventsAutorotation; // @synthesize pu_preventsAutorotation=_pu_preventsAutorotation;
 @property (readonly, nonatomic) unsigned long long pu_supportedInterfaceOrientations; // @synthesize pu_supportedInterfaceOrientations=_pu_supportedInterfaceOrientations;
 @property (readonly) Class superclass;
@@ -42,12 +43,12 @@
 - (BOOL)_canShowWhileLocked;
 - (void)_commonPUNavigationControllerInitialization;
 - (id)_extendedToolbar;
-- (void)_insertNavigationDisplayModeButtonItem;
 - (BOOL)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
-- (void)_removeNavigationDisplayModeButtonItem;
 - (void)_setCurrentToolbarViewController:(id)arg1 animated:(BOOL)arg2;
-- (void)_setNavigationBarHidden:(BOOL)arg1 edge:(unsigned long long)arg2 duration:(double)arg3;
 - (void)_updateBarStyle;
+- (void)_updateStatusBarOverrides;
+- (id)childViewControllerForStatusBarHidden;
+- (id)childViewControllerForStatusBarStyle;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithRootViewController:(id)arg1;
@@ -64,8 +65,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewController:(id)arg1 willSetupInitialBarsVisibilityOnViewWillAppearAnimated:(BOOL)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

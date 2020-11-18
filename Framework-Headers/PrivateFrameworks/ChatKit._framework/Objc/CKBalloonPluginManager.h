@@ -8,7 +8,7 @@
 
 #import <ChatKit/CKAppInstallationWatcherObserver-Protocol.h>
 
-@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
 @interface CKBalloonPluginManager : NSObject <CKAppInstallationWatcherObserver>
 {
@@ -28,7 +28,7 @@
     NSArray *_visiblePlugins;
     NSArray *_cachedPotentiallyVisiblePlugins;
     NSArray *_favoriteAppStripPlugins;
-    NSMutableSet *_currentExtensionConsumers;
+    NSHashTable *_currentExtensionConsumers;
     NSDictionary *_pluginVersionMap;
     NSDictionary *_pluginSeenMap;
     NSDictionary *_pluginIndexPathMap;
@@ -50,7 +50,7 @@
 @property (strong, nonatomic) NSArray *allPlugins; // @synthesize allPlugins=_allPlugins;
 @property (nonatomic, getter=isAppStoreAutoEnableToggled) BOOL appStoreAutoEnableToggled; // @synthesize appStoreAutoEnableToggled=_appStoreAutoEnableToggled;
 @property (strong, nonatomic) NSArray *cachedPotentiallyVisiblePlugins; // @synthesize cachedPotentiallyVisiblePlugins=_cachedPotentiallyVisiblePlugins;
-@property (strong, nonatomic) NSMutableSet *currentExtensionConsumers; // @synthesize currentExtensionConsumers=_currentExtensionConsumers;
+@property (strong, nonatomic) NSHashTable *currentExtensionConsumers; // @synthesize currentExtensionConsumers=_currentExtensionConsumers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *disabledPlugins;
@@ -148,7 +148,6 @@
 - (BOOL)isPluginSeenWithInstalledVersion:(id)arg1;
 - (BOOL)isPluginVisible:(id)arg1;
 - (BOOL)isViewController:(id)arg1 fromPluginWithIdentifier:(id)arg2;
-- (id)lastLaunchedPlugin;
 - (long long)lastViewedPluginIndex;
 - (unsigned long long)launchStatusForPlugin:(id)arg1;
 - (id)launchTimeForPlugin:(id)arg1;
@@ -162,7 +161,6 @@
 - (void)regeneratePluginIndexPaths;
 - (void)reloadInstalledApps:(id)arg1;
 - (void)removeAppWithIdentifier:(id)arg1;
-- (void)removeExtensionConsumer:(id)arg1;
 - (void)removeVisibleInstallationWithID:(id)arg1;
 - (void)saveWithNotification:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1 forPlugin:(id)arg2;

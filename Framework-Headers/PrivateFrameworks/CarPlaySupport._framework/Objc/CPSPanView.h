@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <CarPlayUI/CPUIPassthroughView.h>
 
 #import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CPSPanButton, NSString;
 @protocol CPSPanViewDelegate;
 
-@interface CPSPanView : UIView <UIGestureRecognizerDelegate>
+@interface CPSPanView : CPUIPassthroughView <UIGestureRecognizerDelegate>
 {
     CPSPanButton *_panLeftButton;
     CPSPanButton *_panRightButton;

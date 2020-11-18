@@ -15,16 +15,16 @@
     id<IMConnectionMonitorDelegate> _delegate;
 }
 
-@property (nonatomic) id<IMConnectionMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<IMConnectionMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, setter=setDataConnectionActive:) BOOL isDataConnectionActive;
 @property (readonly, nonatomic) BOOL isImmediatelyReachable;
 @property (readonly, strong, nonatomic) NSString *remoteHost; // @synthesize remoteHost=_remoteHost;
 @property (readonly, nonatomic) BOOL requiresDataConnectionActivation;
 
 + (id)alloc;
+- (void).cxx_destruct;
 - (void)_setup;
 - (void)clear;
-- (void)dealloc;
 - (void)goConnectedWithLocalSocketAddress:(id)arg1 remoteSocketAddress:(id)arg2;
 - (void)goDisconnected;
 - (id)initWithRemoteHost:(id)arg1 delegate:(id)arg2;

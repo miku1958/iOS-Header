@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)_embeddedActivityViewController;
 - (id)_systemImageName;
 - (id)activityViewController;
-- (BOOL)canPerformWithActivityItems:(id)arg1;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 
 @end

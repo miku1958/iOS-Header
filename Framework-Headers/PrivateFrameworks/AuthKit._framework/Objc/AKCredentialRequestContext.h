@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAuthorizationRequest, AKPasswordRequest, NSArray, NSData, NSNumber, NSString, NSUUID, NSValue;
+@class AKAuthorizationRequest, AKAuthorizationUpgradeContext, AKPasswordRequest, NSArray, NSData, NSNumber, NSString, NSUUID, NSValue;
 
-@interface AKCredentialRequestContext : NSObject <NSSecureCoding>
+@interface AKCredentialRequestContext : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _passcodeProtected;
     BOOL _shouldForceUI;
@@ -21,6 +22,7 @@
     BOOL _isWebLogin;
     BOOL _isFirstPartyLogin;
     BOOL _isRapportLogin;
+    BOOL _isEligibleForUpgradeFromPassword;
     NSString *_informativeText;
     NSString *_iconName;
     NSData *_iconData;
@@ -35,6 +37,7 @@
     NSString *_proxiedDeviceName;
     NSString *_proxiedDeviceClass;
     NSString *_proxiedClientServiceID;
+    AKAuthorizationUpgradeContext *_upgradeContext;
     NSUUID *_requestIdentifier;
     AKAuthorizationRequest *_authorizationRequest;
     AKPasswordRequest *_passwordRequest;
@@ -46,6 +49,7 @@
 @property (copy, nonatomic) NSNumber *_iconScale; // @synthesize _iconScale;
 @property (copy, nonatomic) NSValue *_iconSize; // @synthesize _iconSize;
 @property (copy, nonatomic) NSString *_informativeText; // @synthesize _informativeText;
+@property (readonly, nonatomic) BOOL _isEligibleForUpgradeFromPassword; // @synthesize _isEligibleForUpgradeFromPassword;
 @property (nonatomic) BOOL _isFirstPartyLogin; // @synthesize _isFirstPartyLogin;
 @property (nonatomic) BOOL _isRapportLogin; // @synthesize _isRapportLogin;
 @property (nonatomic) BOOL _isWebLogin; // @synthesize _isWebLogin;
@@ -62,6 +66,7 @@
 @property (nonatomic) BOOL _shouldForceUI; // @synthesize _shouldForceUI;
 @property (nonatomic) BOOL _shouldSkipAuthorizationUI; // @synthesize _shouldSkipAuthorizationUI;
 @property (nonatomic) BOOL _shouldSkipBiometrics; // @synthesize _shouldSkipBiometrics;
+@property (readonly, nonatomic) AKAuthorizationUpgradeContext *_upgradeContext; // @synthesize _upgradeContext;
 @property (strong, nonatomic) AKAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
 @property (strong, nonatomic) NSArray *credentialRequests;
 @property (strong, nonatomic) AKPasswordRequest *passwordRequest; // @synthesize passwordRequest=_passwordRequest;
@@ -74,6 +79,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUpgradeContext:(id)arg1;
 
 @end
 

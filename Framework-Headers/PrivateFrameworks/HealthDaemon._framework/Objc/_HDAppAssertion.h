@@ -20,8 +20,8 @@
     HDAppAssertionManager *_assertionManager;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_pendingLaunchCompletions;
-    NSMutableSet *_processAssertions;
     NSObject<OS_dispatch_source> *_processDeathSource;
+    NSMutableSet *_processAssertions;
 }
 
 @property (weak, nonatomic) HDAppAssertionManager *assertionManager; // @synthesize assertionManager=_assertionManager;
@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) double nextLaunchAttempt;
 @property (readonly, nonatomic) NSMutableDictionary *pendingDataTypeCodesToAnchors; // @synthesize pendingDataTypeCodesToAnchors=_pendingDataTypeCodesToAnchors;
 @property (strong, nonatomic) NSMutableDictionary *pendingLaunchCompletions; // @synthesize pendingLaunchCompletions=_pendingLaunchCompletions;
-@property (strong, nonatomic) NSMutableSet *processAssertions; // @synthesize processAssertions=_processAssertions;
+@property (readonly, nonatomic) NSMutableSet *processAssertions; // @synthesize processAssertions=_processAssertions;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *processDeathSource; // @synthesize processDeathSource=_processDeathSource;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

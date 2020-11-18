@@ -12,8 +12,8 @@
 #import <SpringBoard/SBSceneViewDelegate-Protocol.h>
 #import <SpringBoard/SBSceneViewStatusBarAssertionObserver-Protocol.h>
 
-@class MTLumaDodgePillSettings, NSHashTable, NSMutableArray, NSString, SBDeviceApplicationSceneView, SBFHomeGrabberSettings, SBHomeGrabberView, SBSceneHandle, SBSceneViewStatusBarAssertion, UIApplicationSceneDeactivationAssertion, UIStatusBar, UIView;
-@protocol BSInvalidatable, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
+@class MTLumaDodgePillSettings, NSHashTable, NSMutableArray, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneView, SBFHomeGrabberSettings, SBHomeGrabberView, SBSceneViewStatusBarAssertion, UIApplicationSceneDeactivationAssertion, UIStatusBar, UIView;
+@protocol BSInvalidatable, SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
 @interface SBDeviceApplicationSceneViewController : SBApplicationSceneViewController <SBDeviceApplicationSceneOverlayViewProviderDelegate, SBDeviceApplicationSceneHandleObserver, SBSceneViewDelegate, SBSceneViewStatusBarAssertionObserver, SBDeviceApplicationSceneViewControlling>
 {
@@ -27,13 +27,14 @@
     SBFHomeGrabberSettings *_homeGrabberSettings;
     BOOL _rendersWhileLocked;
     BOOL _shouldRasterizeSceneHostView;
+    long long _homeGrabberDisplayMode;
     NSHashTable *_statusBarAssertions;
     NSString *_sceneHostViewMinificationFilter;
-    long long _homeGrabberDisplayMode;
     MTLumaDodgePillSettings *_homeGrabberPillSettings;
 }
 
 @property (weak, nonatomic) id<SBApplicationSceneViewControllingStatusBarDelegate> applicationSceneStatusBarDelegate;
+@property (strong, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
 @property (readonly, nonatomic) long long contentInterfaceOrientation;
 @property (readonly, nonatomic) struct CGSize contentReferenceSize;
 @property (strong, nonatomic) UIView *customContentView;
@@ -47,7 +48,7 @@
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
 @property (nonatomic) BOOL rendersWhileLocked; // @synthesize rendersWhileLocked=_rendersWhileLocked;
-@property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 @property (copy, nonatomic) NSString *sceneHostViewMinificationFilter; // @synthesize sceneHostViewMinificationFilter=_sceneHostViewMinificationFilter;
 @property (readonly, nonatomic, getter=_sceneView) SBDeviceApplicationSceneView *sceneView; // @dynamic sceneView;
 @property (nonatomic) BOOL shouldRasterizeSceneHostView; // @synthesize shouldRasterizeSceneHostView=_shouldRasterizeSceneHostView;
@@ -56,12 +57,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)SB_conformsToSceneLayoutStatusBarAssertionProviding;
+- (BOOL)_activeOverlaysWantResignActiveAssertion;
 - (void)_addFakeStatusBarWithStyleRequest:(id)arg1 enabledParts:(long long)arg2;
 - (BOOL)_canShowWhileLocked;
 - (BOOL)_configureFakeStatusBarWithCurrentStyleRequestCreatingIfNecessary;
 - (void)_configureForCurrentSecureDisplayState;
 - (void)_configureForSecureDisplay:(BOOL)arg1;
 - (void)_createSceneOverlayViewProvidersIfNecessary;
+- (void)_deactivateOverlayForViewProvider:(id)arg1;
 - (void)_destroySceneOverlayViewProviders;
 - (void)_didDisableSecureDisplay;
 - (BOOL)_isApplicationStatusBarHidden;

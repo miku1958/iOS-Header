@@ -29,6 +29,8 @@
     BOOL _displayDescriptorCallbackEnabled;
 }
 
+@property (nonatomic) double autoAdvanceDuration;
+@property (nonatomic) BOOL autoAdvanceEnabled;
 @property (nonatomic) int inputContractionMode;
 @property (nonatomic) BOOL inputEightDotBraille;
 @property (nonatomic) BOOL wordWrapEnabled;
@@ -73,6 +75,7 @@
 - (unsigned int)persistentKeyModifiers;
 - (struct _NSRange)rangeOfCellRepresentingCharacterAtIndex:(long long)arg1;
 - (void)removeDisplayWithBluetoothDeviceAddress:(id)arg1;
+- (void)resetEditingManager;
 - (void)selectAllForToken:(long long)arg1;
 - (void)setAggregatedStatus:(id)arg1;
 - (void)setAlertString:(id)arg1 timeout:(double)arg2 priority:(int)arg3;
@@ -87,6 +90,7 @@
 - (void)setExpandedStatusDisplayModeWithStatus:(id)arg1;
 - (void)setFocused:(BOOL)arg1 forToken:(long long)arg2;
 - (void)setKeepConnectionAlive:(BOOL)arg1;
+- (void)setLastUserInteractionTime:(double)arg1;
 - (void)setMainAttributedString:(id)arg1;
 - (void)setMasterStatusCellIndex:(long long)arg1;
 - (void)setPersistentKeyModifiers:(unsigned int)arg1;

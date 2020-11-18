@@ -6,11 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@interface PPTopicMetadata : NSObject <NSCopying, NSSecureCoding>
+@class NSSet;
+
+@interface PPTopicMetadata : NSObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
+    BOOL _exactMatchInSourceText;
     unsigned short _impressionCount;
     unsigned short _occurrencesInSource;
     unsigned short _algorithmResultPosition;
@@ -19,16 +23,19 @@
 
 @property (readonly, nonatomic) unsigned short algorithmResultCount; // @synthesize algorithmResultCount=_algorithmResultCount;
 @property (readonly, nonatomic) unsigned short algorithmResultPosition; // @synthesize algorithmResultPosition=_algorithmResultPosition;
+@property (readonly, nonatomic) BOOL exactMatchInSourceText; // @synthesize exactMatchInSourceText=_exactMatchInSourceText;
+@property (readonly, nonatomic) NSSet *featureNames;
 @property (readonly, nonatomic) unsigned short impressionCount; // @synthesize impressionCount=_impressionCount;
 @property (readonly, nonatomic) unsigned short occurrencesInSource; // @synthesize occurrencesInSource=_occurrencesInSource;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureValueForName:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImpressionCount:(unsigned short)arg1 occurrencesInSource:(unsigned short)arg2 algorithmResultPosition:(unsigned short)arg3 algorithmResultCount:(unsigned short)arg4;
+- (id)initWithImpressionCount:(unsigned short)arg1 occurrencesInSource:(unsigned short)arg2 algorithmResultPosition:(unsigned short)arg3 algorithmResultCount:(unsigned short)arg4 exactMatchInSourceText:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTopicMetadata:(id)arg1;
 

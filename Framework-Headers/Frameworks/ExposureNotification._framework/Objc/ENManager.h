@@ -148,7 +148,7 @@
 - (void)showBuddyForRegion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)signWithDeviceIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startTestVerificationSessionWithCode:(id)arg1 region:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)triggerNotificationOfType:(int)arg1 appBundleIdentifier:(id)arg2 interval:(id)arg3 region:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)triggerNotificationOfType:(int)arg1 appBundleIdentifier:(id)arg2 classificationName:(id)arg3 interval:(id)arg4 region:(id)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end
 

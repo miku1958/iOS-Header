@@ -6,15 +6,15 @@
 
 #import <NewsCore/FCBundleSubscriptionProviderType-Protocol.h>
 #import <NewsCore/FCPurchaseProviderType-Protocol.h>
-#import <NewsCore/NSMutableCopying-Protocol.h>
+#import <NewsCore/NFMutableCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
 @class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
-@protocol FCTodayPrivateData <NSObject, NSMutableCopying, FCPurchaseProviderType, FCBundleSubscriptionProviderType>
+@protocol FCTodayPrivateData <NSObject, NFMutableCopying, FCPurchaseProviderType, FCBundleSubscriptionProviderType>
 
-@property (readonly, copy, nonatomic) NSSet *autoFavoriteTagIDs;
+@property (readonly, copy, nonatomic) NSArray *autoFavoriteTagIDs;
 @property (readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
 @property (readonly, copy, nonatomic) id<FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @property (readonly, copy, nonatomic) NSSet *mutedTagIDs;

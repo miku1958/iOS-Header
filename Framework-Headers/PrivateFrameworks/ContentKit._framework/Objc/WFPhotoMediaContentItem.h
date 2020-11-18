@@ -12,22 +12,27 @@
 
 @interface WFPhotoMediaContentItem : WFGenericFileContentItem <WFContentItemClass>
 {
+    long long _library;
     WFFileType *_preferredFileType;
 }
 
 @property (readonly, nonatomic) PHAsset *asset;
+@property (nonatomic) long long library; // @synthesize library=_library;
 @property (strong, nonatomic) WFFileType *preferredFileType; // @synthesize preferredFileType=_preferredFileType;
 
 + (id)contentCategories;
 + (id)defaultSourceForRepresentation:(id)arg1;
++ (id)fetchOptionsForLibrary:(long long)arg1;
 + (id)filterDescription;
 + (BOOL)hasLibrary;
 + (BOOL)isAvailableOnPlatform:(long long)arg1;
 + (id)itemWithAssetIdentifier:(id)arg1;
 + (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2;
-+ (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2 nameIfKnown:(id)arg3;
-+ (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2 nameIfKnown:(id)arg3 contentSource:(id)arg4;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2 assetFile:(id)arg3;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2 assetFile:(id)arg3 nameIfKnown:(id)arg4;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2 assetFile:(id)arg3 nameIfKnown:(id)arg4 attributionSet:(id)arg5;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 + (id)itemsWithBurstIdentifier:(id)arg1;
 + (id)outputTypes;
 + (id)ownedPasteboardTypes;

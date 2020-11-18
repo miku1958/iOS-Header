@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIGestureRecognizer, UIMultiSelectInteraction;
+@class NSIndexPath, UIGestureRecognizer, UIMultiSelectInteraction;
 
 @protocol UIMultiSelectInteractionDelegate <NSObject>
 - (void)automaticallyTransitionToMultiSelectModeKeepingCurrentSelection:(BOOL)arg1;
@@ -25,6 +25,7 @@
 - (void)didCancelMultiSelectInteraction:(UIMultiSelectInteraction *)arg1 atPoint:(struct CGPoint)arg2;
 - (BOOL)interaction:(UIMultiSelectInteraction *)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2;
 - (BOOL)multiSelectInteractionGestureShouldPreventDragLiftGesture:(UIGestureRecognizer *)arg1;
+- (BOOL)shouldAllowSelectionExtensionAtIndexPath:(NSIndexPath *)arg1;
 - (BOOL)shouldBeginMultiSelectInteraction:(UIMultiSelectInteraction *)arg1 atPoint:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 @end
 

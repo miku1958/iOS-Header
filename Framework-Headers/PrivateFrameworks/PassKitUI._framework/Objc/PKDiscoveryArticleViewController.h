@@ -65,6 +65,7 @@
 - (void)_leftScreenEdgePanSwipeGesture:(id)arg1;
 - (void)_loadMedia:(id)arg1 forShelfViewAtIndexPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
+- (void)_performProvisioningCTATapped:(id)arg1 callToAction:(id)arg2;
 - (id)_shelfForIndexPath:(id)arg1;
 - (void)_systemTextSizeChanged;
 - (void)_updateDismissButtonIfNecessary;

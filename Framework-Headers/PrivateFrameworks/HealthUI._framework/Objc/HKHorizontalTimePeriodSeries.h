@@ -42,7 +42,7 @@
 - (id)findAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (double)offsetForCoordinate:(id)arg1 axisRect:(struct CGRect)arg2;
 - (double)offsetForEnumerationRect:(struct CGRect)arg1;
-- (struct CGPoint)renderPositionForLabel:(id)arg1 rect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 constantOffset:(double)arg5 isHorizontal:(BOOL)arg6 optionalOffset:(struct CGPoint)arg7;
+- (struct CGPoint)renderPositionForLabelLocation:(id)arg1 rect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 constantOffset:(double)arg5 isHorizontal:(BOOL)arg6 optionalOffset:(struct CGPoint)arg7;
 - (void)setYAxis:(id)arg1;
 - (BOOL)supportsMultiTouchSelection;
 - (double)xAxisDistanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;

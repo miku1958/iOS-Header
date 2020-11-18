@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_softBlackColor;
 - (id)colorForDotVictoryAnalogTimeElement:(unsigned long long)arg1;
 - (id)colorForLogoWithStyle:(unsigned long long)arg1;
 - (id)colorForNumberVictoryAnalogTimeElement:(unsigned long long)arg1;

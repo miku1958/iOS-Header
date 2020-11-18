@@ -19,8 +19,8 @@
 
 + (id)sharedInstance;
 - (Class)_previewGeneratorClassForSourceURL:(id)arg1;
-- (BOOL)_utiTypeIsHEICish:(id)arg1;
 - (void)dealloc;
+- (BOOL)generateAndPersistContactCardPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 size:(out struct CGSize *)arg3 previewConstraints:(struct IMPreviewConstraints)arg4 error:(id *)arg5;
 - (BOOL)generateAndPersistMapPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 size:(out struct CGSize *)arg3 previewConstraints:(struct IMPreviewConstraints)arg4 error:(id *)arg5;
 - (BOOL)generateAndPersistPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 size:(out struct CGSize *)arg3 previewConstraints:(struct IMPreviewConstraints)arg4 error:(id *)arg5;
 - (id)init;

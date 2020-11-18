@@ -11,14 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI29DocumentRequestViewController : _TtC8VideosUI22DocumentViewController
 {
-    MISSING_TYPE *documentServiceRequest;
+    MISSING_TYPE *viewWillAppearAfterTabSwitch;
+    MISSING_TYPE *staticPPTDocumentFolderPath;
+    MISSING_TYPE *documentType;
+    MISSING_TYPE *initialControllerRef;
     MISSING_TYPE *initialRequestSent;
+    MISSING_TYPE *inAppBannerAllowed;
+    MISSING_TYPE *inAppBannerNotificationPending;
+    MISSING_TYPE *activeServiceRequest;
+    MISSING_TYPE *activeFragmentServiceRequest;
+    MISSING_TYPE *eventMonitorController;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

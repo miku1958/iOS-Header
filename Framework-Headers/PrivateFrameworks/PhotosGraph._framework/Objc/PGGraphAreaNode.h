@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGGraphLocationCoordinates-Protocol.h>
 #import <PhotosGraph/PGGraphLocationNaming-Protocol.h>
+#import <PhotosGraph/PGGraphLocationOrArea-Protocol.h>
 
 @class NSString, PGGraphLocationNode;
 
-@interface PGGraphAreaNode : PGGraphNode <PGGraphLocationNaming, PGGraphLocationCoordinates>
+@interface PGGraphAreaNode : PGGraphOptimizedNode <PGGraphLocationOrArea, PGGraphLocationNaming, PGGraphLocationCoordinates>
 {
+    unsigned int _isBlacklisted:1;
+    NSString *_name;
     struct CLLocationCoordinate2D _centroidCoordinate;
 }
 
@@ -21,14 +24,24 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) NSString *fullname;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL isBlacklisted;
+@property (nonatomic) BOOL isBlacklisted; // @synthesize isBlacklisted=_isBlacklisted;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) NSString *shortenedName;
 @property (readonly) PGGraphLocationNode *stateOrBiggerParentLocationNode;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)addressNodes;
 - (struct CLLocationCoordinate2D)coordinate;
 - (BOOL)diameterIsLargerThanDiameter:(double)arg1;
+- (unsigned short)domain;
+- (void)enumerateAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

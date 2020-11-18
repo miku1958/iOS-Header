@@ -6,11 +6,11 @@
 
 #import <MapsSuggestions/MapsSuggestionsBaseTitleFormatter.h>
 
-#import <MapsSuggestions/MapsSuggestionsETATitleFormatter-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsETAChargeTitleFormatter-Protocol.h>
 
 @class NSString;
 
-@interface MapsSuggestionsResumeRouteTitleFormatter : MapsSuggestionsBaseTitleFormatter <MapsSuggestionsETATitleFormatter>
+@interface MapsSuggestionsResumeRouteTitleFormatter : MapsSuggestionsBaseTitleFormatter <MapsSuggestionsETAChargeTitleFormatter>
 {
 }
 
@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-- (BOOL)formatTitlesForEntry:(id)arg1 eta:(id)arg2;
+- (BOOL)formatTitlesForEntry:(id)arg1 eta:(id)arg2 requiredChargeLevel:(id)arg3 currentChargeLevel:(id)arg4;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class HDRestorableAlarmScheduler, NSMutableSet, NSString;
+@class HDRestorableAlarmScheduler, HDXPCAlarm, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDRestorableAlarm : NSObject <HDDiagnosticObject>
@@ -26,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) HDXPCAlarm *systemScheduler;
 
 - (void).cxx_destruct;
 - (id)allScheduledEventsWithError:(id *)arg1;
@@ -41,7 +42,6 @@
 - (BOOL)removeEvents:(id)arg1 error:(id *)arg2;
 - (BOOL)replaceAllScheduledEventsWithEvents:(id)arg1 error:(id *)arg2;
 - (BOOL)scheduleEvents:(id)arg1 error:(id *)arg2;
-- (id)systemScheduler;
 
 @end
 

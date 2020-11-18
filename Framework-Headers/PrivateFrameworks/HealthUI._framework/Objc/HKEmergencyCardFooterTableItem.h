@@ -12,9 +12,11 @@
 {
     HKEmergencyCardFooterCell *_cell;
     NSAttributedString *_attributedTitleForFooter;
+    CDUnknownBlockType _shouldInteractWithURLBlock;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedTitleForFooter; // @synthesize attributedTitleForFooter=_attributedTitleForFooter;
+@property (copy, nonatomic) CDUnknownBlockType shouldInteractWithURLBlock; // @synthesize shouldInteractWithURLBlock=_shouldInteractWithURLBlock;
 
 - (void).cxx_destruct;
 - (id)_cell;
@@ -22,6 +24,7 @@
 - (id)initInEditMode:(BOOL)arg1;
 - (struct UIEdgeInsets)separatorInset;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 
 @end
 

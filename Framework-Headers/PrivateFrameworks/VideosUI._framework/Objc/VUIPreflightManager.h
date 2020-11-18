@@ -12,12 +12,14 @@
 __attribute__((visibility("hidden")))
 @interface VUIPreflightManager : NSObject
 {
+    BOOL _contentAllowsCellularDownload;
     VUIVideosPlayable *_videosPlayable;
     NSObject<TVPMediaItem> *_mediaItem;
     unsigned long long _restrictionsCheckType;
     UIViewController *_presentingController;
 }
 
+@property (nonatomic) BOOL contentAllowsCellularDownload; // @synthesize contentAllowsCellularDownload=_contentAllowsCellularDownload;
 @property (strong, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (strong, nonatomic) UIViewController *presentingController; // @synthesize presentingController=_presentingController;
 @property (nonatomic) unsigned long long restrictionsCheckType; // @synthesize restrictionsCheckType=_restrictionsCheckType;
@@ -26,7 +28,6 @@ __attribute__((visibility("hidden")))
 + (id)defaultPreflightManager;
 - (void).cxx_destruct;
 - (BOOL)_isAllowedToPlayOrPurchase;
-- (BOOL)_isOnWiFi;
 - (BOOL)_isTrailer;
 - (id)_lastAgeConfirmationPrompted;
 - (long long)_lastConfirmedAge;

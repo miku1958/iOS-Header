@@ -6,31 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/SKProductsRequestDelegate-Protocol.h>
-
-@class NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
-
-@interface SKProductStorePromotionController : NSObject <SKProductsRequestDelegate>
+@interface SKProductStorePromotionController : NSObject
 {
-    NSMutableArray *_fetchOrderProductsRequests;
-    NSMutableArray *_fetchOrderCompletions;
-    NSMutableArray *_fetchOrderOrders;
-    NSObject<OS_dispatch_queue> *_fetchOrderQueue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 + (id)defaultController;
-- (void).cxx_destruct;
+- (void)_fetchProductsForPromotionOrder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchStorePromotionOrderWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchStorePromotionVisibilityForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)init;
-- (void)productsRequest:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)updateStorePromotionOrder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateStorePromotionVisibility:(long long)arg1 forProduct:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

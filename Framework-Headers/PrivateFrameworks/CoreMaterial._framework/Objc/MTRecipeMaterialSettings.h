@@ -41,7 +41,7 @@
 - (id)_newVisualStyleSet;
 - (id)_platformColorsStyleSetName;
 - (id)_visualStyleSetDescription;
-- (id)initWithRecipeName:(id)arg1 andDescription:(id)arg2 descendantDescriptions:(id)arg3;
+- (id)initWithRecipeName:(id)arg1 andDescription:(id)arg2 descendantDescriptions:(id)arg3 bundle:(id)arg4;
 - (id)settingsForConfiguration:(id)arg1;
 - (id)styleNameForCategory:(id)arg1;
 

@@ -13,6 +13,7 @@
 
 @interface ACXDeviceConnection : NSObject <ACXDeviceConnectionDelegateProtocol>
 {
+    BOOL _monitoringForDeviceChanges;
     id<ACXDeviceConnectionDelegate> _delegate;
     NSXPCConnection *_xpcConnection;
     NSHashTable *_observers;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property (nonatomic) BOOL monitoringForDeviceChanges; // @synthesize monitoringForDeviceChanges=_monitoringForDeviceChanges;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *observerReEstablishTimer; // @synthesize observerReEstablishTimer=_observerReEstablishTimer;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
@@ -36,9 +38,13 @@
 + (void)performUninstallationCleanup;
 + (id)sharedDeviceConnection;
 - (void).cxx_destruct;
+- (void)_deviceDidBecomeActiveNotification:(id)arg1;
+- (void)_deviceDidPairNotification:(id)arg1;
 - (void)_fetchLocallyAvailableApplicationWithBundleID:(id)arg1 forDeviceWithPairingID:(id)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_invalidateXPCConnection;
-- (BOOL)_onQueue_createXPCConnectionIfNecessary;
+- (void)_onQueue_beginMonitoringNanoRegistryDeviceState;
+- (BOOL)_onQueue_createXPCConnectionIfNecessary:(id *)arg1;
+- (void)_onQueue_endMonitoringNanoRegistryDeviceState;
 - (void)_onQueue_reEstablishObserverConnectionIfNeeded;
 - (id)_proxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_synchronousProxyWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -102,6 +108,7 @@
 - (void)installProvisioningProfileWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)installProvisioningProfileWithURL:(id)arg1 onPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)installRequestFailedForApp:(id)arg1 onDeviceWithPairingID:(id)arg2 failureReason:(id)arg3 wasUserInitiated:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)killDaemonForTestingWithError:(id *)arg1;
 - (void)removeApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeApplication:(id)arg1 fromPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeObserver:(id)arg1;

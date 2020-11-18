@@ -15,16 +15,12 @@
     NRDeviceCollectionHistory *_history;
 }
 
-@property (strong, nonatomic) NRDeviceCollectionHistory *history; // @synthesize history=_history;
-@property (nonatomic) int keyBagStatusChangedNotificationToken; // @synthesize keyBagStatusChangedNotificationToken=_keyBagStatusChangedNotificationToken;
+@property (readonly, nonatomic) NRDeviceCollectionHistory *history;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_loadAndNotifySecureProperties;
 - (void)_notifyDiffIndexObserversWithHistoryEntry:(id)arg1 deviceCollection:(id)arg2 secureProperties:(id)arg3;
 - (void)_notifyObserversSecurePropertiesAreAvailableWithCollection:(id)arg1 secureProperties:(id)arg2;
-- (void)_persistCollection:(id)arg1 secureProperties:(id)arg2;
-- (void)_removeUnreferencedSecureProperties;
 - (id)addDiffIndexObserverWithWriteBlock:(CDUnknownBlockType)arg1;
 - (id)collection;
 - (void)dealloc;

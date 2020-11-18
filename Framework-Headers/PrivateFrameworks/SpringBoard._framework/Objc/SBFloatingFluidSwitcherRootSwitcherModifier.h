@@ -25,10 +25,11 @@
 
 - (void).cxx_destruct;
 - (Class)_defaultMultitaskingModifierClass;
+- (id)_entityRemovalModifierForEvent:(id)arg1;
+- (id)_newMultitaskingModifier;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
-- (id)appExposeModifierForAppExposeEvent:(id)arg1;
-- (id)entityRemovalModifierForEvent:(id)arg1;
+- (id)appLayoutsToEnsureExistForMainTransitionEvent:(id)arg1;
 - (id)floorModifierForTransitionEvent:(id)arg1;
 - (id)gestureModifierForGestureEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
@@ -36,11 +37,12 @@
 - (id)insertionModifierForInsertionEvent:(id)arg1;
 - (id)lowEndHardwareModifier;
 - (id)multitaskingModifierForEvent:(id)arg1;
-- (id)newMultitaskingModifierFromMultitaskingModifier:(id)arg1;
+- (id)removalModifierForRemovalEvent:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (id)tetheredInsertionModifierFortetheredInsertionEvent:(id)arg1;
-- (id)tetheredRemovalModifierForTetheredRemovalEvent:(id)arg1;
+- (id)swipeToKillModifierForSwipeToKillEvent:(id)arg1;
+- (id)topMostLayoutElements;
 - (id)transitionModifierForMainTransitionEvent:(id)arg1;
+- (id)userScrollingModifierForScrollEvent:(id)arg1;
 
 @end
 

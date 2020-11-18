@@ -13,6 +13,7 @@
     GEOAlmanacRiseTransitSet *_previousRiseTransitSet;
     GEOAlmanacRiseTransitSet *_currentRiseTransitSet;
     GEOAlmanacRiseTransitSet *_nextRiseTransitSet;
+    struct set<CAARiseTransitSetDetails2, _CAARiseTransitSetDetails2IsLessThan, std::__1::allocator<CAARiseTransitSetDetails2>> _riseTransitSetEvents;
 }
 
 @property (readonly, nonatomic) BOOL isDayLight;
@@ -26,18 +27,19 @@
 @property (readonly, nonatomic) NSDate *sunset;
 @property (readonly, nonatomic) NSDate *transit;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 altitudeInDegrees:(double)arg2;
-- (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 date:(id)arg2 altitudeInDegrees:(double)arg3;
+- (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 date:(id)arg2 altitudeInDegrees:(double)arg3 options:(unsigned long long)arg4;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 time:(double)arg2;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 time:(double)arg2 altitudeInDegrees:(double)arg3;
+- (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 time:(double)arg2 altitudeInDegrees:(double)arg3 options:(unsigned long long)arg4;
 - (void)calculateGeocentricDirectionForSunX:(double *)arg1 Y:(double *)arg2 Z:(double *)arg3;
 - (void)calculateGeocentricDirectionForSunX:(double *)arg1 Y:(double *)arg2 Z:(double *)arg3 date:(id)arg4;
 - (id)description;
 - (BOOL)isDayLightForDate:(id)arg1;
 - (BOOL)isDayLightForTime:(double)arg1;
-- (id)sortedTimesForDate:(id)arg1;
 
 @end
 

@@ -26,9 +26,7 @@
 @property (readonly, nonatomic) SCNNode *environmentNode;
 @property (readonly, nonatomic) BOOL faceIsFullyVisible;
 @property (nonatomic) float fadeFactor;
-@property (nonatomic) BOOL showReticle;
 
-+ (void)triggerCrossFadeFromImage:(id)arg1 withScene:(id)arg2 pointOfView:(id)arg3 device:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 - (void)avatarDidChange:(id)arg1 arMode:(BOOL)arg2;
 - (id)defaultEnvironmentNode;
@@ -36,8 +34,9 @@
 - (void)hideReticle;
 - (void)hideTrackingLossIndicator;
 - (id)initAndInstallInScene:(id)arg1;
+- (void)setShowReticle:(BOOL)arg1;
+- (BOOL)showReticle;
 - (void)showTrackingLossIndicator;
-- (id)transitionTextureWithSize:(struct CGSize)arg1 renderer:(id)arg2;
 - (void)updateARMode:(BOOL)arg1;
 - (void)updateSpecializedLighting;
 - (void)willSnapshot;

@@ -10,11 +10,10 @@
 {
 }
 
-+ (void)getItemsMatchingComparisonPredicates:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
-+ (void)getItemsMatchingPredicate:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
-+ (Class)objectClass;
-+ (void)performCustomFilteringUsingComparisonPredicates:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
-+ (void)performCustomFilteringUsingORComparisonPredicates:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)getItemsMatchingQuery:(id)arg1 withInput:(id)arg2 compoundPredicate:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
++ (void)getItemsMatchingQuery:(id)arg1 withInput:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (void)performCustomFilteringUsingContentPredicates:(id)arg1 compoundPredicateType:(unsigned long long)arg2 forQuery:(id)arg3 withInput:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
++ (void)performFallbackFilteringWithItems:(id)arg1 withContentPredicates:(id)arg2 compoundPredicateType:(unsigned long long)arg3 originalQuery:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 
 @end
 

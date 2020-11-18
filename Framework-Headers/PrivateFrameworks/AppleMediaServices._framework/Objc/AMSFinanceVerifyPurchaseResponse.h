@@ -4,19 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServices/AMSFinanceDialogResponse.h>
+#import <objc/NSObject.h>
 
-@class AMSURLTaskInfo, NSDictionary;
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
+@class AMSDialogRequest, AMSURLTaskInfo, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceVerifyPurchaseResponse : AMSFinanceDialogResponse
+@interface AMSFinanceVerifyPurchaseResponse : NSObject <AMSFinancePerformable>
 {
+    AMSDialogRequest *_dialogRequest;
     NSDictionary *_responseDictionary;
     AMSURLTaskInfo *_taskInfo;
     long long _verifyType;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 @property (nonatomic) long long verifyType; // @synthesize verifyType=_verifyType;
 

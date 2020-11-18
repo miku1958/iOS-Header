@@ -11,6 +11,7 @@
 }
 
 - (void)observeBannerFrameWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeMapStyleWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

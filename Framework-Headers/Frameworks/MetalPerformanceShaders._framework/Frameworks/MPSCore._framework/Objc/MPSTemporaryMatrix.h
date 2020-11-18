@@ -16,7 +16,6 @@
 + (void)prefetchStorageWithCommandBuffer:(id)arg1 matrixDescriptorList:(id)arg2;
 + (id)temporaryMatrixWithCommandBuffer:(id)arg1 matrixDescriptor:(id)arg2;
 - (id)initWithCommandBuffer:(id)arg1 matrixDescriptor:(id)arg2;
-- (id)ndArrayWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
 - (void)synchronizeOnCommandBuffer:(id)arg1;
 
 @end

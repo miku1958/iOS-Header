@@ -13,13 +13,13 @@
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class CARSessionStatus, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIAlertController, UITableView, UIView, _UIFilteredDataSource;
+@class CARSessionStatus, CPUINowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIAlertController, UITableView, UIView, _UIFilteredDataSource;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate, CARSessionObserving>
 {
     UITableView *_tableView;
-    MCDNowPlayingButton *_nowPlayingButton;
+    CPUINowPlayingButton *_nowPlayingButton;
     long long _count;
     NSIndexPath *_selectedNextIndexPath;
     _UIFilteredDataSource *_dataSource;
@@ -71,6 +71,7 @@
 - (void)_limitedUIChanged:(id)arg1;
 - (void)_nowPlayingButtonTapped:(id)arg1;
 - (void)_nowPlayingDidChange:(id)arg1;
+- (void)_playbackStateChanged:(id)arg1;
 - (void)_pushToNowPlaying:(BOOL)arg1;
 - (void)_replacePlaceholderViewWithView:(id)arg1;
 - (BOOL)_shouldLimitLists;

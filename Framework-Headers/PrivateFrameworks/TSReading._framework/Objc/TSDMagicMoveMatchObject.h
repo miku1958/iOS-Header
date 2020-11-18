@@ -34,6 +34,7 @@
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithRep:(id)arg1 position:(struct CGPoint)arg2 stringValue:(id)arg3 stringRange:(struct _NSRange)arg4;
 - (BOOL)isEqual:(id)arg1;
 

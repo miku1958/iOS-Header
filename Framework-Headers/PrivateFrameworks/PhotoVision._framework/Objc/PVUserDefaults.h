@@ -22,6 +22,7 @@
 + (float)faceClusteringJunkThreshold;
 + (float)faceClusteringThreshold;
 + (BOOL)faceIDModelAlwaysRebuild;
++ (float)faceIDModelClassificationThreshold;
 + (unsigned long long)faceIDModelRebuildPeriod;
 + (float)faceMergeFaceprintDistanceThreshold;
 + (float)facePrimarySuggestionsThreshold;

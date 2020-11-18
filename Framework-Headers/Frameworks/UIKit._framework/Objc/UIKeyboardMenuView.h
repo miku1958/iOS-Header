@@ -39,8 +39,9 @@ __attribute__((visibility("hidden")))
     UISelectionFeedbackGenerator *m_slideBehavior;
     BOOL _usesStraightLeftEdge;
     BOOL _usesDarkTheme;
-    BOOL _showsSingleCellOnly;
-    long long _indexForSingleCell;
+    BOOL _showingCapsLockSwitcher;
+    long long _indexForSelectedFastSwitchMode;
+    long long _indexForUnselectedFastSwitchMode;
     UIKBTree *_referenceKey;
     UIKeyboardLayoutStar *_layout;
 }
@@ -48,11 +49,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long indexForSingleCell; // @synthesize indexForSingleCell=_indexForSingleCell;
+@property (nonatomic) long long indexForSelectedFastSwitchMode; // @synthesize indexForSelectedFastSwitchMode=_indexForSelectedFastSwitchMode;
+@property (nonatomic) long long indexForUnselectedFastSwitchMode; // @synthesize indexForUnselectedFastSwitchMode=_indexForUnselectedFastSwitchMode;
 @property (nonatomic) UIKeyboardLayoutStar *layout; // @synthesize layout=_layout;
 @property (nonatomic) long long mode; // @synthesize mode=m_mode;
 @property (nonatomic) UIKBTree *referenceKey; // @synthesize referenceKey=_referenceKey;
-@property (nonatomic) BOOL showsSingleCellOnly; // @synthesize showsSingleCellOnly=_showsSingleCellOnly;
+@property (nonatomic) BOOL showingCapsLockSwitcher; // @synthesize showingCapsLockSwitcher=_showingCapsLockSwitcher;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesDarkTheme; // @synthesize usesDarkTheme=_usesDarkTheme;
 @property (nonatomic) BOOL usesStraightLeftEdge; // @synthesize usesStraightLeftEdge=_usesStraightLeftEdge;

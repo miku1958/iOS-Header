@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)embeddingModel;
-- (id)init;
+- (id)initWithFeaturePrintType:(long long)arg1 overlapFactor:(float)arg2;
 - (id)logMelSpectrogramModel;
 - (id)logMelSpectrogramModelDescription;
 - (void)primeGraph;

@@ -8,7 +8,6 @@
 
 @interface CAMLevelViewModel : CAMObservable
 {
-    BOOL _monitoringDevice;
     long long _currentIndicatorMode;
     double _currentIndicatorAlpha;
     double _desiredUpdateInterval;
@@ -23,7 +22,6 @@
 @property (nonatomic, setter=_setCurrentIndicatorMode:) long long currentIndicatorMode; // @synthesize currentIndicatorMode=_currentIndicatorMode;
 @property (nonatomic, setter=_setCurrentIndicatorOffset:) struct UIOffset currentIndicatorOffset; // @synthesize currentIndicatorOffset=_currentIndicatorOffset;
 @property (nonatomic, setter=_setDesiredUpdateInterval:) double desiredUpdateInterval; // @synthesize desiredUpdateInterval=_desiredUpdateInterval;
-@property (nonatomic, getter=isMonitoringDevice) BOOL monitoringDevice; // @synthesize monitoringDevice=_monitoringDevice;
 
 - (double)_hysteresisAlphaForDesiredAlpha:(double)arg1 fromCurrentAlpha:(double)arg2;
 - (long long)_hysteresisModeForDesiredMode:(long long)arg1;

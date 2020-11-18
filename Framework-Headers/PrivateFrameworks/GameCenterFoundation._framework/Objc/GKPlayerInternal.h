@@ -21,14 +21,21 @@
     NSNumber *_friendBiDirectional;
     NSNumber *_friendPlayedWith;
     NSNumber *_friendPlayedNearby;
+    NSNumber *_acceptedGameInviteFromThisFriend;
+    NSNumber *_initiatedGameInviteToThisFriend;
+    NSNumber *_automatchedTogether;
     NSString *_lastPersonalizationVersionDisplayed;
     unsigned long long _lastPrivacyNoticeVersionDisplayed;
+    NSString *_lastProfilePrivacyVersionDisplayed;
     unsigned short _numberOfFriends;
     unsigned short _numberOfGames;
     unsigned short _numberOfFriendsInCommon;
     unsigned short _numberOfGamesInCommon;
     unsigned int _numberOfAchievements;
     unsigned int _numberOfAchievementPoints;
+    int _achievementsVisibility;
+    int _friendsVisibility;
+    int _gamesPlayedVisibility;
     union {
         struct {
             unsigned int _unused:8;
@@ -37,6 +44,7 @@
             unsigned int _photoPending:1;
             unsigned int _findable:1;
             unsigned int _defaultNickname:1;
+            unsigned int _defaultPrivacyVisibility:1;
             unsigned int _reserved:18;
         } ;
         unsigned int _value;
@@ -44,11 +52,15 @@
     NSArray *_monogramComponents;
 }
 
+@property (strong, nonatomic) NSNumber *acceptedGameInviteFromThisFriend; // @synthesize acceptedGameInviteFromThisFriend=_acceptedGameInviteFromThisFriend;
 @property (strong, nonatomic) NSString *accountName; // @dynamic accountName;
+@property (nonatomic) int achievementsVisibility; // @synthesize achievementsVisibility=_achievementsVisibility;
 @property (strong, nonatomic) NSString *alias; // @synthesize alias=_alias;
+@property (strong, nonatomic) NSNumber *automatchedTogether; // @synthesize automatchedTogether=_automatchedTogether;
 @property (strong, nonatomic) NSNumber *avatarType; // @synthesize avatarType=_avatarType;
 @property (strong, nonatomic) NSString *compositeName; // @dynamic compositeName;
 @property (nonatomic, getter=isDefaultNickname) BOOL defaultNickname; // @dynamic defaultNickname;
+@property (nonatomic, getter=isDefaultPrivacyVisibility) BOOL defaultPrivacyVisibility; // @dynamic defaultPrivacyVisibility;
 @property (strong, nonatomic) NSArray *emailAddresses; // @dynamic emailAddresses;
 @property (strong, nonatomic) NSString *facebookUserID; // @dynamic facebookUserID;
 @property (nonatomic, getter=isFindable) BOOL findable; // @dynamic findable;
@@ -59,9 +71,12 @@
 @property (strong, nonatomic) NSNumber *friendPlayedNearby; // @synthesize friendPlayedNearby=_friendPlayedNearby;
 @property (strong, nonatomic) NSNumber *friendPlayedWith; // @synthesize friendPlayedWith=_friendPlayedWith;
 @property (strong, nonatomic) NSArray *friends; // @dynamic friends;
+@property (nonatomic) int friendsVisibility; // @synthesize friendsVisibility=_friendsVisibility;
 @property (strong, nonatomic) NSString *gamePlayerID; // @synthesize gamePlayerID=_gamePlayerID;
+@property (nonatomic) int gamesPlayedVisibility; // @synthesize gamesPlayedVisibility=_gamesPlayedVisibility;
 @property (strong, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property (strong, nonatomic) NSNumber *iCloudUserID; // @dynamic iCloudUserID;
+@property (strong, nonatomic) NSNumber *initiatedGameInviteToThisFriend; // @synthesize initiatedGameInviteToThisFriend=_initiatedGameInviteToThisFriend;
 @property (readonly, nonatomic) BOOL isAnonymousPlayer;
 @property (readonly, nonatomic) BOOL isAutomatchPlayer;
 @property (readonly, nonatomic) BOOL isFriend;
@@ -74,6 +89,7 @@
 @property (strong, nonatomic) NSDate *lastPlayedDate; // @dynamic lastPlayedDate;
 @property (strong, nonatomic) GKGameInternal *lastPlayedGame; // @dynamic lastPlayedGame;
 @property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
+@property (strong, nonatomic) NSString *lastProfilePrivacyVersionDisplayed; // @synthesize lastProfilePrivacyVersionDisplayed=_lastProfilePrivacyVersionDisplayed;
 @property (strong, nonatomic) NSString *messagesID; // @synthesize messagesID=_messagesID;
 @property (strong, nonatomic) NSArray *monogramComponents; // @synthesize monogramComponents=_monogramComponents;
 @property (nonatomic) unsigned int numberOfAchievementPoints; // @synthesize numberOfAchievementPoints=_numberOfAchievementPoints;
@@ -103,6 +119,7 @@
 - (id)cacheKey;
 - (id)conciseDescription;
 - (void)dealloc;
+- (id)debugDescription;
 - (int)defaultFamiliarity;
 - (id)displayNameWithOptions:(unsigned char)arg1;
 - (unsigned long long)hash;

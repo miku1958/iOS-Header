@@ -20,7 +20,9 @@
 @property (copy, nonatomic) NSArray *keychainItems;
 @property (readonly, nonatomic) TKTokenID *tokenID; // @synthesize tokenID=_tokenID;
 
++ (BOOL)_hasSeparateKeysAndCertificatesObjectIDSpace;
 + (id)interfaceForProtocol;
++ (void)set_hasSeparateKeysAndCertificatesObjectIDSpace:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)beginTransaction;
 - (id)certificateForObjectID:(id)arg1 error:(id *)arg2;

@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
 - (void)optimizeReset:(id)arg1 withRange:(struct _NSRange)arg2 withCommand:(unsigned int)arg3;
 - (void)resetCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)resetTextureAccessCounters:(id)arg1 region:(CDStruct_caaed6bc)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4;
+- (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)synchronizeResource:(id)arg1;
 - (void)synchronizeTexture:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
 - (void)updateFence:(id)arg1;

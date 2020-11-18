@@ -8,5 +8,6 @@
 
 @interface IDSProtobuf (ExtendedDescription)
 - (id)extendedDescription;
+- (id)transportData;
 @end
 

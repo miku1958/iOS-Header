@@ -10,12 +10,12 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/_HMFCFHTTPServerDelegate-Protocol.h>
 
-@class HMFMutableNetService, HMFUnfairLock, NSArray, NSMutableArray, NSObject, NSString, _HMFCFHTTPServer;
+@class HMFMutableNetService, NSArray, NSMutableArray, NSObject, NSString, _HMFCFHTTPServer;
 @protocol HMFHTTPServerDelegate, OS_dispatch_queue;
 
 @interface HMFHTTPServer : HMFObject <_HMFCFHTTPServerDelegate, HMFHTTPClientConnectionDelegate, HMFLogging>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_connections;
     NSMutableArray *_requestHandlers;
     unsigned long long _port;

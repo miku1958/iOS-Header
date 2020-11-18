@@ -6,14 +6,15 @@
 
 #import <WeatherFoundation/NSObject-Protocol.h>
 
-@class NSDateComponents, NSDictionary, NSLocale, NSUUID, WFLocation, WFTaskIdentifier;
+@class NSDate, NSDictionary, NSLocale, NSUUID, WFLocation, WFTaskIdentifier;
 
 @protocol WFWeatherStore <NSObject>
 - (void)airQualityForLocation:(WFLocation *)arg1 locale:(NSLocale *)arg2 requestIdentifier:(NSUUID *)arg3 options:(NSDictionary *)arg4 completionHandler:(void (^)(WFResponse *))arg5;
 - (void)cancelTaskWithIdentifier:(WFTaskIdentifier *)arg1;
 - (void)dailyForecastForLocation:(WFLocation *)arg1 locale:(id)arg2 requestIdentifier:(NSUUID *)arg3 completionHandler:(void (^)(WFResponse *))arg4;
-- (void)forecast:(unsigned long long)arg1 forLocation:(WFLocation *)arg2 locale:(id)arg3 requestIdentifier:(NSUUID *)arg4 completionHandler:(void (^)(WFResponse *))arg5;
-- (void)forecastForLocation:(WFLocation *)arg1 locale:(id)arg2 atDate:(NSDateComponents *)arg3 requestIdentifier:(NSUUID *)arg4 options:(NSDictionary *)arg5 completionHandler:(void (^)(WFResponse *))arg6;
+- (void)forecast:(unsigned long long)arg1 forLocation:(WFLocation *)arg2 locale:(NSLocale *)arg3 requestIdentifier:(NSUUID *)arg4 completionHandler:(void (^)(WFResponse *))arg5;
+- (void)forecast:(unsigned long long)arg1 forLocation:(WFLocation *)arg2 withUnits:(int)arg3 locale:(NSLocale *)arg4 requestIdentifier:(NSUUID *)arg5 completionHandler:(void (^)(WFResponse *))arg6;
+- (void)forecastForLocation:(WFLocation *)arg1 locale:(id)arg2 onDate:(NSDate *)arg3 requestIdentifier:(NSUUID *)arg4 options:(NSDictionary *)arg5 completionHandler:(void (^)(WFResponse *))arg6;
 - (void)hourlyForecastForLocation:(WFLocation *)arg1 locale:(id)arg2 requestIdentifier:(NSUUID *)arg3 completionHandler:(void (^)(WFResponse *))arg4;
 @end
 

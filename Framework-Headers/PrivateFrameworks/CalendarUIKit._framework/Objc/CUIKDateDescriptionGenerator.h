@@ -32,7 +32,6 @@
 - (id)_dateFormatterWithLongFormat:(id)arg1;
 - (id)_dateStringForDate:(id)arg1 relativeToReferenceDate:(id)arg2 allDay:(BOOL)arg3 shortFormat:(BOOL)arg4 lowercase:(BOOL)arg5;
 - (void)_initializeFormatters;
-- (void)_invalidateFormatters;
 - (id)_stringForDate:(id)arg1 relativeToReferenceDate:(id)arg2 withLongFormatString:(id)arg3 useAbbreviatedFormats:(BOOL)arg4 lowerCase:(BOOL)arg5;
 - (id)_timeStringForDate:(id)arg1;
 - (id)abbreviatedDayFormatter;

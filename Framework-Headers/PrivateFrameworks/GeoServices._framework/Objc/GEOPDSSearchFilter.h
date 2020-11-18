@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_categoryFilter:1;
         unsigned int read_poiIconCategoryFilter:1;
         unsigned int read_venueFilter:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_brandFilter:1;
-        unsigned int wrote_categoryFilter:1;
-        unsigned int wrote_poiIconCategoryFilter:1;
-        unsigned int wrote_venueFilter:1;
-        unsigned int wrote_searchIntentFilter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,10 +49,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSearchIntentFilter:(id)arg1;
-- (void)_readBrandFilter;
-- (void)_readCategoryFilter;
-- (void)_readPoiIconCategoryFilter;
-- (void)_readVenueFilter;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -66,7 +57,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)initWithMetadata:(id)arg1 sequenceNumberManager:(id)arg2;
 - (id)initWithSequenceNumberManager:(id)arg1 extraMetadata:(id)arg2;
+- (id)transportData;
 
 @end
 

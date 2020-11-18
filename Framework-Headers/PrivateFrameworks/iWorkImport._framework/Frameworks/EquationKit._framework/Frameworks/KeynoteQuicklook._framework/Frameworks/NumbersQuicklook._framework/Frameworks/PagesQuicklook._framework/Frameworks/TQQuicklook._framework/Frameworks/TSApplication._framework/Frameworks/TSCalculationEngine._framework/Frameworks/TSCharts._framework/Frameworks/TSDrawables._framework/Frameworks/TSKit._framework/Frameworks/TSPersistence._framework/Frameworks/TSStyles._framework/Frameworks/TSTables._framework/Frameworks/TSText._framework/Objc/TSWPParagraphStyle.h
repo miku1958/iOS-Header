@@ -54,6 +54,7 @@
 - (void)loadFromArchive:(const struct ParagraphStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)localizeForBidi:(BOOL)arg1;
+- (unsigned long long)minimumReadVersion;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (BOOL)p_contentTagIsBody;

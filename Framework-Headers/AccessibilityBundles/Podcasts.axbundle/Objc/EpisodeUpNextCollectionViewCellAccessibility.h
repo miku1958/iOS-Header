@@ -13,10 +13,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityUserTestingChildren;
+- (id)_axArtworkView;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
+- (id)accessibilityCustomContent;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
+- (void)layoutSubviews;
 
 @end
 

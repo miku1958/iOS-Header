@@ -7,7 +7,11 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (LPInternal)
+
+@property (nonatomic, setter=_lp_setStringType:) unsigned long long _lp_stringType;
+
 - (id)_lp_directionallyIsolatedString;
+- (BOOL)_lp_hasCaseInsensitiveSuffix:(id)arg1;
 - (BOOL)_lp_isEqualIgnoringCase:(id)arg1;
 - (BOOL)_lp_isEqualToAny:(id)arg1;
 - (BOOL)_lp_isEqualToAnyIgnoringCase:(id)arg1;

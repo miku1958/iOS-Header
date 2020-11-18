@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSData *version; // @synthesize version=_version;
 
 + (id)dataWithHexString:(id)arg1;
-+ (id)getBuildId;
 + (id)getURLFor:(id)arg1 version:(id)arg2 base:(id)arg3;
 + (BOOL)prepareDirsFor:(id)arg1;
 + (id)versionData:(id)arg1;

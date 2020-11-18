@@ -6,17 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <MapKit/MKActivityObserving-Protocol.h>
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 
-@class MKMapItem, MKPlacePhotoGalleryAttributionView, NSArray, NSMutableArray, NSNumber, NSString, UIBarButtonItem, UIScrollView, UIView;
+@class MKMapItem, MKPlacePhotoGalleryAttributionView, NSArray, NSMutableArray, NSNumber, NSString, UIActivityIndicatorView, UIBarButtonItem, UIScrollView, UIView;
 @protocol MKPlacePhotoGalleryViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
-@interface MKPlacePhotoGalleryViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface MKPlacePhotoGalleryViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, MKActivityObserving>
 {
+    BOOL _panAndSwipeToDismissGestureEnabled;
     BOOL _shouldFinishAnimation;
     id<MKPlacePhotoGalleryViewControllerDelegate> _delegate;
+    UIBarButtonItem *_rapBarButton;
     NSArray *_photos;
     MKMapItem *_mapItem;
     NSArray *_photoViews;
@@ -30,41 +32,62 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_downloadingImagesURLs;
     double _lastScrollViewOffsetBeforeScrolling;
     UIBarButtonItem *_openNavigationBarButton;
+    UIActivityIndicatorView *_spinner;
+    UIBarButtonItem *_doneBarButtonItem;
+    UIBarButtonItem *_backBarButtonItem;
+    UIBarButtonItem *_addPhotoBarButtonItem;
     struct CGPoint _imageViewCenterPoint;
 }
 
+@property (strong, nonatomic) UIBarButtonItem *addPhotoBarButtonItem; // @synthesize addPhotoBarButtonItem=_addPhotoBarButtonItem;
 @property (strong, nonatomic) UIView *additionalView; // @synthesize additionalView=_additionalView;
 @property (strong, nonatomic) MKPlacePhotoGalleryAttributionView *attributionView; // @synthesize attributionView=_attributionView;
+@property (strong, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKPlacePhotoGalleryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIBarButtonItem *doneBarButtonItem; // @synthesize doneBarButtonItem=_doneBarButtonItem;
 @property (strong, nonatomic) NSMutableArray *downloadingImagesURLs; // @synthesize downloadingImagesURLs=_downloadingImagesURLs;
 @property (strong, nonatomic) UIView *gestureTrackedView; // @synthesize gestureTrackedView=_gestureTrackedView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint imageViewCenterPoint; // @synthesize imageViewCenterPoint=_imageViewCenterPoint;
 @property (strong, nonatomic) NSMutableArray *indexesOfDownloadedImages; // @synthesize indexesOfDownloadedImages=_indexesOfDownloadedImages;
+@property (readonly, nonatomic) BOOL isShowingPhotosProvidedByApple;
 @property (nonatomic) double lastScrollViewOffsetBeforeScrolling; // @synthesize lastScrollViewOffsetBeforeScrolling=_lastScrollViewOffsetBeforeScrolling;
+@property (readonly, nonatomic) UIBarButtonItem *leftBarButtonItem;
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (readonly, nonatomic) unsigned long long numberOfViews;
 @property (strong, nonatomic) UIBarButtonItem *openNavigationBarButton; // @synthesize openNavigationBarButton=_openNavigationBarButton;
 @property (strong, nonatomic) NSNumber *originalIndex; // @synthesize originalIndex=_originalIndex;
+@property (nonatomic) BOOL panAndSwipeToDismissGestureEnabled; // @synthesize panAndSwipeToDismissGestureEnabled=_panAndSwipeToDismissGestureEnabled;
 @property (nonatomic) long long panGestureStartingDirection; // @synthesize panGestureStartingDirection=_panGestureStartingDirection;
 @property (copy, nonatomic) NSArray *photoViews; // @synthesize photoViews=_photoViews;
 @property (copy, nonatomic) NSArray *photos; // @synthesize photos=_photos;
+@property (strong, nonatomic) UIBarButtonItem *rapBarButton; // @synthesize rapBarButton=_rapBarButton;
+@property (readonly, nonatomic) UIBarButtonItem *rightBarButtonItem;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) BOOL shouldFinishAnimation; // @synthesize shouldFinishAnimation=_shouldFinishAnimation;
+@property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addPhotoButtonPressed;
 - (BOOL)_canShowWhileLocked;
+- (void)_rapButtonPressed;
 - (id)attributionLogoUsingDarkAppearance:(BOOL)arg1;
+- (void)beginAnimatingActivityIndicator;
 - (void)cancelDownloadingImages;
+- (id)currentPhoto;
 - (void)dealloc;
 - (void)didTapDone;
 - (void)didTapOnAdditionalView;
 - (void)didTapOnAttributionView;
 - (void)didTapOpen;
 - (void)dismiss;
+- (void)downloadImageForPhotoViewAtIndex:(unsigned long long)arg1;
+- (void)downloadImageForURL:(id)arg1 forIndex:(unsigned long long)arg2;
 - (void)downloadImageForVisibleViews;
+- (void)endAnimatingActivityIndicatorWithError:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handlePanGesture:(id)arg1;
 - (unsigned long long)indexOfView:(id)arg1;
@@ -72,6 +95,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithPhotos:(id)arg1 additionalView:(id)arg2 scrollToIndex:(unsigned long long)arg3 mapItem:(id)arg4 delegate:(id)arg5;
 - (id)photoViewForTransition;
 - (void)resetPhotosZoomLevel;
+- (void)scrollLeft;
+- (void)scrollRight;
 - (struct CGPoint)scrollViewContentOffset;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -80,10 +105,13 @@ __attribute__((visibility("hidden")))
 - (void)setupAttributionView;
 - (void)setupPhotoViewsWithStackView:(id)arg1;
 - (void)setupViewsWithAdditionalView:(id)arg1;
+- (void)startAnimatingActivityIndicatorViewForRAP;
+- (void)stopAnimatingActivityIndicatorViewForRAP;
 - (void)toggleBackground:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateViewsWithPhotoAtIndex:(unsigned long long)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (unsigned long long)viewsCount;
 - (void)zoomToPoint:(id)arg1;

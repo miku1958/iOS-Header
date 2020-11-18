@@ -14,8 +14,8 @@
     NSMutableArray *_rotationWrapperViews;
     long long _orientation;
     SBFHomeGrabberSettings *_settings;
-    BOOL _suppressAnimationForPointer;
     UIHoverGestureRecognizer *_suppressAnimationForPointerGestureRecognizer;
+    BOOL _suppressAnimationForPointer;
     CSHomeAffordanceView *_homeAffordanceView;
     struct CGPoint _homeAffordanceOffset;
 }

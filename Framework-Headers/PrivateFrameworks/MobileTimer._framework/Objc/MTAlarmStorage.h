@@ -16,7 +16,7 @@
 {
     MTAlarmScheduler *_scheduler;
     NSMutableArray *_orderedAlarms;
-    MTAlarm *_sleepAlarm;
+    NSMutableArray *_sleepAlarms;
     NSDate *_lastModifiedDate;
     id<NAScheduler> _serializer;
     MTObserverStore *_observers;
@@ -39,7 +39,8 @@
 @property (strong, nonatomic) id<MTPersistence> persistence; // @synthesize persistence=_persistence;
 @property (weak, nonatomic) MTAlarmScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
-@property (strong, nonatomic) MTAlarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
+@property (readonly, nonatomic) MTAlarm *sleepAlarm;
+@property (strong, nonatomic) NSMutableArray *sleepAlarms; // @synthesize sleepAlarms=_sleepAlarms;
 @property (readonly) Class superclass;
 
 + (id)_diagnosticDictionaryForAlarm:(id)arg1;
@@ -48,7 +49,8 @@
 - (id)_cleanUpForInternalBuild:(id)arg1;
 - (id)_cleanUpSleepAlarmRepeat:(id)arg1;
 - (id)_cleanUpSnoozeFireDate:(id)arg1;
-- (id)_diagnosticAlarmDictionary;
+- (id)_convertSleepAlarmToRegular:(id)arg1;
+- (id)_diagnosticDictionaryForAlarms:(id)arg1;
 - (void)_loadAlarmsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_notifyObserversForAlarmAdd:(id)arg1 source:(id)arg2;
 - (void)_notifyObserversForAlarmChange:(id)arg1 source:(id)arg2;
@@ -64,6 +66,7 @@
 - (id)_queue_alarmMatchingAlarm:(id)arg1;
 - (id)_queue_alarmMatchingAlarmIdentifier:(id)arg1;
 - (id)_queue_allAlarms;
+- (id)_queue_allSleepAlarms;
 - (void)_queue_dismissAlarmWithIdentifier:(id)arg1 dismissDate:(id)arg2 dismissAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
 - (void)_queue_dismissMutableAlarm:(id)arg1 dismissDate:(id)arg2 dismissAction:(unsigned long long)arg3;
 - (BOOL)_queue_hasMatchingAlarm:(id)arg1;
@@ -71,13 +74,18 @@
 - (void)_queue_removeAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)_queue_removeAlarmWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)_queue_removeAllAlarmsForSource:(id)arg1;
-- (void)_queue_resetAlarmsTo:(id)arg1 sleepAlarm:(id)arg2;
-- (void)_queue_setAllAlarms:(id)arg1 sleepAlarm:(id)arg2 source:(id)arg3;
-- (void)_queue_setAllAlarms:(id)arg1 sleepAlarm:(id)arg2 source:(id)arg3 persist:(BOOL)arg4 notify:(BOOL)arg5;
+- (void)_queue_resetAlarmsTo:(id)arg1 sleepAlarms:(id)arg2;
+- (void)_queue_setAllAlarms:(id)arg1 sleepAlarms:(id)arg2 source:(id)arg3;
+- (void)_queue_setAllAlarms:(id)arg1 sleepAlarms:(id)arg2 source:(id)arg3 persist:(BOOL)arg4 notify:(BOOL)arg5;
+- (void)_queue_setAllAlarms:(id)arg1 sleepAlarms:(id)arg2 source:(id)arg3 persist:(BOOL)arg4 notify:(BOOL)arg5 override:(BOOL)arg6;
 - (void)_queue_snoozeAlarmWithIdentifier:(id)arg1 snoozeDate:(id)arg2 snoozeAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
 - (void)_queue_sortAlarms;
+- (void)_queue_sortSleepAlarms;
 - (id)_queue_updateAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)_queue_updateAlarmWithIdentifier:(id)arg1 changeSet:(id)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
+- (id)_queue_updateSleepAlarmsFromExistingAlarms:(id)arg1;
+- (void)_resetCurrentToneIdentifier;
+- (id)activeSleepAlarm;
 - (void)addAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)alarmWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
@@ -101,12 +109,15 @@
 - (void)removeAllAlarmsForSource:(id)arg1;
 - (void)scheduler:(id)arg1 didChangeNextAlarm:(id)arg2;
 - (void)scheduler:(id)arg1 didFireAlarm:(id)arg2;
-- (void)setAllAlarms:(id)arg1 sleepAlarm:(id)arg2 source:(id)arg3;
+- (void)setAllAlarms:(id)arg1 sleepAlarms:(id)arg2 source:(id)arg3;
 - (void)snoozeAlarmWithIdentifier:(id)arg1 snoozeAction:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
 - (void)snoozeAlarmWithIdentifier:(id)arg1 snoozeDate:(id)arg2 snoozeAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
 - (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
+- (id)transferMetadataForSleepAlarm:(id)arg1 fromPrevious:(id)arg2;
 - (void)updateAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)updateAlarmWithIdentifier:(id)arg1 changeSet:(id)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
+- (void)updateSleepAlarms:(id)arg1 source:(id)arg2;
+- (void)updateSleepAlarmsWithBlock:(CDUnknownBlockType)arg1 source:(id)arg2;
 
 @end
 

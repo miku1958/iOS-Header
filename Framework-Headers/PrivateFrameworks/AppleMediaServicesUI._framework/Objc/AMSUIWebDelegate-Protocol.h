@@ -6,9 +6,13 @@
 
 #import <AppleMediaServicesUI/NSObject-Protocol.h>
 
-@class AMSAuthenticateRequest, AMSDialogRequest, AMSUIWebViewController, NSDictionary;
+@class AMSAuthenticateRequest, AMSDialogRequest, AMSPurchaseResult, AMSUIWebViewController, NSDictionary, NSError, NSMutableURLRequest;
 
 @protocol AMSUIWebDelegate <NSObject>
+
+@optional
+- (void)webViewController:(AMSUIWebViewController *)arg1 didEncodeNetworkRequest:(NSMutableURLRequest *)arg2;
+- (void)webViewController:(AMSUIWebViewController *)arg1 didFinishPurchaseWithResult:(AMSPurchaseResult *)arg2 error:(NSError *)arg3;
 - (void)webViewController:(AMSUIWebViewController *)arg1 handleAuthenticateRequest:(AMSAuthenticateRequest *)arg2 completion:(void (^)(AMSAuthenticateResult *, NSError *))arg3;
 - (BOOL)webViewController:(AMSUIWebViewController *)arg1 handleDelegateAction:(NSDictionary *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)webViewController:(AMSUIWebViewController *)arg1 handleDialogRequest:(AMSDialogRequest *)arg2 completion:(void (^)(AMSDialogResult *, NSError *))arg3;

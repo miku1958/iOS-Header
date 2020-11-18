@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKUIQuadViewDisplayLink, NSArray, NSMutableArray, NSString;
+@class CLKUIQuadViewDisplayLink, NSArray, NSCountedSet, NSMutableArray, NSString;
 @protocol CLKUIQuadViewDelegate;
 
 @interface CLKUIQuadView : UIView
@@ -18,6 +18,7 @@
     } _delegateRespondsTo;
     unsigned long long _frameNum;
     unsigned int _debugId;
+    NSCountedSet *_disabledRenderingReasons;
     BOOL _singleBufferMode;
     id<CLKUIQuadViewDelegate> _delegate;
     NSString *_debugIdentifier;
@@ -35,16 +36,18 @@
 + (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 + (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2 colorSpace:(long long)arg3;
 - (void).cxx_destruct;
-- (BOOL)_displayAndCheckForDrawable:(BOOL)arg1 WithCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)_displayAndCheckForDrawable:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleQuadArrayChange:(id)arg1;
 - (BOOL)_prepareAndRenderForTime:(double)arg1 inGroup:(id)arg2 checkForDrawable:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_prerenderForTime:(double)arg1;
+- (void)addDisabledRenderingReason:(id)arg1;
 - (void)addQuad:(id)arg1;
 - (void)addQuadsFromArray:(id)arg1;
 - (void)dealloc;
 - (void)discardContents;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (void)removeAllQuads;
+- (void)removeDisabledRenderingReason:(id)arg1;
 - (void)removeQuad:(id)arg1;
 - (BOOL)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (BOOL)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;

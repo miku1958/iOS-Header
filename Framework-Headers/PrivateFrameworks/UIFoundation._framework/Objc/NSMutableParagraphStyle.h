@@ -20,6 +20,7 @@
 @property (nonatomic) double headIndent; // @dynamic headIndent;
 @property (nonatomic) float hyphenationFactor; // @dynamic hyphenationFactor;
 @property (nonatomic) long long lineBreakMode; // @dynamic lineBreakMode;
+@property (nonatomic) unsigned long long lineBreakStrategy; // @dynamic lineBreakStrategy;
 @property (nonatomic) double lineHeightMultiple; // @dynamic lineHeightMultiple;
 @property (nonatomic) double lineSpacing; // @dynamic lineSpacing;
 @property (nonatomic) double maximumLineHeight; // @dynamic maximumLineHeight;
@@ -37,7 +38,6 @@
 - (void)setAllowsHangingPunctuation:(BOOL)arg1;
 - (void)setCompositionLanguage:(long long)arg1;
 - (void)setHeaderLevel:(long long)arg1;
-- (void)setLineBreakStrategy:(unsigned long long)arg1;
 - (void)setParagraphStyle:(id)arg1;
 - (void)setTextBlocks:(id)arg1;
 - (void)setTextLists:(id)arg1;

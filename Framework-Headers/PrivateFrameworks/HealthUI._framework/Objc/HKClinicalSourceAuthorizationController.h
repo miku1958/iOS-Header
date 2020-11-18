@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthRecordsStore, HKHealthStore, HKSource, NSArray, NSDate, NSError, NSMutableSet, NSSet;
+@class HKAuthorizationStore, HKHealthRecordsStore, HKHealthStore, HKSource, NSArray, NSDate, NSError, NSMutableSet, NSSet;
 
 @interface HKClinicalSourceAuthorizationController : NSObject
 {
     BOOL _anyDeterminedTypeAllowsReading;
     HKSource *_source;
+    HKHealthStore *_healthStore;
     NSArray *_orderedTypesForReading;
     NSError *_fetchError;
     long long _authorizationModeForSource;
     NSDate *_displayReadAuthorizationAnchorDate;
-    HKHealthStore *_healthStore;
     HKHealthRecordsStore *_healthRecordsStore;
+    HKAuthorizationStore *_authorizationStore;
     NSSet *_typesForReading;
     NSSet *_typesRequestedForReading;
     NSMutableSet *_typesEnabledForReading;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL anyDeterminedTypeAllowsReading; // @synthesize anyDeterminedTypeAllowsReading=_anyDeterminedTypeAllowsReading;
 @property (readonly, nonatomic) BOOL anyTypeRequested;
 @property (nonatomic) long long authorizationModeForSource; // @synthesize authorizationModeForSource=_authorizationModeForSource;
+@property (readonly, nonatomic) HKAuthorizationStore *authorizationStore; // @synthesize authorizationStore=_authorizationStore;
 @property (copy, nonatomic) NSDate *displayReadAuthorizationAnchorDate; // @synthesize displayReadAuthorizationAnchorDate=_displayReadAuthorizationAnchorDate;
 @property (copy, nonatomic) NSError *fetchError; // @synthesize fetchError=_fetchError;
 @property (readonly, nonatomic) HKHealthRecordsStore *healthRecordsStore; // @synthesize healthRecordsStore=_healthRecordsStore;

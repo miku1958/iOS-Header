@@ -8,6 +8,7 @@
 
 @class HDCodableCompanionUserNotificationRequest;
 
+__attribute__((visibility("hidden")))
 @interface HDRemoteCompanionUserNotificationRequestContext : NSObject
 {
     HDCodableCompanionUserNotificationRequest *_request;

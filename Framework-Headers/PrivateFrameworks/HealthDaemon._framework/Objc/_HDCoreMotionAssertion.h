@@ -8,6 +8,7 @@
 
 @class CMWorkout, HKWorkoutConfiguration, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDCoreMotionAssertion : HDAssertion
 {
     HKWorkoutConfiguration *_workoutConfiguration;

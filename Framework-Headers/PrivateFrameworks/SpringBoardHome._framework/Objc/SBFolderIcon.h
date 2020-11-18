@@ -38,10 +38,9 @@
 - (void)_updateBadgeValue;
 - (void)_updateProgress;
 - (void)addNodeObserver:(id)arg1;
-- (void)ancestryDidChange;
 - (id)badgeNumberOrString;
 - (BOOL)canBeAddedToMultiItemDrag;
-- (id)children;
+- (BOOL)canBeAddedToSubfolder;
 - (id)containedNodeIdentifiers;
 - (BOOL)containsNodeIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -77,7 +76,6 @@
 - (void)noteContainedIconsAdded:(id)arg1 removed:(id)arg2;
 - (double)progressPercent;
 - (long long)progressState;
-- (void)removeChild:(id)arg1;
 - (void)removeNodeObserver:(id)arg1;
 - (id)rootFolder;
 - (void)rootFolderDelegateDidChange:(id)arg1;

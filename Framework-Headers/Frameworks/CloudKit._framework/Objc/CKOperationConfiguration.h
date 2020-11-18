@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainer, CKSchedulerActivity, NSDictionary, NSString;
+@class CKContainer, CKSchedulerActivity, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 @protocol OS_xpc_object;
 
 @interface CKOperationConfiguration : NSObject <NSSecureCoding, NSCopying>
@@ -21,8 +21,8 @@
     BOOL _xpcActivityAutomaticallyDefer;
     BOOL _discretionarySchedulingForEntireOperation;
     BOOL _allowsBackgroundNetworking;
-    BOOL _shouldSkipZonePCSUpdate;
     BOOL _isCloudKitSupportOperation;
+    BOOL _hasQualityOfService;
     BOOL _hasContainer;
     BOOL _hasAllowsCellularAccess;
     BOOL _hasLongLived;
@@ -38,10 +38,11 @@
     BOOL _hasAllowsBackgroundNetworking;
     BOOL _hasSourceApplicationBundleIdentifier;
     BOOL _hasSourceApplicationSecondaryIdentifier;
+    BOOL _hasApplicationBundleIdentifierOverrideForContainerAccess;
+    BOOL _hasApplicationBundleIdentifierOverrideForNetworkAttribution;
     BOOL _hasAdditionalRequestHTTPHeaders;
-    BOOL _hasShouldSkipZonePCSUpdate;
     BOOL _hasIsCloudKitSupportOperation;
-    BOOL _hasQualityOfService;
+    BOOL _hasCacheDeleteAvailableSpaceClass;
     CKContainer *_container;
     long long _qualityOfService;
     double _timeoutIntervalForRequest;
@@ -50,21 +51,32 @@
     NSObject<OS_xpc_object> *_xpcActivity;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
+    NSString *_applicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
     NSDictionary *_additionalRequestHTTPHeaders;
+    NSNumber *_cacheDeleteAvailableSpaceClass;
+    NSMutableDictionary *_unitTestOverrides;
     CKSchedulerActivity *_schedulerActivity;
 }
 
-@property (strong, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
+@property (copy, nonatomic) NSString *_sourceApplicationSecondaryIdentifier; // @synthesize _sourceApplicationSecondaryIdentifier;
+@property (copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
 @property (nonatomic) BOOL automaticallyRetryNetworkFailures; // @synthesize automaticallyRetryNetworkFailures=_automaticallyRetryNetworkFailures;
+@property (copy, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass; // @synthesize cacheDeleteAvailableSpaceClass=_cacheDeleteAvailableSpaceClass;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
 @property (nonatomic) BOOL discretionarySchedulingForEntireOperation; // @synthesize discretionarySchedulingForEntireOperation=_discretionarySchedulingForEntireOperation;
 @property (nonatomic) BOOL hasAdditionalRequestHTTPHeaders; // @synthesize hasAdditionalRequestHTTPHeaders=_hasAdditionalRequestHTTPHeaders;
 @property (nonatomic) BOOL hasAllowsBackgroundNetworking; // @synthesize hasAllowsBackgroundNetworking=_hasAllowsBackgroundNetworking;
 @property (nonatomic) BOOL hasAllowsCellularAccess; // @synthesize hasAllowsCellularAccess=_hasAllowsCellularAccess;
+@property (nonatomic) BOOL hasApplicationBundleIdentifierOverrideForContainerAccess; // @synthesize hasApplicationBundleIdentifierOverrideForContainerAccess=_hasApplicationBundleIdentifierOverrideForContainerAccess;
+@property (nonatomic) BOOL hasApplicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize hasApplicationBundleIdentifierOverrideForNetworkAttribution=_hasApplicationBundleIdentifierOverrideForNetworkAttribution;
 @property (nonatomic) BOOL hasAutomaticallyRetryNetworkFailures; // @synthesize hasAutomaticallyRetryNetworkFailures=_hasAutomaticallyRetryNetworkFailures;
+@property (nonatomic) BOOL hasCacheDeleteAvailableSpaceClass; // @synthesize hasCacheDeleteAvailableSpaceClass=_hasCacheDeleteAvailableSpaceClass;
 @property (nonatomic) BOOL hasContainer; // @synthesize hasContainer=_hasContainer;
 @property (nonatomic) BOOL hasDiscretionaryNetworkBehavior; // @synthesize hasDiscretionaryNetworkBehavior=_hasDiscretionaryNetworkBehavior;
 @property (nonatomic) BOOL hasDiscretionarySchedulingForEntireOperation; // @synthesize hasDiscretionarySchedulingForEntireOperation=_hasDiscretionarySchedulingForEntireOperation;
@@ -73,7 +85,6 @@
 @property (nonatomic) BOOL hasPreferAnonymousRequests; // @synthesize hasPreferAnonymousRequests=_hasPreferAnonymousRequests;
 @property (nonatomic) BOOL hasQualityOfService; // @synthesize hasQualityOfService=_hasQualityOfService;
 @property (nonatomic) BOOL hasSchedulerActivity; // @synthesize hasSchedulerActivity=_hasSchedulerActivity;
-@property (nonatomic) BOOL hasShouldSkipZonePCSUpdate; // @synthesize hasShouldSkipZonePCSUpdate=_hasShouldSkipZonePCSUpdate;
 @property (nonatomic) BOOL hasSourceApplicationBundleIdentifier; // @synthesize hasSourceApplicationBundleIdentifier=_hasSourceApplicationBundleIdentifier;
 @property (nonatomic) BOOL hasSourceApplicationSecondaryIdentifier; // @synthesize hasSourceApplicationSecondaryIdentifier=_hasSourceApplicationSecondaryIdentifier;
 @property (nonatomic) BOOL hasTimeoutIntervalForRequest; // @synthesize hasTimeoutIntervalForRequest=_hasTimeoutIntervalForRequest;
@@ -84,12 +95,12 @@
 @property (nonatomic, getter=isLongLived) BOOL longLived; // @synthesize longLived=_longLived;
 @property (nonatomic) BOOL preferAnonymousRequests; // @synthesize preferAnonymousRequests=_preferAnonymousRequests;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property (strong, nonatomic) CKSchedulerActivity *schedulerActivity; // @synthesize schedulerActivity=_schedulerActivity;
-@property (nonatomic) BOOL shouldSkipZonePCSUpdate; // @synthesize shouldSkipZonePCSUpdate=_shouldSkipZonePCSUpdate;
-@property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
-@property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
+@property (copy, nonatomic) CKSchedulerActivity *schedulerActivity; // @synthesize schedulerActivity=_schedulerActivity;
+@property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
 @property (nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
+@property (strong, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
 @property (nonatomic) BOOL xpcActivityAutomaticallyDefer; // @synthesize xpcActivityAutomaticallyDefer=_xpcActivityAutomaticallyDefer;
 
@@ -102,6 +113,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)resolveAgainstGenericConfiguration:(id)arg1;
+- (void)setApplicationBundleIdentifierOverride:(id)arg1;
 - (void)setAutomaticallyRetryNetworkFailuresIfNotSet:(BOOL)arg1;
 - (void)setQualityOfServiceWithoutQoSChecks:(long long)arg1;
 

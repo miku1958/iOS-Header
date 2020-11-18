@@ -6,32 +6,27 @@
 
 #import <SpringBoard/SBSwitcherModifier.h>
 
-@class NSArray, SBAppLayout;
+@class SBAppLayout;
 
 @interface SBInsertionSwitcherModifier : SBSwitcherModifier
 {
     SBAppLayout *_appLayout;
-    BOOL _keepAppLayoutsBeforeInsertionInHierarchy;
-    unsigned long long _indexToScrollToAfterInsertion;
+    BOOL _isSimulatingPreInsertionState;
     struct CGPoint _contentOffsetBeforeInsertion;
-    NSArray *_appLayoutsVisibleBeforeInsertion;
-    BOOL _updatesContentOffsetAfterInsertion;
     unsigned long long _phase;
 }
 
 @property (readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
-@property (nonatomic) BOOL updatesContentOffsetAfterInsertion; // @synthesize updatesContentOffsetAfterInsertion=_updatesContentOffsetAfterInsertion;
 
 - (void).cxx_destruct;
-- (id)appLayouts;
-- (id)appLayoutsForInsertionOrRemoval;
+- (void)_performBlockBySimulatingPreInsertionState:(CDUnknownBlockType)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)handleInsertionEvent:(id)arg1;
 - (id)initWithAppLayout:(id)arg1;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (struct CGPoint)scrollViewContentOffset;
+- (id)visibleAppLayouts;
 
 @end
 

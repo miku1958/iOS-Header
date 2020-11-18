@@ -6,46 +6,49 @@
 
 #import <HealthDaemon/HDCloudSyncRecord.h>
 
-@class HDCloudSyncSequenceRecord, NSArray, NSString, NSUUID;
+@class HDCloudSyncCodableStore, HDCloudSyncSequenceRecord, NSArray, NSString, NSUUID;
 
 @interface HDCloudSyncStoreRecord : HDCloudSyncRecord
 {
+    HDCloudSyncCodableStore *_underlyingStore;
     HDCloudSyncSequenceRecord *_slotASequenceHeaderRecord;
     HDCloudSyncSequenceRecord *_slotBSequenceHeaderRecord;
-    BOOL _active;
-    NSString *_ownerIdentifier;
-    NSString *_pendingOwner;
-    NSUUID *_storeIdentifier;
     HDCloudSyncSequenceRecord *_tombstoneSequenceRecord;
 }
 
-@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
-@property (nonatomic) long long deviceMode;
+@property (nonatomic, getter=isActive) BOOL active;
+@property (nonatomic) int deviceMode;
 @property (copy, nonatomic) NSString *deviceName;
+@property (nonatomic) long long order;
 @property (readonly, copy, nonatomic) NSArray *orderedSequenceRecords;
-@property (readonly, copy, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
-@property (copy, nonatomic) NSString *pendingOwner; // @synthesize pendingOwner=_pendingOwner;
+@property (readonly, copy, nonatomic) NSString *ownerIdentifier;
+@property (copy, nonatomic) NSString *pendingOwner;
 @property (copy, nonatomic) NSString *productType;
-@property (nonatomic) long long requiredProtocolVersion;
+@property (nonatomic) int requiredProtocolVersion;
 @property (readonly, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord;
-@property (readonly, copy, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
-@property (nonatomic) long long supportedProtocolVersion;
+@property (readonly, copy, nonatomic) NSUUID *storeIdentifier;
+@property (nonatomic) int supportedProtocolVersion;
 @property (copy, nonatomic) NSString *systemBuildVersion;
 @property (readonly, nonatomic) HDCloudSyncSequenceRecord *tombstoneSequenceRecord; // @synthesize tombstoneSequenceRecord=_tombstoneSequenceRecord;
 
 + (BOOL)hasFutureSchema:(id)arg1;
 + (BOOL)isStoreRecord:(id)arg1;
 + (BOOL)isStoreRecordID:(id)arg1;
-+ (id)recordIDWithZoneID:(id)arg1;
++ (id)recordIDForOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 zoneID:(id)arg3;
++ (id)recordIDInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3 zoneID:(id)arg4;
++ (id)recordIDWithIndividualZoneID:(id)arg1;
++ (id)recordType;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
++ (BOOL)requiresUnderlyingMessage;
 - (void).cxx_destruct;
-- (id)_indentedSequenceRecordDescription:(id)arg1;
+- (id)_clearSequenceHeaderRecord:(id)arg1;
 - (id)activeSequenceHeaderRecord;
 - (id)addNewSequenceHeaderRecordWithSyncAnchorMap:(id)arg1 includedIdentifiers:(id)arg2;
 - (id)addNewTombstoneSequenceHeaderRecordWithIncludedIdentifiers:(id)arg1;
 - (void)addSequenceHeaderRecord:(id)arg1;
 - (id)clearCurrentSequenceHeaderRecord;
 - (id)clearOldSequenceHeaderRecord;
+- (id)clearPendingSequenceHeaderRecord;
 - (id)clearTombstoneSequenceHeaderRecord;
 - (long long)compare:(id)arg1;
 - (id)currentSequenceHeaderRecord;
@@ -53,11 +56,18 @@
 - (BOOL)hasActiveSequence;
 - (BOOL)hasSequenceWithFutureProtocolVersion;
 - (unsigned long long)hash;
-- (id)initInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3;
+- (id)initInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3 unified:(BOOL)arg4;
+- (id)initInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3 zoneID:(id)arg4;
+- (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;
+- (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2 underlyingStore:(id)arg3;
 - (id)initWithOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 pendingOwner:(id)arg3 active:(BOOL)arg4 record:(id)arg5 schemaVersion:(long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)oldSequenceHeaderRecord;
+- (id)pendingSequenceHeaderRecord;
+- (void)removeSequenceHeaderRecord:(id)arg1;
+- (void)repairOwnerIdentifier:(id)arg1;
 - (id)sequenceRecordWithRecordID:(id)arg1;
+- (id)serializeUnderlyingMessage;
 
 @end
 

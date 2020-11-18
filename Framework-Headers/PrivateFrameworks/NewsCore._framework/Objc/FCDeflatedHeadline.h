@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCSharedStringIndex, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL, NTPBFeedViewportHeadline;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCSharedStringIndex, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL, NTPBFeedViewportHeadline;
 @protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCDeflatedHeadline : NSObject <FCHeadlineProviding>
@@ -49,6 +49,7 @@
 @property (readonly, nonatomic) unsigned long long feedOrder;
 @property (readonly, nonatomic, getter=isFromBlockedStorefront) BOOL fromBlockedStorefront;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
 @property (readonly, nonatomic) BOOL hasAudioTrack;
@@ -94,6 +95,7 @@
 @property (readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property (readonly, nonatomic) long long publisherArticleVersion;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property (readonly, copy, nonatomic) NSString *referencedArticleID;
@@ -149,6 +151,7 @@
 - (unsigned long long)articleContentType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
 - (double)globalScore;
 - (id)initWithPBHeadline:(id)arg1 sharedStrings:(id)arg2;
 - (BOOL)isGap;

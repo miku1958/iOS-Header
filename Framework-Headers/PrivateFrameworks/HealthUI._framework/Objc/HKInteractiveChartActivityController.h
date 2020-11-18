@@ -72,7 +72,8 @@
 - (id)descriptionSpansForGraphView:(id)arg1;
 - (void)didUpdateFromDateZoom:(long long)arg1 toDateZoom:(long long)arg2 newVisibleRange:(id)arg3;
 - (long long)graphSeriesTimeScope;
-- (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 wheelchairUseCharacteristicCache:(id)arg6 initialXValue:(id)arg7;
+- (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 sampleTypeDateRangeController:(id)arg6 wheelchairUseCharacteristicCache:(id)arg7 initialXValue:(id)arg8;
+- (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 sampleTypeDateRangeController:(id)arg6 wheelchairUseCharacteristicCache:(id)arg7 initialXValue:(id)arg8 activityMoveMode:(long long)arg9;
 - (id)lollipopAnnotationColor;
 - (id)lollipopExtensionColor;
 - (id)makeAnnotationDataSource;

@@ -40,6 +40,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCustomBackgroundView; // @synthesize hasCustomBackgroundView=_hasCustomBackgroundView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double iconGridImageAlpha;
+@property (nonatomic, getter=isPageGridHidden) BOOL pageGridHidden;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -87,7 +89,6 @@
 - (void)setBackgroundScale:(double)arg1;
 - (void)setFloatyFolderCrossfadeFraction:(double)arg1;
 - (void)setIcon:(id)arg1 location:(id)arg2 animated:(BOOL)arg3;
-- (void)setIconGridImageAlpha:(double)arg1;
 - (id)snapshot;
 - (void)updateImageAnimated:(BOOL)arg1;
 - (struct CGRect)visibleImageRelativeFrameForMiniIconAtIndex:(unsigned long long)arg1;

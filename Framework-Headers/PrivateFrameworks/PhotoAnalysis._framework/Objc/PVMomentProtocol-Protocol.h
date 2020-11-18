@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) struct CLLocationCoordinate2D approximateCoordinate;
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) unsigned long long estimatedAssetCount;
+@property (readonly, nonatomic) BOOL isCoarse;
 @property (readonly, nonatomic) NSString *localIdentifier;
 @property (readonly, nonatomic) NSDate *startDate;
 

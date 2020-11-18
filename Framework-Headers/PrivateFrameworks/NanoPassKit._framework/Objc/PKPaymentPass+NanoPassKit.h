@@ -8,6 +8,7 @@
 
 @interface PKPaymentPass (NanoPassKit)
 - (id)npkDevicePaymentApplicationForAID:(id)arg1;
+- (BOOL)npkHasMultiplePaymentApplications;
 - (BOOL)npkHasUserSelectableContactlessPaymentApplications;
 - (id)npkPreferredContactlessPaymentApplication;
 - (void)npkSetPreferredPaymentApplication:(id)arg1;

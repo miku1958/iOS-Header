@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, _SFSearchEngineInfo;
 @protocol OS_dispatch_queue;
 
 @interface _SFSearchEngineController : NSObject
 {
     NSArray *_searchEngines;
     unsigned long long _defaultSearchEngineIndex;
-    NSObject<OS_dispatch_queue> *_searchEngineArrayAccessQueue;
+    NSObject<OS_dispatch_queue> *_searchEnginesQueue;
+    _SFSearchEngineInfo *_defaultSearchEngine;
     NSString *_countryCode;
     NSDictionary *_templateParameterValues;
     NSDictionary *_carrierTemplateParameterValues;
@@ -21,6 +22,7 @@
 
 @property (readonly, nonatomic) NSDictionary *carrierTemplateParameterValues; // @synthesize carrierTemplateParameterValues=_carrierTemplateParameterValues;
 @property (readonly, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (readonly, nonatomic) _SFSearchEngineInfo *defaultSearchEngineIfPopulated;
 @property (readonly, copy, nonatomic) NSString *defaultSearchEngineName;
 @property (readonly, copy, nonatomic) NSArray *engines;
 @property (readonly, copy, nonatomic) NSArray *enginesAvailableForUnifiedFieldSearching;
@@ -37,7 +39,7 @@
 - (void)_addSpecialSearchEnginesToArray:(id)arg1;
 - (id)_existingEngineInfoFor:(id)arg1;
 - (void)_getEngines:(id *)arg1 defaultSearchEngineIndex:(unsigned long long *)arg2;
-- (void)_loadSystemProperties;
+- (void)_loadSystemPropertiesForSearchEngine:(id)arg1;
 - (void)_populateSearchEngines;
 - (void)_postDefaultSearchEngineDidChange;
 - (void)_setDefaultSearchEngine:(id)arg1;

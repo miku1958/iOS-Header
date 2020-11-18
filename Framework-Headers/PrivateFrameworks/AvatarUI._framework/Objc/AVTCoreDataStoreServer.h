@@ -73,9 +73,9 @@
 - (void)mirroringHandler:(id)arg1 didResetSyncWithReason:(unsigned long long)arg2;
 - (void)mirroringHandler:(id)arg1 willResetSyncWithReason:(unsigned long long)arg2;
 - (BOOL)processInternalSettingsChanges:(CDUnknownBlockType)arg1;
-- (void)scheduleExportWithManagedObjectContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)scheduleExportWithManagedObjectContext:(id)arg1 discretionary:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)scheduleImportDiscretionary:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)scheduleImportExportIfRequiredWithPostImportHandler:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)scheduleImportThen:(CDUnknownBlockType)arg1;
 - (void)scheduleMigrationThen:(CDUnknownBlockType)arg1;
 - (void)scheduleSetupThen:(CDUnknownBlockType)arg1;
 - (void)scheduleUpdateThumbnails;

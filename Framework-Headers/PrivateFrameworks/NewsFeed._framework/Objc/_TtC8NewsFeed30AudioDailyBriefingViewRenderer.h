@@ -10,7 +10,6 @@
 
 @interface _TtC8NewsFeed30AudioDailyBriefingViewRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *durationFormatter;
     MISSING_TYPE *layoutAttributes;
 }
 

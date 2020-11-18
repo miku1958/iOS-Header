@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSString, NSURL;
 
 @interface WBSSiriIntelligenceDonorHistoryData : NSObject
 {
@@ -17,8 +17,10 @@
     NSString *_readerText;
     NSDate *_lastVisitedDate;
     unsigned long long _visitCount;
+    NSArray *_autocompleteTriggers;
 }
 
+@property (copy, nonatomic) NSArray *autocompleteTriggers; // @synthesize autocompleteTriggers=_autocompleteTriggers;
 @property (copy, nonatomic) NSString *fullPageText; // @synthesize fullPageText=_fullPageText;
 @property (copy, nonatomic) NSDate *lastVisitedDate; // @synthesize lastVisitedDate=_lastVisitedDate;
 @property (copy, nonatomic) NSString *pageTitle; // @synthesize pageTitle=_pageTitle;

@@ -25,11 +25,10 @@
 #import <PhotosUI/UICollectionViewDragSource-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
 @class NSDictionary, NSIndexPath, NSMutableArray, NSMutableSet, NSString, PHCachingImageManager, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAlbumList, PLManagedAsset, PUAlbumStreamActivity, PUFeedViewControllerRestorableState, PUFeedViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUScrollViewSpeedometer, PXFeedAssetContainerList, PXFeedDateFormatter, PXFeedSectionInfosManager, UIBarButtonItem, UICollectionView, UITapGestureRecognizer, _UIContentUnavailableView;
 
-@interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PXFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, PUFeedCaptionCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, _UISettingsKeyObserver, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, PXSettingsKeyObserver, UICollectionViewDragSource, PLCloudFeedNavigating, PXNavigableCloudFeedViewController>
+@interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PXFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, PUFeedCaptionCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, PXSettingsKeyObserver, UICollectionViewDragSource, PLCloudFeedNavigating, PXNavigableCloudFeedViewController>
 {
     BOOL __flowDirectionReversed;
     BOOL __collectionViewScrolledToNewest;
@@ -302,6 +301,7 @@
 - (BOOL)cloudFeedInvitationForAlbumIsAvailableForNavigation:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 layout:(id)arg2 batchIDForTileAtIndexPath:(id)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 captionSizeForTileAtIndexPath:(id)arg3 proposedSize:(struct CGSize)arg4;
 - (long long)collectionView:(id)arg1 layout:(id)arg2 commentCountForTileAtIndexPath:(id)arg3;
@@ -328,7 +328,6 @@
 - (double)collectionView:(id)arg1 layout:(id)arg2 spacingBetweenSection:(long long)arg3 andHeaderForGroupID:(id)arg4;
 - (long long)collectionView:(id)arg1 layout:(id)arg2 typeForSection:(long long)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)dealloc;
 - (void)didTapButtonInFeedTextCell:(id)arg1;
@@ -346,6 +345,7 @@
 - (id)initWithSpec:(id)arg1 contentType:(long long)arg2;
 - (void)navigateToCloudFeedAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToCloudFeedComment:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)navigateToNewestContentAnimated:(BOOL)arg1;
 - (void)navigateToRevealCloudFeedAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToRevealCloudFeedComment:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -370,6 +370,8 @@
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;
 - (BOOL)pu_wantsToolbarVisible;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

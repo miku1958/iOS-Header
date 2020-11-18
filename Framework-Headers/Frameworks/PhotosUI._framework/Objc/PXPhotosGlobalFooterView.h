@@ -15,6 +15,7 @@
 @interface PXPhotosGlobalFooterView : UICollectionReusableView <UITextViewDelegate, PXChangeObserver>
 {
     UIView *_accessoryView;
+    UIView *_filterView;
     BOOL _hasAnimatedIconView;
     PXFooterAnimatedIconView *_animatedIconView;
     PXGradientView *_backgroundView;
@@ -27,6 +28,7 @@
         BOOL photosGlobalFooterViewDidChangeHeight;
     } _delegateRespondsTo;
     BOOL _isPerformingChanges;
+    BOOL _needsWorkaroundFor53444616;
     double _currentHeight;
     PXFooterViewModel *_viewModel;
     id<PXPhotosGlobalFooterViewDelegate> _delegate;
@@ -39,10 +41,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PXPhotosGlobalFooterViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
+@property (readonly, nonatomic) BOOL needsWorkaroundFor53444616; // @synthesize needsWorkaroundFor53444616=_needsWorkaroundFor53444616;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PXFooterViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
-+ (id)attributedStringForInputString:(id)arg1 actionTitle:(id)arg2 textAttributes:(id)arg3 linkTextAttributes:(id)arg4;
 - (void).cxx_destruct;
 - (void)_animatedIconCrossedGridCycleBoundary;
 - (void)_configurePhotoCollectionGlobalFooterLabel:(id)arg1 withFont:(id)arg2 textColor:(id)arg3;
@@ -57,6 +59,7 @@
 - (id)_photoCollectionGlobalFooterSubtitleTextViewLinkTextAttributes_Font;
 - (void)_updateAccessory;
 - (void)_updateAnimatedIcon;
+- (void)_updateFilterView;
 - (void)_updateProgressAnimated:(BOOL)arg1;
 - (void)_updateSubtitle1;
 - (void)_updateSubtitle2;

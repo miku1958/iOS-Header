@@ -11,15 +11,20 @@
 @interface WFTriggeredAutomationEvent : WFEvent
 {
     BOOL _requiredRuntimeConfirmation;
+    unsigned int _batchCount;
+    unsigned int _batchDroppedCount;
     NSString *_key;
     NSString *_triggerType;
 }
 
+@property (nonatomic) unsigned int batchCount; // @synthesize batchCount=_batchCount;
+@property (nonatomic) unsigned int batchDroppedCount; // @synthesize batchDroppedCount=_batchDroppedCount;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (nonatomic) BOOL requiredRuntimeConfirmation; // @synthesize requiredRuntimeConfirmation=_requiredRuntimeConfirmation;
 @property (copy, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 
 + (Class)codableEventClass;
++ (id)serializablePropertyTransformers;
 - (void).cxx_destruct;
 
 @end

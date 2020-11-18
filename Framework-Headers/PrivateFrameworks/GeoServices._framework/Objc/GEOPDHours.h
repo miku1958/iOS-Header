@@ -27,10 +27,7 @@
         unsigned int read_days:1;
         unsigned int read_timeRanges:1;
         unsigned int read_hoursThreshold:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_days:1;
-        unsigned int wrote_timeRanges:1;
-        unsigned int wrote_hoursThreshold:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,11 +46,6 @@
 + (BOOL)operatingHoursAvailableForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsDays:(id)arg1;
-- (void)_addNoFlagsDay:(int)arg1;
-- (void)_addNoFlagsTimeRange:(struct GEOPDLocalTimeRange)arg1;
-- (void)_readDays;
-- (void)_readHoursThreshold;
-- (void)_readTimeRanges;
 - (void)addDay:(int)arg1;
 - (void)addTimeRange:(struct GEOPDLocalTimeRange)arg1;
 - (void)clearDays;
@@ -69,7 +61,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

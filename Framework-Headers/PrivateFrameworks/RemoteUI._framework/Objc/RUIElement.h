@@ -36,10 +36,13 @@
 - (void)configureView:(id)arg1;
 - (void)dealloc;
 - (BOOL)hasImage;
+- (id)image:(id)arg1 size:(struct CGSize)arg2;
 - (void)imageLoaded:(id)arg1;
 - (id)init;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (BOOL)loadImage;
+- (BOOL)loadImageFromImageURL;
+- (BOOL)loadSystemImage;
 - (id)mutableAttributes;
 - (id)pageElement;
 - (void)performAction:(int)arg1 completion:(CDUnknownBlockType)arg2;
@@ -49,10 +52,13 @@
 - (void)setImageAlignment:(int)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
 - (id)sourceURL;
+- (void)startActivityIndicator;
 - (id)staticFunctions;
 - (id)staticValues;
+- (void)stopActivityIndicator;
 - (id)subElementWithID:(id)arg1;
 - (id)subElementsWithName:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 
 @end
 

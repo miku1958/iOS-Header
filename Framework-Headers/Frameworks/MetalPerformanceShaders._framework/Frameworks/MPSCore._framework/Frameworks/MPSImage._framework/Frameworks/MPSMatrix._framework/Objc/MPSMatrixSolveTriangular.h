@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) BOOL unit; // @synthesize unit=_unit;
 @property (readonly, nonatomic) BOOL upper; // @synthesize upper=_upper;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 sourceMatrix:(id)arg2 rightHandSideMatrix:(id)arg3 solutionMatrix:(id)arg4;

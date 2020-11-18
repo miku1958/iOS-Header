@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet, WFDatabaseResult;
+@class WFDatabaseResult;
 
 @protocol WFDatabaseResultObserver
-- (void)databaseResult:(WFDatabaseResult *)arg1 didUpdateObjects:(NSSet *)arg2 inserted:(NSSet *)arg3 removed:(NSSet *)arg4;
+- (void)databaseResultDidChange:(WFDatabaseResult *)arg1;
 @end
 

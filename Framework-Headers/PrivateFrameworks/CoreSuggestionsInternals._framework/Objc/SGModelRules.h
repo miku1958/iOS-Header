@@ -11,7 +11,7 @@
 }
 
 + (id)_modelsAvailabeForMode:(unsigned long long)arg1 objective:(unsigned long long)arg2 language:(id)arg3;
-+ (void)loadPredictionModelForObjective:(unsigned long long)arg1 language:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
++ (void)loadBinaryClassificationModelFromMobileAssetForObjective:(unsigned long long)arg1 language:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (BOOL)shouldCollectTrainingDataForObjective:(unsigned long long)arg1 language:(id)arg2;
 
 @end

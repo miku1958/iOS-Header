@@ -8,17 +8,14 @@
 
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
-#import <PencilKit/PKPaletteViewStateObserving-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKPaletteToolPickerView;
-@protocol PKPaletteViewStateObservable;
 
-@interface PKPaletteToolPickerContainerView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling, PKPaletteViewStateObserving>
+@interface PKPaletteToolPickerContainerView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling>
 {
     unsigned long long _edgeLocation;
     double _scalingFactor;
     PKPaletteToolPickerView *_toolPickerView;
-    id<PKPaletteViewStateObservable> _paletteViewState;
     NSLayoutConstraint *_toolPickerViewTopConstraint;
     NSLayoutConstraint *_toolPickerViewBottomConstraint;
     NSLayoutConstraint *_toolPickerViewLeftConstraint;
@@ -29,7 +26,6 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<PKPaletteViewStateObservable> paletteViewState; // @synthesize paletteViewState=_paletteViewState;
 @property (nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaletteToolPickerView *toolPickerView; // @synthesize toolPickerView=_toolPickerView;
@@ -39,9 +35,10 @@
 @property (strong, nonatomic) NSLayoutConstraint *toolPickerViewTopConstraint; // @synthesize toolPickerViewTopConstraint=_toolPickerViewTopConstraint;
 
 - (void).cxx_destruct;
-- (void)didChangeAnnotationSupport:(id)arg1;
+- (void)_updateUI;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithPaletteViewStateObservable:(id)arg1;
+- (id)init;
+- (struct CGSize)intrinsicContentSize;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 

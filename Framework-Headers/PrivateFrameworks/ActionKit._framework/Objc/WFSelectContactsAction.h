@@ -6,16 +6,14 @@
 
 #import <WorkflowKit/WFAction.h>
 
-@class NSArray;
-
 @interface WFSelectContactsAction : WFAction
 {
 }
 
-@property (readonly, nonatomic) NSArray *contactPropertyIDs;
-@property (readonly, nonatomic) BOOL selectMultiple;
-
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (void)outputContacts:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 
 @end
 

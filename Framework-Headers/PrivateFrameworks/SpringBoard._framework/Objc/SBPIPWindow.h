@@ -16,12 +16,14 @@
 
 - (id)_pipWindowRootVC;
 - (void)addContainerViewController:(id)arg1;
+- (id)containerViewControllerForPictureInPictureViewController:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)init;
 - (long long)interfaceOrientationForContainerViewController:(id)arg1;
 - (BOOL)isActive;
 - (void)removeContainerViewController:(id)arg1;
 - (void)setRootViewController:(id)arg1;
+- (void)updateActiveInterfaceOrientationForManualPictureInPictureStart;
 
 @end
 

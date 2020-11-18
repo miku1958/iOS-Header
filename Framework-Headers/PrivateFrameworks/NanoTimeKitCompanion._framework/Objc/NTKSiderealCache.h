@@ -7,18 +7,22 @@
 #import <objc/NSObject.h>
 
 @class NSCache;
+@protocol OS_dispatch_queue;
 
 @interface NTKSiderealCache : NSObject
 {
     NSCache *_dataCache;
+    NSObject<OS_dispatch_queue> *_readerWriterQueue;
+    NSCache *_aplCache;
 }
 
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (id)_init;
 - (void)_purgeEverything;
-- (id)gradientData:(CDUnknownBlockType)arg1;
+- (float)aplForDate:(id)arg1 generationBlock:(CDUnknownBlockType)arg2;
 - (id)imageDataForKey:(id)arg1 generationBlock:(CDUnknownBlockType)arg2;
+- (void)purgeAPLCache;
 - (void)purgeCachedKey:(id)arg1;
 
 @end

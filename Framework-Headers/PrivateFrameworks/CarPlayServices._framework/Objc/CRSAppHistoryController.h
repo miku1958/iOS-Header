@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlayServices/BSInvalidatable-Protocol.h>
 #import <CarPlayServices/CRSAppHistoryServerToClientInterface-Protocol.h>
 
 @class BSServiceConnection, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CRSAppHistoryController : NSObject <CRSAppHistoryServerToClientInterface>
+@interface CRSAppHistoryController : NSObject <CRSAppHistoryServerToClientInterface, BSInvalidatable>
 {
     BSServiceConnection *_connection;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -24,12 +25,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)availableFeatureKeys;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)fetchSessionEchoContextsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSessionFeatureKeysWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSessionUIContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUIContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)invalidate;
+- (void)setSessionFeatureKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSessionUIContexts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

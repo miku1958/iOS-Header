@@ -6,43 +6,40 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class GKLabel, GKTextBubbleControl, GKTurnBasedMatch, NSLayoutConstraint, NSString;
+@class GKDashboardPlayerPhotoView, GKLabel, GKTurnBasedMatch, NSArray, NSString, UIButton, UILabel;
 
 @interface GKTurnBasedMatchDetailHeaderView : UICollectionReusableView
 {
-    BOOL _compactHeight;
     GKTurnBasedMatch *_match;
     NSString *_infoText;
-    id _bubbleTarget;
-    SEL _bubbleAction;
-    GKTextBubbleControl *_actionBubble;
-    GKLabel *_playingWithLabel;
+    id _actionTarget;
+    SEL _actionSelector;
+    UIButton *_actionButton;
+    UILabel *_playingWithLabel;
     GKLabel *_startedLabel;
     GKLabel *_lastTurnLabel;
     GKLabel *_infoLabel;
-    NSLayoutConstraint *_playingToTopConstraint;
-    NSLayoutConstraint *_bubbleToLastConstraint;
+    GKDashboardPlayerPhotoView *_avatarView;
+    NSArray *_constraints;
 }
 
-@property (strong, nonatomic) GKTextBubbleControl *actionBubble; // @synthesize actionBubble=_actionBubble;
-@property (nonatomic) SEL bubbleAction; // @synthesize bubbleAction=_bubbleAction;
-@property (nonatomic) id bubbleTarget; // @synthesize bubbleTarget=_bubbleTarget;
-@property (strong, nonatomic) NSString *bubbleText;
-@property (nonatomic) NSLayoutConstraint *bubbleToLastConstraint; // @synthesize bubbleToLastConstraint=_bubbleToLastConstraint;
-@property (nonatomic) long long bubbleType;
-@property (nonatomic) BOOL compactHeight; // @synthesize compactHeight=_compactHeight;
+@property (strong, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
+@property (nonatomic) SEL actionSelector; // @synthesize actionSelector=_actionSelector;
+@property (weak, nonatomic) id actionTarget; // @synthesize actionTarget=_actionTarget;
+@property (strong, nonatomic) NSString *actionText;
+@property (strong, nonatomic) GKDashboardPlayerPhotoView *avatarView; // @synthesize avatarView=_avatarView;
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (strong, nonatomic) GKLabel *infoLabel; // @synthesize infoLabel=_infoLabel;
 @property (strong, nonatomic) NSString *infoText; // @synthesize infoText=_infoText;
 @property (strong, nonatomic) GKLabel *lastTurnLabel; // @synthesize lastTurnLabel=_lastTurnLabel;
 @property (strong, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
-@property (nonatomic) NSLayoutConstraint *playingToTopConstraint; // @synthesize playingToTopConstraint=_playingToTopConstraint;
-@property (strong, nonatomic) GKLabel *playingWithLabel; // @synthesize playingWithLabel=_playingWithLabel;
+@property (strong, nonatomic) UILabel *playingWithLabel; // @synthesize playingWithLabel=_playingWithLabel;
 @property (readonly, nonatomic) NSString *playingWithString;
 @property (strong, nonatomic) GKLabel *startedLabel; // @synthesize startedLabel=_startedLabel;
 
 + (BOOL)requiresConstraintBasedLayout;
-- (void)bubblePressed:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)actionPressed:(id)arg1;
 - (void)didUpdateModel;
 - (void)establishConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;

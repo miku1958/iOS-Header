@@ -8,12 +8,13 @@
 
 #import <ChatKit/CKMessageEntryRichTextViewDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewStyleProtocol-Protocol.h>
+#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSString, UIButton, UIView, UIViewController;
+@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSDictionary, NSString, UIButton, UIView, UIViewController;
 @protocol CKPluginEntryViewController;
 
-@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol>
+@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate>
 {
     BOOL _shouldShowSubject;
     BOOL _needsTextLayout;
@@ -40,11 +41,13 @@
     UIButton *_clearPluginButton;
     NSString *_requestedPlaceholderText;
     NSString *_overridePlaceholderText;
+    NSDictionary *_bizIntent;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (weak, nonatomic) CKMessageEntryTextView *activeView; // @synthesize activeView=_activeView;
 @property (nonatomic) BOOL balloonColor;
+@property (copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property (strong, nonatomic) UIButton *clearPluginButton; // @synthesize clearPluginButton=_clearPluginButton;
 @property (strong, nonatomic) CKComposition *composition; // @synthesize composition=_composition;
 @property (nonatomic) double containerViewLineWidth; // @synthesize containerViewLineWidth=_containerViewLineWidth;
@@ -92,6 +95,7 @@
 - (void)_updateUI;
 - (void)acceptAutocorrection;
 - (void)clearPluginButtonTapped:(id)arg1;
+- (void)collapseTextFieldsIfInPencilMode;
 - (void)configureShelfForPluginPayload:(id)arg1;
 - (void)dealloc;
 - (void)didFinishAnimatedBoundsChange;
@@ -107,6 +111,7 @@
 - (BOOL)messageEntryRichTextView:(id)arg1 shouldPasteMediaObjects:(id)arg2;
 - (BOOL)messageEntryRichTextView:(id)arg1 shouldRecognizeGesture:(id)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(id)arg1;
+- (void)messageEntryRichTextViewDidTapMention:(id)arg1 characterIndex:(double)arg2;
 - (void)messageEntryRichTextViewWasTapped:(id)arg1 isLongPress:(BOOL)arg2;
 - (void)pluginPayloadWantsResize:(id)arg1;
 - (void)plugingPayloadDidLoad:(id)arg1;
@@ -119,6 +124,7 @@
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
+- (void)textViewDidChangeSelection:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;
 - (BOOL)textViewShouldBeginEditing:(id)arg1;
 - (void)willAnimateBoundsChange;

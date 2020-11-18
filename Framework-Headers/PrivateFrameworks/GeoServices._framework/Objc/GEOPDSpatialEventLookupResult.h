@@ -8,18 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class GEOMapRegion, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSpatialEventLookupResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOMapRegion *_displayMapRegion;
     NSMutableArray *_events;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _statusCode;
-    CDStruct_ade9d5f7 _flags;
+    struct {
+        unsigned int has_statusCode:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_displayMapRegion:1;
+        unsigned int read_events:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
+@property (strong, nonatomic) GEOMapRegion *displayMapRegion;
 @property (strong, nonatomic) NSMutableArray *events;
+@property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (nonatomic) BOOL hasStatusCode;
 @property (nonatomic) int statusCode;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -38,7 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)eventAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

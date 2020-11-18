@@ -16,9 +16,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *mockListeners; // @synthesize mockListeners=_mockListeners;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)init;

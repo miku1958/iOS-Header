@@ -7,9 +7,15 @@
 @class CTServiceDescriptor;
 
 @protocol CTXPCServiceCellularUsagePolicyInterface
+- (void)interfaceCostExpensive:(CTServiceDescriptor *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)isHighDataModeSupported:(CTServiceDescriptor *)arg1 completion:(void (^)(BOOL))arg2;
+- (void)isSmartDataModeSupportedWithCompletion:(void (^)(BOOL))arg1;
+- (void)lowDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)reliableNetworkFallback:(CTServiceDescriptor *)arg1 completion:(void (^)(BOOL, BOOL, NSError *))arg2;
-- (void)saveDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)setInterfaceCost:(CTServiceDescriptor *)arg1 expensive:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setLowDataMode:(CTServiceDescriptor *)arg1 enable:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setReliableNetworkFallback:(CTServiceDescriptor *)arg1 enable:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
-- (void)setSaveDataMode:(CTServiceDescriptor *)arg1 enable:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setSmartDataMode:(CTServiceDescriptor *)arg1 enable:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
+- (void)smartDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

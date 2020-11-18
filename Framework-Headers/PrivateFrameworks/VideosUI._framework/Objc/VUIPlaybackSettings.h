@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     BOOL _preferencesNotifyTokenIsValid;
     BOOL _cellularDataPlaybackEnabled;
     BOOL _cellularDataDownloadEnabled;
+    BOOL _preferAVAdapterCompatibility;
+    BOOL _useDefaultSubtitleDownloadLanguages;
     NSString *_preferredAudioLanguageCode;
     long long _networkStatus;
     long long _preferredWifiPlaybackQuality;
@@ -22,27 +24,34 @@ __attribute__((visibility("hidden")))
     long long _preferredWifiDownloadQuality;
     long long _preferredCellularDownloadQuality;
     NSArray *_preferredAudioDownloadLanguages;
+    NSArray *_preferredSubtitleDownloadLanguages;
 }
 
 @property (nonatomic) BOOL cellularDataDownloadEnabled; // @synthesize cellularDataDownloadEnabled=_cellularDataDownloadEnabled;
 @property (nonatomic) BOOL cellularDataPlaybackEnabled; // @synthesize cellularDataPlaybackEnabled=_cellularDataPlaybackEnabled;
-@property (nonatomic) long long networkStatus; // @synthesize networkStatus=_networkStatus;
+@property long long networkStatus; // @synthesize networkStatus=_networkStatus;
+@property (nonatomic) BOOL preferAVAdapterCompatibility; // @synthesize preferAVAdapterCompatibility=_preferAVAdapterCompatibility;
 @property (strong, nonatomic) NSArray *preferredAudioDownloadLanguages; // @synthesize preferredAudioDownloadLanguages=_preferredAudioDownloadLanguages;
 @property (strong, nonatomic) NSString *preferredAudioLanguageCode; // @synthesize preferredAudioLanguageCode=_preferredAudioLanguageCode;
 @property (nonatomic) long long preferredCellularDownloadQuality; // @synthesize preferredCellularDownloadQuality=_preferredCellularDownloadQuality;
 @property (nonatomic) long long preferredCellularPlaybackQuality; // @synthesize preferredCellularPlaybackQuality=_preferredCellularPlaybackQuality;
 @property (readonly, nonatomic) long long preferredDownloadQualityForCurrentNetworkStatus;
 @property (readonly, nonatomic) long long preferredPlaybackQualityForCurrentNetworkStatus;
+@property (strong, nonatomic) NSArray *preferredSubtitleDownloadLanguages; // @synthesize preferredSubtitleDownloadLanguages=_preferredSubtitleDownloadLanguages;
 @property (nonatomic) long long preferredWifiDownloadQuality; // @synthesize preferredWifiDownloadQuality=_preferredWifiDownloadQuality;
 @property (nonatomic) long long preferredWifiPlaybackQuality; // @synthesize preferredWifiPlaybackQuality=_preferredWifiPlaybackQuality;
+@property (nonatomic) BOOL useDefaultSubtitleDownloadLanguages; // @synthesize useDefaultSubtitleDownloadLanguages=_useDefaultSubtitleDownloadLanguages;
 
 + (id)sharedSettings;
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground:(id)arg1;
+- (id)_descriptionForExternalScreenType:(unsigned int)arg1;
 - (long long)_downloadQualityForString:(id)arg1;
+- (void)_externalScreenTypeDidChange:(id)arg1;
 - (void)_networkTypeDidChange:(id)arg1;
 - (long long)_playbackQualityForString:(id)arg1 forCellular:(BOOL)arg2;
 - (void)_registerObserverForUserPrefsChange;
+- (void)_sceneWillConnect:(id)arg1;
 - (void)_updateNetworkStatus;
 - (void)_updatePropertiesFromUserPrefs;
 - (void)dealloc;

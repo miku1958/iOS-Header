@@ -10,7 +10,6 @@
 
 @interface SXContainerComponentBlueprint : SXComponentBlueprint
 {
-    SXLayoutBlueprint *_parentLayoutBlueprint;
     SXLayoutBlueprint *_layoutBlueprint;
 }
 
@@ -18,7 +17,6 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)parentLayoutBlueprint;
 - (void)setParentLayoutBlueprint:(id)arg1;
 
 @end

@@ -25,21 +25,22 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL lastSuggestionWasColliding;
 @property (readonly) Class superclass;
 
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
 - (void).cxx_destruct;
 - (id)compositionControllerForAsset:(id)arg1 baseVersion:(out long long *)arg2;
-- (id)initWithSession:(id)arg1;
-- (id)nextSuggestion;
-- (id)portraitsBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
+- (id)init;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)portraitsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)reasonsForSuggestion:(id)arg1;
 - (void)reset;
 - (void)startSuggestingWithOptions:(id)arg1;
 - (id)studioLightRecipeWithAsset:(id)arg1;
-- (id)suggestedAssetsInAssets:(id)arg1;
-- (id)suggestedAssetsInAssets:(id)arg1 options:(id)arg2;
+- (id)suggestedAssetsInAssets:(id)arg1 options:(id)arg2 progress:(CDUnknownBlockType)arg3;
+- (id)suggestedAssetsInAssets:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)suggestionWithAsset:(id)arg1;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 

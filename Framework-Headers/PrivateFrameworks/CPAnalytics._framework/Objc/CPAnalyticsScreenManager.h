@@ -13,11 +13,12 @@
 @interface CPAnalyticsScreenManager : NSObject <CPAnalyticsDynamicPropertyProvider>
 {
     long long _screensViewCount;
+    NSSet *_namesOfViewsToTrack;
     CPAnalytics *_cpAnalyticsInstance;
     long long _appVisiblePeriodSignpostID;
-    NSSet *_namesOfViewsToTrack;
     NSSet *_namesOfViewsToIgnore;
     NSString *_currentTabIdentifierDescription;
+    NSString *_pendingTabIdentifierDescription;
     NSMutableArray *_currentlyOpenViews;
     unsigned long long _priorViewsMaxIndex;
     NSMutableArray *_priorViews;
@@ -36,14 +37,15 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSSet *namesOfViewsToIgnore; // @synthesize namesOfViewsToIgnore=_namesOfViewsToIgnore;
 @property (strong, nonatomic) NSSet *namesOfViewsToTrack; // @synthesize namesOfViewsToTrack=_namesOfViewsToTrack;
+@property (strong, nonatomic) NSString *pendingTabIdentifierDescription; // @synthesize pendingTabIdentifierDescription=_pendingTabIdentifierDescription;
 @property (strong, nonatomic) NSMutableArray *priorViews; // @synthesize priorViews=_priorViews;
 @property (readonly, nonatomic) unsigned long long priorViewsMaxIndex; // @synthesize priorViewsMaxIndex=_priorViewsMaxIndex;
 @property (nonatomic) long long screensViewCount; // @synthesize screensViewCount=_screensViewCount;
 @property (readonly) Class superclass;
 
 + (id)_combinedViewName:(id)arg1 withID:(id)arg2;
-+ (BOOL)_isValidCurrentTabIdentifierEvent:(id)arg1;
 + (BOOL)_isValidScreenViewEvent:(id)arg1;
++ (BOOL)_isValidTabIdentifierChangedEvent:(id)arg1;
 + (id)_viewNameFromCombined:(id)arg1;
 - (void).cxx_destruct;
 - (void)_handleUnknownViewIfNeeded:(id)arg1;
@@ -54,6 +56,7 @@
 - (void)_trackView:(id)arg1 withEventName:(id)arg2 viewID:(id)arg3 eventTime:(id)arg4;
 - (void)_updateAppLifeCycle:(id)arg1;
 - (void)_updateCurrentScreenToViewName:(id)arg1 withEventTime:(id)arg2;
+- (void)_updateCurrentTabIdentifier:(id)arg1;
 - (void)_updateScreenTracking:(id)arg1;
 - (void)_updateTabTracking:(id)arg1;
 - (id)currentScreenViewName;
@@ -61,6 +64,8 @@
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (id)lastScreenName;
 - (void)processEvent:(id)arg1;
+- (void)registerSystemProperties:(id)arg1;
+- (void)updateWithConfig:(id)arg1;
 
 @end
 

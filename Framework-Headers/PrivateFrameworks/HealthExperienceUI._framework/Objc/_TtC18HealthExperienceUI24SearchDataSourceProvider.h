@@ -10,11 +10,15 @@
 
 @interface _TtC18HealthExperienceUI24SearchDataSourceProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$__lazy_storage_$_tinkerProfilesSource;
     MISSING_TYPE *$__lazy_storage_$_categoriesDataSource;
     MISSING_TYPE *$__lazy_storage_$_searchResultsDataSource;
     MISSING_TYPE *mainStore;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *behaviours;
+    MISSING_TYPE *sourceProfile;
     MISSING_TYPE *$__lazy_storage_$_searchResultsController;
+    MISSING_TYPE *$__lazy_storage_$_tinkerProfilesController;
     MISSING_TYPE *$__lazy_storage_$_categoriesController;
 }
 

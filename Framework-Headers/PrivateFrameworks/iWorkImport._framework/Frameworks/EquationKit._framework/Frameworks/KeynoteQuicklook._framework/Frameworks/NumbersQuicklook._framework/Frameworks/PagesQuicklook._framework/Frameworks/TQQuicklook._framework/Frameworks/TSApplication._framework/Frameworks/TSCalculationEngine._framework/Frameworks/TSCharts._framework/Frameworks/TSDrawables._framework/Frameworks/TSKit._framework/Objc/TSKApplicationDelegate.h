@@ -44,17 +44,16 @@
 + (id)sharedPropertiesProvider;
 - (void).cxx_destruct;
 - (id)appChartPropertyOverrides;
-- (void)collectAppLaunchAnalyticsWithLogger:(id)arg1;
 - (void)configureSharedPropertiesProvider:(id)arg1;
 - (id)createCompatibilityDelegate;
 - (void)customizeHyperlinkViewController:(id)arg1 documentRoot:(id)arg2;
 - (id)defaultHyperlinkURLWithDocumentRoot:(id)arg1;
 - (void)donateAddBodyRowAtBottomIntentWithInfo:(id)arg1;
 - (id)init;
-- (void)logAppLaunchAnalytics;
 - (BOOL)openURL:(id)arg1;
 - (BOOL)openURL:(id)arg1 displayAlertOnError:(BOOL)arg2;
 - (unsigned long long)operationStoragePruningThresholdWithDocumentRoot:(id)arg1;
+- (void)p_setUpSharedPropertiesProviderIfNeeded;
 - (id)previewImageForType:(id)arg1;
 - (BOOL)shouldRenderContactShadow;
 - (BOOL)shouldRenderCurvedShadow;

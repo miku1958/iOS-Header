@@ -25,6 +25,7 @@
 - (void)switchActivePairedDeviceWithID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)unpairDeviceWithID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)unpairStartForDeviceWithID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updatePairedDevice:(NSUUID *)arg1 pairingType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updatePairedDeviceWithID:(NSUUID *)arg1 supportIPsec:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

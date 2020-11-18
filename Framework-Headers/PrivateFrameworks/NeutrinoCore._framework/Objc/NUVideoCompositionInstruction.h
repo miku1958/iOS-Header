@@ -16,6 +16,7 @@
     NSMutableDictionary *_sourceIdentifiersByTrackID;
     NSArray *_requiredSourceTrackIDs;
     NURenderJob *_renderJob;
+    NSString *_name;
     NURenderContext *_renderContext;
     NUComposition *_adjustmentComposition;
     NSArray *_pipelineFilters;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL enablePostProcessing;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) int passthroughTrackID;
 @property (strong, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;
 @property (strong) NURenderContext *renderContext; // @synthesize renderContext=_renderContext;

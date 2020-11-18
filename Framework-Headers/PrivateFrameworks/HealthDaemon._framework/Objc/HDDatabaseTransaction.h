@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDDatabaseTransactionContext, HDSQLiteDatabase, NSMutableArray;
+@class HDDatabaseTransactionContext, HDHFDataStore, HDSQLiteDatabase, NSMutableArray;
 @protocol HDSQLiteDatabaseProvider;
 
 @interface HDDatabaseTransaction : NSObject
@@ -20,9 +20,12 @@
     BOOL _performingMigration;
     HDSQLiteDatabase *_unprotectedDatabase;
     HDSQLiteDatabase *_protectedDatabase;
+    HDHFDataStore *_highFrequencyDataStore;
     HDDatabaseTransactionContext *_rootContext;
 }
 
+@property (readonly, nonatomic) long long cacheScope;
+@property (readonly, nonatomic) HDHFDataStore *highFrequencyDataStore; // @synthesize highFrequencyDataStore=_highFrequencyDataStore;
 @property (nonatomic) BOOL performingMigration; // @synthesize performingMigration=_performingMigration;
 @property (readonly, nonatomic) HDSQLiteDatabase *protectedDatabase; // @synthesize protectedDatabase=_protectedDatabase;
 @property (readonly, copy, nonatomic) HDDatabaseTransactionContext *rootContext; // @synthesize rootContext=_rootContext;
@@ -36,6 +39,8 @@
 - (id)initWithDatabaseProvider:(id)arg1 rootContext:(id)arg2;
 - (void)onCommit:(CDUnknownBlockType)arg1 orRollback:(CDUnknownBlockType)arg2;
 - (BOOL)performWithContext:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3 inaccessibilityHandler:(CDUnknownBlockType)arg4;
+- (void)requestTransactionInterruption;
+- (void)requireRollback;
 - (void)transactionDidEndWithError:(id)arg1;
 
 @end

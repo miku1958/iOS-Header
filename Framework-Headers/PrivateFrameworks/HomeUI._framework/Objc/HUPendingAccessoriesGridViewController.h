@@ -21,6 +21,7 @@
 
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)initWithUser:(id)arg1;
+- (id)layoutOptionsForSection:(long long)arg1;
 - (BOOL)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (void)viewDidLoad;
 

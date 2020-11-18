@@ -6,7 +6,15 @@
 
 #import <Foundation/NSString.h>
 
-@interface NSString (MPCStoreFrontLocalEquivalencyMiddlewareAdditions)
+#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadJSONValue-Protocol.h>
+
+@interface NSString (MPCStoreFrontLocalEquivalencyMiddlewareAdditions) <MPCPlaybackEngineEventPayloadJSONValue>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id)MPC_storeFrontIdentifierKey;
 @end
 

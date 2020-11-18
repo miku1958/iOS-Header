@@ -18,6 +18,7 @@
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didSelectMenuItemForControlType:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 wantsFilterScrubberVisible:(BOOL)arg2;
 - (void)controlDrawerDidCreateApertureSlider:(CAMControlDrawer *)arg1;
+- (void)controlDrawerDidCreateExposureSlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateFilterScrubber:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateIntensitySlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateLowLightSlider:(CAMControlDrawer *)arg1;

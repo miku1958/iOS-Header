@@ -6,12 +6,12 @@
 
 #import <HomeAI/NSObject-Protocol.h>
 
-@class AVAssetWriter, AVFragmentedMediaDataReport, NSData;
+@class AVAssetSegmentReport, AVAssetWriter, NSData;
 
 @protocol AVAssetWriterDelegate <NSObject>
 
 @optional
-- (void)assetWriter:(AVAssetWriter *)arg1 didProduceFragmentedHeaderData:(NSData *)arg2;
-- (void)assetWriter:(AVAssetWriter *)arg1 didProduceFragmentedMediaData:(NSData *)arg2 fragmentedMediaDataReport:(AVFragmentedMediaDataReport *)arg3;
+- (void)assetWriter:(AVAssetWriter *)arg1 didOutputSegmentData:(NSData *)arg2 segmentType:(long long)arg3;
+- (void)assetWriter:(AVAssetWriter *)arg1 didOutputSegmentData:(NSData *)arg2 segmentType:(long long)arg3 segmentReport:(AVAssetSegmentReport *)arg4;
 @end
 

@@ -41,6 +41,7 @@
 - (void)cancelServiceViewController;
 - (void)constructPrivateViewController;
 - (void)dashboardDidChangeToLeaderboardIdentifier:(id)arg1;
+- (void)dashboardDidChangeToLeaderboardPlayerScope:(long long)arg1;
 - (void)dashboardDidChangeToLeaderboardTimeScope:(long long)arg1;
 - (void)dashboardDidChangeToViewState:(long long)arg1;
 - (void)dealloc;
@@ -73,6 +74,7 @@
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldAnimatePresentationForPrivateViewController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

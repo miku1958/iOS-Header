@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_colorForDisplayType:(id)arg1;
-- (id)makeAnnotationDataSource;
 - (id)makeAnnotationDataSourceWithMetrics:(id)arg1;
 - (id)makeStandardCurrentValueViewDataSource;
 - (void)updateSelectionAnnotationDataSourceForContext:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;

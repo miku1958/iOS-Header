@@ -8,16 +8,25 @@
 
 #import <GeoServices/GEOAnalyticsPipelineProxy-Protocol.h>
 
-@class NSString;
+@class NSString, geo_isolater;
 @protocol GEOAnalyticsPipelineProxy;
 
 @interface GEOAnalyticsPipelineManager : NSObject <GEOAnalyticsPipelineProxy>
 {
     id<GEOAnalyticsPipelineProxy> _proxy;
+    BOOL _evDirectionsFeedbackAllowed;
+    BOOL _directionsFeedbackAllowed;
+    BOOL _evDirectionsFeedbackAuth;
+    id _evDirectionsFeedbackAllowedListener;
+    id _evDirectionsFeedbackAuthListener;
+    geo_isolater *_evInfoIsolator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL directionsFeedbackAllowed; // @synthesize directionsFeedbackAllowed=_directionsFeedbackAllowed;
+@property (nonatomic) BOOL evDirectionsFeedbackAllowed; // @synthesize evDirectionsFeedbackAllowed=_evDirectionsFeedbackAllowed;
+@property (readonly, nonatomic) BOOL evDirectionsFeedbackAuth; // @synthesize evDirectionsFeedbackAuth=_evDirectionsFeedbackAuth;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -29,18 +38,30 @@
 - (BOOL)GEOMapsLocationAuth;
 - (BOOL)PlatformDiagAndUsage;
 - (BOOL)PlatformDiagAndUsageOrAppleInternal;
+- (void)dealloc;
 - (void)flushEvalData;
+- (int)functionalAppGroup;
+- (BOOL)getEvDirectionsFeedbackAllowed;
+- (BOOL)getEvDirectionsFeedbackAuth;
 - (id)getEvalStatus;
 - (id)init;
 - (void)initiateUploadOfType:(int)arg1;
 - (void)logToDiagAndUsageUnderBugId:(id)arg1 filePrefix:(id)arg2 logData:(id)arg3;
+- (void)reportCuratedCollectionActionType:(unsigned long long)arg1 collectionId:(unsigned long long)arg2;
+- (void)reportCuratedCollectionActionType:(unsigned long long)arg1 collectionId:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
+- (void)reportDailySettingsStates:(id)arg1;
+- (void)reportDailySettingsStates:(id)arg1 completion:(CDUnknownBlockType)arg2 completionQueue:(id)arg3;
+- (void)reportDailyUsageCountType:(int)arg1 usageString:(id)arg2 usageBool:(id)arg3 appId:(id)arg4;
+- (void)reportDailyUsageCountType:(int)arg1 usageString:(id)arg2 usageBool:(id)arg3 appId:(id)arg4 completion:(CDUnknownBlockType)arg5 completionQueue:(id)arg6;
 - (void)reportLogMsgType:(int)arg1 handlingPolicyId:(int)arg2 logMsg:(id)arg3 completion:(CDUnknownBlockType)arg4 completionQueue:(id)arg5;
 - (void)reportMapKitCountType:(int)arg1;
 - (void)reportMapKitCountType:(int)arg1 appId:(id)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
+- (void)runAggregationTasks;
 - (void)setEvalMode:(BOOL)arg1;
 - (void)setShortSessionValues:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)shortSessionValuesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)showEvalDataWithPredicate:(id)arg1 visitorBlock:(CDUnknownBlockType)arg2 summaryBlock:(CDUnknownBlockType)arg3;
+- (void)toggleEVDirectionsFeedbackAllowed;
 
 @end
 

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDSettingGroupOwnerProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDSettingGroup-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString, NSUUID;
 
-@interface HMDSettingGroup : NSObject <HMDSettingGroupOwnerProtocol>
+@interface HMDSettingGroup : NSObject <HMDSettingGroup>
 {
     NSUUID *_identifier;
     NSUUID *_parentIdentifier;
@@ -25,7 +25,10 @@
 @property (readonly, copy) NSArray *groups;
 @property (strong) NSMutableSet *groupsInternal; // @synthesize groupsInternal=_groupsInternal;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
+@property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly, copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (readonly, copy) NSArray *settings;
 @property (strong) NSMutableSet *settingsInternal; // @synthesize settingsInternal=_settingsInternal;
 @property (readonly) Class superclass;
@@ -35,12 +38,9 @@
 - (void)addGroup:(id)arg1;
 - (void)addSetting:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 parentIdentifier:(id)arg2 name:(id)arg3 groups:(id)arg4 settings:(id)arg5;
 - (id)initWithModel:(id)arg1;
-- (id)name;
-- (id)parentIdentifier;
 
 @end
 

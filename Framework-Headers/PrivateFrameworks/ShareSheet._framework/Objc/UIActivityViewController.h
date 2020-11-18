@@ -12,16 +12,15 @@
 #import <ShareSheet/SFShareSheetSlotManagerDelegate-Protocol.h>
 #import <ShareSheet/UIActivityContentDelegate-Protocol.h>
 #import <ShareSheet/UICollectionViewDelegate-Protocol.h>
-#import <ShareSheet/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <ShareSheet/UIViewControllerRestoration-Protocol.h>
 #import <ShareSheet/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <ShareSheet/_UIActivityHelperDelegate-Protocol.h>
 #import <ShareSheet/_UIActivityUserDefaultsViewControllerDelegate-Protocol.h>
 
-@class LPLinkMetadata, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUserDefaults, ObjectManipulationViewController, SFAirDropViewController, SFShareSheetSlotManager, UIActivity, UIActivityContentViewController, UIAlertAction, UIAlertController, UINavigationController, UIPresentationController, UISUIActivityViewControllerConfiguration, UIView, _UIActivityHelper, _UIActivityNavigationController, _UICollectionViewDiffableDataSource;
+@class LPLinkMetadata, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUserDefaults, ObjectManipulationViewController, SFAirDropViewController, SFShareSheetSlotManager, UIActivity, UIActivityContentViewController, UIAlertAction, UIAlertController, UINavigationController, UISUIActivityViewControllerConfiguration, UIView, _UIActivityHelper, _UIActivityNavigationController, _UICollectionViewDiffableDataSource;
 @protocol UIActivityViewControllerAirDropDelegate, UIActivityViewControllerObjectManipulationDelegate, UIActivityViewControllerPhotosDelegate;
 
-@interface UIActivityViewController : UIViewController <UIViewControllerRestoration, _UIActivityHelperDelegate, SFAirDropViewControllerDelegate, SFShareSheetSlotManagerDelegate, _UIActivityUserDefaultsViewControllerDelegate, ObjectManipulationDelegate, UICollectionViewDelegate, UIActivityContentDelegate, UIViewControllerTransitioningDelegate, UIPresentationControllerDelegatePrivate, LPLinkViewDelegate>
+@interface UIActivityViewController : UIViewController <UIViewControllerRestoration, _UIActivityHelperDelegate, SFAirDropViewControllerDelegate, SFShareSheetSlotManagerDelegate, _UIActivityUserDefaultsViewControllerDelegate, ObjectManipulationDelegate, UICollectionViewDelegate, UIActivityContentDelegate, UIViewControllerTransitioningDelegate, LPLinkViewDelegate>
 {
     SFShareSheetSlotManager *_slotManager;
     BOOL _airDropOnly;
@@ -30,6 +29,7 @@
     BOOL _performActivityForStateRestoration;
     BOOL _shouldMatchOnlyUserElectedExtensions;
     BOOL _shouldSkipPeopleSuggestions;
+    BOOL _shouldSuggestFamilyMembers;
     BOOL _hasPerformedInitialPresentation;
     BOOL _isPerformingPresentation;
     BOOL _receivedInitialConfiguration;
@@ -53,8 +53,8 @@
     NSArray *_applicationActivities;
     NSMutableDictionary *_activitiesByUUID;
     _UIActivityHelper *_activityHelper;
-    UIPresentationController *_adaptivePresentationController;
     CDUnknownBlockType __popoverDismissalAction;
+    UIViewController *_presentationViewController;
     CDUnknownBlockType _activityPresentationCompletionHandler;
     UIAlertController *_activityAlertController;
     UIAlertAction *_activityAlertCancelAction;
@@ -122,7 +122,6 @@
 @property (strong, nonatomic) NSArray *activityTypesToCreateInShareService; // @synthesize activityTypesToCreateInShareService=_activityTypesToCreateInShareService;
 @property (strong, nonatomic) UIViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
 @property (strong, nonatomic) UISUIActivityViewControllerConfiguration *activityViewControllerConfiguration; // @synthesize activityViewControllerConfiguration=_activityViewControllerConfiguration;
-@property (weak, nonatomic) UIPresentationController *adaptivePresentationController; // @synthesize adaptivePresentationController=_adaptivePresentationController;
 @property (weak, nonatomic) id<UIActivityViewControllerAirDropDelegate> airDropDelegate; // @synthesize airDropDelegate=_airDropDelegate;
 @property (nonatomic) BOOL airDropOnly; // @synthesize airDropOnly=_airDropOnly;
 @property (strong, nonatomic) SFAirDropViewController *airDropViewController; // @synthesize airDropViewController=_airDropViewController;
@@ -170,6 +169,7 @@
 @property (strong, nonatomic) LPLinkMetadata *photosHeaderMetadata; // @synthesize photosHeaderMetadata=_photosHeaderMetadata;
 @property (strong, nonatomic) UIViewController *photosStackViewController; // @synthesize photosStackViewController=_photosStackViewController;
 @property (copy, nonatomic) CDUnknownBlockType preCompletionHandler; // @synthesize preCompletionHandler=_preCompletionHandler;
+@property (weak, nonatomic) UIViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property (nonatomic, getter=_readyToInteractTimestamp, setter=_setReadyToInteractTimestamp:) unsigned long long readyToInteractTimestamp; // @synthesize readyToInteractTimestamp=_readyToInteractTimestamp;
 @property (nonatomic) BOOL receivedInitialConfiguration; // @synthesize receivedInitialConfiguration=_receivedInitialConfiguration;
 @property (readonly, nonatomic) NSArray *resolvedActivityItemsForCurrentActivity; // @synthesize resolvedActivityItemsForCurrentActivity=_resolvedActivityItemsForCurrentActivity;
@@ -182,6 +182,7 @@
 @property (nonatomic) long long sharingStyle; // @synthesize sharingStyle=_sharingStyle;
 @property (nonatomic) BOOL shouldMatchOnlyUserElectedExtensions; // @synthesize shouldMatchOnlyUserElectedExtensions=_shouldMatchOnlyUserElectedExtensions;
 @property (nonatomic) BOOL shouldSkipPeopleSuggestions; // @synthesize shouldSkipPeopleSuggestions=_shouldSkipPeopleSuggestions;
+@property (readonly, nonatomic) BOOL shouldSuggestFamilyMembers; // @synthesize shouldSuggestFamilyMembers=_shouldSuggestFamilyMembers;
 @property (nonatomic) BOOL showKeyboardAutomatically; // @synthesize showKeyboardAutomatically=_showKeyboardAutomatically;
 @property (nonatomic) BOOL sourceIsManaged; // @dynamic sourceIsManaged;
 @property (nonatomic) BOOL startedConnectingToDaemon; // @synthesize startedConnectingToDaemon=_startedConnectingToDaemon;
@@ -211,6 +212,7 @@
 - (id)_availableActivities;
 - (void)_beginDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 - (void)_beginInProgressActivityExecutionForcedStrongReferenceForActivity:(id)arg1;
+- (BOOL)_canSaveImages;
 - (void)_cancel;
 - (void)_cleanupActivityWithSuccess:(BOOL)arg1;
 - (void)_cleanupActivityWithSuccess:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
@@ -274,10 +276,13 @@
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)didEnterBackground:(id)arg1;
+- (void)didLongPressShareActivityWithIdentifier:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)fallbackURLsForLinkPresentation;
 - (id)init;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
+- (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 shouldSuggestFamilyMembers:(BOOL)arg3;
+- (id)initWithActivityItemsConfiguration:(id)arg1;
 - (id)initWithAssetIdentifiers:(id)arg1 activityItems:(id)arg2 applicationActivities:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -295,6 +300,7 @@
 - (void)presentAirDrop;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (void)removedPersonWithIdentifier:(id)arg1;
 - (id)requestMetadataValues;
 - (id)requestRefreshedCustomizationGroups;
 - (void)selectedActionWithIdentifier:(id)arg1;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDestructive;
 - (void)performActionWithSender:(id)arg1;
 - (id)title;
+- (BOOL)wrapTitle;
 
 @end
 

@@ -12,18 +12,25 @@
 @interface PGGraphDataModelEnrichmentManager : NSObject
 {
     NSArray *_enrichmentProcessors;
+    long long _enrichmentContext;
     PGManager *_manager;
     id<PGGraphDataModelEnrichmentManagerDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<PGGraphDataModelEnrichmentManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) long long enrichmentContext; // @synthesize enrichmentContext=_enrichmentContext;
 @property (readonly, nonatomic) NSArray *enrichmentProcessors; // @synthesize enrichmentProcessors=_enrichmentProcessors;
 @property (readonly, nonatomic) PGManager *manager; // @synthesize manager=_manager;
 
-+ (id)allEnrichmentProcessors;
++ (id)_allEnrichmentProcessorsWithTailorOptions:(unsigned long long)arg1;
++ (id)backgroundEnrichmentProcessors;
 + (id)enrichmentProcessorsForDataModelEnrichmentContext:(long long)arg1;
++ (id)lightWeightEnrichmentProcessors;
++ (id)liveUpdateEnrichmentProcessors;
++ (id)weeklyEnrichmentProcessors;
 - (void).cxx_destruct;
 - (BOOL)_enrichDataModelWithGraphUpdateInventory:(id)arg1 error:(id *)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (BOOL)enrichDataModelForHighlightUUIDs:(id)arg1 withError:(id *)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (BOOL)enrichDataModelWithError:(id *)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)enrichDataModelWithGraphUpdateInventory:(id)arg1 error:(id *)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)initWithManager:(id)arg1 enrichmentContext:(long long)arg2;

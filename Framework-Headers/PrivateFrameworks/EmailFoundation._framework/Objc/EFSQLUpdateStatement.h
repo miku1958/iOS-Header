@@ -9,35 +9,29 @@
 #import <EmailFoundation/EFSQLUpdateStatementValue-Protocol.h>
 
 @class NSMutableDictionary, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLUpdateStatement : NSObject <EFSQLUpdateStatementValue>
 {
-    id<EFSQLExpressable> _whereClause;
+    id<EFSQLValueExpressable> _whereClause;
     NSMutableDictionary *_bindables;
     NSMutableDictionary *_expressables;
     NSString *_table;
     unsigned long long _conflictResolution;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *bindables; // @synthesize bindables=_bindables;
-@property (readonly, nonatomic) unsigned long long conflictResolution; // @synthesize conflictResolution=_conflictResolution;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableDictionary *expressables; // @synthesize expressables=_expressables;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *queryString;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *table; // @synthesize table=_table;
-@property (strong, nonatomic) id<EFSQLExpressable> whereClause; // @synthesize whereClause=_whereClause;
+@property (strong, nonatomic) id<EFSQLValueExpressable> whereClause; // @synthesize whereClause=_whereClause;
 
 - (void).cxx_destruct;
-- (id)_queryStringForUpsert:(BOOL)arg1;
 - (void)enumerateBindingNamesAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithTable:(id)arg1;
 - (id)initWithTable:(id)arg1 conflictResolution:(unsigned long long)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
-- (id)queryStringForUpsert;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
 @end

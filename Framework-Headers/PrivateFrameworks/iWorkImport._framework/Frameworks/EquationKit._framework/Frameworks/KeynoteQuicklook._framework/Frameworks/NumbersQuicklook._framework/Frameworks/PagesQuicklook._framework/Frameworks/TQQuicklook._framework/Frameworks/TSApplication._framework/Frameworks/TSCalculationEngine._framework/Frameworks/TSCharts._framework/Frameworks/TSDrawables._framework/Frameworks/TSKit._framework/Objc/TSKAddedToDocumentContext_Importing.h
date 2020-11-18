@@ -13,7 +13,7 @@
     NSString *mImporterID;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)importerID;
 - (id)initWithImporterID:(id)arg1;

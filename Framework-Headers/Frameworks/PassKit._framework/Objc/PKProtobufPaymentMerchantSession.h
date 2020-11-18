@@ -21,6 +21,7 @@
     NSString *_initiativeContext;
     NSString *_merchantIdentifier;
     NSString *_nonce;
+    NSString *_operationalAnalyticsIdentifier;
     NSString *_retryNonce;
     NSString *_sessionIdentifier;
     NSData *_signature;
@@ -45,6 +46,7 @@
 @property (readonly, nonatomic) BOOL hasInitiativeContext;
 @property (readonly, nonatomic) BOOL hasMerchantIdentifier;
 @property (readonly, nonatomic) BOOL hasNonce;
+@property (readonly, nonatomic) BOOL hasOperationalAnalyticsIdentifier;
 @property (readonly, nonatomic) BOOL hasRetryNonce;
 @property (readonly, nonatomic) BOOL hasSessionIdentifier;
 @property (readonly, nonatomic) BOOL hasSignature;
@@ -52,6 +54,7 @@
 @property (strong, nonatomic) NSString *initiativeContext; // @synthesize initiativeContext=_initiativeContext;
 @property (strong, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (strong, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
+@property (strong, nonatomic) NSString *operationalAnalyticsIdentifier; // @synthesize operationalAnalyticsIdentifier=_operationalAnalyticsIdentifier;
 @property (strong, nonatomic) NSString *retryNonce; // @synthesize retryNonce=_retryNonce;
 @property (strong, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (strong, nonatomic) NSData *signature; // @synthesize signature=_signature;

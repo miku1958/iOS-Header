@@ -8,12 +8,13 @@
 
 #import <Silex/SXActionActivity-Protocol.h>
 
-@class NSString, UIPasteboard;
+@class NSString, UIImage, UIPasteboard;
 
 @interface SXPasteboardActionActivity : NSObject <SXActionActivity>
 {
     NSString *_label;
     unsigned long long _type;
+    UIImage *_image;
     UIPasteboard *_pasteboard;
     NSString *_string;
 }
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, copy, nonatomic) UIPasteboard *pasteboard; // @synthesize pasteboard=_pasteboard;
 @property (readonly, copy, nonatomic) NSString *string; // @synthesize string=_string;

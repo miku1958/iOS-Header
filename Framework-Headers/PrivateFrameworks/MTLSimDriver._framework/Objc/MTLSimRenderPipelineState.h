@@ -24,14 +24,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long imageblockSampleLength;
 @property (readonly) NSString *label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportIndirectCommandBuffers;
+@property (readonly) long long textureWriteRoundingMode;
 @property (readonly) BOOL threadgroupSizeMatchesTileSize;
+@property (readonly, strong, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData;
 @property (readonly) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData;
 

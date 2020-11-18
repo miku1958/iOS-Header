@@ -21,11 +21,13 @@
 @property long long style; // @synthesize style=_style;
 @property (copy) NSString *title; // @synthesize title=_title;
 
++ (id)cancelOption;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (BOOL)isCancel;
 - (BOOL)isEqual:(id)arg1;
 
 @end

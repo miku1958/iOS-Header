@@ -65,6 +65,7 @@
 - (void)_serverBagLoaded:(id)arg1;
 - (void)_setEnabledTopics:(id)arg1;
 - (void)_setMapForMessage:(id)arg1 apsMessage:(id)arg2 messageBody:(id)arg3 timeoutTime:(double)arg4 timeoutSelector:(SEL)arg5 retries:(id)arg6;
+- (BOOL)_shouldSendSOSForFailure:(id)arg1;
 - (void)_updateTopics;
 - (id)allMessages;
 - (BOOL)busy;

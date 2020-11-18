@@ -7,38 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <HMFoundation/HMFLogging-Protocol.h>
-#import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@class HMFLogEventSessionVoucher, HMFUnfairLock, NSString, RTCReporting;
+@class HMFLogEventSessionVoucher, NSString, NSUUID;
+@protocol HMFLogBackendSession;
 
-@interface HMFLogEventSession : NSObject <HMFLogging, NSSecureCoding>
+@interface HMFLogEventSession : NSObject <HMFLogging>
 {
-    HMFLogEventSessionVoucher *_voucher;
     unsigned long long _signpostId;
-    RTCReporting *_rtcSession;
-    HMFUnfairLock *_sessionLock;
-    CDUnknownBlockType _finalizeBlock;
+    NSUUID *_uuid;
+    NSUUID *_rootUUID;
+    id<HMFLogBackendSession> _backend;
 }
 
+@property (readonly, nonatomic) id<HMFLogBackendSession> backend; // @synthesize backend=_backend;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType finalizeBlock; // @synthesize finalizeBlock=_finalizeBlock;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) RTCReporting *rtcSession; // @synthesize rtcSession=_rtcSession;
-@property (readonly, nonatomic) HMFUnfairLock *sessionLock; // @synthesize sessionLock=_sessionLock;
-@property (nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
+@property (readonly, nonatomic) NSUUID *rootUUID; // @synthesize rootUUID=_rootUUID;
+@property (readonly, nonatomic) NSString *serviceName;
+@property (readonly, nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) HMFLogEventSessionVoucher *voucher; // @synthesize voucher=_voucher;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, nonatomic) HMFLogEventSessionVoucher *voucher;
 
 + (id)logCategory;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (void)finalizeSession;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithVoucher:(id)arg1 finalizeBlock:(CDUnknownBlockType)arg2;
-- (id)initWithVoucher:(id)arg1 rtcFactory:(id)arg2 finalizeBlock:(CDUnknownBlockType)arg3;
+- (id)initWithUUID:(id)arg1 rootUUID:(id)arg2 backend:(id)arg3;
 - (void)submitEventWithName:(id)arg1 payload:(id)arg2;
 
 @end

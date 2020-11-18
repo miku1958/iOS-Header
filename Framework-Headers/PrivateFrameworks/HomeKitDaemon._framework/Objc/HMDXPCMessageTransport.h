@@ -6,42 +6,47 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKitDaemon/HMDApplicationMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageTransportDelegate-Protocol.h>
 #import <HomeKitDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class HMDApplicationRegistry, NSArray, NSMutableSet, NSObject, NSString, NSXPCListener;
+@class HMDApplicationRegistry, HMDProcessMonitor, HMDXPCMessageCountTracker, NSArray, NSMutableSet, NSObject, NSString, NSXPCInterface, NSXPCListener;
 @protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDXPCMessageTransport : HMFMessageTransport <NSXPCListenerDelegate, HMDApplicationMonitorDelegate, HMFLogging, HMFMessageTransportDelegate>
+@interface HMDXPCMessageTransport : HMFMessageTransport <NSXPCListenerDelegate, HMFLogging, HMFMessageTransportDelegate>
 {
     id<HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_connections;
-    HMDApplicationRegistry *_applicationRegistry;
+    NSXPCInterface *_exportedInterface;
+    NSXPCInterface *_remoteObjectInterface;
+    HMDXPCMessageCountTracker *_xpcCounterTracker;
+    HMDProcessMonitor *_processMonitor;
     NSXPCListener *_listener;
 }
 
-@property (readonly) HMDApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
+@property (readonly) HMDApplicationRegistry *applicationRegistry;
 @property (readonly, copy) NSArray *connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSXPCListener *listener; // @synthesize listener=_listener;
+@property (readonly) HMDProcessMonitor *processMonitor; // @synthesize processMonitor=_processMonitor;
 @property (readonly) Class superclass;
 
 + (id)defaultTransport;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)applicationMonitorDidChangeActiveHomeKitAppStatus:(BOOL)arg1;
-- (void)applicationMonitorDidChangeAppState:(id)arg1;
+- (id)activeRequests;
+- (id)dumpState;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
+- (void)resetCounters;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)start;
 - (BOOL)stop;
+- (void)submitCounters;
 
 @end
 

@@ -34,6 +34,7 @@
 @property (nonatomic, readonly) NSString *introductoryText;
 @property (nonatomic, readonly) BOOL isAppInstalled;
 @property (nonatomic, readonly) BOOL isAuthorized; // @synthesize isAuthorized;
+@property (nonatomic, readonly) BOOL isRegionUsingApp;
 @property (nonatomic, readonly) BOOL isSymptomOnsetNeeded;
 @property (nonatomic, readonly) BOOL isTravelStatusNeeded;
 @property (nonatomic, readonly) _TtC28HealthExposureNotificationUI29ENUIPublicHealthLegalDocument *legalese; // @synthesize legalese;

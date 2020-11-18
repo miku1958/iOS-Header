@@ -10,13 +10,16 @@
 {
 }
 
++ (id)filter;
 - (void)_enumerateRelationshipWithLabel:(id)arg1 matchingQuery:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enumerateSocialGroupNodesForRelationshipLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_relationshipLabelForRelationship:(unsigned long long)arg1;
 - (BOOL)_status:(unsigned long long)arg1 fitsQuery:(unsigned long long)arg2;
 - (void)enumeratePersonNodesWithRelationship:(unsigned long long)arg1 matchingQuery:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateSocialGroupNodesWithRelationship:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)label;
 - (id)relationshipEdgesToPersonNode:(id)arg1 matchingQuery:(unsigned long long)arg2;
+- (void)updateLocalIdentifier:(id)arg1 isFavorite:(BOOL)arg2 isUserCreated:(BOOL)arg3;
 
 @end
 

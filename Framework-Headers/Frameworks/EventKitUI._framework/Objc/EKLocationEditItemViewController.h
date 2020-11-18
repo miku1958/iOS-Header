@@ -7,15 +7,15 @@
 #import <EventKitUI/EKEditItemViewController.h>
 
 #import <EventKitUI/EKUILocationSearchModelDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 #import <EventKitUI/UISearchBarDelegate-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
 @class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSMutableDictionary, NSString, UISearchBar, UITableView;
 
-@interface EKLocationEditItemViewController : EKEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate>
+@interface EKLocationEditItemViewController : EKEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate, EKUIManagedViewController>
 {
-    UISearchBar *_searchBar;
     UITableView *_tableView;
     EKUILocationSearchModel *_searchModel;
     EKCalendarItem *_calendarItem;
@@ -24,29 +24,38 @@
     BOOL _supportsStructuredLocations;
     BOOL _tableConstraintsInstalled;
     BOOL _onlyAllowConferenceRooms;
+    BOOL _rotating;
+    BOOL _wasFirstResponder;
     BOOL _needsSave;
     BOOL _onlyDisplayMapLocations;
+    BOOL _fillSearchbarWithStructuredLocation;
     EKStructuredLocation *_structuredLocation;
     EKStructuredLocation *_selectedLocation;
     EKUIConferenceRoom *_selectedConferenceRoom;
+    UISearchBar *_searchBar;
+    CDUnknownBlockType _viewDidAppearBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL fillSearchbarWithStructuredLocation; // @synthesize fillSearchbarWithStructuredLocation=_fillSearchbarWithStructuredLocation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsSave; // @synthesize needsSave=_needsSave;
 @property (nonatomic) BOOL onlyAllowConferenceRooms;
 @property (nonatomic) BOOL onlyDisplayMapLocations; // @synthesize onlyDisplayMapLocations=_onlyDisplayMapLocations;
+@property (readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property (strong, nonatomic) EKUIConferenceRoom *selectedConferenceRoom; // @synthesize selectedConferenceRoom=_selectedConferenceRoom;
 @property (strong, nonatomic) EKStructuredLocation *selectedLocation; // @synthesize selectedLocation=_selectedLocation;
 @property (strong, nonatomic) EKStructuredLocation *structuredLocation; // @synthesize structuredLocation=_structuredLocation;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType viewDidAppearBlock; // @synthesize viewDidAppearBlock=_viewDidAppearBlock;
 
 + (id)_sectionNameForSection:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_cellForConferenceRoom:(id)arg1 atIndexPath:(id)arg2;
 - (void)_setupConstraints;
 - (id)calendarItemForSearchModel:(id)arg1;
+- (BOOL)canManagePresentationStyle;
 - (id)conferenceRoomForRecent:(id)arg1;
 - (void)conferenceRoomSearchUpdated:(id)arg1;
 - (id)contactsImage;
@@ -70,6 +79,7 @@
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
+- (void)setViewAppearedBlock:(CDUnknownBlockType)arg1;
 - (BOOL)shouldIncludeConferenceRoom:(id)arg1;
 - (BOOL)showingCurrentLocationRow;
 - (BOOL)showingTextRow;
@@ -86,6 +96,8 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (BOOL)wantsManagement;
 
 @end
 

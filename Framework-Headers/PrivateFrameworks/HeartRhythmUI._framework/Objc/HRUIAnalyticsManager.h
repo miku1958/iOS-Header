@@ -16,9 +16,9 @@
 - (id)_stringFromHRUIAtrialFibrillationDetectionOnboardingStep:(long long)arg1;
 - (id)_stringFromHRUIElectrocardiogramOnboardingStep:(long long)arg1;
 - (id)init;
-- (void)trackAtrialFibrillationDetectionOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4;
+- (void)trackAtrialFibrillationDetectionOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
 - (void)trackElectrocardiogramDataTypeViewed;
-- (void)trackElectrocardiogramOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4;
+- (void)trackElectrocardiogramOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
 - (void)trackElectrocardiogramPDFShared;
 - (void)trackElectrocardiogramPDFViewed;
 

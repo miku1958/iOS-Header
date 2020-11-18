@@ -8,7 +8,7 @@
 
 #import <NetworkExtension/NSXPCListenerDelegate-Protocol.h>
 
-@class NEDNSProxyManager, NEFilterManager, NEVPNManager, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
+@class NEDNSProxyManager, NEDNSSettingsManager, NEFilterManager, NEVPNManager, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
 @protocol NEConfigurationCommandHandling;
 
 @interface NEProviderAppConfigurationClient : NEUtilConfigurationClient <NSXPCListenerDelegate>
@@ -18,6 +18,7 @@
     NEVPNManager *_currentManager;
     NEFilterManager *_filterManager;
     NEDNSProxyManager *_dnsProxyManager;
+    NEDNSSettingsManager *_dnsSettingsManager;
     NSMutableArray *_createdManagers;
     NSMutableArray *_currentManagers;
     NSString *_targetAppBundleID;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NEDNSProxyManager *dnsProxyManager; // @synthesize dnsProxyManager=_dnsProxyManager;
+@property (strong) NEDNSSettingsManager *dnsSettingsManager; // @synthesize dnsSettingsManager=_dnsSettingsManager;
 @property (strong) NEFilterManager *filterManager; // @synthesize filterManager=_filterManager;
 @property (readonly) unsigned long long hash;
 @property BOOL isServerMode; // @synthesize isServerMode=_isServerMode;
@@ -45,6 +47,7 @@
 - (BOOL)createConfigurationWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (int)deleteKeychainItemWithPersistentReference:(id)arg1;
 - (id)dnsProxyConfiguration;
+- (id)dnsSettingsBundle;
 - (BOOL)enabled;
 - (id)filterConfiguration;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

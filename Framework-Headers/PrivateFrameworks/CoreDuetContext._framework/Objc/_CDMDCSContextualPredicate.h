@@ -33,6 +33,7 @@
 + (id)predicateForIsConnectedToCar;
 + (id)predicateForNetworkQualityBad;
 + (id)predicateForNetworkQualityFair;
++ (id)predicateForNextAlarm;
 + (id)predicateForPhotosAppBecameForeground;
 + (id)predicateForUserIsArrivingAtHome;
 + (id)predicateForUserIsLeavingHome;

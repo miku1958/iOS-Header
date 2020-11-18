@@ -60,6 +60,7 @@
 - (BOOL)isDefaultOrientation;
 - (BOOL)isEqualToValidatedExternalResource:(id)arg1;
 - (BOOL)isPlayableVideo;
+- (void)persistResourceTypeToFileURL;
 - (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2 isNativeColorSpace:(BOOL)arg3 isLosslessEncoding:(BOOL)arg4 isCuratedPreview:(BOOL)arg5;
 - (void)setTrashedStateFromURL;
 

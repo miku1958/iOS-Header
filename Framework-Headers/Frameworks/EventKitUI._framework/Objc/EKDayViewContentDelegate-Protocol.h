@@ -17,6 +17,7 @@
 - (void)dayViewContent:(EKDayViewContent *)arg1 didSelectEvent:(EKEvent *)arg2;
 - (UIView *)dayViewContent:(EKDayViewContent *)arg1 selectedCopyViewForOccurrenceView:(EKDayOccurrenceView *)arg2;
 - (void)dayViewContentDidLayout:(EKDayViewContent *)arg1;
+- (BOOL)dayViewContentShouldDrawSynchronously:(EKDayViewContent *)arg1;
 - (void)occurrencePressed:(EKEvent *)arg1 onDay:(double)arg2;
 @end
 

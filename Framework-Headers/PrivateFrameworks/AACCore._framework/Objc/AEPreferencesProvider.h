@@ -13,8 +13,6 @@
     AEOSGestalt *_OSGestalt;
 }
 
-@property (readonly, nonatomic) AEOSGestalt *OSGestalt; // @synthesize OSGestalt=_OSGestalt;
-
 - (void).cxx_destruct;
 - (id)init;
 - (id)makePreferences;

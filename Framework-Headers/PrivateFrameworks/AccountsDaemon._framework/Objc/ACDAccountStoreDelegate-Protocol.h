@@ -7,6 +7,6 @@
 @class ACAccount, ACDAccountStore;
 
 @protocol ACDAccountStoreDelegate
-- (void)accountStore:(ACDAccountStore *)arg1 didSaveAccount:(ACAccount *)arg2;
+- (void)accountStore:(ACDAccountStore *)arg1 didSaveAccount:(ACAccount *)arg2 changeType:(int)arg3;
 @end
 

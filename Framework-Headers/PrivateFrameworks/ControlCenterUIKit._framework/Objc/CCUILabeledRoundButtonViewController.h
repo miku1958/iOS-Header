@@ -20,6 +20,7 @@
     CCUICAPackageDescription *_glyphPackageDescription;
     NSString *_glyphState;
     UIImage *_glyphImage;
+    NSString *_contentSizeCategoryThreshold;
     UIColor *_highlightColor;
     CCUILabeledRoundButton *_buttonContainer;
     UIControl *_button;
@@ -27,6 +28,7 @@
 
 @property (strong, nonatomic) UIControl *button; // @synthesize button=_button;
 @property (strong, nonatomic) CCUILabeledRoundButton *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
+@property (nonatomic) NSString *contentSizeCategoryThreshold; // @synthesize contentSizeCategoryThreshold=_contentSizeCategoryThreshold;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property (strong, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;

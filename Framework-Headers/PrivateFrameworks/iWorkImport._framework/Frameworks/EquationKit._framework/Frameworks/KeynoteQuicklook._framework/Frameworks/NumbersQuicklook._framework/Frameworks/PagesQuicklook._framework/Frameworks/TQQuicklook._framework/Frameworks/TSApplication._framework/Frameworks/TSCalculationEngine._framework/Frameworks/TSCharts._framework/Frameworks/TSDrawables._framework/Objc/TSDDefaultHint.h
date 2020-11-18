@@ -9,6 +9,7 @@
 #import <TSDrawables/TSDHint-Protocol.h>
 
 @class NSString;
+@protocol TSDHint;
 
 @interface TSDDefaultHint : NSObject <TSDHint>
 {
@@ -20,16 +21,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long edges; // @synthesize edges=mEdges;
+@property (readonly, nonatomic) struct CGSize effectiveSize;
+@property (readonly, nonatomic) id<TSDHint> firstChildHint;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFirstHint;
+@property (readonly, nonatomic) id<TSDHint> lastChildHint;
+@property (readonly, nonatomic) struct CGSize maximumSize;
 @property (readonly) Class superclass;
 
 + (Class)archivedHintClass;
 - (id)copyForArchiving;
-- (id)firstChildHint;
 - (id)initWithBounds:(struct CGRect)arg1 edges:(unsigned long long)arg2;
 - (BOOL)isLastPartitionHorizontally:(BOOL)arg1;
-- (id)lastChildHint;
-- (void)offsetByDelta:(int)arg1;
 - (BOOL)overlapsWithSelectionPath:(id)arg1;
 
 @end

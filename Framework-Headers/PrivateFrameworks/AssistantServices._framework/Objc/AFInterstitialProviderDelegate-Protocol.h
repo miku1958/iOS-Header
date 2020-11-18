@@ -9,6 +9,6 @@
 @class AFInterstitialProvider, NSString;
 
 @protocol AFInterstitialProviderDelegate <NSObject>
-- (void)interstitialProvider:(AFInterstitialProvider *)arg1 handlePhase:(long long)arg2 displayText:(NSString *)arg3 speakableText:(NSString *)arg4 context:(id)arg5 completion:(void (^)(void))arg6;
+- (void)interstitialProvider:(AFInterstitialProvider *)arg1 handlePhase:(long long)arg2 displayText:(NSString *)arg3 speakableText:(NSString *)arg4 expectedDelay:(double)arg5 context:(id)arg6 completion:(void (^)(void))arg7;
 @end
 

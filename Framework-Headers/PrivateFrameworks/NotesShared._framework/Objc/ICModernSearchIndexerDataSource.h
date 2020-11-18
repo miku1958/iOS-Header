@@ -10,12 +10,15 @@
 {
 }
 
-- (id)allIndexableObjectIDsInReversedReindexingOrder;
+- (id)addNotesFromSubtree:(id)arg1;
+- (id)allIndexableObjectIDsInReversedReindexingOrderWithContext:(id)arg1;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
 - (unsigned long long)indexingPriority;
+- (BOOL)isFolderWithServerShareChanged:(id)arg1;
 - (id)newManagedObjectContext;
 - (id)persistentStoreCoordinator;
+- (id)searchableItemForObject:(id)arg1;
 
 @end
 

@@ -19,6 +19,10 @@ struct _NSRange {
 
 struct _PASBuddyAllocator;
 
+struct _PASDBTransactionCompletion_ {
+    BOOL _field1;
+};
+
 struct _PASDeviceStateSystemCallbacks {
     CDUnknownFunctionPointerType _field1;
     CDUnknownFunctionPointerType _field2;
@@ -93,14 +97,6 @@ struct atomic_flag {
 
 struct malloc_introspection_t;
 
-struct vector<float, std::__1::allocator<float>> {
-    float *_field1;
-    float *_field2;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *_field1;
-    } _field3;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -120,11 +116,6 @@ typedef struct {
 } CDStruct_6ad76789;
 
 typedef struct {
-    void *mmapBase;
-    unsigned long long mmapSize;
-} CDStruct_601793be;
-
-typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -132,6 +123,11 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
 } CDStruct_d3566df9;
+
+typedef struct {
+    int _field1;
+    float _field2;
+} CDStruct_3a8d9e70;
 
 typedef struct {
     void *_field1;

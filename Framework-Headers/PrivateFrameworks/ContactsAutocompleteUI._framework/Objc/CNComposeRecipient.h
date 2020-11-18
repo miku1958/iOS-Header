@@ -59,6 +59,7 @@
 @property (strong, nonatomic) NSPersonNameComponents *nameComponents; // @synthesize nameComponents=_nameComponents;
 @property (readonly, nonatomic) NSString *normalizedAddress;
 @property (strong, nonatomic) CNComposeRecipientOriginContext *originContext; // @synthesize originContext=_originContext;
+@property (readonly, copy, nonatomic) NSString *pasteboardString;
 @property (readonly, nonatomic) NSString *placeholderName;
 @property (readonly, nonatomic, getter=isRemovableFromSearchResults) BOOL removableFromSearchResults;
 @property (readonly, nonatomic) NSString *shortName;
@@ -66,6 +67,7 @@
 @property (readonly, nonatomic) BOOL showsChevronButton;
 @property (readonly, nonatomic) unsigned long long sourceType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsPasteboardUnarchiving;
 @property (readonly, nonatomic) NSString *uncommentedAddress;
 @property (copy, nonatomic) NSString *unlocalizedLabel; // @synthesize unlocalizedLabel=_unlocalizedLabel;
 @property (copy, nonatomic) NSString *valueIdentifier; // @synthesize valueIdentifier=_valueIdentifier;

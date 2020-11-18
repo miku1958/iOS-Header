@@ -8,7 +8,7 @@
 
 #import <SiriActivation/SiriButtonSource-Protocol.h>
 
-@class NSMutableArray, NSString, SiriContext, SiriLongPressButtonContext;
+@class NSMutableArray, NSString, SiriLongPressButtonContext;
 
 @interface SiriLongPressButtonSource : SiriActivationSource <SiriButtonSource>
 {
@@ -16,11 +16,12 @@
     long long _buttonIdentifier;
     NSMutableArray *_lock_activityAssertions;
     SiriLongPressButtonContext *_context;
+    CDUnknownBlockType _currentTimeGenerator;
 }
 
 @property (nonatomic) long long buttonIdentifier; // @synthesize buttonIdentifier=_buttonIdentifier;
-@property (strong, nonatomic) SiriContext *context; // @dynamic context;
 @property (strong, nonatomic) SiriLongPressButtonContext *context; // @synthesize context=_context;
+@property (copy, nonatomic) CDUnknownBlockType currentTimeGenerator; // @synthesize currentTimeGenerator=_currentTimeGenerator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -31,14 +32,16 @@
 + (id)longPressButtonForIdentifier:(long long)arg1;
 + (id)new;
 - (void).cxx_destruct;
+- (id)_deviceIdentifier;
 - (id)_initWithButtonIdentifier:(long long)arg1;
+- (BOOL)_shouldReplaceSpeechInteractionActivityTimestampWithPrewarmTimestamp;
+- (double)_timestampForSpeechInteractionActivityWithTimestamp:(double)arg1;
 - (void)configureConnection;
 - (void)didRecognizeButtonSinglePressUp;
 - (void)didRecognizeLongPress;
 - (id)init;
-- (void)overrideConnectedToCarPlay:(BOOL)arg1;
-- (void)overrideConnectedToTrustedCarPlay:(BOOL)arg1;
 - (id)prepareForActivation;
+- (id)prepareForActivationWithTimestamp:(double)arg1;
 - (id)speechInteractionActivityWithTimestamp:(double)arg1;
 
 @end

@@ -57,12 +57,10 @@
 + (id)_currentDeviceId;
 + (id)archivedClasses;
 + (id)currentDevice;
-+ (id)deviceClassForProductType:(id)arg1;
 + (id)deviceForSFDevice:(id)arg1 andStatus:(long long)arg2;
 + (id)deviceForSFDevice:(id)arg1 systemInfo:(id)arg2 andStatus:(long long)arg3;
 + (id)deviceWithDictionary:(id)arg1;
 + (id)idsDeviceWithDevice:(id)arg1 address:(id)arg2;
-+ (id)modelForProductType:(id)arg1;
 + (id)nilSafeDevice;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

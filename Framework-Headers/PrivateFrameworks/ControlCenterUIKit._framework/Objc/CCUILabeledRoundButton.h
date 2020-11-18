@@ -19,12 +19,14 @@
     CCUICAPackageDescription *_glyphPackageDescription;
     NSString *_glyphState;
     CCUIRoundButton *_buttonView;
+    NSString *_contentSizeCategoryThreshold;
     UIColor *_highlightColor;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
 }
 
 @property (strong, nonatomic) CCUIRoundButton *buttonView; // @synthesize buttonView=_buttonView;
+@property (nonatomic) NSString *contentSizeCategoryThreshold; // @synthesize contentSizeCategoryThreshold=_contentSizeCategoryThreshold;
 @property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property (strong, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;
 @property (copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
@@ -41,9 +43,9 @@
 - (void)_layoutLabels;
 - (void)_setupLabelsBounds;
 - (BOOL)_shouldUseLargeTextLayout;
+- (void)_updateFonts;
 - (void)_updateVisualStylingOfLabel:(id)arg1;
 - (void)buttonTapped:(id)arg1;
-- (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 useLightStyle:(BOOL)arg3;
@@ -53,6 +55,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

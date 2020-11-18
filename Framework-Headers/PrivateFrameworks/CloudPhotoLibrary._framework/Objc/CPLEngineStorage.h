@@ -22,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CPLEngineStore *engineStore; // @synthesize engineStore=_engineStore;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (readonly, nonatomic) unsigned long long scopeType;
@@ -38,6 +39,7 @@
 - (id)status;
 - (id)statusDictionary;
 - (id)statusPerScopeIndex;
+- (void)transactionDidFinish;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 

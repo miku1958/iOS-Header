@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
 @class CHDrawing, NSArray, NSDictionary;
 
-@interface CHStrokeGroupRecognitionResult : NSObject <NSCopying>
+@interface CHStrokeGroupRecognitionResult : NSObject <NSCopying, NSSecureCoding>
 {
     CHDrawing *_inputDrawing;
     NSArray *_inputDrawingCutPoints;
@@ -29,13 +30,18 @@
 
 + (id)filteredResultsByLocale:(id)arg1 usingLanguageFitness:(id)arg2;
 + (id)sortedLocales:(id)arg1 usingLanguageFitness:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)highConfidenceTextForSessionResult:(id)arg1 rejectionRate:(double *)arg2 doesContainUnfilteredMultiLocaleResults:(BOOL *)arg3;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithResultsByLocale:(id)arg1 errorsByLocale:(id)arg2 languageFitnessByLocale:(id)arg3 inputStrokeIdentifiers:(id)arg4;
 - (id)initWithResultsByLocale:(id)arg1 errorsByLocale:(id)arg2 languageFitnessByLocale:(id)arg3 inputStrokeIdentifiers:(id)arg4 inputDrawing:(id)arg5 inputDrawingCutPoints:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToStrokeGroupRecognitionResult:(id)arg1;
 - (double)languageFitnessForLocale:(id)arg1;
 - (id)localesSortedByLanguageFitness:(id)arg1;
 

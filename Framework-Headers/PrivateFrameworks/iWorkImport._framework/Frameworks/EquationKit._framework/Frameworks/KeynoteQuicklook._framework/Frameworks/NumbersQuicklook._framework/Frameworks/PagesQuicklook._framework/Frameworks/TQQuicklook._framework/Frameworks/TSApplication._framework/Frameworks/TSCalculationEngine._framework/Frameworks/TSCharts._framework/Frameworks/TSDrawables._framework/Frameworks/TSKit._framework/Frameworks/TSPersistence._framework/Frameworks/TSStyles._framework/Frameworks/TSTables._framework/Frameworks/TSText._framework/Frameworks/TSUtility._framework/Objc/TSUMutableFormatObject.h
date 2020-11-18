@@ -10,7 +10,7 @@
 {
 }
 
-@property (nonatomic) CDStruct_b1066b25 formatStruct; // @dynamic formatStruct;
+@property (nonatomic) CDStruct_4f52a90b formatStruct; // @dynamic formatStruct;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

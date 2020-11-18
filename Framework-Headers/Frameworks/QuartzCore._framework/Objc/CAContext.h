@@ -10,21 +10,53 @@
 
 @interface CAContext : NSObject
 {
+    struct Context {
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        struct Mutex;
+        struct Weak<const void *>;
+        id;
+        struct Context *;
+        struct CGColorSpace *;
+        struct __CFDictionary *;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        struct ObjectCache *;
+        id;
+        id;
+        unsigned int;
+        float;
+        struct Commit *;
+        struct Generic;
+        struct __CFString *;
+        unsigned char;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } *_impl;
 }
 
-@property (copy) NSString *annotation; // @dynamic annotation;
-@property BOOL colorMatchUntaggedContent; // @dynamic colorMatchUntaggedContent;
-@property struct CGColorSpace *colorSpace; // @dynamic colorSpace;
-@property unsigned int commitPriority; // @dynamic commitPriority;
-@property (copy) NSString *contentsFormat; // @dynamic contentsFormat;
-@property (readonly) unsigned int contextId; // @dynamic contextId;
-@property float desiredDynamicRange; // @dynamic desiredDynamicRange;
-@property (readonly) unsigned int displayId; // @dynamic displayId;
-@property (strong) CALayer *layer; // @dynamic layer;
-@property float level; // @dynamic level;
-@property (readonly) NSDictionary *options; // @dynamic options;
-@property (getter=isSecure) BOOL secure; // @dynamic secure;
-@property (readonly) BOOL valid; // @dynamic valid;
+@property (copy) NSString *annotation;
+@property BOOL colorMatchUntaggedContent;
+@property struct CGColorSpace *colorSpace;
+@property unsigned int commitPriority;
+@property (copy) NSString *contentsFormat;
+@property (readonly) unsigned int contextId;
+@property float desiredDynamicRange;
+@property (readonly) unsigned int displayId;
+@property (strong) CALayer *layer;
+@property float level;
+@property (readonly) NSDictionary *options;
+@property (getter=isSecure) BOOL secure;
+@property (readonly) BOOL valid;
 
 + (id)allContexts;
 + (id)currentContext;
@@ -34,16 +66,25 @@
 + (id)remoteContext;
 + (id)remoteContextWithOptions:(id)arg1;
 + (void)setClientPort:(unsigned int)arg1;
+- (BOOL)addFence:(id)arg1;
+- (BOOL)addFence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void *)contextImpl;
 - (unsigned int)createFencePort;
 - (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2;
 - (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2 extendedColors:(BOOL)arg3;
 - (unsigned int)createSlot;
+- (void)dealloc;
+- (id)debugDescription;
 - (void)deleteSlot:(unsigned int)arg1;
 - (unsigned int)hitTestContext:(struct CGPoint)arg1;
+- (id)initRemoteWithOptions:(id)arg1;
+- (id)initWithOptions:(id)arg1 localContext:(BOOL)arg2;
 - (void)invalidate;
 - (void)invalidateFences;
 - (void)orderAbove:(unsigned int)arg1;
 - (void)orderBelow:(unsigned int)arg1;
+- (struct Context *)renderContext;
+- (struct Context *)retainRenderContext;
 - (void)setFence:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)setFencePort:(unsigned int)arg1;
 - (void)setFencePort:(unsigned int)arg1 commitHandler:(CDUnknownBlockType)arg2;

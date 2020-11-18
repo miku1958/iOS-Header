@@ -6,48 +6,49 @@
 
 #import <GameCenterUI/GKBasicCollectionViewDataSource.h>
 
-@class GKMultiplayerButtonHeaderView, GKMultiplayerFooterView, GKMultiplayerHeaderView, NSMutableDictionary, NSMutableOrderedSet, NSString;
+@class NSArray, NSMutableDictionary, NSMutableOrderedSet;
+@protocol GKMultiplayerDataSourceDelegate;
 
 @interface GKMultiplayerDataSource : GKBasicCollectionViewDataSource
 {
     BOOL _automatchAddedToMinInHeader;
     BOOL _removingEnabled;
+    BOOL _invitingEnabled;
     BOOL _autoMatching;
+    id<GKMultiplayerDataSourceDelegate> _delegate;
     long long _minPlayers;
     long long _maxPlayers;
     long long _automatchPlayerCount;
-    NSString *_footerStatus;
-    GKMultiplayerFooterView *_footerView;
     NSMutableOrderedSet *_players;
-    GKMultiplayerButtonHeaderView *_buttonHeaderView;
     NSMutableDictionary *_playerStatus;
-    GKMultiplayerHeaderView *_headerView;
     NSMutableOrderedSet *_orderedPlayerIDList;
 }
 
-@property (nonatomic) BOOL autoMatching; // @synthesize autoMatching=_autoMatching;
+@property (readonly, nonatomic) BOOL autoMatching; // @synthesize autoMatching=_autoMatching;
 @property (nonatomic) BOOL automatchAddedToMinInHeader; // @synthesize automatchAddedToMinInHeader=_automatchAddedToMinInHeader;
 @property (nonatomic) long long automatchPlayerCount; // @synthesize automatchPlayerCount=_automatchPlayerCount;
-@property (nonatomic) GKMultiplayerButtonHeaderView *buttonHeaderView; // @synthesize buttonHeaderView=_buttonHeaderView;
-@property (copy, nonatomic) NSString *footerStatus; // @synthesize footerStatus=_footerStatus;
-@property (strong, nonatomic) GKMultiplayerFooterView *footerView; // @synthesize footerView=_footerView;
-@property (strong, nonatomic) GKMultiplayerHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (readonly, nonatomic) BOOL canCancelCurrentMatchmaking;
+@property (weak, nonatomic) id<GKMultiplayerDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) BOOL haveNonGuestPlayers;
+@property (nonatomic) BOOL invitingEnabled; // @synthesize invitingEnabled=_invitingEnabled;
 @property (nonatomic) long long maxPlayers; // @synthesize maxPlayers=_maxPlayers;
 @property (nonatomic) long long minPlayers; // @synthesize minPlayers=_minPlayers;
 @property (strong, nonatomic) NSMutableOrderedSet *orderedPlayerIDList; // @synthesize orderedPlayerIDList=_orderedPlayerIDList;
+@property (readonly, nonatomic) NSArray *participants;
 @property (strong, nonatomic) NSMutableDictionary *playerStatus; // @synthesize playerStatus=_playerStatus;
 @property (strong, nonatomic) NSMutableOrderedSet *players; // @synthesize players=_players;
 @property (nonatomic) BOOL removingEnabled; // @synthesize removingEnabled=_removingEnabled;
 
+- (void).cxx_destruct;
 - (void)addPlayers:(id)arg1 withStatus:(long long)arg2 complete:(CDUnknownBlockType)arg3;
 - (void)addPlayers:(id)arg1 withStatus:(long long)arg2 replaceAutomatches:(BOOL)arg3 complete:(CDUnknownBlockType)arg4;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)configureCollectionView:(id)arg1;
 - (id)currentPlayers;
-- (void)dealloc;
+- (id)currentPlayersNotInvitedViaMessages;
+- (id)currentRemotePlayers;
+- (void)didChangeMode;
 - (void)failedToInvitePlayers;
-- (void)finishRevertingPlayers;
 - (id)firstInvitedContactPlayer;
 - (id)guestPlayers;
 - (BOOL)havePendingPlayers;
@@ -55,23 +56,25 @@
 - (long long)maxAvailablePlayers;
 - (id)participantForAutoMatchNumber:(long long)arg1;
 - (id)participantForPlayer:(id)arg1;
-- (BOOL)participantShouldBeRemovable:(id)arg1 atIndexPath:(id)arg2;
 - (struct _NSRange)playerRange;
 - (id)playersInvited;
 - (id)playersToBeInvited;
 - (id)playersWithStatus:(long long)arg1;
 - (id)readyPlayers;
 - (void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2 updateNotifier:(id)arg3;
+- (void)refreshParticipantsStatuses;
+- (void)refreshStatusForParticipant:(id)arg1;
 - (void)removePlayers:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)replaceContactPlayers:(id)arg1 withNormalPlayers:(id)arg2 complete:(CDUnknownBlockType)arg3;
 - (void)restoreOrderOfPlayers;
-- (void)setAutoMatching:(BOOL)arg1 withVisibleCells:(id)arg2;
+- (void)revertFailedPlayers;
 - (void)setAutomatchPlayerCount:(long long)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)setParticipantsWithPlayers:(id)arg1 automatchPlayerCount:(long long)arg2 andStatuses:(id)arg3 complete:(CDUnknownBlockType)arg4;
 - (void)setStatus:(long long)arg1 forPlayers:(id)arg2 complete:(CDUnknownBlockType)arg3;
 - (BOOL)shouldRevertStatus:(long long)arg1;
+- (BOOL)shouldUpdateStatus:(long long)arg1 withNewStatus:(long long)arg2;
 - (long long)statusForPlayer:(id)arg1;
-- (void)updateHeaderText;
+- (void)updateDataStructuresForRemovedPlayer:(id)arg1;
 - (void)updateParticipants;
 
 @end

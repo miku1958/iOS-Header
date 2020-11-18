@@ -28,6 +28,7 @@
 - (void)cardSectionViewDidInvalidateSizeForCardSection:(id)arg1;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardViewDidAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (void)cardViewDidDisappearForCard:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)presentViewController:(id)arg1;
 - (void)presentViewControllerForCard:(id)arg1 animate:(BOOL)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableDictionary *map; // @synthesize map=_map;
 
 + (id)mapWithData:(id)arg1;
++ (id)resolutionTokenMapWithJSONData:(id)arg1 keyMap:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)archivedData;

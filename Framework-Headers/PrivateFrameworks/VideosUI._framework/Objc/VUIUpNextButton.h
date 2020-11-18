@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_selectButtonAction:(id)arg1 eventType:(id)arg2;
-- (void)_updateWidthConstraintsFromOldSize:(struct CGSize)arg1 toNewSize:(struct CGSize)arg2;
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (id)largeContentTitle;

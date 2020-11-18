@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
+- (id)accessibilityUserInputLabels;
 
 @end
 

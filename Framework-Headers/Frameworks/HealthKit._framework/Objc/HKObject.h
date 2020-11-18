@@ -10,7 +10,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKDevice, HKSource, HKSourceRevision, NSDate, NSDictionary, NSString, NSUUID;
+@class HKContributor, HKDevice, HKSource, HKSourceRevision, NSDate, NSDictionary, NSString, NSUUID;
 
 @interface HKObject : NSObject <HKUUIDProvider, NSCopying, NSSecureCoding>
 {
@@ -21,9 +21,11 @@
     long long _provenanceID;
     NSString *_sourceBundleIdentifier;
     double _creationTimestamp;
+    HKContributor *_contributor;
 }
 
 @property (readonly) NSUUID *UUID;
+@property (readonly, nonatomic) HKContributor *contributor; // @synthesize contributor=_contributor;
 @property (copy, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate;
 @property (nonatomic, getter=_creationTimestamp, setter=_setCreationTimestamp:) double creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,12 +41,12 @@
 
 + (BOOL)_isConcreteObjectClass;
 + (id)_newDataObjectWithMetadata:(id)arg1 device:(id)arg2 config:(CDUnknownBlockType)arg3;
-+ (id)_objectWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_copyByArchiving;
 - (long long)_externalSyncObjectCode;
 - (id)_init;
+- (void)_setContributor:(id)arg1;
 - (void)_setDevice:(id)arg1;
 - (void)_setMetadata:(id)arg1;
 - (void)_setSourceRevision:(id)arg1;
@@ -53,9 +55,9 @@
 - (id)_source;
 - (id)_validateConfiguration;
 - (id)_validateConfigurationAllowingPrivateMetadata:(BOOL)arg1 applicationSDKVersion:(unsigned int)arg2;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (void)_validateForCreation;
 - (BOOL)_validateForSavingWithClientEntitlements:(id)arg1 applicationSDKVersion:(unsigned int)arg2 error:(id *)arg3;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)_valueDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

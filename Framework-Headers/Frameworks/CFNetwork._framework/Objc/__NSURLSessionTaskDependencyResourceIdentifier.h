@@ -16,14 +16,10 @@
     NSString *_mimeType;
 }
 
-@property (strong, nonatomic) NSString *URLPath; // @synthesize URLPath=_URLPath;
-@property (strong, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
-
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWitURLPath:(id)arg1 mimeType:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

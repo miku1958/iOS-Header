@@ -14,6 +14,7 @@
 + (id)hk_gregorianCalendarWithUTCTimeZone;
 - (double)_hk_cachedLengthOfUnitForUnitStartDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
 - (long long)_hk_cachedValueSinceTimeZoneDependentReferenceDateForUnitStartDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
+- (id)_hk_weekendDaysForDate:(id)arg1;
 - (id)hk_activitySummaryDateComponentsFromDate:(id)arg1;
 - (id)hk_dateByAddingDays:(unsigned long long)arg1 toDate:(id)arg2;
 - (id)hk_dateByShiftingFromGregorianCalendarWithUTCTimeZone:(id)arg1;

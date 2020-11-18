@@ -6,9 +6,13 @@
 
 #import <CoreTelephony/NSObject-Protocol.h>
 
+@class CTXPCServiceSubscriptionContext;
+
 @protocol CoreTelephonyClientCellularUsagePolicyDelegateInternal <NSObject>
 
 @optional
+- (void)lowDataModeChanged:(CTXPCServiceSubscriptionContext *)arg1 userEnabled:(BOOL)arg2;
 - (void)reliableNetworkFallbackChanged:(BOOL)arg1 userEnabled:(BOOL)arg2;
+- (void)smartDataModeChanged:(CTXPCServiceSubscriptionContext *)arg1 userEnabled:(BOOL)arg2;
 @end
 

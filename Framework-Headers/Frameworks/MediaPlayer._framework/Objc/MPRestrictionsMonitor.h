@@ -22,6 +22,7 @@
     BOOL _allowsMusicSubscription;
     BOOL _allowsStorePurchases;
     BOOL _allowsRadioPurchases;
+    BOOL _allowsMusicVideos;
     long long _maximumTVShowRatingForAgeGate;
     long long _maximumMovieRatingForAgeGate;
 }
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property (readonly, nonatomic) BOOL allowsExplicitContent; // @synthesize allowsExplicitContent=_allowsExplicitContent;
 @property (readonly, nonatomic) BOOL allowsMusicSubscription; // @synthesize allowsMusicSubscription=_allowsMusicSubscription;
+@property (readonly, nonatomic) BOOL allowsMusicVideos; // @synthesize allowsMusicVideos=_allowsMusicVideos;
 @property (readonly, nonatomic) BOOL allowsRadioPurchases; // @synthesize allowsRadioPurchases=_allowsRadioPurchases;
 @property (readonly, nonatomic) BOOL allowsStorePurchases; // @synthesize allowsStorePurchases=_allowsStorePurchases;
 @property (readonly, copy) NSString *debugDescription;

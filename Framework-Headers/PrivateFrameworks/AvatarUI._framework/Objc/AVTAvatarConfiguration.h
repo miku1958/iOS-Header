@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 + (id)configurationColorPresetWithColorPreset:(id)arg1 settingKind:(CDStruct_597dd055)arg2 coreModel:(id)arg3;
++ (id)configurationFromAvatar:(id)arg1;
 + (id)configurationFromAvatar:(id)arg1 coreModel:(id)arg2;
 + (id)configurationPresetWithPreset:(id)arg1 settingKind:(CDStruct_597dd055)arg2;
 + (id)keyForSettingKind:(CDStruct_597dd055)arg1;

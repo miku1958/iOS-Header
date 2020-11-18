@@ -11,30 +11,30 @@
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 #import <IDS/IDSGroupContextControllerDelegate-Protocol.h>
 
-@class IDSAccount, IDSAccountController, IDSGroupContextController, IDSQuickSwitchAcknowledgementTracker, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
-@protocol OS_xpc_object;
+@class IDSAccount, IDSAccountController, IDSGroupContextController, IDSQuickSwitchAcknowledgementTracker, IDSServiceProperties, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface _IDSService : NSObject <IDSGroupContextControllerDelegate, IDSAccountControllerDelegate, IDSConnectionDelegatePrivate, IDSDaemonListenerProtocol>
 {
     IDSAccountController *_accountController;
     NSMutableDictionary *_uniqueIDToConnection;
     NSSet *_commands;
-    NSString *_serviceName;
     NSMapTable *_delegateToInfo;
     id _delegateContext;
     NSMutableDictionary *_protobufSelectors;
     NSMutableSet *_lastIsActiveSet;
+    NSMutableArray *_linkedDevices;
     NSMutableDictionary *_subServices;
+    BOOL _linkedDevicesLoaded;
     BOOL _pretendingToBeFull;
     BOOL _everHadDelegate;
     BOOL _manuallyAckMessages;
-    BOOL _hasSetupWakeListener;
+    BOOL _clientIsSandboxed;
     unsigned int _listenerCaps;
-    NSObject<OS_xpc_object> *_connection;
     IDSGroupContextController *_groupContextController;
     id _idsSimulatorSupportDataHandlerToken;
     NSMutableDictionary *_uniqueIDToProgress;
     IDSQuickSwitchAcknowledgementTracker *_acknowledgementTracker;
+    IDSServiceProperties *_serviceProperties;
     CDUnknownBlockType _pendingRegisteredIdentitiesBlock;
 }
 
@@ -52,6 +52,7 @@
 @property (readonly) Class superclass;
 
 + (id)deviceForFromID:(id)arg1 fromDevices:(id)arg2;
++ (void)serviceWithIdentifier:(id)arg1 commands:(id)arg2 manuallyAckMessages:(BOOL)arg3 delegateContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 - (void)OTRTestCallback:(id)arg1 time:(double)arg2 error:(id)arg3;
 - (CDUnknownBlockType)_acknowledgementBlockWithDelegateIdentifier:(id)arg1;
@@ -62,28 +63,32 @@
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 group:(id)arg2;
 - (void)_callIsActiveChanged;
+- (void)_callLinkedDevicesChanged;
 - (BOOL)_canAccount:(id)arg1 sendWithFromID:(id)arg2;
 - (void)_disableAccount:(id)arg1;
 - (void)_enableAccount:(id)arg1;
+- (void)_enforceSandboxPolicy;
 - (id)_filteredAccountsFrom:(id)arg1;
 - (void)_handlePretendingToBeFullWithIdentifier:(id *)arg1;
 - (id)_init;
 - (id)_initWithDelegateContext:(id)arg1;
 - (BOOL)_isDroppingMessages;
+- (void)_loadCachedLinkedDevices;
 - (void)_logConnectionMap;
 - (long long)_messageTypeForCommand:(id)arg1;
 - (id)_payloadFromDecryptedData:(id)arg1;
 - (void)_processAccountSet:(id)arg1;
+- (void)_reloadCachedLinkedDevices;
 - (void)_sendMissingMessageMetric:(id)arg1;
 - (BOOL)_sendSimulatorData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (BOOL)_sendSimulatorMessage:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (BOOL)_sendSimulatorProtobuf:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (id)_sendingAccountForAccount:(id)arg1;
 - (id)_sendingAccountForAccount:(id)arg1 destination:(id)arg2 fromID:(id)arg3;
-- (void)_setupIDSWakeListenerIfNeeded;
 - (void)_setupNewConnectionForAccount:(id)arg1;
 - (void)_stopAwaitingQuickSwitchAcknowledgementFromDelegateWithIdentifier:(id)arg1;
 - (void)_tearDownConnectionForUniqueID:(id)arg1;
+- (void)_updateLinkedDevicesWithDevicesInfo:(id)arg1;
 - (void)accountController:(id)arg1 accountAdded:(id)arg2;
 - (void)accountController:(id)arg1 accountDisabled:(id)arg2;
 - (void)accountController:(id)arg1 accountEnabled:(id)arg2;
@@ -135,6 +140,8 @@
 - (id)groupContextController:(id)arg1 accountsForAlises:(id)arg2;
 - (void)groupContextController:(id)arg1 didCreateGroup:(id)arg2;
 - (id)initWithService:(id)arg1 commands:(id)arg2 manuallyAckMessages:(BOOL)arg3 delegateContext:(id)arg4;
+- (id)linkedDeviceForFromID:(id)arg1 withRelationship:(long long)arg2;
+- (id)linkedDevicesWithRelationship:(long long)arg1;
 - (void)performGroupTask:(CDUnknownBlockType)arg1;
 - (SEL)protobufActionForType:(unsigned short)arg1 isResponse:(BOOL)arg2;
 - (void)receivedIDSSimulatorSupportData:(id)arg1 serviceName:(id)arg2 messageIdentifier:(id)arg3;
@@ -152,6 +159,10 @@
 - (BOOL)sendProtobuf:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (BOOL)sendResourceAtURL:(id)arg1 metadata:(id)arg2 fromAccount:(id)arg3 toDestinations:(id)arg4 priority:(long long)arg5 options:(id)arg6 identifier:(id *)arg7 error:(id *)arg8;
 - (BOOL)sendServerMessage:(id)arg1 command:(id)arg2 fromAccount:(id)arg3;
+- (void)service:(id)arg1 linkedDevicesUpdated:(id)arg2;
+- (void)service:(id)arg1 tinkerDeviceAdded:(id)arg2;
+- (void)service:(id)arg1 tinkerDeviceRemoved:(id)arg2;
+- (void)service:(id)arg1 tinkerDeviceUpdated:(id)arg2;
 - (void)setLinkPreferences:(id)arg1;
 - (void)setPreferInfraWiFi:(BOOL)arg1;
 - (void)setProtobufAction:(SEL)arg1 forProtobufType:(unsigned short)arg2 isResponse:(BOOL)arg3;

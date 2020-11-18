@@ -12,6 +12,7 @@
 
 + (id)sharedInstance;
 + (BOOL)supportsSecureCoding;
+- (long long)candidateNumberKey:(int)arg1;
 - (BOOL)shouldInsertZhuyinCharacterAfter:(id)arg1;
 
 @end

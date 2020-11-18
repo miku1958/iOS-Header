@@ -8,7 +8,7 @@
 
 #import <PassKitUI/CNAvatarViewDelegate-Protocol.h>
 
-@class NSObject, NSString, PKAnimatedNavigationBarTitleView, PKContinuousButton, PKNavigationController, PKPaymentPass, PKPaymentTransaction, PKSpendingSummaryFooterContainer, PKSpendingSummaryFooterView, UIImageView;
+@class NSIndexPath, NSObject, NSString, PKAnimatedNavigationBarTitleView, PKContinuousButton, PKNavigationController, PKPaymentTransaction, PKSpendingSummaryFooterContainer, PKSpendingSummaryFooterView, PKTransactionSource, UIImageView;
 @protocol OS_dispatch_source;
 
 @interface PKTransactionHistoryViewController : PKDashboardViewController <CNAvatarViewDelegate>
@@ -23,12 +23,14 @@
     struct UIEdgeInsets _lastContentInset;
     double _headerHeight;
     PKNavigationController *_navigationController;
+    NSIndexPath *_headerIndexPath;
     double _merchantHeaderAnimationProgress;
     PKAnimatedNavigationBarTitleView *_titleView;
     UIImageView *_titleIconImageView;
     NSString *_titleText;
+    BOOL _isHeaderPinned;
     PKPaymentTransaction *_transaction;
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     unsigned long long _historyType;
 }
 
@@ -36,9 +38,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long historyType; // @synthesize historyType=_historyType;
-@property (readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 
 - (void).cxx_destruct;
 - (id)_barButtonItems;
@@ -47,17 +49,22 @@
 - (void)_handlePhoneButtonTapped:(id)arg1;
 - (void)_showContactDetailsViewController;
 - (void)_showMapsDetailsViewController;
+- (void)_updateHeaderCellWithAnimationProgress:(id)arg1;
 - (void)_updateNavigationBarIconForNavigationBarAppeared:(BOOL)arg1;
 - (void)_updateNavigationBarIconWithLogoURL:(id)arg1;
+- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
-- (void)contentIsLoaded;
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
-- (id)initWithFetcher:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6;
-- (id)initWithInstallmentPlan:(id)arg1 paymentPass:(id)arg2 account:(id)arg3;
-- (id)initWithTransactionGroup:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 transactionHistory:(id)arg4;
+- (id)initWithFetcher:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6;
+- (id)initWithInstallmentPlan:(id)arg1 transactionSource:(id)arg2 account:(id)arg3;
+- (id)initWithTransactionGroup:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 fetcher:(id)arg4 transactionHistory:(id)arg5;
+- (id)initWithTransactionGroups:(id)arg1 headerGroup:(id)arg2 groupPresenter:(id)arg3 regionUpdater:(id)arg4 tokens:(id)arg5 transactionSource:(id)arg6 account:(id)arg7;
 - (CDStruct_8f3a66c8)pkui_navigationStatusBarStyleDescriptor;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (void)updateContent;
+- (void)updateGroup:(id)arg1;
+- (void)updateGroups:(id)arg1 headerGroup:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

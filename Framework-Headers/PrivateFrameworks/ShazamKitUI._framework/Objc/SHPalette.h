@@ -11,19 +11,21 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)color:(id)arg1 withHueDelta:(double)arg2 satDelta:(double)arg3 brightnessDelta:(double)arg4;
++ (double)contentsScale;
 + (id)defaultPalette;
-- (id)R:(double)arg1 G:(double)arg2 B:(double)arg3;
-- (id)alternateTintColor;
-- (id)appTintColor;
-- (id)clearColor;
-- (id)shadowColor;
-- (id)shazamColorNearBlack;
-- (id)tagButtonBackgroundColor;
-- (id)tagButtonBackgroundTransparentColor;
-- (id)tagButtonShazamShapeColor;
-- (id)tagButtonTopBorderColor;
-- (id)taggingCircleColor;
++ (struct CGColor *)sh_colorNamed:(id)arg1;
+- (struct CGColor *)R:(double)arg1 G:(double)arg2 B:(double)arg3 A:(double)arg4;
+- (struct CGColor *)alternateTintColor;
+- (struct CGColor *)appTintColor;
+- (struct CGColor *)blackColor;
+- (struct CGColor *)clearColor;
+- (struct CGColor *)shadowColor;
+- (struct CGColor *)shazamColorNearBlack;
+- (struct CGColor *)tagButtonBackgroundColor;
+- (struct CGColor *)tagButtonBackgroundTransparentColor;
+- (struct CGColor *)tagButtonShazamShapeColor;
+- (struct CGColor *)tagButtonTopBorderColor;
+- (struct CGColor *)taggingCircleColor;
 
 @end
 

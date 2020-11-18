@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)clear;
+- (id)clearUpNextItems;
 - (id)replaceWithPlaybackIntent:(id)arg1;
 - (id)replaceWithPlaybackIntent:(id)arg1 replaceIntent:(long long)arg2;
 

@@ -6,23 +6,19 @@
 
 #import <SpotlightUIInternal/NSObject-Protocol.h>
 
-@class SFResultSection, SFSearchResult, UIViewController;
-@protocol SearchUIResultShortLook;
+@class SFCardSection, SFResultSection, SFSearchResult, SearchUIResultsViewController;
 
 @protocol SearchUIResultsViewDelegate <NSObject>
 
 @optional
-- (void)clearResultsFromSection:(SFResultSection *)arg1;
 - (void)didBeginScrollingResults;
 - (void)didChangeExpansionStateForSection:(SFResultSection *)arg1 expanded:(BOOL)arg2;
 - (void)didScrollPastBottomOfContent;
 - (void)didTapInEmptyRegion;
 - (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)dismissIfNecessaryForIconDrag;
+- (void)didUpdateKeyboardFocusToResult:(SFSearchResult *)arg1 cardSection:(SFCardSection *)arg2;
 - (void)getUserActivityForResult:(SFSearchResult *)arg1 completionHandler:(void (^)(NSUserActivity *))arg2;
-- (BOOL)hasShortLookViewControllerForResult:(SFSearchResult *)arg1;
-- (BOOL)sectionIsClearable:(SFResultSection *)arg1;
+- (void)resultsViewController:(SearchUIResultsViewController *)arg1 didChangeContentSize:(struct CGSize)arg2 animated:(BOOL)arg3;
 - (BOOL)sectionShouldBeExpanded:(SFResultSection *)arg1;
-- (UIViewController<SearchUIResultShortLook> *)shortLookViewControllerForResult:(SFSearchResult *)arg1;
 @end
 

@@ -22,6 +22,7 @@
     UIBarButtonItem *_cancelButton;
     BOOL _cancelConfirmed;
     BOOL _deleteConfirmed;
+    CDUnknownBlockType _completionHandler;
     unsigned long long _index;
     NTKCompanionCustomPhotosEditor *_editor;
     NTKFace *_face;
@@ -42,9 +43,10 @@
 - (void)_deletePressed;
 - (void)_donePressed;
 - (void)dismissWithSaving:(BOOL)arg1;
-- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4;
+- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

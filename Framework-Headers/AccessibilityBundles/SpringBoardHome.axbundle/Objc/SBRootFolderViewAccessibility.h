@@ -21,6 +21,7 @@
 - (id)_accessibilityUserTestingChildren;
 - (void)setIdleText:(id)arg1;
 - (void)setSidebarVisibilityProgress:(double)arg1;
+- (void)setSpecialLayoutManager:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

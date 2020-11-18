@@ -20,7 +20,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-- (id)_subtitleStringFromEntry:(id)arg1 andETA:(id)arg2;
 - (BOOL)formatTitlesForEntry:(id)arg1 eta:(id)arg2;
 
 @end

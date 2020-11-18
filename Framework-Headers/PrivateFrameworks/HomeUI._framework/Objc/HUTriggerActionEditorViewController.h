@@ -31,7 +31,6 @@
 - (void)_informUserShortcutsAreNotSupportedInThisHome;
 - (void)_showShortcutsEditor;
 - (void)_showShortcutsEditorIfPossible;
-- (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)homeComposeViewController:(id)arg1 didFinishWithHomeWorkflow:(id)arg2;
 - (id)initWithInstructionsItem:(id)arg1 contentViewController:(id)arg2;
 - (id)initWithTriggerBuilder:(id)arg1 flow:(id)arg2 delegate:(id)arg3;

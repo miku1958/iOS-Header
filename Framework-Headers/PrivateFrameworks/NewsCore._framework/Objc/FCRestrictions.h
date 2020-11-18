@@ -14,7 +14,6 @@
 }
 
 @property (nonatomic) long long buildVersionNumber; // @synthesize buildVersionNumber=_buildVersionNumber;
-@property (readonly, nonatomic) BOOL isDiagnosticsUsageEnabled;
 @property (readonly, nonatomic) BOOL isExplicitContentAllowed;
 @property (nonatomic) long long isExplicitContentAllowedOverride; // @synthesize isExplicitContentAllowedOverride=_isExplicitContentAllowedOverride;
 @property (nonatomic) BOOL testing; // @synthesize testing=_testing;

@@ -24,6 +24,9 @@
 + (id)badgeWithType:(int)arg1 color:(id)arg2 viewScale:(double)arg3 frame:(struct CGRect)arg4;
 - (void).cxx_destruct;
 - (void)drawInContext:(struct CGContext *)arg1;
+- (void)p_drawCellCommentBadgeInContext:(struct CGContext *)arg1;
+- (void)p_drawCellErrorIndicatorInContext:(struct CGContext *)arg1;
+- (void)p_drawCellWarningBadgeInContext:(struct CGContext *)arg1;
 
 @end
 

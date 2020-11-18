@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDTLVBase.h>
+#import <CoreHAP/HAPTLVBase.h>
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface HMDCameraRecordingSupportedVideoConfiguration : HMDTLVBase <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDCameraRecordingSupportedVideoConfiguration : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     NSArray *_codecConfigurations;
 }

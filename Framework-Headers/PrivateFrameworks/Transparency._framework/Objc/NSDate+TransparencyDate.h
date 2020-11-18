@@ -8,6 +8,6 @@
 
 @interface NSDate (TransparencyDate)
 + (double)currentTimeMs;
-- (BOOL)isEqualWithinEpsilon:(id)arg1;
+- (BOOL)isEqualWithinOneMillisecond:(id)arg1;
 @end
 

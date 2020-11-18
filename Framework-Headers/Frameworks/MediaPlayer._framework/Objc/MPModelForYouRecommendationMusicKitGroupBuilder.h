@@ -8,6 +8,7 @@
 
 @class MPModelForYouRecommendationMusicKitItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDateFormatter, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationMusicKitGroupBuilder : NSObject
 {
     struct {
@@ -23,6 +24,7 @@
     MPModelForYouRecommendationMusicKitItemBuilder *_itemBuilder;
     NSDateFormatter *_lastUpdatedDateFormatter;
     NSDictionary *_storeBagDictionary;
+    BOOL _isListenNow;
     MPPropertySet *_requestedGroupPropertySet;
     MPPropertySet *_requestedItemPropertySet;
     NSDictionary *_storeItemMetadataResults;
@@ -37,8 +39,9 @@
 + (id)allSupportedGroupProperties;
 + (id)allSupportedItemProperties;
 - (void).cxx_destruct;
-- (id)initWithRequestedGroupPropertySet:(id)arg1 requestedItemPropertySet:(id)arg2 storeItemMetadataResults:(id)arg3 flatSectionedItems:(id)arg4 storeBagDictionary:(id)arg5;
+- (id)initWithRequestedGroupPropertySet:(id)arg1 requestedItemPropertySet:(id)arg2 storeItemMetadataResults:(id)arg3 flatSectionedItems:(id)arg4 storeBagDictionary:(id)arg5 isListenNow:(BOOL)arg6;
 - (void)initializeRequestedGroupProperties;
+- (id)modelObjectForItemsArray:(id)arg1 userIdentity:(id)arg2;
 - (id)modelObjectForRecentlyPlayedArray:(id)arg1 userIdentity:(id)arg2;
 - (id)modelObjectForRecommendationDictionary:(id)arg1 userIdentity:(id)arg2;
 

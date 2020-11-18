@@ -14,6 +14,7 @@
     MISSING_TYPE *navigator;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *articleContextFactory;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

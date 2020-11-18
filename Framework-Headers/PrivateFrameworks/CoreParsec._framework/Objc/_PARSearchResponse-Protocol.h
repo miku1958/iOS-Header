@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSArray *sections;
 @property (nonatomic) int status;
 @property (copy, nonatomic) NSArray *suggestions;
+@property (nonatomic) BOOL suggestionsAreBlended;
 
 - (void)addCorrections:(_PARSearchResponse_Correction *)arg1;
 - (void)addResults:(_PARResult *)arg1;

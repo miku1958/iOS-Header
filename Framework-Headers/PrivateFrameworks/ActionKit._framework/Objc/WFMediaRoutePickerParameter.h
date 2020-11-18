@@ -29,18 +29,19 @@
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (BOOL)hidesAccessoryIconInEditor;
 - (id)initWithDefinition:(id)arg1;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)liveUpdatesPossibleStatesInEditor;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (BOOL)parameterStateIsValid:(id)arg1;
-- (BOOL)preferItemPickerSheet;
+- (BOOL)preferParameterValuePicker;
 - (void)routePickerDidUpdateAvailableRoutes:(id)arg1;
 - (BOOL)shouldDefaultToLocalDeviceEndpoint;
 - (Class)singleStateClass;
 - (id)sortedStatesForAvailableRoutes:(id)arg1;
 - (void)startDiscoveringRoutes;
-- (void)startUpdatingPossibleValues;
+- (void)startLiveUpdatingPossibleStates;
 - (void)stopDiscoveringRoutes;
-- (void)stopUpdatingPossibleValues;
+- (void)stopLiveUpdatingPossibleStates;
 
 @end
 

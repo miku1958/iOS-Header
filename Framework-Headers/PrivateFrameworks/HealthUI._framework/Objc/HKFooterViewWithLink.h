@@ -24,8 +24,10 @@
 + (id)defaultReuseIdentifier;
 - (void).cxx_destruct;
 - (void)_setUpFooterTextViewWithBodyText:(id)arg1 linkText:(id)arg2 link:(id)arg3;
+- (void)_setUpFooterTextViewWithFullText:(id)arg1 linkRange:(struct _NSRange)arg2 link:(id)arg3;
 - (void)_setupConstraints;
 - (id)initWithReuseIdentifier:(id)arg1 bodyText:(id)arg2 linkText:(id)arg3 link:(id)arg4;
+- (id)initWithReuseIdentifier:(id)arg1 fullText:(id)arg2 linkRange:(struct _NSRange)arg3 link:(id)arg4;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 
 @end

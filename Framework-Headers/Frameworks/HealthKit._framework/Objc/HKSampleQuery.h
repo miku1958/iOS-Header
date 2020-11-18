@@ -16,6 +16,7 @@
     BOOL _includeAutomaticTimeZones;
     NSArray *_sortDescriptors;
     NSMutableArray *_samplesPendingDelivery;
+    BOOL _includeContributorInformation;
     CDUnknownBlockType _resultHandler;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
+@property (nonatomic) BOOL includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property (readonly) unsigned long long limit;
 @property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property (readonly, copy) NSArray *sortDescriptors;

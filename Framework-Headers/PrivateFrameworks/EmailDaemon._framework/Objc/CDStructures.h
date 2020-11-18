@@ -52,8 +52,7 @@ typedef struct {
     unsigned int mailboxId:1;
     unsigned int messageId:1;
     unsigned int mailboxType:1;
-    unsigned int value:1;
-} CDStruct_1b0f2210;
+} CDStruct_11e5c17e;
 
 // Ambiguous groups
 typedef struct {
@@ -72,5 +71,6 @@ typedef struct {
     unsigned int mailboxId:1;
     unsigned int messageId:1;
     unsigned int mailboxType:1;
-} CDStruct_11e5c17e;
+    unsigned int value:1;
+} CDStruct_1b0f2210;
 

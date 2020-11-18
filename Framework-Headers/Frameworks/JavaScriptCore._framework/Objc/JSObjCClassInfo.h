@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     Class m_class;
     BOOL m_block;
-    struct OpaqueJSClass *m_classRef;
+    struct NakedPtr<OpaqueJSClass> m_classRef;
     struct Weak<JSC::JSObject> m_prototype;
     struct Weak<JSC::JSObject> m_constructor;
     struct Weak<JSC::Structure> m_structure;

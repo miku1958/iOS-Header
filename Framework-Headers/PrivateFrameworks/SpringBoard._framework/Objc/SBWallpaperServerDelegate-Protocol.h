@@ -6,11 +6,15 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBFGradient, SBWallpaperServer;
+@class NSString, SBFGradient, SBWallpaperServer, UIColor;
 
 @protocol SBWallpaperServerDelegate <NSObject>
+- (void)wallpaperServer:(SBWallpaperServer *)arg1 fetchContentCutoutBoundsForVariant:(long long)arg2 orientation:(long long)arg3 completionHandler:(void (^)(struct CGRect))arg4;
+- (void)wallpaperServer:(SBWallpaperServer *)arg1 fetchOriginalImageDataForVariant:(long long)arg2 completionHandler:(void (^)(NSData *))arg3;
+- (void)wallpaperServer:(SBWallpaperServer *)arg1 fetchOriginalVideoURLDataForVariant:(long long)arg2 completionHandler:(void (^)(NSData *))arg3;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 fetchThumbnailDataForVariant:(long long)arg2 completionHandler:(void (^)(NSData *))arg3;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 restoreDefaultWallpaperWithCompletionHandler:(void (^)(BOOL))arg2;
+- (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperColor:(UIColor *)arg2 darkColor:(UIColor *)arg3 forVariants:(long long)arg4 completionHandler:(void (^)(BOOL))arg5;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperColorName:(NSString *)arg2 forVariants:(long long)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperGradient:(SBFGradient *)arg2 forVariants:(long long)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperVideoWithWallpaperMode:(NSString *)arg2 cropRect:(struct CGRect)arg3 wallpaperMode:(long long)arg4 completionHandler:(void (^)(BOOL))arg5;

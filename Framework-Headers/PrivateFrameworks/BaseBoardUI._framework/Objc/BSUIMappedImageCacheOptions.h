@@ -15,7 +15,7 @@
     id<BSPathProviding> _containerPathProvider;
 }
 
-@property (strong, nonatomic) id<BSPathProviding> containerPathProvider; // @synthesize containerPathProvider=_containerPathProvider;
+@property (readonly, nonatomic) id<BSPathProviding> containerPathProvider;
 
 + (id)optionsWithContainerPathProvider:(id)arg1;
 - (void).cxx_destruct;

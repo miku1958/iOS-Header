@@ -6,9 +6,10 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class IDSURI, NSData, NSString;
+@class IDSURI, NSData, NSDictionary, NSString;
 
 @protocol IDSXPCInternalTesting <NSObject>
+- (void)assertTransportThreadRealTimeMode:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)autoBugCaptureWithCompletion:(void (^)(NSError *))arg1;
 - (void)checkServerStorageForService:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)currentECVersionWithBlock:(void (^)(unsigned int))arg1;
@@ -26,11 +27,12 @@
 - (void)nukeTransparencyStateWithCompletion:(void (^)(NSError *))arg1;
 - (void)oneToOneECCQuicktestEncryptionWithData:(NSData *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)performOutstandingKeyTransparencyVerificationWithCompletion:(void (^)(NSError *))arg1;
+- (void)popupPromptWithTitle:(NSString *)arg1 message:(NSString *)arg2 defaultButton:(NSString *)arg3 defaultUrl:(NSString *)arg4 alternateButton:(NSString *)arg5 alternatrUrl:(NSString *)arg6 completion:(void (^)(void))arg7;
 - (void)registeredIdentityTimestampsWithBlock:(void (^)(NSArray *))arg1;
 - (void)removeConnectionWithConnectionName:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setECVersion:(unsigned int)arg1 withCompletion:(void (^)(void))arg2;
 - (void)setForceKeyRoll:(BOOL)arg1 withCompletion:(void (^)(void))arg2;
-- (void)tapToRadarWithTitle:(NSString *)arg1 message:(NSString *)arg2 completion:(void (^)(void))arg3;
+- (void)tapToRadarWithTitle:(NSString *)arg1 message:(NSString *)arg2 context:(NSDictionary *)arg3 completion:(void (^)(void))arg4;
 - (void)triggerKeyRollWithCompletion:(void (^)(NSArray *))arg1;
 @end
 

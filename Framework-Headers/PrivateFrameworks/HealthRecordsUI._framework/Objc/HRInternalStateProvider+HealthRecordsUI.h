@@ -6,9 +6,11 @@
 
 #import <HealthRecordsUI/HRInternalStateProvider.h>
 
+#import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
 
-@interface HRInternalStateProvider (HealthRecordsUI) <HKHealthRecordsStoreIngestionStateListener>
+@interface HRInternalStateProvider (HealthRecordsUI) <HKHealthRecordsStoreIngestionStateListener, HKConceptStoreObserver>
+- (void)conceptStore:(id)arg1 indexManagerDidChangeState:(unsigned long long)arg2;
 - (void)healthRecordsStore:(id)arg1 ingestionStateDidUpdateTo:(long long)arg2;
 @end
 

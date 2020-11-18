@@ -17,6 +17,7 @@
     BOOL _msaaRendering;
     BOOL _renderOnPaper;
     BOOL _needRenderMask;
+    BOOL _isRestartingForSimulator;
     id<MTLCommandQueue> _commandQueue;
     id<MTLCommandBuffer> _commandBuffer;
     id<MTLCommandBuffer> _computeCommandBuffer;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) id<MTLComputeCommandEncoder> computeEncoder; // @synthesize computeEncoder=_computeEncoder;
 @property (nonatomic) unsigned long long destinationColorAttachmentIndex; // @synthesize destinationColorAttachmentIndex=_destinationColorAttachmentIndex;
 @property (strong, nonatomic) id<MTLTexture> destinationTexture; // @synthesize destinationTexture=_destinationTexture;
+@property (nonatomic) BOOL isRestartingForSimulator; // @synthesize isRestartingForSimulator=_isRestartingForSimulator;
 @property (nonatomic) BOOL liveRendering; // @synthesize liveRendering=_liveRendering;
 @property (readonly, nonatomic) id<MTLCommandBuffer> maskCommandBuffer; // @synthesize maskCommandBuffer=_maskCommandBuffer;
 @property (strong, nonatomic) id<MTLRenderCommandEncoder> maskRenderEncoder; // @synthesize maskRenderEncoder=_maskRenderEncoder;

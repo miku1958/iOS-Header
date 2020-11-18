@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <WorkflowUI/WFIconCell.h>
 
-@class UIImageView, UILabel;
+@class UIImageView, UILabel, WFHomeScreenIcon;
 
-@interface WFAddToHomeIconPreviewCell : UITableViewCell
+@interface WFAddToHomeIconPreviewCell : WFIconCell
 {
     UIImageView *_iconImageView;
     UILabel *_iconLabel;
+    WFHomeScreenIcon *_icon;
 }
 
+@property (strong, nonatomic) WFHomeScreenIcon *icon; // @synthesize icon=_icon;
 @property (weak, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (weak, nonatomic) UILabel *iconLabel; // @synthesize iconLabel=_iconLabel;
 
@@ -23,6 +25,7 @@
 - (void)configureName:(id)arg1;
 - (void)configureWithName:(id)arg1 icon:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)redrawIcon;
 
 @end
 

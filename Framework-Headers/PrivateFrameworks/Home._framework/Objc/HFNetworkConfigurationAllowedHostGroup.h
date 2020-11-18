@@ -18,8 +18,8 @@
 
 @property (readonly, copy, nonatomic) NSSet *addresses;
 @property (readonly, copy, nonatomic) NSSet *allowedHosts;
-@property (copy, nonatomic) NSMutableSet *mutableAddresses; // @synthesize mutableAddresses=_mutableAddresses;
-@property (copy, nonatomic) NSMutableSet *mutableAllowedHosts; // @synthesize mutableAllowedHosts=_mutableAllowedHosts;
+@property (strong, nonatomic) NSMutableSet *mutableAddresses; // @synthesize mutableAddresses=_mutableAddresses;
+@property (strong, nonatomic) NSMutableSet *mutableAllowedHosts; // @synthesize mutableAllowedHosts=_mutableAllowedHosts;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
 @property (readonly, copy, nonatomic) NSString *purposeLocalizedDescription;

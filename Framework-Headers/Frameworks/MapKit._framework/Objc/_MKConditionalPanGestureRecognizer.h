@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long requiredModifierFlags; // @synthesize requiredModifierFlags=_requiredModifierFlags;
 
 - (BOOL)_shouldReceiveEvent:(id)arg1;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 
 @end
 

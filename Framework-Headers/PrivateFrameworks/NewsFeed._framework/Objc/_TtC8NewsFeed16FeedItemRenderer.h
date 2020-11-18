@@ -10,12 +10,14 @@
 
 @interface _TtC8NewsFeed16FeedItemRenderer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *presentingViewController;
     MISSING_TYPE *colorPaletteProvider;
     MISSING_TYPE *imageHeadlineViewRenderer;
     MISSING_TYPE *featuredHeadlineViewRenderer;
     MISSING_TYPE *featuredIssueHeadlineViewRenderer;
     MISSING_TYPE *gapViewRenderer;
     MISSING_TYPE *gapOfflineViewRenderer;
+    MISSING_TYPE *bannerAdViewRenderer;
     MISSING_TYPE *orderedHeadlineViewRenderer;
     MISSING_TYPE *issueViewRenderer;
     MISSING_TYPE *coverIssueViewRenderer;
@@ -24,6 +26,7 @@
     MISSING_TYPE *webEmbedViewRenderer;
     MISSING_TYPE *audioTrackViewRenderer;
     MISSING_TYPE *audioDailyBriefingViewRenderer;
+    MISSING_TYPE *bannerAdViewManager;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *formatRegistrationIdentifiers;
 }

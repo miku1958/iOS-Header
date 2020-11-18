@@ -18,8 +18,10 @@
 @property (copy, nonatomic) NSString *recordType; // @dynamic recordType;
 
 + (id)new;
-- (id)copyWithZone:(struct _NSZone *)arg1;
++ (BOOL)supportsSecureCoding;
+- (id)CKPropertiesDescription;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSubscriptionID:(id)arg1;
 
 @end

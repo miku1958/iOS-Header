@@ -13,10 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityHandlePlayerLayerViewFocused:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilityPlayerLayerViewAccessibilityFocusedChanged:(id)arg1;
+- (void)_autoHideControlsAfterDelay:(double)arg1;
 - (void)_axAnnounceAudioControlStateDidChange;
 - (BOOL)_axIsMuted;
 - (void)_axLoadVolumeButtonAccessibilityInformation;
+- (void)_axSetShouldShowRegularControlsBecauseOfAccessibility:(BOOL)arg1;
+- (BOOL)_axShouldShowRegularControlsBecauseOfAccessibility;
 - (BOOL)_axToggleAudioControls:(id)arg1;
 - (void)dealloc;
 - (void)playbackControlsViewDidLoad:(id)arg1;

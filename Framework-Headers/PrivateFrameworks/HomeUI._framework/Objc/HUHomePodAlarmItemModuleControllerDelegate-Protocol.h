@@ -6,9 +6,9 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUHomePodAlarmItemModuleController, MTAlarm;
+@class HFHomePodAlarmItem, HUHomePodAlarmItemModuleController;
 
 @protocol HUHomePodAlarmItemModuleControllerDelegate <NSObject>
-- (void)alarmItemModuleController:(HUHomePodAlarmItemModuleController *)arg1 didSelectAlarm:(MTAlarm *)arg2;
+- (void)alarmItemModuleController:(HUHomePodAlarmItemModuleController *)arg1 didSelectAlarmItem:(HFHomePodAlarmItem *)arg2;
 @end
 

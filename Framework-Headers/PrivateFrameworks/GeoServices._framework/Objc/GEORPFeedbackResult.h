@@ -29,12 +29,7 @@
         unsigned int read_layoutConfigResult:1;
         unsigned int read_queryResult:1;
         unsigned int read_submissionResult:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_idLookupResult:1;
-        unsigned int wrote_imageUploadResult:1;
-        unsigned int wrote_layoutConfigResult:1;
-        unsigned int wrote_queryResult:1;
-        unsigned int wrote_submissionResult:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,11 +47,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readIdLookupResult;
-- (void)_readImageUploadResult;
-- (void)_readLayoutConfigResult;
-- (void)_readQueryResult;
-- (void)_readSubmissionResult;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -65,7 +55,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

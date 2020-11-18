@@ -17,6 +17,8 @@
     BOOL _requestCancelled;
     BOOL _attemptedToGetCredsFromKeychain;
     BOOL _forceLoginViewController;
+    BOOL _isManagedApp;
+    BOOL _smartCardNeedsInsert;
     BOOL _requestStarted;
     NSString *_userPrincipalName;
     NSString *_userName;
@@ -35,18 +37,22 @@
     SOSiteCode *_siteCode;
     NSString *_cacheName;
     NSString *_callerBundleIdentifier;
+    NSString *_callerLocalizedName;
     NSDate *_loginTimeStamp;
     NSObject<OS_dispatch_group> *_siteCodeGroup;
     SONetworkIdentity *_networkIdentity;
+    NSData *_auditToken;
     ASAuthorizationProviderExtensionAuthorizationRequest *_authorizationRequest;
     NSObject<OS_dispatch_group> *_dispatchGroup;
     SORealmSettingManager *_settingsManager;
 }
 
 @property (nonatomic) BOOL attemptedToGetCredsFromKeychain; // @synthesize attemptedToGetCredsFromKeychain=_attemptedToGetCredsFromKeychain;
+@property (readonly, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) ASAuthorizationProviderExtensionAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
 @property (strong, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
 @property (strong, nonatomic) NSString *callerBundleIdentifier; // @synthesize callerBundleIdentifier=_callerBundleIdentifier;
+@property (strong, nonatomic) NSString *callerLocalizedName; // @synthesize callerLocalizedName=_callerLocalizedName;
 @property (strong, nonatomic) NSData *certificateIssuer; // @synthesize certificateIssuer=_certificateIssuer;
 @property (strong, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property (strong, nonatomic) NSString *certificateTokenID; // @synthesize certificateTokenID=_certificateTokenID;
@@ -59,6 +65,7 @@
 @property (strong, nonatomic) SOKerberosExtensionUserData *extensionUserData; // @synthesize extensionUserData=_extensionUserData;
 @property (nonatomic) BOOL forceLoginViewController; // @synthesize forceLoginViewController=_forceLoginViewController;
 @property (strong, nonatomic) NSString *hostName; // @synthesize hostName=_hostName;
+@property (readonly, nonatomic) BOOL isManagedApp; // @synthesize isManagedApp=_isManagedApp;
 @property (strong, nonatomic) NSDate *loginTimeStamp; // @synthesize loginTimeStamp=_loginTimeStamp;
 @property (strong, nonatomic) SONetworkIdentity *networkIdentity; // @synthesize networkIdentity=_networkIdentity;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
@@ -71,6 +78,7 @@
 @property (strong, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property (strong, nonatomic) SOSiteCode *siteCode; // @synthesize siteCode=_siteCode;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *siteCodeGroup; // @synthesize siteCodeGroup=_siteCodeGroup;
+@property (nonatomic) BOOL smartCardNeedsInsert; // @synthesize smartCardNeedsInsert=_smartCardNeedsInsert;
 @property (strong, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property (nonatomic) BOOL userNameIsReadOnly; // @synthesize userNameIsReadOnly=_userNameIsReadOnly;
 @property (strong, nonatomic) NSString *userPrincipalName; // @synthesize userPrincipalName=_userPrincipalName;

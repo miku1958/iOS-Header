@@ -28,7 +28,9 @@
 - (id)_extensionLoader;
 - (void)dealloc;
 - (void)extensionDidFinish;
+- (void)extensionDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)extensionDidFinishWithError:(id)arg1;
+- (void)extensionDidFinishWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleExtensionBasedAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

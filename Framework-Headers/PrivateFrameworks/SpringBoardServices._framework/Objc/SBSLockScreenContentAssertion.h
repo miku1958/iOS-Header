@@ -28,6 +28,7 @@
 + (id)acquireContentProviderAssertionForType:(unsigned long long)arg1 slot:(id)arg2 identifier:(id)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_acquireAssertionWithType:(unsigned long long)arg1 slot:(id)arg2 identifier:(id)arg3 configurationObject:(id)arg4;
+- (BOOL)_supportsReacquisition;
 - (void)dealloc;
 - (id)initWithType:(unsigned long long)arg1 slot:(id)arg2 identifier:(id)arg3 configurationObject:(id)arg4 errorHandler:(CDUnknownBlockType)arg5;
 - (void)invalidate;

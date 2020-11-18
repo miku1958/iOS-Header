@@ -6,14 +6,16 @@
 
 #import <UIKit/UIWindow.h>
 
-@class ICViewControllerManager;
+@class ICViewControllerManager, NSString;
 
 @interface ICWindow : UIWindow
 {
+    NSString *_windowIdentifier;
     ICViewControllerManager *_viewControllerManager;
 }
 
 @property (strong, nonatomic) ICViewControllerManager *viewControllerManager; // @synthesize viewControllerManager=_viewControllerManager;
+@property (strong, nonatomic) NSString *windowIdentifier; // @synthesize windowIdentifier=_windowIdentifier;
 
 - (void).cxx_destruct;
 - (id)ic_viewControllerManager;

@@ -34,7 +34,7 @@
 @property (nonatomic) unsigned long long tessellationPartitionMode;
 
 + (BOOL)supportsSecureCoding;
-- (CDStruct_14ccb760)_tessellatorValueForGeometry:(id)arg1;
+- (CDStruct_9b587744)_tessellatorValueForGeometry:(id)arg1;
 - (BOOL)adaptive;
 - (void)addClient:(id)arg1;
 - (void)clientWillDie:(id)arg1;

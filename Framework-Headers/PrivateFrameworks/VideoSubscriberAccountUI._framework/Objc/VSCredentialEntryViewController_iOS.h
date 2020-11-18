@@ -9,14 +9,13 @@
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
 #import <VideoSubscriberAccountUI/VSPSPickerTableViewCellDelegate-Protocol.h>
 
-@class NSArray, NSString, PSSpecifier, UIButton, UIView, VSCredentialEntryPicker, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSArray, NSString, PSSpecifier, UIButton, UIView, VSCredentialEntryPicker, VSCredentialEntryViewModel, VSIdentityProviderLogoView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VSCredentialEntryViewController_iOS : ACUIViewController <VSCredentialEntryViewController, VSPSPickerTableViewCellDelegate>
 {
     BOOL _cancellationAllowed;
-    BOOL _buttonLayoutCompleted;
     VSCredentialEntryViewModel *_viewModel;
     id<VSAuthenticationViewControllerDelegate> _delegate;
     VSIdentityProviderLogoView *_logoView;
@@ -34,7 +33,6 @@ __attribute__((visibility("hidden")))
     VSCredentialEntryPicker *_picker;
 }
 
-@property (nonatomic) BOOL buttonLayoutCompleted; // @synthesize buttonLayoutCompleted=_buttonLayoutCompleted;
 @property (strong, nonatomic) UIView *buttonView; // @synthesize buttonView=_buttonView;
 @property (strong, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
@@ -54,7 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id textFieldTextDidChangeObserver; // @synthesize textFieldTextDidChangeObserver=_textFieldTextDidChangeObserver;
-@property (readonly, nonatomic) VSViewModel *viewModel;
+@property (strong, nonatomic) VSCredentialEntryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property (strong, nonatomic) id weakTarget; // @synthesize weakTarget=_weakTarget;
 
 - (void).cxx_destruct;
@@ -85,7 +83,6 @@ __attribute__((visibility("hidden")))
 - (long long)pickerViewCellInitialSelectedRow:(id)arg1;
 - (long long)pickerViewCellNumberOfRows:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)setViewModel:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

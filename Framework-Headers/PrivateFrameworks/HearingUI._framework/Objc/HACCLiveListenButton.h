@@ -8,13 +8,13 @@
 
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class HACCLiveListenLevelGroup, NSString, UILabel, UIVisualEffectView;
+@class HACCLiveListenLevelGroup, NSString, UILabel, UIView, UIVisualEffectView;
 @protocol HACCContentModuleDelegate;
 
 @interface HACCLiveListenButton : UIControl <HACCContentModule>
 {
     UIVisualEffectView *_titleContainer;
-    UIVisualEffectView *_subtitleContainer;
+    UIView *_subtitleContainer;
     BOOL _isListening;
     unsigned long long module;
     id<HACCContentModuleDelegate> delegate;
@@ -46,7 +46,6 @@
 - (unsigned long long)lineCountForWidth:(double)arg1;
 - (void)liveListenAudioLevelDidChange:(double)arg1;
 - (struct CGSize)preferredSizeForSize:(struct CGSize)arg1;
-- (void)updateConstraints;
 - (void)updateValue;
 
 @end

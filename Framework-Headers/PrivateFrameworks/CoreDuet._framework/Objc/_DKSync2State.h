@@ -16,16 +16,7 @@
     NSMutableArray *_completions;
 }
 
-@property (strong) NSMutableArray *completions; // @synthesize completions=_completions;
-@property BOOL isPending; // @synthesize isPending=_isPending;
-@property (strong) _DKSyncCompositeOperation *parent; // @synthesize parent=_parent;
-@property (strong) _DKSyncType *type; // @synthesize type=_type;
-
 - (void).cxx_destruct;
-- (void)addCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)finishWithError:(id)arg1;
-- (id)initWithType:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)mergeType:(id)arg1;
 
 @end
 

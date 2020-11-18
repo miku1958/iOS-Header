@@ -17,7 +17,7 @@
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
-@property (strong, nonatomic) NSString *string;
+@property (copy, nonatomic) NSString *string;
 
 + (id)attributedStringWithFormat:(id)arg1 attributes:(id)arg2;
 + (void)initializeJSContext:(id)arg1;

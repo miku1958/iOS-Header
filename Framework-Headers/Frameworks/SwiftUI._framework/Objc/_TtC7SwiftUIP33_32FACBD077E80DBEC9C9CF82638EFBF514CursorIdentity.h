@@ -13,7 +13,6 @@
 @interface _TtC7SwiftUIP33_32FACBD077E80DBEC9C9CF82638EFBF514CursorIdentity : NSObject <NSCopying>
 {
     MISSING_TYPE *base;
-    MISSING_TYPE *identifier;
 }
 
 @property (nonatomic, readonly) NSString *description;

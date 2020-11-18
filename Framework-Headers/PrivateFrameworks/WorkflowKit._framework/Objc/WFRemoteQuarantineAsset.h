@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 
-@class CKRecordID, NSString, WFFileRepresentation;
+@class CKRecordID, NSData, NSString, WFFileRepresentation;
 
 @interface WFRemoteQuarantineAsset : NSObject <WFCloudKitItem>
 {
@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (readonly) Class superclass;
 
 + (id)properties;

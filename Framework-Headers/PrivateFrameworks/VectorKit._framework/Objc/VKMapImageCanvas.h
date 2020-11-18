@@ -9,13 +9,12 @@
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 #import <VectorKit/VKMapModelDelegate-Protocol.h>
 
-@class NSString, VKCamera, VKMapModel;
+@class NSString, VKMapModel;
 
 __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas : VKImageCanvas <VKMapModelDelegate, MDSnapshotMap>
 {
     VKMapModel *_mapModel;
-    VKCamera *_camera;
     struct MapEngine *_mapEngine;
 }
 
@@ -33,9 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
 - (void)mapModelLabelsDidLayout:(id)arg1;
 - (void)resetCameraController;
-- (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(int)arg1;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListItemEntry : MPSectionedIdentifierListEntry <MPSectionedIdentifierListEnumerationItem>
 {
     BOOL _hasClones;
@@ -60,6 +61,7 @@
 - (void)setUserCloned;
 - (void)setUserMoved;
 - (void)setUserRemoved;
+- (id)stringRepresentation;
 
 @end
 

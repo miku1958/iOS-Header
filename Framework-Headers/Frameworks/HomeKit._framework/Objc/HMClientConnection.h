@@ -31,10 +31,13 @@
 @property (strong, nonatomic) HMXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
 + (BOOL)areAnyAccessoriesConfigured;
++ (BOOL)areAnyAppleTVAccessoriesConfigured;
++ (BOOL)areAnyHomePodsConfigured;
 + (BOOL)areAnySpeakersConfigured;
 + (BOOL)areAnyTelevisionAccessoriesConfigured;
 + (BOOL)areHomesConfigured;
 + (id)sharedInstance;
++ (id)siriCurrentHome;
 + (id)siriHomeIdentifier;
 - (void).cxx_destruct;
 - (void)_registerToDaemon;

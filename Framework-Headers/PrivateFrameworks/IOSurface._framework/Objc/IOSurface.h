@@ -62,6 +62,7 @@
 - (void)setTimestamp:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)supportsProtectionOptions:(unsigned long long)arg1;
 - (unsigned long long)timestampAtIndex:(unsigned long long)arg1;
+- (unsigned long long)traceID;
 - (int)unlockWithOptions:(unsigned int)arg1 seed:(unsigned int *)arg2;
 - (long long)widthOfPlaneAtIndex:(unsigned long long)arg1;
 

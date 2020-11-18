@@ -65,7 +65,6 @@
 - (CDStruct_2fea82da)indexPathSubstractingHeaders:(CDStruct_2fea82da)arg1;
 - (id)initWithStyleFactory:(id)arg1 textSourceFactory:(id)arg2 dataSource:(id)arg3 recordValueTransformerFactory:(id)arg4 DOMObjectProvider:(id)arg5;
 - (id)inlineTextStylesForTextSource:(id)arg1;
-- (id)linkStyleForTextSource:(id)arg1;
 - (void)loadRecords;
 - (double)minimumWidthForCellAtIndexPath:(CDStruct_2fea82da)arg1;
 - (double)minimumWidthForStorage:(id)arg1 usingStringEnumeration:(unsigned long long)arg2;

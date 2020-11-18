@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 {
     NSCache *_commentsHeightCache;
     PUPhotoCommentEntryView *_entryView;
+    BOOL _hasPendingChanges;
     BOOL _editing;
     BOOL _shouldUseCompactCommentSeparators;
     UITableView *_tableView;

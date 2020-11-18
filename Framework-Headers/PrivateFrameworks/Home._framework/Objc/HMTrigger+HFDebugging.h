@@ -6,28 +6,41 @@
 
 #import <HomeKit/HMTrigger.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFTriggerProtocol-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString, NSUUID;
 
-@interface HMTrigger (HFDebugging) <HFStateDumpBuildable, HFTriggerProtocol>
+@interface HMTrigger (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject, HFTriggerProtocol>
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *hf_anonymousActions;
 @property (readonly, nonatomic) BOOL hf_isShortcutOwned;
 @property (readonly, nonatomic) BOOL hf_requiresConfirmationToRun;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)hf_localizedStringForSignficantEvent:(id)arg1 offset:(id)arg2;
 + (id)hf_sanitizeTriggerName:(id)arg1 home:(id)arg2;
+- (id)_hf_naturalLanguageDetailsSentenceElementsWithOptions:(id)arg1;
+- (BOOL)hf_affectsCharacteristics:(id)arg1;
+- (BOOL)hf_affectsHomeKitObject:(id)arg1;
+- (BOOL)hf_affectsProfiles:(id)arg1;
 - (id)hf_forceDisableReasons;
 - (id)hf_naturalLanguageNameWithHome:(id)arg1 type:(unsigned long long)arg2;
+- (id)hf_naturalLanguageNameWithOptions:(id)arg1;
+- (id)hf_naturalLangugeDetailsWithOptions:(id)arg1;
 - (BOOL)hf_shouldDisplayTrigger;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (unsigned long long)hf_triggerType;

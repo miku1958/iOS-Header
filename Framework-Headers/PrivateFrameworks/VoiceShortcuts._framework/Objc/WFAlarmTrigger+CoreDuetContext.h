@@ -7,8 +7,11 @@
 #import <WorkflowKit/WFAlarmTrigger.h>
 
 @interface WFAlarmTrigger (CoreDuetContext)
+- (unsigned long long)alarmEventForCurrentAlarmState;
 - (id)contextStoreKeyPathForCurrentState;
 - (id)contextStorePredicate;
 - (unsigned int)contextStoreQualityOfService;
+- (BOOL)shouldFireForPreviousAlarmEvent:(unsigned long long)arg1;
+- (BOOL)shouldFireTriggerWithEventInfo:(id)arg1 error:(out id *)arg2;
 @end
 

@@ -6,20 +6,30 @@
 
 #import <SpringBoard/SBWindow.h>
 
+@class NSMutableArray, SBMedusaHostedKeyboardWindowLevelAssertion;
 @protocol UIScenePresenter;
 
 @interface SBMedusaHostedKeyboardWindow : SBWindow
 {
     id<UIScenePresenter> _remoteHostedKeyboardScenePresenter;
+    SBMedusaHostedKeyboardWindowLevelAssertion *_defaultWindowLevelAssertion;
+    NSMutableArray *_windowLevelAssertions;
 }
+
+@property (strong, nonatomic) NSMutableArray *windowLevelAssertions; // @synthesize windowLevelAssertions=_windowLevelAssertions;
 
 + (BOOL)_isSecure;
 + (BOOL)autorotates;
 - (void).cxx_destruct;
+- (void)_updateWindowLevel;
+- (void)addWindowLevelAssertion:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithKeyboardScene:(id)arg1;
 - (BOOL)isActive;
+- (id)newWindowLevelAssertionWithPriority:(unsigned long long)arg1 windowLevel:(double)arg2;
+- (void)removeWindowLevelAssertion:(id)arg1;
 - (void)setHidden:(BOOL)arg1;
 
 @end

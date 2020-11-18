@@ -4,30 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlaySupport/CPSManeuverView.h>
+#import <UIKit/UIView.h>
 
-@class CPSAbridgableLabel, UIImageView;
+@class CPManeuver, CPSAbridgableLabel, CPTravelEstimates, UIImageView;
 
-@interface CPSSecondaryManeuverView : CPSManeuverView
+@interface CPSSecondaryManeuverView : UIView
 {
+    CPManeuver *_maneuver;
     double _generatedHeight;
+    long long _style;
+    CPTravelEstimates *_currentTravelEstimates;
+    unsigned long long _guidanceStyle;
     UIImageView *_symbolView;
     CPSAbridgableLabel *_instructionLabel;
     double _generatedWidth;
 }
 
+@property (strong, nonatomic) CPTravelEstimates *currentTravelEstimates; // @synthesize currentTravelEstimates=_currentTravelEstimates;
 @property (nonatomic) double generatedHeight; // @synthesize generatedHeight=_generatedHeight;
 @property (nonatomic) double generatedWidth; // @synthesize generatedWidth=_generatedWidth;
+@property (nonatomic) unsigned long long guidanceStyle; // @synthesize guidanceStyle=_guidanceStyle;
 @property (strong, nonatomic) CPSAbridgableLabel *instructionLabel; // @synthesize instructionLabel=_instructionLabel;
+@property (readonly, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
+@property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) UIImageView *symbolView; // @synthesize symbolView=_symbolView;
 
 - (void).cxx_destruct;
-- (void)_updateBackgroundColor;
+- (id)accessibilityName:(id)arg1;
 - (void)generateLayoutConfigurationsForSizeIfNecessary:(struct CGSize)arg1 force:(BOOL)arg2;
 - (double)horizontalInset;
 - (id)initWithManeuver:(id)arg1;
-- (double)intrinsicHeightForWidth:(double)arg1;
-- (void)setUsesDefaultGuidanceBackgroundColor:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

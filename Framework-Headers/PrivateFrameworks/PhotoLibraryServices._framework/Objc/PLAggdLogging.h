@@ -10,18 +10,22 @@
 {
 }
 
++ (void)_addDistributionStatisticsOfValues:(id)arg1 withPrefix:(id)arg2 toDictionary:(id)arg3 formatter:(CDUnknownBlockType)arg4;
 + (void)_addLibrarySummaryDataToCollectionIfPresent:(id)arg1 fromCPLEventData:(id)arg2 forKey:(id)arg3;
-+ (id)_addPrefix:(id)arg1 toKeysInDictionary:(id)arg2;
++ (void)_addPrefix:(id)arg1 toKeysInDictionary:(id)arg2 inPrefixedDictionary:(id)arg3;
++ (id)_analyticsDescriptionForAssetCount:(long long)arg1;
++ (id)_analyticsDescriptionForMediaAge:(double)arg1;
 + (double)_getDateMedian:(id)arg1 fromStartDate:(id)arg2 forCameraCapture:(BOOL)arg3;
 + (id)_performMedianCalculation:(id)arg1;
 + (void)performAnalysisStateLogging:(id)arg1 library:(id)arg2;
 + (void)performCMMSummaryLogging:(id)arg1 cloudPhotoLibraryEnabled:(BOOL)arg2;
 + (void)performCollectionsStaticsLogging:(id)arg1;
-+ (void)performHyperionLocalResourcesLoggingForContext:(id)arg1 cloudPhotoLibraryEnabled:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (BOOL)performHyperionLocalResourcesLoggingForContext:(id)arg1 cloudPhotoLibraryEnabled:(BOOL)arg2 prefixAggdDataForCK:(id)arg3 dataForCA:(id)arg4;
 + (void)performLibraryStatisticsLoggingForLibrary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)performLibrarySummaryLogging:(id)arg1;
 + (void)performMomentsStatisticsLogging:(id)arg1;
 + (void)performPersistentHistorySummaryLogging:(id)arg1;
++ (void)performSlideshowProjectStatisticsLogging:(id)arg1;
 + (void)performYearsStaticsLogging:(id)arg1;
 
 @end

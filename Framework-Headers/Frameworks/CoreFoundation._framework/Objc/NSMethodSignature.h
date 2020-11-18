@@ -18,12 +18,14 @@
 @property (readonly) const char *methodReturnType;
 @property (readonly) unsigned long long numberOfArguments;
 
++ (void)initialize;
 + (id)signatureWithObjCTypes:(const char *)arg1;
 - (struct NSMethodFrameArgInfo *)_argInfo:(long long)arg1;
 - (const char *)_cTypeString;
 - (Class)_classForObjectAtArgumentIndex:(long long)arg1;
 - (unsigned long long)_flags;
 - (struct NSMethodFrameDescriptor *)_frameDescriptor;
+- (id)_initWithROMEntry:(const struct CFMethodSignatureROMEntry *)arg1;
 - (BOOL)_isAllObjects;
 - (BOOL)_isHiddenStructRet;
 - (id)_protocolsForObjectAtArgumentIndex:(long long)arg1;

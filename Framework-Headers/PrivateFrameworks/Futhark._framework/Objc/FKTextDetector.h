@@ -62,7 +62,6 @@
 - (id)createFeaturesForROI:(struct CGRect)arg1 originalSize:(struct CGSize)arg2 lastID:(long long *)arg3;
 - (id)createFeaturesForSessionScale:(int)arg1 roi:(struct CGRect)arg2 originalSize:(struct CGSize)arg3 startID:(long long *)arg4;
 - (void)dealloc;
-- (id)detectCharacterInBoundingBox:(struct CGRect)arg1 error:(id *)arg2;
 - (id)detectFeaturesInBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)detectFeaturesInBuffer:(struct __CVBuffer *)arg1 withRegionOfInterest:(struct CGRect)arg2 error:(id *)arg3;
 - (BOOL)disableMultithreading;

@@ -27,6 +27,6 @@
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (BOOL)_intents_isDouble;
 - (BOOL)_intents_isInteger;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 @end
 

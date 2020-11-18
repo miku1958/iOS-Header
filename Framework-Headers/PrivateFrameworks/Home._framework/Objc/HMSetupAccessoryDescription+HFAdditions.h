@@ -6,7 +6,16 @@
 
 #import <HomeKit/HMSetupAccessoryDescription.h>
 
+@class HMAccessoryOwnershipToken, NSString, NSURL;
+
 @interface HMSetupAccessoryDescription (HFAdditions)
+
+@property (readonly, nonatomic) NSURL *hf_installationGuideURL;
+@property (readonly, nonatomic) BOOL hf_isKeyedToASpecificAccessory;
+@property (readonly, nonatomic) NSString *hf_marketingName;
+@property (readonly, nonatomic) HMAccessoryOwnershipToken *hf_ownershipToken;
+
 - (id)hf_home;
+- (id)hf_populateSetupMetadata;
 @end
 

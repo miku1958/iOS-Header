@@ -50,33 +50,43 @@
 - (void).cxx_destruct;
 - (BOOL)_getBoolSettingsValueForKeyPath:(id)arg1 defaultValue:(BOOL)arg2 settingsType:(unsigned long long)arg3;
 - (BOOL)_getFakeBoolSettingsValueForKeyPath:(id)arg1 defaultValue:(BOOL)arg2;
+- (id)_getSettingsValueForKeyPath:(id)arg1 defaultValue:(id)arg2 settingsType:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)_hasValidPrivateSettings;
+- (id)_incrementSettingsValueForKeyPath:(id)arg1 stepValue:(long long)arg2 maximumValue:(long long)arg3 settingsType:(unsigned long long)arg4;
+- (BOOL)_isSettingsValueForKeyPath:(id)arg1 atMaximumValue:(long long)arg2 settingsType:(unsigned long long)arg3;
 - (id)_privateSettings;
 - (id)_privateSettingsValueManager;
 - (id)_setBoolSettingsValueForKeyPath:(id)arg1 newValue:(BOOL)arg2 settingsType:(unsigned long long)arg3;
 - (void)_setFakeBoolSettingsValueForKeyPath:(id)arg1 newValue:(BOOL)arg2;
+- (id)_setSettingsValueForKeyPath:(id)arg1 settingsType:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)hasCompletedNonOwnerUserHomeSwitchingUI;
 - (BOOL)hasDismissedCameraRecordingOnboarding;
 - (BOOL)hasDismissedCameraRecordingReminderBanner;
 - (BOOL)hasDismissedIdentifyVoiceReminderBanner;
+- (BOOL)hasDismissedNaturalLightingOnboarding;
 - (BOOL)hasDismissedTVViewingProfilesOnboarding;
 - (BOOL)hasDismissedTVViewingProfilesReminderBanner;
 - (BOOL)hasDismissedUserSplitMediaAccountWarning;
 - (BOOL)hasDismissedVoiceProfileOnboarding;
+- (id)incrementAddSceneButtonPresentedCount;
 - (id)init;
 - (id)initWithHome:(id)arg1 user:(id)arg2 nameStyle:(unsigned long long)arg3;
 - (BOOL)isIdentifyVoiceEnabled;
 - (BOOL)isPlaybackInfluencesForYouEnabled;
+- (id)setCompletedNonOwnerUserHomeSwitchingUI:(BOOL)arg1;
 - (id)setDismissCameraRecordingOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingReminderBanner:(BOOL)arg1;
 - (id)setDismissIdentifyVoiceOnboarding:(BOOL)arg1;
 - (id)setDismissIdentifyVoiceReminderBanner:(BOOL)arg1;
+- (id)setDismissNaturalLightingOnboarding:(BOOL)arg1;
 - (id)setDismissTVViewingProfilesOnboarding:(BOOL)arg1;
 - (id)setDismissTVViewingProfilesReminderBanner:(BOOL)arg1;
 - (id)setDismissUserSplitMediaAccountWarning:(BOOL)arg1;
 - (id)setEnableIdentifyVoice:(BOOL)arg1;
 - (id)setPlaybackInfluencesForYou:(BOOL)arg1;
+- (BOOL)shouldHideAddSceneButton;
 
 @end
 

@@ -14,19 +14,24 @@
 + (id)donationFromEvent:(id)arg1;
 + (id)donationFromEvent:(id)arg1 filteringForTopLevel:(BOOL)arg2;
 + (id)donationWithUUID:(id)arg1;
-+ (id)fetchDonationsForApplicationBundleIdentifier:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(BOOL)arg3 filteringForIsEligibleForPrediction:(BOOL)arg4;
-+ (id)fetchDonationsWithLimit:(unsigned long long)arg1 filteringForIsEligibleForPrediction:(BOOL)arg2;
++ (void)fetchDonationsForApplicationBundleIdentifier:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(BOOL)arg3 filteringForIsEligibleForPrediction:(BOOL)arg4 filteringForRecent:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)fetchDonationsForApplicationBundleIdentifier:(id)arg1 limit:(unsigned long long)arg2 shortcutAvailability:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)fetchDonationsWithLimit:(unsigned long long)arg1 filteringForIsEligibleForPrediction:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)fetchDonationsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(BOOL)arg3;
++ (id)fetchDonationsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(BOOL)arg3 directAccess:(BOOL)arg4;
 + (id)fetchEventsWithPredicate:(id)arg1 limit:(unsigned long long)arg2;
++ (id)fetchEventsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 directAccess:(BOOL)arg3;
 + (id)filterDonations:(id)arg1 forApplicationBundleIdentifier:(id)arg2;
 + (void)getPredicateForIntentsWithApplicationBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getPredicateForUserActivitiesWithApplicationBundleIdentifier:(id)arg1 filteringForIsEligibleForPrediction:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)isEligibleForPredictionPredicate;
 + (id)keyPathForStream:(id)arg1;
++ (id)predicateForShortcutAvailabilityOptions:(unsigned long long)arg1;
 + (BOOL)shouldFilterDonationsForAppWithApplicationBundleIdentifier:(id)arg1;
 + (BOOL)shouldKeepActionWithAppBundleIdentifierForDisplay:(id)arg1;
 + (void)sourceAppIdentifierArrayForApplicationBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)streams;
++ (id)whitelistedDonationsWithOptions:(unsigned long long)arg1;
 
 @end
 

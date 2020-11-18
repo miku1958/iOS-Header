@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface WKFullScreenViewController : UIViewController <UIGestureRecognizerDelegate, UIToolbarDelegate>
 {
     struct RetainPtr<UILongPressGestureRecognizer> _touchGestureRecognizer;
-    struct RetainPtr<UIView> _animatingView;
+    RetainPtr_1ac284e4 _animatingView;
     struct RetainPtr<WKFullscreenStackView> _stackView;
     struct RetainPtr<_WKExtrinsicButton> _cancelButton;
     struct RetainPtr<_WKExtrinsicButton> _pipButton;
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSLayoutConstraint> _topConstraint;
     struct FullscreenTouchSecheuristic _secheuristic;
     struct WKFullScreenViewControllerPlaybackSessionModelClient _playbackClient;
-    struct WKFullScreenViewControllerVideoFullscreenModelClient _videoFullscreenClient;
     double _nonZeroStatusBarHeight;
     BOOL _prefersStatusBarHidden;
     BOOL _prefersHomeIndicatorAutoHidden;
@@ -32,7 +31,7 @@ __attribute__((visibility("hidden")))
     BOOL _pictureInPictureActive;
     BOOL _animating;
     id _target;
-    SEL _action;
+    SEL _exitFullScreenAction;
     NSString *_location;
     WKWebView *__webView;
 }
@@ -40,10 +39,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) RectEdges_0629eaa8 _effectiveFullscreenInsets; // @dynamic _effectiveFullscreenInsets;
 @property (readonly, nonatomic) struct WebFullScreenManagerProxy *_manager; // @dynamic _manager;
 @property (weak, nonatomic) WKWebView *_webView; // @synthesize _webView=__webView;
-@property (nonatomic) SEL action; // @synthesize action=_action;
 @property (nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) SEL exitFullScreenAction; // @synthesize exitFullScreenAction=_exitFullScreenAction;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property (nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
@@ -62,20 +61,18 @@ __attribute__((visibility("hidden")))
 - (void)_touchDetected:(id)arg1;
 - (void)_updateWebViewFullscreenInsets;
 - (void)dealloc;
-- (void)didEnterPictureInPicture;
-- (void)failedToEnterPictureInPicture;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)hideUI;
 - (id)initWithWebView:(id)arg1;
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
+- (void)setAnimatingViewAlpha:(double)arg1;
 - (void)showUI;
 - (void)videoControlsManagerDidChange;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willEnterPictureInPicture;
 
 @end
 

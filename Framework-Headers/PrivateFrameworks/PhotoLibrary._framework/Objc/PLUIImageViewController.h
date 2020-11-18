@@ -69,7 +69,6 @@
 - (void)dealloc;
 - (long long)desiredStatusBarAnimation;
 - (void)didChooseVideoAtURL:(id)arg1 options:(id)arg2;
-- (void)didUpdateNavigationBarAppearance;
 - (BOOL)disableVideoTrimMessage;
 - (BOOL)doNotTranscode;
 - (id)exportPreset;

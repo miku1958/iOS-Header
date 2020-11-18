@@ -34,7 +34,7 @@
 - (void)_handleVolumeUpButtonDownNotification:(id)arg1;
 - (void)_handleVolumeUpButtonUpNotification:(id)arg1;
 - (void)_updateCaptureButtonNotifications;
-- (void)_updateStateAndNotifyDelegateIfNeeded;
+- (void)_updateStateAndNotifyDelegateIfNeededForButton:(long long)arg1;
 - (void)dealloc;
 - (id)initWithView:(id)arg1;
 

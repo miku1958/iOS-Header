@@ -8,21 +8,23 @@
 
 #import <EventKitUI/EKCalendarChooserDelegate-Protocol.h>
 
-@class EKCalendar, EKCalendarChooser, EKEventStore, NSString;
+@class EKCalendar, EKCalendarChooser, EKEvent, EKEventStore, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKCalendarEditItemViewController : EKEditItemViewController <EKCalendarChooserDelegate>
 {
     EKEventStore *_store;
     EKCalendarChooser *_chooser;
-    EKCalendar *_selectedCalendar;
     unsigned long long _entityType;
+    EKCalendar *_selectedCalendar;
     BOOL _limitToSource;
     BOOL _onlyShowUnmanagedSources;
+    EKEvent *_event;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL limitToSource; // @synthesize limitToSource=_limitToSource;
 @property (nonatomic) BOOL onlyShowUnmanagedSources; // @synthesize onlyShowUnmanagedSources=_onlyShowUnmanagedSources;

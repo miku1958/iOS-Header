@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
     RBSystemState *_state;
 }
 
-@property (copy, nonatomic) RBSystemState *state; // @synthesize state=_state;
-
 - (void).cxx_destruct;
 - (id)_preventIdleSleepIdentifiers;
 - (int)_targetPid;

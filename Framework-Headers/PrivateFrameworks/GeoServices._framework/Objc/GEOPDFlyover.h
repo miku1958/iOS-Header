@@ -31,11 +31,7 @@
         unsigned int read_labelFrames:1;
         unsigned int read_labels:1;
         unsigned int read_notificationMessages:1;
-        unsigned int wrote_cameraPaths:1;
-        unsigned int wrote_labelFrames:1;
-        unsigned int wrote_labels:1;
-        unsigned int wrote_notificationMessages:1;
-        unsigned int wrote_useSplines:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,14 +49,6 @@
 + (Class)labelType;
 + (Class)notificationMessageType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsCameraPath:(struct GEOPDCameraPathFrame)arg1;
-- (void)_addNoFlagsLabel:(id)arg1;
-- (void)_addNoFlagsLabelFrame:(struct GEOPDLabelFrame)arg1;
-- (void)_addNoFlagsNotificationMessage:(id)arg1;
-- (void)_readCameraPaths;
-- (void)_readLabelFrames;
-- (void)_readLabels;
-- (void)_readNotificationMessages;
 - (void)addCameraPath:(struct GEOPDCameraPathFrame)arg1;
 - (void)addLabel:(id)arg1;
 - (void)addLabelFrame:(struct GEOPDLabelFrame)arg1;
@@ -80,7 +68,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)labelAtIndex:(unsigned long long)arg1;
 - (struct GEOPDLabelFrame)labelFrameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)labelsCount;

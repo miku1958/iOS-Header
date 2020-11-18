@@ -6,23 +6,25 @@
 
 #import <UIKit/UIActivity.h>
 
-@class NSArray, UIWindow;
+@class NSArray, UIBarButtonItem, UIViewController;
 
 @interface ICExportNotesActivity : UIActivity
 {
     NSArray *_noteObjectIDs;
-    UIWindow *_window;
+    UIViewController *_viewController;
+    UIBarButtonItem *_barButtonItem;
 }
 
+@property (strong, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 @property (strong, nonatomic) NSArray *noteObjectIDs; // @synthesize noteObjectIDs=_noteObjectIDs;
-@property (strong, nonatomic) UIWindow *window; // @synthesize window=_window;
+@property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
-- (id)initWithNotes:(id)arg1 forPresentingInWindow:(id)arg2;
+- (id)initWithNotes:(id)arg1 forPresentingFromViewController:(id)arg2 barButtonItem:(id)arg3;
 - (void)performActivity;
 
 @end

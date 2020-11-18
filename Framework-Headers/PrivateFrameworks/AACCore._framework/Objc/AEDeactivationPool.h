@@ -17,13 +17,7 @@ __attribute__((visibility("hidden")))
     id<AEPerformancePrimitives> _performancePrimitives;
 }
 
-@property (readonly, nonatomic) id<AEPerformancePrimitives> performancePrimitives; // @synthesize performancePrimitives=_performancePrimitives;
-@property (readonly, copy, nonatomic) NSArray *persistentDeactivations; // @synthesize persistentDeactivations=_persistentDeactivations;
-@property (readonly, nonatomic) id<AEPolicyStore> policyStore; // @synthesize policyStore=_policyStore;
-
 - (void).cxx_destruct;
-- (void)deactivateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 persistentDeactivations:(id)arg3;
 
 @end
 

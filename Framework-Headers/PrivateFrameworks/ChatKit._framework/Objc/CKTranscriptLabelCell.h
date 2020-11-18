@@ -6,26 +6,41 @@
 
 #import <ChatKit/CKTranscriptCell.h>
 
-@class NSAttributedString, UILabel;
+#import <ChatKit/CKTranscriptCollectionViewCellProtocol-Protocol.h>
 
-@interface CKTranscriptLabelCell : CKTranscriptCell
+@class NSAttributedString, NSString, UILabel;
+
+@interface CKTranscriptLabelCell : CKTranscriptCell <CKTranscriptCollectionViewCellProtocol>
 {
     BOOL _wantsContactImageLayout;
+    BOOL _wantsOffsetForReplyLine;
     UILabel *_label;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedText;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL wantsContactImageLayout; // @synthesize wantsContactImageLayout=_wantsContactImageLayout;
+@property (nonatomic) BOOL wantsOffsetForReplyLine; // @synthesize wantsOffsetForReplyLine=_wantsOffsetForReplyLine;
 
 + (id)label;
++ (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (void)_fadeInLabelAtStartTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addFilter:(id)arg1;
+- (id)animationWithKeyPath:(id)arg1 beginTime:(double)arg2 duration:(double)arg3 fromValue:(id)arg4 toValue:(id)arg5;
 - (void)clearFilters;
 - (void)configureForChatItem:(id)arg1;
+- (struct CGRect)contentAlignmentRect;
+- (BOOL)hidesCheckmark;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForContents;
+- (void)performInsertion:(CDUnknownBlockType)arg1;
+- (void)prepareForReuse;
 - (void)setOrientation:(BOOL)arg1;
 
 @end

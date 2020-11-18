@@ -12,7 +12,6 @@
 @interface MSConnection : NSObject
 {
     NSXPCConnection *_center;
-    NSXPCConnection *_noWakeCenter;
     NSMutableDictionary *_serverSideConfig;
     NSObject<OS_dispatch_queue> *_serverSideConfigQueue;
     int _serverSideConfigNotificationToken;
@@ -31,8 +30,6 @@
 - (void)forgetPersonID:(id)arg1;
 - (void)handleSubscriptionPushForPersonID:(id)arg1;
 - (id)init;
-- (BOOL)isBusy;
-- (void)isBusyCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)pause;
 - (void)pollForSubscriptionUpdatesForPersonID:(id)arg1;
 - (void)refreshServerSideConfigurationForPersonID:(id)arg1;

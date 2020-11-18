@@ -16,6 +16,7 @@
     BOOL _isReloadingWithPlaybackContext;
     BOOL _itemDidChangeWhenReloadingPlaybackContext;
     BOOL _isScrubbing;
+    BOOL _currentItemIsHLS;
     MPAVItem *_itemForCurrentTimeChange;
     NSOperationQueue *_recordEventOperationQueue;
     NSString *_itemContentItemIDForLastPlayEventEndTime;

@@ -19,7 +19,9 @@
 - (void)dealloc;
 - (void)enumerateExternalReferences:(CDUnknownBlockType)arg1;
 - (struct ComponentExternalReferenceInfo)externalReferenceInfoForObjectIdentifier:(long long)arg1;
+- (id)init;
 - (id)initFromMessage:(const struct ComponentInfo *)arg1;
+- (id)initWithComponentExternalReferenceMap:(id)arg1;
 - (id)initWithMapSize:(unsigned long long)arg1;
 - (void)saveToMessage:(struct ComponentInfo *)arg1;
 

@@ -43,6 +43,7 @@
 - (void)installApplicationAtURL:(NSURL *)arg1 onDeviceWithPairingID:(NSUUID *)arg2 installOptions:(MIInstallOptions *)arg3 size:(long long)arg4 completion:(void (^)(long long, NSError *))arg5;
 - (void)installProvisioningProfileWithData:(NSData *)arg1 onDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)installRequestFailedForApp:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 failureReason:(NSError *)arg3 wasUserInitiated:(BOOL)arg4 completion:(void (^)(NSError *))arg5;
+- (void)killDaemonForTesting:(void (^)(NSError *))arg1;
 - (void)removeApplication:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(long long))arg3;
 - (void)removeProvisioningProfileWithID:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)retryPendingAppInstallationsOnDeviceWithPairingID:(NSUUID *)arg1;

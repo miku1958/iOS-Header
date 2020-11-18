@@ -46,6 +46,9 @@
 - (void)_queue_setScreenOn:(BOOL)arg1;
 - (void)_setHasShownSiriHeaderViewControllerDuringCurrentCarDNDSession:(BOOL)arg1;
 - (void)_setScreenOn:(BOOL)arg1;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSEventHandling;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)dealloc;
 - (BOOL)handleEvent:(id)arg1;
 - (id)init;

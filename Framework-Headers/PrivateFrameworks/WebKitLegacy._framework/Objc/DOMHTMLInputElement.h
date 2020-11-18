@@ -48,6 +48,7 @@
 - (void)_setAutoFilledAndViewable:(BOOL)arg1;
 - (void)_setAutofilled:(BOOL)arg1;
 - (id)autocomplete;
+- (BOOL)canShowPlaceholder;
 - (BOOL)capture;
 - (BOOL)checkValidity;
 - (void)click;
@@ -71,6 +72,7 @@
 - (void)select;
 - (id)selectionDirection;
 - (void)setAutocomplete:(id)arg1;
+- (void)setCanShowPlaceholder:(BOOL)arg1;
 - (void)setCapture:(BOOL)arg1;
 - (void)setCustomValidity:(id)arg1;
 - (void)setDirName:(id)arg1;
@@ -101,7 +103,6 @@
 - (id)step;
 - (void)stepDown:(int)arg1;
 - (void)stepUp:(int)arg1;
-- (int)structuralComplexityContribution;
 - (int)structuralComplexityContribution;
 - (id)validationMessage;
 - (double)valueAsDate;

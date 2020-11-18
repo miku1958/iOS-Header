@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 - (void)_mt_applyVisualStyling:(id)arg1;
+- (void)mt_applyVisualStyling:(id)arg1;
 - (void)mt_removeAllVisualStyling;
 - (void)mt_replaceVisualStyling:(id)arg1;
 - (id)visualStylingProviderForCategory:(long long)arg1;

@@ -33,6 +33,7 @@
 - (void)beginTransactionForDatabaseAtPath:(id)arg1 withPriorityLevel:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)cancelImportOperation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkIntegrityOfDatabaseAtPath:(id)arg1 repairFaults:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)clientImportServiceListenerEndpointWithError:(id *)arg1;
 - (void)dealloc;
 - (void)endTransaction:(id)arg1 shouldCommit:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)executeQuery:(id)arg1 withParameters:(id)arg2 options:(id)arg3 onTransaction:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;

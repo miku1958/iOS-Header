@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithDocument:(struct Document *)arg1;
+- (id)initWithDocument:(NakedRef_6a95ab0e)arg1;
 
 @end
 

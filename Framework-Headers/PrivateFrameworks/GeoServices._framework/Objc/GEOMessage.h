@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithXPCMessage:(id)arg1 peer:(id)arg2;
 - (void)sendReply:(id)arg1;
 - (void)sendReplyWithXPCUserInfo:(id)arg1;

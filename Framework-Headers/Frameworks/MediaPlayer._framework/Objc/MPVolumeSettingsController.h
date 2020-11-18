@@ -8,6 +8,7 @@
 
 @class NSString, UIAlertController, UIWindow;
 
+__attribute__((visibility("hidden")))
 @interface MPVolumeSettingsController : UIViewController
 {
     NSString *_audioCategory;

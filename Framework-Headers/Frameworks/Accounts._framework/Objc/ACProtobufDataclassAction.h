@@ -8,19 +8,25 @@
 
 #import <Accounts/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ACProtobufDataclassAction : PBCodable <NSCopying>
 {
     NSMutableArray *_affectedContainers;
     int _type;
+    NSString *_undoAlertMessage;
+    NSString *_undoAlertTitle;
     BOOL _destructive;
 }
 
 @property (strong, nonatomic) NSMutableArray *affectedContainers; // @synthesize affectedContainers=_affectedContainers;
 @property (nonatomic) BOOL destructive; // @synthesize destructive=_destructive;
+@property (readonly, nonatomic) BOOL hasUndoAlertMessage;
+@property (readonly, nonatomic) BOOL hasUndoAlertTitle;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *undoAlertMessage; // @synthesize undoAlertMessage=_undoAlertMessage;
+@property (strong, nonatomic) NSString *undoAlertTitle; // @synthesize undoAlertTitle=_undoAlertTitle;
 
 + (Class)affectedContainersType;
 - (void).cxx_destruct;

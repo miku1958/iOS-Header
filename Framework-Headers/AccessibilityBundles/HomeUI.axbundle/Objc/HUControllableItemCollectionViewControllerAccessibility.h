@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axOpenControls:(id)arg1;
+- (BOOL)accessibilityScroll:(long long)arg1;
 - (void)viewDidLoad;
 
 @end

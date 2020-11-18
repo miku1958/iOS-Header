@@ -6,7 +6,8 @@
 
 #import <PencilKit/NSCopying-Protocol.h>
 #import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/NSSecureCoding-Protocol.h>
 
-@protocol CHStrokeProviderVersion <NSObject, NSCopying>
+@protocol CHStrokeProviderVersion <NSObject, NSCopying, NSSecureCoding>
 @end
 

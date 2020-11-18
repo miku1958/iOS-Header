@@ -6,18 +6,25 @@
 
 #import <WorkflowKit/WFVariableSubstitutableParameterState.h>
 
-@class INCodableAttribute;
+@class INCodableAttribute, INStringLocalizer, NSString;
 
 @interface WFCodableAttributeBackedSubstitutableState : WFVariableSubstitutableParameterState
 {
     INCodableAttribute *_codableAttribute;
+    INStringLocalizer *_stringLocalizer;
+    NSString *_readableTitle;
+    NSString *_readableSubtitle;
 }
 
 @property (readonly, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
+@property (copy, nonatomic) NSString *readableSubtitle; // @synthesize readableSubtitle=_readableSubtitle;
+@property (copy, nonatomic) NSString *readableTitle; // @synthesize readableTitle=_readableTitle;
+@property (readonly, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 
++ (id)processingValueClasses;
 - (void).cxx_destruct;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
-- (id)initWithValue:(id)arg1 codableAttribute:(id)arg2;
+- (id)initWithValue:(id)arg1 codableAttribute:(id)arg2 stringLocalizer:(id)arg3;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)serializedRepresentation;
 

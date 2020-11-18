@@ -13,5 +13,6 @@
 + (long long)reservationStatusFromReservationSchema:(id)arg1;
 + (id)reservationStatusToSchema:(long long)arg1;
 + (id)schemaFromReservation:(id)arg1;
++ (id)urlFromReservationSchema:(id)arg1;
 @end
 

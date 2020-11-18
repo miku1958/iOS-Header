@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKit/UIView.h>
 
-@class CKSnapshotCacheKey, IMBalloonPlugin, UIView;
+@class CKSnapshotCacheKey, IMBalloonPlugin;
 
-@interface CKBrowserSwitcherCell : UICollectionViewCell
+@interface CKBrowserSwitcherCell : UIView
 {
     BOOL _usingFallbackSnapshot;
     IMBalloonPlugin *_plugin;
@@ -23,17 +23,15 @@
 @property (strong, nonatomic) CKSnapshotCacheKey *snapshotCacheKey; // @synthesize snapshotCacheKey=_snapshotCacheKey;
 @property (nonatomic, getter=isUsingFallbackSnapshot) BOOL usingFallbackSnapshot; // @synthesize usingFallbackSnapshot=_usingFallbackSnapshot;
 
-+ (id)identifier;
 - (void).cxx_destruct;
 - (void)_handleBrowserSnapshotDidChange:(id)arg1;
 - (void)_updateSnapshotView;
+- (id)balloonPluginManager;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)prepareForReuse;
-- (void)resetSnapshotView;
 - (void)setPlugin:(id)arg1 withSnapshotCacheKey:(id)arg2;
-- (void)showExtensionInterruptedView;
+- (void)showExtensionInterruptedViewWithDisplayName:(id)arg1;
 
 @end
 

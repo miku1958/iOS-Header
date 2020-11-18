@@ -6,29 +6,49 @@
 
 #import <UIKit/UIView.h>
 
-@class AFUIStarkGradientView, UIImageView, _UIVisualEffectBackdropView;
+#import <AssistantUI/AFUISiriCarPlayBackgroundViewDelegate-Protocol.h>
+#import <AssistantUI/AFUISiriContent-Protocol.h>
+#import <AssistantUI/SUICOrbViewControlling-Protocol.h>
 
-@interface AFUISiriCarPlayView : UIView
+@class AFUISiriCarPlayBackgroundView, CRSUIStatusBarStyleAssertion, NSString, SUICOrbView;
+@protocol AFUISiriContentDelegate;
+
+@interface AFUISiriCarPlayView : UIView <AFUISiriCarPlayBackgroundViewDelegate, AFUISiriContent, SUICOrbViewControlling>
 {
-    long long _backgroundViewMode;
-    UIView *_fullScreenBackgroundView;
-    UIImageView *_fullScreenAuraView;
-    AFUIStarkGradientView *_gradientView;
-    _UIVisualEffectBackdropView *_fullScreenBackdropView;
-    UIView *_systemBackgroundView;
+    long long _siriSessionState;
+    id<AFUISiriContentDelegate> _siriContentDelegate;
+    long long _mode;
+    AFUISiriCarPlayBackgroundView *_backgroundView;
+    UIView *_remoteContentView;
+    SUICOrbView *_orbView;
+    UIView *_orbContainerView;
+    CRSUIStatusBarStyleAssertion *_statusBarStyleAssertion;
 }
 
-@property (nonatomic) long long backgroundViewMode; // @synthesize backgroundViewMode=_backgroundViewMode;
-@property (strong, nonatomic) UIImageView *fullScreenAuraView; // @synthesize fullScreenAuraView=_fullScreenAuraView;
-@property (strong, nonatomic) _UIVisualEffectBackdropView *fullScreenBackdropView; // @synthesize fullScreenBackdropView=_fullScreenBackdropView;
-@property (strong, nonatomic) UIView *fullScreenBackgroundView; // @synthesize fullScreenBackgroundView=_fullScreenBackgroundView;
-@property (strong, nonatomic) AFUIStarkGradientView *gradientView; // @synthesize gradientView=_gradientView;
-@property (strong, nonatomic) UIView *systemBackgroundView; // @synthesize systemBackgroundView=_systemBackgroundView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long mode; // @synthesize mode=_mode;
+@property (strong, nonatomic) UIView *remoteContentView; // @synthesize remoteContentView=_remoteContentView;
+@property (nonatomic) long long siriSessionState; // @synthesize siriSessionState=_siriSessionState;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_updateViewsForBackgroundViewMode:(long long)arg1;
+- (void)_orbHeldWithGestureRecognizer:(id)arg1;
+- (void)_orbTappedWithGestureRecognizer:(id)arg1;
+- (void)_setupContentViews;
+- (void)animateOrbViewToOffWithCompletion:(CDUnknownBlockType)arg1;
+- (void)backgroundView:(id)arg1 requestsCarPlayStatusBarOverride:(BOOL)arg2 animationSettings:(id)arg3;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
+- (struct CGRect)orbViewRectInCarplayView;
+- (void)setAuxiliaryViewsHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setContentViewsAlpha:(double)arg1;
+- (void)setInputPowerLevel:(float)arg1;
+- (void)setOutputPowerLevel:(float)arg1;
+- (void)setSiriContentDelegate:(id)arg1;
+- (void)updateBackgroundViewMode:(long long)arg1;
+- (void)updateBackgroundVisibility:(BOOL)arg1;
 
 @end
 

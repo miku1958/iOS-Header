@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WKTouchActionGestureRecognizer : UIGestureRecognizer
 {
-    struct HashMap<unsigned int, WTF::OptionSet<WebCore::TouchAction>, WTF::IntHash<unsigned int>, WTF::HashTraits<unsigned int>, WTF::HashTraits<WTF::OptionSet<WebCore::TouchAction>>> _touchActionsByTouchIdentifier;
+    struct HashMap<unsigned int, WTF::OptionSet<WebCore::TouchAction>, WTF::DefaultHash<unsigned int>, WTF::HashTraits<unsigned int>, WTF::HashTraits<WTF::OptionSet<WebCore::TouchAction>>> _touchActionsByTouchIdentifier;
     id<WKTouchActionGestureRecognizerDelegate> _touchActionDelegate;
 }
 

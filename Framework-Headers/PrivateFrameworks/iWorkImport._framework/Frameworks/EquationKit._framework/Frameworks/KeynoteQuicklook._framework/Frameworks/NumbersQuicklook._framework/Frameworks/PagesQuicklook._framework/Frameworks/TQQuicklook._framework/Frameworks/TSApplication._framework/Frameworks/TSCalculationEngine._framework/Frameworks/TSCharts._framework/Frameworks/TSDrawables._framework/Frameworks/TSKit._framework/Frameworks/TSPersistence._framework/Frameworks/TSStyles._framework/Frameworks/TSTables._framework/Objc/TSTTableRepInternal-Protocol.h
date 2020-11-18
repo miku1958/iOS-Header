@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSMutableDictionary, NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
+@class NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
 
 @protocol TSTTableRepInternal
 
 @property (readonly, nonatomic) BOOL aspectOperationIsInProgress;
 @property (weak, nonatomic) TSTSelectionDragController *cellDragController;
-@property (readonly, nonatomic) NSMutableDictionary *childTextReps;
 @property (readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderColumns;
 @property (readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderCorner;
 @property (readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderRows;
@@ -20,7 +19,7 @@
 @property (nonatomic) BOOL selectionDragAbortedOnNewSelection;
 @property (readonly, nonatomic) BOOL selectionUsesBezierPath;
 @property (readonly, nonatomic) BOOL selectsCellOnInitialTap;
-@property (readonly, nonatomic) BOOL usesWholeChromeResizer;
+@property (readonly, nonatomic) BOOL usesSelectionChromeResizer;
 @property (copy, nonatomic) NSSet *visibleFillKnobs;
 @property (readonly, nonatomic) BOOL zoomOperationIsInProgress;
 

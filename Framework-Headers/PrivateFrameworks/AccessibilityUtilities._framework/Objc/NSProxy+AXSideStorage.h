@@ -18,5 +18,6 @@
 - (void)_accessibilitySetValue:(id)arg1 forKey:(id)arg2 storageMode:(int)arg3;
 - (unsigned long long)_accessibilityUnsignedIntegerValueForKey:(id)arg1;
 - (id)_accessibilityValueForKey:(id)arg1;
+- (id)_axDictionaryQueue;
 @end
 

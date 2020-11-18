@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/ShotflowDetector.h>
+#import <Vision/ShotflowDetectorANODBase.h>
 
 __attribute__((visibility("hidden")))
-@interface ShotflowDetectorANFDv2 : ShotflowDetector
+@interface ShotflowDetectorANFDv2 : ShotflowDetectorANODBase
 {
 }
 
 + (id)filterThresholds;
 + (Class)shotflowNetworkClass;
++ (id)supportedLabelKeys;
 - (id)initWithNetwork:(id)arg1;
 - (id)initWithNetwork:(id)arg1 filterThreshold:(id)arg2;
-- (id)mergeHeadsBoxes:(id)arg1;
 - (id)nmsBoxes:(id)arg1;
 - (id)processBoxes:(id)arg1 withHeight:(float)arg2 andWidth:(float)arg3;
 

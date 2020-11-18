@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
++ (BOOL)useFOpenForModelWithPath:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)init;

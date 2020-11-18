@@ -28,8 +28,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_commonInit;
+- (id)_initWithFrame:(struct CGRect)arg1 debugName:(id)arg2 windowScene:(id)arg3;
+- (id)_mapSettings;
 - (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
 - (id)_settings;
+- (void)_updateMapStyleTrait;
 - (id)initWithWindowScene:(id)arg1;
 - (void)notificationLayoutGuideDidChange;
 

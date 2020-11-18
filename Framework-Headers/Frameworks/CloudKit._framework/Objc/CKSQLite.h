@@ -26,6 +26,7 @@
     unsigned long long _openCount;
     NSMutableDictionary *_statementsBySQL;
     NSDateFormatter *_dateFormatter;
+    NSMutableDictionary *_unitTestOverrides;
 }
 
 @property (nonatomic) BOOL corrupt; // @synthesize corrupt=_corrupt;
@@ -43,8 +44,10 @@
 @property (readonly, nonatomic) NSMutableDictionary *statementsBySQL; // @synthesize statementsBySQL=_statementsBySQL;
 @property (nonatomic) long long synchronousMode; // @synthesize synchronousMode=_synchronousMode;
 @property (nonatomic) BOOL traced; // @synthesize traced=_traced;
+@property (strong, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 @property (nonatomic) int userVersion; // @synthesize userVersion=_userVersion;
 
++ (id)equalityClauseAndBindingsForDict:(id)arg1;
 - (void).cxx_destruct;
 - (id)_boxedPropertyDictionary:(id)arg1 forObjCClass:(id)arg2;
 - (id)_boxedValue:(id)arg1 forObjcCProperty:(id)arg2;
@@ -102,6 +105,7 @@
 - (void)updateAllObjectsOfClass:(Class)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4;
 - (long long)upsertInto:(id)arg1 values:(id)arg2 onConflict:(id)arg3 doUpdate:(id)arg4 where:(id)arg5;
 - (void)vacuum;
+- (void)willCreateDatabase;
 
 @end
 

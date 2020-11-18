@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagProtocol-Protocol.h>
 
-@class NSDate, NSString;
+@class AMSProcessInfo, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSContractBagShim : NSObject <AMSBagProtocol>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 @property (readonly) Class superclass;

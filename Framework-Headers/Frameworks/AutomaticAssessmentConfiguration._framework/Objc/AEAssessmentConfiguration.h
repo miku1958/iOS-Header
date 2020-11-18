@@ -10,7 +10,26 @@
 
 @interface AEAssessmentConfiguration : NSObject <NSCopying>
 {
+    BOOL _allowsSpellCheck;
+    BOOL _allowsPredictiveKeyboard;
+    BOOL _allowsKeyboardShortcuts;
+    BOOL _allowsActivityContinuation;
+    BOOL _allowsDictation;
+    BOOL _allowsAccessibilitySpeech;
+    BOOL _allowsPasswordAutoFill;
+    BOOL _allowsContinuousPathKeyboard;
+    unsigned long long _autocorrectMode;
 }
+
+@property (nonatomic) BOOL allowsAccessibilitySpeech; // @synthesize allowsAccessibilitySpeech=_allowsAccessibilitySpeech;
+@property (nonatomic) BOOL allowsActivityContinuation; // @synthesize allowsActivityContinuation=_allowsActivityContinuation;
+@property (nonatomic) BOOL allowsContinuousPathKeyboard; // @synthesize allowsContinuousPathKeyboard=_allowsContinuousPathKeyboard;
+@property (nonatomic) BOOL allowsDictation; // @synthesize allowsDictation=_allowsDictation;
+@property (nonatomic) BOOL allowsKeyboardShortcuts; // @synthesize allowsKeyboardShortcuts=_allowsKeyboardShortcuts;
+@property (nonatomic) BOOL allowsPasswordAutoFill; // @synthesize allowsPasswordAutoFill=_allowsPasswordAutoFill;
+@property (nonatomic) BOOL allowsPredictiveKeyboard; // @synthesize allowsPredictiveKeyboard=_allowsPredictiveKeyboard;
+@property (nonatomic) BOOL allowsSpellCheck; // @synthesize allowsSpellCheck=_allowsSpellCheck;
+@property (nonatomic) unsigned long long autocorrectMode; // @synthesize autocorrectMode=_autocorrectMode;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

@@ -14,15 +14,18 @@
     MISSING_TYPE *premiumBadgeView;
     MISSING_TYPE *publisherLogoImageView;
     MISSING_TYPE *publisherLabel;
+    MISSING_TYPE *accessoryView;
     MISSING_TYPE *dragHandleImageView;
+    MISSING_TYPE *ellipsisButton;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *trackDurationLabel;
     MISSING_TYPE *progressView;
     MISSING_TYPE *remainingTimeLabel;
     MISSING_TYPE *headphoneImageView;
     MISSING_TYPE *contentView;
+    MISSING_TYPE *accessory;
     MISSING_TYPE *token;
-    MISSING_TYPE *isDragHandleHidden;
+    MISSING_TYPE *isAccessoryViewHidden;
 }
 
 - (void).cxx_destruct;

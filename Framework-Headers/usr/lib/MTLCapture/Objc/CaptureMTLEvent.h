@@ -10,7 +10,7 @@
 #import <MTLCapture/MTLEvent-Protocol.h>
 
 @class CaptureMTLDevice, NSString;
-@protocol MTLDevice, MTLEvent, MTLSharedEvent;
+@protocol MTLDevice, MTLEvent;
 
 @interface CaptureMTLEvent : NSObject <MTLEvent, CaptureMTLObject>
 {
@@ -18,8 +18,6 @@
     id<MTLEvent> _baseObject;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
-    _Atomic unsigned long long _downloadSignal;
-    id<MTLSharedEvent> _downloadEvent;
 }
 
 @property (readonly) id<MTLEvent> baseObject;
@@ -38,7 +36,7 @@
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
-- (id)newDownloadPoint:(id)arg1;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)touch;
 

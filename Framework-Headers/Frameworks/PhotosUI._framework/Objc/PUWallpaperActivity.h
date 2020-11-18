@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
 - (void)wallpaperPreviewViewControllerCancelButtonPressed:(id)arg1;
 - (void)wallpaperPreviewViewControllerSetButtonPressed:(id)arg1;

@@ -18,14 +18,6 @@
     UIImage *_snapshotImage;
 }
 
-@property (strong, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
-@property (strong, nonatomic) SBDisplayItem *displayItem; // @synthesize displayItem=_displayItem;
-@property (nonatomic) BOOL fromFullSizeSnapshotRequest; // @synthesize fromFullSizeSnapshotRequest=_fromFullSizeSnapshotRequest;
-@property (nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
-@property (readonly, nonatomic) long long role;
-@property (strong, nonatomic) XBApplicationSnapshot *snapshot; // @synthesize snapshot=_snapshot;
-@property (strong, nonatomic) UIImage *snapshotImage; // @synthesize snapshotImage=_snapshotImage;
-
 - (void).cxx_destruct;
 - (id)description;
 

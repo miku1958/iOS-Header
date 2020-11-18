@@ -7,13 +7,12 @@
 #import <SpringBoard/SBGestureSwitcherModifier.h>
 
 @class SBAppLayout, SBCoplanarSwitcherModifier, SBForcePressGestureStateTrackingSwitcherModifier, SBSwitcherModifier, UIViewFloatAnimatableProperty;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBForcePressGestureSwitcherModifier : SBGestureSwitcherModifier
 {
     SBAppLayout *_selectedAppLayout;
     long long _startingEnvironmentMode;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
     SBCoplanarSwitcherModifier *_coplanarModifier;
     SBForcePressGestureStateTrackingSwitcherModifier *_stateTrackingModifier;
     double _additionalScaleForBreathing;
@@ -25,38 +24,38 @@
 - (double)_effectivePanProgress;
 - (BOOL)_forcePressGestureCanBreathe;
 - (unsigned long long)_indexOfSelectedAppLayout;
+- (id)_layoutSettings;
 - (double)_scaleForCoplanarModifier;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
+- (id)_scaleSettings;
+- (double)_switcherCardScale;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
+- (id)appLayoutsToResignActive;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
-- (double)dimmingAlpha;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (double)homeScreenAlpha;
+- (double)homeScreenBackdropBlurProgress;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (double)homeScreenScale;
 - (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 multitaskingModifier:(id)arg4;
 - (double)initialPanThreshold;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (long long)keyboardSuppressionMode;
-- (id)layoutSettings;
-- (long long)liveContentRasterizationStyle;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (id)scaleSettingsForIndex:(unsigned long long)arg1;
-- (long long)sceneDeactivationReason;
+- (id)visibleAppLayouts;
 - (double)wallpaperScale;
 - (long long)wallpaperStyle;
-- (BOOL)wantsMinificationFilter;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

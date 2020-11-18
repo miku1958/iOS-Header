@@ -6,30 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSSet, NSURL;
-@protocol BMMiningTaskDelegate;
+@class BMAprioriPatternMiner, BMBasketExtractor, BMEventExtractor, BMMiningTaskConfig, BMRuleExtractor, NSDate, NSMutableDictionary, NSSet, NSString, NSURL;
+@protocol BMMiningTaskDelegate, BMPatternMiner;
 
 @interface BMMiningTask : NSObject
 {
     id<BMMiningTaskDelegate> _delegate;
-    long long _completionStatus;
+    NSString *_domain;
     NSMutableDictionary *_coreAnalyticsDict;
+    long long _completionStatus;
     unsigned long long _rulePersistBatchSize;
-    NSDate *_start;
+    unsigned long long _maxItemsetSize;
     NSURL *_storageURL;
+    double _miningInterval;
+    NSDate *_start;
+    BMEventExtractor *_eventExtractor;
+    BMBasketExtractor *_basketExtractor;
+    BMAprioriPatternMiner<BMPatternMiner> *_patternMiner;
+    BMRuleExtractor *_ruleExtractor;
     NSSet *_types;
     NSSet *_targetTypes;
     double _samplingInterval;
     unsigned long long _absoluteSupport;
     double _confidence;
+    BMMiningTaskConfig *_bmMiningTaskConfig;
 }
 
 @property (readonly, nonatomic) unsigned long long absoluteSupport; // @synthesize absoluteSupport=_absoluteSupport;
+@property (strong, nonatomic) BMBasketExtractor *basketExtractor; // @synthesize basketExtractor=_basketExtractor;
+@property (strong, nonatomic) BMMiningTaskConfig *bmMiningTaskConfig; // @synthesize bmMiningTaskConfig=_bmMiningTaskConfig;
 @property (nonatomic) long long completionStatus; // @synthesize completionStatus=_completionStatus;
 @property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (strong, nonatomic) NSMutableDictionary *coreAnalyticsDict; // @synthesize coreAnalyticsDict=_coreAnalyticsDict;
 @property (weak, nonatomic) id<BMMiningTaskDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property (strong, nonatomic) BMEventExtractor *eventExtractor; // @synthesize eventExtractor=_eventExtractor;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished;
+@property (nonatomic) unsigned long long maxItemsetSize; // @synthesize maxItemsetSize=_maxItemsetSize;
+@property (readonly, nonatomic) double miningInterval; // @synthesize miningInterval=_miningInterval;
+@property (strong, nonatomic) BMAprioriPatternMiner<BMPatternMiner> *patternMiner; // @synthesize patternMiner=_patternMiner;
+@property (strong, nonatomic) BMRuleExtractor *ruleExtractor; // @synthesize ruleExtractor=_ruleExtractor;
 @property (readonly, nonatomic) unsigned long long rulePersistBatchSize; // @synthesize rulePersistBatchSize=_rulePersistBatchSize;
 @property (readonly, nonatomic) double samplingInterval; // @synthesize samplingInterval=_samplingInterval;
 @property (copy, nonatomic) NSDate *start; // @synthesize start=_start;
@@ -38,12 +54,15 @@
 @property (readonly, copy, nonatomic) NSSet *types; // @synthesize types=_types;
 
 + (id)supergreenMiningTask;
++ (BOOL)supportsTaskSpecificEvents;
 - (void).cxx_destruct;
 - (void)finishWithCompletionStatus:(long long)arg1;
 - (void)finishWithError:(id)arg1;
 - (id)init;
+- (id)initWithDomain:(id)arg1 types:(id)arg2 targetTypes:(id)arg3 samplingInterval:(double)arg4 absoluteSupport:(unsigned long long)arg5 confidence:(double)arg6 rulePersistBatchSize:(unsigned long long)arg7 miningInterval:(double)arg8;
 - (id)initWithStorageURL:(id)arg1 types:(id)arg2 targetTypes:(id)arg3 samplingInterval:(double)arg4 absoluteSupport:(unsigned long long)arg5 confidence:(double)arg6;
 - (id)initWithStorageURL:(id)arg1 types:(id)arg2 targetTypes:(id)arg3 samplingInterval:(double)arg4 absoluteSupport:(unsigned long long)arg5 confidence:(double)arg6 rulePersistBatchSize:(unsigned long long)arg7;
+- (id)initWithStorageURL:(id)arg1 types:(id)arg2 targetTypes:(id)arg3 samplingInterval:(double)arg4 absoluteSupport:(unsigned long long)arg5 confidence:(double)arg6 rulePersistBatchSize:(unsigned long long)arg7 miningInterval:(double)arg8;
 - (void)mine;
 - (void)terminateEarly;
 

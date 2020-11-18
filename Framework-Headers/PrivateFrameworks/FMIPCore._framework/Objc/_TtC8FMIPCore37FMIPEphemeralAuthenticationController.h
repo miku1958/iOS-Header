@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC8FMIPCore37FMIPEphemeralAuthenticationController : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC8FMIPCore37FMIPEphemeralAuthenticationController : NSObject
 {
     MISSING_TYPE *authenticationController;
     MISSING_TYPE *action;
     MISSING_TYPE *username;
-    MISSING_TYPE *authenticationResults;
     MISSING_TYPE *authenticationContext;
+    MISSING_TYPE *authenticationResults;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

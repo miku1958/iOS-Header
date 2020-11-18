@@ -14,11 +14,13 @@
     UIButton *_cancelButton;
     UIButton *_doneButton;
     UIButton *_playbackButton;
+    UIButton *_fileResizingButton;
 }
 
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (readonly, nonatomic) UIButton *doneButton; // @synthesize doneButton=_doneButton;
+@property (readonly, nonatomic) UIButton *fileResizingButton; // @synthesize fileResizingButton=_fileResizingButton;
 @property (readonly, nonatomic) UIButton *playbackButton; // @synthesize playbackButton=_playbackButton;
 
 - (void)_commonPLCropOverlayEditPhotoBottomBarInitialization;

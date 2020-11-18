@@ -62,7 +62,7 @@
 - (void)_setCancelled;
 - (void)_setCompleted;
 - (void)_setStarted;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (void)_tweakMessageHeader:(id)arg1;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
@@ -74,9 +74,9 @@
 - (void)setCanRollback:(BOOL)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setSessionMetadata:(id)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 - (BOOL)wasCancelled;
 
 @end

@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSAttributedString *attributedButtonText;
 @property (nonatomic) BOOL buttonAlignmentRelativeToContent; // @synthesize buttonAlignmentRelativeToContent=_buttonAlignmentRelativeToContent;
 @property (nonatomic) double prevBalloonWidth; // @synthesize prevBalloonWidth=_prevBalloonWidth;
+@property (readonly, nonatomic) BOOL shouldHideDuringDarkFSM;
 @property (strong, nonatomic) UIButton *statusButton; // @synthesize statusButton=_statusButton;
 
 + (id)statusButton;

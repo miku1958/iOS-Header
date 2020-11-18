@@ -15,7 +15,8 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionLayoutSectionListSolver : NSObject <_UICollectionLayoutSectionSolver, _UICollectionLayoutAuxillaryHosting>
 {
-    struct vector<CGRect, std::__1::allocator<CGRect>> _itemFrames;
+    struct vector<_UIRegionSolveResult, std::__1::allocator<_UIRegionSolveResult>> _regions;
+    struct unique_ptr<_UIItemSolveResult, std::__1::default_delete<_UIItemSolveResult>> _templateItemSolveResult;
     BOOL _shouldAdjustContentSizeForPartialLastGroupSolution;
     BOOL _layoutRTL;
     NSCollectionLayoutSection *_layoutSection;
@@ -60,13 +61,21 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (long long)_binarySearchInitialFrameIndexForStartIndex:(long long)arg1 endIndex:(long long)arg2 lowIndex:(long long)arg3 queryRect:(struct CGRect)arg4;
+- (long long)_anchorIndexForSolveParameters:(id)arg1;
 - (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
+- (void)_initialSolve;
 - (id)_queryFramesIntersectingRect:(struct CGRect)arg1 frameOffset:(struct CGPoint)arg2;
+- (void)_recomputeRegionOffsetsStartingAtFrameIndex:(long long)arg1;
+- (struct _UIRegionSolveResult *)_regionForFrameIndex:(long long)arg1;
+- (unsigned long long)_regionIndexForFrameIndex:(long long)arg1;
+- (long long)_regionIndexForFrameIndex:(long long)arg1 startRegionIndex:(long long)arg2 endRegionIndex:(long long)arg3;
+- (long long)_regionIndexForQueryRect:(struct CGRect)arg1;
+- (long long)_regionIndexForQueryRect:(struct CGRect)arg1 startRegionIndex:(long long)arg2 endRegionIndex:(long long)arg3;
 - (id)_resolveWithParameters:(id)arg1;
 - (id)_sectionContainer;
 - (void)_setOrthogonalOffset:(struct CGPoint)arg1;
-- (id)allSupplementaryKeys;
+- (long long)_splitRegionAtRegionIndex:(long long)arg1 forFrameIndex:(long long)arg2;
+- (void)_updatePreferredSizeForFrameIndex:(long long)arg1;
 - (id)auxillaryHostAuxillaryItems;
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
@@ -88,7 +97,6 @@ __attribute__((visibility("hidden")))
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(BOOL)arg6;
 - (id)supplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
-- (id)supplementaryKeysAssociatedWithItemAtIndex:(long long)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
 - (id)visualDescription;
 

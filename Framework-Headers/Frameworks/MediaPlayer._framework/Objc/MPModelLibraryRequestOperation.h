@@ -8,6 +8,7 @@
 
 @class MPModelLibraryRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryRequestOperation : MPAsyncOperation
 {
     MPModelLibraryRequest *_request;

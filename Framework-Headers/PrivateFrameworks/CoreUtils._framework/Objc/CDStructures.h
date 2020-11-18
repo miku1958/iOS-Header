@@ -146,6 +146,10 @@ struct sockaddr_in6 {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned char bytes[3];
+} CDStruct_ae2970c9;
+
+typedef struct {
     unsigned char bytes[6];
 } CDStruct_83abfce7;
 

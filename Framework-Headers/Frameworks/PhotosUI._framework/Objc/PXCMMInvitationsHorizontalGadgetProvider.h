@@ -39,6 +39,7 @@
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (id)initWithWorkflowPresenter:(id)arg1;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

@@ -41,7 +41,6 @@
 - (id)initWithValue:(id)arg1 label:(id)arg2 type:(unsigned long long)arg3 recordId:(id)arg4 duplicateKey:(id)arg5 sourceKey:(id)arg6 context:(id)arg7 extractionInfo:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContactDetail:(id)arg1;
-- (id)loadOrigin:(id)arg1;
 
 @end
 

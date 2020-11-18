@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AuthKitUI/AKAuthorizationPaneAutomaticResizeDelegate-Protocol.h>
 #import <AuthKitUI/NSObject-Protocol.h>
 
 @class AKAuthorization, AKAuthorizationPaneViewController, AKAuthorizationPresentationContext, AKAuthorizationUserResponse, NSDictionary, NSError, NSString;
 @protocol AKAuthorizationEditableDataSources, AKAuthorizationPasswordAuthenticationDelegate;
 
-@protocol AKAuthorizationPaneViewControllerDelegate <NSObject>
+@protocol AKAuthorizationPaneViewControllerDelegate <NSObject, AKAuthorizationPaneAutomaticResizeDelegate>
 - (void)authorizationPaneViewController:(AKAuthorizationPaneViewController *)arg1 didRequestAuthorizationWithUserProvidedInformation:(AKAuthorizationUserResponse *)arg2 completion:(void (^)(AKAuthorization *, NSError *))arg3;
 - (void)authorizationPaneViewController:(AKAuthorizationPaneViewController *)arg1 dismissWithAuthorization:(AKAuthorization *)arg2 error:(NSError *)arg3;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NEIKEv2ChildSAConfiguration, NEIKEv2ChildSAProposal, NEIKEv2IKESA, NSArray, NSData, NSError, NSMutableData;
+@class NEIKEv2ChildSAConfiguration, NEIKEv2ChildSAProposal, NEIKEv2ESPSPI, NEIKEv2IKESA, NSArray, NSData, NSError, NSMutableData;
 
 @interface NEIKEv2ChildSA : NSObject
 {
@@ -38,6 +38,8 @@
     NEIKEv2ChildSAProposal *_initiatorRekeyProposal;
     NEIKEv2ChildSAProposal *_initiatorRekeyNonPFSProposal;
     NEIKEv2ChildSAProposal *_responderRekeyProposal;
+    NEIKEv2ESPSPI *_rekeyedSPI;
+    NEIKEv2ESPSPI *_rekeyedRemoteSPI;
 }
 
 @property unsigned int childID; // @synthesize childID=_childID;
@@ -68,6 +70,8 @@
 @property unsigned short outgoingDatabaseReqID; // @synthesize outgoingDatabaseReqID=_outgoingDatabaseReqID;
 @property (strong) NSMutableData *outgoingEncryptionKey; // @synthesize outgoingEncryptionKey=_outgoingEncryptionKey;
 @property (strong) NSMutableData *outgoingIntegrityKey; // @synthesize outgoingIntegrityKey=_outgoingIntegrityKey;
+@property (strong) NEIKEv2ESPSPI *rekeyedRemoteSPI; // @synthesize rekeyedRemoteSPI=_rekeyedRemoteSPI;
+@property (strong) NEIKEv2ESPSPI *rekeyedSPI; // @synthesize rekeyedSPI=_rekeyedSPI;
 @property (strong) NSData *remoteNonce; // @synthesize remoteNonce=_remoteNonce;
 @property (strong) NSArray *remoteTrafficSelectors; // @synthesize remoteTrafficSelectors=_remoteTrafficSelectors;
 @property (strong) NSData *responderNonce;

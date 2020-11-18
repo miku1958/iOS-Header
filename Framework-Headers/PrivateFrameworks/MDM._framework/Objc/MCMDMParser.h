@@ -30,10 +30,12 @@
 + (id)malformedRequestErrorResult;
 - (void).cxx_destruct;
 - (void)_activationLockBypassCodeRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_aggregateLogCommandForRequest:(id)arg1;
 - (id)_allCommands;
 - (id)_allSettingsItems;
 - (id)_allowedDeviceQueriesForAccessRights:(int)arg1;
+- (id)_analyticsCommandNameFromRequest:(id)arg1;
+- (id)_analyticsErrorFromResponse:(id)arg1;
+- (BOOL)_analyticsRequiresNetworkTetheringFromRequest:(id)arg1;
 - (id)_appAlreadyInstalledErrorWithBundleID:(id)arg1;
 - (id)_appAlreadyInstalledErrorWithiTunesStoreID:(id)arg1;
 - (id)_appAlreadyQueuedErrorWithBundleID:(id)arg1;
@@ -46,6 +48,7 @@
 - (void)_clearActivationLockBypassCodeRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)_clearPasscode:(id)arg1;
 - (void)_clearRestrictionsPasswordRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)_deleteAllUsersWithForceDeletion:(BOOL)arg1;
 - (id)_deleteUser:(id)arg1;
 - (void)_deviceConfigured:(id)arg1 assertion:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_deviceInformationWithRequest:(id)arg1 accessRights:(int)arg2;
@@ -74,6 +77,7 @@
 - (BOOL)_isManagedAppFromManagementInformation:(id)arg1;
 - (BOOL)_isProfileIdentifierManaged:(id)arg1;
 - (BOOL)_isProvisioningProfileUUIDManaged:(id)arg1;
+- (BOOL)_isTriggerDiagnosticsAllowed;
 - (id)_licenseNotFoundErrorWithBundleID:(id)arg1 underlyingError:(id)arg2;
 - (id)_licenseNotFoundErrorWithiTunesStoreID:(id)arg1 underlyingError:(id)arg2;
 - (id)_logOutUser:(id)arg1;
@@ -104,6 +108,7 @@
 - (id)_performSetResidentUserQuotaSize:(id)arg1;
 - (id)_performSetResidentUsers:(id)arg1;
 - (id)_performSetSharedDeviceConfiguration:(id)arg1;
+- (id)_performSetTimezone:(id)arg1;
 - (id)_performSetVoiceRoaming:(id)arg1;
 - (id)_performSetWallpaper:(id)arg1;
 - (id)_performSetting:(id)arg1 outAdditionalResponseKeys:(id *)arg2 outRestartAppleTVApp:(BOOL *)arg3;
@@ -131,6 +136,7 @@
 - (void)_scheduleOSUpdate:(id)arg1 assertion:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_scheduleOSUpdateScan:(id)arg1 assertion:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_securityInfo:(id)arg1;
+- (void)_sendAnalyticsMDMCommandEventWithRequest:(id)arg1 response:(id)arg2;
 - (id)_serviceSubscriptionPropertiesWithDMFKeysMappedToMCKeys:(id)arg1;
 - (id)_serviceSubscriptionsWithDMFKeysMappedToMCKeys:(id)arg1;
 - (id)_setResidentUsersNumber:(id)arg1;

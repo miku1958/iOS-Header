@@ -10,14 +10,18 @@
 {
 }
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (void)getContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getRecipients:(CDUnknownBlockType)arg1;
+- (void)handleWatchResponse:(id)arg1;
 - (id)localizedKeyParameterDisplayName;
 - (id)minimumSupportedClientVersion;
 - (BOOL)opensInApp;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
 - (BOOL)skipsProcessingHiddenParameters;
 

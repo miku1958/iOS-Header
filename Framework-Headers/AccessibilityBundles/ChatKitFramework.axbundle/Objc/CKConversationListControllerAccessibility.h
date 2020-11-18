@@ -15,8 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateToolbarItems;
-- (id)composeButton;
-- (id)optionsButtonItem;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

@@ -7,13 +7,14 @@
 #import <TSDrawables/TSDLayout.h>
 
 #import <TSText/TSDWrapInvalidationParent-Protocol.h>
+#import <TSText/TSKChangeSourceObserver-Protocol.h>
 #import <TSText/TSWPLayoutOwner-Protocol.h>
 #import <TSText/TSWPLayoutTarget-Protocol.h>
 
 @class NSMutableArray, NSMutableSet, NSObject, NSString, TSDCanvas, TSPObject, TSUBezierPath, TSWPLayoutManager, TSWPStorage;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPLayoutParent, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
-@interface TSWPLayout : TSDLayout <TSWPLayoutTarget, TSWPLayoutOwner, TSDWrapInvalidationParent>
+@interface TSWPLayout : TSDLayout <TSKChangeSourceObserver, TSWPLayoutTarget, TSWPLayoutOwner, TSDWrapInvalidationParent>
 {
     TSWPLayoutManager *_layoutManager;
     NSMutableArray *_columns;
@@ -22,8 +23,8 @@
     unsigned long long _lastLayoutMgrChangeCount;
     TSDLayout<TSWPLayoutParent> *_wpLayoutParent;
     NSMutableSet *_markedHiddenInlineDrawableLayouts;
-    BOOL _isLayingOutIntoTarget;
     BOOL _useBlackTextColor;
+    BOOL _isLayingOutIntoTarget;
 }
 
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) struct __CFLocale *hyphenationLocale;
 @property (readonly, nonatomic) TSUBezierPath *interiorClippingPath;
 @property (readonly, nonatomic) BOOL isInstructional;
+@property (nonatomic) BOOL isLayingOutIntoTarget; // @synthesize isLayingOutIntoTarget=_isLayingOutIntoTarget;
 @property (readonly, nonatomic) BOOL isLinked;
 @property (readonly, nonatomic) BOOL isOverflowing;
 @property (readonly, nonatomic) BOOL layoutIsValid;
@@ -101,6 +103,7 @@
 - (void *)initialLayoutState;
 - (id)interiorWrapSegments;
 - (void)invalidate;
+- (void)invalidateForChangedPrintingSettings;
 - (void)invalidateForFootnoteNumberingChange;
 - (BOOL)invalidateForPageCountChange;
 - (void)invalidateForcingFullReLayOut;
@@ -109,6 +112,7 @@
 - (void)invalidateTextLayout;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
+- (id)layoutForInlineDrawable:(id)arg1;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
 - (void)layoutManagerNeedsLayout:(id)arg1;
 - (void)markHiddenInlineDrawableLayout:(id)arg1;
@@ -118,13 +122,14 @@
 - (id)p_firstAncestorRespondingToSelector:(SEL)arg1;
 - (void)p_invalidateTextLayout;
 - (struct CGSize)p_maximumFrameSizeForChild:(id)arg1;
-- (BOOL)p_parentAutosizes;
+- (struct CGSize)p_maximumFrameSizeForChild:(id)arg1 foundInColumn:(id *)arg2;
 - (struct CGRect)p_protectedRectWithinLayoutForSelectionRect:(struct CGRect)arg1;
 - (struct CGRect)p_rectForSelectionPath:(id)arg1 useParagraphModeRects:(BOOL)arg2;
 - (struct CGRect)p_rectInRootForSelectionPath:(id)arg1 useParagraphModeRects:(BOOL)arg2 forZoom:(BOOL)arg3;
 - (BOOL)p_shouldAssertDependenciesAreCorrect;
 - (id)p_wpLayoutParent;
 - (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
+- (BOOL)parentAutosizes;
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
@@ -145,9 +150,9 @@
 - (double)textScaleForChild:(id)arg1;
 - (id)textWrapper;
 - (id)unscaledContentRectsToAvoidPencilAnnotationOverlap;
+- (void)updateChildrenFromInfo;
 - (void)validate;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
-- (id)validatedLayoutForInlineDrawable:(id)arg1;
 - (double)viewScaleForZoomingToSelectionPath:(id)arg1 targetPointSize:(double)arg2;
 - (void)willBeAddedToLayoutController:(id)arg1;
 - (void)willBeRemovedFromLayoutController:(id)arg1;

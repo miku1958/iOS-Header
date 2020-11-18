@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <SpringBoard/NSObject-Protocol.h>
+
 @class NSArray, SSScreenCapturer;
 
-@protocol SSScreenCapturerDelegate
+@protocol SSScreenCapturerDelegate <NSObject>
+- (void)_screenshotWindowWasDismissed;
+- (void)_screenshotWindowWillBeDisplayed;
 - (void)screenCapturer:(SSScreenCapturer *)arg1 didCaptureScreenshotsOfScreens:(NSArray *)arg2;
 @end
 

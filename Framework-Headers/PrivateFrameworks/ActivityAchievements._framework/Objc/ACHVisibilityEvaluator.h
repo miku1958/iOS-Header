@@ -24,6 +24,8 @@
 - (void)_injectWatchCountryCode:(id)arg1;
 - (id)init;
 - (BOOL)unearnedAchievementIsVisibleNow:(id)arg1;
+- (BOOL)unearnedAchievementIsVisibleNow:(id)arg1 activityMoveMode:(long long)arg2;
+- (BOOL)unearnedAchievementIsVisibleNow:(id)arg1 activityMoveMode:(long long)arg2 experienceType:(unsigned long long)arg3;
 
 @end
 

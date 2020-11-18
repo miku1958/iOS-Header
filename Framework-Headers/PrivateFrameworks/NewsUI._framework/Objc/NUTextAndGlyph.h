@@ -13,8 +13,10 @@
     NSAttributedString *_attributedText;
     NSString *_text;
     UIImage *_glyph;
+    unsigned long long _alignment;
 }
 
+@property (nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
 @property (readonly, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (readonly, nonatomic) UIImage *glyph; // @synthesize glyph=_glyph;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;

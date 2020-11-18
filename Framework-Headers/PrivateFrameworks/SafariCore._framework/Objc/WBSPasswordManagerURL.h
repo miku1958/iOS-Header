@@ -14,7 +14,10 @@
 + (BOOL)_resourceSpecifierDictionaryIsPasswordManagerResourceSpecifierDictionary:(id)arg1;
 + (id)_resourceSpecifierEncodedKey:(id)arg1 value:(id)arg2;
 + (BOOL)_urlIsPasswordManagerURLWithScheme:(id)arg1 resourceSpecifierDictionary:(id)arg2;
++ (BOOL)boolForPasswordManagerResourceDictionary:(id)arg1 key:(id)arg2 defaultValue:(BOOL)arg3;
 + (id)dictionaryWithPasswordManagerURL:(id)arg1;
++ (BOOL)isPasswordManagerSecurityRecommendationsResourceDictionary:(id)arg1;
++ (id)passwordManagerSecurityRecommendationsURL;
 + (id)passwordManagerURLWithDictionary:(id)arg1;
 + (BOOL)urlIsPasswordManagerURL:(id)arg1;
 + (id)valueForPasswordManagerResourceDictionary:(id)arg1 key:(id)arg2;

@@ -7,12 +7,13 @@
 #import <WorkflowKit/MTLModel.h>
 
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
+#import <ActionKit/NSSecureCoding-Protocol.h>
 #import <ActionKit/WFNaming-Protocol.h>
 #import <ActionKit/WFRemoteFile-Protocol.h>
 
 @class NSDate, NSDictionary, NSNumber, NSString;
 
-@interface WFDropboxMetadata : MTLModel <WFRemoteFile, WFNaming, MTLJSONSerializing>
+@interface WFDropboxMetadata : MTLModel <WFRemoteFile, WFNaming, MTLJSONSerializing, NSSecureCoding>
 {
     NSString *_name;
     NSString *_path;
@@ -50,6 +51,7 @@
 + (id)JSONKeyPathsByPropertyKey;
 + (id)clientModifiedDateJSONTransformer;
 + (id)serverModifiedDateJSONTransformer;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)isEqual:(id)arg1;
 - (id)wfFileSize;

@@ -16,7 +16,9 @@
     BOOL _isOverlay;
     BOOL _requiresLocalMedia;
     BOOL _isITunes;
+    BOOL _shouldSearchDirectionsAlongCurrentRoute;
     int _mediaEntityType;
+    int _directionsMode;
     NSString *_label;
     NSString *_labelForLocalMedia;
     NSArray *_storeIdentifiers;
@@ -40,16 +42,21 @@
     _SFPBURL *_messageURL;
     NSString *_persistentID;
     NSString *_universalLibraryID;
+    NSString *_interactionContentType;
+    _SFPBPunchout *_customDirectionsPunchout;
 }
 
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (strong, nonatomic) _SFPBImage *baseIcon; // @synthesize baseIcon=_baseIcon;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (strong, nonatomic) _SFPBPunchout *customDirectionsPunchout; // @synthesize customDirectionsPunchout=_customDirectionsPunchout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) int directionsMode; // @synthesize directionsMode=_directionsMode;
 @property (copy, nonatomic) NSString *email; // @synthesize email=_email;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBImage *icon; // @synthesize icon=_icon;
+@property (copy, nonatomic) NSString *interactionContentType; // @synthesize interactionContentType=_interactionContentType;
 @property (nonatomic) BOOL isITunes; // @synthesize isITunes=_isITunes;
 @property (nonatomic) BOOL isOverlay; // @synthesize isOverlay=_isOverlay;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -70,6 +77,7 @@
 @property (copy, nonatomic) NSString *provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) _SFPBPunchout *punchout; // @synthesize punchout=_punchout;
 @property (nonatomic) BOOL requiresLocalMedia; // @synthesize requiresLocalMedia=_requiresLocalMedia;
+@property (nonatomic) BOOL shouldSearchDirectionsAlongCurrentRoute; // @synthesize shouldSearchDirectionsAlongCurrentRoute=_shouldSearchDirectionsAlongCurrentRoute;
 @property (copy, nonatomic) NSArray *storeIdentifiers; // @synthesize storeIdentifiers=_storeIdentifiers;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;

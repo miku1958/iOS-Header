@@ -8,7 +8,7 @@
 
 @interface TSDDrawableInfo (TSTextAdditions)
 
-@property (readonly, nonatomic) int elementKind;
+@property (readonly, nonatomic) unsigned int elementKind;
 @property (readonly, nonatomic) unsigned long long maxInlineNestingDepth;
 
 - (BOOL)containsDisallowedDrawableElementKind:(unsigned int)arg1;

@@ -4,11 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DialogEngine/DialogEngineContext.h>
+#import <objc/NSObject.h>
 
-@interface CATContext : DialogEngineContext
+@class NSString;
+
+@interface CATContext : NSObject
 {
+    BOOL _isMultiUserEnabled;
+    BOOL _requiresUserGrounding;
+    unsigned int _randomSeed;
+    NSString *_siriLocale;
+    NSString *_siriVoiceGender;
+    long long _currentTime;
 }
+
+@property long long currentTime; // @synthesize currentTime=_currentTime;
+@property BOOL isMultiUserEnabled; // @synthesize isMultiUserEnabled=_isMultiUserEnabled;
+@property unsigned int randomSeed; // @synthesize randomSeed=_randomSeed;
+@property BOOL requiresUserGrounding; // @synthesize requiresUserGrounding=_requiresUserGrounding;
+@property (strong, nonatomic) NSString *siriLocale; // @synthesize siriLocale=_siriLocale;
+@property (strong, nonatomic) NSString *siriVoiceGender; // @synthesize siriVoiceGender=_siriVoiceGender;
+
+- (void).cxx_destruct;
+- (id)init;
+- (id)initWithInputLocale:(id)arg1 outputVoiceLocale:(id)arg2;
+- (id)toDictionary;
 
 @end
 

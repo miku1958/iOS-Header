@@ -18,7 +18,13 @@
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 
 + (id)defaultAppearance;
++ (id)secondarySystemBackgroundColor;
++ (id)secondarySystemGroupedBackgroundColor;
++ (id)systemBackgroundColor;
++ (id)systemGroupedBackgroundColor;
 + (id)tableViewAppearance;
++ (id)tertiarySystemBackgroundColor;
++ (id)tertiarySystemGroupedBackgroundColor;
 - (void).cxx_destruct;
 - (id)_convertHexString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

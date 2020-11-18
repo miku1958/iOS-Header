@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _charts;
     NSArray *_additionalPlatforms;
+    NSDictionary *_additionalQueryParams;
     id<AMSBagProtocol> _bag;
     NSArray *_bundleIdentifiers;
     NSString *_clientVersion;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSArray *additionalPlatforms; // @synthesize additionalPlatforms=_additionalPlatforms;
+@property (strong, nonatomic) NSDictionary *additionalQueryParams; // @synthesize additionalQueryParams=_additionalQueryParams;
 @property (readonly, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 @property (nonatomic) BOOL charts; // @synthesize charts=_charts;

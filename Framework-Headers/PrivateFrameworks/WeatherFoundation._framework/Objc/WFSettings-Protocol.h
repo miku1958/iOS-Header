@@ -7,7 +7,7 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSObject-Protocol.h>
 
-@class NSSet, NSString, NSURL;
+@class NSDictionary, NSSet, NSString, NSURL, WFWeatherEventsConfig;
 
 @protocol WFSettings <NSObject, NSCopying>
 
@@ -20,7 +20,10 @@
 @property (readonly, nonatomic) unsigned long long networkFailedAttemptsLimit;
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;
 @property (readonly, nonatomic) double privateUserIdentifierResetTimeInterval;
+@property (readonly, nonatomic) float telemetrySamplingRate;
 @property (readonly, nonatomic) double userIdentifierResetTimeInterval;
+@property (readonly, nonatomic) WFWeatherEventsConfig *weatherEventsConfig;
+@property (readonly, nonatomic) NSDictionary *widgetRefreshPolicy;
 
 @end
 

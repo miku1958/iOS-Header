@@ -6,9 +6,12 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class AAUIGenericTermsRemoteUI;
+@class AAUIGenericTermsRemoteUI, NSDictionary;
 
 @protocol AAUIGenericTermsRemoteUIDelegate <NSObject>
 - (void)genericTermsRemoteUI:(AAUIGenericTermsRemoteUI *)arg1 didFinishWithSuccess:(BOOL)arg2;
+
+@optional
+- (void)genericTermsRemoteUI:(AAUIGenericTermsRemoteUI *)arg1 acceptedTermsInfo:(NSDictionary *)arg2;
 @end
 

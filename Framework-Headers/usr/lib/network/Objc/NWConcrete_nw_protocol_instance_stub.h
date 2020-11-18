@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (struct nw_protocol *)getProtocolStructure;
-- (id)initWithProtocol:(struct nw_protocol *)arg1;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @interface HKRoundedHeaderView : UIView
 {
+    BOOL _isInteractive;
     HKGradient *_gradient;
     UIColor *_color;
     UIImage *_image;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) HKGradientView *gradientView; // @synthesize gradientView=_gradientView;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (readonly, nonatomic) BOOL isInteractive; // @synthesize isInteractive=_isInteractive;
 @property (strong, nonatomic) NSLayoutConstraint *largeTextChevronCenterYConstraint; // @synthesize largeTextChevronCenterYConstraint=_largeTextChevronCenterYConstraint;
 @property (strong, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property (strong, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
@@ -71,6 +73,7 @@
 + (double)_topToTextFirstBaseline;
 + (double)estimatedHeight;
 - (void).cxx_destruct;
+- (double)_headerViewWidth;
 - (BOOL)_isLayingOutForAccessibility;
 - (BOOL)_isTextLabelTruncated;
 - (void)_setupConstraints;
@@ -80,6 +83,7 @@
 - (void)_updateTextLabel;
 - (void)_updateUI;
 - (id)initWithColor:(id)arg1;
+- (id)initWithColor:(id)arg1 isInteractive:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithGradient:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

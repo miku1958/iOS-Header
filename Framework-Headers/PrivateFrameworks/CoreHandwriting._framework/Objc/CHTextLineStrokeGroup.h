@@ -21,18 +21,24 @@
 
 @property (readonly, strong, nonatomic) NSArray *writingDirectionSortedStrokeIdentifiers; // @synthesize writingDirectionSortedStrokeIdentifiers=_writingDirectionSortedStrokeIdentifiers;
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CGVector)averageStrokeDeviation;
 - (struct CGVector)averageWritingOrientation;
 - (id)coalescedLastSubstrokes;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)groupByAddingStrokeIdentifiers:(id)arg1 removingStrokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 writingDirectionSortedSubstrokes:(id)arg6 averageWritingOrientation:(struct CGVector)arg7 averageStrokeDeviation:(struct CGVector)arg8 writingDirectionSortedStrokeIdentifiers:(id)arg9 localStrokeWritingOrientations:(const vector_5071ab7f *)arg10 coalescedLastSubstrokes:(id)arg11 groupingConfidence:(double)arg12 lastSubstrokeIndexBeforeMerge:(long long)arg13 firstStrokeOrigin:(struct CGPoint)arg14;
 - (id)initWithAncestorIdentifier:(long long)arg1 strokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 strategyIdentifier:(id)arg6 writingDirectionSortedSubstrokes:(id)arg7 averageWritingOrientation:(struct CGVector)arg8 averageStrokeDeviation:(struct CGVector)arg9 writingDirectionSortedStrokeIdentifiers:(id)arg10 localStrokeWritingOrientations:(const vector_5071ab7f *)arg11 coalescedLastSubstrokes:(id)arg12 groupingConfidence:(double)arg13 firstStrokeOrigin:(struct CGPoint)arg14;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStrokeIdentifiers:(id)arg1 firstStrokeIdentifier:(id)arg2 lastStrokeIdentifier:(id)arg3 bounds:(struct CGRect)arg4 strategyIdentifier:(id)arg5 writingDirectionSortedSubstrokes:(id)arg6 averageWritingOrientation:(struct CGVector)arg7 averageStrokeDeviation:(struct CGVector)arg8 writingDirectionSortedStrokeIdentifiers:(id)arg9 localStrokeWritingOrientations:(const vector_5071ab7f *)arg10 coalescedLastSubstrokes:(id)arg11 groupingConfidence:(double)arg12 firstStrokeOrigin:(struct CGPoint)arg13;
+- (id)initWithUniqueIdentifier:(long long)arg1 ancestorIdentifier:(long long)arg2 strokeIdentifiers:(id)arg3 firstStrokeIdentifier:(id)arg4 lastStrokeIdentifier:(id)arg5 bounds:(struct CGRect)arg6 strategyIdentifier:(id)arg7 writingDirectionSortedSubstrokes:(id)arg8 averageWritingOrientation:(struct CGVector)arg9 averageStrokeDeviation:(struct CGVector)arg10 writingDirectionSortedStrokeIdentifiers:(id)arg11 localStrokeWritingOrientations:(const vector_5071ab7f *)arg12 coalescedLastSubstrokes:(id)arg13 groupingConfidence:(double)arg14 firstStrokeOrigin:(struct CGPoint)arg15;
 - (long long)lastSubstrokeIndexBeforeMerge;
 - (vector_5071ab7f *)localStrokeWritingOrientations;
 - (struct CGVector)localWritingOrientationAtStrokeIndex:(long long)arg1;
+- (const struct CGPath *)newEstimatedBaselineForStrokesWithIdentifiers:(id)arg1 estimatedDescenderLocations:(id)arg2;
+- (struct CGPath *)newEstimatedBaselineForSubStrokes:(id)arg1 estimatedDescenderLocations:(id)arg2;
 - (id)writingDirectionSortedSubstrokes;
 
 @end

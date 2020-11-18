@@ -18,11 +18,11 @@
 }
 
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isAltAccount;
 @property (readonly, nonatomic) BOOL isArchived;
 @property (readonly, nonatomic) BOOL isPaired;
 @property (readonly, nonatomic) BOOL migratable;
 @property (readonly, nonatomic) NSUUID *pairingID;
-@property (strong, nonatomic) NSMutableDictionary *properties; // @synthesize properties=_properties;
 @property (strong, nonatomic) NRPBMutableDevice *protobuf; // @synthesize protobuf=_protobuf;
 
 + (id)diffFrom:(id)arg1 to:(id)arg2;

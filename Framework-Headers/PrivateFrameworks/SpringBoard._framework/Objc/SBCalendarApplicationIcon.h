@@ -15,12 +15,12 @@
     SBCalendarIconImageProvider *_imageProvider;
 }
 
-@property (readonly, nonatomic) SBCalendarIconImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
-
 + (BOOL)canGenerateIconsInBackground;
 + (Class)downloadingIconClass;
 - (void).cxx_destruct;
+- (void)_boldTextStatusDidChange:(id)arg1;
 - (void)calendarIconImageProviderHasChanged:(id)arg1;
+- (void)dealloc;
 - (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)initWithApplication:(id)arg1;
 - (void)localeChanged;

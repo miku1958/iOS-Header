@@ -41,3 +41,7 @@ typedef struct {
     unsigned int separatorStyle:1;
 } CDStruct_5ff9a38c;
 
+typedef struct {
+    unsigned int type:1;
+} CDStruct_f953fb60;
+

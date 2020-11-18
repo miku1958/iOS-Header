@@ -12,7 +12,7 @@
 
 + (id)currentSession;
 + (void)trackStickerSentFromHostBundleIdentifier:(id)arg1;
-+ (void)trackStickerSentFromHostBundleIdentifier:(id)arg1 withAggDClient:(id)arg2;
++ (void)trackStickerSentFromHostBundleIdentifier:(id)arg1 withCoreAnalyticsClient:(id)arg2;
 
 @end
 

@@ -7,6 +7,7 @@
 @class HKSpokenLanguage;
 
 @protocol HKSpokenLanguagesViewControllerDelegate
+- (void)didCancelLanguageSelection;
 - (void)didSelectCellWithLanguage:(HKSpokenLanguage *)arg1;
 @end
 

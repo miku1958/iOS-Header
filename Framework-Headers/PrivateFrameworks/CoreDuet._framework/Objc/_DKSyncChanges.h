@@ -22,7 +22,6 @@
 @property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 - (void).cxx_destruct;
-- (id)initWithAdditionChangeSets:(id)arg1 deletionChangeSets:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 
 @end
 

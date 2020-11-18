@@ -14,10 +14,12 @@
 @interface PXGMetalTextureConverter : NSObject <PXGTextureConverter>
 {
     long long _screenPixelCount;
+    BOOL _lowMemoryMode;
     BOOL _hasExtendedColorTarget;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
     PXGImageTexture *_transparentTexture;
+    struct __CVMetalTextureCache *_videoTextureCache;
     id<MTLDeviceSPI> _device;
     unsigned long long _destinationColorSpaceName;
     id<PXGMetalTextureConverterDelegate> _delegate;
@@ -34,19 +36,23 @@
 @property (strong, nonatomic) id<MTLDeviceSPI> device; // @synthesize device=_device;
 @property (readonly, nonatomic) BOOL hasExtendedColorTarget; // @synthesize hasExtendedColorTarget=_hasExtendedColorTarget;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsTextureAtlas;
 @property (readonly, nonatomic) PXGImageTexture *transparentTexture; // @synthesize transparentTexture=_transparentTexture;
+@property (readonly, nonatomic) struct __CVMetalTextureCache *videoTextureCache; // @synthesize videoTextureCache=_videoTextureCache;
 
 - (void).cxx_destruct;
 - (id)_createTransparentTexture;
+- (id)createAtlasForTextureAtlasManager:(id)arg1;
 - (id)createPayloadTextureFromPayload:(id)arg1;
 - (id)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
 - (id)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;
 - (id)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(struct CGAffineTransform)arg2;
+- (void)dealloc;
 - (id)init;
 - (id)initWithDevice:(id)arg1 destinationColorspaceName:(unsigned long long)arg2;
 

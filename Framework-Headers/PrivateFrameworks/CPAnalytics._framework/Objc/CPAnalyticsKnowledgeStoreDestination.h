@@ -8,7 +8,7 @@
 
 #import <CPAnalytics/CPAnalyticsDestination-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 @protocol _DKKnowledgeSaving;
 
 @interface CPAnalyticsKnowledgeStoreDestination : NSObject <CPAnalyticsDestination>
@@ -17,8 +17,12 @@
     id<_DKKnowledgeSaving> _knowledgeStore;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<_DKKnowledgeSaving> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (readonly, nonatomic) NSMutableArray *matchers; // @synthesize matchers=_matchers;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addCoreDuetDatasetSample:(id)arg1 toDataset:(id)arg2;

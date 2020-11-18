@@ -15,7 +15,7 @@
 }
 
 @property (nonatomic) unsigned long long connectionTypesMask;
-@property (nonatomic) id<GKPeerPickerControllerDelegate> delegate;
+@property (weak, nonatomic) id<GKPeerPickerControllerDelegate> delegate;
 @property (readonly, nonatomic) GKPeerPickerViewController *pickerViewController; // @dynamic pickerViewController;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
 

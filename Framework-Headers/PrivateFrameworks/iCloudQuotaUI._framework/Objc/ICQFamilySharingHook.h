@@ -8,7 +8,7 @@
 
 #import <iCloudQuotaUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, FACircleStateController, NSString;
+@class AAUIServerHookResponse, FACircleStateController, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate, ICQServerHookDelegate;
 
 @interface ICQFamilySharingHook : NSObject <AAUIServerHook>
@@ -24,6 +24,7 @@
 @property (strong) FACircleStateController *familyCircleStateController; // @synthesize familyCircleStateController=_familyCircleStateController;
 @property (weak) id<ICQServerHookDelegate> flowDelegate; // @synthesize flowDelegate=_flowDelegate;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property (readonly) Class superclass;
 

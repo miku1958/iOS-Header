@@ -6,13 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class RTPersistenceManager;
+
 @interface RTPersistenceExpirationEnforcer : NSObject
 {
+    RTPersistenceManager *_persistenceManager;
 }
 
+- (void).cxx_destruct;
 - (id)collectRecordIDsByTypeExpiredBeforeDate:(id)arg1 ownedByThisDevice:(BOOL)arg2 context:(id)arg3 error:(id *)arg4;
 - (id)entitiesWithDeviceAndExpirationProperty:(id)arg1 ownedByThisDevice:(BOOL)arg2;
 - (id)init;
+- (id)initWithPersistenceManager:(id)arg1;
+- (void)mergeEntriesFromDictionary:(id)arg1 intoDictionary:(id)arg2;
+- (void)mergeIdentifiersFromArray:(id)arg1 entityName:(id)arg2 intoDictionary:(id)arg3;
+- (id)objectIDsByTypeAffectedByDeletingObjectWithID:(id)arg1 context:(id)arg2 error:(id *)arg3;
+- (id)objectsWithLifetimeMatchingObjectWithID:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (BOOL)removeExpiredRecordsBeforeDate:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (BOOL)removeExpiredRecordsWithObjectIDs:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (BOOL)removeRecordsOwnedByOtherDevicesExpiredBeforeDate:(id)arg1 allowPropagation:(BOOL)arg2 context:(id)arg3 error:(id *)arg4;

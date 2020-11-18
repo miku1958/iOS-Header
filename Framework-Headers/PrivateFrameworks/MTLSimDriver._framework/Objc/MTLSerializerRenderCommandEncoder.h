@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface MTLSerializerRenderCommandEncoder : MTLSerializerCommandEncoder <MTLRenderCommandEncoderSPI>
 {
-    void *renderPassCommand;
     NSMutableArray *splitHandlers;
     MTLRenderPassDescriptor *renderPassDescriptor;
     BOOL hadSplit;
@@ -27,6 +26,9 @@ __attribute__((visibility("hidden")))
     id<MTLSerializerTexture> vertexTextures[128];
     id<MTLSerializerSamplerState> vertexSamplers[16];
     id<MTLSerializerBuffer> tessellationFactorBuffer;
+    void *renderPassCommand;
+    BOOL _resourcesDirty;
+    BOOL needsWrites;
     unsigned long long tileWidth;
     unsigned long long tileHeight;
 }
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) id<MTLDevice> device;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *label;
+@property BOOL needsWrites; // @synthesize needsWrites;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long tileHeight; // @synthesize tileHeight;
 @property (readonly) unsigned long long tileWidth; // @synthesize tileWidth;
@@ -60,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)fixStoreActions:(id)arg1;
+- (void)flushWrites;
 - (void)forceLoadActions;
 - (void)forceStoreActionsForPosition:(unsigned long long)arg1;
 - (unsigned long long)getType;
@@ -68,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isMemorylessRender;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

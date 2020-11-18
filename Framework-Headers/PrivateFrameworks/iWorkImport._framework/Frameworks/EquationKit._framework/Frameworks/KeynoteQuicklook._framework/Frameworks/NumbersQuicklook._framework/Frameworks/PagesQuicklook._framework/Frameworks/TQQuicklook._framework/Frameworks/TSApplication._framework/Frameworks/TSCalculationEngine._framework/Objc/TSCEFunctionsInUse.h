@@ -19,7 +19,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addFunctionUsesInFormula:(const struct TSCEFormula *)arg1 atCellRef:(const struct TSCECellRef *)arg2;
+- (void)addFunctionUsesInFormula:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2;
 - (void)addUseOfFunctions:(const unordered_set_9760b1c1 *)arg1 atCellRef:(const struct TSCECellRef *)arg2;
 - (void)dealloc;
 - (id)description;

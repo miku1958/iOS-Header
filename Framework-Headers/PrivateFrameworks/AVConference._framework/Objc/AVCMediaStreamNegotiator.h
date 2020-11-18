@@ -21,6 +21,7 @@
     long long _mediaStreamMode;
     VCMediaNegotiator *_mediaNegotiator;
     NSData *_remoteCallInfoBlob;
+    unsigned long long _videoHDRMode;
     NSData *_offer;
     NSData *_answer;
 }
@@ -40,13 +41,18 @@
 - (id)generateMediaStreamInitOptionsWithError:(id *)arg1;
 - (BOOL)initNegotiatorLocalConfiguration:(id *)arg1;
 - (id)initWithMode:(long long)arg1 error:(id *)arg2;
+- (id)initWithMode:(long long)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)initWithOffer:(id)arg1 error:(id *)arg2;
 - (id)initWithOffer:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (unsigned int)pickBestPixelFormatFromSet:(id)arg1;
+- (unsigned int)pickBestPixelFormatFromSet:(id)arg1 preferenceList:(unsigned int *)arg2 count:(int)arg3 acceptDefault:(BOOL)arg4;
 - (BOOL)processAnswerWithError:(id *)arg1 errorReason:(id *)arg2;
-- (BOOL)processInitOptions:(id)arg1 error:(id *)arg2 errorReason:(id *)arg3;
+- (BOOL)processAnswererInitOptions:(id)arg1 errorReason:(id *)arg2;
 - (BOOL)processOfferWithError:(id *)arg1 errorReason:(id *)arg2;
+- (BOOL)processOffererInitOptions:(id)arg1 errorReason:(id *)arg2;
 - (void)refreshLoggingParameters;
 - (BOOL)setAnswer:(id)arg1 withError:(id *)arg2;
+- (id)supportedPixelFormats;
 
 @end
 

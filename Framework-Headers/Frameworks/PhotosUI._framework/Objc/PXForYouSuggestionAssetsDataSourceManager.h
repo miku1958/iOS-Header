@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
-@class NSString, PXForYouSuggestionsAssetsDataSource, PXSuggestionsDataSource, PXSuggestionsDataSourceManager;
+@class NSDictionary, NSString, PXForYouSuggestionsAssetsDataSource, PXPhotosDataSource, PXSuggestionsDataSource, PXSuggestionsDataSourceManager;
 @protocol PXDisplaySuggestion;
 
 @interface PXForYouSuggestionAssetsDataSourceManager : PXAssetsDataSourceManager <PXSectionedDataSourceManagerObserver, PXPhotoLibraryUIChangeObserver>
@@ -24,6 +24,8 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<PXDisplaySuggestion> displayOriginalSuggestion; // @synthesize displayOriginalSuggestion=_displayOriginalSuggestion;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PXPhotosDataSource *photosDataSource;
+@property (readonly, nonatomic) NSDictionary *snapshotAssetToSuggestionMap;
 @property (strong, nonatomic) PXSuggestionsDataSource *suggestionsDataSource; // @synthesize suggestionsDataSource=_suggestionsDataSource;
 @property (readonly, nonatomic) PXSuggestionsDataSourceManager *suggestionsDataSourceManager; // @synthesize suggestionsDataSourceManager=_suggestionsDataSourceManager;
 @property (readonly) Class superclass;

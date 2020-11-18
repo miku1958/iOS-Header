@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEORouteAttributes, GEOTFTrafficSnapshot, GEOTrafficTrafficApiResponse, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEOETATrafficUpdateWaypointRoute, GEOLocation, GEOPDABClientDatasetMetadata, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOETATrafficUpdateRequest : PBRequest <NSCopying>
 {
@@ -29,10 +29,12 @@
     NSMutableArray *_serviceTags;
     double _sessionRelativeTimestamp;
     NSData *_sessionState;
-    GEOTrafficTrafficApiResponse *_trafficApiResponse;
+    NSMutableArray *_trafficApiResponses;
     NSMutableArray *_trafficSnapshotIds;
     GEOTFTrafficSnapshot *_trafficSnapshot;
     NSData *_tripID;
+    GEOLocation *_tripOrigin;
+    GEOETATrafficUpdateWaypointRoute *_waypointRoute;
     NSString *_xpcUuid;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -68,39 +70,14 @@
         unsigned int read_routes:1;
         unsigned int read_serviceTags:1;
         unsigned int read_sessionState:1;
-        unsigned int read_trafficApiResponse:1;
+        unsigned int read_trafficApiResponses:1;
         unsigned int read_trafficSnapshotIds:1;
         unsigned int read_trafficSnapshot:1;
         unsigned int read_tripID:1;
+        unsigned int read_tripOrigin:1;
+        unsigned int read_waypointRoute:1;
         unsigned int read_xpcUuid:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientTimepoint:1;
-        unsigned int wrote_sessionID:1;
-        unsigned int wrote_abClientMetadata:1;
-        unsigned int wrote_additionalEnabledMarkets:1;
-        unsigned int wrote_clientCapabilities:1;
-        unsigned int wrote_commonOptions:1;
-        unsigned int wrote_currentUserLocation:1;
-        unsigned int wrote_destinationWaypointTypeds:1;
-        unsigned int wrote_directionsResponseID:1;
-        unsigned int wrote_requestingAppId:1;
-        unsigned int wrote_routeAttributes:1;
-        unsigned int wrote_routes:1;
-        unsigned int wrote_serviceTags:1;
-        unsigned int wrote_sessionRelativeTimestamp:1;
-        unsigned int wrote_sessionState:1;
-        unsigned int wrote_trafficApiResponse:1;
-        unsigned int wrote_trafficSnapshotIds:1;
-        unsigned int wrote_trafficSnapshot:1;
-        unsigned int wrote_tripID:1;
-        unsigned int wrote_xpcUuid:1;
-        unsigned int wrote_maxAlternateRouteCount:1;
-        unsigned int wrote_previouslyRejectedRerouteSavings:1;
-        unsigned int wrote_rerouteStatus:1;
-        unsigned int wrote_includeBetterRouteSuggestion:1;
-        unsigned int wrote_needServerLatency:1;
-        unsigned int wrote_useClientTimepointAsNow:1;
-        unsigned int wrote_useLiveTrafficAsFallback:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -129,11 +106,12 @@
 @property (nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasSessionRelativeTimestamp;
 @property (readonly, nonatomic) BOOL hasSessionState;
-@property (readonly, nonatomic) BOOL hasTrafficApiResponse;
 @property (readonly, nonatomic) BOOL hasTrafficSnapshot;
 @property (readonly, nonatomic) BOOL hasTripID;
+@property (readonly, nonatomic) BOOL hasTripOrigin;
 @property (nonatomic) BOOL hasUseClientTimepointAsNow;
 @property (nonatomic) BOOL hasUseLiveTrafficAsFallback;
+@property (readonly, nonatomic) BOOL hasWaypointRoute;
 @property (readonly, nonatomic) BOOL hasXpcUuid;
 @property (nonatomic) BOOL includeBetterRouteSuggestion;
 @property (nonatomic) unsigned int maxAlternateRouteCount;
@@ -147,51 +125,35 @@
 @property (nonatomic) struct GEOSessionID sessionID;
 @property (nonatomic) double sessionRelativeTimestamp;
 @property (strong, nonatomic) NSData *sessionState;
-@property (strong, nonatomic) GEOTrafficTrafficApiResponse *trafficApiResponse;
+@property (strong, nonatomic) NSMutableArray *trafficApiResponses;
 @property (strong, nonatomic) GEOTFTrafficSnapshot *trafficSnapshot;
 @property (strong, nonatomic) NSMutableArray *trafficSnapshotIds;
 @property (strong, nonatomic) NSData *tripID;
+@property (strong, nonatomic) GEOLocation *tripOrigin;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) BOOL useClientTimepointAsNow;
 @property (nonatomic) BOOL useLiveTrafficAsFallback;
+@property (strong, nonatomic) GEOETATrafficUpdateWaypointRoute *waypointRoute;
 @property (strong, nonatomic) NSString *xpcUuid;
 
 + (Class)destinationWaypointTypedType;
 + (BOOL)isValid:(id)arg1;
 + (Class)routeType;
 + (Class)serviceTagType;
++ (Class)trafficApiResponsesType;
 + (Class)trafficSnapshotIdsType;
 - (void).cxx_destruct;
 - (int)StringAsRerouteStatus:(id)arg1;
-- (void)_addNoFlagsDestinationWaypointTyped:(id)arg1;
-- (void)_addNoFlagsRoute:(id)arg1;
-- (void)_addNoFlagsServiceTag:(id)arg1;
-- (void)_addNoFlagsTrafficSnapshotIds:(id)arg1;
-- (void)_readAbClientMetadata;
-- (void)_readAdditionalEnabledMarkets;
-- (void)_readClientCapabilities;
-- (void)_readCommonOptions;
-- (void)_readCurrentUserLocation;
-- (void)_readDestinationWaypointTypeds;
-- (void)_readDirectionsResponseID;
-- (void)_readRequestingAppId;
-- (void)_readRouteAttributes;
-- (void)_readRoutes;
-- (void)_readServiceTags;
-- (void)_readSessionState;
-- (void)_readTrafficApiResponse;
-- (void)_readTrafficSnapshot;
-- (void)_readTrafficSnapshotIds;
-- (void)_readTripID;
-- (void)_readXpcUuid;
 - (void)addDestinationWaypointTyped:(id)arg1;
 - (void)addRoute:(id)arg1;
 - (void)addServiceTag:(id)arg1;
+- (void)addTrafficApiResponses:(id)arg1;
 - (void)addTrafficSnapshotIds:(id)arg1;
 - (void)clearDestinationWaypointTypeds;
 - (void)clearRoutes;
 - (void)clearSensitiveFields;
 - (void)clearServiceTags;
+- (void)clearTrafficApiResponses;
 - (void)clearTrafficSnapshotIds;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -203,7 +165,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
@@ -214,6 +179,8 @@
 - (unsigned long long)routesCount;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceTagsCount;
+- (id)trafficApiResponsesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)trafficApiResponsesCount;
 - (id)trafficSnapshotIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)trafficSnapshotIdsCount;
 - (void)writeTo:(id)arg1;

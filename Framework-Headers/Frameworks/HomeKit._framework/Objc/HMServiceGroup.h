@@ -27,7 +27,7 @@
     HMMutableArray *_currentServices;
 }
 
-@property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (strong, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) HMMutableArray *currentServices; // @synthesize currentServices=_currentServices;
@@ -52,12 +52,12 @@
 - (void)_handleServiceAddedNotification:(id)arg1;
 - (void)_handleServiceGroupRenamedNotification:(id)arg1;
 - (void)_handleServiceRemovedNotification:(id)arg1;
-- (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_removeService:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeServices:(id)arg1;
 - (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addService:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
@@ -67,7 +67,6 @@
 - (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (id)logIdentifier;
 - (void)removeService:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setApplicationData:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

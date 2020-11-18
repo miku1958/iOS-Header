@@ -9,6 +9,7 @@
 @class NSString;
 @protocol CNFRegAccountAuthorizationDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegAccountAuthorizationController : CNFRegAccountWebViewController
 {
     NSString *_authID;

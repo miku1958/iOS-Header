@@ -16,6 +16,7 @@
 - (id)_accessibilityLabelAttribute;
 - (void)_accessibilitySetLabelAttribute:(id)arg1;
 - (id)accessibilityLabel;
+- (BOOL)isAccessibilityElement;
 
 @end
 

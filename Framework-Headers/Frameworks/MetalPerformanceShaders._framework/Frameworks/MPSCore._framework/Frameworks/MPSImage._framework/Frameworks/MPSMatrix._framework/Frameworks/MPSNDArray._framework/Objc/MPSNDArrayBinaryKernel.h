@@ -10,17 +10,18 @@
 {
 }
 
-@property (nonatomic) CDStruct_27bd5d57 primaryDilationRates;
-@property (nonatomic) unsigned long long primaryEdgeMode;
-@property (nonatomic) CDStruct_27bd5d57 primaryKernelSizes;
-@property (nonatomic) CDStruct_df9f7954 primaryOffsets;
-@property (nonatomic) CDStruct_df9f7954 primaryStrides;
-@property (nonatomic) CDStruct_27bd5d57 secondaryDilationRates;
-@property (nonatomic) unsigned long long secondaryEdgeMode;
-@property (nonatomic) CDStruct_27bd5d57 secondaryKernelSizes;
-@property (nonatomic) CDStruct_df9f7954 secondaryOffsets;
-@property (nonatomic) CDStruct_df9f7954 secondaryStrides;
+@property (readonly, nonatomic) CDStruct_129fbded primaryDilationRates;
+@property (readonly, nonatomic) unsigned long long primaryEdgeMode;
+@property (readonly, nonatomic) CDStruct_129fbded primaryKernelSizes;
+@property (readonly, nonatomic) CDStruct_f52b1b8f primaryOffsets;
+@property (readonly, nonatomic) CDStruct_f52b1b8f primaryStrides;
+@property (readonly, nonatomic) CDStruct_129fbded secondaryDilationRates;
+@property (readonly, nonatomic) unsigned long long secondaryEdgeMode;
+@property (readonly, nonatomic) CDStruct_129fbded secondaryKernelSizes;
+@property (readonly, nonatomic) CDStruct_f52b1b8f secondaryOffsets;
+@property (readonly, nonatomic) CDStruct_f52b1b8f secondaryStrides;
 
++ (unsigned long long)expectedVirtualSourceCount;
 - (id)encodeToCommandBuffer:(id)arg1 primarySourceArray:(id)arg2 secondarySourceArray:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 primarySourceArray:(id)arg2 secondarySourceArray:(id)arg3 destinationArray:(id)arg4;
 - (void)encodeToCommandBuffer:(id)arg1 primarySourceArray:(id)arg2 secondarySourceArray:(id)arg3 resultState:(id)arg4 destinationArray:(id)arg5;

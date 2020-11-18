@@ -13,6 +13,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
+- (BOOL)_accessibilityIsNotFirstElement;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;

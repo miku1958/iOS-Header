@@ -37,6 +37,7 @@
     NSMutableSet *_filteringOids;
     NSMutableSet *_filteringObjectKeyPaths;
     NSMutableDictionary *_filteringRelationshipsIndexValueByBaseEntityName;
+    CDUnknownBlockType _identificationBlock;
     BOOL __includesCameraRoll;
     PHFetchOptions *_fetchOptions;
     NSArray *_propertiesToGroupBy;
@@ -51,6 +52,7 @@
 @property (readonly) id combinedQueryGroupKey;
 @property (readonly) NSString *combinedQueryKeyPath;
 @property (readonly) NSManagedObjectID *combinedQuerySeparatingIdentifier;
+@property (readonly, nonatomic) NSRelationshipDescription *containerRelationship;
 @property (copy, nonatomic) PHFetchOptions *fetchOptions; // @synthesize fetchOptions=_fetchOptions;
 @property (readonly) NSFetchRequest *fetchRequest;
 @property (readonly) NSString *fetchType; // @synthesize fetchType=_fetchType;
@@ -69,6 +71,7 @@
 + (id)_fetchTypeForLocalIdentifiers:(id)arg1;
 + (id)_filterPredicateFromFetchOptionsPredicate:(id)arg1 options:(id)arg2 phClass:(Class)arg3;
 + (BOOL)_isKindOfMomentOrAlbumEntity:(id)arg1;
++ (id)_queryForAssetsWithIdentifiers:(id)arg1 local:(BOOL)arg2 options:(id)arg3;
 + (id)_queryForPersonsInAssetsWithObjectIDs:(id)arg1 withOptions:(id)arg2;
 + (id)_queryForPersonsWithFaceRelationshipPredicate:(id)arg1 options:(id)arg2;
 + (id)_queryForRootCollectionListWithRootFolder:(id)arg1 options:(id)arg2;
@@ -78,7 +81,11 @@
 + (id)combinedFetchRequestForQueries:(id)arg1;
 + (id)defaultSortDescriptorForFetchType:(id)arg1 predicate:(id)arg2;
 + (id)fetchRootFolderIDForAlbumKind:(int)arg1 photoLibrary:(id)arg2;
++ (CDUnknownBlockType)identificationBlockForAlbumSortKey:(unsigned int)arg1;
++ (CDUnknownBlockType)identificationBlockForSmartAlbumKind:(int)arg1;
 + (id)queryForAllAssetsInYearRepresentedByYearHighlight:(id)arg1 options:(id)arg2;
++ (id)queryForAnsweredQuestionsWithOptions:(id)arg1;
++ (id)queryForAnsweredYesOrNoQuestionsWithOptions:(id)arg1;
 + (id)queryForAssetCollectionsContainingAsset:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)queryForAssetCollectionsContainingAssets:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)queryForAssetCollectionsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
@@ -92,6 +99,7 @@
 + (id)queryForAssetsForFaces:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsForKeywords:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsForPersons:(id)arg1 options:(id)arg2;
++ (id)queryForAssetsFromCameraSinceDate:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsInBoundingBoxWithTopLeftLocation:(id)arg1 bottomRightLocation:(id)arg2 options:(id)arg3;
 + (id)queryForAssetsInImportSessions:(id)arg1 options:(id)arg2;
@@ -102,6 +110,7 @@
 + (id)queryForAssetsWithMediaType:(long long)arg1 options:(id)arg2;
 + (id)queryForAssetsWithObjectIDs:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsWithOptions:(id)arg1;
++ (id)queryForAssetsWithUUIDs:(id)arg1 options:(id)arg2;
 + (id)queryForAssociatedPersonForFaceGroup:(id)arg1 withOptions:(id)arg2;
 + (id)queryForChildrenDayGroupHighlightsForPhotosHighlight:(id)arg1 options:(id)arg2;
 + (id)queryForChildrenHighlightsForPhotosHighlight:(id)arg1 options:(id)arg2;
@@ -110,6 +119,7 @@
 + (id)queryForCollectionListsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
 + (id)queryForCollectionListsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)queryForCollectionsInCollectionList:(id)arg1 options:(id)arg2;
++ (id)queryForContributorForAsset:(id)arg1 options:(id)arg2;
 + (id)queryForCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
 + (id)queryForCuratedAssetsInPhotosHighlight:(id)arg1 options:(id)arg2;
 + (id)queryForCustomKeyAssetsInAssetCollection:(id)arg1 options:(id)arg2;
@@ -149,11 +159,10 @@
 + (id)queryForMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)queryForMomentListsWithSubType:(long long)arg1 containingMoment:(id)arg2;
 + (id)queryForMomentListsWithSubType:(long long)arg1 options:(id)arg2;
-+ (id)queryForMomentShareParticipantsInMomentShare:(id)arg1 options:(id)arg2;
-+ (id)queryForMomentShareParticipantsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsBackingMemory:(id)arg1;
 + (id)queryForMomentsBackingSuggestion:(id)arg1;
 + (id)queryForMomentsContainingAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)queryForMomentsContainingAssetsWithOIDs:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsForPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsInMomentList:(id)arg1 options:(id)arg2;
@@ -175,7 +184,9 @@
 + (id)queryForPhotosHighlightsContainingMomentsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForProjectsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForQuarantinedAssetsWithOptions:(id)arg1;
++ (id)queryForQuestionsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForQuestionsWithOptions:(id)arg1;
++ (id)queryForQuestionsWithState:(unsigned short)arg1 options:(id)arg2;
 + (id)queryForReferencedAssetsWithOptions:(id)arg1;
 + (id)queryForRejectedFacesOnPerson:(id)arg1 options:(id)arg2;
 + (id)queryForRejectedPersonsForFace:(id)arg1 options:(id)arg2;
@@ -183,6 +194,8 @@
 + (id)queryForRepresentativeAssetsInSuggestion:(id)arg1 options:(id)arg2;
 + (id)queryForRootAlbumCollectionListWithOptions:(id)arg1;
 + (id)queryForRootProjectCollectionListWithOptions:(id)arg1;
++ (id)queryForShareParticipantsInShare:(id)arg1 options:(id)arg2;
++ (id)queryForShareParticipantsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForSingletonFacesWithOptions:(id)arg1;
 + (id)queryForSuggestionsWithOptions:(id)arg1;
 + (id)queryForSuggestionsWithState:(unsigned short)arg1 options:(id)arg2;
@@ -193,7 +206,6 @@
 + (id)queryForType:(id)arg1 withIdentifiers:(id)arg2 identiferKeyPath:(id)arg3 options:(id)arg4;
 + (id)queryForType:(id)arg1 withIdentifiers:(id)arg2 local:(BOOL)arg3 options:(id)arg4;
 - (void).cxx_destruct;
-- (id)_containerRelationship;
 - (id)_createFetchRequestIncludingBasePredicate:(BOOL)arg1;
 - (id)_effectiveDefaultSortDescriptor;
 - (id)_effectiveSortDescriptors;
@@ -207,6 +219,8 @@
 - (void)_setBasePredicate:(id)arg1;
 - (void)_setCollectionFetchType:(long long)arg1;
 - (void)_setContainerCollection:(id)arg1;
+- (void)_setIdentificationBlock:(CDUnknownBlockType)arg1;
+- (id)_substitutedChangeTrackingKeyPathFromKeyPath:(id)arg1;
 - (long long)collectionFetchType;
 - (id)containerIdentifier;
 - (unsigned long long)containerSortingAttributesIndexValue;

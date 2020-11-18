@@ -22,6 +22,7 @@
     NSObject<OS_dispatch_queue> *_inputQueue;
     PKStroke *_currentStroke;
     long long _currentInputType;
+    unsigned long long _currentActiveInputProperties;
     long long _immutableCount;
     long long _missedUpdates;
     vector_58517711 _updatedDrawPoints;
@@ -56,6 +57,7 @@
     struct CGAffineTransform _rulerTransform;
 }
 
+@property (readonly, nonatomic) unsigned long long activeInputProperties;
 @property (nonatomic) struct PKAzimuthFilter *azimuthFilter; // @synthesize azimuthFilter=_azimuthFilter;
 @property (nonatomic) BOOL canSnapToRuler; // @synthesize canSnapToRuler=_canSnapToRuler;
 @property (nonatomic) struct PKCompressionFilter *compressionFilter; // @synthesize compressionFilter=_compressionFilter;
@@ -87,44 +89,48 @@
 @property (nonatomic) struct PKVelocityCalculationFilter *velocityFilter; // @synthesize velocityFilter=_velocityFilter;
 
 + (void)initialize;
-+ (vector_58517711)inputPointsFromPath:(struct CGPath *)arg1 velocityForDistanceFunction:(CDUnknownBlockType)arg2;
-+ (vector_58517711)inputPointsFromPoints:(vector_e1abc270)arg1 velocityForDistanceFunction:(CDUnknownBlockType)arg2;
++ (vector_58517711)inputPointsFromPath:(struct CGPath *)arg1 maxSegmentLength:(double)arg2 velocityForDistanceFunction:(CDUnknownBlockType)arg3;
++ (vector_58517711)inputPointsFromPoints:(const vector_2e7754b6 *)arg1 velocityForDistanceFunction:(CDUnknownBlockType)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_drawingAddPoint:(CDStruct_f17e9403)arg1;
-- (id)_newStrokeWithCurrentData;
-- (void)addPoint:(CDStruct_f17e9403)arg1;
+- (void)_drawingAddPoint:(CDStruct_6422aa5d)arg1;
+- (id)_newStrokeWithCurrentDataAndStrokeDataUUID:(id)arg1;
+- (void)addPoint:(CDStruct_6422aa5d)arg1;
 - (void)addPoints:(vector_58517711)arg1;
 - (void)allowSnappingToRuler:(struct CGAffineTransform)arg1 width:(double)arg2;
 - (void)closeStroke;
 - (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_58517711 *)arg2;
 - (void)dealloc;
 - (double)distanceToRulerCenter:(struct CGPoint)arg1;
-- (void)drawingBeganWithStroke:(id)arg1 inputType:(long long)arg2 inputScale:(double)arg3 start:(CDUnknownBlockType)arg4;
+- (void)drawingBeganWithStroke:(id)arg1 inputType:(long long)arg2 activeInputProperties:(unsigned long long)arg3 inputScale:(double)arg4 start:(CDUnknownBlockType)arg5;
 - (void)drawingCancelledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingEndedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingUpdateAllPoints;
 - (void)drawingUpdateAllPointsDidTimeoutWithStrokeUUID:(id)arg1;
-- (void)drawingUpdatePoint:(CDStruct_f17e9403)arg1;
+- (void)drawingUpdatePoint:(CDStruct_6422aa5d)arg1;
 - (long long)fetchFilteredPointsFromIndex:(long long)arg1 accessBlock:(CDUnknownBlockType)arg2;
 - (vector_58517711 *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (struct CGPoint)getRulerSnapLineOriginAndTangent:(struct CGPoint *)arg1 andNormal:(struct CGPoint *)arg2;
 - (vector_03cfcf00 *)getUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (id)init;
 - (double)latestNonPredictedTimestamp;
+- (double)latestTimestamp;
 - (void)maskToRuler;
 - (id)newStrokeWithCurrentData;
-- (struct _PKStrokePoint)outputCurrentStrokePoint:(CDStruct_f17e9403)arg1;
+- (id)newStrokeWithCurrentDataCopy;
+- (struct _PKStrokePoint)outputCurrentStrokePoint:(CDStruct_6422aa5d)arg1;
 - (PKInputProvider_28cf270a *)outputFilter;
-- (struct _PKStrokePoint)outputPoint:(CDStruct_f17e9403)arg1 baseValues:(struct _PKStrokePoint)arg2;
+- (struct _PKStrokePoint)outputPoint:(CDStruct_6422aa5d)arg1 baseValues:(struct _PKStrokePoint)arg2;
 - (void)removePredictedTouches;
 - (void)reset;
 - (BOOL)shouldSnapPointToRuler:(struct CGPoint)arg1;
 - (struct CGPoint)snapPointToRuler:(struct CGPoint)arg1;
 - (void)snapToRuler;
 - (id)strokeFromInputPoints:(vector_58517711 *)arg1 inputType:(long long)arg2 ink:(id)arg3 inputScale:(double)arg4;
-- (id)strokeFromPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3 velocityForDistanceFunction:(CDUnknownBlockType)arg4;
+- (id)strokeFromLineSegments:(const vector_2e7754b6 *)arg1 maxSegmentLength:(double)arg2 ink:(id)arg3 inputScale:(double)arg4;
+- (id)strokeFromPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3 maxSegmentLength:(double)arg4 velocityForDistanceFunction:(CDUnknownBlockType)arg5;
 - (id)strokeFromPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2 ink:(id)arg3 inputScale:(double)arg4;
+- (id)strokeFromPoints:(const vector_2e7754b6 *)arg1 sourceStroke:(id)arg2 inputScale:(double)arg3 averageInputPoint:(CDStruct_6422aa5d)arg4;
 - (void)updateImmutableCount;
 - (void)updateRulerSnapping;
 

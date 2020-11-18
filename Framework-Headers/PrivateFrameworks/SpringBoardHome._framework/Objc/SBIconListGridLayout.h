@@ -9,7 +9,7 @@
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/SBIconListLayout-Protocol.h>
 
-@class NSMutableDictionary, NSString, SBHClockIconVisualConfiguration, SBHFloatyFolderVisualConfiguration, SBHFolderIconVisualConfiguration, SBHIconAccessoryVisualConfiguration, SBHSidebarVisualConfiguration, SBIconListGridLayoutConfiguration, UIFont;
+@class NSMutableDictionary, NSString, SBHAppLibraryVisualConfiguration, SBHFloatyFolderVisualConfiguration, SBHFolderIconVisualConfiguration, SBHIconAccessoryVisualConfiguration, SBHRootFolderVisualConfiguration, SBHSidebarVisualConfiguration, SBIconListGridLayoutConfiguration, UIFont;
 
 @interface SBIconListGridLayout : NSObject <SBIconListLayout, BSDescriptionProviding>
 {
@@ -19,18 +19,20 @@
     SBIconListGridLayoutConfiguration *_layoutConfiguration;
 }
 
-@property (readonly, copy, nonatomic) SBHClockIconVisualConfiguration *clockIconVisualConfiguration;
+@property (readonly, copy, nonatomic) SBHAppLibraryVisualConfiguration *appLibraryVisualConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) SBHFloatyFolderVisualConfiguration *floatyFolderVisualConfiguration;
 @property (readonly, copy, nonatomic) SBHFolderIconVisualConfiguration *folderIconVisualConfiguration;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) SBHIconAccessoryVisualConfiguration *iconAccessoryVisualConfiguration;
+@property (readonly, nonatomic) struct SBHIconGridSizeClassSizes iconGridSizeClassSizes;
 @property (readonly, nonatomic) struct SBIconImageInfo iconImageInfo;
 @property (readonly, copy, nonatomic) SBIconListGridLayoutConfiguration *layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
-@property (readonly, nonatomic) unsigned long long maximumIconCount;
+@property (readonly, copy, nonatomic) SBHRootFolderVisualConfiguration *rootFolderVisualConfiguration;
 @property (readonly, copy, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long supportedIconGridSizeClasses;
 @property (readonly, nonatomic) BOOL usesAlternateLayout;
 
 - (void).cxx_destruct;
@@ -39,9 +41,10 @@
 - (id)accessoryFontForContentSizeCategory:(id)arg1 options:(unsigned long long)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (struct SBIconCoordinate)iconCoordinateForIndex:(unsigned long long)arg1 forOrientation:(long long)arg2 inList:(id)arg3;
+- (struct SBIconImageInfo)iconImageInfoForGridSizeClass:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithLayoutConfiguration:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)labelFontForContentSizeCategory:(id)arg1 options:(unsigned long long)arg2;
 - (id)labelVisualConfigurationForContentSizeCategory:(id)arg1 options:(unsigned long long)arg2;
 - (struct UIEdgeInsets)layoutInsetsForOrientation:(long long)arg1;

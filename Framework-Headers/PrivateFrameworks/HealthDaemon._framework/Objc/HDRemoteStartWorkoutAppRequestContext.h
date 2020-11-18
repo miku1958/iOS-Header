@@ -8,6 +8,7 @@
 
 @class HDCodableStartWorkoutAppRequest;
 
+__attribute__((visibility("hidden")))
 @interface HDRemoteStartWorkoutAppRequestContext : NSObject
 {
     HDCodableStartWorkoutAppRequest *_request;

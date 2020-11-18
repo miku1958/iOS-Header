@@ -6,7 +6,7 @@
 
 #import <CarPlay/NSObject-Protocol.h>
 
-@class NSArray, UIScreen, UITraitCollection, UIWindow;
+@class NSArray, UIScreen, UIStatusBarManager, UITraitCollection, UIWindow;
 @protocol UICoordinateSpace;
 
 @protocol _UISceneUIWindowHosting <NSObject>
@@ -14,12 +14,14 @@
 @property (readonly, nonatomic) id<UICoordinateSpace> _coordinateSpace;
 @property (readonly, nonatomic) long long _interfaceOrientation;
 @property (readonly, nonatomic) UIScreen *_screen;
+@property (readonly, nonatomic) UIStatusBarManager *_statusBarManager;
 @property (readonly, nonatomic) UITraitCollection *_traitCollection;
 
 + (BOOL)_hostsWindows;
 - (NSArray *)_allWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2;
 - (void)_attachWindow:(UIWindow *)arg1;
 - (void)_detachWindow:(UIWindow *)arg1;
+- (void)_screenDidChangeFromScreen:(UIScreen *)arg1 toScreen:(UIScreen *)arg2;
 - (void)_updateVisibleWindowOrderWithTest:(BOOL (^)(UIWindow *))arg1;
 - (void)_windowUpdatedProperties:(UIWindow *)arg1;
 - (void)_windowUpdatedVisibility:(UIWindow *)arg1;

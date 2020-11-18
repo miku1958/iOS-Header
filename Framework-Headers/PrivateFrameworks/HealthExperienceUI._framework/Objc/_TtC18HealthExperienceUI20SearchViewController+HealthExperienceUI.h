@@ -9,6 +9,7 @@
 #import <HealthExperienceUI/UISearchResultsUpdating-Protocol.h>
 
 @interface _TtC18HealthExperienceUI20SearchViewController (HealthExperienceUI) <UISearchResultsUpdating>
+- (void)restoreUserActivityState:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 @end
 

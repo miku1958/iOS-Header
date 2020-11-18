@@ -7,17 +7,22 @@
 #import <RunningBoard/NSObject-Protocol.h>
 #import <RunningBoard/RBDomainAttributeManaging-Protocol.h>
 
-@class NSSet, RBAssertion, RBAssertionAcquisitionContext, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations;
+@class NSSet, RBAssertion, RBAssertionAcquisitionContext, RBAssertionBatchContext, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSystemState;
 
 @protocol RBAssertionManaging <NSObject, RBDomainAttributeManaging>
+
+@property (readonly, copy, nonatomic) RBSystemState *systemState;
+
 - (void)acquireAssertionWithContext:(RBAssertionAcquisitionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (NSSet *)assertionDescriptorsWithFlattenedAttributes:(BOOL)arg1;
 - (NSSet *)assertionsForOriginator:(RBSProcessIdentifier *)arg1;
+- (void)commitBatchWithContext:(RBAssertionBatchContext *)arg1 completion:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg2;
 - (BOOL)hasAssertionWithIdentifier:(RBSAssertionIdentifier *)arg1;
 - (BOOL)invalidateAssertion:(RBAssertion *)arg1;
 - (BOOL)invalidateAssertionFromOriginator:(RBSProcessIdentifier *)arg1 withIdentifier:(RBSAssertionIdentifier *)arg2;
 - (BOOL)invalidateAssertionWithIdentifier:(RBSAssertionIdentifier *)arg1;
 - (BOOL)invalidateAssertionsDueToCPUUsageViolationForProcessIdentifier:(RBSProcessIdentifier *)arg1;
+- (BOOL)isProcessForeground:(RBProcess *)arg1;
 - (RBSProcessLimitations *)limitationsForInstance:(RBSProcessInstance *)arg1;
 - (void)processDidLaunch:(RBProcess *)arg1;
 - (void)processDidTerminate:(RBProcess *)arg1;

@@ -21,7 +21,9 @@
 - (void).cxx_destruct;
 - (id)decoratorIdentifier;
 - (void)drawInContext:(id)arg1 imageRect:(struct CGRect)arg2;
+- (unsigned long long)hash;
 - (id)initWithOutlineColor:(id)arg1 outlineWidths:(struct UIEdgeInsets)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

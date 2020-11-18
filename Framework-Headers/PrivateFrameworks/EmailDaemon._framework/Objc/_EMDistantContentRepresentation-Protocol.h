@@ -11,6 +11,7 @@
 
 @protocol _EMDistantContentRepresentation <NSObject>
 - (void)invalidate;
+- (NSProgress *)performUnsubscribeAction:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (NSProgress *)requestRepresentationForItemWithObjectID:(EMObjectID *)arg1 options:(EMContentRequestOptions *)arg2 delegate:(id<EMContentItemRequestDelegate>)arg3 completionHandler:(void (^)(id<_EMDistantContentRepresentation>, EMContentRepresentation *, NSError *))arg4;
 - (NSProgress *)requestUpdatedRepresentationWithCompletion:(void (^)(EMContentRepresentation *, NSError *))arg1;
 @end

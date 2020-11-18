@@ -8,24 +8,24 @@
 
 #import <ClassroomKit/CRKClassKitFacade-Protocol.h>
 
-@class CRKClassKitAccountEligibilityProvider, NSString;
+@class CRKClassKitAccountStateProvider, NSString;
 
 @interface CRKConcreteClassKitFacade : NSObject <CRKClassKitFacade>
 {
-    CRKClassKitAccountEligibilityProvider *_accountEligibilityProvider;
+    CRKClassKitAccountStateProvider *_accountStateProvider;
 }
 
-@property (readonly, nonatomic) CRKClassKitAccountEligibilityProvider *accountEligibilityProvider; // @synthesize accountEligibilityProvider=_accountEligibilityProvider;
+@property (readonly, nonatomic) long long accountState;
+@property (readonly, nonatomic) CRKClassKitAccountStateProvider *accountStateProvider; // @synthesize accountStateProvider=_accountStateProvider;
 @property (readonly, copy, nonatomic) NSString *currentUserDidChangeNotificationName;
 @property (readonly, copy, nonatomic) NSString *currentUserInfoKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEligibleAccountSignedIn) BOOL eligibleAccountSignedIn;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *studentClassMembershipChangeDarwinNotificationName;
 @property (readonly) Class superclass;
 
-+ (id)keyPathsForValuesAffectingEligibleAccountSignedIn;
++ (id)keyPathsForValuesAffectingAccountState;
 + (id)makePersonSortDescriptorsSortingGivenNameFirst:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)addInstructor:(id)arg1 toClass:(id)arg2;
@@ -46,14 +46,16 @@
 - (void)locationsWithManagePermissionsForUserWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)locationsWithObjectIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)makeClassWithLocationID:(id)arg1 name:(id)arg2;
-- (id)makeInstructorQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id)makeInstructorQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
 - (id)makePredicateForObjectIDs:(id)arg1;
 - (id)makePredicatesForObjectIDs:(id)arg1;
-- (id)makeQueryForPersonsWithRole:(long long)arg1 searchString:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
-- (id)makeStudentQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id)makeQueryForPersonsWithIdentifiers:(id)arg1;
+- (id)makeQueryForPersonsWithRole:(long long)arg1 locationIDs:(id)arg2 searchString:(id)arg3 sortingGivenNameFirst:(BOOL)arg4 pageSize:(long long)arg5;
+- (id)makeStudentQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
 - (id)objectIDsOfInstructorsInClass:(id)arg1;
 - (id)objectIDsOfMembersInClass:(id)arg1 withRole:(unsigned long long)arg2;
 - (id)objectIDsOfStudentsInClass:(id)arg1;
+- (BOOL)ownsError:(id)arg1;
 - (void)registerDataObserver:(id)arg1;
 - (void)removeClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeInstructor:(id)arg1 fromClass:(id)arg2;

@@ -8,14 +8,15 @@
 
 @class NSArray, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDLocationInsertionJournalEntry : HDJournalEntry
 {
     NSUUID *_seriesIdentifier;
     NSArray *_data;
 }
 
-@property (readonly, nonatomic) NSArray *data; // @synthesize data=_data;
-@property (readonly, nonatomic) NSUUID *seriesIdentifier; // @synthesize seriesIdentifier=_seriesIdentifier;
+@property (readonly, copy, nonatomic) NSArray *data; // @synthesize data=_data;
+@property (readonly, copy, nonatomic) NSUUID *seriesIdentifier; // @synthesize seriesIdentifier=_seriesIdentifier;
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;

@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 
 + (id)hf_formattedPersonNameForFirstName:(id)arg1 lastName:(id)arg2;
++ (id)hf_stringWithFormat:(id)arg1 arguments:(id)arg2;
 - (id)dynamicStringForSize:(struct CGSize)arg1 attributes:(id)arg2;
 - (id)hf_SHA1;
 - (id)hf_SHA256;
@@ -31,6 +32,7 @@
 - (id)hf_stringByCapitalizingFirstWord;
 - (id)hf_stringByLowercasingFirstWord;
 - (id)hf_stringByTransformingFirstWordUsingBlock:(CDUnknownBlockType)arg1;
+- (id)hf_stringByTrimmingTrailingHexCode;
 - (id)hf_toHexString:(char *)arg1 length:(unsigned int)arg2;
 - (BOOL)prefersDynamicString;
 - (id)stringWithAttributes:(id)arg1;

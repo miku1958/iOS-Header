@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableSet;
+
 @interface AVTCompositor : NSObject
 {
+    NSMutableSet *_textureProviders;
 }
 
 + (id)propertyNames;
-- (id)_init;
-- (void)componentDidChangeForType:(long long)arg1;
+- (void).cxx_destruct;
+- (void)addClient:(id)arg1;
+- (void)componentDidChangeForTypes:(unsigned long long)arg1;
+- (void)configureMaterial:(id)arg1 propertyNamed:(id)arg2 memoji:(id)arg3;
 - (id)init;
+- (void)removeClient:(id)arg1;
 - (void)skinColorDidChange;
-- (void)updateMaterial:(id)arg1 propertyNamed:(id)arg2 memoji:(id)arg3;
 
 @end
 

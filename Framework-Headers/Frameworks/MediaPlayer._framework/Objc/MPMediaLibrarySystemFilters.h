@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryView;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaLibrarySystemFilters : NSObject
 {
     MPMediaLibraryView *_libraryView;

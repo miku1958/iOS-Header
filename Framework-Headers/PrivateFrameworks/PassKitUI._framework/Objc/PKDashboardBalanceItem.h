@@ -31,6 +31,7 @@
 @property (nonatomic) BOOL topUpEnabled; // @synthesize topUpEnabled=_topUpEnabled;
 @property (strong, nonatomic) NSString *topUpTitle; // @synthesize topUpTitle=_topUpTitle;
 
++ (id)identifier;
 - (void).cxx_destruct;
 
 @end

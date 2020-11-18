@@ -42,6 +42,7 @@
 @property (strong, nonatomic) SFRichText *richSubtitle;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *subtitle;
+@property (nonatomic) BOOL subtitleIsEmphasized;
 @property (nonatomic) BOOL thumbnailCropCircle;
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic) int titleAlign;

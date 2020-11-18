@@ -30,6 +30,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (BOOL)_shouldSaveConfig;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
@@ -40,6 +41,7 @@
 - (void)handleConfiguration;
 - (id)init;
 - (BOOL)isAdEnabledLocality;
+- (void)migratePersonalizedAdsFromLAT;
 - (void)pushDisable;
 - (void)pushEnable;
 - (void)refreshConfiguration:(CDUnknownBlockType)arg1;

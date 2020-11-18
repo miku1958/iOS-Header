@@ -12,30 +12,47 @@
 {
     UIImageView *_unreadIndicatorImageView;
     CKAvatarView *_avatarView;
+    BOOL _showTypingIndicator;
 }
 
+@property (nonatomic) BOOL showTypingIndicator; // @synthesize showTypingIndicator=_showTypingIndicator;
+
 + (id)identifierForConversation:(id)arg1;
++ (double)leadingLayoutMargin;
 - (void).cxx_destruct;
+- (BOOL)_boundsShouldCollapseContent:(struct CGRect)arg1;
 - (void)_calculateLayoutFrames;
+- (BOOL)_isCollapsed;
+- (void)_resetTypingIndicator;
 - (BOOL)_shouldShowAvatarForWidth:(double)arg1;
+- (void)_startTypingIndicator;
+- (void)_stopTypingIndicator;
 - (void)_updateAvatarView;
+- (void)_updateLabelVisibility;
 - (id)avatarView;
 - (id)avatarView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (BOOL)avatarView:(id)arg1 shouldShowContact:(id)arg2;
 - (id)chevronImageView;
 - (id)contactsForPreviewInteractionForAvatarView:(id)arg1 suggestedKeysToFetch:(id)arg2;
 - (void)dealloc;
+- (void)forceUnreadIndicatorVisibility:(BOOL)arg1 forConversation:(id)arg2 animated:(BOOL)arg3;
 - (void)increaseContrastDidChange;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (double)leadingLayoutMargin;
+- (id)overrideImageDataForPreviewInteractionForAvatarView:(id)arg1;
 - (void)prepareForReuse;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (void)registerForEvents;
+- (BOOL)shouldShowAvatarView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(BOOL)arg2;
 - (void)updateForEditing:(BOOL)arg1;
 - (void)updateFromLabelWithText:(id)arg1;
+- (void)updateTypingIndicatorIfNeeded;
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
+- (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2 animated:(BOOL)arg3;
+- (void)updateWithForwardedConfigurationState:(unsigned long long)arg1;
 
 @end
 

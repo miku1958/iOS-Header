@@ -6,9 +6,13 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
+@class NSString;
+
 @interface SARequestCompleted : SABaseClientBoundCommand
 {
 }
+
+@property (copy, nonatomic) NSString *turnId;
 
 + (id)requestCompleted;
 + (id)requestCompletedWithDictionary:(id)arg1 context:(id)arg2;

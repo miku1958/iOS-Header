@@ -10,12 +10,13 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class ACAccount, NSArray, NSData, NSNumber, NSString, NSURL;
+@class ACAccount, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface ASDTestFlightAppMetadata : NSObject <ASDAppMetadata, NSCopying, NSSecureCoding>
 {
     BOOL _hasMessagesExtension;
     BOOL _launchProhibited;
+    BOOL _userInitiated;
     ACAccount *_account;
     NSURL *_artworkURL;
     NSString *_bundleID;
@@ -24,7 +25,9 @@
     NSNumber *_initialODRSize;
     NSNumber *_itemID;
     NSString *_itemName;
+    NSDictionary *_placeholderEntitlements;
     NSURL *_messagesArtworkURL;
+    long long _packageCompression;
     NSData *_packageDPInfo;
     NSData *_packageSINF;
     NSURL *_packageURL;
@@ -50,13 +53,16 @@
 @property (nonatomic, getter=isLaunchProhibited) BOOL launchProhibited; // @synthesize launchProhibited=_launchProhibited;
 @property (copy, nonatomic) NSURL *messagesArtworkURL; // @synthesize messagesArtworkURL=_messagesArtworkURL;
 @property (readonly) long long metadataType;
+@property (nonatomic) long long packageCompression; // @synthesize packageCompression=_packageCompression;
 @property (copy, nonatomic) NSData *packageDPInfo; // @synthesize packageDPInfo=_packageDPInfo;
 @property (copy, nonatomic) NSData *packageSINF; // @synthesize packageSINF=_packageSINF;
 @property (copy, nonatomic) NSURL *packageURL; // @synthesize packageURL=_packageURL;
+@property (copy, nonatomic) NSDictionary *placeholderEntitlements; // @synthesize placeholderEntitlements=_placeholderEntitlements;
 @property (copy, nonatomic) NSArray *provisioningProfiles; // @synthesize provisioningProfiles=_provisioningProfiles;
 @property (copy, nonatomic) NSString *storeCohort; // @synthesize storeCohort=_storeCohort;
 @property (copy, nonatomic) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL userInitiated; // @synthesize userInitiated=_userInitiated;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 @property (copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 

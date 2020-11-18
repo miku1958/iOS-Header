@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIFont *cellNameTextEmphasisedFont;
 @property (readonly, nonatomic) UIFont *cellNameTextFont;
 @property (readonly, nonatomic) UIColor *cellNameTextHighlightedColor;
+@property (readonly, nonatomic) UIColor *cellNameTextHighlightedLightColor;
+@property (readonly, nonatomic) UIColor *cellSearchBackgroundColor;
 @property (readonly, nonatomic) UIColor *cellSearchResultTextColor;
 @property (readonly, nonatomic) UIColor *cellSearchResultTextDisabledColor;
 @property (readonly, nonatomic) struct UIEdgeInsets cellSeparatorInset;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIColor *tableSeparatorColor;
 @property (readonly, nonatomic) long long tableSeparatorOverlayBlendMode;
 @property (readonly, nonatomic) long long tableSeparatorStyle;
+@property (readonly, nonatomic) BOOL usesInsetPlatterStyle;
 
 
 @end

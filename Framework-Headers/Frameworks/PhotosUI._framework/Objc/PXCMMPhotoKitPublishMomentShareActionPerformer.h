@@ -28,7 +28,6 @@
 - (void)_createMomentShare;
 - (void)_createMomentShareWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_creatingMomentShareDidCompleteWithMomentShare:(id)arg1 error:(id)arg2;
-- (id)_creationRequestForMomentShareParticipant:(id)arg1;
 - (void)_finalizePublishWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_handleSharingProgressCancellation;
 - (id)_keyAssetForMomentShareCreationWithAssets:(id)arg1;

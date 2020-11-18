@@ -8,7 +8,6 @@
 
 @class AVAssetTrack, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface AVTimecodeController : NSObject
 {
     long long _frameCount;
@@ -28,11 +27,13 @@ __attribute__((visibility("hidden")))
 - (void)cacheTimecodeDescriptionForSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (long long)calculateFrameNumberAtCMTime:(CDStruct_1b6d18a9)arg1;
 - (long long)calculateFrameNumberAtTimeInterval:(double)arg1;
+- (long long)calculateFrameNumberAtTimecode:(id)arg1;
 - (void)calculateMaxFrameAndTimecode;
 - (id)calculateTimecodeAtFrame:(long long)arg1;
 - (id)initWithTimecodeTrack:(id)arg1 videoTrack:(id)arg2;
 - (id)maxFrameCountString;
 - (id)maxTimecodeString;
+- (long long)offsetFor:(id)arg1 fromTimecode:(id)arg2;
 - (BOOL)readTimecodes;
 - (double)timeIntervalForFrameNumber:(long long)arg1;
 - (BOOL)timecodeAvailable;

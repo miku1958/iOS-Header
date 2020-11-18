@@ -9,5 +9,7 @@
 @interface _TtC7NewsUI219SubscriptionService (NewsUI2)
 - (void)handlePurchaseAddedNotificationWithNotification:(id)arg1;
 - (void)handlePurchaseRemovedNotificationWithNotification:(id)arg1;
+- (void)subscriptionController:(id)arg1 didAddTags:(id)arg2 changeTags:(id)arg3 moveTags:(id)arg4 removeTags:(id)arg5 subscriptionType:(unsigned long long)arg6 eventInitiationLevel:(long long)arg7;
+- (void)subscriptionController:(id)arg1 didFindTagsWithNotificationSupport:(id)arg2;
 @end
 

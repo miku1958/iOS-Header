@@ -13,6 +13,8 @@
     MISSING_TYPE *diagramConfig;
     MISSING_TYPE *diagramData;
     MISSING_TYPE *axisHandler;
+    MISSING_TYPE *computedInsets;
+    MISSING_TYPE *diagramMaxPointAnnotations;
 }
 
 @end

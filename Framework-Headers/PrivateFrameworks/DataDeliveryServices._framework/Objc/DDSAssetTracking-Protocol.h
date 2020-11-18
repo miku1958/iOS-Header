@@ -14,6 +14,7 @@
 @property (strong, nonatomic) id<DDSAssetTrackingDelegate> delegate;
 
 - (void)addAssertionForQuery:(DDSAssetQuery *)arg1 policy:(DDSAssetPolicy *)arg2 assertionID:(NSString *)arg3 clientID:(NSString *)arg4;
+- (NSArray *)allAssertions;
 - (NSArray *)assertionDueForUpdateSinceDate:(NSDate *)arg1;
 - (NSSet *)assertionIDsForClientID:(NSString *)arg1;
 - (void)didUpdateAssertion:(DDSAssertion *)arg1 atDate:(NSDate *)arg2;

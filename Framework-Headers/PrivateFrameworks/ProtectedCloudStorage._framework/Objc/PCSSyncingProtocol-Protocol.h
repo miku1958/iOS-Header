@@ -17,10 +17,12 @@
 - (NSArray *)getServicesToRoll;
 - (void)keyRollPending:(NSString *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)manateeStatus:(NSString *)arg1 complete:(void (^)(unsigned int))arg2;
+- (void)migrateToiCDPForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 complete:(void (^)(BOOL, NSError *))arg3;
 - (void)mobileBackupRecordIDsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)mobileBackupStatus:(void (^)(BOOL, NSError *))arg1;
 - (void)requestKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)restoreMobileBackup:(BOOL)arg1 withReply:(void (^)(NSNumber *, NSNumber *, NSNumber *, NSError *))arg2;
+- (void)setupIdentitiesForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 optional:(BOOL)arg3;
 - (BOOL)shouldRoll;
 - (void)syncKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)triggerDaily:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;

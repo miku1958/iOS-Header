@@ -6,10 +6,15 @@
 
 #import <NewsArticles/_TtC12NewsArticles39InterstitialAdvertisementViewController.h>
 
-@interface _TtC12NewsArticles39InterstitialAdvertisementViewController (NewsArticles)
+#import <NewsArticles/ADInterstitialAdDelegate-Protocol.h>
+
+@interface _TtC12NewsArticles39InterstitialAdvertisementViewController (NewsArticles) <ADInterstitialAdDelegate>
 
 @property (nonatomic, readonly) BOOL canBecomeFirstResponder;
 
+- (void)interstitialAd:(id)arg1 didFailWithError:(id)arg2;
+- (BOOL)interstitialAdActionShouldBegin:(id)arg1 willLeaveApplication:(BOOL)arg2;
+- (void)interstitialAdDidUnload:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

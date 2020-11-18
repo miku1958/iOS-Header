@@ -19,7 +19,7 @@
 - (id)description;
 - (void)finish;
 - (BOOL)highPriority;
-- (id)initWithWorkQueueItem:(id)arg1 item:(id)arg2 highPriority:(BOOL)arg3;
+- (id)initWithWorkQueueItem:(id)arg1 item:(id)arg2 highPriority:(BOOL)arg3 customPriorityCritera:(unsigned char)arg4;
 - (void)markAsFailed;
 
 @end

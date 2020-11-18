@@ -21,6 +21,7 @@
 - (id)availableFeatures;
 - (id)init;
 - (BOOL)isFeatureEnabled:(id)arg1;
+- (id)osFeatureFlagsJSON;
 - (void)setFeatureValue:(BOOL)arg1 forFeature:(id)arg2;
 
 @end

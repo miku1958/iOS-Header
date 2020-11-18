@@ -31,6 +31,7 @@
     int _reachabilityStatus;
     NSString *_referringSource;
     NSString *_referringType;
+    NSString *_sBundlePurchaseId;
     NSData *_sessionId;
     NSData *_sessionIdWatch;
     NSString *_userId;
@@ -101,6 +102,7 @@
 @property (nonatomic) BOOL hasReachabilityStatus;
 @property (readonly, nonatomic) BOOL hasReferringSource;
 @property (readonly, nonatomic) BOOL hasReferringType;
+@property (readonly, nonatomic) BOOL hasSBundlePurchaseId;
 @property (readonly, nonatomic) BOOL hasSessionId;
 @property (readonly, nonatomic) BOOL hasSessionIdWatch;
 @property (nonatomic) BOOL hasStartTimestamp;
@@ -122,6 +124,7 @@
 @property (nonatomic) int reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;
 @property (strong, nonatomic) NSString *referringSource; // @synthesize referringSource=_referringSource;
 @property (strong, nonatomic) NSString *referringType; // @synthesize referringType=_referringType;
+@property (strong, nonatomic) NSString *sBundlePurchaseId; // @synthesize sBundlePurchaseId=_sBundlePurchaseId;
 @property (strong, nonatomic) NSData *sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSData *sessionIdWatch; // @synthesize sessionIdWatch=_sessionIdWatch;
 @property (nonatomic) long long startTimestamp; // @synthesize startTimestamp=_startTimestamp;

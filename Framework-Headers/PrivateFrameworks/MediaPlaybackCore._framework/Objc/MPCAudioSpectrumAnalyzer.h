@@ -6,39 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class MPCPlaybackEngine, NSMutableArray;
 
 @interface MPCAudioSpectrumAnalyzer : NSObject
 {
     unsigned long long _frequencyBuffersSize;
-    float *_frequencyData;
-    float *_absoluteFrequencyData;
+    float *_intermediateBuffer;
+    unsigned long long _windowSize;
     struct DSPSplitComplex _fftBuffer;
-    unsigned long long _frequencyDataSize;
     struct opaqueMTAudioProcessingTap *_audioProcessingTap;
     float _sampleRate;
     float _powerLevel;
+    MPCPlaybackEngine *_playbackEngine;
     struct OpaqueFFTSetup *_fftSetup;
+    float *_window;
     NSMutableArray *_observers;
+    MPCAudioSpectrumAnalyzer *_selfRef;
 }
 
 @property (nonatomic) struct OpaqueFFTSetup *fftSetup; // @synthesize fftSetup=_fftSetup;
 @property (strong, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
+@property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (nonatomic) float powerLevel; // @synthesize powerLevel=_powerLevel;
 @property (nonatomic) float sampleRate; // @synthesize sampleRate=_sampleRate;
+@property (strong, nonatomic) MPCAudioSpectrumAnalyzer *selfRef; // @synthesize selfRef=_selfRef;
+@property (nonatomic) float *window; // @synthesize window=_window;
 
 - (void).cxx_destruct;
-- (void)_analyzeFrequencies:(struct AudioBufferList *)arg1 numberFrames:(long long)arg2 timeRange:(CDStruct_3c1748cc)arg3;
+- (void)_analyzeFrequencies:(struct AudioBufferList *)arg1 numberFrames:(long long)arg2 timeRange:(CDStruct_3c1748cc)arg3 observers:(id)arg4;
 - (void)_analyzeSamples:(struct AudioBufferList *)arg1 numberFrames:(long long)arg2 timeRange:(CDStruct_3c1748cc)arg3;
 - (void)_attachAudioTapToPlayerItem:(id)arg1;
 - (void)_createAudioTap;
 - (void)_destroyAudioTap;
+- (void)_destroyFFTSetup;
 - (void)_freeBuffers;
-- (void)_resizeOrResetBuffers:(unsigned long long)arg1;
+- (void)_itemAssetLoadedNotification:(id)arg1;
+- (void)_itemInsertedNotification:(id)arg1;
+- (void)_resizeBuffers:(unsigned long long)arg1;
 - (void)addObserver:(id)arg1;
 - (void)configurePlayerItem:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithPlaybackEngine:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)reset;
 

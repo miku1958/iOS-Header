@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPProtocolVersion, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPProtocolVersion, NSString;
 
-@interface HMDNetworkRouterICMPType : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterICMPType : NSObject <NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterIPProtocolVersion *_protocol;
-    HMDTLVUnsignedNumberValue *_typeValue;
+    HAPTLVUnsignedNumberValue *_typeValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDNetworkRouterIPProtocolVersion *protocol; // @synthesize protocol=_protocol;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *typeValue; // @synthesize typeValue=_typeValue;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *typeValue; // @synthesize typeValue=_typeValue;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 + (id)typeFromICMPType:(id)arg1;

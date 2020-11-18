@@ -43,16 +43,12 @@
 + (id)masterKeysByAccountIdentifier;
 + (id)newWrappedKeyForObject:(id)arg1;
 + (void)refaultAllPasswordProtectedObjects;
-+ (void)removeAccountFromBiometricID:(id)arg1 andRemoveNotes:(BOOL)arg2;
-+ (void)removeAllFromBiometricID;
-+ (void)removeItemFromBiometricID:(id)arg1;
-+ (void)removeNoteFromBiometricID:(id)arg1;
 + (void)removePassphraseForAccount:(id)arg1;
 + (void)removePassphraseForNotesInAccount:(id)arg1;
 + (void)rewrapAndDivergeKeyForObject:(id)arg1 usingPassphrase:(id)arg2;
 + (void)rewrapKeyForObject:(id)arg1 newMasterKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
 + (void)rewrapNote:(id)arg1 newMasterKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
-+ (void)setCachedMasterKey:(id)arg1 forIdentifier:(id)arg2;
++ (void)setCachedMasterKey:(id)arg1 forIdentifier:(id)arg2 bioAuthAccountID:(id)arg3;
 + (void)setCachedMasterKey:(id)arg1 forObject:(id)arg2;
 + (BOOL)setPassphrase:(id)arg1 hint:(id)arg2 forAccount:(id)arg3;
 + (BOOL)setPassphrase:(id)arg1 hint:(id)arg2 oldPassphrase:(id)arg3 forAccount:(id)arg4;

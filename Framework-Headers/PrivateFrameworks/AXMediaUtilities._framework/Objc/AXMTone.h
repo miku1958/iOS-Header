@@ -30,7 +30,7 @@
 - (void)_setFrequency:(double)arg1;
 - (id)init;
 - (id)initWithSampleRate:(double)arg1 envelope:(id)arg2;
-- (void)renderInBuffer:(vector_3203cf93 *)arg1 atFrame:(unsigned long long)arg2;
+- (void)renderInBuffer:(vector_12bd641b *)arg1 atFrame:(unsigned long long)arg2;
 
 @end
 

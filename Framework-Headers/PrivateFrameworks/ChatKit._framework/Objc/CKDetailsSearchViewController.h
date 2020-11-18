@@ -8,17 +8,19 @@
 
 #import <ChatKit/CKContainerSearchControllerDelegate-Protocol.h>
 #import <ChatKit/CKDetailsSearchResultsFooterCellDelegate-Protocol.h>
+#import <ChatKit/CKDetailsSearchResultsTitleHeaderCellDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
-@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKSearchIndexingFooterCell, NSArray, NSString, UIBarButtonItem;
+@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKQLPreviewControllerDataSource, CKSearchIndexingFooterCell, NSArray, NSString, UIBarButtonItem;
 @protocol CKDetailsSearchControllerDelegate;
 
-@interface CKDetailsSearchViewController : CKSearchViewController <CKContainerSearchControllerDelegate, QLPreviewControllerDelegate, CKDetailsSearchResultsFooterCellDelegate>
+@interface CKDetailsSearchViewController : CKSearchViewController <CKContainerSearchControllerDelegate, QLPreviewControllerDelegate, CKDetailsSearchResultsFooterCellDelegate, CKDetailsSearchResultsTitleHeaderCellDelegate>
 {
     BOOL _searchComplete;
     id<CKDetailsSearchControllerDelegate> _detailsDelegate;
     CKConversation *_conversation;
     NSArray *_chatGUIDs;
+    CKQLPreviewControllerDataSource *_qlPreviewDataSource;
     CKQLPreviewController *_previewController;
     CKDetailsSearchResultsTitleHeaderCell *_titleSizingCell;
     CKDetailsSearchResultsFooterCell *_footerSizingCell;
@@ -41,6 +43,7 @@
 @property (strong, nonatomic) CKDetailsSearchResultsFooterCell *footerSizingCell; // @synthesize footerSizingCell=_footerSizingCell;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKQLPreviewController *previewController; // @synthesize previewController=_previewController;
+@property (strong, nonatomic) CKQLPreviewControllerDataSource *qlPreviewDataSource; // @synthesize qlPreviewDataSource=_qlPreviewDataSource;
 @property (strong, nonatomic) UIBarButtonItem *saveButton; // @synthesize saveButton=_saveButton;
 @property (nonatomic) BOOL searchComplete; // @synthesize searchComplete=_searchComplete;
 @property (strong, nonatomic) UIBarButtonItem *selectButton; // @synthesize selectButton=_selectButton;
@@ -57,6 +60,7 @@
 - (void)_registerCells;
 - (void)_saveSelectedAttachments:(id)arg1;
 - (id)_searchControllerForIndexPath:(id)arg1;
+- (void)_searchResultHeaderButtonTapped:(id)arg1;
 - (Class)_searchResultsHeaderClass;
 - (void)_selectButtonTapped:(id)arg1;
 - (id)_selectedIndexPaths;
@@ -71,6 +75,7 @@
 - (id)globalLayoutConfiguration;
 - (id)headerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)initWithSearchControllerClasses:(id)arg1;
+- (id)layoutSectionForController:(id)arg1 withEnvironment:(id)arg2;
 - (void)loadView;
 - (void)rekickZKWSearchForAttachmentBatchUpdate;
 - (void)reloadData;
@@ -81,9 +86,14 @@
 - (void)searchControllerContentsDidChange:(id)arg1;
 - (void)searchControllerDidBeginDragging:(id)arg1;
 - (void)searchDetailsFooterCellShowAllTapped:(id)arg1;
+- (void)searchDetailsShowAllButtonTapped:(id)arg1;
+- (void)searchEnded;
+- (void)searchResultsTitleCellShowAllButtonTapped:(id)arg1;
 - (void)searchViewController:(id)arg1 requestsPushOfSearchController:(id)arg2;
 - (void)searchWithText:(id)arg1;
 - (void)setEditing:(BOOL)arg1;
+- (void)setupDetailsSearchController:(id)arg1;
+- (id)sizeAttributeForController:(id)arg1 sizingAttribute:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

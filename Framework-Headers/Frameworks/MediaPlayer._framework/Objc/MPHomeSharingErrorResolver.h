@@ -10,6 +10,7 @@
 
 @class MPHomeSharingML3DataProvider, NSData, NSError, NSMutableArray, NSString, NSURL, SSAuthorizationRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPHomeSharingErrorResolver : MPAVErrorResolver <SSAuthorizationRequestDelegate>
 {
     NSURL *_keybagURL;

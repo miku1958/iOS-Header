@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIVisualEffect.h>
+#import <UIKitCore/_UICoreUIEffect.h>
 
-@class _UICoreUIEffect;
-
-@interface _UIBlurThroughEffect : UIVisualEffect
+@interface _UIBlurThroughEffect : _UICoreUIEffect
 {
     long long _style;
-    _UICoreUIEffect *_reducedTransparencyEffect;
 }
 
 + (id)_blurThroughWithStyle:(long long)arg1;
-- (void).cxx_destruct;
-- (BOOL)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
-- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithStyle:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

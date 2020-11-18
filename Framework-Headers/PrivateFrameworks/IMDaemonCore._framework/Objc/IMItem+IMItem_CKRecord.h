@@ -17,9 +17,11 @@
 + (id)populateIMGroupTitleChangeItem:(id)arg1 withProtobufData:(id)arg2;
 + (id)populateIMLocationShareStatusChangeItem:(id)arg1 withProtobufData:(id)arg2;
 + (id)populateIMMessageActionItem:(id)arg1 withProtobufData:(id)arg2;
-+ (id)populateIMMessageItemWithProtoBufFields:(id)arg1 withProtbufData:(id)arg2;
++ (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufData:(id)arg2;
++ (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufDataP2:(id)arg2;
 + (id)populateIMParticipantChangeItem:(id)arg1 withProtobufData:(id)arg2;
 + (id)protobufForCompressedData:(id)arg1;
++ (id)protobufForCompressedDataP2:(id)arg1;
 + (void)resetSyncStateForMessage:(id)arg1 toState:(long long)arg2;
 - (id)_accountControllerSharedInstance;
 - (void)_populateCKRecordWithIMGroupActionItemFields:(id)arg1;
@@ -39,9 +41,11 @@
 - (id)compressedProtobufDataForLocationShareStatusChangeItem;
 - (id)compressedProtobufDataForMessage;
 - (id)compressedProtobufDataForMessageActionItem;
+- (id)compressedProtobufDataForMessageP2;
 - (id)compressedProtobufDataForParticipantChangeItem;
 - (id)compressedProtobufDataWithPadding:(id)arg1;
 - (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
+- (BOOL)isCompatibleWithMiC;
 - (BOOL)shouldStoreMessage;
 @end
 

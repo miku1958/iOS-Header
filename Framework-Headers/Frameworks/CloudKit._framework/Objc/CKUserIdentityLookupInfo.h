@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKXPCSuitableString-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKRecordID, NSData, NSString;
 
-@interface CKUserIdentityLookupInfo : NSObject <NSSecureCoding, NSCopying>
+@interface CKUserIdentityLookupInfo : NSObject <CKXPCSuitableString, NSSecureCoding, NSCopying>
 {
     BOOL _shouldReportMissingIdentity;
     NSString *_emailAddress;
@@ -33,6 +34,7 @@
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKPropertiesDescription;
+- (id)CKXPCSuitableString;
 - (void)_stripPersonalInfo;
 - (id)ckShortDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,10 +6,9 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKNicknameBannerView, CKNicknameUpdatesCollectionViewCell;
+@class CKNicknameUpdatesCollectionViewCell, UIView;
 
 @protocol CKNicknameUpdatesCollectionViewCellDelegate <NSObject>
-- (void)updateCell:(CKNicknameUpdatesCollectionViewCell *)arg1 ignoreButtonTappedForBannerView:(CKNicknameBannerView *)arg2;
-- (void)updateCell:(CKNicknameUpdatesCollectionViewCell *)arg1 updateButtonTappedForBannerView:(CKNicknameBannerView *)arg2;
+- (void)updateCell:(CKNicknameUpdatesCollectionViewCell *)arg1 selectedAction:(unsigned long long)arg2 sourceView:(UIView *)arg3;
 @end
 

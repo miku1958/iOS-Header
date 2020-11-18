@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)aggregatedSegmentQRReport;
 - (id)aggregatedSegmentReport:(int)arg1;
 - (id)aggregatedSessionReport;
+- (id)copyWiFiTelemetryForTraffic:(id)arg1 shouldRegister:(BOOL)arg2;
 - (void)dealloc;
 - (BOOL)didUpdateStringFrom:(id *)arg1 toString:(id)arg2;
 - (void)flushCurrentSegment;

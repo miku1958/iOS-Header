@@ -11,34 +11,35 @@
 @interface PPM2ObjectsDeleted : PBCodable <NSCopying>
 {
     int _domain;
-    int _source;
+    int _donationSource;
     BOOL _error;
     struct {
         unsigned int domain:1;
-        unsigned int source:1;
+        unsigned int donationSource:1;
         unsigned int error:1;
     } _has;
 }
 
 @property (nonatomic) int domain; // @synthesize domain=_domain;
+@property (nonatomic) int donationSource; // @synthesize donationSource=_donationSource;
 @property (nonatomic) BOOL error; // @synthesize error=_error;
 @property (nonatomic) BOOL hasDomain;
+@property (nonatomic) BOOL hasDonationSource;
 @property (nonatomic) BOOL hasError;
-@property (nonatomic) BOOL hasSource;
-@property (nonatomic) int source; // @synthesize source=_source;
 
++ (id)options;
 - (int)StringAsDomain:(id)arg1;
-- (int)StringAsSource:(id)arg1;
+- (int)StringAsDonationSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)domainAsString:(int)arg1;
+- (id)donationSourceAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

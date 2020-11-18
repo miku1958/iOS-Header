@@ -12,7 +12,7 @@
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UIScrollViewDelegate-Protocol.h>
 
-@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, NSMutableArray, NSString, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView;
+@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, HUVisualEffectContainerView, NAFuture, NAPromise, NSMutableArray, NSString, UIActivityIndicatorView, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView, UIView;
 @protocol HUCardViewControllerDelegate;
 
 @interface HUCardViewController : UIViewController <HFItemManagerDelegate, UIGestureRecognizerDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUViewControllerCustomDismissing, UIScrollViewDelegate>
@@ -31,16 +31,21 @@
     HUQuickControlSummaryNavigationBarTitleView *_navigationBarTitleView;
     HUQuickControlViewControllerCoordinator *_viewControllerCoordinator;
     UIButton *_closeButton;
+    NAPromise *_viewControllerReadyPromise;
     NSMutableArray *_constraints;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILayoutGuide *_quickControlLayoutGuide;
+    HUVisualEffectContainerView *_closeButtonEffectView;
+    UIView *_transitionBlurView;
     HUAnimationApplier *_animationApplier;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
+    UIActivityIndicatorView *_spinnerView;
 }
 
 @property (strong, nonatomic) HUAnimationApplier *animationApplier; // @synthesize animationApplier=_animationApplier;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
+@property (strong, nonatomic) HUVisualEffectContainerView *closeButtonEffectView; // @synthesize closeButtonEffectView=_closeButtonEffectView;
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUCardViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -53,14 +58,18 @@
 @property (strong, nonatomic) HUQuickControlSummaryNavigationBarTitleView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) UILayoutGuide *quickControlLayoutGuide; // @synthesize quickControlLayoutGuide=_quickControlLayoutGuide;
-@property (readonly, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
+@property (strong, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property (nonatomic) BOOL reachable; // @synthesize reachable=_reachable;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) BOOL settingsUnlocked; // @synthesize settingsUnlocked=_settingsUnlocked;
-@property (readonly, nonatomic) UIViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
-@property (readonly, nonatomic) HFItem *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (strong, nonatomic) UIViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
+@property (strong, nonatomic) HFItem *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (weak) UIActivityIndicatorView *spinnerView; // @synthesize spinnerView=_spinnerView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIView *transitionBlurView; // @synthesize transitionBlurView=_transitionBlurView;
 @property (strong, nonatomic) HUQuickControlViewControllerCoordinator *viewControllerCoordinator; // @synthesize viewControllerCoordinator=_viewControllerCoordinator;
+@property (readonly, nonatomic) NAFuture *viewControllerReadyFuture;
+@property (strong, nonatomic) NAPromise *viewControllerReadyPromise; // @synthesize viewControllerReadyPromise=_viewControllerReadyPromise;
 
 - (void).cxx_destruct;
 - (void)_actuateTapticFeedback;
@@ -77,9 +86,11 @@
 - (void)_scrollToSettings;
 - (id)_springAnimationSettings;
 - (void)_unlockSettings;
-- (void)_updateControlStatusText;
+- (void)_updateControlStatusTextWithPrimaryText:(id)arg1 secondaryText:(id)arg2;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
+- (void)_updateMaterials;
 - (void)_updateReachabilityState;
+- (void)_updateScrollViewAndSpinnerView;
 - (void)controllerCoordinator:(id)arg1 didUpdateIconDescriptor:(id)arg2 showOffState:(BOOL)arg3;
 - (void)controllerCoordinator:(id)arg1 didUpdateReachability:(BOOL)arg2;
 - (void)controllerCoordinator:(id)arg1 didUpdateStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;
@@ -87,7 +98,7 @@
 - (void)dismissCardAnimated:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
-- (id)initWithQuickControlViewController:(id)arg1 settingsViewController:(id)arg2 sourceItem:(id)arg3 controlItems:(id)arg4 home:(id)arg5;
+- (id)init;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)keyCommands;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -99,6 +110,7 @@
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)setUpConstraints;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithQuickControlViewController:(id)arg1 settingsViewController:(id)arg2 presentationContext:(id)arg3;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

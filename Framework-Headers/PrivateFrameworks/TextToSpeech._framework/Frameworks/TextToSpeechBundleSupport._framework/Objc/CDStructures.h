@@ -63,25 +63,26 @@ typedef struct {
     unsigned char _field7;
     char *_field8;
     int _field9;
-    struct __CFString *_field10;
+    int _field10;
     struct __CFString *_field11;
-    float _field12;
+    struct __CFString *_field12;
     float _field13;
     float _field14;
-    char *_field15;
+    float _field15;
     char *_field16;
-    long long _field17;
+    char *_field17;
     long long _field18;
-    id _field19;
-    unsigned int _field20;
-    struct OpaqueAudioFileID *_field21;
-    int _field22;
-    unsigned long long _field23;
+    long long _field19;
+    id _field20;
+    unsigned int _field21;
+    struct OpaqueAudioFileID *_field22;
+    int _field23;
     unsigned long long _field24;
     unsigned long long _field25;
-    unsigned char _field26;
+    unsigned long long _field26;
     unsigned char _field27;
-} CDStruct_e7d21709;
+    unsigned char _field28;
+} CDStruct_24e90a37;
 
 typedef struct {
     struct __TTSPlayback *_field1;

@@ -6,12 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class PETDistributionEventTracker, PETGoalConversionEventTracker, PETScalarEventTracker;
 @protocol OS_dispatch_queue;
 
 @interface PPConnectionsMetricsTracker : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    PETScalarEventTracker *_opportunityTracker;
+    PETGoalConversionEventTracker *_conversionTracker;
+    PETScalarEventTracker *_dismissalTracker;
+    PETDistributionEventTracker *_timingTracker;
+    PETScalarEventTracker *_donationTracker;
+    PETScalarEventTracker *_pasteboardTracker;
 }
+
+@property (strong, nonatomic) PETGoalConversionEventTracker *conversionTracker; // @synthesize conversionTracker=_conversionTracker;
+@property (strong, nonatomic) PETScalarEventTracker *dismissalTracker; // @synthesize dismissalTracker=_dismissalTracker;
+@property (strong, nonatomic) PETScalarEventTracker *donationTracker; // @synthesize donationTracker=_donationTracker;
+@property (strong, nonatomic) PETScalarEventTracker *opportunityTracker; // @synthesize opportunityTracker=_opportunityTracker;
+@property (strong, nonatomic) PETScalarEventTracker *pasteboardTracker; // @synthesize pasteboardTracker=_pasteboardTracker;
+@property (strong, nonatomic) PETDistributionEventTracker *timingTracker; // @synthesize timingTracker=_timingTracker;
 
 + (id)consumerStringForConsumerType:(unsigned long long)arg1;
 + (id)donationSourceFromBundleID:(id)arg1;

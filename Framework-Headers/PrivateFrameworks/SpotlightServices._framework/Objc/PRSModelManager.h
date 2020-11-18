@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSNumber;
+@class NSMutableDictionary, NSString, NSUserDefaults, SSTrialManager;
 
 @interface PRSModelManager : NSObject
 {
     BOOL _disablePolicy;
-    NSNumber *_modelVersion;
-    NSNumber *_shadowVersion;
-    NSMutableDictionary *_shadowModels;
+    NSString *_modelVersion;
+    SSTrialManager *_trialModelManager;
+    NSString *_experimentId;
+    NSString *_modelType;
     NSMutableDictionary *_models;
     unsigned long long _activeCount;
+    NSUserDefaults *_userDefaults;
 }
 
 @property (nonatomic) unsigned long long activeCount; // @synthesize activeCount=_activeCount;
 @property (nonatomic) BOOL disablePolicy; // @synthesize disablePolicy=_disablePolicy;
-@property (strong, nonatomic) NSNumber *modelVersion; // @synthesize modelVersion=_modelVersion;
+@property (strong, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property (strong, nonatomic) NSString *modelType; // @synthesize modelType=_modelType;
+@property (strong, nonatomic) NSString *modelVersion; // @synthesize modelVersion=_modelVersion;
 @property (strong, nonatomic) NSMutableDictionary *models; // @synthesize models=_models;
-@property (strong, nonatomic) NSMutableDictionary *shadowModels; // @synthesize shadowModels=_shadowModels;
-@property (strong, nonatomic) NSNumber *shadowVersion; // @synthesize shadowVersion=_shadowVersion;
+@property (strong, nonatomic) SSTrialManager *trialModelManager; // @synthesize trialModelManager=_trialModelManager;
+@property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (void)cannedInfoForType:(unsigned long long)arg1 directivesPath:(id *)arg2 modelName:(id *)arg3;
 + (id)directivesFromFilePath:(id)arg1;
@@ -33,15 +37,16 @@
 + (id)sharedModelManager;
 - (void).cxx_destruct;
 - (void)activate;
-- (float *)computeL2ScoresForVectors:(id)arg1 secondVector:(id)arg2 withServerFeatures:(id)arg3 withBundleFeatures:(id)arg4 experimentalWeight1:(double)arg5 experimentalWeight2:(double)arg6 forShadow:(BOOL)arg7 shouldCancel:(BOOL *)arg8 clientBundle:(id)arg9 hasMail:(BOOL)arg10;
+- (float *)computeL2ScoresForVectors:(id)arg1 secondVector:(id)arg2 withServerFeatures:(id)arg3 withBundleFeatures:(id)arg4 experimentalWeight1:(double)arg5 experimentalWeight2:(double)arg6 shouldCancel:(BOOL *)arg7 clientBundle:(id)arg8 hasMail:(BOOL)arg9;
 - (float *)computeScoresForFeatures:(id)arg1 withBundleFeatures:(id)arg2 serverBundleFeatures:(id)arg3 usingModelContext:(id)arg4 qos:(unsigned int)arg5 shouldCancel:(BOOL *)arg6 filterBundle:(id)arg7;
 - (void)deactivate;
 - (void)dealloc;
 - (id)getL2ModelVersionForClientBundle:(id)arg1;
 - (id)init;
 - (void)loadCannedModelWithType:(unsigned long long)arg1 error:(id *)arg2;
-- (void)loadCannedModels;
-- (id)loadIfNecessaryModelOfResourceType:(unsigned long long)arg1 nowTime:(double)arg2 intoModelDict:(id)arg3 currentVersion:(id)arg4;
+- (BOOL)loadCannedModels;
+- (BOOL)loadModels;
+- (BOOL)loadModelsFromTrialWithCompletion:(CDUnknownBlockType)arg1;
 - (double)testL2WithData:(id)arg1 experimental:(BOOL)arg2;
 - (void)triggerUpdate;
 - (void)updateModelsAccordingToHierarchy;

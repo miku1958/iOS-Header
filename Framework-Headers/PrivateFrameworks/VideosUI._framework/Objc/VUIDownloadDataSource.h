@@ -57,7 +57,8 @@ __attribute__((visibility("hidden")))
 - (id)_createDownloadEntitiesFromLatestDownloads:(id)arg1;
 - (id)_createGroupingByShowIdentifierWithLatestMediaEntityGroups:(id)arg1;
 - (BOOL)_doesEpisodeSet:(id)arg1 containMediaEntity:(id)arg2;
-- (id)_getActivelyDownloadingAdamIDs;
+- (BOOL)_downloadsDidChange:(id)arg1;
+- (void)_getActivelyDownloadingAdamIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_getDownloadEntityInDownloadEntities:(id)arg1 containingMediaEntity:(id)arg2;
 - (void)_handleDownloadingStateDidChange;
 - (void)_loadActiveDownloads;
@@ -65,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)_notifyDelegatesDownloadsFetchCompletedWithChanges:(BOOL)arg1;
 - (void)_removeNotifcationObservers;
 - (void)_rentalsDidExpire;
-- (void)_sortDownloadEntitiesByTitle;
+- (id)_sortDownloadEntitiesByTitle:(id)arg1;
 - (void)_updateDownloadEntity:(id *)arg1 withLatestMediaEntity:(id)arg2;
 - (id)_upsertDownloadEntities:(id)arg1 withEpisodesDownloadingForShow:(id)arg2;
 - (void)_upsertEpisodesDownloadingForShowWithMediaEntity:(id)arg1;

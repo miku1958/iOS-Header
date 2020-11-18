@@ -4,32 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AppleMediaServicesUI/AMSUICommonViewController.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPresentationDelegate-Protocol.h>
 #import <AppleMediaServicesUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <AppleMediaServicesUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString;
+@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, UIViewController;
 @protocol AMSUIWebPagePresenter, AMSUIWebPresentationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebContainerViewController : UIViewController <UIViewControllerTransitioningDelegate, AMSUIWebPresentationDelegate, UIAdaptivePresentationControllerDelegate>
+@interface AMSUIWebContainerViewController : AMSUICommonViewController <UIViewControllerTransitioningDelegate, AMSUIWebPresentationDelegate, UIAdaptivePresentationControllerDelegate>
 {
     BOOL _shouldSkipInitialRefresh;
+    BOOL _dismissCalled;
     BOOL _hasAppeared;
-    BOOL _hasSetNavigationStyle;
     UIViewController<AMSUIWebPagePresenter> *_containedViewController;
     unsigned long long _activePresentationType;
     AMSUIWebAppearance *_appearance;
     long long _containerIndex;
-    id<AMSUIWebPresentationDelegate> _modalPresentationDelegate;
+    long long _disableReappearPlaceholder;
+    AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *_modalPresentationDelegate;
     AMSUIWebContainerViewController *_nextContainer;
     NSDictionary *_pageInfo;
-    id<AMSUIWebPresentationDelegate> _pushPresentationDelegate;
+    AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *_pushPresentationDelegate;
     AMSUIWebClientContext *_context;
     UIViewController *_hiddenViewController;
+    long long _lastNavigationStyle;
     AMSUIWebNavigationBarModel *_navigationBarModel;
+    struct CGPoint _scrollPosition;
 }
 
 @property (readonly, nonatomic) unsigned long long activePresentationType; // @synthesize activePresentationType=_activePresentationType;
@@ -39,32 +42,42 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long disableReappearPlaceholder; // @synthesize disableReappearPlaceholder=_disableReappearPlaceholder;
+@property (nonatomic) BOOL dismissCalled; // @synthesize dismissCalled=_dismissCalled;
 @property (nonatomic) BOOL hasAppeared; // @synthesize hasAppeared=_hasAppeared;
-@property (nonatomic) BOOL hasSetNavigationStyle; // @synthesize hasSetNavigationStyle=_hasSetNavigationStyle;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *hiddenViewController; // @synthesize hiddenViewController=_hiddenViewController;
-@property (weak, nonatomic) id<AMSUIWebPresentationDelegate> modalPresentationDelegate; // @synthesize modalPresentationDelegate=_modalPresentationDelegate;
+@property (nonatomic) long long lastNavigationStyle; // @synthesize lastNavigationStyle=_lastNavigationStyle;
+@property (weak, nonatomic) AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *modalPresentationDelegate; // @synthesize modalPresentationDelegate=_modalPresentationDelegate;
 @property (strong, nonatomic) AMSUIWebNavigationBarModel *navigationBarModel; // @synthesize navigationBarModel=_navigationBarModel;
 @property (weak, nonatomic) AMSUIWebContainerViewController *nextContainer; // @synthesize nextContainer=_nextContainer;
 @property (strong, nonatomic) NSDictionary *pageInfo; // @synthesize pageInfo=_pageInfo;
-@property (weak, nonatomic) id<AMSUIWebPresentationDelegate> pushPresentationDelegate; // @synthesize pushPresentationDelegate=_pushPresentationDelegate;
+@property (weak, nonatomic) AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *pushPresentationDelegate; // @synthesize pushPresentationDelegate=_pushPresentationDelegate;
+@property (nonatomic) struct CGPoint scrollPosition; // @synthesize scrollPosition=_scrollPosition;
 @property (nonatomic) BOOL shouldSkipInitialRefresh; // @synthesize shouldSkipInitialRefresh=_shouldSkipInitialRefresh;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_adjustWebViewForReplaceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_applyAppearance;
+- (id)_barButtonItemFromModel:(id)arg1;
+- (void)_cacheScrollViewPositionFor:(id)arg1;
 - (void)_determineActivePresentationType;
+- (void)_handlePushDismissal;
 - (void)_handleSelectedNavigationButton:(id)arg1;
-- (void)_setupNavBar;
+- (void)_postEvent:(id)arg1;
+- (void)_scrollTo:(struct CGPoint)arg1 webView:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setupNavBarAnimated:(BOOL)arg1;
 - (void)applyModel:(id)arg1;
+- (void)dealloc;
 - (void)didDismissController:(id)arg1;
 - (void)handleModalDismissal;
-- (void)handlePushDismissal;
 - (id)initWithViewController:(id)arg1 appearance:(id)arg2 navigationBar:(id)arg3 context:(id)arg4;
 - (void)loadView;
 - (id)navigationItem;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)replaceContentWithViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

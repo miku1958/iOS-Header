@@ -10,6 +10,7 @@
 
 @protocol PXMutableBrowserSummaryController <NSObject>
 
+@property (nonatomic) unsigned long long containerDateFormatGranularity;
 @property (copy, nonatomic) NSDictionary *defaultAttributes;
 @property (copy, nonatomic) NSDictionary *emphasizedAttributes;
 @property (copy, nonatomic) NSDictionary *selectionAttributes;

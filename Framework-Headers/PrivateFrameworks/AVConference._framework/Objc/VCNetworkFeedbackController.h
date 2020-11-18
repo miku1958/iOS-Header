@@ -37,8 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)sendFeedbackControllerReport:(CDStruct_4b4d87a1)arg1;
 - (void)sendStatusUpdate:(const CDStruct_8aeecdac *)arg1;
 - (void)setPreWarmState:(BOOL)arg1;
+- (void)setWRMCoexMetrics:(id)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
-- (void)setWRMNotification:(CDStruct_0693755d *)arg1;
+- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
 - (void)setupWCMClient;
 - (void)setupWRMClient;
 - (void)start;

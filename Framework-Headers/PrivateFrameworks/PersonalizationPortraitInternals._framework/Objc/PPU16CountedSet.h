@@ -20,11 +20,16 @@
 - (void)_dictEnumerateValuesAndCountsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_vectorEnumerateValuesAndCountsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)addValue:(unsigned short)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned short)countForValue:(unsigned short)arg1;
 - (void)dealloc;
+- (id)description;
+- (id)dictionary;
 - (void)enumerateValuesAndCountsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToU16CountedSet:(id)arg1;
 - (unsigned long long)uniqueValueCount;
 
 @end

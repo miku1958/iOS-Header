@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _cancellationAllowed;
     BOOL _dismissingSearchDueToSelection;
+    BOOL _sectionContentInsetInitialized;
     id<VSIdentityProviderPickerViewControllerDelegate> _delegate;
     NSArray *_identityProviders;
     unsigned long long _additionalProvidersMode;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *resourceTitle; // @synthesize resourceTitle=_resourceTitle;
 @property (strong, nonatomic) VSSearchBarDelegate *searchBarDelegate; // @synthesize searchBarDelegate=_searchBarDelegate;
 @property (strong, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
+@property (nonatomic) BOOL sectionContentInsetInitialized; // @synthesize sectionContentInsetInitialized=_sectionContentInsetInitialized;
 @property (strong, nonatomic) VSIdentityProvider *selectedIdentityProvider; // @synthesize selectedIdentityProvider=_selectedIdentityProvider;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VSIdentityProviderTableViewDataSource *unfilteredDataSource; // @synthesize unfilteredDataSource=_unfilteredDataSource;
@@ -57,9 +59,11 @@ __attribute__((visibility("hidden")))
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_didPickAdditionalIdentityProviders;
 - (void)_didPickIdentityProvider:(id)arg1;
+- (BOOL)_isRegularWidth;
 - (void)_performSelectionForIdentityProvider:(id)arg1;
 - (void)_showAboutPrivacy:(id)arg1;
 - (id)_titleForTableHeaderView;
+- (void)_updateSectionContentInsetWithAnimation:(BOOL)arg1;
 - (void)_updateTableHeaderTitle;
 - (void)deselectSelectedProviderAnimated:(BOOL)arg1;
 - (void)didDismissSearchController:(id)arg1;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)titleForTableFooterView;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)willMoveToParentViewController:(id)arg1;
 

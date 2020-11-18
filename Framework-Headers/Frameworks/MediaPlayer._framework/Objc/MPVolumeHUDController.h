@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+@class NSHashTable, NSMutableSet;
 
 @interface MPVolumeHUDController : NSObject
 {
+    NSHashTable *_scenes;
     NSMutableSet *_displays;
     NSMutableSet *_categories;
     BOOL _needsUpdate;

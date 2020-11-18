@@ -14,10 +14,12 @@
     BOOL _springLoadingEnabled;
     BOOL _useFileProvider;
     long long _reorderCadence;
+    double _dropGestureSpeedLimit;
 }
 
 @property (nonatomic) BOOL alwaysAllowDragsWithinUserAlbums; // @synthesize alwaysAllowDragsWithinUserAlbums=_alwaysAllowDragsWithinUserAlbums;
 @property (nonatomic) BOOL dragOutEnabled; // @synthesize dragOutEnabled=_dragOutEnabled;
+@property (nonatomic) double dropGestureSpeedLimit; // @synthesize dropGestureSpeedLimit=_dropGestureSpeedLimit;
 @property (nonatomic) long long reorderCadence; // @synthesize reorderCadence=_reorderCadence;
 @property (nonatomic) BOOL springLoadingEnabled; // @synthesize springLoadingEnabled=_springLoadingEnabled;
 @property (nonatomic) BOOL useData; // @synthesize useData=_useData;

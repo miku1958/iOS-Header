@@ -8,6 +8,7 @@
 
 @class NSURL;
 
+__attribute__((visibility("hidden")))
 @interface TKAdaptiveImage_Trait : NSObject
 {
     BOOL _useReadableWidth;

@@ -7,6 +7,7 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSIndexPath, NSIndexSet, NSString, UICollectionViewLayoutAttributes;
+@protocol _UICollectionViewLayoutOrthogonalScrollingSectionState;
 
 @protocol _UICollectionViewLayoutOrthogonalScrolling <NSObject>
 - (NSArray *)_extendedAttributesQueryIncludingOrthogonalScrollingRegions:(struct CGRect)arg1;
@@ -22,6 +23,7 @@
 - (double)_orthogonalScrollingPagingDimensionForSection:(long long)arg1;
 - (NSIndexSet *)_orthogonalScrollingSections;
 - (BOOL)_orthogonalScrollingShouldCenterCustomPagingSizeForSection:(long long)arg1;
+- (id<_UICollectionViewLayoutOrthogonalScrollingSectionState>)_orthogonalScrollingStateForSection:(long long)arg1;
 - (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2;
 - (NSString *)_orthogonalScrollingTrace;
 - (BOOL)_orthogonalScrollingUsesTargetContentOffsetForSection:(long long)arg1;

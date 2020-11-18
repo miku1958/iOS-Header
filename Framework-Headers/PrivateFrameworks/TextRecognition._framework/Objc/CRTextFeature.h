@@ -23,6 +23,7 @@
     NSArray *_subFeatures;
     NSArray *_stringValueCandidates;
     NSArray *_candidateProbs;
+    NSArray *_candidateActivationProbs;
     NSArray *_subFeatureCandidates;
     long long _bestCandidateIndex;
     NSArray *_segmentationBreakPoints;
@@ -45,6 +46,7 @@
 @property struct CGPoint bottomLeft; // @synthesize bottomLeft=_bottomLeft;
 @property struct CGPoint bottomRight; // @synthesize bottomRight=_bottomRight;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
+@property (strong) NSArray *candidateActivationProbs; // @synthesize candidateActivationProbs=_candidateActivationProbs;
 @property (strong) NSArray *candidateProbs; // @synthesize candidateProbs=_candidateProbs;
 @property (strong) NSNumber *confidence; // @synthesize confidence=_confidence;
 @property BOOL contextSet; // @synthesize contextSet=_contextSet;
@@ -67,12 +69,13 @@
 + (id)lineFeatures:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3;
 + (id)overlayFeatures:(id)arg1 onImage:(id)arg2 showSubFeatures:(BOOL)arg3;
 + (id)overlayFeaturesVertices:(id)arg1 onImage:(id)arg2 showSubFeatures:(BOOL)arg3;
++ (id)sortedRotateTextFeatures:(id)arg1 center:(struct CGPoint)arg2 radians:(float)arg3 sortingWithinLine:(BOOL)arg4;
 + (id)sortedTextFeatures:(id)arg1;
 - (void).cxx_destruct;
 - (void)addKohlsDigitProjection;
 - (void)adjustProbabilitiesWithPunctuationGuess;
 - (float)aspectRatioWithImageSize:(struct CGSize)arg1;
-- (float)calculateTextBoxHeight;
+- (float)calculateTextBoxHeightForImageWidth:(unsigned long long)arg1 imageHeight:(unsigned long long)arg2;
 - (float)caseInsensitiveProbabilityCandidateIndex:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createCharacterSubFeaturesForCandidateAtIndex:(long long)arg1;

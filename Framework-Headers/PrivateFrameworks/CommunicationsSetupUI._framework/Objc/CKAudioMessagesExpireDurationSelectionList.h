@@ -6,6 +6,7 @@
 
 #import <CommunicationsSetupUI/CKExpireDurationSelectionList.h>
 
+__attribute__((visibility("hidden")))
 @interface CKAudioMessagesExpireDurationSelectionList : CKExpireDurationSelectionList
 {
 }

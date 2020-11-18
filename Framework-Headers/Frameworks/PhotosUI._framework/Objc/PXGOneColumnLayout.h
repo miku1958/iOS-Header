@@ -6,16 +6,18 @@
 
 #import <PhotosUICore/PXGItemsLayout.h>
 
-#import <PhotosUICore/PXCuratedLibraryAllPhotosBodyLayout-Protocol.h>
+#import <PhotosUICore/PXGItemsGeometry-Protocol.h>
+#import <PhotosUICore/PXZoomablePhotosContentLayout-Protocol.h>
 
 @class NSString;
 
-@interface PXGOneColumnLayout : PXGItemsLayout <PXCuratedLibraryAllPhotosBodyLayout>
+@interface PXGOneColumnLayout : PXGItemsLayout <PXZoomablePhotosContentLayout, PXGItemsGeometry>
 {
     CDStruct_d97c9657 _updateFlags;
     BOOL _isUpdating;
     BOOL _didAlreadyUpdateLoadedItems;
     BOOL _enableBestCropRect;
+    BOOL _enableEffects;
     BOOL _fillSafeAreaTopInset;
     int _mediaKind;
     int _presentationType;
@@ -31,6 +33,7 @@
     struct UIEdgeInsets _padding;
 }
 
+@property (nonatomic) double accessoryAlpha;
 @property (nonatomic) long long anchorItem; // @synthesize anchorItem=_anchorItem;
 @property (nonatomic) struct CGPoint anchorItemCenter; // @synthesize anchorItemCenter=_anchorItemCenter;
 @property (strong, nonatomic) id anchorObjectReference;
@@ -43,6 +46,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableBestCropRect;
 @property (nonatomic) BOOL enableBestCropRect; // @synthesize enableBestCropRect=_enableBestCropRect;
+@property (nonatomic) BOOL enableEffects;
+@property (nonatomic) BOOL enableEffects; // @synthesize enableEffects=_enableEffects;
 @property (nonatomic) BOOL fillSafeAreaTopInset;
 @property (nonatomic) BOOL fillSafeAreaTopInset; // @synthesize fillSafeAreaTopInset=_fillSafeAreaTopInset;
 @property (readonly) unsigned long long hash;
@@ -83,8 +88,12 @@
 - (id)init;
 - (void)invalidateLoadedItems;
 - (long long)itemClosestTo:(struct CGPoint)arg1;
+- (long long)itemClosestToItem:(long long)arg1 inDirection:(unsigned long long)arg2;
 - (struct _NSRange)itemRangeForSpriteIndexRange:(struct _PXGSpriteIndexRange)arg1;
 - (struct _NSRange)itemRangeInRect:(struct CGRect)arg1;
+- (id)itemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
+- (id)itemsGeometry;
+- (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
 - (struct _NSRange)itemsToLoad;
 - (void)loadedItemsDidChange;
 - (void)referenceSizeDidChange;

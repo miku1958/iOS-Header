@@ -9,8 +9,8 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEORoutePreloadStrategy-Protocol.h>
 
-@class GEOComposedRoute, GEORoutePreloader, GEOTileKeyList, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
-@protocol GEORoutePreloadCamera, OS_dispatch_queue;
+@class GEOComposedRoute, GEORoutePreloader, GEOTileKeyList, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
+@protocol GEORoutePreloadCamera, OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEONavRoutePreloadStrategy : NSObject <GEOResourceManifestTileGroupObserver, GEORoutePreloadStrategy>
 {
@@ -32,7 +32,7 @@
     double _beginTime;
     double _mostRecentErrorTime;
     BOOL _hadEnoughTilesToDisableNetworking;
-    NSTimer *_geodCrashTimer;
+    NSObject<OS_dispatch_source> *_geodCrashTimer;
     double _maneuverSizeInMeters;
     BOOL _enabled;
     double _stepSizeInMeters;
@@ -53,7 +53,7 @@
 - (void)_cancelRequestsInPast;
 - (void)_cancelStep:(id)arg1;
 - (id)_descriptionForStep:(id)arg1;
-- (void)_geodCrashed:(id)arg1;
+- (void)_geodCrashed;
 - (void)_incrementErrorForStep:(id)arg1;
 - (BOOL)_loadStep:(id)arg1 requireWiFi:(BOOL)arg2;
 - (void)_performNextRequests;

@@ -14,12 +14,12 @@
 @interface INIntentCodableDescription : INRootCodableDescription <NSSecureCoding, NSCopying>
 {
     BOOL _userConfirmationRequired;
+    BOOL _deprecated;
     BOOL _configurable;
     BOOL _eligibleForSuggestions;
+    BOOL _eligibleForWidgets;
     NSString *_inputAttributeName;
     NSString *_keyAttributeName;
-    NSString *_attributeKeyPrefix;
-    NSString *_attributesKeyPrefix;
     NSString *_title;
     NSString *_titleLocID;
     NSString *_descriptiveText;
@@ -27,6 +27,7 @@
     NSString *_defaultImageName;
     long long _intentCategory;
     NSString *_verb;
+    NSArray *_phrases;
     NSArray *_entityVerbs;
 }
 
@@ -34,24 +35,51 @@
 @property (copy, nonatomic, setter=_setKeyAttributeName:) NSString *_keyAttributeName; // @synthesize _keyAttributeName;
 @property (nonatomic, getter=isConfigurable) BOOL configurable; // @synthesize configurable=_configurable;
 @property (copy, nonatomic) NSString *defaultImageName; // @synthesize defaultImageName=_defaultImageName;
+@property (nonatomic, getter=isDeprecated) BOOL deprecated; // @synthesize deprecated=_deprecated;
 @property (copy, nonatomic) NSString *descriptiveText; // @synthesize descriptiveText=_descriptiveText;
 @property (copy, nonatomic) NSString *descriptiveTextLocID; // @synthesize descriptiveTextLocID=_descriptiveTextLocID;
 @property (nonatomic, getter=isEligibleForSuggestions) BOOL eligibleForSuggestions; // @synthesize eligibleForSuggestions=_eligibleForSuggestions;
+@property (nonatomic, getter=isEligibleForWidgets) BOOL eligibleForWidgets; // @synthesize eligibleForWidgets=_eligibleForWidgets;
 @property (copy, nonatomic) NSArray *entityVerbs; // @synthesize entityVerbs=_entityVerbs;
 @property (readonly, nonatomic) INCodableAttribute *inputAttribute;
 @property (nonatomic) long long intentCategory; // @synthesize intentCategory=_intentCategory;
 @property (readonly, nonatomic) INCodableAttribute *keyAttribute;
 @property (readonly, copy, nonatomic) NSString *localizedDescriptiveText;
 @property (readonly, copy, nonatomic) NSString *localizedTitle;
+@property (strong, nonatomic) NSArray *phrases; // @synthesize phrases=_phrases;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *titleLocID; // @synthesize titleLocID=_titleLocID;
 @property (nonatomic) BOOL userConfirmationRequired; // @synthesize userConfirmationRequired=_userConfirmationRequired;
 @property (copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 
++ (id)__CategoryKey;
++ (id)__ClassNameKey;
++ (id)__ClassPrefixKey;
++ (id)__ConfigurableKey;
++ (id)__DefaultImageNameKey;
++ (id)__DeprecatedKey;
++ (id)__DescriptionIDKey;
++ (id)__DescriptionKey;
++ (id)__EligibleForWidgetsKey;
++ (id)__EntityKey;
++ (id)__IneligibleForSuggestionsKey;
++ (id)__InputKey;
++ (id)__Key;
++ (id)__KeyParameterKey;
++ (id)__NameKey;
++ (id)__ParameterKey;
++ (id)__ParametersKey;
++ (id)__PhrasesKey;
++ (id)__SummaryKey;
++ (id)__TitleIDKey;
++ (id)__TitleKey;
++ (id)__UserConfirmationRequiredKey;
++ (id)__VerbAssociationsKey;
++ (id)__VerbKey;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_attributeKeyPrefix;
-- (id)_attributesKeyPrefix;
+- (id)_attributeKey;
+- (id)_attributesKey;
 - (void)_establishReferencedCodableDescriptionsUsingTypes:(id)arg1 intentResponseCodableDescription:(id)arg2;
 - (id)_ignoredAttributeTags;
 - (void)_reestablishReferencedCodableDescriptionsUsingTypes:(id)arg1 intentResponseCodableDescription:(id)arg2;
@@ -61,7 +89,6 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)keyPrefix;
 - (id)localizedDescriptiveTextWithLocalizer:(id)arg1;
 - (id)localizedTitleWithLocalizer:(id)arg1;
 - (id)resolvableParameterCombinationsWithParameterCombinations:(id)arg1;

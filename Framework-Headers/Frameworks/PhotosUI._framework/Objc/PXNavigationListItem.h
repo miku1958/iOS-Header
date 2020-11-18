@@ -15,12 +15,15 @@
     NSString *_identifier;
     NSString *_title;
     NSString *_accessoryTitle;
+    NSString *_badgeString;
     long long _itemCount;
 }
 
 @property (readonly, nonatomic) NSString *accessoryTitle; // @synthesize accessoryTitle=_accessoryTitle;
+@property (copy, nonatomic) NSString *badgeString; // @synthesize badgeString=_badgeString;
 @property (readonly, nonatomic) PHCollection *collection;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic, getter=isDeletable) BOOL deletable;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDraggable) BOOL draggable;
 @property (readonly, nonatomic, getter=isExpandable) BOOL expandable;
@@ -33,7 +36,9 @@
 @property (readonly, nonatomic) long long itemCount; // @synthesize itemCount=_itemCount;
 @property (readonly, nonatomic, getter=isRemovable) BOOL removable;
 @property (readonly, nonatomic, getter=isRenamable) BOOL renamable;
+@property (readonly, nonatomic, getter=isReorderable) BOOL reorderable;
 @property (readonly, nonatomic) id representedObject;
+@property (readonly, nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSString *visualDescription;

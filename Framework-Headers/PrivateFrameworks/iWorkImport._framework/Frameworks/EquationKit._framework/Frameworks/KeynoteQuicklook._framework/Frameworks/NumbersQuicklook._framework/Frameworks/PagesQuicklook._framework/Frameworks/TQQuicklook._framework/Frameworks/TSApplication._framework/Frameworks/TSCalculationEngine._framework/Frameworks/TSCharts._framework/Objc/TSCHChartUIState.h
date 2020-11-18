@@ -7,8 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <TSCharts/NSCopying-Protocol.h>
+#import <TSCharts/TSKUIState-Protocol.h>
 
-@interface TSCHChartUIState : NSObject <NSCopying>
+@class NSString;
+
+@interface TSCHChartUIState : NSObject <NSCopying, TSKUIState>
 {
     BOOL _useFullKeyboard;
     BOOL _isValidMultiDataSetIndex;
@@ -19,23 +22,26 @@
     unsigned long long _multiDataSetIndex;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isValidMultiDataSetIndex; // @synthesize isValidMultiDataSetIndex=_isValidMultiDataSetIndex;
 @property (readonly, nonatomic) unsigned long long lastColCountInCDE; // @synthesize lastColCountInCDE=_lastColCountInCDE;
 @property (readonly, nonatomic) unsigned long long lastColSelectedInCDE; // @synthesize lastColSelectedInCDE=_lastColSelectedInCDE;
 @property (readonly, nonatomic) unsigned long long lastRowCountInCDE; // @synthesize lastRowCountInCDE=_lastRowCountInCDE;
 @property (readonly, nonatomic) unsigned long long lastRowSelectedInCDE; // @synthesize lastRowSelectedInCDE=_lastRowSelectedInCDE;
 @property (readonly, nonatomic) unsigned long long multiDataSetIndex; // @synthesize multiDataSetIndex=_multiDataSetIndex;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useFullKeyboard; // @synthesize useFullKeyboard=_useFullKeyboard;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct ChartUIState *)arg1;
 - (id)initWithRowRange:(struct _NSRange)arg1 colRange:(struct _NSRange)arg2 useFullKeyboard:(BOOL)arg3;
 - (id)initWithRowRange:(struct _NSRange)arg1 colRange:(struct _NSRange)arg2 useFullKeyboard:(BOOL)arg3 multiDataSetIndex:(unsigned long long)arg4;
 - (id)initWithRowRange:(struct _NSRange)arg1 colRange:(struct _NSRange)arg2 useFullKeyboard:(BOOL)arg3 multiDataSetIndex:(unsigned long long)arg4 validIndex:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (void)resetForInitialViewing;
 - (void)saveToArchive:(struct ChartUIState *)arg1;
 
 @end

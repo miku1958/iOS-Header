@@ -11,12 +11,14 @@
 
 @protocol PXGTextureConverter <NSObject>
 
+@property (nonatomic) BOOL lowMemoryMode;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue;
 @property (readonly, nonatomic) BOOL supportsTextureAtlas;
 @property (readonly, nonatomic) PXGImageTexture *transparentTexture;
 
+- (PXGImageTexture *)createAtlasForTextureAtlasManager:(id<PXGTextureAtlasManager>)arg1;
 - (PXGPayloadTexture *)createPayloadTextureFromPayload:(id<NSCopying>)arg1;
 - (id<PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
 - (PXGImageTexture *)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;

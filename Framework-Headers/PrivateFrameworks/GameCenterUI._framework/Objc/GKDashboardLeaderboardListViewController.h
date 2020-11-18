@@ -15,8 +15,8 @@
 
 @property (strong, nonatomic) GKLeaderboardSet *leaderboardSet; // @synthesize leaderboardSet=_leaderboardSet;
 
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1 leaderboardSet:(id)arg2;
 - (void)viewDidLoad;
 

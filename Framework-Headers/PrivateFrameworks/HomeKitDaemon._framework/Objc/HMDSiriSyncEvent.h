@@ -30,11 +30,11 @@
 @property (readonly) Class superclass;
 
 + (void)initialize;
-+ (id)syncRequestWithStartTime:(unsigned long long)arg1 serverConfigurationVersion:(unsigned long long)arg2 configurationVersion:(unsigned long long)arg3 lastSyncedConfigurationVersion:(unsigned long long)arg4 notificationReasons:(id)arg5;
++ (id)syncRequestWithDuration:(unsigned long long)arg1 serverConfigurationVersion:(unsigned long long)arg2 configurationVersion:(unsigned long long)arg3 lastSyncedConfigurationVersion:(unsigned long long)arg4 notificationReasons:(id)arg5;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
-- (id)initWithStartTime:(unsigned long long)arg1 serverConfigurationVersion:(unsigned long long)arg2 configurationVersion:(unsigned long long)arg3 lastSyncedConfigurationVersion:(unsigned long long)arg4 notificationReasons:(id)arg5;
+- (id)initWithDuration:(unsigned long long)arg1 serverConfigurationVersion:(unsigned long long)arg2 configurationVersion:(unsigned long long)arg3 lastSyncedConfigurationVersion:(unsigned long long)arg4 notificationReasons:(id)arg5;
 - (id)metricForAWD;
 
 @end

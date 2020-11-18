@@ -17,7 +17,7 @@
 @property (nonatomic) float beta; // @synthesize beta=_beta;
 @property (nonatomic) float delta; // @synthesize delta=_delta;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;

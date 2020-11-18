@@ -8,8 +8,11 @@
 
 #import <TSKit/NSCopying-Protocol.h>
 
+@class NSNumber;
+
 @interface TSKNumberFormat : TSKFormat <NSCopying>
 {
+    NSNumber *_propertiesCacheKey;
     BOOL _showThousandsSeparator;
     BOOL _usePlusSign;
     int _negativeStyle;
@@ -21,11 +24,12 @@
 @property (readonly, nonatomic) BOOL showThousandsSeparator; // @synthesize showThousandsSeparator=_showThousandsSeparator;
 @property (readonly, nonatomic) BOOL usePlusSign; // @synthesize usePlusSign=_usePlusSign;
 
+- (void).cxx_destruct;
 - (id)asNumberFormat;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithFormatType:(int)arg1;
-- (id)initWithFormatType:(int)arg1 decimalPlaces:(unsigned long long)arg2 negativeStyle:(int)arg3 showSeparator:(BOOL)arg4;
+- (id)initWithFormatType:(unsigned int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1 decimalPlaces:(unsigned long long)arg2 negativeStyle:(int)arg3 showSeparator:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringFromDouble:(double)arg1 locale:(id)arg2;
 

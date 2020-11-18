@@ -33,6 +33,7 @@
 @property (copy) NSString *label;
 @property (readonly) long long lineNumber;
 @property (readonly) NSString *name;
+@property (readonly) unsigned long long options;
 @property (readonly) long long patchControlPointCount;
 @property (readonly) unsigned long long patchType;
 @property (readonly) unsigned long long renderTargetArrayIndexType;
@@ -55,9 +56,15 @@
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (id)initWithBaseObject:(id)arg1 captureLibrary:(id)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
+- (id)originalObject;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
+- (id)reflectionWithOptions:(unsigned long long)arg1 binaryArchives:(id)arg2;
+- (id)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)swapObject:(id)arg1;
 - (void)touch;

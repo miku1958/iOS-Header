@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class MRColorComponents, NSArray, NSData, NSString, _MRNowPlayingClientProtobuf;
+#import <MediaRemote/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRClient : NSObject
+@class MRColorComponents, NSArray, NSData, NSString, NSURL, _MRNowPlayingClientProtobuf;
+
+@interface MRClient : NSObject <NSCopying>
 {
     int _processIdentifier;
     int _processUserIdentifier;
-    NSString *_bundleIdentifier;
-    NSString *_parentApplicationBundleIdentifier;
     long long _visibility;
     MRColorComponents *_tintColor;
+    NSString *_bundleIdentifier;
+    NSString *_parentApplicationBundleIdentifier;
     NSString *_displayName;
-    NSArray *_bundleIdentifierHierarchy;
+    NSURL *_appIcon;
+    NSArray *_extendedBundleIdentifierHierarchy;
 }
 
+@property (copy, nonatomic) NSURL *appIcon; // @synthesize appIcon=_appIcon;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (copy, nonatomic) NSArray *bundleIdentifierHierarchy; // @synthesize bundleIdentifierHierarchy=_bundleIdentifierHierarchy;
+@property (readonly, copy, nonatomic) NSArray *bundleIdentifierHierarchy;
 @property (readonly, nonatomic) NSData *data;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (copy, nonatomic) NSArray *extendedBundleIdentifierHierarchy; // @synthesize extendedBundleIdentifierHierarchy=_extendedBundleIdentifierHierarchy;
 @property (readonly, nonatomic) BOOL hasAuxiliaryProperties;
 @property (readonly, nonatomic) BOOL hasPlaceholder;
 @property (readonly, nonatomic, getter=isLocal) BOOL local;
@@ -32,15 +36,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property (nonatomic) int processUserIdentifier; // @synthesize processUserIdentifier=_processUserIdentifier;
 @property (readonly, nonatomic) _MRNowPlayingClientProtobuf *protobuf;
-@property (strong, nonatomic) MRColorComponents *tintColor; // @synthesize tintColor=_tintColor;
+@property (readonly, nonatomic) MRClient *skeleton;
+@property (copy, nonatomic) MRColorComponents *tintColor; // @synthesize tintColor=_tintColor;
 @property (nonatomic) long long visibility; // @synthesize visibility=_visibility;
 
 + (id)localClient;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithProcessIdentifier:(int)arg1 bundleIdentifier:(id)arg2;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)mergeFrom:(id)arg1;
 
 @end
 

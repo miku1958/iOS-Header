@@ -37,6 +37,7 @@
 - (void)dealloc;
 - (void)endMatchingExtensions;
 - (id)extensionWithMatchingAttributes:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 extensionPath:(id)arg3;
+- (id)extensionWithMatchingAttributes:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 extensionPath:(id)arg3 firstPartyExtension:(BOOL)arg4;
 - (BOOL)hasExtensionWithMatchingAttributes:(id)arg1;
 - (id)initWithMatchingAttributes:(id)arg1;
 

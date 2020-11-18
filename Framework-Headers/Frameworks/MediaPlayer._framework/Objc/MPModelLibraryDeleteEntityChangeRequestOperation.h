@@ -8,6 +8,7 @@
 
 @class MPModelLibraryDeleteEntityChangeRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryDeleteEntityChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

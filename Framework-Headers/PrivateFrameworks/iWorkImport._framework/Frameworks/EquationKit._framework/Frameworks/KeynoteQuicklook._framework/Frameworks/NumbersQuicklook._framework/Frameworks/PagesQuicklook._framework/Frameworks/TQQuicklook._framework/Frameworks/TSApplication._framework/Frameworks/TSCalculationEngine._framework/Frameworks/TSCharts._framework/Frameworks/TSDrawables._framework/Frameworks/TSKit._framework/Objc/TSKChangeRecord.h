@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) int kind; // @synthesize kind=mKind;
 
 + (id)changeRecordWithKind:(int)arg1 details:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithKind:(int)arg1 details:(id)arg2;
 
 @end

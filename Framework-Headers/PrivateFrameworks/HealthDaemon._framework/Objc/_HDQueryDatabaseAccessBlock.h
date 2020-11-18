@@ -8,6 +8,7 @@
 
 @class HDQueryServer, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDQueryDatabaseAccessBlock : NSObject
 {
     CDUnknownBlockType _block;

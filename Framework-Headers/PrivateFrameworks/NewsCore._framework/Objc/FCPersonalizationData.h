@@ -10,11 +10,12 @@
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 #import <NewsCore/FCDerivedPersonalizationData-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
+#import <NewsCore/FCPersonalizationDataSource-Protocol.h>
 
 @class CKRecord, FCPersonalizationTreatment, NSData, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
-@interface FCPersonalizationData : FCPrivateDataController <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCAppActivityObserving, FCDerivedPersonalizationData>
+@interface FCPersonalizationData : FCPrivateDataController <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCAppActivityObserving, FCDerivedPersonalizationData, FCPersonalizationDataSource>
 {
     BOOL _attemptingUpload;
     NSData *_pbData;
@@ -75,14 +76,18 @@
 - (BOOL)canHelpRestoreZoneName:(id)arg1;
 - (void)clearPersonalizationData;
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
+- (id)createAggregateWith:(id)arg1 clicks:(double)arg2 impressions:(double)arg3;
 - (id)d_allGlobalAggregates;
 - (void)d_allResults:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enumerateAggregatesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)generateDerivedDataWithQualityOfService:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
+- (id)init;
+- (id)initWithAggregates:(id)arg1;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (id)initWithPBData:(id)arg1 treatment:(id)arg2;
 - (void)loadLocalCachesFromStore;
+- (id)lookupAggregatesWith:(id)arg1 creationBlock:(CDUnknownBlockType)arg2;
 - (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6 groupBias:(double)arg7;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -91,6 +96,7 @@
 - (void)saveReadableAggregates;
 - (void)submitPersonalizationVector;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateAggregatesWith:(id)arg1 creationBlock:(CDUnknownBlockType)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 groupType:(long long)arg5 individually:(BOOL)arg6 configurableValues:(id)arg7 featuresUpdatedBlock:(CDUnknownBlockType)arg8;
 
 @end

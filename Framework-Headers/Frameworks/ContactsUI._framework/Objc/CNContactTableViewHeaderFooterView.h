@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithReuseIdentifier:(id)arg1;
-- (void)prepareForReuse;
 
 @end
 

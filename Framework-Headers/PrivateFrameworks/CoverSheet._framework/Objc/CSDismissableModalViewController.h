@@ -33,11 +33,11 @@
 - (void)_handleBottomEdgeGestureEnded:(id)arg1;
 - (void)_handleBottomEdgeGestureRecognizer:(id)arg1;
 - (void)addGrabberView:(id)arg1;
-- (void)aggregateBehavior:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(BOOL)arg1;
+- (BOOL)presentationCancelsTouches;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)wouldHandleButtonEvent:(id)arg1;
 
 @end

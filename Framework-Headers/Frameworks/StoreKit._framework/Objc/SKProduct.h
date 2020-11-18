@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL downloadable;
 @property (readonly, nonatomic) SKProductDiscount *introductoryPrice;
 @property (readonly, nonatomic) BOOL isDownloadable;
+@property (readonly, nonatomic) BOOL isFamilyShareable;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSDecimalNumber *price;
@@ -37,8 +38,8 @@
 - (void)_setDiscounts:(id)arg1;
 - (void)_setDownloadContentLengths:(id)arg1;
 - (void)_setDownloadable:(BOOL)arg1;
+- (void)_setFamilyShareable:(BOOL)arg1;
 - (void)_setIntroductoryPrice:(id)arg1;
-- (void)_setLocale:(id)arg1;
 - (void)_setLocalizedDescription:(id)arg1;
 - (void)_setLocalizedTitle:(id)arg1;
 - (void)_setPrice:(id)arg1;

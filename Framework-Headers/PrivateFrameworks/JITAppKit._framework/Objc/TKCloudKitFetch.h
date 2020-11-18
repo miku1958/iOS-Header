@@ -9,6 +9,7 @@
 @class NSError, NSMutableURLRequest, NSURL, TMLJSONObject;
 @protocol TKNetworkTask;
 
+__attribute__((visibility("hidden")))
 @interface TKCloudKitFetch : NSObject
 {
     id<TKNetworkTask> _queryTask;

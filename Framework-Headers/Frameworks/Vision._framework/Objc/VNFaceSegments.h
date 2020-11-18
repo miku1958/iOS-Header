@@ -34,6 +34,7 @@
 
 + (id)faceSegmentIndexToFlagMap;
 + (id)faceSegmentToSegmentMaskGrayLevelDictionary;
++ (unsigned long long)faceSegmentsPixelSizeInBytes;
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;

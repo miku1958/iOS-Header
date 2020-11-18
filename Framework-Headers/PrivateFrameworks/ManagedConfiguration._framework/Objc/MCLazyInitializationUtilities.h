@@ -11,16 +11,13 @@
 }
 
 + (void)initAppleIDSSOAuthentication;
-+ (void)initAssertionServices;
 + (void)initAuthKit;
-+ (void)initCoreServices;
 + (void)initCoreText;
 + (void)initExchangeSyncExpress;
 + (void)initImageIO;
 + (void)initLoggingSupport;
 + (void)initSetupAssistant;
 + (void)initSpringBoardServices;
-+ (void)initSpringBoardUIServices;
 + (void)initUserManagement;
 + (void)loadBundleAtURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)loadNSBundleAtURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

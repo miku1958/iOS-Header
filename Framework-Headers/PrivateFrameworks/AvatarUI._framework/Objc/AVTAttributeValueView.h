@@ -14,6 +14,7 @@
 @interface AVTAttributeValueView : UIView <AVTSectionItemTransitionModel, AVTDiscardableContent>
 {
     BOOL _showPlaceholder;
+    BOOL _selected;
     CDUnknownBlockType discardableContentHandler;
     UIImage *_image;
     CALayer *_imageLayer;
@@ -21,12 +22,14 @@
     NSUUID *_displaySessionUUID;
     CAShapeLayer *_clippingLayer;
     CAShapeLayer *_selectionLayer;
+    UIView *_contentView;
     CALayer *_transitionImageLayer;
     UILabel *_titleLabel;
     struct CGSize _imageSizeRatio;
 }
 
 @property (strong, nonatomic) CAShapeLayer *clippingLayer; // @synthesize clippingLayer=_clippingLayer;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
@@ -36,6 +39,7 @@
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) CALayer *imageLayer; // @synthesize imageLayer=_imageLayer;
 @property (nonatomic) struct CGSize imageSizeRatio; // @synthesize imageSizeRatio=_imageSizeRatio;
+@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) CAShapeLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 @property (nonatomic) unsigned long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 @property (nonatomic) BOOL showPlaceholder; // @synthesize showPlaceholder=_showPlaceholder;
@@ -63,7 +67,7 @@
 - (void)updateCornerRadii;
 - (void)updateHighlightedState:(BOOL)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)updateSelectedState:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)updateSelectionLayer;
+- (void)updateSelectionAndMaskLayer;
 - (void)updateWithImage:(id)arg1;
 
 @end

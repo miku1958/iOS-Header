@@ -16,37 +16,40 @@
     ETVariablesDefinition *varsDef;
     unsigned long long runtimePlatform;
     int precision;
+    unsigned long long batchSize;
     basic_string_23d93216 training_control_name;
     basic_string_23d93216 training_control_end_name;
     basic_string_23d93216 gradient_control_name;
     basic_string_23d93216 gradient_control_end_name;
     basic_string_23d93216 optimizer_control_name;
     basic_string_23d93216 optimizer_control_end_name;
+    NSArray *infInputNames;
+    NSArray *infOutputNames;
+    NSArray *trainInputNames;
+    NSArray *trainOutputNames;
+    unordered_map_1de83e55 infInputBlobShapes;
+    unordered_map_1de83e55 trainInputBlobShapes;
+    unordered_map_1de83e55 infOutputBlobShapes;
+    unordered_map_1de83e55 trainOutputBlobShapes;
     ETModelDefinition *_inferenceModel;
     ETOptimizerDefinition *_optimizer;
     unsigned long long _platform;
     ETTaskState *_taskState;
-    unsigned long long _batchSize;
-    NSArray *_outputNames;
     shared_ptr_d082c67d _inferenceGraphNetPtr;
     shared_ptr_d082c67d _trainingGraphNetPtr;
-    vector_ebb6ef3e _non_batches;
-    unordered_map_1de83e55 _blobShapes;
 }
 
-@property unsigned long long batchSize; // @synthesize batchSize=_batchSize;
-@property unordered_map_1de83e55 blobShapes; // @synthesize blobShapes=_blobShapes;
 @property shared_ptr_d082c67d inferenceGraphNetPtr; // @synthesize inferenceGraphNetPtr=_inferenceGraphNetPtr;
 @property (strong, nonatomic) ETModelDefinition *inferenceModel; // @synthesize inferenceModel=_inferenceModel;
-@property vector_ebb6ef3e non_batches; // @synthesize non_batches=_non_batches;
 @property (strong, nonatomic) ETOptimizerDefinition *optimizer; // @synthesize optimizer=_optimizer;
-@property (strong) NSArray *outputNames; // @synthesize outputNames=_outputNames;
 @property (nonatomic) unsigned long long platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) ETTaskState *taskState; // @synthesize taskState=_taskState;
 @property shared_ptr_d082c67d trainingGraphNetPtr; // @synthesize trainingGraphNetPtr=_trainingGraphNetPtr;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)checkShapes:(const unordered_map_1de83e55 *)arg1 withSample:(const unordered_map_74b681bc *)arg2 withError:(id *)arg3;
+- (shared_ptr_ae8b808b)context_for_runtime_platform:(id *)arg1;
 - (unsigned long long)dataTypeForParameterOfType:(unsigned long long)arg1 fromLayerNamed:(id)arg2;
 - (id)description;
 - (id)doInferenceOnData:(id)arg1 error:(id *)arg2;
@@ -54,12 +57,19 @@
 - (id)getParameterOfType:(unsigned long long)arg1 forLayerNamed:(id)arg2 error:(id *)arg3;
 - (id)getTensorNamed:(id)arg1;
 - (id)initWithModelDefinition:(id)arg1 lossDefinition:(id)arg2 variablesDefinition:(id)arg3 optimizerDefinition:(id)arg4 forPlatform:(unsigned long long)arg5 error:(id *)arg6;
+- (id)initWithTrainingModelDefinition:(id)arg1 forPlatform:(unsigned long long)arg2 error:(id *)arg3;
 - (id)namesVectorToFoundationArray:(vector_ebb6ef3e)arg1;
 - (unsigned long long)platformForLayerNamed:(id)arg1 error:(id *)arg2;
-- (void)reloadOnRuntinePlatform:(id *)arg1;
-- (BOOL)saveInferenceNetwork:(id)arg1 error:(id *)arg2;
+- (BOOL)privateDoTrainingOnData:(id)arg1 forNumberOfEpochs:(unsigned long long)arg2 withCallback:(id)arg3 error:(id *)arg4;
+- (void)reloadOnRuntimePlatform:(id *)arg1;
 - (BOOL)saveNetwork:(id)arg1 inplace:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)saveTrainingNetwork:(id)arg1 checkpoint:(id)arg2 error:(id *)arg3;
+- (BOOL)setInferenceNetworkWeights:(shared_ptr_d082c67d)arg1 error:(id *)arg2;
+- (BOOL)setParameterOfType:(unsigned long long)arg1 forLayerNamed:(id)arg2 withValue:(id)arg3 error:(id *)arg4;
 - (BOOL)setTensorNamed:(id)arg1 withValue:(id)arg2 error:(id *)arg3;
+- (BOOL)setWeightsOfInferenceNetworkLoadedFrom:(id)arg1 AndSaveTo:(id)arg2 error:(id *)arg3;
+- (void)setupInputOutputShapes:(id *)arg1;
+- (void)setupShapes:(unordered_map_1de83e55 *)arg1 forBlobs:(id)arg2 withError:(id *)arg3;
 - (void)shareWeights;
 
 @end

@@ -16,5 +16,6 @@
 - (void)itemChanged:(id<PKDashboardItem>)arg1 atIndexPath:(NSIndexPath *)arg2;
 - (void)performBatchUpdates:(void (^)(void))arg1 completion:(void (^)(BOOL))arg2;
 - (void)reloadSections:(NSIndexSet *)arg1;
+- (void)updateContent;
 @end
 

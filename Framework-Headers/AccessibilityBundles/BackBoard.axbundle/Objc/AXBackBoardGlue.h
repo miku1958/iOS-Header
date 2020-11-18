@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_loadAuxiliaryBundles;
 + (void)_repeatAggregateStatistics;
 + (int)accessibilityUIServerPid;
 + (int)assistiveTouchPid;
@@ -51,6 +52,7 @@
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;
 - (void)setFullKeyboardAccessDaemonPID:(int)arg1;
 - (void)setHearingAidServerPid:(int)arg1;
+- (void)setIsSpeakScreenHighlightVisible:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setSiriViewServicePid:(int)arg1;
 - (void)userEventOccurred;

@@ -44,6 +44,7 @@
     NSString *_ratingLabel;
     NSNumber *_ratingRank;
     NSString *_releaseDate;
+    NSString *_assetToken;
     NSString *_softwareVersionBundleID;
     NSNumber *_softwareVersionExternalIdentifier;
     NSString *_sourceApp;
@@ -53,6 +54,7 @@
     NSString *_genre;
     NSNumber *_genreID;
     NSArray *_subGenres;
+    NSArray *_categories;
     NSString *_referrerURL;
     NSString *_referrerApp;
     NSString *_enterpriseInstallURL;
@@ -65,9 +67,11 @@
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
+@property (copy, nonatomic) NSString *assetToken; // @synthesize assetToken=_assetToken;
 @property (strong, nonatomic) NSNumber *betaExternalVersionIdentifier; // @synthesize betaExternalVersionIdentifier=_betaExternalVersionIdentifier;
 @property (copy, nonatomic) NSString *bundleShortVersionString; // @synthesize bundleShortVersionString=_bundleShortVersionString;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property (nonatomic) BOOL deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property (strong, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
 @property (copy, nonatomic) NSString *enterpriseInstallURL; // @synthesize enterpriseInstallURL=_enterpriseInstallURL;

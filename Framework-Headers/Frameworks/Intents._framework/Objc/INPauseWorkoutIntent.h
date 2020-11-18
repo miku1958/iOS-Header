@@ -21,6 +21,7 @@
 @property (readonly, copy, nonatomic) INSpeakableString *workoutName;
 
 - (id)_dictionaryRepresentation;
+- (BOOL)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;

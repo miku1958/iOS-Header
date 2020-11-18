@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSData *fc_sentinel_encryptionKey;
 @property (nonatomic) BOOL fc_sentinel_finishedDeletion;
 @property (nonatomic) BOOL fc_sentinel_finishedMigration;
+@property (nonatomic) BOOL fc_sentinel_finishedSubscriptionDeletion;
+@property (nonatomic) BOOL fc_sentinel_finishedSubscriptionMigration;
 @property (nonatomic) unsigned long long fc_sentinel_version;
 
 + (id)secureSentinelRecordWithEncryptionKey:(id)arg1;

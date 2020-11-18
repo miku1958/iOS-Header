@@ -8,7 +8,7 @@
 
 #import <ToneKit/TKPickerContainerItem-Protocol.h>
 
-@class NSString, TKTonePickerController, TKTonePickerSectionItem;
+@class NSArray, NSString, TKTonePickerSectionItem;
 
 @interface TKTonePickerItem : TKPickerSelectableItem <TKPickerContainerItem>
 {
@@ -17,11 +17,11 @@
     BOOL _needsDownloadProgress;
     float _downloadProgress;
     unsigned long long _itemKind;
-    TKTonePickerController *__parentTonePickerController;
-    long long _numberOfChildren;
+    TKTonePickerSectionItem *_parentSectionItem;
+    NSArray *_childrenToneClassicsPickerItems;
 }
 
-@property (weak, nonatomic, setter=_setParentTonePickerController:) TKTonePickerController *_parentTonePickerController; // @synthesize _parentTonePickerController=__parentTonePickerController;
+@property (copy, nonatomic, setter=_setChildrenToneClassicsPickerItems:) NSArray *childrenToneClassicsPickerItems; // @synthesize childrenToneClassicsPickerItems=_childrenToneClassicsPickerItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, setter=_setDownloadProgress:) float downloadProgress; // @synthesize downloadProgress=_downloadProgress;
@@ -30,8 +30,8 @@
 @property (nonatomic, setter=_setNeedsActivityIndicator:) BOOL needsActivityIndicator; // @synthesize needsActivityIndicator=_needsActivityIndicator;
 @property (nonatomic, setter=_setNeedsDownloadProgress:) BOOL needsDownloadProgress; // @synthesize needsDownloadProgress=_needsDownloadProgress;
 @property (nonatomic, setter=_setNeedsRoomForCheckmark:) BOOL needsRoomForCheckmark; // @synthesize needsRoomForCheckmark=_needsRoomForCheckmark;
-@property (nonatomic, setter=_setNumberOfChildren:) long long numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
-@property (readonly, nonatomic) TKTonePickerSectionItem *parentSectionItem;
+@property (readonly, nonatomic) long long numberOfChildren;
+@property (weak, nonatomic, setter=_setParentSectionItem:) TKTonePickerSectionItem *parentSectionItem; // @synthesize parentSectionItem=_parentSectionItem;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

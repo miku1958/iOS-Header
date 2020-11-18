@@ -33,6 +33,7 @@
 - (void)addSettingModel:(id)arg1;
 - (id)initForInitialCreationWithTransactionLabel:(id)arg1;
 - (id)initWithTransactionLabel:(id)arg1;
+- (void)removeModelWithIdentifier:(id)arg1;
 
 @end
 

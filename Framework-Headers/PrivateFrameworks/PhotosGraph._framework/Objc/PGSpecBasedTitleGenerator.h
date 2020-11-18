@@ -13,7 +13,7 @@
 
 @interface PGSpecBasedTitleGenerator : NSObject <PGTitleSpecDelegate>
 {
-    NSSet *_moments;
+    NSSet *_momentNodes;
     NSSet *_features;
     PGTitleSpecCollection *_specCollection;
     PGTitle *_title;
@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSSet *features; // @synthesize features=_features;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long lineBreakBehavior; // @synthesize lineBreakBehavior=_lineBreakBehavior;
-@property (strong, nonatomic) NSSet *moments; // @synthesize moments=_moments;
+@property (strong, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property (strong, nonatomic) PGTitleSpecCollection *specCollection; // @synthesize specCollection=_specCollection;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PGTitle *title; // @synthesize title=_title;
@@ -35,10 +35,12 @@
 - (void).cxx_destruct;
 - (id)_title;
 - (id)_titleFromSpecs:(id)arg1;
-- (id)initWithMoments:(id)arg1 features:(id)arg2 meaningLabel:(id)arg3 isAggregation:(BOOL)arg4;
-- (id)initWithMoments:(id)arg1 features:(id)arg2 specCollection:(id)arg3;
-- (id)initWithMoments:(id)arg1 meaningLabel:(id)arg2;
-- (id)initWithMoments:(id)arg1 memoryCategory:(unsigned long long)arg2 subcategory:(unsigned long long)arg3;
+- (id)initWithMomentNodes:(id)arg1 features:(id)arg2 meaningLabel:(id)arg3 isAggregation:(BOOL)arg4;
+- (id)initWithMomentNodes:(id)arg1 features:(id)arg2 specCollection:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 meaningLabel:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 memoryCategory:(unsigned long long)arg2 subcategory:(unsigned long long)arg3;
+- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 memoryCategory:(unsigned long long)arg3 subcategory:(unsigned long long)arg4;
+- (id)initWithMomentNodes:(id)arg1 specCollection:(id)arg2;
 - (id)titleSpec:(id)arg1 inputForArgument:(id)arg2;
 
 @end

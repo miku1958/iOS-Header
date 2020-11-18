@@ -17,10 +17,12 @@
     NSDictionary *_passwordRequirementsByDomain;
     NSArray *_domainsIneligibleForPasswordAuditing;
     NSArray *_domainsToConsiderIdentical;
+    NSDictionary *_changePasswordURLsByDomain;
     NSSet *_domainsIneligibleForAutomaticLogin;
     NSSet *_domainsIneligibleForStreamlinedLogin;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *changePasswordURLsByDomain; // @synthesize changePasswordURLsByDomain=_changePasswordURLsByDomain;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSSet *domainsIneligibleForAutomaticLogin; // @synthesize domainsIneligibleForAutomaticLogin=_domainsIneligibleForAutomaticLogin;
@@ -33,6 +35,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_changePasswordURLStringsByDomainFromAutoFillQuirks:(id)arg1 error:(id *)arg2;
 - (id)_domainsIneligibleForAutomaticLoginFromAutoFillQuirks:(id)arg1 error:(id *)arg2;
 - (id)_domainsIneligibleForPasswordAuditingFromAutoFillQuirks:(id)arg1 error:(id *)arg2;
 - (id)_domainsIneligibleForStreamlinedLoginFromAutoFillQuirks:(id)arg1 error:(id *)arg2;

@@ -8,6 +8,8 @@
 
 @interface CALayer (WebCoreCALayerExtras)
 + (id)_web_renderLayerWithContextID:(unsigned int)arg1;
+- (BOOL)_web_maskContainsPoint:(struct CGPoint)arg1;
+- (BOOL)_web_maskMayIntersectRect:(struct CGRect)arg1;
 - (void)_web_setLayerBoundsOrigin:(struct CGPoint)arg1;
 - (void)_web_setLayerTopLeftPosition:(struct CGPoint)arg1;
 - (void)web_disableAllActions;

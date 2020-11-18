@@ -12,7 +12,7 @@
 
 - (BOOL)canRunWithOptions:(id)arg1;
 - (id)details;
-- (id)meNodeLocalIdentifierForInput:(id)arg1;
+- (id)filterMeNodePredicateForInput:(id)arg1;
 - (id)name;
 - (id)suggestedResultsForInput:(id)arg1 withOptions:(id)arg2;
 - (double)weight;

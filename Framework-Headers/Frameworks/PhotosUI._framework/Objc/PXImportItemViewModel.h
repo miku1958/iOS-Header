@@ -9,7 +9,7 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSString, PHImportAsset, PHImportAssetDataRequest, PXImportAssetCollection;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSString, PHImportAsset, PHImportAssetDataRequest, PXImportAssetCollection;
 @protocol PXImportDisplayDelegate;
 
 @interface PXImportItemViewModel : PXObservable <PXDisplayAsset, NSCopying>
@@ -56,7 +56,7 @@
 @property (readonly, nonatomic) NSDate *fileCreationDate;
 @property (readonly, nonatomic) NSString *fileName;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (nonatomic) double imageProcessingEndTime; // @synthesize imageProcessingEndTime=_imageProcessingEndTime;
 @property (nonatomic) double imageProcessingStartTime; // @synthesize imageProcessingStartTime=_imageProcessingStartTime;
 @property (readonly, nonatomic) NSDictionary *imageRepresentations;
@@ -64,6 +64,7 @@
 @property (readonly, nonatomic) PHImportAsset *importAsset; // @synthesize importAsset=_importAsset;
 @property (readonly, nonatomic) NSDate *importDate;
 @property (readonly, nonatomic) NSDate *importDate; // @synthesize importDate=_importDate;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isDeleted; // @synthesize isDeleted=_isDeleted;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;

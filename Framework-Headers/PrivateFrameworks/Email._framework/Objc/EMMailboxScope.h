@@ -15,6 +15,7 @@
 
 @interface EMMailboxScope : NSObject <EFCacheable, EFPubliclyDescribable, NSCopying, NSSecureCoding>
 {
+    unsigned long long _hash;
     BOOL _excludeTypes;
     BOOL _excludeMailboxes;
     NSSet *_mailboxTypes;
@@ -42,6 +43,7 @@
 + (id)noMailboxesScope;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_calculateHash;
 - (id)_mailboxObjectIDsDescriptionIsDebug:(BOOL)arg1;
 - (id)_mailboxObjectIDsForTypesWithMailboxTypeResolver:(id)arg1;
 - (id)_mailboxTypesDescription;

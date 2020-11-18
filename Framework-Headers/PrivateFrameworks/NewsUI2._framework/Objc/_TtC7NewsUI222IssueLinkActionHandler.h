@@ -13,6 +13,8 @@
     MISSING_TYPE *navigator;
     MISSING_TYPE *issue;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *urlHandler;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

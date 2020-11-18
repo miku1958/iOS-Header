@@ -90,7 +90,6 @@
 - (id)dateSent;
 - (double)dateSentAsTimeIntervalSince1970;
 - (id)defaultAlternativeInPart:(id)arg1;
-- (void)deleteBodyData;
 - (BOOL)fetchDataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 withConsumer:(id)arg3 isComplete:(BOOL *)arg4 downloadIfNecessary:(BOOL)arg5;
 - (unsigned long long)fileSize;
 - (id)firstSender;

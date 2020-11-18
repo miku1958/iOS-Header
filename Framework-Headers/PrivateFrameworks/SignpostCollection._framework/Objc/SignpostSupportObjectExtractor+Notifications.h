@@ -10,6 +10,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType timedOutBeginEventProcessingBlock;
 
+- (BOOL)_processLogEventStream:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 errorOut:(id *)arg4;
 - (void)_processOSLogEventProxy:(id)arg1;
 - (void)_processStreamedOSLogEventProxy:(id)arg1 shouldCalculateFramerate:(BOOL)arg2;
 - (BOOL)processLogArchiveWithPath:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 errorOut:(id *)arg4;

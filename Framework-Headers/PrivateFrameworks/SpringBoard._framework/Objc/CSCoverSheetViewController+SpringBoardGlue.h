@@ -18,5 +18,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 @end
 

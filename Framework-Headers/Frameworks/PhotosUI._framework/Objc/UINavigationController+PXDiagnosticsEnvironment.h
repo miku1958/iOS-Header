@@ -6,32 +6,30 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class PXSnapBackController;
-
 @interface UINavigationController (PXDiagnosticsEnvironment)
-
-@property (readonly, nonatomic) PXSnapBackController *px_snapBackController;
-
 + (id)px_defaultDelegateForNavigationController:(id)arg1;
 + (id)px_navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 + (id)px_navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
 + (id)px_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
 - (void)_ppt_setTransitionAnimationCompletionHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_ppt_transitionAnimationCompletionHandler;
-- (void)_px_prepareNavigationFromViewController:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)canRouteToDestination:(id)arg1;
+- (void)_px_prepareNavigationFromViewController:(id)arg1 routingOptions:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
 - (void)ppt_installTransitionAnimationCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_notifyTransitionAnimationDidComplete;
 - (double)px_HDRFocus;
 - (BOOL)px_allowsTabSwitching;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (id)px_endPointForTransition:(id)arg1;
 - (double)px_imageModulationIntensity;
 - (BOOL)px_isImageModulationEnabled;
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)px_popToViewControllerPreceedingViewController:(id)arg1 animated:(BOOL)arg2;
+- (id)px_navigationDestination;
+- (id)px_popToViewControllerPrecedingViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)px_preparePopToViewController:(id)arg1 forced:(BOOL)arg2;
 - (void)px_pushViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)px_topViewController;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 @end
 

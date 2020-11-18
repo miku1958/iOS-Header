@@ -52,10 +52,12 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_completeTask:(id)arg1 decodedObject:(id)arg2 error:(id)arg3;
 - (id)_createSharedDataForTask:(id)arg1 properties:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_formatError:(id)arg1 task:(id)arg2 decodedObject:(id)arg3;
 - (id)_handleURLAction:(id)arg1 task:(id)arg2 error:(id *)arg3;
 - (id)_prepareRequest:(id)arg1 properties:(id)arg2 error:(id *)arg3;
 - (void)_retryTask:(id)arg1 action:(id)arg2 error:(id *)arg3;
 - (id)dataTaskPromiseWithRequest:(id)arg1;
+- (id)dataTaskPromiseWithRequestPromise:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

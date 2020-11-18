@@ -22,8 +22,10 @@
 @property (strong) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithAction:(id)arg1 item:(id)arg2;
 - (id)searchableItem;
+- (void)updateWithItem:(id)arg1;
 
 @end
 

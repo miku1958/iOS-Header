@@ -13,6 +13,7 @@
     MISSING_TYPE *audioDataManager;
     MISSING_TYPE *headlineService;
     MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *feedPaywallConfigFactory;
     MISSING_TYPE *bundlePurchasePrewarmer;
 }
 

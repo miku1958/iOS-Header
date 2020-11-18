@@ -6,19 +6,24 @@
 
 #import <NotesUI/ICLinkPresentationActivityItemSource.h>
 
+@class UIImage;
 @protocol ICSearchIndexableNote;
 
 @interface ICNoteLinkPresentationActivityItemSource : ICLinkPresentationActivityItemSource
 {
     id<ICSearchIndexableNote> _note;
+    UIImage *_thumbnailImage;
 }
 
 @property (strong) id<ICSearchIndexableNote> note; // @synthesize note=_note;
+@property (strong, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 
 - (void).cxx_destruct;
 - (id)detail;
+- (id)iconImage;
 - (id)init;
 - (id)initWithNote:(id)arg1;
+- (id)initWithNote:(id)arg1 thumbnailImage:(id)arg2;
 - (id)title;
 
 @end

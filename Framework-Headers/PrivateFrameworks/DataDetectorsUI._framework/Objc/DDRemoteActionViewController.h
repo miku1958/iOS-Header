@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_prepareForAction:(id)arg1 inActionController:(id)arg2;
 - (void)actionCanBeCancelledExternally:(BOOL)arg1;
-- (void)actionDidFinish;
+- (void)actionDidFinishShouldDismiss:(BOOL)arg1;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)getIsBeingPresentedInPopover:(CDUnknownBlockType)arg1;
 - (void)viewControllerReady;

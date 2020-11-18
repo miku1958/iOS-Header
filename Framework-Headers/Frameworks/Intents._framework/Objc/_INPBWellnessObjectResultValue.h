@@ -17,14 +17,12 @@
     struct {
         unsigned int resultType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _resultType;
     _INPBDateTimeRange *_recordDate;
     _INPBString *_unit;
     NSArray *_values;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasRecordDate;

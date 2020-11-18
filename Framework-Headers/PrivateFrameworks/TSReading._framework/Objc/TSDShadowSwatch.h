@@ -27,7 +27,6 @@
 - (id)initWithShadow:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)p_drawContactShadowInContext:(struct CGContext *)arg1 inRect:(struct CGRect)arg2 forShadow:(id)arg3 forImage:(struct CGImage *)arg4 forSwatchRect:(struct CGRect)arg5;
-- (void)p_drawCurvedShadowInContext:(struct CGContext *)arg1 inRect:(struct CGRect)arg2 forShadow:(id)arg3 forImage:(struct CGImage *)arg4 forSwatchRect:(struct CGRect)arg5;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 
 @end

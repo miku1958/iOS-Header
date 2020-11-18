@@ -18,9 +18,9 @@
     PHRelationshipChangeRequestHelper *_keyFaceHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
@@ -32,10 +32,10 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic) long long personBuilderState;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedFaceGroup;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (nonatomic) long long unnamedFaceCount;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForFaceGroup:(id)arg1;
 + (id)creationRequestForFaceGroup;
 + (void)deleteFaceGroups:(id)arg1;
@@ -54,8 +54,6 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeFaces:(id)arg1;
 - (void)setKeyFace:(id)arg1;
 

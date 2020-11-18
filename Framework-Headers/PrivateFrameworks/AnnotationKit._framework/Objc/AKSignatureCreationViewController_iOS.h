@@ -41,7 +41,7 @@
 - (void)_cancel:(id)arg1;
 - (void)_clear:(id)arg1;
 - (void)_done:(id)arg1;
-- (void)_setToolPickerVisible;
+- (void)_notifyDidDismiss;
 - (void)_validateButtons;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
@@ -50,9 +50,11 @@
 - (void)loadView;
 - (long long)positionForBar:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

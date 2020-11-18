@@ -47,6 +47,9 @@
 @property (nonatomic) BOOL usesCustomBackgroundColor; // @synthesize usesCustomBackgroundColor=_usesCustomBackgroundColor;
 @property (strong, nonatomic) UILayoutGuide *yCenteringGuide; // @synthesize yCenteringGuide=_yCenteringGuide;
 
++ (id)instructionsForManeuver:(id)arg1;
++ (id)junctionImageForManeuver:(id)arg1;
++ (id)symbolImageForManeuver:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activateFullLayoutConstraints;
 - (void)_activateFullLayoutWideImageConstraints;
@@ -66,8 +69,8 @@
 - (id)_fullSubtitleNextToImageConstraints;
 - (void)_generateLayoutConfigurationsForSizeIfNecessary:(struct CGSize)arg1 force:(BOOL)arg2;
 - (id)_init;
-- (id)_junctionViewNoInstructionConstraints;
 - (id)_junctionViewNoInstructionWideImageConstraints;
+- (id)_junctionViewNoSubtitleConstraints;
 - (id)_minimalLayoutConstraints;
 - (id)_minimalLayoutWideImageConstraints;
 - (id)_subtitleFont;

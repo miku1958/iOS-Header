@@ -10,12 +10,11 @@
 
 @interface _TtC8VideosUI23MessageLockupViewLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *logoLayout;
-    MISSING_TYPE *titleTextLayout;
-    MISSING_TYPE *subtitleTextLayout;
-    MISSING_TYPE *dividerViewLayout;
-    MISSING_TYPE *subtitleMargin;
-    MISSING_TYPE *chevronImageMargin;
+    MISSING_TYPE *$__lazy_storage_$_logoLayout;
+    MISSING_TYPE *$__lazy_storage_$_titleTextLayout;
+    MISSING_TYPE *$__lazy_storage_$_subtitleTextLayout;
+    MISSING_TYPE *$__lazy_storage_$_dividerViewLayout;
+    MISSING_TYPE *$__lazy_storage_$_decorationImageLayout;
 }
 
 @end

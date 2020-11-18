@@ -74,6 +74,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2;
+- (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2 clockTimer:(id)arg3;
 - (id)labelManagerContentView;
 - (void)layoutSubviews;
 - (void)prepareToTransitionToStyle:(id)arg1;
@@ -89,6 +90,7 @@
 - (struct CGSize)styleTransitionCurrentSize;
 - (struct CGSize)styleTransitionEndSize;
 - (void)timeFormatterTextDidChange:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

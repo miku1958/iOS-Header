@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, VCVideoRuleCollections;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorVideoResults : NSObject
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     unsigned int _customVideoWidth;
     unsigned int _customVideoHeight;
     unsigned int _tilesPerFrame;
+    NSMutableSet *_pixelFormats;
+    BOOL _ltrpEnabled;
 }
 
 @property (nonatomic) unsigned int customVideoHeight; // @synthesize customVideoHeight=_customVideoHeight;
@@ -27,13 +29,16 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *featureStrings; // @synthesize featureStrings=_featureStrings;
 @property (nonatomic) BOOL isRTCPFBEnabled; // @synthesize isRTCPFBEnabled=_isRTCPFBEnabled;
 @property (nonatomic) BOOL isSupported; // @synthesize isSupported=_isSupported;
+@property (nonatomic) BOOL ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
 @property (strong, nonatomic) NSDictionary *parameterSets; // @synthesize parameterSets=_parameterSets;
+@property (readonly, nonatomic) NSSet *pixelFormats; // @synthesize pixelFormats=_pixelFormats;
 @property (nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
 @property (nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
 @property (readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
 
 - (void)addFeatureString:(id)arg1 key:(id)arg2;
 - (void)addParameterSet:(id)arg1 key:(id)arg2;
+- (void)addPixelFormatSet:(id)arg1;
 - (void)addVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
 - (void)dealloc;
 - (id)init;

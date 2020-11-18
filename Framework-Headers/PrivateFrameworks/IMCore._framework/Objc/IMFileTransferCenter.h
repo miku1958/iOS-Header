@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+#import <IMCore/IMFileTransferCenter-Protocol.h>
 
-@interface IMFileTransferCenter : NSObject
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+
+@interface IMFileTransferCenter : NSObject <IMFileTransferCenter>
 {
     NSMutableDictionary *_guidToTransferMap;
     NSMutableDictionary *_guidToRemovedTransferMap;
@@ -19,14 +21,20 @@
     NSMutableSet *_pendingTransfers;
     BOOL _disconnectionListenerSetUp;
     NSMutableDictionary *_fetchHighQualityVariantCompletionHandlers;
+    BOOL _issueSandboxEstensionsForTransfers;
 }
 
 @property (readonly, nonatomic) NSArray *activeTransferGUIDs;
 @property (readonly, weak, nonatomic) NSArray *activeTransfers;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasActiveFileTransfers;
 @property (readonly, nonatomic) BOOL hasPendingFileTransfers;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=shouldIssueSandboxEstensionsForTransfers) BOOL issueSandboxEstensionsForTransfers; // @synthesize issueSandboxEstensionsForTransfers=_issueSandboxEstensionsForTransfers;
 @property (readonly, weak, nonatomic) NSArray *orderedTransfers;
 @property (readonly, nonatomic) NSArray *orderedTransfersGUIDs;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDictionary *transfers;
 
 + (Class)fileTransferClass;
@@ -67,6 +75,7 @@
 - (BOOL)doesLocalURLRequireArchiving:(id)arg1 toHandle:(id)arg2;
 - (void)fetchHighQualityVariantForTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1;
+- (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1 useLegacyGuid:(BOOL)arg2;
 - (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (BOOL)isFileTransfer:(id)arg1 preauthorizedWithDictionary:(id)arg2;
 - (void)preWarmConnection;

@@ -14,7 +14,7 @@
 #import <C2/NSURLSessionTaskDelegate-Protocol.h>
 #import <C2/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
-@class C2RequestOptions, NSMutableDictionary, NSOperationQueue, NSString, NSURLSession;
+@class C2RequestOptions, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSession;
 @protocol C2SessionDelegate;
 
 @interface C2Session : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, C2RequestDelegate, C2SessionTaskDelegate>
@@ -26,18 +26,21 @@
     NSString *_originalHost;
     NSString *_routeHost;
     double _routeLastUpdated;
+    NSMutableSet *_didCompleteWithErrorRunningTasks;
     id<C2SessionDelegate> _sessionDelegate;
-    double _emptyTimestamp;
+    long long _emptyTimestamp;
     NSMutableDictionary *_wrappedTaskByTaskDescription;
     NSOperationQueue *_queue;
     CDUnknownBlockType _testBehavior_sessionInvalidated_cfnetwork;
     CDUnknownBlockType _testBehavior_sessionInvalidated_shouldInvalidate;
     CDUnknownBlockType _testBehavior_cleanupRetainCycle;
+    CDUnknownBlockType _testBehavior_callbackHung;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double emptyTimestamp; // @synthesize emptyTimestamp=_emptyTimestamp;
+@property (strong, nonatomic) NSMutableSet *didCompleteWithErrorRunningTasks; // @synthesize didCompleteWithErrorRunningTasks=_didCompleteWithErrorRunningTasks;
+@property (nonatomic) long long emptyTimestamp; // @synthesize emptyTimestamp=_emptyTimestamp;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isComplete; // @synthesize isComplete=_isComplete;
 @property (readonly, copy, nonatomic) C2RequestOptions *options; // @synthesize options=_options;
@@ -49,6 +52,7 @@
 @property (readonly, nonatomic) NSString *sessionConfigurationName; // @synthesize sessionConfigurationName=_sessionConfigurationName;
 @property (strong, nonatomic) id<C2SessionDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType testBehavior_callbackHung; // @synthesize testBehavior_callbackHung=_testBehavior_callbackHung;
 @property (copy, nonatomic) CDUnknownBlockType testBehavior_cleanupRetainCycle; // @synthesize testBehavior_cleanupRetainCycle=_testBehavior_cleanupRetainCycle;
 @property (copy, nonatomic) CDUnknownBlockType testBehavior_sessionInvalidated_cfnetwork; // @synthesize testBehavior_sessionInvalidated_cfnetwork=_testBehavior_sessionInvalidated_cfnetwork;
 @property (copy, nonatomic) CDUnknownBlockType testBehavior_sessionInvalidated_shouldInvalidate; // @synthesize testBehavior_sessionInvalidated_shouldInvalidate=_testBehavior_sessionInvalidated_shouldInvalidate;
@@ -67,6 +71,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 _conditionalRequirementsChanged:(BOOL)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -80,6 +85,7 @@
 - (void)removeTask:(id)arg1;
 - (void)sessionTaskDelegateCallbackHelper:(id)arg1 task:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)shouldInvalidateAndCancel;
+- (void)testBehavior_triggerCallbackHang;
 - (void)testBehavior_triggerSessionExpiry;
 
 @end

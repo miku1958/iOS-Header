@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 
 - (void).cxx_destruct;
+- (void)cancel;
 - (id)description;
 - (id)init;
 - (id)initWithDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;

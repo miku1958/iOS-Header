@@ -6,32 +6,49 @@
 
 #import <MetricsKit/MTObject.h>
 
-@class MTCallerSuppliedFields, MTPromise, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class MTCallerSuppliedFields, MTPromise, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 
 @interface MTMetricsData : MTObject
 {
-    MTCallerSuppliedFields *_callerSuppliedFields;
+    BOOL _anonymous;
+    NSArray *_registeredEventData;
     NSDictionary *_baseFields;
+    NSArray *_additionalBaseData;
     NSDictionary *_eventSpecificFields;
+    NSArray *_additionalEventData;
     MTPromise *_configBaseFields;
+    MTCallerSuppliedFields *_callerSuppliedFields;
+    NSMutableArray *_additionalData;
     NSMutableDictionary *_performanceData;
     NSMutableArray *_postProcessingBlocks;
 }
 
+@property (strong, nonatomic) NSArray *additionalBaseData; // @synthesize additionalBaseData=_additionalBaseData;
+@property (strong, nonatomic) NSMutableArray *additionalData; // @synthesize additionalData=_additionalData;
+@property (strong, nonatomic) NSArray *additionalEventData; // @synthesize additionalEventData=_additionalEventData;
+@property (nonatomic, getter=isAnonymous, setter=setAnonymous:) BOOL anonymous; // @synthesize anonymous=_anonymous;
 @property (strong, nonatomic) NSDictionary *baseFields; // @synthesize baseFields=_baseFields;
 @property (strong, nonatomic) MTCallerSuppliedFields *callerSuppliedFields; // @synthesize callerSuppliedFields=_callerSuppliedFields;
 @property (strong, nonatomic) MTPromise *configBaseFields; // @synthesize configBaseFields=_configBaseFields;
 @property (strong, nonatomic) NSDictionary *eventSpecificFields; // @synthesize eventSpecificFields=_eventSpecificFields;
 @property (strong, nonatomic) NSMutableDictionary *performanceData; // @synthesize performanceData=_performanceData;
 @property (strong, nonatomic) NSMutableArray *postProcessingBlocks; // @synthesize postProcessingBlocks=_postProcessingBlocks;
+@property (strong, nonatomic) NSArray *registeredEventData; // @synthesize registeredEventData=_registeredEventData;
 
 - (void).cxx_destruct;
+- (void)addFields:(id)arg1;
+- (void)addFieldsWithDictionary:(id)arg1;
+- (void)addFieldsWithPromise:(id)arg1;
 - (void)addPostProcessingBlock:(CDUnknownBlockType)arg1;
+- (void)addPostProcessingBlocks:(id)arg1;
 - (void)cancelUnfinishedPromisedEventData;
 - (id)composeFieldsMaps;
-- (id)description;
+- (id)debugDescription;
+- (id)getAdditionalData;
+- (id)getPostProcessingBlocks;
 - (id)recordEvent;
 - (id)toDictionary;
+- (id)userAndClientIDFields;
 
 @end
 

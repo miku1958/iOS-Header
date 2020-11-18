@@ -15,17 +15,7 @@
 @property (readonly, nonatomic) FBSceneUpdateContext *updateContext;
 @property (readonly, nonatomic) FBWatchdogTransitionContext *watchdogTransitionContext;
 
-+ (long long)_mapNewPolicyFromOldPolicy:(long long)arg1;
-+ (long long)_mapOldPolicyFromNewPolicy:(long long)arg1;
-- (BOOL)runWatchdogIndependently;
-- (void)setRunWatchdogIndependently:(BOOL)arg1;
 - (void)setUpdateContext:(id)arg1;
-- (void)setWatchdogExtension:(double)arg1;
-- (void)setWatchdogPolicy:(long long)arg1;
-- (void)setWatchdogScaleFactor:(double)arg1;
 - (void)setWatchdogTransitionContext:(id)arg1;
-- (double)watchdogExtension;
-- (long long)watchdogPolicy;
-- (double)watchdogScaleFactor;
 @end
 

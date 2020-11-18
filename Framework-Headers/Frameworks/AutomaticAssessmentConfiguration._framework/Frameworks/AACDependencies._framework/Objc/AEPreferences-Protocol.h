@@ -7,5 +7,31 @@
 #import <AACDependencies/NSObject-Protocol.h>
 
 @protocol AEPreferences <NSObject>
+
+@property (nonatomic) BOOL createAssessmentFile;
+@property (nonatomic) BOOL disableContinuity;
+@property (nonatomic) BOOL disableSiri;
+@property (nonatomic) BOOL disableTrackpadLookup;
+@property (nonatomic) BOOL enterSandbox;
+@property (nonatomic) BOOL pauseMedia;
+@property (nonatomic) BOOL presentShields;
+@property (nonatomic) BOOL restrictContentCapture;
+@property (nonatomic) BOOL restrictFrontmostApp;
+@property (nonatomic) BOOL restrictNetworkAccess;
+@property (nonatomic) BOOL scrubPasteboard;
+@property (nonatomic) BOOL stopAirPlayBeforehand;
+
+- (BOOL)shouldCreateAssessmentFile;
+- (BOOL)shouldDisableContinuity;
+- (BOOL)shouldDisableSiri;
+- (BOOL)shouldDisableTrackpadLookup;
+- (BOOL)shouldEnterSandbox;
+- (BOOL)shouldPauseMedia;
+- (BOOL)shouldPresentShields;
+- (BOOL)shouldRestrictContentCapture;
+- (BOOL)shouldRestrictFrontmostApp;
+- (BOOL)shouldRestrictNetworkAccess;
+- (BOOL)shouldScrubPasteboard;
+- (BOOL)shouldStopAirplayBeforehand;
 @end
 

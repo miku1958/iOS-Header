@@ -6,18 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-#import <NanoTimeKitCompanion/CLKTimeFormatterObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CAGradientLayer, CALayer, CLKDevice, NSDate, NSNumber, NSString, NTKBigNumeralsTimeComponentLabel;
+@class CAGradientLayer, CALayer, CLKClockTimerToken, CLKDevice, NSDate, NSString, NTKBigNumeralsTimeComponentLabel;
+@protocol NTKBigNumeralsDigitalTimeViewDelegate;
 
-@interface NTKBigNumeralsDigitalTimeView : UIView <CLKTimeFormatterObserver, NTKTimeView>
+@interface NTKBigNumeralsDigitalTimeView : UIView <NTKTimeView>
 {
     CLKDevice *_device;
     NTKBigNumeralsTimeComponentLabel *_topLabel;
     NTKBigNumeralsTimeComponentLabel *_bottomLabel;
+    double _statusBarTransitionFraction;
     NSDate *_overrideDate;
-    NSNumber *_timerToken;
+    CLKClockTimerToken *_timerToken;
     CAGradientLayer *_gradientLayer;
     CALayer *_topLabelColorLayer;
     CALayer *_bottomLabelColorLayer;
@@ -27,10 +28,12 @@
     unsigned long long _style;
     unsigned long long _typeface;
     unsigned long long _color;
+    id<NTKBigNumeralsDigitalTimeViewDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) unsigned long long color; // @synthesize color=_color;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NTKBigNumeralsDigitalTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFrozen) BOOL frozen; // @synthesize frozen=_frozen;
 @property (readonly) unsigned long long hash;

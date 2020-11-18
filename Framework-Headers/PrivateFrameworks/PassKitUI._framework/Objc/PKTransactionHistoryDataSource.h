@@ -8,15 +8,17 @@
 
 #import <PassKitUI/PKDashboardDataSource-Protocol.h>
 #import <PassKitUI/PKDashboardTransactionFetcherDelegate-Protocol.h>
+#import <PassKitUI/PKWorldRegionUpdaterObserver-Protocol.h>
 
-@class CNContact, NSArray, NSCalendar, NSDateFormatter, NSString, PKAccount, PKAccountServiceAccountResolutionController, PKCurrencyAmount, PKDashboardTransactionFetcher, PKInstallmentPlan, PKMerchant, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionGroup, PKPeerPaymentContactResolver, PKTransactionReceipt;
+@class CNContact, NSArray, NSCalendar, NSDateFormatter, NSIndexPath, NSString, PKAccount, PKAccountServiceAccountResolutionController, PKCoarseLocationMonitor, PKCurrencyAmount, PKDashboardTransactionFetcher, PKInstallmentPlan, PKMerchant, PKPaymentTransaction, PKPaymentTransactionGroup, PKPeerPaymentContactResolver, PKTransactionReceipt, PKTransactionSource, PKWorldRegionUpdater;
 @protocol PKDashboardDataSourceDelegate, PKPaymentDataProvider;
 
-@interface PKTransactionHistoryDataSource : NSObject <PKDashboardTransactionFetcherDelegate, PKDashboardDataSource>
+@interface PKTransactionHistoryDataSource : NSObject <PKDashboardTransactionFetcherDelegate, PKWorldRegionUpdaterObserver, PKDashboardDataSource>
 {
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKDashboardTransactionFetcher *_transactionFetcher;
     PKPeerPaymentContactResolver *_contactResolver;
+    NSString *_peerPaymentCounterpartHandle;
     id<PKDashboardDataSourceDelegate> _delegate;
     PKPaymentTransaction *_featuredTransaction;
     PKPaymentTransactionGroup *_selectedTransactions;
@@ -26,11 +28,17 @@
     NSArray *_actionItems;
     PKAccountServiceAccountResolutionController *_resolutionController;
     id<PKPaymentDataProvider> _dataProvider;
+    PKWorldRegionUpdater *_regionUpdater;
+    PKCoarseLocationMonitor *_coarseLocationMonitor;
+    NSArray *_groups;
+    NSArray *_tokens;
     BOOL _contentIsLoaded;
     BOOL _contactLoaded;
     BOOL _transactionHistoryLoaded;
     BOOL _associatedReceiptLoaded;
     NSArray *_transactionHistory;
+    BOOL _hasReceived;
+    BOOL _hasSent;
     NSDateFormatter *_formatterTitle;
     NSDateFormatter *_formatterMonth;
     NSCalendar *_currentCalendar;
@@ -41,6 +49,7 @@
     PKPaymentTransactionGroup *_group;
     PKCurrencyAmount *_footerTotal;
     PKCurrencyAmount *_footerSecondaryTotal;
+    NSIndexPath *_headerIndexPath;
 }
 
 @property (readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
@@ -51,30 +60,39 @@
 @property (readonly, nonatomic) NSString *footerTitle;
 @property (readonly, nonatomic) PKCurrencyAmount *footerTotal; // @synthesize footerTotal=_footerTotal;
 @property (readonly, nonatomic) PKPaymentTransactionGroup *group; // @synthesize group=_group;
+@property (readonly, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSIndexPath *headerIndexPath; // @synthesize headerIndexPath=_headerIndexPath;
 @property (readonly, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)_contactKeysToFetch;
+- (id)_groupItemForTransaction:(id)arg1;
 - (void)_handleAccountsChangedNotification:(id)arg1;
+- (void)_handleCoarseLocationChangedNotification:(id)arg1;
 - (void)_handleTransactionHistoryUpdated:(id)arg1;
 - (id)_headerItem;
 - (void)_loadContact;
 - (void)_loadTransactionReceipt;
 - (void)_notifyContentLoadedIfNecessary;
+- (void)_p2pTotalsFromTransactions:(id)arg1 received:(id *)arg2 sent:(id *)arg3;
 - (void)_reloadTransactions;
+- (id)_totalFromGroups:(id)arg1;
 - (id)_totalPaymentsFromTransactions:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_totalRewardsFromTransactions:(id)arg1;
 - (id)_totalSpendingFromTransactions:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_transactionItemForTransaction:(id)arg1;
+- (void)_updateFooterTotalFromGroup:(id)arg1;
+- (BOOL)_updateGroup:(id)arg1 withRegion:(id)arg2;
 - (void)_updateInstallmentPlan;
 - (void)dealloc;
-- (id)footerTextForSection:(unsigned long long)arg1;
-- (id)initWithFetcher:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6 type:(unsigned long long)arg7;
-- (id)initWithInstallmentPlan:(id)arg1 payemntPass:(id)arg2 account:(id)arg3;
-- (id)initWithTransactionGroup:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 transactionHistory:(id)arg4;
+- (id)footerTextItemForSection:(unsigned long long)arg1;
+- (id)initWithFetcher:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6 type:(unsigned long long)arg7;
+- (id)initWithInstallmentPlan:(id)arg1 transactionSource:(id)arg2 account:(id)arg3;
+- (id)initWithTransactionGroup:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 fetcher:(id)arg4 transactionHistory:(id)arg5;
+- (id)initWithTransactionGroups:(id)arg1 headerGroup:(id)arg2 regionUpdater:(id)arg3 tokens:(id)arg4 transactionSource:(id)arg5 account:(id)arg6;
 - (id)itemAtIndexPath:(id)arg1;
 - (id)navigationBarTitle;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
@@ -82,6 +100,9 @@
 - (void)setDataSourceDelegate:(id)arg1;
 - (id)titleForSection:(unsigned long long)arg1;
 - (void)transactionsChanged:(id)arg1;
+- (void)updateGroup:(id)arg1;
+- (void)updateGroups:(id)arg1 headerGroup:(id)arg2;
+- (void)worldRegionUpdated:(id)arg1 updatedRegion:(id)arg2;
 
 @end
 

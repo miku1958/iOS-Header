@@ -42,12 +42,14 @@
 + (id)_constructLegacySystemPhotoLibraryURLFromUnresolvableBookmark:(id)arg1;
 + (id)_legacySystemLibraryBookmarkData;
 + (id)_legacySystemLibraryPath;
++ (void)_persistSystemPhotoLibraryPath:(id)arg1;
 + (void)_updateSystemLibraryURLWithOldValue:(id)arg1;
 + (id)basenameForSpatialOverCaptureFromOriginalBasename:(id)arg1;
 + (void)initialize;
 + (BOOL)isSupportedFileSystemAtURL:(id)arg1;
 + (BOOL)isSystemLibraryURLDefined;
 + (BOOL)isSystemPhotoLibraryURL:(id)arg1;
++ (id)libraryURLFromDatabaseURL:(id)arg1;
 + (void)listenForSystemPhotoLibraryURLChanges;
 + (void)recordPrevSystemLibraryPath:(id)arg1;
 + (BOOL)setSystemLibraryURL:(id)arg1 options:(unsigned short)arg2 error:(id *)arg3;
@@ -61,6 +63,10 @@
 - (id)assetAbbreviatedMetadataDirectoryForDirectory:(id)arg1 type:(unsigned char)arg2;
 - (id)assetBaseFilenameForAdjustmentFilePath:(id)arg1;
 - (id)baseDirectoryForBundleScope:(unsigned char)arg1;
+- (id)basePrivateDirectoryPath;
+- (id)cloudRestoreBackgroundPhaseInProgressTokenPath;
+- (id)cloudRestoreCompleteTokenPath;
+- (id)cloudRestoreForegroundPhaseCompleteTokenPath;
 - (id)convertPhotoLibraryPathType:(unsigned char)arg1;
 - (BOOL)createDirectoryOnceWithPath:(id)arg1 mask:(unsigned char)arg2 type:(unsigned char)arg3 error:(id *)arg4;
 - (BOOL)createPathsForNewLibrariesWithError:(id *)arg1;
@@ -82,6 +88,7 @@
 - (id)initWithLibraryURL:(id)arg1;
 - (BOOL)isDataProtectionComplete;
 - (id)knownDBPaths;
+- (id)modelRestorePostProcessingCompleteTokenPath;
 - (void)obtainAccessAndWaitWithFileWithIdentifier:(id)arg1 mode:(unsigned char)arg2 toURLWithHandler:(CDUnknownBlockType)arg3;
 - (id)pathToAssetAlbumOrderStructure;
 - (id)pathToAssetsToAlbumsMapping;
@@ -106,6 +113,7 @@
 - (id)privateCacheDirectoryWithSubType:(unsigned char)arg1;
 - (id)privateCacheDirectoryWithSubType:(unsigned char)arg1 createIfNeeded:(BOOL)arg2 error:(id *)arg3;
 - (void)privateDirectoryCreationMaskResetWithSubType:(unsigned char)arg1;
+- (id)privateDirectoryWithBundleIdentifier:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (id)privateDirectoryWithSubType:(unsigned char)arg1;
 - (id)privateDirectoryWithSubType:(unsigned char)arg1 createIfNeeded:(BOOL)arg2 error:(id *)arg3;
 - (id)privateDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;

@@ -29,7 +29,9 @@
 
 + (id)clientInterface;
 + (id)healthAppDefaultsDomainWithHealthStore:(id)arg1;
++ (id)healthArticlesDefaultsDomainWithHealthStore:(id)arg1;
 + (id)heartRhythmDefaultsDomainWithhealthStore:(id)arg1;
++ (id)safetyDefaultsDomainWithHealthStore:(id)arg1;
 + (id)serverInterface;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
@@ -57,6 +59,7 @@
 - (BOOL)setPropertyListValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)setValueForAllKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setValuesWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stringForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)stringForKey:(id)arg1 error:(id *)arg2;

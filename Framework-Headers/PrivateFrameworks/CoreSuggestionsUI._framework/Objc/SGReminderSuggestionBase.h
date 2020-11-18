@@ -16,6 +16,7 @@
 @interface SGReminderSuggestionBase : NSObject <SGSuggestion, SGSuggestionCategory, SGSuggestionExtensions>
 {
     SGReminder *_reminder;
+    NSString *_notes;
     id<SGSuggestionDelegate> _suggestionDelegate;
 }
 
@@ -26,7 +27,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)dueDateComponents;
 - (id)initWithRealtimeReminder:(id)arg1;
+- (id)location;
+- (long long)locationProximity;
+- (id)locationString;
+- (id)notes;
 - (id)primaryActionTitle;
 - (id)realtimeSuggestion;
 - (id)suggestionAttributedSubtitle;
@@ -42,6 +48,10 @@
 - (id)suggestionSubtitle;
 - (id)suggestionTitle;
 - (id)suggestionsSecondTitle;
+- (id)title;
+- (id)url;
+- (id)userActivity;
+- (BOOL)wantsExtendedDetailOnlyView;
 
 @end
 

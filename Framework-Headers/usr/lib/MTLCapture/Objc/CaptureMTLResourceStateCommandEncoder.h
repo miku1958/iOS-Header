@@ -41,6 +41,7 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureCommandBuffer:(id)arg2;
 - (void)insertDebugSignpost:(id)arg1;
+- (id)originalObject;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;

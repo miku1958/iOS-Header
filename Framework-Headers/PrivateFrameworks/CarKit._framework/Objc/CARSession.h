@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class CARInputDeviceManager, CARObserverHashTable, CARSessionConfiguration, NSDictionary, NSNumber, NSString;
+@class CARInputDeviceManager, CARObserverHashTable, CARSessionConfiguration, NSNumber, NSString;
 
 @interface CARSession : NSObject
 {
     struct OpaqueFigEndpoint *_endpoint;
     BOOL _isPaired;
     BOOL _authenticated;
+    BOOL _clientIsCarPlayShell;
     CARSessionConfiguration *_configuration;
-    NSDictionary *_APEndPointInfo;
     NSString *_sourceVersion;
     CARInputDeviceManager *_inputDeviceManager;
+    NSNumber *_systemNightMode;
     CARObserverHashTable *_observers;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *APEndPointInfo; // @synthesize APEndPointInfo=_APEndPointInfo;
 @property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
+@property (readonly, nonatomic) BOOL clientIsCarPlayShell; // @synthesize clientIsCarPlayShell=_clientIsCarPlayShell;
 @property (readonly, nonatomic) CARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy, nonatomic) NSNumber *electronicTollCollectionAvailable;
 @property (strong, nonatomic) CARInputDeviceManager *inputDeviceManager; // @synthesize inputDeviceManager=_inputDeviceManager;
@@ -30,6 +31,7 @@
 @property (readonly, copy, nonatomic) NSNumber *nightMode;
 @property (strong, nonatomic) CARObserverHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
+@property (strong, nonatomic) NSNumber *systemNightMode; // @synthesize systemNightMode=_systemNightMode;
 
 - (void).cxx_destruct;
 - (id)MFiCertificateSerialNumber;
@@ -44,8 +46,9 @@
 - (BOOL)carOwnsScreen;
 - (id)description;
 - (struct OpaqueFigEndpoint *)endpoint;
-- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 requiresCarCapabilities:(BOOL)arg2;
+- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 clientIsCarPlayShell:(BOOL)arg2;
 - (id)lastNavigatingBundleIdentifier;
+- (long long)mapInterfaceStyleForScreenUUID:(id)arg1;
 - (unsigned long long)navigationOwner;
 - (BOOL)recognizingSpeech;
 - (void)releaseTurnByTurnOwnership;
@@ -55,9 +58,9 @@
 - (void)requestTurnByTurnOwnership;
 - (void)sendCommand:(id)arg1 withParameters:(id)arg2;
 - (void)setInputMode:(unsigned long long)arg1 forInputDevice:(id)arg2;
-- (id)systemNightMode;
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (void)takeScreenForConnection;
+- (long long)userInterfaceStyleForScreenUUID:(id)arg1;
 
 @end
 

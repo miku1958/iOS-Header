@@ -40,6 +40,8 @@
 - (BOOL)_stopwatchIsStopped;
 - (long long)_stopwatchLapCount;
 - (double)chronoDuration;
+- (id)createSecondHandView;
+- (id)createTinyBabyHandViewWithColor:(id)arg1;
 - (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (double)secondsAnimationFPS;

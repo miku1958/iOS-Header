@@ -6,25 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession, NSMutableDictionary, RPCompanionLinkClient;
+@class AVAudioSession, NSMutableDictionary, NSMutableSet, RPCompanionLinkClient;
 @protocol OS_dispatch_queue;
 
 @interface CULiveAudioServer : NSObject
 {
+    NSMutableSet *_audioSessionClients;
     AVAudioSession *_audioSession;
     RPCompanionLinkClient *_messenger;
+    BOOL _prefSiriLED;
+    BOOL _prefSiriVOX;
     NSMutableDictionary *_sessionMap;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 
++ (void)liveActionPerformRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)liveActionSetupRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_audioSessionEnd:(id)arg1;
+- (void)_audioSessionStart:(id)arg1;
+- (void)_handleActionPlayAlert:(int)arg1 senderID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleActionPrepare:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)_handleActionRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)_handleActionSpeakText:(id)arg1 senderID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleDataEvent:(id)arg1 options:(id)arg2;
 - (void)_handleStartRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_handleStopRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)_prepareAlert:(long long)arg1 senderID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_prepareSpeakText:(id)arg1 senderID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)init;
 - (void)invalidate;
 - (void)peerDisconnected:(id)arg1;

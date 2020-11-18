@@ -7,19 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/ICCloudAvailability-Protocol.h>
-#import <iTunesCloud/ICCloudServerListenerEndpointProvider-Protocol.h>
 
-@class ICCloudClientAvailabilityService, ICCloudClientCloudService, ICConnectionConfiguration, NSString, NSXPCConnection;
+@class ICCloudClientAvailabilityService, ICCloudClientCloudService, ICCloudServerListenerEndpointProvider, ICConnectionConfiguration, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface ICCloudClient : NSObject <ICCloudServerListenerEndpointProvider, ICCloudAvailability>
+@interface ICCloudClient : NSObject <ICCloudAvailability>
 {
     BOOL _active;
     ICConnectionConfiguration *_configuration;
     CDUnknownBlockType _updateSagaInProgressChangedHandler;
     CDUnknownBlockType _updateJaliscoInProgressChangedHandler;
     NSXPCConnection *_xpcConnection;
-    NSXPCConnection *_xpcListenerEndpointProviderConnection;
+    ICCloudServerListenerEndpointProvider *_listenerEndpointProvider;
     NSObject<OS_dispatch_queue> *_serialAccessQueue;
     long long _preferredVideoQuality;
     ICCloudClientAvailabilityService *_availabilityService;
@@ -33,17 +32,17 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) ICCloudServerListenerEndpointProvider *listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
 @property (nonatomic) long long preferredVideoQuality; // @synthesize preferredVideoQuality=_preferredVideoQuality;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialAccessQueue; // @synthesize serialAccessQueue=_serialAccessQueue;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateJaliscoInProgressChangedHandler; // @synthesize updateJaliscoInProgressChangedHandler=_updateJaliscoInProgressChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType updateSagaInProgressChangedHandler; // @synthesize updateSagaInProgressChangedHandler=_updateSagaInProgressChangedHandler;
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-@property (readonly, nonatomic) NSXPCConnection *xpcListenerEndpointProviderConnection; // @synthesize xpcListenerEndpointProviderConnection=_xpcListenerEndpointProviderConnection;
 
 - (void).cxx_destruct;
-- (void)_deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_enableCloudLibraryWithPolicy:(long long)arg1 startinitialImport:(BOOL)arg2 isExplicitUserAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)_isAuthenticated;
 - (void)_serverDidLaunch;
 - (void)_serverJaliscoUpdateInProgressDidChange;
 - (void)_serverSagaUpdateInProgressDidChange;
@@ -78,11 +77,14 @@
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1;
 - (void)deprioritizeSubscriptionScreenshotForPersistentID:(long long)arg1;
 - (void)disableCloudLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disableCloudLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)disableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableCloudLibraryWithPolicy:(long long)arg1 startInitialImport:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)handleAutomaticDownloadPreferenceChangedForMediaKindMusic:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
 - (BOOL)hasProperNetworkConditionsToShowCloudMedia;
+- (BOOL)hasSetPreferenceForAutomaticDownloads;
 - (void)hideItemsWithPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importAlbumArtistHeroImageForPersistentID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importArtistHeroImageForPersistentID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -97,14 +99,16 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithUserIdentity:(id)arg1;
+- (BOOL)isAuthenticated;
 - (void)isAuthenticatedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)isAuthenticatedWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)isAutomaticDownloadsEnabledForMediaKindMusic;
 - (BOOL)isCellularDataRestricted;
 - (BOOL)isCellularDataRestrictedForMusic;
 - (BOOL)isCellularDataRestrictedForStoreApps;
 - (BOOL)isCellularDataRestrictedForVideos;
 - (BOOL)isMediaKindDisabledForJaliscoLibrary:(long long)arg1;
-- (id)listenerEndpointForService:(long long)arg1 error:(id *)arg2;
+- (void)listCloudServerOperations;
 - (void)loadArtworkInfoForContainerSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadArtworkInfoForContainerSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadArtworkInfoForPurchaseHistoryID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

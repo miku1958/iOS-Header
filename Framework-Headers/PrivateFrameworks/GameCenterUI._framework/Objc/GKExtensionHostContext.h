@@ -13,17 +13,17 @@
 @interface GKExtensionHostContext : NSExtensionContext <GKExtensionHostProtocol>
 {
     GKGame *_game;
-    GKExtensionRemoteViewController *_remoteViewControllerWeak;
+    GKExtensionRemoteViewController *_remoteViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game; // @synthesize game=_game;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) GKExtensionRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewControllerWeak;
+@property (weak, nonatomic) GKExtensionRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)messageFromExtension:(id)arg1;
 
 @end

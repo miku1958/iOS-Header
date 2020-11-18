@@ -11,7 +11,6 @@
 @protocol PVAssetProtocol <NSObject>
 
 @property (readonly, nonatomic) NSString *cloudIdentifier;
-@property (readonly, nonatomic) NSDate *clsDistanceIdentity;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSData *distanceIdentity;
 @property (readonly, nonatomic) NSString *filename;

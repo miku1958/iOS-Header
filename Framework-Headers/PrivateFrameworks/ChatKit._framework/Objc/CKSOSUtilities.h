@@ -12,14 +12,12 @@
 
 @property (readonly, nonatomic, getter=isMMSEnabled) BOOL MMSEnabled;
 
-+ (BOOL)isMMSEnabled;
 + (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3;
 + (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3 failureHandler:(CDUnknownBlockType)arg4;
 + (id)sharedUtilities;
 - (void)_sendMessageAndObserveNotification:(id)arg1;
 - (id)_sendMessageAndReturnGUIDs:(id)arg1;
 - (id)_uniqueFilePathForFilename:(id)arg1;
-- (BOOL)isMMSEnabledForPhoneNumber:(id)arg1 simID:(id)arg2;
 - (BOOL)isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
 - (id)sendComposition:(id)arg1 toConversation:(id)arg2 useStandalone:(BOOL)arg3;
 - (void)sendMessage:(id)arg1;

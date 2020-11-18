@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)headingLayerWithStyle:(long long)arg1 userLocationView:(id)arg2;
++ (id)headingLayerWithStyle:(long long)arg1 userLocationView:(id)arg2 shouldMatchAccuracyRadius:(BOOL)arg3;
 
 @end
 

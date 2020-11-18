@@ -32,6 +32,7 @@
 - (BOOL)_accessibilityDidLoadAccessibilityInformation;
 - (BOOL)_accessibilityFKAShouldBeProcessed;
 - (void)_accessibilityFinalize;
+- (id)_accessibilityFocusRingTintColor;
 - (struct CGRect)_accessibilityFrameForView:(id)arg1;
 - (BOOL)_accessibilityHasButtonLikeGestureRecognizer;
 - (BOOL)_accessibilityHasDragDestinations;
@@ -63,6 +64,7 @@
 - (BOOL)_accessibilityShouldHitTestLayers;
 - (BOOL)_accessibilityShowContextMenuForElement:(id)arg1 targetPointValue:(id)arg2;
 - (id)_accessibilitySortedElementsWithin;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (id)_accessibilitySubviewMatchingFKAView:(id)arg1;
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;

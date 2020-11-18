@@ -15,12 +15,10 @@
 @interface _INPBActivityList : PBCodable <_INPBActivityList, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_activities;
     _INPBCondition *_condition;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property (readonly, nonatomic) unsigned long long activitiesCount;
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;

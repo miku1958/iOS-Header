@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *navigationController;
     MISSING_TYPE *hideStatusBar;
+    MISSING_TYPE *navigationBarHidden;
 }
 
 @end

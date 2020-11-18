@@ -9,8 +9,8 @@
 @class ITIdleTimerConfiguration, NSString;
 
 @protocol ITIdleTimerServerInterface <NSObject>
-- (void)addIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2 error:(id *)arg3;
+- (void)addIdleTimerServiceConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2 error:(id *)arg3;
 - (BOOL)isIdleTimerServiceAvailableWithError:(id *)arg1;
-- (void)removeIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2 error:(id *)arg3;
+- (void)removeIdleTimerServiceConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2 error:(id *)arg3;
 @end
 

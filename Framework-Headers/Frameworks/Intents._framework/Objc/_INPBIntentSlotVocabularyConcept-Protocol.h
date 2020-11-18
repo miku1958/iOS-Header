@@ -11,7 +11,9 @@
 @protocol _INPBIntentSlotVocabularyConcept <NSObject>
 
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (nonatomic) BOOL hasRequiresUserIdentification;
 @property (copy, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL requiresUserIdentification;
 @property (copy, nonatomic) NSArray *synonyms;
 @property (readonly, nonatomic) unsigned long long synonymsCount;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, _DKObjectType;
+@class NSNumber, NSString, NSURL, _DKObjectType;
 
 @interface _CDEventStreamProperties : NSObject
 {
@@ -31,16 +31,25 @@
     double period;
     long long eventsPerPeriod;
     long long pollingPeriod;
+    NSObject *_dataCollectionObject;
+    NSNumber *_dataCollectionEnabledNum;
+    NSObject *_platformObject;
+    NSNumber *_isAvailableNum;
+    NSNumber *_domainAvailabilityNum;
 }
 
 @property (readonly, nonatomic) NSURL *contentProviderBundleURL; // @synthesize contentProviderBundleURL;
 @property (readonly, nonatomic) BOOL dataCollectionEnabled; // @synthesize dataCollectionEnabled;
+@property (readonly, nonatomic) NSNumber *dataCollectionEnabledNum; // @synthesize dataCollectionEnabledNum=_dataCollectionEnabledNum;
+@property (readonly, nonatomic) NSObject *dataCollectionObject; // @synthesize dataCollectionObject=_dataCollectionObject;
 @property (readonly, nonatomic) NSString *descriptionString; // @synthesize descriptionString;
 @property (readonly, nonatomic) unsigned long long domainAvailability; // @synthesize domainAvailability;
+@property (readonly, nonatomic) NSNumber *domainAvailabilityNum; // @synthesize domainAvailabilityNum=_domainAvailabilityNum;
 @property (readonly, nonatomic) long long eventCountLimit; // @synthesize eventCountLimit;
 @property (readonly, nonatomic) long long eventsPerPeriod; // @synthesize eventsPerPeriod;
 @property (readonly, nonatomic) NSString *formattedName; // @synthesize formattedName;
 @property (readonly, nonatomic) BOOL isAvailable; // @synthesize isAvailable;
+@property (readonly, nonatomic) NSNumber *isAvailableNum; // @synthesize isAvailableNum=_isAvailableNum;
 @property (readonly, nonatomic) BOOL isHistorical; // @synthesize isHistorical;
 @property (readonly, nonatomic) BOOL isInstant; // @synthesize isInstant;
 @property (readonly, nonatomic) NSString *knowledgeBaseMetadataClass; // @synthesize knowledgeBaseMetadataClass;
@@ -48,6 +57,7 @@
 @property (readonly, nonatomic) NSString *monitorClass; // @synthesize monitorClass;
 @property (readonly, nonatomic) NSString *name; // @synthesize name;
 @property (readonly, nonatomic) double period; // @synthesize period;
+@property (readonly, nonatomic) NSObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (readonly, nonatomic) long long pollingPeriod; // @synthesize pollingPeriod;
 @property (readonly, nonatomic) BOOL setupOnDemand; // @synthesize setupOnDemand;
 @property (readonly, nonatomic) BOOL shouldSaveCurrentEventOnShutdown; // @synthesize shouldSaveCurrentEventOnShutdown;

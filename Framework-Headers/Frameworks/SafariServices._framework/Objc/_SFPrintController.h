@@ -16,43 +16,47 @@
 {
     UIPrintInfo *_cachedPrintInfo;
     SFPrintPageRenderer *_cachedPrintPageRenderer;
-    UIPrintInteractionController *_printInteractionController;
     NSString *_urlString;
     NSString *_pageTitle;
     NSString *_loadingDialogTitle;
     NSMutableArray *_printQueue;
     SFPrintQueueItem *_currentItem;
-    BOOL _hasReservedPrintInteractionController;
+    BOOL _isDisplayingPrintInteractionController;
+    BOOL _hasSetupPrintController;
     BOOL _suppressingPrintUI;
     WKWebView *_webView;
     _SFReaderController *_readerController;
     id<_SFDialogPresenting> _dialogPresenter;
     id<_SFPrintControllerDelegate> _delegate;
+    UIPrintInteractionController *_printInteractionController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFPrintControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
+@property (readonly, nonatomic, getter=isDisplayingPrintUI) BOOL displayingPrintUI;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIPrintInfo *printInfo;
+@property (readonly, nonatomic) UIPrintInteractionController *printInteractionController; // @synthesize printInteractionController=_printInteractionController;
 @property (readonly, nonatomic) SFPrintPageRenderer *printRenderer;
 @property (weak, nonatomic) _SFReaderController *readerController; // @synthesize readerController=_readerController;
 @property (readonly, nonatomic) NSString *suggestedPDFFileName;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
-+ (BOOL)isDisplayingPrintUI;
 - (void).cxx_destruct;
 - (id)_dequeuePrintItem;
 - (void)_didFinishPrintingCurrentItemWithResult:(long long)arg1 fromPrintInteractionControllerCompletion:(BOOL)arg2;
 - (void)_enqueuePrintItem:(id)arg1;
+- (BOOL)_isContentManaged;
 - (void)_preparePrintInteractionControllerForUsage:(long long)arg1 onlyIfLoaded:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_printCurrentItem;
 - (void)_shouldAllowBlockedPrintWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_shouldPrintWhileLoadingForUsage:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearQueue;
 - (void)dealloc;
+- (void)dismissPrintInteractionControllerAnimated:(BOOL)arg1;
 - (void)getPDFDataForUsage:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleNextPrintRequest;
 - (id)init;
@@ -61,8 +65,8 @@
 - (void)printFrame:(id)arg1 initiatedByWebContent:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)printInteractionControllerDidFinish;
 - (id)printInteractionControllerParentViewController:(id)arg1;
-- (BOOL)reservePrintInteractionController;
 - (void)resetPrintUISuppression;
+- (BOOL)setUpPrintController;
 - (void)updatePrintInfo;
 
 @end

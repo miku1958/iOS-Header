@@ -21,7 +21,6 @@
         unsigned int recordTypeForRedialing:1;
         unsigned int ttyType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _audioRoute;
     int _destinationType;
     int _preferredCallProvider;
@@ -32,7 +31,6 @@
     NSArray *_targetContacts;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
 @property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, nonatomic) unsigned long long contactsCount;

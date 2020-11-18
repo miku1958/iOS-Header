@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)finishWithError:(id)arg1;
-- (id)init;
+- (id)initWithOperation:(id)arg1;
 - (void)performRequest;
 - (id)spawnURLRequests;
 

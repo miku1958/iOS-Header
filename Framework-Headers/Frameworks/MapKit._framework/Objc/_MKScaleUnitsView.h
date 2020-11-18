@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_legendStringWidthCache;
     NSMutableDictionary *_legendStringForDistanceStringCache;
     NSNumberFormatter *_floatNumberFormatter;
+    NSString *_zeroUnitsString;
     BOOL _RTL;
 }
 
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double unitsWidth; // @synthesize unitsWidth=_unitsWidth;
 @property (copy, nonatomic) NSString *unpaddedUnitsString; // @synthesize unpaddedUnitsString=_unpaddedUnitsString;
 @property (nonatomic) BOOL useLightText; // @dynamic useLightText;
+@property (readonly, nonatomic) NSString *zeroUnitsString; // @synthesize zeroUnitsString=_zeroUnitsString;
 
 - (void).cxx_destruct;
 - (void)_calculateLegend:(BOOL)arg1;

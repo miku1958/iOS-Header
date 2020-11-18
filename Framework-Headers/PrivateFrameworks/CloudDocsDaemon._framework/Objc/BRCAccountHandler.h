@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/MCProfileConnectionObserver-Protocol.h>
 
 @class BRCAccountSession, NSMutableDictionary, NSString;
-@protocol BRCAccountHandlerDelegate, OS_dispatch_queue;
+@protocol BRCAccountHandlerDelegate, OS_dispatch_queue, OS_dispatch_workloop;
 
 @interface BRCAccountHandler : NSObject <MCProfileConnectionObserver>
 {
@@ -20,14 +20,14 @@
     BOOL _hasSetMigrationComplete;
     NSMutableDictionary *_syncPolicyByFolderType;
     id<BRCAccountHandlerDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_pushQueue;
+    NSObject<OS_dispatch_workloop> *_pushWorkloop;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BRCAccountHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *pushQueue; // @synthesize pushQueue=_pushQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_workloop> *pushWorkloop; // @synthesize pushWorkloop=_pushWorkloop;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
@@ -35,8 +35,6 @@
 + (id)accountIDPath;
 + (id)dbAccountID;
 + (BOOL)destroyCurrentAccountSynchronously;
-+ (BOOL)icloudAccountIsInCarry;
-+ (id)icloudDriveAccountID;
 + (id)mobileDocsAccountID;
 + (id)primaryiCloudAccount;
 + (id)primaryiCloudAccountID;

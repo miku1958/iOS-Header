@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKBiologicalSexObject, HKBloodTypeObject, HKFitzpatrickSkinTypeObject, HKQuantity, HKWheelchairUseObject, NSArray, NSDateComponents, NSString;
+@class HKBiologicalSexObject, HKBloodTypeObject, HKCardioFitnessMedicationsUseObject, HKFitzpatrickSkinTypeObject, HKQuantity, HKWheelchairUseObject, NSArray, NSDateComponents, NSString;
 
 @interface HKDemographicsInformationWrapper : NSObject
 {
@@ -20,12 +20,14 @@
     HKFitzpatrickSkinTypeObject *_fitzpatrickSkinTypeObject;
     HKBloodTypeObject *_bloodTypeObject;
     HKWheelchairUseObject *_wheelchairUseObject;
+    HKCardioFitnessMedicationsUseObject *_cardioFitnessMedicationsUseObject;
     NSArray *_postalAddresses;
     NSArray *_emailAddresses;
 }
 
 @property (copy, nonatomic) HKBiologicalSexObject *biologicalSexObject; // @synthesize biologicalSexObject=_biologicalSexObject;
 @property (copy, nonatomic) HKBloodTypeObject *bloodTypeObject; // @synthesize bloodTypeObject=_bloodTypeObject;
+@property (copy, nonatomic) HKCardioFitnessMedicationsUseObject *cardioFitnessMedicationsUseObject; // @synthesize cardioFitnessMedicationsUseObject=_cardioFitnessMedicationsUseObject;
 @property (copy, nonatomic) NSDateComponents *dateOfBirthComponents; // @synthesize dateOfBirthComponents=_dateOfBirthComponents;
 @property (copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property (copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;

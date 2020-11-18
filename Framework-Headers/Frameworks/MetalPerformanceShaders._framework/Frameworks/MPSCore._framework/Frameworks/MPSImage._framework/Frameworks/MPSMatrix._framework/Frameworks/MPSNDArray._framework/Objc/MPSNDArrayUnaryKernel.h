@@ -8,14 +8,20 @@
 
 @interface MPSNDArrayUnaryKernel : MPSNDArrayMultiaryKernel
 {
+    unsigned long long _edgeMode;
+    CDStruct_f52b1b8f _offsets;
+    CDStruct_129fbded _kernelSizes;
+    CDStruct_f52b1b8f _strides;
+    CDStruct_129fbded _dilationRates;
 }
 
-@property (nonatomic) CDStruct_27bd5d57 dilationRates;
-@property (nonatomic) unsigned long long edgeMode;
-@property (nonatomic) CDStruct_27bd5d57 kernelSizes;
-@property (nonatomic) CDStruct_df9f7954 offsets;
-@property (nonatomic) CDStruct_df9f7954 strides;
+@property (nonatomic) CDStruct_129fbded dilationRates; // @synthesize dilationRates=_dilationRates;
+@property (nonatomic) unsigned long long edgeMode; // @synthesize edgeMode=_edgeMode;
+@property (nonatomic) CDStruct_129fbded kernelSizes; // @synthesize kernelSizes=_kernelSizes;
+@property (nonatomic) CDStruct_f52b1b8f offsets; // @synthesize offsets=_offsets;
+@property (nonatomic) CDStruct_f52b1b8f strides; // @synthesize strides=_strides;
 
++ (unsigned long long)expectedVirtualSourceCount;
 - (id)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 destinationArray:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 resultState:(id)arg3 destinationArray:(id)arg4;

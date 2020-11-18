@@ -10,15 +10,16 @@
 
 @interface WFIntentAppPickerParameter : WFDynamicEnumerationParameter
 {
+    BOOL _includesUserActivityBasedApps;
     NSString *_intentName;
 }
 
+@property (readonly, nonatomic) BOOL includesUserActivityBasedApps; // @synthesize includesUserActivityBasedApps=_includesUserActivityBasedApps;
 @property (readonly, nonatomic) NSString *intentName; // @synthesize intentName=_intentName;
 
 - (void).cxx_destruct;
 - (BOOL)alwaysShowsButton;
 - (id)initWithDefinition:(id)arg1;
-- (id)localizedLabelForPossibleState:(id)arg1;
 - (BOOL)parameterStateIsValid:(id)arg1;
 - (void)possibleStatesDidChange;
 

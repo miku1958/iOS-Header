@@ -49,6 +49,27 @@ struct LogCategoryPrivate;
 
 struct LogOutput;
 
+struct RPHIDGCEvent {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    struct CGPoint _field5;
+    struct CGPoint _field6;
+    float _field7;
+    float _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+    float _field12;
+    float _field13;
+    float _field14;
+    int _field15;
+    float _field16;
+    float _field17;
+    int _field18;
+};
+
 struct in6_addr {
     union {
         unsigned char __u6_addr8[16];
@@ -59,6 +80,10 @@ struct in6_addr {
 
 struct in_addr {
     unsigned int s_addr;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct sockaddr {

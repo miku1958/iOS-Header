@@ -6,22 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
+@class NSDate, NSHashTable;
 
 @interface HFExecutionEnvironment : NSObject
 {
     BOOL _active;
     unsigned long long _runningState;
     NSHashTable *_observers;
+    NSDate *_appForegroundStartTime;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (strong, nonatomic) NSDate *appForegroundStartTime; // @synthesize appForegroundStartTime=_appForegroundStartTime;
+@property (readonly, nonatomic) long long hostProcess;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) unsigned long long runningState; // @synthesize runningState=_runningState;
 
++ (BOOL)isCarousel;
++ (BOOL)isHomeApp;
++ (BOOL)isHomeControlService;
++ (BOOL)isHomeUIService;
++ (BOOL)isSettings;
++ (BOOL)isSpringBoard;
++ (BOOL)isWatchApp;
 + (id)sharedInstance;
 + (id)stringForHFExecutionEnvironmentRunningState:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_recordMetricsForAppRunningState;
 - (void)addObserver:(id)arg1;
 - (void)dispatchMessageToObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)executionEnvironmentDidBecomeActive;

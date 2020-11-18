@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultLargeDescriptor;
 + (id)defaultMediumDescriptor;
 + (id)defaultSmallDescriptor;
++ (id)orderedDefaultDescriptors;
 - (void).cxx_destruct;
 - (BOOL)appliesToAsset:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

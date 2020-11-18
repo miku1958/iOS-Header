@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreHandwriting/CHRecurrentNeuralNetwork.h>
+#import <CoreHandwriting/CHRecurrentNeuralNetworkMontreal.h>
 
 @class NSString;
 
-@interface CHStrokeTransitionModel : CHRecurrentNeuralNetwork
+@interface CHStrokeTransitionModel : CHRecurrentNeuralNetworkMontreal
 {
     long long _distanceFeatureIndex;
     long long _sinAlphaFeatureIndex;

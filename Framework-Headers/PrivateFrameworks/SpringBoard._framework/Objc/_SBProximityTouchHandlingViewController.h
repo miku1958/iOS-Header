@@ -6,15 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-@protocol _SBProximityTouchHandlingDelegate;
-
 @interface _SBProximityTouchHandlingViewController : UIViewController
 {
     double _statusBarHeight;
 }
-
-@property (nonatomic) id<_SBProximityTouchHandlingDelegate> delegate;
-@property (nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 
 - (id)_view;
 - (void)loadView;

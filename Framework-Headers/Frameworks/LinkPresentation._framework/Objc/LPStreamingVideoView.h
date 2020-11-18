@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)beginLoadingMediaForPreroll;
 - (id)createFullScreenVideoViewController;
 - (void)createPlayerIfNeeded;
 - (void)createPlayerItemAdjustedForLoopingWithAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

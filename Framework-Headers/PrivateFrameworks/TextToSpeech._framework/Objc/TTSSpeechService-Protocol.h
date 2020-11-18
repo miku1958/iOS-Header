@@ -10,15 +10,13 @@
 @protocol OS_dispatch_queue;
 
 @protocol TTSSpeechService <NSObject>
-
-@property (nonatomic) NSObject<OS_dispatch_queue> *serviceQueue;
-
 - (oneway void)continueSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)getSpeechIsActiveForRequest:(TTSSpeechRequest *)arg1 reply:(void (^)(BOOL))arg2;
 - (oneway void)getVoicesForLanguage:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)initializeSpeechServerInstance:(unsigned long long)arg1;
 - (BOOL)isVoiceValid:(TTSSpeechVoice *)arg1;
 - (oneway void)pauseSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
+- (void)setServiceQueue:(NSObject<OS_dispatch_queue> *)arg1 forSynthesizerInstanceID:(unsigned long long)arg2;
 - (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2 string:(NSString *)arg3;
 - (oneway void)startSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)stopSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;

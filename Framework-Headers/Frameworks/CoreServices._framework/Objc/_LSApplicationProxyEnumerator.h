@@ -4,27 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreServices/_LSDBEnumerator.h>
-
-@class NSURL;
+#import <CoreServices/_LSApplicationRecordEnumerator.h>
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationProxyEnumerator : _LSDBEnumerator
+@interface _LSApplicationProxyEnumerator : _LSApplicationRecordEnumerator
 {
-    NSURL *_volumeURL;
-    unsigned long long _options;
-    vector_12da65de _bundleIdentifiers;
-    unsigned int _container;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)_applicationProxyWithContext:(struct LSContext *)arg1 bundleIdentifier:(unsigned int)arg2;
-- (BOOL)_evaluateBundleNoIO:(unsigned int)arg1 data:(const struct LSBundleData *)arg2 context:(struct LSContext *)arg3;
-- (BOOL)_getContainer:(unsigned int *)arg1 context:(struct LSContext *)arg2 error:(id *)arg3;
 - (BOOL)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
-- (BOOL)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
-- (id)initWithVolumeURL:(id)arg1 options:(unsigned long long)arg2;
 
 @end
 

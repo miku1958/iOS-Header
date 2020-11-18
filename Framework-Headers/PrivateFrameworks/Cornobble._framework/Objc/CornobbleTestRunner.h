@@ -36,6 +36,7 @@
 + (void)performTestNamed:(id)arg1 withRecapCommandString:(id)arg2 onView:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)performTestNamed:(id)arg1 withRecapFile:(id)arg2 onView:(id)arg3;
 + (void)performTestNamed:(id)arg1 withRecapFile:(id)arg2 onView:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)playInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

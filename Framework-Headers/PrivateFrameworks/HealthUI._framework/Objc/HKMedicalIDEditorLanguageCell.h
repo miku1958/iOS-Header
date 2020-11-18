@@ -6,16 +6,12 @@
 
 #import <HealthUI/HKMedicalIDEditorCell.h>
 
-@class NSString;
-
 @interface HKMedicalIDEditorLanguageCell : HKMedicalIDEditorCell
 {
-    NSString *_valueText;
     CDUnknownBlockType _editAction;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType editAction; // @synthesize editAction=_editAction;
-@property (strong, nonatomic) NSString *valueText; // @synthesize valueText=_valueText;
 
 - (void).cxx_destruct;
 - (void)beginEditing;

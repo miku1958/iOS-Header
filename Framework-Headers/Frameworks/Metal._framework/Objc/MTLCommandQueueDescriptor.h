@@ -17,6 +17,7 @@
 @property (nonatomic) NSObject<OS_dispatch_queue> *commitQueue; // @dynamic commitQueue;
 @property (nonatomic) BOOL commitSynchronously; // @dynamic commitSynchronously;
 @property (nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @dynamic completionQueue;
+@property (nonatomic) unsigned long long devicePartition; // @dynamic devicePartition;
 @property (nonatomic) BOOL disableCrossQueueHazardTracking; // @dynamic disableCrossQueueHazardTracking;
 @property (nonatomic) unsigned long long maxCommandBufferCount; // @dynamic maxCommandBufferCount;
 @property (nonatomic) unsigned long long qosLevel; // @dynamic qosLevel;

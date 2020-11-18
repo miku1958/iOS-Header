@@ -10,6 +10,10 @@
 
 @interface UIMenu : UIMenuElement
 {
+    struct {
+        BOOL isPreparedForDisplay;
+        BOOL containsSelectedItem;
+    } _metadata;
     NSString *_identifier;
     unsigned long long _options;
     NSArray *_children;
@@ -17,25 +21,31 @@
 
 @property (readonly, nonatomic) NSArray *children; // @synthesize children=_children;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) CDStruct_3d581f42 metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 
++ (id)menuWithChildren:(id)arg1;
 + (id)menuWithTitle:(id)arg1 children:(id)arg2;
 + (id)menuWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 options:(unsigned long long)arg4 children:(id)arg5;
++ (id)menuWithTitle:(id)arg1 imageName:(id)arg2 identifier:(id)arg3 options:(unsigned long long)arg4 children:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
 - (BOOL)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
-- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
+- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
-- (id)_copyWithOverrideChildren:(id)arg1;
+- (BOOL)_containsSelectedItem;
 - (id)_immutableCopy;
+- (id)_mutableCopy;
 - (id)_spiRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMenu:(id)arg1 overrideChildren:(id)arg2;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 options:(unsigned long long)arg4 children:(id)arg5;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3 identifier:(id)arg4 options:(unsigned long long)arg5 children:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)menuByReplacingChildren:(id)arg1;
 

@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, NSArray, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
+@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, MTLRenderPassDescriptor, NSArray, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
 @protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate;
 
 @interface SCNRenderer : NSObject <SCNSceneRenderer, SCNTechniqueSupport>
@@ -61,11 +61,24 @@
     unsigned int _jitteringEnabled:1;
     unsigned int _temporalAntialiasingEnabled:1;
     unsigned int _frozen:1;
-    unsigned int _privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:1;
+    unsigned int _shouldForwardSceneRendererDelegationMessagesToSelf:1;
+    unsigned int _shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner:1;
+    CDStruct_f76d274b _selfDelegationConformance;
     CDStruct_f76d274b _privateRendererOwnerDelegationConformance;
     CDStruct_f76d274b _delegationConformance;
     UIColor *_backgroundColor;
-    C3DColor4_a26f5c89 _c3dBackgroundColor;
+    struct C3DColor4 {
+        union {
+            float rgba[4];
+            struct {
+                float r;
+                float g;
+                float b;
+                float a;
+            } ;
+            MISSING_TYPE *simd;
+        } ;
+    } _c3dBackgroundColor;
     SCNRenderer *_preloadRenderer;
     id<SCNSceneRenderer> _privateRendererOwner;
     SCNTechnique *_technique;
@@ -75,7 +88,6 @@
     BOOL _disableOverlays;
     float _contentScaleFactor;
     BOOL _isRunningInExtension;
-    BOOL _watchAppInForeground;
     SCNAuthoringEnvironment *_authoringEnvironment;
     unsigned long long _debugOptions;
     BOOL _showStatistics;
@@ -91,6 +103,7 @@
 @property (readonly, nonatomic) id<MTLCommandQueue> commandQueue;
 @property (readonly, nonatomic) void *context;
 @property (readonly, nonatomic) id<MTLRenderCommandEncoder> currentRenderCommandEncoder;
+@property (readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property (readonly, nonatomic) struct CGRect currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
@@ -179,11 +192,10 @@
 - (void)_prepareGLRenderTarget;
 - (BOOL)_prepareObject:(id)arg1 shouldAbortBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)_preparePixelFormat;
-- (BOOL)_preparePreloadRenderer;
+- (BOOL)_preparePreloadRenderer:(id)arg1;
 - (void)_prepareRenderTarget;
 - (id)_prepareSKRenderer;
 - (void)_presentFramebuffer;
-- (BOOL)_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner;
 - (struct SCNVector3)_projectPoint:(struct SCNVector3)arg1 viewport:(struct SCNVector4)arg2;
 - (void)_projectPoints:(struct SCNVector3 *)arg1 count:(unsigned long long)arg2 viewport:(struct SCNVector4)arg3;
 - (id)_readSubdivCacheForHash:(id)arg1;
@@ -208,6 +220,7 @@
 - (void)_setupOffscreenRendererWithSize:(struct CGSize)arg1;
 - (id)_setupSKRendererIfNeeded;
 - (BOOL)_shouldDelegateARCompositing;
+- (BOOL)_shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner;
 - (BOOL)_showsAuthoringEnvironment;
 - (void)_stop;
 - (double)_superSamplingFactor;
@@ -220,6 +233,7 @@
 - (void)_updateSystemTimeAndDeltaTimeWithCurrentTime:(double)arg1;
 - (void)_updateWithSystemTime:(double)arg1;
 - (struct SCNVector4)_viewport;
+- (BOOL)_wantsSceneRendererDelegationMessages;
 - (void)_willRenderScene:(id)arg1;
 - (void)_writeSubdivCacheForHash:(id)arg1 dataProvider:(CDUnknownBlockType)arg2;
 - (MISSING_TYPE *)adjustViewportForRendering: /* Error: Ran out of types for this method. */;
@@ -228,7 +242,6 @@
 - (struct CGImage *)copySnapshotWithSize:(struct CGSize)arg1;
 - (struct CGImage *)createSnapshot:(double)arg1;
 - (id)currentCommandBuffer;
-- (id)currentRenderPassDescriptor;
 - (double)currentTime;
 - (void)dealloc;
 - (BOOL)disableOverlays;
@@ -280,15 +293,16 @@
 - (void)set_enablesDeferredShading:(BOOL)arg1;
 - (void)set_nextFrameTime:(double)arg1;
 - (void)set_preparePixelFormat:(unsigned long long)arg1;
-- (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(BOOL)arg1;
 - (void)set_recordWithoutExecute:(BOOL)arg1;
 - (void)set_screenTransform:(struct SCNMatrix4)arg1;
 - (void)set_shouldDelegateARCompositing:(BOOL)arg1;
+- (void)set_shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner:(BOOL)arg1;
 - (void)set_showsAuthoringEnvironment:(BOOL)arg1;
 - (void)set_superSamplingFactor:(double)arg1;
 - (void)set_systemTime:(double)arg1;
 - (void)set_viewport:(struct SCNVector4)arg1;
-- (void)setupAuthoringEnvironement;
+- (void)set_wantsSceneRendererDelegationMessages:(BOOL)arg1;
+- (void)setupAuthoringEnvironment;
 - (id)snapshotAtTime:(double)arg1;
 - (id)snapshotAtTime:(double)arg1 withSize:(struct CGSize)arg2 antialiasingMode:(unsigned long long)arg3;
 - (id)snapshotRendererWithSize:(struct CGSize)arg1;

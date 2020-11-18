@@ -12,6 +12,7 @@
 - (void)paymentQueue:(SKPaymentQueue *)arg1 updatedTransactions:(NSArray *)arg2;
 
 @optional
+- (void)paymentQueue:(SKPaymentQueue *)arg1 didRevokeEntitlementsForProductIdentifiers:(NSArray *)arg2;
 - (void)paymentQueue:(SKPaymentQueue *)arg1 removedTransactions:(NSArray *)arg2;
 - (void)paymentQueue:(SKPaymentQueue *)arg1 restoreCompletedTransactionsFailedWithError:(NSError *)arg2;
 - (BOOL)paymentQueue:(SKPaymentQueue *)arg1 shouldAddStorePayment:(SKPayment *)arg2 forProduct:(SKProduct *)arg3;

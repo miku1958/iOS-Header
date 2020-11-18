@@ -8,20 +8,19 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class CALayer, NSString;
+@class NSString, UIBlurEffect;
 
 __attribute__((visibility("hidden")))
 @interface _UIBlurEffectCoreUIImpl : _UIBlurEffectImpl <NSCopying>
 {
+    UIBlurEffect *_effect;
+    BOOL _emphasized;
     long long _blurStyle;
     NSString *_materialName;
-    CALayer *_activeMaterialLayer;
-    CALayer *_inactiveMaterialLayer;
 }
 
-@property (strong, nonatomic) CALayer *activeMaterialLayer; // @synthesize activeMaterialLayer=_activeMaterialLayer;
 @property (nonatomic) long long blurStyle; // @synthesize blurStyle=_blurStyle;
-@property (strong, nonatomic) CALayer *inactiveMaterialLayer; // @synthesize inactiveMaterialLayer=_inactiveMaterialLayer;
+@property (nonatomic, getter=isEmphasized) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property (copy, nonatomic) NSString *materialName; // @synthesize materialName=_materialName;
 
 - (void).cxx_destruct;
@@ -33,9 +32,10 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithMaterial:(id)arg1 style:(long long)arg2;
+- (id)initWithMaterial:(id)arg1 style:(long long)arg2 emphasized:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)requiresCopying;
+- (void)setEffect:(id)arg1;
 - (long long)style;
 
 @end

@@ -4,60 +4,68 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
-#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMediaSystemMessageHandlerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMFMessageDispatcher, NSMutableArray, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDHome, HMDHomeMediaSystemControllerMessageHandler, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSMutableDictionary, NSNotificationCenter, NSObject, NSString, NSUUID;
+@protocol HMDHomeMediaSystemHandlerDelegate, OS_dispatch_queue;
 
-@interface HMDHomeMediaSystemHandler : NSObject <HMDDevicePreferenceDataSource, NSSecureCoding, HMFLogging, HMDHomeMessageReceiver>
+@interface HMDHomeMediaSystemHandler : HMFObject <HMDDevicePreferenceDataSource, HMDHomeMediaSystemMessageHandlerDelegate, NSSecureCoding, HMFLogging>
 {
-    NSMutableArray *_mediaSystems;
+    HMFUnfairLock *_lock;
+    NSMutableDictionary *_uuidToMediaSystems;
+    id<HMDHomeMediaSystemHandlerDelegate> _delegate;
+    NSUUID *_parentUUID;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMFMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_messsageDispatcher;
+    NSNotificationCenter *_notificationCenter;
     HMDHome *_home;
+    HMDHomeMediaSystemControllerMessageHandler *_messageHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak) id<HMDHomeMediaSystemHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (strong, nonatomic) NSMutableArray *mediaSystems; // @synthesize mediaSystems=_mediaSystems;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, copy) NSSet *messageReceiverChildren;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (readonly, copy) NSArray *mediaSystems;
+@property (strong) HMDHomeMediaSystemControllerMessageHandler *messageHandler; // @synthesize messageHandler=_messageHandler;
+@property (strong, nonatomic) HMFMessageDispatcher *messsageDispatcher; // @synthesize messsageDispatcher=_messsageDispatcher;
+@property (strong) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (strong) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
-+ (id)preProcessMediaSystemMessage:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_addMediaSystem:(id)arg1;
 - (id)_currentMediaSystemIfPrimary;
-- (void)_handleAddMediaSystem:(id)arg1;
 - (void)_handleAddMediaSystemModel:(id)arg1 message:(id)arg2;
-- (void)_handleRemoveMediaSystem:(id)arg1;
 - (void)_handleRemoveMediaSystemModel:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateMediaSystemModel:(id)arg1 message:(id)arg2;
-- (void)_registerForMessages;
-- (void)_removeMediaSystem:(id)arg1;
 - (void)_userAssistantAccessControlDidUpdate:(id)arg1 accessories:(id)arg2;
-- (id)backingStoreObjects;
-- (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
+- (id)attributeDescriptions;
+- (id)backingStoreObjectsForVersion:(long long)arg1;
+- (void)configure:(id)arg1 delegate:(id)arg2 queue:(id)arg3 messageDispatcher:(id)arg4 notificationCenter:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithHome:(id)arg1;
+- (id)initWithMediaSystems:(id)arg1;
 - (id)logIdentifier;
-- (id)messageDestination;
+- (id)mediaSystemForAccessory:(id)arg1;
+- (id)mediaSystemWithUUID:(id)arg1;
+- (void)messageHandlerAddMediaSystem:(id)arg1 configuredName:(id)arg2 leftUUID:(id)arg3 leftAccessoryUUID:(id)arg4 rightUUID:(id)arg5 rightAccessoryUUID:(id)arg6 builderSession:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)messageHandlerRemoveMediaSystem:(id)arg1 builderSession:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)messageHandlerUpdateMediaSystem:(id)arg1 configuredName:(id)arg2 leftUUID:(id)arg3 leftAccessoryUUID:(id)arg4 rightUUID:(id)arg5 rightAccessoryUUID:(id)arg6 builderSession:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (id)privateDescription;
+- (id)processedMediaSystemBuilderMessageFor:(id)arg1;
+- (void)removeMediaSystem:(id)arg1;
 - (BOOL)supportsDeviceWithCapabilities:(id)arg1;
+- (void)updateMediaSystem:(id)arg1;
+- (void)updateMediaSystemWithMessage:(id)arg1;
 
 @end
 

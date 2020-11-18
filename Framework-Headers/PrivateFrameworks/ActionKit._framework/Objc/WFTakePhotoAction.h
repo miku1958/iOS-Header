@@ -23,8 +23,12 @@
 @property (strong, nonatomic) AVCaptureSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (void).cxx_destruct;
 - (void)captureOutput:(id)arg1 didFinishProcessingPhoto:(id)arg2 error:(id)arg3;
+- (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)takePhoto;
 
 @end

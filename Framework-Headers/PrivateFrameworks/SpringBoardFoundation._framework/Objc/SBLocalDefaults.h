@@ -6,7 +6,7 @@
 
 #import <SpringBoardFoundation/SBAbstractDefaults.h>
 
-@class SBAccessibilityDefaults, SBAppIconForceTouchDefaults, SBAppSwitcherDefaults, SBApplicationDefaults, SBBiometricAuthenticationDefaults, SBBootDefaults, SBCameraHardwareButtonDefaults, SBDemoDefaults, SBFloatingDockDefaults, SBGestureDefaults, SBHardwareDefaults, SBHomeScreenDefaults, SBIconDefaults, SBIdleTimerDefaults, SBLockScreenDefaults, SBMiscellaneousDefaults, SBMultiUserDefaults, SBNotificationCenterDefaults, SBNotificationDefaults, SBPIPDefaults, SBPowerDefaults, SBRecentDisplayItemsDefaults, SBRotationDefaults, SBSOSDefaults, SBSecurityDefaults, SBSetupDefaults, SBSoftwareUpdateDefaults, SBSoundDefaults, SBStatusBarDefaults, SBTestingDefaults, SBThermalDefaults, SBUsageDefaults, SBVoiceControlDefaults, SBWallpaperDefaults, SBWorkspaceDefaults;
+@class SBAccessibilityDefaults, SBAppIconForceTouchDefaults, SBAppSwitcherDefaults, SBApplicationDefaults, SBBiometricAuthenticationDefaults, SBBootDefaults, SBCameraHardwareButtonDefaults, SBDemoDefaults, SBFloatingDockDefaults, SBGestureDefaults, SBHardwareDefaults, SBHomeScreenDefaults, SBIconDefaults, SBIdleTimerDefaults, SBLockScreenDefaults, SBMiscellaneousDefaults, SBMultiUserDefaults, SBNotificationCenterDefaults, SBNotificationDefaults, SBPIPDefaults, SBPowerDefaults, SBRecentDisplayItemsDefaults, SBRotationDefaults, SBSOSDefaults, SBSecurityDefaults, SBSetupDefaults, SBSoftwareUpdateDefaults, SBSoundDefaults, SBStateDumpDefaults, SBStatusBarDefaults, SBTestingDefaults, SBThermalDefaults, SBUsageDefaults, SBVoiceControlDefaults, SBWallpaperDefaults, SBWorkspaceDefaults;
 
 @interface SBLocalDefaults : SBAbstractDefaults
 {
@@ -45,6 +45,7 @@
     SBFloatingDockDefaults *_lazy_floatingDockDefaults;
     SBTestingDefaults *_lazy_testingDefaults;
     SBHomeScreenDefaults *_lazy_homeScreenDefaults;
+    SBStateDumpDefaults *_lazy_stateDumpDefaults;
 }
 
 @property (readonly, strong, nonatomic) SBAccessibilityDefaults *accessibilityDefaults;
@@ -75,6 +76,7 @@
 @property (readonly, strong, nonatomic) SBSoftwareUpdateDefaults *softwareUpdateDefaults;
 @property (readonly, strong, nonatomic) SBSOSDefaults *sosDefaults;
 @property (readonly, strong, nonatomic) SBSoundDefaults *soundDefaults;
+@property (readonly, strong, nonatomic) SBStateDumpDefaults *stateDumpDefaults;
 @property (readonly, strong, nonatomic) SBStatusBarDefaults *statusBarDefaults;
 @property (readonly, strong, nonatomic) SBTestingDefaults *testingDefaults;
 @property (readonly, strong, nonatomic) SBThermalDefaults *thermalDefaults;

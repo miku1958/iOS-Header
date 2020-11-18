@@ -136,11 +136,6 @@ struct nui_size_cache {
     } __end_cap_;
 };
 
-struct objc_super {
-    id receiver;
-    Class super_class;
-};
-
 struct pair<CGSize, CGSize>;
 
 struct vector<CALayer *, std::__1::allocator<CALayer *>> {

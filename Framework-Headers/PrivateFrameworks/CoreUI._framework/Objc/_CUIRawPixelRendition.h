@@ -23,12 +23,11 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)dealloc;
 - (id)imageForSliceIndex:(long long)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (BOOL)isScaled;
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)metrics;
 - (int)pixelFormat;
-- (id)rawData;
 - (id)sliceInformation;
 - (struct CGImage *)unslicedImage;
 - (struct CGSize)unslicedSize;

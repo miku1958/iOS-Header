@@ -9,12 +9,12 @@
 @interface HKWorkout (FitnessUI)
 + (BOOL)_isHeartRateSupportedInPowerSettingsForActivityType:(unsigned long long)arg1;
 + (BOOL)_isHeartRateSupportedInPrivacySettings;
-+ (BOOL)fiui_activitySupportsMetricType:(unsigned long long)arg1 activityType:(id)arg2;
++ (BOOL)fiui_activitySupportsMetricType:(unsigned long long)arg1 activityType:(id)arg2 activityMoveMode:(long long)arg3;
 + (unsigned long long)fiui_associatedMetricForGoalType:(unsigned long long)arg1;
 + (BOOL)fiui_isHeartRateSupportedForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
 + (BOOL)fiui_shouldTrackPaceWithOdometerForActivityType:(unsigned long long)arg1;
-+ (id)fiui_supportedGoalTypesForActivityType:(id)arg1;
-+ (id)fiui_supportedMetricsForActivityType:(id)arg1;
++ (id)fiui_supportedGoalTypesForActivityType:(id)arg1 activityMoveMode:(long long)arg2;
++ (id)fiui_supportedMetricsForActivityType:(id)arg1 activityMoveMode:(long long)arg2;
 + (double)fiui_weightedAverageHeartRateWithSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_fiui_averagePaceQty;
 - (id)fiui_activityType;

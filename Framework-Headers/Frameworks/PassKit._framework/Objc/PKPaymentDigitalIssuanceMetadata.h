@@ -12,7 +12,7 @@
 {
     NSString *_serviceProviderIdentifier;
     NSString *_serviceProviderCountryCode;
-    NSArray *_serviceProviderSupportedNetworks;
+    NSArray *_serviceProviderAcceptedNetworks;
     NSArray *_serviceProviderCapabilities;
     NSDictionary *_serviceProviderDict;
     NSString *_action;
@@ -24,12 +24,13 @@
 @property (readonly, copy, nonatomic) NSString *action; // @synthesize action=_action;
 @property (readonly, copy, nonatomic) NSArray *defaultSuggestions; // @synthesize defaultSuggestions=_defaultSuggestions;
 @property (readonly, copy, nonatomic) NSString *merchantID; // @synthesize merchantID=_merchantID;
+@property (readonly, copy, nonatomic) NSArray *serviceProviderAcceptedNetworks; // @synthesize serviceProviderAcceptedNetworks=_serviceProviderAcceptedNetworks;
 @property (readonly, copy, nonatomic) NSArray *serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
 @property (readonly, copy, nonatomic) NSString *serviceProviderCountryCode; // @synthesize serviceProviderCountryCode=_serviceProviderCountryCode;
 @property (readonly, copy, nonatomic) NSDictionary *serviceProviderDict; // @synthesize serviceProviderDict=_serviceProviderDict;
 @property (readonly, copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
 @property (readonly, copy, nonatomic) NSSet *serviceProviderSupportedCountries; // @synthesize serviceProviderSupportedCountries=_serviceProviderSupportedCountries;
-@property (readonly, copy, nonatomic) NSArray *serviceProviderSupportedNetworks; // @synthesize serviceProviderSupportedNetworks=_serviceProviderSupportedNetworks;
+@property (readonly, copy, nonatomic) NSArray *serviceProviderSupportedNetworks;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

@@ -14,7 +14,7 @@
 
 @property (nonatomic) unsigned long long algorithm; // @dynamic algorithm;
 @property (nonatomic) double decayRate; // @dynamic decayRate;
-@property (nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
+@property (nonatomic) unsigned int extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property (strong, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property (nonatomic) double initialScore; // @dynamic initialScore;
 @property (nonatomic) BOOL isLocal; // @dynamic isLocal;

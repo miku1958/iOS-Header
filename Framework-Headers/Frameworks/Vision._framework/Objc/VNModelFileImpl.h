@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long length;
+@property (readonly, nonatomic) struct __sFILE *ptrFile;
 @property (strong, nonatomic) NSString *resourcePath;
 @property (readonly) Class superclass;
 

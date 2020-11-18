@@ -17,12 +17,18 @@ __attribute__((visibility("hidden")))
     NSString *_errorCode;
     NSString *_errorDomain;
     NSString *_key;
+    BOOL _didRunRemotely;
+    struct {
+        unsigned int didRunRemotely:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
+@property (nonatomic) BOOL didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property (strong, nonatomic) NSString *errorCode; // @synthesize errorCode=_errorCode;
 @property (strong, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
 @property (readonly, nonatomic) BOOL hasActionIdentifier;
+@property (nonatomic) BOOL hasDidRunRemotely;
 @property (readonly, nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasErrorDomain;
 @property (readonly, nonatomic) BOOL hasKey;

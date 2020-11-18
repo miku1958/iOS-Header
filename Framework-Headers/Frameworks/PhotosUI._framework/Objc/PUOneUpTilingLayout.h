@@ -56,11 +56,13 @@
     struct CGSize _interpageSpacing;
     struct CGSize _playButtonSize;
     struct CGSize _progressIndicatorSize;
+    struct CGSize _renderIndicatorSize;
     struct CGSize _assetExplorerReviewScreenProgressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
     struct CGSize _displaySizeForInsetMatching;
     struct UIEdgeInsets _contentGuideInsets;
     struct UIEdgeInsets _contentSafeInsets;
+    struct UIEdgeInsets _progressIndicatorContentInsets;
 }
 
 @property (nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize; // @synthesize assetExplorerReviewScreenProgressIndicatorSize=_assetExplorerReviewScreenProgressIndicatorSize;
@@ -74,7 +76,9 @@
 @property (nonatomic) struct CGSize interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
 @property (strong, nonatomic) PUParallaxComputer *parallaxComputer; // @synthesize parallaxComputer=_parallaxComputer;
 @property (nonatomic) struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
+@property (nonatomic) struct UIEdgeInsets progressIndicatorContentInsets; // @synthesize progressIndicatorContentInsets=_progressIndicatorContentInsets;
 @property (nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
+@property (nonatomic) struct CGSize renderIndicatorSize; // @synthesize renderIndicatorSize=_renderIndicatorSize;
 @property (nonatomic) BOOL shouldHideMainContent; // @synthesize shouldHideMainContent=_shouldHideMainContent;
 @property (nonatomic) BOOL shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
 @property (nonatomic) long long tileInitialContentMode; // @synthesize tileInitialContentMode=_tileInitialContentMode;

@@ -12,17 +12,17 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAssistantAccessControlModel, HMDUser, NSArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDAssistantAccessControl : HMFObject <HMFLogging, HMFObject, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
+    id<HMFLocking> _lock;
     NSMutableSet *_accessories;
     BOOL _enabled;
     HMDUser *_user;
     unsigned long long _cachedHash;
     unsigned long long _options;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, copy) NSArray *accessories;
@@ -38,7 +38,6 @@
 @property unsigned long long options; // @synthesize options=_options;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (weak) HMDUser *user; // @synthesize user=_user;

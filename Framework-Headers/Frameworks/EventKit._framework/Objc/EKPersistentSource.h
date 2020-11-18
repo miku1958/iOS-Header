@@ -31,26 +31,34 @@
 + (id)relations;
 - (void).cxx_destruct;
 - (id)constraints;
-- (id)constraintsDescriptionPath;
+- (id)constraintsName;
 - (id)creatorBundleID;
 - (id)creatorCodeSigningIdentity;
 - (id)delegatedAccountOwnerStoreID;
 - (id)description;
 - (int)entityType;
 - (int)flags;
+- (int)flags2;
 - (id)lastSyncEndDate;
 - (unsigned long long)lastSyncError;
+- (id)lastSyncErrorData;
 - (id)lastSyncStartDate;
-- (void)setConstraintsDescriptionPath:(id)arg1;
+- (int)preferredEventPrivateValueRaw;
+- (void)setConstraintsName:(id)arg1;
 - (void)setCreatorBundleID:(id)arg1;
 - (void)setCreatorCodeSigningIdentity:(id)arg1;
 - (void)setDelegatedAccountOwnerStoreID:(id)arg1;
+- (void)setFlags2:(int)arg1;
 - (void)setFlags:(int)arg1;
 - (void)setLastSyncEndDate:(id)arg1;
 - (void)setLastSyncError:(unsigned long long)arg1;
+- (void)setLastSyncErrorData:(id)arg1;
 - (void)setLastSyncStartDate:(id)arg1;
+- (void)setPreferredEventPrivateValueRaw:(int)arg1;
 - (void)setShowsNotifications:(BOOL)arg1;
+- (void)setStrictestEventPrivateValueRaw:(int)arg1;
 - (BOOL)showsNotifications;
+- (int)strictestEventPrivateValueRaw;
 
 @end
 

@@ -41,10 +41,10 @@
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (BOOL)deleteSeriesFromHFDWithKey:(long long)arg1 database:(id)arg2 error:(id *)arg3;
-+ (BOOL)deleteSeriesWithID:(id)arg1 deleteHFDData:(BOOL)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5;
++ (BOOL)deleteSeriesWithID:(id)arg1 deleteHFDData:(BOOL)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 + (id)disambiguatedSQLForProperty:(id)arg1;
 + (Class)entityClassForEnumeration;
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (BOOL)enumerateDataWithIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 + (BOOL)enumerateDataWithIdentifier:(id)arg1 transaction:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 + (BOOL)enumerateDataWithTransaction:(id)arg1 HFDKey:(long long)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
@@ -57,7 +57,7 @@
 + (BOOL)insertValues:(id)arg1 series:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)isConcreteEntity;
 + (id)joinClausesForProperty:(id)arg1;
-+ (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
++ (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
 + (id)orderingTermForSortDescriptor:(id)arg1;
 + (BOOL)performPostJournalMergeCleanupWithTransaction:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -68,8 +68,8 @@
 + (id)quantitySampleSeriesEntitiesForAutoFreezeSQL;
 + (id)quantitySampleSeriesEntitiesForAutoFreezeWithTransaction:(id)arg1 error:(id *)arg2;
 + (id)removeValues:(id)arg1 fromQuantitySeriesSample:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (BOOL)replaceExistingObject:(id)arg1 existingObjectID:(id)arg2 replacementObject:(id)arg3 replacementObjectID:(id)arg4 profile:(id)arg5 database:(id)arg6 error:(id *)arg7;
-+ (BOOL)replaceObjectID:(id)arg1 replacementObjectID:(id)arg2 deleteOriginalHFDData:(BOOL)arg3 profile:(id)arg4 database:(id)arg5 error:(id *)arg6;
++ (BOOL)replaceExistingObject:(id)arg1 existingObjectID:(id)arg2 replacementObject:(id)arg3 replacementObjectID:(id)arg4 profile:(id)arg5 transaction:(id)arg6 error:(id *)arg7;
++ (BOOL)replaceObjectID:(id)arg1 replacementObjectID:(id)arg2 deleteOriginalHFDData:(BOOL)arg3 profile:(id)arg4 transaction:(id)arg5 error:(id *)arg6;
 + (BOOL)supportsObjectMerging;
 + (BOOL)unitTesting_insertValues:(id)arg1 quantitySample:(id)arg2 seriesVersion:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (long long)unitTesting_insertionEra;

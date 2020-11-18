@@ -17,6 +17,7 @@
     short _category;
     short _subcategory;
     short _notificationState;
+    unsigned short _featuredState;
     NSString *_uuid;
     NSString *_title;
     NSString *_subtitle;
@@ -51,6 +52,7 @@
 @property (strong, nonatomic) NSSet *curatedAssetUUIDs; // @synthesize curatedAssetUUIDs=_curatedAssetUUIDs;
 @property (strong, nonatomic) NSSet *extendedCuratedAssetUUIDs; // @synthesize extendedCuratedAssetUUIDs=_extendedCuratedAssetUUIDs;
 @property (nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
+@property (nonatomic) unsigned short featuredState; // @synthesize featuredState=_featuredState;
 @property (strong, nonatomic) NSString *keyAssetUUID; // @synthesize keyAssetUUID=_keyAssetUUID;
 @property (strong, nonatomic) PLMemory *memory; // @synthesize memory=_memory;
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;

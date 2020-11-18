@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Vision/VNRequestCancelling-Protocol.h>
-#import <Vision/VNRequestWarming-Protocol.h>
 #import <Vision/VNTrackerProviding-Protocol.h>
 
 @class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface VNRequestPerformer : NSObject <VNRequestWarming, VNRequestCancelling, VNTrackerProviding>
+@interface VNRequestPerformer : NSObject <VNRequestCancelling, VNTrackerProviding>
 {
     NSLock *_requestLock;
     NSMutableArray *_requestsInFlight;
@@ -23,18 +22,16 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)_dependencyAnalyzedRequestsForRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
-- (id)_orderedRequestsForRequests:(id)arg1;
 - (BOOL)_performOrderedRequests:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (BOOL)_validateAndPrepareRequests:(id)arg1 error:(id *)arg2;
 - (void)cancelAllRequests;
 - (void)dealloc;
+- (id)dependencyAnalyzedRequestsForRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 - (id)init;
+- (id)orderedRequestsForRequests:(id)arg1;
 - (BOOL)performDependentRequests:(id)arg1 inContext:(id)arg2 onBehalfOfRequest:(id)arg3 error:(id *)arg4;
 - (BOOL)performRequests:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (BOOL)performRequests:(id)arg1 inContext:(id)arg2 onBehalfOfRequest:(id)arg3 error:(id *)arg4;
-- (BOOL)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForPerformingRequestsOfClass:(id)arg1 error:(id *)arg2;
 - (id)previousSequencedObservationsForRequest:(id)arg1;
 - (void)recordSequencedObservationsForRequest:(id)arg1;
 - (void)releaseTracker:(id)arg1;

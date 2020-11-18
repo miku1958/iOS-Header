@@ -14,6 +14,7 @@
 
 @optional
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePayment:(PKPayment *)arg2 completion:(void (^)(long long))arg3;
+- (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didRequestMerchantSessionUpdate:(void (^)(PKPaymentRequestMerchantSessionUpdate *))arg2;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectPaymentMethod:(PKPaymentMethod *)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectPaymentMethod:(PKPaymentMethod *)arg2 handler:(void (^)(PKPaymentRequestPaymentMethodUpdate *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectShippingAddress:(CNContact *)arg2 completion:(void (^)(long long, NSArray *, NSArray *))arg3;

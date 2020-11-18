@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryView;
 
+__attribute__((visibility("hidden")))
 @interface _MPStoreLibraryPersonalizationAggregateLibraryAddedOperation : MPAsyncOperation
 {
     MPMediaLibraryView *_libraryView;

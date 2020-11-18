@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSValue *pointerSlipValue; // @dynamic pointerSlipValue;
 @property (nonatomic) double pointerVisualIntensity; // @dynamic pointerVisualIntensity;
 @property (nonatomic) unsigned long long preferredPointerMaterialLuminance; // @dynamic preferredPointerMaterialLuminance;
+@property (nonatomic) BOOL shouldPointerSuppressMirroring; // @dynamic shouldPointerSuppressMirroring;
 @property (nonatomic) BOOL shouldPointerUnderlayContent; // @dynamic shouldPointerUnderlayContent;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -11,22 +11,24 @@
 @interface NSTextRange : NSObject
 {
     id<NSTextLocation> _location;
-    id<NSTextLocation> _terminator;
+    id<NSTextLocation> _endLocation;
 }
 
 @property (readonly, getter=isEmpty) BOOL empty;
+@property (readonly) id<NSTextLocation> endLocation; // @synthesize endLocation=_endLocation;
 @property (readonly) id<NSTextLocation> location; // @synthesize location=_location;
-@property (readonly) id<NSTextLocation> terminator; // @synthesize terminator=_terminator;
 
 - (BOOL)containsLocation:(id)arg1;
+- (BOOL)containsRange:(id)arg1;
 - (void)dealloc;
-- (id)endLocation;
+- (id)description;
 - (id)initWithLocation:(id)arg1;
-- (id)initWithLocation:(id)arg1 terminator:(id)arg2;
-- (id)initWithStartLocation:(id)arg1 endLocation:(id)arg2;
+- (id)initWithLocation:(id)arg1 endLocation:(id)arg2;
 - (BOOL)intersectsWithTextRange:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTextRange:(id)arg1;
-- (id)startLocation;
+- (id)shortDescription;
+- (id)terminator;
 - (id)textRangeByFormingUnionWithTextRange:(id)arg1;
 - (id)textRangeByIntersectingWithTextRange:(id)arg1;
 

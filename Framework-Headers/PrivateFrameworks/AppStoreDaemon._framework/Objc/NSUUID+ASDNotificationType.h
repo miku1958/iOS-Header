@@ -9,5 +9,6 @@
 #import <AppStoreDaemon/ASDNotificationType-Protocol.h>
 
 @interface NSUUID (ASDNotificationType) <ASDNotificationType>
++ (id)asd_generateLogKey;
 @end
 

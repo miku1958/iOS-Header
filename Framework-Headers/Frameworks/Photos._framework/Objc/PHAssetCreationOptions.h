@@ -15,6 +15,7 @@
     BOOL _copyStillPhotoFromLivePhoto;
     BOOL _copyOriginal;
     BOOL _copySinglePhotoFromBurst;
+    BOOL _copyAsAlternateAsset;
     CDUnknownBlockType _destinationAssetAvailabilityHandler;
     PHAssetCreationAdjustmentBakeInOptions *_adjustmentBakeInOptions;
     PHAssetCreationMetadataCopyOptions *_metadataCopyOptions;
@@ -22,6 +23,7 @@
 }
 
 @property (copy, nonatomic) PHAssetCreationAdjustmentBakeInOptions *adjustmentBakeInOptions; // @synthesize adjustmentBakeInOptions=_adjustmentBakeInOptions;
+@property (nonatomic) BOOL copyAsAlternateAsset; // @synthesize copyAsAlternateAsset=_copyAsAlternateAsset;
 @property (nonatomic) BOOL copyOriginal; // @synthesize copyOriginal=_copyOriginal;
 @property (nonatomic) BOOL copySinglePhotoFromBurst; // @synthesize copySinglePhotoFromBurst=_copySinglePhotoFromBurst;
 @property (nonatomic) BOOL copyStillPhotoFromLivePhoto; // @synthesize copyStillPhotoFromLivePhoto=_copyStillPhotoFromLivePhoto;

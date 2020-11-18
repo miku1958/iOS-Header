@@ -33,6 +33,7 @@
 - (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
 - (void)didFinishWithPass:(id)arg1 error:(id)arg2;
+- (void)didFinishWithPasses:(id)arg1 error:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 delegate:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

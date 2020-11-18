@@ -6,24 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <ProactiveML/PMLDictionarySerializableProtocol-Protocol.h>
 #import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
 
 @class NSString, PMLDenseVector;
 
-@interface PMLModelRegressor : NSObject <PMLDictionarySerializableProtocol, PMLPlistAndChunksSerializableProtocol>
+@interface PMLModelRegressor : NSObject <PMLPlistAndChunksSerializableProtocol>
 {
     PMLDenseVector *_data;
 }
 
 @property (readonly, nonatomic) int count;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)modelRegressorFromFloat:(float)arg1;

@@ -15,9 +15,12 @@
 {
     id<NFRegistrationContainer> _publicContainer;
     id<NFRegistrationContainer> _privateContainer;
+    id _bridgedContainer;
+    id _swiftContainer;
     id<NFCallbackRegistration> _callback;
 }
 
+@property (readonly, nonatomic) id bridgedContainer; // @synthesize bridgedContainer=_bridgedContainer;
 @property (readonly, nonatomic) id<NFCallbackRegistration> callback; // @synthesize callback=_callback;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -25,9 +28,10 @@
 @property (readonly, nonatomic) id<NFRegistrationContainer> privateContainer; // @synthesize privateContainer=_privateContainer;
 @property (readonly, nonatomic) id<NFRegistrationContainer> publicContainer; // @synthesize publicContainer=_publicContainer;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id swiftContainer; // @synthesize swiftContainer=_swiftContainer;
 
 - (void).cxx_destruct;
-- (id)initWithPublicContainer:(id)arg1 privateContainer:(id)arg2 callback:(id)arg3;
+- (id)initWithPublicContainer:(id)arg1 privateContainer:(id)arg2 bridgedContainer:(id)arg3 callback:(id)arg4;
 
 @end
 

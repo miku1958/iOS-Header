@@ -8,6 +8,7 @@
 
 @class NSData, NSString, SPAssetCacheSyncData;
 
+__attribute__((visibility("hidden")))
 @interface SPCacheMessage : NSObject
 {
     int _messageType;

@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Named Structures
+#pragma mark Blocks
 
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
+#pragma mark Named Structures
 
 struct CGPoint {
     double x;

@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (struct CGRect)_referenceFrame;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)init;

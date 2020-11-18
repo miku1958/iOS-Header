@@ -25,6 +25,7 @@
 @property (nonatomic) double nextFireTime; // @dynamic nextFireTime;
 
 - (void).cxx_destruct;
+- (void)dbgAssertInside;
 - (id)initInSilo:(id)arg1 withScheduler:(id)arg2;
 - (void)invalidate;
 - (double)nextFireDelayRaw;

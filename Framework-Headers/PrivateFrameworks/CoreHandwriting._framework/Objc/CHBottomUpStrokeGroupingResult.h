@@ -15,8 +15,11 @@
 
 @property (readonly, strong, nonatomic) NSDictionary *substrokePlacementsByStrokeIdentifier; // @synthesize substrokePlacementsByStrokeIdentifier=_substrokePlacementsByStrokeIdentifier;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3 substrokePlacementsByStrokeIdentifier:(id)arg4;
 
 @end

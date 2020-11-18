@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class CKServerChangeToken;
+#import <CloudKit/CKFetchDatabaseChangesOperationCallbacks-Protocol.h>
 
-@interface CKFetchDatabaseChangesOperation : CKDatabaseOperation
+@class CKFetchDatabaseChangesOperationInfo, CKServerChangeToken;
+@protocol CKFetchDatabaseChangesOperationCallbacks;
+
+@interface CKFetchDatabaseChangesOperation : CKDatabaseOperation <CKFetchDatabaseChangesOperationCallbacks>
 {
     BOOL _fetchAllChanges;
     CDUnknownBlockType _recordZoneWithIDChangedBlock;
@@ -23,8 +26,10 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType changeTokenUpdatedBlock; // @synthesize changeTokenUpdatedBlock=_changeTokenUpdatedBlock;
+@property (readonly, nonatomic) id<CKFetchDatabaseChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (nonatomic) BOOL fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property (copy, nonatomic) CDUnknownBlockType fetchDatabaseChangesCompletionBlock; // @synthesize fetchDatabaseChangesCompletionBlock=_fetchDatabaseChangesCompletionBlock;
+@property (readonly, nonatomic) CKFetchDatabaseChangesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneWithIDChangedBlock; // @synthesize recordZoneWithIDChangedBlock=_recordZoneWithIDChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedBlock; // @synthesize recordZoneWithIDWasDeletedBlock=_recordZoneWithIDWasDeletedBlock;
@@ -33,13 +38,16 @@
 @property (strong, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
 @property (nonatomic) long long status; // @synthesize status=_status;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleChangeForRecordZoneID:(id)arg1;
+- (void)handleChangeSetCompletionWithServerChangeToken:(id)arg1 databaseChangesStatus:(long long)arg2 error:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)handleDeleteForRecordZoneID:(id)arg1;
+- (void)handlePurgeForRecordZoneID:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithPreviousServerChangeToken:(id)arg1;

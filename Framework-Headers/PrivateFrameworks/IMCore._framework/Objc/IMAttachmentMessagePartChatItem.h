@@ -25,6 +25,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (BOOL)isAttachmentContiguousWithChatItem:(id)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1;
 
 @end
 

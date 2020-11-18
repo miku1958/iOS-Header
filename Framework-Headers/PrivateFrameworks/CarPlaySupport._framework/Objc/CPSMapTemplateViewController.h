@@ -43,6 +43,7 @@
     CPSLayoutHelperView *_navigationCardViewLayoutHelperView;
     NSLayoutConstraint *_navigationCardViewLayoutViewBottomConstraint;
     CPSTripPreviewsCardView *_previewsView;
+    unsigned long long _previewSelectedIndex;
     CARSessionStatus *_sessionStatus;
     CPSNavigator *_navigator;
     UITapGestureRecognizer *_hideTapGestureRecognizer;
@@ -121,6 +122,7 @@
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) CPSPanViewController *panViewController; // @synthesize panViewController=_panViewController;
 @property (nonatomic) BOOL previewOnlyRouteChoices; // @synthesize previewOnlyRouteChoices=_previewOnlyRouteChoices;
+@property (nonatomic) unsigned long long previewSelectedIndex; // @synthesize previewSelectedIndex=_previewSelectedIndex;
 @property (strong, nonatomic) CPSTripPreviewsCardView *previewsView; // @synthesize previewsView=_previewsView;
 @property (nonatomic) BOOL rightHandDrive; // @synthesize rightHandDrive=_rightHandDrive;
 @property (weak, nonatomic) id<CPSSafeAreaDelegate> safeAreaDelegate; // @synthesize safeAreaDelegate=_safeAreaDelegate;
@@ -131,6 +133,7 @@
 @property (nonatomic) unsigned long long tripEstimateStyle; // @synthesize tripEstimateStyle=_tripEstimateStyle;
 @property (strong, nonatomic) CPTripPreviewTextConfiguration *tripPreviewTextConfiguration; // @synthesize tripPreviewTextConfiguration=_tripPreviewTextConfiguration;
 @property (copy, nonatomic) NSArray *tripPreviews; // @synthesize tripPreviews=_tripPreviews;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (void)_addPanControllerAsChild;
@@ -186,7 +189,7 @@
 - (void)hostSetPanInterfaceVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)hostStartNavigationSessionForTrip:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)hostUpdateTravelEstimates:(id)arg1 forTripIdentifier:(id)arg2;
-- (id)initWithMapTemplate:(id)arg1 templateDelegate:(id)arg2 safeAreaDelegate:(id)arg3 applicationStateMonitor:(id)arg4;
+- (id)initWithMapTemplate:(id)arg1 templateDelegate:(id)arg2 safeAreaDelegate:(id)arg3 applicationStateMonitor:(id)arg4 templateEnvironment:(id)arg5;
 - (void)invalidate;
 - (void)navigationAlertQueue:(id)arg1 shouldDisplayAlertView:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationAlertQueue:(id)arg1 shouldRemoveAlertView:(id)arg2 animated:(BOOL)arg3 dismissalContext:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
@@ -204,7 +207,7 @@
 - (void)setHostGuidanceBackgroundColor:(id)arg1;
 - (void)setHostHidesButtonsWithNavigationBar:(BOOL)arg1;
 - (void)setHostTripEstimateStyle:(unsigned long long)arg1;
-- (void)setHostTripPreviews:(id)arg1 textConfiguration:(id)arg2 previewOnlyRouteChoices:(BOOL)arg3;
+- (void)setHostTripPreviews:(id)arg1 textConfiguration:(id)arg2 previewOnlyRouteChoices:(BOOL)arg3 selectedIndex:(unsigned long long)arg4;
 - (void)setMapButton:(id)arg1 focusedImage:(id)arg2;
 - (void)setMapButton:(id)arg1 hidden:(BOOL)arg2;
 - (BOOL)shouldForwardEventForWindow:(id)arg1 eventType:(long long)arg2;

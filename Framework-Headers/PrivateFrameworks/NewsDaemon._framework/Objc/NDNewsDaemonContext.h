@@ -28,6 +28,8 @@
 - (void).cxx_destruct;
 - (id)_queue;
 - (void)fetchLatestResultsWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchPlaceholderResultsWithOperationInfo:(id)arg1 syncCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)markAnalyticsElement:(id)arg1 asReadAtDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)markAnalyticsElements:(id)arg1 asSeenAtDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

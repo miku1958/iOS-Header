@@ -8,12 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI232SearchMoreArticlesViewController : UIViewController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *sharingActivityProviderFactory;
 }
 
 - (void).cxx_destruct;

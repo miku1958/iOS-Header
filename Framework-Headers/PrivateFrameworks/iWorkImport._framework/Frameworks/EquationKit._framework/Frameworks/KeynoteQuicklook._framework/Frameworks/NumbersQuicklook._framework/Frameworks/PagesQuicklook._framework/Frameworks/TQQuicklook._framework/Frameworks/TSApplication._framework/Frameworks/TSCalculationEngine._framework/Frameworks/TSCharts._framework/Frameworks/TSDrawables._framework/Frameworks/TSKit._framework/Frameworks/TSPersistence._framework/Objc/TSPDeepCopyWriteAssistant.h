@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (long long)componentWriterMode;
-- (id)createMetadataForRootObject:(id)arg1 dataArchiver:(id)arg2 archivedObjects:(id)arg3 componentObjectUUIDMap:(id)arg4 externalReferences:(id)arg5 weakExternalReferences:(id)arg6 lazyReferences:(id)arg7 dataReferences:(id)arg8 error:(id *)arg9;
+- (id)createMetadataForRootObject:(id)arg1 readVersion:(unsigned long long)arg2 dataArchiver:(id)arg3 archivedObjects:(id)arg4 componentObjectUUIDMap:(id)arg5 externalReferences:(id)arg6 weakExternalReferences:(id)arg7 lazyReferences:(id)arg8 dataReferences:(id)arg9 error:(id *)arg10;
 - (void)encodeDeepCopyOfObject:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithContext:(id)arg1 objectMap:(id)arg2;

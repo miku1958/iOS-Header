@@ -20,6 +20,8 @@
     PKImage *_cobrandLogoImage;
     PKImage *_cardBackgroundImage;
     PKImage *_cardBackgroundCombinedImage;
+    PKImage *_compactBankLogoDarkImage;
+    PKImage *_compactBankLogoLightImage;
 }
 
 @property (strong, nonatomic) PKImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
@@ -27,6 +29,8 @@
 @property (strong, nonatomic) PKImage *cardBackgroundCombinedImage; // @synthesize cardBackgroundCombinedImage=_cardBackgroundCombinedImage;
 @property (strong, nonatomic) PKImage *cardBackgroundImage; // @synthesize cardBackgroundImage=_cardBackgroundImage;
 @property (strong, nonatomic) PKImage *cobrandLogoImage; // @synthesize cobrandLogoImage=_cobrandLogoImage;
+@property (strong, nonatomic) PKImage *compactBankLogoDarkImage; // @synthesize compactBankLogoDarkImage=_compactBankLogoDarkImage;
+@property (strong, nonatomic) PKImage *compactBankLogoLightImage; // @synthesize compactBankLogoLightImage=_compactBankLogoLightImage;
 @property (strong, nonatomic) PKImage *footerImage; // @synthesize footerImage=_footerImage;
 @property (strong, nonatomic) PKImage *logoImage; // @synthesize logoImage=_logoImage;
 @property (strong, nonatomic) PKImage *networkLogoImage; // @synthesize networkLogoImage=_networkLogoImage;

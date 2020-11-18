@@ -11,29 +11,43 @@
 
 @interface PHASuggestionController : NSObject
 {
-    PGManager *_graphManager;
     NSObject<OS_os_log> *_loggingConnection;
     NSMutableArray *_existingSuggestions;
-    NSMutableArray *_existingSharingSuggestions;
+    NSMutableArray *_suggestionsToRetire;
+    NSMutableArray *_suggestionsToDelete;
+    NSArray *_cachedFeaturedSuggestions;
+    unsigned long long _newFeaturedSuggestionsCount;
     NSArray *_existingMemories;
+    PGManager *_graphManager;
 }
 
 @property (strong, nonatomic) NSArray *existingMemories; // @synthesize existingMemories=_existingMemories;
 @property (readonly, nonatomic) NSArray *existingSuggestions;
+@property (readonly, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
+@property (readonly, nonatomic) unsigned long long newFeaturedSuggestionsCount;
 
-+ (unsigned long long)_retirementDelayInDaysForSuggestionType:(unsigned short)arg1;
++ (double)_maximumDurationBeforeDeletionForSuggestionType:(unsigned short)arg1 andSubtype:(unsigned short)arg2;
++ (unsigned long long)_retirementDelayInDaysForSuggestionType:(unsigned short)arg1 andSubtype:(unsigned short)arg2;
 + (id)availableSuggestionTypeInfosWithProfile:(unsigned char)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canFeatureSuggestion:(id)arg1;
+- (id)_createSuggestionSessionWithProfile:(unsigned char)arg1;
+- (id)_existingSuggestionsForProfile:(unsigned char)arg1;
+- (id)_suggestionsToReuseWithSuggestionSession:(id)arg1 numberOfSuggestionsToReuse:(unsigned long long)arg2;
+- (void)cacheSuggestionsWithCurrentlyFeaturedState;
 - (id)collidableMemoriesWithReferenceDate:(id)arg1 andDelay:(double)arg2;
 - (id)collidableSuggestionsWithOptions:(id)arg1;
-- (id)collidableSuggestionsWithReferenceDate:(id)arg1 andDelay:(double)arg2 sharingSuggestionsOnly:(BOOL)arg3;
-- (id)commitSuggestions:(id)arg1 options:(id)arg2;
-- (id)existingSuggestionsInSuggestions:(id)arg1 atDate:(id)arg2 processExistingSuggestions:(BOOL)arg3;
+- (id)commitSuggestions:(id)arg1 retiringSuggestions:(id)arg2 deletingSuggestions:(id)arg3 withOptions:(id)arg4 error:(id *)arg5;
+- (id)deniedSuggestionsForProfile:(unsigned char)arg1;
+- (id)generateOnThisDayAssetSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)generateSharingSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)generateSingleAssetSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)generateSuggestionsWithProfile:(unsigned char)arg1 options:(id)arg2 progress:(CDUnknownBlockType)arg3;
+- (id)generateWidgetSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (void)ingestExistingSuggestionsWithOptions:(id)arg1;
+- (void)ingestSuggestions:(id)arg1 atDate:(id)arg2;
 - (id)initWithGraphManager:(id)arg1;
-- (void)processExistingSuggestionsWithOptions:(id)arg1;
+- (id)pendingOnThisDayMemories;
 - (void)recordCreatedSuggestions:(id)arg1 duringSession:(id)arg2;
 - (void)recordDeletedSuggestions:(id)arg1;
 - (void)recordRetiredSuggestions:(id)arg1;

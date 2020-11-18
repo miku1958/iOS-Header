@@ -10,7 +10,10 @@
 
 @protocol AMSSecurityServiceInterface <NSObject>
 - (void)handleResponse:(NSURLResponse *)arg1 completion:(void (^)(AMSURLAction *))arg2;
-- (void)performBiometricTokenUpdateWithAccount:(ACAccount *)arg1 clientInfo:(AMSProcessInfo *)arg2 additionalDialogMetrics:(NSDictionary *)arg3 shouldRequestConfirmation:(BOOL)arg4 completion:(void (^)(BOOL, NSError *))arg5;
+- (void)isBiometricsAvailableForAccount:(ACAccount *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)isIdentityMapValidWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)performBiometricTokenUpdateWithAccount:(ACAccount *)arg1 clientInfo:(AMSProcessInfo *)arg2 additionalDialogMetrics:(NSDictionary *)arg3 shouldGenerateKeysOnly:(BOOL)arg4 shouldRequestConfirmation:(BOOL)arg5 completion:(void (^)(BOOL, NSError *))arg6;
+- (void)saveIdentityMapWithCompletion:(void (^)(NSError *))arg1;
 - (void)signedHeadersForRequest:(NSURLRequest *)arg1 buyParams:(AMSBuyParams *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 @end
 

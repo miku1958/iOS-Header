@@ -26,6 +26,7 @@
 - (id)init;
 - (void)setEventObserverDelegate:(id)arg1 queue:(id)arg2;
 - (BOOL)startObservingEventList:(id)arg1;
+- (BOOL)startObservingEventList:(id)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
 - (BOOL)stopObserving;
 
 @end

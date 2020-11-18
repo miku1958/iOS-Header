@@ -16,6 +16,8 @@
     unsigned short _subtype;
     unsigned short _state;
     NSString *_title;
+    NSString *_localizedTitle;
+    NSString *_localizedSubtitle;
     NSDictionary *_actionProperties;
     PHAsset *_asset;
 }
@@ -27,6 +29,8 @@
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localIdentifier;
+@property (readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
+@property (readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (readonly, nonatomic) NSDate *startDate;
 @property (readonly, nonatomic) unsigned short state; // @synthesize state=_state;
 @property (readonly, nonatomic) unsigned short subtype; // @synthesize subtype=_subtype;

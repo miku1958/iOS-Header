@@ -52,6 +52,7 @@ struct Store {
     struct array<unsigned int, 64> tableOffsets;
     struct Table *arrayTable;
     struct Table *stringTable;
+    struct Table *dictionaryTable;
     struct atomic<long long> enumerationState;
     struct atomic<long long> getNSDataCallCount;
     struct Pedigree pedigree;
@@ -71,6 +72,13 @@ struct Unit {
     unsigned int :2;
     unsigned int _field1;
     char _field2[0];
+};
+
+struct _CSWriteUnitState {
+    id _field1;
+    CDUnknownBlockType _field2;
+    CDUnknownBlockType _field3;
+    id _field4;
 };
 
 struct _NSRange {
@@ -110,6 +118,12 @@ struct array<unsigned int, 64> {
     unsigned int __elems_[64];
 };
 
+struct atomic<bool> {
+    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+        _Atomic BOOL __a_value;
+    } __a_;
+};
+
 struct atomic<long long> {
     struct __cxx_atomic_impl<long long, std::__1::__cxx_atomic_base_impl<long long>> {
         _Atomic long long __a_value;
@@ -122,6 +136,10 @@ struct optional<unsigned int> {
         unsigned int __val_;
     } ;
     BOOL __engaged_;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct vector<_NSRange, std::__1::allocator<_NSRange>> {

@@ -6,7 +6,12 @@
 
 #import <NewsUI2/_TtC7NewsUI228SearchMoreTagsViewController.h>
 
-@interface _TtC7NewsUI228SearchMoreTagsViewController (NewsUI2)
+#import <NewsUI2/TSSearchResultsPanable-Protocol.h>
+
+@interface _TtC7NewsUI228SearchMoreTagsViewController (NewsUI2) <TSSearchResultsPanable>
+
+@property (nonatomic, readonly) BOOL isSearchResultsPane;
+
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

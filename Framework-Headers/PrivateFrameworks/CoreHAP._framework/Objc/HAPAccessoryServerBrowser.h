@@ -6,26 +6,46 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSObject;
+#import <CoreHAP/HAPAccessoryServerNotification-Protocol.h>
+
+@class HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HAPKeyStore, OS_dispatch_queue;
 
-@interface HAPAccessoryServerBrowser : HMFObject
+@interface HAPAccessoryServerBrowser : HMFObject <HAPAccessoryServerNotification>
 {
+    HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_workQueue;
     long long _linkType;
+    NSMutableSet *_pairedAccessoryIdentifiers;
     id<HAPKeyStore> _keyStore;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property (readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
+@property (strong, nonatomic) NSMutableSet *pairedAccessoryIdentifiers; // @synthesize pairedAccessoryIdentifiers=_pairedAccessoryIdentifiers;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (void)deRegisterAccessoryWithIdentifier:(id)arg1;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
+- (void)indicateNotificationFromServer:(id)arg1 notifyType:(unsigned long long)arg2 withDictionary:(id)arg3;
 - (id)initWithQueue:(id)arg1;
+- (BOOL)isPaired:(id)arg1;
 - (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)registerPairedAccessoryWithIdentifier:(id)arg1;
+- (void)resetPairedAccessories;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (void)startConfirmingPairedAccessoryReachability;
 - (void)startDiscoveringAccessoryServers;
+- (void)stopConfirmingPairedAccessoryReachability;
 - (void)stopDiscoveringAccessoryServers;
 
 @end

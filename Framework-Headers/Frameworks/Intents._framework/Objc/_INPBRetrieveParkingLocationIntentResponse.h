@@ -10,21 +10,22 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBRetrieveParkingLocationIntentResponse-Protocol.h>
 
-@class NSString, _INPBLocation;
+@class NSString, _INPBLocation, _INPBString;
 
 @interface _INPBRetrieveParkingLocationIntentResponse : PBCodable <_INPBRetrieveParkingLocationIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBLocation *_parkingLocation;
+    _INPBString *_parkingNote;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasParkingLocation;
+@property (readonly, nonatomic) BOOL hasParkingNote;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBLocation *parkingLocation; // @synthesize parkingLocation=_parkingLocation;
+@property (strong, nonatomic) _INPBString *parkingNote; // @synthesize parkingNote=_parkingNote;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

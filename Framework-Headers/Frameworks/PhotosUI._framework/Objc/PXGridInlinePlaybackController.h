@@ -54,7 +54,6 @@
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
 - (BOOL)_hasAnyPlaybackRecords;
-- (BOOL)_isDisplayAssetEligibleForAutoPlayback:(id)arg1;
 - (void)_processInfoPowerStateDidChange:(id)arg1;
 - (void)_startPlaybackForRecords:(id)arg1;
 - (void)_stopPlaybackForRecords:(id)arg1;
@@ -78,6 +77,7 @@
 - (id)init;
 - (void)invalidatePlaybackEnabled;
 - (void)invalidatePlayingRecords;
+- (BOOL)isDisplayAssetEligibleForAutoPlayback:(id)arg1;
 - (BOOL)isPlayingDisplayAsset:(id)arg1;
 - (void)preferencesDidChange;
 - (void)setNeedsUpdate;

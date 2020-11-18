@@ -6,7 +6,7 @@
 
 #import <HomeKit/HMCameraSource.h>
 
-@class _HMCameraStream;
+@class NSNumber, _HMCameraStream;
 
 @interface HMCameraStream : HMCameraSource
 {
@@ -14,10 +14,10 @@
 }
 
 @property (readonly, nonatomic) unsigned long long audioStreamSetting;
+@property (readonly, nonatomic) NSNumber *audioVolume;
 @property (strong, nonatomic) _HMCameraStream *stream; // @synthesize stream=_stream;
 
 - (void).cxx_destruct;
-- (id)audioVolume;
 - (id)initWithStream:(id)arg1;
 - (void)setAudioStreamSetting:(unsigned long long)arg1;
 - (void)updateAudioStreamSetting:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

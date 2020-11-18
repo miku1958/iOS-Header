@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
-    CDStruct_3e4cc335 _flags;
+    CDStruct_e54d7a96 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasText;
@@ -33,8 +33,6 @@ __attribute__((visibility("hidden")))
 + (id)factoidsForPlaceData:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readText;
-- (void)_readTitle;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -43,7 +41,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

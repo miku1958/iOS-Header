@@ -5,6 +5,8 @@
 //
 
 @protocol PXGadgetRankStorage
+- (unsigned long long)gadgetTypeForRank:(long long)arg1;
+- (BOOL)hasAnyStoredRank;
 - (long long)rankForGadgetType:(unsigned long long)arg1;
 - (void)resetStoredRanks;
 - (void)setRank:(long long)arg1 forGadgetType:(unsigned long long)arg2;

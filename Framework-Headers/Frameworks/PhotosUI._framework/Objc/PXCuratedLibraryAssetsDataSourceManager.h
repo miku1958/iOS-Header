@@ -40,7 +40,8 @@
     unsigned long long _lastVisualPositionsChangeToDataSourceIdentifier;
 }
 
-@property (copy, nonatomic) NSPredicate *allPhotosFilterPredicate; // @synthesize allPhotosFilterPredicate=_allPhotosFilterPredicate;
+@property (readonly, nonatomic) NSPredicate *allPhotosFilterPredicate; // @synthesize allPhotosFilterPredicate=_allPhotosFilterPredicate;
+@property (nonatomic) long long backgroundFetchOriginSection;
 @property (nonatomic) BOOL canLoadData; // @synthesize canLoadData=_canLoadData;
 @property (readonly, nonatomic) PXCuratedLibraryAssetsDataSourceManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) PXAssetsDataSourceManager *currentAssetsDataSourceManager;
@@ -50,6 +51,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXCuratedLibraryAssetsDataSourceManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSPredicate *filterPredicate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long lastTransitionType; // @synthesize lastTransitionType=_lastTransitionType;
 @property (strong, nonatomic) PXVisualPositionsChangeDetails *lastVisualPositionsChangeDetails; // @synthesize lastVisualPositionsChangeDetails=_lastVisualPositionsChangeDetails;
@@ -78,7 +80,6 @@
 - (id)dataSourceForZoomLevel:(long long)arg1;
 - (id)dataSourceManagerForZoomLevel:(long long)arg1;
 - (void)didPerformChanges;
-- (void)ensureLastSectionHasContent;
 - (id)firstAssetCollectionReferenceInDataSourceForZoomLevel:(long long)arg1 withParent:(id)arg2;
 - (BOOL)forceAccurateAllSectionsIfNeeded;
 - (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
@@ -93,6 +94,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)pauseChangeDeliveryWithTimeout:(double)arg1;
 - (void)resumeChangeDelivery:(id)arg1;
+- (void)setAllPhotosFilterPredicate:(id)arg1;
 - (void)setCurationEnabled:(BOOL)arg1 forAssetCollection:(id)arg2;
 - (void)setNeedsUpdate;
 - (void)setTransientKeyAsset:(id)arg1 forAssetCollection:(id)arg2 zoomLevel:(long long)arg3;

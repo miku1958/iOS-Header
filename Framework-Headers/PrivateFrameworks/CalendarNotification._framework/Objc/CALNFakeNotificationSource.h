@@ -9,18 +9,20 @@
 #import <CalendarNotification/CALNNotificationSource-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CALNNotificationManager;
+@protocol CALNCalendarIconIdentifierProvider, CALNNotificationManager;
 
 @interface CALNFakeNotificationSource : NSObject <CALNNotificationSource>
 {
     NSString *_sourceIdentifier;
     id<CALNNotificationManager> _notificationManager;
+    id<CALNCalendarIconIdentifierProvider> _iconIdentifierProvider;
 }
 
 @property (readonly, nonatomic) NSArray *categories;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<CALNCalendarIconIdentifierProvider> iconIdentifierProvider; // @synthesize iconIdentifierProvider=_iconIdentifierProvider;
 @property (readonly, nonatomic) id<CALNNotificationManager> notificationManager; // @synthesize notificationManager=_notificationManager;
 @property (readonly, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (readonly) Class superclass;
@@ -30,7 +32,7 @@
 - (void).cxx_destruct;
 - (id)contentForNotificationWithSourceClientIdentifier:(id)arg1;
 - (void)didReceiveResponse:(id)arg1;
-- (id)initWithNotificationManager:(id)arg1 sourceIdentifierSuffix:(id)arg2;
+- (id)initWithNotificationManager:(id)arg1 iconIdentifierProvider:(id)arg2 sourceIdentifierSuffix:(id)arg3;
 - (void)postFakeNotification;
 - (void)refreshNotifications:(id)arg1;
 

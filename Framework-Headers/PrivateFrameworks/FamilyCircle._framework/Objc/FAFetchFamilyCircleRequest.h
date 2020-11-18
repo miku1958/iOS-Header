@@ -15,17 +15,26 @@
     BOOL _doNotFetchFromServer;
     BOOL _promptUserToResolveAuthenticatonFailure;
     NSArray *_expectedDSIDs;
+    NSArray *_expectedAltDSIDs;
+    unsigned long long _cachePolicy;
     NSDictionary *_serverResponse;
+    long long _qualityOfService;
 }
 
+@property unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
 @property BOOL doNotFetchFromServer; // @synthesize doNotFetchFromServer=_doNotFetchFromServer;
+@property (copy) NSArray *expectedAltDSIDs; // @synthesize expectedAltDSIDs=_expectedAltDSIDs;
 @property (copy) NSArray *expectedDSIDs; // @synthesize expectedDSIDs=_expectedDSIDs;
 @property BOOL forceServerFetch; // @synthesize forceServerFetch=_forceServerFetch;
 @property BOOL promptUserToResolveAuthenticatonFailure; // @synthesize promptUserToResolveAuthenticatonFailure=_promptUserToResolveAuthenticatonFailure;
+@property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (readonly, strong) NSDictionary *serverResponse; // @synthesize serverResponse=_serverResponse;
 @property BOOL signedInAccountShouldBeApprover; // @synthesize signedInAccountShouldBeApprover=_signedInAccountShouldBeApprover;
 
 - (void).cxx_destruct;
+- (unsigned long long)_cachePolicy;
+- (id)fetchFamilyCircleWithError:(id *)arg1;
+- (id)init;
 - (id)requestOptions;
 - (void)startRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 

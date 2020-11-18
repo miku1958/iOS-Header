@@ -20,8 +20,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *mdQuerySem; // @synthesize mdQuerySem=_mdQuerySem;
-@property (strong, nonatomic) NSMutableArray *recentMDSearchQueryResults; // @synthesize recentMDSearchQueryResults=_recentMDSearchQueryResults;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

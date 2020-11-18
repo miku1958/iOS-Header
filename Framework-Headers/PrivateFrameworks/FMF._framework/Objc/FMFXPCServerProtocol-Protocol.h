@@ -6,7 +6,7 @@
 
 #import <FMF/NSObject-Protocol.h>
 
-@class FMFDevice, FMFFence, FMFFriendshipRequest, FMFHandle, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@class CLLocation, FMFDevice, FMFFence, FMFFriendshipRequest, FMFHandle, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
 
 @protocol FMFXPCServerProtocol <NSObject>
 - (oneway void)addFavorite:(FMFHandle *)arg1 completion:(void (^)(NSError *))arg2;
@@ -54,6 +54,7 @@
 - (oneway void)isMyLocationEnabled:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)isNetworkReachable:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)locationForHandle:(FMFHandle *)arg1 completion:(void (^)(FMFLocation *, NSString *, NSError *))arg2;
+- (oneway void)muteFencesForHandle:(FMFHandle *)arg1 untilDate:(NSDate *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)nearbyLocationsWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (oneway void)notLoggedIntoiCloudAlert;
 - (oneway void)removeDevice:(FMFDevice *)arg1 completion:(void (^)(NSError *))arg2;
@@ -62,6 +63,7 @@
 - (oneway void)sendFriendshipInviteToHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(NSString *, NSError *))arg5;
 - (oneway void)sendFriendshipOfferToHandles:(NSSet *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(NSDictionary *, NSError *))arg5;
 - (oneway void)sendIDSMessage:(NSDictionary *)arg1 toIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)sendNotNowToHandle:(FMFHandle *)arg1 callerId:(FMFHandle *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (oneway void)sessionWasCreatedRefresh;
 - (oneway void)setActiveDevice:(FMFDevice *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setAllowFriendRequestsEnabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
@@ -85,6 +87,7 @@
 - (oneway void)stopSharingMyLocationWithHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (oneway void)stopSharingMyLocationWithHandles:(NSSet *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (oneway void)triggerWithUUID:(NSUUID *)arg1 forFenceWithID:(NSString *)arg2 withStatus:(NSString *)arg3 forDate:(NSDate *)arg4 completion:(void (^)(NSError *))arg5;
+- (oneway void)triggerWithUUID:(NSUUID *)arg1 forFenceWithID:(NSString *)arg2 withStatus:(NSString *)arg3 forDate:(NSDate *)arg4 triggerLocation:(CLLocation *)arg5 completion:(void (^)(NSError *))arg6;
 - (oneway void)upselliCloudAlert;
 @end
 

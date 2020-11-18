@@ -16,23 +16,19 @@ __attribute__((visibility("hidden")))
     NSString *_displayValue;
     NSString *_dateString;
     UIFont *_bodyFont;
-    struct UIEdgeInsets _marginInsets;
 }
 
 @property (strong, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property (strong, nonatomic) NSString *dateString; // @synthesize dateString=_dateString;
 @property (strong, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
 @property (nonatomic) BOOL displayValueAdjustsFontSizeToFitWidth; // @synthesize displayValueAdjustsFontSizeToFitWidth=_displayValueAdjustsFontSizeToFitWidth;
-@property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (strong, nonatomic) HKSource *source; // @synthesize source=_source;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_setupUI;
-- (void)_updateMarginInsets;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
 
 @end
 

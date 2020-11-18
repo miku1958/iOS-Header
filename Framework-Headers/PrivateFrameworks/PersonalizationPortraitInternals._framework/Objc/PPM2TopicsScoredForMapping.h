@@ -12,6 +12,7 @@
 
 @interface PPM2TopicsScoredForMapping : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
     NSString *_bundleId;
     NSString *_mappingId;
     unsigned int _resultSizeLog10;
@@ -23,9 +24,11 @@
     CDStruct_68ee747f _has;
 }
 
+@property (strong, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 @property (strong, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (nonatomic) BOOL error; // @synthesize error=_error;
 @property (nonatomic) BOOL exclusionSpec; // @synthesize exclusionSpec=_exclusionSpec;
+@property (readonly, nonatomic) BOOL hasActiveTreatments;
 @property (readonly, nonatomic) BOOL hasBundleId;
 @property (nonatomic) BOOL hasError;
 @property (nonatomic) BOOL hasExclusionSpec;

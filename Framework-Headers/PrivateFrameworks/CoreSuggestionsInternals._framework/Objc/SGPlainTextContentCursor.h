@@ -11,7 +11,6 @@
 @interface SGPlainTextContentCursor : NSObject
 {
     NSIndexSet *_quoted;
-    struct _NSRange _sig;
     struct __CFString *_str;
     unsigned long long _len;
     struct {
@@ -37,7 +36,7 @@
 - (BOOL)forwardToString:(id)arg1 consume:(BOOL)arg2;
 - (void)forwardWhile:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithEntity:(id)arg1;
+- (id)initWithMailMessage:(id)arg1;
 - (void)seekToEnd;
 - (void)seekToStart;
 

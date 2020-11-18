@@ -11,7 +11,6 @@
 @interface GEOProtobufSession : NSObject
 {
     id<GEODataSession> _dataSession;
-    _Atomic unsigned long long _lastTaskIdentifier;
 }
 
 @property (readonly, nonatomic) id<GEODataSession> dataSession; // @synthesize dataSession=_dataSession;

@@ -7,10 +7,11 @@
 #import <WorkflowKit/MTLModel.h>
 
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
+#import <ActionKit/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString, NSURL, WFImage;
 
-@interface WFGiphyImage : MTLModel <MTLJSONSerializing>
+@interface WFGiphyImage : MTLModel <NSSecureCoding, MTLJSONSerializing>
 {
     NSURL *_url;
     NSURL *_videoURL;
@@ -34,6 +35,7 @@
 
 + (id)JSONKeyPathsByPropertyKey;
 + (id)JSONTransformerForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 
 @end

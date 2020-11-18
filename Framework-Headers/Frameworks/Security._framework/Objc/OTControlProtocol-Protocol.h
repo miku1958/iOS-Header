@@ -7,17 +7,19 @@
 @class NSArray, NSData, NSError, NSString, OTJoiningConfiguration, OTOperationConfiguration, _SFECKeyPair;
 
 @protocol OTControlProtocol
-- (void)attemptSosUpgrade:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)createRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)establish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)fetchAllViableBottles:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSArray *, NSArray *, NSError *))arg3;
 - (void)fetchCliqueStatus:(NSString *)arg1 context:(NSString *)arg2 configuration:(OTOperationConfiguration *)arg3 reply:(void (^)(long long, NSError *))arg4;
 - (void)fetchEgoPeerID:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)fetchEscrowContents:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSData *, NSString *, NSData *, NSError *))arg3;
+- (void)fetchEscrowRecords:(NSString *)arg1 contextID:(NSString *)arg2 forceFetch:(BOOL)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
 - (void)fetchTrustStatus:(NSString *)arg1 context:(NSString *)arg2 configuration:(OTOperationConfiguration *)arg3 reply:(void (^)(long long, NSString *, NSNumber *, BOOL, NSError *))arg4;
+- (void)fetchUserControllableViewsSyncStatus:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)getCDPStatus:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(long long, NSError *))arg3;
 - (void)handleIdentityChangeForSigningKey:(_SFECKeyPair *)arg1 ForEncryptionKey:(_SFECKeyPair *)arg2 ForPeerID:(NSString *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 - (void)healthCheck:(NSString *)arg1 context:(NSString *)arg2 skipRateLimitingCheck:(BOOL)arg3 reply:(void (^)(NSError *))arg4;
+- (void)invalidateEscrowCache:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)joinWithRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)launchBottledPeer:(NSString *)arg1 bottleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)leaveClique:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
@@ -40,6 +42,7 @@
 - (void)rpcVoucherWithConfiguration:(OTJoiningConfiguration *)arg1 peerID:(NSString *)arg2 permanentInfo:(NSData *)arg3 permanentInfoSig:(NSData *)arg4 stableInfo:(NSData *)arg5 stableInfoSig:(NSData *)arg6 reply:(void (^)(NSData *, NSData *, NSError *))arg7;
 - (void)scrubBottledPeer:(NSString *)arg1 bottleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)setCDPEnabled:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)setUserControllableViewsSyncStatus:(NSString *)arg1 contextID:(NSString *)arg2 enabled:(BOOL)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 - (void)signIn:(NSString *)arg1 container:(NSString *)arg2 context:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)signOut:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOctagonStateMachine:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;

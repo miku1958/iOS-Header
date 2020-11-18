@@ -51,10 +51,14 @@
 - (void)_loadAccountProperties;
 - (void)_mobileiPodPrefsDidChange;
 - (void)_postRepeatShuffleTypeGlobalNotification;
+- (BOOL)autoPlayEnabledForUserIdentity:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)lastSiriPlaybackContextIDForPlayerID:(id)arg1;
+- (BOOL)privateListeningEnabledForHomeUserIdentifier:(id)arg1 error:(id *)arg2;
+- (void)setAutoPlayEnabled:(BOOL)arg1 forUserIdentity:(id)arg2;
 - (void)setLastSiriPlaybackContextID:(id)arg1 forPlayerID:(id)arg2;
+- (void)setPrivateListeningEnabled:(BOOL)arg1 forHomeUserIdentifier:(id)arg2 error:(id *)arg3;
 
 @end
 

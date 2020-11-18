@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)refineShiftMapV3WithMainImage:(id)arg1 shiftmap:(id)arg2 lensModel:(id)arg3;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)smoothShiftMapV2:(id)arg1;
+- (id)unifiedRenderingOutputImage:(struct CGImageMetadata *)arg1;
 - (id)upsampledShiftMap:(id)arg1;
 
 @end

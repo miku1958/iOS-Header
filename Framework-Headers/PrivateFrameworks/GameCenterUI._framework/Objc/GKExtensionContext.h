@@ -23,10 +23,12 @@
 @property (nonatomic) long long sandboxToken; // @synthesize sandboxToken=_sandboxToken;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)hostApp:(id)arg1 grantingAccessExtensionSandbox:(id)arg2 replyWithEndpoint:(CDUnknownBlockType)arg3;
 - (void)messageFromClient:(id)arg1;
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)tearDownExtensionWithReply:(CDUnknownBlockType)arg1;
 
 @end
 

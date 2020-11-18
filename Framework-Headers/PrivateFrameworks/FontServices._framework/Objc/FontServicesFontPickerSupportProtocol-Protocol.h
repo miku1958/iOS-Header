@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString;
+@class NSString;
 
 @protocol FontServicesFontPickerSupportProtocol
-- (void)activateFontsForFontPickerClient:(NSDictionary *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)locallyActivatedFontFiles:(void (^)(NSArray *, NSArray *))arg1;
+- (void)checkin:(void (^)(NSXPCListenerEndpoint *, NSDictionary *, BOOL, BOOL))arg1;
 - (void)ping:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
 @end
 

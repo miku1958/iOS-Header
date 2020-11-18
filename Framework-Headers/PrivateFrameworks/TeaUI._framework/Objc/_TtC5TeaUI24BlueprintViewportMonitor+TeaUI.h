@@ -7,6 +7,8 @@
 #import <TeaUI/_TtC5TeaUI24BlueprintViewportMonitor.h>
 
 @interface _TtC5TeaUI24BlueprintViewportMonitor (TeaUI)
+- (void)motionManager:(id)arg1 didUpdateMotionData:(id)arg2;
+- (void)motionManager:(id)arg1 motionEnabled:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 @end
 

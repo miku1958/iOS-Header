@@ -33,12 +33,6 @@
 - (void)_performIfAuthorizedForTypes:(id)arg1 sharing:(BOOL)arg2 onQueue:(id)arg3 usingBlock:(CDUnknownBlockType)arg4 errorHandler:(CDUnknownBlockType)arg5;
 - (void)_queue_beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_enqueueAuthorizationRequestForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 requestCompletionHandler:(CDUnknownBlockType)arg5;
-- (void)_setAuthorizationStatusesEntitled:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)allAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (id)allAuthorizationRecordsForType:(id)arg1 error:(id *)arg2;
-- (id)allDocumentAuthorizationRecordsForType:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
-- (id)allObjectAuthorizationsForSampleWithUUID:(id)arg1 error:(id *)arg2;
-- (id)allSourcesRequestingTypes:(id)arg1 error:(id *)arg2;
 - (id)authorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -56,10 +50,6 @@
 - (void)performIfAuthorizedToSaveObjectsWithTypes:(id)arg1 onQueue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (id)readAuthorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (id)readAuthorizationWithTypes:(id)arg1 error:(id *)arg2;
-- (void)requestAuthorizationForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (BOOL)resetAuthorizationStatusForBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (BOOL)resetAuthorizationStatusesForObjects:(id)arg1 error:(id *)arg2;
-- (void)setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)updateDefaultAuthorizationStatusesWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

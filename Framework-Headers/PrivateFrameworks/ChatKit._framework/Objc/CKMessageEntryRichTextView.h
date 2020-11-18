@@ -55,6 +55,7 @@
 - (id)pasteboard;
 - (void)previewDidChange:(id)arg1;
 - (void)setCompositionText:(id)arg1;
+- (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (void)textStorage:(id)arg1 willProcessEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
 - (void)updateComposeImages;
 

@@ -8,21 +8,22 @@
 
 #import <MapsSuggestions/MapsSuggestionsNetworkRequester-Protocol.h>
 
-@class GEOComposedWaypoint, NSArray, NSError, NSMutableDictionary, NSString;
+@class NSArray, NSError, NSMutableDictionary, NSString;
 
 @interface MapsSuggestionsFakeNetworkRequester : NSObject <MapsSuggestionsNetworkRequester>
 {
     struct Queue _queue;
     NSArray *_fakeMapItems;
-    NSMutableDictionary *_fakeMapItemsPerPOICategory;
-    NSMutableDictionary *_fakeMapItemsPerHandleData;
-    GEOComposedWaypoint *_fakeWaypoint;
-    NSArray *_fakeTraffic;
+    NSMutableDictionary *_fakeMapItemsPerKey;
+    NSMutableDictionary *_fakeWaypointsPerKey;
+    NSMutableDictionary *_fakeTrafficPerWaypoint;
     NSError *_fakeError;
+    NSError *_fakeErrorForETA;
     unsigned long long _calledFwdGeoByPostalAddress;
     unsigned long long _calledFwdGeoByAddressString;
     unsigned long long _calledRevGeo;
     unsigned long long _calledMapItemHandle;
+    unsigned long long _calledCanonicalByPostalAddress;
     unsigned long long _calledSearch;
     unsigned long long _calledSearchByPOICategory;
     unsigned long long _calledWaypointForMapItem;
@@ -40,7 +41,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)ETAsFromHereWaypoint:(id)arg1 destinationWaypoints:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)ETAFromWaypoint:(id)arg1 toWaypoint:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (unsigned long long)calledCanonicalLocalSearchByPostalAddress;
 - (unsigned long long)calledRequestETAForWaypoint;
 - (unsigned long long)calledRequestFwdGeoByAddressString;
 - (unsigned long long)calledRequestFwdGeoByPostalAddress;
@@ -51,24 +53,28 @@
 - (unsigned long long)calledRequestWaypointForAddressString;
 - (unsigned long long)calledRequestWaypointForLocation;
 - (unsigned long long)calledRequestWaypointForMapItem;
+- (BOOL)canonicalLocalSearchPostalAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)composedWaypointForAddressString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)composedWaypointForLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)composedWaypointForMapItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configureBrokenCallBackPromise;
+- (void)configureETARequestError:(id)arg1;
 - (void)configureError:(id)arg1;
 - (void)configureMapItem:(id)arg1 forHandleData:(id)arg2;
+- (void)configureMapItem:(id)arg1 forPostalAddress:(id)arg2;
 - (void)configureMapItems:(id)arg1;
 - (void)configureMapItems:(id)arg1 forPOICategory:(id)arg2;
-- (void)configureTraffic:(id)arg1;
-- (void)configureWaypoint:(id)arg1;
+- (void)configureTraffic:(id)arg1 forWaypoint:(id)arg2;
+- (id)configureWaypoint:(id)arg1 forMapItem:(id)arg2;
+- (id)configureWaypointForMapItem:(id)arg1;
 - (BOOL)forwardGeocodeAddressString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)forwardGeocodePostalAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
-- (void)reset;
+- (id)initFromResourceDepot:(id)arg1;
 - (BOOL)resolveMapItemHandleData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)reverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)searchPOIWithName:(id)arg1 ofPOICategory:(id)arg2 withinVenue:(id)arg3 maxResults:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)searchPOIWithName:(id)arg1 ofPOICategory:(id)arg2 withinVenue:(id)arg3 maxResults:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)searchString:(id)arg1 maxResults:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)searchWithAirportCode:(id)arg1 terminal:(id)arg2 gate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

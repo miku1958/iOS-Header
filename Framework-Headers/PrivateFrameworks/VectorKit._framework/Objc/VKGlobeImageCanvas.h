@@ -27,15 +27,13 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_updateCameraFromGlobe;
-- (void)_updateViewTransform;
 - (void)_updateViewport;
 - (void)cancelTileRequests;
 - (void)dealloc;
 - (void)didLayout;
 - (id)initWithMapEngine:(struct MapEngine *)arg1;
-- (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(int)arg1;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 
 @end
 

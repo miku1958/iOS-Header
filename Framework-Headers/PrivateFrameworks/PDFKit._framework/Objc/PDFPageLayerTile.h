@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
     int generationID;
     _Atomic BOOL isWorking;
     struct CGRect originalFrame;
+    struct CGRect _rootViewFrame;
 }
+
+@property struct CGRect rootViewFrame; // @synthesize rootViewFrame=_rootViewFrame;
 
 - (void).cxx_destruct;
 - (void)dealloc;

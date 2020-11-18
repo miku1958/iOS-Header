@@ -13,9 +13,11 @@
 @interface TRCompanionAuthOperationHandler : NSObject <TROperationHandler>
 {
     CDUnknownBlockType _companionAuthHandler;
+    CDUnknownBlockType _companionAuthHandlerWithError;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType companionAuthHandler; // @synthesize companionAuthHandler=_companionAuthHandler;
+@property (copy, nonatomic) CDUnknownBlockType companionAuthHandlerWithError; // @synthesize companionAuthHandlerWithError=_companionAuthHandlerWithError;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)_handleCompanionAuthenticationRequest:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCompanionAuthHandler:(CDUnknownBlockType)arg1;
+- (id)initWithCompanionAuthHandlerWithError:(CDUnknownBlockType)arg1;
 - (void)registerMessageHandlersForSession:(id)arg1;
 
 @end

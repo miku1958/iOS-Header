@@ -25,30 +25,12 @@
     } _has;
 }
 
-@property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
-@property (nonatomic) double endDate; // @synthesize endDate=_endDate;
-@property (nonatomic) BOOL hasCreationDate;
-@property (readonly, nonatomic) BOOL hasSource;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSMutableArray *metadatas; // @synthesize metadatas=_metadatas;
-@property (strong, nonatomic) _DKPRSource *source; // @synthesize source=_source;
-@property (nonatomic) double startDate; // @synthesize startDate=_startDate;
-@property (strong, nonatomic) _DKPRStream *stream; // @synthesize stream=_stream;
-@property (strong, nonatomic) _DKPRValue *value; // @synthesize value=_value;
-
-+ (Class)metadataType;
 - (void).cxx_destruct;
-- (void)addMetadata:(id)arg1;
-- (void)clearMetadatas;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)metadataAtIndex:(unsigned long long)arg1;
-- (unsigned long long)metadatasCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

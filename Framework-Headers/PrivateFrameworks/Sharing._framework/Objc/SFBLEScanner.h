@@ -8,7 +8,7 @@
 
 #import <Sharing/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CURetrier, NSArray, NSData, NSMutableDictionary, NSSet, NSString;
+@class CBCentralManager, CURetrier, NSArray, NSData, NSMutableDictionary, NSSet, NSString, SFBLERecorder;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFBLEScanner : NSObject <CBCentralManagerDelegate>
@@ -80,6 +80,7 @@
     NSData *_payloadFilterData;
     NSData *_payloadFilterMask;
     double _rescanInterval;
+    SFBLERecorder *_recorder;
     long long _rssiThreshold;
     long long _scanInterval;
     long long _scanRate;
@@ -104,6 +105,7 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, copy, nonatomic) NSData *payloadFilterData; // @synthesize payloadFilterData=_payloadFilterData;
 @property (readonly, copy, nonatomic) NSData *payloadFilterMask; // @synthesize payloadFilterMask=_payloadFilterMask;
+@property (strong, nonatomic) SFBLERecorder *recorder; // @synthesize recorder=_recorder;
 @property (nonatomic) double rescanInterval; // @synthesize rescanInterval=_rescanInterval;
 @property (nonatomic) BOOL rssiLog; // @synthesize rssiLog=_rssiLog;
 @property (nonatomic) BOOL rssiLogStdOut; // @synthesize rssiLogStdOut=_rssiLogStdOut;
@@ -131,6 +133,7 @@
 - (BOOL)_needDups;
 - (void)_poweredOff;
 - (void)_poweredOn;
+- (void)_recordDevice:(id)arg1 data:(id)arg2 rssi:(id)arg3 info:(id)arg4;
 - (void)_removeAllDevicesWithReason:(id)arg1;
 - (void)_rescanLostFired;
 - (void)_rescanTimerFired;
@@ -147,6 +150,7 @@
 - (void)centralManager:(id)arg1 didDiscoverPeripheral:(id)arg2 advertisementData:(id)arg3 RSSI:(id)arg4;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)dealloc;
+- (void)foundPeripheralDevice:(id)arg1 advertisementData:(id)arg2 RSSI:(id)arg3;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
 - (void)performUpdate:(CDUnknownBlockType)arg1;

@@ -6,31 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class SXComponentView;
+@class NSDate, SXComponentView;
 
 @interface SXComponentExposureTracking : NSObject
 {
     SXComponentView *_componentView;
+    unsigned long long _traits;
     CDUnknownBlockType _exposureStateChangeBlock;
     CDUnknownBlockType _conditionBlock;
     double _visibilityFactor;
     double _minimumVisibleY;
     double _maximumVisibleY;
     long long _lastObservedVisibilityState;
+    NSDate *_lastStateChange;
 }
 
 @property (readonly, weak, nonatomic) SXComponentView *componentView; // @synthesize componentView=_componentView;
 @property (readonly, copy, nonatomic) CDUnknownBlockType conditionBlock; // @synthesize conditionBlock=_conditionBlock;
 @property (readonly, copy, nonatomic) CDUnknownBlockType exposureStateChangeBlock; // @synthesize exposureStateChangeBlock=_exposureStateChangeBlock;
 @property (nonatomic) long long lastObservedVisibilityState; // @synthesize lastObservedVisibilityState=_lastObservedVisibilityState;
+@property (readonly, nonatomic) NSDate *lastStateChange; // @synthesize lastStateChange=_lastStateChange;
 @property (nonatomic) double maximumVisibleY; // @synthesize maximumVisibleY=_maximumVisibleY;
 @property (nonatomic) double minimumVisibleY; // @synthesize minimumVisibleY=_minimumVisibleY;
+@property (readonly, nonatomic) unsigned long long traits; // @synthesize traits=_traits;
 @property (readonly, nonatomic) double visibilityFactor; // @synthesize visibilityFactor=_visibilityFactor;
 
-+ (id)exposureTrackingWithComponent:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2 conditionBlock:(CDUnknownBlockType)arg3;
++ (id)exposureTrackingWithComponent:(id)arg1 traits:(unsigned long long)arg2 exposureStateChangeBlock:(CDUnknownBlockType)arg3 conditionBlock:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)calculateVisibilityFactor;
-- (id)initWithComponent:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2 conditionBlock:(CDUnknownBlockType)arg3;
+- (id)initWithComponent:(id)arg1 traits:(unsigned long long)arg2 exposureStateChangeBlock:(CDUnknownBlockType)arg3 conditionBlock:(CDUnknownBlockType)arg4;
 
 @end
 

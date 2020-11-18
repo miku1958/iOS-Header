@@ -43,6 +43,7 @@
 - (void)addHeadMergeAction:(id)arg1;
 - (void)addMergeAction:(id)arg1;
 - (void)addMergeActions:(id)arg1;
+- (void)addPrecopiedCells:(vector_73284f0b *)arg1 andCellUIDs:(vector_0c3ec296 *)arg2;
 - (void)appendCellMap:(id)arg1;
 - (id)cellAtIndex:(unsigned long long)arg1;
 - (struct TSUCellCoord)cellIDAtIndex:(unsigned long long)arg1;
@@ -54,6 +55,7 @@
 - (void)clearMerges;
 - (const vector_4dc5f307 *)columnUIDs;
 - (BOOL)containsMergeChanges;
+- (struct TSCECellCoordSet)coordinatesForTableInfo:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 copyingCells:(BOOL)arg2;
 - (unsigned long long)count;
@@ -65,19 +67,21 @@
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 cell:(id)arg2 cellIDList:(const vector_38b190b0 *)arg3;
 - (id)initWithContext:(id)arg1 cell:(id)arg2 cellUIDList:(id)arg3;
+- (id)initWithContext:(id)arg1 cell:(id)arg2 cellUIDList:(id)arg3 skipCellUIDListCopy:(BOOL)arg4;
 - (id)initWithContext:(id)arg1 uidBased:(BOOL)arg2;
 - (id)iterator;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)mergeActions;
 - (id)p_addCell:(id)arg1;
+- (void)p_addPrecopiedCells:(vector_73284f0b *)arg1;
 - (id)p_cellAtIndex:(unsigned long long)arg1 inCellListArray:(id)arg2;
 - (unsigned long long)p_cellCount;
 - (void)p_copyCellsAndUUIDsFromCellMap:(id)arg1 convertingToCellIDsWithTableInfo:(id)arg2;
 - (void)p_resolveCellIDsToUUIDsByTableInfo:(id)arg1 preserveHostCells:(BOOL)arg2;
 - (void)p_shallowAddCell:(id)arg1 atCellCoord:(struct TSUCellCoord)arg2;
-- (void)popLastCell;
 - (void)remapUIDsByColumnMap:(const UUIDMap_71b9b5e2 *)arg1 rowMap:(const UUIDMap_71b9b5e2 *)arg2 ownerMap:(const UUIDMap_71b9b5e2 *)arg3;
 - (void)replaceCellAtIndex0:(id)arg1;
+- (void)reserve:(unsigned long long)arg1;
 - (const vector_4dc5f307 *)rowUIDs;
 - (void)saveToArchiver:(id)arg1;
 - (id)shallowCopyToCoordFormUsingMap:(id)arg1;

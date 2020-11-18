@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultAttributes;
 + (id)displayAttributes;
++ (id)displayAttributesWithNavBar;
 + (id)editingAttributes;
 + (id)editingAttributesWithNavBar;
 - (id)init;

@@ -6,46 +6,66 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+#import <AssistantServices/NSCopying-Protocol.h>
 
-@interface AFMyriadRecord : NSObject
+@class NSData, NSUUID;
+
+@interface AFMyriadRecord : NSObject <NSCopying>
 {
     unsigned char _goodness;
     unsigned char _userConfidence;
     unsigned char _deviceGroup;
     unsigned char _deviceClass;
+    unsigned char _productType;
     unsigned char _tieBreaker;
     BOOL _isMe;
+    unsigned char _rawAudioGoodnessScore;
+    unsigned char _bump;
+    unsigned char _isCollectedFromContextCollector;
+    BOOL _advertisementDataIsDirty;
     unsigned short _pHash;
     NSUUID *_deviceID;
+    NSData *_advertisementData;
 }
 
+@property (copy, nonatomic) NSData *advertisementData; // @synthesize advertisementData=_advertisementData;
+@property (nonatomic) BOOL advertisementDataIsDirty; // @synthesize advertisementDataIsDirty=_advertisementDataIsDirty;
+@property (nonatomic) unsigned char bump; // @synthesize bump=_bump;
 @property (nonatomic) unsigned char deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (nonatomic) unsigned char deviceGroup; // @synthesize deviceGroup=_deviceGroup;
 @property (copy, nonatomic) NSUUID *deviceID; // @synthesize deviceID=_deviceID;
 @property (nonatomic) unsigned char goodness; // @synthesize goodness=_goodness;
+@property (nonatomic) unsigned char isCollectedFromContextCollector; // @synthesize isCollectedFromContextCollector=_isCollectedFromContextCollector;
 @property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
 @property (nonatomic) unsigned short pHash; // @synthesize pHash=_pHash;
+@property (nonatomic) unsigned char productType; // @synthesize productType=_productType;
+@property (nonatomic) unsigned char rawAudioGoodnessScore; // @synthesize rawAudioGoodnessScore=_rawAudioGoodnessScore;
 @property (nonatomic) unsigned char tieBreaker; // @synthesize tieBreaker=_tieBreaker;
 @property (nonatomic) unsigned char userConfidence; // @synthesize userConfidence=_userConfidence;
 
 - (void).cxx_destruct;
 - (void)adjustByMultiplier:(float)arg1 adding:(int)arg2;
 - (id)asAdvertisementData;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)generateRandomConfidence;
 - (void)generateTiebreaker;
+- (BOOL)hasEqualAdvertismentData:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithAudioData:(id)arg1;
 - (id)initWithDeviceID:(id)arg1 data:(id)arg2;
 - (BOOL)isAContinuation;
+- (BOOL)isALateSupressionTrumpFor:(id)arg1;
 - (BOOL)isATrump;
 - (BOOL)isAnEmergency;
 - (BOOL)isAnEmergencyHandled;
 - (BOOL)isCarplayTrump;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isInEarTrump;
 - (BOOL)isSane;
 - (BOOL)isSlowdown;
+- (void)setRawAudioGoodnessScore:(unsigned char)arg1 withBump:(unsigned char)arg2;
 - (int)slowdownDelay;
 
 @end

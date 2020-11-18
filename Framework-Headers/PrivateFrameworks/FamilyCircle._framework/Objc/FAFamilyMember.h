@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <FamilyCircle/NSCopying-Protocol.h>
 #import <FamilyCircle/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString;
+@class CNContact, NSDate, NSDictionary, NSNumber, NSString;
 
-@interface FAFamilyMember : NSObject <NSSecureCoding>
+@interface FAFamilyMember : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_dictionary;
 }
@@ -18,6 +19,7 @@
 @property (readonly, nonatomic) unsigned long long age;
 @property (readonly, copy, nonatomic) NSString *altDSID;
 @property (readonly, copy, nonatomic) NSString *appleID;
+@property (readonly, nonatomic) CNContact *contact;
 @property (readonly, copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, copy, nonatomic) NSNumber *dsid;
 @property (readonly, copy, nonatomic) NSString *firstName;
@@ -27,6 +29,8 @@
 @property (readonly, copy, nonatomic) NSString *hashedDSID;
 @property (readonly, nonatomic) NSNumber *iTunesAccountDSID;
 @property (readonly, copy, nonatomic) NSString *iTunesAccountUsername;
+@property (readonly, copy, nonatomic) NSString *iTunesNotLinkedMessage;
+@property (readonly, copy, nonatomic) NSDate *invitationDate;
 @property (readonly, copy, nonatomic) NSString *inviteEmail;
 @property (readonly, nonatomic) BOOL isChildAccount;
 @property (readonly, nonatomic) BOOL isMe;
@@ -34,6 +38,7 @@
 @property (readonly, nonatomic) BOOL isParent;
 @property (readonly, copy, nonatomic) NSDate *joinedDate;
 @property (readonly, copy, nonatomic) NSString *lastName;
+@property (readonly, copy, nonatomic) NSNumber *memberSortOrder;
 @property (readonly, nonatomic) long long memberType;
 @property (readonly, copy, nonatomic) NSString *memberTypeDisplayString;
 @property (readonly, copy, nonatomic) NSString *memberTypeString;
@@ -41,11 +46,17 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dateWithEpochString:(id)arg1;
+- (BOOL)_nilEqualProperty:(id)arg1 with:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchFamilyPhotoWithRequestedSize:(unsigned long long)arg1 fallbackToLocalAddressBook:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToFamilyMember:(id)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class CMPedometer, CMPedometerData, HDActivityCacheDataSource, HDProfile, HDSourceEntity, HKActivityCache, HKHeartRateSummary, HKQuantityType, NSCalendar, NSDate, NSDateInterval, NSHashTable, NSMutableDictionary, NSSet, NSString, NSTimeZone, _HKDelayedOperation;
+@class HDActivityCacheDataSource, HDProfile, HDSourceEntity, HKActivityCache, HKCategorySample, HKCategoryType, HKHeartRateSummary, HKQuantityType, NSCalendar, NSDate, NSDateInterval, NSHashTable, NSMutableDictionary, NSSet, NSString, NSTimeZone, _HKDelayedOperation;
 @protocol OS_dispatch_queue;
 
 @interface HDActivityCacheManager : NSObject <HDHealthDaemonReadyObserver, HDDataObserver, HDDatabaseProtectedDataObserver>
@@ -33,17 +33,20 @@
     HDSourceEntity *_localDeviceSourceEntity;
     HDActivityCacheDataSource *_dataSource;
     HKQuantityType *_calorieGoalType;
+    HKQuantityType *_moveMinuteGoalType;
     HKQuantityType *_exerciseGoalType;
     HKQuantityType *_standGoalType;
     NSSet *_allQuantityTypes;
     NSMutableDictionary *_goalsByIndex;
+    HKCategoryType *_activityMoveModeChangeType;
+    HKCategorySample *_todayActivityMoveModeChangeSample;
+    HKCategorySample *_yesterdayActivityMoveModeChangeSample;
+    BOOL _activityMoveModeIsSet;
     _HKDelayedOperation *_updateCachesOperation;
     _HKDelayedOperation *_rebuildCachesOperation;
     NSHashTable *_observers;
     BOOL _hasSubscribedToSignificantTimeChangeNotifications;
     long long _wheelchairUse;
-    CMPedometer *_pedometer;
-    CMPedometerData *_lastPedometerData;
     int _rebuildCacheNotificationToken;
     NSDate *_dateOverride;
     NSTimeZone *_timeZoneOverride;
@@ -73,6 +76,8 @@
 - (void)_queue_deleteActivityCaches:(id)arg1;
 - (BOOL)_queue_exerciseGoalSet;
 - (id)_queue_gregorianCalendar;
+- (BOOL)_queue_moveMinuteGoalSet;
+- (void)_queue_primeActivityMoveMode;
 - (void)_queue_primeCacheIndices;
 - (void)_queue_primeDailyGoalWithType:(id)arg1;
 - (void)_queue_primeDailyGoals;
@@ -84,22 +89,27 @@
 - (void)_queue_rebuildActivityCaches;
 - (void)_queue_rebuildCachesIfNeededForTimeChange;
 - (void)_queue_registerForSignificantTimeChangeNotification;
+- (void)_queue_resetActivityMoveMode;
 - (void)_queue_resetCacheIndices;
 - (void)_queue_resetDailyGoalWithType:(id)arg1;
 - (void)_queue_resetDataSource;
 - (void)_queue_resetEverything;
 - (void)_queue_resetExistingActivityCaches;
-- (id)_queue_saveCacheWithDateInterval:(id)arg1 calorieGoal:(id)arg2 exerciseGoal:(id)arg3 standGoal:(id)arg4 cacheIndex:(long long)arg5 previousCache:(id)arg6 statisticsBuilder:(id)arg7 wheelchairUse:(long long)arg8 generateStats:(BOOL)arg9;
+- (id)_queue_saveCacheWithDateInterval:(id)arg1 calorieGoal:(id)arg2 moveMinuteGoal:(id)arg3 exerciseGoal:(id)arg4 standGoal:(id)arg5 cacheIndex:(long long)arg6 previousCache:(id)arg7 statisticsBuilder:(id)arg8 wheelchairUse:(long long)arg9 activityMoveMode:(long long)arg10 generateStats:(BOOL)arg11;
 - (void)_queue_saveCaches;
 - (BOOL)_queue_saveTodayCache;
 - (BOOL)_queue_saveYesterdayCache;
 - (BOOL)_queue_standGoalSet;
 - (void)_queue_streamSamplesAdded;
+- (long long)_queue_todayActivityMoveMode;
+- (BOOL)_queue_updateActivityMoveModeWithSamples:(id)arg1;
 - (void)_queue_updateCaches;
 - (BOOL)_queue_updateDailyGoalsWithSamples:(id)arg1;
 - (void)_queue_updateDateIntervalsWithExistingActivityCaches;
 - (BOOL)_queue_updateGoalWithSample:(id)arg1;
 - (void)_queue_updateHeartRateSummaries;
+- (void)_queue_updateWheelchairUse;
+- (long long)_queue_yesterdayActivityMoveMode;
 - (void)_userCharacteristicsDidChangeNotification:(id)arg1;
 - (void)accessStatisticsBuilderWithCacheIndex:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)addActivityCacheObserver:(id)arg1;

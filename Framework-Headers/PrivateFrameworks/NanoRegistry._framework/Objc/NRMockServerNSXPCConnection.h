@@ -31,17 +31,14 @@
 @property (strong, nonatomic) id exportedObject; // @synthesize exportedObject=_exportedObject;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
-@property (readonly, nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, nonatomic) int processIdentifier;
 @property (readonly, strong, nonatomic) NSString *processName;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSXPCInterface *remoteObjectInterface;
 @property (readonly, strong, nonatomic) id remoteObjectProxy;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_invalidate;
 - (void)_setQueue:(id)arg1;
 - (void)dealloc;
 - (id)initWithListener:(id)arg1 clientConnection:(id)arg2;

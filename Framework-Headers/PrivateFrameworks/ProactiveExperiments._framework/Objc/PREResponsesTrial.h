@@ -16,14 +16,12 @@
     NSString *_inferenceModelFilePath;
     NSString *_inferenceModelConfigPath;
     NSString *_espressoBinFilePath;
-    NSString *_espressoShapeFilePath;
     NSString *_lexiconFilePath;
     NSString *_experimentId;
     NSString *_treatmentId;
 }
 
 @property (readonly, nonatomic) NSString *espressoBinFilePath; // @synthesize espressoBinFilePath=_espressoBinFilePath;
-@property (readonly, nonatomic) NSString *espressoShapeFilePath; // @synthesize espressoShapeFilePath=_espressoShapeFilePath;
 @property (readonly, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property (readonly, nonatomic) NSString *inferenceModelConfigPath; // @synthesize inferenceModelConfigPath=_inferenceModelConfigPath;
 @property (readonly, nonatomic) NSString *inferenceModelFilePath; // @synthesize inferenceModelFilePath=_inferenceModelFilePath;

@@ -12,15 +12,19 @@
 
 @interface CTDisplayPlan : NSObject <NSSecureCoding>
 {
+    BOOL _isPhysical;
     CTPlan *_plan;
     NSString *_carrierName;
     NSString *_phoneNumber;
+    NSString *_label;
     long long _status;
     unsigned long long _attributes;
 }
 
 @property (readonly, nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property (readonly, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
+@property (readonly, nonatomic) BOOL isPhysical; // @synthesize isPhysical=_isPhysical;
+@property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly, nonatomic) CTPlan *plan; // @synthesize plan=_plan;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
@@ -30,7 +34,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPlan:(id)arg1 status:(long long)arg2 attributes:(unsigned long long)arg3 carrierName:(id)arg4 phoneNumber:(id)arg5;
+- (id)initWithPlan:(id)arg1 status:(long long)arg2 attributes:(unsigned long long)arg3 isPhysical:(BOOL)arg4 carrierName:(id)arg5 phoneNumber:(id)arg6 label:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

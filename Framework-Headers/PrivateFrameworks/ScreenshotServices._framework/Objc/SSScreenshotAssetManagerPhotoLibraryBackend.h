@@ -8,10 +8,11 @@
 
 #import <ScreenshotServices/SSScreenshotAssetManagerBackend-Protocol.h>
 
-@class NSString;
+@class NSString, PHPhotoLibrary;
 
 @interface SSScreenshotAssetManagerPhotoLibraryBackend : NSObject <SSScreenshotAssetManagerBackend>
 {
+    PHPhotoLibrary *_photoLibrary;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,8 +20,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_ARKitImageDataFromImage:(id)arg1;
+- (void)_registerEntryWithImage:(id)arg1 options:(id)arg2 retry:(BOOL)arg3 identifierHandler:(CDUnknownBlockType)arg4;
 - (void)imageForPreviouslyRegisteredIdentifier:(id)arg1 imageHandler:(CDUnknownBlockType)arg2;
+- (id)photoLibrary;
 - (void)registerEntryWithImage:(id)arg1 options:(id)arg2 identifierHandler:(CDUnknownBlockType)arg3;
 - (void)removeEntryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveImageToTemporaryLocation:(id)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

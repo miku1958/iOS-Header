@@ -25,8 +25,3 @@ struct CGSize {
     double height;
 };
 
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-

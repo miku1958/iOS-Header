@@ -10,5 +10,6 @@
 + (id)safari_asciiDigitCharacterSet;
 + (id)safari_lockRelatedEmojiCharacterSet;
 + (id)safari_obscuredPasswordCharacterSets;
++ (id)safari_whitespaceAndNewlineCharacterSet;
 @end
 

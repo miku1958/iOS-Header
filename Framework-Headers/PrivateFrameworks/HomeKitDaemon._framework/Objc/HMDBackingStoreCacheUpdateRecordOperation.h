@@ -6,12 +6,11 @@
 
 #import <HomeKitDaemon/HMDBackingStoreOperation.h>
 
-@class CKRecord, HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, HMDBackingStoreModelObject, NSData, NSString;
+@class CKRecord, HMDBackingStoreCacheGroup, HMDBackingStoreModelObject, NSData, NSString;
 
 @interface HMDBackingStoreCacheUpdateRecordOperation : HMDBackingStoreOperation
 {
     HMDBackingStoreCacheGroup *_group;
-    HMDBackingStoreCacheShareGroup *_share;
     NSString *_recordName;
     CKRecord *_record;
     NSData *_data;
@@ -25,16 +24,12 @@
 @property (readonly) HMDBackingStoreModelObject *model; // @synthesize model=_model;
 @property (readonly) CKRecord *record; // @synthesize record=_record;
 @property (readonly) NSString *recordName; // @synthesize recordName=_recordName;
-@property (readonly) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 
 - (void).cxx_destruct;
 - (id)initWithGroup:(id)arg1 name:(id)arg2 model:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
+- (id)initWithGroup:(id)arg1 name:(id)arg2 record:(id)arg3 data:(id)arg4 encoding:(unsigned long long)arg5 model:(id)arg6 resultBlock:(CDUnknownBlockType)arg7;
 - (id)initWithGroup:(id)arg1 record:(id)arg2 data:(id)arg3 encoding:(unsigned long long)arg4 resultBlock:(CDUnknownBlockType)arg5;
 - (id)initWithGroup:(id)arg1 record:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
-- (id)initWithGroup:(id)arg1 share:(id)arg2 name:(id)arg3 record:(id)arg4 data:(id)arg5 encoding:(unsigned long long)arg6 model:(id)arg7 resultBlock:(CDUnknownBlockType)arg8;
-- (id)initWithShareGroup:(id)arg1 name:(id)arg2 model:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
-- (id)initWithShareGroup:(id)arg1 record:(id)arg2 data:(id)arg3 encoding:(unsigned long long)arg4 resultBlock:(CDUnknownBlockType)arg5;
-- (id)initWithShareGroup:(id)arg1 record:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)mainReturningError;
 
 @end

@@ -7,6 +7,7 @@
 #import <UIKit/UITableViewCell.h>
 
 @class CKAnimatedImageView, NSDate, NSString, SKUIItemOfferButton, UIDateLabel, UILabel;
+@protocol CKStickerDetailCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CKStickerDetailCell : UITableViewCell
@@ -15,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *_senderText;
     NSString *_stickerPackText;
     NSDate *_timestampDate;
+    id<CKStickerDetailCellDelegate> _delegate;
     CKAnimatedImageView *_stickerView;
     UILabel *_senderLabel;
     UILabel *_stickerPackLabel;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
     SKUIItemOfferButton *_viewButton;
 }
 
+@property (weak, nonatomic) id<CKStickerDetailCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UILabel *senderLabel; // @synthesize senderLabel=_senderLabel;
 @property (strong, nonatomic) NSString *senderText; // @synthesize senderText=_senderText;
 @property (strong, nonatomic) UILabel *stickerPackLabel; // @synthesize stickerPackLabel=_stickerPackLabel;

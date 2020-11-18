@@ -6,21 +6,25 @@
 
 #import <VideosUI/VUICollectionConfiguration.h>
 
-@class VUILibraryMenuItemViewCell;
+@class UICollectionViewCell;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryiOSMenuCollectionConfiguration : VUICollectionConfiguration
 {
-    VUILibraryMenuItemViewCell *_menuItemSizingCell;
+    BOOL _isDesignedForIpadEnabled;
+    UICollectionViewCell *_menuItemSizingCell;
 }
 
-@property (strong, nonatomic) VUILibraryMenuItemViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
+@property (nonatomic) BOOL isDesignedForIpadEnabled; // @synthesize isDesignedForIpadEnabled=_isDesignedForIpadEnabled;
+@property (strong, nonatomic) UICollectionViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
 
 - (void).cxx_destruct;
+- (id)_layout;
 - (Class)classForCollectionViewCell;
 - (id)configureCollectionViewCellForCollectionView:(id)arg1 ForItem:(id)arg2 AtIndexPath:(id)arg3;
-- (id)configureSizingCellForItem:(id)arg1;
+- (id)configureSizingCellForItem:(id)arg1 AtIndexPath:(id)arg2;
 - (id)generateCollectionView;
+- (id)init;
 - (double)minimumLineSpacing;
 
 @end

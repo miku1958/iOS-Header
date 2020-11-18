@@ -19,8 +19,11 @@
 @property (strong, nonatomic) NSSet *fees; // @synthesize fees=_fees;
 
 + (id)_feesSetFromJsonString:(id)arg1;
++ (id)recordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_feeItemsFromRecord:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)description;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
@@ -35,6 +38,7 @@
 - (unsigned long long)itemType;
 - (id)jsonArrayRepresentation;
 - (id)jsonString;
+- (id)primaryIdentifier;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 
 @end

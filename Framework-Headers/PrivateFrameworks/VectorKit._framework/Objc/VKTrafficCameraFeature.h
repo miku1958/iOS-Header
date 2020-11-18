@@ -22,10 +22,13 @@
 @property (readonly, nonatomic) unsigned int speedThreshold; // @synthesize speedThreshold=_speedThreshold;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (id)stringForTrafficCameraType:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithTrafficCamera:(id)arg1;
+- (id)initWithTrafficCamera:(id)arg1 onRoute:(id)arg2;
+- (id)initWithTrafficCameraType:(long long)arg1 uniqueIdentifier:(id)arg2 routeOffset:(struct PolylineCoordinate)arg3 onRoute:(id)arg4;
 - (BOOL)isSpeedLimitCamera;
+- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
 
 @end
 

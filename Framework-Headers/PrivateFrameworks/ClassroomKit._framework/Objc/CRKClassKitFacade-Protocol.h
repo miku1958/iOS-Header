@@ -6,14 +6,14 @@
 
 #import <ClassroomKit/NSObject-Protocol.h>
 
-@class NSArray, NSSet, NSString;
+@class NSArray, NSError, NSSet, NSString;
 @protocol CRKClassKitClass, CRKClassKitDataObserver, CRKClassKitPerson, CRKClassKitQuery;
 
 @protocol CRKClassKitFacade <NSObject>
 
+@property (readonly, nonatomic) long long accountState;
 @property (readonly, copy, nonatomic) NSString *currentUserDidChangeNotificationName;
 @property (readonly, copy, nonatomic) NSString *currentUserInfoKey;
-@property (readonly, nonatomic, getter=isEligibleAccountSignedIn) BOOL eligibleAccountSignedIn;
 @property (readonly, copy, nonatomic) NSString *studentClassMembershipChangeDarwinNotificationName;
 
 - (void)addInstructor:(id<CRKClassKitPerson>)arg1 toClass:(id<CRKClassKitClass>)arg2;
@@ -31,10 +31,12 @@
 - (void)locationsWithManagePermissionsForUserWithObjectID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)locationsWithObjectIDs:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (id<CRKClassKitClass>)makeClassWithLocationID:(NSString *)arg1 name:(NSString *)arg2;
-- (id<CRKClassKitQuery>)makeInstructorQueryForSearchString:(NSString *)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
-- (id<CRKClassKitQuery>)makeStudentQueryForSearchString:(NSString *)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id<CRKClassKitQuery>)makeInstructorQueryForSearchString:(NSString *)arg1 locationIDs:(NSArray *)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (id<CRKClassKitQuery>)makeQueryForPersonsWithIdentifiers:(NSArray *)arg1;
+- (id<CRKClassKitQuery>)makeStudentQueryForSearchString:(NSString *)arg1 locationIDs:(NSArray *)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
 - (NSSet *)objectIDsOfInstructorsInClass:(id<CRKClassKitClass>)arg1;
 - (NSSet *)objectIDsOfStudentsInClass:(id<CRKClassKitClass>)arg1;
+- (BOOL)ownsError:(NSError *)arg1;
 - (void)registerDataObserver:(id<CRKClassKitDataObserver>)arg1;
 - (void)removeClass:(id<CRKClassKitClass>)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeInstructor:(id<CRKClassKitPerson>)arg1 fromClass:(id<CRKClassKitClass>)arg2;

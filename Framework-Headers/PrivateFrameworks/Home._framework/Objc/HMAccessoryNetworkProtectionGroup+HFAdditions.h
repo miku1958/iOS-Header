@@ -6,14 +6,21 @@
 
 #import <HomeKit/HMAccessoryNetworkProtectionGroup.h>
 
-@class HMHome, NSArray, NSString;
+#import <Home/HFHomeKitObject-Protocol.h>
 
-@interface HMAccessoryNetworkProtectionGroup (HFAdditions)
+@class HMHome, NSArray, NSString, NSUUID;
 
+@interface HMAccessoryNetworkProtectionGroup (HFAdditions) <HFHomeKitObject>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long hf_displayCurrentProtectionMode;
 @property (readonly, nonatomic) HMHome *hf_home;
 @property (readonly, nonatomic) NSArray *hf_networkConfigurationProfiles;
 @property (readonly, copy, nonatomic) NSString *hf_title;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)hf_updateProtectionMode:(long long)arg1 forGroups:(id)arg2;
 - (id)hf_updateProtectionMode:(long long)arg1;

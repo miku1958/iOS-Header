@@ -28,3 +28,7 @@ typedef struct {
     unsigned int timestamp:1;
 } CDStruct_b5306035;
 
+typedef struct {
+    unsigned int type:1;
+} CDStruct_f953fb60;
+

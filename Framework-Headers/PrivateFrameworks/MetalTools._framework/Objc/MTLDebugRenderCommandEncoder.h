@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLToolsRenderCommandEncoder.h>
 
-@class MTLDepthStencilDescriptor, MTLRenderPassDescriptor;
+@class MTLDebugCommandBuffer, MTLDepthStencilDescriptor, MTLRenderPassDescriptor, NSMutableSet;
 @protocol MTLDepthStencilState, MTLRenderPipelineState;
 
 @interface MTLDebugRenderCommandEncoder : MTLToolsRenderCommandEncoder
@@ -30,7 +30,6 @@
     CDStruct_0f4bf8df _tileTextures[128];
     CDStruct_0f4bf8df _tileSamplers[16];
     CDStruct_0f4bf8df _threadgroupMemoryArguments[31];
-    CDStruct_886a8514 _limits;
     unsigned int _encoderState;
     unsigned int _unknownStoreActions;
     struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> *_visibilityOffsets;
@@ -39,9 +38,11 @@
     unsigned long long _amplificationMode;
     unsigned long long _amplificationValue;
     unsigned long long _vertexAmplificationCount;
-    struct ResourceTrackingDeferredAttachments _deferredAttachments;
     struct deque<id, std::__1::allocator<id>> _updatedFences;
-    BOOL _hasValidViewportsAndScissorRects;
+    NSMutableSet *_storingRenderTargets;
+    MTLDebugCommandBuffer *_commandBuffer;
+    unsigned long long _maxVertexBuffers;
+    unsigned long long _attachmentWriteMask;
     float _lineWidth;
     float _depthBias;
     float _depthBiasSlopeScale;
@@ -71,6 +72,7 @@
     CDStruct_0f4bf8df _tessellationFactorBufferArgument;
 }
 
+@property (readonly, nonatomic) unsigned long long attachmentWriteMask; // @synthesize attachmentWriteMask=_attachmentWriteMask;
 @property (readonly, nonatomic) unsigned int backStencilRef; // @synthesize backStencilRef=_backStencilRef;
 @property (readonly, nonatomic) float blendColorAlpha; // @synthesize blendColorAlpha=_blendColorAlpha;
 @property (readonly, nonatomic) float blendColorBlue; // @synthesize blendColorBlue=_blendColorBlue;
@@ -91,7 +93,7 @@
 @property (readonly, nonatomic) unsigned long long peakPerSampleStorage; // @synthesize peakPerSampleStorage=_peakPerSampleStorage;
 @property (readonly, nonatomic) id<MTLRenderPipelineState> renderPipelineState; // @synthesize renderPipelineState=_renderPipelineState;
 @property (readonly, nonatomic) unsigned long long resolvedSampleCount; // @synthesize resolvedSampleCount=_resolvedSampleCount;
-@property (readonly, nonatomic) CDStruct_5f3a0cd7 scissorRect;
+@property (readonly, nonatomic) CDStruct_33dcf794 scissorRect;
 @property (readonly, nonatomic) vector_dc8a7a87 *scissorRects;
 @property (readonly, nonatomic) CDStruct_0f4bf8df tessellationFactorBufferArgument; // @synthesize tessellationFactorBufferArgument=_tessellationFactorBufferArgument;
 @property (readonly, nonatomic) unsigned long long tessellationFactorBufferInstanceStride; // @synthesize tessellationFactorBufferInstanceStride=_tessellationFactorBufferInstanceStride;
@@ -105,10 +107,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_resourceTrackingRecordBoundResourceAccesses;
-- (void)_resourceTrackingRecordDispatchAccesses;
-- (void)_resourceTrackingRecordDrawAccesses;
-- (void)_resourceTrackingRecordRenderTargetAccessesForEndEncoding:(BOOL)arg1;
 - (void)_setDefaults;
 - (void)_validateAllFunctionArguments;
 - (void)dealloc;
@@ -144,6 +142,7 @@
 - (id)initWithRenderCommandEncoder:(id)arg1 parent:(id)arg2 descriptor:(id)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 - (void)setColorResolveTexture:(id)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4 atIndex:(unsigned long long)arg5;
 - (void)setColorResolveTexture:(id)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4 yInvert:(BOOL)arg5 atIndex:(unsigned long long)arg6;
@@ -172,8 +171,8 @@
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
 - (void)setLineWidth:(float)arg1;
 - (void)setRenderPipelineState:(id)arg1;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
 - (void)setStencilFrontReferenceValue:(unsigned int)arg1 backReferenceValue:(unsigned int)arg2;
 - (void)setStencilReferenceValue:(unsigned int)arg1;
 - (void)setStencilResolveTexture:(id)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4;
@@ -196,7 +195,7 @@
 - (void)setTransformFeedbackState:(unsigned long long)arg1;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
 - (void)setTriangleFrontFillMode:(unsigned long long)arg1 backFillMode:(unsigned long long)arg2;
-- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -212,6 +211,7 @@
 - (void)setViewport:(CDStruct_8727d297)arg1;
 - (void)setViewports:(const CDStruct_8727d297 *)arg1 count:(unsigned long long)arg2;
 - (void)setVisibilityResultMode:(unsigned long long)arg1 offset:(unsigned long long)arg2;
+- (void)textureBarrier;
 - (void)updateFence:(id)arg1 afterStages:(unsigned long long)arg2;
 - (void)updatePipelineData;
 - (void)useHeap:(id)arg1;

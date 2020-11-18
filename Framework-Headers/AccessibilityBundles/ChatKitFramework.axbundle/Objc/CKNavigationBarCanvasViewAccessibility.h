@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_setupButtonContainer;
+- (void)_tearDownButtonContainer;
 
 @end
 

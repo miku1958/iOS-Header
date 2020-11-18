@@ -24,7 +24,7 @@
 
 + (void)loadBroadcastActivityViewControllerWithHandler:(CDUnknownBlockType)arg1;
 + (void)loadBroadcastActivityViewControllerWithPreferredExtension:(id)arg1 handler:(CDUnknownBlockType)arg2;
-+ (void)loadBroadcastActivityViewControllerWithPreferredExtension:(id)arg1 handler:(CDUnknownBlockType)arg2 broadcastActivitiesNotInstalledAlertTitle:(id)arg3 broadcastActivitiesNotInstalledAlertMessage:(id)arg4;
++ (void)loadBroadcastActivityViewControllerWithPreferredExtension:(id)arg1 handler:(CDUnknownBlockType)arg2 broadcastActivitiesNotInstalledAlertTitle:(id)arg3 broadcastActivitiesNotInstalledAlertMessage:(id)arg4 atPoint:(struct CGPoint)arg5 fromWindow:(id)arg6;
 + (void)viewControllerForExtension:(id)arg1 inputItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

@@ -10,6 +10,7 @@
 
 @interface QLThumbnailReply : NSObject
 {
+    int _iconFlavor;
     CDUnknownBlockType _drawingBlock;
     CDUnknownBlockType _drawInContextBlock;
     CDUnknownBlockType _ioSurfaceBlock;
@@ -21,6 +22,7 @@
 @property (nonatomic) struct CGSize contextSize; // @synthesize contextSize=_contextSize;
 @property (copy, nonatomic) CDUnknownBlockType drawInContextBlock; // @synthesize drawInContextBlock=_drawInContextBlock;
 @property (copy, nonatomic) CDUnknownBlockType drawingBlock; // @synthesize drawingBlock=_drawingBlock;
+@property (nonatomic) int iconFlavor; // @synthesize iconFlavor=_iconFlavor;
 @property (strong, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (copy, nonatomic) CDUnknownBlockType ioSurfaceBlock; // @synthesize ioSurfaceBlock=_ioSurfaceBlock;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
@@ -30,6 +32,7 @@
 + (id)replyWithContextSize:(struct CGSize)arg1 ioSurfaceBlock:(CDUnknownBlockType)arg2;
 + (id)replyWithImageFileURL:(id)arg1;
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

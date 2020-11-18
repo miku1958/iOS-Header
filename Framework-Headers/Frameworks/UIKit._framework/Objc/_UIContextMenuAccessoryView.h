@@ -10,17 +10,17 @@
 {
     unsigned long long _location;
     unsigned long long _trackingAxis;
-    CDStruct_6f807b77 _anchor;
     struct CGPoint _offset;
+    CDStruct_a36705e8 _anchor;
 }
 
-@property (nonatomic) CDStruct_6f807b77 anchor; // @synthesize anchor=_anchor;
+@property (nonatomic) CDStruct_a36705e8 anchor; // @synthesize anchor=_anchor;
 @property (nonatomic) unsigned long long location; // @synthesize location=_location;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property (nonatomic) unsigned long long trackingAxis; // @synthesize trackingAxis=_trackingAxis;
 
 - (struct CGPoint)attachmentOffsetWithReferenceFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 configuration:(CDStruct_debd374d)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 configuration:(CDStruct_d394d979)arg2;
 - (void)setVisible:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end

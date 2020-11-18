@@ -42,6 +42,7 @@
 - (void)_applicationConnected:(id)arg1;
 - (void)_applicationDisconnected:(id)arg1;
 - (void)_applicationUpdated:(id)arg1;
+- (void)_developerPreferencesChanged;
 - (void)_disconnectApplicationConnect:(id)arg1;
 - (void)_driverConnected:(id)arg1;
 - (void)_driverDisconnected:(id)arg1;
@@ -54,6 +55,8 @@
 - (void)_receivedDataMessage:(id)arg1 connection:(id)arg2;
 - (void)_receivedListingMessage:(id)arg1 connection:(id)arg2;
 - (void)_receivedProxyApplicationSetupResponseMessage:(id)arg1 connection:(id)arg2;
+- (void)_reportCurrentStateToAllClients;
+- (void)_reportCurrentStateToClient:(id)arg1;
 - (void)_rpc_debuggerDidWake:(id)arg1;
 - (void)_rpc_debuggerWillSleep:(id)arg1;
 - (void)_rpc_forwardAutomaticInspectionConfiguration:(id)arg1;

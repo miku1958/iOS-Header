@@ -13,11 +13,19 @@
     int _dictationModel;
     NSString *_dictationModelVersion;
     SISchemaDictationAlternativesPresent *_dictationAlternativesPresent;
+    struct {
+        unsigned int dictationModel:1;
+    } _has;
+    BOOL _hasDictationModelVersion;
+    BOOL _hasDictationAlternativesPresent;
 }
 
 @property (strong, nonatomic) SISchemaDictationAlternativesPresent *dictationAlternativesPresent; // @synthesize dictationAlternativesPresent=_dictationAlternativesPresent;
 @property (nonatomic) int dictationModel; // @synthesize dictationModel=_dictationModel;
 @property (copy, nonatomic) NSString *dictationModelVersion; // @synthesize dictationModelVersion=_dictationModelVersion;
+@property (nonatomic) BOOL hasDictationAlternativesPresent; // @synthesize hasDictationAlternativesPresent=_hasDictationAlternativesPresent;
+@property (nonatomic) BOOL hasDictationModel;
+@property (nonatomic) BOOL hasDictationModelVersion; // @synthesize hasDictationModelVersion=_hasDictationModelVersion;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

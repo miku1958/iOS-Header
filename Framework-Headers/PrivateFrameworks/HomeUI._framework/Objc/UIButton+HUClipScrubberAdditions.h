@@ -9,5 +9,8 @@
 @interface UIButton (HUClipScrubberAdditions)
 + (id)hu_clipScrubberLiveButton;
 + (id)hu_clipScrubberNearbyAccessoryButton;
++ (void)hu_doneStateForButton:(id)arg1 usingStandardSymbolConfiguration:(BOOL)arg2;
++ (void)hu_microphoneButton:(id)arg1 forTalkingState:(BOOL)arg2 usingStandardSymbolConfiguration:(BOOL)arg3;
++ (void)hu_talkStateForButton:(id)arg1 usingStandardSymbolConfiguration:(BOOL)arg2;
 @end
 

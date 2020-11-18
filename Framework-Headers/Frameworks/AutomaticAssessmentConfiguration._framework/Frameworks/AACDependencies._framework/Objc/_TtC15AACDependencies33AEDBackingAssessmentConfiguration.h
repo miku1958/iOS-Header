@@ -6,9 +6,32 @@
 
 #import <objc/NSObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC15AACDependencies33AEDBackingAssessmentConfiguration : NSObject
 {
+    MISSING_TYPE *_allowsAutoCorrection;
+    MISSING_TYPE *_allowsSmartPunctuation;
+    MISSING_TYPE *_allowsSpellCheck;
+    MISSING_TYPE *_allowsPredictiveKeyboard;
+    MISSING_TYPE *_allowsKeyboardShortcuts;
+    MISSING_TYPE *_allowsActivityContinuation;
+    MISSING_TYPE *_allowsDictation;
+    MISSING_TYPE *_allowsAccessibilitySpeech;
+    MISSING_TYPE *_allowsPasswordAutoFill;
+    MISSING_TYPE *_allowsContinuousPathKeyboard;
 }
+
+@property (nonatomic) BOOL allowsAccessibilitySpeech;
+@property (nonatomic) BOOL allowsActivityContinuation;
+@property (nonatomic) BOOL allowsAutoCorrection;
+@property (nonatomic) BOOL allowsContinuousPathKeyboard;
+@property (nonatomic) BOOL allowsDictation;
+@property (nonatomic) BOOL allowsKeyboardShortcuts;
+@property (nonatomic) BOOL allowsPasswordAutoFill;
+@property (nonatomic) BOOL allowsPredictiveKeyboard;
+@property (nonatomic) BOOL allowsSmartPunctuation;
+@property (nonatomic) BOOL allowsSpellCheck;
 
 - (id)init;
 

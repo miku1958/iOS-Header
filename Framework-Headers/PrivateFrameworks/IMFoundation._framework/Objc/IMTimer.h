@@ -6,25 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSString;
 @protocol OS_dispatch_queue;
 
 @interface IMTimer : NSObject
 {
     id _timer;
     id _target;
-    NSDictionary *_userInfo;
     NSString *_name;
     double _timeInterval;
     NSObject<OS_dispatch_queue> *_queue;
     SEL _selector;
     BOOL _wakeDevice;
     BOOL _useCurrentRunLoop;
+    id _userInfo;
 }
 
 @property (readonly, strong, nonatomic) NSDate *fireDate;
-@property (readonly, strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
+- (void).cxx_destruct;
 - (id)_initWithTimeInterval:(double)arg1 name:(id)arg2 shouldWake:(BOOL)arg3 target:(id)arg4 selector:(SEL)arg5 userInfo:(id)arg6 useCurrentRunLoop:(BOOL)arg7 queue:(id)arg8;
 - (void)_reschedulePCPersistentTimer;
 - (void)dealloc;

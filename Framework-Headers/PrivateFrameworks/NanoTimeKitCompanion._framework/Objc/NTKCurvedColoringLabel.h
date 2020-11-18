@@ -57,6 +57,7 @@
 - (id)text;
 - (id)textColor;
 - (id)textProviderFont;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

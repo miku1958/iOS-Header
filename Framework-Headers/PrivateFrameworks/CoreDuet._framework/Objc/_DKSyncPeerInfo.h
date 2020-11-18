@@ -15,14 +15,9 @@
     long long _transports;
 }
 
-@property (strong, nonatomic) _DKSyncPeer *peer; // @synthesize peer=_peer;
-@property (nonatomic) long long transports; // @synthesize transports=_transports;
-@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
-- (id)transportsString;
 
 @end
 

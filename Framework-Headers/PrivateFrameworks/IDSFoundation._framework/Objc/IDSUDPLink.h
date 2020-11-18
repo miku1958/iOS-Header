@@ -89,6 +89,7 @@
 - (BOOL)_setTrafficClassOnSocket:(int)arg1 trafficClassValue:(int)arg2;
 - (id)copyCurrentNetworkInterfaces;
 - (id)copyLinkStatsDict;
+- (void)dealloc;
 - (id)generateLinkReport:(double)arg1 isCurrentLink:(BOOL)arg2;
 - (id)initWithDeviceUniqueID:(id)arg1 cbuuid:(id)arg2;
 - (void)invalidate;
@@ -101,6 +102,7 @@
 - (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (unsigned long long)sendPacketBufferArray:(CDStruct_183601bc **)arg1 arraySize:(int)arg2 toDeviceUniqueID:(id)arg3 cbuuid:(id)arg4;
 - (BOOL)setDestinationAddress:(id)arg1 isFixedDestination:(BOOL)arg2 fromAddress:(id)arg3;
+- (BOOL)setDestinationAddress:(id)arg1 localIfIndex:(unsigned int)arg2 isFixedDestination:(BOOL)arg3 fromAddress:(id)arg4;
 - (BOOL)setDestinationAddressToDeviceIDMap:(id)arg1;
 - (BOOL)setTrafficClass:(int)arg1;
 - (void)setWiFiAssistState:(BOOL)arg1;

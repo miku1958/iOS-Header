@@ -19,15 +19,13 @@
 @property (readonly, copy, nonatomic) NSDate *ageDisplayDate;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlineAnalyticsElementProviding> *analyticsElement;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlineBackingElement> *backingElement;
-@property (readonly, nonatomic, getter=isBoundToContext) BOOL boundToContext;
 @property (readonly, copy, nonatomic) NSString *compactSourceName;
 @property (readonly, copy, nonatomic) NSURL *compactSourceNameImageRemoteURL;
-@property (readonly, nonatomic) BOOL displaysWithLeadingCellAppearance;
 @property (readonly, copy, nonatomic) NSURL *flintDocumentURL;
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
-@property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSString *language;
+@property (readonly, nonatomic) BOOL needsPlaceholderThumbnail;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlinePersonalizationMetadata> *personalizationMetadata;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property (readonly, copy, nonatomic) NSString *shortExcerpt;
@@ -44,10 +42,6 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleCompact;
 @property (readonly, copy, nonatomic) NSArray *topicIDs;
-@property (readonly, copy, nonatomic) NSString *videoCallToActionTitle;
-@property (readonly, copy, nonatomic) NSURL *videoCallToActionURL;
-@property (readonly, nonatomic) double videoDuration;
-@property (readonly, copy, nonatomic) NSURL *videoURL;
 @property (readonly, copy, nonatomic) NSURL *webURL;
 
 @end

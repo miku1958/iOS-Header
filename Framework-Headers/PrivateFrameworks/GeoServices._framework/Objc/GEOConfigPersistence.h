@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class GEODefaultsDBDict, GEOSQLiteDB, geo_isolater;
+@class GEOSQLiteDB, _GEOConfigDB, _GEOConfigDBOperationQueue;
 
 @interface GEOConfigPersistence : NSObject
 {
     GEOSQLiteDB *_db;
-    GEODefaultsDBDict *_cache;
-    geo_isolater *_cacheIsolator;
+    _GEOConfigDB *_configDB;
+    _GEOConfigDBOperationQueue *_operationQueue;
 }
 
 + (BOOL)_setup:(id)arg1;
 + (id)shared;
 - (void).cxx_destruct;
-- (id)_valueForKeyPath:(id)arg1 key:(id *)arg2 createOrUpdate:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)defaultForKeyPath:(id)arg1;
+- (id)defaultForKeyPathComponents:(id)arg1;
 - (id)initWithDBPath:(id)arg1;
 - (void)setDefault:(id)arg1 forKeyPath:(id)arg2;
 - (void)tearDown;

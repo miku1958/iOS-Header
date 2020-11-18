@@ -7,11 +7,11 @@
 #import <UIKitServices/UISApplicationSupportDisplayEdgeInfo.h>
 
 @interface UISApplicationSupportDisplayEdgeInfo (SpringBoard)
-+ (id)sb_displayEdgeInfoForClassicMode:(long long)arg1;
++ (id)sb_displayEdgeInfoForApplication:(id)arg1;
 + (id)sb_floatingApplicationDisplayEdgeInfo;
-+ (id)sb_homeButtonDeviceDisplayEdgeInfo;
-+ (id)sb_roundCornerPadDisplayEdgeInfo;
-+ (id)sb_roundCornerPhoneDisplayEdgeInfo;
++ (id)sb_insetForHomeAffordanceApplicationDisplayEdgeInfo;
++ (id)sb_legacy_homeButtonDeviceDisplayEdgeInfo;
++ (id)sb_legacy_roundCornerPadDisplayEdgeInfo;
 + (id)sb_thisDeviceDisplayEdgeInfo;
 - (void)sb_applyDisplayEdgeInfoToSceneSettings:(id)arg1;
 - (id)sb_displayEdgeInfoWithSafeAreaInsetsForStatusBarHeight:(double)arg1;

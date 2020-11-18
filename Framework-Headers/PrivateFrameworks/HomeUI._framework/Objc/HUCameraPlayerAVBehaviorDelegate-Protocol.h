@@ -10,9 +10,9 @@
 
 @protocol HUCameraPlayerAVBehaviorDelegate <NSObject>
 - (double)currentScrubberResolutionForBehavior:(HUCameraPlayerAVBehavior *)arg1;
-- (void)pictureInPictureDidToggleMicrophone;
 
 @optional
+- (void)pictureInPictureDidToggleMicrophone;
 - (void)playbackControlsDidChangePlayerVolume:(float)arg1;
 - (void)playbackControlsDidToggleMuted:(BOOL)arg1;
 - (void)playbackControlsDidUpdateVisibilityOfLoadingIndicator:(BOOL)arg1;

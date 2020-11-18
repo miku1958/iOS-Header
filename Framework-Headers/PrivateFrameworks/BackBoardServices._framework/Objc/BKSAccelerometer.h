@@ -43,7 +43,7 @@
 - (id)_orientationEventsThread;
 - (void)_serverWasRestarted;
 - (void)_updateOrientationServer;
-- (int)currentDeviceOrientation;
+- (long long)currentDeviceOrientation;
 - (void)dealloc;
 - (id)init;
 

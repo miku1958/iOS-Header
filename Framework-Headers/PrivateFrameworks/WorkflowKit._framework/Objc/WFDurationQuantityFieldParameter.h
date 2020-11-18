@@ -14,10 +14,12 @@
 
 + (unsigned long long)calendarUnitFromUnitString:(id)arg1;
 + (BOOL)unitStringIsDurationUnit:(id)arg1;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSerializedRepresentation;
 - (id)initWithDefinition:(id)arg1;
 - (id)localizedLabelForPossibleUnit:(id)arg1 magnitude:(id)arg2 style:(unsigned long long)arg3;
 - (BOOL)parameterStateIsValid:(id)arg1;
+- (id)stateForDuration:(double)arg1;
 
 @end
 

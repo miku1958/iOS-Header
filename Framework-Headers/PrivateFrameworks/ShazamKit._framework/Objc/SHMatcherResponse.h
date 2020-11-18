@@ -6,21 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+#import <ShazamKit/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface SHMatcherResponse : NSObject
+@class SHMatch;
+
+@interface SHMatcherResponse : NSObject <NSSecureCoding>
 {
     double _recordingIntermission;
     double _retrySeconds;
-    NSArray *_mediaItems;
+    SHMatch *_match;
 }
 
-@property (strong, nonatomic) NSArray *mediaItems; // @synthesize mediaItems=_mediaItems;
-@property (nonatomic) double recordingIntermission; // @synthesize recordingIntermission=_recordingIntermission;
-@property (nonatomic) double retrySeconds; // @synthesize retrySeconds=_retrySeconds;
+@property (readonly, nonatomic) SHMatch *match; // @synthesize match=_match;
+@property (readonly, nonatomic) double recordingIntermission; // @synthesize recordingIntermission=_recordingIntermission;
+@property (readonly, nonatomic) double retrySeconds; // @synthesize retrySeconds=_retrySeconds;
 
++ (id)errorResponse;
++ (id)noMatchWithRecordingIntermission:(double)arg1 retrySeconds:(double)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRecordingIntermission:(double)arg1 retrySeconds:(double)arg2 match:(id)arg3;
 
 @end
 

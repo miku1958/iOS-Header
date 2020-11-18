@@ -8,17 +8,17 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf;
+@class MRClient, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface MRNowPlayingClientRequests : NSObject <MRNowPlayingClientState>
 {
     NSMutableArray *_playerClients;
-    _MRNowPlayingClientProtobuf *_client;
+    MRClient *_client;
     NSArray *_nowPlayingClients;
 }
 
-@property (readonly, nonatomic) _MRNowPlayingClientProtobuf *client; // @synthesize client=_client;
+@property (readonly, nonatomic) MRClient *client; // @synthesize client=_client;
 @property (readonly, nonatomic) NSArray *nowPlayingClients; // @synthesize nowPlayingClients=_nowPlayingClients;
 
 - (void).cxx_destruct;
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (id)existingNowPlayingPlayerClientRequestsForPlayerPath:(id)arg1;
 - (id)initWithClient:(id)arg1;
 - (id)nowPlayingPlayerClientRequestsForPlayerPath:(id)arg1;
-- (id)playerClients;
 - (void)removePlayer:(id)arg1;
 - (void)restoreNowPlayingClientState;
 

@@ -13,21 +13,27 @@
     SBBookmark *_bookmark;
 }
 
-@property (readonly, nonatomic) SBBookmark *bookmark; // @synthesize bookmark=_bookmark;
+@property (strong, nonatomic) SBBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property (readonly, nonatomic) BOOL displaysShareBookmarkShortcutItem;
 @property (readonly, nonatomic) NSURL *launchURL;
 @property (readonly, nonatomic) BOOL representsWebApp;
 @property (readonly, nonatomic) UIWebClip *webClip;
 
 - (void).cxx_destruct;
-- (BOOL)_isSaneURL;
+- (id)_sbhIconLibraryOverrideCollationSectionTitle;
 - (id)applicationToLaunch;
+- (BOOL)canBeAddedToMultiItemDrag;
+- (BOOL)canBeAddedToSubfolder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)draggingUserActivity;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;
+- (id)iTunesCategoriesOrderedByRelevancy;
 - (id)initWithBookmark:(id)arg1;
 - (BOOL)isBookmarkIcon;
 - (id)representedSceneIdentifier;
+- (id)uninstallAlertBody;
+- (id)uninstallAlertTitle;
 
 @end
 

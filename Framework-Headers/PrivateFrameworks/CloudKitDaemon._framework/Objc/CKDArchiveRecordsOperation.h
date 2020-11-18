@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray;
+@protocol CKArchiveRecordsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDArchiveRecordsOperation : CKDDatabaseOperation
@@ -15,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *_recordIDs;
 }
 
+@property (strong, nonatomic) id<CKArchiveRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType recordArchivedBlock; // @synthesize recordArchivedBlock=_recordArchivedBlock;
 @property (strong, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

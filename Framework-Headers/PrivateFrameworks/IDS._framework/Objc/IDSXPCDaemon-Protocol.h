@@ -8,6 +8,7 @@
 
 @protocol IDSXPCDaemon
 - (void)activateWithCompletion:(void (^)(NSError *))arg1;
+- (void)activityMonitorCollaboratorWithCompletion:(void (^)(id<IDSXPCActivityMonitor>, NSError *))arg1;
 - (void)interalTestingCollaboratorWithCompletion:(void (^)(id<IDSXPCInternalTesting>, NSError *))arg1;
 - (void)opportunisticCollaboratorWithCompletion:(void (^)(id<IDSXPCOpportunistic>, NSError *))arg1;
 - (void)pairedDeviceManagerCollaboratorWithCompletion:(void (^)(id<IDSXPCPairedDeviceManager>, NSError *))arg1;

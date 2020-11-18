@@ -6,35 +6,42 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
+
 @class CKContainer, CKContainerID, NSDate, NSDictionary, NSString;
 @protocol OS_xpc_object;
 
-@interface CKSchedulerActivity : NSObject
+@interface CKSchedulerActivity : NSObject <NSCopying>
 {
     BOOL _shouldDefer;
+    BOOL _userRequestedBackupTask;
     NSString *_identifier;
     long long _priority;
     unsigned long long _expectedTransferSizeBytes;
     NSDate *_earliestStartDate;
     CKContainer *_container;
     CKContainerID *_containerID;
-    NSDictionary *_additionalXPCActivityCriteria;
     NSObject<OS_xpc_object> *_xpcActivity;
+    NSDictionary *_additionalXPCActivityCriteria;
 }
 
 @property (copy, nonatomic) NSDictionary *additionalXPCActivityCriteria; // @synthesize additionalXPCActivityCriteria=_additionalXPCActivityCriteria;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
-@property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
+@property (copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (copy, nonatomic) NSDate *earliestStartDate; // @synthesize earliestStartDate=_earliestStartDate;
 @property (nonatomic) unsigned long long expectedTransferSizeBytes; // @synthesize expectedTransferSizeBytes=_expectedTransferSizeBytes;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) CKContainer *nullableContainer;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (nonatomic) BOOL shouldDefer; // @synthesize shouldDefer=_shouldDefer;
+@property (nonatomic) BOOL userRequestedBackupTask; // @synthesize userRequestedBackupTask=_userRequestedBackupTask;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
 
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)initWithIdentifier:(id)arg1 container:(id)arg2 containerID:(id)arg3 priority:(long long)arg4;
 - (id)initWithIdentifier:(id)arg1 container:(id)arg2 priority:(long long)arg3;
 - (id)initWithIdentifier:(id)arg1 containerID:(id)arg2 priority:(long long)arg3;
 

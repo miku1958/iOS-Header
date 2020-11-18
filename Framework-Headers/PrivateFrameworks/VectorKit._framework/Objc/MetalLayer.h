@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
 {
     id<GGLLayerDelegate> _delegate;
     shared_ptr_94286ce0 _device;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _texture;
+    shared_ptr_479d1306 _texture;
+    struct shared_ptr<ggl::SamplerState> _samplerState;
     BOOL _sRGB;
     struct CGSize _backingSize;
 }
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithDevice:(shared_ptr_94286ce0)arg1 sRGB:(BOOL)arg2;
 - (void)layoutSublayers;
 - (void)onTimerFired:(double)arg1;
-- (void)onTimerFired:(double)arg1 presentAfterMinimumDuration:(double)arg2;
 - (void)onTimerFired:(double)arg1 presentAtTime:(double)arg2;
 
 @end

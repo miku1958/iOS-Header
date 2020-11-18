@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class MSVMutableBidirectionalDictionary, NSMutableArray, NSMutableSet, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, MSVMutableBidirectionalDictionary, NSMutableArray, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface MRPlaybackQueueSubscriptionController : NSObject <NSSecureCoding>
@@ -17,14 +17,13 @@
     NSMutableSet *_requests;
     MSVMutableBidirectionalDictionary *_offsets;
     NSObject<OS_dispatch_queue> *_queue;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
 }
 
-@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_removeRequestID:(id)arg1;
 - (void)addRequest:(id)arg1;
 - (void)augmentCommandOptions:(id)arg1 forCommand:(unsigned int)arg2;
 - (id)contentItemIdentifierForOffset:(long long)arg1;
@@ -38,7 +37,6 @@
 - (void)invalidate;
 - (id)offsetForIdentifier:(id)arg1;
 - (void)removeRequest:(id)arg1;
-- (id)requestForContentItemIdentifier:(id)arg1;
 - (id)requestForSubscribedContentItemIdentifier:(id)arg1;
 - (void)restoreStateFromController:(id)arg1;
 - (void)subscribeToPlaybackQueue:(id)arg1 forRequest:(id)arg2;

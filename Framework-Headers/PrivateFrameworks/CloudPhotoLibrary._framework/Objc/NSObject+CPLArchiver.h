@@ -25,7 +25,7 @@
 - (unsigned long long)cplHash;
 - (BOOL)cplIsEqual:(id)arg1;
 - (BOOL)cplIsEqual:(id)arg1 withEqualityBlock:(CDUnknownBlockType)arg2;
-- (BOOL)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 differingProperty:(id *)arg3 withEqualityBlock:(CDUnknownBlockType)arg4;
+- (BOOL)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 diffTracker:(id)arg3 withEqualityBlock:(CDUnknownBlockType)arg4;
 - (BOOL)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 withEqualityBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)cplSpecialHash;
 - (BOOL)cplSpecialIsEqual:(id)arg1;

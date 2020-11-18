@@ -21,7 +21,6 @@
 @property (strong, nonatomic) UIButton *invisibleButton; // @synthesize invisibleButton=_invisibleButton;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)_buttonImageNamed:(id)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (void)_buttonTouchUpInside:(id)arg1;
 - (void)_updateBackground;

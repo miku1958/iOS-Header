@@ -9,6 +9,7 @@
 @class PRMonogramColor, UIColor;
 
 @protocol CNAvatarImageRenderingScope <NSObject>
+- (unsigned long long)avatarViewBackgroundStyle;
 - (unsigned long long)avatarViewStyle;
 - (PRMonogramColor *)color;
 - (struct CGSize)pointSize;

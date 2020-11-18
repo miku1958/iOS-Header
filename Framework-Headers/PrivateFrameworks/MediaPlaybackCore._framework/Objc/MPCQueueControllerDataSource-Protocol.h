@@ -6,7 +6,7 @@
 
 #import <MediaPlaybackCore/MPShuffleableSectionedIdentifierListDataSource-Protocol.h>
 
-@class MPAVItem, MPIdentifierSet, MPPlaceholderAVItem, MPPlaybackContext, NSString;
+@class MPAVItem, MPCQueueControllerDataSourceLoadRequest, MPIdentifierSet, MPPlaceholderAVItem, MPPlaybackContext, NSString;
 
 @protocol MPCQueueControllerDataSource <MPShuffleableSectionedIdentifierListDataSource>
 
@@ -15,13 +15,15 @@
 
 - (MPAVItem *)itemForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 - (void)loadPlaybackContext:(MPPlaybackContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (BOOL)supportsAutoPlayForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 
 @optional
 - (BOOL)canSkipItem:(NSString *)arg1;
 - (NSString *)firstItemIntersectingIdentifierSet:(MPIdentifierSet *)arg1;
 - (void)itemDidBeginPlayback:(MPAVItem *)arg1;
-- (void)loadAdditionalItemsForSection:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)loadAdditionalItemsWithRequest:(MPCQueueControllerDataSourceLoadRequest *)arg1 forSection:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (MPPlaceholderAVItem *)placeholderItemForLoadingAdditionalItemsInSection:(NSString *)arg1;
+- (long long)prefetchThresholdForSection:(NSString *)arg1;
 - (BOOL)shouldRequestAdditionalItemsWhenReachingTailOfSection:(NSString *)arg1;
 - (BOOL)shouldUsePlaceholderForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 @end

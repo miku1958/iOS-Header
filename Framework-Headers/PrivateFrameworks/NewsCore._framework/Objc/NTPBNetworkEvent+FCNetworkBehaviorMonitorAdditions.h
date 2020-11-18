@@ -9,6 +9,8 @@
 @interface NTPBNetworkEvent (FCNetworkBehaviorMonitorAdditions)
 
 @property (readonly, nonatomic) unsigned long long endTime;
+@property (readonly, nonatomic) int pbNetworkEventCacheState;
+@property (readonly, nonatomic) int pbNetworkEventType;
 @property (readonly, nonatomic, getter=isSuccess) BOOL success;
 @property (readonly, nonatomic) unsigned long long totalDuration;
 

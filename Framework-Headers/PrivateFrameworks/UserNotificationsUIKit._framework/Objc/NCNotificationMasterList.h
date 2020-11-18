@@ -45,6 +45,7 @@
 @property (weak, nonatomic) id<NCNotificationMasterListDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDeviceAuthenticated) BOOL deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
+@property (readonly, nonatomic) BOOL hasVisibleContentToReveal;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationStructuredSectionList *historySectionList; // @synthesize historySectionList=_historySectionList;
 @property (strong, nonatomic) NCNotificationStructuredSectionList *incomingSectionList; // @synthesize incomingSectionList=_incomingSectionList;
@@ -66,9 +67,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_filterNotificationsInGroupLists:(id)arg1 withDestinationsForSectionList:(id)arg2;
 - (void)_insertNotificationRequest:(id)arg1;
-- (BOOL)_isNotificationRequestForHistorySection:(id)arg1;
-- (BOOL)_isNotificationRequestForIncomingSection:(id)arg1;
+- (BOOL)_isNotificationRequest:(id)arg1 forSectionList:(id)arg2;
 - (void)_migrateNotificationsFromList:(id)arg1 toList:(id)arg2 passingTest:(CDUnknownBlockType)arg3 hideToList:(BOOL)arg4 clearRequests:(BOOL)arg5 filterPersistentRequests:(BOOL)arg6;
 - (id)_newMissedSectionListForReason:(unsigned long long)arg1;
 - (id)_newNotificationSectionListWithTitle:(id)arg1 notificationListViewRevealed:(BOOL)arg2 logDescription:(id)arg3;
@@ -103,6 +104,7 @@
 - (void)notificationStructuredSectionList:(id)arg1 requestsScrollingToContentOffset:(double)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)notificationStructuredSectionList:(id)arg1 shouldFilterNotificationRequest:(id)arg2;
 - (BOOL)notificationStructuredSectionList:(id)arg1 shouldScrollToTopForGroupList:(id)arg2;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)recycleView:(id)arg1;
 - (void)reloadNotificationRequest:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;

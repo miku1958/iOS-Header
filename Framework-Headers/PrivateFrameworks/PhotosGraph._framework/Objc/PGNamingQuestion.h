@@ -29,6 +29,7 @@
 - (unsigned short)displayType;
 - (id)entityIdentifier;
 - (unsigned short)entityType;
+- (id)initWithConfirmedPerson:(id)arg1 contactIdentifier:(id)arg2 localFactoryScore:(double)arg3;
 - (id)initWithPerson:(id)arg1 contactIdentifier:(id)arg2 localFactoryScore:(double)arg3;
 - (void)legacyPersist;
 - (void)legacyRemove;

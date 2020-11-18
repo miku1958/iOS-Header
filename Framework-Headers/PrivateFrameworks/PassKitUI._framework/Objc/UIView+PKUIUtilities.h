@@ -20,7 +20,7 @@
 - (id)pk_childrenForAppearance;
 - (struct CGRect)pkui_readableContentBoundsWithMargins:(struct UIEdgeInsets)arg1;
 - (BOOL)pkui_setBounds:(struct CGRect)arg1 position:(struct CGPoint)arg2 animated:(BOOL)arg3;
-- (void)pkui_setExcludedFromScreenCapture:(BOOL)arg1;
+- (void)pkui_setExcludedFromScreenCapture:(BOOL)arg1 andBroadcasting:(BOOL)arg2;
 - (BOOL)pkui_setFrame:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)pkui_setMaskType:(unsigned long long)arg1;
 - (void)pkui_shakeWithCompletion:(CDUnknownBlockType)arg1;

@@ -8,11 +8,11 @@
 
 #import <Cards/CRCardSectionEngagementFeedback-Protocol.h>
 
-@class NSString, SFFeedback;
+@class NSString;
 
 @interface SFCardSectionEngagementFeedback (CRFeedback) <CRCardSectionEngagementFeedback>
 
-@property (readonly, nonatomic) SFFeedback *backingFeedback;
+@property (readonly, nonatomic) SFCardSectionEngagementFeedback *backingFeedback;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

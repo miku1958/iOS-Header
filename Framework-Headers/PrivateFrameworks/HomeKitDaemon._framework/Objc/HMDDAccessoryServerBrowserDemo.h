@@ -29,7 +29,6 @@
 - (void)appendDemoData:(id)arg1;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (void)discoverServer;
-- (BOOL)isDemoAccessoryIdentifier:(id)arg1;
 - (long long)linkType;
 - (void)loadDemoData:(id)arg1 finalized:(BOOL)arg2;
 - (void)resetDemoAccessory:(id)arg1;

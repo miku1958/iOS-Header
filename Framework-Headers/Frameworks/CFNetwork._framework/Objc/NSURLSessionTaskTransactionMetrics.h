@@ -24,10 +24,10 @@
 @property (readonly) BOOL _connectionRace;
 @property (nonatomic) CDStruct_c0a2f610 _connectionTiming; // @synthesize _connectionTiming=__connectionTiming;
 @property (nonatomic) BOOL _connectionTimingCached; // @synthesize _connectionTimingCached=__connectionTimingCached;
-@property (readonly, nonatomic) BOOL _forCache; // @synthesize _forCache=__forCache;
+@property (readonly, copy) NSDate *_firstByteReceivedDate;
+@property (readonly, copy) NSString *_interfaceName;
 @property (readonly, copy) NSString *_localAddressAndPort;
 @property (readonly) BOOL _localCache;
-@property (readonly, nonatomic) __CFN_TransactionMetrics *_metrics; // @synthesize _metrics=__metrics;
 @property (readonly) unsigned short _negotiatedTLSCipher;
 @property (readonly) int _negotiatedTLSProtocol;
 @property (readonly) unsigned int _redirected;
@@ -53,6 +53,7 @@
 @property (readonly) long long countOfResponseHeaderBytesReceived;
 @property (readonly, copy) NSDate *domainLookupEndDate;
 @property (readonly, copy) NSDate *domainLookupStartDate;
+@property (readonly) long long domainResolutionProtocol;
 @property (readonly, getter=isExpensive) BOOL expensive;
 @property (readonly, copy) NSDate *fetchStartDate;
 @property (readonly, copy) NSString *localAddress;
@@ -82,8 +83,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMetrics:(id)arg1 forCache:(BOOL)arg2;
-- (void)translateConnectionTiming;
 
 @end
 

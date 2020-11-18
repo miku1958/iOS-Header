@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGGraphLocationCoordinates-Protocol.h>
 #import <PhotosGraph/PGGraphLocationNaming-Protocol.h>
+#import <PhotosGraph/PGGraphLocationOrArea-Protocol.h>
 
 @class NSString;
 
-@interface PGGraphLocationNode : PGGraphNode <PGGraphLocationNaming, PGGraphLocationCoordinates>
+@interface PGGraphLocationNode : PGGraphOptimizedNode <PGGraphLocationOrArea, PGGraphLocationNaming, PGGraphLocationCoordinates>
 {
     PGGraphLocationNode *_densestCloseLocationNode;
     struct CLLocationCoordinate2D _centroidCoordinate;

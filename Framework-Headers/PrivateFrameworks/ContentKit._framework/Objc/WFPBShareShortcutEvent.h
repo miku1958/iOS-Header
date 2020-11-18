@@ -19,7 +19,10 @@ __attribute__((visibility("hidden")))
     NSString *_key;
     NSString *_sharingDestinationBundleIdentifier;
     int _source;
-    CDStruct_fce072d8 _has;
+    struct {
+        unsigned int actionCount:1;
+        unsigned int source:1;
+    } _has;
 }
 
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;

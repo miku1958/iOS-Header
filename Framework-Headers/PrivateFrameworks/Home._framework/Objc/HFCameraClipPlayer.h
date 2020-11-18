@@ -9,7 +9,7 @@
 #import <Home/HFCameraClipPlaying-Protocol.h>
 #import <Home/HFCameraClipQueueing-Protocol.h>
 
-@class AVPlayer, HFCameraClipPlayerItem, HFCameraClipPosition, HFCameraClipQueuePlayer, HMCameraProfile, NSArray, NSError, NSString;
+@class AVQueuePlayer, HFCameraClipPlayerItem, HFCameraClipPosition, HFCameraClipQueuePlayer, HMCameraProfile, NSArray, NSError, NSString;
 @protocol HFCameraClipPlayerDelegate, HFCameraClipScrubbing;
 
 @interface HFCameraClipPlayer : NSObject <HFCameraClipQueueing, HFCameraClipPlaying>
@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property (strong, nonatomic) NSArray *clips; // @synthesize clips=_clips;
 @property (copy, nonatomic) HFCameraClipPosition *currentPosition;
+@property (nonatomic) double currentTime; // @dynamic currentTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HFCameraClipPlayerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -36,7 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HFCameraClipPlayerItem *lastPlayerItem; // @synthesize lastPlayerItem=_lastPlayerItem;
 @property (nonatomic, getter=isMutatingQueue) BOOL mutatingQueue; // @synthesize mutatingQueue=_mutatingQueue;
-@property (readonly, nonatomic) AVPlayer *player;
+@property (readonly, nonatomic) AVQueuePlayer *player;
 @property (readonly, nonatomic) NSArray *queuableItems;
 @property (readonly, nonatomic) HFCameraClipQueuePlayer *queuePlayer; // @synthesize queuePlayer=_queuePlayer;
 @property (weak, nonatomic) id<HFCameraClipScrubbing> scrubber; // @synthesize scrubber=_scrubber;

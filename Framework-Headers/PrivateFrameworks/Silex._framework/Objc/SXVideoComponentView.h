@@ -9,19 +9,17 @@
 #import <Silex/SWReachabilityObserver-Protocol.h>
 #import <Silex/SXFullscreenVideoPlaybackCandidate-Protocol.h>
 #import <Silex/SXMediaPlaybackDelegate-Protocol.h>
-#import <Silex/SXVideoAdProviderDataSource-Protocol.h>
 #import <Silex/SXVideoPlayerViewControllerDataSource-Protocol.h>
 #import <Silex/SXVideoPlayerViewControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class ADBannerView, NSString, SVVolumeProvider, SXAdController, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
-@protocol SWReachabilityProvider, SXAppStateMonitor, SXBookmarkManager, SXResourceDataSource, SXScrollObserverManager;
+@class NSString, SVVolumeProvider, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
+@protocol SWReachabilityProvider, SXAppStateMonitor, SXBookmarkManager, SXResourceDataSource, SXScrollObserverManager, SXVideoAdProviderFactory;
 
-@interface SXVideoComponentView : SXMediaComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SXVideoAdProviderDataSource, SWReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
+@interface SXVideoComponentView : SXMediaComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SWReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
 {
     BOOL _isReceivingViewportDynamicBoundsChanges;
     SXVideoPlayerViewController *_videoPlayerViewController;
-    SXAdController *_adController;
     id<SXResourceDataSource> _resourceDataSource;
     id<SWReachabilityProvider> _reachabilityProvider;
     id<SXAppStateMonitor> _appStateMonitor;
@@ -33,20 +31,19 @@
     SVVolumeProvider *_volumeProvider;
     SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
     id<SXBookmarkManager> _bookmarkManager;
-    ADBannerView *_bannerView;
     CDUnknownBlockType _presentationBlock;
+    id<SXVideoAdProviderFactory> _prerollAdFactory;
 }
 
-@property (readonly, nonatomic) SXAdController *adController; // @synthesize adController=_adController;
 @property (strong, nonatomic) SXVideoAnalyticsRouter *analyticsRouter; // @synthesize analyticsRouter=_analyticsRouter;
 @property (readonly, nonatomic) id<SXAppStateMonitor> appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
-@property (weak, nonatomic) ADBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (readonly, nonatomic) id<SXBookmarkManager> bookmarkManager; // @synthesize bookmarkManager=_bookmarkManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isReceivingViewportDynamicBoundsChanges; // @synthesize isReceivingViewportDynamicBoundsChanges=_isReceivingViewportDynamicBoundsChanges;
 @property (strong, nonatomic) SXPosterFrameView *posterFrame; // @synthesize posterFrame=_posterFrame;
+@property (readonly, nonatomic) id<SXVideoAdProviderFactory> prerollAdFactory; // @synthesize prerollAdFactory=_prerollAdFactory;
 @property (copy, nonatomic) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
 @property (readonly, nonatomic) id<SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, nonatomic) id<SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
@@ -65,14 +62,14 @@
 - (BOOL)canEnterFullscreen;
 - (void)discardContents;
 - (void)enterFullscreen;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 adController:(id)arg9 scrollObserverManager:(id)arg10 volumeProvider:(id)arg11 videoPlayerViewControllerManager:(id)arg12 bookmarkManager:(id)arg13;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 scrollObserverManager:(id)arg9 volumeProvider:(id)arg10 videoPlayerViewControllerManager:(id)arg11 bookmarkManager:(id)arg12 prerollAdFactory:(id)arg13;
 - (void)loadComponent:(id)arg1;
 - (void)loadPosterFrameImage;
 - (void)pauseMediaPlayback;
 - (void)pausePrerollIfNeeded;
 - (void)playButtonTapped;
 - (void)prepareForTransitionType:(unsigned long long)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)reachabilityChanged:(BOOL)arg1;
 - (void)registerAsMediaPlaybackDelegate;
 - (void)registerForViewportDynamicBoundsChanges;
@@ -85,13 +82,14 @@
 - (void)unregisterForViewportDynamicBoundsChanges;
 - (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (id)videoAdForVideoPlayerViewController:(id)arg1;
-- (CDUnknownBlockType)videoAdWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)videoForVideoPlayerViewController:(id)arg1;
 - (BOOL)videoPlayerIsMoreThan50PercentVisible;
 - (void)videoPlayerViewController:(id)arg1 resumedPlaybackOfVideo:(id)arg2;
 - (void)videoPlayerViewController:(id)arg1 startedPlaybackOfVideo:(id)arg2;
 - (void)videoPlayerViewControllerFinishedVideoPlayback:(id)arg1;
 - (BOOL)videoPlayerViewControllerShouldStartPlayback:(id)arg1;
+- (void)videoPlayerViewControllerWillEnterFullscreen:(id)arg1;
+- (void)videoPlayerViewControllerWillExitFullscreen:(id)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
 - (void)viewport:(id)arg1 interfaceOrientationChangedFromOrientation:(long long)arg2;

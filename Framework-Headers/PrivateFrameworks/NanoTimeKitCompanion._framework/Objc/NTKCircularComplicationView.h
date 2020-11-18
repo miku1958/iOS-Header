@@ -78,6 +78,7 @@
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

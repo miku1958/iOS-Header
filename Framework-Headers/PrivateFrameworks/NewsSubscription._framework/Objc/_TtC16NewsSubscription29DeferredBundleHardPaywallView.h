@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription29DeferredBundleHardPaywallView : UIView
 {
     MISSING_TYPE *gradientView;
@@ -17,9 +16,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playerView;
     MISSING_TYPE *badgeImageView;
     MISSING_TYPE *footerImageView;
-    MISSING_TYPE *titleLabel;
+    MISSING_TYPE *titleTextView;
     MISSING_TYPE *descriptionTextView;
     MISSING_TYPE *subscribeButton;
+    MISSING_TYPE *offersButton;
     MISSING_TYPE *webAuthButton;
 }
 

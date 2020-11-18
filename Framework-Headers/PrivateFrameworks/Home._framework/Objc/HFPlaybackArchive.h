@@ -10,9 +10,11 @@
 
 @interface HFPlaybackArchive : NSObject
 {
+    BOOL _autoPlayEnabled;
     MPPlaybackArchive *_mediaPlayerPlaybackArchive;
 }
 
+@property (nonatomic, getter=isAutoPlayEnabled) BOOL autoPlayEnabled; // @synthesize autoPlayEnabled=_autoPlayEnabled;
 @property (readonly, nonatomic) BOOL isRepeatSupported;
 @property (readonly, nonatomic) BOOL isShuffleSupported;
 @property (strong, nonatomic) MPPlaybackArchive *mediaPlayerPlaybackArchive; // @synthesize mediaPlayerPlaybackArchive=_mediaPlayerPlaybackArchive;

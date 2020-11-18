@@ -69,6 +69,7 @@
 - (void)removeObserver:(id)arg1 forZone:(id)arg2;
 - (void)savePendingChangesToServerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)storeCoordinatorDiscoveredExternalChanges:(id)arg1;
+- (void)synchronize;
 - (BOOL)t_flushChangesWithTimeout:(double)arg1;
 
 @end

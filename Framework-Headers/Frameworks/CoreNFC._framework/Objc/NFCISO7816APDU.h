@@ -24,9 +24,10 @@
 @property (readonly, nonatomic) unsigned char p1Parameter;
 @property (readonly, nonatomic) unsigned char p2Parameter;
 
+- (void).cxx_destruct;
 - (id)asData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (id)description;
 - (id)initWithData:(id)arg1;
 - (id)initWithInstructionClass:(unsigned char)arg1 instructionCode:(unsigned char)arg2 p1Parameter:(unsigned char)arg3 p2Parameter:(unsigned char)arg4 data:(id)arg5 expectedResponseLength:(long long)arg6;
 

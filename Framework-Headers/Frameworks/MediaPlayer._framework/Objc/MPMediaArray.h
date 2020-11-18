@@ -8,6 +8,7 @@
 
 @class MPMediaQuerySectionInfo;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaArray : NSArray
 {
 }

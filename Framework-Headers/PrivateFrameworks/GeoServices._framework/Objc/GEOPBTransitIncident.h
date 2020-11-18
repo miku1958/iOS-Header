@@ -52,23 +52,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_messageString:1;
         unsigned int read_shortDescriptionString:1;
         unsigned int read_titleString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_affectedEntitys:1;
-        unsigned int wrote_incidentMuid:1;
-        unsigned int wrote_incidentTypeArtwork:1;
-        unsigned int wrote_longDescriptionString:1;
-        unsigned int wrote_messageForAllBlocking:1;
-        unsigned int wrote_messageForIncidentType:1;
-        unsigned int wrote_messageString:1;
-        unsigned int wrote_shortDescriptionString:1;
-        unsigned int wrote_titleString:1;
-        unsigned int wrote_creationDatetime:1;
-        unsigned int wrote_endDatetime:1;
-        unsigned int wrote_iconEnum:1;
-        unsigned int wrote_incidentIndex:1;
-        unsigned int wrote_startDatetime:1;
-        unsigned int wrote_updatedDatetime:1;
-        unsigned int wrote_blocking:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -109,15 +93,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsIconEnum:(id)arg1;
-- (void)_addNoFlagsAffectedEntity:(id)arg1;
-- (void)_readAffectedEntitys;
-- (void)_readIncidentTypeArtwork;
-- (void)_readLongDescriptionString;
-- (void)_readMessageForAllBlocking;
-- (void)_readMessageForIncidentType;
-- (void)_readMessageString;
-- (void)_readShortDescriptionString;
-- (void)_readTitleString;
 - (void)addAffectedEntity:(id)arg1;
 - (id)affectedEntityAtIndex:(unsigned long long)arg1;
 - (unsigned long long)affectedEntitysCount;
@@ -131,7 +106,10 @@ __attribute__((visibility("hidden")))
 - (id)iconEnumAsString:(int)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

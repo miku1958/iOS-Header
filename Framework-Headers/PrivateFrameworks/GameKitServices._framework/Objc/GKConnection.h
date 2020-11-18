@@ -8,6 +8,8 @@
 
 @interface GKConnection : NSObject
 {
+    CDStruct_68f9d01f *_event;
+    unsigned int _pid;
 }
 
 @property id eventDelegate;

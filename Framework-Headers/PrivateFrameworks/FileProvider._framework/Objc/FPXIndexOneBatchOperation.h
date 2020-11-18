@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FPXSpotlightIndexer *_indexer;
     FPXDomainContext *_domainContext;
     BOOL _isInitialIndexing;
+    BOOL _isOutOfBandIndexing;
     unsigned long long _logSection;
     NSArray *_updatedItems;
     NSArray *_deletedItemIDs;
@@ -30,7 +31,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (id)initWithIndexer:(id)arg1 isInitialIndexing:(BOOL)arg2 queue:(id)arg3;
+- (id)initWithIndexer:(id)arg1 isInitialIndexing:(BOOL)arg2 isOutOfBandIndexing:(BOOL)arg3 queue:(id)arg4;
 - (void)main;
 
 @end

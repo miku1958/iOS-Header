@@ -29,7 +29,6 @@
 @property (nonatomic, getter=isVoiceControlLoggingEnabled) BOOL voiceControlLoggingEnabled; // @synthesize voiceControlLoggingEnabled=_voiceControlLoggingEnabled;
 
 - (void).cxx_destruct;
-- (void)finalizeDismissalTransition;
 - (void)handleHeadsetButtonUpFromButtonDownSource:(BOOL)arg1;
 - (BOOL)handleHomeButtonPress;
 - (id)initWithSource:(id)arg1;

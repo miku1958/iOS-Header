@@ -16,11 +16,13 @@ __attribute__((visibility("hidden")))
     HKElectrocardiogram *_sample;
     UIColor *_tintColor;
     HKHealthStore *_healthStore;
+    long long _activeAlgorithmVersion;
     NSString *_firstName;
     NSString *_lastName;
     NSDateComponents *_dateOfBirthComponents;
 }
 
+@property (readonly, nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property (strong, nonatomic) NSDateComponents *dateOfBirthComponents; // @synthesize dateOfBirthComponents=_dateOfBirthComponents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

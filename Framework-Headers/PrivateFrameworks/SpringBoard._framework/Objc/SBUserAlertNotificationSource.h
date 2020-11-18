@@ -8,10 +8,11 @@
 
 #import <SpringBoard/NCNotificationSource-Protocol.h>
 #import <SpringBoard/SBAlertItemPresenter-Protocol.h>
+#import <SpringBoard/SBAlertItemsControllerObserver-Protocol.h>
 
 @class NCNotificationDispatcher, NSString;
 
-@interface SBUserAlertNotificationSource : NSObject <NCNotificationSource, SBAlertItemPresenter>
+@interface SBUserAlertNotificationSource : NSObject <SBAlertItemsControllerObserver, NCNotificationSource, SBAlertItemPresenter>
 {
     NCNotificationDispatcher *_dispatcher;
 }
@@ -23,7 +24,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)alertItemsController:(id)arg1 didActivateAlertItem:(id)arg2;
+- (void)alertItemsController:(id)arg1 didDeactivateAlertItem:(id)arg2 forReason:(int)arg3;
+- (void)alertItemsController:(id)arg1 willActivateAlertItem:(id)arg2;
 - (BOOL)canPresentMultipleAlertItemsSimultaneously;
+- (void)dealloc;
 - (void)dismissAlertItem:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithDispatcher:(id)arg1;
 - (void)presentAlertItem:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

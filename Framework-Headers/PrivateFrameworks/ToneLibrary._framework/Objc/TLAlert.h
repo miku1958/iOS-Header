@@ -47,6 +47,7 @@
 - (void)play;
 - (void)playWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)playWithCompletionHandler:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
+- (void)preheatWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)stopWithOptions:(id)arg1;
 

@@ -16,28 +16,35 @@
     BOOL _isRemovable;
     BOOL _precomposed;
     BOOL _fullScreen;
+    BOOL _ignoreManifestScope;
+    NSString *_contentMode;
+    NSString *_targetApplicationBundleIdentifier;
     NSString *_savedIdentifier;
     NSNumber *_isRemovableNum;
     NSNumber *_precomposedNum;
     NSNumber *_fullScreenNum;
+    NSNumber *_ignoreManifestScopeNum;
 }
 
 @property (readonly, strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (readonly, nonatomic) NSString *contentMode; // @synthesize contentMode=_contentMode;
 @property (readonly, nonatomic) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property (readonly, nonatomic) NSNumber *fullScreenNum; // @synthesize fullScreenNum=_fullScreenNum;
 @property (readonly, strong, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
+@property (readonly, nonatomic) BOOL ignoreManifestScope; // @synthesize ignoreManifestScope=_ignoreManifestScope;
+@property (readonly, nonatomic) NSNumber *ignoreManifestScopeNum; // @synthesize ignoreManifestScopeNum=_ignoreManifestScopeNum;
 @property (readonly, nonatomic) BOOL isRemovable; // @synthesize isRemovable=_isRemovable;
 @property (readonly, nonatomic) NSNumber *isRemovableNum; // @synthesize isRemovableNum=_isRemovableNum;
 @property (readonly, strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) BOOL precomposed; // @synthesize precomposed=_precomposed;
 @property (readonly, nonatomic) NSNumber *precomposedNum; // @synthesize precomposedNum=_precomposedNum;
 @property (strong, nonatomic) NSString *savedIdentifier; // @synthesize savedIdentifier=_savedIdentifier;
+@property (readonly, nonatomic) NSString *targetApplicationBundleIdentifier; // @synthesize targetApplicationBundleIdentifier=_targetApplicationBundleIdentifier;
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
@@ -46,6 +53,7 @@
 - (id)subtitle2Description;
 - (id)subtitle2Label;
 - (id)title;
+- (id)verboseDescription;
 
 @end
 

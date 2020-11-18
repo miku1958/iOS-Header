@@ -89,25 +89,20 @@
 - (void)_setStatus:(id)arg1;
 - (void)_setStatusCoding:(id)arg1;
 - (void)_setValue:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)bodySiteCodingsCollection;
-- (id)bodySiteCodingsContext;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)diagnosticTestCodingsCollection;
-- (id)diagnosticTestCodingsContext;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)interpretationCodingsCollection;
-- (id)interpretationCodingsContext;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
 - (id)methodCodingsCollection;
-- (id)methodCodingsContext;
 - (id)statusCodingCollection;
-- (id)statusCodingContext;
 
 @end
 

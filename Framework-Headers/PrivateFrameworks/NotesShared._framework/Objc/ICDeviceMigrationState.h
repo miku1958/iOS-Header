@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSDate *stateModificationDate; // @dynamic stateModificationDate;
 
 + (id)allDeviceMigrationStatesInContext:(id)arg1;
-+ (id)allKnownDeviceMigrationStates;
-+ (id)currentDeviceMigrationState;
-+ (id)currentDeviceMigrationStateCreateIfNecessary:(BOOL)arg1;
-+ (id)currentDeviceMigrationStateCreateIfNecessary:(BOOL)arg1 context:(id)arg2;
++ (id)currentDeviceMigrationStateForAccount:(id)arg1;
++ (id)currentDeviceMigrationStateForAccount:(id)arg1 createIfNecessary:(BOOL)arg2;
++ (id)deviceMigrationStateWithDeviceIdentifier:(id)arg1 account:(id)arg2;
 + (id)deviceMigrationStateWithDeviceIdentifier:(id)arg1 context:(id)arg2;
++ (id)deviceMigrationStatesByAccountIDInContext:(id)arg1;
 + (id)deviceMigrationStatesMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)identifierForDeviceIdentifier:(id)arg1;

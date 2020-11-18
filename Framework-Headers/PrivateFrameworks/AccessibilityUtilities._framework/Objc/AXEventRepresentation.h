@@ -111,6 +111,7 @@
 + (id)_digitizerRepresentation:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)_gameControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_keyboardButtonEvent:(struct __IOHIDEvent *)arg1;
++ (id)_motionGestureTapEvent:(struct __IOHIDEvent *)arg1 serviceClient:(struct __IOHIDServiceClient *)arg2 hidStreamIdentifier:(id)arg3 clientID:(id)arg4 taskPort:(unsigned int)arg5;
 + (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)_wheelEvent:(struct __IOHIDEvent *)arg1;
 + (id)accelerometerRepresentation:(id)arg1;
@@ -134,7 +135,6 @@
 - (id)_accessibilityDataFromRealEvent:(struct __IOHIDEvent *)arg1;
 - (struct __IOHIDEvent *)_accessibilityEventFromRealEvent:(struct __IOHIDEvent *)arg1;
 - (void)_applyAccessibilityDataToRealEvent:(struct __IOHIDEvent *)arg1;
-- (unsigned int)_contextIDFromHIDEvent:(struct __IOHIDEvent *)arg1;
 - (unsigned long long)_machTimeForHIDEventRef;
 - (struct __IOHIDEvent *)_newAccelerometerHIDEventRef;
 - (struct __IOHIDEvent *)_newButtonHIDEventRefWithType:(unsigned int)arg1;

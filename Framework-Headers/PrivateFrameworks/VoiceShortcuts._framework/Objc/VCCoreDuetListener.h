@@ -6,46 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceShortcuts/VCUserNotificationManagerDelegate-Protocol.h>
-#import <VoiceShortcuts/WFOutOfProcessWorkflowControllerDelegate-Protocol.h>
-
-@class NSMutableDictionary, NSString, VCDaemonXPCEventHandler, VCUserNotificationManager, WFConfiguredTrigger, WFDatabase, WFOutOfProcessWorkflowController, WFWorkflowRunEvent;
+@class NSMutableDictionary, VCDaemonXPCEventHandler, VCTriggerEventQueue, WFWorkflowRunCoordinator;
 @protocol OS_dispatch_queue, VCDatabaseProvider, _CDUserContext;
 
-@interface VCCoreDuetListener : NSObject <VCUserNotificationManagerDelegate, WFOutOfProcessWorkflowControllerDelegate>
+@interface VCCoreDuetListener : NSObject
 {
+    WFWorkflowRunCoordinator *_runCoordinator;
     NSObject<OS_dispatch_queue> *_queue;
     id<_CDUserContext> _userContext;
     id<VCDatabaseProvider> _databaseProvider;
-    VCUserNotificationManager *_notificationManager;
     VCDaemonXPCEventHandler *_eventHandler;
+    VCTriggerEventQueue *_eventQueue;
     NSMutableDictionary *_registrations;
-    WFOutOfProcessWorkflowController *_workflowController;
-    WFWorkflowRunEvent *_inProgressRunEvent;
-    WFConfiguredTrigger *_inProgressTrigger;
 }
 
-@property (readonly, nonatomic) WFDatabase *database;
 @property (readonly, nonatomic) id<VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) WFWorkflowRunEvent *inProgressRunEvent; // @synthesize inProgressRunEvent=_inProgressRunEvent;
-@property (strong, nonatomic) WFConfiguredTrigger *inProgressTrigger; // @synthesize inProgressTrigger=_inProgressTrigger;
-@property (readonly, nonatomic) VCUserNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
+@property (strong, nonatomic) VCTriggerEventQueue *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) NSMutableDictionary *registrations; // @synthesize registrations=_registrations;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) WFWorkflowRunCoordinator *runCoordinator; // @synthesize runCoordinator=_runCoordinator;
 @property (readonly, nonatomic) id<_CDUserContext> userContext; // @synthesize userContext=_userContext;
-@property (strong, nonatomic) WFOutOfProcessWorkflowController *workflowController; // @synthesize workflowController=_workflowController;
 
-+ (double)rateLimitingTimeoutForTrigger:(id)arg1 runEvents:(id)arg2;
-+ (BOOL)shouldRunTrigger:(id)arg1 forEvent:(id)arg2 runEvents:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (void)checkTriggerStateWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkTriggerStateWithKeyPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)databaseWithError:(id *)arg1;
 - (void)dealloc;
+- (void)deleteTriggerWithIdentifier:(id)arg1 allowedDeletionClasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceDidUnlockForFirstTime;
 - (void)fetchCurrentSunriseSunsetTimes;
@@ -53,14 +41,8 @@
 - (void)getConfiguredTriggerDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCallbackForTriggerWithIdentifier:(id)arg1 info:(id)arg2;
 - (void)handleSunriseSunsetChanged;
-- (id)initWithDatabaseProvider:(id)arg1 eventHandler:(id)arg2;
+- (id)initWithDatabaseProvider:(id)arg1 eventHandler:(id)arg2 runCoordinator:(id)arg3;
 - (BOOL)isCallbackRegisteredWithIdentifier:(id)arg1;
-- (void)logMetricForTrigger:(id)arg1;
-- (void)logPowerLogEventForConfiguredTrigger:(id)arg1 workflowReference:(id)arg2;
-- (void)notificationManager:(id)arg1 didDismissTriggerWithIdentifier:(id)arg2;
-- (void)notificationManager:(id)arg1 receivedConfirmationToRunTriggerWithIdentifier:(id)arg2;
-- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(BOOL)arg3;
-- (id)queue_configuredTriggerForIdentifier:(id)arg1 workflowReference:(id *)arg2 error:(out id *)arg3;
 - (void)queue_fireTriggerWithIdentifier:(id)arg1 force:(BOOL)arg2 eventInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)queue_registerAllTriggers:(id *)arg1;
 - (void)registerAllTriggersWithCompletion:(CDUnknownBlockType)arg1;
@@ -68,8 +50,7 @@
 - (void)registerSunriseSunsetCallbackIfNeeded;
 - (BOOL)registerTrigger:(id)arg1 error:(id *)arg2;
 - (void)registerTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)significantTimeChangeDidOccur;
-- (BOOL)startRunningWorkflow:(id)arg1 forTrigger:(id)arg2 eventInfo:(id)arg3 error:(out id *)arg4;
+- (void)removeStalePendingNotifications;
 - (void)unregisterAllTriggers;
 - (void)unregisterCallbackForIdentifier:(id)arg1;
 - (void)unregisterTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

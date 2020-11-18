@@ -17,6 +17,7 @@
 - (void)debugLogEntities;
 - (void)getOnce:(void (^)(NSDictionary *))arg1;
 - (void)loadLexicons;
+- (void)provideFeedbackForString:(NSString *)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)removeContactObserver:(void (^)(NSDictionary *))arg1;
 - (BOOL)searchForWord:(NSString *)arg1;
 - (BOOL)searchForWordCaseInsensitive:(NSString *)arg1;

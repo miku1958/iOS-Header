@@ -15,6 +15,7 @@
 {
     BOOL _availability;
     unsigned char _eventFlags;
+    unsigned char _suggestedEventCategory;
     NSString *_eventIdentifier;
     NSString *_title;
     NSString *_location;
@@ -45,11 +46,14 @@
 @property (readonly, nonatomic) NSString *structuredLocationAddress; // @synthesize structuredLocationAddress=_structuredLocationAddress;
 @property (readonly, nonatomic) CLLocation *structuredLocationCoordinates; // @synthesize structuredLocationCoordinates=_structuredLocationCoordinates;
 @property (readonly, nonatomic) NSString *structuredLocationTitle; // @synthesize structuredLocationTitle=_structuredLocationTitle;
+@property (readonly, nonatomic) unsigned char suggestedEventCategory; // @synthesize suggestedEventCategory=_suggestedEventCategory;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (id)descriptionForSuggestedEventCategory:(unsigned char)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (unsigned char)_suggestedEventCategoryFromMetaData:(id)arg1;
 - (long long)compareStartDateWithEvent:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -57,10 +61,12 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEKEvent:(id)arg1;
-- (id)initWithEventIdentifier:(id)arg1 title:(id)arg2 location:(id)arg3 calendar:(id)arg4 startDate:(id)arg5 endDate:(id)arg6 availability:(BOOL)arg7 externalURI:(id)arg8 attendees:(id)arg9 organizerName:(id)arg10 eventFlags:(unsigned char)arg11 notes:(id)arg12 url:(id)arg13 structuredLocationTitle:(id)arg14 structuredLocationAddress:(id)arg15 structuredLocationCoordinates:(id)arg16;
+- (id)initWithEKEvent:(id)arg1 calendarInternPool:(id)arg2;
+- (id)initWithEventIdentifier:(id)arg1 title:(id)arg2 location:(id)arg3 calendar:(id)arg4 startDate:(id)arg5 endDate:(id)arg6 availability:(BOOL)arg7 externalURI:(id)arg8 attendees:(id)arg9 organizerName:(id)arg10 eventFlags:(unsigned char)arg11 notes:(id)arg12 url:(id)arg13 structuredLocationTitle:(id)arg14 structuredLocationAddress:(id)arg15 structuredLocationCoordinates:(id)arg16 suggestedEventCategory:(unsigned char)arg17;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEvent:(id)arg1;
+- (BOOL)isNLEvent;
+- (BOOL)isStructuredEvent;
 - (BOOL)organizerIsCurrentUser;
 - (BOOL)representsUnscheduledFreeTime;
 

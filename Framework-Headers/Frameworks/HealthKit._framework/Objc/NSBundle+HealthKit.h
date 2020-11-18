@@ -9,6 +9,7 @@
 @interface NSBundle (HealthKit)
 + (id)hk_findContainedBundleWithIdentifier:(id)arg1 directoryURL:(id)arg2;
 - (id)hk_displayName;
+- (id)hk_extensionPointIdentifier;
 - (id)hk_findContainedBundleWithIdentifier:(id)arg1;
 - (id)hk_localizedClinicalReadAuthorizationUsageDescription;
 - (id)hk_localizedReadAuthorizationUsageDescription;

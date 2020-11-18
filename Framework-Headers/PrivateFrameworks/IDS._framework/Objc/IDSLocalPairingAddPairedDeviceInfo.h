@@ -16,13 +16,17 @@
     NSData *_BTOutOfBandKey;
     NSData *_bluetoothMACAddress;
     long long _pairingProtocolVersion;
+    long long _pairingType;
     BOOL _supportsIPsecWithSPPLink;
+    BOOL _shouldPairDirectlyOverIPsec;
 }
 
 @property (readonly, nonatomic) NSData *BTOutOfBandKey; // @synthesize BTOutOfBandKey=_BTOutOfBandKey;
 @property (strong, nonatomic) NSData *bluetoothMACAddress; // @synthesize bluetoothMACAddress=_bluetoothMACAddress;
 @property (readonly, nonatomic) NSUUID *cbuuid; // @synthesize cbuuid=_cbuuid;
 @property (readonly, nonatomic) long long pairingProtocolVersion; // @synthesize pairingProtocolVersion=_pairingProtocolVersion;
+@property (nonatomic) long long pairingType; // @synthesize pairingType=_pairingType;
+@property (nonatomic) BOOL shouldPairDirectlyOverIPsec; // @synthesize shouldPairDirectlyOverIPsec=_shouldPairDirectlyOverIPsec;
 @property (nonatomic) BOOL supportsIPsecWithSPPLink; // @synthesize supportsIPsecWithSPPLink=_supportsIPsecWithSPPLink;
 
 + (BOOL)supportsSecureCoding;

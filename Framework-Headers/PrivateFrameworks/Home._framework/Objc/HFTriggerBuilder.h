@@ -68,11 +68,13 @@
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (void)removeAllEndEventBuilders;
 - (void)removeEndEventBuilder:(id)arg1;
+- (void)removeServiceLikeItem:(id)arg1;
 - (id)replaceCurrentTriggerWithTrigger:(id)arg1;
 - (void)setEndEvent:(id)arg1;
 - (void)setMarkTriggerAsHomeAppCreated:(BOOL)arg1;
 - (void)setTrigger:(id)arg1;
 - (void)updateEndEventBuilder:(id)arg1;
+- (id)validateTrigger;
 
 @end
 

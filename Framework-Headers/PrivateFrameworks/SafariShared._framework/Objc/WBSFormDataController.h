@@ -160,14 +160,14 @@
 - (BOOL)textFieldIsEligibleForAutomaticStrongPassword:(id)arg1 form:(id)arg2 ignorePreviousDecision:(BOOL)arg3 textFieldCurrentlyContainsStrongPassword:(BOOL *)arg4;
 - (BOOL)textFieldMetadataMeetsRequirementsForAutomaticStrongPasswordTreatment:(id)arg1 form:(id)arg2;
 - (id)uniqueIDOfContact:(id)arg1;
-- (void)updateLastUsedUsernameAndExtractUsernameAndPasswordFromForm:(id)arg1 atURL:(id)arg2 username:(id *)arg3 password:(id *)arg4;
+- (void)updateLastUsedUsernameAndExtractUsernameAndPasswordFromForm:(id)arg1 shouldPreferAnnotatedCredentials:(BOOL)arg2 atURL:(id)arg3 username:(id *)arg4 password:(id *)arg5;
 - (id)valuesForContactFormWithMetadata:(id)arg1 inDomain:(id)arg2 matches:(id *)arg3 multiRoundAutoFillManager:(id)arg4;
 - (id)valuesForContactFormWithMetadata:(id)arg1 inDomain:(id)arg2 matches:(id *)arg3 multiRoundAutoFillManager:(id)arg4 contact:(id)arg5;
 - (id)valuesForContactFormWithMetadata:(id)arg1 matches:(id *)arg2 multiRoundAutoFillManager:(id)arg3 existingMatches:(id)arg4 contact:(id)arg5;
 - (id)valuesForContactFormWithMetadata:(id)arg1 matches:(id *)arg2 multiRoundAutoFillManager:(id)arg3 existingMatches:(id)arg4 shouldUseExistingMatchesToFillFocusedField:(BOOL)arg5 contact:(id)arg6;
 - (id)valuesForStandardForm:(id)arg1 inDomain:(id)arg2 autoFillDataType:(long long)arg3 matches:(id *)arg4 preferredLabel:(id)arg5 multiRoundAutoFillManager:(id)arg6;
 - (id)valuesForStandardForm:(id)arg1 inDomain:(id)arg2 autoFillDataType:(long long)arg3 matches:(id *)arg4 preferredLabel:(id)arg5 multiRoundAutoFillManager:(id)arg6 contact:(id)arg7 allowingIdentifiedAddressBookLabelToOverridePreferredIdentifier:(BOOL)arg8;
-- (void)willSubmitFormWithCredentials:(id)arg1 atURL:(id)arg2 username:(id *)arg3 password:(id *)arg4;
+- (void)willSubmitFormWithCredentials:(id)arg1 shouldPreferAnnotatedCredentials:(BOOL)arg2 atURL:(id)arg3 username:(id *)arg4 password:(id *)arg5;
 
 @end
 

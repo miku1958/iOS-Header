@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_fetchImportSources;
-- (id)importSourceNameForImportSource:(long long)arg1;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

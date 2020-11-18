@@ -11,12 +11,13 @@
 #import <SpringBoard/SBHomeGestureInteractionDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class CSLockScreenSettings, NSSet, NSString, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBHomeGestureInteraction, SBHomeGestureParticipant, SBLockScreenDefaults, UIView, UIViewFloatAnimatableProperty;
+@class CSLockScreenSettings, NSSet, NSString, NSTimer, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBHomeGestureInteraction, SBHomeGestureParticipant, SBLockScreenDefaults, UIView, UIViewFloatAnimatableProperty;
 
-@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBHomeGestureParticipantDelegate, SBHomeGestureInteractionDelegate, CSApplicationHosting>
+@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBHomeGestureInteractionDelegate, CSApplicationHosting>
 {
     UIView *_maskView;
     UIView *_tintView;
@@ -26,8 +27,11 @@
     BOOL _hasWarmedCameraForThisPresentation;
     BOOL _cameraPrewarmSucceeded;
     long long _cameraPresentLargestPercent;
+    NSTimer *_prewarmDebounceTimer;
+    NSTimer *_prewarmCancelTimer;
     CSLockScreenSettings *_prototypeSettings;
     SBLockScreenDefaults *_lockScreenDefaults;
+    BOOL _wantsHomeGestureOwnership;
     SBHomeGestureInteraction *_homeGestureInteraction;
     UIViewFloatAnimatableProperty *_scaleProperty;
     UIViewFloatAnimatableProperty *_alphaProperty;
@@ -47,6 +51,7 @@
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *scaleProperty; // @synthesize scaleProperty=_scaleProperty;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *scaleSettings; // @synthesize scaleSettings=_scaleSettings;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wantsHomeGestureOwnership; // @synthesize wantsHomeGestureOwnership=_wantsHomeGestureOwnership;
 
 + (BOOL)isAvailableForConfiguration;
 + (unsigned long long)requiredCapabilities;
@@ -56,6 +61,7 @@
 - (struct CGPoint)_convertTranslationFromContainerOrientationToContentOrientation:(struct CGPoint)arg1;
 - (void)_coolCameraIfNecessary;
 - (void)_createProperties;
+- (void)_endPrewarmBackoffPeriod;
 - (void)_makeApplicationStatic;
 - (void)_noteUserLaunchEventTime;
 - (double)_prelaunchThreshold;
@@ -80,6 +86,8 @@
 - (void)aggregateAppearance:(id)arg1;
 - (void)aggregateBehavior:(id)arg1;
 - (BOOL)canHostAnApp;
+- (void)conformsToCSApplicationHosting;
+- (void)conformsToSBApplicationHosting;
 - (id)customScreenEdgePanGestureRecognizerForHomeGestureInteraction:(id)arg1;
 - (BOOL)dashBoardHostedAppViewController:(id)arg1 shouldTransitionToMode:(long long)arg2;
 - (void)didTransitionToVisible:(BOOL)arg1;
@@ -94,6 +102,7 @@
 - (void)homeGestureInteractionChanged:(id)arg1;
 - (void)homeGestureInteractionEnded:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+- (void)homeGrabberViewDidReceiveClick:(id)arg1;
 - (id)hostedAppSceneHandle;
 - (id)hostedAppSceneHandles;
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;

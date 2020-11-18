@@ -12,10 +12,12 @@
 
 @property (readonly, copy, nonatomic) NSString *actionTitle;
 @property (readonly, copy, nonatomic) NSURL *actionURL;
-@property (readonly, copy, nonatomic) NSString *backgroundGradientColor;
+@property (readonly, copy, nonatomic) NSString *backgroundColorDark;
+@property (readonly, copy, nonatomic) NSString *backgroundColorLight;
 @property (readonly, copy, nonatomic) NSString *name;
-@property (readonly, copy, nonatomic) NSString *nameColor;
-@property (readonly, nonatomic) BOOL useNameColorInWidget;
+@property (readonly, copy, nonatomic) NSURL *nameActionURL;
+@property (readonly, copy, nonatomic) NSString *nameColorDark;
+@property (readonly, copy, nonatomic) NSString *nameColorLight;
 
 @end
 

@@ -17,6 +17,7 @@
 + (BOOL)canGenerateImageDerivativesFromUTI:(id)arg1;
 + (BOOL)canLoadAssetAsRawForInteractiveEditingWithImageProperties:(id)arg1;
 + (long long)defaultRasterizationDPI;
++ (long long)devicePerformanceMemoryClass;
 + (id)imagePropertiesFromImageSource:(struct CGImageSource *)arg1;
 + (id)imagePropertiesFromImageSource:(struct CGImageSource *)arg1 atIndex:(unsigned long long)arg2;
 + (BOOL)isAudioUTI:(id)arg1;
@@ -41,6 +42,7 @@
 + (long long)rawSourceMaximumPixelCountForBackgroundProcessing;
 + (long long)rawSourceMaximumPixelCountForInteractiveEditing;
 + (id)resourceModelUTIForExtension:(id)arg1;
++ (id)stringFromFourCharCode:(unsigned int)arg1;
 
 @end
 

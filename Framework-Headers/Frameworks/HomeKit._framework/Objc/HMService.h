@@ -37,13 +37,15 @@
     NSNumber *_instanceID;
     HMMutableArray *_currentCharacteristics;
     NSNumber *_lastKnownDiscoveryMode;
+    NSNumber *_lastKnownOperatingStateValue;
+    NSNumber *_lastKnownOperatingStateAbnormalReasonsValue;
     NSUUID *_uuid;
     NSArray *_linkedServiceInstanceIDs;
     NSArray *_mediaSourceDisplayOrder;
 }
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (strong, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (copy, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property (readonly, nonatomic) HMBulletinBoardNotification *bulletinBoardNotificationInternal; // @synthesize bulletinBoardNotificationInternal=_bulletinBoardNotificationInternal;
@@ -59,6 +61,8 @@
 @property (readonly, nonatomic) NSURL *homeObjectURLInternal; // @synthesize homeObjectURLInternal=_homeObjectURLInternal;
 @property (readonly, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (copy, nonatomic) NSNumber *lastKnownDiscoveryMode; // @synthesize lastKnownDiscoveryMode=_lastKnownDiscoveryMode;
+@property (copy, nonatomic) NSNumber *lastKnownOperatingStateAbnormalReasonsValue; // @synthesize lastKnownOperatingStateAbnormalReasonsValue=_lastKnownOperatingStateAbnormalReasonsValue;
+@property (copy, nonatomic) NSNumber *lastKnownOperatingStateValue; // @synthesize lastKnownOperatingStateValue=_lastKnownOperatingStateValue;
 @property (readonly, copy, nonatomic) NSArray *linkedServiceInstanceIDs; // @synthesize linkedServiceInstanceIDs=_linkedServiceInstanceIDs;
 @property (readonly, copy, nonatomic) NSArray *linkedServices;
 @property (readonly, copy, nonatomic) NSString *localizedDescription;
@@ -91,6 +95,7 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (void)_addCharacteristic:(id)arg1;
+- (void)_addLastKnownOperatingStateWithResponsesDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (void)_addLastKnownSleepDiscoveryModeDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (id)_findCharacteristic:(id)arg1;
 - (id)_findCharacteristicWithUniqueIdentifier:(id)arg1;
@@ -107,22 +112,28 @@
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_removeCharacteristic:(id)arg1;
 - (id)_serviceTypeDescription;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateAssociatedServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateConfigurationState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)bulletinBoardNotification;
 - (id)characteristicsSupportedForShortcutConditions;
+- (void)dealloc;
 - (id)defaultCharacteristic;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasOperatingState;
+- (BOOL)hasOperatingStateAbnormalReasons;
 - (BOOL)hasSleepDiscoveryMode;
 - (id)homeObjectURL;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNameModifiable;
+- (long long)lastKnownOperatingState;
+- (unsigned long long)lastKnownOperatingStateAbnormalReasons;
 - (long long)lastKnownSleepDiscoveryMode;
 - (id)logIdentifier;
-- (void)setApplicationData:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAssociatedServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateConfigurationState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

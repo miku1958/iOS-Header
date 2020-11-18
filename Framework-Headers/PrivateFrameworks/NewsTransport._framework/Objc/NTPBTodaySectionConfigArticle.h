@@ -12,6 +12,7 @@
 
 @interface NTPBTodaySectionConfigArticle : PBCodable <NSCopying>
 {
+    NSString *_actionURLString;
     NSString *_articleID;
     NSString *_displayDateString;
     NTPBTodaySectionConfigArticle *_paidArticle;
@@ -19,8 +20,10 @@
     NSString *_title;
 }
 
+@property (strong, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
 @property (strong, nonatomic) NSString *displayDateString; // @synthesize displayDateString=_displayDateString;
+@property (readonly, nonatomic) BOOL hasActionURLString;
 @property (readonly, nonatomic) BOOL hasArticleID;
 @property (readonly, nonatomic) BOOL hasDisplayDateString;
 @property (readonly, nonatomic) BOOL hasPaidArticle;

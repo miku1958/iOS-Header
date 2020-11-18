@@ -10,6 +10,7 @@
 {
 }
 
+- (id)baseSceneComponentClassDictionary;
 - (Class)clientSettingsClass;
 - (Class)settingsClass;
 - (Class)transitionContextClass;

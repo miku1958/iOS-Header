@@ -8,7 +8,7 @@
 
 #import <SpotlightServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PRSSearchFeedback, PRSSearchSession;
+@class NSArray, NSDictionary, NSString, PRSSearchFeedback, PRSSearchSession, SPSearchQueryContext;
 @protocol OS_dispatch_queue, PRSSearchQueryHandler;
 
 @interface PRSQueryTask : NSObject <NSSecureCoding>
@@ -21,8 +21,7 @@
     NSDictionary *_server_features;
     NSArray *_parsecCategoryOrder;
     id _representedObject;
-    NSString *_keyboardLanguage;
-    double _scaleFactor;
+    SPSearchQueryContext *_queryContext;
     NSString *_queryString;
     unsigned long long _queryIdent;
     PRSSearchFeedback *_feedback;
@@ -37,14 +36,13 @@
 @property (strong, nonatomic) NSString *fbq; // @synthesize fbq=_fbq;
 @property (strong) PRSSearchFeedback *feedback; // @synthesize feedback=_feedback;
 @property (strong, nonatomic) id<PRSSearchQueryHandler> handler; // @synthesize handler=_handler;
-@property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (strong, nonatomic) NSArray *parsecCategoryOrder; // @synthesize parsecCategoryOrder=_parsecCategoryOrder;
+@property (readonly, nonatomic) SPSearchQueryContext *queryContext; // @synthesize queryContext=_queryContext;
 @property long long queryId; // @synthesize queryId=_queryId;
 @property unsigned long long queryIdent; // @synthesize queryIdent=_queryIdent;
 @property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (weak, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
-@property double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (strong, nonatomic) NSDictionary *server_features; // @synthesize server_features=_server_features;
 @property (weak, nonatomic) PRSSearchSession *session; // @synthesize session=_session;
 @property (nonatomic) BOOL started; // @synthesize started=_started;
@@ -59,9 +57,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)feedbackQueryIdentifier;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3 feedback:(id)arg4;
+- (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3 feedback:(id)arg4 queryContext:(id)arg5;
 - (void)invalidateHandler;
 - (void)resume;
+- (void)setParsecState:(BOOL)arg1;
 
 @end
 

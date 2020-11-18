@@ -10,7 +10,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription29DisplayOfferTransitionContext : NSObject <NFStateMachineContextType>
 {
     MISSING_TYPE *offers;

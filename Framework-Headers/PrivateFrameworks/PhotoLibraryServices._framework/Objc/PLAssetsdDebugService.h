@@ -24,12 +24,14 @@
 - (void).cxx_destruct;
 - (void)asynchronousUnloadImageFilesForAssetWithObjectURI:(id)arg1 minimumFormat:(unsigned short)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)cleanupEmptyHighlightsWithReply:(CDUnknownBlockType)arg1;
+- (void)clearPrefetchState;
 - (void)coalesceJournalsForPayloadClassIDs:(id)arg1 withChangeJournalOverThreshold:(float)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)debugSidecarURLsWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)deferredLogDumpWithFormat:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dropSearchIndexWithReply:(CDUnknownBlockType)arg1;
 - (void)dumpMetadataForMomentsToPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dumpMomentsMetadataToPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)enqueuePrefetch;
 - (void)getCPLStateWithReply:(CDUnknownBlockType)arg1;
 - (void)getXPCTransactionStatusWithReply:(CDUnknownBlockType)arg1;
 - (void)identifyAssetsWithInconsistentCloudState;

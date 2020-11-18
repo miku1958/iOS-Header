@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSString, NSTimer;
+@class NSDate, NSHashTable, NSString, NSTimer;
 
 @interface IMSystemMonitor : NSObject
 {
@@ -27,26 +27,27 @@
     BOOL _usesPowerNotifications;
     BOOL _usesSystemIdleState;
     BOOL _inBackground;
+    BOOL _listeningForSetupAssistantNotifications;
     int _dataProtectionState;
     int _userIdleToken;
-    NSMutableArray *_listeners;
+    struct os_unfair_lock_s _ivarLock;
+    NSHashTable *_listeners;
     NSDate *_idleStart;
     NSTimer *_timer;
     NSDate *_dateScreenLightLastChanged;
     NSDate *_dateSystemLockLastChanged;
     NSString *_userID;
     double _delayTime;
-    NSMutableArray *_earlyListeners;
+    NSHashTable *_earlyListeners;
     long long _resignActiveCount;
-    struct _opaque_pthread_mutex_t _ivarLock;
 }
 
 @property (nonatomic) int _dataProtectionState; // @synthesize _dataProtectionState;
 @property (nonatomic) double _delayTime; // @synthesize _delayTime;
-@property (strong, nonatomic) NSMutableArray *_earlyListeners; // @synthesize _earlyListeners;
+@property (strong, nonatomic) NSHashTable *_earlyListeners; // @synthesize _earlyListeners;
 @property (nonatomic) BOOL _idleOverride; // @synthesize _idleOverride;
 @property (strong, nonatomic) NSDate *_idleStart; // @synthesize _idleStart;
-@property (strong, nonatomic) NSMutableArray *_listeners; // @synthesize _listeners;
+@property (strong, nonatomic) NSHashTable *_listeners; // @synthesize _listeners;
 @property (strong, nonatomic) NSTimer *_timer; // @synthesize _timer;
 @property (nonatomic) BOOL _underFirstLock; // @synthesize _underFirstLock;
 @property (strong, nonatomic) NSString *_userID; // @synthesize _userID;
@@ -64,7 +65,8 @@
 @property (readonly, nonatomic) BOOL isSystemLocked; // @synthesize isSystemLocked=_systemLocked;
 @property (readonly, nonatomic) BOOL isUnderDataProtectionLock;
 @property (readonly, nonatomic) BOOL isUnderFirstDataProtectionLock;
-@property (nonatomic) struct _opaque_pthread_mutex_t ivarLock; // @synthesize ivarLock=_ivarLock;
+@property (nonatomic) struct os_unfair_lock_s ivarLock; // @synthesize ivarLock=_ivarLock;
+@property (nonatomic) BOOL listeningForSetupAssistantNotifications; // @synthesize listeningForSetupAssistantNotifications=_listeningForSetupAssistantNotifications;
 @property (nonatomic) BOOL receivesMemoryWarnings; // @synthesize receivesMemoryWarnings=_receivesMemoryWarnings;
 @property (nonatomic) long long resignActiveCount; // @synthesize resignActiveCount=_resignActiveCount;
 @property (readonly, nonatomic) double systemIdleTime;
@@ -78,6 +80,7 @@
 @property (nonatomic) BOOL watchesSystemLockState; // @synthesize watchesSystemLockState=_watchesSystemLockState;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_addEarlyListener:(id)arg1;
 - (void)_alreadyLocked_clearIdleTimer;
 - (BOOL)_alreadyLocked_isSystemIdle;
@@ -105,6 +108,7 @@
 - (void)_receivedMemoryNotification;
 - (void)_registerForLoginWindowNotifications;
 - (void)_registerForRestoreNotifications;
+- (void)_registerForSetupNotifications;
 - (void)_removeEarlyListener:(id)arg1;
 - (void)_restoreDidStart;
 - (void)_restoreDidStop;

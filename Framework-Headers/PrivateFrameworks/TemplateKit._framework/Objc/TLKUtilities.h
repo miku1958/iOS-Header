@@ -10,18 +10,21 @@
 {
 }
 
++ (double)appIconCornerRadiusRatio;
 + (BOOL)deviceSupportsRotation;
 + (void)dispatchAsyncIfNecessary:(CDUnknownBlockType)arg1;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
++ (BOOL)isMacOS;
 + (double)onePixelForCurrentScreenResolution;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (BOOL)recursivelyCheckIfSubviewTapped:(id)arg1 forTappedView:(id)arg2;
-+ (struct UIEdgeInsets)standardInsets;
 + (double)standardTableCellContentInset;
 + (id)testImageWithSize:(struct CGSize)arg1;
++ (id)testImageWithSize:(struct CGSize)arg1 color:(id)arg2;
 + (id)testImageWithSize:(struct CGSize)arg1 text:(id)arg2;
++ (id)testImageWithSize:(struct CGSize)arg1 text:(id)arg2 color:(id)arg3;
 
 @end
 

@@ -78,14 +78,13 @@
 - (void)_setPrimaryConcept:(id)arg1;
 - (void)_setSortDate:(id)arg1;
 - (void)_setState:(unsigned long long)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fallbackDisplayString;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 
 @end

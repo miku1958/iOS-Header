@@ -10,11 +10,12 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneStatusBarStateProvider;
+@class NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarStateProvider;
 
 @interface SBDeviceApplicationSceneStatusBarStateProxy : SBDeviceApplicationSceneStatusBarStateProvider_Base <SBDeviceApplicationSceneStatusBarStateObserver, SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride, BSInvalidatable>
 {
     SBDeviceApplicationSceneStatusBarStateProvider *_stateProvider;
+    SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,10 +34,15 @@
 - (long long)_statusBarStyle;
 - (long long)_statusBarStyleForPartWithIdentifier:(id)arg1 suppressingInherited:(BOOL)arg2;
 - (BOOL)_suppressInheritedPartStyles;
+- (id)breadcrumbProvider;
+- (id)classicApplicationSceneHandleIfExists;
 - (void)didInvalidateStatusBarDescriptionForSceneWithIdentifier:(id)arg1;
-- (id)initWithStateProvider:(id)arg1;
+- (id)initWithDeviceApplicationSceneHandle:(id)arg1;
 - (void)invalidate;
 - (void)invalidateStatusBarSettings;
+- (id)overlayStatusBarData;
+- (id)sceneToHandleStatusBarTapIfExists;
+- (BOOL)sceneWantsDeviceOrientationEventsEnabled;
 - (void)sceneWithIdentifier:(id)arg1 didChangeSceneInterfaceOrientationTo:(long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAvoidanceFrameTo:(struct CGRect)arg2;
@@ -46,7 +52,6 @@
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2 forPartWithIdentifier:(id)arg3;
 - (struct CGRect)statusBarAvoidanceFrame;
-- (id)statusBarControllingSceneHandle;
 - (id)statusBarSceneIdentifier;
 - (int)statusBarStyleOverridesToSuppress;
 

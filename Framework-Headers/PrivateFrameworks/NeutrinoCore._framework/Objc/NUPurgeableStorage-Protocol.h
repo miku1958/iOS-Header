@@ -5,8 +5,9 @@
 //
 
 #import <NeutrinoCore/NUImageStorage-Protocol.h>
+#import <NeutrinoCore/NUSharableImage-Protocol.h>
 
-@protocol NUPurgeableStorage <NUImageStorage>
+@protocol NUPurgeableStorage <NUImageStorage, NUSharableImage>
 - (void)adjustPurgeLevel:(long long)arg1;
 - (BOOL)isPurgeable;
 - (BOOL)isPurged;

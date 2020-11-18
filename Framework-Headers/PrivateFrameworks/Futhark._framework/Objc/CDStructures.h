@@ -72,6 +72,8 @@ struct recognizer {
         CDStruct_cf098810 _field4;
         CDStruct_cf098810 _field5;
     } _field3[5];
+    void *_field4;
+    int _field5;
 };
 
 struct sequence;

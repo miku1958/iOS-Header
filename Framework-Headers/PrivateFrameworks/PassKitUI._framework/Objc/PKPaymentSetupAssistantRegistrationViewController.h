@@ -7,11 +7,12 @@
 #import <PassKitUI/PKPaymentSetupHeroViewController.h>
 
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKSetupAssistantStep-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, UIButton;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupHeroViewController <PKPaymentSetupViewControllerDelegate>
+@interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupHeroViewController <PKPaymentSetupViewControllerDelegate, PKSetupAssistantStep>
 {
     UIButton *_skipButton;
     id<PKPaymentSetupViewControllerDelegate> _externalDelegate;
@@ -27,6 +28,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)bridgeSetupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
++ (BOOL)bridgeSetupAssistantNeedsToRunWithContext:(id)arg1 returningRequirements:(unsigned long long *)arg2;
 + (id)defaultWebServiceForContext:(long long)arg1;
 + (BOOL)setupAssistantNeedsToRun;
 + (BOOL)setupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;

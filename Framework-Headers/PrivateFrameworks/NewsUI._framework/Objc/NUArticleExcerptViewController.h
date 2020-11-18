@@ -42,7 +42,7 @@
 - (id)initWithHeadline:(id)arg1 contentContext:(id)arg2 traits:(id)arg3;
 - (void)loadExcerptFromHeadline:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadHeadlineImageFromHeadline:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentSafariViewControllerWithURL:(id)arg1;
+- (void)openSafariViewWithURL:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;

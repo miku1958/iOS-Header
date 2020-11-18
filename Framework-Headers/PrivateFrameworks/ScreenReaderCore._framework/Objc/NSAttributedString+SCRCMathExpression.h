@@ -22,6 +22,7 @@
 - (struct _NSRange)_scrcRangeOfVanillaFormatSpecifier;
 - (BOOL)scrcContainsPause;
 - (id)scrcSplitBasedOnAttribute:(id)arg1 limit:(long long)arg2;
+- (id)scrcSplitBasedOnMultipleAttributesWithLimit:(long long)arg1;
 - (id)scrcStringByAddingAttribute:(id)arg1 value:(id)arg2;
 - (id)scrcStringByAppendingAttributedString:(id)arg1;
 - (id)scrcStringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2;

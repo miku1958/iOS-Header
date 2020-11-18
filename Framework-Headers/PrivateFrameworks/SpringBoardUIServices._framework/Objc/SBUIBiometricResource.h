@@ -22,6 +22,7 @@
     SBFMobileKeyBag *_keybag;
     unsigned long long _lastEvent;
     BOOL _hasMesaHardware;
+    BOOL _hasPoseidonMesaTypeHardware;
     BOOL _hasPearlHardware;
     BOOL _isMatchingAllowed;
     BOOL _isMatchingEnabled;
@@ -57,6 +58,7 @@
 @property (readonly, nonatomic) BOOL hasEnrolledIdentities;
 @property (readonly, nonatomic) BOOL hasMesaSupport;
 @property (readonly, nonatomic) BOOL hasPearlSupport;
+@property (readonly, nonatomic) BOOL hasPoseidonSupport;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_keybagInterface, setter=_setKeybagInterface:) SBFMobileKeyBag *keybagInterface; // @synthesize keybagInterface=_keybag;
 @property (readonly, nonatomic, getter=isMatchingAllowed) BOOL matchingAllowed; // @synthesize matchingAllowed=_isMatchingAllowed;

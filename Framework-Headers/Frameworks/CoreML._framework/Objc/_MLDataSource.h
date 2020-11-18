@@ -8,7 +8,7 @@
 
 #import <CoreML/ETDataProvider-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface _MLDataSource : NSObject <ETDataProvider>
 {
@@ -16,6 +16,10 @@
 }
 
 @property (strong, nonatomic) NSDictionary *dataTensorDictionary; // @synthesize dataTensorDictionary=_dataTensorDictionary;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dataPointAtIndex:(unsigned long long)arg1 error:(id *)arg2;

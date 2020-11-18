@@ -11,6 +11,7 @@
 }
 
 - (id)currentValue;
+- (long long)sourceType;
 
 @end
 

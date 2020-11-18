@@ -34,6 +34,7 @@
 - (void)getStandaloneTestModeEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)logFaultWithCompletion:(CDUnknownBlockType)arg1;
 - (void)originalSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)overriddenSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (id)_stackLayerWithImages:(id)arg1 filters:(id)arg2 size:(struct CGSize)arg3 contentsScale:(double)arg4 insets:(struct UIEdgeInsets *)arg5 path:(const struct CGPath **)arg6;
 - (id)initWithIdentifier:(id)arg1 renderer:(id)arg2;
-- (id)newOperationWithImages:(id)arg1 filters:(id)arg2 size:(struct CGSize)arg3 contentsScale:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)newOperationWithImages:(id)arg1 filters:(id)arg2 size:(struct CGSize)arg3 contentsScale:(double)arg4 waitForCPUSynchronization:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end
 

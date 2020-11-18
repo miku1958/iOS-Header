@@ -34,22 +34,28 @@
     NSString *_secondaryName;
     NSString *_model;
     NSString *_transportBundleID;
-    NSSet *_handles;
+    NSSet *_formattedHandles;
+    NSSet *_actualHandles;
     NSUUID *_nodeIdentifier;
     CURangingMeasurement *_rangingMeasurement;
     NSNumber *_suggestionIndex;
+    NSSet *_contactIDs;
+    NSString *_derivedIntentIdentifier;
     long long _selectionReason;
 }
 
+@property (strong) NSSet *actualHandles; // @synthesize actualHandles=_actualHandles;
 @property (getter=isClassroom) BOOL classroom; // @synthesize classroom=_classroom;
 @property (getter=isClassroomCourse) BOOL classroomCourse; // @synthesize classroomCourse=_classroomCourse;
 @property (getter=isclassroomGroup) BOOL classroomGroup; // @synthesize classroomGroup=_classroomGroup;
+@property (strong, nonatomic) NSSet *contactIDs; // @synthesize contactIDs=_contactIDs;
 @property (strong) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (copy, nonatomic) NSString *derivedIntentIdentifier; // @synthesize derivedIntentIdentifier=_derivedIntentIdentifier;
 @property (getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) NSDate *discoveryDate; // @synthesize discoveryDate=_discoveryDate;
 @property (strong) struct CGImage *displayIcon; // @synthesize displayIcon=_displayIcon;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
-@property (strong) NSSet *handles; // @synthesize handles=_handles;
+@property (strong) NSSet *formattedHandles; // @synthesize formattedHandles=_formattedHandles;
 @property (readonly, getter=isKnown) BOOL known;
 @property (getter=isMe) BOOL me; // @synthesize me=_me;
 @property (strong) NSString *model; // @synthesize model=_model;

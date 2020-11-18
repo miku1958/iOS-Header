@@ -71,7 +71,6 @@
 - (void)wallpaperEditingDidCancel:(id)arg1;
 - (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
 - (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
-- (void)wallpaperPickerDidCancel:(id)arg1;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)wallpaperPickerRequestOpenWallpaperEditor:(id)arg1;
 - (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;

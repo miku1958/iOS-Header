@@ -23,31 +23,13 @@
     } _has;
 }
 
-@property (nonatomic) int environment; // @synthesize environment=_environment;
-@property (readonly, nonatomic) BOOL hasPrimaryDisplayItem;
-@property (readonly, nonatomic) BOOL hasSecondaryDisplayItem;
-@property (nonatomic) BOOL hasSecondaryDisplayItemRole;
-@property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
-@property (nonatomic) int layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
-@property (strong, nonatomic) SBPBDisplayItem *primaryDisplayItem; // @synthesize primaryDisplayItem=_primaryDisplayItem;
-@property (strong, nonatomic) SBPBDisplayItem *secondaryDisplayItem; // @synthesize secondaryDisplayItem=_secondaryDisplayItem;
-@property (nonatomic) int secondaryDisplayItemRole; // @synthesize secondaryDisplayItemRole=_secondaryDisplayItemRole;
-
 - (void).cxx_destruct;
-- (int)StringAsEnvironment:(id)arg1;
-- (int)StringAsLayoutConfiguration:(id)arg1;
-- (int)StringAsSecondaryDisplayItemRole:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)environmentAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)layoutConfigurationAsString:(int)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)secondaryDisplayItemRoleAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

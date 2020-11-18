@@ -55,8 +55,6 @@
 - (void)_enterSlideshowStateForAssetCollectionReference:(id)arg1;
 - (void)_enterTouchingStateForAssetCollectionReference:(id)arg1;
 - (void)_generateFeedbackForSkimmingGesture;
-- (void)_hideSkimmingHints;
-- (void)_showSkimmingHints;
 - (void)_slideshowTimerTick:(id)arg1;
 - (void)_startOrResumeSlideshowTouchesEnded:(BOOL)arg1;
 - (void)_stopSlideshow;

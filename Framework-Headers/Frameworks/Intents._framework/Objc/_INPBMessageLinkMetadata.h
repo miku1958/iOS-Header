@@ -17,7 +17,6 @@
     struct {
         unsigned int linkMediaType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _linkMediaType;
     NSString *_albumArtist;
     NSString *_albumName;
@@ -70,7 +69,6 @@
     NSString *_tvShowName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *albumArtist; // @synthesize albumArtist=_albumArtist;
 @property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (copy, nonatomic) NSString *appleTvSubtitle; // @synthesize appleTvSubtitle=_appleTvSubtitle;

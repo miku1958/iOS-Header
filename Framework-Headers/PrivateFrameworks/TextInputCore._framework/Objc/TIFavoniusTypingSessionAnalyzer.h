@@ -8,37 +8,52 @@
 
 #import <TextInputCore/TITypingSessionAnalyzing-Protocol.h>
 
-@class NSString, TITypingSession, TITypingSessionAligned;
+@class NSString, TIKeyboardState, TITypingSession;
 @protocol TIUserModeling;
 
 @interface TIFavoniusTypingSessionAnalyzer : NSObject <TITypingSessionAnalyzing>
 {
-    TITypingSession *_lastSessionAnalyzed;
-    TITypingSessionAligned *_lastAlignmentAnalyzed;
+    int _lastMessageWordsEntered;
     id<TIUserModeling> _userModel;
+    TITypingSession *_currentSession;
+    NSString *_lastMessage;
+    TIKeyboardState *_lastMessageKeyboardState;
+    double _lastMessageStartTime;
+    double _lastMessageEndTime;
 }
 
+@property (strong, nonatomic) TITypingSession *currentSession; // @synthesize currentSession=_currentSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) TITypingSessionAligned *lastAlignmentAnalyzed; // @synthesize lastAlignmentAnalyzed=_lastAlignmentAnalyzed;
-@property (strong, nonatomic) TITypingSession *lastSessionAnalyzed; // @synthesize lastSessionAnalyzed=_lastSessionAnalyzed;
+@property (strong, nonatomic) NSString *lastMessage; // @synthesize lastMessage=_lastMessage;
+@property (nonatomic) double lastMessageEndTime; // @synthesize lastMessageEndTime=_lastMessageEndTime;
+@property (weak, nonatomic) TIKeyboardState *lastMessageKeyboardState; // @synthesize lastMessageKeyboardState=_lastMessageKeyboardState;
+@property (nonatomic) double lastMessageStartTime; // @synthesize lastMessageStartTime=_lastMessageStartTime;
+@property (nonatomic) int lastMessageWordsEntered; // @synthesize lastMessageWordsEntered=_lastMessageWordsEntered;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<TIUserModeling> userModel; // @synthesize userModel=_userModel;
 
++ (id)favoniusTypingSessionAnalyzerForUserModel:(id)arg1;
 - (void).cxx_destruct;
-- (void)addToTransientCounter:(int)arg1 forKey:(id)arg2 andContext:(id)arg3 andCandidateString:(id)arg4;
-- (BOOL)analyze:(id)arg1 alignedSession:(id)arg2;
-- (unsigned long long)canAnalyze:(id)arg1 alignedSession:(id)arg2;
+- (void)addDoubleToTransientCounter:(double)arg1 forKey:(id)arg2 andContext:(id)arg3 andCandidateString:(id)arg4;
+- (void)addIntegerToTransientCounter:(int)arg1 forKey:(id)arg2 andContext:(id)arg3 andCandidateString:(id)arg4;
+- (BOOL)analyzeSession:(id)arg1 alignedSession:(id)arg2 withConfidence:(unsigned long long)arg3;
 - (id)deleteLengthMetrics:(id)arg1 nextWordEntryCandText:(id)arg2;
-- (BOOL)handleDeleteWord:(id)arg1 nextAction:(id)arg2 withConfidence:(unsigned long long)arg3;
-- (BOOL)handlePath:(id)arg1;
-- (BOOL)handleWordEntry:(id)arg1 withConfidence:(unsigned long long)arg2;
+- (int)durationInMillisecondsFromStartTime:(double)arg1 endTime:(double)arg2;
+- (unsigned long long)evaluateConfidenceInSession:(id)arg1 alignedSession:(id)arg2;
+- (void)handleDeleteWord:(id)arg1 nextAction:(id)arg2;
+- (void)handlePath:(id)arg1;
+- (void)handleWordEntry:(id)arg1;
 - (void)incrementTransientCounterForKey:(id)arg1 andContext:(id)arg2 andCandidateString:(id)arg3;
 - (id)initWithUserModel:(id)arg1;
 - (BOOL)isPathable:(id)arg1 context:(id)arg2;
-- (void)logPathedCandidate:(id)arg1 forKey:(id)arg2 withConfidence:(unsigned long long)arg3 isCompletion:(BOOL)arg4;
+- (void)logPathedCandidate:(id)arg1 forKey:(id)arg2 isCompletion:(BOOL)arg3;
+- (void)reportLastMessage;
+- (void)trackMessagesForAction:(id)arg1;
 - (void)updateDurationCounterForWord:(id)arg1 forTypingContext:(id)arg2;
+- (BOOL)updatePQTCountersForCandidate:(id)arg1 withText:(id)arg2 andContext:(id)arg3;
+- (void)updateSourceCountersForCandidate:(id)arg1 withText:(id)arg2 andContext:(id)arg3 hasPQTSource:(BOOL)arg4;
 
 @end
 

@@ -16,6 +16,7 @@
 - (id)wlk_dateForKey:(id)arg1;
 - (id)wlk_dateFromMillisecondsSince1970ForKey:(id)arg1;
 - (unsigned long long)wlk_deepHash;
+- (id)wlk_dictionaryDifference:(id)arg1;
 - (id)wlk_dictionaryForKey:(id)arg1;
 - (id)wlk_numberForKey:(id)arg1;
 - (id)wlk_stringForKey:(id)arg1;

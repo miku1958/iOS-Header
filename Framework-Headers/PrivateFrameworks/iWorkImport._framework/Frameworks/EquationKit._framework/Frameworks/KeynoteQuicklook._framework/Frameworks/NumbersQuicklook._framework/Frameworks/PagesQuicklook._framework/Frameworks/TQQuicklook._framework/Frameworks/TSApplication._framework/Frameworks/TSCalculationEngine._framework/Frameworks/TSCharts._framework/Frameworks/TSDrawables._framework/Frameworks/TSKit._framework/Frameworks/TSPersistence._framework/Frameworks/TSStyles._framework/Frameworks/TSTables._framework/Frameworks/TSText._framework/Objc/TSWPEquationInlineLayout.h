@@ -19,6 +19,7 @@
 - (id)computeLayoutGeometry;
 - (double)descentForInlineLayout;
 - (double)inlineCenteredAlignmentHorizontalOffset;
+- (struct CGSize)invalidEquationSize;
 - (void)invalidateTextScalePercent;
 - (id)layoutGeometryFromInfo;
 - (double)p_fontSizeThatMatchesXHeightForFontName:(id)arg1 fontSize:(double)arg2;

@@ -14,6 +14,7 @@
 
 @interface INPersonHandle : NSObject <INPersonHandleExport, NSCopying, NSSecureCoding>
 {
+    BOOL _suggested;
     NSString *_value;
     long long _type;
     NSString *_label;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) long long emergencyType; // @synthesize emergencyType=_emergencyType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly, nonatomic, getter=isSuggested) BOOL suggested; // @synthesize suggested=_suggested;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
@@ -39,6 +41,8 @@
 - (id)initWithValue:(id)arg1 type:(long long)arg2;
 - (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3;
 - (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 emergencyType:(long long)arg4;
+- (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 emergencyType:(long long)arg4 suggested:(BOOL)arg5;
+- (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 suggested:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

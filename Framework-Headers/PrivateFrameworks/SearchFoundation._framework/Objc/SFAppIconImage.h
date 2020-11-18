@@ -14,16 +14,22 @@
 
 @interface SFAppIconImage : SFImage <SFAppIconImage, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int iconType:1;
+    } _has;
+    int _iconType;
     NSString *_bundleIdentifier;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *contentType;
 @property (nonatomic) double cornerRadius;
+@property (nonatomic) int cornerRoundingStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) int iconType; // @synthesize iconType=_iconType;
 @property (copy, nonatomic) NSString *identifier;
 @property (copy) NSData *imageData;
 @property (nonatomic) BOOL isTemplate;
@@ -39,6 +45,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasIconType;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

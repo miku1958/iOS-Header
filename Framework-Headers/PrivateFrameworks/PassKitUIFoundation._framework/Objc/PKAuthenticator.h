@@ -14,31 +14,28 @@
     struct os_unfair_lock_s _lock;
     BOOL _invalidated;
     id<PKAuthenticatorDelegate> _delegate;
-    double _fingerPresentTimeout;
 }
 
 @property (readonly, nonatomic) unsigned long long authenticationIdentifier;
 @property (readonly, nonatomic) long long coachingState;
 @property (weak, nonatomic) id<PKAuthenticatorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) long long faceIDState;
+@property (readonly, nonatomic) long long evaluationState;
 @property (readonly, nonatomic) BOOL fingerPresent;
-@property (nonatomic) double fingerPresentTimeout; // @synthesize fingerPresentTimeout=_fingerPresentTimeout;
-@property (readonly, nonatomic) BOOL fingerPresentTimeoutExpired;
-@property (readonly, nonatomic) BOOL fingerPresentTimeoutRequired;
 @property (readonly, nonatomic) BOOL passcodeActive;
 @property (readonly, nonatomic) BOOL passcodeWasPresented;
 @property (readonly, nonatomic) BOOL passphraseActive;
 
 + (unsigned long long)_currentStateForMechanisms:(id)arg1;
++ (BOOL)_isAccessibilityUserIntentEnabled;
 + (unsigned long long)cachedStateForPolicy:(long long)arg1;
 + (BOOL)canPerformPSD2StyleBuyForAccessControlRef:(struct __SecAccessControl *)arg1;
 + (unsigned long long)currentStateForAccessControl:(struct __SecAccessControl *)arg1;
 + (unsigned long long)currentStateForPolicy:(long long)arg1;
-+ (void)delayCoachingStateTransition;
-+ (BOOL)isUserIntentAvailable;
++ (BOOL)isUserIntentAvailableWithStyle:(long long)arg1;
 + (void)preheatAuthenticator;
 + (void)removeUserIntentAvailable;
 + (void)resetSharedRootContextWithCompletion:(CDUnknownBlockType)arg1;
++ (long long)userIntentStyle;
 + (id)viewServiceBundleID;
 - (void).cxx_destruct;
 - (BOOL)_delegateSupportsPasscodePresentation;
@@ -53,7 +50,6 @@
 - (id)initWithDelegate:(id)arg1;
 - (void)invalidate;
 - (void)restartEvaluation;
-- (void)setFingerPresentTimeout:(double)arg1 preventRestart:(BOOL)arg2;
 
 @end
 

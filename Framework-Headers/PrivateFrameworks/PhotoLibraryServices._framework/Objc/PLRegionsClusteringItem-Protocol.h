@@ -6,12 +6,14 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSDate;
+@class NSDate, NSString;
 
 @protocol PLRegionsClusteringItem <NSObject>
 
 @property (readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property (readonly, nonatomic) NSDate *pl_date;
+@property (readonly, nonatomic) double pl_gpsHorizontalAccuracy;
+@property (readonly, nonatomic) NSString *pl_uuid;
 
 @end
 

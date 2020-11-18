@@ -14,20 +14,20 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addBlurFilterWithRadius:(double)arg1 opaque:(BOOL)arg2;
-- (void)addBrightnessFilterWithAmount:(float)arg1;
-- (void)addColorInvertFilter;
-- (void)addColorMatrixFilterWithArray:(float [20])arg1;
-- (void)addColorMonochromeFilterWithAmount:(float)arg1 color:(CDStruct_0b1c536a)arg2 bias:(float)arg3;
-- (void)addColorMultiplyFilterWithColor:(CDStruct_0b1c536a)arg1;
-- (void)addContrastFilterWithAmount:(float)arg1;
-- (void)addGrayscaleFilterWithAmount:(float)arg1;
-- (void)addHueRotationFilterWithAngle:(double)arg1;
-- (void)addLuminanceToAlphaFilter;
+- (void)addBlurFilterWithRadius:(double)arg1 colorSpace:(int)arg2 flags:(unsigned int)arg3;
+- (void)addBrightnessFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addColorInvertFilterWithColorSpace:(int)arg1;
+- (void)addColorMatrixFilterWithArray:(float [20])arg1 colorSpace:(int)arg2;
+- (void)addColorMonochromeFilterWithAmount:(float)arg1 color:(CDStruct_0b1c536a)arg2 bias:(float)arg3 colorSpace:(int)arg4;
+- (void)addColorMultiplyFilterWithColor:(CDStruct_0b1c536a)arg1 colorSpace:(int)arg2;
+- (void)addContrastFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addGrayscaleFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addHueRotationFilterWithAngle:(double)arg1 colorSpace:(int)arg2;
+- (void)addLuminanceToAlphaFilterWithColorSpace:(int)arg1;
 - (void)addProjectionStyleWithArray:(float [9])arg1;
-- (void)addSaturationFilterWithAmount:(float)arg1;
+- (void)addSaturationFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
 - (void)addShadowStyleWithRadius:(double)arg1 offset:(struct CGSize)arg2 color:(CDStruct_0b1c536a)arg3 mode:(int)arg4;
-- (void)beginLayerWithFlags:(unsigned int)arg1;
+- (void)beginLayerWithColorSpace:(int)arg1 flags:(unsigned int)arg2;
 - (void)clipLayerWithAlpha:(float)arg1 mode:(int)arg2;
 - (void)clipShape:(id)arg1 mode:(int)arg2;
 - (void)concat:(struct CGAffineTransform)arg1;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)scaleByX:(double)arg1 Y:(double)arg2;
 - (void)setCTM:(struct CGAffineTransform)arg1;
 - (void)translateByX:(double)arg1 Y:(double)arg2;
+- (id)xmlDescription;
 
 @end
 

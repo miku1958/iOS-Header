@@ -41,7 +41,7 @@
 - (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)advertisement;
 - (id)backingStoreObjects:(long long)arg1;
-- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(BOOL)arg4;
 - (void)disassociateUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)disassociateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -50,6 +50,7 @@
 - (void)handleUpdatedPassword:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
+- (id)messageSendPolicy;
 - (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (void)removeUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

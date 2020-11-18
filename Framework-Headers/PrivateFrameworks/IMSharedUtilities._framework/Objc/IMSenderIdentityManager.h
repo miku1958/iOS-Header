@@ -21,6 +21,7 @@
 - (id)bestSenderIdentityForGeminiHandle:(id)arg1 contact:(id)arg2;
 - (id)bestSenderIdentityForHandleID:(id)arg1 contact:(id)arg2;
 - (id)bestSenderIdentityForHandleIDs:(id)arg1;
+- (id)contactPreferredSenderIdentityForHandleID:(id)arg1 contact:(id)arg2;
 - (id)init;
 
 @end

@@ -9,13 +9,12 @@
 #import <EmailDaemon/EDMessageRepositoryQueryHandler-Protocol.h>
 #import <EmailDaemon/EFCancelable-Protocol.h>
 
-@class EDMessagePersistence, EDPersistenceHookRegistry, EFQuery, EMObjectID, NSMapTable, NSSet, NSString;
+@class EDMessagePersistence, EDPersistenceHookRegistry, EFLocked, EFQuery, EMObjectID, NSSet, NSString;
 @protocol EMMessageListItemQueryResultsObserver;
 
 @interface EDMessageRepositoryQueryHandler : NSObject <EFCancelable, EDMessageRepositoryQueryHandler>
 {
     struct atomic_flag _didStart;
-    struct os_unfair_lock_s _summaryLock;
     NSSet *_mailboxes;
     EFQuery *_query;
     EDMessagePersistence *_messagePersistence;
@@ -23,7 +22,7 @@
     id<EMMessageListItemQueryResultsObserver> _resultsObserver;
     EMObjectID *_observationIdentifier;
     long long _dateSortOrder;
-    NSMapTable *_summaryLoadersMapTable;
+    EFLocked *_summaryLoadersMapTable;
 }
 
 @property (readonly, nonatomic) long long dateSortOrder; // @synthesize dateSortOrder=_dateSortOrder;
@@ -36,8 +35,7 @@
 @property (readonly, nonatomic) EMObjectID *observationIdentifier; // @synthesize observationIdentifier=_observationIdentifier;
 @property (readonly, copy, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) id<EMMessageListItemQueryResultsObserver> resultsObserver; // @synthesize resultsObserver=_resultsObserver;
-@property (strong, nonatomic) NSMapTable *summaryLoadersMapTable; // @synthesize summaryLoadersMapTable=_summaryLoadersMapTable;
-@property (readonly, nonatomic) struct os_unfair_lock_s summaryLock; // @synthesize summaryLock=_summaryLock;
+@property (strong, nonatomic) EFLocked *summaryLoadersMapTable; // @synthesize summaryLoadersMapTable=_summaryLoadersMapTable;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -45,10 +43,12 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 observer:(id)arg4 observationIdentifier:(id)arg5;
+- (id)messageReconciliationQueries;
 - (void)requestSummaryForMessageObjectID:(id)arg1;
 - (void)start;
 - (void)tearDown;
 - (void)test_tearDown;
+- (id)threadReconciliationQueries;
 
 @end
 

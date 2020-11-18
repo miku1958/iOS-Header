@@ -54,8 +54,8 @@
 @property (strong, nonatomic) SFImage *attributionGlyph; // @synthesize attributionGlyph=_attributionGlyph;
 @property (copy, nonatomic) NSString *attributionText; // @synthesize attributionText=_attributionText;
 @property (copy, nonatomic) NSURL *attributionURL; // @synthesize attributionURL=_attributionURL;
-@property (strong, nonatomic) SFColor *backgroundColor;
-@property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
@@ -66,8 +66,8 @@
 @property (copy, nonatomic) NSNumber *descriptionWeight; // @synthesize descriptionWeight=_descriptionWeight;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSString *expandText; // @synthesize expandText=_expandText;
-@property (nonatomic) BOOL hasBottomPadding;
-@property (nonatomic) BOOL hasTopPadding;
+@property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider;
 @property (strong, nonatomic) SFImage *image; // @synthesize image=_image;
@@ -76,19 +76,19 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFCard *nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
-@property (copy, nonatomic) NSArray *punchoutOptions;
-@property (copy, nonatomic) NSString *punchoutPickerDismissText;
-@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (copy, nonatomic) NSString *resultIdentifier;
 @property (copy, nonatomic) NSArray *richDescriptions; // @synthesize richDescriptions=_richDescriptions;
-@property (nonatomic) int separatorStyle;
-@property (copy, nonatomic) NSString *subtitle;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (nonatomic) int textAlign; // @synthesize textAlign=_textAlign;
-@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) BOOL titleNoWrap; // @synthesize titleNoWrap=_titleNoWrap;
 @property (copy, nonatomic) NSNumber *titleWeight; // @synthesize titleWeight=_titleWeight;
-@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;

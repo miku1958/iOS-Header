@@ -9,17 +9,22 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSData, NSDate, NSManagedObjectID, NSString, PHMomentShare, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class NSArray, NSData, NSDate, NSDictionary, NSManagedObjectID, NSString, NSXPCConnection, PHMomentShare, PHObjectPlaceholder, PHShareRelationshipChangeRequestHelper;
 
 @interface PHMomentShareChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     PHMomentShare *_originalMomentShare;
-    PHRelationshipChangeRequestHelper *_participantsHelper;
+    NSXPCConnection *_clientConnection;
+    NSString *_keySourceAssetIdentifier;
+    NSArray *_sourceAssetIdentifiers;
+    NSDictionary *_sourceAssetIdentifiersToAdjustmentBakeInOptionsDictionary;
+    NSDictionary *_sourceAssetIdentifiersToMetadataCopyOptionsDictionary;
+    PHShareRelationshipChangeRequestHelper *_participantsHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,23 +34,21 @@
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (strong, nonatomic) NSString *originatingScopeIdentifier;
-@property (readonly, nonatomic) PHRelationshipChangeRequestHelper *participantsHelper; // @synthesize participantsHelper=_participantsHelper;
+@property (readonly, nonatomic) PHShareRelationshipChangeRequestHelper *participantsHelper; // @synthesize participantsHelper=_participantsHelper;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedMomentShare;
 @property (strong, nonatomic) NSData *previewData;
 @property (nonatomic) BOOL shouldIgnoreBudgets;
 @property (nonatomic) BOOL shouldNotifyOnUploadCompletion;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title;
 
 + (id)changeRequestForMomentShare:(id)arg1;
-+ (id)creationRequestForMomentShareWithTitle:(id)arg1 mode:(short)arg2 creationDate:(id)arg3 createMomentShareAssetsFromAssets:(id)arg4 creationOptionsPerAsset:(id)arg5 preview:(id)arg6 originatingMomentShare:(id)arg7;
++ (id)creationRequestForMomentShareWithTitle:(id)arg1 publicPermission:(short)arg2 creationDate:(id)arg3 createMomentShareAssetsFromAssets:(id)arg4 creationOptionsPerAsset:(id)arg5 preview:(id)arg6 originatingMomentShare:(id)arg7;
 + (void)expungeMomentShares:(id)arg1;
 + (void)trashMomentShares:(id)arg1;
 + (id)validateMomentShareCreationDate:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)_mutableParticipantsObjectIDsAndUUIDs;
-- (void)_prepareParticipantsHelperIfNeeded;
-- (void)_prepareParticipantsWithFetchResult:(id)arg1;
 - (void)_setOriginalMomentShare:(id)arg1;
 - (void)addParticipants:(id)arg1;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
@@ -58,8 +61,7 @@
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (short)mode;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
-- (void)setMode:(short)arg1;
+- (void)setPublicPermission:(short)arg1;
 - (void)setThumbnailImageData:(id)arg1;
 - (id)thumbnailImageData;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;

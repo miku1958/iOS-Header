@@ -10,6 +10,7 @@
 
 @interface HMDCharacteristicWriteRequest : HMDCharacteristicRequest
 {
+    BOOL _includeResponseValue;
     id _value;
     NSData *_authorizationData;
     NSUUID *_identifier;
@@ -18,14 +19,20 @@
 
 @property (readonly, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL includeResponseValue; // @synthesize includeResponseValue=_includeResponseValue;
 @property (readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 
++ (id)logCategory;
++ (id)writeRequestForTransitionFetchWithLightProfile:(id)arg1;
++ (id)writeRequestForTransitionStartWithLightProfile:(id)arg1 naturalLightingEnabled:(BOOL)arg2 startDate:(id)arg3 type:(unsigned long long)arg4;
++ (id)writeRequestForTransitionStartWithLightProfile:(id)arg1 naturalLightingEnabled:(BOOL)arg2 startDate:(id)arg3 type:(unsigned long long)arg4 dataSource:(id)arg5;
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5;
++ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5 includeResponseValue:(BOOL)arg6;
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 type:(unsigned long long)arg4;
 - (void).cxx_destruct;
-- (id)description;
-- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5;
+- (id)attributeDescriptions;
+- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5 includeResponseValue:(BOOL)arg6;
 
 @end
 

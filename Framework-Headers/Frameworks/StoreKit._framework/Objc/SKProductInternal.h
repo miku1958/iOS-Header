@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSString *_contentVersion;
     BOOL _downloadable;
+    BOOL _familyShareable;
     NSArray *_downloadContentLengths;
     SKProductDiscount *_introductoryPrice;
     NSString *_localeIdentifier;

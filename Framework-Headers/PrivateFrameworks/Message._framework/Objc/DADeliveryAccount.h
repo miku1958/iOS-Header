@@ -13,6 +13,7 @@
     DAMailAccount *_DAMailAccount;
 }
 
++ (id)accountTypeIdentifier;
 - (void).cxx_destruct;
 - (Class)deliveryClass;
 - (id)initWithDAMailAccount:(id)arg1;

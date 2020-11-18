@@ -54,6 +54,7 @@
 @property (copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
 @property (strong, nonatomic) MPAVRoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
 @property (strong, nonatomic) MPAVEndpointRoute *selectedRoute; // @synthesize selectedRoute=_selectedRoute;
+@property (readonly, nonatomic) BOOL shouldPerformClickInteraction;
 @property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (nonatomic) BOOL shouldPresentUsingViewService; // @synthesize shouldPresentUsingViewService=_shouldPresentUsingViewService;
 @property (readonly) Class superclass;

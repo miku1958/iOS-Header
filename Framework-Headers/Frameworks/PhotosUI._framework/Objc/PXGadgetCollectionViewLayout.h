@@ -13,7 +13,7 @@
 
 @interface PXGadgetCollectionViewLayout : UICollectionViewFlowLayout <UICollectionViewDelegateFlowLayout>
 {
-    BOOL _pagingEnabled;
+    BOOL _prefersPagingEnabled;
     BOOL _isPageFullColumnnWidth;
     PXGadgetSpec *_spec;
     id<PXGadgetCollectionViewLayoutDelegate> _delegate;
@@ -30,23 +30,26 @@
 @property (nonatomic) double interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
 @property (nonatomic) BOOL isPageFullColumnnWidth; // @synthesize isPageFullColumnnWidth=_isPageFullColumnnWidth;
 @property (nonatomic) long long pageSizeClass; // @synthesize pageSizeClass=_pageSizeClass;
-@property (nonatomic) BOOL pagingEnabled; // @synthesize pagingEnabled=_pagingEnabled;
+@property (nonatomic) BOOL prefersPagingEnabled; // @synthesize prefersPagingEnabled=_prefersPagingEnabled;
 @property (strong, nonatomic) PXGadgetSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (unsigned long long)_buttonTypeForGadget:(id)arg1;
-- (id)_gadgetForSection:(long long)arg1;
+- (BOOL)_disablesDoubleSidedAnimations;
 - (BOOL)_hasButtonForGadget:(id)arg1;
 - (unsigned long long)_sectionHeaderStyleForGadget:(id)arg1;
 - (BOOL)_shouldShowSectionHeaderForGadget:(id)arg1;
 - (id)_titleForGadget:(id)arg1;
+- (void)_updateMinimumLineSpacing;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (BOOL)flipsHorizontallyInOppositeLayoutDirection;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
+- (void)setScrollDirection:(long long)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
 - (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1 withScrollingVelocity:(struct CGPoint)arg2;
 
 @end

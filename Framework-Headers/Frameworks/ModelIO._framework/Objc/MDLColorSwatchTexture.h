@@ -15,7 +15,7 @@
     int _type;
 }
 
-- (id)generateDataAtLevel:(long long)arg1;
+- (id)generateDataAtLevel:(long long)arg1 selector:(SEL)arg2;
 - (id)initWithColorGradientFrom:(struct CGColor *)arg1 toColor:(struct CGColor *)arg2 name:(id)arg3 textureDimensions: /* Error: Ran out of types for this method. */;
 - (id)initWithColorTemperatureGradientFrom:(float)arg1 toColorTemperature:(float)arg2 name:(id)arg3 textureDimensions: /* Error: Ran out of types for this method. */;
 

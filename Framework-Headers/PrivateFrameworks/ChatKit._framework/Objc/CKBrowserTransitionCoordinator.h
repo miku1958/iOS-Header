@@ -70,11 +70,14 @@
 - (void)fullscreenAppViewControllerSwitcherDidSelectAppStore:(id)arg1;
 - (void)fullscreenAppViewControllerWantsToCollapse:(id)arg1;
 - (BOOL)isHostingRemoteKeyboardView;
+- (id)modalPresentationViewController;
 - (void)presentPluginFullScreenModal:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentPluginFullScreenModal:(id)arg1 datasource:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)releaseOwnershipOfBrowserForConsumer:(long long)arg1;
 - (id)requestOwnershipOfBrowserForConsumer:(long long)arg1;
 - (void)setExpanded:(BOOL)arg1 withReason:(long long)arg2;
 - (BOOL)shouldAlwaysShowAppTitle;
+- (BOOL)shouldPresentModalFromPresentingViewController;
 - (void)transitionCurrentBrowserToCollapsedPresentationAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transitionCurrentBrowserToExpandedPresentationAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)transitionViewController;

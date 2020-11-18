@@ -33,7 +33,7 @@
 + (BOOL)_isConcreteObjectClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

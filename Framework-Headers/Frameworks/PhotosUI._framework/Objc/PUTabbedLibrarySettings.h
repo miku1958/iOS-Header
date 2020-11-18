@@ -16,10 +16,25 @@
     BOOL _enableForYouTab;
     BOOL _enableSearchTab;
     BOOL _enableConsolidatedAlbumsTab;
-    BOOL _sidebarEnabled;
+    BOOL _enableBlankTab;
+    BOOL _sidebarAnimateSelectionUpdates;
+    BOOL _sidebarAllPhotosSuspendsNavigationHighlights;
+    BOOL _sidebarScrollSelectedItemToCenter;
+    BOOL _sidebarOnlyScrollOffscreenItemOnScreen;
+    BOOL _sidebarExpandSelectedItems;
+    BOOL _sidebarAnimateExpandSelectedItems;
+    BOOL _sidebarAnimateDataSourceUpdates;
+    BOOL _sidebarUseMacStructure;
+    BOOL _sidebarEditAutoExpandToEditableItem;
+    BOOL _sidebarHideNavBackButtonForSelectedItem;
+    BOOL _sidebarLaunchAnimateLoad;
+    BOOL _sidebarSymbolImagesOnly;
+    long long _sidebarLaunchLoadMode;
+    long long _sidebarEnabledMode;
 }
 
 @property (nonatomic) BOOL enableAlbumsTab; // @synthesize enableAlbumsTab=_enableAlbumsTab;
+@property (nonatomic) BOOL enableBlankTab; // @synthesize enableBlankTab=_enableBlankTab;
 @property (nonatomic) BOOL enableConsolidatedAlbumsTab; // @synthesize enableConsolidatedAlbumsTab=_enableConsolidatedAlbumsTab;
 @property (nonatomic) BOOL enableCuratedLibraryTab; // @synthesize enableCuratedLibraryTab=_enableCuratedLibraryTab;
 @property (nonatomic) BOOL enableForYouTab; // @synthesize enableForYouTab=_enableForYouTab;
@@ -27,10 +42,26 @@
 @property (nonatomic) BOOL enablePhotosTab; // @synthesize enablePhotosTab=_enablePhotosTab;
 @property (nonatomic) BOOL enableSearchTab; // @synthesize enableSearchTab=_enableSearchTab;
 @property (nonatomic) BOOL enableSharedTab; // @synthesize enableSharedTab=_enableSharedTab;
-@property (nonatomic, getter=isSidebarEnabled) BOOL sidebarEnabled; // @synthesize sidebarEnabled=_sidebarEnabled;
+@property (nonatomic) BOOL sidebarAllPhotosSuspendsNavigationHighlights; // @synthesize sidebarAllPhotosSuspendsNavigationHighlights=_sidebarAllPhotosSuspendsNavigationHighlights;
+@property (nonatomic) BOOL sidebarAnimateDataSourceUpdates; // @synthesize sidebarAnimateDataSourceUpdates=_sidebarAnimateDataSourceUpdates;
+@property (nonatomic) BOOL sidebarAnimateExpandSelectedItems; // @synthesize sidebarAnimateExpandSelectedItems=_sidebarAnimateExpandSelectedItems;
+@property (nonatomic) BOOL sidebarAnimateSelectionUpdates; // @synthesize sidebarAnimateSelectionUpdates=_sidebarAnimateSelectionUpdates;
+@property (nonatomic) BOOL sidebarEditAutoExpandToEditableItem; // @synthesize sidebarEditAutoExpandToEditableItem=_sidebarEditAutoExpandToEditableItem;
+@property (readonly, nonatomic, getter=isSidebarEnabled) BOOL sidebarEnabled;
+@property (nonatomic) long long sidebarEnabledMode; // @synthesize sidebarEnabledMode=_sidebarEnabledMode;
+@property (nonatomic) BOOL sidebarExpandSelectedItems; // @synthesize sidebarExpandSelectedItems=_sidebarExpandSelectedItems;
+@property (nonatomic) BOOL sidebarHideNavBackButtonForSelectedItem; // @synthesize sidebarHideNavBackButtonForSelectedItem=_sidebarHideNavBackButtonForSelectedItem;
+@property (nonatomic) BOOL sidebarLaunchAnimateLoad; // @synthesize sidebarLaunchAnimateLoad=_sidebarLaunchAnimateLoad;
+@property (nonatomic) long long sidebarLaunchLoadMode; // @synthesize sidebarLaunchLoadMode=_sidebarLaunchLoadMode;
+@property (nonatomic) BOOL sidebarOnlyScrollOffscreenItemOnScreen; // @synthesize sidebarOnlyScrollOffscreenItemOnScreen=_sidebarOnlyScrollOffscreenItemOnScreen;
+@property (nonatomic) BOOL sidebarScrollSelectedItemToCenter; // @synthesize sidebarScrollSelectedItemToCenter=_sidebarScrollSelectedItemToCenter;
+@property (nonatomic) BOOL sidebarSymbolImagesOnly; // @synthesize sidebarSymbolImagesOnly=_sidebarSymbolImagesOnly;
+@property (nonatomic) BOOL sidebarUseMacStructure; // @synthesize sidebarUseMacStructure=_sidebarUseMacStructure;
 
++ (id)keyPathsForValuesAffectingSidebarEnabled;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
++ (id)transientProperties;
 - (id)allTabs;
 - (long long)countOfEnabledTabs;
 - (id)parentSettings;

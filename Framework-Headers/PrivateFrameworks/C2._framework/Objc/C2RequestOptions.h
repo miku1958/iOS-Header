@@ -10,17 +10,18 @@
 #import <C2/NSSecureCoding-Protocol.h>
 
 @class C2MetricOptions, NSDictionary, NSString, NSURL;
+@protocol C2NetworkingDelegate;
 
 @interface C2RequestOptions : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL __allowsExpensiveAccess;
     BOOL __allowsPowerNapScheduling;
-    BOOL _useAdaptiveTimeouts;
     BOOL _tlsPinning;
     BOOL _allowRouting;
     BOOL _allowExpiredDNSBehavior;
     BOOL __allowsRetryForBackgroundDataTasks;
     BOOL _redactRemoteEndpointFromNetworkMetrics;
+    BOOL _useAdaptiveTimeouts;
     BOOL _outOfProcessDiscretionary;
     BOOL _metricRequest;
     long long _qualityOfService;
@@ -39,8 +40,9 @@
     unsigned long long _c2MetricsReportFrequency;
     unsigned long long _c2MetricsReportFrequencyBase;
     NSString *_originalHost;
-    NSURL *_invokedURL;
     CDUnknownBlockType _testBehavior_sessionGroupCreated;
+    NSURL *_invokedURL;
+    NSObject<C2NetworkingDelegate> *_networkingDelegate;
 }
 
 @property (nonatomic) BOOL _allowsExpensiveAccess; // @synthesize _allowsExpensiveAccess=__allowsExpensiveAccess;
@@ -63,6 +65,7 @@
 @property (copy, nonatomic) NSURL *invokedURL; // @synthesize invokedURL=_invokedURL;
 @property (copy, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
 @property (nonatomic) BOOL metricRequest; // @synthesize metricRequest=_metricRequest;
+@property (weak, nonatomic) NSObject<C2NetworkingDelegate> *networkingDelegate; // @synthesize networkingDelegate=_networkingDelegate;
 @property (copy, nonatomic) NSString *originalHost; // @synthesize originalHost=_originalHost;
 @property (readonly, nonatomic) BOOL outOfProcess;
 @property (nonatomic) BOOL outOfProcessDiscretionary; // @synthesize outOfProcessDiscretionary=_outOfProcessDiscretionary;
@@ -70,10 +73,12 @@
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (nonatomic) BOOL redactRemoteEndpointFromNetworkMetrics; // @synthesize redactRemoteEndpointFromNetworkMetrics=_redactRemoteEndpointFromNetworkMetrics;
 @property (copy, nonatomic) NSDictionary *resolvedEndpointsWithHostname; // @synthesize resolvedEndpointsWithHostname=_resolvedEndpointsWithHostname;
+@property (readonly, nonatomic) double taskCallbackConsideredHangInSeconds;
 @property (copy, nonatomic) CDUnknownBlockType testBehavior_sessionGroupCreated; // @synthesize testBehavior_sessionGroupCreated=_testBehavior_sessionGroupCreated;
 @property (nonatomic) BOOL tlsPinning; // @synthesize tlsPinning=_tlsPinning;
 @property (nonatomic) BOOL useAdaptiveTimeouts; // @synthesize useAdaptiveTimeouts=_useAdaptiveTimeouts;
 
++ (void)initialize;
 + (id)stringForDiscretionaryNetworkBehavior:(unsigned long long)arg1;
 + (id)stringForDuetPreClearedMode:(unsigned long long)arg1;
 + (id)stringForQualityOfService:(long long)arg1;

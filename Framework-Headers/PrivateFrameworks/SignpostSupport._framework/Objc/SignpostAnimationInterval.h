@@ -6,7 +6,7 @@
 
 #import <SignpostSupport/SignpostInterval.h>
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @interface SignpostAnimationInterval : SignpostInterval
 {
@@ -29,11 +29,13 @@
     NSArray *_longHIDLatencies;
     NSArray *_allRenderServerRenders;
     NSArray *_longRenderServerRenders;
+    NSSet *_allFirstFrameLifetimesWithCommits;
 }
 
 @property (readonly, nonatomic) NSArray *allCommits; // @synthesize allCommits=_allCommits;
 @property (readonly, nonatomic) NSArray *allContributedFrameLatencies; // @synthesize allContributedFrameLatencies=_allContributedFrameLatencies;
 @property (readonly, nonatomic) NSArray *allContributedFrameLifetimes; // @synthesize allContributedFrameLifetimes=_allContributedFrameLifetimes;
+@property (readonly, nonatomic) NSSet *allFirstFrameLifetimesWithCommits; // @synthesize allFirstFrameLifetimesWithCommits=_allFirstFrameLifetimesWithCommits;
 @property (readonly, nonatomic) NSArray *allFrameLatencies; // @synthesize allFrameLatencies=_allFrameLatencies;
 @property (readonly, nonatomic) NSArray *allFrameLifetimes; // @synthesize allFrameLifetimes=_allFrameLifetimes;
 @property (readonly, nonatomic) NSArray *allHIDLatencies; // @synthesize allHIDLatencies=_allHIDLatencies;
@@ -46,10 +48,12 @@
 @property (readonly, nonatomic) NSArray *contributedLongFrameLatencies; // @synthesize contributedLongFrameLatencies=_contributedLongFrameLatencies;
 @property (readonly, nonatomic) NSArray *contributedNonFirstFrameGlitches;
 @property (readonly, nonatomic) double firstFrameGlitchTimeRatio;
+@property (readonly, nonatomic) double firstFrameGlitchTimeRatioMsPerS;
 @property (readonly, nonatomic) NSArray *firstFrameGlitches;
 @property (readonly, nonatomic) unsigned long long frameCount;
 @property (readonly, nonatomic) float frameRate;
 @property (readonly, nonatomic) double glitchTimeRatio;
+@property (readonly, nonatomic) double glitchTimeRatioMsPerS;
 @property (readonly, nonatomic) NSArray *glitches;
 @property (readonly, nonatomic) NSArray *longCommits; // @synthesize longCommits=_longCommits;
 @property (readonly, nonatomic) NSArray *longContributedFrameLifetimes; // @synthesize longContributedFrameLifetimes=_longContributedFrameLifetimes;
@@ -60,6 +64,7 @@
 @property (readonly, nonatomic) NSArray *longSystemwideCommits; // @synthesize longSystemwideCommits=_longSystemwideCommits;
 @property (readonly, nonatomic) NSArray *longTransactionLifetimes; // @synthesize longTransactionLifetimes=_longTransactionLifetimes;
 @property (readonly, nonatomic) double nonFirstFrameGlitchTimeRatio;
+@property (readonly, nonatomic) double nonFirstFrameGlitchTimeRatioMsPerS;
 @property (readonly, nonatomic) NSArray *nonFirstFrameGlitches;
 
 + (id)serializationTypeNumber;

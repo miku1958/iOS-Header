@@ -9,7 +9,7 @@
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
 
 @class CLGeocoder, CLLocationManager, NSHashTable, NSMutableArray, NSMutableSet, NSString, PKMerchantCategoryCodeMap, PKUsageNotificationServer;
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_source, PKPaymentTransactionProcessorDataSource;
 
 @interface PKPaymentTransactionProcessor : NSObject <CLLocationManagerDelegate>
 {
@@ -29,10 +29,12 @@
     PKMerchantCategoryCodeMap *_categoryCodeMap;
     struct os_unfair_lock_s _observersLock;
     NSHashTable *_observers;
+    id<PKPaymentTransactionProcessorDataSource> _dataSource;
     PKUsageNotificationServer *_usageNotificationServer;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (weak, nonatomic) id<PKPaymentTransactionProcessorDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -45,10 +47,10 @@
 - (void)_abortUpdatingLocationForLocationUpdateItem:(id)arg1;
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (void)_beginMerchantCleanupIfPossible;
-- (void)_beginProcessingPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 skipLocation:(BOOL)arg4;
+- (void)_beginProcessingPaymentTransaction:(id)arg1 forTransactionSourceIdentifier:(id)arg2 skipLocation:(BOOL)arg3;
 - (void)_beginReverseGeocodingIfPossible;
 - (void)_continueUpdatingLocationForTransactionUpdateItem:(id)arg1;
-- (void)_markTransactionAsFullyProcessedAndNotifyDelegate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)_markTransactionAsFullyProcessedAndNotifyDelegate:(id)arg1 forTransactionSourceIdentifier:(id)arg2;
 - (id)_pendingLocationUpdateItemForTransaction:(id)arg1;
 - (id)_pendingMerchantCleanupItemForTransaction:(id)arg1;
 - (id)_pendingReverseGeocodeUpdateItemForTransaction:(id)arg1;
@@ -56,22 +58,22 @@
 - (void)_processForLocalMCCLookup:(id)arg1;
 - (void)_processItemForMerchantCleanup:(id)arg1 clearingAttempt:(BOOL)arg2;
 - (void)_processItemForStationsCleanup:(id)arg1;
-- (void)_processPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
-- (void)_processPaymentTransactionForDemoMode:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
-- (void)_processPaymentTransactionForLocationUpdate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
-- (void)_processPaymentTransactionForMerchantCleanup:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 clearingAttempt:(BOOL)arg4;
-- (void)_processPaymentTransactionForStationsUpdate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)_processPaymentTransaction:(id)arg1 forTransactionSourceIdentifier:(id)arg2;
+- (void)_processPaymentTransactionForDemoMode:(id)arg1 forTransactionSourceIdentifier:(id)arg2;
+- (void)_processPaymentTransactionForLocationUpdate:(id)arg1 forTransactionSourceIdentifier:(id)arg2;
+- (void)_processPaymentTransactionForMerchantCleanup:(id)arg1 forTransactionSourceIdentifier:(id)arg2 clearingAttempt:(BOOL)arg3;
+- (void)_processPaymentTransactionForStationsUpdate:(id)arg1 forTransactionSourceIdentifier:(id)arg2;
 - (void)_reportTransactionWithFinalLocation:(id)arg1;
 - (void)_startUpdatingBackgroundLocationIfPossible;
 - (void)_startUpdatingLocationIfPossible;
 - (void)_stopUpdatingLocationIfPossible;
 - (void)_updateActiveState;
 - (void)_updateLocation:(id)arg1 forLocationUpdateItem:(id)arg2 andMarkAsProcessed:(BOOL)arg3;
-- (void)_updateObserversForPaymentTransactionUpdated:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
 - (id)init;
+- (id)initWithQueue:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (void)processPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)processPaymentTransaction:(id)arg1 forTransactionSourceIdentifier:(id)arg2;
 - (void)registerObserver:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 

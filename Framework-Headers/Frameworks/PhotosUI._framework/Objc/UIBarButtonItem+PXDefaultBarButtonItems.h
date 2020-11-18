@@ -7,6 +7,9 @@
 #import <UIKit/UIBarButtonItem.h>
 
 @interface UIBarButtonItem (PXDefaultBarButtonItems)
++ (id)px_localizedAddBarButtonItem;
++ (id)px_localizedDeselectAllBarButtonItem;
++ (id)px_localizedSelectAllBarButtonItem;
 + (id)px_localizedSelectBarButtonItem;
 @end
 

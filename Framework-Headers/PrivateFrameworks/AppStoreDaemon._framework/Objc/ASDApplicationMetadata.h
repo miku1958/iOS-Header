@@ -13,6 +13,7 @@
 
 @interface ASDApplicationMetadata : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _deviceBasedVPP;
     BOOL _isBeta;
     NSString *_accountName;
     NSNumber *_accountID;
@@ -40,6 +41,7 @@
 @property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (copy, nonatomic) NSString *cohort; // @synthesize cohort=_cohort;
+@property (nonatomic) BOOL deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property (copy, nonatomic) NSString *deviceVendorID; // @synthesize deviceVendorID=_deviceVendorID;
 @property (copy, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
 @property (copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;

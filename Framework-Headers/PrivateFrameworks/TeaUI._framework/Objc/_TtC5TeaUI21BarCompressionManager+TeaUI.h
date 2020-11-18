@@ -6,7 +6,13 @@
 
 #import <TeaUI/_TtC5TeaUI21BarCompressionManager.h>
 
-@interface _TtC5TeaUI21BarCompressionManager (TeaUI)
+#import <TeaUI/TUDynamicBarAnimatorDelegate-Protocol.h>
+
+@interface _TtC5TeaUI21BarCompressionManager (TeaUI) <TUDynamicBarAnimatorDelegate>
+- (BOOL)dynamicBarAnimator:(id)arg1 canHideBarsByDraggingWithOffset:(double)arg2;
+- (void)dynamicBarAnimatorOutputsDidChange:(id)arg1;
+- (void)dynamicBarAnimatorWillEnterSteadyState:(id)arg1;
+- (void)dynamicBarAnimatorWillLeaveSteadyState:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;

@@ -9,12 +9,12 @@
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
 
-@class NSString, PXAssetReference, PXAssetsDataSourceManager, PXPhotoKitUIMediaProvider;
+@class NSString, PXAssetReference, PXForYouSuggestionAssetsDataSourceManager, PXPhotoKitAdjustedUIMediaProvider;
 
 @interface PXForYouRecentInterestSuggestionsGadgetProvider : PXForYouSuggestionsGadgetProvider <PXOneUpPresentationDelegate, PXActionPerformerDelegate>
 {
-    PXPhotoKitUIMediaProvider *_oneUpMediaProvider;
-    PXAssetsDataSourceManager *_oneUpDataSourceManager;
+    PXPhotoKitAdjustedUIMediaProvider *_oneUpMediaProvider;
+    PXForYouSuggestionAssetsDataSourceManager *_oneUpDataSourceManager;
     PXAssetReference *_oneUpInitialAssetReference;
 }
 
@@ -24,6 +24,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addTTRActionIntoPreview:(id)arg1 forGadget:(id)arg2;
+- (void)_fileRadarForSuggestion:(id)arg1;
+- (void)_insertRemoveSuggestionActionIntoPreview:(id)arg1 forGadget:(id)arg2;
 - (BOOL)_prepareForOneUpPresentationForSuggestion:(id)arg1;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
@@ -38,7 +41,8 @@
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
-- (void)presentOneUpForSuggestion:(id)arg1;
+- (BOOL)oneUpPresentationWantsShowInLibraryButton:(id)arg1;
+- (void)presentOneUpForSuggestion:(id)arg1 animated:(BOOL)arg2;
 - (void)suggestionGadget:(id)arg1 commitViewController:(id)arg2;
 - (void)suggestionGadget:(id)arg1 didDismissPreviewController:(id)arg2 committing:(BOOL)arg3;
 - (id)suggestionGadgetPreviewController:(id)arg1;

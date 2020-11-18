@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *followingManager;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *sceneProvider;
 }
 
 - (void).cxx_destruct;

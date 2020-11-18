@@ -30,16 +30,16 @@
 - (void)activate;
 - (void)addNotificationCountChangedObserver:(id)arg1 selector:(SEL)arg2;
 - (void)addNotificationsChangedObserver:(id)arg1 selector:(SEL)arg2;
+- (void)addNotificationsLoadedObserver:(id)arg1 selector:(SEL)arg2;
 - (void)deactivate;
 - (void)didRegisterForAlarms;
-- (void)didRegisterForBackgroundTaskAgentJobs;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (id)initWithEventStoreProvider:(id)arg1;
 - (void)protectedDataDidBecomeAvailable;
 - (void)receivedAlarmNamed:(id)arg1;
 - (void)receivedNotificationNamed:(id)arg1;
 - (void)removeNotificationCountChangedObserver:(id)arg1 selector:(SEL)arg2;
 - (void)removeNotificationsChangedObserver:(id)arg1;
+- (void)removeNotificationsLoadedObserver:(id)arg1 selector:(SEL)arg2;
 
 @end
 

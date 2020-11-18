@@ -82,6 +82,7 @@
 - (unsigned long long)pageCount;
 - (long long)pageIndexFromQuickLookSheet:(id)arg1;
 - (BOOL)preparePage:(unsigned long long)arg1;
+- (void)processHyperlinksForCanvas:(id)arg1 withContext:(struct CGContext *)arg2 andImager:(id)arg3 isFitToSheet:(BOOL)arg4;
 - (double)progressForCurrentPage;
 - (id)quickLookSheets;
 - (struct CGRect)rectForAddendumContentOfAnnotationPrintingHelper:(id)arg1;

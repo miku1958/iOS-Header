@@ -12,7 +12,7 @@
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 #import <ReminderKit/_REMDAChangeTrackableModel-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccount, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMList, REMObjectID, REMReminderAttachmentContext, REMReminderFlaggedContext, REMReminderStorage, REMReminderSubtaskContext, REMResolutionTokenMap, REMStore, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccount, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMList, REMObjectID, REMReminderAssignmentContext, REMReminderAttachmentContext, REMReminderFlaggedContext, REMReminderStorage, REMReminderSubtaskContext, REMResolutionTokenMap, REMStore, REMUserActivity;
 
 @interface REMReminder : NSObject <REMDAChangeTrackableFetchableModel, REMDAChangedModelObjectResult, _REMDAChangeTrackableModel, REMObjectIDProviding, REMExternalSyncMetadataProviding>
 {
@@ -28,6 +28,8 @@
 @property (readonly, nonatomic) REMObjectID *accountID; // @dynamic accountID;
 @property (readonly, nonatomic) NSArray *alarms; // @dynamic alarms;
 @property (readonly, nonatomic) BOOL allDay;
+@property (readonly, nonatomic) REMReminderAssignmentContext *assignmentContext;
+@property (readonly, nonatomic) NSSet *assignments; // @dynamic assignments;
 @property (readonly, nonatomic) REMReminderAttachmentContext *attachmentContext;
 @property (readonly, nonatomic) NSArray *attachments; // @dynamic attachments;
 @property (readonly, nonatomic, getter=isCompleted) BOOL completed; // @dynamic completed;
@@ -72,6 +74,7 @@
 @property (readonly, nonatomic) NSArray *recurrenceRules; // @dynamic recurrenceRules;
 @property (readonly, nonatomic) REMObjectID *remObjectID;
 @property (readonly, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property (readonly, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property (readonly, nonatomic) NSData *siriFoundInAppsData; // @dynamic siriFoundInAppsData;
 @property (readonly, nonatomic) long long siriFoundInAppsUserConfirmation; // @dynamic siriFoundInAppsUserConfirmation;
 @property (readonly, copy, nonatomic) NSDateComponents *startDateComponents; // @dynamic startDateComponents;
@@ -93,15 +96,19 @@
 + (id)fetchRequestForRemindersListID:(id)arg1 withSortDescriptors:(id)arg2;
 + (id)fetchRequestForScheduledRemindersWithDueDateOnOrAfter:(id)arg1;
 + (id)fetchRequestWithPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2;
++ (BOOL)isChangeTrackableFetchableModel;
++ (BOOL)isChangeTrackableModel;
 + (id)newObjectID;
 + (id)objectIDWithUUID:(id)arg1;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
++ (id)rem_DA_lazyDeleteProperties;
 + (BOOL)rem_DA_supportsFetching;
 + (BOOL)rem_DA_supportsLazyDelete;
 - (void).cxx_destruct;
+- (id)datesDebugDescriptionInTimeZone:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithStore:(id)arg1 list:(id)arg2 storage:(id)arg3;
 - (id)initWithStore:(id)arg1 storage:(id)arg2;

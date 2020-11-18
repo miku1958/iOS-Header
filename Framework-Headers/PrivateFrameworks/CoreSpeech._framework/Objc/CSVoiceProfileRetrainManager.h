@@ -11,8 +11,6 @@
 }
 
 + (id)sharedInstance;
-- (void)analyzeImplicitUtterance:(id)arg1 withVoiceTriggerContext:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)init;
 - (void)triggerVoiceProfileRetrainingWithAsset:(id)arg1;
 
 @end

@@ -30,12 +30,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_price:1;
         unsigned int read_supportedPaymentMethods:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_price:1;
-        unsigned int wrote_supportedPaymentMethods:1;
-        unsigned int wrote_numberOfLegs:1;
-        unsigned int wrote_paymentType:1;
-        unsigned int wrote_cashOnly:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -63,9 +58,6 @@
 + (Class)supportedPaymentMethodType;
 - (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
-- (void)_addNoFlagsSupportedPaymentMethod:(id)arg1;
-- (void)_readPrice;
-- (void)_readSupportedPaymentMethods;
 - (void)addSupportedPaymentMethod:(id)arg1;
 - (void)clearSupportedPaymentMethods;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -74,7 +66,10 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)paymentTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

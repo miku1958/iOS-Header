@@ -9,7 +9,7 @@
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 
-@class AMSMetricsDatabaseDataSource, NSString;
+@class AMSMetricsDatabaseDataSource, NSDate, NSString;
 @protocol AMSBagProtocol, AMSMetricsBagContract, AMSMetricsFlushStrategy, OS_dispatch_queue;
 
 @interface AMSMetrics : NSObject <AMSBagConsumer_Project, AMSBagConsumer>
@@ -25,8 +25,10 @@
     NSObject<OS_dispatch_queue> *_completionQueue;
     id<AMSMetricsFlushStrategy> _currentFlushStrategy;
     AMSMetricsDatabaseDataSource *_databaseSource;
-    CDUnknownBlockType _flushIntervalBlock;
     long long _destination;
+    NSObject<OS_dispatch_queue> *_engagementQueue;
+    CDUnknownBlockType _flushIntervalBlock;
+    NSDate *_flushIntervalStartTime;
     NSObject<OS_dispatch_queue> *_flushQueue;
 }
 
@@ -39,8 +41,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long destination; // @synthesize destination=_destination;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *engagementQueue; // @synthesize engagementQueue=_engagementQueue;
 @property (readonly, nonatomic) long long eventCount;
 @property (copy, nonatomic) CDUnknownBlockType flushIntervalBlock; // @synthesize flushIntervalBlock=_flushIntervalBlock;
+@property (strong, nonatomic) NSDate *flushIntervalStartTime; // @synthesize flushIntervalStartTime=_flushIntervalStartTime;
 @property (nonatomic) BOOL flushOnForeground; // @synthesize flushOnForeground=_flushOnForeground;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *flushQueue; // @synthesize flushQueue=_flushQueue;
 @property (nonatomic) BOOL flushTimerEnabled; // @synthesize flushTimerEnabled=_flushTimerEnabled;
@@ -51,16 +55,17 @@
 @property (nonatomic) BOOL monitorsLifecycleEvents; // @synthesize monitorsLifecycleEvents=_monitorsLifecycleEvents;
 @property (readonly) Class superclass;
 
-+ (id)_sharedInstanceUsingBag:(id)arg1;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
 + (BOOL)appAnalyticsAllowed;
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 + (BOOL)diagnosticsSubmissionAllowed;
 + (BOOL)disableBackgroundMetrics;
 + (BOOL)flushDelayEnabled;
 + (BOOL)flushTimerEnabled;
++ (id)internalInstanceUsingBag:(id)arg1;
 + (BOOL)recordAppAnalyticsForEvent:(id)arg1 bugType:(id)arg2;
 + (id)serverTimeFromDate:(id)arg1;
 + (id)serverTimeFromTimeInterval:(double)arg1;
@@ -71,13 +76,14 @@
 + (double)timeIntervalFromServerTime:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground;
-- (void)_beginFlushIntervalWithStyle:(long long)arg1;
+- (void)_beginFlushIntervalWithStyle:(long long)arg1 events:(id)arg2;
 - (id)_determineFlushStrategyWithDataSource:(id)arg1 topic:(id)arg2;
+- (id)_enqueueFigaroEvents:(id)arg1;
 - (id)_flushDataSource:(id)arg1 topic:(id)arg2;
-- (double)_flushInterval;
-- (BOOL)_flushIntervalEnabledForStyle:(long long)arg1;
+- (double)_flushIntervalForEvents:(id)arg1;
 - (void)_flushIntervalInvalidate;
 - (void)_handleFlushIntervalWithStyle:(long long)arg1;
+- (BOOL)_scheduledFlushAllowedForStyle:(long long)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (void)dropEvents;

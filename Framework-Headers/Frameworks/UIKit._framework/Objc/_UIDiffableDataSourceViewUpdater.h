@@ -8,8 +8,8 @@
 
 #import <UIKitCore/_UICollectionViewUpdateItemApplying-Protocol.h>
 
-@class NSString, UICollectionView, UITableView, _UIDataSourceSnapshotter;
-@protocol _UICollectionViewUpdateItemApplying;
+@class NSString, UICollectionView, UITableView;
+@protocol _UICollectionViewUpdateItemApplying, _UIDataSourceSnapshotTranslating;
 
 __attribute__((visibility("hidden")))
 @interface _UIDiffableDataSourceViewUpdater : NSObject <_UICollectionViewUpdateItemApplying>
@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
     long long _sinkKind;
     id<_UICollectionViewUpdateItemApplying> _updatesSink;
     UICollectionView *_collectionView;
-    _UIDataSourceSnapshotter *_dataSourceSnapshotter;
+    id<_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;
     UITableView *_tableView;
 }
 
 @property (weak, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-@property (strong, nonatomic) _UIDataSourceSnapshotter *dataSourceSnapshotter; // @synthesize dataSourceSnapshotter=_dataSourceSnapshotter;
+@property (strong, nonatomic) id<_UIDataSourceSnapshotTranslating> dataSourceSnapshot; // @synthesize dataSourceSnapshot=_dataSourceSnapshot;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_performMoveUpdate:(id)arg1 onTableView:(id)arg2;
 - (void)_performReloadUpdate:(id)arg1 onCollectionView:(id)arg2;
 - (void)_performReloadUpdate:(id)arg1 onTableView:(id)arg2;
-- (void)_performUpdateWithCollectionViewUpdateItems:(id)arg1 dataSourceSnapshotter:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_performUpdateWithCollectionViewUpdateItems:(id)arg1 dataSourceSnapshot:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 viewPropertyAnimator:(id)arg5 customAnimationsProvider:(CDUnknownBlockType)arg6;
 - (void)_performViewUpdates:(id)arg1;
 - (void)_reloadData;
 - (void)_willPerformDiff:(BOOL)arg1;

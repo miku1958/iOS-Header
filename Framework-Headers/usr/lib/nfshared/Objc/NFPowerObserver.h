@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NFWeakReference;
-@protocol OS_dispatch_queue;
+@protocol NFPowerObserverDelegate, OS_dispatch_queue;
 
 @interface NFPowerObserver : NSObject
 {
-    NFWeakReference *_delegate;
+    id<NFPowerObserverDelegate> _delegate;
     unsigned int _powerNotificationConnection;
     struct IONotificationPort *_powerNotificationPort;
     unsigned int _powerNotificationNotifier;
@@ -22,11 +21,13 @@
 
 @property (readonly) BOOL willSleep; // @synthesize willSleep=_willSleep;
 
+- (void).cxx_destruct;
 - (void)_powerNotificationMessage:(unsigned int)arg1 argument:(void *)arg2;
 - (void)allowSleep;
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithDelegate:(id)arg1;
+- (BOOL)isPluggedIntoPower;
 - (BOOL)registerForEvents;
 - (void)unregisterForEvents;
 

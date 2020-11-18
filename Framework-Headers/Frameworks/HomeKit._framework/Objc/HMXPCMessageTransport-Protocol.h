@@ -6,10 +6,14 @@
 
 #import <HomeKit/NSObject-Protocol.h>
 
-@class HMFMessage;
+@class HMFMessage, NSDictionary;
 
 @protocol HMXPCMessageTransport <NSObject>
 - (void)handleMessage:(HMFMessage *)arg1;
 - (void)handleMessage:(HMFMessage *)arg1 responseHandler:(void (^)(NSError *, NSDictionary *))arg2;
+
+@optional
+- (void)fetchUserInfo:(void (^)(NSDictionary *))arg1;
+- (void)updateUserInfo:(NSDictionary *)arg1;
 @end
 

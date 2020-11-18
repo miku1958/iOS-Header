@@ -9,6 +9,7 @@
 @class PLExpandedPlatterPresentationController, UIView;
 
 @protocol NCLongLookDefaultPresentationControllerDelegate <PLExpandedPlatterPresentationControllerDelegate>
+- (UIView *)customBackgroundContainerViewForExpandedPlatterPresentationController:(PLExpandedPlatterPresentationController *)arg1;
 - (struct CGRect)expandedPlatterPresentationController:(PLExpandedPlatterPresentationController *)arg1 frameForTransitionViewInPresentationSuperview:(UIView *)arg2;
 - (BOOL)expandedPlatterPresentationControllerShouldProvideBackground:(PLExpandedPlatterPresentationController *)arg1;
 @end

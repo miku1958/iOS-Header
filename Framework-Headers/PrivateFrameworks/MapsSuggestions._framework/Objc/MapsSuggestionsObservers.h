@@ -13,10 +13,8 @@
 @interface MapsSuggestionsObservers : NSObject <MapsSuggestionsObject>
 {
     NSString *_name;
-    struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue>> _callbackQueue;
+    struct Queue _callbackQueue;
     NSHashTable *_innerObservers;
-    CDUnknownBlockType _onFirstObserverBlock;
-    CDUnknownBlockType _onLastObserverBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,19 +25,15 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)_count;
-- (void)addObserver:(id)arg1;
+- (void)addObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)callBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)count;
-- (void)dealloc;
-- (BOOL)enumerateWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCallbackQueue:(id)arg1 name:(id)arg2;
 - (id)initWithCallbackQueue:(id)arg1 name:(id)arg2 strong:(BOOL)arg3;
 - (id)initWithName:(id)arg1;
-- (void)onAddingObserverRunBlock:(CDUnknownBlockType)arg1;
-- (void)onRemovingObserverRunBlock:(CDUnknownBlockType)arg1;
-- (void)removeObserver:(id)arg1;
-- (BOOL)synchronouslyEnumerateWithBlock:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)synchronouslyCallBlock:(CDUnknownBlockType)arg1;
 
 @end
 

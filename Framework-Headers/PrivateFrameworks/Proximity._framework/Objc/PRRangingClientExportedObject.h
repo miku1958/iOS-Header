@@ -28,7 +28,7 @@
 - (void)didReceiveNewSolutions:(id)arg1;
 - (id)initWithRangingClient:(id)arg1;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)remoteDevice:(id)arg1 didChangeState:(long long)arg2;
 - (void)sendDataToPeers:(id)arg1;
 

@@ -92,6 +92,7 @@
 - (id)initWithProfile:(id)arg1 observedQuantityTypes:(id)arg2 updateOperation:(id)arg3 rebuildOperation:(id)arg4 queue:(id)arg5;
 - (void)invalidate;
 - (void)pauseUpdates;
+- (void)reportTargetDayHeartRateAnalytics;
 - (void)resumeUpdates;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;

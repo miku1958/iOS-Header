@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
+@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUDownloadOptions, SUInstallOptions, SUScanOptions;
 
 @protocol SUManagerServerInterface
 - (void)autoScanAndDownloadIfAvailable:(void (^)(SUDescriptor *, NSError *))arg1;
@@ -15,6 +15,7 @@
 - (void)currentAutoInstallOperation:(BOOL)arg1 withResult:(void (^)(_SUAutoInstallOperationModel *, NSError *))arg2;
 - (void)currentPasscodePolicy:(void (^)(unsigned long long, NSError *))arg1;
 - (void)delayEndDate:(void (^)(NSDate *, NSError *))arg1;
+- (void)descriptor:(void (^)(SUDescriptor *, NSError *))arg1;
 - (void)deviceHasSufficientSpaceForDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)downloadAndInstallState:(void (^)(SUDownload *, SUInstallPolicy *, _SUAutoInstallOperationModel *, NSError *))arg1;
 - (void)enableAutomaticDownload:(BOOL)arg1;
@@ -22,6 +23,7 @@
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getMandatorySoftwareUpdateDictionary:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)installUpdate:(void (^)(BOOL, NSError *))arg1;
+- (void)installUpdateWithInstallOptions:(SUInstallOptions *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)isAutoUpdateEnabled:(void (^)(BOOL, NSError *))arg1;
 - (void)isAutoUpdateScheduled:(void (^)(BOOL, NSError *))arg1;
@@ -43,6 +45,8 @@
 - (void)slaVersion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)startDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)startDownloadWithMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
+- (void)startDownloadWithOptions:(SUDownloadOptions *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)updateDownloadMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
+- (void)updateDownloadOptions:(SUDownloadOptions *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 @end
 

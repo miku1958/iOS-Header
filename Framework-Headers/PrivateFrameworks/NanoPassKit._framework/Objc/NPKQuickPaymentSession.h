@@ -15,8 +15,11 @@
 {
     NSData *_credential;
     BOOL _deferAuthorization;
+    BOOL _requireFirstInQueue;
     BOOL _inServiceMode;
+    BOOL _endSessionWhenAuthorizationIsConsumed;
     BOOL _confirmed;
+    BOOL _performedFirstActivation;
     BOOL _deactivating;
     BOOL _deactivated;
     PKPass *_currentPass;
@@ -47,18 +50,24 @@
 @property (nonatomic) BOOL deferAuthorization; // @synthesize deferAuthorization=_deferAuthorization;
 @property (weak, nonatomic) id<NPKQuickPaymentSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL endSessionWhenAuthorizationIsConsumed; // @synthesize endSessionWhenAuthorizationIsConsumed=_endSessionWhenAuthorizationIsConsumed;
 @property (strong, nonatomic) PKFieldDetector *fieldDetector; // @synthesize fieldDetector=_fieldDetector;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inServiceMode; // @synthesize inServiceMode=_inServiceMode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *paymentSessionQueue; // @synthesize paymentSessionQueue=_paymentSessionQueue;
+@property (nonatomic, getter=hasPerformedFirstActivation) BOOL performedFirstActivation; // @synthesize performedFirstActivation=_performedFirstActivation;
+@property (nonatomic) BOOL requireFirstInQueue; // @synthesize requireFirstInQueue=_requireFirstInQueue;
+@property (readonly, nonatomic) BOOL sessionStarted;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDictionary *vasPasses; // @synthesize vasPasses=_vasPasses;
 
 + (void)_handleNewContactlessSession:(id)arg1;
 + (id)_outstandingSessionHashTable;
 + (BOOL)hasOutstandingSessions;
++ (id)sessionWithQueue:(id)arg1;
 - (void).cxx_destruct;
+- (void)_callbackQueue_invokeDidCompleteForReason:(unsigned long long)arg1 withTransactionContext:(id)arg2;
 - (void)_checkContactlessValidity:(unsigned long long)arg1 authorizationValidity:(unsigned long long)arg2 performWork:(CDUnknownBlockType)arg3;
 - (void)_checkContactlessValidity:(unsigned long long)arg1 performWork:(CDUnknownBlockType)arg2;
 - (void)_handleConventionalTransactionWithContext:(id)arg1;
@@ -76,7 +85,8 @@
 - (BOOL)_sessionQueue_startContactlessSessionWithSuccessfulCompletionOnInternalQueue:(CDUnknownBlockType)arg1;
 - (BOOL)_sessionQueue_updateContactlessSessionForPass:(id)arg1 paymentApplication:(id)arg2 vasPasses:(id)arg3 sessionConfirmed:(BOOL)arg4 deferAuthorization:(BOOL)arg5;
 - (void)_updateAuthorizationValidity;
-- (void)confirmOrRenewSession;
+- (void)_updateSessionWithCredentialAndActivate;
+- (void)confirmSessionExpectingCredential:(BOOL)arg1;
 - (void)contactlessInterfaceSession:(id)arg1 didEndPersistentCardEmulationWithContext:(id)arg2;
 - (void)contactlessInterfaceSession:(id)arg1 didFinishTransactionWithContext:(id)arg2;
 - (void)contactlessInterfaceSessionDidEnterField:(id)arg1 withProperties:(id)arg2;

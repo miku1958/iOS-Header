@@ -37,6 +37,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
 + (id)_postalAddressFromPlacemark:(id)arg1;
++ (BOOL)fillsBackgroundWithContentForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
 - (id)_clLocationFromSFLatLng:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class CKPublicKey, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchTranscodeServerPublicKeyOperation : CKDOperation
 {
     CKPublicKey *_transcodeServerPublicKey;
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSURL *_transcodeServerPublicKeyURL;
 }
 
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (readonly, nonatomic) NSString *transcodeServerHostname; // @synthesize transcodeServerHostname=_transcodeServerHostname;
 @property (strong) CKPublicKey *transcodeServerPublicKey; // @synthesize transcodeServerPublicKey=_transcodeServerPublicKey;
 @property (strong, nonatomic) NSURL *transcodeServerPublicKeyURL; // @synthesize transcodeServerPublicKeyURL=_transcodeServerPublicKeyURL;

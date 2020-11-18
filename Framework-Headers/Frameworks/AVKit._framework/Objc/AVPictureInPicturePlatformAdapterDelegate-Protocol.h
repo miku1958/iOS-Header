@@ -14,6 +14,8 @@
 - (void)pictureInPicturePlatformAdapter:(AVPictureInPicturePlatformAdapter *)arg1 prepareToStopForRestoringUserInterface:(void (^)(BOOL))arg2;
 - (void)pictureInPicturePlatformAdapter:(AVPictureInPicturePlatformAdapter *)arg1 statusDidChange:(long long)arg2 fromStatus:(long long)arg3;
 - (void)pictureInPicturePlatformAdapter:(AVPictureInPicturePlatformAdapter *)arg1 stopPictureInPictureAndRestoreUserInterface:(BOOL)arg2;
+- (void)pictureInPicturePlatformAdapterBeginReducingResourcesForEligibleOffScreenState;
+- (void)pictureInPicturePlatformAdapterEndReducingResourcesForEligibleOffScreenState;
 - (void)pictureInPicturePlatformAdapterPrepareToStopForDismissal:(AVPictureInPicturePlatformAdapter *)arg1;
 @end
 

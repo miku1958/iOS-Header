@@ -105,6 +105,7 @@
 - (BOOL)_shouldShowDimmingView;
 - (void)_updateDimmingViewAlpha;
 - (void)addNewGrabberView;
+- (struct UIEdgeInsets)additionalSafeAreaInsets;
 - (void)animateBrowserViewFromSourceRect:(struct CGRect)arg1 interactive:(BOOL)arg2 grabberView:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)animateBrowserViewToTargetRect:(struct CGRect)arg1 grabberView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)appGrabberViewCloseButtonTapped:(id)arg1;

@@ -13,9 +13,11 @@
     NSMutableArray *_accessoryServers;
     long long _certificationStatus;
     NSData *_setupHash;
+    long long _awd_linkType;
 }
 
 @property (readonly, copy) NSArray *accessoryServers;
+@property (readonly, nonatomic) long long awd_linkType; // @synthesize awd_linkType=_awd_linkType;
 @property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (strong, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
 @property (readonly, nonatomic) unsigned long long transportTypes;
@@ -23,10 +25,8 @@
 - (void).cxx_destruct;
 - (void)addAccessoryServer:(id)arg1;
 - (long long)associationOptions;
-- (id)descriptionForTransportTypes;
 - (id)descriptionWithPointer:(BOOL)arg1 additionalDescription:(id)arg2;
 - (id)dumpDescription;
-- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasBTLELink;
 - (BOOL)hasIPLink;
 - (void)identifyWithCompletionHandler:(CDUnknownBlockType)arg1;

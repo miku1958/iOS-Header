@@ -49,11 +49,13 @@
 - (id)_updateLocalizedOperatingHoursString:(unsigned long long)arg1;
 - (void)_updateLocalizedString;
 - (void)calculateWidthsForData:(id)arg1;
+- (id)concatenateStrings:(id)arg1 joinedByString:(id)arg2;
 - (id)formatData:(id)arg1;
 - (id)initWithBusinessHours:(id)arg1 timeZone:(id)arg2 localizedHoursStringOptions:(unsigned long long)arg3;
 - (id)initWithMapItem:(id)arg1 localizedHoursStringOptions:(unsigned long long)arg2;
 - (id)initWithMapItemForMessageForBusiness:(id)arg1 localizedHoursStringOptions:(unsigned long long)arg2;
 - (void)updateHoursLabelColor;
+- (void)updateHoursLabelColorWithDefaultLabelColor:(id)arg1;
 
 @end
 

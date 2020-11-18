@@ -16,9 +16,13 @@
     unsigned int _connectedServices;
     int _colorCode;
     unsigned int _deviceFlags;
+    unsigned int _deviceType;
+    int _disconnectReason;
     int _primaryPlacement;
     int _secondaryPlacement;
     unsigned int _productIdentifier;
+    int _streamState;
+    unsigned int _versionID;
     CDStruct_83abfce7 _address;
     NSString *_addressString;
     NSUUID *_identifier;
@@ -32,6 +36,8 @@
 @property (nonatomic) int colorCode; // @synthesize colorCode=_colorCode;
 @property (nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
 @property (nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
+@property (nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
+@property (nonatomic) int disconnectReason; // @synthesize disconnectReason=_disconnectReason;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL magicPaired; // @synthesize magicPaired=_magicPaired;
 @property (copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
@@ -41,7 +47,9 @@
 @property (nonatomic) int primaryPlacement; // @synthesize primaryPlacement=_primaryPlacement;
 @property (nonatomic) unsigned int productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (nonatomic) int secondaryPlacement; // @synthesize secondaryPlacement=_secondaryPlacement;
+@property (nonatomic) int streamState; // @synthesize streamState=_streamState;
 @property (nonatomic) BOOL supportsAACPService; // @synthesize supportsAACPService=_supportsAACPService;
+@property (nonatomic) unsigned int versionID; // @synthesize versionID=_versionID;
 
 - (void).cxx_destruct;
 - (id)description;

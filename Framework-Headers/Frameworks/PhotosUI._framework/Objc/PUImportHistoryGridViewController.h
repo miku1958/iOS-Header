@@ -6,18 +6,18 @@
 
 #import <PhotosUI/PUPhotosGridViewController.h>
 
-#import <PhotosUI/PUImportHistorySectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
+#import <PhotosUI/PXImportHistorySectionHeaderViewDelegate-Protocol.h>
 
-@class NSNumber, NSString, PHFetchResult, PLDateRangeFormatter, PUImportHistorySectionHeaderView;
+@class NSNumber, NSString, PHFetchResult, PLDateRangeFormatter, PXImportHistorySectionHeaderView;
 
-@interface PUImportHistoryGridViewController : PUPhotosGridViewController <PUSectionedGridLayoutDelegate, PUImportHistorySectionHeaderViewDelegate>
+@interface PUImportHistoryGridViewController : PUPhotosGridViewController <PUSectionedGridLayoutDelegate, PXImportHistorySectionHeaderViewDelegate>
 {
     PHFetchResult *_importSessions;
     PLDateRangeFormatter *_dateFormatter;
     double _referenceWidth;
     NSNumber *_cachedHeaderHeight;
-    PUImportHistorySectionHeaderView *_referenceHeaderView;
+    PXImportHistorySectionHeaderView *_referenceHeaderView;
 }
 
 @property (strong, nonatomic) NSNumber *cachedHeaderHeight; // @synthesize cachedHeaderHeight=_cachedHeaderHeight;
@@ -26,7 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PHFetchResult *importSessions; // @synthesize importSessions=_importSessions;
-@property (strong, nonatomic) PUImportHistorySectionHeaderView *referenceHeaderView; // @synthesize referenceHeaderView=_referenceHeaderView;
+@property (strong, nonatomic) PXImportHistorySectionHeaderView *referenceHeaderView; // @synthesize referenceHeaderView=_referenceHeaderView;
 @property (nonatomic) double referenceWidth; // @synthesize referenceWidth=_referenceWidth;
 @property (readonly) Class superclass;
 

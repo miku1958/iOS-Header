@@ -6,14 +6,23 @@
 
 #import <NewsArticles/_TtC12NewsArticles30PDFReplicaViewerViewController.h>
 
-@interface _TtC12NewsArticles30PDFReplicaViewerViewController (NewsArticles)
+#import <NewsArticles/TSTabBarSplitViewAutoObserver-Protocol.h>
+
+@class NSArray;
+
+@interface _TtC12NewsArticles30PDFReplicaViewerViewController (NewsArticles) <TSTabBarSplitViewAutoObserver>
+
+@property (nonatomic, readonly) NSArray *keyCommands;
+
 - (void)didMoveToParentViewController:(id)arg1;
+- (void)nextPageKeyCommand;
+- (void)previousPageKeyCommand;
+- (void)tabBarSplitViewWillChangeDisplayModeToDisplayMode:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 @end
 

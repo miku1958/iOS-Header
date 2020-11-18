@@ -10,7 +10,7 @@
 
 @interface GEOMapFeatureRoad : GEOMapFeatureLine
 {
-    CDStruct_c8b5ad3f *_feature;
+    CDStruct_4da79865 *_feature;
     unsigned long long _roadID;
     GEOMapFeatureJunction *_junctionA;
     GEOMapFeatureJunction *_junctionB;
@@ -18,8 +18,10 @@
     BOOL _checkedJunctionB;
 }
 
+@property (readonly, nonatomic) int bikeLaneSide;
+@property (readonly, nonatomic) int bikeableSide;
 @property (readonly, nonatomic) GEOMapFeatureJunction *endJunction;
-@property (readonly, nonatomic) CDStruct_c8b5ad3f *feature;
+@property (readonly, nonatomic) CDStruct_4da79865 *feature;
 @property (readonly, nonatomic) unsigned long long featureIndex;
 @property (readonly, nonatomic) int formOfWay;
 @property (readonly, nonatomic) NSString *internalRoadName;
@@ -43,10 +45,12 @@
 @property (readonly, nonatomic) int travelDirection;
 @property (readonly, nonatomic) int walkableSide;
 
-+ (double)estimatedWidthForRoad:(CDStruct_c8b5ad3f *)arg1;
++ (double)estimatedWidthForRoad:(CDStruct_4da79865 *)arg1;
 - (void).cxx_destruct;
 - (id)_attributes;
 - (id)_containingTile;
+- (int)_flippedBikeLaneSideFor:(int)arg1;
+- (int)_flippedBikeableSideFor:(int)arg1;
 - (int)_flippedSidewalkSideFor:(int)arg1;
 - (int)_flippedWalkableSideFor:(int)arg1;
 - (id)_junctionA;
@@ -55,7 +59,7 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (void)flip;
-- (id)initWithFeature:(CDStruct_c8b5ad3f *)arg1;
+- (id)initWithFeature:(CDStruct_4da79865 *)arg1;
 - (id)localizedRoadName:(out id *)arg1;
 - (void)updateForDesiredRoadDirectionality:(unsigned long long)arg1 isOutboundRoad:(BOOL)arg2;
 

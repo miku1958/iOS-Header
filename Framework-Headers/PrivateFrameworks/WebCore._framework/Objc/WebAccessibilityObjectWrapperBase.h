@@ -9,34 +9,36 @@
 __attribute__((visibility("hidden")))
 @interface WebAccessibilityObjectWrapperBase : NSObject
 {
-    struct AXCoreObject *m_object;
-    unsigned int _identifier;
+    struct AXCoreObject *m_axObject;
+    unsigned long long _identifier;
 }
 
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 
 + (void)accessibilitySetShouldRepostNotifications:(BOOL)arg1;
 - (id)_accessibilityWebDocumentView;
 - (id)accessibilityMathPostscriptPairs;
 - (id)accessibilityMathPrescriptPairs;
-- (struct AXCoreObject *)accessibilityObject;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (id)accessibilityPlatformMathSuperscriptKey;
 - (void)accessibilityPostedNotification:(id)arg1;
 - (void)accessibilityPostedNotification:(id)arg1 userInfo:(id)arg2;
 - (id)ariaLandmarkRoleDescription;
+- (void)attachAXObject:(struct AXCoreObject *)arg1;
 - (id)attachmentView;
 - (struct AXCoreObject *)axBackingObject;
 - (id)baseAccessibilityDescription;
 - (id)baseAccessibilityHelpText;
+- (id)baseAccessibilityResolvedEditingStyles;
 - (void)baseAccessibilitySetFocus:(BOOL)arg1;
 - (id)baseAccessibilitySpeechHint;
 - (id)baseAccessibilityTitle;
-- (struct CGPath *)convertPathToScreenSpace:(struct Path *)arg1;
-- (struct CGRect)convertRectToSpace:(struct FloatRect *)arg1 space:(int)arg2;
+- (struct CGPath *)convertPathToScreenSpace:(const struct Path *)arg1;
+- (struct CGRect)convertRectToSpace:(const struct FloatRect *)arg1 space:(int)arg2;
 - (void)detach;
+- (void)detachAXObject;
 - (id)initWithAccessibilityObject:(struct AXCoreObject *)arg1;
-- (BOOL)updateObjectBackingStore;
+- (struct AXCoreObject *)updateObjectBackingStore;
 
 @end
 

@@ -61,6 +61,8 @@
 - (void).cxx_destruct;
 - (BOOL)canBeDeactivatedForUIUnlockFromSource:(int)arg1;
 - (BOOL)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (id)createHomeButtonShowPasscodeRecognizerForHomeButtonPress;
 - (id)createHomeButtonSuppressAfterUnlockRecognizerForUnlockSource:(int)arg1;
@@ -91,7 +93,6 @@
 - (void)jiggleLockIcon;
 - (void)launchEmergencyDialer;
 - (void)launchEmergencyDialerAnimated:(BOOL)arg1;
-- (void)launchInCallAlert;
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteMenuButtonDown;
 - (void)noteMenuButtonUp;

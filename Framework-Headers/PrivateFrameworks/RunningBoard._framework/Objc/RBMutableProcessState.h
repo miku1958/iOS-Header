@@ -20,6 +20,7 @@
 - (void)removeAllPreventIdleSleepIdentifiers;
 - (void)removeInheritance:(id)arg1;
 - (void)removePreventIdleSleepIdentifier:(id)arg1;
+- (void)setForceRoleManage:(BOOL)arg1;
 - (void)setGPUAllowed:(BOOL)arg1;
 - (void)setIsBeingDebugged:(BOOL)arg1;
 - (void)setJetsamBand:(unsigned char)arg1;
@@ -28,7 +29,7 @@
 - (void)setMaxCPUUsageLimits:(id)arg1 forRole:(unsigned char)arg2;
 - (void)setMinCPUUsageLimits:(id)arg1 forRole:(unsigned char)arg2;
 - (void)setPreventIdleSleep:(BOOL)arg1;
-- (void)setPreventLaunch:(BOOL)arg1;
+- (void)setPreventSuspend:(BOOL)arg1;
 - (void)setRole:(unsigned char)arg1;
 - (void)setTerminationResistance:(unsigned char)arg1;
 - (void)setThrottleBestEffortNetworking:(BOOL)arg1;

@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NURenderPipelineFilter *filter;
 @property (readonly, nonatomic) BOOL handlesMediaViewInsets;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long layoutOrientation;
+@property (nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (readonly, nonatomic) UIView *leftToolbarView; // @synthesize leftToolbarView=_leftToolbarView;
 @property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) NSString *localizedResetToolActionTitle;
@@ -117,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (void)reloadToolbarButtons:(BOOL)arg1;
 - (void)removeEditActionActivity:(id)arg1;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;
-- (void)setLayoutOrientation:(long long)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setOriginalStillImageTime:(CDStruct_1b6d18a9)arg1;
 - (void)setPlaceholderImage:(id)arg1;

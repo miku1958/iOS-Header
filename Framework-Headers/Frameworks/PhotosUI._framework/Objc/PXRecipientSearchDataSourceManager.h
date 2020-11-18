@@ -11,12 +11,12 @@
 @interface PXRecipientSearchDataSourceManager : PXSectionedDataSourceManager
 {
     NSString *_queryString;
-    unsigned long long _state;
+    unsigned long long _searchState;
 }
 
 @property (readonly, nonatomic) PXRecipientSearchDataSource *dataSource; // @dynamic dataSource;
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
-@property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (nonatomic) unsigned long long searchState; // @synthesize searchState=_searchState;
 
 - (void).cxx_destruct;
 - (void)queryStringDidChange;

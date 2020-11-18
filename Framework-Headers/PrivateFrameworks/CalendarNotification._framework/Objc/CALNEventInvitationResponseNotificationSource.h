@@ -9,17 +9,19 @@
 #import <CalendarNotification/CALNNotificationSource-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CALNCalendarIconIdentifierProvider, CALNEventInvitationResponseNotificationDataSource, CALNNotificationManager;
+@protocol CALNCalendarIconIdentifierProvider, CALNEventInvitationResponseNotificationDataSource, CALNNotificationManager, CalDateProvider;
 
 @interface CALNEventInvitationResponseNotificationSource : NSObject <CALNNotificationSource>
 {
     id<CALNEventInvitationResponseNotificationDataSource> _dataSource;
     id<CALNNotificationManager> _notificationManager;
     id<CALNCalendarIconIdentifierProvider> _iconIdentifierProvider;
+    id<CalDateProvider> _dateProvider;
 }
 
 @property (readonly, nonatomic) NSArray *categories;
 @property (readonly, nonatomic) id<CALNEventInvitationResponseNotificationDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, nonatomic) id<CalDateProvider> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,13 +30,13 @@
 @property (readonly, nonatomic) NSString *sourceIdentifier;
 @property (readonly) Class superclass;
 
-+ (id)_notificationBodyForNotificationInfo:(id)arg1 contactIdentifier:(id *)arg2 summaryArgument:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_categoryIdentifier;
+- (id)_notificationBodyForNotificationInfo:(id)arg1 contactIdentifier:(id *)arg2 summaryArgument:(id *)arg3;
 - (id)contentForNotificationWithInfo:(id)arg1;
 - (id)contentForNotificationWithSourceClientIdentifier:(id)arg1;
 - (void)didReceiveResponse:(id)arg1;
-- (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3;
+- (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3 dateProvider:(id)arg4;
 - (void)refreshNotifications:(id)arg1;
 
 @end

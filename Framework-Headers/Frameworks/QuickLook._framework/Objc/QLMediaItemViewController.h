@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)stringFromTimeInterval:(double)arg1;
 - (void)tapToPlayGestureChanged:(id)arg1;
 - (id)timeLabelScrollView;
+- (long long)togglePlaybackFromControlCenter:(id)arg1;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (long long)userScrubbedInControlCenter:(id)arg1;
 - (long long)userTappedPauseInControlCenter:(id)arg1;

@@ -36,6 +36,7 @@
 - (BOOL)setPropertyListValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setQuantity:(id)arg1 unit:(id)arg2 forKey:(id)arg3 error:(id *)arg4;
 - (BOOL)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (BOOL)setValueForAllKeys:(id)arg1 error:(id *)arg2;
 - (BOOL)setValuesWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)stringForKey:(id)arg1 error:(id *)arg2;
 - (id)valuesForKeys:(id)arg1 error:(id *)arg2;

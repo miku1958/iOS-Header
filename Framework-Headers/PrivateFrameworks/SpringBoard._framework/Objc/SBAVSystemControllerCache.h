@@ -25,7 +25,6 @@
     BOOL _queue_fullyMuted;
     float _queue_volumeLimit;
     BOOL _queue_volumeLimitEnforced;
-    int _queue_recordingPID;
     NSString *_queue_activeAudioRoute;
     NSDictionary *_queue_activeAudioRouteInfo;
     NSArray *_queue_pickableRoutes;
@@ -41,7 +40,6 @@
 @property (readonly, nonatomic, getter=isAirplayDisplayActive) BOOL airplayDisplayActive; // @dynamic airplayDisplayActive;
 @property (readonly, nonatomic, getter=isFullyMuted) BOOL fullyMuted; // @dynamic fullyMuted;
 @property (readonly, copy, nonatomic) NSArray *pickableRoutes; // @dynamic pickableRoutes;
-@property (readonly, nonatomic) int recordingPID; // @dynamic recordingPID;
 @property (readonly, nonatomic) float volumeLimit; // @dynamic volumeLimit;
 @property (readonly, nonatomic, getter=isVolumeLimitEnforced) BOOL volumeLimitEnforced; // @dynamic volumeLimitEnforced;
 
@@ -57,7 +55,6 @@
 - (void)_queue_updateAirplayDisplayActiveFromNotification:(id)arg1 allowingBackgroundQueries:(BOOL)arg2 backgroundQueriesCancelledBlock:(CDUnknownBlockType)arg3 cancelBackgroundQueriesBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_updateFullyMutedFromNotification:(id)arg1 allowingBackgroundQueries:(BOOL)arg2 backgroundQueriesCancelledBlock:(CDUnknownBlockType)arg3 cancelBackgroundQueriesBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_updatePickableRoutesFromNotification:(id)arg1 allowingBackgroundQueries:(BOOL)arg2 backgroundQueriesCancelledBlock:(CDUnknownBlockType)arg3 cancelBackgroundQueriesBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_queue_updateRecordingPIDFromNotification:(id)arg1 allowingBackgroundQueries:(BOOL)arg2 backgroundQueriesCancelledBlock:(CDUnknownBlockType)arg3 cancelBackgroundQueriesBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_updateVolumeLimitEnforcedFromNotification:(id)arg1 allowingBackgroundQueries:(BOOL)arg2 backgroundQueriesCancelledBlock:(CDUnknownBlockType)arg3 cancelBackgroundQueriesBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_updateVolumeLimitFromNotification:(id)arg1 allowingBackgroundQueries:(BOOL)arg2 backgroundQueriesCancelledBlock:(CDUnknownBlockType)arg3 cancelBackgroundQueriesBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_receiveUpdatedValueFromNotification:(id)arg1;

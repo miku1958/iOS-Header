@@ -16,10 +16,8 @@
     NSObject<OS_dispatch_queue> *_targetQueue;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue_attr> *attributes; // @synthesize attributes=_attrs;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue; // @synthesize targetQueue=_targetQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue_attr> *attributes; // @synthesize attributes=_attrs;
 
-+ (id)_attributesWithAttributes:(id)arg1;
 + (id)concurrent;
 + (id)serial;
 - (void).cxx_destruct;

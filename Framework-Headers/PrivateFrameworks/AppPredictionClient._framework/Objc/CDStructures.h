@@ -14,3 +14,8 @@ typedef struct {
     unsigned long long lastEventTimestamp;
 } CDStruct_a7b080c6;
 
+// Ambiguous groups
+typedef struct {
+    unsigned int engagementType:1;
+} CDStruct_c054b854;
+

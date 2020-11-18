@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUTrimToolControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableArray, NSString, PUTrimToolController, PXUIButton, UIButton, UILabel, UIView, _UIBackdropView;
+@class NSLayoutConstraint, NSMutableArray, NSString, PLRoundProgressView, PUTrimToolController, PXUIButton, UIButton, UILabel, UIView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditLivePhotoVideoToolController : PUPhotoEditToolController <PUTrimToolControllerDelegate>
@@ -24,9 +24,12 @@ __attribute__((visibility("hidden")))
     PXUIButton *_muteLivePhotoButton;
     PXUIButton *_livePhotoButton;
     UILabel *_videoLabelView;
+    UIButton *_stabilizeButton;
+    PLRoundProgressView *_stabilizeProgressView;
     BOOL _trimControllerVisible;
     BOOL _viewHasAppeared;
     BOOL _trimControllerScrubberNeedsVisualUpdate;
+    BOOL _stabilizationInProgress;
     CDStruct_1b6d18a9 _originalStillImageTime;
     BOOL _useTranslucentBackground;
     long long _layoutType;
@@ -52,13 +55,18 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_handleLivePhotoButton:(id)arg1;
 - (void)_handleMuteLivePhotoButton:(id)arg1;
+- (void)_handleStabilizeButton:(id)arg1;
 - (void)_invalidateConstraints;
 - (void)_invalidateTrimControlScrubberThumbnails;
 - (BOOL)_isTrimAllowed;
+- (void)_reportStabilizeProgress:(double)arg1;
 - (void)_updateBackgroundAnimated:(BOOL)arg1;
 - (void)_updateLivePhotoButton:(id)arg1;
 - (void)_updateLivePhotoButtonAnimated:(BOOL)arg1;
 - (void)_updateMuteButtonAnimated:(BOOL)arg1;
+- (void)_updateStabilizationInProgress:(BOOL)arg1;
+- (void)_updateStabilizeButtonAnimated:(BOOL)arg1;
+- (void)_updateStabilizeProgressViewAnimated:(BOOL)arg1;
 - (void)_updateTrimControl;
 - (BOOL)_wantsTrimControl;
 - (id)accessibilityHUDItemForButton:(id)arg1;

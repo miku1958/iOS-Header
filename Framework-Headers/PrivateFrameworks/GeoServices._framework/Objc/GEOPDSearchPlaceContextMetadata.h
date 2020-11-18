@@ -32,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
         unsigned int read_normalizedQuery:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_alternateSearchableNames:1;
-        unsigned int wrote_interpretedCategory:1;
-        unsigned int wrote_matchedDisplayNameLanguageCode:1;
-        unsigned int wrote_matchedDisplayName:1;
-        unsigned int wrote_normalizedQuery:1;
-        unsigned int wrote_isDefaultName:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,12 +52,6 @@ __attribute__((visibility("hidden")))
 + (Class)alternateSearchableNameType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAlternateSearchableName:(id)arg1;
-- (void)_readAlternateSearchableNames;
-- (void)_readInterpretedCategory;
-- (void)_readMatchedDisplayName;
-- (void)_readMatchedDisplayNameLanguageCode;
-- (void)_readNormalizedQuery;
 - (void)addAlternateSearchableName:(id)arg1;
 - (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)alternateSearchableNamesCount;
@@ -76,7 +64,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

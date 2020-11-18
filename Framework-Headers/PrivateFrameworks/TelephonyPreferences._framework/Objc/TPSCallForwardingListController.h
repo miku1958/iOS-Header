@@ -14,7 +14,7 @@
 {
     TPSCallForwardingController *_callForwardingController;
     PSSpecifier *_conditionalServiceSwitchSpecifier;
-    PSSpecifier *_masterSwitchSpecifier;
+    PSSpecifier *_mainSwitchSpecifier;
 }
 
 @property (readonly, nonatomic) TPSCallForwardingController *callForwardingController; // @synthesize callForwardingController=_callForwardingController;
@@ -22,7 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PSSpecifier *masterSwitchSpecifier; // @synthesize masterSwitchSpecifier=_masterSwitchSpecifier;
+@property (readonly, nonatomic) PSSpecifier *mainSwitchSpecifier; // @synthesize mainSwitchSpecifier=_mainSwitchSpecifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -35,12 +35,12 @@
 - (id)conditionalServiceUnreachablePhoneNumber:(id)arg1;
 - (void)configureCell:(id)arg1;
 - (void)configureCell:(id)arg1 forSpecifier:(id)arg2;
-- (id)masterSwitchOn:(id)arg1;
+- (id)mainSwitchOn:(id)arg1;
 - (void)setConditionalServiceBusyPhoneNumber:(id)arg1 specifier:(id)arg2;
 - (void)setConditionalServiceSwitchOn:(id)arg1 specifier:(id)arg2;
 - (void)setConditionalServiceUnansweredPhoneNumber:(id)arg1 specifier:(id)arg2;
 - (void)setConditionalServiceUnreachablePhoneNumber:(id)arg1 specifier:(id)arg2;
-- (void)setMasterSwitchOn:(id)arg1 specifier:(id)arg2;
+- (void)setMainSwitchOn:(id)arg1 specifier:(id)arg2;
 - (void)setUnconditionalServicePhoneNumber:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

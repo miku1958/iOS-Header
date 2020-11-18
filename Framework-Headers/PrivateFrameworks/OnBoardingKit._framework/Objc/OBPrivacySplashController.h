@@ -15,7 +15,6 @@
     BOOL _allowsOpeningSafari;
     BOOL _showLinkToPrivacyGateway;
     BOOL _showsLinkToUnifiedAbout;
-    BOOL _useSmallTitle;
     BOOL _forceLargeMargins;
     BOOL _useModalStyle;
     BOOL _isCombined;
@@ -42,7 +41,6 @@
 @property BOOL suppressPerPageAnalyticsLogging; // @synthesize suppressPerPageAnalyticsLogging=_suppressPerPageAnalyticsLogging;
 @property (strong) UIButton *unifiedAboutButton; // @synthesize unifiedAboutButton=_unifiedAboutButton;
 @property BOOL useModalStyle; // @synthesize useModalStyle=_useModalStyle;
-@property BOOL useSmallTitle; // @synthesize useSmallTitle=_useSmallTitle;
 
 + (id)splashPageWithBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;

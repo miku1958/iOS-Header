@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(BOOL)arg2;
 - (void)cardViewDidAppear:(id)arg1;
+- (void)cardViewDidDisappear:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (id)feedbackListener;

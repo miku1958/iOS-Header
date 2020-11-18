@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLIndexSchema : NSObject
 {
@@ -15,14 +15,14 @@
     NSString *_name;
     NSString *_tableName;
     NSArray *_indexedColumns;
-    id<EFSQLExpressable> _where;
+    id<EFSQLValueExpressable> _where;
 }
 
 @property (readonly, copy, nonatomic) NSArray *indexedColumns; // @synthesize indexedColumns=_indexedColumns;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
 @property (readonly, nonatomic) BOOL unique; // @synthesize unique=_unique;
-@property (readonly, nonatomic) id<EFSQLExpressable> where; // @synthesize where=_where;
+@property (readonly, nonatomic) id<EFSQLValueExpressable> where; // @synthesize where=_where;
 
 - (void).cxx_destruct;
 - (id)definitionWithDatabaseName:(id)arg1;

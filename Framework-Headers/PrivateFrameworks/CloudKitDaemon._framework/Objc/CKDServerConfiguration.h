@@ -10,7 +10,6 @@
 
 @class NSDate, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDServerConfiguration : NSObject <CKPropertyCoding>
 {
     NSDate *_expiry;
@@ -28,7 +27,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowExpiredDNSBehavior:(id)arg1;
-- (BOOL)applicationWithBundleID:(id)arg1 canSyncUsingVersion:(id)arg2 forContainer:(id)arg3;
+- (BOOL)applicationWithBundleID:(id)arg1 canSyncUsingVersion:(id)arg2 forContainerID:(id)arg3;
 - (unsigned long long)c2AllOperationGroupMetricsReportFrequency:(id)arg1;
 - (unsigned long long)c2AllOperationGroupMetricsReportFrequencyBase:(id)arg1;
 - (unsigned long long)c2AllOperationMetricsReportFrequency:(id)arg1;
@@ -39,19 +38,23 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)c2ClientOperationMetricsReportFrequencyBase:(id)arg1;
 - (unsigned long long)c2NetworkMetricsReportFrequency:(id)arg1;
 - (unsigned long long)c2NetworkMetricsReportFrequencyBase:(id)arg1;
+- (id)chunkProfileConfigurationDefaultProfilePolicy:(id)arg1;
+- (id)chunkProfileConfigurationFileExtensionToProfileMap:(id)arg1;
+- (id)chunkProfileConfigurationVersion:(id)arg1;
 - (id)dictionaryPropertyEncoding;
-- (id)flowControlBudgetForContainer:(id)arg1;
+- (id)flowControlBudget:(id)arg1;
 - (id)flowControlMaximumThrottleTime:(id)arg1;
-- (id)flowControlRegenerationForContainer:(id)arg1;
+- (id)flowControlRegeneration:(id)arg1;
 - (id)iCloudHostnames;
 - (id)initWithPropertyDictionary:(id)arg1;
 - (id)initWithValues:(id)arg1;
 - (BOOL)isExpired;
-- (unsigned long long)maxBatchSizeForContainer:(id)arg1;
-- (double)publicIdentitiesExpirationTimeoutForContainer:(id)arg1;
-- (long long)tokenRegisterDaysForContainer:(id)arg1;
-- (id)transcodeServerPublicKeyURLsForContainer:(id)arg1;
-- (id)valueForKeyPath:(id)arg1 forContainer:(id)arg2;
+- (unsigned long long)maxBatchSize:(id)arg1;
+- (double)publicIdentitiesExpirationTimeout:(id)arg1;
+- (long long)tokenRegisterDays:(id)arg1;
+- (id)transcodeServerPublicKeyURLs:(id)arg1;
+- (id)valueForKeyPath:(id)arg1 forContainerID:(id)arg2;
+- (id)valuesForContainerID:(id)arg1;
 
 @end
 

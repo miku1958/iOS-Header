@@ -38,7 +38,7 @@
 @property (strong) NSPConfiguration *defaults; // @synthesize defaults=_defaults;
 @property (readonly) long long diskVersion; // @synthesize diskVersion=_diskVersion;
 @property (readonly) NSDate *earliestEnableCheckDate;
-@property (strong) NSDictionary *edgeSets; // @synthesize edgeSets=_edgeSets;
+@property (strong, nonatomic) NSDictionary *edgeSets; // @synthesize edgeSets=_edgeSets;
 @property (copy) NSNumber *enabled; // @synthesize enabled=_enabled;
 @property BOOL ignoreInvalidCerts; // @synthesize ignoreInvalidCerts=_ignoreInvalidCerts;
 @property (readonly) BOOL isDead;
@@ -53,7 +53,7 @@
 @property (copy) NSNumber *waldoPort; // @synthesize waldoPort=_waldoPort;
 @property (copy) NSNumber *waldoRequestTimeout; // @synthesize waldoRequestTimeout=_waldoRequestTimeout;
 @property (copy) NSNumber *waldoRevocationFailClosed; // @synthesize waldoRevocationFailClosed=_waldoRevocationFailClosed;
-@property (strong) NSURLSession *waldoSession; // @synthesize waldoSession=_waldoSession;
+@property (strong, nonatomic) NSURLSession *waldoSession; // @synthesize waldoSession=_waldoSession;
 
 + (id)defaultConfiguration;
 + (BOOL)supportsSecureCoding;

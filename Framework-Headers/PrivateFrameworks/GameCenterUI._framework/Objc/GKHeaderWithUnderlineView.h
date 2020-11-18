@@ -38,9 +38,9 @@
 + (id)padMetrics;
 + (id)phoneMetrics;
 + (BOOL)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 - (BOOL)allowsVibrancy;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)dealloc;
 - (BOOL)drawsUnderline;
 - (void)establishConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;

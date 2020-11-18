@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, REMListChangeItem;
+@class NSString, REMListBadge, REMListChangeItem;
 
 @interface REMListAppearanceContextChangeItem : NSObject
 {
     REMListChangeItem *_listChangeItem;
 }
 
+@property (copy, nonatomic) REMListBadge *badge;
 @property (copy, nonatomic) NSString *badgeEmblem;
 @property (strong, nonatomic) REMListChangeItem *listChangeItem; // @synthesize listChangeItem=_listChangeItem;
 

@@ -30,20 +30,27 @@
 - (id)_allInternetPasswordEntriesFromKeychain;
 - (void)_cleanUpRedundantCredentialsWithoutUsernames;
 - (void)_ensureDomainsToUsersExists;
+- (id)_persistentIdentifierForUser:(id)arg1 host:(id)arg2;
 - (void)_postSavedPasswordStoreDidChangeNotification;
 - (void)_removePassword:(id)arg1;
+- (id)_savedPasswordForProtectionSpace:(id)arg1 user:(id)arg2 password:(id)arg3;
 - (id)_savedPasswords;
 - (BOOL)canChangeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (BOOL)canSaveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
 - (BOOL)changeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (void)dealloc;
 - (id)init;
+- (unsigned long long)numberOfSavedPasswordForHighLevelDomain:(id)arg1;
 - (id)persistentIdentifierForCredential:(id)arg1 protectionSpace:(id)arg2;
+- (id)persistentIdentifierForSavedPassword:(id)arg1;
 - (void)removePassword:(id)arg1;
 - (void)removeSite:(id)arg1 fromPassword:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)reset;
 - (id)saveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
 - (id)savedPasswordForURL:(id)arg1 user:(id)arg2 password:(id)arg3;
+- (id)savedPasswordForURLCredential:(id)arg1 protectionSpace:(id)arg2;
+- (void)savedPasswordWithAllMetadataForURLCredential:(id)arg1 protectionSpace:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)savedPasswordsForPersistentIdentifiers:(id)arg1;
 
 @end
 

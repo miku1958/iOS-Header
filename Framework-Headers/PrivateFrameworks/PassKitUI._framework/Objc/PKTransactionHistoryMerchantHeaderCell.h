@@ -6,14 +6,22 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class PKSplashImageHeaderView;
+@class PKSplashImageHeaderView, UIColor, UIView, UIVisualEffect, UIVisualEffectView;
 
 @interface PKTransactionHistoryMerchantHeaderCell : PKDashboardCollectionViewCell
 {
+    UIVisualEffectView *_overlayEffectView;
+    UIView *_shadowView;
     PKSplashImageHeaderView *_headerView;
+    UIVisualEffect *_overlayEffect;
+    UIColor *_shadowColor;
+    double _overlayAlpha;
 }
 
 @property (readonly, nonatomic) PKSplashImageHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic) double overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
+@property (strong, nonatomic) UIVisualEffect *overlayEffect; // @synthesize overlayEffect=_overlayEffect;
+@property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;

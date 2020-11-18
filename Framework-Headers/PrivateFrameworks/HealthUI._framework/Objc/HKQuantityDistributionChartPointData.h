@@ -21,12 +21,14 @@
     double _minimumBucketValue;
     double _bucketIncrement;
     NSArray *_bucketCounts;
+    NSArray *_contextIdentifiers;
     HKUnit *_unit;
 }
 
 @property (readonly, nonatomic) double averageValue; // @synthesize averageValue=_averageValue;
 @property (readonly, nonatomic) NSArray *bucketCounts; // @synthesize bucketCounts=_bucketCounts;
 @property (readonly, nonatomic) double bucketIncrement; // @synthesize bucketIncrement=_bucketIncrement;
+@property (readonly, nonatomic) NSArray *contextIdentifiers; // @synthesize contextIdentifiers=_contextIdentifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
@@ -40,7 +42,8 @@
 @property (readonly, nonatomic) HKUnit *unit; // @synthesize unit=_unit;
 
 - (void).cxx_destruct;
-- (id)initWithDistributionData:(id)arg1 unit:(id)arg2;
+- (id)initWithDistributionData:(id)arg1 bucketIncrement:(double)arg2 unit:(id)arg3 displayType:(id)arg4;
+- (id)initWithDistributionData:(id)arg1 unit:(id)arg2 displayType:(id)arg3;
 
 @end
 

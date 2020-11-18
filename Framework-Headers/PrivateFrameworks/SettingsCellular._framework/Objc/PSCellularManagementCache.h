@@ -20,11 +20,14 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)clearCache;
 - (id)init;
 - (id)initPrivate;
 - (BOOL)isManaged:(id)arg1;
 - (id)managedAppBundleIDs;
 - (id)managedCellDataAppBundleIDs;
+- (void)managedConfigurationProfileListDidChange;
+- (void)managedConfigurationSettingsDidChange;
 - (void)willEnterForeground;
 
 @end

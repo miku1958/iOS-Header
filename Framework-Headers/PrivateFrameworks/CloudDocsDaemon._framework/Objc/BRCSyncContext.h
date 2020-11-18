@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, CKContainerID, NSDate, NSMutableSet, NSString;
+@class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, CKContainerID, NSDate, NSHashTable, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     CKContainer *_ckContainer;
     NSString *_contextIdentifier;
-    NSString *_sourceAppIdentifier;
     BOOL _isShared;
     BOOL _isCancelled;
     int _notifyTokenForFramework;
@@ -25,6 +24,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_timerForForcedForegroundPeriod;
     NSObject<OS_dispatch_queue> *_foregroundStateQueue;
     unsigned long long _foregroundState;
+    NSHashTable *_nonDiscretionaryModifyOperations;
+    NSHashTable *_discretionaryModifyOperations;
     BRCAccountSession *_session;
     BRCThrottleBase *_readerThrottle;
     BRCThrottleBase *_applyThrottle;
@@ -52,7 +53,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRCThrottleBase *uploadThrottle; // @synthesize uploadThrottle=_uploadThrottle;
 
 + (id)_contextIdentifierForMangledID:(id)arg1 metadata:(BOOL)arg2;
-+ (id)_sourceAppIdentifierForMangledID:(id)arg1;
 + (id)contextIdentifierForMangledID:(id)arg1;
 + (id)transferContextForServerZone:(id)arg1 appLibrary:(id)arg2;
 - (void).cxx_destruct;
@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)_database;
 - (void)_notifyContainerBeingNowForeground;
 - (void)_notifyFrameworkContainersMonitorWithState:(BOOL)arg1;
+- (void)_preventConcurrentModifyRecordsOperations:(id)arg1 nonDiscretionary:(BOOL)arg2;
 - (void)addForegroundClient:(id)arg1;
 - (void)addOperation:(id)arg1;
 - (void)addOperation:(id)arg1 allowsCellularAccess:(id)arg2;
@@ -74,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)dumpToContext:(id)arg1;
 - (void)forceContainerForegroundForDuration:(double)arg1;
 - (id)foregroundClients;
-- (id)initWithSession:(id)arg1 contextIdentifier:(id)arg2 sourceAppIdentifier:(id)arg3 isShared:(BOOL)arg4;
+- (id)initWithSession:(id)arg1 contextIdentifier:(id)arg2 isShared:(BOOL)arg3;
 - (BOOL)isForeground;
 - (void)notifyDuetFromAccessByBundleID:(id)arg1;
 - (void)removeForegroundClient:(id)arg1;

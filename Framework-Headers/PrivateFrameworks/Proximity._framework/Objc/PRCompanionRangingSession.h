@@ -35,7 +35,7 @@
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)invalidate;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)remoteDevice:(id)arg1 didChangeState:(long long)arg2;
 - (id)remoteObject;
 - (BOOL)startCompanionRanging:(id)arg1 options:(id)arg2 error:(id *)arg3;

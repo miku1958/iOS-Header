@@ -29,6 +29,7 @@
 - (void)followUpPerformUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)hostInterface;
 - (void)processFollowUpItem:(id)arg1 selectedAction:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)syncHostInterface;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

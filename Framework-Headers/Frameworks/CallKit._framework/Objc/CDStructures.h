@@ -54,6 +54,9 @@ struct CXCallUpdateHasSet {
     unsigned int shouldSuppressInCallUI:1;
     unsigned int requiresAuthentication:1;
     unsigned int mutuallyExclusiveCall:1;
+    unsigned int originatingUIType:1;
+    unsigned int junkConfidence:1;
+    unsigned int identificationCategory:1;
 };
 
 struct CXVoicemailUpdateHasSet {
@@ -67,4 +70,10 @@ struct CXVoicemailUpdateHasSet {
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 

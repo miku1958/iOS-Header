@@ -25,7 +25,6 @@
 + (id)mapCollection:(id)arg1 transformation:(CDUnknownBlockType)arg2;
 + (const char *)safeCString:(id)arg1;
 + (id)stringByRemovingInvalidXMLCharactersFromString:(id)arg1;
-+ (id)stringFromFourCharCode:(unsigned int)arg1;
 
 @end
 

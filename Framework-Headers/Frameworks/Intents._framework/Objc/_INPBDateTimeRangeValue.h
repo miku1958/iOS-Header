@@ -20,16 +20,15 @@
         unsigned int startCalendar:1;
     } _has;
     BOOL _allDay;
-    BOOL __encodeLegacyGloryData;
     long long _endCalendar;
     _INPBDateTime *_endDateTime;
+    NSString *_name;
     _INPBRecurrenceValue *_recurrence;
     long long _startCalendar;
     _INPBDateTime *_startDateTime;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,11 +37,13 @@
 @property (nonatomic) BOOL hasAllDay;
 @property (nonatomic) BOOL hasEndCalendar;
 @property (readonly, nonatomic) BOOL hasEndDateTime;
+@property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasRecurrence;
 @property (nonatomic) BOOL hasStartCalendar;
 @property (readonly, nonatomic) BOOL hasStartDateTime;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) _INPBRecurrenceValue *recurrence; // @synthesize recurrence=_recurrence;
 @property (nonatomic) long long startCalendar; // @synthesize startCalendar=_startCalendar;
 @property (strong, nonatomic) _INPBDateTime *startDateTime; // @synthesize startDateTime=_startDateTime;

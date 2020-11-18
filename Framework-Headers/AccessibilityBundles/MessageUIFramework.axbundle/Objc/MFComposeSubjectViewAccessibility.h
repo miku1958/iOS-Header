@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setNotifyButtonSelected:(BOOL)arg1;
+- (void)setNotifyOptionSelected:(BOOL)arg1;
 
 @end
 

@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Silex/SXVideoAdEventTracker-Protocol.h>
 #import <Silex/SXVideoProviding-Protocol.h>
 
-@protocol SXVideoAdProviding <SXVideoProviding>
+@class UIButton, UIView;
+
+@protocol SXVideoAdProviding <SXVideoProviding, SXVideoAdEventTracker>
 
 @property (readonly, nonatomic) BOOL hasAction;
+@property (readonly, nonatomic) UIView *metricsView;
+@property (readonly, nonatomic) UIButton *privacyMarker;
 @property (readonly, nonatomic) unsigned long long skipThreshold;
 
-- (void)nextVideoStartPlaying;
 - (void)presentAction;
-- (void)presentPrivacyStatement;
-- (void)skipped;
+
+@optional
 @end
 

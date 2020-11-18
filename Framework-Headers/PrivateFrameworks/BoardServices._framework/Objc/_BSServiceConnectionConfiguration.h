@@ -31,7 +31,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithLock:(struct os_unfair_lock_s *)arg1 clientContext:(id)arg2;
 - (id)interface;
 - (void)setActivationHandler:(CDUnknownBlockType)arg1;
 - (void)setErrorHandler:(CDUnknownBlockType)arg1;

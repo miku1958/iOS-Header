@@ -8,7 +8,7 @@
 
 #import <AppleAccountUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, AKAppleIDServerUIDataHarvester, NSString;
+@class AAUIServerHookResponse, AKAppleIDServerUIDataHarvester, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface AAUIAuthKitRecoveryHook : NSObject <AAUIServerHook>
@@ -22,6 +22,7 @@
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AKAppleIDServerUIDataHarvester *serverDataHarvester; // @synthesize serverDataHarvester=_serverDataHarvester;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse; // @synthesize serverHookResponse=_serverHookResponse;
 @property (readonly) Class superclass;

@@ -7,6 +7,8 @@
 #import <HomeKit/HMCharacteristicWriteAction.h>
 
 @interface HMCharacteristicWriteAction (HFDebugging)
+- (id)hf_affectedAccessoryProfiles;
+- (id)hf_affectedCharacteristic;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

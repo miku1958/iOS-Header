@@ -8,6 +8,7 @@
 
 @class HDDataCollectionObserverState;
 
+__attribute__((visibility("hidden")))
 @interface _HDDataCollectionObserverWrapper : NSObject
 {
     id _observer;

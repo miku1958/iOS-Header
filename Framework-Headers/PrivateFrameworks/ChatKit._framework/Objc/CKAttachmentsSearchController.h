@@ -6,11 +6,12 @@
 
 #import <ChatKit/CKMessageTypeSearchController.h>
 
+#import <ChatKit/QLPreviewControllerConformingDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
 @class NSString;
 
-@interface CKAttachmentsSearchController : CKMessageTypeSearchController <QLPreviewControllerDelegate>
+@interface CKAttachmentsSearchController : CKMessageTypeSearchController <QLPreviewControllerDelegate, QLPreviewControllerConformingDelegate>
 {
 }
 
@@ -24,7 +25,7 @@
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
-+ (BOOL)supportsQuicklook;
++ (BOOL)supportsQuicklookForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
@@ -35,6 +36,7 @@
 - (id)fetchAttributes;
 - (id)filterQueries;
 - (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
+- (BOOL)handleSelectionForResult:(id)arg1;
 - (double)interGroupSpacing;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;

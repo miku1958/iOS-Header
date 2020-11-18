@@ -16,37 +16,41 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSString *_appAdamId;
+    NSString *_bundleId;
     NSString *_title;
     NSString *_url;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _linkType;
     struct {
+        unsigned int has_linkType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_appAdamId:1;
+        unsigned int read_bundleId:1;
         unsigned int read_title:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_appAdamId:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_url:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSString *appAdamId;
+@property (strong, nonatomic) NSString *bundleId;
 @property (readonly, nonatomic) BOOL hasAppAdamId;
+@property (readonly, nonatomic) BOOL hasBundleId;
+@property (nonatomic) BOOL hasLinkType;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasUrl;
+@property (nonatomic) int linkType;
 @property (strong, nonatomic) NSString *title;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *url;
 
 + (BOOL)isValid:(id)arg1;
 + (id)quickLinksForPlaceData:(id)arg1;
++ (id)secondaryQuickLinksForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAppAdamId;
-- (void)_readTitle;
-- (void)_readUrl;
+- (int)StringAsLinkType:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -55,7 +59,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
+- (id)linkTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class MRApplicationActivity, NSArray, NSMutableArray, _MRDeviceInfoMessageProtobuf, _MRNowPlayingClientProtobuf, _MROriginProtobuf;
+@class MRApplicationActivity, MRClient, MRDeviceInfo, MROrigin, NSArray, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClient : NSObject <MRNowPlayingClientState>
@@ -23,7 +23,7 @@
     float _volume;
     unsigned int _volumeCapabilities;
     MRApplicationActivity *_activity;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     CDUnknownBlockType _playbackQueueCallback;
     CDUnknownBlockType _playbackQueueTransactionCallback;
     CDUnknownBlockType _capabilitiesCallback;
@@ -36,23 +36,23 @@
     CDUnknownBlockType _playbackSessionMigrateRequestCallback;
     NSMutableArray *_nowPlayingClients;
     unsigned int _hardwareRemoteBehavior;
-    _MRNowPlayingClientProtobuf *_activeNowPlayingClient;
-    _MROriginProtobuf *_origin;
+    MRClient *_activeNowPlayingClient;
+    MROrigin *_origin;
 }
 
-@property (strong, nonatomic) _MRNowPlayingClientProtobuf *activeNowPlayingClient; // @synthesize activeNowPlayingClient=_activeNowPlayingClient;
+@property (strong, nonatomic) MRClient *activeNowPlayingClient; // @synthesize activeNowPlayingClient=_activeNowPlayingClient;
 @property (strong, nonatomic) MRApplicationActivity *activity;
 @property (copy, nonatomic) NSArray *applicationPickedRoutes;
 @property (copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property (nonatomic) BOOL canBeNowPlayingApp;
 @property (copy, nonatomic) CDUnknownBlockType commandCallback;
-@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property (strong, nonatomic) MRDeviceInfo *deviceInfo;
 @property (copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
 @property (nonatomic) unsigned int hardwareRemoteBehavior; // @synthesize hardwareRemoteBehavior=_hardwareRemoteBehavior;
 @property (nonatomic) unsigned int inputMode;
 @property (nonatomic) BOOL isOverrideApp;
 @property (readonly, nonatomic) NSArray *nowPlayingClients;
-@property (readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
+@property (readonly, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueTransactionCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackSessionCallback;

@@ -10,6 +10,7 @@
 
 @class NSDate, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface HDIDSMessagePersistentContext : NSObject <NSSecureCoding>
 {
     BOOL _fromRequest;

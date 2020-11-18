@@ -8,25 +8,31 @@
 
 #import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
 
-@class AMSFinanceAuthenticateResponse, AMSPaymentSheetRequest, NSString;
+@class AMSFinanceAuthenticateResponse, AMSPaymentSheetRequest, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSFinancePaymentSheetResponse : NSObject <AMSFinancePerformable>
 {
-    AMSPaymentSheetRequest *_paymentSheetRequest;
     AMSFinanceAuthenticateResponse *_authenticateResponse;
+    NSDictionary *_metricsDictionary;
+    AMSPaymentSheetRequest *_paymentSheetRequest;
 }
 
 @property (readonly, nonatomic) AMSFinanceAuthenticateResponse *authenticateResponse; // @synthesize authenticateResponse=_authenticateResponse;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDictionary *metricsDictionary; // @synthesize metricsDictionary=_metricsDictionary;
 @property (readonly, nonatomic) AMSPaymentSheetRequest *paymentSheetRequest; // @synthesize paymentSheetRequest=_paymentSheetRequest;
 @property (readonly) Class superclass;
 
++ (id)_attributedListDictionaryForValues:(id)arg1 account:(id)arg2;
++ (id)_attributedStringForAttributedArray:(id)arg1 account:(id)arg2;
++ (id)_attributedStringForAttributedDictionary:(id)arg1 account:(id)arg2;
 + (id)_attributedStringForSalableInfoStringArray:(id)arg1 account:(id)arg2 shouldUppercase:(BOOL)arg3;
 + (id)_attributedStringForStringArray:(id)arg1 useGrey:(BOOL)arg2 account:(id)arg3 shouldUppercase:(BOOL)arg4;
 + (long long)_confirmationTitleForString:(id)arg1;
++ (id)_createMerchantSessionFromDictionary:(id)arg1;
 + (id)_createRequestFromDictionary:(id)arg1 confirmationOnly:(BOOL)arg2 authenticateResponse:(id)arg3 taskInfo:(id)arg4;
 + (id)_flexListDictionaryForValues:(id)arg1 account:(id)arg2 shouldUppercaseText:(BOOL)arg3;
 + (id)_greyAttributedStringForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
@@ -34,7 +40,7 @@ __attribute__((visibility("hidden")))
 + (long long)_payeeInferredFromEnumeratedTitle:(id)arg1;
 + (long long)_salableIconForString:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithDialogDictionary:(id)arg1 confirmationOnly:(BOOL)arg2 taskInfo:(id)arg3;
+- (id)initWithResponseDictionary:(id)arg1 confirmationOnly:(BOOL)arg2 taskInfo:(id)arg3;
 - (id)performWithTaskInfo:(id)arg1;
 
 @end

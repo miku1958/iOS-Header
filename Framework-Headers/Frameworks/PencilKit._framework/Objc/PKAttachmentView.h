@@ -6,46 +6,84 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSMutableDictionary, PKDrawing;
+#import <PencilKit/PKRecognitionSessionManagerDelegate-Protocol.h>
+#import <PencilKit/PKSelectionObserving-Protocol.h>
+#import <PencilKit/PKStrokeSpatialCacheDelegate-Protocol.h>
 
-@interface PKAttachmentView : UIView
+@class NSArray, NSMutableDictionary, NSString, NSUUID, PKDrawing, PKRecognitionSessionManager, PKStrokeSpatialCache;
+
+@interface PKAttachmentView : UIView <PKStrokeSpatialCacheDelegate, PKRecognitionSessionManagerDelegate, PKSelectionObserving>
 {
+    NSUUID *_listenerID;
     BOOL _contentHidden;
+    BOOL _wantsDataDetection;
     PKDrawing *_drawing;
     NSMutableDictionary *_tiles;
     NSMutableDictionary *_offscreenTiles;
     NSArray *_additionalStrokes;
     UIView *_tileContainerView;
+    PKStrokeSpatialCache *_strokeSpatialCache;
+    PKRecognitionSessionManager *_recognitionManager;
+    struct CGRect _cachedBounds;
 }
 
 @property (strong, nonatomic) NSArray *additionalStrokes; // @synthesize additionalStrokes=_additionalStrokes;
+@property (nonatomic) struct CGRect cachedBounds; // @synthesize cachedBounds=_cachedBounds;
 @property (nonatomic) BOOL contentHidden; // @synthesize contentHidden=_contentHidden;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
 @property (readonly, nonatomic) double drawingScale;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAtEndOfDocument;
 @property (readonly, nonatomic) NSMutableDictionary *offscreenTiles; // @synthesize offscreenTiles=_offscreenTiles;
+@property (strong, nonatomic) PKRecognitionSessionManager *recognitionManager; // @synthesize recognitionManager=_recognitionManager;
+@property (readonly, nonatomic) PKStrokeSpatialCache *strokeSpatialCache; // @synthesize strokeSpatialCache=_strokeSpatialCache;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *tileContainerView; // @synthesize tileContainerView=_tileContainerView;
 @property (readonly, nonatomic) UIView *tileMaskView;
 @property (readonly, nonatomic) NSMutableDictionary *tiles; // @synthesize tiles=_tiles;
+@property (nonatomic) BOOL wantsDataDetection; // @synthesize wantsDataDetection=_wantsDataDetection;
 
 - (void).cxx_destruct;
+- (id)_firstStrokesInSelectedStrokes:(id)arg1;
+- (void)_initializeRecognitionForDrawingIfNecessary:(id)arg1;
+- (void)_initializeRecognitionForDrawingIfNecessary:(id)arg1 withVisibleOnscreenStrokes:(id)arg2;
+- (id)_lastStrokesInSelectedStrokes:(id)arg1;
+- (void)containingScrollViewDidScroll;
+- (long long)contentTypeForIntersectedStrokes:(id)arg1;
+- (id)dataDetectorViewAtPoint:(struct CGPoint)arg1;
+- (void)dealloc;
+- (void)didBeginDrawing;
+- (void)didBeginModifyDrawing;
+- (void)didEndDrawing;
+- (void)didEndModifyDrawing;
+- (void)didFinishCalculatingVisibleOnscreenStrokes:(id)arg1;
+- (void)didMoveToSuperview;
 - (BOOL)disableTileAnimations;
 - (void)drawingDidChange;
 - (void)drawingDidEraseStrokes;
-- (void)drawingWillBegin;
+- (void)fetchIntersectedStrokesAtPoint:(struct CGPoint)arg1 selectionType:(long long)arg2 inputType:(long long)arg3 visibleOnscreenStrokes:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)fetchIntersectedStrokesBetweenTopPoint:(struct CGPoint)arg1 bottomPoint:(struct CGPoint)arg2 liveScrollOffset:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchStrokesAmbiguouslyBelowAndAboveInsertSpaceHandleWithStrokes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fingerDrawingEnabledDidChange;
 - (void)fullyRendered;
 - (double)heightFromDrawing:(id)arg1 delta:(double)arg2;
 - (BOOL)hitByTouchLocation:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 - (BOOL)hitChrome:(struct CGPoint)arg1 isStylus:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 drawing:(id)arg2;
+- (BOOL)isRTL;
 - (void)layoutSubviews;
 - (void)pixelAlignForContentScale:(double)arg1 enclosingScrollView:(id)arg2;
+- (void)recognitionSessionManager:(id)arg1 foundDataDetectorItems:(id)arg2;
+- (void)setAttachmentChromeVisible:(BOOL)arg1 animated:(BOOL)arg2 highlightBackground:(BOOL)arg3;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)updateDataDetectorResults:(id)arg1;
 - (void)updateDrawingHeight:(double)arg1;
 - (void)updateDrawingHeight:(double)arg1 notifyDrawingDidChange:(BOOL)arg2;
 - (void)updateFrameForTextContainer;
 - (void)updateTileContainerViewFrame;
+- (void)visibleOnscreenBoundsDidChange:(struct CGRect)arg1;
 - (BOOL)wantsFullyRendered;
 
 @end

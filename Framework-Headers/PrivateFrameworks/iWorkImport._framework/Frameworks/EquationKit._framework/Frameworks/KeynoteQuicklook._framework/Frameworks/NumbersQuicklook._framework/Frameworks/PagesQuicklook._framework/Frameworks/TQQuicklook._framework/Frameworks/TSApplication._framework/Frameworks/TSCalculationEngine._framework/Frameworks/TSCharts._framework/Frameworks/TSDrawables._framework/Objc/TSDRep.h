@@ -8,13 +8,14 @@
 
 #import <TSDrawables/TSDMagicMoveMatching-Protocol.h>
 
-@class NSArray, NSDictionary, TSDCanvas, TSDLayout;
-@protocol TSDContainerRep, TSDInfo;
+@class NSArray, NSDictionary, NSMutableArray, TSDCanvas, TSDLayout;
+@protocol TSDInfo;
 
 @interface TSDRep : NSObject <TSDMagicMoveMatching>
 {
     TSDCanvas *mCanvas;
-    TSDRep<TSDContainerRep> *mParentRep;
+    TSDRep *mParentRep;
+    NSMutableArray *mChildReps;
     NSDictionary *mTextureAnimationInfo;
     TSDLayout *mTemporaryMixingLayout;
     TSDLayout *mLayout;
@@ -24,30 +25,39 @@
 @property (readonly, nonatomic) double angleInRoot;
 @property (readonly, nonatomic) struct CGRect boundsForStandardKnobs;
 @property (readonly, weak, nonatomic) TSDCanvas *canvas; // @synthesize canvas=mCanvas;
+@property (readonly, nonatomic) struct CGRect captionFrameInUnscaledCanvas;
 @property (readonly, nonatomic) struct CGPoint centerForRotation;
+@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) struct CGRect clipRect;
 @property (readonly, nonatomic) NSObject *dynamicOverride;
 @property (readonly, nonatomic) struct CGRect frameForMagicMove;
 @property (readonly, nonatomic) struct CGRect frameInUnscaledCanvas;
+@property (readonly, nonatomic) struct CGRect frameInUnscaledCanvasForMarqueeSelecting;
 @property (readonly, nonatomic) struct CGRect frameInUnscaledCanvasIncludingChrome;
 @property (readonly, nonatomic) NSArray *hyperlinkRegions;
+@property (readonly, nonatomic) struct CGRect i_clipRectRecursive;
 @property (readonly, nonatomic) struct CGRect i_layerFrameInScaledCanvasIgnoringDragging;
+@property (readonly, nonatomic) struct CGRect i_partition_deepClipRect;
 @property (readonly, nonatomic) NSObject<TSDInfo> *info;
 @property (readonly, nonatomic) BOOL isDrawingInFlippedContext;
 @property (readonly, nonatomic) BOOL isLocked;
 @property (readonly, nonatomic) BOOL isPlaceholder;
 @property (readonly, nonatomic) struct CGRect layerFrameInScaledCanvas;
 @property (readonly, nonatomic) TSDLayout *layout; // @synthesize layout=mLayout;
+@property (readonly, nonatomic) NSArray *layoutsForChildReps;
 @property (readonly, nonatomic) BOOL masksToBounds;
 @property (readonly, nonatomic) struct CGRect naturalBounds;
 @property (readonly, nonatomic) double opacity;
-@property (weak, nonatomic) TSDRep<TSDContainerRep> *parentRep; // @synthesize parentRep=mParentRep;
+@property (weak, nonatomic) TSDRep *parentRep; // @synthesize parentRep=mParentRep;
+@property (readonly, nonatomic) struct CGRect rectToClipChildRepRenderables;
 @property (strong, nonatomic) TSDLayout *temporaryMixingLayout; // @synthesize temporaryMixingLayout=mTemporaryMixingLayout;
 @property (copy, nonatomic) NSDictionary *textureAnimationInfo; // @synthesize textureAnimationInfo=mTextureAnimationInfo;
+@property (readonly, nonatomic) struct CGRect titleFrameInUnscaledCanvas;
 @property (readonly, nonatomic) BOOL wantsToDistortWithImagerContext;
 
 - (void).cxx_destruct;
 - (void)addBitmapsToRenderingQualityInfo:(id)arg1 inContext:(struct CGContext *)arg2;
+- (void)addChildTexturesToTextureSet:(id)arg1 forDescription:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (void)addToSet:(id)arg1;
 - (double)contentsScale;
 - (struct CGPoint)convertNaturalPointFromUnscaledCanvas:(struct CGPoint)arg1;
@@ -60,13 +70,15 @@
 - (void)didDisplayTextureWithDescription:(id)arg1 isAtEndOfBuild:(BOOL)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)dynamicOverrideDidChange;
+- (void)enumerateChildTexturesForDescription:(id)arg1 passingTest:(CDUnknownBlockType)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (BOOL)forcesPlacementOnTop;
 - (void)i_configureFontSmoothingForContext:(struct CGContext *)arg1 layer:(id)arg2;
-- (struct CGRect)i_partition_deepClipRect;
 - (void)i_willBeRemoved;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (struct CGRect)layerFrameInScaledCanvasRelativeToParent;
 - (const struct CGPath *)newPathInScaledCanvasFromNaturalRect:(struct CGRect)arg1;
+- (id)p_comment;
+- (void)p_setChildReps:(id)arg1;
 - (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;
@@ -75,11 +87,13 @@
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
+- (void)removeChildRep:(id)arg1;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
 - (id)textureForDescription:(id)arg1;
 - (struct CGAffineTransform)unRotatedTransform:(struct CGAffineTransform)arg1;
 - (void)updateChildrenFromLayout;
 - (void)updateFromLayout;
+- (void)updateHitTestingForTextureStage:(unsigned long long)arg1 isAtEndOfBuild:(BOOL)arg2;
 - (void)willBeRemoved;
 - (void)willLayoutAndRenderInBackground;
 

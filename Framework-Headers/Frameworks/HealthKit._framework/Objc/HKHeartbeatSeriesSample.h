@@ -28,6 +28,7 @@
 
 + (id)_heartbeatSeriesSampleFromCSV:(id)arg1 startDate:(id)arg2 metadata:(id)arg3 error:(out id *)arg4;
 + (id)_heartbeatSeriesSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5;
++ (BOOL)_isConcreteObjectClass;
 + (id)heartBeatSequenceSampleFromCSV:(id)arg1 startDate:(id)arg2 metadata:(id)arg3 error:(out id *)arg4;
 + (id)heartbeatSequenceSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4;
 + (BOOL)supportsSecureCoding;
@@ -36,7 +37,7 @@
 - (void)_enumerateHeartbeatDataWithBlock:(CDUnknownBlockType)arg1;
 - (void)_setPayload:(id)arg1;
 - (BOOL)_shouldNotifyOnInsert;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (unsigned long long)count;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateHeartbeatDataWithBlock:(CDUnknownBlockType)arg1;

@@ -22,7 +22,7 @@
 - (void)_setMainDisplayPreferredInterfaceOrientation:(long long)arg1;
 - (BOOL)_supportsLayoutRole:(long long)arg1;
 - (id)deviceApplicationSceneEntity;
-- (id)initWithApplication:(id)arg1 uniqueIdentifier:(id)arg2 targetContentIdentifier:(id)arg3 sceneHandleProvider:(id)arg4;
+- (id)initWithApplication:(id)arg1 uniqueIdentifier:(id)arg2 targetContentIdentifier:(id)arg3 sceneHandleProvider:(id)arg4 displayIdentity:(id)arg5;
 - (id)initWithApplicationForMainDisplay:(id)arg1;
 - (id)initWithApplicationForMainDisplay:(id)arg1 generatingNewPrimarySceneIfRequired:(BOOL)arg2;
 - (id)initWithApplicationForMainDisplay:(id)arg1 targetContentIdentifier:(id)arg2;

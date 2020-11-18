@@ -40,6 +40,7 @@
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2 rendererState:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2 rendererState:(id)arg3 fetchInitialContentSynchronously:(BOOL)arg4;
 - (void)invalidate;
 - (void)layoutSubviews;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateCategoryVisualizationWithStyle:(long long)arg2;

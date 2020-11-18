@@ -10,23 +10,25 @@
 #import <SystemStatus/STStatusDomainServerHandle-Protocol.h>
 #import <SystemStatus/STStatusDomainXPCClient-Protocol.h>
 
-@class BSMutableIntegerMap, NSMutableDictionary, NSString, NSXPCConnection;
+@class BSMutableIntegerMap, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface STStatusDomainXPCServerHandle : NSObject <STStatusDomainXPCClient, BSDescriptionProviding, STStatusDomainServerHandle>
 {
     BSMutableIntegerMap *_dataByDomain;
-    NSMutableDictionary *_clientsByDomain;
+    BSMutableIntegerMap *_clientsByDomain;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     NSXPCConnection *_serverXPCConnection;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *clientsByDomain; // @synthesize clientsByDomain=_clientsByDomain;
-@property (strong, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly, copy, nonatomic) BSMutableIntegerMap *clientsByDomain; // @synthesize clientsByDomain=_clientsByDomain;
+@property (readonly, copy, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSXPCConnection *serverXPCConnection; // @synthesize serverXPCConnection=_serverXPCConnection;
 @property (readonly) Class superclass;
 
@@ -34,24 +36,17 @@
 - (void).cxx_destruct;
 - (id)_internalQueue_dataForDomain:(unsigned long long)arg1;
 - (void)_internalQueue_setupXPCConnectionIfNecessary;
-- (void)_observeData:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)_observeDataDiff:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)_reregisterForDomains;
 - (void)_tearDownXPCConnection;
 - (id)dataForDomain:(unsigned long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
-- (void)observeBatteryData:(id)arg1;
-- (void)observeBatteryDataDiff:(id)arg1;
-- (void)observeTelephonyData:(id)arg1;
-- (void)observeTelephonyDataDiff:(id)arg1;
-- (void)observeVoiceControlData:(id)arg1;
-- (void)observeVoiceControlDataDiff:(id)arg1;
-- (void)observeWifiData:(id)arg1;
-- (void)observeWifiDataDiff:(id)arg1;
+- (void)observeData:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)observeDiff:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)registerClient:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)removeClient:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)reportUserInteraction:(id)arg1 forClient:(id)arg2 domain:(unsigned long long)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

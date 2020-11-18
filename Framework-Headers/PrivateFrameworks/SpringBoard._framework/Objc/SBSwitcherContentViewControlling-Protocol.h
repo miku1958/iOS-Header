@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <SpringBoard/SBButtonEventsHandler-Protocol.h>
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSwitcherAnimatedTransitioning-Protocol.h>
 
-@class NSArray, NSString, NSUUID, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBMainWorkspaceTransitionRequest, SBSwitcherModifierAction, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext;
+@class NSArray, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBIcon, SBMainWorkspaceTransitionRequest, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext;
 @protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate;
 
-@protocol SBSwitcherContentViewControlling <SBLayoutStateTransitionObserver, SBSwitcherAnimatedTransitioning>
+@protocol SBSwitcherContentViewControlling <SBButtonEventsHandler, SBLayoutStateTransitionObserver, SBSwitcherAnimatedTransitioning>
 
 @property (strong, nonatomic) SBBestAppSuggestion *bestAppSuggestion;
 @property (nonatomic) long long contentOrientation;
@@ -21,32 +22,29 @@
 
 - (void)acquiredViewController:(SBTransientOverlayViewController *)arg1 forTransientOverlayAppLayout:(SBAppLayout *)arg2;
 - (SBFluidSwitcherAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
-- (SBSwitcherModifierAction *)dispatchAndReturnTetheredInsertionEventWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
-- (SBSwitcherModifierAction *)dispatchAndReturnTetheredRemovalEventWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
-- (SBSwitcherModifierAction *)enterAppExposeForBundleID:(NSString *)arg1;
-- (SBSwitcherModifierAction *)handleGestureDidBegin:(SBFluidSwitcherGesture *)arg1;
-- (SBSwitcherModifierAction *)handleGestureDidEnd:(SBFluidSwitcherGesture *)arg1;
-- (SBSwitcherModifierAction *)handleGestureDidUpdate:(SBFluidSwitcherGesture *)arg1;
-- (void)handleModifierAction:(SBSwitcherModifierAction *)arg1;
+- (void)handleGestureDidBegin:(SBFluidSwitcherGesture *)arg1;
+- (void)handleGestureDidEnd:(SBFluidSwitcherGesture *)arg1;
+- (void)handleGestureDidUpdate:(SBFluidSwitcherGesture *)arg1;
+- (SBIcon *)iconForAppLayout:(SBAppLayout *)arg1;
 - (BOOL)isStatusBarHiddenForAppLayout:(SBAppLayout *)arg1;
 - (BOOL)isUserInteractionEnabled;
 - (BOOL)isWindowVisible;
 - (double)minimumHomeScreenScale;
 - (void)noteAppLayoutsDidChange;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
-- (SBSwitcherModifierAction *)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 willAnimate:(BOOL)arg3;
-- (SBSwitcherModifierAction *)noteModelDidMutateForRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 animated:(BOOL)arg3;
+- (void)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 willAnimate:(BOOL)arg3;
+- (void)noteModelDidMutateForRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 animated:(BOOL)arg3;
 - (void)performAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 completion:(void (^)(BOOL, BOOL))arg3;
 - (void)performAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 completion:(void (^)(BOOL, BOOL))arg3;
-- (SBSwitcherModifierAction *)prepareAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
-- (SBSwitcherModifierAction *)prepareAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
+- (void)prepareAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
+- (void)prepareAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
 - (void)relinquishTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(BOOL)arg1;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldAddAppLayoutToFront:(SBAppLayout *)arg1 forTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2 transitionCompleted:(BOOL)arg3;
 - (BOOL)shouldAnimateInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
 - (BOOL)shouldAnimateRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
-- (BOOL)shouldRubberbandHomeGrabberView;
+- (BOOL)shouldRubberbandFullScreenHomeGrabberView;
 - (double)snapshotScaleForSceneHandle:(SBApplicationSceneHandle *)arg1;
 @end
 

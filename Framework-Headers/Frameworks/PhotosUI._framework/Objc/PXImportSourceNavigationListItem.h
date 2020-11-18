@@ -20,8 +20,8 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)glyphImageName;
 - (unsigned long long)hash;
-- (id)imageName;
 - (id)initWithIdentifier:(id)arg1 title:(id)arg2 itemCount:(long long)arg3;
 - (id)initWithImportSource:(id)arg1 photoLibrary:(id)arg2;
 - (BOOL)isRemovable;

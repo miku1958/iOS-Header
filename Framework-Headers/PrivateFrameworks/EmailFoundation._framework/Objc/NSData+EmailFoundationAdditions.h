@@ -21,6 +21,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)ef_crlfData;
+- (BOOL)ef_containsData:(id)arg1;
+- (BOOL)ef_hasSuffix:(id)arg1;
+- (struct _NSRange)ef_rangeOfData:(id)arg1;
+- (struct _NSRange)ef_rangeOfData:(id)arg1 options:(unsigned long long)arg2;
 - (id)ef_sha256DigestWithSalts:(id)arg1;
+- (id)ef_subdataFromIndex:(unsigned long long)arg1;
+- (id)ef_subdataToIndex:(unsigned long long)arg1;
 @end
 

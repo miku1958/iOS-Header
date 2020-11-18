@@ -6,9 +6,11 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSData, NSNumber, NSString;
+#import <ManagedConfiguration/MCPerAccountVPNPayloadProtocol-Protocol.h>
 
-@interface MCEmailAccountPayloadBase : MCPayload
+@class NSArray, NSData, NSNumber, NSString;
+
+@interface MCEmailAccountPayloadBase : MCPayload <MCPerAccountVPNPayloadProtocol>
 {
     BOOL _preventMove;
     BOOL _preventAppSheet;
@@ -20,6 +22,7 @@
     BOOL _SMIMEEncryptByDefaultUserOverrideable;
     BOOL _SMIMEEncryptionIdentityUserOverrideable;
     BOOL _SMIMEPerMessageSwitchEnabled;
+    NSString *_VPNUUID;
     NSNumber *_SMIMESigningEnabled;
     NSString *_SMIMESigningIdentityUUID;
     NSNumber *_SMIMEEncryptionEnabled;
@@ -48,10 +51,14 @@
 @property (strong, nonatomic) NSString *SMIMESigningIdentityUUID; // @synthesize SMIMESigningIdentityUUID=_SMIMESigningIdentityUUID;
 @property (nonatomic) BOOL SMIMESigningIdentityUserOverrideable; // @synthesize SMIMESigningIdentityUserOverrideable=_SMIMESigningIdentityUserOverrideable;
 @property (nonatomic) BOOL SMIMESigningUserOverrideable; // @synthesize SMIMESigningUserOverrideable=_SMIMESigningUserOverrideable;
+@property (readonly, strong, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
+@property (readonly, strong, nonatomic) NSArray *calendarAccountIdentifiers;
+@property (readonly, strong, nonatomic) NSArray *contactsAccountIdentifiers;
 @property (nonatomic) BOOL isMailDropEnabled; // @synthesize isMailDropEnabled=_isMailDropEnabled;
 @property (strong, nonatomic) NSNumber *isMailDropEnabledNum; // @synthesize isMailDropEnabledNum=_isMailDropEnabledNum;
 @property (nonatomic) BOOL isRecentsSyncingDisabled; // @synthesize isRecentsSyncingDisabled=_isRecentsSyncingDisabled;
 @property (strong, nonatomic) NSNumber *isRecentsSyncingDisabledNum; // @synthesize isRecentsSyncingDisabledNum=_isRecentsSyncingDisabledNum;
+@property (readonly, strong, nonatomic) NSArray *mailAccountIdentifiers;
 @property (nonatomic) BOOL preventAppSheet; // @synthesize preventAppSheet=_preventAppSheet;
 @property (strong, nonatomic) NSNumber *preventAppSheetNum; // @synthesize preventAppSheetNum=_preventAppSheetNum;
 @property (nonatomic) BOOL preventMove; // @synthesize preventMove=_preventMove;
@@ -60,10 +67,10 @@
 - (void).cxx_destruct;
 - (void)addSMIMEEncryptionPayloadKeysTo:(id)arg1;
 - (BOOL)containsSensitiveUserInformation;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
+- (id)verboseDescription;
 
 @end
 

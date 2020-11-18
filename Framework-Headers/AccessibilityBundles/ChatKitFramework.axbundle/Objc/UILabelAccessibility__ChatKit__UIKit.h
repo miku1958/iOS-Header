@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsNotFirstElement;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 

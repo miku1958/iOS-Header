@@ -12,6 +12,7 @@
 
 + (BOOL)cloudKitMirroringEnabled;
 + (void)configureMirroringRequestOptions:(id)arg1;
++ (void)configureMirroringRequestOptions:(id)arg1 discretionary:(BOOL)arg2;
 + (void)configureStoreDescriptionForMirroring:(id)arg1 logger:(id)arg2;
 + (id)createMirroringHandlerWithEnvironment:(id)arg1;
 + (id)currentContainerIdentifier;

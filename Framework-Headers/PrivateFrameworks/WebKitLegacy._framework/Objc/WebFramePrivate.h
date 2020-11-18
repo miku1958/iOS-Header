@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebFramePrivate : NSObject
 {
-    struct Frame *coreFrame;
+    NakedPtr_4ac97545 coreFrame;
     WebFrameView *webFrameView;
     struct unique_ptr<WebScriptDebugger, std::__1::default_delete<WebScriptDebugger>> scriptDebugger;
     id internalLoadDelegate;

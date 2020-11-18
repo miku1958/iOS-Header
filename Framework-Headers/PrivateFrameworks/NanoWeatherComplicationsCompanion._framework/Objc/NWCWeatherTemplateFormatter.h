@@ -23,18 +23,20 @@
 
 + (id)sharedFormatter;
 - (void).cxx_destruct;
+- (id)_richCircularTemplateForComplicationFamily:(long long)arg1 entryModel:(id)arg2;
 - (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
-- (id)circularMediumTemplateForConditions:(id)arg1;
-- (id)circularSmallTemplateForConditions:(id)arg1;
-- (id)extraLargeTemplateForConditions:(id)arg1;
-- (id)graphicBezelTemplateForCurrentObservations:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)graphicCircularTemplateForCurrentObservations:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)graphicCornerTemplateForCurrentObservations:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(BOOL)arg2 airQualityConditions:(id)arg3 conditions:(id)arg4 dailyForecastedConditions:(id)arg5;
-- (id)modularSmallTemplateForConditions:(id)arg1;
+- (id)circularMediumTemplateForEntryModel:(id)arg1;
+- (id)circularSmallTemplateForEntryModel:(id)arg1;
+- (id)extraLargeTemplateForEntryModel:(id)arg1;
+- (id)graphicBezelTemplateForEntryModel:(id)arg1;
+- (id)graphicCircularTemplateForEntryModel:(id)arg1;
+- (id)graphicCornerTemplateForEntryModel:(id)arg1;
+- (id)graphicExtraLargeCircularTemplateForEntryModel:(id)arg1;
+- (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(BOOL)arg2 entryModel:(id)arg3;
+- (id)modularSmallTemplateForEntryModel:(id)arg1;
 - (id)switcherTemplateWithFamily:(long long)arg1;
-- (id)utilitarianLargeTemplateForConditions:(id)arg1;
-- (id)utilitarianSmallTemplateForConditions:(id)arg1;
+- (id)utilitarianLargeTemplateForEntryModel:(id)arg1;
+- (id)utilitarianSmallTemplateForEntryModel:(id)arg1;
 
 @end
 

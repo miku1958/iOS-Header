@@ -24,7 +24,6 @@
     id<DESRecipeEvaluation> _evaluator;
     unsigned long long _recipeCountLimit;
     double _timeLimit;
-    BOOL _skipPolicy;
     BOOL _enableOriginReturnRoute;
     BOOL _enableParsecReturnRoute;
     NSURLSession *_session;
@@ -37,12 +36,13 @@
 @property (readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
-+ (void)downloadAttachments:(id)arg1 session:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)downloadAttachments:(id)arg1 signatures:(id)arg2 certificate:(id)arg3 session:(id)arg4 queue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)downloadedRecipeWithID:(id)arg1 recipeType:(id)arg2 baseURL:(id)arg3 protocolClass:(Class)arg4 error:(id *)arg5;
 + (void)initialize;
++ (BOOL)verifyAttachment:(id)arg1 attachmentURL:(id)arg2 attachmentSignature:(id)arg3;
 - (void).cxx_destruct;
 - (void)_attemptRecipeMatchWithRecipes:(id)arg1 keepGoing:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_downloadAttachments:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_downloadAttachments:(id)arg1 signatures:(id)arg2 certificate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_ensureEvaluatorWithError:(id *)arg1;
 - (void)_fetchPolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchRecipe:(id)arg1 matchingRecordSet:(id)arg2 completion:(CDUnknownBlockType)arg3;

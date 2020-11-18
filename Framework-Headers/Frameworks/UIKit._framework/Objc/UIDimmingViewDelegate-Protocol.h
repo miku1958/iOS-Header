@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <UIKitCore/NSObject-Protocol.h>
+
 @class UIDimmingView;
 
-@protocol UIDimmingViewDelegate
+@protocol UIDimmingViewDelegate <NSObject>
+
+@optional
 - (void)dimmingViewWasTapped:(UIDimmingView *)arg1;
 @end
 

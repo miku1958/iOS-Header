@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)adjustConfidenceAndCollectMetrics:(id)arg1 learnedPlace:(id)arg2 maxConfidence:(double)arg3;
 - (unsigned long long)coalescedMapItemSourceForPlace:(id)arg1;
 - (double)confidenceForPlaceType:(unsigned long long)arg1;
 - (id)init;

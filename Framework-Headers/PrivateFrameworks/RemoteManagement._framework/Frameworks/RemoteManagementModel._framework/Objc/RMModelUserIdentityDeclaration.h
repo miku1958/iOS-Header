@@ -8,11 +8,10 @@
 
 #import <RemoteManagementModel/RMModelRegisteredTypeProtocol-Protocol.h>
 
-@class NSString, RMModelAssetBaseDescriptor;
+@class NSString;
 
 @interface RMModelUserIdentityDeclaration : RMModelAssetBase <RMModelRegisteredTypeProtocol>
 {
-    RMModelAssetBaseDescriptor *_payloadDescriptor;
     NSString *_payloadFullName;
     NSString *_payloadEmailAddress;
 }
@@ -20,14 +19,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) RMModelAssetBaseDescriptor *payloadDescriptor; // @synthesize payloadDescriptor=_payloadDescriptor;
 @property (copy, nonatomic) NSString *payloadEmailAddress; // @synthesize payloadEmailAddress=_payloadEmailAddress;
 @property (copy, nonatomic) NSString *payloadFullName; // @synthesize payloadFullName=_payloadFullName;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 descriptor:(id)arg2 fullName:(id)arg3 emailAddress:(id)arg4;
++ (id)buildWithIdentifier:(id)arg1 fullName:(id)arg2 emailAddress:(id)arg3;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)didSelectOptionAtIndex:(long long)arg1;
 - (id)initWithInformation:(struct DataListSuggestionInformation *)arg1 inView:(id)arg2;
 - (void)invalidate;
-- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(int)arg2;
+- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(unsigned char)arg2;
 - (void)updateWithInformation:(struct DataListSuggestionInformation *)arg1;
 
 @end

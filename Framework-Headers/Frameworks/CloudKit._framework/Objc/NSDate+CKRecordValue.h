@@ -17,5 +17,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @end
 

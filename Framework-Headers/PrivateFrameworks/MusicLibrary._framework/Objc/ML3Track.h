@@ -20,6 +20,7 @@
 + (id)allProperties;
 + (id)artistAllAlbumsDefaultOrderingTerms;
 + (id)artistsDefaultOrderingTerms;
++ (BOOL)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (BOOL)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2;
 + (BOOL)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 disableKeepLocal:(BOOL)arg3;
 + (BOOL)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 disableKeepLocal:(BOOL)arg3 usingConnection:(id)arg4;

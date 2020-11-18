@@ -53,3 +53,9 @@ struct _TidyDoc {
     int _field1;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int version:1;
+} CDStruct_f20694ce;
+

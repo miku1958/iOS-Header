@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AWDServerConnection, NSMutableDictionary;
+@class AWDServerConnection, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface WBSAnalyticsLogger : NSObject
 {
     NSObject<OS_dispatch_queue> *_analyticsSynchronizationQueue;
     NSMutableDictionary *_pageLoadStartTimes;
+    long long _persona;
+    NSString *_safariVersion;
     AWDServerConnection *_awdServer;
 }
 
@@ -22,9 +24,11 @@
 - (void).cxx_destruct;
 - (void)_didSelectFavoritesGridItemOfSection:(int)arg1 type:(int)arg2 atIndex:(unsigned long long)arg3 itemsPerRow:(unsigned long long)arg4 isNewTabPage:(BOOL)arg5;
 - (void)_sendEvent:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)_sendEventAddingVersionInfo:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)ckBookmarkSyncFinishedWithResult:(long long)arg1 error:(id)arg2;
 - (void)didAutoFillCustomContactSetShowingMeCard:(BOOL)arg1;
 - (void)didBanWebsiteWithMetadata:(id)arg1;
+- (void)didDetectLanguageOfWebpage:(id)arg1 primaryLocale:(id)arg2 webpageCanBeTranslatedToPrimaryLocale:(BOOL)arg3 canOfferTranslation:(BOOL)arg4 firstNonPrimaryLocaleThatCanBeTranslatedTo:(id)arg5 numberOfPreferredLocales:(unsigned long long)arg6 notificationLevel:(long long)arg7;
 - (void)didDownvoteDataSourceWithMetadata:(id)arg1;
 - (void)didFailToMigrateToCKBookmarksAsPrimaryMigrator:(BOOL)arg1 error:(id)arg2;
 - (void)didModifyPerSitePreferenceWithIdentifier:(id)arg1 modificationLevel:(long long)arg2 type:(long long)arg3 method:(long long)arg4;
@@ -32,6 +36,7 @@
 - (void)didOpenRecommendationWithMetadata:(id)arg1 withPosition:(long long)arg2;
 - (void)didReceiveInvalidMessageFromWebProcess:(id)arg1;
 - (void)didReceiveWebKitAnalyticsEventWithName:(id)arg1 payload:(id)arg2;
+- (void)didRequestTranslatingToLocale:(id)arg1 webpageLocale:(id)arg2 requestType:(long long)arg3 isTargetLocalePrimaryLocale:(BOOL)arg4;
 - (void)didRetrieveNumberOfFavorites:(unsigned long long)arg1;
 - (void)didRetrieveNumberOfFrequentlyVisitedSites:(unsigned long long)arg1;
 - (void)didRetrieveNumberOfRecommendations:(unsigned long long)arg1 numberOfTopics:(unsigned long long)arg2;
@@ -47,13 +52,17 @@
 - (void)didToggleGloballyUseAutomaticReader:(BOOL)arg1;
 - (void)didToggleShowLessButtonForSection:(long long)arg1;
 - (void)didToggleShowMoreButtonForSection:(long long)arg1;
+- (void)didToggleShowMoreButtonForSection:(long long)arg1 isShowingMore:(BOOL)arg2;
 - (id)initWithQueue:(id)arg1;
 - (void)pageLoadCompleted:(unsigned long long)arg1;
 - (void)pageLoadCompleted:(unsigned long long)arg1 withErrorCode:(long long)arg2;
 - (void)pageLoadStarted:(unsigned long long)arg1;
 - (void)performOnAnalyticsQueueWithDelay:(long long)arg1 block:(CDUnknownBlockType)arg2;
-- (void)recordSearchResultPageImpressionWithDefaultSearchProviderIdentifier:(id)arg1 searchProviderIdentifier:(id)arg2 isReferredByUnifiedField:(BOOL)arg3;
+- (void)recordSearchResultPageImpressionWithDefaultSearchProviderIdentifier:(id)arg1 searchProviderIdentifier:(id)arg2 provenance:(long long)arg3;
 - (void)registerQueriableMetric:(unsigned int)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)registerSafariVersion:(id)arg1 persona:(long long)arg2;
+- (void)reportNumberOfExtensionsWithFrequencyDictionaryProvider:(CDUnknownBlockType)arg1;
+- (void)reportStatusForExtensions:(id)arg1 extensionType:(id)arg2;
 - (void)reportWeakPasswordWarningEvent:(long long)arg1;
 - (void)showedAutoFillQuickTypeSuggestionWithCategory:(int)arg1 formProperty:(id)arg2;
 - (void)submitAutomaticReaderActivation:(int)arg1;

@@ -23,6 +23,7 @@
 - (id)_workoutsPredicateForStartDate:(id)arg1 endDate:(id)arg2;
 - (id)initWithUnitController:(id)arg1 healthStore:(id)arg2;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 
 @end
 

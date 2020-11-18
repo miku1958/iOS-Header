@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_addedAmenities:1;
         unsigned int read_removedAmenities:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addedAmenities:1;
-        unsigned int wrote_removedAmenities:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,10 +37,6 @@
 - (void).cxx_destruct;
 - (int)StringAsAddedAmenities:(id)arg1;
 - (int)StringAsRemovedAmenities:(id)arg1;
-- (void)_addNoFlagsAddedAmenities:(int)arg1;
-- (void)_addNoFlagsRemovedAmenities:(int)arg1;
-- (void)_readAddedAmenities;
-- (void)_readRemovedAmenities;
 - (void)addAddedAmenities:(int)arg1;
 - (void)addRemovedAmenities:(int)arg1;
 - (id)addedAmenitiesAsString:(int)arg1;
@@ -58,7 +52,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

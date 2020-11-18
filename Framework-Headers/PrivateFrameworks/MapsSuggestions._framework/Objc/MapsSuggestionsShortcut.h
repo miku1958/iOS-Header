@@ -14,6 +14,7 @@
 @interface MapsSuggestionsShortcut : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isHidden;
+    BOOL _derivedFromMeCard;
     long long _type;
     NSString *_identifier;
     NSUUID *_storageIdentifier;
@@ -25,12 +26,14 @@
 
 @property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (copy, nonatomic) NSString *customName; // @synthesize customName=_customName;
+@property (nonatomic) BOOL derivedFromMeCard; // @synthesize derivedFromMeCard=_derivedFromMeCard;
 @property (copy, nonatomic) GEOMapItemStorage *geoMapItem; // @synthesize geoMapItem=_geoMapItem;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBackedPlaceholder;
 @property (nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
 @property (readonly, nonatomic) BOOL isSetupPlaceholder;
 @property (copy, nonatomic) NSString *originatingAddressString; // @synthesize originatingAddressString=_originatingAddressString;
+@property (nonatomic, getter=source, setter=setSource:) long long source;
 @property (copy, nonatomic) NSUUID *storageIdentifier; // @synthesize storageIdentifier=_storageIdentifier;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, copy, nonatomic) NSString *title;
@@ -39,27 +42,24 @@
 + (id)shortcutWithData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_isPlaceholder;
-- (id)_name;
-- (id)_originalName;
 - (void)addContact:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)data;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)identifierForStorage;
 - (id)initBackedPlaceholderWithType:(long long)arg1 identifier:(id)arg2 customName:(id)arg3;
 - (id)initBackedPlaceholderWithType:(long long)arg1 identifier:(id)arg2 originatingAddress:(id)arg3 customName:(id)arg4;
 - (id)initSetupPlaceholderOfType:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFavoriteItem:(id)arg1;
 - (id)initWithGEOMapItem:(id)arg1 customName:(id)arg2;
-- (id)initWithPinnedPlace:(id)arg1;
 - (id)initWithType:(long long)arg1 geoMapItem:(id)arg2 customName:(id)arg3;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2 geoMapItem:(id)arg3 customName:(id)arg4;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2 geoMapItem:(id)arg3 customName:(id)arg4 contacts:(id)arg5 isHidden:(BOOL)arg6 originatingAddress:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToPinnedPlace:(id)arg1;
+- (BOOL)isEqualToFavoriteItem:(id)arg1;
 - (BOOL)isEqualToShortcut:(id)arg1;
-- (int)pinnedStorageType;
 - (void)removeContact:(id)arg1;
 
 @end

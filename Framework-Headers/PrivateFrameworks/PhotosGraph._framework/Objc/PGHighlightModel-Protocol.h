@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSString, PHAssetCollection, PHPhotoLibrary;
+@class NSArray, NSString, PHAssetCollection, PHPhotoLibrary;
 @protocol PGHighlightModelChangeRequest;
 
 @protocol PGHighlightModel <NSObject>
@@ -18,6 +18,7 @@
 @property (nonatomic) unsigned short type;
 @property (readonly, nonatomic) NSString *uuid;
 
++ (NSArray *)fetchParentDayGroupHighlightsForDayHighlights:(NSArray *)arg1;
 - (id<PGHighlightModelChangeRequest>)changeRequest;
 - (double)faceAnalysisProgressForPhotoLibrary:(PHPhotoLibrary *)arg1;
 - (double)nonDefaultCurationScorePercentageForPhotoLibrary:(PHPhotoLibrary *)arg1;

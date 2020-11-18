@@ -41,7 +41,7 @@
     long long _clusterSequenceNumber;
     long long _qualityMeasure;
     NSString *_ageType;
-    NSString *_genderType;
+    NSString *_sexType;
     NSString *_eyesState;
     NSString *_smileType;
     NSString *_facialHairType;
@@ -69,7 +69,7 @@
 @property (nonatomic) unsigned int faceAlgorithmVersion; // @synthesize faceAlgorithmVersion=_faceAlgorithmVersion;
 @property (strong, nonatomic) PVFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 @property (nonatomic) NSString *facialHairType; // @synthesize facialHairType=_facialHairType;
-@property (nonatomic) NSString *genderType; // @synthesize genderType=_genderType;
+@property (nonatomic) NSString *genderType;
 @property (nonatomic) NSString *glassesType; // @synthesize glassesType=_glassesType;
 @property (copy, nonatomic) NSString *groupingIdentifier; // @synthesize groupingIdentifier=_groupingIdentifier;
 @property (nonatomic) NSString *hairColorType; // @synthesize hairColorType=_hairColorType;
@@ -93,6 +93,7 @@
 @property (nonatomic) double rightEyeX; // @synthesize rightEyeX=_rightEyeX;
 @property (nonatomic) double rightEyeY; // @synthesize rightEyeY=_rightEyeY;
 @property (nonatomic) double roll; // @synthesize roll=_roll;
+@property (nonatomic) NSString *sexType; // @synthesize sexType=_sexType;
 @property (nonatomic) double size; // @synthesize size=_size;
 @property (nonatomic) NSString *smileType; // @synthesize smileType=_smileType;
 @property (nonatomic) long long sourceHeight; // @synthesize sourceHeight=_sourceHeight;

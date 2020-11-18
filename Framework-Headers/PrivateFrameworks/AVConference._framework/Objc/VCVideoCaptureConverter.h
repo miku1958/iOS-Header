@@ -7,9 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
+#import <AVConference/VCVideoSink-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoCaptureConverter : NSObject <VCVideoCaptureClient>
+@interface VCVideoCaptureConverter : NSObject <VCVideoSink, VCVideoCaptureClient>
 {
     unsigned int _destinationFramerate;
     unsigned int _sourceFramerate;
@@ -20,15 +23,20 @@ __attribute__((visibility("hidden")))
     id _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int destinationFramerate; // @synthesize destinationFramerate=_destinationFramerate;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int sourceFramerate; // @synthesize sourceFramerate=_sourceFramerate;
+@property (readonly) Class superclass;
 
 - (void)avConferencePreviewError:(id)arg1;
+- (void)cameraAvailabilityDidChange:(BOOL)arg1;
 - (id)clientCaptureRule;
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithDelegate:(id)arg1;
-- (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (BOOL)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
 - (BOOL)processFrame:(struct opaqueCMSampleBuffer *)arg1;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)thermalLevelDidChange:(int)arg1;

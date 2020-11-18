@@ -6,22 +6,39 @@
 
 #import <VoiceShortcutClient/NSObject-Protocol.h>
 
-@class INShortcut, NSArray, NSString;
+@class INShortcut, NSArray, NSData, NSDictionary, NSString, VCSleepWorkflow, WFDatabaseObjectDescriptor, WFDialogRequest, WFRemoteImageDrawingContext, WFWorkflowQuery, WFWorkflowRunRequest, WFWorkflowRunningContext;
 
 @protocol VCVoiceShortcutManagerXPCInterface <NSObject>
+- (void)addDefaultShortcutsIfNecessaryWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)addVoiceShortcut:(INShortcut *)arg1 phrase:(NSString *)arg2 completion:(void (^)(VCVoiceShortcut *, NSError *))arg3;
 - (void)checkTriggerStateWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)checkTriggerStateWithKeyPath:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)createShortcutWithRecordData:(NSData *)arg1 name:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)createSleepWorkflow:(VCSleepWorkflow *)arg1 completion:(void (^)(VCConfiguredSleepWorkflow *, NSError *))arg2;
+- (void)deleteSleepWorkflowWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)deleteTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)deleteVoiceShortcutWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)deleteVoiceShortcutWithIdentifier:(NSString *)arg1 name:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)dismissPresentedContentWithCompletion:(void (^)(void))arg1;
+- (void)drawGlyphs:(NSArray *)arg1 withBackgroundColorValues:(NSArray *)arg2 intoContext:(WFRemoteImageDrawingContext *)arg3 completion:(void (^)(void))arg4;
+- (void)enqueueDialogRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completionHandler:(void (^)(WFDialogResponse *, NSError *))arg3;
 - (void)fireTriggerWithIdentifier:(NSString *)arg1 force:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)generateSingleUseTokenForWorkflowIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)getAccessibilityWorkflowWithIdentifier:(NSString *)arg1 completion:(void (^)(WFAccessibilityWorkflow *, NSError *))arg2;
+- (void)getAccessibilityWorkflowsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)getConfiguredTriggerDescriptionsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)getFirstUnsortedWorkflowWithCompletion:(void (^)(WFWorkflowDescriptor *, NSNumber *, NSError *))arg1;
 - (void)getNumberOfVoiceShortcutsWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)getResultsForWorkflowQuery:(WFWorkflowQuery *)arg1 resultClassName:(NSString *)arg2 completion:(void (^)(NSArray *, WFCoreDataResultState *, NSError *))arg3;
+- (void)getShareSheetWorkflowReferencesForExtensionMatchingDictionaries:(NSArray *)arg1 hostBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getShareSheetWorkflowsForExtensionMatchingDictionaries:(NSArray *)arg1 hostBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSiriPodcastsDatabaseURLWithCompletion:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg1;
+- (void)getSleepActionSuggestionsForAllAppsFilteringBySleep:(BOOL)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getSleepActionSuggestionsForAllAppsWithOptions:(unsigned long long)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(NSString *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(NSString *)arg1 shouldFilterBySleep:(BOOL)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)getValueForDescriptor:(WFDatabaseObjectDescriptor *)arg1 resultClassName:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)getVoiceShortcutWithIdentifier:(NSString *)arg1 completion:(void (^)(VCVoiceShortcut *, NSError *))arg2;
 - (void)getVoiceShortcutWithPhrase:(NSString *)arg1 completion:(void (^)(VCVoiceShortcut *, NSError *))arg2;
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
@@ -31,13 +48,14 @@
 - (void)refreshTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)requestDataMigration:(void (^)(BOOL, NSError *))arg1;
 - (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)runShortcutWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)runShortcutWithName:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)resetDefaultShortcutFlagsWithCompletion:(void (^)(NSError *))arg1;
+- (void)resumeWorkflowFromContext:(WFWorkflowRunningContext *)arg1 presentationMode:(unsigned long long)arg2 completion:(void (^)(NSError *, BOOL))arg3;
+- (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 context:(WFWorkflowRunningContext *)arg2 completion:(void (^)(NSError *, BOOL))arg3;
+- (void)sendAceCommandDictionary:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 inDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setShortcutSuggestions:(NSArray *)arg1 forAppWithBundleIdentifier:(NSString *)arg2;
+- (void)stopRunningWorkflowWithRunningContext:(WFWorkflowRunningContext *)arg1;
 - (void)unregisterTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)updateShortcutsVocabularyWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)updateVoiceShortcutWithIdentifier:(NSString *)arg1 phrase:(NSString *)arg2 shortcut:(INShortcut *)arg3 completion:(void (^)(VCVoiceShortcut *, NSError *))arg4;
-- (void)validateVoiceShortcutPhrases:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 @end
 

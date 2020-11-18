@@ -6,20 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
-@protocol OS_dispatch_queue;
+@class NSArray, NSDictionary, NSString, NSURL;
+@protocol MXMInstrumentDelegate, OS_dispatch_queue;
 
 @interface MXMInstrument : NSObject
 {
+    BOOL _didQuiesce;
     NSArray *_instrumentals;
-    CDStruct_8ec6d642 *_currentIteration;
+    NSURL *_performanceTraceFileURL;
+    NSString *_performanceTraceFileSandboxExtensionToken;
+    NSDictionary *_performanceTestConfiguration;
+    id<MXMInstrumentDelegate> _delegate;
+    CDStruct_33f31899 *_currentIteration;
     NSObject<OS_dispatch_queue> *_instrumentalsQueue;
 }
 
 @property BOOL active;
-@property CDStruct_8ec6d642 *currentIteration; // @synthesize currentIteration=_currentIteration;
+@property CDStruct_33f31899 *currentIteration; // @synthesize currentIteration=_currentIteration;
+@property (strong, nonatomic) id<MXMInstrumentDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly) BOOL didQuiesce; // @synthesize didQuiesce=_didQuiesce;
 @property (readonly, nonatomic) NSArray *instrumentals; // @synthesize instrumentals=_instrumentals;
 @property (readonly) NSObject<OS_dispatch_queue> *instrumentalsQueue; // @synthesize instrumentalsQueue=_instrumentalsQueue;
+@property (strong) NSDictionary *performanceTestConfiguration; // @synthesize performanceTestConfiguration=_performanceTestConfiguration;
+@property (readonly) NSString *performanceTraceFileSandboxExtensionToken; // @synthesize performanceTraceFileSandboxExtensionToken=_performanceTraceFileSandboxExtensionToken;
+@property (readonly) NSURL *performanceTraceFileURL; // @synthesize performanceTraceFileURL=_performanceTraceFileURL;
 
 + (id)activeInstrument;
 + (id)instrumentWithInstrumentals:(id)arg1;
@@ -27,9 +37,9 @@
 - (void).cxx_destruct;
 - (id)_defaultValueWithOption:(id)arg1;
 - (id)_makeInstrumentalsForIteration:(id)arg1 shouldCopy:(BOOL)arg2;
-- (void)_prepareIteration:(CDStruct_8ec6d642 *)arg1 options:(id)arg2 instrumentals:(id)arg3 errors:(id)arg4;
-- (void)_setupAndRunWithIteration:(CDStruct_8ec6d642 *)arg1 spawnThread:(BOOL)arg2 attrs:(struct _opaque_pthread_attr_t *)arg3 pthread:(struct _opaque_pthread_t **)arg4 returnCode:(unsigned long long *)arg5;
-- (id)_transitionWithState:(unsigned long long)arg1 iteration:(const CDStruct_8ec6d642 *)arg2 instrumentals:(id)arg3;
+- (void)_prepareIteration:(CDStruct_33f31899 *)arg1 options:(id)arg2 instrumentals:(id)arg3 errors:(id)arg4;
+- (void)_setupAndRunWithIteration:(CDStruct_33f31899 *)arg1 spawnThread:(BOOL)arg2 attrs:(struct _opaque_pthread_attr_t *)arg3 pthread:(struct _opaque_pthread_t **)arg4 returnCode:(unsigned long long *)arg5;
+- (id)_transitionWithState:(unsigned long long)arg1 iteration:(const CDStruct_33f31899 *)arg2 instrumentals:(id)arg3;
 - (id)_validOptionKeys;
 - (id)_valueWithOption:(id)arg1 userOptions:(id)arg2;
 - (void)dealloc;
@@ -38,6 +48,7 @@
 - (id)measureAutomatically:(unsigned long long)arg1 options:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)measureBlock:(CDUnknownBlockType)arg1;
 - (id)measureWithOptions:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)quiesceDidUpdate:(BOOL)arg1 error:(id)arg2;
 - (void)start;
 - (BOOL)startWithError:(id *)arg1;
 - (id)stop;

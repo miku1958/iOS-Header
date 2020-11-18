@@ -6,12 +6,13 @@
 
 #import <ShazamKit/NSObject-Protocol.h>
 
-@class NSError, SHMatch, SHMatcherResponse, SHSignature;
+@class NSError, SHMatcherResponse, SHSignature;
 @protocol SHMatcher;
 
 @protocol SHMatcherDelegate <NSObject>
-- (void)matcher:(id<SHMatcher>)arg1 didFailForSignature:(SHSignature *)arg2 apiResponse:(SHMatcherResponse *)arg3 withError:(NSError *)arg4;
-- (void)matcher:(id<SHMatcher>)arg1 didFindMatch:(SHMatch *)arg2 forSignature:(SHSignature *)arg3 apiResponse:(SHMatcherResponse *)arg4;
-- (void)matcher:(id<SHMatcher>)arg1 didNotFindMatchForSignature:(SHSignature *)arg2 apiResponse:(SHMatcherResponse *)arg3;
+- (void)didFinishForMatcher:(id<SHMatcher>)arg1;
+- (void)matcher:(id<SHMatcher>)arg1 didFailForSignature:(SHSignature *)arg2 matcherResponse:(SHMatcherResponse *)arg3 withError:(NSError *)arg4;
+- (void)matcher:(id<SHMatcher>)arg1 didFindMatchingResponse:(SHMatcherResponse *)arg2;
+- (void)matcher:(id<SHMatcher>)arg1 didNotFindMatchForSignature:(SHSignature *)arg2 matcherResponse:(SHMatcherResponse *)arg3;
 @end
 

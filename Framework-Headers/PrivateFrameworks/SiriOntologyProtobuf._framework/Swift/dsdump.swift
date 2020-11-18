@@ -239,14 +239,6 @@
 	// class base protocol
  }
 
- struct __C._ConditionalAllocationBuffer {
-
-	// Properties
-	var memory : UnsafeMutableRawPointer
-	var capacity : Int
-	var onStack : Bool
- }
-
  enum SiriOntologyProtobuf.BinaryEncodingError {
 
 	// Properties
@@ -258,7 +250,7 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hasher : ÌŒ // +0x0
+	var hasher : Ø” // +0x0
  }
 
  struct SiriOntologyProtobuf.JSONScanner {
@@ -311,11 +303,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var kind : Kind // +0x0
 	var cardinality : Cardinality // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : ﬂÃ // +0x1c
+	var number : ˘– // +0x1c
 	var name : String // +0x20
 	var typeURL : String // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oneofIndex : ﬂÃ // +0x40
+	var oneofIndex : ˘– // +0x40
 	var packed : Bool // +0x44
 	var options : Google_Protobuf_Option // +0x48
 	var jsonName : String // +0x50
@@ -370,7 +362,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : ﬂÃ // +0x10
+	var number : ˘– // +0x10
 	var options : Google_Protobuf_Option // +0x18
 	var unknownFields : UnknownStorage // +0x20
  }
@@ -482,13 +474,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriOntologyProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _name : String // +0x10 (0x10)
-	var _methods : Google_Protobuf_Method // +0x20 (0x8)
-	var _options : Google_Protobuf_Option // +0x28 (0x8)
-	var _version : String // +0x30 (0x10)
-	var _sourceContext : Google_Protobuf_SourceContext // +0x40 (0x20)
-	var _mixins : Google_Protobuf_Mixin // +0x60 (0x8)
-	var _syntax : Google_Protobuf_Syntax // +0x68 (0x9)
+	var _name : String
+	var _methods : Google_Protobuf_Method
+	var _options : Google_Protobuf_Option
+	var _version : String
+	var _sourceContext : Google_Protobuf_SourceContext
+	var _mixins : Google_Protobuf_Mixin
+	var _syntax : Google_Protobuf_Syntax
 
 	// Swift methods
  }
@@ -508,7 +500,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : ˚… // +0x0
+	var separator : ìÕ // +0x0
 	var encoder : JSONEncoder // +0x18
 	let options : JSONEncodingOptions // +0x22
  }
@@ -567,9 +559,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : … // +0x10
+	var _start : •Ã // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : … // +0x18
+	var _end : •Ã // +0x18
  }
 
  struct SiriOntologyProtobuf.Google_Protobuf_ExtensionRangeOptions {
@@ -637,9 +629,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : … // +0x10
+	var _start : •Ã // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : … // +0x18
+	var _end : •Ã // +0x18
  }
 
  struct SiriOntologyProtobuf.Google_Protobuf_EnumValueDescriptorProto {
@@ -782,12 +774,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unknownFields : UnknownStorage // +0x8
 	var _identifierValue : String? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _positiveIntValue : …» // +0x28
+	var _positiveIntValue : aÃ // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _negativeIntValue : I» // +0x38
+	var _negativeIntValue : ·À // +0x38
 	var _doubleValue : Double? // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _stringValue : Û¡ // +0x58
+	var _stringValue : Î≈ // +0x58
 	var _aggregateValue : String? // +0x68
  }
 
@@ -834,9 +826,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unknownFields : UnknownStorage // +0x8
 	var _sourceFile : String? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _begin : … // +0x28
+	var _begin : •Ã // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : … // +0x30
+	var _end : •Ã // +0x30
  }
 
  class SiriOntologyProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -881,9 +873,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : …
+	var _start : •Ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : …
+	var _end : •Ã
 	var _options : Google_Protobuf_ExtensionRangeOptions
 
 	// Swift methods
@@ -894,14 +886,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _name : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _number : …
+	var _number : •Ã
 	var _label : Label
 	var _type : TypeEnum
 	var _typeName : String?
 	var _extendee : String?
 	var _defaultValue : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _oneofIndex : …
+	var _oneofIndex : •Ã
 	var _jsonName : String?
 	var _options : Google_Protobuf_FieldOptions
 
@@ -934,7 +926,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _name : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _number : …
+	var _number : •Ã
 	var _options : Google_Protobuf_EnumValueOptions
 
 	// Swift methods
@@ -966,27 +958,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriOntologyProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _javaPackage : String? // +0x10 (0x10)
-	var _javaOuterClassname : String? // +0x20 (0x10)
-	var _javaMultipleFiles : Bool? // +0x30 (0x1)
-	var _javaGenerateEqualsAndHash : Bool? // +0x31 (0x1)
-	var _javaStringCheckUtf8 : Bool? // +0x32 (0x1)
-	var _optimizeFor : OptimizeMode // +0x33 (0x1)
-	var _goPackage : String? // +0x38 (0x10)
-	var _ccGenericServices : Bool? // +0x48 (0x1)
-	var _javaGenericServices : Bool? // +0x49 (0x1)
-	var _pyGenericServices : Bool? // +0x4a (0x1)
-	var _phpGenericServices : Bool? // +0x4b (0x1)
-	var _deprecated : Bool? // +0x4c (0x1)
-	var _ccEnableArenas : Bool? // +0x4d (0x1)
-	var _objcClassPrefix : String? // +0x50 (0x10)
-	var _csharpNamespace : String? // +0x60 (0x10)
-	var _swiftPrefix : String? // +0x70 (0x10)
-	var _phpClassPrefix : String? // +0x80 (0x10)
-	var _phpNamespace : String? // +0x90 (0x10)
-	var _phpMetadataNamespace : String? // +0xa0 (0x10)
-	var _rubyPackage : String? // +0xb0 (0x10)
-	var _uninterpretedOption : Google_Protobuf_UninterpretedOption // +0xc0 (0x8)
+	var _javaPackage : String?
+	var _javaOuterClassname : String?
+	var _javaMultipleFiles : Bool?
+	var _javaGenerateEqualsAndHash : Bool?
+	var _javaStringCheckUtf8 : Bool?
+	var _optimizeFor : OptimizeMode
+	var _goPackage : String?
+	var _ccGenericServices : Bool?
+	var _javaGenericServices : Bool?
+	var _pyGenericServices : Bool?
+	var _phpGenericServices : Bool?
+	var _deprecated : Bool?
+	var _ccEnableArenas : Bool?
+	var _objcClassPrefix : String?
+	var _csharpNamespace : String?
+	var _swiftPrefix : String?
+	var _phpClassPrefix : String?
+	var _phpNamespace : String?
+	var _phpMetadataNamespace : String?
+	var _rubyPackage : String?
+	var _uninterpretedOption : Google_Protobuf_UninterpretedOption
 
 	// Swift methods
  }
@@ -994,10 +986,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriOntologyProtobuf.DoubleParser : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var work : UnsafeMutableRawBufferPointer // +0x10 (0x10)
+	var work : UnsafeMutableRawBufferPointer
 
 	// Swift methods
-	0x7fb70  func <stripped> // method 
+	0x7ad20  func DoubleParser.utf8ToDouble(bytes:start:end:) // method 
+	0x7ad50  func DoubleParser.utf8ToDouble(bytes:count:) // method 
+	0x7ac60  class func DoubleParser.__allocating_init() // init 
  }
 
  struct SiriOntologyProtobuf.TextFormatEncodingOptions {
@@ -1096,13 +1090,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unknownFields : UnknownStorage // +0x10
  }
 
+ enum SiriOntologyProtobuf.ZigZag { }
+
  struct SiriOntologyProtobuf.Google_Protobuf_Timestamp {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : ç¬ // +0x0
+	var seconds : Ò« // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : ﬂÃ // +0x8
+	var nanos : ˘– // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1126,7 +1122,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : º // +0x0
+	var data : œ¡ // +0x0
  }
 
  struct SiriOntologyProtobuf.JSONEncoder {
@@ -1135,7 +1131,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : Å¬ // +0x8
+	var separator : ·« // +0x8
  }
 
  struct SiriOntologyProtobuf.BinaryEncodingVisitor {
@@ -1167,9 +1163,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scanner : TextFormatScanner // +0x0
 	var fieldCount : Int // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var terminator : Å¬ // +0x48
+	var terminator : ·« // +0x48
 	var fieldNameMap : _NameMap // +0x50
 	var messageType : Message // +0x70
+ }
+
+ struct SiriOntologyProtobuf.FieldTag {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : Û∆ // +0x0
  }
 
  struct SiriOntologyProtobuf.Google_Protobuf_Empty {
@@ -1246,7 +1249,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ç¬ // +0x0
+	var value : Ò« // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1254,7 +1257,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : G¡ // +0x0
+	var value : ß∆ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1262,7 +1265,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ﬂÃ // +0x0
+	var value : ˘– // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1270,7 +1273,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : -¡ // +0x0
+	var value : Û∆ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1292,7 +1295,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : º // +0x0
+	var value : œ¡ // +0x0
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1337,9 +1340,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var options : BinaryDecodingOptions // +0x68
 	var recursionBudget : Int // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownData : Û¡ // +0x80
+	var unknownData : Î≈ // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownOverride : Û¡ // +0x90
+	var unknownOverride : Î≈ // +0x90
  }
 
  struct SiriOntologyProtobuf.JSONDecoder {
@@ -1365,9 +1368,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : ç¬ // +0x0
+	var seconds : Ò« // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : ﬂÃ // +0x8
+	var nanos : ˘– // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1382,6 +1385,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case fixed32  
  }
 
+ enum SiriOntologyProtobuf.MessageSet { }
+
+ enum SiriOntologyProtobuf.FieldNumbers { }
+
+ enum SiriOntologyProtobuf.Tags { }
+
  struct SiriOntologyProtobuf.SimpleExtensionMap {
 
 	// Properties
@@ -1391,24 +1400,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriOntologyProtobuf.AnyMessageStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _typeURL : String // +0x10 (0x10)
-	var state : InternalState // +0x20 (0x29)
+	var _typeURL : String
+	var state : InternalState
 
 	// Swift methods
-	0xf2880  func <stripped> // getter 
-	0xf2d40  func <stripped> // method 
-	0xf2e20  func <stripped> // method 
-	0xf3250  func <stripped> // method 
+	0xdf530  func AnyMessageStorage._typeURL.getter // getter 
+	0xdf570  func AnyMessageStorage._typeURL.setter // setter 
+	0xdf5b0  func AnyMessageStorage._typeURL.modify // modifyCoroutine 
+	0xdf640  func AnyMessageStorage._value.getter // getter 
+	0xdfa50  func AnyMessageStorage._value.setter // setter 
+	0xdfaa0  func AnyMessageStorage._value.modify // modifyCoroutine 
+	0xdfbe0  func AnyMessageStorage.state.getter // getter 
+	0xdfc20  func AnyMessageStorage.state.setter // setter 
+	0xdfc70  func AnyMessageStorage.state.modify // modifyCoroutine 
+	0xdafc0  class func AnyMessageStorage.__allocating_init(copying:) // init 
+	0xdfdf0  func AnyMessageStorage.isA<A>(_:) // method 
+	0xdfec0  func AnyMessageStorage.unpackTo<A>(target:extensions:options:) // method 
+	0xe0300  func AnyMessageStorage.preTraverse() // method 
  }
 
  enum SiriOntologyProtobuf.InternalState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case binary : º
+	case binary : œ¡
 	case message : Message
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case contentJSON : _∂
+	case contentJSON : õº
  }
 
  enum SiriOntologyProtobuf.Google_Protobuf_NullValue {
@@ -1453,10 +1471,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriOntologyProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _kind : OneOf_Kind // +0x10 (0x18)
+	var _kind : OneOf_Kind
 
 	// Swift methods
  }
+
+ enum SiriOntologyProtobuf.Varint { }
 
  enum SiriOntologyProtobuf.BinaryDelimited { }
 
@@ -1478,10 +1498,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var interned :  empty-list  // +0x10 (0x8)
+	var interned :  empty-list 
 
 	// Swift methods
-	0xffed0  func <stripped> // method 
+	0x102850  func InternPool.intern(utf8:) // method 
  }
 
  struct SiriOntologyProtobuf._NameMap {
@@ -1491,19 +1511,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var numberToNameMap : Names // +0x8
 	var protoToNumberMap : Name // +0x10
 	var jsonToNumberMap : Name // +0x18
- }
-
- enum SiriOntologyProtobuf.NameDescription {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case same : 	π
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case standard : 	π
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unique : ˚∏
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case aliased : Â∏
  }
 
  struct SiriOntologyProtobuf.Name {
@@ -1521,10 +1528,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var proto : Name // +0x28
  }
 
+ enum SiriOntologyProtobuf.NameDescription {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case same : ;Ω
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case standard : ;Ω
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unique : -Ω
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case aliased : Ω
+ }
+
  enum SiriOntologyProtobuf.NameString {
 
 	// Properties
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case staticString : u∏
+	case staticString : ˚º
  }

@@ -8,12 +8,12 @@
 
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFClassRegistry, HMFUnfairLock, NSArray, NSMutableDictionary, NSString;
+@class HMFClassRegistry, NSArray, NSMutableDictionary, NSString;
 
 @interface HMFPreferences : HMFObject <HMFObject>
 {
+    struct os_unfair_recursive_lock_s _lock;
     NSMutableDictionary *_preferences;
-    HMFUnfairLock *_lock;
     HMFClassRegistry *_classRegistry;
 }
 
@@ -22,7 +22,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property (readonly, copy) NSArray *preferences;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;

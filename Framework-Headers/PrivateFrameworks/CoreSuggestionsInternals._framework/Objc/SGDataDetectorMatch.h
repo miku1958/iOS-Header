@@ -8,11 +8,14 @@
 
 #import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, NSTimeZone;
+@class NSDate, NSString, NSTimeZone, SGPostalAddressComponents;
 
 @interface SGDataDetectorMatch : NSObject <NSSecureCoding>
 {
     BOOL _allDay;
+    BOOL _inferredDate;
+    BOOL _approximateTime;
+    BOOL _partialDate;
     unsigned int _matchType;
     int _parsecDomain;
     NSString *_valueString;
@@ -20,32 +23,53 @@
     NSString *_parsecWikidataQid;
     NSDate *_detectedDate;
     NSTimeZone *_detectedTimeZone;
+    NSDate *_detectedEndDate;
+    NSTimeZone *_detectedEndTimeZone;
+    SGPostalAddressComponents *_postalAddressComponents;
     struct _NSRange _range;
     struct _NSRange _labelRange;
     struct _NSRange _valueRange;
 }
 
 @property (readonly, nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
+@property (readonly, nonatomic) BOOL approximateTime; // @synthesize approximateTime=_approximateTime;
 @property (readonly, nonatomic) NSDate *detectedDate; // @synthesize detectedDate=_detectedDate;
+@property (readonly, nonatomic) NSDate *detectedEndDate; // @synthesize detectedEndDate=_detectedEndDate;
+@property (readonly, nonatomic) NSTimeZone *detectedEndTimeZone; // @synthesize detectedEndTimeZone=_detectedEndTimeZone;
 @property (readonly, nonatomic) NSTimeZone *detectedTimeZone; // @synthesize detectedTimeZone=_detectedTimeZone;
+@property (readonly, nonatomic) BOOL inferredDate; // @synthesize inferredDate=_inferredDate;
 @property (readonly, nonatomic) struct _NSRange labelRange; // @synthesize labelRange=_labelRange;
 @property (readonly, nonatomic) NSString *labelString; // @synthesize labelString=_labelString;
 @property (readonly, nonatomic) unsigned int matchType; // @synthesize matchType=_matchType;
 @property (readonly, nonatomic) int parsecDomain; // @synthesize parsecDomain=_parsecDomain;
 @property (readonly, nonatomic) NSString *parsecWikidataQid; // @synthesize parsecWikidataQid=_parsecWikidataQid;
+@property (readonly, nonatomic) BOOL partialDate; // @synthesize partialDate=_partialDate;
+@property (readonly, nonatomic) SGPostalAddressComponents *postalAddressComponents; // @synthesize postalAddressComponents=_postalAddressComponents;
 @property (readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (readonly, nonatomic) struct _NSRange valueRange; // @synthesize valueRange=_valueRange;
 @property (readonly, nonatomic) NSString *valueString; // @synthesize valueString=_valueString;
 
++ (id)_detectionsInPlainText:(id)arg1 withEligibleRegions:(id)arg2 ddSignature:(struct _NSRange *)arg3 baseDate:(id)arg4;
++ (BOOL)approximateTimeForDataDetectorResult:(struct __DDResult *)arg1;
++ (id)detectionsAndSignatureInText:(id)arg1 eligibleRegions:(id)arg2 baseDate:(id)arg3;
++ (id)detectionsInPlainText:(id)arg1 baseDate:(id)arg2;
++ (id)detectionsInPlainText:(id)arg1 withEligibleRegions:(id)arg2;
++ (id)detectionsInPlainText:(id)arg1 withEligibleRegions:(id)arg2 baseDate:(id)arg3;
++ (BOOL)inferredDateForDataDetectorResult:(struct __DDResult *)arg1;
++ (void)initialize;
++ (BOOL)partialDateForDataDetectorResult:(struct __DDResult *)arg1;
++ (void)resetUnusedScannersForTesting;
++ (BOOL)stringHasDatesOrTimes:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDetectedDate:(id)arg1 detectedTimeZone:(id)arg2 matchType:(unsigned int)arg3 range:(struct _NSRange)arg4 labelRange:(struct _NSRange)arg5 labelString:(id)arg6 valueRange:(struct _NSRange)arg7 valueString:(id)arg8 allDay:(BOOL)arg9;
+- (id)initWithDetectedDate:(id)arg1 detectedTimeZone:(id)arg2 detectedEndDate:(id)arg3 detectedEndTimeZone:(id)arg4 matchType:(unsigned int)arg5 range:(struct _NSRange)arg6 labelRange:(struct _NSRange)arg7 labelString:(id)arg8 valueRange:(struct _NSRange)arg9 valueString:(id)arg10 allDay:(BOOL)arg11 inferredDate:(BOOL)arg12 approximateTime:(BOOL)arg13 partialDate:(BOOL)arg14;
 - (id)initWithLookupHintInDomain:(int)arg1 range:(struct _NSRange)arg2 labelRange:(struct _NSRange)arg3 labelString:(id)arg4 valueRange:(struct _NSRange)arg5 valueString:(id)arg6 qid:(id)arg7;
 - (id)initWithMatchType:(unsigned int)arg1 range:(struct _NSRange)arg2 labelRange:(struct _NSRange)arg3 labelString:(id)arg4 valueRange:(struct _NSRange)arg5 valueString:(id)arg6;
+- (id)initWithMatchType:(unsigned int)arg1 range:(struct _NSRange)arg2 labelRange:(struct _NSRange)arg3 labelString:(id)arg4 valueRange:(struct _NSRange)arg5 valueString:(id)arg6 postalAddressComponents:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDataDetectorMatch:(id)arg1;
 

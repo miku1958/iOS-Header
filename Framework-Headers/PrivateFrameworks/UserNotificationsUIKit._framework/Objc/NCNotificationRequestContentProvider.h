@@ -32,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *icons;
 @property (readonly, nonatomic) NSArray *interfaceActions;
+@property (readonly, copy, nonatomic) CDUnknownBlockType nilAction;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property (readonly, nonatomic, getter=isNumberOfLinesInfinite) BOOL numberOfLinesInfinite;
 @property (copy, nonatomic) NSArray *overriddenActions; // @synthesize overriddenActions=_overriddenActions;

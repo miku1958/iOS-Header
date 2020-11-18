@@ -17,28 +17,25 @@
     unsigned int _resourceType;
     unsigned int _version;
     unsigned int _recipeID;
-    unsigned int _orientation;
     id<PLUniformTypeIdentifierIdentity> _uniformTypeIdentifierID;
-    long long _unorientedWidth;
-    long long _unorientedHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
 @property (readonly, nonatomic) unsigned int recipeID; // @synthesize recipeID=_recipeID;
 @property (readonly, nonatomic) unsigned int resourceType; // @synthesize resourceType=_resourceType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID; // @synthesize uniformTypeIdentifierID=_uniformTypeIdentifierID;
-@property (readonly, nonatomic) long long unorientedHeight; // @synthesize unorientedHeight=_unorientedHeight;
-@property (readonly, nonatomic) long long unorientedWidth; // @synthesize unorientedWidth=_unorientedWidth;
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 
++ (id)dictionaryRepresentationFromResourceIdentity:(id)arg1;
 + (id)imageRequestResourceForDataStoreKey:(id)arg1 store:(id)arg2 assetObjectID:(id)arg3 context:(id)arg4;
++ (id)possibleClassesInDictionaryRepresentation;
 - (void).cxx_destruct;
-- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithResource:(id)arg1;
+- (id)initWithResourceType:(unsigned int)arg1 version:(unsigned int)arg2 recipeID:(unsigned int)arg3 uti:(id)arg4 conformsToTypes:(long long)arg5;
 
 @end
 

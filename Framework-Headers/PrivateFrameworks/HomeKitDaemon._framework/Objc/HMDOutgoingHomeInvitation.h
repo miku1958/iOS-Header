@@ -9,9 +9,11 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 
 @class HMDUser, NSArray, NSString, NSUUID;
+@protocol HMFLocking;
 
 @interface HMDOutgoingHomeInvitation : HMDHomeInvitation <HMDBackingStoreObjectProtocol>
 {
+    id<HMFLocking> _lock;
     BOOL _responseReceived;
     NSArray *_operationIdentifiers;
     NSUUID *_uuid;

@@ -9,6 +9,7 @@
 @class UIView;
 
 @protocol CKNavigationBarCanvasViewDelegate <NSObject>
+- (BOOL)shouldShowAvatarView;
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForView:(UIView *)arg1;
 @end
 

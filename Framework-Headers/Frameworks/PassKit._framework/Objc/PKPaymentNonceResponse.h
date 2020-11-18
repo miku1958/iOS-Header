@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentWebServiceResponse.h>
+#import <PassKitCore/PKPaymentAugmentBaseResponse.h>
 
 @class NSData;
 
-@interface PKPaymentNonceResponse : PKPaymentWebServiceResponse
+@interface PKPaymentNonceResponse : PKPaymentAugmentBaseResponse
 {
     NSData *_nonceData;
 }

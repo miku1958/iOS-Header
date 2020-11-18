@@ -15,13 +15,11 @@
 @interface _INPBLocalizedProject : PBCodable <_INPBLocalizedProject, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBAppNames *_appNames;
     _INPBIntentVocabulary *_intentVocabulary;
     _INPBLanguageTag *_language;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBAppNames *appNames; // @synthesize appNames=_appNames;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

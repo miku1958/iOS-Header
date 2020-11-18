@@ -8,7 +8,7 @@
 
 #import <FamilyCircle/FAFamilySetupPrompterDelegate-Protocol.h>
 
-@class FAFamilySetupPrompter, NSString, SSAccount, UIViewController;
+@class ACAccount, FAFamilySetupPrompter, NSString, UIViewController;
 
 @interface FAFamilySettings : FAFamilyCircleRequest <FAFamilySetupPrompterDelegate>
 {
@@ -16,21 +16,22 @@
     FAFamilySettings *_retainedSelf;
     BOOL _isFirstRun;
     UIViewController *_presentingViewController;
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property (strong) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 @property BOOL isFirstRun; // @synthesize isFirstRun=_isFirstRun;
 @property UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_launchPrefsUsingDaemon;
+- (void)_launchPrefsUsingDaemonWithOptions:(id)arg1;
 - (void)familySetupPrompterDidFinish:(id)arg1;
 - (void)launchiCloudFamilySettings;
+- (void)launchiCloudFamilySettingsWithOptions:(id)arg1;
 
 @end
 

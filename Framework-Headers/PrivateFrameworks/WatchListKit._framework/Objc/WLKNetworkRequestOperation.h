@@ -19,6 +19,7 @@
     long long _responseStatusCode;
     NSData *_data;
     NSError *_error;
+    long long _resourceFetchType;
     AMSURLRequestEncoder *_encoder;
     AMSURLSession *_session;
     NSURLSessionDataTask *_task;
@@ -35,6 +36,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSURLRequest *request; // @synthesize request=_request;
+@property (nonatomic) long long resourceFetchType; // @synthesize resourceFetchType=_resourceFetchType;
 @property (nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (strong, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property (nonatomic) unsigned long long signpostIdentifier; // @synthesize signpostIdentifier=_signpostIdentifier;
@@ -50,8 +52,11 @@
 - (void)executionDidBegin;
 - (void)finishExecutionIfPossible;
 - (void)handleResult:(id)arg1 error:(id)arg2;
+- (id)httpHeaderMaxAge;
+- (id)httpHeaderResponseDate;
 - (id)init;
 - (id)initWithURLRequest:(id)arg1 options:(long long)arg2;
+- (id)originalExpirationDate;
 - (void)prepareAndStartNetworkRequest;
 - (void)prepareURLRequest:(CDUnknownBlockType)arg1;
 - (void)processResponse;

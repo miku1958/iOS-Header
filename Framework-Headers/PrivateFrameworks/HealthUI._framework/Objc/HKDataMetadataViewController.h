@@ -45,7 +45,7 @@
 - (void)dealloc;
 - (id)defaultPredicateForSampleType:(id)arg1;
 - (void)finishedAggregateQuery;
-- (id)initWithSample:(id)arg1 usingInsetStyling:(BOOL)arg2 delegate:(id)arg3;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(BOOL)arg2 profileName:(id)arg3 delegate:(id)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

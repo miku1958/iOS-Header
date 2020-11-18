@@ -44,8 +44,13 @@
 @property (nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 
 + (id)HIITPrototype;
++ (id)coolDownPrototype;
++ (id)coreTrainingPrototype;
++ (id)dancePrototype;
 + (id)ellipticalPrototype;
++ (id)functionalStrengthTrainingPrototype;
 + (id)hikingPrototype;
++ (id)pickRandomWorkoutFrom:(id)arg1;
 + (id)runningPrototype;
 + (id)swimmingPrototype;
 + (id)thirdPartyWorkoutPrototype;

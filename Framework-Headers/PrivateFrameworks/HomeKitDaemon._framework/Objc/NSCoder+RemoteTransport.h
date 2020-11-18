@@ -10,6 +10,7 @@
 
 @interface NSCoder (RemoteTransport)
 
+@property (readonly) unsigned long long hmd_entitlements;
 @property (readonly) unsigned long long hmd_homeManagerOptions;
 @property (readonly) HMFMessage *hmd_message;
 @property (readonly, getter=isSharedUser) BOOL sharedUser;

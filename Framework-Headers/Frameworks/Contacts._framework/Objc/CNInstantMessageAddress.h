@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
++ (CDUnknownBlockType)Username;
 + (id)instantMessageAddressWithDictionaryRepresentation:(id)arg1;
 + (id)localizedStringForKey:(id)arg1;
 + (id)localizedStringForService:(id)arg1;

@@ -18,12 +18,12 @@
 + (id)sharedLayoutManager;
 - (struct CGRect)_accessoryRectForCell:(id)arg1 offscreen:(BOOL)arg2;
 - (struct CGRect)_accessoryRectForCell:(id)arg1 offscreen:(BOOL)arg2 rowWidth:(double)arg3;
-- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(BOOL)arg2;
-- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(BOOL)arg2 rowWidth:(double)arg3;
-- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 forIndentedState:(BOOL)arg2;
-- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 forIndentedState:(BOOL)arg2 rowWidth:(double)arg3;
-- (struct CGRect)_backgroundRectForCell:(id)arg1 forIndentedState:(BOOL)arg2;
-- (struct CGRect)_backgroundRectForCell:(id)arg1 forIndentedState:(BOOL)arg2 rowWidth:(double)arg3;
+- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1;
+- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1;
+- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)_backgroundRectForCell:(id)arg1;
+- (struct CGRect)_backgroundRectForCell:(id)arg1 rowWidth:(double)arg2;
 - (struct CGRect)_contentRectForCell:(id)arg1 forEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
 - (struct CGRect)_contentRectForCell:(id)arg1 forEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3 rowWidth:(double)arg4;
 - (double)_contentRectLeadingOffsetForCell:(id)arg1 editingState:(BOOL)arg2 rowWidth:(double)arg3;

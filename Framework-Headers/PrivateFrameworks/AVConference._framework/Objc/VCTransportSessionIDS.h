@@ -6,40 +6,29 @@
 
 #import <AVConference/VCTransportSession.h>
 
-#import <AVConference/VCConnectionManagerDelegate-Protocol.h>
-#import <AVConference/VCIDSSessionInfoSynchronizerDelegate-Protocol.h>
-
-@class NSString, VCDatagramChannelIDS, VCIDSSessionInfoSynchronizer;
+@class NSString, VCDatagramChannelIDS;
 
 __attribute__((visibility("hidden")))
-@interface VCTransportSessionIDS : VCTransportSession <VCConnectionManagerDelegate, VCIDSSessionInfoSynchronizerDelegate>
+@interface VCTransportSessionIDS : VCTransportSession
 {
+    VCDatagramChannelIDS *_datagramChannel;
     int _socket;
     NSString *_destination;
-    VCDatagramChannelIDS *_datagramChannel;
     BOOL _requireEncryptionInfo;
-    VCIDSSessionInfoSynchronizer *_sessionInfoSynchronizer;
     BOOL _isIDSDCEventUsageErrorReported;
-    BOOL _isWiFiAssistActive;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *destination; // @synthesize destination=_destination;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) VCIDSSessionInfoSynchronizer *sessionInfoSynchronizer; // @synthesize sessionInfoSynchronizer=_sessionInfoSynchronizer;
 @property (nonatomic) int socket; // @synthesize socket=_socket;
-@property (readonly) Class superclass;
 
-- (void)VCIDSSessionInfoSynchronizer:(void *)arg1 sendVCIDSSessionInfoRequest:(id)arg2;
-- (void)connectionCallback:(id)arg1 isInitialConnection:(BOOL)arg2;
+- (void)cleanupDatagramChannel;
 - (id)connectionSetupPiggybackBlob;
+- (id)datagramChannel;
 - (void)dealloc;
-- (void)didEnableDuplication:(BOOL)arg1 activeConnection:(id)arg2;
-- (void)discardConnection:(id)arg1;
 - (void)dispatchedProcessDatagramChannelEventInfo:(id)arg1;
 - (BOOL)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (void)handleCellularMTUChanged:(id)arg1;
+- (void)handleCellularSoMaskChanged:(id)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
 - (void)handleDefaultLinkUpdatedWithInfo:(id)arg1;
 - (void)handleIDSEncryptionInfoEvent:(id)arg1;
@@ -47,23 +36,21 @@ __attribute__((visibility("hidden")))
 - (void)handleLinkConnectedWithInfo:(id)arg1;
 - (void)handleLinkDisconnectedWithInfo:(id)arg1;
 - (void)handlePreConnectionDataReceived:(id)arg1;
+- (void)handleProbingResponse:(id)arg1;
 - (void)handleRATChanged:(id)arg1;
 - (void)handleUpdateRemoteSessionInfo:(id)arg1;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
-- (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(BOOL)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4 isMultiwaySession:(BOOL)arg5;
-- (void)optOutAllStreamsForConnection:(id)arg1;
-- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(BOOL)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4;
+- (int)onStart;
+- (void)onStop;
 - (void)processDatagramChannelEventInfo:(id)arg1;
-- (void)resetParticipantGenerationCounter;
+- (unsigned int)remoteDeviceVersionIDS;
 - (void)setConnectionSetupPiggybackBlob:(id)arg1;
 - (void)setConnectionSetupTime;
-- (void)setDefaultLink:(id)arg1;
 - (void)setPiggybackBlobPreference;
 - (void)setQuickRelayServerProvider:(int)arg1;
-- (void)setWiFiAssist:(BOOL)arg1;
 - (void)start;
 - (void)stop;
-- (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 
 @end
 

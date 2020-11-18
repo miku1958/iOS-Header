@@ -26,6 +26,7 @@
 @property (nonatomic) BOOL allLoadsBlockedByDeviceManagementRestrictionsForTesting;
 @property (nonatomic) BOOL allowsCellularAccess;
 @property (nonatomic) BOOL allowsServerPreconnect;
+@property (copy, nonatomic) NSURL *alternativeServicesStorageDirectory;
 @property (copy, nonatomic) NSURL *applicationCacheDirectory;
 @property (copy, nonatomic) NSString *applicationCacheFlatFileSubdirectoryName;
 @property (copy, nonatomic) NSString *boundInterfaceIdentifier;
@@ -45,10 +46,13 @@
 @property (nonatomic) BOOL networkCacheSpeculativeValidationEnabled;
 @property (nonatomic) unsigned long long perOriginStorageQuota;
 @property (readonly, nonatomic, getter=isPersistent) BOOL persistent;
+@property (nonatomic) BOOL preventsSystemHTTPProxyAuthentication;
 @property (copy, nonatomic) NSDictionary *proxyConfiguration;
+@property (nonatomic) BOOL requiresSecureHTTPSProxyConnection;
 @property (nonatomic) BOOL serviceWorkerProcessTerminationDelayEnabled;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
+@property (copy, nonatomic) NSURL *standaloneApplicationURL;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesConnectionTerminationOnSystemChange;
 @property (nonatomic) unsigned long long testSpeedMultiplier;

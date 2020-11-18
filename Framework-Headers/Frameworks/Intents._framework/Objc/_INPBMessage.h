@@ -19,7 +19,6 @@
         unsigned int effect:1;
         unsigned int type:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _effect;
     int _type;
     NSString *_content;
@@ -40,7 +39,6 @@
     _INPBDataString *_speakableGroupName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
 @property (copy, nonatomic) NSString *content; // @synthesize content=_content;

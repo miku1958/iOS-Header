@@ -7,35 +7,56 @@
 #import <HomeKitDaemon/HMDLogEvent.h>
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMDCoreDuetLogEvent-Protocol.h>
 
-@class NSString, NSUUID;
+@class HMDHome, NSArray, NSString, NSUUID;
 
-@interface HMDActionSetEvent : HMDLogEvent <HMDAWDLogEvent>
+@interface HMDActionSetEvent : HMDLogEvent <HMDCoreDuetLogEvent, HMDAWDLogEvent>
 {
-    unsigned int _numAccessories;
+    unsigned int _numAccessoriesModified;
+    unsigned int _numAccessoriesInHome;
+    unsigned int _numNonEmptyScenesInHome;
     unsigned long long _triggerSource;
     NSUUID *_actionSetUUID;
     NSString *_bundleId;
     NSUUID *_transactionId;
+    NSString *_serializedIdentifier;
+    NSString *_actionSetName;
+    NSString *_actionSetType;
+    HMDHome *_home;
+    NSArray *_accessoryUUIDs;
 }
 
+@property (readonly, copy, nonatomic) NSArray *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
+@property (readonly, nonatomic) NSString *actionSetName; // @synthesize actionSetName=_actionSetName;
+@property (readonly, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 @property (readonly, nonatomic) NSUUID *actionSetUUID; // @synthesize actionSetUUID=_actionSetUUID;
 @property (readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long duetEventType;
+@property (readonly, copy) NSArray *eventDataToLog;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned int numAccessories; // @synthesize numAccessories=_numAccessories;
+@property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) unsigned int numAccessoriesInHome; // @synthesize numAccessoriesInHome=_numAccessoriesInHome;
+@property (readonly, nonatomic) unsigned int numAccessoriesModified; // @synthesize numAccessoriesModified=_numAccessoriesModified;
+@property (readonly, nonatomic) unsigned int numNonEmptyScenesInHome; // @synthesize numNonEmptyScenesInHome=_numNonEmptyScenesInHome;
+@property (readonly, nonatomic) NSString *serializedIdentifier; // @synthesize serializedIdentifier=_serializedIdentifier;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *transactionId; // @synthesize transactionId=_transactionId;
 @property (readonly, nonatomic) unsigned long long triggerSource; // @synthesize triggerSource=_triggerSource;
 
-+ (id)actionSetTriggered:(id)arg1 source:(unsigned long long)arg2 numAccessories:(unsigned int)arg3 bundleId:(id)arg4 transactionId:(id)arg5;
-+ (void)initialize;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
 - (id)initWithActionSet:(id)arg1 source:(unsigned long long)arg2 numAccessories:(unsigned int)arg3 bundleId:(id)arg4 transactionId:(id)arg5;
+- (id)metadata;
 - (id)metricForAWD;
+- (id)value;
 
 @end
 

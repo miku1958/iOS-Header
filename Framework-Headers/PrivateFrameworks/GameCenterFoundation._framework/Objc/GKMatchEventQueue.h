@@ -10,18 +10,18 @@
 
 @interface GKMatchEventQueue : NSObject
 {
-    GKPlayer *_player;
-    GKPlayer *_hostPlayer;
-    NSMutableArray *_events;
-    NSMutableDictionary *_connectionInfo;
-    long long _playerState;
-    long long _deferedPlayerState;
-    unsigned int _sequenceNumber;
     BOOL _counted;
     BOOL _okToSend;
     BOOL _relayInitiated;
     BOOL _hasInitRelayInfo;
     BOOL _hasUpdateRelayInfo;
+    unsigned int _sequenceNumber;
+    GKPlayer *_player;
+    GKPlayer *_hostPlayer;
+    long long _playerState;
+    long long _deferedPlayerState;
+    NSMutableArray *_events;
+    NSMutableDictionary *_connectionInfo;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *connectionInfo; // @synthesize connectionInfo=_connectionInfo;
@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL relayInitiated; // @synthesize relayInitiated=_relayInitiated;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

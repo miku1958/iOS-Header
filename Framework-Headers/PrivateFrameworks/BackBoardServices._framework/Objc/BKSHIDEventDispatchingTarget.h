@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
-@class BKSHIDEventDeferringEnvironment;
+@class BKSHIDEventDeferringEnvironment, NSString;
 
-@interface BKSHIDEventDispatchingTarget : NSObject <NSSecureCoding, NSCopying>
+@interface BKSHIDEventDispatchingTarget : NSObject <NSSecureCoding, BSDescriptionStreamable, NSCopying>
 {
     BKSHIDEventDeferringEnvironment *_environment;
     int _pid;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) BKSHIDEventDeferringEnvironment *deferringEnvironment; // @synthesize deferringEnvironment=_environment;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
+@property (readonly) Class superclass;
 
 + (id)focusTargetForPID:(int)arg1;
 + (id)keyboardFocusTarget;
@@ -28,10 +33,9 @@
 + (id)targetForPID:(int)arg1 environment:(id)arg2;
 - (void).cxx_destruct;
 - (id)_initWithEnvironment:(id)arg1 pid:(int)arg2;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

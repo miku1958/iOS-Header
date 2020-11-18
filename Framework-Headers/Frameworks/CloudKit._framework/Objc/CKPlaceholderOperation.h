@@ -23,7 +23,7 @@
 }
 
 @property (strong, nonatomic) id context; // @synthesize context=_context;
-@property (readonly, nonatomic) CDUnknownBlockType daemonInvokeBlock; // @synthesize daemonInvokeBlock=_daemonInvokeBlock;
+@property (readonly, copy, nonatomic) CDUnknownBlockType daemonInvokeBlock; // @synthesize daemonInvokeBlock=_daemonInvokeBlock;
 @property (nonatomic) BOOL finishInvoked; // @synthesize finishInvoked=_finishInvoked;
 @property (nonatomic) BOOL isExecuting; // @synthesize isExecuting=_isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;

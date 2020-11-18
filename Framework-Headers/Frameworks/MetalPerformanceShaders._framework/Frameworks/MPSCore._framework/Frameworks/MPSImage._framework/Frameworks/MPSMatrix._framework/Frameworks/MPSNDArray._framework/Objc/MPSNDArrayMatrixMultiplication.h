@@ -6,10 +6,11 @@
 
 #import <MPSNDArray/MPSNDArrayMultiaryKernel.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, MPSMatrixMultiplication;
 
 @interface MPSNDArrayMatrixMultiplication : MPSNDArrayMultiaryKernel
 {
+    MPSMatrixMultiplication *_mmul;
     double _alpha;
     double _beta;
 }
@@ -17,8 +18,10 @@
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (nonatomic) double beta; // @synthesize beta=_beta;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (unsigned long long)expectedVirtualSourceCount;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
+- (void)dealloc;
 - (id)destinationArrayDescriptorForSourceArrays:(id)arg1 sourceState:(id)arg2;
 - (MISSING_TYPE *)dimensionsNotToBeBroadcast;
 - (void)encodeWithCoder:(id)arg1;

@@ -10,7 +10,7 @@
 {
 }
 
-- (id)initWithContext:(id)arg1 string:(id)arg2 kind:(int)arg3 stylesheet:(id)arg4 paragraphStyle:(id)arg5 listStyle:(id)arg6 section:(id)arg7 columnStyle:(id)arg8 paragraphDirection:(int)arg9;
+- (id)initWithContext:(id)arg1 string:(id)arg2 kind:(unsigned char)arg3 stylesheet:(id)arg4 paragraphStyle:(id)arg5 listStyle:(id)arg6 section:(id)arg7 columnStyle:(id)arg8 paragraphDirection:(int)arg9;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)nonUndoableRebuildCellAttributes:(struct TSWPStorageTransaction *)arg1;
 

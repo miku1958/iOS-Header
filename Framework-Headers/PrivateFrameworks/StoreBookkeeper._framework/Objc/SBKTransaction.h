@@ -8,7 +8,6 @@
 
 @class NSMutableDictionary, NSString, NSURL, SBKRequest;
 
-__attribute__((visibility("hidden")))
 @interface SBKTransaction : NSObject
 {
     NSString *_domain;

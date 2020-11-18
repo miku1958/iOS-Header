@@ -10,12 +10,13 @@
 #import <SearchUI/SearchUIAccessoryViewDelegate-Protocol.h>
 #import <SearchUI/TLKDetailsViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SearchUIAccessoryViewController, SearchUIDetailedRowModel, SearchUILeadingViewController, TLKDetailsView, TLKStackView;
+@class NSMutableArray, NSString, SearchUIAccessoryViewController, SearchUIDetailedRowModel, SearchUILeadingViewController, TLKDetailsView, TLKStackView, UIView;
 @protocol SearchUIDetailedViewDelegate, SearchUIFeedbackDelegate;
 
 @interface SearchUIDetailedView : NUIContainerStackView <NUIContainerViewDelegate, SearchUIAccessoryViewDelegate, TLKDetailsViewDelegate>
 {
     BOOL _isVerticalAlignment;
+    BOOL _isCompactWidth;
     id<SearchUIFeedbackDelegate> _feedbackDelegate;
     id<SearchUIDetailedViewDelegate> _buttonDelegate;
     SearchUIAccessoryViewController *_currentAccessoryViewController;
@@ -37,17 +38,24 @@
 @property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKStackView *innerContainer; // @synthesize innerContainer=_innerContainer;
+@property BOOL isCompactWidth; // @synthesize isCompactWidth=_isCompactWidth;
 @property (nonatomic) BOOL isVerticalAlignment; // @synthesize isVerticalAlignment=_isVerticalAlignment;
+@property (readonly, nonatomic) UIView *leadingTextView;
+@property (readonly, nonatomic) UIView *leadingView;
 @property (strong, nonatomic) NSMutableArray *leadingViewControllers; // @synthesize leadingViewControllers=_leadingViewControllers;
 @property (strong, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property (readonly) Class superclass;
 
 + (void)addViewIfNecessary:(id)arg1 toStackView:(id)arg2 removeFromStackView:(id)arg3;
++ (id)bannerBadgeForRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)arrangedViewMustCenter:(id)arg1;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)footnoteButtonPressed;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFeedbackDelegate:(id)arg1;
+- (void)layoutSubviews;
 - (void)updateWithRowModel:(id)arg1;
 
 @end

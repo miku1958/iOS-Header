@@ -6,14 +6,13 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKOperationResult, NSDictionary, NSString;
+@class CKDLongLivedOperationPersistedCallback, NSString;
 
 @protocol CKDOperationInfoDelegate <NSObject>
 
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated;
 
-- (void)operationWithID:(NSString *)arg1 didComplete:(CKOperationResult *)arg2;
-- (void)operationWithID:(NSString *)arg1 didProgress:(NSDictionary *)arg2;
+- (void)operationWithID:(NSString *)arg1 receivedCallback:(CKDLongLivedOperationPersistedCallback *)arg2;
 - (void)wasUnexpectedlyUnregisteredForOperationID:(NSString *)arg1;
 @end
 

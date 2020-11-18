@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_distance:1;
         unsigned int read_mergeCommands:1;
         unsigned int read_normalCommands:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_continueCommands:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_mergeCommands:1;
-        unsigned int wrote_normalCommands:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,13 +44,6 @@ __attribute__((visibility("hidden")))
 + (Class)mergeCommandType;
 + (Class)normalCommandType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsContinueCommand:(id)arg1;
-- (void)_addNoFlagsMergeCommand:(id)arg1;
-- (void)_addNoFlagsNormalCommand:(id)arg1;
-- (void)_readContinueCommands;
-- (void)_readDistance;
-- (void)_readMergeCommands;
-- (void)_readNormalCommands;
 - (void)addContinueCommand:(id)arg1;
 - (void)addMergeCommand:(id)arg1;
 - (void)addNormalCommand:(id)arg1;
@@ -71,7 +60,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)mergeCommandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mergeCommandsCount;
 - (void)mergeFrom:(id)arg1;

@@ -34,15 +34,6 @@
 + (BOOL)isEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_initUpdateTimerIfNecessary;
-- (void)_scheduleNextUpdateChildSourcesWithin:(double)arg1;
-- (BOOL)_shouldUpdateSource:(id)arg1;
-- (void)_startUpdateChildSources;
-- (void)_stopUpdateChildSources;
-- (double)_suppressionTimeForEntry:(id)arg1 snoozeOnly:(BOOL)arg2;
-- (double)_updateChildSource:(id)arg1;
-- (void)_updateChildSourcesForType:(long long)arg1;
-- (void)_updateChildSourcesForceAll:(BOOL)arg1;
 - (BOOL)addChildSource:(id)arg1;
 - (unsigned long long)addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
 - (BOOL)attachSource:(id)arg1;
@@ -53,7 +44,7 @@
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
-- (id)initWithDelegate:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 - (BOOL)removeChildSource:(id)arg1;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
@@ -62,8 +53,8 @@
 - (void)test_resetSuppressions;
 - (double)test_suppressionDurationForBehavior:(long long)arg1 type:(long long)arg2;
 - (void)test_sync;
-- (double)updateSuggestionEntries;
-- (double)updateSuggestionEntriesOfType:(long long)arg1;
+- (double)updateSuggestionEntriesOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

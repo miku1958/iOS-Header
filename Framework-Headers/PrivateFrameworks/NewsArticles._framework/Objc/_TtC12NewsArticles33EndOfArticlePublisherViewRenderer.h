@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *imageCache;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

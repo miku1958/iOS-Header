@@ -17,11 +17,10 @@
 - (void).cxx_destruct;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
-- (long long)liveContentRasterizationStyle;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
-- (BOOL)wantsMinificationFilter;
 
 @end
 

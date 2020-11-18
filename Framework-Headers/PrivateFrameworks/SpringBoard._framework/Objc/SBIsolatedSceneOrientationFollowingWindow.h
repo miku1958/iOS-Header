@@ -11,6 +11,7 @@
 }
 
 - (BOOL)_usesWindowServerHitTesting;
+- (id)overlayRootViewController;
 
 @end
 

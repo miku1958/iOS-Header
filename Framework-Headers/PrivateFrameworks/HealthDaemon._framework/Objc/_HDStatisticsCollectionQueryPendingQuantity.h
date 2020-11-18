@@ -8,6 +8,7 @@
 
 @class HKQuantity, NSDateInterval;
 
+__attribute__((visibility("hidden")))
 @interface _HDStatisticsCollectionQueryPendingQuantity : NSObject
 {
     HKQuantity *_quantity;

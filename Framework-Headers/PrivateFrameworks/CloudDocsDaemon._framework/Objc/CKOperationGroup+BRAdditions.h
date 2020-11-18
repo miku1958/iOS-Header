@@ -17,6 +17,7 @@
 + (id)br_downloadUserInitiated;
 + (id)br_fetchIdentityXPC;
 + (id)br_fetchNonLocalVersions;
++ (id)br_logout;
 + (id)br_osUpgradeMigration;
 + (id)br_publishingRequest;
 + (id)br_purge;

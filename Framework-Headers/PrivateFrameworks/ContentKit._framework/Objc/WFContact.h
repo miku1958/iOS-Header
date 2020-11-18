@@ -18,6 +18,7 @@
     BOOL _hasImageData;
     int _propertyID;
     WFFileRepresentation *_vCardRepresentation;
+    WFFileRepresentation *_fullDataVCardRepresentation;
     long long _multivalueIndex;
     NSString *_nickname;
     NSArray *_socialProfiles;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) NSArray *emailAddresses;
 @property (readonly, nonatomic) NSString *firstName;
 @property (readonly, nonatomic) NSString *formattedName;
+@property (readonly, nonatomic) WFFileRepresentation *fullDataVCardRepresentation; // @synthesize fullDataVCardRepresentation=_fullDataVCardRepresentation;
 @property (readonly, nonatomic) BOOL hasImageData; // @synthesize hasImageData=_hasImageData;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *imageData;
@@ -60,6 +62,7 @@
 + (id)contactsWithName:(id)arg1;
 + (id)contactsWithVCardData:(id)arg1;
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
++ (long long)predictedTypeForHandleValue:(id)arg1;
 + (Class)preferredConcreteSubclass;
 + (void)removeContactsChangeObserver:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -70,6 +73,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasValueForPropertyID:(int)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)vCardRepresentationWithFullData:(BOOL)arg1;
 - (id)valueForPropertyID:(int)arg1;
 - (id)wfSerializedRepresentation;
 

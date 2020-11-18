@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)_desiredDataclassActionsFromPossibleActions:(id)arg1 forAccount:(id)arg2 withError:(id *)arg3;
+- (id)dataclassActionsForAccountSave:(id)arg1 forDataclass:(id)arg2 error:(id *)arg3;
 - (id)initWithAccountStore:(id)arg1;
 - (void)removeAccount:(id)arg1;
 - (void)saveAccount:(id)arg1;
@@ -31,6 +32,7 @@
 - (void)saveAccount:(id)arg1 requireVerification:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2;
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 requireVerification:(BOOL)arg3;
+- (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 requireVerification:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

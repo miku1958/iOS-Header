@@ -44,6 +44,8 @@
 + (id)entityName;
 + (id)localizedRecoveredTitle;
 + (id)validKindsForPersistence;
+- (void)_enforceFixedOrderKeyCompliance;
+- (void)_enforceFixedOrderKeyComplianceWithRelationshipOrderManager:(id)arg1;
 - (void)addChildCollections:(id)arg1;
 - (void)addChildCollectionsObject:(id)arg1;
 - (BOOL)albumHasFixedOrder:(id)arg1;
@@ -62,7 +64,7 @@
 - (unsigned long long)count;
 - (id)descriptionOfChildCollectionOrderValues;
 - (void)didSave;
-- (void)enforceFixedOrderKeyCompliance;
+- (void)enforceFixedOrderKeyComplianceWithRelationshipOrderManager:(id)arg1;
 - (BOOL)hasAtLeastOneAlbum;
 - (id)identifier;
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;

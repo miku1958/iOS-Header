@@ -19,6 +19,7 @@
     MISSING_TYPE *completionHandler;
     MISSING_TYPE *isAlternate;
     MISSING_TYPE *isExclusive;
+    MISSING_TYPE *exclusiveBlocksForCompletion;
     MISSING_TYPE *state;
     MISSING_TYPE *multiplePerformBehaviour;
 }

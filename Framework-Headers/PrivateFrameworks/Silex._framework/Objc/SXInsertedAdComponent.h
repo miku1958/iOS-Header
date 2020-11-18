@@ -20,6 +20,7 @@
     SXJSONArray *_behaviors;
     unsigned long long _bannerType;
     unsigned long long _adType;
+    NSString *_placementIdentifier;
     NSString *_style;
     id<SXComponentAnchor> _anchor;
     NSString *_layout;
@@ -48,6 +49,7 @@
 @property (readonly, nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *layout; // @synthesize layout=_layout;
+@property (readonly, nonatomic) NSString *placementIdentifier; // @synthesize placementIdentifier=_placementIdentifier;
 @property (readonly, nonatomic) unsigned long long placementType;
 @property (readonly, nonatomic) int role;
 @property (readonly, nonatomic) NSString *style; // @synthesize style=_style;

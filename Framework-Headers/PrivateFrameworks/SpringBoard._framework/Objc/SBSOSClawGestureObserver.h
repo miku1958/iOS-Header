@@ -26,7 +26,9 @@
 }
 
 @property (strong, nonatomic) NSMutableSet *activePressTypes; // @synthesize activePressTypes=_activePressTypes;
+@property (readonly, nonatomic, getter=_isAutomaticCallCountdownEnabled) BOOL autoCallCountdownEnabled;
 @property (readonly, nonatomic, getter=isClawActivated) BOOL clawActivated;
+@property (readonly, nonatomic, getter=_isClawGestureActive) BOOL clawGestureActive;
 @property (strong, nonatomic) SBClawGestureLogger *clawGestureLogger; // @synthesize clawGestureLogger=_clawGestureLogger;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBSOSClawGestureObserverDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,22 +36,23 @@
 @property (nonatomic, getter=isGestureLoggingEnabled) BOOL gestureLoggingEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=_isSOSActivated) BOOL sosActivated;
-@property (readonly, nonatomic) SBSOSDefaults *sosDefaults; // @synthesize sosDefaults=_sosDefaults;
+@property (strong, nonatomic, setter=_setSOSDefaults:) SBSOSDefaults *sosDefaults; // @synthesize sosDefaults=_sosDefaults;
 @property (nonatomic, getter=isSOSEnabled, setter=setSOSEnabled:) BOOL sosEnabled; // @synthesize sosEnabled=_sosEnabled;
 @property (strong, nonatomic) BSTimer *sosTriggerTimer; // @synthesize sosTriggerTimer=_sosTriggerTimer;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_wasSOSTriggeredByClaw, setter=_setWasSOSTriggeredByClaw:) BOOL wasSOSTiggeredByClaw; // @synthesize wasSOSTiggeredByClaw=_wasSOSTiggeredByClaw;
 
 - (void).cxx_destruct;
+- (void)_cancelSOSActivity;
 - (id)_initWithSOSManager:(id)arg1 workspace:(id)arg2;
-- (BOOL)_isAutomaticCallCountdownEnabled;
 - (void)_presentSOSInterface;
 - (void)dealloc;
 - (void)didUpdateCurrentSOSInitiationState:(long long)arg1;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;
 - (id)init;
-- (void)noteGesturePressType:(long long)arg1 withPressPhase:(long long)arg2;
+- (void)noteButtonPress:(long long)arg1 isDown:(BOOL)arg2;
+- (void)noteGestureReset;
 
 @end
 

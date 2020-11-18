@@ -18,7 +18,7 @@
 @property (readonly, nonatomic) unsigned int destinationDataType; // @synthesize destinationDataType=_destinationDataType;
 @property (readonly, nonatomic) unsigned int sourceDataType; // @synthesize sourceDataType=_sourceDataType;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)encodeToCommandBuffer:(id)arg1 sourceBuffer:(id)arg2 sourceOffset:(unsigned long long)arg3 destinationBuffer:(id)arg4 destinationOffset:(unsigned long long)arg5 numEntries:(unsigned long long)arg6;
 - (void)encodeWithCoder:(id)arg1;

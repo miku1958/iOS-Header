@@ -31,10 +31,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_handleScheduleChangedNotification:(id)arg1;
 - (void)_handleTriggerFired:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-- (void)_registerNotificationHandlers;
 - (id)_serializeForAdd;
 - (void)_updateFireDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateRecurrence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -42,6 +40,8 @@
 - (void)_updateSignificantEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateSignificantEventOffset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateTimeZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_updateTimerTriggerPropertiesFromResponse:(id)arg1;
+- (void)_updateTimerTriggerWithResponse:(CDUnknownBlockType)arg1 payloadToSend:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

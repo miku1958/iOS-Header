@@ -6,19 +6,25 @@
 
 #import <TVMLKit/_TVLabel.h>
 
-#import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 
-@class NSString, VUITextLayout;
+@class NSString, UIColor, VUITextLayout;
 
-@interface VUILabel : _TVLabel <VUILabelTopMarginCalculationProtocol>
+@interface VUILabel : _TVLabel <VUILabelBaselineProtocol>
 {
     BOOL _selected;
     BOOL _lastSelectedOrHighlighted;
     VUITextLayout *_textLayout;
     NSString *_labelName;
+    UIColor *_adjustmentModeNormalTintColor;
 }
 
+@property (strong, nonatomic) UIColor *adjustmentModeNormalTintColor; // @synthesize adjustmentModeNormalTintColor=_adjustmentModeNormalTintColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *labelName; // @synthesize labelName=_labelName;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 
 + (id)labelWithAttributedString:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3;
@@ -28,16 +34,21 @@
 - (void)_updateTextColor;
 - (void)_updateTextColor:(BOOL)arg1;
 - (double)baselineHeight;
+- (double)baselineOffsetFromBottom;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
 - (unsigned long long)numberOfLinesRequiredForTextWidth:(double)arg1;
 - (BOOL)requiresMoreThanOneLineForTextWidth:(double)arg1;
+- (void)revertTintColor;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)tintColorDidChange;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
 - (double)topMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (BOOL)vui_marqueeOnHighlight;
+- (BOOL)vui_showOnHighlight;
 
 @end
 

@@ -38,6 +38,7 @@
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 levelOfDetail:(int)arg2;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 levelOfDetail:(int)arg2 options:(id)arg3;
+- (void)setUnsafeUnretainedDelegate:(id)arg1;
 - (BOOL)shouldArchiveValueForKey:(id)arg1;
 
 @end

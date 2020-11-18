@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HAPAccessoryConfiguration, HMFTimer, NSData, NSString, NSUUID;
+@class HAPAccessoryConfiguration, HMFActivity, HMFTimer, NSData, NSString, NSUUID;
 
 @interface HMDUnpairedHAPAccessoryPairingInformation : HMFObject
 {
@@ -23,6 +23,7 @@
     CDUnknownBlockType _setupCodeProviderCompletionHandler;
     HMFTimer *_pairingRetryTimer;
     HMFTimer *_reconfirmTimer;
+    HMFActivity *_pairingActivity;
     HAPAccessoryConfiguration *_hapAccessoryConfiguration;
     NSString *_accessoryName;
     NSUUID *_accessoryUUID;
@@ -45,6 +46,7 @@
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (nonatomic) BOOL needsUserConsent; // @synthesize needsUserConsent=_needsUserConsent;
 @property (strong, nonatomic) NSData *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
+@property (weak, nonatomic) HMFActivity *pairingActivity; // @synthesize pairingActivity=_pairingActivity;
 @property (strong, nonatomic) HMFTimer *pairingInterruptionTimer; // @synthesize pairingInterruptionTimer=_pairingInterruptionTimer;
 @property (strong, nonatomic) HMFTimer *pairingRetryTimer; // @synthesize pairingRetryTimer=_pairingRetryTimer;
 @property (nonatomic) BOOL provideNetworkCredentialsToAccessory; // @synthesize provideNetworkCredentialsToAccessory=_provideNetworkCredentialsToAccessory;

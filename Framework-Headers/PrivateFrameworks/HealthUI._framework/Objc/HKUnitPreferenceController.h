@@ -6,36 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, NSDictionary, NSMutableDictionary;
+@class HKHealthStore, NSMutableDictionary;
 
 @interface HKUnitPreferenceController : NSObject
 {
     NSMutableDictionary *_unitStrings;
+    NSMutableDictionary *_unitPreferencesByObjectType;
+    struct os_unfair_lock_s _lock;
     HKHealthStore *_healthStore;
-    NSDictionary *_unitPreferencesByObjectType;
 }
+
+@property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 
 - (void).cxx_destruct;
 - (id)_changedKeysBetweenDictionary:(id)arg1 andDictionary:(id)arg2;
 - (id)_displayNameKey:(id)arg1 withNumber:(BOOL)arg2;
 - (id)_displayNameKeyForDisplayType:(id)arg1 withNumber:(BOOL)arg2;
-- (id)_displayNameKeyForUnit:(id)arg1;
+- (id)_displayNameKeyForUnit:(id)arg1 nameContext:(long long)arg2;
 - (void)_fetchHKUnitPreferencesWithAttempt:(long long)arg1;
 - (id)_generateDefaultHKUnitPreferences;
 - (void)_initHKUnitPreferences;
 - (void)_localeDidChange:(id)arg1;
+- (id)_lock_unitForDisplayType:(id)arg1;
+- (void)_lock_updatePreferredUnit:(id)arg1 forDisplayType:(id)arg2;
+- (id)_lock_updatePreferredUnits:(id)arg1;
 - (id)_longDisplayNameForUnit:(id)arg1;
 - (id)_longDisplayNameOverrideForDisplayType:(id)arg1;
 - (void)_postNotificationWithChangedKeys:(id)arg1;
 - (void)_refreshHKUnitPreferencesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_unitPreferencesDidUpdate:(id)arg1;
-- (void)_updateHKUnitPreferences:(id)arg1;
 - (void)dealloc;
 - (id)displayRangeForDisplayType:(id)arg1;
 - (id)initWithHealthStore:(id)arg1;
 - (id)localizedDisplayNameForDisplayType:(id)arg1;
 - (id)localizedDisplayNameForDisplayType:(id)arg1 value:(id)arg2;
 - (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2;
+- (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2 nameContext:(long long)arg3;
 - (id)localizedHealthUIStringForDisplayType:(id)arg1 key:(id)arg2 value:(id)arg3;
 - (id)localizedLongDisplayNameForDisplayType:(id)arg1;
 - (double)scaleFactorForYAxisLabeling:(id)arg1;

@@ -6,17 +6,15 @@
 
 #import <CloudKit/NSObject-Protocol.h>
 
-@class CKFileOpenInfo, CKOperationResult, NSArray, NSDictionary, NSFileHandle, NSString;
+@class CKFileOpenInfo, NSArray, NSDictionary, NSFileHandle, NSString;
 
 @protocol CKXPCClient <NSObject>
-- (void)consumeSandboxExtensions:(NSArray *)arg1 reply:(void (^)(void))arg2;
+- (void)addThrottle:(NSDictionary *)arg1;
+- (void)consumeSandboxExtensions:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getFileMetadataWithFileHandle:(NSFileHandle *)arg1 openInfo:(CKFileOpenInfo *)arg2 reply:(void (^)(CKFileMetadata *, NSError *))arg3;
-- (void)handleOperationCheckpoint:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
-- (void)handleOperationCompletion:(CKOperationResult *)arg1 forOperationWithID:(NSString *)arg2;
-- (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
-- (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
-- (void)handleOperationStatistics:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
+- (void)handleSignificantIssueBehavior:(unsigned long long)arg1 reason:(NSString *)arg2;
 - (void)openFileWithOpenInfo:(CKFileOpenInfo *)arg1 reply:(void (^)(CKFileOpenResult *, NSError *))arg2;
 - (void)readBytesOfInMemoryAssetContentWithUUID:(NSString *)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 reply:(void (^)(NSData *, NSError *))arg4;
+- (void)resetThrottles;
 @end
 

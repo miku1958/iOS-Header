@@ -6,34 +6,59 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
-
 @interface SBPIPContentViewLayoutSettings : NSObject
 {
-    long long _position;
-    double _size;
-    NSMutableArray *_observers;
+    BOOL _defaultToMinimumPreferredContentSize;
+    BOOL _sizeChanged;
+    double _defaultSize;
+    double _minimumSize;
+    double _maximumSize;
+    double _currentSize;
+    double _minimumSizePreference;
+    double _maximumSizePreference;
+    double _minimumSizeSpanBetweenPreferredSizes;
+    double _maximumSizeSpanForPreferredSizeTuning;
+    unsigned long long _currentPosition;
 }
 
-@property (nonatomic) long long position;
-@property (nonatomic) double size;
+@property (nonatomic) unsigned long long currentPosition; // @synthesize currentPosition=_currentPosition;
+@property (nonatomic) double currentSize; // @synthesize currentSize=_currentSize;
+@property (nonatomic) double defaultSize; // @synthesize defaultSize=_defaultSize;
+@property (nonatomic) BOOL defaultToMinimumPreferredContentSize; // @synthesize defaultToMinimumPreferredContentSize=_defaultToMinimumPreferredContentSize;
+@property (nonatomic) double maximumSize; // @synthesize maximumSize=_maximumSize;
+@property (nonatomic) double maximumSizePreference; // @synthesize maximumSizePreference=_maximumSizePreference;
+@property (nonatomic) double maximumSizeSpanForPreferredSizeTuning; // @synthesize maximumSizeSpanForPreferredSizeTuning=_maximumSizeSpanForPreferredSizeTuning;
+@property (nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
+@property (nonatomic) double minimumSizePreference; // @synthesize minimumSizePreference=_minimumSizePreference;
+@property (nonatomic) double minimumSizeSpanBetweenPreferredSizes; // @synthesize minimumSizeSpanBetweenPreferredSizes=_minimumSizeSpanBetweenPreferredSizes;
+@property (readonly, nonatomic, getter=hasSizeChanged) BOOL sizeChanged; // @synthesize sizeChanged=_sizeChanged;
 
++ (struct CGSize)_contentViewSizeForAspectRatio:(struct CGSize)arg1 currentSize:(double)arg2;
++ (double)_defaultSize;
++ (struct CGSize)_maximumContentViewSizeForAspectRatio:(struct CGSize)arg1 maximumReferenceSize:(double)arg2;
++ (double)_maximumSize;
++ (struct CGSize)_minimumContentViewSizeForAspectRatio:(struct CGSize)arg1 minimumReferenceSize:(double)arg2;
++ (double)_minimumSize;
 + (id)_sharedInstance;
-+ (void)addObserver:(id)arg1;
 + (double)contentViewPadding;
-+ (long long)currentContentViewPosition;
++ (unsigned long long)currentContentViewPosition;
 + (struct CGSize)currentContentViewSizeForAspectRatio:(struct CGSize)arg1;
 + (struct CGSize)defaultContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)maximumContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)minimumContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (void)removeObserver:(id)arg1;
-+ (void)setContentViewPosition:(long long)arg1;
++ (struct CGSize)maximumPossibleContentViewSizeForAspectRatio:(struct CGSize)arg1;
++ (struct CGSize)maximumPreferredContentViewSizeForAspectRatio:(struct CGSize)arg1;
++ (struct CGSize)minimumPossibleContentViewSizeForAspectRatio:(struct CGSize)arg1;
++ (struct CGSize)minimumPreferredContentViewSizeForAspectRatio:(struct CGSize)arg1;
++ (struct CGSize)minimumStashTabSize;
++ (void)setContentViewPosition:(unsigned long long)arg1;
 + (void)setContentViewSize:(struct CGSize)arg1;
-- (void).cxx_destruct;
-- (void)_addObserver:(id)arg1;
-- (void)_notifyObservers;
-- (void)_removeObserver:(id)arg1;
++ (void)setMaximumSizeSpanForPreferredSizeTuning:(double)arg1;
++ (void)setMinimumSizeSpanBetweenPreferredSizes:(double)arg1;
++ (void)setShouldDefaultToMinimumPreferredContentSize:(BOOL)arg1;
 - (id)init;
+- (unsigned long long)position;
+- (void)setPosition:(unsigned long long)arg1;
+- (void)setSize:(double)arg1;
+- (double)size;
 
 @end
 

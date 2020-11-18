@@ -19,6 +19,7 @@
     NSArray *_contextPath;
     NSString *_title;
     NSString *_bundleIdentifier;
+    NSString *_applicationName;
     NSString *_contentStoreIdentifier;
     NSString *_contextSummary;
     NSString *_contextCustomTypeName;
@@ -32,6 +33,7 @@
 }
 
 @property (copy, nonatomic) NSURL *URL;
+@property (copy, nonatomic) NSString *applicationName;
 @property (readonly, nonatomic) NSArray *assets;
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSArray *collaborationStates;

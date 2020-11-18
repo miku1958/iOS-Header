@@ -9,7 +9,6 @@
 @class CKDMMCS, NSMutableIndexSet, NSRunLoop, NSString;
 @protocol OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSEngineContext : NSObject
 {
     BOOL _stopMMCSThread;

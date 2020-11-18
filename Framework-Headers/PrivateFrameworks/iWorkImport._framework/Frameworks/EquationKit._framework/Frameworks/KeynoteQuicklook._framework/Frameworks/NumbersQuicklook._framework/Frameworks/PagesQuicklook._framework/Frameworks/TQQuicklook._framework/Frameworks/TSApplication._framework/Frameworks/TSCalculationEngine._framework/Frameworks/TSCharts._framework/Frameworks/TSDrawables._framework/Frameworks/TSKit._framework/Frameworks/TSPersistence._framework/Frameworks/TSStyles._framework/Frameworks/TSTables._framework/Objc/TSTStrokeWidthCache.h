@@ -21,6 +21,7 @@
 - (void)lockForWriting;
 - (void)setCount:(unsigned int)arg1;
 - (double)strokeWidthForGridIndex:(unsigned int)arg1 inRange:(struct TSTSimpleRange)arg2;
+- (void)strokeWidthForGridIndex:(unsigned int)arg1 outWidth:(double *)arg2 outNextWidth:(double *)arg3;
 - (void)unlock;
 - (void)updateCacheForGridIndex:(unsigned int)arg1 withMergedStrokes:(id)arg2;
 

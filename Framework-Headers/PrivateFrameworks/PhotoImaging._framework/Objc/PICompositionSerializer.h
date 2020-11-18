@@ -12,6 +12,7 @@
 
 + (void)_sanitizeComposition:(id)arg1;
 + (BOOL)_validateValueTypesForKeys:(id)arg1 requiredKeys:(id)arg2 inDictionary:(id)arg3 error:(out id *)arg4;
++ (id)adjustmentInformationForComposition:(id)arg1 error:(out id *)arg2;
 + (BOOL)canInterpretDataWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2;
 + (id)deserializeCompositionFromAdjustments:(id)arg1 metadata:(id)arg2 formatIdentifier:(id)arg3 formatVersion:(id)arg4 error:(out id *)arg5;
 + (id)deserializeCompositionFromData:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 error:(out id *)arg4;

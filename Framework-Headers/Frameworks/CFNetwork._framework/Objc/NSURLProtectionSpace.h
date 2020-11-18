@@ -29,7 +29,6 @@
 - (struct _CFURLProtectionSpace *)_CFURLProtectionSpace;
 - (struct _CFURLProtectionSpace *)_cfurlprtotectionspace;
 - (id)_initWithCFURLProtectionSpace:(struct _CFURLProtectionSpace *)arg1;
-- (id)_internalInit;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

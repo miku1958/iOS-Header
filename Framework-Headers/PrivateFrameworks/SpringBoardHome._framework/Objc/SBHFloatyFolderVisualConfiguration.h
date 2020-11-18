@@ -16,26 +16,29 @@
     double _continuousCornerRadius;
     double _titleFontSizeInPortrait;
     double _titleFontSizeInLandscape;
+    double _titleHorizontalInset;
+    double _pageControlAreaHeight;
+    double _rubberBandIntervalForOverscroll;
     struct CGSize _contentBackgroundSize;
-    struct CGPoint _contentBackgroundOffsetFromCenterInPortrait;
-    struct CGPoint _contentBackgroundOffsetFromCenterInLandscape;
 }
 
-@property (nonatomic) struct CGPoint contentBackgroundOffsetFromCenterInLandscape; // @synthesize contentBackgroundOffsetFromCenterInLandscape=_contentBackgroundOffsetFromCenterInLandscape;
-@property (nonatomic) struct CGPoint contentBackgroundOffsetFromCenterInPortrait; // @synthesize contentBackgroundOffsetFromCenterInPortrait=_contentBackgroundOffsetFromCenterInPortrait;
 @property (nonatomic) struct CGSize contentBackgroundSize; // @synthesize contentBackgroundSize=_contentBackgroundSize;
 @property (nonatomic) double continuousCornerRadius; // @synthesize continuousCornerRadius=_continuousCornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double pageControlAreaHeight; // @synthesize pageControlAreaHeight=_pageControlAreaHeight;
+@property (nonatomic) double rubberBandIntervalForOverscroll; // @synthesize rubberBandIntervalForOverscroll=_rubberBandIntervalForOverscroll;
 @property (readonly) Class superclass;
 @property (nonatomic) double titleFontSizeInLandscape; // @synthesize titleFontSizeInLandscape=_titleFontSizeInLandscape;
 @property (nonatomic) double titleFontSizeInPortrait; // @synthesize titleFontSizeInPortrait=_titleFontSizeInPortrait;
+@property (nonatomic) double titleHorizontalInset; // @synthesize titleHorizontalInset=_titleHorizontalInset;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (void)setTitleFontSizeInAllOrientations:(double)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

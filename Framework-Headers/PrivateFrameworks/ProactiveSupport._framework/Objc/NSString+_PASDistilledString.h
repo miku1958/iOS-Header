@@ -16,7 +16,11 @@
 @property (readonly) Class superclass;
 
 + (id)_pas_distilledStringClasses;
++ (id)_pas_proxyStringByConcatenatingStrings:(id)arg1;
 - (id)_pas_distilledString;
+- (id)_pas_proxyArrayOfSubstringsWithRanges:(id)arg1;
+- (BOOL)_pas_retainsConmingledBackingStore;
 - (id)_pas_revivedString;
+- (void)_pas_setRetainsConmingledBackingStore:(BOOL)arg1;
 @end
 

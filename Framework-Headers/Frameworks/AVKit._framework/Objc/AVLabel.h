@@ -6,49 +6,63 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSString, UIActivityIndicatorView, UIFont, UILabel;
+#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
+
+@class AVLayoutItemAttributes, NSAttributedString, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface AVLabel : UIView
+@interface AVLabel : UIView <AVPlaybackControlsViewItem>
 {
-    BOOL _showsLoadingIndicator;
     BOOL _collapsed;
     BOOL _included;
     BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
+    BOOL _showsLoadingIndicator;
     UILabel *_label;
+    AVLayoutItemAttributes *_layoutAttributes;
     long long _loadingIndicatorAlignment;
     NSString *_text;
+    NSAttributedString *_attributedText;
     UIFont *_font;
     UIActivityIndicatorView *_loadingIndicator;
+    long long _numberOfLines;
     NSLayoutConstraint *_loadingIndicatorLeftAlignmentConstraint;
     NSLayoutConstraint *_loadingIndicatorRightAlignmentConstraint;
     struct CGSize _extrinsicContentSize;
 }
 
+@property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
 @property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (readonly, nonatomic) UILabel *labelIfLoaded;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (readonly, nonatomic) UIActivityIndicatorView *loadingIndicator; // @synthesize loadingIndicator=_loadingIndicator;
 @property (nonatomic) long long loadingIndicatorAlignment; // @synthesize loadingIndicatorAlignment=_loadingIndicatorAlignment;
 @property (strong, nonatomic) NSLayoutConstraint *loadingIndicatorLeftAlignmentConstraint; // @synthesize loadingIndicatorLeftAlignmentConstraint=_loadingIndicatorLeftAlignmentConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *loadingIndicatorRightAlignmentConstraint; // @synthesize loadingIndicatorRightAlignmentConstraint=_loadingIndicatorRightAlignmentConstraint;
+@property (nonatomic) long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;
 @property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) BOOL showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
+- (void)_updateLayoutItem;
 - (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)setHidden:(BOOL)arg1;
+- (void)layoutAttributesDidChange;
+- (struct CGSize)minimumSize;
 - (void)tintColorDidChange;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;

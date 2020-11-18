@@ -26,7 +26,7 @@
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBUILegibilityLabel *label; // @synthesize label=_label;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (readonly) Class superclass;
 

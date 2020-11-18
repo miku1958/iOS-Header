@@ -50,6 +50,7 @@
 - (BOOL)isPresentingNotificationInLongLook;
 - (void)loadView;
 - (void)lockButtonPressed:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)postNotificationRequest:(id)arg1;
 - (long long)presentationPriority;
 - (long long)presentationType;

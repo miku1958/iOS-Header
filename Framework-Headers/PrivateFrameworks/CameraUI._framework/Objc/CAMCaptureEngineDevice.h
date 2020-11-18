@@ -36,8 +36,8 @@
 - (id)_portraitModeSessionPreset;
 - (id)_timelapseSessionPreset;
 - (id)initWithEngine:(id)arg1 captureDevice:(id)arg2;
-- (id)videoDeviceFormatForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)videoDevicePresetForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)videoDeviceFormatForGraphConfiguration:(id)arg1;
+- (id)videoDevicePresetForGraphConfiguration:(id)arg1;
 
 @end
 

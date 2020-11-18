@@ -42,8 +42,8 @@
     NSString *_footnote;
 }
 
-@property (strong, nonatomic) SFColor *backgroundColor;
-@property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,8 +51,8 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
-@property (nonatomic) BOOL hasBottomPadding;
-@property (nonatomic) BOOL hasTopPadding;
+@property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -64,14 +64,14 @@
 @property (strong, nonatomic) SFImage *picture; // @synthesize picture=_picture;
 @property (strong, nonatomic) SFRichText *post; // @synthesize post=_post;
 @property (strong, nonatomic) SFImage *profilePicture; // @synthesize profilePicture=_profilePicture;
-@property (copy, nonatomic) NSArray *punchoutOptions;
-@property (copy, nonatomic) NSString *punchoutPickerDismissText;
-@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (copy, nonatomic) NSString *resultIdentifier;
-@property (nonatomic) int separatorStyle;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *timestamp; // @synthesize timestamp=_timestamp;
-@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (strong, nonatomic) SFImage *verifiedGlyph; // @synthesize verifiedGlyph=_verifiedGlyph;
 

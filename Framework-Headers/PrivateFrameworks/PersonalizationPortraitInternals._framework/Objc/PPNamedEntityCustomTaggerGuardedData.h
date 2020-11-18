@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface PPNamedEntityCustomTaggerGuardedData : NSObject
 {
     void *_tagger;
-    NSString *_abGroupIdentifier;
 }
-
-- (void).cxx_destruct;
 
 @end
 

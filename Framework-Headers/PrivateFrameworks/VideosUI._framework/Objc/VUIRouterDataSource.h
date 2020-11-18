@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIEventDataSource *selectEventDataSource; // @synthesize selectEventDataSource=_selectEventDataSource;
 
 - (void).cxx_destruct;
-- (id)initWithRouterData:(id)arg1 viewElement:(id)arg2;
+- (id)initWithRouterData:(id)arg1 prefetchedData:(id)arg2;
+- (id)initWithRouterData:(id)arg1 viewElement:(id)arg2 appContext:(id)arg3;
 
 @end
 

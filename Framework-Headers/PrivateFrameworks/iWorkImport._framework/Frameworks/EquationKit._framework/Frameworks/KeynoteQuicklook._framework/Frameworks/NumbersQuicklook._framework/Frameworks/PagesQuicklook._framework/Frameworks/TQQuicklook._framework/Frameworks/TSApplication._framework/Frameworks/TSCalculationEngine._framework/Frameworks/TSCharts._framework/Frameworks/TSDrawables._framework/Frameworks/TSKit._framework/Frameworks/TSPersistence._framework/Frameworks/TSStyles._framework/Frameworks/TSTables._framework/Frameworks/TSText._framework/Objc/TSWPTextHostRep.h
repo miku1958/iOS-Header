@@ -19,7 +19,6 @@
     NSArray *_searchReferences;
 }
 
-@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,18 +29,12 @@
 @property (readonly, nonatomic) BOOL useFindOverlayers; // @synthesize useFindOverlayers=_useFindOverlayers;
 
 - (void).cxx_destruct;
-- (void)addAdditionalChildLayersToArray:(id)arg1;
-- (BOOL)canSelectChildRep:(id)arg1;
+- (id)childReps;
 - (void)dealloc;
 - (void)drawTextBackground:(struct CGContext *)arg1 insetRect:(struct CGRect)arg2 pulsating:(BOOL)arg3;
 - (void)drawTextBackground:(struct CGContext *)arg1 insetRect:(struct CGRect)arg2 pulsating:(BOOL)arg3 shouldTint:(BOOL)arg4;
 - (void)finishInit;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (void)recursivelyPerformSelector:(SEL)arg1;
-- (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
-- (void)selectChildRep:(id)arg1 extendingSelection:(BOOL)arg2;
 - (void)setPulseControllerActive:(BOOL)arg1 autohide:(BOOL)arg2;
 - (void)updateChildrenFromLayout;
 - (void)willBeRemoved;

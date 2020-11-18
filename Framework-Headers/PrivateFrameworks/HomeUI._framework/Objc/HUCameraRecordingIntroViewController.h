@@ -19,8 +19,13 @@
     HMHome *_home;
     OBTrayButton *_setupButton;
     OBLinkTrayButton *_notNowButton;
+    NSString *_continueButtonText;
+    NSString *_notNowButtonText;
+    NSString *_captionText;
 }
 
+@property (strong, nonatomic) NSString *captionText; // @synthesize captionText=_captionText;
+@property (strong, nonatomic) NSString *continueButtonText; // @synthesize continueButtonText=_continueButtonText;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -28,6 +33,7 @@
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;
 @property (strong, nonatomic) OBLinkTrayButton *notNowButton; // @synthesize notNowButton=_notNowButton;
+@property (strong, nonatomic) NSString *notNowButtonText; // @synthesize notNowButtonText=_notNowButtonText;
 @property (strong, nonatomic) OBTrayButton *setupButton; // @synthesize setupButton=_setupButton;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long variant; // @synthesize variant=_variant;

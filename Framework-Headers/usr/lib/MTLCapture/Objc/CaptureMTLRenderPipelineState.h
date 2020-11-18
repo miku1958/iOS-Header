@@ -28,15 +28,18 @@
 @property (copy, nonatomic) MTLRenderPipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property (readonly) id<MTLDevice> device;
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long imageblockSampleLength;
 @property (readonly) NSString *label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long streamReference;
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportIndirectCommandBuffers;
+@property (readonly) long long textureWriteRoundingMode;
 @property (readonly) BOOL threadgroupSizeMatchesTileSize;
+@property (readonly, strong, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData;
 @property (copy, nonatomic) MTLTileRenderPipelineDescriptor *tileDescriptor; // @synthesize tileDescriptor=_tileDescriptor;
 @property (readonly) struct GTTraceContext *traceContext;
 @property (readonly) struct GTTraceStream *traceStream;
@@ -51,6 +54,7 @@
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (id)newFragmentShaderDebugInfo;
 - (id)newVertexShaderDebugInfo;
+- (id)originalObject;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)swapObject:(id)arg1;
 - (void)touch;

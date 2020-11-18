@@ -77,6 +77,7 @@
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5 finalError:(id)arg6;
 - (void)_presentApplyForFeature:(unsigned long long)arg1;
+- (void)_presentEnrollAccessibilityIntentAlert;
 - (void)_presentInvalidAlert;
 - (void)_presentLostModeAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentPassNotSupportedAlertWithRelevantUniqueID:(id)arg1;
@@ -91,6 +92,7 @@
 - (BOOL)_shouldBlockHardwareCancels;
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)_updatePearlViews;
+- (void)_updatePhysicalButtonViews;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
@@ -105,7 +107,7 @@
 - (void)authorizationDidUpdateAccountServicePaymentMethod:(id)arg1;
 - (void)authorizationViewController:(id)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)authorizationViewControllerDidChangeCoachingState:(id)arg1;
-- (void)authorizationViewControllerDidChangeUserIntentRequirement:(id)arg1;
+- (void)authorizationViewControllerDidChangePhysicalButtonState:(id)arg1;
 - (void)authorizationWillStart;
 - (void)compactNavigationContainerControllerReceivedExternalTap:(id)arg1;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

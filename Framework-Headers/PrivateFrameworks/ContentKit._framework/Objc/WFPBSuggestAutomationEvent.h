@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface WFPBSuggestAutomationEvent : PBCodable <NSCopying>
 {
     NSString *_key;
+    NSString *_source;
     NSString *_suggestedAutomationIdentifier;
     BOOL _completed;
     BOOL _interacted;
@@ -27,9 +28,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasCompleted;
 @property (nonatomic) BOOL hasInteracted;
 @property (readonly, nonatomic) BOOL hasKey;
+@property (readonly, nonatomic) BOOL hasSource;
 @property (readonly, nonatomic) BOOL hasSuggestedAutomationIdentifier;
 @property (nonatomic) BOOL interacted; // @synthesize interacted=_interacted;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
+@property (strong, nonatomic) NSString *source; // @synthesize source=_source;
 @property (strong, nonatomic) NSString *suggestedAutomationIdentifier; // @synthesize suggestedAutomationIdentifier=_suggestedAutomationIdentifier;
 
 - (void).cxx_destruct;

@@ -8,20 +8,33 @@
 
 #import <Intents/INGetCarPowerLevelStatusIntentResponseExport-Protocol.h>
 
-@class NSMeasurement, NSNumber, NSString;
+@class NSDateComponents, NSDictionary, NSMeasurement, NSNumber, NSString;
 
 @interface INGetCarPowerLevelStatusIntentResponse : INIntentResponse <INGetCarPowerLevelStatusIntentResponseExport>
 {
 }
 
+@property (copy, nonatomic) NSString *activeConnector;
+@property (copy, nonatomic) NSString *carIdentifier;
 @property (copy, nonatomic) NSNumber *chargePercentRemaining;
 @property (copy, nonatomic) NSNumber *charging;
+@property (copy, nonatomic) NSDictionary *chargingFormulaArguments;
 @property (readonly, nonatomic) long long code;
+@property (copy, nonatomic) NSDictionary *consumptionFormulaArguments;
+@property (copy, nonatomic) NSMeasurement *currentBatteryCapacity;
+@property (copy, nonatomic) NSDateComponents *dateOfLastStateUpdate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSMeasurement *distanceRemaining;
+@property (copy, nonatomic) NSMeasurement *distanceRemainingElectric;
+@property (copy, nonatomic) NSMeasurement *distanceRemainingFuel;
 @property (copy, nonatomic) NSNumber *fuelPercentRemaining;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSMeasurement *maximumBatteryCapacity;
+@property (copy, nonatomic) NSMeasurement *maximumDistance;
+@property (copy, nonatomic) NSMeasurement *maximumDistanceElectric;
+@property (copy, nonatomic) NSMeasurement *maximumDistanceFuel;
+@property (copy, nonatomic) NSMeasurement *minimumBatteryCapacity;
 @property (copy, nonatomic) NSNumber *minutesToFull;
 @property (readonly) Class superclass;
 

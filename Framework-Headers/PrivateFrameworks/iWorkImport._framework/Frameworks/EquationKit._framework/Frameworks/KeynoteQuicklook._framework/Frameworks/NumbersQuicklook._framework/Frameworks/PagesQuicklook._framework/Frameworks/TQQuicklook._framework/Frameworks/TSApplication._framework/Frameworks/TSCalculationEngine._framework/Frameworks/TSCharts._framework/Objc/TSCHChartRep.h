@@ -72,6 +72,7 @@
 - (void).cxx_destruct;
 - (BOOL)buildShouldUseRenderer:(id)arg1;
 - (BOOL)canDrawInParallel;
+- (double)captionBottomDistanceToRect:(struct CGRect)arg1;
 - (void)clearRenderers;
 - (struct CGRect)convertUnscaledToBoundsRect:(struct CGRect)arg1;
 - (void)dealloc;
@@ -93,6 +94,7 @@
 - (BOOL)isLayerBasedRep;
 - (BOOL)messageIsVisible;
 - (struct CGRect)outerShadowFrame;
+- (void)p_addChildTexturesToTextureSet:(id)arg1 forDescription:(id)arg2 stage:(long long)arg3 finalTexture:(BOOL)arg4;
 - (int)p_backgroundLikePlaneStateForEffectiveStage:(long long)arg1;
 - (BOOL)p_chartShouldDisplayMessage;
 - (void)p_checkFillPropertiesForDataListeningWithChangedProperties:(id)arg1;
@@ -113,7 +115,7 @@
 - (BOOL)planeIsVisible:(int)arg1;
 - (int)planeState:(int)arg1 finalElements:(BOOL)arg2;
 - (int)planeState:(int)arg1 finalElements:(BOOL)arg2 chunkStage:(long long)arg3;
-- (void)protected_renderChunkInBounds:(struct CGRect)arg1 textureSet:(id)arg2;
+- (void)protected_renderChunkInBounds:(struct CGRect)arg1 textureSet:(id)arg2 description:(id)arg3;
 - (id)referenceLineLabelsSearchSelectionsToRender;
 - (id)referenceLinesToRender;
 - (BOOL)renderElements;

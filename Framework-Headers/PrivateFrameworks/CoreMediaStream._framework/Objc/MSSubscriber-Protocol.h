@@ -13,6 +13,7 @@
 
 - (void)abort;
 - (void)checkForNewAssetCollections;
+- (void)checkForNewAssetCollectionsIfMissingCtag;
 - (void)checkForOutstandingActivities;
 - (MSSubscribedStream *)ownSubscribedStream;
 - (void)resetSync;

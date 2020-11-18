@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListEntryPositionKey : NSObject <NSSecureCoding>
 {
     NSString *_deviceIdentifier;

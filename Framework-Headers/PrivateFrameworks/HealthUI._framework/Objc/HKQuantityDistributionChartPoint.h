@@ -37,8 +37,8 @@
 - (void).cxx_destruct;
 - (id)_quickDate:(id)arg1;
 - (id)allYValues;
-- (id)initWithHistogramData:(id)arg1 bucketIncrement:(double)arg2 unit:(id)arg3;
-- (id)initWithHistogramData:(id)arg1 unit:(id)arg2;
+- (id)initWithHistogramData:(id)arg1 bucketIncrement:(double)arg2 unit:(id)arg3 displayType:(id)arg4;
+- (id)initWithHistogramData:(id)arg1 unit:(id)arg2 displayType:(id)arg3;
 - (id)maxXValueAsGenericType;
 - (id)maxYValue;
 - (id)minXValueAsGenericType;

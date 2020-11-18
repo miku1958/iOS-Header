@@ -31,5 +31,7 @@
 - (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;
 - (void)scrollToRect:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)updateBehaviorForComponentView:(SXComponentView *)arg1;
+- (void)willDismissFullscreenCanvasForComponent:(SXComponentView *)arg1;
+- (void)willReturnToFullscreenForComponent:(SXComponentView *)arg1;
 @end
 

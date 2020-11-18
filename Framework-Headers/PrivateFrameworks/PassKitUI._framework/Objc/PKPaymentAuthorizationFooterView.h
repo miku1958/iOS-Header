@@ -45,6 +45,7 @@
     PKPaymentAuthorizationLayout *_layout;
     unsigned long long _requestType;
     unsigned long long _confirmationStyle;
+    long long _userIntentStyle;
     NSString *_biometricConfirmationTitle;
     NSString *_confirmationTitle;
     NSString *_authorizingTitle;
@@ -64,6 +65,7 @@
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (nonatomic) long long userIntentStyle; // @synthesize userIntentStyle=_userIntentStyle;
 
 - (void).cxx_destruct;
 - (void)_createSubviews;
@@ -73,8 +75,8 @@
 - (BOOL)_shouldCompact;
 - (id)_titleAttributedStringForState:(long long)arg1;
 - (id)_titleLabelAttributedString:(id)arg1;
+- (id)createDefaultHeightConstraintForConstraintState:(long long)arg1;
 - (void)dealloc;
-- (id)defaultHeightConstraints;
 - (void)glyphView:(id)arg1 revealingCheckmark:(BOOL)arg2;
 - (void)glyphViewUserIntentEdgeDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

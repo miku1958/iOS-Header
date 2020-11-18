@@ -21,8 +21,8 @@
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 @property (readonly, strong, nonatomic) NSData *vasData; // @synthesize vasData=_vasData;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithStatus:(long long)arg1 data:(id)arg2 mobileToken:(id)arg3;
 

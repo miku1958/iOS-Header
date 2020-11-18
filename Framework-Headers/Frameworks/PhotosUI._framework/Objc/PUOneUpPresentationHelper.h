@@ -35,6 +35,7 @@
         BOOL respondsToPreferredPresentationOrientation;
         BOOL respondsToEnableFreezeLayoutOnOrientationChange;
         BOOL respondsToAdditionalOptions;
+        BOOL respondsToWantsShowInLibraryButton;
     } _delegateFlags;
     struct {
         BOOL respondsToCurrentImageForAssetReference;
@@ -109,6 +110,7 @@
 - (void)_cleanUpAfterTilingViewTransitionAnimated:(BOOL)arg1 transitionAborted:(BOOL)arg2;
 - (void)_cleanupOneUpViewControllerForDismissalIfNeeded;
 - (void)_configureNavigationController:(id)arg1;
+- (id)_createBrowsingSession;
 - (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2;
 - (long long)_currentNavigationControllerOperation;
 - (id)_currentTilingViewControllerTransition;
@@ -120,6 +122,7 @@
 - (void)_handleTileControllerAnimationEnd;
 - (void)_invalidateAssetReferencesDisplayedInTilingView;
 - (void)_invalidatePresentationInfo;
+- (void)_navigateToAssetAtIndexPath:(id)arg1 inBrowsingSession:(id)arg2;
 - (id)_newCollapsedLayout;
 - (BOOL)_prepareDismissalForced:(BOOL)arg1;
 - (void)_presentOneUpViewController:(id)arg1 animated:(BOOL)arg2 interactiveMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
@@ -150,7 +153,6 @@
 - (id)initWithPhotosDataSource:(id)arg1;
 - (void)interactiveTileTracker:(id)arg1 didStopTrackingTileController:(id)arg2;
 - (void)interactiveTileTracker:(id)arg1 willStartTrackingTileController:(id)arg2;
-- (void)navigateToAssetAtIndexPath:(id)arg1;
 - (void)photosPreviewPresentationController:(id)arg1 willPresentPreviewViewController:(id)arg2;
 - (id)pinchedTiledTracker:(id)arg1 finalLayoutInfoForTileWithLayoutInfo:(id)arg2;
 - (double)pinchedTiledTracker:(id)arg1 initialAspectRatioForTileWithLayoutInfo:(id)arg2;

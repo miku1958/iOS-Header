@@ -61,6 +61,10 @@ __attribute__((visibility("hidden")))
     double _sessionCreatedTime;
     BOOL _isFullsizeUI;
     BOOL _isDuplicationEnabled;
+    unsigned long long _totalCellTxDataBytes;
+    unsigned long long _totalCellRxDataBytes;
+    unsigned long long _totalCellDupTxDataBytes;
+    unsigned long long _totalCellDupRxDataBytes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 
 - (unsigned int)RTPeriod;
 - (int)adaptiveLearningState;
+- (void)addCellByteCountStats:(id)arg1;
 - (void)addNewCall:(id)arg1;
 - (id)aggregatedCallReports;
 - (id)aggregatedDownlinkSegmentReport;
@@ -80,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (void)audioEnabled:(id)arg1;
 - (unsigned int)audioErasureCount;
 - (double)audioErasureTotalTime;
+- (double)averageJitterBufferDelay;
+- (double)avgJBTargetSizeChanges;
 - (unsigned int)currentDegragedParticipantCount;
 - (BOOL)currentUISize;
 - (void)dealloc;
@@ -96,6 +103,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isVideoDegraded;
 - (BOOL)isWhitelistedEvent:(unsigned short)arg1;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
+- (unsigned short)maxAudioErasureCount;
+- (unsigned short)maxJBTargetSizeChanges;
+- (unsigned short)maxVideoStallCount;
+- (unsigned short)minVideoFrameRate;
 - (void)processActualBitrateChange:(id)arg1;
 - (void)processAudioStreamSwitch:(id)arg1;
 - (void)processDownlinkActualBitrate:(unsigned int)arg1;
@@ -125,6 +136,7 @@ __attribute__((visibility("hidden")))
 - (void)startUplinkSegment;
 - (double)timeWeightedNumberOfParticipants;
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
+- (void)updateWRMMetrics:(unsigned int)arg1 payload:(id)arg2;
 - (void)videoEnabled:(id)arg1;
 
 @end

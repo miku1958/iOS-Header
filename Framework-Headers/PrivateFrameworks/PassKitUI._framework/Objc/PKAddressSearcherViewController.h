@@ -12,13 +12,14 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class CNPostalAddress, NSArray, NSString, PKAddressSearchModel, UISearchBar, UITableView, _UINavigationControllerPalette;
+@class CNPostalAddress, NSArray, NSString, PKAddressSearchModel, PKContactFormatValidator, UISearchBar, UITableView, _UINavigationControllerPalette;
 @protocol PKAddressSearcherViewControllerDelegate;
 
 @interface PKAddressSearcherViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, PKAddressSearchModelDelegate, PKAddressEditorViewControllerDelegate>
 {
     id<PKAddressSearcherViewControllerDelegate> _delegate;
     NSArray *_requiredKeys;
+    PKContactFormatValidator *_contactFormatValidator;
     UISearchBar *_searchBar;
     UITableView *_tableView;
     _UINavigationControllerPalette *_palette;
@@ -30,9 +31,10 @@
 }
 
 @property (strong, nonatomic) NSArray *completionSearchResults; // @synthesize completionSearchResults=_completionSearchResults;
+@property (strong, nonatomic) PKContactFormatValidator *contactFormatValidator; // @synthesize contactFormatValidator=_contactFormatValidator;
 @property (strong, nonatomic) NSArray *contactsSearchResults; // @synthesize contactsSearchResults=_contactsSearchResults;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKAddressSearcherViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKAddressSearcherViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UINavigationControllerPalette *palette; // @synthesize palette=_palette;
@@ -45,7 +47,7 @@
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
-- (void)_showAddressEditorWithContact:(id)arg1;
+- (void)_showAddressEditorWithContact:(id)arg1 withContactErrors:(id)arg2;
 - (void)addressEditorViewController:(id)arg1 selectedContact:(id)arg2;
 - (void)addressEditorViewControllerDidCancel:(id)arg1;
 - (void)contactsSearchUpdated:(id)arg1;

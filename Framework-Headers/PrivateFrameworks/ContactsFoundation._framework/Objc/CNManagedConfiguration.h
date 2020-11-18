@@ -18,9 +18,6 @@
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) id<CNManagedProfileConnection> profileConnection; // @synthesize profileConnection=_profileConnection;
 
-+ (id)bundleIdentifierForAuditToken:(CDStruct_4c969caf *)arg1;
-+ (id)bundleIdentifierFromEntitlementForAuditToken:(CDStruct_4c969caf *)arg1;
-+ (id)bundleIdentifierFromInfoPlistForAuditToken:(CDStruct_4c969caf *)arg1;
 + (id)os_log;
 - (void).cxx_destruct;
 - (id)accountForIdentifier:(id)arg1;
@@ -31,6 +28,7 @@
 - (BOOL)canWriteToAccountWithIdentifier:(id)arg1;
 - (BOOL)canWriteToLocalAccount;
 - (BOOL)deviceHasManagementRestrictions;
+- (id)init;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1 managedProfileConnection:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 managedProfileConnection:(id)arg2;
 - (id)readableAccountIdentifiersFromIdentifiers:(id)arg1;

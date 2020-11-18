@@ -6,17 +6,17 @@
 
 #import <UIKitCore/UIPresentationController.h>
 
-#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/_UIPopoverDimmingViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, _UICutoutShadowView, _UIPopoverLayoutInfo, _UIPopoverView;
+@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, _UICutoutShadowView, _UIPopoverDimmingView, _UIPopoverLayoutInfo, _UIPopoverView;
 @protocol UIPopoverPresentationControllerDelegate;
 
-@interface UIPopoverPresentationController : UIPresentationController <UIDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
+@interface UIPopoverPresentationController : UIPresentationController <_UIPopoverDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
 {
     UIViewController *_contentViewController;
     _UIPopoverView *_popoverView;
-    UIDimmingView *_dimmingView;
+    _UIPopoverDimmingView *_dimmingView;
     _UICutoutShadowView *_shadowView;
     UIView *_layoutConstraintView;
     struct CGRect _targetRectInEmbeddingView;
@@ -28,7 +28,6 @@
     _UIPopoverLayoutInfo *_preferredLayoutInfo;
     Class _popoverBackgroundViewClass;
     struct CGSize _popoverContentSize;
-    struct CGRect _targetRectInContainerView;
     struct CGRect _embeddedTargetRect;
     long long _popoverControllerStyle;
     BOOL _ignoresKeyboardNotifications;
@@ -60,6 +59,9 @@
         unsigned int embeddedPresentationBounces:1;
         unsigned int isRepositioningRectDisabled:1;
     } _popoverControllerFlags;
+    NSString *_sceneIdentifier;
+    UIPanGestureRecognizer *_detachGestureRecognizer;
+    BOOL _wasDetached;
     BOOL _isDismissingBecauseDimmingViewTapped;
     BOOL _dismissesOnRotation;
     BOOL _showsTargetRect;
@@ -72,6 +74,8 @@
     BOOL __ignoreBarButtonItemSiblings;
     BOOL __softAssertWhenNoSourceViewOrBarButtonItemSpecified;
     BOOL __allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
+    BOOL _shouldPreserveFirstResponder;
+    BOOL _adaptivityEnabled;
     unsigned long long _permittedArrowDirections;
     unsigned long long _popoverArrowDirection;
     UIView *_sourceOverlayView;
@@ -79,6 +83,7 @@
     UIView *_targetRectView;
     UIPopoverPresentationController *_retainedSelf;
     double __dimmingViewTopEdgeInset;
+    long long __preferredHorizontalAlignment;
     struct UIEdgeInsets _popoverLayoutMargins;
 }
 
@@ -89,8 +94,10 @@
 @property (nonatomic, setter=_setIgnoreBarButtonItemSiblings:) BOOL _ignoreBarButtonItemSiblings; // @synthesize _ignoreBarButtonItemSiblings=__ignoreBarButtonItemSiblings;
 @property (nonatomic, setter=_setIgnoresKeyboardNotifications:) BOOL _ignoresKeyboardNotifications; // @dynamic _ignoresKeyboardNotifications;
 @property (nonatomic, setter=_setPopoverBackgroundStyle:) long long _popoverBackgroundStyle;
+@property (nonatomic, setter=_setPreferredHorizontalAlignment:) long long _preferredHorizontalAlignment; // @synthesize _preferredHorizontalAlignment=__preferredHorizontalAlignment;
 @property (nonatomic, getter=_shouldHideArrow, setter=_setShouldHideArrow:) BOOL _shouldHideArrow; // @synthesize _shouldHideArrow=__shouldHideArrow;
 @property (nonatomic, setter=_setSoftAssertWhenNoSourceViewOrBarButtonItemSpecified:) BOOL _softAssertWhenNoSourceViewOrBarButtonItemSpecified; // @synthesize _softAssertWhenNoSourceViewOrBarButtonItemSpecified=__softAssertWhenNoSourceViewOrBarButtonItemSpecified;
+@property (nonatomic, getter=_isAdaptivityEnabled, setter=_setAdaptivityEnabled:) BOOL adaptivityEnabled; // @synthesize adaptivityEnabled=_adaptivityEnabled;
 @property (readonly, nonatomic) unsigned long long arrowDirection;
 @property (copy, nonatomic) UIColor *backgroundColor;
 @property (strong, nonatomic) UIBarButtonItem *barButtonItem; // @dynamic barButtonItem;
@@ -112,6 +119,7 @@
 @property (strong, nonatomic) UIPopoverPresentationController *retainedSelf; // @synthesize retainedSelf=_retainedSelf;
 @property (nonatomic, getter=_retainsSelfWhilePresented, setter=_setRetainsSelfWhilePresented:) BOOL retainsSelfWhilePresented; // @synthesize retainsSelfWhilePresented=_retainsSelfWhilePresented;
 @property (nonatomic, getter=_shouldDisableInteractionDuringTransitions, setter=_setShouldDisableInteractionDuringTransitions:) BOOL shouldDisableInteractionDuringTransitions; // @synthesize shouldDisableInteractionDuringTransitions=_shouldDisableInteractionDuringTransitions;
+@property (nonatomic, getter=_shouldPreserveFirstResponder, setter=_setShouldPreserveFirstResponder:) BOOL shouldPreserveFirstResponder; // @synthesize shouldPreserveFirstResponder=_shouldPreserveFirstResponder;
 @property (nonatomic) BOOL showsOrientationMarker; // @synthesize showsOrientationMarker=_showsOrientationMarker;
 @property (nonatomic) BOOL showsPresentationArea; // @synthesize showsPresentationArea=_showsPresentationArea;
 @property (nonatomic) BOOL showsTargetRect; // @synthesize showsTargetRect=_showsTargetRect;
@@ -137,7 +145,9 @@
 - (struct CGRect)_calculateContainingFrame;
 - (struct CGPoint)_centerPointForScale:(double)arg1 frame:(struct CGRect)arg2 anchor:(struct CGPoint)arg3;
 - (void)_clearCachedPopoverContentSize;
+- (void)_closeScene;
 - (CDUnknownBlockType)_completionBlockForDismissalWhenNotifyingDelegate:(BOOL)arg1;
+- (void)_convertToSceneFromPresentingViewController:(id)arg1;
 - (struct CGSize)_currentPopoverContentSize;
 - (Class)_defaultChromeViewClass;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
@@ -149,6 +159,7 @@
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
 - (BOOL)_fallbackShouldDismiss;
 - (BOOL)_forcesPreferredAnimationControllers;
+- (void)_handlePan:(id)arg1;
 - (void)_incrementSlideTransitionCount:(BOOL)arg1;
 - (id)_initialPresentationViewControllerForViewController:(id)arg1;
 - (void)_invalidateLayoutInfo;
@@ -175,6 +186,7 @@
 - (int)_presentationState;
 - (id)_presentationView;
 - (void)_realSourceViewDidChangeFromView:(id)arg1 toView:(id)arg2;
+- (void)_realSourceViewGeometryDidChange;
 - (void)_resetSlideTransitionCount;
 - (void)_scrollViewDidEndDragging:(id)arg1;
 - (void)_scrollViewWillBeginDragging:(id)arg1;
@@ -188,12 +200,14 @@
 - (void)_setPopoverFrame:(struct CGRect)arg1 animated:(BOOL)arg2 coordinator:(id)arg3;
 - (void)_setPopoverView:(id)arg1;
 - (void)_setPresentationState:(int)arg1;
+- (BOOL)_shouldConvertToScene;
 - (BOOL)_shouldKeepCurrentFirstResponder;
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldPopoverContentExtendOverArrowForViewController:(id)arg1 backgroundViewClass:(Class)arg2;
 - (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (unsigned long long)_slideTransitionCount;
 - (struct CGRect)_sourceRectInContainerView;
+- (struct CGRect)_sourceRectInCoordinateSpace:(id)arg1;
 - (void)_startWatchingForKeyboardNotificationsIfNecessary;
 - (void)_startWatchingForScrollViewNotifications;
 - (void)_stopWatchingForKeyboardNotifications;
@@ -206,11 +220,11 @@
 - (void)_transitionToWillBegin;
 - (void)_updateShadowFrame;
 - (void)_updateSourceOverlayViewConstraints;
+- (BOOL)_useNSPopover;
 - (id)arrowBackgroundColor;
 - (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
-- (void)dimmingViewWasTapped:(id)arg1;
-- (void)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
 - (struct CGRect)frameOfPresentedViewInContainerView;
@@ -219,6 +233,8 @@
 - (BOOL)isPopoverVisible;
 - (BOOL)isPresentingOrDismissing;
 - (struct CGSize)popoverContentSize;
+- (BOOL)popoverDimmingViewDidReceiveDismissalInteraction:(id)arg1;
+- (BOOL)popoverDimmingViewShouldAllowInteraction:(id)arg1;
 - (id)popoverView;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (long long)presentationStyle;

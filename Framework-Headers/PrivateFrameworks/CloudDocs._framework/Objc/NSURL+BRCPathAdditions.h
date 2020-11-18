@@ -54,7 +54,6 @@
 - (BOOL)br_isInSyncedLocation;
 - (BOOL)br_isInTrash;
 - (BOOL)br_isModifiedSinceShared;
-- (BOOL)br_isPCSChained;
 - (BOOL)br_isParentOfURL:(id)arg1;
 - (BOOL)br_isParentOfURL:(id)arg1 strictly:(BOOL)arg2;
 - (BOOL)br_isPromiseURL;

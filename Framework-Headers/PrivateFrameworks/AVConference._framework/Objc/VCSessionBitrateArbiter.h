@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     unsigned int _maxBitrate2GDownlink;
     unsigned int _maxBitrate3GUplink;
     unsigned int _maxBitrate3GDownlink;
-    unsigned int _maxBitrateLTEUplink;
-    unsigned int _maxBitrateLTEDownlink;
+    unsigned int _maxBitrateExpensiveUplink;
+    unsigned int _maxBitrateExpensiveDownlink;
+    unsigned int _maxBitrateNonExpensiveUplink;
+    unsigned int _maxBitrateNonExpensiveDownlink;
     unsigned int _maxBitrateWiFiUplink;
     unsigned int _maxBitrateWiFiDownlink;
     NSDictionary *_currentSettings;
@@ -26,12 +28,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int maxBitrate2GUplink; // @synthesize maxBitrate2GUplink=_maxBitrate2GUplink;
 @property (readonly) unsigned int maxBitrate3GDownlink; // @synthesize maxBitrate3GDownlink=_maxBitrate3GDownlink;
 @property (readonly) unsigned int maxBitrate3GUplink; // @synthesize maxBitrate3GUplink=_maxBitrate3GUplink;
-@property (readonly) unsigned int maxBitrateLTEDownlink; // @synthesize maxBitrateLTEDownlink=_maxBitrateLTEDownlink;
-@property (readonly) unsigned int maxBitrateLTEUplink; // @synthesize maxBitrateLTEUplink=_maxBitrateLTEUplink;
+@property (readonly) unsigned int maxBitrateExpensiveDownlink; // @synthesize maxBitrateExpensiveDownlink=_maxBitrateExpensiveDownlink;
+@property (readonly) unsigned int maxBitrateExpensiveUplink; // @synthesize maxBitrateExpensiveUplink=_maxBitrateExpensiveUplink;
+@property (readonly) unsigned int maxBitrateNonExpensiveDownlink; // @synthesize maxBitrateNonExpensiveDownlink=_maxBitrateNonExpensiveDownlink;
+@property (readonly) unsigned int maxBitrateNonExpensiveUplink; // @synthesize maxBitrateNonExpensiveUplink=_maxBitrateNonExpensiveUplink;
 @property (readonly) unsigned int maxBitrateWiFiDownlink; // @synthesize maxBitrateWiFiDownlink=_maxBitrateWiFiDownlink;
 @property (readonly) unsigned int maxBitrateWiFiUplink; // @synthesize maxBitrateWiFiUplink=_maxBitrateWiFiUplink;
 
-- (unsigned int)bitrateForStoreBagKey:(id)arg1 connectionType:(int)arg2 currentBitrate:(unsigned int)arg3;
+- (unsigned int)bitrateForStoreBagKey:(id)arg1 connectionType:(int)arg2 currentBitrate:(unsigned int)arg3 isExpensive:(BOOL)arg4;
 - (void)dealloc;
 - (id)init;
 - (BOOL)rangeCheck:(unsigned int)arg1;

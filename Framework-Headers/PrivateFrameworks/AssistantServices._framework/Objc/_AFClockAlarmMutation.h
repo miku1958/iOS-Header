@@ -17,6 +17,7 @@
     NSURL *_alarmURL;
     BOOL _isFiring;
     NSString *_title;
+    unsigned long long _type;
     unsigned long long _hour;
     unsigned long long _minute;
     unsigned long long _repeatOptions;
@@ -31,6 +32,7 @@
         unsigned int hasAlarmURL:1;
         unsigned int hasIsFiring:1;
         unsigned int hasTitle:1;
+        unsigned int hasType:1;
         unsigned int hasHour:1;
         unsigned int hasMinute:1;
         unsigned int hasRepeatOptions:1;
@@ -63,6 +65,7 @@
 - (void)setMinute:(unsigned long long)arg1;
 - (void)setRepeatOptions:(unsigned long long)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setType:(unsigned long long)arg1;
 
 @end
 

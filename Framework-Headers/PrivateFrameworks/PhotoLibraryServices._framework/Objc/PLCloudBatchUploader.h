@@ -18,6 +18,7 @@
     BOOL _shouldGenerateDerivatives;
     NSMutableDictionary *_recordsToDelete;
     NSString *_recordsToDeletePlistPath;
+    NSMutableSet *_momentSharesNeedingForceSync;
 }
 
 @property BOOL initialUpload; // @synthesize initialUpload=_initialUpload;
@@ -41,18 +42,18 @@
 - (void)_processInvalidResourceCopySourceCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processInvalidScopeCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processPendingObjects:(id)arg1 withBatchManager:(id)arg2;
-- (void)_processQuarantineRecordsCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)_processQuarantineRecordsCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3 uploadTracker:(id)arg4;
 - (BOOL)_processRepushAlbumError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_promptForNilAssetUUID:(id)arg1 isInsert:(BOOL)arg2;
 - (void)_promptToFileRadarWithTitle:(id)arg1 description:(id)arg2;
 - (void)_push:(id)arg1;
 - (void)_pushBatches:(id)arg1;
-- (void)_quarantineObject:(id)arg1;
+- (void)_quarantineObject:(id)arg1 uploadTracker:(id)arg2;
 - (void)_sendAlbums:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sendAssets:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sendOneBatch:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sortData:(id)arg1 isInsert:(BOOL)arg2 forUploadChanges:(id)arg3 shouldTriggerPrefetch:(BOOL *)arg4 inManagedObjectContext:(id)arg5;
-- (void)_sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
+- (void)_sortRelationshipData:(id)arg1 forUploadChanges:(id)arg2 inManagedObjectContext:(id)arg3;
 - (id)_syncDescriptionForObject:(id)arg1;
 - (BOOL)_updateDeletionRecordListForKey:(id)arg1 removingRecordID:(id)arg2;
 - (BOOL)_validateAdditionalAssetAttributes:(id)arg1 onRelatedObject:(id)arg2;
@@ -67,9 +68,11 @@
 - (unsigned long long)numberOfBatchesToUpload;
 - (id)pop;
 - (id)processCommitError:(id)arg1 andFinalizeError:(id)arg2 forUploadBatchContainer:(id)arg3 withUploadTracker:(id)arg4;
-- (void)quarantineRecord:(id)arg1;
+- (void)processMomentSharesNeedingForceSync;
+- (void)quarantineRecord:(id)arg1 uploadTracker:(id)arg2;
 - (void)recordDeletions:(id)arg1;
-- (void)tryToFixCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)recordMomentSharesNeedingForceSync:(id)arg1;
+- (void)tryToFixCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3 uploadTracker:(id)arg4;
 - (void)uploadDeletedRecordsFromPlist:(id)arg1;
 - (void)uploadFullPhotoLibraryToCloud;
 

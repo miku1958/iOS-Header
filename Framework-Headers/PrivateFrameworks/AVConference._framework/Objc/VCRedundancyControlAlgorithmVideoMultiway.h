@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)updateInternalParametersWithMode:(int)arg1;
 - (void)updateRedundancyPercentage;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
-- (void)updateRoundTripTimeWithStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRoundTripTimeWithStatistics:(CDStruct_56e8fa21)arg1;
 
 @end
 

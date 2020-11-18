@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     PUBrowsingViewModel *_viewModel;
     CDUnknownBlockType __nextColorUpdateAnimatorBlock;
     _UIContentUnavailableView *__emptyPlaceholderView;
+    struct CGRect __emptyPlaceholderFrame;
 }
 
+@property (nonatomic, setter=_setEmptyPlaceholderFrame:) struct CGRect _emptyPlaceholderFrame; // @synthesize _emptyPlaceholderFrame=__emptyPlaceholderFrame;
 @property (strong, nonatomic, setter=_setEmptyPlaceholderView:) _UIContentUnavailableView *_emptyPlaceholderView; // @synthesize _emptyPlaceholderView=__emptyPlaceholderView;
 @property (nonatomic, setter=_setNeedsUpdateColor:) BOOL _needsUpdateColor; // @synthesize _needsUpdateColor=__needsUpdateColor;
 @property (copy, nonatomic, setter=_setNextColorUpdateAnimatorBlock:) CDUnknownBlockType _nextColorUpdateAnimatorBlock; // @synthesize _nextColorUpdateAnimatorBlock=__nextColorUpdateAnimatorBlock;
@@ -33,11 +35,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
+- (struct CGRect)_emptyPlaceholderFrameForLayoutInfo:(id)arg1;
 - (void)_invalidateColor;
 - (void)_invalidateColorWithAnimatorBlock:(CDUnknownBlockType)arg1;
 - (void)_updateColorIfNeeded;
 - (void)_updateEmptyPlaceholderAnimated:(BOOL)arg1;
 - (void)applyLayoutInfo:(id)arg1;
+- (id)initWithReuseIdentifier:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 

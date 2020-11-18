@@ -18,11 +18,12 @@
 + (id)formatStringArray:(id)arg1 truncatingAtLength:(unsigned long long)arg2;
 + (id)hexOfBytes:(const void *)arg1 size:(unsigned long long)arg2;
 + (id)hexUUID;
-+ (BOOL)isConstrainedDevice;
 + (BOOL)isFirstPartyApp:(id)arg1;
 + (BOOL)isInternalDevice;
 + (BOOL)localizedTimeStructForDate:(id)arg1 tm:(struct tm *)arg2;
++ (BOOL)localizedTimeStructForSecondsFrom1970:(double)arg1 tm:(struct tm *)arg2;
 + (id)osBuild;
++ (id)preferredLanguages;
 + (id)reduceSpotlightDomainIdentifiers:(id)arg1;
 + (long long)reverseCompareDouble:(double)arg1 withDouble:(double)arg2;
 + (id)sqliteGlobEscape:(id)arg1;

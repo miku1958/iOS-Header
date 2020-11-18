@@ -18,6 +18,7 @@
     BOOL _enableTwoFingerSecondaryClick;
     float _pointerAccelerationFactor;
     float _scrollAccelerationFactor;
+    long long _doubleTapDragMode;
     long long _buttonConfigurationForHardwareButtonMice;
     long long _buttonConfigurationForVirtualButtonMice;
 }
@@ -26,6 +27,7 @@
 @property (nonatomic) long long buttonConfigurationForVirtualButtonMice; // @synthesize buttonConfigurationForVirtualButtonMice=_buttonConfigurationForVirtualButtonMice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long doubleTapDragMode; // @synthesize doubleTapDragMode=_doubleTapDragMode;
 @property (nonatomic) BOOL enableNaturalScrolling; // @synthesize enableNaturalScrolling=_enableNaturalScrolling;
 @property (nonatomic) BOOL enableTapToClick; // @synthesize enableTapToClick=_enableTapToClick;
 @property (nonatomic) BOOL enableTwoFingerSecondaryClick; // @synthesize enableTwoFingerSecondaryClick=_enableTwoFingerSecondaryClick;

@@ -6,17 +6,27 @@
 
 #import <NanoTimeKitCompanion/NTKCompanionResourceDirectoryEditor.h>
 
+@class NSString;
+
 @interface NTKCompanionSinglePHAssetEditor : NTKCompanionResourceDirectoryEditor
 {
+    NSString *_albumIdentifier;
+    NSString *_albumName;
+    BOOL _albumNameValid;
 }
 
+@property (strong, nonatomic) NSString *albumIdentifier; // @synthesize albumIdentifier=_albumIdentifier;
+@property (readonly, nonatomic) NSString *albumName;
 @property (nonatomic) BOOL shouldFinalize;
 
-+ (id)_assetForResourceDirectoryForDevice:(id)arg1;
-+ (id)_createResourceDirectoryForSinglePHAssetForDevice:(id)arg1 previewOnly:(BOOL)arg2;
+- (void).cxx_destruct;
+- (id)_createResourceDirectoryForSinglePHAssetWithPreviewOnly:(BOOL)arg1;
+- (id)_fetchAlbumName;
+- (id)_fetchSingleAsset;
 - (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithResourceDirectory:(id)arg1 forDevice:(id)arg2 shouldFinalize:(BOOL)arg3;
+- (id)optionsForSingleAsset;
 
 @end
 

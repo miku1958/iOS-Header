@@ -14,7 +14,7 @@
 }
 
 + (BOOL)loadThemeConstantsForEntity:(id)arg1 inContext:(id)arg2;
-- (void)_addSchemaPartDefinitionsForStandardElement:(const CDStruct_e3362728 *)arg1 withElement:(id)arg2;
+- (void)_addSchemaPartDefinitionsForStandardElement:(const CDStruct_22c2ae3f *)arg1 withElement:(id)arg2;
 - (void)_loadConstantForEntity:(id)arg1 withDescriptor:(const struct _themeconstant *)arg2;
 - (BOOL)_renditionKey:(const struct _renditionkeytoken *)arg1 isEqualToKeyIgnoringLook:(const struct _renditionkeytoken *)arg2;
 - (void)_sanityCheckColorNamesAndUpdateIfNecessary;
@@ -25,10 +25,9 @@
 - (void)_sanityCheckSchemaAssets;
 - (void)_sanityCheckSchemaCategoriesAndUpdateIfNecessary;
 - (void)_sanityCheckSchemaDefinitionsAndUpdateIfNecessary;
-- (void)_sanityCheckSchemaPartDefinitionsForStandardElement:(const CDStruct_e3362728 *)arg1 withElement:(id)arg2;
+- (void)_sanityCheckSchemaPartDefinitionsForStandardElement:(const CDStruct_22c2ae3f *)arg1 withElement:(id)arg2;
 - (void)dealloc;
 - (id)initWithThemeDocument:(id)arg1;
-- (void)loadArtworkDraftTypes;
 - (void)loadBasicThemePart;
 - (void)loadColorNames;
 - (void)loadColorStatuses;

@@ -19,8 +19,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)connection;
-- (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)sendVersionRequestToCompanion;
 
 @end

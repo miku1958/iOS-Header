@@ -11,7 +11,7 @@
 @interface RMModelStatusAccountGoogle : RMModelStatusBase
 {
     NSString *_statusIdentifier;
-    NSString *_statusDescription;
+    NSString *_statusVisibleName;
     NSString *_statusUsername;
     NSNumber *_statusAuthenticated;
     NSNumber *_statusIsMailEnabled;
@@ -24,14 +24,14 @@
 @property (copy, nonatomic) NSNumber *statusAreContactsEnabled; // @synthesize statusAreContactsEnabled=_statusAreContactsEnabled;
 @property (copy, nonatomic) NSNumber *statusAreNotesEnabled; // @synthesize statusAreNotesEnabled=_statusAreNotesEnabled;
 @property (copy, nonatomic) NSNumber *statusAuthenticated; // @synthesize statusAuthenticated=_statusAuthenticated;
-@property (copy, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
 @property (copy, nonatomic) NSString *statusIdentifier; // @synthesize statusIdentifier=_statusIdentifier;
 @property (copy, nonatomic) NSNumber *statusIsMailEnabled; // @synthesize statusIsMailEnabled=_statusIsMailEnabled;
 @property (copy, nonatomic) NSString *statusUsername; // @synthesize statusUsername=_statusUsername;
+@property (copy, nonatomic) NSString *statusVisibleName; // @synthesize statusVisibleName=_statusVisibleName;
 
 + (id)allowedStatusKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 description:(id)arg2 username:(id)arg3 authenticated:(id)arg4 isMailEnabled:(id)arg5 areCalendarsEnabled:(id)arg6 areContactsEnabled:(id)arg7 areNotesEnabled:(id)arg8;
++ (id)buildWithIdentifier:(id)arg1 visibleName:(id)arg2 username:(id)arg3 authenticated:(id)arg4 isMailEnabled:(id)arg5 areCalendarsEnabled:(id)arg6 areContactsEnabled:(id)arg7 areNotesEnabled:(id)arg8;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadPayloadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;

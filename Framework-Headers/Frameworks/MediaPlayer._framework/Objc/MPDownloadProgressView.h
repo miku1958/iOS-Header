@@ -8,6 +8,7 @@
 
 @class UIColor, UIImage, UIImageView, _MPDownloadProgressRingView;
 
+__attribute__((visibility("hidden")))
 @interface MPDownloadProgressView : UIView
 {
     UIImageView *_centerImageView;

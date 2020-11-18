@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLCloudChangeTracker-Protocol.h>
 
-@class NSManagedObjectContext, NSPersistentHistoryToken, NSString;
+@class NSManagedObjectContext, NSPersistentHistoryToken, NSString, PLChangeHandlingNotificationObserver;
 @protocol OS_dispatch_queue, PLCloudChangeTrackerDelegate;
 
 @interface PLCloudPersistentHistoryChangeTracker : NSObject <PLCloudChangeTracker>
@@ -16,7 +16,7 @@
     NSPersistentHistoryToken *_lastKnownToken;
     NSPersistentHistoryToken *_lastKnownDeletionToken;
     NSManagedObjectContext *_context;
-    int _notifyToken;
+    PLChangeHandlingNotificationObserver *_notificationObserver;
     NSObject<OS_dispatch_queue> *_isolationQueue;
     id<PLCloudChangeTrackerDelegate> _delegate;
 }
@@ -34,11 +34,11 @@
 + (id)archivedDataWithToken:(id)arg1;
 + (id)unarchiveTokentWithData:(id)arg1;
 - (void).cxx_destruct;
-- (unsigned int)_registerToChangeHubNotification;
-- (void)_unregisterToChangeHubNotification;
+- (void)_registerForChangeHandlingNotifications;
+- (void)_unregisterForChangeHandlingNotifications;
 - (void)_updateLastKnownDeletionTokenToToken:(id)arg1;
 - (void)_updateLastKnownTokensToToken:(id)arg1;
-- (void)changeTrackerDidReceiveChanges;
+- (void)changeTrackerDidReceiveChangesWithTransaction:(id)arg1;
 - (void)clearToken;
 - (BOOL)connect;
 - (id)currentToken;

@@ -6,7 +6,7 @@
 
 #import <SiriClientFlow/NSObject-Protocol.h>
 
-@class AFPeerInfo, NSBundle, NSString, NSURL, SABaseCommand;
+@class AFPeerInfo, NSBundle, NSSet, NSString, NSURL, SABaseCommand;
 
 @protocol AFServiceHelper <NSObject>
 - (NSString *)assistantLocalizedStringForKey:(NSString *)arg1 table:(NSString *)arg2 bundle:(NSBundle *)arg3;
@@ -20,5 +20,8 @@
 - (AFPeerInfo *)peerInfoForCurrentCommand;
 - (void)prepareForAudioHandoffFailedWithCompletion:(void (^)(void))arg1;
 - (void)prepareForAudioHandoffWithCompletion:(void (^)(BOOL))arg1;
+
+@optional
+- (void)fetchContextsForKeys:(NSSet *)arg1 includesNearbyDevices:(BOOL)arg2 completion:(void (^)(NSArray *))arg3;
 @end
 

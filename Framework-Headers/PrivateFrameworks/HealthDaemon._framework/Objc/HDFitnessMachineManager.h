@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDFitnessMachinePairingManagerDelegate-Protocol.h>
 #import <HealthDaemon/HDFitnessMachineStateTimersDelegate-Protocol.h>
 
-@class HDFitnessMachineAnalyticsCollector, HDFitnessMachineDataCollector, HDFitnessMachineDataProducer, HDFitnessMachinePairingManager, HDFitnessMachineSession, HDFitnessMachineStateTimers, HDHealthServiceManager, HDProfile, HKObserverSet, NSDate, NSMutableArray, NSString;
+@class HDFitnessMachineAnalyticsCollector, HDFitnessMachineDataCollector, HDFitnessMachineDataProducer, HDFitnessMachinePairingManager, HDFitnessMachineSession, HDFitnessMachineStateTimers, HDHealthServiceManager, HDProfile, HKSynchronousObserverSet, NSDate, NSMutableArray, NSString;
 @protocol HDFitnessMachineConnectionInitiatorProtocol, HDMetricsCollector, OS_dispatch_queue;
 
 @interface HDFitnessMachineManager : NSObject <HDFitnessMachinePairingManagerDelegate, HDFitnessMachineStateTimersDelegate>
@@ -23,7 +23,7 @@
     BOOL _shouldReconnect;
     BOOL _resetInProgress;
     NSMutableArray *_characteristicDataBuffer;
-    HKObserverSet *_fitnessMachineSessionObservers;
+    HKSynchronousObserverSet *_fitnessMachineSessionObservers;
     HDFitnessMachineDataProducer *_fitnessMachineDataProducer;
     HDHealthServiceManager *_serviceManager;
     HDFitnessMachineStateTimers *_fitnessMachineStateTimers;
@@ -86,7 +86,7 @@
 - (void)_queue_tearDownAfterStopEvent;
 - (BOOL)_queue_waitingOnInitialStatusAndData;
 - (void)_setQueue:(id)arg1;
-- (void)addFitnessMachineSessionObserver:(id)arg1 queue:(id)arg2;
+- (void)addFitnessMachineSessionObserver:(id)arg1;
 - (void)clientInvalidatedWithConnectionUUID:(id)arg1;
 - (unsigned long long)connectionOptionsForSession:(id)arg1 isReconnect:(BOOL)arg2;
 - (id)currentSessionRecoveryConfiguration;

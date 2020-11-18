@@ -37,7 +37,7 @@
 - (id)_buildLastQuantityDisplayType;
 - (id)_buildLastValueDataSourceWithUnitController:(id)arg1 displayType:(id)arg2 healthStore:(id)arg3;
 - (id)_colorForDisplayType:(id)arg1;
-- (id)_valueFromQuantity:(id)arg1;
+- (id)_stringValueFromQuantity:(id)arg1 unit:(id)arg2;
 - (id)contextItemForLastUpdate;
 - (id)initWithOverlayChartController:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3;
 - (void)invalidateContextItem;

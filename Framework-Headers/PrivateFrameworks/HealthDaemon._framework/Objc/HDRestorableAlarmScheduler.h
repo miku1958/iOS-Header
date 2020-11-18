@@ -8,11 +8,12 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class HDProfile, HDXPCAlarm, NSDate, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDRestorableAlarmScheduler : NSObject <HDDiagnosticObject, HDDatabaseProtectedDataObserver>
+@interface HDRestorableAlarmScheduler : NSObject <HDDiagnosticObject, HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver>
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -43,20 +44,21 @@
 - (BOOL)_enumerateAllAlarmEventsWithError:(id *)arg1 enumerationHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_performWriteTransactionAndFireEventsWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_queue_beginReceivingSystemEventsIfNecessary;
-- (void)_queue_enqueueMaintenanceNotifyAndSchedule;
+- (void)_queue_enqueueMaintenanceNotifyAndScheduleWithReason:(id)arg1;
 - (void)_queue_fetchCurrentWristStateWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_notifyClientsOfDueEventsAndScheduleNextFireDateWithError:(id *)arg1;
 - (void)_queue_processDueEventsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_registerForLockStateUpdates:(BOOL)arg1;
 - (void)_queue_registerForWristStateUpdates:(BOOL)arg1;
+- (void)_queue_runMaintenanceNotifyAndScheduleWithReason:(id)arg1;
 - (void)_queue_setNeedsMaintenanceNotifyAndSchedule:(BOOL)arg1;
 - (void)_queue_significantTimeChangeDidOccur;
 - (void)_queue_updateProtectedDataObserverStateIfRequired;
-- (void)_runMaintenanceNotifyAndSchedule;
 - (void)_startObservingSignificantTimeChangeNotification;
 - (void)_stopObservingSignificantTimeChangeNotification;
 - (void)addAlarm:(id)arg1;
 - (void)checkForDueEventsImmediatelyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;

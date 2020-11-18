@@ -8,7 +8,7 @@
 
 #import <CarPlaySupport/CPSNavigationDisplaying-Protocol.h>
 
-@class CPSLayoutHelperView, CPSManeuversCardView, CPSPausedCardView, NSLayoutConstraint, NSMutableSet, NSString, UIColor, UIView;
+@class CPSLayoutHelperView, CPSManeuversCardView, CPSPausedCardView, NSArray, NSLayoutConstraint, NSMutableSet, NSString, UIColor, UIView;
 
 @interface CPSNavigationCardViewController : UIViewController <CPSNavigationDisplaying>
 {
@@ -24,6 +24,7 @@
     CPSManeuversCardView *_currentManeuversCardView;
     CPSPausedCardView *_currentPausedCardView;
     NSMutableSet *_navigationCardHiddenRequesters;
+    NSArray *_layoutHelperVerticalConstraints;
 }
 
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *guidanceBackgroundColor; // @synthesize guidanceBackgroundColor=_guidanceBackgroundColor;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *layoutHelperVerticalConstraints; // @synthesize layoutHelperVerticalConstraints=_layoutHelperVerticalConstraints;
 @property (readonly, nonatomic) CPSLayoutHelperView *layoutHelperView; // @synthesize layoutHelperView=_layoutHelperView;
 @property (copy, nonatomic) NSString *navigatingBundleIdentifier; // @synthesize navigatingBundleIdentifier=_navigatingBundleIdentifier;
 @property (nonatomic) BOOL navigationCardHidden; // @synthesize navigationCardHidden=_navigationCardHidden;
@@ -48,7 +50,7 @@
 - (void)_showPausedViewForReason:(unsigned long long)arg1 description:(id)arg2;
 - (void)_transitionFromViews:(id)arg1 inView:(id)arg2;
 - (void)_updateCardBackgroundColors;
-- (void)_updateHelperViewFrame;
+- (void)_updateHelperConstraints;
 - (void)_updateLinkedCheck;
 - (void)_updateNavigationCardHidden;
 - (void)_updateSizingViewConstraintsForView:(id)arg1;

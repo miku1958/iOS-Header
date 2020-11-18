@@ -10,6 +10,7 @@
 
 @interface CPAnalyticsCoreDuetEventMatcher : CPAnalyticsEventMatcher
 {
+    CPAnalyticsEventMatcher *_eventMatcher;
     BOOL _matchNextEvent;
     NSString *_datasetName;
     NSString *_identifierPropertyName;
@@ -24,6 +25,8 @@
 @property (readonly, nonatomic) NSObject *subsetPropertyValue; // @synthesize subsetPropertyValue=_subsetPropertyValue;
 
 - (void).cxx_destruct;
+- (BOOL)doesMatch:(id)arg1;
+- (id)init;
 - (id)initWithConfig:(id)arg1;
 
 @end

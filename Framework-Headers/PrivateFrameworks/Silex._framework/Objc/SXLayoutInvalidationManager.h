@@ -34,6 +34,10 @@
 - (void)cancelPendingInvalidationForComponent:(id)arg1;
 - (id)initWithBlueprintProvider:(id)arg1;
 - (id)invalidateComponent:(id)arg1;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2 priority:(unsigned long long)arg3;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2 suggestedSize:(struct CGSize)arg3;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2 suggestedSize:(struct CGSize)arg3 priority:(unsigned long long)arg4;
 - (id)invalidateComponent:(id)arg1 suggestedSize:(struct CGSize)arg2;
 - (id)invalidateComponent:(id)arg1 suggestedSize:(struct CGSize)arg2 priority:(unsigned long long)arg3;
 - (void)invalidateQueuedComponents;

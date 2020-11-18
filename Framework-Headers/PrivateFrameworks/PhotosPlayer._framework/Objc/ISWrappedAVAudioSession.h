@@ -29,7 +29,9 @@
 - (id)_init;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)setActive:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setCategory:(id)arg1 error:(id *)arg2;
+- (BOOL)setCategory:(id)arg1 mode:(id)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 - (BOOL)setCategory:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 
 @end

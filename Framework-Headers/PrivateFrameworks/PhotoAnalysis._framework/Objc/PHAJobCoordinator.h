@@ -76,7 +76,6 @@
 @property (strong, nonatomic) NSMutableSet *workerTypesServicedForUserFG; // @synthesize workerTypesServicedForUserFG=_workerTypesServicedForUserFG;
 
 - (void).cxx_destruct;
-- (void)_cleanupStuckAnalysisState;
 - (id)_defaultWorkersByType;
 - (void)_dispatchTransactionAsyncWithName:(const char *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_inq_enforceTimeoutForJob:(id)arg1;

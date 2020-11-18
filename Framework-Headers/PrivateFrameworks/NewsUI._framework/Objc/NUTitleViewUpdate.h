@@ -16,18 +16,22 @@
     unsigned long long _valueType;
     unsigned long long _styleType;
     double _lingerTimeInterval;
+    NSString *_accessibilityTitle;
+    long long _textAlignment;
 }
 
-@property (readonly, copy, nonatomic) NSString *accessibilityTitle;
+@property (copy, nonatomic) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
 @property (nonatomic, getter=shouldCancelPendingUpdates) BOOL cancelPendingUpdates; // @synthesize cancelPendingUpdates=_cancelPendingUpdates;
 @property (nonatomic) double lingerTimeInterval; // @synthesize lingerTimeInterval=_lingerTimeInterval;
 @property (nonatomic, getter=shouldSpeakAccessibilityTitleWhenDisplayed) BOOL speakAccessibilityTitleWhenDisplayed; // @synthesize speakAccessibilityTitleWhenDisplayed=_speakAccessibilityTitleWhenDisplayed;
 @property (readonly, nonatomic) unsigned long long styleType; // @synthesize styleType=_styleType;
+@property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 @property (readonly, nonatomic) unsigned long long valueType; // @synthesize valueType=_valueType;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithAttributedText:(id)arg1 styleType:(unsigned long long)arg2;
 - (id)initWithImage:(id)arg1;
 - (id)initWithText:(id)arg1 styleType:(unsigned long long)arg2;
 - (id)initWithText:(id)arg1 styleType:(unsigned long long)arg2 glyph:(id)arg3;

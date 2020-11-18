@@ -12,7 +12,7 @@
 #import <TSApplication/TSWPStorageParent-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSDImageAdjustments, TSDImageDataHelper, TSDInfoGeometry, TSPData, TSSPropertySetChangeDetails, TSWPStorage;
-@protocol OS_dispatch_queue, TSDContainerInfo, TSDOwningAttachment;
+@protocol OS_dispatch_queue, TSDInfo, TSDOwningAttachment;
 
 @interface TSAGalleryItem : TSPObject <TSDContainerInfo, TSWPStorageParent, TSDChangeableInfo, TSKDocumentObject>
 {
@@ -36,7 +36,7 @@
     TSDImageDataHelper *_adjustedImageDataHelper;
     NSObject<OS_dispatch_queue> *_naturalSizeQueue;
     TSSPropertySetChangeDetails *_changes;
-    NSObject<TSDContainerInfo> *_parentInfo;
+    NSObject<TSDInfo> *_parentInfo;
 }
 
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
@@ -58,6 +58,7 @@
 @property (copy, nonatomic) TSDImageAdjustments *imageAdjustments; // @synthesize imageAdjustments=_imageAdjustments;
 @property (strong, nonatomic) TSPData *imageData; // @synthesize imageData=_imageData;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) unsigned long long itemIndex;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
@@ -66,7 +67,7 @@
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
 @property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) double scale;
@@ -74,6 +75,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (strong, nonatomic) TSPData *thumbnailAdjustedImageData; // @synthesize thumbnailAdjustedImageData=_thumbnailAdjustedImageData;
 @property (strong, nonatomic) TSPData *thumbnailImageData; // @synthesize thumbnailImageData=_thumbnailImageData;

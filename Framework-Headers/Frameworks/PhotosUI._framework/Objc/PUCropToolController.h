@@ -11,14 +11,15 @@
 #import <PhotosUI/PUCropPerspectiveAdjustmentsDataSourceDelegate-Protocol.h>
 #import <PhotosUI/PUCropTransformedImageViewDelegate-Protocol.h>
 #import <PhotosUI/PUCropVideoScrubberViewDelegate-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFCoalescer, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
+@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, PXImageLayerModulator, PXImageModulationManager, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PUCropToolController : PUPhotoEditToolController <UIGestureRecognizerDelegate, PUCropTransformedImageViewDelegate, PUCropAspectViewControllerDelegate, PUCropPerspectiveAdjustmentsDataSourceDelegate, PUAdjustmentViewControllerDelegate, PUCropVideoScrubberViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface PUCropToolController : PUPhotoEditToolController <UIGestureRecognizerDelegate, PUCropTransformedImageViewDelegate, PUCropAspectViewControllerDelegate, PUCropPerspectiveAdjustmentsDataSourceDelegate, PUAdjustmentViewControllerDelegate, PUCropVideoScrubberViewDelegate, UIPopoverPresentationControllerDelegate, PXChangeObserver>
 {
     BOOL _imageLoadingInProgress;
     BOOL __contentViewsHidden;
@@ -86,12 +87,13 @@ __attribute__((visibility("hidden")))
     double __suggestedPitchAngle;
     double __suggestedYawAngle;
     PUCropVideoScrubberView *_videoScrubberView;
-    PFCoalescer *_videoScrubberCoalescer;
     double _screenScale;
     PFSerialQueue *_imageLoadingQueue;
     NSMutableArray *_imageLoadingQueueCompletionBlocks;
     UILongPressGestureRecognizer *__accessibilityLongPressGestureRecognizer;
     CEKBadgeTextView *_badgeView;
+    PXImageModulationManager *_imageModulationManager;
+    PXImageLayerModulator *_imageLayerModulator;
     struct CGSize _minimumViewCropRectSizeForHandleGesture;
     struct CGSize _screenSize;
     CDStruct_1b6d18a9 _videoScrubberSeekTime;
@@ -172,9 +174,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL imageHasOriginalCrop; // @synthesize imageHasOriginalCrop=_imageHasOriginalCrop;
 @property (nonatomic) BOOL imageHasReframeData; // @synthesize imageHasReframeData=_imageHasReframeData;
 @property (nonatomic) BOOL imageIsUsingReframe; // @synthesize imageIsUsingReframe=_imageIsUsingReframe;
+@property (strong, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property (nonatomic) BOOL imageLoadingInProgress; // @synthesize imageLoadingInProgress=_imageLoadingInProgress;
 @property (strong, nonatomic) PFSerialQueue *imageLoadingQueue; // @synthesize imageLoadingQueue=_imageLoadingQueue;
 @property (strong, nonatomic) NSMutableArray *imageLoadingQueueCompletionBlocks; // @synthesize imageLoadingQueueCompletionBlocks=_imageLoadingQueueCompletionBlocks;
+@property (strong, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
 @property (nonatomic) BOOL initialImageLoaded; // @synthesize initialImageLoaded=_initialImageLoaded;
 @property (nonatomic) struct CGSize minimumViewCropRectSizeForHandleGesture; // @synthesize minimumViewCropRectSizeForHandleGesture=_minimumViewCropRectSizeForHandleGesture;
 @property (nonatomic) BOOL modelLoadingSuspended; // @synthesize modelLoadingSuspended=_modelLoadingSuspended;
@@ -185,7 +189,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL toolBadgeDoesHide; // @synthesize toolBadgeDoesHide=_toolBadgeDoesHide;
 @property (readonly, nonatomic) PUCropToolControllerSpec *toolControllerSpec; // @dynamic toolControllerSpec;
 @property (nonatomic, getter=_isTrackingAdjustmentControl, setter=_setTrackingAdjustmentControl:) BOOL trackingAdjustmentControl; // @synthesize trackingAdjustmentControl=_trackingAdjustmentControl;
-@property (strong, nonatomic) PFCoalescer *videoScrubberCoalescer; // @synthesize videoScrubberCoalescer=_videoScrubberCoalescer;
 @property (nonatomic) BOOL videoScrubberIsInteracting; // @synthesize videoScrubberIsInteracting=_videoScrubberIsInteracting;
 @property (nonatomic) CDStruct_1b6d18a9 videoScrubberSeekTime; // @synthesize videoScrubberSeekTime=_videoScrubberSeekTime;
 @property (strong, nonatomic) PUCropVideoScrubberView *videoScrubberView; // @synthesize videoScrubberView=_videoScrubberView;
@@ -274,6 +277,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateCropActionButtons;
 - (void)_updateCropCanvasConstraintsIfNeeded;
 - (void)_updateCropToggleButton;
+- (void)_updateCropToggleButtonMode;
 - (void)_updateCropToggleConstraintsIfNeeded;
 - (void)_updateCropViewsForInteraction;
 - (void)_updateOvercaptureSourceSwitchActivity;
@@ -298,6 +302,7 @@ __attribute__((visibility("hidden")))
 - (void)cropTransformedImageViewDidEndTracking:(id)arg1;
 - (void)cropTransformedImageViewDidTrack:(id)arg1;
 - (void)cropTransformedImageViewWillBeginTracking:(id)arg1;
+- (void)dealloc;
 - (void)didBecomeActiveTool;
 - (void)didResignActiveTool;
 - (id)filter;
@@ -310,6 +315,7 @@ __attribute__((visibility("hidden")))
 - (void)leavingEditWithCancel;
 - (id)localizedName;
 - (id)localizedResetToolActionTitle;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (struct UIEdgeInsets)preferredPreviewViewInsets;
 - (void)prepareForSave:(BOOL)arg1;
 - (void)prepareForToolTransitionWithCompletion:(CDUnknownBlockType)arg1;
@@ -325,6 +331,7 @@ __attribute__((visibility("hidden")))
 - (long long)toolControllerTag;
 - (id)toolbarIcon;
 - (id)trailingToolbarViews;
+- (void)updateCropAspectRatioOrientation:(long long)arg1;
 - (void)updateVideoFrameWithScrubber;
 - (void)updateViewConstraints;
 - (void)updateViewOrdering;

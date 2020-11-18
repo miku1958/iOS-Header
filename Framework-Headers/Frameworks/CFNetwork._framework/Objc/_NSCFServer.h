@@ -23,13 +23,10 @@
 @property (strong) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (getter=isCoprocessorInterfaceEnabled) BOOL enableCoprocessorInterface; // @synthesize enableCoprocessorInterface=_enableCoprocessorInterface;
 @property (strong) NSString *interface; // @synthesize interface=_interface;
-@property (strong) NSObject<OS_tcp_listener> *listener; // @synthesize listener=_listener;
-@property (strong) NSNumber *listenerID; // @synthesize listenerID=_listenerID;
 @property long long listenerPort; // @synthesize listenerPort=_listenerPort;
 @property long long type; // @synthesize type=_type;
 
 + (id)adressesForInterface:(id)arg1;
-+ (id)listeners;
 + (BOOL)startSocksServerWithPort:(long long)arg1;
 + (BOOL)stopAll;
 - (void).cxx_destruct;
@@ -39,7 +36,6 @@
 - (id)initWithType:(long long)arg1 port:(long long)arg2;
 - (id)initWithType:(long long)arg1 port:(long long)arg2 interface:(id)arg3;
 - (BOOL)start;
-- (BOOL)startWithAcceptHandler:(CDUnknownBlockType)arg1;
 - (BOOL)stop;
 
 @end

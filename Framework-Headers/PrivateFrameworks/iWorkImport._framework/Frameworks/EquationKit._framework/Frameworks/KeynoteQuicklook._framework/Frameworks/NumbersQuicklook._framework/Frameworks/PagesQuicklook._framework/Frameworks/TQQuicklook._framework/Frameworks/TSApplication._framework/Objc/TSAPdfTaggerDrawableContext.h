@@ -6,14 +6,16 @@
 
 #import <TSApplication/TSAPdfTaggerContext.h>
 
-@class TSDRep;
+@class TSAPdfTaggerState, TSDRep;
 
 @interface TSAPdfTaggerDrawableContext : TSAPdfTaggerContext
 {
     TSDRep *_drawableRep;
+    TSAPdfTaggerState *_taggerStateOutsideCore;
 }
 
 @property (readonly, nonatomic) TSDRep *drawableRep; // @synthesize drawableRep=_drawableRep;
+@property (strong, nonatomic) TSAPdfTaggerState *taggerStateOutsideCore; // @synthesize taggerStateOutsideCore=_taggerStateOutsideCore;
 
 - (void).cxx_destruct;
 - (id)initWithStateOfTagger:(id)arg1 drawableRep:(id)arg2;

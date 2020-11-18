@@ -9,7 +9,7 @@
 #import <network/OS_nw_framer-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_data, OS_nw_context, OS_nw_endpoint, OS_nw_parameters, OS_nw_protocol_definition, OS_nw_protocol_metadata;
+@protocol OS_dispatch_data, OS_nw_context, OS_nw_dictionary, OS_nw_endpoint, OS_nw_parameters, OS_nw_protocol_definition, OS_nw_protocol_metadata;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_framer : NSObject <OS_nw_framer>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *endpoint;
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_context> *context;
+    NSObject<OS_nw_dictionary> *connection_state;
     NSObject<OS_nw_protocol_metadata> *pending_inbound_message;
     CDUnknownBlockType start;
     CDUnknownBlockType parse_input;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
     struct nw_frame_array_s pending_input_frames;
     unsigned int pending_input_frame_count;
     NSObject<OS_dispatch_data> *output_data;
+    CDUnknownBlockType wakeup_block;
     struct nw_frame_array_s received_output_frames;
     NSObject<OS_nw_protocol_metadata> *pending_output_message;
     BOOL pending_output_message_complete;

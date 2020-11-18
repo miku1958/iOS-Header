@@ -13,6 +13,7 @@
 - (BOOL)__is__isAliasFile;
 - (BOOL)__is__isDirectory;
 - (BOOL)__is__isVolume;
+- (id)__is__modDate;
 - (BOOL)__is_hasFileExtension:(id)arg1;
 - (BOOL)__is_isAppExtension;
 - (BOOL)__is_isApplication;

@@ -4,13 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <KnowledgeGraphKit/MAEdge.h>
+#import <KnowledgeGraphKit/MAConcreteEdge.h>
 
-@interface MAAbstractEdge : MAEdge
+@class MAAbstractNode;
+
+@interface MAAbstractEdge : MAConcreteEdge
 {
+    MAAbstractNode *_sourceAbstractNode;
+    MAAbstractNode *_targetAbstractNode;
 }
 
-- (BOOL)isAbstract;
+- (void).cxx_destruct;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)oppositeNode:(id)arg1;
+- (id)sourceNode;
+- (id)targetNode;
 
 @end
 

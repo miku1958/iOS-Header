@@ -14,6 +14,12 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
+- (id)__INCodableDescriptionKey;
+- (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionTypeKey;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

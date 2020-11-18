@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVPlayerController, NSString;
+@class AVObservationController, AVPlayerController, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSString *_overrideParentApplicationDisplayIdentifier;
     AVPlayerController *_playerController;
     AVPlayerController *_playerControllerToActivateAfterDelay;
+    NSTimer *_startNowPlayingUpdatesTimer;
 }
 
 @property (nonatomic, getter=isEnabled) BOOL enabled;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property (weak, nonatomic) AVPlayerController *playerControllerToActivateAfterDelay; // @synthesize playerControllerToActivateAfterDelay=_playerControllerToActivateAfterDelay;
 @property (nonatomic) BOOL requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
+@property (weak, nonatomic) NSTimer *startNowPlayingUpdatesTimer; // @synthesize startNowPlayingUpdatesTimer=_startNowPlayingUpdatesTimer;
 
 + (id)_avMediaCharacteristics;
 + (void *)_createMediaRemoteLanguageOptionGroupWithAVMediaSelectionOptions:(id)arg1;

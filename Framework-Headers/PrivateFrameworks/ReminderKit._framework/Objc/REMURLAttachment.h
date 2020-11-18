@@ -20,7 +20,7 @@
 + (id)cdEntityName;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_deepCopy;
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

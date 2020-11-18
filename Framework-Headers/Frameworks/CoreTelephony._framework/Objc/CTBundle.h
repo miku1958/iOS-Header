@@ -16,7 +16,6 @@
 
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (unsigned char)convertBundleType:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

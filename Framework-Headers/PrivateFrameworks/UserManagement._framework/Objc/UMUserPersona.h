@@ -17,6 +17,8 @@
     BOOL shouldFetchAttributes;
     BOOL _isSystemPersona;
     BOOL _isDefaultPersona;
+    BOOL _isGuestPersona;
+    BOOL _isDataSeparatedPersona;
     BOOL _isEnterprisePersona;
     BOOL _isPersonalPersona;
     BOOL _isDisabled;
@@ -28,9 +30,11 @@
 }
 
 @property (nonatomic) unsigned int gid; // @synthesize gid=_gid;
+@property (nonatomic) BOOL isDataSeparatedPersona; // @synthesize isDataSeparatedPersona=_isDataSeparatedPersona;
 @property (nonatomic) BOOL isDefaultPersona; // @synthesize isDefaultPersona=_isDefaultPersona;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
 @property (nonatomic) BOOL isEnterprisePersona; // @synthesize isEnterprisePersona=_isEnterprisePersona;
+@property (nonatomic) BOOL isGuestPersona; // @synthesize isGuestPersona=_isGuestPersona;
 @property (nonatomic) BOOL isPersonalPersona; // @synthesize isPersonalPersona=_isPersonalPersona;
 @property (nonatomic) BOOL isSystemPersona; // @synthesize isSystemPersona=_isSystemPersona;
 @property (nonatomic) unsigned int uid; // @synthesize uid=_uid;

@@ -8,7 +8,7 @@
 
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface AKRemoteDevice : NSObject <NSSecureCoding>
 {
@@ -27,8 +27,10 @@
     NSString *_backingColorCode;
     NSDate *_lastUpdatedDate;
     NSString *_machineId;
+    NSDictionary *_additionalInfo;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
 @property (readonly, copy, nonatomic) NSString *backingColorCode; // @synthesize backingColorCode=_backingColorCode;
 @property (readonly, copy, nonatomic) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
 @property (readonly, copy, nonatomic) NSString *colorCode; // @synthesize colorCode=_colorCode;

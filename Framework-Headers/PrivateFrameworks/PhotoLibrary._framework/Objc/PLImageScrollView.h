@@ -13,7 +13,6 @@
 
 @property (nonatomic) BOOL adjustZoomScaleAfterRotation; // @synthesize adjustZoomScaleAfterRotation=_adjustZoomScaleAfterRotation;
 
-- (void)_centerContentIfNecessary;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)willAnimateRotationToInterfaceOrientation:(id)arg1;

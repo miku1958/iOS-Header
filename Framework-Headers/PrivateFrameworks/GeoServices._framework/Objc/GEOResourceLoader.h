@@ -22,7 +22,9 @@
     BOOL _canceled;
     BOOL _requiresWiFi;
     NSURL *_baseURL;
+    NSArray *_alternateURLs;
     NSURL *_proxyURL;
+    BOOL _forceUpdateCheck;
     unsigned long long _maxConcurrentLoads;
     NSArray *_resourceInfos;
     NSMutableArray *_loadedResources;
@@ -55,10 +57,10 @@
 - (BOOL)_establishHardLinkIfPossibleForResource:(id)arg1 toResource:(id)arg2 error:(id *)arg3;
 - (void)_loadNextResourceFromNetwork;
 - (void)_loadResourcesFromDisk;
-- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
+- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 eTag:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
 - (void)cancel;
 - (id)init;
-- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 proxyURL:(id)arg3 resources:(id)arg4 maximumConcurrentLoads:(unsigned long long)arg5 additionalDirectoryToConsider:(id)arg6 log:(id)arg7 signpostID:(unsigned long long)arg8;
+- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 alternateURLs:(id)arg3 proxyURL:(id)arg4 resources:(id)arg5 forceUpdateCheck:(BOOL)arg6 maximumConcurrentLoads:(unsigned long long)arg7 additionalDirectoryToConsider:(id)arg8 log:(id)arg9 signpostID:(unsigned long long)arg10;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 
 @end

@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableSet.h>
 
 @interface NSMutableSet (EmailFoundationAdditions)
+- (void)ef_addOptionalObject:(id)arg1;
 - (void)ef_removeObjectsInArray:(id)arg1;
 - (id)ef_uniquedObject:(id)arg1;
 @end

@@ -9,19 +9,19 @@
 @class UIFont;
 
 @protocol VUILibraryProductLockupViewLayout <NSObject>
-- (double)buttonModuleTopMargin;
-- (double)contentDescriptionBottomMargin;
+- (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
+- (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;
 - (UIFont *)contentDescriptionFont;
 - (int)contentDescriptionNumberOfLines;
-- (double)contentDescriptionTopMargin;
+- (double)contentDescriptionTopMarginForWindowWidth:(double)arg1;
 - (double)coverArtBottomPadding;
 - (double)coverArtImageRightMargin;
 - (struct CGSize)coverArtImageSize;
 - (long long)downloadButtonPosition;
-- (long long)layoutType;
+- (long long)layoutTypeForWindowWidth:(double)arg1;
 - (double)metadataTopMargin;
 - (BOOL)shouldShowTitleLabel;
-- (double)subtitleTopMargin;
+- (double)subtitleTopMarginForWindowWidth:(double)arg1;
 - (double)titleTopMargin;
 @end
 

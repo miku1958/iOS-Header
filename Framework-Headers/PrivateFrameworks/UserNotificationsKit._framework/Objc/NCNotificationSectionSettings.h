@@ -24,6 +24,7 @@
     BOOL _showsCustomSettingsLink;
     BOOL _isDeliveredQuietly;
     BOOL _hasProvisialAuthorization;
+    BOOL _isAppClip;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) BOOL hasProvisionalAuthorization; // @synthesize hasProvisionalAuthorization=_hasProvisialAuthorization;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isAppClip; // @synthesize isAppClip=_isAppClip;
 @property (readonly, nonatomic) BOOL isDeliveredQuietly; // @synthesize isDeliveredQuietly=_isDeliveredQuietly;
 @property (readonly, copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *settings; // @synthesize settings=_settings;

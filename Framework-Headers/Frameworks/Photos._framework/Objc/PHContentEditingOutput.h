@@ -17,7 +17,6 @@
     BOOL _isSubstandardRender;
     BOOL _loopingLivePhoto;
     BOOL _isAsyncAdjustment;
-    BOOL _isSwappingFullSizeRenderWithAlternateRender;
     NSURL *_renderedContentURL;
     NSNumber *_originalResourceChoice;
     long long _fullSizeRenderWidth;
@@ -42,7 +41,6 @@
 @property (nonatomic) long long fullSizeRenderWidth; // @synthesize fullSizeRenderWidth=_fullSizeRenderWidth;
 @property (nonatomic) BOOL isAsyncAdjustment; // @synthesize isAsyncAdjustment=_isAsyncAdjustment;
 @property (nonatomic) BOOL isSubstandardRender; // @synthesize isSubstandardRender=_isSubstandardRender;
-@property (nonatomic) BOOL isSwappingFullSizeRenderWithAlternateRender; // @synthesize isSwappingFullSizeRenderWithAlternateRender=_isSwappingFullSizeRenderWithAlternateRender;
 @property (readonly, getter=isLoopingLivePhoto) BOOL loopingLivePhoto; // @synthesize loopingLivePhoto=_loopingLivePhoto;
 @property (readonly) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (strong, nonatomic) NSNumber *originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
@@ -60,6 +58,7 @@
 + (unsigned long long)maximumAdjustmentDataLength;
 + (id)outputForFlippingFullSizeRenderWithContentEditingInput:(id)arg1 error:(id *)arg2;
 + (id)renderURLWithExtensionForMediaType:(long long)arg1;
++ (id)renderURLWithExtensionForMediaType:(long long)arg1 useHEICImage:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setupRequiredRenderedContentURLsWithEditingInput:(id)arg1 options:(id)arg2;

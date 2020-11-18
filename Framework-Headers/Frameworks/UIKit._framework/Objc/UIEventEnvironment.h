@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, UIApplication, UIEvent, UIMotionEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UIRemoteControlEvent, UIWheelEvent;
+@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, UIApplication, UIEvent, UIMotionEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UIRemoteControlEvent, UIWheelEvent;
 
 __attribute__((visibility("hidden")))
 @interface UIEventEnvironment : NSObject
@@ -41,62 +41,13 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) UIApplication *application; // @synthesize application=_application;
 @property (strong, nonatomic) NSMutableArray *eventQueue; // @synthesize eventQueue=_eventQueue;
-@property (nonatomic, getter=_fallbackGenericGestureFocusWindowID, setter=_setFallbackGenericGestureFocusWindowID:) unsigned int fallbackGenericGestureFocusWindowContextID; // @synthesize fallbackGenericGestureFocusWindowContextID=_fallbackGenericGestureFocusWindowContextID;
-@property (nonatomic, getter=_genericGestureFocusWindowID, setter=_setGenericGestureFocusWindowID:) unsigned int genericGestureFocusWindowContextID; // @synthesize genericGestureFocusWindowContextID=_genericGestureFocusWindowContextID;
-@property (readonly, nonatomic) NSSet *windowsWithActiveTouchMaps; // @synthesize windowsWithActiveTouchMaps=_windowsWithActiveTouchMaps;
 
-+ (BOOL)_isKeyboardWindowSceneConnected;
-+ (void)_setKeyboardWindowSceneConnected:(BOOL)arg1;
 - (void).cxx_destruct;
-- (id)UIKitEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (void)_clearTouchesForView:(id)arg1 onWindow:(id)arg2;
-- (long long)_currentNudgePressTypeForWindow:(id)arg1;
-- (id)_currentTouchForWindow:(id)arg1;
-- (void)_disableTouchCoalescingWithCount:(long long)arg1;
-- (void)_dispatchAndRemoveStaleEstimationUpdateRecordsWithEventTime:(double)arg1 upToRecord:(id)arg2;
-- (id)_dragEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_dragEvents;
-- (void)_enableTouchCoalescingWithCount:(long long)arg1;
 - (void)_enqueueHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_estimatedTouchRecordForContextID:(id)arg1 estimationIndex:(id)arg2;
-- (id)_findTouchesEventWindowSceneForKeyboardWindowSceneIfNeeded:(id)arg1;
-- (id)_gameControllerEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_gameControllerEventForWindow:(id)arg1;
-- (id)_hoverEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_hoverEventForWindow:(id)arg1;
-- (BOOL)_isTouchCoalescingDisabled;
-- (BOOL)_isTrackingAnyTouch;
-- (id)_moveEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_moveEventForWindow:(id)arg1;
-- (id)_pencilEventForWindow:(id)arg1;
-- (id)_physicalKeyboardEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_physicalKeyboardEventForWindow:(id)arg1;
-- (id)_pressForType:(long long)arg1 window:(id)arg2;
-- (id)_pressesEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_pressesEventForWindow:(id)arg1;
-- (void)_registerEstimatedTouches:(id)arg1 event:(id)arg2 forTouchable:(id)arg3;
-- (void)_removeDragEvent:(id)arg1;
-- (void)_removeEstimatedTouchRecord:(id)arg1;
-- (id)_scrollEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_scrollEventForWindow:(id)arg1;
-- (void)_sendMotionBegan:(long long)arg1;
-- (void)_sendMotionCancelled:(long long)arg1;
-- (void)_sendMotionEnded:(long long)arg1;
-- (void)_sendRemoteControlEvent:(long long)arg1;
-- (void)_setCurrentNudgePressType:(long long)arg1 forWindow:(id)arg2;
-- (void)_setCurrentTouch:(id)arg1 forWindow:(id)arg2;
-- (void)_setPress:(id)arg1 forType:(long long)arg2 window:(id)arg3;
-- (void)_setTouchMap:(struct __CFDictionary *)arg1 forWindow:(id)arg2;
-- (id)_touchesEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_touchesEventForWindow:(id)arg1;
-- (id)_transformEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_transformEventForWindow:(id)arg1;
-- (id)_wheelEventForHIDEvent:(struct __IOHIDEvent *)arg1;
-- (id)_wheelEventForWindow:(id)arg1;
 - (void)dealloc;
-- (BOOL)eventWantsLowLatency:(id)arg1;
 - (id)initWithApplication:(id)arg1;
-- (id)pencilEventForHIDEvent:(struct __IOHIDEvent *)arg1;
+- (void)pointerLockStateDidChange:(id)arg1;
 - (void)sceneDidActivate:(id)arg1;
 - (void)sceneDidDisconnect:(id)arg1;
 

@@ -17,12 +17,12 @@
 @property (readonly, nonatomic) SEL configurator; // @synthesize configurator=_configurator;
 @property (strong, nonatomic) Class reusableViewClass; // @synthesize reusableViewClass=_reusableViewClass;
 @property (nonatomic) SEL selector; // @synthesize selector=_selector;
-@property (nonatomic) id target; // @synthesize target=_target;
+@property (weak, nonatomic) id target; // @synthesize target=_target;
 
 + (id)factoryForClass:(Class)arg1 target:(id)arg2 configurator:(SEL)arg3;
 + (id)factoryForClass:(Class)arg1 target:(id)arg2 configurator:(SEL)arg3 userData:(id)arg4;
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (void)dealloc;
 - (id)initWithClass:(Class)arg1 target:(id)arg2 configurator:(SEL)arg3 userData:(id)arg4;
 
 @end

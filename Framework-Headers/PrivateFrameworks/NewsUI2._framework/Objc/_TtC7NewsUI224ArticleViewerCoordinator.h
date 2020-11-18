@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *observer;
-    MISSING_TYPE *tracker;
 }
 
 @end

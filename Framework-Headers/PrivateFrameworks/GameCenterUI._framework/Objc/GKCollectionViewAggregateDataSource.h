@@ -22,7 +22,7 @@
 @property (nonatomic) unsigned long long sectionCount; // @synthesize sectionCount=_sectionCount;
 
 - (id)_gkDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)addDataSource:(id)arg1 withTag:(id)arg2;
 - (id)allDataSources;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

@@ -19,7 +19,7 @@
 @property (strong, nonatomic) PHLivePhotoView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
 
 - (void).cxx_destruct;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(BOOL)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isIrisAsset;
 - (void)layoutSubviews;

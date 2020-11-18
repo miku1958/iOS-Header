@@ -14,7 +14,7 @@
 @interface HDDateRangeQueryServer : HDQueryServer <HDDataObserver, HDDatabaseProtectedDataObserver>
 {
     BOOL _resultsDirty;
-    NSMutableDictionary *_timePeriodsBySampleType;
+    NSMutableDictionary *_dateIntervalsBySampleType;
     NSMutableSet *_sampleTypesToReFetch;
 }
 
@@ -31,7 +31,6 @@
 - (void)_queue_samplesOfTypesWereRemoved:(id)arg1;
 - (void)_queue_sendUpdatedResultsToClient;
 - (void)_queue_start;
-- (id)_queue_timePeriodForType:(id)arg1;
 - (void)_queue_updateTimePeriodsForSampleTypes:(id)arg1;
 - (BOOL)_shouldListenForUpdates;
 - (BOOL)_shouldObserveAllSampleTypes;

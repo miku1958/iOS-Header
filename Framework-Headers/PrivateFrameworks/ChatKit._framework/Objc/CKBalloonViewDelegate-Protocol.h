@@ -6,13 +6,18 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBalloonView, UIView;
+@class CKBalloonTextView, CKBalloonView, NSString, UIView;
 @protocol CKTranscriptPluginView;
 
 @protocol CKBalloonViewDelegate <NSObject>
+- (void)balloonView:(CKBalloonView *)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
 - (void)balloonViewDoubleTapped:(CKBalloonView *)arg1;
 - (void)balloonViewLongTouched:(CKBalloonView *)arg1;
-- (void)balloonViewTapped:(CKBalloonView *)arg1;
+- (void)balloonViewSelected:(CKBalloonView *)arg1 withModifierFlags:(long long)arg2 selectedText:(NSString *)arg3;
+- (void)balloonViewShouldCopyToPasteboard:(CKBalloonView *)arg1;
+- (void)balloonViewShowInlineReply:(CKBalloonView *)arg1;
+- (void)balloonViewTapped:(CKBalloonView *)arg1 withModifierFlags:(long long)arg2 selectedText:(NSString *)arg3;
+- (void)balloonViewTextViewDidChangeSelection:(CKBalloonView *)arg1 selectedText:(NSString *)arg2 textView:(CKBalloonTextView *)arg3;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(CKBalloonView *)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(CKBalloonView *)arg1;
 - (void)liveBalloonTouched:(CKBalloonView *)arg1;

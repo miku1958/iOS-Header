@@ -12,17 +12,17 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDBulletinBoardNotificationServiceGroup, HMDService, HMFMessageDispatcher, NSObject, NSPredicate, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDBulletinBoardNotification : HMFObject <NSSecureCoding, HMFMessageReceiver, HMFLogging, HMFDumpState>
 {
+    id<HMFLocking> _lock;
     BOOL _enabled;
     NSPredicate *_condition;
     HMDBulletinBoardNotificationServiceGroup *_notificationServiceGroup;
-    NSUUID *_targetUUID;
+    NSUUID *_messageTargetUUID;
+    NSObject<OS_dispatch_queue> *_messageReceiveQueue;
     HMDService *_service;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_msgDispatcher;
 }
 
@@ -31,21 +31,19 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue; // @synthesize messageReceiveQueue=_messageReceiveQueue;
+@property (readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) HMDBulletinBoardNotificationServiceGroup *notificationServiceGroup; // @synthesize notificationServiceGroup=_notificationServiceGroup;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, weak, nonatomic) HMDService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 + (BOOL)supportsBulletinNotificationGroup:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleBulletinBoardNotificationCommitRequest:(id)arg1;
+- (id)attributeDescriptions;
 - (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (void)dealloc;

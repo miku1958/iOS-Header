@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 bag:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

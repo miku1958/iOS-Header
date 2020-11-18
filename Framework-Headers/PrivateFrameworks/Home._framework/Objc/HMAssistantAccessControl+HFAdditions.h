@@ -7,6 +7,6 @@
 #import <HomeKit/HMAssistantAccessControl.h>
 
 @interface HMAssistantAccessControl (HFAdditions)
-- (BOOL)hf_effectivelyEnabledForSupportedMultiuserLanguages:(id)arg1 currentUserIsOwner:(BOOL)arg2;
+- (BOOL)hf_effectivelyEnabledForSupportedVoiceRecognitionLanguages:(id)arg1 currentUserIsOwner:(BOOL)arg2;
 @end
 

@@ -9,35 +9,39 @@
 #import <TemplateKit/NUIArrangementContainer-Protocol.h>
 #import <TemplateKit/NUIBoxArrangementDataSource-Protocol.h>
 
-@class NSString, NUIBoxArrangement, TLKAppearance, TLKArrangementItem, TLKImage, UIImageView;
+@class NSString, NUIBoxArrangement, TLKArrangementItem, TLKImage, TLKProminenceView, UIImageView, UIView;
 
 @interface TLKImageView : TLKView <NUIBoxArrangementDataSource, NUIArrangementContainer>
 {
     BOOL _useButtonColoring;
+    BOOL _alwaysShowPlaceholderView;
     TLKImage *_tlkImage;
     unsigned long long _prominence;
-    TLKAppearance *_appearanceOverride;
     long long _verticalAlignment;
     long long _horizontalAlignment;
     UIImageView *_imageView;
+    UIView *_shadowContainer;
+    TLKProminenceView *_placeholderView;
     TLKArrangementItem *_sizingHelper;
     NUIBoxArrangement *_boxArrangement;
+    TLKImage *_lastTlkImage;
     struct CGSize _minimumSize;
     struct CGSize _maximumSize;
-    struct CGRect _rectOfShadow;
 }
 
-@property (strong, nonatomic) TLKAppearance *appearanceOverride; // @synthesize appearanceOverride=_appearanceOverride;
+@property (nonatomic) BOOL alwaysShowPlaceholderView; // @synthesize alwaysShowPlaceholderView=_alwaysShowPlaceholderView;
 @property (strong, nonatomic) NUIBoxArrangement *boxArrangement; // @synthesize boxArrangement=_boxArrangement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) TLKImage *lastTlkImage; // @synthesize lastTlkImage=_lastTlkImage;
 @property (nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
 @property (nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
+@property (strong, nonatomic) TLKProminenceView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property (nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
-@property (nonatomic) struct CGRect rectOfShadow; // @synthesize rectOfShadow=_rectOfShadow;
+@property (strong, nonatomic) UIView *shadowContainer; // @synthesize shadowContainer=_shadowContainer;
 @property (strong, nonatomic) TLKArrangementItem *sizingHelper; // @synthesize sizingHelper=_sizingHelper;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
@@ -45,11 +49,11 @@
 @property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
 + (BOOL)imageIsEligibleForShadow:(id)arg1 isTemplate:(BOOL)arg2;
-+ (Class)layerClass;
 + (struct CGSize)roundedSizeForSize:(struct CGSize)arg1;
-+ (BOOL)sizeIsShadowWorthy:(struct CGSize)arg1;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (struct CGSize)_imageSize;
+- (BOOL)_imageViewUsesSymbolConfiguration;
 - (id)actualImageView;
 - (id)boxArrangement:(id)arg1 itemAtIndex:(long long)arg2 horizontalAlignment:(long long *)arg3 verticalAlignment:(long long *)arg4;
 - (struct CGSize)constrainedSizeForImageSize:(struct CGSize)arg1;

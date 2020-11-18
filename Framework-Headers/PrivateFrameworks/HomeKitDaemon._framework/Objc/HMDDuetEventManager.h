@@ -29,8 +29,18 @@
 + (id)identifierForType:(unsigned long long)arg1 eventValue:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_deleteEventsForAccessoryUUID:(id)arg1;
+- (void)_deleteEventsForActionSetUUID:(id)arg1;
+- (void)_deleteEventsForHomeUUID:(id)arg1;
+- (void)_deleteEventsForRoomUUID:(id)arg1;
+- (void)_deleteEventsForServiceUUID:(id)arg1;
 - (void)_deleteEventsOfType:(unsigned long long)arg1 fromDate:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4;
 - (id)_dumpEventsOfType:(unsigned long long)arg1 fromDate:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4;
+- (void)_handleAccessoryRemovedNotification:(id)arg1;
+- (void)_handleActionSetRemovedNotification:(id)arg1;
+- (void)_handleHomeRemovedNotification:(id)arg1;
+- (void)_handleRoomRemovedNotification:(id)arg1;
+- (void)_handleServiceRemovedNotification:(id)arg1;
 - (void)_logEventWithType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 typeIdentifier:(id)arg4 metadata:(id)arg5;
 - (void)_logToCoreDuetStoreEventWithType:(unsigned long long)arg1 metadata:(id)arg2;
 - (id)_queryEventsOfType:(unsigned long long)arg1 fromDate:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4;
@@ -40,6 +50,7 @@
 - (id)init;
 - (void)logEventWithType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 typeIdentifier:(id)arg4 metadata:(id)arg5;
 - (id)queryEventsOfType:(unsigned long long)arg1 fromDate:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4;
+- (id)queryMostRecentEventWithCharacteristicType:(id)arg1 serviceType:(id)arg2 homeUUID:(id)arg3;
 - (void)resetAllEvents;
 
 @end

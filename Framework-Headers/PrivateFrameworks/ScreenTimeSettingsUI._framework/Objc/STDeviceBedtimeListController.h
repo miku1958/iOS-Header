@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSArray *orderedLocalizedWeekdayNames; // @synthesize orderedLocalizedWeekdayNames=_orderedLocalizedWeekdayNames;
 @property (readonly) NSArray *orderedWeekdayIndexes; // @synthesize orderedWeekdayIndexes=_orderedWeekdayIndexes;
 @property (strong, nonatomic) PSSpecifier *selectedTimeSpecifier; // @synthesize selectedTimeSpecifier=_selectedTimeSpecifier;
-@property (readonly) BOOL shouldShowCompatibilityAlert;
 @property (strong, nonatomic) PSSpecifier *startTimePickerSpecifier; // @synthesize startTimePickerSpecifier=_startTimePickerSpecifier;
 @property (strong, nonatomic) PSSpecifier *startTimeSpecifier; // @synthesize startTimeSpecifier=_startTimeSpecifier;
 @property (readonly) Class superclass;

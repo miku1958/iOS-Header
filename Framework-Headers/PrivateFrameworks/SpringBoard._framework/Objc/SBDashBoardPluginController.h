@@ -46,6 +46,10 @@
 - (void)_dismissPluginViewController:(id)arg1 withStyle:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_presentPluginViewController:(id)arg1 withStyle:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setPluginViewController:(id)arg1;
+- (void)conformsToCSAppearanceProviding;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSEventHandling;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)dealloc;
 - (void)disableLockScreenPluginWithContext:(id)arg1;
 - (void)enableLockScreenPluginWithContext:(id)arg1;

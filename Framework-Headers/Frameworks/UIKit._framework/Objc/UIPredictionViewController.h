@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_autocorrectionListContainsContinuousPathConversions:(id)arg1;
-- (BOOL)_autocorrectionListIsNull:(id)arg1;
 - (BOOL)_autocorrectionListMayCausePredictionViewToReappear:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (id)_currentTextSuggestions;
@@ -51,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (void)loadView;
 - (void)predictionView:(id)arg1 didSelectCandidate:(id)arg2;
+- (double)preferredHeightForTraitCollection:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

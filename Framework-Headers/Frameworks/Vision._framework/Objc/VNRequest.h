@@ -21,6 +21,7 @@
     VNWarningRecorder *_warningRecorder;
     VNCanceller *_canceller;
     BOOL _cancellationTriggered;
+    struct os_unfair_lock_s _cancellationResourcesLock;
     NSObject<OS_dispatch_semaphore> *_cancellationSemaphore;
     NSObject<OS_dispatch_queue> *_cancellationQueue;
     unsigned long long _revision;
@@ -51,7 +52,7 @@
 + (Class)configurationClass;
 + (unsigned long long)currentRevision;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (BOOL)defaultRequestInstanceWarmUpPerformer:(id)arg1 error:(id *)arg2;
++ (BOOL)defaultRequestInstanceWarmUpSession:(id)arg1 error:(id *)arg2;
 + (unsigned long long)defaultRevision;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
@@ -68,9 +69,10 @@
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (unsigned long long)resolvedRevisionForRevision:(unsigned long long)arg1;
 + (const CDStruct_7d93034e *)revisionAvailability;
++ (BOOL)setsTimeRangeOnResults;
 + (id)supportedRevisions;
 + (BOOL)supportsPrivateRevision:(unsigned long long)arg1;
-+ (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_defaultProcessingDevice;
 - (void)_setResolvedRevision:(unsigned long long)arg1;
@@ -91,8 +93,8 @@
 - (BOOL)internalCancelInContext:(id)arg1 error:(id *)arg2;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptions;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+- (id)newDefaultDetectorOptionsForSession:(id)arg1;
 - (id)newDefaultRequestInstance;
 - (BOOL)performInContext:(id)arg1 error:(id *)arg2;
 - (void)recordWarning:(id)arg1 value:(id)arg2;
@@ -109,7 +111,7 @@
 - (id)valueForPrivateOption:(id)arg1;
 - (id)valueForWarning:(id)arg1;
 - (BOOL)wantsSequencedRequestObservationsRecording;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)warnings;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 

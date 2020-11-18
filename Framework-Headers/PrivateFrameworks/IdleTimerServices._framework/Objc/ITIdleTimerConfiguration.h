@@ -33,6 +33,7 @@
 + (BOOL)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)_copyWithNewIdentifier;
+- (id)_uniquedReason:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

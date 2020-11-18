@@ -9,11 +9,10 @@
 @interface SUICFauxFlamesView : UIView
 {
     long long _style;
-    double _width;
-    CDStruct_e77567cc _sequenceAttributes;
+    CDStruct_53edd9a0 _sequenceAttributes;
 }
 
-+ (id)_frameImagesForSequence:(CDStruct_e77567cc)arg1;
++ (id)_frameImagesForSequence:(CDStruct_53edd9a0)arg1;
 - (void)_cleanupView;
 - (void)didMoveToSuperview;
 - (id)initWithCoder:(id)arg1;

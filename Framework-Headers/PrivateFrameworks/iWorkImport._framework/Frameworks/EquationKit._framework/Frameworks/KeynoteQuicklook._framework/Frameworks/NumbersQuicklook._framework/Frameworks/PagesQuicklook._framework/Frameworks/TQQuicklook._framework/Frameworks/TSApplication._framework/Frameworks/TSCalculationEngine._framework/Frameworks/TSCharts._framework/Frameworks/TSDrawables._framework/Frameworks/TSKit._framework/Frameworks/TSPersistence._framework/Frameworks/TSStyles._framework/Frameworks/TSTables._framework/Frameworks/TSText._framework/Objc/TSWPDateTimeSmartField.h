@@ -40,7 +40,7 @@
 - (void)saveToArchiver:(id)arg1;
 - (void)setFormat:(id)arg1 localeIdentifier:(id)arg2 dateStyle:(long long)arg3 timeStyle:(long long)arg4;
 - (void)setFormat:(id)arg1 localeIdentifier:(id)arg2 dateStyle:(long long)arg3 timeStyle:(long long)arg4 autoLocale:(BOOL)arg5;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 - (BOOL)supportsDeepCopyForUndo;
 
 @end

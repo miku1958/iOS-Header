@@ -20,10 +20,8 @@
     } _has;
     BOOL _confirm;
     BOOL _success;
-    BOOL __encodeLegacyGloryData;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL confirm; // @synthesize confirm=_confirm;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

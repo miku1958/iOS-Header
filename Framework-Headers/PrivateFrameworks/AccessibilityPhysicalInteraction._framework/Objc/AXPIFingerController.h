@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) BOOL isPerformingGesture; // @synthesize isPerformingGesture=_isPerformingGesture;
 @property (readonly, nonatomic) BOOL isPinchEnabled;
 @property (readonly, nonatomic) unsigned long long numberOfFingers;
+@property (nonatomic) unsigned long long senderID;
 @property (nonatomic) BOOL shouldAddRealEventFlag;
 @property (readonly) Class superclass;
 
@@ -47,15 +48,16 @@
 - (id)_eventTouchInfoForFingerLocation:(struct CGPoint)arg1 force:(double)arg2;
 - (unsigned long long)_fingerIdentifierForIndex:(unsigned long long)arg1;
 - (struct CGPoint)_fingerLocationFromSceneReferencePoint:(struct CGPoint)arg1;
-- (id)_handleStartingFingersForGesture:(id)arg1 animated:(BOOL)arg2 midpoint:(struct CGPoint *)arg3 showFingers:(BOOL)arg4;
+- (id)_handleStartingFingersForGesture:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3 midpoint:(struct CGPoint *)arg4 showFingers:(BOOL)arg5;
+- (void)_interruptGestureIfNeeded;
 - (BOOL)_isInUpdateBlock;
 - (void)_performGesture:(id)arg1 shouldShowFingers:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_pointStringsFromFingers;
 - (void)_replayEventAtIndex:(unsigned long long)arg1 inGesture:(id)arg2 allFingerIdentifiers:(id)arg3;
 - (struct CGPoint)_sceneReferencePointFromFingerLocation:(struct CGPoint)arg1;
 - (void)_sendMoveEventIfNeededForFingerModel:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)_showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3 shouldShowPinchChain:(BOOL)arg4;
-- (id)_showStartingFingersForGesture:(id)arg1 animated:(BOOL)arg2;
+- (void)_showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3 shouldShowPinchChain:(BOOL)arg4 shouldReuseFingers:(BOOL)arg5;
+- (id)_showStartingFingersForGesture:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3;
 - (id)_touchInfosByIdentifierForPressedFingers;
 - (id)acquireAssertionToSuppressVisualsWithReason:(id)arg1;
 - (void)animateToTapWithDuration:(double)arg1;
@@ -95,6 +97,7 @@
 - (void)showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3;
 - (void)showPinchFingersAnimated:(BOOL)arg1 midpoint:(struct CGPoint)arg2;
 - (void)showStartingFingersForGesture:(id)arg1;
+- (void)showStartingFingersForGesture:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3;
 
 @end
 

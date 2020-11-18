@@ -9,7 +9,7 @@
 #import <FMF/NSCopying-Protocol.h>
 #import <FMF/NSSecureCoding-Protocol.h>
 
-@class CLLocation, FMFPlacemark, NSArray, NSDate, NSString;
+@class CLLocation, FMFPlacemark, FMFSchedule, NSArray, NSDate, NSString;
 
 @interface FMFFence : NSObject <NSCopying, NSSecureCoding>
 {
@@ -26,6 +26,8 @@
     NSString *_type;
     unsigned long long _locationType;
     NSString *_acceptanceStatus;
+    FMFSchedule *_schedule;
+    NSDate *_muteEndDate;
     NSString *_ckRecordName;
     NSString *_ckRecordZoneOwnerName;
     NSDate *_timestamp;
@@ -44,15 +46,19 @@
 @property (strong, nonatomic) NSString *friendIdentifier; // @synthesize friendIdentifier=_friendIdentifier;
 @property (nonatomic, getter=isFromMe) BOOL fromMe; // @synthesize fromMe=_fromMe;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic, getter=inviteDate) NSDate *inviteDate;
+@property (readonly, nonatomic, getter=isMuted) BOOL isMuted;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long locationType; // @synthesize locationType=_locationType;
+@property (strong, nonatomic) NSDate *muteEndDate; // @synthesize muteEndDate=_muteEndDate;
 @property (readonly, nonatomic, getter=isOnMe) BOOL onMe;
 @property (strong, nonatomic) NSString *pendingIdentifier; // @synthesize pendingIdentifier=_pendingIdentifier;
 @property (strong, nonatomic) FMFPlacemark *placemark; // @synthesize placemark=_placemark;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (nonatomic, getter=isRecurring) BOOL recurring; // @synthesize recurring=_recurring;
 @property (readonly, nonatomic, getter=isRegionAllowed) BOOL regionAllowed;
+@property (strong, nonatomic) FMFSchedule *schedule; // @synthesize schedule=_schedule;
 @property (readonly, getter=isSupported) BOOL supported;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) NSString *trigger; // @synthesize trigger=_trigger;
@@ -60,6 +66,7 @@
 @property (readonly, nonatomic, getter=shouldUseCloudKitStore) BOOL useCloudKitStore;
 @property (readonly, nonatomic, getter=shouldUseIDSTrigger) BOOL useIDSTrigger;
 
++ (id)endDateForMuteTimespan:(unsigned long long)arg1;
 + (id)genericFriendName;
 + (BOOL)isAllowedAtLocation:(struct CLLocationCoordinate2D)arg1;
 + (BOOL)supportsSecureCoding;
@@ -79,6 +86,7 @@
 - (id)localizedWillBeNotifiedStringForFollower:(id)arg1 locationName:(id)arg2;
 - (id)locationForDictionary:(id)arg1;
 - (void)updateFenceLocation:(id)arg1 placemark:(id)arg2 label:(id)arg3 trigger:(id)arg4 type:(id)arg5 locationType:(unsigned long long)arg6;
+- (void)updateFenceMuteEndDate:(id)arg1;
 
 @end
 

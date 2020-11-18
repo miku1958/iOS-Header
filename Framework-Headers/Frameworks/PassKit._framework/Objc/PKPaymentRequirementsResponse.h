@@ -28,6 +28,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
+- (id)initWithNoRequirements;
 - (id)initWithProduct:(id)arg1;
 - (id)initWithProvisioningMethodMetadata:(id)arg1;
 - (id)initWithRemoteCredential:(id)arg1;

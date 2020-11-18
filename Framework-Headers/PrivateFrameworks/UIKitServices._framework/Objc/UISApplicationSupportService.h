@@ -26,6 +26,7 @@
         unsigned int defaultContext:1;
         unsigned int overrideInitialize:1;
         unsigned int initializeClientSync:1;
+        unsigned int initializeClientSyncWithParameters:1;
         unsigned int initializeClientAsync:1;
         unsigned int initializeClientLegacy:1;
         unsigned int requestPasscodeUnlockUI:1;
@@ -51,7 +52,7 @@
 - (void)destroyScenesPersistentIdentifiers:(id)arg1 animationType:(id)arg2 destroySessions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithCalloutQueue:(id)arg1;
-- (void)initializeClientWithCompletion:(CDUnknownBlockType)arg1;
+- (void)initializeClientWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 - (oneway void)requestPasscodeUnlockUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)start;

@@ -8,6 +8,7 @@
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingPrepareInternalSessionOperation : MPAsyncOperation
 {
     int _clientType;

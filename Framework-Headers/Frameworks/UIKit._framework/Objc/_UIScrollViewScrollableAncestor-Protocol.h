@@ -12,6 +12,8 @@
 - (BOOL)_descendentScrollView:(UIScrollView *)arg1 shouldPreserveStartOffset:(struct CGPoint)arg2;
 - (void)_descendentScrollViewDidCancelDragging:(UIScrollView *)arg1;
 - (void)_descendentScrollViewDidEndDragging:(UIScrollView *)arg1;
+- (BOOL)_descendentScrollViewShouldScrollHorizontally:(UIScrollView *)arg1;
+- (BOOL)_descendentScrollViewShouldScrollVertically:(UIScrollView *)arg1;
 - (struct CGPoint)_scrollView:(UIScrollView *)arg1 adjustedUnconstrainedOffsetForUnconstrainedOffset:(struct CGPoint)arg2 startOffset:(struct CGPoint)arg3 horizontalVelocity:(inout double *)arg4 verticalVelocity:(inout double *)arg5 animator:(out id *)arg6;
 @end
 

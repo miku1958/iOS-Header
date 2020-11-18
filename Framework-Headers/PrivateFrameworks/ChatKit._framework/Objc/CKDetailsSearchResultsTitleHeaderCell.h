@@ -7,17 +7,21 @@
 #import <ChatKit/CKSearchResultsTitleHeaderCell.h>
 
 @class CALayer;
+@protocol CKDetailsSearchResultsTitleHeaderCellDelegate;
 
 @interface CKDetailsSearchResultsTitleHeaderCell : CKSearchResultsTitleHeaderCell
 {
+    id<CKDetailsSearchResultsTitleHeaderCellDelegate> _detailsViewDelegate;
     CALayer *_bottomHairline;
 }
 
 @property (strong, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
+@property (nonatomic) id<CKDetailsSearchResultsTitleHeaderCellDelegate> detailsViewDelegate; // @synthesize detailsViewDelegate=_detailsViewDelegate;
 
 + (id)reuseIdentifier;
 + (id)supplementaryViewType;
 - (void).cxx_destruct;
+- (void)_showAllButtonTapped:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;

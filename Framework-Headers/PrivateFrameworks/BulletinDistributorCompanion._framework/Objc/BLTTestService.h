@@ -24,6 +24,7 @@
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)getStandaloneTestModeEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)logFaultWithCompletion:(CDUnknownBlockType)arg1;
 - (void)originalSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)overriddenSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;

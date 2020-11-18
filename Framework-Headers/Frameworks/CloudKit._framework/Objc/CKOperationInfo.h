@@ -9,12 +9,13 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainerSetupInfo, CKOperationConfiguration, CKOperationGroup, CKOperationMMCSRequestOptions, NSDictionary, NSString;
+@class CKContainerSetupInfo, CKOperationConfiguration, CKOperationGroup, CKOperationMMCSRequestOptions, NSDictionary, NSNumber, NSString;
 
 @interface CKOperationInfo : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isLongLived;
     BOOL _isOutstandingOperation;
+    BOOL _clientHasValidatedEntitlements;
     BOOL _wantsRequestStatistics;
     unsigned int _clientSDKVersion;
     CKOperationConfiguration *_resolvedConfiguration;
@@ -22,7 +23,8 @@
     NSString *_name;
     NSString *_parentSectionID;
     CKContainerSetupInfo *_setupInfo;
-    NSString *_operationClass;
+    NSString *_ckOperationClassName;
+    NSString *_operationDaemonCallbackProtocolName;
     NSString *_deviceIdentifier;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
     CKOperationGroup *_group;
@@ -37,8 +39,13 @@
 @property (readonly, nonatomic) NSDictionary *additionalRequestHTTPHeaders;
 @property (readonly, nonatomic) BOOL allowsBackgroundNetworking;
 @property (readonly, nonatomic) BOOL allowsCellularAccess;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution;
 @property (readonly, nonatomic) NSString *authPromptReason;
 @property (readonly, nonatomic) BOOL automaticallyRetryNetworkFailures;
+@property (readonly, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass;
+@property (strong, nonatomic) NSString *ckOperationClassName; // @synthesize ckOperationClassName=_ckOperationClassName;
+@property (nonatomic) BOOL clientHasValidatedEntitlements; // @synthesize clientHasValidatedEntitlements=_clientHasValidatedEntitlements;
 @property (nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
@@ -49,7 +56,7 @@
 @property (nonatomic) BOOL isLongLived; // @synthesize isLongLived=_isLongLived;
 @property (nonatomic) BOOL isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *operationClass; // @synthesize operationClass=_operationClass;
+@property (strong, nonatomic) NSString *operationDaemonCallbackProtocolName; // @synthesize operationDaemonCallbackProtocolName=_operationDaemonCallbackProtocolName;
 @property (strong, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (weak, nonatomic) id parentOperation; // @synthesize parentOperation=_parentOperation;
 @property (strong, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
@@ -58,8 +65,6 @@
 @property (readonly, nonatomic) long long qualityOfService;
 @property (readonly, nonatomic) CKOperationConfiguration *resolvedConfiguration; // @synthesize resolvedConfiguration=_resolvedConfiguration;
 @property (strong, nonatomic) CKContainerSetupInfo *setupInfo; // @synthesize setupInfo=_setupInfo;
-@property (readonly, nonatomic) BOOL shouldSkipZonePCSUpdate;
-@property (readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (nonatomic) unsigned long long systemScheduler; // @synthesize systemScheduler=_systemScheduler;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;

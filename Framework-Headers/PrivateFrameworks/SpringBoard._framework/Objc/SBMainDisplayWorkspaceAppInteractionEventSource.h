@@ -35,6 +35,7 @@
 - (void)_notifyTransition:(id)arg1 beginning:(BOOL)arg2;
 - (void)_userQuitApplication:(id)arg1;
 - (void)_userRemovedSuggestion:(id)arg1;
+- (void)_webBookmarkUninstalled:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)applicationRestrictionController:(id)arg1 didUpdateVisibleTags:(id)arg2 hiddenTags:(id)arg3;
 - (void)dealloc;

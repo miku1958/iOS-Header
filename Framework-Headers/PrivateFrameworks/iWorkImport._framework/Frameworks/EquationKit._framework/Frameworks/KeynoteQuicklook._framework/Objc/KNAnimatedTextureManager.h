@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class KNPlaybackSession, KNSlideNode, NSLock, NSMapTable, NSMutableSet, NSOperationQueue;
+@class KNPlaybackSession, KNSlideNode, NSMapTable, NSMutableSet, NSOperationQueue, TSULRUCache;
 @protocol OS_os_log;
 
 @interface KNAnimatedTextureManager : NSObject
 {
     KNPlaybackSession *_session;
+    struct os_unfair_lock_s _preCachingStateLock;
     KNSlideNode *_currentSlideNode;
     NSMapTable *_slideNodeToASVMap;
     NSMutableSet *_slideNodesInMemorySet;
-    BOOL _isPrecachingActive;
-    NSLock *_slideNodesInMemorySetLock;
+    NSMutableSet *_preCachedSlideNodes;
+    BOOL _isPreCachingActive;
     NSOperationQueue *_preCacheBackgroundQueue;
     NSOperationQueue *_rasterizeTextureQueue;
     struct CGSize _maximumMTLTextureSize;
-    NSMapTable *_repToTextureArrayMap;
     struct os_unfair_lock_s _textureCacheLock;
+    NSMapTable *_repToTextureArrayMap;
+    TSULRUCache *_recentlyUsedBackgroundCache;
     NSObject<OS_os_log> *_signpostLog;
     BOOL _shouldPreCache;
 }
 
-@property (weak, nonatomic) KNSlideNode *currentSlideNode; // @synthesize currentSlideNode=_currentSlideNode;
+@property (strong, nonatomic) KNSlideNode *currentSlideNode; // @synthesize currentSlideNode=_currentSlideNode;
 @property (nonatomic) BOOL shouldPreCache; // @synthesize shouldPreCache=_shouldPreCache;
 
 - (void).cxx_destruct;
@@ -38,22 +40,24 @@
 - (void)evictCaches;
 - (void)evictInMemoryCache;
 - (void)evictPersistentCache;
-- (id)init;
 - (id)initWithSession:(id)arg1;
 - (void)p_addSlideNodeToMemorySet:(id)arg1;
+- (void)p_cancelAllOperations;
+- (void)p_didReceiveMemoryWarning;
 - (void)p_didReceiveMemoryWarning:(id)arg1;
-- (void)p_invalidateASV:(id)arg1;
+- (void)p_processCurrentSlideNode;
 - (void)p_processSlideNode:(id)arg1 isHighPriority:(BOOL)arg2;
 - (void)p_rasterizeTexture:(id)arg1 isOpenGL:(BOOL)arg2;
 - (void)p_removeTextureCacheForASV:(id)arg1;
+- (void)p_scheduleSerializeExtraSlideNodes;
 - (void)p_serializeExtraSlideNodes;
 - (void)p_serializeTexturesForSlideNode:(id)arg1;
-- (void)p_setCurrentSlideNodeToProcess:(id)arg1;
 - (id)p_setupGenerateTexturesOperationOnSlideNode:(id)arg1;
 - (id)p_setupPrepareAnimationsOperationOnSlideNode:(id)arg1;
 - (id)p_setupRenderTexturesOperationOnSlideNode:(id)arg1;
-- (BOOL)p_shouldProcessSlideNode:(id)arg1;
 - (id)p_slideNodesToCacheAroundCurrentSlideNode:(id)arg1 shouldIncludeExtraSlideAtEnd:(BOOL)arg2;
+- (BOOL)p_stopPreCachingIfStarted;
+- (void)p_waitUntilAllOperationsAreFinished;
 - (void)startPreCaching;
 - (void)stopPreCaching;
 - (void)tearDown;

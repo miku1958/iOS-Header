@@ -13,7 +13,7 @@
 #import <CarPlaySupport/UISearchControllerDelegate-Protocol.h>
 #import <CarPlaySupport/UISearchResultsUpdating-Protocol.h>
 
-@class CPSearchTemplate, CPTemplate, NAFuture, NSString;
+@class CPListTemplate, CPSearchTemplate, CPTemplate, NAFuture, NSString;
 @protocol CPSTemplateViewControllerDelegate, CPSearchClientTemplateDelegate, CPTemplateDelegate;
 
 @interface CPSSearchTemplateViewController : UISearchContainerViewController <UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, CPListTemplateDelegate, CPSBaseTemplateViewController, CPSearchTemplateProviding>
@@ -24,6 +24,7 @@
     id<CPSTemplateViewControllerDelegate> _viewControllerDelegate;
     CPTemplate *_associatedTemplate;
     id<CPTemplateDelegate> _templateDelegate;
+    CPListTemplate *_listTemplate;
 }
 
 @property (strong, nonatomic) CPTemplate *associatedTemplate; // @synthesize associatedTemplate=_associatedTemplate;
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL didDisappear; // @synthesize didDisappear=_didDisappear;
 @property (nonatomic) BOOL didPop; // @synthesize didPop=_didPop;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CPListTemplate *listTemplate; // @synthesize listTemplate=_listTemplate;
 @property (readonly, nonatomic) CPSearchTemplate *searchTemplate;
 @property (readonly, weak, nonatomic) id<CPSearchClientTemplateDelegate> searchTemplateDelegate;
 @property (readonly) Class superclass;
@@ -42,10 +44,12 @@
 - (void).cxx_destruct;
 - (void)_cleanup;
 - (void)_cps_viewControllerWasPopped;
+- (BOOL)_isSceneActive;
 - (void)didDismissSearchController:(id)arg1;
-- (id)initWithSearchController:(id)arg1 searchTemplate:(id)arg2 templateDelegate:(id)arg3;
+- (id)initWithSearchTemplate:(id)arg1 templateDelegate:(id)arg2 templateEnvironment:(id)arg3 interactionModel:(unsigned long long)arg4;
 - (void)listTemplate:(id)arg1 didSelectListItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)searchBarSearchButtonClicked:(id)arg1;
+- (BOOL)searchBarShouldEndEditing:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

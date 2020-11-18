@@ -42,6 +42,8 @@ struct GlyphStackEntry {
     struct CGPoint _field6;
 };
 
+struct MergeTable;
+
 struct StrikeMetrics {
     double _field1;
     double _field2;
@@ -67,34 +69,37 @@ struct TBaseFont {
     struct TCFRef<const __CFData *> _field10;
     struct TCFRef<const __CFData *> _field11;
     struct TCFRef<const __CFURL *> _field12;
-    struct TCFRef<CGFont *> _field13;
-    struct TUnfairLock _field14;
-    struct TCFRef<__CFDictionary *> _field15;
-    struct TCFRef<const __CFArray *> _field16[2];
-    struct TCFRef<const __CFCharacterSet *> _field17[2];
-    struct atomic<unsigned int> _field18;
-    struct atomic<unsigned int> _field19;
+    struct TCFRef<const __CFString *> _field13;
+    struct TCFRef<const __CFString *> _field14;
+    struct TCFRef<CGFont *> _field15;
+    struct TUnfairLock _field16;
+    struct TCFRef<__CFDictionary *> _field17;
+    struct TCFRef<const __CFArray *> _field18[2];
+    struct TCFRef<const __CFCharacterSet *> _field19[2];
     struct atomic<unsigned int> _field20;
-    unsigned int _field21;
-    struct TCFRef<const __CFCharacterSet *> _field22;
-    struct atomic<long> _field23;
-    struct atomic<const TBMPDataCache *> _field24;
-    struct atomic<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> _field25;
-    struct atomic<unsigned short> _field26;
-    struct TUnfairLock _field27;
-    struct pair<const unsigned short *, const unsigned short *> _field28;
-    struct atomic<TTraitsValues *> _field29;
-    struct StrikeMetrics _field30;
-    struct atomic<unsigned int> _field31;
-    struct atomic<unsigned int> _field32;
-    struct atomic<CTFontFormat> _field33;
-    struct TUnfairLock _field34;
-    struct array<std::__1::unordered_map<unsigned int, OTL::Lookup, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OTL::Lookup>>>, 2> _field35;
-    struct atomic<unsigned short> _field36;
-    struct TUnfairLock _field37;
-    struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1> _field38;
-    struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4> _field39;
-    struct array<TCFRef<__CFDictionary *>, 7> _field40;
+    struct atomic<unsigned int> _field21;
+    struct atomic<unsigned int> _field22;
+    unsigned int _field23;
+    struct TCFRef<const __CFCharacterSet *> _field24;
+    struct atomic<long> _field25;
+    struct atomic<const TBMPDataCache *> _field26;
+    struct atomic<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> _field27;
+    struct atomic<unsigned short> _field28;
+    struct TUnfairLock _field29;
+    struct pair<const unsigned short *, const unsigned short *> _field30;
+    struct atomic<TTraitsValues *> _field31;
+    struct StrikeMetrics _field32;
+    struct atomic<unsigned int> _field33;
+    struct atomic<unsigned int> _field34;
+    struct atomic<CTFontFormat> _field35;
+    struct TUnfairLock _field36;
+    struct array<std::__1::unordered_map<unsigned int, OTL::Lookup, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OTL::Lookup>>>, 2> _field37;
+    struct atomic<unsigned short> _field38;
+    struct TUnfairLock _field39;
+    struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1> _field40;
+    struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4> _field41;
+    struct array<TCFRef<__CFDictionary *>, 7> _field42;
+    struct atomic<const OTL::MergeTable *> _field43;
 };
 
 struct TCFRef<CGFont *> {
@@ -119,6 +124,10 @@ struct TCFRef<const __CFData *> {
 
 struct TCFRef<const __CFSet *> {
     struct atomic<const __CFSet *> fRef;
+};
+
+struct TCFRef<const __CFString *> {
+    struct atomic<const __CFString *> _field1;
 };
 
 struct TCFRef<const __CFURL *> {
@@ -205,6 +214,12 @@ struct atomic<__CFDictionary *> {
     } _field1;
 };
 
+struct atomic<const OTL::MergeTable *> {
+    struct __cxx_atomic_impl<const OTL::MergeTable *, std::__1::__cxx_atomic_base_impl<const OTL::MergeTable *>> {
+        _Atomic struct MergeTable *_field1;
+    } _field1;
+};
+
 struct atomic<const TBMPDataCache *> {
     struct __cxx_atomic_impl<const TBMPDataCache *, std::__1::__cxx_atomic_base_impl<const TBMPDataCache *>> {
         _Atomic struct TBMPDataCache *_field1;
@@ -233,6 +248,12 @@ struct atomic<const __CFSet *> {
     struct __cxx_atomic_impl<const __CFSet *, std::__1::__cxx_atomic_base_impl<const __CFSet *>> {
         _Atomic struct __CFSet *__a_value;
     } __a_;
+};
+
+struct atomic<const __CFString *> {
+    struct __cxx_atomic_impl<const __CFString *, std::__1::__cxx_atomic_base_impl<const __CFString *>> {
+        _Atomic struct __CFString *_field1;
+    } _field1;
 };
 
 struct atomic<const __CFURL *> {

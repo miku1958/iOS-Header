@@ -52,6 +52,7 @@
 - (struct TSUViewCellCoord)cellIDForCellContainingRichTextStorage:(id)arg1;
 - (BOOL)cellStyle:(id)arg1 isEqualToDefaultCellStyleForCellID:(struct TSUViewCellCoord)arg2;
 - (id)cellStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)cellStyleAtCellUID:(const struct TSTCellUID *)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleForCellWithEmptyStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfColumnAtIndex:(struct TSUViewColumnIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfRowAtIndex:(struct TSUViewRowIndex)arg1 isDefault:(out BOOL *)arg2;
@@ -88,9 +89,8 @@
 - (struct TSUViewCellRect)expandCellRangeToCoverMergedCells:(struct TSUViewCellRect)arg1;
 - (id)expandCellRegionToCoverMergedCells:(id)arg1;
 - (void)forceGroupingChangeReset;
-- (struct TSCEFormula *)formulaAtCellID:(struct TSUViewCellCoord)arg1;
+- (id)formulaAtCellID:(struct TSUViewCellCoord)arg1;
 - (int)getCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2 suppressCellBorder:(BOOL)arg3;
-- (int)getCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2;
 - (int)getDefaultCell:(out id)arg1 forCellUID:(const struct TSTCellUID *)arg2;
 - (BOOL)hasCommentAtCellID:(struct TSUViewCellCoord)arg1;
 - (BOOL)hasFormulaAtCellID:(struct TSUViewCellCoord)arg1;
@@ -138,7 +138,6 @@
 - (void)resetViewMap;
 - (void)resetViewMapAndNotify;
 - (id)rowHeights;
-- (int)setCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 ignoreFormula:(BOOL)arg3 clearImportWarnings:(BOOL)arg4;
 - (int)setCellStyle:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2;
 - (int)setCellStyle:(id)arg1 ofColumnAtIndex:(struct TSUViewColumnIndex)arg2;
 - (int)setCellStyle:(id)arg1 ofRowAtIndex:(struct TSUViewRowIndex)arg2;
@@ -164,6 +163,7 @@
 - (unsigned long long)tableStyleAreaForRow:(struct TSUViewRowIndex)arg1;
 - (BOOL)textStyle:(id)arg1 isEqualToDefaultTextStyleForCellID:(struct TSUViewCellCoord)arg2;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)textStyleAtCellUID:(const struct TSTCellUID *)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleForCellWithEmptyStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfColumnAtIndex:(struct TSUViewColumnIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfRowAtIndex:(struct TSUViewRowIndex)arg1 isDefault:(out BOOL *)arg2;

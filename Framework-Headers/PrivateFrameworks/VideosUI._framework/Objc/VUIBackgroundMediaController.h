@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AVPlayerViewController, NSDate, NSString, NSTimer, TVImageProxy, TVPPlayer, TVPPlaylist, TVPStateMachine, VUIMediaInfo, _TVImageView;
+@class AVPlayerViewController, NSDate, NSString, NSTimer, TVImageProxy, TVPPlayer, TVPPlaylist, TVPStateMachine, TVPVideoView, VUIMediaInfo, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIBackgroundMediaController : UIViewController
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _playbackEnabled;
     BOOL _stopPlayerWhenViewDisappears;
     BOOL _clearPreviousImageBeforeLoading;
+    BOOL _animateImageChange;
     BOOL _popWhenPlayerStops;
     BOOL _mutePlaybackInBackground;
     BOOL _stopWhenAnotherMediaControllerStarts;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _imageAnimationOptions;
     double _imageAnimationDuration;
     double _imageTransitionInterval;
+    TVPVideoView *_secondaryVideoView;
     NSTimer *_pauseStateTimeoutTimer;
     unsigned long long _vpafPlaybackStartReason;
     unsigned long long _vpafPlaybackStopReason;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) TVImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
 @property (strong, nonatomic) _TVImageView *alphaProxyImageView; // @synthesize alphaProxyImageView=_alphaProxyImageView;
+@property (nonatomic) BOOL animateImageChange; // @synthesize animateImageChange=_animateImageChange;
 @property (nonatomic, getter=isAutomaticPlaybackStart) BOOL automaticPlaybackStart; // @synthesize automaticPlaybackStart=_automaticPlaybackStart;
 @property (nonatomic, getter=isAutomaticPlaybackStop) BOOL automaticPlaybackStop; // @synthesize automaticPlaybackStop=_automaticPlaybackStop;
 @property (strong, nonatomic) AVPlayerViewController *avPlayerViewController; // @synthesize avPlayerViewController=_avPlayerViewController;
@@ -80,6 +83,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isPlayerReadyToBePlayed) BOOL playerReadyToBePlayed; // @synthesize playerReadyToBePlayed=_playerReadyToBePlayed;
 @property (nonatomic) BOOL popWhenPlayerStops; // @synthesize popWhenPlayerStops=_popWhenPlayerStops;
 @property (strong, nonatomic) _TVImageView *proxyImageView; // @synthesize proxyImageView=_proxyImageView;
+@property (strong, nonatomic) TVPVideoView *secondaryVideoView; // @synthesize secondaryVideoView=_secondaryVideoView;
 @property (nonatomic) BOOL shouldAnimateOverlayView; // @synthesize shouldAnimateOverlayView=_shouldAnimateOverlayView;
 @property (nonatomic) BOOL shouldPlayAfterAppBecomesActive; // @synthesize shouldPlayAfterAppBecomesActive=_shouldPlayAfterAppBecomesActive;
 @property (nonatomic) BOOL showsVideoControls; // @synthesize showsVideoControls=_showsVideoControls;
@@ -95,7 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)_addAlphaProxyImageViewIfNeeded;
 - (void)_addContentViewIfNeeded;
 - (void)_addOverlayViewAnimatedIfNeeded:(BOOL)arg1 dismissAfter:(double)arg2;
-- (void)_addPlaybackViewControllerForPlayback;
+- (void)_addPlaybackViewControllerForPlayback:(BOOL)arg1;
 - (void)_addProxyImageView;
 - (void)_applicationDidRemoveDeactivationReason:(id)arg1;
 - (void)_applicationWillAddDeactivationReason:(id)arg1;
@@ -106,7 +110,10 @@ __attribute__((visibility("hidden")))
 - (void)_handleApplicationDidBecomeActiveNotification:(id)arg1;
 - (void)_handleApplicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
+- (BOOL)_hasSecondaryView;
 - (void)_mediaControllerStartedPlayback:(id)arg1;
+- (struct CGRect)_playbackContainerViewFrame:(BOOL)arg1 hasSecondaryVideoView:(BOOL)arg2;
+- (void)_playbackDidPlayToEndNotification:(id)arg1;
 - (void)_playbackStateChanged:(id)arg1;
 - (void)_registerForApplicationStateNotifications;
 - (void)_registerPlayerNotifications;
@@ -114,14 +121,17 @@ __attribute__((visibility("hidden")))
 - (void)_removeOverlayView:(id)arg1 animated:(BOOL)arg2;
 - (void)_removePlaybackViewController;
 - (void)_removeProxyImageView;
+- (struct CGRect)_secondaryVideoViewFrame:(BOOL)arg1;
 - (void)_setAlphaImageProxy:(id)arg1;
 - (void)_setImageProxies:(id)arg1;
 - (void)_setPlaylist:(id)arg1;
 - (BOOL)_shouldPausePlaybackDueToDeactivationReasons;
+- (BOOL)_shouldShowSecondaryView;
 - (void)_stateDidChangeFromState:(id)arg1 toState:(id)arg2 onEvent:(id)arg3 context:(id)arg4 userInfo:(id)arg5;
 - (void)_swapActiveMedia:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_unregisterPlayerNotifications;
 - (void)_updateAVPlayerViewControllerWithAVPlayerForPlayer:(id)arg1;
+- (void)_updateCurrentPlaybackViewFrameForPlaybackInBackground:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_updateMediaInfo;
 - (void)_updatePlayerMuteStateForBackgroundPlaybackWithReason:(id)arg1;
 - (void)dealloc;

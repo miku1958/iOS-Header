@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) unsigned long long status;
 @property (nonatomic) unsigned long long usage;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)bindResourcesWithEncoder:(id)arg1 commandBuffer:(id)arg2 retainedResources:(id)arg3;
 - (id)boundingBoxCopyPipeline;

@@ -12,13 +12,14 @@
 {
     CDStruct_da2e99ad _lossImageSize;
     BOOL _isScalarLoss;
-    unsigned long long _numNonZeroWeights;
     NSData *_userData;
     unsigned long long _userDataLayout;
     unsigned long long _numFeatureChannels_labels;
     unsigned long long _numFeatureChannels_loss;
     MPSImage *_userLabelsImage;
     MPSImage *_userWeightsImage;
+    BOOL _hasStateWeights;
+    BOOL _computeNonZeroWeights;
 }
 
 - (void)dealloc;

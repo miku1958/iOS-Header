@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (id)backgroundColourIfNecessary;
 - (void)didMoveToSuperview;
 - (void)loadImages;

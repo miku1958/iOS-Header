@@ -9,13 +9,14 @@
 #import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
 #import <UIKitCore/_UIStatusBarVisualProvider-Protocol.h>
 
-@class NSDictionary, NSString, _UIStatusBar, _UIStatusBarRegion;
+@class NSString, _UIStatusBar, _UIStatusBarRegion;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarVisualProvider_CarPlay : NSObject <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarVisualProvider>
 {
+    BOOL _showingSensorActivityIndicator;
+    BOOL _showingPill;
     _UIStatusBar *_statusBar;
-    NSDictionary *_orderedDisplayItemPlacements;
     _UIStatusBarRegion *_timeRegion;
     _UIStatusBarRegion *_radarRegion;
 }
@@ -24,24 +25,30 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
 @property (strong, nonatomic) _UIStatusBarRegion *radarRegion; // @synthesize radarRegion=_radarRegion;
+@property (nonatomic) BOOL showingPill; // @synthesize showingPill=_showingPill;
+@property (nonatomic) BOOL showingSensorActivityIndicator; // @synthesize showingSensorActivityIndicator=_showingSensorActivityIndicator;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 @property (strong, nonatomic) _UIStatusBarRegion *timeRegion; // @synthesize timeRegion=_timeRegion;
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
 - (id)_animationForBackgroundActivityPill;
+- (id)_animationForPillTime;
 - (id)_animationForQuietMode;
+- (id)_animationForSensorIndicator;
 - (void)actionable:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
+- (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)setupInContainerView:(id)arg1;
+- (BOOL)showSensorActivityIndicatorWithoutPortalView;
 - (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
 - (id)styleAttributesForStyle:(long long)arg1;
 - (id)willUpdateWithData:(id)arg1;

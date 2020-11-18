@@ -75,10 +75,10 @@ __attribute__((visibility("hidden")))
 - (void)setupShapeLayersIfNeeded;
 - (void)startGridAnimationFromRect:(id)arg1;
 - (void)stopGridAnimation;
+- (id)tintColorWithAlpha:(double)arg1;
 - (void)updateGridLayerFromRect:(id)arg1;
 - (void)updateRectangleLayerFromRect:(id)arg1;
 - (void)updateShapeLayers;
-- (id)yellowColorWithAlpha:(double)arg1;
 
 @end
 

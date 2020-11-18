@@ -14,8 +14,8 @@
     long long _type;
 }
 
-@property (weak, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)initWithSlideNode:(id)arg1 type:(long long)arg2;

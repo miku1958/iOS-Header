@@ -11,18 +11,26 @@
 #import <PhotosUI/PUPhotoPickerRemoteNavigationControllerDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoPickerTestSupportHandler-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PUPhotoPickerExtensionContext, PUPhotoPickerRemoteNavigationController, PUPhotoPickerRemoteViewControllerRequestOptions;
+@class NSArray, NSDictionary, NSLayoutConstraint, NSString, PUAssetPickerCoordinator, PUPhotoPickerExtensionContext, PUPhotoPickerRemoteNavigationController, PUPhotoPickerRemoteViewControllerRequestOptions;
 
-__attribute__((visibility("hidden")))
 @interface PUPhotoPickerRemoteViewController : UIViewController <PUPhotoPickerRemoteNavigationControllerDelegate, NSExtensionRequestHandling, PUPhotoPicker, PUPhotoPickerTestSupportHandler>
 {
     PUPhotoPickerExtensionContext *_extensionContext;
     UIViewController *_contentViewController;
     PUPhotoPickerRemoteNavigationController *_contentNavigationController;
     PUPhotoPickerRemoteViewControllerRequestOptions *_options;
+    PUAssetPickerCoordinator *_assetPickerCoordinator;
+    NSLayoutConstraint *_topConstraint;
+    NSLayoutConstraint *_bottomConstraint;
+    NSLayoutConstraint *_leadingConstraint;
+    NSLayoutConstraint *_trailingConstraint;
+    NSLayoutConstraint *_leadingSafeAreaConstraint;
+    NSLayoutConstraint *_trailingSafeAreaConstraint;
 }
 
 @property (readonly, nonatomic) BOOL allowsMultipleSelection;
+@property (strong, nonatomic) PUAssetPickerCoordinator *assetPickerCoordinator; // @synthesize assetPickerCoordinator=_assetPickerCoordinator;
+@property (strong, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (strong, nonatomic) PUPhotoPickerRemoteNavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
 @property (strong, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, nonatomic) BOOL convertAutoloopsToGIF;
@@ -30,6 +38,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) PUPhotoPickerExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *leadingConstraint; // @synthesize leadingConstraint=_leadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *leadingSafeAreaConstraint; // @synthesize leadingSafeAreaConstraint=_leadingSafeAreaConstraint;
 @property (readonly, nonatomic) NSArray *mediaTypes;
 @property (readonly, nonatomic) unsigned long long multipleSelectionLimit;
 @property (strong, nonatomic) PUPhotoPickerRemoteViewControllerRequestOptions *options; // @synthesize options=_options;
@@ -39,7 +49,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL showsFileSizePicker;
 @property (readonly, nonatomic) BOOL showsPrompt;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *trailingConstraint; // @synthesize trailingConstraint=_trailingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *trailingSafeAreaConstraint; // @synthesize trailingSafeAreaConstraint=_trailingSafeAreaConstraint;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_allowSharingSelectionOfInfoDictionaries:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePerformTraitCollectionUpdateUsingData:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -60,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)performTraitCollectionUpdateUsingData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)photoPickerRemoteNavigationController:(id)arg1 viewControllerToPush:(id)arg2;
 - (void)presentViewController:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateViewConstraints;
 - (void)viewWillLayoutSubviews;
 
 @end

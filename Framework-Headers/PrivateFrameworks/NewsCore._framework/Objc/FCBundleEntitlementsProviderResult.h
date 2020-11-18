@@ -14,16 +14,18 @@
     BOOL _isPurchaser;
     BOOL _isAmplifyUser;
     NSString *_bundlePurchaseID;
+    NSString *_servicesBundlePurchaseID;
 }
 
 @property (readonly, nonatomic) NSString *bundlePurchaseID; // @synthesize bundlePurchaseID=_bundlePurchaseID;
 @property (readonly, nonatomic) BOOL inTrialPeriod; // @synthesize inTrialPeriod=_inTrialPeriod;
 @property (readonly, nonatomic) BOOL isAmplifyUser; // @synthesize isAmplifyUser=_isAmplifyUser;
 @property (readonly, nonatomic) BOOL isPurchaser; // @synthesize isPurchaser=_isPurchaser;
+@property (readonly, nonatomic) NSString *servicesBundlePurchaseID; // @synthesize servicesBundlePurchaseID=_servicesBundlePurchaseID;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBundlePurchaseID:(id)arg1 inTrialPeriod:(BOOL)arg2 isPurchaser:(BOOL)arg3 isAmplifyUser:(BOOL)arg4;
+- (id)initWithBundlePurchaseID:(id)arg1 inTrialPeriod:(BOOL)arg2 isPurchaser:(BOOL)arg3 servicesBundlePurchaseID:(id)arg4 isAmplifyUser:(BOOL)arg5;
 
 @end
 

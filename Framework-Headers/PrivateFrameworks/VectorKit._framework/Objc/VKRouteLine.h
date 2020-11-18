@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
+@class GEOComposedRoute, NSSet, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
 @protocol VKRouteLineObserverProtocol;
 
 __attribute__((visibility("hidden")))
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) Box_3d7e3c2c bounds; // @synthesize bounds=_bounds;
+@property (readonly, nonatomic) GEOComposedRoute *composedRoute;
 @property BOOL hasNewRoadMatches; // @synthesize hasNewRoadMatches=_hasNewRoadMatches;
 @property (nonatomic) id<VKRouteLineObserverProtocol> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) VKPolylineOverlay *overlay; // @synthesize overlay=_overlay;

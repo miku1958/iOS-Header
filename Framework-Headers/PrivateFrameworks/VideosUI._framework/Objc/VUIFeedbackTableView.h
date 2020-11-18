@@ -6,23 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 
-@class NSArray, VUIFeedbackTableLayout;
+@class NSArray, NSString, VUIFeedbackTableLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIFeedbackTableView : UIView <VUILabelTopMarginCalculationProtocol>
+@interface VUIFeedbackTableView : UIView <VUILabelBaselineProtocol>
 {
     VUIFeedbackTableLayout *_layout;
     NSArray *_dataModels;
 }
 
 @property (strong, nonatomic) NSArray *dataModels; // @synthesize dataModels=_dataModels;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUIFeedbackTableLayout *layout; // @synthesize layout=_layout;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (struct CGSize)_calculateMaxDescriptionThatFit:(struct CGSize)arg1;
 - (struct CGSize)_calculateMaxHeaderThatFits:(struct CGSize)arg1;
+- (double)baselineOffsetFromBottom;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (id)init;
 - (void)layoutSubviews;

@@ -6,21 +6,29 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@interface VNGenerateImageFeaturePrintRequest : VNImageBasedRequest
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface VNGenerateImageFeaturePrintRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long imageCropAndScaleOption;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
 
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-- (id)_applicableDetectorAndOptions:(id *)arg1 error:(id *)arg2;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (id)description;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

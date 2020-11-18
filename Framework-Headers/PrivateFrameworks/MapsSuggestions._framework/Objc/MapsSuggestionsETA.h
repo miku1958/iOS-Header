@@ -6,46 +6,55 @@
 
 #import <objc/NSObject.h>
 
+#import <MapsSuggestions/MapsSuggestionsJSONable-Protocol.h>
 #import <MapsSuggestions/NSCopying-Protocol.h>
 #import <MapsSuggestions/NSSecureCoding-Protocol.h>
 
 @class CLLocation, NSDate, NSString;
 
-@interface MapsSuggestionsETA : NSObject <NSSecureCoding, NSCopying>
+@interface MapsSuggestionsETA : NSObject <NSSecureCoding, NSCopying, MapsSuggestionsJSONable>
 {
     int _transportType;
     double _seconds;
     NSString *_shortTrafficString;
     NSString *_longTrafficString;
+    NSString *_writtenRouteName;
+    NSString *_spokenRouteName;
     NSDate *_time;
     CLLocation *_location;
     NSString *_originator;
 }
 
 @property (readonly, nonatomic) double age;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (readonly, nonatomic) NSString *longTrafficString; // @synthesize longTrafficString=_longTrafficString;
 @property (readonly, nonatomic) NSString *originator; // @synthesize originator=_originator;
 @property (readonly, nonatomic) double seconds; // @synthesize seconds=_seconds;
 @property (readonly, nonatomic) NSString *shortTrafficString; // @synthesize shortTrafficString=_shortTrafficString;
+@property (readonly, nonatomic) NSString *spokenRouteName; // @synthesize spokenRouteName=_spokenRouteName;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *time; // @synthesize time=_time;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (readonly, nonatomic) NSString *writtenRouteName; // @synthesize writtenRouteName=_writtenRouteName;
 
 + (id)ETAWithData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)data;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSeconds:(double)arg1 shortTrafficString:(id)arg2 longTrafficString:(id)arg3 transportType:(int)arg4 location:(id)arg5 time:(id)arg6;
-- (id)initWithSeconds:(double)arg1 shortTrafficString:(id)arg2 longTrafficString:(id)arg3 transportType:(int)arg4 location:(id)arg5 time:(id)arg6 originator:(id)arg7;
+- (id)initWithSeconds:(double)arg1 shortTrafficString:(id)arg2 longTrafficString:(id)arg3 writtenRouteName:(id)arg4 spokenRouteName:(id)arg5 transportType:(int)arg6 location:(id)arg7 time:(id)arg8;
+- (id)initWithSeconds:(double)arg1 shortTrafficString:(id)arg2 longTrafficString:(id)arg3 writtenRouteName:(id)arg4 spokenRouteName:(id)arg5 transportType:(int)arg6 location:(id)arg7 time:(id)arg8 originator:(id)arg9;
 - (id)initWithSeconds:(double)arg1 trafficString:(id)arg2 transportType:(int)arg3 location:(id)arg4;
 - (BOOL)isBetterThanETA:(id)arg1 requirements:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToETA:(id)arg1;
 - (BOOL)isValidForLocation:(id)arg1 requirements:(id)arg2;
+- (id)objectForJSON;
 - (id)trafficString;
 
 @end

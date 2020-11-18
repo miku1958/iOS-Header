@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <ActivityRingsUI/NSCopying-Protocol.h>
+
 @class ARUISpriteTexture, NSArray;
 
-@interface ARUISpriteSheet : NSObject
+@interface ARUISpriteSheet : NSObject <NSCopying>
 {
-    float _size;
+    NSArray *_sprites;
     ARUISpriteTexture *_texture;
-    NSArray *_icons;
 }
 
-@property (readonly, nonatomic) NSArray *icons; // @synthesize icons=_icons;
-@property (readonly, nonatomic) float size; // @synthesize size=_size;
+@property (readonly, nonatomic) NSArray *sprites; // @synthesize sprites=_sprites;
 @property (readonly, nonatomic) ARUISpriteTexture *texture; // @synthesize texture=_texture;
 
 - (void).cxx_destruct;
-- (id)initWithTexture:(id)arg1 icons:(id)arg2 size:(float)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithSpriteSheet:(id)arg1;
+- (id)initWithTexture:(id)arg1 sprites:(id)arg2;
 
 @end
 

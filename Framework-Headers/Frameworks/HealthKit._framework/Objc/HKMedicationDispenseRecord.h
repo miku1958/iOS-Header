@@ -65,7 +65,7 @@
 - (void)_setQuantityDispensed:(id)arg1;
 - (void)_setStatus:(id)arg1;
 - (void)_setStatusCoding:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -75,9 +75,7 @@
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
 - (id)medicationCodingsCollection;
-- (id)medicationCodingsContext;
 - (id)statusCodingCollection;
-- (id)statusCodingContext;
 
 @end
 

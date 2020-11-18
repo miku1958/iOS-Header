@@ -52,8 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)relay:(id)arg1 receiveData:(id)arg2 info:(id)arg3 fromID:(id)arg4;
 - (void)relay:(id)arg1 sharingClosed:(id)arg2;
 - (void)storageController:(id)arg1 updatedSharedTripGroupStorage:(id)arg2;
-- (void)subscribeToUpdatesToSharedTrip:(id)arg1;
-- (void)unsubscribeFromUpdatesToSharedTrip:(id)arg1;
+- (BOOL)subscribeToUpdatesToSharedTrip:(id)arg1 error:(id *)arg2;
+- (BOOL)unsubscribeFromUpdatesToSharedTrip:(id)arg1 error:(id *)arg2;
 - (void)updateContacts;
 
 @end

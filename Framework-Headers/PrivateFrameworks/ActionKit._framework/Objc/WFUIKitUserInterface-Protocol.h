@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ActionKit/WFUserInterface-Protocol.h>
+#import <ActionKit/WFUserInterfaceHost-Protocol.h>
 
 @class UIView, UIViewController;
 
-@protocol WFUIKitUserInterface <WFUserInterface>
+@protocol WFUIKitUserInterface <WFUserInterfaceHost>
 
 @property (readonly, nonatomic) UIView *view;
 @property (readonly, nonatomic) UIViewController *viewController;

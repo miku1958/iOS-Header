@@ -15,15 +15,14 @@
 @interface MapsSuggestionsShortcutSource : MapsSuggestionsBaseSource <MapsSuggestionsMeCardObserver, MapsSuggestionsSource>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    MapsSuggestionsCanKicker *_updateForcer;
     MapsSuggestionsShortcutManager *_shortcutManager;
+    MapsSuggestionsCanKicker *_updateForcer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MapsSuggestionsSourceDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MapsSuggestionsShortcutManager *shortcutManager; // @synthesize shortcutManager=_shortcutManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
@@ -31,15 +30,14 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (void)_renameDuplicateMeCardTypes:(id)arg1;
-- (void)_treatShortcuts:(id)arg1 error:(id)arg2;
-- (void)_updateSuggestionEntries;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (id)initWithDelegate:(id)arg1 name:(id)arg2;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
+- (id)initWithShortcutManager:(id)arg1 delegate:(id)arg2 name:(id)arg3;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

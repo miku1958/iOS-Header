@@ -43,7 +43,8 @@ struct _OpaquePCSShareProtection {
     struct _PCSPublicIdentityData *_field20;
     struct _PCSIdentityData *_field21;
     struct _PCSIdentityData *_field22;
-    int _field23;
+    unsigned int _field23;
+    int _field24;
     struct {
         BOOL _field1;
         BOOL _field2;
@@ -52,8 +53,8 @@ struct _OpaquePCSShareProtection {
         BOOL _field5;
         BOOL _field6;
         BOOL _field7;
-    } _field24;
-    unsigned int _field25;
+    } _field25;
+    unsigned int _field26;
 };
 
 struct _PCSIdentityData;

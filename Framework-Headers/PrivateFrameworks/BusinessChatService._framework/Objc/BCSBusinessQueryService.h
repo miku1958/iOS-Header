@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@class NSDate, NSString;
+@protocol BCSXPCDaemonConnectionProtocol, OS_dispatch_queue;
 
 @interface BCSBusinessQueryService : NSObject
 {
-    NSXPCConnection *_connection;
     NSDate *_lastTimeoutDate;
+    id<BCSXPCDaemonConnectionProtocol> _connection;
+    NSString *_clientBundleIdentifier;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
 }
 
-@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly, copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
+@property (readonly, nonatomic) id<BCSXPCDaemonConnectionProtocol> connection; // @synthesize connection=_connection;
 @property (strong) NSDate *lastTimeoutDate; // @synthesize lastTimeoutDate=_lastTimeoutDate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 
@@ -24,11 +26,23 @@
 - (void)_deleteInMemoryCache;
 - (void)_fetchBusinessItemWithDetailsForPhoneNumber:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)businessItemForPhoneNumber:(id)arg1 isMessageable:(BOOL *)arg2 isChatSuggestVisible:(BOOL *)arg3 error:(id *)arg4;
+- (void)clearCachesForLinkItemsAssociatedWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clearCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clearExpiredCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchBusinessItemWithBizID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchBusinessItemWithDetailsForPhoneNumber:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchBusinessItemWithPhoneNumber:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchIsBusinessPhoneNumber:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchLinkItemWithHash:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchLinkItemWithURL:(id)arg1 chopURL:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchLinkItemWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSquareIconDataForBusinessItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)init;
+- (id)initWithConnection:(id)arg1 clientBundleIdentifier:(id)arg2;
+- (void)isBusinessRegisteredForURL:(id)arg1 chopURL:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)isBusinessRegisteredForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)prefetchBloomFilterAndConfigCacheWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prefetchConfigCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)warmCacheIfNecessaryForPhoneNumbers:(id)arg1;
 
 @end

@@ -25,12 +25,12 @@
     CDUnknownBlockType _completionBlock;
     CLSGeoServiceThread *_geoServiceThread;
     double _timeoutInterval;
-    double _numberOfRetries;
+    unsigned long long _numberOfRetries;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) CLSGeoServiceThread *geoServiceThread; // @synthesize geoServiceThread=_geoServiceThread;
-@property (nonatomic) double numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
+@property (nonatomic) unsigned long long numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
 @property (copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property (nonatomic, getter=isSimulatingTimeout) BOOL simulatesTimeout; // @synthesize simulatesTimeout=_simulatesTimeout;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;

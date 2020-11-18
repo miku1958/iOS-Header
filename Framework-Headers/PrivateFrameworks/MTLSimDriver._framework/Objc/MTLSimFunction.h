@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *label; // @synthesize label;
 @property (readonly) NSString *name; // @synthesize name;
+@property (readonly) unsigned long long options;
 @property (readonly) long long patchControlPointCount; // @synthesize patchControlPointCount;
 @property (readonly) unsigned long long patchType; // @synthesize patchType;
 @property (readonly) NSArray *stageInputAttributes; // @synthesize stageInputAttributes;

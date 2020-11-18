@@ -22,6 +22,7 @@
 - (void)dealloc;
 - (id)init;
 - (BOOL)isWordInUserDictionaries:(id)arg1 caseSensitive:(BOOL)arg2;
+- (id)topCorrectionForString:(id)arg1 contextBeforeToken:(id)arg2 contextSeparator:(id)arg3 shouldUseErrorModel:(BOOL)arg4 forLanguage:(id)arg5;
 
 @end
 

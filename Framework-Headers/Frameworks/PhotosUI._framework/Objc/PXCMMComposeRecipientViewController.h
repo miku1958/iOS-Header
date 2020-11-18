@@ -16,7 +16,7 @@
 #import <PhotosUICore/UITableViewDataSource-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSMutableSet, NSProgress, NSString, PXCMMAddRecipientButton, PXCMMComposeRecipientDataSource, PXCMMComposeRecipientDataSourceManager, PXCMMComposeRecipientSelectionManager, PXCMMComposeRecipientValidationManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSession, PXCMMSpecManager, PXPhotoRecipientViewController, PXUpdater, UIButton, UILabel, UITableView, UIVisualEffectView;
+@class NSMutableSet, NSProgress, NSString, PXCMMComposeRecipientDataSource, PXCMMComposeRecipientDataSourceManager, PXCMMComposeRecipientSelectionManager, PXCMMComposeRecipientValidationManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSession, PXCMMSpecManager, PXPhotoRecipientViewController, PXUpdater, UIButton, UILabel, UITableView, UIVisualEffectView;
 @protocol PXCMMActionControllerDelegate, PXCMMComposeRecipientViewControllerDelegate, PXCMMPersonSuggestion;
 
 @interface PXCMMComposeRecipientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PXPhotoRecipientViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, CNContactViewControllerDelegate, PXSettingsKeyObserver, PXDiagnosticsEnvironment>
@@ -27,7 +27,6 @@
     PXCMMSpecManager *_specManager;
     PXUpdater *_updater;
     UITableView *_composeRecipientTableView;
-    PXCMMAddRecipientButton *_addRecipientButton;
     UIVisualEffectView *_footerVisualEffectView;
     UILabel *_privacyMessageLabel;
     UIButton *_sendButton;
@@ -48,7 +47,6 @@
 @property (weak, nonatomic) id<PXCMMActionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property (strong, nonatomic) NSProgress *actionProgress; // @synthesize actionProgress=_actionProgress;
 @property (strong, nonatomic) PXPhotoRecipientViewController *addPeopleRecipientViewController; // @synthesize addPeopleRecipientViewController=_addPeopleRecipientViewController;
-@property (strong, nonatomic) PXCMMAddRecipientButton *addRecipientButton; // @synthesize addRecipientButton=_addRecipientButton;
 @property (strong, nonatomic) PXPhotoRecipientViewController *bootstrapRecipientViewController; // @synthesize bootstrapRecipientViewController=_bootstrapRecipientViewController;
 @property (strong, nonatomic) UITableView *composeRecipientTableView; // @synthesize composeRecipientTableView=_composeRecipientTableView;
 @property (readonly, copy) NSString *debugDescription;
@@ -101,11 +99,9 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

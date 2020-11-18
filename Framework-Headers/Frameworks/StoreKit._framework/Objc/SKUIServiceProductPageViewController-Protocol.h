@@ -23,6 +23,7 @@
 - (void)setAskToBuy:(NSNumber *)arg1;
 - (void)setCancelButtonTitle:(NSString *)arg1;
 - (void)setClientIdentifier:(NSString *)arg1;
+- (void)setHostBundleIdentifier:(NSString *)arg1;
 - (void)setPresentationStyle:(NSNumber *)arg1;
 - (void)setPreview:(NSNumber *)arg1;
 - (void)setProductPageStyle:(NSNumber *)arg1;
@@ -31,6 +32,7 @@
 - (void)setScriptContextDictionary:(NSDictionary *)arg1;
 - (void)setShowsRightBarButton:(NSNumber *)arg1;
 - (void)setShowsStoreButton:(NSNumber *)arg1;
+- (void)setUsageContext:(NSString *)arg1;
 - (void)setVisibleInClientWindow:(NSNumber *)arg1;
 @end
 

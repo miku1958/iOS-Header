@@ -16,19 +16,23 @@
 {
     struct _has;
     BOOL _currentLocation;
-    BOOL __encodeLegacyGloryData;
+    _INPBFileDataAttachment *_audioMessageFile;
+    _INPBURLValue *_audioMessageFileURL;
     _INPBFileDataAttachment *_file;
     _INPBURLValue *_fileURL;
     _INPBURLValue *_speechDataURL;
     unsigned long long _whichDatasource;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (strong, nonatomic) _INPBFileDataAttachment *audioMessageFile; // @synthesize audioMessageFile=_audioMessageFile;
+@property (strong, nonatomic) _INPBURLValue *audioMessageFileURL; // @synthesize audioMessageFileURL=_audioMessageFileURL;
 @property (nonatomic) BOOL currentLocation; // @synthesize currentLocation=_currentLocation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBFileDataAttachment *file; // @synthesize file=_file;
 @property (strong, nonatomic) _INPBURLValue *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, nonatomic) BOOL hasAudioMessageFile;
+@property (readonly, nonatomic) BOOL hasAudioMessageFileURL;
 @property (readonly, nonatomic) BOOL hasCurrentLocation;
 @property (readonly, nonatomic) BOOL hasFile;
 @property (readonly, nonatomic) BOOL hasFileURL;

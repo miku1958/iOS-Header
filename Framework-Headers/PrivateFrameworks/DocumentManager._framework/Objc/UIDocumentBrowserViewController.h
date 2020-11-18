@@ -15,7 +15,7 @@
 #import <DocumentManager/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <DocumentManager/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, UIColor, UIPresentationController, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
+@class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, NSURL, UIColor, UIPresentationController, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
 @protocol DOCServiceDocumentBrowserViewControllerInterface, UIDocumentBrowserViewControllerDelegate;
 
 @interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCViewServiceErrorViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIRemoteViewControllerContaining, DOCRemoteViewControllerDelegate, DOCKeyCommandResponder, DOCAppearanceCustomization, NSCoding>
@@ -23,6 +23,7 @@
     BOOL _isDisplayingRemoteViewController;
     UIView *_trackingViewsContainer;
     DOCAppearance *_appearance;
+    NSURL *_urlCurrentlyBeingImported;
     BOOL _allowsDocumentCreation;
     BOOL _allowsPickingMultipleItems;
     BOOL _shouldShowFileExtensions;
@@ -64,6 +65,7 @@
 @property (copy, nonatomic) UIColor *badgeTintColor; // @synthesize badgeTintColor=_badgeTintColor;
 @property (nonatomic) unsigned long long browserUserInterfaceStyle; // @dynamic browserUserInterfaceStyle;
 @property (strong, nonatomic) DOCConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, copy, nonatomic) NSArray *contentTypesForRecentDocuments;
 @property (nonatomic) double createButtonAspectRatio;
 @property (copy, nonatomic) UIColor *createButtonColor; // @synthesize createButtonColor=_createButtonColor;
 @property (copy, nonatomic) NSString *createButtonTitle;
@@ -124,6 +126,7 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)clearCurrentOpenInteraction;
+- (id)configurationForOpeningDocumentsWithContentTypes:(id)arg1;
 - (void)dealloc;
 - (void)didTapTryAgainInErrorViewController:(id)arg1;
 - (void)dismissAllPresentedViewControllers:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -136,6 +139,7 @@
 - (void)importDocumentAtURL:(id)arg1 mode:(unsigned long long)arg2 toCurrentBrowserLocationWithCompletion:(CDUnknownBlockType)arg3;
 - (void)importDocumentAtURL:(id)arg1 nextToDocumentAtURL:(id)arg2 mode:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
+- (id)initForOpeningContentTypes:(id)arg1;
 - (id)initForOpeningFilesWithContentTypes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;

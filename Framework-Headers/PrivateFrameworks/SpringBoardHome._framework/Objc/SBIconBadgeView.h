@@ -9,7 +9,7 @@
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardHome/SBIconAccessoryView-Protocol.h>
 
-@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBIconAccessoryImage, UIImageView;
+@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBHIconAccessoryCountedMapImageTuple, UIImageView;
 @protocol SBIconListLayout;
 
 @interface SBIconBadgeView : UIView <PTSettingsKeyObserver, SBIconAccessoryView>
@@ -17,9 +17,9 @@
     NSString *_text;
     UIImageView *_incomingTextView;
     BOOL _displayingAccessory;
-    SBIconAccessoryImage *_backgroundImage;
+    SBHIconAccessoryCountedMapImageTuple *_backgroundImageTuple;
+    SBHIconAccessoryCountedMapImageTuple *_textImageTuple;
     SBDarkeningImageView *_backgroundView;
-    SBIconAccessoryImage *_textImage;
     UIImageView *_textView;
     SBFParallaxSettings *_parallaxSettings;
     id<SBIconListLayout> _listLayout;
@@ -34,19 +34,20 @@
 
 + (id)_checkoutImageForText:(id)arg1 font:(id)arg2 highlighted:(BOOL)arg3;
 + (id)_createImageForText:(id)arg1 font:(id)arg2 highlighted:(BOOL)arg3;
-+ (struct CGPoint)_textOffset;
 + (double)_textPadding;
 + (id)backgroundImageCache;
 - (void).cxx_destruct;
 - (void)_applyParallaxSettings;
-- (id)_checkoutBackgroundImage;
+- (id)_checkoutBackgroundImageTuple;
 - (void)_clearText;
 - (void)_configureAnimatedForText:(id)arg1 highlighted:(BOOL)arg2 animator:(id)arg3;
 - (void)_crossfadeToTextImage:(id)arg1 animator:(id)arg2;
+- (void)_layOutTextImageView:(id)arg1;
 - (void)_resizeForTextImage:(id)arg1;
 - (void)_zoomInWithTextImage:(id)arg1 animator:(id)arg2;
 - (void)_zoomOutWithAnimator:(id)arg1;
 - (struct CGPoint)accessoryCenterForIconBounds:(struct CGRect)arg1;
+- (double)badgeContentScale;
 - (struct CGSize)badgeSize;
 - (void)configureAnimatedForIcon:(id)arg1 infoProvider:(id)arg2 animator:(id)arg3;
 - (void)configureForIcon:(id)arg1 infoProvider:(id)arg2;

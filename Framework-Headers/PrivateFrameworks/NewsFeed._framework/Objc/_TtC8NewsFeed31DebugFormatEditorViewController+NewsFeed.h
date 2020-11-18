@@ -13,5 +13,9 @@
 - (void)doOptionsWithSender:(id)arg1;
 - (void)doToggleSidebar;
 - (void)resetZoom;
+- (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewDidZoom:(id)arg1;
+- (id)viewForZoomingInScrollView:(id)arg1;
 @end
 

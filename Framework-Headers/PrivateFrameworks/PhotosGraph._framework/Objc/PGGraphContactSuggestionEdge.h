@@ -4,39 +4,83 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphOptimizedEdge.h>
 
 @class NSString;
 
-@interface PGGraphContactSuggestionEdge : PGGraphEdge
+@interface PGGraphContactSuggestionEdge : PGGraphOptimizedEdge
 {
+    unsigned long long _sexMatch;
+    BOOL _contactFaceprintMatch;
+    float _weight;
+    double _contactScore;
+    unsigned long long _numberOfMomentsAtHome;
+    unsigned long long _numberOfMomentsAtMentionedAddress;
+    unsigned long long _numberOfWeakBirthdayMomentsAroundBirthdayDate;
+    unsigned long long _numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
+    unsigned long long _numberOfMomentsOverlappingWithCalendarEvents;
+    unsigned long long _numberOfAppearancesInSharedAssets;
+    unsigned long long _numberOfCMMMoments;
+    double _facetimeFaceprintConfidence;
+    NSString *_relationshipsDebug;
+    double _socialGroupsConfidence;
+    NSString *_socialGroupsDebug;
+    NSString *_messageGroupsDebug;
+    double _birthdayScore;
+    double _potentialBirthdayScore;
+    double _addressScore;
+    double _mentionedAddressScore;
+    double _calendarScore;
+    double _sharedAssetScore;
+    double _sharedCMMScore;
+    double _relationshipScore;
+    double _scoreAfterMessagePenalty;
 }
 
-@property (readonly, nonatomic) BOOL contactFaceprintMatch;
-@property (readonly, nonatomic) double facetimeFaceprintConfidence;
-@property (readonly, nonatomic) NSString *messageGroupsDebug;
-@property (readonly, nonatomic) unsigned long long numberOfAppearancesInSharedAssets;
-@property (readonly, nonatomic) unsigned long long numberOfCMMMoments;
+@property (readonly, nonatomic) double addressScore; // @synthesize addressScore=_addressScore;
+@property (readonly, nonatomic) double birthdayScore; // @synthesize birthdayScore=_birthdayScore;
+@property (readonly, nonatomic) double calendarScore; // @synthesize calendarScore=_calendarScore;
+@property (readonly) double confidence;
+@property (readonly, nonatomic) BOOL contactFaceprintMatch; // @synthesize contactFaceprintMatch=_contactFaceprintMatch;
+@property (readonly, nonatomic) double contactScore; // @synthesize contactScore=_contactScore;
+@property (readonly, nonatomic) double facetimeFaceprintConfidence; // @synthesize facetimeFaceprintConfidence=_facetimeFaceprintConfidence;
+@property (readonly) BOOL isHighConfidence;
+@property (readonly, nonatomic) double mentionedAddressScore; // @synthesize mentionedAddressScore=_mentionedAddressScore;
+@property (readonly, nonatomic) NSString *messageGroupsDebug; // @synthesize messageGroupsDebug=_messageGroupsDebug;
+@property (readonly, nonatomic) unsigned long long numberOfAppearancesInSharedAssets; // @synthesize numberOfAppearancesInSharedAssets=_numberOfAppearancesInSharedAssets;
+@property (readonly, nonatomic) unsigned long long numberOfCMMMoments; // @synthesize numberOfCMMMoments=_numberOfCMMMoments;
 @property (readonly, nonatomic) unsigned long long numberOfMatchedMessageGroups;
 @property (readonly, nonatomic) unsigned long long numberOfMatchedRelationships;
-@property (readonly, nonatomic) unsigned long long numberOfMomentsAtHome;
-@property (readonly, nonatomic) unsigned long long numberOfMomentsAtMentionedAddress;
-@property (readonly, nonatomic) unsigned long long numberOfMomentsOverlappingWithCalendarEvents;
-@property (readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundBirthdayDate;
-@property (readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
-@property (readonly, nonatomic) BOOL personContactGenderMatch;
-@property (readonly, nonatomic) BOOL personContactGenderMismatch;
-@property (readonly, nonatomic) NSString *relationshipsDebug;
-@property (readonly, nonatomic) double socialGroupsConfidence;
-@property (readonly, nonatomic) NSString *socialGroupsDebug;
+@property (readonly, nonatomic) unsigned long long numberOfMomentsAtHome; // @synthesize numberOfMomentsAtHome=_numberOfMomentsAtHome;
+@property (readonly, nonatomic) unsigned long long numberOfMomentsAtMentionedAddress; // @synthesize numberOfMomentsAtMentionedAddress=_numberOfMomentsAtMentionedAddress;
+@property (readonly, nonatomic) unsigned long long numberOfMomentsOverlappingWithCalendarEvents; // @synthesize numberOfMomentsOverlappingWithCalendarEvents=_numberOfMomentsOverlappingWithCalendarEvents;
+@property (readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundBirthdayDate; // @synthesize numberOfWeakBirthdayMomentsAroundBirthdayDate=_numberOfWeakBirthdayMomentsAroundBirthdayDate;
+@property (readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate; // @synthesize numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate=_numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
+@property (readonly, nonatomic) BOOL personContactBiologicalSexMatch;
+@property (readonly, nonatomic) BOOL personContactBiologicalSexMismatch;
+@property (readonly, nonatomic) double potentialBirthdayScore; // @synthesize potentialBirthdayScore=_potentialBirthdayScore;
+@property (readonly, nonatomic) double relationshipScore; // @synthesize relationshipScore=_relationshipScore;
+@property (readonly, nonatomic) NSString *relationshipsDebug; // @synthesize relationshipsDebug=_relationshipsDebug;
+@property (readonly, nonatomic) double scoreAfterMessagePenalty; // @synthesize scoreAfterMessagePenalty=_scoreAfterMessagePenalty;
+@property (readonly, nonatomic) double sharedAssetScore; // @synthesize sharedAssetScore=_sharedAssetScore;
+@property (readonly, nonatomic) double sharedCMMScore; // @synthesize sharedCMMScore=_sharedCMMScore;
+@property (readonly, nonatomic) double socialGroupsConfidence; // @synthesize socialGroupsConfidence=_socialGroupsConfidence;
+@property (readonly, nonatomic) NSString *socialGroupsDebug; // @synthesize socialGroupsDebug=_socialGroupsDebug;
 
-- (unsigned long long)_genderMatch;
+- (void).cxx_destruct;
 - (id)_readableStringForContactSuggestionProperty:(id)arg1;
-- (id)_stringForGenderMatch:(unsigned long long)arg1;
-- (double)confidence;
-- (id)description;
+- (id)_stringForBiologicalSexMatch:(unsigned long long)arg1;
+- (unsigned short)domain;
+- (id)edgeDescription;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initFromPersonNode:(id)arg1 toContactNode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
 - (BOOL)isFilteredOut;
-- (BOOL)isHighConfidence;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
+- (void)setWeight:(float)arg1;
+- (float)weight;
 
 @end
 

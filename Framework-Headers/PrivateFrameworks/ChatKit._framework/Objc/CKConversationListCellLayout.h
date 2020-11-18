@@ -8,11 +8,14 @@
 
 @interface CKConversationListCellLayout : NSObject
 {
-    BOOL _invalid;
     BOOL _shouldShowChevron;
+    BOOL _invalid;
+    double _tableViewWidth;
     double _summaryLabelCapFrameYOrigin;
     double _trailingLayoutMarginSize;
-    struct CGRect _tableBounds;
+    double _contentViewWidth;
+    double _lastUsedDisplayScale;
+    double _cellHeight;
     struct CGRect _summaryFrame;
     struct CGRect _dateFrame;
     struct CGRect _senderFrame;
@@ -20,20 +23,26 @@
     struct CGRect _unreadFrame;
 }
 
+@property (nonatomic) double cellHeight; // @synthesize cellHeight=_cellHeight;
 @property (nonatomic) struct CGRect chevronFrame; // @synthesize chevronFrame=_chevronFrame;
+@property (nonatomic) double contentViewWidth; // @synthesize contentViewWidth=_contentViewWidth;
 @property (nonatomic) struct CGRect dateFrame; // @synthesize dateFrame=_dateFrame;
 @property (nonatomic) BOOL invalid; // @synthesize invalid=_invalid;
+@property (nonatomic) double lastUsedDisplayScale; // @synthesize lastUsedDisplayScale=_lastUsedDisplayScale;
 @property (nonatomic) struct CGRect senderFrame; // @synthesize senderFrame=_senderFrame;
 @property (nonatomic) BOOL shouldShowChevron; // @synthesize shouldShowChevron=_shouldShowChevron;
 @property (nonatomic) struct CGRect summaryFrame; // @synthesize summaryFrame=_summaryFrame;
 @property (nonatomic) double summaryLabelCapFrameYOrigin; // @synthesize summaryLabelCapFrameYOrigin=_summaryLabelCapFrameYOrigin;
-@property (nonatomic) struct CGRect tableBounds; // @synthesize tableBounds=_tableBounds;
+@property (nonatomic) double tableViewWidth; // @synthesize tableViewWidth=_tableViewWidth;
 @property (nonatomic) double trailingLayoutMarginSize; // @synthesize trailingLayoutMarginSize=_trailingLayoutMarginSize;
 @property (nonatomic) struct CGRect unreadFrame; // @synthesize unreadFrame=_unreadFrame;
 
 + (id)sharedInstance;
+- (double)cellHeightForDisplayScale:(double)arg1;
 - (id)init;
 - (void)invalidate;
+- (BOOL)isValidForContentViewWidth:(double)arg1;
+- (void)markAsValidForContentViewWidth:(double)arg1;
 
 @end
 

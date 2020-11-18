@@ -6,17 +6,24 @@
 
 #import <PassKitCore/PKMicaLayer.h>
 
-@class CALayer, NSString;
+@class CAFilter, CALayer, NSString;
 
 @interface PKPhoneGlyphLayer : PKMicaLayer
 {
+    CALayer *_QRCodeLayer;
+    CAFilter *_QRCodeColorFilter;
     CALayer *_highlightLayer;
     struct CGPoint _highlightOffscreenPosition;
     struct CGPoint _highlightOnscreenPosition;
     NSString *_phoneWiggleAnimationKey;
+    struct CGColor *_primaryColor;
+    BOOL _showQRCode;
 }
 
+@property (nonatomic) BOOL showQRCode; // @synthesize showQRCode=_showQRCode;
+
 - (void).cxx_destruct;
+- (void)_applyEffectivePrimaryColorToQRCodeAnimated:(BOOL)arg1;
 - (void)_endPhoneWiggle;
 - (void)_restartPhoneWiggleIfNecessary;
 - (void)_startPhoneWiggle;
@@ -24,7 +31,9 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1 package:(id)arg2;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
+- (void)layoutSublayers;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setPrimaryColor:(struct CGColor *)arg1 animated:(BOOL)arg2;
 
 @end
 

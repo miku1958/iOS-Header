@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (void)_deserializeCameraMetadata;
 - (void)applyCameraMetadataToAsset:(id)arg1;
-- (void)applyCameraMetadataToSpacialOverCaptureAsset:(id)arg1;
+- (void)applyCameraMetadataToSpatialOverCaptureAsset:(id)arg1;
 - (id)initWithCameraMetadataPath:(id)arg1 overCaptureMetadataPath:(id)arg2;
 
 @end

@@ -40,6 +40,7 @@
 - (void)handlePairManuallyButton:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

@@ -17,6 +17,7 @@
 @property (readonly, nonatomic, getter=isGeocoding) BOOL geocoding;
 
 + (id)_timeZoneAtLocation:(id)arg1;
++ (void)hydrateGeoMapItemLocallyFromHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_ensureMainThreadExecutionContextForBlock:(CDUnknownBlockType)arg1;
 - (void)_notifyCancel;
 - (void)_notifyError:(id)arg1;

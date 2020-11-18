@@ -10,6 +10,7 @@
 
 @interface _TtC7SwiftUI21_ViewList_IndirectMap : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *subgraph;
     MISSING_TYPE *map;
 }
 

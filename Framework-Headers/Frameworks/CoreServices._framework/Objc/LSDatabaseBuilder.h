@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)createAndSeedLocalDatabase:(BOOL *)arg1;
 - (id)initWithIOQueue:(id)arg1;
 - (void)setSeedingComplete:(BOOL)arg1;
+- (void)syncWithMI:(unordered_set_7cdfe647 *)arg1;
 
 @end
 

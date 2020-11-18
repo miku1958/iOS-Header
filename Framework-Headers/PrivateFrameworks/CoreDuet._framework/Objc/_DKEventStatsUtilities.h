@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)componentsPrunedOfLeadingBlanksFromComponents:(id)arg1;
 + (id)safeStringWithString:(id)arg1;
 + (id)safeStringsWithStrings:(id)arg1;
 

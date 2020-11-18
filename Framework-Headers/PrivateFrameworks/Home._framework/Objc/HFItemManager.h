@@ -13,10 +13,12 @@
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFItemUpdating-Protocol.h>
+#import <Home/HFLightObserver-Protocol.h>
 #import <Home/HFMediaObjectObserver-Protocol.h>
 #import <Home/HFMediaSessionObserver-Protocol.h>
 #import <Home/HFNetworkConfigurationObserver-Protocol.h>
 #import <Home/HFNetworkRouterObserver-Protocol.h>
+#import <Home/HFPersonManagerObserver-Protocol.h>
 #import <Home/HFResidentDeviceObserver-Protocol.h>
 #import <Home/HFSoftwareUpdateControllerObserver-Protocol.h>
 #import <Home/HFSoftwareUpdateObserver-Protocol.h>
@@ -30,7 +32,7 @@
 @class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFCharacteristicReadPolicy, HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFAudioControlObserver, HFNetworkConfigurationObserver, HFNetworkRouterObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFHomeKitSettingsObserver, HFSymptomFixSessionObserver, HFTemperatureUnitObserver, HFItemUpdating>
+@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFAudioControlObserver, HFNetworkConfigurationObserver, HFNetworkRouterObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFHomeKitSettingsObserver, HFPersonManagerObserver, HFSymptomFixSessionObserver, HFLightObserver, HFTemperatureUnitObserver, HFItemUpdating>
 {
     BOOL _hasRequestedFirstUpdate;
     id<HFItemManagerDelegate> _delegate;
@@ -47,6 +49,7 @@
     NSSet *_moduleItemProviderSet;
     HMHome *_lastUpdatedHome;
     NSMapTable *_childItemsByParentItem;
+    CDUnknownBlockType __displayFilter;
     NSMutableDictionary *_suppressedCharacteristicUpdatesByReason;
     NSMutableSet *_disableUpdateReasons;
     HFItemManagerBatchedDelegateAdapter *_batchedDelegateAdapterAllowingReads;
@@ -54,6 +57,7 @@
     NAFuture *_firstFullUpdateFuture;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType _displayFilter; // @synthesize _displayFilter=__displayFilter;
 @property (readonly, nonatomic) NSSet *allDisplayedItems;
 @property (readonly, nonatomic) NSSet *allItems;
 @property (strong, nonatomic) HFItemManagerBatchedDelegateAdapter *batchedDelegateAdapterAllowingReads; // @synthesize batchedDelegateAdapterAllowingReads=_batchedDelegateAdapterAllowingReads;
@@ -128,6 +132,7 @@
 - (id)_itemsToUpdateForAllowAccessWhileLockedSettingChange;
 - (id)_itemsToUpdateForHomeKitSettingsChange:(id)arg1;
 - (id)_itemsToUpdateForIncomingInvitation:(id)arg1;
+- (id)_itemsToUpdateForLightProfiles:(id)arg1;
 - (id)_itemsToUpdateForMediaObjectChange:(id)arg1;
 - (id)_itemsToUpdateForMediaProfileContainer:(id)arg1;
 - (id)_itemsToUpdateForMediaSessionChange:(id)arg1;
@@ -139,19 +144,24 @@
 - (id)_itemsToUpdateForModifiedCharacteristics:(id)arg1;
 - (id)_itemsToUpdateForModifiedCharacteristics:(id)arg1 includeSuppressedCharacteristics:(BOOL)arg2;
 - (id)_itemsToUpdateForModifiedEvents:(id)arg1;
+- (id)_itemsToUpdateForModifiedHomePersonManagerSettings:(id)arg1;
 - (id)_itemsToUpdateForModifiedMetadataForHomes:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkConfigurationProfiles:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkProtectionGroups:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkRouterProfiles:(id)arg1;
+- (id)_itemsToUpdateForModifiedPersonManagers:(id)arg1;
+- (id)_itemsToUpdateForModifiedPersons:(id)arg1;
 - (id)_itemsToUpdateForModifiedResidentDevices:(id)arg1;
 - (id)_itemsToUpdateForModifiedRooms:(id)arg1;
 - (id)_itemsToUpdateForModifiedServiceGroups:(id)arg1;
 - (id)_itemsToUpdateForModifiedServiceTypes:(id)arg1;
 - (id)_itemsToUpdateForModifiedServices:(id)arg1;
 - (id)_itemsToUpdateForModifiedSharingDevices:(id)arg1;
+- (id)_itemsToUpdateForModifiedSignificantEvents:(id)arg1;
 - (id)_itemsToUpdateForModifiedSoftwareUpdateControllers:(id)arg1;
 - (id)_itemsToUpdateForModifiedSoftwareUpdates:(id)arg1;
 - (id)_itemsToUpdateForModifiedTriggers:(id)arg1;
+- (id)_itemsToUpdateForModifiedUUIDs:(id)arg1;
 - (id)_itemsToUpdateForModifiedUsers:(id)arg1;
 - (id)_itemsToUpdateForModifiedZones:(id)arg1;
 - (id)_itemsToUpdateForOutgoingInvitation:(id)arg1;
@@ -178,7 +188,9 @@
 - (id)_sectionIdentifierForItem:(id)arg1;
 - (id)_serviceGroupItemForServiceGroup:(id)arg1 inItems:(id)arg2;
 - (id)_serviceItemsToHideInSet:(id)arg1 allServiceGroupItems:(id)arg2;
+- (void)_setDisplayFilter:(CDUnknownBlockType)arg1 recalculateVisibility:(BOOL)arg2;
 - (void)_setupDelegateNotifications;
+- (BOOL)_shouldBuildItemProvidersAndModulesForNilHome;
 - (BOOL)_shouldHideServiceItem:(id)arg1 containedInServiceGroupItem:(id)arg2;
 - (BOOL)_shouldPerformFastInitialUpdates;
 - (id)_sortedItems:(id)arg1 forSectionIdentifier:(id)arg2;
@@ -238,6 +250,8 @@
 - (id)childItemsForItem:(id)arg1;
 - (id)childItemsForItem:(id)arg1 ofClass:(Class)arg2;
 - (id)childItemsForItem:(id)arg1 ofClass:(Class)arg2 conformingToProtocol:(id)arg3;
+- (void)clipManager:(id)arg1 didRemoveSignificantEventsWithUUIDs:(id)arg2;
+- (void)clipManager:(id)arg1 didUpdateSignificantEvents:(id)arg2;
 - (void)dealloc;
 - (void)didUpdateDemoModeStateForAccessory:(id)arg1;
 - (void)disableExternalUpdatesWithReason:(id)arg1;
@@ -291,6 +305,7 @@
 - (void)home:(id)arg1 didUpdateNameForServiceGroup:(id)arg2;
 - (void)home:(id)arg1 didUpdateNameForTrigger:(id)arg2;
 - (void)home:(id)arg1 didUpdateNameForZone:(id)arg2;
+- (void)home:(id)arg1 didUpdatePersonManagerSettings:(id)arg2;
 - (void)home:(id)arg1 didUpdateReprovisionStateForAccessory:(id)arg2;
 - (void)home:(id)arg1 didUpdateRoom:(id)arg2 forAccessory:(id)arg3;
 - (void)home:(id)arg1 didUpdateStateForOutgoingInvitations:(id)arg2;
@@ -321,6 +336,7 @@
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
+- (void)lightProfile:(id)arg1 didUpdateSettings:(id)arg2;
 - (id)matchingItemForHomeKitObject:(id)arg1;
 - (void)mediaObject:(id)arg1 didUpdateMediaSession:(id)arg2;
 - (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
@@ -333,6 +349,10 @@
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (unsigned long long)numberOfSections;
 - (id)performItemUpdateRequest:(id)arg1;
+- (void)personManager:(id)arg1 didRemoveFaceCropsWithUUIDs:(id)arg2;
+- (void)personManager:(id)arg1 didRemovePersonsWithUUIDs:(id)arg2;
+- (void)personManager:(id)arg1 didUpdatePersonFaceCrops:(id)arg2;
+- (void)personManager:(id)arg1 didUpdatePersons:(id)arg2;
 - (void)profileDidUpdateAccessViolation:(id)arg1;
 - (void)profileDidUpdateAllowedHosts:(id)arg1;
 - (void)profileDidUpdateMediaSourceDisplayOrder:(id)arg1;
@@ -365,6 +385,7 @@
 - (id)updateResultsForItems:(id)arg1 senderSelector:(SEL)arg2;
 - (void)user:(id)arg1 didUpdateAssistantAccessControl:(id)arg2 forHome:(id)arg3;
 - (void)user:(id)arg1 didUpdateMediaContentProfileAccessControl:(id)arg2 forHome:(id)arg3;
+- (void)user:(id)arg1 didUpdatePersonManagerSettings:(id)arg2;
 
 @end
 

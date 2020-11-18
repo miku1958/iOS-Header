@@ -9,7 +9,7 @@
 #import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
 #import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDisplayCategory, HKDisplayType, HKHealthStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, WDProfile, WDSourceOrderController;
+@class HKAuthorizationStore, HKDisplayCategory, HKDisplayType, HKHealthStore, HKProfileStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, WDProfile, WDSourceOrderController;
 
 __attribute__((visibility("hidden")))
 @interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKSourceListDataSourceObserver>
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     HKDisplayType *_displayType;
     WDProfile *_profile;
     HKHealthStore *_healthStore;
+    HKProfileStore *_profileStore;
+    HKAuthorizationStore *_authorizationStore;
     WDSourceOrderController *_sourceOrderController;
     NSMutableSet *_dataSources;
     NSArray *_preEditSourcesOrdered;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
     HKTitledIconHeaderView *_headerView;
     NSMutableSet *_sourcesPendingToggleOff;
     NSMutableSet *_sourcesPendingToggleOn;
+    NSArray *_sectionIdentifiers;
     BOOL _shouldInsetSectionContentForDataSourceDataList;
     HKSourceListDataSource *_sourceListDataSource;
     NSArray *_loadedOrderedDataSources;
@@ -63,12 +66,16 @@ __attribute__((visibility("hidden")))
 - (void)_updateOrderedSources;
 - (void)_willDisableSource:(id)arg1;
 - (void)_willEnableSource:(id)arg1;
+- (id)createSectionIdentifiers;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisplayType:(id)arg1 displayCategory:(id)arg2 sourceOrderController:(id)arg3 profile:(id)arg4;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)sectionForSectionIdentifier:(long long)arg1;
+- (long long)sectionIdentifierForSection:(long long)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)showReadOnlyDataSourcesOnly;
 - (void)sourceListDataSourceDidUpdate:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(BOOL)arg2;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

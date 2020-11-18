@@ -13,12 +13,16 @@
     NSDictionary *_serverDict;
     ICQLink *_buttonLink;
     NSString *_buttonFormat;
+    NSString *_textFormat;
+    NSString *_linkFormat;
     NSDictionary *_linkForBundleIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *buttonFormat; // @synthesize buttonFormat=_buttonFormat;
 @property (readonly, nonatomic) ICQLink *buttonLink;
 @property (strong, nonatomic) NSDictionary *linkForBundleIdentifier; // @synthesize linkForBundleIdentifier=_linkForBundleIdentifier;
+@property (readonly, nonatomic) NSString *linkFormat; // @synthesize linkFormat=_linkFormat;
+@property (readonly, nonatomic) NSString *textFormat; // @synthesize textFormat=_textFormat;
 
 + (id)buttonSpecificationSampleForLevel:(long long)arg1;
 - (void).cxx_destruct;

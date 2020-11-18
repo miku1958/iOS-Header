@@ -8,5 +8,6 @@
 
 @protocol FLExtensionHostContextInterface <NSObject>
 - (void)extensionDidFinish;
+- (void)extensionDidFinishWithCompletionHandler:(void (^)(void))arg1;
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _lastTrackedBBox;
 }
 
+@property (readonly) BOOL isResettable;
 @property (readonly) BOOL isTracking;
 @property (readonly) NSUUID *key; // @synthesize key=_key;
 @property struct CGRect lastTrackedBBox; // @synthesize lastTrackedBBox=_lastTrackedBBox;

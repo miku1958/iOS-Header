@@ -16,6 +16,7 @@
 - (id)initWithAffineTransform:(struct CGAffineTransform)arg1;
 - (id)initWithScale:(CDStruct_912cb5d2)arg1;
 - (id)inverseTransform;
+- (BOOL)isIdentityImageTransform;
 
 @end
 

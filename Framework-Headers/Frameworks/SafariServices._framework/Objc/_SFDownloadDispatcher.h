@@ -36,6 +36,7 @@
 - (id)prepareForDownloadFromWebView:(id)arg1 request:(id)arg2 MIMEType:(id)arg3 uti:(id)arg4 userInitiatedAction:(id)arg5;
 - (void)registerResumedDownload:(id)arg1;
 - (void)setPendingDownload:(id)arg1 forWebView:(id)arg2;
+- (id)startDownloadForCurrentURLFromWebView:(id)arg1;
 - (id)startDownloadFromWebView:(id)arg1 URL:(id)arg2;
 
 @end

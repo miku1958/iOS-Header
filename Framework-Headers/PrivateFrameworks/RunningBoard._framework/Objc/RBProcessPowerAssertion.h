@@ -15,13 +15,9 @@ __attribute__((visibility("hidden")))
     RBProcess *_process;
 }
 
-@property (readonly, nonatomic) RBProcess *process; // @synthesize process=_process;
-@property (copy, nonatomic) RBProcessState *state; // @synthesize state=_state;
-
 - (void).cxx_destruct;
 - (id)_preventIdleSleepIdentifiers;
 - (int)_targetPid;
-- (id)initWithProcess:(id)arg1;
 
 @end
 

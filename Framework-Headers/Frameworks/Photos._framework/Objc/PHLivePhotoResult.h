@@ -10,20 +10,26 @@
 {
     PHCompositeMediaResult *_imageResult;
     PHCompositeMediaResult *_videoResult;
+    BOOL _isDegraded;
 }
 
 - (void).cxx_destruct;
 - (void)_mergeInfoDictionaryFromResult:(id)arg1;
 - (void)addImageResult:(id)arg1;
 - (void)addVideoResult:(id)arg1;
+- (id)allowedInfoKeys;
 - (unsigned int)cgOrientation;
 - (BOOL)containsValidData;
 - (id)exifOrientation;
 - (id)imageData;
 - (struct CGImage *)imageRef;
 - (id)imageURL;
-- (id)imageUTI;
+- (BOOL)isDegraded;
+- (BOOL)isPlaceholder;
+- (id)sanitizedInfoDictionary;
+- (void)setDegraded:(BOOL)arg1;
 - (long long)uiOrientation;
+- (id)uniformTypeIdentifier;
 - (id)videoAdjustmentData;
 - (id)videoURL;
 

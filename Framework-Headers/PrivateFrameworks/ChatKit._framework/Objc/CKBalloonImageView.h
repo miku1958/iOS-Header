@@ -12,11 +12,13 @@
 {
     BOOL _imageHidden;
     UIImage *_image;
+    UIImage *_invisibleInkEffectImage;
     NSString *_stickerAccessibilityDescription;
 }
 
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic) BOOL imageHidden; // @synthesize imageHidden=_imageHidden;
+@property (strong, nonatomic) UIImage *invisibleInkEffectImage; // @synthesize invisibleInkEffectImage=_invisibleInkEffectImage;
 @property (strong, nonatomic) NSString *stickerAccessibilityDescription; // @synthesize stickerAccessibilityDescription=_stickerAccessibilityDescription;
 
 - (void).cxx_destruct;

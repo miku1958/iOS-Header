@@ -22,11 +22,14 @@
 
 - (void).cxx_destruct;
 - (id)availableDiagnosticExtensions;
+- (void)cleanupItemsWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
 - (id)collectItemsWithIdentifier:(id)arg1 parameters:(id)arg2;
 - (id)extensionForIdentifier:(id)arg1;
 - (id)extensionManager;
 - (id)init;
 - (BOOL)isDiagnosticExtensionAvailable;
+- (void)prepareItemsWithDeferredExtensionInfo:(id)arg1;
+- (void)prepareItemsWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
 
 @end
 

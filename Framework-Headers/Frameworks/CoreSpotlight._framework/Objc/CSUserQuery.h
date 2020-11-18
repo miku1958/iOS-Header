@@ -10,18 +10,13 @@
 
 @interface CSUserQuery : CSSearchQuery
 {
-    NSArray *_filterQueries;
-    NSArray *_bundleIDs;
 }
 
-@property (copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (readonly, getter=isCancelled) BOOL cancelled; // @dynamic cancelled;
-@property (copy) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
+@property (copy) NSArray *filterQueries; // @dynamic filterQueries;
 @property (readonly) unsigned long long foundItemCount; // @dynamic foundItemCount;
-@property (readonly) NSString *keyboardLanguage;
-@property (copy) NSArray *protectionClasses; // @dynamic protectionClasses;
+@property (readonly) NSString *keyboardLanguage; // @dynamic keyboardLanguage;
 
-- (void).cxx_destruct;
 - (void)cancel;
 - (id)initWithQueryString:(id)arg1 context:(id)arg2;
 - (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 attributes:(id)arg3;

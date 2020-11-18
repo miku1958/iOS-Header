@@ -42,6 +42,7 @@
 - (void)_presentApplicationSceneEntity:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_prewarmCamera;
 - (void)_reallyActivateAppSceneWithEntity:(id)arg1 interactive:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (BOOL)handleEvent:(id)arg1;
 - (BOOL)handleTransitionRequest:(id)arg1;

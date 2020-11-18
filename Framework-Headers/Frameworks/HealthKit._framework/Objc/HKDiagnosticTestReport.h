@@ -10,11 +10,11 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKConcept, HKDiagnosticTestReportType, HKMedicalCoding, HKMedicalDate, NSArray, NSLocale, NSString, NSUUID;
+@class HKConcept, HKDiagnosticTestReportType, HKMedicalCoding, HKMedicalCodingCollection, HKMedicalDate, NSArray, NSLocale, NSString, NSUUID;
 
 @interface HKDiagnosticTestReport : HKMedicalRecord <HKConceptIndexable, NSSecureCoding, NSCopying>
 {
-    NSArray *_diagnosticTestCodings;
+    HKMedicalCodingCollection *_diagnosticTestCodingCollection;
     NSString *_panelName;
     NSArray *_results;
     HKMedicalDate *_effectiveStartDate;
@@ -30,7 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) HKConcept *diagnosticTest;
-@property (readonly, copy) NSArray *diagnosticTestCodings;
+@property (readonly, copy) HKMedicalCodingCollection *diagnosticTestCodingCollection;
 @property (readonly, copy) HKDiagnosticTestReportType *diagnosticTestReportType;
 @property (readonly, copy) HKMedicalDate *effectiveEndDate;
 @property (readonly, copy) HKMedicalDate *effectiveStartDate;
@@ -44,17 +44,17 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newDiagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodings:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19 config:(CDUnknownBlockType)arg20;
++ (id)_newDiagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodingCollection:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19 config:(CDUnknownBlockType)arg20;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)defaultDisplayString;
-+ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 diagnosticTestCodings:(id)arg12 panelName:(id)arg13 results:(id)arg14 effectiveStartDate:(id)arg15 statusCoding:(id)arg16 effectiveEndDate:(id)arg17 issueDate:(id)arg18;
-+ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodings:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19;
++ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 diagnosticTestCodingCollection:(id)arg12 panelName:(id)arg13 results:(id)arg14 effectiveStartDate:(id)arg15 statusCoding:(id)arg16 effectiveEndDate:(id)arg17 issueDate:(id)arg18;
++ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodingCollection:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19;
 + (id)indexableConceptKeyPaths;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setDiagnosticTest:(id)arg1;
-- (void)_setDiagnosticTestCodings:(id)arg1;
+- (void)_setDiagnosticTestCodingCollection:(id)arg1;
 - (void)_setEffectiveEndDate:(id)arg1;
 - (void)_setEffectiveStartDate:(id)arg1;
 - (void)_setIssueDate:(id)arg1;
@@ -62,19 +62,16 @@
 - (void)_setResults:(id)arg1;
 - (void)_setStatus:(id)arg1;
 - (void)_setStatusCoding:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)diagnosticTestCodingsCollection;
-- (id)diagnosticTestCodingsContext;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
 - (id)statusCodingCollection;
-- (id)statusCodingContext;
 
 @end
 

@@ -11,6 +11,7 @@
 @interface BluetoothDevice : NSObject
 {
     NSString *_name;
+    NSString *_productName;
     NSString *_address;
     struct BTDeviceImpl *_device;
     unsigned int _connectingServiceMask;
@@ -20,6 +21,7 @@
 - (void)_clearName;
 - (BOOL)_isNameCached;
 - (void)acceptSSP:(long long)arg1;
+- (id)accessoryInfo;
 - (int)accessorySettingFeatureBitMask;
 - (id)aclUID;
 - (id)address;
@@ -43,10 +45,13 @@
 - (unsigned int)doubleTapCapability;
 - (void)endVoiceCommand;
 - (BOOL)featureCapability:(int)arg1;
+- (BOOL)getAACPCapabilityBit:(int)arg1;
+- (id)getAACPCapabilityBits;
 - (int)getBehaviorForHIDDevice;
 - (unsigned int)getConnectingServiceMask;
 - (int)getLowSecurityStatus;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
+- (unsigned char)getSpatialAudioPlatformSupport;
 - (BOOL)inEarDetectEnabled;
 - (BOOL)inEarStatusPrimary:(int *)arg1 secondary:(int *)arg2;
 - (id)initWithDevice:(struct BTDeviceImpl *)arg1 address:(id)arg2;
@@ -58,13 +63,14 @@
 - (unsigned int)listeningMode;
 - (unsigned int)listeningModeConfigs;
 - (BOOL)magicPaired;
-- (BOOL)magicPairedDeviceNameUpdated;
 - (unsigned int)majorClass;
 - (unsigned int)micMode;
 - (unsigned int)minorClass;
 - (id)name;
 - (BOOL)paired;
+- (BOOL)pairedDeviceNameUpdated;
 - (unsigned int)productId;
+- (id)productName;
 - (id)scoUID;
 - (BOOL)setClickHoldMode:(int)arg1 rightMode:(int)arg2;
 - (void)setConnectingServicemask:(unsigned int)arg1;
@@ -79,10 +85,12 @@
 - (void)setPIN:(id)arg1;
 - (void)setServiceSetting:(unsigned int)arg1 key:(id)arg2 value:(id)arg3;
 - (BOOL)setSingleClickMode:(int)arg1;
+- (BOOL)setSmartRouteMode:(unsigned char)arg1;
 - (void)setSyncGroup:(int)arg1 enabled:(BOOL)arg2;
 - (void)setSyncSettings:(CDStruct_df7f102b)arg1;
 - (BOOL)setUserName:(id)arg1;
 - (int)singleClickMode;
+- (unsigned char)smartRouteMode;
 - (void)startVoiceCommand;
 - (BOOL)supportsBatteryLevel;
 - (BOOL)supportsHS;

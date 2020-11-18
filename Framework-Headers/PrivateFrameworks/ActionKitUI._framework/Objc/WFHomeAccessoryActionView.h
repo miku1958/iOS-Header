@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowUI/WFActionCustomView.h>
+#import <WorkflowEditor/WFActionCustomView.h>
 
 #import <ActionKitUI/WFActionEventObserver-Protocol.h>
 

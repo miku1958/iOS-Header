@@ -41,18 +41,7 @@
         unsigned int read_mapsId:1;
         unsigned int read_placeCacheKey:1;
         unsigned int read_requestData:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_components:1;
-        unsigned int wrote_createdTime:1;
-        unsigned int wrote_mapsId:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeCacheKey:1;
-        unsigned int wrote_preferredMuid:1;
-        unsigned int wrote_requestData:1;
-        unsigned int wrote_updateVersion:1;
-        unsigned int wrote_referenceFrame:1;
-        unsigned int wrote_resultProviderId:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -88,14 +77,9 @@
 - (void).cxx_destruct;
 - (int)StringAsReferenceFrame:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
-- (void)_addNoFlagsComponent:(id)arg1;
 - (id)_cleanedPhoneNumberForPhoneNumberRepresentation:(id)arg1;
 - (id)_entityName;
 - (BOOL)_isKey:(id)arg1 subsetOf:(id)arg2;
-- (void)_readComponents;
-- (void)_readMapsId;
-- (void)_readPlaceCacheKey;
-- (void)_readRequestData;
 - (void)_removeETAComponents;
 - (void)addComponent:(id)arg1;
 - (id)bestName;
@@ -130,14 +114,17 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isCacheable;
 - (BOOL)isDisputed;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isStandAloneBrand;
+- (id)jsonRepresentation;
 - (BOOL)meetsManifestVersioningForServiceVersion:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minTTL;
-- (id)pdPlaceCacheKey;
+- (id)pdPlaceCacheKeyForRequest:(id)arg1;
 - (BOOL)phoneNumberOptsOutOfAds:(id)arg1;
 - (id)phoneNumbers;
 - (int)placeDisplayType;
@@ -147,6 +134,7 @@
 - (id)secondaryName;
 - (id)secondarySpokenName;
 - (void)setFirstSeenTimestamp:(double)arg1;
+- (BOOL)shouldCacheByIDForRequest:(id)arg1;
 - (id)spokenNameForLocale:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (BOOL)statusCodeIsValid;

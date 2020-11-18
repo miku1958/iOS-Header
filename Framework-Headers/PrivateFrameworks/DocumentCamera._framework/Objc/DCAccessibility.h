@@ -7,18 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <DocumentCamera/DCAccessibilityExtras-Protocol.h>
-#import <DocumentCamera/DCAnalyticsReporterAccessibilityDelegate-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface DCAccessibility : NSObject <DCAccessibilityExtras, DCAnalyticsReporterAccessibilityDelegate>
+@interface DCAccessibility : NSObject <DCAccessibilityExtras>
 {
 }
 
 + (id)sharedInstance;
 - (BOOL)needsAccessibilityElements;
 - (void)postAnnouncement:(id)arg1 withSender:(id)arg2 priority:(long long)arg3;
-- (BOOL)shouldPerformLoggingForSwitchControl;
-- (BOOL)shouldPerformLoggingForVoiceOver;
 
 @end
 

@@ -8,19 +8,23 @@
 
 #import <ChatKit/CKDetailsCell-Protocol.h>
 
-@class NSString, UILabel;
+@class CKStandardButton, NSString, UILabel, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface CKDetailsLocationShareCell : CKDetailsCell <CKDetailsCell>
 {
     BOOL _showOfferTimeRemaining;
+    UIMenu *_menu;
     double _offerTimeRemaining;
+    CKStandardButton *_button;
     UILabel *_timeRemainingLabel;
 }
 
+@property (strong, nonatomic) CKStandardButton *button; // @synthesize button=_button;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 @property (nonatomic) double offerTimeRemaining; // @synthesize offerTimeRemaining=_offerTimeRemaining;
 @property (nonatomic) BOOL showOfferTimeRemaining; // @synthesize showOfferTimeRemaining=_showOfferTimeRemaining;
 @property (readonly) Class superclass;

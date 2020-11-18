@@ -18,13 +18,13 @@
 }
 
 - (BOOL)_isPlatterPreviewIntersectingFloatingApplication;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (struct CGRect)containerViewBounds;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleGestureEvent:(id)arg1;
+- (id)handleMainTransitionEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 floatingSwitcherVisible:(BOOL)arg2 floatingConfiguration:(long long)arg3 interfaceOrientation:(long long)arg4;
-- (id)layoutSettings;
-- (long long)layoutUpdateMode;
 - (double)scaleForIndex:(unsigned long long)arg1;
 
 @end

@@ -10,28 +10,27 @@
 
 @interface TSTStrokeLayerStack : TSTStrokeLayerAbstractStack
 {
+    BOOL _isDefaultsOnly;
     TSTStrokeLayer *_defaultStrokeLayer;
     TSTStrokeLayer *_customStrokeLayer;
     TSTMutableStrokeLayer *_clearedStrokeLayer;
     TSTMutableStrokeLayer *_dynamicStrokeLayer;
     TSTMutableStrokeLayer *_spillStrokeLayer;
-    long long _stackKind;
-    long long _type;
 }
 
 @property (strong, nonatomic) TSTMutableStrokeLayer *clearedStrokeLayer; // @synthesize clearedStrokeLayer=_clearedStrokeLayer;
 @property (strong, nonatomic) TSTStrokeLayer *customStrokeLayer; // @synthesize customStrokeLayer=_customStrokeLayer;
 @property (strong, nonatomic) TSTStrokeLayer *defaultStrokeLayer; // @synthesize defaultStrokeLayer=_defaultStrokeLayer;
 @property (strong, nonatomic) TSTMutableStrokeLayer *dynamicStrokeLayer; // @synthesize dynamicStrokeLayer=_dynamicStrokeLayer;
+@property (readonly, nonatomic) BOOL isDefaultsOnly; // @synthesize isDefaultsOnly=_isDefaultsOnly;
+@property (readonly, nonatomic) BOOL isEligibleForDefaultsOnlyReplacement;
 @property (strong, nonatomic) TSTMutableStrokeLayer *spillStrokeLayer; // @synthesize spillStrokeLayer=_spillStrokeLayer;
-@property (nonatomic) long long stackKind; // @synthesize stackKind=_stackKind;
-@property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)strokeLayerStackWithStackKind:(long long)arg1;
++ (id)defaultsOnlyStrokeLayerStack;
++ (id)strokeLayerStack;
 - (void).cxx_destruct;
 - (unsigned long long)count;
 - (BOOL)hasSpillStrokeInRange:(struct TSTSimpleRange)arg1;
-- (id)initWithStackKind:(long long)arg1;
 - (void)insertClearedStrokeAtRange:(struct TSTSimpleRange)arg1;
 - (void)insertDynamicStroke:(id)arg1 strokeOrder:(int)arg2 atRange:(struct TSTSimpleRange)arg3;
 - (void)insertSpillStroke:(id)arg1 atRange:(struct TSTSimpleRange)arg2;
@@ -44,7 +43,8 @@
 - (id)portalledStrokeLayer;
 - (BOOL)replaceCustomStrokeLayerWith:(id)arg1;
 - (BOOL)replaceDefaultStrokeLayerWith:(id)arg1;
-- (BOOL)replaceDynamicStrokeLayerWith:(id)arg1;
+- (id)replacementWithDefaults;
+- (void)verifyWithExpectedDefaultStrokeLayer:(id)arg1;
 
 @end
 

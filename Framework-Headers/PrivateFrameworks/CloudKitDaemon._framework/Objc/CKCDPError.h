@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_auxiliaryUserInfos;
     int _code;
     NSString *_message;
+    int _targetPartition;
     struct {
         unsigned int auxiliaryCode:1;
         unsigned int code:1;
+        unsigned int targetPartition:1;
     } _has;
 }
 
@@ -32,7 +34,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAuxiliaryDomain;
 @property (nonatomic) BOOL hasCode;
 @property (readonly, nonatomic) BOOL hasMessage;
+@property (nonatomic) BOOL hasTargetPartition;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
+@property (nonatomic) int targetPartition; // @synthesize targetPartition=_targetPartition;
 
 + (Class)auxiliaryUserInfoType;
 - (void).cxx_destruct;

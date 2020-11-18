@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) int travelDirection;
 
-+ (double)estimatedWidthForRoad:(CDStruct_c8b5ad3f *)arg1;
++ (double)estimatedWidthForRoad:(CDStruct_4da79865 *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)findRoadsFrom:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;

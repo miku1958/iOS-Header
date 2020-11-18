@@ -24,7 +24,6 @@
 @property (readonly, nonatomic) NSNumber *mets;
 @property (readonly, nonatomic) NSNumber *natalies;
 @property (readonly, nonatomic) long long recordId;
-@property (readonly, nonatomic) long long session;
 @property (readonly, nonatomic) NSUUID *sourceId;
 @property (readonly, nonatomic) NSDate *startDate;
 

@@ -14,11 +14,20 @@
 + (id)checkoutFragment;
 + (id)defaultPlanePosition;
 + (BOOL)forceDisableRayTracedAmbientOcclusion;
++ (BOOL)forceShowAnimationScrubber;
++ (float)objectFitToScreenPercentage;
++ (id)overrideCameraStateSerializedString;
 + (id)preferencesValueforKey:(struct __CFString *)arg1 domain:(struct __CFString *)arg2;
++ (float)sceneIBLARIntensity;
++ (void)setPreferencesValueForKey:(struct __CFString *)arg1 value:(const struct __CFString *)arg2;
++ (BOOL)triggerAffordanceShouldReshowAfterArReset;
++ (double)triggerAffordanceShowDuration;
 + (BOOL)wants2DOverlayControlsHidden;
 + (BOOL)wantsAnimationDisabled;
++ (BOOL)wantsDebugActionsButton;
 + (BOOL)wantsDebugPhysicsEnabled;
 + (BOOL)wantsDebugVisualizationEnabled;
++ (BOOL)wantsObjectFitToScreen;
 + (BOOL)wantsObjectPlacedWithoutPlane;
 + (BOOL)wantsOpenInObjectMode;
 + (BOOL)wantsParentToCameraInARAndEnableProbes;
@@ -27,6 +36,8 @@
 + (BOOL)wantsShowLastPlacementResultTypeStatus;
 + (BOOL)wantsStatisticsShown;
 + (BOOL)wantsStatusBarHidden;
++ (BOOL)wantsStatusPillHidden;
++ (BOOL)wantsTTRButton;
 + (BOOL)wantsTrackedRaycastStatus;
 
 @end

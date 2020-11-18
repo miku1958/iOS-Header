@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     BOOL _onlyFetchPCSInfo;
     NSArray *_recordZones;
     CDUnknownBlockType _recordZoneFetchedBlock;
+    CDUnknownBlockType _errorFetchingAllRecordZonesBlock;
     NSArray *_zoneIDs;
     NSMutableDictionary *_zoneIDByRequestID;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType errorFetchingAllRecordZonesBlock; // @synthesize errorFetchingAllRecordZonesBlock=_errorFetchingAllRecordZonesBlock;
 @property (nonatomic) BOOL onlyFetchPCSInfo; // @synthesize onlyFetchPCSInfo=_onlyFetchPCSInfo;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneFetchedBlock; // @synthesize recordZoneFetchedBlock=_recordZoneFetchedBlock;
 @property (readonly, nonatomic) NSArray *recordZones; // @synthesize recordZones=_recordZones;
@@ -27,8 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithRecordZoneIDs:(id)arg1;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 recordZoneIDs:(id)arg2;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;

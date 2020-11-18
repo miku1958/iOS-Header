@@ -47,6 +47,7 @@
 - (void).cxx_destruct;
 - (void)_addBackgroundViewWeightingAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addHeaderContentTransformAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderSensorStatusViewAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addLeadingStatusBarAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addModuleAlphaAnimationsToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addModuleScaleAnimationsToBatch:(id)arg1 transitionState:(id)arg2;
@@ -55,9 +56,12 @@
 - (void)_addScrollViewContentOffsetAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addStatusBarAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addStatusBarStateAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (double)_additionalHeaderHeight;
 - (struct CGAffineTransform)_compactStatusBar:(id)arg1 transformForTransitionState:(id)arg2;
 - (double)_delayForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect)arg2;
 - (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentEdgeInsets:(struct UIEdgeInsets)arg3 orientation:(long long)arg4;
+- (double)_effectiveHeaderViewHeight;
+- (double)_effectiveTransitionHeight;
 - (struct CGRect)_headerViewFrameForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentInset:(struct UIEdgeInsets)arg3 contentEdgeInsets:(struct UIEdgeInsets)arg4 orientation:(long long)arg5;
 - (struct CGAffineTransform)_headerViewTransformForTransitionState:(id)arg1;
 - (double)_leadingStatusBarAlphaForTransitionState:(id)arg1;

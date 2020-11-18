@@ -24,7 +24,7 @@
 #import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIWebDoubleTapDelegate-Protocol.h>
 
-@class CALayer, DOMElement, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
+@class CALayer, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, PKScribbleInteraction, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, UIWebTextPlaceholder, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, UIWebDraggingDelegate;
 
 @interface UIWebDocumentView : UIWebTiledView <DDDetectionControllerInteractionDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIPreviewItemDelegate, _UIRotatingAlertControllerDelegate, UITextAutoscrolling, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer, UITextInputMultiDocument, _UIWebDoubleTapDelegate, UIWebFileUploadPanelDelegate, WebEditingDelegate, WebFrameLoadDelegate>
@@ -70,6 +70,7 @@
         BOOL isCancelled;
         BOOL isOnWebThread;
         BOOL isDisplayingHighlight;
+        BOOL isWriting;
         BOOL attemptedClick;
         struct CGPoint lastPanTranslation;
         DOMNode *element;
@@ -145,8 +146,8 @@
     struct UIEdgeInsets _caretInsets;
     UIWebFileUploadPanel *_fileUploadPanel;
     int _selectionAffinity;
-    DOMElement *_dictationResultPlaceholder;
-    id _dictationResultPlaceholderRemovalObserver;
+    UIWebTextPlaceholder *_textPlaceholder;
+    id _textPlaceholderRemovalObserver;
     DOMRange *_rangeToRestoreAfterDictation;
     UIWebPlaybackTargetPicker *_playbackTargetPicker;
     struct CGRect _currentDragCaretRect;
@@ -155,6 +156,7 @@
     BOOL _isPerformingDrop;
     BOOL _didEndDropSession;
     BOOL _didCreateDropPreview;
+    PKScribbleInteraction *_scribbleInteraction;
     struct _UIWebViewportConfiguration _defaultViewportConfigurations[5];
     _UITextServiceSession *_definitionSession;
     _UITextServiceSession *_learnSession;
@@ -183,6 +185,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @dynamic acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) BOOL alwaysConstrainsScale;
@@ -247,6 +250,7 @@
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (nonatomic) BOOL mediaPlaybackAllowsAirPlay;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (strong, nonatomic) DOMRange *rangeToRestoreAfterDictation; // @synthesize rangeToRestoreAfterDictation=_rangeToRestoreAfterDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (readonly, nonatomic) unsigned long long renderTreeSize; // @synthesize renderTreeSize=_renderTreeSize;
@@ -324,7 +328,6 @@
 - (BOOL)_dataDetectionIsActivated;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
 - (void)_define:(id)arg1;
-- (BOOL)_dictationPlaceholderHasBeenRemoved;
 - (void)_didChangeDragCaretRectFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2;
 - (void)_didDismissElementSheet;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
@@ -342,8 +345,9 @@
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_editableSelectionLayoutChangedByScrolling:(BOOL)arg1;
 - (void)_endPrintMode;
-- (void)_finishedUsingDictationPlaceholder;
+- (void)_finishedUsingTextPlaceholder;
 - (void)_flattenAndSwapContentLayersInRect:(struct CGRect)arg1;
+- (void)_focusAndAssistFormNode:(id)arg1;
 - (id)_focusedOrMainFrame;
 - (id)_groupName;
 - (void)_handleDoubleTapAtLocation:(struct CGPoint)arg1;
@@ -353,6 +357,7 @@
 - (void)_highlightLongPressRecognized:(id)arg1;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (BOOL)_insertFragmentWithoutPreservingStyle:(id)arg1 atDestination:(id)arg2 smartReplace:(BOOL)arg3 collapseToEnd:(BOOL)arg4;
+- (id)_insertTextPlaceholderWithSize:(struct CGSize)arg1;
 - (void)_inspectorDidStartSearchingForNode:(id)arg1;
 - (void)_inspectorDidStopSearchingForNode:(id)arg1;
 - (BOOL)_interactionShouldBeginFromPreviewItemController:(id)arg1 forPosition:(struct CGPoint)arg2;
@@ -391,6 +396,7 @@
 - (void)_removeDefinitionController:(BOOL)arg1;
 - (void)_removeShareController:(BOOL)arg1;
 - (void)_removeShortcutController:(BOOL)arg1;
+- (void)_removeTextPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
 - (void)_renderUnbufferedInContext:(struct CGContext *)arg1;
 - (void)_resetForNewPage;
 - (void)_resetFormDataForFrame:(id)arg1;
@@ -404,7 +410,13 @@
 - (void)_restoreViewportSettingsWithSize:(struct CGSize)arg1;
 - (void)_runLoadBlock:(CDUnknownBlockType)arg1;
 - (void)_saveStateToHistoryItem:(id)arg1;
+- (void)_scribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_scribbleInteraction:(id)arg1 willBeginWritingInElement:(id)arg2;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
+- (void)_selectPositionAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)_selectionClipRect;
 - (void)_selectionLayoutChangedByScrolling:(BOOL)arg1;
 - (void)_sendMouseMoveAndAttemptClick:(id)arg1;
@@ -429,9 +441,11 @@
 - (void)_showPendingContentLayers;
 - (void)_showTextStyleOptions:(id)arg1;
 - (void)_singleTapRecognized:(id)arg1;
+- (struct CGSize)_sizeForDictationResultPlaceholder;
 - (id)_supportedPasteboardTypesForCurrentSelection;
 - (void)_syntheticMouseEventNotHandledAtLocation:(struct CGPoint)arg1;
 - (id)_targetURL;
+- (BOOL)_textPlaceholderHasBeenRemoved;
 - (id)_textSelectingContainer;
 - (void)_transitionDragPreviewToImageIfNecessary:(id)arg1;
 - (void)_transliterateChinese:(id)arg1;
@@ -613,6 +627,7 @@
 - (float)initialScale;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)insertText:(id)arg1;
+- (id)insertTextPlaceholderWithSize:(struct CGSize)arg1;
 - (void)installGestureRecognizers;
 - (id)interactionDelegate;
 - (id)interactionElement;
@@ -630,7 +645,6 @@
 - (BOOL)isPreviewing;
 - (BOOL)isShowingFullScreenPlugInUI;
 - (BOOL)isStandaloneEditableView;
-- (BOOL)isUnperturbedDictationResultMarker:(id)arg1;
 - (BOOL)isWidgetEditingView;
 - (BOOL)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(BOOL)arg3;
 - (BOOL)keyboardInput:(id)arg1 shouldReplaceTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
@@ -657,7 +671,6 @@
 - (BOOL)needsScrollNotifications;
 - (id)newMouseEvent:(int)arg1;
 - (struct CGImage *)newSnapshotWithRect:(struct CGRect)arg1;
-- (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (unsigned long long)offsetInMarkedTextForSelection:(id)arg1;
 - (void)paste:(id)arg1;
@@ -683,6 +696,7 @@
 - (void)redrawScaledDocument;
 - (void)releasePrintMode;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
+- (void)removeTextPlaceholder:(id)arg1;
 - (void)replace:(id)arg1;
 - (void)replaceCurrentWordWithText:(id)arg1;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
@@ -691,6 +705,7 @@
 - (BOOL)requiresKeyEvents;
 - (void)resetCurrentDragInformation;
 - (void)resetInteraction;
+- (void)resetSelectionAssistant;
 - (void)resetTilingAfterLoadComplete;
 - (BOOL)resignFirstResponder;
 - (void)revealedSelectionByScrollingWebFrame:(id)arg1;
@@ -777,7 +792,9 @@
 - (void)setUpdatesScrollView:(BOOL)arg1;
 - (void)setUserStyleSheet:(id)arg1;
 - (void)setViewportSize:(struct CGSize)arg1 forDocumentTypes:(int)arg2;
+- (BOOL)shouldRevealCurrentSelectionAfterInsertion;
 - (BOOL)shouldSelectionAssistantReceiveDoubleTapAtPoint:(struct CGPoint)arg1 forScale:(double)arg2;
+- (BOOL)shouldSuppressPasswordEcho;
 - (void)showPlaybackTargetPicker:(BOOL)arg1 fromRect:(struct CGRect)arg2;
 - (void)smartExtendRangedSelection:(int)arg1;
 - (id)standaloneEditingElement;

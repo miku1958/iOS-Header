@@ -41,7 +41,7 @@
 @property (strong, nonatomic) NSString *currentPath; // @synthesize currentPath;
 @property (strong, nonatomic) NSMutableString *currentText; // @synthesize currentText;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MWFeedParserDelegate> delegate; // @synthesize delegate;
+@property (weak, nonatomic) id<MWFeedParserDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=didFail) BOOL failed; // @synthesize failed;
 @property (nonatomic) int feedParseType; // @synthesize feedParseType;

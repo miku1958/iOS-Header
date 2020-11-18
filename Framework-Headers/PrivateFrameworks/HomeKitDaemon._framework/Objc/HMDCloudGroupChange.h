@@ -27,6 +27,7 @@
 @property (readonly, weak, nonatomic) HMDCloudGroup *cloudGroup; // @synthesize cloudGroup=_cloudGroup;
 @property (nonatomic) BOOL controllerIdentifierChanged; // @synthesize controllerIdentifierChanged=_controllerIdentifierChanged;
 @property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
+@property (readonly) BOOL doRecordsExistInCache;
 @property (nonatomic) BOOL encryptionFailed; // @synthesize encryptionFailed=_encryptionFailed;
 @property (readonly, nonatomic) BOOL hasValidChanges;
 @property (readonly, nonatomic) NSArray *objectChanges;

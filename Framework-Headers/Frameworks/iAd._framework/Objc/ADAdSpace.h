@@ -182,6 +182,7 @@
 - (void)newsTransparencyViewControllerDidLinkOut:(id)arg1;
 - (void)newsTransparencyViewControllerDidLoad:(id)arg1;
 - (void)newsTransparencyViewControllerDidRenderView:(id)arg1;
+- (void)openURL:(id)arg1;
 - (void)openURL:(id)arg1 fromFrame:(id)arg2 tapLocation:(id)arg3;
 - (void)presentActionViewController:(id)arg1;
 - (void)proceedWithClosing:(BOOL)arg1;

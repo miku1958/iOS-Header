@@ -11,7 +11,7 @@
 
 @protocol _INSiriAuthorizationManagerExport <NSObject, JSExport>
 + (BOOL)_isSiriAuthorizationRestricted;
-+ (void)_requestSiriAuthorization:(void (^)(long long))arg1 auditToken:(CDStruct_6ad76789)arg2;
++ (void)_requestSiriAuthorization:(void (^)(long long))arg1 auditToken:(CDStruct_4c969caf)arg2;
 + (long long)_siriAuthorizationStatusForAppID:(NSString *)arg1;
 - (id)init;
 @end

@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKFetchShareMetadataOperationCallbacks-Protocol.h>
 
-@interface CKFetchShareMetadataOperation : CKOperation
+@class CKFetchShareMetadataOperationInfo, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchShareMetadataOperationCallbacks;
+
+@interface CKFetchShareMetadataOperation : CKOperation <CKFetchShareMetadataOperationCallbacks>
 {
     BOOL _shouldFetchRootRecord;
     CDUnknownBlockType _perShareMetadataBlock;
@@ -20,8 +23,10 @@
     NSDictionary *_shareInvitationTokensByShareURL;
 }
 
+@property (readonly, nonatomic) id<CKFetchShareMetadataOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableDictionary *errorsByURL; // @synthesize errorsByURL=_errorsByURL;
 @property (copy, nonatomic) CDUnknownBlockType fetchShareMetadataCompletionBlock; // @synthesize fetchShareMetadataCompletionBlock=_fetchShareMetadataCompletionBlock;
+@property (readonly, nonatomic) CKFetchShareMetadataOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property (copy, nonatomic) CDUnknownBlockType perShareMetadataBlock; // @synthesize perShareMetadataBlock=_perShareMetadataBlock;
 @property (copy, nonatomic) NSArray *rootRecordDesiredKeys; // @synthesize rootRecordDesiredKeys=_rootRecordDesiredKeys;
@@ -29,14 +34,15 @@
 @property (copy, nonatomic) NSArray *shareURLs; // @synthesize shareURLs=_shareURLs;
 @property (nonatomic) BOOL shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (BOOL)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleShareMetadataFetchForURL:(id)arg1 shareMetadata:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithShareURLs:(id)arg1;

@@ -18,6 +18,7 @@
 @property (strong) EKStructuredLocation *location; // @synthesize location=_location;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

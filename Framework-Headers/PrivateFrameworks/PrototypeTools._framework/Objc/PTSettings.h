@@ -49,7 +49,9 @@
 - (id)_archiveValueForKeyPath:(id)arg1;
 - (id)_archiveValueForLeafKey:(id)arg1;
 - (id)_createChildForKey:(id)arg1;
+- (void)_createChildren;
 - (void)_createChildrenAndOutlets;
+- (void)_createOutlets;
 - (id)_ensureChildForKey:(id)arg1;
 - (void)_enumerateChildrenWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateOutletsWithBlock:(CDUnknownBlockType)arg1;
@@ -71,6 +73,7 @@
 - (void)_startOrStopObservingPropertiesAndChildren;
 - (void)_stopObservingChildren;
 - (void)_stopObservingProperties;
+- (void)_validateChildren;
 - (void)addKeyObserver:(id)arg1;
 - (void)addKeyPathObserver:(id)arg1;
 - (void)applyArchiveValue:(id)arg1 forKey:(id)arg2;
@@ -78,6 +81,7 @@
 - (id)archiveDictionary;
 - (id)archiveValueForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)createChildren;
 - (void)dealloc;
 - (id)drillDownSummary;
 - (id)init;
@@ -91,6 +95,7 @@
 - (void)restoreFromArchiveDictionary:(id)arg1;
 - (void)setDefaultValues;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
+- (BOOL)suppressesIntrospectionOnCustomerInstalls;
 
 @end
 

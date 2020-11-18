@@ -25,8 +25,10 @@
 - (void)_notifyNano;
 - (unsigned long long)addCity:(id)arg1;
 - (void)addDefaultCitiesIfNeeded;
+- (id)allCities;
 - (BOOL)canAddCity;
 - (BOOL)checkIfCitiesModified;
+- (id)citiesMatchingIdentifiers:(id)arg1;
 - (id)cityWithIdUrl:(id)arg1;
 - (id)fixUpCityProperties:(id)arg1;
 - (id)initWithPreferences:(id)arg1;

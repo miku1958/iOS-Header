@@ -30,6 +30,7 @@
 @property (readonly, copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (readonly, copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag=_externalModificationTag;
 @property (readonly, copy, nonatomic) NSData *externalRepresentation; // @synthesize externalRepresentation=_externalRepresentation;
+@property (readonly, copy, nonatomic) NSString *externalURI;
 @property (readonly, copy, nonatomic) NSString *externalUUID; // @synthesize externalUUID=_externalUUID;
 @property (readonly, nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -57,7 +58,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGroup:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 creationDate:(id)arg3 modificationDate:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 creationDate:(id)arg3 modificationDate:(id)arg4 iOSLegacyIdentifier:(int)arg5;
 - (id)initWithName:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

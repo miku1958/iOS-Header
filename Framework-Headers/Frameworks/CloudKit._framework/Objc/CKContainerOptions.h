@@ -6,44 +6,59 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKAccountOverrideInfo, CKUploadRequestConfiguration, NSString;
 
-@interface CKContainerOptions : NSObject <NSSecureCoding>
+@interface CKContainerOptions : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _captureResponseHTTPHeaders;
     BOOL _useZoneWidePCS;
-    BOOL _wantsSiloedContext;
-    BOOL _returnPCSMetadata;
     BOOL _bypassPCSEncryption;
     BOOL _enforceNamedOperationGroups;
     BOOL _forceEnableReadOnlyManatee;
+    BOOL _useClearAssetEncryption;
+    BOOL _accountInfoCacheIsDisabled;
+    BOOL _wantsSiloedContext;
+    BOOL _returnPCSMetadata;
     CKAccountOverrideInfo *_accountInfoOverride;
     unsigned long long _mmcsEncryptionSupport;
     NSString *_encryptionServiceName;
+    NSString *_applicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
+    NSString *_applicationBundleIdentifierOverrideForPushTopicGeneration;
+    NSString *_applicationBundleIdentifierOverrideForTCC;
     CKUploadRequestConfiguration *_uploadRequestConfiguration;
     NSString *_personaIdentifier;
 }
 
+@property (nonatomic) BOOL accountInfoCacheIsDisabled; // @synthesize accountInfoCacheIsDisabled=_accountInfoCacheIsDisabled;
 @property (copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForPushTopicGeneration; // @synthesize applicationBundleIdentifierOverrideForPushTopicGeneration=_applicationBundleIdentifierOverrideForPushTopicGeneration;
+@property (copy, nonatomic) NSString *applicationBundleIdentifierOverrideForTCC; // @synthesize applicationBundleIdentifierOverrideForTCC=_applicationBundleIdentifierOverrideForTCC;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
-@property (strong, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
+@property (copy, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
 @property (nonatomic) BOOL enforceNamedOperationGroups; // @synthesize enforceNamedOperationGroups=_enforceNamedOperationGroups;
 @property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property (nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
 @property (strong, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property (strong, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
+@property (nonatomic) BOOL useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)setApplicationBundleIdentifierOverride:(id)arg1;
 - (void)setUseMMCSEncryptionV2:(BOOL)arg1;
 
 @end

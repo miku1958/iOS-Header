@@ -6,34 +6,37 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, IKViewElement, NSArray, VUILabel, VUIOverlayLayout, VUITextBadgeView, _TVProgressView;
+@class CALayer, IKViewElement, NSArray, VUILabel, VUIOverlayLayout, VUIProgressView, VUITextBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface VUIOverlayView : UIView
 {
+    BOOL _hasPageControlDisplayedOnTop;
+    VUILabel *_titleLabel;
+    VUITextBadgeView *_textBadge;
+    VUIProgressView *_progressView;
+    UIView *_gradientView;
     CALayer *_gradientLayer;
+    NSArray *_badgeViewWrappers;
     VUIOverlayLayout *_overlayLayout;
     IKViewElement *_viewElement;
-    VUILabel *_titleLabel;
     IKViewElement *_titleElement;
-    VUITextBadgeView *_textBadge;
     IKViewElement *_textBadgeElement;
-    NSArray *_badgeViewWrappers;
-    _TVProgressView *_progressView;
-    UIView *_gradientView;
 }
 
-@property (strong, nonatomic) NSArray *badgeViewWrappers; // @synthesize badgeViewWrappers=_badgeViewWrappers;
+@property (copy, nonatomic) NSArray *badgeViewWrappers; // @synthesize badgeViewWrappers=_badgeViewWrappers;
 @property (strong, nonatomic) CALayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
 @property (strong, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
+@property (nonatomic) BOOL hasPageControlDisplayedOnTop; // @synthesize hasPageControlDisplayedOnTop=_hasPageControlDisplayedOnTop;
 @property (strong, nonatomic) VUIOverlayLayout *overlayLayout; // @synthesize overlayLayout=_overlayLayout;
-@property (strong, nonatomic) _TVProgressView *progressView; // @synthesize progressView=_progressView;
+@property (strong, nonatomic) VUIProgressView *progressView; // @synthesize progressView=_progressView;
 @property (strong, nonatomic) VUITextBadgeView *textBadge; // @synthesize textBadge=_textBadge;
 @property (strong, nonatomic) IKViewElement *textBadgeElement; // @synthesize textBadgeElement=_textBadgeElement;
 @property (strong, nonatomic) IKViewElement *titleElement; // @synthesize titleElement=_titleElement;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (BOOL)_hasPageControlDisplayedOnTopOfOverlayElement:(id)arg1;
 + (id)overlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 + (id)overlayViewFromMediaItem:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;

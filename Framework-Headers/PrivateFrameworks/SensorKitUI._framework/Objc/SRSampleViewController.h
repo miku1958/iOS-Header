@@ -6,17 +6,20 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SRAuthorizationGroup;
 
 @interface SRSampleViewController : UITableViewController
 {
-    NSArray *_items;
+    NSArray *_sampleDataEntries;
     NSString *_note;
+    SRAuthorizationGroup *_authGroup;
 }
 
-@property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
+@property (strong, nonatomic) SRAuthorizationGroup *authGroup; // @synthesize authGroup=_authGroup;
 @property (strong, nonatomic) NSString *note; // @synthesize note=_note;
+@property (strong, nonatomic) NSArray *sampleDataEntries; // @synthesize sampleDataEntries=_sampleDataEntries;
 
++ (id)sampleViewControllerForAuthGroup:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (long long)numberOfSectionsInTableView:(id)arg1;

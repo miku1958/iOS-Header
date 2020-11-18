@@ -10,6 +10,7 @@
 
 @interface NSBundle (SafariCoreExtras)
 
+@property (readonly, nonatomic) BOOL safari_isSafariFamilyApplicationBundle;
 @property (readonly, copy, nonatomic) NSString *safari_normalizedVersion;
 
 + (id)safari_safariApplicationPlatformBundleIdentifier;

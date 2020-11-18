@@ -6,22 +6,22 @@
 
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSProgress, NSString, NSURL, PLDelayedSaveActionsDetail, PLXPCDictionary;
+@class NSArray, NSDictionary, NSProgress, NSString, NSURL, PLDelayedSaveActionsDetail, PLPhotoLibraryOptions, PLXPCDictionary;
 
 @protocol PLAssetsdLibraryServiceProtocol <NSObject>
 - (void)automaticallyDeleteEmptyAlbumWithObjectURI:(NSURL *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
-- (void)createPhotoLibraryDatabaseWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)createPhotoLibraryDatabaseWithOptions:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getCurrentModelVersionWithReply:(void (^)(unsigned long long))arg1;
 - (void)getPhotoLibraryStoreXPCListenerEndpointWithReply:(void (^)(NSXPCListenerEndpoint *))arg1;
-- (void)importFileSystemAssetsWithReason:(NSString *)arg1 reply:(void (^)(void))arg2;
+- (NSProgress *)importFileSystemAssetsWithReason:(NSString *)arg1 force:(BOOL)arg2 reply:(void (^)(void))arg3;
 - (void)launchAssetsd;
-- (void)openPhotoLibraryDatabaseWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)openPhotoLibraryDatabaseWithOptions:(PLPhotoLibraryOptions *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)pendingEventsForRequest:(PLXPCDictionary *)arg1 reply:(void (^)(PLXPCDictionary *))arg2;
 - (NSProgress *)postOpenProgressWithReply:(void (^)(NSError *))arg1;
 - (void)publishRemoteChangeEvent:(PLXPCDictionary *)arg1 delayedSaveActionsDetail:(PLDelayedSaveActionsDetail *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)recoverFromCrashIfNeeded;
 - (void)repairSingletonObjectsWithReply:(void (^)(void))arg1;
 - (void)updateThumbnailsForPhotos:(NSArray *)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 reply:(void (^)(void))arg4;
-- (NSProgress *)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (NSProgress *)upgradePhotoLibraryDatabaseWithOptions:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

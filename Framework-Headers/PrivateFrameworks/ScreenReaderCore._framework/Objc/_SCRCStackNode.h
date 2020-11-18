@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) _SCRCStackNode *next; // @synthesize next=_next;
 @property (strong, nonatomic) id object; // @synthesize object=_object;
-@property (strong, nonatomic) _SCRCStackNode *prev; // @synthesize prev=_prev;
+@property (weak, nonatomic) _SCRCStackNode *prev; // @synthesize prev=_prev;
 
 - (void).cxx_destruct;
 

@@ -20,12 +20,12 @@
 @property (strong, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
 
 - (void).cxx_destruct;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 multitaskingModifier:(id)arg2 selectedAppLayout:(id)arg3;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettings;
-- (long long)liveContentRasterizationStyle;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (id)transitionWillBegin;
-- (BOOL)wantsMinificationFilter;
+- (id)visibleAppLayouts;
 
 @end
 

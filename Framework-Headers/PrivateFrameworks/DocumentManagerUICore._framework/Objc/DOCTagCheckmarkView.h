@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIImageView.h>
 
 #import <DocumentManagerUICore/DOCTagIconView-Protocol.h>
 
 @class NSString;
 
-@interface DOCTagCheckmarkView : UIView <DOCTagIconView>
+@interface DOCTagCheckmarkView : UIImageView <DOCTagIconView>
 {
     long long _tagColor;
-    struct CGSize _checkmarkView;
 }
 
-@property (nonatomic) struct CGSize checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,13 +22,8 @@
 @property (nonatomic) long long tagColor; // @synthesize tagColor=_tagColor;
 
 + (id)checkmarkImage;
+- (void)_updateTintColor;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)intrinsicContentSize;
-- (void)layoutSublayersOfLayer:(id)arg1;
-- (void)layoutSubviews;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
-- (void)updateBackgroundColor;
-- (void)updateLayoutOfLayers;
 
 @end
 

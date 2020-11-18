@@ -8,30 +8,23 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerCategoriesTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
-@class NSArray, NSString, WFActionDrawerCategoriesMetrics, WFActionDrawerResultsController, WFActionDrawerState;
-@protocol NSObject, WFActionDrawerSuggestionsViewControllerDelegate;
+@class NSArray, NSString, WFActionDrawerCategoriesMetrics, WFActionDrawerState;
+@protocol NSObject;
 
-@interface WFActionDrawerSiriSuggestionsViewController : WFActionDrawerCompositeResultsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerCategoriesTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
+@interface WFActionDrawerSiriSuggestionsViewController : WFActionDrawerCompositeResultsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
     BOOL _shouldDisplayCategoriesVertically;
-    id<WFActionDrawerSuggestionsViewControllerDelegate> _delegate;
-    WFActionDrawerResultsController *_actionDrawerResultsController;
     id<NSObject> _actionRegistryFilledNotificationObserver;
     WFActionDrawerCategoriesMetrics *_categoriesMetrics;
 }
 
-@property (readonly, nonatomic) WFActionDrawerResultsController *actionDrawerResultsController; // @synthesize actionDrawerResultsController=_actionDrawerResultsController;
 @property (strong, nonatomic) id<NSObject> actionRegistryFilledNotificationObserver; // @synthesize actionRegistryFilledNotificationObserver=_actionRegistryFilledNotificationObserver;
 @property (strong, nonatomic) WFActionDrawerCategoriesMetrics *categoriesMetrics; // @synthesize categoriesMetrics=_categoriesMetrics;
 @property (readonly, nonatomic) NSArray *contentTypeCategories;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerSuggestionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL scrollsToTop;
@@ -40,21 +33,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
-- (void)categoriesTableViewCell:(id)arg1 didSelectCategoryForContentType:(id)arg2 title:(id)arg3;
-- (void)categoriesTableViewCellDidSelectCategoryApps:(id)arg1 title:(id)arg2;
-- (void)categoriesTableViewCellDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
-- (void)categoriesTableViewCellDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
 - (void)dealloc;
-- (id)initWithActionDrawerResultsController:(id)arg1;
 - (void)loadView;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadCategoriesSection;
 - (void)reloadViews;
 - (void)scrollToTop;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;

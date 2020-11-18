@@ -19,7 +19,6 @@
 @property (copy, nonatomic) NSString *passcode; // @synthesize passcode=_passcode;
 @property (nonatomic) unsigned int type; // @synthesize type=_type;
 
-+ (id)_randomPasscode;
 + (id)standardCredentials;
 - (void).cxx_destruct;
 

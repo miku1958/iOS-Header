@@ -6,14 +6,16 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKContainerID, CKDFlowControlManager, CKDOperation, CKDPCSManager, CKDServerConfiguration, CKDURLRequest, CKDZoneGatekeeper, NSString, NSURL;
+@class CKContainerID, CKDApplicationID, CKDFlowControlManager, CKDOperation, CKDPCSManager, CKDServerConfiguration, CKDURLRequest, CKDZoneGatekeeper, NSString, NSURL;
 
 @protocol CKDContextInfoProvider <NSObject>
 
 @property (readonly, nonatomic) NSString *applicationBundleID;
-@property (readonly, nonatomic) NSString *applicationBundleIDForPush;
-@property (readonly, nonatomic) NSString *applicationBundleIDForServer;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForPush;
 @property (readonly, nonatomic) NSString *applicationFrameworkCachesDirectory;
+@property (readonly, nonatomic) CKDApplicationID *applicationID;
 @property (readonly, nonatomic) NSString *applicationPackageStagingDirectory;
 @property (readonly, nonatomic) NSString *applicationVersion;
 @property (readonly, nonatomic) NSString *apsEnvironmentString;
@@ -36,7 +38,6 @@
 @property (readonly, nonatomic) NSString *personaID;
 @property (readonly, nonatomic) NSString *processName;
 @property (readonly, nonatomic) NSString *regionCode;
-@property (readonly, nonatomic) NSString *sourceApplicationBundleID;
 
 - (NSURL *)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
 - (NSString *)deviceIDForOperation:(CKDOperation *)arg1;

@@ -10,23 +10,33 @@
 #import <MediaPlaybackCore/MPCPlaybackContextPrivateListeningOverridable-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackContextUserIdentityConsuming-Protocol.h>
 
-@class ICUserIdentity, MPCModelRadioContentReference, MPCPlaybackRequestEnvironment, MPModelRadioStation, NSString, NSURL;
+@class ICUserIdentity, MPCModelRadioContentReference, MPCPlaybackRequestEnvironment, MPModelRadioStation, NSNumber, NSString, NSURL;
+@protocol MPCContinueListeningRadioQueueProviding;
 
 @interface MPCModelRadioPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable, MPCModelPlaybackRequestEnvironmentConsuming>
 {
+    BOOL _continueListeningStation;
     ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
+    id<MPCContinueListeningRadioQueueProviding> _continueListeningQueueProvider;
+    long long _continueListeningMaxQueueReferences;
+    long long _continueListeningPrefetchThreshold;
     MPCModelRadioContentReference *_nowPlayingContentReference;
     MPCModelRadioContentReference *_seedContentReference;
     MPModelRadioStation *_radioStation;
     NSURL *_stationURL;
 }
 
+@property (nonatomic) long long continueListeningMaxQueueReferences; // @synthesize continueListeningMaxQueueReferences=_continueListeningMaxQueueReferences;
+@property (nonatomic) long long continueListeningPrefetchThreshold; // @synthesize continueListeningPrefetchThreshold=_continueListeningPrefetchThreshold;
+@property (weak, nonatomic) id<MPCContinueListeningRadioQueueProviding> continueListeningQueueProvider; // @synthesize continueListeningQueueProvider=_continueListeningQueueProvider;
+@property (nonatomic) BOOL continueListeningStation; // @synthesize continueListeningStation=_continueListeningStation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MPCModelRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
 @property (copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
+@property (copy, nonatomic) NSNumber *privateListeningOverride;
 @property (strong, nonatomic) MPModelRadioStation *radioStation; // @synthesize radioStation=_radioStation;
 @property (copy, nonatomic) MPCModelRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
 @property (copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
@@ -42,8 +52,8 @@
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (long long)queueEndAction;
 - (long long)repeatType;
-- (void)setPrivateListeningOverride:(id)arg1;
 - (long long)shuffleType;
 
 @end

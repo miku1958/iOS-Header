@@ -16,13 +16,15 @@
 @property (readonly, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 
 - (void).cxx_destruct;
-- (id)_applicationAsyncServer;
 - (void)_clearConnection;
 - (void)_establishConnectionIfNeeded;
 - (void)beginGeneratingPlaybackNotifications;
+- (void)beginPlaybackAtHostTime:(CDStruct_1b6d18a9)arg1;
 - (void)dealloc;
 - (void)endGeneratingPlaybackNotifications;
+- (void)onApplicationServerAsync:(CDUnknownBlockType)arg1;
 - (void)performQueueTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)prerollWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

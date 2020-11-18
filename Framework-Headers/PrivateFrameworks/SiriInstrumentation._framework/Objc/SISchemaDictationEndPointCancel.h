@@ -11,9 +11,11 @@
 @interface SISchemaDictationEndPointCancel : PBCodable
 {
     int _dictationEndPointType;
+    CDStruct_78ff2909 _has;
 }
 
 @property (nonatomic) int dictationEndPointType; // @synthesize dictationEndPointType=_dictationEndPointType;
+@property (nonatomic) BOOL hasDictationEndPointType;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (id)dictionaryRepresentation;

@@ -43,6 +43,7 @@
 - (unsigned long long)selectionDecorationAdditionsInLayout:(id)arg1;
 - (long long)selectionDecorationStyleInLayout:(id)arg1;
 - (BOOL)wantsAssetBadgeDecorationsInLayout:(id)arg1;
+- (BOOL)wantsInteractiveFavoriteBadgesInLayout:(id)arg1;
 
 @end
 

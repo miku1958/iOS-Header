@@ -54,7 +54,13 @@
     NSDictionary *_savedUserInfo;
     BOOL _invalidated;
     BOOL _userInfoContainsFileURLs;
+    BOOL _universalLink;
     BOOL _canCreateStreams;
+    NSDate *_madeCurrentDate;
+    NSDate *_madeCurrentEndDate;
+    double _madeCurrentInterval;
+    NSDate *_madeInitiallyCurrentDate;
+    NSDate *_sentToIndexerDate;
     NSData *_cachedEncodedUserInfo;
     NSSet *_keywords;
     NSSet *_requiredUserInfoKeys;
@@ -100,6 +106,10 @@
 @property (readonly, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (copy) NSSet *keywords; // @dynamic keywords;
 @property (copy) NSSet *keywords; // @synthesize keywords=_keywords;
+@property (copy) NSDate *madeCurrentDate; // @synthesize madeCurrentDate=_madeCurrentDate;
+@property (copy) NSDate *madeCurrentEndDate; // @synthesize madeCurrentEndDate=_madeCurrentEndDate;
+@property (readonly) double madeCurrentInterval; // @synthesize madeCurrentInterval=_madeCurrentInterval;
+@property (readonly, copy) NSDate *madeInitiallyCurrentDate; // @synthesize madeInitiallyCurrentDate=_madeInitiallyCurrentDate;
 @property (readonly, weak) UAUserActivityManager *manager; // @synthesize manager=_manager;
 @property BOOL needsSave; // @dynamic needsSave;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
@@ -114,6 +124,7 @@
 @property (copy) NSSet *requiredUserInfoKeys; // @dynamic requiredUserInfoKeys;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
 @property BOOL sendToServerPending; // @synthesize sendToServerPending=_sendToServerPending;
+@property (copy) NSDate *sentToIndexerDate; // @synthesize sentToIndexerDate=_sentToIndexerDate;
 @property (copy) NSData *streamsData;
 @property (copy) NSString *subtitle; // @dynamic subtitle;
 @property (readonly) unsigned long long suggestedActionType; // @synthesize suggestedActionType=_suggestedActionType;
@@ -124,6 +135,7 @@
 @property (copy) NSString *title; // @dynamic title;
 @property (copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (getter=isUniversalLink) BOOL universalLink; // @synthesize universalLink=_universalLink;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly) unsigned long long userInfoChangeCount;
 @property BOOL userInfoContainsFileURLs; // @synthesize userInfoContainsFileURLs=_userInfoContainsFileURLs;

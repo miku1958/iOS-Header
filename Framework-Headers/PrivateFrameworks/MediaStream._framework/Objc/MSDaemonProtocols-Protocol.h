@@ -14,7 +14,6 @@
 - (void)dequeueAssetCollectionWithGUIDs:(NSArray *)arg1 personID:(NSString *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)enqueueAssetCollections:(NSArray *)arg1 personID:(NSString *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)forgetEverythingForPersonID:(NSString *)arg1;
-- (void)isBusyCompletionBlock:(void (^)(BOOL))arg1;
 - (void)pauseForUUID:(NSString *)arg1;
 - (void)pollForSubscriptionUpdatesForPersonID:(NSString *)arg1;
 - (void)pollForSubscriptionUpdatesTriggeredByPushNotificationForPersonID:(NSString *)arg1;

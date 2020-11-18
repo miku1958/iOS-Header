@@ -6,12 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@protocol UIViewControllerTransitionCoordinator;
-
 @interface UIViewController (UIViewController_SpringBoard)
-
-@property (readonly, nonatomic) id<UIViewControllerTransitionCoordinator> sb_transitionCoordinator;
-
 + (id)sb_firstDescendantOfViewControllers:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (BOOL)sb_beginAppearanceTransitionIfNecessary:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)sb_childOrPresentedViewControllerStatusBarSettings;

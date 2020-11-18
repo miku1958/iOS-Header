@@ -6,7 +6,7 @@
 
 #import <VectorKit/VKTrafficFeature.h>
 
-@class NSDate, NSString;
+@class GEOFormattedString, GEORestrictionInfo, NSArray, NSDate, NSString;
 
 @interface VKTrafficIncidentFeature : VKTrafficFeature
 {
@@ -17,24 +17,26 @@
     long long _significance;
     BOOL _isNotForDisplay;
     BOOL _isOnSelectedRoute;
-    unsigned int _routeOffsetInMeters;
     NSString *_street;
     NSString *_crossStreet;
     NSString *_info;
     NSDate *_startDate;
     NSDate *_endDate;
     NSDate *_lastUpdatedDate;
-    unsigned long long _uniqueID;
     NSString *_uniqueString;
+    GEORestrictionInfo *_restrictionInfo;
 }
 
 @property (readonly, nonatomic) NSString *crossStreet; // @synthesize crossStreet=_crossStreet;
+@property (readonly, nonatomic) GEOFormattedString *effectiveTimeRange;
 @property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) GEOFormattedString *formattedSubtitle;
+@property (readonly, nonatomic) GEOFormattedString *formattedTitle;
 @property (readonly, nonatomic) NSString *info; // @synthesize info=_info;
 @property (readonly, nonatomic) BOOL isNotForDisplay; // @synthesize isNotForDisplay=_isNotForDisplay;
 @property (nonatomic) BOOL isOnSelectedRoute; // @synthesize isOnSelectedRoute=_isOnSelectedRoute;
 @property (readonly, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
-@property (nonatomic) unsigned int routeOffsetInMeters; // @synthesize routeOffsetInMeters=_routeOffsetInMeters;
+@property (readonly, nonatomic) NSArray *restrictionDetails;
 @property (nonatomic) long long routeRelevance; // @synthesize routeRelevance=_routeRelevance;
 @property (readonly, nonatomic) long long significance; // @synthesize significance=_significance;
 @property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -42,14 +44,19 @@
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
-@property (readonly, nonatomic) unsigned long long uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (readonly, nonatomic) NSString *uniqueString; // @synthesize uniqueString=_uniqueString;
 
++ (long long)incidentTypeForGeoRouteIncident:(id)arg1;
++ (id)stringForIncidentSignificance:(long long)arg1;
++ (id)stringForIncidentType:(long long)arg1;
++ (id)stringForRouteRelevance:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (BOOL)hasSameIdentifier:(id)arg1;
 - (id)initWithIncidentData:(const struct Incident *)arg1 worldPoint:(Matrix_6e1d3589 *)arg2;
-- (id)initWithRouteIncident:(id)arg1 routeRelevance:(long long)arg2;
+- (id)initWithIncidentType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_c3b9c2ee)arg3 routeRelevance:(long long)arg4 laneType:(long long)arg5 significance:(long long)arg6 onRoute:(id)arg7;
+- (id)initWithRouteIncident:(id)arg1 routeOffsetInMeters:(unsigned int)arg2 routeRelevance:(long long)arg3 onRoute:(id)arg4;
+- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
 
 @end
 

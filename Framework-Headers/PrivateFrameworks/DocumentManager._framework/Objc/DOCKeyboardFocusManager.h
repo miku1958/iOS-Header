@@ -12,10 +12,12 @@
 @interface DOCKeyboardFocusManager : NSObject
 {
     id<DOCKeyboardFocusable> _currentlyFocused;
+    BOOL _externalFirstResponderInFlight;
     NSPointerArray *_allKeyboardFocusable;
 }
 
 @property (strong) NSPointerArray *allKeyboardFocusable; // @synthesize allKeyboardFocusable=_allKeyboardFocusable;
+@property (nonatomic) BOOL externalFirstResponderInFlight; // @synthesize externalFirstResponderInFlight=_externalFirstResponderInFlight;
 
 + (id)directionalKeyCommandsWithAction:(SEL)arg1;
 + (BOOL)isCustomKeyboardFocusEnabled;

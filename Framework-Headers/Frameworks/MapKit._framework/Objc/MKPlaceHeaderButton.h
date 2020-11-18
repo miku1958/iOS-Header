@@ -6,18 +6,18 @@
 
 #import <UIKit/UIButton.h>
 
-#import <MapKit/_MKPlaceActionButtonControllerProtocol-Protocol.h>
+#import <MapKit/_MKPlaceActionControlledButton-Protocol.h>
 
 @class MKVibrantView, NSLayoutConstraint, NSString, _MKPlaceActionButtonController;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHeaderButton : UIButton <_MKPlaceActionButtonControllerProtocol>
+@interface MKPlaceHeaderButton : UIButton <_MKPlaceActionControlledButton>
 {
     unsigned long long _buttonType;
     BOOL _primary;
     NSLayoutConstraint *_heightConstraint;
     MKVibrantView *_vibrantView;
-    BOOL _highlighted;
+    BOOL _buttonHighlighted;
     _MKPlaceActionButtonController *_buttonController;
 }
 
@@ -40,12 +40,12 @@ __attribute__((visibility("hidden")))
 - (void)infoCardThemeChanged;
 - (id)init;
 - (id)initWithPrimaryType:(unsigned long long)arg1;
-- (BOOL)isHighlighted;
-- (void)placeActionbuttonControllerTextDidChanged:(id)arg1;
-- (void)setAttributesWithTitle:(id)arg1 subTitle:(id)arg2;
+- (void)placeActionButtonControllerTextDidChange:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
-- (void)setPrimaryButtonTitle:(id)arg1;
+- (void)setPrimaryTitle:(id)arg1;
+- (void)setPrimaryTitle:(id)arg1 subtitle:(id)arg2;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
+- (void)updateButtonWithHighlighted:(BOOL)arg1;
 
 @end
 

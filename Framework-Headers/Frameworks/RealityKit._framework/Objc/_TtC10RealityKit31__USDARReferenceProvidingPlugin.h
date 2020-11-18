@@ -10,7 +10,6 @@
 
 @interface _TtC10RealityKit31__USDARReferenceProvidingPlugin : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *schemePrefix;
     MISSING_TYPE *arReferenceByFullSchemePath;
 }
 

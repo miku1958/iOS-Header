@@ -10,7 +10,7 @@
 #import <KeynoteQuicklook/KNAnimationMovieHost-Protocol.h>
 #import <KeynoteQuicklook/TSKMediaPlayerControllerDelegate-Protocol.h>
 
-@class CALayer, NSObject, NSString, TSDMovieInfo, TSUWeakReference;
+@class CALayer, KNSlideNode, NSObject, NSString, TSDMovieInfo, TSUWeakReference;
 @protocol NSCopying, TSKLayerMediaPlayerController, TSKMediaPlayerController;
 
 @interface KNMovieRenderer : KNBuildRenderer <TSKMediaPlayerControllerDelegate, KNAmbientBuildRenderer, KNAnimationMovieHost>
@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) BOOL hasAmbientBuildStarted;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSDMovieInfo *movieInfo;
+@property (readonly, nonatomic) KNSlideNode *movieSlideNode;
 @property (readonly, nonatomic) NSObject<NSCopying> *movieTimelineMovieIdentifier;
 @property (readonly, nonatomic) CALayer *offscreenVideoLayer;
 @property (readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController; // @synthesize playerController=_playerController;

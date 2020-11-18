@@ -10,12 +10,11 @@
 #import <DiagnosticExtensionsDaemon/IDSServiceDelegate-Protocol.h>
 
 @class IDSService, NSString;
-@protocol DEDClientProtocol, IDSServiceDelegate, OS_dispatch_queue, OS_os_log;
+@protocol DEDClientProtocol, IDSServiceDelegate, OS_dispatch_queue;
 
 @interface DEDIDSConnection : NSObject <IDSServiceDelegate, DEDSecureArchiving>
 {
     id<DEDClientProtocol> _remoteSideDelegate;
-    NSObject<OS_os_log> *_log;
     IDSService *_service;
     IDSService *_localService;
     NSObject<OS_dispatch_queue> *_run_queue;
@@ -31,7 +30,6 @@
 @property (readonly) unsigned long long hash;
 @property (strong) id<IDSServiceDelegate> incomingDelegate; // @synthesize incomingDelegate=_incomingDelegate;
 @property (strong) IDSService *localService; // @synthesize localService=_localService;
-@property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (weak) id<DEDClientProtocol> remoteSideDelegate; // @synthesize remoteSideDelegate=_remoteSideDelegate;
 @property (strong) NSObject<OS_dispatch_queue> *run_queue; // @synthesize run_queue=_run_queue;
 @property (strong) IDSService *service; // @synthesize service=_service;

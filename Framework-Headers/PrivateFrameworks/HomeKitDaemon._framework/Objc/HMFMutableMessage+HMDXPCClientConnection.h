@@ -24,7 +24,9 @@
 - (void)setRequiresCameraClipsEntitlement;
 - (void)setRequiresMultiUserSetupEntitlement;
 - (void)setRequiresNoSPIEntitlement;
+- (void)setRequiresPersonManagerEntitlement;
 - (void)setRequiresSPIEntitlement;
 - (void)setRequiresSetupPayloadEntitlement;
+- (void)setSendPolicy:(id)arg1;
 @end
 

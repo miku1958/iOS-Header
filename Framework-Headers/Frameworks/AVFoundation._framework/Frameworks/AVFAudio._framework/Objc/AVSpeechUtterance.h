@@ -14,6 +14,7 @@
 @interface AVSpeechUtterance : NSObject <NSCopying, NSSecureCoding>
 {
     AVSpeechSynthesisVoice *_voice;
+    BOOL _prefersAssistiveTechnologySettings;
     float _rate;
     float _pitchMultiplier;
     float _volume;
@@ -27,6 +28,7 @@
 @property (nonatomic) float pitchMultiplier; // @synthesize pitchMultiplier=_pitchMultiplier;
 @property (nonatomic) double postUtteranceDelay; // @synthesize postUtteranceDelay=_postUtteranceDelay;
 @property (nonatomic) double preUtteranceDelay; // @synthesize preUtteranceDelay=_preUtteranceDelay;
+@property (nonatomic) BOOL prefersAssistiveTechnologySettings; // @synthesize prefersAssistiveTechnologySettings=_prefersAssistiveTechnologySettings;
 @property (nonatomic) float rate; // @synthesize rate=_rate;
 @property (strong, nonatomic) NSString *speechString; // @synthesize speechString=_speechString;
 @property (strong, nonatomic) AVSpeechSynthesisVoice *voice; // @synthesize voice=_voice;
@@ -34,6 +36,7 @@
 
 + (void)initialize;
 + (id)speechUtteranceWithAttributedString:(id)arg1;
++ (id)speechUtteranceWithSSMLRepresentation:(id)arg1;
 + (id)speechUtteranceWithString:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -41,6 +44,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSSMLRepresentation:(id)arg1;
 - (id)initWithString:(id)arg1;
 
 @end

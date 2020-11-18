@@ -14,7 +14,6 @@
     MISSING_TYPE *signposts;
     MISSING_TYPE *pipelineName;
     MISSING_TYPE *modifierDescription;
-    MISSING_TYPE *modifierShortDescription;
     MISSING_TYPE *runOptions;
 }
 

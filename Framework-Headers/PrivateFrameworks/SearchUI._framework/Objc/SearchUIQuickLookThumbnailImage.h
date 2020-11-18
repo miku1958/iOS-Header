@@ -6,24 +6,27 @@
 
 #import <SearchUI/SearchUIImage.h>
 
-@class NSURL, QLThumbnailGenerationRequest;
+@class QLThumbnailGenerationRequest, SFSearchResult;
 
 @interface SearchUIQuickLookThumbnailImage : SearchUIImage
 {
-    NSURL *_url;
+    BOOL _isCompact;
+    SFSearchResult *_result;
     QLThumbnailGenerationRequest *_request;
 }
 
+@property BOOL isCompact; // @synthesize isCompact=_isCompact;
 @property (weak) QLThumbnailGenerationRequest *request; // @synthesize request=_request;
-@property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (strong, nonatomic) SFSearchResult *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
 - (Class)classForCoder;
 - (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithURL:(id)arg1;
+- (id)initWithResult:(id)arg1 isCompact:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)url;
 
 @end
 

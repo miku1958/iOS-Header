@@ -54,6 +54,7 @@
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (BOOL)_isAnalog;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(BOOL)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;

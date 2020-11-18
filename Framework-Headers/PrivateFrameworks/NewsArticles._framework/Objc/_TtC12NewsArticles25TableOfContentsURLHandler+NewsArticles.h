@@ -7,6 +7,8 @@
 #import <NewsArticles/_TtC12NewsArticles25TableOfContentsURLHandler.h>
 
 @interface _TtC12NewsArticles25TableOfContentsURLHandler (NewsArticles)
+- (void)commitViewController:(id)arg1 URL:(id)arg2;
 - (void)openURL:(id)arg1;
+- (id)viewControllerForURL:(id)arg1;
 @end
 

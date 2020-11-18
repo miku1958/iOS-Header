@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 + (id)hk_UUIDWithData:(id)arg1;
++ (id)hk_v3UUIDWithNameSpace:(id)arg1 name:(id)arg2;
 - (id)hk_UUID;
 - (long long)hk_compare:(id)arg1;
 - (id)hk_dataForUUIDBytes;

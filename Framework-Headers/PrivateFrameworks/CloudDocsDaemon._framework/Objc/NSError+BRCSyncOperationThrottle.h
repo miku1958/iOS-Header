@@ -25,7 +25,7 @@
 - (id)brc_cloudKitErrorForSubscriptionID:(id)arg1;
 - (id)brc_cloudKitErrorForZone:(id)arg1;
 - (id)brc_cloudKitErrorMessage;
-- (unsigned long long)brc_containerResetErrorForSharedZone:(BOOL)arg1 resetReason:(const char **)arg2;
+- (unsigned long long)brc_containerResetErrorForSharedZone:(BOOL)arg1 resetReason:(id *)arg2;
 - (BOOL)brc_containsCloudKitErrorCode:(long long)arg1;
 - (BOOL)brc_containsCloudKitInternalErrorCode:(long long)arg1;
 - (id)brc_description;
@@ -46,14 +46,15 @@
 - (BOOL)brc_isCloudKitErrorZoneMigrated;
 - (BOOL)brc_isCloudKitErrorZoneUndergoingMigration;
 - (BOOL)brc_isCloudKitOutOfQuota;
+- (BOOL)brc_isCloudKitPCSChainingError;
 - (BOOL)brc_isCloudKitPCSDecryptionFailure;
-- (BOOL)brc_isCloudKitPCSError;
 - (BOOL)brc_isCloudKitUnknownItemError;
 - (BOOL)brc_isEverRetriable;
 - (BOOL)brc_isIndividualItemBlacklistError;
 - (BOOL)brc_isOutOfSpaceError;
 - (BOOL)brc_isResetError;
 - (BOOL)brc_isRetriable;
+- (BOOL)brc_isRetriableForPCSChaining;
 - (BOOL)brc_isUserInitiatedRetriable;
 - (id)brc_staleUpdateRecordIDs;
 - (id)brc_strippedError;

@@ -63,6 +63,7 @@
 - (void)addWorkoutSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 typeCode:(long long)arg2;
 - (void)addWorkouts:(const vector_89c96404 *)arg1;
 - (id)createExerciseStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
+- (id)createMoveMinuteStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
 - (id)createMoveStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
 - (id)createStandStatisticsWithCalendar:(id)arg1;
 - (id)createStatisticsCollectionWithType:(id)arg1 intervalComponents:(id)arg2 calendar:(id)arg3;

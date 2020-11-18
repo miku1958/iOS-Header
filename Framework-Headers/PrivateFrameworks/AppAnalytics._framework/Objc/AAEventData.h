@@ -14,8 +14,10 @@
     MISSING_TYPE *eventDate;
     MISSING_TYPE *eventPath;
     MISSING_TYPE *sessionID;
+    MISSING_TYPE *appSessionID;
 }
 
+@property (nonatomic, readonly) NSString *appSessionID;
 @property (nonatomic, readonly) NSDate *eventDate;
 @property (nonatomic, readonly) NSString *eventID;
 @property (nonatomic, readonly) NSString *eventPath;

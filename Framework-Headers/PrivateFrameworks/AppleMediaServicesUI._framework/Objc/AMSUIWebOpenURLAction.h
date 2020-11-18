@@ -13,11 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebOpenURLAction : NSObject <AMSUIWebActionRunnable>
 {
+    BOOL _appLink;
     NSURL *_URL;
     AMSUIWebClientContext *_context;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (nonatomic) BOOL appLink; // @synthesize appLink=_appLink;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

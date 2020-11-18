@@ -10,8 +10,8 @@
 {
 }
 
-+ (void)addAccountsFrameworkStateHandler;
 + (void)addStateHandlerWithName:(const char *)arg1 stateBlock:(CDUnknownBlockType)arg2;
++ (void)addStateHandlerWithName:(const char *)arg1 sysdiagnoseOnly:(BOOL)arg2 stateBlock:(CDUnknownBlockType)arg3;
 
 @end
 

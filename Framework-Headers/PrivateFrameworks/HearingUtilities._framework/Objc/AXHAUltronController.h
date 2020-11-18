@@ -6,24 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <HearingUtilities/AXHADetectorManagerDelegate-Protocol.h>
+#import <HearingUtilities/AXHAListenEngineDelegate-Protocol.h>
+#import <HearingUtilities/AXHAUltronModelAssetManagerDelegate-Protocol.h>
 #import <HearingUtilities/AXUIClientDelegate-Protocol.h>
-#import <HearingUtilities/SNResultsObserving-Protocol.h>
 
-@class AVAudioEngine, AVAudioFormat, AVAudioSession, AXUIClient, NSMutableArray, NSMutableDictionary, NSString, SBSStatusBarStyleOverridesAssertion, SNAudioStreamAnalyzer;
+@class AXHADetectorManager, AXHAListenEngine, AXHARingBuffer, AXUIClient, AXUltronModelAssetManager, NSFileManager, NSMutableDictionary, NSString, NSUserDefaults, SBSStatusBarStyleOverridesAssertion;
 @protocol OS_dispatch_queue;
 
-@interface AXHAUltronController : NSObject <SNResultsObserving, AXUIClientDelegate>
+@interface AXHAUltronController : NSObject <AXHADetectorManagerDelegate, AXHAListenEngineDelegate, AXUIClientDelegate, AXHAUltronModelAssetManagerDelegate>
 {
     SBSStatusBarStyleOverridesAssertion *_llStatusBarAssertion;
-    SNAudioStreamAnalyzer *_listener;
     AXUIClient *_hearingUIClient;
-    NSObject<OS_dispatch_queue> *_audioProcessingQueue;
-    BOOL _isRecording;
-    AVAudioEngine *_audioEngine;
-    AVAudioFormat *_clientFormat;
-    AVAudioSession *_session;
-    NSMutableArray *_bufferCollection;
+    AXHAListenEngine *_listener;
+    AXHADetectorManager *_detectorManager;
+    AXUltronModelAssetManager *_assetManager;
+    NSFileManager *_fileManager;
+    NSUserDefaults *_defaults;
+    double _sampleLength;
+    BOOL _assetsReady;
+    NSObject<OS_dispatch_queue> *_fileProcessingQueue;
+    int _state;
+    AXHARingBuffer *_audioRingBuffer;
     NSMutableDictionary *_detectionResultCollection;
+    NSMutableDictionary *_currentDetections;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,27 +39,35 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_configureAudioCapture;
-- (void)_handleAudioSessionInterruption:(id)arg1;
 - (void)_processResult:(id)arg1;
-- (void)_registerListeningRequestTypes;
-- (void)_startAudioSession;
-- (void)_stopAudioSession;
+- (void)_recordResultToFile:(id)arg1;
+- (void)_setupDetectorManager;
+- (void)_startRecording;
+- (void)assetsNotReadyForUltronManager:(id)arg1;
+- (void)assetsReadyForUltronManager:(id)arg1;
 - (void)cleanupUltron;
+- (BOOL)cleanupUltronFiles:(id)arg1;
 - (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
 - (void)dealloc;
 - (id)directory;
+- (void)enroll;
 - (id)getDictionaryForListenType;
 - (id)hearingUIClient;
 - (id)init;
+- (BOOL)isEnrolled;
 - (BOOL)isListening;
+- (void)listenEngineDidStartWithInputFormat:(id)arg1;
+- (void)listenEngineFailedToStartWithError:(id)arg1;
+- (void)receivedBuffer:(id)arg1 atTime:(id)arg2;
+- (void)receivedCompletion:(id)arg1;
+- (void)receivedError:(id)arg1 fromDetector:(id)arg2;
+- (void)receivedObservation:(id)arg1 forDetector:(id)arg2;
 - (id)recorderSettings;
 - (void)reduceFileDirectorySize;
-- (void)request:(id)arg1 didFailWithError:(id)arg2;
-- (void)request:(id)arg1 didProduceResult:(id)arg2;
-- (void)startUltron;
-- (void)stopUltron;
-- (void)toggleUltronSupport:(BOOL)arg1;
+- (id)retrieveFilesOlderThan:(double)arg1;
+- (BOOL)startUltron;
+- (BOOL)stopUltron;
+- (void)unenroll;
 
 @end
 

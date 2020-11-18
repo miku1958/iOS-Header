@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC19HealthVisualization32DiagramDateAxisMetricsCalculator : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *boundsLabelsShouldShowDaySpan;
+    MISSING_TYPE *customLabelDateFormatter;
 }
 
 @end

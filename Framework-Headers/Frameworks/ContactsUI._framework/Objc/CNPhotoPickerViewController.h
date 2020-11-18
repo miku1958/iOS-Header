@@ -4,127 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <ContactsUI/CNVisualIdentityPickerViewController.h>
 
-#import <ContactsUI/CNContactPhotoViewDelegate-Protocol.h>
-#import <ContactsUI/CNPhotoPickerActionsViewControllerDelegate-Protocol.h>
-#import <ContactsUI/CNPhotoPickerHeaderViewDelegate-Protocol.h>
-#import <ContactsUI/CNPhotoPickerProviderGroupDelegate-Protocol.h>
-#import <ContactsUI/CNPhotoPickerVariantListControllerDelegate-Protocol.h>
-#import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ContactsUI/UICollectionViewDataSource-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <ContactsUI/UIImagePickerControllerDelegate-Protocol.h>
-#import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
-
-@class CNAvatarEditingManager, CNContactStyle, CNMutableContact, CNPhotoPickerActionsViewController, CNPhotoPickerDataSource, CNPhotoPickerHeaderView, CNPhotoPickerProviderItem, NSString, UICollectionView;
+@class CNMutableContact, NSString;
 @protocol CNPhotoPickerViewControllerDelegate;
 
-@interface CNPhotoPickerViewController : UIViewController <UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, CNPhotoPickerHeaderViewDelegate, CNContactPhotoViewDelegate, CNPhotoPickerVariantListControllerDelegate, UIAdaptivePresentationControllerDelegate, CNPhotoPickerProviderGroupDelegate, CNPhotoPickerActionsViewControllerDelegate>
+@interface CNPhotoPickerViewController : CNVisualIdentityPickerViewController
 {
-    BOOL _allowRotation;
-    id<CNPhotoPickerViewControllerDelegate> _delegate;
-    UICollectionView *_collectionView;
+    id<CNPhotoPickerViewControllerDelegate> delegate;
     CNMutableContact *_pendingEditContact;
-    CNPhotoPickerDataSource *_dataSource;
-    CNPhotoPickerHeaderView *_headerView;
-    CNPhotoPickerProviderItem *_editingProviderItem;
-    CNPhotoPickerProviderItem *_duplicatingProviderItem;
-    CNAvatarEditingManager *_posePickerController;
-    CNPhotoPickerActionsViewController *_actionsViewController;
-    CNContactStyle *_contactStyle;
-    NSString *_assignActionTitleOverride;
 }
 
-@property (strong, nonatomic) CNPhotoPickerActionsViewController *actionsViewController; // @synthesize actionsViewController=_actionsViewController;
-@property (nonatomic) BOOL allowRotation; // @synthesize allowRotation=_allowRotation;
-@property (strong, nonatomic) NSString *assignActionTitleOverride; // @synthesize assignActionTitleOverride=_assignActionTitleOverride;
-@property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-@property (strong, nonatomic) CNContactStyle *contactStyle; // @synthesize contactStyle=_contactStyle;
-@property (readonly, nonatomic) CNPhotoPickerDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<CNPhotoPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) CNPhotoPickerProviderItem *duplicatingProviderItem; // @synthesize duplicatingProviderItem=_duplicatingProviderItem;
-@property (strong, nonatomic) CNPhotoPickerProviderItem *editingProviderItem; // @synthesize editingProviderItem=_editingProviderItem;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CNPhotoPickerHeaderView *headerView; // @synthesize headerView=_headerView;
-@property (readonly) BOOL isPresentingModalViewController;
+@property (strong, nonatomic) NSString *assignActionTitleOverride; // @dynamic assignActionTitleOverride;
+@property (weak, nonatomic) id<CNPhotoPickerViewControllerDelegate> delegate; // @synthesize delegate;
 @property (strong, nonatomic) CNMutableContact *pendingEditContact; // @synthesize pendingEditContact=_pendingEditContact;
-@property (strong, nonatomic) CNAvatarEditingManager *posePickerController; // @synthesize posePickerController=_posePickerController;
-@property (readonly) Class superclass;
 
 + (BOOL)canShowAvatarEditor;
-+ (BOOL)canShowPhotoPickerForView:(id)arg1 withTraitCollection:(id)arg2;
-+ (struct CGSize)defaultContentSize;
-+ (id)descriptorForRequiredKeys;
-+ (double)itemsPerRowForWidth:(double)arg1;
 + (id)log;
 + (id)navigationControllerForPicker:(id)arg1;
 + (id)photoPickerForGameCenterWithContact:(id)arg1;
 - (void).cxx_destruct;
-- (void)buildCollectionView;
-- (void)buildHeaderView;
 - (void)cancel:(id)arg1;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (void)confirmCancelAction;
-- (id)contact;
-- (id)contactImageForCurrentActiveItem;
 - (id)contactViewCache;
-- (id)createImagePickerForEditingImageData:(id)arg1 withCropRect:(struct CGRect)arg2;
-- (id)currentImageDataAndCropRect:(struct CGRect *)arg1;
-- (long long)defaultModalPresentationStyle;
-- (void)deleteExistingItem:(id)arg1;
-- (void)deleteItemFromRecentsImageStore:(id)arg1;
 - (void)done:(id)arg1;
-- (void)headerActionPressedAtIndexPath:(id)arg1;
-- (void)headerViewPhotoViewTapped;
-- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
-- (void)imagePickerControllerDidCancel:(id)arg1;
 - (id)initWithContact:(id)arg1 style:(id)arg2 configuration:(id)arg3;
-- (id)initWithPhotosDataSource:(id)arg1 style:(id)arg2 allowRotation:(BOOL)arg3;
-- (void)insertNewItem:(id)arg1 toGroupType:(long long)arg2 updateActive:(BOOL)arg3;
-- (BOOL)isEditingOrDuplicatingItem;
-- (BOOL)isModalInPresentation;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (BOOL)photoHasChanged;
-- (void)photoPickerActionsViewController:(id)arg1 didPerformAction:(long long)arg2 withProviderItem:(id)arg3 atIndexPath:(id)arg4;
-- (void)photoPickerActionsViewControllerDidFinish:(id)arg1;
-- (id)photoPickerNavigationControllerForRootController:(id)arg1;
-- (void)photoPickerProviderGroup:(id)arg1 didUpdateItem:(id)arg2;
-- (void)photoPickerProviderGroupDidUpdate:(id)arg1;
-- (void)photoPickerVariantListController:(id)arg1 didSelectProviderItem:(id)arg2;
-- (void)photoPickerVariantListControllerDidCancel:(id)arg1;
 - (void)photoView:(id)arg1 didSaveImageDropToContact:(id)arg2;
 - (void)photoViewDidUpdate:(id)arg1;
-- (void)presentActionsViewControllerForProviderItem:(id)arg1 atIndexPath:(id)arg2;
-- (void)presentCameraImagePicker;
-- (void)presentDismissConfirmation;
-- (void)presentEditImagePickerForImageData:(id)arg1 cropRect:(struct CGRect)arg2 fromViewController:(id)arg3;
-- (void)presentImagePicker:(id)arg1 withStyle:(long long)arg2 fromViewController:(id)arg3;
-- (void)presentLibraryImagePicker;
-- (void)presentPhotoPickerVariantListFor:(id)arg1 FromViewController:(id)arg2;
-- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
-- (id)providerItemFromPhotoPickerInfo:(id)arg1;
-- (void)saveItemToRecentsImageStore:(id)arg1;
-- (void)selectItem:(id)arg1 presentFromViewControllerIfNeeded:(id)arg2;
-- (void)sender:(id)arg1 dismissViewController:(id)arg2;
-- (void)sender:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)sender:(id)arg1 presentViewController:(id)arg2;
-- (void)showAvatarCropAndScaleForItem:(id)arg1 fromViewController:(id)arg2;
-- (void)showAvatarEditorForCreation;
-- (void)showAvatarPosePickerFromItem:(id)arg1;
-- (void)updateActiveIndexPath:(id)arg1;
-- (void)updateActiveIndexPath:(id)arg1 reload:(BOOL)arg2;
-- (void)updateContactWithProviderItem:(id)arg1;
+- (void)updateHeaderViewAvatar;
+- (void)updatePendingEditContact;
 - (id)viewControllerForPhotoView:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
 
 @end
 

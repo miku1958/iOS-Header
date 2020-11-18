@@ -8,12 +8,13 @@
 
 #import <ActionKit/WFBooleanStateSetting-Protocol.h>
 
-@class BluetoothManager, NSString;
+@class BluetoothManager, NSMutableDictionary, NSString;
 
 @interface WFBluetoothSettingsClient : WFSettingsClient <WFBooleanStateSetting>
 {
     BluetoothManager *_manager;
     CDUnknownBlockType _availabilityCompletion;
+    NSMutableDictionary *_observeBlocksPerDeviceType;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType availabilityCompletion; // @synthesize availabilityCompletion=_availabilityCompletion;
@@ -21,17 +22,20 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BluetoothManager *manager; // @synthesize manager=_manager;
+@property (readonly, nonatomic) NSMutableDictionary *observeBlocksPerDeviceType; // @synthesize observeBlocksPerDeviceType=_observeBlocksPerDeviceType;
 @property (readonly) Class superclass;
 
 + (void)createClientWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)availabilityChanged:(id)arg1;
 - (void)dealloc;
+- (void)devicesChanged:(id)arg1;
+- (void)getPairedDevicesMatchingType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithBluetoothManager:(id)arg1;
-- (void)registerForAvailabilityNotifications;
+- (void)observePairedDevicesMatchingType:(unsigned long long)arg1 update:(CDUnknownBlockType)arg2;
+- (void)registerForNotifications;
 - (void)setState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)unregisterForAvailabilityNotifications;
 - (void)waitForAvailabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

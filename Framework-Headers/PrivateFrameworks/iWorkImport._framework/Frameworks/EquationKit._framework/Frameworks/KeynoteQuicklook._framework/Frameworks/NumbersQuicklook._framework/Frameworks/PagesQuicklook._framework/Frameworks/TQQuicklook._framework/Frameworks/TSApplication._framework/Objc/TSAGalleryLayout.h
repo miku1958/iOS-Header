@@ -42,14 +42,15 @@
 + (double)p_constrainedImageContainerHeightForHeight:(double)arg1;
 + (double)p_constrainedImageContainerWidthForWidth:(double)arg1 maxLayoutWidth:(double)arg2;
 - (void).cxx_destruct;
-- (id)additionalGuides;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (struct CGRect)alignmentFrameForProvidingGuidesInRoot;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGRect)boundsForStandardKnobs;
 - (struct CGPoint)calculateOffsetForGalleryItem:(id)arg1 withFacesRect:(struct CGRect)arg2;
+- (id)childInfosForChildLayouts;
 - (id)children;
+- (id)childrenForPencilAnnotations;
 - (id)computeInfoGeometryForFittingInFrame:(struct CGRect)arg1;
 - (id)computeLayoutGeometry;
 - (void)dealloc;

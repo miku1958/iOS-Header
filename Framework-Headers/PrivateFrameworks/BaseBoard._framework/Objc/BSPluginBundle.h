@@ -6,35 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <BaseBoard/BSDescriptionProviding-Protocol.h>
+
 @class NSBundle, NSString;
 
-@interface BSPluginBundle : NSObject
+@interface BSPluginBundle : NSObject <BSDescriptionProviding>
 {
-    NSString *_identifier;
     NSBundle *_bundle;
-    NSString *_name;
-    NSString *_type;
     NSString *_specifiedClassName;
     NSString *_requiredClassOrProtocolName;
+    NSString *_identifier;
+    NSString *_name;
+    NSString *_type;
     Class _principalClass;
 }
 
-@property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @dynamic loaded;
+@property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) Class principalClass; // @synthesize principalClass=_principalClass;
-@property (copy, nonatomic) NSString *requiredClassOrProtocolName; // @synthesize requiredClassOrProtocolName=_requiredClassOrProtocolName;
-@property (copy, nonatomic) NSString *specifiedClassName; // @synthesize specifiedClassName=_specifiedClassName;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
-@property (readonly, nonatomic, getter=isValid) BOOL valid; // @dynamic valid;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
-+ (id)bundleWithPath:(id)arg1 availableSpecifications:(id)arg2;
 - (void).cxx_destruct;
-- (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithBundle:(id)arg1;
 - (BOOL)loadPlugin;
 - (BOOL)loadPlugin:(CDUnknownBlockType)arg1;
 - (id)succinctDescription;

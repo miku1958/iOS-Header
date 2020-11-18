@@ -22,5 +22,7 @@
     MISSING_TYPE *paywallModule;
 }
 
+- (void)plugin:(id)arg1 didResizePluginModel:(id)arg2;
+
 @end
 

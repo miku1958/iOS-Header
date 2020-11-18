@@ -9,7 +9,7 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSDictionary, NSString;
+@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface BBSectionInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -27,6 +27,9 @@
     NSString *_factorySectionID;
     NSArray *_dataProviderIDs;
     BOOL _suppressFromSettings;
+    BOOL _isAppClip;
+    BOOL _isModificationAllowed;
+    BOOL _isRestricted;
     BOOL _hideWeeApp;
     NSString *_appName;
     long long _subsectionPriority;
@@ -37,6 +40,7 @@
 @property (nonatomic) unsigned long long alertType;
 @property (nonatomic) BOOL allowsNotifications;
 @property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (nonatomic) NSDate *authorizationExpirationDate;
 @property (nonatomic) long long authorizationStatus;
 @property (nonatomic) unsigned long long bulletinCount;
 @property (nonatomic) long long bulletinGroupingSetting;
@@ -51,7 +55,11 @@
 @property (nonatomic) BOOL hideWeeApp; // @synthesize hideWeeApp=_hideWeeApp;
 @property (copy, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property (readonly, copy, nonatomic) NSData *iconData;
+@property (nonatomic) BOOL isAppClip; // @synthesize isAppClip=_isAppClip;
 @property (readonly, nonatomic) BOOL isDeliveredQuietly;
+@property (nonatomic) BOOL isModificationAllowed; // @synthesize isModificationAllowed=_isModificationAllowed;
+@property (nonatomic) BOOL isRestricted; // @synthesize isRestricted=_isRestricted;
+@property (nonatomic) NSDate *lastUserGrantedAuthorizationDate;
 @property (nonatomic) long long lockScreenSetting;
 @property (copy, nonatomic) BBSectionInfoSettings *managedSectionInfoSettings;
 @property (nonatomic) unsigned long long notificationCenterLimit;
@@ -94,6 +102,7 @@
 - (id)copyFromManagedSettings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)deliverQuietly:(BOOL)arg1;
+- (void)deliverQuietly:(BOOL)arg1 changeAuthorizationStatus:(BOOL)arg2;
 - (id)description;
 - (long long)disabledSettingForSetting:(long long)arg1;
 - (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1 globalSpokenNotificationSetting:(long long)arg2;
@@ -105,8 +114,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDefaultsForSectionType:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)queryAndUseManagedSettings;
-- (BOOL)queryAndUseManagedSettingsForSectionID:(id)arg1;
+- (void)makeAuthorizationPermanent;
+- (void)queryAndUseManagedSettings;
+- (void)queryAndUseManagedSettingsForSectionID:(id)arg1;
 - (id)replacementObjectForCoder:(id)arg1;
 - (void)setEmergencySetting:(long long)arg1;
 - (void)setShowsInLockScreen:(BOOL)arg1;

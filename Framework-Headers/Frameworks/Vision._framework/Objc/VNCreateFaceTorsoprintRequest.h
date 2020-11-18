@@ -25,11 +25,11 @@
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
-+ (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (long long)dependencyProcessingOrdinality;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

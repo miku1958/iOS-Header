@@ -64,6 +64,7 @@
 - (double)_effectiveLeadingTrailingPadding;
 - (struct CGSize)_effectiveUnexpandedSize;
 - (double)_effectiveValueForMinValue:(double)arg1 withFont:(id)arg2;
+- (void)_handleSecondaryClickEventForGestureRecognizer:(id)arg1;
 - (void)_handleTouchUpInsideWithEvent:(id)arg1;
 - (id)_labelFont;
 - (void)_sendActionsForEvents:(unsigned long long)arg1 withEvent:(id)arg2;

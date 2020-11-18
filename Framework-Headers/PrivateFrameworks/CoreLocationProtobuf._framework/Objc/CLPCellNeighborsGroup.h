@@ -15,28 +15,33 @@
     NSMutableArray *_cdmaNeighbors;
     NSMutableArray *_gsmNeighbors;
     NSMutableArray *_lteNeighbors;
+    NSMutableArray *_nrNeighbors;
     NSMutableArray *_scdmaNeighbors;
 }
 
 @property (strong, nonatomic) NSMutableArray *cdmaNeighbors; // @synthesize cdmaNeighbors=_cdmaNeighbors;
 @property (strong, nonatomic) NSMutableArray *gsmNeighbors; // @synthesize gsmNeighbors=_gsmNeighbors;
 @property (strong, nonatomic) NSMutableArray *lteNeighbors; // @synthesize lteNeighbors=_lteNeighbors;
+@property (strong, nonatomic) NSMutableArray *nrNeighbors; // @synthesize nrNeighbors=_nrNeighbors;
 @property (strong, nonatomic) NSMutableArray *scdmaNeighbors; // @synthesize scdmaNeighbors=_scdmaNeighbors;
 
 + (Class)cdmaNeighborsType;
 + (Class)gsmNeighborsType;
 + (Class)lteNeighborsType;
++ (Class)nrNeighborsType;
 + (Class)scdmaNeighborsType;
 - (void).cxx_destruct;
 - (void)addCdmaNeighbors:(id)arg1;
 - (void)addGsmNeighbors:(id)arg1;
 - (void)addLteNeighbors:(id)arg1;
+- (void)addNrNeighbors:(id)arg1;
 - (void)addScdmaNeighbors:(id)arg1;
 - (id)cdmaNeighborsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cdmaNeighborsCount;
 - (void)clearCdmaNeighbors;
 - (void)clearGsmNeighbors;
 - (void)clearLteNeighbors;
+- (void)clearNrNeighbors;
 - (void)clearScdmaNeighbors;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -49,6 +54,8 @@
 - (id)lteNeighborsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lteNeighborsCount;
 - (void)mergeFrom:(id)arg1;
+- (id)nrNeighborsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)nrNeighborsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)scdmaNeighborsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)scdmaNeighborsCount;

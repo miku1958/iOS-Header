@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityApplyPlayPauseDeleteButtonLabel;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)accessibilityViewIsModal;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateProgress;
 
 @end

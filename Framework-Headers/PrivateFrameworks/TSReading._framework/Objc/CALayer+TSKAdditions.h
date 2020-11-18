@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) struct CGPoint center;
 
++ (Class)tsd_renderableClass;
 - (void)addDistortAnimationWithVector:(struct CGPoint)arg1;
 - (void)addDragRotationAnimationWithDelta:(struct CGPoint)arg1;
 - (void)addFlipTransitionAnimationToLayer:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGEventEnrichment-Protocol.h>
 #import <PhotosGraph/PGGraphFullMeaninglessEvent-Protocol.h>
@@ -13,8 +13,14 @@
 
 @class NSDate, NSString, PGGraphHighlightGroupNode;
 
-@interface PGGraphHighlightNode : PGGraphNode <PGGraphFullMeaninglessEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment>
+@interface PGGraphHighlightNode : PGGraphOptimizedNode <PGGraphFullMeaninglessEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment>
 {
+    double _localStartTimestamp;
+    double _localEndTimestamp;
+    NSString *_name;
+    NSString *_uuid;
+    double _universalStartTimestamp;
+    double _universalEndTimestamp;
 }
 
 @property (readonly) NSString *UUID;
@@ -30,24 +36,31 @@
 @property (readonly) PGGraphHighlightGroupNode *highlightGroupNode;
 @property (readonly) BOOL isAggregation;
 @property (readonly) BOOL isInteresting;
+@property (readonly) BOOL isInterestingWithAlternateJunking;
 @property (readonly) BOOL isLongTrip;
 @property (readonly) BOOL isPartOfAggregation;
 @property (readonly) BOOL isPartOfLongTrip;
 @property (readonly) BOOL isPartOfShortTrip;
 @property (readonly) BOOL isPartOfTrip;
 @property (readonly) BOOL isShortTrip;
+@property (readonly) BOOL isSmartInteresting;
 @property (readonly) BOOL isTrip;
-@property (readonly) NSDate *localEndDate;
+@property (strong, nonatomic) NSDate *localEndDate;
 @property (readonly) NSString *localIdentifier;
-@property (readonly) NSDate *localStartDate;
+@property (strong, nonatomic) NSDate *localStartDate;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) double neighborScore;
 @property (readonly) unsigned long long numberOfRegularGemAssets;
 @property (readonly) unsigned long long numberOfShinyGemAssets;
 @property (readonly) BOOL petIsPresent;
 @property (readonly) Class superclass;
-@property (readonly) NSDate *universalEndDate;
-@property (readonly) NSDate *universalStartDate;
-@property (readonly, nonatomic) NSString *uuid;
+@property (readonly) double timestampUTCEnd; // @synthesize timestampUTCEnd=_universalEndTimestamp;
+@property (readonly) double timestampUTCStart; // @synthesize timestampUTCStart=_universalStartTimestamp;
+@property (readonly) double timezoneOffsetAtEnd;
+@property (readonly) double timezoneOffsetAtStart;
+@property (strong, nonatomic) NSDate *universalEndDate;
+@property (strong, nonatomic) NSDate *universalStartDate;
+@property (readonly) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (CDStruct_c591f335)_promotionScoreDescriptorWithMomentNodes:(id)arg1;
 + (double)aboveAveragePromotionScoreWithPromotionScoreDescriptor:(CDStruct_c591f335)arg1;
@@ -65,6 +78,7 @@
 + (double)promotionScoreWithHighlightNode:(id)arg1 enrichmentState:(unsigned short)arg2 numberOfExtendedAssets:(unsigned long long)arg3;
 + (id)propertiesWithHighlight:(id)arg1;
 + (id)scoreSortDescriptors;
+- (void).cxx_destruct;
 - (id)addressNodes;
 - (id)anniversaryPersonNode;
 - (id)birthdayPersonNode;
@@ -74,6 +88,7 @@
 - (id)connectedEventsWithTargetDomain:(unsigned short)arg1;
 - (id)dateNodes;
 - (id)debugDictionary;
+- (unsigned short)domain;
 - (BOOL)endsBeforeLocalDate:(id)arg1;
 - (id)enrichableEvent;
 - (void)enumerateBusinessesUsingBlock:(CDUnknownBlockType)arg1;
@@ -82,22 +97,27 @@
 - (void)eventEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fetchAssetCollection;
 - (BOOL)hasPeopleCountingMe:(BOOL)arg1;
+- (BOOL)hasProperties:(id)arg1;
 - (id)highConfidenceSceneNodes;
 - (id)holidayNodes;
-- (BOOL)isSmartInteresting;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
 - (id)keywordsForRelatedType:(unsigned long long)arg1 focusOnNodes:(id)arg2;
+- (id)label;
 - (id)locatedEvent;
 - (id)meaningLabels;
 - (id)meaningNodes;
 - (id)meaningfulEvent;
 - (id)momentNodes;
 - (id)naturalLanguageFeatures;
+- (double)nonMeaningfulPromotionScoreForTripKeyAssetWithEnrichmentState:(unsigned short)arg1;
 - (unsigned long long)numberOfAssets;
 - (unsigned long long)numberOfMoments;
 - (id)peopledEvent;
 - (id)personNodes;
 - (id)photoEvent;
 - (id)poiNodes;
+- (id)propertyDictionary;
 - (id)publicEventNodes;
 - (id)relatableEvent;
 - (id)relatableNode;
@@ -107,6 +127,7 @@
 - (id)scenedEvent;
 - (id)searchConfidenceSceneNodes;
 - (id)seasonNodes;
+- (void)setLocalProperties:(id)arg1;
 - (id)socialGroupNodes;
 - (id)sortedMomentNodes;
 - (BOOL)startsAfterLocalDate:(id)arg1;

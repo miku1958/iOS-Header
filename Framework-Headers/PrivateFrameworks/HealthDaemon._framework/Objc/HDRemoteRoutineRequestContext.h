@@ -8,6 +8,7 @@
 
 @class HDCodableRoutineRequestMessage;
 
+__attribute__((visibility("hidden")))
 @interface HDRemoteRoutineRequestContext : NSObject
 {
     HDCodableRoutineRequestMessage *_request;

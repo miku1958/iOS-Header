@@ -26,6 +26,7 @@
     UIColor *_backgroundColor;
     NSNumber *_minimumHeight;
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
+    NSString *_domainNameForIndicator;
 }
 
 @property (strong, nonatomic) NSArray *alternateImages; // @synthesize alternateImages=_alternateImages;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) LPCaptionBarPresentationProperties *captionBar; // @synthesize captionBar=_captionBar;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *domainNameForIndicator; // @synthesize domainNameForIndicator=_domainNameForIndicator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) LPImagePresentationProperties *imageProperties; // @synthesize imageProperties=_imageProperties;

@@ -14,6 +14,7 @@
 
 @interface HDNanoSyncStore : NSObject <NRDevicePropertyObserver, HDSyncStore>
 {
+    HDProfile *_profile;
     NSString *_remoteSystemBuildVersion;
     NSString *_remoteProductType;
     HDNanoPairingEntity *_pairingEntity;
@@ -28,9 +29,9 @@
     NSError *_lastCompleteIncomingSyncError;
     NSMutableDictionary *_expectedSequenceNumbers;
     NSArray *_orderedSyncEntities;
+    BOOL _isTinkerPairing;
     BOOL _master;
     BOOL _needsSyncOnUnlock;
-    HDProfile *_profile;
     IDSDevice *_identityServicesDevice;
     NRDevice *_nanoRegistryDevice;
     id<HDNanoSyncStoreDelegate> _delegate;
@@ -40,6 +41,7 @@
 }
 
 @property (readonly, getter=isActive) BOOL active;
+@property (readonly, getter=isAltAccount) BOOL altAccount;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDNanoSyncStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -57,7 +59,6 @@
 @property (nonatomic) BOOL needsSyncOnUnlock; // @synthesize needsSyncOnUnlock=_needsSyncOnUnlock;
 @property (readonly, copy, nonatomic) NSSet *obliteratedDatabaseUUIDs; // @synthesize obliteratedDatabaseUUIDs=_obliteratedDatabaseUUIDs;
 @property (copy, nonatomic) NSUUID *persistentUUID;
-@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly) int protocolVersion;
 @property (readonly, copy) NSString *remoteProductType;
 @property (readonly, copy) NSString *remoteSystemBuildVersion;
@@ -70,9 +71,11 @@
 
 + (id)_observedDeviceProperties;
 + (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
++ (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3 tinkerPaired:(BOOL)arg4;
 + (id)orderedSyncEntitiesForProfile:(id)arg1 protocolVersion:(int)arg2 companion:(BOOL)arg3;
++ (id)tinkerNanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
 - (void).cxx_destruct;
-- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 obliteratedDatabaseUUIDs:(id)arg4 protocolVersion:(int)arg5 delegate:(id)arg6 profile:(id)arg7;
+- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 obliteratedDatabaseUUIDs:(id)arg4 protocolVersion:(int)arg5 delegate:(id)arg6 profile:(id)arg7 tinkerPairing:(BOOL)arg8;
 - (void)_notifyIncomingSyncObservers;
 - (BOOL)_savePairingEntity;
 - (void)_setRestoreState:(long long)arg1;
@@ -95,6 +98,7 @@
 - (id)orderedSyncEntities;
 - (id)pendingRequestContextForUUID:(id)arg1;
 - (void)prepareForObliteration;
+- (id)profile;
 - (void)removeExpiredIncomingSyncObservers;
 - (void)removePendingRequestContextForUUID:(id)arg1;
 - (void)setExpectedSequenceNumber:(long long)arg1 forSyncEntityClass:(Class)arg2;

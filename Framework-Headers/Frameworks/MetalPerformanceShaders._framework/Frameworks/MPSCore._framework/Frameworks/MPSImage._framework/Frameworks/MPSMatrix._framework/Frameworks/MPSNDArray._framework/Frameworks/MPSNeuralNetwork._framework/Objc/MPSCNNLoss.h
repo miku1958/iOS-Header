@@ -6,22 +6,20 @@
 
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
-@class MPSCNNLogSoftMax, MPSCNNNeuron, MPSNNReduceUnary;
+@class MPSImage, MPSMatrix;
 
 @interface MPSCNNLoss : MPSCNNKernel
 {
     unsigned int _lossType;
     int _reductionType;
+    BOOL _reduceAcrossBatch;
     float _weight;
     float _labelSmoothing;
     unsigned long long _numberOfClasses;
     float _epsilon;
     float _delta;
-    MPSCNNLogSoftMax *_logSoftMax;
-    MPSNNReduceUnary *_reduceRows;
-    MPSNNReduceUnary *_reduceColumns;
-    MPSNNReduceUnary *_reduceFeatureChannels;
-    MPSCNNNeuron *_arithmetic;
+    MPSMatrix *_reductionBuffer;
+    MPSImage *_firstLossImage;
 }
 
 @property (readonly, nonatomic) float delta; // @synthesize delta=_delta;
@@ -29,10 +27,11 @@
 @property (readonly, nonatomic) float labelSmoothing; // @synthesize labelSmoothing=_labelSmoothing;
 @property (readonly, nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 @property (readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
+@property (readonly, nonatomic) BOOL reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property (readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
-@property (readonly, nonatomic) float weight; // @synthesize weight=_weight;
+@property (nonatomic) float weight; // @synthesize weight=_weight;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
@@ -44,7 +43,6 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 lossDescriptor:(id)arg2;
-- (void)initializeSupportFiltersWithDevice:(id)arg1;
 - (unsigned long long)maxBatchSize;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3;

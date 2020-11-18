@@ -6,22 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class FBDisplayLayoutElement, UIApplicationSceneDeactivationAssertion, UIWindow;
+@class FBDisplayLayoutElement, NSMutableArray, UIApplicationSceneDeactivationAssertion, UIWindow;
+@protocol BSInvalidatable;
 
 @interface SBCoverSheetSceneManager : NSObject
 {
+    BOOL _performingSceneUpdate;
     UIWindow *_coverSheetWindow;
     FBDisplayLayoutElement *_displayLayoutElement;
     UIApplicationSceneDeactivationAssertion *_notificationCenterAssertion;
     UIApplicationSceneDeactivationAssertion *_systemAnimationAssertion;
+    NSMutableArray *_pendingSceneUpdateBlocks;
+    id<BSInvalidatable> _stateCaptureInvalidatable;
 }
 
 @property (weak, nonatomic) UIWindow *coverSheetWindow; // @synthesize coverSheetWindow=_coverSheetWindow;
 @property (strong, nonatomic) FBDisplayLayoutElement *displayLayoutElement; // @synthesize displayLayoutElement=_displayLayoutElement;
 @property (strong, nonatomic) UIApplicationSceneDeactivationAssertion *notificationCenterAssertion; // @synthesize notificationCenterAssertion=_notificationCenterAssertion;
+@property (strong, nonatomic) NSMutableArray *pendingSceneUpdateBlocks; // @synthesize pendingSceneUpdateBlocks=_pendingSceneUpdateBlocks;
+@property (nonatomic, getter=isPerformingSceneUpdate) BOOL performingSceneUpdate; // @synthesize performingSceneUpdate=_performingSceneUpdate;
+@property (strong, nonatomic) id<BSInvalidatable> stateCaptureInvalidatable; // @synthesize stateCaptureInvalidatable=_stateCaptureInvalidatable;
 @property (strong, nonatomic) UIApplicationSceneDeactivationAssertion *systemAnimationAssertion; // @synthesize systemAnimationAssertion=_systemAnimationAssertion;
 
 - (void).cxx_destruct;
+- (void)_performNextSceneUpdateBlock;
+- (void)_performSceneUpdateBlock:(CDUnknownBlockType)arg1;
 - (void)_setDisplayLayoutElementActive:(BOOL)arg1;
 - (void)_setSceneBackgrounded:(BOOL)arg1 suspendUnderLockEnvironment:(BOOL)arg2;
 - (void)_updateForegroundScenesForNotificationCenter:(BOOL)arg1;

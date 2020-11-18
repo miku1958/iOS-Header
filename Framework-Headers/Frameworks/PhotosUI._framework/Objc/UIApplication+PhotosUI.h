@@ -12,6 +12,7 @@
 + (id)pu_debugCurrentAsset;
 + (id)pu_debugCurrentViewModel;
 + (id)pu_firstViewControllerPassingTest:(CDUnknownBlockType)arg1;
++ (void)pu_prepareCPAnalytics;
 - (id)ppt_testDefinitions;
 - (id)pu_beginDisablingIdleTimer;
 - (void)pu_endDisablingIdleTimer:(id)arg1;

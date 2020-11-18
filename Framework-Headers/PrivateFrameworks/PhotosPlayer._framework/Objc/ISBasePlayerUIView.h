@@ -9,7 +9,7 @@
 #import <PhotosPlayer/ISBasePlayerOutput-Protocol.h>
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
+@class CAMeshTransform, ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
 @protocol ISBasePlayerUIViewChangeObserver, OS_dispatch_queue;
 
 @interface ISBasePlayerUIView : UIView <ISChangeObserver, ISBasePlayerOutput>
@@ -23,19 +23,20 @@
     UIView *_customPhotoView;
     UIImage *_overrideImage;
     CDUnknownBlockType _videoLayerReadyForDisplayChangeHandler;
-    UIImageView *__photoView;
-    ISVideoPlayerUIView *__videoView;
-    UIView *__containerView;
+    CAMeshTransform *_videoTransform;
+    UIView *_containerView;
+    UIView *_videoContainerView;
     ISWrappedAVAudioSession *_wrappedAudioSession;
     id<ISBasePlayerUIViewChangeObserver> __changeObserver;
+    ISVideoPlayerUIView *_videoBlurView;
+    UIImageView *_photoView;
+    ISVideoPlayerUIView *_videoView;
     struct CGPoint _scaleAnchorOffset;
     struct CGRect _contentsRect;
 }
 
 @property (weak, nonatomic, setter=_setChangeObserver:) id<ISBasePlayerUIViewChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
-@property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
-@property (readonly, nonatomic) UIImageView *_photoView; // @synthesize _photoView=__photoView;
-@property (readonly, nonatomic) ISVideoPlayerUIView *_videoView; // @synthesize _videoView=__videoView;
+@property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property (strong, nonatomic) UIView *customPhotoView; // @synthesize customPhotoView=_customPhotoView;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,10 +45,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isVideoReadyForDisplay;
 @property (strong, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
+@property (readonly, nonatomic) UIImageView *photoView; // @synthesize photoView=_photoView;
 @property (strong, nonatomic) ISBasePlayer *player; // @synthesize player=_player;
 @property (nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) ISVideoPlayerUIView *videoBlurView; // @synthesize videoBlurView=_videoBlurView;
+@property (readonly, nonatomic) UIView *videoContainerView; // @synthesize videoContainerView=_videoContainerView;
 @property (copy, nonatomic) CDUnknownBlockType videoLayerReadyForDisplayChangeHandler; // @synthesize videoLayerReadyForDisplayChangeHandler=_videoLayerReadyForDisplayChangeHandler;
+@property (copy, nonatomic) CAMeshTransform *videoTransform; // @synthesize videoTransform=_videoTransform;
+@property (readonly, nonatomic) ISVideoPlayerUIView *videoView; // @synthesize videoView=_videoView;
 @property (strong, nonatomic, setter=_setWrappedAudioSession:) ISWrappedAVAudioSession *wrappedAudioSession; // @synthesize wrappedAudioSession=_wrappedAudioSession;
 
 + (Class)playerClass;

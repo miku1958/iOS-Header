@@ -17,6 +17,7 @@
 {
     BOOL _useFileCache;
     BOOL _wasUserRequested;
+    BOOL _useShortTimeoutInterval;
     BOOL _sendDataUpdateCallback;
     BOOL _finished;
     NSURL *_url;
@@ -26,6 +27,8 @@
     double _timestamp;
     NSString *_filePath;
     DAStatusReport *_statusReport;
+    long long _expectedDataSize;
+    long long _receivedDataSize;
     NSURLSession *_session;
     NSURLSessionDataTask *_task;
     NSMutableData *_connectionData;
@@ -39,12 +42,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SubCalURLRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long expectedDataSize; // @synthesize expectedDataSize=_expectedDataSize;
 @property (strong, nonatomic) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
 @property (strong, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
 @property (nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSTimer *idleTimer; // @synthesize idleTimer=_idleTimer;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
+@property (readonly, nonatomic) long long receivedDataSize; // @synthesize receivedDataSize=_receivedDataSize;
 @property (nonatomic) BOOL sendDataUpdateCallback; // @synthesize sendDataUpdateCallback=_sendDataUpdateCallback;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (strong, nonatomic) NSString *startRunloopDescriptionString; // @synthesize startRunloopDescriptionString=_startRunloopDescriptionString;
@@ -55,6 +60,7 @@
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (nonatomic) BOOL useFileCache; // @synthesize useFileCache=_useFileCache;
+@property (nonatomic) BOOL useShortTimeoutInterval; // @synthesize useShortTimeoutInterval=_useShortTimeoutInterval;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property (nonatomic) BOOL wasUserRequested; // @synthesize wasUserRequested=_wasUserRequested;
 

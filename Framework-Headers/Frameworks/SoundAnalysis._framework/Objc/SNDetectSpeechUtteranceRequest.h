@@ -6,28 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSString, SNSpeechUtteranceDetector;
-@protocol SNAnalyzing;
+@class NSString;
 
-@interface SNDetectSpeechUtteranceRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNDetectSpeechUtteranceRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
-    SNSpeechUtteranceDetector *_detector;
+    long long _requestType;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) double decisionDelay;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) long long requestType; // @synthesize requestType=_requestType;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (BOOL)detected;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestType:(long long)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDetectSpeechUtteranceRequest:(id)arg1;
 
 @end
 

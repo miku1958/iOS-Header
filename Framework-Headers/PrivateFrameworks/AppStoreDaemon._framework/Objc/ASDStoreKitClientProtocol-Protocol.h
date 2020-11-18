@@ -13,6 +13,7 @@
 - (void)downloadAdded:(NSDictionary *)arg1;
 - (void)downloadRemoved:(NSDictionary *)arg1;
 - (void)downloadStatusChanged:(NSDictionary *)arg1;
+- (void)removedEntitlementsForProductIdentifiers:(NSArray *)arg1;
 - (void)removedTransactions:(NSArray *)arg1;
 - (void)shouldContinueTransaction:(NSDictionary *)arg1 withNewStorefront:(NSString *)arg2 replyBlock:(void (^)(BOOL))arg3;
 - (void)storefrontChanged:(NSDictionary *)arg1;

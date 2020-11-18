@@ -8,5 +8,6 @@
 
 @interface NSAttributedString (HKAdditions)
 + (id)hk_attributedStringForSpacing:(double)arg1;
++ (id)hk_attributedStringForSpacing:(double)arg1 nonBreaking:(BOOL)arg2;
 @end
 

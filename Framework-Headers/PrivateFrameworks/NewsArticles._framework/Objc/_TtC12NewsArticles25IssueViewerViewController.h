@@ -13,10 +13,9 @@
     MISSING_TYPE *contentViewControllerFactory;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
-    MISSING_TYPE *applicationStateManager;
+    MISSING_TYPE *sceneStateManager;
     MISSING_TYPE *coverViewManager;
     MISSING_TYPE *navigationItemStyle;
-    MISSING_TYPE *eventManager;
     MISSING_TYPE *contentViewController;
     MISSING_TYPE *afterLoad;
 }

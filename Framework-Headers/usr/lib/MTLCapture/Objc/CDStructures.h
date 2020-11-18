@@ -20,8 +20,9 @@ struct GTTraceContext {
     struct apr_hash_t *_field5;
     union FreeNode *_field6;
     _Atomic int _field7;
-    struct GTTraceStream *_field8;
-    struct GTTraceStoreList _field9;
+    char _field8[4];
+    struct GTTraceStream *_field9;
+    struct GTTraceStoreList _field10[16];
 };
 
 struct GTTraceMemPool;
@@ -52,7 +53,7 @@ struct IndirectArgumentBufferCapabilities {
 };
 
 struct MTLTargetDeviceArch {
-    unsigned int _field1;
+    unsigned long long _field1;
     unsigned int _field2;
     char *_field3;
 };
@@ -96,6 +97,18 @@ struct apr_hash_t;
 
 struct apr_pool_t;
 
+struct atomic<int> {
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
+};
+
+struct atomic<unsigned int> {
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int __a_value;
+    } __a_;
+};
+
 struct dy_transport_message_header {
     unsigned int _field1;
     unsigned int _field2;
@@ -120,12 +133,12 @@ struct iovec {
 };
 
 struct sm_region_header {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
+    struct atomic<unsigned int> _field1;
+    struct atomic<unsigned int> _field2;
+    struct atomic<unsigned int> _field3;
+    struct atomic<unsigned int> _field4;
+    struct atomic<unsigned int> _field5;
+    struct atomic<unsigned int> _field6;
     unsigned int _field7;
     unsigned int _field8;
 };
@@ -184,16 +197,16 @@ typedef struct {
     unsigned int _field16;
     unsigned int _field17;
     unsigned int _field18;
-    float _field19;
-    float _field20;
+    unsigned int _field19;
+    unsigned int _field20;
     unsigned int _field21;
     unsigned int _field22;
     unsigned int _field23;
     unsigned int _field24;
     unsigned int _field25;
     unsigned int _field26;
-    unsigned int _field27;
-    unsigned int _field28;
+    float _field27;
+    float _field28;
     unsigned int _field29;
     unsigned int _field30;
     unsigned int _field31;
@@ -225,8 +238,10 @@ typedef struct {
     unsigned int _field57;
     unsigned int _field58;
     unsigned int _field59;
-    unsigned long long _field60;
-} CDStruct_a9d832e7;
+    unsigned int _field60;
+    unsigned int _field61;
+    unsigned long long _field62;
+} CDStruct_4a42450c;
 
 typedef struct {
     unsigned int _field1;
@@ -311,4 +326,11 @@ typedef struct {
 union FreeNode;
 
 union GTTraceStoreNode;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    CDStruct_4af8c268 _field1;
+    CDStruct_4af8c268 _field2;
+} CDUnion_c6e49ed4;
 

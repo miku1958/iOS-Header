@@ -76,6 +76,7 @@
 - (id)description;
 - (void)finalizeWeighting;
 - (id)initWithSettings:(id)arg1 configuration:(id)arg2;
+- (struct CGImage *)variableBlurInputMask;
 
 @end
 

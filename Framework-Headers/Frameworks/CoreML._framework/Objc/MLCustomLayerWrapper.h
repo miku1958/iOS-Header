@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 + (id)espressoTensorsToCoremlTensorsGPU:(id)arg1;
 + (id)factory;
 + (id)getStrides:(id)arg1;
-+ (int)intFromFourBytes:(char *)arg1;
 - (void).cxx_destruct;
 - (void)computeOnCPUWithInputTensors:(id)arg1 outputTensors:(id)arg2;
 - (void)encodeToMetalCommandBuffer:(id)arg1 inputTensors:(id)arg2 outputTensors:(id)arg3;

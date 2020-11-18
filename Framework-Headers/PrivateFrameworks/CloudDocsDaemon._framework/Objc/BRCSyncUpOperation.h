@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface BRCSyncUpOperation : _BRCOperation <BRCOperationSubclass>
 {
     unsigned long long _requestID;
+    BOOL _encounteredErrorOnPCSChainedItem;
     float _cost;
     NSMutableArray *_recordsToSave;
     NSMutableArray *_packagesInFlight;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMutableOrderedSet *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL encounteredErrorOnPCSChainedItem; // @synthesize encounteredErrorOnPCSChainedItem=_encounteredErrorOnPCSChainedItem;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;
 @property (strong, nonatomic) NSMutableArray *iworkUnsharedShareIDs; // @synthesize iworkUnsharedShareIDs=_iworkUnsharedShareIDs;

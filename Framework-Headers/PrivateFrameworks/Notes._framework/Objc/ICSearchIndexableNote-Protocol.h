@@ -6,16 +6,19 @@
 
 #import <Notes/ICSearchIndexable-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSSet, NSString;
 
 @protocol ICSearchIndexableNote <ICSearchIndexable>
 
+@property (readonly, nonatomic) long long currentStatus;
+@property (readonly, nonatomic) BOOL hasUnreadChanges;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
 @property (readonly, nonatomic) BOOL isModernNote;
-@property (readonly, nonatomic) NSArray *noteCellKeyPaths;
+@property (readonly, nonatomic) BOOL isPinned;
+@property (readonly, nonatomic) NSSet *noteCellKeyPaths;
 
 - (NSString *)accountName;
 - (NSString *)contentInfoText;
-- (NSDate *)dateForCurrentSortType;
 - (NSString *)folderName;
 - (NSString *)folderNameForNoteList;
 - (NSString *)identifier;

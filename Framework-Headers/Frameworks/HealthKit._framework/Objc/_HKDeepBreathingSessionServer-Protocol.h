@@ -9,8 +9,8 @@
 @class NSDate;
 
 @protocol _HKDeepBreathingSessionServer <NSObject>
-- (void)endSessionWithEndReason:(long long)arg1;
-- (void)startGuiding;
-- (void)startSessionWithStartDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_endSessionWithEndReason:(long long)arg1;
+- (void)remote_startGuiding;
+- (void)remote_startSessionWithStartDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

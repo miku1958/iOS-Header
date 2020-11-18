@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addBuilding:(CDStruct_985a2d1c *)arg1 index:(unsigned long long)arg2 ofTotal:(unsigned long long)arg3 accessor:(struct ResourceAccessor *)arg4 triangulator:(Triangulator_edf345a1 *)arg5 prepareExtrusion:(BOOL)arg6 forRoofStyle:(unsigned char)arg7 scaleThreshold:(float)arg8;
-- (void)addExtrusionForBuilding:(CDStruct_985a2d1c *)arg1 index:(unsigned long long)arg2 ofTotal:(unsigned long long)arg3;
-- (BOOL)addPointyRoofForBuilding:(CDStruct_985a2d1c *)arg1 buildingModel:(unsigned char)arg2 scaleThreshold:(float)arg3 styleIndex:(float)arg4;
-- (BOOL)canConstructPointyRoofForPolygon:(CDStruct_a190bee8 *)arg1 building:(CDStruct_985a2d1c *)arg2 buildingModel:(unsigned char)arg3 scaleThreshold:(float)arg4;
+- (void)addBuilding:(CDStruct_1636c0da *)arg1 index:(unsigned long long)arg2 ofTotal:(unsigned long long)arg3 accessor:(struct ResourceAccessor *)arg4 triangulator:(Triangulator_edf345a1 *)arg5 prepareExtrusion:(BOOL)arg6 forRoofStyle:(unsigned char)arg7 scaleThreshold:(float)arg8;
+- (void)addExtrusionForBuilding:(CDStruct_1636c0da *)arg1 index:(unsigned long long)arg2 ofTotal:(unsigned long long)arg3;
+- (BOOL)addPointyRoofForBuilding:(CDStruct_1636c0da *)arg1 buildingModel:(unsigned char)arg2 scaleThreshold:(float)arg3 styleIndex:(float)arg4;
+- (BOOL)canConstructPointyRoofForPolygon:(CDStruct_887e071c *)arg1 building:(CDStruct_1636c0da *)arg2 buildingModel:(unsigned char)arg3 scaleThreshold:(float)arg4;
 - (const MultiRange_4bdc93a8 *)commitRangesToExtrusionFillRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_5fd0b804)arg4;
 - (const MultiRange_4bdc93a8 *)commitRangesToExtrusionStrokeRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_5fd0b804)arg4;
 - (const MultiRange_4bdc93a8 *)commitRangesToPointyRoofFillRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_5fd0b804)arg4;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (unsigned char)maxAttributeSetsPerGroup;
 - (const MeshVendor_e321e873 *)pointyRoofFillMeshVendor;
 - (const MeshVendor_7adfd6de *)pointyRoofStrokeMeshVendor;
-- (void)prepareForBuilding:(CDStruct_985a2d1c *)arg1 forRoofStyle:(unsigned char)arg2 scaleThreshold:(float)arg3;
+- (void)prepareForBuilding:(CDStruct_1636c0da *)arg1 forRoofStyle:(unsigned char)arg2 scaleThreshold:(float)arg3;
 - (vector_4080291d *)strokeMeshes;
 - (vector_b346fa92 *)styleQueriesForPointyRoofs:(BOOL)arg1 selected:(BOOL)arg2;
 - (void)updateWithStyleManager:(const shared_ptr_a3c46825 *)arg1;

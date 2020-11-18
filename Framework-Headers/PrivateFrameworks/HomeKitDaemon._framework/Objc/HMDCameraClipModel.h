@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSNumber *duration; // @dynamic duration;
 @property (strong, nonatomic) NSData *encryptionKey; // @dynamic encryptionKey;
 @property (strong, nonatomic) NSNumber *encryptionScheme; // @dynamic encryptionScheme;
+@property unsigned long long feedbackStatus;
+@property (strong, nonatomic) NSNumber *feedbackStatusField; // @dynamic feedbackStatusField;
 @property (strong, nonatomic) NSNumber *isComplete; // @dynamic isComplete;
 @property (strong, nonatomic) NSNumber *maximumClipDuration; // @dynamic maximumClipDuration;
 @property (strong, nonatomic) NSArray *posterFramesMetadata; // @dynamic posterFramesMetadata;
@@ -28,20 +30,14 @@
 @property (strong, nonatomic) NSArray *videoMetadataArray; // @dynamic videoMetadataArray;
 @property (strong, nonatomic) HMBStreamingAsset *videoStreamingAsset; // @dynamic videoStreamingAsset;
 
-+ (id)clipsAfterDateQuery;
-+ (id)clipsBeforeDateQuery;
-+ (id)clipsBetweenDatesQuery;
-+ (id)countOfClipsAfterDateQuery;
-+ (id)countOfClipsBeforeDateQuery;
++ (id)clipsBetweenDatesQueryWithIsAscending:(BOOL)arg1;
++ (id)clipsWithNeedsUploadFeedbackStatusQuery;
 + (id)countOfClipsBetweenDatesQuery;
-+ (id)countOfClipsQuery;
 + (id)hmbExternalRecordType;
 + (id)hmbProperties;
 + (id)hmbQueries;
 + (id)incompleteClipsQuery;
-+ (void)load;
 + (id)sentinelParentUUID;
-- (id)createClip;
 - (id)createClipWithSignificantEvents:(id)arg1;
 
 @end

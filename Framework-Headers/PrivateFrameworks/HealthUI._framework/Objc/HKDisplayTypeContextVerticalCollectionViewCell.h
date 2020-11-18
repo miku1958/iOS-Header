@@ -18,14 +18,12 @@
     UIStackView *_contentStackView;
     HKUIMetricColors *_currentMetricColors;
     NSLayoutConstraint *_widthConstraint;
-    NSLayoutConstraint *_heightConstraint;
     NSLayoutConstraint *_maxTitleWidthConstraint;
 }
 
 @property (strong, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
 @property (strong, nonatomic) HKDisplayTypeContextItem *contextItem; // @synthesize contextItem=_contextItem;
 @property (strong, nonatomic) HKUIMetricColors *currentMetricColors; // @synthesize currentMetricColors=_currentMetricColors;
-@property (strong, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *maxTitleWidthConstraint; // @synthesize maxTitleWidthConstraint=_maxTitleWidthConstraint;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;

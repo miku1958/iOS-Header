@@ -68,7 +68,9 @@
 - (void)_updateRingsForCurrentEntryModelAnimated:(BOOL)arg1;
 - (id)_utilityComplicationSlots;
 - (long long)_utilitySlotForSlot:(id)arg1;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
+- (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)curvedCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
 - (id)curvedMaskForSlot:(id)arg1;
 - (void)dealloc;
@@ -79,10 +81,13 @@
 - (long long)faceView:(id)arg1 legacyLayoutOverrideforComplicationType:(unsigned long long)arg2 slot:(id)arg3;
 - (id)faceView:(id)arg1 newLegacyViewForComplication:(id)arg2 family:(long long)arg3 slot:(id)arg4;
 - (id)initForAnalog:(BOOL)arg1 forDevice:(id)arg2;
+- (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (long long)keylineStyleForComplicationSlot:(id)arg1;
 - (id)keylineViewForComplicationSlot:(id)arg1;
 - (void)launchActivityApp;
+- (void)loadLayoutRules;
 - (void)loadLayoutRulesForFaceView:(id)arg1;
+- (id)newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)performWristRaiseAnimation;
 - (void)prepareWristRaiseAnimation;
 - (BOOL)shouldPerformFromZeroWristRaise;

@@ -34,7 +34,7 @@
 
 - (void).cxx_destruct;
 - (id)clone;
-- (struct opaqueCMSampleBuffer *)copySampleBufferAtTime:(CDStruct_1b6d18a9)arg1;
+- (struct opaqueCMSampleBuffer *)copySampleBufferAtTime:(CDStruct_198678f7)arg1;
 - (void)dealloc;
 - (id)initWithMovieURL:(id)arg1 geometry:(id)arg2 applyToEmission:(BOOL)arg3;
 - (void)itemDidFinishPlaying:(id)arg1;

@@ -28,6 +28,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

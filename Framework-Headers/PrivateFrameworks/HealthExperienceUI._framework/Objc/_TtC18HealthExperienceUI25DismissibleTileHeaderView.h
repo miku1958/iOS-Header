@@ -35,6 +35,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)accessibilityAccessoryLabel;
 - (void)didReceiveSignificantTimeChangeNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

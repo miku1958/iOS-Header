@@ -10,6 +10,8 @@
 
 @interface PKEntitlementWhitelist : NSObject
 {
+    int _processIdentifier;
+    BOOL _shareableCredentialProvisioning;
     BOOL _passesAllAccess;
     BOOL _passesOverviewAccess;
     BOOL _passesAddSilently;
@@ -30,20 +32,19 @@
     BOOL _peerPaymentAllAccess;
     BOOL _featuresAllAccess;
     BOOL _supportsDisbursements;
+    BOOL _searchAllAccess;
     BOOL _secureElementPassProvisioning;
     BOOL _credentialStateAccess;
-    BOOL _addSilently;
-    int _processIdentifier;
     NSString *_applicationID;
     NSString *_developerTeamID;
     NSArray *_merchantIdentifiers;
     NSArray *_teamIDs;
     NSArray *_passTypeIDs;
+    NSArray *_passTypeIDPrefixes;
 }
 
 @property (readonly) BOOL AMPCardEnrollment; // @synthesize AMPCardEnrollment=_AMPCardEnrollment;
 @property (readonly) BOOL accessPassProvisioning;
-@property BOOL addSilently; // @synthesize addSilently=_addSilently;
 @property (readonly) BOOL allAccess;
 @property (readonly) BOOL applePayTrustAllAccess; // @synthesize applePayTrustAllAccess=_applePayTrustAllAccess;
 @property (readonly, copy) NSString *applicationID; // @synthesize applicationID=_applicationID;
@@ -57,7 +58,8 @@
 @property (readonly) BOOL manualPaymentPassProvisioning; // @synthesize manualPaymentPassProvisioning=_manualPaymentPassProvisioning;
 @property (readonly, copy) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
 @property (readonly) BOOL passPresentationSuppression; // @synthesize passPresentationSuppression=_passPresentationSuppression;
-@property (copy) NSArray *passTypeIDs; // @synthesize passTypeIDs=_passTypeIDs;
+@property (readonly, copy) NSArray *passTypeIDPrefixes; // @synthesize passTypeIDPrefixes=_passTypeIDPrefixes;
+@property (readonly, copy) NSArray *passTypeIDs; // @synthesize passTypeIDs=_passTypeIDs;
 @property (readonly) BOOL passesAddSilently; // @synthesize passesAddSilently=_passesAddSilently;
 @property (readonly) BOOL passesAllAccess; // @synthesize passesAllAccess=_passesAllAccess;
 @property (readonly) BOOL passesOverviewAccess; // @synthesize passesOverviewAccess=_passesOverviewAccess;
@@ -65,10 +67,12 @@
 @property (readonly) BOOL paymentConfiguration; // @synthesize paymentConfiguration=_paymentConfiguration;
 @property (readonly) BOOL paymentPresentation; // @synthesize paymentPresentation=_paymentPresentation;
 @property (readonly) BOOL peerPaymentAllAccess; // @synthesize peerPaymentAllAccess=_peerPaymentAllAccess;
-@property (readonly) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
+@property (readonly) BOOL searchAllAccess; // @synthesize searchAllAccess=_searchAllAccess;
 @property (readonly) BOOL secureElementPassProvisioning; // @synthesize secureElementPassProvisioning=_secureElementPassProvisioning;
+@property (readonly) BOOL shareableCredentialProvisioning; // @synthesize shareableCredentialProvisioning=_shareableCredentialProvisioning;
 @property (readonly) BOOL supportsDisbursements; // @synthesize supportsDisbursements=_supportsDisbursements;
-@property (copy) NSArray *teamIDs; // @synthesize teamIDs=_teamIDs;
+@property (readonly) BOOL supportsWebPayments;
+@property (readonly, copy) NSArray *teamIDs; // @synthesize teamIDs=_teamIDs;
 @property (readonly) BOOL trustedDeviceEnrollmentInfo; // @synthesize trustedDeviceEnrollmentInfo=_trustedDeviceEnrollmentInfo;
 @property (readonly) BOOL webPayments; // @synthesize webPayments=_webPayments;
 @property (readonly) BOOL winterpegPayments; // @synthesize winterpegPayments=_winterpegPayments;
@@ -78,12 +82,13 @@
 - (id)_arrayValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
 - (BOOL)_boolValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
 - (void *)_copyValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
-- (void)_probeEntitlementsWithConnection:(id)arg1;
+- (BOOL)_probeEntitlementsWithAuditToken:(CDStruct_6ad76789)arg1;
 - (id)_stringValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
 - (id)initWithConnection:(id)arg1;
+- (BOOL)isEntitledForAnyFromUniquePassTypeIDs:(id)arg1;
 - (BOOL)isEntitledForMerchantSession:(id)arg1;
+- (BOOL)isEntitledForPassTypeID:(id)arg1;
 - (BOOL)isEntitledForPaymentRequest:(id)arg1;
-- (BOOL)supportsWebPayments;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class NSSet;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentModifiedUpNextEvent : VUIAppDocumentUpdateEvent <NSCopying>
 {
     NSSet *_addedCanonicalIDs;

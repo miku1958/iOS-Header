@@ -16,11 +16,22 @@
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityKeyCommands;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityMinusButton;
+- (id)_accessibilityPlusButton;
 - (void)_axAnnotateButtons;
+- (id)_axGetDecrementLabel;
+- (id)_axGetIncrementLabel;
 - (BOOL)_axIsAccessibilityNumericalPicker;
+- (id)_axMacIdiomDecrementElement;
+- (id)_axMacIdiomIncrementElement;
+- (void)_axSetDecrementLabel:(id)arg1;
+- (void)_axSetIncrementLabel:(id)arg1;
+- (void)_axSetMacIdiomDecrementElement:(id)arg1;
+- (void)_axSetMacIdiomIncrementElement:(id)arg1;
 - (void)_commonStepperInit;
 - (void)_fkaTapMinus;
 - (void)_fkaTapPlus;
+- (void)_refreshVisualElement;
 - (void)_updateCount:(id)arg1;
 - (BOOL)canBecomeFocused;
 

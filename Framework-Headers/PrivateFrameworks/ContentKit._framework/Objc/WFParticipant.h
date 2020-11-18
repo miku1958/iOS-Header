@@ -17,6 +17,7 @@
     BOOL _currentUser;
     NSURL *_URL;
     NSString *_name;
+    NSString *_emailAddress;
     long long _status;
     long long _role;
     long long _type;
@@ -24,11 +25,12 @@
     NSPredicate *_contactPredicate;
 }
 
-@property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) NSPredicate *contactPredicate; // @synthesize contactPredicate=_contactPredicate;
 @property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser; // @synthesize currentUser=_currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isManaged) BOOL managed; // @synthesize managed=_managed;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -42,7 +44,7 @@
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithEKParticipant:(id)arg1;
-- (id)initWithURL:(id)arg1 name:(id)arg2 status:(long long)arg3 role:(long long)arg4 type:(long long)arg5 sourceIdentifier:(id)arg6 isManaged:(BOOL)arg7 isCurrentUser:(BOOL)arg8 contactPredicate:(id)arg9;
+- (id)initWithURL:(id)arg1 name:(id)arg2 emailAddress:(id)arg3 status:(long long)arg4 role:(long long)arg5 type:(long long)arg6 sourceIdentifier:(id)arg7 isManaged:(BOOL)arg8 isCurrentUser:(BOOL)arg9 contactPredicate:(id)arg10;
 - (id)wfSerializedRepresentation;
 
 @end

@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SpotlightUIInternal/APUIShortLookViewControllerDelegate-Protocol.h>
 #import <SpotlightUIInternal/SFFeedbackListener-Protocol.h>
 #import <SpotlightUIInternal/SPUIResultsViewDelegate-Protocol.h>
 #import <SpotlightUIInternal/SPUISearchHeaderDelegate-Protocol.h>
@@ -14,13 +13,15 @@
 #import <SpotlightUIInternal/SearchUIResultsViewDelegate-Protocol.h>
 #import <SpotlightUIInternal/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, SPUILockScreenFooterView, SPUIResultsViewController, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUITestingHelper, _UILegibilitySettings;
-@protocol SPUISearchViewControllerDelegate;
+@class NSMutableSet, NSString, NSTimer, SPUILockScreenFooterView, SPUINavigationController, SPUIResultsViewController, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUITestingHelper, UIView, _UILegibilitySettings;
+@protocol SPUISearchViewControllerDelegate, SPUISearchViewControllerSizingDelegate;
 
-@interface SPUISearchViewController : UIViewController <SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, SPUIResultsViewDelegate, UIGestureRecognizerDelegate, SFFeedbackListener, SearchUIResultsViewDelegate, APUIShortLookViewControllerDelegate>
+@interface SPUISearchViewController : UIViewController <SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, SPUIResultsViewDelegate, UIGestureRecognizerDelegate, SFFeedbackListener, SearchUIResultsViewDelegate>
 {
     BOOL _internetOverrideForPPT;
     BOOL _lastQueryWasAuthenticated;
+    BOOL _clearQueryOnDismissal;
+    BOOL _expandPlatterOnAppear;
     id<SPUISearchViewControllerDelegate> _delegate;
     _UILegibilitySettings *_legibilitySettings;
     SPUISearchHeader *_searchHeader;
@@ -29,18 +30,24 @@
     SPUIResultsViewController *_searchResultViewController;
     SPUIResultsViewController *_proactiveResultViewController;
     SPUILockScreenFooterView *_lockScreenFooterView;
+    UIView *_tapToRadarView;
     unsigned long long _presentationMode;
     double _timeAtDismissal;
     SPUITestingHelper *_testingHelper;
-    unsigned long long _queryId;
+    NSTimer *_windowExpansionTimer;
     unsigned long long _feedbackBackgroundTaskIdentifier;
+    unsigned long long _queryIdAtInvoke;
+    id<SPUISearchViewControllerSizingDelegate> _sizingDelegate;
+    unsigned long long _presentationSource;
 }
 
 @property (strong) NSMutableSet *allHeaderViews; // @synthesize allHeaderViews=_allHeaderViews;
+@property BOOL clearQueryOnDismissal; // @synthesize clearQueryOnDismissal=_clearQueryOnDismissal;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SPUISearchViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double distanceToTopOfAppIcons;
+@property BOOL expandPlatterOnAppear; // @synthesize expandPlatterOnAppear=_expandPlatterOnAppear;
 @property unsigned long long feedbackBackgroundTaskIdentifier; // @synthesize feedbackBackgroundTaskIdentifier=_feedbackBackgroundTaskIdentifier;
 @property (strong) SPUISearchFirstTimeViewController *firstTimeExperienceViewController; // @synthesize firstTimeExperienceViewController=_firstTimeExperienceViewController;
 @property (readonly) unsigned long long hash;
@@ -49,16 +56,23 @@
 @property BOOL lastQueryWasAuthenticated; // @synthesize lastQueryWasAuthenticated=_lastQueryWasAuthenticated;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong) SPUILockScreenFooterView *lockScreenFooterView; // @synthesize lockScreenFooterView=_lockScreenFooterView;
+@property (strong) SPUINavigationController *navigationController; // @dynamic navigationController;
 @property unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
+@property (readonly) unsigned long long presentationSource; // @synthesize presentationSource=_presentationSource;
 @property (strong) SPUIResultsViewController *proactiveResultViewController; // @synthesize proactiveResultViewController=_proactiveResultViewController;
-@property unsigned long long queryId; // @synthesize queryId=_queryId;
+@property unsigned long long queryIdAtInvoke; // @synthesize queryIdAtInvoke=_queryIdAtInvoke;
 @property (strong) SPUISearchHeader *searchHeader; // @synthesize searchHeader=_searchHeader;
 @property (strong) SPUIResultsViewController *searchResultViewController; // @synthesize searchResultViewController=_searchResultViewController;
+@property (nonatomic) BOOL shouldShowKeyboardInputBars;
+@property (weak) id<SPUISearchViewControllerSizingDelegate> sizingDelegate; // @synthesize sizingDelegate=_sizingDelegate;
 @property (readonly) Class superclass;
+@property (strong) UIView *tapToRadarView; // @synthesize tapToRadarView=_tapToRadarView;
 @property (strong) SPUITestingHelper *testingHelper; // @synthesize testingHelper=_testingHelper;
 @property double timeAtDismissal; // @synthesize timeAtDismissal=_timeAtDismissal;
+@property (strong) NSTimer *windowExpansionTimer; // @synthesize windowExpansionTimer=_windowExpansionTimer;
 
 + (void)_updateHeaderView:(id)arg1 fromText:(id)arg2 fromToken:(id)arg3;
++ (BOOL)displayTapToRadar;
 + (BOOL)isFeedbackSelector:(SEL)arg1;
 + (BOOL)shouldShowAsTypedSuggestion;
 - (void).cxx_destruct;
@@ -68,13 +82,16 @@
 - (void)activateViewController:(id)arg1 animate:(BOOL)arg2;
 - (id)activeViewController;
 - (BOOL)allowInternet;
+- (void)animateChunkyEnabled:(BOOL)arg1;
 - (void)cancelButtonPressed;
 - (void)checkClearTimer;
 - (void)clearSearchResults;
 - (void)clearTimerExpired;
+- (double)contentHeight;
 - (id)contentScrollView;
 - (id)createAdditionalHeaderView;
 - (id)currentQuery;
+- (BOOL)currentQueryIdMatchesResultInGeneralModel;
 - (void)dealloc;
 - (void)dictationButtonPressed;
 - (void)didBeginEditing;
@@ -84,48 +101,56 @@
 - (void)didScrollPastBottomOfContent;
 - (void)didTapInEmptyRegion;
 - (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)dismissCancelButtonAnimated;
-- (void)dismissIfNecessaryForIconDrag;
+- (void)didUpdateKeyboardFocusToResult:(id)arg1 cardSection:(id)arg2;
+- (void)dragInitiated;
+- (void)enableChunky:(BOOL)arg1;
 - (void)endBackgroundTaskIfNeeded;
+- (void)expandWindowIfNeeded;
+- (id)firstResultIgnoringSuggestionsIfNeeded;
 - (void)firstTimeExperienceContinueButtonPressed;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)getUserActivityForResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)hasShortLookViewControllerForResult:(id)arg1;
-- (void)hideKeyboard;
+- (BOOL)hasContentInSearchField;
 - (id)init;
+- (void)invalidateWindowExpansionTimer;
 - (void)launchSiriWithUtteranceText:(id)arg1 source:(long long)arg2;
-- (void)performSearchWithSuggestion:(id)arg1;
-- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(unsigned long long)arg3;
+- (BOOL)optOutOfGoButton;
+- (void)performReturnKeyPressAndExpandWidowIfNeeded;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 queryKind:(unsigned long long)arg3;
+- (void)performWebSearch;
+- (BOOL)presentationSupportsChunky;
 - (id)proactiveResultsTestingObject;
 - (void)purgeMemory;
 - (void)queryContextDidChange:(id)arg1 fromSearchHeader:(id)arg2 allowZKW:(BOOL)arg3;
-- (BOOL)queryIsPresent;
+- (void)removeCompletionAndHighlightAsTyped:(BOOL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)resultsDidBecomeVisible:(id)arg1;
+- (void)resultsViewController:(id)arg1 didChangeContentSize:(struct CGSize)arg2 animated:(BOOL)arg3;
 - (void)returnKeyPressed;
 - (BOOL)runTest:(id)arg1 options:(id)arg2;
+- (void)scheduleWindowExpansionWithInterval:(double)arg1;
 - (id)searchResultsTestingObject;
 - (void)searchThroughPunchoutForResult:(id)arg1 forQuery:(id)arg2;
+- (void)searchThroughPunchoutForResult:(id)arg1 resultTitle:(id)arg2 forQuery:(id)arg3;
 - (void)searchViewDidDismissWithReason:(unsigned long long)arg1;
 - (void)searchViewDidPresentFromSource:(unsigned long long)arg1;
 - (void)searchViewDidUpdatePresentationProgress:(double)arg1;
 - (void)searchViewWillDismissWithReason:(unsigned long long)arg1;
 - (void)searchViewWillPresentFromSource:(unsigned long long)arg1;
 - (BOOL)sectionShouldBeExpanded:(id)arg1;
-- (void)sendActionFeedbackFromShortLookViewController:(id)arg1 isPunchout:(BOOL)arg2;
 - (void)setInternetOverrideToDisable:(BOOL)arg1;
-- (void)shortLookViewController:(id)arg1 didCompleteActionWithResult:(long long)arg2;
-- (void)shortLookViewController:(id)arg1 didDismissLongLookWithReason:(long long)arg2 actionCompleted:(BOOL)arg3 shouldClearAction:(BOOL)arg4;
-- (void)shortLookViewController:(id)arg1 willDismissLongLookWithReason:(long long)arg2 actionCompleted:(BOOL)arg3 shouldClearAction:(BOOL)arg4;
-- (void)shortLookViewController:(id)arg1 willDisplayLongLookWithReason:(long long)arg2;
-- (id)shortLookViewControllerForResult:(id)arg1;
 - (void)showVerticalScrollIndicators:(BOOL)arg1;
 - (void)spotlightDidBackground;
+- (void)tapToRadarPressed;
+- (void)updateFooterView;
 - (void)updateHeaderViewsWithBlock:(CDUnknownBlockType)arg1;
+- (void)updatePlatterMode;
+- (void)updateResponderChainIfNeeded;
 - (id)userActivityFromIntent:(id)arg1;
 - (id)viewControllerForPresenting;
-- (void)viewDidLayoutSubviews;
-- (void)willUpdateFromResults;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)willUpdateFromResultsWithHighlightedResult:(id)arg1;
 
 @end
 

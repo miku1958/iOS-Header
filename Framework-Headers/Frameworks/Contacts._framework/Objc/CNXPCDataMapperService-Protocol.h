@@ -13,13 +13,14 @@
 - (void)accountsMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)authorizedKeysForContactKeys:(NSArray *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)bestSenderIdentityForHandle:(CNGeminiHandle *)arg1 withReply:(void (^)(TUSenderIdentity *, NSError *))arg2;
-- (void)changeHistoryTokenWithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 withReply:(void (^)(CNChangeHistoryResult *, NSError *))arg2;
 - (void)configureServiceWithOptions:(NSDictionary *)arg1;
 - (void)contactCountForFetchRequest:(CNContactFetchRequest *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)contactWithUserActivityUserInfo:(NSDictionary *)arg1 keysToFetch:(NSArray *)arg2 withReply:(void (^)(CNContact *))arg3;
 - (void)contactsForFetchRequest:(CNContactFetchRequest *)arg1 withMatchInfoReply:(void (^)(NSArray *, NSDictionary *, NSError *))arg2;
 - (void)containersMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)currentHistoryAnchorWithReply:(void (^)(CNChangeHistoryAnchor *, NSError *))arg1;
+- (void)currentHistoryTokenWithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)defaultContainerIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)encodedContactsAndCursorForFetchRequest:(CNContactFetchRequest *)arg1 withReply:(void (^)(NSData *, NSDictionary *, id<CNEncodedFetchCursor>, NSError *))arg2;
 - (void)executeChangeHistoryClearRequest:(CNChangeHistoryClearRequest *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;

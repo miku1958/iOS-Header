@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ATXAVRouteInfo : NSObject <NSSecureCoding>
+@interface ATXAVRouteInfo : NSObject <NSSecureCoding, ATXProtoBufWrapper>
 {
     BOOL _isExternalRoute;
     NSString *_deviceName;
@@ -23,9 +24,13 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)encodeAsProto;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeviceName:(id)arg1 deviceID:(id)arg2 isExternalRoute:(BOOL)arg3;
+- (id)initWithProto:(id)arg1;
+- (id)initWithProtoData:(id)arg1;
+- (id)proto;
 
 @end
 

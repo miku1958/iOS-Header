@@ -18,9 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_galleryIdentifier;
     NSString *_key;
     BOOL _completed;
-    struct {
-        unsigned int completed:1;
-    } _has;
+    CDStruct_c267e6e8 _has;
 }
 
 @property (strong, nonatomic) NSString *addToSiriBundleIdentifier; // @synthesize addToSiriBundleIdentifier=_addToSiriBundleIdentifier;

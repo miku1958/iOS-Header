@@ -137,7 +137,6 @@
 - (BOOL)allowsExtendedRangePixelFormats;
 - (id)appearanceWithIdentifier:(long long)arg1;
 - (id)appearanceWithIdentifier:(long long)arg1 name:(id)arg2 createIfNeeded:(BOOL)arg3;
-- (id)artworkDraftTypeWithIdentifier:(long long)arg1;
 - (id)artworkFormat;
 - (id)assetAtFileURL:(id)arg1;
 - (id)assetAtPath:(id)arg1;
@@ -259,6 +258,7 @@
 - (id)relativePathToProductionData;
 - (void)removeCustomizationForSchemaDefinition:(id)arg1 shouldDeleteAssetFiles:(BOOL)arg2;
 - (void)removeDeviceTraitsForOptimization;
+- (BOOL)renameThemeBitSourceFolderTo:(id)arg1 error:(id *)arg2;
 - (const struct _renditionkeyfmt *)renditionKeyFormat;
 - (int)renditionKeySemantics;
 - (long long)renditionKeySpecAttributeCount;
@@ -294,6 +294,7 @@
 - (id)templateRenderingModeWithIdentifier:(long long)arg1;
 - (id)textureFaceWithIdentifier:(long long)arg1;
 - (id)textureInterpretaitionWithIdentifier:(unsigned int)arg1;
+- (id)themeBitSourceFolderName;
 - (id)themeConstant:(id)arg1 withIdentifier:(long long)arg2;
 - (const struct _renditionkeyfmt *)untrimmedRenditionKeyFormat;
 - (id)updateAutomaticTexturesForCustomInfos:(id)arg1 allTextureInfos:(id)arg2;

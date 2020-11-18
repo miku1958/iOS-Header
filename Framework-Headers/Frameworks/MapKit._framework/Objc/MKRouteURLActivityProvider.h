@@ -6,9 +6,18 @@
 
 #import <MapKit/MKRouteActivityProvider.h>
 
-@interface MKRouteURLActivityProvider : MKRouteActivityProvider
+#import <MapKit/UIActivityItemSource-Protocol.h>
+
+@class NSString;
+
+@interface MKRouteURLActivityProvider : MKRouteActivityProvider <UIActivityItemSource>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;

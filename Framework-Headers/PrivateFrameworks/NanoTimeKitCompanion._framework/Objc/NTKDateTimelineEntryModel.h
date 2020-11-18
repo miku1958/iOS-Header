@@ -24,6 +24,7 @@
 - (id)_newModularSmallTemplate;
 - (id)_newSignatureCircularTemplate;
 - (id)_newSignatureCornerTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSimpleTextTemplate;
 - (id)_newSmallFlatUtilitarianTemplate;
 - (id)_simpleTextShortDateProvider;

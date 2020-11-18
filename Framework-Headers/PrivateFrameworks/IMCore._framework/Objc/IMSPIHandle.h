@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class IMPerson, NSString;
+@class IMHandle, NSString;
 
 @interface IMSPIHandle : NSObject
 {
     NSString *_address;
     NSString *_countryCode;
     BOOL _isMe;
-    IMPerson *_imPerson;
-    BOOL _haveFetchedIMPerson;
+    IMHandle *_imHandle;
+    BOOL _haveFetchedIMHandle;
 }
 
 @property (readonly) NSString *address; // @synthesize address=_address;
@@ -27,10 +27,10 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)handle;
 - (unsigned long long)hash;
 - (id)initWithAddress:(id)arg1 countryCode:(id)arg2 isMe:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)person;
 
 @end
 

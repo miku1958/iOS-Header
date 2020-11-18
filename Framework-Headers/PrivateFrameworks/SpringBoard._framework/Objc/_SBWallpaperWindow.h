@@ -6,22 +6,11 @@
 
 #import <SpringBoard/SBSecureWindow.h>
 
-@class SBWallpaperDefaults;
-@protocol SBWallpaperWindowDelegate;
-
 @interface _SBWallpaperWindow : SBSecureWindow
 {
-    SBWallpaperDefaults *_wallpaperDefaults;
-    id<SBWallpaperWindowDelegate> _delegate;
 }
 
-@property (weak, nonatomic) id<SBWallpaperWindowDelegate> delegate; // @synthesize delegate=_delegate;
-
-- (void).cxx_destruct;
-- (void)_observeDefaults;
 - (long long)activeInterfaceOrientation;
-- (id)initWithScreen:(id)arg1 debugName:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

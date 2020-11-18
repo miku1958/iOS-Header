@@ -15,6 +15,7 @@
     MISSING_TYPE *formatService;
     MISSING_TYPE *topicClusterService;
     MISSING_TYPE *topicColorProvider;
+    MISSING_TYPE *personalizationService;
     MISSING_TYPE *name;
 }
 

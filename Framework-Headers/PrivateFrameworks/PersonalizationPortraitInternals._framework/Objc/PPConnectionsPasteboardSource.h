@@ -26,7 +26,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)identifier;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_mostRecentPasteboardItem;
@@ -35,6 +34,7 @@
 - (id)cacheValueForKey:(id)arg1;
 - (void)dealloc;
 - (id)fetchedPasteboardItem;
+- (id)identifier;
 - (id)init;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
 - (void)refreshMostRecentPasteboardItemFromNotification:(BOOL)arg1 explanationSet:(id)arg2;

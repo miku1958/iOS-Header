@@ -11,6 +11,7 @@
 @interface _TtC5TeaUI17URLHandlerManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *handlers;
+    MISSING_TYPE *asyncHandlers;
     MISSING_TYPE *processors;
 }
 

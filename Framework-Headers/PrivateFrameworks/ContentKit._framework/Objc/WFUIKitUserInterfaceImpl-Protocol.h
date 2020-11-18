@@ -6,9 +6,9 @@
 
 #import <ContentKit/WFUIKitUserInterface-Protocol.h>
 
-@class UIViewController;
+@class UIView, UIViewController;
 
 @protocol WFUIKitUserInterfaceImpl <WFUIKitUserInterface>
-- (id)initWithViewController:(UIViewController *)arg1;
+- (id)initWithView:(UIView *)arg1 viewController:(UIViewController *)arg2;
 @end
 

@@ -8,6 +8,7 @@
 
 @class MPModelLibraryHasPurchasesRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryHasPurchasesRequestOperation : MPAsyncOperation
 {
     MPModelLibraryHasPurchasesRequest *_request;

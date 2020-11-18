@@ -7,12 +7,11 @@
 #import <Foundation/NSNumber.h>
 
 #import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
-#import <EmailFoundation/EFSQLNumericValueExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class EFSQLBinding, NSString;
 
-@interface NSNumber (EFSQLBindable) <EFSQLBindable, EFSQLExpressable, EFSQLNumericValueExpressable>
+@interface NSNumber (EFSQLBindable) <EFSQLBindable, EFSQLValueExpressable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -25,5 +24,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @end
 

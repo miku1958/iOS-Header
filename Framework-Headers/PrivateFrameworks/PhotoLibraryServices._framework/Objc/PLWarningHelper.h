@@ -27,7 +27,7 @@
 - (id)_cloudSharedWarningTextForAssets:(id)arg1;
 - (void)_getDeletionWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3;
 - (void)_getWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 forItemSuffix:(id)arg4 count:(unsigned long long)arg5 operation:(long long)arg6 clientName:(id)arg7;
-- (id)_usedElsewhereWarningTextForAssetCount:(long long)arg1 inPhotoStreamCount:(long long)arg2 iniPhotoCount:(long long)arg3 inSomeAlbumCount:(long long)arg4 affectedLocalAlbumsCount:(long long)arg5 itemKindSuffix:(id)arg6 actualDeletionCount:(long long)arg7;
+- (id)_usedElsewhereWarningTextForAssetCount:(long long)arg1 inLibraryScopeCount:(long long)arg2 inPhotoStreamCount:(long long)arg3 iniPhotoCount:(long long)arg4 inSomeAlbumCount:(long long)arg5 affectedLocalAlbumsCount:(long long)arg6 itemKindSuffix:(id)arg7 actualDeletionCount:(long long)arg8;
 - (id)_usedElsewhereWarningTextForAssets:(id)arg1 additionalPhotoStreamAssets:(id)arg2 actualDeletionCount:(long long)arg3;
 - (id)allWarningMessageCombinations;
 - (void)getAvalancheDeleteWarning:(id *)arg1 actualDeletionCount:(long long *)arg2 forAssets:(id)arg3;

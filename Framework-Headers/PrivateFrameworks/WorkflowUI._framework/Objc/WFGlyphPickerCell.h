@@ -10,11 +10,13 @@
 
 @interface WFGlyphPickerCell : UICollectionViewCell
 {
+    BOOL _outline;
     WFGlyphView *_glyphView;
 }
 
 @property (nonatomic) unsigned short glyphCharacter;
 @property (weak, nonatomic) WFGlyphView *glyphView; // @synthesize glyphView=_glyphView;
+@property (nonatomic) BOOL outline; // @synthesize outline=_outline;
 
 - (void).cxx_destruct;
 - (id)accessibilityLabel;

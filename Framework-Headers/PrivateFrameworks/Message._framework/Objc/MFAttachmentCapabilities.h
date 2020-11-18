@@ -12,6 +12,7 @@
 
 + (BOOL)_isMailDropDevice;
 + (unsigned long long)_mailDropLimit;
++ (id)allowedMailDropDownloadDomains;
 + (id)capabilitiesDictionary;
 + (unsigned long long)currentDownloadLimit;
 + (unsigned long long)currentMessageLimit;
@@ -24,7 +25,6 @@
 + (double)mailDropExpiration;
 + (id)mailDropPreferences;
 + (unsigned long long)mailDropThreshold;
-+ (id)mailDropWhitelistedDownloadDomains;
 + (BOOL)placeholdersAvailable;
 
 @end

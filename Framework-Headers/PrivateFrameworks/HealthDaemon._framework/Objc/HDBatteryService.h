@@ -13,8 +13,6 @@
     CBCharacteristic *_batteryCharacteristic;
 }
 
-@property (strong, nonatomic) CBCharacteristic *batteryCharacteristic; // @synthesize batteryCharacteristic=_batteryCharacteristic;
-
 + (id)implementedProperties;
 + (long long)serviceType;
 + (id)serviceUUID;

@@ -14,5 +14,7 @@
     MISSING_TYPE *proxyEventProcessor;
 }
 
+- (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+
 @end
 

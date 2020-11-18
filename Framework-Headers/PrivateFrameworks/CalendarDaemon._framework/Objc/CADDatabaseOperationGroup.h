@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)requiresReminderAccess;
 - (void)CADDatabaseCanModifyCalendarDatabase:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseCommitWithReply:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseExportICSDataForCalendarItems:(id)arg1 preventLineFolding:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseExportICSDataForCalendar:(id)arg1 options:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseExportICSDataForCalendarItems:(id)arg1 options:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseFetchObjectChangesForEntityTypes:(id)arg1 insideObject:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(CDUnknownBlockType)arg2;
@@ -31,8 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseMarkIndividualChangesConsumed:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseRegisterForDetailedChangeTracking:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseResetWithReply:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseRegisterForDetailedChangeTrackingInSource:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseRollbackWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSaveWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;

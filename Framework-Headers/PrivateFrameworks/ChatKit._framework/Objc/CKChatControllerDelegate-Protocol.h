@@ -7,14 +7,24 @@
 #import <ChatKit/CKCoreChatControllerDelegate-Protocol.h>
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKChatController, CKComposition, NSString;
+@class CKChatController, CKComposition, CKDetailsNavigationController, NSString;
 
 @protocol CKChatControllerDelegate <NSObject, CKCoreChatControllerDelegate>
 - (void)chatController:(CKChatController *)arg1 forwardComposition:(CKComposition *)arg2;
 - (void)prewarmCameraIfNecessaryForChatController:(CKChatController *)arg1;
 
 @optional
+- (void)chatController:(CKChatController *)arg1 didDetachDetailsNavigationController:(CKDetailsNavigationController *)arg2;
+- (void)chatControllerWillDisplayDetailsPopover:(CKChatController *)arg1;
+- (void)dismissAndReopenDetailsNavigationController;
+- (void)dismissDetailsNavigationController;
 - (void)doneButtonPressedForChatController:(CKChatController *)arg1;
+- (BOOL)hasDetailsNavigationController;
+- (BOOL)isDetailsNavigationControllerDetached;
+- (void)keyCommandToggleDetails;
 - (NSString *)navigationBarBackdropLayerGroupNameForChatController:(CKChatController *)arg1;
+- (void)presentDetailsNavigationController:(CKDetailsNavigationController *)arg1;
+- (void)screenTimeOKPressedForChatController:(CKChatController *)arg1;
+- (long long)unreadCountForCurrentFilterModeForChatController:(CKChatController *)arg1;
 @end
 

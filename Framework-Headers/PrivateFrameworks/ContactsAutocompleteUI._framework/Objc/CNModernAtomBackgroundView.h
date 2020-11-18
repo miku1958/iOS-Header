@@ -29,12 +29,14 @@
 - (struct UIEdgeInsets)_backgroundBleedArea;
 - (id)_chevronImage;
 - (void)_setSelectionStyle:(unsigned long long)arg1;
+- (BOOL)appearsSelected;
+- (void)displaySelectionChangeWithAnimation:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isSelected;
 - (void)layoutSubviews;
 - (double)separatorWidth;
-- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 style:(unsigned long long)arg3;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 style:(unsigned long long)arg3 updateVisualSelection:(BOOL)arg4;
 - (void)tintColorDidChange;
 - (id)wrappedTintColor;
 

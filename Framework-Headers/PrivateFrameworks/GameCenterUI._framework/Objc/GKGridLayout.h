@@ -111,7 +111,7 @@
 - (BOOL)_areWePortrait;
 - (id)_existingPresentationDataForSection:(long long)arg1;
 - (void)_filterPinnedAttributes;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (unsigned long long)_prepareItemLayoutForSection:(long long)arg1;
 - (long long)_prepareOverlayLayoutForSection:(long long)arg1 offset:(long long)arg2;
 - (void)_prepareSegmentedBoxLayoutWithOffset:(long long)arg1;

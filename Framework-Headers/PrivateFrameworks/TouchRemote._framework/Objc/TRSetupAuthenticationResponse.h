@@ -6,13 +6,15 @@
 
 #import <TouchRemote/TRResponseMessage.h>
 
-@class NSSet;
+@class NSError, NSSet;
 
 @interface TRSetupAuthenticationResponse : TRResponseMessage
 {
     NSSet *_unauthenticatedAccountServices;
+    NSError *_error;
 }
 
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSSet *unauthenticatedAccountServices; // @synthesize unauthenticatedAccountServices=_unauthenticatedAccountServices;
 
 + (BOOL)supportsSecureCoding;

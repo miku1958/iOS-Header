@@ -11,8 +11,8 @@
 @interface NTKZeusAnalogScene : NTKAnalogScene
 {
     NSDate *_overrideDate;
-    SKNode *_fontContainerNodes[3];
-    NSArray *_fontHourNodes[3];
+    SKNode *_fontContainerNodes[2];
+    NSArray *_fontHourNodes[2];
     SKNode *_logoContainerNode;
     SKSpriteNode *_logo1Node;
     SKSpriteNode *_logo2Node;
@@ -44,7 +44,7 @@
 - (void)_applyHourLabelCollectionNode:(id)arg1;
 - (void)_applyTransitionFraction:(double)arg1 fromHourLabelCollectionNode:(id)arg2 toHourLabelCollectionNode:(id)arg3;
 - (void)_configureForEditMode:(long long)arg1;
-- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3 witScale:(double)arg4;
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (double)_digitAlphaForEditMode:(long long)arg1;
 - (void)_displayZoomScale:(double)arg1 fraction:(double)arg2;

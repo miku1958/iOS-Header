@@ -44,6 +44,7 @@
 - (void)addTarget:(id)arg1 selector:(SEL)arg2;
 - (id)currentlyRequiredResourcesOfClass:(Class)arg1;
 - (BOOL)currentlyRequiresResourceOfClass:(Class)arg1;
+- (BOOL)currentlyRequiresResourceOfClasses:(id)arg1;
 - (void)evaluateAvailabilityOfNodesIfNeeded;
 - (void)evaluateAvailabilityOfNodesWithChangedNode:(id)arg1;
 - (id)initWithDefinitions:(id)arg1;
@@ -52,6 +53,7 @@
 - (BOOL)nodeIsAvailable:(id)arg1 error:(id *)arg2;
 - (BOOL)nodeIsRelevant:(id)arg1;
 - (void)notifyTargets;
+- (void)refreshAvailabilityOfRequiredResourcesOfClasses:(id)arg1;
 - (id)relevantNodes;
 - (void)removeTarget:(id)arg1 selector:(SEL)arg2;
 - (void)resourceNodeAvailabilityChanged:(id)arg1;

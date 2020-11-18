@@ -46,6 +46,7 @@
 - (id)initWithEnvironment:(id)arg1 validateImages:(BOOL)arg2 location:(id)arg3;
 - (id)initWithEnvironment:(id)arg1 validateImages:(BOOL)arg2 location:(id)arg3 encoder:(id)arg4;
 - (void)performStateWork:(CDUnknownBlockType)arg1;
+- (BOOL)resourceExistsInCacheForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(CDUnknownBlockType)arg3;
 - (id)resourceURLForItem:(id)arg1 scope:(id)arg2;

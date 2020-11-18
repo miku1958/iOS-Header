@@ -10,23 +10,41 @@
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 #import <UIKitCore/_UIFallbackEnvironment-Protocol.h>
 
-@class NSDictionary, NSString, UIImageConfiguration;
-@protocol _UIThemeKey;
+@class NSDictionary, NSString;
 
 @interface UITraitCollection : NSObject <_UIFallbackEnvironment, NSCopying, NSSecureCoding>
 {
-    CDStruct_9b1704d8 _builtinTraits;
+    struct {
+        long long userInterfaceIdiom;
+        double displayScale;
+        long long displayGamut;
+        long long touchLevel;
+        unsigned long long interactionModel;
+        unsigned long long primaryInteractionModel;
+        long long artworkSubtype;
+        long long horizontalSizeClass;
+        long long verticalSizeClass;
+        long long userInterfaceStyle;
+        long long layoutDirection;
+        long long forceTouchCapability;
+        long long preferredContentSizeCategory;
+        double displayCornerRadius;
+        long long legibilityWeight;
+        long long semanticContext;
+        long long presentationSemanticContext;
+        long long splitViewControllerContext;
+        long long accessibilityContrast;
+        long long userInterfaceLevel;
+        long long vibrancy;
+        long long activeAppearance;
+    } _builtinTraits;
     NSDictionary *_clientDefinedTraits;
     NSObject *_environmentWrapper;
 }
 
-@property (readonly, nonatomic) NSString *_appearanceName;
-@property (readonly, nonatomic, getter=_imageConfiguration) UIImageConfiguration *_imageConfiguration;
-@property (readonly, nonatomic) long long _presentationSemanticContext;
-@property (readonly, nonatomic) long long _semanticContext;
-@property (readonly, nonatomic) NSString *_styleEffectAppearanceName;
-@property (readonly, nonatomic, getter=_themeKey) id<_UIThemeKey> _themeKey;
+@property (readonly, nonatomic) BOOL _isLargeContentViewerEnabled;
 @property (readonly, nonatomic) long long accessibilityContrast;
+@property (readonly, nonatomic) long long activeAppearance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long displayGamut;
@@ -34,7 +52,6 @@
 @property (readonly, nonatomic) long long forceTouchCapability;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long horizontalSizeClass;
-@property (readonly, nonatomic, getter=_isFallback) BOOL isFallback;
 @property (readonly, nonatomic) long long layoutDirection;
 @property (readonly, nonatomic) long long legibilityWeight;
 @property (readonly, copy, nonatomic) NSString *preferredContentSizeCategory;
@@ -44,33 +61,22 @@
 @property (readonly, nonatomic) long long userInterfaceStyle;
 @property (readonly, nonatomic) long long verticalSizeClass;
 
-+ (id)_backgroundThreadFallbackTraitCollection;
 + (id)_currentTraitCollection;
-+ (id)_currentTraitCollectionIfExists;
-+ (id)_currentTraitCollectionWithFallback:(BOOL)arg1 markFallback:(BOOL)arg2;
-+ (id)_currentTraitCollectionWithUnmarkedFallback;
-+ (id)_defaultTraitCollection;
 + (id)_descriptionForChangeFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-+ (id)_emptyTraitCollection;
-+ (id)_fallbackTraitCollection;
-+ (void)_performWithCurrentTraitCollection:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-+ (void)_setBackgroundThreadFallbackTraitCollection:(id)arg1;
 + (void)_setCurrentTraitCollection:(id)arg1;
-+ (id)_threadSafeFallbackTraitCollection;
-+ (id)_traitCollectionForThemeKey:(id)arg1;
-+ (id)_traitCollectionFromImageConfiguration:(id)arg1;
 + (id)_traitCollectionWithBackgroundLevel:(long long)arg1;
 + (id)_traitCollectionWithContrast:(long long)arg1;
-+ (id)_traitCollectionWithDebugHighlight:(long long)arg1;
 + (id)_traitCollectionWithEnvironmentWrapper:(id)arg1;
 + (id)_traitCollectionWithPresentationSemanticContext:(long long)arg1;
-+ (id)_traitCollectionWithSemanticContext:(long long)arg1;
++ (id)_traitCollectionWithSplitViewControllerContext:(long long)arg1;
++ (id)_traitCollectionWithUserInterfaceActiveAppearance:(long long)arg1;
 + (id)_traitCollectionWithValue:(id)arg1 forTraitNamed:(id)arg2;
 + (id)_traitCollectionWithVibrancy:(long long)arg1;
 + (id)currentTraitCollection;
 + (void)setCurrentTraitCollection:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)traitCollectionWithAccessibilityContrast:(long long)arg1;
++ (id)traitCollectionWithActiveAppearance:(long long)arg1;
 + (id)traitCollectionWithArtworkSubtype:(unsigned long long)arg1;
 + (id)traitCollectionWithDisplayCornerRadius:(double)arg1;
 + (id)traitCollectionWithDisplayGamut:(long long)arg1;
@@ -82,7 +88,6 @@
 + (id)traitCollectionWithLegibilityWeight:(long long)arg1;
 + (id)traitCollectionWithPreferredContentSizeCategory:(id)arg1;
 + (id)traitCollectionWithPrimaryInteractionModel:(unsigned long long)arg1;
-+ (id)traitCollectionWithTextLegibility:(long long)arg1;
 + (id)traitCollectionWithTouchLevel:(long long)arg1;
 + (id)traitCollectionWithTraitsFromCollections:(id)arg1;
 + (id)traitCollectionWithUserInterfaceIdiom:(long long)arg1;
@@ -90,33 +95,19 @@
 + (id)traitCollectionWithUserInterfaceStyle:(long long)arg1;
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
 - (long long)_backgroundLevel;
-- (BOOL)_changedContentSizeCategoryFromTraitCollection:(id)arg1;
-- (BOOL)_changedContentSizeCategoryOrLegibilityWeightFromTraitCollection:(id)arg1;
-- (BOOL)_changedLegibilityWeightFromTraitCollection:(id)arg1;
 - (long long)_compare:(id)arg1;
 - (long long)_contrast;
-- (long long)_countOfIntersectionWithTraitCollection:(id)arg1;
-- (long long)_debugHighlight;
 - (id)_description;
-- (id)_descriptionWithPrivateTraits:(BOOL)arg1;
-- (void)_enumerateThemeAppearanceNamesForLookup:(CDUnknownBlockType)arg1;
-- (void)_enumerateThemeKeysForLookup:(CDUnknownBlockType)arg1;
 - (id)_environmentWrapper;
-- (id)_fallbackCopy;
 - (id)_fallbackTraitCollection;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_9b1704d8 *)arg1 clientDefinedTraits:(id)arg2;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_9b1704d8 *)arg1 clientDefinedTraits:(id)arg2 environmentWrapper:(id)arg3;
-- (id)_invertedTraitCollection;
-- (BOOL)_matchesIntersectionWithTraitCollection:(id)arg1;
+- (BOOL)_hasSplitViewControllerContextPrimaryColumn;
+- (BOOL)_hasSplitViewControllerContextSidebarColumn;
 - (id)_namedImageDescription;
-- (long long)_textLegibility;
-- (long long)_themeLevelForKey;
-- (id)_traitCollectionByReplacingValue:(id)arg1 forTraitName:(id)arg2;
-- (id)_traitCollectionRelevantForImageConfiguration;
-- (id)_traitCollectionWithIncrementedBackgroundLevel;
+- (long long)_presentationSemanticContext;
+- (long long)_splitViewControllerContext;
 - (id)_traitNamesForUnspecifiedBuiltInTraits;
-- (id)_traitNamesOfIntersectionWithTraitCollection:(id)arg1;
 - (id)_traitsDescription;
+- (long long)_userInterfaceActiveAppearance;
 - (id)_valueForTraitNamed:(id)arg1;
 - (long long)_vibrancy;
 - (unsigned long long)artworkSubtype;

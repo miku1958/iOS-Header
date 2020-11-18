@@ -16,6 +16,7 @@
     unsigned char _securityDomain;
     unsigned short _chipID;
     unsigned short _boardID;
+    unsigned short _chipRevision;
     unsigned int _bootMode;
     unsigned long long _ECID;
 }
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) unsigned short boardID; // @synthesize boardID=_boardID;
 @property (readonly, nonatomic) unsigned int bootMode; // @synthesize bootMode=_bootMode;
 @property (readonly, nonatomic) unsigned short chipID; // @synthesize chipID=_chipID;
+@property (readonly, nonatomic) unsigned short chipRevision; // @synthesize chipRevision=_chipRevision;
 @property (readonly, nonatomic) unsigned char prodMode; // @synthesize prodMode=_prodMode;
 @property (readonly, nonatomic) unsigned char secureMode; // @synthesize secureMode=_secureMode;
 @property (readonly, nonatomic) unsigned char securityDomain; // @synthesize securityDomain=_securityDomain;
@@ -33,7 +35,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithECID:(unsigned long long)arg1 chipID:(unsigned short)arg2 boardID:(unsigned short)arg3 bootMode:(unsigned int)arg4 prodMode:(unsigned char)arg5 secureMode:(unsigned char)arg6 securityDomain:(unsigned char)arg7;
+- (id)initWithECID:(unsigned long long)arg1 chipID:(unsigned short)arg2 boardID:(unsigned short)arg3 bootMode:(unsigned int)arg4 prodMode:(unsigned char)arg5 secureMode:(unsigned char)arg6 securityDomain:(unsigned char)arg7 chipRevision:(unsigned short)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

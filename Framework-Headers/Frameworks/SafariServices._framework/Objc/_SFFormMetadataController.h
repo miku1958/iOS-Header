@@ -53,7 +53,7 @@
 - (void)didFindSearchURLTemplateString:(id)arg1 inFrame:(id)arg2 pageController:(id)arg3;
 - (void)didSameDocumentNavigation:(long long)arg1 inFrame:(id)arg2;
 - (void)didStartProvisionalLoadForFrame:(id)arg1;
-- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3;
+- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3 focusedFieldControlID:(id)arg4;
 - (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(BOOL)arg3;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;
 - (id)formAutoFillNodeForJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;

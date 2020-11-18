@@ -37,16 +37,7 @@
         unsigned int read_streetAddress:1;
         unsigned int read_unknown:1;
         unsigned int read_work:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_contactHome:1;
-        unsigned int wrote_contactOther:1;
-        unsigned int wrote_contactWork:1;
-        unsigned int wrote_custom:1;
-        unsigned int wrote_home:1;
-        unsigned int wrote_pointOfInterest:1;
-        unsigned int wrote_streetAddress:1;
-        unsigned int wrote_unknown:1;
-        unsigned int wrote_work:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -72,15 +63,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readContactHome;
-- (void)_readContactOther;
-- (void)_readContactWork;
-- (void)_readCustom;
-- (void)_readHome;
-- (void)_readPointOfInterest;
-- (void)_readStreetAddress;
-- (void)_readUnknown;
-- (void)_readWork;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -89,7 +71,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

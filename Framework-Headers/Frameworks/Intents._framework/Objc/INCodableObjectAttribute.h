@@ -23,6 +23,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionKey;
+- (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionTypeKey;
 - (Class)_relationshipValueTransformerClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;

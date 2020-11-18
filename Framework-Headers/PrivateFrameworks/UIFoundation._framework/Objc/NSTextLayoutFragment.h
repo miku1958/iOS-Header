@@ -6,16 +6,23 @@
 
 #import <objc/NSObject.h>
 
+#import <UIFoundation/NSCoreTypesetterDelegateInternal-Protocol.h>
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 #import <UIFoundation/NSTextViewportElement-Protocol.h>
+#import <UIFoundation/__NSTextRunStorageDataSource-Protocol.h>
 
-@class NSArray, NSLayoutManager, NSOperationQueue, NSString, NSTextElement, NSTextLayoutManager, NSTextRange, NSTextStorage;
+@class NSArray, NSLayoutManager, NSMapTable, NSOperationQueue, NSString, NSTextElement, NSTextLayoutManager, NSTextParagraph, NSTextRange, NSTextStorage, _NSTextRunStorage;
+@protocol NSTextLocation;
 
-@interface NSTextLayoutFragment : NSObject <NSSecureCoding, NSTextViewportElement>
+@interface NSTextLayoutFragment : NSObject <NSCoreTypesetterDelegateInternal, __NSTextRunStorageDataSource, NSSecureCoding, NSTextViewportElement>
 {
     NSTextLayoutManager *_textLayoutManager;
     NSTextElement *_textElement;
     NSTextRange *_rangeInElement;
+    _NSTextRunStorage *_renderingAttributesTable;
+    struct CGRect _layoutFragmentFrame;
+    NSMapTable *_textAttachmentContextTable;
+    BOOL _isTextParagraph;
     struct _NSRange _characterRange;
     unsigned long long _sourceVerticalDelta;
     unsigned long long _sourceRangeDelta;
@@ -27,57 +34,82 @@
     double _destinationVerticalDelta;
     struct _NSRange _destinationGlyphRange;
     NSLayoutManager *_layoutManager;
+    BOOL _renderingAttributesValidated;
+    BOOL _rendersTextCorrectionMarkers;
     NSArray *_textLineFragments;
     NSOperationQueue *_layoutQueue;
     unsigned long long _state;
     struct CGPoint _layoutPoint;
-    struct CGRect _layoutFragmentFrame;
 }
 
+@property (getter=_isRenderingAttributesValidated) BOOL _renderingAttributesValidated; // @synthesize _renderingAttributesValidated;
 @property (readonly) unsigned long long animationType; // @dynamic animationType;
+@property (readonly) id<NSTextLocation> baseLocation;
 @property (readonly) struct _NSRange characterRange; // @dynamic characterRange;
+@property (readonly, getter=isCountableDataSource) BOOL countableDataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property struct CGRect destinationBoundingRect;
 @property (readonly) struct CGRect destinationBoundingRect; // @dynamic destinationBoundingRect;
-@property struct _NSRange destinationGlyphRange; // @dynamic destinationGlyphRange;
-@property NSLayoutManager *destinationLayoutManager; // @dynamic destinationLayoutManager;
-@property (strong) NSTextStorage *destinationTextStorage; // @dynamic destinationTextStorage;
-@property double destinationVerticalDelta; // @dynamic destinationVerticalDelta;
 @property (readonly) unsigned long long hash;
-@property struct CGRect layoutFragmentFrame; // @synthesize layoutFragmentFrame=_layoutFragmentFrame;
-@property struct CGPoint layoutFragmentFrameOrigin;
+@property struct CGRect layoutFragmentFrame;
 @property (readonly, weak) NSLayoutManager *layoutManager; // @dynamic layoutManager;
 @property struct CGPoint layoutPoint; // @synthesize layoutPoint=_layoutPoint;
 @property (strong) NSOperationQueue *layoutQueue; // @synthesize layoutQueue=_layoutQueue;
 @property (readonly) struct CGSize layoutSize;
 @property (readonly) NSTextRange *rangeInElement; // @dynamic rangeInElement;
 @property (readonly) struct CGRect renderingSurfaceBounds;
+@property BOOL rendersTextCorrectionMarkers; // @synthesize rendersTextCorrectionMarkers=_rendersTextCorrectionMarkers;
 @property (readonly) NSTextRange *representedRange;
 @property (readonly) struct CGRect sourceBoundingRect; // @dynamic sourceBoundingRect;
 @property unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (weak) NSTextElement *textElement; // @dynamic textElement;
-@property (weak) NSTextLayoutManager *textLayoutManager;
-@property (readonly, weak) NSTextLayoutManager *textLayoutManager; // @dynamic textLayoutManager;
+@property (readonly) NSTextElement *textElement; // @dynamic textElement;
+@property (readonly) NSTextLayoutManager *textLayoutManager; // @dynamic textLayoutManager;
 @property (copy) NSArray *textLineFragments; // @synthesize textLineFragments=_textLineFragments;
+@property (readonly) NSTextParagraph *textParagraph; // @dynamic textParagraph;
 
++ (id)_validCoreTextRenderingAttributes;
 + (id)layoutFragmentQueue;
 + (BOOL)supportsSecureCoding;
+- (id)_coreTextAttributes;
 - (void)_layout;
+- (id)_layoutContextForTextAttachmentAtLocation:(id)arg1;
+- (id)_resolvedRenderingAttributesForCharacterIndex:(long long)arg1 effectiveRange:(out struct _NSRange *)arg2;
 - (void)_setup;
+- (void)addRenderingAttribute:(id)arg1 value:(id)arg2 forTextRange:(id)arg3;
 - (void)dealloc;
+- (struct _NSRange)destinationGlyphRange;
+- (id)destinationLayoutManager;
+- (id)destinationTextStorage;
+- (double)destinationVerticalDelta;
 - (void)drawAtPoint:(struct CGPoint)arg1 contentType:(unsigned long long)arg2;
 - (void)drawAtPoint:(struct CGPoint)arg1 context:(struct CGContext *)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (void)enumerateRenderingAttributesFromLocation:(id)arg1 reverse:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)estimateSize;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayoutManager:(id)arg1 characterRange:(struct _NSRange)arg2 animationType:(unsigned long long)arg3 boundingRect:(struct CGRect)arg4;
 - (id)initWithTextElement:(id)arg1 range:(id)arg2;
 - (void)invalidateLayout;
+- (void)invalidateRenderingAttributesForTextRange:(id)arg1;
 - (void)layout;
+- (struct CGPoint)layoutFragmentFrameOrigin;
+- (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
+- (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
+- (void)removeRenderingAttribute:(id)arg1 forTextRange:(id)arg2;
 - (id)representedRangeAtPoint:(struct CGPoint)arg1;
+- (void)setDestinationBoundingRect:(struct CGRect)arg1;
+- (void)setDestinationGlyphRange:(struct _NSRange)arg1;
+- (void)setDestinationLayoutManager:(id)arg1;
+- (void)setDestinationTextStorage:(id)arg1;
+- (void)setDestinationVerticalDelta:(double)arg1;
+- (void)setLayoutFragmentFrameOrigin:(struct CGPoint)arg1;
+- (void)setRenderingAttribute:(id)arg1 value:(id)arg2 forTextRange:(id)arg3;
+- (void)setRenderingAttributes:(id)arg1 forTextRange:(id)arg2;
+- (void)setTextElement:(id)arg1;
+- (void)setTextLayoutManager:(id)arg1;
+- (double)verticalOffsetOfTextLocation:(id)arg1 withAffinity:(long long)arg2;
 
 @end
 

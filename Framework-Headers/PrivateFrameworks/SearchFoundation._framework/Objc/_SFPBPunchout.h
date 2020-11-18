@@ -14,6 +14,7 @@
 @interface _SFPBPunchout : PBCodable <_SFPBPunchout, NSSecureCoding>
 {
     BOOL _isRunnableInBackground;
+    BOOL _hasClip;
     NSString *_name;
     NSString *_bundleIdentifier;
     NSString *_label;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasClip; // @synthesize hasClip=_hasClip;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRunnableInBackground; // @synthesize isRunnableInBackground=_isRunnableInBackground;
 @property (readonly, nonatomic) NSData *jsonData;

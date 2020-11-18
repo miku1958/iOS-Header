@@ -14,6 +14,7 @@
     MISSING_TYPE *sourceChannelID;
     MISSING_TYPE *productID;
     MISSING_TYPE *purchaseID;
+    MISSING_TYPE *purchaseType;
     MISSING_TYPE *articleID;
     MISSING_TYPE *issueID;
     MISSING_TYPE *feedID;
@@ -44,6 +45,7 @@
 @property (nonatomic, copy) NSString *productID;
 @property (nonatomic, copy) NSString *purchaseID;
 @property (nonatomic, copy) NSString *purchaseSessionID;
+@property (nonatomic) long long purchaseType; // @synthesize purchaseType;
 @property (nonatomic, copy) NSString *qToken;
 @property (nonatomic, copy) NSString *sectionID;
 @property (nonatomic, copy) NSString *sourceChannelID;
@@ -51,7 +53,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithProductID:(id)arg1 purchaseID:(id)arg2 sourceChannelID:(id)arg3 purchaseSessionID:(id)arg4 conversionLocation:(id)arg5 articleID:(id)arg6 issueID:(id)arg7 feedID:(id)arg8 parentFeedType:(long long)arg9 sectionID:(id)arg10 groupID:(id)arg11 groupType:(long long)arg12 webAccessOptIn:(BOOL)arg13 arrivedFromAd:(BOOL)arg14 qToken:(id)arg15 creativeID:(id)arg16 campaignID:(id)arg17 campaignType:(id)arg18;
+- (id)initWithProductID:(id)arg1 purchaseID:(id)arg2 purchaseType:(long long)arg3 sourceChannelID:(id)arg4 purchaseSessionID:(id)arg5 conversionLocation:(id)arg6 articleID:(id)arg7 issueID:(id)arg8 feedID:(id)arg9 parentFeedType:(long long)arg10 sectionID:(id)arg11 groupID:(id)arg12 groupType:(long long)arg13 webAccessOptIn:(BOOL)arg14 arrivedFromAd:(BOOL)arg15 qToken:(id)arg16 creativeID:(id)arg17 campaignID:(id)arg18 campaignType:(id)arg19;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <VideosUI/SSPurchaseManagerDelegate-Protocol.h>
 #import <VideosUI/VUIMediaEntityAssetController-Protocol.h>
 
-@class NSString, SSDownload, SSDownloadManager, VUIFamilySharingMediaItem, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
+@class NSString, NSTimer, SSDownload, SSDownloadManager, VUIFamilySharingMediaItem, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
@@ -25,10 +25,12 @@ __attribute__((visibility("hidden")))
     VUIMediaEntityAssetControllerState *_stateInternal;
     SSDownloadManager *_ssDownloadManager;
     SSDownload *_downloadInternal;
+    NSTimer *_waitForDeletionTimer;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueueInternal; // @synthesize completionDispatchQueueInternal=_completionDispatchQueueInternal;
+@property (readonly, nonatomic) BOOL contentAllowsCellularDownload;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIMediaEntityAssetControllerDelegate> delegate;
 @property (weak, nonatomic) id<VUIMediaEntityAssetControllerDelegate> delegateInternal; // @synthesize delegateInternal=_delegateInternal;
@@ -45,20 +47,27 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state;
 @property (strong, nonatomic) VUIMediaEntityAssetControllerState *stateInternal; // @synthesize stateInternal=_stateInternal;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsRedownloadingContent;
 @property (readonly, nonatomic) BOOL supportsStartingDownload;
+@property (strong, nonatomic) NSTimer *waitForDeletionTimer; // @synthesize waitForDeletionTimer=_waitForDeletionTimer;
 
++ (void)initialize;
 - (void).cxx_destruct;
+- (void)_cancelAndRemoveDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateDownloadStateAndNotifyDelegates;
 - (void)_updateObservedDownload;
 - (void)cancelAndRemoveDownload;
+- (void)cancelKeyFetch;
+- (void)deleteAndRedownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;
+- (void)fetchNewKeysForDownloadedVideo;
 - (id)init;
 - (id)initWithFamilySharingMediaItem:(id)arg1 mediaEntityIdentifier:(id)arg2;
 - (id)initWithVideosPlayable:(id)arg1;
 - (void)invalidate;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

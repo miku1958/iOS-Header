@@ -10,20 +10,22 @@
 {
 }
 
-+ (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
-+ (id)attributedStringForFormattedText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5;
-+ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 font:(id)arg8;
-+ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5;
++ (id)attributedStringForFormattedText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5 isButton:(BOOL)arg6;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 font:(id)arg8 isButton:(BOOL)arg9;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5 isButton:(BOOL)arg6;
 + (id)boldBodyFont;
-+ (id)boldCaptionFont;
-+ (id)boldFootnoteFont;
++ (id)cachedFontForKey:(id)arg1 creatorBlock:(CDUnknownBlockType)arg2;
++ (id)cachedFontForTextStyle:(id)arg1 isShort:(BOOL)arg2 fontWeight:(double)arg3;
++ (id)cachedFontForTextStyle:(id)arg1 isShort:(BOOL)arg2 isBold:(BOOL)arg3;
++ (id)cachedFontForTextStyle:(id)arg1 isShort:(BOOL)arg2 isBold:(BOOL)arg3 useCustomWeight:(BOOL)arg4 customFontWeight:(double)arg5;
++ (id)calloutFont;
 + (id)captionFont;
-+ (id)fontWithTextStyle:(id)arg1 isShort:(BOOL)arg2 isBold:(BOOL)arg3;
 + (id)footnoteFont;
-+ (id)horizontalAppNameFont;
-+ (void)initialize;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
++ (id)preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
++ (id)preferredFontWithTextStyle:(id)arg1 isShort:(BOOL)arg2 isBold:(BOOL)arg3;
++ (id)preferredFontWithTextStyle:(id)arg1 isShort:(BOOL)arg2 isBold:(BOOL)arg3 useCustomWeight:(BOOL)arg4 customFontWeight:(double)arg5;
 + (id)shortBodyFont;
 + (id)shortFootnoteFont;
 + (id)shortSubheadBoldFont;

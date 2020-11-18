@@ -13,7 +13,12 @@
     NSArray *_nonLocalizableKeys;
     NSArray *_localizableKeys;
     NSArray *_alwaysLocalizedKeys;
+    NSArray *_engagementRecordKeys;
+    NSArray *_conversionRecordKeys;
 }
+
+@property (readonly, nonatomic) NSArray *conversionRecordKeys; // @synthesize conversionRecordKeys=_conversionRecordKeys;
+@property (readonly, nonatomic) NSArray *engagementRecordKeys; // @synthesize engagementRecordKeys=_engagementRecordKeys;
 
 + (id)canaryRecordName;
 + (id)changeTagFromCKRecord:(id)arg1;
@@ -23,9 +28,11 @@
 + (BOOL)useTaggedImages;
 - (void).cxx_destruct;
 - (id)alwaysLocalizedKeys;
+- (id)conversionDataFromCKRecord:(id)arg1;
+- (id)engagementDataFromCKRecord:(id)arg1;
 - (id)experimentalizableKeys;
 - (unsigned long long)highThresholdDataSizeLimit;
-- (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 desiredArticleRecordFieldOptions:(unsigned long long)arg3 experimentalizableFieldsPostfix:(id)arg4 activeTreatmentID:(id)arg5;
+- (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 desiredArticleRecordFieldOptions:(unsigned long long)arg3 experimentalizableFieldsPostfix:(id)arg4 engagementCohortsExpField:(id)arg5 conversionCohortsExpField:(id)arg6 activeTreatmentID:(id)arg7;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 experimentalizableFieldsPostfix:(id)arg3 activeTreatmentID:(id)arg4;
 - (id)localizableExperimentalizableKeys;
 - (id)localizableKeys;

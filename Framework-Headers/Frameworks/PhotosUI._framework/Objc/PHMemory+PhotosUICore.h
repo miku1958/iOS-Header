@@ -7,6 +7,7 @@
 #import <Photos/PHMemory.h>
 
 @interface PHMemory (PhotosUICore)
+- (id)px_mutatedPhotosGraphPropertiesWithRejectReason:(unsigned long long)arg1;
 - (BOOL)px_shouldUseFacesRectForSmartCropping;
 @end
 

@@ -24,9 +24,11 @@
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
++ (BOOL)supportsCustomUserReportRequestAfforance;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
+- (void)didPressTrailingFootnoteButton;
 - (id)setupContentView;
 - (void)updateWithRowModel:(id)arg1;
 

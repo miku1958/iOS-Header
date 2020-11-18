@@ -16,6 +16,7 @@
 - (id)_accessibilityAlternativesForTextAtPosition:(unsigned long long)arg1;
 - (id)_accessibilityBeginningOfDocument;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (void)_accessibilityCheckBorderHit:(BOOL)arg1 left:(BOOL)arg2;
 - (id)_accessibilityEndOfDocument;
 - (BOOL)_accessibilityHandlesTabKey;
@@ -35,6 +36,8 @@
 - (long long)_accessibilityTextInputLinePosition:(BOOL)arg1;
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
+- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2 wantsSentences:(BOOL)arg3;
+- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 wantsSentences:(BOOL)arg2;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (void)_axDrawFocusRingAroundFirstResponderAndMoveFocus:(BOOL)arg1;
 - (void)_axResetFKAFocusToFirstResponder;

@@ -15,9 +15,9 @@
 
 @property (copy, nonatomic) NSDictionary *serializedItem; // @synthesize serializedItem=_serializedItem;
 
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 - (void).cxx_destruct;
-- (id)initWithSerializedItem:(id)arg1 named:(id)arg2 contentSource:(id)arg3;
+- (id)initWithSerializedItem:(id)arg1 named:(id)arg2 attributionSet:(id)arg3;
 - (id)metadataForSerialization;
 - (id)name;
 - (id)preferredFileType;

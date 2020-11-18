@@ -58,6 +58,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
@@ -118,6 +119,7 @@
 @property (strong, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (nonatomic) struct NSDirectionalEdgeInsets placeholderInsets; // @synthesize placeholderInsets=_placeholderInsets;
 @property (readonly, nonatomic) UILabel *placeholderLabel;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSArray *representedObjects;
 @property (copy, nonatomic) NSString *responseContext;

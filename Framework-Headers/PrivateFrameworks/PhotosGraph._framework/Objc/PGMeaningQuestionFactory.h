@@ -6,17 +6,24 @@
 
 #import <PhotosGraph/PGSurveyQuestionFactory.h>
 
+@class NSSet;
+
 @interface PGMeaningQuestionFactory : PGSurveyQuestionFactory
 {
+    NSSet *_meaningLabelsForWhichToGenerateQuestions;
 }
 
-+ (id)_meaningLabelsForWhichToGenerateQuestions;
+@property (strong, nonatomic) NSSet *meaningLabelsForWhichToGenerateQuestions; // @synthesize meaningLabelsForWhichToGenerateQuestions=_meaningLabelsForWhichToGenerateQuestions;
+
+- (void).cxx_destruct;
 - (id)_dateNodesFromStartDate:(id)arg1 toEndDate:(id)arg2;
 - (id)_expandedDateNodesFromDateNode:(id)arg1;
 - (id)_expandedDateNodesFromDateNodes:(id)arg1;
-- (id)_generateQuestionsFromAssets:(id)arg1 withLocalFactoryScore:(double)arg2 forMeaningLabels:(id)arg3 alreadyGeneratedQuestions:(id)arg4 limit:(unsigned long long)arg5;
 - (id)_looseCriteriasForCriteria:(id)arg1;
 - (id)_looseMeaningLabelsForMomentNode:(id)arg1 fromCandidateLabels:(id)arg2 inGraph:(id)arg3;
+- (id)_meaningLabelsByParentMeaningLabels;
+- (id)_questionsToAddFromMomentNodes:(id)arg1 useCuratedAssets:(BOOL)arg2 localFactoryScore:(double)arg3 alreadyGeneratedQuestions:(id)arg4 limit:(unsigned long long)arg5 graph:(id)arg6 progressBlock:(CDUnknownBlockType)arg7;
+- (void)_updateMeaningQuestionsIfNeededWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (long long)questionOptions;
 - (unsigned short)questionType;

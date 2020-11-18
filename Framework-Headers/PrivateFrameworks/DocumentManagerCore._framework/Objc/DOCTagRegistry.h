@@ -32,11 +32,11 @@
 @property (nonatomic) long long tagSerialNumber; // @synthesize tagSerialNumber=_tagSerialNumber;
 @property (strong, nonatomic) NSMutableOrderedSet *userTags; // @synthesize userTags=_userTags;
 
++ (id)sanitizedTagName:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)_canAddTag:(id)arg1;
 - (id)_memberTag:(id)arg1;
-- (id)_sanitizedTagName:(id)arg1;
 - (id)_setForTagType:(long long)arg1;
 - (id)_tagNameForComparing:(id)arg1;
 - (BOOL)addTag:(id)arg1;

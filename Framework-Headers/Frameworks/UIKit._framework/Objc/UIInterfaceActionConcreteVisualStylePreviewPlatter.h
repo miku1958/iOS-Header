@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (double)contentCornerRadius;
 - (struct UIEdgeInsets)contentMargin;
 - (struct CGSize)minimumActionContentSize;
-- (double)minimumImageGapWidth;
 - (id)newSectionSeparatorViewForGroupViewState:(id)arg1;
 
 @end

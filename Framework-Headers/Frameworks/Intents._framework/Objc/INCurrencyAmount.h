@@ -34,7 +34,7 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;

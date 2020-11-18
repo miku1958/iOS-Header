@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUTWeakReference, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
+@class CUTWeakReference, IDSEndpointCapabilities, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
 
 @interface _IDSDevice : NSObject
 {
@@ -20,6 +20,7 @@
     BOOL _cloudConnected;
 }
 
+@property (readonly, nonatomic) IDSEndpointCapabilities *capabilities;
 @property (readonly, nonatomic, getter=isCloudConnected) BOOL cloudConnected;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, nonatomic) NSString *deviceColor;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) NSString *productName;
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, nonatomic) NSData *pushToken;
+@property (readonly, nonatomic) long long relationship;
 @property (readonly, nonatomic) NSString *service;
 @property (readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;
 @property (readonly, nonatomic) BOOL supportsApplePay;
@@ -62,10 +64,13 @@
 - (void)_nearbyStateChanged;
 - (void)_setAccount:(id)arg1;
 - (void)_setService:(id)arg1;
+- (void)_stateChanged;
+- (id)compactDescription;
 - (void)dealloc;
 - (id)description;
 - (id)fullDescription;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isTinker;
 
 @end
 

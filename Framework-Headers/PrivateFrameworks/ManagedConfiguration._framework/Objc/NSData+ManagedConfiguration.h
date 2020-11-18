@@ -11,6 +11,6 @@
 + (id)MCDataWithCFData:(struct __CFData *)arg1;
 + (id)MCDataWithHexString:(id)arg1;
 - (id)MCHexString;
-- (id)MCSHA1Hash;
+- (id)MCSHA256Hash;
 @end
 

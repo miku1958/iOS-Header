@@ -6,41 +6,44 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSError, NSMutableDictionary;
+#import <CloudKit/CKFetchRecordZonesOperationCallbacks-Protocol.h>
 
-@interface CKFetchRecordZonesOperation : CKDatabaseOperation
+@class CKFetchRecordZonesOperationInfo, NSArray, NSMutableDictionary;
+@protocol CKFetchRecordZonesOperationCallbacks;
+
+@interface CKFetchRecordZonesOperation : CKDatabaseOperation <CKFetchRecordZonesOperationCallbacks>
 {
     BOOL _isFetchAllRecordZonesOperation;
     BOOL _ignorePCSFailures;
     CDUnknownBlockType _fetchRecordZonesCompletionBlock;
     NSArray *_recordZoneIDs;
-    NSArray *_recordZones;
     NSMutableDictionary *_recordZonesByZoneID;
     NSMutableDictionary *_recordZoneErrors;
-    NSError *_fetchAllRecordZonesError;
 }
 
-@property (strong, nonatomic) NSError *fetchAllRecordZonesError; // @synthesize fetchAllRecordZonesError=_fetchAllRecordZonesError;
+@property (readonly, nonatomic) id<CKFetchRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordZonesCompletionBlock; // @synthesize fetchRecordZonesCompletionBlock=_fetchRecordZonesCompletionBlock;
 @property (nonatomic) BOOL ignorePCSFailures; // @synthesize ignorePCSFailures=_ignorePCSFailures;
 @property (nonatomic) BOOL isFetchAllRecordZonesOperation; // @synthesize isFetchAllRecordZonesOperation=_isFetchAllRecordZonesOperation;
+@property (readonly, nonatomic) CKFetchRecordZonesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableDictionary *recordZoneErrors; // @synthesize recordZoneErrors=_recordZoneErrors;
 @property (copy, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
-@property (strong, nonatomic) NSArray *recordZones; // @synthesize recordZones=_recordZones;
 @property (strong, nonatomic) NSMutableDictionary *recordZonesByZoneID; // @synthesize recordZonesByZoneID=_recordZonesByZoneID;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 + (id)fetchAllRecordZonesOperation;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleFetchForRecordZoneID:(id)arg1 recordZone:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordZoneIDs:(id)arg1;
 - (void)performCKOperation;
+- (id)relevantZoneIDs;
 
 @end
 

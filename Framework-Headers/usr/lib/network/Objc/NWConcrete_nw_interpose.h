@@ -32,8 +32,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithClientUUID:(unsigned char [16])arg1 nw_context:(id)arg2;
-- (id)initWithDelegatedPid:(int)arg1 nw_context:(id)arg2;
 
 @end
 

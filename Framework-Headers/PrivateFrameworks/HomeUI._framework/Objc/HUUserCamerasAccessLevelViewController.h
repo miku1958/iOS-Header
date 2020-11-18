@@ -6,15 +6,17 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-@class HFUserItem, HUUserCamerasAccessLevelItemManager;
+@class HFUserItem, HUUserCamerasAccessLevelItemManager, NSIndexPath;
 
 @interface HUUserCamerasAccessLevelViewController : HUItemTableViewController
 {
     HFUserItem *_userItem;
     HUUserCamerasAccessLevelItemManager *_camerasAccessLevelItemManager;
+    NSIndexPath *_selectedIndexPath;
 }
 
 @property (readonly, copy, nonatomic) HUUserCamerasAccessLevelItemManager *camerasAccessLevelItemManager; // @synthesize camerasAccessLevelItemManager=_camerasAccessLevelItemManager;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly, copy, nonatomic) HFUserItem *userItem; // @synthesize userItem=_userItem;
 
 - (void).cxx_destruct;
@@ -22,6 +24,7 @@
 - (id)initWithUserItem:(id)arg1 home:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)viewDidLoad;
 

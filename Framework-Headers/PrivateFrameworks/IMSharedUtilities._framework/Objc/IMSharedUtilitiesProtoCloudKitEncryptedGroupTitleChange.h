@@ -16,9 +16,7 @@
     NSString *_otherHandle;
     NSData *_padding;
     unsigned int _version;
-    struct {
-        unsigned int version:1;
-    } _has;
+    CDStruct_f20694ce _has;
 }
 
 @property (strong, nonatomic) NSString *groupTitle; // @synthesize groupTitle=_groupTitle;

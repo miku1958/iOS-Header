@@ -16,7 +16,7 @@
 
 @property (nonatomic) float blendFactor;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (BOOL)supportsSecureCoding;
 - (unsigned long long)channelCount:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

@@ -21,6 +21,7 @@
     struct UIEdgeInsets marginInsets;
 }
 
+@property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing;
 @property (readonly, nonatomic) struct CGPoint avatarOffsetLTR;
 @property (readonly, nonatomic) struct CGPoint avatarOffsetRTL;
 @property (strong, nonatomic) CKSearchAvatarSupplementryView *avatarView; // @synthesize avatarView=_avatarView;
@@ -28,7 +29,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double editModeHorizontalOffset;
-@property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;

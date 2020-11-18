@@ -12,9 +12,12 @@
 
 @protocol UIElementProtocol <NSObject, NSCopying>
 
+@property (readonly, nonatomic) struct __AXUIElement *axElement;
 @property (readonly, copy, nonatomic) NSMutableDictionary *cachedAttributes;
 
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
++ (NSArray *)proxiedMLElementsForApp:(id<UIElementProtocol>)arg1;
++ (id)scrollAncestorAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
 - (NSArray *)arrayWithAXAttribute:(long long)arg1;
@@ -23,6 +26,7 @@
 - (struct CGColor *)colorWithAXAttribute:(long long)arg1;
 - (void)disableCache;
 - (void)enableCache:(BOOL)arg1;
+- (BOOL)isMLElement;
 - (BOOL)isMockElement;
 - (BOOL)isValid;
 - (BOOL)isValidForApplication:(NSObject<UIElementProtocol> *)arg1;
@@ -60,5 +64,7 @@
 - (NSArray *)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2 fetchAttributes:(BOOL)arg3;
 - (void)updateCache:(long long)arg1;
 - (void)updateCacheWithAttributes:(NSArray *)arg1;
+
+@optional
 @end
 

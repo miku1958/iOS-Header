@@ -29,12 +29,7 @@
         unsigned int read_postedBy:1;
         unsigned int read_surveyResponses:1;
         unsigned int read_uuid:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_postedAt:1;
-        unsigned int wrote_postedBy:1;
-        unsigned int wrote_surveyResponses:1;
-        unsigned int wrote_uuid:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,12 +47,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)surveyResponseType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsSurveyResponse:(id)arg1;
-- (void)_readComments;
-- (void)_readPostedAt;
-- (void)_readPostedBy;
-- (void)_readSurveyResponses;
-- (void)_readUuid;
 - (void)addSurveyResponse:(id)arg1;
 - (void)clearSurveyResponses;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -68,7 +57,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

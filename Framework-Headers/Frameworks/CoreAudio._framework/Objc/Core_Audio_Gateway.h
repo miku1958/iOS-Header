@@ -9,20 +9,23 @@
 #import <CoreAudio/NSXPCListenerDelegate-Protocol.h>
 
 @class NSString, NSXPCListener, NSXPCListenerEndpoint;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface Core_Audio_Gateway : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_listener;
     NSXPCListenerEndpoint *_endpoint;
-    shared_ptr_3c219583 _clientObjectMap;
+    NSObject<OS_dispatch_queue> *_io_queue;
+    shared_ptr_a1e71f47 _clientObjectMap;
 }
 
-@property (readonly, nonatomic) shared_ptr_3c219583 clientObjectMap; // @synthesize clientObjectMap=_clientObjectMap;
+@property (readonly, nonatomic) shared_ptr_a1e71f47 clientObjectMap; // @synthesize clientObjectMap=_clientObjectMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *io_queue; // @synthesize io_queue=_io_queue;
 @property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property (readonly) Class superclass;
 
@@ -33,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)handle_server_disconnected;
 - (void)handle_server_reconnected;
 - (BOOL)has_endpoint;
-- (id)initWithObjectMap:(shared_ptr_3c219583)arg1;
+- (id)initWithObjectMap:(shared_ptr_a1e71f47)arg1;
 
 @end
 

@@ -6,9 +6,9 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSError, PKSecureElementPass;
+@class NSArray, NSError;
 
 @protocol PKRemoteAddSecureElementPassViewControllerProtocol <NSObject>
-- (void)didFinishWithPass:(PKSecureElementPass *)arg1 error:(NSError *)arg2;
+- (void)didFinishWithPasses:(NSArray *)arg1 error:(NSError *)arg2;
 @end
 

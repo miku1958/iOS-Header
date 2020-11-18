@@ -24,9 +24,11 @@
 - (void)_done:(id)arg1;
 - (void)_presentUnsupportedAlertWithTitle:(id)arg1 message:(id)arg2;
 - (id)_updateActionSetBuilder;
+- (void)_validateDoneButton;
 - (BOOL)canSelectItem:(id)arg1 indexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
+- (void)didChangeSelection;
 - (id)initWithActionSetBuilder:(id)arg1 servicePickerDelegate:(id)arg2;
 - (id)initWithServiceGridItemManager:(id)arg1;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;

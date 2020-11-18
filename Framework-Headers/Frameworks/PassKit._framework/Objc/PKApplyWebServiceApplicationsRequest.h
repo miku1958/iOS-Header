@@ -6,11 +6,17 @@
 
 #import <PassKitCore/PKApplyWebServiceRequest.h>
 
+@class NSURL;
+
 @interface PKApplyWebServiceApplicationsRequest : PKApplyWebServiceRequest
 {
+    NSURL *_applyServiceURL;
 }
 
+@property (strong, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
+
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_urlRequestWithServiceURL:(id)arg1 appleAccountInformation:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

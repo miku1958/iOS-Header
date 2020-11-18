@@ -12,17 +12,23 @@
 @interface MNETADisplayFormatter : NSObject
 {
     id<MNETADisplayFormatterDelegate> _delegate;
-    double _remainingTime;
+    double _remainingTimeToEndOfLeg;
+    double _remainingTimeToEndOfRoute;
     NSTimeZone *_timeZone;
     MNWeakTimer *_updateTimer;
-    double _displayRemainingTime;
-    NSDate *_displayETA;
+    double _displayRemainingTimeToEndOfLeg;
+    double _displayRemainingTimeToEndOfRoute;
+    NSDate *_displayETAToEndOfLeg;
+    NSDate *_displayETAToEndOfRoute;
 }
 
 @property (weak, nonatomic) id<MNETADisplayFormatterDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSDate *displayETA; // @synthesize displayETA=_displayETA;
-@property (readonly, nonatomic) double displayRemainingTime; // @synthesize displayRemainingTime=_displayRemainingTime;
-@property (nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
+@property (readonly, nonatomic) NSDate *displayETAToEndOfLeg; // @synthesize displayETAToEndOfLeg=_displayETAToEndOfLeg;
+@property (readonly, nonatomic) NSDate *displayETAToEndOfRoute; // @synthesize displayETAToEndOfRoute=_displayETAToEndOfRoute;
+@property (readonly, nonatomic) double displayRemainingTimeToEndOfLeg; // @synthesize displayRemainingTimeToEndOfLeg=_displayRemainingTimeToEndOfLeg;
+@property (readonly, nonatomic) double displayRemainingTimeToEndOfRoute; // @synthesize displayRemainingTimeToEndOfRoute=_displayRemainingTimeToEndOfRoute;
+@property (nonatomic) double remainingTimeToEndOfLeg; // @synthesize remainingTimeToEndOfLeg=_remainingTimeToEndOfLeg;
+@property (nonatomic) double remainingTimeToEndOfRoute; // @synthesize remainingTimeToEndOfRoute=_remainingTimeToEndOfRoute;
 
 - (void).cxx_destruct;
 - (id)_displayDateWithRemainingTime:(double)arg1;

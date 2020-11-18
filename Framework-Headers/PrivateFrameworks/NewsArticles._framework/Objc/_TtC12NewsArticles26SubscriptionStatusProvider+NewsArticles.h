@@ -6,8 +6,12 @@
 
 #import <NewsArticles/_TtC12NewsArticles26SubscriptionStatusProvider.h>
 
-@interface _TtC12NewsArticles26SubscriptionStatusProvider (NewsArticles)
+#import <NewsArticles/FCBundleSubscriptionChangeObserver-Protocol.h>
+
+@interface _TtC12NewsArticles26SubscriptionStatusProvider (NewsArticles) <FCBundleSubscriptionChangeObserver>
 - (void)addObserver:(id)arg1;
+- (void)bundleSubscriptionDidExpire:(id)arg1;
+- (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)removeObserver:(id)arg1;
 @end
 

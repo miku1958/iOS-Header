@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@protocol _DKKnowledgeQuerying;
+@protocol OS_os_log, _DKKnowledgeQuerying;
 
 @interface _CDInBedDetector : NSObject
 {
+    NSObject<OS_os_log> *_log;
     id<_DKKnowledgeQuerying> _knowledge;
     unsigned long long _method;
 }
 
 @property (strong) id<_DKKnowledgeQuerying> knowledge; // @synthesize knowledge=_knowledge;
+@property (strong, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property unsigned long long method; // @synthesize method=_method;
 
 + (id)inBedDetector;
@@ -27,9 +29,10 @@
 - (id)findDateIntervalOfEventInStream:(id)arg1 datePredicate:(id)arg2 valuePredicate:(id)arg3 sortDescriptor:(id)arg4 error:(id *)arg5;
 - (id)findLastTimeDeviceWasLockedBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)findLastTimeDeviceWasPluggedInBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (id)findLatestEndOfWalkingActivityBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)findLatestEndOfMovementBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)initWithKnowledge:(id)arg1 method:(unsigned long long)arg2;
 - (id)lockedTimesBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)stationaryIntervalsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 
 @end
 

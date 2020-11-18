@@ -7,17 +7,22 @@
 #import <HomeKitDaemon/HMDAccessoryProfile.h>
 
 #import <HomeKitDaemon/HMFLocking-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDMediaSession, HMFUnfairLock;
+@class HMDMediaSession, HMFUnfairLock, NSString;
 
-@interface HMDMediaProfile : HMDAccessoryProfile <HMFLocking>
+@interface HMDMediaProfile : HMDAccessoryProfile <HMFLogging, HMFLocking>
 {
     HMFUnfairLock *_lock;
     HMDMediaSession *_mediaSession;
 }
 
 @property (readonly, nonatomic) unsigned long long capability;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong) HMDMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
+@property (readonly) Class superclass;
 
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
@@ -38,7 +43,6 @@
 - (BOOL)_updateRefreshPlayback:(id)arg1;
 - (id)assistantObject;
 - (void)configureWithMessageDispatcher:(id)arg1 configurationTracker:(id)arg2;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
 - (void)handleSessionUpdatedNotification:(id)arg1;
@@ -53,6 +57,7 @@
 - (void)registerForNotifications;
 - (void)sessionAudioControlUpdated:(id)arg1;
 - (void)unlock;
+- (void)unregisterForNotifications;
 - (void)updateWithResponses:(id)arg1 message:(id)arg2;
 - (id)urlString;
 

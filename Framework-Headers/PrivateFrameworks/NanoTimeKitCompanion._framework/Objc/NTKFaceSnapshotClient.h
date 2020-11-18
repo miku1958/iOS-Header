@@ -6,15 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
+#import <NanoTimeKitCompanion/NTKFaceSnapshotClient-Protocol.h>
+
+@class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface NTKFaceSnapshotClient : NSObject
+@interface NTKFaceSnapshotClient : NSObject <NTKFaceSnapshotClient>
 {
-    NSXPCConnection *_connection;
+    NSXPCConnection *_daemonConnection;
     BOOL _registrationNeeded;
     NSObject<OS_dispatch_queue> *_snapshotFileQueue;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -22,8 +29,9 @@
 - (void)_handleConnectionInterrupted;
 - (void)_handleCustomMonogramChangedNotification;
 - (void)_handleSignificantLocationChangeNotification;
+- (void)_register;
 - (void)_registerIfNeeded;
-- (void)_setupConnection;
+- (void)_setupDaemonConnection;
 - (void)_updateAllSnapshots;
 - (void)createFaceForPerformanceTesting:(long long)arg1;
 - (void)dealloc;

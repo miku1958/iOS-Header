@@ -6,9 +6,11 @@
 
 #import <CarPlaySupport/NSObject-Protocol.h>
 
+@class SiriDirectActionContext;
 @protocol CPSBaseTemplateViewController;
 
 @protocol CPSTemplateViewControllerDelegate <NSObject>
+- (void)templateViewController:(id<CPSBaseTemplateViewController>)arg1 shouldActivateSiriWithDirectActionContext:(SiriDirectActionContext *)arg2;
 - (void)templateViewControllerDidDismiss:(id<CPSBaseTemplateViewController>)arg1;
 - (void)templateViewControllerDidPop:(id<CPSBaseTemplateViewController>)arg1;
 @end

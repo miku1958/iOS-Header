@@ -8,6 +8,7 @@
 #import <ActionKit/WFVariableSerialization-Protocol.h>
 
 @class NSArray, WFParameterStateProcessingContext, WFVariable;
+@protocol WFPropertyListObject;
 
 @protocol WFParameterState <NSCopying, WFVariableSerialization>
 - (NSArray *)containedVariables;
@@ -17,6 +18,8 @@
 
 @optional
 + (Class)processingValueClass;
++ (NSArray *)processingValueClasses;
 - (id)initWithVariable:(WFVariable *)arg1;
+- (id<WFPropertyListObject>)legacySerializedRepresentation;
 @end
 

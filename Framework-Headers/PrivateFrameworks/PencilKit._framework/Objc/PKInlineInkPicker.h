@@ -40,7 +40,6 @@
     NSMutableDictionary *__inkForIdentifierDict;
     _PKAllowDrawingWhilePresentingPopoverView *__allowDrawingWhilePresentingPopoverView;
     PKInkAttributesPicker *_presentedInkAttributesPicker;
-    PKInk *_aggd_initialInkOnPopoverOpen;
     NSObject<OS_dispatch_queue> *_serialViewControllerTransitionQueue;
     NSObject<OS_dispatch_semaphore> *_serialViewControllerTransitionSemaphore;
     UIPencilInteraction *_pencilInteraction;
@@ -56,7 +55,6 @@
 @property (strong, nonatomic) _PKAllowDrawingWhilePresentingPopoverView *_allowDrawingWhilePresentingPopoverView; // @synthesize _allowDrawingWhilePresentingPopoverView=__allowDrawingWhilePresentingPopoverView;
 @property (readonly, nonatomic) struct CGRect _extentRect; // @dynamic _extentRect;
 @property (strong, nonatomic) NSMutableDictionary *_inkForIdentifierDict; // @synthesize _inkForIdentifierDict=__inkForIdentifierDict;
-@property (strong, nonatomic) PKInk *aggd_initialInkOnPopoverOpen; // @synthesize aggd_initialInkOnPopoverOpen=_aggd_initialInkOnPopoverOpen;
 @property (strong, nonatomic) NSArray *allowedTools; // @synthesize allowedTools=_allowedTools;
 @property (nonatomic) unsigned long long attributeSet; // @synthesize attributeSet=_attributeSet;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -167,8 +165,8 @@
 - (double)offsetForToolIndex:(unsigned long long)arg1 pressed:(BOOL)arg2;
 - (void)pencilInteractionDidTap:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
-- (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (BOOL)presentationControllerShouldDismiss:(id)arg1;
 - (void)resetToDrawingToolWithAnimation:(BOOL)arg1;
 - (void)selectColorPickerColor:(id)arg1;
 - (unsigned long long)selectionStateForSizeState:(unsigned long long)arg1 previousSelectionState:(unsigned long long)arg2;

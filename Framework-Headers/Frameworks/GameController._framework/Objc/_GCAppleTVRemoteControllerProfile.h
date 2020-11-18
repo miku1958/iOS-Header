@@ -7,13 +7,12 @@
 #import <GameController/GCMicroGamepad.h>
 
 #import <GameController/DigitizerValueChangedDelegate-Protocol.h>
-#import <GameController/_GCACHomeButtonDelegate-Protocol.h>
 
-@class GCControllerDirectionPad, NSDate, NSString, _GCACHomeButton;
+@class GCControllerDirectionPad, NSDate, NSString;
 
-@interface _GCAppleTVRemoteControllerProfile : GCMicroGamepad <_GCACHomeButtonDelegate, DigitizerValueChangedDelegate>
+__attribute__((visibility("hidden")))
+@interface _GCAppleTVRemoteControllerProfile : GCMicroGamepad <DigitizerValueChangedDelegate>
 {
-    _GCACHomeButton *_acHome;
     double _windowX;
     double _windowY;
     double _windowSize;
@@ -38,24 +37,18 @@
 
 + (int)updateDevice:(struct __IOHIDDevice *)arg1 withButtonDebounceTime:(unsigned char)arg2 withDelay:(BOOL)arg3;
 - (void).cxx_destruct;
-- (void)appDidBecomeActive;
-- (void)appWillResignActive;
 - (void)digitizerTouchEvent:(id)arg1 x:(double)arg2 y:(double)arg3 timestamp:(unsigned long long)arg4 forceSkipDpadRotation:(BOOL)arg5;
 - (void)digitizerTouchUp:(id)arg1 timestamp:(unsigned long long)arg2 forceSkipDpadRotation:(BOOL)arg3;
 - (void)getPositionInSlidingWindowForRealX:(double)arg1 realY:(double)arg2 outXInWindow:(double *)arg3 outYInWindow:(double *)arg4;
 - (void)handleReport:(unsigned int)arg1 data:(id)arg2;
 - (void)initCommon:(id)arg1;
 - (id)initWithController:(id)arg1;
-- (id)initWithController:(id)arg1 dpadFlippedY:(BOOL)arg2;
-- (id)menuButton;
 - (id)name;
 - (BOOL)ownershipClaimingElementsZero;
 - (void)processOrientationData:(id)arg1;
 - (unsigned int)sampleRate;
 - (void)setAllowsRotation:(BOOL)arg1;
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3 timestamp:(unsigned long long)arg4 forceSkipDpadRotation:(BOOL)arg5;
-- (void)setPlayerIndex:(long long)arg1;
-- (void)toggleSuspendResume;
 
 @end
 

@@ -6,40 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKitUI/SRAuthorizationStore-Protocol.h>
+@class NSDictionary, NSHashTable;
+@protocol OS_dispatch_queue, SRTCCStore;
 
-@class NSDictionary, NSHashTable, NSString;
-@protocol OS_dispatch_queue;
-
-@interface SRAuthorizationStore : NSObject <SRAuthorizationStore>
+__attribute__((visibility("hidden")))
+@interface SRAuthorizationStore : NSObject
 {
     int _notifyToken;
+    BOOL _sensorKitActive;
     NSDictionary *_authorizationValues;
     NSDictionary *_lastModifiedAuthorizationTimes;
-    NSObject<OS_dispatch_queue> *_updateQueue;
     NSHashTable *_delegates;
+    id<SRTCCStore> _tccStore;
+    NSObject<OS_dispatch_queue> *_updateQueue;
 }
 
-@property (copy) NSDictionary *authorizationValues; // @synthesize authorizationValues=_authorizationValues;
-@property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (copy) NSDictionary *lastModifiedAuthorizationTimes; // @synthesize lastModifiedAuthorizationTimes=_lastModifiedAuthorizationTimes;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
-
-+ (id)defaultStore;
 + (void)initialize;
-- (void)addDelegate:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)removeDelegate:(id)arg1;
-- (BOOL)serviceAuthorized:(id)arg1;
-- (BOOL)serviceAuthorized:(id)arg1 forBundleId:(id)arg2;
-- (void)startUpdatingAuthorizations;
-- (void)updateAuthorizations;
-- (void)updateLastModifiedTimes;
 
 @end
 

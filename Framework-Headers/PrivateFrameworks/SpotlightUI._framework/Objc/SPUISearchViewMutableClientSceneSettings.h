@@ -18,6 +18,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double distanceToTopOfIcons;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned int searchHeaderContextID;
+@property (nonatomic) unsigned long long searchHeaderLayerRenderID;
 @property (readonly) Class superclass;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -28,9 +28,11 @@
 - (BOOL)_processRequests:(id)arg1;
 - (BOOL)addRequest:(id)arg1;
 - (BOOL)addRequests:(id)arg1;
+- (BOOL)addRequests:(id)arg1 combine:(BOOL)arg2;
 - (id)init;
 - (BOOL)processRequest:(id)arg1;
 - (BOOL)processRequests:(id)arg1;
+- (BOOL)sendRequests:(id)arg1;
 - (unsigned long long)signpostID;
 
 @end

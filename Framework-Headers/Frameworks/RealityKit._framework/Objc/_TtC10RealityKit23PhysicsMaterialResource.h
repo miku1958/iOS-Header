@@ -10,7 +10,10 @@
 
 @interface _TtC10RealityKit23PhysicsMaterialResource : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *coreAsset;
+    MISSING_TYPE *__staticFriction;
+    MISSING_TYPE *__dynamicFriction;
+    MISSING_TYPE *__restitution;
+    MISSING_TYPE *__coreAsset;
 }
 
 @end

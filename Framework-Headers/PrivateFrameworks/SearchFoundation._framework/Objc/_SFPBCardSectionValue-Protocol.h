@@ -6,12 +6,13 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection;
+@class NSData, NSDictionary, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
 
 @protocol _SFPBCardSectionValue <NSObject>
 
 @property (strong, nonatomic) _SFPBActivityIndicatorCardSection *activityIndicatorCardSection;
 @property (strong, nonatomic) _SFPBAppLinkCardSection *appLinkCardSection;
+@property (strong, nonatomic) _SFPBAttributionFooterCardSection *attributionFooterCardSection;
 @property (strong, nonatomic) _SFPBAudioPlaybackCardSection *audioPlaybackCardSection;
 @property (strong, nonatomic) _SFPBButtonCardSection *buttonCardSection;
 @property (strong, nonatomic) _SFPBCompactRowCardSection *compactRowCardSection;
@@ -49,6 +50,7 @@
 @property (strong, nonatomic) _SFPBVerticalLayoutCardSection *verticalLayoutCardSection;
 @property (strong, nonatomic) _SFPBWatchListCardSection *watchListCardSection;
 @property (strong, nonatomic) _SFPBWebCardSection *webCardSection;
+@property (strong, nonatomic) _SFPBWorldMapCardSection *worldMapCardSection;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

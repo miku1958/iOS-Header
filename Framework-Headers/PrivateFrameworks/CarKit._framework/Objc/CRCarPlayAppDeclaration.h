@@ -18,26 +18,43 @@
     BOOL _supportsMessaging;
     BOOL _supportsCalling;
     BOOL _supportsMaps;
+    BOOL _supportsAudio;
+    BOOL _supportsCommunication;
+    BOOL _supportsTemplates;
+    BOOL _supportsCharging;
+    BOOL _supportsParking;
+    BOOL _supportsPublicSafety;
+    BOOL _supportsQuickOrdering;
     NSString *_bundleIdentifier;
     NSSet *_autoMakerProtocols;
     unsigned long long __applicationCategory;
+    NSString *_bundlePath;
 }
 
 @property (nonatomic) unsigned long long _applicationCategory; // @synthesize _applicationCategory=__applicationCategory;
 @property (strong, nonatomic) NSSet *autoMakerProtocols; // @synthesize autoMakerProtocols=_autoMakerProtocols;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (nonatomic) BOOL launchNotificationsUsingSiri; // @synthesize launchNotificationsUsingSiri=_launchNotificationsUsingSiri;
 @property (nonatomic) BOOL launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;
 @property (nonatomic) BOOL requiresGeoSupport; // @synthesize requiresGeoSupport=_requiresGeoSupport;
+@property (nonatomic) BOOL supportsAudio; // @synthesize supportsAudio=_supportsAudio;
 @property (nonatomic) BOOL supportsCalling; // @synthesize supportsCalling=_supportsCalling;
+@property (nonatomic) BOOL supportsCharging; // @synthesize supportsCharging=_supportsCharging;
+@property (nonatomic) BOOL supportsCommunication; // @synthesize supportsCommunication=_supportsCommunication;
 @property (nonatomic) BOOL supportsMaps; // @synthesize supportsMaps=_supportsMaps;
 @property (nonatomic) BOOL supportsMessaging; // @synthesize supportsMessaging=_supportsMessaging;
+@property (nonatomic) BOOL supportsParking; // @synthesize supportsParking=_supportsParking;
 @property (nonatomic) BOOL supportsPlayableContent; // @synthesize supportsPlayableContent=_supportsPlayableContent;
+@property (nonatomic) BOOL supportsPublicSafety; // @synthesize supportsPublicSafety=_supportsPublicSafety;
+@property (nonatomic) BOOL supportsQuickOrdering; // @synthesize supportsQuickOrdering=_supportsQuickOrdering;
+@property (nonatomic) BOOL supportsTemplates; // @synthesize supportsTemplates=_supportsTemplates;
 @property (nonatomic, getter=isSystemApp) BOOL systemApp; // @synthesize systemApp=_systemApp;
 
 + (id)declarationForAppProxy:(id)arg1;
 + (id)declarationForBundleIdentifier:(id)arg1 entitlements:(id)arg2 infoPlist:(id)arg3;
 + (id)declarationForBundleIdentifier:(id)arg1 info:(id)arg2 entitlements:(id)arg3;
++ (id)declarationForBundleIdentifier:(id)arg1 info:(id)arg2 entitlements:(id)arg3 bundlePath:(id)arg4;
 + (id)requiredEntitlementKeys;
 + (id)requiredInfoKeys;
 - (void).cxx_destruct;

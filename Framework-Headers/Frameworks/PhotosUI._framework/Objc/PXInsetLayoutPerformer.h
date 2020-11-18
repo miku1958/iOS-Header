@@ -16,7 +16,7 @@
     struct UIEdgeInsets _layoutInsets;
 }
 
-@property (readonly, nonatomic) NSArray *children;
+@property (strong, nonatomic) NSArray *children; // @synthesize children;
 @property (nonatomic) CDStruct_392cfed4 layoutInput;
 @property (nonatomic) struct UIEdgeInsets layoutInsets; // @synthesize layoutInsets=_layoutInsets;
 @property (strong, nonatomic) PXLayoutPerformerOutput *layoutOutput;
@@ -25,7 +25,6 @@
 - (void).cxx_destruct;
 - (struct CGSize)performLayout;
 - (void)prepareForReuse;
-- (void)setChildren:(id)arg1;
 
 @end
 

@@ -6,13 +6,15 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
+@class NSString;
 @protocol CSAudioSessionProvidingDelegate;
 
 @protocol CSAudioSessionProviding <NSObject>
-- (BOOL)activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)activateAudioSessionWithReason:(unsigned long long)arg1 dynamicAttribute:(unsigned long long)arg2 bundleID:(NSString *)arg3 error:(id *)arg4;
 - (BOOL)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)duckOthersOption;
 - (void)enableMiniDucking:(BOOL)arg1;
+- (void)enableSmartRoutingConsideration:(BOOL)arg1;
 - (BOOL)prewarmAudioSessionWithError:(id *)arg1;
 - (void)setAudioSessionDelegate:(id<CSAudioSessionProvidingDelegate>)arg1;
 - (void)setDuckOthersOption:(BOOL)arg1;

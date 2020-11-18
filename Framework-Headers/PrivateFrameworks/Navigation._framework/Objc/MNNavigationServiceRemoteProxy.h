@@ -8,7 +8,7 @@
 
 #import <Navigation/MNNavigationServiceProxy-Protocol.h>
 
-@class MNSettings, NSHashTable, NSMutableArray, NSString, NSXPCConnection;
+@class MNSettings, MNStartNavigationDetails, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
 @protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
     BOOL _applicationActive;
     NSXPCConnection *_connection;
     MNSettings *_settings;
+    geo_isolater *_clientsLock;
     NSHashTable *_clients;
+    MNStartNavigationDetails *_startNavigationDetails;
     NSMutableArray *_interruptionDates;
     BOOL _isReconnecting;
     CDUnknownBlockType _predictionHandler;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_restoreNavigationSession;
 - (void)_restorePredictionSession;
 - (BOOL)_shouldReconnectWithInterruptionOnDate:(id)arg1;
+- (void)_startNavigationWithDetails:(id)arg1;
 - (void)_updateConnection;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(id)arg2;
 - (void)changeSettings:(id)arg1;
@@ -75,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
@@ -87,7 +90,6 @@ __attribute__((visibility("hidden")))
 - (void)stopPredictingDestinations;
 - (void)switchToRoute:(id)arg1;
 - (void)updateDestination:(id)arg1;
-- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 
 @end

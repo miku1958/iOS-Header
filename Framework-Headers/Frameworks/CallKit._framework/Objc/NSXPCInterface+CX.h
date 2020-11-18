@@ -13,6 +13,7 @@
 + (id)cx_callDirectoryManagerMaintenanceHostInterface;
 + (id)cx_callDirectoryProviderHostInterface;
 + (id)cx_callDirectoryProviderVendorInterface;
++ (id)cx_networkExtensionMessageControllerHostInterface;
 + (id)cx_providerHostInterface;
 + (id)cx_providerVendorInterface;
 + (id)cx_voicemailControllerHostInterface;

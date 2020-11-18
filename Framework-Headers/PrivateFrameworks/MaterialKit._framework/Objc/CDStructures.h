@@ -21,22 +21,29 @@ struct CGRect {
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
+    double width;
+    double height;
 };
 
 struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    float _field1;
-    struct CGSize _field2;
+    double _field1;
+    double _field2;
     double _field3;
-} CDStruct_437ca384;
+    double _field4;
+} CDStruct_d2b197d1;
+
+typedef struct {
+    float opacity;
+    struct CGSize offset;
+    double radius;
+} CDStruct_b48b9fb5;
 

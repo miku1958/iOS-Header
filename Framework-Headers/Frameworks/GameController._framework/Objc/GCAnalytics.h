@@ -24,7 +24,18 @@
 - (void)onSiriMotionEnabled;
 - (void)publishController:(id)arg1;
 - (void)runInputPollTimer;
+- (void)sendHapticsClientDestroyedEventForBundleID:(id)arg1 productCategory:(id)arg2 totalPlayers:(int)arg3 sessionTotalDuration:(int)arg4 sessionActiveDuration:(int)arg5 terminationReason:(id)arg6;
+- (void)sendHapticsEngineCreatedEventForBundleID:(id)arg1 productCategory:(id)arg2 hapticsLocality:(id)arg3;
+- (void)sendHapticsErrorRaisedEventFromSource:(id)arg1 productCategory:(id)arg2 errorType:(id)arg3;
+- (void)sendHapticsPlayerDestroyedEventForBundleID:(id)arg1 productCategory:(id)arg2 totalEventsProcessed:(int)arg3 transientEventsProcessed:(int)arg4 continuousEventsProcessed:(int)arg5 parameterCurvesProcessed:(int)arg6 sessionTotalDuration:(int)arg7 sessionActiveDuration:(int)arg8;
 - (void)sendInputsPressedEvent:(const CDStruct_6ad99454 *)arg1;
+- (void)sendSettingsButtonCustomizedEventForBundleID:(id)arg1 productCategory:(id)arg2 button:(id)arg3;
+- (void)sendSettingsCustomizationsResetEventForBundleID:(id)arg1 productCategory:(id)arg2;
+- (void)sendSettingsCustomizationsToggledEventForBundleID:(id)arg1 productCategory:(id)arg2 toggledOn:(BOOL)arg3;
+- (void)sendSettingsCustomizedAppsEventForTotalCustomizedAppsCount:(int)arg1;
+- (void)sendSettingsDevicesEventForTotalCustomizedControllersCount:(int)arg1;
+- (void)sendSettingsEnteredEvent;
+- (void)sendSettingsIdentifyControllerEventForProductCategory:(id)arg1;
 - (void)unpublishController:(id)arg1;
 
 @end

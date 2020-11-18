@@ -10,7 +10,6 @@
 
 @interface _TtC16NewsSubscription15PurchaseStarter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *configurationManager;
     MISSING_TYPE *purchaseManager;
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *deferredPromise;

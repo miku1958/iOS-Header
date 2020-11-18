@@ -22,7 +22,7 @@
     BOOL mSupportsTextBackground;
     BOOL mSupportsTextWrapping;
     Class mMultiDataChartOptionsControllerBuildSupportClass;
-    NSString *mSaveChartStyleHelpKey;
+    NSString *mModifyChartDataHelpKey;
     long long _analyticsAppType;
 }
 
@@ -30,8 +30,8 @@
 @property (readonly) TSSPropertyMap *appSpecificPropertyOverrides;
 @property (nonatomic) BOOL disableHighQualityRenderingIfNecessary; // @synthesize disableHighQualityRenderingIfNecessary=mDisableHighQualityRenderingIfNecessary;
 @property (nonatomic) BOOL exportsUsingSageKeynoteChartNonStyleDefaultsOverride; // @synthesize exportsUsingSageKeynoteChartNonStyleDefaultsOverride=mExportsUsingSageKeynoteChartNonStyleDefaultsOverride;
+@property (copy, nonatomic) NSString *modifyChartDataHelpKey; // @synthesize modifyChartDataHelpKey=mModifyChartDataHelpKey;
 @property (strong, nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=mMultiDataChartOptionsControllerBuildSupportClass;
-@property (copy, nonatomic) NSString *saveChartStyleHelpKey; // @synthesize saveChartStyleHelpKey=mSaveChartStyleHelpKey;
 @property (nonatomic) BOOL shouldForceDiscreteGraphicsFor3D; // @synthesize shouldForceDiscreteGraphicsFor3D=mShouldForceDiscreteGraphicsFor3D;
 @property (nonatomic) BOOL showMessageOnSelection; // @synthesize showMessageOnSelection=mShowMessageOnSelection;
 @property (nonatomic) BOOL supports3DFillDataEmbeddingRecovery; // @synthesize supports3DFillDataEmbeddingRecovery=mSupports3DFillDataEmbeddingRecovery;

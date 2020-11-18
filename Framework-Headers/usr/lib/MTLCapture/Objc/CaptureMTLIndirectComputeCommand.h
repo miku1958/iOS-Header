@@ -36,6 +36,7 @@
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2;
+- (id)originalObject;
 - (void)reset;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setBarrier;

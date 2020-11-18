@@ -20,6 +20,8 @@
     BOOL _canTighten;
     BOOL _recalculateHash;
     BOOL _accessibilityReduceTransparencyEnabled;
+    BOOL _colorspaceGrayscale;
+    BOOL _colorspaceGrayscaleSet;
     NSString *_contentSizeCategory;
     double _scale;
     struct CGSize _maxSize;

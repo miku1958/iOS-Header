@@ -40,7 +40,6 @@
     NSString *_pathOnDisk;
 }
 
-@property (readonly, nonatomic) NSArray *allRealmFileURLs;
 @property (nonatomic) BOOL cache; // @synthesize cache=_cache;
 @property (copy, nonatomic) RLMSchema *customSchema; // @synthesize customSchema=_customSchema;
 @property (nonatomic) BOOL deleteRealmIfMigrationNeeded;
@@ -60,14 +59,7 @@
 + (id)rawDefaultConfiguration;
 + (void)resetRealmConfigurationState;
 + (void)setDefaultConfiguration:(id)arg1;
-+ (id)wf_appStoreShortcutsConfiguration;
-+ (id)wf_configurationWithAppGroupIdentifier:(id)arg1 filename:(id)arg2;
-+ (id)wf_configurationWithDirectoryURL:(id)arg1 filename:(id)arg2;
-+ (id)wf_inMemoryConfiguration;
-+ (id)wf_inMemoryConfigurationWithIdentifier:(id)arg1;
-+ (id)wf_shortcutsDirectoryURL;
-+ (id)wf_systemShortcutsConfiguration;
-+ (id)wf_workflowConfiguration;
++ (id)wf_configurationWithRealmURL:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct Config *)config;

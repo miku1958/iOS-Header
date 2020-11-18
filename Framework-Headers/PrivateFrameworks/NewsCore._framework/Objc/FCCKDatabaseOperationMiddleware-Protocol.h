@@ -9,6 +9,6 @@
 @class CKDatabaseOperation, FCCKPrivateDatabase;
 
 @protocol FCCKDatabaseOperationMiddleware <NSObject>
-- (long long)database:(FCCKPrivateDatabase *)arg1 willEnqueueOperation:(CKDatabaseOperation *)arg2;
+- (long long)database:(FCCKPrivateDatabase *)arg1 willEnqueueOperation:(CKDatabaseOperation *)arg2 error:(id *)arg3;
 @end
 

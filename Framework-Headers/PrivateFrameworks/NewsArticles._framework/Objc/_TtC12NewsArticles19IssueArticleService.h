@@ -11,7 +11,7 @@
 @interface _TtC12NewsArticles19IssueArticleService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *operationFactory;
-    MISSING_TYPE *personalizer;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

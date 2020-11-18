@@ -15,5 +15,7 @@
     MISSING_TYPE *isEnabled;
 }
 
+- (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+
 @end
 

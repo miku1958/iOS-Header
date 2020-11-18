@@ -29,6 +29,7 @@
     NSDictionary *_annotations;
     NSArray *_selectElementInfo;
     NSArray *_autocompleteTokens;
+    NSArray *_ancestorFrameURLs;
     double _rectLeft;
     double _rectTop;
     double _rectWidth;
@@ -45,6 +46,7 @@
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (readonly, copy, nonatomic) NSString *addressBookLabel; // @synthesize addressBookLabel=_addressBookLabel;
+@property (readonly, nonatomic) NSArray *ancestorFrameURLs; // @synthesize ancestorFrameURLs=_ancestorFrameURLs;
 @property (readonly, copy, nonatomic) NSDictionary *annotations; // @synthesize annotations=_annotations;
 @property (readonly, copy, nonatomic) NSString *associatedUsername; // @synthesize associatedUsername=_associatedUsername;
 @property (readonly, nonatomic) long long autoFillButtonType;

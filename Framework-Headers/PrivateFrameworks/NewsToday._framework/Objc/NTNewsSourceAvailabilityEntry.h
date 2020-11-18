@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTSourceAvailabilityEntry-Protocol.h>
 
-@class FCNetworkReachability, NSSNewsAvailabilityMonitor, NSString;
+@class FCNetworkReachability, FCNewsAvailabilityMonitor, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NTNewsSourceAvailabilityEntry : NSObject <NTSourceAvailabilityEntry>
@@ -16,11 +16,11 @@
     BOOL _available;
     CDUnknownBlockType _availabilityChangedNotificationBlock;
     FCNetworkReachability *_networkReachability;
-    NSSNewsAvailabilityMonitor *_NewsAvailabilityMonitor;
+    FCNewsAvailabilityMonitor *_NewsAvailabilityMonitor;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (strong, nonatomic) NSSNewsAvailabilityMonitor *NewsAvailabilityMonitor; // @synthesize NewsAvailabilityMonitor=_NewsAvailabilityMonitor;
+@property (strong, nonatomic) FCNewsAvailabilityMonitor *NewsAvailabilityMonitor; // @synthesize NewsAvailabilityMonitor=_NewsAvailabilityMonitor;
 @property (copy, nonatomic) CDUnknownBlockType availabilityChangedNotificationBlock; // @synthesize availabilityChangedNotificationBlock=_availabilityChangedNotificationBlock;
 @property (nonatomic, getter=isAvailable) BOOL available; // @synthesize available=_available;
 @property (readonly, copy) NSString *debugDescription;

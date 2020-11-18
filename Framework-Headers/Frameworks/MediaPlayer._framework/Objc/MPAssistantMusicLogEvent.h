@@ -10,6 +10,7 @@
 
 @class NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPAssistantMusicLogEvent : NSObject <MPAssistantLogEvent>
 {
     unsigned int _sessionID;

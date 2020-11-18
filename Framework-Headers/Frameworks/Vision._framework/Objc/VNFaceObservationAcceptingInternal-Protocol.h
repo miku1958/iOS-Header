@@ -6,10 +6,7 @@
 
 #import <Vision/VNFaceObservationAccepting-Protocol.h>
 
-@class NSArray;
-
 @protocol VNFaceObservationAcceptingInternal <VNFaceObservationAccepting>
 - (BOOL)getOptionalValidatedInputFaceObservations:(id *)arg1 clippedToRegionOfInterest:(BOOL)arg2 error:(id *)arg3;
-- (NSArray *)validatedInputFaceObservationsClippedToRegionOfInterest:(BOOL)arg1 error:(id *)arg2;
 @end
 

@@ -17,7 +17,7 @@
 - (id)initWithWebView:(id)arg1;
 - (void)overflowScrollPositionForLayer:(id)arg1 changedTo:(struct CGPoint)arg2;
 - (void)scrollOrZoomChanged:(struct CGRect)arg1;
-- (void)setViewportConstrainedLayers:(HashMap_5d2ed3fd *)arg1 stickyContainerMap:(const HashMap_cbeca103 *)arg2;
+- (void)setViewportConstrainedLayers:(HashMap_16811959 *)arg1 stickyContainerMap:(const HashMap_3ffacf9f *)arg2;
 
 @end
 

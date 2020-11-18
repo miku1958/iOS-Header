@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_axFloatingSwitcherIsVisible;
-- (id)_axFloatingSwitcherViewController;
 - (BOOL)_axIsMainSwitcherVisible;
 - (id)_axMainSwitcherViewController;
 - (void)_axNotifyNeedsFocusUpdateWhenEnabled:(unsigned long long)arg1;

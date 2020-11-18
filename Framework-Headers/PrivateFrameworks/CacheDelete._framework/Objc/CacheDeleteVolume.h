@@ -16,16 +16,19 @@
     NSString *_fsType;
     NSString *_mountPoint;
     unsigned long long _initialFreespace;
+    NSDictionary *_thresholds;
+    NSString *_bsdName;
 }
 
 @property (readonly) unsigned int block_size; // @synthesize block_size=_block_size;
+@property (readonly, nonatomic) NSString *bsdName; // @synthesize bsdName=_bsdName;
 @property (readonly) int dev; // @synthesize dev=_dev;
 @property (readonly, nonatomic) NSString *fsType; // @synthesize fsType=_fsType;
 @property (readonly) unsigned long long initialFreespace; // @synthesize initialFreespace=_initialFreespace;
 @property (readonly) BOOL isRoot; // @synthesize isRoot=_isRoot;
 @property (readonly, nonatomic) NSString *mountPoint; // @synthesize mountPoint=_mountPoint;
 @property (readonly, nonatomic) long long state; // @dynamic state;
-@property (readonly, nonatomic) NSDictionary *thresholds;
+@property (readonly, nonatomic) NSDictionary *thresholds; // @synthesize thresholds=_thresholds;
 
 + (id)mountPointForUUID:(id)arg1;
 + (id)rootVolume;
@@ -36,10 +39,12 @@
 - (void).cxx_destruct;
 - (id)FSEventsUUID;
 - (unsigned long long)amountPurged;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)freespace;
 - (unsigned long long)hash;
 - (id)initWithPath:(id)arg1;
+- (id)initWithVolume:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualTo:(id)arg1;
 - (unsigned long long)size;

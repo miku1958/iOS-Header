@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *tagViewRenderer;
+    MISSING_TYPE *feedItemRenderer;
+    MISSING_TYPE *baseStyler;
 }
 
 @end

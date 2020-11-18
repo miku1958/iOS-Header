@@ -11,7 +11,8 @@
 @protocol SBSpotlightTransientOverlayViewControllerDelegate <NSObject>
 
 @optional
-- (void)spotlightTransientOverlayViewControllerDidDismiss:(SBSpotlightTransientOverlayViewController *)arg1;
+- (void)spotlightTransientOverlayViewControllerDidPresent:(SBSpotlightTransientOverlayViewController *)arg1;
 - (void)spotlightTransientOverlayViewControllerRequestsDismissal:(SBSpotlightTransientOverlayViewController *)arg1;
+- (void)spotlightTransientOverlayViewControllerWillDismiss:(SBSpotlightTransientOverlayViewController *)arg1;
 @end
 

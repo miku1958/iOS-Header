@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_applicationIds:1;
         unsigned int read_debugLayoutId:1;
         unsigned int read_modules:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_applicationIds:1;
-        unsigned int wrote_debugLayoutId:1;
-        unsigned int wrote_modules:1;
-        unsigned int wrote_platformType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,11 +45,6 @@ __attribute__((visibility("hidden")))
 + (Class)modulesType;
 - (void).cxx_destruct;
 - (int)StringAsPlatformType:(id)arg1;
-- (void)_addNoFlagsApplicationId:(id)arg1;
-- (void)_addNoFlagsModules:(id)arg1;
-- (void)_readApplicationIds;
-- (void)_readDebugLayoutId;
-- (void)_readModules;
 - (void)addApplicationId:(id)arg1;
 - (void)addModules:(id)arg1;
 - (id)applicationIdAtIndex:(unsigned long long)arg1;
@@ -68,7 +59,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)modulesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)modulesCount;

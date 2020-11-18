@@ -4,18 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaRemote/_MRLanguageOptionProtobuf.h>
+#import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRLanguageOption : _MRLanguageOptionProtobuf <NSSecureCoding>
+@class NSArray, NSData, NSDictionary, NSString, _MRLanguageOptionProtobuf;
+
+@interface MRLanguageOption : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _hasType;
+    unsigned int _type;
+    NSString *_languageTag;
+    NSArray *_characteristics;
+    NSString *_displayName;
+    NSString *_identifier;
 }
 
+@property (copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
+@property (readonly, copy, nonatomic) NSData *data;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (nonatomic) BOOL hasType; // @synthesize hasType=_hasType;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
+@property (readonly, nonatomic) _MRLanguageOptionProtobuf *protobuf;
+@property (nonatomic) unsigned int type; // @synthesize type=_type;
+
++ (id)automaticLanguageOptionWithType:(unsigned int)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
+- (id)initWithType:(unsigned int)arg1 languageTag:(id)arg2 characteristics:(id)arg3 displayName:(id)arg4 identifier:(id)arg5;
+- (BOOL)isAutomaticLanguageOptionWithType:(unsigned int)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

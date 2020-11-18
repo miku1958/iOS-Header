@@ -21,10 +21,10 @@
 - (void)applicationSuspendedNotification:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)playSoundForDialerCharacter:(unsigned int)arg1;
+- (void)playSoundForDialerCharacter:(long long)arg1;
 - (void)setSoundsActivated:(BOOL)arg1;
 - (void)soundCompletedPlaying:(unsigned int)arg1;
-- (void)stopSoundForDialerCharacter:(unsigned int)arg1;
+- (void)stopSoundForDialerCharacter:(long long)arg1;
 
 @end
 

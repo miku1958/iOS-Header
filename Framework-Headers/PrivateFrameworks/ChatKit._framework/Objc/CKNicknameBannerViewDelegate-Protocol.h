@@ -6,9 +6,10 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKNicknameBannerView;
+@class CKNicknameBannerView, UIMenu;
 
 @protocol CKNicknameBannerViewDelegate <NSObject>
+- (UIMenu *)nicknameBannerViewActionButtonMenu:(CKNicknameBannerView *)arg1;
 - (void)nicknameBannerViewActionButtonTapped:(CKNicknameBannerView *)arg1;
 - (void)nicknameBannerViewDismissButtonTapped:(CKNicknameBannerView *)arg1;
 @end

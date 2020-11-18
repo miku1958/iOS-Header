@@ -9,39 +9,69 @@
 #import <SpringBoard/PGPictureInPictureControllerDelegate-Protocol.h>
 #import <SpringBoard/SBAlertItemsControllerObserver-Protocol.h>
 #import <SpringBoard/SBAssistantObserver-Protocol.h>
+#import <SpringBoard/SBIdleTimerProviding-Protocol.h>
+#import <SpringBoard/SBPIPContainerViewControllerObserver-Protocol.h>
+#import <SpringBoard/SBPIPMorphAnimatorControllerDelegate-Protocol.h>
+#import <SpringBoard/SBSensorActivityObserver-Protocol.h>
+#import <SpringBoard/SBWorkspaceKeyboardFocusControllerObserver-Protocol.h>
 
-@class NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, PGPictureInPictureController, SBPIPWindow;
-@protocol BSInvalidatable;
+@class BSCompoundAssertion, BSTimer, FBSDisplayLayoutMonitor, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PGPictureInPictureController, SBIdleTimerCoordinatorHelper, SBPIPAnalytics, SBPIPInterruptionDebouncingTimer, SBPIPStashAssertion, SBPIPWindow, UIView;
+@protocol BSInvalidatable, SBIdleTimerCoordinating;
 
-@interface SBPIPController : NSObject <PGPictureInPictureControllerDelegate, SBAlertItemsControllerObserver, SBAssistantObserver>
+@interface SBPIPController : NSObject <PGPictureInPictureControllerDelegate, SBPIPContainerViewControllerObserver, SBAlertItemsControllerObserver, SBAssistantObserver, SBSensorActivityObserver, SBPIPMorphAnimatorControllerDelegate, SBWorkspaceKeyboardFocusControllerObserver, SBIdleTimerProviding>
 {
     PGPictureInPictureController *_pictureInPictureController;
+    BOOL _isReducingResourcesUsage;
+    id<BSInvalidatable> _stateCaptureInvalidatable;
+    BOOL _hasIdleTimerBehaviors;
+    id<SBIdleTimerCoordinating> _idleTimerCoordinator;
+    SBIdleTimerCoordinatorHelper *_idleTimerCoordinatorHelper;
+    NSMutableArray *_windowLevelOverrideAssertions;
+    NSMutableSet *_pictureInPictureWindowHiddenReasons;
     SBPIPWindow *_pictureInPictureWindow;
     struct UIEdgeInsets _pictureInPictureWindowMargin;
-    BOOL _expectKeyboardVisible;
-    NSMutableSet *_pictureInPictureWindowHiddenReasons;
     NSMutableDictionary *_pictureInPictureInsetsForSource;
+    BOOL _expectKeyboardVisible;
+    NSMutableArray *_stashAssertions;
+    NSHashTable *_interruptionAssertions;
+    BSCompoundAssertion *_insetsOverrideAssertions;
+    NSMutableDictionary *_cameraInterruptionAssertions;
+    id<BSInvalidatable> _fullscreenModalElementInsetOverrideAssertion;
+    SBPIPStashAssertion *_stashForInterruptionAssertion;
+    SBPIPInterruptionDebouncingTimer *_interruptionEndDebouncingTimer;
+    long long _defaultStashState;
     NSMutableSet *_pictureInPictureMorphAnimatorControllers;
-    id<BSInvalidatable> _stateCaptureInvalidatable;
-    NSMutableOrderedSet *_pictureInPictureWindowLevelOverrides;
+    BOOL _fillGravity;
+    UIView *_keyboardInsetsVisualizerView;
+    long long _unlockedEnvironmentModeWhenKeyboardFocusChanged;
+    FBSDisplayLayoutMonitor *_displayLayoutMonitor;
+    SBPIPAnalytics *_analyticsHelper;
+    BSTimer *_pipDefaultContentSizeResetTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasIdleTimerBehaviors;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 @property (readonly) Class superclass;
 
 + (BOOL)isAutoPictureInPictureSupported;
 + (BOOL)isPictureInPictureSupported;
 + (id)sharedInstance;
++ (id)sharedInstanceIfLoaded;
 - (void).cxx_destruct;
+- (void)_addPictureInPictureMorphAnimatorController:(id)arg1;
 - (void)_adjustPIPInsetsForKeyboardFrameChangeNotification:(id)arg1;
 - (void)_appSwitcherWillQuitApp:(id)arg1;
-- (void)_bulletinWillDismiss:(id)arg1;
-- (void)_bulletinWillPresent:(id)arg1;
+- (void)_cancelInterruptionDebouncingTimer;
 - (void)_createWindowAndRootViewControllerIfNeeded;
+- (id)_currentLayoutState;
 - (void)_destroyWindowAndRootViewControllerIfPossible;
 - (void)_floatingDockHeightWillChange:(id)arg1;
+- (BOOL)_isContentViewAlignedLeftWithPosition:(unsigned long long)arg1 orientation:(long long)arg2;
+- (BOOL)_isContentViewAlignedTopWithPosition:(unsigned long long)arg1 orientation:(long long)arg2;
+- (struct CGRect)_keyboardFrameInScreenSpaceFromNotification:(id)arg1;
 - (void)_keyboardWillChangeFrame:(id)arg1;
 - (void)_keyboardWillRotate:(id)arg1;
 - (void)_keyboardWillShowOrHide:(id)arg1;
@@ -49,40 +79,65 @@
 - (void)_managePictureInPictureWindowLevel;
 - (void)_managePictureInPictureWindowVisibilityAnimated:(BOOL)arg1;
 - (id)_morphAnimatorControllerForProcessIdentifier:(int)arg1;
+- (id)_overrideInsetsForReason:(id)arg1 withIdentifier:(id)arg2;
 - (id)_pictureInPictureApplicationForProcessIdentifier:(int)arg1;
+- (struct UIEdgeInsets)_pictureInPictureWindowMargins;
 - (id)_pipWindow;
 - (BOOL)_pointInside:(struct CGPoint)arg1;
-- (void)_setPictureInPictureWindowMargin:(struct UIEdgeInsets)arg1 animationDuration:(double)arg2 animationOptions:(unsigned long long)arg3;
+- (long long)_reasonForAssertion:(id)arg1;
+- (void)_removePictureInPictureMorphAnimatorController:(id)arg1;
+- (void)_setContainersStashState:(long long)arg1;
+- (void)_setPictureInPictureWindowMargin:(struct UIEdgeInsets)arg1;
+- (void)_updateContainerViewControllersContentPadding;
 - (void)_updateFloatingDockInsets;
 - (void)_updateFloatingDockInsetsWithHeight:(double)arg1;
-- (struct UIEdgeInsets)_updatePictureInPictureOverlayInsetsWithDuration:(double)arg1 withCurrentLayoutState:(BOOL)arg2;
-- (void)addPictureInPictureMorphAnimatorController:(id)arg1;
+- (void)_updateHasIdleTimerBehaviors;
+- (struct UIEdgeInsets)_updatePictureInPictureOverlayInsetsWithCurrentLayoutState:(BOOL)arg1;
+- (struct UIEdgeInsets)_updatePictureInPictureOverlayInsetsWithCurrentLayoutState:(BOOL)arg1 shouldUpdate:(BOOL)arg2;
+- (void)_visualizeKeyboardFrameIfNeeded:(id)arg1;
+- (id)acquireInterruptionAssertionForReason:(long long)arg1 identifier:(id)arg2;
+- (id)acquireInterruptionAssertionForReason:(long long)arg1 identifier:(id)arg2 cameraSensorBundleIdentifier:(id)arg3;
+- (id)acquirePictureInPictureWindowLevelOverrideAssertionForWindowLevel:(unsigned long long)arg1 withReason:(long long)arg2 identifier:(id)arg3;
+- (id)acquireStashAssertionForReason:(long long)arg1 identifier:(id)arg2;
+- (void)activityDidChangeForSensorActivityDataProvider:(id)arg1;
 - (void)alertItemsController:(id)arg1 didActivateAlertItem:(id)arg2;
 - (void)alertItemsController:(id)arg1 didDeactivateAlertItem:(id)arg2 forReason:(int)arg3;
 - (void)alertItemsController:(id)arg1 willActivateAlertItem:(id)arg2;
-- (void)applyPictureInPictureInsets:(struct UIEdgeInsets)arg1 fromSource:(long long)arg2 duration:(double)arg3;
+- (void)applyPictureInPictureInsets:(struct UIEdgeInsets)arg1 forSource:(long long)arg2;
 - (void)assistantDidDisappear:(id)arg1;
 - (void)assistantWillAppear:(id)arg1;
+- (void)beginPiPInterruptionForAssertion:(id)arg1;
 - (void)cancelPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
+- (void)containerViewController:(id)arg1 didFinishStartAnimationWithInitialInterfaceOrientation:(long long)arg2;
+- (void)containerViewController:(id)arg1 userDidUpdateStashState:(long long)arg2;
+- (void)containerViewControllerStartReducingResourcesUsage:(id)arg1;
+- (void)containerViewControllerStopReducingResourcesUsage:(id)arg1;
+- (void)containerViewControllerUserMayUpdateStashState:(id)arg1;
+- (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
+- (id)createAndRegisterPictureInPictureMorphAnimatorControllerWithTargetProcessIdentifier:(int)arg1 uuid:(id)arg2 scenePersistenceIdentifier:(id)arg3 direction:(long long)arg4 gestureInitiated:(BOOL)arg5;
 - (void)dealloc;
-- (struct CGRect)defaultHomeScreenInitialPiPFrame:(struct CGRect)arg1 withPreferredContentSize:(struct CGSize)arg2;
+- (struct CGRect)defaultHomeScreenInitialPiPFrame:(struct CGRect)arg1 withPreferredContentSize:(struct CGSize)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4 shouldUpdate:(BOOL)arg5 gestureInitiated:(BOOL)arg6;
+- (void)displayLayoutMonitor:(id)arg1 didUpdateDisplayLayout:(id)arg2 withContext:(id)arg3;
+- (void)endPiPInterruptionForAssertion:(id)arg1;
+- (void)forcePictureInPictureContainerWithView:(id)arg1 toFrame:(struct CGRect)arg2;
 - (id)init;
 - (struct CGRect)initialFrameForInteractivePictureInPictureAnimationEnteringBackgroundForApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
+- (BOOL)isPictureInPictureContentInFillGravity;
 - (BOOL)isPictureInPictureWindowVisible;
+- (void)keyboardFocusController:(id)arg1 didUpdateFocusToPID:(int)arg2 sceneID:(id)arg3;
+- (void)morphAnimatorControllerDidTerminate:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pictureInPictureController:(id)arg1 didCreatePictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureController:(id)arg1 didHidePictureInPictureViewController:(id)arg2;
+- (void)pictureInPictureController:(id)arg1 didRequestStopForPictureInPictureViewController:(id)arg2 sourceSceneSessionIdentifier:(id)arg3 animated:(BOOL)arg4;
 - (BOOL)pictureInPictureController:(id)arg1 shouldDenyNewConnection:(id)arg2;
 - (void)pictureInPictureController:(id)arg1 willDestroyPictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureController:(id)arg1 willHidePictureInPictureViewController:(id)arg2;
-- (void)pictureInPictureInterruptionBegan;
-- (void)pictureInPictureInterruptionEnded;
 - (id)pictureInPictureMorphAnimatorControllerForProcessIdentifier:(int)arg1;
-- (struct CGSize)preferredContentSizeForInteractivePictureInPictureAnimationEnteringBackgroundForApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
-- (void)removePictureInPictureMorphAnimatorController:(id)arg1;
-- (void)removePictureInPictureWindowLevelOverrideForReason:(id)arg1;
+- (struct CGSize)preferredContentSizeForActivePictureInPictureWithApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
+- (struct CGSize)preferredContentSizeForInteractivelyEnteringBackgroundForApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
+- (void)setLastPictureInPictureContentWasFromFillGravity:(BOOL)arg1;
 - (void)setPictureInPictureWindowHidden:(BOOL)arg1 withReason:(id)arg2;
-- (void)setPictureInPictureWindowLevelOverride:(unsigned long long)arg1 withReason:(id)arg2;
 - (BOOL)shouldStartPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 - (void)startPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)updatePictureInPictureWindowLevel;

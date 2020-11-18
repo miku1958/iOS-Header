@@ -6,26 +6,38 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTCellularPlanManager, PSListController, PSUICellularPlanManagerCache, PSUICellularPlanUniversalReference;
+#import <SettingsCellularUI/CXCallObserverDelegate-Protocol.h>
+
+@class CTCellularPlanManager, CXCallObserver, NSString, PSListController, PSUICellularPlanManagerCache, PSUICellularPlanUniversalReference, PSUICoreTelephonyCallCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUITurnOnThisLineSpecifier : PSSpecifier
+@interface PSUITurnOnThisLineSpecifier : PSSpecifier <CXCallObserverDelegate>
 {
     PSUICellularPlanUniversalReference *_planReference;
     CTCellularPlanManager *_cellularPlanManager;
     PSUICellularPlanManagerCache *_planManagerCache;
+    PSUICoreTelephonyCallCache *_callCache;
     PSListController *_hostController;
+    CXCallObserver *_callObserver;
 }
 
+@property (strong, nonatomic) PSUICoreTelephonyCallCache *callCache; // @synthesize callCache=_callCache;
+@property (strong, nonatomic) CXCallObserver *callObserver; // @synthesize callObserver=_callObserver;
 @property (strong, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) PSListController *hostController; // @synthesize hostController=_hostController;
 @property (strong, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property (strong, nonatomic) PSUICellularPlanUniversalReference *planReference; // @synthesize planReference=_planReference;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 hostController:(id)arg4;
+- (void)callObserver:(id)arg1 callChanged:(id)arg2;
+- (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 callCache:(id)arg4 hostController:(id)arg5;
 - (id)isPlanEnabled:(id)arg1;
 - (void)setPlanEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setSwitchEnabled;
 
 @end
 

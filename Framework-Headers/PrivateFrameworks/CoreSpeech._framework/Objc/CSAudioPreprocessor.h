@@ -34,6 +34,7 @@
 @property (strong, nonatomic) CSVoiceTriggerAwareZeroFilter *zeroFilter; // @synthesize zeroFilter=_zeroFilter;
 
 - (void).cxx_destruct;
+- (BOOL)_isHeadphoneDeviceWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
 - (BOOL)_isNarrowBand:(float)arg1;
 - (void)_reportMetrics;
 - (void)beepCancellerDidCancelSamples:(id)arg1 buffer:(id)arg2 timestamp:(unsigned long long)arg3;
@@ -41,7 +42,7 @@
 - (id)initWithSampleRate:(float)arg1;
 - (void)processBuffer:(id)arg1 atTime:(unsigned long long)arg2;
 - (void)resetWithSampleRate:(float)arg1 containsVoiceTrigger:(BOOL)arg2 voiceTriggerInfo:(id)arg3;
-- (void)willBeep;
+- (void)willBeepWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
 - (void)zeroFilter:(id)arg1 zeroFilteredBufferAvailable:(id)arg2 atHostTime:(unsigned long long)arg3;
 
 @end

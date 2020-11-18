@@ -19,12 +19,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)recordNumberOfGraphRebuildFailures:(unsigned long long)arg1;
-- (void)recordNumberOfGraphRebuildTimeouts:(unsigned long long)arg1;
-- (void)recordNumberOfGraphRebuildsCancelled:(unsigned long long)arg1;
-- (void)recordNumberOfHighlightEnrichmentTimeouts:(unsigned long long)arg1;
-- (void)recordNumberOfHighlightEnrichmentsCancelled:(unsigned long long)arg1;
-- (void)recordNumberOfUnscheduledRebuilds:(unsigned long long)arg1;
+- (void)recordGraphRebuildFailure;
+- (void)recordGraphRebuildTimeout;
+- (void)recordGraphRebuildsCancellation;
+- (void)recordHighlightEnrichmentsCancellation;
 - (void)recordTimeBetweenGraphRebuildsWithLastRebuildDate:(id)arg1 currentRebuildDate:(id)arg2;
 - (void)recordTimeBetweenHighlightEnrichmentsWithLastEnrichmentDate:(id)arg1 currentEnrichmentDate:(id)arg2;
 

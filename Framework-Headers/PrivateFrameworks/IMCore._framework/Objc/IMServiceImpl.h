@@ -6,22 +6,18 @@
 
 #import <IMCore/IMService.h>
 
-@class IMAccount, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
+@class IMAccount, NSArray, NSData, NSDictionary, NSString;
 
 @interface IMServiceImpl : IMService
 {
     NSString *_name;
     NSString *_localizedName;
     NSString *_localizedShortName;
-    NSMutableDictionary *_cardMap;
-    NSDictionary *_personToIDMap;
     NSString *_countryCode;
     IMAccount *_bestAccount;
     NSDictionary *_serviceDefaults;
-    NSDictionary *_serviceProps;
     NSDictionary *_defaultSettings;
     NSData *_imageData;
-    NSArray *_abProperties;
     NSArray *_emailDomains;
     NSArray *_siblingServiceNames;
     unsigned int _screenNameSensitivity;
@@ -46,6 +42,10 @@
     BOOL _isPersistent;
     BOOL _isPlugInService;
     BOOL _allowsMultipleConnections;
+    NSArray *_abProperties;
+    NSDictionary *_serviceProps;
+    NSArray *_addressBookProperties;
+    NSString *_addressBookProperty;
 }
 
 @property (readonly, nonatomic) unsigned int IDSensitivity; // @synthesize IDSensitivity=_screenNameSensitivity;
@@ -53,12 +53,11 @@
 @property (readonly, nonatomic) BOOL _wantsInternationizedNumbers;
 @property (readonly, nonatomic) Class accountClass;
 @property (readonly, nonatomic) NSArray *accountIDs;
-@property (readonly, nonatomic) NSArray *addressBookProperties; // @synthesize addressBookProperties=_abProperties;
-@property (readonly, nonatomic) NSString *addressBookProperty;
+@property (readonly, nonatomic) NSArray *addressBookProperties; // @synthesize addressBookProperties=_addressBookProperties;
+@property (readonly, nonatomic) NSString *addressBookProperty; // @synthesize addressBookProperty=_addressBookProperty;
 @property (readonly, nonatomic) BOOL allowsMultipleConnections; // @synthesize allowsMultipleConnections=_allowsMultipleConnections;
 @property (readonly, nonatomic) long long buddyNotesMaxByteLength;
-@property (readonly, nonatomic) NSDictionary *cardMap;
-@property (strong, nonatomic) NSString *countryCode;
+@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (strong, nonatomic) NSDictionary *defaultAccountSettings; // @synthesize defaultAccountSettings=_defaultSettings;
 @property (readonly, nonatomic, getter=isDiscontinued) BOOL discontinued;
 @property (readonly, nonatomic) NSArray *emailDomains; // @synthesize emailDomains=_emailDomains;
@@ -87,6 +86,7 @@
 @property (readonly, nonatomic) BOOL supportsPresence; // @synthesize supportsPresence=_supportsPresence;
 @property (readonly, nonatomic) BOOL supportsRegistration; // @synthesize supportsRegistration=_supportsRegistration;
 
++ (BOOL)_deviceIsAltAccount;
 + (BOOL)_iMessageEnabledForMultipleSubscriptionsForSenderLastAddressedHandle:(id)arg1 simID:(id)arg2 previousService:(id)arg3;
 + (BOOL)_isSIMIdIDSRegisteredSIM:(id)arg1;
 + (BOOL)_isiMessageEnabledIfLastAddressedHandleIsNotActiveAnymore:(id)arg1;
@@ -115,19 +115,12 @@
 + (BOOL)systemSupportsSMSSending;
 + (BOOL)systemSupportsSendingAttachmentsOfTypes:(id)arg1 error:(long long *)arg2;
 - (void).cxx_destruct;
-- (id)_IDsToMapForIMPerson:(id)arg1;
-- (id)_abPropertiesBySanitizingABProperties:(id)arg1;
-- (void)_addAddressBookCards:(id)arg1 toMap:(id)arg2;
 - (void)_blockUntilInitialSyncPerformed;
 - (void)_calculateBestAccount;
-- (void)_dumpCardMap;
 - (void)_loadPropertiesIfNeeded;
-- (id)_newIDToCardMap;
-- (id)_personToIDMap;
 - (void)_syncWithRemoteBuddies;
 - (void)activeAccountsChanged:(id)arg1;
 - (id)canonicalFormOfID:(id)arg1;
-- (void)clearIDToCardMap;
 - (long long)compareNames:(id)arg1;
 - (void)dealloc;
 - (void)defaultsChanged:(id)arg1;
@@ -135,10 +128,6 @@
 - (void)disconnect;
 - (void)doneSetup;
 - (BOOL)equalID:(id)arg1 andID:(id)arg2;
-- (id)imABPeopleWithScreenName:(id)arg1;
-- (id)imABPeopleWithScreenName:(id)arg1 countryCode:(id)arg2 identifier:(int *)arg3;
-- (id)imABPeopleWithScreenName:(id)arg1 identifier:(int *)arg2;
-- (id)imABPeopleWithScreenName:(id)arg1 options:(unsigned long long)arg2;
 - (id)infoForAllScreenNames;
 - (id)infoForPreferredScreenNames;
 - (id)infoForScreenName:(id)arg1;
@@ -150,13 +139,9 @@
 - (long long)maxChatParticipantsForHandle:(id)arg1 simID:(id)arg2;
 - (id)myScreenNames;
 - (id)normalizedFormOfID:(id)arg1;
-- (id)peopleWithScreenName:(id)arg1;
-- (id)screenNamesForIMPerson:(id)arg1;
-- (id)screenNamesForPerson:(id)arg1;
 - (unsigned long long)status;
 - (void)statusChangedForAccount:(id)arg1 from:(unsigned long long)arg2 to:(unsigned long long)arg3;
 - (id)subtypeInformationForAccount:(id)arg1;
-- (void)updateIDToCardMapWithNotification:(id)arg1;
 
 @end
 

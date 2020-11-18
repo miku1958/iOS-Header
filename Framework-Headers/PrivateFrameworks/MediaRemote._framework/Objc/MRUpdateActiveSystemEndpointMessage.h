@@ -6,18 +6,18 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class NSString;
+@class MRUpdateActiveSystemEndpointRequest;
 
 @interface MRUpdateActiveSystemEndpointMessage : MRProtocolMessage
 {
+    MRUpdateActiveSystemEndpointRequest *_request;
 }
 
-@property (readonly, nonatomic) long long changeType;
-@property (readonly, nonatomic) long long operation;
-@property (readonly, nonatomic) NSString *outputDeviceUID;
-@property (readonly, nonatomic) NSString *reason;
+@property (readonly, nonatomic) MRUpdateActiveSystemEndpointRequest *request; // @synthesize request=_request;
 
-- (id)initWithOutputDeviceUID:(id)arg1 operation:(long long)arg2 changeType:(long long)arg3 reason:(id)arg4;
+- (void).cxx_destruct;
+- (id)initWithRequest:(id)arg1;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
 - (unsigned long long)type;
 
 @end

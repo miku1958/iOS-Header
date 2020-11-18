@@ -22,6 +22,7 @@
     _HKMedicalIDData *_medicalIDData;
     HKTitledContactBuddyHeaderView *_headerView;
     WDBuddyFlowContinueFooterView *_footerView;
+    BOOL _hasSetUpHeaderAndFooterViews;
     id<WDBuddyControllerUserInfoDelegate> _delegate;
     NSArray *_dataEntryItems;
     WDBuddyFlowUserInfo *_userInfo;
@@ -56,6 +57,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
+- (void)setUpHeaderAndFooterViewsIfNeeded;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

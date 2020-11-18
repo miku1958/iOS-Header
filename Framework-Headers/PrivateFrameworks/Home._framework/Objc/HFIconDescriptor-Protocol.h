@@ -17,6 +17,7 @@
 
 
 @optional
+- (long long)compare:(id<HFIconDescriptor>)arg1;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id<HFIconDescriptor>)arg1;
 @end
 

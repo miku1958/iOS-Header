@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, CLRegion, GEOMapItemStorage, NSArray, NSDictionary, NSTimeZone;
+@class CLLocation, CLRegion, GEOMapItemStorage, NSArray, NSData, NSDictionary, NSString, NSTimeZone;
 
 @interface CLPlacemarkInternal : NSObject
 {
@@ -16,6 +16,9 @@
     NSArray *areasOfInterest;
     GEOMapItemStorage *geoMapItemStorage;
     NSTimeZone *timeZone;
+    unsigned long long _cLMapItemSource;
+    NSData *_geoMapItemHandle;
+    NSString *mecardAddress;
 }
 
 - (id)init;

@@ -6,105 +6,31 @@
 
 #import <UIKit/UIView.h>
 
-#import <ARKit/ARInternalSessionObserver-Protocol.h>
+@class ARSession, NSObject;
+@protocol ARCoachingOverlayViewDelegate, ARSessionProviding;
 
-@class ARCoachingAnimationView, ARCoachingHeuristicCollection, ARCoachingMotionTracker, ARCoachingPillButton, ARCoachingSessionCache, ARCoachingState, ARSession, CADisplayLink, NSLayoutConstraint, NSMutableArray, NSObject, NSString, UILabel;
-@protocol ARCoachingOverlayViewDelegate, ARPrivateCoachingOverlayViewDelegate, ARSessionProviding;
-
-@interface ARCoachingOverlayView : UIView <ARInternalSessionObserver>
+@interface ARCoachingOverlayView : UIView
 {
-    UIView *_background;
-    UILabel *_coachingText;
-    ARCoachingPillButton *_resetButton;
-    ARCoachingState *_state;
-    ARCoachingHeuristicCollection *_heuristics;
-    ARCoachingMotionTracker *_motionTracker;
-    long long _coachingRequirements;
-    long long _requestedGoal;
-    long long _coachingMessageType;
-    long long _nextCoachingMessageType;
-    long long _nextCoachingAnimationState;
-    double _lastCoachingUpdateTime;
-    long long _currentConstraintDeviceOrientation;
-    NSLayoutConstraint *_resetButtonBottomLayoutConstraint;
-    ARCoachingAnimationView *_coachingAnimationView;
-    CADisplayLink *_displayLink;
-    NSMutableArray *_uiAnimationQueue;
-    BOOL _uiAnimationQueueRunning;
-    BOOL _isSessionRelocalizingMap;
     BOOL _activatesAutomatically;
-    BOOL _wasEverActivated;
-    BOOL _trackingStateNormalOverride;
-    float _resetButtonLandscapeVerticalOffset;
-    float _resetButtonPortraitVerticalOffset;
     id<ARCoachingOverlayViewDelegate> _delegate;
     NSObject<ARSessionProviding> *_sessionProvider;
     ARSession *_session;
     long long _goal;
-    ARCoachingSessionCache *_coachingSessionCache;
-    long long _trackingStateReasonOverride;
 }
 
 @property (nonatomic) BOOL activatesAutomatically; // @synthesize activatesAutomatically=_activatesAutomatically;
-@property (readonly, nonatomic) ARCoachingSessionCache *coachingSessionCache; // @synthesize coachingSessionCache=_coachingSessionCache;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ARCoachingOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long goal; // @synthesize goal=_goal;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
-@property (readonly, nonatomic) BOOL isRelocalizing;
-@property (readonly, nonatomic) BOOL isUIAnimating;
-@property (readonly, weak, nonatomic) id<ARPrivateCoachingOverlayViewDelegate> privateDelegate;
-@property (nonatomic) float resetButtonLandscapeVerticalOffset; // @synthesize resetButtonLandscapeVerticalOffset=_resetButtonLandscapeVerticalOffset;
-@property (nonatomic) float resetButtonPortraitVerticalOffset; // @synthesize resetButtonPortraitVerticalOffset=_resetButtonPortraitVerticalOffset;
 @property (strong, nonatomic) ARSession *session; // @synthesize session=_session;
 @property (weak, nonatomic) NSObject<ARSessionProviding> *sessionProvider; // @synthesize sessionProvider=_sessionProvider;
-@property (readonly) Class superclass;
-@property (nonatomic) BOOL trackingStateNormalOverride; // @synthesize trackingStateNormalOverride=_trackingStateNormalOverride;
-@property (nonatomic) long long trackingStateReasonOverride; // @synthesize trackingStateReasonOverride=_trackingStateReasonOverride;
-@property (readonly, nonatomic) BOOL wasEverActivated; // @synthesize wasEverActivated=_wasEverActivated;
 
 - (void).cxx_destruct;
-- (void)buttonPress:(id)arg1;
-- (double)calcFadeDurationIn:(BOOL)arg1 withButton:(BOOL)arg2;
-- (BOOL)checkActivationHeuristics;
-- (BOOL)checkDeactivationHeuristics;
-- (void)createConstraintsForDeviceOrientation:(long long)arg1;
-- (void)crossFadeCoachingMessage:(long long)arg1;
-- (long long)currentDeviceOrientation;
-- (void)dealloc;
-- (void)displayLinkUpdate;
-- (void)doStateAction:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fadeInWithButton:(BOOL)arg1;
-- (void)fadeOut;
-- (void)finishAllUIAnimations;
-- (void)generateHeuristicsForActive:(BOOL)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)killUIAnimations;
-- (void)layoutSubviews;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)orientationChanged;
-- (void)resolveCoachingMessage;
-- (void)restartIfActive;
-- (void)session:(id)arg1 didAddAnchors:(id)arg2;
-- (void)session:(id)arg1 didFailWithError:(id)arg2;
-- (void)session:(id)arg1 didRemoveAnchors:(id)arg2;
-- (void)session:(id)arg1 didUpdateFrame:(id)arg2;
-- (void)session:(id)arg1 willRunWithConfiguration:(id)arg2;
 - (void)setActive:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setCoachingMessage:(long long)arg1 animationState:(long long)arg2;
-- (void)setupView;
-- (void)startup;
-- (void)swapState:(id)arg1;
-- (void)teardown;
-- (void)updateCoachingRequirements;
-- (void)updateConstraints;
-- (void)updateUIAnimations;
-- (void)updateWithFrame:(id)arg1;
 
 @end
 

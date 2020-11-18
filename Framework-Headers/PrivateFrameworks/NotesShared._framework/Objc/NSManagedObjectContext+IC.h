@@ -13,8 +13,10 @@
 @property (strong, nonatomic) NSString *ic_debugName;
 @property (readonly, nonatomic) BOOL ic_isMainThreadContext;
 
+- (id)ic_existingObjectWithID:(id)arg1;
 - (void)ic_performBlock:(CDUnknownBlockType)arg1 andPerformBlockOnMainThread:(CDUnknownBlockType)arg2;
 - (void)ic_performBlockAndWait:(CDUnknownBlockType)arg1 andPerformBlockAndWaitOnMainThread:(CDUnknownBlockType)arg2;
+- (void)ic_refreshObject:(id)arg1 mergeChanges:(BOOL)arg2;
 - (BOOL)ic_save;
 - (BOOL)ic_saveWithLogDescription:(id)arg1;
 @end

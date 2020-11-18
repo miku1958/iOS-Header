@@ -7,6 +7,12 @@
 #import <TeaUI/_TtC5TeaUI9ImageView.h>
 
 @interface _TtC5TeaUI9ImageView (TeaUI)
+
+@property (nonatomic) BOOL accessibilityIgnoresInvertColors;
+@property (nonatomic) BOOL clipsToBounds;
+@property (nonatomic) long long contentMode;
+
++ (Class)layerClass;
 - (void)layoutSubviews;
 @end
 

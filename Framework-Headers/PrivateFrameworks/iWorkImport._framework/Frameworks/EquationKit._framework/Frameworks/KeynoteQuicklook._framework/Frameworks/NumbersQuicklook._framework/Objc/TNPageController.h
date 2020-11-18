@@ -81,6 +81,7 @@
 + (double)p_unclampedAutoFitContentScaleForInfoProvider:(id)arg1;
 - (void).cxx_destruct;
 - (id)_createPageLayoutForCoordinate:(struct TSUCellCoord)arg1;
+- (BOOL)_hasAddendumContent;
 - (BOOL)_isPageAddendumAtPageCoordinate:(struct TSUCellCoord)arg1;
 - (BOOL)_isPageAddendumAtPageIndex:(unsigned long long)arg1;
 - (id)_layoutsForPageIndex:(unsigned long long)arg1;
@@ -105,10 +106,12 @@
 - (void)didEnterPrintPreview;
 - (void)didExitPrintPreview;
 - (void)drawAdditionalContentForPageIndex:(unsigned long long)arg1 inContext:(struct CGContext *)arg2;
+- (void)enumerateAnnotationPagesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateLayoutsByPageWithBlock:(CDUnknownBlockType)arg1;
 - (struct CGRect)firstPartitionFrameForInfo:(id)arg1 outStartPageCoordinate:(out struct TSUCellCoord *)arg2;
 - (void)i_addChildLayer:(id)arg1 atAddendumPageCoordinate:(struct TSUCellCoord)arg2;
 - (id)i_childLayersAtAddendumPageCoordinate:(struct TSUCellCoord)arg1;
+- (void)i_invalidateForHeaderChange;
 - (void)i_invalidateHintCache;
 - (void)i_invalidatePageLayoutCache;
 - (id)i_layerForHeaderType:(long long)arg1 fragment:(long long)arg2 atPageCoordinate:(struct TSUCellCoord)arg3;
@@ -127,7 +130,6 @@
 - (void)p_computePriorPageCountForCurrentSheet;
 - (void)p_computeSubsequentPageCountForCurrentSheet;
 - (void)p_didEndDynamicContentScaleChange:(id)arg1;
-- (void)p_enumerateOverPageRange:(CDStruct_39acd760)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)p_headersOrFootersContainPageNumberRelatedAttachments;
 - (id)p_hintCacheForInfo:(id)arg1;
 - (void)p_invalidateCachedAutoFitContentScaleForInfoProvider:(id)arg1 notify:(BOOL)arg2;
@@ -139,6 +141,7 @@
 - (long long)p_pageCountForInfoProvider:(id)arg1;
 - (id)p_pageInfoForPageAtIndex:(unsigned long long)arg1;
 - (id)p_pageLayoutAtCoordinate:(struct TSUCellCoord)arg1;
+- (id)p_pageLayoutAtCoordinate:(struct TSUCellCoord)arg1 shouldCachePageLayout:(BOOL)arg2;
 - (void)p_postAutoFitContentScaleDidChangeNotification;
 - (long long)p_priorPageCount;
 - (long long)p_updateCachedPageCountForCurrentInfoProvider;
@@ -168,7 +171,6 @@
 - (void)removeLayoutsFromPages;
 - (BOOL)shouldPrintCommentsOfAnnotationPrintingHelper:(id)arg1;
 - (BOOL)shouldSuppressBackgroundsForPageIndex:(unsigned long long)arg1;
-- (void)syncPositionOfLayout:(id)arg1 atCoordinate:(struct TSUCellCoord)arg2;
 - (void)updateContentScale;
 - (void)updatePrintMargins;
 - (void)updateUserViewScale;

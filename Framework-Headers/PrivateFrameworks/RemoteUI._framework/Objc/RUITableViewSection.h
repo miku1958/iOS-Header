@@ -71,6 +71,7 @@
 - (id)subElementWithID:(id)arg1;
 - (id)subElementsWithName:(id)arg1;
 - (void)tappedShowAllRowWithTable:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 
 @end
 

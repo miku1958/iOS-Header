@@ -36,6 +36,7 @@
 - (void)_done:(id)arg1;
 - (void)_edit:(id)arg1;
 - (void)_updateRightBarButtons;
+- (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (id)detailsViewControllerForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;

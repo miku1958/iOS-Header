@@ -17,7 +17,6 @@
 @property (readonly, nonatomic) TSWPParagraphStyle *headerAndFooterStyle;
 @property (readonly, nonatomic) BOOL isBasicTheme;
 @property (readonly, nonatomic) BOOL isBookPortraitTemplateTheme;
-@property (readonly, nonatomic) long long themeNumber;
 
 + (void)initialize;
 + (id)themeWithContext:(id)arg1 alternate:(int)arg2 withStylesheet:(id)arg3;

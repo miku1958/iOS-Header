@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPModelPodcastAuthor.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPModelLibraryPodcastEpisodeAuthor : MPModelPodcastAuthor
 {
 }

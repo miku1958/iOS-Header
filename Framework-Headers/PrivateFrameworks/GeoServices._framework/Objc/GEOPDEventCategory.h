@@ -39,7 +39,10 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)eventLookupCategoryAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)localizedCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedCategorysCount;
 - (void)mergeFrom:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class MKSmallCalloutView, UIMotionEffectGroup, UIView, UIVisualEffectView, _MKCalloutLayer, _MKStandardCalloutMaskView;
 
-__attribute__((visibility("hidden")))
 @interface MKStandardCalloutView : MKCalloutView
 {
     struct {
@@ -36,7 +35,12 @@ __attribute__((visibility("hidden")))
     MKSmallCalloutView *_calloutView;
     UIVisualEffectView *_backdropView;
     UIMotionEffectGroup *_motionEffect;
+    long long _style;
+    CDStruct_f381021a _metrics;
+    BOOL _hideTitle;
 }
+
+@property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
 
 + (double)defaultHeight;
 + (Class)layerClass;
@@ -44,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_adaptToUserInterfaceStyle;
 - (void)_addAccessoryTargetForView:(id)arg1;
 - (void)_calculateActualAnchorPoint:(struct CGPoint *)arg1 frame:(struct CGRect *)arg2 forDesiredAnchorPoint:(struct CGPoint)arg3 boundaryRect:(struct CGRect)arg4;
+- (long long)_calculateAnchorPosition:(struct CGPoint *)arg1 visibleRect:(struct CGRect *)arg2;
 - (void)_calloutAccessoryControlTapped:(id)arg1;
 - (void)_frameDidChange;
 - (void)_layoutSubviews:(BOOL)arg1;
@@ -61,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)anchorPoint;
 - (long long)anchorPosition;
 - (void)animationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
+- (void)annotationViewFrameDidChange;
 - (void)completeBounceAnimation;
 - (void)dealloc;
 - (void)didMoveToWindow;

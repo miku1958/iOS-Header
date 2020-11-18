@@ -17,10 +17,12 @@
     NSString *_deviceName;
     CTUserLabel *_planLabel;
     NSString *_phoneNumber;
+    NSString *_countryCode;
     long long _status;
 }
 
 @property (strong, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
+@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (strong, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (strong, nonatomic) CTUserLabel *planLabel; // @synthesize planLabel=_planLabel;

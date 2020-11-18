@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSArray, NSSet, NSString, RBAssertionIntransientState, RBAssertionTransientState, RBConcreteTarget, RBInheritanceCollection, RBProcessState, RBSAssertionIdentifier, RBSProcessAssertionInfo, RBSProcessIdentifier, RBSystemState;
+@class NSArray, NSSet, NSString, RBAssertionIntransientState, RBAssertionTransientState, RBConcreteTarget, RBInheritanceCollection, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessAssertionInfo, RBSystemState;
 
-@interface RBAssertion : NSObject <BSDescriptionProviding, RBStateCapturing>
+@interface RBAssertion : NSObject <RBStateCapturing>
 {
     struct os_unfair_lock_s _lock;
     RBConcreteTarget *_target;
@@ -27,13 +26,13 @@
     unsigned long long _acquisitionCompletionPolicy;
     NSSet *_originatorInheritances;
     RBSProcessAssertionInfo *_assertionInfo;
+    id _plugInHoldToken;
     BOOL _suspended;
     BOOL _persistent;
     BOOL _active;
     BOOL _resolvedState;
-    RBSProcessIdentifier *_originator;
+    RBProcess *_originator;
     NSString *_description;
-    id _plugInHoldToken;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
@@ -55,10 +54,11 @@
 @property (readonly, nonatomic) double invalidationDuration;
 @property (nonatomic) unsigned long long invalidationReason;
 @property (readonly, nonatomic) unsigned long long legacyReason;
-@property (readonly, nonatomic) RBSProcessIdentifier *originator; // @synthesize originator=_originator;
+@property (readonly, nonatomic) RBProcess *originator; // @synthesize originator=_originator;
 @property (readonly, nonatomic, getter=isPersistent) BOOL persistent; // @synthesize persistent=_persistent;
-@property (strong, nonatomic) id plugInHoldToken; // @synthesize plugInHoldToken=_plugInHoldToken;
+@property (strong, nonatomic) id plugInHoldToken;
 @property (readonly, copy, nonatomic) RBProcessState *processState;
+@property (readonly, nonatomic) unsigned long long runningReason;
 @property (readonly, nonatomic) NSSet *sourceEnvironments;
 @property (readonly, nonatomic) unsigned long long startPolicy;
 @property (readonly, copy, nonatomic) NSString *stateCaptureTitle;
@@ -72,21 +72,15 @@
 + (id)assertionWithDescriptor:(id)arg1 target:(id)arg2 originator:(id)arg3 context:(id)arg4;
 + (id)assertionWithIdentifier:(id)arg1 target:(id)arg2 explanation:(id)arg3 attributes:(id)arg4 originator:(id)arg5 context:(id)arg6;
 - (void).cxx_destruct;
-- (id)_initWithTarget:(id)arg1 identifier:(id)arg2 explanation:(id)arg3 attributes:(id)arg4 originator:(id)arg5 context:(id)arg6;
-- (BOOL)_lock_resolveStateWithContext:(id)arg1;
 - (void)activate;
 - (void)applyToAssertionTransientState:(id)arg1 withAttributeContext:(id)arg2;
 - (void)applyToProcessState:(id)arg1 withAttributeContext:(id)arg2;
 - (void)applyToSystemState:(id)arg1 withAttributeContext:(id)arg2;
 - (id)captureState;
 - (void)deactivate;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (unsigned long long)maxCPUUsageViolationPolicyForRole:(unsigned char)arg1;
 - (BOOL)resolveStateWithContext:(id)arg1;
 - (void)resume;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 - (void)suspend;
 - (id)updateProcessStateWithAttributeContext:(id)arg1;
 

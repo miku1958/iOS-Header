@@ -15,13 +15,15 @@
     NSString *_containerIdentifier;
     CKRecordZoneID *_zoneIdentifier;
     long long _scope;
+    long long _type;
 }
 
 @property (readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property (readonly, nonatomic) long long scope; // @synthesize scope=_scope;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) CKRecordZoneID *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
-+ (id)identifierForZone:(id)arg1 container:(id)arg2;
++ (long long)_typeForIdentifier:(id)arg1;
 + (id)identifierForZone:(id)arg1 container:(id)arg2 scope:(long long)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -30,6 +32,8 @@
 - (id)initForZone:(id)arg1 container:(id)arg2;
 - (id)initForZone:(id)arg1 container:(id)arg2 scope:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEquivalentIgnoringOwnerToZone:(id)arg1 container:(id)arg2;
+- (BOOL)isEquivalentToZone:(id)arg1 container:(id)arg2;
 
 @end
 

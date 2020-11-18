@@ -27,11 +27,7 @@
         unsigned int read_scheduleInfo:1;
         unsigned int read_updateIdentifier:1;
         unsigned int read_vehiclePositionInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_instructions:1;
-        unsigned int wrote_scheduleInfo:1;
-        unsigned int wrote_updateIdentifier:1;
-        unsigned int wrote_vehiclePositionInfo:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,10 +43,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readInstructions;
-- (void)_readScheduleInfo;
-- (void)_readUpdateIdentifier;
-- (void)_readVehiclePositionInfo;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

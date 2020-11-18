@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 + (id)databasePathForContainerId:(id)arg1;
 + (void)migrateVersion0to1WithMigration:(id)arg1;
 + (void)migrateVersion1to2WithMigration:(id)arg1;
++ (void)migrateVersion2to3WithMigration:(id)arg1;
++ (void)migrateVersion3to4WithMigration:(id)arg1;
 + (BOOL)removeDatabaseForContainerId:(id)arg1;
 
 @end

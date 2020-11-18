@@ -6,7 +6,7 @@
 
 #import <QuickLookThumbnailing/QLAsynchronousOperation.h>
 
-@class QLThumbnailHostContext;
+@class NSDictionary, QLThumbnailHostContext;
 @protocol QLTExtensionThumbnailItem;
 
 __attribute__((visibility("hidden")))
@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     double _minimumSize;
     double _scale;
     unsigned long long _badgeType;
+    NSDictionary *_generatorData;
     struct CGSize _size;
 }
 
 @property (nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) NSDictionary *generatorData; // @synthesize generatorData=_generatorData;
 @property (strong, nonatomic) QLThumbnailHostContext *hostContext; // @synthesize hostContext=_hostContext;
 @property (strong, nonatomic) id<QLTExtensionThumbnailItem> item; // @synthesize item=_item;
 @property (nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
@@ -33,7 +35,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)finish;
-- (id)initWithThumbnailHostContext:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 badgeType:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7 serviceErrorHandler:(CDUnknownBlockType)arg8;
+- (id)initWithThumbnailHostContext:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 badgeType:(unsigned long long)arg6 generatorData:(id)arg7 completionHandler:(CDUnknownBlockType)arg8 serviceErrorHandler:(CDUnknownBlockType)arg9;
 - (void)main;
 
 @end

@@ -11,10 +11,10 @@
 
 @property (weak, nonatomic) id<AVTCoreDataCloudKitMirroringHandlerDelegate> delegate;
 
-- (void)exportChangesWithManagedObjectContext:(NSManagedObjectContext *)arg1 workQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
-- (void)importChangesWithManagedObjectContext:(NSManagedObjectContext *)arg1 workQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)exportChangesWithManagedObjectContext:(NSManagedObjectContext *)arg1 discretionary:(BOOL)arg2 workQueue:(NSObject<OS_dispatch_queue> *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)importChangesWithManagedObjectContext:(NSManagedObjectContext *)arg1 discretionary:(BOOL)arg2 workQueue:(NSObject<OS_dispatch_queue> *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)resetZoneWithManagedObjectContext:(NSManagedObjectContext *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
-- (void)scheduleExportChangesWithManagedObjectContext:(NSManagedObjectContext *)arg1 workQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)scheduleExportChangesWithManagedObjectContext:(NSManagedObjectContext *)arg1 discretionary:(BOOL)arg2 workQueue:(NSObject<OS_dispatch_queue> *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)startObservingResetSyncWithNotificationCenter:(NSNotificationCenter *)arg1;
 @end
 

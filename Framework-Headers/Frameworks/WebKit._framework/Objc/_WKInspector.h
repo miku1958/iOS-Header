@@ -27,6 +27,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WKWebView *webView;
 
+- (void)_browserExtensionsDisabled:(id)arg1;
+- (void)_browserExtensionsEnabled:(id)arg1;
 - (void)_setDiagnosticLoggingDelegate:(id)arg1;
 - (void)attach;
 - (void)close;

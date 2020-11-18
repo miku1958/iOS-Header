@@ -11,10 +11,11 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDCameraStreamSnapshotHandler : HMFObject <HMFLogging, HMDCameraStreamSnapshotCaptureDelegate, HMDCameraGetSnapshotProtocol>
 {
+    id<HMFLocking> _lock;
     BOOL _streamAvailable;
     BOOL _streamSetupInProgress;
     NSMutableSet *_streamSnapshotCaptures;
@@ -27,18 +28,18 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) NSMapTable *delegateTable; // @synthesize delegateTable=_delegateTable;
+@property (readonly) NSMapTable *delegateTable; // @synthesize delegateTable=_delegateTable;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (readonly, nonatomic) NSMutableSet *retiredStreamSnapshotCaptures; // @synthesize retiredStreamSnapshotCaptures=_retiredStreamSnapshotCaptures;
-@property (readonly, nonatomic) NSMutableDictionary *serviceInstanceStreamStatus; // @synthesize serviceInstanceStreamStatus=_serviceInstanceStreamStatus;
-@property (readonly, nonatomic, getter=isStreamAvailable) BOOL streamAvailable; // @synthesize streamAvailable=_streamAvailable;
-@property (readonly, nonatomic, getter=isStreamSetupInProgress) BOOL streamSetupInProgress; // @synthesize streamSetupInProgress=_streamSetupInProgress;
-@property (readonly, nonatomic) NSMutableSet *streamSnapshotCaptures; // @synthesize streamSnapshotCaptures=_streamSnapshotCaptures;
+@property (readonly) NSString *logID; // @synthesize logID=_logID;
+@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly) NSMutableSet *retiredStreamSnapshotCaptures; // @synthesize retiredStreamSnapshotCaptures=_retiredStreamSnapshotCaptures;
+@property (readonly) NSMutableDictionary *serviceInstanceStreamStatus; // @synthesize serviceInstanceStreamStatus=_serviceInstanceStreamStatus;
+@property (readonly, getter=isStreamAvailable) BOOL streamAvailable; // @synthesize streamAvailable=_streamAvailable;
+@property (readonly, getter=isStreamSetupInProgress) BOOL streamSetupInProgress; // @synthesize streamSetupInProgress=_streamSetupInProgress;
+@property (readonly) NSMutableSet *streamSnapshotCaptures; // @synthesize streamSnapshotCaptures=_streamSnapshotCaptures;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;

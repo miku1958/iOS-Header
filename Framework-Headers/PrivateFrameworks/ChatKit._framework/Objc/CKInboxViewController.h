@@ -9,22 +9,28 @@
 #import <ChatKit/UITableViewDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKConversationListController, NSMutableArray, NSString, UITableView, UITableViewDiffableDataSource, UITextView;
+@class NSMutableArray, NSString, UITableView, UITableViewDiffableDataSource, UITextView;
+@protocol CKConversationListControllerProtocol;
 
 @interface CKInboxViewController : UIViewController <UITextViewDelegate, UITableViewDelegate>
 {
-    CKConversationListController *_conversationListController;
+    BOOL _isVisible;
+    UIViewController<CKConversationListControllerProtocol> *_conversationListController;
     UITableViewDiffableDataSource *_tableViewDataSource;
     UITableView *_tableView;
     NSMutableArray *_tableCellDataArray;
+    NSMutableArray *_categoriesCellDataArray;
     NSMutableArray *_junkCellDataArray;
     NSMutableArray *_footerCellDataArray;
     UITextView *_stickyFooterTextView;
+    long long _categoriesIndexSection;
     long long _junkIndexSection;
     long long _footerIndexSection;
 }
 
-@property (strong, nonatomic) CKConversationListController *conversationListController; // @synthesize conversationListController=_conversationListController;
+@property (strong, nonatomic) NSMutableArray *categoriesCellDataArray; // @synthesize categoriesCellDataArray=_categoriesCellDataArray;
+@property (nonatomic) long long categoriesIndexSection; // @synthesize categoriesIndexSection=_categoriesIndexSection;
+@property (strong, nonatomic) UIViewController<CKConversationListControllerProtocol> *conversationListController; // @synthesize conversationListController=_conversationListController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *footerCellDataArray; // @synthesize footerCellDataArray=_footerCellDataArray;
@@ -40,8 +46,10 @@
 
 - (void).cxx_destruct;
 - (void)_chatUnreadCountDidChange:(id)arg1;
+- (void)_contentSizeCategoryChanged;
 - (id)_conversationList;
 - (unsigned long long)_filterModeForIndexPath:(id)arg1;
+- (id)_getSpamExtensionName;
 - (BOOL)_spamFilteringEnabled;
 - (void)_spamFilteringStateChanged;
 - (id)_unreadCountStringForIndexPath:(id)arg1;
@@ -49,9 +57,13 @@
 - (id)initWithConversationListController:(id)arg1;
 - (void)reloadTableViewData;
 - (void)reloadTableViewDataWithConversationListUpdate:(BOOL)arg1;
+- (BOOL)shouldHideInboxFooterTextView;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)updateBackButton;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

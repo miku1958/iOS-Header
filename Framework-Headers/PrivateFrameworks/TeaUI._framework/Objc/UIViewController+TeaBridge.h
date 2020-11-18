@@ -15,10 +15,6 @@
 @property (readonly, nonatomic) UIViewController *ts_parentVC;
 @property (nonatomic, readonly) TSTransitionContainerViewController *ts_transitionContainerViewController;
 
-- (void)addContextProvider:(id)arg1 forCommand:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)removeCommand:(id)arg1 forContextProvider:(id)arg2;
-- (void)removeCommands:(id)arg1 forContextProvider:(id)arg2;
-- (void)removeContextProvider:(id)arg1;
 - (id)tabBarSplitViewFocusable;
 - (id)tabBarSplitViewFousable;
 - (BOOL)ts_setAppearanceTransitionsAreDisabled:(BOOL)arg1;

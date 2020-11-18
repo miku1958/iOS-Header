@@ -6,45 +6,54 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/UITableViewDataSource-Protocol.h>
-#import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSString, PXRecipientSearchDataSource, PXRecipientSearchDataSourceManager, UITableView, UIView;
+@class CNAutocompleteResultsTableViewController, CNComposeRecipient, CNContactViewController, NSString, PXRecipientSearchDataSource, PXRecipientSearchDataSourceManager, UIView;
 @protocol PXSearchRecipientControllerDelegate;
 
-@interface PXSearchRecipientController : NSObject <UITableViewDelegate, UITableViewDataSource, PXSectionedDataSourceManagerObserver>
+@interface PXSearchRecipientController : NSObject <CNAutocompleteResultsTableViewControllerDelegate, PXSectionedDataSourceManagerObserver>
 {
     struct {
         BOOL didSelectRecipient;
+        BOOL searchStateDidChange;
+        BOOL numberOfSearchRecipientsDidChange;
     } _delegateRespondsTo;
     id<PXSearchRecipientControllerDelegate> _delegate;
     PXRecipientSearchDataSourceManager *_searchDataSourceManager;
+    long long _searchState;
+    unsigned long long _numberOfSearchRecipients;
     PXRecipientSearchDataSource *__searchDataSource;
-    UITableView *__searchResultsTableView;
+    CNAutocompleteResultsTableViewController *__searchResultsTableViewController;
+    CNComposeRecipient *_suggestedRecipientBeingViewed;
+    CNContactViewController *__contactViewController;
 }
 
+@property (weak, nonatomic) CNContactViewController *_contactViewController; // @synthesize _contactViewController=__contactViewController;
 @property (strong, nonatomic, setter=_setSearchDataSource:) PXRecipientSearchDataSource *_searchDataSource; // @synthesize _searchDataSource=__searchDataSource;
 @property (readonly, nonatomic) BOOL _searchHasNoResultsFound;
-@property (readonly, nonatomic) UITableView *_searchResultsTableView; // @synthesize _searchResultsTableView=__searchResultsTableView;
+@property (readonly, nonatomic) CNAutocompleteResultsTableViewController *_searchResultsTableViewController; // @synthesize _searchResultsTableViewController=__searchResultsTableViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXSearchRecipientControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long numberOfSearchRecipients; // @synthesize numberOfSearchRecipients=_numberOfSearchRecipients;
 @property (readonly, nonatomic) PXRecipientSearchDataSourceManager *searchDataSourceManager; // @synthesize searchDataSourceManager=_searchDataSourceManager;
 @property (readonly, nonatomic) UIView *searchResultsView;
+@property (nonatomic) long long searchState; // @synthesize searchState=_searchState;
+@property (strong, nonatomic) CNComposeRecipient *suggestedRecipientBeingViewed; // @synthesize suggestedRecipientBeingViewed=_suggestedRecipientBeingViewed;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_contactViewControllerForRecipient:(id)arg1;
+- (void)_removeRecent;
 - (id)_validationTextColorForSearchResult:(id)arg1;
+- (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
+- (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)autocompleteResultsController:(id)arg1 tintColorForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)disambiguateRecipient:(id)arg1;
 - (id)init;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 
 @end
 

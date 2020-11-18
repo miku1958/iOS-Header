@@ -11,7 +11,6 @@
 
 @class CKDOperationMetrics;
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationCombinedMetrics : NSObject <NSCopying, NSSecureCoding>
 {
     CKDOperationMetrics *_cloudKitMetrics;

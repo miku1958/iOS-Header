@@ -5,64 +5,24 @@
 //
 
 #import <SpringBoard/NSObject-Protocol.h>
+#import <SpringBoard/SBIconViewActionDelegate-Protocol.h>
+#import <SpringBoard/SBIconViewBehaviorDelegate-Protocol.h>
+#import <SpringBoard/SBIconViewConfigurationUIDelegate-Protocol.h>
+#import <SpringBoard/SBIconViewDragDelegate-Protocol.h>
+#import <SpringBoard/SBIconViewReuseDelegate-Protocol.h>
+#import <SpringBoard/SBIconViewShortcutsDelegate-Protocol.h>
 
-@class NSArray, NSSet, NSString, NSURL, SBFParallaxSettings, SBFolder, SBIcon, SBIconImageView, SBIconLabelImage, SBIconLabelImageParameters, SBIconView, SBSApplicationShortcutItem, UIColor, UIDragItem, UIDragPreviewParameters, UIGestureRecognizer, UITargetedDragPreview, UITouch, UIView, _UIContextMenuStyle;
-@protocol SBIconAccessoryView, SBIconLabelAccessoryView, UIDragAnimating, UIDragSession;
+@class SBIconView;
+@protocol SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewConfigurationUIDelegate, SBIconViewDragDelegate, SBIconViewReuseDelegate, SBIconViewShortcutsDelegate;
 
-@protocol SBIconViewDelegate <NSObject>
+@protocol SBIconViewDelegate <SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewReuseDelegate, SBIconViewDragDelegate, SBIconViewShortcutsDelegate, SBIconViewConfigurationUIDelegate, NSObject>
 
 @optional
-- (UIColor *)accessibilityTintColorForIconView:(SBIconView *)arg1;
-- (double)additionalDragLiftScaleForIconView:(SBIconView *)arg1;
-- (NSURL *)applicationBundleURLForShortcutsWithIconView:(SBIconView *)arg1;
-- (NSString *)applicationShortcutWidgetBundleIdentifierForShortcutsWithIconView:(SBIconView *)arg1;
-- (UIView *)backgroundViewForComponentsOfIconView:(SBIconView *)arg1;
-- (long long)closeBoxTypeForIconView:(SBIconView *)arg1;
-- (UIView *)containerViewForPresentingContextMenuForIconView:(SBIconView *)arg1;
-- (UIView *)customPresentingContainerViewForShortcutsPresentationWithIconView:(SBIconView *)arg1;
-- (BOOL)icon:(SBIconView *)arg1 canReceiveGrabbedIcon:(SBIcon *)arg2;
-- (void)icon:(SBIconView *)arg1 openFolder:(SBFolder *)arg2 animated:(BOOL)arg3;
-- (void)icon:(SBIconView *)arg1 touchEnded:(BOOL)arg2;
-- (void)icon:(SBIconView *)arg1 touchMoved:(UITouch *)arg2;
-- (void)iconCloseBoxTapped:(SBIconView *)arg1;
-- (BOOL)iconShouldAllowCloseBoxTap:(SBIconView *)arg1;
-- (BOOL)iconShouldAllowTap:(SBIconView *)arg1;
-- (void)iconTapped:(SBIconView *)arg1;
-- (void)iconTouchBegan:(SBIconView *)arg1;
-- (NSArray *)iconView:(SBIconView *)arg1 applicationShortcutItemsWithProposedItems:(NSArray *)arg2;
-- (BOOL)iconView:(SBIconView *)arg1 canAddDragItemsToSession:(id<UIDragSession>)arg2;
-- (void)iconView:(SBIconView *)arg1 didEndDragSession:(id<UIDragSession>)arg2 withOperation:(unsigned long long)arg3;
-- (void)iconView:(SBIconView *)arg1 dragLiftAnimationDidChangeDirection:(long long)arg2;
-- (UITargetedDragPreview *)iconView:(SBIconView *)arg1 dragPreviewForItem:(UIDragItem *)arg2 session:(id<UIDragSession>)arg3 previewParameters:(UIDragPreviewParameters *)arg4;
-- (long long)iconView:(SBIconView *)arg1 draggingStartLocationWithProposedStartLocation:(long long)arg2;
-- (BOOL)iconView:(SBIconView *)arg1 editingModeGestureRecognizerDidFire:(UIGestureRecognizer *)arg2;
-- (UIView<SBIconAccessoryView> *)iconView:(SBIconView *)arg1 iconAccessoryViewOfClass:(Class)arg2;
-- (UIView<SBIconLabelAccessoryView> *)iconView:(SBIconView *)arg1 iconLabelAccessoryViewOfType:(long long)arg2;
-- (void)iconView:(SBIconView *)arg1 item:(UIDragItem *)arg2 willAnimateDragCancelWithAnimator:(id<UIDragAnimating>)arg3;
-- (SBIconLabelImage *)iconView:(SBIconView *)arg1 labelImageWithParameters:(SBIconLabelImageParameters *)arg2;
-- (SBFParallaxSettings *)iconView:(SBIconView *)arg1 parallaxSettingsForIconAccessoryView:(UIView<SBIconAccessoryView> *)arg2;
-- (void)iconView:(SBIconView *)arg1 session:(id<UIDragSession>)arg2 willEndWithOperation:(unsigned long long)arg3;
-- (BOOL)iconView:(SBIconView *)arg1 shouldActivateApplicationShortcutItem:(SBSApplicationShortcutItem *)arg2 atIndex:(unsigned long long)arg3;
-- (BOOL)iconView:(SBIconView *)arg1 shouldContinueToUseBackgroundViewForComponents:(UIView *)arg2;
-- (void)iconView:(SBIconView *)arg1 willAddDragItems:(NSArray *)arg2 toSession:(id<UIDragSession>)arg3;
-- (void)iconView:(SBIconView *)arg1 willAnimateDragLiftWithAnimator:(id<UIDragAnimating>)arg2 session:(id<UIDragSession>)arg3;
-- (void)iconView:(SBIconView *)arg1 willRemoveIconAccessoryView:(UIView<SBIconAccessoryView> *)arg2;
-- (void)iconView:(SBIconView *)arg1 willRemoveIconImageView:(SBIconImageView *)arg2;
-- (void)iconView:(SBIconView *)arg1 willRemoveIconLabelAccessoryView:(UIView<SBIconLabelAccessoryView> *)arg2;
-- (void)iconView:(SBIconView *)arg1 willUseContextMenuStyle:(_UIContextMenuStyle *)arg2;
-- (void)iconView:(SBIconView *)arg1 willUsePreviewForCancelling:(UITargetedDragPreview *)arg2 targetIconView:(SBIconView *)arg3;
-- (BOOL)iconViewCanBeginDrags:(SBIconView *)arg1;
-- (BOOL)iconViewDisplaysBadges:(SBIconView *)arg1;
-- (BOOL)iconViewDisplaysCloseBox:(SBIconView *)arg1;
-- (void)iconViewShortcutsPresentationDidCancel:(SBIconView *)arg1;
-- (void)iconViewShortcutsPresentationDidFinish:(SBIconView *)arg1;
-- (BOOL)iconViewShouldBeginShortcutsPresentation:(SBIconView *)arg1;
-- (void)iconViewWasRecycled:(SBIconView *)arg1;
-- (void)iconViewWillBeginDrag:(SBIconView *)arg1 session:(id<UIDragSession>)arg2;
-- (SBIconView *)iconViewWillCancelDrag:(SBIconView *)arg1;
-- (SBIconImageView *)imageViewForIconView:(SBIconView *)arg1;
-- (NSSet *)launchActionsForIconView:(SBIconView *)arg1;
-- (NSURL *)launchURLForIconView:(SBIconView *)arg1;
-- (double)scale;
+- (id<SBIconViewActionDelegate>)actionDelegateForIconView:(SBIconView *)arg1;
+- (id<SBIconViewBehaviorDelegate>)behaviorDelegateForIconView:(SBIconView *)arg1;
+- (id<SBIconViewConfigurationUIDelegate>)configurationUIDelegateForIconView:(SBIconView *)arg1;
+- (id<SBIconViewDragDelegate>)draggingDelegateForIconView:(SBIconView *)arg1;
+- (id<SBIconViewReuseDelegate>)reuseDelegateForIconView:(SBIconView *)arg1;
+- (id<SBIconViewShortcutsDelegate>)shortcutsDelegateForIconView:(SBIconView *)arg1;
 @end
 

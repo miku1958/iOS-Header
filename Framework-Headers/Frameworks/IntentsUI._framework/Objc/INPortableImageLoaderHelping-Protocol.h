@@ -12,7 +12,7 @@
 @protocol INPortableImageLoaderHelping <NSObject, NSSecureCoding>
 
 @optional
-- (void)loadImageDataFromBundle:(INImageBundle *)arg1 withImageName:(NSString *)arg2 accessSpecifier:(INHelperServiceAccessSpecifier *)arg3 completion:(void (^)(NSData *, struct, NSError *))arg4;
+- (void)loadImageDataFromBundle:(INImageBundle *)arg1 withImageName:(NSString *)arg2 accessSpecifier:(INHelperServiceAccessSpecifier *)arg3 completion:(void (^)(NSData *, struct, long long, NSError *))arg4;
 - (void)loadImageDataFromURL:(NSURL *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)loadImageSizeFromData:(NSData *)arg1 completion:(void (^)(struct, NSError *))arg2;
 @end

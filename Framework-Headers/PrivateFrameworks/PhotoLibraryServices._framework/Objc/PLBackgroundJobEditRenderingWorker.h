@@ -6,12 +6,13 @@
 
 #import <PhotoLibraryServices/PLBackgroundJobWorker.h>
 
-@class PAImageConversionServiceClient, PAVideoConversionServiceClient;
+@class NSProgress, PAImageConversionServiceClient, PAVideoConversionServiceClient;
 
 @interface PLBackgroundJobEditRenderingWorker : PLBackgroundJobWorker
 {
     PAImageConversionServiceClient *_imageConversionServiceClient;
     PAVideoConversionServiceClient *_videoConversionServiceClient;
+    NSProgress *_progressForCurrentAsset;
 }
 
 + (id)workerWithLibrary:(id)arg1;
@@ -19,8 +20,10 @@
 - (id)_predicateToFetchDeferredAdjustmentNeededAssets;
 - (void)dealloc;
 - (BOOL)hasPendingJobs;
+- (BOOL)isInterruptible;
 - (id)managedObjectIDsNeedingProcessing;
 - (void)performWorkOnManagedObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stopWorkingOnManagedObjectID:(id)arg1;
 
 @end
 

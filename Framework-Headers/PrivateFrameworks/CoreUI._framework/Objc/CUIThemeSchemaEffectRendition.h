@@ -22,7 +22,6 @@
 - (void)dealloc;
 - (id)effectPreset;
 - (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
-- (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (id)referenceImage;
 
 @end

@@ -20,7 +20,7 @@
 
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *performTaskQueue; // @synthesize performTaskQueue=_performTaskQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *performTaskQueue; // @synthesize performTaskQueue=_performTaskQueue;
 @property (strong, nonatomic) AMSPromise *promise; // @synthesize promise=_promise;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *promiseAccessQueue; // @synthesize promiseAccessQueue=_promiseAccessQueue;
 @property (nonatomic) long long runMode; // @synthesize runMode=_runMode;
@@ -33,6 +33,7 @@
 - (id)init;
 - (id)performBinaryTaskWithBlock:(CDUnknownBlockType)arg1;
 - (id)performTaskWithBlock:(CDUnknownBlockType)arg1;
+- (id)performTaskWithPromiseBlock:(CDUnknownBlockType)arg1;
 
 @end
 

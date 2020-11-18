@@ -25,8 +25,6 @@
     long long _lastProcessedAnchor;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    CDUnknownBlockType _initialResultsHandler;
-    CDUnknownBlockType _updateHandler;
     CDUnknownBlockType _batchedInitialResultsHandler;
     CDUnknownBlockType _batchedUpdateHandler;
     long long _enumeratedSummaryCount;
@@ -38,13 +36,11 @@
 @property (readonly, copy) NSString *description;
 @property (setter=_setEnumeratedSummaryCount:) long long enumeratedSummaryCount; // @synthesize enumeratedSummaryCount=_enumeratedSummaryCount;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) CDUnknownBlockType initialResultsHandler; // @synthesize initialResultsHandler=_initialResultsHandler;
 @property (nonatomic) unsigned long long limit;
 @property (nonatomic) BOOL orderByDateAscending;
 @property BOOL shouldIncludePrivateProperties;
 @property BOOL shouldIncludeStatistics;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 - (void).cxx_destruct;
 - (id)_fetchActivityCacheIndicesWithAnchor:(long long)arg1 predicate:(id)arg2 error:(id *)arg3;
@@ -63,7 +59,6 @@
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 filter:(id)arg2 batchedInitialResultsHandler:(CDUnknownBlockType)arg3 batchedUpdateHandler:(CDUnknownBlockType)arg4;
-- (id)initWithProfile:(id)arg1 filter:(id)arg2 initialResultsHandler:(CDUnknownBlockType)arg3 updateHandler:(CDUnknownBlockType)arg4;
 - (void)pause;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)start;

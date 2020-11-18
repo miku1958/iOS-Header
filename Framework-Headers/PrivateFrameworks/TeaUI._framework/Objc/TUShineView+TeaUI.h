@@ -8,6 +8,7 @@
 
 @interface TUShineView (TeaUI)
 - (void)applyShineImage:(id)arg1 forShineImageRequest:(id)arg2;
+- (void)layoutSubviews;
 - (void)prepareForShineImageRequest:(id)arg1;
 - (void)reset;
 @end

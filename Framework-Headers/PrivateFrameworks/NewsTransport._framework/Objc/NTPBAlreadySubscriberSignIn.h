@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBIssueData;
+@class NSData, NSMutableArray, NSString, NTPBIssueData;
 
 @interface NTPBAlreadySubscriberSignIn : PBCodable <NSCopying>
 {
@@ -27,6 +27,9 @@
     NSString *_sectionId;
     NSString *_sourceChannelId;
     NSData *_subscriptionPurchaseSessionId;
+    NSString *_surfacedByChannelId;
+    NSString *_surfacedByTopicId;
+    NSMutableArray *_topicIds;
     BOOL _arrivedFromAd;
     BOOL _subscriptionOnlyArticlePreview;
     BOOL _successfulNewsTokenVerification;
@@ -67,6 +70,8 @@
 @property (nonatomic) BOOL hasSubscriptionOnlyArticlePreview;
 @property (readonly, nonatomic) BOOL hasSubscriptionPurchaseSessionId;
 @property (nonatomic) BOOL hasSuccessfulNewsTokenVerification;
+@property (readonly, nonatomic) BOOL hasSurfacedByChannelId;
+@property (readonly, nonatomic) BOOL hasSurfacedByTopicId;
 @property (strong, nonatomic) NSString *iadQtoken; // @synthesize iadQtoken=_iadQtoken;
 @property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
@@ -76,11 +81,17 @@
 @property (nonatomic) BOOL subscriptionOnlyArticlePreview; // @synthesize subscriptionOnlyArticlePreview=_subscriptionOnlyArticlePreview;
 @property (strong, nonatomic) NSData *subscriptionPurchaseSessionId; // @synthesize subscriptionPurchaseSessionId=_subscriptionPurchaseSessionId;
 @property (nonatomic) BOOL successfulNewsTokenVerification; // @synthesize successfulNewsTokenVerification=_successfulNewsTokenVerification;
+@property (strong, nonatomic) NSString *surfacedByChannelId; // @synthesize surfacedByChannelId=_surfacedByChannelId;
+@property (strong, nonatomic) NSString *surfacedByTopicId; // @synthesize surfacedByTopicId=_surfacedByTopicId;
+@property (strong, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 
++ (Class)topicIdsType;
 - (void).cxx_destruct;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (void)addTopicIds:(id)arg1;
+- (void)clearTopicIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -91,6 +102,8 @@
 - (id)paidSubscriptionConversionPointTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
 - (void)writeTo:(id)arg1;
 
 @end

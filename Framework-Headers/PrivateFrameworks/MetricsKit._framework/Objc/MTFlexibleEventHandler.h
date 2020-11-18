@@ -11,7 +11,6 @@
 }
 
 - (id)eventTime:(id)arg1;
-- (id)eventType:(id)arg1;
 - (id)knownFields;
 - (id)metricsDataWithEventType:(id)arg1 eventData:(id)arg2;
 - (BOOL)mtIncludeBaseFields;

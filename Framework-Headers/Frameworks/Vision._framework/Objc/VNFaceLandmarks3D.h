@@ -46,6 +46,7 @@
 @property (readonly) VNFaceLandmarkRegion3D *rightEye; // @synthesize rightEye=_rightEye;
 @property (readonly) VNFaceLandmarkRegion3D *rightEyebrow; // @synthesize rightEyebrow=_rightEyebrow;
 
++ (unsigned long long)landmarkPointSizeInBytes;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void *)_createPointArray:(const int *)arg1 count:(unsigned long long)arg2;

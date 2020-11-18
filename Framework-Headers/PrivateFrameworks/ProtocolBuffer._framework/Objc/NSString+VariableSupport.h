@@ -8,11 +8,5 @@
 
 @interface NSString (VariableSupport)
 - (id)_pb_fixCase:(BOOL)arg1;
-- (id)camelCase;
-- (id)intern;
-- (BOOL)isObjcReservedWord;
-- (id)pascalCase;
-- (id)plural;
-- (id)stripQuotes;
 @end
 

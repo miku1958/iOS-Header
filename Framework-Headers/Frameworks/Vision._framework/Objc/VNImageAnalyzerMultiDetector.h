@@ -6,7 +6,7 @@
 
 #import <Vision/VNDetector.h>
 
-@class _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
+@class NSMutableDictionary, _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
 
 __attribute__((visibility("hidden")))
 @interface VNImageAnalyzerMultiDetector : VNDetector
@@ -17,19 +17,35 @@ __attribute__((visibility("hidden")))
     struct unordered_map<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>>> _imageAnalyzerJunkCustomClassifiers;
     struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::__1::default_delete<vision::mod::ImageAnalyzer_PCA>> _imageAnalyzerPCA256;
     _VNImageAnalyzerMultiDetectorSceneOperationPointsCache *_operationPointsCache;
-    shared_ptr_53937872 _pipelineImageCorrectionNeed1CustomClassifier_DO_NOT_ACCESS_DIRECTLY;
+    struct unordered_map<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _VNVYvzEtX1JlUdu8xx5qhDICustomClassifiers;
+    struct unordered_map<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _potentialLandmarkCustomClassifiers;
+    struct unordered_map<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _VN5kJNH3eYuyaLxNpZr5Z7ziCustomClassifiers;
+    struct unordered_map<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _significantEventCustomClassifiers;
     vector_950c3afd _cachedAllSceneClassificationsFromLastAnalysis;
+    NSMutableDictionary *_cachedSaliencyHeatmapBoundingBoxGenerators;
 }
+
+@property (readonly) BOOL hasObjDetNet;
 
 + (id)blacklistForModel:(unsigned long long)arg1;
 + (id)configurationOptionKeysForDetectorKey;
 + (shared_ptr_eb20c8f2)createHierarchicalModelForMultiDetectorModel:(unsigned long long)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (unsigned long long)modelForRequestClass:(Class)arg1 revision:(unsigned long long)arg2 detectionLevel:(unsigned long long)arg3;
++ (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (shared_ptr_74bdb789)_VN5kJNH3eYuyaLxNpZr5Z7ziCustomClassifiersForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (shared_ptr_74bdb789)_VN5kJNH3eYuyaLxNpZr5Z7ziLoadCustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_VN5kJNH3eYuyaLxNpZr5Z7ziObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
+- (shared_ptr_74bdb789)_VNVYvzEtX1JlUdu8xx5qhDICustomClassifiersForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (shared_ptr_74bdb789)_VNVYvzEtX1JlUdu8xx5qhDILoadCustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_VNVYvzEtX1JlUdu8xx5qhDIObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
+- (shared_ptr_74bdb789)_VNdGg5skzXHSAENO6T3enHECustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (shared_ptr_74bdb789)_VNdGg5skzXHSAENO6T3enHELoadCustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_VNdGg5skzXHSAENO6T3enHEObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
 - (id)_aestheticsObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
-- (unsigned int)_analysisTypeForScene:(BOOL)arg1 junk:(BOOL)arg2 sceneprint:(BOOL)arg3 includingLabelsAndConfidences:(BOOL)arg4 compressedSceneprint:(BOOL)arg5 aesthetics:(BOOL)arg6 saliencyHeatMap:(BOOL)arg7 pipelineImageCorrectionNeed1:(BOOL)arg8;
+- (unsigned int)_analysisTypeForScene:(BOOL)arg1 junk:(BOOL)arg2 VNVYvzEtX1JlUdu8xx5qhDI:(BOOL)arg3 landmark:(BOOL)arg4 sceneprint:(BOOL)arg5 includingLabelsAndConfidences:(BOOL)arg6 compressedSceneprint:(BOOL)arg7 aesthetics:(BOOL)arg8 saliencyAHeatMap:(BOOL)arg9 saliencyOHeatMap:(BOOL)arg10 recognizedObjects:(BOOL)arg11 VN5kJNH3eYuyaLxNpZr5Z7zi:(BOOL)arg12 VNdGg5skzXHSAENO6T3enHE:(BOOL)arg13;
 - (struct __CVBuffer *)_createScaledImagePixelBufferFromCropRect:(struct CGRect)arg1 ofImageBuffer:(id)arg2 forNetworkInputImageSize:(struct _Geometry2D_size2D_)arg3 imageCropAndScaleOption:(unsigned long long)arg4 options:(id)arg5 error:(id *)arg6;
 - (struct __CVBuffer *)_createScaledImagePixelBufferFromImageBuffer:(id)arg1 forNetworkInputImageSize:(struct _Geometry2D_size2D_)arg2 imageCropAndScaleOption:(unsigned long long)arg3 options:(id)arg4 error:(id *)arg5;
 - (void)_getImageCropAndScaleOption:(unsigned long long *)arg1 networkRequiredInputImageSize:(struct _Geometry2D_size2D_ *)arg2 forOptions:(id)arg3;
@@ -37,29 +53,38 @@ __attribute__((visibility("hidden")))
 - (shared_ptr_6ef80be1)_junkCustomClassifiersForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)_junkObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
 - (vector_950c3afd *)_lastAnalysisSceneClassifications;
-- (shared_ptr_53937872)_loadCustomClassifierWithModelName:(id)arg1 labelsFileName:(id)arg2 classifierName:(id)arg3 inputBlobName:(id)arg4 outputBlobName:(id)arg5 espressoEngine:(int)arg6 espressoPlanFlags:(int)arg7 espressoStorageType:(int)arg8 espressoDeviceID:(int)arg9 error:(id *)arg10;
+- (shared_ptr_74bdb789)_loadCustomClassifierWithModelName:(id)arg1 labelsFileName:(id)arg2 classifierName:(id)arg3 inputBlobName:(id)arg4 outputBlobName:(id)arg5 espressoEngine:(int)arg6 espressoPlanFlags:(int)arg7 espressoStorageType:(int)arg8 espressoDeviceID:(int)arg9 error:(id *)arg10;
 - (shared_ptr_6ef80be1)_loadJunkCustomClassifiersForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
-- (shared_ptr_53937872)_loadPipelineImageCorrectionNeed1CustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)_observationsForScene:(BOOL)arg1 junk:(BOOL)arg2 sceneprint:(BOOL)arg3 includingLabelsAndConfidences:(BOOL)arg4 compressedSceneprint:(BOOL)arg5 aesthetics:(BOOL)arg6 saliencyHeatMap:(BOOL)arg7 pipelineImageCorrectionNeed1:(BOOL)arg8 of32BGRAImageInPixelBufferProvidedByBlock:(CDUnknownBlockType)arg9 withOptions:(id)arg10 originalImageSize:(struct CGSize)arg11 regionOfInterest:(struct CGRect)arg12 warningRecorder:(id)arg13 error:(id *)arg14;
+- (shared_ptr_74bdb789)_loadPotentialLandmarksCustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_observationsForObjectsRecognizedInLastAnalysisWithOptions:(id)arg1 warningRecorder:(id)arg2 error:(id *)arg3;
+- (id)_observationsForScene:(BOOL)arg1 junk:(BOOL)arg2 VNVYvzEtX1JlUdu8xx5qhDI:(BOOL)arg3 landmark:(BOOL)arg4 sceneprint:(BOOL)arg5 includingLabelsAndConfidences:(BOOL)arg6 compressedSceneprint:(BOOL)arg7 aesthetics:(BOOL)arg8 saliencyAHeatMap:(BOOL)arg9 saliencyOHeatMap:(BOOL)arg10 recognizedObjects:(BOOL)arg11 VN5kJNH3eYuyaLxNpZr5Z7zi:(BOOL)arg12 VNdGg5skzXHSAENO6T3enHE:(BOOL)arg13 of32BGRAImageInPixelBufferProvidedByBlock:(CDUnknownBlockType)arg14 withOptions:(id)arg15 originalImageSize:(struct CGSize)arg16 regionOfInterest:(struct CGRect)arg17 warningRecorder:(id)arg18 error:(id *)arg19;
 - (id)_observationsForTopN:(const unsigned long long *)arg1 lastAnalysisSceneLabelsWithMinimumConfidence:(float)arg2 excludeObfuscatedLabels:(BOOL)arg3 labelBlackList:(id)arg4 sceneRequestRevisionNumber:(unsigned long long)arg5 operationPointsProvider:(id)arg6;
 - (id)_observationsForTopN:(const unsigned long long *)arg1 sceneClassificationsInMap:(const unordered_map_b469de21 *)arg2 withMinimumConfidence:(float)arg3 labelBlackList:(id)arg4 sceneRequestRevisionNumber:(unsigned long long)arg5 operationPointsProvider:(id)arg6;
 - (BOOL)_performAnalysis:(unsigned int)arg1 on32BGRAImageInPixelBufferProvidedByBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (shared_ptr_53937872)_pipelineImageCorrectionNeed1CustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)_pipelineImageCorrectionNeed1ForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)_populateLeafSceneObservations:(id)arg1 hierarchySceneObservations:(id)arg2 forLastAnalysisWithOptions:(id)arg3 error:(id *)arg4;
-- (id)_saliencyObservationsForLastAnalysisWithRegionOfInterest:(struct CGRect)arg1 originalImageSize:(struct CGSize)arg2 options:(id)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
+- (id)_potentialLandmarkObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
+- (shared_ptr_74bdb789)_potentialLandmarksCustomClassifierForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_saliencyAObservationsForLastAnalysisWithRegionOfInterest:(struct CGRect)arg1 originalImageSize:(struct CGSize)arg2 options:(id)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
+- (id)_saliencyGeneratorOfType:(id)arg1 forSession:(id)arg2 error:(id *)arg3;
+- (id)_saliencyOObservationsForLastAnalysisWithRegionOfInterest:(struct CGRect)arg1 originalImageSize:(struct CGSize)arg2 options:(id)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
+- (id)_saliencyObservationsForTensor:(const struct ImageAnalyzer_Tensor2D *)arg1 regionOfInterest:(struct CGRect)arg2 originalImageSize:(struct CGSize)arg3 options:(id)arg4 saliencyRequestRevisionKey:(id)arg5 saliencyGeneratorType:(id)arg6 startCode:(unsigned int)arg7 finishCode:(unsigned int)arg8 warningRecorder:(id)arg9 error:(id *)arg10;
 - (id)_sceneObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
 - (struct ImageAnalyzer_PCA *)_sceneprintCompressorForCompression:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_sceneprintObservationsForLastAnalysisOfSceneprint:(BOOL)arg1 includingLabelsAndConfidencesInSceneprint:(BOOL)arg2 compressedSceneprint:(BOOL)arg3 options:(id)arg4 error:(id *)arg5;
 - (void)_tileRect:(struct CGRect)arg1 horizontally:(BOOL)arg2 vertically:(BOOL)arg3 windowAspectRatio:(double)arg4 overlapPercentage:(double)arg5 usingBlock:(CDUnknownBlockType)arg6;
 - (id)allJunkClassificationObservationsForOptions:(id)arg1 error:(id *)arg2;
 - (id)allKnownSceneClassificationsWithOptions:(id)arg1 error:(id *)arg2;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (id)allRecognizedObjectsIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
+- (id)allSignificantEventClassificationsWithOptions:(id)arg1 error:(id *)arg2;
+- (id)allVN5kJNH3eYuyaLxNpZr5Z7ziClassificationsWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)canBehaveAsDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (id)sceneLabelOperationPointsForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)shouldBeReplacedByDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
 - (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 - (BOOL)supportsProcessingDevice:(id)arg1;
-- (BOOL)warmUpWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 
 @end
 

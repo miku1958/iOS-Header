@@ -8,13 +8,14 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class NSHashTable, NSOrderedSet, NSString;
+@class FBScene, NSHashTable, NSOrderedSet, NSString;
 
 @interface FBSceneLayerManager : NSObject <BSDescriptionProviding>
 {
     NSString *_identifier;
     NSOrderedSet *_layers;
     NSHashTable *_observers;
+    FBScene *_scene;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,15 +23,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSOrderedSet *layers; // @synthesize layers=_layers;
+@property (readonly, weak, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
-- (id)_initWithIdentifier:(id)arg1;
-- (void)_observer_didRepositionLayer:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
+- (id)_initWithScene:(id)arg1;
 - (void)_observer_didStartTrackingLayers;
 - (void)_observer_didStopTrackingLayers;
-- (void)_observer_willStartTrackingLayers;
+- (void)_observer_sceneLayerManagerDidUpdateLayers;
 - (void)_setLayers:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

@@ -20,11 +20,14 @@
 @property (strong) NSArray *models; // @synthesize models=_models;
 
 + (void)archiveCustomModelNames:(const RepeatedPtrField_fe7cf120 *)arg1 to:(struct _MLModelOutputArchiver *)arg2;
++ (BOOL)archivePipelineModelDetailsFrom:(const struct Pipeline *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (void)archivePipelineUpdateParameterForModels:(const RepeatedPtrField_f3160e5f *)arg1 to:(struct _MLModelOutputArchiver *)arg2 updatable:(BOOL)arg3;
++ (id)classLabelsForPipelineFromSubModelArray:(id)arg1 predictedFeatureName:(id)arg2;
 + (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)compileWithModelsInPipeline:(const struct Pipeline *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 updatable:(BOOL)arg4 error:(id *)arg5;
 + (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+- (id)executionSchedule;
 - (id)extractModelNamesFromArchive:(struct _MLModelInputArchiver *)arg1 numModels:(unsigned long long)arg2;
 - (id)initModelFromMetadataAndArchive:(struct _MLModelInputArchiver *)arg1 versionInfo:(id)arg2 interface:(id)arg3 metadata:(id)arg4 configuration:(id)arg5 error:(id *)arg6;
 - (id)parameterValueForKey:(id)arg1 error:(id *)arg2;

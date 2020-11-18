@@ -11,13 +11,14 @@
 @interface _TtC5TeaUI21BarCompressionManager : NSObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *isEnabled;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *proxyMultiDelegate;
     MISSING_TYPE *barAnimator;
     MISSING_TYPE *navigationBarAnimation;
     MISSING_TYPE *toolbarAnimation;
     MISSING_TYPE *barState;
-    MISSING_TYPE *applicationStateManager;
+    MISSING_TYPE *sceneStateManager;
     MISSING_TYPE *observingToken;
     MISSING_TYPE *lastContentOffset;
     MISSING_TYPE *initialContentOffset;

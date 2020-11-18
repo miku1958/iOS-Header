@@ -11,6 +11,7 @@
 }
 
 + (id)activityType;
++ (id)beginningOfActivity;
 + (id)contentDescription;
 + (id)expirationDate;
 + (id)isEligibleForPrediction;
@@ -18,6 +19,7 @@
 + (id)itemIdentifier;
 + (id)itemRelatedContentURL;
 + (id)itemRelatedUniqueIdentifier;
++ (id)shortcutAvailability;
 + (id)suggestedInvocationPhrase;
 + (id)title;
 + (id)userActivityRequiredString;

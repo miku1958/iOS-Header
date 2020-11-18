@@ -43,10 +43,12 @@
 - (id)content;
 - (long long)countForCollection:(id)arg1;
 - (void)enumerateCollectionsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)existingAssetsFetchResultAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)indexPathForCollection:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)init;
 - (id)initWithCollectionListBySection:(id)arg1 collectionsFetchResultBySection:(id)arg2 keyAssetsFetchResultsByCollection:(id)arg3 collectionsIndexPathsByCollection:(id)arg4 itemFetchResultByCollection:(id)arg5 virtualCollections:(id)arg6 collectionsFetchResult:(id)arg7 dataSourceConfiguration:(id)arg8;
+- (id)keyAssetsForCollection:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;

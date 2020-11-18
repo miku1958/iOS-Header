@@ -46,6 +46,8 @@
     unsigned int _transmittedDelayRequestCounter;
     unsigned int _attemptedDelayRequestCounter;
     unsigned int _receivedDelayResponseCounter;
+    unsigned int _supersededSyncCounter;
+    unsigned int _supersededDelayCounter;
     NSString *_portIdentifier;
 }
 
@@ -75,6 +77,8 @@
 @property (readonly, nonatomic) unsigned int receivedPacketDiscardCounter; // @synthesize receivedPacketDiscardCounter=_receivedPacketDiscardCounter;
 @property (readonly, nonatomic) unsigned int receivedSignalCounter; // @synthesize receivedSignalCounter=_receivedSignalCounter;
 @property (readonly, nonatomic) unsigned int receivedSyncCounter; // @synthesize receivedSyncCounter=_receivedSyncCounter;
+@property (readonly, nonatomic) unsigned int supersededDelayCounter; // @synthesize supersededDelayCounter=_supersededDelayCounter;
+@property (readonly, nonatomic) unsigned int supersededSyncCounter; // @synthesize supersededSyncCounter=_supersededSyncCounter;
 @property (readonly, nonatomic) unsigned int syncReceiptTimeoutCounter; // @synthesize syncReceiptTimeoutCounter=_syncReceiptTimeoutCounter;
 @property (readonly, nonatomic) unsigned int transmittedAnnounceCounter; // @synthesize transmittedAnnounceCounter=_transmittedAnnounceCounter;
 @property (readonly, nonatomic) unsigned int transmittedDelayRequestCounter; // @synthesize transmittedDelayRequestCounter=_transmittedDelayRequestCounter;
@@ -87,7 +91,7 @@
 @property (readonly, nonatomic) unsigned int transmittedSignalCounter; // @synthesize transmittedSignalCounter=_transmittedSignalCounter;
 @property (readonly, nonatomic) unsigned int transmittedSyncCounter; // @synthesize transmittedSyncCounter=_transmittedSyncCounter;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithPort:(id)arg1;
 

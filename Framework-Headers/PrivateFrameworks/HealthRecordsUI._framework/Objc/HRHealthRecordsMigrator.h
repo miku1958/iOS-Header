@@ -18,9 +18,9 @@
     MISSING_TYPE *dataVersionKey;
 }
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithHealthStore:(id)arg1;
 - (void)migrateIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

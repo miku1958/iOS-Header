@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) double luminanceAmount;
 @property (readonly, copy, nonatomic) NSArray *luminanceValues;
 @property (readonly, nonatomic) double saturation;
+@property (readonly, copy, nonatomic) NSString *variableBlurInputMaskName;
 @property (readonly, nonatomic) double zoom;
 
 @end

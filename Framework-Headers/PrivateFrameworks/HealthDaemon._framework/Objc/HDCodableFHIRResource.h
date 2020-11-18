@@ -13,12 +13,14 @@
 @interface HDCodableFHIRResource : PBCodable <NSCopying>
 {
     long long _extractionHints;
+    double _firstSeenDate;
     long long _originVersionMajor;
     long long _originVersionMinor;
     long long _originVersionPatch;
     double _receivedDate;
     NSString *_accountIdentifier;
     NSString *_fhirVersion;
+    NSString *_firstSeenDateTimeZoneName;
     NSString *_gatewayExternalID;
     HDCodableMessageVersion *_messageVersion;
     NSString *_originVersionBuild;
@@ -29,6 +31,7 @@
     NSString *_sourceURL;
     struct {
         unsigned int extractionHints:1;
+        unsigned int firstSeenDate:1;
         unsigned int originVersionMajor:1;
         unsigned int originVersionMinor:1;
         unsigned int originVersionPatch:1;
@@ -39,10 +42,14 @@
 @property (strong, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (nonatomic) long long extractionHints; // @synthesize extractionHints=_extractionHints;
 @property (strong, nonatomic) NSString *fhirVersion; // @synthesize fhirVersion=_fhirVersion;
+@property (nonatomic) double firstSeenDate; // @synthesize firstSeenDate=_firstSeenDate;
+@property (strong, nonatomic) NSString *firstSeenDateTimeZoneName; // @synthesize firstSeenDateTimeZoneName=_firstSeenDateTimeZoneName;
 @property (strong, nonatomic) NSString *gatewayExternalID; // @synthesize gatewayExternalID=_gatewayExternalID;
 @property (readonly, nonatomic) BOOL hasAccountIdentifier;
 @property (nonatomic) BOOL hasExtractionHints;
 @property (readonly, nonatomic) BOOL hasFhirVersion;
+@property (nonatomic) BOOL hasFirstSeenDate;
+@property (readonly, nonatomic) BOOL hasFirstSeenDateTimeZoneName;
 @property (readonly, nonatomic) BOOL hasGatewayExternalID;
 @property (readonly, nonatomic) BOOL hasMessageVersion;
 @property (readonly, nonatomic) BOOL hasOriginVersionBuild;

@@ -6,22 +6,9 @@
 
 #import <ChatKit/CKUIBehaviorNano.h>
 
-__attribute__((visibility("hidden")))
 @interface CKUIBehaviorNanoNotifications : CKUIBehaviorNano
 {
 }
-
-- (double)balloonMaxWidthForTranscriptWidth:(double)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldShowPluginButtons:(BOOL)arg3 shouldShowCharacterCount:(BOOL)arg4 shouldCoverSendButton:(BOOL)arg5;
-- (double)bottomTranscriptSpace;
-- (double)nanoNoteSenderContentSpace;
-- (double)previewBalloonMaxWidthForBalloonMaxWidth:(double)arg1;
-- (BOOL)shouldLoadInitialViewingMessageCount;
-- (BOOL)shouldSizeInitialViewingMessageCount;
-- (BOOL)shouldUseRotisserieScrolling;
-- (BOOL)showsBalloonBadges;
-- (BOOL)showsBalloonChevron;
-- (BOOL)showsReplyButtonsInTranscript;
-- (double)topTranscriptSpace;
 
 @end
 

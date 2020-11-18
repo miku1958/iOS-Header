@@ -91,14 +91,17 @@ struct ComponentInfo {
     RepeatedField_92283dc2 _field15;
     int _field16;
     RepeatedPtrField_5bff772f _field17;
-    struct ArenaStringPtr _field18;
-    struct ArenaStringPtr _field19;
-    unsigned long long _field20;
-    unsigned long long _field21;
-    BOOL _field22;
-    BOOL _field23;
+    struct RepeatedField<unsigned long long> _field18;
+    int _field19;
+    struct ArenaStringPtr _field20;
+    struct ArenaStringPtr _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
     BOOL _field24;
-    unsigned int _field25;
+    BOOL _field25;
+    BOOL _field26;
+    unsigned int _field27;
+    unsigned int _field28;
 };
 
 struct CopyingFileOutputStream {
@@ -385,31 +388,6 @@ struct LargeArraySegment {
     unsigned int _field7;
 };
 
-struct LargeDictionary {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    RepeatedPtrField_6e0d89e6 _field5;
-    RepeatedPtrField_54b3089c _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned int _field10;
-    BOOL _field11;
-    BOOL _field12;
-};
-
-struct LargeDictionarySegment {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    BOOL _field6;
-    unsigned int _field7;
-};
-
 struct LargeLazyObjectArray {
     CDUnknownFunctionPointerType *_field1;
     struct InternalMetadataWithArena _field2;
@@ -476,23 +454,6 @@ struct LargeStringArraySegment {
     struct CachedSize _field4;
     struct RepeatedPtrField<TSP::LargeStringArraySegment_OptionalElement> _field5;
     struct LargeArraySegment *_field6;
-};
-
-struct LargeStringToObjectDictionary {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct LargeDictionary *_field5;
-};
-
-struct LargeStringToObjectDictionarySegment {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSP::StringToObjectDictionaryElement> _field5;
-    struct LargeDictionarySegment *_field6;
 };
 
 struct LargeUUIDArray {
@@ -567,6 +528,8 @@ struct ObjectSerializationMetadata {
     int _version_cached_byte_size_;
     RepeatedPtrField_6277dbb5 datas_;
     RepeatedPtrField_f8410f9e external_object_uuid_map_entries_;
+    RepeatedField_92283dc2 read_version_;
+    int _read_version_cached_byte_size_;
     struct UUID *source_document_uuid_;
     struct UUID *version_uuid_;
     struct ComponentInfo *component_;
@@ -613,6 +576,8 @@ struct PasteboardMetadata {
     RepeatedField_92283dc2 version_;
     int _version_cached_byte_size_;
     RepeatedPtrField_6277dbb5 datas_;
+    RepeatedField_92283dc2 read_version_;
+    int _read_version_cached_byte_size_;
     struct ArenaStringPtr app_name_;
     struct UUID *source_document_uuid_;
     struct Reference *data_metadata_map_;
@@ -815,13 +780,6 @@ struct RepeatedPtrField<TSP::SparseUUIDPathArray_Entry> {
     struct Rep *_field4;
 };
 
-struct RepeatedPtrField<TSP::StringToObjectDictionaryElement> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
 struct RepeatedPtrField<TSP::UUID> {
     struct Arena *_field1;
     int _field2;
@@ -941,6 +899,8 @@ struct ViewStateMetadata {
     RepeatedField_92283dc2 version_;
     int _version_cached_byte_size_;
     RepeatedPtrField_f8410f9e external_object_uuid_map_entries_;
+    RepeatedField_92283dc2 read_version_;
+    int _read_version_cached_byte_size_;
     struct ComponentInfo *component_;
     struct UUID *version_uuid_;
 };
@@ -950,14 +910,14 @@ struct WrittenComponentInfo {
     id _field2;
     BOOL _field3;
     BOOL _field4;
-    BOOL _field5;
-    id _field6;
+    id _field5;
+    BOOL _field6;
     BOOL _field7;
     BOOL _field8;
-    BOOL _field9;
+    id _field9;
     id _field10;
-    id _field11;
-    BOOL _field12;
+    BOOL _field11;
+    unsigned char _field12;
     long long _field13;
     unsigned long long _field14;
     unsigned long long _field15;
@@ -971,6 +931,7 @@ struct WrittenComponentInfo {
     id _field23;
     id _field24;
     id _field25;
+    id _field26;
 };
 
 struct WrittenObjectInfo;
@@ -1010,6 +971,10 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const 
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentExternalReferenceInfo>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentExternalReferenceInfo>, void *>*> *_field1;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*> *__next_;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentPropertiesSnapshot>, void *>*> {
@@ -1333,6 +1298,17 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } _field1;
 };
 
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentPropertiesSnapshot>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentPropertiesSnapshot>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentPropertiesSnapshot>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentPropertiesSnapshot>, void *>*>*>>> {
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentPropertiesSnapshot>, void *>*> **__value_;
@@ -1619,6 +1595,21 @@ struct unordered_map<const long long, TSP::ComponentExternalReferenceInfo, TSP::
             float _field1;
         } _field4;
     } _field1;
+};
+
+struct unordered_map<const long long, TSP::ComponentProperties, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ComponentProperties>>> {
+    struct __hash_table<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, std::__1::__unordered_map_hasher<const long long, std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, TSP::IdentifierHash, true>, std::__1::__unordered_map_equal<const long long, std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, std::__1::equal_to<const long long>, true>, std::__1::allocator<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<const long long, std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, TSP::IdentifierHash, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<const long long, std::__1::__hash_value_type<const long long, TSP::ComponentProperties>, std::__1::equal_to<const long long>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
 };
 
 struct unordered_map<const long long, TSP::ComponentPropertiesSnapshot, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ComponentPropertiesSnapshot>>> {

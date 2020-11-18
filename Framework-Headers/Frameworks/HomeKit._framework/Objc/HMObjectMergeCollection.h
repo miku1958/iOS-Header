@@ -8,7 +8,6 @@
 
 @class HMObjectMergeOperations, NSArray, NSMapTable, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface HMObjectMergeCollection : NSObject
 {
     NSMutableArray *_currentExistingObjects;

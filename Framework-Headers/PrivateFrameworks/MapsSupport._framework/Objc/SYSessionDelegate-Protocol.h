@@ -11,7 +11,7 @@
 @protocol SYSessionDelegate <NSObject>
 - (void)syncSession:(SYSession *)arg1 applyChanges:(NSArray *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)syncSession:(SYSession *)arg1 didEndWithError:(NSError *)arg2;
-- (long long)syncSession:(SYSession *)arg1 enqueueChanges:(BOOL (^)(id<SYChange>))arg2 error:(id *)arg3;
+- (unsigned int)syncSession:(SYSession *)arg1 enqueueChanges:(BOOL (^)(id<SYChange>))arg2 error:(id *)arg3;
 - (BOOL)syncSession:(SYSession *)arg1 resetDataStoreWithError:(id *)arg2;
 
 @optional

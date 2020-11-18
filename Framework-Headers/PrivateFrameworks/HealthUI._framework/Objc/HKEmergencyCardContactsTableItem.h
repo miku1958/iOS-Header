@@ -6,18 +6,18 @@
 
 #import <HealthUI/HKEmergencyCardTableItem.h>
 
+#import <HealthUI/HKEmergencyContactPickerDelegate-Protocol.h>
+#import <HealthUI/HKEmergencyContactRelationshipPickerDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDEditorCellEditDelegate-Protocol.h>
-#import <HealthUI/_HKEmergencyContactPickerDelegate-Protocol.h>
-#import <HealthUI/_HKEmergencyContactRelationshipPickerDelegate-Protocol.h>
 
-@class HKCoreTelephonyUtilities, UITableViewCell, _HKEmergencyContact, _HKEmergencyContactPicker;
+@class HKCoreTelephonyUtilities, HKEmergencyContactPicker, UITableViewCell, _HKEmergencyContact;
 @protocol HKEmergencyCardContactUpdateDelegate;
 
-@interface HKEmergencyCardContactsTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate, _HKEmergencyContactPickerDelegate, _HKEmergencyContactRelationshipPickerDelegate>
+@interface HKEmergencyCardContactsTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate, HKEmergencyContactPickerDelegate, HKEmergencyContactRelationshipPickerDelegate>
 {
     UITableViewCell *_lastDequeuedAddContactCell;
     _HKEmergencyContact *_selectedContact;
-    _HKEmergencyContactPicker *_contactPicker;
+    HKEmergencyContactPicker *_contactPicker;
     BOOL _selectedContactIsBeingAdded;
     id<HKEmergencyCardContactUpdateDelegate> _delegate;
     HKCoreTelephonyUtilities *_coreTelephonyUtilities;
@@ -31,6 +31,11 @@
 - (id)_dequeueAndConfigureContactEditCellForIndex:(long long)arg1 inTableView:(id)arg2;
 - (id)_dequeueAndConfigureContactViewCellForIndex:(long long)arg1 inTableView:(id)arg2;
 - (void)_didSelectContact:(id)arg1 property:(id)arg2;
+- (id)_footerAttributedText;
+- (id)_footerAttributedTextForPrimaryProfile;
+- (id)_footerAttributedTextForSecondaryProfile;
+- (id)_footerTextForSecondaryProfile;
+- (id)_footerTextWithGivenName:(id)arg1;
 - (void)_presentEmergencyContactPicker;
 - (void)callEmergencyContact:(id)arg1;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
@@ -47,7 +52,7 @@
 - (void)medicalIDEditorCellDidChangeValue:(id)arg1;
 - (void)medicalIDEditorCellDidTapLabel:(id)arg1;
 - (long long)numberOfRows;
-- (BOOL)refreshFromData;
+- (BOOL)refreshFromData:(BOOL)arg1;
 - (BOOL)shouldHighlightRowAtIndex:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndex:(long long)arg2;

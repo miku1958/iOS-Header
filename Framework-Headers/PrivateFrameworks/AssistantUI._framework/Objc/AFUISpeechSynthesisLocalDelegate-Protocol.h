@@ -9,6 +9,7 @@
 @class AFSpeechSynthesisRecord, AFUISpeechSynthesis;
 
 @protocol AFUISpeechSynthesisLocalDelegate <NSObject>
+- (void)speechSynthesis:(AFUISpeechSynthesis *)arg1 didUpdatePowerLevelTo:(float)arg2;
 - (void)speechSynthesis:(AFUISpeechSynthesis *)arg1 prepareForSpeakingWithOptions:(unsigned long long)arg2 completion:(void (^)(unsigned int, NSError *))arg3;
 - (BOOL)speechSynthesisConnectionIsRecording:(AFUISpeechSynthesis *)arg1;
 - (void)speechSynthesisDidFinish:(AFSpeechSynthesisRecord *)arg1;

@@ -23,9 +23,14 @@
 @property (readonly, nonatomic) id<PXDisplayAsset> firstObject;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<PXDisplayAsset> lastObject;
+@property (readonly, nonatomic) unsigned long long px_sortOrder;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
+- (id)px_fetchAssetSortDatesWithDateRangeEliminationBlock:(CDUnknownBlockType)arg1;
+- (long long)px_indexOfSortedAssetNearestToAsset:(id)arg1;
+- (Class)px_sortByDatePropertySetClass;
 - (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
 @end
 

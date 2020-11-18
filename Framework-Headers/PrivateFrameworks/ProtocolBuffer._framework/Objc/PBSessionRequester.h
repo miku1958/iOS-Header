@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ProtocolBuffer/NSURLSessionDataDelegate-Protocol.h>
+#import <ProtocolBuffer/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSession, NSURLSessionTask, PBDataReader;
 @protocol PBSessionRequesterDelegate;
 
-@interface PBSessionRequester : NSObject <NSURLSessionDataDelegate>
+@interface PBSessionRequester : NSObject <NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate>
 {
     NSURL *_URL;
     id<PBSessionRequesterDelegate> _delegate;
@@ -72,7 +73,6 @@
 @property (nonatomic) BOOL ignoresResponse;
 @property (strong, nonatomic) NSString *logRequestToFile; // @synthesize logRequestToFile=_logRequestToFile;
 @property (strong, nonatomic) NSString *logResponseToFile; // @synthesize logResponseToFile=_logResponseToFile;
-@property BOOL needsCancel;
 @property (nonatomic) unsigned long long nwActivityDomain; // @synthesize nwActivityDomain=_nwActivityDomain;
 @property (nonatomic) unsigned long long nwActivityLabel; // @synthesize nwActivityLabel=_nwActivityLabel;
 @property (readonly, nonatomic) unsigned long long requestResponseTime;
@@ -89,29 +89,10 @@
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (id)_applicationID;
-- (void)_cancelNoNotify;
-- (void)_cancelWithErrorDomain:(id)arg1 errorCode:(long long)arg2 userInfo:(id)arg3;
-- (void)_cleanup;
-- (void)_didSetDelegate:(id)arg1;
-- (void)_failWithError:(id)arg1;
-- (void)_failWithErrorDomain:(id)arg1 errorCode:(long long)arg2 userInfo:(id)arg3;
-- (id)_languageLocale;
-- (void)_logErrorIfNecessary:(id)arg1;
-- (void)_logRequestsIfNecessary:(id)arg1;
-- (void)_logResponsesIfNecessary:(id)arg1;
-- (id)_newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
-- (id)_osVersion;
-- (void)_performOnDelegateQueue:(CDUnknownBlockType)arg1;
-- (BOOL)_sendPayload:(id)arg1 error:(id *)arg2;
-- (void)_serializePayload:(CDUnknownBlockType)arg1;
-- (void)_start;
-- (BOOL)_tryParseData;
 - (void)addInternalRequest:(id)arg1;
 - (void)addRequest:(id)arg1;
 - (void)cancel;
 - (void)cancelWithErrorCode:(long long)arg1;
-- (void)cancelWithErrorCode:(long long)arg1 description:(id)arg2;
 - (void)clearRequests;
 - (void)dealloc;
 - (id)decodeResponseData:(id)arg1;
@@ -130,7 +111,6 @@
 - (id)responseForInternalRequest:(id)arg1;
 - (id)responseForRequest:(id)arg1;
 - (void)resume;
-- (void)setDelegate:(id)arg1;
 - (void)setHttpRequestHeader:(id)arg1 forKey:(id)arg2;
 - (void)setNeedsCancel;
 - (void)start;

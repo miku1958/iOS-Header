@@ -11,7 +11,7 @@
 #import <BulletinDistributorCompanion/BLTCompanionServer-Protocol.h>
 #import <BulletinDistributorCompanion/NSXPCListenerDelegate-Protocol.h>
 
-@class BBObserver, BLTBulletinDistributorMRUSectionCache, BLTBulletinFetcher, BLTClientReplyTimeoutManager, BLTGizmoLegacyMap, BLTHashCache, BLTPingSubscriberManager, BLTRemoteGizmoClient, BLTSectionConfiguration, BLTSettingSync, BLTUserNotificationList, BLTWatchKitAppList, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class BBObserver, BLTBulletinFetcher, BLTClientReplyTimeoutManager, BLTGizmoLegacyMap, BLTHashCache, BLTPingSubscriberManager, BLTRemoteGizmoClient, BLTSectionConfiguration, BLTSettingSync, BLTSimpleCache, BLTUserNotificationList, BLTWatchKitAppList, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface BLTBulletinDistributor : NSObject <BLTBulletinDistributorSubscriberDeviceDelegate, BBObserverDelegate, BLTCompanionServer, NSXPCListenerDelegate>
 {
@@ -35,7 +35,7 @@
     BLTBulletinFetcher *_bulletinFetcher;
     BLTPingSubscriberManager *_pingSubscriberManager;
     BLTGizmoLegacyMap *_gizmoLegacyMap;
-    BLTBulletinDistributorMRUSectionCache *_mruSectionCache;
+    BLTSimpleCache *_mruCacheOfSectionIDs;
 }
 
 @property (strong, nonatomic) BLTHashCache *attachmentHashCache; // @synthesize attachmentHashCache=_attachmentHashCache;
@@ -52,7 +52,7 @@
 @property (strong, nonatomic) BLTHashCache *iconHashCache; // @synthesize iconHashCache=_iconHashCache;
 @property (readonly, nonatomic) BOOL isStandaloneTestModeEnabled;
 @property (strong, nonatomic) NSMutableSet *lockScreenFeed; // @synthesize lockScreenFeed=_lockScreenFeed;
-@property (strong, nonatomic) BLTBulletinDistributorMRUSectionCache *mruSectionCache; // @synthesize mruSectionCache=_mruSectionCache;
+@property (strong, nonatomic) BLTSimpleCache *mruCacheOfSectionIDs; // @synthesize mruCacheOfSectionIDs=_mruCacheOfSectionIDs;
 @property (strong, nonatomic) NSMutableSet *noticesFeed; // @synthesize noticesFeed=_noticesFeed;
 @property (strong, nonatomic) NSMutableDictionary *pendingBulletinUpdates; // @synthesize pendingBulletinUpdates=_pendingBulletinUpdates;
 @property (strong, nonatomic) BLTPingSubscriberManager *pingSubscriberManager; // @synthesize pingSubscriberManager=_pingSubscriberManager;
@@ -115,14 +115,8 @@
 - (BOOL)isLocallyConnectedToRemote;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(BOOL)arg4 attachment:(id)arg5 attachmentType:(long long)arg6 alwaysSend:(BOOL)arg7 withReply:(CDUnknownBlockType)arg8;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(BOOL)arg4 withReply:(CDUnknownBlockType)arg5;
-- (void)observer:(id)arg1 composedImageFromThumbnailData:(id)arg2 forAttachment:(id)arg3 bulletin:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (struct CGSize)observer:(id)arg1 composedImageSizeForAttachment:(id)arg2 bulletin:(id)arg3 thumbnailSize:(struct CGSize)arg4;
 - (void)observer:(id)arg1 modifyBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
-- (void)observer:(id)arg1 prepareAttachment:(id)arg2 beforeDeliveringBulletin:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)observer:(id)arg1 removeBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
-- (id)observer:(id)arg1 thumbnailSizeConstraintsForAttachment:(id)arg2 bulletin:(id)arg3;
-- (BOOL)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)arg1;
-- (BOOL)observerShouldFetchAttachmentSizeBeforeBulletinDelivery:(id)arg1;
 - (id)originalSettings;
 - (id)overriddenSettings;
 - (void)removeBulletinWithPublisherBulletinID:(id)arg1 recordID:(id)arg2 sectionID:(id)arg3;

@@ -8,8 +8,11 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2DatabaseCheckViolationCount : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
     int _pragmaCheckType;
     unsigned int _schemaVersion;
     struct {
@@ -18,11 +21,14 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
+@property (readonly, nonatomic) BOOL hasActiveTreatments;
 @property (nonatomic) BOOL hasPragmaCheckType;
 @property (nonatomic) BOOL hasSchemaVersion;
 @property (nonatomic) int pragmaCheckType; // @synthesize pragmaCheckType=_pragmaCheckType;
 @property (nonatomic) unsigned int schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 
+- (void).cxx_destruct;
 - (int)StringAsPragmaCheckType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

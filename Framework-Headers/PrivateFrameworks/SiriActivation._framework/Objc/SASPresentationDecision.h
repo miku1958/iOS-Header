@@ -10,7 +10,7 @@
 {
 }
 
-+ (long long)activationPresentationForPresentationIdentifiers:(id)arg1 systemState:(id)arg2;
++ (long long)activationPresentationForPresentationIdentifiers:(id)arg1;
 
 @end
 

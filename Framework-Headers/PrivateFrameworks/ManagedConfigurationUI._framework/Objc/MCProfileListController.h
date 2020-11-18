@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int provisioningProfileRemovedToken; // @synthesize provisioningProfileRemovedToken=_provisioningProfileRemovedToken;
 @property (readonly) Class superclass;
 
++ (id)_cellHeight;
 + (id)specifiersForBlockedApps:(id)arg1;
 - (void).cxx_destruct;
 - (void)_appSignerApplicationsChanged:(id)arg1;

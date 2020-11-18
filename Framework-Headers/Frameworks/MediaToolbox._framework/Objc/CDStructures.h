@@ -15,18 +15,31 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct CGImage;
 
 struct CGPoint {
-    double _field1;
-    double _field2;
+    double x;
+    double y;
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
+    double width;
+    double height;
+};
+
+struct FigGeometryDimension {
+    double value;
+    unsigned int units;
+    unsigned int flags;
+};
+
+struct FigGeometryMargins {
+    struct FigGeometryDimension left;
+    struct FigGeometryDimension right;
+    struct FigGeometryDimension top;
+    struct FigGeometryDimension bottom;
 };
 
 struct OpaqueFigCDSCALayerInternal {
@@ -66,6 +79,7 @@ struct OpaqueFigCaptionRendererCALayerOutputNodeContentLayerInternal {
 struct OpaqueFigCaptionRendererCALayerOutputNodeLayerInternal {
     id _field1;
     struct CGImage *_field2;
+    double _field3;
 };
 
 struct OpaqueFigCaptionRendererSession;
@@ -90,22 +104,24 @@ struct OpaqueFigSubtitleCALayerInternal {
     struct CGRect _field3;
     struct CGSize _field4;
     unsigned char _field5;
-    unsigned char _field6;
-    BOOL _field7;
+    struct CGRect _field6;
+    struct FigGeometryMargins _field7;
     unsigned char _field8;
-    unsigned char _field9;
-    id _field10;
-    unsigned int _field11;
-    struct __CFString *_field12;
-    struct OpaqueFigCaptionRendererSession *_field13;
-    struct OpaqueFigSubtitleRenderer *_field14;
-    struct __CFDictionary *_field15;
-    unsigned char _field16;
+    BOOL _field9;
+    unsigned char _field10;
+    unsigned char _field11;
+    id _field12;
+    unsigned int _field13;
+    struct __CFString *_field14;
+    struct OpaqueFigCaptionRendererSession *_field15;
+    struct OpaqueFigSubtitleRenderer *_field16;
     struct __CFDictionary *_field17;
-    struct __CFArray *_field18;
-    struct __CFArray *_field19;
-    struct CGRect _field20;
-    struct CGRect _field21;
+    unsigned char _field18;
+    struct __CFDictionary *_field19;
+    struct __CFArray *_field20;
+    struct __CFArray *_field21;
+    struct CGRect _field22;
+    struct CGRect _field23;
 };
 
 struct OpaqueFigSubtitleRenderer;

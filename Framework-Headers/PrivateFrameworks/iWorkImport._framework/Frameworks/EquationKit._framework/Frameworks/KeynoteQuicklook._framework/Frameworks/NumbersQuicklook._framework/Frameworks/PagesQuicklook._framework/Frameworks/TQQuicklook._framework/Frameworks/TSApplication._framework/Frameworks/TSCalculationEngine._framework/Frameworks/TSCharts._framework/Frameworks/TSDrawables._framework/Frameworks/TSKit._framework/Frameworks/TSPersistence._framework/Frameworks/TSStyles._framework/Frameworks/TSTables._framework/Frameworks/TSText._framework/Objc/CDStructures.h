@@ -293,6 +293,7 @@ struct ImageArchive {
     struct Attribution *_field23;
     unsigned int _field24;
     BOOL _field25;
+    BOOL _field26;
 };
 
 struct InternalMetadataWithArena {
@@ -701,13 +702,11 @@ struct TOCSettingsArchive {
 
 struct TSWPAttributeArray {
     CDUnknownFunctionPointerType *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    struct TSWPAttributeRecord *_field5;
-    id _field6;
-    unsigned long long _field7;
-    BOOL _field8;
+    struct TSWPAttributeRecord *_field2;
+    id _field3;
+    unsigned int :32;
+    unsigned int :8;
+    unsigned int :1;
 };
 
 struct TSWPAttributeEnumerator {
@@ -724,21 +723,19 @@ struct TSWPAttributeEnumerator {
 
 struct TSWPAttributeRecord {
     unsigned long long _field1;
-    id _field2;
-    struct TSWPParagraphData _field3;
+    union {
+        id _field1;
+        struct TSWPParagraphData _field2;
+    } _field2;
 };
 
 struct TSWPChangeAttributeArray {
     CDUnknownFunctionPointerType *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    struct TSWPAttributeRecord *_field5;
-    id _field6;
-    unsigned long long _field7;
-    BOOL _field8;
-    BOOL _field9;
-    id _field10;
+    struct TSWPAttributeRecord *_field2;
+    id _field3;
+    unsigned int :32;
+    unsigned int :8;
+    unsigned int :1;
 };
 
 struct TSWPDrawingState {
@@ -843,18 +840,11 @@ struct TSWPMarkers {
 
 struct TSWPParagraphAttributeArray {
     CDUnknownFunctionPointerType *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    struct TSWPAttributeRecord *_field5;
-    id _field6;
-    unsigned long long _field7;
-    BOOL _field8;
-    BOOL _field9;
-    unsigned long long _field10;
-    unsigned long long _field11;
-    struct TSWPParagraphAttributeArray *_field12;
-    unsigned long long _field13;
+    struct TSWPAttributeRecord *_field2;
+    id _field3;
+    unsigned int :32;
+    unsigned int :8;
+    unsigned int :1;
 };
 
 struct TSWPParagraphData {
@@ -975,6 +965,7 @@ struct TSWPStorageTransaction {
     id _field15;
     struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field16;
     struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field17;
+    BOOL _field18;
 };
 
 struct TSWPStorageTransactionObject;
@@ -1078,11 +1069,6 @@ struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
-};
-
-struct _opaque_pthread_rwlock_t {
-    long long __sig;
-    char __opaque[192];
 };
 
 struct atomic<int> {

@@ -30,6 +30,7 @@
 - (int)_autocapitalizeType;
 - (BOOL)_isEdited;
 - (id)autocomplete;
+- (BOOL)canShowPlaceholder;
 - (id)dirName;
 - (id)endPosition;
 - (id)labels;
@@ -39,6 +40,7 @@
 - (void)select;
 - (id)selectionDirection;
 - (void)setAutocomplete:(id)arg1;
+- (void)setCanShowPlaceholder:(BOOL)arg1;
 - (void)setDirName:(id)arg1;
 - (void)setMaxLength:(int)arg1;
 - (void)setPlaceholder:(id)arg1;
@@ -49,7 +51,6 @@
 - (void)setSelectionRange:(int)arg1 end:(int)arg2;
 - (void)setWrap:(id)arg1;
 - (id)startPosition;
-- (int)structuralComplexityContribution;
 - (int)structuralComplexityContribution;
 - (unsigned int)textLength;
 - (id)wrap;

@@ -107,6 +107,8 @@
 + (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)corePropertiesToFetch;
 + (id)defaultTitleFontNames;
++ (id)descriptionForSubtype:(long long)arg1;
++ (id)descriptionForType:(long long)arg1;
 + (id)descriptionOfTitleCategory:(long long)arg1;
 + (id)entityKeyMap;
 + (id)fetchAssetCollectionsContainingAsset:(id)arg1 withType:(long long)arg2 options:(id)arg3;
@@ -127,7 +129,6 @@
 + (id)fetchPhotosHighlightsContainingMomentsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsFetchResult:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsMetadata:(id)arg1 options:(id)arg2;
-+ (id)fetchSuggestedContributionsForCMMPhotoLibrary:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForFileURLs:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)fetchUserLibraryAlbumWithOptions:(id)arg1;
@@ -151,6 +152,7 @@
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
++ (id)transientAssetCollectionWithFetchOptions:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4 identifier:(id)arg5;
 - (void).cxx_destruct;
 - (id)_fetchAggregateDatesForSmartAlbum;
 - (void)_fetchDatesIfNeeded;
@@ -165,6 +167,7 @@
 - (unsigned long long)estimatedPhotosCount;
 - (unsigned long long)estimatedVideosCount;
 - (BOOL)hasLocationInfo;
+- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 orQuery:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleFontName:(id)arg6 identifier:(id)arg7 albumKind:(int)arg8 subtype:(long long)arg9 photoLibrary:(id)arg10;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5 subtype:(long long)arg6;
@@ -178,6 +181,7 @@
 - (id)objectReference;
 - (id)parentFolderID;
 - (id)pl_assetContainer;
+- (BOOL)startsAtEnd;
 
 @end
 

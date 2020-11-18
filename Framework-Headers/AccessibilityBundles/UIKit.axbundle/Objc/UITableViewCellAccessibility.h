@@ -41,9 +41,11 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIgnoreInternalLabels;
 - (id)_accessibilityImageViewIfExists;
+- (BOOL)_accessibilityImplementsDefaultRowRange;
 - (id)_accessibilityIndexPath;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (id)_accessibilityInternalData;
+- (id)_accessibilityInternalDataRetrieveOnly;
 - (BOOL)_accessibilityIsButton;
 - (BOOL)_accessibilityIsButtonAccessoryType:(long long)arg1;
 - (BOOL)_accessibilityIsDescendantOfElement:(id)arg1;
@@ -65,6 +67,7 @@
 - (id)_accessibilityPerformableActions;
 - (id)_accessibilityPreviousIndexPath;
 - (void)_accessibilityReevaluateChildren;
+- (void)_accessibilityRemoveInternalData;
 - (id)_accessibilityRetrieveTableViewCellText;
 - (id)_accessibilityRetrieveTableViewCellText:(long long)arg1;
 - (id)_accessibilityRetrieveTableViewCellTextExcludingDetailText;
@@ -75,7 +78,6 @@
 - (BOOL)_accessibilityScrollToVisibleForNextElementRetrieval:(long long)arg1;
 - (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldBeEmptyIfHidden;
-- (BOOL)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (BOOL)_accessibilityShouldSortTableViewCellChildren;
 - (id)_accessibilitySubviewsForAdding;
 - (id)_accessibilitySubviewsForAddingWithSort:(BOOL)arg1;

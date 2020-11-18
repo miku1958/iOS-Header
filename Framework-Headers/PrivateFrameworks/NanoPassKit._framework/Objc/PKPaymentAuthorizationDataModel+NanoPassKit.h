@@ -15,6 +15,7 @@
 - (BOOL)npkIsSplitPeerPayment;
 - (BOOL)npkIsSplitPeerPaymentWithAnotherPaymentMethod;
 - (BOOL)npkIsSplitPeerPaymentWithoutAnotherPaymentMethod;
+- (BOOL)npkIsTopUp;
 - (void)npkSetPassAndPaymentApplicationForAID:(id)arg1;
 @end
 

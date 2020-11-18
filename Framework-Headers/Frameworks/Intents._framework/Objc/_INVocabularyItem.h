@@ -13,12 +13,14 @@
 
 @interface _INVocabularyItem : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _requiresUserIdentification;
     NSString *_string;
     NSString *_vocabularyIdentifier;
     NSUUID *__siriID;
 }
 
 @property (copy, nonatomic, setter=_setSiriID:) NSUUID *_siriID; // @synthesize _siriID=__siriID;
+@property (readonly, nonatomic) BOOL requiresUserIdentification; // @synthesize requiresUserIdentification=_requiresUserIdentification;
 @property (readonly, nonatomic) NSString *string; // @synthesize string=_string;
 @property (readonly, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
 
@@ -26,7 +28,7 @@
 - (void).cxx_destruct;
 - (id)_dictionaryForSaving;
 - (id)_initWithUncheckedSpeakable:(id)arg1;
-- (id)_initWithUncheckedString:(id)arg1 vocabularyIdentifier:(id)arg2;
+- (id)_initWithUncheckedString:(id)arg1 vocabularyIdentifier:(id)arg2 requiresUserIdentification:(BOOL)arg3;
 - (id)_initWithVocabularyItem:(id)arg1;
 - (BOOL)_isSimilarEnoughToNotSync:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -36,6 +38,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSpeakable:(id)arg1;
 - (id)initWithString:(id)arg1 vocabularyIdentifier:(id)arg2;
+- (id)initWithString:(id)arg1 vocabularyIdentifier:(id)arg2 requiresUserIdentification:(BOOL)arg3;
 - (unsigned long long)validate;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <NeutrinoKit/NUMediaPlayer-Protocol.h>
 
-@class AVComposition, NSArray, NSString, NUAVPlayerController, NUCoalescer, NUColorSpace, NUComposition, NULivePhotoRenderClient, NUMediaView, NUObservatory, NUPixelFormat, NUResponse, NUSurfaceRenderClient, NUVideoRenderClient, UIView;
+@class NSArray, NSString, NUAVPlayerController, NUCoalescer, NUColorSpace, NUComposition, NULivePhotoRenderClient, NUMediaView, NUObservatory, NUPixelFormat, NUResponse, NUSurfaceRenderClient, NUVideoRenderClient, UIView;
 @protocol NURenderStatistics, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NUMediaViewRenderer : NSObject <NUMediaPlayer>
@@ -48,8 +48,9 @@
     NUAVPlayerController *_nuAVPlayerController;
     unsigned long long _displayType;
     unsigned long long _computedDisplayType;
-    AVComposition *_previousVideo;
+    double _overrideZoomScale;
     NSArray *_previousPipelineFilters;
+    struct CGSize _overrideZoomToFitSize;
 }
 
 @property (nonatomic, getter=_isVideoEnabled, setter=_setVideoEnabled:) BOOL _videoEnabled; // @synthesize _videoEnabled=__videoEnabled;
@@ -63,20 +64,22 @@
 @property (nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isReady;
+@property (readonly) NSArray *loadedTimeRanges;
 @property (nonatomic) double maximumZoomScale; // @synthesize maximumZoomScale=_maximumZoomScale;
 @property (readonly, nonatomic) CDStruct_198678f7 mediaDuration;
 @property (readonly, weak, nonatomic) NUMediaView *mediaView; // @synthesize mediaView=_mediaView;
 @property (nonatomic, getter=isMuted) BOOL muted;
 @property (readonly, nonatomic) NUAVPlayerController *nuAVPlayerController; // @synthesize nuAVPlayerController=_nuAVPlayerController;
+@property (nonatomic) double overrideZoomScale; // @synthesize overrideZoomScale=_overrideZoomScale;
+@property (nonatomic) struct CGSize overrideZoomToFitSize; // @synthesize overrideZoomToFitSize=_overrideZoomToFitSize;
 @property (copy, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;
 @property (strong, nonatomic) NUPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (nonatomic) long long playbackMode;
 @property (nonatomic) double playbackRate;
 @property (readonly, nonatomic) long long playbackState;
 @property (readonly, copy, nonatomic) NSArray *previousPipelineFilters; // @synthesize previousPipelineFilters=_previousPipelineFilters;
-@property (strong, nonatomic) AVComposition *previousVideo; // @synthesize previousVideo=_previousVideo;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
+@property (readonly, nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
 @property (readonly, nonatomic, getter=isZoomedToFit) BOOL zoomedToFit;
 
 + (BOOL)_forceUpdateForNewVideoComposition:(id)arg1 previousComposition:(id)arg2 newAsset:(id)arg3 previousAsset:(id)arg4 isPlaying:(BOOL)arg5;
@@ -87,9 +90,11 @@
 - (void)_beginAnimating;
 - (void)_coalesceUpdateLivePhotoComposition:(id)arg1;
 - (void)_coalesceUpdateVideoComposition:(id)arg1;
+- (BOOL)_didReleaseAVObjects;
 - (void)_endAnimating;
 - (double)_lastRenderDuration;
 - (id)_livePhotoFromResponse:(id)arg1;
+- (void)_notifyExternalPlaybackChange:(BOOL)arg1;
 - (void)_notifyPlaybackStateChange:(long long)arg1;
 - (void)_notifyPlaybackTimeChange:(CDStruct_198678f7)arg1;
 - (long long)_playbackStateFromPlayerStatus:(long long)arg1 rate:(float)arg2;
@@ -97,6 +102,7 @@
 - (id)_regionPolicyForZoomTargetRect:(struct CGRect)arg1;
 - (void)_releaseAVObjects;
 - (void)_renderFinishedWithGeometry:(id)arg1 layer:(id)arg2;
+- (id)_scalePolicyForVideoCompositionRender;
 - (struct CGRect)_scrollBounds;
 - (void)_setDisplayType:(unsigned long long)arg1;
 - (void)_setupAVPlayerController;
@@ -119,6 +125,7 @@
 - (id)_zoomRenderRequestForComposition:(id)arg1;
 - (CDUnknownBlockType)_zoomRenderResponseHandler;
 - (struct CGRect)_zoomTargetRect;
+- (id)addExternalPlaybackObserver:(CDUnknownBlockType)arg1;
 - (id)addPlaybackStateObserver:(CDUnknownBlockType)arg1;
 - (id)addPlaybackTimeObserver:(CDUnknownBlockType)arg1;
 - (void)beginPanning;
@@ -145,6 +152,8 @@
 - (id)renderClient;
 - (void)seekToTime:(CDStruct_198678f7)arg1;
 - (void)seekToTime:(CDStruct_198678f7)arg1 exact:(BOOL)arg2;
+- (void)seekToTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
+- (void)setVideoEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)stepByCount:(long long)arg1;
 - (struct CGSize)targetSize;
 - (void)updateComposition:(id)arg1;

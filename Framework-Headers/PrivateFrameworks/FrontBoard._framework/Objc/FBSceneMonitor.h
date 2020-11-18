@@ -10,12 +10,14 @@
 #import <FrontBoard/FBSceneManagerInternalObserver-Protocol.h>
 #import <FrontBoard/FBSceneObserver-Protocol.h>
 
-@class FBSMutableSceneSettings, FBSSceneClientSettingsDiffInspector, FBSSceneSettings, FBScene, FBSceneMonitorBehaviors, NSMutableSet, NSString;
+@class FBSMutableSceneSettings, FBSSceneClientSettingsDiffInspector, FBSSceneIdentityToken, FBSSceneSettings, FBScene, FBSceneManager, FBSceneMonitorBehaviors, NSMutableSet, NSString;
 @protocol FBSceneMonitorDelegate;
 
 @interface FBSceneMonitor : NSObject <FBSceneManagerInternalObserver, FBSceneObserver, FBSceneLayerManagerObserver>
 {
+    FBSceneManager *_sceneManager;
     FBScene *_scene;
+    FBSSceneIdentityToken *_identityToken;
     NSString *_sceneID;
     NSMutableSet *_externalSceneIDs;
     NSMutableSet *_pairedExternalSceneIDs;
@@ -57,7 +59,7 @@
 - (BOOL)isPairedWithExternalSceneID:(id)arg1;
 - (void)scene:(id)arg1 didApplyUpdateWithContext:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
-- (void)sceneLayerManager:(id)arg1 didRepositionLayer:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
+- (void)sceneLayerManagerDidUpdateLayers:(id)arg1;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
 - (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;

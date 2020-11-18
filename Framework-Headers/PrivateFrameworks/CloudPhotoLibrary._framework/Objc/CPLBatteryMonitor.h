@@ -11,6 +11,7 @@
 }
 
 + (id)powerStatus;
++ (id)powerStatusPlist;
 + (void)startMonitoringPowerEvents;
 
 @end

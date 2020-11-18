@@ -36,6 +36,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL wasCached; // @synthesize wasCached=_wasCached;
 
++ (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

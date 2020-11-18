@@ -25,6 +25,7 @@
 - (id)description;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)overlayImage;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
 - (void)richIconDidChange:(id)arg1;

@@ -28,15 +28,15 @@
 + (id)lookForCharacteristicByAccessoryUUID:(id)arg1 serviceID:(id)arg2 characteristicID:(id)arg3 inHome:(id)arg4 checkForSupport:(BOOL)arg5 outError:(id *)arg6;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__handleCharacteristicsChangedPayload:(id)arg1;
 - (BOOL)_activate:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_evaluateNewValue:(id)arg1;
-- (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
-- (void)_processAccessoryCharacteristicsChangedNotification:(id)arg1;
 - (void)_registerForMessages;
 - (id)createPayload;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fixCharacteristicInHome:(id)arg1;
+- (void)handleCharacteristicsChangedNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
 - (BOOL)isActive;

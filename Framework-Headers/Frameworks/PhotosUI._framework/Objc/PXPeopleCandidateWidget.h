@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PHPerson, PXOneUpPresentation, PXPeopleSuggestionDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UILabel, UIView;
-@protocol PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXUIWidget>
 {
@@ -39,15 +39,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dismissed; // @synthesize dismissed=_dismissed;
+@property (readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
 @property (readonly, nonatomic) BOOL hasLoadedContentData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInEditMode;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property (weak, nonatomic) UIButton *notNowButton; // @synthesize notNowButton=_notNowButton;
 @property (strong, nonatomic) NSLayoutConstraint *notNowToTrailingConstraint; // @synthesize notNowToTrailingConstraint=_notNowToTrailingConstraint;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
@@ -59,7 +62,9 @@
 @property (readonly, nonatomic) BOOL supportsFaceMode;
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
+@property (readonly, nonatomic) BOOL wantsFocus;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetEditingDelegate> widgetEditingDelegate;
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 - (void).cxx_destruct;

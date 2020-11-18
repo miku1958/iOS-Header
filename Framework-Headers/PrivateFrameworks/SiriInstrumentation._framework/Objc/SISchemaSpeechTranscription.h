@@ -10,11 +10,17 @@
 
 @interface SISchemaSpeechTranscription : PBCodable
 {
-    int _speechTranscriptionType;
     NSString *_aceID;
+    int _speechTranscriptionType;
+    struct {
+        unsigned int speechTranscriptionType:1;
+    } _has;
+    BOOL _hasAceID;
 }
 
 @property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
+@property (nonatomic) BOOL hasAceID; // @synthesize hasAceID=_hasAceID;
+@property (nonatomic) BOOL hasSpeechTranscriptionType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int speechTranscriptionType; // @synthesize speechTranscriptionType=_speechTranscriptionType;
 

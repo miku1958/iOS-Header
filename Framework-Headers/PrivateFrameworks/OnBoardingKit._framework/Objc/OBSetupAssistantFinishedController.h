@@ -11,6 +11,7 @@
 @interface OBSetupAssistantFinishedController : OBBaseWelcomeController
 {
     UILabel *_titleLabel;
+    UILabel *_detailLabel;
     OBButtonTray *_buttonTray;
     OBBoldTrayButton *_boldButton;
     CDUnknownBlockType _boldButtonBlock;
@@ -20,14 +21,18 @@
 @property (strong, nonatomic) OBBoldTrayButton *boldButton; // @synthesize boldButton=_boldButton;
 @property (copy, nonatomic) CDUnknownBlockType boldButtonBlock; // @synthesize boldButtonBlock=_boldButtonBlock;
 @property (strong, nonatomic) OBButtonTray *buttonTray; // @synthesize buttonTray=_buttonTray;
+@property (strong, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
 @property (strong, nonatomic) UILabel *instructionalLabel; // @synthesize instructionalLabel=_instructionalLabel;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_detailFont;
 - (id)_headerFont;
 - (id)_instructionFont;
 - (void)buttonTapped:(id)arg1;
+- (struct NSDirectionalEdgeInsets)directionalLayoutMargins;
 - (id)initWithTitle:(id)arg1;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2;
 - (void)setButtonTitle:(id)arg1 action:(CDUnknownBlockType)arg2;
 - (void)setInstructionalText:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

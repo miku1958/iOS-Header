@@ -6,6 +6,7 @@
 
 #import <Intents/INEnumResolutionResult.h>
 
+__attribute__((visibility("hidden")))
 @interface WFCombineTextSeparatorResolutionResult : INEnumResolutionResult
 {
 }

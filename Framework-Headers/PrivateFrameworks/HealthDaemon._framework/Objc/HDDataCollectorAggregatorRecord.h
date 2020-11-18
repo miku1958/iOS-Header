@@ -9,6 +9,7 @@
 @class HDDataAggregator, HDDataCollectorConfiguration, NSString;
 @protocol HDCollectedSensorDatum;
 
+__attribute__((visibility("hidden")))
 @interface HDDataCollectorAggregatorRecord : NSObject
 {
     BOOL _hasSetLastSensorDatum;

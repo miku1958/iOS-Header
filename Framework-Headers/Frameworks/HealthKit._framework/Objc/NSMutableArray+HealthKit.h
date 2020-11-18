@@ -11,5 +11,6 @@
 - (void)hk_addObjectsFromArray:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)hk_dequeue;
 - (void)hk_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (void)hk_shuffle;
 @end
 

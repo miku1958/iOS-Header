@@ -6,10 +6,10 @@
 
 #import <HealthUI/NSObject-Protocol.h>
 
-@class HKGraphSeries, NSString, UIColor;
+@class HKGraphSeries, NSAttributedString;
 
 @protocol HKGraphSeriesAxisAnnotation <NSObject>
-- (void)addAxisAnnotation:(NSString *)arg1 forSeries:(HKGraphSeries *)arg2 textColor:(UIColor *)arg3 modelCoordinate:(id)arg4;
+- (void)addAxisAnnotation:(NSAttributedString *)arg1 forSeries:(HKGraphSeries *)arg2 modelCoordinate:(id)arg3;
 - (void)clearAxisAnnotations;
 @end
 

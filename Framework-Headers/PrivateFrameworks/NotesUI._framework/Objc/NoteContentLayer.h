@@ -12,7 +12,7 @@
 #import <NotesUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSString, NoteDateLabel, NoteHTMLEditorView;
-@protocol NoteContentLayerAttachmentPresentationDelegate, NoteContentLayerDelegate, NotesTextureScrolling;
+@protocol NoteContentLayerAttachmentPresentationDelegate, NoteContentLayerDelegate;
 
 @interface NoteContentLayer : UIView <NoteHTMLEditorViewDelegate, NoteHTMLEditorViewActionDelegate, NoteHTMLEditorViewLayoutDelegate, UIScrollViewDelegate>
 {
@@ -23,7 +23,6 @@
     BOOL _updatedTitleRange;
     id<NoteContentLayerDelegate> _delegate;
     id<NoteContentLayerAttachmentPresentationDelegate> _attachmentPresentationDelegate;
-    id<NotesTextureScrolling> _textureScrollingDelegate;
     NoteHTMLEditorView *_noteHTMLEditorView;
     NSArray *_horizontalConstraints;
     NoteDateLabel *_dateLabel;
@@ -46,7 +45,6 @@
 @property (strong, nonatomic) NoteHTMLEditorView *noteHTMLEditorView; // @synthesize noteHTMLEditorView=_noteHTMLEditorView;
 @property (nonatomic) BOOL showsDateLabel; // @synthesize showsDateLabel=_showsDateLabel;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) id<NotesTextureScrolling> textureScrollingDelegate; // @synthesize textureScrollingDelegate=_textureScrollingDelegate;
 @property (readonly, nonatomic) NSString *title;
 @property (nonatomic) BOOL tracksMaximumContentLength; // @synthesize tracksMaximumContentLength=_tracksMaximumContentLength;
 @property (nonatomic) BOOL updatedTitleRange; // @synthesize updatedTitleRange=_updatedTitleRange;
@@ -64,6 +62,7 @@
 - (void)didChangeFullSizeClass;
 - (void)flashScrollIndicators;
 - (void)forcedSetContainsCJK:(BOOL)arg1;
+- (void)getRectForSelectionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertDateLabel;
@@ -86,7 +85,6 @@
 - (void)noteHTMLEditorView:(id)arg1 openURL:(id)arg2;
 - (void)noteHTMLEditorView:(id)arg1 showShareSheetForAttachment:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (id)noteHTMLEditorView:(id)arg1 updateAttachments:(id)arg2;
-- (void)noteHTMLEditorView:(id)arg1 webScrollViewDidScroll:(id)arg2;
 - (void)noteHTMLEditorViewDidBeginEditing:(id)arg1;
 - (void)noteHTMLEditorViewDidChange:(id)arg1;
 - (void)noteHTMLEditorViewDidEndEditing:(id)arg1;
@@ -98,7 +96,6 @@
 - (BOOL)processMapAttachmentItemProvider:(id)arg1;
 - (id)readerDelegateInNoteHTMLEditorView:(id)arg1;
 - (struct CGRect)rectForDOMNode:(id)arg1;
-- (struct CGRect)rectForSelection;
 - (void)reloadInterface;
 - (void)replaceSelectionWithAttachmentPresentation:(id)arg1;
 - (BOOL)resignFirstResponder;
@@ -117,6 +114,7 @@
 - (void)updateDateLabel;
 - (void)updateHorizontalConstraints;
 - (void)updateMarginConstraints;
+- (void)updateObscuredInsets;
 - (id)viewPrintFormatter;
 - (id)webArchive;
 

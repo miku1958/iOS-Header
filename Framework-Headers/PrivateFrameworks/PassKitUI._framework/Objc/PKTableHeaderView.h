@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class PKCheckGlyphLayer, UIActivityIndicatorView, UIButton, UIImageView, UILabel;
+@class LAUICheckmarkLayer, UIActivityIndicatorView, UIButton, UIImageView, UILabel;
 
 @interface PKTableHeaderView : UIView
 {
@@ -16,20 +16,20 @@
     UILabel *_subtitleLabel;
     UIButton *_actionButton;
     UIActivityIndicatorView *_activityIndicator;
-    PKCheckGlyphLayer *_checkmarkLayer;
     BOOL _shouldResizeImageToFit;
     BOOL _accessoryViewsDisabled;
     unsigned long long _style;
     double _topPadding;
     double _bottomPadding;
     double _minimumHeight;
+    LAUICheckmarkLayer *_checkmarkLayer;
 }
 
 @property (nonatomic) BOOL accessoryViewsDisabled; // @synthesize accessoryViewsDisabled=_accessoryViewsDisabled;
 @property (readonly, nonatomic) UIButton *actionButton;
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
-@property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
+@property (readonly, nonatomic) LAUICheckmarkLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (nonatomic) BOOL shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
@@ -51,6 +51,7 @@
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setImageViewImage:(id)arg1 withSize:(struct CGSize)arg2 animated:(BOOL)arg3;
+- (void)setPassSnapshot:(id)arg1 withSize:(struct CGSize)arg2 animated:(BOOL)arg3 needsCorners:(BOOL)arg4;
 - (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(BOOL)arg2 needsCorners:(BOOL)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;

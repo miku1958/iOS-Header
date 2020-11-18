@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFUserInterface-Protocol.h>
+#import <WorkflowKit/WFUserInterfaceHost-Protocol.h>
 
-@class INIntent, INInteraction, NSArray, NSString, NSURL, NSUserActivity;
+@class INIntent, INInteraction, NSArray, NSString, NSUserActivity;
 
-@protocol WFSiriUserInterface <WFUserInterface>
+@protocol WFSiriUserInterface <WFUserInterfaceHost>
 
 @property (readonly, copy, nonatomic) NSArray *airPlayRouteIDs;
 @property (readonly, nonatomic) long long executionContext;
 
 - (void)configureIntent:(INIntent *)arg1;
 - (BOOL)executeIntent:(INIntent *)arg1 completionHandler:(void (^)(INInteraction *, NSError *))arg2;
+- (BOOL)isRunningInSiri;
 - (void)openInteractionInApp:(INInteraction *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
-- (void)openURL:(NSURL *)arg1 completionHandler:(void (^)(BOOL))arg2;
 - (void)openUserActivity:(NSUserActivity *)arg1 bundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
-- (void)showInteractionIfNeeded:(INInteraction *)arg1 requiringConfirmation:(BOOL)arg2 requiringAuthentication:(BOOL)arg3 executionStage:(long long)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
 - (void)speakText:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 @end
 

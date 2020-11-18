@@ -11,6 +11,7 @@
 }
 
 - (id)adjustmentData;
+- (id)allowedInfoKeys;
 - (BOOL)containsValidData;
 - (void)setAdjustmentData:(id)arg1;
 

@@ -17,6 +17,7 @@
 
 + (BOOL)isSystemLibraryURLDefined;
 + (BOOL)isSystemPhotoLibraryURL:(NSURL *)arg1;
++ (NSURL *)libraryURLFromDatabaseURL:(NSURL *)arg1;
 + (BOOL)setSystemLibraryURL:(NSURL *)arg1 options:(unsigned short)arg2 error:(id *)arg3;
 + (NSString *)systemLibraryBaseDirectory;
 + (NSURL *)systemLibraryURL;

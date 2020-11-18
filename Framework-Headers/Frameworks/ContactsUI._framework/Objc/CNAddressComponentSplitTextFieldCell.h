@@ -6,24 +6,32 @@
 
 #import <ContactsUI/CNAddressComponentTextFieldCell.h>
 
-@class CNRepeatingGradientSeparatorView, UITextField;
+#import <ContactsUI/NUIContainerViewDelegate-Protocol.h>
+
+@class CNRepeatingGradientSeparatorView, NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface CNAddressComponentSplitTextFieldCell : CNAddressComponentTextFieldCell
+@interface CNAddressComponentSplitTextFieldCell : CNAddressComponentTextFieldCell <NUIContainerViewDelegate>
 {
     UITextField *_textFieldLeft;
     UITextField *_textFieldRight;
     CNRepeatingGradientSeparatorView *_separator;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CNRepeatingGradientSeparatorView *separator; // @synthesize separator=_separator;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UITextField *textFieldLeft; // @synthesize textFieldLeft=_textFieldLeft;
 @property (strong, nonatomic) UITextField *textFieldRight; // @synthesize textFieldRight=_textFieldRight;
 
 + (id)cellIdentifier;
++ (Class)containerViewClass;
 - (void).cxx_destruct;
-- (id)currentConstraintsForMetrics:(id)arg1;
-- (void)prepareForReuse;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)newSeparatorView;
 - (void)setTextAttributes:(id)arg1;
 - (void)setupTextFields;
 - (id)textAttributes;

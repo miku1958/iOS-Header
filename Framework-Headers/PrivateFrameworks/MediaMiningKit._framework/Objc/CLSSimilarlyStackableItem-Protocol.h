@@ -6,11 +6,10 @@
 
 #import <MediaMiningKit/NSObject-Protocol.h>
 
-@class NSData, NSDate, NSString, VNSceneprint;
+@class NSDate, NSString, VNSceneprint;
 
 @protocol CLSSimilarlyStackableItem <NSObject>
 
-@property (readonly) NSData *clsDistanceIdentity;
 @property (readonly) NSString *clsIdentifier;
 @property (readonly) VNSceneprint *clsSceneprint;
 @property (readonly) NSDate *cls_universalDate;

@@ -10,18 +10,18 @@
 
 @interface TSTFormulaTokenContext : NSObject
 {
-    TSTExpressionNode *mExpressionNode;
-    unsigned long long mParenNestingLevel;
-    unsigned long long mArgumentIndex;
+    TSTExpressionNode *_expressionNode;
+    unsigned long long _parenNestingLevel;
+    unsigned long long _argumentIndex;
 }
 
-@property (readonly, nonatomic) unsigned long long argumentIndex; // @synthesize argumentIndex=mArgumentIndex;
-@property (readonly, nonatomic) TSTExpressionNode *expressionNode; // @synthesize expressionNode=mExpressionNode;
-@property (readonly, nonatomic) unsigned long long parenNestingLevel; // @synthesize parenNestingLevel=mParenNestingLevel;
+@property (readonly, nonatomic) unsigned long long argumentIndex; // @synthesize argumentIndex=_argumentIndex;
+@property (readonly, nonatomic) TSTExpressionNode *expressionNode; // @synthesize expressionNode=_expressionNode;
+@property (readonly, nonatomic) unsigned long long parenNestingLevel; // @synthesize parenNestingLevel=_parenNestingLevel;
 
 + (id)tokenContextWithExpressionNode:(id)arg1 parenNestingLevel:(unsigned long long)arg2;
 + (id)tokenContextWithExpressionNode:(id)arg1 parenNestingLevel:(unsigned long long)arg2 argumentIndex:(unsigned long long)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)debugDescription;
 - (unsigned long long)hash;
 - (id)init;

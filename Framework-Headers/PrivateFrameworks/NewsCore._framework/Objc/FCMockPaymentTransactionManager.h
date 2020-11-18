@@ -29,6 +29,7 @@
 + (id)mockPaymentTransactionWithFailForProductID:(id)arg1 transactionState:(long long)arg2 transactionError:(id)arg3;
 + (id)mockPaymentTransactionWithSuccessForProductID:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)canMakePayments;
 - (void)registerOngoingPurchaseTransactionsWithEntry:(id)arg1;
 - (void)startPurchaseWithTagID:(id)arg1 productID:(id)arg2 purchaseID:(id)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5 price:(id)arg6 webAccessOptIn:(BOOL)arg7 payment:(id)arg8;
 

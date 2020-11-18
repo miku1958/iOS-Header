@@ -8,7 +8,7 @@
 
 #import <Silex/SVVideoMetadata-Protocol.h>
 
-@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SXAVPlayer;
+@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SVTimeline, SXAVPlayer;
 @protocol SXAVPlayerFactory, SXVideoPlaybackHost, SXVideoProviding;
 
 @interface SXPlaybackCoordinator : NSObject <SVVideoMetadata>
@@ -31,6 +31,8 @@
     SVKeyValueObserver *_muteStateObserver;
     SVKeyValueObserver *_playbackLikelyToKeepUpObserver;
     SVKeyValueObserver *_playbackBufferFullObserver;
+    SVTimeline *_timeline;
+    double _pausedAtTime;
     struct CGSize _dimensions;
 }
 
@@ -49,6 +51,7 @@
 @property (strong, nonatomic) SVKeyValueObserver *muteStateObserver; // @synthesize muteStateObserver=_muteStateObserver;
 @property (nonatomic) BOOL muted; // @synthesize muted=_muted;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
 @property (readonly, nonatomic) BOOL playbackBufferFull; // @synthesize playbackBufferFull=_playbackBufferFull;
 @property (strong, nonatomic) SVKeyValueObserver *playbackBufferFullObserver; // @synthesize playbackBufferFullObserver=_playbackBufferFullObserver;
 @property (readonly, nonatomic) BOOL playbackLikelyToKeepUp; // @synthesize playbackLikelyToKeepUp=_playbackLikelyToKeepUp;
@@ -62,6 +65,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double time;
 @property (readonly, nonatomic) double timePlayed;
+@property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 @property (readonly, nonatomic) id<SXVideoProviding> video; // @synthesize video=_video;
 @property (readonly, nonatomic) double volume;
 
@@ -71,6 +75,7 @@
 - (void)addPlaybackLikelyToKeepUpObserver;
 - (void)addPlaybackObserver:(id)arg1;
 - (void)addPlayerItemPresentationSizeObserver;
+- (void)configureTimeline;
 - (id)initWithVideo:(id)arg1 playerFactory:(id)arg2;
 - (void)load;
 - (void)loadVideoIfNeeded;
@@ -84,13 +89,18 @@
 - (void)playbackInitiatedWithButtonTapped:(BOOL)arg1;
 - (void)playbackLikelyToKeepUpStateChanged;
 - (void)playbackPaused;
+- (void)playbackPausedAtTime:(double)arg1;
+- (void)playbackReadyToStart;
 - (void)playbackResumed;
+- (void)playbackResumedAtTime:(double)arg1;
 - (void)playbackStarted;
 - (void)removePlaybackObserver:(id)arg1;
 - (void)removePlayerItemPresentationSizeObserver;
 - (void)seekToTime:(double)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)setupPlayerWithURL:(id)arg1;
 - (void)stateChanged;
+- (BOOL)supportImpressionTracking;
+- (BOOL)supportsQuartileTracking;
 - (void)timeElapsed:(double)arg1 duration:(double)arg2;
 
 @end

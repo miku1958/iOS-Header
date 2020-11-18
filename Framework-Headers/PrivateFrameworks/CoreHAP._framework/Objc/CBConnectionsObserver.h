@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 
 - (void)centralManagerDidUpdateState:(id)arg1;
-- (void)cleanupWithError:(id *)arg1;
+- (BOOL)cleanupWithError:(id *)arg1;
 - (int)getAvailableHAPConnections;
 - (id)getStatus;
 - (id)initWithCentralManager:(id)arg1 Queue:(id)arg2 Error:(id *)arg3;

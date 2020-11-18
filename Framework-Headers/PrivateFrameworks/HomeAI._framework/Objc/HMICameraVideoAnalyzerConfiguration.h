@@ -9,19 +9,29 @@
 #import <HomeAI/NSCopying-Protocol.h>
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
+@class HMICamera, NSUUID;
+
 @interface HMICameraVideoAnalyzerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _transcodeFragment;
     BOOL _useScheduler;
     BOOL _inMediaAnalysis;
+    BOOL _faceClassificationEnabled;
     unsigned long long _posterFrameGenerationInterval;
     unsigned long long _posterFrameHeight;
     double _maxFragmentAnalysisDuration;
     double _maxFragmentDuration;
+    HMICamera *_camera;
     unsigned long long _serviceType;
     unsigned long long _startingMediaIntegritySequenceNumber;
+    NSUUID *_homeUUID;
+    CDStruct_1b6d18a9 _currentSessionDuration;
 }
 
+@property (readonly) HMICamera *camera; // @synthesize camera=_camera;
+@property CDStruct_1b6d18a9 currentSessionDuration; // @synthesize currentSessionDuration=_currentSessionDuration;
+@property BOOL faceClassificationEnabled; // @synthesize faceClassificationEnabled=_faceClassificationEnabled;
+@property (strong) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 @property BOOL inMediaAnalysis; // @synthesize inMediaAnalysis=_inMediaAnalysis;
 @property (readonly) double maxFragmentAnalysisDuration; // @synthesize maxFragmentAnalysisDuration=_maxFragmentAnalysisDuration;
 @property (readonly) double maxFragmentDuration; // @synthesize maxFragmentDuration=_maxFragmentDuration;
@@ -33,12 +43,14 @@
 @property BOOL useScheduler; // @synthesize useScheduler=_useScheduler;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)getAnalysisServiceTypePreference;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPosterFrameGenerationInterval:(unsigned long long)arg1 posterFrameHeight:(unsigned long long)arg2 maxFragmentAnalysisDuration:(double)arg3 maxFragmentDuration:(double)arg4;
+- (id)initWithPosterFrameGenerationInterval:(unsigned long long)arg1 posterFrameHeight:(unsigned long long)arg2 maxFragmentAnalysisDuration:(double)arg3 maxFragmentDuration:(double)arg4 transcodeFragment:(BOOL)arg5;
+- (id)initWithPosterFrameGenerationInterval:(unsigned long long)arg1 posterFrameHeight:(unsigned long long)arg2 maxFragmentAnalysisDuration:(double)arg3 maxFragmentDuration:(double)arg4 transcodeFragment:(BOOL)arg5 camera:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

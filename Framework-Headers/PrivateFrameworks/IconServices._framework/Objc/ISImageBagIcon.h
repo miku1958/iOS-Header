@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)decorations;
 - (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)hasValidImage;
 - (id)imageForImageDescriptor:(id)arg1;
 - (id)initWithImages:(id)arg1;
 - (id)initWithImages:(id)arg1 decorations:(id)arg2;

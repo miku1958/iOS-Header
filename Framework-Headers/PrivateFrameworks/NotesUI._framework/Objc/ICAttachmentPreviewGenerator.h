@@ -65,7 +65,7 @@
 - (void)cancelGenerationOfPendingPreviews;
 - (void)cancelIfNeededForAttachment:(id)arg1;
 - (void)dealloc;
-- (void)didRecieveMemoryWarning;
+- (void)didReceiveMemoryWarning;
 - (void)disableAutomaticPreviewGeneration;
 - (void)enableAutomaticPreviewGeneration;
 - (void)generateMissingOrOutdatedAttachmentMetaDataIfNeededInContext:(id)arg1;
@@ -78,9 +78,9 @@
 - (BOOL)isPreviewGenerationSupported;
 - (void)managedObjectContextDidSave:(id)arg1;
 - (void)mediaDidLoad:(id)arg1;
-- (id)missingOrOutdatedImageClassificationSummaryAttachmentsInContext:(id)arg1;
-- (id)missingOrOutdatedMetaDataAttachmentsInContext:(id)arg1;
-- (id)missingOrOutdatedOCRSummaryAttachmentsInContext:(id)arg1;
+- (id)missingOrOutdatedImageClassificationSummaryAttachmentIDsInContext:(id)arg1;
+- (id)missingOrOutdatedMetaDataAttachmentIDsInContext:(id)arg1;
+- (id)missingOrOutdatedOCRSummaryAttachmentIDsInContext:(id)arg1;
 - (void)operationComplete:(id)arg1;
 - (void)postProcessIfNeededForAttachment:(id)arg1;
 - (void)postProcessPendingPreviews;

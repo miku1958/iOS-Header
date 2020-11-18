@@ -17,13 +17,10 @@
     double _dimension;
     long long _formatMode;
     long long _version;
-    const CDStruct_e5ce1f5a *_bakedFormatInfo;
     long long _thumbnailKind;
     struct CGSize _size;
 }
 
-@property (readonly, nonatomic) const CDStruct_e5ce1f5a *bakedFormatInfo; // @synthesize bakedFormatInfo=_bakedFormatInfo;
-@property (readonly, nonatomic) BOOL bakedFormatIsDynamicallySized;
 @property (readonly, nonatomic) double dimension; // @synthesize dimension=_dimension;
 @property (readonly, nonatomic) BOOL dimensionsReferToShortSide;
 @property (nonatomic) unsigned short formatID; // @synthesize formatID=_formatID;
@@ -64,7 +61,6 @@
 - (struct CGSize)scaledSizeForSourceSize:(struct CGSize)arg1;
 - (struct CGSize)scaledSizeForSourceSize:(struct CGSize)arg1 capLength:(BOOL)arg2;
 - (id)shortDescription;
-- (struct CGSize)sizeOfThumbnailWithAspectRatio:(double)arg1;
 - (id)thumbnailSpecification;
 
 @end

@@ -45,6 +45,7 @@
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (strong, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uuid;
 
+- (void).cxx_destruct;
 - (void)addContentTypeParameterWithName:(id)arg1 value:(id)arg2;
 - (id)addData:(id)arg1 withContentType:(id)arg2;
 - (void)addEmailRecipient:(id)arg1;
@@ -54,7 +55,6 @@
 - (id)addText:(id)arg1;
 - (id)allContentTypeParameterNames;
 - (id)contentTypeParameterWithName:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithDate:(id)arg1;

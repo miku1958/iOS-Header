@@ -6,39 +6,57 @@
 
 #import <objc/NSObject.h>
 
-@class CPAnalyticsDestinationsRegistry, CPAnalyticsSystemProperties;
+@class CPAnalyticsDestinationsRegistry, CPAnalyticsSystemProperties, PHPhotoLibrary;
 @protocol OS_dispatch_queue;
 
 @interface CPAnalytics : NSObject
 {
+    PHPhotoLibrary *_photoLibrary;
     CPAnalyticsDestinationsRegistry *_registry;
     NSObject<OS_dispatch_queue> *_eventsQueue;
-    long long _lastSignpostID;
+    long long _signpostUniqueValue;
     CPAnalyticsSystemProperties *_systemProperties;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *eventsQueue; // @synthesize eventsQueue=_eventsQueue;
-@property (readonly) long long lastSignpostID; // @synthesize lastSignpostID=_lastSignpostID;
+@property (strong, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, nonatomic) CPAnalyticsDestinationsRegistry *registry; // @synthesize registry=_registry;
+@property (readonly) long long signpostUniqueValue; // @synthesize signpostUniqueValue=_signpostUniqueValue;
 @property (readonly, nonatomic) CPAnalyticsSystemProperties *systemProperties; // @synthesize systemProperties=_systemProperties;
 
 + (id)_sharedInstance;
 + (void)activateEventQueue;
-+ (id)bundle;
++ (void)addDestination:(id)arg1;
++ (id)bucketNameForDouble:(double)arg1 bucketLimits:(id)arg2 numberFormatter:(id)arg3;
++ (id)bucketNameForInteger:(long long)arg1 bucketLimits:(long long)arg2;
++ (id)creationDateForSignpost:(long long)arg1;
 + (void)endSignpost:(long long)arg1 forEventName:(id)arg2 withPayload:(id)arg3;
 + (BOOL)isAllowed;
++ (void)releasePhotoLibrary;
++ (void)removeDestination:(id)arg1;
 + (void)sendEvent:(id)arg1 withPayload:(id)arg2;
++ (void)setupSystemPropertyProvidersForLibrary:(id)arg1;
 + (void)setupWithConfigurationAtURL:(id)arg1;
++ (void)setupWithConfigurationFilename:(id)arg1 inBundle:(id)arg2;
++ (void)startAppTracking;
 + (long long)startSignpost;
 + (void)startViewTracking;
++ (void)updateWithConfigurationFilename:(id)arg1 inBundle:(id)arg2;
 - (void).cxx_destruct;
-- (void)_activateEventQueue;
-- (void)_endSignpost:(long long)arg1 forEventName:(id)arg2 withPayload:(id)arg3;
 - (long long)_generateNextSignpostID;
-- (void)_registerPropertyProviders;
-- (void)_sendEvent:(id)arg1 withPayload:(id)arg2;
-- (long long)_startSignpost;
+- (void)_setupSystemPropertyProviders;
+- (void)activateEventQueue;
+- (void)addDestination:(id)arg1;
+- (void)endSignpost:(long long)arg1 forEventName:(id)arg2 withPayload:(id)arg3;
 - (id)init;
+- (void)releasePhotoLibrary;
+- (void)removeDestination:(id)arg1;
+- (void)sendEvent:(id)arg1 withPayload:(id)arg2;
+- (void)setupSystemPropertyProvidersForLibrary:(id)arg1;
+- (void)setupWithConfigurationAtURL:(id)arg1;
+- (void)setupWithConfigurationFilename:(id)arg1 inBundle:(id)arg2;
+- (long long)startSignpost;
+- (void)updateWithConfigurationFilename:(id)arg1 inBundle:(id)arg2;
 
 @end
 

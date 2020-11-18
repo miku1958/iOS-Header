@@ -8,7 +8,7 @@
 
 #import <WeatherFoundation/WFSettings-Protocol.h>
 
-@class NSSet, NSString, NSURL;
+@class NSDictionary, NSSet, NSString, NSURL, WFWeatherEventsConfig;
 
 @interface WFInternalAppSettings : NSObject <WFSettings>
 {
@@ -27,7 +27,10 @@
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;
 @property (readonly, nonatomic) double privateUserIdentifierResetTimeInterval;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) float telemetrySamplingRate;
 @property (readonly, nonatomic) double userIdentifierResetTimeInterval;
+@property (readonly, nonatomic) WFWeatherEventsConfig *weatherEventsConfig;
+@property (readonly, nonatomic) NSDictionary *widgetRefreshPolicy;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

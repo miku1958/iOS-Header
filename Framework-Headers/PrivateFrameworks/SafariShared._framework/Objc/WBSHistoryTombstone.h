@@ -36,6 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSQLiteRow:(id)arg1 crypto:(id)arg2;
+- (id)initWithStreamedTombstone:(const struct _HistoryStreamedTombstone *)arg1;
 - (id)initWithURLString:(id)arg1 urlHash:(id)arg2 urlSalt:(id)arg3 startTime:(double)arg4 endTime:(double)arg5 generation:(long long)arg6;
 - (BOOL)matchesVisitTime:(double)arg1 urlString:(id)arg2;
 - (id)secureTombstoneWithSalt:(id)arg1;

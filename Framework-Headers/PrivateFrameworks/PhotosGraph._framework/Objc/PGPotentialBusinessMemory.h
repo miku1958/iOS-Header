@@ -6,17 +6,17 @@
 
 #import <PhotosGraph/PGPotentialMemory.h>
 
-@class NSMutableSet, NSString, PGGraphNode;
+@class NSMutableSet, NSString, PGGraphBusinessNode;
 
 @interface PGPotentialBusinessMemory : PGPotentialMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    PGGraphNode *_businessNode;
+    PGGraphBusinessNode *_businessNode;
     long long _year;
 }
 
 @property (readonly) NSString *business;
-@property (readonly) PGGraphNode *businessNode; // @synthesize businessNode=_businessNode;
+@property (readonly) PGGraphBusinessNode *businessNode; // @synthesize businessNode=_businessNode;
 @property (readonly) long long year; // @synthesize year=_year;
 
 - (void).cxx_destruct;

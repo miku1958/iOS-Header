@@ -10,7 +10,7 @@
 #import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
 
 @class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
-@protocol TPPageLayoutInfoProvider, TSDContainerInfo, TSDOwningAttachment;
+@protocol TPPageLayoutInfoProvider, TSDInfo, TSDOwningAttachment;
 
 @interface TPPageInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
@@ -31,13 +31,14 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, weak, nonatomic) id<TPPageLayoutInfoProvider> layoutInfoProvider; // @synthesize layoutInfoProvider=_layoutInfoProvider;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (readonly, nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly) Class superclass;
 
 + (unsigned long long)documentSetupLeftSidePageIndex;

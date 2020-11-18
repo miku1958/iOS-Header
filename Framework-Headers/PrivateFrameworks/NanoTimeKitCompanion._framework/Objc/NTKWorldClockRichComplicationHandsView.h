@@ -4,34 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKAnalogHandsView.h>
+#import <NanoTimeKitCompanion/NTKWorldClockRichComplicationHandsBaseView.h>
 
-#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
-
-@class CALayer, NSString, UIColor;
-@protocol CLKMonochromeFilterProvider;
-
-@interface NTKWorldClockRichComplicationHandsView : NTKAnalogHandsView <CLKMonochromeComplicationView>
+@interface NTKWorldClockRichComplicationHandsView : NTKWorldClockRichComplicationHandsBaseView
 {
-    CALayer *_pegDot;
-    id<CLKMonochromeFilterProvider> _filterProvider;
-    UIColor *_pegDotColor;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIColor *pegDotColor; // @synthesize pegDotColor=_pegDotColor;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
-- (double)_timeAnimationFramesPerSecondForDevice:(id)arg1;
-- (long long)displayedHour;
-- (id)initForDevice:(id)arg1;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
+- (long long)complicationFamily;
 
 @end
 

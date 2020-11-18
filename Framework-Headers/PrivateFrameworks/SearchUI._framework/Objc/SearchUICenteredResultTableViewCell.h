@@ -6,13 +6,13 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class TLKNumericalResultView;
+@class TLKHeaderView;
 
 @interface SearchUICenteredResultTableViewCell : SearchUITableViewCell
 {
 }
 
-@property (strong, nonatomic) TLKNumericalResultView *sizingContainer; // @dynamic sizingContainer;
+@property (strong, nonatomic) TLKHeaderView *sizingContainer; // @dynamic sizingContainer;
 
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)updateWithRowModel:(id)arg1;

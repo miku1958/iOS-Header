@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIView *rowStack; // @synthesize rowStack=_rowStack;
 @property (weak, nonatomic) id<CPSAlternateRouteSelecting> selectionDelegate; // @synthesize selectionDelegate=_selectionDelegate;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (id)_linearFocusItems;

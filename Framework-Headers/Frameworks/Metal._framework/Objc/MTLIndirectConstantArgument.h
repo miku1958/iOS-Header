@@ -6,7 +6,6 @@
 
 #import <Metal/MTLArgumentInternal.h>
 
-__attribute__((visibility("hidden")))
 @interface MTLIndirectConstantArgument : MTLArgumentInternal
 {
     unsigned short _dataType;

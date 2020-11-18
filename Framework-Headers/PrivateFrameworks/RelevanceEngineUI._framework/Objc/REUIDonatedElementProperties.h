@@ -48,6 +48,7 @@
 @property (readonly, nonatomic) BOOL isBeginWorkoutDonation;
 @property (readonly, nonatomic) BOOL isEndWorkoutDonation;
 @property (readonly, nonatomic) BOOL isMediaDonation;
+@property (readonly, nonatomic) BOOL isRunWorkflowDonation;
 @property (readonly, nonatomic) BOOL isWorkoutDonation;
 @property (readonly, nonatomic) NSString *localBundleIdentifier; // @synthesize localBundleIdentifier=_localBundleIdentifier;
 @property (readonly, nonatomic, getter=isLocalDonation) BOOL localDonation; // @synthesize localDonation=_localDonation;

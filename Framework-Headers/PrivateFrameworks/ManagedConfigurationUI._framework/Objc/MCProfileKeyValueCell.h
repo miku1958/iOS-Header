@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)_setupConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setKeyValue:(id)arg1;
-- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

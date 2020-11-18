@@ -7,11 +7,12 @@
 #import <Home/HFItem.h>
 
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
+#import <Home/NSCopying-Protocol.h>
 
 @class HMHome, NSString;
 @protocol HFHomeKitObject;
 
-@interface HFHomeItem : HFItem <HFHomeKitItemProtocol>
+@interface HFHomeItem : HFItem <HFHomeKitItemProtocol, NSCopying>
 {
     HMHome *_home;
 }
@@ -25,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1;
 

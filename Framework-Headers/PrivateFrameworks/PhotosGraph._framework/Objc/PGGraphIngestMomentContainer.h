@@ -15,6 +15,7 @@
     CLSClueCollection *_clueCollection;
     CLSInvestigationPhotoKitFeeder *_feeder;
     NSNumber *_isInterestingNumber;
+    NSNumber *_isInterestingWithAlternateJunkingNumber;
     NSNumber *_isSmartInterestingNumber;
     NSNumber *_contentScoreNumber;
     PGManager *_manager;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) NSNumber *contentScoreNumber; // @synthesize contentScoreNumber=_contentScoreNumber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double facesProcessedRatio;
 @property (strong, nonatomic) CLSInvestigationPhotoKitFeeder *feeder; // @synthesize feeder=_feeder;
 @property (readonly, nonatomic) BOOL hasAssetsWithInterestingScenes;
 @property (readonly, nonatomic) BOOL hasHigherThanImprovedAssets;
@@ -35,15 +37,19 @@
 @property (readonly, nonatomic) double inhabitationScore;
 @property (readonly, nonatomic) BOOL isInteresting;
 @property (strong, nonatomic) NSNumber *isInterestingNumber; // @synthesize isInterestingNumber=_isInterestingNumber;
+@property (readonly, nonatomic) BOOL isInterestingWithAlternateJunking;
+@property (strong, nonatomic) NSNumber *isInterestingWithAlternateJunkingNumber; // @synthesize isInterestingWithAlternateJunkingNumber=_isInterestingWithAlternateJunkingNumber;
 @property (readonly, nonatomic) BOOL isSmartInteresting;
 @property (strong, nonatomic) NSNumber *isSmartInterestingNumber; // @synthesize isSmartInterestingNumber=_isSmartInterestingNumber;
 @property (readonly, nonatomic) NSDate *localEndDate;
 @property (readonly, nonatomic) NSDate *localStartDate;
 @property (strong, nonatomic) PGManager *manager; // @synthesize manager=_manager;
+@property (readonly, nonatomic) unsigned long long numberOfAssetsInExtendedCuration;
 @property (readonly, nonatomic) unsigned long long numberOfItems;
 @property (readonly, nonatomic) unsigned long long numberOfItemsWithPersons;
 @property (readonly, nonatomic) unsigned long long numberOfRegularGemItems;
 @property (readonly, nonatomic) unsigned long long numberOfShinyGemItems;
+@property (readonly, nonatomic) double scenesProcessedRatio;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long totalNumberOfPersons;
 @property (readonly, nonatomic) NSDate *universalEndDate;

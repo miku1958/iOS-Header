@@ -40,7 +40,7 @@
 @property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
 @property (readonly) Class superclass;
 
-+ (id)_panoramasAlbumPredicate;
++ (id)_predicateForAssetSubtype:(short)arg1;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
 + (BOOL)contextShouldIgnoreChangesForALAssetsGroupFilterPredicate;
@@ -58,6 +58,7 @@
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (void)batchFetchAssets:(id)arg1;
+- (BOOL)canPerformDeleteOperation;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countForAssetsOfKind:(short)arg1;

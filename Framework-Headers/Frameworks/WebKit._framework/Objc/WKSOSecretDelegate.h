@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface WKSOSecretDelegate : NSObject <WKNavigationDelegate, WKUIDelegate>
 {
-    struct WeakPtr<WebKit::PopUpSOAuthorizationSession> _session;
+    struct WeakPtr<WebKit::PopUpSOAuthorizationSession, WTF::EmptyCounter> _session;
     BOOL _isFirstNavigation;
 }
 

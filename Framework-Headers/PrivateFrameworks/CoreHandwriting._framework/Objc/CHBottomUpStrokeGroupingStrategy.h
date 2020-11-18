@@ -6,7 +6,7 @@
 
 #import <CoreHandwriting/CHStrokeGroupingStrategy.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface CHBottomUpStrokeGroupingStrategy : CHStrokeGroupingStrategy
 {
@@ -29,9 +29,11 @@
     BOOL _shouldAdjustDeviationOfSmallGroups;
     BOOL _shouldCoalesceLastSubstrokes;
     BOOL _isInlineContinuousMode;
+    NSArray *_textInputTargets;
 }
 
 @property (readonly, nonatomic) BOOL isInlineContinuousMode; // @synthesize isInlineContinuousMode=_isInlineContinuousMode;
+@property (readonly, strong, nonatomic) NSArray *textInputTargets; // @synthesize textInputTargets=_textInputTargets;
 
 + (vector_ea45b3ba)_boundingBoxesOfStrokesInGroup:(id)arg1 rotatedAroundPoint:(struct CGPoint)arg2 byAngle:(double)arg3;
 - (void)_applyDefaultGroupingParameters;
@@ -52,7 +54,7 @@
 - (struct CGVector)clippedWritingOrientation:(struct CGVector)arg1;
 - (long long)compareDistanceInWritingSequenceOfStroke:(id)arg1 andStroke:(id)arg2 toReferenceStroke:(id)arg3;
 - (void)dealloc;
-- (void)estimateWritingDirectionAndSortSubstrokesAccordingly:(id)arg1 averageWritingOrientation:(struct CGVector *)arg2 averageStrokeDeviation:(struct CGVector *)arg3;
+- (void)estimateWritingDirectionAndSortSubstrokesAccordingly:(id *)arg1 averageWritingOrientation:(struct CGVector *)arg2 averageStrokeDeviation:(struct CGVector *)arg3;
 - (vector_2e7754b6)flippedCenters:(const vector_2e7754b6 *)arg1 ofSubstrokes:(id)arg2 maxStrokesGap:(long long)arg3 begnning:(BOOL)arg4;
 - (void)getMergingEndOfLineCost:(double *)arg1 mergingEndOfLineStroke:(id *)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;
 - (void)getMergingMiddleOfLineCost:(double *)arg1 mergingMiddleOfLineStroke:(id *)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;

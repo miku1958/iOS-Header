@@ -13,6 +13,8 @@
 @interface DEManifestSync : NSObject <NSURLSessionDownloadDelegate>
 {
     BOOL _syncInForeground;
+    BOOL _checkOverlay;
+    BOOL _cleanStorage;
     BOOL _downloadFailure;
     BOOL _success;
     DEManifest *_manifest;
@@ -22,6 +24,8 @@
     CDUnknownBlockType _postSyncBlock;
 }
 
+@property (nonatomic) BOOL checkOverlay; // @synthesize checkOverlay=_checkOverlay;
+@property (nonatomic) BOOL cleanStorage; // @synthesize cleanStorage=_cleanStorage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL downloadFailure; // @synthesize downloadFailure=_downloadFailure;
@@ -41,12 +45,15 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
 - (void)backgroundSync;
+- (void)checkOverlay:(id)arg1 overlayChecks:(id)arg2 workArray:(id)arg3 postFileBlock:(CDUnknownBlockType)arg4;
 - (void)clean;
+- (void)cleanStorage:(id)arg1 removes:(id)arg2 workArray:(id)arg3 postFileBlock:(CDUnknownBlockType)arg4;
 - (void)cleanupURLSession;
+- (void)directoryClean:(CDUnknownBlockType)arg1;
+- (void)directorySync:(CDUnknownBlockType)arg1;
 - (void)doIfLatest:(CDUnknownBlockType)arg1 inBackground:(BOOL)arg2 elseDo:(CDUnknownBlockType)arg3;
 - (void)handlePostSyncBlock;
 - (id)init;
-- (id)initWithManifest:(id)arg1 updater:(id)arg2;
 - (id)initWithManifest:(id)arg1 updater:(id)arg2 syncInForeground:(BOOL)arg3;
 - (BOOL)isLatest;
 - (void)sync;

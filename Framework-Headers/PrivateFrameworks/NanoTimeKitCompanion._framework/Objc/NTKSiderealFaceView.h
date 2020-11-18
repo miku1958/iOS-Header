@@ -7,21 +7,21 @@
 #import <NanoTimeKitCompanion/NTKFaceView.h>
 
 #import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
-#import <NanoTimeKitCompanion/NTKSiderealDataSourceDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSiderealDataSourceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSCalendar, NSDateFormatter, NSNumber, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealTimeView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
+@class CALayer, CAShapeLayer, CLKClockTimerToken, NSDateFormatter, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealData, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealTimeView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
 
-@interface NTKSiderealFaceView : NTKFaceView <NTKTimeView, NTKSiderealDataSourceDelegate, CLKMonochromeFilterProvider>
+@interface NTKSiderealFaceView : NTKFaceView <NTKTimeView, NTKSiderealDataSourceObserver, CLKMonochromeFilterProvider>
 {
     long long _previousDataMode;
-    NSCalendar *_calendar;
     NTKWhistlerAnalogFaceViewComplicationFactory *_faceViewComplicationFactory;
     BOOL _isHandlingHardwareEvents;
     NSTimer *_wheelDelayTimer;
     NSTimer *_buttonPressTimer;
     NTKSiderealDataSource *_dataSource;
-    NSNumber *_clockTimerToken;
+    NTKSiderealData *_currentData;
+    CLKClockTimerToken *_clockTimerToken;
     double _currentSolarDayProgress;
     double _interactionProgress;
     double _lastTestedWaypointProgress;
@@ -39,7 +39,10 @@
     unsigned long long _transitionState;
     double _breathScaleModifier;
     double _rubberBandScaleModifier;
-    BOOL _disableRendering;
+    BOOL _sunsetFilterEnabled;
+    float _sunsetFilterRampUpStartProgress;
+    float _sunsetFilterRampDownStartProgress;
+    BOOL _useXR;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,6 +51,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_prewarmSharedData;
 - (void).cxx_destruct;
 - (void)_animateSolarDayFromProgress:(double)arg1 toProgress:(double)arg2 minDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -76,7 +80,6 @@
 - (double)_dialAlphaForEditMode:(long long)arg1;
 - (id)_dialViewImageRef;
 - (void)_disableCrown;
-- (double)_distanceBetweenAngleA:(double)arg1 angleB:(double)arg2;
 - (void)_enableCrown;
 - (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)_faceDisplayTime;
@@ -88,7 +91,6 @@
 - (id)_innerComplicationColors;
 - (void)_interpolateFromViewMode:(unsigned long long)arg1 toViewMode:(unsigned long long)arg2 progress:(double)arg3;
 - (BOOL)_isDayAnimationRunning;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -96,6 +98,7 @@
 - (id)_keylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadAuxiliaryDialLabelsIfNeeded;
 - (void)_loadDial;
 - (void)_loadLayoutRules;
@@ -118,7 +121,6 @@
 - (void)_setSolarDayProgress:(double)arg1;
 - (void)_setViewMode:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_setViewMode:(unsigned long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_significantTimeChanged;
 - (double)_solarDayProgressForCurrentTime;
 - (void)_startClockUpdates;
 - (void)_stopClockUpdates;
@@ -131,7 +133,6 @@
 - (double)_timeViewAlphaForEditMode:(long long)arg1;
 - (struct CGRect)_timeViewKeylineFrameForEditing;
 - (struct CGAffineTransform)_timeViewScaleTransform;
-- (void)_timeZoneChanged:(id)arg1;
 - (void)_unloadDial;
 - (void)_unloadSnapshotContentViews;
 - (void)_unloadTimeView;
@@ -140,6 +141,7 @@
 - (void)_updateLocale;
 - (void)_updateSolarOrbitGlowPath:(double)arg1;
 - (void)_updateStatusBarVisibility;
+- (void)_updateSunsetFilter;
 - (void)_updateTimeLabelsWithReferenceDate:(id)arg1 overrideDate:(id)arg2;
 - (void)_updateTimeScrubbingContent:(double)arg1;
 - (void)_updateTimeViewOrbitWithSolarDayProgress:(double)arg1;
@@ -150,7 +152,7 @@
 - (void)_wheelDelayTimerFired;
 - (id)closestWaypointForSolarDayProgress:(double)arg1 range:(double)arg2;
 - (id)colorForView:(id)arg1 accented:(BOOL)arg2;
-- (void)dataSourceDidUpdateSolarData;
+- (void)dataSourceDidUpdateSolarData:(id)arg1;
 - (void)dealloc;
 - (id)filterForView:(id)arg1 style:(long long)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
@@ -161,8 +163,8 @@
 - (struct CGImage *)newImageRefFromView:(id)arg1;
 - (struct CGPath *)newTimeViewPathForDarkeningView;
 - (void)performScrollTestNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)screenDidTurnOff;
-- (void)screenWillTurnOn;
+- (void)screenDidTurnOffAnimated:(BOOL)arg1;
+- (void)screenWillTurnOnAnimated:(BOOL)arg1;
 - (void)setDataMode:(long long)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setTimeOffset:(double)arg1;

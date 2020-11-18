@@ -20,6 +20,7 @@
 
 + (id)dayOfWeek:(long long)arg1;
 + (id)dayOfWeek:(long long)arg1 weekNumber:(long long)arg2;
++ (long long)icsWeekDayFromDayOfTheWeek:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

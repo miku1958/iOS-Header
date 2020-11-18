@@ -10,6 +10,7 @@
 
 @class MPMediaLibraryEntityTranslationContext, MPModelLibraryRequest, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryModelSectionedCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     MPMediaLibraryEntityTranslationContext *_itemTranslationContext;

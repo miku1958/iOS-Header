@@ -7,18 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <VoiceShortcuts/VCVoiceShortcutManagerXPCInterface-Protocol.h>
-#import <VoiceShortcuts/WFOutOfProcessWorkflowControllerDelegate-Protocol.h>
 
-@class NSSet, NSString, VCAccessSpecifier, VCCoreDuetListener, VCVoiceShortcutManager, WFOutOfProcessWorkflowController;
+@class NSSet, NSString, VCAccessSpecifier, VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCVoiceShortcutManager, WFShareSheetWorkflowProvider, WFWorkflowRunCoordinator;
 
-@interface VCVoiceShortcutManagerAccessWrapper : NSObject <WFOutOfProcessWorkflowControllerDelegate, VCVoiceShortcutManagerXPCInterface>
+@interface VCVoiceShortcutManagerAccessWrapper : NSObject <VCVoiceShortcutManagerXPCInterface>
 {
     VCAccessSpecifier *_accessSpecifier;
     VCVoiceShortcutManager *_voiceShortcutManager;
     VCCoreDuetListener *_coreDuetListener;
+    WFShareSheetWorkflowProvider *_shareSheetProvider;
     NSSet *_syncDataHandlers;
-    WFOutOfProcessWorkflowController *_outOfProcessWorkflowController;
-    CDUnknownBlockType _runShortcutCompletionHandler;
+    VCCKShortcutSyncCoordinator *_syncCoordinator;
+    WFWorkflowRunCoordinator *_runCoordinator;
 }
 
 @property (readonly, copy, nonatomic) VCAccessSpecifier *accessSpecifier; // @synthesize accessSpecifier=_accessSpecifier;
@@ -26,47 +26,64 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) WFOutOfProcessWorkflowController *outOfProcessWorkflowController; // @synthesize outOfProcessWorkflowController=_outOfProcessWorkflowController;
-@property (copy, nonatomic) CDUnknownBlockType runShortcutCompletionHandler; // @synthesize runShortcutCompletionHandler=_runShortcutCompletionHandler;
+@property (readonly, nonatomic) WFWorkflowRunCoordinator *runCoordinator; // @synthesize runCoordinator=_runCoordinator;
+@property (readonly, nonatomic) WFShareSheetWorkflowProvider *shareSheetProvider; // @synthesize shareSheetProvider=_shareSheetProvider;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) VCCKShortcutSyncCoordinator *syncCoordinator; // @synthesize syncCoordinator=_syncCoordinator;
 @property (readonly, copy, nonatomic) NSSet *syncDataHandlers; // @synthesize syncDataHandlers=_syncDataHandlers;
 @property (readonly, nonatomic) VCVoiceShortcutManager *voiceShortcutManager; // @synthesize voiceShortcutManager=_voiceShortcutManager;
 
 - (void).cxx_destruct;
+- (void)addDefaultShortcutsIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addVoiceShortcut:(id)arg1 phrase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkTriggerStateWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkTriggerStateWithKeyPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)createShortcutWithRecordData:(id)arg1 name:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)createSleepWorkflow:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteSleepWorkflowWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)deleteVoiceShortcutWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteVoiceShortcutWithIdentifier:(id)arg1 name:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)describeSyncStateIncludingDeleted:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissPresentedContentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)drawGlyphs:(id)arg1 withBackgroundColorValues:(id)arg2 intoContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)enqueueDialogRequest:(id)arg1 runningContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fireTriggerWithIdentifier:(id)arg1 force:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generateSingleUseTokenForWorkflowIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAccessibilityWorkflowWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAccessibilityWorkflowsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getConfiguredTriggerDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getFirstUnsortedWorkflowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getNumberOfVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getResultsForWorkflowQuery:(id)arg1 resultClassName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getShareSheetWorkflowReferencesForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSiriPodcastsDatabaseURLWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getSleepActionSuggestionsForAllAppsFilteringBySleep:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getSleepActionSuggestionsForAllAppsWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(id)arg1 shouldFilterBySleep:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getValueForDescriptor:(id)arg1 resultClassName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutWithPhrase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)hasRunEventsInTheLast5DaysWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithVoiceShortcutManager:(id)arg1 coreDuetListener:(id)arg2 accessSpecifier:(id)arg3 syncDataHandlers:(id)arg4;
+- (id)initWithVoiceShortcutManager:(id)arg1 coreDuetListener:(id)arg2 accessSpecifier:(id)arg3 syncCoordinator:(id)arg4 syncDataHandlers:(id)arg5 runCoordinator:(id)arg6;
 - (void)obliterateShortcuts:(CDUnknownBlockType)arg1;
-- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(BOOL)arg3;
 - (void)refreshTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestDataMigration:(CDUnknownBlockType)arg1;
 - (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)runShortcutWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)runShortcutWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resetDefaultShortcutFlagsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resumeWorkflowFromContext:(id)arg1 presentationMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)runWorkflowWithRequest:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendAceCommandDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setInteger:(long long)arg1 forKey:(id)arg2 inDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2;
-- (void)startRunningWorkflow:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stopRunningWorkflowWithRunningContext:(id)arg1;
 - (void)unregisterTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updateShortcutsVocabularyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 shortcut:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)validateVoiceShortcutPhrases:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

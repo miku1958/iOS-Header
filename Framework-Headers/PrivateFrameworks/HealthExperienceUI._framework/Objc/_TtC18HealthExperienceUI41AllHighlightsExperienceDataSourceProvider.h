@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *store;
     MISSING_TYPE *keyword;
+    MISSING_TYPE *healthStore;
 }
 
 @end

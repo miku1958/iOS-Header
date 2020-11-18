@@ -5,6 +5,6 @@
 //
 
 @protocol TSCHDataFormatterPersistableStyleObject
-- (int)formatType;
+- (unsigned int)formatType;
 @end
 

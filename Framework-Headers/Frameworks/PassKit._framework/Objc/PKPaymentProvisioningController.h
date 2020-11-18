@@ -10,8 +10,8 @@
 #import <PassKitCore/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitCore/PKPaymentWebServiceDelegate-Protocol.h>
 
-@class CLLocationManager, NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentService, PKPaymentSetupMoreInfoItem, PKPaymentSetupProductModel, PKPaymentWebService;
-@protocol OS_dispatch_source;
+@class CLLocationManager, NSArray, NSExtension, NSHashTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentService, PKPaymentSetupMoreInfoItem, PKPaymentSetupProductModel, PKPaymentWebService;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentServiceDelegate, PKPaymentWebServiceDelegate>
 {
@@ -24,7 +24,7 @@
     NSString *_provisioningNonce;
     PKPaymentCredential *_currentCredential;
     NSHashTable *_delegates;
-    NSLock *_delegateLock;
+    struct os_unfair_lock_s _delegatesLock;
     NSSet *_supportedFeatureIdentifierStrings;
     NSSet *_supportedFeatureIdentifierStringsForAccountProvisioning;
     unsigned long long _targetDeviceSupportsTypeF;
@@ -35,6 +35,7 @@
     PKPaymentService *_paymentService;
     unsigned long long _backgroundTaskIdentifier;
     long long _provisioningStatusCount;
+    NSObject<OS_dispatch_queue> *_updateQueue;
     BOOL _expressModeSetupOptional;
     NSString *_productIdentifier;
     NSString *_referrerIdentifier;
@@ -42,6 +43,8 @@
     long long _state;
     NSString *_localizedProgressDescription;
     NSArray *_purchaseCredentials;
+    NSExtension *_provisioningExtension;
+    NSArray *_provisioningExtensionCredentials;
     PKPaymentProvisioningControllerCredentialQueue *_credentialProvisioningQueue;
     PKPaymentSetupProductModel *_paymentSetupProductModel;
     PKPaymentRequirementsResponse *_requirementsResponse;
@@ -74,6 +77,8 @@
 @property (readonly, nonatomic) PKPaymentSetupProductModel *paymentSetupProductModel; // @synthesize paymentSetupProductModel=_paymentSetupProductModel;
 @property (readonly, copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, nonatomic) PKPaymentPass *provisionedPass; // @synthesize provisionedPass=_provisionedPass;
+@property (readonly, nonatomic) NSExtension *provisioningExtension; // @synthesize provisioningExtension=_provisioningExtension;
+@property (readonly, copy, nonatomic) NSArray *provisioningExtensionCredentials; // @synthesize provisioningExtensionCredentials=_provisioningExtensionCredentials;
 @property (readonly, nonatomic) PKPaymentProvisioningResponse *provisioningResponse; // @synthesize provisioningResponse=_provisioningResponse;
 @property (readonly, copy, nonatomic) NSArray *purchaseCredentials; // @synthesize purchaseCredentials=_purchaseCredentials;
 @property (copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
@@ -98,7 +103,7 @@
 - (void)_endRequiringUpgradedPasscodeIfNecessary;
 - (BOOL)_featureApplicationInValidStateToPresent:(id)arg1;
 - (id)_fetchOrCreateProductsForIdentifier:(unsigned long long)arg1;
-- (id)_filterPaymentSetupProducts:(id)arg1;
+- (id)_filterPaymentSetupProducts:(id)arg1 isCurrentUserUnder13:(BOOL)arg2;
 - (void)_handleProvisioningError:(id)arg1 forRequest:(id)arg2;
 - (BOOL)_hasSetupConfiguration;
 - (void)_informDelegatesOfPaymentPassUpdateOnCredential:(id)arg1;
@@ -158,6 +163,7 @@
 - (void)performDeviceCheckInIfNeeded:(CDUnknownBlockType)arg1;
 - (void)preflightPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
+- (void)provisioningExtensionProductsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)provisioningTracker;
 - (BOOL)provisioningUserInterfaceIsVisible;
 - (void)registerDevice:(CDUnknownBlockType)arg1;
@@ -173,6 +179,8 @@
 - (void)resetForNewProvisioning;
 - (void)resolveAmbiguousRequirementsWithProductIdentifier:(id)arg1;
 - (void)resolveProvisioningForCredential:(id)arg1;
+- (void)resolveRequirementsForIssuerProvisioningExtensionCredential:(id)arg1;
+- (void)resolveRequirementsForShareableCredential:(id)arg1;
 - (void)resolveRequirementsUsingAlreadyProvisionedRemoteCredential:(id)arg1;
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 - (void)resolveRequirementsUsingProvisioningMethodMetadata:(id)arg1;

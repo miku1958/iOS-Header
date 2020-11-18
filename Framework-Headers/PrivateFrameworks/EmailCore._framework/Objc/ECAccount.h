@@ -9,7 +9,7 @@
 #import <EmailCore/EFLoggable-Protocol.h>
 #import <EmailCore/EFPubliclyDescribable-Protocol.h>
 
-@class ACAccount, ACAccountCredential, ACAccountStore, NSArray, NSDictionary, NSString;
+@class ACAccount, ACAccountCredential, ACAccountStore, EFLazyCache, NSArray, NSDictionary, NSString;
 
 @interface ECAccount : NSObject <EFLoggable, EFPubliclyDescribable>
 {
@@ -19,6 +19,7 @@
     NSString *_accountDirectoryTildeAbbreviatedPath;
     ACAccount *_systemAccount;
     NSDictionary *_properties;
+    EFLazyCache *_cache;
 }
 
 @property (readonly, copy, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL allowInsecureAuthentication;
 @property (copy, nonatomic) NSString *archiveMailboxName;
 @property (copy, nonatomic) NSString *authenticationScheme;
+@property (readonly, nonatomic) EFLazyCache *cache; // @synthesize cache=_cache;
 @property (nonatomic) BOOL configureDynamically;
 @property (readonly, copy, nonatomic) ACAccountCredential *credendtial;
 @property (readonly, copy, nonatomic) NSDictionary *dataclassProperties;
@@ -64,7 +66,7 @@
 @property (readonly, copy, nonatomic) NSArray *standardPorts;
 @property (readonly, copy, nonatomic) NSArray *standardSSLPorts;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) ACAccount *systemAccount; // @synthesize systemAccount=_systemAccount;
+@property (strong, nonatomic) ACAccount *systemAccount; // @synthesize systemAccount=_systemAccount;
 @property (copy, nonatomic) NSString *toDosMailboxName;
 @property (copy, nonatomic) NSString *trashMailboxName;
 @property (readonly, copy, nonatomic) NSString *username;
@@ -74,6 +76,9 @@
 + (id)standardPorts;
 + (id)standardSSLPorts;
 - (void).cxx_destruct;
+- (void)_accountStoreDidChange:(id)arg1;
+- (BOOL)_cachedEnabled;
+- (id)_cachedParentAccount;
 - (id)_hostnameFromParentAccount:(id)arg1;
 - (void)clearSSLIsDirect;
 - (void)clearUsesSSL;

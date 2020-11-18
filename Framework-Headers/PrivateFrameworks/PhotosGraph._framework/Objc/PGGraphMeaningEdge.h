@@ -4,17 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphPropertylessEdge.h>
 
 @class NSString;
 
-@interface PGGraphMeaningEdge : PGGraphEdge
+@interface PGGraphMeaningEdge : PGGraphPropertylessEdge
 {
+    float _weight;
 }
 
-@property (readonly, nonatomic) BOOL isReliable;
-@property (readonly, nonatomic) NSString *meaningLabel;
+@property (readonly) BOOL isReliable;
+@property (readonly) NSString *meaningLabel;
+@property (nonatomic) float weight; // @synthesize weight=_weight;
 
++ (id)filter;
+- (unsigned short)domain;
+- (id)edgeDescription;
+- (id)initFromMomentNode:(id)arg1 toMeaningNode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)label;
 
 @end
 

@@ -44,6 +44,7 @@
 - (void)showProgressBarWithIndeterminateProgress:(BOOL)arg1 percentComplete:(double)arg2;
 - (void)showUserMessageWithString:(id)arg1 showActionButton:(BOOL)arg2 withActionButtonLabel:(id)arg3;
 - (void)updateWithCloudKitProgress:(id)arg1;
+- (void)updateWithCloudKitProgress:(id)arg1 forceShow:(BOOL)arg2;
 - (void)viewDidLayoutSubviews;
 
 @end

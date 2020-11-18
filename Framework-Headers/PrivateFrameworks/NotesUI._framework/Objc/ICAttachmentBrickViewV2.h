@@ -14,6 +14,7 @@
 {
     BOOL _forceDefaultBrickSize;
     BOOL _forManualRendering;
+    BOOL _selected;
     BOOL _fullHeightText;
     BOOL _showAsFileIcon;
     BOOL _frostedViewActive;
@@ -82,6 +83,7 @@
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (nonatomic) BOOL layerIsInvertedForAXInvertColors; // @synthesize layerIsInvertedForAXInvertColors=_layerIsInvertedForAXInvertColors;
 @property (weak, nonatomic) ICSearchResult *searchResult; // @synthesize searchResult=_searchResult;
+@property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (nonatomic) BOOL showAsFileIcon; // @synthesize showAsFileIcon=_showAsFileIcon;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) ICAttachmentBrickTextViewV2 *textView; // @synthesize textView=_textView;

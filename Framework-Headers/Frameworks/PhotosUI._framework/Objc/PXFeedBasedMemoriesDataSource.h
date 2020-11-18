@@ -21,6 +21,7 @@
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)sectionedObjectReferenceForMemoryUUID:(id)arg1;
 
 @end
 

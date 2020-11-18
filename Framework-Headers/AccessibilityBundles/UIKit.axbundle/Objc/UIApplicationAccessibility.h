@@ -24,6 +24,7 @@
 - (int)_accessibilityApplicationForPosition:(struct CGPoint)arg1;
 - (int)_accessibilityApplicationInterfaceOrientation;
 - (id)_accessibilityApplicationSemanticContextWithViewController:(id)arg1;
+- (id)_accessibilityApplicationWindowFramesAndIds;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
 - (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityBeginMonitoringIdleRunLoop;
@@ -59,10 +60,10 @@
 - (double)_accessibilityLastDictationMagicTapTime;
 - (id)_accessibilityLastElement;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityMLProxiedElements;
 - (unsigned int)_accessibilityMachPort;
 - (id)_accessibilityMainWindow;
 - (id)_accessibilityMakeUIPressInfoWithType:(long long)arg1 Phase:(long long)arg2 timestamp:(double)arg3 contextID:(unsigned int)arg4;
-- (double)_accessibilityMaximumAllowedOutOfBoundsPercent;
 - (BOOL)_accessibilityMediaFastForward;
 - (BOOL)_accessibilityMediaNextTrack;
 - (BOOL)_accessibilityMediaPause;
@@ -90,6 +91,7 @@
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityResponderElement:(BOOL)arg1;
 - (id)_accessibilityResponderElementForFocus;
+- (BOOL)_accessibilitySafeMoveInDirection:(unsigned long long)arg1 withSearchInfo:(id)arg2;
 - (id)_accessibilitySemanticContext;
 - (void)_accessibilitySetAllowsNotificationsDuringSuspension:(BOOL)arg1;
 - (void)_accessibilitySetLastMediaRemoteCommand:(unsigned int)arg1;
@@ -110,10 +112,11 @@
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityValidateResponderForFocus:(id)arg1;
 - (id)_accessibilityValidatedResponderForExistingGoodResponder:(id)arg1 forFocus:(BOOL)arg2;
+- (id)_accessibilityWindowSections;
 - (id)_accessibilityWindows;
 - (id)_accessibilityWindowsIgnoringWindowsWithHiddenElements:(BOOL)arg1;
+- (id)_axActiveEmojiSearchField;
 - (id)_axAllSubviews;
-- (BOOL)_axApplicationIsWidgetExtension;
 - (id)_axAuditCheckDynamicTextSupport:(BOOL)arg1 andClippingIssues:(BOOL)arg2 spinRunloop:(BOOL)arg3;
 - (id)_axSubviews;
 - (id)_findContainerAccessibleElement:(id)arg1 first:(BOOL)arg2 focus:(BOOL)arg3 allowScrolling:(BOOL)arg4;

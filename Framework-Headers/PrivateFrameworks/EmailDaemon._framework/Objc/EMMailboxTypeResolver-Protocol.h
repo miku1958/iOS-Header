@@ -9,6 +9,9 @@
 @class EMObjectID, NSSet;
 
 @protocol EMMailboxTypeResolver <NSObject>
+
+@property (readonly, nonatomic) NSSet *allMailboxObjectIDs;
+
 - (NSSet *)mailboxObjectIDsForMailboxType:(long long)arg1;
 - (long long)mailboxTypeForMailboxObjectID:(EMObjectID *)arg1;
 @end

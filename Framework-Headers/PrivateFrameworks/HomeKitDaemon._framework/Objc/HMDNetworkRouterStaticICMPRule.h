@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class HMDNetworkRouterICMPTypeList, HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterRuleDirection, NSString;
 
-@interface HMDNetworkRouterStaticICMPRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterStaticICMPRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;

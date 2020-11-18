@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleAccount/AARequest.h>
+#import <AppleAccount/AAGenericTermsUIRequest.h>
 
-@interface AAiCloudTermsStringRequest : AARequest
+@interface AAiCloudTermsStringRequest : AAGenericTermsUIRequest
 {
 }
 
 + (Class)responseClass;
-- (id)urlRequest;
-- (id)urlString;
+- (id)initWithAccount:(id)arg1;
+- (id)initWithAccount:(id)arg1 preferPassword:(BOOL)arg2;
 
 @end
 

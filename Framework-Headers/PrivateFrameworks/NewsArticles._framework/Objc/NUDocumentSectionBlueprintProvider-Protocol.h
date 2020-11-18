@@ -6,9 +6,11 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
+@class FCObservable;
+
 @protocol NUDocumentSectionBlueprintProvider <NSObject>
-- (id)observableContentOverlayBlueprintData;
-- (id)observableFooterBlueprint;
-- (id)observableHeaderBlueprint;
+- (FCObservable *)observableContentOverlayBlueprintData;
+- (FCObservable *)observableFooterBlueprint;
+- (FCObservable *)observableHeaderBlueprint;
 @end
 

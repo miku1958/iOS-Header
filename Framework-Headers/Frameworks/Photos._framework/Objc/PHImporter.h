@@ -52,13 +52,14 @@
 - (void)_importRecord:(id)arg1 createdAlbumIdentifiers:(id)arg2 createdFolderIdentifiers:(id)arg3;
 - (id)_recordsToImportWithCount:(unsigned long long)arg1;
 - (void)addDescriptionPropertiesFromImportAsset:(id)arg1 toCreationRequest:(id)arg2;
+- (void)addLibraryPropertiesFromImportAssetBundleAsset:(id)arg1 toCreationRequest:(id)arg2;
 - (void)addRecordToResults:(id)arg1;
 - (id)beginImport:(id)arg1;
 - (void)cancellationHandler;
 - (id)createAlbumForPath:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
 - (id)createFolderForPath:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
 - (void)downloadNextAssetInRecord:(id)arg1 toURL:(id)arg2 subRecordEnumerator:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)ensureContainersExistForAlbumPath:(id)arg1 forAsset:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)ensureContainersExistForAlbumPath:(id)arg1 forAsset:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)finishImport;
 - (id)folderChangeRequestForFolder:(id)arg1;
 - (id)getDestinationUrlForImportAsset:(id)arg1;

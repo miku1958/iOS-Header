@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) PXGadgetDataSource *dataSource;
 @property (readonly, nonatomic) struct UIEdgeInsets insetsForSectionHeaders;
+@property (readonly, nonatomic) BOOL isTogglingSidebarNoRotating;
 
 @end
 

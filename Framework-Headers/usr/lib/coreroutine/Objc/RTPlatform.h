@@ -24,6 +24,7 @@
 - (BOOL)iPhoneDevice;
 - (BOOL)iPhonePlatform;
 - (BOOL)internalInstall;
+- (BOOL)isTinkerPaired;
 - (BOOL)lowEndHardware;
 - (BOOL)macOSPlatform;
 - (BOOL)paired;

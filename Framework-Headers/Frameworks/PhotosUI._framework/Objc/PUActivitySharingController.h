@@ -13,14 +13,15 @@
 #import <PhotosUI/UIActivityViewControllerAirDropDelegate-Protocol.h>
 #import <PhotosUI/UIPresentationControllerDelegatePrivate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PHAsset, PHPerson, PUActivitySharingViewModel, PUActivityViewController, PUCarouselSharingViewController, PXSelectionSnapshot, UIActivityViewController;
+@class NSArray, NSDictionary, NSString, PHAsset, PHPerson, PHResourceLocalAvailabilityRequest, PUActivitySharingViewModel, PUActivityViewController, PUCarouselSharingViewController, PXSelectionSnapshot, UIActivityViewController;
 @protocol PXActivitySharingControllerDelegate, PXActivityViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUActivitySharingController : NSObject <PUActivityViewControllerDelegate, UIActivityViewControllerAirDropDelegate, PUCarouselSharingViewControllerDelegate, UIPresentationControllerDelegatePrivate, PXChangeObserver, PXActivitySharingController>
 {
     BOOL _activityViewControllerWasCreated;
-    BOOL _allowAirPlayActivity;
+    BOOL _allowsAirPlayActivity;
+    BOOL _allowsRemoveFromFeaturedPhotosActivity;
     BOOL _excludeShareActivity;
     id<PXActivitySharingControllerDelegate> _delegate;
     PUActivitySharingViewModel *_viewModel;
@@ -30,13 +31,15 @@ __attribute__((visibility("hidden")))
     NSArray *_activities;
     const struct __CFString *_aggregateKey;
     PUCarouselSharingViewController *_carouselViewController;
+    PHResourceLocalAvailabilityRequest *_resourcesPreheatRequest;
     PUActivityViewController *_internalActivityViewController;
 }
 
 @property (copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property (readonly, nonatomic) UIActivityViewController<PXActivityViewController> *activityViewController;
 @property (nonatomic) const struct __CFString *aggregateKey; // @synthesize aggregateKey=_aggregateKey;
-@property (nonatomic) BOOL allowAirPlayActivity; // @synthesize allowAirPlayActivity=_allowAirPlayActivity;
+@property (nonatomic) BOOL allowsAirPlayActivity; // @synthesize allowsAirPlayActivity=_allowsAirPlayActivity;
+@property (nonatomic) BOOL allowsRemoveFromFeaturedPhotosActivity; // @synthesize allowsRemoveFromFeaturedPhotosActivity=_allowsRemoveFromFeaturedPhotosActivity;
 @property (copy, nonatomic) NSDictionary *assetsFetchResultsByAssetCollection; // @synthesize assetsFetchResultsByAssetCollection=_assetsFetchResultsByAssetCollection;
 @property (strong, nonatomic) PUCarouselSharingViewController *carouselViewController; // @synthesize carouselViewController=_carouselViewController;
 @property (readonly, nonatomic) PHAsset *currentAsset;
@@ -48,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) PUActivityViewController *internalActivityViewController; // @synthesize internalActivityViewController=_internalActivityViewController;
 @property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
+@property (strong, nonatomic) PHResourceLocalAvailabilityRequest *resourcesPreheatRequest; // @synthesize resourcesPreheatRequest=_resourcesPreheatRequest;
 @property (readonly, nonatomic) NSArray *selectedAssets;
 @property (readonly, nonatomic) NSDictionary *selectedAssetsByAssetCollection;
 @property (readonly, nonatomic) PXSelectionSnapshot *selectionSnapshot;
@@ -58,11 +62,15 @@ __attribute__((visibility("hidden")))
 - (void)_activitySharingControllerWillDismissActivityViewController;
 - (void)_activityViewControllerDidCompleteWithActivityType:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
 - (void)_cancel;
+- (void)_cancelPreheatResourcesRequest;
 - (id)_createActivityViewControllerWithActivities:(id)arg1;
 - (void)_createCarouselSharingViewControllerIfNeeded;
+- (void)_handlePreheatRequestCompletionWithSuccess:(BOOL)arg1 cancelled:(BOOL)arg2 error:(id)arg3;
 - (void)_incrementShareCountForSelectedAssets;
+- (void)_preheatResources;
 - (void)_updateActionSheetPresentationStyleIfNeeded;
 - (void)_updateExcludedActivityTypes;
+- (void)_updatePreheatResourcesRequest;
 - (void)_updateSelectedAssetIdentifiers;
 - (void)activityViewControllerDidFinishAirdropTransfer:(id)arg1;
 - (id)activityViewControllerIfAvailable;

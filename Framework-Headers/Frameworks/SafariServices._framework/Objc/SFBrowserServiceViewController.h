@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     _SFWebViewUsageMonitor *_usageMonitor;
     NSDate *_lastHostApplicationSuspendDate;
     WKProcessPool *_processPool;
+    BOOL _usingSharedProcessPool;
     BOOL _canNotifyHostApplicationOfRedirects;
     BOOL _touchEventsShouldStopRedirectNotifications;
     BOOL _isExpectingClientRedirect;
@@ -27,10 +28,12 @@ __attribute__((visibility("hidden")))
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
     BOOL _hostApplicationIsForeground;
+    BOOL _isUsedForAuthentication;
     SFSystemAlert *_webAuthenticationDataSharingConfirmation;
     NSString *_hostApplicationCallbackURLScheme;
 }
 
+@property (nonatomic) BOOL _isUsedForAuthentication; // @synthesize _isUsedForAuthentication;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -54,14 +57,15 @@ __attribute__((visibility("hidden")))
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (BOOL)_notifyInitialLoadDidFinish:(BOOL)arg1;
+- (void)_openCurrentURLInSafari;
 - (unsigned long long)_persona;
 - (void)_recordHostAppIdAndURLForTapToRadar:(id)arg1;
 - (BOOL)_redirectToHostAppWithExpectedCallbackSchemeIfPossible:(id)arg1;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
 - (BOOL)_shouldReloadImmediatelyAfterPageLoadError;
 - (void)_updateRemoteSwipeGestureState;
-- (id)_webDataStoreRootURL;
-- (id)_websiteDataStoreURL;
+- (id)_webDataStoreRootURLForHSTSStorage:(BOOL)arg1;
+- (id)_websiteDataStoreURLForHSTSStorage:(BOOL)arg1;
 - (void)_willAppearInRemoteViewController;
 - (void)browserViewDidReceiveTouchEvent:(id)arg1;
 - (id)bundleIdentifierForProfileInstallation;
@@ -74,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(BOOL)arg2;
 - (void)loadURL:(id)arg1;
-- (void)openCurrentURLInSafari;
+- (void)openCurrentURLInSafariFromPreviewAction;
 - (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)processPool;
 - (id)processPoolConfiguration;
@@ -83,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)setDismissButtonStyle:(long long)arg1;
 - (void)setDisplayMode:(long long)arg1;
 - (void)setIsRunningTransitionAnimation:(BOOL)arg1;
+- (void)setPreferredBarTintColor:(id)arg1 controlTintColor:(id)arg2;
 - (void)startResolveRedirectionForURL:(id)arg1;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

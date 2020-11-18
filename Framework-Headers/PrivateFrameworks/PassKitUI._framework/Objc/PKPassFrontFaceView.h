@@ -38,11 +38,13 @@
 - (id)createExpiredLabel;
 - (void)createHeaderContentViews;
 - (void)dealloc;
+- (id)headerTemplate;
 - (id)init;
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;
 - (void)layoutSubviews;
 - (id)passFaceTemplate;
 - (void)setShowsBarcodeView:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)templateForHeaderBucket;
 - (id)templateForLayoutMode:(long long)arg1;
 - (void)updateValidity;
 

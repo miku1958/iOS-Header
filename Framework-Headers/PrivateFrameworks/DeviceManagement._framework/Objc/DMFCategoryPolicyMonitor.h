@@ -14,8 +14,8 @@
     NSUUID *_identifier;
 }
 
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
+@property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 
 - (void).cxx_destruct;
 - (void)dealloc;

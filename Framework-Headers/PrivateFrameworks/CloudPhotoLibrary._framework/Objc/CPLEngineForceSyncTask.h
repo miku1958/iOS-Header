@@ -8,19 +8,20 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
-@class CPLEngineLibrary, CPLEngineSyncTask, CPLMinglePulledChangesTask, CPLPullFromTransportTask, CPLPushToTransportTask, CPLScopeFilter, CPLSyncSession, NSObject, NSString;
-@protocol CPLEngineForceSyncTaskDelegate, OS_dispatch_queue;
+@class CPLEngineLibrary, CPLEngineSyncTask, CPLScopeFilter, CPLSyncSession, NSDate, NSEnumerator, NSObject, NSString;
+@protocol CPLEngineForceSyncTaskDelegate, OS_dispatch_queue, OS_xpc_object;
 
 @interface CPLEngineForceSyncTask : CPLForceSyncTask <CPLEngineSyncTaskDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _currentTaskLock;
     BOOL _reallyCancelled;
     CPLEngineSyncTask *_currentTask;
-    CPLPushToTransportTask *_pushTask;
-    CPLPullFromTransportTask *_pullTask;
-    CPLMinglePulledChangesTask *_mingleTask;
     CPLSyncSession *_fakeSession;
+    NSEnumerator *_syncTaskEnumerator;
+    BOOL _shouldUpdateScopeList;
     BOOL _bypassForceSyncLimitations;
+    NSDate *_creationDate;
     CPLScopeFilter *_filter;
     CPLEngineLibrary *_engineLibrary;
     id<CPLEngineForceSyncTaskDelegate> _delegate;
@@ -28,25 +29,31 @@
 }
 
 @property (nonatomic) BOOL bypassForceSyncLimitations; // @synthesize bypassForceSyncLimitations=_bypassForceSyncLimitations;
+@property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CPLEngineForceSyncTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property (strong, nonatomic) CPLScopeFilter *filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) BOOL forBackup;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldUpdateScopeList; // @synthesize shouldUpdateScopeList=_shouldUpdateScopeList;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *taskActivity;
 @property (copy, nonatomic) CDUnknownBlockType taskDidFinishWithErrorBlock; // @synthesize taskDidFinishWithErrorBlock=_taskDidFinishWithErrorBlock;
 
 - (void).cxx_destruct;
-- (void)_dispatchMingleTask;
-- (void)_dispatchPullTask;
-- (void)_dispatchPushTask;
+- (id)_currentTask;
+- (void)_dispatchNextSyncTask;
 - (void)_dispatchSyncTask:(id)arg1;
+- (void)_dropCurrentTask;
 - (void)_finishWithError:(id)arg1;
+- (id)_phaseDescription;
 - (void)cancelTask;
 - (id)initWithScopeIdentifiers:(id)arg1 engineLibrary:(id)arg2 filter:(id)arg3 delegate:(id)arg4;
-- (void)launch;
+- (void)launchTask;
 - (void)reallyCancel;
+- (void)reallyLaunch;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
 - (void)task:(id)arg1 didProgress:(float)arg2 userInfo:(id)arg3;
 

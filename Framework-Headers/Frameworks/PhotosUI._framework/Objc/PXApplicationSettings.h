@@ -6,17 +6,22 @@
 
 #import <PhotosUICore/PXSettings.h>
 
+@class NSString;
+
 @interface PXApplicationSettings : PXSettings
 {
-    double _defaultUserInterfaceTimeoutDuration;
+    BOOL _wantsPseudostringsWithSpecialCharacters;
+    double _defaultNavigationTimeoutDuration;
+    NSString *_stringWithSpecialCharacters;
 }
 
-@property (nonatomic) double defaultUserInterfaceTimeoutDuration; // @synthesize defaultUserInterfaceTimeoutDuration=_defaultUserInterfaceTimeoutDuration;
+@property (nonatomic) double defaultNavigationTimeoutDuration; // @synthesize defaultNavigationTimeoutDuration=_defaultNavigationTimeoutDuration;
+@property (copy, nonatomic) NSString *stringWithSpecialCharacters; // @synthesize stringWithSpecialCharacters=_stringWithSpecialCharacters;
+@property (nonatomic) BOOL wantsPseudostringsWithSpecialCharacters; // @synthesize wantsPseudostringsWithSpecialCharacters=_wantsPseudostringsWithSpecialCharacters;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
-+ (id)timeoutPossibleValues;
-+ (id)timeoutTitles;
+- (void).cxx_destruct;
 - (id)parentSettings;
 - (void)setDefaultValues;
 

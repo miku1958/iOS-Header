@@ -11,7 +11,6 @@
 @protocol MFMailWebProcessProxy <NSObject>
 - (void)registerDictionary:(NSDictionary *)arg1 name:(NSString *)arg2;
 - (void)setDictionary:(NSDictionary *)arg1 forWebViewDictionaryWithName:(NSString *)arg2;
-- (void)setMessageContentScheme:(NSString *)arg1;
 - (void)setValuesForKeysWithDictionary:(NSDictionary *)arg1 forWebViewDictionaryWithName:(NSString *)arg2;
 @end
 

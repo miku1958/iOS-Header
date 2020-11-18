@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSPointerArray, TSUIntegerKeyDictionary;
-@protocol TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding, TSTCustomStrokeProviding, TSTTableStrokeProviding;
+@class NSPointerArray, TSTTableInfo, TSUIntegerKeyDictionary;
+@protocol TSTCustomStrokeProviding, TSTTableStrokeProviding;
 
 @interface TSTStrokeExporter : NSObject
 {
     id<TSTTableStrokeProviding> _defaultStrokeProvider;
     id<TSTCustomStrokeProviding> _customStrokeProvider;
-    id<TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> _tableProvider;
+    TSTTableInfo *_tableProvider;
     NSPointerArray *_topRowStrokes;
     NSPointerArray *_bottomRowStrokes;
     NSPointerArray *_leftColumnStrokes;
@@ -29,7 +29,7 @@
 @property (readonly, strong, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
 @property (readonly, strong, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
 @property (strong, nonatomic) TSUIntegerKeyDictionary *rowStrokeExportCache; // @synthesize rowStrokeExportCache=_rowStrokeExportCache;
-@property (readonly, strong, nonatomic) id<TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
+@property (readonly, strong, nonatomic) TSTTableInfo *tableProvider; // @synthesize tableProvider=_tableProvider;
 @property (readonly, strong, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
 
 - (void)dealloc;

@@ -13,14 +13,18 @@
 @interface SGM2MaybeInformationShown : PBCodable <NSCopying>
 {
     int _extracted;
+    unsigned int _extractionModelVersion;
     NSString *_key;
     struct {
         unsigned int extracted:1;
+        unsigned int extractionModelVersion:1;
     } _has;
 }
 
 @property (nonatomic) int extracted; // @synthesize extracted=_extracted;
+@property (nonatomic) unsigned int extractionModelVersion; // @synthesize extractionModelVersion=_extractionModelVersion;
 @property (nonatomic) BOOL hasExtracted;
+@property (nonatomic) BOOL hasExtractionModelVersion;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 

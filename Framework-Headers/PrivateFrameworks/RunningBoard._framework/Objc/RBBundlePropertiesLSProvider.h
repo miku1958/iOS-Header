@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
 @class NSCache, NSString;
 @protocol RBBundlePropertiesLSProviderDelegate;
 
-@interface RBBundlePropertiesLSProvider : NSObject <LSApplicationWorkspaceObserverProtocol, BSDescriptionProviding>
+@interface RBBundlePropertiesLSProvider : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
     NSCache *_propertiesByIdentity;
     id<RBBundlePropertiesLSProviderDelegate> _delegate;
@@ -26,16 +25,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_removeCachedValuesForAppProxies:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)dealloc;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
 - (id)propertiesForIdentity:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

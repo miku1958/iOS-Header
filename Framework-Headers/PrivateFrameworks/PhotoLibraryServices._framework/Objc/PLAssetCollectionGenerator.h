@@ -34,6 +34,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *usedMomentObjectIDs; // @synthesize usedMomentObjectIDs=_usedMomentObjectIDs;
 
++ (id)_createMomentOrUpdateForAssetCluster:(id)arg1 existingMomentDataForAssets:(id)arg2 dataManager:(id)arg3 usedMomentObjectIDs:(id)arg4 debugDateFormatter:(id)arg5;
++ (id)createMomentOrUpdateForAssetCluster:(id)arg1 affectedMoment:(id)arg2 dataManager:(id)arg3;
 - (void).cxx_destruct;
 - (void)_cleanUpMoment:(id)arg1;
 - (id)_createMomentOrUpdateForAssetCluster:(id)arg1 existingMomentDataForAssets:(id)arg2;
@@ -42,6 +44,7 @@
 - (id)_processMomentsCollectionsYearsWithAssets:(id)arg1 affectedMoments:(id)arg2 processMonthsAndYears:(BOOL)arg3;
 - (void)_refreshMonthList:(id)arg1;
 - (void)_refreshYearListWithMoments:(id)arg1;
+- (id)dataManager;
 - (id)initWithDataManager:(id)arg1 frequentLocationManager:(id)arg2 localCreationDateCreator:(id)arg3;
 - (id)libraryClusterer:(id)arg1 createMomentClustersForAssetClusters:(id)arg2 existingMomentDataForAssets:(id)arg3;
 - (id)libraryClusterer:(id)arg1 createMonthListForMoments:(id)arg2 month:(long long)arg3 year:(long long)arg4;

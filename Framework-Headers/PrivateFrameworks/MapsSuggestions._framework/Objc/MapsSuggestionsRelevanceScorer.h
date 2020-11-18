@@ -15,11 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)_confidenceForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3;
-- (void)_confidenceForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3 scorerIndex:(unsigned long long)arg4 group:(id)arg5;
-- (id)_postProcessConfidences;
-- (BOOL)_preProcessNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3;
-- (void)_processScorerConfidences:(id)arg1 names:(id)arg2 addresses:(id)arg3 mapItems:(id)arg4 error:(id)arg5;
 - (void)addScorer:(id)arg1;
 - (id)confidenceForContacts:(id)arg1 addresses:(id)arg2;
 - (id)confidenceForMapItems:(id)arg1;

@@ -21,6 +21,7 @@
     UIBarButtonItem *_flexibleSpace;
     PKPass *_viewingPass;
     UITableView *_tableView;
+    long long _editStyle;
     struct CGSize _imageSizeNeeded;
     id<PKEditGroupViewControllerDelegate> _delegate;
 }
@@ -33,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)_deleteAllPassesInGroup;
 - (void)_deleteButtonPressed;
+- (void)_presentAlertForUpdatedExpressPass:(id)arg1;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2 withPass:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint)arg2 withSuggestedActions:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
@@ -43,7 +45,7 @@
 - (void)group:(id)arg1 didMovePassFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didUpdatePass:(id)arg2 atIndex:(unsigned long long)arg3;
-- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 placeholders:(id)arg3 delegate:(id)arg4;
+- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 style:(long long)arg3 placeholders:(id)arg4 delegate:(id)arg5;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pass;
 - (id)passAtIndexPath:(id)arg1;
@@ -53,6 +55,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)viewControllerForRowAtIndexPath:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

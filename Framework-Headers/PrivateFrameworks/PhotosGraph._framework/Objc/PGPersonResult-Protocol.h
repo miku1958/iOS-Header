@@ -13,7 +13,7 @@
 
 @property (readonly, nonatomic) NSDate *birthdayDate;
 @property (readonly, nonatomic) NSString *contactIdentifier;
-@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *fullName;
 @property (readonly, nonatomic) BOOL isInferredChild;
 @property (readonly, nonatomic) BOOL isVerified;
 @property (readonly, nonatomic) NSString *keywordDescription;

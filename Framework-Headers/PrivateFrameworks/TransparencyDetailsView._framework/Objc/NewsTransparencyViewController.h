@@ -8,12 +8,15 @@
 
 #import <TransparencyDetailsView/WKNavigationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UIActivityIndicatorView, UILabel, UINavigationBar, WKWebView;
+@class NSDictionary, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UINavigationBar, UINavigationItem, WKWebView;
 @protocol NewsTransparencyViewControllerDelegate;
 
 @interface NewsTransparencyViewController : UIViewController <WKNavigationDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
+    UINavigationItem *navBarItem;
+    UIBarButtonItem *leftButton;
+    UIViewController *debugViewController;
     id<NewsTransparencyViewControllerDelegate> _delegate;
     BOOL _isiPad;
     BOOL _isClientTodayWidget;
@@ -45,18 +48,19 @@
 - (void)_closeViewController:(id)arg1;
 - (void)_commonInit;
 - (void)_hideErrorMessage;
+- (void)_openDebugView:(id)arg1;
 - (void)_showErrorMessage:(id)arg1;
-- (id)bundleForTransparencyDetailsViewFramework;
+- (void)debugDetailsViewControllerReady:(id)arg1;
+- (void)displayDebugButtonWaitingIndicator;
 - (void)errorDelegate;
 - (id)initWithNewsTransparencyDetailsDictionary:(id)arg1;
 - (BOOL)isDeviceLocked;
 - (void)loadWebView;
-- (id)normalizeChineseLanguage:(id)arg1;
 - (void)presentViewDelegate;
 - (void)requestUserPassCodeUnlockUIWithBlock:(CDUnknownBlockType)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;

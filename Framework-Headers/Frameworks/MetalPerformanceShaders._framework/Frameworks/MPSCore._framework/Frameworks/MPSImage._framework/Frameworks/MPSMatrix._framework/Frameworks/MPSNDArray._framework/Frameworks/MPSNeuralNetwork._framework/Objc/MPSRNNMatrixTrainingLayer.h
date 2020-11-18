@@ -23,6 +23,7 @@
     BOOL _trainingStateIsTemporary;
     BOOL _storeAllIntermediateStates;
     BOOL _accumulateWeightGradients;
+    BOOL _propagateFullRecurrentRows;
     unsigned long long _inputFeatureChannels;
     unsigned long long _outputFeatureChannels;
 }
@@ -30,11 +31,12 @@
 @property (nonatomic) BOOL accumulateWeightGradients; // @synthesize accumulateWeightGradients=_accumulateWeightGradients;
 @property (readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
+@property (nonatomic) BOOL propagateFullRecurrentRows; // @synthesize propagateFullRecurrentRows=_propagateFullRecurrentRows;
 @property (nonatomic) BOOL recurrentOutputIsTemporary; // @synthesize recurrentOutputIsTemporary=_recurrentOutputIsTemporary;
 @property (nonatomic) BOOL storeAllIntermediateStates; // @synthesize storeAllIntermediateStates=_storeAllIntermediateStates;
 @property (nonatomic) BOOL trainingStateIsTemporary; // @synthesize trainingStateIsTemporary=_trainingStateIsTemporary;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)createTemporaryWeightGradientMatrices:(id)arg1 dataType:(unsigned int)arg2 commandBuffer:(id)arg3;
 - (void)createWeightGradientMatrices:(id)arg1 dataType:(unsigned int)arg2;
@@ -48,6 +50,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 rnnDescriptor:(id)arg2 trainableWeights:(id)arg3;
+- (id)recurrentStateForBatchSize:(unsigned long long)arg1 forGradientPass:(BOOL)arg2;
+- (id)temporaryRecurrentStateForCommandBuffer:(id)arg1 batchSize:(unsigned long long)arg2 forGradientPass:(BOOL)arg3;
 
 @end
 

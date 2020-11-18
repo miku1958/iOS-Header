@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldPositionTitleForMapsTransitionMovingSideways;
     _MKSmallCalloutPassthroughButton *_maskedContainerView;
     UIView *_unmaskedContainerView;
+    CDStruct_f381021a _metrics;
     BOOL _needsPreferredContentSizeUpdate;
     NSLayoutConstraint *_minWidthConstraint;
     NSLayoutConstraint *_maxWidthConstraint;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canDisplayCompleteTitleWhenExpanded;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 metrics:(CDStruct_f381021a)arg2;
 - (void)reset;
 - (void)setCalloutSubtitle:(id)arg1 animated:(BOOL)arg2;
 - (void)setDetailView:(id)arg1 animated:(BOOL)arg2;

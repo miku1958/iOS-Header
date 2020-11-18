@@ -8,11 +8,12 @@
 
 #import <PencilKit/CHStroke-Protocol.h>
 
-@class NSString, PKStroke, PKStrokeProviderSliceIdentifier;
+@class CHEncodedStrokeIdentifier, NSString, PKStroke, PKStrokeProviderSliceIdentifier;
 @protocol CHStrokeIdentifier;
 
 @interface PKStrokeProviderSlice : NSObject <CHStroke>
 {
+    CHEncodedStrokeIdentifier *_encodedStrokeIdentifier;
     PKStrokeProviderSliceIdentifier *_identifier;
     PKStroke *_stroke;
     struct CGRect _bounds;
@@ -21,17 +22,21 @@
 @property (readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CHEncodedStrokeIdentifier *encodedStrokeIdentifier; // @synthesize encodedStrokeIdentifier=_encodedStrokeIdentifier;
 @property (readonly, nonatomic) double endTimestamp;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKStrokeProviderSliceIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) double startTimestamp;
 @property (readonly, nonatomic) PKStroke *stroke; // @synthesize stroke=_stroke;
+@property (readonly, nonatomic) unsigned long long strokeAttributes;
 @property (readonly, strong, nonatomic) id<CHStrokeIdentifier> strokeIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (long long)_firstPointIndex;
 - (struct CGPoint)_interpolatedPointForSplineSegment:(long long)arg1 t:(double)arg2;
 - (double)_interpolatedTimeForSplineSegment:(long long)arg1 t:(double)arg2;
+- (long long)_lastPointIndex;
 - (double)_lengthOfSplineSegment:(unsigned long long)arg1;
 - (struct CGPoint)_splineControlPoint:(long long)arg1;
 - (double)_strokeLength;

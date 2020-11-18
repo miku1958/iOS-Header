@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSData *serializedFileWrapper;
 
 - (void).cxx_destruct;
+- (id)cachedImageSetForType:(long long)arg1 withDisplayProfile:(id)arg2 displayTraits:(id)arg3;
 - (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dataForBundleResource:(id)arg1;
@@ -39,6 +40,7 @@
 - (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (void)noteShared;
+- (id)passLocalizedStringForKey:(id)arg1;
 - (id)remoteAssetManagerForSEIDs:(id)arg1;
 - (BOOL)remoteAssetsDownloadedForSEIDs:(id)arg1;
 - (BOOL)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;

@@ -42,11 +42,12 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateActiveHandles;
 - (void)_invalidateSharedTripWithError:(id)arg1;
 - (void)_restoreLastSession;
-- (void)_sendfinishedToIdentifiers:(id)arg1;
+- (void)_sendFinishedToIdentifiers:(id)arg1;
 - (void)_startNavigationListener;
 - (void)_startingGroupSession;
 - (void)_stopNavigationListener;
 - (void)_updateStorage;
+- (BOOL)_validateNavigationState:(id *)arg1;
 - (void)dealloc;
 - (void)groupSession:(id)arg1 participantDidJoin:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidLeave:(id)arg2;
@@ -61,10 +62,9 @@ __attribute__((visibility("hidden")))
 - (void)navigationListenerStopped:(id)arg1;
 - (void)navigationListenerTrafficUpdated:(id)arg1;
 - (id)rulesForParticipant:(id)arg1;
-- (void)sendMessage:(id)arg1 toParticipant:(id)arg2;
-- (void)startSharingWith:(id)arg1;
-- (void)startSharingWithGroup:(id)arg1;
-- (void)startSharingWithMessages:(id)arg1;
+- (BOOL)startSharingWith:(id)arg1 error:(id *)arg2;
+- (BOOL)startSharingWithGroup:(id)arg1 error:(id *)arg2;
+- (BOOL)startSharingWithMessages:(id)arg1 error:(id *)arg2;
 - (void)stopSharing;
 - (void)stopSharingWith:(id)arg1;
 - (void)stopSharingWithGroup:(id)arg1;

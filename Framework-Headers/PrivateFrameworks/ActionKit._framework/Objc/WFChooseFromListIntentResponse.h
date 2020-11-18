@@ -8,6 +8,7 @@
 
 @class WFChooseFromListItem;
 
+__attribute__((visibility("hidden")))
 @interface WFChooseFromListIntentResponse : INIntentResponse
 {
     long long _code;

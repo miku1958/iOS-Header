@@ -33,6 +33,8 @@
 - (void)_evaluateTriggerClass;
 - (Class)_expectedTriggerClassIncludingAccessibility:(BOOL)arg1;
 - (BOOL)_isAccessibilityRestingUnlockPreferenceEnabled;
+- (id)_liftToWakeController;
+- (void)_setLiftToWakeController:(id)arg1;
 - (id)_unlockTriggerWithClass:(Class)arg1;
 - (void)dealloc;
 - (id)initWithLiftToWakeController:(id)arg1 biometricResource:(id)arg2 lockScreenPrototypeSettings:(id)arg3;

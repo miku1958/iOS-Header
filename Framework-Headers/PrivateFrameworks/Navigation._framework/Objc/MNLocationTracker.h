@@ -38,7 +38,7 @@
 - (void).cxx_destruct;
 - (void)_defaultsDidChange;
 - (id)_matchedLocationForLocation:(id)arg1;
-- (void)_roadFeaturesForFeature:(CDStruct_123780e2 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
+- (void)_roadFeaturesForFeature:(CDStruct_66740237 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
 - (void)_setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)_switchedToStepAtIndex:(unsigned long long)arg1;
 - (void)_updateMatchedLocation:(id)arg1;

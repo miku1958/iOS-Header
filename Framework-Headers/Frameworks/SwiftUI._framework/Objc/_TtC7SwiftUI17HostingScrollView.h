@@ -11,16 +11,26 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI17HostingScrollView : UIScrollView
 {
+    MISSING_TYPE *viewType;
+    MISSING_TYPE *state;
     MISSING_TYPE *host;
+    MISSING_TYPE *responder;
+    MISSING_TYPE *layoutDirection;
+    MISSING_TYPE *ignoreUpdates;
+    MISSING_TYPE *pendingUpdate;
+    MISSING_TYPE *animationTarget;
+    MISSING_TYPE *animationOffset;
     MISSING_TYPE *configuration;
 }
 
 @property (nonatomic) struct CGRect bounds;
-@property (nonatomic) struct CGRect frame;
+@property (nonatomic, readonly) struct UIEdgeInsets safeAreaInsets;
 
 - (void).cxx_destruct;
+- (void)adjustedContentInsetDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 
 @end
 

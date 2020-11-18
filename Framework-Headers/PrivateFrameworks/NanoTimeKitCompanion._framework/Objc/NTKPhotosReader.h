@@ -15,11 +15,11 @@
 {
     NSString *_resourceDirectory;
     id<NTKPhotosReaderDelegate> _delegate;
-    NSString *_assetCollection;
+    NSString *_assetCollectionIdentifier;
     unsigned long long _mutationCount;
 }
 
-@property (strong, nonatomic) NSString *assetCollection; // @synthesize assetCollection=_assetCollection;
+@property (strong, nonatomic) NSString *assetCollectionIdentifier; // @synthesize assetCollectionIdentifier=_assetCollectionIdentifier;
 @property (readonly, nonatomic) unsigned long long count;
 @property (weak, nonatomic) id<NTKPhotosReaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long mutationCount; // @synthesize mutationCount=_mutationCount;

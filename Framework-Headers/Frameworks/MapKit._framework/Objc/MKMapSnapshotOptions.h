@@ -9,7 +9,7 @@
 #import <MapKit/NSCopying-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class MKMapCamera, MKPointOfInterestFilter, NSArray, UITraitCollection, VKRouteContext;
+@class GEOApplicationAuditToken, GEOComposedRoute, MKMapCamera, MKPointOfInterestFilter, NSArray, UITraitCollection, VKRouteContext;
 @protocol VKRouteOverlay;
 
 @interface MKMapSnapshotOptions : NSObject <NSSecureCoding, NSCopying>
@@ -18,19 +18,22 @@
     CDStruct_02837cd9 _mapRect;
     CDStruct_b7cb895d _region;
     unsigned long long _mapType;
-    int _mode;
+    long long _mode;
     BOOL _showsPointLabels;
     BOOL _showsBuildings;
     BOOL _showsNightMode;
     BOOL _showsAppleLogo;
     BOOL _rendersInBackground;
     BOOL _useSnapshotService;
+    BOOL _snapshotServiceSerialPerProcess;
     struct CGSize _size;
     UITraitCollection *_traitCollection;
     struct UIEdgeInsets _edgeInsets;
     unsigned long long _signpostId;
     VKRouteContext *_routeContext;
     id<VKRouteOverlay> _routeOverlay;
+    GEOComposedRoute *_composedRouteForRouteLine;
+    GEOApplicationAuditToken *_auditToken;
     BOOL _usingRect;
     BOOL _showsVenues;
     unsigned char _searchResultsType;
@@ -40,7 +43,9 @@
 }
 
 @property (copy, nonatomic) NSArray *annotationViews; // @synthesize annotationViews=_annotationViews;
+@property (strong, nonatomic, getter=_auditToken, setter=_setAuditToken:) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (copy, nonatomic) MKMapCamera *camera; // @synthesize camera=_camera;
+@property (strong, nonatomic, getter=_composedRouteForRouteLine, setter=_setComposedRouteForRouteLine:) GEOComposedRoute *composedRouteForRouteLine; // @synthesize composedRouteForRouteLine=_composedRouteForRouteLine;
 @property (copy, nonatomic, getter=_customFeatureAnnotations, setter=_setCustomFeatureAnnotations:) NSArray *customFeatureAnnotations; // @synthesize customFeatureAnnotations=_customFeatureAnnotations;
 @property (nonatomic, getter=_edgeInsets, setter=_setEdgeInsets:) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) CDStruct_02837cd9 mapRect; // @synthesize mapRect=_mapRect;
@@ -60,13 +65,14 @@
 @property (nonatomic, getter=_showsVenues, setter=_setShowsVenues:) BOOL showsVenues; // @synthesize showsVenues=_showsVenues;
 @property (nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (nonatomic, getter=_snapshotServiceSerialPerProcess, setter=_setSnapshotServiceSerialPerProcess:) BOOL snapshotServiceSerialPerProcess; // @synthesize snapshotServiceSerialPerProcess=_snapshotServiceSerialPerProcess;
 @property (copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (nonatomic, getter=_useSnapshotService, setter=_setUseSnapshotService:) BOOL useSnapshotService; // @synthesize useSnapshotService=_useSnapshotService;
 @property (readonly, nonatomic) BOOL usingRect; // @synthesize usingRect=_usingRect;
+@property (readonly, nonatomic, getter=_viewportMode) long long viewportMode; // @synthesize viewportMode=_mode;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_updateShouldUseSnapshotService;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

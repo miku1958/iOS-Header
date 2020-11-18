@@ -6,9 +6,12 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNSharingProfileOnboardingPhotoSelectionResult;
+@class CNSharingProfileOnboardingPhotoSelectionResult, CNSharingProfileOnboardingPhotoSelectionViewController;
 
 @protocol CNSharingProfileOnboardingPhotoSelectionViewControllerDelegate <NSObject>
 - (void)photoSelectionViewControllerDidFinishWithResult:(CNSharingProfileOnboardingPhotoSelectionResult *)arg1;
+
+@optional
+- (void)photoSelectionViewControllerDidTapSetupLater:(CNSharingProfileOnboardingPhotoSelectionViewController *)arg1;
 @end
 

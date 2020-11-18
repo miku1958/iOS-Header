@@ -26,12 +26,12 @@
 + (id)typeStrings;
 - (void).cxx_destruct;
 - (struct __SecCertificate *)copyCertificate;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
 - (BOOL)isIdentity;
 - (BOOL)isSigned;
 - (id)persistentResourceID;
+- (id)verboseDescription;
 
 @end
 

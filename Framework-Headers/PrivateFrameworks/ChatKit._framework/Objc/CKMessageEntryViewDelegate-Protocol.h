@@ -25,7 +25,10 @@
 @optional
 - (BOOL)getContainerWidth:(double *)arg1 offset:(double *)arg2;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 shouldShowAppStrip:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)messageEntryViewPopulateNextSentMessage:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewPopulatePreviousSentMessage:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSwipeDownGestureRecognized:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewWantsEffectPicker:(CKMessageEntryView *)arg1;
 - (void)sendCurrentLocationMessage:(CKMessageEntryView *)arg1;
 - (BOOL)shouldMessageEntryViewReportBrowserButtonHitToInputDelegate:(CKMessageEntryView *)arg1;
 - (UITextView *)textViewOnscreenWithEntryView;

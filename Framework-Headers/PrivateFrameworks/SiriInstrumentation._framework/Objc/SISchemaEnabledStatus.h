@@ -20,6 +20,24 @@
     BOOL _hasHomekitHome;
     int _shortcutsAvailable;
     int _dataSharingOptInStatus;
+    BOOL _typeToSiriEnabled;
+    BOOL _isPreciseLocationEnabled;
+    int _voiceFeedback;
+    struct {
+        unsigned int assistantEnabled:1;
+        unsigned int dictationEnabled:1;
+        unsigned int hardwareButtonEnabled:1;
+        unsigned int heySiriEnabled:1;
+        unsigned int assistantOnLockscreen:1;
+        unsigned int raiseToSpeakEnabled:1;
+        unsigned int spokenNotificationsEnabled:1;
+        unsigned int hasHomekitHome:1;
+        unsigned int shortcutsAvailable:1;
+        unsigned int dataSharingOptInStatus:1;
+        unsigned int typeToSiriEnabled:1;
+        unsigned int isPreciseLocationEnabled:1;
+        unsigned int voiceFeedback:1;
+    } _has;
 }
 
 @property (nonatomic) BOOL assistantEnabled; // @synthesize assistantEnabled=_assistantEnabled;
@@ -27,12 +45,28 @@
 @property (nonatomic) int dataSharingOptInStatus; // @synthesize dataSharingOptInStatus=_dataSharingOptInStatus;
 @property (nonatomic) BOOL dictationEnabled; // @synthesize dictationEnabled=_dictationEnabled;
 @property (nonatomic) BOOL hardwareButtonEnabled; // @synthesize hardwareButtonEnabled=_hardwareButtonEnabled;
+@property (nonatomic) BOOL hasAssistantEnabled;
+@property (nonatomic) BOOL hasAssistantOnLockscreen;
+@property (nonatomic) BOOL hasDataSharingOptInStatus;
+@property (nonatomic) BOOL hasDictationEnabled;
+@property (nonatomic) BOOL hasHardwareButtonEnabled;
+@property (nonatomic) BOOL hasHasHomekitHome;
+@property (nonatomic) BOOL hasHeySiriEnabled;
 @property (nonatomic) BOOL hasHomekitHome; // @synthesize hasHomekitHome=_hasHomekitHome;
+@property (nonatomic) BOOL hasIsPreciseLocationEnabled;
+@property (nonatomic) BOOL hasRaiseToSpeakEnabled;
+@property (nonatomic) BOOL hasShortcutsAvailable;
+@property (nonatomic) BOOL hasSpokenNotificationsEnabled;
+@property (nonatomic) BOOL hasTypeToSiriEnabled;
+@property (nonatomic) BOOL hasVoiceFeedback;
 @property (nonatomic) BOOL heySiriEnabled; // @synthesize heySiriEnabled=_heySiriEnabled;
+@property (nonatomic) BOOL isPreciseLocationEnabled; // @synthesize isPreciseLocationEnabled=_isPreciseLocationEnabled;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL raiseToSpeakEnabled; // @synthesize raiseToSpeakEnabled=_raiseToSpeakEnabled;
 @property (nonatomic) int shortcutsAvailable; // @synthesize shortcutsAvailable=_shortcutsAvailable;
 @property (nonatomic) BOOL spokenNotificationsEnabled; // @synthesize spokenNotificationsEnabled=_spokenNotificationsEnabled;
+@property (nonatomic) BOOL typeToSiriEnabled; // @synthesize typeToSiriEnabled=_typeToSiriEnabled;
+@property (nonatomic) int voiceFeedback; // @synthesize voiceFeedback=_voiceFeedback;
 
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

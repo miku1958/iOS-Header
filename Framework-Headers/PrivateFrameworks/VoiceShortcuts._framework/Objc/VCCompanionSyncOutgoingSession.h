@@ -27,7 +27,7 @@
 + (long long)direction;
 - (void).cxx_destruct;
 - (id)initWithSYSession:(id)arg1 service:(id)arg2 syncDataHandlers:(id)arg3 changeSet:(id)arg4 metadata:(id)arg5;
-- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (unsigned int)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (void)syncSession:(id)arg1 successfullySynced:(id)arg2;
 
 @end

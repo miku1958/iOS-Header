@@ -11,9 +11,9 @@
 
 @interface AVConferencePreview : NSObject
 {
+    AVConferenceXPCClient *connection;
     BOOL clientWantsPreview;
     unsigned int connectionAttempts;
-    AVConferenceXPCClient *connection;
     CALayer *caLayerFront;
     CALayer *caLayerBack;
     VideoAttributes *localVideoAttributes;

@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL;
+@class NSArray, NSDictionary, NSString, NSURL, PKDynamicLayerConfiguration, PKPassAuxiliaryRegistrationRequirements;
 
 @interface PKPaymentPassContent : PKPassContent <NSSecureCoding>
 {
@@ -28,12 +28,16 @@
     unsigned long long _transitCommutePlanType;
     NSDictionary *_localizedEntitlementDescriptions;
     NSArray *_upgradeRequests;
+    PKPassAuxiliaryRegistrationRequirements *_auxiliaryRegistrationRequirements;
+    PKDynamicLayerConfiguration *_dynamicLayerConfiguration;
 }
 
 @property (copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
+@property (strong, nonatomic) PKPassAuxiliaryRegistrationRequirements *auxiliaryRegistrationRequirements; // @synthesize auxiliaryRegistrationRequirements=_auxiliaryRegistrationRequirements;
 @property (copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
 @property (copy, nonatomic) NSString *cobrandName; // @synthesize cobrandName=_cobrandName;
 @property (copy, nonatomic) NSString *customerServiceIdentifier; // @synthesize customerServiceIdentifier=_customerServiceIdentifier;
+@property (strong, nonatomic) PKDynamicLayerConfiguration *dynamicLayerConfiguration; // @synthesize dynamicLayerConfiguration=_dynamicLayerConfiguration;
 @property (copy, nonatomic) NSDictionary *localizedEntitlementDescriptions; // @synthesize localizedEntitlementDescriptions=_localizedEntitlementDescriptions;
 @property (copy, nonatomic) NSDictionary *localizedSuspendedReasonsByAID; // @synthesize localizedSuspendedReasonsByAID=_localizedSuspendedReasonsByAID;
 @property (copy, nonatomic) NSString *messagePushTopic; // @synthesize messagePushTopic=_messagePushTopic;

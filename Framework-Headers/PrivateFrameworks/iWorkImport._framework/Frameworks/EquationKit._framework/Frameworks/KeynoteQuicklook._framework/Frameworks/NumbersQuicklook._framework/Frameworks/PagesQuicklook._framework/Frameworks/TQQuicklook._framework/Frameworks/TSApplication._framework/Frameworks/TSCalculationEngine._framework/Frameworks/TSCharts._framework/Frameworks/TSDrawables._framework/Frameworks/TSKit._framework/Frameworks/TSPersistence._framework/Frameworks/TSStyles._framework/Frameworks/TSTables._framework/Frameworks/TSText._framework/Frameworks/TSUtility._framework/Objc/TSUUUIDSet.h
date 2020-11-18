@@ -43,6 +43,7 @@
 - (BOOL)p_removeUUID:(const UUIDData_60906e89 *)arg1;
 - (void)p_removeUUIDs:(const UUIDSet_bcc2db41 *)arg1;
 - (void)p_removeUUIDsFromVector:(const vector_4dc5f307 *)arg1;
+- (void)p_reserve:(unsigned long long)arg1;
 - (id)reducedSetMinusUuid:(const UUIDData_60906e89 *)arg1;
 - (id)reducedSetMinusUuids:(const UUIDSet_bcc2db41 *)arg1;
 - (id)reducedSetMinusUuidsFromVector:(const vector_4dc5f307 *)arg1;

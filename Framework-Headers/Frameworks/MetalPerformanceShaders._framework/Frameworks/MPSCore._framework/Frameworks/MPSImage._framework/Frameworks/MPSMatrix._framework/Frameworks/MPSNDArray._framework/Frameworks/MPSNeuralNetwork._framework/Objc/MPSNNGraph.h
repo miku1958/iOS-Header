@@ -34,7 +34,7 @@
 + (id)graphWithDevice:(id)arg1 resultImage:(id)arg2;
 + (id)graphWithDevice:(id)arg1 resultImage:(id)arg2 resultImageIsNeeded:(BOOL)arg3;
 + (id)graphWithDevice:(id)arg1 resultImages:(id)arg2 resultsAreNeeded:(BOOL *)arg3;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

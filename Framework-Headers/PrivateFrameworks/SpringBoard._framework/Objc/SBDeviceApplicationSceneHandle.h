@@ -27,6 +27,7 @@
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
     SBDeviceApplicationSceneStatusBarBreadcrumbProvider *_breadcrumbProvider;
     SBDeviceApplicationSceneStatusBarStateProvider *_statusBarStateProvider;
+    NSString *_lastActivationIconLeafIdentifier;
     struct CGRect _statusBarAvoidanceFrame;
 }
 
@@ -40,6 +41,7 @@
 @property (nonatomic) BOOL hasMainSceneBeenForegroundAtLeastOnce; // @synthesize hasMainSceneBeenForegroundAtLeastOnce=_hasMainSceneBeenForegroundAtLeastOnce;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic, getter=_idleTimerCoordinator, setter=_setIdleTimerCoordinator:) id<SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
+@property (copy, nonatomic) NSString *lastActivationIconLeafIdentifier; // @synthesize lastActivationIconLeafIdentifier=_lastActivationIconLeafIdentifier;
 @property (nonatomic) long long lastActivationSource; // @synthesize lastActivationSource=_lastActivationSource;
 @property (readonly, copy, nonatomic) _UIStatusBarData *overlayStatusBarData;
 @property (readonly, nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
@@ -101,9 +103,11 @@
 - (BOOL)defaultStatusBarHiddenForOrientation:(long long)arg1;
 - (long long)defaultStatusBarStyle;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)displayEdgeInfoForForLayoutEnvironment:(long long)arg1 classicMode:(long long)arg2 isInsetForHomeAffordance:(BOOL)arg3;
+- (id)displayEdgeInfoForForLayoutEnvironment:(long long)arg1 isInsetForHomeAffordance:(BOOL)arg2;
 - (int)effectiveStatusBarStyleOverrides;
 - (id)effectiveStatusBarStyleRequestForActivation:(id)arg1;
+- (BOOL)forbidsActivationByBreadcrumbAction;
+- (BOOL)handleHardwareButtonEventType:(long long)arg1;
 - (BOOL)isAutoHideEnabledForHomeAffordance;
 - (BOOL)isCurrentStatusBarHiddenForOrientation:(long long)arg1;
 - (BOOL)isDeviceApplicationSceneHandle;
@@ -115,11 +119,16 @@
 - (id)newScenePlaceholderContentContextWithActivationSettings:(id)arg1;
 - (id)newSceneViewController;
 - (id)newSceneViewWithReferenceSize:(struct CGSize)arg1 orientation:(long long)arg2 hostRequester:(id)arg3;
+- (unsigned long long)preferredHardwareButtonEventTypes;
+- (BOOL)prefersHeaderHiddenInSwitcher;
+- (BOOL)prefersKillingInSwitcherDisabled;
 - (void)removeObserver:(id)arg1;
 - (void)saveSuspendSnapshot:(id)arg1;
 - (void)setAlertSuppressionContextsBySectionIdentifier:(id)arg1;
 - (void)setKeyboardContextMaskStyle:(unsigned long long)arg1;
 - (void)setStatusBarForceHidden:(BOOL)arg1 forReason:(id)arg2 animationSettings:(id)arg3;
+- (BOOL)shouldAlwaysDisplayLiveContent;
+- (BOOL)shouldPrioritizeForSwitcherOrdering;
 - (BOOL)shouldSuppressAlertForSuppressionContexts:(id)arg1 sectionIdentifier:(id)arg2;
 - (double)statusBarAlpha;
 - (id)statusBarEffectiveStyleRequestWithStyle:(long long)arg1;

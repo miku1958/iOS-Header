@@ -16,8 +16,10 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callBackQueue;
     NSMapTable *_observers;
-    PSYInitialSyncStateObserver *_initialSyncStateObserver;
     NSString *_pairingIDPropertyName;
+    NSString *_pairedDeviceGUID;
+    NSString *_pairedDeviceMediaGUID;
+    PSYInitialSyncStateObserver *_initialSyncStateObserver;
     BOOL _isInitialSyncComplete;
 }
 
@@ -28,6 +30,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInitialSyncComplete; // @synthesize isInitialSyncComplete=_isInitialSyncComplete;
 @property (readonly, nonatomic, getter=isMediaSyncingSupported) BOOL mediaSyncingSupported;
+@property (readonly, copy, nonatomic) NSString *pairedDeviceGUID;
+@property (readonly, copy, nonatomic) NSString *pairedDeviceMediaGUID;
 @property (readonly, copy, nonatomic) NSUUID *pairedDevicePairingID;
 @property (readonly) Class superclass;
 

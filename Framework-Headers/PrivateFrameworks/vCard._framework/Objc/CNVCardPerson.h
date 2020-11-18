@@ -44,6 +44,8 @@
     NSDictionary *_largeImageCropRects;
     NSData *_largeImageData;
     NSData *_imageData;
+    NSString *_imageType;
+    NSData *_imageHash;
     NSDateComponents *_birthdayComponents;
     NSDateComponents *_alternateBirthdayComponents;
     NSArray *_otherDateComponents;
@@ -74,7 +76,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong) NSDictionary *imageCropRects; // @synthesize imageCropRects=_imageCropRects;
 @property (strong) NSData *imageData; // @synthesize imageData=_imageData;
+@property (strong) NSData *imageHash; // @synthesize imageHash=_imageHash;
 @property (strong) NSArray *imageReferences; // @synthesize imageReferences=_imageReferences;
+@property (strong) NSString *imageType; // @synthesize imageType=_imageType;
 @property (strong) NSArray *instantMessagingAddresses; // @synthesize instantMessagingAddresses=_instantMessagingAddresses;
 @property BOOL isCompany; // @synthesize isCompany=_isCompany;
 @property BOOL isMe; // @synthesize isMe=_isMe;

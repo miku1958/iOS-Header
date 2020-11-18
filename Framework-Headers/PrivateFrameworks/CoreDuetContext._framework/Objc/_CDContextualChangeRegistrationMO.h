@@ -14,10 +14,13 @@
 
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (nonatomic) BOOL isActive; // @dynamic isActive;
+@property (nonatomic) BOOL isMultiDeviceRegistration; // @dynamic isMultiDeviceRegistration;
 @property (strong, nonatomic) NSData *properties; // @dynamic properties;
 
 + (void)hydrateMO:(id)arg1 fromRegistration:(id)arg2;
 + (id)materializedRegistrationFrom:(id)arg1;
++ (id)predicateForActiveRegistrationsInBootSession:(id)arg1;
 
 @end
 

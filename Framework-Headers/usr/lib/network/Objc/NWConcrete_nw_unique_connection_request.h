@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     unsigned int isWaitingForActiveConnection:1;
     unsigned int hasRequestedPubKey:1;
     unsigned int hasBeenProcessed:1;
+    unsigned int isWaitingForPathUpdate:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -7,8 +7,12 @@
 #import <SafariShared/WBSHistoryConnectionProtocol-Protocol.h>
 
 @class WBSMemoryFootprint;
+@protocol WBSHistoryConnectionProxyDelegate;
 
 @protocol WBSHistoryConnectionProxy <WBSHistoryConnectionProtocol>
+
+@property (weak, nonatomic) id<WBSHistoryConnectionProxyDelegate> delegate;
+
 - (WBSMemoryFootprint *)queryMemoryFootprintWithError:(id *)arg1;
 @end
 

@@ -10,7 +10,7 @@
 {
 }
 
-- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 
 @end
 

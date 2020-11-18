@@ -33,6 +33,7 @@
 - (void)fetchSuggestedRealNameForDisplayName:(id)arg1 messageUID:(id)arg2 queue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)init;
 - (BOOL)isBusiness:(id)arg1;
+- (id)personNameComponentsForHandle:(id)arg1;
 - (void)scheduleFetchIfNecessaryForHandle:(id)arg1;
 - (id)serviceConnection;
 - (void)startUsingLocalLookupsWithTable:(id)arg1;

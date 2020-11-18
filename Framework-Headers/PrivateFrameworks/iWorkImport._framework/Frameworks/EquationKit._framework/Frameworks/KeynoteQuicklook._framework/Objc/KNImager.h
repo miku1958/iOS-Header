@@ -13,9 +13,9 @@
 
 @interface KNImager : TSDImager <TSDConnectedInfoReplacing>
 {
-    BOOL _shouldShowInstructionalText;
     KNBodyPlaceholderInfo *_replacementBodyPlaceholder;
     KNTitlePlaceholderInfo *_replacementTitlePlaceholder;
+    BOOL _forceOutputSizeToMatchThumbnailSize;
     BOOL _shouldTintWhiteImages;
     unsigned long long _slideNumber;
     KNAbstractSlide *_slide;
@@ -29,10 +29,10 @@
 @property (nonatomic) double drawableThumbnailContentInset; // @synthesize drawableThumbnailContentInset=_drawableThumbnailContentInset;
 @property (readonly, nonatomic) TSUImage *drawableThumbnailImage;
 @property (nonatomic) struct CGSize drawableThumbnailSize; // @synthesize drawableThumbnailSize=_drawableThumbnailSize;
+@property (nonatomic) BOOL forceOutputSizeToMatchThumbnailSize; // @synthesize forceOutputSizeToMatchThumbnailSize=_forceOutputSizeToMatchThumbnailSize;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) KNBodyPlaceholderInfo *replacementBodyPlaceholder; // @synthesize replacementBodyPlaceholder=_replacementBodyPlaceholder;
 @property (strong, nonatomic) KNTitlePlaceholderInfo *replacementTitlePlaceholder; // @synthesize replacementTitlePlaceholder=_replacementTitlePlaceholder;
-@property (nonatomic) BOOL shouldShowInstructionalText; // @synthesize shouldShowInstructionalText=_shouldShowInstructionalText;
 @property (nonatomic) BOOL shouldTintWhiteImages; // @synthesize shouldTintWhiteImages=_shouldTintWhiteImages;
 @property (weak, nonatomic) KNAbstractSlide *slide; // @synthesize slide=_slide;
 @property (nonatomic) unsigned long long slideNumber; // @synthesize slideNumber=_slideNumber;
@@ -42,6 +42,7 @@
 - (id)infoToConnectToForConnectionLineConnectedToInfo:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1;
 - (BOOL)isInfoAKeynoteMasterObject:(id)arg1;
+- (void)p_hideCaptionAndTitleFromDeepCopiedDrawable:(id)arg1;
 - (void)p_prepareShapeInfoStroke:(id)arg1 atScaleFactor:(double)arg2 finalRect:(struct CGRect *)arg3;
 - (void)p_prepareStyledInfoStyle:(id)arg1;
 - (BOOL)p_requiresModifiedStrokeForDrawable:(id)arg1 atScaleFactor:(double)arg2;

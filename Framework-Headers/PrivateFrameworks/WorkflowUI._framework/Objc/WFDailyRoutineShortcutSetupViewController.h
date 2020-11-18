@@ -21,6 +21,7 @@
     NSMutableDictionary *_actionsPerQuestionIndex;
     CLCircularRegion *_selectedRegion;
     NSMutableArray *_setupStepEvents;
+    unsigned long long _metricsSource;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *actionsPerQuestionIndex; // @synthesize actionsPerQuestionIndex=_actionsPerQuestionIndex;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) WFDailyRoutineShortcutSetupFlow *flow; // @synthesize flow=_flow;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long metricsSource; // @synthesize metricsSource=_metricsSource;
 @property (strong, nonatomic) CLCircularRegion *selectedRegion; // @synthesize selectedRegion=_selectedRegion;
 @property (strong, nonatomic) UINavigationController *setupNavigationController; // @synthesize setupNavigationController=_setupNavigationController;
 @property (strong, nonatomic) NSMutableArray *setupStepEvents; // @synthesize setupStepEvents=_setupStepEvents;
@@ -44,7 +46,7 @@
 - (void)dailyRoutineShortcutSetupTriggerViewControllerDidSkip:(id)arg1;
 - (void)didSelectCancel;
 - (void)finishWithTrigger:(id)arg1;
-- (id)initWithFlow:(id)arg1;
+- (id)initWithFlow:(id)arg1 metricsSource:(unsigned long long)arg2;
 - (void)locationPicker:(id)arg1 didFinishWithValue:(id)arg2;
 - (void)locationPickerDidCancel:(id)arg1;
 - (void)pushStepForQuestion:(id)arg1;

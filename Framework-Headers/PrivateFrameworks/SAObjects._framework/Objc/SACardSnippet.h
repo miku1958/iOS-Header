@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSData *cardData;
+@property (copy, nonatomic) NSData *compactSizeCardData;
 @property (copy, nonatomic) NSArray *contextItems;
 @property (copy, nonatomic) NSArray *referencedCommands;
 @property (copy, nonatomic) NSArray *referencedSnippets;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithRequestPriority:(id)arg1;
+- (id)initWithRequest:(id)arg1 requestPriority:(id)arg2;
 - (unsigned long long)urlType;
 
 @end

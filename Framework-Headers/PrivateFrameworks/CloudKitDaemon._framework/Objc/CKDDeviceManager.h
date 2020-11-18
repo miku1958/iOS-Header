@@ -9,24 +9,27 @@
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDDeviceManager : NSObject
 {
+    BOOL _useLegacyKeychain;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_deviceIDs;
+    NSMutableDictionary *_deviceIDsByContainerIdentifierByContainerEnvironment;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
+@property (strong, nonatomic) NSMutableDictionary *deviceIDsByContainerIdentifierByContainerEnvironment; // @synthesize deviceIDsByContainerIdentifierByContainerEnvironment=_deviceIDsByContainerIdentifierByContainerEnvironment;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) BOOL useLegacyKeychain; // @synthesize useLegacyKeychain=_useLegacyKeychain;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_deleteDeviceIdentifierForContext:(id)arg1;
-- (id)_lookupKeyForContext:(id)arg1;
+- (id)_perServicelookupKeyForContext:(id)arg1;
 - (void)_saveDeviceIdentifier:(id)arg1 forContext:(id)arg2;
+- (void)_saveDeviceIdentifierToDefaults:(id)arg1 forContext:(id)arg2;
 - (id)_savedDeviceIdentifierForContext:(id)arg1;
 - (id)_serviceForContext:(id)arg1;
 - (struct __CFDictionary *)createQueryForDeviceIdentifierInContext:(id)arg1;
+- (id)deviceIDsByContainerIdentifierInContainerEnvironment:(long long)arg1;
 - (id)deviceIdentifierForContext:(id)arg1;
 - (id)deviceIdentifierForContext:(id)arg1 skipInMemoryCache:(BOOL)arg2 createIfNecessary:(BOOL)arg3;
 - (id)init;

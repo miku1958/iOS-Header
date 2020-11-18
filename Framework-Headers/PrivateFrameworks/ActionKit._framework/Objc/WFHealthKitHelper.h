@@ -23,6 +23,8 @@
 + (long long)enumFromReadableVO2MaxTestType:(id)arg1;
 + (id)extractHKDataFromContentQuery:(id)arg1;
 + (id)localizedDisplayNameForUnit:(id)arg1 quantityTypeIdentifier:(id)arg2;
++ (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2;
++ (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2 quantityTypeIdentifier:(id)arg3;
 + (id)localizedSampleTypes;
 + (id)readableAppleStandingHourFromEnum:(long long)arg1;
 + (id)readableAppleStandingHourValues;

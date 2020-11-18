@@ -9,6 +9,7 @@
 @class NSDictionary, NSMutableArray, NSOperationQueue, NSString, RTCReporting;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

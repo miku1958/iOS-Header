@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)os_log;
 - (void).cxx_destruct;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (id)authorizedKeysForContactKeys:(id)arg1 error:(id *)arg2;
 - (id)contactObservableForFetchRequest:(id)arg1;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;

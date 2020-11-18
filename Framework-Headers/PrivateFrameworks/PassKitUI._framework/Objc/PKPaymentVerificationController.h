@@ -57,6 +57,7 @@
 - (void)_completeVerificationUsingOutboundCall;
 - (void)_didChangePresentation;
 - (void)_downloadAndAddPassWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_formattedPhoneNumber:(id)arg1 forTextMessage:(BOOL)arg2;
 - (BOOL)_isBankAppInstalled;
 - (void)_launchBankApp;
 - (id)_outboundCallPhoneNumber;
@@ -65,8 +66,6 @@
 - (void)_presentVerificatonEntryCompletionViewController;
 - (void)_queue_sharedPaymentWebServiceChanged;
 - (void)_requestDelegatePresentationOfViewController:(id)arg1;
-- (id)_textMessageFormattedPhoneNumber:(id)arg1;
-- (id)_voiceCallFormattedPhoneNumber:(id)arg1;
 - (void)_wrapViewControllerAndRequestDelegatePresentationOfView:(id)arg1;
 - (void)continueVerification;
 - (void)dealloc;

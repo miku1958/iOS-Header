@@ -20,11 +20,11 @@
     NSMutableDictionary *_observersByToken;
 }
 
+@property (readonly, nonatomic) long long accountState;
 @property (readonly, nonatomic) NSObject<CRKClassKitFacade> *classKitFacade; // @synthesize classKitFacade=_classKitFacade;
 @property (readonly, copy, nonatomic) NSArray *dataObservers; // @synthesize dataObservers=_dataObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEligibleAccountSignedIn) BOOL eligibleAccountSignedIn;
 @property (readonly, nonatomic, getter=isForInstructor) BOOL forInstructor; // @synthesize forInstructor=_forInstructor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int membershipChangeDarwinNotificationToken; // @synthesize membershipChangeDarwinNotificationToken=_membershipChangeDarwinNotificationToken;
@@ -52,18 +52,24 @@
 - (id)makeClassWithLocationID:(id)arg1 name:(id)arg2;
 - (CDUnknownBlockType)makeDataChangedBlockWithObserverDescription:(id)arg1;
 - (id)makeDataObservers;
-- (id)makePersonQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id)makeInstructorQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (id)makeQueryForPersonsWithIdentifiers:(id)arg1;
+- (id)makeStudentQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (id)objectIDsOfPersonsInClass:(id)arg1;
 - (id)objectIDsOfTrustedPersonsInClass:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)ownsError:(id)arg1;
+- (void)personsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerDataObservers;
 - (void)registerForCurrentUserChangeNotification;
 - (void)registerForMembershipChangeDarwinNotification;
 - (void)removeClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
+- (void)removePerson:(id)arg1 fromClass:(id)arg2;
 - (void)removeTrustedPerson:(id)arg1 fromClass:(id)arg2;
 - (void)saveClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)startObservingAccountEligibility;
-- (void)stopObservingAccountEligibility;
+- (void)startObservingAccountState;
+- (void)stopObservingAccountState;
 - (void)trustedPersonsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unregisterForMembershipChangeDarwinNotification;
 

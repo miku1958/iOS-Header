@@ -11,6 +11,7 @@
 - (struct CGSize)__ck_alignmentRectSizeForFrameSize:(struct CGSize)arg1;
 - (BOOL)__ck_containsFirstResponder;
 - (struct CGSize)__ck_frameSizeForAlignmentRectSize:(struct CGSize)arg1;
+- (void)__ck_makeEdgesEqualTo:(id)arg1;
 - (void)layoutGradientViewsIfNeeded;
 - (void)messageAcknowledgmentBounceView:(CDUnknownBlockType)arg1;
 - (void)messageAcknowledgmentShrinkViewToPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;

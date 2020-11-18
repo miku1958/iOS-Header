@@ -15,10 +15,10 @@
 {
     id _value;
     NSString *_keyPath;
+    NSUUID *_identifier;
     Class _valueClass;
     long long _type;
     id<HMSettingManager> _settingManager;
-    NSUUID *_identifier;
     NSString *_name;
     unsigned long long _properties;
 }

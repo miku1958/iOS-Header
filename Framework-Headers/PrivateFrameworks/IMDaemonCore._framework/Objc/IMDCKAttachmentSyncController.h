@@ -66,6 +66,7 @@
 - (void)_kickOffWriteOnCKQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_markAllUnsuccessFullSyncAttachmentsAsNeedingSync;
 - (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
+- (void)_markTransferAsNotBeingAbleToSync:(id)arg1;
 - (void)_markTransferAsNotBeingAbleToSyncUsingCKRecord:(id)arg1;
 - (void)_migrateSyncToken;
 - (void)_needsToMarkAllAttachmentsAsNeedingSync;

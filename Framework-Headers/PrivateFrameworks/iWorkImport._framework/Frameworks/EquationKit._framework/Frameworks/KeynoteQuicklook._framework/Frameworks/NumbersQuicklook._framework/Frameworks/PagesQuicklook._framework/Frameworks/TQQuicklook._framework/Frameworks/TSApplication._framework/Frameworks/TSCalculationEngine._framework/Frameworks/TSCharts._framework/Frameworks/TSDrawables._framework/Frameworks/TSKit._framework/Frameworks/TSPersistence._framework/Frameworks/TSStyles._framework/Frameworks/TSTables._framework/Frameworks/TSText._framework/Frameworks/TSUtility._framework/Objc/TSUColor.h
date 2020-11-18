@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) BOOL isOpaque;
 @property (readonly, nonatomic) double luminance;
 @property (readonly, nonatomic) double redComponent;
+@property (readonly, nonatomic) double relativeLuminance;
 
 + (id)blackColor;
 + (id)blueColor;
@@ -59,12 +60,13 @@
 - (double)brightnessComponent;
 - (id)colorByCompositingSourceOverDestinationColor:(id)arg1;
 - (id)colorWithAlphaComponent:(double)arg1;
+- (double)contrastRatioWithColor:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)getRGBAComponents:(double *)arg1;
-- (BOOL)hasSimilarLuminanceToOtherColor:(id)arg1 minRatio:(double)arg2 maxRatio:(double)arg3;
 - (unsigned long long)hash;
 - (double)hueComponent;
+- (BOOL)improvesContrastWhenDisplayedOverAlternateBackgroundColor:(id)arg1 ratherThanStandardBackgroundColor:(id)arg2;
 - (id)initWithCGColor:(struct CGColor *)arg1;
 - (id)initWithCGColor:(struct CGColor *)arg1 colorSpace:(unsigned long long)arg2;
 - (id)initWithHexString:(id)arg1;
@@ -86,7 +88,6 @@
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (double)saturationComponent;
-- (BOOL)wantsHighContrastBackgroundForDarkMode:(id)arg1;
 
 @end
 

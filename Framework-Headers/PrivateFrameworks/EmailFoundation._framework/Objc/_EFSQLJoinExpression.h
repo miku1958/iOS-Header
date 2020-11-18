@@ -34,6 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)addResultColumn:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (void)groupByColumn:(id)arg1;
 - (id)initWithSelect:(id)arg1 tableName:(id)arg2 tableAlias:(id)arg3 joinConstraint:(id)arg4 isLeftOuter:(BOOL)arg5;
 - (id)join:(id)arg1 alias:(id)arg2 on:(id)arg3;

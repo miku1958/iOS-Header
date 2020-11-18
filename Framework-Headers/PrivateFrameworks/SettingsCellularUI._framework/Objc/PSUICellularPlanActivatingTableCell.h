@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_setBadge:(id)arg1 andTitle:(id)arg2 andSubtitle:(id)arg3 andStatus:(id)arg4;
 - (void)_setBadgelessCenteredTitle:(id)arg1 andStatus:(id)arg2;
+- (void)_setBadgelessTitle:(id)arg1 andSubtitle:(id)arg2 andStatus:(id)arg3;
 - (void)_setCenteredBadge:(id)arg1 andCenteredTitle:(id)arg2 andStatus:(id)arg3;
 - (BOOL)canBeChecked;
 - (BOOL)canReload;

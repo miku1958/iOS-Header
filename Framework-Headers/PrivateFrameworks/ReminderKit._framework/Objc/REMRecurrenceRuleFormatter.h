@@ -27,7 +27,6 @@
 + (id)_weekDayPositionAsString:(long long)arg1;
 + (long long)daysTypeForDayArray:(id)arg1;
 + (id)localizedDescriptionForRepeatType:(long long)arg1;
-+ (id)localizedEveryStringForFrequency:(long long)arg1;
 + (id)naturalLanguageDescriptionForFrequency:(long long)arg1 interval:(long long)arg2 daysOfTheWeek:(id)arg3 daysOfTheMonth:(id)arg4 monthsOfTheYear:(id)arg5 weeksOfTheYear:(id)arg6 daysOfTheYear:(id)arg7 setPositions:(id)arg8 end:(id)arg9 withStartDate:(id)arg10;
 + (id)naturalLanguageDescriptionForRecurrenceRule:(id)arg1 withStartDate:(id)arg2;
 + (long long)repeatTypeForFrequency:(long long)arg1 interval:(long long)arg2 daysOfTheWeek:(id)arg3 daysOfTheMonth:(id)arg4 monthsOfTheYear:(id)arg5 weeksOfTheYear:(id)arg6 daysOfTheYear:(id)arg7 setPositions:(id)arg8 end:(id)arg9 recurrenceDate:(id)arg10 recurrenceTimeZone:(id)arg11 getRepeatEnd:(out id *)arg12;

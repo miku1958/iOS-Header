@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, VCDispatchTimer;
 
 __attribute__((visibility("hidden")))
 @interface VCObject : NSObject
 {
+    id _reportingAgent;
+    VCDispatchTimer *_timeoutTimer;
     NSString *_logPrefix;
     struct _opaque_pthread_mutex_t _mutex;
-    id _reportingAgent;
 }
 
 @property (strong, nonatomic) NSString *logPrefix; // @synthesize logPrefix=_logPrefix;
@@ -22,6 +23,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)lock;
+- (void)startDeallocTimer;
+- (void)startDeallocTimerWithTimeout:(unsigned int)arg1;
+- (void)startTerminationTimer:(unsigned int)arg1;
+- (void)startTimeoutTimer;
+- (void)stopTerminationTimer;
+- (void)stopTimeoutTimer;
 - (void)unlock;
 
 @end

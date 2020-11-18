@@ -9,7 +9,7 @@
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray;
-@protocol NSTextStorageController, NSTextStorageDelegate;
+@protocol NSTextStorageControllerPrivate, NSTextStorageDelegate;
 
 @interface NSTextStorage : NSMutableAttributedString <NSSecureCoding>
 {
@@ -24,13 +24,15 @@
     } _flags;
     NSMutableArray *_layoutManagers;
     id _sideData;
-    id<NSTextStorageController> _textStorageController;
+    id<NSTextStorageControllerPrivate> _textStorageController;
+    BOOL _ensuresFixingAttributes;
 }
 
 @property (readonly, nonatomic) long long changeInLength;
 @property (weak, nonatomic) id<NSTextStorageDelegate> delegate;
 @property (readonly, nonatomic) unsigned long long editedMask;
 @property (readonly, nonatomic) struct _NSRange editedRange;
+@property BOOL ensuresFixingAttributes; // @synthesize ensuresFixingAttributes=_ensuresFixingAttributes;
 @property (readonly, nonatomic) BOOL fixesAttributesLazily;
 @property (readonly, copy, nonatomic) NSArray *layoutManagers;
 

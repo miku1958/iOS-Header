@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDSeriesBuilderEntity *persistentEntity; // @synthesize persistentEntity=_persistentEntity;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic, setter=queue_setState:) long long queue_state; // @synthesize queue_state=_queue_state;
+@property (readonly, nonatomic) long long queue_state; // @synthesize queue_state=_queue_state;
 @property (strong, nonatomic) HKSeriesSample *seriesSample; // @synthesize seriesSample=_seriesSample;
 @property (readonly) Class superclass;
 
@@ -38,6 +38,7 @@
 - (void)_queue_discardIfAuthorizedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_discardSeriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_recoverOrCreatePersistentEntity;
+- (void)_setClientState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)associateToWorkoutBuilderWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)canAddMetadata:(id)arg1 errorOut:(id *)arg2;
 - (void)connectionInvalidated;
@@ -48,12 +49,12 @@
 - (BOOL)queue_canInsertDataWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)queue_freezeBuilderWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_recoverBuilder;
+- (void)queue_setState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteInterface;
 - (void)remote_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_discardWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_freezeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_recoverWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setState:(long long)arg1;
 - (long long)state;
 
 @end

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class AERSingleAppModeConfiguration;
+
 @protocol AERSingleAppModePrimitives
-- (void)activateSingleAppModeSessionWithCompletion:(void (^)(id<AERSingleAppModeSession>, NSError *))arg1;
+- (void)activateSingleAppModeSessionWithConfiguration:(AERSingleAppModeConfiguration *)arg1 completion:(void (^)(id<AERSingleAppModeSession>, NSError *))arg2;
 @end
 

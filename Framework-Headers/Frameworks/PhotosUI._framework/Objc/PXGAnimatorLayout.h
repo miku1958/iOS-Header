@@ -28,6 +28,7 @@
 - (unsigned int)numberOfSprites;
 - (struct CGSize)referenceSize;
 - (void)removeAllFences;
+- (id)rootLayout;
 - (struct CGRect)visibleRect;
 
 @end

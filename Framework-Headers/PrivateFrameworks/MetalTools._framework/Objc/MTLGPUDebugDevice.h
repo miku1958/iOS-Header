@@ -6,20 +6,53 @@
 
 #import <MetalTools/MTLToolsDevice.h>
 
-@class NSMutableArray;
+@class NSData, NSMutableArray;
+@protocol MTLDepthStencilState, MTLRenderPipelineState;
 
 @interface MTLGPUDebugDevice : MTLToolsDevice
 {
     struct MetalBufferHeap bufferHeap;
+    struct Options boundsCheckOptions;
+    struct GPUDebugDeviceOptions deviceOptions;
+    struct GPUDebugBufferDescriptorHeap globalBufferHeap;
+    struct GPUDebugConstantBufferCache constantBufferCache;
+    struct GlobalResidentBufferList globalICBBufferResidentList;
+    NSData *_boundsCheckOptionsData;
     NSMutableArray *_argumentDescriptors;
-    BOOL _enableBoundsChecking;
+    struct once_flag _deviceInitFlag;
+    struct once_flag _icbPipelineInit;
+    id<MTLRenderPipelineState> _icbInheritVertexPipelineState;
+    id<MTLRenderPipelineState> _icbInheritNoneVertexPipelineState;
+    id<MTLRenderPipelineState> _icbInheritBuffersVertexPipelineState;
+    id<MTLDepthStencilState> _icbDepthStencilState;
 }
+
+@property (readonly, nonatomic) id<MTLDepthStencilState> ICB_DepthStencilState;
+@property (readonly, nonatomic) id<MTLRenderPipelineState> ICB_Inherit_Buffers_VertexPipelineState;
+@property (readonly, nonatomic) id<MTLRenderPipelineState> ICB_Inherit_None_VertexPipelineState;
+@property (readonly, nonatomic) id<MTLRenderPipelineState> ICB_Inherit_PSO_VertexPipelineState;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_modifyCompileOptions:(unsigned long long *)arg1;
+- (void)_modifyComputePipelineDescriptor:(id)arg1;
+- (id)_modifyPluginData:(id)arg1;
+- (void)_modifyRenderPipelineDescriptor:(id)arg1;
+- (void)_modifyTileRenderPipelineDescriptor:(id)arg1;
 - (void)dealloc;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
+- (id)newArgumentEncoderWithArguments:(id)arg1;
+- (id)newArgumentEncoderWithArguments:(id)arg1 structType:(id *)arg2;
+- (id)newArgumentEncoderWithLayout:(id)arg1;
+- (id)newBinaryArchiveWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newBinaryLibraryWithOptions:(unsigned long long)arg1 url:(id)arg2 error:(id *)arg3;
+- (id)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 gpuAddress:(unsigned long long)arg4;
+- (id)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
+- (id)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 gpuAddress:(unsigned long long)arg4 deallocator:(CDUnknownBlockType)arg5;
+- (id)newBufferWithIOSurface:(struct __IOSurface *)arg1;
+- (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 gpuAddress:(unsigned long long)arg3;
 - (id)newCommandQueue;
 - (id)newCommandQueueWithDescriptor:(id)arg1;
 - (id)newCommandQueueWithMaxCommandBufferCount:(unsigned long long)arg1;
@@ -31,8 +64,20 @@
 - (id)newComputePipelineStateWithFunction:(id)arg1 error:(id *)arg2;
 - (void)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
+- (id)newDefaultLibrary;
+- (id)newDefaultLibraryWithBundle:(id)arg1 error:(id *)arg2;
+- (id)newHeapWithDescriptor:(id)arg1;
 - (id)newIndirectCommandBufferWithDescriptor:(id)arg1 maxCommandCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id)newInternalBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (id)newLibraryWithCIFilters:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id)newLibraryWithCIFiltersForComputePipeline:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id)newLibraryWithDAG:(id)arg1 functions:(id)arg2 error:(id *)arg3;
+- (id)newLibraryWithData:(id)arg1 error:(id *)arg2;
+- (id)newLibraryWithFile:(id)arg1 error:(id *)arg2;
+- (id)newLibraryWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (void)newLibraryWithSource:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newLibraryWithSource:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)newLibraryWithURL:(id)arg1 error:(id *)arg2;
 - (void)newRenderPipelineStateWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -45,6 +90,19 @@
 - (id)newStageBufferArgumentEncoder;
 - (void)onComputePipelineCreated:(id)arg1;
 - (void)onRenderPipelineCreated:(id)arg1;
+- (BOOL)supportsArgumentBuffersTier2;
+- (BOOL)supportsBinaryArchives;
+- (BOOL)supportsBinaryFunctionPointers;
+- (BOOL)supportsBinaryLibraries;
+- (BOOL)supportsBufferBoundsChecking;
+- (BOOL)supportsCMPIndirectCommandBuffers;
+- (BOOL)supportsDynamicLibraries;
+- (BOOL)supportsFunctionPointers;
+- (BOOL)supportsGFXIndirectCommandBuffers;
+- (BOOL)supportsRaytracing;
+- (id)unwrapAndModifyComputePipelineDescriptor:(id)arg1 options:(unsigned long long *)arg2;
+- (id)unwrapAndModifyRenderPipelineDescriptor:(id)arg1 options:(unsigned long long *)arg2;
+- (id)unwrapAndModifyTileRenderPipelineDescriptor:(id)arg1 options:(unsigned long long *)arg2;
 
 @end
 

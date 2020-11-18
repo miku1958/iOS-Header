@@ -12,11 +12,12 @@
 @interface ISObservable : NSObject
 {
     long long _nestedChanges;
-    NSMutableArray *_pendingChangeBlocks;
+    NSMutableArray *_pendingChangesQueue_pendingChangeBlocks;
     long long _numAppliedPendingChanges;
     unsigned long long _currentChange;
     BOOL _isEnumeratingObservers;
     NSObject<OS_dispatch_queue> *_observersQueue;
+    NSObject<OS_dispatch_queue> *_pendingChangesQueue;
     BOOL _observersQueue_shouldCopyChangeObserversOnWrite;
     NSMapTable *_observersQueue_changeObserversWithContexts;
     BOOL _hasObservers;
@@ -31,11 +32,13 @@
 - (void)_publishChanges;
 - (void)_setHasObservers:(BOOL)arg1;
 - (void)_willChange;
+- (unsigned long long)currentChanges;
 - (void)didPerformChanges;
 - (void)didPublishChanges;
 - (void)enumerateObserversUsingBlock:(CDUnknownBlockType)arg1;
 - (void)hasObserversDidChange;
 - (id)init;
+- (BOOL)isPerformingChanges;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;

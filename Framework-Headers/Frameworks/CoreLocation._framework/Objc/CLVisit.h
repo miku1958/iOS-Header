@@ -9,7 +9,7 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
-@class NSDate;
+@class NSDate, _CLPlaceInference;
 
 @interface CLVisit : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,9 +17,11 @@
     NSDate *_departureDate;
     double _horizontalAccuracy;
     NSDate *_detectionDate;
+    _CLPlaceInference *__placeInference;
     struct CLLocationCoordinate2D _coordinate;
 }
 
+@property (readonly, nonatomic) _CLPlaceInference *_placeInference; // @synthesize _placeInference=__placeInference;
 @property (readonly, copy, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property (readonly, copy, nonatomic) NSDate *departureDate; // @synthesize departureDate=_departureDate;
@@ -35,6 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 horizontalAccuracy:(double)arg2 arrivalDate:(id)arg3 departureDate:(id)arg4 detectionDate:(id)arg5;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 horizontalAccuracy:(double)arg2 arrivalDate:(id)arg3 departureDate:(id)arg4 detectionDate:(id)arg5 placeInference:(id)arg6;
 
 @end
 

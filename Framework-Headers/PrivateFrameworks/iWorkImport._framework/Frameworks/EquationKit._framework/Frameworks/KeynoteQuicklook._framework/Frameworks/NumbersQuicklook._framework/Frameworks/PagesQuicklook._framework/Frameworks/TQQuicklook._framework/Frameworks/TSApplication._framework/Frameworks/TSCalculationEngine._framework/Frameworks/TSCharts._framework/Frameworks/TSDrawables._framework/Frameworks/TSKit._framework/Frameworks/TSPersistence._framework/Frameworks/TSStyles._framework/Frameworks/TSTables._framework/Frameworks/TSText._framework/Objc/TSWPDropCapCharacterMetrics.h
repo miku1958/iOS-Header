@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) BOOL isVertical; // @synthesize isVertical=_isVertical;
 
 - (void).cxx_destruct;
-- (void)adjustMetricsForAdvance:(double)arg1 padding:(double)arg2;
+- (void)adjustMetricsForWidth:(double)arg1;
 - (void)applyTransform:(struct CGAffineTransform)arg1;
 - (id)description;
 - (id)initWithCharacterCount:(unsigned long long)arg1 isRightToLeft:(BOOL)arg2 isVertical:(BOOL)arg3 baseline:(double)arg4;

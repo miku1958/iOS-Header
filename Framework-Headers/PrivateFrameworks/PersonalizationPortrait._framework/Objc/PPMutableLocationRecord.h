@@ -15,7 +15,7 @@
 @property (nonatomic) unsigned short algorithm; // @dynamic algorithm;
 @property (strong, nonatomic) NSArray *contextualNamedEntities; // @dynamic contextualNamedEntities;
 @property (nonatomic) double decayRate; // @dynamic decayRate;
-@property (nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
+@property (nonatomic) unsigned int extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property (strong, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property (nonatomic) double initialScore; // @dynamic initialScore;
 @property (strong, nonatomic) PPLocation *location; // @dynamic location;

@@ -35,20 +35,12 @@
 + (double)itemWidth;
 + (unsigned long long)maxNumberOfItems;
 - (void).cxx_destruct;
-- (void)_createGridViewIfNeeded;
 - (CDStruct_c3b9c2ee)borrowableSpaceForCellAtIndex:(unsigned long long)arg1;
 - (id)cellForGridViewItemAtIndex:(long long)arg1;
 - (void)contentSizeDidChange;
-- (long long)currentLayout;
 - (CDStruct_c3b9c2ee)entitledExtraSpaceForCellAtIndex:(unsigned long long)arg1;
-- (void)generateItems;
-- (double)horizontalMargin;
 - (id)initWithDataSource:(id)arg1 delegate:(id)arg2;
-- (unsigned long long)itemsPerRow;
-- (double)labelMinSpacing;
-- (double)labelOutset;
 - (void)layoutSubviews;
-- (unsigned long long)maxNumberOfItems;
 - (void)reloadData;
 
 @end

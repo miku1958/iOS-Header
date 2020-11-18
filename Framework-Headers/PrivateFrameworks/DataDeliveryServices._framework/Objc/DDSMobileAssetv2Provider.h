@@ -9,21 +9,25 @@
 #import <DataDeliveryServices/DDSAssetProviding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
-@protocol DDSAssetProvidingDelegate;
+@protocol DDSAssetProvidingDelegate, DDSAssetQueryResultCaching;
 
 @interface DDSMobileAssetv2Provider : NSObject <DDSAssetProviding>
 {
     BOOL _encounteredAssertionUpdateError;
     id<DDSAssetProvidingDelegate> delegate;
-    NSMutableDictionary *_remainingAssetsByAssertion;
+    NSMutableDictionary *_remainingAssetsByQueryId;
+    id<DDSAssetQueryResultCaching> _assetQueryResultsCache;
+    NSMutableDictionary *_downloadStateByAssetID;
 }
 
+@property (strong, nonatomic) id<DDSAssetQueryResultCaching> assetQueryResultsCache; // @synthesize assetQueryResultsCache=_assetQueryResultsCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<DDSAssetProvidingDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableDictionary *downloadStateByAssetID; // @synthesize downloadStateByAssetID=_downloadStateByAssetID;
 @property (nonatomic) BOOL encounteredAssertionUpdateError; // @synthesize encounteredAssertionUpdateError=_encounteredAssertionUpdateError;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSMutableDictionary *remainingAssetsByAssertion; // @synthesize remainingAssetsByAssertion=_remainingAssetsByAssertion;
+@property (readonly, nonatomic) NSMutableDictionary *remainingAssetsByQueryId; // @synthesize remainingAssetsByQueryId=_remainingAssetsByQueryId;
 @property (readonly) Class superclass;
 
 + (id)latestAssetsOnlyFromAssets:(id)arg1;
@@ -32,16 +36,22 @@
 - (void).cxx_destruct;
 - (id)allContentItemsMatchingQuery:(id)arg1 error:(id *)arg2;
 - (id)assetsForQuery:(id)arg1 errorPtr:(id *)arg2;
-- (void)beginDownloadForAssertion:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)beginDownloadForAssertions:(id)arg1;
-- (void)beginDownloadForAssets:(id)arg1 withPolicy:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)beginDownloadForAssertion:(id)arg1 discretionaryDownload:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)beginDownloadForAssertions:(id)arg1 discretionaryDownload:(BOOL)arg2;
+- (void)beginDownloadForAssets:(id)arg1 withPolicy:(id)arg2 discretionaryDownload:(BOOL)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)contentItemsFromAssets:(id)arg1 matchingFilter:(id)arg2;
-- (id)downloadOptionsForPolicy:(id)arg1;
+- (void)didChangeDownloadState:(unsigned long long)arg1 forAsset:(id)arg2;
+- (void)didCompleteDownloadForAssertion:(id)arg1 error:(id)arg2;
+- (void)didUpdateCatalogWithError:(id)arg1;
+- (id)downloadOptionsForPolicy:(id)arg1 discretionaryDownload:(BOOL)arg2;
+- (id)init;
+- (id)performAssetsForQuery:(id)arg1 errorPtr:(id *)arg2;
 - (void)removeAssets:(id)arg1;
 - (void)removeAssetsForAssertions:(id)arg1;
 - (void)removeOldAssetsForAssertions:(id)arg1;
+- (void)serverDidUpdateAssetsWithType:(id)arg1;
 - (BOOL)shouldMatchAttributeValue:(id)arg1 givenValue:(id)arg2;
-- (void)updateCatalogForAssetTypes:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)updateCatalogForAssetTypes:(id)arg1 discretionaryDownload:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 
 @end
 

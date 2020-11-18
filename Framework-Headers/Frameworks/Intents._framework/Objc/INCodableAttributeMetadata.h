@@ -9,7 +9,7 @@
 #import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttribute, INCodableLocalizationTable, NSString;
+@class INCodableAttribute, INCodableDescription, INCodableLocalizationTable, NSString;
 
 @interface INCodableAttributeMetadata : NSObject <NSSecureCoding, INCodableCoding>
 {
@@ -19,13 +19,12 @@
     INCodableAttribute *_codableAttribute;
 }
 
+@property (readonly, weak, nonatomic) INCodableDescription *_codableDescription;
 @property (readonly, copy, nonatomic) INCodableLocalizationTable *_localizationTable;
-@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, weak, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedPlaceholder;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
@@ -34,9 +33,14 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionPlaceholderIDKey;
+- (id)__INCodableDescriptionPlaceholderKey;
+- (id)__INIntentResponseCodableDescriptionPlaceholderIDKey;
+- (id)__INIntentResponseCodableDescriptionPlaceholderKey;
+- (id)__INTypeCodableDescriptionPlaceholderIDKey;
+- (id)__INTypeCodableDescriptionPlaceholderKey;
 - (id)_localizedDialogTokensWithLocalizer:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

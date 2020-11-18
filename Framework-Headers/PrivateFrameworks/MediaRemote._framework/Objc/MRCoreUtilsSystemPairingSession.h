@@ -10,20 +10,15 @@
 {
 }
 
-+ (id)globalPairingQueue;
 + (id)pairingManager;
 + (BOOL)systemPairingAvailable;
-- (void *)_createPeerDeviceFromPairedPeer:(id)arg1;
 - (id)addPeer;
 - (id)initializePairingSession:(struct PairingSessionPrivate *)arg1;
 - (id)mediaRemotePairedDevices;
 - (id)pairedPeerDevice;
 - (id)pairedPeerDevices;
-- (id)pairedPeerFromPeerDevice:(void *)arg1;
 - (id)removePeer;
 - (BOOL)shouldAutoRetryPairingExchange:(id)arg1;
-- (BOOL)shouldRetry;
-- (id)updateMediaRemotePairedDevice:(id)arg1;
 - (id)updatePeer;
 
 @end

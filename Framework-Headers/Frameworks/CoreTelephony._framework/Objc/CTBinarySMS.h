@@ -27,7 +27,7 @@
 @property (copy, nonatomic) NSString *smscAddress; // @synthesize smscAddress=_smscAddress;
 @property (nonatomic) int srcPort; // @synthesize srcPort=_srcPort;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (BOOL)isValid;
 

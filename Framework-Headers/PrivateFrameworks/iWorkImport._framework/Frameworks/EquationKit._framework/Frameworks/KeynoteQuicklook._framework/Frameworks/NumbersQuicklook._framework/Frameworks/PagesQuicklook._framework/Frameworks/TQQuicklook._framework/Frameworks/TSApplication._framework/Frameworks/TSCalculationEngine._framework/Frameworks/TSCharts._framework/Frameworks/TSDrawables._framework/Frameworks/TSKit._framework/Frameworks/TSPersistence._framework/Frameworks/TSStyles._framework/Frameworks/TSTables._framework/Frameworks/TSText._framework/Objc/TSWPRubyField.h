@@ -27,7 +27,7 @@
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct RubyFieldArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 - (int)styleAttributeArrayKind;
 - (BOOL)supportsDeepCopyForUndo;
 - (id)text;

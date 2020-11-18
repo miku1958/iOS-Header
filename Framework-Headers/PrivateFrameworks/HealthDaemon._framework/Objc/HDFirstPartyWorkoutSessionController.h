@@ -31,6 +31,7 @@
 - (BOOL)endWithError:(id *)arg1;
 - (void)finish;
 - (void)finishAggregationWithDate:(id)arg1;
+- (void)generateConfigurationUpdate:(id)arg1;
 - (void)generateError:(id)arg1;
 - (void)generateEvent:(id)arg1;
 - (void)generateMetadata:(id)arg1;
@@ -42,6 +43,7 @@
 - (BOOL)startActivityWithDate:(id)arg1 error:(id *)arg2;
 - (BOOL)stopActivityWithDate:(id)arg1 error:(id *)arg2;
 - (BOOL)storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)workoutSessionServer:(id)arg1 accumulatorDidChange:(id)arg2;
 - (void)workoutSessionServer:(id)arg1 didChangeConfiguration:(id)arg2;
 - (void)workoutSessionServer:(id)arg1 didTransitionFromState:(long long)arg2 toState:(long long)arg3 date:(id)arg4;

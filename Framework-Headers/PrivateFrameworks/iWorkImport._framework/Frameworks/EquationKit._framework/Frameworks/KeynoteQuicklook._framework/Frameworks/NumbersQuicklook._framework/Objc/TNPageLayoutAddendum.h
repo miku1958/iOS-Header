@@ -12,6 +12,7 @@
 
 - (struct CGColor *)backgroundColor;
 - (Class)contentLayoutClassOverride;
+- (void)updateChildrenFromInfo;
 - (BOOL)wantsOverlayContentLayout;
 
 @end

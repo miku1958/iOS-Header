@@ -33,7 +33,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_completeChange:(id)arg1;
 - (id)_propertiesForChange:(id)arg1;
 - (id)_timingStatisticStatuses;
 - (id)allChangesWithClass:(Class)arg1 relatedScopedIdentifier:(id)arg2;
@@ -48,11 +47,12 @@
 - (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (BOOL)discardChangeWithScopedIdentifier:(id)arg1 error:(id *)arg2;
 - (unsigned long long)effectiveResourceSizeToUploadForUploadIdentifier:(id)arg1;
+- (BOOL)getRelatedScopedIdentifier:(id *)arg1 forRecordWithScopedIdentifier:(id)arg2;
 - (BOOL)hasChangesInScopeWithIdentifier:(id)arg1;
+- (BOOL)hasChangesWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
 - (BOOL)hasChangesWithScopeFilter:(id)arg1;
 - (BOOL)hasSomeChangeWithScopedIdentifier:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
-- (BOOL)isEmpty;
 - (BOOL)reinjectChange:(id)arg1 dequeueOrder:(long long)arg2 overwrittenRecord:(BOOL *)arg3 error:(id *)arg4;
 - (BOOL)reinjectExtractedBatch:(id)arg1 overwrittenRecordIdentifiers:(id *)arg2 error:(id *)arg3;
 - (BOOL)removeChange:(id)arg1 error:(id *)arg2;

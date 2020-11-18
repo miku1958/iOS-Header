@@ -23,11 +23,11 @@
     NSString *_matchPath;
     NSArray *_matchDomains;
     NSArray *_matchTools;
-    NSArray *_additionalExecutables;
+    NSArray *_cachedMachOUUIDs;
     NSArray *_matchAccountIdentifiers;
 }
 
-@property (copy) NSArray *additionalExecutables; // @synthesize additionalExecutables=_additionalExecutables;
+@property (strong) NSArray *cachedMachOUUIDs; // @synthesize cachedMachOUUIDs=_cachedMachOUUIDs;
 @property (copy) NSArray *matchAccountIdentifiers; // @synthesize matchAccountIdentifiers=_matchAccountIdentifiers;
 @property (readonly) NSString *matchDesignatedRequirement; // @synthesize matchDesignatedRequirement=_matchDesignatedRequirement;
 @property (copy) NSArray *matchDomains; // @synthesize matchDomains=_matchDomains;

@@ -70,6 +70,7 @@
 - (void)dealloc;
 - (void)delayEndDate:(CDUnknownBlockType)arg1;
 - (void)demoteApps:(unsigned long long)arg1;
+- (void)descriptor:(CDUnknownBlockType)arg1;
 - (void)deviceHasSufficientSpaceForDownload:(CDUnknownBlockType)arg1;
 - (void)download:(CDUnknownBlockType)arg1;
 - (void)downloadAndInstallState:(CDUnknownBlockType)arg1;
@@ -93,11 +94,13 @@
 - (void)installDidStart:(id)arg1;
 - (void)installPolicyDidChange:(id)arg1;
 - (void)installUpdate:(CDUnknownBlockType)arg1;
+- (void)installUpdateWithInstallOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)installUpdateWithOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)installationConstraintMonitor:(id)arg1 constraintsDidChange:(unsigned long long)arg2;
 - (void)installationConstraintObserverDidRemoveAllObserverBlocks:(id)arg1;
 - (void)invalidate;
 - (void)isAutoUpdateEnabled:(CDUnknownBlockType)arg1;
+- (BOOL)isAutoUpdateScheduled;
 - (void)isAutoUpdateScheduled:(CDUnknownBlockType)arg1;
 - (BOOL)isAutomaticDownloadEnabled;
 - (BOOL)isAutomaticUpdateV2Enabled;
@@ -120,12 +123,15 @@
 - (void)scanForUpdates:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)scanRequestDidFinishForOptions:(id)arg1 update:(id)arg2 error:(id)arg3;
 - (void)scanRequestDidStartForOptions:(id)arg1;
+- (void)scheduleDateActivity:(long long)arg1;
 - (void)setMandatorySoftwareUpdateDictionary:(id)arg1;
 - (void)slaVersion:(CDUnknownBlockType)arg1;
 - (void)startDownload:(CDUnknownBlockType)arg1;
 - (void)startDownloadWithMetadata:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)startDownloadWithOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (unsigned long long)totalPurgeableSpace;
 - (void)updateDownloadMetadata:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)updateDownloadOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 
 @end
 

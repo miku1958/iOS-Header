@@ -9,7 +9,7 @@
 #import <UserActivity/NSCopying-Protocol.h>
 #import <UserActivity/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SFPeerDevice, _LSUserActivityWasContinuedInfo;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SFPeerDevice, UAUserActivityAnalyticsInfo;
 
 @interface UAUserActivityInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -25,6 +25,7 @@
     BOOL _payloadAvailable;
     BOOL _payloadRequested;
     BOOL _active;
+    BOOL _universalLink;
     NSUUID *_uuid;
     unsigned long long _type;
     NSString *_title;
@@ -48,7 +49,7 @@
     SFPeerDevice *_peerDevice;
     NSString *_peerDeviceType;
     NSString *_bundleIdentifier;
-    _LSUserActivityWasContinuedInfo *_wasContinuedInfo;
+    UAUserActivityAnalyticsInfo *_wasContinuedInfo;
 }
 
 @property BOOL active; // @synthesize active=_active;
@@ -83,8 +84,9 @@
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy) NSString *title; // @synthesize title=_title;
 @property unsigned long long type; // @synthesize type=_type;
+@property (getter=isUniversalLink) BOOL universalLink; // @synthesize universalLink=_universalLink;
 @property (copy) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property (strong) _LSUserActivityWasContinuedInfo *wasContinuedInfo; // @synthesize wasContinuedInfo=_wasContinuedInfo;
+@property (strong) UAUserActivityAnalyticsInfo *wasContinuedInfo; // @synthesize wasContinuedInfo=_wasContinuedInfo;
 @property (copy) NSURL *webpageURL; // @synthesize webpageURL=_webpageURL;
 @property (copy) NSDate *when; // @synthesize when=_when;
 

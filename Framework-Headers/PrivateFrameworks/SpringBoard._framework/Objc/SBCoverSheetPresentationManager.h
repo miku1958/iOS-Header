@@ -36,6 +36,7 @@
     BOOL _centerFollowsFinger;
     BOOL _animateIconsOnPresentationToo;
     BOOL _iconAnimatorNeedsAnimating;
+    BOOL _wantsHomeGestureOwnership;
     SBWindow *_coverSheetWindow;
     SBWindow *_secureAppWindow;
     SBCoverSheetSlidingViewController *_secureAppSlidingViewController;
@@ -150,6 +151,7 @@
 @property (weak, nonatomic) CSCoverSheetTransitionSettings *transitionSettings; // @synthesize transitionSettings=_transitionSettings;
 @property (nonatomic) unsigned long long transitionType; // @synthesize transitionType=_transitionType;
 @property (strong, nonatomic, setter=setUILockStateProvider:) id<SBUILockStateProvider> uiLockStateProvider; // @synthesize uiLockStateProvider=_uiLockStateProvider;
+@property (nonatomic) BOOL wantsHomeGestureOwnership; // @synthesize wantsHomeGestureOwnership=_wantsHomeGestureOwnership;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -187,7 +189,7 @@
 - (void)_prepareSecureAppViewController;
 - (void)_prepareSecureAppWindowForDisplay;
 - (void)_relinquishAsynchronousRenderingAssertion;
-- (void)_relinquishHomeGesture;
+- (void)_relinquishHomeGestureOwnership;
 - (void)_requestHomeGestureOwnership;
 - (void)_setCoverSheet:(BOOL)arg1 windowVisible:(BOOL)arg2 forReason:(id)arg3;
 - (void)_setCoverSheetWindowVisible:(BOOL)arg1 forReason:(id)arg2;
@@ -204,6 +206,9 @@
 - (void)_updateVisibilityOfWindow:(id)arg1 forReasons:(id)arg2;
 - (void)assistantDidDisappear:(id)arg1;
 - (void)authenticationStateMayHaveChangedFromSource:(int)arg1;
+- (void)conformsToCSAppearanceProviding;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)coverSheetSlidingViewController:(id)arg1 animateForGestureActive:(BOOL)arg2 withProgress:(double)arg3 beginBlock:(CDUnknownBlockType)arg4 endBlock:(CDUnknownBlockType)arg5;
 - (void)coverSheetSlidingViewController:(id)arg1 animationTickedWithProgress:(double)arg2 coverSheetFrame:(struct CGRect)arg3 gestureActive:(BOOL)arg4 forPresentationValue:(BOOL)arg5;
 - (void)coverSheetSlidingViewController:(id)arg1 committingToEndPresented:(BOOL)arg2;

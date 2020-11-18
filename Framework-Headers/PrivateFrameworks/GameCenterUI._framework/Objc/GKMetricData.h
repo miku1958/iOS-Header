@@ -25,7 +25,7 @@
 @property (strong, nonatomic) GKGridLayoutMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) GKSectionMetrics *sectionMetrics;
 
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)addAttributes:(id)arg1 forLocation:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)description;

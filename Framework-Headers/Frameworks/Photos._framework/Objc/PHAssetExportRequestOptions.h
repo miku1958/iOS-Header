@@ -15,24 +15,34 @@
     BOOL _flattenSlomoVideos;
     BOOL _dontAllowRAW;
     BOOL _shouldStripLocation;
-    BOOL _ensureSRGBCompatibleColorSpace;
+    BOOL _shouldStripCaption;
+    BOOL _shouldStripAccessibilityDescription;
     BOOL _disableMetadataCorrections;
+    BOOL _shouldBundleComplexAssetResources;
     BOOL _forceDateTimeMetadataBaking;
     BOOL _forceLocationMetadataBaking;
+    BOOL _forceCaptionMetadataBaking;
+    BOOL _forceAccessibilityDescriptionMetadataBaking;
     long long _variant;
     NSString *_videoExportPreset;
     NSString *_videoExportFileType;
+    NSString *_customFilenameBase;
     long long _locationComparisonStrategy;
 }
 
+@property (copy, nonatomic) NSString *customFilenameBase; // @synthesize customFilenameBase=_customFilenameBase;
 @property (nonatomic) BOOL disableMetadataCorrections; // @synthesize disableMetadataCorrections=_disableMetadataCorrections;
 @property (nonatomic) BOOL dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
-@property (nonatomic) BOOL ensureSRGBCompatibleColorSpace; // @synthesize ensureSRGBCompatibleColorSpace=_ensureSRGBCompatibleColorSpace;
 @property (nonatomic) BOOL flattenSlomoVideos; // @synthesize flattenSlomoVideos=_flattenSlomoVideos;
+@property (nonatomic) BOOL forceAccessibilityDescriptionMetadataBaking; // @synthesize forceAccessibilityDescriptionMetadataBaking=_forceAccessibilityDescriptionMetadataBaking;
+@property (nonatomic) BOOL forceCaptionMetadataBaking; // @synthesize forceCaptionMetadataBaking=_forceCaptionMetadataBaking;
 @property (nonatomic) BOOL forceDateTimeMetadataBaking; // @synthesize forceDateTimeMetadataBaking=_forceDateTimeMetadataBaking;
 @property (nonatomic) BOOL forceLocationMetadataBaking; // @synthesize forceLocationMetadataBaking=_forceLocationMetadataBaking;
 @property (nonatomic) BOOL includeAllAssetResources; // @synthesize includeAllAssetResources=_includeAllAssetResources;
 @property (nonatomic) long long locationComparisonStrategy; // @synthesize locationComparisonStrategy=_locationComparisonStrategy;
+@property (nonatomic) BOOL shouldBundleComplexAssetResources; // @synthesize shouldBundleComplexAssetResources=_shouldBundleComplexAssetResources;
+@property (nonatomic) BOOL shouldStripAccessibilityDescription; // @synthesize shouldStripAccessibilityDescription=_shouldStripAccessibilityDescription;
+@property (nonatomic) BOOL shouldStripCaption; // @synthesize shouldStripCaption=_shouldStripCaption;
 @property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property (nonatomic) BOOL treatLivePhotoAsStill; // @synthesize treatLivePhotoAsStill=_treatLivePhotoAsStill;
 @property (nonatomic) long long variant; // @synthesize variant=_variant;

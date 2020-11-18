@@ -23,6 +23,7 @@
     NTKColoringLabel *_lapTimeLabel;
     _LapLabel *_lapLabel;
     NSTimer *_resetLabelTimer;
+    NSDate *_tritiumDate;
     unsigned long long _currentMode;
     CLKRelativeDateTextProvider *_totalTimeTextProvider;
     CLKRelativeDateTextProvider *_lapTimeTextProvider;
@@ -43,6 +44,7 @@
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyDataMode;
 - (void)_applyFrozenLapTimeWithTimeInterval:(double)arg1;
+- (void)_applyModeForStopwatchModelAnimated:(BOOL)arg1;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyPaletteToTimeView:(id)arg1;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -73,7 +75,6 @@
 - (BOOL)_isComplicationSlotInsideDial:(id)arg1;
 - (BOOL)_isStopwatchUIVisible;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -83,6 +84,7 @@
 - (void)_layoutForegroundContainerView;
 - (void)_layoutStopwatchTimeViews;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadChronoModeViews;
 - (void)_loadLayoutRules;
 - (void)_loadScene;

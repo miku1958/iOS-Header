@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (double)_totalKeyPaddingForOrientation:(long long)arg1;
 + (void)adjustHorizontalPaddingForKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (id)cachedControlKeySetsForTransformationContext:(id)arg1;
++ (struct CGSize)layoutScaleFactorForContext:(id)arg1;
 + (id)transformKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (void)transformKeysForFiveRowKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (void)transformKeysForFourRowKeyplane:(id)arg1 withTransformationContext:(id)arg2;

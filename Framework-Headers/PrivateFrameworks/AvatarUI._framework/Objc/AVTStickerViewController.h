@@ -12,11 +12,12 @@
 #import <AvatarUI/AVTPaddleViewDelegate-Protocol.h>
 #import <AvatarUI/AVTPresenterDelegate-Protocol.h>
 #import <AvatarUI/AVTStickerPagingControllerDelegate-Protocol.h>
+#import <AvatarUI/AVTUIViewSnapshotProvider-Protocol.h>
 
 @class AVTAvatarPickerDataSource, AVTAvatarRecordDataSource, AVTPaddleView, AVTSimpleAvatarPicker, AVTStickerPagingController, AVTUIEnvironment, NSString, UIView;
 @protocol AVTAvatarStore, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTUILogger;
 
-@interface AVTStickerViewController : UIViewController <AVTStickerPagingControllerDelegate, AVTAvatarPickerDelegate, AVTAvatarRecordDataSourceObserver, AVTPresenterDelegate, AVTPaddleViewDelegate, AVTObjectViewController>
+@interface AVTStickerViewController : UIViewController <AVTStickerPagingControllerDelegate, AVTAvatarPickerDelegate, AVTAvatarRecordDataSourceObserver, AVTPresenterDelegate, AVTPaddleViewDelegate, AVTObjectViewController, AVTUIViewSnapshotProvider>
 {
     BOOL _allowEditing;
     BOOL _allowPeel;
@@ -33,7 +34,7 @@
     AVTPaddleView *_paddleView;
 }
 
-@property (readonly, nonatomic) BOOL allowEditing; // @synthesize allowEditing=_allowEditing;
+@property (nonatomic) BOOL allowEditing; // @synthesize allowEditing=_allowEditing;
 @property (readonly, nonatomic) BOOL allowPeel; // @synthesize allowPeel=_allowPeel;
 @property (strong, nonatomic) AVTSimpleAvatarPicker *avatarPicker; // @synthesize avatarPicker=_avatarPicker;
 @property (strong, nonatomic) AVTAvatarPickerDataSource *avatarPickerDataSource; // @synthesize avatarPickerDataSource=_avatarPickerDataSource;
@@ -52,9 +53,10 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *view;
 
-+ (double)headerHeightForWidth:(double)arg1 interitemSpacing:(double)arg2;
++ (double)headerEdgeMarginForEnvironment:(id)arg1;
++ (double)headerHeightForWidth:(double)arg1 interitemSpacing:(double)arg2 environment:(id)arg3;
 + (id)inUseStickerPack;
-+ (unsigned long long)minimumNumberOfVisibleItemForWidth:(double)arg1;
++ (unsigned long long)minimumNumberOfVisibleItemForWidth:(double)arg1 environment:(id)arg2;
 + (id)stickerViewControllerForStore:(id)arg1 allowEditing:(BOOL)arg2 allowPeel:(BOOL)arg3;
 + (id)stickersAvatarsFetchRequest;
 - (void).cxx_destruct;
@@ -82,6 +84,7 @@
 - (void)selectRecordForIdentifier:(id)arg1;
 - (BOOL)shouldPresentPaddleView;
 - (void)significantRecordChangeInDataSource:(id)arg1;
+- (void)snapshotInBlock:(CDUnknownBlockType)arg1;
 - (void)stickerControllerDidEnterBackground;
 - (void)stickerControllerWillEnterForeground;
 - (void)stickerPagingController:(id)arg1 pageDidScrollToOffset:(struct CGPoint)arg2;
@@ -95,7 +98,6 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

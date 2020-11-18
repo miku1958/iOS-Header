@@ -16,10 +16,12 @@
     NSString *_clientID;
     long long _state;
     NSString *_transferState;
+    NSString *_origin;
     NSString *_primaryClientID;
 }
 
 @property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
+@property (strong, nonatomic) NSString *origin; // @synthesize origin=_origin;
 @property (strong, nonatomic) NSString *primaryClientID; // @synthesize primaryClientID=_primaryClientID;
 @property (copy, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 @property (nonatomic) long long state; // @synthesize state=_state;

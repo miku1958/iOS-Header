@@ -38,6 +38,7 @@
 + (id)predicateForExcludingMessagesInMailboxes:(id)arg1;
 + (id)predicateForExcludingMessagesInMailboxesWithObjectIDs:(id)arg1;
 + (id)predicateForExcludingMessagesInMailboxesWithTypes:(id)arg1;
++ (id)predicateForFlagColor:(unsigned long long)arg1;
 + (id)predicateForFlaggedMessages;
 + (id)predicateForIncludesMeMessages;
 + (id)predicateForMessagesInConversation:(long long)arg1;

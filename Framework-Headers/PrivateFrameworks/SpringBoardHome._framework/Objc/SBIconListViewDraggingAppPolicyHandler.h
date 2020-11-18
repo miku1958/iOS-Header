@@ -8,18 +8,20 @@
 
 #import <SpringBoardHome/SBIconListViewDraggingPolicyHandling-Protocol.h>
 
-@class NSMapTable, NSString, SBIconListViewDraggingDestinationDelegate;
+@class NSMapTable, NSString, SBHIconEditingSettings, SBIconListViewDraggingDestinationDelegate;
 
 @interface SBIconListViewDraggingAppPolicyHandler : NSObject <SBIconListViewDraggingPolicyHandling>
 {
     NSMapTable *_dragContexts;
     SBIconListViewDraggingDestinationDelegate *_draggingDestinationDelegate;
+    SBHIconEditingSettings *_iconEditingSettings;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) SBIconListViewDraggingDestinationDelegate *draggingDestinationDelegate; // @synthesize draggingDestinationDelegate=_draggingDestinationDelegate;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBHIconEditingSettings *iconEditingSettings; // @synthesize iconEditingSettings=_iconEditingSettings;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -27,11 +29,13 @@
 - (void)_cancelDragPauseTimers;
 - (id)_destinationFolderIconViewForDragItem:(id)arg1 iconIndexPath:(id *)arg2 folderRelativeIconIndexPath:(id *)arg3;
 - (void)_dragPauseTimerFired:(id)arg1;
+- (id)_dropInteraction:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (id)_iconForDragItem:(id)arg1;
-- (id)_iconViewForDragItem:(id)arg1;
+- (id)_iconViewForDragItem:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_resetDragPauseTimerForPoint:(struct CGPoint)arg1 dropSession:(id)arg2;
 - (void)_updateDragPauseForDropSession:(id)arg1;
 - (BOOL)allowsSpringLoadForSession:(id)arg1 onIconView:(id)arg2;
+- (long long)dragPlacementForDropSession:(id)arg1 iconListView:(id)arg2 point:(struct CGPoint)arg3 icon:(id)arg4 options:(unsigned long long)arg5;
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -41,6 +45,7 @@
 - (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)handleSpringLoadOnIconView:(id)arg1;
+- (id)init;
 
 @end
 

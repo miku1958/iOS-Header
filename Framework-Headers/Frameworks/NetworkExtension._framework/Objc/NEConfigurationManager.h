@@ -12,11 +12,11 @@
 @interface NEConfigurationManager : NSObject
 {
     NSString *_description;
-    NEHelper *_helper;
     BOOL _hasReadPermission;
     BOOL _isVPNPublicAPI;
     BOOL _isVPNPrivateAPI;
     BOOL _isNEHelper;
+    BOOL _isSynchronous;
     BOOL _hasVPNAPIEntitlement;
     int _changedNotifyToken;
     NSString *_pluginType;
@@ -29,6 +29,7 @@
     NSMutableDictionary *_loadedConfigurations;
     NSKeyedUnarchiver *_decoder;
     long long _generation;
+    NEHelper *_helper;
     NSData *_SCPreferencesSignature;
     NSUUID *_userUUID;
     long long _configurationChangeSource;
@@ -44,9 +45,10 @@
 @property long long generation; // @synthesize generation=_generation;
 @property BOOL hasReadPermission; // @synthesize hasReadPermission=_hasReadPermission;
 @property BOOL hasVPNAPIEntitlement; // @synthesize hasVPNAPIEntitlement=_hasVPNAPIEntitlement;
-@property (readonly) NEHelper *helper;
+@property (strong) NEHelper *helper; // @synthesize helper=_helper;
 @property (copy) CDUnknownBlockType incomingMessageHandler;
 @property BOOL isNEHelper; // @synthesize isNEHelper=_isNEHelper;
+@property (nonatomic) BOOL isSynchronous; // @synthesize isSynchronous=_isSynchronous;
 @property BOOL isVPNPrivateAPI; // @synthesize isVPNPrivateAPI=_isVPNPrivateAPI;
 @property BOOL isVPNPublicAPI; // @synthesize isVPNPublicAPI=_isVPNPublicAPI;
 @property (strong) NSMutableDictionary *loadedConfigurations; // @synthesize loadedConfigurations=_loadedConfigurations;
@@ -73,6 +75,8 @@
 - (void)didLoadConfiguration:(id)arg1;
 - (void)didLoadConfiguration:(id)arg1 withSignature:(id)arg2;
 - (id)errorWithCode:(long long)arg1 specifics:(id)arg2;
+- (void)executeBlock:(CDUnknownBlockType)arg1;
+- (void)executeCallbackOnQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)fetchClientListenerWithBundleID:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)filterIndexWithFilter:(id)arg1;
@@ -84,6 +88,7 @@
 - (void)handlePluginTypesRemoved:(id)arg1 configuration:(id)arg2 vpn:(id)arg3 updateSCPreferences:(struct __SCPreferences *)arg4;
 - (id)init;
 - (id)initForAllUsers;
+- (id)initSynchronous;
 - (id)initWithPluginType:(id)arg1;
 - (id)initWithUserUUID:(id)arg1;
 - (void)loadConfigurationAndUserWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -92,6 +97,7 @@
 - (void)loadConfigurationsInternal:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadConfigurationsWithCompletionQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)loadIndexWithFilter:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)loadLegacyPluginConfigurationsWithCompletionQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)makeMutableCopyOfIndex:(id)arg1;
 - (void)notifyChanges;
 - (void)postChangeNotification;
@@ -103,17 +109,19 @@
 - (void)removeConfiguration:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)removeConfigurationFromDisk:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)removeConfigurationFromDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2;
+- (void)repopulateNetworkPrivacyConfigurationResetAll:(BOOL)arg1;
 - (BOOL)resetKeychainItemsAfterProtocolChange:(id)arg1 newConfiguration:(id)arg2;
 - (void)saveConfiguration:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)saveConfigurationToDisk:(id)arg1 currentSignature:(id)arg2 userUUID:(id)arg3 isUpgrade:(BOOL)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)saveConfigurationToDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2 currentSignature:(id)arg3 userUUID:(id)arg4 notifyNow:(BOOL)arg5 isUpgrade:(BOOL)arg6;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)setChangedQueue:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
-- (void)showObsoleteAppAlert;
+- (void)showLocalNetworkAlertForApp:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)showLocalNetworkAlertForApp:(id)arg1 withCompletionQueue:(id)arg2 query:(id)arg3 hasEntitlement:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)syncConfigurationsWithSC:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)triggerLocalAuthenticationForConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateSCPreferencesSignatureOnDisk;
-- (void)upgradeLegacyPluginConfigurationsWithUpgradeInfo:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)upgradeLegacyPluginConfigurations:(id)arg1 withUpgradeInfo:(id)arg2 completionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 
 @end
 

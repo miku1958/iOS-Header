@@ -13,16 +13,15 @@
 @interface BSServiceQuality : NSObject <NSCopying>
 {
     NSString *_serviceClassName;
-    unsigned int _serviceClass;
-    int _relativePriority;
     BOOL _singleton;
     BOOL _main;
+    unsigned int _serviceClass;
+    int _relativePriority;
 }
 
 @property (readonly, nonatomic) int relativePriority; // @synthesize relativePriority=_relativePriority;
 @property (readonly, nonatomic) unsigned int serviceClass; // @synthesize serviceClass=_serviceClass;
 
-+ (id)_serviceWithClass:(unsigned int)arg1 relativePriority:(int)arg2 main:(BOOL)arg3;
 + (id)background;
 + (id)main;
 + (id)serviceWithClass:(unsigned int)arg1;
@@ -31,7 +30,6 @@
 + (id)userInteractive;
 + (id)utility;
 - (void).cxx_destruct;
-- (id)_initWithClass:(unsigned int)arg1 name:(id)arg2 relativePriority:(int)arg3 singleton:(BOOL)arg4 main:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

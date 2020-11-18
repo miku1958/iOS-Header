@@ -22,6 +22,8 @@
 - (void).cxx_destruct;
 - (void)_computeCoreSpotlightIDsForBookmarks:(id)arg1;
 - (void)_computeCoreSpotlightIndexingRequirementsForAllBookmarksIDs:(id)arg1 indexedBookmarksIDs:(id)arg2 outIndexIDs:(id *)arg3 outRemoveIDs:(id *)arg4;
+- (id)_contentDescriptionForURL:(id)arg1;
+- (void)_donateDataForPageWithURL:(id)arg1 fullPageText:(id)arg2 readerText:(id)arg3 autocompleteTriggers:(id)arg4;
 - (void)_indexCoreSpotlightData:(id)arg1;
 - (void)_indexHistoryItemsToCoreSpotlight:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_indexedBookmarksIDs:(id *)arg1;

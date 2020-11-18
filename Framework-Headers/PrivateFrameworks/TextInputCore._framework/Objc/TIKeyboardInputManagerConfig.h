@@ -28,6 +28,7 @@
     BOOL _shouldIgnoreCPRequirements;
     BOOL _usesCJContinuousPath;
     BOOL _testing;
+    BOOL _skipLanguageLayoutCheckCPML;
     BOOL _usesCustomNgramModel;
     BOOL _usesCustomStaticDictionary;
     BOOL _usesDODMLLogging;
@@ -44,6 +45,7 @@
     unsigned long long _maxWordsPerPrediction;
     NSDictionary *_continuousPathParams;
     double _continuousPathLanguageWeight;
+    long long _cpCandidatesCount;
     unsigned long long _sensorKitWordsThreshold;
 }
 
@@ -56,6 +58,7 @@
 @property (nonatomic) int continuousPathEnabledAlgorithms; // @synthesize continuousPathEnabledAlgorithms=_continuousPathEnabledAlgorithms;
 @property (nonatomic) double continuousPathLanguageWeight; // @synthesize continuousPathLanguageWeight=_continuousPathLanguageWeight;
 @property (copy, nonatomic) NSDictionary *continuousPathParams; // @synthesize continuousPathParams=_continuousPathParams;
+@property (nonatomic) long long cpCandidatesCount; // @synthesize cpCandidatesCount=_cpCandidatesCount;
 @property (nonatomic) int cpConfidenceModelType; // @synthesize cpConfidenceModelType=_cpConfidenceModelType;
 @property (copy, nonatomic) NSString *dynamicResourcePath; // @synthesize dynamicResourcePath=_dynamicResourcePath;
 @property (strong, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
@@ -67,6 +70,7 @@
 @property (nonatomic) unsigned long long sensorKitWordsThreshold; // @synthesize sensorKitWordsThreshold=_sensorKitWordsThreshold;
 @property (copy, nonatomic) NSString *shapeStoreResourceDir; // @synthesize shapeStoreResourceDir=_shapeStoreResourceDir;
 @property (nonatomic) BOOL shouldIgnoreCPRequirements; // @synthesize shouldIgnoreCPRequirements=_shouldIgnoreCPRequirements;
+@property (nonatomic) BOOL skipLanguageLayoutCheckCPML; // @synthesize skipLanguageLayoutCheckCPML=_skipLanguageLayoutCheckCPML;
 @property (copy, nonatomic) NSString *staticDictionaryPath; // @synthesize staticDictionaryPath=_staticDictionaryPath;
 @property (nonatomic, getter=isTesting) BOOL testing; // @synthesize testing=_testing;
 @property (nonatomic) BOOL usesAdaptation; // @synthesize usesAdaptation=_usesAdaptation;

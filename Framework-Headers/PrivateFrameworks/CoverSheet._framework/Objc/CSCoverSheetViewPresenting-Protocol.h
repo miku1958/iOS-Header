@@ -16,7 +16,7 @@
 @property (readonly, copy, nonatomic) CSBehavior *activeBehavior;
 @property (readonly, copy, nonatomic) CSPresentation *externalPresentation;
 
-- (void)_conformsToCSCoverSheetViewPresenting;
+- (void)conformsToCSCoverSheetViewPresenting;
 - (void)updateAppearanceForController:(id<CSCoverSheetViewControlling>)arg1;
 - (void)updateAppearanceForController:(id<CSCoverSheetViewControlling>)arg1 withAnimationSettings:(BSAnimationSettings *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)updateBehaviorForController:(id<CSCoverSheetViewControlling>)arg1;

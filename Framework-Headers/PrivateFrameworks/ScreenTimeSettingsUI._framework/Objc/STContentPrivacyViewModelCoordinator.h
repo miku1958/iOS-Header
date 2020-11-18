@@ -42,14 +42,14 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSManagedObjectID *userObjectID; // @synthesize userObjectID=_userObjectID;
 @property (strong, nonatomic) STContentPrivacyViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
++ (id)_localDeviceRestrictions;
++ (id)_remoteDeviceRestrictions;
 - (void).cxx_destruct;
 - (id)_activationIdentifier;
 - (void)_contactStoreDidChange:(id)arg1;
 - (id)_createUnrestrictedConfiguration:(id)arg1;
 - (id)_identifierForConfigurationType:(id)arg1;
-- (id)_localDeviceRestrictions;
 - (void)_registerForPersistentStoreNotifications;
-- (id)_remoteDeviceRestrictions;
 - (id)_restrictionsForWebFilterState:(unsigned long long)arg1;
 - (void)_setValue:(id)arg1 forMCFeature:(id)arg2;
 - (void)_setValue:(id)arg1 forSBCapability:(id)arg2;

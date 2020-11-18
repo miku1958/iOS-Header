@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIImage, UIScrollView;
+@class NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIContextMenuInteraction, UIImage, UIScrollView;
 @protocol PXAssetImportStatusManager;
 
 @protocol PXOneUpPresentationDelegate <NSObject>
@@ -15,10 +15,16 @@
 - (long long)oneUpPresentationOrigin:(PXOneUpPresentation *)arg1;
 
 @optional
+- (BOOL)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsActionsForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (BOOL)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsPreviewCommitingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (BOOL)oneUpPresentation:(PXOneUpPresentation *)arg1 canStartPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (BOOL)oneUpPresentation:(PXOneUpPresentation *)arg1 commitPreviewForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (UIImage *)oneUpPresentation:(PXOneUpPresentation *)arg1 currentImageForAssetReference:(PXAssetReference *)arg2;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 didEndPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (PXRegionOfInterest *)oneUpPresentation:(PXOneUpPresentation *)arg1 regionOfInterestForAssetReference:(PXAssetReference *)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 scrollAssetReferenceToVisible:(PXAssetReference *)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 setHiddenAssetReferences:(NSSet *)arg2;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 willStartPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (long long)oneUpPresentationActionContext:(PXOneUpPresentation *)arg1;
 - (PXAssetActionManager *)oneUpPresentationActionManager:(PXOneUpPresentation *)arg1;
 - (PXAssetActionManager *)oneUpPresentationActionManagerForPreviewing:(PXOneUpPresentation *)arg1;
@@ -29,5 +35,6 @@
 - (PXPhotosDetailsContext *)oneUpPresentationPhotosDetailsContext:(PXOneUpPresentation *)arg1;
 - (BOOL)oneUpPresentationShouldAutoPlay:(PXOneUpPresentation *)arg1;
 - (BOOL)oneUpPresentationShouldPreventShowInAllPhotosAction:(PXOneUpPresentation *)arg1;
+- (BOOL)oneUpPresentationWantsShowInLibraryButton:(PXOneUpPresentation *)arg1;
 @end
 

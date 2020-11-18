@@ -12,17 +12,17 @@ __attribute__((visibility("hidden")))
 @interface SYStoreResetSessionOwner : SYStoreSessionOwner
 {
     NSMutableArray *_buffer;
-    long long _bufferedState;
+    unsigned int _bufferedState;
     CDUnknownBlockType _fetchNextBatch;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType fetchNextBatch; // @synthesize fetchNextBatch=_fetchNextBatch;
 
 - (void).cxx_destruct;
-- (long long)_sendBufferedChanges:(CDUnknownBlockType)arg1;
+- (unsigned int)_sendBufferedChanges:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isResetSync;
-- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (unsigned int)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
 
 @end
 

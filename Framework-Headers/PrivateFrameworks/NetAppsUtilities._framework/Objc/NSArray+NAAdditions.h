@@ -11,6 +11,7 @@
 + (id)na_arrayWithSafeObject:(id)arg1;
 + (id)na_arrayWithTerminator:(id)arg1 nullableObjects:(id)arg2;
 - (BOOL)na_all:(CDUnknownBlockType)arg1;
+- (BOOL)na_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (BOOL)na_any:(CDUnknownBlockType)arg1;
 - (id)na_arrayByFlattening;
 - (id)na_arrayWithResultsOfBlock:(CDUnknownBlockType)arg1;

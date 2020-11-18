@@ -11,15 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface Core_Audio_IO_Gateway : Core_Audio_Gateway <Core_Audio_IO>
 {
-    struct Client_Side_IO_Gateway *_client_gateway;
+    shared_ptr_6f98d2b6 _client_gateway;
 }
 
-@property (nonatomic) struct Client_Side_IO_Gateway *client_gateway; // @synthesize client_gateway=_client_gateway;
+@property (nonatomic) shared_ptr_6f98d2b6 client_gateway; // @synthesize client_gateway=_client_gateway;
 
-- (void)handle_io_message:(unsigned int)arg1 with:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)handle_io_message:(struct Device_Token)arg1 with:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)handle_server_disconnected;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)start_after_io_device_change:(unsigned int)arg1;
+- (void)start_after_io_device_change:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)stop_before_io_device_change:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

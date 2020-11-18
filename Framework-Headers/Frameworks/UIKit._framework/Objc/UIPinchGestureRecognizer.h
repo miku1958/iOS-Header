@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIGestureRecognizer.h>
 
-@class UITouch;
+@class UITouch, _UIGestureRecognizerTransformAnalyzer;
 
 @interface UIPinchGestureRecognizer : UIGestureRecognizer
 {
@@ -21,7 +21,7 @@
     struct CGPoint _anchorSceneReferencePoint;
     UITouch *_touches[2];
     double _hysteresis;
-    id _transformAnalyzer;
+    _UIGestureRecognizerTransformAnalyzer *_transformAnalyzer;
     unsigned int _loggedPinchStatistic:1;
     unsigned int _loggedZoomStatistic:1;
     unsigned int _endsOnSingleTouch:1;
@@ -47,7 +47,6 @@
 - (void)_logStatisticsForScale:(double)arg1;
 - (void)_resetGestureRecognizer;
 - (void)_setEndsOnSingleTouch:(BOOL)arg1;
-- (BOOL)_shouldReceiveTransformEvent:(id)arg1;
 - (void)_transformChangedWithEvent:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

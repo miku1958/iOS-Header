@@ -38,6 +38,8 @@
 @property (strong, nonatomic) UILabel *headlineLabel; // @synthesize headlineLabel=_headlineLabel;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) HUGridHeadlineCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
+@property (nonatomic, getter=isPointerInteractionEnabled) BOOL pointerInteractionEnabled;
+@property (nonatomic) double pointerRegionMargin;
 @property (nonatomic, getter=isRearranging) BOOL rearranging;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (readonly) Class superclass;
@@ -48,7 +50,6 @@
 - (void).cxx_destruct;
 - (void)_setupCommonCellAppearance;
 - (void)_updateHeadlineLabel;
-- (void)applyLayoutAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;

@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSArray *transitCommutePlans; // @synthesize transitCommutePlans=_transitCommutePlans;
 @property (nonatomic) unsigned long long transitItemType; // @synthesize transitItemType=_transitItemType;
 
++ (id)identifier;
 - (void).cxx_destruct;
 - (id)initWithPassView:(id)arg1;
 

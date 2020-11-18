@@ -7,7 +7,7 @@
 #import <Metal/MTLFunction-Protocol.h>
 
 @class MTLFunctionReflection, MTLType, NSArray, NSData, NSString;
-@protocol MTLFunction;
+@protocol MTLArgumentEncoder, MTLFunction, MTLPipelineLibrary;
 
 @protocol MTLFunctionSPI <MTLFunction>
 
@@ -20,8 +20,13 @@
 
 - (const CDStruct_41a22ec7 *)bitCodeHash;
 - (NSData *)bitcodeData;
+- (id<MTLArgumentEncoder>)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id<MTLPipelineLibrary>)arg2;
+- (id<MTLArgumentEncoder>)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(NSArray *)arg3;
+- (id<MTLArgumentEncoder>)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id<MTLPipelineLibrary>)arg3;
 - (id<MTLFunction>)newFunctionWithPluginData:(NSData *)arg1 bitcodeType:(unsigned char)arg2;
 - (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1;
+- (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1 binaryArchives:(NSArray *)arg2;
 - (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(MTLFunctionReflection *))arg2;
+- (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id<MTLPipelineLibrary>)arg2;
 @end
 

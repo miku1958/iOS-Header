@@ -14,17 +14,18 @@
 #import <MobileMailUI/MFMailWebProcessDelegate-Protocol.h>
 #import <MobileMailUI/MFMessageFooterViewDelegate-Protocol.h>
 #import <MobileMailUI/MFMessageHeaderViewDelegate-Protocol.h>
+#import <MobileMailUI/MFPopoverPresentationSource-Protocol.h>
 #import <MobileMailUI/MFReusable-Protocol.h>
 #import <MobileMailUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <MobileMailUI/UIScrollViewDelegate-Protocol.h>
-#import <MobileMailUI/WKNavigationDelegate-Protocol.h>
 #import <MobileMailUI/WKNavigationDelegatePrivate-Protocol.h>
 #import <MobileMailUI/WKUIDelegatePrivate-Protocol.h>
+#import <MobileMailUI/_WKInputDelegate-Protocol.h>
 
-@class EFCancelationToken, EMContentRepresentation, EMDaemonInterface, MFAddressAtomStatusManager, MFBlockedSenderBannerView, MFConversationItemFooterView, MFHasMoreContentBannerView, MFLoadBlockedContentBannerView, MFMailDropBannerView, MFMailboxProvider, MFMessageContentLoadingView, MFMessageDisplayMetrics, MFMessageHeaderView, MFMessageLoadingContext, MFWebViewDictionary, MFWebViewLoadingController, MessageContentItemsHelper, MessageContentRepresentationRequest, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableSet, NSString, UIBarButtonItem, UIScrollView, WKWebView, _MFMessageContentResizeWrapperView;
+@class EFCancelationToken, EMContentRepresentation, EMDaemonInterface, MFAddressAtomStatusManager, MFBlockedSenderBannerView, MFConversationItemFooterView, MFHasMoreContentBannerView, MFLoadBlockedContentBannerView, MFMailDropBannerView, MFMailboxProvider, MFMessageContentLoadingView, MFMessageDisplayMetrics, MFMessageHeaderView, MFMessageLoadingContext, MFWebViewDictionary, MFWebViewLoadingController, MessageContentItemsHelper, MessageContentRepresentationRequest, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableSet, NSString, UIBarButtonItem, UIScrollView, WKWebView;
 @protocol EFCancelable, EFScheduler, MFMessageContentViewDataSource, MFMessageContentViewDelegate;
 
-@interface MFMessageContentView : UIView <UIPopoverPresentationControllerDelegate, WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, MFHasMoreContentBannerViewDelegate, MFLoadBlockedContentBannerViewDelegate, MFBlockedSenderBannerViewDelegate, MFMessageHeaderViewDelegate, MFMessageFooterViewDelegate, MFMailDropBannerDelegate, UIScrollViewDelegate, EFSignpostable, MFMailWebProcessDelegate, MFReusable>
+@interface MFMessageContentView : UIView <UIPopoverPresentationControllerDelegate, _WKInputDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, MFHasMoreContentBannerViewDelegate, MFLoadBlockedContentBannerViewDelegate, MFBlockedSenderBannerViewDelegate, MFMessageHeaderViewDelegate, MFMessageFooterViewDelegate, MFMailDropBannerDelegate, MFPopoverPresentationSource, UIScrollViewDelegate, EFSignpostable, MFMailWebProcessDelegate, MFReusable>
 {
     EFCancelationToken *_loadingCancelable;
     MessageContentItemsHelper *_relatedItemsHelper;
@@ -37,6 +38,7 @@
     id<EFScheduler> _attachmentsScheduler;
     NSMutableArray *_scriptHandlers;
     UIBarButtonItem *_presentedControllerDoneButtonItem;
+    struct CGRect _activatedAttachmentRect;
     id<EFCancelable> _contentSizeObservation;
     BOOL _suppressContentSizeNotifications;
     BOOL _suppressContentSizeNotificationsUntilFirstPaint;
@@ -56,8 +58,6 @@
         unsigned int delegateRespondsToDidTapRevealActionsButton:1;
         unsigned int delegateRespondsToLoadingIndicatorDidChangeVisibility:1;
         unsigned int delegateRespondsToDidLoadSecurityInformation:1;
-        unsigned int delegateRespondsToDidTapTrashButton:1;
-        unsigned int delegateRespondsToDidLongPressTrashButton:1;
     } _flags;
     BOOL _automaticallyCollapseQuotedContent;
     BOOL _showMessageFooter;
@@ -88,10 +88,10 @@
     MFMessageContentLoadingView *_loadingView;
     double _initialScale;
     MFWebViewLoadingController *_webViewLoadingController;
-    _MFMessageContentResizeWrapperView *_resizingWrapperView;
     NSDictionary *_attachmentDragPreviews;
     NSError *_contentRepresentationError;
     id<EFCancelable> _loadingSpinnerTailspinToken;
+    id<EFScheduler> _trustConfigurationScheduler;
     struct CGPoint _initialContentOffset;
 }
 
@@ -130,10 +130,10 @@
 @property (readonly, nonatomic) BOOL mayShareToUnmanaged;
 @property (nonatomic) long long messageBlockingReason; // @synthesize messageBlockingReason=_messageBlockingReason;
 @property (strong, nonatomic) UIView *previousContentSnapshot; // @synthesize previousContentSnapshot=_previousContentSnapshot;
-@property (strong, nonatomic) _MFMessageContentResizeWrapperView *resizingWrapperView; // @synthesize resizingWrapperView=_resizingWrapperView;
 @property (readonly, nonatomic) UIScrollView *scrollView;
 @property (copy, nonatomic) NSString *selectedHTML; // @synthesize selectedHTML=_selectedHTML;
 @property (nonatomic) BOOL shouldArchiveByDefault; // @synthesize shouldArchiveByDefault=_shouldArchiveByDefault;
+@property (readonly, nonatomic) BOOL shouldHideStickyFooterView;
 @property (nonatomic) BOOL showMessageFooter; // @synthesize showMessageFooter=_showMessageFooter;
 @property (nonatomic) BOOL showingError; // @synthesize showingError=_showingError;
 @property (nonatomic) BOOL showsBanners; // @synthesize showsBanners=_showsBanners;
@@ -141,6 +141,7 @@
 @property (readonly, nonatomic) BOOL sourceIsManaged;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressScrolling; // @synthesize suppressScrolling=_suppressScrolling;
+@property (readonly, nonatomic) id<EFScheduler> trustConfigurationScheduler; // @synthesize trustConfigurationScheduler=_trustConfigurationScheduler;
 @property (readonly, nonatomic) WKWebView *webView;
 @property (readonly, nonatomic) MFWebViewDictionary *webViewConstants;
 @property (strong, nonatomic) MFWebViewLoadingController *webViewLoadingController; // @synthesize webViewLoadingController=_webViewLoadingController;
@@ -160,6 +161,7 @@
 - (BOOL)_allAttachmentsArePhotosOrVideos;
 - (id)_attachmentPreviewsFromData:(id)arg1;
 - (void)_beginObservingContentHeight;
+- (id)_bodyFont;
 - (void)_clearAllBannersAnimated:(BOOL)arg1;
 - (void)_clearBlockedSenderBannerAnimated:(BOOL)arg1;
 - (void)_clearHasMoreContentBannerAnimated:(BOOL)arg1;
@@ -188,6 +190,7 @@
 - (void)_notifyDelegateScrollViewSizeChanged:(struct CGSize)arg1;
 - (BOOL)_objectContainsNonEmptyString:(id)arg1;
 - (void)_observeBlockedSenderListChangedNotification;
+- (void)_processDataDetectionMetricsFromResults:(id)arg1;
 - (id)_quotedContentAttributionForMessage:(id)arg1;
 - (void)_reevaluateTrustWithNetworkAccessAllowed;
 - (void)_reloadUserStyleSheets;
@@ -201,12 +204,10 @@
 - (void)_seeMoreButtonTapped;
 - (void)_setNeedsPaddingConstantsUpdate;
 - (void)_setupWebProcessLocalizedStrings;
-- (BOOL)_shouldHideStickyFooter;
 - (void)_showModalViewController:(id)arg1 presentationSource:(id)arg2;
+- (void)_showModalViewController:(id)arg1 presentationSource:(id)arg2 forceNavigationController:(BOOL)arg3;
 - (void)_stopObservingContentHeight;
 - (id)_styleSheetWithPadding:(struct UIEdgeInsets)arg1 useWideLayout:(BOOL)arg2;
-- (void)_trashButtonLongPressed:(id)arg1;
-- (void)_trashButtonTapped:(id)arg1;
 - (void)_triggerWebViewLoad;
 - (void)_triggerWebViewLoadWithoutShowingContentRepresentation;
 - (void)_updateFileWrapperForAttachment:(id)arg1 contentID:(id)arg2;
@@ -218,6 +219,7 @@
 - (void)_webView:(id)arg1 dataInteraction:(id)arg2 session:(id)arg3 didEndWithOperation:(unsigned long long)arg4;
 - (void)_webView:(id)arg1 dataInteraction:(id)arg2 sessionWillBegin:(id)arg3;
 - (long long)_webView:(id)arg1 dataOwnerForDragSession:(id)arg2;
+- (long long)_webView:(id)arg1 decidePolicyForFocusedElement:(id)arg2;
 - (void)_webView:(id)arg1 didInsertAttachment:(id)arg2 withSource:(id)arg3;
 - (id)_webView:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
 - (id)_webView:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
@@ -237,7 +239,6 @@
 - (void)didTapHasMoreContentBannerView:(id)arg1;
 - (void)dismissPresentedViewController:(id)arg1;
 - (id)downloadFutureForContentItem:(id)arg1;
-- (void)endResizing;
 - (void)footerViewDidChangeHeight:(id)arg1;
 - (void)generateSnapshotImageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)headerViewDidChangeHeight:(id)arg1;
@@ -248,7 +249,7 @@
 - (void)loadBlockedContentBannerDidTriggerLoad:(id)arg1;
 - (void)loadHasMoreContentBannerIfNecessary;
 - (void)mailDropBannerDidTriggerDownload:(id)arg1;
-- (void)prepareContentViewForResizingWithSnapshotRect:(struct CGRect)arg1;
+- (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
 - (void)prepareForReuse;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (id)presentedControllerDoneButtonItem;

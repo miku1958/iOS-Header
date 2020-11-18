@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
-- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(int)arg2;
+- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(unsigned char)arg2;
 - (void)updateWithInformation:(struct DataListSuggestionInformation *)arg1;
 
 @end

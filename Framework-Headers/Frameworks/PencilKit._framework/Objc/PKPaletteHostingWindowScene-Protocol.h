@@ -7,6 +7,8 @@
 #import <PencilKit/NSObject-Protocol.h>
 
 @protocol PKPaletteHostingWindowScene <NSObject>
-- (struct CGRect)paletteHostingWindowSceneBounds;
+
+@property (readonly, nonatomic) struct CGRect paletteHostingWindowSceneBounds;
+
 @end
 

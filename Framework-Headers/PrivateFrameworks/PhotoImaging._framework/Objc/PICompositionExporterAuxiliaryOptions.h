@@ -6,22 +6,30 @@
 
 #import <PhotoImaging/PICompositionExporterOptions.h>
 
-@class NSURL, NUAdjustment;
+@class NSString, NSURL, NUAdjustment, NUImageExportFormat;
 
 @interface PICompositionExporterAuxiliaryOptions : PICompositionExporterOptions
 {
     BOOL _renderCompanionResources;
+    BOOL _applyImageOrientationAsMetadata;
+    BOOL _applyVideoOrientationAsMetadata;
     NSURL *_primaryURL;
     NSURL *_videoComplementURL;
     NSURL *_videoPosterFrameURL;
+    NSString *_videoCodecType;
+    NUImageExportFormat *_imageExportFormat;
     NUAdjustment *_reframeCropAdjustment;
     NUAdjustment *_reframeVideoAdjustment;
 }
 
+@property BOOL applyImageOrientationAsMetadata; // @synthesize applyImageOrientationAsMetadata=_applyImageOrientationAsMetadata;
+@property BOOL applyVideoOrientationAsMetadata; // @synthesize applyVideoOrientationAsMetadata=_applyVideoOrientationAsMetadata;
+@property (copy) NUImageExportFormat *imageExportFormat; // @synthesize imageExportFormat=_imageExportFormat;
 @property (strong) NSURL *primaryURL; // @synthesize primaryURL=_primaryURL;
 @property (strong) NUAdjustment *reframeCropAdjustment; // @synthesize reframeCropAdjustment=_reframeCropAdjustment;
 @property (strong) NUAdjustment *reframeVideoAdjustment; // @synthesize reframeVideoAdjustment=_reframeVideoAdjustment;
 @property BOOL renderCompanionResources; // @synthesize renderCompanionResources=_renderCompanionResources;
+@property (copy, nonatomic) NSString *videoCodecType; // @synthesize videoCodecType=_videoCodecType;
 @property (strong) NSURL *videoComplementURL; // @synthesize videoComplementURL=_videoComplementURL;
 @property (strong) NSURL *videoPosterFrameURL; // @synthesize videoPosterFrameURL=_videoPosterFrameURL;
 

@@ -6,29 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBAttributeCondition : NSObject <BSDescriptionProviding>
+@interface RBAttributeCondition : NSObject
 {
     BOOL _value;
     NSString *_name;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly) Class superclass;
-@property (nonatomic) BOOL value; // @synthesize value=_value;
-
 - (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
+- (id)description;
 
 @end
 

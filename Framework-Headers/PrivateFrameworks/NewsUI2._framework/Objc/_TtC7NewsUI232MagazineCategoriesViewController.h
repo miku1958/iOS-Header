@@ -9,12 +9,12 @@
 @class MISSING_TYPE;
 @protocol TUPluggableDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI232MagazineCategoriesViewController : UIViewController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *blueprintLayoutProvider;
     MISSING_TYPE *config;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;

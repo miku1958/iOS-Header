@@ -17,6 +17,8 @@
     struct __CTServerConnection *_telephonyServerConnectionRef;
     NWPathEvaluator *_networkPathEvaluator;
     int _thermalNotificationToken;
+    unsigned int _powerNotificationRef;
+    void *_symptomPresentationFeedDyLibHandle;
     BOOL _isCharging;
     BOOL _isRemoteServerLikelyReachable;
     BOOL _isWiFiActive;

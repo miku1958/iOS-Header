@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileHandle, NSMutableDictionary;
+@class NSDictionary, NSFileHandle;
 @protocol OS_dispatch_queue;
 
 @interface NEPacketTunnelFlow : NSObject
@@ -14,13 +14,13 @@
     BOOL _handlerSetup;
     NSObject<OS_dispatch_queue> *_queue;
     NSFileHandle *_socket;
-    NSMutableDictionary *_uuidMappings;
     CDUnknownBlockType _packetHandler;
     CDUnknownBlockType _packetObjectHandler;
     char **_packetDataArray;
     unsigned int *_packetProtocols;
     unsigned long long *_packetLengths;
     unsigned long long _buffersSize;
+    NSDictionary *_uuidMap;
     long long _interfaceType;
     struct NEVirtualInterface_s *_interface;
 }
@@ -36,7 +36,7 @@
 @property unsigned int *packetProtocols; // @synthesize packetProtocols=_packetProtocols;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong) NSFileHandle *socket; // @synthesize socket=_socket;
-@property (strong) NSMutableDictionary *uuidMappings; // @synthesize uuidMappings=_uuidMappings;
+@property (strong) NSDictionary *uuidMap; // @synthesize uuidMap=_uuidMap;
 
 - (void).cxx_destruct;
 - (void)closeVirtualInterface;
@@ -45,8 +45,8 @@
 - (void)readPacketObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readPacketsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetReadHandler;
+- (void)setAppUUIDMap:(id)arg1;
 - (BOOL)setVirtualInterfaceSocket:(id)arg1;
-- (id)signingIdentifierForUUID:(id)arg1;
 - (BOOL)writePacketObjects:(id)arg1;
 - (BOOL)writePackets:(id)arg1 withProtocols:(id)arg2;
 

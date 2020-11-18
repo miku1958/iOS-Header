@@ -9,6 +9,5 @@
 @interface NSError (RBSErrors)
 + (id)rbs_errorClientNotEntitled:(id)arg1 permanent:(BOOL)arg2;
 - (BOOL)rbs_isPermanentFailure;
-- (BOOL)rbs_isServiceDenied;
 @end
 

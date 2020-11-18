@@ -15,6 +15,7 @@
 
 + (BOOL)isValidForTransitionRequest:(id)arg1;
 - (void)_begin;
+- (BOOL)_canBeInterrupted;
 - (id)initWithTransitionRequest:(id)arg1;
 
 @end

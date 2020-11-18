@@ -11,18 +11,18 @@
 @interface WFMDMVerifier : NSObject
 {
     NSString *_actionName;
-    NSArray *_contentSources;
+    NSArray *_contentAttributionSets;
 }
 
 @property (readonly, copy, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
-@property (readonly, copy, nonatomic) NSArray *contentSources; // @synthesize contentSources=_contentSources;
+@property (readonly, copy, nonatomic) NSArray *contentAttributionSets; // @synthesize contentAttributionSets=_contentAttributionSets;
 
-+ (id)dataInfosFromContentSources:(id)arg1 withManagedLevel:(unsigned long long)arg2;
++ (id)contentAttributionsFromContentAttributionSets:(id)arg1 withManagedLevel:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (BOOL)canSendDataToTargetDataInfo:(id)arg1 error:(id *)arg2;
-- (id)errorFromFailedVerificationContentSources:(id)arg1 targetDataInfo:(id)arg2 destinationManagedLevel:(unsigned long long)arg3;
+- (BOOL)canSendDataToTargetContentAttribution:(id)arg1 error:(id *)arg2;
+- (id)errorFromFailedVerificationContentAttributionSets:(id)arg1 targetContentAttribution:(id)arg2 destinationManagedLevel:(unsigned long long)arg3;
 - (id)initWithAction:(id)arg1;
-- (id)initWithContentSources:(id)arg1 actionName:(id)arg2;
+- (id)initWithContentAttributionSets:(id)arg1 actionName:(id)arg2;
 
 @end
 

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_configureSectionHeaderView:(id)arg1 section:(unsigned long long)arg2;
 - (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(BOOL *)arg2 actionButtonTitle:(id *)arg3 hasDisclosure:(BOOL *)arg4 locations:(id *)arg5 title:(id *)arg6 startDate:(id *)arg7 endDate:(id *)arg8;
 - (void)_reloadVisibleMomentHeaders;
 - (BOOL)allowSlideshowButton;

@@ -8,7 +8,7 @@
 
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, SAUserTokenStatus;
 
 @interface SAUserState : AceObject <SABackgroundContextObject>
 {
@@ -18,12 +18,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *iTunesMatchSubscriptionStatus;
 @property (copy, nonatomic) NSString *sharedUserId;
 @property (copy, nonatomic) NSString *status;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *syncSharedUserId;
 @property (copy, nonatomic) NSNumber *userHistoryUnmodifiable;
 @property (copy, nonatomic) NSString *userToken;
+@property (strong, nonatomic) SAUserTokenStatus *userTokenStatus;
 @property (copy, nonatomic) NSString *xpAbCookie;
 
 + (id)userState;

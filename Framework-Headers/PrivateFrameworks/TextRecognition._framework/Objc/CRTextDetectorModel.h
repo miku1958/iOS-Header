@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) MLModel *model; // @synthesize model=_model;
 
-+ (id)urlOfModelInThisBundle;
++ (id)defaultURLOfModelInThisBundle;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;

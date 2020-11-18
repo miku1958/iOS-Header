@@ -13,8 +13,11 @@
 @property (copy, nonatomic) NSString *applicationBundleIdentifier;
 @property (strong, nonatomic) _SFPBImage *baseIcon;
 @property (copy, nonatomic) NSString *contactIdentifier;
+@property (strong, nonatomic) _SFPBPunchout *customDirectionsPunchout;
+@property (nonatomic) int directionsMode;
 @property (copy, nonatomic) NSString *email;
 @property (strong, nonatomic) _SFPBImage *icon;
+@property (copy, nonatomic) NSString *interactionContentType;
 @property (nonatomic) BOOL isITunes;
 @property (nonatomic) BOOL isOverlay;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -35,6 +38,7 @@
 @property (copy, nonatomic) NSString *provider;
 @property (strong, nonatomic) _SFPBPunchout *punchout;
 @property (nonatomic) BOOL requiresLocalMedia;
+@property (nonatomic) BOOL shouldSearchDirectionsAlongCurrentRoute;
 @property (copy, nonatomic) NSArray *storeIdentifiers;
 @property (copy, nonatomic) NSString *type;
 @property (copy, nonatomic) NSString *universalLibraryID;

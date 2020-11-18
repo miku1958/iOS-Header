@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardUI/SBUIBannerItem.h>
+#import <objc/NSObject.h>
 
 @class CPImageSet, NSArray, NSString, NSUUID;
 @protocol CPSBannerItemDelegate;
 
-@interface CPSBannerItem : SBUIBannerItem
+@interface CPSBannerItem : NSObject
 {
     NSUUID *_identifier;
     NSString *_bundleIdentifier;
@@ -29,12 +29,10 @@
 @property (readonly, nonatomic) NSArray *textVariants; // @synthesize textVariants=_textVariants;
 
 - (void).cxx_destruct;
-- (CDUnknownBlockType)action;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 textVariants:(id)arg3 detailTextVariants:(id)arg4 attributedDetailTextVariants:(id)arg5 imageSet:(id)arg6 delegate:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToBannerItem:(id)arg1;
-- (BOOL)isSticky;
 
 @end
 

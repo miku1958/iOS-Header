@@ -18,15 +18,13 @@
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
-@property (readonly, nonatomic) _TtC15AACDependencies27AEDBackingAssessmentSession *backingSession; // @synthesize backingSession=_backingSession;
 @property (weak, nonatomic) id<AEAssessmentSessionDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (id)backingConfigForConfig:(id)arg1;
 - (void).cxx_destruct;
+- (void)backingAssessmentSession:(id)arg1 failedToBeginWithError:(id)arg2;
+- (void)backingAssessmentSession:(id)arg1 wasInterruptedWithError:(id)arg2;
 - (void)backingAssessmentSessionDidBegin:(id)arg1;
 - (void)backingAssessmentSessionDidEnd:(id)arg1;
-- (void)backingAssessmentSessionDidFailToBegin:(id)arg1 error:(id)arg2;
-- (void)backingAssessmentSessionDidInterrupt:(id)arg1 error:(id)arg2;
 - (void)begin;
 - (void)end;
 - (id)initWithConfiguration:(id)arg1;

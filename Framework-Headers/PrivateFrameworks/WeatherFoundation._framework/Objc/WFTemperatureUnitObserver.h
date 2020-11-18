@@ -11,8 +11,9 @@
 
 @interface WFTemperatureUnitObserver : NSObject
 {
+    struct os_unfair_lock_s _dataSynchronizationLock;
     int _userTemperatureUnit;
-    NSObject<OS_dispatch_queue> *_observerQueue;
+    NSObject<OS_dispatch_queue> *_temperatureUnitUpdateQueue;
     NSMutableDictionary *_blockObserversForUUID;
     NSHashTable *_observerObjects;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -20,9 +21,10 @@
 
 @property (strong) NSMutableDictionary *blockObserversForUUID; // @synthesize blockObserversForUUID=_blockObserversForUUID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property struct os_unfair_lock_s dataSynchronizationLock; // @synthesize dataSynchronizationLock=_dataSynchronizationLock;
 @property (strong) NSHashTable *observerObjects; // @synthesize observerObjects=_observerObjects;
-@property (strong) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property (readonly) int temperatureUnit;
+@property (strong) NSObject<OS_dispatch_queue> *temperatureUnitUpdateQueue; // @synthesize temperatureUnitUpdateQueue=_temperatureUnitUpdateQueue;
 @property int userTemperatureUnit; // @synthesize userTemperatureUnit=_userTemperatureUnit;
 
 + (id)sharedObserver;
@@ -33,6 +35,8 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)q_notifyObserversOfUpdatedTemperatureUnit:(int)arg1;
+- (void)q_updateTemperatureUnit;
 - (void)removeAllObservers;
 - (BOOL)removeBlockObserverWithHandle:(id)arg1;
 - (BOOL)removeObserver:(id)arg1;

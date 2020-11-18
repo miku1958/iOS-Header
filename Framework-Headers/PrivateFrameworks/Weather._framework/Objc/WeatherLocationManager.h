@@ -46,6 +46,7 @@
 @property (nonatomic) struct CLLocationCoordinate2D lastLocationCoord; // @synthesize lastLocationCoord=_lastLocationCoord;
 @property (copy, nonatomic) NSDate *lastLocationTimeStamp; // @synthesize lastLocationTimeStamp=_lastLocationTimeStamp;
 @property (nonatomic) double lastLocationUpdateTime; // @synthesize lastLocationUpdateTime=_lastLocationUpdateTime;
+@property (readonly, nonatomic) BOOL limitsPrecision;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (nonatomic) BOOL locationTrackingIsReady; // @synthesize locationTrackingIsReady=_locationTrackingIsReady;
 @property (nonatomic) BOOL locationUpdatesEnabled; // @synthesize locationUpdatesEnabled=_locationUpdatesEnabled;

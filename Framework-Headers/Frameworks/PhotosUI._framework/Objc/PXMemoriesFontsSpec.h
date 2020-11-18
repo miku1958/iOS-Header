@@ -23,25 +23,23 @@
 @property (readonly, nonatomic) NSDictionary *subtitleTextAttributes; // @synthesize subtitleTextAttributes=_subtitleTextAttributes;
 @property (readonly, nonatomic) NSDictionary *titleTextAttributes; // @synthesize titleTextAttributes=_titleTextAttributes;
 
-+ (double)_baselineDistanceForFontSet:(long long)arg1 specSet:(long long)arg2 variant:(long long)arg3 size:(struct CGSize)arg4 shouldScale:(BOOL)arg5;
-+ (double)_fontScaleForSpecSet:(long long)arg1 variant:(long long)arg2 width:(double)arg3;
 + (id)_fontSetByTitleFontName;
-+ (long long)_fontSetForTitleFontName:(id)arg1;
 + (id)_fontSpecCache;
 + (void)_getSpecSet:(out long long *)arg1 variant:(out long long *)arg2 forDescriptor:(struct PXViewSpecDescriptor)arg3 extendedTraitCollection:(id)arg4;
 + (long long)_memoryLabelKindForDescriptor:(struct PXViewSpecDescriptor)arg1;
-+ (struct UIEdgeInsets)_paddingForFontSet:(long long)arg1 specSet:(long long)arg2 variant:(long long)arg3 horizontalMargin:(double)arg4 width:(double)arg5 shouldScale:(BOOL)arg6;
-+ (double)_playButtonPaddingForFontSet:(long long)arg1 specSet:(long long)arg2 variant:(long long)arg3 deviceMargin:(double)arg4;
-+ (double)_referenceWidthForSpecSet:(long long)arg1 variant:(long long)arg2;
-+ (double)_scaleForSpecSet:(long long)arg1 variant:(long long)arg2 width:(double)arg3;
-+ (id)_textAttributesForFontName:(id)arg1 fontSize:(double)arg2 lineHeight:(double)arg3 tracking:(double)arg4 stroke:(double)arg5 shadow:(id)arg6 capitalizationStyle:(long long)arg7;
-+ (id)_textAttributesForFontSet:(long long)arg1 specSet:(long long)arg2 labelKind:(long long)arg3 withTitleFontName:(id)arg4 variant:(long long)arg5 size:(struct CGSize)arg6 shouldScale:(BOOL)arg7;
++ (double)_playButtonPaddingForFontSet:(long long)arg1 specSet:(long long)arg2 variant:(long long)arg3 deviceMargin:(double)arg4 forHeaderTile:(BOOL)arg5;
 + (id)_titleFontNameByFontSet;
++ (double)baselineDistanceForFontSet:(long long)arg1 specSet:(long long)arg2 variant:(long long)arg3 size:(struct CGSize)arg4 shouldScale:(BOOL)arg5;
++ (long long)capitalizationStyleForLabelKind:(long long)arg1;
 + (id)memoriesFontsSpecForDescriptor:(struct PXViewSpecDescriptor)arg1 extendedTraitCollection:(id)arg2;
++ (long long)numberOfLinesForLabelKind:(long long)arg1;
++ (struct UIEdgeInsets)paddingForFontSet:(long long)arg1 specSet:(long long)arg2 variant:(long long)arg3 layoutMargins:(struct UIEdgeInsets)arg4 width:(double)arg5 shouldScale:(BOOL)arg6 forHeaderTile:(BOOL)arg7;
 + (void)preloadFontsSpecsForExtendedTraitCollection:(id)arg1;
 + (id)supportedTitleFontNames;
++ (id)textAttributesForFontName:(id)arg1 fontSize:(double)arg2 lineHeight:(double)arg3 tracking:(double)arg4 stroke:(double)arg5 shadow:(id)arg6 capitalizationStyle:(long long)arg7;
++ (id)textAttributesForFontSet:(long long)arg1 specSet:(long long)arg2 labelKind:(long long)arg3 variant:(long long)arg4 size:(struct CGSize)arg5 shouldScale:(BOOL)arg6;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(struct PXMemoryFontsSpecIdentifier)arg1 titleFontName:(id)arg2;
+- (id)_initWithIdentifier:(struct PXMemoryFontsSpecIdentifier)arg1;
 
 @end
 

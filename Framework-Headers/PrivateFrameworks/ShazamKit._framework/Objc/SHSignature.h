@@ -9,31 +9,34 @@
 #import <ShazamKit/NSCopying-Protocol.h>
 #import <ShazamKit/NSSecureCoding-Protocol.h>
 
-@class AVAudioTime, NSArray, NSDate, NSUUID, SHSignatureChunk;
+@class AVAudioTime, NSData, NSDate, NSUUID;
 
 @interface SHSignature : NSObject <NSSecureCoding, NSCopying>
 {
+    NSData *_dataRepresentation;
     AVAudioTime *_time;
-    NSArray *_chunks;
     NSUUID *_ID;
     NSDate *_sessionStartDate;
+    NSDate *_signatureStartDate;
 }
 
 @property (readonly, nonatomic) NSUUID *ID; // @synthesize ID=_ID;
-@property (readonly, nonatomic) SHSignatureChunk *bestChunk;
-@property (readonly, nonatomic) NSArray *chunks; // @synthesize chunks=_chunks;
+@property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) NSData *dataRepresentation; // @synthesize dataRepresentation=_dataRepresentation;
 @property (readonly, nonatomic) double length;
 @property (strong, nonatomic) NSDate *sessionStartDate; // @synthesize sessionStartDate=_sessionStartDate;
+@property (strong, nonatomic) NSDate *signatureStartDate; // @synthesize signatureStartDate=_signatureStartDate;
 @property (strong, nonatomic) AVAudioTime *time; // @synthesize time=_time;
 
++ (id)signatureFromData:(id)arg1 atTime:(id)arg2 error:(id *)arg3;
++ (id)signatureWithDataRepresentation:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithID:(id)arg1 chunks:(id)arg2 time:(id)arg3 sessionStartTime:(id)arg4;
-- (id)initWithSignatureData:(id)arg1 length:(double)arg2 time:(id)arg3;
+- (id)initWithID:(id)arg1 data:(id)arg2 startTime:(id)arg3 sessionStartDate:(id)arg4 signatureStartDate:(id)arg5;
 
 @end
 

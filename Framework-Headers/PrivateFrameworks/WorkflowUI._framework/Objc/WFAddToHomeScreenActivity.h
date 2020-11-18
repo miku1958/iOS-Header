@@ -25,8 +25,8 @@
 @property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
 - (void).cxx_destruct;
+- (id)_systemImageName;
 - (void)activityDidFinish:(BOOL)arg1;
-- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

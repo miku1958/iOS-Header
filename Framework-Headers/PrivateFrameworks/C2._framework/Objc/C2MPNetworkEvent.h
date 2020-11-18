@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     C2MPError *_networkFatalError;
     NSString *_networkHostname;
     NSString *_networkInterfaceIdentifier;
+    NSString *_networkNegotiatedTlsProtocolVersion;
     unsigned int _networkPreviousAttemptCount;
     NSString *_networkProtocolName;
     NSString *_networkRemoteAddresssAndPort;
@@ -98,6 +99,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasNetworkHostname;
 @property (readonly, nonatomic) BOOL hasNetworkInterfaceIdentifier;
 @property (nonatomic) BOOL hasNetworkIsDiscretionary;
+@property (readonly, nonatomic) BOOL hasNetworkNegotiatedTlsProtocolVersion;
 @property (nonatomic) BOOL hasNetworkPreviousAttemptCount;
 @property (readonly, nonatomic) BOOL hasNetworkProtocolName;
 @property (readonly, nonatomic) BOOL hasNetworkRemoteAddresssAndPort;
@@ -142,6 +144,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *networkHostname; // @synthesize networkHostname=_networkHostname;
 @property (strong, nonatomic) NSString *networkInterfaceIdentifier; // @synthesize networkInterfaceIdentifier=_networkInterfaceIdentifier;
 @property (nonatomic) BOOL networkIsDiscretionary; // @synthesize networkIsDiscretionary=_networkIsDiscretionary;
+@property (strong, nonatomic) NSString *networkNegotiatedTlsProtocolVersion; // @synthesize networkNegotiatedTlsProtocolVersion=_networkNegotiatedTlsProtocolVersion;
 @property (nonatomic) unsigned int networkPreviousAttemptCount; // @synthesize networkPreviousAttemptCount=_networkPreviousAttemptCount;
 @property (strong, nonatomic) NSString *networkProtocolName; // @synthesize networkProtocolName=_networkProtocolName;
 @property (strong, nonatomic) NSString *networkRemoteAddresssAndPort; // @synthesize networkRemoteAddresssAndPort=_networkRemoteAddresssAndPort;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _size;
     NSString *_assetAuthorizationResponseUUID;
     NSData *_clearAssetKey;
+    NSData *_constructedAssetDownloadParameters;
     NSString *_constructedAssetDownloadURL;
     NSString *_contentBaseURL;
     NSString *_downloadBaseURL;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *assetAuthorizationResponseUUID; // @synthesize assetAuthorizationResponseUUID=_assetAuthorizationResponseUUID;
 @property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
 @property (nonatomic) long long constructedAssetDownloadEstimatedSize; // @synthesize constructedAssetDownloadEstimatedSize=_constructedAssetDownloadEstimatedSize;
+@property (strong, nonatomic) NSData *constructedAssetDownloadParameters; // @synthesize constructedAssetDownloadParameters=_constructedAssetDownloadParameters;
 @property (strong, nonatomic) NSString *constructedAssetDownloadURL; // @synthesize constructedAssetDownloadURL=_constructedAssetDownloadURL;
 @property (nonatomic) long long constructedAssetDownloadURLExpiration; // @synthesize constructedAssetDownloadURLExpiration=_constructedAssetDownloadURLExpiration;
 @property (strong, nonatomic) NSString *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAssetAuthorizationResponseUUID;
 @property (readonly, nonatomic) BOOL hasClearAssetKey;
 @property (nonatomic) BOOL hasConstructedAssetDownloadEstimatedSize;
+@property (readonly, nonatomic) BOOL hasConstructedAssetDownloadParameters;
 @property (readonly, nonatomic) BOOL hasConstructedAssetDownloadURL;
 @property (nonatomic) BOOL hasConstructedAssetDownloadURLExpiration;
 @property (readonly, nonatomic) BOOL hasContentBaseURL;

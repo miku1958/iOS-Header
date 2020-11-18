@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKMarkNotificationsReadOperationCallbacks-Protocol.h>
 
-@interface CKMarkNotificationsReadOperation : CKOperation
+@class CKMarkNotificationsReadOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKMarkNotificationsReadOperationCallbacks;
+
+@interface CKMarkNotificationsReadOperation : CKOperation <CKMarkNotificationsReadOperationCallbacks>
 {
     CDUnknownBlockType _markNotificationsReadCompletionBlock;
     NSArray *_notificationIDs;
@@ -16,18 +19,21 @@
     NSMutableDictionary *_errorsByNotificationID;
 }
 
+@property (readonly, nonatomic) id<CKMarkNotificationsReadOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableDictionary *errorsByNotificationID; // @synthesize errorsByNotificationID=_errorsByNotificationID;
 @property (copy, nonatomic) CDUnknownBlockType markNotificationsReadCompletionBlock; // @synthesize markNotificationsReadCompletionBlock=_markNotificationsReadCompletionBlock;
 @property (copy, nonatomic) NSArray *notificationIDs; // @synthesize notificationIDs=_notificationIDs;
 @property (strong, nonatomic) NSMutableArray *notificationIDsMarkedRead; // @synthesize notificationIDsMarkedRead=_notificationIDsMarkedRead;
+@property (readonly, nonatomic) CKMarkNotificationsReadOperationInfo *operationInfo; // @dynamic operationInfo;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleMarkNotificationReadCompletionForNotificationID:(id)arg1 error:(id)arg2;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithNotificationIDsToMarkRead:(id)arg1;

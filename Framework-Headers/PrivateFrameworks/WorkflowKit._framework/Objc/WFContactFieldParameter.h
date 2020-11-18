@@ -11,6 +11,7 @@
 @interface WFContactFieldParameter : WFParameter
 {
     BOOL _allowsTextEntry;
+    BOOL _hidesLabel;
     long long _textAlignment;
     long long _autocapitalizationType;
     long long _autocorrectionType;
@@ -20,11 +21,13 @@
 @property (readonly, nonatomic) BOOL allowsTextEntry; // @synthesize allowsTextEntry=_allowsTextEntry;
 @property (readonly, nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
 @property (readonly, nonatomic) long long autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
+@property (readonly, nonatomic) BOOL hidesLabel; // @synthesize hidesLabel=_hidesLabel;
 @property (readonly, nonatomic) long long keyboardType;
 @property (readonly, nonatomic) NSArray *supportedContactProperties; // @synthesize supportedContactProperties=_supportedContactProperties;
 @property (readonly, nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 
 - (void).cxx_destruct;
+- (BOOL)displaysMultipleValueEditor;
 - (id)initWithDefinition:(id)arg1;
 - (Class)multipleStateClass;
 - (BOOL)shouldAlignLabels;

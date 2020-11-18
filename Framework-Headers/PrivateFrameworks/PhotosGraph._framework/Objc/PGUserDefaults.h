@@ -13,7 +13,6 @@
 + (void)_registerDefaults;
 + (BOOL)boundTextFeaturesPerEvent;
 + (id)extendedCurationOptions;
-+ (BOOL)incrementalHighlightEnrichmentIsEnabled;
 + (void)initialize;
 + (BOOL)isAlwaysShowingHolidayCalendarEvents;
 + (BOOL)isAutonamingDisabled;
@@ -22,6 +21,7 @@
 + (BOOL)isBehavioralCurationEnabled;
 + (BOOL)isMemoriesLivingOnFeedbackEnabled;
 + (BOOL)isMemoriesNotificationDisabled;
++ (BOOL)isPhotosChallengeEnabled;
 + (BOOL)isPublicEventsEnabled;
 + (BOOL)isRelationshipFilteredOutInferencesIngestAllowed;
 + (BOOL)isRelationshipInferenceDisabled;
@@ -39,6 +39,7 @@
 + (BOOL)peopleSuggestionLearningIsEnabled;
 + (void)setExtendedCurationOptions:(id)arg1;
 + (BOOL)suppressGraphLiveUpdate;
++ (BOOL)useExtendedCurationAssetCountForLocationTitles;
 
 @end
 

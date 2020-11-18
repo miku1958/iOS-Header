@@ -10,25 +10,28 @@
 {
 }
 
++ (id)_assetIsUnadjustedConditionString;
 + (id)_assetPredicateForCPLResourceType:(unsigned long long)arg1 additionalAssetConditions:(id)arg2 additionalResourcePredicates:(id)arg3;
 + (id)_excludeMomentShareAssetsString;
 + (id)_irisConditionString;
 + (id)_masterPredicateForCPLResourceType:(unsigned long long)arg1 additionalAssetConditions:(id)arg2 additionalResourcePredicates:(id)arg3;
-+ (id)_missingLocalOriginalConditionString;
 + (id)_missingThumbnailConditionString;
-+ (id)_orderedPrefetchConditionStringsOnAssets;
 + (id)_predicateForImageResourcePixelsLessOrEqual:(long long)arg1;
 + (id)_predicateForKeyFacePrefetching:(id)arg1;
 + (id)_predicateForMaxFilesize:(long long)arg1;
 + (id)_predicateForResourceCreatedAfterDate:(id)arg1;
 + (id)_predicateToPrefetchHighlightWithUUIDs:(id)arg1 photoLibrary:(id)arg2;
 + (id)_predicateToPrefetchMemories:(id)arg1 photoLibrary:(id)arg2;
++ (id)_predicateToPrefetchMemoryKeyAssets:(id)arg1 photoLibrary:(id)arg2;
 + (id)_predicateToPrefetchSuggestions:(id)arg1 photoLibrary:(id)arg2;
 + (id)_prefetchResourceForAsset:(id)arg1 inResourceTypes:(id)arg2;
++ (double)_resourceLastPrunedPrefetchTimeInterval;
 + (id)_resourcesToPrefetchForAsset:(id)arg1;
 + (BOOL)_shouldPrefetchMediums;
++ (id)predicatesForMemories:(id)arg1 defaultPrefetchMode:(long long)arg2;
 + (id)predicatesForNonThumbnails:(id)arg1 photoLibrary:(id)arg2 defaultPrefetchMode:(long long)arg3;
 + (id)predicatesForThumbnails;
++ (id)predicatesForWidget:(id)arg1 defaultPrefetchMode:(long long)arg2;
 
 @end
 

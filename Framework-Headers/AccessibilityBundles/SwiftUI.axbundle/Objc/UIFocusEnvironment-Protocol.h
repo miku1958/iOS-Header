@@ -11,6 +11,7 @@
 
 @protocol UIFocusEnvironment <NSObject>
 
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;

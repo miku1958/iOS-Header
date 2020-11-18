@@ -26,8 +26,8 @@
 
 + (id)marketingNameForModel:(id)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_generateProductInformation;
-- (void)dealloc;
 - (id)init;
 
 @end

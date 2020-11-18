@@ -6,14 +6,19 @@
 
 #import <EmojiKit/EMKTextView.h>
 
-@class NSAttributedString, NSString, UIColor, UIKeyboardInputMode, UILabel;
+#import <ChatKit/UIScribbleInteractionDelegate-Protocol.h>
 
-@interface CKMessageEntryTextView : EMKTextView
+@class NSAttributedString, NSString, UIColor, UIKeyboardInputMode, UILabel, UIScribbleInteraction;
+
+@interface CKMessageEntryTextView : EMKTextView <UIScribbleInteractionDelegate>
 {
     BOOL _showingDictationPlaceholder;
+    BOOL _inPencilMode;
+    BOOL _pencilWriting;
     BOOL _sendCurrentLocationFromKeyboardEnabled;
     BOOL _updatesFontOnTextChange;
     BOOL _hideCaret;
+    BOOL _preventShowingCalloutMenu;
     UIColor *_placeholderColor;
     double _placeHolderWidth;
     double _placeholderExpandedWidth;
@@ -22,22 +27,31 @@
     double _adjustedLineFragmentPadding;
     UILabel *_placeholderLabel;
     UIKeyboardInputMode *_savedKeyboardInputMode;
+    UIScribbleInteraction *_scribbleInteraction;
 }
 
 @property (nonatomic) double adjustedLineFragmentPadding; // @synthesize adjustedLineFragmentPadding=_adjustedLineFragmentPadding;
 @property (copy, nonatomic) NSString *autocorrectionContext; // @synthesize autocorrectionContext=_autocorrectionContext;
 @property (copy, nonatomic) NSAttributedString *compositionText;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideCaret; // @synthesize hideCaret=_hideCaret;
+@property (nonatomic, getter=isInPencilMode) BOOL inPencilMode; // @synthesize inPencilMode=_inPencilMode;
+@property (nonatomic, getter=isPencilWriting) BOOL pencilWriting; // @synthesize pencilWriting=_pencilWriting;
 @property (nonatomic) double placeHolderWidth; // @synthesize placeHolderWidth=_placeHolderWidth;
 @property (copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (nonatomic) double placeholderExpandedWidth; // @synthesize placeholderExpandedWidth=_placeholderExpandedWidth;
 @property (strong, nonatomic) UILabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
 @property (copy, nonatomic) NSString *placeholderText;
+@property (nonatomic) BOOL preventShowingCalloutMenu; // @synthesize preventShowingCalloutMenu=_preventShowingCalloutMenu;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
 @property (strong, nonatomic) UIKeyboardInputMode *savedKeyboardInputMode; // @synthesize savedKeyboardInputMode=_savedKeyboardInputMode;
+@property (strong, nonatomic) UIScribbleInteraction *scribbleInteraction; // @synthesize scribbleInteraction=_scribbleInteraction;
 @property (nonatomic) BOOL sendCurrentLocationFromKeyboardEnabled; // @synthesize sendCurrentLocationFromKeyboardEnabled=_sendCurrentLocationFromKeyboardEnabled;
 @property (nonatomic, getter=isShowingDictationPlaceholder) BOOL showingDictationPlaceholder; // @synthesize showingDictationPlaceholder=_showingDictationPlaceholder;
 @property (readonly, nonatomic, getter=isSingleLine) BOOL singleLine;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL updatesFontOnTextChange; // @synthesize updatesFontOnTextChange=_updatesFontOnTextChange;
 
 - (void).cxx_destruct;
@@ -51,8 +65,12 @@
 - (BOOL)resignFirstResponder;
 - (void)restoreKeyboardInputMode;
 - (void)saveKeyboardInputMode;
+- (void)scribbleInteractionDidFinishWriting:(id)arg1;
+- (void)scribbleInteractionWillBeginWriting:(id)arg1;
 - (void)setAttributedText:(id)arg1;
 - (void)setFont:(id)arg1;
+- (void)setupScribbleInteraction;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)updateFontIfNeeded;
 - (void)updateTextView;

@@ -17,6 +17,7 @@
 - (id)_profileList:(id)arg1;
 - (id)_removeProfile:(id)arg1;
 - (id)_restrictions:(id)arg1;
+- (void)_sendAnalyticsMDMCommandEventWithRequest:(id)arg1 response:(id)arg2;
 
 @end
 

@@ -8,14 +8,16 @@
 
 #import <SearchFoundation/NSCopying-Protocol.h>
 
-@class NSArray;
+@class NSArray, SFSearchResult;
 
 @interface SFVisibleResultsFeedback : SFFeedback <NSCopying>
 {
     NSArray *_results;
     unsigned long long _triggerEvent;
+    SFSearchResult *_goTakeoverResult;
 }
 
+@property (strong, nonatomic) SFSearchResult *goTakeoverResult; // @synthesize goTakeoverResult=_goTakeoverResult;
 @property (copy, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 

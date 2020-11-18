@@ -69,7 +69,6 @@
 + (id)uniquedColumns;
 + (BOOL)updateProperties:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4 bindingHandler:(CDUnknownBlockType)arg5;
 + (id)updateSQLForProperties:(id)arg1 predicate:(id)arg2;
-+ (id)updateSQLForPropertiesOnEntity:(id)arg1;
 - (id)UUIDForProperty:(id)arg1 database:(id)arg2;
 - (BOOL)_deleteRowFromTable:(id)arg1 usingColumn:(id)arg2 database:(id)arg3;
 - (BOOL)booleanForProperty:(id)arg1 database:(id)arg2;
@@ -84,6 +83,7 @@
 - (id)numberForProperty:(id)arg1 database:(id)arg2;
 - (id)stringForProperty:(id)arg1 database:(id)arg2;
 - (BOOL)updateProperties:(id)arg1 database:(id)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4;
+- (id)updateSQLForProperties:(id)arg1;
 - (id)valueForProperty:(id)arg1 database:(id)arg2;
 - (void)willDeleteFromDatabase:(id)arg1;
 

@@ -14,6 +14,7 @@
 {
 }
 
+@property (nonatomic) long long accessibilityContrast;
 @property (nonatomic) unsigned long long artworkSubtype;
 @property (nonatomic) BOOL canShowAlerts;
 @property (strong, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL idleModeEnabled;
 @property (nonatomic) struct UIEdgeInsets peripheryInsets;
 @property (strong, nonatomic) NSString *persistenceIdentifier;
+@property (nonatomic) long long pointerLockStatus;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;

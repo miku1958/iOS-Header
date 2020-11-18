@@ -15,6 +15,7 @@
     NSMutableDictionary *_settings;
 }
 
++ (BOOL)alwaysRequireHardwareVideoEncoder;
 + (BOOL)bufferStorageFactoryUsePool;
 + (long long)cacheNodeCacheSizeLimit;
 + (id)cacheNodeDirectoryURL;
@@ -47,14 +48,14 @@
 + (BOOL)rendererUseHalfFloat;
 + (BOOL)rendererUseP3Linear;
 + (void)reset;
++ (BOOL)runNeutrinoSynchronously;
++ (void)setAlwaysRequireHardwareVideoEncoder:(BOOL)arg1;
 + (void)setBufferStorageFactoryUsePool:(BOOL)arg1;
 + (void)setCacheNodeCacheSizeLimit:(long long)arg1;
 + (void)setCacheNodeDirectoryURL:(id)arg1;
 + (void)setCacheNodeFilePermissions:(long long)arg1;
 + (void)setCacheNodeImageCompression:(double)arg1;
 + (void)setDeviceDefaultSampleMode:(long long)arg1;
-+ (void)setDeviceDisableMetal:(BOOL)arg1;
-+ (void)setDeviceDisableOpenGL:(BOOL)arg1;
 + (void)setDevicePrintRenderer:(BOOL)arg1;
 + (void)setDisplayDisableColorMatching:(BOOL)arg1;
 + (void)setDisplayDisableDeepColor:(BOOL)arg1;
@@ -76,16 +77,21 @@
 + (void)setRendererClampToAlpha:(BOOL)arg1;
 + (void)setRendererUseHalfFloat:(BOOL)arg1;
 + (void)setRendererUseP3Linear:(BOOL)arg1;
++ (void)setRunNeutrinoSynchronously:(BOOL)arg1;
 + (void)setStoragePoolMigrationDelay:(double)arg1;
 + (void)setStoragePoolNonPurgeableLimit:(long long)arg1;
 + (void)setStoragePoolPurgeableLimit:(long long)arg1;
 + (void)setSurfaceStorageFactoryUsePool:(BOOL)arg1;
++ (void)setTileAssemblyCABased:(BOOL)arg1;
 + (void)setUpCacheNodeDirectoryWithComponent:(id)arg1;
++ (void)setVideoCompositorDebugMode:(unsigned long long)arg1;
 + (void)setViewDebugEnabled:(BOOL)arg1;
 + (double)storagePoolMigrationDelay;
 + (long long)storagePoolNonPurgeableLimit;
 + (long long)storagePoolPurgeableLimit;
 + (BOOL)surfaceStorageFactoryUsePool;
++ (BOOL)tileAssemblyCABased;
++ (unsigned long long)videoCompositorDebugMode;
 - (void).cxx_destruct;
 - (id)_settingForKey:(id)arg1 defaultValue:(CDUnknownBlockType)arg2;
 - (BOOL)boolSettingForKey:(id)arg1 defaultValue:(CDUnknownBlockType)arg2;

@@ -10,6 +10,7 @@
 
 @interface CAMLowLightSlider : CEKDiscreteSlider
 {
+    BOOL _lowLightActive;
     BOOL __performingCaptureAnimation;
     unsigned long long __selectedIndexBeforeCaptureAnimation;
     double __remainingCaptureAnimationTime;
@@ -24,7 +25,8 @@
 @property (nonatomic, setter=_setSelectedIndexBeforeCaptureAnimation:) unsigned long long _selectedIndexBeforeCaptureAnimation; // @synthesize _selectedIndexBeforeCaptureAnimation=__selectedIndexBeforeCaptureAnimation;
 @property (strong, nonatomic, setter=_setValueLabelUpdateTimer:) NSTimer *_valueLabelUpdateTimer; // @synthesize _valueLabelUpdateTimer=__valueLabelUpdateTimer;
 @property (nonatomic) CDStruct_c3b9c2ee durationMapping; // @synthesize durationMapping=_durationMapping;
-@property (nonatomic) long long lowLightMode;
+@property (nonatomic, getter=isLowLightActive) BOOL lowLightActive; // @synthesize lowLightActive=_lowLightActive;
+@property (nonatomic) unsigned long long lowLightMode;
 
 - (void).cxx_destruct;
 - (void)_handleValueLabelUpdateTimerWithStartTime:(double)arg1 duration:(double)arg2;

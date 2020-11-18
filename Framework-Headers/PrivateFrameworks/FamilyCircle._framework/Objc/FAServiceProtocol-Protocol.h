@@ -6,16 +6,19 @@
 
 #import <FamilyCircle/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString;
+@class ACAccount, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol FAServiceProtocol <NSObject>
-- (void)addFamilyMemberWithAppleID:(NSString *)arg1 password:(NSString *)arg2 isUnder13:(BOOL)arg3 options:(NSDictionary *)arg4 replyBlock:(void (^)(BOOL, NSString *, NSError *))arg5;
 - (void)clearFamilyCircleCacheWithReplyBlock:(void (^)(NSError *))arg1;
+- (void)didAddAccount:(ACAccount *)arg1 replyBlock:(void (^)(BOOL))arg2;
+- (void)didDeleteAccount:(ACAccount *)arg1 replyBlock:(void (^)(BOOL))arg2;
 - (void)didReceiveFamilyEventPushNotificationWithPayload:(NSDictionary *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
-- (void)dispatchFamilyPushNotificationWithPayload:(NSDictionary *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
-- (void)fetchFamilyCircleWithExpectedDSIDs:(NSArray *)arg1 signedInAccountShouldBeApprover:(BOOL)arg2 forceServerFetch:(BOOL)arg3 doNotFetchFromServer:(BOOL)arg4 options:(NSDictionary *)arg5 replyBlock:(void (^)(NSDictionary *, FAFamilyCircle *, NSError *))arg6;
+- (void)fetchEligibilityForPropertyName:(NSString *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
+- (void)fetchFamilyCircleWithExpectedDSIDs:(NSArray *)arg1 expectedAltDSIDs:(NSArray *)arg2 signedInAccountShouldBeApprover:(BOOL)arg3 cachePolicy:(unsigned long long)arg4 options:(NSDictionary *)arg5 replyBlock:(void (^)(NSDictionary *, FAFamilyCircle *, NSError *))arg6;
 - (void)fetchFamilyMemberPhotoWithDSID:(NSNumber *)arg1 hashedDSID:(NSString *)arg2 size:(long long)arg3 localFallback:(BOOL)arg4 options:(NSDictionary *)arg5 replyBlock:(void (^)(NSData *, long long, NSError *))arg6;
-- (void)launchiCloudFamilySettings;
+- (void)fetchFollowupsWithAltDSID:(NSString *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)launchICloudFamilySettingsWithOptions:(NSDictionary *)arg1;
+- (void)launchOutOfProcessFamilyWithOptions:(NSDictionary *)arg1 completion:(void (^)(FACircleStateResponse *))arg2;
 - (void)registerPushToken:(NSData *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)removeFamilyMemberWithDSID:(NSNumber *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(BOOL, NSNumber *, NSError *))arg3;
 - (void)updateFamilyMemberFlagWithDSID:(NSNumber *)arg1 flag:(NSString *)arg2 enabled:(BOOL)arg3 replyBlock:(void (^)(NSError *))arg4;

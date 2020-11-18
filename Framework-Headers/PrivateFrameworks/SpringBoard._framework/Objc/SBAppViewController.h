@@ -11,7 +11,7 @@
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, SBActivationSettings, SBApplicationSceneView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBSceneHandle, UIView;
+@class NSMutableSet, NSSet, NSString, SBActivationSettings, SBApplicationSceneHandle, SBApplicationSceneView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, UIView;
 @protocol SBAppViewControllerDelegate, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
 @interface SBAppViewController : UIViewController <SBDeviceApplicationSceneHandleObserver, SBApplicationHosting, SBApplicationSceneViewControlling, BSInvalidatable>
@@ -54,7 +54,7 @@
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext; // @synthesize placeholderContentContext=_placeholderContentContext;
 @property (nonatomic) BOOL placeholderContentEnabled; // @synthesize placeholderContentEnabled=_placeholderContentEnabled;
 @property (nonatomic) long long requestedMode; // @synthesize requestedMode=_requestedMode;
-@property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (readonly, nonatomic) SBApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SBActivationSettings *supplementalActivationSettings; // @synthesize supplementalActivationSettings=_supplementalActivationSettings;
@@ -74,6 +74,7 @@
 - (void)_transformHostedAppViewForRotationToOrientation:(long long)arg1;
 - (void)_updateForAppearanceState:(int)arg1;
 - (BOOL)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 - (void)containerContentWrapperInterfaceOrientationChangedTo:(long long)arg1;
 - (void)dealloc;
 - (id)hostedAppSceneHandle;

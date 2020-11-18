@@ -39,6 +39,7 @@
 
 - (void).cxx_destruct;
 - (void)beginUsingPlugIn:(id)arg1 ready:(CDUnknownBlockType)arg2;
+- (double)cleanExitTimeout;
 - (id)defaultPrincipalObject;
 - (id)findProtocol:(id)arg1;
 - (void)hostHasControl;
@@ -47,7 +48,7 @@
 - (void)prefsSetObject:(id)arg1 forKey:(id)arg2 inPlugIn:(id)arg3 result:(CDUnknownBlockType)arg4;
 - (void)prepareUsing:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)prepareUsingPlugIn:(id)arg1 hostProtocol:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)setupWithIdentifier:(id)arg1;
+- (id)setupWithIdentifier:(id)arg1 extensionPointPlatform:(unsigned int)arg2;
 - (void)shutdownPlugIn;
 
 @end

@@ -22,7 +22,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double leadingMargin; // @synthesize leadingMargin=_leadingMargin;
@@ -35,6 +35,7 @@
 + (double)defaultHeight;
 + (void)initialize;
 + (BOOL)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)dealloc;
 - (void)establishSearchBarConstraints;

@@ -13,7 +13,7 @@
 #import <SiriUIActivation/SASStateChangeListener-Protocol.h>
 #import <SiriUIActivation/SiriPresentation-Protocol.h>
 
-@class AFConnection, AFQueue, AFRequestCompletionOptions, AFUISiriLanguage, AFUISiriSetupViewController, AFUISiriViewController, AFWatchdogTimer, BSServiceConnection, NSArray, NSDate, NSMutableDictionary, NSObject, NSString, NSTimer, UIScreen;
+@class AFConnection, AFQueue, AFRequestCompletionOptions, AFUISiriLanguage, AFUISiriSetupViewController, AFUISiriViewController, AFWatchdogTimer, BSServiceConnection, NSArray, NSDate, NSObject, NSString, NSTimer, UINavigationController, UIScreen;
 @protocol OS_dispatch_queue, SiriPresentationControllerDelegate, SiriPresentationIntentUsageDelegate;
 
 @interface SiriPresentationViewController : UIViewController <SASStateChangeListener, AFUISiriLanguageDelegate, AFUISiriViewControllerDelegate, AFUISiriViewControllerDataSource, AFUISiriSetupViewControllerDelegate, SiriPresentation>
@@ -23,7 +23,6 @@
     BOOL _delaySessionEndForTTS;
     NSDate *_lastGuideCheck;
     AFRequestCompletionOptions *_completionOptions;
-    NSMutableDictionary *_activePresentationProperties;
     UIScreen *_activeScreen;
     BOOL _activationHandled;
     BOOL _isIdleAndQuiet;
@@ -36,8 +35,10 @@
     BOOL _springBoardIdleTimerDisabled;
     BOOL _waitingForTelephonyToStart;
     BOOL _startGuidedAccessOnDismissal;
-    BOOL _pocketStateKeptScreenOffDuringActivation;
+    BOOL _wasScreenOffDuringActivation;
+    BOOL _isVoiceActivationMaskShown;
     BOOL _buttonDownEventDidOccur;
+    BOOL _shouldCancelWake;
     BOOL _predictedRecordRouteIsZLL;
     struct os_unfair_lock_s _lock;
     long long identifier;
@@ -52,21 +53,20 @@
     NSArray *_currentCarPlaySupportedOEMAppIdList;
     NSArray *_starkAppBundleIdentifierContext;
     unsigned long long _currentLockState;
-    AFWatchdogTimer *_activationTimer;
+    AFWatchdogTimer *_animationDismissalTimer;
     AFUISiriLanguage *_language;
     id<SiriPresentationIntentUsageDelegate> _intentUsageDelegate;
     NSTimer *_clearSiriViewControllerTimer;
+    long long _currentViewMode;
+    NSTimer *_pongTimer;
     AFUISiriViewController *_siriViewController;
     AFUISiriSetupViewController *_siriSetupViewController;
-    NSString *__currentTestName;
-    NSString *__currentTestID;
+    UINavigationController *_siriSetupNavigationController;
     AFQueue *_testInputQueue;
     struct CGRect _hostedPresentationFrame;
 }
 
-@property (copy, nonatomic, setter=_setCurrentTestID:) NSString *_currentTestID; // @synthesize _currentTestID=__currentTestID;
-@property (copy, nonatomic, setter=_setCurrentTestName:) NSString *_currentTestName; // @synthesize _currentTestName=__currentTestName;
-@property (strong, nonatomic) AFWatchdogTimer *activationTimer; // @synthesize activationTimer=_activationTimer;
+@property (strong, nonatomic) AFWatchdogTimer *animationDismissalTimer; // @synthesize animationDismissalTimer=_animationDismissalTimer;
 @property (nonatomic, getter=_buttonDownEventDidOccur, setter=_setButtonDownEventDidOccur:) BOOL buttonDownEventDidOccur; // @synthesize buttonDownEventDidOccur=_buttonDownEventDidOccur;
 @property (nonatomic, getter=_buttonDownTimestamp, setter=_setButtonDownTimestamp:) double buttonDownTimestamp; // @synthesize buttonDownTimestamp=_buttonDownTimestamp;
 @property (strong, nonatomic, getter=_carSiriButtonHoldToTalkTimer, setter=_setCarSiriButtonHoldToTalkTimer:) NSTimer *carSiriButtonHoldToTalkTimer; // @synthesize carSiriButtonHoldToTalkTimer=_carSiriButtonHoldToTalkTimer;
@@ -76,6 +76,7 @@
 @property (strong, nonatomic) NSArray *contextAppInfosForSiriViewController; // @synthesize contextAppInfosForSiriViewController=_contextAppInfosForSiriViewController;
 @property (strong, nonatomic) NSArray *currentCarPlaySupportedOEMAppIdList; // @synthesize currentCarPlaySupportedOEMAppIdList=_currentCarPlaySupportedOEMAppIdList;
 @property (nonatomic) unsigned long long currentLockState; // @synthesize currentLockState=_currentLockState;
+@property (nonatomic) long long currentViewMode; // @synthesize currentViewMode=_currentViewMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -83,12 +84,15 @@
 @property (readonly, nonatomic) long long identifier; // @synthesize identifier;
 @property (strong, nonatomic) id<SiriPresentationIntentUsageDelegate> intentUsageDelegate; // @dynamic intentUsageDelegate;
 @property (strong, nonatomic) id<SiriPresentationIntentUsageDelegate> intentUsageDelegate; // @synthesize intentUsageDelegate=_intentUsageDelegate;
+@property (nonatomic, getter=_isVoiceActivationMaskShown, setter=_setVoiceActivationMaskShown:) BOOL isVoiceActivationMaskShown; // @synthesize isVoiceActivationMaskShown=_isVoiceActivationMaskShown;
 @property (readonly, nonatomic, getter=_language) AFUISiriLanguage *language; // @synthesize language=_language;
 @property (strong, nonatomic, getter=_lastAppUpdateTimestamp, setter=_setLastAppUpdateTimestamp:) NSDate *lastAppUpdateTimestamp; // @synthesize lastAppUpdateTimestamp=_lastAppUpdateTimestamp;
 @property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
-@property (nonatomic, getter=_pocketStateKeptScreenOffDuringActivation, setter=_setPocketStateKeptScreenOffDuringActivation:) BOOL pocketStateKeptScreenOffDuringActivation; // @synthesize pocketStateKeptScreenOffDuringActivation=_pocketStateKeptScreenOffDuringActivation;
+@property (strong, nonatomic) NSTimer *pongTimer; // @synthesize pongTimer=_pongTimer;
 @property (nonatomic) BOOL predictedRecordRouteIsZLL; // @synthesize predictedRecordRouteIsZLL=_predictedRecordRouteIsZLL;
-@property (strong, nonatomic) id<SiriPresentationControllerDelegate> siriPresentationControllerDelegate; // @synthesize siriPresentationControllerDelegate;
+@property (getter=_shouldCancelWake, setter=_setShouldCancelWake:) BOOL shouldCancelWake; // @synthesize shouldCancelWake=_shouldCancelWake;
+@property (weak, nonatomic) id<SiriPresentationControllerDelegate> siriPresentationControllerDelegate; // @synthesize siriPresentationControllerDelegate;
+@property (strong, nonatomic) UINavigationController *siriSetupNavigationController; // @synthesize siriSetupNavigationController=_siriSetupNavigationController;
 @property (strong, nonatomic) AFUISiriSetupViewController *siriSetupViewController; // @synthesize siriSetupViewController=_siriSetupViewController;
 @property (strong, nonatomic) AFUISiriViewController *siriViewController; // @synthesize siriViewController=_siriViewController;
 @property (nonatomic, getter=_isSpringBoardIdleTimerDisabled, setter=_setSpringBoardIdleTimerDisabled:) BOOL springBoardIdleTimerDisabled; // @synthesize springBoardIdleTimerDisabled=_springBoardIdleTimerDisabled;
@@ -98,14 +102,14 @@
 @property (copy, nonatomic, getter=_testInputQueue) AFQueue *testInputQueue; // @synthesize testInputQueue=_testInputQueue;
 @property (strong, nonatomic) AFConnection *unownedConnection; // @synthesize unownedConnection=_unownedConnection;
 @property (nonatomic, getter=_isWaitingForTelephonyToStart, setter=_setWaitingForTelephonyToStart:) BOOL waitingForTelephonyToStart; // @synthesize waitingForTelephonyToStart=_waitingForTelephonyToStart;
+@property (nonatomic, getter=_wasScreenOffDuringActivation, setter=_setScreenOffDuringActivation:) BOOL wasScreenOffDuringActivation; // @synthesize wasScreenOffDuringActivation=_wasScreenOffDuringActivation;
 
 + (id)extractTestingInputsFromContext:(id)arg1;
-+ (BOOL)testIsSyntheticActivation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activateWithRequestOptions:(id)arg1;
+- (id)_analytics;
 - (void)_applicationsDidChange;
 - (void)_beginDelayingSessionEndForTTS;
-- (BOOL)_broadcastPlistDictionaryWithTestName:(id)arg1 testOptions:(id)arg2;
 - (BOOL)_buttonIdentifierIsHoldToTalkTrigger:(long long)arg1;
 - (void)_callIsActiveDidChangeNotification:(id)arg1;
 - (BOOL)_canShowWhileLocked;
@@ -116,13 +120,13 @@
 - (void)_cleanupUnownedConnection;
 - (void)_clearAllTestingInputs;
 - (void)_clearSiriViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_createPresentationPropertiesWithRequestOptions:(id)arg1;
 - (id)_createSiriViewControllerWithRequestOptions:(id)arg1;
 - (id)_dequeueTestingInput;
 - (void)_dismissDueToUnexpectedError:(id)arg1;
 - (void)_dismissSiriSetup;
-- (void)_dismissTest:(id)arg1 afterTimeoutWithTestOptions:(id)arg2 finishTest:(BOOL)arg3;
 - (unsigned long long)_dismissalReasonForDismissalWithOptions:(id)arg1;
-- (void)_emitInstrumentationDismissalStateForViewMode:(long long)arg1 withDismissalReason:(unsigned long long)arg2;
+- (void)_emitInstrumentationDismissalStateWithReason:(unsigned long long)arg1;
 - (void)_enableAudioInjection:(BOOL)arg1 audioFiles:(id)arg2;
 - (void)_enableSpringBoardIdleTimer;
 - (void)_endDelayingSessionEndForTTS;
@@ -131,14 +135,16 @@
 - (id)_fallbackScreenForIdentifier:(long long)arg1;
 - (void)_finishClearingSiriViewController:(id)arg1;
 - (void)_handleContextClearForRequestOptions:(id)arg1;
-- (BOOL)_handlePPTActivation:(id)arg1;
 - (BOOL)_handleTapButtonBehavior:(long long)arg1;
 - (BOOL)_handleTapDismissal:(long long)arg1;
 - (BOOL)_hasTestingInput;
 - (unsigned long long)_impliedDismissalReasonFromState;
+- (void)_instrumentSuccessfulAppLaunchIfNecessary;
 - (void)_invalidateCarSiriButtonHoldToTalkTimer;
 - (BOOL)_isDelayingSessionEnd;
 - (BOOL)_isDeviceButton:(long long)arg1;
+- (void)_logDismissalRequestedForViewMode:(long long)arg1 withDismissalReason:(unsigned long long)arg2;
+- (void)_logSignatureWithType:(id)arg1 subType:(id)arg2 context:(id)arg3;
 - (void)_openURL:(id)arg1 bundleId:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 punchoutStyle:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_prepareSiriViewControllerWithRequestOptions:(id)arg1;
 - (void)_presentSiriViewControllerWithPresentationOptions:(id)arg1 requestOptions:(id)arg2;
@@ -153,33 +159,34 @@
 - (void)_removeSetupViewControllerIfNecessary;
 - (void)_requestDismissal;
 - (void)_requestDismissalWithOptions:(id)arg1;
+- (void)_requestHomeAffordanceSuppression:(long long)arg1;
 - (void)_resetStateForInstrumentation;
-- (void)_runSiriBringupCarPlayButtonToSpeechRecordingWithoutPrewarmTestWithTestName:(id)arg1 testOptions:(id)arg2;
-- (void)_runSiriBringupInjectAudioTestWithTestName:(id)arg1 testOptions:(id)arg2 dismissUIAfterTimeout:(BOOL)arg3 finishTestAfterTimeout:(BOOL)arg4;
-- (void)_runSiriBringupListeningStateTestWithTestName:(id)arg1 testOptions:(id)arg2;
-- (void)_runSiriBringupNetworkEnabledTestWithTestName:(id)arg1 testOptions:(id)arg2 dismissUIAfterTimeout:(BOOL)arg3 finishTestAfterTimeout:(BOOL)arg4;
-- (void)_runSiriBringupSnippetTestWithTestName:(id)arg1 testOptions:(id)arg2 dismissUIAfterTimeout:(BOOL)arg3 finishTestAfterTimeout:(BOOL)arg4;
-- (void)_runSiriBringupToConversationMainTestWithTestName:(id)arg1 testOptions:(id)arg2;
-- (void)_runSiriBringupToConversationTestWithTestName:(id)arg1 testOptions:(id)arg2;
 - (void)_runSyntheticButtonActivationTest;
 - (void)_scheduleConnectionHouseKeepingAfterDelay:(double)arg1;
 - (void)_sendTelephonyHasStartedAfterDelay:(double)arg1;
 - (void)_setUpUnownedConnectionIfNecessary;
+- (void)_setupPongTimer;
 - (void)_setupSiriViewControllerPresentedSuccessHandler;
+- (BOOL)_shouldAllowResizingBetweenModesForViewMode:(long long)arg1;
+- (BOOL)_shouldKeepPonging;
+- (BOOL)_shouldPresentSiriViewControllerWithRequestOptions:(id)arg1;
 - (BOOL)_shouldShowSetupViewController;
 - (void)_showSetupViewControllerIfNecessary;
 - (void)_siriDidOpenURL:(id)arg1;
 - (void)_startUIRequestWithText:(id)arg1 testName:(id)arg2;
+- (void)_teardownPongTimer;
 - (void)_telephonyHasStarted;
 - (void)_ttsQueueDidEmpty:(id)arg1;
 - (id)_uiPresentationIdentifier;
-- (void)_updateActivePresentationPropertiesForPresentationIdentifier:(id)arg1;
+- (id)_updateDismissalOptionsIfNecessary:(id)arg1;
 - (void)_updateHostedPresentationFrame;
 - (void)_updateLanguageCode;
-- (id)_updateTestStartedTimeInTestOptions:(id)arg1 toTime:(id)arg2;
+- (id)_updateRequestOptionsWithTestingInput:(id)arg1;
+- (long long)_viewModeForRequestOptions:(id)arg1;
+- (void)_waitForPing;
 - (void)_wasDismissedWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_watchdogQueue_startActivationWatchdogTimer;
-- (void)_watchdogQueue_stopActivationWatchdogTimerIfNeededThen:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
+- (void)_watchdogQueue_startAnimationDismissalWatchdogTimerWithTimeoutHandler:(CDUnknownBlockType)arg1 shouldTurnScreenOff:(BOOL)arg2;
+- (void)_watchdogQueue_stopAnimationDismissalWatchdogTimerIfNeededThen:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)activateWithRequestOptions:(id)arg1;
 - (void)activateWithSource:(long long)arg1 requestOptions:(id)arg2 timestamp:(id)arg3;
 - (void)activateWithSource:(long long)arg1 timestamp:(id)arg2;
@@ -194,6 +201,7 @@
 - (id)contextAppInfosForSiriViewController:(id)arg1;
 - (id)currentCarPlaySupportedOEMAppsForSiriViewController:(id)arg1;
 - (void)dealloc;
+- (oneway void)deviceWonMyriadElection;
 - (void)disableSiriActivationRequestedBySiriSetupViewController:(id)arg1;
 - (void)dismiss;
 - (void)dismissSiriSetupViewController:(id)arg1;
@@ -201,9 +209,9 @@
 - (void)dismissWithOptions:(id)arg1;
 - (void)extendCurrentTTSRequested;
 - (oneway void)handleButtonDownFromButtonIdentifier:(id)arg1 timestamp:(id)arg2;
-- (oneway void)handleButtonLongPressFromButtonIdentifier:(id)arg1 timestamp:(id)arg2;
+- (oneway void)handleButtonLongPressFromButtonIdentifier:(id)arg1 deviceIdentifier:(id)arg2 timestamp:(id)arg3;
 - (oneway void)handleButtonTapFromButtonIdentifier:(id)arg1;
-- (oneway void)handleButtonUpFromButtonIdentifier:(id)arg1 timestamp:(id)arg2;
+- (oneway void)handleButtonUpFromButtonIdentifier:(id)arg1 deviceIdentifier:(id)arg2 timestamp:(id)arg3;
 - (oneway void)handleRequestWithOptions:(id)arg1;
 - (id)initWithIdentifier:(long long)arg1;
 - (id)initWithIdentifier:(long long)arg1 hostedPresentationFrame:(struct CGRect)arg2;
@@ -211,6 +219,8 @@
 - (BOOL)isEnabled;
 - (unsigned long long)lockStateForSiriViewController:(id)arg1;
 - (void)openSiriRequestedBySiriSetupViewController:(id)arg1;
+- (oneway void)ping;
+- (oneway void)pocketStateFetchDeterminedShouldCancelWake:(id)arg1;
 - (long long)preferredFlamesViewFidelity;
 - (oneway void)preheat;
 - (oneway void)presentationDismissalRequestedWithOptions:(id)arg1;
@@ -218,32 +228,33 @@
 - (oneway void)presentationRequestedWithPresentationOptions:(id)arg1 requestOptions:(id)arg2;
 - (BOOL)presentationisIdleAndQuiet;
 - (void)prewarmFlamesViewShadersInBackgroundForScreen:(id)arg1 activeFrame:(struct CGRect)arg2;
-- (void)runTest:(id)arg1 testOptions:(id)arg2;
+- (struct UIEdgeInsets)safeAreaInsetsForSceneCreationInSiriViewController:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (void)siriLanguageSpokenLanguageCodeDidChange:(id)arg1;
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;
 - (BOOL)siriSetupViewController:(id)arg1 openURL:(id)arg2;
-- (void)siriSetupViewControllerDidChangeVisibility:(id)arg1;
 - (BOOL)siriViewController:(id)arg1 attemptUnlockWithPassword:(id)arg2;
 - (id)siriViewController:(id)arg1 bulletinWithIdentifier:(id)arg2;
 - (void)siriViewController:(id)arg1 didChangePresentationPeekMode:(unsigned long long)arg2;
 - (void)siriViewController:(id)arg1 didCompleteRequestWithError:(id)arg2;
 - (void)siriViewController:(id)arg1 didEncounterUnexpectedError:(id)arg2;
-- (void)siriViewController:(id)arg1 didFinishTest:(id)arg2;
 - (void)siriViewController:(id)arg1 didHideStatusView:(BOOL)arg2;
 - (void)siriViewController:(id)arg1 didReadBulletinWithIdentifier:(id)arg2;
 - (void)siriViewController:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
-- (void)siriViewController:(id)arg1 failTest:(id)arg2 withReason:(id)arg3;
+- (void)siriViewController:(id)arg1 failedToLaunchAppWithBundleIdentifier:(id)arg2;
 - (void)siriViewController:(id)arg1 launchApplicationWithBundleIdentifier:(id)arg2 withURL:(id)arg3 launchOptions:(long long)arg4 replyHandler:(CDUnknownBlockType)arg5;
+- (void)siriViewController:(id)arg1 onboardingScreenContinueButtonTappedWithRequestOptions:(id)arg2;
 - (BOOL)siriViewController:(id)arg1 openURL:(id)arg2 appBundleID:(id)arg3 allowSiriDismissal:(BOOL)arg4;
 - (void)siriViewController:(id)arg1 openURL:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)siriViewController:(id)arg1 presentedIntentWithBundleId:(id)arg2;
 - (void)siriViewController:(id)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)siriViewController:(id)arg1 requestsPresentation:(CDUnknownBlockType)arg2;
 - (void)siriViewController:(id)arg1 siriIdleAndQuietStatusDidChange:(BOOL)arg2;
+- (void)siriViewController:(id)arg1 updateHomeAffordanceForBlurVisibilty:(BOOL)arg2;
+- (void)siriViewController:(id)arg1 voiceActivationMaskViewIsVisible:(BOOL)arg2;
+- (void)siriViewController:(id)arg1 willProcessAppLaunchWithBundleIdentifier:(id)arg2;
 - (id)siriViewController:(id)arg1 willStartRequestWithOptions:(id)arg2;
-- (void)siriViewController:(id)arg1 willStartTest:(id)arg2;
 - (BOOL)siriViewControllerConfigured;
 - (void)siriViewControllerDidChangeVisibility:(id)arg1;
 - (void)siriViewControllerDidFinishDismissing:(id)arg1;
@@ -253,16 +264,15 @@
 - (void)siriViewControllerSpeechRequestCancelledFromSiriOrb;
 - (void)siriViewControllerSpeechRequestStartedFromSiriOrb;
 - (id)starkAppBundleIdentifierContextForSiriViewController:(id)arg1;
-- (void)startActivationWatchdogTimer;
+- (void)startAnimationDismissalWatchdogTimerWithTimeoutHandler:(CDUnknownBlockType)arg1 shouldTurnScreenOff:(BOOL)arg2;
 - (void)startGuidedAccessForSiriViewController:(id)arg1;
-- (void)stopActivationWatchdogTimerIfNeededThen:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
+- (void)stopAnimationDimissalWatchdogTimerIfNeededThen:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
-- (oneway void)turnOnScreenAfterPocketStateFetch;
 - (oneway void)updateActiveInterfaceOrientation:(id)arg1 willAnimationWithDuration:(id)arg2;
 - (oneway void)updateCurrentLockState:(id)arg1;
 - (void)userRelevantEventDidOccurInSiriViewController:(id)arg1;
-- (long long)viewModeForRequestOptions:(id)arg1;
 - (void)viewWillLayoutSubviews;
+- (oneway void)wakeScreenAfterActivation;
 
 @end
 

@@ -6,9 +6,18 @@
 
 #import <coreroutine/RTStore.h>
 
-@interface RTFingerprintStore : RTStore
+#import <coreroutine/RTEnumerableStore-Protocol.h>
+
+@class NSString;
+
+@interface RTFingerprintStore : RTStore <RTEnumerableStore>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)_appendWiFiAccessPointsToLastFingerprint:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchFingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 filteredBySettledState:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
@@ -16,6 +25,7 @@
 - (void)appendWiFiAccessPointsToLastFingerprint:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)clearWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchFingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 filteredBySettledState:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)fetchRequestFromOptions:(id)arg1 offset:(unsigned long long)arg2 error:(id *)arg3;
 - (void)fetchWifiAccessPointsForFingerprint:(id)arg1 fetchLimit:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)purgePredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeFingerprints:(id)arg1 handler:(CDUnknownBlockType)arg2;

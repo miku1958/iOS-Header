@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray, NSMutableDictionary;
+@protocol CKModifySubscriptionsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifySubscriptionsOperation : CKDDatabaseOperation
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_subscriptionsByServerID;
 }
 
+@property (strong, nonatomic) id<CKModifySubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
 @property (strong, nonatomic) NSArray *subscriptionIDsToDelete; // @synthesize subscriptionIDsToDelete=_subscriptionIDsToDelete;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

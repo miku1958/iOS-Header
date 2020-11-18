@@ -9,7 +9,7 @@
 #import <ContentKit/NSCopying-Protocol.h>
 #import <ContentKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSLock, NSMutableArray, WFCoercionOptions, WFContentSource;
+@class NSArray, NSLock, NSMutableArray, WFCoercionOptions, WFContentAttributionSet;
 
 @interface WFContentCollection : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,7 +18,7 @@
     NSLock *_itemWriteLock;
 }
 
-@property (readonly, nonatomic) WFContentSource *contentSource;
+@property (readonly, nonatomic) WFContentAttributionSet *attributionSet;
 @property (strong, nonatomic) WFCoercionOptions *defaultCoercionOptions; // @synthesize defaultCoercionOptions=_defaultCoercionOptions;
 @property (strong, nonatomic) NSLock *itemWriteLock; // @synthesize itemWriteLock=_itemWriteLock;
 @property (readonly, nonatomic) NSArray *items;
@@ -39,7 +39,7 @@
 - (BOOL)canPerformCoercion:(id)arg1;
 - (id)collectionByFilteringItemsWithBlock:(CDUnknownBlockType)arg1 excludedItems:(id *)arg2;
 - (id)collectionByFilteringToItemClass:(Class)arg1 excludedItems:(id *)arg2;
-- (id)collectionByMergingContentSource:(id)arg1;
+- (id)collectionByMergingAttributionSet:(id)arg1;
 - (void)copyToPasteboard:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -53,11 +53,11 @@
 - (void)generateCollectionByCoercingToItemClasses:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateCollectionByEvaluatingQuery:(id)arg1 forContentItemClass:(Class)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getFileRepresentation:(CDUnknownBlockType)arg1 forType:(id)arg2;
-- (void)getFileRepresentationAndContentSource:(CDUnknownBlockType)arg1 forType:(id)arg2;
+- (void)getFileRepresentationAndAttributionSet:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)getFileRepresentations:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)getFileRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
 - (void)getObjectRepresentation:(CDUnknownBlockType)arg1 forClass:(Class)arg2;
-- (void)getObjectRepresentationAndContentSource:(CDUnknownBlockType)arg1 forClass:(Class)arg2;
+- (void)getObjectRepresentationAndAttributionSet:(CDUnknownBlockType)arg1 forClass:(Class)arg2;
 - (void)getObjectRepresentations:(CDUnknownBlockType)arg1 forClass:(Class)arg2;
 - (void)getObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (void)getStringRepresentation:(CDUnknownBlockType)arg1;

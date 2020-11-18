@@ -13,6 +13,7 @@
 @interface BLHLSPlaylist : NSObject <BLM3U8ParserDelegate>
 {
     BOOL _independentSegments;
+    BOOL _ignoreSegments;
     NSArray *_groups;
     NSArray *_streamInfs;
     NSArray *_segments;
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreSegments; // @synthesize ignoreSegments=_ignoreSegments;
 @property (nonatomic) BOOL independentSegments; // @synthesize independentSegments=_independentSegments;
 @property (readonly, nonatomic) NSSet *keys;
 @property (strong, nonatomic) NSArray *requestedBitrates; // @synthesize requestedBitrates=_requestedBitrates;
@@ -34,10 +36,11 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *uniqueKeys; // @synthesize uniqueKeys=_uniqueKeys;
 
-+ (id)_playlistUsingParser:(id)arg1 error:(id *)arg2;
++ (id)_playlistUsingParser:(id)arg1 ignoreSegments:(BOOL)arg2 error:(id *)arg3;
 + (BOOL)_rewritePlaylistWithParser:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
 + (id)playlistParsingData:(id)arg1 error:(id *)arg2;
 + (id)playlistParsingURL:(id)arg1 error:(id *)arg2;
++ (id)playlistParsingURL:(id)arg1 ignoreSegments:(BOOL)arg2 error:(id *)arg3;
 + (BOOL)rewritePlaylistData:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
 + (BOOL)rewritePlaylistURL:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;

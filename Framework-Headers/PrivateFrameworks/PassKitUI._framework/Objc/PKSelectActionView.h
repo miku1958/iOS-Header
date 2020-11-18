@@ -9,13 +9,14 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSString, PKPass, PKPaymentPassAction, PKSelectActionHeader, UITableView;
+@class NSArray, NSDictionary, NSString, PKPass, PKPaymentPassAction, PKSelectActionHeader, UITableView;
 @protocol PKSelectActionViewDelegate;
 
 @interface PKSelectActionView : UIView <UITableViewDelegate, UITableViewDataSource>
 {
     PKPass *_pass;
     NSArray *_actions;
+    NSDictionary *_balances;
     unsigned long long _actionType;
     PKSelectActionHeader *_actionHeader;
     UITableView *_tableView;
@@ -32,7 +33,8 @@
 
 - (void).cxx_destruct;
 - (void)_addSubviews;
-- (id)initWithPass:(id)arg1 actions:(id)arg2 actionType:(unsigned long long)arg3;
+- (id)_balanceForTopUpAction:(id)arg1;
+- (id)initWithPass:(id)arg1 actions:(id)arg2 actionType:(unsigned long long)arg3 balanceDictionary:(id)arg4;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

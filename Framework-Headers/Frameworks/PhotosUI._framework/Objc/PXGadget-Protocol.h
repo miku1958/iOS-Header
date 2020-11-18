@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (nonatomic) long long priority;
@@ -41,6 +40,7 @@
 - (void)preloadResources;
 - (void)prepareCollectionViewItem:(UICollectionViewCell *)arg1;
 - (NSObject<PXAnonymousViewController> *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(NSObject<PXAnonymousView> *)arg2;
+- (void)removeCollectionViewItem:(UICollectionViewCell *)arg1;
 - (NSObject<PXAnonymousView> *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id<UICoordinateSpace>)arg2;
 - (NSString *)uniqueGadgetIdentifier;
 - (void)userDidSelectAccessoryButton:(NSObject<PXAnonymousView> *)arg1;

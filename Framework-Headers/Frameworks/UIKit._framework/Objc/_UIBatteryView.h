@@ -79,8 +79,10 @@
 + (struct CGSize)_pinSizeForIconSize:(long long)arg1;
 + (struct CGSize)_statusBarIntrinsicContentSizeForIconSize:(long long)arg1;
 - (void).cxx_destruct;
+- (void)__resetBoltLayers;
 - (void)__updateFillLayer;
 - (double)_batteryBoltLargeScaleFactor;
+- (double)_batteryBoltScaleFactorMultiplier;
 - (double)_batteryBoltSmallScaleFactor;
 - (id)_batteryFillColor;
 - (struct CGSize)_batterySizeForTraitCollection:(id)arg1;

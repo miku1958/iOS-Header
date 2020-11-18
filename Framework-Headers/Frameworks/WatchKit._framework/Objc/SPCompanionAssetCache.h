@@ -8,6 +8,7 @@
 
 @class SPAssetCacheClientCache;
 
+__attribute__((visibility("hidden")))
 @interface SPCompanionAssetCache : NSObject
 {
     SPAssetCacheClientCache *_permanentCache;

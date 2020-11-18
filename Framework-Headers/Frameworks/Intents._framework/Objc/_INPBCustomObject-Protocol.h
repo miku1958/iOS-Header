@@ -6,18 +6,22 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString;
+@class NSArray, NSString, _INPBDataString, _INPBImageValue;
 
 @protocol _INPBCustomObject <NSObject>
 
 @property (copy, nonatomic) NSArray *alternatives;
 @property (readonly, nonatomic) unsigned long long alternativesCount;
+@property (strong, nonatomic) _INPBImageValue *displayImage;
 @property (copy, nonatomic) NSString *displayString;
+@property (readonly, nonatomic) BOOL hasDisplayImage;
 @property (readonly, nonatomic) BOOL hasDisplayString;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasPronunciationHint;
+@property (readonly, nonatomic) BOOL hasSubtitleString;
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *pronunciationHint;
+@property (copy, nonatomic) NSString *subtitleString;
 
 + (Class)alternativeType;
 - (void)addAlternative:(_INPBDataString *)arg1;

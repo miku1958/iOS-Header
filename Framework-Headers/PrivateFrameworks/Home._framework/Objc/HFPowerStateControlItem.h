@@ -33,7 +33,6 @@
 - (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 displayResults:(id)arg2;
 - (BOOL)supportsItemRepresentingServices:(id)arg1;
-- (id)togglePrimaryState;
 - (id)toggleValue;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)writePrimaryState:(long long)arg1;

@@ -95,8 +95,9 @@
 - (void)_webView:(id)arg1 didInsertAttachment:(id)arg2 withSource:(id)arg3;
 - (void)_webView:(id)arg1 didInvalidateDataForAttachment:(id)arg2;
 - (void)_webView:(id)arg1 didRemoveAttachment:(id)arg2;
+- (void)_webView:(id)arg1 takeFocus:(long long)arg2;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
-- (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(BOOL)arg1;
+- (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(BOOL)arg1 shouldQuote:(BOOL)arg2;
 - (void)appendMarkupString:(id)arg1 quote:(BOOL)arg2;
 - (void)appendOrReplace:(id)arg1 withMarkupString:(id)arg2 quote:(BOOL)arg3;
 - (void)attachmentTapped:(id)arg1;

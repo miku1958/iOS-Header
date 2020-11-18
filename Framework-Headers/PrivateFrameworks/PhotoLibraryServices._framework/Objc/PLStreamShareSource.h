@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, NSURL, PFVideoComplement;
+@class NSData, NSString, NSURL, PFVideoComplement, PLSandboxedURL;
 
 @interface PLStreamShareSource : NSObject
 {
+    PLSandboxedURL *_sandboxedMediaURL;
+    PLSandboxedURL *_sandboxedVideoComplementImageURL;
+    PLSandboxedURL *_sandboxedVideoComplementVideoURL;
     NSData *_mediaData;
     NSString *_fileExtension;
     NSURL *_mediaURL;

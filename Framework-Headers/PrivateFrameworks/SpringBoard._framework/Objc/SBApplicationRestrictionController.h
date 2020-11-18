@@ -34,10 +34,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_postRestrictionState;
-- (void)_postRestrictionStateToObservers:(id)arg1;
-- (void)_updateRestrictionsAndForcePost:(BOOL)arg1;
-- (void)_updateVisibilityPreferences;
 - (void)addObserver:(id)arg1;
 - (void)beginPostingChanges;
 - (void)carrierBundleInfoDidChangeForStateProvider:(id)arg1 slot:(long long)arg2;

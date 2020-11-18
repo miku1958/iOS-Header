@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSTerminateRequest;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSMachPortTaskNameRight, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSTerminateRequest;
 
 @protocol RBSServiceLocalProtocol
 - (RBSAssertionIdentifier *)acquireAssertion:(RBSAssertion *)arg1 error:(out id *)arg2;
@@ -23,6 +23,9 @@
 - (BOOL)invalidateAssertionWithIdentifier:(RBSAssertionIdentifier *)arg1 error:(out id *)arg2;
 - (RBSProcessExitContext *)lastExitContextForInstance:(RBSProcessInstance *)arg1 error:(out id *)arg2;
 - (RBSProcessLimitations *)limitationsForInstance:(RBSProcessInstance *)arg1 error:(out id *)arg2;
+- (RBSMachPortTaskNameRight *)portForIdentifier:(RBSProcessIdentifier *)arg1;
+- (NSSet *)preventLaunchPredicatesWithError:(out id *)arg1;
+- (NSString *)processName:(NSNumber *)arg1;
 - (void)reset;
 - (NSArray *)statesForPredicate:(RBSProcessPredicate *)arg1 withDescriptor:(RBSProcessStateDescriptor *)arg2 error:(out id *)arg3;
 - (BOOL)subscribeProcessStateMonitor:(RBSProcessMonitor *)arg1 configuration:(RBSProcessMonitorConfiguration *)arg2 error:(out id *)arg3;

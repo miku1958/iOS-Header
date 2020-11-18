@@ -6,9 +6,13 @@
 
 #import <MessageUI/MFMailComposeHeaderView.h>
 
-@class CNComposeHeaderLabelView, NSString, UILabel;
+#import <MessageUI/PKScribbleInteractionDelegate-Protocol.h>
+#import <MessageUI/PKScribbleInteractionElementSource-Protocol.h>
 
-@interface MFComposeMultiView : MFMailComposeHeaderView
+@class CNComposeHeaderLabelView, NSString, UILabel;
+@protocol MFComposeMultiViewDelegate;
+
+@interface MFComposeMultiView : MFMailComposeHeaderView <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource>
 {
     UILabel *_accountLabel;
     CNComposeHeaderLabelView *_imageSizeHeaderLabelView;
@@ -18,13 +22,24 @@
     NSString *_accountDescription;
     BOOL _accountHasUnsafeDomain;
     BOOL _accountAutoselected;
+    id<MFComposeMultiViewDelegate> _scribbleDelegate;
 }
 
 @property (nonatomic, getter=isAccountAutoselected) BOOL accountAutoselected; // @synthesize accountAutoselected=_accountAutoselected;
 @property (nonatomic) BOOL accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<MFComposeMultiViewDelegate> scribbleDelegate; // @synthesize scribbleDelegate=_scribbleDelegate;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_accountDescriptionAttributedString;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (id)accountLabel;
 - (id)imageSizeHeaderLabelView;
 - (id)imageSizeLabel;

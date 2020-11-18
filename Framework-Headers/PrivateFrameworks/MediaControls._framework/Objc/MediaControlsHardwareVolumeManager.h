@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateVolumeControlsForRoute:(id)arg1;
 - (id)init;
 - (void)registerClient:(id)arg1 forRoute:(id)arg2;
-- (id)requestVolumeControlsForRoute:(id)arg1;
+- (id)requestVolumeControlsForRoute:(id)arg1 reason:(id)arg2;
 - (void)unregisterClient:(id)arg1;
 
 @end

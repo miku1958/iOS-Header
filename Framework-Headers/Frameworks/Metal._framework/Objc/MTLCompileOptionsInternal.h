@@ -6,7 +6,7 @@
 
 #import <Metal/MTLCompileOptions.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MTLCompileOptionsInternal : MTLCompileOptions
@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
     BOOL _compileTimeStatisticsEnabled;
     NSString *_additionalCompilerArguments;
     unsigned char _sourceLanguage;
+    long long _libraryType;
+    NSArray *_libraries;
+    NSString *_installName;
+    BOOL _preserveInvariance;
 }
 
 - (id)additionalCompilerArguments;
@@ -36,16 +40,24 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (void)importDictionary:(id)arg1;
 - (id)init;
+- (id)installName;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)languageVersion;
+- (id)libraries;
+- (long long)libraryType;
 - (id)preprocessorMacros;
+- (BOOL)preserveInvariance;
 - (void)setAdditionalCompilerArguments:(id)arg1;
 - (void)setCompileTimeStatisticsEnabled:(BOOL)arg1;
 - (void)setDebuggingEnabled:(BOOL)arg1;
 - (void)setFastMathEnabled:(BOOL)arg1;
 - (void)setGlBufferBindPoints:(BOOL)arg1;
+- (void)setInstallName:(id)arg1;
 - (void)setLanguageVersion:(unsigned long long)arg1;
+- (void)setLibraries:(id)arg1;
+- (void)setLibraryType:(long long)arg1;
 - (void)setPreprocessorMacros:(id)arg1;
+- (void)setPreserveInvariance:(BOOL)arg1;
 - (void)setSourceLanguage:(unsigned char)arg1;
 - (void)setTracingEnabled:(BOOL)arg1;
 - (unsigned char)sourceLanguage;

@@ -6,12 +6,11 @@
 
 #import <HealthToolbox/WDProfileTableViewCell.h>
 
-__attribute__((visibility("hidden")))
 @interface WDProfileEditableTableViewCell : WDProfileTableViewCell
 {
 }
 
-+ (double)notEditingRightEdgeMargin;
++ (double)notEditingTrailingEdgeMargin;
 - (void)_textFieldDidChange:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

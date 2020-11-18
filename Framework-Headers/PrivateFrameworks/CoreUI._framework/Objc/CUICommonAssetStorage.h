@@ -85,6 +85,7 @@
 - (void)enumerateBitmapIndexUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateKeysAndObjectsWithoutIgnoringUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateRenditionInfosUsingBlock:(CDUnknownBlockType)arg1;
 - (id)externalTags;
 - (float)fontSizeForFontSizeType:(id)arg1;
 - (BOOL)getBaselineOffset:(float *)arg1 forFontType:(id)arg2;

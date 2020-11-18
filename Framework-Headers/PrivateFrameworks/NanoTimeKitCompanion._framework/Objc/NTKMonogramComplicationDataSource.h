@@ -24,15 +24,12 @@
 - (id)currentSwitcherTemplate;
 - (void)dealloc;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineEndDateWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)pause;
 - (void)resume;
 - (void)startListeningForMonogramNotifications;
 - (void)stopListeningForMonogramNotifications;
+- (BOOL)supportsTapAction;
 
 @end
 

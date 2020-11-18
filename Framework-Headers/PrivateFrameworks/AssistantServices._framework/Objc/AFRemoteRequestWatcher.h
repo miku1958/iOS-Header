@@ -18,6 +18,7 @@
     CDUnknownBlockType _requestHandler;
     CDUnknownBlockType _dismissalHandler;
     CDUnknownBlockType _intentHandler;
+    CDUnknownBlockType _intentForwardingActionHandler;
     int _speechRequestToken;
     CDUnknownBlockType _speechRequestHandler;
     AFSiriActivationListener *_siriActivationListener;
@@ -35,6 +36,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)setDismissalHandler:(CDUnknownBlockType)arg1;
+- (void)setIntentForwardingActionHandler:(CDUnknownBlockType)arg1;
 - (void)setIntentHandler:(CDUnknownBlockType)arg1;
 - (void)setNewRequestHandler:(CDUnknownBlockType)arg1;
 - (void)setNewSpeechRequestHandler:(CDUnknownBlockType)arg1;
@@ -43,6 +45,7 @@
 - (void)siriActivationListener:(id)arg1 activateWithRequestInfo:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)siriActivationListener:(id)arg1 deactivateForReason:(long long)arg2 options:(unsigned long long)arg3 context:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)siriActivationListener:(id)arg1 handleIntent:(id)arg2 inBackgroundAppWithBundleId:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)siriActivationListener:(id)arg1 handleIntentForwardingAction:(id)arg2 inBackgroundApplicationWithBundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)siriActivationListener:(id)arg1 prewarmWithRequestInfo:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

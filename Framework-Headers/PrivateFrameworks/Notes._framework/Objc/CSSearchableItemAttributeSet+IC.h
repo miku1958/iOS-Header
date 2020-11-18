@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL ic_hasScannedDocuments;
 @property (nonatomic) BOOL ic_isLocked;
 @property (nonatomic) BOOL ic_isShared;
+@property (strong, nonatomic) NSString *ic_relatedNoteUniqueIdentifier;
 @property (nonatomic) unsigned long long ic_searchResultType;
 
 + (id)ic_customAttributeKeyDictionary;
@@ -28,6 +29,7 @@
 + (id)ic_itemHasScannedDocumentsCustomKey;
 + (id)ic_itemIsLockedCustomKey;
 + (id)ic_itemIsSharedCustomKey;
++ (id)ic_relatedNoteUniqueIdentifierCustomKey;
 + (id)ic_searchResultTypeCustomKey;
 + (id)ic_specializedIndexFieldAttributeKeyForStringField:(id)arg1;
 - (void)ic_populateValuesForSpecializedFields;

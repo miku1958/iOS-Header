@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_bakeSphericalHamonicsBasedIrradianceTexture:(id)arg1 forEnvironmentTexture:(id)arg2 renderContext:(id)arg3 applySH:(CDUnknownBlockType)arg4;
 - (void)_bakeStochasticIrradianceTexture:(id)arg1 forEnvironmentTexture:(id)arg2 mipmapLevelForSampling:(unsigned long long)arg3 useTextureView:(BOOL)arg4 renderContext:(id)arg5;
 - (id)_bufferForData:(struct __CFData *)arg1 bytesPerIndex:(unsigned long long)arg2;
+- (id)_bufferForMTLBuffer:(void *)arg1;
 - (void)_configureComputePipeline:(id)arg1 withDescriptor:(id)arg2;
 - (BOOL)_copyImage:(struct __C3DImage *)arg1 toTexture:(id)arg2 desc:(id)arg3 textureOptions:(int)arg4 needsMipMapGeneration:(BOOL)arg5;
 - (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_0aa79a9f)arg2 pipeline:(id)arg3;
@@ -83,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)_passWillDie:(id)arg1;
 - (void)_programHashCodeWillDie:(id)arg1;
 - (void)_programWillDie:(id)arg1;
+- (void)_rasterizerStateDidDie:(const void *)arg1;
 - (void)_removeMatchingProgram:(struct __C3DFXProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
 - (void)_skinWillDie:(id)arg1;
 - (id)_textureDescriptorFromImage:(struct __C3DImage *)arg1 needsMipMap:(BOOL)arg2 textureOptions:(int)arg3;

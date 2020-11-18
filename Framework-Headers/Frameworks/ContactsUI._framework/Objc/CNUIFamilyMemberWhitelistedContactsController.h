@@ -13,7 +13,7 @@
 #import <ContactsUI/CNUIFamilyMemberDowntimeContactPickerControllerDelegate-Protocol.h>
 
 @class CNContactFormatter, CNContactStore, CNContactViewController, FAFamilyMember, NSArray, NSString;
-@protocol CNSchedulerProvider, CNUICoreContactManagementConsentCheck, CNUICoreFamilyMemberWhitelistedContactsDataSource, CNUIFamilyMemberContactsPresentation, CNUIFamilyMemberWhitelistedContactsControllerDelegate;
+@protocol CNDowntimeWhitelistContainerFetching, CNSchedulerProvider, CNUICoreContactManagementConsentCheck, CNUICoreFamilyMemberWhitelistedContactsDataSource, CNUIFamilyMemberContactsPresentation, CNUIFamilyMemberWhitelistedContactsControllerDelegate;
 
 @interface CNUIFamilyMemberWhitelistedContactsController : NSObject <CNContactViewControllerPrivateDelegate, CNContactPickerDelegate, CNFamilyMemberAddContactsToWhitelistOptionSheetDelegate, CNUIFamilyMemberDowntimeContactPickerControllerDelegate, CNUICoreFamilyMemberContactsObserver>
 {
@@ -24,6 +24,7 @@
     CNContactFormatter *_contactCardWarningFormatter;
     id<CNUICoreFamilyMemberWhitelistedContactsDataSource> _dataSource;
     id<CNUICoreContactManagementConsentCheck> _contactManagentConsentCheck;
+    id<CNDowntimeWhitelistContainerFetching> _downtimeContaienerFetcher;
     id<CNSchedulerProvider> _schedulerProvider;
     CNContactViewController *_contactViewControllerPresentingItemDetails;
 }
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNUIFamilyMemberWhitelistedContactsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<CNDowntimeWhitelistContainerFetching> downtimeContaienerFetcher; // @synthesize downtimeContaienerFetcher=_downtimeContaienerFetcher;
 @property (readonly, nonatomic) FAFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (readonly, nonatomic) NSArray *familyMemberContactItems;
 @property (readonly, nonatomic) id<CNUIFamilyMemberContactsPresentation> familyMemberContactsPresentation; // @synthesize familyMemberContactsPresentation=_familyMemberContactsPresentation;
@@ -45,7 +47,7 @@
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
 
-+ (id)contactPickerWithDelegate:(id)arg1 familyMember:(id)arg2;
++ (id)contactPickerWithDelegate:(id)arg1 familyMember:(id)arg2 parentContainer:(id)arg3;
 - (void).cxx_destruct;
 - (void)addContactsToWhitelist:(id)arg1;
 - (void)addContactsToWhitelistOptionsSheetDidCancel:(id)arg1;

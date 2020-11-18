@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_reloadBorderView;
+- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;

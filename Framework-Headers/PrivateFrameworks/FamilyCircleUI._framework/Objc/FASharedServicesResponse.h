@@ -11,11 +11,15 @@
 @interface FASharedServicesResponse : AAResponse
 {
     NSArray *_services;
+    NSArray *_serviceGroups;
 }
 
+@property (readonly, nonatomic) NSArray *serviceGroups; // @synthesize serviceGroups=_serviceGroups;
 @property (readonly, nonatomic) NSArray *services; // @synthesize services=_services;
 
 - (void).cxx_destruct;
+- (void)_initializeServicesMapWithGroups:(id)arg1 andServices:(id)arg2;
+- (void)_sharedServicesWithNoGrouping:(id)arg1;
 - (id)initWithHTTPResponse:(id)arg1 data:(id)arg2;
 
 @end

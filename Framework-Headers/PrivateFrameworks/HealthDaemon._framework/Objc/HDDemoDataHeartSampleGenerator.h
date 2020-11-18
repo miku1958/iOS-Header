@@ -27,6 +27,7 @@
 - (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)_generateElectrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 classification:(unsigned long long)arg3 sampleDate:(id)arg4;
+- (id)_generateSymptomSamplesForElectrocardiogram:(id)arg1;
 - (id)electrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;

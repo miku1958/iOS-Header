@@ -23,7 +23,6 @@
 
 + (id)_rangeStringForInterval:(long long)arg1;
 - (void).cxx_destruct;
-- (id)aggregateDictionaryDomain;
 - (void)cancel;
 - (id)dataSeries;
 - (void)didParseData;

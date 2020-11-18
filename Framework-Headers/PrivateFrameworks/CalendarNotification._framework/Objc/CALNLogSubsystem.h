@@ -13,7 +13,6 @@
 + (id)alarmEngine;
 + (id)calendar;
 + (id)defaultCategory;
-+ (id)reminders;
 
 @end
 

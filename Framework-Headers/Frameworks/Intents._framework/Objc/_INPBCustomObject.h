@@ -10,30 +10,34 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBCustomObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, _INPBImageValue;
 
 @interface _INPBCustomObject : PBCodable <_INPBCustomObject, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_alternatives;
+    _INPBImageValue *_displayImage;
     NSString *_displayString;
     NSString *_identifier;
     NSString *_pronunciationHint;
+    NSString *_subtitleString;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
 @property (readonly, nonatomic) unsigned long long alternativesCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _INPBImageValue *displayImage; // @synthesize displayImage=_displayImage;
 @property (copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property (readonly, nonatomic) BOOL hasDisplayImage;
 @property (readonly, nonatomic) BOOL hasDisplayString;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasPronunciationHint;
+@property (readonly, nonatomic) BOOL hasSubtitleString;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
+@property (copy, nonatomic) NSString *subtitleString; // @synthesize subtitleString=_subtitleString;
 @property (readonly) Class superclass;
 
 + (Class)alternativeType;

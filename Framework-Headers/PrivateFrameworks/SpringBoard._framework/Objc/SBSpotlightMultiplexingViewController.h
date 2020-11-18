@@ -7,25 +7,19 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/FBSceneManagerObserver-Protocol.h>
-#import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBMultiplexedSpotlightDelegate-Protocol.h>
 #import <SpringBoard/SBScrollToTopSceneProxyViewDelegate-Protocol.h>
 
-@class NSString, SBAppStatusBarSettingsAssertion, SBDeviceApplicationSceneStatusBarStateProvider, SBScrollToTopSceneProxyView, UIGestureRecognizer, UIView, _UILegibilitySettings;
+@class NSString, SBMedusaHostedKeyboardWindowLevelAssertion, SBScrollToTopSceneProxyView, _UILegibilitySettings;
 @protocol SPUIRemoteSearchViewDelegate;
 
-@interface SBSpotlightMultiplexingViewController : UIViewController <SBMultiplexedSpotlightDelegate, FBSceneManagerObserver, SBDeviceApplicationSceneStatusBarStateObserver, SBScrollToTopSceneProxyViewDelegate>
+@interface SBSpotlightMultiplexingViewController : UIViewController <SBMultiplexedSpotlightDelegate, FBSceneManagerObserver, SBScrollToTopSceneProxyViewDelegate>
 {
-    BOOL _reachabilityEnabled;
-    UIView *_reachabilityContainerView;
-    UIGestureRecognizer *_dismissReachabilityGesture;
-    SBDeviceApplicationSceneStatusBarStateProvider *_statusBarStateProvider;
-    SBAppStatusBarSettingsAssertion *_statusBarAssertion;
     SBScrollToTopSceneProxyView *_scrollToTopView;
     BOOL _activeDelegate;
     _UILegibilitySettings *_legibilitySettings;
-    unsigned long long _searchViewPresentationSourceForNextTransition;
     id<SPUIRemoteSearchViewDelegate> _spotlightDelegate;
+    SBMedusaHostedKeyboardWindowLevelAssertion *_medusaHostedKeyboardWindowLevelAssertion;
 }
 
 @property (nonatomic, getter=isActiveDelegate) BOOL activeDelegate; // @synthesize activeDelegate=_activeDelegate;
@@ -34,20 +28,17 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (readonly, nonatomic) unsigned long long level;
-@property (nonatomic) unsigned long long searchViewPresentationSourceForNextTransition; // @synthesize searchViewPresentationSourceForNextTransition=_searchViewPresentationSourceForNextTransition;
+@property (strong, nonatomic) SBMedusaHostedKeyboardWindowLevelAssertion *medusaHostedKeyboardWindowLevelAssertion; // @synthesize medusaHostedKeyboardWindowLevelAssertion=_medusaHostedKeyboardWindowLevelAssertion;
 @property (weak, nonatomic) id<SPUIRemoteSearchViewDelegate> spotlightDelegate; // @synthesize spotlightDelegate=_spotlightDelegate;
 @property (readonly) Class superclass;
 
 + (id)sharedRemoteSearchViewController;
++ (id)sharedRemoteSearchViewControllerIfExists;
 - (void).cxx_destruct;
-- (void)_acquireStatusBarAssertionIfNeeded;
 - (void)_configureStatusBarScrollToTopView;
-- (void)_configureStatusBarStateProvider;
-- (id)_currentStatusBarSettings;
-- (double)_effectiveStatusBarAlpha;
-- (void)_invalidateStatusBarAssertionIfNeeded;
 - (void)_registerStatusBarScrollToTopView;
 - (void)_registerStatusBarScrollToTopViewWithWindow:(id)arg1;
+- (id)_sceneHandle;
 - (id)_spotlightSceneIdentifier;
 - (void)_unregisterStatusBarScrollToTopView;
 - (void)_unregisterStatusBarScrollToTopViewWithWindow:(id)arg1;
@@ -58,13 +49,13 @@
 - (unsigned long long)remoteSearchViewPresentationSource;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarHiddenTo:(BOOL)arg2 withAnimation:(long long)arg3;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2;
 - (void)scrollToTopSceneProxyViewDidEnterViewHierarchy:(id)arg1 rootedAtWindow:(id)arg2;
 - (void)scrollToTopSceneProxyViewWillExitViewHierarchy:(id)arg1 rootedAtWindow:(id)arg2;
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

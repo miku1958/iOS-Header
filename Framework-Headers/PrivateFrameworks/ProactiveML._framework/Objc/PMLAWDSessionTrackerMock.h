@@ -14,7 +14,7 @@
     NSArray *_trackedSessions;
 }
 
-@property (readonly) NSArray *trackedSessions; // @synthesize trackedSessions=_trackedSessions;
+@property (readonly, nonatomic) NSArray *trackedSessions; // @synthesize trackedSessions=_trackedSessions;
 
 - (void).cxx_destruct;
 - (void)clearTrackedSessions;

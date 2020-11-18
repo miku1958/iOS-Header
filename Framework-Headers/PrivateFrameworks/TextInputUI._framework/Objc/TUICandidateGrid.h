@@ -47,6 +47,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TUICandidateGridDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSIndexPath *firstIndexPath;
 @property (strong, nonatomic) NSIndexPath *firstVisibleIndexPath; // @synthesize firstVisibleIndexPath=_firstVisibleIndexPath;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double lastUserSelectedCursorX; // @synthesize lastUserSelectedCursorX=_lastUserSelectedCursorX;
@@ -71,6 +72,7 @@
 - (id)_sectionIndexTitlesForCollectionView:(id)arg1;
 - (void)addAppCandidatesRenderSignposts;
 - (unsigned long long)autofillExtraCandidatesCount;
+- (BOOL)canExpandCandidateGrid;
 - (id)candidateAtIndexPath:(id)arg1;
 - (unsigned long long)candidateNumberForIndexPath:(id)arg1;
 - (unsigned long long)candidateNumberInHorizontalLayoutForIndexPath:(id)arg1;
@@ -88,7 +90,6 @@
 - (id)collectionViewLayout;
 - (void)commonInit;
 - (void)didMoveHighlightFrame;
-- (id)firstIndexPath;
 - (void)forceUpdateVisibleCells;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (BOOL)handleNumberKey:(unsigned long long)arg1;

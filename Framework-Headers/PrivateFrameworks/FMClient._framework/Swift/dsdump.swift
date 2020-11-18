@@ -39,22 +39,26 @@
  class FMClient.Session : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let clientBundleId : String? // +0x8 (0x10)
-	let clientProcessName : String // +0x18 (0x10)
-	var _activeConnection : NSXPCConnection? // +0x28 (0x8)
-	var $__lazy_storage_$_serverProxy : ServerSessionProtocol?? // +0x30 (0x8)
-	var authenticationProvider : AuthenticationProviding? // +0x38 (0x8)
+	let clientBundleId : String?
+	let clientProcessName : String
+	var _activeConnection : NSXPCConnection?
+	var $__lazy_storage_$_serverProxy : ServerSessionProtocol??
+	var authenticationProvider : AuthenticationProviding?
 
 	// ObjC -> Swift bridged methods
-	0x1e70  @objc Session.registerAuthenticationProvider: <stripped>
-	0x1f00  @objc Session.invalidate <stripped>
-	0x21f0  @objc Session.init <stripped>
-	0x1fd0  @objc Session..cxx_destruct <stripped>
+WARNING: couldn't find address 0x3c900000db48 (0x4900000db48) in binary!
+	0x4ce8  @objc Session.(null) <stripped>
+WARNING: couldn't find address 0x3a200000dd00 (0x2200000dd00) in binary!
+	0x4cd0  @objc Session.(null) <stripped>
+WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
+	0x5acfffe0778  @objc Session.(null) <stripped>
+	0x4c4fffe10d0  @objc Session.¿Lãe®Lâ˜Ëw˝ <stripped>
 
 	// Swift methods
-	0x1aa0  func <stripped> // getter 
-	0x1ce0  func Session.registerAuthenticationProvider(_:) // method 
-	0x1ec0  func Session.invalidate() // method 
+	0x1830  func <stripped> // getter 
+	0x1a50  func <stripped> // getter 
+	0x1ad0  func Session.registerAuthenticationProvider(_:) // method 
+	0x1cb0  func Session.invalidate() // method 
  }
 
  enum FMClient.SessionError {
@@ -67,34 +71,41 @@
 
  class FMClient.URLSessionFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x5cc0  class func static URLSessionFactory.session(_:_:) // method 
+	0x5630  class func static URLSessionFactory.session(_:_:) // method 
  }
 
  class FMClient.PlaySoundDevice : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let serverId : String // +0x8 (0x10)
-	let locality : String // +0x18 (0x10)
-	let safetyWarningConfirmed : Bool // +0x28 (0x1)
+	let serverId : String
+	let locality : String
+	let safetyWarningConfirmed : Bool
 
 	// ObjC -> Swift bridged methods
-	0x6100  @objc PlaySoundDevice.serverId <stripped>
-	0x6140  @objc PlaySoundDevice.locality <stripped>
-	0x61f0  @objc PlaySoundDevice.safetyWarningConfirmed <stripped>
-	0x6300  @objc PlaySoundDevice.initWithServerId:locality:safetyWarningConfirmed: <stripped>
-	0x65a0  @objc PlaySoundDevice.encodeWithCoder: <stripped>
-	0x69f0  @objc PlaySoundDevice.initWithCoder: <stripped>
-	0x6a20  @objc PlaySoundDevice.debugDescription <stripped>
-	0x6a80  @objc PlaySoundDevice.description <stripped>
-	0x6d60  @objc PlaySoundDevice.init <stripped>
-	0x6cd0  @objc PlaySoundDevice..cxx_destruct <stripped>
+WARNING: couldn't find address 0x39500000dbe8 (0x1500000dbe8) in binary!
+	0x3944  @objc PlaySoundDevice.(null) <stripped>
+WARNING: couldn't find address 0x43940000dbc0 (0x3940000dbc0) in binary!
+	0x3748  @objc PlaySoundDevice.(null) <stripped>
+WARNING: couldn't find address 0x3b780000db98 (0x3780000db98) in binary!
+	0x4a78  @objc PlaySoundDevice.(null) <stripped>
+WARNING: couldn't find address 0x39080000dc38 (0x1080000dc38) in binary!
+	0x38fc  @objc PlaySoundDevice.(null) <stripped>
+WARNING: couldn't find address 0x38f00000dbd0 (0xf00000dbd0) in binary!
+	0x4ba0  @objc PlaySoundDevice.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffe3e78  @objc PlaySoundDevice.(null) <stripped>
+WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
+	0x2ecfffe3a00  @objc PlaySoundDevice.(null) <stripped>
+	0x2c4fffe3a58  @objc PlaySoundDevice.ËgÍ <stripped>
+	0x29cfffe3b60  @objc PlaySoundDevice. <stripped>
+	0x2d4fffe4038  @objc PlaySoundDevice.„ˇˇæp <stripped>
 
 	// Swift methods
-	0x6220  class func PlaySoundDevice.__allocating_init(serverId:locality:safetyWarningConfirmed:) // init 
-	0x63b0  func PlaySoundDevice.encode(with:) // method 
-	0x65f0  class func PlaySoundDevice.__allocating_init(coder:) // init 
-	0x6f20  class func PlaySoundDevice.__allocating_init(from:) // init 
-	0x71a0  func PlaySoundDevice.encode(to:) // method 
+	0x5ac0  class func PlaySoundDevice.__allocating_init(serverId:locality:safetyWarningConfirmed:) // init 
+	0x5c70  func PlaySoundDevice.encode(with:) // method 
+	0x5eb0  class func PlaySoundDevice.__allocating_init(coder:) // init 
+	0x6830  class func PlaySoundDevice.__allocating_init(from:) // init 
+	0x6b20  func PlaySoundDevice.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -112,28 +123,39 @@
 	let nearbyScanEnabled : Bool // +0x10 (0x1)
 	let nearbyScanWhileAuthenticated : Bool // +0x11 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceNameSyncInterval : y< // +0xfeedfacf (0x0)
+	let deviceNameSyncInterval : s; // +0xfeedfacf (0x0)
 	let deviceNameSyncEnabled : Bool // +0x3 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x77e0  @objc ClientConfiguration.nearbyScanDuration <stripped>
-	0x7820  @objc ClientConfiguration.nearbyScanEnabled <stripped>
-	0x7850  @objc ClientConfiguration.nearbyScanWhileAuthenticated <stripped>
-	0x7880  @objc ClientConfiguration.deviceNameSyncInterval <stripped>
-	0x79b0  @objc ClientConfiguration.deviceNameSyncEnabled <stripped>
-	0x7bb0  @objc ClientConfiguration.initWithNearbyScanDuration:nearbyScanEnabled:nearbyScanWhileAuthenticated:deviceNameSyncInterval:deviceNameSyncEnabled: <stripped>
-	0x7ed0  @objc ClientConfiguration.encodeWithCoder: <stripped>
-	0x8370  @objc ClientConfiguration.initWithCoder: <stripped>
-	0x83a0  @objc ClientConfiguration.description <stripped>
-	0x8a30  @objc ClientConfiguration.init <stripped>
-	0x89c0  @objc ClientConfiguration..cxx_destruct <stripped>
+WARNING: couldn't find address 0x38b00000db00 (0xb00000db00) in binary!
+	0x4308  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x42fc0000dad8 (0x2fc0000dad8) in binary!
+	0x3894  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x42e40000dab0 (0x2e40000dab0) in binary!
+	0x3888  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x3ac80000dae8 (0x2c80000dae8) in binary!
+	0x49c8  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x38580000db90 (0x580000db90) in binary!
+	0x384c  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x4afc0000dae0 (0x2fc0000dae0) in binary!
+	0x18000000c  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x42840000da78 (0x2840000da78) in binary!
+	0x58000000c  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x3a680000da88 (0x2680000da88) in binary!
+	0x4968  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x495c0000da10 (0x15c0000da10) in binary!
+	0x37ec  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x4a9c0000da80 (0x29c0000da80) in binary!
+	0x18000000c  @objc ClientConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x42240000da18 (0x2240000da18) in binary!
+	0x88000000c  @objc ClientConfiguration.(null) <stripped>
 
 	// Swift methods
-	0x79e0  class func ClientConfiguration.__allocating_init(nearbyScanDuration:nearbyScanEnabled:nearbyScanWhileAuthenticated:deviceNameSyncInterval:deviceNameSyncEnabled:) // init 
-	0x7ce0  func ClientConfiguration.encode(with:) // method 
-	0x7f20  class func ClientConfiguration.__allocating_init(coder:) // init 
-	0x8c30  class func ClientConfiguration.__allocating_init(from:) // init 
-	0x8f50  func ClientConfiguration.encode(to:) // method 
+	0x7200  class func ClientConfiguration.__allocating_init(nearbyScanDuration:nearbyScanEnabled:nearbyScanWhileAuthenticated:deviceNameSyncInterval:deviceNameSyncEnabled:) // init 
+	0x74c0  func ClientConfiguration.encode(with:) // method 
+	0x7710  class func ClientConfiguration.__allocating_init(coder:) // init 
+	0x8490  class func ClientConfiguration.__allocating_init(from:) // init 
+	0x8800  func ClientConfiguration.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -151,24 +173,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.SearchFilter : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var devices : SearchFilterDevice // +0x8 (0x8)
+	var devices : SearchFilterDevice
 
 	// ObjC -> Swift bridged methods
-	0x9a70  @objc SearchFilter.encodeWithCoder: <stripped>
-	0x9ee0  @objc SearchFilter.initWithCoder: <stripped>
-	0xa0b0  @objc SearchFilter.init: <stripped>
-	0xa1c0  @objc SearchFilter.init <stripped>
-	0xa150  @objc SearchFilter..cxx_destruct <stripped>
+WARNING: couldn't find address 0x3a680000da88 (0x2680000da88) in binary!
+	0x4968  @objc SearchFilter.(null) <stripped>
+WARNING: couldn't find address 0x495c0000da10 (0x15c0000da10) in binary!
+	0x37ec  @objc SearchFilter.(null) <stripped>
+WARNING: couldn't find address 0x4a9c0000da80 (0x29c0000da80) in binary!
+	0x18000000c  @objc SearchFilter.(null) <stripped>
+WARNING: couldn't find address 0x42240000da18 (0x2240000da18) in binary!
+	0x88000000c  @objc SearchFilter.(null) <stripped>
+WARNING: couldn't find address 0x37b00000d9c0 (0x7b00000d9c0) in binary!
+	0x37a4  @objc SearchFilter.(null) <stripped>
 
 	// Swift methods
-	0x9850  func SearchFilter.encode(with:) // method 
-	0x9ac0  class func SearchFilter.__allocating_init(coder:) // init 
-	0x9f10  func SearchFilter.devices.getter // getter 
-	0x9f50  func SearchFilter.devices.setter // setter 
-	0x9fa0  func SearchFilter.devices.modify // modifyCoroutine 
-	0x9ff0  class func SearchFilter.__allocating_init(_:) // init 
-	0xa320  class func SearchFilter.__allocating_init(from:) // init 
-	0xa590  func SearchFilter.encode(to:) // method 
+	0x9090  func SearchFilter.encode(with:) // method 
+	0x92f0  class func SearchFilter.__allocating_init(coder:) // init 
+	0x97a0  func SearchFilter.devices.getter // getter 
+	0x97e0  func SearchFilter.devices.setter // setter 
+	0x9830  func SearchFilter.devices.modify // modifyCoroutine 
+	0x9880  class func SearchFilter.__allocating_init(_:) // init 
+	0x9bb0  class func SearchFilter.__allocating_init(from:) // init 
+	0x9e20  func SearchFilter.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -180,25 +207,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.VoiceAssistantSyncResult : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let devices : VoiceAssistantDeviceName // +0x8 (0x8)
-	let anchor : String // +0x10 (0x10)
+	let devices : VoiceAssistantDeviceName
+	let anchor : String
 
 	// ObjC -> Swift bridged methods
-	0xc850  @objc VoiceAssistantSyncResult.devices <stripped>
-	0xc8e0  @objc VoiceAssistantSyncResult.anchor <stripped>
-	0xca10  @objc VoiceAssistantSyncResult.initWithDevices:anchor: <stripped>
-	0xccc0  @objc VoiceAssistantSyncResult.encodeWithCoder: <stripped>
-	0xd0f0  @objc VoiceAssistantSyncResult.initWithCoder: <stripped>
-	0xd120  @objc VoiceAssistantSyncResult.description <stripped>
-	0xd480  @objc VoiceAssistantSyncResult.init <stripped>
-	0xd400  @objc VoiceAssistantSyncResult..cxx_destruct <stripped>
+WARNING: couldn't find address 0x37b00000d9c0 (0x7b00000d9c0) in binary!
+	0x37a4  @objc VoiceAssistantSyncResult.(null) <stripped>
+WARNING: couldn't find address 0x3b280000d998 (0x3280000d998) in binary!
+	0x39e4  @objc VoiceAssistantSyncResult.(null) <stripped>
+WARNING: couldn't find address 0x48e40000d9f0 (0xe40000d9f0) in binary!
+	0x3774  @objc VoiceAssistantSyncResult.(null) <stripped>
+WARNING: couldn't find address 0x37680000da48 (0x7680000da48) in binary!
+	0x4a18  @objc VoiceAssistantSyncResult.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffeca10  @objc VoiceAssistantSyncResult.(null) <stripped>
+WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
+	0x114fffec718  @objc VoiceAssistantSyncResult.(null) <stripped>
+	0xecfffec780  @objc VoiceAssistantSyncResult.HãG HâE–Lão(Hãπã <stripped>
+	0x164fffecbd8  @objc VoiceAssistantSyncResult.AUATSHÉÏ(Hâ˚Hâ◊Ë∞Ô <stripped>
 
 	// Swift methods
-	0xc960  class func VoiceAssistantSyncResult.__allocating_init(devices:anchor:) // init 
-	0xcad0  func VoiceAssistantSyncResult.encode(with:) // method 
-	0xcd10  class func VoiceAssistantSyncResult.__allocating_init(coder:) // init 
-	0xd620  class func VoiceAssistantSyncResult.__allocating_init(from:) // init 
-	0xd880  func VoiceAssistantSyncResult.encode(to:) // method 
+	0xb540  class func VoiceAssistantSyncResult.__allocating_init(devices:anchor:) // init 
+	0xb6d0  func VoiceAssistantSyncResult.encode(with:) // method 
+	0xb910  class func VoiceAssistantSyncResult.__allocating_init(coder:) // init 
+	0xc2b0  class func VoiceAssistantSyncResult.__allocating_init(from:) // init 
+	0xc540  func VoiceAssistantSyncResult.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -222,7 +255,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let method : RequestMethod
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let path : Á:
+	let path : ´9
 	let bodyDictionary : [String : Any]
 	let additionalHeaderFields : [String : String]
 	let credential : RequestCredential
@@ -241,26 +274,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.AuthenticationCredential : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let authToken : String // +0x8 (0x10)
-	let personId : String // +0x18 (0x10)
-	let hostName : String // +0x28 (0x10)
+	let authToken : String
+	let personId : String
+	let hostName : String
 
 	// ObjC -> Swift bridged methods
-	0x10970  @objc AuthenticationCredential.authToken <stripped>
-	0x109b0  @objc AuthenticationCredential.personId <stripped>
-	0x109f0  @objc AuthenticationCredential.hostName <stripped>
-	0x10bc0  @objc AuthenticationCredential.initWithAuthToken:personId:hostName: <stripped>
-	0x10e70  @objc AuthenticationCredential.encodeWithCoder: <stripped>
-	0x11300  @objc AuthenticationCredential.initWithCoder: <stripped>
-	0x11400  @objc AuthenticationCredential.init <stripped>
-	0x11360  @objc AuthenticationCredential..cxx_destruct <stripped>
+WARNING: couldn't find address 0x37300000d928 (0x7300000d928) in binary!
+	0x3724  @objc AuthenticationCredential.(null) <stripped>
+WARNING: couldn't find address 0x37180000d900 (0x7180000d900) in binary!
+	0x3c78  @objc AuthenticationCredential.(null) <stripped>
+WARNING: couldn't find address 0x39580000d978 (0x1580000d978) in binary!
+	0x4858  @objc AuthenticationCredential.(null) <stripped>
+WARNING: couldn't find address 0x36e80000d9c8 (0x6e80000d9c8) in binary!
+	0x4998  @objc AuthenticationCredential.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffedc30  @objc AuthenticationCredential.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x114fffede28  @objc AuthenticationCredential.(null) <stripped>
+	0x12cfffee360  @objc AuthenticationCredential.ã≤y <stripped>
+	0x6780000d958  @objc AuthenticationCredential.âE∏HçVÑ <stripped>
 
 	// Swift methods
-	0x10aa0  class func AuthenticationCredential.__allocating_init(authToken:personId:hostName:) // init 
-	0x10c80  func AuthenticationCredential.encode(with:) // method 
-	0x10ec0  class func AuthenticationCredential.__allocating_init(coder:) // init 
-	0x115b0  class func AuthenticationCredential.__allocating_init(from:) // init 
-	0x11860  func AuthenticationCredential.encode(to:) // method 
+	0x10010  class func AuthenticationCredential.__allocating_init(authToken:personId:hostName:) // init 
+	0x101e0  func AuthenticationCredential.encode(with:) // method 
+	0x10420  class func AuthenticationCredential.__allocating_init(coder:) // init 
+	0x10b70  class func AuthenticationCredential.__allocating_init(from:) // init 
+	0x10e20  func AuthenticationCredential.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -274,21 +313,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.SessionInfo : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let bundleId : String? // +0x8 (0x10)
-	let processName : String // +0x18 (0x10)
+	let bundleId : String?
+	let processName : String
 
 	// ObjC -> Swift bridged methods
-	0x120d0  @objc SessionInfo.encodeWithCoder: <stripped>
-	0x12540  @objc SessionInfo.initWithCoder: <stripped>
-	0x125c0  @objc SessionInfo.init <stripped>
-	0x129e0  @objc SessionInfo..cxx_destruct <stripped>
+WARNING: couldn't find address 0x39080000d928 (0x1080000d928) in binary!
+	0x4808  @objc SessionInfo.(null) <stripped>
+WARNING: couldn't find address 0x36980000d978 (0x6980000d978) in binary!
+	0x4948  @objc SessionInfo.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x1f4fffef1f0  @objc SessionInfo.(null) <stripped>
+	0x1ecfffef4f8  @objc SessionInfo.√Hâ‹Hç5◊ <stripped>
 
 	// Swift methods
-	0x11d70  class func SessionInfo.__allocating_init(processName:bundleId:) // init 
-	0x11ee0  func SessionInfo.encode(with:) // method 
-	0x12120  class func SessionInfo.__allocating_init(coder:) // init 
-	0x12760  class func SessionInfo.__allocating_init(from:) // init 
-	0x12a20  func SessionInfo.encode(to:) // method 
+	0x11320  class func SessionInfo.__allocating_init(processName:bundleId:) // init 
+	0x11480  func SessionInfo.encode(with:) // method 
+	0x116c0  class func SessionInfo.__allocating_init(coder:) // init 
+	0x11d60  class func SessionInfo.__allocating_init(from:) // init 
+	0x12030  func SessionInfo.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -302,20 +344,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : Á:
+	let url : ´9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : Î9
+	let data : É8
 	let headers : [String : String]
  }
 
  class FMClient.FMClientXPCConnection : NSXPCConnection /System/Library/Frameworks/Foundation.framework/Foundation {
 	// ObjC -> Swift bridged methods
-	0x13410  @objc FMClientXPCConnection.init <stripped>
-	0x13570  @objc FMClientXPCConnection.initWithServiceName: <stripped>
-	0x13590  @objc FMClientXPCConnection.initWithMachServiceName:options: <stripped>
-	0x135c0  @objc FMClientXPCConnection.initWithListenerEndpoint: <stripped>
+WARNING: couldn't find address 0x36780000d958 (0x6780000d958) in binary!
+	0x47d0  @objc FMClientXPCConnection.(null) <stripped>
+WARNING: couldn't find address 0x3da40000d9f0 (0x5a40000d9f0) in binary!
+	0x47b8  @objc FMClientXPCConnection.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffff1148  @objc FMClientXPCConnection.(null) <stripped>
+WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
+	0x7ecffff0e00  @objc FMClientXPCConnection.(null) <stripped>
 
 	// Swift methods
+	0x12a00  class func FMClientXPCConnection.__allocating_init(exportedObject:interruptionHandler:invalidationHandler:) // init 
  }
 
  enum FMClient.Outcome {
@@ -329,35 +376,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.VoiceAssistantDeviceName : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let deviceName : String // +0x8 (0x10)
-	let ownerFirstName : String // +0x18 (0x10)
-	let ownerLastName : String // +0x28 (0x10)
-	var $__lazy_storage_$_syncAnchor : String? // +0x38 (0x10)
+	let deviceName : String
+	let ownerFirstName : String
+	let ownerLastName : String
+	var $__lazy_storage_$_syncAnchor : String?
 
 	// ObjC -> Swift bridged methods
-	0x149e0  @objc VoiceAssistantDeviceName.deviceName <stripped>
-	0x14a20  @objc VoiceAssistantDeviceName.ownerFirstName <stripped>
-	0x14a60  @objc VoiceAssistantDeviceName.ownerLastName <stripped>
-	0x14c50  @objc VoiceAssistantDeviceName.initWithDeviceName:ownerFirstName:ownerLastName: <stripped>
-	0x14f10  @objc VoiceAssistantDeviceName.encodeWithCoder: <stripped>
-	0x153c0  @objc VoiceAssistantDeviceName.initWithCoder: <stripped>
-	0x153f0  @objc VoiceAssistantDeviceName.syncAnchor <stripped>
-	0x15540  @objc VoiceAssistantDeviceName.setSyncAnchor: <stripped>
-	0x15990  @objc VoiceAssistantDeviceName.hash <stripped>
-	0x15b50  @objc VoiceAssistantDeviceName.isEqual: <stripped>
-	0x15be0  @objc VoiceAssistantDeviceName.description <stripped>
-	0x15ed0  @objc VoiceAssistantDeviceName.init <stripped>
-	0x15e20  @objc VoiceAssistantDeviceName..cxx_destruct <stripped>
+WARNING: couldn't find address 0x36280000d800 (0x6280000d800) in binary!
+	0x361c  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x36100000d7d8 (0x6100000d7d8) in binary!
+	0x3b70  @objc VoiceAssistantDeviceName.(null) <stripped>
+	0x4750  variable initialization expression of HttpClient.statusCodeHandlerQueue
+WARNING: couldn't find address 0x35e00000d798 (0x5e00000d798) in binary!
+	0x382c  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x402c0000d9b8 (0x2c0000d9b8) in binary!
+	0x4028  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x35b00000d8e8 (0x5b00000d8e8) in binary!
+	0x35a4  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x48540000d838 (0x540000d838) in binary!
+	0x18000000c  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x3fdc0000d7d0 (0x7dc0000d7d0) in binary!
+	0xb8000000c  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x35680000d740 (0x5680000d740) in binary!
+	0x355c  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x38e00000d6e8 (0xe00000d6e8) in binary!
+	0x379c  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x469c0000d7a8 (0x69c0000d7a8) in binary!
+	0x3f90  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x3f8c0000d6c8 (0x78c0000d6c8) in binary!
+	0x3514  @objc VoiceAssistantDeviceName.(null) <stripped>
+WARNING: couldn't find address 0x35080000d838 (0x5080000d838) in binary!
+	0x34fc  @objc VoiceAssistantDeviceName.(null) <stripped>
 
 	// Swift methods
-	0x14b10  class func VoiceAssistantDeviceName.__allocating_init(deviceName:ownerFirstName:ownerLastName:) // init 
-	0x14d20  func VoiceAssistantDeviceName.encode(with:) // method 
-	0x14f60  class func VoiceAssistantDeviceName.__allocating_init(coder:) // init 
-	0x154b0  func VoiceAssistantDeviceName.syncAnchor.getter // getter 
-	0x15580  func VoiceAssistantDeviceName.syncAnchor.setter // setter 
-	0x158a0  func VoiceAssistantDeviceName.syncAnchor.modify // modifyCoroutine 
-	0x16090  class func VoiceAssistantDeviceName.__allocating_init(from:) // init 
-	0x16350  func VoiceAssistantDeviceName.encode(to:) // method 
+	0x14800  class func VoiceAssistantDeviceName.__allocating_init(deviceName:ownerFirstName:ownerLastName:) // init 
+	0x14a20  func VoiceAssistantDeviceName.encode(with:) // method 
+	0x14c60  class func VoiceAssistantDeviceName.__allocating_init(coder:) // init 
+	0x15190  func VoiceAssistantDeviceName.syncAnchor.getter // getter 
+	0x15240  func VoiceAssistantDeviceName.syncAnchor.setter // setter 
+	0x15440  func VoiceAssistantDeviceName.syncAnchor.modify // modifyCoroutine 
+	0x15be0  class func VoiceAssistantDeviceName.__allocating_init(from:) // init 
+	0x15ed0  func VoiceAssistantDeviceName.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -371,28 +430,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.DiscoveredDevice : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let deviceName : String // +0x8 (0x10)
-	let discoveryId : String // +0x18 (0x10)
+	let deviceName : String
+	let discoveryId : String
 
 	// ObjC -> Swift bridged methods
-	0x17860  @objc DiscoveredDevice.deviceName <stripped>
-	0x178a0  @objc DiscoveredDevice.discoveryId <stripped>
-	0x17a40  @objc DiscoveredDevice.initWithDeviceName:discoveryId: <stripped>
-	0x17df0  @objc DiscoveredDevice.encodeWithCoder: <stripped>
-	0x18260  @objc DiscoveredDevice.initWithCoder: <stripped>
-	0x18290  @objc DiscoveredDevice.hash <stripped>
-	0x183c0  @objc DiscoveredDevice.isEqual: <stripped>
-	0x18450  @objc DiscoveredDevice.description <stripped>
-	0x185f0  @objc DiscoveredDevice.debugDescription <stripped>
-	0x18780  @objc DiscoveredDevice.init <stripped>
-	0x186f0  @objc DiscoveredDevice..cxx_destruct <stripped>
+WARNING: couldn't find address 0x35680000d740 (0x5680000d740) in binary!
+	0x355c  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x38e00000d6e8 (0xe00000d6e8) in binary!
+	0x379c  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x469c0000d7a8 (0x69c0000d7a8) in binary!
+	0x3f90  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x3f8c0000d6c8 (0x78c0000d6c8) in binary!
+	0x3514  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x35080000d838 (0x5080000d838) in binary!
+	0x34fc  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x47ac0000d790 (0x7ac0000d790) in binary!
+	0x18000000c  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x3f340000d728 (0x7340000d728) in binary!
+	0xa8000000c  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x34c00000d6d0 (0x4c00000d6d0) in binary!
+	0x370c  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x3f0c0000d630 (0x70c0000d630) in binary!
+	0x3fbf  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x36e80000d708 (0x6e80000d708) in binary!
+	0x45e8  @objc DiscoveredDevice.(null) <stripped>
+WARNING: couldn't find address 0x34780000d7a8 (0x4780000d7a8) in binary!
+	0x346c  @objc DiscoveredDevice.(null) <stripped>
 
 	// Swift methods
-	0x17950  class func DiscoveredDevice.__allocating_init(deviceName:discoveryId:) // init 
-	0x17c00  func DiscoveredDevice.encode(with:) // method 
-	0x17e40  class func DiscoveredDevice.__allocating_init(coder:) // init 
-	0x18920  class func DiscoveredDevice.__allocating_init(from:) // init 
-	0x18b80  func DiscoveredDevice.encode(to:) // method 
+	0x16f60  class func DiscoveredDevice.__allocating_init(deviceName:discoveryId:) // init 
+	0x17200  func DiscoveredDevice.encode(with:) // method 
+	0x17440  class func DiscoveredDevice.__allocating_init(coder:) // init 
+	0x17f70  class func DiscoveredDevice.__allocating_init(from:) // init 
+	0x181d0  func DiscoveredDevice.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -413,33 +483,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.SearchResult : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var devices : SearchResultDevice // +0x8 (0x8)
-	var resultCode : ResultCode // +0x10 (0x8)
+	var devices : SearchResultDevice
+	var resultCode : ResultCode
 
 	// ObjC -> Swift bridged methods
-	0x19380  @objc SearchResult.devices <stripped>
-	0x19430  @objc SearchResult.setDevices: <stripped>
-	0x19520  @objc SearchResult.resultCode <stripped>
-	0x19590  @objc SearchResult.setResultCode: <stripped>
-	0x199e0  @objc SearchResult.encodeWithCoder: <stripped>
-	0x19e90  @objc SearchResult.initWithCoder: <stripped>
-	0x19ec0  @objc SearchResult.debugDescription <stripped>
-	0x19f20  @objc SearchResult.description <stripped>
-	0x1a190  @objc SearchResult.init <stripped>
-	0x1a120  @objc SearchResult..cxx_destruct <stripped>
+WARNING: couldn't find address 0x34c00000d6d0 (0x4c00000d6d0) in binary!
+	0x370c  @objc SearchResult.(null) <stripped>
+WARNING: couldn't find address 0x3f0c0000d630 (0x70c0000d630) in binary!
+	0x3fbf  @objc SearchResult.(null) <stripped>
+WARNING: couldn't find address 0x36e80000d708 (0x6e80000d708) in binary!
+	0x45e8  @objc SearchResult.(null) <stripped>
+WARNING: couldn't find address 0x34780000d7a8 (0x4780000d7a8) in binary!
+	0x346c  @objc SearchResult.(null) <stripped>
+	0x4710  variable initialization expression of HttpClient.httpSuccessCodeMin
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x6d4ffff8a78  @objc SearchResult.(null) <stripped>
+	0x15c0000d6c8  @objc SearchResult.UHâÂ1¿1“]√fD <stripped>
+WARNING: couldn't find address 0xffff8da8 (0xffff8da8) in binary!
+	0x6640000d658  @objc SearchResult.(null) <stripped>
+WARNING: couldn't find address 0xffffa590 (0xffffa590) in binary!
+	0x3f00000d568  @objc SearchResult.(null) <stripped>
+WARNING: couldn't find address 0xd554ffff9bf8 (0x554ffff9bf8) in binary!
+	0x3d80000d540  @objc SearchResult.(null) <stripped>
 
 	// Swift methods
-	0x193f0  func SearchResult.devices.getter // getter 
-	0x19490  func SearchResult.devices.setter // setter 
-	0x194e0  func SearchResult.devices.modify // modifyCoroutine 
-	0x19560  func SearchResult.resultCode.getter // getter 
-	0x195d0  func SearchResult.resultCode.setter // setter 
-	0x19610  func SearchResult.resultCode.modify // modifyCoroutine 
-	0x19660  class func SearchResult.__allocating_init(_:resultCode:) // init 
-	0x197f0  func SearchResult.encode(with:) // method 
-	0x19a30  class func SearchResult.__allocating_init(coder:) // init 
-	0x1a330  class func SearchResult.__allocating_init(from:) // init 
-	0x1a650  func SearchResult.encode(to:) // method 
+	0x18a20  func SearchResult.devices.getter // getter 
+	0x18ac0  func SearchResult.devices.setter // setter 
+	0x18b10  func SearchResult.devices.modify // modifyCoroutine 
+	0x18b90  func SearchResult.resultCode.getter // getter 
+	0x18c00  func SearchResult.resultCode.setter // setter 
+	0x18c40  func SearchResult.resultCode.modify // modifyCoroutine 
+	0x18c90  class func SearchResult.__allocating_init(_:resultCode:) // init 
+	0x18e10  func SearchResult.encode(with:) // method 
+	0x19050  class func SearchResult.__allocating_init(coder:) // init 
+	0x19950  class func SearchResult.__allocating_init(from:) // init 
+	0x19c70  func SearchResult.encode(to:) // method 
  }
 
  enum FMClient.ResultCode { }
@@ -454,29 +532,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.HttpClient : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var authenticationChallengeHandler : AuthChallengeDisposition // +0x8 (0x10)
-	let httpSuccessCodeMin : Int // +0x18 (0x8)
-	let httpSuccessCodeMax : Int // +0x20 (0x8)
-	let endpoint : EndpointConfigurating // +0x28 (0x28)
+	var authenticationChallengeHandler : AuthChallengeDisposition
+	let httpSuccessCodeMin : Int
+	let httpSuccessCodeMax : Int
+	let endpoint : EndpointConfigurating
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var statusCodeHandlers :  empty-list  // +0x50 (0x8)
-	let statusCodeHandlerQueue : OS_dispatch_queue // +0x58 (0x8)
-	var $__lazy_storage_$_session : ClientURLSession // +0x60 (0x28)
+	var statusCodeHandlers :  empty-list 
+	let statusCodeHandlerQueue : OS_dispatch_queue
+	var $__lazy_storage_$_session : ClientURLSession
 
 	// ObjC -> Swift bridged methods
-	0x1ccf0  @objc HttpClient.init <stripped>
-	0x1cc30  @objc HttpClient..cxx_destruct <stripped>
+	0x46f0  variable initialization expression of VoiceAssistantDeviceName.$__lazy_storage_$_syncAnchor
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffff8da8  @objc HttpClient.(null) <stripped>
 
 	// Swift methods
-	0x1afa0  func HttpClient.authenticationChallengeHandler.getter // getter 
-	0x1aff0  func HttpClient.authenticationChallengeHandler.setter // setter 
-	0x1b050  func HttpClient.authenticationChallengeHandler.modify // modifyCoroutine 
-	0x1b0a0  class func HttpClient.__allocating_init(endpoint:) // init 
-	0x1b380  func HttpClient.registerHandler(for:handler:) // method 
-	0x1b680  func <stripped> // getter 
-	0x1b750  func HttpClient.invalidate() // method 
-	0x1b7a0  func HttpClient.fetch(requestContent:completionHandler:) // method 
-	0x1ca80  func <stripped> // method 
+	0x1a470  func HttpClient.authenticationChallengeHandler.getter // getter 
+	0x1a4e0  func HttpClient.authenticationChallengeHandler.setter // setter 
+	0x1a540  func HttpClient.authenticationChallengeHandler.modify // modifyCoroutine 
+	0x1a590  class func HttpClient.__allocating_init(endpoint:) // init 
+	0x1a8b0  func HttpClient.registerHandler(for:handler:) // method 
+	0x1ac70  func <stripped> // getter 
+	0x1ad60  func HttpClient.invalidate() // method 
+	0x1adb0  func HttpClient.fetch(requestContent:completionHandler:) // method 
+	0x1c230  func <stripped> // method 
  }
 
  struct FMClient.ErrorCode { }
@@ -493,45 +572,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.SearchResultDevice : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let firstName : String? // +0x8 (0x10)
-	let lastName : String? // +0x18 (0x10)
-	let ownerDsid : String? // +0x28 (0x10)
-	let serverId : String // +0x38 (0x10)
-	let deviceName : String? // +0x48 (0x10)
-	let deviceClass : String? // +0x58 (0x10)
-	let productName : String? // +0x68 (0x10)
-	let discoveryId : String? // +0x78 (0x10)
-	let productType : String? // +0x88 (0x10)
-	let thisDevice : Bool // +0x98 (0x1)
-	let needsSafety : Bool // +0x99 (0x1)
-	let pairedDevices : SearchResultDevice // +0xa0 (0x8)
+	let firstName : String?
+	let lastName : String?
+	let ownerDsid : String?
+	let serverId : String
+	let deviceName : String?
+	let deviceClass : String?
+	let productName : String?
+	let discoveryId : String?
+	let productType : String?
+	let thisDevice : Bool
+	let needsSafety : Bool
+	let pairedDevices : SearchResultDevice
 
 	// ObjC -> Swift bridged methods
-	0x1ecf0  @objc SearchResultDevice.firstName <stripped>
-	0x1ed30  @objc SearchResultDevice.lastName <stripped>
-	0x1ed70  @objc SearchResultDevice.ownerDsid <stripped>
-	0x1edb0  @objc SearchResultDevice.serverId <stripped>
-	0x1ee30  @objc SearchResultDevice.deviceName <stripped>
-	0x1ee70  @objc SearchResultDevice.deviceClass <stripped>
-	0x1eeb0  @objc SearchResultDevice.productName <stripped>
-	0x1eef0  @objc SearchResultDevice.discoveryId <stripped>
-	0x1ef30  @objc SearchResultDevice.productType <stripped>
-	0x1f000  @objc SearchResultDevice.thisDevice <stripped>
-	0x1f030  @objc SearchResultDevice.needsSafety <stripped>
-	0x1f060  @objc SearchResultDevice.pairedDevices <stripped>
-	0x1f3a0  @objc SearchResultDevice.initWithFirstName:lastName:ownerDsid:serverId:deviceName:deviceClass:productName:discoveryId:productType:thisDevice:needsSafety:pairedDevices: <stripped>
-	0x1f8a0  @objc SearchResultDevice.encodeWithCoder: <stripped>
-	0x1fec0  @objc SearchResultDevice.initWithCoder: <stripped>
-	0x1fef0  @objc SearchResultDevice.description <stripped>
-	0x20a60  @objc SearchResultDevice.init <stripped>
-	0x20930  @objc SearchResultDevice..cxx_destruct <stripped>
+WARNING: couldn't find address 0x33f00000d568 (0x3f00000d568) in binary!
+	0x33e4  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x33d80000d540 (0x3d80000d540) in binary!
+	0x33cc  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x33c00000d598 (0x3c00000d598) in binary!
+	0x33b4  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x33a80000d500 (0x3a80000d500) in binary!
+	0x339c  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x33900000d4e0 (0x3900000d4e0) in binary!
+	0x3de0  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x3dd40000d4b8 (0x5d40000d4b8) in binary!
+	0x336c  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x448c0000d490 (0x48c0000d490) in binary!
+	0x35ac  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x44ac0000d5b8 (0x4ac0000d5b8) in binary!
+	0x333c  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x33300000d610 (0x3300000d610) in binary!
+	0x45e0  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffffd1a8  @objc SearchResultDevice.(null) <stripped>
+WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
+	0x454ffffcc00  @objc SearchResultDevice.(null) <stripped>
+	0x434ffffcc68  @objc SearchResultDevice.p <stripped>
+	0x40cffffccd0  @objc SearchResultDevice.HâU»Hâu–Hâ˚Hç=™Î <stripped>
+	0x51cffffcf58  @objc SearchResultDevice.ˇˇfêUHâÂAWAVAUATSHÉÏHMâÔHâU»Hâu–Hâ˚Hç=™Î <stripped>
+	0x5c4ffffd8a0  @objc SearchResultDevice.â«Ëì˜ <stripped>
+	0x514ffffe058  @objc SearchResultDevice.Lã5Uê <stripped>
+	0x1  @objc SearchResultDevice. <stripped>
+WARNING: couldn't find address 0x2 (0x2) in binary!
+	0x4  @objc SearchResultDevice.(null) <stripped>
 
 	// Swift methods
-	0x1f100  class func SearchResultDevice.__allocating_init(firstName:lastName:ownerDsid:serverId:deviceName:deviceClass:productName:discoveryId:productType:thisDevice:needsSafety:pairedDevices:) // init 
-	0x1f6b0  func SearchResultDevice.encode(with:) // method 
-	0x1f8f0  class func SearchResultDevice.__allocating_init(coder:) // init 
-	0x20d40  class func SearchResultDevice.__allocating_init(from:) // init 
-	0x21400  func SearchResultDevice.encode(to:) // method 
+	0x1daf0  class func SearchResultDevice.__allocating_init(firstName:lastName:ownerDsid:serverId:deviceName:deviceClass:productName:discoveryId:productType:thisDevice:needsSafety:pairedDevices:) // init 
+	0x1e0a0  func SearchResultDevice.encode(with:) // method 
+	0x1e2e0  class func SearchResultDevice.__allocating_init(coder:) // init 
+	0x1f740  class func SearchResultDevice.__allocating_init(from:) // init 
+	0x1fde0  func SearchResultDevice.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {
@@ -554,33 +645,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMClient.SearchFilterDevice : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let ownerName : String? // +0x8 (0x10)
-	let ownerDsid : String? // +0x18 (0x10)
-	let deviceName : String? // +0x28 (0x10)
-	let deviceClass : String? // +0x38 (0x10)
-	let productName : String? // +0x48 (0x10)
-	let productType : String? // +0x58 (0x10)
+	let ownerName : String?
+	let ownerDsid : String?
+	let deviceName : String?
+	let deviceClass : String?
+	let productName : String?
+	let productType : String?
 
 	// ObjC -> Swift bridged methods
-	0x21e60  @objc SearchFilterDevice.ownerName <stripped>
-	0x21ea0  @objc SearchFilterDevice.ownerDsid <stripped>
-	0x21ee0  @objc SearchFilterDevice.deviceName <stripped>
-	0x21f20  @objc SearchFilterDevice.deviceClass <stripped>
-	0x21f60  @objc SearchFilterDevice.productName <stripped>
-	0x21fa0  @objc SearchFilterDevice.productType <stripped>
-	0x22220  @objc SearchFilterDevice.initWithOwnerName:ownerDsid:deviceName:deviceClass:productName:productType: <stripped>
-	0x22620  @objc SearchFilterDevice.encodeWithCoder: <stripped>
-	0x22b60  @objc SearchFilterDevice.initWithCoder: <stripped>
-	0x22b90  @objc SearchFilterDevice.description <stripped>
-	0x23320  @objc SearchFilterDevice.init <stripped>
-	0x23240  @objc SearchFilterDevice..cxx_destruct <stripped>
+WARNING: couldn't find address 0x32f80000d420 (0x2f80000d420) in binary!
+	0x32ec  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x32e00000d4b8 (0x2e00000d4b8) in binary!
+	0x32d4  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x32c80000d420 (0x2c80000d420) in binary!
+	0x32bc  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x454c0000d3d0 (0x54c0000d3d0) in binary!
+	0x34fc  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x43fc0000d508 (0x3fc0000d508) in binary!
+	0x328c  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x32800000d560 (0x2800000d560) in binary!
+	0x4530  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x2  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x2 (0x2) in binary!
+	0x5696c434d46  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x76973736553  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x9bc80000050 (0x1bc80000050) in binary!
+	0x63400005638  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x1c00000002 (0x1c00000002) in binary!
+	0xf0000000a  @objc SearchFilterDevice.(null) <stripped>
+WARNING: couldn't find address 0x120000000d (0x120000000d) in binary!
+	0x1300000000  @objc SearchFilterDevice.(null) <stripped>
 
 	// Swift methods
-	0x22070  class func SearchFilterDevice.__allocating_init(ownerName:ownerDsid:deviceName:deviceClass:productName:productType:) // init 
-	0x22430  func SearchFilterDevice.encode(with:) // method 
-	0x22670  class func SearchFilterDevice.__allocating_init(coder:) // init 
-	0x23540  class func SearchFilterDevice.__allocating_init(from:) // init 
-	0x23970  func SearchFilterDevice.encode(to:) // method 
+	0x20a00  class func SearchFilterDevice.__allocating_init(ownerName:ownerDsid:deviceName:deviceClass:productName:productType:) // init 
+	0x20db0  func SearchFilterDevice.encode(with:) // method 
+	0x20ff0  class func SearchFilterDevice.__allocating_init(coder:) // init 
+	0x21ef0  class func SearchFilterDevice.__allocating_init(from:) // init 
+	0x22320  func SearchFilterDevice.encode(to:) // method 
  }
 
  enum FMClient.CodingKeys {

@@ -10,12 +10,12 @@
 
 @interface CKEditableSearchResultCell : UICollectionViewCell
 {
-    BOOL _editing;
+    BOOL __ck_editing;
     UIImageView *_checkmarkView;
 }
 
+@property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing; // @synthesize _ck_editing=__ck_editing;
 @property (strong, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
-@property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;

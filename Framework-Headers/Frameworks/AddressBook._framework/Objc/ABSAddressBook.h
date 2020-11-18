@@ -36,7 +36,7 @@
 + (void)requestAccessWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_cfTypeID;
-- (id)_peoplePreferringExistingRecordsFetchedWithPredicate:(id)arg1 sortOrder:(unsigned int)arg2;
+- (id)_peoplePreferringExistingRecordsForFetchRequest:(id)arg1;
 - (id)_resultRecordsFromFetchedCNImpls:(id)arg1 mergedWithStorage:(id)arg2 creationBlock:(CDUnknownBlockType)arg3;
 - (id)_sourcesPreferringExistingRecordsFetchedWithPredicate:(id)arg1;
 - (id)_storageForRecordClass:(Class)arg1;

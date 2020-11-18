@@ -26,7 +26,9 @@
 @property (readonly, nonatomic) NSString *documentTypeDisplayName;
 @property (readonly, nonatomic) NSString *documentTypeDisplayNameForSharingInvitation;
 @property (readonly, copy, nonatomic) NSData *iWorkTextDefaultsPassphraseVerifier;
+@property (readonly, nonatomic) BOOL supportsWebVideos;
 @property (readonly, nonatomic) NSString *templateTypeDisplayName;
+@property (readonly, nonatomic) unsigned long long webVideoRequiredDocumentWriteVersion;
 
 - (void).cxx_destruct;
 - (id)initWithCompatibilityDelegate:(id)arg1;

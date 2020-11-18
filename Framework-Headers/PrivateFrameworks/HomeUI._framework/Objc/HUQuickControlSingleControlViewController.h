@@ -50,7 +50,6 @@
 - (void)_updateControlTransform;
 - (void)_updateControlViewReachabilityState;
 - (void)_updateTitle;
-- (void)_updateValueFromControlItem;
 - (void)_updateViewProfileForCurrentItemState;
 - (void)_updateWriteState;
 - (void)_writeModelControlValue:(id)arg1;
@@ -82,6 +81,7 @@
 - (void)setPreferredControl:(unsigned long long)arg1;
 - (void)setPreferredFrameLayoutGuide:(id)arg1;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
+- (void)updateValueFromControlItem;
 - (id)viewControllerForTouchContinuation;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

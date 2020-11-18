@@ -8,7 +8,6 @@
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKDGetRecordsURLRequest : CKDURLRequest
 {
     BOOL _shouldFetchAssetContent;
@@ -43,8 +42,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithRecordIDs:(id)arg1 recordIDsToEtags:(id)arg2 recordIDsToVersionETags:(id)arg3 desiredKeys:(id)arg4;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 recordIDs:(id)arg2 recordIDsToEtags:(id)arg3 recordIDsToVersionETags:(id)arg4 desiredKeys:(id)arg5;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (BOOL)requestGETPreAuth;

@@ -17,6 +17,7 @@
     BOOL _syncRequested;
     BOOL _syncActive;
     BOOL _hasSelection;
+    BOOL _isPushEnabled;
     BOOL _databaseContentVerified;
     unsigned long long _type;
     unsigned long long _filterType;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL databaseContentVerified; // @synthesize databaseContentVerified=_databaseContentVerified;
 @property (nonatomic) unsigned long long filterType; // @synthesize filterType=_filterType;
 @property (nonatomic) BOOL hasSelection; // @synthesize hasSelection=_hasSelection;
+@property (nonatomic) BOOL isPushEnabled; // @synthesize isPushEnabled=_isPushEnabled;
 @property (strong, nonatomic) NSDate *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property (nonatomic, getter=isSelected) BOOL selected;
@@ -66,6 +68,7 @@
 - (BOOL)isSelectedForFilterType:(unsigned long long)arg1;
 - (void)removeFilterType:(unsigned long long)arg1;
 - (void)resetURL;
+- (BOOL)shouldFilter;
 
 @end
 

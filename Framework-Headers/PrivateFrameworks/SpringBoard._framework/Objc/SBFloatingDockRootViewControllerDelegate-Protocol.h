@@ -10,6 +10,7 @@
 @protocol SBViewControllerTransitionCoordinator;
 
 @protocol SBFloatingDockRootViewControllerDelegate <NSObject>
+- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didChangeToFrame:(struct CGRect)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 floatingDockWantsToBePresented:(BOOL)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willChangeToHeight:(double)arg2;
 

@@ -16,17 +16,17 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSDateComponents *dueDateComponents;
+@property (readonly, nonatomic) NSDateComponents *dueDateComponents; // @dynamic dueDateComponents;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CLLocation *location;
+@property (readonly, nonatomic) CLLocation *location; // @dynamic location;
 @property (readonly, nonatomic) long long locationProximity;
-@property (readonly, nonatomic) NSString *locationString;
-@property (readonly, nonatomic) NSAttributedString *notes;
+@property (readonly, nonatomic) NSString *locationString; // @dynamic locationString;
+@property (readonly, nonatomic) NSAttributedString *notes; // @dynamic notes;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSAttributedString *title;
+@property (readonly, nonatomic) NSAttributedString *title; // @dynamic title;
 @property (readonly, nonatomic) BOOL titleIsGeneratedSuggestion;
-@property (readonly, nonatomic) NSURL *url;
-@property (readonly, nonatomic) NSUserActivity *userActivity;
+@property (readonly, nonatomic) NSURL *url; // @dynamic url;
+@property (readonly, nonatomic) NSUserActivity *userActivity; // @dynamic userActivity;
 @property (readonly, nonatomic) BOOL wantsExtendedDetailOnlyView;
 
 + (id)remindersImage;

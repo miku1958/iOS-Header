@@ -65,7 +65,7 @@
 @property (nonatomic) unsigned long long rayStride; // @synthesize rayStride=_rayStride;
 @property (nonatomic) unsigned long long triangleIntersectionTestType;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (BOOL)supportsSecureCoding;
 - (MISSING_TYPE *)clippingPlane;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

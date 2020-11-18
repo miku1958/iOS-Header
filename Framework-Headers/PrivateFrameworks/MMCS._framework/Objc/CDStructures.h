@@ -39,19 +39,17 @@ struct _Metricsinfo__HTTPMetricsInfo {
     int _field17;
     long long _field18;
     unsigned long long _field19;
-    unsigned long long _field20;
-    int _field21;
-    double _field22;
-    int _field23;
-    long long _field24;
-    int _field25;
-    long long _field26;
-    unsigned int _field27;
-    struct _Chunkserver__ErrorResponse *_field28;
+    int _field20;
+    double _field21;
+    int _field22;
+    long long _field23;
+    int _field24;
+    long long _field25;
+    struct _Chunkserver__ErrorResponse *_field26;
+    int _field27;
+    double _field28;
     int _field29;
     double _field30;
-    int _field31;
-    double _field32;
 };
 
 struct _Metricsinfo__SocketInfo {
@@ -93,7 +91,7 @@ struct mmcs_http_context {
     struct __CFString *_field4;
     long long _field5;
     double _field6;
-    double _field7;
+    unsigned char _field7;
     unsigned char _field8;
     unsigned char _field9;
     unsigned char _field10;

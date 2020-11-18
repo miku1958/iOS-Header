@@ -22,7 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)_noneDevice;
-- (id)allDeviceEntitiesWithError:(id *)arg1;
+- (id)allDevicesWithError:(id *)arg1;
 - (id)currentDeviceEntityWithError:(id *)arg1;
 - (id)deviceEntitiesForDevice:(id)arg1 error:(id *)arg2;
 - (id)deviceEntitiesWithProperty:(id)arg1 matchingValues:(id)arg2 error:(id *)arg3;

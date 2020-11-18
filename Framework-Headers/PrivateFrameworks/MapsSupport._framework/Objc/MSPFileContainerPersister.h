@@ -18,7 +18,6 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ioQueue; // @synthesize ioQueue=_ioQueue;
 @property (readonly, nonatomic) NSURL *persistenceFileURL; // @synthesize persistenceFileURL=_persistenceFileURL;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (id)commitByCreatingStateSnapshotAndDataWithCreationHandler:(CDUnknownBlockType)arg1 error:(out id *)arg2;
 - (void)commitByMergingWithStateSnapshot:(id)arg1 mergeOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;

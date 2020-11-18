@@ -76,7 +76,7 @@
 - (unsigned int)enumerateEdgesWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned int)enumerateMembersOfGroupNode:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (unsigned int)enumerateNodesWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4;
+- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4 error:(id *)arg5;
 - (id)initWithNodes:(unsigned int)arg1;
 - (id)initWithPlistRepresentation:(id)arg1;
 - (id)initWithPlistRepresentation:(id)arg1 error:(id *)arg2;

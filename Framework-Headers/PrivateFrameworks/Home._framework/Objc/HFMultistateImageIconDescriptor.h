@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSDictionary *imageIdentifiersKeyedByPrimaryState; // @synthesize imageIdentifiersKeyedByPrimaryState=_imageIdentifiersKeyedByPrimaryState;
 
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (unsigned long long)hash;
 - (id)imageIdentifierForPrimaryState:(long long)arg1;
 - (id)initWithImageIdentifiersKeyedByPrimaryState:(id)arg1;

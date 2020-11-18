@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PKPaymentApplication, PKPaymentTransaction;
+@class NSString, PKPaymentTransaction;
 
 @interface PKPaymentTransactionProcessorItem : NSObject
 {
@@ -15,15 +15,13 @@
     BOOL _useBackgroundLocation;
     BOOL _isClearingAttempt;
     PKPaymentTransaction *_paymentTransaction;
-    PKPaymentApplication *_paymentApplication;
-    NSString *_passUniqueIdentifier;
+    NSString *_transactionSourceIdentifier;
 }
 
 @property (nonatomic) BOOL foundOptimalLocation; // @synthesize foundOptimalLocation=_foundOptimalLocation;
 @property (nonatomic) BOOL isClearingAttempt; // @synthesize isClearingAttempt=_isClearingAttempt;
-@property (strong, nonatomic) NSString *passUniqueIdentifier; // @synthesize passUniqueIdentifier=_passUniqueIdentifier;
-@property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property (strong, nonatomic) PKPaymentTransaction *paymentTransaction; // @synthesize paymentTransaction=_paymentTransaction;
+@property (strong, nonatomic) NSString *transactionSourceIdentifier; // @synthesize transactionSourceIdentifier=_transactionSourceIdentifier;
 @property (nonatomic) BOOL useBackgroundLocation; // @synthesize useBackgroundLocation=_useBackgroundLocation;
 
 - (void).cxx_destruct;

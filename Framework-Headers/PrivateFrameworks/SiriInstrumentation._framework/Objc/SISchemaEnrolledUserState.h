@@ -12,8 +12,12 @@
 {
     NSString *_siriLinkedSpeechID;
     SISchemaPersonalization *_personalization;
+    BOOL _hasSiriLinkedSpeechID;
+    BOOL _hasPersonalization;
 }
 
+@property (nonatomic) BOOL hasPersonalization; // @synthesize hasPersonalization=_hasPersonalization;
+@property (nonatomic) BOOL hasSiriLinkedSpeechID; // @synthesize hasSiriLinkedSpeechID=_hasSiriLinkedSpeechID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaPersonalization *personalization; // @synthesize personalization=_personalization;
 @property (copy, nonatomic) NSString *siriLinkedSpeechID; // @synthesize siriLinkedSpeechID=_siriLinkedSpeechID;

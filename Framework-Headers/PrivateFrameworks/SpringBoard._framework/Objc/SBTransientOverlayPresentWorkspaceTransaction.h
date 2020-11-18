@@ -28,6 +28,7 @@
 - (void)_logForInterruptAttemptReason:(id)arg1;
 - (void)_performStandardPresentationAnimated:(BOOL)arg1;
 - (void)_willBegin;
+- (void)_willInterruptWithReason:(id)arg1;
 - (void)animationControllerDidFinishAnimation:(id)arg1;
 - (BOOL)canInterruptForTransitionRequest:(id)arg1;
 - (id)initWithTransitionRequest:(id)arg1;

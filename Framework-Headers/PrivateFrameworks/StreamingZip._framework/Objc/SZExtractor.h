@@ -62,6 +62,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finishStreamWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initForLocalExtractionWithPath:(id)arg1 options:(id)arg2 resumptionOffset:(unsigned long long *)arg3;
 - (id)initForRemoteExtractionWithPath:(id)arg1 options:(id)arg2 resumptionOffset:(unsigned long long *)arg3;
 - (id)initWithCoder:(id)arg1;

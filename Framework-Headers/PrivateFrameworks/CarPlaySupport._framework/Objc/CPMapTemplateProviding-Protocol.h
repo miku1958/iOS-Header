@@ -19,7 +19,7 @@
 - (void)setHostGuidanceBackgroundColor:(UIColor *)arg1;
 - (void)setHostHidesButtonsWithNavigationBar:(BOOL)arg1;
 - (void)setHostTripEstimateStyle:(unsigned long long)arg1;
-- (void)setHostTripPreviews:(NSArray *)arg1 textConfiguration:(CPTripPreviewTextConfiguration *)arg2 previewOnlyRouteChoices:(BOOL)arg3;
+- (void)setHostTripPreviews:(NSArray *)arg1 textConfiguration:(CPTripPreviewTextConfiguration *)arg2 previewOnlyRouteChoices:(BOOL)arg3 selectedIndex:(unsigned long long)arg4;
 - (void)setMapButton:(NSUUID *)arg1 focusedImage:(UIImage *)arg2;
 - (void)setMapButton:(NSUUID *)arg1 hidden:(BOOL)arg2;
 - (void)showNavigationAlert:(CPNavigationAlert *)arg1 animated:(BOOL)arg2;

@@ -15,6 +15,7 @@
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributions;
+    NSMutableArray *_filenames;
     NSMutableArray *_icons;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -22,42 +23,46 @@
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_attributions:1;
+        unsigned int read_filenames:1;
         unsigned int read_icons:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributions:1;
-        unsigned int wrote_icons:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSMutableArray *attributions;
+@property (strong, nonatomic) NSMutableArray *filenames;
 @property (strong, nonatomic) NSMutableArray *icons;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributionType;
++ (Class)filenameType;
 + (Class)iconType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAttribution:(id)arg1;
-- (void)_addNoFlagsIcon:(id)arg1;
-- (void)_readAttributions;
-- (void)_readIcons;
 - (void)addAttribution:(id)arg1;
+- (void)addFilename:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (id)attributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionsCount;
 - (void)clearAttributions;
+- (void)clearFilenames;
 - (void)clearIcons;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)filenameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)filenamesCount;
 - (unsigned long long)hash;
 - (id)iconAtIndex:(unsigned long long)arg1;
 - (unsigned long long)iconsCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

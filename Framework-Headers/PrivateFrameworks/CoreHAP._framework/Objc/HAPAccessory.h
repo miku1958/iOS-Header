@@ -16,6 +16,7 @@
     BOOL _reachable;
     BOOL _primary;
     BOOL _supportsRelay;
+    int _consecutiveFailedPingCount;
     id<HAPAccessoryDelegate> _delegate;
     HAPAccessoryServer *_server;
     NSString *_identifier;
@@ -32,10 +33,12 @@
     NSString *_firmwareVersion;
     NSString *_productData;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSNumber *_sleepInterval;
 }
 
 @property (copy) HMFMACAddress *bluetoothClassicMacAddress; // @synthesize bluetoothClassicMacAddress=_bluetoothClassicMacAddress;
 @property (readonly, copy, nonatomic) NSNumber *category;
+@property (nonatomic) int consecutiveFailedPingCount; // @synthesize consecutiveFailedPingCount=_consecutiveFailedPingCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HAPAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -55,6 +58,7 @@
 @property (weak, nonatomic) HAPAccessoryServer *server; // @synthesize server=_server;
 @property (copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
 @property (strong, nonatomic) NSArray *services; // @synthesize services=_services;
+@property (copy, nonatomic) NSNumber *sleepInterval; // @synthesize sleepInterval=_sleepInterval;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -80,12 +84,12 @@
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)mergeObject:(id)arg1;
-- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)servicesOfType:(id)arg1;
 - (BOOL)shouldMergeObject:(id)arg1;
-- (void)writeCharacteristicValue:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeCharacteristicValue:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

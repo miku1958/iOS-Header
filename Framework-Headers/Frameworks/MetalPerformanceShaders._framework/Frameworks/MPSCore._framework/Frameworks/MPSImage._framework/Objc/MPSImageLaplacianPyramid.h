@@ -24,7 +24,7 @@
 @property (nonatomic, getter=getUpsampleConfigID, setter=setUpsampleConfigID:) unsigned long long upsampleConfigID;
 @property (readonly, nonatomic, getter=getUpsampleConfigs) NSDictionary *upsampleConfigs;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)cleanUpAll;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;

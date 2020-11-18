@@ -20,10 +20,12 @@
     SBHSidebarVisualConfiguration *_sidebarVisualConfiguration;
     unsigned long long _layoutInsetsIgnoredEdges;
     id<SBHSidebarProviderDelegate> _delegate;
+    UIViewController *_avocadoViewController;
     NSMutableArray *_widgetViewControllerConstraints;
     NSLayoutConstraint *_dockHeightConstraint;
 }
 
+@property (strong, nonatomic) UIViewController *avocadoViewController; // @synthesize avocadoViewController=_avocadoViewController;
 @property (readonly, nonatomic) SBHDateHeaderViewController *dateViewController; // @synthesize dateViewController=_dateViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBHSidebarProviderDelegate> delegate; // @synthesize delegate=_delegate;
@@ -35,18 +37,22 @@
 @property (strong, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration; // @synthesize sidebarVisualConfiguration=_sidebarVisualConfiguration;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WGWidgetGroupViewController *widgetViewController; // @synthesize widgetViewController=_widgetViewController;
-@property (copy, nonatomic) NSMutableArray *widgetViewControllerConstraints; // @synthesize widgetViewControllerConstraints=_widgetViewControllerConstraints;
+@property (strong, nonatomic) NSMutableArray *widgetViewControllerConstraints; // @synthesize widgetViewControllerConstraints=_widgetViewControllerConstraints;
 
 - (void).cxx_destruct;
-- (void)_addEditButton;
+- (void)_addEditButtonForWidgetGroupViewController:(id)arg1;
 - (BOOL)_canShowWhileLocked;
+- (void)_configureAvocadoViewController;
 - (void)_configureLayoutMargins;
 - (void)_configureWidgetViewController;
+- (void)_setupConstraintsForViewController:(id)arg1;
 - (void)_updateDockHeightConstraint;
 - (void)setEditingIcons:(BOOL)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

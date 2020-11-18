@@ -12,7 +12,7 @@
 #import <WorkflowKit/WFNaming-Protocol.h>
 
 @class NSArray, NSString, WFActionGroupingCache, WFVariableAvailability, WFWorkflowIcon, WFWorkflowQuarantine, WFWorkflowRecord, WFWorkflowReference;
-@protocol WFRecordStorageProvider;
+@protocol WFWorkflowStorage;
 
 @interface WFWorkflow : NSObject <WFNaming, WFActionEventObserver, NSCopying, NSSecureCoding>
 {
@@ -25,8 +25,7 @@
     WFWorkflowRecord *_record;
     long long _environment;
     WFWorkflowQuarantine *_quarantine;
-    id<WFRecordStorageProvider> _storageProvider;
-    WFWorkflowReference *_overridenReference;
+    id<WFWorkflowStorage> _storageProvider;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actions;
@@ -46,7 +45,6 @@
 @property (copy, nonatomic) NSArray *inputClasses; // @synthesize inputClasses=_inputClasses;
 @property (copy, nonatomic) NSString *legacyName;
 @property (copy, nonatomic) NSString *name;
-@property (readonly, nonatomic) WFWorkflowReference *overridenReference; // @synthesize overridenReference=_overridenReference;
 @property (strong, nonatomic) WFWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;
 @property (readonly, nonatomic) WFWorkflowRecord *record; // @synthesize record=_record;
 @property (readonly, nonatomic) WFWorkflowReference *reference;
@@ -54,7 +52,7 @@
 @property (readonly, nonatomic, getter=isResidentCompatible) BOOL residentCompatible;
 @property (nonatomic) BOOL saveDisabled; // @synthesize saveDisabled=_saveDisabled;
 @property (readonly, nonatomic) NSString *source;
-@property (strong, nonatomic) id<WFRecordStorageProvider> storageProvider; // @synthesize storageProvider=_storageProvider;
+@property (strong, nonatomic) id<WFWorkflowStorage> storageProvider; // @synthesize storageProvider=_storageProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WFVariableAvailability *variableAvailability; // @synthesize variableAvailability=_variableAvailability;
 @property (readonly, copy, nonatomic) NSString *wfName;
@@ -65,12 +63,13 @@
 + (BOOL)checkClientVersion:(id)arg1 currentVersion:(id)arg2 error:(id *)arg3;
 + (id)defaultName;
 + (id)effectiveInputClassesFromInputClasses:(id)arg1 workflowTypes:(id)arg2;
++ (void)loadActionDescriptionIconsWithActions:(id)arg1 maxCount:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)localizedSubtitleWithActionCount:(unsigned long long)arg1;
 + (id)supportedInputClassNames;
 + (id)supportedInputClasses;
 + (BOOL)supportsSecureCoding;
-+ (id)workflowWithReference:(id)arg1 storageProvider:(id)arg2 error:(id *)arg3;
-+ (id)workflowWithReference:(id)arg1 storageProvider:(id)arg2 migrateIfNecessary:(BOOL)arg3 environment:(long long)arg4 error:(id *)arg5;
++ (id)workflowWithReference:(id)arg1 database:(id)arg2 error:(id *)arg3;
++ (id)workflowWithReference:(id)arg1 database:(id)arg2 migrateIfNecessary:(BOOL)arg3 environment:(long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 - (void)action:(id)arg1 didChangeVariableName:(id)arg2 to:(id)arg3;
 - (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;
@@ -80,20 +79,24 @@
 - (void)actionOutputDetailsDidChange:(id)arg1;
 - (id)actionsGroupedWithAction:(id)arg1;
 - (void)addAction:(id)arg1;
+- (void)addWatchWorkflowType;
+- (BOOL)addWatchWorkflowTypeIfEligible;
+- (id)additionalEffectiveInputClassesForTriggers:(id)arg1;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (void)authorizeAccessResourcesIfNeeded;
 - (Class)classForKeyedArchiver;
 - (void)configureAsSingleStepShortcutIfNecessary:(CDUnknownBlockType)arg1;
-- (void)configureWithShortcut:(id)arg1;
+- (void)configureWithShortcut:(id)arg1 homeSummaryText:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createUserActivityForViewing;
+- (id)database;
 - (void)dealloc;
 - (id)editingDelegate;
 - (id)effectiveInputClasses;
 - (void)encodeWithCoder:(id)arg1;
-- (id)eventDictionary;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
-- (BOOL)hasStorageProvider;
+- (void)getHomeSummaryTextWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)hasActions;
 - (id)init;
 - (id)initWithActionDonation:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -104,13 +107,14 @@
 - (void)initializeAddedAction:(id)arg1;
 - (void)insertAction:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertActions:(id)arg1 atIndexes:(id)arg2;
+- (BOOL)isEligibleForWatch;
+- (BOOL)isInUserLibrary;
 - (BOOL)isUntitled;
 - (void)loadActionDescriptionIconsMaxCount:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadFromRecord;
 - (id)localizedActionsSummary;
 - (id)localizedSubtitle;
 - (void)moveActionsAtIndexes:(id)arg1 toIndexes:(id)arg2;
-- (void)overrideReference:(id)arg1;
 - (void)performBatchOperation:(CDUnknownBlockType)arg1;
 - (void)reloadFromRecord;
 - (void)removeAction:(id)arg1;

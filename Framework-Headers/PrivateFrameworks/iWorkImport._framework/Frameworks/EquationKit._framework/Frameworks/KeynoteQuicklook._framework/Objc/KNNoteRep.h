@@ -10,7 +10,7 @@
 #import <KeynoteQuicklook/TSWPRepParent-Protocol.h>
 #import <KeynoteQuicklook/TSWPStorageObserver-Protocol.h>
 
-@class NSArray, NSObject, NSString, TSWPRep;
+@class NSObject, NSString, TSWPRep;
 @protocol TSDContainerInfo;
 
 @interface KNNoteRep : TSDRep <TSWPRepParent, TSDContainerRep, TSWPStorageObserver>
@@ -18,7 +18,6 @@
     TSWPRep *_containedRep;
 }
 
-@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) TSWPRep *containedRep; // @synthesize containedRep=_containedRep;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,23 +26,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)addAdditionalChildLayersToArray:(id)arg1;
 - (BOOL)canBeginEditingChildRepOnDoubleTap:(id)arg1;
-- (BOOL)canSelectChildRep:(id)arg1;
+- (id)childReps;
 - (double)columnHeight;
 - (void)dealloc;
 - (id)editingRep;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (void)recursivelyPerformSelector:(SEL)arg1;
-- (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
-- (void)selectChildRep:(id)arg1 extendingSelection:(BOOL)arg2;
 - (BOOL)shouldShowCollaboratorCursorHighlight;
 - (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(unsigned long long)arg4;
 - (void)updateChildrenFromLayout;
-- (void)willBeginEditingContainedRep;
-- (void)willEndEditingContainedRep;
+- (void)willBeginEditingContainedInfo:(id)arg1;
+- (void)willEndEditingContainedInfo:(id)arg1;
 
 @end
 

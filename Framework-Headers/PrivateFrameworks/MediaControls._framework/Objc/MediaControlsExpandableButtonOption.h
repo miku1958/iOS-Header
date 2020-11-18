@@ -10,6 +10,7 @@
 
 @interface MediaControlsExpandableButtonOption : NSObject
 {
+    BOOL _supportsAnimation;
     NSString *_identifier;
     NSString *_packageName;
     NSString *_title;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property (strong, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
+@property (nonatomic) BOOL supportsAnimation; // @synthesize supportsAnimation=_supportsAnimation;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

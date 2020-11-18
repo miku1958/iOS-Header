@@ -16,6 +16,7 @@
     NSMutableDictionary *_queue_settingObservers;
 }
 
+@property (nonatomic) BOOL useANODModelForAXElementVision; // @dynamic useANODModelForAXElementVision;
 @property (nonatomic) BOOL writeOutInputImages; // @dynamic writeOutInputImages;
 @property (nonatomic) BOOL writeOutOCRInputImages; // @dynamic writeOutOCRInputImages;
 @property (nonatomic) BOOL writeOutScreenCaptures; // @dynamic writeOutScreenCaptures;

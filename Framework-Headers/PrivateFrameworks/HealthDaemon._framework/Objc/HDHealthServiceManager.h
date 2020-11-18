@@ -10,7 +10,7 @@
 #import <HealthDaemon/CBPairingAgentDelegate-Protocol.h>
 
 @class CBCentralManager, CBUUID, HDDataCollectionManager, HDIdentifierTable, HDProfile, NSLock, NSMutableDictionary, NSSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HDHealthServiceManager : NSObject <CBCentralManagerPrivateDelegate, CBPairingAgentDelegate>
 {
@@ -29,6 +29,7 @@
     NSMutableDictionary *_connectionInfosByPeripheralUUID;
     NSMutableDictionary *_connectedPeripheralsByPeripheralUUID;
     NSMutableDictionary *_bluetoothUpdateHandlers;
+    NSObject<OS_dispatch_source> *_privateModeTimer;
 }
 
 @property (strong, nonatomic) CBUUID *allServicesUUID; // @synthesize allServicesUUID=_allServicesUUID;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) HDIdentifierTable *discoveryInfosTable; // @synthesize discoveryInfosTable=_discoveryInfosTable;
 @property (strong, nonatomic) NSLock *discoveryLock; // @synthesize discoveryLock=_discoveryLock;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *privateModeTimer; // @synthesize privateModeTimer=_privateModeTimer;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSSet *scanServiceUUIDs; // @synthesize scanServiceUUIDs=_scanServiceUUIDs;
@@ -62,6 +64,7 @@
 - (void)_disconnectPeripheralWithDeviceIdentifier:(id)arg1 error:(id)arg2;
 - (id)_healthServiceForPeriperalID:(id)arg1 serviceType:(long long)arg2;
 - (void)_notifyDiscoveryForInfos:(id)arg1 peripheral:(id)arg2 healthService:(id)arg3 alwaysNotify:(BOOL)arg4;
+- (void)_queue_extendPrivateModeLeaseForSessionWithIdentifier:(id)arg1;
 - (void)_queue_handleMFASuccessNotification;
 - (void)_queue_notifyBluetoothStatusUpdates:(long long)arg1 error:(id)arg2;
 - (void)_queue_reportExistingDiscoveriesForService:(id)arg1;
@@ -82,13 +85,12 @@
 - (unsigned long long)connectHealthService:(id)arg1 connectionOptions:(unsigned long long)arg2 sessionHandler:(CDUnknownBlockType)arg3 dataHandler:(CDUnknownBlockType)arg4 mfaSuccessHandler:(CDUnknownBlockType)arg5 autoPairData:(id)arg6 error:(id *)arg7;
 - (unsigned long long)connectHealthService:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2 dataHandler:(CDUnknownBlockType)arg3 characteristicsHandler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (unsigned long long)connectHealthService:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2 dataHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (void)dataReceived:(id)arg1 deviceEntity:(id)arg2;
 - (void)dealloc;
 - (void)disconnectHealthService:(unsigned long long)arg1;
 - (unsigned long long)discoverHealthServicesWithType:(long long)arg1 timeout:(unsigned long long)arg2 alwaysNotify:(BOOL)arg3 handler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (void)discoveredCharacteristics:(id)arg1 forDevice:(id)arg2 service:(id)arg3;
 - (void)discoveredServices:(id)arg1 forPeripheral:(id)arg2;
-- (void)extendPrivateModeLease:(id)arg1 forDuration:(unsigned short)arg2;
+- (void)enablePrivateModeForSessionWithIdentifier:(id)arg1;
 - (void)getProperty:(id)arg1 forSession:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getSupportedPropertyNamesWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)healthUpdatesEnabledFromDevice:(id)arg1 error:(id *)arg2;
@@ -99,6 +101,7 @@
 - (void)pairingAgent:(id)arg1 peerDidRequestPairing:(id)arg2 type:(long long)arg3 passkey:(id)arg4;
 - (void)pairingAgent:(id)arg1 peerDidUnpair:(id)arg2;
 - (void)performOperation:(id)arg1 onSession:(unsigned long long)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)releasePrivateMode;
 - (void)removeConnectingPeripheralsWithError:(id)arg1;
 - (void)resetOOBState;
 - (void)retrieveAndRemoveDisconnectedPeripherals;

@@ -19,14 +19,15 @@
 
 @interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDDevicePreferenceDataSource, HMDBackingStoreObjectProtocol>
 {
+    struct os_unfair_lock_s _lock;
     BOOL _active;
     NSString *_name;
     NSUUID *_uuid;
     HMDHome *_home;
     HMDUser *_owner;
     HMDDevice *_owningDevice;
-    NSMutableArray *_actionSetUUIDs;
     NSMutableDictionary *_actionSetMappings;
+    NSMutableArray *_actionSetUUIDs;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     unsigned long long _triggerType;
@@ -36,7 +37,7 @@
 @property (readonly, nonatomic) NSDictionary *actionContext;
 @property (strong, nonatomic) NSMutableDictionary *actionSetMappings; // @synthesize actionSetMappings=_actionSetMappings;
 @property (strong, nonatomic) NSMutableArray *actionSetUUIDs; // @synthesize actionSetUUIDs=_actionSetUUIDs;
-@property (readonly, nonatomic) NSArray *actionSets;
+@property (readonly, copy) NSArray *actionSets;
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) NSDictionary *bulletinContext;
 @property (readonly, nonatomic, getter=isConfigured) BOOL configured;
@@ -70,9 +71,11 @@
 - (void)_activateTriggerRequest:(id)arg1;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_addActionSet:(id)arg1;
+- (void)_checkForNoActions;
 - (void)_executeActionSets:(id)arg1 captureCurrentState:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_fillBaseObjectChangeModel:(id)arg1;
+- (void)_forceEvaluate;
 - (void)_handleActivateTriggerRequest:(id)arg1;
 - (void)_handleAddActionSetRequest:(id)arg1;
 - (void)_handleAddTriggerOwnedActionSetRequest:(id)arg1;
@@ -89,10 +92,11 @@
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)_updateActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
+- (id)actionSetForKey:(id)arg1;
+- (id)actionSetMapKeys;
 - (void)activateAfterResidentChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)backingStoreObjects:(long long)arg1;
-- (void)checkForNoActions;
 - (BOOL)compatible:(id)arg1 user:(id)arg2;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
 - (void)confirmResident;
@@ -101,22 +105,27 @@
 - (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fixupForReplacementAccessory:(id)arg1;
+- (BOOL)hasNoActions;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2 message:(id)arg3;
 - (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (void)invalidate;
+- (BOOL)isAssociatedWithAccessory:(id)arg1;
 - (id)logIdentifier;
 - (void)markChangedForMessage:(id)arg1;
 - (void)markChangedForMessage:(id)arg1 triggerModel:(id)arg2;
 - (BOOL)modelContainsTriggerFired:(id)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(id)arg2;
-- (void)reEvaluate;
+- (void)reEvaluate:(unsigned long long)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionSet:(id)arg1 postUpdate:(BOOL)arg2;
+- (void)removeActionSetForKey:(id)arg1;
+- (void)removeAllActionSets;
 - (void)removeCharacteristic:(id)arg1;
 - (void)removeService:(id)arg1;
 - (void)sendTriggerFiredNotification:(id)arg1;
+- (void)setActionSetForKey:(id)arg1 value:(id)arg2;
 - (void)setEnabled:(BOOL)arg1 message:(id)arg2;
 - (BOOL)shouldActivateOnLocalDevice;
 - (BOOL)shouldEncodeLastFireDate:(id)arg1;

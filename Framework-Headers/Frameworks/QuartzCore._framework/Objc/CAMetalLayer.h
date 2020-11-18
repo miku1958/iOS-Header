@@ -16,20 +16,20 @@
 @property BOOL allowsNextDrawableTimeout;
 @property struct CGColorSpace *colorspace;
 @property (strong) id<MTLDevice> device;
-@property (readonly) unsigned long long displayCompositingInternalStatus;
+@property (readonly, nonatomic) unsigned long long displayCompositingInternalStatus;
 @property struct CGSize drawableSize;
-@property double drawableTimeoutSeconds;
-@property BOOL exclusiveMode;
-@property BOOL fenceEnabled;
+@property (nonatomic) double drawableTimeoutSeconds;
+@property (nonatomic) BOOL exclusiveMode;
+@property (nonatomic) BOOL fenceEnabled;
 @property BOOL framebufferOnly;
-@property double inputTime;
-@property BOOL lowLatency;
+@property (nonatomic) double inputTime;
+@property (nonatomic) BOOL lowLatency;
 @property unsigned long long maximumDrawableCount;
-@property BOOL nonDefaultColorspace;
+@property (nonatomic) BOOL nonDefaultColorspace;
 @property unsigned long long pixelFormat;
 @property (readonly) id<MTLDevice> preferredDevice;
 @property BOOL presentsWithTransaction;
-@property BOOL serverSyncEnabled;
+@property (nonatomic) BOOL serverSyncEnabled;
 
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (id)defaultValueForKey:(id)arg1;

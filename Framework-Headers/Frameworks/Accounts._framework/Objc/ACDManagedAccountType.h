@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSSet *accounts; // @dynamic accounts;
 @property (strong, nonatomic) NSString *credentialProtectionPolicy; // @dynamic credentialProtectionPolicy;
 @property (strong, nonatomic) NSString *credentialType; // @dynamic credentialType;
-@property (strong, nonatomic) NSNumber *encryptAccountProperties; // @dynamic encryptAccountProperties;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong, nonatomic) NSNumber *obsolete; // @dynamic obsolete;
 @property (strong, nonatomic) NSString *owningBundleID; // @dynamic owningBundleID;
@@ -27,6 +26,8 @@
 @property (strong, nonatomic) NSNumber *supportsMultipleAccounts; // @dynamic supportsMultipleAccounts;
 @property (strong, nonatomic) NSSet *syncableDataclasses; // @dynamic syncableDataclasses;
 @property (strong, nonatomic) NSNumber *visibility; // @dynamic visibility;
+
+- (id)description;
 
 @end
 

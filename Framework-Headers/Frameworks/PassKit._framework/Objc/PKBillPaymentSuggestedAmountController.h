@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDateFormatter, NSDecimalNumber, NSMutableArray, NSMutableDictionary, PKAccount, PKAccountServiceAccountResolutionCofiguration;
+@class NSArray, NSDateFormatter, NSDecimalNumber, NSMutableArray, NSMutableDictionary, PKAccount, PKAccountServiceAccountResolutionCofiguration, PKTransactionSource;
 
 @interface PKBillPaymentSuggestedAmountController : NSObject
 {
@@ -26,6 +26,7 @@
     long long _numberOfActiveStatementedInstallments;
     NSMutableArray *_differentialPrivacyFeatures;
     PKAccount *_account;
+    PKTransactionSource *_transactionSource;
     NSArray *_currentStatementSelectedSuggestedAmountEvents;
     NSArray *_previousStatementSelectedSuggestedAmountEvents;
     NSArray *_approvedTransactionsPurchasesSinceStatement;
@@ -39,17 +40,19 @@
 @property (readonly, nonatomic) NSArray *approvedTransactionsBillPaymentSinceStatement; // @synthesize approvedTransactionsBillPaymentSinceStatement=_approvedTransactionsBillPaymentSinceStatement;
 @property (readonly, nonatomic) NSArray *approvedTransactionsPurchasesForPreviousStatement; // @synthesize approvedTransactionsPurchasesForPreviousStatement=_approvedTransactionsPurchasesForPreviousStatement;
 @property (readonly, nonatomic) NSArray *approvedTransactionsPurchasesSinceStatement; // @synthesize approvedTransactionsPurchasesSinceStatement=_approvedTransactionsPurchasesSinceStatement;
+@property (strong, nonatomic) PKAccountServiceAccountResolutionCofiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) NSArray *currentStatementSelectedSuggestedAmountEvents; // @synthesize currentStatementSelectedSuggestedAmountEvents=_currentStatementSelectedSuggestedAmountEvents;
 @property (readonly, nonatomic) NSArray *previousStatementSelectedSuggestedAmountEvents; // @synthesize previousStatementSelectedSuggestedAmountEvents=_previousStatementSelectedSuggestedAmountEvents;
+@property (readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 
-+ (void)_approvedTransactionsForPreviousStatementForAccount:(id)arg1 transactionType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)_approvedTransactionsSinceStatementForAccount:(id)arg1 transactionType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)approvedTransactionsBillPaymentForPreviousStatementForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)approvedTransactionsBillPaymentSinceStatementForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)approvedTransactionsPurchasesForPreviousStatementForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)approvedTransactionsPurchasesSinceStatementForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_approvedTransactionsForPreviousStatementForAccount:(id)arg1 transactionSource:(id)arg2 transactionType:(long long)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)_approvedTransactionsSinceStatementForAccount:(id)arg1 transactionSource:(id)arg2 transactionType:(long long)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)approvedTransactionsBillPaymentForPreviousStatementForAccount:(id)arg1 transactionSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)approvedTransactionsBillPaymentSinceStatementForAccount:(id)arg1 transactionSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)approvedTransactionsPurchasesForPreviousStatementForAccount:(id)arg1 transactionSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)approvedTransactionsPurchasesSinceStatementForAccount:(id)arg1 transactionSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)currentStatementSelectedSuggestedAmountEventsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)defaultControllerForAccount:(id)arg1 paymentPass:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)defaultControllerForAccount:(id)arg1 transactionSource:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)previousStatementSelectedSuggestedAmountEventsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (BOOL)_allMandatoryValuesAreSameAmount;
@@ -77,7 +80,7 @@
 - (void)_zerothOrFirstMonthBillPaymentSuggestionsForList:(id)arg1;
 - (id)differentialPrivacyFeaturesAsString;
 - (id)generateAmountSuggestionList;
-- (id)initWithAccount:(id)arg1 currentStatementSelectedSuggestedAmountEvents:(id)arg2 previousStatementSelectedSuggestedAmountEvents:(id)arg3 approvedTransactionsPurchasesSinceStatement:(id)arg4 approvedTransactionsPurchasesForPreviousStatement:(id)arg5 approvedTransactionsBillPaymentSinceStatement:(id)arg6 approvedTransactionsBillPaymentForPreviousStatement:(id)arg7 configuration:(id)arg8;
+- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2 currentStatementSelectedSuggestedAmountEvents:(id)arg3 previousStatementSelectedSuggestedAmountEvents:(id)arg4 approvedTransactionsPurchasesSinceStatement:(id)arg5 approvedTransactionsPurchasesForPreviousStatement:(id)arg6 approvedTransactionsBillPaymentSinceStatement:(id)arg7 approvedTransactionsBillPaymentForPreviousStatement:(id)arg8 configuration:(id)arg9;
 - (void)recordPaymentActionWithDifferentialPrivacy:(unsigned long long)arg1;
 
 @end

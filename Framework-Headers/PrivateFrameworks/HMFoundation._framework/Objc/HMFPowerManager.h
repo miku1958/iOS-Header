@@ -6,12 +6,12 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFUnfairLock, NSObject;
+@class NSObject;
 @protocol OS_dispatch_queue;
 
 @interface HMFPowerManager : HMFObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     BOOL _hasBattery;
     BOOL _running;
     float _batteryLevel;

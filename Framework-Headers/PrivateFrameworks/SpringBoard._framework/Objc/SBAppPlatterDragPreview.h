@@ -20,6 +20,7 @@
     BOOL _iconAllowsLabelArea;
     BOOL _iconCanShowCloseBox;
     BOOL _iconIsHighlighted;
+    BOOL _iconInitiallyShowingCloseBox;
     unsigned long long _dragState;
     double _iconContentScale;
     unsigned long long _mode;
@@ -32,6 +33,7 @@
     NSArray *_rimShadowFilters;
     BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
     double _rotation;
+    SBIconView *_referenceIconView;
     SBIconView *_iconView;
     UIView *_anchorPointAdjustmentContainerView;
     UIView *_iconContainerView;
@@ -47,43 +49,35 @@
 }
 
 @property (nonatomic) struct CGPoint anchorPoint; // @synthesize anchorPoint=_anchorPoint;
-@property (strong, nonatomic) UIView *anchorPointAdjustmentContainerView; // @synthesize anchorPointAdjustmentContainerView=_anchorPointAdjustmentContainerView;
 @property (readonly, nonatomic, getter=isAnimatingPlatterViewAlpha) BOOL animatingPlatterViewAlpha;
 @property (copy, nonatomic) CDUnknownBlockType cleanUpHandler; // @synthesize cleanUpHandler=_cleanUpHandler;
-@property (strong, nonatomic) UIView *cornerMaskingView; // @synthesize cornerMaskingView=_cornerMaskingView;
 @property (strong, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration; // @synthesize cornerRadiusConfiguration=_cornerRadiusConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *diffuseShadowFilters; // @synthesize diffuseShadowFilters=_diffuseShadowFilters;
 @property (nonatomic) struct SBDragPreviewShadowParameters diffuseShadowParameters; // @synthesize diffuseShadowParameters=_diffuseShadowParameters;
-@property (strong, nonatomic) SBFView *diffuseShadowView; // @synthesize diffuseShadowView=_diffuseShadowView;
 @property (nonatomic) unsigned long long dragState; // @synthesize dragState=_dragState;
 @property (nonatomic, getter=isFlocked) BOOL flocked; // @synthesize flocked=_flocked;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBIcon *icon;
 @property (nonatomic) BOOL iconAllowsLabelArea; // @synthesize iconAllowsLabelArea=_iconAllowsLabelArea;
 @property (nonatomic) BOOL iconCanShowCloseBox; // @synthesize iconCanShowCloseBox=_iconCanShowCloseBox;
-@property (strong, nonatomic) UIView *iconContainerView; // @synthesize iconContainerView=_iconContainerView;
 @property (nonatomic) double iconContentScale; // @synthesize iconContentScale=_iconContentScale;
 @property (nonatomic) BOOL iconIsEditing;
-@property (nonatomic) BOOL iconIsHighlighted; // @synthesize iconIsHighlighted=_iconIsHighlighted;
-@property (strong, nonatomic) SBIconView *iconView; // @synthesize iconView=_iconView;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (nonatomic) double platterScale; // @synthesize platterScale=_platterScale;
 @property (nonatomic) struct CGSize platterSize; // @synthesize platterSize=_platterSize;
-@property (strong, nonatomic) SBApplicationBlurContentView *platterView; // @synthesize platterView=_platterView;
+@property (readonly, nonatomic) SBApplicationBlurContentView *platterView;
 @property (copy, nonatomic) CDUnknownBlockType platterViewAlphaAnimationCompletionBlock; // @synthesize platterViewAlphaAnimationCompletionBlock=_platterViewAlphaAnimationCompletionBlock;
 @property (copy, nonatomic) NSArray *rimShadowFilters; // @synthesize rimShadowFilters=_rimShadowFilters;
 @property (nonatomic) struct SBDragPreviewShadowParameters rimShadowParameters; // @synthesize rimShadowParameters=_rimShadowParameters;
-@property (strong, nonatomic) SBFView *rimShadowView; // @synthesize rimShadowView=_rimShadowView;
 @property (nonatomic) double rotation; // @synthesize rotation=_rotation;
-@property (strong, nonatomic) SBPortalView *sourcePortalView; // @synthesize sourcePortalView=_sourcePortalView;
-@property (strong, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property (readonly, nonatomic) UIView *sourceView;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIView *unclippedSourceContainerView; // @synthesize unclippedSourceContainerView=_unclippedSourceContainerView;
 
 - (void).cxx_destruct;
 - (double)_blurContentViewIconViewCenterYOffset;
+- (void)_configureIconViewWithReferenceIconView:(id)arg1;
 - (double)_effectiveCornerRadius;
 - (id)_effectiveCornerRadiusConfiguration;
 - (double)_effectiveIconAccessoryAlpha;
@@ -92,14 +86,17 @@
 - (struct CGPoint)_effectiveIconContainerCenter;
 - (double)_effectiveIconContentScale;
 - (BOOL)_effectiveIconIsHighlighted;
+- (struct CGRect)_effectiveIconViewFrame;
 - (unsigned long long)_effectiveMode;
 - (struct CGRect)_effectivePlatterFrame;
+- (void)_getIconAlpha:(double *)arg1 platterAlpha:(double *)arg2;
 - (BOOL)_isDragging;
 - (void)_matchMoveView:(id)arg1 toContainerView:(id)arg2;
 - (void)_setSourcePortalViewHidden:(BOOL)arg1;
 - (void)_updateContainerViewPositionForAnchorPoint;
 - (void)_updateIconViewComponentVisibility;
 - (void)_updateShadowView;
+- (void)_updateShowDebugIconBorderWithColor:(id)arg1;
 - (void)_updateSubviewVisibility;
 - (void)configurePlatterForSceneHandle:(id)arg1 withTargetView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -108,11 +105,14 @@
 - (void)draggingSourceDroppedWithOperation:(unsigned long long)arg1;
 - (void)dropDestinationAnimationCompleted;
 - (void)handleCleanup;
+- (double)iconDragAlpha;
 - (id)initWithReferenceIconView:(id)arg1 sourceView:(id)arg2;
 - (void)invalidateSourceView;
 - (void)layoutSubviews;
+- (void)setIconIsEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (void)updateDestinationIconLocation:(id)arg1 animated:(BOOL)arg2;
 - (void)updateSourceView:(id)arg1;
 
 @end

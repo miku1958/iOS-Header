@@ -8,7 +8,6 @@
 
 @class NSData, NSString, _MRPlaybackSessionProtobuf;
 
-__attribute__((visibility("hidden")))
 @interface MRPlaybackSession : NSObject
 {
     NSString *_identifier;
@@ -17,15 +16,18 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy, nonatomic) NSData *data;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSData *playbackSessionData; // @synthesize playbackSessionData=_playbackSessionData;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSData *playbackSessionData; // @synthesize playbackSessionData=_playbackSessionData;
 @property (readonly, nonatomic) _MRPlaybackSessionProtobuf *protobuf;
-@property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)dictionaryRepresentation;
 - (id)initWithData:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 type:(id)arg2 playbackSessionData:(id)arg3;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

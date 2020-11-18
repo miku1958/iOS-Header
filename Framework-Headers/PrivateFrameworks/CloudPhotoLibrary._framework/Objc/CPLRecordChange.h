@@ -9,10 +9,11 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class CPLScopedIdentifier, NSData, NSDate, NSString;
+@class CPLRecordChangeDiffTracker, CPLScopedIdentifier, NSData, NSDate, NSString;
 
 @interface CPLRecordChange : NSObject <NSSecureCoding, NSCopying>
 {
+    CPLRecordChangeDiffTracker *_attachedDiffTracker;
     NSString *_uploadIdentifier;
     BOOL _shouldNotTrustCloudCache;
     BOOL _shouldFilterDefaultValuesForNewProperties;
@@ -63,6 +64,7 @@
 + (id)newRecordInScopeWithIdentifier:(id)arg1;
 + (id)newRecordWithIdentifier:(id)arg1;
 + (id)newRecordWithScopedIdentifier:(id)arg1;
++ (BOOL)shouldReallyQuarantineRecord;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_canLowerQuota;
@@ -74,14 +76,19 @@
 - (id)allRelatedScopedIdentifiers;
 - (BOOL)allResourcesAreAvailable;
 - (BOOL)allowsToOnlyUploadNewResources;
-- (BOOL)applyChange:(id)arg1 copyPropertiesToFinalChange:(id)arg2 forChangeType:(unsigned long long)arg3 direction:(unsigned long long)arg4 updatedProperty:(id *)arg5;
+- (void)applyChange:(id)arg1;
+- (BOOL)applyChange:(id)arg1 copyPropertiesToFinalChange:(id)arg2 forChangeType:(unsigned long long)arg3 direction:(unsigned long long)arg4 diffTracker:(id)arg5;
+- (void)applyChangeType:(unsigned long long)arg1 fromChange:(id)arg2;
+- (id)asRecordView;
+- (void)attachDiffTracker:(id)arg1;
+- (id)attachedDiffTracker;
 - (void)awakeFromStorage;
 - (unsigned long long)baseDerivativeResourceType;
 - (unsigned long long)baseVideoComplemenentResourceType;
 - (BOOL)changeIsOnlyAddingResourcesToRecord:(id)arg1 addedResources:(id *)arg2;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (void)clearIdentifiers;
-- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
+- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingStorageView:(id)arg4;
 - (id)copyChangeType:(unsigned long long)arg1;
 - (void)copyDerivatives:(unsigned long long *)arg1 count:(int)arg2 avoidResourceType:(unsigned long long)arg3 fromRecord:(id)arg4 inResourcePerType:(id)arg5;
 - (void)copyDerivativesFromRecordIfPossible:(id)arg1;
@@ -91,6 +98,7 @@
 - (id)description;
 - (unsigned long long)effectiveResourceSizeToUploadUsingStorage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)enumerateChangeTypesForChangeType:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (unsigned long long)estimatedRecordSize;
 - (unsigned long long)fullChangeTypeForFullRecord;
 - (BOOL)hasChangeType:(unsigned long long)arg1;
@@ -116,8 +124,8 @@
 - (id)proposedCloudScopedIdentifierWithError:(id *)arg1;
 - (id)proposedLocalScopedIdentifier;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3;
-- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 changeType:(unsigned long long)arg4 updatedProperties:(id *)arg5;
-- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 updatedProperties:(id *)arg4;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 changeType:(unsigned long long)arg4 diffTracker:(id)arg5;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 diffTracker:(id)arg4;
 - (unsigned long long)realResourceSize;
 - (id)realScopedIdentifier;
 - (id)redactedDescription;
@@ -128,9 +136,7 @@
 - (id)resourcePerType;
 - (id)resources;
 - (id)resourcesDescription;
-- (id)scopedIdentifierForQuarantine;
 - (id)scopedIdentifiersForMapping;
-- (id)scopedIdentifiersForQuarantine;
 - (id)secondaryIdentifier;
 - (id)secondaryScopedIdentifier;
 - (void)setRelatedIdentifier:(id)arg1;

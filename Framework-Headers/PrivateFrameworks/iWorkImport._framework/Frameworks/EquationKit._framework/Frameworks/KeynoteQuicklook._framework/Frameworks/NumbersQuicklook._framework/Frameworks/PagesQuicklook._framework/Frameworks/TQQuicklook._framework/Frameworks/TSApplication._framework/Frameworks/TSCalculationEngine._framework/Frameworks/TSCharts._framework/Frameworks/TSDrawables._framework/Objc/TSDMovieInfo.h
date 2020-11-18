@@ -10,7 +10,7 @@
 #import <TSDrawables/TSDMixing-Protocol.h>
 #import <TSDrawables/TSDPlayableInfo-Protocol.h>
 
-@class NSString, NSURL, TSDMediaStyle, TSPData;
+@class NSString, NSURL, TSDMediaStyle, TSDMovieFingerprint, TSPData;
 
 @interface TSDMovieInfo : TSDMediaInfo <TSDMixing, TSDCompatibilityAwareMediaContainer, TSDPlayableInfo>
 {
@@ -25,9 +25,11 @@
     long long mLoopOption;
     float mVolume;
     NSURL *mMovieRemoteURL;
+    TSDMovieFingerprint *mFingerprint;
     TSPData *mPosterImageData;
     BOOL mPosterImageGeneratedWithAlphaSupport;
     struct CGSize mNaturalSize;
+    BOOL mPlaysAcrossSlides;
     BOOL mStreaming;
     BOOL mNativeAudioRecording;
     TSDMediaStyle *mStyle;
@@ -38,6 +40,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double endTime;
+@property (copy, nonatomic) TSDMovieFingerprint *fingerprint;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TSPData *importedAuxiliaryMovieData;
 @property (copy, nonatomic) NSString *importedAuxiliaryMovieDataOriginalFilename;
@@ -45,6 +48,7 @@
 @property (strong, nonatomic) TSPData *movieData;
 @property (strong, nonatomic) NSURL *movieRemoteURL;
 @property (nonatomic, getter=isNativeAudioRecording) BOOL nativeAudioRecording;
+@property (nonatomic) BOOL playsAcrossSlides;
 @property (strong, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=mPosterImageData;
 @property (nonatomic) double posterTime;
 @property (nonatomic) double startTime;
@@ -59,6 +63,8 @@
 + (id)presetKinds;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (id)animationFilters;
 - (BOOL)canBeMediaPlaceholder;
 - (BOOL)canBeReplaced;
@@ -80,7 +86,6 @@
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)makeAVAsset;
 - (id)makeAVAssetWithOptions:(id)arg1;
-- (id)makePosterImageGeneratorWithAVAsset:(id)arg1;
 - (id)mediaDataForDragging;
 - (id)mediaDisplayName;
 - (id)mediaFileType;
@@ -109,6 +114,7 @@
 - (id)synchronouslyGenerateNewPosterImageForAsset:(id)arg1 time:(double)arg2;
 - (void)takePropertiesFromReplacedMediaInfo:(id)arg1;
 - (id)typesToPromiseWhenCopyingSingleDrawable;
+- (BOOL)wantsStandardTypesInAdditionToTypesToPromiseWhenCopyingSingleDrawable;
 - (BOOL)willRenderContentViaImager;
 
 @end

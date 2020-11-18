@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_completions;
 }
 
-@property (strong, nonatomic) NSMutableArray *animations; // @synthesize animations=_animations;
-@property (strong, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
+@property (readonly, nonatomic) NSMutableArray *animations; // @synthesize animations=_animations;
+@property (readonly, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAnyActions;

@@ -22,7 +22,7 @@
 
 + (id)argumentCollectionFromFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
 + (id)argumentCollectionFromFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3 storeBadRef:(BOOL)arg4;
-+ (id)evalArgumentCollectionFromFormula:(struct TSCEFormula *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
++ (id)evalArgumentCollectionFromFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
 - (void).cxx_destruct;
 - (unsigned long long)components;
 - (id)copyWithZone:(struct _NSZone *)arg1;

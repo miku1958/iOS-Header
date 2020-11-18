@@ -11,6 +11,7 @@
 @interface _TtC18HealthExperienceUI15MultilineButton : UIButton
 {
     MISSING_TYPE *labelLeadingConstraint;
+    MISSING_TYPE *labelTrailingConstraint;
     MISSING_TYPE *labelTopConstraint;
     MISSING_TYPE *labelBottomConstraint;
 }

@@ -24,8 +24,10 @@
     NSMutableDictionary *_inFlightCalendarDirectorySearches;
     NSMutableDictionary *_inFlightShareRequests;
     NSMutableDictionary *_inFlightOofSettingsRequests;
+    NSMutableDictionary *_inFlightOfficeHoursRequests;
     NSMutableDictionary *_inFlightGrantedDelegatesListRequests;
     NSMutableDictionary *_inFlightUpdateGrantedDelegatePermissionRequests;
+    NSMutableDictionary *_inFlightSubscribedCalendarDownloads;
     BOOL _registered;
 }
 
@@ -46,6 +48,9 @@
 - (void)_dispatchMessage:(id)arg1;
 - (void)_downloadFinished:(id)arg1;
 - (void)_downloadProgress:(id)arg1;
+- (void)_downloadSubscribedCalendarFinished:(id)arg1;
+- (void)_downloadSubscribedCalendarProgress:(id)arg1;
+- (void)_downloadSubscribedCalendarRequiresPassword:(id)arg1;
 - (void)_folderChangeFinished:(id)arg1;
 - (void)_foldersUpdated:(id)arg1;
 - (void)_getStatusReportsFromClient:(id)arg1;
@@ -55,6 +60,7 @@
 - (void)_initializeConnectionWithXPCEndpoint:(id)arg1;
 - (void)_initializeXPCConnection:(id)arg1;
 - (void)_logDataAccessStatus:(id)arg1;
+- (void)_officeHoursRequestFinished:(id)arg1;
 - (void)_oofSettingsRequestsFinished:(id)arg1;
 - (BOOL)_performOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2 forUpdate:(BOOL)arg3;
 - (void)_policyKeyChanged:(id)arg1;
@@ -71,18 +77,24 @@
 - (BOOL)_validateXPCReply:(id)arg1;
 - (id)activeSyncDeviceIdentifier;
 - (void)asyncProcessMeetingRequests:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5;
+- (void)beginCalDAVServerSimulationWithHostname:(id)arg1;
 - (id)beginDownloadingAttachmentWithUUID:(id)arg1 accountID:(id)arg2 queue:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)cancelCalendarAvailabilityRequestWithID:(id)arg1;
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
 - (void)cancelDownloadingAttachmentWithDownloadID:(id)arg1 error:(id)arg2;
+- (void)cancelDownloadingSubscriptionCalendarWithDownloadID:(id)arg1;
 - (void)cancelGrantedDelegatesListRequestWithID:(id)arg1;
 - (void)cancelServerContactsSearch:(id)arg1;
 - (id)currentPolicyKeyForAccountID:(id)arg1;
 - (void)dealloc;
 - (id)decodedErrorFromData:(id)arg1;
+- (id)downloadSubscribedCalendarWithURL:(id)arg1 queue:(id)arg2 delegate:(id)arg3;
+- (void)endCalDAVServerSimulationWithHostname:(id)arg1;
 - (void)externalIdentificationForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
 - (void)externalIdentificationInfoForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
+- (void)fetchOfficeHoursForAccountWithID:(id)arg1 queue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)fillOutCurrentEASTimeZoneInfo;
+- (void)handleAccountChange:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)handleURL:(id)arg1;
 - (id)init;
 - (void)isOofSettingsSupportedForAccountWithID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -92,11 +104,9 @@
 - (BOOL)processMeetingRequests:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5;
 - (void)reallyRegisterForInterrogation;
 - (BOOL)registerForInterrogationWithBlock:(CDUnknownBlockType)arg1;
-- (void)removeStoresForAccountWithID:(id)arg1;
 - (void)reportFolderItemsSyncSuccess:(BOOL)arg1 forFolderWithID:(id)arg2 withItemsCount:(unsigned long long)arg3 andAccountWithID:(id)arg4;
 - (void)reportSharedCalendarInviteAsJunkForCalendarWithID:(id)arg1 accountID:(id)arg2 queue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)requestCalendarAvailabilityWithAccountID:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 ignoredEventID:(id)arg4 addresses:(id)arg5 resultsBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (void)requestDaemonShutdown;
 - (void)requestDaemonStartMonitoringAgentsSyncWithToken:(unsigned long long)arg1;
 - (void)requestDaemonStartMonitoringAgentsWithToken:(unsigned long long)arg1;
 - (unsigned long long)requestDaemonStopMonitoringAgents;
@@ -108,6 +118,7 @@
 - (BOOL)resumeWatchingFoldersWithKeys:(id)arg1 forAccountID:(id)arg2;
 - (BOOL)retrieveOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2;
 - (BOOL)setFolderIdsThatExternalClientsCareAboutAdded:(id)arg1 deleted:(id)arg2 foldersTag:(id)arg3 forAccountID:(id)arg4;
+- (void)setOfficeHours:(id)arg1 forAccountWithID:(id)arg2 queue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)statusReports;
 - (BOOL)stopWatchingFoldersWithKeys:(id)arg1 forAccountID:(id)arg2;
 - (BOOL)suspendWatchingFoldersWithKeys:(id)arg1 forAccountID:(id)arg2;

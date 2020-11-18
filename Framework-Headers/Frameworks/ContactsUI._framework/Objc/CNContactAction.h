@@ -13,6 +13,7 @@
 {
     BOOL _destructive;
     BOOL _showBackgroundPlatter;
+    BOOL _wrapTitle;
     BOOL _canPerformAction;
     id<CNContactActionDelegate> _delegate;
     CNContact *_contact;
@@ -20,6 +21,7 @@
     id _target;
     SEL _selector;
     UIColor *_color;
+    UIColor *_glyphColor;
     long long _transportType;
 }
 
@@ -28,12 +30,14 @@
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (weak, nonatomic) id<CNContactActionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isDestructive) BOOL destructive; // @synthesize destructive=_destructive;
+@property (strong, nonatomic) UIColor *glyphColor; // @synthesize glyphColor=_glyphColor;
 @property (readonly, nonatomic) CNMutableContact *mutableContact;
 @property (readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
 @property (nonatomic) BOOL showBackgroundPlatter; // @synthesize showBackgroundPlatter=_showBackgroundPlatter;
 @property (readonly, nonatomic) id target; // @synthesize target=_target;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long transportType; // @synthesize transportType=_transportType;
+@property (nonatomic) BOOL wrapTitle; // @synthesize wrapTitle=_wrapTitle;
 
 + (id)contactActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 + (id)contactActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3 destructive:(BOOL)arg4;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     unsigned int cgImageOrientation;
     struct os_unfair_lock_s layoutLock;
     struct CGPDFLayout *layout;
+    _Atomic BOOL builtLayout;
     struct os_unfair_lock_s dataDetectorsLock;
     BOOL ranDataDetectors;
     NSString *text;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     BOOL displaysAnnotations;
     BOOL displaysMarkups;
     NSMutableArray *annotations;
+    _Atomic BOOL loadedAnnotations;
     NSLock *lock_getAnnotations;
     NSLock *lock_accessAnnotations;
     NSMutableArray *scannedAnnotations;
@@ -38,6 +40,9 @@ __attribute__((visibility("hidden")))
     struct CGRect bleedBox;
     struct CGRect trimBox;
     struct CGRect artBox;
+    struct CGDisplayList *displayList;
+    BOOL creatingDisplayList;
+    struct os_unfair_lock_s displayListCreationLock;
     BOOL bookmarked;
     BOOL isFullyConstructed;
     BOOL colorWidgetBackgrounds;

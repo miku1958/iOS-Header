@@ -15,26 +15,27 @@
 }
 
 - (void).cxx_destruct;
-- (long long)backdropBlurType;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
+- (id)appLayoutsToResignActive;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (long long)keyboardSuppressionMode;
-- (id)layoutSettings;
-- (long long)liveContentRasterizationStyle;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

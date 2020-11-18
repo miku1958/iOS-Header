@@ -16,6 +16,7 @@
     NSError *_error;
     NSString *_reason;
     NSURL *_redirectURL;
+    NSString *_retryIdentifier;
     AMSAuthenticateResult *_authenticateResult;
     AMSDialogResult *_dialogResult;
     NSDictionary *_updatedHeaders;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
+@property (strong, nonatomic) NSString *retryIdentifier; // @synthesize retryIdentifier=_retryIdentifier;
 @property (strong, nonatomic) NSDictionary *updatedHeaders; // @synthesize updatedHeaders=_updatedHeaders;
 
 + (id)actionWithError:(id)arg1;

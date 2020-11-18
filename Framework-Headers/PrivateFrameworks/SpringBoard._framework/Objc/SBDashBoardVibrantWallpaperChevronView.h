@@ -22,7 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double strength; // @synthesize strength=_legibilityStrength;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<CSWallpaperColorProvider> wallpaperColorProvider; // @synthesize wallpaperColorProvider=_wallpaperColorProvider;

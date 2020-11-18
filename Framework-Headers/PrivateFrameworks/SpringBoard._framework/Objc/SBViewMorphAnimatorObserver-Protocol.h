@@ -13,6 +13,7 @@
 @optional
 - (void)animatorWasCanceled:(SBViewMorphAnimator *)arg1;
 - (void)animatorWasInterrupted:(SBViewMorphAnimator *)arg1;
+- (void)didEndAllAnimations;
 - (void)didEndSourceAnimations:(unsigned long long)arg1 finished:(BOOL)arg2 continueBlock:(void (^)(void))arg3;
 - (void)didEndTargetAnimations:(unsigned long long)arg1 finished:(BOOL)arg2 continueBlock:(void (^)(void))arg3;
 - (void)willStartSourceAnimations:(unsigned long long)arg1;

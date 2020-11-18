@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUCameraSettingsModule-Protocol.h>
 
-@class HFItemProvider, HUCameraPresenceRecordingSettingsModule, HUCameraRecordingOptionsItem, HULocationDeviceManager, NSArray, NSSet, NSString, UIViewController;
+@class HUCameraPresenceRecordingSettingsModule, HUCameraRecordingOptionsItem, HULocationDeviceManager, NSArray, NSSet, NSString, UIViewController;
 @protocol HUCameraRecordingSettingsModuleDelegate;
 
 @interface HUCameraRecordingSettingsModule : HUExpandableItemContainerModule <HUCameraSettingsModule>
@@ -23,7 +23,6 @@
     HUCameraRecordingOptionsItem *_recordingOptionsItem;
     HUCameraPresenceRecordingSettingsModule *_whenHomeSectionModule;
     HUCameraPresenceRecordingSettingsModule *_whenAwaySectionModule;
-    HFItemProvider *_headerItemProvider;
     HULocationDeviceManager *_locationDeviceManager;
     NSString *_locationDeviceName;
 }
@@ -36,7 +35,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HFItemProvider *headerItemProvider; // @synthesize headerItemProvider=_headerItemProvider;
 @property (strong, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
 @property (strong, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 @property (strong, nonatomic) NSString *locationDeviceName; // @synthesize locationDeviceName=_locationDeviceName;

@@ -4,32 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <TemplateKit/TLKStoreButton.h>
 
-@class NSString, TLKEmbossedLabel;
+@class NSString;
 
-@interface SearchUIOfferButtonView : UIButton
+@interface SearchUIOfferButtonView : TLKStoreButton
 {
-    NSString *_offerTitle;
+    BOOL _adjustsFontSizeToFitWidth;
     NSString *_symbolImageName;
-    TLKEmbossedLabel *_label;
-    UIButton *_button;
 }
 
-@property (nonatomic) BOOL adjustsFontSizeToFitWidth;
-@property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
-@property (strong, nonatomic) TLKEmbossedLabel *label; // @synthesize label=_label;
-@property (strong, nonatomic) NSString *offerTitle; // @synthesize offerTitle=_offerTitle;
+@property (nonatomic) BOOL adjustsFontSizeToFitWidth; // @synthesize adjustsFontSizeToFitWidth=_adjustsFontSizeToFitWidth;
 @property (strong, nonatomic) NSString *symbolImageName; // @synthesize symbolImageName=_symbolImageName;
 
 - (void).cxx_destruct;
-- (void)_dynamicUserInterfaceTraitDidChange;
-- (void)didMoveToWindow;
 - (id)init;
-- (void)layoutSubviews;
-- (void)setHighlighted:(BOOL)arg1;
-- (void)tlk_updateForAppearance:(id)arg1;
-- (void)updateSelectionState:(BOOL)arg1;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

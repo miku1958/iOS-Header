@@ -15,8 +15,8 @@
 {
     id<RBBundleProperties> _targetProperties;
     id<RBEntitlementPossessing> _originatorEntitlements;
-    unsigned long long _ignoreEntitlementViolationsCount;
-    unsigned long long _ignoreTargetPropertyViolationsCount;
+    id<RBEntitlementPossessing> _targetEntitlements;
+    unsigned long long _ignoreRestrictions;
     BOOL _targetIsSystem;
     RBAssertionDescriptorValidator *_assertionDescriptionValidator;
     RBSAssertionDescriptor *_assertionDescriptor;
@@ -39,13 +39,13 @@
 @property (strong, nonatomic) id<RBBundlePropertiesManaging> bundlePropertiesManager; // @synthesize bundlePropertiesManager=_bundlePropertiesManager;
 @property (strong, nonatomic) id<RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;
 @property (strong, nonatomic) id<RBEntitlementManaging> entitlementManager; // @synthesize entitlementManager=_entitlementManager;
-@property (readonly, nonatomic) BOOL ignoreEntitlementViolations;
-@property (readonly, nonatomic) BOOL ignoreTargetPropertyViolations;
+@property (readonly, nonatomic) BOOL ignoreRestrictions;
 @property (readonly, nonatomic) id<RBEntitlementPossessing> originatorEntitlements;
 @property (readonly, nonatomic) RBSProcessIdentity *originatorIdentity;
 @property (strong, nonatomic) RBProcess *originatorProcess; // @synthesize originatorProcess=_originatorProcess;
 @property (strong, nonatomic) RBProcessState *originatorState; // @synthesize originatorState=_originatorState;
 @property (strong, nonatomic) RBConcreteTarget *target; // @synthesize target=_target;
+@property (readonly, nonatomic) id<RBEntitlementPossessing> targetEntitlements;
 @property (strong, nonatomic) RBSProcessIdentifier *targetIdentifier; // @synthesize targetIdentifier=_targetIdentifier;
 @property (strong, nonatomic) RBSProcessIdentity *targetIdentity; // @synthesize targetIdentity=_targetIdentity;
 @property (readonly, nonatomic) BOOL targetIsSystem; // @synthesize targetIsSystem=_targetIsSystem;
@@ -56,10 +56,8 @@
 + (id)context;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)popIgnoreEntitlementViolations;
-- (void)popIgnoreTargetPropertyViolations;
-- (void)pushIgnoreEntitlementViolations;
-- (void)pushIgnoreTargetPropertyViolations;
+- (void)popIgnoreRestrictions;
+- (void)pushIgnoreRestrictions;
 
 @end
 

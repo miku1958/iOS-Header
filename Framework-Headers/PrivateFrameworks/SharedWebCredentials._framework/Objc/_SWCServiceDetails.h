@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SharedWebCredentials/NSSecureCoding-Protocol.h>
+#import <SharedWebCredentials/SWCRedactedDescription-Protocol.h>
 
-@class _SWCServiceSpecifier;
+@class NSNumber, _SWCServiceSpecifier;
 
-@interface _SWCServiceDetails : NSObject <NSSecureCoding>
+@interface _SWCServiceDetails : NSObject <SWCRedactedDescription, NSSecureCoding>
 {
     struct SWCFields _fields;
     _SWCServiceSpecifier *_serviceSpecifier;
@@ -18,29 +19,45 @@
 
 @property (readonly, getter=isAlwaysEnabled) BOOL alwaysEnabled;
 @property (readonly, getter=isApproved) BOOL approved;
+@property (readonly, getter=isEnabledByDefault) NSNumber *enabledByDefault;
 @property (readonly, getter=isEnterpriseManaged) BOOL enterpriseManaged;
 @property (readonly) unsigned char frameworkApprovalState;
+@property (readonly) BOOL modeOfOperation;
+@property (readonly, getter=wasReadFromAlternateLocationOnDisk) BOOL readFromAlternateLocationOnDisk;
 @property (readonly, getter=wasReadFromDisk) BOOL readFromDisk;
 @property (readonly) _SWCServiceSpecifier *serviceSpecifier; // @synthesize serviceSpecifier=_serviceSpecifier;
 @property (readonly) unsigned char siteApprovalState;
 @property (readonly, getter=isSystemApplication) BOOL systemApplication;
+@property (readonly, getter=isSystemPlaceholder) BOOL systemPlaceholder;
 @property (readonly, getter=isUpdating) BOOL updating;
 @property (nonatomic) unsigned char userApprovalState;
 @property (readonly, getter=isWatchKitExtension) BOOL watchKitExtension;
 
-+ (id)_serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
++ (id)_serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 callerAuditToken:(const CDStruct_6ad76789 *)arg4 error:(id *)arg5;
++ (BOOL)auditTokenHasReadAccess:(CDStruct_6ad76789)arg1;
++ (BOOL)auditTokenHasWriteAccess:(CDStruct_6ad76789)arg1;
++ (BOOL)currentProcessHasReadAccess;
++ (BOOL)currentProcessHasWriteAccess;
++ (BOOL)isDeveloperModeEnabled;
 + (id)new;
++ (id)serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 auditToken:(CDStruct_6ad76789)arg4 error:(id *)arg5;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 error:(id *)arg2;
++ (id)serviceDetailsWithServiceSpecifier:(id)arg1 limit:(unsigned long long)arg2 auditToken:(CDStruct_6ad76789)arg3 error:(id *)arg4;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
++ (void)setDeveloperModeEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
++ (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)_initWithServiceSpecifier:(id)arg1 fields:(const struct SWCFields *)arg2;
+- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)redactedDescription;
 - (BOOL)setUserApprovalState:(unsigned char)arg1 error:(id *)arg2;
 - (void)waitForSiteApprovalWithCompletionHandler:(CDUnknownBlockType)arg1;
 

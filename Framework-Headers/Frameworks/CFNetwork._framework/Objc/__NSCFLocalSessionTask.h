@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CFNetwork/__NSCFURLSessionTask.h>
+#import <CFNetwork/NSURLSessionTask.h>
 
 #import <CFNetwork/NSURLSessionDataTaskSubclass-Protocol.h>
 #import <CFNetwork/NSURLSessionTaskSubclass-Protocol.h>
 #import <CFNetwork/NSURLSessionUploadTaskSubclass-Protocol.h>
-#import <CFNetwork/SessionConnectionDelegate-Protocol.h>
+#import <CFNetwork/__NSCFURLSessionConnectionDelegate-Protocol.h>
 
 @class NSInputStream, NSObject, NSOperationQueue, NSOutputStream, NSString, NSURL, __NSCFURLSessionConnection;
 @protocol OS_dispatch_data, OS_dispatch_source;
 
-@interface __NSCFLocalSessionTask : __NSCFURLSessionTask <NSURLSessionTaskSubclass, NSURLSessionDataTaskSubclass, NSURLSessionUploadTaskSubclass, SessionConnectionDelegate>
+@interface __NSCFLocalSessionTask : NSURLSessionTask <NSURLSessionTaskSubclass, NSURLSessionDataTaskSubclass, NSURLSessionUploadTaskSubclass, __NSCFURLSessionConnectionDelegate>
 {
     __NSCFURLSessionConnection *_cfConn;
     NSURL *_uploadFile;
@@ -24,6 +24,7 @@
     unsigned long long _suspendCount;
     CDUnknownBlockType _async_initialization;
     NSObject<OS_dispatch_source> *_resourceTimeout;
+    struct os_unfair_lock_s _connKeyLock;
     struct HTTPConnectionCacheKey *_connKey;
     double _startTimeoutTime;
     NSObject<OS_dispatch_source> *_startTimeoutTimer;
@@ -45,33 +46,22 @@
     BOOL _sentDidFinishCollectingMetrics;
 }
 
-@property (copy) CDUnknownBlockType async_initialization; // @synthesize async_initialization=_async_initialization;
 @property (strong) __NSCFURLSessionConnection *cfConn; // @synthesize cfConn=_cfConn;
-@property (copy) CDUnknownBlockType dataTaskCompletion; // @synthesize dataTaskCompletion=_dataTaskCompletion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property BOOL didIssueDidFinish; // @synthesize didIssueDidFinish=_didIssueDidFinish;
-@property BOOL didIssueWaitingForConnectivity; // @synthesize didIssueWaitingForConnectivity=_didIssueWaitingForConnectivity;
 @property (readonly) unsigned long long hash;
-@property BOOL pendingResponseDisposition; // @synthesize pendingResponseDisposition=_pendingResponseDisposition;
-@property BOOL pendingResponseDisposition_didFinish; // @synthesize pendingResponseDisposition_didFinish=_pendingResponseDisposition_didFinish;
 @property (readonly) Class superclass;
-@property unsigned long long suspendCount; // @synthesize suspendCount=_suspendCount;
-@property (strong) NSURL *uploadFile; // @synthesize uploadFile=_uploadFile;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_askForConnectedSocketLater;
 - (void)_didSendMetrics;
-- (void)_finishAllow;
-- (void)_finishBecomeDownload:(id)arg1;
-- (void)_finishBecomeStream:(id)arg1 forConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_needSendingMetrics;
 - (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustLoadingPoolPriority;
 - (void)_onqueue_adjustPoolPriority;
-- (void)_onqueue_adjustPriorityHint:(float)arg1;
+- (void)_onqueue_adjustPriorityHint:(float)arg1 incremental:(BOOL)arg2;
 - (void)_onqueue_cancel;
 - (void)_onqueue_cancel_with_error:(id)arg1;
 - (void)_onqueue_completeInitialization;
@@ -87,34 +77,22 @@
 - (void)_onqueue_expectedProgressTargetChanged;
 - (void)_onqueue_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_needNewBodyStream:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_onqueue_restartResourceTimer:(double)arg1;
 - (void)_onqueue_resume;
-- (void)_onqueue_resumeWorkQueue;
 - (void)_onqueue_setupNextEffectiveConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_onqueue_startPayloadTransmissionTimer;
-- (void)_onqueue_startResourceTimer;
-- (void)_onqueue_startResourceTimer:(double)arg1;
-- (void)_onqueue_startStartTimer;
-- (void)_onqueue_startTimer:(id)arg1 withTimeoutInNanos:(long long)arg2 streamErrorCode:(int)arg3;
 - (id)_onqueue_strippedMutableRequest;
-- (void)_onqueue_submitConnectionWork:(CDUnknownBlockType)arg1;
 - (void)_onqueue_suspend;
-- (void)_onqueue_suspendWorkQueue;
 - (void)_onqueue_willCacheResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_private_onqueue_becomeStreamTaskWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_private_onqueue_didReceiveResponse:(id)arg1;
 - (void)_private_onqueue_didReceiveResponseDisposition:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
 - (void)_task_onqueue_didFinish;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancel_with_error:(id)arg1;
-- (id)canceledError;
 - (void)connection:(id)arg1 _conditionalRequirementsChanged:(BOOL)arg2;
 - (void)connection:(id)arg1 _willSendRequestForEstablishedConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 challenged:(id)arg2 authCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishCollectingMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;
@@ -129,19 +107,12 @@
 - (void)dealloc;
 - (id)error:(id)arg1 code:(long long)arg2;
 - (id)initWithBackgroundTaskInfo:(id)arg1 taskGroup:(id)arg2;
-- (id)initWithLocalTask:(id)arg1;
 - (id)initWithOriginalRequest:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
-- (id)localSession;
-- (id)nsurlError:(int)arg1;
-- (id)posixError:(int)arg1;
 - (id)resourceTimeoutError;
-- (void)setConnection:(id)arg1;
 - (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_timeoutIntervalForResource:(double)arg1;
 - (void)startResourceTimer;
-- (id)startTimeoutError;
-- (id)timeoutErrorWithStreamErrorCode:(int)arg1;
 
 @end
 

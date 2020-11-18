@@ -9,8 +9,8 @@
 #import <SpringBoard/CSCoverSheetViewControllerObserver-Protocol.h>
 #import <SpringBoard/SBFNotificationExtensionVisibilityProviding-Protocol.h>
 
-@class NCBulletinNotificationSource, NCNotificationDispatcher, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBLockStateAggregator, SBNCAlertingController, SBNCNotificationDispatcherDelegate, SBNotificationBannerDestination, SBNotificationCenterDestination, SBNotificationLegacyCarDestination, SBStarkNotificationSceneComponentManager, SBUserAlertNotificationSource, SBWalletNotificationSource;
-@protocol SBNotificationDestination, SBStarkNotificationsAgent;
+@class BSServiceConnectionEndpoint, NCBulletinNotificationSource, NCNotificationDispatcher, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBLockStateAggregator, SBNCAlertingController, SBNCNotificationDispatcherDelegate, SBNotificationBannerDestination, SBNotificationCenterDestination, SBUserAlertNotificationSource, SBWalletNotificationSource;
+@protocol NCNotificationAlertDestination, SBNotificationDestination;
 
 @interface SBNCNotificationDispatcher : NSObject <CSCoverSheetViewControllerObserver, SBFNotificationExtensionVisibilityProviding>
 {
@@ -24,16 +24,15 @@
     SBUserAlertNotificationSource *_userNotificationAlertSource;
     SBLockScreenManager *_lockScreenManager;
     SBLockStateAggregator *_lockStateAggregator;
-    SBStarkNotificationSceneComponentManager *_starkComponentManager;
-    SBNotificationLegacyCarDestination *_carDestination;
+    id<NCNotificationAlertDestination> _carDestination;
     SBCommunicationPolicyManager *_communicationPolicyManager;
     SBNCAlertingController *_alertingController;
 }
 
 @property (strong, nonatomic) SBNCAlertingController *alertingController; // @synthesize alertingController=_alertingController;
 @property (readonly, nonatomic) SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_bannerDestination;
-@property (strong, nonatomic) SBNotificationLegacyCarDestination *carDestination; // @synthesize carDestination=_carDestination;
-@property (readonly, nonatomic) id<SBStarkNotificationsAgent> carNotificationsAgent;
+@property (strong, nonatomic) id<NCNotificationAlertDestination> carDestination; // @synthesize carDestination=_carDestination;
+@property (readonly, nonatomic) BSServiceConnectionEndpoint *carOpenServiceEndpoint;
 @property (strong, nonatomic) SBCommunicationPolicyManager *communicationPolicyManager; // @synthesize communicationPolicyManager=_communicationPolicyManager;
 @property (readonly, nonatomic) id<SBNotificationDestination> dashBoardDestination; // @synthesize dashBoardDestination=_dashBoardDestination;
 @property (readonly, copy) NSString *debugDescription;
@@ -41,24 +40,25 @@
 @property (strong, nonatomic) NCNotificationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property (strong, nonatomic) SBNCNotificationDispatcherDelegate *dispatcherDelegate; // @synthesize dispatcherDelegate=_dispatcherDelegate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCarDestinationActive;
 @property (strong, nonatomic) SBLockScreenManager *lockScreenManager; // @synthesize lockScreenManager=_lockScreenManager;
 @property (strong, nonatomic) SBLockStateAggregator *lockStateAggregator; // @synthesize lockStateAggregator=_lockStateAggregator;
 @property (readonly, nonatomic) SBNotificationCenterDestination *notificationCenterDestination; // @synthesize notificationCenterDestination=_notificationCenterDestination;
 @property (strong, nonatomic) NCBulletinNotificationSource *notificationSource; // @synthesize notificationSource=_notificationSource;
-@property (strong, nonatomic) SBStarkNotificationSceneComponentManager *starkComponentManager; // @synthesize starkComponentManager=_starkComponentManager;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SBUserAlertNotificationSource *userNotificationAlertSource; // @synthesize userNotificationAlertSource=_userNotificationAlertSource;
 @property (readonly, nonatomic) SBWalletNotificationSource *walletNotificationSource; // @synthesize walletNotificationSource=_walletNotificationSource;
 
 - (void).cxx_destruct;
 - (void)_aggregateLockStateDidChange;
-- (void)_carNotificationActiveConfigurationDidChange;
+- (void)_carPlayDestinationAvailabilityDidChange;
 - (BOOL)_lockScreenWantsBanners;
 - (void)_setupNewDestinationsForDispatcher:(id)arg1;
 - (void)_updateActiveDestinations;
 - (void)coverSheetViewController:(id)arg1 didChangeActiveBehavior:(id)arg2;
 - (id)init;
 - (BOOL)isNotificationContentExtensionVisible:(id)arg1;
+- (id)keyWindowForScreen:(id)arg1;
 
 @end
 

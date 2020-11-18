@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)initWithDomain:(int)arg1 code:(int)arg2;
 
 @end
 

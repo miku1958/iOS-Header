@@ -13,9 +13,10 @@
     struct _NSRange _range;
 }
 
+@property (readonly) NSCountableTextLocation *endLocation; // @dynamic endLocation;
+@property (readonly, getter=isEndingAtEOD) BOOL endingAtEOD;
 @property (readonly) NSCountableTextLocation *location; // @dynamic location;
 @property (readonly) struct _NSRange range; // @synthesize range=_range;
-@property (readonly) NSCountableTextLocation *terminator; // @dynamic terminator;
 @property (readonly, copy) NSString *type;
 
 + (id)documentRange;
@@ -23,7 +24,8 @@
 + (void)setBaseClassTestingMode:(BOOL)arg1;
 - (BOOL)containsLocation:(id)arg1;
 - (id)description;
-- (id)initWithLocation:(id)arg1 terminator:(id)arg2;
+- (unsigned long long)hash;
+- (id)initWithLocation:(id)arg1 endLocation:(id)arg2;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (BOOL)intersectsWithTextRange:(id)arg1;
 - (BOOL)isEmpty;

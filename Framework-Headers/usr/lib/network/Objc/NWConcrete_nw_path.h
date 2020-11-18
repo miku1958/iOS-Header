@@ -32,8 +32,7 @@ __attribute__((visibility("hidden")))
     unsigned char fallback_agent[16];
     NSObject<OS_xpc_object> *fallback_agent_domains;
     NSObject<OS_xpc_object> *fallback_agent_types;
-    NSObject<OS_nw_array> *dns_servers;
-    NSObject<OS_xpc_object> *dns_search_domains;
+    NSObject<OS_nw_array> *resolver_configs;
     NSObject<OS_nw_array> *gateways;
     NSObject<OS_xpc_object> *network_agent_dictionary;
     NSObject<OS_xpc_object> *proxy_settings;
@@ -69,6 +68,7 @@ __attribute__((visibility("hidden")))
     unsigned int override_is_constrained:1;
     unsigned int override_uses_wifi:1;
     unsigned int override_uses_cellular:1;
+    unsigned int override_interface_scoped:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

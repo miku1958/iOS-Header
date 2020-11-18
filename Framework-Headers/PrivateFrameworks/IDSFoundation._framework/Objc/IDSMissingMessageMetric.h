@@ -24,8 +24,10 @@
 @property (readonly, nonatomic) NSString *service; // @synthesize service=_service;
 
 - (void).cxx_destruct;
+- (BOOL)_isInternal;
 - (BOOL)_shouldReportMetricForExternal;
 - (BOOL)_shouldReportReason;
+- (BOOL)_shouldReportReasonForExternal;
 - (id)initWithReason:(long long)arg1 guid:(id)arg2 service:(id)arg3 additionalInformation:(id)arg4;
 - (BOOL)shouldReportMetric;
 

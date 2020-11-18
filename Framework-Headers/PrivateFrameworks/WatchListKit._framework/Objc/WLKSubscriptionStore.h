@@ -20,10 +20,11 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_connection;
+- (BOOL)_isSubscriptionSyncInProgress;
+- (void)_setIsSubscriptionSyncInProgress:(BOOL)arg1;
 - (id)cachedSubscriptionData;
 - (void)dealloc;
 - (void)fetchSubscriptionData:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchSubscriptionDataDictionary:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)refreshSubscriptionDataIfNeeded;
 

@@ -18,24 +18,20 @@
         unsigned int ignoresDynamicType:1;
     } _configFlags;
     long long _scale;
-    double _customFontPointSizeMultiplier;
     long long _weight;
     NSString *_textStyle;
     id<UIImageSymbolConfigurationProvider> _provider;
+    double _customFontPointSizeMultiplier;
 }
 
-@property (nonatomic, setter=_setPointSizeScaleFactor:) double customFontPointSizeMultiplier; // @synthesize customFontPointSizeMultiplier=_customFontPointSizeMultiplier;
-@property (nonatomic, setter=_setFixedPointSize:) double fixedPointSize;
-@property (nonatomic, setter=_setPointSizeForScalingWithTextStyle:) double pointSizeForScalingWithTextStyle;
-@property (weak, nonatomic, setter=_setProvider:) id<UIImageSymbolConfigurationProvider> provider; // @synthesize provider=_provider;
-@property (nonatomic, setter=_setScale:) long long scale; // @synthesize scale=_scale;
-@property (copy, nonatomic, setter=_setTextStyle:) NSString *textStyle; // @synthesize textStyle=_textStyle;
-@property (nonatomic, setter=_setWeight:) long long weight; // @synthesize weight=_weight;
+@property (readonly, nonatomic) double customFontPointSizeMultiplier; // @synthesize customFontPointSizeMultiplier=_customFontPointSizeMultiplier;
+@property (readonly, nonatomic) double pointSizeForScalingWithTextStyle;
+@property (readonly, weak, nonatomic) id<UIImageSymbolConfigurationProvider> provider; // @synthesize provider=_provider;
+@property (readonly, nonatomic) long long scale; // @synthesize scale=_scale;
+@property (readonly, copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
+@property (readonly, nonatomic) long long weight; // @synthesize weight=_weight;
 
 + (id)_defaultConfiguration;
-+ (id)configurationFromProvider:(id)arg1;
-+ (id)configurationFromProvider:(id)arg1 scale:(long long)arg2;
-+ (id)configurationWithConfiguration:(id)arg1 and:(id)arg2;
 + (id)configurationWithFont:(id)arg1;
 + (id)configurationWithFont:(id)arg1 scale:(long long)arg2;
 + (id)configurationWithPointSize:(double)arg1;
@@ -48,26 +44,13 @@
 + (id)defaultConfiguration;
 + (BOOL)supportsSecureCoding;
 + (id)unspecifiedConfiguration;
-+ (id)updatingConfigurationFromProvider:(id)arg1;
-+ (id)updatingConfigurationFromProvider:(id)arg1 scale:(long long)arg2;
 - (void).cxx_destruct;
 - (void)_applyConfigurationValuesTo:(id)arg1;
-- (void)_clearSpecificsExceptScale;
 - (void)_deriveGlyphSize:(long long *)arg1 weight:(long long *)arg2 pointSize:(double *)arg3;
-- (BOOL)_hasFixedPointSize;
-- (BOOL)_hasSpecifiedProvider;
 - (BOOL)_hasSpecifiedScale;
-- (BOOL)_hasSpecifiedTextStyle;
-- (BOOL)_hasSpecifiedWeight;
 - (id)_initWithTraitCollection:(id)arg1;
 - (BOOL)_isUnspecified;
-- (BOOL)_isUpdatingProvider;
-- (void)_setProvider:(id)arg1 updating:(BOOL)arg2;
 - (BOOL)_shouldApplyConfiguration:(id)arg1;
-- (id)configurationWithUnspecifiedPointSizeAndWeight;
-- (id)configurationWithUnspecifiedScale;
-- (id)configurationWithUnspecifiedTextStyle;
-- (id)configurationWithUnspecifiedWeight;
 - (id)configurationWithoutPointSizeAndWeight;
 - (id)configurationWithoutScale;
 - (id)configurationWithoutTextStyle;

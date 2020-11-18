@@ -27,7 +27,9 @@
 - (void)_axSetSkipNextFocusOnMessage:(BOOL)arg1;
 - (void)_axSimulateTapArrowButtonWithDirection:(int)arg1;
 - (BOOL)_axSkipNextFocusOnMessage;
-- (void)_scrollToReferenceMessage;
+- (void)_navigateMessageDownKeyCommandInvoked:(id)arg1;
+- (void)_navigateMessageUpKeyCommandInvoked:(id)arg1;
+- (void)_scrollToInitialPosition;
 - (void)_shrinkMessagesToBarButton:(id)arg1 withInteraction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateFooterViewFrameForCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)accessibilityCustomRotors;

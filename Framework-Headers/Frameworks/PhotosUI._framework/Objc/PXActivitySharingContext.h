@@ -19,7 +19,7 @@
     NSString *_title;
     NSString *_subtitle;
     id<PXDisplayAsset> _keyAsset;
-    unsigned long long _sourceOrigin;
+    long long _sourceOrigin;
 }
 
 @property (copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL excludeShareActivity; // @synthesize excludeShareActivity=_excludeShareActivity;
 @property (strong, nonatomic) id<PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property (readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
-@property (nonatomic) unsigned long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property (nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) BOOL wantsActionSheet; // @synthesize wantsActionSheet=_wantsActionSheet;

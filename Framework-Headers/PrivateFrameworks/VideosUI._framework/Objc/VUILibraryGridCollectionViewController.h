@@ -74,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)_getEntityIdentifiersFromEntities;
 - (void)_iOSHandleCellSelectionAtIndexPath:(id)arg1;
 - (void)_updateCurrentViewIfNeeded;
-- (void)_updateLayout;
+- (void)_updateLayoutForSize:(struct CGSize)arg1;
 - (void)_updateNavigationBarPadding;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;

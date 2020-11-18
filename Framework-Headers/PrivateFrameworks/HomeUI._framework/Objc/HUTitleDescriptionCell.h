@@ -6,7 +6,7 @@
 
 #import <HomeUI/HUIconCell.h>
 
-@class NSArray, NSString, UIFont, UIImage, UIImageView, UILabel;
+@class NSArray, NSLayoutConstraint, NSString, UIFont, UIImage, UIImageView, UILabel;
 
 @interface HUTitleDescriptionCell : HUIconCell
 {
@@ -16,6 +16,8 @@
     BOOL _adjustsTextColorWhenDisabled;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
+    NSLayoutConstraint *_titleTrailingConstraint;
+    NSLayoutConstraint *_descriptionTrailingConstraint;
     NSString *_titleText;
     UIFont *_titleFont;
     unsigned long long _maxNumberOfTitleLines;
@@ -35,6 +37,7 @@
 @property (readonly, nonatomic) UIImageView *descriptionIconView; // @synthesize descriptionIconView=_descriptionIconView;
 @property (readonly, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (strong, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
+@property (readonly, nonatomic) NSLayoutConstraint *descriptionTrailingConstraint; // @synthesize descriptionTrailingConstraint=_descriptionTrailingConstraint;
 @property (nonatomic) BOOL hideDescription; // @synthesize hideDescription=_hideDescription;
 @property (nonatomic) BOOL hideDescriptionIcon; // @synthesize hideDescriptionIcon=_hideDescriptionIcon;
 @property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
@@ -45,6 +48,7 @@
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property (readonly, nonatomic) NSLayoutConstraint *titleTrailingConstraint; // @synthesize titleTrailingConstraint=_titleTrailingConstraint;
 @property (strong, nonatomic) NSArray *verticalLabelConstraints; // @synthesize verticalLabelConstraints=_verticalLabelConstraints;
 
 - (void).cxx_destruct;

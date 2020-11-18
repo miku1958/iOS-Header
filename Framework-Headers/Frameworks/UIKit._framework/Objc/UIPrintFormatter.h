@@ -13,6 +13,7 @@
 @interface UIPrintFormatter : NSObject <NSCopying>
 {
     BOOL _needsRecalc;
+    BOOL _imagePDFAnnotations;
     UIPrintPageRenderer *_printPageRenderer;
     double _maximumContentHeight;
     double _maximumContentWidth;
@@ -23,6 +24,7 @@
 }
 
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+@property (nonatomic) BOOL imagePDFAnnotations; // @synthesize imagePDFAnnotations=_imagePDFAnnotations;
 @property (nonatomic) double maximumContentHeight; // @synthesize maximumContentHeight=_maximumContentHeight;
 @property (nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
 @property (readonly, nonatomic) long long pageCount; // @synthesize pageCount=_pageCount;

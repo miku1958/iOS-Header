@@ -11,7 +11,8 @@
 }
 
 + (BOOL)CPLPlistFileExistsWithPathManager:(id)arg1;
-+ (id)_readCPLPlistWithPathManager:(id)arg1 error:(id *)arg2;
++ (id)_cplPlistURLWithPathManager:(id)arg1 verb:(id)arg2;
++ (id)_readCPLPlistWithPathManager:(id)arg1;
 + (void)deleteCPLPlistWithPathManager:(id)arg1;
 + (void)initialize;
 + (id)readCPLPlistObjectWithKey:(id)arg1 pathManager:(id)arg2;

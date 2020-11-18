@@ -11,7 +11,7 @@
 
 @class CKContainerID, CKRecordID, CKShareID, CKShareParticipant, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, NSURL;
 
-@interface CKShare : CKRecord <NSCopying, NSSecureCoding>
+@interface CKShare : CKRecord <NSSecureCoding, NSCopying>
 {
     BOOL _encodeAllowsReadOnlyParticipantsToSeeEachOther;
     BOOL _allowsAnonymousPublicAccess;
@@ -20,16 +20,16 @@
     NSMutableSet *_addedParticipantIDs;
     NSMutableSet *_removedParticipantIDs;
     NSMutableArray *_lastFetchedParticipants;
+    NSMutableArray *_allParticipants;
+    long long _participantVisibility;
     CKContainerID *_containerID;
     CKRecordID *_rootRecordID;
-    NSMutableArray *_allParticipants;
     NSData *_invitedProtectionData;
     NSString *_invitedProtectionEtag;
     NSString *_previousInvitedProtectionEtag;
     NSData *_publicProtectionData;
     NSString *_publicProtectionEtag;
     NSString *_previousPublicProtectionEtag;
-    long long _participantVisibility;
     NSArray *_invitedKeysToRemove;
     CKShareID *_shareID;
 }
@@ -38,19 +38,17 @@
 @property (strong, nonatomic) NSMutableSet *addedParticipantIDs; // @synthesize addedParticipantIDs=_addedParticipantIDs;
 @property (strong, nonatomic) NSMutableArray *allParticipants; // @synthesize allParticipants=_allParticipants;
 @property (nonatomic) BOOL allowsAnonymousPublicAccess; // @synthesize allowsAnonymousPublicAccess=_allowsAnonymousPublicAccess;
-@property (nonatomic) BOOL allowsReadOnlyParticipantsToSeeEachOther;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
-@property (readonly, nonatomic) CKShareParticipant *currentUserParticipant;
+@property (readonly, copy, nonatomic) CKShareParticipant *currentUserParticipant;
 @property (nonatomic) BOOL encodeAllowsReadOnlyParticipantsToSeeEachOther; // @synthesize encodeAllowsReadOnlyParticipantsToSeeEachOther=_encodeAllowsReadOnlyParticipantsToSeeEachOther;
 @property (strong, nonatomic) NSArray *invitedKeysToRemove; // @synthesize invitedKeysToRemove=_invitedKeysToRemove;
 @property (strong, nonatomic) NSData *invitedProtectionData; // @synthesize invitedProtectionData=_invitedProtectionData;
 @property (strong, nonatomic) NSString *invitedProtectionEtag; // @synthesize invitedProtectionEtag=_invitedProtectionEtag;
 @property (readonly, nonatomic) BOOL isZoneWideShare;
 @property (strong, nonatomic) NSMutableArray *lastFetchedParticipants; // @synthesize lastFetchedParticipants=_lastFetchedParticipants;
-@property (copy, nonatomic) NSURL *mutableURL; // @dynamic mutableURL;
-@property (readonly, nonatomic) CKShareParticipant *owner;
+@property (readonly, copy, nonatomic) CKShareParticipant *owner;
 @property (nonatomic) long long participantVisibility; // @synthesize participantVisibility=_participantVisibility;
-@property (readonly, nonatomic) NSArray *participants;
+@property (readonly, copy, nonatomic) NSArray *participants;
 @property (strong, nonatomic) NSString *previousInvitedProtectionEtag; // @synthesize previousInvitedProtectionEtag=_previousInvitedProtectionEtag;
 @property (strong, nonatomic) NSString *previousPublicProtectionEtag; // @synthesize previousPublicProtectionEtag=_previousPublicProtectionEtag;
 @property (nonatomic) long long publicPermission; // @synthesize publicPermission=_publicPermission;
@@ -83,6 +81,7 @@
 - (void)_stripPersonalInfo;
 - (void)addParticipant:(id)arg1;
 - (id)addedParticipants;
+- (BOOL)allowsReadOnlyParticipantsToSeeEachOther;
 - (BOOL)canHostServerURLInfo;
 - (void)clearModifiedParticipants;
 - (id)copyWithOriginalValues;
@@ -103,6 +102,7 @@
 - (void)removeParticipant:(id)arg1;
 - (id)removedParticipants;
 - (void)resetFetchedParticipants;
+- (void)setAllowsReadOnlyParticipantsToSeeEachOther:(BOOL)arg1;
 - (void)setWantsPublicSharingKey:(BOOL)arg1;
 - (id)shareURL;
 - (id)updateFromServerShare:(id)arg1;

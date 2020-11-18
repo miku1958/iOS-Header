@@ -7,6 +7,6 @@
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
 @protocol CKDSystemAvailabilityWatcher <NSObject>
-- (void)systemAvailabilityChanged:(unsigned long long)arg1;
+- (BOOL)systemAvailabilityChanged:(unsigned long long)arg1;
 @end
 

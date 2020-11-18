@@ -17,6 +17,7 @@
     BOOL _debugBlurredCells;
     BOOL _showContactSuggestions;
     BOOL _showMaybeContact;
+    BOOL _enableBlocking;
 }
 
 @property (nonatomic, getter=shouldAlwaysShowBootstrap) BOOL alwaysShowBootstrap; // @synthesize alwaysShowBootstrap=_alwaysShowBootstrap;
@@ -26,6 +27,7 @@
 @property (nonatomic, getter=shouldDisplayBootstrapSuggestionType) BOOL displayBootstrapSuggestionType; // @synthesize displayBootstrapSuggestionType=_displayBootstrapSuggestionType;
 @property (nonatomic, getter=shouldDisplayConfirmAdditionalSuggestionType) BOOL displayConfirmAdditionalSuggestionType; // @synthesize displayConfirmAdditionalSuggestionType=_displayConfirmAdditionalSuggestionType;
 @property (nonatomic, getter=shouldDisplayConfirmationPhotoDate) BOOL displayConfirmationPhotoDate; // @synthesize displayConfirmationPhotoDate=_displayConfirmationPhotoDate;
+@property (nonatomic) BOOL enableBlocking; // @synthesize enableBlocking=_enableBlocking;
 @property (nonatomic, getter=shouldShowContactSuggestions) BOOL showContactSuggestions; // @synthesize showContactSuggestions=_showContactSuggestions;
 @property (nonatomic, getter=shouldShowMaybeContact) BOOL showMaybeContact; // @synthesize showMaybeContact=_showMaybeContact;
 

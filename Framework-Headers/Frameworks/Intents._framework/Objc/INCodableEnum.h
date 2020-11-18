@@ -10,14 +10,12 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableLocalizationTable, NSArray, NSMutableDictionary, NSString;
+@class INCodableLocalizationTable, NSArray, NSDictionary, NSString;
 
 @interface INCodableEnum : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
+    NSDictionary *_valuesByIndex;
     INCodableLocalizationTable *_localizationTable;
-    NSString *_enumValueKeyPrefix;
-    NSString *_enumValueSynonymKeyPrefix;
-    NSMutableDictionary *_dictionaryKeysForCacheGroup;
     NSString *_name;
     NSString *_displayName;
     NSString *_displayNameID;
@@ -26,29 +24,36 @@
     NSArray *_values;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *_dictionaryKeysForCacheGroup; // @synthesize _dictionaryKeysForCacheGroup;
-@property (readonly, copy, nonatomic) NSString *_enumValueKeyPrefix; // @synthesize _enumValueKeyPrefix;
-@property (readonly, copy, nonatomic) NSString *_enumValueSynonymKeyPrefix; // @synthesize _enumValueSynonymKeyPrefix;
 @property (copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
-@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *displayNameID; // @synthesize displayNameID=_displayNameID;
 @property (copy, nonatomic, setter=_setEnumNamespace:) NSString *enumNamespace; // @synthesize enumNamespace=_enumNamespace;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedDisplayName;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSArray *values; // @synthesize values=_values;
 
++ (id)__DisplayNameIDKey;
++ (id)__DisplayNameKey;
++ (id)__INCodableEnumValueDisplayNameIDKey;
++ (id)__INCodableEnumValueDisplayNameKey;
++ (id)__INCodableEnumValueIndexKey;
++ (id)__INCodableEnumValueNameKey;
++ (id)__INCodableEnumValueSynonymPronunciationHintIDKey;
++ (id)__INCodableEnumValueSynonymPronunciationHintKey;
++ (id)__INCodableEnumValueSynonymSynonymIDKey;
++ (id)__INCodableEnumValueSynonymSynonymKey;
++ (id)__INCodableEnumValueSynonymsKey;
++ (id)__NameKey;
++ (id)__TypeKey;
++ (id)__ValuesKey;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_dictionaryKeyForKeyPath:(id)arg1 object:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -57,6 +62,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedDisplayNameWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
+- (id)valueForIndex:(unsigned long long)arg1;
+- (id)valuesByIndexForValues:(id)arg1;
 
 @end
 

@@ -6,6 +6,7 @@
 
 #import <HealthDaemon/_HDDemoDataModule.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDDemoStepDataModule : _HDDemoDataModule
 {
     double _nextFireInterval;
@@ -14,8 +15,6 @@
 }
 
 - (void)_getDelayBeforeNextStepData:(double *)arg1 stepCount:(unsigned long long *)arg2 distance:(double *)arg3;
-- (id)_nextDistanceQuantitySampleWithInterval:(double)arg1;
-- (id)_nextStepQuantitySampleWithInterval:(double)arg1;
 - (double)nextFireInterval;
 - (void)scheduleNextFire;
 - (void)timerDidFireWithInterval:(double)arg1;

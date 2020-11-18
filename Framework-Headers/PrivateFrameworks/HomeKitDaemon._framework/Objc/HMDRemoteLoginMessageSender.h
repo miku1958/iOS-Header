@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDDevice, HMDMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDAppleMediaAccessory, HMDDevice, HMFMessageDispatcher, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDRemoteLoginMessageSender : HMFObject <HMFLogging>
@@ -17,7 +17,7 @@
     HMDDevice *_device;
     HMDAppleMediaAccessory *_accessory;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDMessageDispatcher *_remoteMessageDispatcher;
+    HMFMessageDispatcher *_messageDispatcher;
 }
 
 @property (readonly, weak, nonatomic) HMDAppleMediaAccessory *accessory; // @synthesize accessory=_accessory;
@@ -25,14 +25,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
+@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *target; // @synthesize target=_target;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)initWithTarget:(id)arg1 accessory:(id)arg2 device:(id)arg3 workQueue:(id)arg4 remoteMessageDispatcher:(id)arg5;
+- (id)initWithTarget:(id)arg1 accessory:(id)arg2 device:(id)arg3 workQueue:(id)arg4 messageDispatcher:(id)arg5;
 - (id)logIdentifier;
 - (void)sendRemoteMessageWithName:(id)arg1 payload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 

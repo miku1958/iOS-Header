@@ -18,6 +18,8 @@
     long long _lineJoin;
     double _miterLimit;
     double _alpha;
+    double _strokeStart;
+    double _strokeEnd;
     struct unfair_lock _propertiesLock;
 }
 
@@ -28,6 +30,8 @@
 @property (nonatomic) double miterLimit;
 @property (readonly, nonatomic) NSArray *polygons; // @synthesize polygons=_polygons;
 @property (nonatomic) struct CGColor *strokeColor;
+@property (nonatomic) double strokeEnd;
+@property (nonatomic) double strokeStart;
 @property (readonly, nonatomic, getter=_style) shared_ptr_e0acdecc style; // @synthesize style=_style;
 
 - (id).cxx_construct;

@@ -14,6 +14,7 @@
 {
     NSMutableArray *_buffers;
     unsigned long long _totalCost;
+    BOOL _purgeableBuffers;
 }
 
 @property (readonly, nonatomic) NSArray *buffers; // @dynamic buffers;
@@ -25,8 +26,8 @@
 - (void).cxx_destruct;
 - (void)addBuffer:(id)arg1;
 - (unsigned long long)cacheCost;
-- (id)init;
-- (unsigned long long)inkVersion;
+- (id)initWithPurgeableBuffers:(BOOL)arg1;
+- (BOOL)isCompatibleWithInk:(id)arg1;
 - (BOOL)lockPurgeableResourcesAddToSet:(id)arg1;
 - (BOOL)needsCompute;
 

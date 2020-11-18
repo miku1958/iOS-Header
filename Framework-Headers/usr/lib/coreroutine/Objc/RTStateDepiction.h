@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSDate *geocodeDate;
 @property (strong, nonatomic) RTStateModelLocation *location;
 @property (strong, nonatomic) RTMapItem *mapItem;
-@property (nonatomic) long long mapItemSource;
+@property (nonatomic) unsigned long long mapItemSource;
 @property (nonatomic) long long numOfDataPts; // @synthesize numOfDataPts=_numOfDataPts;
 @property (nonatomic) long long type;
 @property (nonatomic) unsigned long long typeSource;

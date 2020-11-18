@@ -1,16 +1,3 @@
- protocol JetEngine._AnyCollectionContentReloadTriggerPublisher // 1 requirements
- {
-	// method
- }
- protocol JetEngine.CollectionContentReloadTriggerPublisher // 6 requirements
- {
-	// class base protocol
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated conformance access function
-	// class associated type access function
-	// getter
- }
  protocol JetEngine.Injectable // 2 requirements
  {
 	// class associated type access function
@@ -29,6 +16,19 @@
  {
 	// method
  }
+ protocol JetEngine.OutputStream // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol JetEngine.InputStream // 5 requirements
+ {
+	// getter
+	// getter
+	// method
+	// method
+	// method
+ }
  protocol JetEngine.AnyStateful // 0 requirements
  {
  }
@@ -38,13 +38,14 @@
 	// class base protocol
 	// class init
  }
- protocol JetEngine.CollectionContentReloadableCell // 1 requirements
- {
-	// getter
- }
  protocol JetEngine.MetricsEventLinter // 1 requirements
  {
 	// method
+ }
+ protocol JetEngine.IntRepresentableAlgorithm // 2 requirements
+ {
+	// class init
+	// getter
  }
  protocol JetEngine.AnyPreferenceKey // 1 requirements
  {
@@ -57,20 +58,8 @@
 	// method
 	// method
  }
- protocol JetEngine.FlowActionFactory // 4 requirements
- {
-	// class base protocol
-	// class associated conformance access function
-	// class associated type access function
-	// method
- }
  protocol JetEngine.ExistentialOptimized // 0 requirements
  {
- }
- protocol JetEngine.ApplicationStatePresenterDelegate // 2 requirements
- {
-	// method
-	// method
  }
  protocol JetEngine.AnyStateStoreHandle // 3 requirements
  {
@@ -116,6 +105,14 @@
 	// getter
 	// setter
 	// modify coroutine
+	// method
+	// method
+ }
+ protocol JetEngine.ImpressionsTracker // 5 requirements
+ {
+	// method
+	// method
+	// method
 	// method
 	// method
  }
@@ -168,12 +165,9 @@
 	// method
 	// method
  }
- protocol JetEngine.DiffableDataPresenter // 5 requirements
+ protocol JetEngine.PipelineBackoff // 2 requirements
  {
-	// class base protocol
-	// class associated type access function
-	// class associated type access function
-	// getter
+	// method
 	// method
  }
  protocol JetEngine.JSReference // 1 requirements
@@ -251,6 +245,11 @@
  protocol JetEngine.AnyPresenter // 0 requirements
  {
  }
+ protocol JetEngine.PackageEncryptionBackend // 2 requirements
+ {
+	// method
+	// method
+ }
  protocol JetEngine.FrameworkBootstrap // 1 requirements
  {
 	// method
@@ -266,8 +265,22 @@
 	// class init
 	// class init
  }
+ protocol JetEngine.JetpackSignatureProvider // 1 requirements
+ {
+	// method
+ }
  protocol JetEngine.JSSourceProvider // 1 requirements
  {
+	// method
+ }
+ protocol JetEngine.Artifact // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol JetEngine.JetpackSignatureVerifier // 2 requirements
+ {
+	// class init
 	// method
  }
  protocol JetEngine.ViewModel // 1 requirements
@@ -281,14 +294,60 @@
  }
 
  class __C.CFRunLoopSource {
+ struct __C.CGRect {
+
+	// Properties
+	var origin : CGPoint
+	var size : CGSize
+ }
+
  struct __C.SignpostComponent {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ﬂb
+	let rawValue : ﬂ¶
  }
 
- enum __C.AMSBagValueType { }
+ struct __C.__sFILE {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _p :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _r : ß
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _w : ß
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _flags : ß
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _file : ß
+	var _bf : __sbuf
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _lbfsize : ß
+	var _cookie : UnsafeMutableRawPointer?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _close : ß
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _read : ˘¶
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _seek : Û¶
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _write : √¶
+	var _ub : __sbuf
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _extra : ≈§
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _ur : ß
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _ubuf : ≈¶
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _nbuf : π¶
+	var _lb : __sbuf
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _blksize : ß
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _offset : £¶
+ }
 
  class __C.CFString {
  enum __C.CachePolicy { }
@@ -301,6 +360,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var _rawValue : NSString
+ }
+
+ class __C.SecCertificate {
+ struct __C.CC_SHA256state_st {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var count : Cû
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var hash : 9û
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var wbuf : -û
+ }
+
+ class __C.CFError {
+ enum __C.JEBrotliDecoderResult { }
+
+ struct __C.CGSize {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : ]ì
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : ]ì
+ }
+
+ struct __C.CGPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ]ì
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ]ì
+ }
+
+ struct __C.__sbuf {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _base :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _size : ß
  }
 
  struct JetEngine.JetEngineBootstrap {
@@ -323,10 +424,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.LocalPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let bundleIdentifier : CFString // +0x10 (0x8)
+	let bundleIdentifier : CFString
 
 	// Swift methods
-	0x5ab0  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
+	0x4c600  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
+ }
+
+ class JetEngine.PackageDataBlobFormatWriter {
+ enum JetEngine.State {
+
+	// Properties
+	case headerSection  
+	case dataSection  
+ }
+
+ enum JetEngine.PackageDataBlobFormatWriterError {
+
+	// Properties
+	case unableToWrite  
  }
 
  enum JetEngine.JSONTimeUnit {
@@ -343,29 +458,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let aggregator : MetricsFieldsAggregator // +0x10
 	let linter : MetricsEventLinter // +0x20
 	let recorder : MetricsEventRecorder // +0x48
+	var flushBehavior : FlushBehavior // +0x70
+ }
+
+ enum JetEngine.FlushBehavior {
+
+	// Properties
+	case automatic  
+	case never  
  }
 
  class JetEngine.MockedAMSBag : AMSSnapshotBag /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
 
 	// Properties
-	let bagProfile : Profile // +0x8 (0x20)
-	let stubs : AMSBagKey // +0x28 (0x8)
+	let bagProfile : Profile // +0x0
+	let stubs : AMSBagKey // +0x0
 
 	// ObjC -> Swift bridged methods
-	0xa170  @objc MockedAMSBag.isExpired <stripped>
-	0xa180  @objc MockedAMSBag.expirationDate <stripped>
-	0xa190  @objc MockedAMSBag.profile <stripped>
-	0xa1e0  @objc MockedAMSBag.profileVersion <stripped>
-	0xa7e0  @objc MockedAMSBag.arrayForKey: <stripped>
-	0xa810  @objc MockedAMSBag.boolForKey: <stripped>
-	0xa850  @objc MockedAMSBag.doubleForKey: <stripped>
-	0xa890  @objc MockedAMSBag.integerForKey: <stripped>
-	0xa8d0  @objc MockedAMSBag.stringForKey: <stripped>
-	0xa910  @objc MockedAMSBag.URLForKey: <stripped>
-	0xa950  @objc MockedAMSBag.dictionaryForKey: <stripped>
-	0xaa10  @objc MockedAMSBag.createSnapshotWithCompletion: <stripped>
-	0xaad0  @objc MockedAMSBag.init <stripped>
-	0xaa90  @objc MockedAMSBag..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81358000b6aa8 (0x358000b6aa8) in binary!
+	0x81f60  @objc MockedAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x81f54000b6a80 (0x754000b6a80) in binary!
+	0x81f48  @objc MockedAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x814a4000b6aa8 (0x4a4000b6aa8) in binary!
+	0x81498  @objc MockedAMSBag.(null) <stripped>
+	0x81480  JSONContext.init()
+WARNING: couldn't find address 0x81474000b6a68 (0x474000b6a68) in binary!
+	0x81468  @objc MockedAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x8145c000b6a68 (0x45c000b6a68) in binary!
+	0x7e36c  @objc MockedAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x81edc000b66f8 (0x6dc000b66f8) in binary!
+	0x81ad8  @objc MockedAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
+	0x6a4fff29a30  @objc MockedAMSBag.(null) <stripped>
+	0x67cfff29cd8  @objc MockedAMSBag. <stripped>
+	0x654fff2a440  @objc MockedAMSBag.I#t$8∏? <stripped>
+	0x684fff2a518  @objc MockedAMSBag.ˇˇˇH«¬ˇˇˇˇH”‚Hâ—H˜ŸH«∆ˇˇˇˇH”ÊHÉ˘@H˜÷HMI#t$8∏? <stripped>
+	0xfff299f0  @objc MockedAMSBag.óHã<»H;}∏u4L;e»u.Lâ˜Ë· <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x5f4fff49a88  @objc MockedAMSBag.(null) <stripped>
+	0xfff4a000  @objc MockedAMSBag.AWAVAUATSHÉÏHâÛAäM H«¿ˇˇˇˇH”‡H˜–HâE»H!√HâÿH¡ËIãD≈@H£ÿÉ <stripped>
 
 	// Swift methods
  }
@@ -394,6 +525,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bundleID  
  }
 
+ struct JetEngine.JetpackMetadata {
+
+	// Properties
+	let fileVersion : Int // +0x0
+	let compression : JetPackageSpec // +0x8
+	let encryption : JetPackageSpec // +0xa
+	let serialization : JetPackageSpec // +0xc
+	let signature : JetpackSignature // +0x10
+	let versionIdentifier : String? // +0x28
+	let keyIdentifier : Int // +0x38
+ }
+
  struct JetEngine.ScalarDictionary {
 
 	// Properties
@@ -418,6 +561,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let duration : Double // +0x28
  }
 
+ enum JetEngine.PackageCompressionError {
+
+	// Properties
+	case unableToReadInput  
+	case unableToWriteInput  
+	case invalidInput  
+	case compressionFailed  
+	case unknown  
+ }
+
  class JetEngine.Promise {
  struct JetEngine.Observer {
 
@@ -434,7 +587,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case pending : Observer
 	case resolved : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rejected : ≈^
+	case rejected : ï†
  }
 
  class JetEngine.EventObserverBox {
@@ -447,15 +600,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.TransientStateStore {
  class JetEngine.Transaction {
- enum JetEngine.Change {
-
-	// Properties
-	case updateOne : StatePath
-	case removeOne : StatePath
-	case removeManyWithPrefix : StatePath
-	case removeAll  
- }
-
  struct JetEngine.StatefulCodingThunk {
 
 	// Properties
@@ -469,11 +613,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case values  
  }
 
+ enum JetEngine.Change {
+
+	// Properties
+	case updateOne : StatePath
+	case removeOne : StatePath
+	case removeManyWithPrefix : StatePath
+	case removeAll  
+ }
+
  enum JetEngine.CodingKeys {
 
 	// Properties
 	case typeName  
 	case base  
+ }
+
+ class JetEngine.MetricsInspectorScanner : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let serviceBrowser : NSNetServiceBrowser
+	let stateLock : NSLock
+	var foundServices : [NSNetService]
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x81ac4000b66e8 (0x2c4000b66e8) in binary!
+	0x7e798  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x7e78c000b6690 (0x78c000b6690) in binary!
+	0x7e790  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x7e784000b6668 (0x784000b6668) in binary!
+	0x7e768  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x7e77d000b6640 (0x77d000b6640) in binary!
+	0x81e68  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x81a64000b6668 (0x264000b6668) in binary!
+	0x38000000c  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x813ac000b6608 (0x3ac000b6608) in binary!
+	0x81b44  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x81e2c000b6648 (0x62c000b6648) in binary!
+	0x88000000c  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x81e14000b65c8 (0x614000b65c8) in binary!
+	0x81e08  @objc MetricsInspectorScanner.(null) <stripped>
+WARNING: couldn't find address 0x81dfc000b65a0 (0x5fc000b65a0) in binary!
+	0x81df0  @objc MetricsInspectorScanner.(null) <stripped>
+
+	// Swift methods
  }
 
  struct JetEngine.MapPreferenceMigrationRule {
@@ -502,9 +685,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSRemoteScriptFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let remoteFetcher : RemoteFetcher // +0x10 (0x30)
-	let isRetryLock : NSLock // +0x40 (0x8)
-	var isRetry : Bool // +0x48 (0x1)
+	let remoteFetcher : RemoteFetcher
+	let isRetryLock : NSLock
+	var isRetry : Bool
 
 	// Swift methods
  }
@@ -514,6 +697,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case sha256  
 	case sha512  
+ }
+
+ enum JetEngine.IOStreamError {
+
+	// Properties
+	case writeFailed  
+	case readFailed  
  }
 
  struct JetEngine.NilState: Stateful,  AnyStateful { }
@@ -542,8 +732,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let packageURL : ÕF
-	let scriptPath : String
+	let packageURL : Ûã
+	let scriptPath : String?
 	let properties : [String : Any]
  }
 
@@ -614,6 +804,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elapsedTime : Double // +0x10
  }
 
+ class JetEngine.BrotliCursor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let inputBufferSize : Int
+	let outputBufferSize : Int
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let inputBuffer :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let outputBuffer :  empty-list 
+	let inputStream : InputStream
+	let outputStream : OutputStream
+	var availableIn : Int
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nextIn :  empty-list 
+	var availableOut : Int
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nextOut :  empty-list 
+	var totalBytesRead : Int
+
+	// Swift methods
+ }
+
+ struct JetEngine.BrotliPackageCompressor {
+
+	// Properties
+	let inputStream : InputStream // +0x0
+	let outputStream : OutputStream // +0x28
+ }
+
  struct JetEngine.JSError {
 
 	// Properties
@@ -622,6 +841,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let column : Int? // +0x20
 	let sourceURL : String? // +0x30
 	let constructorName : String? // +0x40
+ }
+
+ class JetEngine.BasicImpressionsTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var journalsByElementID : ID
+	let impressionTimeThreshold : Double
+	let queueName : String
+
+	// Swift methods
+	0x85470  class func BasicImpressionsTracker.__allocating_init(threshold:queueName:) // init 
  }
 
  class JetEngine.ActionImplementationBox {
@@ -687,15 +917,58 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSPlistObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x45650  @objc JSPlistObject.parse: <stripped>
-	0x45ac0  @objc JSPlistObject.stringify:: <stripped>
-	0x45c10  @objc JSPlistObject.init <stripped>
+WARNING: couldn't find address 0x813ac000b6608 (0x3ac000b6608) in binary!
+	0x81b44  @objc JSPlistObject.(null) <stripped>
+WARNING: couldn't find address 0x81e2c000b6648 (0x62c000b6648) in binary!
+	0x88000000c  @objc JSPlistObject.(null) <stripped>
+WARNING: couldn't find address 0x81e14000b65c8 (0x614000b65c8) in binary!
+	0x81e08  @objc JSPlistObject.(null) <stripped>
  }
 
  struct JetEngine.KeySet {
 
 	// Properties
-	var values : AMSBagKey // +0x0
+	var base : AMSMutableBagKeySet // +0x0
+ }
+
+ struct JetEngine.JetPackageSpec {
+
+	// Properties
+	let algorithm : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let version : π¶
+ }
+
+ struct JetEngine.JetpackSignature {
+
+	// Properties
+	let algorithm : JetPackageSpec // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let data : èå // +0x8
+ }
+
+ enum JetEngine.JetPackageCompressionAlgorithm {
+
+	// Properties
+	case brotli  
+ }
+
+ enum JetEngine.JetPackageEncryptionAlgorithm {
+
+	// Properties
+	case aes128gcm  
+ }
+
+ enum JetEngine.JetPackageSerializationFormat {
+
+	// Properties
+	case tar  
+ }
+
+ enum JetEngine.JetPackageSignatureAlgorithm {
+
+	// Properties
+	case ecdsaSHA256  
  }
 
  enum JetEngine.Pipeline { }
@@ -711,7 +984,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var contained : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var duration : ·@
+	var duration : _Ä
  }
 
  struct JetEngine.PreferenceKey: AnyPreferenceKey {
@@ -726,15 +999,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rules : PreferenceMigrationRule // +0x0
  }
 
+ class JetEngine.RemoteJetpackFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let remoteFetcher : RemoteFetcher // +0x10 (0x30)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let artifactStoreURL : Ûã // +0x0 (0x0)
+	let isRetryLock : NSLock // +0x0 (0x8)
+	var isRetry : Bool // +0x0 (0x1)
+
+	// Swift methods
+ }
+
  class JetEngine.JSStack : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let workerThread : RunLoopWorkerThread // +0x10 (0x8)
-	let context : JSContext // +0x18 (0x8)
-	var exceptionObserver : JSStack // +0x20 (0x10)
+	let workerThread : RunLoopWorkerThread
+	let context : JSContext
+	var exceptionObserver : JSStack
 
 	// Swift methods
-	0x4b430  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
+	0x922c0  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
  }
 
  enum JetEngine.Prerequisite {
@@ -749,12 +1034,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var isProtocolHandlingEnabled : Bool // +0x0
- }
-
- struct JetEngine.PresenterMultiplexer {
-
-	// Properties
-	var presenters : ViewControllerPresenter // +0x0
+	var unstable_requestFixUpBlock : (_:)? // +0x8
  }
 
  struct JetEngine.LookupResponse {
@@ -763,6 +1043,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let items : [String : Any] // +0x0
 	let missing : Set<String> // +0x8
 	let metrics : JSNetworkPerformanceMetrics // +0x10
+ }
+
+ class JetEngine.AppearanceJournal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let elementID : ID
+	let metricsFields : [String : Any]
+	var times : Time
+
+	// Swift methods
+	0x9b810  class func ImpressionsTracking.AppearanceJournal.__allocating_init(elementID:metricsFields:) // init 
+ }
+
+ struct JetEngine.Time {
+
+	// Properties
+	let timeStamp : Double // +0x0
+	let eventType : EventType // +0x8
+ }
+
+ enum JetEngine.EventType {
+
+	// Properties
+	case appear  
+	case disappear  
  }
 
  struct JetEngine.Indirect {
@@ -788,29 +1093,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  enum JetEngine.Unstable { }
 
- class JetEngine.ApplicationStatePresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var isEnabled : Bool // +0x10 (0x1)
-	var delegate : ApplicationStatePresenterDelegate // +0x18 (0x10)
-	let onActiveDidChange : SyncEvent // +0x28 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x55290  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
-	0x55380  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
-
-	// Swift methods
-	0x54ca0  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
- }
-
  class JetEngine.JSWeakReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let context : JSContext // +0x10 (0x8)
-	let weakValue : UnsafeRawPointer // +0x18 (0x8)
+	let context : JSContext
+	let weakValue : UnsafeRawPointer
 
 	// Swift methods
-	0x553f0  class func JSWeakReference.__allocating_init(_:) // init 
+	0x9dde0  class func JSWeakReference.__allocating_init(_:) // init 
+ }
+
+ struct JetEngine.LocalizedStringTable {
+
+	// Properties
+	let bundle : NSBundle
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let locale : ô{
+ }
+
+ struct JetEngine.EncryptedBlobHeader {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let iv : èå // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tag : èå // +0x10
+ }
+
+ enum JetEngine.CodingKeys {
+
+	// Properties
+	case iv  
+	case tag  
  }
 
  struct JetEngine.StateStoreHandle: AnyStateStoreHandle {
@@ -818,6 +1132,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let path : StatePath
 	let store : A
+ }
+
+ class JetEngine.JetPackageFormatWriter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let outputStream : OutputStream
+	var state : State
+
+	// Swift methods
+ }
+
+ enum JetEngine.State {
+
+	// Properties
+	case headerSection  
+	case dataSection  
+ }
+
+ enum JetEngine.JetPackageFormatWriterError {
+
+	// Properties
+	case unableToWrite  
  }
 
  enum JetEngine.MetricsFieldsProviderCategory {
@@ -865,6 +1201,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let reference : JSReference // +0x0
  }
 
+ class JetEngine.FileOutputStream : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : Ûã // +0x14 (0x0)
+	let fileHandle : NSFileHandle // +0x65745f5f (0x8)
+
+	// Swift methods
+ }
+
+ class JetEngine.FileInputStream : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let file : __sFILE
+	let length : Int
+
+	// Swift methods
+ }
+
  class JetEngine.LazyPromise {
  enum JetEngine.State {
 
@@ -889,7 +1244,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referenceDate : Â9
+	let referenceDate : [w
 	let referenceTime : MonotonicTime
  }
 
@@ -938,7 +1293,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let requestRoute : JSRoute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestDuration : ·@
+	let requestDuration : _Ä
 	let body : CoarselyTimed
 	let incidents : JSIncident
 	let networkPerformance : JSNetworkPerformanceMetrics
@@ -960,6 +1315,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case alternativeRetry : CachePolicy
  }
 
+ enum JetEngine.JetPackageFormatError {
+
+	// Properties
+	case invalidState  
+	case invalidFile  
+	case invalidHeader  
+ }
+
+ class JetEngine.JetPackageFormatParser : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let inputStream : InputStream
+	var state : State
+
+	// Swift methods
+ }
+
+ enum JetEngine.State {
+
+	// Properties
+	case fileStart  
+	case headerStart  
+	case dataStart  
+	case finished  
+ }
+
  class JetEngine.AsyncEvent {
  struct JetEngine.StandaloneObjectGraphBuilder {
 
@@ -968,41 +1349,81 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var producers : Promise // +0x8
  }
 
+ class JetEngine.JitterPipelineBackoff : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let base : ExponentialPipelineBackoff
+
+	// Swift methods
+	0xb89f0  class func JitterPipelineBackoff.__allocating_init(baseWaitInterval:maxWaitInterval:) // init 
+ }
+
  class JetEngine.MescalBagContract : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let backing : AMSBagProtocol // +0x8 (0x8)
+	let backing : AMSBagProtocol
 
 	// ObjC -> Swift bridged methods
-	0x71ed0  @objc MescalBagContract.mescalCertificateURL <stripped>
-	0x71f30  @objc MescalBagContract.mescalSetupURL <stripped>
-	0x71f90  @objc MescalBagContract.mescalPrimingURL <stripped>
-	0x71ff0  @objc MescalBagContract.mescalSignedActions <stripped>
-	0x72050  @objc MescalBagContract.mescalSignSapRequests <stripped>
-	0x720b0  @objc MescalBagContract.mescalSignSapResponses <stripped>
-	0x72290  @objc MescalBagContract.init <stripped>
-	0x72220  @objc MescalBagContract..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81e14000b65c8 (0x614000b65c8) in binary!
+	0x81e08  @objc MescalBagContract.(null) <stripped>
+WARNING: couldn't find address 0x81dfc000b65a0 (0x5fc000b65a0) in binary!
+	0x81df0  @objc MescalBagContract.(null) <stripped>
+WARNING: couldn't find address 0x81de4000b6578 (0x5e4000b6578) in binary!
+	0x81dd8  @objc MescalBagContract.(null) <stripped>
+WARNING: couldn't find address 0x81dcc000b65e8 (0x5cc000b65e8) in binary!
+	0x819c8  @objc MescalBagContract.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff83d30  @objc MescalBagContract.(null) <stripped>
+WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
+	0x504fff94c98  @objc MescalBagContract.(null) <stripped>
+	0x4dcfff96940  @objc MescalBagContract.ﬂËñÏ <stripped>
+	0x4b4fff96c88  @objc MescalBagContract.¿)E¿)E∞ÎW¿)E¿)E∞HâﬂËñÏ <stripped>
 
 	// Swift methods
-	0x71e50  class func MescalBagContract.__allocating_init(_:) // init 
+	0xbb540  class func MescalBagContract.__allocating_init(_:) // init 
  }
-
- enum JetEngine.PlatformUI { }
 
  class JetEngine.NestedPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let key : PreferenceKey // +0x10 (0x10)
-	let parent : Preferences // +0x20 (0x10)
+	let key : PreferenceKey
+	let parent : Preferences
 
 	// Swift methods
+ }
+
+ enum JetEngine.ImpressionsTrackerFormat {
+
+	// Properties
+	case v3  
+	case v4  
+ }
+
+ enum JetEngine.JetPackageReaderError {
+
+	// Properties
+	case unsupportedCompressionAlgorithm  
+	case unsupportedEncryptionAlgorithm  
+	case unsupportedFileVersion  
+	case encryptionKeyRequired  
+	case outputIsNotEmptyDirectory  
+	case outputDirectoryAlreadyInUse  
+	case invalidSignature  
+ }
+
+ struct JetEngine.JetPackageReader {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyURLs : Int // +0x0
+	let signatureVerifier : JetpackSignature // +0x8
  }
 
  class JetEngine.OSLogRegistry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let instancesGuard : JEUnfairLock // +0x10 (0x8)
-	var instances : Key // +0x18 (0x8)
+	let instancesGuard : JEUnfairLock // +0x0
+	var instances : Key // +0x0
 
 	// Swift methods
  }
@@ -1029,11 +1450,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.ReplayLogger : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let stateLock : JEUnfairLock // +0x10 (0x8)
-	var rawRecords : Record // +0x18 (0x8)
+	let stateLock : JEUnfairLock
+	var rawRecords : Record
 
 	// Swift methods
-	0x74c70  class func ReplayLogger.__allocating_init() // init 
+	0xc0e60  class func ReplayLogger.__allocating_init() // init 
  }
 
  struct JetEngine.Record {
@@ -1058,6 +1479,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case incompatibleTypes : (Any, Any)
 	case conflictingData  
 	case missingData  
+ }
+
+ class JetEngine.DataOutputStream : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data : èå
+
+	// Swift methods
+ }
+
+ class JetEngine.DataInputStream : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data : èå
+	let length : Int
+
+	// Swift methods
  }
 
  struct JetEngine.LogMessage {
@@ -1087,47 +1527,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var treatment : ValueTreatment // +0x20
  }
 
- class JetEngine.ShelvesPresenter {
- enum JetEngine.InsertionPoint {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case before : ID
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case after : ID
-	case start  
-	case end  
- }
-
- enum JetEngine.MergeProblem {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case missingShelf : ID
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case mergeFailure : ≈^
- }
-
- enum JetEngine.MergeSolution {
-
-	// Properties
-	case insert : InsertionPoint
-	case rollbackAndAbort  
-	case discard  
- }
+ enum JetEngine.UnstableAlias { }
 
  class JetEngine.Accounts : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let backingStore : ACAccountStore // +0x10 (0x8)
-	let accountsLock : JEUnfairLock // +0x18 (0x8)
-	var unlockedActiveiTunesAccount : ACAccount? // +0x20 (0x8)
+	let backingStore : ACAccountStore
+	let accountsLock : JEUnfairLock
+	var unlockedActiveiTunesAccount : ACAccount?
 
 	// ObjC -> Swift bridged methods
-	0x7d370  @objc Accounts.accountStoreDidChange: <stripped>
+WARNING: couldn't find address 0x7e694000b6ad8 (0x694000b6ad8) in binary!
+	0xa8000000c  @objc Accounts.(null) <stripped>
 
 	// Swift methods
-	0x7cf90  class func Unstable.Accounts.__allocating_init(_:) // init 
+	0xc55a0  class func Unstable.Accounts.__allocating_init(_:) // init 
  }
 
  class JetEngine.Atomic {
@@ -1143,6 +1557,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case decodingFailed  
  }
 
+ enum JetEngine.PackageSerializationError {
+
+	// Properties
+	case unknown : String?
+	case readFailed  
+	case maxRetriesReached  
+	case attemptedToWriteOutsideOutputDirectory  
+	case unableToResolvePath  
+ }
+
+ struct JetEngine.DeserializationClientData {
+
+	// Properties
+	let inputStream : InputStream // +0x0
+	let bufferSize : Int // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let buffer :  empty-list  // +0x30
+ }
+
  struct JetEngine.ViewWillDisappearReason {
 
 	// Properties
@@ -1152,11 +1585,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSConditionalReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let managedValue : JSManagedValue // +0x10 (0x8)
+	let managedValue : JSManagedValue
 
 	// Swift methods
-	0x802b0  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
+	0xcb360  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
  }
+
+ enum JetEngine.ImpressionsTracking { }
 
  struct JetEngine.ClosureActionImplementation {
 
@@ -1169,7 +1604,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case value : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case error : ≈^
+	case error : ï†
  }
 
  struct JetEngine.CompoundActionImplementation { }
@@ -1213,19 +1648,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSBagObject : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var bag : Bag // +0x8 (0x8)
+	var bag : Bag
 
 	// ObjC -> Swift bridged methods
-	0x86e00  @objc JSBagObject.registerBagKeys: <stripped>
-	0x87100  @objc JSBagObject.string: <stripped>
-	0x872a0  @objc JSBagObject.double: <stripped>
-	0x87440  @objc JSBagObject.integer: <stripped>
-	0x875e0  @objc JSBagObject.boolean: <stripped>
-	0x877f0  @objc JSBagObject.array: <stripped>
-	0x87a00  @objc JSBagObject.dictionary: <stripped>
-	0x87ca0  @objc JSBagObject.url: <stripped>
-	0x87dd0  @objc JSBagObject.init <stripped>
-	0x87e30  @objc JSBagObject..cxx_destruct <stripped>
+WARNING: couldn't find address 0x7e67c000b6518 (0x67c000b6518) in binary!
+	0x812f0  @objc JSBagObject.(null) <stripped>
+WARNING: couldn't find address 0x812e4000b64f0 (0x2e4000b64f0) in binary!
+	0x812d8  @objc JSBagObject.(null) <stripped>
+WARNING: couldn't find address 0x812cc000b64c8 (0x2cc000b64c8) in binary!
+	0x812c0  @objc JSBagObject.(null) <stripped>
+WARNING: couldn't find address 0x812b4000b64a0 (0x2b4000b64a0) in binary!
+	0x812a8  @objc JSBagObject.(null) <stripped>
+WARNING: couldn't find address 0x81d34000b6550 (0x534000b6550) in binary!
+	0x81930  @objc JSBagObject.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x444fffa5b68  @objc JSBagObject.(null) <stripped>
+	0x50cfffa5b90  @objc JSBagObject.L9ÁuL9∆tgLâ‚Lâ¡LâEÿE1¿Ë^› <stripped>
+	0xe4000b6508  @objc JSBagObject.â¸Mã}0HâÿH¡‡Iã<Iãt≤L9ÁuL9∆tgLâ‚Lâ¡LâEÿE1¿Ë^› <stripped>
+WARNING: couldn't find address 0xb6b8cfffbb440 (0x38cfffbb440) in binary!
+	0xb0000b6800  @objc JSBagObject.(null) <stripped>
+WARNING: couldn't find address 0xb6b64fffbb668 (0x364fffbb668) in binary!
+	0x4ac000b67d8  @objc JSBagObject.(null) <stripped>
 
 	// Swift methods
  }
@@ -1258,11 +1701,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.AMSMetricsEventRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let metrics : AMSMetrics // +0x10 (0x8)
-	let defaultTopic : String // +0x18 (0x10)
+	let metrics : AMSMetrics
+	let defaultTopic : String
 
 	// Swift methods
-	0x897c0  class func AMSMetricsEventRecorder.__allocating_init(metrics:defaultTopic:) // init 
+	0xdad70  class func AMSMetricsEventRecorder.__allocating_init(metrics:defaultTopic:) // init 
+ }
+
+ enum JetEngine.UnpackJetpackError {
+
+	// Properties
+	case bundleNotFound  
+ }
+
+ class JetEngine.UnpackJetpackPhase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyURLs : Int // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let artifactStoreURL : Ûã // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bundleOutputURL : Ûã // +0x0 (0x0)
+	let verifySignature : Bool // +0x0 (0x1)
+
+	// Swift methods
  }
 
  struct JetEngine.ComponentTypes {
@@ -1299,7 +1762,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let status : Int
 	let statusText : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : Â'
+	let url : ôÜ
 	let body : String?
 	let metrics : JSNetworkPerformanceMetrics
  }
@@ -1307,9 +1770,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSBytesDeallocatorHolder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let deallocator : (_:) // +0x10 (0x10)
+	let deallocator : (_:)
 
 	// Swift methods
+ }
+
+ struct JetEngine.JetpackLoader {
+
+	// Properties
+	let jetpackBundlePipeline : AnyPipelineTask // +0x0
+	let sourceDataPipeline : AnyPipelineTask // +0x8
+	let sourcePipeline : AnyPipelineTask // +0x10
  }
 
  struct JetEngine.JSRequest {
@@ -1322,10 +1793,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSRandomObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x8f1c0  @objc JSRandomObject.nextBoolean <stripped>
-	0x8f1e0  @objc JSRandomObject.nextNumber <stripped>
-	0x8f200  @objc JSRandomObject.nextUUID <stripped>
-	0x8f220  @objc JSRandomObject.init <stripped>
+WARNING: couldn't find address 0x81d14000b6458 (0x514000b6458) in binary!
+	0x81d08  @objc JSRandomObject.(null) <stripped>
+WARNING: couldn't find address 0x81cfc000b6430 (0x4fc000b6430) in binary!
+	0x81cf0  @objc JSRandomObject.(null) <stripped>
+WARNING: couldn't find address 0x108000000c (0x108000000c) in binary!
+	0x38cfffbb440  @objc JSRandomObject.(null) <stripped>
+	0x364fffbb668  @objc JSRandomObject.Lâ‚Ë∂ <stripped>
+ }
+
+ struct JetEngine.PackagingLog { }
+
+ struct JetEngine.LogTypes {
+
+	// Properties
+	let rawValue : Int // +0x0
  }
 
  struct JetEngine.MethodEventObserver {
@@ -1337,6 +1819,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  struct JetEngine.LanguagesMetricFieldProvider { }
+
+ class JetEngine.SignpostAggregator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nextStartTime : [w // +0x0 (0x0)
+	let subsystem : String // +0x0 (0x10)
+	let category : String // +0x0 (0x10)
+	let lock : NSLock // +0x0 (0x8)
+
+	// Swift methods
+	0xed060  class func SignpostAggregator.__allocating_init(subsystem:category:) // init 
+ }
+
+ struct JetEngine.TimedEvent {
+
+	// Properties
+	let duration : Duration // +0x0
+	let name : String // +0x8
+ }
+
+ struct JetEngine.Duration {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let nanoseconds : o // +0x0
+ }
 
  struct JetEngine.MetricsFieldExclusionRequest {
 
@@ -1350,8 +1859,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var types : ActionModel
  }
 
- class JetEngine.TableContent {
- class JetEngine.DiffableDataStatePresenter {
  class JetEngine.SingleUseClosureEventObserver {
  enum JetEngine.State {
 
@@ -1373,40 +1880,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let scheduler : TaskScheduler
 	var target : weak NSObject?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let selector : Å$
- }
-
- class JetEngine.CollectionContent {
- enum JetEngine.SupplementaryViewProvider {
-
-	// Properties
-	case section : DiffableLens
-	case generic : CollectionContent
+	let selector : 7b
  }
 
  class JetEngine.CompoundMetricsEventRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var recorders : MetricsEventRecorder // +0x10 (0x8)
-	let queue : OS_dispatch_queue // +0x18 (0x8)
+	var recorders : MetricsEventRecorder
+	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x98510  class func CompoundMetricsEventRecorder.__allocating_init(recorders:) // init 
+	0xf4410  class func CompoundMetricsEventRecorder.__allocating_init(recorders:) // init 
+ }
+
+ class JetEngine.ExponentialPipelineBackoff : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let baseWaitInterval : Double
+	let maxWaitInterval : Double
+	let attemptsLock : JEUnfairLock
+	var attemptsMade : Int
+
+	// Swift methods
+	0xf6500  class func ExponentialPipelineBackoff.__allocating_init(baseWaitInterval:maxWaitInterval:) // init 
  }
 
  class JetEngine.PageMetricsPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let appMetrics : AppMetricsPresenter // +0x10 (0x8)
-	let pipeline : MetricsPipeline // +0x18 (0x70)
-	var appStateEventSubscription : EventSubscription // +0x88 (0x8)
-	var isViewAppeared : Bool // +0x90 (0x1)
-	var hasAppExitedWhileAppeared : Bool // +0x91 (0x1)
-	var context : MetricsFieldsContext // +0x98 (0x8)
-	var data : PageMetrics // +0xa0 (0x18)
+	let appMetrics : AppMetricsPresenter
+	let pipeline : MetricsPipeline
+	var appStateEventSubscription : EventSubscription
+	var isViewAppeared : Bool
+	var hasAppExitedWhileAppeared : Bool
+	var context : MetricsFieldsContext
+	var data : PageMetrics
 
 	// Swift methods
-	0x99bf0  class func PageMetricsPresenter.__allocating_init(appMetrics:pipeline:context:data:) // init 
+	0xf6900  class func PageMetricsPresenter.__allocating_init(appMetrics:pipeline:context:data:) // init 
  }
 
  struct JetEngine.MonotonicTime {
@@ -1414,6 +1925,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let seconds : Int // +0x0
 	let nanoseconds : Int // +0x8
+ }
+
+ class JetEngine.PackageDataBlobFormatReader {
+ enum JetEngine.State {
+
+	// Properties
+	case headerStart  
+	case dataStart  
+	case finished  
+ }
+
+ enum JetEngine.PackageDataBlobFormatError {
+
+	// Properties
+	case invalidState  
+	case invalidFile  
+	case invalidHeader  
  }
 
  struct JetEngine.CompoundLogger {
@@ -1437,6 +1965,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class JetEngine.MapPipelineTask {
+ class JetEngine.JoinPipelineTask {
  class JetEngine.MapStateCenter {
  struct JetEngine.Transaction {
 
@@ -1456,35 +1985,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.TransientPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var storage : [String : Any] // +0x10 (0x8)
+	var storage : [String : Any]
 
 	// Swift methods
-	0x9eaf0  class func TransientPreferences.__allocating_init() // init 
+	0xfc890  class func TransientPreferences.__allocating_init() // init 
  }
 
  class JetEngine.OverriddenAMSBag : AMSSnapshotBag /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
 
 	// Properties
-	let backing : AMSBagProtocol // +0x8 (0x8)
-	let overrides : AMSBagKey // +0x10 (0x8)
+	let backing : AMSBagProtocol
+	let overrides : AMSBagKey
 
 	// ObjC -> Swift bridged methods
-	0x9f520  @objc OverriddenAMSBag.dealloc <stripped>
-	0x9f6d0  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
-	0x9f770  @objc OverriddenAMSBag.isExpired <stripped>
-	0x9f790  @objc OverriddenAMSBag.expirationDate <stripped>
-	0x9f8a0  @objc OverriddenAMSBag.profile <stripped>
-	0x9f8c0  @objc OverriddenAMSBag.profileVersion <stripped>
-	0x9f970  @objc OverriddenAMSBag.arrayForKey: <stripped>
-	0x9f990  @objc OverriddenAMSBag.boolForKey: <stripped>
-	0x9f9b0  @objc OverriddenAMSBag.doubleForKey: <stripped>
-	0x9f9d0  @objc OverriddenAMSBag.integerForKey: <stripped>
-	0x9f9f0  @objc OverriddenAMSBag.stringForKey: <stripped>
-	0x9fa10  @objc OverriddenAMSBag.URLForKey: <stripped>
-	0x9fa30  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
-	0x9fbb0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
-	0x9fcf0  @objc OverriddenAMSBag.init <stripped>
-	0x9f5c0  @objc OverriddenAMSBag..cxx_destruct <stripped>
+WARNING: couldn't find address 0x818e4000b6508 (0xe4000b6508) in binary!
+	0x7e5b8  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x810b0000b6800 (0xb0000b6800) in binary!
+	0x81cb8  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x81cac000b67d8 (0x4ac000b67d8) in binary!
+	0x81ca0  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x811fc000b6800 (0x1fc000b6800) in binary!
+	0x811f0  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x811e4000b67c8 (0x1e4000b67c8) in binary!
+	0x811d8  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x811cc000b67c0 (0x1cc000b67c0) in binary!
+	0x811c0  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x811b4000b67c0 (0x1b4000b67c0) in binary!
+	0x7e0c4  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x81c34000b6450 (0x434000b6450) in binary!
+	0x81830  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x424fffbe738  @objc OverriddenAMSBag.(null) <stripped>
+	0xfffbe890  @objc OverriddenAMSBag. <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x3f4fffc7d18  @objc OverriddenAMSBag.(null) <stripped>
+	0xfffc7e70  @objc OverriddenAMSBag.Ë•ﬁ <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x3b4fffd3c48  @objc OverriddenAMSBag.(null) <stripped>
+	0x394000b63b0  @objc OverriddenAMSBag.UHâÂAWAVAUSHÉÏPMâÓHâÛIâˇIã}(LçmòLâËË¯‚ <stripped>
+WARNING: couldn't find address 0xb629cfffd98d8 (0x29cfffd98d8) in binary!
+	0x485000b6288  @objc OverriddenAMSBag.(null) <stripped>
+WARNING: couldn't find address 0xb6274fffda190 (0x274fffda190) in binary!
+	0x76c000b6370  @objc OverriddenAMSBag.(null) <stripped>
 
 	// Swift methods
  }
@@ -1508,14 +2050,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSNetworkObject : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let urlSession : AMSURLSession // +0x8 (0x8)
-	let accounts : Accounts // +0x10 (0x8)
-	let requestEncoder : JSURLRequestEncoder // +0x18 (0x28)
+	let urlSession : AMSURLSession
+	let accounts : Accounts
+	let requestEncoder : JSURLRequestEncoder
+	let requestFixUpBlock : (_:)?
 
 	// ObjC -> Swift bridged methods
-	0xa1ef0  @objc JSNetworkObject.fetch: <stripped>
-	0xa2000  @objc JSNetworkObject.init <stripped>
-	0xa2060  @objc JSNetworkObject..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8117c000b6340 (0x17c000b6340) in binary!
+	0x81c08  @objc JSNetworkObject.(null) <stripped>
+	0x38000000c  @objc JSNetworkObject.ãÖXˇˇˇHâŸË(ï <stripped>
+WARNING: couldn't find address 0x8114c000b6308 (0x14c000b6308) in binary!
+	0x81bd8  @objc JSNetworkObject.(null) <stripped>
 
 	// Swift methods
  }
@@ -1524,7 +2069,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ÕF
+	let url : Ûã
 	let method : String
 	let cache : CachePolicy
 	let signingStyle : SigningStyle
@@ -1564,25 +2109,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.InMemoryMetricsEventRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let historySize : Int // +0x10 (0x8)
-	var events : LintedMetricsEvent // +0x18 (0x8)
-	let stateLock : JEUnfairLock // +0x20 (0x8)
-	let onEventRecorded : AsyncEvent // +0x28 (0x8)
+	let historySize : Int
+	var events : LintedMetricsEvent
+	let stateLock : JEUnfairLock
+	let onEventRecorded : AsyncEvent
 
 	// Swift methods
-	0xaacc0  class func InMemoryMetricsEventRecorder.__allocating_init(historySize:) // init 
+	0x1080e0  class func InMemoryMetricsEventRecorder.__allocating_init(historySize:) // init 
  }
 
  class JetEngine.JSPlatformObject : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let bag : Bag // +0x8 (0x8)
-	let process : AMSProcessInfo // +0x10 (0x8)
+	let bag : Bag
+	let process : AMSProcessInfo
 
 	// ObjC -> Swift bridged methods
-	0xad180  @objc JSPlatformObject.lookup: <stripped>
-	0xad290  @objc JSPlatformObject.init <stripped>
-	0xad2f0  @objc JSPlatformObject..cxx_destruct <stripped>
+WARNING: couldn't find address 0x8114c000b6308 (0x14c000b6308) in binary!
+	0x81bd8  @objc JSPlatformObject.(null) <stripped>
+WARNING: couldn't find address 0x817d4000b63d8 (0x7d4000b63d8) in binary!
+	0x28000000c  @objc JSPlatformObject.(null) <stripped>
+WARNING: couldn't find address 0x81bb4000b62d0 (0x3b4000b62d0) in binary!
+	0x817b0  @objc JSPlatformObject.(null) <stripped>
 
 	// Swift methods
  }
@@ -1590,25 +2138,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.BaseObjectGraph : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let dependencies : DependencyDictionary // +0x10 (0x8)
-	var name : String // +0x18 (0x10)
+	let dependencies : DependencyDictionary
+	var name : String
 
 	// Swift methods
-	0xae2e0  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
-	0xae400  func BaseObjectGraph.adding(allDependenciesOf:) // method 
-	0xae560  func BaseObjectGraph.adding<A>(allDependencies:) // method 
-	0xae6c0  func BaseObjectGraph.adding(dependency:) // method 
-	0xae810  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
-	0xae9a0  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
-	0xaec60  func BaseObjectGraph.subtracting(dependencyFor:) // method 
-	0xaedd0  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
-	0xaf0a0  func BaseObjectGraph.availableCandidates.getter // getter 
-	0xaf4f0  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
-	0xaf8c0  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
-	0xaf950  func BaseObjectGraph.name.getter // getter 
-	0xaf990  func BaseObjectGraph.name.setter // setter 
-	0xaf9d0  func BaseObjectGraph.name.modify // modifyCoroutine 
-	0xafa10  func BaseObjectGraph.description.getter // getter 
+	0x10aa00  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
+	0x10ab40  func <stripped> // method 
+	0x10ab60  func <stripped> // method 
+	0x10acc0  func <stripped> // method 
+	0x10ae20  func <stripped> // method 
+	0x10afc0  func <stripped> // method 
+	0x10b040  func <stripped> // method 
+	0x10b1b0  func <stripped> // method 
+	0x10b470  func <stripped> // getter 
+	0x10b500  func <stripped> // method 
+	0x10b950  func <stripped> // method 
+	0x10b9e0  func <stripped> // method 
+	0x10bad0  func <stripped> // getter 
+	0x10bb10  func <stripped> // setter 
+	0x10bb50  func <stripped> // modifyCoroutine 
+	0x10bb90  func <stripped> // getter 
  }
 
  enum JetEngine.ValueOverride {
@@ -1620,7 +2169,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case int : Int
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case URL : ÕF
+	case URL : Ûã
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case dictionary :  empty-list 
  }
@@ -1638,12 +2187,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let key : AnyPreferenceKey // +0x0
  }
 
+ enum JetEngine.JetpackBundleError {
+
+	// Properties
+	case missingResource  
+ }
+
+ struct JetEngine.JetpackBundle {
+
+	// Properties
+	let bundle : NSBundle // +0x0
+ }
+
+ enum JetEngine.Resource {
+
+	// Properties
+	case other : (resource: String?, fileExtension: String?)
+	case source  
+ }
+
  class JetEngine.OptionalLogger : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let logger : Logger // +0x10 (0x28)
-	let levelNameKey : Key // +0x38 (0x10)
-	let defaultVerbosityLevel : LogMessageLevel // +0x48 (0x1)
+	let logger : Logger
+	let levelNameKey : Key
+	let defaultVerbosityLevel : LogMessageLevel
 
 	// Swift methods
  }
@@ -1683,14 +2251,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.LookupBagContract : URLBagContract {
 
 	// Properties
-	let backing : AMSBagProtocol // +0x18 (0x8)
+	let backing : AMSBagProtocol
 
 	// ObjC -> Swift bridged methods
-	0xb8a60  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
-	0xb8be0  @objc LookupBagContract..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81bb4000b62d0 (0x3b4000b62d0) in binary!
+	0x817b0  @objc LookupBagContract.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x29cfffd98d8  @objc LookupBagContract.(null) <stripped>
 
 	// Swift methods
-	0xb8af0  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
+	0x115af0  func <stripped> // getter 
  }
 
  struct JetEngine.MutableStateRef {
@@ -1707,12 +2277,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let errors :  empty-list  // +0x0
  }
 
+ enum JetEngine.JetPackageWriterError {
+
+	// Properties
+	case unsupportedCompressionAlgorithm  
+	case unsupportedEncryptionAlgorithm  
+	case missingEncryptionKey  
+ }
+
+ struct JetEngine.JetPackageWriter {
+
+	// Properties
+	let encryption : JetPackageEncryptionAlgorithm
+	let compression : JetPackageCompressionAlgorithm
+	let serialization : JetPackageSerializationFormat
+	let versionIdentifier : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyIdentifier : Sd
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyURL : ôÜ
+ }
+
+ enum JetEngine.Step {
+
+	// Properties
+	case archiving  
+	case compressing  
+	case encrypting  
+ }
+
  struct JetEngine.ImpulseSignpost {
 
 	// Properties
 	let component : SignpostComponent // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let event : ﬂb // +0x4
+	let event : ﬂ¶ // +0x4
  }
 
  struct JetEngine.IntervalSignpost {
@@ -1720,9 +2319,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let component : SignpostComponent // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let beginEvent : ﬂb // +0x4
+	let beginEvent : ﬂ¶ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endEvent : ﬂb // +0x8
+	let endEvent : ﬂ¶ // +0x8
  }
 
  struct JetEngine.StateRef {
@@ -1743,9 +2342,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSRemoteIndexFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let remoteFetcher : RemoteFetcher // +0x10 (0x30)
-	let isRetryLock : NSLock // +0x40 (0x8)
-	var isRetry : Bool // +0x48 (0x1)
+	let remoteFetcher : RemoteFetcher
+	let isRetryLock : NSLock
+	var isRetry : Bool
 
 	// Swift methods
  }
@@ -1755,28 +2354,126 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.JSBoundReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let propertyName : String // +0x10 (0x10)
-	let weakOwner : JSWeakReference // +0x20 (0x8)
+	let propertyName : String
+	let weakOwner : JSWeakReference
 
 	// Swift methods
-	0xbb4e0  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
+	0x11a800  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
  }
 
  class JetEngine.JSNotifyObject : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var observersByName : JSCallable // +0x8 (0x8)
+	var observersByName : JSCallable
 
 	// ObjC -> Swift bridged methods
-	0xbc3e0  @objc JSNotifyObject.init <stripped>
-	0xbc8d0  @objc JSNotifyObject.register:: <stripped>
-	0xbcd30  @objc JSNotifyObject.unregister:: <stripped>
-	0xbcda0  @objc JSNotifyObject.post: <stripped>
-	0xbce20  @objc JSNotifyObject..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81b94000b63b0 (0x394000b63b0) in binary!
+	0x7e491  @objc JSNotifyObject.(null) <stripped>
+WARNING: couldn't find address 0x7e485000b6288 (0x485000b6288) in binary!
+	0x7e458  @objc JSNotifyObject.(null) <stripped>
+WARNING: couldn't find address 0x8176c000b6370 (0x76c000b6370) in binary!
+	0x58000000c  @objc JSNotifyObject.(null) <stripped>
+WARNING: couldn't find address 0x7e434000b6ac0 (0x434000b6ac0) in binary!
+	0x8184c  @objc JSNotifyObject.(null) <stripped>
+WARNING: couldn't find address 0x81b34000b6350 (0x334000b6350) in binary!
+	0x81834  @objc JSNotifyObject.(null) <stripped>
  }
 
  class JetEngine.DeferredLazy {
+ class JetEngine.AMSMetricsWithInspection : AMSMetrics /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
+
+	// Properties
+	let scanner : MetricsInspectorScanner
+	let urlSession : NSURLSession
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x7e434000b6ac0 (0x434000b6ac0) in binary!
+	0x8184c  @objc AMSMetricsWithInspection.(null) <stripped>
+WARNING: couldn't find address 0x81b34000b6350 (0x334000b6350) in binary!
+	0x81834  @objc AMSMetricsWithInspection.(null) <stripped>
+WARNING: couldn't find address 0x81724000b6328 (0x724000b6328) in binary!
+	0x38000000c  @objc AMSMetricsWithInspection.(null) <stripped>
+WARNING: couldn't find address 0x7da5a000b61f8 (0x25a000b61f8) in binary!
+	0x81804  @objc AMSMetricsWithInspection.(null) <stripped>
+WARNING: couldn't find address 0x81aec000b6308 (0x2ec000b6308) in binary!
+	0x88000000c  @objc AMSMetricsWithInspection.(null) <stripped>
+
+	// Swift methods
+ }
+
+ class JetEngine.CommonCryptoAESGCMCryptor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cryptor : S`
+	let inputStream : InputStream
+	let outputStream : OutputStream
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var inputBuffer :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var outputBuffer :  empty-list 
+	var outputBufferSize : Int
+	let blockSize : Int
+	var state : State
+
+	// Swift methods
+ }
+
+ enum JetEngine.State {
+
+	// Properties
+	case processing  
+	case finalized  
+ }
+
+ struct JetEngine.CommonCryptoPackageEncryption {
+
+	// Properties
+	let encryptionAlgorithm : JetPackageEncryptionAlgorithm // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyData : èå // +0x0
+	let blockSize : Int // +0x10
+ }
+
  struct JetEngine.SystemInfoMetricsFieldsProvider { }
+
+ class JetEngine.ImpressionableItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let visibleThreshold : ]ì
+	var impressionPoints : ImpressionPoints
+	let metrics : ImpressionMetrics
+	var state : State
+	var childCalculator : ImpressionsCalculator
+	var isContainer : Bool
+	var itemFrame : CGRect
+
+	// Swift methods
+	0x123540  class func ImpressionsTracking.ImpressionableItem.__allocating_init(item:rect:visibleThreshold:) // init 
+ }
+
+ enum JetEngine.State {
+
+	// Properties
+	case onScreen  
+	case offScreen  
+ }
+
+ struct JetEngine.ImpressionPoints {
+
+	// Properties
+	let enter : CGPoint // +0x0
+	let exit : CGPoint // +0x10
+	let requiresBothPointsOnScreen : Bool // +0x21
+ }
+
+ struct JetEngine.FileArtifact {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : Ûã
+ }
 
  struct JetEngine.JSArrayBuffer {
 
@@ -1816,9 +2513,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSCryptoObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xc73c0  @objc JSCryptoObject.supports: <stripped>
-	0xc7630  @objc JSCryptoObject.hash:: <stripped>
-	0xc7750  @objc JSCryptoObject.init <stripped>
+WARNING: couldn't find address 0x7da5a000b61f8 (0x25a000b61f8) in binary!
+	0x81804  @objc JSCryptoObject.(null) <stripped>
+WARNING: couldn't find address 0x81aec000b6308 (0x2ec000b6308) in binary!
+	0x88000000c  @objc JSCryptoObject.(null) <stripped>
+WARNING: couldn't find address 0x81ad4000b61b8 (0x2d4000b61b8) in binary!
+	0x81ac8  @objc JSCryptoObject.(null) <stripped>
  }
 
  struct JetEngine.JSSource {
@@ -1826,13 +2526,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var code : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sourceURL : Â'
+	var sourceURL : ôÜ
  }
 
  struct JetEngine.JSONDictionary {
 
 	// Properties
 	let dictionary : NSDictionary // +0x0
+ }
+
+ enum JetEngine.JetpackSignatureVerifierError {
+
+	// Properties
+	case unableToReadCertificate  
+	case unsupportedCertificate  
+	case unknown  
  }
 
  struct JetEngine.CompoundAction {
@@ -1845,13 +2553,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.AppMetricsPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let pipeline : MetricsPipeline // +0x10 (0x70)
-	var canSendEnter : Bool // +0x80 (0x1)
-	var flushedEvents : AppStateEvent // +0x88 (0x8)
-	let onAppStateEvent : SyncEvent // +0x90 (0x8)
+	let pipeline : MetricsPipeline
+	var canSendEnter : Bool
+	var flushedEvents : AppStateEvent
+	let onAppStateEvent : SyncEvent
 
 	// Swift methods
-	0xca1b0  class func AppMetricsPresenter.__allocating_init(pipeline:) // init 
+	0x12df80  class func AppMetricsPresenter.__allocating_init(pipeline:) // init 
  }
 
  struct JetEngine.AppStateEvent {
@@ -1862,14 +2570,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSHostObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xcb020  @objc JSHostObject.platform <stripped>
-	0xcb050  @objc JSHostObject.osBuild <stripped>
-	0xcb070  @objc JSHostObject.deviceModel <stripped>
-	0xcb090  @objc JSHostObject.deviceLocalizedModel <stripped>
-	0xcb130  @objc JSHostObject.clientIdentifier <stripped>
-	0xcb210  @objc JSHostObject.clientVersion <stripped>
-	0xcb250  @objc JSHostObject.isOSAtLeast::: <stripped>
-	0xcb370  @objc JSHostObject.init <stripped>
+WARNING: couldn't find address 0x81ad4000b61b8 (0x2d4000b61b8) in binary!
+	0x81ac8  @objc JSHostObject.(null) <stripped>
+WARNING: couldn't find address 0x81abc000b6190 (0x2bc000b6190) in binary!
+	0x81ab0  @objc JSHostObject.(null) <stripped>
+WARNING: couldn't find address 0x81aa4000b6168 (0x2a4000b6168) in binary!
+	0x81a98  @objc JSHostObject.(null) <stripped>
+WARNING: couldn't find address 0x81c14000b6140 (0x414000b6140) in binary!
+	0x81a80  @objc JSHostObject.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x26cfffeda50  @objc JSHostObject.(null) <stripped>
+	0x24c000b60f0  @objc JSHostObject. <stripped>
+WARNING: couldn't find address 0xb60dcffffa9e0 (0xdcffffa9e0) in binary!
+	0x234000b60c8  @objc JSHostObject.(null) <stripped>
+WARNING: couldn't find address 0xb60b4ffffaa28 (0xb4ffffaa28) in binary!
+	0x21c000b60a0  @objc JSHostObject.(null) <stripped>
  }
 
  struct JetEngine.SwiftLogger {
@@ -1881,15 +2596,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.FamilyInfoLookupBagContract : URLBagContract {
 
 	// Properties
-	let backing : AMSBagProtocol // +0x18 (0x8)
+	let backing : AMSBagProtocol
 
 	// ObjC -> Swift bridged methods
-	0xcbc60  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
-	0xcbdc0  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81a6c000b6118 (0x26c000b6118) in binary!
+	0x81668  @objc FamilyInfoLookupBagContract.(null) <stripped>
+WARNING: couldn't find address 0x108000000c (0x108000000c) in binary!
+	0xdcffffa9e0  @objc FamilyInfoLookupBagContract.(null) <stripped>
 
 	// Swift methods
-	0xcbce0  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
+	0x12fa30  func <stripped> // getter 
  }
+
+ struct JetEngine.MetricsInspectorHTTPServer {
+
+	// Properties
+	var hostName : String // +0x0
+	var port : Int // +0x10
+ }
+
+ enum JetEngine.JetpackSignerError {
+
+	// Properties
+	case unknownError  
+ }
+
+ struct JetEngine.JetpackSigner { }
 
  struct JetEngine.JSTypedArray {
 
@@ -1914,23 +2646,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetEngine.RunLoopWorkerThread : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let name : String // +0x10 (0x10)
-	let stateLock : NSLock // +0x20 (0x8)
-	var runLoopStorage : Atomic // +0x28 (0x8)
-	var source : CFRunLoopSource // +0x30 (0x8)
-	var tasks : [()] // +0x38 (0x8)
+	let name : String
+	let stateLock : NSLock
+	var runLoopStorage : Atomic
+	var source : CFRunLoopSource
+	var tasks : [()]
 
 	// Swift methods
-	0xcdb30  class func RunLoopWorkerThread.__allocating_init(name:) // init 
-	0xcdde0  func RunLoopWorkerThread.isRunning.getter // getter 
-	0xcdea0  func RunLoopWorkerThread.start() // method 
-	0xce1a0  func RunLoopWorkerThread.stop() // method 
-	0xce360  func <stripped> // method 
-	0xce960  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
-	0xcf130  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0xcf4d0  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0xcf5f0  func RunLoopWorkerThread.schedule(task:) // method 
-	0xcf7d0  func RunLoopWorkerThread.description.getter // getter 
+	0x132ef0  class func RunLoopWorkerThread.__allocating_init(name:) // init 
+	0x133080  func <stripped> // getter 
+	0x133120  func <stripped> // method 
+	0x1333d0  func <stripped> // method 
+	0x133580  func <stripped> // method 
+	0x133b20  func <stripped> // method 
+	0x133ca0  func <stripped> // method 
+	0x133e90  func <stripped> // method 
+	0x134210  func <stripped> // method 
+	0x134320  func <stripped> // method 
+	0x1344f0  func <stripped> // getter 
  }
 
  struct JetEngine.PendingTask {
@@ -1941,20 +2674,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.ImmutableBox {
  class JetEngine.MutableBox {
- enum JetEngine.DiffableData { }
-
  struct JetEngine.EventTimeMetricsFieldProvider { }
 
  class JetEngine.MetricsLogger : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let loggerName : String // +0x10 (0x10)
-	let recorder : MetricsEventRecorder // +0x20 (0x28)
-	let eventTopic : String // +0x48 (0x10)
-	let sampling : MetricsSamplingLottery // +0x58 (0x30)
+	let loggerName : String
+	let recorder : MetricsEventRecorder
+	let eventTopic : String
+	let sampling : MetricsSamplingLottery
 
 	// Swift methods
-	0xd2fb0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
+	0x135670  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
  }
 
  struct JetEngine.Configuration {
@@ -1964,6 +2695,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var eventTopic : String // +0x28
 	var samplingPercentage : Double // +0x38
 	var samplingDuration : Double // +0x40
+ }
+
+ class JetEngine.PersistentPipelineBackoff : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let id : √s
+	let factory : PipelineBackoff
+
+	// Swift methods
+ }
+
+ class JetEngine.ImpressionsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var parent : ImpressionsCalculator
+	var itemsByElementID : ID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let impressionableThreshold : ]ì
+	let tracker : ImpressionsTracker
+	let parentItemID : ID
+	var isVisible : Bool
+	var viewBounds : CGRect
+
+	// Swift methods
+ }
+
+ class JetEngine.ReadFilePhase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ enum JetEngine.PackageEncryptionError {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case boringSSLCryptoError : -]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case commonCryptoError : -]
+	case invalidKey  
+	case missingOrInvalidTag  
+	case invalidState  
+	case randomNumberGenerationFailed  
+	case unknown  
  }
 
  struct JetEngine.WritableStateLens {
@@ -1979,36 +2753,51 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mescalContract : AMSMescalBagContract // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd5920  @objc URLBagContract.guidRegexes <stripped>
-	0xd5950  @objc URLBagContract.guidSchemes <stripped>
-	0xd5980  @objc URLBagContract.storefrontSuffix <stripped>
-	0xd59b0  @objc URLBagContract.trustedDomains <stripped>
-	0xd59e0  @objc URLBagContract.metricsContract <stripped>
-	0xd5a00  @objc URLBagContract.mescalContract <stripped>
-	0xd5a50  @objc URLBagContract.TLSSamplingPercentage <stripped>
-	0xd5a80  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
-	0xd5ab0  @objc URLBagContract.TFOSamplingPercentage <stripped>
-	0xd5ae0  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
-	0xd5b10  @objc URLBagContract.apsEnabledPatterns <stripped>
-	0xd5b40  @objc URLBagContract.apsSamplingPercent <stripped>
-	0xd5b70  @objc URLBagContract.metricsURL <stripped>
-	0xd5ba0  @objc URLBagContract.metricsDictionary <stripped>
-	0xd5ca0  @objc URLBagContract.init <stripped>
-	0xd5d00  @objc URLBagContract..cxx_destruct <stripped>
+WARNING: couldn't find address 0x81a4c000b60f0 (0x24c000b60f0) in binary!
+	0x81a40  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x81a34000b60c8 (0x234000b60c8) in binary!
+	0x81a28  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x81a1c000b60a0 (0x21c000b60a0) in binary!
+	0x81a10  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x81a04000b6078 (0x204000b6078) in binary!
+	0x819f8  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x819ec000b6050 (0x1ec000b6050) in binary!
+	0x819e0  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x819d4000b6028 (0x1d4000b6028) in binary!
+	0x819c8  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x819bc000b6000 (0x1bc000b6000) in binary!
+	0x819b0  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x819a4000b61c0 (0x1a4000b61c0) in binary!
+	0x815a0  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x54a3a4d4152  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x502020656e69676e (0x656e69676e) in binary!
+	0x1676e457465  @objc URLBagContract.(null) <stripped>
+	0x0  @objc URLBagContract.ç}»Iâ’E1‰ˇ÷MÖ‰t7Iã^Hã5†Q <stripped>
+WARNING: couldn't find address 0x4530000043300000 (0x43300000) in binary!
+	0x0  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x4530000000000000 (0x0) in binary!
+	0x0  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x4045800000000000 (0x0) in binary!
+	0x0  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x3fcae00d3f800000 (0xd3f800000) in binary!
+	0x3b440257007  @objc URLBagContract.(null) <stripped>
+WARNING: couldn't find address 0x404ae00d40400000 (0xd40400000) in binary!
+	0x40140657007  @objc URLBagContract.(null) <stripped>
 
 	// Swift methods
-	0xd5860  class func URLBagContract.__allocating_init(_:) // init 
-	0xd55a0  func URLBagContract.guidRegexes.getter // getter 
-	0xd55d0  func URLBagContract.guidSchemes.getter // getter 
-	0xd5600  func URLBagContract.storefrontSuffix.getter // getter 
-	0xd5630  func URLBagContract.trustedDomains.getter // getter 
-	0xd5660  func URLBagContract.metricsContract.getter // getter 
-	0xd5680  func URLBagContract.tlsSamplingPercentage.getter // getter 
-	0xd56b0  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
-	0xd56e0  func URLBagContract.tfoSamplingPercentage.getter // getter 
-	0xd5710  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
-	0xd5740  func URLBagContract.apsEnabledPatterns.getter // getter 
-	0xd5770  func URLBagContract.apsSamplingPercent.getter // getter 
-	0xd57a0  func URLBagContract.metricsURL.getter // getter 
-	0xd57d0  func URLBagContract.metricsDictionary.getter // getter 
+	0x13c890  class func URLBagContract.__allocating_init(_:) // init 
+	0x13c570  func <stripped> // getter 
+	0x13c5a0  func <stripped> // getter 
+	0x13c5d0  func <stripped> // getter 
+	0x13c600  func <stripped> // getter 
+	0x13c630  func <stripped> // getter 
+	0x13c650  func <stripped> // getter 
+	0x13c680  func <stripped> // getter 
+	0x13c6b0  func <stripped> // getter 
+	0x13c6e0  func <stripped> // getter 
+	0x13c710  func <stripped> // getter 
+	0x13c740  func <stripped> // getter 
+	0x13c770  func <stripped> // getter 
+	0x13c800  func <stripped> // getter 
  }

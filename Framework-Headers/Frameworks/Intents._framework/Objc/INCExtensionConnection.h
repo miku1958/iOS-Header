@@ -6,52 +6,79 @@
 
 #import <objc/NSObject.h>
 
-@class CLInUseAssertion, INCAppProxy, INCDisplayLayoutMonitorObserver, INCExtensionTransaction, INIntent, INWatchdogTimer, NSArray;
-@protocol OS_dispatch_queue;
+#import <IntentsCore/INXPCListenerEndpointProvider-Protocol.h>
+#import <IntentsCore/NSXPCListenerDelegate-Protocol.h>
 
-@interface INCExtensionConnection : NSObject
+@class FBSDisplayLayoutMonitor, INCAppProxy, INCDisplayLayoutMonitorObserver, INCExtensionTransaction, INIntent, INWatchdogTimer, NSArray, NSString, NSXPCConnection, NSXPCInterface, NSXPCListener, RBSAssertion;
+@protocol INIntentBackgroundHandlingAssertion, OS_dispatch_queue;
+
+@interface INCExtensionConnection : NSObject <NSXPCListenerDelegate, INXPCListenerEndpointProvider>
 {
+    FBSDisplayLayoutMonitor *_displayLayoutMonitor;
     INCDisplayLayoutMonitorObserver *_layoutObserver;
     INWatchdogTimer *_requestTimer;
-    CLInUseAssertion *_inUseAssertion;
+    id<INIntentBackgroundHandlingAssertion> _backgroundHandlingAssertion;
+    RBSAssertion *_processAssertion;
     BOOL _shouldObserveLayout;
     NSObject<OS_dispatch_queue> *_queue;
     INCExtensionTransaction *_transaction;
+    NSXPCListener *_xpcListener;
     INCAppProxy *_appProxy;
     long long _supportedExtensionTypes;
     NSArray *_extensionInputItems;
     double _requestTimeoutInterval;
     CDUnknownBlockType _timeoutHandler;
     CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _appHandler;
     CDUnknownBlockType _remoteExtensionProxyProvider;
+    NSXPCInterface *_xpcInterface;
+    NSXPCConnection *_xpcConnection;
+    id _xpcObject;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
 @property (nonatomic, setter=_setShouldObserveLayout:) BOOL _shouldObserveLayout; // @synthesize _shouldObserveLayout;
 @property (readonly, nonatomic) INCExtensionTransaction *_transaction; // @synthesize _transaction;
+@property (copy, nonatomic) CDUnknownBlockType appHandler; // @synthesize appHandler=_appHandler;
 @property (readonly, nonatomic) INCAppProxy *appProxy; // @synthesize appProxy=_appProxy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *extensionInputItems; // @synthesize extensionInputItems=_extensionInputItems;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) INIntent *intent;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType remoteExtensionProxyProvider; // @synthesize remoteExtensionProxyProvider=_remoteExtensionProxyProvider;
 @property (nonatomic) double requestTimeoutInterval; // @synthesize requestTimeoutInterval=_requestTimeoutInterval;
 @property (nonatomic) BOOL requiresTCC;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long supportedExtensionTypes; // @synthesize supportedExtensionTypes=_supportedExtensionTypes;
 @property (copy, nonatomic) CDUnknownBlockType timeoutHandler; // @synthesize timeoutHandler=_timeoutHandler;
+@property (strong, nonatomic, setter=setXPCConnection:) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (strong, nonatomic, setter=setXPCInterface:) NSXPCInterface *xpcInterface; // @synthesize xpcInterface=_xpcInterface;
+@property (readonly, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
+@property (strong, nonatomic, setter=setXPCObject:) id xpcObject; // @synthesize xpcObject=_xpcObject;
 
 + (void)initialize;
 - (void).cxx_destruct;
 - (BOOL)_cancelRequestTimer;
+- (void)_invalidateAssertions;
+- (void)_invalidateDisplayLayoutMonitor;
 - (void)_invalidateInUseAssertion;
+- (void)_invalidateRunningBoardAssertion;
 - (void)_startRequestTimerWithExtensionProxy:(id)arg1;
-- (void)_takeInUseAssertionForBundleIdentifier:(id)arg1 withReason:(id)arg2;
+- (void)_takeAssertionsForIntent:(id)arg1 extensionBundleIdentifier:(id)arg2 processIdentifier:(int)arg3;
+- (void)_takeInUseAssertionForIntent:(id)arg1 extensionBundleIdentifier:(id)arg2;
+- (void)_takeRunningBoardAssertionForProcessIdentifier:(int)arg1;
 - (double)_timeoutIntervalForTransactionState:(id)arg1;
+- (void)dealloc;
 - (id)initWithIntent:(id)arg1;
 - (id)initWithIntent:(id)arg1 remoteProxyProvider:(CDUnknownBlockType)arg2;
 - (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 donateInteraction:(BOOL)arg3 groupIdentifier:(id)arg4 remoteProxyProvider:(CDUnknownBlockType)arg5;
 - (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 remoteProxyProvider:(CDUnknownBlockType)arg3;
+- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)reset;
 - (void)resumeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)xpcListenerEndpointWithInterface:(id)arg1 object:(id)arg2;
 
 @end
 

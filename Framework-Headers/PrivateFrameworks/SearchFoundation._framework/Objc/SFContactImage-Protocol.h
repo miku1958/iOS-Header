@@ -6,10 +6,11 @@
 
 #import <SearchFoundation/SFImage-Protocol.h>
 
-@class NSArray, NSData, NSDictionary;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SFContactImage <SFImage>
 
+@property (copy, nonatomic) NSString *appIconBadgeBundleIdentifier;
 @property (copy, nonatomic) NSArray *contactIdentifiers;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) NSData *jsonData;

@@ -56,19 +56,20 @@
 @property (readonly, nonatomic) NSString *version;
 
 - (void).cxx_destruct;
-- (id)_getControllerFromReusePoolForChatItem:(id)arg1;
-- (id)balloonControllerForChatItem:(id)arg1;
+- (id)_getControllerFromReusePoolForChatItem:(id)arg1 wantsOverlayLayout:(BOOL)arg2;
+- (id)balloonControllerForChatItem:(id)arg1 wantsOverlayLayout:(BOOL)arg2;
+- (id)balloonControllerKeyForMessageGUID:(id)arg1 wantsOverlayLayout:(BOOL)arg2;
 - (id)dataSourceForPluginPayload:(id)arg1;
 - (void)dealloc;
-- (id)existingBalloonControllerWithMessageGUID:(id)arg1;
+- (id)existingBalloonControllerWithMessageGUID:(id)arg1 wantsOverlayLayout:(BOOL)arg2;
 - (id)existingDataSourceForMessageGUID:(id)arg1;
 - (id)init;
 - (id)initWithBundle:(id)arg1;
 - (id)initWithBundle:(id)arg1 app:(id)arg2;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
 - (BOOL)isStickerPackOnly;
-- (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2;
-- (void)removeController:(id)arg1 forChatItem:(id)arg2;
+- (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2 wantsOverlayLayout:(BOOL)arg3;
+- (void)removeController:(id)arg1 forChatItem:(id)arg2 wantsOverlayLayout:(BOOL)arg3;
 - (void)setIdentifier:(id)arg1;
 - (BOOL)shouldShowForRecipients:(id)arg1;
 - (BOOL)supportsControllerReuse;

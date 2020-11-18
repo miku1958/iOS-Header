@@ -59,7 +59,6 @@
 - (void)_createTemporaryDigitsIfNeededWithStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (id)_digitLayersForStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (void)_layoutHourMarkersLayers:(id)arg1 style:(unsigned long long)arg2 dialShape:(unsigned long long)arg3;
-- (id)_setupTickLayerForColor:(id)arg1;
 - (void)addCircularTicksIfNeeded:(id)arg1;
 - (void)addFullscreenTicksIfNeeded:(id)arg1;
 - (id)allTicksForStatus:(BOOL)arg1;

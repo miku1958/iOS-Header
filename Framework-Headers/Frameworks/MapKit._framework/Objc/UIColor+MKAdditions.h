@@ -9,6 +9,8 @@
 @interface UIColor (MKAdditions)
 + (BOOL)_getColorComponent:(double *)arg1 fromSubString:(id)arg2;
 + (id)_mapkit_colorForTransitLine:(id)arg1;
++ (id)_mapkit_colorNamed:(id)arg1;
++ (id)_mapkit_colorNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)_mapkit_userLocationAccuracyRingFillColor;
 + (id)_mapkit_userLocationAccuracyRingStrokeColor;
 + (id)_mapkit_userLocationAccuracyRingStrokeColorSatellite;

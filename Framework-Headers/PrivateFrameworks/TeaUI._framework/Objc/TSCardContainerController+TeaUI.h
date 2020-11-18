@@ -10,11 +10,17 @@
 
 @property (nonatomic, readonly) BOOL shouldAutomaticallyForwardAppearanceMethods;
 
+- (BOOL)accessibilityPerformEscape;
+- (void)collapseCards:(CDUnknownBlockType)arg1;
+- (void)expandCards:(CDUnknownBlockType)arg1;
+- (void)popCards;
+- (void)pushCardWithViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

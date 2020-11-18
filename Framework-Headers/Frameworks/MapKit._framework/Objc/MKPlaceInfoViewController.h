@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     MKPlaceSectionRowView *_selectedRow;
     BOOL _offlineMode;
     BOOL _bottomHairlineHidden;
+    unsigned long long _placecardOptions;
     MKMapItem *_mapItem;
     id<MKPlaceActionManagerProtocol> _actionDelegate;
     id<_MKPlaceItem> _placeItem;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (nonatomic) BOOL offlineMode; // @synthesize offlineMode=_offlineMode;
 @property (strong, nonatomic) id<_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
+@property (nonatomic) unsigned long long placecardOptions; // @synthesize placecardOptions=_placecardOptions;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

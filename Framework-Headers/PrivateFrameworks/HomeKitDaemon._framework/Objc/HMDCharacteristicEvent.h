@@ -23,6 +23,7 @@
 - (void)_handleUpdateRequest:(id)arg1;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)analyticsTriggerEventData;
 - (id)createPayload;
 - (id)description;
 - (id)dumpState;
@@ -30,7 +31,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end

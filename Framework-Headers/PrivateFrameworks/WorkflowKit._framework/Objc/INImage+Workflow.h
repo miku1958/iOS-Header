@@ -7,18 +7,21 @@
 #import <Intents/INImage.h>
 
 #import <WorkflowKit/WFCodableAttributeContentConvertible-Protocol.h>
+#import <WorkflowKit/WFCodableAttributeTransformable-Protocol.h>
 
 @class NSString;
 
-@interface INImage (Workflow) <WFCodableAttributeContentConvertible>
+@interface INImage (Workflow) <WFCodableAttributeContentConvertible, WFCodableAttributeTransformable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)imageWithWFImage:(id)arg1;
 + (Class)wf_contentItemClass;
 - (id)wf_contentItemWithCodableAttribute:(id)arg1;
+- (id)wf_image;
 - (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @end
 

@@ -15,6 +15,7 @@
     BOOL _titleColorFollowsTintColor;
     BOOL _valueColorFollowsTintColor;
     BOOL _allowCopyValueToPasteboard;
+    BOOL _useVerticalLayoutOnly;
     UILabel *_titleLabel;
     UILabel *_valueLabel;
     UIStackView *_labelsStackView;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property (nonatomic) BOOL useVerticalLayoutOnly; // @synthesize useVerticalLayoutOnly=_useVerticalLayoutOnly;
 @property (nonatomic) BOOL valueColorFollowsTintColor; // @synthesize valueColorFollowsTintColor=_valueColorFollowsTintColor;
 @property (strong, nonatomic) UIFont *valueFont; // @synthesize valueFont=_valueFont;
 @property (readonly, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
@@ -50,6 +52,7 @@
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (double)labelSpacing;
 - (void)layoutMarginsDidChange;
 - (void)prepareForReuse;
 - (void)setDisabled:(BOOL)arg1;

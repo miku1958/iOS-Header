@@ -19,6 +19,7 @@
 }
 
 + (void)initialize;
++ (id)sharedAppService;
 - (void).cxx_destruct;
 - (void)_cancelAwakeNotifyToken;
 - (void)activate;

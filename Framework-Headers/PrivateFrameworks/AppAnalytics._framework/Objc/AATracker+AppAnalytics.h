@@ -6,7 +6,50 @@
 
 #import <AppAnalytics/AATracker.h>
 
+@class NSArray;
+
 @interface AATracker (AppAnalytics)
+
+@property (nonatomic, readonly) NSArray *debugPath;
+@property (nonatomic, readonly) NSArray *path;
+
+- (id)chainWithName:(id)arg1;
+- (id)chainWithName:(id)arg1 identifier:(id)arg2;
+- (id)delayedSubmitEventType:(Class)arg1;
+- (id)delayedSubmitEventType:(Class)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)delayedSubmitEventType:(Class)arg1 onlyIfTimed:(BOOL)arg2;
+- (id)delayedSubmitEventType:(Class)arg1 onlyIfTimed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)delayedSubmitRawEvent:(id)arg1;
+- (id)delayedSubmitRawEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)delayedSubmitRawEvent:(id)arg1 onlyIfTimed:(BOOL)arg2;
+- (id)delayedSubmitRawEvent:(id)arg1 onlyIfTimed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)enterGroup;
+- (void)enterGroupWithName:(id)arg1;
+- (void)explicitSubmitEvent:(Class)arg1 onlyIfTimed:(BOOL)arg2 submitTime:(id)arg3;
+- (void)explicitSubmitEvent:(Class)arg1 onlyIfTimed:(BOOL)arg2 submitTime:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)explicitSubmitEvent:(Class)arg1 submitTime:(id)arg2;
+- (void)explicitSubmitEvent:(Class)arg1 submitTime:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)explicitSubmitRawEvent:(id)arg1 onlyIfTimed:(BOOL)arg2 submitTime:(id)arg3;
+- (void)explicitSubmitRawEvent:(id)arg1 onlyIfTimed:(BOOL)arg2 submitTime:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)explicitSubmitRawEvent:(id)arg1 submitTime:(id)arg2;
+- (void)explicitSubmitRawEvent:(id)arg1 submitTime:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)ifSession:(CDUnknownBlockType)arg1;
+- (void)leaveGroup;
+- (id)onSessionChangeWithBlock:(CDUnknownBlockType)arg1;
+- (void)popDataEventByName:(id)arg1;
+- (void)popDataEventType:(Class)arg1;
+- (void)pushDataEvent:(id)arg1 traits:(id)arg2 file:(id)arg3 line:(long long)arg4;
+- (void)removeSessionObserversForObject:(id)arg1;
+- (void)resume;
+- (void)submitEventType:(Class)arg1;
+- (void)submitEventType:(Class)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)submitEventType:(Class)arg1 onlyIfTimed:(BOOL)arg2;
+- (void)submitEventType:(Class)arg1 onlyIfTimed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)submitRawEvent:(id)arg1;
+- (void)submitRawEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)submitRawEvent:(id)arg1 onlyIfTimed:(BOOL)arg2;
+- (void)submitRawEvent:(id)arg1 onlyIfTimed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)suspend;
 - (void)timeEventType:(Class)arg1;
 - (void)timeEventType:(Class)arg1 startTime:(id)arg2;
 - (void)timeEventType:(Class)arg1 submitAndRestartWithSession:(BOOL)arg2;
@@ -15,5 +58,7 @@
 - (void)timeRawEvent:(id)arg1 startTime:(id)arg2;
 - (void)timeRawEvent:(id)arg1 submitAndRestartWithSession:(BOOL)arg2;
 - (void)timeRawEvent:(id)arg1 submitAndRestartWithSession:(BOOL)arg2 startTime:(id)arg3;
+- (void)transactionWithBlock:(CDUnknownBlockType)arg1;
+- (void)whenSession:(CDUnknownBlockType)arg1;
 @end
 

@@ -33,8 +33,10 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
 
 + (BOOL)updateModelAtURL:(id)arg1 trainingData:(id)arg2 configuration:(id)arg3 writeToURL:(id)arg4 error:(id *)arg5;
++ (id)updateTaskForModelAtURL:(id)arg1 trainingData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 + (id)updateTaskForModelAtURL:(id)arg1 trainingData:(id)arg2 configuration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 + (id)updateTaskForModelAtURL:(id)arg1 trainingData:(id)arg2 configuration:(id)arg3 progressHandlers:(id)arg4 error:(id *)arg5;
++ (id)updateTaskForModelAtURL:(id)arg1 trainingData:(id)arg2 progressHandlers:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_completionHandlerBlock;
 - (void)_invokeProgressHandlerForContext:(id)arg1;

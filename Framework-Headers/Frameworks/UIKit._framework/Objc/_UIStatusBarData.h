@@ -43,6 +43,7 @@
     _UIStatusBarDataEntry *_airPlayEntry;
     _UIStatusBarDataEntry *_carPlayEntry;
     _UIStatusBarDataEntry *_alarmEntry;
+    _UIStatusBarDataEntry *_sensorActivityEntry;
     _UIStatusBarDataIntegerEntry *_volumeEntry;
     _UIStatusBarDataBackgroundActivityEntry *_backgroundActivityEntry;
     _UIStatusBarDataStringEntry *_backNavigationEntry;
@@ -75,6 +76,7 @@
 @property (copy, nonatomic) _UIStatusBarDataBoolEntry *radarEntry; // @synthesize radarEntry=_radarEntry;
 @property (copy, nonatomic) _UIStatusBarDataEntry *rotationLockEntry; // @synthesize rotationLockEntry=_rotationLockEntry;
 @property (copy, nonatomic) _UIStatusBarDataCellularEntry *secondaryCellularEntry; // @synthesize secondaryCellularEntry=_secondaryCellularEntry;
+@property (copy, nonatomic) _UIStatusBarDataEntry *sensorActivityEntry; // @synthesize sensorActivityEntry=_sensorActivityEntry;
 @property (copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry; // @synthesize shortTimeEntry=_shortTimeEntry;
 @property (copy, nonatomic) _UIStatusBarDataEntry *studentEntry; // @synthesize studentEntry=_studentEntry;
 @property (copy, nonatomic) _UIStatusBarDataTetheringEntry *tetheringEntry; // @synthesize tetheringEntry=_tetheringEntry;

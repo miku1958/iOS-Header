@@ -38,8 +38,6 @@
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)managedEntityName;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 

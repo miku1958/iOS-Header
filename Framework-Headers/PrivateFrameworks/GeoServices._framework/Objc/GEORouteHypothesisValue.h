@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedWaypoint, GEOMapServiceTraits, GEORouteHypothesis, GEORouteHypothesisMonitor, NSDate;
+@class GEOComposedWaypoint, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesisMonitor, NSDate;
 
 @interface GEORouteHypothesisValue : NSObject <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     GEOComposedWaypoint *_origin;
     GEOComposedWaypoint *_destination;
     int _transportType;
+    GEORouteAttributes *_routeAttributes;
     NSDate *_arrivalDate;
     NSDate *_expirationDate;
     GEOMapServiceTraits *_traits;
@@ -35,9 +36,10 @@
 @property (readonly, nonatomic) GEORouteHypothesisMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
 @property (nonatomic) BOOL prediction; // @synthesize prediction=_prediction;
+@property (copy, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property (nonatomic) long long rowId; // @synthesize rowId=_rowId;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (nonatomic) double updatedTimeStamp; // @synthesize updatedTimeStamp=_updatedTimeStamp;
 @property (nonatomic) double valueRefreshTimeStamp; // @synthesize valueRefreshTimeStamp=_valueRefreshTimeStamp;
 
@@ -49,7 +51,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 expirationDate:(id)arg5 traceName:(id)arg6 traits:(id)arg7;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 arrivalDate:(id)arg3 expirationDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6 routeAttributes:(id)arg7;
 
 @end
 

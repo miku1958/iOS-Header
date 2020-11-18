@@ -23,9 +23,7 @@
         unsigned int has_tileKey:1;
         unsigned int read_ess:1;
         unsigned int read_etag:1;
-        unsigned int wrote_ess:1;
-        unsigned int wrote_etag:1;
-        unsigned int wrote_tileKey:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,9 +36,6 @@
 + (Class)essType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsEss:(id)arg1;
-- (void)_readEss;
-- (void)_readEtag;
 - (void)addEss:(id)arg1;
 - (void)clearEss;
 - (void)copyTo:(id)arg1;
@@ -52,7 +47,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

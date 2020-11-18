@@ -15,6 +15,7 @@
 - (id)__imFirstObject;
 - (void)__imForEach:(CDUnknownBlockType)arg1;
 - (BOOL)__imIsMutable;
+- (id)__imMapToDictionary:(CDUnknownBlockType)arg1;
 - (id)__imSetFromArray;
 - (id)_copyForEnumerating;
 - (BOOL)_hasSameMembers:(id)arg1;

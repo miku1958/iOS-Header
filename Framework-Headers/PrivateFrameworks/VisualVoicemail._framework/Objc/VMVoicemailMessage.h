@@ -20,6 +20,7 @@
     unsigned int _flags;
     unsigned int _identifier;
     unsigned int _protocolVersion;
+    NSString *_receiverLabelID;
     NSString *_receiverDestinationID;
     unsigned int _remoteUID;
     NSString *_senderDestinationID;
@@ -50,6 +51,7 @@
 @property (nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasProtocolVersion;
 @property (readonly, nonatomic) BOOL hasReceiverDestinationID;
+@property (readonly, nonatomic) BOOL hasReceiverLabelID;
 @property (nonatomic) BOOL hasRemoteUID;
 @property (readonly, nonatomic) BOOL hasSenderDestinationID;
 @property (readonly, nonatomic) BOOL hasTranscript;
@@ -57,6 +59,7 @@
 @property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned int protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (strong, nonatomic) NSString *receiverDestinationID; // @synthesize receiverDestinationID=_receiverDestinationID;
+@property (strong, nonatomic) NSString *receiverLabelID; // @synthesize receiverLabelID=_receiverLabelID;
 @property (nonatomic) unsigned int remoteUID; // @synthesize remoteUID=_remoteUID;
 @property (strong, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;
 @property (strong, nonatomic) VMTranscriptMessage *transcript; // @synthesize transcript=_transcript;

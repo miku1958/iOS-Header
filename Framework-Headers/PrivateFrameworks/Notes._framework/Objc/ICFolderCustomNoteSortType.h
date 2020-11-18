@@ -28,10 +28,14 @@
 + (BOOL)isTagADirection:(long long)arg1;
 + (BOOL)isTagAnOrder:(long long)arg1;
 + (id)noteSortTypeDefaultAscending;
++ (id)rd_actionItemTitleForOrder:(unsigned long long)arg1;
 + (id)segmentItemTitleForOrder:(unsigned long long)arg1;
 + (unsigned long long)sortTypeDirectionForTag:(unsigned long long)arg1;
 + (unsigned long long)sortTypeOrderForTag:(unsigned long long)arg1;
 + (id)sortTypeOrderValues;
++ (id)stringNameForDirection:(unsigned long long)arg1 order:(unsigned long long)arg2;
++ (unsigned long long)tagForSortTypeDirection:(unsigned long long)arg1;
++ (unsigned long long)tagForSortTypeOrder:(unsigned long long)arg1;
 - (id)currentActionItemTitle;
 - (id)debugStringNameForOrder:(unsigned long long)arg1;
 - (id)description;
@@ -39,7 +43,6 @@
 - (id)folderNoteSortTypeByChangingOrder:(unsigned long long)arg1;
 - (BOOL)isAscending;
 - (BOOL)isEqual:(id)arg1;
-- (id)stringNameForDirection:(unsigned long long)arg1 order:(unsigned long long)arg2;
 
 @end
 

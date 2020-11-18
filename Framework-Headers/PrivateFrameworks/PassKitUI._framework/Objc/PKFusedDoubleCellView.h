@@ -91,6 +91,7 @@
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (long long)viewType;
 
 @end
 

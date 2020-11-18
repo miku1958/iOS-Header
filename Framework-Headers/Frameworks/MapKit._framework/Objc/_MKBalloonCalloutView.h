@@ -6,7 +6,7 @@
 
 #import <MapKit/MKCalloutView.h>
 
-@class CALayer, CAShapeLayer, UIColor, UIImage, UIImageView, UIView;
+@class UIColor, UIImage, UIImageView, UIView, _MKBezierPathView;
 
 @interface _MKBalloonCalloutView : MKCalloutView
 {
@@ -15,8 +15,7 @@
     UIColor *_balloonTintColor;
     UIColor *_strokeColor;
     UIColor *_innerStrokeColor;
-    CAShapeLayer *_balloonShape;
-    CALayer *_balloonInnerStrokeLayer;
+    UIColor *_imageTintColor;
     UIImageView *_balloonBodyImageView;
     UIImageView *_tailView;
     UIView *_innerBackgroundView;
@@ -26,6 +25,10 @@
     BOOL _originatesAsSmallBalloon;
     double _croppedImageScale;
     UIImageView *_contentViewMaskView;
+    _MKBezierPathView *_backgroundView;
+    BOOL _centerAnnotationWhenOffscreen;
+    BOOL _showsArrow;
+    BOOL _dismissed;
     UIView *_contentView;
     long long _style;
     UIImage *_image;
@@ -35,8 +38,10 @@
 @property (copy, nonatomic) UIColor *balloonTintColor; // @synthesize balloonTintColor=_balloonTintColor;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (copy, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (copy, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
 @property (copy, nonatomic) UIColor *innerStrokeColor; // @synthesize innerStrokeColor=_innerStrokeColor;
 @property (nonatomic) BOOL originatesAsSmallBalloon; // @synthesize originatesAsSmallBalloon=_originatesAsSmallBalloon;
+@property (nonatomic) BOOL showsArrow; // @synthesize showsArrow=_showsArrow;
 @property (nonatomic) double smallBalloonScale; // @synthesize smallBalloonScale=_smallBalloonScale;
 @property (copy, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
@@ -44,9 +49,11 @@
 - (void).cxx_destruct;
 - (struct CGRect)_centerFrame;
 - (void)_commonInit;
-- (id)_generateInnerStrokeImage;
+- (void)_configureForArrowStateWithDuration:(double)arg1;
 - (void)_handleTapOnCallout:(id)arg1;
+- (struct CGRect)_idealFrame;
 - (double)_innerDiameter;
+- (void)_showAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_updateCroppedImage;
 - (void)_updateStyle;
 - (BOOL)calloutContainsPoint:(struct CGPoint)arg1;
@@ -57,9 +64,11 @@
 - (id)initWithStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setShowsArrow:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)showCalloutAnimated:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithNewCalloutOffset;
 
 @end
 

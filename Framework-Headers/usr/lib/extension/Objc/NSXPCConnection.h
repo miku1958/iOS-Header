@@ -8,28 +8,29 @@
 
 #import <Foundation/NSXPCProxyCreating-Protocol.h>
 
-@class NSString, NSXPCInterface, NSXPCListenerEndpoint;
-@protocol NSObject, OS_dispatch_queue;
+@class NSString, NSXPCInterface, NSXPCListenerEndpoint, _NSXPCConnectionClassCache, _NSXPCConnectionExpectedReplies, _NSXPCConnectionExportedObjectTable, _NSXPCConnectionImportInfo, _NSXPCConnectionRequestedReplies;
+@protocol NSObject, OS_dispatch_queue, OS_xpc_object;
 
 @interface NSXPCConnection : NSObject <NSXPCProxyCreating>
 {
-    void *_xconnection;
-    id _repliesExpected;
+    CDUnion_12533362 _connection;
+    _NSXPCConnectionExpectedReplies *_repliesExpected;
     NSObject<OS_dispatch_queue> *_userQueue;
     unsigned int _state;
-    unsigned int _state2;
+    _Atomic unsigned int _state2;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
-    id _exportInfo;
-    id _repliesRequested;
-    id _importInfo;
+    _NSXPCConnectionExportedObjectTable *_exportInfo;
+    _NSXPCConnectionRequestedReplies *_repliesRequested;
+    _NSXPCConnectionImportInfo *_importInfo;
     id<NSObject> _otherInfo;
-    id _reserved1;
+    _Atomic id _delegate;
     NSXPCInterface *_remoteObjectInterface;
     NSString *_serviceName;
     NSXPCListenerEndpoint *_endpoint;
-    id _eCache;
-    id _dCache;
+    _NSXPCConnectionClassCache *_eCache;
+    _NSXPCConnectionClassCache *_dCache;
+    NSObject<OS_xpc_object> *_bootstrap;
     struct os_unfair_lock_s _lock;
 }
 
@@ -46,44 +47,35 @@
 @property (readonly, strong) id remoteObjectProxy;
 @property (readonly, copy) NSString *serviceName;
 
-+ (id)_currentBoost;
 + (void)beginTransaction;
 + (id)currentConnection;
 + (void)endTransaction;
-- (void)_addClassToDecodeCache:(Class)arg1;
-- (void)_addClassToEncodeCache:(Class)arg1;
-- (void)_addImportedProxy:(id)arg1;
 - (CDUnknownBlockType)_additionalInvalidationHandler;
 - (void)_cancelProgress:(unsigned long long)arg1;
 - (void)_decodeAndInvokeMessageWithEvent:(id)arg1 flags:(unsigned long long)arg2;
 - (void)_decodeAndInvokeReplyBlockWithEvent:(id)arg1 sequence:(unsigned long long)arg2 replyInfo:(id)arg3;
-- (BOOL)_decodeCacheContainsClass:(Class)arg1;
 - (void)_decodeProgressMessageWithData:(id)arg1 flags:(unsigned long long)arg2;
-- (BOOL)_encodeCacheContainsClass:(Class)arg1;
 - (id)_errorDescription;
-- (id)_exportTable;
-- (unsigned long long)_generationCount;
-- (id)_initWithPeerConnection:(id)arg1 name:(id)arg2 options:(unsigned long long)arg3;
 - (void)_killConnection:(int)arg1;
 - (void)_pauseProgress:(unsigned long long)arg1;
 - (id)_queue;
 - (Class)_remoteObjectInterfaceClass;
-- (void)_removeImportedProxy:(id)arg1;
 - (void)_resumeProgress:(unsigned long long)arg1;
 - (void)_sendDesistForProxy:(id)arg1;
 - (void)_sendInvocation:(id)arg1 orArguments:(id *)arg2 count:(unsigned long long)arg3 methodSignature:(id)arg4 selector:(SEL)arg5 withProxy:(id)arg6;
-- (void)_sendInvocation:(id)arg1 withProxy:(id)arg2;
-- (void)_sendProgressMessage:(id)arg1 forSequence:(unsigned long long)arg2;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3 arg2:(id)arg4;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3 arg2:(id)arg4 arg3:(id)arg5;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3 arg2:(id)arg4 arg3:(id)arg5 arg4:(id)arg6;
+- (void)_setBootstrapObject:(id)arg1 forKey:(id)arg2;
+- (void)_setLanguages:(id)arg1;
 - (void)_setQueue:(id)arg1;
 - (void)_setTargetUserIdentifier:(unsigned int)arg1;
 - (void)_setUUID:(id)arg1;
 - (id)_unboostingRemoteObjectProxy;
 - (id)_xpcConnection;
+- (void)activate;
 - (void)addBarrierBlock:(CDUnknownBlockType)arg1;
 - (CDStruct_4c969caf)auditToken;
 - (void)dealloc;

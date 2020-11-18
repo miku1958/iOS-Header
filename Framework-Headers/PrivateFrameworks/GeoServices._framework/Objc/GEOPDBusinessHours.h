@@ -34,14 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_message:1;
         unsigned int read_shortMessage:1;
         unsigned int read_weeklyHours:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_end:1;
-        unsigned int wrote_hoursThreshold:1;
-        unsigned int wrote_message:1;
-        unsigned int wrote_shortMessage:1;
-        unsigned int wrote_start:1;
-        unsigned int wrote_weeklyHours:1;
-        unsigned int wrote_hoursType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,11 +58,6 @@ __attribute__((visibility("hidden")))
 + (Class)weeklyHoursType;
 - (void).cxx_destruct;
 - (int)StringAsHoursType:(id)arg1;
-- (void)_addNoFlagsWeeklyHours:(id)arg1;
-- (void)_readHoursThreshold;
-- (void)_readMessage;
-- (void)_readShortMessage;
-- (void)_readWeeklyHours;
 - (void)addWeeklyHours:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearWeeklyHours;
@@ -81,7 +69,10 @@ __attribute__((visibility("hidden")))
 - (id)hoursTypeAsString:(int)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

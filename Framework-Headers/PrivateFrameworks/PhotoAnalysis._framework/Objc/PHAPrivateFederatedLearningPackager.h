@@ -13,18 +13,24 @@
     NSNumber *_clippingNorm;
     NSNumber *_normBinCount;
     DESPFLEncryptor *_encryptor;
+    struct _NSRange _privacyIdentifierRange;
+    struct _NSRange _privacyIdentifierSmallRange;
+    struct _NSRange _privacyIdentifierLargeRange;
 }
 
 @property (readonly, nonatomic) NSNumber *clippingNorm; // @synthesize clippingNorm=_clippingNorm;
 @property (strong, nonatomic) DESPFLEncryptor *encryptor; // @synthesize encryptor=_encryptor;
 @property (readonly, nonatomic) NSNumber *normBinCount; // @synthesize normBinCount=_normBinCount;
+@property (readonly, nonatomic) struct _NSRange privacyIdentifierLargeRange; // @synthesize privacyIdentifierLargeRange=_privacyIdentifierLargeRange;
+@property (readonly, nonatomic) struct _NSRange privacyIdentifierRange; // @synthesize privacyIdentifierRange=_privacyIdentifierRange;
+@property (readonly, nonatomic) struct _NSRange privacyIdentifierSmallRange; // @synthesize privacyIdentifierSmallRange=_privacyIdentifierSmallRange;
 
 - (void).cxx_destruct;
-- (BOOL)_addNoiseToPrePackagedResults:(id)arg1 shouldAddNoise:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)_addNoiseToPrePackagedResults:(float *)arg1 elementsCount:(id)arg2 shouldAddNoise:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_callPFLPrivatizeCustomNorm:(float *)arg1 elementsCount:(id)arg2 clippingNorm:(id)arg3 normBinCount:(id)arg4 privacyIdentifier:(id)arg5;
-- (id)_encryptFlattenedTrainingResults:(id)arg1 withEncryptionKey:(id)arg2 shouldEncrypt:(BOOL)arg3 error:(id *)arg4;
-- (id)_errorWithCode:(long long)arg1 withUnderlyingError:(id)arg2;
+- (id)_encryptFlattenedTrainingResults:(float *)arg1 elementsCount:(long long)arg2 withEncryptionKey:(id)arg3 shouldEncrypt:(BOOL)arg4 error:(id *)arg5;
 - (id)_flattenTrainingResults:(id)arg1;
+- (BOOL)_generateError:(id *)arg1 errorCode:(long long)arg2 errorMessage:(id)arg3 underlyingError:(id)arg4;
 - (id)dataPackageFromTrainingResults:(id)arg1 withEncryptionKey:(id)arg2 shouldAddNoise:(BOOL)arg3 shouldEncrypt:(BOOL)arg4 error:(id *)arg5;
 - (id)initWithClippingNorm:(id)arg1 normBinCount:(id)arg2;
 

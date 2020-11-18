@@ -10,7 +10,7 @@
 #import <TSDrawables/TSDResizingAwareInfo-Protocol.h>
 
 @class NSArray, NSString, TSDDrawableInfo, TSDGroupInfo, TSDInfoGeometry, TSPObject;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSDCounterRotateInfo : NSObject <TSDResizingAwareInfo, TSDContainerInfo>
 {
@@ -31,12 +31,13 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (readonly, weak, nonatomic) TSDGroupInfo *parentGroup; // @synthesize parentGroup=_parentGroup;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly) Class superclass;
 
 + (struct CGAffineTransform)counterTransformForTransformInRoot:(struct CGAffineTransform)arg1;

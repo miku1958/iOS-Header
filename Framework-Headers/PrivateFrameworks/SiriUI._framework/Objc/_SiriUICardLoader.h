@@ -26,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)_registerWithSearchFoundation;
-- (void)_unregisterWithSearchFoundaton;
+- (void)_unregisterWithSearchFoundation;
 - (BOOL)loadCard:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end

@@ -24,6 +24,7 @@
     BOOL _usesSocketMonitoring;
     BOOL _isExtension;
     int _preferredJetsamBand;
+    int _platform;
     NSString *_identifier;
     NSString *_path;
     NSString *_executablePath;
@@ -33,17 +34,18 @@
 }
 
 @property (readonly, nonatomic, getter=isBackgroundRefreshEnabled) BOOL backgroundRefreshEnabled; // @synthesize backgroundRefreshEnabled=_backgroundRefreshEnabled;
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier;
-@property (readonly, copy, nonatomic) NSString *bundlePath;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_path;
 @property (readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *environmentVariables; // @synthesize environmentVariables=_environmentVariables;
-@property (readonly, copy, nonatomic) NSString *executablePath;
-@property (readonly, copy, nonatomic) NSString *extensionPointIdentifier;
+@property (readonly, copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
+@property (readonly, copy, nonatomic) NSString *extensionPointIdentifier; // @synthesize extensionPointIdentifier=_extensionPointIdentifier;
 @property (readonly, nonatomic) BOOL hasPreferredJetsamBand; // @synthesize hasPreferredJetsamBand=_hasPreferredJetsamBand;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isExtension; // @synthesize isExtension=_isExtension;
+@property (readonly, nonatomic) int platform; // @synthesize platform=_platform;
 @property (readonly, nonatomic) int preferredJetsamBand; // @synthesize preferredJetsamBand=_preferredJetsamBand;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsBackgroundAudio; // @synthesize supportsBackgroundAudio=_supportsBackgroundAudio;

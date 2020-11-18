@@ -8,11 +8,12 @@
 
 #import <PencilKit/PKDrawingGestureRecognizerDelegate-Protocol.h>
 #import <PencilKit/PKDrawingGestureTarget-Protocol.h>
+#import <PencilKit/PKShapeDrawingControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKDrawingGestureRecognizer, PKInk, PKPaintAreaViewSurface;
+@class NSMutableArray, NSString, PKAlternativeStrokesAnimation, PKDrawingGestureRecognizer, PKPaintAreaViewSurface, PKShapeDrawingController, PKTool;
 @protocol PKPaintAreaViewDelegate;
 
-@interface PKPaintAreaView : UIView <PKDrawingGestureRecognizerDelegate, PKDrawingGestureTarget>
+@interface PKPaintAreaView : UIView <PKDrawingGestureRecognizerDelegate, PKDrawingGestureTarget, PKShapeDrawingControllerDelegate>
 {
     PKDrawingGestureRecognizer *_drawingGestureRecognizer;
     PKPaintAreaViewSurface *_currentPaintSurfaceObject;
@@ -20,34 +21,49 @@
     BOOL _switchSurfacesDuringStrokes;
     BOOL _fingerDrawingEnabled;
     id<PKPaintAreaViewDelegate> _delegate;
-    PKInk *_ink;
+    PKTool *_tool;
+    PKShapeDrawingController *_shapeDrawingController;
+    double _liveAnimationStartTime;
+    PKAlternativeStrokesAnimation *_alternativeStrokesAnimation;
 }
 
+@property (strong, nonatomic) PKAlternativeStrokesAnimation *alternativeStrokesAnimation; // @synthesize alternativeStrokesAnimation=_alternativeStrokesAnimation;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPaintAreaViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fingerDrawingEnabled; // @synthesize fingerDrawingEnabled=_fingerDrawingEnabled;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PKInk *ink; // @synthesize ink=_ink;
+@property (nonatomic) double liveAnimationStartTime; // @synthesize liveAnimationStartTime=_liveAnimationStartTime;
+@property (strong, nonatomic) PKShapeDrawingController *shapeDrawingController; // @synthesize shapeDrawingController=_shapeDrawingController;
 @property (readonly, nonatomic) struct CGAffineTransform strokeTransform;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL switchSurfacesDuringStrokes; // @synthesize switchSurfacesDuringStrokes=_switchSurfacesDuringStrokes;
+@property (strong, nonatomic) PKTool *tool; // @synthesize tool=_tool;
 
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (id)_drawingController;
+- (void)_endAlternativeStrokeIfNecessaryAccepted:(BOOL)arg1;
+- (BOOL)_isLiveAnimating;
+- (id)_rendererController;
 - (struct CGPoint)applyTransformToTouchLocation:(struct CGPoint)arg1;
 - (struct CGPoint)applyTransformToTouchLocation:(struct CGPoint)arg1 previousPoint:(struct CGPoint)arg2 newSurface:(id *)arg3;
 - (BOOL)canAddStroke;
+- (BOOL)canBecomeFirstResponder;
+- (void)checkAnimationsDidEndAtTime:(double)arg1;
 - (void)drawingBegan:(id)arg1;
 - (void)drawingCancelled;
 - (void)drawingEnded:(id)arg1;
 - (void)drawingEstimatedPropertiesUpdated:(id)arg1;
-- (CDStruct_f17e9403)drawingInputPoint:(struct CGPoint)arg1 forTouch:(id)arg2 predicted:(BOOL)arg3;
+- (BOOL)drawingGestureRecognizer:(id)arg1 shouldBeginDrawingWithTouches:(id)arg2 event:(id)arg3;
 - (void)drawingMoved:(id)arg1 withEvent:(id)arg2;
 - (id)hitSurface:(struct CGPoint)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)shapeDrawingControllerRendererController:(id)arg1;
+- (void)shapeDrawingControllerShapeDetectionCancelled:(id)arg1;
+- (void)shapeDrawingControllerShapeGestureDetected:(id)arg1;
 - (void)switchToNewPaintSurface:(id)arg1;
 - (void)vsync:(double)arg1;
 

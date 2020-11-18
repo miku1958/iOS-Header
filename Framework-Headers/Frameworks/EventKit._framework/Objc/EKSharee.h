@@ -38,6 +38,8 @@
 + (unsigned long long)_ekShareeStatusFromCalShareeStatus:(int)arg1;
 + (id)_urlForEmailAddress:(id)arg1 andPhoneNumber:(id)arg2;
 + (Class)frozenClass;
++ (id)knownIdentityKeysForComparison;
++ (id)knownSingleValueKeysForComparison;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 externalID:(id)arg4;
@@ -47,9 +49,11 @@
 + (id)statusStringFromEnum:(unsigned long long)arg1;
 - (id)URL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)displayName;
 - (id)init;
 - (id)initWithName:(id)arg1 url:(id)arg2;
 - (id)initWithName:(id)arg1 url:(id)arg2 externalID:(id)arg3;
+- (void)setDisplayName:(id)arg1;
 - (void)setEmailAddress:(id)arg1;
 - (void)setPhoneNumber:(id)arg1;
 - (void)setShareeAccessLevelRaw:(int)arg1;

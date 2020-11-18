@@ -15,10 +15,16 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (id)_accessibilityUserTestingChildren;
+- (BOOL)accessibilityActivate;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (id)init;
+- (BOOL)isAccessibilityElement;
 - (void)moreButtonPressed;
 - (BOOL)shouldGroupAccessibilityChildren;
-- (void)updateHeaderButtonVisibility;
+- (void)updateHeaderButtonVisibilityAnimated:(BOOL)arg1;
 
 @end
 

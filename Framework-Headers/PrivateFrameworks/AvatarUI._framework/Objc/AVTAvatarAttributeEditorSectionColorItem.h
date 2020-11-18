@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <AvatarUI/AVTAvatarAttributeEditorSectionItem-Protocol.h>
+#import <AvatarUI/AVTAvatarAttributeEditorSectionItemInternal-Protocol.h>
 
 @class AVTColorPreset, AVTCoreModelColor, NSString;
 
-@interface AVTAvatarAttributeEditorSectionColorItem : NSObject <AVTAvatarAttributeEditorSectionItem>
+@interface AVTAvatarAttributeEditorSectionColorItem : NSObject <AVTAvatarAttributeEditorSectionItemInternal, AVTAvatarAttributeEditorSectionItem>
 {
     BOOL _selected;
+    BOOL _hasDerivedColorDependency;
+    NSString *_identifier;
     NSString *_localizedName;
     CDUnknownBlockType _avatarUpdater;
+    AVTCoreModelColor *_color;
     CDUnknownBlockType _layerContentProvider;
     CDUnknownBlockType _gradientProvider;
-    AVTCoreModelColor *_color;
     AVTColorPreset *_skinColor;
 }
 
@@ -26,7 +29,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) CDUnknownBlockType gradientProvider; // @synthesize gradientProvider=_gradientProvider;
+@property (nonatomic) BOOL hasDerivedColorDependency; // @synthesize hasDerivedColorDependency=_hasDerivedColorDependency;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) CDUnknownBlockType layerContentProvider; // @synthesize layerContentProvider=_layerContentProvider;
 @property (readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
@@ -34,8 +39,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithColor:(id)arg1 imageProvider:(id)arg2 avatarUpdater:(CDUnknownBlockType)arg3 selected:(BOOL)arg4;
-- (id)initWithColor:(id)arg1 skinColor:(id)arg2 imageProvider:(id)arg3 avatarUpdater:(CDUnknownBlockType)arg4 selected:(BOOL)arg5;
+- (id)colorPreset;
+- (id)initWithColor:(id)arg1 imageProvider:(id)arg2 colorLayerProvider:(id)arg3 avatarUpdater:(CDUnknownBlockType)arg4 derivedColorDependent:(BOOL)arg5 selected:(BOOL)arg6;
+- (id)initWithColor:(id)arg1 skinColor:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 avatarUpdater:(CDUnknownBlockType)arg5 derivedColorDependent:(BOOL)arg6 selected:(BOOL)arg7;
 
 @end
 

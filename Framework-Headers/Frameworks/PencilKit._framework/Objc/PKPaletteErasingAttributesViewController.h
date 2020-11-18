@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PencilKit/PKPaletteAttributeViewController.h>
 
 @protocol PKPaletteErasingAttributesViewControllerDelegate;
 
-@interface PKPaletteErasingAttributesViewController : UIViewController
+@interface PKPaletteErasingAttributesViewController : PKPaletteAttributeViewController
 {
     id<PKPaletteErasingAttributesViewControllerDelegate> _delegate;
 }

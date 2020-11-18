@@ -11,6 +11,7 @@
 @property (nonatomic) struct TSUCellCoord hyperlinkCellID; // @dynamic hyperlinkCellID;
 
 - (BOOL)changesWithPageCount;
+- (void)detokenizeEntireStorage;
 - (BOOL)hasAttachmentsThatChangeWithPageNumberOrPageCount;
 - (BOOL)hasDamagedTokenAttachments;
 - (id)i_copyIntoContext:(id)arg1 stylesheet:(id)arg2;
@@ -20,12 +21,19 @@
 - (BOOL)isFormulaSyntaxErrorEqual:(id)arg1;
 - (unsigned long long)nextNonWhitespaceOrNewlineIndexStartingAtIndex:(unsigned long long)arg1;
 - (void)nonUndoableAppendStoragePreservingEmphasis:(id)arg1;
+- (void)p_detokenizeEverythingInRange:(struct _NSRange)arg1;
+- (void)p_detokenizeTokenAtCharIndex:(unsigned long long)arg1;
 - (id)p_processEndNode:(id)arg1 startNode:(id)arg2 bakeModes:(BOOL)arg3 tokenDict:(id)arg4;
 - (struct _NSRange)p_rangeOfString:(id)arg1 orNodeClass:(Class)arg2 range:(struct _NSRange)arg3;
+- (void)p_replaceMixedDirectionText:(id)arg1 atRange:(struct _NSRange)arg2;
+- (void)p_replaceTokenAtCharIndex:(unsigned long long)arg1 withText:(id)arg2;
+- (void)p_replaceUnknownDirectionText:(id)arg1 atRange:(struct _NSRange)arg2;
 - (id)p_stringWithFormulaAsTextFromRange:(struct _NSRange)arg1 returningTokenValues:(BOOL)arg2;
 - (unsigned long long)previousNonWhitespaceOrNewlineIndexStartingAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)rangeOfInWithinRange:(struct _NSRange)arg1;
 - (struct _NSRange)rangeOfLetWithinRange:(struct _NSRange)arg1;
+- (void)replaceText:(id)arg1 atRange:(struct _NSRange)arg2;
+- (void)replaceText:(id)arg1 withLanguage:(id)arg2 atRange:(struct _NSRange)arg3;
 - (id)stringWithFormulaDetokenizedText;
 - (id)stringWithFormulaDetokenizedTextFromRange:(struct _NSRange)arg1;
 - (id)stringWithFormulaPlainText;

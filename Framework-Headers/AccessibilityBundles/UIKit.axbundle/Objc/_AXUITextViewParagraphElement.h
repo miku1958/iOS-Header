@@ -12,10 +12,12 @@
 
 @interface _AXUITextViewParagraphElement : UIAccessibilityElement <UIAccessibilityElementDelegate>
 {
+    NSString *__accessibilityContent;
     NSArray *_links;
     struct _NSRange _textRange;
 }
 
+@property (strong, nonatomic) NSString *_accessibilityContent; // @synthesize _accessibilityContent=__accessibilityContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,15 +27,17 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (struct _NSRange)_accessibilitySelectedTextRange;
+- (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint:(id)arg1;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
-- (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityHint;
-- (id)accessibilityLabel:(id)arg1;
+- (id)accessibilityLabel;
 - (BOOL)accessibilityRespondsToUserInteraction;
+- (id)accessibilityValue;
 - (id)initWithAccessibilityContainer:(id)arg1 textRange:(struct _NSRange)arg2 links:(id)arg3;
 
 @end

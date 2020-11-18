@@ -60,6 +60,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCrossAppPaste;
 @property (readonly, nonatomic) BOOL isCrossDocumentPaste;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly) Class superclass;
 
@@ -92,7 +93,7 @@
 - (void)unarchiveObjectWithUnarchiver:(id)arg1;
 - (void)unarchiver:(id)arg1 didReadLazyReference:(id)arg2 isExternal:(BOOL *)arg3;
 - (BOOL)validateObjectIdentifierForObject:(id)arg1;
-- (void)willModifyObject:(id)arg1 duringReadOperation:(BOOL)arg2;
+- (void)willModifyObject:(id)arg1 options:(unsigned long long)arg2;
 
 @end
 

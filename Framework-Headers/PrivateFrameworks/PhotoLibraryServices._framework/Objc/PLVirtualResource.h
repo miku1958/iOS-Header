@@ -36,12 +36,12 @@
 }
 
 @property (readonly, copy, nonatomic) id<PLAssetID> assetID; // @synthesize assetID=_assetID;
-@property (readonly, nonatomic) id<PLCodecIdentity> codecID;
+@property (strong, nonatomic) id<PLCodecIdentity> codecID; // @synthesize codecID=_codecID;
 @property (readonly, nonatomic) unsigned long long cplType; // @dynamic cplType;
 @property (readonly, nonatomic) long long dataLength; // @dynamic dataLength;
-@property (readonly, nonatomic) id<PLResourceDataStore> dataStore;
-@property (readonly, nonatomic) id<PLResourceDataStoreKey> dataStoreKey;
-@property (readonly, nonatomic) long long dataStoreSubtype;
+@property (strong, nonatomic) id<PLResourceDataStore> dataStore; // @synthesize dataStore=_dataStore;
+@property (strong, nonatomic) id<PLResourceDataStoreKey> dataStoreKey; // @synthesize dataStoreKey=_dataStoreKey;
+@property (nonatomic) long long dataStoreSubtype; // @synthesize dataStoreSubtype=_dataStoreSubtype;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long estimatedDataLength; // @dynamic estimatedDataLength;
@@ -49,23 +49,23 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) short localAvailability;
 @property (readonly, nonatomic) short localAvailabilityTarget; // @synthesize localAvailabilityTarget=_localAvailabilityTarget;
-@property (readonly, nonatomic) unsigned int orientation;
+@property (nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
 @property (readonly, nonatomic) long long orientedHeight; // @dynamic orientedHeight;
 @property (readonly, nonatomic) long long orientedWidth; // @dynamic orientedWidth;
-@property (readonly, nonatomic) int qualitySortValue;
-@property (readonly, nonatomic) unsigned int recipeID;
-@property (readonly, nonatomic) short remoteAvailability;
+@property (nonatomic) int qualitySortValue; // @synthesize qualitySortValue=_qualitySortValue;
+@property (nonatomic) unsigned int recipeID; // @synthesize recipeID=_recipeID;
+@property (nonatomic) short remoteAvailability; // @synthesize remoteAvailability=_remoteAvailability;
 @property (readonly, nonatomic) short remoteAvailabilityTarget; // @synthesize remoteAvailabilityTarget=_remoteAvailabilityTarget;
-@property (readonly, nonatomic) unsigned int resourceType;
-@property (readonly, nonatomic) float scale;
+@property (nonatomic) unsigned int resourceType; // @synthesize resourceType=_resourceType;
+@property (nonatomic) float scale; // @synthesize scale=_scale;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *trashedDate; // @synthesize trashedDate=_trashedDate;
 @property (readonly, nonatomic) short trashedState; // @synthesize trashedState=_trashedState;
 @property (readonly, nonatomic) PLVirtualResourceUniformTypeIdentifierProxy *uniformTypeIdentifier;
-@property (readonly, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
-@property (readonly, nonatomic) long long unorientedHeight;
-@property (readonly, nonatomic) long long unorientedWidth;
-@property (readonly, nonatomic) unsigned int version;
+@property (strong, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID; // @synthesize uniformTypeIdentifierID=_uniformTypeIdentifierID;
+@property (nonatomic) long long unorientedHeight; // @synthesize unorientedHeight=_unorientedHeight;
+@property (nonatomic) long long unorientedWidth; // @synthesize unorientedWidth=_unorientedWidth;
+@property (nonatomic) unsigned int version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 - (id)initWithAsset:(id)arg1 resourceType:(unsigned int)arg2 version:(unsigned int)arg3 recipeID:(unsigned int)arg4;
@@ -74,20 +74,8 @@
 - (BOOL)isDerivative;
 - (BOOL)isPlayableVideo;
 - (id)photosCTLJSONDict;
-- (void)setCodecID:(id)arg1;
-- (void)setDataStore:(id)arg1;
-- (void)setDataStoreKey:(id)arg1;
-- (void)setDataStoreSubtype:(long long)arg1;
-- (void)setOrientation:(unsigned int)arg1;
-- (void)setQualitySortValue:(int)arg1;
-- (void)setRecipeID:(unsigned int)arg1;
-- (void)setRemoteAvailability:(short)arg1;
-- (void)setResourceType:(unsigned int)arg1;
-- (void)setScale:(float)arg1;
-- (void)setUniformTypeIdentifierID:(id)arg1;
-- (void)setUnorientedHeight:(long long)arg1;
-- (void)setUnorientedWidth:(long long)arg1;
-- (void)setVersion:(unsigned int)arg1;
+- (float)scaleGivenAssetHasAdjustments:(BOOL)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;
+- (id)singleLineDescription;
 - (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
 
 @end

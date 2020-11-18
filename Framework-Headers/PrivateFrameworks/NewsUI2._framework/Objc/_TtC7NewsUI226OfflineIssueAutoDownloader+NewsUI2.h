@@ -6,7 +6,10 @@
 
 #import <NewsUI2/_TtC7NewsUI226OfflineIssueAutoDownloader.h>
 
-@interface _TtC7NewsUI226OfflineIssueAutoDownloader (NewsUI2)
+#import <NewsUI2/FCSubscriptionObserving-Protocol.h>
+
+@interface _TtC7NewsUI226OfflineIssueAutoDownloader (NewsUI2) <FCSubscriptionObserving>
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
+- (void)subscriptionController:(id)arg1 didAddTags:(id)arg2 changeTags:(id)arg3 moveTags:(id)arg4 removeTags:(id)arg5 subscriptionType:(unsigned long long)arg6 eventInitiationLevel:(long long)arg7;
 @end
 

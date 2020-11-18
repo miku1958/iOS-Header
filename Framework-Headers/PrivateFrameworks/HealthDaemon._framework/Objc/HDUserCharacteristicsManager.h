@@ -11,42 +11,46 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDProfile, NSDate, NSDictionary, NSHashTable, NSString;
-@protocol OS_dispatch_queue;
+@class HDProfile, HKObserverSet, NSDate, NSDictionary, NSString, _HKDelayedOperation;
+@protocol HDUserCharacteristicsProfileObserver, OS_dispatch_queue;
 
 @interface HDUserCharacteristicsManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDataObserver, HDDiagnosticObject>
 {
-    BOOL _shouldUpdateQuantityCharacteristics;
-    BOOL _needsUpdateAfterUnlock;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_observerQueue;
+    HKObserverSet<HDUserCharacteristicsProfileObserver> *_observers;
+    BOOL _shouldUpdateQuantityCharacteristics;
+    int _significantTimeChangeNotificationToken;
     NSDate *_userProfileLastUpdated;
     NSDictionary *_lastUserProfile;
-    NSHashTable *_observers;
+    BOOL _needsUpdateAfterUnlock;
+    _HKDelayedOperation *_updateOperation;
+    NSDate *_unitTest_currentDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSDictionary *lastUserProfile; // @synthesize lastUserProfile=_lastUserProfile;
-@property (nonatomic) BOOL needsUpdateAfterUnlock; // @synthesize needsUpdateAfterUnlock=_needsUpdateAfterUnlock;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
-@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly, nonatomic) BOOL shouldUpdateQuantityCharacteristics; // @synthesize shouldUpdateQuantityCharacteristics=_shouldUpdateQuantityCharacteristics;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSDate *userProfileLastUpdated; // @synthesize userProfileLastUpdated=_userProfileLastUpdated;
+@property (copy, nonatomic) NSDate *unitTest_currentDate; // @synthesize unitTest_currentDate=_unitTest_currentDate;
 
 - (void).cxx_destruct;
-- (id)_mostRecentSampleOfType:(id)arg1 error:(id *)arg2;
+- (id)_activityMoveModeActiveDate;
+- (id)_getCardioFitnessMedicationsStatusWithError:(id *)arg1;
+- (id)_mostRecentCategorySampleOfType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
+- (id)_mostRecentQuantitySampleOfType:(id)arg1 error:(id *)arg2;
+- (id)_mostRecentSampleOfType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
 - (void)_queue_alertObserversDidUpdateUserProfile;
+- (void)_queue_updateActivityMoveModeCharacteristic;
+- (void)_queue_updateActivityMoveModeDefaultAndNotifyIfNecessary;
+- (void)_queue_updateCharacteristicsAndUserProfile;
+- (void)_queue_updateCharacteristicsAndUserProfileIfNeeded;
+- (void)_queue_updateCharacteristicsAndUserProfileWithDelay;
 - (void)_queue_updateQuantityCharacteristics;
-- (void)_queue_updateQuantityCharacteristicsAndUserProfile;
-- (void)_queue_updateQuantityCharacteristicsAndUserProfileIfNeeded;
 - (void)_queue_updateUserProfile;
+- (void)_registerForTimeChangeNotifications;
 - (BOOL)_setUserCharacteristic:(id)arg1 forType:(id)arg2 shouldInsertSample:(BOOL)arg3 updateProfileAndSync:(BOOL)arg4 error:(id *)arg5;
+- (void)_unregisterTimeChangeNotifications;
 - (id)_userCharacteristicForType:(id)arg1 entity:(id *)arg2 error:(id *)arg3;
 - (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(BOOL)arg1 shouldSync:(BOOL)arg2;
 - (void)addProfileObserver:(id)arg1;
@@ -54,6 +58,7 @@
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
+- (void)didRecieveDayChangeNotification:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (id)modificationDateForCharacteristicWithType:(id)arg1 error:(id *)arg2;
 - (void)removeProfileObserver:(id)arg1;
@@ -61,6 +66,7 @@
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (BOOL)setUserCharacteristic:(id)arg1 forType:(id)arg2 error:(id *)arg3;
+- (void)unitTest_setUpdateOperationDelay:(double)arg1;
 - (id)userCharacteristicForType:(id)arg1 error:(id *)arg2;
 
 @end

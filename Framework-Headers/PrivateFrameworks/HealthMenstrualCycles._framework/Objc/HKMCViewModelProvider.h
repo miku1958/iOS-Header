@@ -9,13 +9,15 @@
 #import <HealthMenstrualCycles/HKMCAnalysisProviderObserver-Protocol.h>
 #import <HealthMenstrualCycles/HKMCViewModelProviderDataSourceDelegate-Protocol.h>
 
-@class HKMCAnalysis, HKMCAnalysisProvider, HKMCViewModelProviderDataSource, NSHashTable, NSMutableDictionary, NSMutableIndexSet, NSNumber, NSString;
+@class HKCalendarCache, HKMCAnalysis, HKMCAnalysisProvider, HKMCViewModelProviderDataSource, NSHashTable, NSMutableDictionary, NSMutableIndexSet, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HKMCViewModelProvider : NSObject <HKMCViewModelProviderDataSourceDelegate, HKMCAnalysisProviderObserver>
 {
     HKMCViewModelProviderDataSource *_dataSource;
     HKMCAnalysisProvider *_analysisProvider;
     NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_queue;
     long long _maximumActiveDuration;
     long long _minimumPrefetchDuration;
     CDStruct_ef5fcbe6 _managedDayRange;
@@ -24,6 +26,7 @@
     NSMutableDictionary *_daySummariesByDayIndex;
     NSNumber *_minimumAnalysisAnchor;
     HKMCAnalysis *_analysis;
+    HKCalendarCache *_calendarCache;
     CDStruct_ef5fcbe6 _activeDayRange;
 }
 
@@ -38,11 +41,11 @@
 - (BOOL)_didFetchMinimumAnalysis;
 - (unsigned long long)_fertileWindowLevelWithDayIndex:(long long)arg1;
 - (long long)_fetchStateForDayIndex:(long long)arg1;
-- (id)_initWithDataSource:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4;
-- (unsigned long long)_menstruationLevelWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2;
-- (void)_notifyObserversDidUpdate;
+- (id)_initWithDataSource:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4 calendarCache:(id)arg5 queue:(id)arg6;
+- (unsigned long long)_menstruationLevelWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 partiallyLoggedPeriod:(BOOL *)arg3;
 - (BOOL)_ppt_didFetchAnalysis;
 - (BOOL)_ppt_didFetchDaySummaries;
+- (void)_queue_notifyObserversDidUpdate;
 - (void)_setFetchState:(long long)arg1 forDayIndexRange:(CDStruct_ef5fcbe6)arg2;
 - (CDStruct_ef5fcbe6)_test_managedDayRange;
 - (void)_updateManagedDayRangeIfNeeded;
@@ -51,6 +54,7 @@
 - (void)analysisProvider:(id)arg1 didUpdateAnalysis:(id)arg2;
 - (id)dayViewModelAtIndex:(long long)arg1;
 - (id)initWithHealthStore:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4;
+- (id)initWithHealthStore:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4 queue:(id)arg5;
 - (void)removeObserver:(id)arg1;
 - (void)viewModelProviderDataSource:(id)arg1 didFetchDaySummaries:(id)arg2 forDayIndexRange:(CDStruct_ef5fcbe6)arg3 analysisAnchor:(id)arg4;
 - (void)viewModelProviderDataSourceDidUpdateDaySummaries:(id)arg1;

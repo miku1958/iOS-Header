@@ -8,7 +8,8 @@
 
 #import <TSReading/NSCopying-Protocol.h>
 
-@class CALayer, NSMutableArray, NSMutableDictionary, TSDTextureSet;
+@class CALayer, NSMutableArray, NSMutableDictionary, NSString, TSDTextureSet, TSUColor;
+@protocol MTLTexture;
 
 @interface TSDTexturedRectangle : NSObject <NSCopying>
 {
@@ -21,7 +22,6 @@
     CDUnknownBlockType mRenderBlock;
     struct CGImage *mSourceImage;
     struct CGImage *mBakedImage;
-    TSDTextureSet *mParent;
     int mTextureType;
     double mTextureOpacity;
     unsigned int mSingleTextureName;
@@ -30,10 +30,24 @@
     NSMutableDictionary *mAttributes;
     NSMutableArray *mTags;
     struct CGColorSpace *mColorSpace;
+    BOOL _shouldUseDisplayLinkPresentationTime;
+    BOOL mShouldGenerateMipmap;
+    BOOL _isVerticalText;
+    TSDTextureSet *mParent;
+    NSString *_text;
+    double _textBaseline;
+    TSUColor *_textColor;
+    double _textXHeight;
+    TSUColor *_backgroundColor;
+    double _bakedScale;
+    id<MTLTexture> _metalTexture;
+    struct _NSRange _textRange;
     struct CGRect mFrameOnCanvas;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=mAttributes;
+@property (copy, nonatomic) TSUColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) double bakedScale; // @synthesize bakedScale=_bakedScale;
 @property (nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=mColorSpace;
 @property (nonatomic) struct CGRect contentRect; // @synthesize contentRect=mContentRect;
 @property (readonly, nonatomic) struct CGRect frame;
@@ -42,38 +56,62 @@
 @property (readonly, nonatomic) BOOL isBackgroundTexture;
 @property (nonatomic) BOOL isFlattened; // @synthesize isFlattened=mIsFlattened;
 @property (readonly, nonatomic) BOOL isRenderable;
+@property (nonatomic) BOOL isVerticalText; // @synthesize isVerticalText=_isVerticalText;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=mLayer;
+@property (readonly, nonatomic) id<MTLTexture> metalTexture; // @synthesize metalTexture=_metalTexture;
 @property (nonatomic) struct CGPoint offset;
 @property (readonly, nonatomic) float opacityFromAttributes;
 @property (nonatomic) struct CGPoint originalPosition; // @synthesize originalPosition=mOriginalPosition;
-@property (nonatomic) TSDTextureSet *parent; // @synthesize parent=mParent;
+@property (weak, nonatomic) TSDTextureSet *parent; // @synthesize parent=mParent;
 @property (readonly, nonatomic) CALayer *parentLayer;
+@property (nonatomic) BOOL shouldGenerateMipmap; // @synthesize shouldGenerateMipmap=mShouldGenerateMipmap;
+@property (nonatomic) BOOL shouldUseDisplayLinkPresentationTime; // @synthesize shouldUseDisplayLinkPresentationTime=_shouldUseDisplayLinkPresentationTime;
 @property (readonly, nonatomic) unsigned int singleTextureName;
 @property (readonly, nonatomic) double singleTextureOpacity;
 @property (readonly, nonatomic) unsigned int singleTextureTarget;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=mSize;
 @property (strong, nonatomic) NSMutableArray *tags; // @synthesize tags=mTags;
+@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property (nonatomic) double textBaseline; // @synthesize textBaseline=_textBaseline;
+@property (copy, nonatomic) TSUColor *textColor; // @synthesize textColor=_textColor;
+@property (nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
+@property (nonatomic) double textXHeight; // @synthesize textXHeight=_textXHeight;
 @property (nonatomic) double textureOpacity; // @synthesize textureOpacity=mTextureOpacity;
 @property (nonatomic) int textureType; // @synthesize textureType=mTextureType;
 @property (readonly, nonatomic) struct CATransform3D transformFromAttributes;
 
++ (id)setupMetalShaderForContext:(id)arg1;
+- (void).cxx_destruct;
 - (void)adjustAnchorRelativeToParentsCenterOfRotation:(struct CGPoint)arg1 isMagicMove:(BOOL)arg2;
 - (void)bakeLayerWithAngle:(double)arg1 scale:(double)arg2;
 - (struct CGRect)boundingRectForStage:(long long)arg1 isBuildIn:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)drawFrameAtLayerTime:(double)arg1 context:(id)arg2;
+- (BOOL)hasLiveTexturedRectangleSource;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithLayer:(id)arg1;
+- (id)initWithSize:(struct CGSize)arg1 image:(struct CGImage *)arg2;
 - (id)initWithSize:(struct CGSize)arg1 offset:(struct CGPoint)arg2 renderBlock:(CDUnknownBlockType)arg3;
+- (BOOL)isMetalTextureSetup;
+- (id)metalTextureWithContext:(id)arg1;
+- (id)p_allocateMetalTextureForDevice:(id)arg1;
+- (id)p_allocateMetalTextureForDevice:(id)arg1 renderTarget:(BOOL)arg2 writable:(BOOL)arg3 private:(BOOL)arg4 maxSize:(struct CGSize)arg5;
 - (struct CGColorSpace *)p_colorSpace;
+- (id)p_latestTextureNotAfterLayerTime:(double)arg1;
 - (struct CGImage *)p_newImageAndBufferWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint)arg3;
 - (char *)p_setupTextureDataWithSize:(struct CGSize)arg1 isBGRA:(BOOL)arg2;
+- (struct CGSize)p_textureSizeWithDevice:(id)arg1 maxSize:(struct CGSize)arg2;
+- (void)releaseMetalTexture;
 - (void)releaseSingleTexture;
 - (void)renderIntoContext:(struct CGContext *)arg1;
 - (void)renderLayerContentsIfNeeded;
 - (void)resetAnchorPoint;
 - (void)resetToSourceImage;
+- (void)setLiveTexturedRectangleSource:(id)arg1;
+- (void)setLiveTexturedRectangleSourceProxy:(id)arg1;
+- (void)setupMetalTextureForDevice:(id)arg1;
 - (void)setupSingleTexture;
 - (void)setupSingleTextureAndGenerateMipMaps:(BOOL)arg1;
 - (void)teardown;

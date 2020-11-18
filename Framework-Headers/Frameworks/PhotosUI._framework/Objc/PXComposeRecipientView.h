@@ -16,6 +16,7 @@
         BOOL didFinishEnteringAddress;
         BOOL requestAddRecipient;
         BOOL didFinishPickingRecipient;
+        BOOL disambiguateRecipient;
         BOOL didAddRecipient;
         BOOL didRemoveRecipient;
         BOOL didChangeSize;

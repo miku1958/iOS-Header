@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface CPLAlbumChange : CPLContainerChange <NSSecureCoding, NSCopying>
 {
@@ -20,6 +20,9 @@
     long long _position;
     NSString *_parentIdentifier;
     unsigned long long _albumSortType;
+    NSString *_projectDocumentType;
+    NSData *_projectData;
+    NSData *_projectPreviewImageData;
 }
 
 @property (nonatomic) BOOL albumSortAscending; // @synthesize albumSortAscending=_albumSortAscending;
@@ -28,6 +31,9 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (nonatomic) long long position; // @synthesize position=_position;
+@property (copy, nonatomic) NSData *projectData; // @synthesize projectData=_projectData;
+@property (copy, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
+@property (copy, nonatomic) NSData *projectPreviewImageData; // @synthesize projectPreviewImageData=_projectPreviewImageData;
 
 - (void).cxx_destruct;
 - (id)parentScopedIdentifier;

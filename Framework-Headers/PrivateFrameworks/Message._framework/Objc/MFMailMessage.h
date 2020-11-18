@@ -21,6 +21,7 @@
     BOOL _useInternalSourceIsManaged;
     BOOL _sourceIsManaged;
     BOOL _shouldUseMailDrop;
+    long long _globalMessageID;
 }
 
 @property (readonly, nonatomic) MailAccount *account;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL flagged;
 @property (readonly, nonatomic) ECMessageFlags *flags;
 @property (readonly, copy, nonatomic) NSArray *from;
+@property (nonatomic) long long globalMessageID; // @synthesize globalMessageID=_globalMessageID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MFMessageHeaders *headers; // @dynamic headers;
 @property (readonly, copy, nonatomic) NSDictionary *headersDictionary;

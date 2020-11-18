@@ -20,8 +20,6 @@
 @property (readonly, copy, nonatomic) SBWorkspaceEntity *entityToPiP; // @synthesize entityToPiP=_entityToPiP;
 @property (nonatomic) long long transitionStyle; // @synthesize transitionStyle=_transitionStyle;
 
-+ (BOOL)_shouldAutoPiPEnteringBackgroundForRequest:(id)arg1 transientOverlayEntityFoundBlock:(CDUnknownBlockType)arg2 appEntityFoundBlock:(CDUnknownBlockType)arg3;
-+ (BOOL)isSystemGesture:(id)arg1;
 + (BOOL)shouldAutoPiPEnteringBackgroundForRequest:(id)arg1;
 + (BOOL)shouldAutoPiPEnteringBackgroundForRequest:(id)arg1 entityFoundBlock:(CDUnknownBlockType)arg2;
 + (long long)transitionStyleForProcessIdentifier:(int)arg1 entityToPiP:(id)arg2 withTransitionContext:(id)arg3 request:(id)arg4;
@@ -30,7 +28,6 @@
 - (BOOL)_canBeInterrupted;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
-- (long long)_transitionStyle;
 - (id)initWithTransitionRequest:(id)arg1;
 - (id)initWithTransitionRequest:(id)arg1 includeActiveAppEntity:(BOOL)arg2;
 

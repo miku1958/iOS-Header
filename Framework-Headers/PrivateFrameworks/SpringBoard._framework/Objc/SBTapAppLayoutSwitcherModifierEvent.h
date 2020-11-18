@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithAppLayout:(id)arg1;
 - (long long)type;

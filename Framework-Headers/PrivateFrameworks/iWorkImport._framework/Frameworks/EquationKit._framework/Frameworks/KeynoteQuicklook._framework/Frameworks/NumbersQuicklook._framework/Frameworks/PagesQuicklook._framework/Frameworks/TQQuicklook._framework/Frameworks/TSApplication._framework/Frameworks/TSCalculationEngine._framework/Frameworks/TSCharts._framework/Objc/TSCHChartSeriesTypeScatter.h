@@ -20,7 +20,9 @@
 - (id)p_supportedSymbolsIfSymbolsSupported;
 - (id)propertiesForReferenceColors;
 - (id)supportedValueLabelsAxisCombinations;
+- (BOOL)supportsDownsampling;
 - (BOOL)supportsFillSetFill;
+- (BOOL)supportsGridPartitioning;
 - (BOOL)supportsLineConnectionStyle;
 - (BOOL)supportsLineTypeNone;
 - (BOOL)supportsSeriesFill;

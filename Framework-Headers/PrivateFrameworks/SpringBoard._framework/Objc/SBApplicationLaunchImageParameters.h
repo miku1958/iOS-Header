@@ -23,11 +23,9 @@
 @property (readonly, copy, nonatomic) NSString *minOSVersionString; // @synthesize minOSVersionString=_minOSVersionString;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
-+ (id)_sanitizedImageNameFromName:(id)arg1 withExtension:(id)arg2 actualExtension:(out id *)arg3;
 + (id)launchImageParametersFromLaunchImagesInfo:(id)arg1 withBundleIdentifier:(id)arg2 isMonarchLinked:(BOOL)arg3;
 + (id)validInfoPlistOrientationKeys;
 - (void).cxx_destruct;
-- (id)_initWithDefaultPNGName:(id)arg1 extension:(id)arg2 minOSVersionString:(id)arg3 size:(struct CGSize)arg4 interfaceOrientation:(long long)arg5;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

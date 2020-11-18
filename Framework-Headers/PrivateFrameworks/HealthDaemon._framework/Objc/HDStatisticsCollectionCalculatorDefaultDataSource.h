@@ -19,10 +19,10 @@
     HKQuantityType *_quantityType;
     HDSQLitePredicate *_predicate;
     NSSet *_restrictedSourceEntities;
-    _HKFilter *_filter;
     NSNumber *_anchor;
     long long _shouldContinueFrequency;
     CDUnknownBlockType _shouldContinueHandler;
+    _HKFilter *_filter;
 }
 
 @property (copy, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;

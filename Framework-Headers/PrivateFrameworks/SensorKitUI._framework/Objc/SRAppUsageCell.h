@@ -8,6 +8,7 @@
 
 @class UIButton, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SRAppUsageCell : UITableViewCell
 {
     UILabel *_label;

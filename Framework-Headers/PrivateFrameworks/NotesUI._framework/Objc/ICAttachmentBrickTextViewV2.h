@@ -14,6 +14,7 @@
     BOOL _detail1Dark;
     BOOL _vibrant;
     BOOL _disableVibrancy;
+    BOOL _selected;
     NSString *_titleString;
     NSString *_detail1String;
     NSString *_detail2String;
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *detail2String; // @synthesize detail2String=_detail2String;
 @property (strong, nonatomic) ICAttachmentBrickLabelV2 *detail2View; // @synthesize detail2View=_detail2View;
 @property (nonatomic) BOOL disableVibrancy; // @synthesize disableVibrancy=_disableVibrancy;
+@property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) NSLayoutConstraint *textBoxBottomConstraint; // @synthesize textBoxBottomConstraint=_textBoxBottomConstraint;
 @property (strong, nonatomic) UILayoutGuide *textBoxLayoutGuide; // @synthesize textBoxLayoutGuide=_textBoxLayoutGuide;
 @property (strong, nonatomic) NSLayoutConstraint *textBoxLeadingConstraint; // @synthesize textBoxLeadingConstraint=_textBoxLeadingConstraint;

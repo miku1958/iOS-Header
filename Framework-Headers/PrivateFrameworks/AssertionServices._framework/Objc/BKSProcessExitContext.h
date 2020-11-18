@@ -14,9 +14,8 @@
     unsigned long long _exitReason;
 }
 
-@property (nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
+@property (readonly, nonatomic) unsigned long long exitReason;
 
-+ (id)contextWithRBSContext:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

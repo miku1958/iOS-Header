@@ -19,6 +19,7 @@
     NSData *_authorizationCode;
     NSString *_state;
     AKUserInformation *_userInformation;
+    NSString *_transactionID;
 }
 
 @property (readonly, copy, nonatomic) NSData *authorizationCode; // @synthesize authorizationCode=_authorizationCode;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL isLikelyRealUser; // @synthesize isLikelyRealUser=_isLikelyRealUser;
 @property (readonly, copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *transactionID; // @synthesize transactionID=_transactionID;
 @property (readonly, copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (readonly, nonatomic) AKUserInformation *userInformation; // @synthesize userInformation=_userInformation;
 

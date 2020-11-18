@@ -6,13 +6,13 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
-@class NSArray, PKPaymentPass;
+@class NSArray, PKSecureElementPass;
 @protocol PKPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPaymentSetupMoreInfoViewController : PKExplanationViewController
 {
     BOOL _isFinalViewController;
-    PKPaymentPass *_pass;
+    PKSecureElementPass *_pass;
     NSArray *_moreInfoItems;
     id<PKPaymentWebServiceTargetDeviceProtocol> _targetDevice;
     CDUnknownBlockType _dismissalHandler;
@@ -21,7 +21,7 @@
 @property (copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
 @property (nonatomic) BOOL isFinalViewController; // @synthesize isFinalViewController=_isFinalViewController;
 @property (readonly, strong, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
-@property (readonly, strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (readonly, strong, nonatomic) PKSecureElementPass *pass; // @synthesize pass=_pass;
 @property (readonly, nonatomic) id<PKPaymentWebServiceTargetDeviceProtocol> targetDevice; // @synthesize targetDevice=_targetDevice;
 
 - (void).cxx_destruct;

@@ -16,8 +16,10 @@
 {
     struct {
         unsigned int isRunnableInBackground:1;
+        unsigned int hasClip:1;
     } _has;
     BOOL _isRunnableInBackground;
+    BOOL _hasClip;
     NSString *_name;
     NSString *_bundleIdentifier;
     NSString *_label;
@@ -31,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasClip; // @synthesize hasClip=_hasClip;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRunnableInBackground; // @synthesize isRunnableInBackground=_isRunnableInBackground;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -47,9 +50,11 @@
 - (BOOL)canOpenURL:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasHasClip;
 - (BOOL)hasIsRunnableInBackground;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)preferredOpenableURL;
 
 @end

@@ -32,7 +32,7 @@
 - (id)setupContentView;
 - (void)updateForPaddingDisabled:(BOOL)arg1;
 - (void)updateWithImages:(id)arg1;
-- (BOOL)usesDefaultInsets;
+- (BOOL)usesDefaultLayoutMargins;
 
 @end
 

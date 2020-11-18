@@ -21,6 +21,7 @@
 + (id)mobileMessagesComposeBundleId;
 + (id)mobilePhoneOrFacetimeBundleId;
 + (id)mobilePhotosBundleId;
++ (id)mobileSafariBundleId;
 + (id)photoAssetPresenceHeuristicReason;
 + (id)shareSheetTargetBundleIdMail;
 + (id)shareSheetTargetBundleIdMessages;

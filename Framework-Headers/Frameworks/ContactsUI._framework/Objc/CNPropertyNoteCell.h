@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 
++ (BOOL)shouldIndentWhileEditing;
 - (void).cxx_destruct;
 - (BOOL)allowsCellSelection;
 - (void)dealloc;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)setAllowsEditing:(BOOL)arg1;
 - (void)setProperty:(id)arg1;
 - (void)setValueTextAttributes:(id)arg1;
-- (BOOL)shouldIndentWhileEditing;
 - (BOOL)shouldPerformDefaultAction;
 - (BOOL)supportsTintColorValue;
 - (void)textViewChanged:(id)arg1;

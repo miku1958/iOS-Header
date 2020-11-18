@@ -18,6 +18,7 @@
 - (id)init;
 - (id)initWithName:(id)arg1 print:(id)arg2 speak:(id)arg3;
 - (id)initWithName:(id)arg1 string:(id)arg2;
+- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
 - (void)setValuePrint:(id)arg1 speak:(id)arg2;
 
 @end

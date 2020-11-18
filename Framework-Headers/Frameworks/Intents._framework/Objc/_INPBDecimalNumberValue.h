@@ -20,13 +20,11 @@
         unsigned int mantissa:1;
     } _has;
     BOOL _isNegative;
-    BOOL __encodeLegacyGloryData;
     int _exponent;
     unsigned long long _mantissa;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int exponent; // @synthesize exponent=_exponent;

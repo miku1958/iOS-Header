@@ -9,7 +9,7 @@
 #import <SpringBoard/BSServiceConnectionListenerDelegate-Protocol.h>
 #import <SpringBoard/SBSHomeScreenServiceClientToServerInterface-Protocol.h>
 
-@class BSServiceConnectionListener, FBServiceClientAuthenticator, NSMutableSet, NSNumber, NSString, SBIconController;
+@class BSServiceConnectionListener, FBServiceClientAuthenticator, NSArray, NSMutableSet, NSNumber, NSString, SBIconController;
 
 @interface SBHomeScreenService : NSObject <BSServiceConnectionListenerDelegate, SBSHomeScreenServiceClientToServerInterface>
 {
@@ -20,31 +20,69 @@
     FBServiceClientAuthenticator *_iconFolderPathLookupAuthenticator;
     FBServiceClientAuthenticator *_addWidgetToTodayViewAuthenticator;
     FBServiceClientAuthenticator *_lowDensityLayoutAuthenticator;
+    FBServiceClientAuthenticator *_addsNewIconsToHomeScreenAuthenticator;
+    FBServiceClientAuthenticator *_showsBadgesInAppLibraryAuthenticator;
+    FBServiceClientAuthenticator *_homeScreenBundleIdentifiersAuthenticator;
+    FBServiceClientAuthenticator *_appLibraryRequestUpdateAuthenticator;
+    FBServiceClientAuthenticator *_displayedDateAuthenticator;
+    FBServiceClientAuthenticator *_configurationAuthenticator;
     NSMutableSet *_activeConnections;
     BSServiceConnectionListener *_connectionListener;
 }
 
 @property (readonly, nonatomic) NSMutableSet *activeConnections; // @synthesize activeConnections=_activeConnections;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *addWidgetToTodayViewAuthenticator; // @synthesize addWidgetToTodayViewAuthenticator=_addWidgetToTodayViewAuthenticator;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *addsNewIconsToHomeScreenAuthenticator; // @synthesize addsNewIconsToHomeScreenAuthenticator=_addsNewIconsToHomeScreenAuthenticator;
+@property (copy, nonatomic) NSNumber *addsNewIconsToHomeScreenValue;
+@property (readonly, copy, nonatomic) NSArray *allHomeScreenApplicationBundleIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *allHomeScreenApplicationPlaceholderBundleIdentifiers;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *appLibraryRequestUpdateAuthenticator; // @synthesize appLibraryRequestUpdateAuthenticator=_appLibraryRequestUpdateAuthenticator;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *configurationAuthenticator; // @synthesize configurationAuthenticator=_configurationAuthenticator;
 @property (readonly, nonatomic) BSServiceConnectionListener *connectionListener; // @synthesize connectionListener=_connectionListener;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *displayedDateAuthenticator; // @synthesize displayedDateAuthenticator=_displayedDateAuthenticator;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *homeScreenBundleIdentifiersAuthenticator; // @synthesize homeScreenBundleIdentifiersAuthenticator=_homeScreenBundleIdentifiersAuthenticator;
 @property (readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *iconFolderPathLookupAuthenticator; // @synthesize iconFolderPathLookupAuthenticator=_iconFolderPathLookupAuthenticator;
 @property (copy, nonatomic) NSNumber *lowDensityIconLayoutEnabledValue;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *lowDensityLayoutAuthenticator; // @synthesize lowDensityLayoutAuthenticator=_lowDensityLayoutAuthenticator;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *requestSuggestedAppAuthenticator; // @synthesize requestSuggestedAppAuthenticator=_requestSuggestedAppAuthenticator;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *resetHomeScreenLayoutAuthenticator; // @synthesize resetHomeScreenLayoutAuthenticator=_resetHomeScreenLayoutAuthenticator;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *showsBadgesInAppLibraryAuthenticator; // @synthesize showsBadgesInAppLibraryAuthenticator=_showsBadgesInAppLibraryAuthenticator;
+@property (copy, nonatomic) NSNumber *showsBadgesInAppLibraryValue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_requestAppLibraryUpdate:(id)arg1 reason:(id)arg2 optionalCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)addWidgetToTodayViewWithBundleIdentifier:(id)arg1;
+- (void)changeDisplayedDateOffsetOverride:(id)arg1;
+- (void)changeDisplayedDateOverride:(id)arg1;
+- (id)configureCategoryMapProviderToUseCategoryMapAtURL:(id)arg1;
+- (void)configureDeweyEachAppHasItsOwnCategory;
+- (void)configureDeweyOneCategoryWithAllApps;
+- (BOOL)debugContinuityWithBadgeType:(id)arg1;
 - (id)folderPathToIconWithBundleIdentifier:(id)arg1;
+- (oneway void)forbidApplicationBundleIdentifierFromLibrary:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)hasWidgetWithBundleIdentifier:(id)arg1;
+- (void)ignoreAllApps;
 - (id)initWithIconController:(id)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (void)organizeAllIconsAcrossPagesWithPageCount:(id)arg1;
+- (void)organizeAllIconsIntoFoldersWithPageCount:(id)arg1;
+- (void)overrideBadgeValue:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)refreshAppLibrary:(id)arg1 reason:(id)arg2;
+- (void)reloadIcons;
+- (void)removeAllWidgets;
+- (void)requestAppLibraryUpdate:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)requestSuggestedApplicationWithBundleIdentifier:(id)arg1 assertionPort:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (oneway void)resetCategoriesLayoutWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)resetHomeScreenLayoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)runDownloadingIconTest;
+- (oneway void)runFloatingDockStressTestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)runRemoveAndRestoreIconTest;
+- (oneway void)unforbidApplicationBundleIdentifierFromLibrary:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

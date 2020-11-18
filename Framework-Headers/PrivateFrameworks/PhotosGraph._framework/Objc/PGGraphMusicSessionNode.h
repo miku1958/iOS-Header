@@ -4,21 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 @class NSDate, NSSet;
 
-@interface PGGraphMusicSessionNode : PGGraphNode
+@interface PGGraphMusicSessionNode : PGGraphOptimizedNode
 {
+    NSDate *_localStartDate;
+    NSDate *_localEndDate;
 }
 
-@property (readonly, nonatomic) NSDate *localEndDate;
-@property (readonly, nonatomic) NSDate *localStartDate;
+@property (readonly, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
+@property (readonly, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
 @property (readonly, nonatomic) NSSet *momentNodes;
 @property (readonly, nonatomic) NSSet *trackNodes;
 
 + (id)musicSessionDateSortDescriptors;
+- (void).cxx_destruct;
+- (id)description;
+- (unsigned short)domain;
 - (void)enumerateMusicTrackNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

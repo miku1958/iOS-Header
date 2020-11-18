@@ -10,13 +10,14 @@
 {
 }
 
+@property (readonly, nonatomic) struct CGRect p_clipRect;
+@property (readonly, nonatomic) struct UIEdgeInsets p_edgeInsetsForClipping;
+
 - (struct CGRect)clipRect;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (struct CGRect)layerFrameInScaledCanvas;
-- (struct CGRect)p_clipRect;
-- (struct CGRect)p_convertBaseToNaturalRect:(struct CGRect)arg1;
-- (struct UIEdgeInsets)p_edgeInsetsForClipping;
+- (struct CGRect)p_convertBaseToPartialNaturalRect:(struct CGRect)arg1;
 - (struct CGImage *)p_newImageForCachingBaseRep;
 - (void)willBeRemoved;
 

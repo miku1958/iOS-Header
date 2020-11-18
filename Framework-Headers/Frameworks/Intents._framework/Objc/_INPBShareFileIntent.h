@@ -17,14 +17,12 @@
     struct {
         unsigned int shareMode:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _shareMode;
     NSArray *_entityNames;
     _INPBIntentMetadata *_intentMetadata;
     NSArray *_recipients;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;

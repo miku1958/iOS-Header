@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_childActionDirections:1;
         unsigned int read_childActionFlyover:1;
         unsigned int read_childActionSearch:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_childActionDirections:1;
-        unsigned int wrote_childActionFlyover:1;
-        unsigned int wrote_childActionSearch:1;
-        unsigned int wrote_childActionType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,9 +45,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsChildActionType:(id)arg1;
-- (void)_readChildActionDirections;
-- (void)_readChildActionFlyover;
-- (void)_readChildActionSearch;
 - (id)childActionTypeAsString:(int)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -61,7 +54,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

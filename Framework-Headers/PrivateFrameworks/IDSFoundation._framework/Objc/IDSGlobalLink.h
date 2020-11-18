@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/IDSGLSessionManagerDelegate-Protocol.h>
 #import <IDSFoundation/IDSLink-Protocol.h>
 #import <IDSFoundation/IDSLinkDelegate-Protocol.h>
 #import <IDSFoundation/IDSStunCandidatePairDelegate-Protocol.h>
 
-@class IDSCommnatManager, IDSGLSessionManager, IDSGlobalLinkBlocks, IDSTCPLink, IDSUDPLink, NSData, NSMutableArray, NSMutableDictionary, NSString;
+@class IDSGlobalLinkBlocks, IDSTCPLink, IDSUDPLink, NSData, NSMutableArray, NSMutableDictionary, NSString;
 @protocol IDSLinkDelegate, OS_dispatch_source;
 
-@interface IDSGlobalLink : NSObject <IDSLink, IDSLinkDelegate, IDSStunCandidatePairDelegate, IDSGLSessionManagerDelegate>
+@interface IDSGlobalLink : NSObject <IDSLink, IDSLinkDelegate, IDSStunCandidatePairDelegate>
 {
     IDSUDPLink *_udpLink;
     IDSUDPLink *_udpLinkv6;
@@ -27,12 +26,12 @@
     CDUnknownBlockType _connectReadyHandler;
     CDUnknownBlockType _disconnectCompletionHandler;
     long long _clientType;
-    BOOL _isFaceTimeCall;
-    BOOL _isMultiway;
-    BOOL _forceQuickRelay;
+    BOOL _allowOnlyOneQR;
+    BOOL _allowP2P;
     BOOL _disallowWiFi;
     BOOL _disallowCellular;
     BOOL _preferCellularForCallSetup;
+    BOOL _allowConcurrentQRSetup;
     struct tagIDSQRSendInfoList *_sendInfoList;
     BOOL _linkIDCounter;
     double _natMappingTimeout;
@@ -43,6 +42,9 @@
     double _allocbindEndTime;
     double _linkConnectTime;
     double _firstClientPacketTime;
+    double _firstDataReceivedTime;
+    BOOL _reportClientPacketTime;
+    BOOL _reportDataReceivedTime;
     struct IDSNAT64PrefixCache_ *_nat64PrefixCache;
     NSMutableDictionary *_tokenToCandidatePairs;
     NSMutableDictionary *_linkIDToCandidatePairs;
@@ -52,8 +54,15 @@
     struct IDSSimpleUInt16List _channelNumberList;
     struct IDSSimpleUInt16List _reallocChannelList;
     NSMutableDictionary *_tokenToReallocBlocks;
+    NSMutableDictionary *_reallocNewCandidatePairToOldCandidatePair;
+    NSMutableDictionary *_unallocbindRequestToReason;
     NSObject<OS_dispatch_source> *_disconnectTimer;
     NSObject<OS_dispatch_source> *_activityTimer;
+    NSMutableDictionary *_tokenToReorderedPackets;
+    NSMutableDictionary *_tokenToRequestTimeStampAndRTT;
+    NSMutableDictionary *_tokenToHBCounter;
+    NSMutableArray *_connectedLinkIDs;
+    NSMutableArray *_activeProbingLinkIDs;
     NSMutableDictionary *_connectingCandidatePairSessionInfo;
     NSMutableArray *_interfaceAddressArray;
     BOOL _isInitiator;
@@ -65,12 +74,11 @@
     NSData *_skeData;
     BOOL _recvRemoteSKEData;
     BOOL _delaySessionConnected;
-    BOOL _skeComplete;
+    BOOL _skeToRemoteComplete;
     double _skeStartTime;
     NSString *_acceptedRelaySessionID;
     NSMutableArray *_nonAcceptedQRSessions;
     BOOL _isSessionAcceptedWithNoCandidatePair;
-    IDSGLSessionManager *_sessionManager;
     long long _remoteCapabilityFlag;
     BOOL _delayedConnData;
     int _localConnDataCounter;
@@ -85,7 +93,6 @@
     NSMutableArray *_allocateTimeReportBlocks;
     BOOL _hasPendingSelfAllocation;
     NSMutableArray *_selfAllocateRequestIDs;
-    IDSCommnatManager *_commnatManager;
     NSString *_cbuuid;
     NSString *_deviceUniqueID;
     unsigned long long _headerOverhead;
@@ -101,10 +108,19 @@
     unsigned long long _previousBytesReceived;
     unsigned long long _previousPacketsReceived;
     double _previousReportTime;
+    double _calleeAcceptTime;
+    BOOL _isSecondOrLaterParticipant;
+    unsigned int _probingTimeout;
     struct os_unfair_lock_s _lock;
     short _remoteGlobalLinkVersion;
     BOOL _reduceCellularUsage;
     BOOL _reduceRelayLinkCreation;
+    BOOL _shouldProcessBasebandNotification;
+    BOOL _supportChannelData;
+    BOOL _islocalCellAttributeInexpensive;
+    BOOL _receivedAllocbindResponse;
+    NSMutableDictionary *_retryCountPerLinkType;
+    unsigned int _remoteDeviceVersion;
 }
 
 @property (weak) id<IDSLinkDelegate> alternateDelegate; // @synthesize alternateDelegate=_alternateDelegate;
@@ -119,10 +135,11 @@
 @property (readonly) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (Class)getGLClassWithOptions:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_IsExtIPDiscoveryNeeded:(struct sockaddr *)arg1 candidatePairList:(id)arg2;
 - (BOOL)_addCandidate:(id)arg1 isRemoteCandidate:(BOOL)arg2;
-- (void)_addQRAAWDBlock:(id)arg1 allocateRequestTime:(double)arg2 inferredExternalIP:(unsigned int)arg3 stunTransport:(long long)arg4 relayProviderType:(long long)arg5 idsSessionID:(id)arg6;
+- (void)_addQRAAWDBlock:(id)arg1 allocateRequestTime:(double)arg2 inferredExternalRAT:(unsigned int)arg3 stunTransport:(long long)arg4 relayProviderType:(long long)arg5 idsSessionID:(id)arg6 reportingDataBlob:(id)arg7 isInitiator:(BOOL)arg8;
 - (id)_addSocketAndInterfaceAddress:(unsigned long long)arg1 wantsWiFi:(BOOL)arg2 wantsCellular:(BOOL)arg3;
 - (void)_addStunCheckPair:(id)arg1 isRemoteCandidate:(BOOL)arg2;
 - (void)_callDisconnectCompletionHandler:(id)arg1;
@@ -135,35 +152,44 @@
 - (void)_discardCandidatePairsWithOption:(BOOL)arg1;
 - (void)_discardNonAcceptedCandidatePairs;
 - (void)_discardSelfAllocateCandidatePairs;
+- (id)_findCandidatePairWithRelaySessionID:(id)arg1;
+- (id)_getAllocbindReportingDataBlob:(id)arg1;
 - (id)_getCandidatePairsWithSessionID:(id)arg1 inState:(unsigned long long)arg2;
+- (int)_getExpensiveLinkFlags:(BOOL)arg1 candidatePair:(id)arg2;
+- (unsigned int)_getExternalIPAddressRAT:(id)arg1;
 - (id)_getLink:(int)arg1 stunTransport:(long long)arg2;
 - (void)_getNAT64PrefixForInterface:(int)arg1 interfaceName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (unsigned char)_getNewLinkType:(id)arg1 remoteInterface:(int *)arg2;
 - (BOOL)_getPacketBufferSendInfo:(CDStruct_12676517 *)arg1 channelNumber:(unsigned short *)arg2 transport:(long long *)arg3;
+- (long long)_getQRAllocateType;
 - (BOOL)_getSessionParticipants:(id)arg1 relaySessionID:(id)arg2 options:(id)arg3;
 - (BOOL)_getSessionStreamInfo:(id)arg1 relaySessionID:(id)arg2 options:(id)arg3;
 - (void)_handleActivityTimer;
 - (void)_handleAllocbindFailoverTimer:(id)arg1 failoverTimerOnCandidatePair:(id)arg2 onInterface:(int)arg3;
-- (void)_handleCommnatResult:(long long)arg1 reflextiveCandidate:(id)arg2;
 - (void)_handleDisconnectTimer;
+- (void)_handleNewRATChange;
+- (void)_handleNoRemotePacket;
+- (void)_handleRemapping:(id)arg1;
 - (void)_handleSelfAllocationTimeout:(id)arg1;
 - (BOOL)_hasActiveAllocbindFailoverTimerForSessionID:(id)arg1;
-- (BOOL)_hasConnectedCandidatePair;
+- (BOOL)_hasCandidatePairInState:(unsigned long long)arg1 anotherState:(unsigned long long)arg2 relayCandidatePairsOnly:(BOOL)arg3 excludeSelfAlloc:(BOOL)arg4;
+- (BOOL)_hasCandidatePairInState:(unsigned long long)arg1 relayCandidatePairsOnly:(BOOL)arg2 excludeSelfAlloc:(BOOL)arg3;
 - (BOOL)_hasConnectingRelayCandidatePair;
-- (void)_invalidateCandidatePairs:(id)arg1;
-- (BOOL)_isBetterCandidatePair:(id)arg1 newCandidatePair:(id)arg2;
+- (BOOL)_isAcceptedRelaySessionForAllocationRequestID:(id)arg1 acceptedRelaySessionID:(id)arg2;
+- (BOOL)_isCellularInterfaceForCandidatePair:(id)arg1 localAddress:(struct sockaddr *)arg2;
 - (BOOL)_isExtIPDiscoveryDone;
 - (BOOL)_isInterfaceConstrainedWithInterfaceIndex:(unsigned int)arg1;
+- (BOOL)_isInterfaceDelegatedWithInterfaceIndex:(unsigned int)arg1;
 - (BOOL)_isInterfaceExpensiveWithInterfaceIndex:(unsigned int)arg1;
-- (BOOL)_isReachableInterface:(id)arg1 interfaceIPVersion:(unsigned long long)arg2;
-- (id)_nextConnectedCandidatePair;
 - (void)_nominateCandidatePair:(id)arg1;
 - (void)_notifyCandidatePairConnected:(id)arg1;
-- (void)_notifyCandidatePairDisconnected:(id)arg1;
+- (void)_notifyCandidatePairDisconnected:(id)arg1 withReason:(unsigned char)arg2;
 - (void)_notifyDefaultUnderlyingLinkChanged:(id)arg1 error:(long long)arg2;
-- (void)_notifyLinkDisconnectedWithError:(long long)arg1;
+- (void)_notifyLinkDisconnectedWithError:(long long)arg1 reason:(unsigned char)arg2;
 - (void)_notifyQRSessionConnected:(id)arg1;
 - (void)_notifySessionInfoReceived:(id)arg1 relayGroupID:(id)arg2 relaySessionID:(id)arg3 success:(BOOL)arg4;
 - (void)_parseClientUUID:(id)arg1;
+- (BOOL)_postProcessAllocbindResponse:(id)arg1 candidatePair:(id)arg2 candidatePairToken:(id)arg3;
 - (BOOL)_processAllocbindResponse:(id)arg1 fromDevice:(id)arg2 localIfIndex:(unsigned int)arg3 localAddress:(struct sockaddr *)arg4 remmoteAddress:(struct sockaddr *)arg5 candidatePairToken:(id)arg6 arrivalTime:(double)arg7;
 - (BOOL)_processBindingRequest:(id)arg1 fromDevice:(id)arg2 localIfIndex:(unsigned int)arg3 localAddress:(struct sockaddr *)arg4 remmoteAddress:(struct sockaddr *)arg5 candidatePairToken:(id)arg6 arrivalTime:(double)arg7;
 - (BOOL)_processBindingResponse:(id)arg1 fromDevice:(id)arg2 localIfIndex:(unsigned int)arg3 localAddress:(struct sockaddr *)arg4 remmoteAddress:(struct sockaddr *)arg5 candidatePairToken:(id)arg6 arrivalTime:(double)arg7;
@@ -172,7 +198,6 @@
 - (void)_processCommandDisconnected:(id)arg1 candidatePairToken:(id)arg2;
 - (void)_processCommandHeartbeat:(id)arg1 candidatePairToken:(id)arg2 arrivalTime:(double)arg3;
 - (void)_processCommandNominate:(id)arg1 candidatePairToken:(id)arg2;
-- (void)_processCommandZUDPData:(id)arg1 candidatePairToken:(id)arg2;
 - (BOOL)_processDataIndication:(id)arg1 fromDevice:(id)arg2 localIfIndex:(unsigned int)arg3 localAddress:(struct sockaddr *)arg4 remoteAddress:(struct sockaddr *)arg5 candidatePairToken:(id)arg6 arrivalTime:(double)arg7;
 - (void)_processDataOnReallocChannel:(unsigned short)arg1 localAddress:(struct sockaddr *)arg2 remoteAddress:(struct sockaddr *)arg3;
 - (void)_processDelayedCellularInterfaces;
@@ -184,47 +209,52 @@
 - (BOOL)_processReallocIndication:(id)arg1 fromDevice:(id)arg2 localIfIndex:(unsigned int)arg3 localAddress:(struct sockaddr *)arg4 remoteAddress:(struct sockaddr *)arg5 candidatePairToken:(id)arg6 arrivalTime:(double)arg7;
 - (void)_processRemoteCandidates:(id)arg1;
 - (void)_processRemoteLinkUUID:(id)arg1 candidatePair:(id)arg2;
-- (void)_processRemovedLocalAddressList:(id)arg1;
+- (BOOL)_processRemovedLocalAddressList:(id)arg1;
 - (void)_processRemovedRemoteCandidates:(id)arg1;
 - (BOOL)_processStunPacket:(CDStruct_12676517 *)arg1 fromDeviceUniqueID:(id)arg2 cbuuid:(id)arg3 arrivalTime:(double)arg4 headerOverhead:(unsigned long long)arg5;
 - (BOOL)_processUnallocbindResponse:(id)arg1 fromDevice:(id)arg2 localIfIndex:(unsigned int)arg3 localAddress:(struct sockaddr *)arg4 remmoteAddress:(struct sockaddr *)arg5 candidatePairToken:(id)arg6 arrivalTime:(double)arg7;
 - (void)_processXORMappedAddress:(id)arg1 arrivalTime:(double)arg2;
 - (BOOL)_qrLinkLimitExceededWithNewLinkType:(unsigned char)arg1 cellularRelayLinkCount:(unsigned short)arg2 wifiRelayLinkCount:(unsigned short)arg3;
-- (void)_recvGenericData:(char *)arg1 dataLength:(unsigned long long)arg2 linkID:(BOOL)arg3;
+- (void)_removeChannelFromChannelToCandidatePair:(id)arg1;
 - (void)_removePacketNotificationFilter;
 - (void)_removeStunRequest:(id)arg1;
 - (void)_reportAWDAllocateTime;
 - (void)_reportSessionSetupTime;
-- (void)_requestNewQRAllocationWithPreferredRemoteInterface:(int)arg1 withPreferredLocalInterface:(int)arg2;
+- (void)_requestNewTwoWayQRAllocation:(id)arg1;
 - (void)_requestNonUDPRelayAllocation:(long long)arg1 relaySessionID:(id)arg2;
 - (BOOL)_requestSelfAllocationForInterfaceAddress:(id)arg1;
+- (void)_resetRetryCountForCandidatePair:(id)arg1;
 - (void)_saveStunRequest:(id)arg1 startTime:(double)arg2 token:(id)arg3;
 - (void)_selectBetterDefaultCandidatePair:(id)arg1;
-- (void)_selectDefaultCandidatePair;
 - (void)_sendAllocbindRequest:(id)arg1 stunMessage:(id)arg2 isRealloc:(BOOL)arg3 inResponseToNoSessionState:(BOOL)arg4;
 - (void)_sendAllocbindRequestForExtIP:(id)arg1 startTime:(double)arg2;
 - (void)_sendBindingRequest:(id)arg1 stunMessage:(id)arg2;
 - (void)_sendCommandMessage:(long long)arg1 stunMessage:(id)arg2 options:(id)arg3 candidatePairToken:(id)arg4;
 - (void)_sendConnectionDataWithRemovedAddressList:(id)arg1;
+- (void)_sendSKEDataToSucceededCandidatePairs;
 - (void)_sendSKEDataWithSelectedCandidatePair;
 - (void)_sendSessionDisconnectedCommand;
 - (long long)_sendStunMessage:(id)arg1 sourceIfIndex:(int)arg2 source:(struct sockaddr *)arg3 destination:(struct sockaddr *)arg4 stunTransport:(long long)arg5 token:(id)arg6;
-- (void)_sendUnallocbindRequest:(id)arg1 stunMessage:(id)arg2;
-- (long long)_sendZUDPData:(char *)arg1 dataLength:(unsigned long long)arg2 linkID:(BOOL)arg3;
+- (void)_sendUnallocbindRequest:(id)arg1 stunMessage:(id)arg2 reason:(unsigned char)arg3;
 - (void)_setChannelToCandidatePair:(id)arg1 localAddress:(struct sockaddr *)arg2 remoteAddress:(struct sockaddr *)arg3 channelNumber:(unsigned short)arg4;
+- (void)_setDefaultCandidatePairForNonFT;
+- (void)_setFirstDefaultCandidatePair:(id)arg1;
 - (void)_setRemoteGlobalLinkVersionWithCommand:(long long)arg1 receivedRemoteVersion:(BOOL)arg2 versionValue:(unsigned short)arg3 receivedSKE:(BOOL)arg4;
-- (void)_setupNewQRLinkIfNecessary:(id)arg1;
+- (BOOL)_setupNewQRLinkIfNecessary:(id)arg1;
 - (void)_setupRelayConnectionForNetworkAddressChanges;
+- (BOOL)_shouldSkipCommand:(long long)arg1 withCandidatePair:(id)arg2 connectionDataCounter:(int)arg3;
 - (BOOL)_skipCommandMessage:(long long)arg1 candidatePair:(id)arg2 timeNow:(double)arg3;
 - (void)_startActivityTimer;
 - (void)_startAllocbindFailoverTimerOnCandidatePair:(id)arg1;
 - (void)_startDisconnectTimer;
 - (void)_startExtIPDiscovery;
+- (void)_startHB:(id)arg1;
 - (void)_startStunCheck:(id)arg1;
 - (double)_startTimeForStunRequest:(id)arg1;
 - (void)_stopActivityTimer;
 - (void)_stopAllocbindFailoverTimer:(id)arg1;
 - (void)_stopDisconnectTimer;
+- (BOOL)_synthesizeNAT64ForAddress:(struct sockaddr *)arg1 withPrefix:(CDStruct_330c469e *)arg2 toAddress:(struct sockaddr *)arg3;
 - (void)_updateDefaultCandidatePair:(id)arg1;
 - (void)_updateInterfaceAddressesWithAddList:(id)arg1 removeList:(id)arg2;
 - (void)_updateNominatedCandidatePair:(id)arg1;
@@ -240,6 +270,7 @@
 - (void)disconnectCandidatePair:(id)arg1;
 - (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dropIPPackets:(BOOL)arg1 payloadArray:(id)arg2;
+- (void)flushLinkProbingStatus:(id)arg1;
 - (id)generateLinkReport:(double)arg1 isCurrentLink:(BOOL)arg2;
 - (void)getSessionInfo:(id)arg1 relaySessionID:(id)arg2 requestType:(long long)arg3 options:(id)arg4;
 - (void)handleCellularRATChange;
@@ -250,17 +281,23 @@
 - (void)link:(id)arg1 didConnectForDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (void)link:(id)arg1 didDisconnectForDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (BOOL)link:(id)arg1 didReceivePacket:(CDStruct_12676517 *)arg2 fromDeviceUniqueID:(id)arg3 cbuuid:(id)arg4;
+- (void)queryLinkProbingStatus:(id)arg1;
 - (BOOL)remoteHostAwake;
+- (void)satHasPendingAllocation:(BOOL)arg1;
 - (void)sendAllocbindRequest:(id)arg1 isRealloc:(BOOL)arg2 inResponseToNoSessionState:(BOOL)arg3;
 - (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (unsigned long long)sendPacketBufferArray:(CDStruct_183601bc **)arg1 arraySize:(int)arg2 toDeviceUniqueID:(id)arg3 cbuuid:(id)arg4;
+- (void)sendProbingRequestWithoptions:(id)arg1 candidatePairToken:(id)arg2;
 - (void)sendSKEData:(id)arg1;
 - (void)setAcceptedRelaySession:(id)arg1 options:(id)arg2;
 - (void)setDefaultUnderlyingLink:(BOOL)arg1;
 - (void)setPacketNotificationFilter:(BOOL)arg1 uniqueTag:(unsigned int)arg2 isEnabled:(BOOL)arg3;
+- (void)setRemoteDeviceVersion:(unsigned int)arg1;
 - (void)setWiFiAssistState:(BOOL)arg1;
+- (void)startLinkProbing:(id)arg1;
 - (void)startWithOptions:(id)arg1;
 - (void)stopKeepAlive:(id)arg1;
+- (void)stopLinkProbing:(id)arg1;
 - (void)updateProtocolQualityOfService:(BOOL)arg1 isGood:(BOOL)arg2;
 - (void)updateSessionParticipants:(id)arg1 relaySessionID:(id)arg2 participants:(id)arg3;
 

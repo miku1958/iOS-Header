@@ -8,44 +8,30 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMLanguage, NSSet;
+@class NSArray;
 
 @interface AXMTextDetectionOptions : NSObject <NSSecureCoding>
 {
-    BOOL _correctSpelling;
-    BOOL _detectDiacritics;
-    BOOL _returnSubFeatures;
-    BOOL _minimizeFalsePositives;
     BOOL _usesLanguageCorrection;
-    unsigned long long _detectionFlavor;
-    AXMLanguage *_textDetectionLanguage;
-    NSSet *_spellCheckingLanguages;
-    double _minimumCharacterHeight;
+    BOOL _correctSpelling;
     unsigned long long _recognitionLevel;
     double _normalizedMinimumTextHeightRatio;
+    NSArray *_textDetectionLocales;
 }
 
 @property (nonatomic) BOOL correctSpelling; // @synthesize correctSpelling=_correctSpelling;
-@property (nonatomic) BOOL detectDiacritics; // @synthesize detectDiacritics=_detectDiacritics;
-@property (nonatomic) unsigned long long detectionFlavor; // @synthesize detectionFlavor=_detectionFlavor;
-@property (nonatomic) BOOL minimizeFalsePositives; // @synthesize minimizeFalsePositives=_minimizeFalsePositives;
-@property (nonatomic) double minimumCharacterHeight; // @synthesize minimumCharacterHeight=_minimumCharacterHeight;
 @property (nonatomic) double normalizedMinimumTextHeightRatio; // @synthesize normalizedMinimumTextHeightRatio=_normalizedMinimumTextHeightRatio;
 @property (nonatomic) unsigned long long recognitionLevel; // @synthesize recognitionLevel=_recognitionLevel;
-@property (nonatomic) BOOL returnSubFeatures; // @synthesize returnSubFeatures=_returnSubFeatures;
-@property (strong, nonatomic) NSSet *spellCheckingLanguages; // @synthesize spellCheckingLanguages=_spellCheckingLanguages;
-@property (strong, nonatomic) AXMLanguage *textDetectionLanguage; // @synthesize textDetectionLanguage=_textDetectionLanguage;
+@property (strong, nonatomic) NSArray *textDetectionLocales; // @synthesize textDetectionLocales=_textDetectionLocales;
 @property (nonatomic) BOOL usesLanguageCorrection; // @synthesize usesLanguageCorrection=_usesLanguageCorrection;
 
-+ (id)defaultDetectTextRectanglesOptions;
-+ (id)defaultRecognizeTextOptions;
++ (id)defaultOptions;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_init;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDetectionFlavor:(unsigned long long)arg1;
 
 @end
 

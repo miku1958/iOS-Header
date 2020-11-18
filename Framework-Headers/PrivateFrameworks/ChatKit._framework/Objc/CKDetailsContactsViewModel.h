@@ -14,6 +14,7 @@
     BOOL _showsMessageButton;
     BOOL _showsFaceTimeVideoButton;
     BOOL _showsPhoneButton;
+    BOOL _showsScreenSharingButton;
     BOOL _isPendingRecipient;
     BOOL _verified;
     NSString *_preferredHandle;
@@ -31,11 +32,12 @@
 @property (nonatomic) BOOL showsLocation; // @synthesize showsLocation=_showsLocation;
 @property (nonatomic) BOOL showsMessageButton; // @synthesize showsMessageButton=_showsMessageButton;
 @property (nonatomic) BOOL showsPhoneButton; // @synthesize showsPhoneButton=_showsPhoneButton;
+@property (nonatomic) BOOL showsScreenSharingButton; // @synthesize showsScreenSharingButton=_showsScreenSharingButton;
 @property (nonatomic) BOOL verified; // @synthesize verified=_verified;
 
 + (id)descriptorForContactRequiredKeys;
 - (void).cxx_destruct;
-- (id)initWithPreferredHandle:(id)arg1 entityName:(id)arg2 locationString:(id)arg3 showsLocation:(BOOL)arg4 showsMessageButton:(BOOL)arg5 showsFaceTimeVideoButton:(BOOL)arg6 showsPhoneButton:(BOOL)arg7 contact:(id)arg8 isPendingRecipient:(BOOL)arg9 verified:(BOOL)arg10;
+- (id)initWithPreferredHandle:(id)arg1 entityName:(id)arg2 locationString:(id)arg3 showsLocation:(BOOL)arg4 showsMessageButton:(BOOL)arg5 showsFaceTimeVideoButton:(BOOL)arg6 showsPhoneButton:(BOOL)arg7 showsScreenSharingButton:(BOOL)arg8 contact:(id)arg9 isPendingRecipient:(BOOL)arg10 verified:(BOOL)arg11;
 
 @end
 

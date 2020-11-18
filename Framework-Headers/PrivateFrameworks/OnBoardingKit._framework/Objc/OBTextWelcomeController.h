@@ -23,6 +23,7 @@
 - (void)addSectionWithHeader:(id)arg1 content:(id)arg2;
 - (void)addSectionWithHeader:(id)arg1 content:(id)arg2 accessoryButton:(id)arg3;
 - (id)initWithTitle:(id)arg1;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 contentLayout:(long long)arg3;
 - (void)loadView;
 - (BOOL)shouldInlineButtonTray;
 

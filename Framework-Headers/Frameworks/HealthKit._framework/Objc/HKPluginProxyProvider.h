@@ -15,7 +15,7 @@
 @property (readonly, nonatomic) NSString *pluginIdentifier;
 
 - (void)fetchPluginProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 endpointHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 healthStore:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (id)initWithHealthStore:(id)arg1 pluginIdentifier:(id)arg2 exportedObject:(id)arg3;
 
 @end

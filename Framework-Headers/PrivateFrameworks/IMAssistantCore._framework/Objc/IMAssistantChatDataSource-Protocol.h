@@ -13,9 +13,9 @@
 @property (readonly, nonatomic) NSArray *allExistingChats;
 @property (readonly, nonatomic) BOOL blackholedChatsExist;
 
+- (NSArray *)allGUIDsForChat:(IMChat *)arg1;
 - (IMChat *)chatForIMHandle:(IMHandle *)arg1;
 - (IMChat *)chatForIMHandles:(NSArray *)arg1;
-- (NSArray *)chatGUIDsForChat:(IMChat *)arg1;
 - (IMChat *)existingChatForAddresses:(NSArray *)arg1 allowRetargeting:(BOOL)arg2 bestHandles:(id *)arg3;
 - (IMChat *)existingChatWithChatIdentifier:(NSString *)arg1;
 @end

@@ -11,13 +11,13 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
@@ -30,24 +30,17 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    double snapshotTime;
-    double startTime;
-    double endTime;
-    double duration;
-    double elapsedDuration;
-    float rate;
-    float defaultRate;
-    BOOL isLiveContent;
-    BOOL isLoading;
-} CDStruct_fce57115;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    float _field6;
+    float _field7;
+    BOOL _field8;
+    BOOL _field9;
+} CDStruct_1c9ae071;
 

@@ -8,10 +8,11 @@
 
 #import <HealthUI/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDisplayTypeController, HKHealthStore, NSMutableArray, NSUUID;
+@class HKDisplayTypeController, HKHealthServicesManager, HKHealthStore, NSMutableArray, NSUUID;
 
 @interface _HKIngestSettingsViewController : HKTableViewController <HKSwitchTableViewCellDelegate>
 {
+    HKHealthServicesManager *_healthServicesManager;
     HKDisplayTypeController *_displayTypeController;
     NSMutableArray *_dataTypeNames;
     BOOL _deviceEnabled;

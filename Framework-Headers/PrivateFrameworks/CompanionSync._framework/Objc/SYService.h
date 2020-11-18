@@ -26,6 +26,7 @@
     _SYMultiSuspendableQueue *_sessionQueue;
     NSObject<OS_dispatch_source> *_processSignalSource;
     SYPersistentStore *_persistentStore;
+    struct os_unfair_lock_s _persistentStoreLock;
     SYSyncEngine *_syncEngine;
     SYVectorClock *_vectorClock;
     NSMutableSet *_rejectingV1SyncSessions;
@@ -50,11 +51,11 @@
         unsigned int assignedEngineType:3;
         unsigned int suspendedForQWS:1;
     } _flags;
+    unsigned int _engineType;
     NSString *_peerID;
     double _defaultMessageTimeout;
     double _sessionStalenessInterval;
     long long _sendingBufferCap;
-    long long _engineType;
     NSString *_generationID;
 }
 
@@ -63,7 +64,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double defaultMessageTimeout; // @synthesize defaultMessageTimeout=_defaultMessageTimeout;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long engineType; // @synthesize engineType=_engineType;
+@property (nonatomic) unsigned int engineType; // @synthesize engineType=_engineType;
 @property (readonly, nonatomic) NSDictionary *extraTransportOptions;
 @property (readonly, nonatomic) NSString *generationID; // @synthesize generationID=_generationID;
 @property (readonly, nonatomic) BOOL hasPairingStore;
@@ -72,7 +73,7 @@
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_serviceName;
 @property (strong, nonatomic) NSDictionary *options; // @synthesize options=_defaultOptions;
 @property (readonly, nonatomic) NSString *peerID; // @synthesize peerID=_peerID;
-@property (readonly, nonatomic) SYPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
+@property (readonly, nonatomic) SYPersistentStore *persistentStore;
 @property (nonatomic) long long priority; // @synthesize priority=_defaultPriority;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) long long sendingBufferCap; // @synthesize sendingBufferCap=_sendingBufferCap;
@@ -110,13 +111,13 @@
 - (BOOL)_initializeMessaging:(id *)arg1;
 - (BOOL)_initializeServiceDB:(id *)arg1;
 - (id)_makeSessionForDeltaSync:(BOOL)arg1;
-- (id)_makeSyncEngineOfType:(long long)arg1;
+- (id)_makeSyncEngineOfType:(unsigned int)arg1;
 - (id)_newMessageHeader;
 - (id)_pathForDataStore;
 - (void)_peerRejectedVersion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postVersionRejectionMessageForMessageWithID:(id)arg1;
 - (void)_processPendingChanges;
-- (BOOL)_protocolVersion:(int)arg1 supportsEngineType:(long long)arg2;
+- (BOOL)_protocolVersion:(int)arg1 supportsEngineType:(unsigned int)arg2;
 - (void)_removePairingStoreDevice;
 - (BOOL)_request:(id)arg1 hasValidSessionIDForSession:(id)arg2 response:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_sendResetRequest;
@@ -128,11 +129,11 @@
 - (void)_signalPairingStoreAvailable;
 - (void)_signalPairingStoreUnavailable;
 - (void)_suspend;
-- (void)_swapEngineTo:(long long)arg1;
+- (void)_swapEngineTo:(unsigned int)arg1;
 - (void)_swapSessionForVersionChange;
 - (void)_switchToNewTargetedDevice:(id)arg1;
 - (void)_updateMetaProtocolInfoForDevice:(id)arg1;
-- (void)_upgradeEngineTo:(long long)arg1;
+- (void)_upgradeEngineTo:(unsigned int)arg1;
 - (BOOL)_v1_handleBatchChunkAck:(id)arg1 error:(id *)arg2;
 - (BOOL)_v1_handleBatchEndResponse:(id)arg1 error:(id *)arg2;
 - (void)_v1_handleBatchSyncChunk:(id)arg1 completion:(CDUnknownBlockType)arg2;

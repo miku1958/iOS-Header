@@ -36,6 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTypingSession:(id)arg1;
 - (void)layoutDidChange:(id)arg1 keyboardState:(id)arg2;
+- (id)logDetailsForKeyboardState:(id)arg1;
 - (void)sendTo:(id)arg1;
 - (void)setClientID:(id)arg1 keyboardState:(id)arg2;
 - (id)typingSession;

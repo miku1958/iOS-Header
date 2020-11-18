@@ -17,7 +17,6 @@
     NSArray *_eventParams;
     double _time;
     double _duration;
-    double _fullDuration;
 }
 
 @property (readonly) unsigned long long audioResID;
@@ -26,7 +25,7 @@
 @property double duration; // @synthesize duration=_duration;
 @property (readonly) NSArray *eventParameters; // @synthesize eventParameters=_eventParams;
 @property (readonly) NSArray *events;
-@property (readonly) double fullDuration; // @synthesize fullDuration=_fullDuration;
+@property (readonly) double fullDuration;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSArray *parameterCurves;
 @property (readonly) NSArray *parameters;
@@ -34,15 +33,16 @@
 @property (readonly) Class superclass;
 @property (readonly) NSString *type; // @synthesize type=_type;
 
++ (BOOL)parameterValuesFromLegacyEventType:(unsigned long long)arg1 sharpness:(float *)arg2 fullness:(float *)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (id)getType;
 - (id)init;
 - (id)initWithAudioResourceID:(unsigned long long)arg1 parameters:(id)arg2 relativeTime:(double)arg3;
 - (id)initWithAudioResourceID:(unsigned long long)arg1 parameters:(id)arg2 relativeTime:(double)arg3 duration:(double)arg4;
-- (id)initWithAudioResourceIndex:(unsigned long long)arg1 parameters:(id)arg2 time:(double)arg3;
+- (id)initWithAudioResourceIndex:(unsigned long long)arg1 parameters:(id)arg2 time:(double)arg3 duration:(double)arg4;
 - (id)initWithEventType:(id)arg1 parameters:(id)arg2 relativeTime:(double)arg3;
 - (id)initWithEventType:(id)arg1 parameters:(id)arg2 relativeTime:(double)arg3 duration:(double)arg4;
-- (BOOL)resolveExternalResources:(id)arg1 error:(id *)arg2;
+- (id)resolveExternalResources:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -10,9 +10,10 @@
 {
 }
 
-+ (id)actionsToEditorTransitionStartingLayoutInContainerOfSize:(struct CGSize)arg1 attributesContentViewExtraHeight:(double)arg2 insets:(struct UIEdgeInsets)arg3 avatarViewStartFrame:(struct CGRect)arg4 avatarViewAlpha:(double)arg5 environment:(id)arg6;
-+ (id)defaultLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 environment:(id)arg3;
-+ (id)editorToActionsTransitionStartingLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 environment:(id)arg3;
++ (id)actionsToEditorTransitionStartingLayoutInContainerOfSize:(struct CGSize)arg1 attributesContentViewExtraHeight:(double)arg2 insets:(struct UIEdgeInsets)arg3 RTL:(BOOL)arg4 avatarViewStartFrame:(struct CGRect)arg5 avatarViewAlpha:(double)arg6 environment:(id)arg7;
++ (id)defaultLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 RTL:(BOOL)arg3 environment:(id)arg4;
++ (id)editorToActionsTransitionStartingLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 RTL:(BOOL)arg3 environment:(id)arg4;
++ (BOOL)shouldShowSideGroupPickerForContainerSize:(struct CGSize)arg1 forEnvironment:(id)arg2;
 
 @end
 

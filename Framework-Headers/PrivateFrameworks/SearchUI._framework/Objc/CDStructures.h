@@ -25,6 +25,11 @@ struct CGSize {
     double height;
 };
 
+struct SBHIconGridSize {
+    unsigned short _field1;
+    unsigned short _field2;
+};
+
 struct SBIconImageInfo {
     struct CGSize _field1;
     double _field2;

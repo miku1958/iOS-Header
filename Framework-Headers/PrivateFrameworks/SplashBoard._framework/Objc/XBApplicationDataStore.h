@@ -25,10 +25,13 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_addBundleIdentifierToLaunchInterfaceDenyList:(id)arg1;
+- (BOOL)_bundleIdentifierHasDeniedLaunchInterface:(id)arg1;
 - (void)_clearCompatibilityInfoForBundleIdentifier:(id)arg1;
 - (id)_init;
 - (id)_loadCompatibilityInfoForBundleIdentifier:(id)arg1;
 - (void)_persistCompatibilityInfo:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)_removeBundleIdentifierFromLaunchInterfaceDenyList:(id)arg1;
 - (id)_storeForBundleIdentifier:(id)arg1;
 - (void)beginAccessBlockForBundleIdentifier:(id)arg1;
 - (void)clearManifestDataForBundleIdentifier:(id)arg1;

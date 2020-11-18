@@ -8,11 +8,12 @@
 
 #import <ChatKit/CKBusinessInfoViewDelegate-Protocol.h>
 #import <ChatKit/CKComposeRecipientSelectionControllerDelegate-Protocol.h>
+#import <ChatKit/CKMacToolbarItemProvider-Protocol.h>
 
-@class CKBusinessInfoView, CKComposeNavbarManager, CKComposeRecipientSelectionController, CKComposition, CKTranscriptMultilineLabelCell, NSArray, NSDictionary, NSString, OBWelcomeController, UIBarButtonItem;
-@protocol CKComposeChatControllerDelegate;
+@class CKBusinessInfoView, CKComposeNavbarManager, CKComposeRecipientSelectionController, CKComposition, CKTranscriptMultilineLabelCell, NSArray, NSDictionary, NSObject, NSString, OBWelcomeController, UIBarButtonItem, UINavigationController, UIView;
+@protocol CKComposeChatControllerDelegate, OS_dispatch_queue;
 
-@interface CKComposeChatController : CKChatController <CKComposeRecipientSelectionControllerDelegate, CKBusinessInfoViewDelegate>
+@interface CKComposeChatController : CKChatController <CKComposeRecipientSelectionControllerDelegate, CKBusinessInfoViewDelegate, CKMacToolbarItemProvider>
 {
     BOOL _ignoreKeyboardNotifications;
     BOOL _newComposeCancelled;
@@ -20,19 +21,26 @@
     CKComposeRecipientSelectionController *_composeRecipientSelectionController;
     NSArray *_prepopulatedRecipients;
     CKComposition *_prepopulatedComposition;
+    UINavigationController *_catalystComposeNavigationController;
     UIBarButtonItem *_composeCancelItem;
     CKComposeNavbarManager *_navbarManager;
+    NSString *_lastAddressedHandle;
+    NSString *_lastAddressedSIMID;
     NSDictionary *_bizIntent;
     CKBusinessInfoView *_businessInfoView;
     OBWelcomeController *_businessChatController;
     CKTranscriptMultilineLabelCell *_blackholeAlertView;
+    unsigned long long _blackholeAlertStatus;
+    NSObject<OS_dispatch_queue> *_blackholeAlertStatusQueue;
     CDUnknownBlockType _deferredSendAnimationBlock;
+    UIView *_recipientsVirtualToolbarItem;
 }
 
 @property (strong, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property (strong, nonatomic) CKTranscriptMultilineLabelCell *blackholeAlertView; // @synthesize blackholeAlertView=_blackholeAlertView;
 @property (strong, nonatomic) OBWelcomeController *businessChatController; // @synthesize businessChatController=_businessChatController;
 @property (strong, nonatomic) CKBusinessInfoView *businessInfoView; // @synthesize businessInfoView=_businessInfoView;
+@property (strong, nonatomic) UINavigationController *catalystComposeNavigationController; // @synthesize catalystComposeNavigationController=_catalystComposeNavigationController;
 @property (strong, nonatomic) UIBarButtonItem *composeCancelItem; // @synthesize composeCancelItem=_composeCancelItem;
 @property (strong, nonatomic) CKComposeRecipientSelectionController *composeRecipientSelectionController; // @synthesize composeRecipientSelectionController=_composeRecipientSelectionController;
 @property (readonly, copy) NSString *debugDescription;
@@ -41,11 +49,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreKeyboardNotifications; // @synthesize ignoreKeyboardNotifications=_ignoreKeyboardNotifications;
+@property (strong, nonatomic) NSString *lastAddressedHandle; // @synthesize lastAddressedHandle=_lastAddressedHandle;
+@property (strong, nonatomic) NSString *lastAddressedSIMID; // @synthesize lastAddressedSIMID=_lastAddressedSIMID;
 @property (strong, nonatomic) CKComposeNavbarManager *navbarManager; // @synthesize navbarManager=_navbarManager;
 @property (nonatomic) BOOL newComposeCancelled; // @synthesize newComposeCancelled=_newComposeCancelled;
 @property (strong, nonatomic) CKComposition *prepopulatedComposition; // @synthesize prepopulatedComposition=_prepopulatedComposition;
 @property (strong, nonatomic) NSArray *prepopulatedRecipients; // @synthesize prepopulatedRecipients=_prepopulatedRecipients;
 @property (readonly, nonatomic) NSArray *proposedRecipients;
+@property (strong, nonatomic) UIView *recipientsVirtualToolbarItem; // @synthesize recipientsVirtualToolbarItem=_recipientsVirtualToolbarItem;
 @property (nonatomic) BOOL sendingViaCardUI; // @synthesize sendingViaCardUI=_sendingViaCardUI;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *unatomizedRecipientText;
@@ -54,7 +65,9 @@
 - (id)_anisetteData;
 - (id)_businessChatController;
 - (BOOL)_chatShowsUnexpectedlyLoggedOutNotification;
+- (BOOL)_deviceHasMultipleActiveSubscriptions;
 - (double)_entryViewTopInsetPadding;
+- (void)_invalidateBlackholeAlertView;
 - (BOOL)_isNewBusinessConversation;
 - (BOOL)_isWhitelistedBusinessRecipient;
 - (void)_passKitUIDismissed:(id)arg1;
@@ -68,17 +81,17 @@
 - (void)_triggerRecipientFinalization;
 - (void)_updateBlackholeAlertView;
 - (void)_updateNavigationButtons;
+- (id)_updateSendingIdentity;
 - (void)_updateTitleAnimated:(BOOL)arg1;
-- (void)aboutLinkTapped;
 - (void)addBizIntentToConversation:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (void)businessInfoView:(id)arg1 infoButtonTapped:(id)arg2;
 - (void)cancelButtonTapped:(id)arg1;
 - (void)cancelCompose;
 - (id)chatForIMHandle:(id)arg1;
-- (void)chatInputWillUpdateInputViewShowingBrowser;
 - (void)completedOnboarding;
 - (void)completedOnboardingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)configureWithToolbarController:(id)arg1;
 - (void)conversationLeft;
 - (void)dealloc;
 - (void)displayBusinessChatPrivacyAndSkipDefaultsCheck:(BOOL)arg1;
@@ -94,18 +107,23 @@
 - (void)invalidateChatItemLayoutForTraitCollectionChangeIfNeeded:(id)arg1;
 - (BOOL)isComposingRecipient;
 - (BOOL)isSafeToMarkAsRead;
+- (BOOL)itemProviderDisablesTouches;
 - (void)keyCommandCancel:(id)arg1;
 - (void)keyboardWillShowOrHide:(id)arg1;
 - (void)layoutBusinessInfoViewIfNecessary;
+- (struct UIEdgeInsets)macToolbarInsets;
 - (void)messageEntryViewDidChange:(id)arg1;
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(id)arg1;
 - (struct UIEdgeInsets)navigationBarInsetsForRecipientSelectionController:(id)arg1;
 - (id)outgoingComposeViewForSendAnimation;
 - (void)parentControllerDidResume:(BOOL)arg1 animating:(BOOL)arg2;
+- (id)preferredFocusEnvironments;
+- (BOOL)prefersBottomDividerHidden;
 - (void)prepareForSuspend;
 - (void)presentBusinessChatOnboarding;
 - (BOOL)privacyPageHasBeenDisplayed;
+- (void)providerWillBeRemovedFromToolbarController:(id)arg1;
 - (void)recipientSelectionController:(id)arg1 didFinishAvailaiblityLookupForRecipient:(id)arg2;
 - (void)recipientSelectionController:(id)arg1 didSelectConversation:(id)arg2 isiMessagable:(BOOL)arg3;
 - (void)recipientSelectionController:(id)arg1 textDidChange:(id)arg2;
@@ -116,27 +134,38 @@
 - (void)recipientSelectionControllerRequestDismissKeyboard:(id)arg1;
 - (void)recipientSelectionControllerReturnPressed:(id)arg1;
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(id)arg1;
+- (void)recipientSelectionControllerTabPressed:(id)arg1;
 - (void)reloadEntryViewIfNeeded;
+- (BOOL)reparentToolbarItem:(id)arg1;
 - (void)sendAnimationManagerWillStartAnimation:(id)arg1 context:(id)arg2;
 - (void)sendComposition:(id)arg1;
 - (void)setBusinessInfoViewInfoIfNecessary;
 - (void)setPrivacyPageHasBeenDisplayed:(BOOL)arg1;
 - (BOOL)shouldForceToSMSForConversation:(id)arg1 forRecipient:(id)arg2;
+- (BOOL)shouldInsertMacCatalystEntryView;
+- (BOOL)shouldListParticipantsInTitle;
 - (BOOL)shouldPresentBlockingDowntimeViewController;
+- (BOOL)shouldRemoveMacCatalystEntryView;
 - (BOOL)shouldShowEntryView;
+- (BOOL)shouldUseMacRecipientsView;
 - (BOOL)shouldUseNavigationBarCanvasView;
 - (id)textViewOnscreenWithEntryView;
+- (id)toolbarItemForIdentifier:(id)arg1;
 - (double)topInsetPadding;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
 - (BOOL)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
 - (BOOL)transcriptCollectionViewControllerShouldForceOpaqueMask:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (struct UIEdgeInsets)virtualToolbarContentInsets;
+- (double)virtualToolbarPreferredHeight;
+- (id)virtualView;
 
 @end
 

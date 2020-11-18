@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSObject, NWConcrete_nw_endpoint_handler;
+@class NSObject, NWConcrete_nw_endpoint, NWConcrete_nw_endpoint_handler;
 
 #pragma mark Function Pointers and Blocks
 
@@ -299,18 +299,24 @@ struct nw_connection_report_s {
     unsigned int _field32;
     unsigned int _field33;
     unsigned int _field34;
-    int _field35;
-    int _field36;
-    int _field37;
+    unsigned int _field35;
+    unsigned int _field36;
+    unsigned int _field37;
     int _field38;
     int _field39;
     int _field40;
     int _field41;
     int _field42;
-    unsigned char _field43;
-    unsigned char _field44;
-    unsigned char _field45[16];
-    unsigned char _field46[50][16];
+    int _field43;
+    int _field44;
+    int _field45;
+    int _field46;
+    unsigned char _field47;
+    unsigned char _field48;
+    unsigned char _field49[16];
+    unsigned char _field50[50][16];
+    char _field51[256];
+    char _field52[256];
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -337,8 +343,11 @@ struct nw_connection_report_s {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :6;
-    unsigned char _field47[6];
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :3;
+    unsigned char _field53[6];
 };
 
 struct nw_connection_throughput_monitor_s {
@@ -353,10 +362,18 @@ struct nw_connection_throughput_monitor_s {
 
 struct nw_connection_timestamp_s {
     unsigned long long _field1;
-    unsigned long long _field2;
-    struct nw_endpoint_handler_event_s _field3;
-    unsigned long long _field4;
-    unsigned char _field5[0];
+    struct nw_endpoint_handler_event_s _field2;
+    union {
+        struct {
+            unsigned short _field1;
+            unsigned char _field2;
+            unsigned char _field3;
+        } _field1;
+        struct {
+            unsigned short _field1;
+        } _field2;
+    } _field3;
+    unsigned char _field4[0];
 };
 
 struct nw_context_cache {
@@ -387,11 +404,16 @@ struct nw_context_globals {
     struct nw_hash_table *_field8;
     void *_field9;
     void *_field10;
-    struct nw_mem_buffer_manager *_field11;
-    struct nw_mem_buffer_manager *_field12;
-    struct nw_mem_buffer_manager *_field13;
+    unsigned long long _field11;
+    id _field12;
+    CDUnknownBlockType _field13;
     struct nw_mem_buffer_manager *_field14;
     struct nw_mem_buffer_manager *_field15;
+    struct nw_mem_buffer_manager *_field16;
+    struct nw_mem_buffer_manager *_field17;
+    struct nw_mem_buffer_manager *_field18;
+    struct nw_mem_buffer_manager *_field19;
+    struct nw_mem_buffer_manager *_field20;
 };
 
 struct nw_data_transfer_path_report {
@@ -427,17 +449,18 @@ struct nw_data_transfer_snapshot {
     unsigned long long _field13;
 };
 
-struct nw_endpoint_handler_event_s {
-    unsigned int domain;
-    unsigned int event;
+struct nw_endpoint_alterative_s {
+    struct {
+        struct nw_endpoint_alterative_s *tqe_next;
+        struct nw_endpoint_alterative_s **tqe_prev;
+    } chain;
+    NWConcrete_nw_endpoint *endpoint;
+    NSObject *applicable_protocol;
 };
 
-struct nw_establishment_resolution_report {
-    unsigned long long _field1;
-    id _field2;
-    id _field3;
-    unsigned int _field4;
-    int _field5;
+struct nw_endpoint_handler_event_s {
+    unsigned short domain;
+    unsigned short event;
 };
 
 struct nw_flow_protocol {
@@ -453,6 +476,7 @@ struct nw_flow_protocol {
     NSObject *input_metadata;
     NSObject *output_context;
     NSObject *input_contexts;
+    NSObject *single_input_context;
     struct nw_frame_array_s pending_input_frames;
     NSObject *final_data;
     NSObject *final_error;
@@ -462,8 +486,12 @@ struct nw_flow_protocol {
     unsigned int servicing_reads:1;
     unsigned int input_finished:1;
     unsigned int waiting_for_initial_read:1;
-    unsigned int __pad_bits:3;
-    unsigned char __pad[7];
+    unsigned int delivered_final_read:1;
+    unsigned int flow_unregistered:1;
+    unsigned int flow_disconnected:1;
+    unsigned int waiting_for_connected:1;
+    unsigned int unused:7;
+    unsigned char __pad[6];
 };
 
 struct nw_frame;
@@ -478,8 +506,7 @@ struct nw_hash_table;
 struct nw_interface_details {
     struct nw_interface_signature ipv4_signature;
     struct nw_interface_signature ipv6_signature;
-    int is_active;
-    int mtu;
+    unsigned int mtu;
     unsigned int ipv4_netmask;
     unsigned int ipv4_broadcast;
     unsigned int expensive:1;
@@ -490,7 +517,13 @@ struct nw_interface_details {
     unsigned int multilayer_packet_logging:1;
     unsigned int has_netmask:1;
     unsigned int has_broadcast:1;
-    unsigned char __pad[3];
+    unsigned int supports_multicast:1;
+    unsigned int has_dns:1;
+    unsigned int has_nat64:1;
+    unsigned int ipv4_routable:1;
+    unsigned int ipv6_routable:1;
+    unsigned int __pad_bits:3;
+    unsigned char __pad[2];
 };
 
 struct nw_interface_signature {
@@ -557,7 +590,8 @@ struct nw_parameters_path_value {
     unsigned int only_primary_requires_type:1;
     unsigned int prefer_no_proxy:1;
     unsigned int no_proxy_path_selection:1;
-    unsigned int __pad_bits:2;
+    unsigned int system_proxy:1;
+    unsigned int __pad_bits:1;
     unsigned char __pad[2];
 };
 
@@ -568,6 +602,8 @@ struct nw_path_necp_result {
         unsigned int scoped_interface_index;
         unsigned int flow_divert_control_unit;
         unsigned int filter_control_unit;
+        unsigned int pass_flags;
+        unsigned int drop_flags;
     } routing_result_parameter;
     unsigned int filter_control_unit;
     unsigned int service_action;
@@ -653,12 +689,6 @@ struct nw_timer_list_head {
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
-};
-
-struct sockaddr {
-    unsigned char _field1;
-    unsigned char _field2;
-    char _field3[14];
 };
 
 struct sockaddr_storage {

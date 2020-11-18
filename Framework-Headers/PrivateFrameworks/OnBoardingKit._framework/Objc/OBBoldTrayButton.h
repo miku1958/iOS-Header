@@ -12,6 +12,7 @@
 
 + (id)boldButton;
 - (void)_setButtonBackgroundColor:(id)arg1;
+- (struct UIEdgeInsets)contentEdgeInsets;
 - (void)tintColorDidChange;
 
 @end

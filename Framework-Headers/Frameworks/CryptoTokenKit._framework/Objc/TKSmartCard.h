@@ -52,6 +52,7 @@
 - (void)endSessionWithReply:(CDUnknownBlockType)arg1;
 - (void)handleApduResponse:(id)arg1 body:(id)arg2 le:(unsigned long long)arg3 isCase4:(BOOL)arg4 error:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (BOOL)inSessionWithError:(id *)arg1 executeBlock:(CDUnknownBlockType)arg2;
+- (void)inSlotQueueExecuteBlock:(CDUnknownBlockType)arg1;
 - (id)initWithSlot:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)querySessionWithReply:(CDUnknownBlockType)arg1;

@@ -33,12 +33,14 @@
 @property (strong, nonatomic) HKSampleTypeUpdateController *updateController; // @synthesize updateController=_updateController;
 
 - (void).cxx_destruct;
+- (BOOL)_anySampleShouldInvalidateCache:(id)arg1;
 - (id)_chartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2 chartCachesByDisplayTypeIdentifier:(id)arg3;
 - (id)_chartCacheIdentifiersFromSamples:(id)arg1;
 - (id)_chartCacheIdentifiersFromStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_createAlternateCurrentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;
 - (id)_createCurrentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;
 - (id)_generateChartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2;
+- (void)_removeCustomCachesForDisplayTypeIdentifier:(long long)arg1;
 - (void)_subscribeForUpdatesForDisplayType:(id)arg1;
 - (id)_timeScopeBasedChartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2;
 - (id)activitySummaryDataProviderWithHealthStore:(id)arg1 dateCache:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4;
@@ -46,8 +48,10 @@
 - (id)allInteractiveChartsCaches;
 - (id)alternateCurrentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;
 - (id)currentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;
+- (id)findCustomCachesForDisplayType:(id)arg1;
 - (id)initWithHealthStore:(id)arg1 unitController:(id)arg2 updateController:(id)arg3;
 - (id)interactiveChartsCacheForDisplayType:(id)arg1 timeScope:(long long)arg2;
+- (void)removeCachesForDisplayTypeIdentifier:(long long)arg1;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 

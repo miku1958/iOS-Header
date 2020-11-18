@@ -31,9 +31,12 @@
 - (id)_cn_nameComponentTokens;
 - (id)_cn_nameComponentTokensUsingLocale:(id)arg1 inferredNameOrder:(long long *)arg2;
 - (struct _NSRange)_cn_rangeFromIndex:(unsigned long long)arg1;
+- (struct _NSRange)_cn_rangeOfAnchoredCharacters:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (struct _NSRange)_cn_rangeOfCommonPrefixWithString:(id)arg1;
 - (struct _NSRange)_cn_rangeOfCommonPrefixWithString:(id)arg1 options:(unsigned long long)arg2;
 - (id)_cn_resultWithAllCharacters:(CDUnknownBlockType)arg1;
+- (id)_cn_skip:(unsigned long long)arg1;
+- (id)_cn_skipLast:(unsigned long long)arg1;
 - (id)_cn_stringByAddingPercentEscapesIfNecessary;
 - (id)_cn_stringByAddingPercentEscapesToEntireURL;
 - (id)_cn_stringByDeletingCharactersInSet:(id)arg1;
@@ -43,6 +46,7 @@
 - (id)_cn_stringByReplacingStrings:(id)arg1;
 - (id)_cn_stringBySanitizingPhoneNumber;
 - (id)_cn_take:(unsigned long long)arg1;
+- (id)_cn_takeLast:(unsigned long long)arg1;
 - (id)_cn_tokens;
 - (id)_cn_trimmedString;
 - (id)_cn_truncateAtLength:(unsigned long long)arg1 addEllipsisIfTrunctated:(BOOL)arg2;

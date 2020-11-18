@@ -16,6 +16,11 @@
     NSMutableDictionary *_complications;
     NSMutableDictionary *_editModeConfigurations;
     NSMutableDictionary *_metrics;
+    NSMutableDictionary *_customData;
+    struct os_unfair_lock_s _complicationsLock;
+    struct os_unfair_lock_s _editModeConfigurationsLock;
+    struct os_unfair_lock_s _metricsLock;
+    struct os_unfair_lock_s _customDataLock;
     BOOL _resourceDirectoryExists;
     NSString *_name;
 }
@@ -26,16 +31,24 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyComplicationsDescription:(id)arg1;
+- (void)_applyCustomData:(id)arg1;
 - (void)_applyCustomizationDescription:(id)arg1 editModeMapping:(id)arg2 forDevice:(id)arg3;
 - (void)_applyMetrics:(id)arg1;
 - (id)_dateMetricsKeys;
 - (void)_enumerateComplicationsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateCustomDataWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateEditModeConfigurationsWithBlock:(CDUnknownBlockType)arg1;
 - (void)addConfigurationKeysToJSONDictionary:(id)arg1;
+- (void)appendCustomDataToDailySnapshotKey:(id)arg1;
 - (void)appendEditModesToDailySnapshotKey:(id)arg1;
+- (void)clearMetrics;
 - (id)complicationForSlot:(id)arg1;
+- (id)complications;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)customData;
+- (id)customDataForKey:(id)arg1;
 - (id)description;
+- (id)editModeConfigurations;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (void)incrementMetricForKey:(id)arg1;
@@ -44,8 +57,11 @@
 - (id)initWithJSONDictionary:(id)arg1 editModeMapping:(id)arg2 forDevice:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)metricForKey:(id)arg1;
+- (id)metrics;
 - (id)optionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)setComplication:(id)arg1 forSlot:(id)arg2;
+- (void)setCustomData:(id)arg1 forKey:(id)arg2;
+- (void)setCustomDataFromConfiguration:(id)arg1;
 - (void)setMetric:(id)arg1 forKey:(id)arg2;
 - (void)setMetricsFromConfiguration:(id)arg1;
 - (void)setOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

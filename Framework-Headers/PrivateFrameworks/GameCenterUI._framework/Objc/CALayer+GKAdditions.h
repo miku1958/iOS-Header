@@ -7,7 +7,7 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (GKAdditions)
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (struct CATransform3D)_gkParentSublayerTransform;
 - (id)_gkRecursiveDescription;
 @end

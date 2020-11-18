@@ -44,6 +44,7 @@
 - (id)_bezelTextColorForEditMode:(long long)arg1 color:(unsigned long long)arg2;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
+- (id)_complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -74,6 +75,7 @@
 - (void)_prepareForEditing;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_reorderSwitcherSnapshotView;
+- (id)_richComplicationViewForView:(id)arg1;
 - (long long)_richComplicationViewThemeFromFaceColor:(unsigned long long)arg1;
 - (void)_setupDialView;
 - (BOOL)_supportsTimeScrubbing;

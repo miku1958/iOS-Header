@@ -8,7 +8,6 @@
 
 @class SBKStoreURLBagContext;
 
-__attribute__((visibility("hidden")))
 @interface SBKRequestHandler : NSObject
 {
     SBKStoreURLBagContext *_bagContext;

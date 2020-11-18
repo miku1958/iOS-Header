@@ -18,7 +18,9 @@
 + (BOOL)defaultAllowsDecimalNumbers;
 + (BOOL)defaultAllowsNegativeNumbers;
 - (void).cxx_destruct;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSerializedRepresentation;
+- (id)defaultUnit;
 - (id)initWithDefinition:(id)arg1;
 - (id)localizedLabelForPossibleUnit:(id)arg1 magnitude:(id)arg2 style:(unsigned long long)arg3;
 - (Class)singleStateClass;

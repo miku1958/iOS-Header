@@ -8,11 +8,11 @@
 
 #import <Cards/CRUserReportRequestFeedback-Protocol.h>
 
-@class NSString, SFFeedback;
+@class NSString;
 
 @interface SFUserReportFeedback (CRFeedback) <CRUserReportRequestFeedback>
 
-@property (readonly, nonatomic) SFFeedback *backingFeedback;
+@property (readonly, nonatomic) SFUserReportFeedback *backingFeedback;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

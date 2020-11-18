@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEODirectionsFeedback, GEODirectionsFeedbackLogMessage, NSMutableArray;
+@class GEODirectionsFeedback, GEODirectionsFeedbackLogMessage, GEOLatLng, NSArray, NSMutableArray, NSNumber, NSString;
 
 @interface GEODirectionsFeedbackCollector : NSObject
 {
@@ -15,11 +15,34 @@
     double _currentDirectionsModeStartTime;
     NSMutableArray *_navigationModes;
     double _originalExpectedTime;
+    GEOLatLng *_tripOrigin;
+    BOOL _wasEverConnectedToCarplay;
     BOOL _hasEnteredPreArrivalMode;
+    BOOL _isVLFImprovementUsed;
+    BOOL _batteryDied;
+    BOOL _chargingStopAdded;
+    BOOL _isCoarseLocationUsed;
+    BOOL _isEVRoute;
+    BOOL _isBadEvExperience;
+    NSNumber *_stateOfChargeAtOrigin;
+    NSNumber *_stateOfChargeAtDestPredicted;
+    NSNumber *_stateOfChargeAtDestActual;
+    NSArray *_waypoints;
+    NSString *_evConsumptionModel;
+    NSString *_evChargingModel;
 }
 
+@property (nonatomic) BOOL batteryDied; // @synthesize batteryDied=_batteryDied;
 @property (strong, nonatomic) GEODirectionsFeedback *currentDirectionsFeedback; // @synthesize currentDirectionsFeedback=_currentDirectionsFeedback;
 @property (strong, nonatomic) GEODirectionsFeedbackLogMessage *currentFeedbackLogMessage; // @synthesize currentFeedbackLogMessage=_currentFeedbackLogMessage;
+@property (strong, nonatomic) NSString *evChargingModel; // @synthesize evChargingModel=_evChargingModel;
+@property (strong, nonatomic) NSString *evConsumptionModel; // @synthesize evConsumptionModel=_evConsumptionModel;
+@property (nonatomic) BOOL isBadEvExperience; // @synthesize isBadEvExperience=_isBadEvExperience;
+@property (nonatomic) BOOL isEVRoute; // @synthesize isEVRoute=_isEVRoute;
+@property (strong, nonatomic) NSNumber *stateOfChargeAtDestActual; // @synthesize stateOfChargeAtDestActual=_stateOfChargeAtDestActual;
+@property (strong, nonatomic) NSNumber *stateOfChargeAtDestPredicted; // @synthesize stateOfChargeAtDestPredicted=_stateOfChargeAtDestPredicted;
+@property (strong, nonatomic) NSNumber *stateOfChargeAtOrigin; // @synthesize stateOfChargeAtOrigin=_stateOfChargeAtOrigin;
+@property (strong, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
 - (void).cxx_destruct;
 - (void)_updateFeedbackSessionWithResponseID:(id)arg1;
@@ -34,10 +57,15 @@
 - (void)endFeedbackSessionWithTracePath:(id)arg1;
 - (void)reset;
 - (void)setAudioFeedback:(struct GEONavigationAudioFeedback *)arg1;
+- (void)setChargingStopAdded:(BOOL)arg1;
 - (void)setFinalLocation:(id)arg1 asArrival:(BOOL)arg2;
 - (void)setHasEnteredPreArrivalMode:(BOOL)arg1;
+- (void)setIsCoarseLocationUsed:(BOOL)arg1;
+- (void)setIsVLFImprovementUsed:(BOOL)arg1;
 - (void)setModalities:(id)arg1;
 - (void)setOriginalExpectedTime:(double)arg1;
+- (void)setTripOrigin:(id)arg1;
+- (void)setWasEverConnectedToCarplay:(BOOL)arg1;
 - (void)setupFeedbackSessionWithResponseID:(id)arg1;
 - (void)startFeedbackSessionForResponseID:(id)arg1 withNavigationType:(int)arg2;
 

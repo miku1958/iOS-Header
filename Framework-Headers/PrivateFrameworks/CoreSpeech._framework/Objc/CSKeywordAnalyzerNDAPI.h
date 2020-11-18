@@ -26,11 +26,13 @@
 @property (weak, nonatomic) id<CSKeywordAnalyzerNDAPIScoreDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (id)_keywordAnalyzerNDAPIResultForPhraseId:(unsigned int)arg1 withNovDetectorResult:(id)arg2;
 - (void)_resetStartAnalyzeTime;
 - (void)_setStartAnalyzeTime:(unsigned long long)arg1;
 - (void)analyzeWavData:(id)arg1 numSamples:(unsigned long long)arg2;
+- (void)analyzeWavFloatData:(id)arg1 numSamples:(unsigned long long)arg2;
+- (id)getAnalyzedMpVtResults;
 - (id)getAnalyzedResult;
-- (id)getAnalyzedResultForPhraseId:(unsigned int)arg1;
 - (float)getLoggingThreshold;
 - (float)getRejectLoggingThreshold;
 - (id)getSuperVectorWithEndPoint:(unsigned long long)arg1;

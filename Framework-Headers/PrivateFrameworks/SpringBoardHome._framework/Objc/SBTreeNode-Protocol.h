@@ -5,17 +5,17 @@
 //
 
 #import <SpringBoardHome/NSObject-Protocol.h>
+#import <SpringBoardHome/SBHUniqueIdentifierQueryable-Protocol.h>
+#import <SpringBoardHome/SBHUniquelyIdentifiable-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray;
 @protocol SBTreeNode;
 
-@protocol SBTreeNode <NSObject>
+@protocol SBTreeNode <NSObject, SBHUniquelyIdentifiable, SBHUniqueIdentifierQueryable>
 
 @property (readonly, nonatomic) NSArray *children;
 @property (weak, nonatomic) id<SBTreeNode> parent;
-@property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 - (void)ancestryDidChange;
-- (void)removeChild:(id<SBTreeNode>)arg1;
 @end
 

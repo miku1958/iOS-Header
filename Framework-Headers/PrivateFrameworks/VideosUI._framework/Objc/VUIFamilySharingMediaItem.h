@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)_bestOffer;
 - (id)_bestRedownloadOffer;
 - (id)_itunesExtrasDictionary;
+- (id)bookmark;
 - (id)contentDescription;
 - (id)contentRating;
 - (id)duration;
@@ -45,8 +46,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithAMSEntity:(id)arg1 requestedProperties:(id)arg2;
 - (id)releaseDate;
 - (id)releaseYear;
+- (id)seasonCanonicalID;
 - (id)seasonIdentifier;
 - (id)seasonNumber;
+- (id)showCanonicalID;
 - (id)showIdentifier;
 - (id)showTitle;
 - (id)storeID;

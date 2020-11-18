@@ -17,6 +17,9 @@
     NSDate *_date;
     NSData *_serverChangeTokenData;
     NSData *_lastOrderingData;
+    NSData *_lastOrderingCloudKitRecordMetadata;
+    NSData *_syncEngineMetadata;
+    NSData *_syncFlagsCloudKitRecordMetadata;
 }
 
 @property (copy, nonatomic) NSString *account; // @synthesize account=_account;
@@ -25,9 +28,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSData *lastOrderingCloudKitRecordMetadata; // @synthesize lastOrderingCloudKitRecordMetadata=_lastOrderingCloudKitRecordMetadata;
 @property (copy, nonatomic) NSData *lastOrderingData; // @synthesize lastOrderingData=_lastOrderingData;
 @property (copy, nonatomic) NSData *serverChangeTokenData; // @synthesize serverChangeTokenData=_serverChangeTokenData;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSData *syncEngineMetadata; // @synthesize syncEngineMetadata=_syncEngineMetadata;
+@property (copy, nonatomic) NSData *syncFlagsCloudKitRecordMetadata; // @synthesize syncFlagsCloudKitRecordMetadata=_syncFlagsCloudKitRecordMetadata;
 
 + (id)className;
 + (id)defaultPropertyValues;

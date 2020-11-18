@@ -9,7 +9,7 @@
 @class INIntent, NSString;
 
 @protocol INIntentParameterOptionsProviding <NSObject>
-- (void)getParameterOptionsForParameterNamed:(NSString *)arg1 intent:(INIntent *)arg2 completionBlock:(void (^)(NSArray *, NSError *))arg3;
+- (void)getParameterOptionsForParameterNamed:(NSString *)arg1 intent:(INIntent *)arg2 searchTerm:(NSString *)arg3 completionBlock:(void (^)(INObjectCollection *, NSError *))arg4;
 - (void)getSupportsParameterOptionsForParameterNamed:(NSString *)arg1 intent:(INIntent *)arg2 completionHandler:(void (^)(BOOL))arg3;
 @end
 

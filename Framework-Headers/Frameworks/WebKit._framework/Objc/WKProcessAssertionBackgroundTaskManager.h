@@ -6,24 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/RBSAssertionObserving-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface WKProcessAssertionBackgroundTaskManager : NSObject
+@interface WKProcessAssertionBackgroundTaskManager : NSObject <RBSAssertionObserving>
 {
-    unsigned long long _backgroundTask;
-    struct WeakHashSet<WebKit::ProcessAndUIAssertion> _assertionsNeedingBackgroundTask;
-    BOOL _applicationIsBackgrounded;
+    struct RetainPtr<RBSAssertion> _backgroundTask;
+    struct WeakHashSet<WebKit::ProcessAndUIAssertion, WTF::EmptyCounter> _assertionsNeedingBackgroundTask;
     CDUnknownBlockType _pendingTaskReleaseTask;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)shared;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_cancelPendingReleaseTask;
+- (void)_handleBackgroundTaskExpiration;
+- (void)_handleBackgroundTaskExpirationOnMainThread;
+- (BOOL)_hasBackgroundTask;
 - (void)_notifyAssertionsOfImminentSuspension;
 - (void)_releaseBackgroundTask;
 - (void)_scheduleReleaseTask;
 - (void)_updateBackgroundTask;
 - (void)addAssertionNeedingBackgroundTask:(struct ProcessAndUIAssertion *)arg1;
+- (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
+- (void)assertionWillInvalidate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)removeAssertionNeedingBackgroundTask:(struct ProcessAndUIAssertion *)arg1;

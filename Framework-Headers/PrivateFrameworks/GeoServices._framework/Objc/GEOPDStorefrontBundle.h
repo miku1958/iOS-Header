@@ -25,10 +25,7 @@
         unsigned int has_matchedMuid:1;
         unsigned int read_faces:1;
         unsigned int read_presentation:1;
-        unsigned int wrote_faces:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_matchedMuid:1;
-        unsigned int wrote_presentation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,9 +40,6 @@
 + (Class)faceType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsFace:(id)arg1;
-- (void)_readFaces;
-- (void)_readPresentation;
 - (void)addFace:(id)arg1;
 - (void)clearFaces;
 - (void)copyTo:(id)arg1;
@@ -57,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

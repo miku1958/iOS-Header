@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, NSString;
+@class ACAccount, NSArray, NSString;
 @protocol AMSBagDataSourceProtocol;
 
 @interface AMSBagValue : NSObject
@@ -14,6 +14,7 @@
     ACAccount *_account;
     id<AMSBagDataSourceProtocol> _dataSource;
     NSString *_key;
+    NSArray *_transformBlocks;
     unsigned long long _valueType;
 }
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) id<AMSBagDataSourceProtocol> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
+@property (strong, nonatomic) NSArray *transformBlocks; // @synthesize transformBlocks=_transformBlocks;
 @property (nonatomic) unsigned long long valueType; // @synthesize valueType=_valueType;
 
 + (BOOL)_value:(id)arg1 isKindOfValueType:(unsigned long long)arg2;
@@ -30,9 +32,11 @@
 + (id)frozenBagValueWithKey:(id)arg1 value:(id)arg2 valueType:(unsigned long long)arg3;
 + (id)globalBagValueStorage;
 - (void).cxx_destruct;
+- (void)_applyTransformsToValue:(id)arg1 index:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_processedDefaultValue:(id)arg1;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3 account:(id)arg4;
+- (id)transformWithBlock:(CDUnknownBlockType)arg1;
 - (id)valuePromise;
 - (void)valueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)valueWithError:(id *)arg1;

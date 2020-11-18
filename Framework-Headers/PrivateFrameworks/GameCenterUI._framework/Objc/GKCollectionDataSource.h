@@ -8,21 +8,24 @@
 
 #import <GameCenterUI/UICollectionViewDataSource-Protocol.h>
 #import <GameCenterUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <GameCenterUI/UICollectionViewDelegate_Private-Protocol.h>
 
 @class NSArray, NSString, UIViewController;
 
-@interface GKCollectionDataSource : NSObject <UICollectionViewDelegate_Private, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface GKCollectionDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     BOOL _onDarkBackground;
     BOOL _useStandardHeaders;
+    BOOL _breakSearchInputTextIntoMultipleTerms;
     UIViewController *_presentationViewController;
-    NSString *_analyticsKey;
+    NSString *_analyticsEvent;
+    NSString *_analyticsEventType;
     NSString *_searchText;
     NSArray *_searchTerms;
 }
 
-@property (nonatomic) NSString *analyticsKey; // @synthesize analyticsKey=_analyticsKey;
+@property (nonatomic) NSString *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
+@property (nonatomic) NSString *analyticsEventType; // @synthesize analyticsEventType=_analyticsEventType;
+@property (nonatomic) BOOL breakSearchInputTextIntoMultipleTerms; // @synthesize breakSearchInputTextIntoMultipleTerms=_breakSearchInputTextIntoMultipleTerms;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -37,6 +40,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useStandardHeaders; // @synthesize useStandardHeaders=_useStandardHeaders;
 
+- (id)alternateSearchKeyForSection:(long long)arg1;
 - (BOOL)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
@@ -49,6 +53,8 @@
 - (void)dealloc;
 - (void)dismissViewController:(id)arg1;
 - (id)headerTextForSection:(long long)arg1;
+- (id)init;
+- (BOOL)isValidAnalytics;
 - (id)itemForIndexPath:(id)arg1;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;

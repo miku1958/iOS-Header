@@ -8,5 +8,6 @@
 
 @protocol _NSKVOCompatibilityShim <NSObject>
 + (void)_noteProcessHasUsedKVOSwiftOverlay;
++ (BOOL)_releasesObservationBlockOnInvalidation;
 @end
 

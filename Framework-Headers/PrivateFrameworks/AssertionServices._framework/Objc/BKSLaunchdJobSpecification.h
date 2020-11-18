@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AssertionServices/BSXPCCoding-Protocol.h>
 #import <AssertionServices/NSCopying-Protocol.h>
 #import <AssertionServices/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@interface BKSLaunchdJobSpecification : NSObject <NSCopying, BSXPCCoding, NSSecureCoding>
+@interface BKSLaunchdJobSpecification : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_labelPrefix;
     NSString *_bundleIdentifier;
@@ -30,18 +29,14 @@
 @property (copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *environment; // @synthesize environment=_environment;
 @property (copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (nonatomic) unsigned long long executionOptions; // @synthesize executionOptions=_executionOptions;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *labelPrefix; // @synthesize labelPrefix=_labelPrefix;
 @property (copy, nonatomic) NSArray *machServices; // @synthesize machServices=_machServices;
 @property (copy, nonatomic) NSString *managedPersona; // @synthesize managedPersona=_managedPersona;
 @property (copy, nonatomic) NSString *standardError; // @synthesize standardError=_standardError;
 @property (copy, nonatomic) NSString *standardOutput; // @synthesize standardOutput=_standardOutput;
-@property (readonly) Class superclass;
 
 + (id)specification;
 + (BOOL)supportsSecureCoding;

@@ -34,7 +34,6 @@
 - (void)graphUpdateMadeProgress:(double)arg1;
 - (void)handleOperation:(id)arg1;
 - (id)initWithServiceClientHandler:(id)arg1;
-- (id)libraryTemporarilyUnavailableError;
 - (void)operationDidFinish:(id)arg1;
 - (void)operationWillStart:(id)arg1;
 - (id)phaGraphManager;
@@ -43,9 +42,11 @@
 - (void)requestGraphSearchMetadataWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestSearchIndexKeywordsForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)requestSearchableAssetUUIDsBySocialGroupForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 isFullAnalysis:(BOOL)arg3 withOptions:(id)arg4 context:(id)arg5 reply:(CDUnknownBlockType)arg6;
+- (void)requestSignalModelInfosWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestSynonymsDictionariesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestZeroKeywordsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)runCurationWithItems:(id)arg1 options:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (unsigned char)suggestionProfileFromSuggestionType:(unsigned short)arg1 subtype:(unsigned short)arg2;
 - (BOOL)wantsGraphUpdateNotifications;
 - (BOOL)wantsLiveGraphUpdates;
 

@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
     NSString *_extractedCustodianName;
 }
 
-@property (readonly, nonatomic) NSString *extractedAuthorName; // @synthesize extractedAuthorName=_extractedAuthorName;
-@property (readonly, nonatomic) NSString *extractedCustodianName; // @synthesize extractedCustodianName=_extractedCustodianName;
-@property (readonly, nonatomic) NSDate *extractedDate; // @synthesize extractedDate=_extractedDate;
-@property (readonly, nonatomic) NSString *extractedPatient; // @synthesize extractedPatient=_extractedPatient;
-@property (readonly, nonatomic) NSString *extractedTitle; // @synthesize extractedTitle=_extractedTitle;
+@property (readonly, copy, nonatomic) NSString *extractedAuthorName; // @synthesize extractedAuthorName=_extractedAuthorName;
+@property (readonly, copy, nonatomic) NSString *extractedCustodianName; // @synthesize extractedCustodianName=_extractedCustodianName;
+@property (readonly, copy, nonatomic) NSDate *extractedDate; // @synthesize extractedDate=_extractedDate;
+@property (readonly, copy, nonatomic) NSString *extractedPatient; // @synthesize extractedPatient=_extractedPatient;
+@property (readonly, copy, nonatomic) NSString *extractedTitle; // @synthesize extractedTitle=_extractedTitle;
 
 - (void).cxx_destruct;
 - (id)_firstFrom:(id)arg1 tagRule:(id)arg2 nilOnFail:(BOOL)arg3;

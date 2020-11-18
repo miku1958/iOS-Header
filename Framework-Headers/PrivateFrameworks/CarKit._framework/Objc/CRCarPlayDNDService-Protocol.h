@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSString;
+@class NSString;
 
 @protocol CRCarPlayDNDService
 - (void)allowedAutoReplyAudienceWithReply:(void (^)(unsigned long long, NSError *))arg1;
@@ -12,7 +12,6 @@
 - (void)completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(void (^)(BOOL, NSError *))arg2;
 - (void)disableDNDUntilEndOfDriveWithContext:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)fetchDNDTriggerModeWithReply:(void (^)(unsigned long long, NSError *))arg1;
-- (void)internalAutoReplyWhitelistWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)internalUtilityToolWithReply:(void (^)(NSString *))arg1;
 - (void)isCarPlayAutomaticDNDActiveWithReply:(void (^)(BOOL))arg1;
 - (void)resetAutomaticDNDPreferencesWithReply:(void (^)(BOOL, NSError *))arg1;
@@ -20,7 +19,6 @@
 - (void)setAutoReplyMessage:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)setCarPlayAutomaticDNDActive:(BOOL)arg1 withReply:(void (^)(BOOL, NSError *))arg2;
 - (void)setDNDTriggerMode:(unsigned long long)arg1 withReply:(void (^)(BOOL, NSError *))arg2;
-- (void)setInternalAutoReplyWhitelist:(NSArray *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)shouldDisplayExitConfirmationWithReply:(void (^)(BOOL, NSError *))arg1;
 @end
 

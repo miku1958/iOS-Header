@@ -19,6 +19,7 @@
 @property (nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
 @property (nonatomic) long long contentOrientation; // @synthesize contentOrientation=_contentOrientation;
 @property (readonly, nonatomic) NSArray *contentViews;
+@property (nonatomic, getter=isCounterTransformView) BOOL counterTransformView;
 
 - (void).cxx_destruct;
 - (struct CGSize)_referenceContainerSize;

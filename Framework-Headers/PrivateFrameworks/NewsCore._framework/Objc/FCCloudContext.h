@@ -141,9 +141,12 @@
 - (void)_purchaseControllerDidAddALaCarteSubscription;
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
+- (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id)arg2;
 - (void)fetchOriginalDataShouldBeDeletedAfterMigrationForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionIsAllowedForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchPrivateDataEncryptionIsRequiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionMigrationIsDesiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchShouldSecureSubscriptionsForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initForTesting;
 - (id)initForTestingWithDesiredHeadlineFieldOptions:(unsigned long long)arg1;
@@ -156,6 +159,7 @@
 - (id)news_core_ConfigurationManager;
 - (id)notificationsController;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
+- (void)ppt_prewarmFeedDatabase;
 - (id)privateStoreWithName:(id)arg1 version:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)recordSourceWithSchema:(id)arg1;
 - (id)recordTreeSourceWithRecordSources:(id)arg1;

@@ -8,11 +8,12 @@
 
 #import <GeoServices/GEODirectionServiceTicket-Protocol.h>
 
-@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsRequester, NSArray, NSDictionary, NSNumber, NSString;
+@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsRequester, NSArray, NSDictionary, NSError, NSNumber, NSString, _GEODirectionsServiceRequestBuilder;
 
 __attribute__((visibility("hidden")))
 @interface _GEODirectionsRequestTicket : NSObject <GEODirectionServiceTicket>
 {
+    _GEODirectionsServiceRequestBuilder *_requestBuilder;
     GEODirectionsRequest *_request;
     BOOL _isReroute;
     GEOComposedRoute *_originalRoute;
@@ -21,7 +22,9 @@ __attribute__((visibility("hidden")))
     NSNumber *_requestPriority;
     BOOL _active;
     BOOL _canceled;
+    NSError *_previousError;
     NSDictionary *_userInfo;
+    CDUnknownBlockType _requestCallback;
     GEODirectionsRequester *_directionsRequester;
 }
 
@@ -34,15 +37,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isDoom; // @synthesize isDoom=_isDoom;
 @property (nonatomic) BOOL isReroute; // @synthesize isReroute=_isReroute;
 @property (strong, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
-@property (readonly, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
+@property (copy, nonatomic) CDUnknownBlockType requestCallback; // @synthesize requestCallback=_requestCallback;
 @property (copy, nonatomic) NSNumber *requestPriority; // @synthesize requestPriority=_requestPriority;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
 - (void).cxx_destruct;
+- (void)_submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)cancel;
-- (id)initWithRequest:(id)arg1 directionsRequester:(id)arg2;
+- (id)initWithRequestBuilder:(id)arg1 directionsRequester:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 
 @end

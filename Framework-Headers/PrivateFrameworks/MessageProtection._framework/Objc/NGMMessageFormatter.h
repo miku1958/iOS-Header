@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)formatOutgoingInnerMessageWithPayload:(id)arg1 destinationIdentity:(id)arg2 sendingIdentity:(id)arg3 error:(id *)arg4;
++ (id)formatOutgoingInnerMessageWithPayload:(id)arg1 attributes:(id)arg2 destinationIdentity:(id)arg3 sendingIdentity:(id)arg4 error:(id *)arg5;
 + (id)formatOutgoingMessageWithEncryptedPayload:(id)arg1 ephemeral:(id)arg2 signature:(id)arg3 keyValidator:(id)arg4;
 
 @end

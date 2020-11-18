@@ -10,12 +10,12 @@
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal-Protocol.h>
 #import <SpringBoard/SBSceneViewStatusBarAssertionObserver-Protocol.h>
-#import <SpringBoard/SBSystemCursorInteractionDelegate-Protocol.h>
+#import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 
-@class BSCornerRadiusConfiguration, MTLumaDodgePillSettings, NSHashTable, NSMutableSet, NSString, SBApplicationBlurContentView, SBAsymmetricalCornerRadiusWrapperView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBMedusaSettings, SBNubView, SBSceneHandle, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
-@protocol SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
+@class BSCornerRadiusConfiguration, MTLumaDodgePillSettings, NSHashTable, NSMutableSet, NSString, SBApplicationBlurContentView, SBAsymmetricalCornerRadiusWrapperView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBMedusaSettings, SBNubView, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
+@protocol SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
-@interface SBMedusaDecoratedDeviceApplicationSceneViewController : UIViewController <SBSceneViewStatusBarAssertionObserver, SBInlineAppExposeContainerViewControllerDelegate, SBSystemCursorInteractionDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
+@interface SBMedusaDecoratedDeviceApplicationSceneViewController : UIViewController <SBSceneViewStatusBarAssertionObserver, SBInlineAppExposeContainerViewControllerDelegate, SBSystemPointerInteractionDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
 {
     SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
     SBDeviceApplicationSceneViewController *_deviceApplicationSceneViewController;
@@ -46,6 +46,7 @@
 
 @property (readonly, nonatomic) UIView *_blurViewContainerView;
 @property (weak, nonatomic) id<SBApplicationSceneViewControllingStatusBarDelegate> applicationSceneStatusBarDelegate;
+@property (strong, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
 @property (readonly, nonatomic, getter=isBlurred) BOOL blurred;
 @property (nonatomic) BOOL clipsToBounds; // @synthesize clipsToBounds=_clipsToBounds;
 @property (readonly, nonatomic) long long contentInterfaceOrientation;
@@ -67,7 +68,7 @@
 @property (nonatomic, getter=isNubViewHighlighted) BOOL nubViewHighlighted;
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
-@property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 @property (copy, nonatomic) NSString *sceneHostViewMinificationFilter;
 @property (nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
@@ -77,6 +78,8 @@
 
 - (void).cxx_destruct;
 - (BOOL)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
+- (BOOL)SB_conformsToSceneLayoutMedusaStatusBarAssertionProviding;
+- (BOOL)SB_conformsToSceneLayoutStatusBarAssertionProviding;
 - (void)_addSceneViewMatchMoveAnimation;
 - (void)_beginRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 - (id)_blurContentView;
@@ -92,7 +95,6 @@
 - (id)animationControllerForTransitionRequest:(id)arg1;
 - (void)blurApplicationContent:(BOOL)arg1 withAnimationFactory:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)containerContentWrapperInterfaceOrientationChangedTo:(long long)arg1;
-- (struct UIEdgeInsets)cursorInteractionHitTestInsetsForView:(id)arg1;
 - (void)dealloc;
 - (double)effectiveCornerRadius;
 - (id)initWithCoder:(id)arg1;
@@ -106,10 +108,11 @@
 - (id)newSnapshot;
 - (id)newSnapshotView;
 - (void)newSnapshotViewOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (struct UIEdgeInsets)pointerInteractionHitTestInsetsForView:(id)arg1;
 - (void)setContentReferenceSize:(struct CGSize)arg1 withInterfaceOrientation:(long long)arg2;
 - (void)setDisplayMode:(long long)arg1 animationFactory:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setInlineAppExposeContainerViewController:(id)arg1;
-- (BOOL)shouldBeginCursorInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
+- (BOOL)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (void)statusBarAssertionDidInvalidate:(id)arg1;
 - (void)statusBarAssertionDidUpdate:(id)arg1;
 - (id)statusBarAssertionWithStatusBarHidden:(BOOL)arg1 atLevel:(unsigned long long)arg2;

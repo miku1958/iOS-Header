@@ -25,13 +25,7 @@
     long long _groupVerbosityOptions;
 }
 
-@property (nonatomic) long long emitPhase; // @synthesize emitPhase=_emitPhase;
-@property (nonatomic) long long groupItemCount; // @synthesize groupItemCount=_groupItemCount;
-@property (nonatomic) long long groupVerbosityOptions; // @synthesize groupVerbosityOptions=_groupVerbosityOptions;
-@property (nonatomic) long long indentLevel; // @synthesize indentLevel=_indentLevel;
-@property (strong, nonatomic) NSString *pendingFieldTerminator; // @synthesize pendingFieldTerminator=_pendingFieldTerminator;
 @property (nonatomic) BOOL sortKeys; // @synthesize sortKeys=_sortKeys;
-@property (strong, nonatomic) NSMutableString *string; // @synthesize string=_string;
 @property (nonatomic) BOOL verboseSingleItemCollections; // @synthesize verboseSingleItemCollections=_verboseSingleItemCollections;
 
 + (id)descriptionForRootObject:(id)arg1;
@@ -53,7 +47,6 @@
 - (id)appendInt64:(long long)arg1 withName:(id)arg2;
 - (id)appendInt:(int)arg1 withName:(id)arg2;
 - (id)appendInteger:(long long)arg1 withName:(id)arg2;
-- (void)appendItem:(CDUnknownBlockType)arg1;
 - (id)appendObject:(id)arg1 withName:(id)arg2;
 - (id)appendObject:(id)arg1 withName:(id)arg2 skipIfNil:(BOOL)arg3;
 - (id)appendPoint:(struct CGPoint)arg1 withName:(id)arg2;
@@ -62,7 +55,6 @@
 - (id)appendQueue:(id)arg1 withName:(id)arg2;
 - (id)appendRect:(struct CGRect)arg1 withName:(id)arg2;
 - (void)appendRightArrow;
-- (void)appendSectionWithItemCount:(long long)arg1 openDelimiter:(id)arg2 closeDelimiter:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)appendSelector:(SEL)arg1 withName:(id)arg2;
 - (id)appendSize:(struct CGSize)arg1 withName:(id)arg2;
 - (void)appendString:(id)arg1;
@@ -74,10 +66,9 @@
 - (id)appendUnsignedInt:(unsigned int)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2 format:(long long)arg3;
-- (void)defaultLineBreakTreatment:(CDUnknownBlockType)arg1;
+- (id)appendVersionedPID:(long long)arg1 withName:(id)arg2;
 - (id)description;
 - (id)init;
-- (void)multipleLines:(CDUnknownBlockType)arg1;
 - (void)sameLine:(CDUnknownBlockType)arg1;
 
 @end

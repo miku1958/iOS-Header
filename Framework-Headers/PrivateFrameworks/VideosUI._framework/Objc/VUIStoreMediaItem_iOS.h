@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)_deleteDownloadKeyCookieForURL:(id)arg1;
 - (id)_downloadForThisMediaItemReturningDownloadManager:(id *)arg1;
 - (void)_externalPlaybackTypeDidChange:(id)arg1;
+- (id)_hlsURLEnsuringDsidQueryParamIsPresentFromURL:(id)arg1;
 - (id)_iTunesStoreContentInfo;
 - (id)_iTunesStoreContentPurchasedMediaKind;
 - (BOOL)_loadingCancelled:(unsigned long long)arg1;

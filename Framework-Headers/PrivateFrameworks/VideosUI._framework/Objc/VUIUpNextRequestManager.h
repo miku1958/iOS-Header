@@ -17,9 +17,10 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_displayConfirmationForAction:(unsigned long long)arg1;
 - (id)_init;
 - (id)init;
-- (void)sendRequestForCanonicalID:(id)arg1 action:(unsigned long long)arg2;
+- (void)sendRequestForCanonicalID:(id)arg1 action:(unsigned long long)arg2 confirmationShouldWaitCompletion:(BOOL)arg3;
 
 @end
 

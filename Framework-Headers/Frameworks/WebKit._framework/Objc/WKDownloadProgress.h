@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKDownloadProgress : NSProgress
 {
     struct RetainPtr<NSURLSessionDownloadTask> m_task;
-    struct WeakPtr<WebKit::Download> m_download;
+    struct WeakPtr<WebKit::Download, WTF::EmptyCounter> m_download;
     RefPtr_ea257445 m_sandboxExtension;
 }
 

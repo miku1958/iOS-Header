@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
 - (void).cxx_destruct;
+- (void)addEmptyViewWithSpacing:(double)arg1;
 - (void)addSubPane:(id)arg1;
 - (id)initWithPaneViewController:(id)arg1 stackView:(id)arg2;
 - (id)initWithPaneViewController:(id)arg1 stackView:(id)arg2 mutableConstraints:(id)arg3;

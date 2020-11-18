@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)createDataSection;
+- (id)debugDescription;
 - (id)initWithChildDataSectionManagers:(id)arg1;
 - (id)initWithNavigationRoot:(id)arg1 photoLibrary:(id)arg2;
 

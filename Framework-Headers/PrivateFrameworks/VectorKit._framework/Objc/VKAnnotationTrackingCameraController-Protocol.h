@@ -10,13 +10,13 @@
 
 @protocol VKAnnotationTrackingCameraController <NSObject>
 
+@property (nonatomic) CDStruct_211b8904 annotationTrackingBehavior;
 @property (nonatomic) long long annotationTrackingHeadingAnimationDisplayRate;
-@property (nonatomic) long long annotationTrackingZoomStyle;
 @property (readonly, nonatomic) BOOL isAnimatingToTrackAnnotation;
 @property (readonly, nonatomic) BOOL isTrackingHeading;
 @property (readonly, nonatomic) id<VKTrackableAnnotation> trackingAnnotation;
 
-- (void)startTrackingAnnotation:(id<VKTrackableAnnotation>)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)startTrackingAnnotation:(id<VKTrackableAnnotation>)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3 duration:(double)arg4 timingFunction:(float (^)(float))arg5;
 - (void)stopTrackingAnnotation;
 @end
 

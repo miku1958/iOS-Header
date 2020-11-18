@@ -14,14 +14,14 @@
     BOOL _invisible;
     NSString *_accessGroup;
     NSNumber *_type;
-    NSString *_label;
-    NSString *_itemDescription;
     NSString *_account;
     NSData *_valueData;
-    void *_platformReference;
-    NSData *_genericData;
     NSString *_viewHint;
     NSDate *_creationDate;
+    NSString *_label;
+    NSString *_itemDescription;
+    void *_platformReference;
+    NSData *_genericData;
 }
 
 @property (strong, nonatomic) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
@@ -41,6 +41,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithQueryResult:(struct __CFDictionary *)arg1 shouldIncludeData:(BOOL)arg2;
+- (BOOL)matchesPublicKeyData:(id)arg1;
 
 @end
 

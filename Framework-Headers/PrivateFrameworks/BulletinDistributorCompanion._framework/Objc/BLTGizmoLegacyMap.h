@@ -22,11 +22,11 @@
 - (id)gizmoPublisherBulletinIDForPhoneKey:(id)arg1;
 - (id)gizmoSectionInfoForPhoneKey:(id)arg1;
 - (id)init;
-- (void)mapBulletin:(id)arg1 bulletinMapProperty:(unsigned long long)arg2;
+- (void)mapNotification:(id)arg1 sectionID:(id)arg2;
 - (id)phonePublisherBulletinIDForGizmoKey:(id)arg1;
 - (id)phoneSectionIDForGizmoKey:(id)arg1;
 - (id)sectionSubtypeForBulletinKey:(id)arg1;
-- (void)unmapBulletin:(id)arg1;
+- (void)unmapNotification:(id)arg1 sectionID:(id)arg2;
 
 @end
 

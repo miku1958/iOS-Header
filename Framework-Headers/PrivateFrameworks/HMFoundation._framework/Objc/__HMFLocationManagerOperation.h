@@ -9,12 +9,11 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 
 @class CLLocationManager, HMFLocationAuthorization, NSString;
-@protocol HMFLocking;
 
 __attribute__((visibility("hidden")))
 @interface __HMFLocationManagerOperation : HMFOperation <HMFLogging>
 {
-    id<HMFLocking> _lock;
+    struct os_unfair_lock_s _lock;
     BOOL _ready;
     CLLocationManager *_manager;
     HMFLocationAuthorization *_authorization;

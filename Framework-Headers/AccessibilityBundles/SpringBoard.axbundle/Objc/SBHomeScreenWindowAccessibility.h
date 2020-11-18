@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIgnoresStatusBarFrame;
 - (id)_accessibilityKeyCommands;
 - (BOOL)_accessibilityWindowVisible;
 - (void)_axLeftArrowPressed;

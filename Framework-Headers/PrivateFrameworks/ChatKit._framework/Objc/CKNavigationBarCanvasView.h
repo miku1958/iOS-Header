@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class CKNavigationButtonView, UIImageView;
+#import <ChatKit/UIContextMenuInteractionDelegate-Protocol.h>
+
+@class CKNavigationButtonView, NSString, UIButton, UIColor, UIContextMenuInteraction, UIImageView, UIMenu;
 @protocol CKNavigationBarCanvasViewDelegate;
 
-@interface CKNavigationBarCanvasView : UIView
+@interface CKNavigationBarCanvasView : UIView <UIContextMenuInteractionDelegate>
 {
     BOOL _enforceLeftItemViewsAlignmentToCenter;
     BOOL _keepTitleViewCentered;
@@ -33,16 +35,24 @@
     CKNavigationButtonView *_buttonViewFaceTimeAudio;
     CKNavigationButtonView *_buttonViewFaceTimeVideo;
     CKNavigationButtonView *_buttonViewInfo;
+    UIMenu *_titleViewContextMenu;
     UIImageView *_statusIndicatorImageView;
+    UIButton *_invisibleContextMenuButton;
+    UIContextMenuInteraction *_secondaryTitleInteraction;
+    UIColor *_titleDefaultBackgroundColor;
 }
 
 @property (nonatomic) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewFaceTimeAudio; // @synthesize buttonViewFaceTimeAudio=_buttonViewFaceTimeAudio;
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewFaceTimeVideo; // @synthesize buttonViewFaceTimeVideo=_buttonViewFaceTimeVideo;
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewInfo; // @synthesize buttonViewInfo=_buttonViewInfo;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CKNavigationBarCanvasViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enforceLeftItemViewsAlignmentToCenter; // @synthesize enforceLeftItemViewsAlignmentToCenter=_enforceLeftItemViewsAlignmentToCenter;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreNextWidthChange; // @synthesize ignoreNextWidthChange=_ignoreNextWidthChange;
+@property (strong, nonatomic) UIButton *invisibleContextMenuButton; // @synthesize invisibleContextMenuButton=_invisibleContextMenuButton;
 @property (nonatomic) BOOL isAnimatingAvatars; // @synthesize isAnimatingAvatars=_isAnimatingAvatars;
 @property (nonatomic) BOOL isBusinessChat; // @synthesize isBusinessChat=_isBusinessChat;
 @property (nonatomic) BOOL isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
@@ -54,10 +64,14 @@
 @property (nonatomic) BOOL multiwayAudioButtonHidden; // @synthesize multiwayAudioButtonHidden=_multiwayAudioButtonHidden;
 @property (nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property (strong, nonatomic) UIView *rightItemView; // @synthesize rightItemView=_rightItemView;
+@property (strong, nonatomic) UIContextMenuInteraction *secondaryTitleInteraction; // @synthesize secondaryTitleInteraction=_secondaryTitleInteraction;
 @property (nonatomic) BOOL shouldAnimateAvatarLayoutChanges; // @synthesize shouldAnimateAvatarLayoutChanges=_shouldAnimateAvatarLayoutChanges;
 @property (strong, nonatomic) UIImageView *statusIndicatorImageView; // @synthesize statusIndicatorImageView=_statusIndicatorImageView;
 @property (nonatomic) long long statusIndicatorType; // @synthesize statusIndicatorType=_statusIndicatorType;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) UIColor *titleDefaultBackgroundColor; // @synthesize titleDefaultBackgroundColor=_titleDefaultBackgroundColor;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
+@property (strong, nonatomic) UIMenu *titleViewContextMenu; // @synthesize titleViewContextMenu=_titleViewContextMenu;
 @property (nonatomic) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 
 + (double)heightWithButtonViews;
@@ -73,10 +87,11 @@
 - (struct CGRect)_calculateFrameForButtonPositionType:(long long)arg1 shouldOffset:(BOOL)arg2;
 - (BOOL)_canShowAvatarView;
 - (void)_setupButtonContainer;
-- (BOOL)_shouldUseTallHeight;
 - (void)_tearDownButtonContainer;
 - (void)_updateJoinButtonStyle;
 - (void)clearAllItemViews;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (void)didHoverOverTitleView:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 preferredHeight:(double)arg2;

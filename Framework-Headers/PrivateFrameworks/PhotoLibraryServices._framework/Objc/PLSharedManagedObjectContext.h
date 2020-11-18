@@ -12,9 +12,11 @@
 }
 
 - (void).cxx_destruct;
+- (BOOL)_hasChangesForCloudShared:(id)arg1;
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(BOOL)arg2;
 - (BOOL)isUserInterfaceContext;
 - (void)setupLocalChangeNotifications;
+- (BOOL)shouldMergeFromRemoteContextWithChanges:(id)arg1;
 - (void)tearDownLocalChangeNotifications;
 
 @end

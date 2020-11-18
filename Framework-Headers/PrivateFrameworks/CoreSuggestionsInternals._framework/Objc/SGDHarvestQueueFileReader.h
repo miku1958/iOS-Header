@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) int fileId; // @synthesize fileId=_fileId;
 
 - (void).cxx_destruct;
+- (void)_performAbstractIo:(CDUnknownBlockType)arg1 chunk:(CDStruct_beb4cc23)arg2 withCallback:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithDirectory:(id)arg1 fileId:(int)arg2 tryLater:(BOOL *)arg3;
 - (void)read:(CDStruct_beb4cc23)arg1 callback:(CDUnknownBlockType)arg2;

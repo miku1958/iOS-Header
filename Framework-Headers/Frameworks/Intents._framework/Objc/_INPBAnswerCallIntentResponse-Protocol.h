@@ -6,12 +6,14 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBCallRecordValue;
+@class NSArray, NSString, _INPBCallRecordValue, _INPBConnectedCall;
 
 @protocol _INPBAnswerCallIntentResponse <NSObject>
 
+@property (strong, nonatomic) _INPBConnectedCall *answeredCall;
 @property (copy, nonatomic) NSArray *callRecords;
 @property (readonly, nonatomic) unsigned long long callRecordsCount;
+@property (readonly, nonatomic) BOOL hasAnsweredCall;
 @property (nonatomic) BOOL hasStatusCode;
 @property (nonatomic) int statusCode;
 

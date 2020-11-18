@@ -7,7 +7,7 @@
 #import <AvatarKit/AVTView.h>
 
 @interface AVTView (Downcasting)
-+ (id)snapshotAVTView:(id)arg1 matchingViewSize:(id)arg2 highQuality:(BOOL)arg3;
++ (id)snapshotAVTView:(id)arg1 matchingViewSize:(id)arg2 highQuality:(BOOL)arg3 logger:(id)arg4;
 - (void)downcastWithAVTViewHandler:(CDUnknownBlockType)arg1 recordViewHandler:(CDUnknownBlockType)arg2;
 @end
 

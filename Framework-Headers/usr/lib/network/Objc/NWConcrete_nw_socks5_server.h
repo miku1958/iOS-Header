@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithParameters:(id)arg1 clientQueue:(id)arg2;
 
 @end
 

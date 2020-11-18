@@ -45,8 +45,11 @@
 - (BOOL)canResignFirstResponder;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)dealloc;
 - (void)endIgnoringAppearanceUpdates;
+- (void)handleGestureDismissal;
 - (void)handleHeadsetButtonUpFromButtonDownSource:(BOOL)arg1;
 - (BOOL)handleHomeButtonPress;
 - (long long)idleTimerDuration;

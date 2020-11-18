@@ -7,7 +7,7 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
 
-@class NSArray, NSCollectionLayoutSection, NSIndexSet, NSSet, NSString, NSUUID, UITraitCollection, _UICollectionLayoutSolveParameters;
+@class NSArray, NSCollectionLayoutSection, NSIndexSet, NSString, NSUUID, UITraitCollection, _UICollectionLayoutSolveParameters;
 @protocol NSCollectionLayoutContainer, _UICollectionLayoutFramesQueryResult, _UICollectionLayoutSolveResult, _UICollectionPreferredSizes;
 
 @protocol _UICollectionLayoutSectionSolver <NSObject, _UICollectionLayoutAuxillaryHosting>
@@ -27,7 +27,6 @@
 
 - (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (void)_setOrthogonalOffset:(struct CGPoint)arg1;
-- (NSSet *)allSupplementaryKeys;
 - (id<_UICollectionLayoutFramesQueryResult>)frameForIndex:(long long)arg1;
 - (NSArray *)queryFramesIntersectingRect:(struct CGRect)arg1;
 - (NSArray *)queryFramesIntersectingRect:(struct CGRect)arg1 frameOffset:(struct CGPoint)arg2;
@@ -39,7 +38,6 @@
 - (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id<_UICollectionPreferredSizes>)arg5;
 - (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id<_UICollectionPreferredSizes>)arg5 layoutRTL:(BOOL)arg6;
 - (id<_UICollectionLayoutFramesQueryResult>)supplementaryFrameWithKind:(NSString *)arg1 index:(long long)arg2;
-- (NSSet *)supplementaryKeysAssociatedWithItemAtIndex:(long long)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
 - (NSString *)visualDescription;
 @end

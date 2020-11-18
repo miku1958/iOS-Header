@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class MKCompassView, MKMapView;
+@class MKMapView;
+@protocol MKCompassView;
 
 @interface MKCompassButton : UIView
 {
-    MKCompassView *_compassView;
+    UIView<MKCompassView> *_compassView;
     BOOL _visible;
     MKMapView *_mapView;
     long long _compassVisibility;

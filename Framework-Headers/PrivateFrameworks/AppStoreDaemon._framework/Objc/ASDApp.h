@@ -13,7 +13,6 @@
 
 @interface ASDApp : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _familyShared;
     NSString *_artistName;
     NSString *_bundleID;
     NSString *_bundlePath;
@@ -37,6 +36,7 @@
     ASDProgress *_remoteProgress;
 }
 
+@property (readonly, getter=isAppClip) BOOL appClip;
 @property (readonly, getter=isArcadeOpenable) BOOL arcadeOpenable;
 @property (strong) NSString *artistName; // @synthesize artistName=_artistName;
 @property (readonly, getter=isBetaApp) BOOL betaApp;
@@ -47,8 +47,8 @@
 @property long long downloaderDSID; // @synthesize downloaderDSID=_downloaderDSID;
 @property long long extensions; // @synthesize extensions=_extensions;
 @property long long familyID; // @synthesize familyID=_familyID;
-@property (readonly, getter=isFamilyShared) BOOL familyShared; // @synthesize familyShared=_familyShared;
-@property (readonly) NSError *installError; // @synthesize installError=_installError;
+@property (readonly, getter=isFamilyShared) BOOL familyShared;
+@property (strong) NSError *installError; // @synthesize installError=_installError;
 @property (readonly) NSUUID *installID; // @synthesize installID=_installID;
 @property (readonly, getter=isInstalled) BOOL installed;
 @property (readonly, getter=isLaunchProhibited) BOOL launchProhibited;
@@ -70,6 +70,7 @@
 @property (readonly, getter=isUpdateAvailable) BOOL updateAvailable;
 @property (strong) NSString *updateBuyParams; // @synthesize updateBuyParams=_updateBuyParams;
 @property long long watchApplicationMode; // @synthesize watchApplicationMode=_watchApplicationMode;
+@property (readonly, getter=isWrapped) BOOL wrapped;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

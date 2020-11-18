@@ -7,6 +7,7 @@
 @class ASDRepairOptions;
 
 @protocol ASDRepairServiceProtocol
+- (void)refreshKeybagWithReplyHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)repairAppWithOptions:(ASDRepairOptions *)arg1 replyHandler:(void (^)(BOOL, NSArray *, NSError *))arg2;
 @end
 

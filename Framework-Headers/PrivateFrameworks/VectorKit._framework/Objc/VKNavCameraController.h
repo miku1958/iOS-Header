@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
     CameraFrame_406dbd31 _lastCalculatedCameraFrame;
     CameraFrame_406dbd31 _cameraFrame;
     BOOL _needsUpdate;
-    struct Spring<double, 1, mdc::SpringType::Linear> _pitchSpring;
-    struct Spring<double, 1, mdc::SpringType::Angular> _headingSpring;
-    struct Spring<double, 1, mdc::SpringType::Linear> _distanceFromTargetSpring;
-    struct Spring<double, 2, mdc::SpringType::Linear> _screenPositionSpring;
+    struct Spring<double, 1, gdc::SpringType::Linear> _pitchSpring;
+    struct Spring<double, 1, gdc::SpringType::Angular> _headingSpring;
+    struct Spring<double, 1, gdc::SpringType::Linear> _distanceFromTargetSpring;
+    struct Spring<double, 2, gdc::SpringType::Linear> _screenPositionSpring;
     struct Unit<MeterUnitDescription, double> _cameraDistanceFromTarget;
     Unit_3d259e8a _cameraPitch;
     double _previousUpdateTime;
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
     vector_36073df6 _coordinatesToFrame;
     unsigned char _styleManeuversToFrame;
     unsigned char _maneuversToFrame;
+    unsigned char _styleLegsToFrame;
     double _minCameraHeight;
     double _maxCameraHeight;
     Unit_3d259e8a _minCameraPitch;
@@ -91,6 +92,9 @@ __attribute__((visibility("hidden")))
     double _depthNear;
     BOOL _leftHanded;
     BOOL _sentZoomNotification;
+    BOOL _enableDynamicFrameRate;
+    Coordinate3D_bc242218 _cornerCoordinates[4];
+    struct WindowedSampler<60> _pixelSamples;
     VKScreenCanvas<VKInteractiveMap> *_screenCanvas;
     VKSceneConfiguration *_sceneConfiguration;
     long long _baseDisplayRate;
@@ -112,6 +116,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct MapDataAccess *mapDataAccess;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (readonly, nonatomic) double maxPitch;
+@property (readonly, nonatomic) double minPitch;
 @property (nonatomic) double pitch;
 @property (readonly, nonatomic) struct RunLoopController *runLoopController;
 @property (nonatomic) VKSceneConfiguration *sceneConfiguration; // @synthesize sceneConfiguration=_sceneConfiguration;
@@ -122,12 +127,15 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_addAdditionalRoutePointsToFrameToList:(vector_36073df6 *)arg1;
+- (double)_calculateMaxPixelChangeAndUpdateCorners;
 - (BOOL)_canZoomIn;
 - (BOOL)_canZoomOut;
+- (float)_currentRoadSignOffset;
 - (id)_debugText:(BOOL)arg1 showNavCameraDebugConsoleAttributes:(BOOL)arg2;
 - (BOOL)_hasRunningAnimation;
 - (double)_normalizedZoomLevelForDisplayZoomLevel:(double)arg1;
 - (void)_setDetached:(BOOL)arg1;
+- (void)_setNavCameraIsDetached:(BOOL)arg1;
 - (void)_setNeedsUpdate;
 - (void)_snapHeading;
 - (void)_snapPitch;
@@ -207,6 +215,7 @@ __attribute__((visibility("hidden")))
 - (void)updateManeuversToFrame;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)updatePointsToFrame;
 - (void)updateRotationWithFocusPoint:(struct CGPoint)arg1 newValue:(double)arg2;

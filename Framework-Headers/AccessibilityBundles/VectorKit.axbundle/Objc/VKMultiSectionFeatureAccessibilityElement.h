@@ -11,9 +11,9 @@
 }
 
 - (long long)_accessibilityMapFeatureType;
-- (void)_startUpdatingDescriptionForBuilding:(CDStruct_123780e2 *)arg1;
+- (void)_startUpdatingDescriptionForBuilding:(CDStruct_66740237 *)arg1;
 - (void)_updatePath;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_123780e2 *)arg2 ignoreMissingName:(BOOL)arg3 useLocalizedLabels:(BOOL)arg4;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_66740237 *)arg2 ignoreMissingName:(BOOL)arg3 useLocalizedLabels:(BOOL)arg4;
 
 @end
 

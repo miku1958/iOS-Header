@@ -88,7 +88,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isFromSource:(unsigned long long)arg1;
 - (void)removeState:(unsigned long long)arg1;
 
 @end

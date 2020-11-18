@@ -16,27 +16,12 @@
     NSMutableArray *_events;
 }
 
-@property (strong, nonatomic) NSMutableArray *deleteEventIDs; // @synthesize deleteEventIDs=_deleteEventIDs;
-@property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
-
-+ (Class)deleteEventIDType;
-+ (Class)eventsType;
 - (void).cxx_destruct;
-- (void)addDeleteEventID:(id)arg1;
-- (void)addEvents:(id)arg1;
-- (void)clearDeleteEventIDs;
-- (void)clearEvents;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)deleteEventIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)deleteEventIDsCount;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)eventsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)eventsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

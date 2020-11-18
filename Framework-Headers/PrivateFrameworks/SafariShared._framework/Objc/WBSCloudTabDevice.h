@@ -16,6 +16,7 @@
     BOOL _hasDuplicateName;
     BOOL _ephemeralDevice;
     BOOL _cloudKitBookmarkSyncingSupported;
+    NSString *_disambiguatedName;
     NSString *_name;
     NSString *_uuid;
     NSArray *_tabs;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic, getter=isCloseRequestSupported) BOOL closeRequestSupported; // @synthesize closeRequestSupported=_closeRequestSupported;
 @property (readonly, nonatomic, getter=isCloudKitBookmarkSyncingSupported) BOOL cloudKitBookmarkSyncingSupported; // @synthesize cloudKitBookmarkSyncingSupported=_cloudKitBookmarkSyncingSupported;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, copy, nonatomic) NSString *disambiguatedName; // @synthesize disambiguatedName=_disambiguatedName;
 @property (readonly, nonatomic, getter=isEphemeralDevice) BOOL ephemeralDevice; // @synthesize ephemeralDevice=_ephemeralDevice;
 @property (readonly, nonatomic) BOOL hasDuplicateName; // @synthesize hasDuplicateName=_hasDuplicateName;
 @property (readonly, nonatomic) NSDate *lastModified; // @synthesize lastModified=_lastModified;
@@ -44,6 +46,7 @@
 - (id)description;
 - (id)deviceByRemovingTab:(id)arg1;
 - (id)deviceByRemovingTabs:(id)arg1;
+- (id)deviceBySettingDisambiguatedName:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithDeviceName:(id)arg1 lastModified:(id)arg2 hasDuplicateName:(BOOL)arg3 tabs:(id)arg4 uuid:(id)arg5;
 - (id)initWithDeviceName:(id)arg1 lastModified:(id)arg2 hasDuplicateName:(BOOL)arg3 tabs:(id)arg4 uuid:(id)arg5 isEphemeralDevice:(BOOL)arg6;

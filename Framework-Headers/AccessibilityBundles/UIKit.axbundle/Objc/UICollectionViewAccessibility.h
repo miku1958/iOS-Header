@@ -33,21 +33,32 @@
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityScannerGroupElementsGroupedByRow;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
+- (id)_accessibilitySelectedChildren;
+- (void)_accessibilitySetSelectedChildren:(id)arg1;
 - (BOOL)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (BOOL)_accessibilityShouldDisableCellReuse;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (BOOL)_accessibilityShouldUseCollectionViewCellAccessibilityElements;
 - (id)_accessibilitySortedElementsWithin;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
+- (id)_accessibilitySortedViewChildrenWithOptions:(id)arg1;
 - (BOOL)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilityUserTestingVisibleCells;
+- (BOOL)_axGetShouldIgnorePromiseRegions;
 - (long long)_axGlobalRowForIndexPath:(id)arg1;
 - (void)_axHandleReusedView:(id)arg1;
 - (id)_axIndexBar;
 - (id)_axIndexPathForGlobalRow:(long long)arg1;
+- (BOOL)_axIsReorderingItems;
+- (void)_axSetIsReorderingItems:(BOOL)arg1;
+- (void)_axSetShouldIgnorePromiseRegions:(BOOL)arg1;
+- (void)_axSetSpeakItemReorderEvents:(id)arg1;
+- (id)_axSpeakItemReorderEvents;
 - (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3 viewCategory:(unsigned long long)arg4;
+- (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
 - (void)_moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)_resetAXData;
 - (BOOL)_reuseCell:(id)arg1 notifyDidEndDisplaying:(BOOL)arg2;
@@ -79,7 +90,7 @@
 - (void)reloadData;
 - (void)reloadItemsAtIndexPaths:(id)arg1;
 - (void)reloadSections:(id)arg1;
-- (void)setAccessibilityShouldBypassColletionViewAccessibility:(BOOL)arg1;
+- (void)setAccessibilityShouldBypassCollectionViewAccessibility:(BOOL)arg1;
 - (void)setAccessibilityShouldSpeakItemReorderEvents:(BOOL)arg1;
 
 @end

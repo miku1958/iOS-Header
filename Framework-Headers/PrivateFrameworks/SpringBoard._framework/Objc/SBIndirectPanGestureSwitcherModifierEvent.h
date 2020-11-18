@@ -13,6 +13,7 @@
 
 @property (nonatomic) unsigned long long indirectPanEndReason; // @synthesize indirectPanEndReason=_indirectPanEndReason;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 
 @end

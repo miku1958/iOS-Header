@@ -6,22 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDNanoSyncEntity-Protocol.h>
 #import <HealthDaemon/HDSyncEntity-Protocol.h>
 
 @class NSString;
 
-@interface HDMedicalIDSyncEntity : NSObject <HDNanoSyncEntity, HDSyncEntity>
+@interface HDMedicalIDSyncEntity : NSObject <HDSyncEntity>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)_codableFromMedicalID:(id)arg1;
@@ -29,16 +24,13 @@
 + (id)_medicalIDFromCodable:(id)arg1;
 + (BOOL)_setSyncAnchor:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)_touchSyncAnchorWithProfile:(id)arg1 shouldIncrement:(BOOL)arg2 error:(id *)arg3;
-+ (BOOL)companionDidChangeForProfile:(id)arg1 error:(id *)arg2;
 + (id)decodeSyncObjectWithData:(id)arg1;
 + (BOOL)generateSyncObjectsForSession:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 profile:(id)arg3 messageHandler:(id)arg4 error:(id *)arg5;
 + (id)getSyncProvencanceOfMedicalIDForProfile:(id)arg1 error:(id *)arg2;
 + (BOOL)incrementSyncAnchorWithProfile:(id)arg1 error:(id *)arg2;
-+ (int)nanoSyncObjectType;
 + (long long)nextSyncAnchorWithSession:(id)arg1 startSyncAnchor:(long long)arg2 profile:(id)arg3 error:(id *)arg4;
 + (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (BOOL)setSyncProvenance:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
++ (BOOL)setSyncProvenance:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsSyncStore:(id)arg1;
 + (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
 + (id)syncEntityIdentifier;

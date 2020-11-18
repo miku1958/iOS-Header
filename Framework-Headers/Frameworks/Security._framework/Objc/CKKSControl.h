@@ -23,6 +23,7 @@
 + (id)CKKSControlObject:(BOOL)arg1 error:(id *)arg2;
 + (id)controlObject:(id *)arg1;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithConnection:(id)arg1;
 - (id)objectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)rpcCKMetric:(id)arg1 attributes:(id)arg2 reply:(CDUnknownBlockType)arg3;

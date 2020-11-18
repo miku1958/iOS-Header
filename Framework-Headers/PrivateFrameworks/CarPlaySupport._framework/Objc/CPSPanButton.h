@@ -23,7 +23,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)dynamicBackgroundColor;
 - (void).cxx_destruct;
 - (void)_setupPanImages;
 - (void)_updateColors;

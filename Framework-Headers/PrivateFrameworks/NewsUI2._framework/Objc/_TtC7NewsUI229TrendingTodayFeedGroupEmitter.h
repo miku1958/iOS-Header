@@ -13,6 +13,7 @@
     MISSING_TYPE *config;
     MISSING_TYPE *knobs;
     MISSING_TYPE *formatService;
+    MISSING_TYPE *readingHistory;
     MISSING_TYPE *name;
 }
 

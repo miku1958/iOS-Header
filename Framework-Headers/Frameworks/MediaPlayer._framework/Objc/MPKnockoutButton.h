@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPButton.h>
 
+__attribute__((visibility("hidden")))
 @interface MPKnockoutButton : MPButton
 {
 }

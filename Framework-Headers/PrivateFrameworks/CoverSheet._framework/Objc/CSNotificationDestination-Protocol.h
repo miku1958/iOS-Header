@@ -8,13 +8,14 @@
 #import <CoverSheet/SBFNotificationExtensionVisibilityProviding-Protocol.h>
 #import <CoverSheet/SBFNotificationLongLookPresenting-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationSectionSettings;
+@class NCNotificationRequest, NCNotificationSectionSettings, NSString;
 @protocol CSNotificationDispatcher;
 
 @protocol CSNotificationDestination <CSCoverSheetParticipating, SBFNotificationExtensionVisibilityProviding, SBFNotificationLongLookPresenting>
 
 @property (weak, nonatomic) id<CSNotificationDispatcher> dispatcher;
 
+- (void)notificationsLoadedForSectionIdentifier:(NSString *)arg1;
 - (void)postNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)updateNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)updateNotificationSectionSettings:(NCNotificationSectionSettings *)arg1 previousSectionSettings:(NCNotificationSectionSettings *)arg2;

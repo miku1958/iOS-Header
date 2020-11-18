@@ -40,7 +40,6 @@
 - (void)_processResponse:(id)arg1 error:(id)arg2;
 - (id)_skipIntervalButtonImageForInterval:(double)arg1 size:(long long)arg2;
 - (void)_updateTrackQueueIndex;
-- (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 bundleID:(id)arg3;
 - (BOOL)nowPlayingViewController:(id)arg1 buttonShouldBeActive:(long long)arg2;
 - (void)nowPlayingViewController:(id)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
 - (BOOL)nowPlayingViewController:(id)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 existingIdentifier:(id)arg4 tinted:(out BOOL *)arg5;

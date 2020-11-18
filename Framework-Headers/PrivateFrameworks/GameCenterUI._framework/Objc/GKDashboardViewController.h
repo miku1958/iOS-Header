@@ -6,7 +6,7 @@
 
 #import <GameCenterUI/GKDashboardCollectionViewController.h>
 
-@class GKChallengeDataSource, GKCollectionMultiDataSource, GKDashboardHeaderView, GKGameRecord, NSArray, NSMutableDictionary, NSString;
+@class GKCollectionMultiDataSource, GKDashboardChallengeDataSource, GKDashboardHeaderView, GKGameRecord, NSArray, NSMutableDictionary, NSString;
 
 @interface GKDashboardViewController : GKDashboardCollectionViewController
 {
@@ -20,10 +20,10 @@
     GKCollectionMultiDataSource *_multiDataSource;
     NSMutableDictionary *_viewStateIndexes;
     NSArray *_titles;
-    GKChallengeDataSource *_challengeDataSource;
+    GKDashboardChallengeDataSource *_challengeDataSource;
 }
 
-@property (nonatomic) GKChallengeDataSource *challengeDataSource; // @synthesize challengeDataSource=_challengeDataSource;
+@property (nonatomic) GKDashboardChallengeDataSource *challengeDataSource; // @synthesize challengeDataSource=_challengeDataSource;
 @property (strong, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
 @property (strong, nonatomic) GKDashboardHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) NSString *leaderboardIdentifier; // @synthesize leaderboardIdentifier=_leaderboardIdentifier;

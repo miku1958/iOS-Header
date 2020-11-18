@@ -24,6 +24,7 @@
     unsigned int _totalPacketsSentOnLink;
     unsigned int _totalPacketsReceivedOnLink;
     BOOL _hbStarted;
+    double _hbStartTime;
     unsigned short _hbCounter;
     unsigned char _statsIntervalInSeconds;
     BOOL _linkID;
@@ -81,6 +82,7 @@
     unsigned int _testOptions;
     BOOL _isDisconnecting;
     double _triggeredCheckTime;
+    NSObject<OS_dispatch_source> *_probingTimer;
     BOOL _isRealloc;
     NSObject<OS_dispatch_source> *_allocbindFailoverTimer;
 }
@@ -98,6 +100,7 @@
 @property (readonly) NSData *encKey; // @synthesize encKey=_encKey;
 @property (copy) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic) unsigned short hbCounter; // @synthesize hbCounter=_hbCounter;
+@property (nonatomic) double hbStartTime; // @synthesize hbStartTime=_hbStartTime;
 @property (nonatomic) BOOL hbStarted; // @synthesize hbStarted=_hbStarted;
 @property (readonly) NSData *hmacKey; // @synthesize hmacKey=_hmacKey;
 @property (nonatomic) BOOL isAcceptedRelaySession; // @synthesize isAcceptedRelaySession=_isAcceptedRelaySession;
@@ -147,6 +150,7 @@
 
 + (id)candidatePairWithLocalCandidate:(id)arg1 remoteCandidate:(id)arg2 sessionID:(id)arg3 delegate:(id)arg4 sendMsgBlock:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
+- (void)_handleLinkProbingTimer;
 - (void)_handleNoSessionStateTimer;
 - (void)_handleReallocTimer;
 - (void)_handleSessionConnectedtTimer;
@@ -166,6 +170,7 @@
 - (id)description;
 - (unsigned long long)getParticipantIDHash:(id)arg1;
 - (unsigned long long)getStunSentBytes:(id)arg1;
+- (BOOL)hasNoSessionStateTestOptions;
 - (BOOL)hasValidCapabilityFlags;
 - (void)initParticipantIDMap;
 - (id)initWithLocalCandidate:(id)arg1 remoteCandidate:(id)arg2 sessionID:(id)arg3 delegate:(id)arg4 sendMsgBlock:(CDUnknownBlockType)arg5;
@@ -200,9 +205,11 @@
 - (void)setTestOptionsFromUserDefaults;
 - (BOOL)shouldProcessStunResponse:(id)arg1;
 - (BOOL)shouldRexmitStunRequest:(id)arg1;
+- (void)startLinkProbingTimer:(unsigned int)arg1;
 - (void)startSessionConnectedTimer:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)startSessionConvergenceTimer:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)startSessionGoAwayTimer:(int)arg1 block:(CDUnknownBlockType)arg2;
+- (void)stopLinkProbingTimer;
 - (void)stopSessionConnectedTimer;
 - (void)stopSessionConvergenceTimer;
 - (void)stopSessionGoAwayTimer;

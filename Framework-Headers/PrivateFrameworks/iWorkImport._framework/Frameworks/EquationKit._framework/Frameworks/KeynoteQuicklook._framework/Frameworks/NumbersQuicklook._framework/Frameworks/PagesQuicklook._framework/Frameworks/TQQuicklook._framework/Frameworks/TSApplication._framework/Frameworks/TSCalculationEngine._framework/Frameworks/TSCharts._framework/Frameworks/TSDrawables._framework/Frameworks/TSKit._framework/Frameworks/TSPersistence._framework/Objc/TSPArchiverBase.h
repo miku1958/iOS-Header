@@ -20,13 +20,11 @@
     unsigned long long _messageVersion;
     TSPReferenceOrderedSet *_strongReferences;
     TSPReferenceOrderedSet *_weakReferences;
-    TSPReferenceOrderedSet *_commandToModelReferences;
     NSHashTable *_lazyReferences;
     NSHashTable *_dataReferences;
 }
 
 @property (readonly, nonatomic) NSDictionary *alternates;
-@property (readonly, nonatomic) TSPReferenceOrderedSet *commandToModelReferences; // @synthesize commandToModelReferences=_commandToModelReferences;
 @property (readonly, nonatomic) const struct FieldPath *currentFieldPath;
 @property (readonly, nonatomic) NSHashTable *dataReferences; // @synthesize dataReferences=_dataReferences;
 @property (readonly, copy) NSString *debugDescription;

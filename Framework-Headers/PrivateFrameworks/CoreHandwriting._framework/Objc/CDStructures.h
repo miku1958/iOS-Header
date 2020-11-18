@@ -53,6 +53,13 @@ struct CHCanvasHeatmap {
     struct unordered_map<unsigned long, std::__1::unordered_map<std::__1::pair<long, long>, unsigned long, GridCoordHash, GridCoordEqual, std::__1::allocator<std::__1::pair<const std::__1::pair<long, long>, unsigned long>>>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::unordered_map<std::__1::pair<long, long>, unsigned long, GridCoordHash, GridCoordEqual, std::__1::allocator<std::__1::pair<const std::__1::pair<long, long>, unsigned long>>>>>> _field6;
 };
 
+struct CHCodeMap {
+    char *_field1;
+    unsigned long long _field2;
+    unsigned int *_field3;
+    unsigned int _field4;
+};
+
 struct CHCutpointCandidate;
 
 struct CHDrawingStrokes {
@@ -66,25 +73,35 @@ struct CHDrawingStrokes {
     vector_12bd641b sparseBitmap;
 };
 
+struct CHFastGroupingCluster {
+    struct map<unsigned long, CGPoint, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, CGPoint>>> _field1;
+    struct CGPoint _field2;
+    struct set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long>> _field3;
+};
+
+struct CHLineSegment {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+};
+
 struct CHNeuralNetwork {
     CDUnknownFunctionPointerType _field1;
     BOOL _field2;
-    char *_field3;
-    unsigned long long _field4;
-    unsigned int *_field5;
+    struct CHCodeMap *_field3;
+    unsigned int _field4;
+    unsigned int _field5;
     unsigned int _field6;
     unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    id _field11;
-    id _field12;
-    struct CGRect _field13;
+    id _field8;
+    id _field9;
+    struct CGRect _field10;
 };
 
-struct CHPolygonEdge {
-    struct CGPoint _field1;
-    struct CGPoint _field2;
+struct CVNLPTextDecodingPruningPolicy {
+    long long strategy;
+    BOOL shouldSort;
+    float threshold;
+    unsigned int maxNumberOfCandidates;
 };
 
 struct LatticePath;
@@ -149,8 +166,8 @@ struct VariantMap {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct __compressed_pair<float * __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))>> {
@@ -273,6 +290,18 @@ struct map<unsigned int, unsigned long, std::__1::less<unsigned int>, std::__1::
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
+};
+
+struct map<unsigned long, CGPoint, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, CGPoint>>> {
+    struct __tree<std::__1::__value_type<unsigned long, CGPoint>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, CGPoint>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, CGPoint>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, CGPoint>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, CGPoint>, std::__1::less<unsigned long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
 };
 
 struct map<unsigned long, std::__1::map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, unsigned long>>>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, unsigned long>>>>>> {
@@ -484,6 +513,14 @@ struct vector<CHCutpointCandidate, std::__1::allocator<CHCutpointCandidate>> {
     struct __compressed_pair<CHCutpointCandidate *, std::__1::allocator<CHCutpointCandidate>> {
         struct CHCutpointCandidate *_field1;
     } _field3;
+};
+
+struct vector<CHFastGroupingCluster, std::__1::allocator<CHFastGroupingCluster>> {
+    struct CHFastGroupingCluster *__begin_;
+    struct CHFastGroupingCluster *__end_;
+    struct __compressed_pair<CHFastGroupingCluster *, std::__1::allocator<CHFastGroupingCluster>> {
+        struct CHFastGroupingCluster *__value_;
+    } __end_cap_;
 };
 
 struct vector<LatticePath, std::__1::allocator<LatticePath>> {
@@ -807,6 +844,14 @@ typedef struct vector<CHCutpointCandidate, std::__1::allocator<CHCutpointCandida
         struct CHCutpointCandidate *_field1;
     } _field3;
 } vector_cdf22482;
+
+typedef struct vector<CHFastGroupingCluster, std::__1::allocator<CHFastGroupingCluster>> {
+    struct CHFastGroupingCluster *__begin_;
+    struct CHFastGroupingCluster *__end_;
+    struct __compressed_pair<CHFastGroupingCluster *, std::__1::allocator<CHFastGroupingCluster>> {
+        struct CHFastGroupingCluster *__value_;
+    } __end_cap_;
+} vector_063dde0e;
 
 typedef struct vector<LatticePath, std::__1::allocator<LatticePath>> {
     struct LatticePath *_field1;

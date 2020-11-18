@@ -16,12 +16,14 @@
     NSMapTable *_alarms;
     NSMutableSet *_pendingEvents;
     NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _unitTest_schedulerObserver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType unitTest_schedulerObserver; // @synthesize unitTest_schedulerObserver=_unitTest_schedulerObserver;
 
 - (void).cxx_destruct;
 - (void)_queue_handleEvent:(id)arg1;

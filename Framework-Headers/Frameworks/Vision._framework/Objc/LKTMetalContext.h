@@ -20,14 +20,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly, nonatomic) id<MTLLibrary> library; // @synthesize library=_library;
 
-+ (unsigned long long)bytesPerPixelForTextureFormat:(unsigned long long)arg1;
-+ (void)makeTextureCoherent:(id)arg1 texture:(id)arg2;
++ (void)makeResourceCoherent:(id)arg1 resource:(id)arg2;
 + (id)metalContextForDevice:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (id)bindIOSurfaceToMTL2DTexture:(struct __IOSurface *)arg1 pixelFormat:(unsigned long long)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 plane:(unsigned long long)arg5 error:(id *)arg6;
 - (id)bindPixelBufferToMTL2DTexture:(struct __CVBuffer *)arg1 pixelFormat:(unsigned long long)arg2 plane:(unsigned long long)arg3 error:(id *)arg4;
 - (id)bindPixelBufferToMTL2DTexture:(struct __CVBuffer *)arg1 pixelFormat:(unsigned long long)arg2 textureSize:(struct CGSize)arg3 plane:(unsigned long long)arg4 error:(id *)arg5;
 - (id)initWithDevice:(id)arg1 error:(id *)arg2;
-- (unsigned long long)textureBytesPerRow:(unsigned long long)arg1 format:(unsigned long long)arg2;
 
 @end
 

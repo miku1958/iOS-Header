@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSString;
+@protocol CKFetchWebAuthTokenOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchWebAuthTokenOperation : CKDDatabaseOperation
@@ -16,14 +17,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSString *APIToken; // @synthesize APIToken=_APIToken;
+@property (strong, nonatomic) id<CKFetchWebAuthTokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) NSString *webAuthToken; // @synthesize webAuthToken=_webAuthToken;
 
 - (void).cxx_destruct;
 - (id)activityCreate;
-- (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
-- (Class)operationResultClass;
+- (int)operationType;
 
 @end
 

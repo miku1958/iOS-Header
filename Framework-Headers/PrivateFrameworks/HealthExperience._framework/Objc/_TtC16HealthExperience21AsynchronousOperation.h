@@ -10,10 +10,9 @@
 
 @interface _TtC16HealthExperience21AsynchronousOperation : NSOperation
 {
-    MISSING_TYPE *autoFinishesOnCancel;
+    MISSING_TYPE *_autoFinishesOnCancel;
     MISSING_TYPE *operationState;
     MISSING_TYPE *workLock;
-    MISSING_TYPE *didBeginWork;
 }
 
 @property (nonatomic, readonly) BOOL asynchronous;

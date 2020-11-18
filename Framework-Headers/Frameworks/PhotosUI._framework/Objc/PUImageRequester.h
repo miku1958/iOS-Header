@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface PUImageRequester : NSObject
 {
     BOOL _shouldRequestPenultimateVersion;
+    BOOL _useLowMemoryMode;
     BOOL _networkAccessAllowed;
     BOOL _imageIsFullQuality;
     BOOL _imageIsPlaceholder;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
 @property (nonatomic) BOOL shouldRequestPenultimateVersion; // @synthesize shouldRequestPenultimateVersion=_shouldRequestPenultimateVersion;
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
+@property (nonatomic) BOOL useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
 
 - (void).cxx_destruct;
 - (void)_assertInsideChangesBlock;

@@ -7,14 +7,12 @@
 #import <PhotosUICore/PXGadgetUIViewController.h>
 
 #import <PhotosUI/PXNavigableCollectionContainer-Protocol.h>
-#import <PhotosUI/PXNavigationRoot-Protocol.h>
 
-@class NSString, PUSessionInfo, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
+@class NSString, PUSessionInfo, PXProgrammaticNavigationDestination, UIBarButtonItem;
 
-@interface PUAlbumsGadgetViewController : PXGadgetUIViewController <PXNavigableCollectionContainer, PXNavigationRoot>
+@interface PUAlbumsGadgetViewController : PXGadgetUIViewController <PXNavigableCollectionContainer>
 {
-    UIBarButtonItem *_navigationDisplayModeButtonItem;
-    PXNavigationListDataSectionManager *_navigationListDataSourceManager;
+    PXProgrammaticNavigationDestination *_px_navigationDestination;
     PUSessionInfo *_sessionInfo;
     UIBarButtonItem *_plusButtonItem;
 }
@@ -22,21 +20,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
-@property (strong, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
-@property (readonly, nonatomic) NSString *navigationIdentifier;
-@property (readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager; // @synthesize navigationListDataSourceManager=_navigationListDataSourceManager;
-@property (readonly, nonatomic) NSString *navigationTitle;
 @property (strong, nonatomic) UIBarButtonItem *plusButtonItem; // @synthesize plusButtonItem=_plusButtonItem;
+@property (strong, nonatomic) PXProgrammaticNavigationDestination *px_navigationDestination; // @synthesize px_navigationDestination=_px_navigationDestination;
 @property (strong, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property (readonly) Class superclass;
 
 + (id)_supportedActionsByKeyCommands;
 - (void).cxx_destruct;
+- (BOOL)_canNavigateToCollection:(id)arg1 skipGadgets:(BOOL)arg2;
+- (BOOL)_canPerformActionOfActionType:(long long)arg1;
 - (void)_handleDoneButton:(id)arg1;
-- (void)_handlePlusButton:(id)arg1;
-- (void)_handlePlusButtonLongPress:(id)arg1;
 - (id)_navigableGadgetForCollection:(id)arg1;
+- (void)_navigateToCollection:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_newAlbumActionWithSpec:(id)arg1;
 - (id)_newFolderActionWithSpec:(id)arg1;
 - (id)_newSharedAlbumActionWithSpec:(id)arg1;
@@ -48,19 +43,21 @@
 - (void)_performCreateNewSmartAlbum;
 - (void)_performKeyCommand:(id)arg1;
 - (void)_updateNavigationBar;
+- (BOOL)allowsBarManagement;
+- (BOOL)canBecomeFirstResponder;
 - (BOOL)canNavigateToCollection:(id)arg1;
-- (BOOL)canRouteToDestination:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)configureSectionHeader:(id)arg1;
+- (id)createPlusButton;
 - (id)initWithLayout:(id)arg1 dataSourceManager:(id)arg2;
 - (id)keyCommands;
 - (void)navigateToCollection:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)presentNewActionAlertControllerWithOptions:(unsigned long long)arg1;
-- (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)navigationHelperCanCurrentlyNavigate:(id)arg1;
+- (void)provideViewControllersForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)px_gridPresentation;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (long long)scrollAnimationIdentifier;
-- (void)selectNavigationListItem:(id)arg1 hintIndex:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

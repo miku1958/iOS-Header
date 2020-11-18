@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
     MISSING_TYPE *systemStateController;
 }
 

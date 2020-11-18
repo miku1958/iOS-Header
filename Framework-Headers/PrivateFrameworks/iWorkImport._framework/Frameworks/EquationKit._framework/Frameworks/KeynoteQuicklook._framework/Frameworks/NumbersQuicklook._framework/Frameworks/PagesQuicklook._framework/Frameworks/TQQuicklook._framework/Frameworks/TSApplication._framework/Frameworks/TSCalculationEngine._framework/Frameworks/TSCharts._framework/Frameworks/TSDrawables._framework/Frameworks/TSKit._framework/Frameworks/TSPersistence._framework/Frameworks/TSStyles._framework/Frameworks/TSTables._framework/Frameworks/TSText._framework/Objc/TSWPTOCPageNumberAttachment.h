@@ -18,7 +18,7 @@
 @property (copy, nonatomic) NSString *pageNumber;
 
 - (void).cxx_destruct;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (id)stringEquivalent;

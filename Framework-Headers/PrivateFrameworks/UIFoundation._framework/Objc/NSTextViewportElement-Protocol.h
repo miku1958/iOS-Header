@@ -7,6 +7,7 @@
 #import <UIFoundation/NSObject-Protocol.h>
 
 @class NSTextRange;
+@protocol NSTextLocation;
 
 @protocol NSTextViewportElement <NSObject>
 
@@ -16,5 +17,6 @@
 
 - (void)drawAtPoint:(struct CGPoint)arg1 context:(struct CGContext *)arg2;
 - (NSTextRange *)representedRangeAtPoint:(struct CGPoint)arg1;
+- (double)verticalOffsetOfTextLocation:(id<NSTextLocation>)arg1 withAffinity:(long long)arg2;
 @end
 

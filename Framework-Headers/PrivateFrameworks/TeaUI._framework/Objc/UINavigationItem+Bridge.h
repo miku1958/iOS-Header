@@ -8,6 +8,9 @@
 
 @interface UINavigationItem (Bridge)
 - (void)ts_setBackButtonTitle:(id)arg1;
+- (void)ts_setBottomPaletteMinimumHeight:(double)arg1;
+- (void)ts_setBottomPalettePreferredHeight:(double)arg1;
+- (void)ts_setBottomPaletteWithContentView:(id)arg1;
 - (void)ts_setLargeTitleAccessoryView:(id)arg1 alignToBaseline:(BOOL)arg2;
 @end
 

@@ -8,6 +8,6 @@
 @protocol FCForYouBridgedFeedGroup;
 
 @protocol FCForYouBridgedFeedGroupStore
-- (id<FCForYouBridgedFeedGroup>)knownGroupForIdentifier:(NSString *)arg1 headlines:(NSArray *)arg2 assetHandles:(NSArray *)arg3;
+- (id<FCForYouBridgedFeedGroup>)knownGroupForIdentifier:(NSString *)arg1 headlines:(NSArray *)arg2 tags:(NSArray *)arg3 assetHandles:(NSArray *)arg4;
 @end
 

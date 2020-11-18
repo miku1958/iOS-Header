@@ -31,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (id)_truncateNameIfNeeded:(id)arg1;
+- (void)addOverlaySubview:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)configureForComposition:(id)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;

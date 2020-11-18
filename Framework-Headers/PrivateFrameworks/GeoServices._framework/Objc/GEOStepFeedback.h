@@ -8,58 +8,79 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, PBDataReader;
+@class GEOEVStepFeedbackInfo, NSData, PBDataReader;
 
 @interface GEOStepFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     double _completionTimeStamp;
+    GEOEVStepFeedbackInfo *_evStepInfo;
     NSData *_routeID;
+    NSData *_stepZilch;
     NSData *_tripID;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _expectedTime;
+    int _maneuverType;
     unsigned int _routeIndex;
     unsigned int _stepID;
+    unsigned int _waypointRouteID;
     BOOL _completedStep;
     BOOL _lightGuidance;
+    BOOL _routePaused;
+    BOOL _routeResumed;
     struct {
         unsigned int has_completionTimeStamp:1;
+        unsigned int has_expectedTime:1;
+        unsigned int has_maneuverType:1;
         unsigned int has_routeIndex:1;
         unsigned int has_stepID:1;
+        unsigned int has_waypointRouteID:1;
         unsigned int has_completedStep:1;
         unsigned int has_lightGuidance:1;
+        unsigned int has_routePaused:1;
+        unsigned int has_routeResumed:1;
+        unsigned int read_evStepInfo:1;
         unsigned int read_routeID:1;
+        unsigned int read_stepZilch:1;
         unsigned int read_tripID:1;
-        unsigned int wrote_completionTimeStamp:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_tripID:1;
-        unsigned int wrote_routeIndex:1;
-        unsigned int wrote_stepID:1;
-        unsigned int wrote_completedStep:1;
-        unsigned int wrote_lightGuidance:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (nonatomic) BOOL completedStep;
 @property (nonatomic) double completionTimeStamp;
+@property (strong, nonatomic) GEOEVStepFeedbackInfo *evStepInfo;
+@property (nonatomic) unsigned int expectedTime;
 @property (nonatomic) BOOL hasCompletedStep;
 @property (nonatomic) BOOL hasCompletionTimeStamp;
+@property (readonly, nonatomic) BOOL hasEvStepInfo;
+@property (nonatomic) BOOL hasExpectedTime;
 @property (nonatomic) BOOL hasLightGuidance;
+@property (nonatomic) BOOL hasManeuverType;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasRouteIndex;
+@property (nonatomic) BOOL hasRoutePaused;
+@property (nonatomic) BOOL hasRouteResumed;
 @property (nonatomic) BOOL hasStepID;
+@property (readonly, nonatomic) BOOL hasStepZilch;
 @property (readonly, nonatomic) BOOL hasTripID;
+@property (nonatomic) BOOL hasWaypointRouteID;
 @property (nonatomic) BOOL lightGuidance;
+@property (nonatomic) int maneuverType;
 @property (strong, nonatomic) NSData *routeID;
 @property (nonatomic) unsigned int routeIndex;
+@property (nonatomic) BOOL routePaused;
+@property (nonatomic) BOOL routeResumed;
 @property (nonatomic) unsigned int stepID;
+@property (strong, nonatomic) NSData *stepZilch;
 @property (strong, nonatomic) NSData *tripID;
+@property (nonatomic) unsigned int waypointRouteID;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readRouteID;
-- (void)_readTripID;
+- (int)StringAsManeuverType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -67,7 +88,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
+- (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

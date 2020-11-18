@@ -32,8 +32,8 @@
 @property (strong, nonatomic) NSNumber *phoneNumberPropertyID; // @synthesize phoneNumberPropertyID=_phoneNumberPropertyID;
 @property (copy, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
 
++ (id)emergencyContactUsingSimCardNumberWithContact:(id)arg1 property:(id)arg2;
 + (id)emergencyContactWithContact:(id)arg1 property:(id)arg2;
-+ (id)nameForContact:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -42,6 +42,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToSyncedContact:(id)arg1;
 
 @end
 

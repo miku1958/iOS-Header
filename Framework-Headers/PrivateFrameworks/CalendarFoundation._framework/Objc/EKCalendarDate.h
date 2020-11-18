@@ -9,31 +9,40 @@
 #import <CalendarFoundation/NSCopying-Protocol.h>
 #import <CalendarFoundation/NSMutableCopying-Protocol.h>
 
-@class EKTimeZone;
+@class NSCalendar, NSDate, NSDateComponents;
 
 @interface EKCalendarDate : NSObject <NSCopying, NSMutableCopying>
 {
-    CDStruct_b0fa4487 _dateGr;
-    double _dateAbs;
-    EKTimeZone *_timeZone;
-    unsigned int _flags;
+    NSCalendar *_calendar;
+    NSDate *_date;
+    NSDateComponents *_components;
+    NSDateComponents *_originalComponents;
 }
 
 + (id)calendarDateWithAbsoluteTime:(double)arg1 timeZone:(id)arg2;
 + (id)calendarDateWithDate:(id)arg1 timeZone:(id)arg2;
 + (id)calendarDateWithDateComponents:(id)arg1 timeZone:(id)arg2;
-+ (id)calendarDateWithGregorianDate:(CDStruct_b0fa4487)arg1 timeZone:(id)arg2;
++ (id)calendarDateWithYear:(long long)arg1 month:(long long)arg2 day:(long long)arg3 timeZone:(id)arg4;
 - (void).cxx_destruct;
 - (double)absoluteTime;
+- (id)allComponents;
+- (id)calendar;
+- (id)calendarDateByAddingComponents:(id)arg1;
 - (id)calendarDateByAddingDays:(long long)arg1;
 - (id)calendarDateByAddingGregorianUnits:(CDStruct_deff9ab7)arg1;
+- (id)calendarDateByAddingHours:(long long)arg1;
+- (id)calendarDateByAddingMinutes:(long long)arg1;
 - (id)calendarDateByAddingMonths:(long long)arg1;
+- (id)calendarDateByAddingSeconds:(long long)arg1;
 - (id)calendarDateByAddingWeeks:(long long)arg1;
 - (id)calendarDateByAddingYears:(long long)arg1;
+- (id)calendarDateByComponentwiseAddingComponents:(id)arg1;
+- (id)calendarDateByComponentwiseAddingSeconds:(long long)arg1;
 - (id)calendarDateForDay;
 - (id)calendarDateForEndOfDay;
 - (id)calendarDateForEndOfMonth;
 - (id)calendarDateForEndOfWeekWithWeekStart:(int)arg1;
+- (id)calendarDateForEndOfYear;
 - (id)calendarDateForMonth;
 - (id)calendarDateForWeekWithWeekStart:(int)arg1;
 - (id)calendarDateForWeekWithWeekStart:(int)arg1 daysSinceWeekStart:(long long *)arg2;
@@ -42,42 +51,48 @@
 - (id)calendarDateWithDate:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)components;
-- (id)componentsIncludingTime:(BOOL)arg1;
 - (id)componentsWithoutTime;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)date;
-- (unsigned long long)day;
+- (long long)day;
+- (id)dayComponents;
 - (int)dayOfWeek;
 - (unsigned long long)dayOfYear;
+- (id)dayTimeComponents;
 - (unsigned long long)daysInMonth;
 - (unsigned long long)daysInYear;
 - (id)description;
-- (CDStruct_deff9ab7)differenceAsCalGregorianUnits:(id)arg1 flags:(unsigned long long)arg2;
+- (id)differenceAsComponentwiseDateComponents:(id)arg1;
+- (id)differenceAsDateComponents:(id)arg1 units:(unsigned long long)arg2;
 - (CDStruct_deff9ab7)differenceAsGregorianUnits:(id)arg1 flags:(unsigned long long)arg2;
 - (long long)differenceInDays:(id)arg1;
 - (long long)differenceInMonths:(id)arg1;
 - (double)differenceInSeconds:(id)arg1;
 - (long long)differenceInYears:(id)arg1;
 - (id)earlierDate:(id)arg1;
-- (CDStruct_b0fa4487)gregorianDate;
-- (unsigned long long)hour;
-- (id)initWithAbsoluteTime:(double)arg1 internalTimeZone:(id)arg2;
+- (long long)era;
+- (long long)hour;
 - (id)initWithAbsoluteTime:(double)arg1 timeZone:(id)arg2;
+- (id)initWithDate:(id)arg1 calendar:(id)arg2;
+- (id)initWithDate:(id)arg1 components:(id)arg2 timeZone:(id)arg3;
+- (id)initWithDate:(id)arg1 originalComponents:(id)arg2 components:(id)arg3 calendar:(id)arg4;
+- (id)initWithDate:(id)arg1 originalComponents:(id)arg2 components:(id)arg3 timeZone:(id)arg4;
 - (id)initWithDate:(id)arg1 timeZone:(id)arg2;
+- (id)initWithDateComponents:(id)arg1 calendar:(id)arg2;
 - (id)initWithDateComponents:(id)arg1 timeZone:(id)arg2;
-- (id)initWithGregorianDate:(CDStruct_b0fa4487)arg1 internalTimeZone:(id)arg2;
-- (id)initWithGregorianDate:(CDStruct_b0fa4487)arg1 timeZone:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)laterDate:(id)arg1;
-- (unsigned long long)minute;
-- (unsigned long long)month;
+- (long long)minute;
+- (long long)month;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (double)second;
+- (long long)second;
 - (long long)secondsFromGMT;
+- (id)timeComponents;
 - (id)timeZone;
+- (id)weekComponents;
 - (unsigned long long)weekOfYear;
 - (unsigned long long)weeksInYear;
-- (unsigned long long)year;
+- (long long)year;
 
 @end
 

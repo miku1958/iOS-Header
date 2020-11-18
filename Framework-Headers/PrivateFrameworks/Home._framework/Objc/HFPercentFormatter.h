@@ -26,6 +26,7 @@
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 range:(inout struct _NSRange *)arg3 error:(out id *)arg4;
 - (id)init;
 - (id)initWithMinimumValue:(id)arg1 maximumValue:(id)arg2;
+- (id)stringForNormalizedObjectValue:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringForRelativePercentValue:(id)arg1;
 

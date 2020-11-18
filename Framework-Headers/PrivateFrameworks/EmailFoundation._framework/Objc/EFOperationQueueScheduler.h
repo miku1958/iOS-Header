@@ -25,6 +25,7 @@
 - (id)initWithMaxConcurrentOperationCount:(long long)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
+- (void)performSyncBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)performVoucherPreservingBlock:(CDUnknownBlockType)arg1;
 - (id)performWithObject:(id)arg1;

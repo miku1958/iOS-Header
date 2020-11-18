@@ -9,21 +9,21 @@
 #import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, UIControl;
-@protocol SearchUIKeyboardableTableViewScrollDelegate, UITextInput;
+@protocol SearchUIKeyboardableTableViewDelegate, UITextInput;
 
 @interface SearchUIKeyboardableTableViewController : UITableViewController <UIGestureRecognizerDelegate>
 {
     BOOL _shouldHideTableCellsUnderKeyboard;
     UIControl<UITextInput> *_textField;
     double _currentKeyboardHeight;
-    id<SearchUIKeyboardableTableViewScrollDelegate> _scrollDelegate;
+    id<SearchUIKeyboardableTableViewDelegate> _interactionDelegate;
 }
 
 @property (nonatomic) double currentKeyboardHeight; // @synthesize currentKeyboardHeight=_currentKeyboardHeight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak) id<SearchUIKeyboardableTableViewScrollDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
+@property (weak) id<SearchUIKeyboardableTableViewDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (nonatomic) BOOL shouldHideTableCellsUnderKeyboard; // @synthesize shouldHideTableCellsUnderKeyboard=_shouldHideTableCellsUnderKeyboard;
 @property (readonly) Class superclass;
 @property (weak) UIControl<UITextInput> *textField; // @synthesize textField=_textField;
@@ -33,15 +33,16 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canHighlightRowAtIndexPath:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (BOOL)cellsVisibleUnderKeyboard;
 - (double)contentHeight;
+- (BOOL)contentVisibleUnderKeyboard;
 - (void)deletePressed;
 - (void)downArrowPressed:(id)arg1;
 - (void)escapeButtonPressed;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)goBack;
 - (void)hideCellsBelowKeyboardIfNecessary;
-- (void)highlightRowAtIndexPath:(id)arg1 upward:(BOOL)arg2;
+- (void)highlightNextRowAtIndexPath:(id)arg1 upward:(BOOL)arg2;
+- (void)highlightRowAtIndexPath:(id)arg1;
 - (id)indexPathForNextSelectableIndexPath:(id)arg1 upward:(BOOL)arg2;
 - (id)indexPathToSelectForKeyboardOnQuickReturn;
 - (id)init;
@@ -61,6 +62,7 @@
 - (void)selectHighlightedRow;
 - (void)setTableView:(id)arg1;
 - (void)showKeyboard;
+- (void)tabKeyPressed;
 - (void)upArrowPressed:(id)arg1;
 - (void)viewDidLayoutSubviews;
 

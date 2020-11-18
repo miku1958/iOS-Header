@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) NSString *string;
 
 + (id)contentCategories;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;
@@ -32,7 +32,6 @@
 - (id)generateObjectRepresentationsForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateObjectsForClass:(Class)arg1 error:(id *)arg2;
 - (BOOL)includesFileRepresentationInSerializedItem;
-- (id)internalRepresentationForCopying;
 - (BOOL)isContent;
 
 @end

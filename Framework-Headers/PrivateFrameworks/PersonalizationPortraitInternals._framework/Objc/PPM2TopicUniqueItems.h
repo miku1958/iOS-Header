@@ -8,10 +8,17 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2TopicUniqueItems : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
 }
 
+@property (strong, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
+@property (readonly, nonatomic) BOOL hasActiveTreatments;
+
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

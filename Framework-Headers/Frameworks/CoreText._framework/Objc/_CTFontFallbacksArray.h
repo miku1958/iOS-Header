@@ -22,14 +22,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
-- (struct __CTFontDescriptor *)cachedDescriptorForCharacter:(unsigned short)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
-- (id)initWithBaseFont:(const struct TBaseFont *)arg1 cascade:(id)arg2 uiUse:(int)arg3;
 - (id)objectAtIndex:(unsigned long long)arg1;
-- (id)objectAtIndex:(unsigned long long)arg1 shouldLock:(BOOL)arg2 addRanges:(BOOL)arg3;
 
 @end
 

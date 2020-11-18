@@ -9,22 +9,23 @@
 @class MISSING_TYPE;
 @protocol TUPluggableDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226MagazineFeedViewController : UIViewController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *blueprintSelectionProvider;
+    MISSING_TYPE *blueprintLayoutProvider;
     MISSING_TYPE *barCompressionManager;
     MISSING_TYPE *alertPresenter;
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *mastheadStyleOptionsProvider;
+    MISSING_TYPE *feedPaywallConfigFactory;
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *bundlePurchasePrewarmer;
-    MISSING_TYPE *paidBundleConfigurationManager;
     MISSING_TYPE *heightChangeRelayoutThreshold;
     MISSING_TYPE *viewportFromLastRelayout;
+    MISSING_TYPE *commandCenter;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
 }

@@ -6,25 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKitCore/PKPeerPaymentRegistrationDelegate-Protocol.h>
+#import <PassKitCore/PKPeerPaymentServiceExportedInterface-Protocol.h>
+#import <PassKitCore/PKPeerPaymentTargetDeviceDelegate-Protocol.h>
 
-@class PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKXPCService;
+@class NSHashTable, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentWebServiceContext, PKXPCService;
 @protocol OS_dispatch_queue;
 
-@interface PKPeerPaymentService : NSObject <PKPeerPaymentRegistrationDelegate>
+@interface PKPeerPaymentService : NSObject <PKPeerPaymentServiceExportedInterface, PKPeerPaymentTargetDeviceDelegate>
 {
     PKXPCService *_remoteService;
     PKPeerPaymentAccount *_account;
-    NSObject<OS_dispatch_queue> *_accountQueue;
+    PKPeerPaymentPreferences *_preferences;
+    NSObject<OS_dispatch_queue> *_replyQueue;
+    struct os_unfair_lock_s _accountLock;
+    struct os_unfair_lock_s _lockObservers;
+    NSHashTable *_observers;
     long long _accountChangedNotificationSuspensionCount;
 }
 
 @property (readonly, nonatomic) PKPeerPaymentAccount *account;
+@property (readonly, nonatomic) PKPeerPaymentPreferences *preferences;
 @property (strong, nonatomic) PKPeerPaymentWebServiceContext *sharedPeerPaymentWebServiceContext;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (void)_accountChanged:(id)arg1;
+- (void)_postAccountChangeNotificationIfNecessaryForAccount:(id)arg1 previousAccount:(id)arg2;
+- (void)_preferencesChanged:(id)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (void)_sharedPeerPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_synchronousRemoteObjectProxyForSelector:(SEL)arg1;
@@ -34,12 +43,14 @@
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deletePreferencesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)didReceiveAppleCashSharingRecipientCapabilities:(id)arg1 forHandle:(id)arg2;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (id)lastUsedAlternateFundingSourcePassUniqueIdentifier;
 - (void)noteAccountDeleted;
+- (void)preferencesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentIdentityVerificationFlowWithResponse:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentPeerPaymentTermsAndConditionsWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentRegistrationFlowWithAccount:(id)arg1 amount:(id)arg2 state:(unsigned long long)arg3 senderAddress:(id)arg4 orientation:(id)arg5 completion:(CDUnknownBlockType)arg6;
@@ -48,16 +59,24 @@
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithForceReregister:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 forceReregister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)registerObserver:(id)arg1;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remoteRegistrationRequest:(id)arg1 forHandle:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeAccountChangedNotifications;
+- (void)sendAppleCashCapabilitiesRequestForHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setLastUsedAlternateFundingSourcePassUniqueIdentifier:(id)arg1;
+- (void)setPreferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sharedPeerPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)suspendAccountChangedNotifications;
 - (void)unregisterDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)updateAccountAndAssociatedAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateAssociatedAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateMessageReceivedDate:(id)arg1 forTransactionWithIdentifier:(id)arg2;
 - (void)updateMockAccountBalanceByAddingAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updatePreferencesWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

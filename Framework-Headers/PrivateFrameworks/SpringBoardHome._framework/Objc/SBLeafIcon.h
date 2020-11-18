@@ -8,23 +8,33 @@
 
 #import <SpringBoardHome/NSCopying-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSArray, NSMutableOrderedSet, NSString;
 @protocol SBLeafIconDataSource;
 
 @interface SBLeafIcon : SBIcon <NSCopying>
 {
     NSString *_leafIdentifier;
     NSString *_applicationBundleID;
-    NSMutableSet *_dataSources;
+    NSMutableOrderedSet *_dataSources;
     id<SBLeafIconDataSource> _activeDataSource;
+    id<SBLeafIconDataSource> _manuallySetDataSource;
     id<SBLeafIconDataSource> _dataSourceAtUninstallation;
+    unsigned long long _coalescedDataSourceUpdates;
 }
 
-@property (readonly, nonatomic) id<SBLeafIconDataSource> activeDataSource;
+@property (strong, nonatomic) id<SBLeafIconDataSource> activeDataSource;
 @property (readonly, copy, nonatomic) NSString *applicationBundleID;
-@property (readonly, copy, nonatomic) NSString *masqueradeIdentifier;
+@property (readonly, nonatomic, getter=_bestDataSource) id<SBLeafIconDataSource> bestDataSource;
+@property (readonly, nonatomic, getter=_fallbackBestDataSource) id<SBLeafIconDataSource> fallbackBestDataSource;
+@property (readonly, nonatomic) id<SBLeafIconDataSource> firstIconDataSource;
+@property (readonly, nonatomic) unsigned long long iconDataSourceCount;
+@property (readonly, copy, nonatomic) NSArray *iconDataSources;
+@property (readonly, nonatomic) id<SBLeafIconDataSource> lastIconDataSource;
+@property (readonly, copy, nonatomic) NSString *sbh_iconLibraryItemIdentifier;
 
 + (Class)downloadingIconClass;
++ (id)formattedBadgeNumberOrString:(id)arg1;
++ (id)iconImageForDataSource:(id)arg1 ofIcon:(id)arg2 info:(struct SBIconImageInfo)arg3;
 - (void).cxx_destruct;
 - (void)_noteActiveDataSourceDidChangeAndReloadIcon:(BOOL)arg1;
 - (void)_noteActiveDataSourceDidChangeNotification:(id)arg1;
@@ -34,19 +44,34 @@
 - (id)accessoryTextForLocation:(id)arg1;
 - (long long)accessoryTypeForLocation:(id)arg1;
 - (void)addIconDataSource:(id)arg1;
+- (void)addIconDataSources:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (id)badgeNumberOrString;
 - (BOOL)canTightenLabel;
 - (BOOL)canTruncateLabel;
 - (void)completeUninstall;
+- (id)copyWithLeafIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)didAddIconDataSource:(id)arg1;
+- (void)didChangeActiveDataSource:(id)arg1;
+- (void)didRemoveIconDataSource:(id)arg1;
 - (id)displayNameForLocation:(id)arg1;
 - (id)displayNameForObscuredDisabledLaunchForLocation:(id)arg1;
+- (void)enumerateObserversUsingBlock:(CDUnknownBlockType)arg1;
+- (id)firstIconDataSourceOfClass:(Class)arg1;
+- (id)firstIconDataSourcePassingTest:(CDUnknownBlockType)arg1;
+- (id)firstIconDataSourceWithUniqueIdentifier:(id)arg1;
 - (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)genericIconImageWithInfo:(struct SBIconImageInfo)arg1;
+- (BOOL)hasIconDataSource:(id)arg1;
+- (BOOL)hasObserver:(id)arg1;
 - (unsigned long long)hash;
+- (id)iconDataSourcesOfClass:(Class)arg1;
 - (id)init;
 - (id)initWithLeafIdentifier:(id)arg1 applicationBundleID:(id)arg2;
+- (void)insertIconDataSource:(id)arg1 beforeIconDataSource:(id)arg2;
+- (void)insertIconDataSources:(id)arg1 atIndexes:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLaunchDisabledForObscuredReason;
 - (BOOL)isLaunchEnabled;
@@ -58,11 +83,17 @@
 - (void)launchFromLocation:(id)arg1 context:(id)arg2;
 - (id)leafIdentifier;
 - (id)nodeIdentifier;
+- (void)performCoalescedDataSourceUpdate:(CDUnknownBlockType)arg1;
 - (double)progressPercent;
 - (long long)progressState;
 - (void)removeIconDataSource:(id)arg1;
 - (void)removeIconDataSourcesOfClass:(Class)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)replaceIconDataSource:(id)arg1 withIconDataSource:(id)arg2;
+- (void)selectNextActiveDataSource;
 - (void)setUninstalled;
+- (unsigned long long)supportedGridSizeClasses;
+- (BOOL)supportsRasterization;
 - (id)unmaskedIconImageWithInfo:(struct SBIconImageInfo)arg1;
 
 @end

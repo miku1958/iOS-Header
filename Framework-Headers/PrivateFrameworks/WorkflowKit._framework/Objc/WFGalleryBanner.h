@@ -9,7 +9,7 @@
 #import <WorkflowKit/NSMutableCopying-Protocol.h>
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 
-@class CKRecordID, NSString, WFFileRepresentation;
+@class CKRecordID, NSData, NSString, WFFileRepresentation;
 
 @interface WFGalleryBanner : NSObject <WFCloudKitItem, NSMutableCopying>
 {
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (readonly) Class superclass;
 
 + (struct CGSize)pixelSizeForBannerSize:(long long)arg1;

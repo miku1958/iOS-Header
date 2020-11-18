@@ -8,12 +8,14 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSObject, NSString, PHCollection;
-@protocol PXAnonymousViewController, PXGridPresentation;
+@protocol PXAnonymousViewController, PXDisplayAssetFetchResult, PXGridPresentation;
 
 @protocol PXNavigationListItem <NSObject, NSCopying>
 
 @property (readonly, nonatomic) NSString *accessoryTitle;
+@property (copy, nonatomic) NSString *badgeString;
 @property (readonly, nonatomic) PHCollection *collection;
+@property (readonly, nonatomic, getter=isDeletable) BOOL deletable;
 @property (readonly, nonatomic, getter=isDraggable) BOOL draggable;
 @property (readonly, nonatomic, getter=isExpandable) BOOL expandable;
 @property (readonly, nonatomic, getter=isExpanded) BOOL expanded;
@@ -23,13 +25,15 @@
 @property (readonly, nonatomic) long long indentationLevel;
 @property (readonly, nonatomic, getter=isRemovable) BOOL removable;
 @property (readonly, nonatomic, getter=isRenamable) BOOL renamable;
+@property (readonly, nonatomic, getter=isReorderable) BOOL reorderable;
 @property (readonly, nonatomic) id representedObject;
+@property (readonly, nonatomic) long long style;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSString *visualDescription;
 
 
 @optional
-- (const struct __CFString *)aggregateDictionaryKey;
-- (NSObject<PXAnonymousViewController> *)viewControllerForCollectionWithGridPresentation:(id<PXGridPresentation>)arg1;
+- (NSString *)cpAnalyticsEventName;
+- (NSObject<PXAnonymousViewController> *)viewControllerForCollectionWithGridPresentation:(id<PXGridPresentation>)arg1 existingAssetsFetchResult:(id<PXDisplayAssetFetchResult>)arg2;
 @end
 

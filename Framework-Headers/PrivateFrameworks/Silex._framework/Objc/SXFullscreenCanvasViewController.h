@@ -20,10 +20,13 @@
 @property (nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
 
 - (void).cxx_destruct;
+- (BOOL)canBecomeFirstResponder;
 - (void)dismiss;
+- (id)keyCommands;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

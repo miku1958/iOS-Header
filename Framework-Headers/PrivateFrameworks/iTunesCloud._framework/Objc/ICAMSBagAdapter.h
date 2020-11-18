@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/AMSBagProtocol-Protocol.h>
 
-@class ICStoreRequestContext, ICURLBag, NSDate, NSError, NSMutableArray, NSString;
+@class AMSProcessInfo, ICStoreRequestContext, ICURLBag, NSDate, NSError, NSMutableArray, NSString;
 
 @interface ICAMSBagAdapter : NSObject <AMSBagProtocol>
 {
@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 @property (readonly, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;

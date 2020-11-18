@@ -10,5 +10,7 @@
 {
 }
 
+- (BOOL)shouldBeginScribbleAtPoint:(struct CGPoint)arg1;
+
 @end
 

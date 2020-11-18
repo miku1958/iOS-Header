@@ -14,6 +14,7 @@
 
 @class CKBlackholeConversationListViewController, CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate>
 {
     BOOL _showingChildViewController;
@@ -44,7 +45,9 @@
 + (id)currentKeepMessages;
 + (BOOL)currentMessageAutoKeepForType:(int)arg1;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
-+ (id)removeFirstPartyExtensionFromArray:(id)arg1;
++ (id)getDefaultExtension;
++ (id)removeFirstPartyExtensionFromArrayIfNecessary:(id)arg1;
++ (BOOL)shouldShowFirstPartyExtension;
 - (void).cxx_destruct;
 - (BOOL)_allAccountsAreDeactivated;
 - (void)_clearMessagesAppExtensionSalt;
@@ -82,7 +85,7 @@
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)audioMessageSettingsSpecifierIdentifiers;
 - (BOOL)authenticationController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
-- (id)blacklistSettingsSpecifierIdentifiers;
+- (id)blocklistSettingsSpecifierIdentifiers;
 - (id)bundle;
 - (id)characterCountSpecifierIdentifiers;
 - (id)contactPhotoSettingsSpecifierIdentifiers;
@@ -117,6 +120,7 @@
 - (id)madridSigninSpecifiers;
 - (void)madridSigninTappedWithSpecifier:(id)arg1;
 - (id)madridSwitchSpecifierIdentifiers;
+- (id)mentionsSettingsSpecifierIdentifiers;
 - (void)messageFilteringTapped:(id)arg1;
 - (void)nameAndPhotoSharingForSpecifier:(id)arg1;
 - (id)nameAndPhotoSharingSpecifiers;
@@ -146,7 +150,7 @@
 - (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldShowAudioMessageSettings;
-- (BOOL)shouldShowBlacklistSettings;
+- (BOOL)shouldShowBlocklistSettings;
 - (BOOL)shouldShowCharacterCount;
 - (BOOL)shouldShowContactPhotoSettings;
 - (BOOL)shouldShowDeliveryReceipts;
@@ -156,6 +160,7 @@
 - (BOOL)shouldShowMadridAccounts;
 - (BOOL)shouldShowMadridSignin;
 - (BOOL)shouldShowMadridSwitch;
+- (BOOL)shouldShowMentionsSettings;
 - (BOOL)shouldShowNicknames;
 - (BOOL)shouldShowRaiseToListenSwitch;
 - (BOOL)shouldShowReadReceipts;

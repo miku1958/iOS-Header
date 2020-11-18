@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic) long long contentType;
 @property (readonly, copy, nonatomic) NSDictionary *matchDictionary;
+@property (readonly, copy, nonatomic) NSDictionary *rawContentDictionary;
 
 + (id)storeItemWithIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;

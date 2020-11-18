@@ -21,6 +21,7 @@
     LPVideo *_videoLoadedFromItemProvider;
     NSObject<OS_dispatch_group> *_itemProviderLoadGroup;
     struct CGSize _intrinsicSize;
+    BOOL _startedFetchingIntrinsicSize;
     AVURLAsset *_asset;
     id _mediaServicesResetNotificationHandler;
     LPVideoProperties *_properties;
@@ -33,7 +34,6 @@
 @property (readonly, copy, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
 @property (readonly, nonatomic) AVAsset *_asset;
 @property (readonly, nonatomic) unsigned long long _encodedSize;
-@property (readonly, nonatomic) struct CGSize _intrinsicSize;
 @property (readonly, strong, nonatomic) NSItemProvider *_itemProvider;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,6 +50,8 @@
 - (void).cxx_destruct;
 - (id)_initWithVideo:(id)arg1;
 - (void)_installMediaServicesResetNotificationHandler;
+- (struct CGSize)_intrinsicSizeIfKnown;
+- (void)_intrinsicSizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_mapDataFromFileURL;
 - (BOOL)_shouldEncodeData;
 - (void)_uninstallMediaServicesResetNotificationHandler;
@@ -66,6 +68,7 @@
 - (id)initWithStreamingURL:(id)arg1 properties:(id)arg2;
 - (id)initWithYouTubeURL:(id)arg1;
 - (id)initWithYouTubeURL:(id)arg1 properties:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadAsynchronouslyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)needsAsynchronousLoad;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;

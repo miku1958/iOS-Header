@@ -15,6 +15,7 @@
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *tracker;
     MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

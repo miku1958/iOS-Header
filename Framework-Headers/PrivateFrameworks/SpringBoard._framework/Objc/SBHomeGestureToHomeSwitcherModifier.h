@@ -11,20 +11,19 @@
     BOOL _showingOrAnimatingCardsForFlyIn;
 }
 
-- (long long)backdropBlurType;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 showingOrAnimatingCardsForFlyIn:(BOOL)arg2;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
-- (BOOL)shouldWaitForLayoutAndStyleUpdatesForTransactionCompletion;
+- (unsigned long long)transactionCompletionOptions;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

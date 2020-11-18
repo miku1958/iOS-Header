@@ -27,7 +27,7 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-@property (readonly, nonatomic) NSString *networkStatus; // @synthesize networkStatus=_networkStatus;
+@property (strong, nonatomic) NSString *networkStatus; // @synthesize networkStatus=_networkStatus;
 @property (nonatomic) BOOL useProcessLocalCache; // @synthesize useProcessLocalCache=_useProcessLocalCache;
 
 - (void).cxx_destruct;

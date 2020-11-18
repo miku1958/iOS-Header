@@ -29,7 +29,7 @@
 - (unsigned long long)indexForValue:(id)arg1;
 - (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithPopupModel:(id)arg1 startWithFirstItem:(BOOL)arg2;
-- (int)interactionType;
+- (unsigned int)interactionType;
 - (BOOL)isEqual:(id)arg1;
 - (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
 - (id)tskMultipleChoiceListFormat;

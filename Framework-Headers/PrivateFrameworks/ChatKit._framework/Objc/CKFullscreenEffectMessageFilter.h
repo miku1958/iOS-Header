@@ -33,6 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

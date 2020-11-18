@@ -20,7 +20,7 @@
     id<PKPaymentVerificationObserverDelegate> _delegate;
 }
 
-@property (nonatomic) id<PKPaymentVerificationObserverDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentVerificationObserverDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (readonly, strong, nonatomic) PKVerificationChannel *verificationChannel; // @synthesize verificationChannel=_verificationChannel;

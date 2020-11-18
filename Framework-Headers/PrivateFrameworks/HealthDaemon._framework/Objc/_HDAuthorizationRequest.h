@@ -8,6 +8,7 @@
 
 @class NSSet, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDAuthorizationRequest : NSObject
 {
     CDUnknownBlockType _completionHandler;

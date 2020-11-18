@@ -9,7 +9,7 @@
 #import <ClassroomKit/CRKASMTrustedUser-Protocol.h>
 
 @class CRKASMCertificateVendor, NSSet, NSString;
-@protocol CRKASMNameComponents, CRKASMOrganization;
+@protocol CRKASMNameComponents;
 
 @interface CRKASMConcreteTrustedUser : CRKASMConcreteUser <CRKASMTrustedUser>
 {
@@ -24,7 +24,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) id<CRKASMNameComponents> nameComponents;
-@property (readonly, nonatomic) id<CRKASMOrganization> organization;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

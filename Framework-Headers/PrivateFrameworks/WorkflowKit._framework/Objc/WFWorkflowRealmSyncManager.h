@@ -7,67 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <WorkflowKit/WFApplicationStateObserver-Protocol.h>
-#import <WorkflowKit/WFDatabaseResultObserver-Protocol.h>
 
-@class NSLock, NSMutableArray, WFDatabase, WFDatabaseResult;
-@protocol OS_dispatch_queue, OS_dispatch_source, WFUserInterface;
+@class WFDatabase;
+@protocol WFUserInterfaceHost;
 
-@interface WFWorkflowRealmSyncManager : NSObject <WFApplicationStateObserver, WFDatabaseResultObserver>
+@interface WFWorkflowRealmSyncManager : NSObject <WFApplicationStateObserver>
 {
-    BOOL _pendingResume;
-    BOOL _syncPending;
-    long long _accountStatus;
-    id<WFUserInterface> _userInterface;
+    id<WFUserInterfaceHost> _userInterface;
     WFDatabase *_database;
-    WFDatabaseResult *_databaseResultForObservation;
-    unsigned long long _pauseCount;
-    unsigned long long _start;
-    NSObject<OS_dispatch_source> *_timer;
-    NSLock *_timerLock;
-    NSObject<OS_dispatch_queue> *_syncSessionQueue;
-    NSLock *_completionHandlerLock;
-    NSMutableArray *_completionHandlers;
 }
 
-@property (readonly, nonatomic) long long accountStatus; // @synthesize accountStatus=_accountStatus;
-@property (readonly, nonatomic) NSLock *completionHandlerLock; // @synthesize completionHandlerLock=_completionHandlerLock;
-@property (readonly, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
-@property (strong, nonatomic) WFDatabaseResult *databaseResultForObservation; // @synthesize databaseResultForObservation=_databaseResultForObservation;
-@property (nonatomic) unsigned long long pauseCount; // @synthesize pauseCount=_pauseCount;
-@property (nonatomic) BOOL pendingResume; // @synthesize pendingResume=_pendingResume;
-@property (nonatomic) unsigned long long start; // @synthesize start=_start;
-@property (readonly, nonatomic) BOOL syncPending; // @synthesize syncPending=_syncPending;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncSessionQueue; // @synthesize syncSessionQueue=_syncSessionQueue;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
-@property (readonly, nonatomic) NSLock *timerLock; // @synthesize timerLock=_timerLock;
-@property (strong, nonatomic) id<WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
+@property (strong, nonatomic) id<WFUserInterfaceHost> userInterface; // @synthesize userInterface=_userInterface;
 
 + (id)defaultManager;
 + (void)setDefaultManager:(id)arg1;
 - (void).cxx_destruct;
 - (void)applicationContext:(id)arg1 applicationStateDidChange:(long long)arg2;
-- (void)completeSyncWithSuccess:(BOOL)arg1 changes:(BOOL)arg2 error:(id)arg3;
-- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
 - (void)dealloc;
-- (void)handleAccountChangedNotification:(id)arg1;
-- (void)handleUserDeletedZoneErrorIfNeededWithSuccess:(BOOL)arg1 changes:(BOOL)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleZoneWasPurgedError;
 - (id)initWithDatabase:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)pauseAutomaticUpdates;
-- (void)pushCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)resumeAutomaticUpdates;
-- (void)startAutomaticUpdates;
-- (void)startObservingUserDefaults;
-- (void)startSync;
-- (void)stopAutomaticUpdates;
-- (void)stopObservingUserDefaults;
-- (void)subscribeToCloudKitAccountStatusNotifications;
-- (void)triggerSync:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)triggerSync:(BOOL)arg1 onlyIfPending:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)unsubscribeFromCloudKitAccountStatusNotifications;
-- (void)updateAccountStatus;
-- (id)userDefaultsKeysToObserve;
+- (void)presentResumeSyncConfirmationAlertWithContinueSyncingBlock:(CDUnknownBlockType)arg1 cancelSyncingBlock:(CDUnknownBlockType)arg2;
 
 @end
 

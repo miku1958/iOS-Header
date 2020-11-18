@@ -7,7 +7,8 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (IC)
-- (void)ic_enableLetterpress;
-- (void)ic_setLetterpressText:(id)arg1;
+
+@property (readonly, nonatomic) BOOL ic_requiresLineBreaks;
+
 @end
 

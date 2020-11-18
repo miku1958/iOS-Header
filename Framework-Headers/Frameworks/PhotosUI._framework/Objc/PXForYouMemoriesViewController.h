@@ -34,11 +34,16 @@
 @property (readonly, nonatomic) long long userInterfaceFeature;
 
 - (void).cxx_destruct;
+- (void)_alignToNearestGadget;
+- (void)_scrollMemoryReferenceToVisible:(id)arg1 animated:(BOOL)arg2;
 - (id)createNewLayoutGenerator;
 - (id)initWithDataSourceManager:(id)arg1;
+- (BOOL)prepareToNavigateToDetailsForMemoryUUID:(id)arg1;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)scrollViewControllerWillEndScrolling:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

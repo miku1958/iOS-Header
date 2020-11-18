@@ -19,6 +19,7 @@
     NSString *_peerID;
     NSString *_debugIdentifier;
     NSMutableDictionary *_entitlementCache;
+    NSMutableDictionary *_entitlementValueCache;
     id<NSObject> _peerTransaction;
     id<NSObject> _preloadingTransaction;
 }
@@ -40,6 +41,7 @@
 - (id)description;
 - (BOOL)hasEntitlement:(id)arg1;
 - (id)initWithConnection:(id)arg1 daemon:(id)arg2;
+- (id)valueForEntitlement:(id)arg1;
 
 @end
 

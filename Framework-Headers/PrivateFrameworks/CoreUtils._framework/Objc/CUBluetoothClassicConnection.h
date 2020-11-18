@@ -14,7 +14,13 @@
 @interface CUBluetoothClassicConnection : NSObject <CUReadWriteRequestable>
 {
     CDUnknownBlockType _activateCompletion;
-    BOOL _connected;
+    BOOL _btConnected;
+    char _btDeviceAddrStr[32];
+    struct BTSessionImpl *_btSession;
+    BOOL _btSessionAttaching;
+    BOOL _btSessionNeeded;
+    BOOL _btSessionStarted;
+    BOOL _btServiceAddCallbacks;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     NSObject<OS_dispatch_source> *_readSource;
@@ -23,11 +29,14 @@
     NSMutableArray *_readRequests;
     int _socketFD;
     int _state;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
     NSObject<OS_dispatch_source> *_writeSource;
     unsigned char _writeSuspended;
     CUWriteRequest *_writeRequestCurrent;
     NSMutableArray *_writeRequests;
     struct LogCategory *_ucat;
+    unsigned int _connectionFlags;
+    unsigned int _requiredServices;
     NSString *_destinationPeer;
     NSString *_destinationService;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -38,6 +47,7 @@
     CDUnknownBlockType _serverInvalidationHandler;
 }
 
+@property (nonatomic) unsigned int connectionFlags; // @synthesize connectionFlags=_connectionFlags;
 @property (copy, nonatomic) NSString *destinationPeer; // @synthesize destinationPeer=_destinationPeer;
 @property (copy, nonatomic) NSString *destinationService; // @synthesize destinationService=_destinationService;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -45,11 +55,14 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (strong, nonatomic) CBL2CAPChannel *l2capChannel; // @synthesize l2capChannel=_l2capChannel;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) unsigned int requiredServices; // @synthesize requiredServices=_requiredServices;
 @property (copy, nonatomic) CDUnknownBlockType serverInvalidationHandler; // @synthesize serverInvalidationHandler=_serverInvalidationHandler;
 
 - (void).cxx_destruct;
 - (void)_abortReadsWithError:(id)arg1;
 - (void)_abortWritesWithError:(id)arg1;
+- (struct BTDeviceImpl *)_btDeviceWithID:(id)arg1 error:(id *)arg2;
+- (void)_btEnsureStopped;
 - (void)_completeReadRequest:(id)arg1 error:(id)arg2;
 - (void)_completeWriteRequest:(id)arg1 error:(id)arg2;
 - (void)_invalidate;
@@ -61,6 +74,7 @@
 - (void)_processWrites;
 - (void)_reportError:(id)arg1;
 - (void)_run;
+- (BOOL)_runBTSessionStart;
 - (BOOL)_runConnectStart;
 - (BOOL)_runOpenChannelStart;
 - (BOOL)_runSetupChannel;

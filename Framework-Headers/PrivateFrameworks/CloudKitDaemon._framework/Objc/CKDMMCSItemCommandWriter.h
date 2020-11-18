@@ -10,7 +10,6 @@
 
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSMutableIndexSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemCommandWriter : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     CKDMMCSItemGroupContext *_MMCSRequest;

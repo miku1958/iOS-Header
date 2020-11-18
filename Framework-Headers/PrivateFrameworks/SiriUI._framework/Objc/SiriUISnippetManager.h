@@ -34,6 +34,7 @@
 - (id)snippetViewControllerForSnippet:(id)arg1;
 - (id)speakableProviderForObject:(id)arg1;
 - (id)transcriptItemForObject:(id)arg1;
+- (id)transcriptItemForObject:(id)arg1 sizeClass:(long long)arg2;
 
 @end
 

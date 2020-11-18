@@ -14,13 +14,11 @@
 @property (readonly, nonatomic) double timeIntervalSinceNow;
 @property (readonly, nonatomic) double timeIntervalToNow;
 
-+ (double)_timeIntervalSinceInternalClockReference;
 + (id)distantFuture;
 + (id)distantPast;
 + (id)now;
 + (id)referenceTimeForDate:(id)arg1;
 + (id)referenceTimeWithTimeIntervalSinceNow:(double)arg1;
-- (id)_initWithStartTime:(double)arg1;
 - (id)date;
 - (double)timeIntervalSinceReferenceTime:(id)arg1;
 

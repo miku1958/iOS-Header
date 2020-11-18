@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOJunctionInfo, GEONameInfo, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOJunctionInfo, GEONameInfo, GEOPBTransitArtwork, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOSignGuidance : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPBTransitArtwork *_artworkOverride;
     GEOJunctionInfo *_junctionInfo;
     NSMutableArray *_secondarySigns;
     GEONameInfo *_shieldName;
@@ -28,22 +29,18 @@
         unsigned int has_maneuverArrowOverride:1;
         unsigned int has_stackRanking:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_artworkOverride:1;
         unsigned int read_junctionInfo:1;
         unsigned int read_secondarySigns:1;
         unsigned int read_shieldName:1;
         unsigned int read_signDetails:1;
         unsigned int read_signTitles:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_junctionInfo:1;
-        unsigned int wrote_secondarySigns:1;
-        unsigned int wrote_shieldName:1;
-        unsigned int wrote_signDetails:1;
-        unsigned int wrote_signTitles:1;
-        unsigned int wrote_maneuverArrowOverride:1;
-        unsigned int wrote_stackRanking:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (strong, nonatomic) GEOPBTransitArtwork *artworkOverride;
+@property (readonly, nonatomic) BOOL hasArtworkOverride;
 @property (readonly, nonatomic) BOOL hasJunctionInfo;
 @property (nonatomic) BOOL hasManeuverArrowOverride;
 @property (readonly, nonatomic) BOOL hasShieldName;
@@ -63,14 +60,6 @@
 + (Class)signTitleType;
 - (void).cxx_destruct;
 - (int)StringAsManeuverArrowOverride:(id)arg1;
-- (void)_addNoFlagsSecondarySign:(id)arg1;
-- (void)_addNoFlagsSignDetail:(id)arg1;
-- (void)_addNoFlagsSignTitle:(id)arg1;
-- (void)_readJunctionInfo;
-- (void)_readSecondarySigns;
-- (void)_readShieldName;
-- (void)_readSignDetails;
-- (void)_readSignTitles;
 - (void)addSecondarySign:(id)arg1;
 - (void)addSignDetail:(id)arg1;
 - (void)addSignTitle:(id)arg1;
@@ -85,7 +74,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)maneuverArrowOverrideAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

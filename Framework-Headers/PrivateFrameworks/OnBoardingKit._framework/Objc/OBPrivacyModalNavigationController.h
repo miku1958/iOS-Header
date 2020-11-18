@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)addDismissButtonWithPressedHandler:(CDUnknownBlockType)arg1;
 - (long long)preferredUserInterfaceStyle;
 - (unsigned long long)supportedInterfaceOrientations;
-- (void)viewDidLoad;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class CLSActivity, NSArray, NSString, NSURL;
+@class CLSActivity, NSArray, NSSet, NSString, NSURL;
 
 @interface CLSContext : CLSObject <CLSRelationable>
 {
@@ -22,6 +22,9 @@
     long long _displayOrder;
     NSString *_summary;
     NSString *_customTypeName;
+    struct _NSRange _suggestedAge;
+    struct _NSRange _suggestedCompletionTime;
+    BOOL _assignable;
     NSString *_identifier;
     long long _type;
     NSString *_stableObjectID;
@@ -31,6 +34,7 @@
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
+@property (nonatomic, getter=isAssignable) BOOL assignable; // @synthesize assignable=_assignable;
 @property (nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (copy, nonatomic) NSString *contentStoreIdentifier;
 @property (readonly, nonatomic) CLSActivity *currentActivity;
@@ -43,9 +47,12 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSArray *identifierPath;
 @property (copy, nonatomic) NSArray *path; // @synthesize path=_path;
+@property (readonly, copy, nonatomic) NSSet *progressReportingCapabilities;
 @property (copy, nonatomic) NSString *stableObjectID; // @synthesize stableObjectID=_stableObjectID;
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (copy, nonatomic) NSString *storeTeamID; // @synthesize storeTeamID=_storeTeamID;
+@property (nonatomic) struct _NSRange suggestedAge;
+@property (nonatomic) struct _NSRange suggestedCompletionTime;
 @property (copy, nonatomic) NSString *summary;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGImage *thumbnail;
@@ -57,6 +64,7 @@
 + (id)allowedTopics;
 + (id)arrayOfStringClasses;
 + (BOOL)conformsToProtocol:(id)arg1;
++ (id)defaultProgressReportingCapability;
 + (id)objectIDForIdentifierPath:(id)arg1;
 + (id)objectIDPathFromIdentifierPath:(id)arg1;
 + (id)relations;
@@ -67,10 +75,12 @@
 + (id)validatedContextIdentifierPathFromPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_init;
+- (id)_progressReportingCapabilities;
 - (void)_setType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)addChildContext:(id)arg1;
+- (void)addProgressReportingCapabilities:(id)arg1;
 - (void)becomeActive;
 - (id)childContextWithIdentifier:(id)arg1;
 - (BOOL)conformsToProtocol:(id)arg1;
@@ -85,9 +95,12 @@
 - (void)mergeWithObject:(id)arg1;
 - (id)newItemProvider;
 - (void)removeFromParent;
+- (void)resetProgressReportingCapabilities;
+- (void)resetProgressReportingCapabilities_unprotected;
 - (void)resignActive;
 - (void)setIdentifierPathAndGenerateObjectID:(id)arg1;
 - (id)thumbnailBlob;
+- (id)thumbnailBlobs;
 - (BOOL)validateObject:(id *)arg1;
 
 @end

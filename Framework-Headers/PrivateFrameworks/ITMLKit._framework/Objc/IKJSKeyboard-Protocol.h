@@ -6,10 +6,11 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class NSString;
+@class JSValue, NSString;
 
 @protocol IKJSKeyboard <JSExport>
 
+@property (copy, nonatomic) JSValue *suggestions;
 @property (copy, nonatomic) NSString *text;
 
 @end

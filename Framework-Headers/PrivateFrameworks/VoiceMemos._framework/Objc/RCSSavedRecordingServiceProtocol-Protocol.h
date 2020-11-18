@@ -23,9 +23,9 @@
 - (oneway void)expungeRecordingsFromCloud:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)fetchCompositionAVURLsBeingExported:(void (^)(NSSet *))arg1;
 - (oneway void)fetchCompositionAVURLsBeingModified:(void (^)(NSSet *))arg1;
-- (oneway void)importRecordingWithSourceAudioURL:(NSSecurityScopedURLWrapper *)arg1 name:(NSString *)arg2 date:(NSDate *)arg3 importCompletionBlock:(void (^)(NSURL *, NSError *))arg4;
+- (oneway void)importRecordingWithSourceAudioURL:(NSSecurityScopedURLWrapper *)arg1 name:(NSString *)arg2 date:(NSDate *)arg3 userInfo:(NSDictionary *)arg4 importCompletionBlock:(void (^)(NSURL *, NSError *))arg5;
 - (oneway void)importRecordingsFromCloud:(void (^)(NSNumber *, NSError *))arg1;
-- (oneway void)openAudioFile:(NSURL *)arg1 settings:(NSDictionary *)arg2 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg3;
+- (oneway void)openAudioFile:(NSURL *)arg1 settings:(NSDictionary *)arg2 metadata:(NSDictionary *)arg3 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg4;
 - (oneway void)performDatabaseMigrationWithCompletionBlock:(void (^)(NSError *))arg1;
 - (oneway void)prepareToCaptureToCompositionAVURL:(NSURL *)arg1 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg2;
 - (oneway void)prepareToExportCompositionAVURL:(NSURL *)arg1 cacheWaveform:(BOOL)arg2 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg3;

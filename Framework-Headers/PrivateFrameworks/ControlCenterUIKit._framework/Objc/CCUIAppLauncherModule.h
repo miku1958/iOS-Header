@@ -8,19 +8,22 @@
 
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
-@class CCUIContentModuleContext, NSBundle, NSString, NSURL, UIImage, UIViewController;
+@class CCUIContentModuleContext, NSBundle, NSString, NSURL, SBFApplication, UIImage, UIViewController;
 @protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIAppLauncherModule : NSObject <CCUIContentModule>
 {
     NSBundle *_bundle;
+    SBFApplication *_application;
     BOOL _supportsApplicationShortcuts;
     NSString *_applicationIdentifier;
+    NSString *_launchApplicationIdentifier;
     NSString *_displayName;
     CCUIContentModuleContext *_contentModuleContext;
     NSURL *_launchURL;
 }
 
+@property (readonly, nonatomic, getter=_application) SBFApplication *application;
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
 @property (strong, nonatomic) CCUIContentModuleContext *contentModuleContext; // @synthesize contentModuleContext=_contentModuleContext;
@@ -30,11 +33,13 @@
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) UIImage *iconGlyph;
+@property (copy, nonatomic) NSString *launchApplicationIdentifier; // @synthesize launchApplicationIdentifier=_launchApplicationIdentifier;
 @property (copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsApplicationShortcuts; // @synthesize supportsApplicationShortcuts=_supportsApplicationShortcuts;
 
 - (void).cxx_destruct;
+- (void)_fetchApplicationIfNeeded;
 - (id)contentViewControllerForContext:(id)arg1;
 - (void)handleTapWithTouchType:(long long)arg1;
 - (void)handleTouchDownWithTouchType:(long long)arg1;

@@ -23,6 +23,7 @@
 - (BOOL)supportsConnectingLines;
 - (BOOL)supportsSharedAndSeparateX;
 - (BOOL)supportsSymbolOverhang;
+- (BOOL)supportsValueLabelSpacing;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
 - (id)userInterfaceName;
 - (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;

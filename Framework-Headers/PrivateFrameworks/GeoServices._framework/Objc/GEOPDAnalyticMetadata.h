@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     BOOL _isFromApi;
     BOOL _isInternalInstall;
     BOOL _isInternalTool;
+    BOOL _isSiriOriginalRequest;
     struct {
         unsigned int has_sessionId:1;
         unsigned int has_relativeTimestamp:1;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_isFromApi:1;
         unsigned int has_isInternalInstall:1;
         unsigned int has_isInternalTool:1;
+        unsigned int has_isSiriOriginalRequest:1;
         unsigned int read_unknownFields:1;
         unsigned int read_abAssignInfo:1;
         unsigned int read_appIdentifier:1;
@@ -54,24 +56,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_productName:1;
         unsigned int read_requestTime:1;
         unsigned int read_serviceTags:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_sessionId:1;
-        unsigned int wrote_abAssignInfo:1;
-        unsigned int wrote_appIdentifier:1;
-        unsigned int wrote_appMajorVersion:1;
-        unsigned int wrote_appMinorVersion:1;
-        unsigned int wrote_hardwareModel:1;
-        unsigned int wrote_loggedAbExperiment:1;
-        unsigned int wrote_osVersion:1;
-        unsigned int wrote_productName:1;
-        unsigned int wrote_relativeTimestamp:1;
-        unsigned int wrote_requestTime:1;
-        unsigned int wrote_serviceTags:1;
-        unsigned int wrote_requestSource:1;
-        unsigned int wrote_sequenceNumber:1;
-        unsigned int wrote_isFromApi:1;
-        unsigned int wrote_isInternalInstall:1;
-        unsigned int wrote_isInternalTool:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -88,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasIsFromApi;
 @property (nonatomic) BOOL hasIsInternalInstall;
 @property (nonatomic) BOOL hasIsInternalTool;
+@property (nonatomic) BOOL hasIsSiriOriginalRequest;
 @property (readonly, nonatomic) BOOL hasLoggedAbExperiment;
 @property (readonly, nonatomic) BOOL hasOsVersion;
 @property (readonly, nonatomic) BOOL hasProductName;
@@ -99,6 +85,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isFromApi;
 @property (nonatomic) BOOL isInternalInstall;
 @property (nonatomic) BOOL isInternalTool;
+@property (nonatomic) BOOL isSiriOriginalRequest;
 @property (strong, nonatomic) NSString *loggedAbExperiment;
 @property (strong, nonatomic) NSString *osVersion;
 @property (strong, nonatomic) NSString *productName;
@@ -114,17 +101,6 @@ __attribute__((visibility("hidden")))
 + (Class)serviceTagType;
 - (void).cxx_destruct;
 - (int)StringAsRequestSource:(id)arg1;
-- (void)_addNoFlagsServiceTag:(id)arg1;
-- (void)_readAbAssignInfo;
-- (void)_readAppIdentifier;
-- (void)_readAppMajorVersion;
-- (void)_readAppMinorVersion;
-- (void)_readHardwareModel;
-- (void)_readLoggedAbExperiment;
-- (void)_readOsVersion;
-- (void)_readProductName;
-- (void)_readRequestTime;
-- (void)_readServiceTags;
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -135,8 +111,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

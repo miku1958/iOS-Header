@@ -19,11 +19,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_didReceiveConnection:(id)arg1;
-- (void)_disableConnectionPending;
-- (id)_identifier;
-- (id)_initWithSpecification:(id)arg1 domain:(id)arg2;
-- (id)_registerListener:(id)arg1 forInstance:(id)arg2;
 
 @end
 

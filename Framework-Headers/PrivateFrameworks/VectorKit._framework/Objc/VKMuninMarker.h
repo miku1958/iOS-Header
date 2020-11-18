@@ -10,7 +10,7 @@
 
 @interface VKMuninMarker : NSObject
 {
-    struct optional<md::mun::CollectionPoint> _collectionPoint;
+    optional_ff574c75 _collectionPoint;
     CDStruct_071ac149 _coordinate;
 }
 

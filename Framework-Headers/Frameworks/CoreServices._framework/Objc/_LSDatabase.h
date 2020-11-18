@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class FSNode, NSDate, NSMutableSet, NSString, NSUUID;
+@class FSNode, NSDate, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _LSDatabase : NSObject
 {
+    struct __CSStore *store;
+    struct LSSchema schema;
     FSNode *node;
     unsigned int uid;
     NSObject<OS_dispatch_queue> *accessQueue;
-    BOOL needsUpdate;
-    BOOL isForcedForXCTesting;
-    NSMutableSet *changedBundleIDs;
-    NSMutableSet *changedTypeIDs;
-    struct __CSStore *store;
-    struct LSSchema schema;
+    unsigned int needsUpdate:1;
+    unsigned int isForcedForXCTesting:1;
+    unsigned int isForcedForRemoteUpdates:1;
 }
 
 @property (nonatomic) BOOL URLTypesChanged;
@@ -36,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *seededModelCode;
 @property (readonly, nonatomic) NSString *seededSystemVersion;
 @property (nonatomic, getter=isSeedingComplete) BOOL seedingComplete;
-@property (nonatomic) unsigned long long sequenceNumber;
 @property (readonly, nonatomic) struct __CSStore *store; // @synthesize store;
 @property (nonatomic) BOOL typeDeclarationsChanged;
 @property (readonly, nonatomic) unsigned int userID; // @synthesize userID=uid;
@@ -46,10 +44,12 @@ __attribute__((visibility("hidden")))
 + (void)setSeedingInProgress:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_init;
-- (void)applicationDidChange:(unsigned int)arg1;
+- (void)applicationWasInstalled:(unsigned int)arg1;
+- (void)applicationWillBeUninstalled:(unsigned int)arg1;
 - (void)claimDidChange:(unsigned int)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)getCacheGUIDBytes:(unsigned char [16])arg1;
 - (id)init;
 - (void)registerCanonicalNames;
 - (void)registerCanonicalNamesFromStringLocalizer:(id)arg1;

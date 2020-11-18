@@ -22,6 +22,7 @@
 - (id)createNewAction;
 - (id)getOrCreateAction;
 - (BOOL)hasSameTargetAsAction:(id)arg1;
+- (BOOL)hasSameTargetAsActionBuilder:(id)arg1;
 - (BOOL)isEquivalentToAction:(id)arg1;
 - (id)performValidation;
 - (void)setAction:(id)arg1;

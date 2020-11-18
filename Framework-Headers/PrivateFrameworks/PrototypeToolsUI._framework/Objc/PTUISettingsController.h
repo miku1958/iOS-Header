@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIBarButtonItem *dismissButton; // @synthesize dismissButton=_dismissButton;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_defaultDismissButton;
 - (void)_dismiss;
 - (id)_initWithRootModule:(id)arg1;

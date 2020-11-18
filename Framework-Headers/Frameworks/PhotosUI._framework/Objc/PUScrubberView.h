@@ -120,6 +120,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateSnapToExpandedItemIfNeeded;
 - (void)_updateTilingViewIfNeeded;
 - (void)beginPreviewing;
+- (void)cancelDeceleration;
 - (void)dealloc;
 - (void)endPreviewing;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

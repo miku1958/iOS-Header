@@ -21,10 +21,9 @@
 @property (strong, nonatomic) GEOTransitRouteUpdateResponse *response; // @synthesize response=_response;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isValid;
 
 @end

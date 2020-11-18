@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)sampledAssetsWithSingleFaceForPersonLocalIdentifier:(id)arg1 graph:(id)arg2 numberOfYearsBack:(unsigned long long)arg3;
++ (id)sampledAssetsWithSingleFaceForPersonLocalIdentifier:(id)arg1 graph:(id)arg2 numberOfYearsBack:(unsigned long long)arg3 sampleSize:(unsigned long long)arg4;
 
 @end
 

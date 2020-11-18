@@ -8,12 +8,13 @@
 
 #import <HomeKit/NSCopying-Protocol.h>
 
-@class HMPBCharacteristicWriteAction, HMPBMediaPlaybackAction;
+@class HMPBCharacteristicWriteAction, HMPBMediaPlaybackAction, HMPBNaturalLightingAction;
 
 @interface HMPBActionContainer : PBCodable <NSCopying>
 {
     HMPBCharacteristicWriteAction *_characteristicWriteAction;
     HMPBMediaPlaybackAction *_mediaPlaybackAction;
+    HMPBNaturalLightingAction *_naturalLightingAction;
     int _type;
     struct {
         unsigned int type:1;
@@ -23,8 +24,10 @@
 @property (strong, nonatomic) HMPBCharacteristicWriteAction *characteristicWriteAction; // @synthesize characteristicWriteAction=_characteristicWriteAction;
 @property (readonly, nonatomic) BOOL hasCharacteristicWriteAction;
 @property (readonly, nonatomic) BOOL hasMediaPlaybackAction;
+@property (readonly, nonatomic) BOOL hasNaturalLightingAction;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) HMPBMediaPlaybackAction *mediaPlaybackAction; // @synthesize mediaPlaybackAction=_mediaPlaybackAction;
+@property (strong, nonatomic) HMPBNaturalLightingAction *naturalLightingAction; // @synthesize naturalLightingAction=_naturalLightingAction;
 @property (nonatomic) int type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

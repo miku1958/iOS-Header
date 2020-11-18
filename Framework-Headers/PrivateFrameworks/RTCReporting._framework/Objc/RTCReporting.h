@@ -31,6 +31,8 @@
 @property (copy, nonatomic) CDUnknownBlockType messageLoggingBlock; // @synthesize messageLoggingBlock=_loggingBlock;
 @property (nonatomic) id<RTCReportingMessageSentNotifier> messageSentDelegate;
 
++ (BOOL)closeEphemeralSessiontWithSessionId:(id)arg1;
++ (id)createEphemeralSessionWithSessionInfo:(id)arg1 userInfo:(id)arg2 error:(id *)arg3;
 + (id)getPersistentIdentifierForDNU:(BOOL)arg1;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
 + (id)newSecureHierarchyTokenFromParentToken:(id)arg1;

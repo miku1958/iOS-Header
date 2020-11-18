@@ -16,5 +16,6 @@
 @property (readonly, copy, nonatomic) NSSet *components;
 @property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 
+- (void)conformsToCSAppearanceProviding;
 @end
 

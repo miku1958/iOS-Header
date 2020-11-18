@@ -32,12 +32,10 @@
 + (void)localizeModelObject:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
 - (void).cxx_destruct;
 - (id)UIStateForChart:(id)arg1;
-- (void)addDefaultGalleryCaptionParagraphStyleIfNeededToStylesheet:(id)arg1;
 - (unsigned long long)applicationType;
 - (void)changeShowSizeTo:(struct CGSize)arg1;
 - (void)changeShowThemeUsingTemplate:(id)arg1 themeDocumentRoot:(id)arg2 toSize:(struct CGSize)arg3 keepChangesToThemeDefaults:(BOOL)arg4 commandGroupActionStringOverride:(id)arg5;
 - (id)childEnumerator;
-- (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (long long)compareLocationSortingInfo:(id)arg1 toSortingInfo:(id)arg2;
 - (id)createViewStateRootForContinuation:(BOOL)arg1;
 - (void)dealloc;
@@ -66,10 +64,12 @@
 - (id)resolversMatchingPrefix:(id)arg1;
 - (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (void)setDocumentLocale:(id)arg1;
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;
 - (void)setTheme:(id)arg1;
 - (void)setThemeForTemplateImport:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
+- (void)setUiState:(id)arg1;
 - (BOOL)shouldShowFloatingCommentInfo:(id)arg1;
 - (id)slideNodeForClearedShow;
 - (double)stickyCommentScaleMultiplier;

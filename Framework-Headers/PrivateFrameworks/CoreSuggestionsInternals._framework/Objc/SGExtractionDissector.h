@@ -6,42 +6,72 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class NSXPCConnection;
+#import <CoreSuggestionsInternals/SGInteractionProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
+
+@class NSString, NSXPCConnection, _PASLock;
 @protocol SGReverseTemplateJS;
 
-@interface SGExtractionDissector : SGPipelineDissector
+@interface SGExtractionDissector : SGPipelineDissector <SGMailMessageProcessing, SGTextMessageProcessing, SGInteractionProcessing>
 {
     NSXPCConnection *_xpcConnection;
     id<SGReverseTemplateJS> _reverseTemplateJSNoXPC;
+    _PASLock *_classifierCache;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)addParams:(id)arg1 toParameterizedString:(id)arg2;
 + (id)addParams:(id)arg1 toParameterizedString:(id)arg2 allowAlternatives:(BOOL)arg3;
 + (id)addressDictionaryToString:(id)arg1;
++ (BOOL)shouldIgnoreMailMessage:(id)arg1;
 - (void).cxx_destruct;
-- (void)addEnrichmentsToEntityForOutputItems:(id)arg1 exceptions:(id)arg2 jsMessageLogs:(id)arg3 entity:(id)arg4 startTime:(unsigned long long)arg5;
-- (void)addInteractionTagsToEnrichment:(id)arg1 inEntity:(id)arg2;
+- (void)_addEnrichmentsToEntityForOutput:(id)arg1 entity:(id)arg2 startTime:(unsigned long long)arg3 backPressureHazard:(int)arg4;
+- (void)_addEnrichmentsToEntityForOutput:(id)arg1 interaction:(id)arg2 entity:(id)arg3 startTime:(unsigned long long)arg4 backPressureHazard:(int)arg5;
+- (void)addEnrichmentsToEntityForOutputItems:(id)arg1 exceptions:(id)arg2 jsMessageLogs:(id)arg3 interaction:(id)arg4 entity:(id)arg5 startTime:(unsigned long long)arg6 backPressureHazard:(int)arg7;
+- (void)addInteractionTagsToEnrichment:(id)arg1 inEntity:(id)arg2 interaction:(id)arg3;
 - (void)dealloc;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (id)diffSchemas:(id)arg1 withExpectedSchemas:(id)arg2;
+- (void)dissectInteraction:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (void)dissectURL:(id)arg1 title:(id)arg2 htmlPayload:(id)arg3 entity:(id)arg4;
+- (id)enrichmentsFromSchemas:(id)arg1 inMessage:(id)arg2 parentEntity:(id)arg3;
 - (id)entityForOutputItem:(id)arg1 parentEntity:(id)arg2 outputExceptions:(id)arg3 outputInfos:(id)arg4;
-- (id)entityForOutputItem:(id)arg1 withSiblings:(id)arg2 parentEntity:(id)arg3 outputExceptions:(id)arg4 outputInfos:(id)arg5;
-- (id)eventActivitiesForReservationWithReference:(id)arg1 inParentEntity:(id)arg2;
+- (id)entityForOutputItem:(id)arg1 parentEntity:(id)arg2 outputExceptions:(id)arg3 outputInfos:(id)arg4 interaction:(id)arg5;
+- (id)entityForOutputItem:(id)arg1 withSiblings:(id)arg2 parentEntity:(id)arg3 outputExceptions:(id)arg4 outputInfos:(id)arg5 interaction:(id)arg6;
+- (id)eventActivitiesForReservationWithReference:(id)arg1 inParentEntity:(id)arg2 interaction:(id)arg3;
+- (id)eventClassificationForMailMessage:(id)arg1;
+- (id)eventClassificationWithoutXPCForMailMessage:(id)arg1;
 - (id)eventsFromSchemaOrgItems:(id)arg1;
 - (BOOL)exceedsMaxHTMLContentLength:(unsigned long long)arg1;
 - (id)getAndRemoveItemReferencesFromSchemas:(id)arg1;
 - (id)init;
 - (BOOL)isStructuredEventCandidateForURL:(id)arg1 title:(id)arg2;
-- (id)jsonLdOutputFromEntity:(id)arg1;
+- (id)jsDictForResolveCandidates:(id)arg1 forCategory:(id)arg2 label:(id)arg3 rawIndexSet:(id)arg4 taggedCharacterRanges:(id)arg5;
+- (id)jsonLdOutputFromMailMessage:(id)arg1;
 - (id)jsonLdOutputFromPackedJSEntity:(id)arg1;
+- (id)jsonLdOutputFromTextMessage:(id)arg1;
 - (id)jsonLdOutputFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3 extractionDate:(id)arg4;
-- (id)outputFromPackedJSEntity:(id)arg1 documentType:(unsigned long long)arg2 isDownloaded:(BOOL)arg3 forEntity:(id)arg4;
-- (id)outputFromSchemaOrgPackedEntityItems:(id)arg1;
-- (id)packedEntityForJS:(id)arg1;
-- (id)packedEntityFromSchemaOrgItems:(id)arg1;
-- (id)packedJSEntityFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3;
-- (id)packedJSEntityFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3 creationTimestamp:(double)arg4;
-- (BOOL)shouldIgnorePipelineEntity:(id)arg1;
+- (id)outputFromPackedJSMailMessage:(id)arg1;
+- (id)outputFromPackedJSSchema:(id)arg1;
+- (id)outputFromPackedJSTextMessage:(id)arg1;
+- (id)packedJSInteractionFromInteraction:(id)arg1 bundleIdentifier:(id)arg2 creationTimestamp:(double)arg3;
+- (id)packedJSMailMessageFromMailMessage:(id)arg1;
+- (id)packedJSMailMessageFromMailMessage:(id)arg1 context:(id)arg2;
+- (id)packedJSSchemaFromSchemaOrgItems:(id)arg1;
+- (id)packedJSTextMessageFromTextMessage:(id)arg1;
+- (id)packedJSURLFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3;
+- (id)packedJSURLFromURL:(id)arg1 title:(id)arg2 payload:(id)arg3 creationTimestamp:(double)arg4;
+- (id)parseHTML:(id)arg1;
+- (id)resolveCandidates:(id)arg1 forCategory:(id)arg2 label:(id)arg3 rawIndexSet:(id)arg4 taggedCharacterRanges:(id)arg5;
+- (id)resolveCandidatesWithoutXPC:(id)arg1 forCategory:(id)arg2 label:(id)arg3 rawIndexSet:(id)arg4 taggedCharacterRanges:(id)arg5;
+- (id)reverseMapMailMessage:(id)arg1 withPreprocessedHTML:(id)arg2 forCategory:(id)arg3 withSchemExpectation:(id)arg4;
+- (BOOL)shouldDownloadFull:(id)arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end

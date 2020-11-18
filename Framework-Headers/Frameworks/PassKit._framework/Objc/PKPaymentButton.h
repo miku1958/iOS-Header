@@ -6,20 +6,15 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, CAShapeLayer, PKShapeView, UILabel, UIView;
+@class CAFilter, CAShapeLayer;
 
 @interface PKPaymentButton : UIButton
 {
     CAShapeLayer *_layer;
     long long _style;
     long long _type;
-    UIView *_container;
-    UILabel *_buyLabel;
     CAFilter *_highlightFilter;
     BOOL _highlighted;
-    struct CGSize _boundsSize;
-    PKShapeView *_maskView;
-    double _fontRatio;
     double _cornerRadius;
 }
 
@@ -30,6 +25,7 @@
 + (id)titleForType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_createHighlightFilterIfNecessary;
+- (long long)_effectiveButtonStyle;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)applyAccessibilityValues;
 - (void)drawRect:(struct CGRect)arg1;
@@ -40,6 +36,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

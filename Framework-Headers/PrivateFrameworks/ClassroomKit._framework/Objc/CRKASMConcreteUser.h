@@ -9,13 +9,12 @@
 #import <ClassroomKit/CRKASMUser-Protocol.h>
 
 @class NSString;
-@protocol CRKASMNameComponents, CRKASMOrganization, CRKClassKitPerson;
+@protocol CRKASMNameComponents, CRKClassKitPerson;
 
 @interface CRKASMConcreteUser : NSObject <CRKASMUser>
 {
     NSString *_identifier;
     NSString *_appleID;
-    id<CRKASMOrganization> _organization;
     id<CRKASMNameComponents> _nameComponents;
     id<CRKClassKitPerson> _backingPerson;
 }
@@ -27,7 +26,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) id<CRKASMNameComponents> nameComponents; // @synthesize nameComponents=_nameComponents;
-@property (readonly, nonatomic) id<CRKASMOrganization> organization; // @synthesize organization=_organization;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

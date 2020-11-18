@@ -30,12 +30,13 @@
 + (id)tableModelWithCardSections:(id)arg1 isInline:(BOOL)arg2 queryId:(unsigned long long)arg3;
 + (id)tableModelWithResult:(id)arg1;
 + (id)tableModelWithResults:(id)arg1;
-+ (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2 queryId:(unsigned long long)arg3;
++ (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2;
 - (void).cxx_destruct;
 - (id)cardSectionForIndexPath:(id)arg1;
 - (id)description;
 - (unsigned long long)indexOfSection:(id)arg1;
 - (BOOL)indexPathExists:(id)arg1;
+- (id)indexPathForResultInFirstTwoSections:(id)arg1;
 - (id)indexPathForRowModel:(id)arg1;
 - (id)initWithQueryId:(unsigned long long)arg1;
 - (long long)numberOfRowsForSection:(long long)arg1;
@@ -44,10 +45,12 @@
 - (void)replaceResult:(id)arg1 withResult:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)resultForIndexPath:(id)arg1;
 - (id)rowModelForIndexPath:(id)arg1;
+- (BOOL)rowWillFillBackgroundWithContentAtIndexPath:(id)arg1;
 - (id)sectionForIndex:(unsigned long long)arg1;
+- (int)separatorStyleForIndexPath:(id)arg1;
 - (BOOL)shouldDisplayChevronForIndexPath:(id)arg1;
 - (BOOL)shouldLeaveSpaceForChevronForIndexPath:(id)arg1;
-- (id)updatedTableModelWithExpandedSections:(id)arg1;
+- (id)updatedTableModelWithExpandedSections:(id)arg1 hiddenSections:(id)arg2 atSectionIndex:(unsigned long long)arg3;
 
 @end
 

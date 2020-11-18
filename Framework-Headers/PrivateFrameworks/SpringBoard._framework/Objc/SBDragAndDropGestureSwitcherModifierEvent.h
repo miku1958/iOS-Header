@@ -22,6 +22,7 @@
 @property (nonatomic) struct CGRect platterViewFrame; // @synthesize platterViewFrame=_platterViewFrame;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 
 @end

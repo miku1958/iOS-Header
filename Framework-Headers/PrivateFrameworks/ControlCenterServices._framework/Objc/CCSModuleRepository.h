@@ -14,7 +14,7 @@
 @interface CCSModuleRepository : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
     NSArray *_directoryURLs;
-    NSSet *_whitelistedModuleIdentifiers;
+    NSSet *_allowedModuleIdentifiers;
     NSDictionary *_allModuleMetadataByIdentifier;
     NSSet *_availableModuleIdentifiers;
     NSSet *_interestingBundleIdentifiers;
@@ -22,7 +22,7 @@
     NSHashTable *_observers;
     NSObject<BSDefaultObserver> *_internalDefaultsObserver;
     NSSet *_loadableModuleIdentifiers;
-    BOOL _ignoreWhitelist;
+    BOOL _ignoreAllowedList;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callOutQueue;
 }
@@ -34,12 +34,12 @@
 @property (readonly) Class superclass;
 
 + (id)_defaultModuleDirectories;
-+ (id)_defaultModuleIdentifierWhitelist;
++ (id)_defaultModuleIdentifierAllowedList;
 + (id)_deviceFamily;
 + (id)repositoryWithDefaults;
 - (void).cxx_destruct;
 - (void)_applicationsDidChange:(id)arg1;
-- (id)_initWithDirectoryURLs:(id)arg1 whitelistedModuleIdentifiers:(id)arg2;
+- (id)_initWithDirectoryURLs:(id)arg1 allowedModuleIdentifiers:(id)arg2;
 - (BOOL)_queue_arrayContainsInterestingApplicationProxy:(id)arg1;
 - (id)_queue_associatedBundleIdentifiersForModuleMetadata:(id)arg1;
 - (id)_queue_filterModuleMetadataByAssociatedBundleAvailability:(id)arg1;
@@ -51,7 +51,7 @@
 - (void)_queue_registerForInternalPreferenceChanges;
 - (void)_queue_registerForVisiblityPreferenceChanges;
 - (void)_queue_runBlockOnObservers:(CDUnknownBlockType)arg1;
-- (void)_queue_setIgnoreWhitelist:(BOOL)arg1;
+- (void)_queue_setIgnoreAllowedList:(BOOL)arg1;
 - (void)_queue_startObservingMobileGestaltQuestions:(id)arg1 withChangeHandler:(CDUnknownBlockType)arg2;
 - (void)_queue_stopObservingGestaltQuestions;
 - (void)_queue_unregisterForInternalPreferenceChanges;
@@ -64,15 +64,16 @@
 - (void)_queue_updateInterestingBundleIdentifiersForModuleMetadata:(id)arg1;
 - (void)_queue_updateLoadableModuleMetadata;
 - (void)_queue_updateLoadableModuleMetadataForAvailableModuleMetadata:(id)arg1;
-- (void)_updateAllModuleMetadata;
 - (void)_updateAvailableModuleMetadata;
 - (void)addObserver:(id)arg1;
 - (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
-- (void)dealloc;
+- (void)invalidate;
 - (id)moduleMetadataForModuleIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)setVisibility:(BOOL)arg1 forModuleIdentifier:(id)arg2;
+- (BOOL)visibilityForModuleIdentifier:(id)arg1;
 
 @end
 

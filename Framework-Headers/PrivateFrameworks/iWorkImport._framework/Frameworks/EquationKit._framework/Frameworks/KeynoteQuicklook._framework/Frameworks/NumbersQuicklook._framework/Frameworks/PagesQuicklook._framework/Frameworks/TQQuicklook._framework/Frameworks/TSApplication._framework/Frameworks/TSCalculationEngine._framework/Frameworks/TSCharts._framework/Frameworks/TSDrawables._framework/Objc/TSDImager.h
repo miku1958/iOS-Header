@@ -18,8 +18,9 @@
     TSUColor *mBackgroundColor;
     struct CGRect mUnscaledClipRect;
     double mViewScale;
+    double mContentsScale;
     struct CGSize mScaledImageSize;
-    struct CGSize mMaximumScaledImageSize;
+    struct CGSize mMaximumImagePixelSize;
     BOOL mUseScaledImageSize;
     BOOL mDistortedToMatch;
     BOOL mImageMustHaveEvenDimensions;
@@ -42,15 +43,18 @@
     NSMapTable *mDynamicOverrides;
     NSObject<TSDInfo> *mInfoToDrawBeneath;
     CDUnknownBlockType mInfoToDrawBeneathFilter;
+    BOOL mShouldShowInstructionalText;
     BOOL mShouldSuppressBackgrounds;
     BOOL mShouldShowComments;
     BOOL mShouldShowTextCommentHighlights;
+    BOOL mShouldShowCaptionInstructionalText;
 }
 
 @property (readonly, nonatomic) struct CGRect actualScaledClipRect; // @synthesize actualScaledClipRect=mActualScaledClipRect;
 @property (copy, nonatomic) TSUColor *backgroundColor; // @synthesize backgroundColor=mBackgroundColor;
 @property (readonly, nonatomic) TSDCanvas *canvas; // @synthesize canvas=mCanvas;
 @property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
+@property (nonatomic) double contentsScale;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL distortedToMatch; // @synthesize distortedToMatch=mDistortedToMatch;
@@ -59,12 +63,14 @@
 @property (nonatomic) BOOL imageMustHaveEvenDimensions; // @synthesize imageMustHaveEvenDimensions=mImageMustHaveEvenDimensions;
 @property (strong, nonatomic) NSArray *infos; // @synthesize infos=mInfos;
 @property (nonatomic) BOOL isPrinting; // @synthesize isPrinting=mIsPrinting;
-@property (nonatomic) struct CGSize maximumScaledImageSize;
+@property (nonatomic) struct CGSize maximumImagePixelSize;
 @property (nonatomic) BOOL mayBeReused; // @synthesize mayBeReused=mMayBeReused;
 @property (copy, nonatomic) NSSet *previousRenderDatasNeedingDownload; // @synthesize previousRenderDatasNeedingDownload=mPreviousRenderDatasNeedingDownload;
 @property (nonatomic) struct CGSize scaledImageSize;
 @property (nonatomic) BOOL shouldReuseBitmapContext; // @synthesize shouldReuseBitmapContext=mShouldReuseBitmapContext;
+@property (nonatomic) BOOL shouldShowCaptionInstructionalText; // @synthesize shouldShowCaptionInstructionalText=mShouldShowCaptionInstructionalText;
 @property (nonatomic) BOOL shouldShowComments; // @synthesize shouldShowComments=mShouldShowComments;
+@property (nonatomic) BOOL shouldShowInstructionalText; // @synthesize shouldShowInstructionalText=mShouldShowInstructionalText;
 @property (nonatomic) BOOL shouldShowTextCommentHighlights; // @synthesize shouldShowTextCommentHighlights=mShouldShowTextCommentHighlights;
 @property (nonatomic) BOOL shouldSuppressBackgrounds; // @synthesize shouldSuppressBackgrounds=mShouldSuppressBackgrounds;
 @property (readonly) Class superclass;
@@ -95,6 +101,7 @@
 - (void)setInfos:(id)arg1 allowLayoutIfNeeded:(BOOL)arg2;
 - (void)setPostRenderAction:(CDUnknownBlockType)arg1;
 - (BOOL)shouldShowCommentsForCanvas:(id)arg1;
+- (BOOL)shouldShowInstructionalTextForLayout:(id)arg1;
 - (BOOL)shouldShowTextCommentHighlightsForCanvas:(id)arg1;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSVMultiCallback, NSArray, NSMutableDictionary, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, MSVMultiCallback, NSArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
     MSVMultiCallback *_metadataToken;
     MSVMultiCallback *_languageToken;
     MSVMultiCallback *_artworkToken;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
 }
 
 @property (readonly, nonatomic) MSVMultiCallback *artworkCallbacks; // @synthesize artworkCallbacks=_artworkCallbacks;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateBeginCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateEndCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateRequestCallback;
-@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) CDUnknownBlockType videoThumbnailsCallback;
 
 - (void).cxx_destruct;

@@ -6,22 +6,36 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDCameraBulletinBoard-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHomeManager, HMDUserNotificationCenter, NSMutableDictionary, NSObject;
-@protocol OS_dispatch_queue;
+@class HMDHomeManager, HMDLogEventDispatcher, HMDUserNotificationCenter, NSMutableDictionary, NSObject, NSString;
+@protocol HMDFileManager, OS_dispatch_queue;
 
-@interface HMDBulletinBoard : HMFObject <NSSecureCoding>
+@interface HMDBulletinBoard : HMFObject <HMFLogging, NSSecureCoding, HMDCameraBulletinBoard>
 {
+    id<HMDFileManager> _fileManager;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDUserNotificationCenter *_notificationCenter;
     NSMutableDictionary *_characteristicTuples;
     HMDHomeManager *_homeManager;
+    Class _persistentStoreClass;
+    Class _doorbellBulletinUtilitiesClass;
+    HMDLogEventDispatcher *_logEventDispatcher;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *characteristicTuples; // @synthesize characteristicTuples=_characteristicTuples;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong) Class doorbellBulletinUtilitiesClass; // @synthesize doorbellBulletinUtilitiesClass=_doorbellBulletinUtilitiesClass;
+@property (readonly) id<HMDFileManager> fileManager; // @synthesize fileManager=_fileManager;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
+@property (strong) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
 @property (strong, nonatomic) HMDUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (strong) Class persistentStoreClass; // @synthesize persistentStoreClass=_persistentStoreClass;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)_supportedNonSecureServices;
@@ -29,37 +43,46 @@
 + (id)_targetCurrentCharacteristicTypeMap;
 + (id)bulletinSupportedCharacteristicsForService:(id)arg1;
 + (id)characteristicTupleKeyFromServiceContextID:(id)arg1 currentType:(id)arg2;
-+ (id)generateActionURLForHomeUUID:(id)arg1 cameraUUID:(id)arg2;
 + (BOOL)isBulletinSupportedForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 + (BOOL)isBulletinSupportedForNonSecureCharacteristicType:(id)arg1 serviceType:(id)arg2;
 + (BOOL)isCriticalNonSecureServiceType:(id)arg1;
++ (id)logCategory;
 + (BOOL)presentationValueOfCharacteristic:(id)arg1 equalTo:(id)arg2;
 + (id)sharedBulletinBoard;
 + (BOOL)supportsSecureCoding;
-+ (id)unarchive;
 - (void).cxx_destruct;
+- (id)_copyItemAtURL:(id)arg1 toDirectory:(id)arg2;
+- (id)_doorbellPressNotificationsNearDate:(id)arg1 forCameraProfile:(id)arg2;
 - (BOOL)_hasDuplicateBulletinForCharacteristic:(id)arg1;
-- (id)_insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2;
-- (id)_insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(id)arg7 actionContext:(id)arg8;
-- (id)_lookupRequestForCharacteristic:(id)arg1;
-- (void)_migrateBulletins:(id)arg1 requests:(id)arg2;
+- (void)_insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 date:(id)arg5 bulletinType:(unsigned long long)arg6 actionURL:(id)arg7 bulletinContext:(id)arg8 actionContext:(id)arg9;
 - (void)_removeBulletinsUsingPredicate:(id)arg1;
 - (id)_requestWithRecordID:(id)arg1;
 - (BOOL)_shouldPostBulletinOnCurrentValueChangeForCharacteristic:(id)arg1;
+- (void)_submitLogEventForDoorbellPressedBulletinWithDate:(id)arg1 significantEvents:(id)arg2;
+- (void)_submitLogEventForSignificantEventBulletin:(id)arg1;
 - (void)_updateCharacteristicTupleFor:(id)arg1 withCurrentType:(id)arg2 changedByThisDevice:(BOOL)arg3;
+- (void)_updateDoorbellUserInfo:(id)arg1 withSignificantEventUserInfo:(id)arg2;
 - (void)archive;
+- (id)attachmentsWithFileURL:(id)arg1;
+- (id)bulletinReasonForChangedCharacteristic:(id)arg1;
 - (void)configureHomeManager:(id)arg1;
+- (id)doorbellPressNotificationsNearDate:(id)arg1 forCameraProfile:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNotificationCenter:(id)arg1 fileManager:(id)arg2 workQueue:(id)arg3;
 - (id)insertBulletinForIncomingInvitation:(id)arg1;
 - (id)insertBulletinForSecureTrigger:(id)arg1;
 - (void)insertBulletinsForChangedCharacteristics:(id)arg1 changedByThisDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)insertCameraAccessModeChangedBulletin:(id)arg1;
-- (void)insertCameraSignificantEventBulletin:(id)arg1;
+- (void)insertCameraClipSignificantEventBulletin:(id)arg1;
+- (void)insertHomeHubReachabilityBulletinForHome:(id)arg1 reachable:(BOOL)arg2;
 - (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)insertReachabilityEventBulletinForAccessory:(id)arg1 reachable:(BOOL)arg2 date:(id)arg3;
 - (BOOL)isTargetCharacteristic:(id)arg1 matchCurrentCharacteristic:(id)arg2;
-- (id)notificationUUIDsForClipBulletinWithIdentifier:(id)arg1;
+- (id)messageForChangedCharacteristic:(id)arg1 withSignificantEvents:(id)arg2;
+- (id)notificationRequestsForCameraClipUUIDs:(id)arg1;
 - (void)refreshHomeBadgeNumber;
 - (void)removeAllBulletins;
 - (void)removeBulletinWithRecordID:(id)arg1;
@@ -67,7 +90,10 @@
 - (void)removeBulletinsForHome:(id)arg1;
 - (void)removeBulletinsForService:(id)arg1;
 - (void)removeBulletinsForTrigger:(id)arg1;
+- (id)removeRedundantSignificantEventNotificationsForSignificantEvents:(id)arg1;
 - (id)updateBulletinForFirmwareUpdateInHome:(id)arg1;
+- (BOOL)updateDoorbellNotificationsNearDate:(id)arg1 forBulletin:(id)arg2;
+- (void)updateMessageForDoorbellPressNotificationRequestWithIdentifier:(id)arg1 cameraProfile:(id)arg2;
 
 @end
 

@@ -15,6 +15,7 @@
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
 - (void)loadingFailedWithRequestId:(id)arg1 timestamp:(double)arg2 errorText:(id)arg3 canceled:(BOOL *)arg4;
 - (void)loadingFinishedWithRequestId:(id)arg1 timestamp:(double)arg2 sourceMapURL:(id *)arg3 metrics:(id *)arg4;
+- (void)requestInterceptedWithRequestId:(id)arg1 request:(id)arg2;
 - (void)requestServedFromMemoryCacheWithRequestId:(id)arg1 frameId:(id)arg2 loaderId:(id)arg3 documentURL:(id)arg4 timestamp:(double)arg5 initiator:(id)arg6 resource:(id)arg7;
 - (void)requestWillBeSentWithRequestId:(id)arg1 frameId:(id)arg2 loaderId:(id)arg3 documentURL:(id)arg4 request:(id)arg5 timestamp:(double)arg6 walltime:(double)arg7 initiator:(id)arg8 redirectResponse:(id *)arg9 type:(long long *)arg10 targetId:(id *)arg11;
 - (void)responseInterceptedWithRequestId:(id)arg1 response:(id)arg2;

@@ -6,11 +6,11 @@
 
 #import <WorkflowKit/WFResource.h>
 
-#import <WorkflowKit/WFWorkflowReferencingResource-Protocol.h>
+#import <WorkflowKit/WFWorkflowReferencing-Protocol.h>
 
 @class NSString, WFWorkflow;
 
-@interface WFWorkflowEnvironmentResource : WFResource <WFWorkflowReferencingResource>
+@interface WFWorkflowEnvironmentResource : WFResource <WFWorkflowReferencing>
 {
     WFWorkflow *_workflow;
 }

@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_mapsId:1;
         unsigned int read_place:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_mapsId:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_resultProviderId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,8 +48,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readMapsId;
-- (void)_readPlace;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -64,7 +57,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

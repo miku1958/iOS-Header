@@ -11,7 +11,7 @@
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
-@class NSString, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
+@class NSString, PKAddPaymentPassRequest, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
 
 @interface PKPaymentCredentialProvisioningViewController : PKPaymentSetupProvisioningFieldsViewController <PKViewControllerPreflightable, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentSetupPresentationProtocol>
 {
@@ -23,8 +23,10 @@
     PKPaymentSetupProduct *_setupProduct;
     BOOL _allowsManualEntry;
     BOOL _previouslyAcceptedTerms;
-    BOOL _snapshotNeedsCorners;
     UIImage *_passSnapshot;
+    BOOL _passSnapshotNeedsCorners;
+    struct CGSize _passSnapshotOverrideSize;
+    PKAddPaymentPassRequest *_addRequest;
     BOOL _shouldAutoProvision;
 }
 
@@ -39,6 +41,7 @@
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_defaultHeaderViewSubTitleForLocalCredential;
 - (id)_defaultHeaderViewSubTitleForLocalCredentialTransfer;
+- (void)_fetchAddRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performFinishWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performProvisionWithCompletion:(CDUnknownBlockType)arg1;
@@ -58,6 +61,7 @@
 - (BOOL)isComplete;
 - (void)loadView;
 - (id)newPaymentEligibilityRequest;
+- (id)newPaymentProvisioningRequest;
 - (id)newPaymentRequirementsRequest;
 - (id)onPresentationRemoveViewControllersAfterMarker;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;

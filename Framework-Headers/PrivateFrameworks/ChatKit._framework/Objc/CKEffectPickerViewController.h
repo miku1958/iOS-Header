@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <ChatKit/CKEffectPickerViewControllerProtocol-Protocol.h>
 #import <ChatKit/CKEffectPickerViewDelegate-Protocol.h>
 
 @class CKEffectPickerView, NSAttributedString;
 @protocol CKEffectPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKEffectPickerViewController : UIViewController <CKEffectPickerViewDelegate>
+@interface CKEffectPickerViewController : UIViewController <CKEffectPickerViewDelegate, CKEffectPickerViewControllerProtocol>
 {
     id<CKEffectPickerViewControllerDelegate> _delegate;
     NSAttributedString *_text;

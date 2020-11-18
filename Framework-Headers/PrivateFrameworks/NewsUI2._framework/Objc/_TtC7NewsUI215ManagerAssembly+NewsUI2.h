@@ -8,6 +8,5 @@
 
 @interface _TtC7NewsUI215ManagerAssembly (NewsUI2)
 - (void)loadInRegistry:(id)arg1;
-- (void)loadedContainer:(id)arg1;
 @end
 

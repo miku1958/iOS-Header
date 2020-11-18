@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKModifyRecordAccessOperationCallbacks-Protocol.h>
 
-@interface CKModifyRecordAccessOperation : CKDatabaseOperation
+@class CKModifyRecordAccessOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifyRecordAccessOperationCallbacks;
+
+@interface CKModifyRecordAccessOperation : CKDatabaseOperation <CKModifyRecordAccessOperationCallbacks>
 {
     CDUnknownBlockType _recordAccessGrantedBlock;
     CDUnknownBlockType _recordAccessRevokedBlock;
@@ -20,7 +23,9 @@
     NSMutableArray *_revokedRecordIDs;
 }
 
+@property (readonly, nonatomic) id<CKModifyRecordAccessOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableArray *grantedRecordIDs; // @synthesize grantedRecordIDs=_grantedRecordIDs;
+@property (readonly, nonatomic) CKModifyRecordAccessOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CDUnknownBlockType recordAccessCompletionBlock; // @synthesize recordAccessCompletionBlock=_recordAccessCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordAccessGrantedBlock; // @synthesize recordAccessGrantedBlock=_recordAccessGrantedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordAccessRevokedBlock; // @synthesize recordAccessRevokedBlock=_recordAccessRevokedBlock;
@@ -29,13 +34,15 @@
 @property (strong, nonatomic) NSArray *recordIDsToRevoke; // @synthesize recordIDsToRevoke=_recordIDsToRevoke;
 @property (strong, nonatomic) NSMutableArray *revokedRecordIDs; // @synthesize revokedRecordIDs=_revokedRecordIDs;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleRecordAccessInitiationForRecordID:(id)arg1 accessToken:(id)arg2 referenceIdentifier:(id)arg3 error:(id)arg4;
+- (void)handleRecordAccessRevocationForRecordID:(id)arg1 error:(id)arg2;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithRecordIDsToGrantAccess:(id)arg1 recordIDsToRevokeAccess:(id)arg2;
 - (void)performCKOperation;

@@ -8,6 +8,7 @@
 
 @class MPSectionedCollection, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelLibraryRegisteredTransientState : NSObject
 {
     long long _addState;

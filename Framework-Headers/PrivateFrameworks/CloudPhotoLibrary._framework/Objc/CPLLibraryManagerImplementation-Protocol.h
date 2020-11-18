@@ -6,31 +6,32 @@
 
 #import <CloudPhotoLibrary/CPLPlatformImplementation-Protocol.h>
 
-@class CPLMomentShare, CPLResource, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
+@class CPLResource, CPLScopeChange, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol CPLLibraryManagerImplementation <CPLPlatformImplementation>
-- (void)acceptMomentShare:(CPLMomentShare *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)acceptSharedScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)acknowledgeChangedStatuses:(NSArray *)arg1;
+- (void)activateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)addStatusChangesForRecordsWithScopedIdentifiers:(NSArray *)arg1 persist:(BOOL)arg2;
-- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(NSString *)arg4 completionHandler:(void (^)(CPLResourceTransferTask *))arg5;
+- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 intent:(unsigned long long)arg3 proposedTaskIdentifier:(NSString *)arg4 completionHandler:(void (^)(CPLResourceTransferTask *))arg5;
 - (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResourceTransferTask *))arg2;
 - (void)boostPriorityForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)closeWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)createScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
+- (void)deactivateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deactivateWithCompletionHandler:(void (^)(NSError *))arg1;
 - (BOOL)diagnosticsEnabled;
-- (void)disableMainScopeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)disableMingling;
 - (void)disableSynchronizationWithReason:(NSString *)arg1;
-- (void)enableMainScopeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)enableMingling;
 - (void)enableSynchronizationWithReason:(NSString *)arg1;
-- (void)fetchMomentShareFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLMomentShare *, NSError *))arg2;
+- (void)fetchSharedScopeFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)forceSynchronizingScopeWithIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(CPLForceSyncTask *))arg2;
 - (void)getChangedStatusesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)getStatusForRecordsWithScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg4;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 clientBundleID:(NSString *)arg4 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)noteClientIsBeginningSignificantWork;
 - (void)noteClientIsEndingSignificantWork;
@@ -38,10 +39,10 @@
 - (void)noteClientIsInForeground;
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(void (^)(NSError *, NSString *, NSString *, NSURL *))arg1;
-- (void)publishMomentShare:(CPLMomentShare *)arg1 completionHandler:(void (^)(CPLMomentShare *, NSError *))arg2;
-- (void)queryUserIdentitiesWithParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)queryUserDetailsForShareParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(BOOL, unsigned long long, NSError *))arg3;
 - (void)resetStatus;
+- (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setDiagnosticsEnabled:(BOOL)arg1;
 - (void)setShouldOverride:(BOOL)arg1 forSystemBudgets:(unsigned long long)arg2;
 - (void)startSyncSession;
@@ -54,6 +55,7 @@
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1 related:(BOOL)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;
 - (void)compactFileCacheWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)deleteResources:(NSArray *)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
+- (void)forceBackupWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)getCloudCacheForRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, NSError *))arg2;
 - (void)getListOfComponentsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getResourcesForItemWithScopedIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(NSError *, NSArray *))arg2;
@@ -61,10 +63,11 @@
 - (void)getStatusForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)getStatusesForScopesWithIdentifiers:(NSArray *)arg1 includeStorages:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)provideCloudResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResource *, unsigned long long))arg2;
-- (void)provideLibraryInfoForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLLibraryInfo *, unsigned long long))arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, unsigned long long))arg2;
+- (void)provideScopeChangeForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLScopeChange *, unsigned long long))arg2;
 - (void)reportMiscInformation:(NSDictionary *)arg1;
 - (void)reportSetting:(NSString *)arg1 hasBeenSetToValue:(NSString *)arg2;
+- (void)requestClientToPushAllChangesWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)resetCacheWithOption:(unsigned long long)arg1 reason:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)unblockEngineElement:(NSString *)arg1;
 - (void)unblockEngineElementOnce:(NSString *)arg1;

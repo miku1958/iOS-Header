@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface LPMusicPlayButtonStyle : NSObject
 {
     LPSize *_size;
-    UIColor *_color;
+    UIColor *_keyColor;
+    UIColor *_secondaryColor;
 }
 
-@property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (strong, nonatomic) UIColor *keyColor; // @synthesize keyColor=_keyColor;
+@property (strong, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
 @property (strong, nonatomic) LPSize *size; // @synthesize size=_size;
 
 - (void).cxx_destruct;

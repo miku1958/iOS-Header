@@ -73,7 +73,7 @@
 - (void)handleAccessoryWiFiNetworkInfoUpdatedNotification:(id)arg1;
 - (void)handleCurrentNetworkDidChangeNotification:(id)arg1;
 - (id)init;
-- (id)initWithDeviceDiscovery:(id)arg1 companionLinkClient:(id)arg2 wifiManager:(id)arg3;
+- (id)initWithQueue:(id)arg1 deviceDiscovery:(id)arg2 companionLinkClient:(id)arg3 wifiManager:(id)arg4;
 - (void)initiateFixForAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerAccessory:(id)arg1 delegate:(id)arg2;
 - (void)startDiscoveringSymptomsRequiringNearbyInfo;

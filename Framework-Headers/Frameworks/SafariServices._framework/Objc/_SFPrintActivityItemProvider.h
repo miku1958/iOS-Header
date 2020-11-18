@@ -31,7 +31,7 @@
 
 - (void).cxx_destruct;
 - (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;
-- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
+- (id)activityViewControllerLinkMetadata:(id)arg1;
 - (id)activityViewControllerPlaceholderItems:(id)arg1;
 - (id)initWithPrintController:(id)arg1 webView:(id)arg2;
 - (id)item;

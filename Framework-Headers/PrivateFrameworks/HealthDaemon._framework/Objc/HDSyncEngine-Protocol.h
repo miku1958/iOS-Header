@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDSyncSession, NSArray, NSDictionary;
+@class HDAssertion, HDSyncSession, NSArray, NSDictionary;
 @protocol HDSyncAnchorMap, HDSyncChange, HDSyncStore;
 
 @protocol HDSyncEngine <NSObject>
@@ -18,7 +18,7 @@
 - (BOOL)applyAcknowledgedAnchorMap:(id<HDSyncAnchorMap>)arg1 forStore:(id<HDSyncStore>)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)applySyncChange:(id<HDSyncChange>)arg1 forStore:(id<HDSyncStore>)arg2 error:(id *)arg3;
 - (BOOL)getReceivedAnchorMap:(id<HDSyncAnchorMap>)arg1 forStore:(id<HDSyncStore>)arg2 error:(id *)arg3;
-- (BOOL)performSyncSession:(HDSyncSession *)arg1 error:(id *)arg2;
+- (BOOL)performSyncSession:(HDSyncSession *)arg1 accessibilityAssertion:(HDAssertion *)arg2 error:(id *)arg3;
 - (void)resetAnchorsWithFailedChanges:(NSArray *)arg1 store:(id<HDSyncStore>)arg2;
 - (void)resetStore:(id<HDSyncStore>)arg1;
 - (long long)session:(HDSyncSession *)arg1 requiresSyncWithAnchors:(id<HDSyncAnchorMap>)arg2 error:(id *)arg3;

@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_computePotentialMemories;
-- (id)_computePotentialMemoriesForPeopleNodes:(id)arg1;
+- (id)_computePotentialMemoriesForPersonNodes:(id)arg1;
 - (id)_computePotentialMemoriesForSubcategory:(unsigned long long)arg1 withLocalStartDate:(id)arg2 localEndDate:(id)arg3;
 - (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (id)_peopleSeenInPreviousWeekButNotInPreviousThreeMonthsWithLocalDate:(id)arg1;

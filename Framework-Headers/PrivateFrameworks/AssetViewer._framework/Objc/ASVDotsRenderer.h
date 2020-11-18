@@ -15,7 +15,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)encode:(id)arg1 renderCommandEncoder:(id)arg2 mvp:(CDStruct_14d5dc5e)arg3 visible:(float)arg4 time:(double)arg5;
+- (void)encode:(id)arg1 renderCommandEncoder:(id)arg2 mvp:(CDStruct_14d5dc5e)arg3 visibility:(float)arg4 time:(double)arg5;
 - (id)init:(id)arg1 pixelFormat:(unsigned long long)arg2;
 
 @end

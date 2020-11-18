@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 
 @end
 

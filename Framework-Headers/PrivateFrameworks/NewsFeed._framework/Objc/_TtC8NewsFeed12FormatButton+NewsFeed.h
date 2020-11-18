@@ -17,5 +17,6 @@
 @property (nonatomic, copy) NSString *accessibilityValue;
 @property (nonatomic) BOOL isAccessibilityElement;
 
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 @end
 

@@ -21,9 +21,12 @@
     NSArray *_vertexAttributes;
     NSArray *_functionConstants;
     NSDictionary *_functionConstantDictionary;
+    unsigned long long _options;
+    NSObject<OS_dispatch_data> *_precompiledOutput;
     MTLType *_returnType;
     NSArray *_arguments;
     NSString *_unpackedFilePath;
+    CDStruct_41a22ec7 _functionConstantSpecializationHash;
 }
 
 @property NSArray *arguments; // @dynamic arguments;
@@ -43,9 +46,11 @@
 @property long long lineNumber; // @dynamic lineNumber;
 @property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) BOOL needsFunctionConstantValues; // @dynamic needsFunctionConstantValues;
+@property (readonly) unsigned long long options; // @synthesize options=_options;
 @property (readonly) long long patchControlPointCount; // @dynamic patchControlPointCount;
 @property (readonly) unsigned long long patchType; // @dynamic patchType;
 @property NSData *pluginData; // @dynamic pluginData;
+@property NSObject<OS_dispatch_data> *precompiledOutput; // @dynamic precompiledOutput;
 @property (readonly) unsigned long long renderTargetArrayIndexType; // @dynamic renderTargetArrayIndexType;
 @property MTLType *returnType; // @dynamic returnType;
 @property (readonly) NSArray *stageInputAttributes; // @dynamic stageInputAttributes;
@@ -59,13 +64,20 @@
 - (id)bitcodeData;
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (const CDStruct_41a22ec7 *)functionConstantSpecializationHash;
 - (unsigned int)functionRef;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 device:(id)arg4;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 functionReflection:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
+- (id)reflectionWithOptions:(unsigned long long)arg1 binaryArchives:(id)arg2;
 - (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (void)setVendorPrivate:(id)arg1;
 
 @end

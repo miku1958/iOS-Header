@@ -20,6 +20,8 @@
     BOOL _rulerWasShownViaGesture;
     BOOL _canRulerSnapToAngle;
     BOOL _lastTouchWasMaskedByRuler;
+    BOOL _lastDrawingWasMaskedByRuler;
+    BOOL _lastDrawingWasSnappedToRuler;
     BOOL _rulerSnappedToAngle;
     PKRulerGestureRecognizer *_rulerGestureRecognizer;
     id<PKRulerDelegate> _delegate;
@@ -40,6 +42,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInteractingWithRuler; // @synthesize isInteractingWithRuler=_isInteractingWithRuler;
+@property (nonatomic) BOOL lastDrawingWasMaskedByRuler; // @synthesize lastDrawingWasMaskedByRuler=_lastDrawingWasMaskedByRuler;
+@property (nonatomic) BOOL lastDrawingWasSnappedToRuler; // @synthesize lastDrawingWasSnappedToRuler=_lastDrawingWasSnappedToRuler;
 @property (nonatomic) BOOL lastTouchWasMaskedByRuler; // @synthesize lastTouchWasMaskedByRuler=_lastTouchWasMaskedByRuler;
 @property (nonatomic) CDStruct_cfd08fee previousRulerState; // @synthesize previousRulerState=_previousRulerState;
 @property (strong, nonatomic) PKRulerGestureRecognizer *rulerGestureRecognizer; // @synthesize rulerGestureRecognizer=_rulerGestureRecognizer;

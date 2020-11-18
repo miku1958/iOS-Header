@@ -32,7 +32,7 @@
 @property (copy) NSString *label; // @synthesize label=_label;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

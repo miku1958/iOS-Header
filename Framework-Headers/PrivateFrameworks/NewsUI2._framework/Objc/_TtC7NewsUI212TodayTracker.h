@@ -17,6 +17,9 @@
     MISSING_TYPE *sectionPositionProvider;
     MISSING_TYPE *contentPrefetchManager;
     MISSING_TYPE *liveUpdatingImpressionDelegate;
+    MISSING_TYPE *newsActivityManager;
+    MISSING_TYPE *todayActivityRegistrationType;
+    MISSING_TYPE *hasRegisteredUserActivity;
 }
 
 @end

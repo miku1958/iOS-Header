@@ -10,6 +10,7 @@
 
 @interface AKAnnotationEventHandler : NSObject
 {
+    BOOL _touchModifiersEnabled;
     BOOL _draggingHorizontalOnly;
     BOOL _draggingVerticalOnly;
     AKPageController *_pageController;
@@ -32,6 +33,7 @@
 @property struct CGPoint lastPositionInModel; // @synthesize lastPositionInModel=_lastPositionInModel;
 @property struct CGPoint lastPositionInWindow; // @synthesize lastPositionInWindow=_lastPositionInWindow;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
+@property BOOL touchModifiersEnabled; // @synthesize touchModifiersEnabled=_touchModifiersEnabled;
 
 + (Class)_handlerClassForPlatformForAnnotation:(id)arg1;
 + (BOOL)allowsDragging;
@@ -51,7 +53,7 @@
 - (double)naturalAspectRatioForAnnotation;
 - (struct CGSize)naturalSizeForAnnotation;
 - (void)setupDraggingConstraints;
-- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1;
+- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 - (struct CGPoint)windowPointFromEvent:(id)arg1 orRecognizer:(id)arg2;
 
 @end

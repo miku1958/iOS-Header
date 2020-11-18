@@ -15,16 +15,18 @@
     _CDInteractionStore *_interactionStore;
     _PSContactResolver *_contactResolver;
     _CDInteractionCache *_recencyCache;
+    double _recencyMargin;
 }
 
 @property (readonly, nonatomic) _PSContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
 @property (readonly, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (strong, nonatomic) _CDInteractionCache *recencyCache; // @synthesize recencyCache=_recencyCache;
+@property (nonatomic) double recencyMargin; // @synthesize recencyMargin=_recencyMargin;
 
-+ (id)templateForInPhoneCallHeuristicWithContactId:(id)arg1 handle:(id)arg2;
++ (id)templateForPhoneCallHeuristicWithContactId:(id)arg1 handle:(id)arg2 reason:(id)arg3;
 - (void).cxx_destruct;
-- (id)backFillProxiesByRecencyUsingMessagesCache:(id)arg1 startIndex:(unsigned long long)arg2;
+- (id)backFillProxiesByRecencyUsingInteractions:(id)arg1 startIndex:(unsigned long long)arg2;
 - (id)hourOfDayProbabilitiesToInteractWithContacts:(id)arg1;
 - (id)hyperRecentHeuristicSuggestionProxiesWithReferenceDate:(id)arg1 predictionContextBundleId:(id)arg2;
 - (id)inPhoneCallHeuristicSuggestionProxies;
@@ -36,6 +38,7 @@
 - (id)proximityBoostingHeuristicWithProximityBooster:(id)arg1 existingSuggestions:(id)arg2;
 - (id)recentNonSystemSuggestionsForBundleIDs:(id)arg1 numberOfSuggestion:(unsigned long long)arg2;
 - (id)seedSuggestionsForChatGuidsAndEmails:(id)arg1;
+- (void)updateModelProperties:(id)arg1;
 
 @end
 

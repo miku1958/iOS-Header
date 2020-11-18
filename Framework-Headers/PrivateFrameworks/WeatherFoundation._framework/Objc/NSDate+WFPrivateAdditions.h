@@ -7,6 +7,15 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (WFPrivateAdditions)
-- (id)wf_dateOnlyComponentsInCalendar:(id)arg1;
++ (id)wf_allWeatherConditionsOnDate:(id)arg1 inCalendar:(id)arg2 inArray:(id)arg3;
++ (BOOL)wf_isDate:(id)arg1 inSameDayWithDate:(id)arg2 inCalendar:(id)arg3;
++ (long long)wf_minutesBetweenDate:(id)arg1 andDate:(id)arg2;
++ (id)wf_weatherConditionsClosestToDate:(id)arg1 inArray:(id)arg2;
++ (id)wf_weatherConditionsOnDate:(id)arg1 inCalendar:(id)arg2 inArray:(id)arg3;
+- (id)wf_allWeatherConditionsOnDate:(id)arg1 inCalendar:(id)arg2;
+- (BOOL)wf_isInSameDayWithDate:(id)arg1 inCalendar:(id)arg2;
+- (long long)wf_minutesDifferenceFromDate:(id)arg1;
+- (id)wf_weatherConditionsClosestToDate:(id)arg1;
+- (id)wf_weatherConditionsOnDate:(id)arg1 inCalendar:(id)arg2;
 @end
 

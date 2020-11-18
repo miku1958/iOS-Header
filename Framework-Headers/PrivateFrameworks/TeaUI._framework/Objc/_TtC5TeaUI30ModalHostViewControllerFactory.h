@@ -10,7 +10,7 @@
 
 @interface _TtC5TeaUI30ModalHostViewControllerFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *applicationStateManager;
+    MISSING_TYPE *sceneStateManager;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
@@ -32,6 +32,7 @@
     NSData *_articleRecirculationConfiguration;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_channelConversionStats;
     NSString *_clusterID;
     int _contentType;
     NSString *_contentURL;
@@ -41,6 +42,7 @@
     NSString *_flintDocumentURL;
     NSMutableArray *_flintFontResourceIDs;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
     NSMutableArray *_iAdSectionIDs;
@@ -130,6 +132,7 @@
 @property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property (strong, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *channelConversionStats; // @synthesize channelConversionStats=_channelConversionStats;
 @property (strong, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property (nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) NSString *contentURL; // @synthesize contentURL=_contentURL;
@@ -139,6 +142,7 @@
 @property (strong, nonatomic) NSString *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property (strong, nonatomic) NSMutableArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats; // @synthesize globalConversionStats=_globalConversionStats;
 @property (nonatomic) unsigned long long halfLifeMilliseconds; // @synthesize halfLifeMilliseconds=_halfLifeMilliseconds;
 @property (readonly, nonatomic) BOOL hasAccessoryText;
 @property (readonly, nonatomic) BOOL hasArticleRecirculationConfiguration;
@@ -146,6 +150,7 @@
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasBehaviorFlags;
 @property (nonatomic) BOOL hasBodyTextLength;
+@property (readonly, nonatomic) BOOL hasChannelConversionStats;
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (nonatomic) BOOL hasContentType;
 @property (readonly, nonatomic) BOOL hasContentURL;
@@ -153,6 +158,7 @@
 @property (readonly, nonatomic) BOOL hasExcerptURL;
 @property (readonly, nonatomic) BOOL hasFlintDocumentURL;
 @property (readonly, nonatomic) BOOL hasGlobalCohorts;
+@property (readonly, nonatomic) BOOL hasGlobalConversionStats;
 @property (nonatomic) BOOL hasHalfLifeMilliseconds;
 @property (nonatomic) BOOL hasIsBundlePaid;
 @property (nonatomic) BOOL hasIsDraft;

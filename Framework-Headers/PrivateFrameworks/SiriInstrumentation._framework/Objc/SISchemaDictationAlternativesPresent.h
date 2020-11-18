@@ -10,14 +10,24 @@
 
 @interface SISchemaDictationAlternativesPresent : PBCodable
 {
-    BOOL _multilingualIsLowConfidence;
     int _numberOfUnderlines;
     int _countOfWordsUnderlined;
     SISchemaLocaleIdentifier *_alternativesLocale;
+    BOOL _multilingualIsLowConfidence;
+    struct {
+        unsigned int numberOfUnderlines:1;
+        unsigned int countOfWordsUnderlined:1;
+        unsigned int multilingualIsLowConfidence:1;
+    } _has;
+    BOOL _hasAlternativesLocale;
 }
 
 @property (strong, nonatomic) SISchemaLocaleIdentifier *alternativesLocale; // @synthesize alternativesLocale=_alternativesLocale;
 @property (nonatomic) int countOfWordsUnderlined; // @synthesize countOfWordsUnderlined=_countOfWordsUnderlined;
+@property (nonatomic) BOOL hasAlternativesLocale; // @synthesize hasAlternativesLocale=_hasAlternativesLocale;
+@property (nonatomic) BOOL hasCountOfWordsUnderlined;
+@property (nonatomic) BOOL hasMultilingualIsLowConfidence;
+@property (nonatomic) BOOL hasNumberOfUnderlines;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL multilingualIsLowConfidence; // @synthesize multilingualIsLowConfidence=_multilingualIsLowConfidence;
 @property (nonatomic) int numberOfUnderlines; // @synthesize numberOfUnderlines=_numberOfUnderlines;

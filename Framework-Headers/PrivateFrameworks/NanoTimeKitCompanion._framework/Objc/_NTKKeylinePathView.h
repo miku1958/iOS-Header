@@ -29,8 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
-- (id)initWithPath:(id)arg1;
-- (id)initWithPath:(id)arg1 secondPath:(id)arg2;
+- (id)initWithPath:(id)arg1 secondPath:(id)arg2 scale:(double)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

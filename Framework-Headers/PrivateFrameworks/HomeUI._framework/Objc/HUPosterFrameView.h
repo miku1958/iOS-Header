@@ -6,15 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <HomeUI/HFPosterFrameImageObserver-Protocol.h>
+#import <HomeUI/HFCameraImageObserver-Protocol.h>
 
 @class CALayer, HMCameraClip, UIActivityIndicatorView;
 
-@interface HUPosterFrameView : UIView <HFPosterFrameImageObserver>
+@interface HUPosterFrameView : UIView <HFCameraImageObserver>
 {
     BOOL _loading;
     BOOL _requestInProgress;
     BOOL _shouldShowLineSeparator;
+    BOOL _displayingHeroFrame;
     UIActivityIndicatorView *_inProgressSpinner;
     CALayer *_posterFrameLayer;
     CALayer *_lineSeparator;
@@ -23,6 +24,7 @@
 }
 
 @property (weak, nonatomic) HMCameraClip *clip; // @synthesize clip=_clip;
+@property (nonatomic) BOOL displayingHeroFrame; // @synthesize displayingHeroFrame=_displayingHeroFrame;
 @property (strong, nonatomic) UIActivityIndicatorView *inProgressSpinner; // @synthesize inProgressSpinner=_inProgressSpinner;
 @property (strong, nonatomic) CALayer *lineSeparator; // @synthesize lineSeparator=_lineSeparator;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
@@ -31,11 +33,17 @@
 @property (nonatomic) BOOL shouldShowLineSeparator; // @synthesize shouldShowLineSeparator=_shouldShowLineSeparator;
 @property (nonatomic) double timeOffset; // @synthesize timeOffset=_timeOffset;
 
-+ (id)posterFrameView;
++ (id)posterFrameViewForWidth:(double)arg1;
 - (void).cxx_destruct;
+- (void)dealloc;
+- (void)displayHeroFrameForClip:(id)arg1;
+- (void)displayImage:(id)arg1;
 - (void)displayImageForClip:(id)arg1 atTimeOffset:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)manager:(id)arg1 didFindHeroFrame:(id)arg2 forClip:(id)arg3;
 - (void)manager:(id)arg1 didFindImage:(id)arg2 atTimeOffset:(double)arg3 forClip:(id)arg4;
+- (void)manager:(id)arg1 didFinishGeneratingImagesForObserver:(id)arg2;
+- (void)manager:(id)arg1 failedToFindHeroFrameforClip:(id)arg2;
 - (void)prepareForReuse;
 
 @end

@@ -17,11 +17,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *intentTypeName;
 @property (copy, nonatomic) NSString *interactionId;
+@property (copy, nonatomic) NSString *metricsStateOrigin;
 @property (copy, nonatomic) NSString *resultCandidateId;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *taskId;
 @property (copy, nonatomic) NSNumber *taskStepStartTime;
+@property (copy, nonatomic) NSString *turnId;
 
 + (id)siriKitMetrics;
 + (id)siriKitMetricsWithDictionary:(id)arg1 context:(id)arg2;

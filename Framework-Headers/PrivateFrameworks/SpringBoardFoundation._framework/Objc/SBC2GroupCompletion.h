@@ -11,7 +11,7 @@
 }
 
 + (void)perform:(CDUnknownBlockType)arg1 finalCompletion:(CDUnknownBlockType)arg2;
-+ (void)perform:(CDUnknownBlockType)arg1 finalCompletion:(CDUnknownBlockType)arg2 options:(unsigned long long)arg3;
++ (void)perform:(CDUnknownBlockType)arg1 finalCompletion:(CDUnknownBlockType)arg2 options:(unsigned long long)arg3 delegate:(id)arg4;
 
 @end
 

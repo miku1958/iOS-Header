@@ -12,13 +12,20 @@
 
 @interface AKFollowUpFactoryImpl : NSObject <AKFollowUpItemFactory>
 {
+    NSString *_extensionIdentifier;
+    NSString *_representingBundlePath;
+    NSString *_bundleIconName;
 }
 
+@property (copy, nonatomic) NSString *bundleIconName; // @synthesize bundleIconName=_bundleIconName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *representingBundlePath; // @synthesize representingBundlePath=_representingBundlePath;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (BOOL)IsFollowUpItemNotificationForced:(id)arg1;
 - (id)_actionFromInfo:(id)arg1;
 - (id)_actionsFromPayload:(id)arg1;

@@ -8,12 +8,12 @@
 
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
 
-@class FBSApplicationLibrary, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, SBSplashBoardController;
+@class FBSApplicationLibrary, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, XBApplicationController;
 @protocol OS_dispatch_queue;
 
 @interface SBApplicationLibraryObserver : NSObject <MCProfileConnectionObserver>
 {
-    SBSplashBoardController *_splashBoardController;
+    XBApplicationController *_splashBoardController;
     FBSApplicationLibrary *_appLibrary;
     NSMutableSet *_suspendCalloutsAssertionReasons;
     NSObject<OS_dispatch_queue> *_mainQueueProxy;
@@ -31,6 +31,7 @@
 + (id)new;
 - (void).cxx_destruct;
 - (void)_addObserver:(id)arg1 table:(id)arg2;
+- (id)_appBundleIDsForApplications:(id)arg1;
 - (void)_didAddApplications:(id)arg1;
 - (void)_didAddPlaceholders:(id)arg1;
 - (void)_didCancelPlaceholders:(id)arg1;
@@ -44,7 +45,7 @@
 - (void)addApplicationLifecycleObserver:(id)arg1;
 - (void)addPlaceholderLifecycleObserver:(id)arg1;
 - (id)init;
-- (id)initWithAppLibrary:(id)arg1;
+- (id)initWithAppLibrary:(id)arg1 splashBoardController:(id)arg2;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)profileConnectionDidReceiveProfileListChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)removeApplicationLifecycleObserver:(id)arg1;

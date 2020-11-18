@@ -58,7 +58,8 @@
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
-- (struct CGRect)frameForCulling;
+- (struct CGRect)frameForCaptionPositioning;
+- (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
 - (id)i_computeUnitedWrapPath;
 - (id)i_computeWrapPath;
 - (id)initWithInfo:(id)arg1;

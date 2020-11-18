@@ -18,7 +18,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) int formatType; // @dynamic formatType;
+@property (readonly, nonatomic) unsigned int formatType; // @dynamic formatType;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

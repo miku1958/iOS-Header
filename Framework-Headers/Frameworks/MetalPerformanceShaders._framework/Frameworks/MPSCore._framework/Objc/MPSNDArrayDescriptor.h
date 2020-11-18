@@ -19,18 +19,23 @@
     MPSNDArrayDescriptor *_child;
     MPSNDArrayDescriptor *_parent;
     int _transitionOp;
+    BOOL _preferPackedRows;
 }
 
 @property (nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property (nonatomic) unsigned long long numberOfDimensions; // @synthesize numberOfDimensions=_numberOfDimensions;
+@property (nonatomic) BOOL preferPackedRows; // @synthesize preferPackedRows=_preferPackedRows;
 
 + (id)descriptorWithDataType:(unsigned int)arg1 dimensionCount:(unsigned long long)arg2 dimensionSizes:(unsigned long long *)arg3;
 + (id)descriptorWithDataType:(unsigned int)arg1 dimensionSizes:(unsigned long long)arg2;
 + (id)descriptorWithDataType:(unsigned int)arg1 shape:(id)arg2;
 - (void)dealloc;
 - (MISSING_TYPE *)dimensionOrder;
+- (id)getShape;
+- (unique_ptr_443eaf63)getShapeVector;
 - (id)initWithDataType:(unsigned int)arg1 dimensions:(unsigned long long)arg2 sizes: /* Error: Ran out of types for this method. */;
 - (unsigned long long)lengthOfDimension:(unsigned long long)arg1;
+- (void)permuteWithDimensionOrder:(unsigned long long *)arg1;
 - (void)reshapeWithDimensionCount:(unsigned long long)arg1 dimensionSizes:(unsigned long long *)arg2;
 - (void)reshapeWithShape:(id)arg1;
 - (void)setLengthOfDimension:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

@@ -13,16 +13,20 @@
     BOOL _hidden;
     BOOL _doNotLocalizeValues;
     BOOL _insideWorkflow;
-    BOOL _supportsImportQuestions;
     BOOL _allowsMultipleValues;
+    BOOL _fixedSizeArray;
     BOOL _shouldAlignLabels;
     NSSet *_supportedVariableTypes;
+    NSString *_localizedPrompt;
+    NSDictionary *_arraySizesBySizeClass;
     NSString *_key;
+    NSString *_legacyKey;
     NSString *_localizedLabel;
     NSString *_localizedPlaceholder;
     NSString *_localizedDescription;
     id _defaultSerializedRepresentation;
     WFResourceManager *_resourceManager;
+    NSString *_importQuestionBehavior;
     NSString *_intentSlotName;
     NSSet *_disallowedVariableTypes;
     NSDictionary *_definition;
@@ -31,29 +35,35 @@
 }
 
 @property (readonly, nonatomic) BOOL allowsMultipleValues; // @synthesize allowsMultipleValues=_allowsMultipleValues;
+@property (readonly, copy, nonatomic) NSDictionary *arraySizesBySizeClass; // @synthesize arraySizesBySizeClass=_arraySizesBySizeClass;
 @property (readonly, copy, nonatomic) id defaultSerializedRepresentation; // @synthesize defaultSerializedRepresentation=_defaultSerializedRepresentation;
 @property (readonly, nonatomic) NSSet *defaultSupportedVariableTypes; // @synthesize defaultSupportedVariableTypes=_defaultSupportedVariableTypes;
 @property (readonly, copy, nonatomic) NSDictionary *definition; // @synthesize definition=_definition;
 @property (readonly, nonatomic) NSSet *disallowedVariableTypes; // @synthesize disallowedVariableTypes=_disallowedVariableTypes;
+@property (readonly, nonatomic) BOOL displaysMultipleValueEditor;
 @property (readonly, nonatomic) BOOL doNotLocalizeValues; // @synthesize doNotLocalizeValues=_doNotLocalizeValues;
 @property (readonly, nonatomic) NSHashTable *eventObservers; // @synthesize eventObservers=_eventObservers;
+@property (readonly, nonatomic, getter=isFixedSizeArray) BOOL fixedSizeArray; // @synthesize fixedSizeArray=_fixedSizeArray;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic) NSString *importQuestionBehavior; // @synthesize importQuestionBehavior=_importQuestionBehavior;
 @property (readonly, nonatomic, getter=isInsideWorkflow) BOOL insideWorkflow; // @synthesize insideWorkflow=_insideWorkflow;
 @property (readonly, nonatomic) NSString *intentSlotName; // @synthesize intentSlotName=_intentSlotName;
 @property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (readonly, copy, nonatomic) NSString *legacyKey; // @synthesize legacyKey=_legacyKey;
 @property (readonly, copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (readonly, copy, nonatomic) NSString *localizedLabel; // @synthesize localizedLabel=_localizedLabel;
 @property (copy, nonatomic) NSString *localizedPlaceholder; // @synthesize localizedPlaceholder=_localizedPlaceholder;
+@property (copy, nonatomic) NSString *localizedPrompt; // @synthesize localizedPrompt=_localizedPrompt;
 @property (readonly, nonatomic) WFResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
 @property (readonly, nonatomic) BOOL shouldAlignLabels; // @synthesize shouldAlignLabels=_shouldAlignLabels;
 @property (readonly, nonatomic) NSSet *supportedVariableTypes; // @synthesize supportedVariableTypes=_supportedVariableTypes;
-@property (readonly, nonatomic) BOOL supportsImportQuestions; // @synthesize supportsImportQuestions=_supportsImportQuestions;
 
 + (id)allInsertableVariableTypes;
 + (id)parameterWithDefinition:(id)arg1;
 + (id)referencedActionResourceClasses;
 - (void).cxx_destruct;
 - (void)addEventObserver:(id)arg1;
+- (long long)arraySizeForWidgetSizeClass:(id)arg1;
 - (void)attributesDidChange;
 - (void)defaultSerializedRepresentationDidChange;
 - (id)initWithDefinition:(id)arg1;

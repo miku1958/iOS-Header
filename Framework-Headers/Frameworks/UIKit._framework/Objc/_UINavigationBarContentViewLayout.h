@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLayoutConstraint, UIBarButtonItemGroup, UILabel, UILayoutGuide, UIView, _UIBarButtonItemData, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UITAMICAdaptorView;
+@class NSArray, NSLayoutConstraint, UIBarButtonItemGroup, UILabel, UILayoutGuide, UITraitCollection, UIView, _UIBarButtonItemData, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UITAMICAdaptorView;
 @protocol _UINavigationBarAugmentedTitleView;
 
 __attribute__((visibility("hidden")))
@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     _UITAMICAdaptorView *_titleViewWrapperView;
     UIView<_UINavigationBarAugmentedTitleView> *_augmentedTitleView;
     double _largeTitleHeight;
+    UITraitCollection *_augmentedTitleNavigationBarTraits;
     _UIButtonBar *_leadingBar;
     _UIButtonBar *_trailingBar;
     _UIBarButtonItemData *_plainItemAppearance;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
+@property (strong, nonatomic) UITraitCollection *augmentedTitleNavigationBarTraits; // @synthesize augmentedTitleNavigationBarTraits=_augmentedTitleNavigationBarTraits;
 @property (strong, nonatomic) UIView<_UINavigationBarAugmentedTitleView> *augmentedTitleView; // @synthesize augmentedTitleView=_augmentedTitleView;
 @property (strong, nonatomic) _UIButtonBarButton *backButton; // @synthesize backButton=_backButton;
 @property (copy, nonatomic) _UIBarButtonItemData *backButtonAppearance; // @synthesize backButtonAppearance=_backButtonAppearance;
@@ -138,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (void)replaceTrailingBarWithSnapshot;
 - (void)setBackButtonHidden:(BOOL)arg1 titleLabelHidden:(BOOL)arg2 titleViewHidden:(BOOL)arg3 barsHidden:(BOOL)arg4;
 - (void)setContentHidden:(BOOL)arg1;
+- (id)traitOverridesForChild:(id)arg1;
 - (void)unfreeze;
 - (void)updateAlphas;
 - (void)updateAugmentedTitleViewBackButtonConstraints;

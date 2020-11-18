@@ -8,27 +8,31 @@
 
 #import <ContactsUI/CNContactContentViewControllerDelegate-Protocol.h>
 
-@class CNAvatarViewController, CNContact, CNStarkActionsController, CNStarkNameViewController, NSArray, NSString;
+@class CNAvatarViewController, CNContact, CNStarkActionsController, CNStarkContactInfoViewController, NSArray, NSString, UILayoutGuide;
 
 @interface CNStarkCardViewController : UIViewController <CNContactContentViewControllerDelegate>
 {
     CNAvatarViewController *_avatarViewController;
-    CNStarkNameViewController *_nameViewController;
+    CNStarkContactInfoViewController *_contactInfoViewController;
     CNStarkActionsController *_actionsController;
     CNContact *_contact;
     NSArray *_displayedContactProperties;
     NSArray *_layoutConstraints;
+    UILayoutGuide *_centeringLayoutGuide;
+    UILayoutGuide *_avatarAndDetailsLayoutGuide;
 }
 
 @property (readonly, nonatomic) CNStarkActionsController *actionsController; // @synthesize actionsController=_actionsController;
+@property (strong, nonatomic) UILayoutGuide *avatarAndDetailsLayoutGuide; // @synthesize avatarAndDetailsLayoutGuide=_avatarAndDetailsLayoutGuide;
 @property (readonly, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
+@property (strong, nonatomic) UILayoutGuide *centeringLayoutGuide; // @synthesize centeringLayoutGuide=_centeringLayoutGuide;
 @property (readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (readonly, nonatomic) CNStarkContactInfoViewController *contactInfoViewController; // @synthesize contactInfoViewController=_contactInfoViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *displayedContactProperties; // @synthesize displayedContactProperties=_displayedContactProperties;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
-@property (readonly, nonatomic) CNStarkNameViewController *nameViewController; // @synthesize nameViewController=_nameViewController;
 @property (readonly) Class superclass;
 
 + (id)descriptorForRequiredKeys;
@@ -41,6 +45,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)resetLayoutConstraints;
 - (void)setupLayoutConstraints;
+- (void)setupLayoutGuides;
 - (void)setupViewControllers;
 - (void)showMore:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

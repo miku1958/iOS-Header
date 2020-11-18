@@ -6,12 +6,13 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSString, NSURL;
+@class GEOMapItemPhotoOptions, NSString, NSURL;
 @protocol GEOMapItemPhotoInfo;
 
 @protocol GEOMapItemPhoto <NSObject>
 
 @property (readonly, nonatomic) NSString *author;
+@property (readonly, nonatomic) NSString *backgroundJoeColor;
 @property (readonly, nonatomic) BOOL businessProvided;
 @property (readonly, nonatomic) NSString *caption;
 @property (readonly, nonatomic) BOOL displayFullScreenPhotoGallery;
@@ -22,7 +23,9 @@
 @property (readonly, nonatomic) NSString *uid;
 @property (readonly, nonatomic) BOOL useGallery;
 
+- (id<GEOMapItemPhotoInfo>)bestPhotoForFrameSize:(struct CGSize)arg1 displayScale:(double)arg2 options:(GEOMapItemPhotoOptions *)arg3;
 - (id<GEOMapItemPhotoInfo>)bestPhotoForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id<GEOMapItemPhotoInfo>)bestPhotoForSize:(struct CGSize)arg1 options:(GEOMapItemPhotoOptions *)arg2;
 - (id<GEOMapItemPhotoInfo>)largestPhoto;
 @end
 

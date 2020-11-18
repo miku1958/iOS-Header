@@ -9,17 +9,19 @@
 #import <NanoTimeKitCompanion/CLKTimeFormatterObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, CLKTimeFormatter, NSString, NTKOlympusColorPalette, NTKVictoryLabel, NTKVictoryTimeLabel, UIButton, UIColor;
+@class CLKDevice, CLKTimeFormatter, NSString, NTKOlympusColorPalette, NTKVictoryLabel, NTKVictoryTimeLabel, UIButton, UIColor, UIImage;
 @protocol NTKOlympusContentViewDelegate;
 
 @interface NTKOlympusTimeContentView : UIView <CLKTimeFormatterObserver, NTKTimeView>
 {
     BOOL frozen;
     BOOL _invertedColors;
+    BOOL _useSmallFont;
     id<NTKOlympusContentViewDelegate> _delegate;
     CLKDevice *_device;
     UIButton *_fullscreenLogoButton;
     UIButton *_circularLogoButton;
+    UIImage *_circularLogoImage;
     NTKVictoryTimeLabel *_fullscreenHybridUpperTimeLabel;
     NTKVictoryLabel *_fullscreenHybridLowerTimeLabel;
     NTKVictoryLabel *_fullscreenDigitalUpperTimeLabel;
@@ -51,6 +53,7 @@
 @property (nonatomic) double analogStyleSwooshPositionFraction; // @synthesize analogStyleSwooshPositionFraction=_analogStyleSwooshPositionFraction;
 @property (strong, nonatomic) UIView *circularDigitsContainerView; // @synthesize circularDigitsContainerView=_circularDigitsContainerView;
 @property (strong, nonatomic) UIButton *circularLogoButton; // @synthesize circularLogoButton=_circularLogoButton;
+@property (strong, nonatomic) UIImage *circularLogoImage; // @synthesize circularLogoImage=_circularLogoImage;
 @property (strong, nonatomic) NTKVictoryLabel *circularLowerTimeLabel; // @synthesize circularLowerTimeLabel=_circularLowerTimeLabel;
 @property (strong, nonatomic) NTKVictoryLabel *circularUpperTimeLabel; // @synthesize circularUpperTimeLabel=_circularUpperTimeLabel;
 @property (nonatomic) unsigned long long color; // @synthesize color=_color;
@@ -82,6 +85,7 @@
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CLKTimeFormatter *timeFormatter; // @synthesize timeFormatter=_timeFormatter;
+@property (nonatomic) BOOL useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 
 + (double)scaleForViewDuringColorChangeTransitionWithFraction:(double)arg1;
 - (void).cxx_destruct;
@@ -91,8 +95,6 @@
 - (void)applyTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3 animateElements:(BOOL)arg4;
 - (void)applyTransitionFraction:(double)arg1 fromDial:(unsigned long long)arg2 toDial:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
-- (id)circularLogoImage;
-- (id)circularLogoImageWithoutText;
 - (void)cleanupAfterEditing;
 - (void)configureViewsForEditing;
 - (BOOL)containsSubview:(id)arg1;
@@ -103,6 +105,7 @@
 - (void)createFullscreenLogoIfNeeded;
 - (id)createLogoButtonWithBackgroundImage:(id)arg1;
 - (id)createTimeLabelWithFont:(id)arg1 option:(unsigned long long)arg2;
+- (void)dealloc;
 - (void)ensureVisibleIfNeeded:(id)arg1;
 - (id)fontForCircularDial;
 - (id)fontForDigitalFullscreen;
@@ -111,6 +114,7 @@
 - (void)handleLogoButtonResetHighlight:(id)arg1;
 - (void)handleLogoButtonTouchUpInside:(id)arg1;
 - (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4;
+- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 useSmallFont:(BOOL)arg5 circularLogoImage:(id)arg6;
 - (void)layoutSubviews;
 - (id)monospacedFontForCircularDial;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

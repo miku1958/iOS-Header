@@ -4,68 +4,68 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MetricsKit/MTObject.h>
+#import <objc/NSObject.h>
 
-#import <MetricsKit/AMSMetricsBagContract-Protocol.h>
 #import <MetricsKit/MTEventRecorderDelegate-Protocol.h>
 
-@class AMSBag, AMSBagValue, AMSMetrics, NSDictionary, NSString;
-@protocol AMSMescalBagContract, AMSMetricsBagContract;
+@class AMSPromise, NSMutableDictionary, NSString;
+@protocol AMSBagProtocol, OS_os_transaction;
 
-@interface MTEventRecorderAMSMetricsDelegate : MTObject <AMSMetricsBagContract, MTEventRecorderDelegate>
+@interface MTEventRecorderAMSMetricsDelegate : NSObject <MTEventRecorderDelegate>
 {
     BOOL _monitorsLifecycleEvents;
+    BOOL _transactionEnabled;
+    BOOL _flushTimerEnabled;
     BOOL _personalizedWithItunesAccount;
     NSString *_containerId;
-    NSDictionary *_lastMetricsDictionary;
-    AMSBag *_amsBag;
-    AMSMetrics *_bagBasedAMSMetrics;
-    AMSMetrics *_contractBasedAMSMetrics;
-    AMSMetrics *_backgroundAMSMetrics;
+    long long _flushMode;
+    double _flushTimeInterval;
+    long long _maximumBatchSize;
+    id<AMSBagProtocol> _amsBag;
+    AMSPromise *_metricsBagPromise;
+    NSMutableDictionary *_amsMetricsByTopic;
+    NSMutableDictionary *_periodicQueuesByTopic;
+    long long _numberOfPendingEvents;
+    NSObject<OS_os_transaction> *_transaction;
 }
 
-@property (readonly, nonatomic) AMSBagValue *TFOSamplingPercentage;
-@property (readonly, nonatomic) AMSBagValue *TFOSamplingSessionDuration;
-@property (readonly, nonatomic) AMSBagValue *TLSSamplingPercentage;
-@property (readonly, nonatomic) AMSBagValue *TLSSamplingSessionDuration;
-@property (strong, nonatomic) AMSBag *amsBag; // @synthesize amsBag=_amsBag;
-@property (readonly, nonatomic) AMSBagValue *apsAllowedProductTypes;
-@property (readonly, nonatomic) AMSBagValue *apsEnabledPatterns;
-@property (readonly, nonatomic) AMSBagValue *apsSamplingPercent;
-@property (strong, nonatomic) AMSMetrics *backgroundAMSMetrics; // @synthesize backgroundAMSMetrics=_backgroundAMSMetrics;
-@property (strong, nonatomic) AMSMetrics *bagBasedAMSMetrics; // @synthesize bagBasedAMSMetrics=_bagBasedAMSMetrics;
+@property (strong, nonatomic) id<AMSBagProtocol> amsBag; // @synthesize amsBag=_amsBag;
+@property (strong, nonatomic) NSMutableDictionary *amsMetricsByTopic; // @synthesize amsMetricsByTopic=_amsMetricsByTopic;
 @property (strong, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;
-@property (strong, nonatomic) AMSMetrics *contractBasedAMSMetrics; // @synthesize contractBasedAMSMetrics=_contractBasedAMSMetrics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) AMSBagValue *guidRegexes;
-@property (readonly, nonatomic) AMSBagValue *guidSchemes;
+@property (nonatomic) long long flushMode; // @synthesize flushMode=_flushMode;
+@property (nonatomic) double flushTimeInterval; // @synthesize flushTimeInterval=_flushTimeInterval;
+@property (nonatomic, getter=isFlushTimerEnabled) BOOL flushTimerEnabled; // @synthesize flushTimerEnabled=_flushTimerEnabled;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSDictionary *lastMetricsDictionary; // @synthesize lastMetricsDictionary=_lastMetricsDictionary;
-@property (readonly, nonatomic) id<AMSMescalBagContract> mescalContract;
-@property (readonly, nonatomic) id<AMSMetricsBagContract> metricsContract;
-@property (readonly, nonatomic) AMSBagValue *metricsDictionary;
-@property (readonly, nonatomic) AMSBagValue *metricsURL;
-@property (readonly, nonatomic) AMSBagValue *metricsUrl;
+@property (nonatomic) long long maximumBatchSize; // @synthesize maximumBatchSize=_maximumBatchSize;
+@property (strong, nonatomic) AMSPromise *metricsBagPromise; // @synthesize metricsBagPromise=_metricsBagPromise;
 @property (nonatomic) BOOL monitorsLifecycleEvents; // @synthesize monitorsLifecycleEvents=_monitorsLifecycleEvents;
+@property (nonatomic) long long numberOfPendingEvents; // @synthesize numberOfPendingEvents=_numberOfPendingEvents;
+@property (strong, nonatomic) NSMutableDictionary *periodicQueuesByTopic; // @synthesize periodicQueuesByTopic=_periodicQueuesByTopic;
 @property (nonatomic) BOOL personalizedWithItunesAccount; // @synthesize personalizedWithItunesAccount=_personalizedWithItunesAccount;
-@property (readonly, nonatomic) AMSBagValue *storefrontSuffix;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) AMSBagValue *trustedDomains;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
+@property (nonatomic, getter=isTransactionEnabled) BOOL transactionEnabled; // @synthesize transactionEnabled=_transactionEnabled;
 
 + (id)amsMetricsObjectCache;
 + (id)bundleIdentifier;
 - (void).cxx_destruct;
+- (void)_beginTransaction;
+- (void)_endTransaction;
+- (void)_flushEvents:(id)arg1 topic:(id)arg2;
+- (id)_recordEvent:(id)arg1 toTopic:(id)arg2;
+- (id)_sortedEventsFromBatch:(id)arg1;
 - (id)activeItunesAccount;
+- (id)amsContainerIdForTopic:(id)arg1;
+- (id)amsMetricsForTopic:(id)arg1;
 - (id)flushUnreportedEvents;
-- (id)initWithContainerId:(id)arg1;
 - (id)initWithContainerId:(id)arg1 amsBag:(id)arg2;
 - (id)initWithContainerId:(id)arg1 profileName:(id)arg2 profileVersion:(id)arg3;
 - (id)lookupItunesAccount:(id)arg1;
-- (id)prepareMetrics;
+- (id)periodicQueueForTopic:(id)arg1;
 - (id)recordEvent:(id)arg1 toTopic:(id)arg2;
 - (id)sendMethod;
-- (BOOL)shouldFlushBackgroundMetrics;
 
 @end
 

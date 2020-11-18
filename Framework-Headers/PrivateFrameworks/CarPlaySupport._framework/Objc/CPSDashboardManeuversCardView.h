@@ -12,9 +12,11 @@
 
 @interface CPSDashboardManeuversCardView : UIView <CPSNavigationDisplaying>
 {
+    BOOL _showSecondaryManeuverView;
+    NSArray *_maneuvers;
     CPSPrimaryManeuverView *_primaryManeuverView;
     CPSDashboardSecondaryManeuverView *_secondaryManeuverView;
-    NSArray *_maneuvers;
+    NSArray *_secondaryManeveuverConstraints;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +25,8 @@
 @property (strong, nonatomic) NSArray *maneuvers; // @synthesize maneuvers=_maneuvers;
 @property (strong, nonatomic) CPSPrimaryManeuverView *primaryManeuverView; // @synthesize primaryManeuverView=_primaryManeuverView;
 @property (strong, nonatomic) CPSDashboardSecondaryManeuverView *secondaryManeuverView; // @synthesize secondaryManeuverView=_secondaryManeuverView;
+@property (strong, nonatomic) NSArray *secondaryManeveuverConstraints; // @synthesize secondaryManeveuverConstraints=_secondaryManeveuverConstraints;
+@property (nonatomic) BOOL showSecondaryManeuverView; // @synthesize showSecondaryManeuverView=_showSecondaryManeuverView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

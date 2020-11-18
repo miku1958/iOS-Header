@@ -17,11 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PSUISubscriptionContextMenusGroup *subscriptionContextMenus; // @synthesize subscriptionContextMenus=_subscriptionContextMenus;
 
 - (void).cxx_destruct;
-- (id)init;
-- (id)selectSpecifier:(id)arg1;
 - (id)specifiers;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)willEnterForeground;
 
 @end
 

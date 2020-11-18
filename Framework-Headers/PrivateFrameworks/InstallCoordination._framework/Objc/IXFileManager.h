@@ -26,17 +26,21 @@
 - (BOOL)createSymbolicLinkAtURL:(id)arg1 withDestinationURL:(id)arg2 error:(id *)arg3;
 - (id)createTemporaryDirectoryInDirectoryURL:(id)arg1 error:(id *)arg2;
 - (BOOL)dataProtectionClassOfItemAtURL:(id)arg1 class:(int *)arg2 error:(id *)arg3;
+- (id)debugDescriptionOfItemAtURL:(id)arg1;
 - (id)destinationOfSymbolicLinkAtURL:(id)arg1 error:(id *)arg2;
 - (unsigned long long)diskUsageForURL:(id)arg1;
 - (BOOL)itemDoesNotExistAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)itemExistsAtURL:(id)arg1 isDirectory:(BOOL *)arg2 error:(id *)arg3;
+- (id)itemReplacementDirectoryAppropriateForURL:(id)arg1 error:(id *)arg2;
 - (BOOL)moveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)moveItemIfExistsAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (id)realPathForURL:(id)arg1 ifChildOfURL:(id)arg2;
 - (BOOL)removeItemAtURL:(id)arg1 error:(id *)arg2;
+- (BOOL)removeItemAtURL:(id)arg1 keepParent:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)setDataProtectionClassOfItemAtURL:(id)arg1 toClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (BOOL)setPermissionsOfItemAtURL:(id)arg1 toMode:(unsigned short)arg2 error:(id *)arg3;
 - (id)urlsForItemsInDirectoryAtURL:(id)arg1 ignoringSymlinks:(BOOL)arg2 error:(id *)arg3;
 
 @end

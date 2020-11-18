@@ -6,11 +6,11 @@
 
 #import <MapKit/MKPlaceActivityProvider.h>
 
-#import <MapKit/MKActivityItemLinkPresentationSource-Protocol.h>
+#import <MapKit/UIActivityItemLinkPresentationSource-Protocol.h>
 
 @class LPLinkMetadata, NSString;
 
-@interface MKMuninLinkPresentationActivityProvider : MKPlaceActivityProvider <MKActivityItemLinkPresentationSource>
+@interface MKMuninLinkPresentationActivityProvider : MKPlaceActivityProvider <UIActivityItemLinkPresentationSource>
 {
     LPLinkMetadata *_cachedMetadata;
 }

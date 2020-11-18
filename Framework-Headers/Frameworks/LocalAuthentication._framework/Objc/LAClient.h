@@ -19,19 +19,19 @@ __attribute__((visibility("hidden")))
     BOOL _synchronous;
     id<LAUIDelegate> _uiDelegate;
     NSUUID *_uuid;
-    LAContext *_context;
+    NSError *_permanentError;
     NSXPCConnection *_serverConnection;
     NSObject<LAContextXPC> *_remoteContext;
     NSObject<LAContextXPC> *_synchronousRemoteContext;
     NSMutableArray *_invalidations;
     LACachedExternalizedContext *_cachedExternalizedContext;
-    NSError *_permanentError;
     NSNumber *_userSession;
     NSData *_existingContext;
+    LAContext *_context;
 }
 
 @property (strong) LACachedExternalizedContext *cachedExternalizedContext; // @synthesize cachedExternalizedContext=_cachedExternalizedContext;
-@property (weak, nonatomic) LAContext *context; // @synthesize context=_context;
+@property (readonly, weak, nonatomic) LAContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSData *existingContext; // @synthesize existingContext=_existingContext;
@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (id)_updateOptions:(id)arg1;
 - (void)allowTransferToProcess:(int)arg1 receiverAuditTokenData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)authMethodWithReply:(CDUnknownBlockType)arg1;
+- (void)bootstrapServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 uiDelegate:(id)arg4 reply:(CDUnknownBlockType)arg5;
@@ -75,14 +76,14 @@ __attribute__((visibility("hidden")))
 - (void)evaluatePolicy:(long long)arg1 options:(id)arg2 uiDelegate:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)externalizedContextWithReply:(CDUnknownBlockType)arg1;
 - (void)failProcessedEvent:(long long)arg1 failureError:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)initWithExistingContext:(id)arg1;
-- (id)initWithExistingContext:(id)arg1 userSession:(unsigned int *)arg2;
-- (id)initWithUUID:(id)arg1 token:(id)arg2 senderAuditTokenData:(id)arg3;
+- (id)initWithExternalizedContext:(id)arg1 userSession:(unsigned int *)arg2 context:(id)arg3;
+- (id)initWithUUID:(id)arg1 token:(id)arg2 senderAuditTokenData:(id)arg3 context:(id)arg4;
 - (void)invalidateWithMessage:(id)arg1;
 - (void)invalidateWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidatedWithError:(id)arg1;
 - (void)isCredentialSet:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)notifyEvent:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)optionsForInternalOperation:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)prearmTouchIdWithReply:(CDUnknownBlockType)arg1;
 - (void)resetProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)serverPropertyForOption:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forProcessedEvent:(long long)arg2 credentialType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setCredential:(id)arg1 type:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (BOOL)setServerPropertyForOption:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (void)setServerPropertyForOption:(long long)arg1 value:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setShowingCoachingHint:(BOOL)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;

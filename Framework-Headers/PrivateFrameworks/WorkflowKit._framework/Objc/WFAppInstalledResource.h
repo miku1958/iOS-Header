@@ -17,10 +17,11 @@
     WFiTunesSessionManager *_currentAppNameLookupSessionManager;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSString *_appName;
+    NSString *_appIdentifier;
 }
 
 @property (readonly, nonatomic) ICApp *app;
-@property (readonly, nonatomic) NSString *appIdentifier;
+@property (readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (strong, nonatomic) WFiTunesSessionManager *currentAppNameLookupSessionManager; // @synthesize currentAppNameLookupSessionManager=_currentAppNameLookupSessionManager;
 @property (nonatomic) BOOL skipLookup; // @synthesize skipLookup=_skipLookup;

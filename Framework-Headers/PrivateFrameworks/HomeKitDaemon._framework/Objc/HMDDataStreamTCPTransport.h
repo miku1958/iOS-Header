@@ -24,16 +24,16 @@
     NSString *_logIdentifier;
 }
 
-@property (strong, nonatomic) HMDDataStreamFrameReader *byteReader; // @synthesize byteReader=_byteReader;
+@property (readonly, nonatomic) HMDDataStreamFrameReader *byteReader; // @synthesize byteReader=_byteReader;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMDDataStreamTransportDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
-@property (strong, nonatomic) HMFNetAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
+@property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property (readonly, nonatomic) HMFNetAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_tcp_connection> *tcpConnection; // @synthesize tcpConnection=_tcpConnection;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;

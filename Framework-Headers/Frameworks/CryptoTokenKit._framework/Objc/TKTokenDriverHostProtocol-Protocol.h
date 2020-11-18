@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol TKTokenDriverHostProtocol <NSObject>
-- (void)auditAuthOperation:(NSString *)arg1 auditToken:(CDStruct_6ad76789)arg2 success:(BOOL)arg3 reply:(void (^)(void))arg4;
+- (void)auditAuthOperation:(NSString *)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(BOOL)arg3 reply:(void (^)(void))arg4;
 - (void)getTokenConfigurationEndpointWithReply:(void (^)(NSXPCListenerEndpoint *))arg1;
 @end
 

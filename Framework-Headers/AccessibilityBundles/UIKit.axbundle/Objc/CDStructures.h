@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -40,6 +38,12 @@ struct _NSRange {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+    long long _field2;
+    BOOL _field3;
+} CDStruct_65ebe2bc;
 
 typedef struct {
     unsigned long long _field1;

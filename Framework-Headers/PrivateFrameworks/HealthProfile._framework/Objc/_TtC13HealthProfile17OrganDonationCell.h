@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthProfile/_TtC13HealthProfile16ProfileBasicCell.h>
+#import <UIKit/UITableViewCell.h>
 
 @class MISSING_TYPE, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _TtC13HealthProfile17OrganDonationCell : _TtC13HealthProfile16ProfileBasicCell
+@interface _TtC13HealthProfile17OrganDonationCell : UITableViewCell
 {
     MISSING_TYPE *organDonationLogoImage;
     MISSING_TYPE *title;
     MISSING_TYPE *subtitle;
+    MISSING_TYPE *item;
 }
 
 @property (nonatomic, weak) UIImageView *organDonationLogoImage; // @synthesize organDonationLogoImage;

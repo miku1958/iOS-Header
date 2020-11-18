@@ -9,13 +9,13 @@
 #import <NanoTimeKitCompanion/NTKCompanionAppLibraryObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationCollectionObserver-Protocol.h>
 
-@class CLKComplicationTemplate, NSString, NTKCompanionAppLibrary, NTKCompanionComplicationDataSource, NTKComplicationCollection;
+@class CLKComplicationTemplate, NSString, NTKCompanionAppLibrary, NTKComplicationCollection, NTKSampleComplicationDataSource;
 
 @interface NTKCompanionRemoteComplicationDataSource : NTKComplicationDataSource <NTKComplicationCollectionObserver, NTKCompanionAppLibraryObserver>
 {
     CLKComplicationTemplate *_complicationTemplate;
     NTKComplicationCollection *_complicationCollection;
-    NTKCompanionComplicationDataSource *_stocksDataSource;
+    NTKSampleComplicationDataSource *_stocksDataSource;
     NTKCompanionAppLibrary *_appLibrary;
 }
 

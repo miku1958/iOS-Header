@@ -4,6 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString, PKAppleCashSharingRecipientCapabilities;
+
 @protocol PKPeerPaymentServiceExportedInterface
+- (void)didReceiveAppleCashSharingRecipientCapabilities:(PKAppleCashSharingRecipientCapabilities *)arg1 forHandle:(NSString *)arg2;
 @end
 

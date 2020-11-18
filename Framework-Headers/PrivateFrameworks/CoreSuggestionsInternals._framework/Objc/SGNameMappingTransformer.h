@@ -12,6 +12,7 @@
 
 @interface SGNameMappingTransformer : NSObject <PMLTransformerProtocol>
 {
+    BOOL _forNameDetector;
     NSDictionary *_nameMappings;
     NSString *_tokenToIgnore;
     int _minimumConfidence;
@@ -23,11 +24,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)instanceForNameDetector;
 + (id)withFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 andPossessive:(id)arg4;
 + (id)withFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 minimumConfidence:(int)arg4 confidenceMapper:(CDUnknownBlockType)arg5 tokenToIgnore:(id)arg6 andPossessive:(id)arg7;
 - (void).cxx_destruct;
-- (id)detectNames:(id)arg1;
-- (id)initWithNameMappings:(id)arg1 minimumConfidence:(int)arg2 confidenceMapper:(CDUnknownBlockType)arg3 tokenToIgnore:(id)arg4;
+- (id)initWithNameMappings:(id)arg1 minimumConfidence:(int)arg2 confidenceMapper:(CDUnknownBlockType)arg3 tokenToIgnore:(id)arg4 forNameDetector:(BOOL)arg5;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToNameMappingTransformer:(id)arg1;

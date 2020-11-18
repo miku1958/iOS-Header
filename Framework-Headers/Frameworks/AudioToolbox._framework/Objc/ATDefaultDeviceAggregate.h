@@ -25,9 +25,14 @@
 - (int)addObserver:(CDUnknownBlockType)arg1;
 - (shared_ptr_57118bb5)impl;
 - (id)init;
+- (unsigned int)inputChannelCount;
 - (id)inputStreamsToUse;
+- (unsigned int)outputChannelCount;
 - (id)outputStreamsToUse;
+- (void)primarySessionIsActivatingWithInputCategory:(BOOL)arg1;
+- (void)primarySessionIsDeactivating;
 - (void)removeObserver:(int)arg1;
+- (double)sampleRate;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKSettingsMeCardSharingNameProvider : NSObject <CNMeCardSharingNameProvider>
 {
     NSString *_givenName;

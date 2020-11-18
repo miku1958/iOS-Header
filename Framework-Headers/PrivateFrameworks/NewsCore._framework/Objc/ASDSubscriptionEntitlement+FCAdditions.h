@@ -8,5 +8,6 @@
 
 @interface ASDSubscriptionEntitlement (FCAdditions)
 - (id)description;
+- (id)servicesBundlePurchaseID;
 @end
 

@@ -4,30 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PGPersonResult-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDateComponents, NSString;
 
-@interface PGGraphPersonNode : PGGraphNode <PGPersonResult>
+@interface PGGraphPersonNode : PGGraphOptimizedNode <PGPersonResult>
 {
+    BOOL _isFavorite;
+    BOOL _isUserCreated;
+    NSString *_name;
+    NSString *_localIdentifier;
+    NSString *_contactIdentifier;
+    NSDate *_birthdayDate;
+    NSDate *_potentialBirthdayDate;
+    NSDate *_anniversaryDate;
+    unsigned long long _sex;
+    unsigned long long _ageCategory;
 }
 
-@property (readonly) unsigned long long ageCategory;
-@property (readonly) NSDate *anniversaryDate;
+@property (nonatomic) unsigned long long ageCategory; // @synthesize ageCategory=_ageCategory;
+@property (readonly) NSDate *anniversaryDate; // @synthesize anniversaryDate=_anniversaryDate;
+@property (strong, nonatomic) NSDateComponents *anniversaryDateComponents;
+@property (readonly) BOOL belongsToAnySocialGroup;
+@property (readonly) BOOL belongsToBestSocialGroups;
 @property (readonly, nonatomic) NSDate *birthdayDate;
-@property (readonly) NSDate *birthdayDate;
+@property (readonly) NSDate *birthdayDate; // @synthesize birthdayDate=_birthdayDate;
+@property (strong, nonatomic) NSDateComponents *birthdayDateComponents;
 @property (readonly, nonatomic) NSString *contactIdentifier;
-@property (readonly) NSString *contactIdentifier;
+@property (readonly) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *displayName;
-@property (readonly) unsigned long long gender;
+@property (readonly, nonatomic) NSString *fullName;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL isFavorite;
+@property (readonly) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (readonly, nonatomic) BOOL isInferredChild;
 @property (readonly) BOOL isInferredMemberOfMyFamily;
+@property (readonly) BOOL isMeNode;
 @property (readonly) BOOL isMemberOfMyFamily;
 @property (readonly) BOOL isMyAcquaintance;
 @property (readonly) BOOL isMyChild;
@@ -47,35 +61,67 @@
 @property (readonly) BOOL isMyParent;
 @property (readonly) BOOL isMyPartner;
 @property (readonly) BOOL isMySibling;
-@property (readonly) BOOL isUserCreated;
+@property (readonly) BOOL isUserCreated; // @synthesize isUserCreated=_isUserCreated;
 @property (readonly, nonatomic) BOOL isVerified;
 @property (readonly, nonatomic) NSString *keywordDescription;
 @property (readonly, nonatomic) NSString *localIdentifier;
-@property (readonly) NSString *localIdentifier;
-@property (readonly) NSDate *potentialBirthdayDate;
+@property (readonly) NSString *localIdentifier; // @synthesize localIdentifier=_localIdentifier;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) unsigned long long numberOfMomentNodes;
+@property (readonly) double personScore;
+@property (readonly) NSDate *potentialBirthdayDate; // @synthesize potentialBirthdayDate=_potentialBirthdayDate;
+@property (strong, nonatomic) NSDateComponents *potentialBirthdayDateComponents;
+@property (nonatomic) unsigned long long sex; // @synthesize sex=_sex;
 @property (readonly, nonatomic) NSString *suggestedContactIdentifier;
 @property (readonly) Class superclass;
 
-+ (id)identifyingPropertyKeysWithProperties:(id)arg1;
++ (id)_specialDateComponentsForDate:(id)arg1;
++ (id)acquaintanceOfPerson;
++ (id)brotherOfPerson;
++ (id)childOfPerson;
++ (id)coworkerOfPerson;
++ (id)coworkerSocialGroupOfPerson;
++ (id)daughterOfPerson;
++ (id)familyOfPerson;
++ (id)familySocialGroupOfPerson;
++ (id)fatherOfPerson;
++ (id)filter;
++ (id)friendOfPerson;
++ (id)motherOfPerson;
++ (id)parentOfPerson;
++ (id)partnerOfPerson;
 + (id)personScoreSortDescriptors;
++ (id)personSortDescriptors;
 + (id)propertiesWithPerson:(id)arg1;
++ (id)sisterOfPerson;
++ (id)sonOfPerson;
++ (id)specialDateForDateComponents:(id)arg1;
++ (double)specialDateTimeIntervalForDate:(id)arg1;
 + (unsigned long long)type;
++ (id)vipOfPerson;
+- (void).cxx_destruct;
 - (BOOL)_contactSuggestionEdge:(id)arg1 fitsQuery:(unsigned long long)arg2;
 - (id)_contactSuggestionEdgesSortedByWeight;
 - (BOOL)_hasRelationshipLabel:(id)arg1 withStatus:(unsigned long long)arg2;
 - (id)associatedNodesForRemoval;
-- (BOOL)belongsToBestSocialGroups;
 - (long long)compareToPerson:(id)arg1;
+- (unsigned short)domain;
+- (void)enumerateBirthdayMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateContactSuggestionsSortedByWeightMatchingQuery:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (BOOL)isMeNode;
+- (void)enumerateHomeOrWorkAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateSocialGroupNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (BOOL)isIdentifiedByProperties:(id)arg1;
+- (id)label;
 - (void)mergeProperties:(id)arg1;
-- (void)personEnumerateBirthdayMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)personEnumerateHomeOrWorkAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)personEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)personEnumerateSocialGroupNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)personMomentNodes;
-- (double)personScore;
-- (id)personSocialGroupNodes;
+- (id)momentNodes;
+- (id)propertyDictionary;
+- (void)setBiologicalSex:(unsigned long long)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)socialGroupNodes;
 - (id)stringDescription;
 
 @end

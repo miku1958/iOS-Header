@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, NSString;
 
 @interface VKDebugSettings : NSObject
 {
@@ -26,6 +26,7 @@
     BOOL _paintLoadReason;
     BOOL _disableRoute;
     BOOL _labelHighlighting;
+    BOOL _showClientStyleAttributes;
     BOOL _transitHighlighting;
     BOOL _labelCollisionDisabled;
     BOOL _labelFacingCullDisabled;
@@ -33,6 +34,7 @@
     BOOL _labelFlipAlternatePositionsEnable;
     BOOL _labelTileDecodeEnabled;
     BOOL _disableBackgroundLabelLayout;
+    BOOL _enableLegacyLineLabeling;
     BOOL _labelAllowDefaultStyle;
     BOOL _labelUpdateMapTilesContinuously;
     BOOL _labelStyleOverridesDisabled;
@@ -47,10 +49,11 @@
     BOOL _paintLabelBounds;
     BOOL _paintLabelRoadFeatures;
     BOOL _displayTextureAtlas;
-    BOOL _disableGlyphTextureAtlas;
     BOOL _disableIconTextureAtlas;
     unsigned char _textureAtlasIndex;
     unsigned short _textureAtlasPageIndex;
+    unsigned int _POIDensityMinNeighbors;
+    unsigned int _POIDensityMaxNeighbors;
     BOOL _paintLabelCollisionLines;
     BOOL _paintLabelCounts;
     unsigned char _labelerOutputIndex;
@@ -95,7 +98,6 @@
     BOOL _showNavCameraDebugConsoleAttributes;
     BOOL _showNavCameraDebugLegend;
     float _ribbonCrispness;
-    BOOL _useGeoResourceLib;
     int _debugOverlayOffsetX;
     int _debugOverlayOffsetY;
     float _altitudeLodScale;
@@ -126,6 +128,7 @@
     BOOL _disableRoadSignLimit;
     BOOL _showNavLabelOverlay;
     BOOL _enableTrafficFeatureLabelDebugging;
+    BOOL _disableRouteAnnotationLimit;
     BOOL _enableEtaLabelDebugging;
     BOOL _enableRouteShareSectionDebugging;
     BOOL _enableEtaLabelRectDebugging;
@@ -145,6 +148,7 @@
     BOOL _paintStandardLabelMapData;
     BOOL _paintPolygonLayerData;
     BOOL _paintRoadTileData;
+    BOOL _enableRoadSignArtworkDebugging;
     BOOL _muninDebugLayer;
     BOOL _muninGraphConnections;
     BOOL _muninShowRigTransitionInfo;
@@ -206,6 +210,14 @@
     BOOL _shouldUseSDFSuperSampling;
     BOOL _shouldFreezeLayoutCamera;
     BOOL _decodeStyleNames;
+    BOOL _disableContinuousMultiSectionRoutes;
+    BOOL _showRouteLineDebugPoints;
+    unsigned int _continuousMultiSectionRouteAdditionalOverlap;
+    BOOL _enableNavRoadSignOrientationDebugging;
+    BOOL _debugCaptureNextGPUFrame;
+    NSString *_debugGPUFrameCaptureURL;
+    BOOL _slowAnimations;
+    BOOL _slowTransitions;
     struct unique_ptr<(anonymous namespace)::CustomLandmarksContainer, std::__1::default_delete<(anonymous namespace)::CustomLandmarksContainer>> _customLandmarks;
     BOOL _paintPoiTiles;
     BOOL _paintLandcoverTiles;
@@ -229,6 +241,8 @@
     shared_ptr_a3c46825 _debugStyleManager;
 }
 
+@property (nonatomic) unsigned int POIDensityMaxNeighbors; // @synthesize POIDensityMaxNeighbors=_POIDensityMaxNeighbors;
+@property (nonatomic) unsigned int POIDensityMinNeighbors; // @synthesize POIDensityMinNeighbors=_POIDensityMinNeighbors;
 @property (nonatomic) BOOL altitudeDisableC3mTextureLoading; // @synthesize altitudeDisableC3mTextureLoading=_altitudeDisableC3mTextureLoading;
 @property (nonatomic) float altitudeFadeSpeed; // @synthesize altitudeFadeSpeed=_altitudeFadeSpeed;
 @property (nonatomic) BOOL altitudeFreezeViewNode; // @synthesize altitudeFreezeViewNode=_altitudeFreezeViewNode;
@@ -247,6 +261,7 @@
 @property (nonatomic) float altitudeTileQualityThreshold; // @synthesize altitudeTileQualityThreshold=_altitudeTileQualityThreshold;
 @property (nonatomic) BOOL altitudeTourSpeedup; // @synthesize altitudeTourSpeedup=_altitudeTourSpeedup;
 @property (nonatomic) float altitudeTourSpeedupFactor; // @synthesize altitudeTourSpeedupFactor=_altitudeTourSpeedupFactor;
+@property (readonly, nonatomic) float animationTimeMultiplier;
 @property (nonatomic) float arDefaultHeight; // @synthesize arDefaultHeight=_arDefaultHeight;
 @property (nonatomic) BOOL arOverrideDefaults; // @synthesize arOverrideDefaults=_arOverrideDefaults;
 @property (nonatomic) unsigned long long arPinchGesture; // @synthesize arPinchGesture=_arPinchGesture;
@@ -255,6 +270,9 @@
 @property (nonatomic) float arVirtualPlaneHeight; // @synthesize arVirtualPlaneHeight=_arVirtualPlaneHeight;
 @property (nonatomic) BOOL constantlyChangeTileGroup; // @synthesize constantlyChangeTileGroup=_constantlyChangeTileGroup;
 @property (nonatomic) double constantlyChangeTileGroupInterval; // @synthesize constantlyChangeTileGroupInterval=_constantlyChangeTileGroupInterval;
+@property (nonatomic) unsigned int continuousMultiSectionRouteAdditionalOverlap; // @synthesize continuousMultiSectionRouteAdditionalOverlap=_continuousMultiSectionRouteAdditionalOverlap;
+@property (nonatomic) BOOL debugCaptureNextGPUFrame; // @synthesize debugCaptureNextGPUFrame=_debugCaptureNextGPUFrame;
+@property (copy, nonatomic) NSString *debugGPUFrameCaptureURL; // @synthesize debugGPUFrameCaptureURL=_debugGPUFrameCaptureURL;
 @property (nonatomic) int debugOverlayOffsetX; // @synthesize debugOverlayOffsetX=_debugOverlayOffsetX;
 @property (nonatomic) int debugOverlayOffsetY; // @synthesize debugOverlayOffsetY=_debugOverlayOffsetY;
 @property (nonatomic) shared_ptr_a3c46825 debugStyleManager; // @synthesize debugStyleManager=_debugStyleManager;
@@ -262,12 +280,13 @@
 @property (nonatomic) float defaultFovLandscape; // @synthesize defaultFovLandscape=_defaultFovLandscape;
 @property (nonatomic) float defaultFovPortrait; // @synthesize defaultFovPortrait=_defaultFovPortrait;
 @property (nonatomic) BOOL disableBackgroundLabelLayout; // @synthesize disableBackgroundLabelLayout=_disableBackgroundLabelLayout;
-@property (nonatomic) BOOL disableGlyphTextureAtlas; // @synthesize disableGlyphTextureAtlas=_disableGlyphTextureAtlas;
+@property (nonatomic) BOOL disableContinuousMultiSectionRoutes; // @synthesize disableContinuousMultiSectionRoutes=_disableContinuousMultiSectionRoutes;
 @property (nonatomic) BOOL disableIconTextureAtlas; // @synthesize disableIconTextureAtlas=_disableIconTextureAtlas;
 @property (nonatomic) BOOL disableIntraLinkTransitLineCrossings; // @synthesize disableIntraLinkTransitLineCrossings=_disableIntraLinkTransitLineCrossings;
 @property (nonatomic) BOOL disableOverlayTextConsole; // @synthesize disableOverlayTextConsole=_disableOverlayTextConsole;
 @property (nonatomic) BOOL disableRoadSignLimit; // @synthesize disableRoadSignLimit=_disableRoadSignLimit;
 @property (nonatomic) BOOL disableRoute; // @synthesize disableRoute=_disableRoute;
+@property (nonatomic) BOOL disableRouteAnnotationLimit; // @synthesize disableRouteAnnotationLimit=_disableRouteAnnotationLimit;
 @property (nonatomic) BOOL disableStylesheetAnimations; // @synthesize disableStylesheetAnimations=_disableStylesheetAnimations;
 @property (nonatomic) BOOL disableTransitLineDrawing; // @synthesize disableTransitLineDrawing=_disableTransitLineDrawing;
 @property (nonatomic) BOOL disableTransitLineGroupMerging; // @synthesize disableTransitLineGroupMerging=_disableTransitLineGroupMerging;
@@ -284,12 +303,15 @@
 @property (nonatomic) BOOL enableAROmniTileLoader; // @synthesize enableAROmniTileLoader=_enableAROmniTileLoader;
 @property (nonatomic) BOOL enableEtaLabelDebugging; // @synthesize enableEtaLabelDebugging=_enableEtaLabelDebugging;
 @property (nonatomic) BOOL enableEtaLabelRectDebugging; // @synthesize enableEtaLabelRectDebugging=_enableEtaLabelRectDebugging;
+@property (nonatomic) BOOL enableLegacyLineLabeling; // @synthesize enableLegacyLineLabeling=_enableLegacyLineLabeling;
 @property (nonatomic) BOOL enableLoggingInLockScreen; // @synthesize enableLoggingInLockScreen=_enableLoggingInLockScreen;
 @property (nonatomic) BOOL enableMuninMiniMapCollectionPoints; // @synthesize enableMuninMiniMapCollectionPoints=_enableMuninMiniMapCollectionPoints;
 @property (nonatomic) BOOL enableMuninMiniMapComposedEdgeRoadColoring; // @synthesize enableMuninMiniMapComposedEdgeRoadColoring=_enableMuninMiniMapComposedEdgeRoadColoring;
 @property (nonatomic) BOOL enableMuninMiniMapRoadWidths; // @synthesize enableMuninMiniMapRoadWidths=_enableMuninMiniMapRoadWidths;
 @property (nonatomic) BOOL enableMuninMiniMapRoadZData; // @synthesize enableMuninMiniMapRoadZData=_enableMuninMiniMapRoadZData;
 @property (nonatomic) BOOL enableMuninRoadNetworkMiniMap; // @synthesize enableMuninRoadNetworkMiniMap=_enableMuninRoadNetworkMiniMap;
+@property (nonatomic) BOOL enableNavRoadSignOrientationDebugging; // @synthesize enableNavRoadSignOrientationDebugging=_enableNavRoadSignOrientationDebugging;
+@property (nonatomic) BOOL enableRoadSignArtworkDebugging; // @synthesize enableRoadSignArtworkDebugging=_enableRoadSignArtworkDebugging;
 @property (nonatomic) BOOL enableRouteIntersectionTesting; // @synthesize enableRouteIntersectionTesting=_enableRouteIntersectionTesting;
 @property (nonatomic) BOOL enableRouteShareSectionDebugging; // @synthesize enableRouteShareSectionDebugging=_enableRouteShareSectionDebugging;
 @property (nonatomic) BOOL enableSignPostEvents; // @synthesize enableSignPostEvents=_enableSignPostEvents;
@@ -420,6 +442,7 @@
 @property (nonatomic) BOOL shouldUseSDFGlyphs; // @synthesize shouldUseSDFGlyphs=_shouldUseSDFGlyphs;
 @property (nonatomic) BOOL shouldUseSDFSuperSampling; // @synthesize shouldUseSDFSuperSampling=_shouldUseSDFSuperSampling;
 @property (nonatomic) BOOL shouldUseTestTileLoader; // @synthesize shouldUseTestTileLoader=_shouldUseTestTileLoader;
+@property (nonatomic) BOOL showClientStyleAttributes; // @synthesize showClientStyleAttributes=_showClientStyleAttributes;
 @property (nonatomic) BOOL showManeuverPoints; // @synthesize showManeuverPoints=_showManeuverPoints;
 @property (nonatomic) BOOL showNavCameraDebugConsole; // @synthesize showNavCameraDebugConsole=_showNavCameraDebugConsole;
 @property (nonatomic) BOOL showNavCameraDebugConsoleAttributes; // @synthesize showNavCameraDebugConsoleAttributes=_showNavCameraDebugConsoleAttributes;
@@ -427,8 +450,11 @@
 @property (nonatomic) BOOL showNavCameraDebugLegend; // @synthesize showNavCameraDebugLegend=_showNavCameraDebugLegend;
 @property (nonatomic) BOOL showNavCameraDebugOverlay; // @synthesize showNavCameraDebugOverlay=_showNavCameraDebugOverlay;
 @property (nonatomic) BOOL showNavLabelOverlay; // @synthesize showNavLabelOverlay=_showNavLabelOverlay;
+@property (nonatomic) BOOL showRouteLineDebugPoints; // @synthesize showRouteLineDebugPoints=_showRouteLineDebugPoints;
 @property (nonatomic) BOOL showTrafficCasing; // @synthesize showTrafficCasing=_showTrafficCasing;
+@property (nonatomic) BOOL slowAnimations; // @synthesize slowAnimations=_slowAnimations;
 @property (nonatomic) BOOL slowMotionBump; // @synthesize slowMotionBump=_slowMotionBump;
+@property (nonatomic) BOOL slowTransitions; // @synthesize slowTransitions=_slowTransitions;
 @property (nonatomic) BOOL suppressFootprints; // @synthesize suppressFootprints=_suppressFootprints;
 @property (nonatomic) BOOL textlessPOIsEnabled; // @synthesize textlessPOIsEnabled=_textlessPOIsEnabled;
 @property (nonatomic) float textlessPOIsMinZoom; // @synthesize textlessPOIsMinZoom=_textlessPOIsMinZoom;
@@ -438,8 +464,8 @@
 @property (nonatomic) BOOL traceEtaDebugLog; // @synthesize traceEtaDebugLog=_traceEtaDebugLog;
 @property (nonatomic) BOOL trackingCameraZoomFurther; // @synthesize trackingCameraZoomFurther=_trackingCameraZoomFurther;
 @property (nonatomic) BOOL transitHighlighting; // @synthesize transitHighlighting=_transitHighlighting;
+@property (readonly, nonatomic) float transitionTimeMultiplier;
 @property (nonatomic) BOOL useBuildingShadowTexture; // @synthesize useBuildingShadowTexture=_useBuildingShadowTexture;
-@property (nonatomic) BOOL useGeoResourceLib; // @synthesize useGeoResourceLib=_useGeoResourceLib;
 @property (nonatomic) BOOL useMetalRenderer; // @synthesize useMetalRenderer=_useMetalRenderer;
 @property (nonatomic) BOOL useStaticTrafficFeed; // @synthesize useStaticTrafficFeed=_useStaticTrafficFeed;
 
@@ -456,6 +482,7 @@
 - (BOOL)isPerformanceGroupShown:(unsigned int)arg1;
 - (id)nameForPerformanceGroup:(unsigned int)arg1;
 - (unsigned int)numPerformanceGroups;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)overlaysShouldDrawDebug;
 - (void)removeTileToPaint;
 - (void)setCustomLandmarkFromData:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2 texturePath:(id)arg3;

@@ -14,11 +14,13 @@
     BOOL _completed;
     NSString *_key;
     NSString *_suggestedAutomationIdentifier;
+    NSString *_source;
 }
 
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (nonatomic) BOOL interacted; // @synthesize interacted=_interacted;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property (copy, nonatomic) NSString *suggestedAutomationIdentifier; // @synthesize suggestedAutomationIdentifier=_suggestedAutomationIdentifier;
 
 + (Class)codableEventClass;

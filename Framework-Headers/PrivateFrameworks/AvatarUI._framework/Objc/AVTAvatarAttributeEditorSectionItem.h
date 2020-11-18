@@ -7,22 +7,24 @@
 #import <objc/NSObject.h>
 
 #import <AvatarUI/AVTAvatarAttributeEditorSectionItem-Protocol.h>
+#import <AvatarUI/AVTAvatarAttributeEditorSectionItemInternal-Protocol.h>
 #import <AvatarUI/AVTAvatarAttributeEditorSectionItemPrefetching-Protocol.h>
+#import <AvatarUI/AVTAvatarUpdating-Protocol.h>
 #import <AvatarUI/AVTDiscardableContent-Protocol.h>
 
 @class NSString, UIImage;
 
-@interface AVTAvatarAttributeEditorSectionItem : NSObject <AVTAvatarAttributeEditorSectionItem, AVTDiscardableContent, AVTAvatarAttributeEditorSectionItemPrefetching>
+@interface AVTAvatarAttributeEditorSectionItem : NSObject <AVTAvatarAttributeEditorSectionItemInternal, AVTDiscardableContent, AVTAvatarAttributeEditorSectionItemPrefetching, AVTAvatarUpdating, AVTAvatarAttributeEditorSectionItem>
 {
     BOOL _selected;
+    NSString *_identifier;
     NSString *_localizedName;
     CDUnknownBlockType _avatarUpdater;
-    CDUnknownBlockType discardableContentHandler;
-    NSString *_identifier;
-    UIImage *_cachedThumbnail;
-    double _heightRatio;
     CDUnknownBlockType _thumbnailProvider;
     CDUnknownBlockType _presetResourcesProvider;
+    CDUnknownBlockType discardableContentHandler;
+    UIImage *_cachedThumbnail;
+    double _heightRatio;
 }
 
 @property (readonly, copy, nonatomic) CDUnknownBlockType avatarUpdater; // @synthesize avatarUpdater=_avatarUpdater;

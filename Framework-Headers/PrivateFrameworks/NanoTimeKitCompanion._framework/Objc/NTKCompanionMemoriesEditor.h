@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)_assetForResourceDirectoryForDevice:(id)arg1;
+- (id)_fetchSingleAsset;
 
 @end
 

@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)generateRequestOperations;
-- (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;

@@ -14,6 +14,7 @@
     struct map<TSUCellCoord, TSTCell *, std::__1::less<TSUCellCoord>, std::__1::allocator<std::__1::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord;
     TSPTemporaryObjectContextDelegate *_temporaryObjectContextDelegate;
     TSPObjectContext *_temporaryContext;
+    struct TSCECellCoordSet _cellCoordsToStyleUpgradeForFormulatext;
 }
 
 - (id).cxx_construct;
@@ -23,8 +24,11 @@
 - (void)applyBlockToAllCells:(CDUnknownBlockType)arg1;
 - (id)cellAtCellID:(struct TSUCellCoord)arg1;
 - (id)init;
+- (BOOL)noLockShouldUpgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 - (void)removeAllCells;
 - (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
+- (BOOL)shouldUpgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
+- (void)upgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 
 @end
 

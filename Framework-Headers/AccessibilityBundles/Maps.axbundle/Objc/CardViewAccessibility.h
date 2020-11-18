@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityContaineeLayout;
+- (id)_accessibilityContaineeViewController;
+- (id)_accessibilityContainerViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_axCollapseCard;
 - (BOOL)_axExpandCard;

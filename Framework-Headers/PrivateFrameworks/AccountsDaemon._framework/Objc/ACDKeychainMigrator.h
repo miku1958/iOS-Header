@@ -23,8 +23,9 @@ __attribute__((visibility("hidden")))
 - (void)_validateKeychainItemClass:(id)arg1;
 - (id)allKeychainItems;
 - (id)init;
+- (id)keychainItemsForAccounts:(id)arg1;
 - (void)migrateAllKeychainItems;
-- (BOOL)migrateKeychainItem:(id)arg1;
+- (BOOL)migrateKeychainItem:(id)arg1 toKeybag:(BOOL)arg2;
 
 @end
 

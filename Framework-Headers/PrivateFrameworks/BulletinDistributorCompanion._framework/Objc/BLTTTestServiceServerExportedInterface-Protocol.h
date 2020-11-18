@@ -14,6 +14,7 @@
 - (void)disableStandaloneTestModeWithCompletion:(void (^)(void))arg1;
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4 completion:(void (^)(void))arg5;
 - (void)getStandaloneTestModeEnabledWithCompletion:(void (^)(BOOL))arg1;
+- (void)logFaultWithCompletion:(void (^)(void))arg1;
 - (void)originalSettingsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)overriddenSettingsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)removeSectionID:(NSString *)arg1 completion:(void (^)(void))arg2;

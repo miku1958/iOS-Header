@@ -26,6 +26,8 @@
         BOOL userInterfaceFeature;
         BOOL userInterfaceStyle;
         BOOL userInterfaceLevel;
+        BOOL windowReferenceSize;
+        BOOL windowOrientation;
     } _needsUpdateFlags;
     BOOL _enabled;
     NSObject<PXAnonymousTraitCollection> *_traitCollection;
@@ -39,8 +41,10 @@
     double _displayScale;
     long long _userInterfaceStyle;
     long long _userInterfaceLevel;
+    long long _windowOrientation;
     NSObject<PXAnonymousViewController> *_viewController;
     struct CGSize _layoutReferenceSize;
+    struct CGSize _windowReferenceSize;
     struct CGSize __viewSize;
     struct CGSize __pendingViewTransitionSize;
     struct UIEdgeInsets _safeAreaInsets;
@@ -65,6 +69,8 @@
 @property (nonatomic, setter=_setUserInterfaceLevel:) long long userInterfaceLevel; // @synthesize userInterfaceLevel=_userInterfaceLevel;
 @property (nonatomic, setter=_setUserInterfaceStyle:) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property (readonly, weak, nonatomic) NSObject<PXAnonymousViewController> *viewController; // @synthesize viewController=_viewController;
+@property (readonly, nonatomic) long long windowOrientation; // @synthesize windowOrientation=_windowOrientation;
+@property (readonly, nonatomic) struct CGSize windowReferenceSize; // @synthesize windowReferenceSize=_windowReferenceSize;
 
 - (void).cxx_destruct;
 - (void)_invalidateContentSizeCategory;
@@ -77,8 +83,12 @@
 - (void)_invalidateUserInterfaceLevel;
 - (void)_invalidateUserInterfaceStyle;
 - (void)_invalidateViewSize;
+- (void)_invalidateWindowOrientation;
+- (void)_invalidateWindowReferenceSize;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
+- (void)_setWindowOrientation:(long long)arg1;
+- (void)_setWindowReferenceSize:(struct CGSize)arg1;
 - (void)_updateContentSizeCategoryIfNeeded;
 - (void)_updateDisplayScaleIfNeeded;
 - (void)_updateIfNeeded;
@@ -94,6 +104,8 @@
 - (void)_updateUserInterfaceLevelIfNeeded;
 - (void)_updateUserInterfaceStyleIfNeeded;
 - (void)_updateViewSizeIfNeeded;
+- (void)_updateWindowOrientationIfNeeded;
+- (void)_updateWindowReferenceSizeIfNeeded;
 - (void)_viewWillLayoutSubviews;
 - (id)createTraitCollection;
 - (void)dealloc;

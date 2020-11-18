@@ -12,9 +12,13 @@
 @interface VUIMediaItem : VUIMediaEntity
 {
     NSNumber *_isPlayable;
+    NSString *_seasonCanonicalID;
+    NSString *_showCanonicalID;
 }
 
+@property (readonly, nonatomic) BOOL allowsManualDownloadRenewal;
 @property (readonly, copy, nonatomic) NSNumber *assetType;
+@property (readonly, copy, nonatomic) NSDate *availabilityEndDate;
 @property (copy, nonatomic) NSNumber *bookmark;
 @property (readonly, copy, nonatomic) VUIMediaItemCredits *credits;
 @property (readonly, copy, nonatomic) NSDate *downloadExpirationDate;
@@ -27,10 +31,13 @@
 @property (readonly, nonatomic) MPMediaItem *mediaPlayerMediaItem;
 @property (copy, nonatomic) NSNumber *playCount;
 @property (readonly, copy, nonatomic) NSString *previewFrameImageIdentifier;
+@property (readonly, nonatomic) BOOL renewsOfflineKeysAutomatically;
 @property (readonly, copy, nonatomic) NSDate *rentalExpirationDate;
 @property (readonly, copy, nonatomic) NSNumber *rentalPlaybackDuration;
+@property (readonly, copy, nonatomic) NSString *seasonCanonicalID; // @synthesize seasonCanonicalID=_seasonCanonicalID;
 @property (readonly, copy, nonatomic) NSObject<VUIMediaEntityIdentifier> *seasonIdentifier;
 @property (readonly, copy, nonatomic) NSString *seasonTitle;
+@property (readonly, copy, nonatomic) NSString *showCanonicalID; // @synthesize showCanonicalID=_showCanonicalID;
 @property (readonly, copy, nonatomic) NSString *studio;
 
 + (id)_mediaItemWithMPMediaItem:(id)arg1;

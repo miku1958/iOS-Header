@@ -6,15 +6,19 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOAnalyticsPipelineEvalStatus, GEOUserSessionEntity, NSData, NSObject, NSPredicate, NSString;
+@class GEOAnalyticsPipelineEvalStatus, GEOUserSessionEntity, NSArray, NSData, NSNumber, NSObject, NSPredicate, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol GEOAnalyticsPipelineProxy <NSObject>
 - (void)flushEvalData;
 - (GEOAnalyticsPipelineEvalStatus *)getEvalStatus;
 - (void)initiateUploadOfType:(int)arg1;
+- (void)reportCuratedCollectionActionType:(unsigned long long)arg1 collectionId:(unsigned long long)arg2 completion:(void (^)(void))arg3 completionQueue:(NSObject<OS_dispatch_queue> *)arg4;
+- (void)reportDailySettingsStates:(NSArray *)arg1 completion:(void (^)(void))arg2 completionQueue:(NSObject<OS_dispatch_queue> *)arg3;
+- (void)reportDailyUsageCountType:(int)arg1 usageString:(NSString *)arg2 usageBool:(NSNumber *)arg3 appId:(NSString *)arg4 completion:(void (^)(void))arg5 completionQueue:(NSObject<OS_dispatch_queue> *)arg6;
 - (void)reportLogMsgType:(int)arg1 handlingPolicyId:(int)arg2 logMsg:(NSData *)arg3 completion:(void (^)(void))arg4 completionQueue:(NSObject<OS_dispatch_queue> *)arg5;
 - (void)reportMapKitCountType:(int)arg1 appId:(NSString *)arg2 completion:(void (^)(void))arg3 completionQueue:(NSObject<OS_dispatch_queue> *)arg4;
+- (void)runAggregationTasks;
 - (void)setEvalMode:(BOOL)arg1;
 - (void)setShortSessionValues:(GEOUserSessionEntity *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)shortSessionValuesWithCompletion:(void (^)(struct GEOSessionID, unsigned long long, double))arg1;

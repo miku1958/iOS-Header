@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
 @protocol AEPackageTransportDelegate;
 
 @interface AEPackageTransport : PXObservable
@@ -14,21 +14,27 @@
     id<AEPackageTransportDelegate> _delegate;
     NSMutableArray *__stagedIdentifiersInOrder;
     NSMutableDictionary *__stagedPackagesByIdentifier;
+    NSMutableSet *__pendingPackageIdentifiers;
 }
 
+@property (readonly, nonatomic) NSMutableSet *_pendingPackageIdentifiers; // @synthesize _pendingPackageIdentifiers=__pendingPackageIdentifiers;
 @property (readonly, nonatomic) NSMutableArray *_stagedIdentifiersInOrder; // @synthesize _stagedIdentifiersInOrder=__stagedIdentifiersInOrder;
 @property (readonly, nonatomic) NSMutableDictionary *_stagedPackagesByIdentifier; // @synthesize _stagedPackagesByIdentifier=__stagedPackagesByIdentifier;
 @property (weak, nonatomic) id<AEPackageTransportDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) long long expectedPackageCount;
+@property (readonly, nonatomic) NSSet *expectedPackageIdentifiers;
 
 - (void).cxx_destruct;
 - (void)_addPackageToStaging:(id)arg1;
 - (void)_removePackageFromStagingWithIdentifier:(id)arg1;
+- (void)addPendingPackageIdentifier:(id)arg1;
 - (void)commitPackage:(id)arg1;
 - (id)init;
 - (id)mutableChangeObject;
 - (id)orderedStagedIdentifiers;
 - (id)packagesWithLivePhotoContent;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (void)removePendingPackageIdentifier:(id)arg1;
 - (void)reportError:(id)arg1;
 - (void)stagePackage:(id)arg1;
 - (void)stagePackages:(id)arg1;

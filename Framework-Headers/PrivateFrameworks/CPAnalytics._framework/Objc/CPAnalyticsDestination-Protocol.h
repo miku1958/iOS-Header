@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CPAnalytics, CPAnalyticsEvent, NSDictionary;
+#import <CPAnalytics/CPAnalyticsDestinationProtocol-Protocol.h>
 
-@protocol CPAnalyticsDestination
+@class CPAnalytics, NSDictionary;
+
+@protocol CPAnalyticsDestination <CPAnalyticsDestinationProtocol>
 - (id)init;
 - (id)initWithConfig:(NSDictionary *)arg1 cpAnalyticsInstance:(CPAnalytics *)arg2;
-- (void)processEvent:(CPAnalyticsEvent *)arg1;
+
+@optional
++ (BOOL)disabled;
+- (void)updateWithConfig:(NSDictionary *)arg1;
 @end
 

@@ -12,6 +12,7 @@
 
 + (id)_distanceTypeForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
 + (id)observedTypesForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2 connectedToFitnessMachine:(BOOL)arg3;
++ (id)observedTypesForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2 connectedToFitnessMachine:(BOOL)arg3 activityMode:(long long)arg4;
 
 @end
 

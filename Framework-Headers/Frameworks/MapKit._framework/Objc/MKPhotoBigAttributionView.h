@@ -6,31 +6,45 @@
 
 #import <UIKit/UIView.h>
 
-@class MKMapItem, UIImageView, _MKUILabel;
+#import <MapKit/MKActivityObserving-Protocol.h>
+#import <MapKit/MKPhotoBigAttributionViewSubclass-Protocol.h>
+
+@class MKMapItem, NSString, UIActivityIndicatorView, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface MKPhotoBigAttributionView : UIView
+@interface MKPhotoBigAttributionView : UIView <MKPhotoBigAttributionViewSubclass, MKActivityObserving>
 {
     UIImageView *_imageView;
-    _MKUILabel *_firstLineLabel;
-    _MKUILabel *_secondLineLabel;
-    UIView *_labelsView;
     UIView *_backgroundView;
+    BOOL _needsImageLoad;
+    UIActivityIndicatorView *_spinner;
     long long _context;
     long long _type;
     MKMapItem *_mapItem;
+    UIView *_contentView;
 }
 
+@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic) long long context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (readonly, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
+@property (readonly) Class superclass;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)bigAttributionViewForMapItem:(id)arg1 attributionType:(long long)arg2 isFirstParty:(BOOL)arg3 context:(long long)arg4;
 - (void).cxx_destruct;
-- (id)firstLineLabelFont;
+- (void)beginAnimatingActivityIndicator;
+- (void)didEndAnimatingActivityIndicatorView;
+- (void)didUpdateAttributionViewType;
+- (void)didUpdateMapItem;
+- (void)endAnimatingActivityIndicatorWithError:(id)arg1;
 - (id)initWithContext:(long long)arg1;
-- (id)secondLineLabelFont;
-- (void)setMapItem:(id)arg1 andType:(long long)arg2;
-- (void)updateBackground;
-- (void)updateInfoAttributionString;
+- (void)layoutSubviews;
+- (void)updateBackgroundIfNeeded;
+- (void)willStartAnimatingActivityIndicatorView;
 
 @end
 

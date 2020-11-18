@@ -11,32 +11,39 @@
 #import <PhotosUICore/UIFocusItem-Protocol.h>
 
 @class NSArray, NSString, PXGBasicAXGroup, UIView;
-@protocol PXAccessibilityView, PXDisplayAsset, UIFocusEnvironment, UIFocusItemContainer;
+@protocol PXAnonymousView, PXDisplayAsset, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface PXGReusableAXInfo : NSObject <UIFocusItem, PXGAXInfo, PXReusableObject>
 {
     id _content;
+    BOOL _allowDecorations;
     unsigned int _spriteIndex;
     PXGBasicAXGroup *_axContainingGroup;
+    long long _alternateUIVisibility;
+    NSArray *_axDecorations;
     long long _axContentKind;
     CDStruct_dfa1459f _spriteGeometry;
 }
 
+@property (nonatomic) BOOL allowDecorations; // @synthesize allowDecorations=_allowDecorations;
+@property (nonatomic) long long alternateUIVisibility; // @synthesize alternateUIVisibility=_alternateUIVisibility;
 @property (readonly, nonatomic) id<PXDisplayAsset> axAsset;
 @property (weak, nonatomic) PXGBasicAXGroup *axContainingGroup; // @synthesize axContainingGroup=_axContainingGroup;
 @property (nonatomic) long long axContentKind; // @synthesize axContentKind=_axContentKind;
+@property (strong, nonatomic) NSArray *axDecorations; // @synthesize axDecorations=_axDecorations;
 @property (readonly, nonatomic) struct CGRect axFrame;
 @property (readonly, nonatomic) NSString *axImageName;
 @property (readonly, nonatomic) BOOL axIsSelected;
 @property (readonly, nonatomic) NSString *axSubtitle;
 @property (readonly, nonatomic) NSString *axText;
 @property (readonly, nonatomic) NSString *axTitle;
-@property (readonly, nonatomic) NSObject<PXAccessibilityView> *axView;
+@property (readonly, nonatomic) NSObject<PXAnonymousView> *axView;
 @property (readonly, nonatomic) BOOL canBecomeFocused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) unsigned long long hash;
@@ -49,19 +56,22 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
-+ (id)_assetInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
++ (BOOL)_assetHasContentSourceInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
 + (id)_imageNameInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
 + (id)_textInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
 + (id)_titleSubtitleInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
++ (Class)_viewClassInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
 + (id)sharedPool;
 - (void).cxx_destruct;
 - (BOOL)_fillForKind:(long long)arg1 withLayout:(id)arg2 spriteIndex:(unsigned int)arg3;
+- (id)_viewAtSpriteIndex:(unsigned int)arg1;
 - (void)applyToInfo:(id)arg1;
 - (void)becomeReusable;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)fillContentForContentKind:(long long)arg1 inLayout:(id)arg2 atIndex:(unsigned int)arg3;
 - (id)init;
 - (void)prepareForReuse;
+- (void)setContent:(id)arg1 ofContentKind:(long long)arg2;
 - (void)setNeedsFocusUpdate;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)updateFocusIfNeeded;

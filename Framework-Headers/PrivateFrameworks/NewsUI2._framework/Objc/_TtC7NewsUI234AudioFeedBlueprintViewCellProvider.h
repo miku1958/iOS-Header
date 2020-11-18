@@ -12,9 +12,12 @@
 {
     MISSING_TYPE *dailyBriefingRenderer;
     MISSING_TYPE *audioTrackRenderer;
+    MISSING_TYPE *audioActionHandler;
     MISSING_TYPE *audioFeedPlacardRenderer;
     MISSING_TYPE *playbackState;
     MISSING_TYPE *listeningProgressManager;
+    MISSING_TYPE *tracker;
+    MISSING_TYPE *audioPlaybackContext;
 }
 
 @end

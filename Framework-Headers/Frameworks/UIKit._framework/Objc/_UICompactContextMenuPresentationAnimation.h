@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/_UIPreviewPlatterPresentationAnimator.h>
+#import <UIKitCore/_UIContextMenuPresentationAnimation.h>
 
 @class _UIContextMenuLayoutArbiterOutput;
 
 __attribute__((visibility("hidden")))
-@interface _UICompactContextMenuPresentationAnimation : _UIPreviewPlatterPresentationAnimator
+@interface _UICompactContextMenuPresentationAnimation : _UIContextMenuPresentationAnimation
 {
     BOOL _isDismissTransition;
     _UIContextMenuLayoutArbiterOutput *_expandedLayout;
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isDismissTransition; // @synthesize isDismissTransition=_isDismissTransition;
 
 - (void).cxx_destruct;
+- (id)_backgroundView;
 - (void)_setBackgroundVisible:(BOOL)arg1;
 - (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 - (void)prepareTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;

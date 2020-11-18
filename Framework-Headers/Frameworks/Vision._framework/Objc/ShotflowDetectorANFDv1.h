@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)filterThresholds;
 + (Class)shotflowNetworkClass;
++ (id)supportedLabelKeys;
 - (id)initWithNetwork:(id)arg1;
 - (id)initWithNetwork:(id)arg1 filterThreshold:(id)arg2;
 - (id)nmsBoxes:(id)arg1;

@@ -37,6 +37,7 @@
 
 - (void)_updateForRecognitionSessionResultChangeIfNeeded;
 - (void)dealloc;
+- (id)encodedStrokeIdentifiers:(id)arg1 withStrokeProvider:(id)arg2;
 - (id)init;
 - (id)initWithRecognitionSession:(id)arg1;
 - (void)pause;
@@ -47,6 +48,7 @@
 - (void)q_updateQueryResult;
 - (void)recognitionSessionDidUpdateRecognitionResult:(id)arg1;
 - (void)start;
+- (id)strokeIdentifiersForData:(id)arg1 withStrokeProvider:(id)arg2;
 - (void)waitForPendingUpdates;
 
 @end

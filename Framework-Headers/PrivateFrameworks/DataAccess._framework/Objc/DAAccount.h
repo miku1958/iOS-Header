@@ -57,6 +57,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pendingQueryQueue; // @synthesize pendingQueryQueue=_pendingQueryQueue;
 @property (readonly, copy, nonatomic) NSString *persistentUUID;
 @property (nonatomic) long long port;
+@property (readonly, nonatomic) NSString *preferredAddress;
 @property (copy, nonatomic) NSString *principalPath;
 @property (copy, nonatomic) NSURL *principalURL;
 @property (readonly, nonatomic) NSString *publicDescription;
@@ -80,13 +81,14 @@
 @property (nonatomic) BOOL wasUserInitiated; // @synthesize wasUserInitiated=_wasUserInitiated;
 
 + (id)_leafAccountTypes;
-+ (id)_leafAccountTypesToCheckForEquality;
++ (id)_leafAccountTypes;
 + (id)daAccountSubclassWithBackingAccountInfo:(id)arg1;
 + (id)oneshotListOfAccountIDs;
 + (void)reacquireClientRestrictions:(id)arg1;
 + (BOOL)shouldCreateAccountForBackingAccountInfo:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dequeueQuery;
+- (void)_handleSignificantPropertyChanges;
 - (BOOL)_isIdentityManagedByProfile;
 - (void)_reallyCancelAllSearchQueries;
 - (void)_reallyCancelPendingSearchQuery:(id)arg1;
@@ -99,7 +101,9 @@
 - (BOOL)accountBoolPropertyForKey:(id)arg1;
 - (BOOL)accountContainsEmailAddress:(id)arg1;
 - (void)accountDidChangeFromOldAccountInfo:(id)arg1;
+- (void)accountDidChangeWithChangeInfo:(id)arg1;
 - (BOOL)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (BOOL)accountHasSignificantPropertyChangesWithChangeInfo:(id)arg1;
 - (int)accountIntPropertyForKey:(id)arg1;
 - (id)accountPropertyForKey:(id)arg1;
 - (id)accountTypeIdentifier;
@@ -115,6 +119,7 @@
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
 - (void)cancelDownloadingInstance:(id)arg1 error:(id)arg2;
 - (void)cancelGrantedDelegatesListRequestWithID:(id)arg1;
+- (void)cancelOfficeHoursRequestWithID:(id)arg1;
 - (void)cancelSearchQuery:(id)arg1;
 - (void)cancelShareResponseInstance:(id)arg1 error:(id)arg2;
 - (void)cancelUpdateGrantedDelegatePermissionRequestWithID:(id)arg1;
@@ -147,6 +152,7 @@
 - (id)eventsFolders;
 - (id)exceptionsDict;
 - (struct __CFData *)exceptionsForDigest:(id)arg1;
+- (id)fetchOfficeHoursWithConsumer:(id)arg1 error:(id *)arg2;
 - (id)getAppleIDSession;
 - (BOOL)getFetchingAutomaticallyState;
 - (id)getPendingQueryQueue;
@@ -223,6 +229,7 @@
 - (void)setExceptions:(struct __CFData *)arg1 forDigest:(id)arg2;
 - (void)setIdentityCertificatePersistentID:(id)arg1 managedByProfile:(BOOL)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (id)setOfficeHours:(id)arg1 withConsumer:(id)arg2 error:(id *)arg3;
 - (void)setToDosNumberOfPastDaysToSync:(int)arg1;
 - (BOOL)shouldCancelTaskDueToOnPowerFetchMode;
 - (BOOL)shouldRemoveDBSyncDataOnAccountChange;

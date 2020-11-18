@@ -20,9 +20,9 @@
 
 - (void).cxx_destruct;
 - (id)defaultSupportedVariableTypes;
+- (id)importQuestionBehavior;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
-- (BOOL)supportsImportQuestions;
 
 @end
 

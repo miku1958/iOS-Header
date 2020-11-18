@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) unsigned long long columns; // @synthesize columns=_columns;
 @property (readonly, nonatomic) unsigned long long rows; // @synthesize rows=_rows;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 sourceMatrix:(id)arg2 resultMatrix:(id)arg3 pivotIndices:(id)arg4 status:(id)arg5;
 - (id)initWithDevice:(id)arg1 rows:(unsigned long long)arg2 columns:(unsigned long long)arg3;

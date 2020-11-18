@@ -38,6 +38,7 @@
 - (void)dealloc;
 - (oneway void)handleContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)handleIntent:(id)arg1 inBackgroundAppWithBundleId:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (oneway void)handleIntentForwardingAction:(id)arg1 inBackgroundApplicationWithBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithServicePort:(long long)arg1;
 - (void)invalidate;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

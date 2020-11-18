@@ -36,6 +36,7 @@
 - (void)enumerateType:(Class)arg1 fetchRequest:(id)arg2 enumerationBlock:(CDUnknownBlockType)arg3;
 - (void)executeDeleteRequests:(id)arg1 context:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchAvailabilityWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchReadableObjectsOfType:(Class)arg1 fetchRequest:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithPersistenceManager:(id)arg1;

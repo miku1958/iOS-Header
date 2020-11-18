@@ -18,6 +18,7 @@
     long long _contentType;
     double _zoomFactor;
     long long _zoomSymbol;
+    long long _accessoryState;
     long long _orientation;
     NSString *_contentSizeCategory;
     UIView *__contentContainerView;
@@ -25,16 +26,21 @@
     UIImageView *__zoomSymbolView;
     UIImageView *__circleImageView;
     UIImageView *__backgroundImageView;
+    UIImageView *__accessoryBackgroundView;
+    UIImageView *__accessoryImageView;
     struct UIEdgeInsets _tappableEdgeInsets;
     struct CGAffineTransform _highlightingTransform;
 }
 
+@property (strong, nonatomic) UIImageView *_accessoryBackgroundView; // @synthesize _accessoryBackgroundView=__accessoryBackgroundView;
+@property (strong, nonatomic) UIImageView *_accessoryImageView; // @synthesize _accessoryImageView=__accessoryImageView;
 @property (readonly, nonatomic) UIImageView *_backgroundImageView; // @synthesize _backgroundImageView=__backgroundImageView;
 @property (readonly, nonatomic) UIImageView *_circleImageView; // @synthesize _circleImageView=__circleImageView;
 @property (readonly, nonatomic) UIView *_contentContainerView; // @synthesize _contentContainerView=__contentContainerView;
 @property (readonly, nonatomic) CAMZoomFactorLabel *_zoomFactorLabel; // @synthesize _zoomFactorLabel=__zoomFactorLabel;
 @property (readonly, nonatomic) UIImageView *_zoomSymbolView; // @synthesize _zoomSymbolView=__zoomSymbolView;
 @property (nonatomic) BOOL abbreviateAndEnlargeText; // @synthesize abbreviateAndEnlargeText=_abbreviateAndEnlargeText;
+@property (nonatomic) long long accessoryState; // @synthesize accessoryState=_accessoryState;
 @property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property (weak, nonatomic) id<CAMZoomButtonDelegate> delegate; // @synthesize delegate=_delegate;
@@ -43,6 +49,7 @@
 @property (nonatomic, getter=isOverPlatter) BOOL overPlatter; // @synthesize overPlatter=_overPlatter;
 @property (nonatomic) BOOL shouldHideBackground; // @synthesize shouldHideBackground=_shouldHideBackground;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
+@property (nonatomic) BOOL useLeadingZero;
 @property (nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
 @property (nonatomic) long long zoomSymbol; // @synthesize zoomSymbol=_zoomSymbol;
 
@@ -57,12 +64,15 @@
 - (double)_circleLineWidthForContentSize:(id)arg1;
 - (void)_commonCAMZoomButtonInitialization;
 - (id)_createBackgroundImageForContentSize:(id)arg1;
+- (id)_createBackgroundImageForContentSize:(id)arg1 color:(id)arg2;
 - (id)_createCircleImageForContentSize:(id)arg1;
 - (void)_createZoomSymbolViewIfNecessary;
 - (struct CGAffineTransform)_highlightingTransformForHighlighted:(BOOL)arg1;
 - (id)_imageForZoomSymbol:(long long)arg1;
 - (void)_performHighlightAnimation;
-- (struct CGAffineTransform)_targetTransformForHighlighted:(BOOL)arg1 orientation:(long long)arg2;
+- (struct CGAffineTransform)_transformForEnlargeText:(BOOL)arg1 orientation:(long long)arg2;
+- (void)_updateAccessoryAlphas;
+- (void)_updateAccessoryBackgroundView;
 - (void)_updateBackgroundImageViewAlpha;
 - (void)_updateForContentSize;
 - (void)_updateZoomFactorLabel;
@@ -71,6 +81,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setAccessoryState:(long long)arg1 animated:(BOOL)arg2;
 - (void)setContentType:(long long)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;

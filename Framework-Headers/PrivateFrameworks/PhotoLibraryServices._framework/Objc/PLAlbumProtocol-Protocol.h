@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL isPanoramasAlbum;
 @property (readonly, nonatomic) BOOL isPendingPhotoStreamAlbum;
 @property (readonly, nonatomic) BOOL isPhotoStreamAlbum;
+@property (readonly, nonatomic) BOOL isProjectAlbum;
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;

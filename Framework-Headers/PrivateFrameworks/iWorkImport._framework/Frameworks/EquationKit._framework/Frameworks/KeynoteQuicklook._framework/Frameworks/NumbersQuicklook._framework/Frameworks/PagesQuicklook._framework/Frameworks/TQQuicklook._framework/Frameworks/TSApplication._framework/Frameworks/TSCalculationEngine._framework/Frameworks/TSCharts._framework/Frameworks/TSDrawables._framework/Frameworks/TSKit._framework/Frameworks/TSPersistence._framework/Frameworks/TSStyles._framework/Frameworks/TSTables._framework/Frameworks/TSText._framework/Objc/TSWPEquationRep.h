@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TSDrawables/TSDMediaRep.h>
+#import <TSText/TSWPEquationBaseRep.h>
 
-#import <TSText/TSDMagicMoveMatching-Protocol.h>
+@class TSWPEquationFloatingLayout, TSWPEquationInfo;
 
-@class TSWPEquationInfo, TSWPEquationLayout;
-
-@interface TSWPEquationRep : TSDMediaRep <TSDMagicMoveMatching>
+@interface TSWPEquationRep : TSWPEquationBaseRep
 {
     BOOL _layerContentsAreFlipped;
 }
 
 @property (readonly, nonatomic) TSWPEquationInfo *equationInfo;
-@property (readonly, nonatomic) TSWPEquationLayout *equationLayout;
+@property (readonly, nonatomic) TSWPEquationFloatingLayout *equationLayout;
 @property (nonatomic) BOOL layerContentsAreFlipped; // @synthesize layerContentsAreFlipped=_layerContentsAreFlipped;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;

@@ -10,12 +10,6 @@
 
 @interface HAPWACAccessory : HMFObject
 {
-    BOOL _supportsLegacyWAC;
-    BOOL _supportsWAC2;
-    BOOL _supportsTokenAuth;
-    BOOL _supportsCertAuth;
-    BOOL _isHomeKitAccessory;
-    BOOL _isAirPlayAccessory;
     BOOL _supportsAirPlay;
     BOOL _requiresOwnershipToken;
     BOOL _homeKitPaired;
@@ -46,8 +40,8 @@
 @property (nonatomic) double discoveryTime; // @synthesize discoveryTime=_discoveryTime;
 @property (readonly, nonatomic) BOOL homeKitPaired; // @synthesize homeKitPaired=_homeKitPaired;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) BOOL isAirPlayAccessory; // @synthesize isAirPlayAccessory=_isAirPlayAccessory;
-@property (readonly, nonatomic) BOOL isHomeKitAccessory; // @synthesize isHomeKitAccessory=_isHomeKitAccessory;
+@property (readonly, nonatomic) BOOL isAirPlayAccessory;
+@property (readonly, nonatomic) BOOL isHomeKitAccessory;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property (readonly, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly, nonatomic) NSString *model; // @synthesize model=_model;
@@ -60,10 +54,10 @@
 @property (readonly, nonatomic) NSString *ssid; // @synthesize ssid=_ssid;
 @property (readonly, nonatomic) unsigned long long supportedWiFiBands; // @synthesize supportedWiFiBands=_supportedWiFiBands;
 @property (readonly, nonatomic) BOOL supportsAirPlay; // @synthesize supportsAirPlay=_supportsAirPlay;
-@property (readonly, nonatomic) BOOL supportsCertAuth; // @synthesize supportsCertAuth=_supportsCertAuth;
-@property (readonly, nonatomic) BOOL supportsLegacyWAC; // @synthesize supportsLegacyWAC=_supportsLegacyWAC;
-@property (readonly, nonatomic) BOOL supportsTokenAuth; // @synthesize supportsTokenAuth=_supportsTokenAuth;
-@property (readonly, nonatomic) BOOL supportsWAC2; // @synthesize supportsWAC2=_supportsWAC2;
+@property (readonly, nonatomic) BOOL supportsCertAuth;
+@property (readonly, nonatomic) BOOL supportsLegacyWAC;
+@property (readonly, nonatomic) BOOL supportsTokenAuth;
+@property (readonly, nonatomic) BOOL supportsWAC2;
 @property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 @property (readonly, nonatomic) NSNumber *wacCategory; // @synthesize wacCategory=_wacCategory;
 

@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedConstants;
+- (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id)arg2;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultRowHeightForTableView:(id)arg1;
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
+- (double)minimumContentViewHeightForFont:(id)arg1 traitCollection:(id)arg2;
 - (BOOL)supportsUserInterfaceStyles;
 
 @end

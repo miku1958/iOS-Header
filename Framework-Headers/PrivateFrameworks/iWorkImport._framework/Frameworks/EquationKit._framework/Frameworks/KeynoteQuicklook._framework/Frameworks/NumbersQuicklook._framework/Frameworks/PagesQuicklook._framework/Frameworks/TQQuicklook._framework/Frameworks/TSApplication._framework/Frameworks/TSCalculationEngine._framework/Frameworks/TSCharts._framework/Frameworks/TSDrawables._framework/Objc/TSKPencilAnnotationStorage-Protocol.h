@@ -41,6 +41,8 @@
 @property (readonly, nonatomic) NSArray *subStorages;
 @property (readonly, nonatomic) unsigned long long textBaselinesTouchedCount;
 @property (readonly, nonatomic) long long toolType;
+@property (readonly, nonatomic) struct CGAffineTransform transformFromStrokeToUnscaledCanvas;
+@property (readonly, nonatomic) struct CGAffineTransform transformFromUnscaledCanvasToStroke;
 @property (readonly, nonatomic) struct CGRect unscaledBoundsOfStrokes;
 @property (readonly, nonatomic) TSUBezierPath *unscaledPath;
 @property (readonly, nonatomic) struct CGRect unscaledRenderedFrame;

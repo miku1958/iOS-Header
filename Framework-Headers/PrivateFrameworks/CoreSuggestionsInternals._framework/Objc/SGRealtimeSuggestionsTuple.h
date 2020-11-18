@@ -13,10 +13,12 @@
     NSArray *_contacts;
     NSArray *_events;
     NSArray *_reminders;
+    NSArray *_deliveries;
     NSArray *_invalidatedIdentifiers;
 }
 
 @property (strong) NSArray *contacts; // @synthesize contacts=_contacts;
+@property (strong) NSArray *deliveries; // @synthesize deliveries=_deliveries;
 @property (strong) NSArray *events; // @synthesize events=_events;
 @property (strong) NSArray *invalidatedIdentifiers; // @synthesize invalidatedIdentifiers=_invalidatedIdentifiers;
 @property (strong) NSArray *reminders; // @synthesize reminders=_reminders;

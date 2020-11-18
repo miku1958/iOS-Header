@@ -17,7 +17,6 @@
 
 @property (strong, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration; // @synthesize cornerRadiusConfiguration=_cornerRadiusConfiguration;
 @property (nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
-@property (strong, nonatomic) UIView *trailingCornersMaskingView; // @synthesize trailingCornersMaskingView=_trailingCornersMaskingView;
 
 - (void).cxx_destruct;
 - (void)_updateCornerRadius;

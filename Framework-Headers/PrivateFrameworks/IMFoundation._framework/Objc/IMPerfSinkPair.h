@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) id<IMPerfProfilerBehavior> behavior; // @synthesize behavior=_behavior;
 @property (readonly, nonatomic) id<IMPerfProfilerSink> sink; // @synthesize sink=_sink;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithBehavior:(id)arg1 sink:(id)arg2;
 
 @end

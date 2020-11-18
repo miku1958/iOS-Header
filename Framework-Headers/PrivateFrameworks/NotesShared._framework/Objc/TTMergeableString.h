@@ -62,10 +62,11 @@
 - (void)deleteSubstrings:(vector_c5c053b6 *)arg1 withCharacterRanges:(vector_7053a16b *)arg2;
 - (id)deltaSince:(id)arg1 in:(id)arg2;
 - (id)dotDescription:(unsigned long long)arg1;
+- (void)dumpData;
 - (void)dumpMergeData:(id)arg1;
 - (void)endEditing;
 - (vector_c5c053b6 *)endNodes;
-- (void)enumerateRangesModifiedAfter:(id)arg1 includingAttributes:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateHighlightableRangesModifiedAfter:(id)arg1 includingAttributes:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateSubstrings:(CDUnknownBlockType)arg1;
 - (void)generateIdsForLocalChanges;
 - (void)generateIdsForLocalChangesSafeForSharedTimestamp:(BOOL)arg1;

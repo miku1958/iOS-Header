@@ -16,22 +16,7 @@
     struct CGSize _viewportSize;
 }
 
-@property (readonly, nonatomic) double componentWidth; // @synthesize componentWidth=_componentWidth;
-@property (readonly, nonatomic) double contentScaleFactor; // @synthesize contentScaleFactor=_contentScaleFactor;
-@property (readonly, nonatomic) double documentGutter; // @synthesize documentGutter=_documentGutter;
-@property (readonly, nonatomic) double documentMargin; // @synthesize documentMargin=_documentMargin;
-@property (readonly, nonatomic) double parentWidth; // @synthesize parentWidth=_parentWidth;
-@property (readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
-
-- (double)convertColumnGutterToPoints:(double)arg1;
-- (double)convertComponentWidthToPoints:(double)arg1;
-- (double)convertDocumentMarginToPoints:(double)arg1;
-- (double)convertParentWidthToPoints:(double)arg1;
 - (double)convertValueToPoints:(struct _SXConvertibleValue)arg1;
-- (double)convertViewportHeightToPoints:(double)arg1;
-- (double)convertViewportMaxToPoints:(double)arg1;
-- (double)convertViewportMinToPoints:(double)arg1;
-- (double)convertViewportWidthToPoints:(double)arg1;
 - (id)initWithComponentWidth:(double)arg1 parentWidth:(double)arg2 documentGutter:(double)arg3 documentMargin:(double)arg4 viewportSize:(struct CGSize)arg5 contentScaleFactor:(double)arg6;
 
 @end

@@ -27,6 +27,7 @@
     UIColor *_darkColor;
     UIColor *_highlightOrSelectedColor;
     UIColor *_darkHighlightOrSelectedColor;
+    long long _highlightStyle;
     UIColor *_seeMoreTextColor;
     UIColor *_darkSeeMoreTextColor;
     NSString *_compositingFilter;
@@ -58,6 +59,7 @@
 @property (nonatomic) unsigned int fontTraits; // @synthesize fontTraits=_fontTraits;
 @property (nonatomic) long long fontWeight; // @synthesize fontWeight=_fontWeight;
 @property (strong, nonatomic) UIColor *highlightOrSelectedColor; // @synthesize highlightOrSelectedColor=_highlightOrSelectedColor;
+@property (nonatomic) long long highlightStyle; // @synthesize highlightStyle=_highlightStyle;
 @property (strong, nonatomic) NSNumber *letterSpacing; // @synthesize letterSpacing=_letterSpacing;
 @property (nonatomic) long long lineBreakMode; // @synthesize lineBreakMode=_lineBreakMode;
 @property (nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;

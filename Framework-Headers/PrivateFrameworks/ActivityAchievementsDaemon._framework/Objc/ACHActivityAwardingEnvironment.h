@@ -11,12 +11,14 @@
 @interface ACHActivityAwardingEnvironment : NSObject
 {
     BOOL _valueForKeyLoggingEnabled;
+    unsigned long long _experienceType;
     ACHActivityAwardingDataProvider *_dataProvider;
     ACHActivityAwardingDateCache *_dateCache;
 }
 
 @property (strong, nonatomic) ACHActivityAwardingDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property (strong, nonatomic) ACHActivityAwardingDateCache *dateCache; // @synthesize dateCache=_dateCache;
+@property (nonatomic) unsigned long long experienceType; // @synthesize experienceType=_experienceType;
 @property (nonatomic) BOOL valueForKeyLoggingEnabled; // @synthesize valueForKeyLoggingEnabled=_valueForKeyLoggingEnabled;
 
 - (void).cxx_destruct;
@@ -25,6 +27,8 @@
 - (id)bestExerciseValue;
 - (id)bestMoveGoal;
 - (id)bestMoveStreak;
+- (id)bestMoveTimeGoal;
+- (id)bestMoveTimeValue;
 - (id)bestMoveValue;
 - (id)bestStandGoal;
 - (id)bestStandStreak;
@@ -33,6 +37,7 @@
 - (id)currentExerciseStreak;
 - (id)currentMovePercentage;
 - (id)currentMoveStreak;
+- (id)currentMoveTimePercentage;
 - (id)currentStandPercentage;
 - (id)currentStandStreak;
 - (id)currentStreakForAllActivity;
@@ -45,17 +50,24 @@
 - (id)previousBestExerciseStreak;
 - (id)previousBestMoveGoal;
 - (id)previousBestMoveStreak;
+- (id)previousBestMoveTimeGoal;
 - (id)previousBestStandGoal;
 - (id)previousBestStandStreak;
 - (id)previousExercisePercentage;
 - (id)previousMovePercentage;
+- (id)previousMoveTimePercentage;
 - (id)previousStandPercentage;
 - (id)requiredDaysOfActivityHistoryForRecords;
 - (id)requiredDaysOfActivityHistoryForStreaks;
 - (void)setCurrentDateComponents:(id)arg1;
+- (long long)todayActivityMoveMode;
+- (id)todayAgnosticMoveGoal;
+- (id)todayAgnosticMoveValue;
 - (id)todayExerciseGoal;
 - (id)todayExerciseValue;
 - (id)todayMoveGoal;
+- (id)todayMoveTimeGoal;
+- (id)todayMoveTimeValue;
 - (id)todayMoveValue;
 - (id)todayStandGoal;
 - (id)todayStandValue;
@@ -68,6 +80,7 @@
 - (id)valueForKey:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 - (id)yesterdayExerciseValue;
+- (id)yesterdayMoveTimeValue;
 - (id)yesterdayMoveValue;
 - (id)yesterdayStandValue;
 

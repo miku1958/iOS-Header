@@ -12,11 +12,6 @@
 {
     HDDemoDataFoodDatabase *_foodDatabase;
     double _nextMealTime;
-    double _nextBreakfastTime;
-    double _nextLunchTime;
-    double _nextSnackTime;
-    double _nextDinnerTime;
-    double _lastMealTime;
     NSArray *_lastMeal;
     double _nextBloodGlucoseSampleTime;
     double _nextBloodGlucoseFingerStickSampleTime;
@@ -27,6 +22,11 @@
     double _bloodGlucoseCarbohydrateGlycemicRate;
     double _bloodGlucoseDecreaseRateDueToInsulin;
     double _nextWaterConsumedSampleTime;
+    double _nextBreakfastTime;
+    double _nextLunchTime;
+    double _nextSnackTime;
+    double _nextDinnerTime;
+    double _lastMealTime;
 }
 
 @property (nonatomic) double bloodGlucoseCarbohydrateGlycemicRate; // @synthesize bloodGlucoseCarbohydrateGlycemicRate=_bloodGlucoseCarbohydrateGlycemicRate;
@@ -35,16 +35,16 @@
 @property (strong, nonatomic) HDDemoDataFoodDatabase *foodDatabase; // @synthesize foodDatabase=_foodDatabase;
 @property (nonatomic) double lastBloodGlucose; // @synthesize lastBloodGlucose=_lastBloodGlucose;
 @property (copy, nonatomic) NSArray *lastMeal; // @synthesize lastMeal=_lastMeal;
-@property (nonatomic) double lastMealTime; // @synthesize lastMealTime=_lastMealTime;
+@property (readonly, nonatomic) double lastMealTime; // @synthesize lastMealTime=_lastMealTime;
 @property (nonatomic) double nextBloodGlucoseFingerStickSampleTime; // @synthesize nextBloodGlucoseFingerStickSampleTime=_nextBloodGlucoseFingerStickSampleTime;
 @property (nonatomic) double nextBloodGlucoseMealTime; // @synthesize nextBloodGlucoseMealTime=_nextBloodGlucoseMealTime;
 @property (nonatomic) double nextBloodGlucoseSampleTime; // @synthesize nextBloodGlucoseSampleTime=_nextBloodGlucoseSampleTime;
-@property (nonatomic) double nextBreakfastTime; // @synthesize nextBreakfastTime=_nextBreakfastTime;
-@property (nonatomic) double nextDinnerTime; // @synthesize nextDinnerTime=_nextDinnerTime;
+@property (readonly, nonatomic) double nextBreakfastTime; // @synthesize nextBreakfastTime=_nextBreakfastTime;
+@property (readonly, nonatomic) double nextDinnerTime; // @synthesize nextDinnerTime=_nextDinnerTime;
 @property (nonatomic) double nextInsulinPumpBasalSampleTime; // @synthesize nextInsulinPumpBasalSampleTime=_nextInsulinPumpBasalSampleTime;
-@property (nonatomic) double nextLunchTime; // @synthesize nextLunchTime=_nextLunchTime;
+@property (readonly, nonatomic) double nextLunchTime; // @synthesize nextLunchTime=_nextLunchTime;
 @property (nonatomic) double nextMealTime; // @synthesize nextMealTime=_nextMealTime;
-@property (nonatomic) double nextSnackTime; // @synthesize nextSnackTime=_nextSnackTime;
+@property (readonly, nonatomic) double nextSnackTime; // @synthesize nextSnackTime=_nextSnackTime;
 @property (nonatomic) double nextWaterConsumedSampleTime; // @synthesize nextWaterConsumedSampleTime=_nextWaterConsumedSampleTime;
 
 + (BOOL)supportsSecureCoding;

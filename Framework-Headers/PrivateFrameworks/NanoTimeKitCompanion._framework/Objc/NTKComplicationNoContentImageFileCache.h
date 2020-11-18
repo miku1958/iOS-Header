@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NTKTaskScheduler;
+@class NSMutableDictionary, NSString, NTKTaskScheduler;
+@protocol OS_dispatch_queue;
 
 @interface NTKComplicationNoContentImageFileCache : NSObject
 {
-    NSMutableDictionary *_complicationNoContentImages;
+    NSMutableDictionary *_queue_complicationNoContentImages;
     BOOL _cacheDirty;
     NTKTaskScheduler *_taskScheduler;
+    NSObject<OS_dispatch_queue> *_cacheQueue;
+    NSString *_cacheIdentifier;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_dirtyCache;
-- (BOOL)_flushCache;
+- (void)_flushCache;
 - (void)dealloc;
 - (id)imageForClientIdentifier:(id)arg1 family:(long long)arg2;
 - (id)init;

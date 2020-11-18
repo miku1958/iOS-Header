@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)imageForAvatar:(id)arg1 scope:(id)arg2;
+- (id)init;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithSnapshotBuilder:(id)arg1 lockProvider:(CDUnknownBlockType)arg2 logger:(id)arg3;
 - (id)nts_imageForAvatar:(id)arg1 scope:(id)arg2;

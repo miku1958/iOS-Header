@@ -20,19 +20,28 @@
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long staticThreadgroupMemoryLength;
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportIndirectCommandBuffers;
+@property (readonly) long long textureWriteRoundingMode;
 @property (readonly) unsigned long long threadExecutionWidth;
 @property (readonly) unsigned long long uniqueIdentifier;
 
-- (void)acceptVisitor:(id)arg1;
 - (void)dealloc;
+- (id)functionHandleToToolsFunctionHandle:(id)arg1 parentFunction:(id)arg2;
+- (id)functionHandleWithFunction:(id)arg1;
+- (id)functionPointerHandleWithFunction:(id)arg1;
+- (id)functionPointerHandlesWithFunctions:(id)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
 
 @end
 

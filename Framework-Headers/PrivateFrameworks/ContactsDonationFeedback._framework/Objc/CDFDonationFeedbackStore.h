@@ -22,6 +22,7 @@
 - (void)_confirmOrRejectDonatedValues:(id)arg1 contactIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleHashesChangedNotification:(id)arg1;
 - (void)_hashStrings:(id)arg1 salt:(id)arg2 digest:(char *)arg3;
+- (id)_hashableStringsForDonation:(id)arg1;
 - (id)_hashableStringsForDonation:(id)arg1 contactIdentifier:(id)arg2;
 - (id)_hashesForDonation:(id)arg1 contactIdentifier:(id)arg2;
 - (id)_loadHashesForKey:(id)arg1;
@@ -31,6 +32,7 @@
 - (void)_saveHashes:(id)arg1 key:(id)arg2;
 - (void)_saveResetInfo;
 - (id)_sha256BytesForStrings:(id)arg1 salt:(id)arg2;
+- (BOOL)canHashDonation:(id)arg1;
 - (void)confirmDonatedValues:(id)arg1 contactIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)description;
 - (BOOL)donatedValueHasBeenConfirmedOrRejected:(id)arg1 contactIdentifier:(id)arg2;

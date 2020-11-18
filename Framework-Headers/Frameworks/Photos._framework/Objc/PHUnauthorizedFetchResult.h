@@ -32,11 +32,12 @@
 - (id)description;
 - (id)fetchRequest;
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
+- (id)fetchSortDescriptors;
 - (id)fetchedObjectIDs;
 - (id)fetchedObjects;
 - (void)getMediaTypeCounts;
 - (unsigned long long)hash;
-- (id)initWithOptions:(id)arg1 fetchBlock:(CDUnknownBlockType)arg2;
+- (id)initWithOptions:(id)arg1 status:(long long)arg2 fetchBlock:(CDUnknownBlockType)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullyBackedByObjectIDs;
 - (id)objectIDAtIndex:(unsigned long long)arg1;

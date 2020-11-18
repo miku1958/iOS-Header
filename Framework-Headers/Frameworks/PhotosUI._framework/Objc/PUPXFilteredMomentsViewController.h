@@ -9,20 +9,20 @@
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
 @class NSString, UIViewController;
-@protocol PXGridPresentationNavigationItemDelegate;
+@protocol PXGridPresentationBarsUpdateDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUPXFilteredMomentsViewController : PUFilteredMomentsViewController <PXChangeObserver>
 {
     UIViewController *_containerViewController;
-    id<PXGridPresentationNavigationItemDelegate> _navigationItemDelegate;
+    id<PXGridPresentationBarsUpdateDelegate> _barsUpdateDelegate;
 }
 
+@property (weak, nonatomic) id<PXGridPresentationBarsUpdateDelegate> barsUpdateDelegate; // @synthesize barsUpdateDelegate=_barsUpdateDelegate;
 @property (weak, nonatomic) UIViewController *containerViewController; // @synthesize containerViewController=_containerViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<PXGridPresentationNavigationItemDelegate> navigationItemDelegate; // @synthesize navigationItemDelegate=_navigationItemDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

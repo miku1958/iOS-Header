@@ -18,24 +18,25 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isIndexCenterZoomAppLayout:(unsigned long long)arg1;
+- (id)_layoutSettings;
 - (double)_offsetYForCenterZoom;
-- (long long)backdropBlurType;
+- (id)_opacitySettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 offsetYPercentOfScreenHeight:(double)arg3;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (id)opacitySettings;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (BOOL)shouldFireTransitionCompletionInDefaultRunLoopMode;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

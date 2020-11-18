@@ -10,7 +10,7 @@
 #import <Navigation/CLLocationManagerVehicleDelegate-Protocol.h>
 #import <Navigation/MNLocationProvider-Protocol.h>
 
-@class CLLocationManager, NSBundle, NSLock, NSRunLoop, NSString;
+@class CLLocationManager, MNLocationProviderCLParameters, NSBundle, NSLock, NSRunLoop, NSString;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     NSLock *_authorizationLock;
     BOOL _alternate;
     CLLocationManager *_clLocationManager;
+    MNLocationProviderCLParameters *_clParameters;
     id<MNLocationProviderDelegate> _delegate;
     BOOL _locationServicesPreferencesDialogEnabled;
     int _authorizationStatus;
+    BOOL _coarseModeEnabled;
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
@@ -33,9 +35,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) CLLocationManager *_clLocationManager;
-@property (nonatomic) long long activityType;
 @property (copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property (readonly, nonatomic) int authorizationStatus;
+@property (readonly, nonatomic) BOOL coarseModeEnabled; // @synthesize coarseModeEnabled=_coarseModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -61,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetForNewEffectiveBundle;
 - (void)_sharedInit;
 - (void)_updateAuthorizationStatus;
+- (void)_updateForCLParameters:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithEffectiveBundle:(id)arg1;
@@ -71,12 +74,14 @@ __attribute__((visibility("hidden")))
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (void)requestLocation;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)resetForActiveTileGroupChanged;
+- (void)setCLParameters:(id)arg1;
 - (void)startUpdatingHeading;
 - (void)startUpdatingLocation;
 - (void)startUpdatingVehicleHeading;

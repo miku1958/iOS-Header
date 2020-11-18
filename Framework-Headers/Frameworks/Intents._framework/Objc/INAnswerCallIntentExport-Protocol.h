@@ -8,6 +8,9 @@
 #import <Intents/NSObject-Protocol.h>
 
 @protocol INAnswerCallIntentExport <NSObject, JSExport>
+
+@property (nonatomic) long long audioRoute;
+
 - (id)init;
 @end
 

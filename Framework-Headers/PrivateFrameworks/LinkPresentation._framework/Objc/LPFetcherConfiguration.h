@@ -8,16 +8,18 @@
 
 #import <LinkPresentation/NSCopying-Protocol.h>
 
-@class WKWebView;
+@class LPEvent, WKWebView;
 
 __attribute__((visibility("hidden")))
 @interface LPFetcherConfiguration : NSObject <NSCopying>
 {
     WKWebView *_webViewForProcessSharing;
     long long _maximumResponseCount;
+    LPEvent *_rootEvent;
 }
 
 @property (nonatomic) long long maximumResponseCount; // @synthesize maximumResponseCount=_maximumResponseCount;
+@property (strong, nonatomic) LPEvent *rootEvent; // @synthesize rootEvent=_rootEvent;
 @property (strong, nonatomic) WKWebView *webViewForProcessSharing; // @synthesize webViewForProcessSharing=_webViewForProcessSharing;
 
 - (void).cxx_destruct;

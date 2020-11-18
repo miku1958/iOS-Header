@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSArray *artworkURLTemplates;
 @property (readonly, nonatomic) NSDictionary *auxiliaryNowPlayingInfo;
 @property (copy, nonatomic) NSArray *availableLanguageOptions;
+@property (readonly, nonatomic) double calculatedElapsedTime;
 @property (copy, nonatomic) NSString *collectionIdentifier;
 @property (copy, nonatomic) NSDictionary *collectionInfo;
 @property (copy, nonatomic) NSString *composerName;

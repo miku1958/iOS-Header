@@ -12,6 +12,8 @@
 - (id)ins_jsonEncodedIntent;
 - (id)ins_protobufEncodedIntent;
 - (void)ins_resolveAppForIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 - (BOOL)ins_shouldUseExtendedFlowTimeout;
 @end
 

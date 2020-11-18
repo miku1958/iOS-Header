@@ -20,6 +20,7 @@
 
 @property (readonly, nonatomic) NSArray *timedMetadataArray; // @synthesize timedMetadataArray;
 
++ (BOOL)canProvideMetadataForAVAsset:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGVector)centerMotionVectorFromMetadata:(const struct FigLivePhotoMetadata *)arg1;
 - (id)extractMetadata;

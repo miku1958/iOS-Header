@@ -23,9 +23,9 @@
 
 - (void).cxx_destruct;
 - (id)_acceptableResourceVersions;
-- (id)_chooseResourceDownloadRequired:(BOOL *)arg1 renderRequired:(BOOL *)arg2;
+- (id)_chooseResourceDownloadRequired:(BOOL *)arg1;
 - (unsigned int)_videoQualityLevelForRequest;
-- (id)chooseResourceDownloadRequired:(BOOL *)arg1 renderRequired:(BOOL *)arg2;
+- (id)chooseResourceDownloadRequired:(BOOL *)arg1;
 - (id)initWithContext:(id)arg1 assetInformation:(id)arg2 options:(id)arg3 size:(struct CGSize)arg4;
 
 @end

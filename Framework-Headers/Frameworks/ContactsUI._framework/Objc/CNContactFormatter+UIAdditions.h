@@ -9,5 +9,6 @@
 @interface CNContactFormatter (UIAdditions)
 + (id)sharedFullNameFormatter;
 + (id)sharedFullNameFormatterWithFallBacks;
+- (id)stringFromGroupIdentity:(id)arg1;
 @end
 

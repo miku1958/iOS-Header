@@ -12,12 +12,14 @@
 
 @interface SBPIPMorphAnimatorDataSource : NSObject <SBViewMorphAnimatorDataSource>
 {
+    BOOL _gestureInitiated;
     int _targetProcessIdentifier;
     NSString *_scenePersistenceIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isGestureInitiated) BOOL gestureInitiated; // @synthesize gestureInitiated=_gestureInitiated;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *scenePersistenceIdentifier; // @synthesize scenePersistenceIdentifier=_scenePersistenceIdentifier;
 @property (readonly) Class superclass;
@@ -25,7 +27,9 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithTargetProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
+- (id)initWithTargetProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2 gestureInitiated:(BOOL)arg3;
+- (BOOL)isContentFromFillGravityForAnimator:(id)arg1;
+- (struct CGRect)sourceAppLayoutFrameForAnimator:(id)arg1;
 - (struct CGRect)sourceContentFrameForAnimator:(id)arg1;
 - (double)targetFinalCornerRadiusForAnimator:(id)arg1;
 - (struct CGRect)targetFinalFrameForAnimator:(id)arg1;

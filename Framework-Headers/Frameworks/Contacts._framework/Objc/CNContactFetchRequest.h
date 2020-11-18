@@ -23,6 +23,7 @@
     NSArray *_keysToFetch;
     long long _sortOrder;
     unsigned long long _batchSize;
+    unsigned long long _serialNumber;
 }
 
 @property (nonatomic) BOOL allowsBatching; // @synthesize allowsBatching=_allowsBatching;
@@ -33,10 +34,12 @@
 @property (nonatomic) BOOL onlyMainStore; // @synthesize onlyMainStore=_onlyMainStore;
 @property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (nonatomic) BOOL rankSort; // @synthesize rankSort=_rankSort;
+@property (readonly) unsigned long long serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (nonatomic) BOOL shouldFailIfAccountNotYetSynced; // @synthesize shouldFailIfAccountNotYetSynced=_shouldFailIfAccountNotYetSynced;
 @property (nonatomic) long long sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
++ (unsigned long long)makeSerialNumber;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

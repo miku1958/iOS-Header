@@ -170,6 +170,11 @@
 - (BOOL)isIDSMessage;
 - (void)logFailureInfo;
 - (id)messageBodyDataOverride;
+- (id)overrideContentType;
+- (id)parsedIDSMessageResult;
+- (BOOL)wantsClientInfo;
+- (BOOL)wantsGZip;
+- (BOOL)wantsUDID;
 
 @end
 

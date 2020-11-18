@@ -16,8 +16,8 @@
 #import <KeynoteQuicklook/TSSPropertySource-Protocol.h>
 #import <KeynoteQuicklook/TSSStyleClient-Protocol.h>
 
-@class KNBodyPlaceholderInfo, KNObjectPlaceholderInfo, KNSlideBackgroundInfo, KNSlideNode, KNSlideNumberPlaceholderInfo, KNSlideStyle, KNTitlePlaceholderInfo, KNTransition, NSArray, NSDictionary, NSMapTable, NSObject, NSOrderedSet, NSSet, NSString, TSDFill, TSDInfoGeometry, TSUMutablePointerSet, TSUPointerKeyDictionary;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@class KNBodyPlaceholderInfo, KNObjectPlaceholderInfo, KNSlideBackgroundInfo, KNSlideNode, KNSlideNumberPlaceholderInfo, KNSlideStyle, KNTitlePlaceholderInfo, KNTransition, NSArray, NSDictionary, NSIndexSet, NSMapTable, NSObject, NSOrderedSet, NSSet, NSString, TSDFill, TSDInfoGeometry, TSUMutablePointerSet, TSUPointerKeyDictionary;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface KNAbstractSlide : TSPObject <TSSPropertySource, TSKDocumentObject, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSKTransformableObject, TSSStyleClient, TSDReplaceableMediaContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer>
 {
@@ -68,6 +68,7 @@
 @property (nonatomic) BOOL inDocument; // @synthesize inDocument=_inDocument;
 @property (readonly, nonatomic) NSArray *infosToDisplay;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) NSMapTable *instructionalTextForInfos; // @synthesize instructionalTextForInfos=_instructionalTextForInfos;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) BOOL isMasterSlide;
@@ -78,7 +79,8 @@
 @property (readonly, nonatomic) NSArray *ownedChildInfos;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (readonly, nonatomic) NSIndexSet *paragraphIndexesOfTopLevelBullets;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (copy, nonatomic) NSDictionary *placeholdersForTags; // @synthesize placeholdersForTags=_placeholdersForTags;
 @property (readonly, weak, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
 @property (strong, nonatomic) KNSlideNumberPlaceholderInfo *slideNumberPlaceholder; // @synthesize slideNumberPlaceholder=_slideNumberPlaceholder;

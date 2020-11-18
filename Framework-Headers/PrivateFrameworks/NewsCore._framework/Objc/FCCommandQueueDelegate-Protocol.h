@@ -6,11 +6,11 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCCommand, FCCommandQueue;
+@class FCCommandQueue;
 
 @protocol FCCommandQueueDelegate <NSObject>
 
 @optional
-- (long long)commandQueue:(FCCommandQueue *)arg1 qualityOfServiceForCommand:(FCCommand *)arg2;
+- (long long)qualityOfServiceForNextCommandInCommandQueue:(FCCommandQueue *)arg1;
 @end
 

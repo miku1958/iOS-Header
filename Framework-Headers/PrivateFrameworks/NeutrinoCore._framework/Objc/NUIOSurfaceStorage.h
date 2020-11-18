@@ -21,9 +21,9 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NUPixelFormat *format;
+@property (readonly) NUPixelFormat *format;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CDStruct_912cb5d2 size;
+@property (readonly) CDStruct_912cb5d2 size;
 @property (readonly) long long sizeInBytes;
 @property (readonly) Class superclass;
 @property (readonly) NURegion *validRegion;
@@ -33,10 +33,14 @@
 - (id)_texture;
 - (void)adjustPurgeLevel:(long long)arg1;
 - (long long)copyFromStorage:(id)arg1 region:(id)arg2;
+- (BOOL)decrementUseCount;
+- (void)incrementUseCount;
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
 - (id)initWithSurface:(id)arg1;
+- (BOOL)isInUse;
 - (BOOL)isPurgeable;
 - (BOOL)isPurged;
+- (BOOL)isShared;
 - (BOOL)makeNonPurgeable;
 - (void)makePurgeable;
 - (long long)purgeLevel;
@@ -46,6 +50,7 @@
 - (long long)rowBytes;
 - (long long)useAsCIImageWithOptions:(id)arg1 renderer:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (long long)useAsCIRenderDestinationWithRenderer:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (int)useCount;
 - (long long)writeBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)writeSurfaceInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)writeTextureInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;

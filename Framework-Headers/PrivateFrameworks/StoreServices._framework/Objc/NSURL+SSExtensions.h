@@ -7,6 +7,8 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (SSExtensions)
++ (id)_ss_copyDictionaryForQueryString:(id)arg1 unescapedValues:(BOOL)arg2;
++ (id)_ss_unescapedStringForString:(id)arg1;
 - (id)_ss_URLByRemovingQueryParameter:(id)arg1;
 - (BOOL)_ss_hasQueryParameter:(id)arg1;
 - (id)_ss_valueForQueryParameter:(id)arg1;

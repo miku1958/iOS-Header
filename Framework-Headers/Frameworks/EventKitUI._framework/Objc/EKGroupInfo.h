@@ -19,11 +19,13 @@
     NSString *_titleForBeginningOfSentence;
     BOOL _selected;
     BOOL _showSelectAllButton;
-    BOOL _showVerifyAccountButton;
+    BOOL _showAccountErrorActionButton;
     EKSource *_source;
     NSString *_footer;
+    unsigned long long _accountError;
 }
 
+@property (nonatomic) unsigned long long accountError; // @synthesize accountError=_accountError;
 @property (readonly, strong, nonatomic) NSArray *calendarInfos;
 @property (readonly, copy, nonatomic) NSSet *calendarSet;
 @property (strong, nonatomic) NSString *footer; // @synthesize footer=_footer;
@@ -33,13 +35,12 @@
 @property (readonly, nonatomic) unsigned long long numSelectedCalendars;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (readonly, copy, nonatomic) NSSet *selectedCalendarSet;
+@property (nonatomic) BOOL showAccountErrorActionButton; // @synthesize showAccountErrorActionButton=_showAccountErrorActionButton;
 @property (readonly, nonatomic) BOOL showAddCalendarButton;
 @property (readonly, nonatomic) BOOL showCalendarNameIfSolitary;
 @property (nonatomic) BOOL showSelectAllButton; // @synthesize showSelectAllButton=_showSelectAllButton;
-@property (nonatomic) BOOL showVerifyAccountButton; // @synthesize showVerifyAccountButton=_showVerifyAccountButton;
 @property (readonly, nonatomic) int sortOrder;
 @property (strong, nonatomic) EKSource *source; // @synthesize source=_source;
-@property (readonly, nonatomic) EKSource *sourceForSyncError;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *typeTitle;
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDJoeColor, GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCaptionedPhoto : PBCodable <NSCopying>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     NSString *_author;
     NSString *_caption;
+    GEOPDJoeColor *_joeColor;
     NSString *_licenseDescription;
     NSString *_licenseUrl;
     GEOPDPhoto *_photo;
@@ -37,20 +38,11 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_author:1;
         unsigned int read_caption:1;
+        unsigned int read_joeColor:1;
         unsigned int read_licenseDescription:1;
         unsigned int read_licenseUrl:1;
         unsigned int read_photo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_author:1;
-        unsigned int wrote_caption:1;
-        unsigned int wrote_licenseDescription:1;
-        unsigned int wrote_licenseUrl:1;
-        unsigned int wrote_photo:1;
-        unsigned int wrote_displayFullPhotoInline:1;
-        unsigned int wrote_displayFullScreenPhotoGallery:1;
-        unsigned int wrote_highQuality:1;
-        unsigned int wrote_isBusinessOwned:1;
-        unsigned int wrote_useGallery:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -64,12 +56,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasDisplayFullScreenPhotoGallery;
 @property (nonatomic) BOOL hasHighQuality;
 @property (nonatomic) BOOL hasIsBusinessOwned;
+@property (readonly, nonatomic) BOOL hasJoeColor;
 @property (readonly, nonatomic) BOOL hasLicenseDescription;
 @property (readonly, nonatomic) BOOL hasLicenseUrl;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (nonatomic) BOOL hasUseGallery;
 @property (nonatomic) BOOL highQuality;
 @property (nonatomic) BOOL isBusinessOwned;
+@property (strong, nonatomic) GEOPDJoeColor *joeColor;
 @property (strong, nonatomic) NSString *licenseDescription;
 @property (strong, nonatomic) NSString *licenseUrl;
 @property (strong, nonatomic) GEOPDPhoto *photo;
@@ -79,11 +73,6 @@ __attribute__((visibility("hidden")))
 + (id)captionedPhotosForPlaceData:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAuthor;
-- (void)_readCaption;
-- (void)_readLicenseDescription;
-- (void)_readLicenseUrl;
-- (void)_readPhoto;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -92,7 +81,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

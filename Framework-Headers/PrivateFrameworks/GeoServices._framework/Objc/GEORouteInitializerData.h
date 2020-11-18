@@ -28,7 +28,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_MapsCarPlay_isEqual:(id)arg1;
+- (id)arrivalParametersAtIndex:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)incidentAtIndex:(unsigned long long)arg1 forGeoRoute:(id)arg2;
+- (id)incidentAtIndex:(unsigned long long)arg1 forGeoWaypointRoute:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithWaypoints:(id)arg1 routeAttributes:(id)arg2 ETATrafficUpdateResponse:(id)arg3;
 - (id)initWithWaypoints:(id)arg1 routeAttributes:(id)arg2 directionsResponse:(id)arg3;

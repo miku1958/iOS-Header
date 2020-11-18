@@ -6,25 +6,17 @@
 
 #import <UIKit/UILabel.h>
 
-#import <PhotosUICore/PXAccessibilityView-Protocol.h>
 #import <PhotosUICore/PXGReusableView-Protocol.h>
 
-@class NSString, PXCuratedLibraryLabelConfiguration;
+@class PXCuratedLibraryLabelConfiguration;
 
-@interface PXCuratedLibraryLabel : UILabel <PXAccessibilityView, PXGReusableView>
+@interface PXCuratedLibraryLabel : UILabel <PXGReusableView>
 {
     PXCuratedLibraryLabelConfiguration *_userData;
     struct CGRect _clippingRect;
 }
 
-@property (readonly, copy, nonatomic) NSString *accessibilityLabel;
 @property (nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isAccessible;
-@property (readonly, nonatomic) BOOL isContainedInAsset;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) PXCuratedLibraryLabelConfiguration *userData; // @synthesize userData=_userData;
 
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 withConfiguration:(id)arg2;

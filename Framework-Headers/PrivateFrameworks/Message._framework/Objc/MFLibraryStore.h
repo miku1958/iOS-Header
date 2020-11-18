@@ -23,7 +23,6 @@
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 + (BOOL)storeAtPathIsWritable:(id)arg1;
-+ (id)storeWithCriterion:(id)arg1;
 + (id)storeWithMailbox:(id)arg1;
 - (void).cxx_destruct;
 - (id)URLString;
@@ -62,8 +61,6 @@
 - (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
 - (id)copyOfMessageInfos;
-- (id)copyOfMessageInfosForConversationsContainingMessagesMatchingCriterion:(id)arg1;
-- (id)copyOfMessageInfosMatchingCriterion:(id)arg1;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2 generation:(unsigned long long *)arg3;
 - (id)criterion;
@@ -72,7 +69,6 @@
 - (id)dataPathForMessage:(id)arg1 part:(id)arg2;
 - (id)dateOfOldestNonIndexedNonSearchResultMessage;
 - (void)dealloc;
-- (void)deleteBodyDataForMessage:(id)arg1;
 - (void)deleteMessages:(id)arg1 moveToTrash:(BOOL)arg2;
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(BOOL)arg2;
 - (void)doCompact;
@@ -89,7 +85,6 @@
 - (BOOL)hasCompleteDataForMimePart:(id)arg1;
 - (BOOL)hasMessageForAccount:(id)arg1;
 - (unsigned long long)indexOfMessage:(id)arg1;
-- (id)initWithCriterion:(id)arg1;
 - (id)initWithCriterion:(id)arg1 mailbox:(id)arg2 readOnly:(BOOL)arg3;
 - (id)initWithMailbox:(id)arg1;
 - (id)initWithMailboxUid:(id)arg1 readOnly:(BOOL)arg2;
@@ -97,17 +92,13 @@
 - (id)library;
 - (id)mailbox;
 - (id)messageForMessageID:(id)arg1 options:(unsigned int)arg2;
-- (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2;
 - (void)messagesWereAdded:(id)arg1 earliestReceivedDate:(id)arg2;
 - (id)mutableCopyOfAllMessages;
 - (id)newObjectCache;
 - (unsigned long long)nonDeletedCountIncludingServerSearch:(BOOL)arg1 andThreadSearch:(BOOL)arg2;
-- (long long)oldestKnownConversation;
-- (id)oldestKnownMessage;
 - (void)openSynchronously;
 - (void)purgeMessages:(id)arg1;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
-- (id)sendersByLibraryIDForConversation:(long long)arg1 limit:(long long)arg2;
 - (id)serverSearchResults;
 - (unsigned long long)serverUnreadOnlyOnServerCount;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
@@ -122,7 +113,6 @@
 - (unsigned long long)unreadCount;
 - (unsigned long long)unreadCountMatchingCriterion:(id)arg1;
 - (void)updateMetadata;
-- (void)updateUserInfoToLatestValues;
 - (void)willFetchMessages;
 - (void)writeUpdatedMessageDataToDisk;
 

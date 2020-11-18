@@ -14,9 +14,12 @@
     unsigned char _objectDiscoveryBatteryState;
     unsigned char _objectSetupBatteryState;
     unsigned char _objectSetupColorCode;
+    unsigned char _proximityPairingAudioSourceCount;
     unsigned short _objectDiscoveryProductID;
     unsigned short _proximityPairingProductID;
+    CDStruct_ae2970c9 _proximityPairingLastConnectedHost;
     unsigned int _changeFlags;
+    unsigned int _deviceFlags;
     unsigned int _lgFlags;
     int _nearbyActionType;
     unsigned int _nearbyFlags;
@@ -42,6 +45,7 @@
 @property (readonly, copy, nonatomic) NSData *addressData; // @synthesize addressData=_addressData;
 @property (readonly, copy, nonatomic) NSData *appleManufacturerData; // @synthesize appleManufacturerData=_appleManufacturerData;
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
+@property (nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSData *lgBTAddress; // @synthesize lgBTAddress=_lgBTAddress;
 @property (readonly, copy, nonatomic) NSData *lgDeviceID; // @synthesize lgDeviceID=_lgDeviceID;
@@ -62,6 +66,8 @@
 @property (readonly, nonatomic) unsigned int objectSetupFlags; // @synthesize objectSetupFlags=_objectSetupFlags;
 @property (readonly, copy, nonatomic) NSString *objectSetupFontCode; // @synthesize objectSetupFontCode=_objectSetupFontCode;
 @property (readonly, copy, nonatomic) NSString *objectSetupMessage; // @synthesize objectSetupMessage=_objectSetupMessage;
+@property (readonly, nonatomic) unsigned char proximityPairingAudioSourceCount; // @synthesize proximityPairingAudioSourceCount=_proximityPairingAudioSourceCount;
+@property (readonly, nonatomic) CDStruct_ae2970c9 proximityPairingLastConnectedHost; // @synthesize proximityPairingLastConnectedHost=_proximityPairingLastConnectedHost;
 @property (readonly, nonatomic) unsigned short proximityPairingProductID; // @synthesize proximityPairingProductID=_proximityPairingProductID;
 @property (readonly, nonatomic) int proximityPairingSubType; // @synthesize proximityPairingSubType=_proximityPairingSubType;
 @property (readonly, nonatomic) int rawRSSI; // @synthesize rawRSSI=_rawRSSI;
@@ -74,6 +80,7 @@
 - (void)_parseAppleObjectDiscoveryPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseAppleProximityPairingObjectSetupPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseAppleProximityPairingPtr:(const char *)arg1 end:(const char *)arg2;
+- (void)_parseAppleProximityPairingStatusPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseLGManufacturerPtr:(const char *)arg1 end:(const char *)arg2 fields:(id)arg3;
 - (void)_parseManufacturerData:(id)arg1 advertisementFields:(id)arg2;
 - (id)description;

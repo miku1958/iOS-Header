@@ -13,7 +13,7 @@
 #import <TSText/TSWPStorageParent-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSDInfoGeometry, TSUColor, TSWPStorage;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TSWPFlowInfo : TSPObject <TSWPFlowInfo, TSDContainerInfo, TSDLockableInfo, TSWPStorageParent, TSDSelectionStatisticsContributor>
 {
@@ -35,19 +35,22 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isLocked;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic, getter=isLocked) BOOL locked;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
+@property (readonly, nonatomic) long long nestedTextboxDepth;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDropCapsInChildStorages;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
+@property (readonly, nonatomic) BOOL supportsVerticalTextLayoutInChildStorages;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (readonly, nonatomic) unsigned long long textOrientation;
 @property (strong, nonatomic) TSWPStorage *textStorage; // @synthesize textStorage=_textStorage;
@@ -79,7 +82,6 @@
 - (Class)layoutClass;
 - (void)loadFromFlowInfoArchive:(const struct FlowInfoArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (long long)nestedTextboxDepth;
 - (void)pSaveToFlowInfoArchive:(struct FlowInfoArchive *)arg1 archiver:(id)arg2 textBoxes:(id)arg3;
 - (void)processSelectedStoragesWithStatisticsController:(id)arg1;
 - (Class)repClass;

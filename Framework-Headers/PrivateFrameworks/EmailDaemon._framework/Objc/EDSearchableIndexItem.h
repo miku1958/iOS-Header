@@ -67,6 +67,7 @@
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 message:(id)arg2 bodyData:(id)arg3 fetchBody:(BOOL)arg4;
 - (id)initWithMessage:(id)arg1 bodyData:(id)arg2 fetchBody:(BOOL)arg3;
+- (void)preprocess;
 - (id)searchableItem;
 - (void)setNeedsAllAttributesIndexingType;
 

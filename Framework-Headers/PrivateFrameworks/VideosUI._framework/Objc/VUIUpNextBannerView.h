@@ -8,7 +8,7 @@
 
 #import <VideosUI/TVRowHosting-Protocol.h>
 
-@class NSString, UIVisualEffectView;
+@class NSString, UIFocusGuide, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface VUIUpNextBannerView : UIView <TVRowHosting>
@@ -18,13 +18,16 @@ __attribute__((visibility("hidden")))
         BOOL respondsToShouldBindRowsTogether;
         BOOL respondsToShowcaseRowMetricsForExpectedWidth;
     } _shelfViewFlags;
+    BOOL _isHostWatchNow;
     UIView *_shelfView;
     UIVisualEffectView *_backgroundVisualEffectView;
+    UIFocusGuide *_focusGuide;
 }
 
 @property (strong, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIFocusGuide *focusGuide; // @synthesize focusGuide=_focusGuide;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *shelfView; // @synthesize shelfView=_shelfView;
 @property (readonly, nonatomic) BOOL shouldBindRowsTogether;
@@ -32,7 +35,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_updateAppearance;
-- (id)initWithFrame:(struct CGRect)arg1 addBlurBackground:(BOOL)arg2;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 addBlurBackground:(BOOL)arg2 isHostWatchNow:(BOOL)arg3;
 - (void)layoutSubviews;
 - (id)rowMetricsForExpectedWidth:(double)arg1 firstItemRowIndex:(long long *)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

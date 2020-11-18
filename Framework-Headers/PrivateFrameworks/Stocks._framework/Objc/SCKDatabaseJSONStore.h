@@ -78,7 +78,7 @@
 - (id)_encodeDate:(id)arg1;
 - (void)_listenForChangesToFileURL:(id)arg1;
 - (void)_loadFromFileURL:(id)arg1;
-- (void)_reloadIfNeededFromFileURL:(id)arg1;
+- (BOOL)_reloadIfNeededFromFileURL:(id)arg1;
 - (void)_saveIfNeededToFileURL:(id)arg1;
 - (void)_saveToFileURL:(id)arg1;
 - (void)addObserver:(id)arg1;

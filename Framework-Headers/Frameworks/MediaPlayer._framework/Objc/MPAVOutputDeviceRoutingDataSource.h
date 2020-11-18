@@ -44,12 +44,15 @@
 - (void)_setShouldSourceOutputDevicesFromAVODDS:(BOOL)arg1;
 - (void)_unregisterNotifications;
 - (void)addRouteToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addRoutesToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (BOOL)devicePresenceDetected;
 - (long long)discoveryMode;
-- (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getRoutesForCategory:(id)arg1;
 - (id)init;
+- (id)outputDevicesForRoutes:(id)arg1;
 - (void)removeRouteFromGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeRoutesFromGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)routeIsLeaderOfEndpoint:(id)arg1;
 - (id)routingSessionManager;
 - (void)setDiscoveryMode:(long long)arg1;

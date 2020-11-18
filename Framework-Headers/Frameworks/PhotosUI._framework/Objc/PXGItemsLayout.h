@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXGLayout.h>
 
-@protocol PXGItemsGeometry, PXGItemsLayoutDelegate;
+@protocol PXGItemsGeometry, PXGItemsLayoutDelegate, PXGLayoutContentSource;
 
 @interface PXGItemsLayout : PXGLayout
 {
@@ -19,39 +19,60 @@
     BOOL *_pendingAnimations;
     long long *_styleableAnimations;
     double *_stylablePaddings;
+    BOOL _accessoryItemsNeedUpdate;
+    PXGLayout *_accessoryItemsContainerLayout;
     BOOL _lazy;
     id<PXGItemsLayoutDelegate> _delegate;
+    long long _numberOfAccessoryItems;
+    id<PXGLayoutContentSource> _accessoryItemContentSource;
+    id _dropTargetObjectReference;
+    unsigned long long _dropTargetStyle;
     id<PXGItemsGeometry> _itemsGeometry;
     long long __numberOfItems;
     struct _NSRange _loadedItems;
 }
 
 @property (nonatomic) long long _numberOfItems; // @synthesize _numberOfItems=__numberOfItems;
+@property (weak, nonatomic) id<PXGLayoutContentSource> accessoryItemContentSource; // @synthesize accessoryItemContentSource=_accessoryItemContentSource;
 @property (weak, nonatomic) id<PXGItemsLayoutDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) id dropTargetObjectReference; // @synthesize dropTargetObjectReference=_dropTargetObjectReference;
+@property (nonatomic) unsigned long long dropTargetStyle; // @synthesize dropTargetStyle=_dropTargetStyle;
 @property (readonly, nonatomic) BOOL isApplyingItemChanges;
 @property (readonly, nonatomic) id<PXGItemsGeometry> itemsGeometry; // @synthesize itemsGeometry=_itemsGeometry;
 @property (nonatomic, getter=isLazy) BOOL lazy; // @synthesize lazy=_lazy;
 @property (nonatomic) struct _NSRange loadedItems; // @synthesize loadedItems=_loadedItems;
+@property (nonatomic) long long numberOfAccessoryItems; // @synthesize numberOfAccessoryItems=_numberOfAccessoryItems;
 @property (nonatomic) long long numberOfItems;
 
 - (void).cxx_destruct;
 - (void)_handleFocusChangeWithUserInfo:(id)arg1;
+- (void)_handleSelectionChangeWithUserInfo:(id)arg1;
+- (void)_invalidateAccessoryItems;
+- (void)_updateAccessoryItems;
 - (void)_updateFocusedItemIfNeeded;
 - (void)_updateHoveredItemIfNeeded;
 - (void)_updateLoadedItems;
 - (void)_updateStylableType:(long long)arg1;
+- (long long)accessoryItemForSpriteIndex:(unsigned int)arg1;
+- (void)accessoryItemsDidChange;
 - (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
 - (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
 - (id)axSpriteIndexes;
 - (id)axSpriteIndexesInRect:(struct CGRect)arg1;
 - (id)axVisibleSpriteIndexes;
 - (void)beginApplyingItemChanges;
+- (void)dealloc;
 - (BOOL)delegateRespondsTo:(unsigned long long)arg1;
+- (id)description;
+- (void)dropTargetObjectReferenceDidChange;
 - (void)endApplyingItemChanges;
+- (void)enumerateVisibleAnchoringLayoutsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)hitTestResultForSpriteIndex:(unsigned int)arg1;
 - (id)init;
 - (void)invalidateLoadedItems;
 - (void)invalidateStylableType:(long long)arg1;
 - (long long)itemForObjectReference:(id)arg1;
+- (long long)itemForObjectReference:(id)arg1 options:(unsigned long long)arg2;
 - (long long)itemForSpriteIndex:(unsigned int)arg1;
 - (id)itemsForSpriteIndexes:(id)arg1;
 - (id)itemsLayout;
@@ -59,15 +80,23 @@
 - (id)layoutForItemChanges;
 - (void)loadedItemsDidChange;
 - (id)loadedItemsForItems:(id)arg1;
+- (void)modifyAccessoryItemSpritesInRange:(struct _PXGSpriteIndexRange)arg1 state:(CDUnknownBlockType)arg2;
+- (void)numberOfAccessoryItemsDidChange;
+- (id)objectReferenceForItem:(long long)arg1;
+- (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
 - (void)setAnimationParameters:(CDStruct_7f320dbc)arg1 forStylableType:(long long)arg2;
 - (void)setItem:(long long)arg1 forStylableType:(long long)arg2 animated:(BOOL)arg3;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2 changeMediaVersionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)shouldInvalidateDecorationForModifiedSprites;
 - (struct CGSize)sizeForItem:(long long)arg1;
+- (unsigned int)spriteIndexForAccessoryItem:(long long)arg1;
 - (unsigned int)spriteIndexForItem:(long long)arg1;
+- (BOOL)spriteIndexIsAccessoryItem:(unsigned int)arg1;
+- (BOOL)spriteIndexIsItem:(unsigned int)arg1;
 - (id)spriteIndexesForItems:(id)arg1;
 - (void)update;
+- (void)updateAccessoryItemsIfNeeded;
 - (void)updateLoadedItemsIfNeeded;
 
 @end

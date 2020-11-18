@@ -13,7 +13,7 @@
 #import <MobileTimer/MTSource-Protocol.h>
 #import <MobileTimer/MTTimeObserver-Protocol.h>
 
-@class MTAlarm, MTBedtimeDNDMonitor, MTObserverStore, MTSleepCoordinatorStateMachine, MTXPCScheduler, NAFuture, NSDate, NSString;
+@class MTAlarm, MTObserverStore, MTSleepCoordinatorStateMachine, MTSleepModeMonitor, MTXPCScheduler, NAFuture, NSDate, NSString;
 @protocol MTAlarmStorage, NAScheduler;
 
 @interface MTSleepCoordinator : NSObject <MTSource, MTSleepCoordinatorStateMachineDelegate, MTSleepCoordinatorStateMachineInfoProvider, MTAlarmObserver, MTTimeObserver, MTAgentDiagnosticDelegate>
@@ -25,13 +25,12 @@
     MTObserverStore *_observers;
     id<MTAlarmStorage> _alarmStorage;
     MTXPCScheduler *_alarmTimeoutScheduler;
-    MTBedtimeDNDMonitor *_bedtimeDNDMonitor;
+    MTSleepModeMonitor *_sleepModeMonitor;
     CDUnknownBlockType _currentDateProvider;
 }
 
 @property (copy, nonatomic) id<MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property (strong, nonatomic) MTXPCScheduler *alarmTimeoutScheduler; // @synthesize alarmTimeoutScheduler=_alarmTimeoutScheduler;
-@property (strong, nonatomic) MTBedtimeDNDMonitor *bedtimeDNDMonitor; // @synthesize bedtimeDNDMonitor=_bedtimeDNDMonitor;
 @property (strong, nonatomic) MTAlarm *cachedSleepAlarm; // @synthesize cachedSleepAlarm=_cachedSleepAlarm;
 @property (readonly, nonatomic) NSDate *currentDate;
 @property (copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
@@ -41,6 +40,7 @@
 @property (strong, nonatomic) MTObserverStore *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property (readonly, nonatomic) MTAlarm *sleepAlarm;
+@property (strong, nonatomic) MTSleepModeMonitor *sleepModeMonitor; // @synthesize sleepModeMonitor=_sleepModeMonitor;
 @property (strong, nonatomic) NAFuture *sleepStateResolved; // @synthesize sleepStateResolved=_sleepStateResolved;
 @property (readonly, nonatomic) unsigned long long sleepTimeOutMinutes;
 @property (strong, nonatomic) MTSleepCoordinatorStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
@@ -48,28 +48,28 @@
 
 - (void).cxx_destruct;
 - (void)_notifyObserversForSleepAlarmChange:(id)arg1;
-- (void)bedtimeSessionTracker:(id)arg1 sessionDidComplete:(id)arg2;
 - (id)gatherDiagnostics;
 - (void)handleBedtimeForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleBedtimeReminderForAlarm:(id)arg1 date:(id)arg2;
-- (void)handleBedtimeSessionEndedForAlarm:(id)arg1 date:(id)arg2 reason:(unsigned long long)arg3;
 - (void)handleConfirmationOfGoToBedNotificationForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleDismissForAlarm:(id)arg1 dismissAction:(unsigned long long)arg2 date:(id)arg3;
 - (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)handleSleepSessionEndedForAlarm:(id)arg1 date:(id)arg2 reason:(unsigned long long)arg3;
 - (void)handleSnoozeForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleSnoozeOfGoToBedNotificationForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleWakeUpAlarmForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleWakeUpTimeForAlarm:(id)arg1 date:(id)arg2;
 - (BOOL)handlesNotification:(id)arg1 ofType:(long long)arg2;
-- (BOOL)inUserDefinedSleepWindow;
 - (id)initWithAlarmStorage:(id)arg1;
 - (id)initWithAlarmStorage:(id)arg1 currentDateProvider:(CDUnknownBlockType)arg2;
-- (BOOL)isBedtimeDNDOn;
+- (BOOL)isSleepModeOn;
+- (BOOL)isUserAsleep;
 - (void)notifyObserversForSleepAlarmChange:(id)arg1;
 - (void)notifyObserversForSleepAlarmChangeIfNecessary:(id)arg1;
 - (void)pairedDevicePreferencesChanged:(id)arg1;
 - (void)printDiagnostics;
 - (void)registerObserver:(id)arg1;
+- (void)sleepSessionTracker:(id)arg1 sessionDidComplete:(id)arg2;
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
 - (void)source:(id)arg1 didDismissAlarm:(id)arg2 dismissAction:(unsigned long long)arg3;

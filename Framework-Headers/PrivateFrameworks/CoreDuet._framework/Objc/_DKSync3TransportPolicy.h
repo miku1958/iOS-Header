@@ -26,24 +26,11 @@
     unsigned long long _deletionsBucketCountTriggeringSync;
 }
 
-@property (nonatomic) unsigned long long additionsBucketCountTriggeringSync; // @synthesize additionsBucketCountTriggeringSync=_additionsBucketCountTriggeringSync;
-@property (nonatomic) unsigned long long deletionsBucketCountTriggeringSync; // @synthesize deletionsBucketCountTriggeringSync=_deletionsBucketCountTriggeringSync;
-@property (nonatomic) BOOL isSyncDisabled; // @synthesize isSyncDisabled=_isSyncDisabled;
-@property (nonatomic) unsigned long long maximumBatchesPerSync; // @synthesize maximumBatchesPerSync=_maximumBatchesPerSync;
-@property (nonatomic) unsigned long long maximumSyncsPerDay; // @synthesize maximumSyncsPerDay=_maximumSyncsPerDay;
-@property (nonatomic) unsigned long long minimumSyncWindowInSeconds; // @synthesize minimumSyncWindowInSeconds=_minimumSyncWindowInSeconds;
-@property (nonatomic) unsigned long long minimumTimeBetweenSyncsInSeconds; // @synthesize minimumTimeBetweenSyncsInSeconds=_minimumTimeBetweenSyncsInSeconds;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property (nonatomic) unsigned long long singleDevicePeriodicSyncCadenceInDays; // @synthesize singleDevicePeriodicSyncCadenceInDays=_singleDevicePeriodicSyncCadenceInDays;
-@property (nonatomic) unsigned long long syncBatchSizeInEvents; // @synthesize syncBatchSizeInEvents=_syncBatchSizeInEvents;
-@property (strong, nonatomic) NSString *transport; // @synthesize transport=_transport;
 
-+ (id)policyForSyncTransportType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (id)initWithName:(id)arg1 properties:(id)arg2;
 
 @end
 

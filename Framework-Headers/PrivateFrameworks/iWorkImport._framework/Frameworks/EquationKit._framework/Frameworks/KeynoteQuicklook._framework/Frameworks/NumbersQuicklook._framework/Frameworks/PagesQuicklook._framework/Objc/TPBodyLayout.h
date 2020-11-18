@@ -90,14 +90,15 @@
 - (BOOL)isFootnoteContainerOnSamePageAsTarget:(id)arg1;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
+- (id)layoutForInlineDrawable:(id)arg1;
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;
 - (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (BOOL)needsInflation;
 - (void)p_addLayoutIfAttached:(id)arg1;
 - (void)p_killDrawableLayouts:(id)arg1;
+- (id)p_layoutForDrawable:(id)arg1 inContainingLayout:(id)arg2;
 - (struct CGRect)p_rectForSelection:(id)arg1 useParagraphModeRects:(BOOL)arg2;
-- (id)p_validatedLayoutForDrawable:(id)arg1 inContainingLayout:(id)arg2;
 - (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)parentWillChangeTo:(id)arg1;
 - (BOOL)processWidowAndInflation;
@@ -112,8 +113,10 @@
 - (void)setChildren:(id)arg1;
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
 - (void)setNeedsInflation;
+- (BOOL)shouldInvalidateSizeWhenInvalidateSizeOfReliedOnLayout:(id)arg1;
 - (BOOL)shouldProvideSizingGuides;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
+- (id)textColorOverride;
 - (double)textScaleForChild:(id)arg1;
 - (void)unregisterFromLayoutController;
 - (id)unscaledCommentFlagAnchorInfoForSearchReference:(id)arg1;
@@ -121,8 +124,8 @@
 - (void)updateStartCharIndexWithDirtyRanges:(id)arg1;
 - (void)validate;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
-- (id)validatedLayoutForInlineDrawable:(id)arg1;
 - (double)viewScaleForZoomingToSelectionPath:(id)arg1 targetPointSize:(double)arg2;
+- (void)willBeRemovedFromLayoutController:(id)arg1;
 
 @end
 

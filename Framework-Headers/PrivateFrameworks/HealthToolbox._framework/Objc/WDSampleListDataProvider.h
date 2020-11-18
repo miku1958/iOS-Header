@@ -10,15 +10,16 @@
 #import <HealthToolbox/HKSampleTypeUpdateControllerObserver-Protocol.h>
 #import <HealthToolbox/WDDataListViewControllerDataProvider-Protocol.h>
 
-@class HKDisplayType, HKHealthStore, HKSortedSampleArray, NSDictionary, NSPredicate, NSString, WDProfile, _HKFilter;
+@class HKDisplayType, HKHealthStore, HKSampleListDataProviderFilter, HKSortedSampleArray, NSDictionary, NSPredicate, NSString, WDProfile;
 
 __attribute__((visibility("hidden")))
 @interface WDSampleListDataProvider : NSObject <HKSampleTypeUpdateControllerObserver, WDDataListViewControllerDataProvider, HKDataMetadataViewControllerDelegate>
 {
     NSDictionary *_pagingContexts;
-    _HKFilter *_defaultQueryPredicateFilter;
+    HKSampleListDataProviderFilter *_defaultQueryPredicateFilter;
     CDUnknownBlockType _updateCallback;
     NSPredicate *_defaultQueryPredicate;
+    NSString *_profileName;
     HKDisplayType *_displayType;
     WDProfile *_profile;
     HKSortedSampleArray *_samples;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) HKHealthStore *healthStore;
 @property (readonly, nonatomic) unsigned long long numberOfSections;
 @property (readonly, weak, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
+@property (copy, nonatomic) NSString *profileName; // @synthesize profileName=_profileName;
 @property (readonly, nonatomic) HKSortedSampleArray *samples; // @synthesize samples=_samples;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL textAdjustsFontSizeToFitWidth;

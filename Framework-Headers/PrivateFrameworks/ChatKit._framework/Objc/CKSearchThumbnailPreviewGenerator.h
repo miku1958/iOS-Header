@@ -35,7 +35,6 @@
 + (id)__singleton__im;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_IMSPIQueryMessageItemsWithGUIDs:(id)arg1 results:(CDUnknownBlockType)arg2;
 - (void)_asyncLoadCachedDiskPreviewForKeyIfAvailable:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (CDStruct_1b6d18a9)_calculateDurationForVideoResult:(id)arg1;
 - (BOOL)_checkResultForLivePhotoComplement:(id)arg1;

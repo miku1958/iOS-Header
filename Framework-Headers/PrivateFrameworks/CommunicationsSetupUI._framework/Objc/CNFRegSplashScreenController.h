@@ -11,6 +11,7 @@
 @class CNFRegController, NSString, UIBarButtonItem, UIButton;
 @protocol CNFRegFirstRunDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegSplashScreenController : PSViewController <CNFRegFirstRunExperience>
 {
     UIButton *_learnMoreButton;

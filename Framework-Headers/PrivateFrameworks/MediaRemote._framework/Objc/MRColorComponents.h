@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
+
 @class _MRColorProtobuf;
 
-__attribute__((visibility("hidden")))
-@interface MRColorComponents : NSObject
+@interface MRColorComponents : NSObject <NSCopying>
 {
     float _red;
     float _green;
@@ -17,12 +18,13 @@ __attribute__((visibility("hidden")))
     float _alpha;
 }
 
-@property (readonly, nonatomic) float alpha; // @synthesize alpha=_alpha;
-@property (readonly, nonatomic) float blue; // @synthesize blue=_blue;
-@property (readonly, nonatomic) float green; // @synthesize green=_green;
+@property (nonatomic) float alpha; // @synthesize alpha=_alpha;
+@property (nonatomic) float blue; // @synthesize blue=_blue;
+@property (nonatomic) float green; // @synthesize green=_green;
 @property (readonly, nonatomic) _MRColorProtobuf *protobuf;
-@property (readonly, nonatomic) float red; // @synthesize red=_red;
+@property (nonatomic) float red; // @synthesize red=_red;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -13,6 +13,7 @@
 @interface NTKBundleComplicationDataSourceLoader : NSObject <NSCopying>
 {
     NSArray *_cachedDataSources;
+    struct os_unfair_lock_s _cachedDataSourcesLock;
 }
 
 + (id)aggregateComplicationLoaderWithComplicationLoaders:(id)arg1;
@@ -23,8 +24,10 @@
 + (id)disabledComplicationDataSourceLoader;
 - (void).cxx_destruct;
 - (void)_loadClassesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)cachedDataSources;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerationComplicationClassesWithBlock:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

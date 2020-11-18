@@ -16,7 +16,7 @@
 
 - (id)initWithMetadataStore:(id)arg1;
 - (int)shaderFlags;
-- (int)type;
+- (unsigned short)type;
 
 @end
 

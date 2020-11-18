@@ -43,8 +43,8 @@
 - (void)animateTransition:(id)arg1;
 - (id)imageMeshTransform:(BOOL)arg1;
 - (id)initWithImage:(id)arg1 unfilteredImage:(id)arg2 orientation:(long long)arg3 indexPath:(id)arg4 duration:(double)arg5 completion:(CDUnknownBlockType)arg6;
-- (union _GLKMatrix3)matrixTransformingQuadForOverlayToImageView:(BOOL *)arg1;
-- (union _GLKMatrix3)matrixTransformingToUnitSquareWithPoints:(double)arg1 y0:(double)arg2 x1:(double)arg3 y1:(double)arg4 x2:(double)arg5 y2:(double)arg6 x3:(double)arg7 y3:(double)arg8;
+- (CDStruct_d80e62f2)matrixTransformingQuadForOverlayToImageView:(BOOL *)arg1;
+- (CDStruct_d80e62f2)matrixTransformingToUnitSquareWithPoints:(double)arg1 y0:(double)arg2 x1:(double)arg3 y1:(double)arg4 x2:(double)arg5 y2:(double)arg6 x3:(double)arg7 y3:(double)arg8;
 - (void)performPopTransitionFromViewController:(id)arg1 toViewController:(id)arg2 transitionContext:(id)arg3;
 - (void)performPushTransitionFromViewController:(id)arg1 toViewController:(id)arg2 transitionContext:(id)arg3;
 - (void)performSimpleFadeInFromViewController:(id)arg1 toViewController:(id)arg2 transitionContext:(id)arg3;

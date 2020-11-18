@@ -11,7 +11,7 @@
 #import <TSCharts/TSCHUnretainedParent-Protocol.h>
 #import <TSCharts/TSDMixing-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSMutableDictionary, TSCHChartGrid, TSCHChartInfo;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TSCHChartGrid, TSCHChartInfo;
 
 @interface TSCHChartModel : NSObject <TSCHNotifyOnModify, TSCHUnretainedParent, TSDMixing, NSCopying>
 {
@@ -34,7 +34,6 @@
     NSMutableDictionary *mModelManagedCaches;
 }
 
-@property (readonly, nonatomic) NSIndexSet *allGroupsIndexSet;
 @property (readonly, nonatomic) unsigned long long analyticsDataSize;
 @property (readonly, copy, nonatomic) NSArray *axisList;
 @property (readonly, copy, nonatomic) NSArray *categoryAxisList;
@@ -45,7 +44,6 @@
 @property (readonly, nonatomic) unsigned long long maxNumberOfReferenceLines; // @dynamic maxNumberOfReferenceLines;
 @property (nonatomic) unsigned long long multiDataSetIndex;
 @property (readonly, nonatomic) unsigned long long numberOfChunkableMultiDataSets;
-@property (readonly, nonatomic) unsigned long long numberOfGroupsPerSeries;
 @property (readonly, nonatomic) unsigned long long numberOfMultiDataSetCategories;
 @property (readonly, nonatomic) unsigned long long numberOfMultiDataSets;
 @property (readonly, nonatomic) unsigned long long numberOfSeries;
@@ -58,6 +56,7 @@
 @property (readonly, copy, nonatomic) NSArray *valueAxisList;
 
 - (void).cxx_destruct;
+- (id)allGroupsIndexSetForSeries:(id)arg1;
 - (id)axisForID:(id)arg1;
 - (id)barModelCacheForSeries:(unsigned long long)arg1;
 - (int)cachedChartMediatorGridDirection;
@@ -97,6 +96,9 @@
 - (id)noSyncAxisList;
 - (id)noSyncSeriesList;
 - (unsigned long long)numberOfGridValues;
+- (unsigned long long)numberOfGroupsInAllSeries;
+- (unsigned long long)numberOfGroupsInSeries:(id)arg1;
+- (unsigned long long)numberOfGroupsInSeriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)p_archivedMultiDataSetIndex;
 - (id)p_axisForID:(id)arg1;
 - (void)p_cacheAxisDataFormatters;
@@ -107,6 +109,7 @@
 - (void)p_loadDefaultData;
 - (void)p_loadDefaultDataWithGridRowIds:(id)arg1 gridColumnIds:(id)arg2 forDocumentLocale:(id)arg3;
 - (unsigned long long)p_multiDataSetCategoryIndexForCategory:(unsigned long long)arg1;
+- (unsigned long long)p_numberOfGroupsInSeries:(id)arg1;
 - (void)p_postSynchronizeAxisList;
 - (void)p_setBimapEntryForSeriesDimension:(id)arg1 andGridIndex:(unsigned long long)arg2;
 - (BOOL)p_shouldLoadDefaultData;

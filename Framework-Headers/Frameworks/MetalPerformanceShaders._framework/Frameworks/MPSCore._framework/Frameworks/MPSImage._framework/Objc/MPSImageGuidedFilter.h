@@ -28,7 +28,7 @@
 @property (nonatomic) BOOL reconstructionCoefficientsSampleBicubic; // @synthesize reconstructionCoefficientsSampleBicubic=_reconstructionCoefficientsSampleBicubic;
 @property (nonatomic) BOOL rescaleCoefficients; // @synthesize rescaleCoefficients=_rescaleCoefficients;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (void)encodeReconstructionToCommandBuffer:(id)arg1 guidanceTexture:(id)arg2 coefficientsTexture:(id)arg3 destinationTexture:(id)arg4;

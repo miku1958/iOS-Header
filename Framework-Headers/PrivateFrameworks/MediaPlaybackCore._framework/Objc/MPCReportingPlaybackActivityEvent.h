@@ -8,18 +8,18 @@
 
 #import <MediaPlaybackCore/MPCReportingEvent-Protocol.h>
 
-@class NSString, SSVPlayActivityEvent;
+@class ICPlayActivityEvent, NSString;
 
 @interface MPCReportingPlaybackActivityEvent : NSObject <MPCReportingEvent>
 {
     BOOL _shouldReportToStore;
-    SSVPlayActivityEvent *_playActivityEvent;
+    ICPlayActivityEvent *_playActivityEvent;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) SSVPlayActivityEvent *playActivityEvent; // @synthesize playActivityEvent=_playActivityEvent;
+@property (copy, nonatomic) ICPlayActivityEvent *playActivityEvent; // @synthesize playActivityEvent=_playActivityEvent;
 @property (nonatomic) BOOL shouldReportToStore; // @synthesize shouldReportToStore=_shouldReportToStore;
 @property (readonly) Class superclass;
 

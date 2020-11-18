@@ -11,5 +11,6 @@
 @protocol PXCMMCloudViewViewDelegate <NSObject>
 - (void)completeMyMomentCloudPhotoViewDismissTapped:(PXCMMCloudView *)arg1;
 - (void)completeMyMomentCloudPhotoViewLearnMoreTapped:(PXCMMCloudView *)arg1;
+- (void)completeMyMomentCloudPhotoViewSizeThatFitsDidChange:(PXCMMCloudView *)arg1;
 @end
 

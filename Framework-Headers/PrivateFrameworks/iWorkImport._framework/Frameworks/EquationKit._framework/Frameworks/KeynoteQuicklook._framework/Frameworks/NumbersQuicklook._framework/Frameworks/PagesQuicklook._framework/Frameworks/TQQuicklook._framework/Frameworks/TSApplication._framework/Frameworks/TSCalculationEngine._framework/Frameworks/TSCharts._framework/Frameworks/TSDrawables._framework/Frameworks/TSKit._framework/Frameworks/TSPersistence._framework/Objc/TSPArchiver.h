@@ -21,12 +21,10 @@
     TSPObject *_explicitComponentRootObject;
     TSPReferenceOrderedSet *_aggregatedStrongReferences;
     TSPReferenceOrderedSet *_aggregatedWeakReferences;
-    TSPReferenceOrderedSet *_aggregatedCommandToModelReferences;
     NSHashTable *_aggregatedLazyReferences;
     NSHashTable *_aggregatedDataReferences;
 }
 
-@property (readonly, nonatomic) TSPReferenceOrderedSet *aggregatedCommandToModelReferences; // @synthesize aggregatedCommandToModelReferences=_aggregatedCommandToModelReferences;
 @property (readonly, nonatomic) NSHashTable *aggregatedDataReferences; // @synthesize aggregatedDataReferences=_aggregatedDataReferences;
 @property (readonly, nonatomic) NSHashTable *aggregatedLazyReferences; // @synthesize aggregatedLazyReferences=_aggregatedLazyReferences;
 @property (readonly, nonatomic) TSPReferenceOrderedSet *aggregatedStrongReferences; // @synthesize aggregatedStrongReferences=_aggregatedStrongReferences;

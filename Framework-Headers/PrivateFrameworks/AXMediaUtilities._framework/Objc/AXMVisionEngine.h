@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <AXMediaUtilities/AXMDescribing-Protocol.h>
+#import <AXMediaUtilities/AXMServiceDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMTaskDispatcherDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMVisionEngineNodeConnectionDelegate-Protocol.h>
 #import <AXMediaUtilities/NSCopying-Protocol.h>
@@ -15,7 +16,7 @@
 @class AXMImageRegistrationNode, AXMSequenceRequestManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, NSArray, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
 @protocol OS_dispatch_queue;
 
-@interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMTaskDispatcherDelegate, NSCopying, NSSecureCoding, AXMDescribing>
+@interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMTaskDispatcherDelegate, AXMServiceDelegate, NSCopying, NSSecureCoding, AXMDescribing>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_queue_sourceNodes;
@@ -86,6 +87,7 @@
 - (void)addResultHandler:(CDUnknownBlockType)arg1;
 - (void)addSourceNode:(id)arg1;
 - (void)addSourceNodes:(id)arg1 evaluationNodes:(id)arg2;
+- (void)axMediaUtilitiesService:(id)arg1 eventOccurred:(long long)arg2;
 - (void)axmAppendRecursiveDescription:(id)arg1 withIndentation:(long long)arg2;
 - (id)axmDescription;
 - (BOOL)canAddEvaluationNode:(id)arg1;
@@ -97,6 +99,7 @@
 - (void)captureSessionNodeDidEndProcessingFrames:(id)arg1;
 - (void)captureSessionNodeWillProcessFrame:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)diagnosticsEnabled:(id)arg1;
 - (void)disableResultCaching;
 - (void)dispatcher:(id)arg1 handleTask:(id)arg2;
 - (void)enableResultCachingWithCacheSize:(long long)arg1;

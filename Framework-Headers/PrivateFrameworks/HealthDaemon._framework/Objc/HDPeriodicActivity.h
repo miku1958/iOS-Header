@@ -8,21 +8,20 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonActivatedObserver-Protocol.h>
 
 @class HDProfile, NSString;
-@protocol HDPeriodicActivityDelegate, OS_dispatch_queue, OS_os_log, OS_xpc_object;
+@protocol HDPeriodicActivityDelegate, OS_os_log, OS_xpc_object;
 
-@interface HDPeriodicActivity : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
+@interface HDPeriodicActivity : NSObject <HDHealthDaemonActivatedObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
 {
     HDProfile *_profile;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     NSString *_lastSuccessfulRunDateUserDefaultsKey;
     CDUnknownBlockType _waitingActivityCompletion;
     NSString *_errorCountUserDefaultsKey;
     NSString *_minimumIntervalDefaultsKey;
     BOOL _unitTest_shouldDeferOverride;
-    BOOL _hasUpdatedCriteria;
     NSString *_name;
     NSObject<OS_os_log> *_loggingCategory;
     double _interval;
@@ -45,23 +44,26 @@
 + (id)_userDefaultsKeyForName:(id)arg1 key:(id)arg2;
 + (void)registerDisabledPeriodicActivityWithName:(id)arg1 loggingCategory:(id)arg2;
 - (void).cxx_destruct;
+- (id)_criteriaForInterval:(double)arg1;
+- (double)_currentInterval;
 - (id)_dateForDefaultsKey:(id)arg1;
+- (void)_finishActivity:(id)arg1 result:(long long)arg2;
 - (void)_handleXPCActivityCallback:(id)arg1;
+- (void)_lock_activityFinishedWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
+- (double)_lock_currentInterval;
+- (long long)_lock_errorCount;
+- (void)_lock_incrementErrorCount;
+- (void)_lock_setLastSuccessfulRunDate:(id)arg1;
 - (void)_performActivity:(id)arg1;
-- (void)_queue_activityFinishedWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
-- (id)_queue_criteriaForInterval:(double)arg1;
-- (double)_queue_currentInterval;
-- (long long)_queue_errorCount;
-- (void)_queue_incrementErrorCount;
-- (void)_queue_performActivityIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_performActivityIfWaiting;
-- (void)_queue_performActivityWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_setLastSuccessfulRunDate:(id)arg1;
-- (void)_queue_unitTest_activityFiredButRunDeclined;
-- (void)_queue_updateCriteriaForActivity:(id)arg1;
-- (void)_registerActivity;
+- (void)_performActivityIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performActivityIfWaiting;
+- (void)_performActivityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_registerActivityWithCriteria:(id)arg1;
 - (BOOL)_requiresProtectedData;
-- (void)daemonReady:(id)arg1;
+- (void)_unitTest_activityFiredButRunDeclined;
+- (void)_updateCriteriaForActivity:(id)arg1;
+- (id)currentCriteria;
+- (void)daemonActivated:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
@@ -70,8 +72,10 @@
 - (BOOL)isWaitingToRun;
 - (id)lastSuccessfulRunDate;
 - (void)reset;
+- (void)resetInterval;
 - (void)synthesizeActivityFire;
 - (void)unitTest_setShouldDefer:(BOOL)arg1;
+- (void)updateCriteria;
 
 @end
 

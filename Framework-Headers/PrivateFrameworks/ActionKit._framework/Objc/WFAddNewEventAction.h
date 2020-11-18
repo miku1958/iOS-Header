@@ -10,13 +10,18 @@
 {
 }
 
++ (id)calendarFromDescriptor:(id)arg1;
++ (id)endDateByCorrectingDate:(id)arg1 withStartDate:(id)arg2;
++ (id)eventFromParameters:(id)arg1 requiringFullySpecifiedEvent:(BOOL)arg2 error:(id *)arg3;
 + (double)relativeOffsetFromTimeString:(id)arg1;
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (id)currentSelectedCalendar;
-- (id)endDateByCorrectingDate:(id)arg1 withStartDate:(id)arg2;
 - (void)initializeParameters;
-- (void)runWithInput:(id)arg1 error:(id *)arg2;
+- (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)runWithoutUI;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 - (void)updateCalendars;
 - (void)updateForcesAllDayFlags;
 - (void)wasAddedToWorkflow:(id)arg1;

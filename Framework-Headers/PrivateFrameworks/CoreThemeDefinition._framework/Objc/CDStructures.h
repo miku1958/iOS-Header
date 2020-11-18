@@ -120,6 +120,6 @@ typedef struct {
     char *_field2;
     BOOL _field3;
     long long _field4;
-    CDStruct_26b2aa83 _field5[7];
-} CDStruct_e3362728;
+    CDStruct_26b2aa83 _field5[8];
+} CDStruct_22c2ae3f;
 

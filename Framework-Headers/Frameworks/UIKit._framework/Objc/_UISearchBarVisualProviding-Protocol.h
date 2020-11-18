@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBar, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UIView, UIVisualEffectView, _UIBackdropView, _UIBarButtonItemAppearanceStorage, _UIBarInsertLayoutData, _UINavigationBarTitleViewOverlayRects, _UISearchBarScopeBarBackground;
+@class NSArray, NSAttributedString, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBar, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UITextField, UIView, UIVisualEffectView, _UIBackdropView, _UIBarButtonItemAppearanceStorage, _UIBarInsertLayoutData, _UINavigationBarTitleViewOverlayRects, _UISearchBarScopeBarBackground;
 @protocol _UINavigationBarTitleViewDataSource, _UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private;
 
 @protocol _UISearchBarVisualProviding <NSObject>
@@ -64,6 +64,7 @@
 @property (strong, nonatomic) UISearchBarTextField *searchField;
 @property (nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment;
 @property (readonly, nonatomic) double searchFieldHeight;
+@property (readonly, nonatomic) UITextField *searchFieldIfExists;
 @property (nonatomic) long long searchFieldLeftViewMode;
 @property (readonly, nonatomic) UINavigationItem *searchNavigationItem;
 @property (nonatomic, getter=isSearchResultsButtonSelected) BOOL searchResultsButtonSelected;
@@ -120,6 +121,9 @@
 - (void)setClippingViewBounds:(struct CGRect)arg1;
 - (void)setDisableDictationButton:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setHelperPlaceholder:(NSAttributedString *)arg1;
+- (void)setHelperPlaceholderHidden:(BOOL)arg1;
+- (void)setHelperPlaceholderOverride:(NSAttributedString *)arg1;
 - (void)setImage:(UIImage *)arg1 forSearchBarIcon:(long long)arg2 state:(unsigned long long)arg3;
 - (void)setOverrideContentInsets:(struct UIEdgeInsets)arg1 forRectEdges:(unsigned long long)arg2;
 - (void)setSearchDisplayControllerShowsCancelButton:(BOOL)arg1;
@@ -140,6 +144,8 @@
 - (void)updateDictationButton;
 - (void)updateEffectiveContentInset;
 - (void)updateForDrawsBackgroundInPalette;
+- (void)updateForDynamicType;
+- (void)updateForSemanticContext;
 - (void)updateIfNecessaryForOldSize:(struct CGSize)arg1;
 - (void)updateMagnifyingGlassView;
 - (void)updateNavigationBarLayoutInsertDataForSearchBar:(_UIBarInsertLayoutData *)arg1 collapsibleScopeBar:(_UIBarInsertLayoutData *)arg2 forLayoutState:(long long)arg3;

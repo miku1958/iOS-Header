@@ -6,47 +6,30 @@
 
 #import <ARKit/ARAnchor.h>
 
-@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary, NSString;
+@class ARPlaneGeometry, MISSING_TYPE;
 
 @interface ARPlaneAnchor : ARAnchor
 {
-    float _uncertaintyAlongNormal;
     long long _alignment;
     ARPlaneGeometry *_geometry;
     long long _classificationStatus;
     long long _classification;
-    ARPatchGrid *_gridExtent;
-    long long _worldAlignmentRotation;
-    NSDictionary *_possibleClassifications;
-    NSString *_classificationLabel;
     MISSING_TYPE *_center;
     MISSING_TYPE *_extent;
 }
 
 @property (readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
-@property (nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
-@property (nonatomic) long long classification; // @synthesize classification=_classification;
-@property (strong, nonatomic) NSString *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
-@property (nonatomic) long long classificationStatus; // @synthesize classificationStatus=_classificationStatus;
-@property (nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
-@property (strong) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;
-@property (strong, nonatomic) ARPatchGrid *gridExtent; // @synthesize gridExtent=_gridExtent;
-@property (copy, nonatomic) NSDictionary *possibleClassifications; // @synthesize possibleClassifications=_possibleClassifications;
-@property (nonatomic) float uncertaintyAlongNormal; // @synthesize uncertaintyAlongNormal=_uncertaintyAlongNormal;
-@property (nonatomic) long long worldAlignmentRotation; // @synthesize worldAlignmentRotation=_worldAlignmentRotation;
+@property (readonly, nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
+@property (readonly, nonatomic) long long classification; // @synthesize classification=_classification;
+@property (readonly, nonatomic) long long classificationStatus; // @synthesize classificationStatus=_classificationStatus;
+@property (readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
+@property (readonly, nonatomic) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;
 
 + (BOOL)isClassificationSupported;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_description:(BOOL)arg1;
-- (id)_hitTestFromOrigin:(BOOL)arg1 withDirection:(BOOL)arg2 usingExtent:usingGeometry: /* Error: Ran out of types for this method. */;
-- (float)area;
-- (id)debugQuickLookObject;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 alignment:(long long)arg3;
 
 @end
 

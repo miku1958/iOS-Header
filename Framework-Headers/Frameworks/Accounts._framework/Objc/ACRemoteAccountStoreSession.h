@@ -8,12 +8,13 @@
 
 #import <Accounts/NSXPCProxyCreating-Protocol.h>
 
-@class NSString, NSXPCConnection, NSXPCListenerEndpoint;
+@class ACAccountStoreClientSideListener, NSString, NSXPCConnection, NSXPCListenerEndpoint;
 
 @interface ACRemoteAccountStoreSession : NSObject <NSXPCProxyCreating>
 {
     NSXPCConnection *_connection;
     struct os_unfair_lock_s _connectionLock;
+    ACAccountStoreClientSideListener *_clientSideListener;
     BOOL _notificationsEnabled;
     NSXPCListenerEndpoint *_listenerEndpoint;
     NSString *_effectiveBundleID;
@@ -32,7 +33,7 @@
 - (void)_setConnectionInvalidated;
 - (void)dealloc;
 - (id)init;
-- (id)initWithListenerEndpoint:(id)arg1;
+- (id)initWithListenerEndpoint:(id)arg1 delegate:(id)arg2;
 - (id)remoteObjectProxy;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

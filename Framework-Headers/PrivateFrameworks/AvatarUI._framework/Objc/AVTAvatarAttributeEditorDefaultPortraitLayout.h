@@ -19,6 +19,7 @@
 - (double)headerMaskingViewAlpha;
 - (struct CGRect)headerMaskingViewFrame;
 - (double)maxHeaderHeight;
+- (struct CGRect)sideGroupContainerFrame;
 - (unsigned long long)supportedLayoutOrientation;
 - (struct CGRect)userInfoFrame;
 - (double)verticalRuleAlpha;

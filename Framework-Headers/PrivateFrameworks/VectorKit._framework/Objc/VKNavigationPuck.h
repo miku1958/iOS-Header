@@ -20,15 +20,21 @@
     VKTimedAnimation *_puckStyleAnimation;
     struct AnimationRunner *_animationRunner;
     struct NavigationPuck *_navigationPuck;
+    BOOL _animatingAccuracy;
+    double _presentationAccuracy;
 }
 
+@property (nonatomic, getter=isAnimatingAccuracy) BOOL animatingAccuracy; // @synthesize animatingAccuracy=_animatingAccuracy;
 @property (nonatomic) BOOL animatingToCoordinate; // @synthesize animatingToCoordinate=_animatingToCoordinate;
 @property (strong, nonatomic) id<VKAnnotation> annotation; // @synthesize annotation=_annotation;
+@property (readonly, nonatomic) struct VKEdgeInsets annotationTrackingEdgeInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double minimumAccuracy;
 @property (nonatomic) int mode;
+@property (nonatomic) double presentationAccuracy; // @synthesize presentationAccuracy=_presentationAccuracy;
 @property (nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
 @property (nonatomic) double presentationCourse;
 @property (nonatomic) float scale;

@@ -7,10 +7,9 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SiriButtonIdentifier)
-+ (id)stringWithAFActivationEvent:(long long)arg1;
-+ (id)stringWithAFDirectActionEvent:(long long)arg1;
 + (id)stringWithSiriActivationEventType:(long long)arg1;
 + (id)stringWithSiriButtonIdentifier:(long long)arg1;
++ (id)stringWithSiriHomeAffordanceSuppression:(long long)arg1;
 + (id)stringWithSiriPresentationActivationCancelReason:(unsigned long long)arg1;
 + (id)stringWithSiriPresentationIdentifier:(long long)arg1;
 + (id)stringWithSiriSpotlightContextSource:(long long)arg1;

@@ -37,7 +37,6 @@
 - (void)configureOSLogNode;
 - (void)configureRootConfigurationNode;
 - (void)configureStandardOutNode;
-- (void)configureUserNotificationNode;
 - (id)copyLegacyLoggingDefaultsConvertedToNamespaces;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

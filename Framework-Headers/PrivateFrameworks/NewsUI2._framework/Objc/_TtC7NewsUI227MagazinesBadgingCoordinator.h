@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227MagazinesBadgingCoordinator : NSObject
 {
     MISSING_TYPE *delegate;

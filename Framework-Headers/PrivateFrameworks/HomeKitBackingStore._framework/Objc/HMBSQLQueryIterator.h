@@ -32,7 +32,6 @@
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fetchRow:(id)arg1 error:(id *)arg2;
 - (id)fetchRowFromStatement:(struct sqlite3_stmt *)arg1 skip:(BOOL *)arg2 updatedSequence:(unsigned long long *)arg3 error:(id *)arg4;
-- (id)initWithError:(id)arg1;
 - (id)initWithStatement:(id)arg1 initialSequence:(id)arg2 maximumRowsPerSelect:(unsigned long long)arg3;
 - (id)initWithStatement:(id)arg1 initialSequence:(id)arg2 maximumRowsPerSelect:(unsigned long long)arg3 error:(id)arg4;
 - (id)nextObject;

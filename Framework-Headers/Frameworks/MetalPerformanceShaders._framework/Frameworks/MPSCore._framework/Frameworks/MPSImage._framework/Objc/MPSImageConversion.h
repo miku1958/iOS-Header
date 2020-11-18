@@ -19,6 +19,9 @@
     CDUnknownFunctionPointerType trcFun;
     CDUnknownFunctionPointerType lutFun;
     CDUnknownFunctionPointerType optionsFun;
+    CDUnknownFunctionPointerType inputRangeFun;
+    CDUnknownFunctionPointerType outputRangeFun;
+    CDUnknownFunctionPointerType propertiesFun;
     unsigned long long sourceAlpha;
     unsigned long long destinationAlpha;
 }
@@ -26,7 +29,7 @@
 @property (readonly, nonatomic) unsigned long long destinationAlpha; // @synthesize destinationAlpha;
 @property (readonly, nonatomic) unsigned long long sourceAlpha; // @synthesize sourceAlpha;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

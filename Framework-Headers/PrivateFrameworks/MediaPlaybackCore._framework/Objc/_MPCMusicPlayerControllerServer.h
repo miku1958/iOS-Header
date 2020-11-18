@@ -40,6 +40,7 @@
 - (id)_nowPlayingWithItem:(id)arg1;
 - (id)_timeSnapshotWithElapsedTime:(double)arg1 rate:(float)arg2;
 - (void)appendDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beginPlaybackAtHostTime:(id)arg1;
 - (void)beginSeekWithDirection:(long long)arg1;
 - (void)endSeek;
 - (void)engine:(id)arg1 didAchieveLikelyToKeepUpWithItem:(id)arg2;
@@ -66,6 +67,7 @@
 - (void)performQueueModifications:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)play;
 - (void)prependDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)prerollWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reshuffle;
 - (void)setDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setElapsedTime:(double)arg1 completion:(CDUnknownBlockType)arg2;

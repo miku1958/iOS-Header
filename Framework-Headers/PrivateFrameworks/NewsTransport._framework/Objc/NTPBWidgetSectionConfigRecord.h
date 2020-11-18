@@ -19,6 +19,7 @@
     NTPBRecordBase *_base;
     NSString *_configuration;
     NSString *_configuration2;
+    NSString *_singleTagConfiguration;
 }
 
 @property (strong, nonatomic) NSMutableArray *articleIDs; // @synthesize articleIDs=_articleIDs;
@@ -31,6 +32,8 @@
 @property (readonly, nonatomic) BOOL hasBase;
 @property (readonly, nonatomic) BOOL hasConfiguration;
 @property (readonly, nonatomic) BOOL hasConfiguration2;
+@property (readonly, nonatomic) BOOL hasSingleTagConfiguration;
+@property (strong, nonatomic) NSString *singleTagConfiguration; // @synthesize singleTagConfiguration=_singleTagConfiguration;
 
 + (Class)articleIDs2Type;
 + (Class)articleIDsType;

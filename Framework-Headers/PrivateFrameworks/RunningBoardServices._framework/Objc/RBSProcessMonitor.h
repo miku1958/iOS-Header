@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/RBSProcessMonitorConfiguring-Protocol.h>
 
-@class NSMutableDictionary, NSSet, RBSProcessMonitorConfiguration, RBSProcessPredicate;
+@class NSMutableDictionary, NSSet, RBSProcessMonitorConfiguration;
 @protocol RBSServiceLocalProtocol;
 
-@interface RBSProcessMonitor : NSObject <RBSProcessMonitorConfiguring>
+@interface RBSProcessMonitor : NSObject <RBSProcessMonitorConfiguring, NSCopying>
 {
     struct os_unfair_lock_s _lock;
     id<RBSServiceLocalProtocol> _service;
@@ -22,24 +23,29 @@
 }
 
 @property (readonly, nonatomic) RBSProcessMonitorConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (readonly, copy, nonatomic) RBSProcessPredicate *predicate; // @dynamic predicate;
+@property (readonly, nonatomic) unsigned long long events;
 @property (readonly, nonatomic) unsigned int serviceClass;
 @property (readonly, copy, nonatomic) NSSet *states; // @dynamic states;
 
++ (id)_monitorWithService:(id)arg1;
++ (id)_monitorWithService:(id)arg1 configuration:(CDUnknownBlockType)arg2;
 + (id)monitor;
 + (id)monitorWithConfiguration:(CDUnknownBlockType)arg1;
 + (id)monitorWithPredicate:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)_handleExitEvent:(id)arg1;
+- (void)_handlePreventLaunchUpdate:(id)arg1;
 - (void)_handleProcessStateChange:(id)arg1;
 - (id)_initWithService:(id)arg1;
 - (void)_reconnect;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)init;
 - (void)invalidate;
-- (BOOL)isValid;
-- (id)predicates;
+- (void)setEvents:(unsigned long long)arg1;
 - (void)setPredicates:(id)arg1;
+- (void)setPreventLaunchUpdateHandle:(CDUnknownBlockType)arg1;
 - (void)setServiceClass:(unsigned int)arg1;
 - (void)setStateDescriptor:(id)arg1;
 - (void)setUpdateHandler:(CDUnknownBlockType)arg1;

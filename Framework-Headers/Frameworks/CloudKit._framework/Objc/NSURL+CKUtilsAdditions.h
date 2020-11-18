@@ -9,8 +9,10 @@
 #import <CloudKit/CKXPCSuitableString-Protocol.h>
 
 @interface NSURL (CKUtilsAdditions) <CKXPCSuitableString>
-+ (id)databaseRPCURLWithCodeServicesURL:(id)arg1 inEnvironment:(long long)arg2;
 - (id)CKSharingURLSubscheme;
 - (id)CKXPCSuitableString;
+- (id)brc_applicationBundleID;
+- (id)brc_applicationName;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @end
 

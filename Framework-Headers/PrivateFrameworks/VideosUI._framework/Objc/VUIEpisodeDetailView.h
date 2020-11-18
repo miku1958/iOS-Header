@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 + (void)configureEpisodeDetailView:(id)arg1 withMedia:(id)arg2 viewSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
 - (void)_configureDotSeparator;
+- (void)_configureViewElementsForAX;
 - (double)_descriptionBottomMarginWithBaselineMargin:(double)arg1;
 - (double)_descriptionTopMarginWithBaselineMargin:(double)arg1 otherFont:(id)arg2;
 - (void)didTapButtonForEpisodeFrameView:(id)arg1;

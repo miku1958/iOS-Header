@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class CADisplayLink, NSMutableArray;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PXPreloadScheduler : NSObject
 {
+    NSObject<OS_dispatch_queue> *_utilityQueue;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
+    NSObject<OS_dispatch_group> *_pendingUtilityTasks;
     CADisplayLink *_displayLink;
     NSMutableArray *_pendingBlocks;
     struct __CFRunLoopObserver *_runloopObserver;
@@ -22,17 +24,19 @@
 
 + (id)sharedScheduler;
 - (void).cxx_destruct;
+- (void)_didExecuteTaskWithQoS:(unsigned long long)arg1;
 - (void)_displayLinkTick:(id)arg1;
 - (void)_runLoopWillStartWaiting;
 - (BOOL)_shouldExecutePendingBlock;
 - (void)_updateIsActive;
+- (void)_willScheduleTaskWithQoS:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)scheduleBackgroundTask:(CDUnknownBlockType)arg1;
-- (void)scheduleDeferredBackgroundTask:(CDUnknownBlockType)arg1;
+- (void)scheduleDeferredTaskWithQoS:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)scheduleMainQueueTask:(CDUnknownBlockType)arg1;
 - (void)scheduleMainQueueTaskAndWait:(CDUnknownBlockType)arg1;
 - (void)scheduleTaskAfterCATransactionCommits:(CDUnknownBlockType)arg1;
+- (void)scheduleTaskWithQoS:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 
 @end
 

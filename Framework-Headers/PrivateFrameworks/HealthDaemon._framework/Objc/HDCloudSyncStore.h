@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDSyncStore-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class CKRecordZoneID, HDProfile, HDSharingPredicate, NSString, NSUUID;
+@class HDProfile, HDSharingPredicate, NSString, NSUUID;
 
 @interface HDCloudSyncStore : NSObject <NSCopying, HDSyncStore>
 {
@@ -24,7 +24,6 @@
     HDProfile *_profile;
     NSString *_sharingIdentifier;
     HDSharingPredicate *_sharingPredicate;
-    CKRecordZoneID *_zoneID;
 }
 
 @property (readonly, nonatomic) BOOL canPush; // @synthesize canPush=_canPush;
@@ -41,12 +40,12 @@
 @property (readonly) Class superclass;
 @property (readonly) long long syncStoreType;
 @property (readonly, nonatomic) BOOL syncTombstonesOnly; // @synthesize syncTombstonesOnly=_syncTombstonesOnly;
-@property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
 + (void)samplesDeletedInProfile:(id)arg1 byUser:(BOOL)arg2;
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 error:(id *)arg6;
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 sharingIdentifier:(id)arg6 predicate:(id)arg7 error:(id *)arg8;
 - (void).cxx_destruct;
+- (id)_syncAnchorMapByStrippingBlacklistedEntities:(id)arg1;
 - (BOOL)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 - (BOOL)clearAllSyncAnchorsWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

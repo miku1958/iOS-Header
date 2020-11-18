@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSOperation;
+@protocol CKPublishAssetsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDPublishAssetsOperation : CKDDatabaseOperation
@@ -22,11 +23,13 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property (copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
+@property (strong, nonatomic) id<CKPublishAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong) NSOperation *fetchRecordsOperation; // @synthesize fetchRecordsOperation=_fetchRecordsOperation;
 @property (strong, nonatomic) NSMutableDictionary *fetchedRecordsByID; // @synthesize fetchedRecordsByID=_fetchedRecordsByID;
 @property (strong, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
 @property (strong, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 - (void).cxx_destruct;
 - (void)_dispatchAssetURLsForRecord:(id)arg1 recordID:(id)arg2 pcs:(struct _OpaquePCSShareProtection *)arg3 error:(id)arg4;

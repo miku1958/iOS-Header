@@ -33,6 +33,7 @@
 - (void)readUserProfile:(id)arg1;
 - (void)removeAllWords;
 - (id)sanitizedStringWithString:(id)arg1;
+- (void)signalEndOfUserData;
 - (void)writeOutUserDataToJson:(id)arg1 withConfig:(id)arg2;
 
 @end

@@ -24,6 +24,7 @@
     NSString *_clientID;
     AKAuthorizationRequest *_request;
     AKAuthorizationScopesUserSelection *_userSelection;
+    NSString *_realUserVerificationData;
 }
 
 @property (readonly, nonatomic) BOOL _hasApplicationMetaData;
@@ -38,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
+@property (copy, nonatomic) NSString *realUserVerificationData; // @synthesize realUserVerificationData=_realUserVerificationData;
 @property (readonly, copy, nonatomic) AKAuthorizationRequest *request; // @synthesize request=_request;
 @property (nonatomic) long long serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;

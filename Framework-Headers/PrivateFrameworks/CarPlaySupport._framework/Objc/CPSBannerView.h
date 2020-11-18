@@ -6,26 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-#import <CarPlaySupport/SBUIBannerView-Protocol.h>
+@class CPSBannerItem;
 
-@class CPSBannerItem, NSString, SBUIBannerContext;
-
-@interface CPSBannerView : UIView <SBUIBannerView>
+@interface CPSBannerView : UIView
 {
     CPSBannerItem *_bannerItem;
-    SBUIBannerContext *_bannerContext;
 }
 
-@property (strong, nonatomic) SBUIBannerContext *bannerContext; // @synthesize bannerContext=_bannerContext;
 @property (strong, nonatomic) CPSBannerItem *bannerItem; // @synthesize bannerItem=_bannerItem;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)applicationIconImage;
-- (id)initWithContext:(id)arg1;
+- (id)initWithBannerItem:(id)arg1;
 - (void)updateBannerWithBannerItem:(id)arg1;
 
 @end

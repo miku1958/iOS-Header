@@ -15,18 +15,24 @@
 @interface SPUIResultsViewController : SearchUIResultsViewController <SPSearchAgentDelegate, SPUIResultsViewTestingDelegate>
 {
     unsigned long long _startTime;
+    BOOL _isHighlighting;
     BOOL _hasResultsWaitingToUpdate;
     CDUnknownBlockType didFinishGettingAllResultsHandler;
+    SFSearchResult *_goTakeoverResult;
     NSArray *_resultSections;
     SFResultSection *_suggestionsSection;
     SFResultSection *_searchThroughSection;
     unsigned long long _previousQueryId;
+    SFSearchResult *_highlightedResult;
 }
 
 @property (readonly) SFSearchResult *actualSearchSuggestionResult;
 @property (weak, nonatomic) id<SPUIResultsViewDelegate> delegate; // @dynamic delegate;
 @property (copy, nonatomic) CDUnknownBlockType didFinishGettingAllResultsHandler; // @synthesize didFinishGettingAllResultsHandler;
+@property (strong, nonatomic) SFSearchResult *goTakeoverResult; // @synthesize goTakeoverResult=_goTakeoverResult;
 @property BOOL hasResultsWaitingToUpdate; // @synthesize hasResultsWaitingToUpdate=_hasResultsWaitingToUpdate;
+@property (strong) SFSearchResult *highlightedResult; // @synthesize highlightedResult=_highlightedResult;
+@property (readonly, nonatomic) BOOL isHighlighting; // @synthesize isHighlighting=_isHighlighting;
 @property unsigned long long previousQueryId; // @synthesize previousQueryId=_previousQueryId;
 @property (strong) NSArray *resultSections; // @synthesize resultSections=_resultSections;
 @property (strong) SFResultSection *searchThroughSection; // @synthesize searchThroughSection=_searchThroughSection;
@@ -35,10 +41,15 @@
 - (void).cxx_destruct;
 - (BOOL)_hasRealSuggestions;
 - (void)_pushSectionsUpdate;
-- (void)_truncateResultsSectionToFit;
+- (id)asTypedSearchResult;
+- (void)changeTextFieldsReturnKeyType:(long long)arg1 withGoTakeoverResult:(id)arg2;
 - (void)clearSuggestionSection;
+- (void)forceHighlightForResult:(id)arg1;
 - (id)initWithSearchModel:(id)arg1;
+- (void)insertYahooAttributionIfNecessaryForResult:(id)arg1;
 - (BOOL)isResultOriginalSearchSuggestion:(id)arg1;
+- (id)makeAsYouTypeSuggestionSearchResultWithSearchString:(id)arg1 detailText:(id)arg2 suggestionIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
+- (void)removeCompletionAndHighlightAsTyped:(BOOL)arg1;
 - (void)searchAgentClearedResults:(id)arg1;
 - (void)searchAgentFinishedQueryWithoutAdditionalResults:(id)arg1;
 - (void)searchAgentUpdatedResults:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <ChatKit/CKImageBalloonView.h>
 
-@class NSString, UIButton, UIImageView, UILabel, UIView;
+@class NSString, UIButton, UIImageView, UILabel, UIView, UIVisualEffectView;
 @protocol CKLocationShareBalloonViewDelegate;
 
 @interface CKLocationShareBalloonView : CKImageBalloonView
@@ -21,10 +21,12 @@
     UIView *_horizontalSeparator;
     UIView *_verticalSeparator;
     UIImageView *_chevron;
+    UIVisualEffectView *_effectView;
 }
 
 @property (strong, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
 @property (weak, nonatomic) id<CKLocationShareBalloonViewDelegate> delegate; // @dynamic delegate;
+@property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (strong, nonatomic) UIView *horizontalSeparator; // @synthesize horizontalSeparator=_horizontalSeparator;
 @property (strong, nonatomic) UIButton *ignoreButton; // @synthesize ignoreButton=_ignoreButton;
 @property (strong, nonatomic) UILabel *locationLabel; // @synthesize locationLabel=_locationLabel;
@@ -38,6 +40,8 @@
 - (void).cxx_destruct;
 - (void)_ignoreButtonHit:(id)arg1;
 - (void)_shareButtonHit:(id)arg1;
+- (void)addFilter:(id)arg1;
+- (void)clearFilters;
 - (void)configureForLocationShareOfferChatItem:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

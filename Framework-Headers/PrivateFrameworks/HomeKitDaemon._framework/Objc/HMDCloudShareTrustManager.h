@@ -15,11 +15,12 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMBShareUserID, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, HMFTimer, NSObject, NSString;
+@class HMBCloudZone, HMBLocalZone, HMBShareUserID, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, HMFTimer, HMFUnfairLock, NSObject, NSString;
 @protocol HMDCloudShareTrustManagerDataSource, HMDCloudShareTrustManagerDelegate, HMDDatabase, OS_dispatch_queue;
 
 @interface HMDCloudShareTrustManager : HMFObject <HMBCloudZoneDelegate, HMBLocalZoneDelegate, HMDCloudShareMessengerDelegate, HMDCloudShareParticipantsManagerDataSource, HMDCloudShareParticipantsManagerDelegate, HMDDatabaseDelegate, HMFLogging, HMFTimerDelegate>
 {
+    HMFUnfairLock *_lock;
     BOOL _ownedTrust;
     long long _configureState;
     id<HMDCloudShareTrustManagerDataSource> _dataSource;
@@ -67,15 +68,14 @@
 - (void)_didRemoveZone;
 - (void)_finishConfigure;
 - (void)_homeDidBecomeTrustZoneCapable:(id)arg1;
-- (void)_removeTrust;
 - (void)_requestShareInvitationForSharedZone;
 - (void)_startRequestInviteTimer;
 - (id)attributeDescriptions;
 - (BOOL)canUseUntrustedAccountHandlesForParticipantManager:(id)arg1;
 - (void)cloudZone:(id)arg1 didRemoveParticipantWithClientIdentifier:(id)arg2;
 - (void)configure;
-- (void)database:(id)arg1 didCreateZoneWithName:(id)arg2;
-- (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2;
+- (void)database:(id)arg1 didCreateZoneWithName:(id)arg2 isPrivate:(BOOL)arg3;
+- (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2 isPrivate:(BOOL)arg3;
 - (void)discoverUntrustedUsers;
 - (void)homeDidBecomeTrustZoneCapable:(id)arg1;
 - (id)initWithDatabase:(id)arg1 isOwnedTrust:(BOOL)arg2 messageTargetUUID:(id)arg3 queue:(id)arg4 ownerCloudShareID:(id)arg5;

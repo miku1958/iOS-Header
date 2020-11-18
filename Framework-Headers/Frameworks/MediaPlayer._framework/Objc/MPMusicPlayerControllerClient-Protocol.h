@@ -10,7 +10,7 @@
 
 @protocol MPMusicPlayerControllerClient <NSObject>
 - (void)serverItemDidEnd;
-- (void)serverPlaybackModeDidChange;
+- (void)serverPlaybackModeDidChangeAffectingQueue:(BOOL)arg1;
 - (void)serverQueueDidEnd;
 - (void)setServerNowPlaying:(MPMusicPlayerControllerNowPlaying *)arg1;
 - (void)setServerQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;

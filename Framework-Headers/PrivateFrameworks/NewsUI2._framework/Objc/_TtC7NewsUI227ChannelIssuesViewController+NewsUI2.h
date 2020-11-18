@@ -7,6 +7,15 @@
 #import <NewsUI2/_TtC7NewsUI227ChannelIssuesViewController.h>
 
 @interface _TtC7NewsUI227ChannelIssuesViewController (NewsUI2)
+
+@property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) long long pluginVisibleItemCount;
+
+- (void)deselect;
+- (void)initializeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)relayoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startTraversingWithDirection:(long long)arg1;
+- (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

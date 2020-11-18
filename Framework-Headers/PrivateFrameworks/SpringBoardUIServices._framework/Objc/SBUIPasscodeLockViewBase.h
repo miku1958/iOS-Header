@@ -12,12 +12,13 @@
 #import <SpringBoardUIServices/SBUIPasscodeBiometricAuthenticationViewLayoutDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView_Internal-Protocol.h>
+#import <SpringBoardUIServices/SBUIPoseidonContainerViewControllerLockStatusProvider-Protocol.h>
 #import <SpringBoardUIServices/SBUIProudLockContainerViewControllerLockStatusProvider-Protocol.h>
 
-@class NSMutableSet, NSString, NSTimer, SBUIPasscodeBiometricAuthenticationView, SBUIPasscodeEntryField, SBUIProudLockContainerViewController, UIColor, UINotificationFeedbackGenerator, _UIKeyboardFeedbackGenerator, _UILegibilitySettings;
+@class NSMutableSet, NSString, NSTimer, SBUIPasscodeBiometricAuthenticationView, SBUIPasscodeEntryField, SBUIPoseidonContainerViewController, SBUIProudLockContainerViewController, UIColor, UINotificationFeedbackGenerator, _UIKeyboardFeedbackGenerator, _UILegibilitySettings;
 @protocol BSInvalidatable, SBFLegibilitySettingsProvider, SBUIBiometricResource, SBUIPasscodeLockViewDelegate;
 
-@interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricResourceObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate, SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIProudLockContainerViewControllerLockStatusProvider, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
+@interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricResourceObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate, SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIProudLockContainerViewControllerLockStatusProvider, SBUIPoseidonContainerViewControllerLockStatusProvider, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
 {
     BOOL _needStatusTextUpdate;
     BOOL _playsKeypadSounds;
@@ -54,6 +55,8 @@
     BOOL _isTransitioning;
     int _style;
     id<SBUIPasscodeLockViewDelegate> _delegate;
+    UIView *_poseidonContainerView;
+    SBUIPoseidonContainerViewController *_poseidonContainerViewController;
     SBUIPasscodeEntryField *_entryField;
     double _luminanceBoost;
     id<SBUIBiometricResource> _biometricResource;
@@ -93,6 +96,8 @@
 @property (strong, nonatomic) UIView *passcodeAuthenticationView; // @synthesize passcodeAuthenticationView=_passcodeAuthenticationView;
 @property (nonatomic) long long passcodeLockViewState; // @synthesize passcodeLockViewState=_passcodeLockViewState;
 @property (nonatomic) BOOL playsKeypadSounds; // @dynamic playsKeypadSounds;
+@property (strong, nonatomic) UIView *poseidonContainerView; // @synthesize poseidonContainerView=_poseidonContainerView;
+@property (strong, nonatomic) SBUIPoseidonContainerViewController *poseidonContainerViewController; // @synthesize poseidonContainerViewController=_poseidonContainerViewController;
 @property (nonatomic) CDStruct_29b32c11 proudLockConfiguration; // @synthesize proudLockConfiguration=_proudLockConfiguration;
 @property (strong, nonatomic) NSTimer *screenBrightnessChangedTimer; // @synthesize screenBrightnessChangedTimer=_screenBrightnessChangedTimer;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn; // @synthesize screenOn=_screenOn;

@@ -6,7 +6,7 @@
 
 #import <MTLCapture/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
+@protocol MTLBuffer, MTLCounterSampleBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
 
 @protocol MTLRenderCommandEncoder <MTLCommandEncoder>
 
@@ -30,6 +30,7 @@
 - (void)executeCommandsInBuffer:(id<MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
+- (void)sampleCountersInBuffer:(id<MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

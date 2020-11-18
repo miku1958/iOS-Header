@@ -24,6 +24,7 @@
     IMOrderedMutableDictionary *_pendingSends;
     unsigned int _delegateCapabilities;
     BOOL _indirectDelegateCallouts;
+    unsigned int _wakingDowngradeCount;
 }
 
 @property (readonly, nonatomic) IDSAccount *account;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned int wakingDowngradeCount; // @synthesize wakingDowngradeCount=_wakingDowngradeCount;
 
 - (void).cxx_destruct;
 - (id)_activeDevice;

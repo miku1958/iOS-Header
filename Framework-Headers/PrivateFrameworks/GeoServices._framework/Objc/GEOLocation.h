@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, PBDataReader, PBUnknownFields;
+@class GEOCoarseLocationMetadata, GEOLatLng, PBDataReader, PBUnknownFields;
 
 @interface GEOLocation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOCoarseLocationMetadata *_coarseMetadata;
     double _courseAccuracy;
     double _course;
     double _heading;
@@ -61,41 +62,22 @@
         unsigned int has_isMatchedLocation:1;
         unsigned int has_isShifted:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_coarseMetadata:1;
         unsigned int read_latLng:1;
         unsigned int read_rawCoordinate:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_courseAccuracy:1;
-        unsigned int wrote_course:1;
-        unsigned int wrote_heading:1;
-        unsigned int wrote_horizontalAccuracy:1;
-        unsigned int wrote_latLng:1;
-        unsigned int wrote_rawCoordinate:1;
-        unsigned int wrote_rawCourse:1;
-        unsigned int wrote_speedAccuracy:1;
-        unsigned int wrote_speed:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_transitID:1;
-        unsigned int wrote_verticalAccuracy:1;
-        unsigned int wrote_altitude:1;
-        unsigned int wrote_formOfWay:1;
-        unsigned int wrote_levelOrdinal:1;
-        unsigned int wrote_matchQuality:1;
-        unsigned int wrote_referenceFrame:1;
-        unsigned int wrote_roadClass:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_isMatchedLocation:1;
-        unsigned int wrote_isShifted:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (nonatomic) int altitude;
+@property (strong, nonatomic) GEOCoarseLocationMetadata *coarseMetadata;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property (nonatomic) double course;
 @property (nonatomic) double courseAccuracy;
 @property (nonatomic) int formOfWay;
 @property (readonly, nonatomic) BOOL hasAccurateCourse;
 @property (nonatomic) BOOL hasAltitude;
+@property (readonly, nonatomic) BOOL hasCoarseMetadata;
 @property (nonatomic) BOOL hasCourse;
 @property (nonatomic) BOOL hasCourseAccuracy;
 @property (nonatomic) BOOL hasFormOfWay;
@@ -144,9 +126,9 @@
 - (int)StringAsRoadClass:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (int)StringAsType:(id)arg1;
-- (void)_readLatLng;
-- (void)_readRawCoordinate;
+- (void)applyCoarseLocationRandomizationWithMaximumDistance:(double)arg1;
 - (void)clearSensitiveFields;
+- (void)clearSensitiveFieldsForCoarseLocation;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -156,10 +138,12 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 floorOrdinal:(int)arg2;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 isUserLocation:(BOOL)arg2;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 isUserLocation:(BOOL)arg2 floorOrdinal:(int)arg3;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 floorOrdinal:(int)arg3;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 isUserLocation:(BOOL)arg3 floorOrdinal:(int)arg4;
@@ -167,6 +151,7 @@
 - (id)initWithLocation:(id)arg1 floorOrdinal:(int)arg2;
 - (id)initWithLocation:(id)arg1 isUserLocation:(BOOL)arg2 floorOrdinal:(int)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)matchQualityAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)_applicationDidEnterBackground;
 - (void)_applicationDidFinishSnapshottingAfterEnteringBackground;
 - (void)_applicationWillEnterForeground;
+- (void)_didCompleteSnapshotSequence;
+- (void)_willBeginSnapshotSequence;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1 webView:(id)arg2;
 - (void)willMoveToWindow:(id)arg1;

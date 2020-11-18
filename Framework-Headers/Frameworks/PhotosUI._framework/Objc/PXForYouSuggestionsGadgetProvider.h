@@ -41,12 +41,13 @@
 - (void)generateGadgets;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 localizedTitle:(id)arg2;
+- (id)initWithIdentifier:(id)arg1;
 - (id)keyAssetForSuggestion:(id)arg1;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)presentOneUpForSuggestion:(id)arg1;
+- (void)presentOneUpForSuggestion:(id)arg1 animated:(BOOL)arg2;
 - (void)setDataSource:(id)arg1 changeDetails:(id)arg2;
-- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1;
+- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

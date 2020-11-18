@@ -27,8 +27,10 @@
 - (id)_windowRecursiveDescription;
 - (void)captureDescriptionOfCloudPhotoLibraryWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)captureDescriptionOfPhotoAnalysisWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)captureDescriptionOfStatisticsWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)captureDescriptionOfUIState:(long long)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)dumpState:(long long)arg1 toDirectoryURL:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (void)timelineForWidgetSize:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 
 @end
 

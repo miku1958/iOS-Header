@@ -16,6 +16,7 @@
     NSString *longDescription;
     NSNumber *searchable;
     WFWorkflowRecord *workflowRecord;
+    NSDate *createdAt;
     NSDate *modifiedAt;
     NSString *language;
     CKRecordID *base;
@@ -25,6 +26,7 @@
 }
 
 @property (strong, nonatomic) CKRecordID *base; // @synthesize base;
+@property (strong, nonatomic) NSDate *createdAt; // @synthesize createdAt;
 @property (strong, nonatomic) WFWorkflowIcon *icon; // @dynamic icon;
 @property (strong, nonatomic) WFFileRepresentation *iconFile; // @synthesize iconFile;
 @property (copy, nonatomic) CKRecordID *identifier; // @synthesize identifier;

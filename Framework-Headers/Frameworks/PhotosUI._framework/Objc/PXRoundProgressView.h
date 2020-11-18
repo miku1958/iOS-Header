@@ -36,6 +36,7 @@
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
++ (struct CGSize)smallSize;
 + (double)toRadian:(double)arg1;
 - (void).cxx_destruct;
 - (void)_recalculateIncreaseProgress:(double)arg1 withTimeDiff:(double)arg2;

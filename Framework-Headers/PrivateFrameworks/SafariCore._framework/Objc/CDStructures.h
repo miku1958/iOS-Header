@@ -51,6 +51,10 @@ struct malloc_statistics_t {
     unsigned long long size_allocated;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct task_vm_info {
     unsigned long long virtual_size;
     int region_count;

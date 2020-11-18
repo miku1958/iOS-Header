@@ -6,9 +6,11 @@
 
 #import <NewsToday/NSObject-Protocol.h>
 
-@class NTPBTodayResultOperationInfo;
+@class NTPBTodayResultOperationInfo, NTTodayResults;
 
 @protocol NTTodayResultsSource <NSObject>
 - (void)fetchLatestResultsWithOperationInfo:(NTPBTodayResultOperationInfo *)arg1 completion:(void (^)(NTTodayResults *, NSDictionary *, NSObject<NTTodayResultOperationFetchInfoProviding> *, NSError *))arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (NTTodayResults *)placeholderResultsWithOperationInfo:(NTPBTodayResultOperationInfo *)arg1;
 @end
 

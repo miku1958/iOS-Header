@@ -39,6 +39,7 @@
 - (void)_calendarDayDidChange:(id)arg1;
 - (void)_queue_analyzeIfNeeded;
 - (id)_queue_analyzeNowWithError:(id *)arg1;
+- (void)_queue_analyzeOperationDidExecute;
 - (void)_queue_enqueueMaintenanceOperationIfNeeded;
 - (void)_runMaintenanceOperation;
 - (void)_startObserving;
@@ -48,10 +49,12 @@
 - (void)addObserver:(id)arg1 queue:(id)arg2 userInitiated:(BOOL)arg3;
 - (id)analyzeWithError:(id *)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
+- (void)dealloc;
 - (id)initWithProfile:(id)arg1 settingsManager:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
+- (void)settingsManagerDidUpdateAlgorithmVersionMismatchSettings:(id)arg1;
 - (void)settingsManagerDidUpdateAnalysisSettings:(id)arg1;
 
 @end

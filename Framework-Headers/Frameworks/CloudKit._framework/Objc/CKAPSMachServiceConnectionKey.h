@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     NSString *_namedDelegatePort;
 }
 
-@property (copy, nonatomic) NSString *environmentName; // @synthesize environmentName=_environmentName;
-@property (copy, nonatomic) NSString *namedDelegatePort; // @synthesize namedDelegatePort=_namedDelegatePort;
+@property (readonly, copy, nonatomic) NSString *environmentName; // @synthesize environmentName=_environmentName;
+@property (readonly, copy, nonatomic) NSString *namedDelegatePort; // @synthesize namedDelegatePort=_namedDelegatePort;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -19,14 +19,12 @@
         unsigned int reason:1;
         unsigned int addTasksIntentTargetTaskListConfirmationReason:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _startCallIntentContactsConfirmationReason;
     int _reason;
     int _addTasksIntentTargetTaskListConfirmationReason;
     _INPBSelectionItem *_confirmationItem;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int addTasksIntentTargetTaskListConfirmationReason; // @synthesize addTasksIntentTargetTaskListConfirmationReason=_addTasksIntentTargetTaskListConfirmationReason;
 @property (strong, nonatomic) _INPBSelectionItem *confirmationItem; // @synthesize confirmationItem=_confirmationItem;
 @property (readonly, copy) NSString *debugDescription;

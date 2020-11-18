@@ -8,11 +8,11 @@
 
 #import <PhotosUICore/PLSInvitationRecipient-Protocol.h>
 
-@class MFComposeRecipient, NSArray, NSMutableArray, NSString;
+@class CNComposeRecipient, NSArray, NSMutableArray, NSString;
 
 @interface PXInvitationRecipient : NSObject <PLSInvitationRecipient>
 {
-    MFComposeRecipient *_mfRecipient;
+    CNComposeRecipient *_recipient;
     NSString *_firstName;
     NSString *_lastName;
     NSMutableArray *_allEmails;
@@ -22,10 +22,11 @@
     NSString *_invalidAddressString;
 }
 
-@property (readonly, strong, nonatomic) NSArray *allEmails; // @synthesize allEmails=_allEmails;
-@property (readonly, strong, nonatomic) NSArray *allPhones; // @synthesize allPhones=_allPhones;
+@property (readonly, nonatomic) NSArray *allEmails; // @synthesize allEmails=_allEmails;
+@property (readonly, nonatomic) NSArray *allPhones; // @synthesize allPhones=_allPhones;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, copy, nonatomic) NSString *firstName;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *invalidAddressString; // @synthesize invalidAddressString=_invalidAddressString;
@@ -34,10 +35,10 @@
 @property (readonly, copy, nonatomic) NSString *selectedPhoneString; // @synthesize selectedPhoneString=_selectedPhoneString;
 @property (readonly) Class superclass;
 
-+ (id)validEmailAddressFromComposeRecipient:(id)arg1;
-+ (id)validPhoneNumberFromString:(id)arg1;
++ (id)_validEmailAddressFromComposeRecipient:(id)arg1;
++ (id)_validPhoneNumberFromString:(id)arg1;
 - (void).cxx_destruct;
-- (id)displayName;
+- (id)init;
 - (id)initWithRecipient:(id)arg1;
 
 @end

@@ -9,10 +9,11 @@
 #import <SpringBoard/BKSTerminationAssertionObserver-Protocol.h>
 #import <SpringBoard/SBApplicationLifecycleObserver-Protocol.h>
 #import <SpringBoard/SBApplicationRestrictionDataSource-Protocol.h>
+#import <SpringBoard/XBApplicationProviding-Protocol.h>
 
-@class FBSApplicationLibrary, NSMutableDictionary, NSSet, NSString, SBApplicationInfo, SBApplicationLibraryObserver, SBApplicationRestrictionController, SBReverseCountedSemaphore;
+@class FBSApplicationLibrary, NSMutableDictionary, NSSet, NSString, SBApplicationInfo, SBApplicationLibraryObserver, SBApplicationRestrictionController, SBReverseCountedSemaphore, SBSplashBoardController;
 
-@interface SBApplicationController : NSObject <SBApplicationRestrictionDataSource, BKSTerminationAssertionObserver, SBApplicationLifecycleObserver>
+@interface SBApplicationController : NSObject <SBApplicationRestrictionDataSource, BKSTerminationAssertionObserver, XBApplicationProviding, SBApplicationLifecycleObserver>
 {
     NSMutableDictionary *_applicationsByBundleIdentifer;
     struct os_unfair_lock_s _applicationsLock;
@@ -22,6 +23,7 @@
     SBApplicationLibraryObserver *_appLibraryObserver;
     FBSApplicationLibrary *_appLibrary;
     SBApplicationInfo *_systemAppInfo;
+    SBSplashBoardController *_splashBoardController;
     SBReverseCountedSemaphore *_uninstallationReverseSemaphore;
 }
 
@@ -36,6 +38,7 @@
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (void).cxx_destruct;
+- (id)_allApplicationsFilteredBySystem:(BOOL)arg1;
 - (Class)_appClassForInfo:(id)arg1;
 - (id)_appInfosToBundleIDs:(id)arg1;
 - (id)_appLibrary;
@@ -49,9 +52,13 @@
 - (void)_preLoadApplications;
 - (void)_removeApplicationsFromModelWithBundleIdentifier:(id)arg1 forInstall:(BOOL)arg2 withReason:(id)arg3;
 - (void)_sendInstalledAppsDidChangeNotification:(id)arg1 removed:(id)arg2 replaced:(id)arg3 updated:(id)arg4;
+- (id)_splashBoardController;
 - (void)_updateVisibilityOverrides;
+- (void)_updateVisibilityOverridesInBackground;
 - (id)allApplications;
 - (id)allBundleIdentifiers;
+- (id)allInstalledApplications;
+- (id)allSplashBoardApplications;
 - (id)alwaysAvailableApplicationBundleIdentifiers;
 - (void)applicationRestrictionsMayHaveChanged;
 - (void)applicationVisibilityMayHaveChanged;
@@ -77,11 +84,13 @@
 - (id)musicApplication;
 - (void)noteTerminationAssertionEfficacyChangedTo:(unsigned long long)arg1 forBundleIdentifier:(id)arg2;
 - (id)notesApplication;
-- (void)requestUninstallApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)requestUninstallApplicationWithBundleIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)requestUninstallApplication:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)requestUninstallApplicationWithBundleIdentifier:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)restrictionController;
 - (id)runningApplications;
 - (id)setupApplication;
+- (id)splashBoardSystemApplications;
+- (id)spotlightApplication;
 - (id)testFlightApplication;
 - (void)uninstallApplication:(id)arg1;
 - (void)waitForUninstallsToComplete;

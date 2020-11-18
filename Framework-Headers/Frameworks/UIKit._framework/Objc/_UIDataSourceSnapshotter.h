@@ -7,16 +7,24 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIDataSourceSnapshot-Protocol.h>
+#import <UIKitCore/_UIDataSourceSnapshotTranslating-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshot>
+@interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshotTranslating>
 {
     struct vector<_NSRange, std::__1::allocator<_NSRange>> _sectionRanges;
 }
 
-+ (id)snapshotForDataSourceBackedView:(id)arg1;
-+ (id)snapshotWithSectionCountsProvider:(CDUnknownBlockType)arg1;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)snapshotterForDataSourceBackedView:(id)arg1;
++ (id)snapshotterForSectionCountsProvider:(CDUnknownBlockType)arg1;
++ (id)snapshotterForSnapshot:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_decrementSectionCount:(long long)arg1;
@@ -28,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_insertSection:(long long)arg1 withInitialCount:(long long)arg2;
 - (void)_recomputeRangeLocations;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (long long)globalIndexForIndexPath:(id)arg1;
 - (id)indexPathForAppendingInsertInSection:(long long)arg1;
 - (id)indexPathForGlobalIndex:(long long)arg1;

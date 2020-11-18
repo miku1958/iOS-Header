@@ -6,23 +6,32 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class EKEventStore, SGAccountsAdapter, SGMEventICSOpportunity;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGCalendarAttachmentDissector : SGPipelineDissector
+@class NSString, SGAccountsAdapter, SGMEventICSOpportunity;
+
+@interface SGCalendarAttachmentDissector : SGPipelineDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     SGMEventICSOpportunity *_icsOpportunityTracker;
     SGAccountsAdapter *_accountsAdapter;
-    EKEventStore *_ekStore;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)baseAttachmentFrom:(id)arg1 includingEvents:(id)arg2 withRanges:(id)arg3;
 + (long long)replaceTzid:(id)arg1 inDocument:(id)arg2 fromOriginal:(id)arg3 withBaseLength:(unsigned long long)arg4 withEventRange:(struct _NSRange)arg5;
 + (id)splitAttachment:(id)arg1 intoEvents:(id)arg2 withTimezones:(id)arg3;
 - (void).cxx_destruct;
+- (void)_dissectMessage:(id)arg1 entity:(id)arg2;
 - (struct SGMEventICSSourceType_)accountTypeFor:(id)arg1;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (id)downloadedCalendarAttachmentsFrom:(id)arg1;
-- (id)enrichmentsFromData:(id)arg1 inDocument:(id)arg2 withParentEntity:(id)arg3;
+- (id)enrichmentsFromData:(id)arg1 inDocument:(id)arg2 parentMessage:(id)arg3 parentEntity:(id)arg4;
 - (BOOL)hasCalendarAccountForOneOf:(id)arg1;
 - (id)init;
 - (BOOL)isRequestFromSharedCalendarProvider:(id)arg1;

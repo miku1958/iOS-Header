@@ -6,12 +6,16 @@
 
 #import <UIKit/UIView.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC18HealthExperienceUI22AlertVerticalSeparator : UIView
 {
+    MISSING_TYPE *$__lazy_storage_$_vibrancyView;
 }
 
-- (void)drawRect:(struct CGRect)arg1;
+- (void).cxx_destruct;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

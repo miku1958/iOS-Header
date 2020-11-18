@@ -73,7 +73,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
 @property (readonly, nonatomic) BOOL supportsRemoteAppend;
-@property (readonly, copy, nonatomic) ACAccount *systemAccount;
+@property (readonly, nonatomic) ACAccount *systemAccount;
 
 + (id)URLForInfo:(id)arg1;
 + (id)_accountContainingEmailAddress:(id)arg1 matchingAddress:(id *)arg2 fullUserName:(id *)arg3 includingInactive:(BOOL)arg4;
@@ -186,6 +186,7 @@
 - (id)_pathComponentForUidName:(id)arg1;
 - (void)_readCustomInfoFromMailboxCache:(id)arg1;
 - (BOOL)_registerPushNotificationPrefix:(id)arg1 forMailboxNames:(id)arg2;
+- (void)_registerStateCaptureHandler;
 - (BOOL)_renameMailbox:(id)arg1 newName:(id)arg2 parent:(id)arg3;
 - (void)_resetAllMailboxURLs:(BOOL)arg1;
 - (BOOL)_resetSpecialMailboxes;
@@ -233,6 +234,7 @@
 - (id)copyReceivingEmailAddresses;
 - (id)customSignature;
 - (void)dealloc;
+- (id)debugAccountState;
 - (id)defaultEmailAddress;
 - (void)deleteDeliveryAccountIfNeeded;
 - (BOOL)deleteInPlaceForAllMailboxes;
@@ -280,6 +282,7 @@
 - (BOOL)isSpecialMailbox:(id)arg1;
 - (BOOL)isUsernameEquivalentTo:(id)arg1;
 - (id)lastEmailAliasesSyncDate;
+- (id)lastKnownCapabilities;
 - (id)legacySQLExpressionToMatchAllMailboxes;
 - (id)library;
 - (long long)libraryID;
@@ -362,6 +365,7 @@
 - (id)signingIdentityPersistentReferenceForAddress:(id)arg1;
 - (id)specialMailboxNameForType:(int)arg1;
 - (void)startListeningForNotifications;
+- (id)stateCaptureTitle;
 - (void)stopListeningForNotifications;
 - (Class)storeClass;
 - (Class)storeClassForMailbox:(id)arg1;
@@ -378,6 +382,7 @@
 - (BOOL)supportsUserPushedMailboxes;
 - (void)systemDidWake;
 - (void)systemWillSleep;
+- (void)test_tearDown;
 - (id)transferDisabledMailboxUids;
 - (void)transferNotificationSessionToAccount:(id)arg1;
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id *)arg2;

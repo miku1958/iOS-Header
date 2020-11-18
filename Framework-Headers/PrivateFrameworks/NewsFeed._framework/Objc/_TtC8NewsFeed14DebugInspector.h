@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *$__lazy_storage_$_inspection;
     MISSING_TYPE *cloudContext;
-    MISSING_TYPE *key;
+    MISSING_TYPE *feedItems;
+    MISSING_TYPE *inspectionGroup;
 }
 
 @end

@@ -16,11 +16,6 @@
     double _startTime;
 }
 
-@property (strong, nonatomic) NSString *requestType; // @synthesize requestType=_requestType;
-@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property (nonatomic) BOOL submitted; // @synthesize submitted=_submitted;
-@property (nonatomic) struct mach_timebase_info timebaseInfo; // @synthesize timebaseInfo=_timebaseInfo;
-
 - (void).cxx_destruct;
 - (unsigned long long)abs_to_nanos:(unsigned long long)arg1;
 - (double)abs_to_seconds:(unsigned long long)arg1;

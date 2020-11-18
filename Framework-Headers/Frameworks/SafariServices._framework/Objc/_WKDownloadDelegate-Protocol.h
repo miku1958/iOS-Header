@@ -19,6 +19,7 @@
 - (void)_download:(_WKDownload *)arg1 didReceiveData:(unsigned long long)arg2;
 - (void)_download:(_WKDownload *)arg1 didReceiveResponse:(NSURLResponse *)arg2;
 - (void)_download:(_WKDownload *)arg1 didReceiveServerRedirectToURL:(NSURL *)arg2;
+- (void)_download:(_WKDownload *)arg1 didWriteData:(unsigned long long)arg2 totalBytesWritten:(unsigned long long)arg3 totalBytesExpectedToWrite:(unsigned long long)arg4;
 - (BOOL)_download:(_WKDownload *)arg1 shouldDecodeSourceDataOfMIMEType:(NSString *)arg2;
 - (void)_downloadDidCancel:(_WKDownload *)arg1;
 - (void)_downloadDidFinish:(_WKDownload *)arg1;

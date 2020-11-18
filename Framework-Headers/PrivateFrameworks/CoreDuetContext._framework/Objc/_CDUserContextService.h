@@ -10,7 +10,7 @@
 #import <CoreDuetContext/_CDXPCEventPublisherDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString, NSXPCListener, _CDInMemoryUserContext, _CDXPCEventPublisher;
-@protocol _CDContextPersisting;
+@protocol OS_dispatch_queue, _CDContextPersisting;
 
 @interface _CDUserContextService : NSObject <NSXPCListenerDelegate, _CDXPCEventPublisherDelegate>
 {
@@ -27,6 +27,7 @@
     NSMutableDictionary *_mdcsEventSubscribersByToken;
     NSMutableDictionary *_notificationEventSubscribersByToken;
     NSMutableDictionary *_notificationEventSubscribersByClientIdentifier;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableDictionary *_remoteDevicesByDeviceID;
 }
 
@@ -48,6 +49,7 @@
 @property (nonatomic) BOOL remoteDevicesHaveBeenActivated; // @synthesize remoteDevicesHaveBeenActivated=_remoteDevicesHaveBeenActivated;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _CDInMemoryUserContext *userContext; // @synthesize userContext=_userContext;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)sharedInstanceWithPersistence:(id)arg1;
 + (id)sharedInstanceWithSharedMemoryStore:(id)arg1;

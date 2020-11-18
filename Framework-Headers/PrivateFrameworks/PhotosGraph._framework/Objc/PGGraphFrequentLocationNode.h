@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
 #import <PhotosGraph/PLFrequentLocationProtocol-Protocol.h>
 
-@class NSDate, NSDateInterval, NSSet, NSString, PGGraphAddressNode;
+@class NSArray, NSDate, NSDateInterval, NSSet, NSString, PGGraphAddressNode;
 
-@interface PGGraphFrequentLocationNode : PGGraphNode <PLFrequentLocationProtocol>
+@interface PGGraphFrequentLocationNode : PGGraphOptimizedNode <PLFrequentLocationProtocol>
 {
     NSDateInterval *_localDateInterval;
 }
@@ -21,16 +21,25 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSSet *items;
-@property (readonly) NSDateInterval *localDateInterval;
+@property (readonly) NSDateInterval *localDateInterval; // @synthesize localDateInterval=_localDateInterval;
 @property (readonly) NSDate *localEndDate;
 @property (readonly) NSDate *localStartDate;
 @property (readonly) NSSet *momentNodes;
 @property (readonly) unsigned long long numberOfMomentNodes;
+@property (readonly) NSArray *sortedMoments;
 @property (readonly) Class superclass;
 
++ (id)filter;
 - (void).cxx_destruct;
+- (unsigned short)domain;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
+- (id)name;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

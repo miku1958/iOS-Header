@@ -21,9 +21,9 @@
     unsigned long long _flags;
     BOOL _fullyConnected;
     BOOL _convolutionTranspose;
+    BOOL _convertFloat32Weights;
     id<MTLBuffer> _qWts;
     int _qType;
-    struct NeuronInfo _neuronInfo;
     unsigned long long _scaleFactor;
     unsigned long long _channelMultiplier;
     unsigned int _weightsDataType;
@@ -53,8 +53,8 @@
 @property (readonly, nonatomic) unsigned long long subPixelScaleFactor; // @synthesize subPixelScaleFactor=_scaleFactor;
 @property (readonly, nonatomic) unsigned long long weightsBufferLength;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
-- (BOOL)PrepareAndLoadData:(id)arg1 dataType:(unsigned int)arg2 weightsLayout:(unsigned int)arg3 weights:(const void *)arg4 biases:(const float *)arg5 quantizationType:(int)arg6 ranges:(const MISSING_TYPE **)arg7 lookUpTable:(const float *)arg8;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+- (BOOL)PrepareAndLoadData:(id)arg1 dataType:(unsigned int)arg2 weightsLayout:(unsigned int)arg3 weights:(const void *)arg4 biases:(const float *)arg5 quantizationType:(int)arg6 ranges:(const MISSING_TYPE **)arg7 lookUpTable:(const float *)arg8 convertFloat32Weights:(BOOL)arg9;
 - (BOOL)appendBatchBarrier;
 - (unsigned long long)batchEncodingStorageSizeForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)biases;
@@ -77,12 +77,11 @@
 - (id)initWithDevice:(id)arg1 weights:(id)arg2;
 - (id)initWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3;
 - (id)initWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3 convolutionTranspose:(BOOL)arg4;
-- (BOOL)initialize:(id)arg1 convolutionDescriptor:(id)arg2 kernelWeights:(const void *)arg3 dataType:(unsigned int)arg4 weightsLayout:(unsigned int)arg5 range:(const MISSING_TYPE **)arg6 lookUpTable:(const float *)arg7 qType:(int)arg8 biasTerms:(const float *)arg9 flags:(unsigned long long)arg10 fullyConnected:(BOOL)arg11 convolutionTranspose:(BOOL)arg12;
+- (BOOL)initialize:(id)arg1 convolutionDescriptor:(id)arg2 kernelWeights:(const void *)arg3 dataType:(unsigned int)arg4 weightsLayout:(unsigned int)arg5 range:(const MISSING_TYPE **)arg6 lookUpTable:(const float *)arg7 qType:(int)arg8 biasTerms:(const float *)arg9 flags:(unsigned long long)arg10 fullyConnected:(BOOL)arg11 convolutionTranspose:(BOOL)arg12 preferredWeightsDataType:(unsigned int)arg13;
 - (id)initializeWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3 convolutionTranspose:(BOOL)arg4;
 - (BOOL)isResultStateReusedAcrossBatch;
 - (unsigned long long)maxBatchSize;
 - (id)neuronABuffer;
-- (struct NeuronInfo)neuronInfo;
 - (id)quantizationBuffer;
 - (int)quantizationType;
 - (void)reloadWeightsAndBiasesFromDataSource;
@@ -91,9 +90,11 @@
 - (id)resourceListForSourceImages:(id)arg1 destinationImages:(id)arg2;
 - (id)resultStateBatchForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
+- (void)setFusedNeuronDescriptor:(id)arg1;
 - (id)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)weights;
+- (unsigned int)weightsDataType;
 - (unsigned int)weightsLayout;
 
 @end

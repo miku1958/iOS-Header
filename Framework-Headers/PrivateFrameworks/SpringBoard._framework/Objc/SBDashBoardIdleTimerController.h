@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (void)addIdleTimerDisabledAssertionReason:(id)arg1;
+- (void)conformsToCSEventHandling;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (id)dashBoardIdleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 reason:(id)arg3;
 - (void)dealloc;

@@ -26,12 +26,12 @@
 - (void).cxx_destruct;
 - (BOOL)allowsMultipleValues;
 - (id)defaultSupportedVariableTypes;
+- (id)importQuestionBehavior;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (BOOL)parameterStateIsValid:(id)arg1;
 - (void)possibleStatesDidChange;
 - (void)setPossibleContentOperators:(id)arg1 withContentType:(long long)arg2 displayableTimeUnits:(unsigned long long)arg3 usingLegacyOperatorBehavior:(BOOL)arg4;
 - (Class)stateClass;
-- (BOOL)supportsImportQuestions;
 
 @end
 

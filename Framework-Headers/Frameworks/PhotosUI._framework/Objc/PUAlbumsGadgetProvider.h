@@ -49,8 +49,10 @@
 - (void)generateGadgets;
 - (id)init;
 - (id)initWithAlbumListType:(unsigned long long)arg1 dataSourceManager:(id)arg2 extendedTraitCollection:(id)arg3;
+- (id)initWithIdentifier:(id)arg1;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)pauseLoadingRemainingData;
 - (void)startLoadingRemainingData;
 
 @end

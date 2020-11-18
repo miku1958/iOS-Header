@@ -41,18 +41,7 @@
         unsigned int read_merchantLookupCorrections:1;
         unsigned int read_photoWithMetadatas:1;
         unsigned int read_placeProblem:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_correctedCoordinate:1;
-        unsigned int wrote_correctedFields:1;
-        unsigned int wrote_correctedFlags:1;
-        unsigned int wrote_correctedLabel:1;
-        unsigned int wrote_correctedMapLocation:1;
-        unsigned int wrote_correctedSearch:1;
-        unsigned int wrote_directionsProblem:1;
-        unsigned int wrote_merchantLookupCorrections:1;
-        unsigned int wrote_photoWithMetadatas:1;
-        unsigned int wrote_placeProblem:1;
-        unsigned int wrote_delayed:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -83,20 +72,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)photoWithMetadataType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsCorrectedField:(id)arg1;
-- (void)_addNoFlagsCorrectedFlag:(id)arg1;
-- (void)_addNoFlagsPhotoWithMetadata:(id)arg1;
-- (void)_readComments;
-- (void)_readCorrectedCoordinate;
-- (void)_readCorrectedFields;
-- (void)_readCorrectedFlags;
-- (void)_readCorrectedLabel;
-- (void)_readCorrectedMapLocation;
-- (void)_readCorrectedSearch;
-- (void)_readDirectionsProblem;
-- (void)_readMerchantLookupCorrections;
-- (void)_readPhotoWithMetadatas;
-- (void)_readPlaceProblem;
 - (void)addCorrectedField:(id)arg1;
 - (void)addCorrectedFlag:(id)arg1;
 - (void)addPhotoWithMetadata:(id)arg1;
@@ -114,7 +89,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)photoWithMetadataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoWithMetadatasCount;

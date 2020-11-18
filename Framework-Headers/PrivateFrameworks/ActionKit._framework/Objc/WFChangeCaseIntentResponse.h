@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface WFChangeCaseIntentResponse : INIntentResponse
 {
     long long _code;

@@ -25,7 +25,7 @@
 @property (strong, nonatomic) TSgPTPPort *port; // @synthesize port=_port;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didTimeoutOnMACLookupForPort:(id)arg1;
 - (id)initWithgPTPPort:(id)arg1 onClockIdentifier:(unsigned long long)arg2;
 - (void)setMACLookupTimeoutCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;

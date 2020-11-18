@@ -34,6 +34,7 @@
 - (void)releaseHold:(id)arg1;
 - (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)releaseHold:(id)arg1 withError:(id *)arg2;
+- (BOOL)terminatePlugInAtURL:(id)arg1 withError:(id *)arg2;
 - (void)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 result:(CDUnknownBlockType)arg3;
 - (id)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 withError:(id *)arg3;
 - (void)unregisterPlugInAtURL:(id)arg1 result:(CDUnknownBlockType)arg2;

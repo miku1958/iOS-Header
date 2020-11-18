@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamRateController : NSObject
 {
-    int _algorithm;
     id<VCVideoStreamRateControlProtocol> _rateControl;
+    int _algorithm;
+    unsigned short _maxTierIndex;
+    unsigned short _minTierIndex;
+    unsigned short _operatingTierIndex;
     unsigned int _minBitrate;
     unsigned int _maxBitrate;
     unsigned int _targetBitrate;
-    unsigned short _operatingTierIndex;
-    unsigned short _maxTierIndex;
-    unsigned short _minTierIndex;
     double _rateControlTime;
     double _rateControlInterval;
     unsigned int _previousRTPTimestamp;

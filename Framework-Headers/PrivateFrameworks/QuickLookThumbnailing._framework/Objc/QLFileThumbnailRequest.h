@@ -6,25 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+@class NSDictionary, NSURL;
 
 @interface QLFileThumbnailRequest : NSObject
 {
     double _scale;
     NSURL *_fileURL;
     unsigned long long _badgeType;
+    NSDictionary *_generationData;
     struct CGSize _maximumSize;
     struct CGSize _minimumSize;
 }
 
 @property (nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (strong, nonatomic) NSDictionary *generationData; // @synthesize generationData=_generationData;
 @property (nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
 @property (nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 - (void).cxx_destruct;
-- (id)initWithMaximumSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 fileURL:(id)arg5;
+- (id)initWithMaximumSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 fileURL:(id)arg5 generationData:(id)arg6;
 
 @end
 

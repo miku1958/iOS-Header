@@ -51,6 +51,7 @@
 - (void).cxx_destruct;
 - (id)_accountTypeWithIdentifier:(id)arg1;
 - (id)_accountWithIdentifier:(id)arg1;
+- (id)_accountWithIdentifier:(id)arg1 prefetchKeypaths:(id)arg2;
 - (id)_accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_accountsWithAcountType:(id)arg1 error:(id *)arg2;
 - (id)_addAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
@@ -64,7 +65,7 @@
 - (void)_completeSave:(id)arg1 dataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_credentialItemWithAccountIdentifier:(id)arg1 serviceName:(id)arg2;
 - (id)_dataclassWithName:(id)arg1 createIfNecessary:(BOOL)arg2;
-- (void)_delegate_accountStoreDidSaveAccount:(id)arg1;
+- (void)_delegate_accountStoreDidSaveAccount:(id)arg1 changeType:(int)arg2;
 - (void)_deleteAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (id)_displayAccountForAccount:(id)arg1;
 - (BOOL)_handleAccountAdd:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
@@ -106,7 +107,6 @@
 - (void)clearAllPermissionsGrantedForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)clearGrantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)clientTokenForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)connectToRemoteAccountStoreUsingEndpoint:(id)arg1;
 - (void)credentialForAccount:(id)arg1 serviceID:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)credentialForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)credentialItemForAccount:(id)arg1 serviceName:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -130,6 +130,7 @@
 - (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)longLivedRemoteAccountStoreSession;
 - (id)masterCredentialForAccountIdentifier:(id)arg1;
+- (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)openAuthenticationURL:(id)arg1 forAccount:(id)arg2 shouldConfirm:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -138,13 +139,13 @@
 - (void)permissionForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)provisionedDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)registerMonitorForAccountsOfTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteAccountStoreSession;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)reportTelemetryForLandmarkEvent:(CDUnknownBlockType)arg1;
 - (void)requestAccessForAccountTypeWithIdentifier:(id)arg1 options:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 pid:(id)arg2 verify:(BOOL)arg3 dataclassActions:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -157,6 +158,7 @@
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setPermissionGranted:(id)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldPreventAccountCreationWithObsoleteAccountType;
+- (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
 - (void)supportedDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)syncableDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;

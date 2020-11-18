@@ -7,22 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <QuartzCore/CAMetalDrawable-Protocol.h>
+#import <QuartzCore/CAMetalDrawableSPI-Protocol.h>
 #import <QuartzCore/MTLDrawableSPI-Protocol.h>
 
 @class CAMetalLayer, IOSurfaceSharedEvent, NSMutableArray, NSString;
 @protocol MTLTexture;
 
-@interface CAMetalDrawable : NSObject <CAMetalDrawable, MTLDrawableSPI>
+@interface CAMetalDrawable : NSObject <CAMetalDrawable, CAMetalDrawableSPI, MTLDrawableSPI>
 {
     struct _CAMetalDrawablePrivate *_priv;
     id<MTLTexture> _cachedTexture;
     CAMetalLayer *_layer;
+    struct CGRect _dirtyRect;
     unsigned long long _drawableID;
     IOSurfaceSharedEvent *_sharedEvent;
     unsigned int _insertSeed;
-    NSMutableArray *_presentedHandlers;
-    unsigned long long _status;
-    double _presentedTime;
     BOOL _presentScheduledInsertSeedValid;
     unsigned int _presentScheduledInsertSeed;
     NSMutableArray *_presentScheduledHandlers;
@@ -30,29 +29,24 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGRect dirtyRect; // @synthesize dirtyRect=_dirtyRect;
 @property (nonatomic) unsigned long long drawableID; // @synthesize drawableID=_drawableID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int insertSeed; // @synthesize insertSeed=_insertSeed;
 @property (readonly) CAMetalLayer *layer;
 @property (nonatomic) unsigned int presentScheduledInsertSeed; // @synthesize presentScheduledInsertSeed=_presentScheduledInsertSeed;
 @property (nonatomic) BOOL presentScheduledInsertSeedValid; // @synthesize presentScheduledInsertSeedValid=_presentScheduledInsertSeedValid;
-@property (nonatomic) double presentedTime; // @synthesize presentedTime=_presentedTime;
-@property (nonatomic) IOSurfaceSharedEvent *sharedEvent; // @synthesize sharedEvent=_sharedEvent;
-@property (nonatomic) unsigned long long status; // @synthesize status=_status;
+@property (strong, nonatomic) IOSurfaceSharedEvent *sharedEvent; // @synthesize sharedEvent=_sharedEvent;
 @property (readonly) Class superclass;
 @property (readonly) id<MTLTexture> texture;
 
 - (void).cxx_destruct;
 - (void)addPresentScheduledHandler:(CDUnknownBlockType)arg1;
-- (void)addPresentedHandler:(CDUnknownBlockType)arg1;
 - (id)cachedTexture;
 - (void)dealloc;
-- (void)didPresentAtTime:(double)arg1;
 - (void)didScheduledPresent;
-- (BOOL)hasPresentedHandlers;
 - (id)initWithDrawablePrivate:(struct _CAMetalDrawablePrivate *)arg1 layer:(id)arg2;
 - (void)present;
-- (void)presentAfterMinimumDuration:(double)arg1;
 - (void)presentAtTime:(double)arg1;
 - (struct _CAMetalDrawablePrivate *)priv;
 - (void)releasePrivateReferences:(struct _CAMetalLayerPrivate *)arg1;

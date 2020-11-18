@@ -17,13 +17,13 @@
     NSObject<OS_dispatch_queue> *_callOutQueue;
     CDUnknownBlockType _handler;
     BSDispatchSource *_source;
+    double _leewayInterval;
+    BOOL _oneShot;
+    BOOL _scheduled;
     double _startTime;
     double _fireInterval;
     double _repeatInterval;
-    double _leewayInterval;
     unsigned long long _fireCount;
-    BOOL _oneShot;
-    BOOL _scheduled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,8 +38,6 @@
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (void)_callOutQueue_noteTimerFired;
-- (void)_queue_cancel;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;

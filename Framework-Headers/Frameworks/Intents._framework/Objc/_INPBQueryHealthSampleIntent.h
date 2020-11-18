@@ -19,7 +19,6 @@
         unsigned int objectType:1;
         unsigned int questionType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _expectedResultType;
     int _objectType;
     int _questionType;
@@ -29,7 +28,6 @@
     _INPBWellnessUnitType *_unit;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int expectedResultType; // @synthesize expectedResultType=_expectedResultType;

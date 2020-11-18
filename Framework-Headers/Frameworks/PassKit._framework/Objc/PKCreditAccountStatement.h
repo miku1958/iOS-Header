@@ -20,6 +20,7 @@
     NSDate *_paymentDueDate;
     NSString *_currencyCode;
     NSDecimalNumber *_statementBalance;
+    NSDecimalNumber *_totalBalance;
     NSDecimalNumber *_minimumDue;
     NSDecimalNumber *_purchases;
     NSDecimalNumber *_feesCharged;
@@ -58,6 +59,7 @@
 @property (copy, nonatomic) NSDecimalNumber *rewardsYTD; // @synthesize rewardsYTD=_rewardsYTD;
 @property (copy, nonatomic) NSDecimalNumber *statementBalance; // @synthesize statementBalance=_statementBalance;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSDecimalNumber *totalBalance; // @synthesize totalBalance=_totalBalance;
 
 + (id)recordNamePrefix;
 + (id)recordType;

@@ -6,11 +6,12 @@
 
 #import <ClassroomKit/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @protocol CRKClassKitClass <NSObject>
 
 @property (readonly, copy, nonatomic) NSString *className;
+@property (readonly, nonatomic) NSDate *dateCreated;
 @property (strong, nonatomic) NSString *displayName;
 @property (readonly, nonatomic, getter=isEditable) BOOL editable;
 @property (copy, nonatomic) NSString *iconID;

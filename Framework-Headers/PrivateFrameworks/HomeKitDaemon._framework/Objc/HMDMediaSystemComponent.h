@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDMediaProfile, HMMediaSystemRole, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDAccessory, HMDMediaProfile, HMMediaSystemRole, NSObject, NSString, NSUUID;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDMediaSystemComponent : NSObject <NSSecureCoding, HMFDumpState, HMFLogging>
+@interface HMDMediaSystemComponent : HMFObject <NSSecureCoding, HMFDumpState, HMFLogging>
 {
+    id<HMFLocking> _lock;
     HMMediaSystemRole *_role;
     NSUUID *_uuid;
     HMDAccessory *_accessory;
@@ -32,16 +33,20 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)accessoryForMediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
++ (id)componentsWithLeftComponent:(id)arg1 leftAccessory:(id)arg2 rightComponent:(id)arg3 rightAccessory:(id)arg4;
++ (BOOL)decodeComponents:(id)arg1 leftUUID:(id *)arg2 leftAccessory:(id *)arg3 rightUUID:(id *)arg4 rightAccessory:(id *)arg5;
 + (id)logCategory;
 + (id)mediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2 role:(id)arg3;
 - (id)logIdentifier;
+- (id)privateDescription;
 - (id)serialize;
 - (void)setRole:(id)arg1;
 

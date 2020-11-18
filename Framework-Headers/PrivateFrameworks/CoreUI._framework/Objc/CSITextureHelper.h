@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (BOOL)expandIntoBuffer:(id)arg1 error:(id *)arg2;
 
 @end
 

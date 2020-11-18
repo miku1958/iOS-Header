@@ -10,7 +10,11 @@
 {
 }
 
++ (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
++ (BOOL)_insertObjectFromBinaryCodable:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 provenance:(id)arg4 error:(id *)arg5;
++ (BOOL)_insertObjectsFromCodableObjectCollection:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)_objectWithCodable:(id)arg1;
++ (Class)_syncedSampleTypeClass;
 + (Class)healthEntityClass;
 + (int)nanoSyncObjectType;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;

@@ -19,12 +19,12 @@
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)description;
 - (id)initEmptySegmentWithStartTime:(double)arg1;
-- (id)initWithContext:(id)arg1 archive:(const struct MovieSegmentArchive *)arg2 unarchiver:(id)arg3;
+- (id)initWithContext:(id)arg1 message:(const struct MovieSegmentArchive *)arg2 unarchiver:(id)arg3;
 - (id)initWithMovieData:(id)arg1 startTime:(double)arg2;
 - (id)movieSegmentByAddingTimeOffset:(double)arg1;
-- (void)saveToArchive:(struct MovieSegmentArchive *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(struct MovieSegmentArchive *)arg1 archiver:(id)arg2;
 
 @end
 

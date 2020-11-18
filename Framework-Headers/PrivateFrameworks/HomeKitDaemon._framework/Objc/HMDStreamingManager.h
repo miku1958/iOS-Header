@@ -47,7 +47,7 @@
 - (void)_callNetworkDeteriorated;
 - (void)_callNetworkImproved;
 - (void)_callReceivedFirstFrame:(id)arg1;
-- (void)_callRelayStarted:(id)arg1;
+- (void)_callRelayStarted;
 - (void)_callStreamStarted:(id)arg1;
 - (void)_callStreamStopped:(id)arg1;
 - (void)_startStreamWithVideoConfig:(id)arg1 audioConfig:(id)arg2;
@@ -69,7 +69,6 @@
 - (void)updateReconfigurationMode:(BOOL)arg1;
 - (void)updateStreamConfiguration:(id)arg1;
 - (void)videoStream:(id)arg1 didStart:(id)arg2;
-- (void)videoStream:(id)arg1 didStartRelay:(id)arg2;
 - (void)videoStream:(id)arg1 didStop:(id)arg2;
 - (void)videoStreamDidNetworkDeteriorate:(id)arg1;
 - (void)videoStreamDidNetworkImprove:(id)arg1;

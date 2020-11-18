@@ -85,7 +85,6 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
-- (void)postedConnectionStateChanged;
 - (void)removeFrameHandlerForType:(unsigned char)arg1;
 - (void)scalablePipeManager:(id)arg1 didRegisterEndpoint:(id)arg2 error:(id)arg3;
 - (void)scalablePipeManager:(id)arg1 didUnregisterEndpoint:(id)arg2;

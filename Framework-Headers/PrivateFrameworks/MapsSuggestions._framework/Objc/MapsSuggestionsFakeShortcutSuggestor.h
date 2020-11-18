@@ -28,7 +28,7 @@
 - (unsigned long long)calledRequestSuggest;
 - (void)configureError:(id)arg1;
 - (void)configureResults:(id)arg1;
-- (id)init;
+- (id)initFromResourceDepot:(id)arg1;
 - (void)reset;
 - (BOOL)suggestShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 

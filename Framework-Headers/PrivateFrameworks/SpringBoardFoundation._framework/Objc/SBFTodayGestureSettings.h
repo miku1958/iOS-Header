@@ -6,20 +6,41 @@
 
 #import <PrototypeTools/PTSettings.h>
 
+@class SBFFluidBehaviorSettings;
+
 @interface SBFTodayGestureSettings : PTSettings
 {
+    BOOL _scaleAnimationSettingsWithGestureVelocity;
     double _sideSpringTension;
     double _sideSpringFriction;
     double _interactiveSideSpringTension;
     double _interactiveSideSpringFriction;
+    SBFFluidBehaviorSettings *_overlayPositionSettings;
+    SBFFluidBehaviorSettings *_overlayBackdropSettings;
+    double _minimumVelocity;
+    double _maximumVelocity;
+    double _dampingRatioAtMinimumVelocity;
+    double _dampingRatioAtMaximumVelocity;
+    double _responseAtMinimumVelocity;
+    double _responseAtMaximumVelocity;
 }
 
+@property (nonatomic) double dampingRatioAtMaximumVelocity; // @synthesize dampingRatioAtMaximumVelocity=_dampingRatioAtMaximumVelocity;
+@property (nonatomic) double dampingRatioAtMinimumVelocity; // @synthesize dampingRatioAtMinimumVelocity=_dampingRatioAtMinimumVelocity;
 @property (nonatomic) double interactiveSideSpringFriction; // @synthesize interactiveSideSpringFriction=_interactiveSideSpringFriction;
 @property (nonatomic) double interactiveSideSpringTension; // @synthesize interactiveSideSpringTension=_interactiveSideSpringTension;
+@property (nonatomic) double maximumVelocity; // @synthesize maximumVelocity=_maximumVelocity;
+@property (nonatomic) double minimumVelocity; // @synthesize minimumVelocity=_minimumVelocity;
+@property (strong, nonatomic) SBFFluidBehaviorSettings *overlayBackdropSettings; // @synthesize overlayBackdropSettings=_overlayBackdropSettings;
+@property (strong, nonatomic) SBFFluidBehaviorSettings *overlayPositionSettings; // @synthesize overlayPositionSettings=_overlayPositionSettings;
+@property (nonatomic) double responseAtMaximumVelocity; // @synthesize responseAtMaximumVelocity=_responseAtMaximumVelocity;
+@property (nonatomic) double responseAtMinimumVelocity; // @synthesize responseAtMinimumVelocity=_responseAtMinimumVelocity;
+@property (nonatomic) BOOL scaleAnimationSettingsWithGestureVelocity; // @synthesize scaleAnimationSettingsWithGestureVelocity=_scaleAnimationSettingsWithGestureVelocity;
 @property (nonatomic) double sideSpringFriction; // @synthesize sideSpringFriction=_sideSpringFriction;
 @property (nonatomic) double sideSpringTension; // @synthesize sideSpringTension=_sideSpringTension;
 
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
 - (void)setDefaultValues;
 
 @end

@@ -13,6 +13,6 @@
 
 @property (weak, nonatomic) id<SHMatcherDelegate> delegate;
 
-- (void)match:(SHSignature *)arg1;
+- (void)matchSignature:(SHSignature *)arg1;
 @end
 

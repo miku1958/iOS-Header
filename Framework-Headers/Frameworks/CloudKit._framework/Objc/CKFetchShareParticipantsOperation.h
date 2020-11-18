@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKFetchShareParticipantsOperationCallbacks-Protocol.h>
 
-@interface CKFetchShareParticipantsOperation : CKOperation
+@class CKFetchShareParticipantsOperationInfo, NSArray, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchShareParticipantsOperationCallbacks;
+
+@interface CKFetchShareParticipantsOperation : CKOperation <CKFetchShareParticipantsOperationCallbacks>
 {
     CDUnknownBlockType _shareParticipantFetchedBlock;
     CDUnknownBlockType _fetchShareParticipantsCompletionBlock;
@@ -17,19 +20,22 @@
     NSMutableDictionary *_lookupErrors;
 }
 
+@property (readonly, nonatomic) id<CKFetchShareParticipantsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableSet *discoveredUserIdentities; // @synthesize discoveredUserIdentities=_discoveredUserIdentities;
 @property (copy, nonatomic) CDUnknownBlockType fetchShareParticipantsCompletionBlock; // @synthesize fetchShareParticipantsCompletionBlock=_fetchShareParticipantsCompletionBlock;
 @property (strong, nonatomic) NSMutableDictionary *lookupErrors; // @synthesize lookupErrors=_lookupErrors;
+@property (readonly, nonatomic) CKFetchShareParticipantsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantFetchedBlock; // @synthesize shareParticipantFetchedBlock=_shareParticipantFetchedBlock;
 @property (copy, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleShareParticipantFetchForLookupInfo:(id)arg1 shareParticipant:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithUserIdentityLookupInfos:(id)arg1;

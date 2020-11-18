@@ -43,7 +43,7 @@
 - (oneway void)buttonDownFromButtonIdentifier:(id)arg1 timestamp:(id)arg2;
 - (oneway void)buttonLongPressFromButtonIdentifier:(id)arg1 context:(id)arg2;
 - (oneway void)buttonTapFromButtonIdentifier:(id)arg1;
-- (oneway void)buttonUpFromButtonIdentifier:(id)arg1 timestamp:(id)arg2;
+- (oneway void)buttonUpFromButtonIdentifier:(id)arg1 deviceIdentifier:(id)arg2 timestamp:(id)arg3;
 - (oneway void)cancelPrewarmFromButtonIdentifier:(id)arg1;
 - (oneway void)deactivationRequestFromButtonIdentifier:(id)arg1 context:(id)arg2 options:(id)arg3;
 - (oneway void)prewarmFromButtonIdentifier:(id)arg1;

@@ -43,13 +43,16 @@
 - (id)calcAppStaticSize:(id)arg1;
 - (void)dealloc;
 - (id)dynamicSizeForApp:(id)arg1;
+- (id)dynamicSizeForPath:(id)arg1;
 - (id)init;
 - (void)notifySizesUpdated;
 - (id)purgeableSizeForApp:(id)arg1;
+- (id)purgeableSizeForPath:(id)arg1;
 - (void)sizeCacheItemsUpdated:(id)arg1;
 - (void)sizeCacheSizesUpdated:(id)arg1;
 - (void)startSizer;
 - (id)staticSizeForApp:(id)arg1;
+- (id)staticSizeForPath:(id)arg1;
 - (void)stopSizer;
 - (long long)totalSizeOfItems;
 

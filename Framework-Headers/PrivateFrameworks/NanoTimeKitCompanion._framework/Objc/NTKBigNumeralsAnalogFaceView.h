@@ -6,17 +6,16 @@
 
 #import <NanoTimeKitCompanion/NTKAnalogFaceView.h>
 
-@class CAGradientLayer, CALayer, NSNumber, NTKBigNumeralsAnalogColorEditOption, NTKBigNumeralsTimeComponentLabel, UIView;
+@class CAGradientLayer, CALayer, CLKClockTimerToken, NTKBigNumeralsTimeComponentLabel, UIView;
 
 @interface NTKBigNumeralsAnalogFaceView : NTKAnalogFaceView
 {
     UIView *_hourLabelContainerView;
     NTKBigNumeralsTimeComponentLabel *_hourLabel;
-    NSNumber *_timerToken;
+    CLKClockTimerToken *_timerToken;
     BOOL _showingStatusBar;
     CAGradientLayer *_gradientLayer;
     CALayer *_labelColorLayer;
-    NTKBigNumeralsAnalogColorEditOption *_pride2020SensitiveShroudColor;
 }
 
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
@@ -34,7 +33,6 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_createHourLabel;
-- (unsigned long long)_filterColorForUISensitivityFromOption:(id)arg1;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -45,7 +43,6 @@
 - (void)_removeHourLabel;
 - (id)_renderTimeViewSwatchImageForStyle:(unsigned long long)arg1 typeface:(unsigned long long)arg2 color:(unsigned long long)arg3;
 - (void)_reorderSwitcherSnapshotView;
-- (BOOL)_shouldHideSensitiveUI;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateHourLabelColor;

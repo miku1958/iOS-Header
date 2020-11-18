@@ -45,7 +45,7 @@
 - (void)resetTextAttributeUUIDString;
 - (void)saveToArchive:(struct SmartFieldArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 - (id)text;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

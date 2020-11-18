@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) double pkaxLuma;
 
 + (id)pk_buttonImageColor;
++ (id)pk_convertColorPickerColor:(id)arg1 fromUserInterfaceStyle:(long long)arg2 to:(long long)arg3;
 + (id)pk_crosshairViewBorderColor;
 + (id)pk_crosshairViewShadowColor;
 + (id)pk_doneButtonBackgroundColor;
@@ -33,6 +34,8 @@
 + (id)pk_selectedPickerButtonBackgroundColor;
 + (id)pk_selectedPickerButtonMaskColor;
 + (id)pk_separatorLineColor;
++ (id)pk_textInputDeletionPreviewColor;
++ (id)pk_textInputReserveSpaceColor;
 + (id)pk_thicknessButtonBlack;
 + (id)pk_thicknessButtonLightGray;
 + (id)pk_thicknessButtonWhite;

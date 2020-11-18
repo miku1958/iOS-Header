@@ -6,8 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class ICUserIdentity, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, NSDictionary, NSIndexSet, NSString;
+@class ICUserIdentity, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, NSDictionary, NSIndexSet, NSRegularExpression, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreGroupingsMusicKitResponseParser : NSObject
 {
     long long _parseOnceToken;
@@ -19,6 +20,7 @@
     ICUserIdentity *_userIdentity;
     unsigned long long _options;
     NSDictionary *_storeBagDictionary;
+    NSRegularExpression *_storeBagLinkRegularExpression;
     NSString *_rootObjectIdentifier;
 }
 
@@ -31,6 +33,7 @@
 - (id)_parsedEditorialElements:(id)arg1;
 - (id)_parsedSectionedCollection;
 - (id)attributesForContentNode:(id)arg1;
+- (id)bagRoomURLRegularExpression;
 - (id)childrenOfContentNode:(id)arg1;
 - (id)description;
 - (BOOL)featuredContentKindCorrespondsToItem:(id)arg1;

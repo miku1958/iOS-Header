@@ -6,19 +6,23 @@
 
 #import <ChatKit/CKSearchController.h>
 
-@class IMTimingCollection, NSArray, NSSet;
+@class IMTimingCollection, NSArray, NSMutableSet, NSSet, NSString;
 
 @interface CKMessageTypeSearchController : CKSearchController
 {
     BOOL _searchTerminated;
     BOOL _gotResults;
     NSSet *_intermediaryResults;
+    NSString *_priorQueryIdentifier;
     NSArray *_resultsToCheck;
     IMTimingCollection *_timingCollection;
+    NSMutableSet *_itemsVerifiedOnDiskCache;
 }
 
 @property (nonatomic) BOOL gotResults; // @synthesize gotResults=_gotResults;
 @property (strong, nonatomic) NSSet *intermediaryResults; // @synthesize intermediaryResults=_intermediaryResults;
+@property (strong, nonatomic) NSMutableSet *itemsVerifiedOnDiskCache; // @synthesize itemsVerifiedOnDiskCache=_itemsVerifiedOnDiskCache;
+@property (strong, nonatomic) NSString *priorQueryIdentifier; // @synthesize priorQueryIdentifier=_priorQueryIdentifier;
 @property (strong, nonatomic) NSArray *resultsToCheck; // @synthesize resultsToCheck=_resultsToCheck;
 @property (nonatomic) BOOL searchTerminated; // @synthesize searchTerminated=_searchTerminated;
 @property (strong, nonatomic) IMTimingCollection *timingCollection; // @synthesize timingCollection=_timingCollection;
@@ -27,7 +31,6 @@
 + (id)timeRankedQueries;
 + (BOOL)useRecencyRankedSearchForMode:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_IMSPIQueryMessageItemsWithGUIDs:(id)arg1 results:(CDUnknownBlockType)arg2;
 - (void)_asyncCheckIfResultsExistOnDisk:(id)arg1 firstBatch:(BOOL)arg2;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (id)chatGUIDForSearchableItem:(id)arg1;
@@ -36,7 +39,7 @@
 - (Class)footerClass;
 - (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
-- (id)menuActionsForResult:(id)arg1 atRect:(struct CGRect)arg2;
+- (id)menuElementsForResult:(id)arg1 atRect:(struct CGRect)arg2;
 - (void)postProcessAndUpdateResults:(id)arg1;
 - (id)queryResultsForItems:(id)arg1;
 - (id)rankingQueriesWithText:(id)arg1;

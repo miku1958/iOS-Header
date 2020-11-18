@@ -102,6 +102,7 @@
 - (void)readPackageMetadataWithComponent:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)readPackageMetadataWithError:(id *)arg1;
 - (void)readRootObjectWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)readVersion;
 - (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(BOOL)arg4 allowUnknownObject:(BOOL)arg5 fromParentObject:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(BOOL)arg3 allowUnknownObject:(BOOL)arg4 fromParentObject:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)reader:(id)arg1 didResetObjectIdentifierForObject:(id)arg2 originalObjectIdentifier:(long long)arg3;

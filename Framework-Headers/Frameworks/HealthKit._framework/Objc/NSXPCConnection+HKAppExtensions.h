@@ -6,12 +6,9 @@
 
 #import <Foundation/NSXPCConnection.h>
 
-@class NSString;
-
 @interface NSXPCConnection (HKAppExtensions)
 
 @property (readonly, nonatomic) BOOL hk_isAppExtension;
-@property (readonly, copy, nonatomic) NSString *hk_signingIdentifier;
 
 @end
 

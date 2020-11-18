@@ -16,6 +16,7 @@
     BOOL _shouldLaunchDaemon;
     CDUnknownBlockType _handler;
     NSObject<OS_xpc_object> *_activity;
+    NSObject<OS_xpc_object> *_criteria;
     geo_isolater *_isolation;
 }
 

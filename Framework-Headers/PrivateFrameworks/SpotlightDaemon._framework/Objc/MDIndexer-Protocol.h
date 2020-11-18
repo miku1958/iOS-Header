@@ -14,8 +14,11 @@
 @property (weak) id<CSIndexExtensionDelegate> extensionDelegate;
 
 - (void)clientDidCheckin:(NSString *)arg1 protectionClass:(NSString *)arg2 service:(id<CSSearchableIndexServiceInterface>)arg3 completionHandler:(void (^)(CSIndexJob *, NSError *))arg4;
+- (NSString *)delegateServiceName;
+- (NSString *)indexServiceName;
 - (double)lastUpdateTime;
 - (void)runMigration;
+- (NSString *)searchServiceName;
 - (void)userPerformedAction:(CSUserAction *)arg1 withItem:(CSSearchableItem *)arg2 protectionClass:(NSString *)arg3 forBundleID:(NSString *)arg4;
 
 @optional
@@ -24,6 +27,7 @@
 - (void)deleteAllInteractionsWithBundleID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllSearchableItemsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 shouldGC:(BOOL)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)deleteAllUserActivities:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)queryPreheat:(NSArray *)arg1;
 - (void)recordEngagementForBundleID:(NSString *)arg1 uniqueIdentifier:(NSString *)arg2 protectionClass:(NSString *)arg3 userQuery:(NSString *)arg4 date:(NSDate *)arg5;
 -     // Error parsing type: @"SPCoreSpotlightTask"48@0:8@"NSString"16@"CSSearchQueryContext"24@?<^v@?i{?=(?={?=^vI}{?=^vQ}{?=*Q}{?=*I}*BCSIQTcsiqtdfdq^v)}Q^v>32@?<v@?iQ^{__MDStoreOIDArray=}^{__MDPlistBytes=}@"NSString">40, name: startQuery:withContext:eventHandler:handler:
 - (SPCoreSpotlightTask *)startQuery:(NSString *)arg1 withContext:(CSSearchQueryContext *)arg2 handler:(void (^)(int, unsigned long long, struct __MDStoreOIDArray *, struct __MDPlistBytes *, NSString *))arg3;

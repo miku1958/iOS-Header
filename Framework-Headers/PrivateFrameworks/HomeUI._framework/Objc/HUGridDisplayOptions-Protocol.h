@@ -6,9 +6,13 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol HUGridDisplayOptions <NSObject>
 
 @property (nonatomic) unsigned long long contentColorStyle;
+@property (nonatomic) NSString *contentSizeCategory;
+@property (readonly, nonatomic) double gutter;
 
 @end
 

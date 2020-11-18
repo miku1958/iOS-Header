@@ -11,7 +11,7 @@
 @property (readonly, nonatomic, getter=ac_isDiskFullSQLError) BOOL ac_diskFullSQLError;
 @property (readonly, nonatomic, getter=ac_isUnrecoverableDatabaseError) BOOL ac_unrecoverableDatabaseError;
 
-- (id)_sanitizeObject:(id)arg1;
+- (id)ac_sanitizeObject:(id)arg1;
 - (id)ac_secureCodingError;
 @end
 

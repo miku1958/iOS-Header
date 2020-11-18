@@ -48,8 +48,9 @@
 + (double)backgroundJobTimeout;
 + (BOOL)supportsBackgroundJob;
 - (void).cxx_destruct;
+- (BOOL)_allowReverseGeocodingWithUpdateType:(long long)arg1;
 - (id)_clusterAssetsInMoment:(id)arg1 assetsWithInvalidLocationInMoment:(id *)arg2 withPhotoLibrary:(id)arg3;
-- (id)_momentsRequiringRevGeocodingWithIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2 defaultToAllAssets:(BOOL)arg3;
+- (id)_momentsRequiringRevGeocodingWithIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2 defaultToAllAssets:(BOOL)arg3 manager:(id)arg4;
 - (BOOL)_populateCacheWithRegions:(id)arg1 manager:(id)arg2 withProgressBlock:(CDUnknownBlockType)arg3;
 - (void)_processMetricsOfAssetClustersInMoment:(id)arg1;
 - (BOOL)_regionIsHome:(id)arg1;
@@ -60,9 +61,9 @@
 - (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)invalidateReverseLocationDataForRevGeoProviderChangeUsingManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (BOOL)revGeoProviderDidChangeForPhotoLibrary:(id)arg1;
+- (BOOL)revGeoProviderDidChangeForGraphApplicationDataURL:(id)arg1;
 - (BOOL)revGeocodeAssets:(id)arg1 manager:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
-- (void)setCurrentGeoProviderForPhotoLibrary:(id)arg1;
+- (void)setCurrentGeoProviderInGraphApplicationDataURL:(id)arg1;
 
 @end
 

@@ -23,6 +23,7 @@
 + (id)filterExcludingAllCategories;
 + (id)filterIncludingAllCategories;
 - (void).cxx_destruct;
+- (void)applyFilterToPlaceParameters:(id)arg1;
 - (BOOL)applyToAutocompleteParameters:(id)arg1 error:(id *)arg2;
 - (BOOL)applyToSearchParameters:(id)arg1 error:(id *)arg2;
 - (id)initWithCategoriesToInclude:(id)arg1 categoriesToExclude:(id)arg2;

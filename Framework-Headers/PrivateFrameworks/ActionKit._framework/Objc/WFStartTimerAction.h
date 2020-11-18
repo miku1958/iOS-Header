@@ -11,7 +11,8 @@
 }
 
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)selectedHandlerBundleIdentifier;
+- (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
+- (BOOL)skipsProcessingHiddenParameters;
 
 @end
 

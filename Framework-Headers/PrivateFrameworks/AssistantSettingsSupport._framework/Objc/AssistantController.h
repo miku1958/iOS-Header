@@ -11,7 +11,7 @@
 #import <AssistantSettingsSupport/CNContactPickerDelegate-Protocol.h>
 #import <AssistantSettingsSupport/DevicePINControllerDelegate-Protocol.h>
 
-@class AFSettingsConnection, CNContactPickerViewController, CNContactStore, NSArray, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
+@class AFSettingsConnection, ASTLockScreenSuggestionsGlobalController, CNContactPickerViewController, CNContactStore, NSArray, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
 
 @interface AssistantController : PSListController <CNContactPickerDelegate, AssistantVoiceSettingsConnectionProvider, DevicePINControllerDelegate, AssistantHistoryDelegate>
 {
@@ -19,7 +19,8 @@
     SUICAssistantVoiceSettingsConnection *_settingsConnection;
     NSString *_pendingLanguage;
     PSSpecifier *_voiceSpecifier;
-    PSSpecifier *_voiceActiviationSpecifier;
+    PSSpecifier *_announceMessagesSpecifier;
+    PSSpecifier *_voiceActivationSpecifier;
     PSSpecifier *_hardwareButtonActivationSpecifier;
     PSSpecifier *_currentSiriActivationSpecifier;
     PSSpecifier *_lockScreenSpecifier;
@@ -31,6 +32,7 @@
     NSSet *_installedBundleIDs;
     NSArray *_allAppsSpecifiers;
     AFSettingsConnection *_AFSettingsConnection;
+    ASTLockScreenSuggestionsGlobalController *_lockScreenGlobalController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -64,7 +66,6 @@
 - (void)_updateSpecifiersForLanguage:(id)arg1;
 - (id)accessibleFromLockScreen:(id)arg1;
 - (void)assistantAboutDonePressed:(id)arg1;
-- (id)assistantAudioFeedbackMode:(id)arg1;
 - (void)assistantDisabledCancelled:(id)arg1;
 - (void)assistantDisabledConfirmed:(id)arg1;
 - (id)assistantEnabled:(id)arg1;
@@ -88,12 +89,12 @@
 - (void)didAcceptEnteredPIN;
 - (void)didBecomeActive;
 - (void)didCancelEnteringPIN;
-- (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)hardwareButtonTrigger:(id)arg1;
 - (id)init;
 - (id)isAssistantSuggestionsEnabled;
-- (id)isLockScreenSuggestionEnabled:(id)arg1;
-- (id)isLookUpSuggestionsEnabled:(id)arg1;
+- (id)isHomeScreenSuggestionsEnabled:(id)arg1;
+- (id)isSharingSuggestionsEnabled:(id)arg1;
 - (void)languageCodeDidChange;
 - (void)loadAppStorePageForBundleId:(id)arg1;
 - (void)lowPowerModeChangedNotification:(id)arg1;
@@ -110,8 +111,8 @@
 - (void)setAssistantSuggestionsEnabled:(id)arg1;
 - (void)setDisabledFromLockScreen:(BOOL)arg1;
 - (void)setHardwareButtonTrigger:(id)arg1 forSpecifier:(id)arg2;
-- (void)setLockScreenSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
-- (void)setLookUpSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (void)setHomeScreenSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (void)setSharingSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setVoiceControlLanguage:(id)arg1 specifier:(id)arg2;
 - (void)setVoiceTrigger:(id)arg1 forSpecifier:(id)arg2;
 - (void)showAboutAssistantSheet:(id)arg1;

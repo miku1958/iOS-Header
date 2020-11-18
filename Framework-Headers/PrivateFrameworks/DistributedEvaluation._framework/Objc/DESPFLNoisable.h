@@ -8,21 +8,14 @@
 
 #import <DistributedEvaluation/NSCopying-Protocol.h>
 
-@class NSString;
+@class DESDataTransport, NSString;
 
 @interface DESPFLNoisable : PBCodable <NSCopying>
 {
-    struct {
-        float *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _data32s;
-    struct {
-        double *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _datas;
+    CDStruct_fae3dc92 _data32s;
+    CDStruct_82f37d05 _datas;
     double _weight;
+    DESDataTransport *_dataTransport;
     unsigned int _iteration;
     NSString *_recipeId;
     NSString *_uuid;
@@ -36,8 +29,10 @@
 
 @property (readonly, nonatomic) float *data32s;
 @property (readonly, nonatomic) unsigned long long data32sCount;
+@property (strong, nonatomic) DESDataTransport *dataTransport; // @synthesize dataTransport=_dataTransport;
 @property (readonly, nonatomic) double *datas;
 @property (readonly, nonatomic) unsigned long long datasCount;
+@property (readonly, nonatomic) BOOL hasDataTransport;
 @property (nonatomic) BOOL hasIteration;
 @property (readonly, nonatomic) BOOL hasRecipeId;
 @property (readonly, nonatomic) BOOL hasUuid;

@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_modernGradientImageWithOnColor:(id)arg1 traitCollection:(id)arg2;
 + (id)_modernThumbImageWithColor:(id)arg1 mask:(unsigned long long)arg2 traitCollection:(id)arg3;
++ (struct UIEdgeInsets)preferredAlignmentRectInsets;
 + (struct CGSize)preferredContentSize;
 - (void).cxx_destruct;
 - (id)_accessibleOffImage;

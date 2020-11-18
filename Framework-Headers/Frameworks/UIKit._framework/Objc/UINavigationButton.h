@@ -87,12 +87,12 @@
 - (BOOL)_canHandleStatusBarTouchAtLocation:(struct CGPoint)arg1;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (id)_customOrAccessibilityBackgroundImageForState:(unsigned long long)arg1 style:(long long)arg2 isMini:(BOOL)arg3;
-- (id)_defaultTitleColorForState:(unsigned long long)arg1;
+- (id)_defaultTitleColorForState:(unsigned long long)arg1 isTintColor:(BOOL *)arg2;
 - (id)_defaultTitleShadowColorForState:(unsigned long long)arg1;
 - (struct CGSize)_defaultTitleShadowOffsetForState:(unsigned long long)arg1;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
-- (id)_externalTitleColorForState:(unsigned long long)arg1;
+- (id)_externalTitleColorForState:(unsigned long long)arg1 isTintColor:(BOOL *)arg2;
 - (id)_externalUnfocusedBorderColor;
 - (BOOL)_hasBaselineAlignedAbsoluteVerticalPosition:(out double *)arg1 withinNavBar:(id)arg2 forSize:(struct CGSize)arg3;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
@@ -117,6 +117,7 @@
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setWantsLetterpressContent;
 - (BOOL)_showsAccessibilityBackgroundWhenEnabled;
+- (BOOL)_supportsMacIdiom;
 - (struct UIOffset)_titlePositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (void)_uinavigationbar_prepareToAppearInNavigationItem:(id)arg1 onLeft:(BOOL)arg2;

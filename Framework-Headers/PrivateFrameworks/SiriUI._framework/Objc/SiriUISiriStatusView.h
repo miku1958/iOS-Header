@@ -58,7 +58,6 @@
 @property (readonly) Class superclass;
 
 + (struct CGRect)activeFrameForScreen:(id)arg1 frame:(struct CGRect)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
-+ (double)glyphHeightForScreen:(id)arg1;
 - (void).cxx_destruct;
 - (void)_animateSiriGlyphHidden:(BOOL)arg1;
 - (void)_attachFlamesViewIfNeeded;
@@ -73,7 +72,6 @@
 - (void)_setFlamesViewState:(long long)arg1;
 - (void)_setupOrbIfNeeded:(CDUnknownBlockType)arg1;
 - (struct CGRect)_siriGlyphTappableRect;
-- (double)_statusViewHeight;
 - (float)audioLevelForFlamesView:(id)arg1;
 - (void)dealloc;
 - (void)fadeOutCurrentAura;

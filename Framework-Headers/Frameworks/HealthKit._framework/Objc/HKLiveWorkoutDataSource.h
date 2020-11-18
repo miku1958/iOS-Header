@@ -35,11 +35,11 @@
 @property (readonly, copy) NSSet *typesToCollect;
 
 + (id)clientInterface;
-+ (id)defaultConfigurationWithWorkoutConfiguration:(id)arg1;
++ (id)defaultConfigurationWithWorkoutConfiguration:(id)arg1 activityMoveMode:(long long)arg2;
 + (id)serverInterface;
 - (void).cxx_destruct;
 - (id)_queue_dataSourceConfiguration;
-- (void)_startTaskServerIfNeeded;
+- (void)_queue_finishSetup;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;
 - (void)disableCollectionForType:(id)arg1;

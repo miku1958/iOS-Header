@@ -11,7 +11,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCalendarItem, EKEventStore, EKStructuredLocation, EKTravelRouteEstimationController, NSDate, NSIndexPath, NSString, UISwitch, UITableView, UIView;
+@class EKCalendarItem, EKEventStore, EKStructuredLocation, EKTravelRouteEstimationController, NSDate, NSIndexPath, NSString, UISwitch, UITableView, UITableViewCell, UIView;
 
 @interface EKEventTravelTimeEditViewController : EKEditItemViewController <UITableViewDataSource, UITableViewDelegate, EKTravelRouteEstimationControllerDelegate, EKEditItemViewControllerDelegate>
 {
@@ -37,6 +37,7 @@
     long long _originalSelectedRoutingMode;
     double _originalSelectedTravelTime;
     UIView *_shadowView;
+    UITableViewCell *_sampleSizingCell;
     double _selectedTravelTime;
     NSDate *_arrivalDate;
     EKStructuredLocation *_originStructuredLocation;
@@ -60,6 +61,7 @@
 + (id)_travelTimeLocalizedString;
 - (void).cxx_destruct;
 - (void)_autoselectFromAvailableChoices;
+- (long long)_cellStyleForIndexPath:(id)arg1;
 - (void)_checkItemAtIndexPath:(id)arg1;
 - (void)_contentCategorySizeChanged:(id)arg1;
 - (unsigned long long)_customTravelTimeSection;
@@ -84,6 +86,7 @@
 - (void)_travelTimeActivationSwitchChanged:(id)arg1;
 - (void)_updateTableView;
 - (void)_updateVisibleSections;
+- (id)editItemEventToDetach;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
 - (BOOL)editItemViewControllerSave:(id)arg1;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;

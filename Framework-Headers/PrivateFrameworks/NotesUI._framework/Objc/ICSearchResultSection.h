@@ -13,11 +13,13 @@
     NSMutableOrderedSet *_searchResults;
     NSMutableDictionary *_identifierToSearchResult;
     NSMutableDictionary *_hiddenSearchResults;
+    NSMutableDictionary *_unhiddenSearchResults;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *hiddenSearchResults; // @synthesize hiddenSearchResults=_hiddenSearchResults;
 @property (strong, nonatomic) NSMutableDictionary *identifierToSearchResult; // @synthesize identifierToSearchResult=_identifierToSearchResult;
 @property (strong, nonatomic) NSMutableOrderedSet *searchResults; // @synthesize searchResults=_searchResults;
+@property (strong, nonatomic) NSMutableDictionary *unhiddenSearchResults; // @synthesize unhiddenSearchResults=_unhiddenSearchResults;
 
 - (void).cxx_destruct;
 - (void)addSearchResults:(id)arg1;

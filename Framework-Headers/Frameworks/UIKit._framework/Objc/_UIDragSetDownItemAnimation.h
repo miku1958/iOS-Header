@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class UIDragItem, UITargetedDragPreview, UIView, UIViewPropertyAnimator, UIWindow, _DUIVisibleDroppedItem, _UIPlatterContainerView, _UIPlatterView, _UIPortalView;
-@protocol _UIDragSetDownAnimationTarget, _UIDragSetDownItemAnimationDelegate;
+@protocol UIViewSpringAnimationBehaviorDescribing, _UIDragSetDownAnimationTarget, _UIDragSetDownItemAnimationDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIDragSetDownItemAnimation : NSObject
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     int _animationCount;
     UIDragItem *_item;
     _DUIVisibleDroppedItem *_droppedItem;
+    id<UIViewSpringAnimationBehaviorDescribing> _customSpringAnimationBehavior;
     id<_UIDragSetDownItemAnimationDelegate> _delegate;
     UIWindow *_window;
     id<_UIDragSetDownAnimationTarget> _visualTarget;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIPlatterView *appPlatterView; // @synthesize appPlatterView=_appPlatterView;
 @property (nonatomic) struct CGPoint center; // @synthesize center=_center;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) id<UIViewSpringAnimationBehaviorDescribing> customSpringAnimationBehavior; // @synthesize customSpringAnimationBehavior=_customSpringAnimationBehavior;
 @property (nonatomic) BOOL defaultAnimation; // @synthesize defaultAnimation=_defaultAnimation;
 @property (strong, nonatomic) _UIPlatterView *defaultPlatterView; // @synthesize defaultPlatterView=_defaultPlatterView;
 @property (weak, nonatomic) id<_UIDragSetDownItemAnimationDelegate> delegate; // @synthesize delegate=_delegate;

@@ -10,11 +10,12 @@
 #import <UIKitCore/FBSceneObserver-Protocol.h>
 #import <UIKitCore/_UIScenePresenterOwnerDelegate-Protocol.h>
 
-@class FBScene, NSMapTable, NSString, UIScenePresentationContext, _UIScenePresenterOwner;
+@class FBScene, NSMapTable, NSString, UIScenePresentationContext, _UISceneKeyboardProxyLayerForwardingManager, _UIScenePresenterOwner;
 @protocol UIScenePresentationManagerDelegate;
 
 @interface UIScenePresentationManager : NSObject <BSDescriptionProviding, _UIScenePresenterOwnerDelegate, FBSceneObserver>
 {
+    _UISceneKeyboardProxyLayerForwardingManager *_keyboardProxyLayerManager;
     FBScene *_scene;
     _UIScenePresenterOwner *_scenePresenterOwner;
     NSMapTable *_mapLayersToPresenterOwners;
@@ -39,6 +40,7 @@
 - (long long)_defaultPresentationPriority;
 - (BOOL)_hasPresenterWithIdentifier:(id)arg1;
 - (id)_initWithScene:(id)arg1;
+- (id)_initWithScene:(id)arg1 keyboardProxyLayerManager:(id)arg2;
 - (id)_presenterWithIdentifier:(id)arg1;
 - (id)createPresenterForLayerTarget:(id)arg1 identifier:(id)arg2;
 - (id)createPresenterForLayerTarget:(id)arg1 identifier:(id)arg2 priority:(long long)arg3;

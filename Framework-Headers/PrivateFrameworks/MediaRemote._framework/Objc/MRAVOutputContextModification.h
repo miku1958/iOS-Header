@@ -27,12 +27,8 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 
 - (void).cxx_destruct;
-- (void)_modifyWithOutputContext:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)errorFromResult:(id)arg1;
 - (id)initWithType:(unsigned long long)arg1 devices:(id)arg2;
 - (void)modifyWithOutputContext:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)performModificationWithOutputContext:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)trackModificationWithStartDate:(id)arg1 initialGroupSize:(unsigned long long)arg2 error:(id)arg3;
 
 @end
 

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKit/UICollectionReusableView.h>
 
 #import <ChatKit/CKSearchResultSupplementryCell-Protocol.h>
 
-@class CALayer, NSString, UIButton, UILabel;
+@class CALayer, NSString, UIButton, UILabel, UIVisualEffectView;
 @protocol CKSearchResultsTitleHeaderCellDelegate;
 
-@interface CKSearchResultsTitleHeaderCell : UICollectionViewCell <CKSearchResultSupplementryCell>
+@interface CKSearchResultsTitleHeaderCell : UICollectionReusableView <CKSearchResultSupplementryCell>
 {
+    BOOL _useMacSidebarVisualEffectView;
     id<CKSearchResultsTitleHeaderCellDelegate> _delegate;
     unsigned long long _sectionIndex;
     UIButton *_showAllButton;
@@ -20,6 +21,7 @@
     CALayer *_topHairline;
     double _titleTopPadding;
     double _titleBottomPadding;
+    UIVisualEffectView *_macBackgroundVisualEffectView;
     struct UIEdgeInsets marginInsets;
 }
 
@@ -27,6 +29,7 @@
 @property (weak, nonatomic) id<CKSearchResultsTitleHeaderCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIVisualEffectView *macBackgroundVisualEffectView; // @synthesize macBackgroundVisualEffectView=_macBackgroundVisualEffectView;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 @property (nonatomic) unsigned long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
 @property (strong, nonatomic) UILabel *sectionTitle; // @synthesize sectionTitle=_sectionTitle;
@@ -35,6 +38,7 @@
 @property (nonatomic) double titleBottomPadding; // @synthesize titleBottomPadding=_titleBottomPadding;
 @property (nonatomic) double titleTopPadding; // @synthesize titleTopPadding=_titleTopPadding;
 @property (strong, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
+@property (nonatomic) BOOL useMacSidebarVisualEffectView; // @synthesize useMacSidebarVisualEffectView=_useMacSidebarVisualEffectView;
 
 + (double)desiredZPosition;
 + (id)reuseIdentifier;

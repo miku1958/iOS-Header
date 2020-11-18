@@ -20,6 +20,7 @@
 - (void)initialLoadDidRedirectToURL:(NSURL *)arg1;
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)willDismissServiceViewController;
+- (void)willOpenCurrentPageInBrowser;
 - (void)willOpenURLInHostApplication:(NSURL *)arg1;
 @end
 

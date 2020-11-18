@@ -6,8 +6,11 @@
 
 #import <DocumentManagerExecutables/_TtC26DocumentManagerExecutables18DOCOperationBuffer.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC26DocumentManagerExecutables19DOCPostLaunchBuffer : _TtC26DocumentManagerExecutables18DOCOperationBuffer
 {
+    MISSING_TYPE *timeout;
 }
 
 - (void).cxx_destruct;

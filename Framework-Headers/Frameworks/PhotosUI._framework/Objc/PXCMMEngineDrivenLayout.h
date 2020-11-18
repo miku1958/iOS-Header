@@ -6,12 +6,11 @@
 
 #import <PhotosUICore/PXEngineDrivenAssetsTilingLayout.h>
 
-@class PXBasicTileUserData, PXCMMAssetStatusBadgeTileUserData;
+@class PXCMMAssetStatusBadgeTileUserData;
 @protocol PXCMMEngineDrivenLayoutDelegate;
 
 @interface PXCMMEngineDrivenLayout : PXEngineDrivenAssetsTilingLayout
 {
-    PXBasicTileUserData *_placeholderTileUserData;
     BOOL _hasFloatingBanner;
     BOOL _hasFloatingSectionHeaders;
     BOOL _headerViewIsVisible;
@@ -67,7 +66,6 @@
 - (void)_invalidateSendBackFooter;
 - (void)_invalidateStatusFooter;
 - (struct CGRect)_placeholderFrame;
-- (struct CGSize)_placeholderSize;
 - (struct PXTileIdentifier)_placeholderTileIdentifier;
 - (struct CGSize)_preferredSelectionBadgeSize;
 - (struct CGRect)_sectionHeaderTileFrame;

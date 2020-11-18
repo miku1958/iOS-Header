@@ -19,10 +19,12 @@ struct GKGameInfo {
     BOOL _field4;
     BOOL _field5;
     BOOL _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
+    BOOL _field7;
+    BOOL _field8;
     unsigned long long _field9;
     unsigned long long _field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
 };
 
 struct _NSRange {

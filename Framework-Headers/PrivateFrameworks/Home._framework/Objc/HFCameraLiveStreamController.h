@@ -54,6 +54,7 @@
 - (void)cameraStreamControlDidStartStream:(id)arg1;
 - (void)cameraStreamControlDidUpdateManagerState:(id)arg1;
 - (void)cameraStreamControlDidUpdateStreamState:(id)arg1;
+- (void)cameraUserSettingsDidUpdate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithHome:(id)arg1 cameraProfile:(id)arg2;

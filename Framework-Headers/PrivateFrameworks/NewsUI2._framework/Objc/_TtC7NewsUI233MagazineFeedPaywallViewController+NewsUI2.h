@@ -7,7 +7,13 @@
 #import <NewsUI2/_TtC7NewsUI233MagazineFeedPaywallViewController.h>
 
 @interface _TtC7NewsUI233MagazineFeedPaywallViewController (NewsUI2)
-- (void)traitCollectionDidChange:(id)arg1;
+
+@property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) long long pluginVisibleItemCount;
+
+- (void)initializeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)relayoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

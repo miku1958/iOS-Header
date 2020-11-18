@@ -15,9 +15,9 @@
 {
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedKeyword;
 @property (copy, nonatomic) NSString *shortcut;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
@@ -40,8 +41,6 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 
 @end
 

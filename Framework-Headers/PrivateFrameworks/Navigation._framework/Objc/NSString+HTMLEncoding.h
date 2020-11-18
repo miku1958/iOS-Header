@@ -28,18 +28,20 @@
 + (id)_navigation_languageDirectionStringWithFormat:(id)arg1;
 + (id)_navigation_localizedStringForDistance:(double)arg1 context:(long long)arg2 extraDetail:(BOOL)arg3;
 + (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6;
++ (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6 shouldScale:(BOOL)arg7;
 + (BOOL)_navigation_logIfContainsVariables:(id)arg1;
 + (void)_navigation_logMismatchBetweenServerInstruction:(id)arg1 clientInstruction:(id)arg2;
 + (id)_navigation_overridenTokenForToken:(id)arg1 overrideVariables:(id)arg2;
 + (id)_navigation_pointerDescription:(id)arg1;
 + (id)_navigation_replacementForFormatToken:(id)arg1 abbreviatedUnits:(BOOL)arg2 detail:(long long)arg3 spoken:(BOOL)arg4 overrideVariables:(id)arg5;
 + (id)_navigation_replacementForFormatToken:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3;
++ (id)_navigation_replacementForFormatToken:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3 useMetric:(unsigned long long)arg4;
 + (id)_navigation_selectInstructionWithServerString:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_selectInstructionWithServerStringArray:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_spokenStringWithMinutes:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
 + (id)_navigation_spokenStringWithSeconds:(unsigned long long)arg1 abbreviated:(BOOL)arg2;
 + (id)_navigation_spokenStringWithSeconds:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
-+ (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3;
++ (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3 shouldScale:(BOOL)arg4;
 + (id)_navigation_stringForExpectedTravelTime:(double)arg1 dateUnitStyle:(long long)arg2;
 + (id)_navigation_stringForServerFormattedString:(id)arg1;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 abbreviatedUnits:(BOOL)arg2 detail:(long long)arg3 spoken:(BOOL)arg4 overrideVariables:(id)arg5;
@@ -74,5 +76,6 @@
 - (id)_navigation_stripDebugPrefix;
 - (id)_navigation_stripTagsFromSpokenString;
 - (id)_navigation_stripVariablesFromString;
+- (id)mnlpr_componentsSeparatedByGlyph;
 @end
 

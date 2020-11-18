@@ -13,8 +13,9 @@
 @interface _MRNowPlayingClientProtobuf : PBCodable <NSCopying>
 {
     NSString *_bundleIdentifier;
-    NSMutableArray *_bundleIdentifierHierarchys;
     NSString *_displayName;
+    NSMutableArray *_extendedBundleIdentifierHierarchys;
+    NSString *_iconURL;
     int _nowPlayingVisibility;
     NSString *_parentApplicationBundleIdentifier;
     int _processIdentifier;
@@ -30,16 +31,18 @@
 }
 
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) NSMutableArray *bundleIdentifierHierarchys; // @synthesize bundleIdentifierHierarchys=_bundleIdentifierHierarchys;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong, nonatomic) NSMutableArray *extendedBundleIdentifierHierarchys; // @synthesize extendedBundleIdentifierHierarchys=_extendedBundleIdentifierHierarchys;
 @property (readonly, nonatomic) BOOL hasBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasDisplayName;
+@property (readonly, nonatomic) BOOL hasIconURL;
 @property (nonatomic) BOOL hasIsEmptyDeprecated;
 @property (nonatomic) BOOL hasNowPlayingVisibility;
 @property (readonly, nonatomic) BOOL hasParentApplicationBundleIdentifier;
 @property (nonatomic) BOOL hasProcessIdentifier;
 @property (nonatomic) BOOL hasProcessUserIdentifier;
 @property (readonly, nonatomic) BOOL hasTintColor;
+@property (strong, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
 @property (nonatomic) BOOL isEmptyDeprecated; // @synthesize isEmptyDeprecated=_isEmptyDeprecated;
 @property (nonatomic) int nowPlayingVisibility; // @synthesize nowPlayingVisibility=_nowPlayingVisibility;
 @property (strong, nonatomic) NSString *parentApplicationBundleIdentifier; // @synthesize parentApplicationBundleIdentifier=_parentApplicationBundleIdentifier;
@@ -47,17 +50,17 @@
 @property (nonatomic) int processUserIdentifier; // @synthesize processUserIdentifier=_processUserIdentifier;
 @property (strong, nonatomic) _MRColorProtobuf *tintColor; // @synthesize tintColor=_tintColor;
 
-+ (Class)bundleIdentifierHierarchyType;
++ (Class)extendedBundleIdentifierHierarchyType;
 - (void).cxx_destruct;
 - (int)StringAsNowPlayingVisibility:(id)arg1;
-- (void)addBundleIdentifierHierarchy:(id)arg1;
-- (id)bundleIdentifierHierarchyAtIndex:(unsigned long long)arg1;
-- (unsigned long long)bundleIdentifierHierarchysCount;
-- (void)clearBundleIdentifierHierarchys;
+- (void)addExtendedBundleIdentifierHierarchy:(id)arg1;
+- (void)clearExtendedBundleIdentifierHierarchys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)extendedBundleIdentifierHierarchyAtIndex:(unsigned long long)arg1;
+- (unsigned long long)extendedBundleIdentifierHierarchysCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

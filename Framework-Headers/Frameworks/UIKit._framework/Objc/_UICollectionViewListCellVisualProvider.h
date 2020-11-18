@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class UIView, _UICollectionViewListCell;
+@class UICollectionViewListCell, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewListCellVisualProvider : NSObject
 {
-    _UICollectionViewListCell *_cell;
+    UICollectionViewListCell *_cell;
 }
 
 @property (readonly, nonatomic) UIView *accessoryManagerContainerView;

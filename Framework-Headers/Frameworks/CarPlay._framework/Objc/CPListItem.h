@@ -6,39 +6,68 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlay/CPListItemPrivate-Protocol.h>
+#import <CarPlay/CPSelectableListItem-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class CPImageSet, NSString, NSUUID, UIImage;
+@class CPImageSet, CPListTemplate, NSString, NSUUID, UIImage;
 
-@interface CPListItem : NSObject <NSSecureCoding>
+@interface CPListItem : NSObject <CPListItemPrivate, NSSecureCoding, CPSelectableListItem>
 {
+    BOOL _explicitContent;
+    BOOL _playing;
     BOOL _showsDisclosureIndicator;
+    long long _accessoryType;
+    double _playbackProgress;
+    long long _playingIndicatorLocation;
+    CDUnknownBlockType _handler;
     NSString *_text;
-    NSString *_detailText;
     id _userInfo;
+    NSString *_detailText;
     CPImageSet *_imageSet;
+    CPImageSet *_accessoryImageSet;
     NSUUID *_identifier;
+    CPListTemplate *_listTemplate;
 }
 
+@property (readonly, nonatomic) UIImage *accessoryImage;
+@property (strong, nonatomic) CPImageSet *accessoryImageSet; // @synthesize accessoryImageSet=_accessoryImageSet;
+@property (nonatomic) long long accessoryType; // @synthesize accessoryType=_accessoryType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
+@property (nonatomic, getter=isExplicitContent) BOOL explicitContent; // @synthesize explicitContent=_explicitContent;
+@property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) UIImage *image;
 @property (strong, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
+@property (weak, nonatomic) CPListTemplate *listTemplate; // @synthesize listTemplate=_listTemplate;
+@property (nonatomic) double playbackProgress; // @synthesize playbackProgress=_playbackProgress;
+@property (nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
+@property (nonatomic) long long playingIndicatorLocation; // @synthesize playingIndicatorLocation=_playingIndicatorLocation;
 @property (readonly, nonatomic) BOOL showsDisclosureIndicator; // @synthesize showsDisclosureIndicator=_showsDisclosureIndicator;
+@property (nonatomic) BOOL showsExplicitLabel;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
++ (struct CGSize)maximumImageSize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
+- (void)_setNeedsUpdate;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithText:(id)arg1 detailText:(id)arg2;
 - (id)initWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3;
+- (id)initWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 accessoryImage:(id)arg4 accessoryType:(long long)arg5;
 - (id)initWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 showsDisclosureIndicator:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)setAccessoryImage:(id)arg1;
+- (void)setDetailText:(id)arg1;
+- (void)setImage:(id)arg1;
+- (void)setShowsDisclosureIndicator:(BOOL)arg1;
+- (void)setText:(id)arg1;
 
 @end
 

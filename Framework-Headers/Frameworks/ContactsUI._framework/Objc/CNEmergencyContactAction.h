@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)pickerDidCancel:(id)arg1;
 - (void)presentDisambiguationAlertWithSender:(id)arg1;
 - (void)showConfirmRemoveAlertWithSender:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)showHKMedicalIDViewControllerForMedicalID:(id)arg1;
 - (void)showRelationshipPickerForContactProperty:(id)arg1 sender:(id)arg2;
 
 @end

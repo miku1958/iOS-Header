@@ -6,10 +6,15 @@
 
 #import <TemplateKit/TLKTitleContainerTestingProtocol-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableArray, NSString, NUIContainerStackView, TLKStackView, TLKTextButton, TLKTitleContainerView;
 
 @protocol TLKTextAreaViewTesting <TLKTitleContainerTestingProtocol>
+- (NSMutableArray *)detailsFields;
+- (NSArray *)detailsStrings;
+- (TLKTextButton *)footnoteButton;
+- (NUIContainerStackView *)footnoteContainer;
+- (TLKStackView *)footnoteLabel;
 - (NSString *)footnoteLabelString;
-- (NSArray *)textAreaLabelStrings;
+- (TLKTitleContainerView *)titleContainer;
 @end
 

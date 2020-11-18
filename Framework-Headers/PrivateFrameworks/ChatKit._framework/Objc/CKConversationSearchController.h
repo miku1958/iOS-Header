@@ -28,7 +28,7 @@
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (BOOL)supportsMenuInteraction;
-+ (BOOL)supportsQuicklook;
++ (BOOL)supportsQuicklookForResult:(id)arg1;
 + (BOOL)useRecencyRankedSearchForMode:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_appendRecencyToRankingQuery:(id)arg1 hours:(unsigned long long)arg2;

@@ -6,14 +6,18 @@
 
 #import <HomeKitDaemon/HMDBackingStoreTransactionOptions.h>
 
-@class HMDBackingStore;
+@class HMDBackingStore, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 @interface HMDBackingStoreTransactionActions : HMDBackingStoreTransactionOptions
 {
+    BOOL _postApplyActionsInvoked;
+    NSMutableArray *_postApplyActions;
+    NSMutableSet *_postApplyActionNames;
     BOOL _local;
     BOOL _changed;
     BOOL _saveToAssistant;
     BOOL _saveToSharedUserAccount;
+    NSMutableDictionary *_userInfo;
     HMDBackingStore *_backingStore;
 }
 
@@ -22,11 +26,15 @@
 @property (readonly, nonatomic) BOOL local; // @synthesize local=_local;
 @property (readonly, nonatomic) BOOL saveToAssistant; // @synthesize saveToAssistant=_saveToAssistant;
 @property (readonly, nonatomic) BOOL saveToSharedUserAccount; // @synthesize saveToSharedUserAccount=_saveToSharedUserAccount;
+@property (readonly, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (BOOL)addPostApplyActionIfNotPresent:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)addPostApplyActionUsingBlock:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)initWithBackingStore:(id)arg1 options:(id)arg2;
+- (void)invokePostApplyActions;
 - (id)logIdentifier;
 - (void)markChanged;
 - (void)markLocalChanged;

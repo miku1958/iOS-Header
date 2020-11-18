@@ -9,32 +9,27 @@
 #import <MessageUI/NSLayoutManagerDelegate-Protocol.h>
 #import <MessageUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, UIButton, UITextView;
+@class MFConfirmationButton, NSString, UITextView;
 @protocol MFComposeSubjectViewDelegate;
 
 @interface MFComposeSubjectView : MFMailComposeHeaderView <NSLayoutManagerDelegate, UITextViewDelegate>
 {
     unsigned int _delegateRespondsToTextChange:1;
     unsigned int _delegateRespondsToWillRemoveContent:1;
-    unsigned int _notifyButtonSelected:1;
-    unsigned int _showNotifyButton:1;
-    unsigned int _showContentVariationButton:1;
-    unsigned int _contentVariationButtonSelected:1;
     BOOL _needsExclusionPathUpdate;
+    BOOL _allowsNotifyOption;
     UITextView *_textView;
-    UIButton *_notifyButton;
-    UIButton *_contentVariationButton;
+    MFConfirmationButton *_notifyButton;
     double _trailingButtonMidlineInsetFromLayoutMargin;
 }
 
-@property (readonly, nonatomic) UIButton *contentVariationButton; // @synthesize contentVariationButton=_contentVariationButton;
-@property (nonatomic, getter=isContentVariationButtonSelected) BOOL contentVariationButtonSelected; // @synthesize contentVariationButtonSelected=_contentVariationButtonSelected;
+@property (nonatomic) BOOL allowsNotifyOption; // @synthesize allowsNotifyOption=_allowsNotifyOption;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MFComposeSubjectViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIButton *notifyButton; // @synthesize notifyButton=_notifyButton;
-@property (nonatomic, getter=isNotifyButtonSelected) BOOL notifyButtonSelected;
+@property (readonly, nonatomic) MFConfirmationButton *notifyButton; // @synthesize notifyButton=_notifyButton;
+@property (nonatomic, getter=isNotifyOptionSelected) BOOL notifyOptionSelected;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text;
 @property (readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
@@ -42,32 +37,29 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canBecomeFirstResponder;
-- (id)_textContainerExclusionPathsWithNotifyButton:(BOOL)arg1 withContentVariationButton:(BOOL)arg2;
+- (void)_configureNotifyGlyphs;
+- (void)_showNotifyButtonIfNeeded;
+- (id)_textContainerExclusionPathsWithNotifyButton:(BOOL)arg1;
 - (void)_textInputDidChange:(id)arg1;
 - (void)_updateExclusionPathsIfNeeded;
 - (void)_updateTextContainerInsets;
 - (BOOL)becomeFirstResponder;
-- (void)contentVariationButtonTapped:(id)arg1;
 - (void)dealloc;
 - (void)displayMetricsDidChange;
 - (BOOL)endEditing:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isContentVariationSelected;
 - (BOOL)isEndEditingText:(id)arg1;
 - (BOOL)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(BOOL)arg3;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(BOOL)arg3;
 - (void)layoutSubviews;
-- (void)notifyButtonClicked:(id)arg1;
 - (void)refreshPreferredContentSize;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)setShowContentVariationButton:(BOOL)arg1;
-- (void)setShowNotifyButton:(BOOL)arg1;
+- (void)setNeedsExclusionPathUpdate;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;
-- (void)updateContentVariationButton;
-- (void)updateNotifyButton;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

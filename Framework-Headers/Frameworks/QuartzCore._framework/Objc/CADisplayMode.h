@@ -13,8 +13,10 @@
     struct CADisplayModePriv *_priv;
 }
 
+@property (readonly, nonatomic) unsigned long long bitDepth;
 @property (readonly, copy, nonatomic) NSString *colorGamut;
 @property (readonly, copy, nonatomic) NSString *colorMode;
+@property (readonly, nonatomic) BOOL colorModeIsYCbCr;
 @property (readonly, copy, nonatomic) NSString *hdrMode;
 @property (readonly, nonatomic) unsigned long long height;
 @property (readonly, nonatomic, getter=isHighBandwidth) BOOL highBandwidth;

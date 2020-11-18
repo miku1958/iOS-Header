@@ -38,7 +38,7 @@
 - (id)init;
 - (void)removeBrowsingObserver:(id)arg1;
 - (void)startSearchingForNewAccessories;
-- (void)stopSearchingForNewAccessories;
+- (void)stopSearchingForNewAccessoriesWithError:(id)arg1;
 
 @end
 

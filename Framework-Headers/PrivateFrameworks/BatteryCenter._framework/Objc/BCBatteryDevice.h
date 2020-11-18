@@ -9,7 +9,7 @@
 #import <BatteryCenter/NSCopying-Protocol.h>
 #import <BatteryCenter/NSSecureCoding-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString;
 
 @interface BCBatteryDevice : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,7 +17,6 @@
     NSString *_matchIdentifier;
     long long _percentCharge;
     BOOL _charging;
-    UIImage *_glyph;
     BOOL _connected;
     BOOL _batterySaverModeActive;
     BOOL _lowBattery;
@@ -45,7 +44,6 @@
 @property (nonatomic, getter=isCharging) BOOL charging; // @synthesize charging=_charging;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic, getter=isFake) BOOL fake; // @synthesize fake=_fake;
-@property (readonly, nonatomic) UIImage *glyph;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isInternal) BOOL internal; // @synthesize internal=_internal;
@@ -65,7 +63,6 @@
 + (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_lazyGlyph;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

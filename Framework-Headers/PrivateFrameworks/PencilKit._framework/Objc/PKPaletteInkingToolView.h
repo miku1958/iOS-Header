@@ -9,11 +9,12 @@
 #import <PencilKit/PKInkAttributesPickerDelegate-Protocol.h>
 #import <PencilKit/PKPaletteInkingTool-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKInk, UIImage, UIImageView, UILabel, UIViewController;
+@class NSLayoutConstraint, NSString, PKInk, PKPaletteAttributeViewController, UIImage, UIImageView, UILabel;
+@protocol PKPaletteErasingTool, PKPaletteInkingTool;
 
 @interface PKPaletteInkingToolView : PKPaletteToolView <PKPaletteInkingTool, PKInkAttributesPickerDelegate>
 {
-    UIViewController *_attributeViewController;
+    PKPaletteAttributeViewController *_attributeViewController;
     PKInk *_ink;
     UIImageView *_colorIndicatorImageView;
     UIImage *_colorIndicatorImageUp;
@@ -49,8 +50,10 @@
 @property (strong, nonatomic) UIImageView *colorIndicatorImageView; // @synthesize colorIndicatorImageView=_colorIndicatorImageView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<PKPaletteErasingTool> erasingTool;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKInk *ink; // @synthesize ink=_ink;
+@property (readonly, nonatomic) id<PKPaletteInkingTool> inkingTool;
 @property (strong, nonatomic) UILabel *opacityLabel; // @synthesize opacityLabel=_opacityLabel;
 @property (strong, nonatomic) NSLayoutConstraint *opacityLabelBottomConstraint; // @synthesize opacityLabelBottomConstraint=_opacityLabelBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *opacityLabelCenterXConstraint; // @synthesize opacityLabelCenterXConstraint=_opacityLabelCenterXConstraint;
@@ -60,6 +63,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImageView *tipIndicatorContourImageView; // @synthesize tipIndicatorContourImageView=_tipIndicatorContourImageView;
 @property (strong, nonatomic) UIImageView *tipIndicatorImageView; // @synthesize tipIndicatorImageView=_tipIndicatorImageView;
+@property (readonly, nonatomic) NSString *toolIdentifier;
 @property (strong, nonatomic) UIImage *toolTipContourImageLeft; // @synthesize toolTipContourImageLeft=_toolTipContourImageLeft;
 @property (strong, nonatomic) UIImage *toolTipContourImageRight; // @synthesize toolTipContourImageRight=_toolTipContourImageRight;
 @property (strong, nonatomic) UIImage *toolTipContourImageUp; // @synthesize toolTipContourImageUp=_toolTipContourImageUp;
@@ -70,7 +74,7 @@
 + (id)defaultColorForInkingToolWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)_colorIndicatorImageViewFrame;
-- (void)_inkAttributesPickerUserDidEndDraggingSlider:(id)arg1;
+- (double)_minimumAllowedInkOpacity;
 - (id)_opacityLabelFont;
 - (void)_reloadToolImage;
 - (void)_setToolProperties:(id)arg1 toolIdentifier:(id)arg2;

@@ -7,22 +7,29 @@
 #import <PhotosUICore/PXGadgetProvider.h>
 
 #import <PhotosUICore/PXNavigationListDataSectionManagerObserver-Protocol.h>
+#import <PhotosUICore/PXPreferencesObserver-Protocol.h>
 
-@class NSString, PXExtendedTraitCollection, PXNavigationListDataSectionManager;
+@class NSNumber, NSPredicate, NSString, PXExtendedTraitCollection, PXNavigationListDataSectionManager;
 
-@interface PXNavigationListGadgetProvider : PXGadgetProvider <PXNavigationListDataSectionManagerObserver>
+@interface PXNavigationListGadgetProvider : PXGadgetProvider <PXNavigationListDataSectionManagerObserver, PXPreferencesObserver>
 {
     BOOL _shouldShowNavigationListOnIpad;
     BOOL _isPresentedInPicker;
+    BOOL _backgroundFetchingIsActive;
     unsigned long long _type;
     PXExtendedTraitCollection *_traitCollection;
     PXNavigationListDataSectionManager *_dataSourceManager;
+    NSPredicate *_assetsFilterPredicate;
+    NSNumber *_hiddenAlbumVisibleCache;
 }
 
+@property (readonly, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
+@property (nonatomic) BOOL backgroundFetchingIsActive; // @synthesize backgroundFetchingIsActive=_backgroundFetchingIsActive;
 @property (strong, nonatomic) PXNavigationListDataSectionManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSNumber *hiddenAlbumVisibleCache; // @synthesize hiddenAlbumVisibleCache=_hiddenAlbumVisibleCache;
 @property (readonly, nonatomic) BOOL isPresentedInPicker; // @synthesize isPresentedInPicker=_isPresentedInPicker;
 @property (readonly, nonatomic) BOOL shouldShowNavigationListForDeviceAndLayoutClass;
 @property (nonatomic) BOOL shouldShowNavigationListOnIpad; // @synthesize shouldShowNavigationListOnIpad=_shouldShowNavigationListOnIpad;
@@ -32,14 +39,18 @@
 
 - (void).cxx_destruct;
 - (void)_initializeDataSourceManagerIfNeeded;
+- (BOOL)_shouldHiddenAlbumBeVisible;
 - (void)_updateGadgets;
 - (void)dealloc;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
-- (id)initWithType:(unsigned long long)arg1 extendedTraitCollection:(id)arg2 isPresentedInPicker:(BOOL)arg3;
+- (id)initWithIdentifier:(id)arg1;
+- (id)initWithType:(unsigned long long)arg1 extendedTraitCollection:(id)arg2 isPresentedInPicker:(BOOL)arg3 assetsFilterPredicate:(id)arg4;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)pauseLoadingRemainingData;
+- (void)preferencesDidChange;
 - (void)startLoadingRemainingData;
 
 @end

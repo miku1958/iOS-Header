@@ -8,7 +8,10 @@
 
 @interface VNTrackObjectRequest : VNTrackingRequest
 {
+    struct CGSize _trackingFrameSizeInPixels;
 }
+
+@property (nonatomic) struct CGSize trackingFrameSizeInPixels; // @synthesize trackingFrameSizeInPixels=_trackingFrameSizeInPixels;
 
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (unsigned int)frameCVPixelBufferFormatForRequestRevision:(unsigned long long)arg1;
@@ -18,6 +21,7 @@
 - (id)_trackingLevelOptionFromTrackingLevelEnum;
 - (id)initWithDetectedObjectObservation:(id)arg1;
 - (id)initWithDetectedObjectObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (void)setTrackingLevel:(unsigned long long)arg1;
 
 @end

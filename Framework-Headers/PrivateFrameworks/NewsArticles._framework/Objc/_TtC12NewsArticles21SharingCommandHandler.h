@@ -10,8 +10,11 @@
 
 @interface _TtC12NewsArticles21SharingCommandHandler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *defaultSharingActivityProviderFactory;
+    MISSING_TYPE *audioSharingActivityProviderFactory;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *fallbackTracker;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

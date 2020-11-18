@@ -27,22 +27,22 @@
     EMMailDropMetadata *_mailDropMetadata;
 }
 
-@property (readonly, copy, nonatomic) NSString *UTType;
-@property (readonly, copy, nonatomic) NSArray *availableRepresentations;
-@property (readonly, copy, nonatomic) NSString *contentID;
-@property (readonly, nonatomic) long long dataTransferByteCount;
+@property (copy, nonatomic) NSString *UTType; // @synthesize UTType=_UTType;
+@property (copy, nonatomic) NSArray *availableRepresentations; // @synthesize availableRepresentations=_availableRepresentations;
+@property (copy, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property (nonatomic) long long dataTransferByteCount; // @synthesize dataTransferByteCount=_dataTransferByteCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *displayName;
+@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
-@property (readonly, nonatomic) int exchangeEventUID;
+@property (nonatomic) int exchangeEventUID; // @synthesize exchangeEventUID=_exchangeEventUID;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isAvailableLocally;
+@property (nonatomic) BOOL isAvailableLocally; // @synthesize isAvailableLocally=_isAvailableLocally;
 @property (nonatomic) BOOL isSinglePagePDF; // @synthesize isSinglePagePDF=_isSinglePagePDF;
 @property (copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
-@property (readonly, copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
+@property (copy, nonatomic) EMMailDropMetadata *mailDropMetadata; // @synthesize mailDropMetadata=_mailDropMetadata;
 @property (readonly, copy, nonatomic) EMObjectID *objectID;
-@property (readonly, nonatomic) long long storageByteCount;
+@property (nonatomic) long long storageByteCount; // @synthesize storageByteCount=_storageByteCount;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
@@ -53,15 +53,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)requestRepresentationWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)requestRepresentationWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)setAvailableRepresentations:(id)arg1;
-- (void)setContentID:(id)arg1;
-- (void)setDataTransferByteCount:(long long)arg1;
-- (void)setDisplayName:(id)arg1;
-- (void)setExchangeEventUID:(int)arg1;
-- (void)setIsAvailableLocally:(BOOL)arg1;
-- (void)setMailDropMetadata:(id)arg1;
-- (void)setStorageByteCount:(long long)arg1;
-- (void)setUTType:(id)arg1;
 
 @end
 

@@ -15,11 +15,9 @@
 @interface _INPBAppId : PBCodable <_INPBAppId, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_bundleId;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

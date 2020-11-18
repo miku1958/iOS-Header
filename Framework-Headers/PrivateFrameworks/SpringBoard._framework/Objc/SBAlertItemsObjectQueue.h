@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/NSFastEnumeration-Protocol.h>
 
-@class NSMutableOrderedSet;
+@class NSMutableOrderedSet, NSString;
 
-@interface SBAlertItemsObjectQueue : NSObject <NSFastEnumeration>
+@interface SBAlertItemsObjectQueue : NSObject <BSDescriptionProviding, NSFastEnumeration>
 {
     NSMutableOrderedSet *_objects;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableOrderedSet *objects; // @synthesize objects=_objects;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)appendObject:(id)arg1;

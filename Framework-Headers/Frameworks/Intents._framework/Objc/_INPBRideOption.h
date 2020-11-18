@@ -18,7 +18,6 @@
         unsigned int usesMeteredFare:1;
     } _has;
     BOOL _usesMeteredFare;
-    BOOL __encodeLegacyGloryData;
     NSArray *_availablePartySizeOptions;
     NSString *_availablePartySizeOptionsSelectionPrompt;
     NSString *_disclaimerMessage;
@@ -32,7 +31,6 @@
     _INPBUserActivity *_userActivityForBookingInApplication;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *availablePartySizeOptions; // @synthesize availablePartySizeOptions=_availablePartySizeOptions;
 @property (readonly, nonatomic) unsigned long long availablePartySizeOptionsCount;
 @property (copy, nonatomic) NSString *availablePartySizeOptionsSelectionPrompt; // @synthesize availablePartySizeOptionsSelectionPrompt=_availablePartySizeOptionsSelectionPrompt;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _placeholdersCreationBlock;
 }
 
+@property (readonly, nonatomic) NSArray *deletedIDs;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) NSArray *placeholderItems;
 @property (readonly, nonatomic) NSArray *placeholderReplacementsIDs;

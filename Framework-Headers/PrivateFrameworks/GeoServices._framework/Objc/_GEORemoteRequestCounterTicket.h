@@ -23,8 +23,9 @@ __attribute__((visibility("hidden")))
     _GEORemoteRequestCounterTicket *_parentTask;
     BOOL _logNetworkActivityOnly;
     BOOL _complete;
-    unsigned char _type;
+    CDStruct_d1a7ebee _type;
     unsigned char _subtasks;
+    unsigned long long _signpostId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,9 +33,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_requestCounterTicketForType:(unsigned char)arg1 appId:(id)arg2 withParent:(id)arg3 logNetworkActivityOnly:(BOOL)arg4;
-+ (id)requestCounterTicketForType:(unsigned char)arg1 appId:(id)arg2;
-+ (id)requestCounterTicketForType:(unsigned char)arg1 appId:(id)arg2 remoteProxy:(id)arg3;
++ (id)_requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2 withParent:(id)arg3 logNetworkActivityOnly:(BOOL)arg4;
++ (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2;
++ (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2 remoteProxy:(id)arg3;
 - (void).cxx_destruct;
 - (void)_subTask:(id)arg1 completedWithResult:(unsigned char)arg2 xmitBytes:(long long)arg3 recvBytes:(long long)arg4;
 - (id)createSubtask:(BOOL)arg1;

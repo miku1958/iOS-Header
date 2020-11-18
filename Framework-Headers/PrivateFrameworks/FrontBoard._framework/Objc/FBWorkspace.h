@@ -6,26 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
-#import <FrontBoard/FBWorkspaceServerDelegate-Protocol.h>
 
-@class BSAuditToken, FBProcess, FBSceneClientProviderInvalidationAction, FBWorkspaceServer, NSMapTable, NSMutableSet, NSString, RBSAssertion, RBSProcessIdentity, RBSTarget;
-@protocol FBWorkspaceDelegate, OS_dispatch_queue;
+@class BSAuditToken, BSCompoundAssertion, BSServiceConnection, BSServiceConnectionEndpointInjector, FBProcess, FBSSerialQueue, FBSceneClientProviderInvalidationAction, FBWorkspaceEventDispatcherRegistration, NSMutableArray, NSMutableDictionary, NSString, RBSAssertion;
+@protocol BSServiceConnectionHost, FBWorkspaceDelegate, OS_dispatch_queue;
 
-@interface FBWorkspace : NSObject <FBWorkspaceServerDelegate, FBSceneClientProvider>
+@interface FBWorkspace : NSObject <FBSceneClient, FBSceneClientProvider>
 {
     id<FBWorkspaceDelegate> _weak_delegate;
     FBProcess *_weak_process;
-    RBSProcessIdentity *_processIdentity;
-    RBSTarget *_assertionTarget;
-    FBWorkspaceServer *_server;
-    NSMapTable *_hostToClientMap;
-    NSMutableSet *_invalidatingScenes;
+    FBWorkspaceEventDispatcherRegistration *_lock_eventDispatcher;
+    BSServiceConnection<BSServiceConnectionHost> *_lock_connection;
+    NSMutableArray *_lock_waitForConnectBlocks;
+    NSMutableDictionary *_lock_identifierToSceneMap;
+    NSMutableDictionary *_lock_identifierToRemnantsMap;
+    NSMutableArray *_lock_pendedRequests;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_callOutQueue;
-    FBSceneClientProviderInvalidationAction *_invalidationAction;
-    RBSAssertion *_subordinateProcessAssertion;
-    BOOL _invalidated;
+    FBSSerialQueue *_workspaceQueue;
+    FBSceneClientProviderInvalidationAction *_lock_invalidationAction;
+    RBSAssertion *_lock_lifeAssertion;
+    RBSAssertion *_lock_afterlifeAssertion;
+    long long _lock_activeInterruptionPolicy;
+    unsigned char _lock_activeAssertionState;
+    BSCompoundAssertion *_compoundAssertion;
+    BSServiceConnectionEndpointInjector *_workspaceServiceInjector;
+    BOOL _shouldInjectEndpoint;
+    BOOL _lock_didReceiveHandshake;
+    BOOL _lock_invalidated;
 }
 
 @property (readonly, nonatomic) BSAuditToken *auditToken;
@@ -36,24 +45,28 @@
 @property (readonly, weak, nonatomic) FBProcess *process;
 @property (readonly) Class superclass;
 
++ (long long)_resolveInterruptionPolicy:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_acquireSubordinateProcessAssertionIfNecessary;
-- (void)_invalidateSubordinateProcessAssertionIfNecessary;
-- (id)_queue;
-- (void)_queue_enumerateScenes:(CDUnknownBlockType)arg1;
-- (void)_queue_fireInvalidationAction;
-- (void)_queue_invalidateAllScenes;
-- (void)_queue_sceneDidInvalidate:(id)arg1;
-- (id)_server;
+- (void)_lock_enqueueConnectBlock:(CDUnknownBlockType)arg1;
+- (void)_lock_fireInvalidationAction;
+- (void)_resolveSceneLifecycleStateAndInterruptionPolicy;
+- (id)_sceneForIdentifier:(id)arg1;
+- (void)_terminateWithReason:(id)arg1;
+- (id)_unregisterSceneForIdentifier:(id)arg1;
+- (void)_updateProcessAssertionState;
 - (void)dealloc;
-- (id)initWithParentProcess:(id)arg1 queue:(id)arg2 callOutQueue:(id)arg3;
-- (id)injectionTargetForServer:(id)arg1;
-- (id)processForServer:(id)arg1;
-- (id)registerHost:(id)arg1 withInitialParameters:(id)arg2;
+- (oneway void)handshakeWithRemnants:(id)arg1;
+- (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)host:(id)arg1 didReceiveActions:(id)arg2;
+- (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)init;
+- (id)registerHost:(id)arg1 withSpecification:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 fromRemnant:(id)arg5;
 - (void)registerInvalidationAction:(id)arg1;
+- (oneway void)requestSceneWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)sceneID:(id)arg1 didReceiveActions:(id)arg2;
+- (oneway void)sceneID:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
+- (oneway void)sceneID:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)sendActions:(id)arg1;
-- (void)server:(id)arg1 didReceiveSceneRequestWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)serverDidInvalidateConnection:(id)arg1;
 - (void)unregisterHost:(id)arg1;
 
 @end

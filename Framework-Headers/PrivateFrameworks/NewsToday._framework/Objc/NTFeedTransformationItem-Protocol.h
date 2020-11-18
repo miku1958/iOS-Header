@@ -15,7 +15,6 @@
 @property (readonly, copy, nonatomic) NSDate *cacheCutoffTimeRelativeDate;
 @property (readonly, copy, nonatomic) NSDate *cacheExpirationDate;
 @property (readonly, copy, nonatomic) NSString *clusterID;
-@property (readonly, nonatomic, getter=isEligibleForLeadingCellAppearance) BOOL eligibleForLeadingCellAppearance;
 @property (readonly, copy, nonatomic) NTPBFeedItem *feedItemForHeadlineFetch;
 @property (readonly, nonatomic) id<FCFeedTransformationItem> feedTransformationItem;
 @property (readonly, copy, nonatomic) NSString *identifier;

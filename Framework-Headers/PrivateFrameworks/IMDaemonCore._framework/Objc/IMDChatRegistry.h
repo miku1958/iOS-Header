@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) NSArray *chats;
 @property (strong, nonatomic) IMDCKUtilities *ckUtilities; // @synthesize ckUtilities=_ckUtilities;
 @property (readonly, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
+@property (readonly, nonatomic) unsigned long long countOfAllChats;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasDumpedLogsForNoExisitingGroup; // @synthesize hasDumpedLogsForNoExisitingGroup=_hasDumpedLogsForNoExisitingGroup;
@@ -57,6 +58,7 @@
 - (void)_addHandlesToPCMIDMapForChatParticipants:(id)arg1 pcmidToHandleMap:(id)arg2;
 - (void)_addItemToParentChatIfNotLocationItem:(id)arg1 parentChat:(id)arg2 updatedLastMessageCount:(unsigned long long)arg3;
 - (void)_addTUConversationToMessageStore:(id)arg1 shouldBroadcast:(BOOL)arg2;
+- (void)_adoptUpdatedStateForExistingItem:(id)arg1 itemFromCKRecord:(id)arg2;
 - (id)_aliasToCNIDMapForAliases:(id)arg1;
 - (id)_aliasToHandlesMap:(id)arg1;
 - (id)_allChatInfo;
@@ -80,17 +82,19 @@
 - (BOOL)_ensureNoExistingGroupForCKRecord:(id)arg1;
 - (id)_existingChatForCKRecord:(id)arg1;
 - (id)_existingChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
+- (BOOL)_existingItemRequiresUpgrade:(id)arg1 itemFromCKRecord:(id)arg2;
 - (id)_existingiMessageChatForChatIdentifier:(id)arg1 style:(unsigned char)arg2;
 - (id)_extractHandlesFromMap:(id)arg1 usingCNID:(id)arg2;
 - (id)_findChatWinnerInDuplicateChatArray:(id)arg1 fixDisplayName:(BOOL *)arg2;
 - (id)_findLosingChatGUIDsInArrayOfChats:(id)arg1 withWinner:(id)arg2;
-- (void)_fixSMSGroupChatAndStoreIfNeeded:(id)arg1 iMessageChat:(id)arg2;
+- (void)_fixSMSGroupChatAndStoreIfNeeded:(id)arg1 iMessageChat:(id)arg2 chatToRegenerate:(id *)arg3;
 - (void)_fixUpChatParticipantsIfNeeded:(id)arg1;
 - (void)_forceReloadChats:(BOOL)arg1;
 - (id)_generateCurrentAliasToCNIDDictionary;
 - (id)_handlesThatNeedPCMIDUpdatedGivenArray:(id)arg1;
 - (id)_handlesThatNeedPCMIDsUpdatedGivenMap:(id)arg1;
 - (id)_handlesWithChangedContactsOriginalMap:(id)arg1 newMap:(id)arg2;
+- (BOOL)_haveInconsistentGroupPhotoGuidOnMergedChats:(id)arg1;
 - (id)_initiatorForConversation:(id)arg1 chat:(id)arg2;
 - (void)_insertChatUsingCKRecord:(id)arg1;
 - (void)_insertCurrentActiveTUConversationsIfNeeded;
@@ -107,6 +111,7 @@
 - (void)_persistMergeIDMergedChatsIfNeeded;
 - (id)_personCentricIDForHandleID:(id)arg1;
 - (void)_populateContactIDOnHandles;
+- (void)_repairInconsistentGroupPhotoGuidOnMergedChatsIfNecessary:(id)arg1;
 - (id)_reportMessageDictionaryForMessages:(id)arg1 withLastAddressedHandle:(id)arg2 maxMessageLength:(unsigned long long)arg3 isAutoReport:(BOOL)arg4 withChat:(id)arg5 maxMessagesToReport:(unsigned long long)arg6 totalMessageCount:(unsigned long long *)arg7;
 - (id)_reportMessageDictionaryForMessages:(id)arg1 withLastAddressedHandle:(id)arg2 maxMessageLength:(unsigned long long)arg3 isAutoReport:(BOOL)arg4 withChat:(id)arg5 maxMessagesToReport:(unsigned long long)arg6 totalMessageCount:(unsigned long long *)arg7 onlyReportForiMessageService:(BOOL)arg8 notifyInternalSecurity:(BOOL)arg9;
 - (void)_reportToIDSiMessageSpam:(id)arg1;
@@ -205,6 +210,7 @@
 - (void)updateLastMessageForChat:(id)arg1 hintMessage:(id)arg2;
 - (void)updateLastMessageForChat:(id)arg1 hintMessage:(id)arg2 historyQuery:(BOOL)arg3;
 - (void)updateMeCardHasUpdatedForAllChats;
+- (void)updateNotificationUnreadCountForChat:(id)arg1;
 - (BOOL)updateProperties:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3;
 - (void)updateStateForChat:(id)arg1 forcePost:(BOOL)arg2;
 - (void)updateStateForChat:(id)arg1 forcePost:(BOOL)arg2 shouldRebuildFailedMessageDate:(BOOL)arg3;

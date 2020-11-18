@@ -6,17 +6,16 @@
 
 #import <MediaRemote/MRAVDistantExternalDeviceMetadata.h>
 
-@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRSupportedProtocolMessages, NSString;
 
 @interface MRAVMutableDistantExternalDeviceMetadata : MRAVDistantExternalDeviceMetadata
 {
 }
 
-@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @dynamic deviceInfo;
+@property (strong, nonatomic) MRDeviceInfo *deviceInfo; // @dynamic deviceInfo;
 @property (copy, nonatomic) NSString *hostName; // @dynamic hostName;
 @property (nonatomic) long long hostPort; // @dynamic hostPort;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
-@property (nonatomic) BOOL paired; // @dynamic paired;
 @property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @dynamic supportedMessages;
 @property (nonatomic) BOOL usingSystemPairing; // @dynamic usingSystemPairing;
 

@@ -12,6 +12,7 @@
 {
     int _recognizerRecognitionMode;
     int _recognizerContentType;
+    int _autoCapitalizationMode;
     CHRecognitionInsightRequest *_insightRequest;
     NSLocale *_recognizerLocale;
     NSCharacterSet *_recognizerActiveCharacterSet;
@@ -27,6 +28,8 @@
     struct CGSize _recognizerMinimumDrawingSize;
 }
 
+@property (nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
+@property (readonly, nonatomic) NSString *autoCapitalizationModeDescription;
 @property (copy, nonatomic) NSArray *charBoundaryProbabilities; // @synthesize charBoundaryProbabilities=_charBoundaryProbabilities;
 @property (copy, nonatomic) NSArray *delayedStrokeProbabilities; // @synthesize delayedStrokeProbabilities=_delayedStrokeProbabilities;
 @property (copy, nonatomic) CHDrawing *inputDrawing; // @synthesize inputDrawing=_inputDrawing;

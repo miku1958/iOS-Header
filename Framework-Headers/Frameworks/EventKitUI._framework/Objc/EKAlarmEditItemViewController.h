@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     EKUIAlarm *_previousAlarm;
     EKCalendar *_calendar;
     unsigned long long _alarmIndex;
+    unsigned long long _timeToLeaveLocationStatus;
 }
 
 @property (strong, nonatomic) EKUIAlarm *alarm; // @synthesize alarm=_alarm;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldAllowAlarmsTriggeringAfterStartDate; // @synthesize shouldAllowAlarmsTriggeringAfterStartDate=_shouldAllowAlarmsTriggeringAfterStartDate;
 @property (nonatomic) BOOL shouldShowLeaveNowOption; // @synthesize shouldShowLeaveNowOption=_shouldShowLeaveNowOption;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long timeToLeaveLocationStatus; // @synthesize timeToLeaveLocationStatus=_timeToLeaveLocationStatus;
 
 - (void).cxx_destruct;
 - (void)_storeChanged:(id)arg1;

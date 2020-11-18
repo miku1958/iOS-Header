@@ -20,6 +20,7 @@
     NSArray *_resources;
     NSString *_caption;
     NSString *_extendedDescription;
+    NSString *_accessibilityDescription;
     long long _orientation;
     long long _duration;
     CLLocation *_location;
@@ -55,6 +56,7 @@
     NSData *_facesData;
 }
 
+@property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property (copy, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
 @property (strong, nonatomic) NSData *adjustedMediaMetaData; // @synthesize adjustedMediaMetaData=_adjustedMediaMetaData;
 @property (copy, nonatomic) NSString *adjustedMediaMetaDataType; // @synthesize adjustedMediaMetaDataType=_adjustedMediaMetaDataType;
@@ -109,7 +111,7 @@
 - (BOOL)_canLowerQuota;
 - (id)allRelatedScopedIdentifiers;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
-- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
+- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingStorageView:(id)arg4;
 - (void)copyDerivativesFromRecordIfPossible:(id)arg1;
 - (long long)dequeueOrder;
 - (unsigned long long)fullChangeTypeForFullRecord;

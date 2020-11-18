@@ -11,10 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface CSIHelper : NSObject
 {
-    struct _slice slice;
+    struct _slice {
+        unsigned int x;
+        unsigned int y;
+        unsigned int width;
+        unsigned int height;
+    } slice;
     NSData *csiData;
     struct _csibitmap *bmp;
-    int renditionLock;
+    struct os_unfair_lock_s renditionLock;
     _CUIThemePixelRendition *rendition;
     _CSIRenditionBlockData *sharedBlockDataBGRX;
     _CSIRenditionBlockData *sharedBlockDataRGBX;
@@ -28,6 +33,8 @@ __attribute__((visibility("hidden")))
     unsigned int usedForDataProvider:1;
     unsigned int _reserved:30;
 }
+
+- (void)dealloc;
 
 @end
 

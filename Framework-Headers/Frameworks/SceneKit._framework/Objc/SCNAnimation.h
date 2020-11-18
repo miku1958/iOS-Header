@@ -73,6 +73,7 @@
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
 - (void)_didMutate;
+- (void)_optimizeKeyframesWithTarget:(id)arg1;
 - (void)_setAnimationRef:(struct __C3DAnimation *)arg1;
 - (void)_syncObjCModel;
 - (struct __C3DAnimation *)animationRef;
@@ -91,6 +92,7 @@
 - (void)setFadeOutDuration:(double)arg1;
 - (void)setRepeatDuration:(double)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)subAnimations;
 - (id)userAnimation;
 - (id)valueForUndefinedKey:(id)arg1;
 

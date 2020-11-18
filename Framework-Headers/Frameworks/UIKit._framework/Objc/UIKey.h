@@ -31,10 +31,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)equalsKeyCode:(long long)arg1 modifiers:(long long)arg2;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKeyboardEvent:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (long long)modiferFlagsWithoutCapsLockOrNumberPad;
+- (BOOL)modifiersEqual:(long long)arg1;
+- (BOOL)unmodifiedKeyCodeEquals:(long long)arg1;
 
 @end
 

@@ -16,6 +16,7 @@
 + (id)_specDefinitionForActivity;
 + (id)_specDefinitionForBeaching;
 + (id)_specDefinitionForBreakfast;
++ (id)_specDefinitionForClimbing;
 + (id)_specDefinitionForDinner;
 + (id)_specDefinitionForDiving;
 + (id)_specDefinitionForEntertainment;

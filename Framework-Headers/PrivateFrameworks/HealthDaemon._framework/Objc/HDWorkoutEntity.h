@@ -16,8 +16,8 @@
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (BOOL)copySampleAssociationsFromWorkout:(id)arg1 toWorkout:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)databaseTable;
-+ (id)deleteStatementsForRelatedEntitiesInDatabase:(id)arg1;
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)deleteStatementsForRelatedEntitiesWithTransaction:(id)arg1;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (BOOL)enumerateCondensedWorkoutsWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
 + (BOOL)isConcreteEntity;

@@ -19,29 +19,22 @@
     NSString *_host;
     int _port;
     BOOL _dataAvailableForReading;
-    NSURLSessionStreamTask *_streamTask;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
+    NSURLSessionStreamTask *_streamTask;
 }
 
-@property BOOL dataAvailableForReading; // @synthesize dataAvailableForReading=_dataAvailableForReading;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
-@property (strong) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
-@property (strong) NSURLSessionStreamTask *streamTask; // @synthesize streamTask=_streamTask;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 streamTask:(id)arg2 didBecomeInputStream:(id)arg3 outputStream:(id)arg4;
-- (void)_onConnected:(int)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithHost:(id)arg1 port:(unsigned short)arg2 queue:(id)arg3 configuration:(id)arg4;
 - (void)read:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)readFromStream;
-- (void)setDelegate:(id)arg1;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (void)write:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

@@ -9,8 +9,6 @@
 @interface NSPersonNameComponents (CNContactAdditions)
 + (id)componentsForContact:(id)arg1;
 + (id)descriptorForUsedKeys;
-+ (id)keyPathMapping;
-+ (id)keyVectorForUsedKeys;
 - (void)overrideComponentsInContact:(id)arg1;
 @end
 

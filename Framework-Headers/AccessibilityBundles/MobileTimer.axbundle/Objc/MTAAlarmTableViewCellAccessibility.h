@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axSetDetailLabelForAlarm:(id)arg1;
+- (struct CGPoint)accessibilityActivationPoint;
 - (void)refreshUI:(id)arg1 animated:(BOOL)arg2;
 
 @end

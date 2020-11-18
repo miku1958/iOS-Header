@@ -8,19 +8,20 @@
 
 #import <MediaRemote/MRProtocolClientConnectionDelegate-Protocol.h>
 
-@class CURunLoopThread, MRExternalClientConnection, MRExternalDeviceTransport, NSData, NSDate, NSDictionary, NSObject, NSRunLoop, NSString, _MRContentItemProtobuf, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
-@protocol OS_dispatch_queue, OS_os_transaction;
+@class CURunLoopThread, MRContentItem, MRDeviceInfo, MRExternalClientConnection, MRExternalDeviceTransport, MROSTransaction, MROrigin, MRPlayerPath, NSData, NSDate, NSDictionary, NSObject, NSRunLoop, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MRTransportExternalDevice : MRExternalDevice <MRProtocolClientConnectionDelegate>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    NSObject<OS_dispatch_queue> *_workerQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     CURunLoopThread *_runLoopThread;
     BOOL _wantsNowPlayingNotifications;
     BOOL _wantsNowPlayingArtworkNotifications;
     BOOL _wantsVolumeNotifications;
     BOOL _wantsOutputDeviceNotifications;
+    BOOL _wantsSystemEndpointNotifications;
+    BOOL _wantsEndpointChangeNotifications;
     BOOL _usingSystemPairing;
     NSDate *_connectionStateTimestamp;
     unsigned int _connectionState;
@@ -30,15 +31,15 @@
     BOOL _forceReconnectOnConnectionFailure;
     BOOL _disconnecting;
     BOOL _isClientSyncActive;
-    NSObject<OS_os_transaction> *_transaction;
+    MROSTransaction *_transaction;
     BOOL _isCallingClientCallback;
     MRExternalClientConnection *_clientConnection;
-    _MROriginProtobuf *_customOrigin;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MROrigin *_customOrigin;
+    MRDeviceInfo *_deviceInfo;
+    MRPlayerPath *_playerPath;
     NSDictionary *_nowPlayingInfo;
     NSData *_nowPlayingArtwork;
-    _MRContentItemProtobuf *_nowPlayingItem;
+    MRContentItem *_nowPlayingItem;
     MRExternalDeviceTransport *_transport;
     long long _connectionRecoveryBehavior;
     CDUnknownBlockType _pairingCallback;
@@ -61,6 +62,7 @@
     NSObject<OS_dispatch_queue> *_volumeControlCapabilitiesCallbackQueue;
     NSObject<OS_dispatch_queue> *_outputContextCallbackQueue;
     NSRunLoop *_runLoop;
+    NSObject<OS_dispatch_queue> *_workerQueue;
 }
 
 @property (strong, nonatomic) MRExternalClientConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
@@ -69,17 +71,17 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionStateCallbackQueue; // @synthesize connectionStateCallbackQueue=_connectionStateCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType customDataCallback; // @synthesize customDataCallback=_customDataCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *customDataCallbackQueue; // @synthesize customDataCallbackQueue=_customDataCallbackQueue;
-@property (strong, nonatomic) _MROriginProtobuf *customOrigin; // @synthesize customOrigin=_customOrigin;
+@property (strong, nonatomic) MROrigin *customOrigin; // @synthesize customOrigin=_customOrigin;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (strong, nonatomic) MRDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCallingClientCallback; // @synthesize isCallingClientCallback=_isCallingClientCallback;
 @property (copy, nonatomic) CDUnknownBlockType nameCallback; // @synthesize nameCallback=_nameCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *nameCallbackQueue; // @synthesize nameCallbackQueue=_nameCallbackQueue;
 @property (strong, nonatomic) NSData *nowPlayingArtwork; // @synthesize nowPlayingArtwork=_nowPlayingArtwork;
 @property (strong, nonatomic) NSDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
-@property (strong, nonatomic) _MRContentItemProtobuf *nowPlayingItem; // @synthesize nowPlayingItem=_nowPlayingItem;
+@property (strong, nonatomic) MRContentItem *nowPlayingItem; // @synthesize nowPlayingItem=_nowPlayingItem;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *outputContextCallbackQueue; // @synthesize outputContextCallbackQueue=_outputContextCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType outputDevicesRemovedCallback; // @synthesize outputDevicesRemovedCallback=_outputDevicesRemovedCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *outputDevicesRemovedCallbackQueue; // @synthesize outputDevicesRemovedCallbackQueue=_outputDevicesRemovedCallbackQueue;
@@ -89,7 +91,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingAllowedCallbackQueue; // @synthesize pairingAllowedCallbackQueue=_pairingAllowedCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType pairingCallback; // @synthesize pairingCallback=_pairingCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingCallbackQueue; // @synthesize pairingCallbackQueue=_pairingCallbackQueue;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (strong, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (strong, nonatomic) NSRunLoop *runLoop; // @synthesize runLoop=_runLoop;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MRExternalDeviceTransport *transport; // @synthesize transport=_transport;
@@ -97,8 +99,10 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *volumeCallbackQueue; // @synthesize volumeCallbackQueue=_volumeCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType volumeControlCapabilitiesCallback; // @synthesize volumeControlCapabilitiesCallback=_volumeControlCapabilitiesCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *volumeControlCapabilitiesCallbackQueue; // @synthesize volumeControlCapabilitiesCallbackQueue=_volumeControlCapabilitiesCallbackQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workerQueue; // @synthesize workerQueue=_workerQueue;
 
 - (void).cxx_destruct;
+- (void)_activeSystemEndpointDidChangeNotification:(id)arg1;
 - (void)_callClientAllowsPairingCallback;
 - (void)_callClientConnectionStateCallback:(unsigned int)arg1 previousConnectionState:(unsigned int)arg2 error:(id)arg3;
 - (void)_callClientCustomDataCallback:(id)arg1 name:(id)arg2;
@@ -139,10 +143,12 @@
 - (void)_handleSetDefaultSupportedCommandsMessage:(id)arg1;
 - (void)_handleSetNowPlayingClientMessage:(id)arg1;
 - (void)_handleSetNowPlayingPlayerMessage:(id)arg1;
+- (void)_handleSetOriginClientPropertiesMessage:(id)arg1;
+- (void)_handleSetPlayerClientPropertiesMessage:(id)arg1;
 - (void)_handleSetStateMessage:(id)arg1;
-- (void)_handleSetStateMessageLegacy:(id)arg1;
 - (void)_handleSetStateMessageModern:(id)arg1;
 - (void)_handleTransactionMessage:(id)arg1;
+- (void)_handleUpdateActiveSystemEndpoint:(id)arg1;
 - (void)_handleUpdateClientMessage:(id)arg1;
 - (void)_handleUpdateContentItemArtworkMessage:(id)arg1;
 - (void)_handleUpdateContentItemsMessage:(id)arg1;
@@ -150,29 +156,30 @@
 - (void)_handleVolumeControlCapabilitiesDidChangeMessage:(id)arg1;
 - (void)_handleVolumeDidChangeMessage:(id)arg1;
 - (void)_localDeviceInfoDidChangeNotification:(id)arg1;
-- (void)_onSerialQueue_prepareToConnectWithOptions:(unsigned int)arg1;
+- (void)_onSerialQueue_prepareToConnectWithOptions:(unsigned int)arg1 clientBundleIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)_onSerialQueue_prepareToDisconnect:(id)arg1;
 - (void)_onSerialQueue_registerOriginCallbacks;
-- (void)_onWorkerQueue_connectWithOptions:(unsigned int)arg1 isRetry:(BOOL)arg2;
+- (void)_onWorkerQueue_connectWithOptions:(unsigned int)arg1 isRetry:(BOOL)arg2 clientBundleIdentifier:(id)arg3 userInfo:(id)arg4;
+- (id)_onWorkerQueue_createClientConnectionWithInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)_onWorkerQueue_disconnect:(id)arg1;
-- (id)_onWorkerQueue_initializeConnectionWithOptions:(unsigned int)arg1;
+- (id)_onWorkerQueue_initializeConnectionWithOptions:(unsigned int)arg1 userInfo:(id)arg2;
 - (id)_onWorkerQueue_loadDeviceInfo;
 - (id)_onWorkerQueue_openSecuritySession;
 - (id)_onWorkerQueue_reRegisterCustomOrigin;
-- (id)_onWorkerQueue_setupCustomOrigin;
+- (id)_onWorkerQueue_registerCustomOrigin;
 - (id)_onWorkerQueue_syncClientState;
 - (void)_transportDeviceInfoDidChangeNotification:(id)arg1;
 - (void)_updateNowPlayingInfo;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
-- (void)clientDidDisconnect:(id)arg1;
-- (void)connectWithOptions:(unsigned int)arg1;
+- (void)clientDidDisconnect:(id)arg1 error:(id)arg2;
+- (void)connectWithOptions:(unsigned int)arg1 clientBundleIdentifier:(id)arg2 userInfo:(id)arg3;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(id)arg2;
 - (unsigned int)connectionState;
 - (id)currentClientUpdatesConfigMessage;
 - (void)dealloc;
 - (void)disconnect:(id)arg1;
 - (id)errorForCurrentState;
 - (id)hostName;
-- (id)init;
 - (id)initWithTransport:(id)arg1;
 - (BOOL)isPaired;
 - (BOOL)isUsingSystemPairing;
@@ -181,6 +188,7 @@
 - (id)name;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)outputDeviceVolumeControlCapabilities:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)personalOutputDevices;
 - (void)ping:(double)arg1 callback:(CDUnknownBlockType)arg2 withQueue:(id)arg3;
 - (long long)port;
 - (void)removeFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -201,16 +209,20 @@
 - (void)setUsingSystemPairing:(BOOL)arg1;
 - (void)setVolumeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setVolumeControlCapabilitiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setWantsEndpointChangeNotifications:(BOOL)arg1;
 - (void)setWantsNowPlayingArtworkNotifications:(BOOL)arg1;
 - (void)setWantsNowPlayingNotifications:(BOOL)arg1;
 - (void)setWantsOutputDeviceNotifications:(BOOL)arg1;
+- (void)setWantsSystemEndpointNotifications:(BOOL)arg1;
 - (void)setWantsVolumeNotifications:(BOOL)arg1;
 - (id)supportedMessages;
 - (void)unpair;
 - (void)veirfyConnectionStatusAndMaybeDisconnect:(id)arg1;
+- (BOOL)wantsEndpointChangeNotifications;
 - (BOOL)wantsNowPlayingArtworkNotifications;
 - (BOOL)wantsNowPlayingNotifications;
 - (BOOL)wantsOutputDeviceNotifications;
+- (BOOL)wantsSystemEndpointNotifications;
 - (BOOL)wantsVolumeNotifications;
 
 @end

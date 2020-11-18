@@ -6,7 +6,7 @@
 
 #import <AVConference/VCObject.h>
 
-@class NSDictionary, VCSessionBandwidthAllocationTable;
+@class NSArray, NSDictionary, VCSessionBandwidthAllocationTable;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionUplinkBandwidthAllocator : VCObject
@@ -15,26 +15,30 @@ __attribute__((visibility("hidden")))
     NSDictionary *_currentTable;
     BOOL _videoEnabled;
     BOOL _redundancyEnabled;
+    BOOL _redundancyEnabledFor720Stream;
 }
 
+@property (readonly, nonatomic, getter=getBitrateToStreamTable) NSDictionary *bitrateToStreamTable;
 @property (nonatomic, getter=isRedundancyEnabled) BOOL redundancyEnabled;
+@property (nonatomic, getter=isRedundancyEnabledFor720Stream) BOOL redundancyEnabledFor720Stream;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
+@property (readonly, nonatomic) NSArray *videoRepairStreamIDs;
+@property (readonly, nonatomic) NSArray *videoStreamIDs;
 
-- (void)_assignCurrentTables;
 - (id)_audioEntriesForTargetBitrate:(unsigned int)arg1;
-- (BOOL)_isAvailableStreamConfiguration:(id)arg1;
-- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2 remainingBitrate:(unsigned int *)arg3;
+- (void)_recomputeCurrentTable;
+- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 remainingBitrate:(unsigned int *)arg2;
 - (void)addBandwidthAllocationTableEntry:(id)arg1 updateNow:(BOOL)arg2;
 - (id)audioRepairStreamIDsForStreamIDs;
 - (id)audioRepairStreamIDsforTargetBitrate:(unsigned int)arg1;
 - (id)audioStreamIDsforTargetBitrate:(unsigned int)arg1;
 - (void)dealloc;
-- (BOOL)enableVideoStream:(BOOL)arg1 streamID:(unsigned short)arg2;
 - (id)init;
-- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
+- (BOOL)peerSubscription:(BOOL)arg1 streamID:(unsigned short)arg2;
+- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1;
 - (id)videoRepairStreamIDsForStreamIDs;
-- (id)videoRepairStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
-- (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
+- (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1;
+- (id)videoStreamIDsforTargetBitrateCap:(unsigned int)arg1;
 
 @end
 

@@ -9,6 +9,7 @@
 @interface NSString (TSUDateFormatStringUtilities)
 
 @property (readonly, nonatomic) NSString *tsu_UTIFilenameExtension;
+@property (readonly, nonatomic) NSString *tsu_normalizedFilenameExtension;
 @property (readonly, nonatomic) NSString *tsu_pathUTI;
 
 + (id)tsu_JSONStringFromString:(id)arg1;

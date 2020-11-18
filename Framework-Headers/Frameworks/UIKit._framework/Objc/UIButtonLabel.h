@@ -6,41 +6,35 @@
 
 #import <UIKitCore/UILabel.h>
 
-@class NSDictionary, UIButton;
+@class UIButton;
 
 __attribute__((visibility("hidden")))
 @interface UIButtonLabel : UILabel
 {
     BOOL _reverseShadow;
     UIButton *_button;
-    NSDictionary *_cachedDefaultAttributes;
+    BOOL _externallySetNumberOfLines;
     BOOL _fontIsDefaultForIdiom;
 }
 
 @property (readonly, nonatomic) BOOL _fontIsDefaultForIdiom; // @synthesize _fontIsDefaultForIdiom;
 
-+ (id)_defaultAttributes;
 - (void).cxx_destruct;
-- (id)_defaultAttributes;
+- (void)_contentDidChange:(long long)arg1 fromContent:(id)arg2;
 - (id)_initWithFrame:(struct CGRect)arg1 button:(id)arg2;
-- (void)_invalidateCachedDefaultAttributes;
+- (void)_internallySetNumberOfLines:(long long)arg1;
 - (double)_paddingForBaselineSpacingFromEdge:(int)arg1 toNeighborEdge:(int)arg2;
 - (void)_setFont:(id)arg1 isDefaultForIdiom:(BOOL)arg2;
-- (void)_setMinimumFontSize:(double)arg1;
 - (void)_setWantsAutolayout;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (BOOL)_textColorFollowsTintColor;
 - (void)_updateTextColorWithFallbackColorIfNeeded;
 - (struct CGSize)intrinsicContentSize;
-- (void)setAdjustsFontSizeToFitWidth:(BOOL)arg1;
 - (void)setFont:(id)arg1;
-- (void)setLineBreakMode:(long long)arg1;
-- (void)setMinimumScaleFactor:(double)arg1;
+- (void)setNumberOfLines:(long long)arg1;
 - (void)setReverseShadow:(BOOL)arg1;
 - (void)setShadowOffset:(struct CGSize)arg1;
-- (void)setTextAlignment:(long long)arg1;
-- (void)setTextColor:(id)arg1;
 - (struct CGSize)shadowOffset;
-- (void)tintColorDidChange;
 
 @end
 

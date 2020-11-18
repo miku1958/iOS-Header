@@ -26,13 +26,13 @@
 @property (nonatomic) BOOL isThirdPerson; // @synthesize isThirdPerson=_isThirdPerson;
 @property (nonatomic) BOOL isUnlikelyPhone; // @synthesize isUnlikelyPhone=_isUnlikelyPhone;
 @property (weak, nonatomic) NSDate *matchDate; // @synthesize matchDate=_matchDate;
-@property (weak, nonatomic) NSArray *matchingContacts; // @synthesize matchingContacts=_matchingContacts;
+@property (readonly, nonatomic) NSArray *matchingContacts; // @synthesize matchingContacts=_matchingContacts;
 @property (nonatomic) BOOL regexBelongsToSender; // @synthesize regexBelongsToSender=_regexBelongsToSender;
 @property (nonatomic) BOOL regexDoesNotBelongToSender; // @synthesize regexDoesNotBelongToSender=_regexDoesNotBelongToSender;
 @property (weak, nonatomic) NSString *senderDisplayName; // @synthesize senderDisplayName=_senderDisplayName;
 
 - (void).cxx_destruct;
-- (id)initWithEntity:(id)arg1 ddMatch:(id)arg2 isUnlikelyPhone:(BOOL)arg3;
+- (id)initWithMessage:(id)arg1 ddMatch:(id)arg2 isUnlikelyPhone:(BOOL)arg3;
 - (struct SGMContactDetailFoundIn_)metricsContactDetailFoundIn;
 - (struct SGMContactDetailOwner_)metricsContactDetailOwner;
 

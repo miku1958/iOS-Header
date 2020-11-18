@@ -14,11 +14,11 @@
 
 @interface BSSimpleAssertion : NSObject <BSInvalidatable, BSDescriptionProviding>
 {
-    NSString *_identifier;
-    NSString *_reason;
     BSAtomicSignal *_invalidated;
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _invalidationBlock;
+    NSString *_identifier;
+    NSString *_reason;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +27,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isValid) BOOL valid; // @dynamic valid;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 - (void).cxx_destruct;
 - (void)dealloc;

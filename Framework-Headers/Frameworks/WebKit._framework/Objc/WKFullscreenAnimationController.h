@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
     struct CGAffineTransform _finalAnimatingViewTransform;
     struct CGPoint _initialMaskViewCenter;
     struct CGPoint _finalMaskViewCenter;
-    struct RetainPtr<UIView> _maskView;
-    struct RetainPtr<UIView> _animatingView;
+    RetainPtr_1ac284e4 _maskView;
+    RetainPtr_1ac284e4 _animatingView;
     struct RetainPtr<id<UIViewControllerContextTransitioning>> _context;
     double _initialBackgroundAlpha;
     double _finalBackgroundAlpha;

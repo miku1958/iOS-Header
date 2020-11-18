@@ -54,15 +54,13 @@
 @property (copy, nonatomic) NSString *parentSectionID; // @dynamic parentSectionID;
 @property (copy, nonatomic) NSArray *peopleIDs; // @dynamic peopleIDs;
 @property (nonatomic) BOOL preemptsPresentedAlert; // @dynamic preemptsPresentedAlert;
-@property (nonatomic) BOOL preemptsSTAR; // @dynamic preemptsSTAR;
 @property (nonatomic) BOOL preventAutomaticRemovalFromLockScreen; // @dynamic preventAutomaticRemovalFromLockScreen;
 @property (copy, nonatomic) BBAttachmentMetadata *primaryAttachment; // @dynamic primaryAttachment;
 @property (nonatomic) long long primaryAttachmentType; // @dynamic primaryAttachmentType;
 @property (strong, nonatomic) NSDate *publicationDate; // @dynamic publicationDate;
 @property (copy, nonatomic) NSString *publisherBulletinID; // @dynamic publisherBulletinID;
 @property (copy, nonatomic) BBAction *raiseAction; // @dynamic raiseAction;
-@property (nonatomic) unsigned long long realertCount;
-@property (nonatomic) unsigned long long realertCount_deprecated; // @dynamic realertCount_deprecated;
+@property (nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property (strong, nonatomic) NSDate *recencyDate; // @dynamic recencyDate;
 @property (copy, nonatomic) NSString *recordID; // @dynamic recordID;
 @property (copy, nonatomic) NSString *section; // @dynamic section;

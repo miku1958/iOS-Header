@@ -9,7 +9,7 @@
 #import <VoiceMemos/RCMutableRecording-Protocol.h>
 
 @class AVAsset, CLLocation, NSData, NSDate, NSNumber, NSString, NSURL;
-@protocol _NSFileBackedFuture;
+@protocol RCFolder, _NSFileBackedFuture;
 
 @interface RCCloudRecording : NSManagedObject <RCMutableRecording>
 {
@@ -23,62 +23,68 @@
 @property (copy, nonatomic) NSString *customLabel; // @dynamic customLabel;
 @property (copy, nonatomic) NSDate *date; // @dynamic date;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL deleted;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL downloading;
+@property (nonatomic) BOOL downloading;
 @property (nonatomic) double duration; // @dynamic duration;
-@property (readonly, nonatomic) BOOL editing;
-@property (nonatomic) BOOL evicted;
+@property (strong, nonatomic) NSString *encryptedTitle; // @dynamic encryptedTitle;
+@property (nonatomic) BOOL enhanced;
 @property (copy, nonatomic) NSDate *evictionDate; // @dynamic evictionDate;
+@property (nonatomic) BOOL favorite;
 @property (nonatomic) unsigned long long flags; // @dynamic flags;
+@property (readonly, nonatomic) id<RCFolder> folder; // @dynamic folder;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long iTunesPersistentID; // @dynamic iTunesPersistentID;
 @property (readonly, nonatomic) BOOL isContentBeingModified;
-@property (readonly, copy, nonatomic) CLLocation *location;
-@property (readonly, nonatomic) BOOL manuallyRenamed;
+@property (copy, nonatomic) CLLocation *location;
+@property (nonatomic) BOOL manuallyRenamed;
+@property (nonatomic) BOOL musicMemo;
 @property (copy, nonatomic) NSString *path; // @dynamic path;
 @property (nonatomic) BOOL pendingRestore;
-@property (readonly, nonatomic) BOOL playable;
+@property (nonatomic) BOOL playable;
 @property (readonly, nonatomic) NSNumber *purgeableAudioFileSize;
 @property (nonatomic) BOOL recordedOnWatch;
+@property (nonatomic) unsigned long long sharedFlags; // @dynamic sharedFlags;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL synced;
-@property (readonly, copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 @property (copy, nonatomic) NSString *uniqueID; // @dynamic uniqueID;
 @property (readonly, nonatomic) BOOL uploaded;
 @property (readonly, copy, nonatomic) NSURL *url;
+@property (nonatomic) BOOL watchOS;
 
 + (id)cacheDeletedOnWatchPredicate;
++ (id)favoritePredicate;
 + (void)initialize;
 + (BOOL)isRecordingPurgeable:(id)arg1;
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (id)musicMemoPredicate;
 + (id)playablePredicate;
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
 + (BOOL)setPurgeable:(BOOL)arg1 recordingURL:(id)arg2 error:(id *)arg3;
++ (id)watchOSPredicate;
 - (void).cxx_destruct;
 - (id)_activityURLCreateIfNecessary:(BOOL)arg1;
 - (id)_detailLabel;
 - (id)_labelAllowingEmptyString:(BOOL)arg1;
 - (void)_updateAudioFuture:(id)arg1;
 - (void)_validatePath;
-- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
+- (BOOL)copyPropertiesFromOriginalRecording:(id)arg1 error:(id *)arg2;
+- (id)itemForActivityType:(id)arg1;
 - (id)name;
 - (id)purgeAudioFileWithModel:(id)arg1 error:(id *)arg2;
 - (id)searchableItem;
-- (void)setDownloading:(BOOL)arg1;
-- (void)setEditing:(BOOL)arg1;
-- (void)setLocation:(id)arg1;
-- (void)setManuallyRenamed:(BOOL)arg1;
 - (void)setName:(id)arg1;
-- (void)setPlayable:(BOOL)arg1;
-- (void)setTitle:(id)arg1;
+- (id)subjectForActivityType:(id)arg1;
 - (BOOL)synchronizeRecordingMetadata:(id *)arg1;
 - (BOOL)synchronizeWithExistingAudioFuture:(id *)arg1;
+- (BOOL)validateForInsert:(id *)arg1;
+- (BOOL)validateForUpdate:(id *)arg1;
 - (void)willSave;
 
 @end

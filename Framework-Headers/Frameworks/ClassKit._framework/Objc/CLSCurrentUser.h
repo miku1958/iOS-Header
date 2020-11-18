@@ -14,24 +14,32 @@
 @interface CLSCurrentUser : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _hasEDUAccount;
+    BOOL _organizationProgressTrackingAllowed;
     int _devMode;
+    int _rosterServiceAuthenticationState;
+    int _handoutServiceAuthenticationState;
     CLSPerson *_person;
     NSString *_personaUniqueString;
     NSString *_organizationName;
+    long long _catalogEnvironment;
     unsigned long long _roles;
     NSDictionary *_locationIDsByAXMRoleType;
 }
 
+@property (nonatomic) long long catalogEnvironment; // @synthesize catalogEnvironment=_catalogEnvironment;
 @property (nonatomic) int devMode; // @synthesize devMode=_devMode;
+@property (nonatomic) int handoutServiceAuthenticationState; // @synthesize handoutServiceAuthenticationState=_handoutServiceAuthenticationState;
 @property (nonatomic) BOOL hasEDUAccount; // @synthesize hasEDUAccount=_hasEDUAccount;
 @property (readonly, nonatomic) BOOL isAdministrator;
 @property (readonly, nonatomic) BOOL isInstructor;
 @property (readonly, nonatomic) BOOL isStudent;
 @property (strong, nonatomic) NSDictionary *locationIDsByAXMRoleType; // @synthesize locationIDsByAXMRoleType=_locationIDsByAXMRoleType;
 @property (copy, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
+@property (nonatomic) BOOL organizationProgressTrackingAllowed; // @synthesize organizationProgressTrackingAllowed=_organizationProgressTrackingAllowed;
 @property (strong, nonatomic) CLSPerson *person; // @synthesize person=_person;
 @property (copy, nonatomic) NSString *personaUniqueString; // @synthesize personaUniqueString=_personaUniqueString;
 @property (nonatomic) unsigned long long roles; // @synthesize roles=_roles;
+@property (nonatomic) int rosterServiceAuthenticationState; // @synthesize rosterServiceAuthenticationState=_rosterServiceAuthenticationState;
 
 + (id)magicValue;
 + (BOOL)supportsSecureCoding;

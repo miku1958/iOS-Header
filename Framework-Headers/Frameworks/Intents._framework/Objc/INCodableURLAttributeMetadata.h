@@ -6,17 +6,30 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
-@class NSURL;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableURLAttributeMetadata : INCodableAttributeMetadata
+@class NSString, NSURL;
+
+@interface INCodableURLAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     NSURL *_defaultValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSURL *defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

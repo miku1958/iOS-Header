@@ -16,6 +16,7 @@
     unsigned long long _state;
     id<PUAssetActionPerformerDelegate> _delegate;
     UIViewController *_presentedViewController;
+    unsigned long long _sourceContext;
     NSObject<OS_os_log> *_actionPerformerLog;
     NSArray *_assets;
     NSDictionary *_assetsByAssetCollection;
@@ -27,6 +28,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *assetsByAssetCollection; // @synthesize assetsByAssetCollection=_assetsByAssetCollection;
 @property (weak, nonatomic) id<PUAssetActionPerformerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
+@property (nonatomic) unsigned long long sourceContext; // @synthesize sourceContext=_sourceContext;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;

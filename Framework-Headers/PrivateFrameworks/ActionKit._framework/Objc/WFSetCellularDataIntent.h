@@ -10,6 +10,7 @@
 
 @class NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface WFSetCellularDataIntent : INIntent <WFBooleanSettingIntent>
 {
 }

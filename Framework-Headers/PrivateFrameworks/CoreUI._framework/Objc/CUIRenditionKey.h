@@ -46,7 +46,6 @@
 + (void)initialize;
 + (id)renditionKey;
 + (id)renditionKeyWithKeyList:(const struct _renditionkeytoken *)arg1;
-- (void)_expandKeyIfNecessaryForCount:(long long)arg1;
 - (void)copyValuesFromKeyList:(const struct _renditionkeytoken *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -19,7 +19,10 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+- (void)_quiesceBeforeIteration:(double)arg1 timeout:(double)arg2 response:(CDUnknownBlockType)arg3;
 - (id)_sampleWithProxyMetric:(id)arg1 timeout:(double)arg2 stopReason:(unsigned long long *)arg3;
+- (void)_startPerformanceTrace:(id)arg1 response:(CDUnknownBlockType)arg2;
+- (void)_stopPerformanceTrace:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initInternal;
 - (BOOL)wake;

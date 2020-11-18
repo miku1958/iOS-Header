@@ -24,6 +24,7 @@
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *tagService;
 }
 
 @end

@@ -14,26 +14,26 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL autoplacement; // @dynamic autoplacement;
-@property (readonly, nonatomic) BOOL componentLayouts; // @dynamic componentLayouts;
-@property (readonly, nonatomic) BOOL componentStyles; // @dynamic componentStyles;
-@property (readonly, nonatomic) BOOL componentTextStyles; // @dynamic componentTextStyles;
-@property (readonly, nonatomic) BOOL components; // @dynamic components;
+@property (readonly, nonatomic) long long autoplacement; // @dynamic autoplacement;
+@property (readonly, nonatomic) long long componentLayouts; // @dynamic componentLayouts;
+@property (readonly, nonatomic) long long componentStyles; // @dynamic componentStyles;
+@property (readonly, nonatomic) long long componentTextStyles; // @dynamic componentTextStyles;
+@property (readonly, nonatomic) long long components; // @dynamic components;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL documentStyle; // @dynamic documentStyle;
+@property (readonly, nonatomic) long long documentStyle; // @dynamic documentStyle;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL textStyles; // @dynamic textStyles;
+@property (readonly, nonatomic) long long textStyles; // @dynamic textStyles;
 
-- (BOOL)BOOLValueForJSONValue:(id)arg1 type:(int)arg2;
-- (BOOL)autoplacementWithValue:(id)arg1 withType:(int)arg2;
-- (BOOL)componentLayoutsWithValue:(id)arg1 withType:(int)arg2;
-- (BOOL)componentStylesWithValue:(id)arg1 withType:(int)arg2;
-- (BOOL)componentTextStylesWithValue:(id)arg1 withType:(int)arg2;
-- (BOOL)componentsWithValue:(id)arg1 withType:(int)arg2;
-- (BOOL)documentStyleWithValue:(id)arg1 withType:(int)arg2;
-- (BOOL)textStylesWithValue:(id)arg1 withType:(int)arg2;
+- (long long)autoplacementWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentLayoutsWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentStylesWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentTextStylesWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentsWithValue:(id)arg1 withType:(int)arg2;
+- (long long)documentStyleWithValue:(id)arg1 withType:(int)arg2;
+- (long long)ternaryValueForJSONValue:(id)arg1 type:(int)arg2;
+- (long long)textStylesWithValue:(id)arg1 withType:(int)arg2;
 
 @end
 

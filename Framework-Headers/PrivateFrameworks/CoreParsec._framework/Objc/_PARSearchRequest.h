@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     BOOL _hsEnabled;
     BOOL _internalBuild;
     BOOL _seedBuild;
+    BOOL _isClientOnlyExperiment;
+    BOOL _isInReservedAllocationForExperiment;
     int _queryType;
     int _sendTopHit;
     int _tempUnit;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
     float _uiScale;
     int _suggest;
     int _lookupSelectionType;
+    int _abTestSeed;
     NSString *_query;
     NSString *_secretKey;
     NSString *_countryCode;
@@ -52,9 +55,11 @@ __attribute__((visibility("hidden")))
     NSString *_lookupAppBundleId;
     NSString *_lookupHintDomain;
     NSString *_siriLocale;
+    NSString *_experimentNamespaceId;
     long long _exp;
 }
 
+@property (nonatomic) int abTestSeed; // @synthesize abTestSeed=_abTestSeed;
 @property (copy, nonatomic) NSString *calendar; // @synthesize calendar=_calendar;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, copy) NSString *debugDescription;
@@ -62,12 +67,15 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *dictionarySignature; // @synthesize dictionarySignature=_dictionarySignature;
 @property (copy, nonatomic) NSString *effectiveSystemLanguage; // @synthesize effectiveSystemLanguage=_effectiveSystemLanguage;
 @property (nonatomic) long long exp; // @synthesize exp=_exp;
+@property (copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int hourFormat; // @synthesize hourFormat=_hourFormat;
 @property (nonatomic) BOOL hsEnabled; // @synthesize hsEnabled=_hsEnabled;
 @property (copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property (copy, nonatomic) NSData *installedAppsSignature; // @synthesize installedAppsSignature=_installedAppsSignature;
 @property (nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
+@property (nonatomic) BOOL isClientOnlyExperiment; // @synthesize isClientOnlyExperiment=_isClientOnlyExperiment;
+@property (nonatomic) BOOL isInReservedAllocationForExperiment; // @synthesize isInReservedAllocationForExperiment=_isInReservedAllocationForExperiment;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *localSuggestions; // @synthesize localSuggestions=_localSuggestions;
 @property (copy, nonatomic) NSString *locale; // @synthesize locale=_locale;

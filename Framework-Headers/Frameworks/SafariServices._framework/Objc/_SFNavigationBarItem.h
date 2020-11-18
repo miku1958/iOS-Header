@@ -10,6 +10,7 @@
 
 @interface _SFNavigationBarItem : NSObject
 {
+    BOOL _temporarilySuppressText;
     BOOL _showsLockIcon;
     BOOL _showsSearchIndicator;
     BOOL _showsStopReloadButtons;
@@ -17,6 +18,9 @@
     BOOL _showsPageFormatButton;
     BOOL _readerButtonSelected;
     BOOL _showsReaderButton;
+    BOOL _showsTranslationButton;
+    BOOL _showsTranslationIcon;
+    BOOL _showsTranslationAvailabilityText;
     BOOL _showsReaderAvailabilityText;
     BOOL _overrideBarStyleForSecurityWarning;
     BOOL _showsNotSecureAnnotation;
@@ -26,14 +30,13 @@
     unsigned long long _startIndexOfTextInExpandedText;
     NSString *_customPlaceholderText;
     _SFFluidProgressView *_progressView;
-    unsigned long long _mediaCaptureDeviceIcon;
+    unsigned long long _mediaStateIcon;
     _SFNavigationBar *_navigationBar;
 }
 
 @property (copy, nonatomic) NSString *customPlaceholderText; // @synthesize customPlaceholderText=_customPlaceholderText;
 @property (nonatomic) BOOL hasFocusedSensitiveFieldOnCurrentPage; // @synthesize hasFocusedSensitiveFieldOnCurrentPage=_hasFocusedSensitiveFieldOnCurrentPage;
-@property (nonatomic) unsigned long long mediaCaptureDeviceIcon; // @synthesize mediaCaptureDeviceIcon=_mediaCaptureDeviceIcon;
-@property (weak, nonatomic, setter=_setNavigationBar:) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
+@property (nonatomic) unsigned long long mediaStateIcon; // @synthesize mediaStateIcon=_mediaStateIcon;
 @property (nonatomic) BOOL overrideBarStyleForSecurityWarning; // @synthesize overrideBarStyleForSecurityWarning=_overrideBarStyleForSecurityWarning;
 @property (strong, nonatomic) _SFFluidProgressView *progressView; // @synthesize progressView=_progressView;
 @property (nonatomic) BOOL readerButtonSelected; // @synthesize readerButtonSelected=_readerButtonSelected;
@@ -44,6 +47,9 @@
 @property (nonatomic) BOOL showsReaderButton; // @synthesize showsReaderButton=_showsReaderButton;
 @property (nonatomic) BOOL showsSearchIndicator; // @synthesize showsSearchIndicator=_showsSearchIndicator;
 @property (nonatomic) BOOL showsStopReloadButtons; // @synthesize showsStopReloadButtons=_showsStopReloadButtons;
+@property (readonly, nonatomic) BOOL showsTranslationAvailabilityText; // @synthesize showsTranslationAvailabilityText=_showsTranslationAvailabilityText;
+@property (nonatomic) BOOL showsTranslationButton; // @synthesize showsTranslationButton=_showsTranslationButton;
+@property (nonatomic) BOOL showsTranslationIcon; // @synthesize showsTranslationIcon=_showsTranslationIcon;
 @property (readonly, nonatomic) unsigned long long startIndexOfTextInExpandedText; // @synthesize startIndexOfTextInExpandedText=_startIndexOfTextInExpandedText;
 @property (nonatomic) BOOL stopReloadButtonShowsStop; // @synthesize stopReloadButtonShowsStop=_stopReloadButtonShowsStop;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
@@ -53,6 +59,8 @@
 - (id)init;
 - (void)setShowsNotSecureAnnotation:(BOOL)arg1 hasFocusedSensitiveField:(BOOL)arg2;
 - (void)setShowsReaderButton:(BOOL)arg1 showsAvailabilityText:(BOOL)arg2;
+- (void)setShowsTranslationButton:(BOOL)arg1 showsAvailabilityText:(BOOL)arg2;
+- (void)setTemporarilySuppressText:(BOOL)arg1;
 - (void)setText:(id)arg1 textWhenExpanded:(id)arg2 startIndex:(unsigned long long)arg3;
 
 @end

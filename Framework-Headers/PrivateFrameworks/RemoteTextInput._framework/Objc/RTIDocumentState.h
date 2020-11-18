@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <RemoteTextInput/NSCopying-Protocol.h>
 #import <RemoteTextInput/NSSecureCoding-Protocol.h>
 
 @class NSAttributedString, NSMutableDictionary, TIDocumentState;
 
-@interface RTIDocumentState : NSObject <NSSecureCoding>
+@interface RTIDocumentState : NSObject <NSSecureCoding, NSCopying>
 {
     TIDocumentState *_documentState;
     NSAttributedString *_textCheckingAnnotatedString;
@@ -31,6 +32,7 @@
 - (void).cxx_destruct;
 - (void)addTextRect:(struct CGRect)arg1 forCharacterRange:(struct _NSRange)arg2;
 - (unsigned long long)characterIndexForPoint:(struct CGPoint)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct _NSRange)deltaForSelectionRange:(struct _NSRange)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

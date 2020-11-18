@@ -7,7 +7,13 @@
 #import <Foundation/NSXPCConnection.h>
 
 @interface NSXPCConnection (CRKAdditions)
++ (id)crk_applicationInfoServiceConnection;
++ (id)crk_booksServiceConnection;
++ (id)crk_internetDateServiceConnection;
++ (id)crk_screenshotServiceConnection;
++ (id)crk_screenshotServiceConnectionWithInterface:(id)arg1;
 + (id)crk_studentDaemonConnection;
-+ (unsigned long long)xpcConnectionOptions;
++ (unsigned long long)crk_studentDaemonConnectionOptions;
++ (id)crk_studentDaemonNonCatalystConnection;
 @end
 

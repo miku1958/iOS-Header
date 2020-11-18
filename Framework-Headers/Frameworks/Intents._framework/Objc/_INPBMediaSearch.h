@@ -19,7 +19,6 @@
         unsigned int reference:1;
         unsigned int sortOrder:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _mediaType;
     int _reference;
     int _sortOrder;
@@ -32,7 +31,6 @@
     _INPBDateTimeRange *_releaseDate;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBString *albumName; // @synthesize albumName=_albumName;
 @property (strong, nonatomic) _INPBString *artistName; // @synthesize artistName=_artistName;
 @property (readonly, copy) NSString *debugDescription;

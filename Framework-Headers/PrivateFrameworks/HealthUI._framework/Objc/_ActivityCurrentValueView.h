@@ -6,24 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@class HKActivitySummaryDataProvider, HKInteractiveChartAnnotationView, _ActivityCurrentValueDataSource;
+@class HKActivitySummaryDataProvider, HKInteractiveChartAnnotationView, NSLayoutConstraint, _ActivityCurrentValueDataSource;
 
 @interface _ActivityCurrentValueView : UIView
 {
     HKInteractiveChartAnnotationView *_annotationView;
     _ActivityCurrentValueDataSource *_currentValueDataSource;
     HKActivitySummaryDataProvider *_activitySummaryDataProvider;
+    NSLayoutConstraint *_leadingMarginConstraint;
+    NSLayoutConstraint *_trailingMarginConstraint;
 }
 
 @property (strong, nonatomic) HKActivitySummaryDataProvider *activitySummaryDataProvider; // @synthesize activitySummaryDataProvider=_activitySummaryDataProvider;
 @property (readonly, nonatomic) HKInteractiveChartAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
 @property (strong, nonatomic) _ActivityCurrentValueDataSource *currentValueDataSource; // @synthesize currentValueDataSource=_currentValueDataSource;
+@property (strong, nonatomic) NSLayoutConstraint *leadingMarginConstraint; // @synthesize leadingMarginConstraint=_leadingMarginConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *trailingMarginConstraint; // @synthesize trailingMarginConstraint=_trailingMarginConstraint;
 
 - (void).cxx_destruct;
 - (id)_findFirstActivitySeriesInGraphView:(id)arg1;
 - (void)_updateForDayWithGraphView:(id)arg1;
 - (void)_updateWithGraphView:(id)arg1 forTimeScopeAboveDay:(long long)arg2;
 - (id)initWithDisplayTypeController:(id)arg1 unitPreferenceController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 currentValueViewCallbacks:(id)arg4 activitySummaryDataProvider:(id)arg5;
+- (void)layoutSubviews;
 - (void)updateWithGraphView:(id)arg1 timeScope:(long long)arg2;
 
 @end

@@ -51,16 +51,9 @@
 @property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (void)_accountForGeocodingFailureWithError:(id)arg1;
-+ (void)_accountForHypothesizerNeverHavingSentHypothesis;
-+ (void)_accountForHypothesizerSendingHypothesis;
-+ (void)_accountForLocationEnhancementSuccess;
-+ (void)_accountForNoLocationEnhancementNeeded;
 + (double)fuzzyMaximumInitialUpdateIntervalBeforeStartDate;
 - (void).cxx_destruct;
 - (void)_accountForGeocodedEventEncounter;
-- (void)_accountForMaximumTravelDuration;
-- (void)_accountForTravelDurationThresholdExceededState;
 - (void)_clearEverything;
 - (void)_createEmissionHypothesisRefreshTimerWithDate:(id)arg1;
 - (void)_createHypothesisRequestRefreshTimerWithDate:(id)arg1;
@@ -71,7 +64,7 @@
 - (id)_generateDestination;
 - (void)_hypothesisRefreshTimerFired;
 - (void)_performAnalyticsPostProcessing;
-- (void)_requestHypothesisRefreshTimerFired:(id)arg1;
+- (void)_requestHypothesisRefreshTimerFired;
 - (void)_sendFeedbackToHypothesizerForPostingNotification:(unsigned long long)arg1;
 - (void)_setUpRouteMonitoring;
 - (void)_trackTTLCandidateEvent:(id)arg1;
@@ -81,14 +74,14 @@
 - (void)_updateWithHypothesis:(id)arg1;
 - (void)cancelEmissionHypothesisRefresh;
 - (void)cancelHypothesisRefreshRequest;
-- (void)createBTAJobWithName:(id)arg1 atDate:(id)arg2;
+- (void)createAlarmWithName:(id)arg1 atDate:(id)arg2;
 - (void)dealloc;
-- (id)emissionHypothesisRefreshBTAJobName;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
+- (id)emissionHypothesisRefreshAlarmName;
 - (id)initWithRouteHypothesizerProvider:(id)arg1;
-- (void)removeBTAJobWithName:(id)arg1;
+- (void)receivedAlarmNamed:(id)arg1;
+- (void)removeAlarmWithName:(id)arg1;
+- (id)requestHypothesisRefreshAlarmName;
 - (void)requestHypothesisRefreshAtDate:(id)arg1;
-- (id)requestHypothesisRefreshBTAJobName;
 - (void)reset;
 - (void)sendFeedbackForPostingLeaveByNotification;
 - (void)sendFeedbackForPostingLeaveNowNotification;

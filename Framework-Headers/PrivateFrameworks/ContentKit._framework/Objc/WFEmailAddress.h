@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ContentKit/NSCopying-Protocol.h>
+#import <ContentKit/NSSecureCoding-Protocol.h>
 #import <ContentKit/WFNaming-Protocol.h>
 #import <ContentKit/WFSerializableContent-Protocol.h>
 
 @class NSString;
 
-@interface WFEmailAddress : NSObject <NSCopying, WFNaming, WFSerializableContent>
+@interface WFEmailAddress : NSObject <NSCopying, WFNaming, WFSerializableContent, NSSecureCoding>
 {
     NSString *_address;
     NSString *_label;
@@ -34,10 +35,13 @@
 + (id)emailAddressesInString:(id)arg1 error:(id *)arg2;
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 + (BOOL)stringContainsEmailAddresses:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAddress:(id)arg1 label:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)wfSerializedRepresentation;
 

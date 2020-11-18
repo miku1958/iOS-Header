@@ -10,6 +10,7 @@
 #import <TextInputCore/TIKeyboardInteractionProtocol-Protocol.h>
 
 @class NSDate, NSLocale, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardInput, TIKeyboardState, TIKeyboardTouchEvent, TIWordEntry;
+@protocol TITypingSessionDelegate;
 
 @interface TITypingSession : NSObject <NSSecureCoding, TIKeyboardInteractionProtocol>
 {
@@ -22,6 +23,7 @@
     NSDate *_startTime;
     NSDate *_endTime;
     NSString *_applicationID;
+    id<TITypingSessionDelegate> _delegate;
     NSMutableArray *_userActionHistory;
     TIWordEntry *_currentWord;
     TIKeyboardInput *_lastInput;
@@ -39,6 +41,7 @@
 @property (nonatomic) unsigned long long currentLayoutID; // @synthesize currentLayoutID=_currentLayoutID;
 @property (strong, nonatomic) TIWordEntry *currentWord; // @synthesize currentWord=_currentWord;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<TITypingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didReceiveSecureFieldEvent; // @synthesize didReceiveSecureFieldEvent=_didReceiveSecureFieldEvent;
 @property (strong, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;

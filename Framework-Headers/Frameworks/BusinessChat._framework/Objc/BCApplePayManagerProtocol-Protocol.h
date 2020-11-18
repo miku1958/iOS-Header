@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BCMessage;
+@class BCMessage, UIWindow;
 @protocol BCApplePayManagerDelegate;
 
 @protocol BCApplePayManagerProtocol
@@ -14,6 +14,6 @@
 - (long long)applePayStatus;
 - (id)initWithMessage:(BCMessage *)arg1 delegate:(id<BCApplePayManagerDelegate>)arg2;
 - (BCMessage *)message;
-- (void)presentApplePay;
+- (void)presentApplePayWithWindow:(UIWindow *)arg1;
 @end
 

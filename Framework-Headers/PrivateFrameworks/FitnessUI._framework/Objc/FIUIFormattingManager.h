@@ -41,6 +41,8 @@
 - (id)initWithUnitManager:(id)arg1;
 - (id)localizationKeyForDistanceBaseKey:(id)arg1 distanceType:(unsigned long long)arg2;
 - (id)localizationKeyForEnergyBaseKey:(id)arg1;
+- (id)localizationKeyForMoveBaseKey:(id)arg1 activityMoveMode:(long long)arg2;
+- (id)localizationKeyForMoveMinutesBaseKey:(id)arg1;
 - (id)localizedDistanceByStrokeStyle:(id)arg1 isPoolSwim:(BOOL)arg2;
 - (id)localizedDistinguishingPaceUnitStringWithMetricType:(unsigned long long)arg1 distanceType:(unsigned long long)arg2 distanceUnit:(unsigned long long)arg3 paceFormat:(long long)arg4 abbreviated:(BOOL)arg5;
 - (id)localizedGoalDescriptionForGoalType:(unsigned long long)arg1 goalValue:(double)arg2 activityType:(id)arg3;
@@ -51,6 +53,11 @@
 - (id)localizedKeyMetricStringForWorkout:(id)arg1 unitStyle:(unsigned long long)arg2;
 - (id)localizedLongActiveEnergyUnitString;
 - (id)localizedLongActiveEnergyUnitStringWithTextCase:(unsigned long long)arg1;
+- (id)localizedLongActiveHoursUnitString;
+- (id)localizedLongBriskMinutesUnitString;
+- (id)localizedLongMoveMinutesUnitString;
+- (id)localizedLongMoveMinutesUnitStringWithTextCase:(unsigned long long)arg1;
+- (id)localizedLongMoveUnitStringWithActivityMoveMode:(long long)arg1;
 - (id)localizedLongUnitStringForDistanceUnit:(unsigned long long)arg1 distanceInUnit:(double)arg2;
 - (id)localizedLongUnitStringForDistanceUnit:(unsigned long long)arg1 distanceInUnit:(double)arg2 textCase:(unsigned long long)arg3;
 - (id)localizedNaturalScaleStringWithDistanceInMeters:(double)arg1 distanceType:(unsigned long long)arg2 unitStyle:(unsigned long long)arg3 usedUnit:(unsigned long long *)arg4;
@@ -85,11 +92,17 @@
 - (id)localizedStringWithHeartRate:(id)arg1;
 - (id)localizedStringWithHeartRate:(id)arg1 unitStyle:(unsigned long long)arg2;
 - (id)localizedStringWithHeartRate:(id)arg1 unitStyle:(unsigned long long)arg2 requirePositiveValue:(BOOL)arg3;
+- (id)localizedStringWithMoveMinutes:(id)arg1;
+- (id)localizedStringWithMoveMinutes:(id)arg1 unitStyle:(unsigned long long)arg2;
+- (id)localizedStringWithMoveQuantity:(id)arg1 activityMoveMode:(long long)arg2;
+- (id)localizedStringWithMoveQuantity:(id)arg1 unitStyle:(unsigned long long)arg2 activityMoveMode:(long long)arg3;
 - (id)localizedStringWithPersonHeight:(id)arg1 unitStyle:(long long)arg2;
 - (id)localizedStrokeCountStringWithCount:(long long)arg1 overDistance:(id)arg2 paceFormat:(long long)arg3;
 - (id)localizedSwimmingPaceStringWithDistance:(id)arg1 overDuration:(double)arg2 paceFormat:(long long)arg3;
 - (id)localizedTitleForSplit:(id)arg1 unit:(id)arg2 lapIndex:(long long)arg3 useShortFormat:(BOOL)arg4;
+- (double)roundedDailyMoveGoal:(double)arg1 activityMoveMode:(long long)arg2;
 - (double)roundedDailyMoveGoalForCalories:(double)arg1;
+- (double)roundedDailyMoveGoalForMoveMinutes:(double)arg1;
 - (double)speedPerHourWithDistance:(id)arg1 overDuration:(double)arg2 paceFormat:(long long)arg3;
 - (id)stringWithDuration:(double)arg1 durationFormat:(unsigned long long)arg2;
 - (unsigned long long)userDistanceUnitForSwimmingLapLength;

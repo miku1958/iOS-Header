@@ -15,16 +15,12 @@
 
 @property (weak, nonatomic) GEODaemon *daemon; // @synthesize daemon=_daemon;
 
-+ (BOOL)canHandleIncomingMessage:(id)arg1;
 + (id)identifier;
 + (Class)peerClass;
-+ (Class)requestClassForMethod:(id)arg1;
 + (BOOL)shouldStartImmediately;
-+ (BOOL)usesModernRequestReply;
 - (void).cxx_destruct;
 - (id)description;
-- (void)handleIncomingMessage:(id)arg1 fromPeer:(id)arg2;
-- (void)handleRequest:(id)arg1;
+- (BOOL)handleIncomingMessage:(id)arg1 withObject:(id)arg2 fromPeer:(id)arg3;
 - (void)peerDidConnect:(id)arg1;
 - (void)peerDidDisconnect:(id)arg1;
 

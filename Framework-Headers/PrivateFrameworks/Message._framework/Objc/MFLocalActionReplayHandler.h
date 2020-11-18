@@ -9,7 +9,7 @@
 #import <Message/EFLoggable-Protocol.h>
 #import <Message/EFPubliclyDescribable-Protocol.h>
 
-@class EDLocalActionPersistence, EDMessageChangeManager, MFMailMessageLibrary, MailAccount, NSMutableArray, NSString;
+@class MFMailMessageLibrary, MailAccount, NSMutableArray, NSString;
 @protocol EFScheduler;
 
 @interface MFLocalActionReplayHandler : NSObject <EFLoggable, EFPubliclyDescribable>
@@ -17,8 +17,6 @@
     BOOL _replayingActions;
     BOOL _needToCheckForNewActions;
     MFMailMessageLibrary *_library;
-    EDMessageChangeManager *_messageChangeManager;
-    EDLocalActionPersistence *_localActionPersistence;
     MailAccount *_account;
     NSMutableArray *_actionsToReplay;
     id<EFScheduler> _replayScheduler;
@@ -31,8 +29,6 @@
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MFMailMessageLibrary *library; // @synthesize library=_library;
-@property (strong, nonatomic) EDLocalActionPersistence *localActionPersistence; // @synthesize localActionPersistence=_localActionPersistence;
-@property (strong, nonatomic) EDMessageChangeManager *messageChangeManager; // @synthesize messageChangeManager=_messageChangeManager;
 @property (nonatomic) BOOL needToCheckForNewActions; // @synthesize needToCheckForNewActions=_needToCheckForNewActions;
 @property (readonly, nonatomic) id<EFScheduler> replayScheduler; // @synthesize replayScheduler=_replayScheduler;
 @property BOOL replayingActions; // @synthesize replayingActions=_replayingActions;

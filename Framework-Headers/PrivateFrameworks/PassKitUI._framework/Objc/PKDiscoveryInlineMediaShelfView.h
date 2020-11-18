@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)_loadImageFromBundle;
+- (void)_loadImageFromFileURL;
 - (id)initWithShelf:(id)arg1;
 - (void)layoutSubviews;
 - (void)setContentInsets:(struct UIEdgeInsets)arg1;

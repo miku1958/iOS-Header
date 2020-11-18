@@ -19,7 +19,6 @@
         unsigned int state:1;
         unsigned int type:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _state;
     int _type;
     double _duration;
@@ -27,7 +26,6 @@
     _INPBDataString *_label;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double duration; // @synthesize duration=_duration;

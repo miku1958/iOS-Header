@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastRateChangeCounter;
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
+    BOOL _isFirstInitialRampUpDone;
     CDStruct_55dce769 _owrdList;
     BOOL _isOWRDListReady;
     BOOL _isOWRDConstant;
@@ -90,6 +91,7 @@ __attribute__((visibility("hidden")))
     void *_logBasebandDump;
     BOOL _isPeriodicLoggingEnabled;
     BOOL _didMBLRampDown;
+    double _packetLossRateAudio;
     double _packetLossRateVideo;
 }
 
@@ -99,6 +101,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL didMBLRampDown; // @synthesize didMBLRampDown=_didMBLRampDown;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCongested; // @synthesize isCongested=_isCongested;
+@property (readonly, nonatomic) BOOL isFirstInitialRampUpDone; // @synthesize isFirstInitialRampUpDone=_isFirstInitialRampUpDone;
 @property (readonly, nonatomic) BOOL isNewRateSentOut; // @synthesize isNewRateSentOut=_isNewRateSentOut;
 @property (readonly, nonatomic) BOOL isSendBitrateLimited; // @synthesize isSendBitrateLimited=_isSendBitrateLimited;
 @property (nonatomic) unsigned int localBandwidthEstimation; // @synthesize localBandwidthEstimation=_localBandwidthEstimation;
@@ -106,6 +109,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
 @property (readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 @property (readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
+@property (readonly, nonatomic) double packetLossRateAudio; // @synthesize packetLossRateAudio=_packetLossRateAudio;
 @property (readonly, nonatomic) double packetLossRateVideo; // @synthesize packetLossRateVideo=_packetLossRateVideo;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;
@@ -126,9 +130,9 @@ __attribute__((visibility("hidden")))
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (int)countDeviationChangeInTierWindow;
 - (void)dealloc;
-- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_b21f1e06)arg1;
-- (BOOL)doRateControlWithStatistics:(CDStruct_b21f1e06)arg1;
-- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_b21f1e06)arg1;
+- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_56e8fa21)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
+- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_56e8fa21)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 - (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;

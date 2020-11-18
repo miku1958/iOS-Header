@@ -17,11 +17,11 @@
     BOOL _accountWantsPushRegistration;
     BOOL _accountWantsFlowControl;
     NSString *_accountID;
-    NSDictionary *_accountPropertyOverrides;
-    NSDictionary *_overridesByDataclass;
     NSString *_email;
     NSString *_password;
     NSString *_secondEmail;
+    NSDictionary *_accountPropertyOverrides;
+    NSDictionary *_overridesByDataclass;
 }
 
 @property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;

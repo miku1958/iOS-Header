@@ -43,6 +43,7 @@
 - (void)_setupViews;
 - (void)_updateViews:(id)arg1 withFilter:(id)arg2;
 - (id)init;
+- (void)setNeedsLayout;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
 

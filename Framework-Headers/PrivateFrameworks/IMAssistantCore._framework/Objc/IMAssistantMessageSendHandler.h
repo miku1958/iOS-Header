@@ -34,16 +34,17 @@
 - (id)initWithDataSource:(id)arg1 delegate:(id)arg2 intentIdentifier:(id)arg3;
 - (BOOL)isMemberOfChat:(id)arg1;
 - (id)recipientDisambiguationResultsFromMultipleRelevantChats:(id)arg1;
-- (BOOL)recipientHandleResolutionResultsAllowedByScreentime:(id)arg1;
+- (BOOL)recipientHandleResolutionResultsAllowedByScreentime:(id)arg1 error:(id *)arg2;
 - (id)recipientsResolutionFailureResultWithResult:(id)arg1 forRecipient:(id)arg2 amongRecipients:(id)arg3;
 - (void)resolveContentForSendMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)resolveMessageContentWithString:(id)arg1;
+- (void)resolveOutgoingMessageTypeForSendMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resolveRecipients:(id)arg1 forIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)resolveRecipientsByFindingExistingRelevantChatsForRecipients:(id)arg1 withMatchingHandlesByRecipient:(id)arg2 fromChats:(id)arg3;
 - (void)resolveRecipientsForSendMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveSpeakableGroupNameForSendMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)resolvedRecipientsFromChat:(id)arg1;
-- (id)sendMessageWithText:(id)arg1 currentLocation:(BOOL)arg2 expressiveSendStyleID:(id)arg3 idsIdentifier:(id)arg4 executionContext:(long long)arg5 toChat:(id)arg6;
+- (id)sendMessageWithText:(id)arg1 currentLocation:(BOOL)arg2 audioMessageAttachment:(id)arg3 expressiveSendStyleID:(id)arg4 idsIdentifier:(id)arg5 executionContext:(long long)arg6 toChat:(id)arg7;
 - (BOOL)shouldContinueToExamineRelevantChatsWithMatches:(id)arg1 nextChat:(id)arg2;
 - (BOOL)updateSenderIdentityForNewlyCreatedChat:(id)arg1;
 

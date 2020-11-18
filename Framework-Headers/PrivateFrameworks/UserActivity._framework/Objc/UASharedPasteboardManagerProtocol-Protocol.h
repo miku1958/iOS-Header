@@ -10,6 +10,7 @@
 
 @protocol UASharedPasteboardManagerProtocol <NSObject>
 - (void)clearLocalPasteboardInformation;
+- (void)fetchRemoteDeviceName:(void (^)(NSString *))arg1;
 - (void)fetchRemotePasteboardForProcess:(int)arg1 withCompletion:(void (^)(UASharedPasteboardInfo *, NSError *))arg2;
 - (void)fetchRemotePasteboardStatus:(void (^)(BOOL))arg1;
 - (void)fetchRemotePasteboardTypesForProcess:(int)arg1 withCompletion:(void (^)(UASharedPasteboardInfo *, NSError *))arg2;

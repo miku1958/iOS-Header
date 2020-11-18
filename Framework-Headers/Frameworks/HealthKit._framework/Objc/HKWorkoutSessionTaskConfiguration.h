@@ -13,6 +13,7 @@
     BOOL _requiresCoreLocationAssertion;
     BOOL _requiresRecovery;
     BOOL _supportsAppRelaunchForRecovery;
+    BOOL _shouldStopPreviousSession;
     HKWorkoutConfiguration *_workoutConfiguration;
     NSUUID *_sessionUUID;
 }
@@ -20,6 +21,7 @@
 @property (nonatomic) BOOL requiresCoreLocationAssertion; // @synthesize requiresCoreLocationAssertion=_requiresCoreLocationAssertion;
 @property (nonatomic) BOOL requiresRecovery; // @synthesize requiresRecovery=_requiresRecovery;
 @property (copy, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
+@property (nonatomic) BOOL shouldStopPreviousSession; // @synthesize shouldStopPreviousSession=_shouldStopPreviousSession;
 @property (nonatomic) BOOL supportsAppRelaunchForRecovery; // @synthesize supportsAppRelaunchForRecovery=_supportsAppRelaunchForRecovery;
 @property (copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 

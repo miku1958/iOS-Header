@@ -8,7 +8,7 @@
 
 #import <InstallCoordination/IXAppInstallCoordinatorObserver-Protocol.h>
 
-@class IXAppInstallCoordinator, NSString;
+@class IXAppInstallCoordinator, NSString, NSURL;
 @protocol IXInitiatingOrUpdatingCoordinator;
 
 @interface _IXSimpleInstallerDelegate : NSObject <IXAppInstallCoordinatorObserver>
@@ -16,6 +16,7 @@
     CDUnknownBlockType _completion;
     NSString *_bundleID;
     IXAppInstallCoordinator<IXInitiatingOrUpdatingCoordinator> *_coordinator;
+    NSURL *_moveResultToURL;
 }
 
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSURL *moveResultToURL; // @synthesize moveResultToURL=_moveResultToURL;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

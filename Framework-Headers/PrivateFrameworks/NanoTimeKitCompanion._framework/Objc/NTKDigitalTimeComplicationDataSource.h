@@ -18,7 +18,6 @@
 - (id)currentSwitcherTemplate;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (BOOL)supportsTapAction;
 - (unsigned long long)timelineAnimationBehavior;

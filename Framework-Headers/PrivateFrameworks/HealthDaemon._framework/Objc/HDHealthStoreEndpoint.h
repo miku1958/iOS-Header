@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDHealthStoreEndpointInterface-Protocol.h>
 #import <HealthDaemon/_HKXPCExportable-Protocol.h>
 
-@class HDDaemon, HDHealthStoreServer, HDXPCClient, NSString;
+@class HDDaemon, HDHealthStoreServer, HDXPCClient, HKProfileIdentifier, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDHealthStoreEndpoint : NSObject <HDHealthStoreEndpointInterface, _HKXPCExportable>
@@ -26,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HKProfileIdentifier *profileIdentifier;
 @property (readonly, nonatomic) HDHealthStoreServer *server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 
@@ -33,7 +34,8 @@
 + (BOOL)_isDeviceSupportedWithBehavior:(id)arg1 error:(id *)arg2;
 + (id)endpointWithClient:(id)arg1 healthDaemon:(id)arg2;
 - (void).cxx_destruct;
-- (BOOL)_validateSourceBundleIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)_validateAccessToProfile:(id)arg1 byClient:(id)arg2;
+- (BOOL)_validateSourceBundleIdentifier:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void)connectionConfigured;
 - (void)connectionInvalidated;
 - (id)exportedInterface;

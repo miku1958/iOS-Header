@@ -25,10 +25,14 @@
 }
 
 + (BOOL)_createEmptyFileAtPath:(id)arg1;
++ (unsigned long long)aggregateSummaryBucketizedLaunchCountForApp:(id)arg1 afterDate:(id)arg2;
 + (unsigned long long)bucketizeInteger:(unsigned long long)arg1 withBucketSize:(unsigned long long)arg2 limit:(unsigned long long)arg3;
++ (unsigned long long)bucketizeIntegerForAggregateSummary:(unsigned long long)arg1;
 + (id)dateByAppendingDaysToCurrentDate:(double)arg1;
 + (id)defaultLogger;
 + (id)describeReminderExtractionStatus:(unsigned char)arg1;
++ (id)descriptionForOriginType:(unsigned long long)arg1;
++ (unsigned long long)launchCountForApp:(id)arg1 afterDate:(id)arg2 limit:(unsigned long long)arg3;
 + (unsigned long long)launchCountForApp:(id)arg1 afterDate:(id)arg2 lowerBucket:(unsigned long long)arg3 bucketSize:(unsigned long long)arg4 bucketLimit:(unsigned long long)arg5;
 + (id)locationTypeForEntity:(id)arg1;
 + (id)locationTypeForHandle:(id)arg1 latitude:(double)arg2 longitude:(double)arg3 airportCode:(id)arg4 address:(id)arg5 label:(id)arg6;
@@ -56,6 +60,8 @@
 - (void)_updateLocationTypeFromInteractionsSummaryForEventKey:(id)arg1 locationType:(id)arg2;
 - (id)baseInteractionDictionaryForInterface:(unsigned short)arg1 actionType:(unsigned short)arg2;
 - (id)bucketizedRemindersCreatedAfterDate:(id)arg1 endDate:(id)arg2;
+- (id)cappedDeliveryEntityCountsCreatedBetweenStartDate:(id)arg1 endDate:(id)arg2;
+- (id)cappedDeliveryEntityCountsCreatedBetweenStartDate:(id)arg1 endDate:(id)arg2 store:(id)arg3;
 - (id)createInteractionSummaryForEventKey:(id)arg1 expirationDate:(id)arg2 interactionKey:(id)arg3 interactionAttributes:(id)arg4 rtcCategory:(unsigned short)arg5;
 - (void)dealloc;
 - (id)descriptionForEntityType:(long long)arg1;
@@ -100,6 +106,8 @@
 - (void)sendRTCLogsWithCompletion:(CDUnknownBlockType)arg1;
 - (double)storeAge;
 - (BOOL)storeToDisk;
+- (id)trialIds;
+- (id)trialIdsForStructuredEvent;
 - (void)updateAndScheduleDiskWrite;
 - (id)whitelistedLogFromLog:(id)arg1;
 

@@ -45,6 +45,7 @@
 - (BOOL)productPageItemDidLoad:(id)arg1 parameters:(id)arg2;
 - (void)rightBarButtonPressed:(id)arg1;
 - (void)setPreview:(id)arg1;
+- (void)setUsageContext:(id)arg1;
 - (void)setVisibleInClientWindow:(id)arg1;
 - (void)setupWithClientBundleID:(id)arg1;
 - (void)setupWithClientBundleID:(id)arg1 bagType:(long long)arg2;

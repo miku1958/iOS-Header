@@ -26,12 +26,12 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)_lookupObjectWithUUID:(id)arg1 applyObjectChange:(id)arg2 previous:(id)arg3 result:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_scanThroughObjects;
+- (id)_lookUpObjectWithUUID:(id)arg1 applyObjectChange:(id)arg2 previous:(id)arg3 result:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)applyChange:(id)arg1 previous:(id)arg2 onObject:(id)arg3 result:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithWorkQueue:(id)arg1;
-- (void)lookupAndApplyObjectChange:(id)arg1 previous:(id)arg2 result:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)lookUpAndApplyObjectChange:(id)arg1 previous:(id)arg2 result:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)resetObjects;
+- (void)scanObjects;
 
 @end
 

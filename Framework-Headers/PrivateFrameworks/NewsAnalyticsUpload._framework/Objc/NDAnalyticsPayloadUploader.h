@@ -7,22 +7,19 @@
 #import <objc/NSObject.h>
 
 @class FCAnalyticsEndpointConnection, FCAsyncSerialQueue;
-@protocol NDAnalyticsEnvelopeTracker;
 
 @interface NDAnalyticsPayloadUploader : NSObject
 {
     FCAnalyticsEndpointConnection *_endpointConnection;
     FCAsyncSerialQueue *_uploadQueue;
-    id<NDAnalyticsEnvelopeTracker> _envelopeTracker;
 }
 
 @property (strong, nonatomic) FCAnalyticsEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
-@property (strong, nonatomic) id<NDAnalyticsEnvelopeTracker> envelopeTracker; // @synthesize envelopeTracker=_envelopeTracker;
 @property (strong, nonatomic) FCAsyncSerialQueue *uploadQueue; // @synthesize uploadQueue=_uploadQueue;
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithAppConfigurationManager:(id)arg1 envelopeTracker:(id)arg2;
+- (id)initWithAppConfigurationManager:(id)arg1;
 - (void)uploadPayloadsForInfos:(id)arg1 withEnvelopeStore:(id)arg2 perPayloadCompletion:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

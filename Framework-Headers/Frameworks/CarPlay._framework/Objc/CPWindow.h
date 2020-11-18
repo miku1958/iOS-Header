@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *rightConstraint; // @synthesize rightConstraint=_rightConstraint;
 @property (weak, nonatomic) CPTemplateApplicationScene *templateApplicationScene; // @synthesize templateApplicationScene=_templateApplicationScene;
 @property (strong, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
-@property (weak, nonatomic) UIWindowScene *windowScene;
+@property (weak, nonatomic) UIWindowScene *windowScene; // @dynamic windowScene;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1 templateScene:(id)arg2;

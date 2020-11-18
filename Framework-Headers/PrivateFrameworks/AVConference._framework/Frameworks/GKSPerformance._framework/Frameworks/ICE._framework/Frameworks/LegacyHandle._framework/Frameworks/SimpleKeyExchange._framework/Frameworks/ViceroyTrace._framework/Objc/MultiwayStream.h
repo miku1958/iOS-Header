@@ -19,18 +19,26 @@ __attribute__((visibility("hidden")))
     double _totalVideoStallTime;
     double _maxVideoStallTime;
     unsigned short _significantVideoStallCount;
+    unsigned short _maxVideoStallCount;
+    unsigned short _minVideoFrameRate;
     unsigned short _audioErasureCount;
     double _totalAudioErasureTime;
+    unsigned short _maxAudioErasureCount;
     double _averageFramerateSum;
     unsigned short _averageFramerateReportCounter;
     double _averageJitterLengthSum;
     unsigned short _averageJitterReportCounter;
+    double _averageJitterBufferDelay;
+    unsigned short _totalJitterBufferDelayCnt;
+    unsigned short _targetJBSizeAccumulation;
+    unsigned short _targetJBSizeChngCnt;
+    unsigned short _maxTargetJBSizeChanges;
     int _totalVideoPacketsReceived;
     int _oooPacketCount;
     unsigned int _totalFIRDemandCounter;
     unsigned int _totalFIRCounter;
     unsigned int _videoFrameDecodedButSkippedCounter;
-    unsigned int _videoFrameImcompleteNextTSCounter;
+    unsigned int _videoFrameIncompleteNextTSCounter;
     unsigned int _videoFrameTotalIncompleteCounter;
     unsigned int _decodedVideoFrameEnqueueCounter;
     unsigned int _evictedFramesLikelyRecoverableCount;
@@ -47,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (double)audioErasureTotalTime;
 - (unsigned short)averageFramerateReportCounter;
 - (double)averageFramerateSum;
+- (double)averageJBTargetSizeChanges;
+- (double)averageJitterBufferDelay;
 - (double)averageJitterLengthSum;
 - (unsigned short)averageJitterReportCounter;
 - (void)dealloc;
@@ -56,6 +66,10 @@ __attribute__((visibility("hidden")))
 - (unsigned int)evictedFramesLikelyRecoverableCount;
 - (unsigned int)evictedFramesTrackedCount;
 - (id)initStreamWithID:(id)arg1;
+- (unsigned short)maxAudioErasureCount;
+- (unsigned short)maxJBTargetSizeChanges;
+- (unsigned short)maxVideoStallCount;
+- (unsigned short)minVideoFrameRate;
 - (unsigned int)oooPacketCount;
 - (void)processData:(id)arg1;
 - (unsigned short)significantVideoStallCount;
@@ -63,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)totalFIRDemandCounter;
 - (unsigned int)totalVideoPacketsReceived;
 - (unsigned int)videoFrameDecodedButSkippedCounter;
-- (unsigned int)videoFrameImcompleteNextTSCounter;
+- (unsigned int)videoFrameIncompleteNextTSCounter;
 - (unsigned int)videoFrameTotalIncompleteCounter;
 - (double)videoStallTotalTime;
 

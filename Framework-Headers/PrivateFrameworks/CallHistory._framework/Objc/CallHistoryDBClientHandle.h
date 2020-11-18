@@ -6,19 +6,16 @@
 
 #import <CallHistory/CHSynchronizedLoggable.h>
 
-@class CallHistoryDBHandle, NSObject;
-@protocol OS_dispatch_queue;
+@class CallHistoryDBHandle;
 
 @interface CallHistoryDBClientHandle : CHSynchronizedLoggable
 {
     CallHistoryDBHandle *dbStoreHandle;
     id _observerCallRecordRef;
     id _observerCallTimersRef;
-    NSObject<OS_dispatch_queue> *_recentCallQueue;
 }
 
 @property (readonly, nonatomic) CallHistoryDBHandle *dbStoreHandle; // @synthesize dbStoreHandle;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *recentCallQueue; // @synthesize recentCallQueue=_recentCallQueue;
 
 + (id)createForClient;
 + (id)createForServer;
@@ -43,6 +40,7 @@
 - (id)fetchAllNoLimit;
 - (id)fetchAllObjectsWithUniqueId:(id)arg1;
 - (unsigned long long)fetchCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCallIdentifiersWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (unsigned long long)fetchCoalescedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
 - (id)fetchCoalescedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
@@ -62,7 +60,6 @@
 - (BOOL)resetAllTimers;
 - (void)resetTimers;
 - (BOOL)saveDatabase:(id *)arg1;
-- (void)setClientObject_sync:(id)arg1 withStoreObject:(id)arg2;
 - (void)setStoreObject_sync:(id)arg1 withClientObject:(id)arg2;
 - (id)timerIncoming;
 - (id)timerLastReset;

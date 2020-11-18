@@ -22,19 +22,16 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    BOOL _isCarplayConnected;
     struct {
+        unsigned int has_isCarplayConnected:1;
         unsigned int read_alightNotificationFeedbacks:1;
         unsigned int read_directionResponseID:1;
         unsigned int read_guidanceFeedbacks:1;
         unsigned int read_modalitys:1;
         unsigned int read_stepFeedbacks:1;
         unsigned int read_trafficRerouteFeedbacks:1;
-        unsigned int wrote_alightNotificationFeedbacks:1;
-        unsigned int wrote_directionResponseID:1;
-        unsigned int wrote_guidanceFeedbacks:1;
-        unsigned int wrote_modalitys:1;
-        unsigned int wrote_stepFeedbacks:1;
-        unsigned int wrote_trafficRerouteFeedbacks:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,6 +39,8 @@
 @property (strong, nonatomic) NSData *directionResponseID;
 @property (strong, nonatomic) NSMutableArray *guidanceFeedbacks;
 @property (readonly, nonatomic) BOOL hasDirectionResponseID;
+@property (nonatomic) BOOL hasIsCarplayConnected;
+@property (nonatomic) BOOL isCarplayConnected;
 @property (strong, nonatomic) NSMutableArray *modalitys;
 @property (strong, nonatomic) NSMutableArray *stepFeedbacks;
 @property (strong, nonatomic) NSMutableArray *trafficRerouteFeedbacks;
@@ -53,17 +52,6 @@
 + (Class)stepFeedbackType;
 + (Class)trafficRerouteFeedbackType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAlightNotificationFeedback:(id)arg1;
-- (void)_addNoFlagsGuidanceFeedback:(id)arg1;
-- (void)_addNoFlagsModality:(id)arg1;
-- (void)_addNoFlagsStepFeedback:(id)arg1;
-- (void)_addNoFlagsTrafficRerouteFeedback:(id)arg1;
-- (void)_readAlightNotificationFeedbacks;
-- (void)_readDirectionResponseID;
-- (void)_readGuidanceFeedbacks;
-- (void)_readModalitys;
-- (void)_readStepFeedbacks;
-- (void)_readTrafficRerouteFeedbacks;
 - (void)addAlightNotificationFeedback:(id)arg1;
 - (void)addGuidanceFeedback:(id)arg1;
 - (void)addModality:(id)arg1;
@@ -85,7 +73,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)modalityAtIndex:(unsigned long long)arg1;
 - (unsigned long long)modalitysCount;

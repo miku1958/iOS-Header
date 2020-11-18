@@ -20,6 +20,8 @@
 - (BOOL)isItemAtURLInsidePermanentStorage:(id)arg1 error:(id *)arg2;
 - (BOOL)isItemAtURLValidInsidePermanentStorage:(id)arg1 error:(id *)arg2;
 - (BOOL)isPermanentStorageSupportedAtURL:(id)arg1 error:(id *)arg2;
+- (BOOL)mayPermanentStorageBeSupportedAtURL:(id)arg1 error:(id *)arg2;
+- (BOOL)mayPermanentStorageBeSupportedWithFD:(int)arg1 error:(id *)arg2;
 - (id)permanentStorageForItemAtURL:(id)arg1 allocateIfNone:(BOOL)arg2 error:(id *)arg3;
 - (id)persistentIdentifierInStorage:(id)arg1 forAdditionNamed:(id)arg2 inNameSpace:(id)arg3;
 - (BOOL)removeTemporaryStorage:(id)arg1 error:(id *)arg2;

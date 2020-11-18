@@ -20,6 +20,7 @@
 - (id)initWithContext:(id)arg1 objects:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
+- (id)tsp_publicLoggingDescription;
 
 @end
 

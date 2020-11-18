@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly) unsigned long long allocatedSize;
+@property (readonly) unsigned long long allocationID;
 @property (readonly) unsigned int bufferRef;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,11 +40,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) struct __IOSurface *iosurface; // @synthesize iosurface=_iosurface;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long length; // @dynamic length;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly) unsigned long long protectionOptions;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long resourceOptions;
-@property (readonly) unsigned int resourceRef;
+@property int responsibleProcess;
+@property (readonly) unsigned int serializerResourceRef;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;
+@property (readonly) unsigned long long unfilteredResourceOptions;
 
 - (void)addDebugMarker:(id)arg1 range:(struct _NSRange)arg2;
 - (void *)contents;

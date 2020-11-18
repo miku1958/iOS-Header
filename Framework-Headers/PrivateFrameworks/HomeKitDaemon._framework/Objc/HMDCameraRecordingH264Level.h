@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDNumberParser.h>
+#import <CoreHAP/HAPNumberParser.h>
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDCameraRecordingH264Level : HMDNumberParser <NSSecureCoding>
+@interface HMDCameraRecordingH264Level : HAPNumberParser <NSSecureCoding>
 {
     long long _h264Level;
 }

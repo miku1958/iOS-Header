@@ -16,11 +16,10 @@
 }
 
 @property (readonly, weak, nonatomic) TSWPTOCInfo *info; // @synthesize info=_info;
-@property (nonatomic) BOOL isPrintingCanvas;
-@property (nonatomic) BOOL shouldSuppressBackgrounds;
+@property (readonly, nonatomic) struct CGRect totalPartitionFrame;
 
 - (void).cxx_destruct;
-- (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;
+- (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3;
 - (id)hintForLayout:(id)arg1;
 - (id)initWithInfo:(id)arg1;
 - (id)layoutForHint:(id)arg1 parentLayout:(id)arg2;

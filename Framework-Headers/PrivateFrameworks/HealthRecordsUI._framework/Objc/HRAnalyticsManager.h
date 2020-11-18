@@ -11,6 +11,7 @@
 @interface HRAnalyticsManager : NSObject
 {
     MISSING_TYPE *healthStore;
+    MISSING_TYPE *conceptStore;
     MISSING_TYPE *queuedEvents;
     MISSING_TYPE *managerQueue;
     MISSING_TYPE *optInDetermined;
@@ -20,6 +21,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (void)postOnboardingFunnelEventWithStep:(long long)arg1 context:(long long)arg2 gatewayUrl:(id)arg3;
+- (void)postPrivacyInteractionEventWithType:(long long)arg1 context:(long long)arg2 action:(BOOL)arg3;
+- (void)postUserInteractionEventWithType:(long long)arg1 context:(long long)arg2 action:(long long)arg3 category:(id)arg4 conceptIdentifier:(id)arg5;
 - (void)submitAndFlushQueuedEvents;
 
 @end

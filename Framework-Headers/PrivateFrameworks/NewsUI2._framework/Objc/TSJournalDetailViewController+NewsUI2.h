@@ -6,7 +6,19 @@
 
 #import <NewsUI2/TSJournalDetailViewController.h>
 
-@interface TSJournalDetailViewController (NewsUI2)
+#import <NewsUI2/UITableViewDataSource-Protocol.h>
+#import <NewsUI2/UITableViewDelegate-Protocol.h>
+
+@interface TSJournalDetailViewController (NewsUI2) <UITableViewDataSource, UITableViewDelegate>
+- (void)doDismiss;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 @end

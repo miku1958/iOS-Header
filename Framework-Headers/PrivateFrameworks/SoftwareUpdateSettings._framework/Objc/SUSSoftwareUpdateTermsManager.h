@@ -41,7 +41,7 @@
 - (void)_termsDisagree;
 - (void)cancelLoadingTerms:(id)arg1;
 - (void)presentTermsIfNecessaryForUpdate:(id)arg1 overController:(id)arg2 showLoadSpinner:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;

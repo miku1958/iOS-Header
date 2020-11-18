@@ -31,14 +31,15 @@
 - (void)_configureView:(id *)arg1 transitItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (id)_identifierForItem:(id)arg1;
 - (id)_passForTransitItem:(id)arg1 indexPath:(id)arg2;
-- (id)_renewActionForItem:(id)arg1 indexPath:(id)arg2 commutePlanIdentifier:(id)arg3;
+- (id)_renewActionForItem:(id)arg1 commutePlanIdentifier:(id)arg2;
 - (id)_sampleViewForTransitItem:(id)arg1;
 - (id)_topUpActionForItem:(id)arg1 indexPath:(id)arg2 balanceIdentifier:(id)arg3;
+- (long long)_viewTypeForTransitItem:(id)arg1;
 - (BOOL)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (BOOL)cellIsIndependentForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (id)initWithPassGroupView:(id)arg1;
 - (Class)itemClass;
 - (void)performActionViewControllerDidCancel:(id)arg1;

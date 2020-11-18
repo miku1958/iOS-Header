@@ -112,6 +112,7 @@
 - (BOOL)parseIMAPPropertyList:(id)arg1;
 - (BOOL)parseMimeBody;
 - (BOOL)parseMimeBodyDownloadIfNecessary:(BOOL)arg1;
+- (BOOL)parseMimeBodyFromHeaderData:(id)arg1 bodyData:(id)arg2 isPartial:(BOOL)arg3;
 - (id)partNumber;
 - (id)partURL;
 - (id)preservedHeaderValueForKey:(id)arg1;

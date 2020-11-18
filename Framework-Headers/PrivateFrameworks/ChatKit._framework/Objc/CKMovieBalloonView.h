@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)cleanupPlayerIfNeeded;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(BOOL)arg4;
 - (void)dealloc;
 - (id)description;
 - (void)layoutSubviews;

@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) NSObject *dashboardAssetController; // @synthesize dashboardAssetController=_dashboardAssetController;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) GKGameCenterViewController *delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) GKGameCenterViewController *delegate; // @synthesize delegate=_delegateWeak;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game;
 @property (readonly) unsigned long long hash;
@@ -26,12 +26,13 @@
 
 + (id)dashboardExtension;
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)extensionIsCanceling;
 - (void)extensionIsFinishing;
 - (id)extensionObjectProxy;
 - (void)finishWithMatch:(id)arg1;
 - (void)hostDidChangeLeaderboardIdentifier:(id)arg1;
+- (void)hostDidChangeLeaderboardPlayerScope:(id)arg1;
 - (void)hostDidChangeLeaderboardTimeScope:(id)arg1;
 - (void)hostDidChangeViewState:(id)arg1;
 - (void)hostSupportsShowingPlayForChallenge:(BOOL)arg1;
@@ -41,6 +42,7 @@
 - (void)messageFromExtension:(id)arg1;
 - (void)playPressedForChallenge:(id)arg1;
 - (void)playerQuitMatch:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

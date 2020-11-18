@@ -26,6 +26,8 @@
 @property (readonly, copy, nonatomic) NSDictionary *propertyListRepresentation;
 @property (copy, nonatomic) ICMusicSubscriptionStatus *subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 
++ (BOOL)isValidSubscriptionStatusPropertyListRepresentation:(id)arg1 error:(id *)arg2;
++ (BOOL)isValidSubscriptionStatusResponseDictionary:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;

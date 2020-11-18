@@ -6,12 +6,17 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBIconListView;
+@class NSArray, SBIconListView, SBIconListViewLayoutMetrics, SBIconView;
+@protocol SBIconListLayoutAnimating;
 
 @protocol SBIconListLayoutDelegate <NSObject>
-- (struct CGPoint)iconListView:(SBIconListView *)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 proposedOrigin:(struct CGPoint)arg3;
 
 @optional
-- (void)iconListViewIsNotDisplayingAnyIcons:(SBIconListView *)arg1;
+- (id<SBIconListLayoutAnimating>)iconListView:(SBIconListView *)arg1 animatorForRemovingIcons:(NSArray *)arg2 proposedAnimator:(id<SBIconListLayoutAnimating>)arg3;
+- (struct CGPoint)iconListView:(SBIconListView *)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedOrigin:(struct CGPoint)arg4;
+- (unsigned long long)iconListView:(SBIconListView *)arg1 rowAtPoint:(struct CGPoint)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedRow:(unsigned long long)arg4;
+- (struct CGSize)iconListView:(SBIconListView *)arg1 sizeThatFits:(struct CGSize)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedSize:(struct CGSize)arg4;
+- (void)iconListView:(SBIconListView *)arg1 willLayoutIconView:(SBIconView *)arg2;
+- (void)iconListViewDidLayoutIcons:(SBIconListView *)arg1;
 @end
 

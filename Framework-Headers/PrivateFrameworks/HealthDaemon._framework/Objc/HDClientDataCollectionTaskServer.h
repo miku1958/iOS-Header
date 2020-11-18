@@ -7,11 +7,12 @@
 #import <HealthDaemon/HDStandardTaskServer.h>
 
 #import <HealthDaemon/HDDataCollector-Protocol.h>
+#import <HealthDaemon/HKDataCollectorTaskServerInterface-Protocol.h>
 
-@class HDDataAggregator, HDDataCollectorState, HKDataCollectorCollectionConfiguration, HKDataCollectorTaskServerConfiguration, HKDevice, NSError, NSMutableDictionary, NSObject, NSString, NSUUID;
+@class HDDataAggregator, HDDataCollectorState, HKDataCollectorCollectionConfiguration, HKDataCollectorTaskServerConfiguration, HKDevice, HKSource, NSError, NSMutableDictionary, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HDClientDataCollectionTaskServer : HDStandardTaskServer <HDDataCollector>
+@interface HDClientDataCollectionTaskServer : HDStandardTaskServer <HKDataCollectorTaskServerInterface, HDDataCollector>
 {
     NSObject<OS_dispatch_queue> *_queue;
     HDDataCollectorState *_dataCollectorState;
@@ -22,6 +23,7 @@
     HDDataAggregator *_aggregator;
     HKDataCollectorCollectionConfiguration *_collectionConfiguration;
     NSMutableDictionary *_lastDatumByDevice;
+    HKSource *_clientSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,6 +41,7 @@
 - (void)_queue_insertDatums:(id)arg1 device:(id)arg2 metadata:(id)arg3 batchUUID:(id)arg4 registrationUUID:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_validateMetadata:(id)arg1 error:(id *)arg2;
 - (void)beginCollectionForDataAggregator:(id)arg1 lastPersistedSensorDatum:(id)arg2;
+- (BOOL)canResumeCollectionFromLastSensorDatum;
 - (void)connectionConfigured;
 - (void)connectionInvalidated;
 - (void)dataAggregator:(id)arg1 didPersistDatums:(id)arg2 success:(BOOL)arg3 error:(id)arg4;

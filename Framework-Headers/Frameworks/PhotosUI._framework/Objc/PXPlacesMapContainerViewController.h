@@ -6,14 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUICore/PXGridPresentationNavigationItemDelegate-Protocol.h>
+#import <PhotosUICore/PXGridPresentationBarsUpdateDelegate-Protocol.h>
 #import <PhotosUICore/PXPlacesMapBarButtonsDelegate-Protocol.h>
 
-@class NSString, PXPlacesMapFetchResultViewController, UISegmentedControl;
+@class NSString, PXPlacesMapFetchResultViewController, PXProgrammaticNavigationDestination, UISegmentedControl;
 
-@interface PXPlacesMapContainerViewController : UIViewController <PXPlacesMapBarButtonsDelegate, PXGridPresentationNavigationItemDelegate>
+@interface PXPlacesMapContainerViewController : UIViewController <PXPlacesMapBarButtonsDelegate, PXGridPresentationBarsUpdateDelegate>
 {
     BOOL _gridControllerEditing;
+    PXProgrammaticNavigationDestination *_px_navigationDestination;
     PXPlacesMapFetchResultViewController *_fetchResultViewController;
     UIViewController *_currentViewController;
     UISegmentedControl *_subviewControl;
@@ -33,9 +34,13 @@
 - (void)_switchChildViewControllerFrom:(id)arg1 to:(id)arg2;
 - (id)init;
 - (void)loadView;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)setBarButtonItems:(id)arg1;
 - (void)subviewControlChanged:(id)arg1;
-- (void)viewController:(id)arg1 updatedNavigationItem:(id)arg2 animated:(BOOL)arg3;
+- (void)viewController:(id)arg1 didUpdateBarsAnimated:(BOOL)arg2 isSelecting:(BOOL)arg3;
+- (void)viewControllerDidUpdateNavigationItemAppearance:(id)arg1;
 - (void)viewDidLoad;
 
 @end

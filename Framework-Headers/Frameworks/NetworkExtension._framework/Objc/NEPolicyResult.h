@@ -14,6 +14,7 @@
 {
     unsigned int _skipOrder;
     unsigned int _passFlags;
+    unsigned int _dropFlags;
     unsigned int _controlUnit;
     unsigned int _serviceData;
     long long _resultType;
@@ -26,6 +27,7 @@
 
 @property (copy) NSUUID *agentUUID; // @synthesize agentUUID=_agentUUID;
 @property unsigned int controlUnit; // @synthesize controlUnit=_controlUnit;
+@property unsigned int dropFlags; // @synthesize dropFlags=_dropFlags;
 @property (copy) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 @property unsigned int passFlags; // @synthesize passFlags=_passFlags;
 @property long long resultType; // @synthesize resultType=_resultType;
@@ -38,6 +40,7 @@
 + (id)allowUnentitled;
 + (id)divertSocketToControlUnit:(unsigned int)arg1;
 + (id)drop;
++ (id)dropWithFlags:(unsigned int)arg1;
 + (id)filterWithControlUnit:(unsigned int)arg1;
 + (id)netAgentUUID:(id)arg1;
 + (id)pass;

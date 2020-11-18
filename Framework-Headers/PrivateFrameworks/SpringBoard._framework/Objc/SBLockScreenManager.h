@@ -23,7 +23,7 @@
 #import <SpringBoard/SBWallpaperObserver-Protocol.h>
 
 @class CSCoverSheetViewController, NSMutableDictionary, NSMutableSet, NSString, SBCoverSheetBiometricResourceObserver, SBFAuthenticationAssertion, SBFMouseButtonDownGestureRecognizer, SBFUserAuthenticationController, SBIdleTimerCoordinatorHelper, SBLiftToWakeManager, SBLockScreenAutoUnlockAggregateRule, SBLockScreenBiometricAuthenticationCoordinator, SBLockScreenDisabledAssertionManager, SBLockScreenOrientationManager, SBLockScreenUnlockRequest, SBPasscodeEntryTransientOverlayViewController, SBPearlInterlockObserver, SBSRemoteAlertHandle, SBTapToWakeController, UINotificationFeedbackGenerator;
-@protocol SBFLockOutStatusProvider, SBHomeButtonShowPasscodeRecognizer, SBHomeButtonSuppressAfterUnlockRecognizer, SBLockScreenEnvironment, SBNotificationDestination;
+@protocol BSInvalidatable, SBFLockOutStatusProvider, SBHomeButtonShowPasscodeRecognizer, SBHomeButtonSuppressAfterUnlockRecognizer, SBLockScreenEnvironment, SBNotificationDestination;
 
 @interface SBLockScreenManager : NSObject <BSDescriptionProviding, SBPasscodeEntryTransientOverlayViewControllerDelegate, SBFPrivateAuthenticationObserver, CSCoverSheetViewControllerDelegate, CSWallpaperColorProvider, SBLockScreenBiometricAuthenticationCoordinatorDelegate, SBHomeButtonShowPasscodeRecognizerDelegate, SBHomeButtonSuppressAfterUnlockRecognizerDelegate, SBWallpaperObserver, SBCoverSheetPresentationDelegate, SBUILockStateProvider, SBTapToWakeDelegate, SBSRemoteAlertHandleObserver, SBIdleTimerProviding, SBIdleTimerCoordinating>
 {
@@ -62,6 +62,8 @@
     NSMutableDictionary *_mesaUnlockingDisabledAssertions;
     SBIdleTimerCoordinatorHelper *_idleTimerCoordinatorHelper;
     UINotificationFeedbackGenerator *_authenticationFeedbackGenerator;
+    id<BSInvalidatable> _bannerSuppressionAssertion;
+    id<BSInvalidatable> _pipInterruptionAssertion;
     BOOL _isWaitingToLockUI;
     SBLockScreenOrientationManager *_lockScreenOrientationManager;
     CDUnknownBlockType _unlockActionBlock;
@@ -94,7 +96,7 @@
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
 - (void).cxx_destruct;
-- (void)_activateLockScreenAnimated:(BOOL)arg1 animationProvider:(CDUnknownBlockType)arg2 automatically:(BOOL)arg3 inScreenOffMode:(BOOL)arg4 dimInAnimation:(BOOL)arg5 dismissNotificationCenter:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_activateLockScreenAnimated:(BOOL)arg1 animationProvider:(CDUnknownBlockType)arg2 automatically:(BOOL)arg3 inScreenOffMode:(BOOL)arg4 dismissNotificationCenter:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_activeCallStateChanged;
 - (BOOL)_attemptUnlockWithPasscode:(id)arg1 finishUIUnlock:(BOOL)arg2;
 - (BOOL)_attemptUnlockWithPasscode:(id)arg1 mesa:(BOOL)arg2 finishUIUnlock:(BOOL)arg3;
@@ -126,7 +128,7 @@
 - (void)_prepareWallpaperForInteractiveMode;
 - (void)_prepareWallpaperForStaticMode;
 - (void)_reallySetUILocked:(BOOL)arg1;
-- (void)_relockUIForButtonlikeSource:(int)arg1 afterCall:(BOOL)arg2;
+- (void)_relockUIForButtonlikeSource:(int)arg1;
 - (void)_resetOrRestoreStateChanged:(id)arg1;
 - (void)_runUnlockActionBlock:(BOOL)arg1;
 - (void)_sendUILockStateChangedNotification;
@@ -146,6 +148,7 @@
 - (BOOL)_shouldLockAfterEndingFaceTimeCall;
 - (BOOL)_shouldLockAfterEndingTelephonyCall;
 - (BOOL)_shouldUnlockUIOnKeyDownEvent;
+- (BOOL)_specifiesTransientPresentationForMode:(long long)arg1;
 - (BOOL)_unlockWithRequest:(id)arg1 cancelPendingRequests:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_wakeScreenForMouseButtonDown:(id)arg1;
 - (void)_wakeScreenForTapToWake;
@@ -164,8 +167,10 @@
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (void)coverSheetPresentationManager:(id)arg1 unlockWithRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)coverSheetViewController:(id)arg1 requestsTouchIDDisabled:(BOOL)arg2 forReason:(id)arg3;
+- (void)coverSheetViewController:(id)arg1 setMesaUnlockingDisabled:(BOOL)arg2 forReason:(id)arg3;
 - (void)coverSheetViewController:(id)arg1 unlockWithRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(id)arg1;
+- (void)coverSheetViewControllerShouldDismissContextMenu:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)enableLostModePlugin;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSURLAction, AMSURLRequestProperties, AMSURLSession, NSError, NSMutableData, NSMutableDictionary, NSURLResponse, NSURLSessionTask, NSURLSessionTaskMetrics;
+@class AMSURLAction, AMSURLRequestProperties, AMSURLSession, NSError, NSMutableData, NSMutableDictionary, NSMutableSet, NSURLResponse, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 {
     NSMutableData *_data;
     NSError *_error;
+    unsigned long long _previousAuthorizationCredentialSource;
     NSURLSessionTaskMetrics *_metrics;
     AMSURLRequestProperties *_properties;
     AMSURLAction *_receivedAction;
     NSURLResponse *_response;
     long long _retryCount;
+    NSMutableSet *_retryIdentifiers;
     AMSURLSession *_session;
     NSURLSessionTask *_task;
     NSObject<OS_dispatch_queue> *_taskQueue;
@@ -30,10 +32,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableData *data; // @synthesize data=_data;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSURLSessionTaskMetrics *metrics; // @synthesize metrics=_metrics;
+@property (nonatomic) unsigned long long previousAuthorizationCredentialSource; // @synthesize previousAuthorizationCredentialSource=_previousAuthorizationCredentialSource;
 @property (strong, nonatomic) AMSURLRequestProperties *properties; // @synthesize properties=_properties;
 @property (strong, nonatomic) AMSURLAction *receivedAction; // @synthesize receivedAction=_receivedAction;
 @property (strong, nonatomic) NSURLResponse *response; // @synthesize response=_response;
 @property (nonatomic) long long retryCount; // @synthesize retryCount=_retryCount;
+@property (strong, nonatomic) NSMutableSet *retryIdentifiers; // @synthesize retryIdentifiers=_retryIdentifiers;
 @property (strong, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *taskQueue; // @synthesize taskQueue=_taskQueue;

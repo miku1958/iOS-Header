@@ -55,13 +55,16 @@
 - (void)handleSharingListsDidChange;
 - (id)handlesForNicknamesUnderScrutiny;
 - (void)ignorePendingNicknameUpdatesForHandle:(id)arg1;
+- (id)imageDataForHandle:(id)arg1;
 - (id)init;
+- (void)markAllAsPending;
 - (void)markHandleUnderScrutiny:(id)arg1;
 - (id)meCardSharingState;
 - (BOOL)meCardSyncEnabled;
 - (id)nicknameForHandle:(id)arg1;
 - (void)nicknameStoreDidChange;
 - (unsigned long long)nicknameUpdateForHandle:(id)arg1 nicknameIfAvailable:(id *)arg2;
+- (id)personNameComponentsForHandle:(id)arg1;
 - (void)setNicknameHandlesUnderScrutiny;
 - (void)setPersonalNicknameFromOnboardingResult:(id)arg1;
 - (BOOL)shouldOfferNicknameSharingForChat:(id)arg1;

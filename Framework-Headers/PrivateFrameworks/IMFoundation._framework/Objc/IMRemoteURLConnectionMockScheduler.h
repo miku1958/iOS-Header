@@ -13,6 +13,7 @@
     NSObject<OS_xpc_object> *_connection;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_connect;
 - (id)init;
 - (void)scheduleMockResponse:(id)arg1;

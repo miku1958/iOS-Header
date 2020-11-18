@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct CGImage *_contentImage;
     CALayer *_leftLayer;
     CALayer *_rightLayer;
+    CDStruct_f381021a _metrics;
     long long _arrowPosition;
     double _arrowOffset;
     UIColor *_fillColor;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double arrowOffset; // @synthesize arrowOffset=_arrowOffset;
 @property (nonatomic) long long arrowPosition; // @synthesize arrowPosition=_arrowPosition;
 @property (strong, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
+@property (nonatomic) CDStruct_f381021a metrics; // @synthesize metrics=_metrics;
 @property (strong, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 
 - (void).cxx_destruct;

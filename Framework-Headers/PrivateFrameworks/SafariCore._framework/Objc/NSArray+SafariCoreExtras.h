@@ -12,11 +12,13 @@
 - (id)_safari_computeLengthsOfLongestSubsequencesCommonWithArray:(id)arg1;
 - (id)_safari_generateDiffWithLongestCommonSubsequenceLengths:(id)arg1 array:(id)arg2 indexIntoSelf:(unsigned long long)arg3 indexIntoArray:(unsigned long long)arg4;
 - (id)safari_URLAtIndex:(unsigned long long)arg1;
+- (BOOL)safari_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (id)safari_arrayAtIndex:(unsigned long long)arg1;
 - (id)safari_arrayByAddingObjectsFromArrayIfNotDuplicates:(id)arg1;
 - (BOOL)safari_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_dictionaryAtIndex:(unsigned long long)arg1;
 - (id)safari_diffWithArray:(id)arg1;
+- (void)safari_enumerateOutwardFromIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)safari_enumerateZippedValuesWithArray:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)safari_filterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_firstObjectPassingTest:(CDUnknownBlockType)arg1;
@@ -26,6 +28,7 @@
 - (id)safari_mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_maximumUsingComparator:(CDUnknownBlockType)arg1;
 - (id)safari_minimumUsingComparator:(CDUnknownBlockType)arg1;
+- (BOOL)safari_noObjectsPassTest:(CDUnknownBlockType)arg1;
 - (id)safari_numberAtIndex:(unsigned long long)arg1;
 - (id)safari_orderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_prefixWithMaxLength:(unsigned long long)arg1;

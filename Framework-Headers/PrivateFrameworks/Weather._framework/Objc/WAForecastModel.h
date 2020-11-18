@@ -8,10 +8,11 @@
 
 #import <Weather/NSCopying-Protocol.h>
 
-@class City, NSArray, NSDate, NSURL, WACurrentForecast, WFAirQualityConditions, WFLocation, WFWeatherConditions;
+@class City, NSArray, NSDate, NSURL, WACurrentForecast, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFWeatherConditions;
 
 @interface WAForecastModel : NSObject <NSCopying>
 {
+    int _unit;
     City *_city;
     WFLocation *_location;
     WACurrentForecast *_currentConditions;
@@ -22,12 +23,16 @@
     NSDate *_sunset;
     NSURL *_deepLink;
     NSURL *_link;
+    NSArray *_severeWeatherEvents;
+    NSArray *_changeForecasts;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
     WFWeatherConditions *_underlyingCurrentConditions;
     NSArray *_underlyingHourlyConditions;
     NSArray *_underlyingDailyConditions;
 }
 
 @property (strong, nonatomic) WFAirQualityConditions *airQualityConditions; // @synthesize airQualityConditions=_airQualityConditions;
+@property (copy, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
 @property (strong, nonatomic) City *city; // @synthesize city=_city;
 @property (strong, nonatomic) WACurrentForecast *currentConditions; // @synthesize currentConditions=_currentConditions;
 @property (copy, nonatomic) NSArray *dailyForecasts; // @synthesize dailyForecasts=_dailyForecasts;
@@ -36,11 +41,14 @@
 @property (readonly, nonatomic) BOOL isPopulated;
 @property (strong, nonatomic) NSURL *link; // @synthesize link=_link;
 @property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
+@property (copy, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
+@property (copy, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
 @property (strong, nonatomic) NSDate *sunrise; // @synthesize sunrise=_sunrise;
 @property (strong, nonatomic) NSDate *sunset; // @synthesize sunset=_sunset;
 @property (strong, nonatomic) WFWeatherConditions *underlyingCurrentConditions; // @synthesize underlyingCurrentConditions=_underlyingCurrentConditions;
 @property (strong, nonatomic) NSArray *underlyingDailyConditions; // @synthesize underlyingDailyConditions=_underlyingDailyConditions;
 @property (strong, nonatomic) NSArray *underlyingHourlyConditions; // @synthesize underlyingHourlyConditions=_underlyingHourlyConditions;
+@property (nonatomic) int unit; // @synthesize unit=_unit;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

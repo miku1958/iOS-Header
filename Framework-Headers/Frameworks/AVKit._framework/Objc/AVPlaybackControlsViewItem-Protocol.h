@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AVKit/NSObject-Protocol.h>
+#import <AVKit/AVLayoutViewItem-Protocol.h>
 
-@protocol AVPlaybackControlsViewItem <NSObject>
+@protocol AVPlaybackControlsViewItem <AVLayoutViewItem>
 
 @property (nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;

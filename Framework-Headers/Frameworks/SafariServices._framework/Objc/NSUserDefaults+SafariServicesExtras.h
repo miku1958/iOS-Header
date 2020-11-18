@@ -11,6 +11,7 @@
 - (id)_sf_dateForKey:(id)arg1;
 - (BOOL)_sf_javaScriptCanOpenWindowsAutomatically;
 - (BOOL)_sf_javaScriptEnabled;
+- (BOOL)_sf_passwordManagerIsInDemoMode;
 - (void)_sf_registerSafariDefaults;
 - (void)_sf_setShouldAutomaticallyDownloadReadingListItems:(BOOL)arg1;
 - (BOOL)_sf_shouldAutomaticallyDownloadReadingListItems;

@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <Message/EDMailboxProvider-Protocol.h>
-#import <Message/EFLoggable-Protocol.h>
 
-@class MFMailboxUidTransformer, NSArray, NSMapTable, NSString;
+@class MFMailboxUidTransformer, NSArray, NSMapTable, NSSet, NSString;
 @protocol EDAccountsProvider, EDMailboxProviderDelegate, EFScheduler, OS_dispatch_queue;
 
-@interface MFMailboxProvider : NSObject <EFLoggable, EDMailboxProvider>
+@interface MFMailboxProvider : NSObject <EDMailboxProvider>
 {
     _Atomic int _deferringInvalidationCount;
     BOOL _needsToInvalidate;
@@ -28,6 +27,7 @@
 
 @property (weak, nonatomic) id<EDAccountsProvider> accountsProvider; // @synthesize accountsProvider=_accountsProvider;
 @property (strong) NSArray *allMailboxCache; // @synthesize allMailboxCache=_allMailboxCache;
+@property (readonly, nonatomic) NSSet *allMailboxObjectIDs;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<EDMailboxProviderDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
@@ -39,7 +39,6 @@
 @property (readonly) Class superclass;
 @property (strong) NSMapTable *uidToMailboxMap; // @synthesize uidToMailboxMap=_uidToMailboxMap;
 
-+ (id)log;
 - (void).cxx_destruct;
 - (void)_beginDeferringInvalidation;
 - (void)_didChangeMailboxList:(id)arg1;

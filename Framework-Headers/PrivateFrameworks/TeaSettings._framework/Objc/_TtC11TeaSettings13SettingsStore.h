@@ -14,5 +14,7 @@
     MISSING_TYPE *observers;
 }
 
+- (void)defaultsDidChange;
+
 @end
 

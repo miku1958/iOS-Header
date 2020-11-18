@@ -33,7 +33,8 @@
 + (unsigned int)_soundBehaviorForAlert:(id)arg1 withSound:(id)arg2;
 + (id)_soundForAlert:(id)arg1 toneIdentifierForDeemphasizingAlert:(id)arg2;
 + (id)_toneIdentifierForDeemphasizingAlert:(id)arg1;
-+ (id)_vibrationPatternForAlert:(id)arg1;
++ (double)_unduckTimeForAlert:(id)arg1;
++ (id)_vibrationPatternForAlert:(id)arg1 withSound:(id)arg2;
 - (void).cxx_destruct;
 - (void)_assertRunningOnAccessQueue;
 - (void)_beginRequiringBacklightObservation;
@@ -43,6 +44,7 @@
 - (void)_performBlockOnAccessQueue:(CDUnknownBlockType)arg1;
 - (void)_playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_playAlert:(id)arg1 withSound:(id)arg2;
+- (void)_preheatForAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_prepareForDealloc;
 - (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_willBeginPlayingAlert:(id)arg1 withSound:(id)arg2;
@@ -50,6 +52,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)preheatForAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end

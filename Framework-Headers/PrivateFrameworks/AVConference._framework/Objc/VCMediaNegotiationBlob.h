@@ -88,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)formatBandwidthConfig:(int)arg1 maxBanxwidth:(unsigned int)arg2 bandwidthString:(id)arg3;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

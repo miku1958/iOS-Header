@@ -8,7 +8,7 @@
 
 #import <iTunesStore/AMSBagProtocol-Protocol.h>
 
-@class ISURLBag, NSDate, NSString, SSBag;
+@class AMSProcessInfo, ISURLBag, NSDate, NSString, SSBag;
 
 @interface ISAMSBagShim : NSObject <AMSBagProtocol>
 {
@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 @property (readonly) Class superclass;

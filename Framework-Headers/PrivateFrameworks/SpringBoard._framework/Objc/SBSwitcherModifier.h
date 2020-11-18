@@ -7,28 +7,27 @@
 #import <SpringBoard/SBChainableModifier.h>
 
 #import <SpringBoard/SBSwitcherContextProviding-Protocol.h>
-#import <SpringBoard/SBSwitcherQueryProviding-Protocol.h>
+#import <SpringBoard/SBSwitcherMultitaskingQueryProviding-Protocol.h>
 
 @class NSString;
 
-@interface SBSwitcherModifier : SBChainableModifier <SBSwitcherQueryProviding, SBSwitcherContextProviding>
+@interface SBSwitcherModifier : SBChainableModifier <SBSwitcherMultitaskingQueryProviding, SBSwitcherContextProviding>
 {
-    long long _state;
+    BOOL _verifyModifierStackCoherencyCheckAfterHandlingEvent;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 + (id)contextProtocol;
++ (id)newEventResponse;
 + (id)queryProtocol;
-- (id)_forwardEventToChildren:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)_handleEvent:(id)arg1;
+- (id)appLayoutsToCacheSnapshotsWithVisibleRange:(struct _NSRange)arg1 numberOfSnapshotsToCache:(unsigned long long)arg2 biasForward:(BOOL)arg3;
+- (id)defaultAppLayoutsToCacheSnapshots;
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1 numberOfRows:(unsigned long long)arg2 padding:(double)arg3 layoutDirection:(unsigned long long)arg4;
-- (id)handleAppExposeEvent:(id)arg1;
-- (id)handleEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
 - (id)handleInlineTransitionEvent:(id)arg1;
@@ -37,14 +36,15 @@
 - (id)handleMedusaSettingsChangedEvent:(id)arg1;
 - (id)handleReduceMotionChangedEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
 - (id)handleSwipeToKillEvent:(id)arg1;
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
 - (id)handleTapAppLayoutEvent:(id)arg1;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
-- (id)handleTetheredInsertionEvent:(id)arg1;
-- (id)handleTetheredRemovalEvent:(id)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)init;
+- (id)loggingCategory;
+- (BOOL)runsInternalVerificationAfterEventDispatch;
 - (struct CGRect)scaledFrameForIndex:(unsigned long long)arg1;
 
 @end

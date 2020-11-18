@@ -19,14 +19,6 @@
     BOOL startedResolving;
 }
 
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *cacheAccessQueue;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *resolveQueue;
-@property (nonatomic) int resolveType; // @synthesize resolveType;
-@property BOOL startedResolving; // @synthesize startedResolving;
-@property (strong, nonatomic) NSString *thingToResolve; // @synthesize thingToResolve;
-
-- (void)cleanup;
 - (void)dealloc;
 - (id)init;
 

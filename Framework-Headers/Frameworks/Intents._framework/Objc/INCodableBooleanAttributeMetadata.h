@@ -6,9 +6,11 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
+
 @class NSNumber, NSString;
 
-@interface INCodableBooleanAttributeMetadata : INCodableAttributeMetadata
+@interface INCodableBooleanAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     NSNumber *_defaultValue;
     NSString *_falseDisplayName;
@@ -17,16 +19,36 @@
     NSString *_trueDisplayNameID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSNumber *defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *falseDisplayName; // @synthesize falseDisplayName=_falseDisplayName;
 @property (copy, nonatomic) NSString *falseDisplayNameID; // @synthesize falseDisplayNameID=_falseDisplayNameID;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localizedFalseDisplayName;
 @property (readonly, copy, nonatomic) NSString *localizedTrueDisplayName;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *trueDisplayName; // @synthesize trueDisplayName=_trueDisplayName;
 @property (copy, nonatomic) NSString *trueDisplayNameID; // @synthesize trueDisplayNameID=_trueDisplayNameID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INCodableDescriptionFalseDisplayNameKey;
+- (id)__INCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INCodableDescriptionTrueDisplayNameKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INIntentResponseCodableDescriptionFalseDisplayNameKey;
+- (id)__INIntentResponseCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INIntentResponseCodableDescriptionTrueDisplayNameKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INTypeCodableDescriptionFalseDisplayNameKey;
+- (id)__INTypeCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INTypeCodableDescriptionTrueDisplayNameKey;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -7,18 +7,26 @@
 #import <UIKit/UIViewController.h>
 
 @class MISSING_TYPE;
+@protocol TUPluggableDelegate;
 
 @interface _TtC16NewsSubscription21PaywallViewController : UIViewController
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *isBeingUsedAsPlugin;
+    MISSING_TYPE *pluggableDelegate;
     MISSING_TYPE *viewProvider;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *paywallModel;
+    MISSING_TYPE *paywallViewportSizeProvider;
+    MISSING_TYPE *paywallHeightProvider;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *$__lazy_storage_$_verificationSpinner;
     MISSING_TYPE *purchasePresenter;
-    MISSING_TYPE *applicationStateManager;
+    MISSING_TYPE *sceneStateManager;
 }
+
+@property (nonatomic) BOOL isBeingUsedAsPlugin; // @synthesize isBeingUsedAsPlugin;
+@property (nonatomic, weak) id<TUPluggableDelegate> pluggableDelegate; // @synthesize pluggableDelegate;
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

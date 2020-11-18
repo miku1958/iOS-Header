@@ -8,44 +8,33 @@
 
 #import <ARKit/ARTrackable-Protocol.h>
 
-@class ARFaceGeometry, ARFaceTrackingData, MISSING_TYPE, NSDictionary, NSError, NSString;
+@class ARFaceGeometry, MISSING_TYPE, NSDictionary, NSString;
 
 @interface ARFaceAnchor : ARAnchor <ARTrackable>
 {
-    NSDictionary *_blendShapeCoefficientsDictionary;
-    BOOL _isTracked;
+    BOOL isTracked;
     ARFaceGeometry *_geometry;
-    ARFaceTrackingData *_trackingData;
-    NSError *_trackingError;
+    NSDictionary *_blendShapes;
+    MISSING_TYPE *_lookAtPoint;
+    CDStruct_14d5dc5e _leftEyeTransform;
+    CDStruct_14d5dc5e _rightEyeTransform;
 }
 
-@property (readonly, nonatomic) NSDictionary *blendShapes;
+@property (readonly, nonatomic) NSDictionary *blendShapes; // @synthesize blendShapes=_blendShapes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) ARFaceGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isTracked; // @synthesize isTracked=_isTracked;
-@property (readonly, nonatomic) CDStruct_14d5dc5e leftEyeTransform;
-@property (readonly, nonatomic) MISSING_TYPE *lookAtPoint;
-@property (readonly, nonatomic) CDStruct_14d5dc5e rightEyeTransform;
+@property (readonly, nonatomic) BOOL isTracked; // @synthesize isTracked;
+@property (readonly, nonatomic) CDStruct_14d5dc5e leftEyeTransform; // @synthesize leftEyeTransform=_leftEyeTransform;
+@property (readonly, nonatomic) MISSING_TYPE *lookAtPoint; // @synthesize lookAtPoint=_lookAtPoint;
+@property (readonly, nonatomic) CDStruct_14d5dc5e rightEyeTransform; // @synthesize rightEyeTransform=_rightEyeTransform;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) ARFaceTrackingData *trackingData; // @synthesize trackingData=_trackingData;
-@property (strong, nonatomic) NSError *trackingError; // @synthesize trackingError=_trackingError;
 
-+ (id)blendShapeMapping;
-+ (id)blendShapeToMirroredBlendShapeMapping;
-+ (void)initialize;
-+ (id)mirroredBlendShapeMapping;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (MISSING_TYPE *)gazePoint;
-- (const MISSING_TYPE **)imageVertices;
-- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithExistingFaceAnchor:(id)arg1 tracked:(BOOL)arg2 trackingError:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 trackingData:(id)arg2;
-- (BOOL)isEqualToFaceAnchor:(id)arg1;
 
 @end
 

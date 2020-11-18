@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlayerResponse, NSArray, NSString;
+@class MPCPlayerResponse, MPNowPlayingInfoLanguageOption, NSArray, NSString;
 
 @interface MPCPlayerLanguageOptionGroup : NSObject
 {
-    BOOL _allowEmptySelection;
     unsigned long long _currentIndex;
+    BOOL _allowEmptySelection;
     NSArray *_options;
     MPCPlayerResponse *_response;
 }
 
+@property (readonly, nonatomic) BOOL allowEmptySelection; // @synthesize allowEmptySelection=_allowEmptySelection;
 @property (readonly, nonatomic) unsigned long long indexOfSelectedOption;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) unsigned long long numberOfOptions;
 @property (readonly, nonatomic) NSArray *options; // @synthesize options=_options;
 @property (readonly, weak, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
+@property (readonly, nonatomic) MPNowPlayingInfoLanguageOption *selectedOption;
 
 - (void).cxx_destruct;
 - (id)changeRequestForOptionAtIndex:(unsigned long long)arg1;

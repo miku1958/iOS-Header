@@ -7,9 +7,12 @@
 #import <HomeUI/HUServiceGridViewControllerDelegate-Protocol.h>
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HFTriggerBuilder, HUTriggerSummaryActionGridViewController;
+@class HFServiceActionItem, HFTriggerBuilder, HUTriggerSummaryActionGridViewController;
 
 @protocol HUTriggerSummaryActionGridViewControllerDelegate <NSObject, HUServiceGridViewControllerDelegate>
 - (void)triggerSummaryActionGridViewController:(HUTriggerSummaryActionGridViewController *)arg1 didUpdateTriggerBuilder:(HFTriggerBuilder *)arg2;
+
+@optional
+- (BOOL)triggerSummaryActionGridViewController:(HUTriggerSummaryActionGridViewController *)arg1 shouldShowAction:(HFServiceActionItem *)arg2;
 @end
 

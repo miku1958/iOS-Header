@@ -31,6 +31,7 @@
 + (id)inviteStyleAttributes;
 + (id)parkedCarStyleAttributes;
 + (id)restaurantStyleAttributes;
++ (id)schoolStyleAttributes;
 + (id)searchResultStyleAttributes;
 + (id)styleAttributesForPlace:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -38,6 +39,8 @@
 + (id)transitStationStyleAttributes;
 + (id)workStyleAttributes;
 - (void).cxx_destruct;
+- (int)bikeLaneSide;
+- (int)bikeableSide;
 - (id)copyWithAirportStyleAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

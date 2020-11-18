@@ -107,6 +107,7 @@
 - (void)notifyingContainerViewWillChangeSize:(struct CGSize)arg1;
 - (void)preloadAll;
 - (void)prepareToTransitionToVisible:(BOOL)arg1 completionHandler:(CDUnknownBlockType *)arg2;
+- (void)prepareViewWithLayout:(id)arg1;
 - (id)recordForItem:(id)arg1;
 - (void)reloadData;
 - (void)reloadRecordListItems;
@@ -121,6 +122,7 @@
 - (void)setDisplayedRecordFromIndex:(unsigned long long)arg1;
 - (BOOL)shouldCurrentlyDisplayedRecordTransitionToLive;
 - (void)significantRecordChangeInDataSource:(id)arg1;
+- (void)snapshotInBlock:(CDUnknownBlockType)arg1;
 - (void)stopUsingAVTViewSessionSynchronously:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)transitionCell:(id)arg1 indexPath:(id)arg2 toStartFocusingAnimated:(BOOL)arg3 session:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)transitionCell:(id)arg1 toStopFocusingAnimated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -131,7 +133,6 @@
 - (void)updateCachedCanCreateValueIfNeeded;
 - (void)updateDisplayedRecordIfNeeded;
 - (void)useAVTViewFromSession:(id)arg1 withLayout:(id)arg2;
-- (id)viewForSnapshot;
 
 @end
 

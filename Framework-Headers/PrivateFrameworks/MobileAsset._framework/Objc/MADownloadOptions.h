@@ -18,6 +18,8 @@
     BOOL _allowsExpensiveAccess;
     BOOL _requiresPowerPluggedIn;
     BOOL _prefersInfraWiFi;
+    BOOL _liveServerCatalogOnly;
+    BOOL _liveServerCatalogOnlyIsOverridden;
     long long _timeoutIntervalForResource;
     NSMutableDictionary *_additionalServerParams;
     NSString *_sessionId;
@@ -28,6 +30,8 @@
 @property (nonatomic) BOOL allowsExpensiveAccess; // @synthesize allowsExpensiveAccess=_allowsExpensiveAccess;
 @property (nonatomic) BOOL canUseLocalCacheServer; // @synthesize canUseLocalCacheServer=_canUseLocalCacheServer;
 @property (nonatomic) BOOL discretionary; // @synthesize discretionary=_discretionary;
+@property (nonatomic) BOOL liveServerCatalogOnly; // @synthesize liveServerCatalogOnly=_liveServerCatalogOnly;
+@property (nonatomic) BOOL liveServerCatalogOnlyIsOverridden; // @synthesize liveServerCatalogOnlyIsOverridden=_liveServerCatalogOnlyIsOverridden;
 @property (nonatomic) BOOL prefersInfraWiFi; // @synthesize prefersInfraWiFi=_prefersInfraWiFi;
 @property (nonatomic) BOOL requiresPowerPluggedIn; // @synthesize requiresPowerPluggedIn=_requiresPowerPluggedIn;
 @property (strong, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;

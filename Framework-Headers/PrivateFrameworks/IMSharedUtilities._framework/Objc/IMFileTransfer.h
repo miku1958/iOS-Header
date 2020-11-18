@@ -57,6 +57,7 @@
     long long _srCloudKitSyncState;
     NSData *_srCloudKitServerChangeTokenBlob;
     NSString *_srCloudKitRecordID;
+    NSString *_sandboxToken;
     NSURL *_localURL;
     NSURL *_temporaryHighQualityLocalURL;
     NSDictionary *_attributionInfo;
@@ -110,6 +111,8 @@
 @property (strong, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
 @property (strong, nonatomic) NSString *otherPerson; // @synthesize otherPerson=_otherPerson;
 @property (readonly, strong, nonatomic) NSString *permanentHighQualityLocalPath;
+@property (nonatomic) NSDate *refreshDate;
+@property (copy, nonatomic) NSString *sandboxToken; // @synthesize sandboxToken=_sandboxToken;
 @property (nonatomic) BOOL shouldAttemptToResume; // @synthesize shouldAttemptToResume=_shouldAttemptToResume;
 @property (nonatomic, setter=_setForceArchive:) BOOL shouldForceArchive; // @synthesize shouldForceArchive=_shouldForceArchive;
 @property (strong, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
@@ -132,10 +135,13 @@
 + (id)AuxGUIDFromFileTransferGUID:(id)arg1;
 + (BOOL)_doesLocalURLRequireArchiving:(id)arg1;
 + (id)guidByStrippingAuxPrefix:(id)arg1;
++ (id)guidForFileTransferDictionary:(id)arg1;
++ (id)whitelistedKeys;
 - (id)_auxVideoPathIfItExists;
 - (void)_calculateTypeInformation;
 - (void)_clear;
 - (id)_dictionaryRepresentation;
+- (id)_dictionaryToSend;
 - (id)_initWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(BOOL)arg3 localURL:(id)arg4 account:(id)arg5 otherPerson:(id)arg6 totalBytes:(unsigned long long)arg7 hfsType:(unsigned int)arg8 hfsCreator:(unsigned int)arg9 hfsFlags:(unsigned short)arg10 isIncoming:(BOOL)arg11;
 - (BOOL)_isCloudKitEnabled;
 - (BOOL)_missingAttachmentCanBeDownloadedFromCloudKit;
@@ -145,9 +151,11 @@
 - (void)_setDirectory:(BOOL)arg1 hfsType:(unsigned int)arg2 hfsCreator:(unsigned int)arg3 hfsFlags:(unsigned short)arg4;
 - (void)_swizzleTransferStateIfMissingAttachmentCanBeDownloadedFromCloudKit;
 - (BOOL)_updateWithDictionaryRepresentation:(id)arg1;
+- (void)_updateWithDictionaryRepresentationForWhitelistedKeys:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)init;
+- (void)setMimeType:(id)arg1;
 
 @end
 

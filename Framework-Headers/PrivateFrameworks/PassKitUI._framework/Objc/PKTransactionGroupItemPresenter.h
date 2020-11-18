@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSCache, NSDateFormatter, NSString, PKPaymentTransactionCellController, PKPaymentTransactionCollectionViewCell, UIFont, UIImage;
+@class NSCache, NSDateFormatter, NSString, PKMapsSnapshotManager, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionIconGenerator, PKPeerPaymentContactResolver, UIFont, UIImage;
 
 @interface PKTransactionGroupItemPresenter : NSObject <PKDashboardItemPresenter>
 {
@@ -23,35 +23,44 @@
     UIImage *_appleCardImage;
     UIImage *_refundsImage;
     UIImage *_adjustmentsImage;
+    UIImage *_mapsPlaceholderImage;
     NSCache *_iconsPerMerchantCategory;
     struct CGSize _groupSize;
     BOOL _needsSizing;
     NSDateFormatter *_formatterYear;
     NSDateFormatter *_formatterMonth;
     BOOL _useAccessibilityLayout;
-    PKPaymentTransactionCellController *_cellController;
+    PKPaymentTransactionIconGenerator *_iconGenerator;
+    PKMapsSnapshotManager *_snapshotManager;
+    PKPeerPaymentContactResolver *_contactResolver;
 }
 
+@property (strong, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PKMapsSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_applyTokenFiltersFromItem:(id)arg1 toFetcher:(id)arg2;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4 forSizing:(BOOL)arg5;
 - (id)_contactKeysToFetch;
 - (struct CGSize)_imageSize;
-- (id)_viewControllerForItem:(id)arg1;
+- (void)_updateAvatarOnTransactionCell:(id)arg1 withGroup:(id)arg2 contact:(id)arg3;
+- (void)_updatePrimaryLabelOnTransactionCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
+- (void)_viewControllerForItem:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)adjustmentsImage;
 - (id)appleCardImage;
 - (BOOL)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cashbackImage;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (id)init;
 - (id)interestImage;
 - (Class)itemClass;
+- (id)mapsPlaceholderImage;
 - (id)refundsImage;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (void)traitCollectionDidChangeFromTrait:(id)arg1 toTrait:(id)arg2 inCollectionView:(id)arg3;

@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)createArticleForHeadline:(id)arg1;
 - (id)createArticlesForArticleIDs:(id)arg1;
 - (id)initWithArticleController:(id)arg1;
 

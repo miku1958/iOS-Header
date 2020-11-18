@@ -29,8 +29,8 @@
 + (BOOL)_titleComponentsAreInSameSupersetCity:(id)arg1 graph:(id)arg2;
 + (id)_titleWithLineBreakBehavior:(unsigned long long)arg1 forTitle:(id)arg2 titleComponents:(id)arg3;
 + (id)_twoPartLocationTitleWithFirstPartTitle:(id)arg1 withDimension:(unsigned long long)arg2 usedFirstPartLocationNode:(id)arg3 addressNode:(id)arg4;
-+ (float)_weightForAOINode:(id)arg1 withAddressNodes:(id)arg2;
-+ (id)beautifiedLocationNodeStringWithLocationNode:(id)arg1;
++ (float)_weightForAreaNode:(id)arg1 withAddressNodes:(id)arg2;
++ (id)beautifiedLocationNodeStringWithPlaceNode:(id)arg1;
 + (void)generateBusinessItemLocationWithOptions:(id)arg1 result:(CDUnknownBlockType)arg2;
 + (void)generateHighlightLocationTitleForTripWithMomentNodes:(id)arg1 lineBreakBehavior:(unsigned long long)arg2 result:(CDUnknownBlockType)arg3;
 + (void)generateLocationTitleForTripWithMomentNodes:(id)arg1 result:(CDUnknownBlockType)arg2;

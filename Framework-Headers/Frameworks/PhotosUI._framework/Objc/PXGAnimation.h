@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, PXGLayout, PXGTransition;
+@class CASpringAnimation, NSDictionary, PXGLayout, PXGTransition;
 @protocol PXGAnimationDelegate;
 
 @interface PXGAnimation : NSObject
@@ -15,14 +15,18 @@
     BOOL _isDoubleSided;
     BOOL _supportsPresentationAdjustment;
     float _dampingRatio;
+    float _springAnimationInitialProgress;
+    float _springAnimationProgressMultiplier;
     double _duration;
     long long _curve;
     long long _numberOfOscillations;
     double _maximumDistance;
+    long long _scope;
     id<PXGAnimationDelegate> _delegate;
     NSDictionary *_userData;
     PXGLayout *_layout;
     PXGTransition *_transition;
+    CASpringAnimation *_springAnimation;
 }
 
 @property (nonatomic) long long curve; // @synthesize curve=_curve;
@@ -34,6 +38,10 @@
 @property (readonly, weak, nonatomic) PXGLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) double maximumDistance; // @synthesize maximumDistance=_maximumDistance;
 @property (nonatomic) long long numberOfOscillations; // @synthesize numberOfOscillations=_numberOfOscillations;
+@property (nonatomic) long long scope; // @synthesize scope=_scope;
+@property (strong, nonatomic) CASpringAnimation *springAnimation; // @synthesize springAnimation=_springAnimation;
+@property (nonatomic) float springAnimationInitialProgress; // @synthesize springAnimationInitialProgress=_springAnimationInitialProgress;
+@property (nonatomic) float springAnimationProgressMultiplier; // @synthesize springAnimationProgressMultiplier=_springAnimationProgressMultiplier;
 @property (nonatomic) BOOL supportsPresentationAdjustment; // @synthesize supportsPresentationAdjustment=_supportsPresentationAdjustment;
 @property (nonatomic) BOOL supportsSpriteTransfer; // @synthesize supportsSpriteTransfer=_supportsSpriteTransfer;
 @property (weak, nonatomic) PXGTransition *transition; // @synthesize transition=_transition;

@@ -6,16 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class SiriUISashItem, SiriUITextContainerView, UIImageView;
+@class SiriUISashItem, SiriUITextContainerView, UIButton, UIImageView, UIVisualEffectView;
 
 @interface SiriUISashView : UIView
 {
     UIView *_contentView;
     UIImageView *_imageView;
     SiriUITextContainerView *_textContainerView;
+    BOOL _requestsExtraPadding;
+    UIVisualEffectView *_vibrantButtonBackgroundView;
+    UIVisualEffectView *_vibrantTextBackgroundView;
+    BOOL _navigating;
     SiriUISashItem *_sashItem;
+    UIButton *_backNavigationButton;
 }
 
+@property (readonly, nonatomic) UIButton *backNavigationButton; // @synthesize backNavigationButton=_backNavigationButton;
+@property (nonatomic, getter=isNavigating) BOOL navigating; // @synthesize navigating=_navigating;
 @property (readonly, nonatomic) SiriUISashItem *sashItem; // @synthesize sashItem=_sashItem;
 
 + (id)_font;

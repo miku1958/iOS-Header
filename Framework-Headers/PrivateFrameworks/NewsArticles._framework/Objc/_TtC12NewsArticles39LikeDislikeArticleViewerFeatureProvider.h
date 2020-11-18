@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *visibilityProvider;
     MISSING_TYPE *styler;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

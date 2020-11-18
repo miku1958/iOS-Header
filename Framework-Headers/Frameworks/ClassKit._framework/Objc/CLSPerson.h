@@ -26,6 +26,7 @@
     NSString *_iCloudUserID;
     NSString *_orgID;
     long long _passcodeType;
+    long long _axmAccountStatus;
     NSString *_emailAddress;
     NSString *_grade;
     long long _sourceType;
@@ -33,6 +34,7 @@
 }
 
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
+@property (nonatomic) long long axmAccountStatus; // @synthesize axmAccountStatus=_axmAccountStatus;
 @property (readonly, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;

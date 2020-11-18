@@ -6,12 +6,12 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFUnfairLock, NSDate, NSObject;
+@class NSDate, NSObject;
 @protocol HMFTimerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMFTimer : HMFObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_timerQueue;
     double _timeInterval;

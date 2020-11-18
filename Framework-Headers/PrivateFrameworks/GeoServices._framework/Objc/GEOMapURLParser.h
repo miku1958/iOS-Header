@@ -50,6 +50,9 @@
     GEOMuninViewState *_muninViewState;
     NSString *_label;
     BOOL _showCarDestinations;
+    unsigned long long _curatedCollectionMUID;
+    unsigned long long _publisherMUID;
+    BOOL _showAllCuratedCollections;
 }
 
 @property (readonly, nonatomic) NSString *abAddressID; // @synthesize abAddressID=_abAddressID;
@@ -62,6 +65,7 @@
 @property (readonly, nonatomic) GEOURLCollectionStorage *collectionStorage; // @synthesize collectionStorage=_collectionStorage;
 @property (readonly, nonatomic) NSString *contentProvider; // @synthesize contentProvider=_contentProvider;
 @property (readonly, nonatomic) NSString *contentProviderID; // @synthesize contentProviderID=_contentProviderID;
+@property (readonly, nonatomic) unsigned long long curatedCollectionMUID; // @synthesize curatedCollectionMUID=_curatedCollectionMUID;
 @property (readonly, nonatomic) NSString *directionsDestinationAddressString; // @synthesize directionsDestinationAddressString=_directionsDestinationAddressString;
 @property (readonly, nonatomic) NSString *directionsSourceAddressString; // @synthesize directionsSourceAddressString=_directionsSourceAddressString;
 @property (readonly, nonatomic) BOOL exactPositionSpecified; // @synthesize exactPositionSpecified=_exactPositionSpecified;
@@ -72,6 +76,7 @@
 @property (readonly, copy, nonatomic) NSString *lineName; // @synthesize lineName=_lineName;
 @property (readonly, nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (readonly, nonatomic) GEOMuninViewState *muninViewState; // @synthesize muninViewState=_muninViewState;
+@property (readonly, nonatomic) unsigned long long publisherMUID; // @synthesize publisherMUID=_publisherMUID;
 @property (readonly, nonatomic) double roll; // @synthesize roll=_roll;
 @property (readonly, nonatomic) double rotation; // @synthesize rotation=_rotation;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee searchCoordinate; // @synthesize searchCoordinate=_searchCoordinate;
@@ -79,6 +84,7 @@
 @property (readonly, nonatomic) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property (readonly, nonatomic) CDStruct_90e2a262 searchRegion; // @synthesize searchRegion=_searchRegion;
 @property (readonly, nonatomic) unsigned long long searchUID; // @synthesize searchUID=_searchUID;
+@property (readonly, nonatomic) BOOL showAllCuratedCollections; // @synthesize showAllCuratedCollections=_showAllCuratedCollections;
 @property (readonly, nonatomic) BOOL showCarDestinations; // @synthesize showCarDestinations=_showCarDestinations;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee span; // @synthesize span=_span;
 @property (readonly, nonatomic) BOOL tester; // @synthesize tester=_tester;

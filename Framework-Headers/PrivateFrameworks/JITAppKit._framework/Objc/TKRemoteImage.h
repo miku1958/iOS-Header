@@ -6,6 +6,7 @@
 
 #import <JITAppKit/TKAdaptiveImage.h>
 
+__attribute__((visibility("hidden")))
 @interface TKRemoteImage : TKAdaptiveImage
 {
 }

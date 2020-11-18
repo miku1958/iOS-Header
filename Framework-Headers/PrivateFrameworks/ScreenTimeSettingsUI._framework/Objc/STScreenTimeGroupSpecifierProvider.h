@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_displayNameDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_hasWatchOSDevicesOnlyDidChange:(BOOL)arg1;
 - (void)_refreshingDidChange:(BOOL)arg1;
+- (void)_screenTimeEnabledDidChange:(BOOL)arg1;
 - (void)_showUsageDetailListController:(id)arg1;
 - (id)_usageDetailsCoordinator:(id)arg1;
 - (void)_usageReportDidChangeFrom:(id)arg1 to:(id)arg2;

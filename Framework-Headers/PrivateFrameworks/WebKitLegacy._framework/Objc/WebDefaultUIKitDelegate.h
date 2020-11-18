@@ -26,11 +26,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleKeyTextCommandForCurrentEvent;
 - (BOOL)hasRichlyEditableSelection;
 - (struct CGPoint)interactionLocation;
-- (BOOL)isUnperturbedDictationResultMarker:(id)arg1;
 - (BOOL)performTwoStepDrop:(id)arg1 atDestination:(id)arg2 isMove:(BOOL)arg3;
 - (BOOL)performsTwoStepPaste:(id)arg1;
 - (id)readDataFromPasteboard:(id)arg1 withIndex:(long long)arg2;
 - (void)revealedSelectionByScrollingWebFrame:(id)arg1;
+- (BOOL)shouldRevealCurrentSelectionAfterInsertion;
+- (BOOL)shouldSuppressPasswordEcho;
 - (void)showPlaybackTargetPicker:(BOOL)arg1 fromRect:(struct CGRect)arg2;
 - (id)supportedPasteboardTypesForCurrentSelection;
 - (void)webView:(id)arg1 addMessageToConsole:(id)arg2 withSource:(id)arg3;

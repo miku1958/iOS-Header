@@ -14,18 +14,21 @@
 {
     NSString *_payloadMode;
     NSArray *_payloadCategories;
+    NSArray *_payloadCategoriesVersion2;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *payloadCategories; // @synthesize payloadCategories=_payloadCategories;
+@property (copy, nonatomic) NSArray *payloadCategoriesVersion2; // @synthesize payloadCategoriesVersion2=_payloadCategoriesVersion2;
 @property (copy, nonatomic) NSString *payloadMode; // @synthesize payloadMode=_payloadMode;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 withMode:(id)arg2;
 + (id)buildWithIdentifier:(id)arg1 withMode:(id)arg2 withCategories:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withMode:(id)arg2 withCategories:(id)arg3 withCategoriesVersion2:(id)arg4;
 + (id)profileType;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

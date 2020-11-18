@@ -11,7 +11,7 @@
 
 @protocol FCMutableTodayPrivateData <FCTodayPrivateData>
 
-@property (copy, nonatomic) NSSet *autoFavoriteTagIDs;
+@property (copy, nonatomic) NSArray *autoFavoriteTagIDs;
 @property (copy, nonatomic) FCBundleSubscription *bundleSubscription;
 @property (copy, nonatomic) id<FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @property (copy, nonatomic) NSSet *mutedTagIDs;

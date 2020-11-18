@@ -10,8 +10,8 @@
 
 @interface WFDeleteShortcutEvent : WFEvent
 {
-    int _source;
     NSString *_key;
+    NSString *_shortcutSource;
     NSString *_addToSiriBundleIdentifier;
     NSString *_galleryIdentifier;
 }
@@ -19,7 +19,7 @@
 @property (copy, nonatomic) NSString *addToSiriBundleIdentifier; // @synthesize addToSiriBundleIdentifier=_addToSiriBundleIdentifier;
 @property (copy, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (copy, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
 
 + (Class)codableEventClass;
 - (void).cxx_destruct;

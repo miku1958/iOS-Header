@@ -53,7 +53,10 @@
 - (id)errorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)errorsCount;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)missTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

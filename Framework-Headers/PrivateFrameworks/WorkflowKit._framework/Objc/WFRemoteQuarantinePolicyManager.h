@@ -31,7 +31,7 @@
 - (id)policyString;
 - (id)policyStringForBundleIfValid:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
-- (void)updatePolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updatePolicyWithXPCActivity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

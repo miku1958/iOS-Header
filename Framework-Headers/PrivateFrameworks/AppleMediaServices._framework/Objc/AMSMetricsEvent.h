@@ -20,15 +20,19 @@
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (nonatomic, getter=isAnonymous) BOOL anonymous;
 @property (strong, nonatomic) NSString *app;
 @property (strong, nonatomic) NSString *appVersion;
 @property (strong, nonatomic) NSNumber *baseVersion;
 @property (strong, nonatomic) NSString *canaryIdentifier;
+@property (nonatomic) BOOL checkDiagnosticsAndUsageSetting;
 @property (strong, nonatomic) NSString *clientEventID;
+@property (strong, nonatomic) NSString *clientIdentifier;
 @property (readonly, nonatomic) NSDictionary *databaseEventBody;
 @property (strong, nonatomic) NSNumber *databasePID; // @synthesize databasePID=_databasePID;
 @property (strong, nonatomic) NSString *diagnosticsSubmissionBugType;
 @property (readonly, nonatomic) NSDictionary *dictionaryForPosting;
+@property (readonly, nonatomic) BOOL engagementEvent;
 @property (strong, nonatomic) NSNumber *eventTime;
 @property (strong, nonatomic) NSString *eventType;
 @property (strong, nonatomic) NSNumber *eventVersion;
@@ -45,11 +49,14 @@
 + (id)_topicFromAuthenticationContext:(id)arg1;
 + (id)createEventFromAuthenticationContext:(id)arg1 error:(id)arg2;
 + (id)metricsAuthenticationAttemptDictionaryForAuthKitError:(id)arg1;
++ (id)sanitizedObject:(id)arg1;
 - (void).cxx_destruct;
 - (id)_propertyForBodyKey:(id)arg1 clientOnly:(BOOL)arg2;
 - (void)_setProperty:(id)arg1 forBodyKey:(id)arg2 clientOnly:(BOOL)arg3;
+- (void)addClientIdentifier:(id)arg1;
 - (void)addPropertiesWithDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initForEngagement;
 - (id)initWithDatabaseEventBody:(id)arg1;
 - (id)initWithTopic:(id)arg1;
 - (id)initWithUnderlyingDictionary:(id)arg1;

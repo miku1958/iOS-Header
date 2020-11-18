@@ -52,7 +52,7 @@
 - (id)initWithParentIdentifier:(id)arg1 codingKey:(id)arg2;
 - (id)initWithParentIdentifier:(id)arg1 codingKey:(id)arg2 messageHandler:(id)arg3 settingsCreator:(id)arg4;
 - (id)logIdentifier;
-- (void)mergeWith:(id)arg1;
+- (void)mergeWith:(id)arg1 settingsInitializedWasModified:(BOOL)arg2;
 - (void)notifyDelegateOfUpdate;
 - (id)settingForIdentifier:(id)arg1;
 - (id)settingGroupForIdentifier:(id)arg1;

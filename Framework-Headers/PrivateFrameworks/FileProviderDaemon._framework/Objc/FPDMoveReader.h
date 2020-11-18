@@ -44,13 +44,17 @@
 - (void)_bailOutOfRoot:(id)arg1;
 - (void)_enqueueAtomsForRoot:(id)arg1;
 - (BOOL)_enqueueItem:(id)arg1 forRoot:(id)arg2 atomically:(BOOL)arg3 useDiskWriter:(BOOL)arg4;
+- (long long)_filesizeBitsSupportAtPath:(id)arg1;
 - (void)_finishWithError:(id)arg1;
 - (id)_getTargetFolderFor:(id)arg1 root:(id)arg2 error:(id *)arg3;
 - (BOOL)_isCancelled;
 - (BOOL)_isRootCancelled:(id)arg1;
 - (BOOL)_isSingleMoveForRoot:(id)arg1;
+- (BOOL)_isSpaceAvailableForWrite:(long long)arg1 atTargetPath:(id)arg2;
 - (void)_progressComputationPreflight;
 - (void)_run;
+- (BOOL)_shouldCheckFileSystemBitsForRoot:(id)arg1 targetFolderURL:(id)arg2;
+- (BOOL)_shouldCheckSpaceForRoot:(id)arg1 targetFolderURL:(id)arg2;
 - (BOOL)_shouldUseDiskWriterToPerformMoveForItem:(id)arg1;
 - (void)_t_unblock;
 - (void)_t_waitForUnblock;
@@ -61,6 +65,7 @@
 - (id)init;
 - (id)initWithMoveWriter:(id)arg1 operation:(id)arg2 queue:(id)arg3;
 - (void)start;
+- (void)verifyTargetURL:(CDUnknownBlockType)arg1;
 
 @end
 

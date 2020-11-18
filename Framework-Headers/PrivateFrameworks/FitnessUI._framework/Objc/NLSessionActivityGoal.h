@@ -24,10 +24,14 @@
 + (BOOL)supportsSecureCoding;
 - (double)_doubleValueForQuantity:(id)arg1;
 - (id)_quantityForDoubleValue:(double)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)doubleValue;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGoalTypeIdentifier:(unsigned long long)arg1 value:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToNLSessionActivityGoal:(id)arg1;
 
 @end
 

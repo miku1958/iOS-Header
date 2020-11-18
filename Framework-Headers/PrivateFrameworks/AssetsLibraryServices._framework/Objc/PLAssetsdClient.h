@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PLAssetsdClientSandboxExtensions, PLAssetsdClientXPCConnection, PLAssetsdCloudClient, PLAssetsdCloudInternalClient, PLAssetsdDebugClient, PLAssetsdDemoClient, PLAssetsdDiagnosticsClient, PLAssetsdLibraryClient, PLAssetsdLibraryInternalClient, PLAssetsdLibraryManagementClient, PLAssetsdMigrationClient, PLAssetsdNotificationClient, PLAssetsdPhotoKitClient, PLAssetsdResourceClient, PLAssetsdResourceInternalClient, PLAssetsdResourceWriteOnlyClient, PLAssetsdSyncClient, PLAssetsdSystemLibraryURLReadOnlyClient, PLAutoBindingProxyFactory;
+@class PLAssetsdClientSandboxExtensions, PLAssetsdClientXPCConnection, PLAssetsdCloudClient, PLAssetsdCloudInternalClient, PLAssetsdDebugClient, PLAssetsdDemoClient, PLAssetsdDiagnosticsClient, PLAssetsdLibraryClient, PLAssetsdLibraryInternalClient, PLAssetsdLibraryManagementClient, PLAssetsdMigrationClient, PLAssetsdNotificationClient, PLAssetsdPhotoKitAddClient, PLAssetsdPhotoKitClient, PLAssetsdPrivacySupportClient, PLAssetsdResourceAvailabilityClient, PLAssetsdResourceClient, PLAssetsdResourceInternalClient, PLAssetsdResourceWriteOnlyClient, PLAssetsdSyncClient, PLAssetsdSystemLibraryURLReadOnlyClient, PLAutoBindingProxyFactory;
 @protocol OS_dispatch_queue;
 
 @interface PLAssetsdClient : NSObject
@@ -16,10 +16,12 @@
     PLAutoBindingProxyFactory *_autoBindingProxyFactory;
     PLAssetsdClientSandboxExtensions *_sandboxExtensions;
     PLAssetsdLibraryClient *_libraryClient;
+    PLAssetsdLibraryInternalClient *_libraryInternalClient;
     PLAssetsdSystemLibraryURLReadOnlyClient *_systemLibraryURLReadOnlyClient;
     PLAssetsdLibraryManagementClient *_libraryManagementClient;
-    PLAssetsdLibraryInternalClient *_libraryInternalClient;
     PLAssetsdPhotoKitClient *_photoKitClient;
+    PLAssetsdResourceAvailabilityClient *_resourceAvailabilityClient;
+    PLAssetsdPhotoKitAddClient *_photoKitAddClient;
     PLAssetsdResourceClient *_resourceClient;
     PLAssetsdResourceWriteOnlyClient *_resourceWriteOnlyClient;
     PLAssetsdResourceInternalClient *_resourceInternalClient;
@@ -31,6 +33,7 @@
     PLAssetsdDemoClient *_demoClient;
     PLAssetsdDiagnosticsClient *_diagnosticsClient;
     PLAssetsdDebugClient *_debugClient;
+    PLAssetsdPrivacySupportClient *_privacySupportClient;
 }
 
 @property (readonly) PLAssetsdCloudClient *cloudClient;
@@ -43,7 +46,9 @@
 @property (readonly) PLAssetsdLibraryManagementClient *libraryManagementClient;
 @property (readonly) PLAssetsdMigrationClient *migrationClient;
 @property (readonly) PLAssetsdNotificationClient *notificationClient;
+@property (readonly) PLAssetsdPhotoKitAddClient *photoKitAddClient;
 @property (readonly) PLAssetsdPhotoKitClient *photoKitClient;
+@property (readonly) PLAssetsdResourceAvailabilityClient *resourceAvailabilityClient;
 @property (readonly) PLAssetsdResourceClient *resourceClient;
 @property (readonly) PLAssetsdResourceInternalClient *resourceInternalClient;
 @property (readonly) PLAssetsdSyncClient *syncClient;
@@ -56,6 +61,7 @@
 - (id)init;
 - (id)initWithPhotoLibraryURL:(id)arg1;
 - (void)prepareToShutdown;
+- (id)privacySupportClient;
 - (id)resourceWriteOnlyClient;
 - (void)sendDaemonJob:(id)arg1 shouldRunSerially:(BOOL)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (id)systemLibraryURLReadOnlyClient;

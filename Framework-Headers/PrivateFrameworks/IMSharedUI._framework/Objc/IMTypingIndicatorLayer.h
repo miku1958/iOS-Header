@@ -13,6 +13,7 @@
 @interface IMTypingIndicatorLayer : CALayer <IMTypingIndicatorLayerProtocol>
 {
     BOOL _hasDarkBackground;
+    BOOL _highlighted;
     id _iconImage;
     UIColor *_bubbleColor;
     UIColor *_thinkingDotColor;
@@ -35,9 +36,14 @@
 @property (nonatomic) double bubbleOpacity; // @synthesize bubbleOpacity=_bubbleOpacity;
 @property (copy, nonatomic) UIColor *customBubbleColor; // @synthesize customBubbleColor=_customBubbleColor;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) UIColor *defaultBubbleColor;
+@property (readonly, nonatomic) double defaultBubbleOpacity;
+@property (readonly, nonatomic) UIColor *defaultThinkingDotColor;
+@property (readonly, nonatomic) double defaultThinkingDotOpacity;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasDarkBackground; // @synthesize hasDarkBackground=_hasDarkBackground;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) id iconImage; // @synthesize iconImage=_iconImage;
 @property (strong, nonatomic) CALayer *iconImageLayer; // @synthesize iconImageLayer=_iconImageLayer;
 @property (strong, nonatomic) CALayer *largeBubble; // @synthesize largeBubble=_largeBubble;
@@ -51,11 +57,7 @@
 @property (strong, nonatomic) CAReplicatorLayer *thinkingDots; // @synthesize thinkingDots=_thinkingDots;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
-+ (id)defaultBubbleColor;
-+ (double)defaultBubbleOpacity;
 + (struct CGSize)defaultSize;
-+ (id)defaultThinkingDotColor;
-+ (double)defaultThinkingDotOpacity;
 + (struct CGRect)iconImageFrame;
 + (double)iconImageTrailingSpace;
 + (struct CGRect)largeBubbleFrame;
@@ -83,6 +85,7 @@
 - (void)_updateForImage;
 - (double)convertedCurrentMediaTime;
 - (id)init;
+- (id)initHighlighted:(BOOL)arg1;
 - (id)resolvedColor:(id)arg1 forTraitCollection:(id)arg2;
 - (void)startGrowAnimation;
 - (void)startGrowAnimationWithCompletionBlock:(CDUnknownBlockType)arg1;

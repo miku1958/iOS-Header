@@ -37,6 +37,7 @@
 @property (copy, nonatomic) NSArray *ipv6Addresses; // @synthesize ipv6Addresses=_ipv6Addresses;
 @property (nonatomic) TSBonjourNode *node; // @synthesize node=_node;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)initWithServiceName:(id)arg1 type:(id)arg2 andDomain:(id)arg3 onInterfaceIndex:(unsigned int)arg4 andName:(id)arg5;

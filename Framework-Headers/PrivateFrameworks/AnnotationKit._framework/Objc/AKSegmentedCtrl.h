@@ -17,8 +17,8 @@
     NSMutableOrderedSet *_selectionStack;
 }
 
-@property (strong, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
-@property (strong, nonatomic) NSArray *images; // @synthesize images=_images;
+@property (copy, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
+@property (copy, nonatomic) NSArray *images; // @synthesize images=_images;
 @property (nonatomic) unsigned long long selectedSegment; // @synthesize selectedSegment=_selectedSegment;
 @property (strong, nonatomic) NSMutableOrderedSet *selectionStack; // @synthesize selectionStack=_selectionStack;
 @property (nonatomic) unsigned long long selectionType; // @synthesize selectionType=_selectionType;

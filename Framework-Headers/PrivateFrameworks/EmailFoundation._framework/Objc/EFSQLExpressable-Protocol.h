@@ -6,11 +6,12 @@
 
 #import <EmailFoundation/NSObject-Protocol.h>
 
-@class NSString;
+@class NSMutableString, NSString;
 
 @protocol EFSQLExpressable <NSObject>
 
 @property (readonly, copy, nonatomic) NSString *ef_SQLExpression;
 
+- (void)ef_renderSQLExpressionInto:(NSMutableString *)arg1;
 @end
 

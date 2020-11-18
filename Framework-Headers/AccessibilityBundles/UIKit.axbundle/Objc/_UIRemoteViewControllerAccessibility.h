@@ -17,6 +17,7 @@
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadAccessibilityInformation:(BOOL)arg1;
+- (void)_accessibilityLoadAccessibilityInformation:(BOOL)arg1 retryTime:(double)arg2;
 - (id)_accessibilityResponderElement;
 - (void)_awakeWithConnectionInfo:(id)arg1;
 - (BOOL)_axGetWasFocusEnabled;

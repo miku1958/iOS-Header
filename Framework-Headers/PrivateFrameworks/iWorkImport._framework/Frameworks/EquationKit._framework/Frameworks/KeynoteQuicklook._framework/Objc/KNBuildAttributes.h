@@ -21,6 +21,7 @@
 - (void)p_readSharedAttributesForArchive:(struct AnimationAttributesArchive *)arg1 intoDictionary:(id)arg2;
 - (void)p_readTEFAttributesForArchive:(const struct BuildAttributesArchive *)arg1 intoDictionary:(id)arg2;
 - (void)p_setUnsafeDirection:(unsigned long long)arg1 onAttributes:(id)arg2;
+- (BOOL)p_usesAlignToPath;
 - (void)p_writeAttributesForTypewriterToDiffArchive:(struct BuildAttributesArchive *)arg1 archiver:(id)arg2;
 - (void)p_writeBuildAttributesToArchive:(struct BuildAttributesArchive *)arg1 archiver:(id)arg2;
 - (void)p_writeSharedAttributesToArchive:(struct BuildAttributesArchive *)arg1;

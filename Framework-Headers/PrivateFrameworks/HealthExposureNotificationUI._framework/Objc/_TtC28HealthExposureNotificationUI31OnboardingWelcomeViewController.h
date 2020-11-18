@@ -11,6 +11,7 @@
 @interface _TtC28HealthExposureNotificationUI31OnboardingWelcomeViewController : UIViewController
 {
     MISSING_TYPE *flow;
+    MISSING_TYPE *isFromAvailabilityAlert;
     MISSING_TYPE *notificationPreview;
     MISSING_TYPE *primaryButton;
     MISSING_TYPE *secondaryButton;

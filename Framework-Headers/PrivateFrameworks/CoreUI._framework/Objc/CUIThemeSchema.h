@@ -12,33 +12,33 @@
 
 + (id)defaultSchema;
 + (id)schemaForPlatform:(long long)arg1;
-- (const CDStruct_c77fb927 *)categoryForElementDefinition:(const CDStruct_e3362728 *)arg1;
+- (const CDStruct_c77fb927 *)categoryForElementDefinition:(const CDStruct_22c2ae3f *)arg1;
 - (unsigned long long)dimensionDefinitionCountForPartDefinition:(const CDStruct_26b2aa83 *)arg1;
-- (const CDStruct_e3362728 *)effectDefinitionAtIndex:(unsigned long long)arg1;
+- (const CDStruct_22c2ae3f *)effectDefinitionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)effectDefinitionCount;
-- (const CDStruct_e3362728 *)effectDefinitionWithName:(id)arg1;
+- (const CDStruct_22c2ae3f *)effectDefinitionWithName:(id)arg1;
 - (const CDStruct_c77fb927 *)elementCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)elementCategoryCount;
-- (const CDStruct_e3362728 *)elementDefinitionAtIndex:(unsigned long long)arg1;
+- (const CDStruct_22c2ae3f *)elementDefinitionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)elementDefinitionCount;
-- (const CDStruct_e3362728 *)elementDefinitionWithName:(id)arg1;
+- (const CDStruct_22c2ae3f *)elementDefinitionWithName:(id)arg1;
 - (void)enumerateAvailableThemeAttributesInPartDefinition:(const CDStruct_26b2aa83 *)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateAvailableValuesForThemeAttribute:(int)arg1 inPartDefinition:(const CDStruct_26b2aa83 *)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (const CDStruct_e3362728 *)materialDefinitionAtIndex:(unsigned long long)arg1;
+- (const CDStruct_22c2ae3f *)materialDefinitionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)materialDefinitionCount;
-- (const CDStruct_e3362728 *)materialDefinitionWithName:(id)arg1;
-- (unsigned long long)partDefinitionCountForEffectDefinition:(const CDStruct_e3362728 *)arg1;
-- (unsigned long long)partDefinitionCountForElementDefinition:(const CDStruct_e3362728 *)arg1;
-- (unsigned long long)partDefinitionCountForMaterialDefinition:(const CDStruct_e3362728 *)arg1;
+- (const CDStruct_22c2ae3f *)materialDefinitionWithName:(id)arg1;
+- (unsigned long long)partDefinitionCountForEffectDefinition:(const CDStruct_22c2ae3f *)arg1;
+- (unsigned long long)partDefinitionCountForElementDefinition:(const CDStruct_22c2ae3f *)arg1;
+- (unsigned long long)partDefinitionCountForMaterialDefinition:(const CDStruct_22c2ae3f *)arg1;
 - (const CDStruct_26b2aa83 *)partDefinitionForWidgetName:(id)arg1;
-- (const CDStruct_26b2aa83 *)partDefinitionWithName:(id)arg1 forElementDefinition:(const CDStruct_e3362728 *)arg2;
+- (const CDStruct_26b2aa83 *)partDefinitionWithName:(id)arg1 forElementDefinition:(const CDStruct_22c2ae3f *)arg2;
 - (id)schemaEffectRenditionsForPartDefinition:(const CDStruct_26b2aa83 *)arg1;
 - (id)schemaMaterialRenditionsForPartDefinition:(const CDStruct_26b2aa83 *)arg1;
 - (id)schemaRenditionsForPartDefinition:(const CDStruct_26b2aa83 *)arg1;
 - (long long)schemaVersion;
-- (const CDStruct_e3362728 *)sortedEffectDefinitionAtIndex:(unsigned long long)arg1;
-- (const CDStruct_e3362728 *)sortedElementDefinitionAtIndex:(unsigned long long)arg1;
-- (const CDStruct_e3362728 *)sortedMaterialDefinitionAtIndex:(unsigned long long)arg1;
+- (const CDStruct_22c2ae3f *)sortedEffectDefinitionAtIndex:(unsigned long long)arg1;
+- (const CDStruct_22c2ae3f *)sortedElementDefinitionAtIndex:(unsigned long long)arg1;
+- (const CDStruct_22c2ae3f *)sortedMaterialDefinitionAtIndex:(unsigned long long)arg1;
 - (id)widgetNameForPartDefinition:(const CDStruct_26b2aa83 *)arg1;
 
 @end

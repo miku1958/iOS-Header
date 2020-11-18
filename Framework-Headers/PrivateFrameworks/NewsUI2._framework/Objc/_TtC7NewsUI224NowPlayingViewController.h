@@ -8,26 +8,24 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI224NowPlayingViewController : UIViewController
 {
-    MISSING_TYPE *isDocked;
+    MISSING_TYPE *dockPresentationMode;
     MISSING_TYPE *nowPlayingViewController;
     MISSING_TYPE *tracker;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *playbackState;
     MISSING_TYPE *publisherImageCache;
     MISSING_TYPE *nowPlayingImageCache;
-    MISSING_TYPE *currentTrack;
     MISSING_TYPE *activityViewControllerFactory;
+    MISSING_TYPE *currentTrack;
     MISSING_TYPE *miniPlayerView;
+    MISSING_TYPE *commands;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

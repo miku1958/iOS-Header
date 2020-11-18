@@ -35,6 +35,8 @@
     MISSING_TYPE *_altInterpretationConfidences;
     MISSING_TYPE *_altInterpretationPhoneSequences;
     MISSING_TYPE *_metadata;
+    MISSING_TYPE *_preItnphrasesStartTime;
+    MISSING_TYPE *_preItnphrasesEndTime;
 }
 
 @end

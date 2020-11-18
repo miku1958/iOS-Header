@@ -14,6 +14,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct AddressObject;
 
+struct Angle {
+    unsigned short _field1;
+};
+
 struct Box<float, 2> {
     Matrix_8746f91e _field1;
     Matrix_8746f91e _field2;
@@ -29,6 +33,14 @@ struct CAARiseTransitSetDetails {
     double Set;
 };
 
+struct CAARiseTransitSetDetails2 {
+    int type;
+    double JD;
+    double Bearing;
+    double GeometricAltitude;
+    BOOL bAboveHorizon;
+};
+
 struct CGSize {
     double width;
     double height;
@@ -38,17 +50,46 @@ struct Color<float, 4, geo::ColorSpace::Linear> {
     struct Matrix<float, 4, 1> _backing;
 };
 
+struct ControlPoint {
+    int _field1;
+    struct GeoCoordinates _field2;
+    struct Angle _field3;
+    struct FormOfWay _field4;
+    struct FunctionalClass _field5;
+    int _field6;
+};
+
+struct DB;
+
 struct DispatchTimer;
 
 struct Entry;
 
 struct ErrorInfo;
 
+struct FormOfWay {
+    int _field1;
+};
+
+struct FunctionalClass {
+    int _field1;
+};
+
 struct GEOActiveResourceFilter {
     double _field1;
     int _field2;
     int _field3;
     CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEOCoarseLocationLatLng {
+    double _lat;
+    double _lng;
+};
+
+struct GEOCoarseLocationPoint {
+    int _field1;
+    int _field2;
 };
 
 struct GEOCoverageException {
@@ -192,12 +233,6 @@ struct GEOPBTransitTimeRange {
     CDStruct_beabc505 _has;
 };
 
-struct GEOPDAmenityValue {
-    BOOL _field1;
-    int _field2;
-    CDStruct_d7010776 _field3;
-};
-
 struct GEOPDCameraPathFrame {
     float _field1;
     float _field2;
@@ -210,7 +245,19 @@ struct GEOPDCameraPathFrame {
     double _field9;
     double _field10;
     double _field11;
-    CDStruct_40288aee _field12;
+    struct {
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } _field12;
 };
 
 struct GEOPDLabelFrame {
@@ -337,7 +384,7 @@ struct GEOTimepoint {
 };
 
 struct GEOTransitNodeFeature {
-    CDStruct_cdc9fa9f _field1;
+    CDStruct_bc8de1a2 _field1;
     struct _NSRange _field2;
     CDStruct_183601bc *_field3;
     struct GEOTransitNodeFeature *_field4;
@@ -501,10 +548,19 @@ struct _GEOGenericContainer<_GEOTileKey, id, std::__1::hash<GEOTileKey>, std::__
     unsigned long long _currentCount;
 };
 
+struct _GEOGloriaQuadIDTileKey {
+    unsigned int z:6;
+    unsigned int quadKey:64;
+    unsigned int type:14;
+    unsigned int padding:36;
+};
+
 struct _GEOIdentifiedResourceKey {
     unsigned int identifier;
     unsigned char levelOfDetail;
     unsigned char type;
+    unsigned int padding:64;
+    unsigned int padding2:8;
 };
 
 struct _GEOMuninMeshKey {
@@ -515,12 +571,21 @@ struct _GEOMuninMeshKey {
     unsigned int lod:3;
 };
 
+struct _GEOPolygonSelectionKey {
+    unsigned int z:6;
+    unsigned int x:25;
+    unsigned int y:25;
+    unsigned int polyId:64;
+};
+
 struct _GEORegionalResourceKey {
     unsigned int index:32;
     unsigned int scenarios:8;
     unsigned int type:6;
     unsigned int pixelSize:8;
     unsigned int textScale:8;
+    unsigned int forceRefetch:1;
+    unsigned int padding:57;
 };
 
 struct _GEOSputnikMetadataKey {
@@ -528,6 +593,7 @@ struct _GEOSputnikMetadataKey {
     unsigned int region:24;
     unsigned int type:14;
     unsigned int pixelSize:8;
+    unsigned int padding:42;
 };
 
 struct _GEOStandardTileKey {
@@ -545,13 +611,18 @@ struct _GEOTileKey {
     unsigned int expires:1;
     union {
         struct _GEOStandardTileKey standard;
+        struct _GEOGloriaQuadIDTileKey gloriaQuad;
         struct _GEORegionalResourceKey regional;
         struct _GEOSputnikMetadataKey sputnikMetadata;
         struct _GEOFlyoverKey flyover;
         struct _GEOTransitLineSelectionKey transitLineSelection;
+        struct _GEOPolygonSelectionKey polygonSelection;
         struct _GEOTileOverlayKey tileOverlay;
         struct _GEOIdentifiedResourceKey identifiedResource;
         struct _GEOMuninMeshKey muninMesh;
+        struct _GEOVisualLocalizationTrackKey visualLocalization;
+        struct _GEOVisualLocalizationMetadataKey visualLocalizationMetadata;
+        struct _GEOVisualLocalizationDataKey visualLocalizationData;
     } ;
 };
 
@@ -561,6 +632,7 @@ struct _GEOTileOverlayKey {
     unsigned int y:26;
     unsigned int contentScale:8;
     unsigned int providerId:32;
+    unsigned int padding:22;
 };
 
 struct _GEOTransitLineSelectionKey {
@@ -568,6 +640,35 @@ struct _GEOTransitLineSelectionKey {
     unsigned int x:25;
     unsigned int y:25;
     unsigned int muid:64;
+};
+
+struct _GEOVisualLocalizationDataKey {
+    unsigned long long buildID;
+    unsigned char uncertainty;
+    unsigned int z:5;
+    unsigned int x:21;
+    unsigned int y:21;
+    unsigned int padding:1;
+};
+
+struct _GEOVisualLocalizationMetadataKey {
+    unsigned int maxSupportedOutputVersion:6;
+    unsigned int maxSupportedFormatVersion:9;
+    unsigned int reserved:25;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int padding:22;
+};
+
+struct _GEOVisualLocalizationTrackKey {
+    unsigned short formatVersion;
+    unsigned char uncertainty;
+    unsigned int reserved:16;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int padding:22;
 };
 
 struct _NSRange {
@@ -785,6 +886,18 @@ struct os_unfair_recursive_lock_s {
     unsigned int ourl_count;
 };
 
+struct set<CAARiseTransitSetDetails2, _CAARiseTransitSetDetails2IsLessThan, std::__1::allocator<CAARiseTransitSetDetails2>> {
+    struct __tree<CAARiseTransitSetDetails2, _CAARiseTransitSetDetails2IsLessThan, std::__1::allocator<CAARiseTransitSetDetails2>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<CAARiseTransitSetDetails2, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, _CAARiseTransitSetDetails2IsLessThan> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct shared_ptr<addr_obj::AddressObject> {
     struct AddressObject *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -867,6 +980,12 @@ struct unique_ptr<geo::RouteMapMatchingSection, std::__1::default_delete<geo::Ro
 struct unique_ptr<geo::ZilchMapModel, std::__1::default_delete<geo::ZilchMapModel>> {
     struct __compressed_pair<geo::ZilchMapModel *, std::__1::default_delete<geo::ZilchMapModel>> {
         struct ZilchMapModel *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<gloria::DB, std::__1::default_delete<gloria::DB>> {
+    struct __compressed_pair<gloria::DB *, std::__1::default_delete<gloria::DB>> {
+        struct DB *__value_;
     } __ptr_;
 };
 
@@ -1092,6 +1211,14 @@ struct vector<geo::PolylineCoordinate, std::__1::allocator<geo::PolylineCoordina
     } __end_cap_;
 };
 
+struct vector<unsigned char, std::__1::allocator<unsigned char>> {
+    char *__begin_;
+    char *__end_;
+    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
+        char *__value_;
+    } __end_cap_;
+};
+
 struct vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>>;
 
 struct vector<zilch::GeometryPathElement, std::__1::allocator<zilch::GeometryPathElement>> {
@@ -1148,6 +1275,12 @@ typedef struct {
     unsigned int _field3;
     unsigned int _field4;
 } CDStruct_7523a67d;
+
+typedef struct {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+} CDStruct_32a7f38a;
 
 typedef struct {
     unsigned int _field1;
@@ -1216,6 +1349,14 @@ typedef struct {
 
 typedef struct {
     unsigned short _field1;
+    unsigned short _field2;
+    float _field3;
+    char _field4;
+    unsigned char _field5;
+} CDStruct_da7bd76e;
+
+typedef struct {
+    unsigned short _field1;
 } CDStruct_f6a177db;
 
 typedef struct {
@@ -1265,38 +1406,6 @@ typedef struct {
     unsigned long long count;
     unsigned long long size;
 } CDStruct_5df41632;
-
-typedef struct {
-    unsigned int has_connectEnd:1;
-    unsigned int has_connectStart:1;
-    unsigned int has_domainLookupEnd:1;
-    unsigned int has_domainLookupStart:1;
-    unsigned int has_fetchStart:1;
-    unsigned int has_requestEnd:1;
-    unsigned int has_requestStart:1;
-    unsigned int has_responseEnd:1;
-    unsigned int has_responseStart:1;
-    unsigned int has_secureConnectEnd:1;
-    unsigned int has_secureConnectStart:1;
-    unsigned int has_protocolName:1;
-    unsigned int has_resourceFetchType:1;
-    unsigned int has_proxyConnection:1;
-    unsigned int has_reusedConnection:1;
-} CDStruct_60b58840;
-
-typedef struct {
-    unsigned int has_supportedLanguagesVersion:1;
-    unsigned int has_timeToLiveSeconds:1;
-    unsigned int read_unknownFields:1;
-    unsigned int read_availableTiles:1;
-    unsigned int read_genericTiles:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_availableTiles:1;
-    unsigned int wrote_genericTiles:1;
-    unsigned int wrote_identifier:1;
-    unsigned int wrote_supportedLanguagesVersion:1;
-    unsigned int wrote_timeToLiveSeconds:1;
-} CDStruct_40288aee;
 
 typedef struct {
     float _field1;
@@ -1361,15 +1470,6 @@ typedef struct {
 } CDStruct_3cfc3106;
 
 typedef struct {
-    unsigned char _field1;
-    CDStruct_8bf61218 _field2;
-    BOOL _field3;
-    char *_field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-} CDStruct_f3ac0f61;
-
-typedef struct {
     unsigned int _field1;
     unsigned int _field2;
     CDStruct_183601bc *_field3;
@@ -1384,19 +1484,6 @@ typedef struct {
     CDStruct_183601bc *_field6;
     CDStruct_183601bc *_field7;
 } CDStruct_91f75a7f;
-
-typedef struct {
-    CDStruct_183601bc *_field1;
-    unsigned long long _field2;
-    unsigned short _field3;
-    unsigned int _field4;
-    char *_field5;
-    unsigned long long _field6;
-    struct {
-        unsigned int _field1;
-        BOOL _field2;
-    } _field7;
-} CDStruct_effb527d;
 
 typedef struct {
     int type;
@@ -1430,26 +1517,35 @@ typedef struct {
     CDStruct_58d0ca89 _field1;
     CDStruct_6e3f967a _field2;
     float _field3;
-    CDStruct_6e3f967a _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
+    float _field4;
+    float _field5;
+    CDStruct_6e3f967a _field6;
     unsigned long long _field7;
     unsigned long long _field8;
-    short _field9;
-    short _field10;
-    unsigned char _field11;
-    float _field12;
-    float _field13;
-    unsigned int _field14;
-    unsigned int _field15;
-    unsigned char _field16;
-    unsigned char _field17;
-    BOOL _field18;
-    BOOL _field19;
-    BOOL _field20;
-    BOOL _field21;
-    BOOL _field22;
-} CDStruct_cdc9fa9f;
+    unsigned long long _field9;
+    unsigned long long _field10;
+    short _field11;
+    short _field12;
+    unsigned char _field13;
+    float _field14;
+    float _field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    unsigned int _field18;
+    unsigned int _field19;
+    unsigned char _field20;
+    unsigned char _field21;
+    unsigned char _field22;
+    unsigned char _field23;
+    BOOL _field24;
+    BOOL _field25;
+    BOOL _field26;
+    BOOL _field27;
+    BOOL _field28;
+    BOOL _field29;
+    BOOL _field30;
+    BOOL _field31;
+} CDStruct_bc8de1a2;
 
 typedef struct {
     CDStruct_58d0ca89 _field1;
@@ -1495,13 +1591,13 @@ typedef struct {
 } CDStruct_db2bd8f2;
 
 typedef struct {
-    CDStruct_cdc9fa9f _field1;
+    CDStruct_bc8de1a2 _field1;
     unsigned long long _field2;
     unsigned char _field3;
     float _field4;
     unsigned short _field5;
     float _field6;
-} CDStruct_9bbfa40f;
+} CDStruct_bc67eba8;
 
 typedef struct {
     unsigned char _field1;
@@ -1538,6 +1634,8 @@ typedef struct {
     int _field6;
     unsigned long long _field7;
     unsigned long long _field8;
+    unsigned int _field9;
+    unsigned int _field10;
     union {
         struct {
             CDStruct_6e3f967a _field1;
@@ -1549,52 +1647,52 @@ typedef struct {
             float _field3;
             float _field4;
         } _field2;
-    } _field9;
-    CDStruct_183601bc *_field10;
+    } _field11;
+    CDStruct_183601bc *_field12;
     struct {
         unsigned short _field1[2];
         unsigned short _field2[2];
-    } _field11;
-    unsigned char _field12;
-    BOOL _field13;
+    } _field13;
     unsigned char _field14;
     BOOL _field15;
-    BOOL _field16;
-    unsigned char _field17;
+    unsigned char _field16;
+    BOOL _field17;
     BOOL _field18;
-    unsigned short _field19;
-    struct _NSRange _field20;
-    BOOL _field21;
-    unsigned int _field22;
-} CDStruct_c8b5ad3f;
+    unsigned char _field19;
+    BOOL _field20;
+    unsigned short _field21;
+    struct _NSRange _field22;
+    BOOL _field23;
+    unsigned int _field24;
+} CDStruct_4da79865;
 
 typedef struct {
-    CDStruct_c8b5ad3f _field1;
+    CDStruct_4da79865 _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     BOOL _field4;
     BOOL _field5;
-} CDStruct_0c54f6ee;
+} CDStruct_1d944ba4;
 
 typedef struct {
-    CDStruct_c8b5ad3f _field1;
+    CDStruct_4da79865 _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     short _field4;
     CDStruct_6e3f967a _field5;
     unsigned long long _field6;
-} CDStruct_d8694409;
+} CDStruct_86707bff;
 
 typedef struct {
-    CDStruct_c8b5ad3f _field1;
+    CDStruct_4da79865 _field1;
     unsigned long long _field2;
     CDStruct_6e3f967a _field3;
     char *_field4;
     char *_field5;
-} CDStruct_864365dc;
+} CDStruct_a4572dce;
 
 typedef struct {
-    CDStruct_c8b5ad3f _field1;
+    CDStruct_4da79865 _field1;
     CDStruct_6e3f967a _field2;
     BOOL _field3;
     BOOL _field4;
@@ -1603,94 +1701,36 @@ typedef struct {
     unsigned long long _field7;
     CDStruct_6e3f967a _field8;
     unsigned long long _field9;
-} CDStruct_040038b6;
+} CDStruct_bf4ccc58;
 
 // Ambiguous groups
+typedef struct {
+    unsigned int has_connectEnd:1;
+    unsigned int has_connectStart:1;
+    unsigned int has_domainLookupEnd:1;
+    unsigned int has_domainLookupStart:1;
+    unsigned int has_fetchStart:1;
+    unsigned int has_requestEnd:1;
+    unsigned int has_requestStart:1;
+    unsigned int has_responseEnd:1;
+    unsigned int has_responseStart:1;
+    unsigned int has_secureConnectEnd:1;
+    unsigned int has_secureConnectStart:1;
+    unsigned int has_protocolName:1;
+    unsigned int has_resourceFetchType:1;
+    unsigned int has_proxyConnection:1;
+    unsigned int has_reusedConnection:1;
+} CDStruct_60b58840;
+
 typedef struct {
     unsigned int has_junctionType:1;
     unsigned int has_maneuverType:1;
     unsigned int read_junctionElements:1;
+    unsigned int read_artworkOverride:1;
     unsigned int read_maneuverNames:1;
     unsigned int read_signposts:1;
-    unsigned int wrote_junctionElements:1;
-    unsigned int wrote_maneuverNames:1;
-    unsigned int wrote_signposts:1;
-    unsigned int wrote_junctionType:1;
-    unsigned int wrote_maneuverType:1;
-} CDStruct_6da46726;
-
-typedef struct {
-    unsigned int has_maxResults:1;
-    unsigned int has_highlightDiff:1;
-    unsigned int read_unknownFields:1;
-    unsigned int read_query:1;
-    unsigned int read_viewportInfo:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_query:1;
-    unsigned int wrote_viewportInfo:1;
-    unsigned int wrote_maxResults:1;
-    unsigned int wrote_highlightDiff:1;
-} CDStruct_58fcab42;
-
-typedef struct {
-    unsigned int has_navigationAudioFeedback:1;
-    unsigned int has_durationOfTrip:1;
-    unsigned int has_arrivedAtDestination:1;
-    unsigned int read_directionsFeedbacks:1;
-    unsigned int read_finalLocation:1;
-    unsigned int wrote_navigationAudioFeedback:1;
-    unsigned int wrote_directionsFeedbacks:1;
-    unsigned int wrote_durationOfTrip:1;
-    unsigned int wrote_finalLocation:1;
-    unsigned int wrote_arrivedAtDestination:1;
-} CDStruct_57366784;
-
-typedef struct {
-    unsigned int has_operatingHoursRange:1;
-    unsigned int has_includeRealTimeDepartures:1;
-    unsigned int read_unknownFields:1;
-    unsigned int read_departurePredicateCountdown:1;
-    unsigned int read_departurePredicateStamp:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_departurePredicateCountdown:1;
-    unsigned int wrote_departurePredicateStamp:1;
-    unsigned int wrote_operatingHoursRange:1;
-    unsigned int wrote_includeRealTimeDepartures:1;
-} CDStruct_34971647;
-
-typedef struct {
-    unsigned int read_unknownFields:1;
-    unsigned int read_field:1;
-    unsigned int read_operands:1;
-    unsigned int read_value:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_field:1;
-    unsigned int wrote_operands:1;
-    unsigned int wrote_value:1;
-    unsigned int wrote_type:1;
-} CDStruct_24aeab2f;
-
-typedef struct {
-    unsigned int has_timestamp:1;
-    unsigned int read_bundleIdentifier:1;
-    unsigned int read_destination:1;
-    unsigned int read_source:1;
-    unsigned int wrote_bundleIdentifier:1;
-    unsigned int wrote_destination:1;
-    unsigned int wrote_source:1;
-    unsigned int wrote_timestamp:1;
-} CDStruct_ea2c3af7;
-
-typedef struct {
-    unsigned int read_index:1;
-    unsigned int read_layer:1;
-    unsigned int read_sourceVersion:1;
-    unsigned int read_targetVersion:1;
-    unsigned int wrote_index:1;
-    unsigned int wrote_layer:1;
-    unsigned int wrote_sourceVersion:1;
-    unsigned int wrote_targetVersion:1;
-} CDStruct_2c11db96;
+    unsigned int wrote_anyField:1;
+} CDStruct_9011fabd;
 
 typedef struct {
     unsigned int has_altitude:1;
@@ -1702,31 +1742,70 @@ typedef struct {
 } CDStruct_3c2347a5;
 
 typedef struct {
+    unsigned int has_maxResults:1;
+    unsigned int has_highlightDiff:1;
     unsigned int read_unknownFields:1;
-    unsigned int read_context:1;
-    unsigned int read_corrections:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_context:1;
-    unsigned int wrote_corrections:1;
-} CDStruct_5bb8e4f8;
+    unsigned int read_query:1;
+    unsigned int read_viewportInfo:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_f55cf389;
+
+typedef struct {
+    unsigned int has_navigationAudioFeedback:1;
+    unsigned int has_durationOfTrip:1;
+    unsigned int has_arrivedAtDestination:1;
+    unsigned int read_directionsFeedbacks:1;
+    unsigned int read_finalLocation:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_8bb9be38;
+
+typedef struct {
+    unsigned int has_operatingHoursRange:1;
+    unsigned int has_includeRealTimeDepartures:1;
+    unsigned int read_unknownFields:1;
+    unsigned int read_departurePredicateCountdown:1;
+    unsigned int read_departurePredicateStamp:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_dc7e0232;
+
+typedef struct {
+    unsigned int has_filterType:1;
+    unsigned int read_unknownFields:1;
+    unsigned int read_filterAddress:1;
+    unsigned int read_filterKeyword:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_85060554;
+
+typedef struct {
+    unsigned int has_timestamp:1;
+    unsigned int read_bundleIdentifier:1;
+    unsigned int read_destination:1;
+    unsigned int read_source:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_2aceabc6;
+
+typedef struct {
+    unsigned int read_index:1;
+    unsigned int read_layer:1;
+    unsigned int read_sourceVersion:1;
+    unsigned int read_targetVersion:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_b651aedb;
 
 typedef struct {
     unsigned int read_unknownFields:1;
-    unsigned int read_image:1;
-    unsigned int read_name:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_image:1;
-    unsigned int wrote_name:1;
-} CDStruct_f720eac6;
+    unsigned int read_field:1;
+    unsigned int read_operands:1;
+    unsigned int read_value:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_dc56225f;
 
 typedef struct {
-    unsigned int read_unknownFields:1;
-    unsigned int read_text:1;
-    unsigned int read_title:1;
-    unsigned int wrote_unknownFields:1;
-    unsigned int wrote_text:1;
-    unsigned int wrote_title:1;
-} CDStruct_3e4cc335;
+    unsigned int has_eastLngE7:1;
+    unsigned int has_northLatE7:1;
+    unsigned int has_southLatE7:1;
+    unsigned int has_westLngE7:1;
+} CDStruct_37b5bf71;
 
 typedef struct {
     unsigned int has_scanTimestamp:1;
@@ -1734,6 +1813,40 @@ typedef struct {
     unsigned int has_channel:1;
     unsigned int has_rssi:1;
 } CDStruct_e664d718;
+
+typedef struct {
+    unsigned int read_powerTypes:1;
+    unsigned int read_regions:1;
+    unsigned int read_vehicleTypes:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_4ca0835f;
+
+typedef struct {
+    unsigned int read_unknownFields:1;
+    unsigned int read_context:1;
+    unsigned int read_corrections:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_c6f0c348;
+
+typedef struct {
+    unsigned int read_unknownFields:1;
+    unsigned int read_image:1;
+    unsigned int read_name:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_9fa62941;
+
+typedef struct {
+    unsigned int read_unknownFields:1;
+    unsigned int read_text:1;
+    unsigned int read_title:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_e54d7a96;
+
+typedef struct {
+    unsigned int has_x:1;
+    unsigned int has_y:1;
+    unsigned int has_z:1;
+} CDStruct_ad44f281;
 
 typedef struct {
     unsigned int :1;
@@ -1772,6 +1885,10 @@ typedef struct {
 } CDStruct_d7010776;
 
 typedef struct {
+    unsigned int has_action:1;
+} CDStruct_6f2d9b33;
+
+typedef struct {
     unsigned int has_correctionType:1;
 } CDStruct_ef3e2236;
 
@@ -1786,10 +1903,6 @@ typedef struct {
 typedef struct {
     unsigned int has_score:1;
 } CDStruct_f58e6c32;
-
-typedef struct {
-    unsigned int has_size:1;
-} CDStruct_3f61e687;
 
 typedef struct {
     unsigned int has_statusCode:1;

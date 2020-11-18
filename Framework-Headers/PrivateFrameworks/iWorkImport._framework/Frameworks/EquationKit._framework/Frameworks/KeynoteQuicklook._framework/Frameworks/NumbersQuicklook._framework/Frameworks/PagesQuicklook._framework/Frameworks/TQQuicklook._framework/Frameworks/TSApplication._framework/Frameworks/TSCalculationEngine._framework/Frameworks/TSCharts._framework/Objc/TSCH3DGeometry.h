@@ -21,7 +21,7 @@
 + (id)geometry;
 - (id).cxx_construct;
 - (void)allocateArrays:(int)arg1;
-- (int)capCount;
+- (unsigned int)capCount;
 - (unsigned int)capOffset;
 - (void)dealloc;
 - (id)elementsBoundsPositions;

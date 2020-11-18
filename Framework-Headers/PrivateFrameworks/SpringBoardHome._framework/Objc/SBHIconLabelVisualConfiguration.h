@@ -16,22 +16,23 @@
     double _fontSize;
     double _baselineOffsetFromImage;
     double _height;
-    double _widthDelta;
+    double _extraWidth;
 }
 
 @property (nonatomic) double baselineOffsetFromImage; // @synthesize baselineOffsetFromImage=_baselineOffsetFromImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double extraWidth; // @synthesize extraWidth=_extraWidth;
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
 @property (readonly) Class superclass;
-@property (nonatomic) double widthDelta; // @synthesize widthDelta=_widthDelta;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

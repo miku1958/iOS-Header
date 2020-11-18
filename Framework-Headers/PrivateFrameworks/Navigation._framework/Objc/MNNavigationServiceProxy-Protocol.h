@@ -28,7 +28,7 @@
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setRoutesForPreview:(NSArray *)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
@@ -40,7 +40,6 @@
 - (void)stopPredictingDestinations;
 - (void)switchToRoute:(MNActiveRouteInfo *)arg1;
 - (void)updateDestination:(GEOComposedWaypoint *)arg1;
-- (void)updateGuidanceWithData:(NSData *)arg1 reply:(void (^)(BOOL))arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(void (^)(BOOL))arg2;
 @end
 

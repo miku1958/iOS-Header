@@ -16,10 +16,10 @@
     BOOL _enabled;
     BOOL _supportsIncrementalUpdates;
     NSString *_localizedDisplayName;
-    NSString *_containingAppBundleIdentifier;
+    id _credentialIdentityStoreIdentifier;
 }
 
-@property (readonly, copy, nonatomic) NSString *containingAppBundleIdentifier; // @synthesize containingAppBundleIdentifier=_containingAppBundleIdentifier;
+@property (readonly, copy, nonatomic) id credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, copy, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 @property (readonly, nonatomic) BOOL supportsIncrementalUpdates; // @synthesize supportsIncrementalUpdates=_supportsIncrementalUpdates;
@@ -31,7 +31,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEnabledState:(BOOL)arg1 supportsIncrementalUpdates:(BOOL)arg2;
-- (id)initWithEnabledState:(BOOL)arg1 supportsIncrementalUpdates:(BOOL)arg2 localizedDisplayName:(id)arg3 containingAppBundleIdentifier:(id)arg4;
+- (id)initWithEnabledState:(BOOL)arg1 supportsIncrementalUpdates:(BOOL)arg2 localizedDisplayName:(id)arg3 credentialIdentityStoreIdentifier:(id)arg4;
 
 @end
 

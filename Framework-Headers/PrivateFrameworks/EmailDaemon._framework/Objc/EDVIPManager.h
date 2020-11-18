@@ -56,6 +56,7 @@
 - (void)_updateLocalWithCloud:(id)arg1 refresh:(BOOL)arg2;
 - (id)_validatedCloudVIPFromStore:(id)arg1 withCloudKey:(id)arg2;
 - (id)_vipsDictionary;
+- (id)allVIPWaitForResult;
 - (void)dealloc;
 - (id)initWithDirectoryURL:(id)arg1;
 - (id)initWithDirectoryURL:(id)arg1 keyValueStore:(id)arg2 contactStore:(id)arg3;

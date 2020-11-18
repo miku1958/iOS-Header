@@ -9,7 +9,7 @@
 #import <MediaPlaybackCore/MPShuffleableSectionedIdentifierListDataSource-Protocol.h>
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
-@class MPPlaceholderAVItem, MPPlaybackContext, NSString;
+@class MPCPlaybackEngineEventStream, MPPlaceholderAVItem, MPPlaybackContext, NSString;
 @protocol MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring;
 
 @interface _MPCQueueControllerDataSourceState : NSObject <MPShuffleableSectionedIdentifierListDataSource, NSSecureCoding>
@@ -22,6 +22,7 @@
         unsigned int dataSourceFirstItemIntersectingIdentifierSet:1;
         unsigned int dataSourceItemDidBeginPlayback:1;
         unsigned int dataSourceShouldRequestAdditionalItemsWhenReachingTailOfSection:1;
+        unsigned int dataSourcePrefetchThresholdForSection:1;
         unsigned int dataSourceShouldUsePlaceholderForItemInSection:1;
         unsigned int dataSourceSectionShouldShuffleExcludeItem:1;
         unsigned int dataSourceUpdatedPlaybackContext:1;
@@ -35,6 +36,7 @@
     long long _state;
     NSString *_sectionIdentifier;
     NSString *_preferredStartItemIdentifier;
+    MPCPlaybackEngineEventStream *_eventStream;
     long long _supplementalPlaybackContextBehavior;
     MPPlaybackContext *_supplementalPlaybackContext;
 }
@@ -43,6 +45,7 @@
 @property (readonly, nonatomic) id<MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property (nonatomic, getter=isFrozen) BOOL frozen; // @synthesize frozen=_frozen;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MPPlaybackContext *originalPlaybackContext; // @synthesize originalPlaybackContext=_originalPlaybackContext;
@@ -68,7 +71,8 @@
 - (id)initWithPlaybackContext:(id)arg1;
 - (void)itemDidBeginPlayback:(id)arg1;
 - (id)itemForItem:(id)arg1 inSection:(id)arg2;
-- (void)loadAdditionalItemsIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (void)loadAdditionalItemsIfNeededWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (long long)prefetchThreshold;
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)section:(id)arg1 shouldShuffleExcludeItem:(id)arg2;
 - (BOOL)section:(id)arg1 supportsShuffleType:(long long)arg2;

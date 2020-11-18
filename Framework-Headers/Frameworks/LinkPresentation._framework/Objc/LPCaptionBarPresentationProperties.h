@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionRowPresentationProperties, LPImage, LPImagePresentationProperties, NSArray, NSNumber;
+@class LPCaptionRowPresentationProperties, LPImage, LPImagePresentationProperties, NSArray, NSNumber, NSString;
 
 @interface LPCaptionBarPresentationProperties : NSObject
 {
@@ -14,6 +14,7 @@
     LPCaptionRowPresentationProperties *_top;
     LPCaptionRowPresentationProperties *_bottom;
     LPCaptionRowPresentationProperties *_belowBottom;
+    BOOL _shouldHighlightIndependently;
     LPImage *_leadingIcon;
     NSArray *_additionalLeadingIcons;
     LPImagePresentationProperties *_leadingIconProperties;
@@ -22,6 +23,7 @@
     LPImagePresentationProperties *_trailingIconProperties;
     long long _leadingAccessoryType;
     long long _trailingAccessoryType;
+    NSString *_buttonCaption;
     NSNumber *_minimumHeight;
     struct CGSize _leadingIconSize;
     struct CGSize _trailingIconSize;
@@ -32,12 +34,14 @@
 @property (strong, nonatomic) NSArray *additionalTrailingIcons; // @synthesize additionalTrailingIcons=_additionalTrailingIcons;
 @property (readonly, strong, nonatomic) LPCaptionRowPresentationProperties *belowBottom;
 @property (readonly, strong, nonatomic) LPCaptionRowPresentationProperties *bottom;
+@property (copy, nonatomic) NSString *buttonCaption; // @synthesize buttonCaption=_buttonCaption;
 @property (readonly, nonatomic) BOOL hasAnyContent;
 @property (nonatomic) long long leadingAccessoryType; // @synthesize leadingAccessoryType=_leadingAccessoryType;
 @property (strong, nonatomic) LPImage *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
 @property (strong, nonatomic) LPImagePresentationProperties *leadingIconProperties; // @synthesize leadingIconProperties=_leadingIconProperties;
 @property (nonatomic) struct CGSize leadingIconSize; // @synthesize leadingIconSize=_leadingIconSize;
 @property (strong, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
+@property (nonatomic) BOOL shouldHighlightIndependently; // @synthesize shouldHighlightIndependently=_shouldHighlightIndependently;
 @property (readonly, strong, nonatomic) LPCaptionRowPresentationProperties *top;
 @property (nonatomic) long long trailingAccessoryType; // @synthesize trailingAccessoryType=_trailingAccessoryType;
 @property (strong, nonatomic) LPImage *trailingIcon; // @synthesize trailingIcon=_trailingIcon;
@@ -49,8 +53,10 @@
 - (id)init;
 - (long long)leftAccessoryType;
 - (id)leftIcon;
+- (id)leftIconProperties;
 - (long long)rightAccessoryType;
 - (id)rightIcon;
+- (id)rightIconProperties;
 
 @end
 

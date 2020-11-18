@@ -18,9 +18,11 @@
 + (id)_defaultOptions;
 - (void).cxx_destruct;
 - (BOOL)_canIncludeUnverified;
+- (id)_filteredSuggestionResults:(id)arg1 withOptions:(id)arg2 graph:(id)arg3;
 - (id)_learningStreamUtilsWithGraph:(id)arg1;
 - (void)_mergeSuggestionResultByPersonIdentifer:(id)arg1 withSourceSuggestionResults:(id)arg2;
-- (id)_sortedSuggestionResults:(id)arg1 withOptions:(id)arg2 graph:(id)arg3;
+- (id)_sortedSuggestionResults:(id)arg1 withOptions:(id)arg2;
+- (BOOL)canProvideSuggestionsWithOptions:(id)arg1 forGraph:(id)arg2;
 - (id)contextualStream;
 - (id)coreDuetStream;
 - (id)initWithManager:(id)arg1;

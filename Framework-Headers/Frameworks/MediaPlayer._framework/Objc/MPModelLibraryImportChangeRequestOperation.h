@@ -8,6 +8,7 @@
 
 @class MPModelLibraryImportChangeRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryImportChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

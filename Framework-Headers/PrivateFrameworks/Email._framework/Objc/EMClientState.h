@@ -14,6 +14,7 @@
 @interface EMClientState : NSObject <EFLoggable>
 {
     BOOL _isForeground;
+    BOOL _isRunningTests;
     EFObservable<EFObserver> *_foregroundObservable;
     EMRemoteConnection *_connection;
 }
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) EFObservable<EFObserver> *foregroundObservable; // @synthesize foregroundObservable=_foregroundObservable;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isForeground; // @synthesize isForeground=_isForeground;
+@property (nonatomic) BOOL isRunningTests; // @synthesize isRunningTests=_isRunningTests;
 @property (readonly) Class superclass;
 
 + (id)log;
@@ -31,7 +33,7 @@
 - (void).cxx_destruct;
 - (void)_handleApplicationDidEnterBackground;
 - (void)_handleApplicationWillEnterForeground;
-- (void)_updateRemoteInterface;
+- (void)_performAsyncUpdate:(CDUnknownBlockType)arg1;
 - (id)daemonBoosterWithDescription:(id)arg1;
 - (id)initWithRemoteConnection:(id)arg1;
 - (void)setCurrentlyVisibleMailboxes:(id)arg1;

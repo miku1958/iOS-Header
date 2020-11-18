@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PKExtensionProvider;
+@class NSExtension, NSString, PKExtensionProvider;
 
 @interface PKExtension : NSObject
 {
     NSString *_identifier;
+    NSString *_containingAppBundleIdentifier;
+    NSString *_containingApplicationIdentifier;
     PKExtensionProvider *_provider;
+    NSExtension *_extension;
 }
 
+@property (strong, nonatomic) NSString *containingAppBundleIdentifier; // @synthesize containingAppBundleIdentifier=_containingAppBundleIdentifier;
+@property (strong, nonatomic) NSString *containingApplicationIdentifier; // @synthesize containingApplicationIdentifier=_containingApplicationIdentifier;
+@property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (readonly, nonatomic) NSString *extensionPointIdentifier;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (weak, nonatomic) PKExtensionProvider *provider; // @synthesize provider=_provider;
 @property (readonly, nonatomic) long long type;
 
 - (void).cxx_destruct;
-- (void)beginRemoteViewControllerExtensionServiceWithInputItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beginLocalExtensionServiceWithUserInteraction:(BOOL)arg1 completion:(CDUnknownBlockType)arg2 timeout:(unsigned long long)arg3 timeoutHandler:(CDUnknownBlockType)arg4;
+- (void)completeLocalExtensionServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)description;
-- (id)extension;
-- (id)initWithIdentifier:(id)arg1 provider:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 extension:(id)arg2 provider:(id)arg3;
+- (void)performTestExtensionServiceRequestWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

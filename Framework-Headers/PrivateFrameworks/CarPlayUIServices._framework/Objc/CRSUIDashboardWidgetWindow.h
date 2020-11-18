@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWindow.h>
+#import <CarPlayUIServices/CRSUIWindow.h>
 
 #import <CarPlayUIServices/BSInvalidatable-Protocol.h>
 #import <CarPlayUIServices/CRSUIDashboardWidgetWindowClient-Protocol.h>
 
-@class NSArray, NSString, NSXPCConnection;
+@class NSArray, NSString, NSXPCConnection, UIColor;
 
-@interface CRSUIDashboardWidgetWindow : UIWindow <CRSUIDashboardWidgetWindowClient, BSInvalidatable>
+@interface CRSUIDashboardWidgetWindow : CRSUIWindow <CRSUIDashboardWidgetWindowClient, BSInvalidatable>
 {
+    BOOL _useSystemPrimaryFocusColor;
     NSArray *_widgetSizes;
     NSXPCConnection *_dashboardWindowServiceConnection;
     NSArray *_focusableItems;
@@ -21,9 +22,11 @@
 @property (strong, nonatomic) NSXPCConnection *dashboardWindowServiceConnection; // @synthesize dashboardWindowServiceConnection=_dashboardWindowServiceConnection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIColor *focusHighlightColor;
 @property (strong, nonatomic) NSArray *focusableItems; // @synthesize focusableItems=_focusableItems;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useSystemPrimaryFocusColor; // @synthesize useSystemPrimaryFocusColor=_useSystemPrimaryFocusColor;
 @property (strong, nonatomic) NSArray *widgetSizes; // @synthesize widgetSizes=_widgetSizes;
 
 - (void).cxx_destruct;
@@ -36,6 +39,7 @@
 - (void)hostFocusableItem:(id)arg1 focused:(BOOL)arg2;
 - (void)hostFocusableItem:(id)arg1 pressed:(BOOL)arg2;
 - (void)hostSelectedFocusableItem:(id)arg1;
+- (void)hostSetUseSystemPrimaryFocusColor:(BOOL)arg1;
 - (void)hostSetWidgetSizes:(id)arg1;
 - (id)initWithWindowScene:(id)arg1;
 - (void)invalidate;

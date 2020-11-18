@@ -15,6 +15,8 @@
     MISSING_TYPE *insets;
     MISSING_TYPE *imageViewWidthConstraint;
     MISSING_TYPE *labelContainerLeadingConstraint;
+    MISSING_TYPE *imageWidthConstraint;
+    MISSING_TYPE *imageHeightConstraint;
 }
 
 - (void).cxx_destruct;

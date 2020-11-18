@@ -8,17 +8,20 @@
 
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKAnisetteProvisioningController, AKAttestationData, AKDevice, NSArray, NSNumber, NSString;
+@class AKAnisetteData, AKAnisetteProvisioningController, AKAppleIDAuthenticationContext, AKAttestationData, AKDevice, NSArray, NSMutableDictionary, NSNumber, NSString;
 @protocol AKAnisetteServiceProtocol;
 
 @interface AKAppleIDServerResourceLoadDelegate : NSObject <NSSecureCoding>
 {
     NSString *_altDSID;
     AKAnisetteProvisioningController *_proxiedProvisioningController;
+    NSMutableDictionary *_continuationHeaders;
+    AKAppleIDAuthenticationContext *_context;
     BOOL _shouldSendEphemeralAuthHeader;
     BOOL _shouldSendICSCIntentHeader;
     BOOL _shouldSendLocalUserHasAppleIDLoginHeader;
     BOOL _shouldSendPhoneNumber;
+    BOOL _shouldOfferSecurityUpgrade;
     BOOL _shouldSendSigningHeaders;
     NSString *_serviceToken;
     NSString *_phoneNumberCertificate;
@@ -36,6 +39,7 @@
     NSNumber *_hasEmptyPasswordOverride;
     NSString *_securityUpgradeContext;
     NSString *_followupItems;
+    NSString *_dataCenterIdentifier;
     AKDevice *_proxiedDevice;
     NSString *_proxiedAltDSID;
     NSString *_proxiedIdentityToken;
@@ -49,6 +53,7 @@
 @property (copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
 @property (copy, nonatomic) NSString *clientAppName; // @synthesize clientAppName=_clientAppName;
 @property (copy, nonatomic) NSString *continuationToken; // @synthesize continuationToken=_continuationToken;
+@property (copy, nonatomic) NSString *dataCenterIdentifier; // @synthesize dataCenterIdentifier=_dataCenterIdentifier;
 @property (copy, nonatomic) NSString *followupItems; // @synthesize followupItems=_followupItems;
 @property (strong, nonatomic) NSNumber *hasEmptyPasswordOverride; // @synthesize hasEmptyPasswordOverride=_hasEmptyPasswordOverride;
 @property (copy, nonatomic) NSString *heartbeatToken; // @synthesize heartbeatToken=_heartbeatToken;
@@ -67,6 +72,7 @@
 @property (copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
 @property (copy, nonatomic) NSString *serviceToken; // @synthesize serviceToken=_serviceToken;
 @property (nonatomic) long long serviceType; // @synthesize serviceType=_serviceType;
+@property (nonatomic) BOOL shouldOfferSecurityUpgrade; // @synthesize shouldOfferSecurityUpgrade=_shouldOfferSecurityUpgrade;
 @property (nonatomic) BOOL shouldSendAbsintheHeader;
 @property (nonatomic) BOOL shouldSendEphemeralAuthHeader; // @synthesize shouldSendEphemeralAuthHeader=_shouldSendEphemeralAuthHeader;
 @property (nonatomic) BOOL shouldSendICSCIntentHeader; // @synthesize shouldSendICSCIntentHeader=_shouldSendICSCIntentHeader;
@@ -78,21 +84,27 @@
 + (unsigned long long)signalFromServerResponse:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_harvestContinuationHeadersFromHeaders:(id)arg1;
 - (id)_proxiedProvisioningController;
+- (id)_retrieveContinuationHeaders;
 - (void)_signRequest:(id)arg1;
 - (void)_signWithFeatureOptInHeaders:(id)arg1;
 - (void)_signWithProxiedDeviceHeaders:(id)arg1;
+- (void)decorateWithContext:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithAltDSID:(id)arg1 identityToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAuthenticationRequired:(id)arg1;
 - (BOOL)isResponseActionable:(id)arg1;
 - (BOOL)isResponseFinal:(id)arg1;
 - (BOOL)isResponseFinalForHSA2ServerFlow:(id)arg1;
+- (void)processResponse:(id)arg1;
 - (void)signRequest:(id)arg1;
 - (void)signRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)signRequestWithCommonHeaders:(id)arg1;
 - (id)signingController;
+- (void)updateWithAuthResults:(id)arg1;
 
 @end
 

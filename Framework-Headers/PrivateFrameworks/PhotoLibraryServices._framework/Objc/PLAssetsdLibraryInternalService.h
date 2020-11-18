@@ -31,17 +31,14 @@
 - (void)getSizeOfResourcesToUploadByCPLWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidateBehavioralScoreOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidateReverseLocationDataOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
-- (void)markAnalysisStatesProcessedForWorkerType:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)markPersonAsNeedingKeyFaceWithPersonUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)previewAssetLocalIdentifiersWithReply:(CDUnknownBlockType)arg1;
-- (void)previewRenderedContentURLAtIndex:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)previewRenderedContentURLCountWithReply:(CDUnknownBlockType)arg1;
 - (void)registerBackgroundJobServiceIfNecessaryOnLibraryPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)reloadMomentGenerationOptions;
-- (void)removeAnalysisRecordsForDeletedAssetsWithUUIDs:(id)arg1 workerType:(unsigned long long)arg2;
 - (void)repairMemoriesWithUUIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)resetPendingAnalysisStatesWithReply:(CDUnknownBlockType)arg1;
+- (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAssetKeywords:(id)arg1 forAssetUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAssetLocationDataWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)waitForSearchIndexExistenceWithReply:(CDUnknownBlockType)arg1;
 

@@ -28,6 +28,7 @@
 }
 
 @property (weak, nonatomic) id accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (readonly) NSMapTable *activeBulkSendSessions; // @synthesize activeBulkSendSessions=_activeBulkSendSessions;
 @property (readonly) CDUnknownBlockType bulkSendSessionContextFactory; // @synthesize bulkSendSessionContextFactory=_bulkSendSessionContextFactory;
 @property (weak, nonatomic) id<HMDDataStreamProtocolDelegate> dataStream; // @synthesize dataStream=_dataStream;
@@ -54,6 +55,8 @@
 - (void)_handleCloseMessage:(id)arg1;
 - (void)_handleDataMessage:(id)arg1;
 - (void)_handleOpenWithRequestHeader:(id)arg1 payload:(id)arg2;
+- (void)_notifyActiveStatusChangedFromPreviousValue:(BOOL)arg1;
+- (void)_openSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)_pumpMessage:(id)arg1 session:(id)arg2;
 - (void)_pumpReceiveFailure:(id)arg1 session:(id)arg2;
 - (void)_rejectSessionCandidate:(id)arg1 status:(unsigned short)arg2;
@@ -64,7 +67,6 @@
 - (void)_sendOpenResponseWithRequestHeader:(id)arg1 status:(unsigned short)arg2;
 - (void)_sendOpenResponseWithRequestHeader:(id)arg1 streamIdentifier:(id)arg2;
 - (void)_startSessionCandidate:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
-- (void)_startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)addListener:(id)arg1 fileType:(id)arg2;
 - (void)asyncBulkSendSessionCandidate:(id)arg1 didAcceptOnQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)asyncBulkSendSessionCandidate:(id)arg1 didRejectWithStatus:(unsigned short)arg2;
@@ -77,8 +79,8 @@
 - (void)dataStreamDidOpen:(id)arg1;
 - (id)initWithQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3;
 - (id)initWithQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3 bulkSendSessionContextFactory:(CDUnknownBlockType)arg4;
+- (void)openSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)removeListener:(id)arg1;
-- (void)startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)timerDidFire:(id)arg1;
 
 @end

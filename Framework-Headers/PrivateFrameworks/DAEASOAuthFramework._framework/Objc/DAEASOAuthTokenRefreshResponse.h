@@ -12,15 +12,19 @@
 {
     long long _statusCode;
     NSError *_error;
+    NSString *_errorMessage;
     NSDictionary *_responseBody;
     NSString *_accessToken;
     NSString *_refreshToken;
+    NSString *_idToken;
     NSDate *_expiryDate;
 }
 
 @property (readonly, nonatomic) NSString *accessToken; // @synthesize accessToken=_accessToken;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
 @property (readonly, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
+@property (readonly, nonatomic) NSString *idToken; // @synthesize idToken=_idToken;
 @property (readonly, nonatomic) NSString *refreshToken; // @synthesize refreshToken=_refreshToken;
 @property (readonly, nonatomic) NSDictionary *responseBody; // @synthesize responseBody=_responseBody;
 @property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;

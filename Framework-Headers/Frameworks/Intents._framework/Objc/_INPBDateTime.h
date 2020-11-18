@@ -17,14 +17,12 @@
     struct {
         unsigned int calendarSystem:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _calendarSystem;
     _INPBLocalDate *_date;
     _INPBLocalTime *_time;
     NSString *_timeZoneID;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int calendarSystem; // @synthesize calendarSystem=_calendarSystem;
 @property (strong, nonatomic) _INPBLocalDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;

@@ -71,6 +71,7 @@
 @property (strong, nonatomic) NSString *peerResponseIdentifier;
 @property (nonatomic) long long priority;
 @property (strong, nonatomic) NSDictionary *protobuf;
+@property (strong, nonatomic) NSNumber *pushPriority;
 @property (strong, nonatomic) NSString *queueOneIdentifier;
 @property (strong, nonatomic) NSArray *requireAllRegistrationProperties;
 @property (nonatomic) BOOL requireBluetooth;

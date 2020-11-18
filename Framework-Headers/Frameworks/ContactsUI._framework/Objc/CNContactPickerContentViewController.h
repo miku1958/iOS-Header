@@ -9,7 +9,7 @@
 #import <ContactsUI/CNContactNavigationControllerDelegate-Protocol.h>
 #import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
 
-@class CNContactNavigationController, CNContactStoreDataSource, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController;
+@class CNContactNavigationController, CNContactStoreDataSource, CNContainer, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController;
 @protocol CNContactPickerContentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     CNContactNavigationController *_contactNavigationController;
     CNContactStoreDataSource *_dataSource;
     NSMutableArray *_contactProperties;
+    CNContainer *_parentContainer;
     NSArray *_displayedPropertyKeys;
     long long _cardActions;
     NSString *_prompt;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property (readonly, nonatomic) UINavigationController *navigationController;
 @property (nonatomic) BOOL onlyRealContacts; // @synthesize onlyRealContacts=_onlyRealContacts;
+@property (strong, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
 @property (copy, nonatomic) NSPredicate *predicateForEnablingContact; // @synthesize predicateForEnablingContact=_predicateForEnablingContact;
 @property (copy, nonatomic) NSPredicate *predicateForSelectionOfContact; // @synthesize predicateForSelectionOfContact=_predicateForSelectionOfContact;
 @property (copy, nonatomic) NSPredicate *predicateForSelectionOfProperty; // @synthesize predicateForSelectionOfProperty=_predicateForSelectionOfProperty;

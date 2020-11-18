@@ -38,16 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_geoIds:1;
         unsigned int read_openlr:1;
         unsigned int read_predictedSpeeds:1;
-        unsigned int wrote_geoIds:1;
-        unsigned int wrote_openlr:1;
-        unsigned int wrote_predictedSpeeds:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_confidence:1;
-        unsigned int wrote_decayTimeWindowInMinutes:1;
-        unsigned int wrote_endOffset:1;
-        unsigned int wrote_speedKph:1;
-        unsigned int wrote_startOffset:1;
-        unsigned int wrote_hidden:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -75,11 +66,6 @@ __attribute__((visibility("hidden")))
 + (Class)predictedSpeedType;
 - (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
-- (void)_addNoFlagsGeoIds:(long long)arg1;
-- (void)_addNoFlagsPredictedSpeed:(id)arg1;
-- (void)_readGeoIds;
-- (void)_readOpenlr;
-- (void)_readPredictedSpeeds;
 - (void)addGeoIds:(long long)arg1;
 - (void)addPredictedSpeed:(id)arg1;
 - (void)clearGeoIds;
@@ -94,7 +80,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedSpeedsCount;

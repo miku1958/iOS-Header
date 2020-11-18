@@ -17,6 +17,7 @@
     BOOL _URLKnownToBeTrusted;
     ACAccount *_account;
     NSArray *_additionalPlatforms;
+    NSDictionary *_additionalQueryParams;
     id<AMSBagProtocol> _bag;
     NSArray *_bundleIdentifiers;
     NSString *_clientIdentifier;
@@ -33,6 +34,7 @@
 @property (nonatomic) BOOL URLKnownToBeTrusted; // @synthesize URLKnownToBeTrusted=_URLKnownToBeTrusted;
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSArray *additionalPlatforms; // @synthesize additionalPlatforms=_additionalPlatforms;
+@property (strong, nonatomic) NSDictionary *additionalQueryParams; // @synthesize additionalQueryParams=_additionalQueryParams;
 @property (readonly, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 @property (nonatomic) BOOL charts; // @synthesize charts=_charts;
@@ -54,6 +56,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
 - (id)initWithType:(long long)arg1 clientIdentifier:(id)arg2 clientVersion:(id)arg3 bag:(id)arg4;
 - (id)perform;

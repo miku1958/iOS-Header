@@ -16,7 +16,7 @@
     BOOL _startAnimationAfterRotationEnds;
     BOOL _windowIsRotating;
     BOOL _cleanedUp;
-    BOOL _animating;
+    unsigned long long _animationCount;
     NSMutableArray *_pendedAnimationContexts;
     SBFolderControllerAnimationContext *_animationContext;
     BOOL _invalidated;

@@ -6,9 +6,11 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
+
 @class NSIndexSet, TSPObject, TSTTableHeaderStorageBucket;
 
-@interface TSTTableHeaderStorage : TSPContainedObject
+@interface TSTTableHeaderStorage : TSPContainedObject <TSTCompatibilityVersionProviding>
 {
     TSTTableHeaderStorageBucket *_buckets[16];
     unsigned long long _bucketCount;

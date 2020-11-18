@@ -15,7 +15,6 @@
 @class MKWebBridge, MKWebViewFactoryItem, NSLayoutConstraint, NSString, NSURL, UIActivityIndicatorView, WKNavigation, WKWebView;
 @protocol MKWebContentViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKWebContentViewController : MKPlaceSectionViewController <WKNavigationDelegate, WKUIDelegate, MKInfoCardThemeListener, MKWebBridgeDelegate, MKModuleViewControllerProtocol>
 {
     NSLayoutConstraint *_heightConstraint;

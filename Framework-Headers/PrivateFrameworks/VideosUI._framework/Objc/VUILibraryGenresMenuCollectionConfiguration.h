@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (Class)classForCollectionViewCell;
 - (id)configureCollectionViewCellForCollectionView:(id)arg1 ForItem:(id)arg2 AtIndexPath:(id)arg3;
-- (id)configureSizingCellForItem:(id)arg1;
+- (id)configureSizingCellForItem:(id)arg1 AtIndexPath:(id)arg2;
 - (id)generateCollectionView;
 - (double)minimumLineSpacing;
 

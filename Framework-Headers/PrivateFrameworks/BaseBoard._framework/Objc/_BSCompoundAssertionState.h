@@ -8,21 +8,20 @@
 
 #import <BaseBoard/BSCompoundAssertionState-Protocol.h>
 
-@class NSSet;
+@class NSOrderedSet, NSSet;
 
 @interface _BSCompoundAssertionState : NSObject <BSCompoundAssertionState>
 {
     BOOL _active;
-    NSSet *_context;
+    NSOrderedSet *_context;
 }
 
 @property (readonly, getter=isActive) BOOL active;
 @property (readonly) NSSet *context;
+@property (readonly) NSOrderedSet *orderedContext;
 
 - (void).cxx_destruct;
 - (id)description;
-- (void)setActive:(BOOL)arg1;
-- (void)setContext:(id)arg1;
 
 @end
 

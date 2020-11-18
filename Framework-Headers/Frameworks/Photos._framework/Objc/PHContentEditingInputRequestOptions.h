@@ -22,6 +22,7 @@
     BOOL _editAsOvercapture;
     BOOL _loadResourcesToFlip;
     BOOL _skipDisplaySizeImage;
+    BOOL _skipLivePhotoImageAndAVAsset;
     CDUnknownBlockType _canHandleAdjustmentData;
     CDUnknownBlockType _progressHandler;
     long long _contentMode;
@@ -49,6 +50,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property (nonatomic) BOOL shouldForceOriginalChoice; // @synthesize shouldForceOriginalChoice=_shouldForceOriginalChoice;
 @property (nonatomic) BOOL skipDisplaySizeImage; // @synthesize skipDisplaySizeImage=_skipDisplaySizeImage;
+@property (nonatomic) BOOL skipLivePhotoImageAndAVAsset; // @synthesize skipLivePhotoImageAndAVAsset=_skipLivePhotoImageAndAVAsset;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 

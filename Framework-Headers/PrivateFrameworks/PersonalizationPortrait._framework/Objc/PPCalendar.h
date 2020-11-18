@@ -32,7 +32,7 @@
 - (id)init;
 - (id)initWithCalendarIdentifier:(id)arg1 title:(id)arg2 color:(struct CGColor *)arg3;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEKCalendar:(id)arg1;
+- (id)initWithEKCalendar:(id)arg1 internPool:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCalendar:(id)arg1;
 

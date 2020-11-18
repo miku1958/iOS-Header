@@ -45,11 +45,11 @@
 - (id)initWithPeerPaymentPassUniqueID:(id)arg1;
 - (id)initWithPeerPaymentPassUniqueID:(id)arg1 paymentService:(id)arg2;
 - (void)lookupTransactionActionsIfNeededWithServiceIdentifier:(id)arg1;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (id)peerPaymentTransactionWithServiceIdentifier:(id)arg1;
 - (void)setStatus:(unsigned long long)arg1 forPaymentTransactionWithServiceIdentifier:(id)arg2;
 - (unsigned long long)statusOfPaymentTransactionWithServiceIdentifier:(id)arg1;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
+- (void)transactionSourceIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 
 @end
 

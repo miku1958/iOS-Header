@@ -10,12 +10,13 @@
 #import <TextInputCore/TITypingSessionMonitoringProtocol-Protocol.h>
 
 @class NSLocale, NSPointerArray, NSString, TIKeyboardLayout, TITypingDESRecordWriter, TITypingSession;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, TITypingSessionDelegate;
 
 @interface TITypingSessionMonitor : NSObject <TITypingSessionMonitoringProtocol, TITypingSessionAggregatedEventSourcing>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     BOOL _useDODML;
+    id<TITypingSessionDelegate> _delegate;
     TITypingSession *_currentTypingSession;
     TITypingDESRecordWriter *_desRecordWriter;
     NSLocale *_locale;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) TIKeyboardLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
 @property (strong, nonatomic) TITypingSession *currentTypingSession; // @synthesize currentTypingSession=_currentTypingSession;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<TITypingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) TITypingDESRecordWriter *desRecordWriter; // @synthesize desRecordWriter=_desRecordWriter;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

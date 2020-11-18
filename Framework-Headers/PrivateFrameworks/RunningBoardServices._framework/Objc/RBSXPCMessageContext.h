@@ -17,10 +17,8 @@
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
 
 + (id)currentContext;
++ (void)runWithoutContext:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)_initWithHandoffToken:(id)arg1;
-- (void)_set;
-- (void)_unset;
 - (void)handoffToQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

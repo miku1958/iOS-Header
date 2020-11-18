@@ -19,6 +19,7 @@
 }
 
 @property (readonly, nonatomic) long long abTest2WeekZoneSize;
+@property (readonly, nonatomic) BOOL allowSafariRankingDataCollection;
 @property (readonly, nonatomic) NSArray *anonymousMetadataPreference;
 @property (readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) NSNumber *cohortsLookbackInDays;
@@ -59,12 +60,15 @@
 @property (readonly, copy, nonatomic) NSDictionary *resources;
 @property (readonly, nonatomic) double safariAll;
 @property (readonly, nonatomic) double safariDecay;
+@property (readonly, nonatomic) double safariDwellTimeThresholdHigh;
+@property (readonly, nonatomic) double safariDwellTimeThresholdMedium;
 @property (readonly, nonatomic) double safariLast1day;
 @property (readonly, nonatomic) double safariLast1hour;
 @property (readonly, nonatomic) double safariLast1month;
 @property (readonly, nonatomic) double safariLast1week;
 @property (readonly, nonatomic) double safariMostRecent;
 @property (readonly, nonatomic) BOOL sampleClientTiming;
+@property (readonly, nonatomic) NSArray *sampleClientTimingEventWhitelist;
 @property (readonly, nonatomic) BOOL sampleFeatures;
 @property (readonly, nonatomic) NSNumber *searchRenderTimeout;
 @property (readonly, nonatomic) NSURL *searchURL;
@@ -77,6 +81,7 @@
 @property (readonly, nonatomic) unsigned long long smartHistoryMinimumQueryLength;
 @property (readonly, nonatomic) unsigned long long smartHistorySampleThreshold;
 @property (readonly, nonatomic) unsigned long long smartHistoryTimeout;
+@property (readonly, nonatomic) NSDictionary *smartSearchV2Parameters;
 @property (readonly, nonatomic) NSArray *subscriptionProviderBundleIdentifierWhitelist;
 @property (readonly, nonatomic) NSArray *subscriptionProviderDomainWhitelist;
 @property (readonly, nonatomic) double subscriptionTTL;
@@ -84,6 +89,7 @@
 @property (readonly, nonatomic) NSArray *supportedGeoLocationSources;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
 @property (readonly, nonatomic) NSDictionary *tuscanyConfiguration;
+@property (readonly, nonatomic) NSURL *uncommittedSearchURL;
 @property (readonly, nonatomic) BOOL use2LayerRanking;
 @property (readonly, copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
 @property (readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;

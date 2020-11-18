@@ -35,14 +35,18 @@
 + (id)supportedReadVersions;
 + (id)versionNumbersEncodedInClass:(Class)arg1 withMethodNamePrefix:(id)arg2 suffix:(id)arg3;
 - (void).cxx_destruct;
+- (id)_dataSourceAndReturnError:(id *)arg1;
 - (id)description;
 - (unsigned long long)faceCountForPersonWithUniqueIdentifier:(id)arg1;
 - (id)faceCountsForAllPersons;
 - (id)faceCountsForPersonsWithUniqueIdentifiers:(id)arg1;
+- (id)faceObservationsForPersonWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
+- (unsigned long long)indexOfFaceprintObjectFrom:(id)arg1 withEquivalentDescriptorTo:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 dataSource:(id)arg2;
 - (unsigned long long)personCount;
 - (id)personUniqueIdentifiers;
 - (id)predictPersonFromFaceObservation:(id)arg1 limit:(unsigned long long)arg2 canceller:(id)arg3 error:(id *)arg4;
+- (id)trainingFaceObservationsForPersonWithUniqueIdentifier:(id)arg1 canceller:(id)arg2 error:(id *)arg3;
 - (id)upToDateFaceModelWithCanceller:(id)arg1 error:(id *)arg2;
 - (BOOL)updateInternalConfigurationWithModelFaceprintRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 

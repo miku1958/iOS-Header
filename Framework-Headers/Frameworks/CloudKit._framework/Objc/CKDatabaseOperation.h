@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class CKDatabase;
+@class CKDatabase, CKDatabaseOperationInfo;
 
 @interface CKDatabaseOperation : CKOperation
 {
@@ -14,9 +14,11 @@
 }
 
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
+@property (readonly, nonatomic) CKDatabaseOperationInfo *operationInfo; // @dynamic operationInfo;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
+- (long long)databaseScope;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (id)flowControlKey;

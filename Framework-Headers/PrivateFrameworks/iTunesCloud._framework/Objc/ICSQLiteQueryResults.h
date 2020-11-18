@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long firstInt64Value;
 @property (readonly, copy, nonatomic) NSNumber *firstNumberValue;
+@property (readonly, copy, nonatomic) NSString *firstStringValue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

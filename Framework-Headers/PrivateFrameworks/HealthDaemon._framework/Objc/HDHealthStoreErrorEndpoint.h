@@ -8,12 +8,13 @@
 
 @class NSError;
 
+__attribute__((visibility("hidden")))
 @interface HDHealthStoreErrorEndpoint : HDHealthStoreEndpoint
 {
     NSError *_error;
 }
 
-@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 
 - (void).cxx_destruct;
 - (id)initWithClient:(id)arg1 daemon:(id)arg2 error:(id)arg3;

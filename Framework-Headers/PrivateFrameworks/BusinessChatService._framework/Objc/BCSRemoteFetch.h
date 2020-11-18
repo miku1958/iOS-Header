@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface BCSRemoteFetch : NSObject
 {
 }
 
 + (id)_completionPool;
 + (id)_requestDispatchQueue;
-+ (id)cloudServerRequestHelper;
++ (id)cloudServerRequestHelperForType:(long long)arg1;
 + (id)createSessionForClientBundleID:(id)arg1;
 - (id)_dequeueCompletionBlocksForRequestHash:(id)arg1 inCompletionPool:(id)arg2;
 - (void)_enqueueCompletionBlock:(CDUnknownBlockType)arg1 forRequestHash:(id)arg2 inCompletionPool:(id)arg3 isDuplicateRequest:(BOOL *)arg4;

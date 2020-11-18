@@ -7,13 +7,14 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INMediaSearch, NSArray;
+@class INMediaSearch, INPrivateUpdateMediaAffinityIntentData, NSArray;
 
 @protocol INUpdateMediaAffinityIntentExport <NSObject, JSExport>
 
 @property (nonatomic) long long affinityType;
 @property (copy, nonatomic) NSArray *mediaItems;
 @property (copy, nonatomic) INMediaSearch *mediaSearch;
+@property (copy, nonatomic) INPrivateUpdateMediaAffinityIntentData *privateUpdateMediaAffinityIntentData;
 
 - (id)init;
 @end

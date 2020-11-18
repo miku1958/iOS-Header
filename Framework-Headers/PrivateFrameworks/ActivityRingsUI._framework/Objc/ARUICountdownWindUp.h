@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (double)delay;
 - (double)duration;
 - (id)identifier;
-- (id)timingFunction;
 
 @end
 

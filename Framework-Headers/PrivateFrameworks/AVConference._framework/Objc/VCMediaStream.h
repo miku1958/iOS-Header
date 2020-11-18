@@ -12,7 +12,7 @@
 #import <AVConference/VCMediaStreamTransportDelegate-Protocol.h>
 #import <AVConference/VCSecurityEventHandler-Protocol.h>
 
-@class AVCBasebandCongestionDetector, AVCStatisticsCollector, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCDatagramChannelIDS, VCMasterKeyIndex, VCMediaStreamConfig, VCMediaStreamTransport, VCWeakObjectHolder;
+@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, NSArray, NSError, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCDatagramChannelIDS, VCMasterKeyIndex, VCMediaStreamConfig, VCMediaStreamTransport, VCTransportSession, VCWeakObjectHolder;
 @protocol OS_dispatch_queue, OS_dispatch_source, RTCPReportProvider, VCMediaStreamDelegate, VCMediaStreamNotification, VCMomentsCollectorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSString *_callID;
     BOOL _isSRTPInitialized;
     BOOL _useRandomTS;
+    BOOL _isReportingAgentOwner;
     double _rtpTimeoutEnabledTime;
     double _rtcpTimeoutEnabledTime;
     double _decryptionTimeoutEnabledTime;
@@ -42,8 +43,6 @@ __attribute__((visibility("hidden")))
     int _clientPID;
     VCWeakObjectHolder *_notificationDelegate;
     VCWeakObjectHolder *_rtcpReportProvider;
-    AVCStatisticsCollector *_statisticsCollector;
-    AVCBasebandCongestionDetector *_basebandCongestionDetector;
     int _operatingMode;
     struct _VCMediaStreamTransportSetupInfo _transportSetupInfo;
     NSMutableArray *_transportArray;
@@ -51,9 +50,17 @@ __attribute__((visibility("hidden")))
     struct tagVCMediaQueue *_mediaQueue;
     VCMasterKeyIndex *_lastReceivedMKI;
     VCCallInfoBlob *_remoteEndpointInfo;
+    VCTransportSession *_transportSession;
+    NSError *_cachedError;
     CDUnknownFunctionPointerType _notificationHandler;
     CDUnknownFunctionPointerType _packetEventHandler;
+    struct tagVCNWConnectionMonitor *_nwMonitor;
     long long _streamToken;
+    void *_mediaControlInfoGenerator;
+    unsigned int _mediaControlInfoGeneratorType;
+    AVCRateControlFeedbackController *_feedbackController;
+    BOOL _mediaControlInfoCallbacksRegistered;
+    AVCBasebandCongestionDetector *_basebandCongestionDetector;
 }
 
 @property (strong, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
@@ -62,11 +69,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VCMediaStreamTransport *defaultTransport;
 @property (nonatomic) id<VCMediaStreamDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, strong, nonatomic) AVCRateControlFeedbackController *feedbackController; // @synthesize feedbackController=_feedbackController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isSendingMedia;
 @property (readonly, nonatomic) double lastReceivedRTCPPacketTime;
 @property (readonly, nonatomic) double lastReceivedRTPPacketTime;
 @property (readonly, nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
+@property (readonly, nonatomic) void *mediaControlInfoGenerator; // @synthesize mediaControlInfoGenerator=_mediaControlInfoGenerator;
+@property (readonly, nonatomic) unsigned int mediaControlInfoGeneratorType; // @synthesize mediaControlInfoGeneratorType=_mediaControlInfoGeneratorType;
 @property (nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property (nonatomic) id<VCMomentsCollectorDelegate> momentsCollectorDelegate; // @synthesize momentsCollectorDelegate=_momentsCollectorDelegate;
 @property (nonatomic) id<VCMediaStreamNotification> notificationDelegate;
@@ -74,37 +84,54 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double rtcpHeartbeatLeeway;
 @property (nonatomic) id<RTCPReportProvider> rtcpReportProvider;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
-@property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 @property (readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *transportArray; // @synthesize transportArray=_transportArray;
 
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
 - (void)checkDecryptionTimeoutAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
 - (void)checkForDecryptionTimeout;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
-- (void)cleanupNWInfo:(CDStruct_cb9f2fd6 *)arg1;
+- (void)cleanupNWConnection:(id *)arg1;
 - (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (double)computeNextTimoutWithEnabledTime:(double)arg1 timeoutInterval:(double)arg2 lastReceivedPacketTime:(double)arg3 currentTime:(double)arg4 lastTimeoutReportTime:(double)arg5;
-- (id)createTransportWithSSRC:(unsigned int)arg1;
+- (void)createLocalMediaControlInfoGeneratorWithType:(unsigned int)arg1 version:(unsigned char)arg2;
+- (void)createNWMonitor;
+- (struct tagHANDLE *)createRTPHandleWithStreamConfig:(id)arg1 payloadType:(int)arg2 localSSRC:(unsigned int)arg3;
+- (id)createTransportWithStreamConfig:(id)arg1 ssrc:(unsigned int)arg2;
 - (void)dealloc;
 - (void)decryptionStatusChanged:(BOOL)arg1;
+- (void)destroyNWMonitor;
+- (void)destroyNWMonitorInternal;
+- (void)dupNWConnectionBackingSocket:(int *)arg1;
 - (BOOL)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
 - (unsigned int)getExtendedSequenceNumberForSequenceNumber:(unsigned short)arg1;
+- (id)getMediaStreamConfigForControlInfoGenerator:(id)arg1;
 - (unsigned int)getRTCPReportNTPTimeMiddle32ForReportId:(unsigned char)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (BOOL)handleEncryptionInfoChange:(id)arg1;
 - (int)handleMediaCallbackNotification:(int)arg1 inData:(void *)arg2 outData:(void *)arg3;
+- (void)handleStartDidSucceed:(BOOL)arg1 withError:(id)arg2;
+- (void)handleTransportSessionEvent:(unsigned int)arg1 info:(id)arg2;
 - (id)init;
 - (id)initWithTransportSessionID:(unsigned int)arg1;
 - (id)initWithTransportSessionID:(unsigned int)arg1 localSSRC:(unsigned int)arg2;
+- (BOOL)initializeTransportSessionWithIDSDestination:(id)arg1 error:(id *)arg2;
+- (BOOL)initializeTransportSessionWithNWConnectionID:(id)arg1 error:(id *)arg2;
+- (BOOL)initializeTransportSessionWithSocketDictionary:(id)arg1 error:(id *)arg2;
+- (BOOL)initializeTransportSetupInfoWithIDSDestination:(id)arg1 error:(id *)arg2;
+- (void)initializeTransportSetupInfoWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
+- (void)initializeTransportSetupInfoWithSocketDictionary:(id)arg1;
+- (BOOL)initializeTransportSetupInfoWithTransportSession:(id *)arg1;
 - (BOOL)isDecryptionTimeoutEnabled;
 - (BOOL)isRTCPSendEnabled;
 - (BOOL)isRTCPTimeoutEnabled;
 - (BOOL)isRTPTimeoutEnabled;
 - (void)lock;
+- (void)notifyDelegateStartDidSucceed:(BOOL)arg1 withError:(id)arg2;
 - (void)onCallIDChanged;
 - (BOOL)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
 - (void)onPauseWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -117,6 +144,8 @@ __attribute__((visibility("hidden")))
 - (void)processDecryptionTimeoutSettingChange;
 - (void)processRTCPTimeoutSettingChange;
 - (void)processRTPTimeoutSettingChange;
+- (void)registerCallbacksForMediaControlInfoGenerator:(void *)arg1 forDirection:(long long)arg2 options:(unsigned int)arg3;
+- (void)registerMediaControlInfoGeneratorWithConfigs:(id)arg1;
 - (void)resetDecryptionTimeout;
 - (void)resetRTCPSendHeartbeatTimer:(unsigned long long)arg1;
 - (void)resetTimeoutHeartbeatTimer:(unsigned long long)arg1;
@@ -137,18 +166,20 @@ __attribute__((visibility("hidden")))
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
 - (void)setupCallbacksWithNWConnectionMonitor:(struct tagVCNWConnectionMonitor *)arg1;
 - (void)setupMediaStream;
-- (BOOL)setupNWConnectionWithClientID:(unsigned char [16])arg1;
+- (BOOL)setupNWConnectionWithID:(id)arg1;
 - (id)setupRTPForIDS;
 - (id)setupRTPWithIDSDestination:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithIPInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithLocalParticipantInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithNWConnectionID:(id)arg1 error:(id *)arg2;
-- (void)setupRTPWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
 - (id)setupRTPWithSocketDictionary:(id)arg1 error:(id *)arg2;
 - (void)start;
+- (BOOL)startMediaTransportsWithError:(id *)arg1;
 - (void)startRTCPSendHeartbeat;
 - (void)startTimeoutHeartbeat;
 - (void)stop;
+- (void)stopInternal;
+- (void)stopMediaTransports;
 - (void)stopRTCPSendHeartbeat;
 - (void)stopTimeoutHeartbeat;
 - (long long)streamDirection;
@@ -156,6 +187,8 @@ __attribute__((visibility("hidden")))
 - (id)supportedPayloads;
 - (void)timeoutHeartbeat;
 - (void)unlock;
+- (void)unregisterMediaControlInfoGenerator;
+- (BOOL)updateRemoteAddressWithConfig:(id)arg1 error:(id *)arg2;
 - (void)vcMediaStreamTransport:(id)arg1 didReceiveRTCPPackets:(id)arg2;
 
 @end

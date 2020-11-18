@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)ckShortDescription;
 - (id)description;
 - (void)finishWithError:(id)arg1;
-- (id)initWithLookupInfos:(id)arg1;
+- (id)initWithOperation:(id)arg1 lookupInfos:(id)arg2;
 - (void)performRequest;
 - (id)spawnURLRequests;
 

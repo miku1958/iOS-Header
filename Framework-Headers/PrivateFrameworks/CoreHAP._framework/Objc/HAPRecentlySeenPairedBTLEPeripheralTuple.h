@@ -47,6 +47,7 @@
 - (id)description;
 - (id)initRecentlySeenPairedBTLEPeripheral:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 identifier:(id)arg6 advertisementFormat:(unsigned long long)arg7 setupHash:(id)arg8;
 - (void)updatePairedPeripheralConfiguration:(BOOL)arg1 connectionPriority:(unsigned long long)arg2;
+- (void)updateWithPeripheral:(id)arg1;
 
 @end
 

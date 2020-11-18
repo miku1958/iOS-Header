@@ -12,7 +12,7 @@
 
 @interface HKConcept : NSObject <NSSecureCoding>
 {
-    NSMutableArray *_relationships;
+    NSArray *_relationships;
     NSMutableArray *_attributes;
     BOOL _relationshipsAreLoaded;
     BOOL _isUndefined;
@@ -21,10 +21,13 @@
 }
 
 @property (readonly, copy, nonatomic) HKMedicalCoding *LOINCCode;
+@property (readonly, copy, nonatomic) HKMedicalCoding *RxNormCoding;
 @property (readonly, copy, nonatomic) HKConceptAttribute *adHocCode;
 @property (readonly, copy, nonatomic) NSArray *attributes;
+@property (readonly, copy, nonatomic) NSArray *brandNames;
 @property (readonly, copy, nonatomic) HKConcept *chartedWithConcept;
 @property (readonly, nonatomic) BOOL chartsBloodPressure;
+@property (readonly, copy, nonatomic) HKConcept *form;
 @property (readonly, copy, nonatomic) HKConcept *groupByConcept;
 @property (readonly, nonatomic) BOOL hidesOutOfRangeFilter;
 @property (readonly, copy, nonatomic) HKConceptIdentifier *identifier; // @synthesize identifier=_identifier;
@@ -32,40 +35,38 @@
 @property (readonly, nonatomic) BOOL isNebulous;
 @property (readonly, nonatomic) BOOL isUndefined; // @synthesize isUndefined=_isUndefined;
 @property (readonly, copy, nonatomic) NSString *localizedPreferredName;
+@property (readonly, copy, nonatomic) NSArray *modifiers;
 @property (copy, nonatomic) NSString *nodeName; // @synthesize nodeName=_nodeName;
 @property (readonly, copy, nonatomic) NSString *preferredName;
 @property (readonly, copy, nonatomic) NSArray *relationships;
-@property (nonatomic) BOOL relationshipsAreLoaded; // @synthesize relationshipsAreLoaded=_relationshipsAreLoaded;
+@property (readonly, nonatomic) BOOL relationshipsAreLoaded; // @synthesize relationshipsAreLoaded=_relationshipsAreLoaded;
+@property (readonly, copy, nonatomic) HKConcept *strength;
+@property (readonly, copy, nonatomic) NSArray *synonyms;
 @property (readonly, copy, nonatomic) NSSet *validInRegions;
 @property (readonly, nonatomic) long long version;
 
-+ (id)_buildCategoryIdentifierWithCode:(unsigned long long)arg1;
 + (id)_conceptWithIdentifier:(id)arg1 attributes:(id)arg2;
-+ (id)allergyCategoryIdentifier;
-+ (id)conditionCategoryIdentifier;
++ (id)conceptWithIdentifier:(id)arg1 attributes:(id)arg2 relationships:(id)arg3;
 + (id)fallbackLanguagesForLocale:(id)arg1;
-+ (id)labCategoryIdentifier;
-+ (id)medicationCategoryIdentifier;
 + (id)preferredLanguages;
-+ (id)procedureCategoryIdentifier;
 + (BOOL)supportsSecureCoding;
-+ (id)unknownCategoryIdentifier;
-+ (id)vaccinationCategoryIdentifier;
-+ (id)vitalCategoryIdentifier;
 - (void).cxx_destruct;
-- (id)_firstConceptOfRelationshipType:(id)arg1;
-- (id)_init;
+- (id)_conceptsOfRelationshipType:(long long)arg1;
+- (id)_firstConceptOfRelationshipType:(long long)arg1;
 - (void)addAttribute:(id)arg1;
-- (void)addRelationships:(id)arg1;
-- (id)attributesForName:(id)arg1;
+- (id)attributesForType:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)firstAttributeForName:(id)arg1;
+- (void)enumerateAttributesWithType:(long long)arg1 block:(CDUnknownBlockType)arg2;
+- (id)firstAttributeForType:(long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 attributes:(id)arg2 relationships:(id)arg3 relationshipsAreLoaded:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)setRelationships:(id)arg1;
+- (id)stringsForAttributeType:(long long)arg1;
 
 @end
 

@@ -46,6 +46,7 @@
 - (void)addMecabraCandidate:(id)arg1 mecabraCandidateRef:(void *)arg2;
 - (void)addMecabraFacemarkCandidate:(void *)arg1 forInput:(id)arg2;
 - (void)addMecabraProactiveCandidate:(void *)arg1 triggerSourceType:(unsigned char)arg2;
+- (void)addProactiveTrigger:(id)arg1;
 - (void)addSyntheticMecabraCandidateWithSurface:(id)arg1 input:(id)arg2;
 - (void)addSyntheticMecabraCandidateWithSurface:(id)arg1 input:(id)arg2 isExtension:(BOOL)arg3;
 - (void)addSyntheticMecabraCandidateWithSurface:(id)arg1 input:(id)arg2 isExtension:(BOOL)arg3 deleteCount:(unsigned long long)arg4;

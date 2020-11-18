@@ -35,11 +35,11 @@
 @property (readonly, nonatomic) NSSet *supportedVideoResolutions; // @synthesize supportedVideoResolutions=_supportedVideoResolutions;
 @property (nonatomic) BOOL supportsComfortNoise; // @synthesize supportsComfortNoise=_supportsComfortNoise;
 
-+ (BOOL)is16x9Resolution:(id)arg1;
-+ (BOOL)is4x3Resolution:(id)arg1;
++ (unsigned long long)aspectRatioOfResolution:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (void)translateCapabilities:(id)arg1;
 - (void).cxx_destruct;
+- (id)_supportedResolutionsWithOverrides;
 - (void)_updateWithStreamPreference:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

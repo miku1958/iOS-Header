@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class IMDAccount, IMFileTransfer, IMMessageItem, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
+@class IDSAccount, IMDAccount, IMDChat, IMFileTransfer, IMMessageItem, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol IMServiceSessionProtocol
 
 @optional
+- (void)_blastDoorProcessingWithIMMessageItem:(IMMessageItem *)arg1 chat:(IMDChat *)arg2 account:(IMDAccount *)arg3 fromToken:(NSData *)arg4 fromIDSID:(NSString *)arg5 fromIdentifier:(NSString *)arg6 toIdentifier:(NSString *)arg7 participants:(NSArray *)arg8 groupName:(NSString *)arg9 groupID:(NSString *)arg10 isEncrypted:(BOOL)arg11 isFromMe:(BOOL)arg12 isLastFromStorage:(BOOL)arg13 isFromStorage:(BOOL)arg14 hideLockScreenNotification:(BOOL)arg15 wantsCheckpointing:(BOOL)arg16 needsDeliveryReceipt:(NSNumber *)arg17 messageBalloonPayloadAttachmentDictionary:(NSDictionary *)arg18 inlineAttachments:(NSDictionary *)arg19 attributionInfoArray:(NSArray *)arg20 nicknameDictionary:(NSDictionary *)arg21 messageContext:(id)arg22 completionBlock:(void (^)(void))arg23;
 - (void)acceptSubscriptionRequest:(BOOL)arg1 from:(NSString *)arg2;
 - (void)addAliases:(NSArray *)arg1 account:(NSString *)arg2;
 - (void)authenticateAccount:(NSString *)arg1;
@@ -21,7 +22,7 @@
 - (void)closeSessionChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3;
 - (void)declineInvitationToChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3;
 - (void)eagerUploadCancel:(NSURL *)arg1;
-- (void)eagerUploadTransfer:(NSDictionary *)arg1;
+- (void)eagerUploadTransfer:(NSDictionary *)arg1 recipients:(NSArray *)arg2;
 - (void)enrollDeviceInSMSRelay:(NSString *)arg1;
 - (void)enrollSelfDeviceInSMSRelay;
 - (void)holdBuddyUpdates;
@@ -47,18 +48,22 @@
 - (void)removePersonInfo:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)removePersonInfoFromiMessageChat:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)renameGroup:(NSString *)arg1 to:(NSString *)arg2;
+- (void)requestGroupPhotoIfNecessary:(IMDChat *)arg1 incomingGroupPhotoCreationTime:(NSNumber *)arg2 toIdentifier:(NSString *)arg3 fromIdentifier:(NSString *)arg4 messageIsFromStorage:(BOOL)arg5;
 - (void)requestGroups;
 - (void)requestProperty:(NSString *)arg1 ofPerson:(NSString *)arg2;
 - (void)requestSubscriptionTo:(NSString *)arg1;
 - (void)requestVCWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3;
 - (void)respondToVCInvitationWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3;
 - (void)resumeBuddyUpdates;
+- (void)retryGroupPhotoUpload:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendAVMessageToPerson:(NSString *)arg1 sessionID:(unsigned int)arg2 type:(unsigned int)arg3 userInfo:(NSDictionary *)arg4 conference:(NSString *)arg5;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 toChatID:(NSString *)arg4 identifier:(NSString *)arg5 style:(unsigned char)arg6;
 - (void)sendCounterProposalToPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3;
 - (void)sendDeleteCommand:(NSDictionary *)arg1 forChatGUID:(NSString *)arg2;
+- (void)sendDeliveryReceiptForMessageID:(NSString *)arg1 toID:(NSString *)arg2 deliveryContext:(NSDictionary *)arg3 needsDeliveryReceipt:(NSNumber *)arg4 callerID:(NSString *)arg5 account:(IDSAccount *)arg6;
 - (void)sendFileTransfer:(IMFileTransfer *)arg1 toPerson:(NSString *)arg2;
+- (void)sendGroupPhotoUpdate:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendLogDumpMessageAtFilePath:(NSString *)arg1 toRecipient:(NSString *)arg2 shouldDeleteFile:(BOOL)arg3 withCompletion:(void (^)(BOOL))arg4;
 - (void)sendMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)sendNicknameInfoToChatID:(NSString *)arg1;

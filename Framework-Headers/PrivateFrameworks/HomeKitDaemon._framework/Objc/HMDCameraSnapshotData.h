@@ -15,9 +15,9 @@
     HMDVideoResolution *_videoResolution;
 }
 
-@property (readonly, nonatomic) NSData *snapshotData; // @synthesize snapshotData=_snapshotData;
-@property (readonly, nonatomic) HMFOSTransaction *snapshotDataTrasaction; // @synthesize snapshotDataTrasaction=_snapshotDataTrasaction;
-@property (readonly, nonatomic) HMDVideoResolution *videoResolution; // @synthesize videoResolution=_videoResolution;
+@property (readonly) NSData *snapshotData; // @synthesize snapshotData=_snapshotData;
+@property (readonly) HMFOSTransaction *snapshotDataTrasaction; // @synthesize snapshotDataTrasaction=_snapshotDataTrasaction;
+@property (readonly) HMDVideoResolution *videoResolution; // @synthesize videoResolution=_videoResolution;
 
 - (void).cxx_destruct;
 - (void)dealloc;

@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) unsigned int version;
 @property (readonly, nonatomic) NSString *volumeUuidString;
 
++ (void)_applyLargeVideoRecipeRefactorFixToExternalResource:(id)arg1 withAsset:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (id)fourCharCodeName;

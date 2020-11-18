@@ -4,23 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLResourceDataStoreKey.h>
 
 #import <PhotoLibraryServices/PLChooserKeyProperties-Protocol.h>
-#import <PhotoLibraryServices/PLResourceDataStoreKey-Protocol.h>
 
 @class NSString;
 
-@interface PLSharedStreamsDataStoreKey : NSObject <PLResourceDataStoreKey, PLChooserKeyProperties>
+@interface PLSharedStreamsDataStoreKey : PLResourceDataStoreKey <PLChooserKeyProperties>
 {
     NSString *_relativePath;
     unsigned int _sharedStreamsResourceType;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (id)_keyDataWithRelativePath:(id)arg1 type:(unsigned int)arg2;
 + (id)_relativeFilePathForPersonID:(id)arg1 albumID:(id)arg2 dcimDirectory:(id)arg3 fileName:(id)arg4;

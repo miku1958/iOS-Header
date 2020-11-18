@@ -8,5 +8,6 @@
 
 @interface UIFont (LPExtras)
 - (id)_lp_CSSFontWeight;
+- (long long)_lp_symbolWeight;
 @end
 

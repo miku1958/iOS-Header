@@ -6,13 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CARScreenViewArea, NSArray, NSString, NSURL;
+@class CARScreenViewArea, NSArray, NSDictionary, NSString, NSURL;
 
 @interface CARScreenInfo : NSObject
 {
     BOOL _limitedUI;
     BOOL _nightMode;
     BOOL _supportsHighFidelityTouch;
+    BOOL _wantsCornerMasks;
+    BOOL _initialFocusOwner;
+    BOOL _supportsAppearanceMode;
+    BOOL _supportsPerDisplayNightMode;
+    BOOL _supportsMapAppearanceMode;
     NSString *_identifier;
     unsigned long long _screenType;
     unsigned long long _limitedUIElements;
@@ -24,6 +29,7 @@
     NSURL *_initialURL;
     unsigned long long _systemAvailableInteractionModels;
     unsigned long long _systemPrimaryInteractionModel;
+    NSDictionary *_screenInfoResponse;
     struct CGSize _physicalSize;
     struct CGSize _pixelSize;
 }
@@ -33,6 +39,7 @@
 @property (strong, nonatomic) CARScreenViewArea *currentViewArea; // @synthesize currentViewArea=_currentViewArea;
 @property (nonatomic) unsigned long long currentViewAreaTransitionControlType; // @synthesize currentViewAreaTransitionControlType=_currentViewAreaTransitionControlType;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL initialFocusOwner; // @synthesize initialFocusOwner=_initialFocusOwner;
 @property (readonly, nonatomic) NSURL *initialURL; // @synthesize initialURL=_initialURL;
 @property (readonly, nonatomic, getter=isLimitedUI) BOOL limitedUI; // @synthesize limitedUI=_limitedUI;
 @property (readonly, nonatomic) unsigned long long limitedUIElements; // @synthesize limitedUIElements=_limitedUIElements;
@@ -41,11 +48,16 @@
 @property (readonly, nonatomic) struct CGSize physicalSize; // @synthesize physicalSize=_physicalSize;
 @property (readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property (readonly, nonatomic) unsigned long long primaryInteractionModel;
+@property (readonly, copy, nonatomic) NSDictionary *screenInfoResponse; // @synthesize screenInfoResponse=_screenInfoResponse;
 @property (readonly, nonatomic) unsigned long long screenType; // @synthesize screenType=_screenType;
+@property (nonatomic) BOOL supportsAppearanceMode; // @synthesize supportsAppearanceMode=_supportsAppearanceMode;
 @property (readonly, nonatomic) BOOL supportsHighFidelityTouch; // @synthesize supportsHighFidelityTouch=_supportsHighFidelityTouch;
+@property (nonatomic) BOOL supportsMapAppearanceMode; // @synthesize supportsMapAppearanceMode=_supportsMapAppearanceMode;
+@property (nonatomic) BOOL supportsPerDisplayNightMode; // @synthesize supportsPerDisplayNightMode=_supportsPerDisplayNightMode;
 @property (nonatomic) unsigned long long systemAvailableInteractionModels; // @synthesize systemAvailableInteractionModels=_systemAvailableInteractionModels;
 @property (nonatomic) unsigned long long systemPrimaryInteractionModel; // @synthesize systemPrimaryInteractionModel=_systemPrimaryInteractionModel;
 @property (readonly, copy, nonatomic) NSArray *viewAreas; // @synthesize viewAreas=_viewAreas;
+@property (nonatomic) BOOL wantsCornerMasks; // @synthesize wantsCornerMasks=_wantsCornerMasks;
 
 - (void).cxx_destruct;
 - (BOOL)_currentProcessHasEntitlement;
@@ -54,7 +66,7 @@
 - (id)descriptionForAvailableInteractionModels;
 - (id)descriptionForPrimaryInteractionModel;
 - (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 screenType:(unsigned long long)arg2;
-- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 screenType:(unsigned long long)arg2 additionalInsets:(struct NSEdgeInsets)arg3;
+- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 screenType:(unsigned long long)arg2 additionalInsets:(struct NSEdgeInsets)arg3 displayDictionary:(id)arg4;
 - (void)limitedUIChanged:(BOOL)arg1;
 - (void)nightModeChanged:(BOOL)arg1;
 

@@ -38,11 +38,14 @@
 @property (readonly, nonatomic) id<AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property (readonly, nonatomic) AVTUIStickerGeneratorPool *stickerGeneratorPool; // @synthesize stickerGeneratorPool=_stickerGeneratorPool;
 
++ (BOOL)clearStickersForAvatarRecordIdentifier:(id)arg1;
 + (BOOL)clearStickersForAvatarRecordIdentifier:(id)arg1 withEnvironment:(id)arg2;
 + (id)imageEncoder;
++ (id)stickerCacheWithEnvironment:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithAvatarRecord:(id)arg1 cache:(id)arg2 imageStore:(id)arg3 stickerGeneratorPool:(id)arg4 environment:(id)arg5 renderingScheduler:(id)arg6 renderingQueue:(id)arg7 encodingQueue:(id)arg8 callbackQueue:(id)arg9;
 - (id)initWithAvatarRecord:(id)arg1 cache:(id)arg2 renderingScheduler:(id)arg3 renderingQueue:(id)arg4 encodingQueue:(id)arg5 stickerGeneratorPool:(id)arg6 environment:(id)arg7;
+- (id)initWithAvatarRecord:(id)arg1 stickerGeneratorPool:(id)arg2 scheduler:(id)arg3;
 - (CDUnknownBlockType)providerForResourceForScope:(id)arg1 queue:(id)arg2 renderingHandler:(CDUnknownBlockType)arg3;
 - (id)renderStickerResourceForItem:(id)arg1 scope:(id)arg2 configuration:(id)arg3;
 - (void)saveImageForResource:(id)arg1 forScope:(id)arg2 synchronous:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -20,6 +20,7 @@
 - (id)content;
 - (long long)count;
 - (long long)countForCollection:(id)arg1;
+- (id)existingAssetsFetchResultAtIndex:(long long)arg1;
 - (long long)indexOfCollection:(id)arg1;
 - (id)initWithCollectionsDataSource:(id)arg1;
 - (id)objectAtIndex:(long long)arg1;

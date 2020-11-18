@@ -82,6 +82,7 @@
 - (void)layoutSubviews;
 - (void)setButtonBarItemsExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setNeedsValidation;
+- (BOOL)shouldSkipValidation;
 - (void)validateIfNeeded;
 
 @end

@@ -9,12 +9,12 @@
 #import <SpringBoard/MTLumaDodgePillBackgroundLuminanceObserver-Protocol.h>
 #import <SpringBoard/PTSettingsKeyPathObserver-Protocol.h>
 #import <SpringBoard/SBAttentionAwarenessClientDelegate-Protocol.h>
-#import <SpringBoard/SBSystemCursorInteractionDelegate-Protocol.h>
+#import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 
 @class MTLumaDodgePillSettings, MTLumaDodgePillView, NSMutableSet, NSString, SBAttentionAwarenessClient, SBFHomeGrabberSettings;
-@protocol SBHomeGrabberDelegate;
+@protocol SBHomeGrabberDelegate, SBHomeGrabberPointerClickDelegate;
 
-@interface SBHomeGrabberView : UIView <PTSettingsKeyPathObserver, SBAttentionAwarenessClientDelegate, MTLumaDodgePillBackgroundLuminanceObserver, SBSystemCursorInteractionDelegate>
+@interface SBHomeGrabberView : UIView <PTSettingsKeyPathObserver, SBAttentionAwarenessClientDelegate, MTLumaDodgePillBackgroundLuminanceObserver, SBSystemPointerInteractionDelegate>
 {
     SBFHomeGrabberSettings *_settings;
     MTLumaDodgePillSettings *_pillSettings;
@@ -33,10 +33,11 @@
     long long _style;
     unsigned long long _lastVisibilityTransitionToken;
     NSMutableSet *_outstandingVisibilityTransitionTokens;
-    BOOL _isSystemCursorInteractionEnabled;
+    BOOL _isSystemPointerInteractionEnabled;
     BOOL _suppressesBounce;
     id<SBHomeGrabberDelegate> _delegate;
     long long _colorBias;
+    id<SBHomeGrabberPointerClickDelegate> _pointerClickDelegate;
 }
 
 @property (nonatomic) BOOL autoHides; // @synthesize autoHides=_autoHides;
@@ -46,6 +47,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEdgeProtectEnabled) BOOL edgeProtectEnabled; // @synthesize edgeProtectEnabled=_edgeProtectEnabled;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<SBHomeGrabberPointerClickDelegate> pointerClickDelegate; // @synthesize pointerClickDelegate=_pointerClickDelegate;
 @property (readonly, nonatomic) double suggestedEdgeSpacing;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesBounce; // @synthesize suppressesBounce=_suppressesBounce;
@@ -60,12 +62,12 @@
 - (struct CGRect)_calculatePillFrame;
 - (long long)_calculatePresence;
 - (long long)_calculateStyle;
-- (struct CGRect)_cursorInteractionHitTestRect;
 - (BOOL)_edgeProtectEffectivelyEnabled;
 - (void)_invalidateInitialAutoHideTime;
 - (id)_newPillView;
 - (void)_noteActiveForTouchThatShouldUnhideImmediately:(BOOL)arg1;
-- (void)_setSystemCursorInteractionEnabled:(BOOL)arg1;
+- (struct CGRect)_pointerInteractionHitTestRect;
+- (void)_setSystemPointerInteractionEnabled:(BOOL)arg1;
 - (void)_updateIdleTouchAwarenessClient;
 - (void)_updatePresence:(long long)arg1 style:(long long)arg2 withAnimationSettings:(id)arg3;
 - (void)client:(id)arg1 attentionLostTimeoutDidExpire:(double)arg2 forConfigurationGeneration:(unsigned long long)arg3 withAssociatedObject:(id)arg4;
@@ -87,7 +89,7 @@
 - (void)setHidden:(BOOL)arg1;
 - (void)setHidden:(BOOL)arg1 forReason:(id)arg2 withAnimationSettings:(id)arg3;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
-- (BOOL)shouldBeginCursorInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
+- (BOOL)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (id)styleForRegion:(id)arg1 forView:(id)arg2;
 - (struct CGSize)suggestedSizeForContentWidth:(double)arg1;
 - (void)turnOffAutoHideWithDelay:(double)arg1;

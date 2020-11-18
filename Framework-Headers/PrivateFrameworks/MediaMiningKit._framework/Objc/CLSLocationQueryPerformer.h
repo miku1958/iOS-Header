@@ -42,8 +42,8 @@
 - (void)cancel;
 - (id)init;
 - (id)initWithRegions:(id)arg1 precision:(double)arg2;
-- (void)logAggdGeoLookupCounterAndDurationWithLookupDuration:(id)arg1;
-- (void)logAggdGeoLookupFailureResult;
+- (void)logGeoLookupCounterAndDurationWithLookupDuration:(id)arg1;
+- (void)logGeoLookupFailureResult;
 - (BOOL)shouldQueryItemsForRegion:(id)arg1 selectedRegions:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1;
 

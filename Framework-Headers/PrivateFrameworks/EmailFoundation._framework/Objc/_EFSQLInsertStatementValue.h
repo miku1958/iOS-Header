@@ -15,12 +15,7 @@
     NSMutableDictionary *_expressables;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *bindables; // @synthesize bindables=_bindables;
-@property (strong, nonatomic) NSMutableDictionary *expressables; // @synthesize expressables=_expressables;
-@property (strong, nonatomic) NSMutableOrderedSet *requiredColumns; // @synthesize requiredColumns=_requiredColumns;
-
 - (void).cxx_destruct;
-- (id)initWithRequiredColumns:(id)arg1;
 
 @end
 

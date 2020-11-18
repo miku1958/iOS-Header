@@ -15,5 +15,9 @@
     MISSING_TYPE *transitioning;
 }
 
+- (void)didEndTransition;
+- (void)didStartTransition;
+- (void)willStartTransition;
+
 @end
 

@@ -15,12 +15,16 @@
     MISSING_TYPE *KMac;
     MISSING_TYPE *KRMac;
     MISSING_TYPE *SymmetricLTS;
+    MISSING_TYPE *Kble_intro;
+    MISSING_TYPE *Kble_oob_master;
     MISSING_TYPE *M2;
 }
 
 @property (nonatomic, readonly) NSData *KEnc; // @synthesize KEnc;
 @property (nonatomic, readonly) NSData *KMac; // @synthesize KMac;
 @property (nonatomic, readonly) NSData *KRMac; // @synthesize KRMac;
+@property (nonatomic, readonly) NSData *Kble_intro; // @synthesize Kble_intro;
+@property (nonatomic, readonly) NSData *Kble_oob_master; // @synthesize Kble_oob_master;
 @property (nonatomic, readonly) NSData *M2; // @synthesize M2;
 @property (nonatomic, readonly) NSData *SymmetricLTS; // @synthesize SymmetricLTS;
 @property (nonatomic, readonly) NSData *alishaKey; // @synthesize alishaKey;

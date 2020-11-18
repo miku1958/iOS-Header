@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UICollectionViewCell.h>
+#import <UIKitCore/_UICollectionViewListCell.h>
 
 @class NSLayoutConstraint, UIImageView, UIView, UIVisualEffectView, _UIActivityActionCellTitleLabel, _UIHostActivityProxy;
 
-@interface UIActivityActionGroupCell : UICollectionViewCell
+@interface UIActivityActionGroupCell : _UICollectionViewListCell
 {
     NSLayoutConstraint *_titleLabelHeightAnchor;
     unsigned long long _sequence;

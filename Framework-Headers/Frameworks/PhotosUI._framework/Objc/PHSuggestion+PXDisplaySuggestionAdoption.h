@@ -18,6 +18,8 @@
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localIdentifier;
+@property (readonly, nonatomic) NSString *localizedSubtitle;
+@property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSDate *startDate;
 @property (readonly, nonatomic) unsigned short state;
 @property (readonly, nonatomic) unsigned short subtype;

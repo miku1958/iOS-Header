@@ -44,6 +44,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

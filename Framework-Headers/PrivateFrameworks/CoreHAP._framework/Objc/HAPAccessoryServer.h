@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HAPAccessory, HAPDeviceID, HMFVersion, NSArray, NSData, NSHashTable, NSNumber, NSObject, NSString;
+@class HAPAccessory, HAPDeviceID, HMFActivity, HMFVersion, NSArray, NSData, NSHashTable, NSNumber, NSObject, NSString;
 @protocol HAPAccessoryServerDelegate, HAPKeyStore, HMFLocking, OS_dispatch_queue;
 
 @interface HAPAccessoryServer : HMFObject
@@ -17,6 +17,8 @@
     BOOL _hasPairings;
     BOOL _reachable;
     BOOL _securitySessionOpen;
+    BOOL _reachablilityPingNotificationEnabled;
+    BOOL _reachabilityPingEnabled;
     BOOL _supportsTimedWrite;
     BOOL _bleLinkConnected;
     BOOL _incompatibleUpdate;
@@ -26,6 +28,9 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSData *_setupHash;
     unsigned long long _authMethod;
+    NSString *_productData;
+    unsigned long long _pendingRemovePairing;
+    NSHashTable *_notificationClients;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
     long long _linkType;
@@ -37,6 +42,7 @@
     unsigned long long _compatibilityFeatures;
     id<HAPKeyStore> _keyStore;
     unsigned long long _pairSetupType;
+    HMFActivity *_pairingActivity;
 }
 
 @property (copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
@@ -57,20 +63,26 @@
 @property (readonly, weak, nonatomic) id<HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property (readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSHashTable *notificationClients; // @synthesize notificationClients=_notificationClients;
 @property (nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
-@property (readonly, nonatomic, getter=isPaired) BOOL paired;
+@property (weak, nonatomic) HMFActivity *pairingActivity; // @synthesize pairingActivity=_pairingActivity;
+@property (nonatomic) unsigned long long pendingRemovePairing; // @synthesize pendingRemovePairing=_pendingRemovePairing;
 @property (strong, nonatomic) HAPAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
+@property (strong, nonatomic) NSString *productData; // @synthesize productData=_productData;
+@property (nonatomic) BOOL reachabilityPingEnabled; // @synthesize reachabilityPingEnabled=_reachabilityPingEnabled;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (nonatomic) BOOL reachablilityPingNotificationEnabled; // @synthesize reachablilityPingNotificationEnabled=_reachablilityPingNotificationEnabled;
 @property (getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
 @property (copy, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
 @property (nonatomic) unsigned long long stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (nonatomic) BOOL supportsTimedWrite; // @synthesize supportsTimedWrite=_supportsTimedWrite;
 @property (copy) HMFVersion *version; // @synthesize version=_version;
 
-+ (BOOL)isAccessoryServerWithIdentifierPaired:(id)arg1 keyStore:(id)arg2;
 - (void).cxx_destruct;
 - (void)addInternalDelegate:(id)arg1;
 - (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)authenticateAccessory;
+- (void)continueAuthAfterValidation:(BOOL)arg1;
 - (void)continuePairingAfterAuthPrompt;
 - (void)continuePairingUsingWAC;
 - (void)discoverAccessories;
@@ -80,22 +92,30 @@
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithKeystore:(id)arg1;
+- (BOOL)isPaired;
+- (BOOL)isPinging;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)matchesSetupID:(id)arg1;
 - (BOOL)matchesSetupID:(id)arg1 serverIdentifier:(id)arg2;
-- (id)productData;
-- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)notifyClients:(unsigned long long)arg1 withDictionary:(id)arg2;
+- (BOOL)pingSupported;
+- (void)provisionToken:(id)arg1;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)reconfirm;
+- (void)registerForNotifications:(id)arg1;
 - (void)removeInternalDelegate:(id)arg1;
 - (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)requiresTimedWrite:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
+- (void)startPing;
 - (BOOL)stopPairingWithError:(id *)arg1;
-- (void)tearDownAndRestablishSession;
+- (void)stopPing;
+- (void)tearDownSessionOnAuthCompletion;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
-- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)unregisterForNotifications:(id)arg1;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

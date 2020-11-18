@@ -23,7 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)addSentinelContextForParticipantIDsHash:(id)arg1;
-- (void)addTrackingForChat:(id)arg1;
+- (void)addTrackingForChat:(id)arg1 participantIDsHash:(id)arg2;
 - (void)addTrackingForConversationContext:(id)arg1 forParticipantIDsHash:(id)arg2;
 - (id)chatForConversationContext:(id)arg1;
 - (id)chatForParticipantIDsHash:(id)arg1;

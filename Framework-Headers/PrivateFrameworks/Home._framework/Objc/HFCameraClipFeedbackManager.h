@@ -6,123 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Home/NSURLSessionDelegate-Protocol.h>
-
-@class BKSProcessAssertion, HMCameraClipFetchVideoAssetContextOperation, HMCameraProfile, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSOperationQueue, NSString, NSTimer, NSURL, NSURLSession, NSURLSessionDataTask;
-@protocol HFCameraClipFeedbackObserving;
-
-@interface HFCameraClipFeedbackManager : NSObject <NSURLSessionDelegate>
+@interface HFCameraClipFeedbackManager : NSObject
 {
-    BOOL _isEligibleToAddFailedClipsToPendingQueue;
-    BOOL _disableCertificatePinning;
-    CDUnknownBlockType _sessionCompletionHandler;
-    id<HFCameraClipFeedbackObserving> _delegate;
-    NSString *_backgroundURLSessionIdentifier;
-    NSMutableOrderedSet *_pendingClipIdentifiers;
-    NSMutableSet *_uploadedClipIdentifiers;
-    NSMutableSet *_failedClipIdentifiers;
-    NSMutableDictionary *_submittedClipIdentifiers;
-    NSURLSession *_backgroundSession;
-    NSURLSessionDataTask *_signedURLTask;
-    NSOperationQueue *_backgroundSessionQueue;
-    NSTimer *_networkingTimeout;
-    HMCameraClipFetchVideoAssetContextOperation *_videoDownloadOperation;
-    BKSProcessAssertion *_uploadsInProgressAssertion;
-    HMCameraProfile *_currentCameraProfile;
-    unsigned long long _environment;
-    unsigned long long _apiVersion;
-    NSString *_currentApiKey;
-    NSString *_currentWrappedApiKey;
-    NSURL *_currentUploadURL;
 }
 
-@property (nonatomic) unsigned long long apiVersion; // @synthesize apiVersion=_apiVersion;
-@property (strong, nonatomic) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
-@property (strong, nonatomic) NSOperationQueue *backgroundSessionQueue; // @synthesize backgroundSessionQueue=_backgroundSessionQueue;
-@property (strong, nonatomic) NSString *backgroundURLSessionIdentifier; // @synthesize backgroundURLSessionIdentifier=_backgroundURLSessionIdentifier;
-@property (strong, nonatomic) NSString *currentApiKey; // @synthesize currentApiKey=_currentApiKey;
-@property (strong, nonatomic) HMCameraProfile *currentCameraProfile; // @synthesize currentCameraProfile=_currentCameraProfile;
-@property (strong, nonatomic) NSURL *currentUploadURL; // @synthesize currentUploadURL=_currentUploadURL;
-@property (strong, nonatomic) NSString *currentWrappedApiKey; // @synthesize currentWrappedApiKey=_currentWrappedApiKey;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HFCameraClipFeedbackObserving> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL disableCertificatePinning; // @synthesize disableCertificatePinning=_disableCertificatePinning;
-@property (nonatomic) unsigned long long environment; // @synthesize environment=_environment;
-@property (strong, nonatomic) NSMutableSet *failedClipIdentifiers; // @synthesize failedClipIdentifiers=_failedClipIdentifiers;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isEligibleToAddFailedClipsToPendingQueue; // @synthesize isEligibleToAddFailedClipsToPendingQueue=_isEligibleToAddFailedClipsToPendingQueue;
-@property (strong, nonatomic) NSTimer *networkingTimeout; // @synthesize networkingTimeout=_networkingTimeout;
-@property (strong, nonatomic) NSMutableOrderedSet *pendingClipIdentifiers; // @synthesize pendingClipIdentifiers=_pendingClipIdentifiers;
-@property (copy, nonatomic) CDUnknownBlockType sessionCompletionHandler; // @synthesize sessionCompletionHandler=_sessionCompletionHandler;
-@property (strong, nonatomic) NSURLSessionDataTask *signedURLTask; // @synthesize signedURLTask=_signedURLTask;
-@property (strong, nonatomic) NSMutableDictionary *submittedClipIdentifiers; // @synthesize submittedClipIdentifiers=_submittedClipIdentifiers;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableSet *uploadedClipIdentifiers; // @synthesize uploadedClipIdentifiers=_uploadedClipIdentifiers;
-@property (strong, nonatomic) BKSProcessAssertion *uploadsInProgressAssertion; // @synthesize uploadsInProgressAssertion=_uploadsInProgressAssertion;
-@property (strong, nonatomic) HMCameraClipFetchVideoAssetContextOperation *videoDownloadOperation; // @synthesize videoDownloadOperation=_videoDownloadOperation;
-
-+ (id)_appendDateStringToString:(id)arg1;
-+ (id)_cameraProfileFromKey:(id)arg1;
-+ (id)_prefixStringWithoutDate:(id)arg1;
-+ (id)backgroundURLSessionIdentifier;
-+ (id)dateFormatter;
-+ (id)dateStringFromDate:(id)arg1;
-+ (id)feedbackRequestURLForClipUUIDString:(id)arg1;
-+ (id)sharedManager;
-+ (id)submissionKeyForCameraClip:(id)arg1 fromCameraProfile:(id)arg2;
-- (void).cxx_destruct;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
-- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
-- (void)_addIdentifierToPendingClipIdentifiers:(id)arg1;
-- (void)_addSubmissionKeyToUploadService:(id)arg1;
-- (id)_appendDateStringToString:(id)arg1;
-- (id)_base64EncodeDataAsString:(id)arg1;
-- (void)_beginNextSubmissionProcessForIdentifier:(id)arg1;
-- (void)_cacheFeedbackService;
-- (id)_cameraClipKeyFromSubmissionKey:(id)arg1;
-- (id)_cameraProfileKeyFromSubmissionKey:(id)arg1;
-- (BOOL)_canBypassCertificatePinning;
-- (BOOL)_canChallengeBypassCertificatePinning:(id)arg1;
-- (void)_cleanUpCurrentCameraProfileIfNeeded;
-- (void)_cleanUpLocalFilesForIdentifier:(id)arg1;
-- (id)_encryptRecording:(id)arg1 usingKey:(id)arg2 forPayload:(id)arg3;
-- (void)_failAttemptToUploadCurrentIdentifier;
-- (void)_finalizeHandlingOfIdentifier:(id)arg1;
-- (id)_identifierFromString:(id)arg1;
-- (void)_invalidateAssertion;
-- (BOOL)_isValidSubmissionKey:(id)arg1;
-- (BOOL)_needsToPurgeClipsOlderThanThirtyDays;
-- (void)_prepareQueuesForResumptionOfService;
-- (id)_previousFailureIdentifierForIdentifier:(id)arg1;
-- (void)_reloadFailedIdentifiersToPendingQueue:(id)arg1;
-- (void)_removeFailureIdentifier:(id)arg1;
-- (void)_removeFileAtLocation:(id)arg1;
-- (void)_removePendingIdentifier:(id)arg1;
-- (void)_updatePreviousClipIdentifiers:(id)arg1 forKey:(id)arg2;
-- (void)addFailedIdentifiersToPendingQueueIfEligible;
-- (void)cancelSignedURLRequest;
-- (BOOL)didPreviouslySubmitCameraClip:(id)arg1;
-- (id)feedbackServiceHostName;
-- (id)feedbackServiceURL;
-- (id)init;
-- (void)invalidateVideoDownloadOperation;
-- (id)nextSubmissionKeyToProcess;
-- (void)prepareServiceForActivityWhileBackgrounded;
-- (void)purgeStaleSubmittedClips;
-- (void)restartFeedbackServiceIfNeeded;
-- (void)resumeServiceForURLSessionIdentifier:(id)arg1;
-- (BOOL)serviceNeedsToContinueInBackground;
-- (void)stripAudioFromFileForCameraClipIdentifier:(id)arg1 sendToUploadLocation:(id)arg2;
-- (void)submitCameraClip:(id)arg1 fromCameraProfile:(id)arg2;
-- (void)submitClipsFromCameraProfile:(id)arg1;
-- (void)submitNextPendingCameraClip;
-- (void)updateLastPurgeDate;
-- (void)uploadStrippedAudioMovieFileAtURL:(id)arg1 toLocation:(id)arg2;
-- (void)willResignActive;
++ (void)donateAllCameraClipsForCameraProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)donateCameraClip:(id)arg1 forCameraProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -7,15 +7,19 @@
 #import <AppleMediaServices/AMSTask.h>
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
+#import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
 
-@class ACAccount, NSArray, NSString;
-@protocol AMSBagProtocol;
+@class ACAccount, AMSURLSession, NSArray, NSString;
+@protocol AMSBagProtocol, AMSRequestPresentationDelegate;
 
-@interface AMSAutomaticDownloadKindsSetTask : AMSTask <AMSBagConsumer>
+@interface AMSAutomaticDownloadKindsSetTask : AMSTask <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSBagConsumer>
 {
     ACAccount *_account;
     id<AMSBagProtocol> _bag;
     NSArray *_enabledMediaKinds;
+    id<AMSRequestPresentationDelegate> _presentationDelegate;
+    AMSURLSession *_session;
 }
 
 @property (readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
@@ -24,14 +28,20 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *enabledMediaKinds; // @synthesize enabledMediaKinds=_enabledMediaKinds;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) id<AMSRequestPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+@property (strong, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
+- (void)AMSURLSession:(id)arg1 task:(id)arg2 handleAuthenticateRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)AMSURLSession:(id)arg1 task:(id)arg2 handleDialogRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithEnabledMediaKinds:(id)arg1 account:(id)arg2 bag:(id)arg3;
+- (id)initWithEnabledMediaKinds:(id)arg1 account:(id)arg2 bag:(id)arg3 presentationDelegate:(id)arg4;
 - (id)perform;
 
 @end

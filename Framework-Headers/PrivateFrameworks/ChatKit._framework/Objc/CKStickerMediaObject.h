@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (BOOL)shouldShadePreview;
+- (id)attachmentSummary:(unsigned long long)arg1;
 
 @end
 

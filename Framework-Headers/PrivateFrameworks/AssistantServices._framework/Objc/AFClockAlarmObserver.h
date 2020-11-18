@@ -10,13 +10,15 @@
 #import <AssistantServices/AFInvalidating-Protocol.h>
 
 @class AFClockAlarmSnapshot, AFClockItemStorage, NSHashTable, NSMutableOrderedSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFClockAlarmObserver : NSObject <AFClockItemStorageDelegate, AFInvalidating>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSHashTable *_listeners;
     AFClockAlarmSnapshot *_alarmSnapshot;
+    NSObject<OS_dispatch_group> *_alarmSnapshotGroup;
+    long long _alarmSnapshotGroupDepth;
     AFClockItemStorage *_alarmStorage;
     NSMutableOrderedSet *_notifiedFiringAlarmIDs;
     NSUUID *_alarmsChangedToken;
@@ -30,6 +32,9 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)_alarmSnapshot;
+- (void)_beginGroup;
+- (void)_consolidateNotifiedFiringAlarms;
+- (void)_endGroup;
 - (void)_enumerateListenersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_fetchAlarmsForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleFetchAlarmsForReason:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;

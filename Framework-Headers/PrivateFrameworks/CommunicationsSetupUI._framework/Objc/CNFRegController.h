@@ -53,9 +53,11 @@
         unsigned int activatingAccounts:1;
     } _controllerFlags;
     IDSPhoneSubscriptionSelector *_phoneSubscriptionSelector;
+    NSArray *__temporaryDeviceAliases;
     NSDictionary *_cachedCallerIDMap;
 }
 
+@property (strong, nonatomic) NSArray *_temporaryDeviceAliases; // @synthesize _temporaryDeviceAliases=__temporaryDeviceAliases;
 @property (copy, nonatomic) CDUnknownBlockType accountActivationChangedBlock; // @synthesize accountActivationChangedBlock=_accountActivationChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType accountAddedBlock; // @synthesize accountAddedBlock=_accountAddedBlock;
 @property (copy, nonatomic) CDUnknownBlockType accountAuthorizationChangedBlock; // @synthesize accountAuthorizationChangedBlock=_accountAuthorizationChangedBlock;
@@ -113,11 +115,13 @@
 - (BOOL)_addAliases:(id)arg1 toAccount:(id)arg2 validate:(BOOL)arg3;
 - (CDUnknownBlockType)_aliasComparator;
 - (BOOL)_aliasIsDevicePhoneNumber:(id)arg1;
+- (BOOL)_aliasIsTemporaryDeviceAlias:(id)arg1;
 - (id)_aliasesForAccount:(id)arg1;
 - (id)_aliasesFromAccounts:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)_aliasesPassingTest:(CDUnknownBlockType)arg1;
 - (id)_allAvailableAliasesForAccount:(id)arg1;
 - (void)_clearAccountCache;
+- (void)_clearCachedTemporaryDeviceAliases;
 - (void)_clearFilterCache;
 - (id)_createAccountWithLogin:(id)arg1 foundExisting:(BOOL *)arg2;
 - (void)_decrementLogIndent;
@@ -182,6 +186,7 @@
 - (BOOL)deviceCanTakeNetworkAction;
 - (void)deviceCapabilityChanged:(id)arg1;
 - (BOOL)deviceHasSaneNetworkConnection;
+- (void)disableDeviceAlias:(id)arg1;
 - (id)displayAccount;
 - (id)displayAlias;
 - (void)enablePhoneNumberRegistration;

@@ -40,10 +40,12 @@
 - (void).cxx_destruct;
 - (void)_setupTodayResultsSource;
 - (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithContentContext:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4;
 - (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4;
 - (void)networkReachabilityDidChange:(id)arg1;
+- (id)placeholderResultsWithOperationInfo:(id)arg1;
 - (void)userDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2;
 - (void)userDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2;
 

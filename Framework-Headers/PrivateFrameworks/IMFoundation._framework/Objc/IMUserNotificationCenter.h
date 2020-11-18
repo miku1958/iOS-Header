@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableDictionary *identifierToRunLoopSourcesMap; // @synthesize identifierToRunLoopSourcesMap=_identifierToRunLoopSourcesMap;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_cancelActiveUserNotificationForIdentifier:(id)arg1;
 - (CDUnknownBlockType)_dequeueBlockForIdentifier:(id)arg1;
 - (id)_dequeueListenerForIdentifier:(id)arg1;
@@ -39,7 +40,6 @@
 - (void)addUserNotification:(id)arg1 listener:(id)arg2;
 - (void)addUserNotification:(id)arg1 listener:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)countForIdentifier:(id)arg1;
-- (void)dealloc;
 - (void)removeAllListeners;
 - (void)removeListener:(id)arg1;
 - (void)removeNotificationsForServiceIdentifier:(id)arg1;

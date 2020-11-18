@@ -122,6 +122,7 @@
 @property (readonly, copy, nonatomic) NSString *externalImageURI;
 @property (readonly, copy, nonatomic) NSString *externalModificationTag;
 @property (readonly, copy, nonatomic) NSData *externalRepresentation;
+@property (readonly, copy, nonatomic) NSString *externalURI;
 @property (readonly, copy, nonatomic) NSString *externalUUID;
 @property (readonly, copy, nonatomic) NSString *familyName;
 @property (readonly, copy) NSString *firstName;
@@ -218,6 +219,7 @@
 + (id)contactWithIdentifier:(id)arg1;
 + (id)contactWithVCardData:(id)arg1 error:(id *)arg2;
 + (id)descriptorForAllComparatorKeys;
++ (id)descriptorForAllImageDataKeys;
 + (id)descriptorForKeyDescriptors:(id)arg1 description:(id)arg2;
 + (id)descriptorForRequiredKeysForSearchableItem;
 + (id)descriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;

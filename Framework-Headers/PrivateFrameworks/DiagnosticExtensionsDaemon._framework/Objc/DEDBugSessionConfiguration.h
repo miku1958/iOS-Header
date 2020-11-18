@@ -19,6 +19,7 @@
     BOOL _cloudkitUseDevelopmentEnvironment;
     long long _finishingMove;
     long long _notifyingMove;
+    double _bugSessionStartTimeout;
     NSString *_seedingDeviceToken;
     long long _seedingSubmissionID;
     long long _seedingSubmissionType;
@@ -32,6 +33,7 @@
 }
 
 @property BOOL allowsCellularUpload; // @synthesize allowsCellularUpload=_allowsCellularUpload;
+@property double bugSessionStartTimeout; // @synthesize bugSessionStartTimeout=_bugSessionStartTimeout;
 @property (strong) NSString *cloudkitContainer; // @synthesize cloudkitContainer=_cloudkitContainer;
 @property (strong) NSDictionary *cloudkitData; // @synthesize cloudkitData=_cloudkitData;
 @property BOOL cloudkitUseDevelopmentEnvironment; // @synthesize cloudkitUseDevelopmentEnvironment=_cloudkitUseDevelopmentEnvironment;
@@ -57,6 +59,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToConfiguration:(id)arg1;

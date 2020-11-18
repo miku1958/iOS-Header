@@ -12,11 +12,11 @@
 @interface ARUICountdownAnimator : NSObject
 {
     struct {
-        unsigned int willBeginAnimating:1;
-        unsigned int willBeginAnimation:1;
-        unsigned int performingAnimation:1;
-        unsigned int completedAnimation:1;
-        unsigned int didFinishAnimating:1;
+        BOOL willBeginAnimating;
+        BOOL willBeginAnimation;
+        BOOL performingAnimation;
+        BOOL completedAnimation;
+        BOOL didFinishAnimating;
     } _delegateFlags;
     BOOL _animating;
     BOOL _canceled;

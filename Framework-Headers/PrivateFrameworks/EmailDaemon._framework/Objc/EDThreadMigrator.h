@@ -9,38 +9,37 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class EDInMemoryThreadQueryHandler, EDThreadPersistence, EFLocked, EMThreadScope, NSString;
-@protocol EDThreadMigratorDelegate, OS_dispatch_queue;
+@protocol EDThreadMigratorDelegate, EFScheduler;
 
 @interface EDThreadMigrator : NSObject <EFLoggable>
 {
-    struct os_unfair_lock_s _migrationLock;
-    _Atomic BOOL _cancelled;
     EMThreadScope *_threadScope;
     EFLocked *_state;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    id<EFScheduler> _workScheduler;
     EDThreadPersistence *_threadPersistence;
     EDInMemoryThreadQueryHandler *_queryHandler;
     id<EDThreadMigratorDelegate> _delegate;
+    double _threadFinalizationInterval;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<EDThreadMigratorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long migrationState;
 @property (readonly, nonatomic) EDInMemoryThreadQueryHandler *queryHandler; // @synthesize queryHandler=_queryHandler;
 @property (readonly, nonatomic) EFLocked *state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (nonatomic) double threadFinalizationInterval; // @synthesize threadFinalizationInterval=_threadFinalizationInterval;
 @property (readonly, nonatomic) EDThreadPersistence *threadPersistence; // @synthesize threadPersistence=_threadPersistence;
 @property (readonly, nonatomic) EMThreadScope *threadScope; // @synthesize threadScope=_threadScope;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, nonatomic) id<EFScheduler> workScheduler; // @synthesize workScheduler=_workScheduler;
 
 + (id)log;
 - (void).cxx_destruct;
 - (void)_failMigration;
-- (void)_performMigration;
-- (void)_resumeMigration;
-- (void)_scheduleCleanupForBatchedObjectIDs:(id)arg1;
+- (void)_finishMigrating;
+- (void)_migrateNextBatchWithGeneration:(unsigned long long)arg1;
+- (void)_scheduleFinalizationForBatchedObjectIDs:(id)arg1 withGeneration:(unsigned long long)arg2 forDelete:(BOOL)arg3;
 - (void)addObjectIDsToMigrate:(id)arg1;
 - (void)cancel;
 - (void)changeObjectIDsToMigrate:(id)arg1;

@@ -36,15 +36,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_oldRouteID:1;
         unsigned int read_oldRouteIncidents:1;
         unsigned int read_reroutedRouteID:1;
-        unsigned int wrote_directionResponseID:1;
-        unsigned int wrote_oldRouteID:1;
-        unsigned int wrote_oldRouteIncidents:1;
-        unsigned int wrote_reroutedRouteID:1;
-        unsigned int wrote_oldRouteHistoricTravelTime:1;
-        unsigned int wrote_oldRouteTravelTime:1;
-        unsigned int wrote_reroutedRouteHistoricTravelTime:1;
-        unsigned int wrote_reroutedRouteTravelTime:1;
-        unsigned int wrote_oldRouteBlocked:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -69,11 +61,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)oldRouteIncidentsType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsOldRouteIncidents:(id)arg1;
-- (void)_readDirectionResponseID;
-- (void)_readOldRouteID;
-- (void)_readOldRouteIncidents;
-- (void)_readReroutedRouteID;
 - (void)addOldRouteIncidents:(id)arg1;
 - (void)clearOldRouteIncidents;
 - (void)copyTo:(id)arg1;
@@ -83,7 +70,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)oldRouteIncidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)oldRouteIncidentsCount;

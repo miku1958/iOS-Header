@@ -6,18 +6,36 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
+@class NSNumber;
+
 @interface VNDetectFaceRectanglesRequest : VNImageBasedRequest
 {
+    BOOL _faceCoreEnhanceEyesAndMouthLocalization;
+    BOOL _faceCoreExtractBlink;
+    BOOL _faceCoreExtractSmile;
+    NSNumber *_faceCoreMinFaceSize;
+    NSNumber *_faceCoreNumberOfDetectionAngles;
 }
 
+@property (nonatomic) BOOL faceCoreEnhanceEyesAndMouthLocalization; // @synthesize faceCoreEnhanceEyesAndMouthLocalization=_faceCoreEnhanceEyesAndMouthLocalization;
+@property (nonatomic) BOOL faceCoreExtractBlink; // @synthesize faceCoreExtractBlink=_faceCoreExtractBlink;
+@property (nonatomic) BOOL faceCoreExtractSmile; // @synthesize faceCoreExtractSmile=_faceCoreExtractSmile;
+@property (strong, nonatomic) NSNumber *faceCoreMinFaceSize; // @synthesize faceCoreMinFaceSize=_faceCoreMinFaceSize;
+@property (strong, nonatomic) NSNumber *faceCoreNumberOfDetectionAngles; // @synthesize faceCoreNumberOfDetectionAngles=_faceCoreNumberOfDetectionAngles;
+@property (nonatomic) unsigned long long faceCoreType;
+
++ (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (const CDStruct_7d93034e *)revisionAvailability;
 + (BOOL)supportsPrivateRevision:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (void)applyConfigurationOfRequest:(id)arg1;
 - (long long)dependencyProcessingOrdinality;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

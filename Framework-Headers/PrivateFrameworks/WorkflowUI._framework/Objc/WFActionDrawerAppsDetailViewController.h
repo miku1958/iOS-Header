@@ -8,24 +8,19 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
 @class NSString, WFActionDrawerState;
-@protocol WFActionDrawerAppsDetailViewControllerDelegate;
 
-@interface WFActionDrawerAppsDetailViewController : WFActionDrawerCompositeResultsViewController <UITableViewDataSource, UITableViewDelegate, WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
+@interface WFActionDrawerAppsDetailViewController : WFActionDrawerCompositeResultsViewController <UITableViewDataSource, UITableViewDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
     BOOL _loading;
-    id<WFActionDrawerAppsDetailViewControllerDelegate> _delegate;
     NSString *_bundleIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerAppsDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL loading; // @synthesize loading=_loading;
@@ -33,16 +28,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
 - (unsigned long long)detailSectionForSection:(long long)arg1;
 - (long long)detailSectionIndexForIndexPath:(long long)arg1;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithCoordinator:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)loadView;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadViews;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;

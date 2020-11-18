@@ -16,7 +16,7 @@
     float mCrossSectionCreaseAngle;
     float mSpineCreaseAngle;
     unsigned int mEndCapOffset;
-    int mEndCapCount;
+    unsigned int mEndCapCount;
     unsigned int mBeginCapOffset;
     int mBeginCapCount;
     tvec3_17f03ce0 mNormalBias;
@@ -24,7 +24,7 @@
 }
 
 @property (nonatomic) BOOL beginCap; // @synthesize beginCap=mBeginCap;
-@property (readonly, nonatomic) int capCount; // @synthesize capCount=mEndCapCount;
+@property (readonly, nonatomic) unsigned int capCount; // @synthesize capCount=mEndCapCount;
 @property (readonly, nonatomic) unsigned int capOffset; // @synthesize capOffset=mEndCapOffset;
 @property (nonatomic) float crossSectionCreaseAngle; // @synthesize crossSectionCreaseAngle=mCrossSectionCreaseAngle;
 @property (nonatomic) BOOL endCap; // @synthesize endCap=mEndCap;

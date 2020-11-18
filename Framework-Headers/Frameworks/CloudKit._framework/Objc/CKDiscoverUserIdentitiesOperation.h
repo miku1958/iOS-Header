@@ -6,28 +6,32 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray;
+#import <CloudKit/CKDiscoverUserIdentitiesOperationCallbacks-Protocol.h>
 
-@interface CKDiscoverUserIdentitiesOperation : CKOperation
+@class CKDiscoverUserIdentitiesOperationInfo, NSArray;
+@protocol CKDiscoverUserIdentitiesOperationCallbacks;
+
+@interface CKDiscoverUserIdentitiesOperation : CKOperation <CKDiscoverUserIdentitiesOperationCallbacks>
 {
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverUserIdentitiesCompletionBlock;
     NSArray *_userIdentityLookupInfos;
 }
 
+@property (readonly, nonatomic) id<CKDiscoverUserIdentitiesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType discoverUserIdentitiesCompletionBlock; // @synthesize discoverUserIdentitiesCompletionBlock=_discoverUserIdentitiesCompletionBlock;
+@property (readonly, nonatomic) CKDiscoverUserIdentitiesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 @property (copy, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleUserIdentityDiscoveryForLookupInfo:(id)arg1 userIdentity:(id)arg2;
 - (id)init;
 - (id)initWithUserIdentityLookupInfos:(id)arg1;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

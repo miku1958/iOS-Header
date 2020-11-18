@@ -12,8 +12,6 @@
 + (id)NTKHyphenatableString:(id)arg1;
 + (id)NTKHyphenatableString:(id)arg1 factor:(float)arg2;
 + (id)NTKReplaceTimeDesignatorAttributesFrom:(id)arg1 withDesignatorFont:(id)arg2;
-+ (id)NTKSwapPlaceholderString:(id)arg1 withTimeStringForDate:(id)arg2 inString:(id)arg3 usingBaseFont:(id)arg4;
-+ (id)NTKSwapPlaceholderString:(id)arg1 withTimeStringForDate:(id)arg2 inString:(id)arg3 usingBaseFont:(id)arg4 timeZone:(id)arg5 options:(unsigned long long)arg6;
 + (id)NTKTimeWithDate:(id)arg1 andDesignatorAttributes:(id)arg2 timeZone:(id)arg3 options:(unsigned long long)arg4;
 + (id)NTKTimeWithDate:(id)arg1 andDesignatorFont:(id)arg2;
 + (id)NTKTimeWithDate:(id)arg1 andDesignatorFont:(id)arg2 options:(unsigned long long)arg3;

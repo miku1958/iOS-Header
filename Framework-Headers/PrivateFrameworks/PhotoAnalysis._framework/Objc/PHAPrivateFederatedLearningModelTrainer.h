@@ -36,11 +36,12 @@
 @property (strong, nonatomic) NSString *optimizerName; // @synthesize optimizerName=_optimizerName;
 @property (readonly, nonatomic) id<ETDataProvider> trainingData; // @synthesize trainingData=_trainingData;
 
-+ (BOOL)_generateError:(id *)arg1 withCode:(long long)arg2 andMessage:(id)arg3;
++ (BOOL)_generateError:(id *)arg1 errorCode:(long long)arg2 message:(id)arg3 underlyingError:(id)arg4;
 - (void).cxx_destruct;
 - (int)_argmax:(float *)arg1 size:(int)arg2;
 - (id)_averageLossAndAccuracyForBatchResults:(id)arg1 error:(id *)arg2;
-- (id)_getParamsFromTask:(id)arg1 forLayers:(id)arg2;
+- (id)_getParamsFromTask:(id)arg1 forLayers:(id)arg2 error:(id *)arg3;
+- (BOOL)_trueLabelTensor:(id)arg1 isEqualToPredictionTensor:(id)arg2;
 - (id)initWithTrainingData:(id)arg1 espressoFileURL:(id)arg2 learningRate:(id)arg3 modelInputName:(id)arg4 modelOutputName:(id)arg5 lossName:(id)arg6 optimizerName:(id)arg7 error:(id *)arg8;
 - (id)trainForNumberOfEpochs:(unsigned long long)arg1 layersToTrain:(id)arg2 verbose:(BOOL)arg3 error:(id *)arg4;
 

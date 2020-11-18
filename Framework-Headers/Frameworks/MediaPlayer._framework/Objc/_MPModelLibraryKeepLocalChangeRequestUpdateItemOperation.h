@@ -8,6 +8,7 @@
 
 @class MPMediaItem;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelLibraryKeepLocalChangeRequestUpdateItemOperation : MPAsyncOperation
 {
     MPMediaItem *_mediaItem;

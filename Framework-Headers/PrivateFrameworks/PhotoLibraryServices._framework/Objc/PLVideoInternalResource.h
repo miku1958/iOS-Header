@@ -8,15 +8,14 @@
 
 #import <PhotoLibraryServices/PLVideoResource-Protocol.h>
 
-@class NSString;
-@protocol PLResource;
+@class NSString, PLInternalResource;
 
 @interface PLVideoInternalResource : NSObject <PLVideoResource>
 {
-    id<PLResource> _backingResource;
+    PLInternalResource *_backingResource;
 }
 
-@property (readonly, nonatomic) id<PLResource> backingResource; // @synthesize backingResource=_backingResource;
+@property (readonly, nonatomic) PLInternalResource *backingResource; // @synthesize backingResource=_backingResource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,16 +23,20 @@
 
 - (void).cxx_destruct;
 - (id)fileURLIfLocal;
+- (BOOL)hasAssociatedMediaMetadata;
 - (id)initWithBackingResource:(id)arg1;
+- (BOOL)isDownloadable;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLocallyAvailable;
 - (BOOL)isLocallyGeneratable;
 - (BOOL)isMediumHighQuality;
+- (BOOL)isOriginalVideo;
 - (BOOL)isOriginalVideoComplement;
 - (BOOL)isPlayable;
-- (BOOL)isRemotelyAvailable;
 - (BOOL)isStreamable;
 - (BOOL)matchesOrExceedsQualityLevel:(unsigned int)arg1;
+- (id)uniformTypeIdentifier;
+- (unsigned int)version;
 
 @end
 

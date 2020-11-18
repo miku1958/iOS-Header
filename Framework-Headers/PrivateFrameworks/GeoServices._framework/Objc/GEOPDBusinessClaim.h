@@ -27,11 +27,7 @@
         unsigned int read_buttonLabel:1;
         unsigned int read_descriptionText:1;
         unsigned int read_titleText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_buttonLabel:1;
-        unsigned int wrote_descriptionText:1;
-        unsigned int wrote_titleText:1;
-        unsigned int wrote_buttonEnabled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,9 +44,6 @@
 + (id)businessClaimForPlaceData:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readButtonLabel;
-- (void)_readDescriptionText;
-- (void)_readTitleText;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,7 +52,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -10,7 +10,7 @@
 
 @interface _TtC7SwiftUI18AnyViewStorageBase : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *index;
+    MISSING_TYPE *id;
 }
 
 @end

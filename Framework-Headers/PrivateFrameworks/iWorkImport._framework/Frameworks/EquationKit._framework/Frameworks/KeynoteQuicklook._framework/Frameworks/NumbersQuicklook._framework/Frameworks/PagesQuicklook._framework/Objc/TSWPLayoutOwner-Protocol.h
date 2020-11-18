@@ -21,9 +21,9 @@
 - (BOOL)forceWesternLineBreaking;
 - (TSULocale *)locale;
 - (TSWPLayoutMetricsCache *)metricsCacheForStorage:(TSWPStorage *)arg1;
-- (id<TSWPOffscreenColumn>)nextTargetFirstColumnForTarget:(id<TSWPLayoutTarget>)arg1;
+- (NSObject<TSWPOffscreenColumn> *)nextTargetFirstColumnForTarget:(id<TSWPLayoutTarget>)arg1;
 - (NSObject<TSWPTopicNumberHints> *)nextTargetTopicNumbersForTarget:(id<TSWPLayoutTarget>)arg1;
-- (id<TSWPOffscreenColumn>)previousTargetLastColumnForTarget:(id<TSWPLayoutTarget>)arg1;
+- (NSObject<TSWPOffscreenColumn> *)previousTargetLastColumnForTarget:(id<TSWPLayoutTarget>)arg1;
 - (NSObject<TSWPTopicNumberHints> *)previousTargetTopicNumbersForTarget:(id<TSWPLayoutTarget>)arg1;
 - (id<TSWPStyleProvider>)styleProvider;
 - (TSUColor *)textColorOverride;

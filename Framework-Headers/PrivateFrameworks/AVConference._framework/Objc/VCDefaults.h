@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
-
 __attribute__((visibility("hidden")))
 @interface VCDefaults : NSObject
 {
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
     int _forceVideoPayload;
     int _forceRecvVideoPayload;
     int _forceKeyFrameInterval;
+    BOOL _isFECVersion2Enabled;
     BOOL _forceWiFiAssist;
     BOOL _forceWiFiAssistOutOfBudget;
 }
@@ -31,7 +30,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned char audioPriorityRampUpSpeed;
 @property (readonly) BOOL audioRecordingEnabled;
 @property (readonly) float audioVoiceDetectionSensitivity;
+@property (readonly) BOOL bandwidthEstimationDumpEnabled;
 @property (readonly) int bundleAudio;
+@property (readonly) BOOL cameraVideoStablization;
 @property (readonly) BOOL canDecodeHD;
 @property (readonly) BOOL cannedReplayEnabled;
 @property (readonly) float depthFrameRateMultiplier;
@@ -48,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL enableTxBitstreamDump;
 @property (readonly) int enableTxSourceYuvDump;
 @property (readonly) BOOL enableVPBLogging;
-@property (readonly) NSNumber *enableiRATSuggestion;
+@property (readonly) int enableiRATSuggestion;
 @property (readonly) int encodingScore;
 @property (readonly) int extraPayloads;
 @property (readonly) BOOL forceARCapture;
@@ -75,6 +76,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL forceDisableReporting;
 @property (readonly) BOOL forceDisableThermal;
 @property (readonly) BOOL forceDisableVideoDegraded;
+@property (readonly) BOOL forceDisableVideoRuleCell720;
+@property (readonly) BOOL forceDisableVideoRuleWiFi1080;
 @property (readonly) BOOL forceDynamicEffectsFramerate;
 @property (readonly) BOOL forceEVSWideBand;
 @property (readonly) BOOL forceEnablePearlCamera;
@@ -89,6 +92,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL forceMirroredCapture;
 @property (readonly) BOOL forceMultiwayHWI;
 @property (readonly) BOOL forceMuteAtStart;
+@property (readonly) BOOL forceOneToOneMode;
 @property (readonly) int forceRecvVideoPayload;
 @property (readonly) int forceRedMaxDelay;
 @property (readonly) int forceRedNumPayloads;
@@ -108,12 +112,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int forceVisibilityIndex;
 @property (readonly) BOOL forceWiFiAssist; // @synthesize forceWiFiAssist=_forceWiFiAssist;
 @property (readonly) BOOL forceWiFiAssistOutOfBudget; // @synthesize forceWiFiAssistOutOfBudget=_forceWiFiAssistOutOfBudget;
+@property (readonly) BOOL isFECVersion2Enabled; // @synthesize isFECVersion2Enabled=_isFECVersion2Enabled;
+@property (readonly) int localRATTypeOverride;
 @property (readonly) int localWRMLinkType;
 @property (readonly) int max2GRate;
 @property (readonly) unsigned int maxActiveVideoDecoders;
 @property (readonly) unsigned int maxActiveVideoEncoders;
 @property (readonly) BOOL mediaQueueDumpEnabled;
 @property (readonly) unsigned int minParticipantCountSendVoiceActiveOnly;
+@property (readonly) BOOL momentsUseBestVideoRule;
 @property (readonly) BOOL momentsUserPreferenceEnabled;
 @property (readonly) unsigned int multiwayAudioNetworkBitrateCapCellular;
 @property (readonly) unsigned int multiwayAudioNetworkBitrateCapWifi;
@@ -135,12 +142,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL rateControlLogEnabled;
 @property (readonly) int rateControlStatisticsQueueWaitTime;
 @property (readonly) int rateControllerType;
-@property (readonly) BOOL rearCameraVideoStablization;
 @property (readonly) int redundancyControlForceVideoRedundancyPercentage;
 @property (readonly) double remoteMediaStallTimeout;
 @property (readonly) BOOL shouldDisplayVideoInfoLayer;
 @property (readonly) unsigned int silenceLevelMovingAveragePeriod;
-@property (readonly) int tilesPerVideoFrame;
+@property (readonly) BOOL supportsOneToOneMode;
 @property (readonly) BOOL useSBR;
 @property (readonly) int videoStreamRateControlAlgorithm;
 @property (readonly) BOOL videoStreamRateControlDumpEnabled;

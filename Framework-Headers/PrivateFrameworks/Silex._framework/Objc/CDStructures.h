@@ -73,7 +73,8 @@ struct os_unfair_lock_s {
 typedef struct {
     BOOL size;
     BOOL position;
-} CDStruct_1cc9d0d0;
+    BOOL state;
+} CDStruct_12a35e6e;
 
 typedef struct {
     unsigned long long rowIndex;

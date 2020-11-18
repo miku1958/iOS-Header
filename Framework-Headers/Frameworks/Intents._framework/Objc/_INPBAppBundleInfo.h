@@ -15,7 +15,6 @@
 @interface _INPBAppBundleInfo : PBCodable <_INPBAppBundleInfo, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBAppId *_appId;
     _INPBBuildId *_buildId;
     NSArray *_intentSupports;
@@ -23,7 +22,6 @@
     NSArray *_supportedPlatforms;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBAppId *appId; // @synthesize appId=_appId;
 @property (strong, nonatomic) _INPBBuildId *buildId; // @synthesize buildId=_buildId;
 @property (readonly, copy) NSString *debugDescription;

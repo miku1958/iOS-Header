@@ -10,7 +10,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKConcept, HKMedicalCoding, HKMedicalDate, NSArray, NSString;
+@class HKConcept, HKMedicalCoding, HKMedicalCodingCollection, HKMedicalDate, NSArray, NSString;
 
 @interface HKAllergyReaction : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
@@ -24,17 +24,17 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSArray *manifestationCodingCollections;
 @property (readonly, copy, nonatomic) NSArray *manifestations;
 @property (readonly, copy, nonatomic) NSArray *manifestionCodings; // @synthesize manifestionCodings=_manifestionCodings;
 @property (readonly, copy, nonatomic) HKMedicalDate *onsetDate; // @synthesize onsetDate=_onsetDate;
 @property (readonly, copy, nonatomic) HKConcept *severity;
 @property (readonly, copy, nonatomic) HKMedicalCoding *severityCoding;
+@property (readonly, copy, nonatomic) HKMedicalCodingCollection *severityCodingCollection;
 @property (readonly) Class superclass;
 
 + (id)allergyReactionWithManifestationCodings:(id)arg1 onsetDate:(id)arg2 severityCoding:(id)arg3;
 + (id)indexableKeyPathsWithPrefix:(id)arg1;
-+ (id)manifestationCodingsPreferredSystems;
-+ (id)severityCodingPreferredSystems;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setManifestationCodings:(id)arg1;
@@ -47,11 +47,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithManifestationCodings:(id)arg1 onsetDate:(id)arg2 severityCoding:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)manifestationCodingContexts;
 - (id)manifestationCodings;
-- (id)manifestationCodingsCollection;
-- (id)severityCodingCollection;
-- (id)severityCodingContext;
 
 @end
 

@@ -39,7 +39,7 @@
 - (id)_cityNodesFromMomentNodes:(id)arg1;
 - (void)_cityTitleWithCityNode:(id)arg1 countryNode:(id)arg2 visitedCountryOnlyOnce:(BOOL)arg3 momentNodes:(id)arg4 result:(CDUnknownBlockType)arg5;
 - (void)_generateLocationTitle;
-- (void)_generateTitleForMoments:(id)arg1 resolvedMoments:(id)arg2 resolvedLocations:(id)arg3;
+- (void)_generateTitleForMomentNodes:(id)arg1 resolvedMomentNodes:(id)arg2 resolvedLocations:(id)arg3;
 - (void)_resolveMomentNodes:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (id)initWithMomentNodes:(id)arg1 filterMomentsAndCities:(BOOL)arg2;
 - (id)initWithMomentNodes:(id)arg1 filterMomentsAndCities:(BOOL)arg2 allowLongAOI:(BOOL)arg3;

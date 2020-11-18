@@ -32,10 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)_collectionViewDelegate;
 - (void)_deselectIndexPaths:(id)arg1;
 - (void)_extendSelectionToPoint:(struct CGPoint)arg1;
-- (BOOL)_isPointInsideEditControl:(struct CGPoint)arg1;
+- (unsigned long long)_hitTestForSystemEditControlAtPoint:(struct CGPoint)arg1;
 - (BOOL)_isUsingTableViewLayout;
 - (BOOL)_point:(struct CGPoint)arg1 liesBeyondFrame:(struct CGRect)arg2 inDirection:(double)arg3;
 - (void)_selectIndexPaths:(id)arg1;
+- (BOOL)_shouldBeginInteractionAtIndexPath:(id)arg1;
 - (BOOL)_shouldBeginInteractionAtPoint:(struct CGPoint)arg1;
 - (void)automaticallyTransitionToMultiSelectModeKeepingCurrentSelection:(BOOL)arg1;
 - (unsigned long long)axisConstraint;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)selectedIndexPathsChanged:(id)arg1;
 - (id)selectionEndIndexPath;
 - (id)selectionStartIndexPath;
+- (BOOL)shouldAllowSelectionExtensionAtIndexPath:(id)arg1;
 - (BOOL)shouldAllowSelectionExtensionAtPoint:(struct CGPoint)arg1;
 - (BOOL)shouldBeginMultiSelectInteraction:(id)arg1 ofType:(long long)arg2 atPoint:(struct CGPoint)arg3 withVelocity:(struct CGPoint)arg4;
 - (BOOL)supportsMultiSelectInteraction:(id)arg1;

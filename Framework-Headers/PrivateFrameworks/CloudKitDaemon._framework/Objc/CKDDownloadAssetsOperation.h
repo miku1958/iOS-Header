@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     NSArray *_assetURLInfosToFillOut;
     NSMutableArray *_MMCSItemsToDownload;
     NSMutableArray *_MMCSItemsToDownloadInMemory;
+    NSMutableArray *_assetsToDownloadFromTranscoder;
+    NSMutableArray *_assetsToDownloadFromTranscoderInMemory;
     NSMapTable *_downloadTasksByPackages;
     CKDCancelTokenGroup *_cancelTokens;
     unsigned long long _maxPackageDownloadsPerBatch;
@@ -34,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *MMCSItemsToDownloadInMemory; // @synthesize MMCSItemsToDownloadInMemory=_MMCSItemsToDownloadInMemory;
 @property (strong, nonatomic) NSArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;
 @property (strong, nonatomic) NSArray *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
+@property (strong, nonatomic) NSMutableArray *assetsToDownloadFromTranscoder; // @synthesize assetsToDownloadFromTranscoder=_assetsToDownloadFromTranscoder;
+@property (strong, nonatomic) NSMutableArray *assetsToDownloadFromTranscoderInMemory; // @synthesize assetsToDownloadFromTranscoderInMemory=_assetsToDownloadFromTranscoderInMemory;
 @property (strong, nonatomic) NSArray *assetsToDownloadInMemory; // @synthesize assetsToDownloadInMemory=_assetsToDownloadInMemory;
 @property (strong, nonatomic) CKDCancelTokenGroup *cancelTokens; // @synthesize cancelTokens=_cancelTokens;
 @property (copy, nonatomic) CDUnknownBlockType downloadCommandBlock; // @synthesize downloadCommandBlock=_downloadCommandBlock;
@@ -45,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long maxPackageDownloadsPerBatch; // @synthesize maxPackageDownloadsPerBatch=_maxPackageDownloadsPerBatch;
 @property (strong, nonatomic) NSArray *packageIndexSets; // @synthesize packageIndexSets=_packageIndexSets;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (copy, nonatomic) CDUnknownBlockType urlFilledOutBlock; // @synthesize urlFilledOutBlock=_urlFilledOutBlock;
 
 - (void).cxx_destruct;
@@ -69,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_downloadPackageSectionsWithPendingTasks:(id)arg1 downloadingTasks:(id)arg2 completedTasks:(id)arg3;
 - (void)_downloadPackageSectionsWithSectionEnumerator:(id)arg1 task:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_downloadPackageSectionsWithTask:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_downloadTranscodedAsset:(id)arg1 inMemory:(BOOL)arg2;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (BOOL)_postProcess;
 - (BOOL)_prepareForDownload;
@@ -80,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (BOOL)shouldDownloadAssetFromTranscoder:(id)arg1;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

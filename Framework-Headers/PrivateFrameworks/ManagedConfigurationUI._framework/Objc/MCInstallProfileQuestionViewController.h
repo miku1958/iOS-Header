@@ -4,85 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
-
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-#import <ManagedConfigurationUI/UITextFieldDelegate-Protocol.h>
+#import <ManagedConfigurationUI/MCUITableViewController.h>
 
 @class MCUIFieldCollection, NSString, UITextField;
 @protocol MCProfileQuestionsControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MCInstallProfileQuestionViewController : UITableViewController <PSStateRestoration, UITextFieldDelegate>
+@interface MCInstallProfileQuestionViewController : MCUITableViewController
 {
     MCUIFieldCollection *_fieldCollection;
     NSString *_previousResponseValue;
     BOOL _waitingForPasscodePreflight;
-    int _outDirection;
-    BOOL _showingKeyboard;
-    BOOL _isLastQuestion;
     id<MCProfileQuestionsControllerDelegate> _questionsDelegate;
     UITextField *_textField;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) int outDirection; // @synthesize outDirection=_outDirection;
 @property (weak, nonatomic) id<MCProfileQuestionsControllerDelegate> questionsDelegate; // @synthesize questionsDelegate=_questionsDelegate;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
 - (void)_addActionForError:(unsigned long long)arg1 title:(id)arg2 toAlert:(id)arg3;
-- (void)_cancelButtonClicked;
 - (void)_cancelInput;
-- (void)_cancelPayload;
 - (void)_configureQuestionField:(id)arg1;
 - (void)_continueOrFinish;
 - (void)_continueWithCurrentField;
 - (void)_didFinishPasscodePreflightWithError:(id)arg1;
 - (void)_didFinishPreflightWithError:(id)arg1;
-- (void)_disableRightButton;
-- (void)_enableRightButton;
 - (void)_finishInput;
 - (void)_handleError:(unsigned long long)arg1;
-- (void)_hideKeyboard:(BOOL)arg1;
 - (void)_hideProgressIndicator;
-- (void)_nextButtonClicked;
 - (void)_preflightCurrentPayload;
 - (void)_processResponseAndContinue;
-- (void)_questionFieldEmpty:(id)arg1;
-- (void)_questionFieldNotEmpty:(id)arg1;
 - (void)_retryCurrentPasswordFieldWithError:(id)arg1;
-- (void)_retryPayload;
 - (void)_retryWithCurrentField;
+- (void)_setRightButtonEnabled:(BOOL)arg1;
 - (void)_setup;
 - (void)_showAlertForError:(id)arg1;
-- (void)_showKeyboard:(BOOL)arg1;
 - (void)_showNavButtonsAnimated:(BOOL)arg1;
 - (void)_showProgressIndicator;
-- (void)_skipPayload;
 - (void)_tellDelegateDidFinishWithUserInputResponses:(id)arg1;
-- (void)_textFieldValueChanged:(id)arg1;
+- (void)_textFieldDidChange;
 - (void)_updateNavigationBar;
-- (BOOL)canBeShownFromSuspendedState;
-- (void)dealloc;
-- (void)didReceiveMemoryWarning;
 - (id)initWithFieldCollection:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithUserInput:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)profileConnection:(id)arg1 didFinishPreflightWithError:(id)arg2;
+- (void)profileConnectionDidFinishPreflightWithError:(id)arg1;
 - (void)stopWaitingForMoreInput;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)updateWithUserInput:(id)arg1;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)waitForMoreInput;
 
 @end

@@ -24,7 +24,7 @@
 @property (readonly) BOOL supportsAssociation;
 
 + (id)logCategory;
-+ (Class)modelClass;
++ (id)modelForChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 - (void).cxx_destruct;
 - (id)addTransactionForHome:(id)arg1 configurationAppIdentifier:(id)arg2;
 - (void)associateToHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

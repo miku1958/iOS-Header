@@ -6,22 +6,18 @@
 
 #import <HealthDaemon/HDCloudSyncRecord.h>
 
-@class CKRecordID;
-
 @interface HDCloudSyncSubscriptionRecord : HDCloudSyncRecord
 {
 }
 
-@property (readonly, copy, nonatomic) CKRecordID *storeRecordID;
-
 + (BOOL)hasFutureSchema:(id)arg1;
 + (BOOL)isSubscriptionRecord:(id)arg1;
++ (id)recordForZoneID:(id)arg1;
 + (id)recordIDWithZoneID:(id)arg1;
 + (id)recordIDsWithZoneID:(id)arg1;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
 - (id)description;
-- (id)initForStoreRecord:(id)arg1;
-- (id)initWithCKRecord:(id)arg1 forStoreRecordID:(id)arg2 schemaVersion:(long long)arg3;
+- (id)storeRecordID;
 
 @end
 

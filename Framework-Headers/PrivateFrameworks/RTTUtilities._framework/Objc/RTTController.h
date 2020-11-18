@@ -43,9 +43,11 @@
 - (void)_handlePreferredRelayNumberUpdate;
 - (void)_refreshCurrentCallList;
 - (void)_refreshCurrentCallListWithExistingCalls:(id)arg1;
+- (void)_requestNotificationAuthorizationIfNecessary;
 - (id)actionClient;
 - (void)callDidConnect:(id)arg1;
 - (id)callForUUID:(id)arg1;
+- (void)clientRemoved:(id)arg1;
 - (void)dealloc;
 - (void)didChangeTelephonyCallingSupport;
 - (void)dismissRTTFirstUseAlert;
@@ -55,13 +57,14 @@
 - (id)handleDictionaryRequest:(id)arg1;
 - (id)handleIncomingNotificationSuppressionChange:(id)arg1;
 - (id)handleMediaAction:(id)arg1;
+- (id)handleRTTControllerIsVisible:(id)arg1;
 - (id)handleSettingsRequest:(id)arg1;
 - (void)handleUpdatedCalls:(id)arg1;
 - (id)init;
 - (BOOL)invalidateServerCaches:(id)arg1;
 - (void)ttyCall:(id)arg1 didReceiveString:(id)arg2 forUtterance:(id)arg3;
 - (void)ttyCall:(id)arg1 didSendRemoteString:(id)arg2 forUtterance:(id)arg3;
-- (void)ttyCall:(id)arg1 shouldDisplayServiceMessage:(id)arg2;
+- (void)ttyCall:(id)arg1 setVisible:(BOOL)arg2 serviceUpdate:(id)arg3;
 - (id)userInterfaceClient:(id)arg1 processMessageFromServer:(id)arg2 withIdentifier:(unsigned long long)arg3 error:(id *)arg4;
 
 @end

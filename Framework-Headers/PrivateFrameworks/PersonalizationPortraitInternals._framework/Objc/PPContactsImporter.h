@@ -6,19 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@interface PPContactsImporter : NSObject
+#import <PersonalizationPortraitInternals/CNChangeHistoryEventVisitor-Protocol.h>
+
+@class NSString, PPLocalContactStore, PPLocalNamedEntityStore, PPSQLDatabase;
+
+@interface PPContactsImporter : NSObject <CNChangeHistoryEventVisitor>
 {
+    PPSQLDatabase *_db;
+    PPLocalContactStore *_contactStore;
+    PPLocalNamedEntityStore *_namedEntityStore;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (BOOL)_shouldImport;
 + (id)defaultInstance;
+- (void).cxx_destruct;
+- (void)_addContactWithIdentifier:(id)arg1;
+- (BOOL)_deleteAndReAddWholeContact:(id)arg1 contactIdentifier:(id)arg2;
+- (void)_deleteContactWithIdentifier:(id)arg1;
+- (BOOL)_donateScoredNamedEntities:(id)arg1 source:(id)arg2 error:(id *)arg3;
 - (id)_entitiesForScoredContact:(id)arg1;
+- (BOOL)_handleNotificationWithError:(id *)arg1;
 - (id)_loadContactIdentifiersAlreadyImportedInPastDay;
 - (void)_registerForNotifications;
 - (void)_removeStashedImportedContacts;
+- (id)_scoredContactWithContactIdentifier:(id)arg1;
+- (id)_sourceForContactWithContactIdentifier:(id)arg1;
 - (void)_stashImportedContactsIdentifiers:(id)arg1;
+- (void)_updateContactWithIdentifier:(id)arg1;
 - (void)importContactsDataWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (BOOL)importScoredContact:(id)arg1 contactsIdentifier:(id)arg2 error:(id *)arg3;
 - (id)init;
+- (id)initWithDatabase:(id)arg1;
+- (void)visitAddContactEvent:(id)arg1;
+- (void)visitDeleteContactEvent:(id)arg1;
+- (void)visitDropEverythingEvent:(id)arg1;
+- (void)visitUpdateContactEvent:(id)arg1;
 
 @end
 

@@ -58,6 +58,7 @@
 - (void)setControlObject:(id)arg1;
 - (BOOL)setupSession:(id *)arg1;
 - (BOOL)shouldAcceptOctagonRequests;
+- (BOOL)shouldProcessSOSApplication:(id)arg1 pairingMessage:(id)arg2;
 - (id)stateString;
 
 @end

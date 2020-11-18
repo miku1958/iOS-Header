@@ -9,14 +9,16 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKSampleType, NSPredicate;
+@class HKSampleType, NSPredicate, _HKFilter;
 
 @interface HKSampleQueryDescription : NSObject <NSCopying, NSSecureCoding>
 {
     HKSampleType *_sampleType;
     NSPredicate *_predicate;
+    _HKFilter *_filter;
 }
 
+@property (readonly, nonatomic, getter=_filter) _HKFilter *filter; // @synthesize filter=_filter;
 @property (readonly, copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly, copy, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
 
@@ -24,12 +26,13 @@
 + (id)allergiesDescriptionsWithPredicate:(id)arg1;
 + (id)conditionsDescriptions;
 + (id)conditionsDescriptionsWithPredicate:(id)arg1;
++ (id)coverageDescriptions;
++ (id)coverageDescriptionsWithPredicate:(id)arg1;
 + (id)immunizationsDescriptions;
 + (id)immunizationsDescriptionsWithPredicate:(id)arg1;
 + (id)labsDescriptions;
 + (id)labsDescriptionsWithPredicate:(id)arg1;
-+ (id)medicalRecordDescriptions;
-+ (id)medicalRecordDescriptionsWithPredicate:(id)arg1;
++ (id)medicalRecordDescriptionsWithPredicate:(id)arg1 futureMigrationsEnabled:(BOOL)arg2;
 + (id)medicationsDescriptions;
 + (id)medicationsDescriptionsWithPredicate:(id)arg1;
 + (id)proceduresDescriptions;

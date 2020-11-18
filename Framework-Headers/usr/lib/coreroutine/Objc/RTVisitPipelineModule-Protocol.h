@@ -10,5 +10,8 @@
 
 @protocol RTVisitPipelineModule <NSObject>
 - (NSArray *)process:(NSArray *)arg1;
+
+@optional
+- (void)shutdown;
 @end
 

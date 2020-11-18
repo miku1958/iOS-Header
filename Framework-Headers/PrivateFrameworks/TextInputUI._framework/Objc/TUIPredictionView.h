@@ -59,6 +59,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (long long)layoutDirection;
 - (void)layoutSubviews;
 - (double)maximumBackgroundWidth;
 - (void)setAutocorrectionList:(id)arg1 animated:(BOOL)arg2;

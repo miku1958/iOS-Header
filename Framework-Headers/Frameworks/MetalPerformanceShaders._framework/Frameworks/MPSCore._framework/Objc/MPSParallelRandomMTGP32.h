@@ -20,15 +20,21 @@
     float _bernoulliParameter;
     float _uniformMin;
     float _uniformMax;
+    float _normalMean;
+    float _normalStandardDeviation;
 }
 
 - (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 computeEncoder:(id)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4 numEntries:(unsigned long long)arg5;
+- (void)encodeToCommandBuffer:(id)arg1 computeEncoder:(id)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4 numEntries:(unsigned long long)arg5 stride:(unsigned int)arg6;
 - (void)encodeWithCoder:(id)arg1;
+- (id)exportState;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 destinationDataType:(unsigned int)arg2 seed:(unsigned long long)arg3;
 - (id)initWithDevice:(id)arg1 destinationDataType:(unsigned int)arg2 seed:(unsigned long long)arg3 distributionDescriptor:(id)arg4;
+- (id)initWithDevice:(id)arg1 destinationDataType:(unsigned int)arg2 state:(id)arg3 distributionDescriptor:(id)arg4;
+- (void)reinitializeDistributionDescriptor:(id)arg1;
 - (void)resetSeedOnCommandBuffer:(id)arg1 seed:(unsigned long long)arg2;
 - (void)synchronizeStateOnCommandBuffer:(id)arg1;
 

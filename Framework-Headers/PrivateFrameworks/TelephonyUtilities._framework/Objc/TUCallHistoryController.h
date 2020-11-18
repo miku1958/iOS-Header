@@ -16,12 +16,11 @@
     unsigned long long _options;
     NSArray *_recentCalls;
     unsigned long long _unreadCallCount;
-    unsigned long long _unreadVideoCallCount;
-    unsigned long long _unreadAudioCallCount;
     CHManager *_callHistoryManager;
     TUCallProviderManager *_callProviderManager;
     TUDispatcher *_dispatcher;
     TUDispatcher *_simpleIvarDispatcher;
+    NSArray *_thirdPartyCallProviders;
     NSMutableSet *_metadataPreCachedOptions;
 }
 
@@ -37,14 +36,12 @@
 @property (strong, nonatomic) NSArray *recentCalls; // @synthesize recentCalls=_recentCalls;
 @property (strong, nonatomic) TUDispatcher *simpleIvarDispatcher; // @synthesize simpleIvarDispatcher=_simpleIvarDispatcher;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long unreadAudioCallCount; // @synthesize unreadAudioCallCount=_unreadAudioCallCount;
+@property (copy, nonatomic) NSArray *thirdPartyCallProviders; // @synthesize thirdPartyCallProviders=_thirdPartyCallProviders;
 @property (nonatomic) unsigned long long unreadCallCount; // @synthesize unreadCallCount=_unreadCallCount;
-@property (nonatomic) unsigned long long unreadVideoCallCount; // @synthesize unreadVideoCallCount=_unreadVideoCallCount;
 
 + (id)callHistoryControllerWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
 + (id)sharedController;
 + (id)sharedControllerWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
-+ (id)tuHandleFromCHHandle:(id)arg1;
 - (void).cxx_destruct;
 - (id)_callHistoryCoalescingStrategyForCoalescingStrategy:(unsigned long long)arg1;
 - (void)_updateCallHistoryManagerUsingCurrentOptions;
@@ -52,8 +49,6 @@
 - (void)callHistoryDatabaseChanged:(id)arg1;
 - (CDUnknownBlockType)callHistoryManagerInitializationDispatchBlock;
 - (CDUnknownBlockType)callHistoryManagerRecentCallsDispatchBlock;
-- (BOOL)canCoalesceCall:(id)arg1 withCall:(id)arg2;
-- (BOOL)coalesceCall:(id)arg1 withCall:(id)arg2;
 - (void)dealloc;
 - (void)deleteAllRecentCalls;
 - (void)deleteRecentCall:(id)arg1;
@@ -66,7 +61,6 @@
 - (void)markRecentCallsAsRead;
 - (void)markRecentCallsAsReadWithPredicate:(id)arg1;
 - (void)markRecentVideoCallsAsRead;
-- (id)mostRecentCallWithHandle:(id)arg1;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (id)recentCallsWithPredicate:(id)arg1;
 - (void)reloadWithOptions:(unsigned long long)arg1;

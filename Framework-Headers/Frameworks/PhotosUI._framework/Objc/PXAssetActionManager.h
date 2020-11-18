@@ -6,23 +6,29 @@
 
 #import <PhotosUICore/PXActionManager.h>
 
-@class PXSectionedSelectionManager;
+@class PXSectionedObjectReference, PXSectionedSelectionManager;
 
 @interface PXAssetActionManager : PXActionManager
 {
     PXSectionedSelectionManager *_selectionManager;
+    PXSectionedObjectReference *_objectReference;
 }
 
-@property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
+@property (strong, nonatomic) PXSectionedObjectReference *objectReference; // @synthesize objectReference=_objectReference;
+@property (strong, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 
 - (void).cxx_destruct;
 - (id)actionPerformerForActionType:(id)arg1;
+- (BOOL)canPerformActionType:(id)arg1;
 - (BOOL)canPerformAssetVariationActions;
 - (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithSelectedObjectReference:(id)arg1 dataSourceManager:(id)arg2;
 - (id)initWithSelectionManager:(id)arg1;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (void)px_registerAdditionalPerformerClasses;
 - (BOOL)shouldEnableActionType:(id)arg1 onAsset:(id)arg2;
+- (id)systemImageNameForActionType:(id)arg1;
 
 @end
 

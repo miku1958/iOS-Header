@@ -9,23 +9,32 @@
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
 @class NSString;
+@protocol CNScheduler;
 
 @interface _CNMainThreadScheduler : NSObject <CNScheduler>
 {
+    id<CNScheduler> _inlineScheduler;
+    id<CNScheduler> _jumpToMainScheduler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<CNScheduler> inlineScheduler; // @synthesize inlineScheduler=_inlineScheduler;
+@property (readonly, nonatomic) id<CNScheduler> jumpToMainScheduler; // @synthesize jumpToMainScheduler=_jumpToMainScheduler;
 @property (readonly) Class superclass;
 @property (readonly) double timestamp;
 
+- (void).cxx_destruct;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2 qualityOfService:(unsigned long long)arg3;
+- (id)init;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
+- (id)schedulerForDelayedExecution;
+- (id)schedulerForImmediateExecution;
 
 @end
 

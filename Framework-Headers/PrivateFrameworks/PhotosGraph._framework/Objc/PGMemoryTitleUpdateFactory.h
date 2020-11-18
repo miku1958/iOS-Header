@@ -27,7 +27,6 @@
 - (id)_predominantNeighborNodeFromMomentNodes:(id)arg1 withLabel:(id)arg2 domain:(unsigned short)arg3 ignoredNodes:(id)arg4;
 - (id)_predominantSuperset;
 - (long long)_predominantYearForYearSummaryMemory;
-- (id)_startMomentNodeFromMomentNodes:(id)arg1;
 - (id)initWithMemory:(id)arg1 graph:(id)arg2;
 - (id)titleGeneratorWithError:(id *)arg1;
 

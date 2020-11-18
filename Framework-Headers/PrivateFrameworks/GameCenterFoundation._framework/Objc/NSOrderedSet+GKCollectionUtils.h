@@ -7,7 +7,7 @@
 #import <Foundation/NSOrderedSet.h>
 
 @interface NSOrderedSet (GKCollectionUtils)
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)_gkDistinctValuesForKeyPath:(id)arg1;
 - (id)_gkFilteredOrderedSetUsingPredicate:(id)arg1;
 - (id)_gkFirstObject;

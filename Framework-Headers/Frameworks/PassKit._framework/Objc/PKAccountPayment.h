@@ -13,18 +13,22 @@
 
 @interface PKAccountPayment : NSObject <NSSecureCoding, PKRecordObject>
 {
+    BOOL _cancellable;
     NSString *_identifier;
     NSString *_referenceIdentifier;
     NSString *_clientReferenceIdentifier;
     PKCurrencyAmount *_currencyAmount;
     NSDate *_paymentDate;
     NSDate *_paymentStatusDate;
+    NSDate *_cancellationExpiryDate;
     long long _state;
     long long _statusCode;
     PKAccountPaymentFundingSource *_fundingSource;
     PKAccountPaymentScheduleDetails *_scheduleDetails;
 }
 
+@property (nonatomic) BOOL cancellable; // @synthesize cancellable=_cancellable;
+@property (copy, nonatomic) NSDate *cancellationExpiryDate; // @synthesize cancellationExpiryDate=_cancellationExpiryDate;
 @property (copy, nonatomic) NSString *clientReferenceIdentifier; // @synthesize clientReferenceIdentifier=_clientReferenceIdentifier;
 @property (strong, nonatomic) PKCurrencyAmount *currencyAmount; // @synthesize currencyAmount=_currencyAmount;
 @property (readonly, copy) NSString *debugDescription;
@@ -49,6 +53,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 productTimeZone:(id)arg2;
 - (id)initWithRecord:(id)arg1;
+- (BOOL)isCurrentlyCancellable;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isOnHoldForAccount:(id)arg1;
 - (BOOL)isRecurring;

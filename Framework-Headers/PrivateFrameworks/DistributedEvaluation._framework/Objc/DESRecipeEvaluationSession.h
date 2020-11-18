@@ -22,6 +22,7 @@
     BOOL _wasResumedFromURL;
     DESRecipe *_recipe;
     DESRecordSet *_matchingRecordSet;
+    NSObject<OS_xpc_object> *_activity;
     long long _evaluationResult;
     NSDictionary *_JSONResult;
     NSData *_binaryResult;
@@ -29,7 +30,6 @@
     NSString *_testingRecipePath;
     NSArray *_testingRecipeAttachments;
     CDUnknownBlockType _testingCompletionHandler;
-    NSObject<OS_xpc_object> *_activity;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *JSONResult; // @synthesize JSONResult=_JSONResult;
@@ -57,6 +57,7 @@
 - (id)deferralURL;
 - (void)downloadAttachmentsWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithResumptionURL:(id)arg1 error:(id *)arg2;
+- (BOOL)taskIsDeferred;
 
 @end
 

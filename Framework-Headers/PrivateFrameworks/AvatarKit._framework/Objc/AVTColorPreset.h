@@ -37,6 +37,7 @@
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 + (id)secondaryColorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 - (void).cxx_destruct;
+- (id)baseColor;
 - (id)colorPresetWithVariation:(float)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)derivedCategoriesNames;

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (long long)accessibilityContainerType;
 - (id)initWithPlacement:(long long)arg1;
 - (void)setItems:(id)arg1 animated:(BOOL)arg2;
 

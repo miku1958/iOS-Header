@@ -63,6 +63,7 @@
 - (id)initWithType:(unsigned long long)arg1 sourceKey:(id)arg2 externalKey:(id)arg3 bundleId:(id)arg4 fromForwardedMessage:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToOrigin:(id)arg1;
+- (id)universalURL;
 
 @end
 

@@ -29,13 +29,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)edgesOnly;
 - (id)imageForSliceIndex:(long long)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (BOOL)isScaled;
 - (BOOL)isTiled;
 - (id)layerReferences;
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)metrics;
-- (struct CGImage *)newImageFromCSIDataSlice:(struct _slice)arg1 ofBitmap:(struct _csibitmap *)arg2 usingColorspace:(struct CGColorSpace *)arg3;
 - (int)pixelFormat;
 - (void)setSharedBlockData:(id)arg1;
 - (id)sliceInformation;

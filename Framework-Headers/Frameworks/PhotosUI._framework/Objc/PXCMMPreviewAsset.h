@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSData, NSDate, NSString, PHAsset, PHMomentShare, UIImage;
+@class NSData, NSDate, NSNumber, NSString, PHAsset, PHMomentShare, UIImage;
 
 @interface PXCMMPreviewAsset : NSObject <PXDisplayAsset>
 {
@@ -26,8 +26,9 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) BOOL isPreviewImageDataAvailable;

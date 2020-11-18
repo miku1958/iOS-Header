@@ -30,9 +30,3 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned char _field1[16];
-} CDStruct_60067b7e;
-

@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (id)_initWithCharacteristic:(id)arg1 requestType:(unsigned char)arg2 bodyData:(id)arg3 shouldEncrypt:(BOOL)arg4 timeoutInterval:(double)arg5;
 - (id)_serializeHeader;
 - (void)cancelWithError:(id)arg1;
 - (id)debugDescription;
@@ -43,6 +44,7 @@
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithCharacteristic:(id)arg1 requestType:(unsigned char)arg2 bodyData:(id)arg3 shouldEncrypt:(BOOL)arg4 timeoutInterval:(double)arg5;
+- (id)initWithRequestType:(unsigned char)arg1 bodyData:(id)arg2 shouldEncrypt:(BOOL)arg3 timeoutInterval:(double)arg4;
 - (id)serialize;
 - (id)shortDescription;
 

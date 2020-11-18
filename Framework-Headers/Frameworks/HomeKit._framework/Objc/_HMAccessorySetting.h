@@ -56,7 +56,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleAddedConstraint:(id)arg1;
-- (void)_handleReflectedUpdate:(id)arg1;
 - (void)_handleRemovedConstraint:(id)arg1;
 - (void)_handleUpdatedValue:(id)arg1;
 - (void)_registerNotificationHandlers;

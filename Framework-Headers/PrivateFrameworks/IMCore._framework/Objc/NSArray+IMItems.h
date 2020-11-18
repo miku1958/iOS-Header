@@ -21,12 +21,10 @@
 
 - (void)__enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)__imItems;
-- (id)__itemForChatItemAtIndex:(unsigned long long)arg1;
 - (void)enumerateMessagesWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)equivalentToRecipients:(id)arg1;
 - (id)indexesOfPartsOfMessage:(id)arg1;
 - (id)indexesOfPartsOfMessageItem:(id)arg1;
-- (id)messageForChatItemAtIndex:(unsigned long long)arg1;
 - (id)messages;
 @end
 

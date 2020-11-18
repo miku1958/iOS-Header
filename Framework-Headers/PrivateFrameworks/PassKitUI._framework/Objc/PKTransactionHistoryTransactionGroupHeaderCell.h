@@ -6,26 +6,32 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UIImage, UIImageView, UILabel, UIView;
 
 @interface PKTransactionHistoryTransactionGroupHeaderCell : PKDashboardCollectionViewCell
 {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     BOOL _isTemplateLayout;
+    UIImage *_image;
     UIImageView *_imageView;
+    UIView *_imageBackgroundView;
+    BOOL _useShadows;
 }
 
-@property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *title;
+@property (nonatomic) BOOL useShadows; // @synthesize useShadows=_useShadows;
 
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
+- (void)_setupImageView;
 - (void)_updateImageViewDynamicColors;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)setImage:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

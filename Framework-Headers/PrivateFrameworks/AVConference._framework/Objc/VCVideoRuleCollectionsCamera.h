@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 - (id)bestVideoRuleForEncodingType:(unsigned char)arg1 aspectRatio:(double)arg2;
 - (id)bestVideoRuleForEncodingType:(unsigned char)arg1 aspectRatio:(double)arg2 payload:(int)arg3;
 - (struct _VCBitrateConfiguration *)bitrateConfiguration;
-- (BOOL)getBestPreviewFrameWidth:(int *)arg1 frameHeight:(int *)arg2 frameRate:(float *)arg3;
+- (BOOL)getBestFrameWidth:(int *)arg1 frameHeight:(int *)arg2 frameRate:(float *)arg3;
 - (BOOL)isHiDefCapable;
 - (double)preferredAspectRatio;
-- (void)resetEncodingRulesForCameraIsHD:(BOOL)arg1 isWVGA:(BOOL)arg2;
+- (void)resetEncodingRulesForCameraIsHD:(BOOL)arg1 isWVGA:(BOOL)arg2 is1080:(BOOL)arg3;
 - (BOOL)setupH264CellularRules;
 - (BOOL)useSoftFramerateSwitching;
 

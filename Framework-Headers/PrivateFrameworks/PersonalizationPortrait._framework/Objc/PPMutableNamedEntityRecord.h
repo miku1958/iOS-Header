@@ -16,7 +16,7 @@
 @property (nonatomic) unsigned char changeType; // @dynamic changeType;
 @property (nonatomic) double decayRate; // @dynamic decayRate;
 @property (strong, nonatomic) PPNamedEntity *entity; // @dynamic entity;
-@property (nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
+@property (nonatomic) unsigned int extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property (strong, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property (nonatomic) double initialScore; // @dynamic initialScore;
 @property (strong, nonatomic) PPNamedEntityMetadata *metadata; // @dynamic metadata;

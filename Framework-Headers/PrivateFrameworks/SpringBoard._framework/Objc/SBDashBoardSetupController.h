@@ -34,6 +34,9 @@
 - (void)_clearSetupViewIfNecessaryAnimated:(BOOL)arg1;
 - (void)_configureForCurrentSetupMode;
 - (void)_setupModeChanged:(id)arg1;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSEventHandling;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)dealloc;
 - (BOOL)handleEvent:(id)arg1;
 - (id)init;

@@ -4,18 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphOptimizedEdge.h>
 
 @class NSDate;
 
-@interface PGGraphBusinessEdge : PGGraphEdge
+@interface PGGraphBusinessEdge : PGGraphOptimizedEdge
 {
+    BOOL _hasRoutineInfo;
+    float _weight;
+    NSDate *_universalStartDate;
+    NSDate *_universalEndDate;
 }
 
-@property (readonly, nonatomic) BOOL hasRoutineInfo;
-@property (readonly, nonatomic) NSDate *universalEndDate;
-@property (readonly, nonatomic) NSDate *universalStartDate;
+@property (readonly, nonatomic) BOOL hasRoutineInfo; // @synthesize hasRoutineInfo=_hasRoutineInfo;
+@property (readonly, nonatomic) NSDate *universalEndDate; // @synthesize universalEndDate=_universalEndDate;
+@property (readonly, nonatomic) NSDate *universalStartDate; // @synthesize universalStartDate=_universalStartDate;
 
+- (void).cxx_destruct;
+- (id)edgeDescription;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 fromSourceNode:(id)arg2 toBusinessNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
+- (void)setWeight:(float)arg1;
+- (float)weight;
 
 @end
 

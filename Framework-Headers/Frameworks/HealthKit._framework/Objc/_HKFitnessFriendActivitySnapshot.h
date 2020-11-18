@@ -60,6 +60,7 @@
 
 + (id)_fitnessFriendActivitySnapshotWithFriendUUID:(id)arg1 sourceUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 snapshotIndex:(long long)arg5 snapshotUploadedDate:(id)arg6;
 + (id)_fitnessFriendActivitySnapshotWithSnapshotIndex:(long long)arg1 startDate:(id)arg2 endDate:(id)arg3 sourceUUID:(id)arg4;
++ (BOOL)_isConcreteObjectClass;
 + (id)_mostSignificantSnapshotAmongSnapshots:(id)arg1;
 + (id)snapshotWithActivitySummary:(id)arg1;
 + (BOOL)supportsSecureCoding;

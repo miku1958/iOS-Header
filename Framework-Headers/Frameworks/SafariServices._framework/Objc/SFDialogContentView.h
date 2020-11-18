@@ -6,12 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <SafariServices/UITableViewDataSource-Protocol.h>
+#import <SafariServices/UITableViewDelegate-Protocol.h>
 #import <SafariServices/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, SFDialogTextField, SFDialogTextView, UIButton, UIStackView, _SFDialogView;
+@class NSArray, NSLayoutConstraint, NSString, SFDialogTextField, SFDialogTextView, UIButton, UIStackView, UITableView, _SFDialogView;
 
 __attribute__((visibility("hidden")))
-@interface SFDialogContentView : UIView <UITextFieldDelegate>
+@interface SFDialogContentView : UIView <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_actionButtons;
     UIStackView *_actionButtonsView;
@@ -28,6 +30,12 @@ __attribute__((visibility("hidden")))
     SFDialogTextField *_passwordTextField;
     NSLayoutConstraint *_actionButtonsLeadingConstraintForHorizontalStackAlignment;
     NSLayoutConstraint *_actionButtonsLeadingConstraintForVerticalStackAlignment;
+    UITableView *_tableView;
+    NSArray *_tableData;
+    CDUnknownBlockType _tableDidSelectRowAction;
+    long long _selectedRow;
+    NSArray *_layoutConstraintsWhenTableViewIsVisible;
+    NSLayoutConstraint *_tableViewHeightConstraint;
     _SFDialogView *_dialogView;
     NSArray *_actions;
 }
@@ -62,7 +70,11 @@ __attribute__((visibility("hidden")))
 - (void)setInputText:(id)arg1 placeholder:(id)arg2;
 - (void)setMessageText:(id)arg1;
 - (void)setPasswordText:(id)arg1 placeholder:(id)arg2;
+- (void)setTableViewRows:(id)arg1 didSelectRowAction:(CDUnknownBlockType)arg2;
 - (void)setTitleText:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;

@@ -25,8 +25,8 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

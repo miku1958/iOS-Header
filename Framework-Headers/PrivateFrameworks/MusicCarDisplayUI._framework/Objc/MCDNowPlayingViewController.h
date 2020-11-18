@@ -4,50 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <CarPlayUI/CPUINowPlayingViewController.h>
 
-#import <MusicCarDisplayUI/CARSessionObserving-Protocol.h>
 #import <MusicCarDisplayUI/MCDNowPlayingContentManagerDelegate-Protocol.h>
 
-@class CARSessionStatus, MPWeakTimer, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableViewController, _MCDNowPlayingViewController;
+@class MPWeakTimer, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableViewController;
 @protocol MCDNowPlayingContentManagerProtocol;
 
-@interface MCDNowPlayingViewController : UIViewController <CARSessionObserving, MCDNowPlayingContentManagerDelegate>
+@interface MCDNowPlayingViewController : CPUINowPlayingViewController <MCDNowPlayingContentManagerDelegate>
 {
     BOOL _showNavigationBar;
     BOOL _trackBuffering;
     BOOL _handledWillAppear;
     BOOL _shouldShowPlaybackQueue;
-    _MCDNowPlayingViewController *_nowPlayingViewController;
+    UITableViewController *_playbackQueueViewController;
+    id<MCDNowPlayingContentManagerProtocol> _contentManager;
     UIBarButtonItem *_backButton;
     UIActivityIndicatorView *_activityIndicator;
     UIBarButtonItem *_activityIndicatorBarButtonItem;
-    NSString *_bundleID;
     NSString *_appName;
     MPWeakTimer *_activityTimer;
     UILabel *_rightTitleLabel;
     UIBarButtonItem *_rightTitleLabelBarButtonItem;
     UIBarButtonItem *_playbackQueueBarButtonItem;
-    CARSessionStatus *_carSessionStatus;
-    id<MCDNowPlayingContentManagerProtocol> _contentManager;
-    UITableViewController *_playbackQueueViewController;
-    CDUnknownBlockType _albumViewControllerProvider;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (strong, nonatomic) UIBarButtonItem *activityIndicatorBarButtonItem; // @synthesize activityIndicatorBarButtonItem=_activityIndicatorBarButtonItem;
 @property (strong, nonatomic) MPWeakTimer *activityTimer; // @synthesize activityTimer=_activityTimer;
-@property (copy, nonatomic) CDUnknownBlockType albumViewControllerProvider; // @synthesize albumViewControllerProvider=_albumViewControllerProvider;
 @property (strong, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (strong, nonatomic) UIBarButtonItem *backButton; // @synthesize backButton=_backButton;
-@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (strong, nonatomic) CARSessionStatus *carSessionStatus; // @synthesize carSessionStatus=_carSessionStatus;
 @property (strong, nonatomic) id<MCDNowPlayingContentManagerProtocol> contentManager; // @synthesize contentManager=_contentManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL handledWillAppear; // @synthesize handledWillAppear=_handledWillAppear;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _MCDNowPlayingViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
 @property (strong, nonatomic) UIBarButtonItem *playbackQueueBarButtonItem; // @synthesize playbackQueueBarButtonItem=_playbackQueueBarButtonItem;
 @property (strong, nonatomic) UITableViewController *playbackQueueViewController; // @synthesize playbackQueueViewController=_playbackQueueViewController;
 @property (strong, nonatomic) UILabel *rightTitleLabel; // @synthesize rightTitleLabel=_rightTitleLabel;
@@ -64,7 +55,6 @@
 - (void)_popViewControllerAnimated;
 - (void)_setupActivityTimer;
 - (void)_updateBackButton;
-- (void)albumArtistButtonTapped:(id)arg1;
 - (void)contentManager:(id)arg1 bufferingItem:(BOOL)arg2;
 - (void)contentManager:(id)arg1 displayItemIndex:(long long)arg2 totalItemCount:(long long)arg3;
 - (void)contentManager:(id)arg1 presentViewController:(id)arg2;
@@ -76,8 +66,6 @@
 - (void)dealloc;
 - (id)initWithBundleID:(id)arg1 appName:(id)arg2;
 - (id)initWithPlayableBundleID:(id)arg1 appName:(id)arg2;
-- (id)preferredFocusEnvironments;
-- (void)session:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)setRightTitle:(id)arg1;
 - (void)upNextButtonTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

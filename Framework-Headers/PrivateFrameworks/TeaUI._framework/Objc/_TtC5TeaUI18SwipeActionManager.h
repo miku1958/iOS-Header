@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *tapGestureRecognizer;
     MISSING_TYPE *deferGroup;
     MISSING_TYPE *collectionView;
+    MISSING_TYPE *isSwipeActionEnabled;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *delegate;
     MISSING_TYPE *swipeState;

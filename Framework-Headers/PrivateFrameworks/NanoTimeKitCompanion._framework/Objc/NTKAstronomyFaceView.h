@@ -11,7 +11,7 @@
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSDate, NSDateFormatter, NSNumber, NSString, NTKAstronomyLocationDot, NTKAstronomyRotationModel, NTKAstronomyVistaView, NTKColoringLabel, NTKDateComplicationLabel, NTKDelayedBlock, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
+@class CLKClockTimerToken, MISSING_TYPE, NSArray, NSDate, NSDateFormatter, NSString, NTKAstronomyLocationDot, NTKAstronomyRotationModel, NTKAstronomyVistaView, NTKColoringLabel, NTKDateComplicationLabel, NTKDelayedBlock, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
 
 @interface NTKAstronomyFaceView : NTKDigitalFaceView <NTKTimeView, NTKAstronomyRotationModelObserver, NTKAstronomyVistaViewObserver, UIGestureRecognizerDelegate>
 {
@@ -38,7 +38,7 @@
     NTKAstronomyLocationDot *_locationDot;
     NSDate *_overrideDate;
     NSDate *_crownDate;
-    NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
     NSDateFormatter *_scrubDateFormatter[3];
     struct CGRect _phaseLabelDefaultFrame;
     float _supplementalFontLineHeightPlusDescender;

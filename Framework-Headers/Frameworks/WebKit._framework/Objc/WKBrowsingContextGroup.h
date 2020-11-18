@@ -25,7 +25,9 @@
 @property BOOL privateBrowsingEnabled;
 @property (readonly) Class superclass;
 
+- (void)addUserScript:(id)arg1 baseURL:(id)arg2 includeMatchPatternStrings:(id)arg3 excludeMatchPatternStrings:(id)arg4 injectionTime:(int)arg5 mainFrameOnly:(BOOL)arg6;
 - (void)addUserScript:(id)arg1 baseURL:(id)arg2 whitelistedURLPatterns:(id)arg3 blacklistedURLPatterns:(id)arg4 injectionTime:(int)arg5 mainFrameOnly:(BOOL)arg6;
+- (void)addUserStyleSheet:(id)arg1 baseURL:(id)arg2 includeMatchPatternStrings:(id)arg3 excludeMatchPatternStrings:(id)arg4 mainFrameOnly:(BOOL)arg5;
 - (void)addUserStyleSheet:(id)arg1 baseURL:(id)arg2 whitelistedURLPatterns:(id)arg3 blacklistedURLPatterns:(id)arg4 mainFrameOnly:(BOOL)arg5;
 - (BOOL)allowsJavaScriptMarkup;
 - (void)dealloc;

@@ -17,7 +17,6 @@
     UILabel *_primaryLabel;
     UILabel *_secondaryLabel;
     UILabel *_attributionLabel;
-    unsigned long long _screenType;
     BOOL _showsGradientOverlay;
     NSString *_primaryText;
     NSString *_secondaryText;

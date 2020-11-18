@@ -6,15 +6,21 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-@class HUNetworkConfigurationSettingsItemManager, HUNetworkConfigurationSettingsModuleController;
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@interface HUNetworkConfigurationSettingsViewController : HUItemTableViewController
+@class HUNetworkConfigurationSettingsItemManager, HUNetworkConfigurationSettingsModuleController, NSString;
+
+@interface HUNetworkConfigurationSettingsViewController : HUItemTableViewController <UITextViewDelegate>
 {
     HUNetworkConfigurationSettingsModuleController *_networkConfigurationSettingsModuleController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HUNetworkConfigurationSettingsItemManager *itemManager; // @dynamic itemManager;
 @property (strong, nonatomic) HUNetworkConfigurationSettingsModuleController *networkConfigurationSettingsModuleController; // @synthesize networkConfigurationSettingsModuleController=_networkConfigurationSettingsModuleController;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)buildItemModuleControllerForModule:(id)arg1;
@@ -22,6 +28,7 @@
 - (id)initWithNetworkConfigurationGroupItem:(id)arg1;
 - (void)itemManagerDidFinishUpdate:(id)arg1;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateNetworkConfigurationSettingsModuleFooter;
 
 @end

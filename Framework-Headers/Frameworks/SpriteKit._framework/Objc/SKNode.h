@@ -53,6 +53,7 @@
 @property (weak, nonatomic) GKEntity *entity;
 @property (weak, nonatomic) GKEntity *entity; // @synthesize entity=_entity;
 @property (nonatomic) long long focusBehavior; // @synthesize focusBehavior=_focusBehavior;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) CDStruct_14d5dc5e globalAccumulatedBoundingVerts;

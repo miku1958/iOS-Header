@@ -8,12 +8,14 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223SavedFeedViewController : UIViewController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *userInfo;
+    MISSING_TYPE *toolbarManager;
 }
 
 - (void).cxx_destruct;

@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXGAXElement-Protocol.h>
 
 @class NSObject, NSString;
-@protocol PXAccessibilityView, PXDisplayAsset;
+@protocol PXAnonymousView, PXDisplayAsset;
 
 @protocol PXGAXInfo <PXGAXElement>
 
@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) NSString *axSubtitle;
 @property (readonly, nonatomic) NSString *axText;
 @property (readonly, nonatomic) NSString *axTitle;
-@property (readonly, nonatomic) NSObject<PXAccessibilityView> *axView;
+@property (readonly, nonatomic) NSObject<PXAnonymousView> *axView;
 
 @end
 

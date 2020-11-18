@@ -24,6 +24,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)fingerOff;
 - (void)fingerOn;
+- (void)lockButtonDown;
 - (void)menuButtonDown;
 - (void)menuButtonUp;
 - (void)screenOff;

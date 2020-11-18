@@ -16,9 +16,9 @@
     BOOL _killActivity;
     BOOL _simulateInCallStatusBar;
     SBSStatusBarStyleOverridesAssertion *_inCallStatusBarStyleOverrideAssertion;
-    BOOL _itemIsDisabled[42];
-    BOOL _itemWasDisabled[42];
-    NSCountedSet *_itemDisabledRequests[42];
+    BOOL _itemIsDisabled[43];
+    BOOL _itemWasDisabled[43];
+    NSCountedSet *_itemDisabledRequests[43];
     NSCountedSet *_dataUpdateAnimationsDisabledRequests;
     BOOL _timeEnabled;
     BOOL _statusBarTimeRequiresUpdate;
@@ -36,11 +36,11 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_composePostDataFromAggregatorData:(CDStruct_0942cde0 *)arg1;
+- (void)_composePostDataFromAggregatorData:(CDStruct_3fd7985f *)arg1;
 - (void)_enableTime:(BOOL)arg1 crossfade:(BOOL)arg2 crossfadeDuration:(double)arg3 immediately:(BOOL)arg4;
 - (id)_identifierForStateAggregator:(id)arg1;
 - (void)_removeInCallStatusBarOverrideAssertion;
-- (BOOL)_shouldPostForVisitedItem:(int)arg1 withUpdates:(BOOL)arg2 toAggregatorData:(const CDStruct_0942cde0 *)arg3 lastPost:(const CDStruct_0942cde0 *)arg4;
+- (BOOL)_shouldPostForVisitedItem:(int)arg1 withUpdates:(BOOL)arg2 toAggregatorData:(const CDStruct_3fd7985f *)arg3 lastPost:(const CDStruct_3fd7985f *)arg4;
 - (void)_toggleSimulatesInCallStatusBar;
 - (void)_updateDisabledItems;
 - (void)acquireContentAssertion:(id)arg1;
@@ -61,7 +61,7 @@
 - (void)setTimeCloaked:(BOOL)arg1;
 - (void)statusBarStateAggregatorDidRequestImmediateUpdates:(id)arg1;
 - (void)statusBarStateAggregatorDidStopRequestingImmediateUpdates:(id)arg1;
-- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_0942cde0 *)arg2 withActions:(int)arg3;
+- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_3fd7985f *)arg2 withActions:(int)arg3;
 - (void)stopDisablingDataUpdateAnimationsForRequestor:(id)arg1;
 - (void)updateTimeEnabled;
 - (void)updateTimeEnabledImmediately:(BOOL)arg1;

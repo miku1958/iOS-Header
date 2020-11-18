@@ -26,10 +26,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_primaryText:1;
         unsigned int read_secondaryText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_primaryText:1;
-        unsigned int wrote_secondaryText:1;
-        unsigned int wrote_hideWhenListCollapsed:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,8 +44,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readPrimaryText;
-- (void)_readSecondaryText;
 - (void)_transit_prepareForDeepMergeFrom:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -56,7 +51,10 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

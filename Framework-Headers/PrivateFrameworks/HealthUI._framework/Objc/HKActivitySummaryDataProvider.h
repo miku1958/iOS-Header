@@ -22,8 +22,10 @@
     HKDateCache *_dateCache;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitController;
+    long long _activityMoveMode;
 }
 
+@property (readonly, nonatomic) long long activityMoveMode; // @synthesize activityMoveMode=_activityMoveMode;
 @property (readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -52,6 +54,7 @@
 - (id)_monthActivitySummariesForDateRange:(id)arg1;
 - (void)_partitionAndProcessActivitySummariesForAllTimeScopes:(id)arg1;
 - (id)_predicateForStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3;
+- (id)_predicateForStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3 activityMoveMode:(long long)arg4;
 - (id)_queriesForTimeScope:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_sampleDate:(id)arg1 withinHourBeforeDate:(id)arg2;
 - (void)_setupActivitySummaryChangeObserver;
@@ -67,6 +70,7 @@
 - (void)dateCacheDidUpdate:(id)arg1 onNotification:(id)arg2;
 - (void)dealloc;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4 activityMoveMode:(long long)arg5;
 - (void)removeObserver:(id)arg1;
 
 @end

@@ -20,14 +20,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL lastSuggestionWasColliding;
 @property (readonly) Class superclass;
 
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
 - (void).cxx_destruct;
-- (BOOL)assetHasInterestingScenes:(id)arg1;
-- (id)nextSuggestion;
-- (id)niceAssetsBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
+- (BOOL)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
+- (BOOL)hasInterestingScenesWithAsset:(id)arg1;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)niceAssetsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 matchingAssetUUID:(id)arg3 progress:(CDUnknownBlockType)arg4;
 - (id)reasonsForSuggestion:(id)arg1;
 - (void)reset;
 - (void)startSuggestingWithOptions:(id)arg1;

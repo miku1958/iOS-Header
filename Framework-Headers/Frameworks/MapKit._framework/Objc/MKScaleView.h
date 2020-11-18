@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MKMapView, NSMutableArray, NSMutableDictionary, NSNumberFormatter, NSString, UIColor, _MKScaleUnitsView;
+@class MKMapView, NSMutableArray, NSMutableDictionary, NSNumber, NSNumberFormatter, NSString, UIColor, _MKScaleUnitsView;
 
 @interface MKScaleView : UIView
 {
@@ -34,7 +34,7 @@
     NSString *_kilometersAbbreviation;
     long long _grQuality;
     int _layoutCounter;
-    BOOL _useLightText;
+    NSNumber *_useLightText;
     BOOL _isVisible;
     BOOL _usedInternallyByMapView;
     MKMapView *_mapView;

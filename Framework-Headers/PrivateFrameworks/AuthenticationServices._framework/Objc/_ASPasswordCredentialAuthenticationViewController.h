@@ -6,16 +6,22 @@
 
 #import <AuthenticationServices/_ASExtensionViewController.h>
 
-@class ASPasswordCredentialIdentity;
+#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
+
+@class ASPasswordCredentialIdentity, NSString;
 @protocol _ASPasswordCredentialAuthenticationViewControllerDelegate;
 
-@interface _ASPasswordCredentialAuthenticationViewController : _ASExtensionViewController
+@interface _ASPasswordCredentialAuthenticationViewController : _ASExtensionViewController <_ASCredentialProviderExtensionHostContextDelegate>
 {
     ASPasswordCredentialIdentity *_credentialIdentity;
     id<_ASPasswordCredentialAuthenticationViewControllerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_ASPasswordCredentialAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_finishWithCredential:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;

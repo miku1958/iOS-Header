@@ -11,6 +11,7 @@
 @protocol _PARResult <NSObject>
 
 @property (copy, nonatomic) NSString *adamId;
+@property (copy, nonatomic) NSArray *alternativeURLs;
 @property (copy, nonatomic) NSString *appleReferrer;
 @property (copy, nonatomic) NSString *bundleId;
 @property (copy, nonatomic) NSString *canonicalId;
@@ -26,22 +27,33 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int maxAgeSeconds;
 @property (nonatomic) int minimumRankOfTopHitToSuppressResult;
+@property (nonatomic) BOOL noGoTakeover;
 @property (nonatomic) int placement;
+@property (nonatomic) BOOL preferTopPlatter;
 @property (nonatomic) int queryIndependentEngagementScore;
 @property (nonatomic) BOOL renderHorizontallyWithOtherResultsInCategory;
 @property (nonatomic) float score;
 @property (copy, nonatomic) NSString *sectionBundleId;
+@property (copy, nonatomic) NSDictionary *serverFeatures;
 @property (nonatomic) float serverScore;
+@property (nonatomic) BOOL shouldUseCompactDisplay;
 @property (strong, nonatomic) _PARResult_Template *template;
 @property (nonatomic) int topHit;
 @property (copy, nonatomic) NSString *type;
 @property (copy, nonatomic) NSString *url;
+@property (nonatomic) BOOL usesCompactDisplay;
 
+- (void)addAlternativeURLs:(NSString *)arg1;
 - (void)addEntities:(_PAREntity *)arg1;
+- (NSString *)alternativeURLsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternativeURLsCount;
+- (void)clearAlternativeURLs;
 - (void)clearEntities;
 - (_PAREntity *)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
+- (BOOL)getServerFeatures:(double *)arg1 forKey:(NSString *)arg2;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(NSString *)arg2;
 @end
 

@@ -14,19 +14,25 @@
 @interface SBHomeGestureParticipant : NSObject <BSDescriptionProviding>
 {
     BOOL _ownsHomeGesture;
+    BOOL _canShareOwnershipWithNextParticipant;
     long long _identifier;
     id<SBHomeGestureParticipantDelegate> _delegate;
+    long long _homeAffordanceSuppression;
+    long long _resolvedHomeAffordanceSuppression;
     NSIndexSet *_trumpsAdditionalIdentifiers;
     SBHomeGestureArbiter *_arbiter;
 }
 
 @property (weak, nonatomic) SBHomeGestureArbiter *arbiter; // @synthesize arbiter=_arbiter;
+@property (nonatomic) BOOL canShareOwnershipWithNextParticipant; // @synthesize canShareOwnershipWithNextParticipant=_canShareOwnershipWithNextParticipant;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBHomeGestureParticipantDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long homeAffordanceSuppression; // @synthesize homeAffordanceSuppression=_homeAffordanceSuppression;
 @property (nonatomic) long long identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL ownsHomeGesture; // @synthesize ownsHomeGesture=_ownsHomeGesture;
+@property (nonatomic) long long resolvedHomeAffordanceSuppression; // @synthesize resolvedHomeAffordanceSuppression=_resolvedHomeAffordanceSuppression;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSIndexSet *trumpsAdditionalIdentifiers; // @synthesize trumpsAdditionalIdentifiers=_trumpsAdditionalIdentifiers;
 

@@ -13,5 +13,7 @@
     MISSING_TYPE *heightProvider;
 }
 
+- (double)sectionItemHeightForSize:(struct CGSize)arg1 traitCollection:(id)arg2;
+
 @end
 

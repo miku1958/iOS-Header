@@ -39,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidatePhoto;
+- (void)layoutSubviews;
 - (void)refreshImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setContactOnAvatarViewController:(id)arg1;
 - (void)setPlayer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

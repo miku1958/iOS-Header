@@ -13,7 +13,6 @@
 @interface PHAsset (PVAssetProtocol) <PVAssetProtocol>
 
 @property (readonly, nonatomic) NSString *cloudIdentifier;
-@property (readonly, nonatomic) NSDate *clsDistanceIdentity;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

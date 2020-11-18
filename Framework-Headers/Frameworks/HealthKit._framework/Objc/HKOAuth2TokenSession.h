@@ -15,11 +15,13 @@
 {
     NSString *_code;
     NSString *_query;
+    NSString *_requestedScope;
     NSUUID *_state;
 }
 
 @property (readonly, copy, nonatomic) NSString *code; // @synthesize code=_code;
 @property (readonly, copy, nonatomic) NSString *query; // @synthesize query=_query;
+@property (readonly, copy, nonatomic) NSString *requestedScope; // @synthesize requestedScope=_requestedScope;
 @property (readonly, copy, nonatomic) NSUUID *state; // @synthesize state=_state;
 
 + (BOOL)supportsSecureCoding;
@@ -28,7 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCode:(id)arg1 query:(id)arg2 state:(id)arg3;
+- (id)initWithCode:(id)arg1 query:(id)arg2 requestedScope:(id)arg3 state:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

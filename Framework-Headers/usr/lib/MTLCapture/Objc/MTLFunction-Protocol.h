@@ -16,6 +16,7 @@
 @property (readonly) unsigned long long functionType;
 @property (copy) NSString *label;
 @property (readonly) NSString *name;
+@property (readonly) unsigned long long options;
 @property (readonly) long long patchControlPointCount;
 @property (readonly) unsigned long long patchType;
 @property (readonly) NSArray *stageInputAttributes;

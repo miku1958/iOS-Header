@@ -14,6 +14,9 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _filtered;
     WLKChannelsResponse *_cachedResponse;
+    int _shouldRefreshNotificationToken;
+    BOOL _shouldRefresh;
+    struct os_unfair_lock_s _shouldRefreshLock;
     NSError *_error;
     NSDictionary *_channelsByBundleID;
 }
@@ -34,8 +37,10 @@
 - (id)channelForBundleID:(id)arg1;
 - (id)channelForID:(id)arg1;
 - (id)channelIDForBundleID:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initFiltered:(BOOL)arg1;
+- (void)invalidateCache;
 - (BOOL)isItunesOrFirstPartyBundleID:(id)arg1;
 - (void)loadIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 

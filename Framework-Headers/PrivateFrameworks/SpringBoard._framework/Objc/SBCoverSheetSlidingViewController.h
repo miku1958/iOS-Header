@@ -16,6 +16,7 @@
 {
     long long _dismissGestureState;
     BOOL _roundsCorners;
+    BOOL _indirectPresentGestureCalledBegin;
     BOOL _canBePulledDown;
     BOOL _canBePulledUp;
     BOOL _performingCatchUpForPresentation;
@@ -60,6 +61,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
 @property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectDismissGestureRecognizer; // @synthesize indirectDismissGestureRecognizer=_indirectDismissGestureRecognizer;
+@property (nonatomic) BOOL indirectPresentGestureCalledBegin; // @synthesize indirectPresentGestureCalledBegin=_indirectPresentGestureCalledBegin;
 @property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectPresentGestureRecognizer; // @synthesize indirectPresentGestureRecognizer=_indirectPresentGestureRecognizer;
 @property (nonatomic) double initialTouchOffsetFromScreenEdge; // @synthesize initialTouchOffsetFromScreenEdge=_initialTouchOffsetFromScreenEdge;
 @property (nonatomic) struct CGPoint lastTouchLocation; // @synthesize lastTouchLocation=_lastTouchLocation;
@@ -92,6 +94,7 @@
 - (void)_finishTransitionToPresented:(BOOL)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_grabberRecognizer;
 - (void)_handleDismissGesture:(id)arg1;
+- (void)_handleIndirectPresentGesture:(id)arg1;
 - (void)_handlePresentGesture:(id)arg1;
 - (BOOL)_isPresentingInterstitialForGestureRecognizer:(id)arg1;
 - (BOOL)_isTransitioning;

@@ -11,11 +11,12 @@
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
 @class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
-@interface HUItemTableViewController : HUTableViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
+@interface HUItemTableViewController : HUTableViewController <HFExecutionEnvironmentObserver, UITextViewDelegate, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     BOOL _wantsPreferredContentSize;
     BOOL _viewHasAppeared;
@@ -68,6 +69,7 @@
 - (BOOL)_shouldHideFooterForSection:(long long)arg1;
 - (BOOL)_shouldHideHeaderForSection:(long long)arg1;
 - (void)_transformViewControllerForRequest:(id)arg1;
+- (void)_updateHeadersAndFootersIfNeededAfterPerformingRequest:(id)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
 - (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateTableHeaderAndFooter;
@@ -87,7 +89,6 @@
 - (id)hu_preloadContent;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithStyle:(long long)arg1;
-- (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didInsertItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didInsertSections:(id)arg2;
@@ -106,6 +107,8 @@
 - (id)itemTableFooterView;
 - (id)itemTableHeaderMessage;
 - (id)itemTableHeaderView;
+- (id)leadingSwipeActionsForItem:(id)arg1;
+- (Class)mappableCellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;
@@ -127,10 +130,12 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -143,6 +148,7 @@
 - (id)textFieldForVisibleItem:(id)arg1;
 - (BOOL)textFieldShouldClear:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (id)trailingSwipeActionsForItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

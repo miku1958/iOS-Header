@@ -10,7 +10,6 @@
 
 @interface PKAccountBillPaymentAmountContainerView : UIView
 {
-    unsigned long long _screenType;
     BOOL _showAmount;
     PKEnterCurrencyAmountView *_enterCurrencyAmountView;
 }

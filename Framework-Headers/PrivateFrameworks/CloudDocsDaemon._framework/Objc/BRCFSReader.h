@@ -11,7 +11,7 @@
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCAsyncDirectoryEnumerator, BRCCountedSet, BRCFairSource, NSMutableSet, NSObject, NSString, brc_task_tracker;
-@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_group, OS_dispatch_source;
 
 @interface BRCFSReader : BRCFSSchedulerBase <BRCModule, BRCSuspendable, BRCFSEventsDelegate>
 {
@@ -19,7 +19,6 @@
     BOOL _readerCountReachedMax;
     BRCAsyncDirectoryEnumerator *_currentScan;
     NSMutableSet *_lostSet;
-    NSObject<OS_dispatch_queue> *_lostScanQueue;
     BRCFairSource *_lostScanSource;
     NSObject<OS_dispatch_source> *_lostScanDelay;
     unsigned long long _lostScanDelaySection;
@@ -33,7 +32,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCancelled;
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *lostScanGroup; // @synthesize lostScanGroup=_lostScanGroup;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) brc_task_tracker *taskTracker; // @synthesize taskTracker=_taskTracker;
 

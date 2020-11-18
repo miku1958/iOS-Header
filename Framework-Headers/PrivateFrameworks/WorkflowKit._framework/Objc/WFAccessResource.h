@@ -6,12 +6,12 @@
 
 #import <WorkflowKit/WFResource.h>
 
-#import <WorkflowKit/WFWorkflowReferencingResource-Protocol.h>
+#import <WorkflowKit/WFWorkflowReferencing-Protocol.h>
 
 @class NSDictionary, NSError, NSString, WFDatabase, WFImage, WFWorkflow;
 @protocol NSObject, WFAccessResourcePerWorkflowState;
 
-@interface WFAccessResource : WFResource <WFWorkflowReferencingResource>
+@interface WFAccessResource : WFResource <WFWorkflowReferencing>
 {
     WFWorkflow *_workflow;
     id<WFAccessResourcePerWorkflowState> _currentPerWorkflowState;

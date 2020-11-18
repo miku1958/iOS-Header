@@ -7,24 +7,21 @@
 #import <NanoTimeKitCompanion/NTKTimelineComplicationController.h>
 
 #import <NanoTimeKitCompanion/CLKCComplicationDataSourceDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKComplicationTimelineDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
+#import <NanoTimeKitCompanion/TLTimelineDelegate-Protocol.h>
 
-@class CLKCComplicationDataSource, CLKComplicationTemplate, NSDate, NSMutableSet, NSString, NTKComplicationTimeline, NTKTimelineDataOperation;
+@class CLKCComplicationDataSource, CLKComplicationTemplate, NSDate, NSMutableSet, NSString, NTKTimelineDataOperation, TLTimeline;
 
-@interface NTKLocalTimelineComplicationController : NTKTimelineComplicationController <CLKCComplicationDataSourceDelegate, NTKComplicationTimelineDelegate, NTKTimeTravel>
+@interface NTKLocalTimelineComplicationController : NTKTimelineComplicationController <CLKCComplicationDataSourceDelegate, TLTimelineDelegate, NTKTimeTravel>
 {
     CLKCComplicationDataSource *_dataSource;
     NSDate *_timeTravelDate;
     BOOL _supportsTimeTravelForward;
-    BOOL _supportsTimeTravelBackward;
-    NSDate *_timelineStartDate;
     NSDate *_timelineEndDate;
     BOOL _hasQueuedAnimation;
     unsigned long long _queuedAnimation;
-    NTKComplicationTimeline *_timeline;
+    TLTimeline *_timeline;
     NTKTimelineDataOperation *_currentOperation;
-    NSMutableSet *_suspendedLeftBoundaryDates;
     NSMutableSet *_suspendedRightBoundaryDates;
     NSMutableSet *_delayedBlocks;
     CLKComplicationTemplate *_switcherTemplate;
@@ -35,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) CLKComplicationTemplate *sharingTemplate;
 @property (readonly) Class superclass;
 
 + (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
@@ -45,25 +43,21 @@
 - (void)_applyCachingMode;
 - (void)_applyUpdatingMode;
 - (void)_cancelDelayedBlocks;
-- (void)_completeExtendLeftOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
 - (void)_completeExtendRightOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
-- (void)_completeSetupOperationWithDirections:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 currentEntry:(id)arg4 priority:(long long)arg5;
+- (void)_completeSetupOperationWithEndDate:(id)arg1 currentEntry:(id)arg2;
 - (id)_currentEntry;
 - (void)_deactivate;
 - (void)_extendTimelineIfNecessaryAndPossible;
 - (void)_queueAnimationForNextUpdate:(unsigned long long)arg1;
 - (void)_requestDataSourceToUpdateToState:(long long)arg1;
 - (void)_resetTimelineForCachingChange;
-- (void)_startExtendLeftOperationFromDate:(id)arg1;
-- (void)_startExtendOperationIfNecessaryForWindow:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
+- (void)_startExtendOperationIfNecessaryForTimeline:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
 - (void)_startExtendRightOperationFromDate:(id)arg1;
-- (void)_startSetupOperationIfPossibleWithPriority:(long long)arg1;
-- (void)_suspendLeftBoundaryDate:(id)arg1;
+- (void)_startSetupOperationIfPossible;
 - (void)_suspendRightBoundaryDate:(id)arg1;
 - (void)_updateCurrentTemplateWithReason:(long long)arg1;
 - (void)_updateDimStateForCurrentTimeline;
 - (void)_updateIsComplicationActive:(BOOL)arg1;
-- (void)_updateTimeTravelBoundaries;
 - (id)activeDisplayTemplate;
 - (void)addDisplayWrapper:(id)arg1;
 - (id)alwaysOnTemplate;
@@ -72,24 +66,23 @@
 - (id)complicationApplicationIdentifier;
 - (void)didTouchDownInView:(id)arg1;
 - (void)didTouchUpInsideView:(id)arg1;
-- (void)entriesDidChangeInTimeline:(id)arg1 withTritiumUpdatePriority:(long long)arg2;
+- (void)entriesDidChangeInTimeline:(id)arg1;
 - (BOOL)hasTapAction;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 face:(id)arg3 slot:(id)arg4;
 - (void)invalidateEntries;
 - (void)invalidateEntriesWithTritiumUpdatePriority:(long long)arg1;
 - (void)invalidateSwitcherTemplate;
 - (id)lockedTemplate;
 - (double)minimumIntervalBetweenTimelineEntries;
-- (void)nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)performTapAction;
 - (Class)richComplicationDisplayViewClass;
 - (void)setCurrentTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (void)setDataMode:(long long)arg1 forDisplayWrapper:(id)arg2;
+- (void)setIgnoreNewTemplates:(BOOL)arg1;
 - (void)setShowsLockedUI:(BOOL)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 - (void)setTimelineEndDate:(id)arg1;
-- (void)setTimelineStartDate:(id)arg1;
-- (void)timeTravelEntryDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)timeline:(id)arg1 didChangeNowEntryFrom:(id)arg2 to:(id)arg3;
 
 @end
 

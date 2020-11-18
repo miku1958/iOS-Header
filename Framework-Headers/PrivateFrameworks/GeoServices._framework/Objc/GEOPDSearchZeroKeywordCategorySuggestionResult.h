@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_categorys:1;
         unsigned int read_zeroKeywordEntrys:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_categorys:1;
-        unsigned int wrote_zeroKeywordEntrys:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,10 +36,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)zeroKeywordEntryType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsCategory:(id)arg1;
-- (void)_addNoFlagsZeroKeywordEntry:(id)arg1;
-- (void)_readCategorys;
-- (void)_readZeroKeywordEntrys;
 - (void)addCategory:(id)arg1;
 - (void)addZeroKeywordEntry:(id)arg1;
 - (id)categoryAtIndex:(unsigned long long)arg1;
@@ -56,7 +50,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

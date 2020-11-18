@@ -15,13 +15,8 @@
     NSMutableSet *_alertItems;
 }
 
-@property (readonly, nonatomic) NSMutableSet *alertItems; // @synthesize alertItems=_alertItems;
-@property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (readonly, nonatomic) NSMutableSet *foregroundScenes; // @synthesize foregroundScenes=_foregroundScenes;
-
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithBundleID:(id)arg1;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <IMFoundation/IMUserDefaults.h>
 
 @interface IMUserDefaults (IDSFoundationUserDefaults)
-+ (BOOL)inIDSPrototypeMode;
+- (BOOL)clearStateOnLaunch;
+- (void)setClearStateOnLaunch:(BOOL)arg1;
 @end
 

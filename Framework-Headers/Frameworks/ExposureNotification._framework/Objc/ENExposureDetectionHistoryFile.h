@@ -8,12 +8,13 @@
 
 #import <ExposureNotification/CUXPCCodable-Protocol.h>
 
-@class ENRegion, NSData, NSDate, NSNumber, NSString;
+@class ENRegion, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface ENExposureDetectionHistoryFile : NSObject <CUXPCCodable>
 {
     NSData *_fileHash;
     NSDate *_processDate;
+    NSDictionary *_metadata;
     NSNumber *_keyCount;
     NSNumber *_matchCount;
     NSString *_sourceAppBundleIdentifier;
@@ -23,6 +24,7 @@
 @property (copy, nonatomic) NSData *fileHash; // @synthesize fileHash=_fileHash;
 @property (copy, nonatomic) NSNumber *keyCount; // @synthesize keyCount=_keyCount;
 @property (copy, nonatomic) NSNumber *matchCount; // @synthesize matchCount=_matchCount;
+@property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (copy, nonatomic) NSDate *processDate; // @synthesize processDate=_processDate;
 @property (copy, nonatomic) NSString *sourceAppBundleIdentifier; // @synthesize sourceAppBundleIdentifier=_sourceAppBundleIdentifier;
 @property (copy, nonatomic) ENRegion *sourceRegion; // @synthesize sourceRegion=_sourceRegion;

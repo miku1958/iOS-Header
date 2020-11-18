@@ -42,6 +42,7 @@
 + (id)behaviorForProvider:(id)arg1;
 - (void)addRestrictedCapabilities:(unsigned long long)arg1;
 - (BOOL)areRestrictedCapabilities:(unsigned long long)arg1;
+- (void)conformsToCSBehaviorProviding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

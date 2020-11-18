@@ -22,8 +22,10 @@
 - (void).cxx_destruct;
 - (id)_formattedListForSelectedUsers:(id)arg1 inHome:(id)arg2;
 - (id)initWithHome:(id)arg1;
+- (id)initWithOptions:(id)arg1;
 - (id)stringForPresenceEvent:(id)arg1;
 - (id)stringForPresenceEventBuilder:(id)arg1;
+- (id)stringForPresenceEventBuilder:(id)arg1 actionsDescription:(id)arg2;
 
 @end
 

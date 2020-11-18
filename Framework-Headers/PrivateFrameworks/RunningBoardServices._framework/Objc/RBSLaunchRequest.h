@@ -6,12 +6,12 @@
 
 #import <RunningBoardServices/RBSRequest.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSLaunchContext;
 
-@interface RBSLaunchRequest : RBSRequest <BSXPCSecureCoding, NSCopying>
+@interface RBSLaunchRequest : RBSRequest <RBSXPCSecureCoding, NSCopying>
 {
     RBSLaunchContext *_context;
 }
@@ -22,15 +22,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (BOOL)execute:(out id *)arg1;
 - (BOOL)execute:(out id *)arg1 assertion:(out id *)arg2 error:(out id *)arg3;
 - (BOOL)execute:(out id *)arg1 error:(out id *)arg2;
-- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithContext:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

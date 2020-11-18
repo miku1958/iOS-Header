@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class CKDOperation, CKUploadRequestConfiguration, NSArray, NSDictionary, NSMutableDictionary, NSSet;
+@protocol CKRepairAssetsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDRepairAssetsOperation : CKDDatabaseOperation
@@ -29,7 +30,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *assetOrPackageUUIDToMetadata; // @synthesize assetOrPackageUUIDToMetadata=_assetOrPackageUUIDToMetadata;
 @property (strong, nonatomic) NSMutableDictionary *assetOrPackageUUIDToOriginalRecord; // @synthesize assetOrPackageUUIDToOriginalRecord=_assetOrPackageUUIDToOriginalRecord;
 @property (strong, nonatomic) NSDictionary *assetOrPackageUUIDToUploadError; // @synthesize assetOrPackageUUIDToUploadError=_assetOrPackageUUIDToUploadError;
+@property (strong, nonatomic) id<CKRepairAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) CKDOperation *fetchOperation; // @synthesize fetchOperation=_fetchOperation;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (strong, nonatomic) NSArray *unavailableAssetsAndPackages; // @synthesize unavailableAssetsAndPackages=_unavailableAssetsAndPackages;
 @property (strong, nonatomic) CKDOperation *updateOperation; // @synthesize updateOperation=_updateOperation;
 @property (strong, nonatomic) CKDOperation *uploadOperation; // @synthesize uploadOperation=_uploadOperation;

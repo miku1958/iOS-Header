@@ -13,6 +13,7 @@
 
 @interface SearchUILeadingViewController : NSObject <SearchUIDetailedRowComponent>
 {
+    BOOL _usesCompactWidth;
     SearchUIDetailedRowModel *rowModel;
     id<SearchUIFeedbackDelegate> feedbackDelegate;
     UIView *_view;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long type;
+@property (nonatomic) BOOL usesCompactWidth; // @synthesize usesCompactWidth=_usesCompactWidth;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
 + (Class)leadingViewClassForRowModel:(id)arg1;

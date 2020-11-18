@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL _hidesSearchBarWhenScrolling;
     _UINavigationBarModernPromptView *_promptView;
     _UINavigationBarContentView *_contentView;
+    UIView *_animationContentClippingView;
     _UINavigationBarLargeTitleView *_largeTitleView;
     _UINavigationBarContentViewLayout *_contentViewLayout;
     _UINavigationBarLargeTitleViewLayout *_largeTitleViewLayout;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
     struct NSDirectionalEdgeInsets _largeTitleViewInsets;
 }
 
+@property (strong, nonatomic) UIView *animationContentClippingView; // @synthesize animationContentClippingView=_animationContentClippingView;
 @property (nonatomic) long long apiVersion; // @synthesize apiVersion=_apiVersion;
 @property (nonatomic) BOOL backgroundCoversContentOnly; // @synthesize backgroundCoversContentOnly=_backgroundCoversContentOnly;
 @property (nonatomic) double backgroundExtension; // @synthesize backgroundExtension=_backgroundExtension;
@@ -96,6 +98,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIBarBackgroundLayout *standardBackgroundViewLayout; // @synthesize standardBackgroundViewLayout=_standardBackgroundViewLayout;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useManualScrollEdgeAppearance; // @synthesize useManualScrollEdgeAppearance=_useManualScrollEdgeAppearance;
+@property (readonly, nonatomic, getter=isVariableHeight) BOOL variableHeight;
 @property (strong, nonatomic) UILabel *weeTitleLabel; // @synthesize weeTitleLabel=_weeTitleLabel;
 @property (readonly, nonatomic) struct CGRect weeTitleLabelLayoutFrame;
 

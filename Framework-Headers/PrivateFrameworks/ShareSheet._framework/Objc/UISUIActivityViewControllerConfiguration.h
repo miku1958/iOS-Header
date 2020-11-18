@@ -22,6 +22,7 @@
     BOOL _canShowShareSheetPlugIns;
     BOOL _whitelistActionActivitiesOnly;
     BOOL _linkedBeforeYukon;
+    BOOL _canSaveImages;
     BOOL __unitTest_disableExcludingSourceApplicationFromOpenActivities;
     double _preferredWidth;
     NSArray *_hostActivityConfigurations;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSArray *activityTypesToCreateInShareService; // @synthesize activityTypesToCreateInShareService=_activityTypesToCreateInShareService;
 @property (nonatomic) BOOL allowsEmbedding; // @synthesize allowsEmbedding=_allowsEmbedding;
 @property (nonatomic) BOOL canExcludeExtensionActivities; // @synthesize canExcludeExtensionActivities=_canExcludeExtensionActivities;
+@property (nonatomic) BOOL canSaveImages; // @synthesize canSaveImages=_canSaveImages;
 @property (nonatomic) BOOL canShowShareSheetPlugIns; // @synthesize canShowShareSheetPlugIns=_canShowShareSheetPlugIns;
 @property (nonatomic) long long excludedActivityCategories; // @synthesize excludedActivityCategories=_excludedActivityCategories;
 @property (strong, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;

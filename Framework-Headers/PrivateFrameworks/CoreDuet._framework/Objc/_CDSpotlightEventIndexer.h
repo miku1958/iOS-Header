@@ -16,19 +16,11 @@
 }
 
 @property (strong, nonatomic) _CDEventIndexerContext *context; // @synthesize context=_context;
-@property (readonly, nonatomic) _CDSpotlightEventIndexerDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property (readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
 @property (readonly, nonatomic, getter=isIndexing) BOOL indexing;
 
-+ (id)keyPathsForValuesAffectingIndexing;
 - (void).cxx_destruct;
-- (void)_beginIndexingFromLatestSpotlightClientState;
 - (void)beginIndexingWithBatchSize:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)finishIndexing;
-- (void)indexAdditionsAsBatch;
-- (void)indexDeletionsAsBatch;
 - (id)initWithDataSource:(id)arg1;
-- (void)resetIndex;
 
 @end
 

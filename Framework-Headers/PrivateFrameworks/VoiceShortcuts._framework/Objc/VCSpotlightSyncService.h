@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <VoiceShortcuts/VCSpotlightSyncOperationDelegate-Protocol.h>
-#import <VoiceShortcuts/WFDatabaseResultObserver-Protocol.h>
+#import <VoiceShortcuts/WFDatabaseObjectObserver-Protocol.h>
 
-@class CSSearchableIndex, NSString, VCSpotlightSyncOperation, WFDatabaseResult, WFDebouncer;
+@class CSSearchableIndex, NSString, VCDaemonXPCEventHandler, VCSpotlightSyncOperation, WFDatabaseResult, WFDebouncer;
 @protocol OS_dispatch_queue, VCDatabaseProvider;
 
-@interface VCSpotlightSyncService : NSObject <WFDatabaseResultObserver, VCSpotlightSyncOperationDelegate>
+@interface VCSpotlightSyncService : NSObject <WFDatabaseObjectObserver, VCSpotlightSyncOperationDelegate>
 {
     BOOL _isFetchingClientState;
+    BOOL _hasAddedXPCEventHandlerObserver;
     WFDatabaseResult *_workflows;
     WFDebouncer *_debouncer;
+    VCDaemonXPCEventHandler *_eventHandler;
     VCSpotlightSyncOperation *_syncOperation;
     id<VCDatabaseProvider> _databaseProvider;
     CSSearchableIndex *_index;
@@ -27,6 +29,8 @@
 @property (readonly, nonatomic) WFDebouncer *debouncer; // @synthesize debouncer=_debouncer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
+@property (nonatomic) BOOL hasAddedXPCEventHandlerObserver; // @synthesize hasAddedXPCEventHandlerObserver=_hasAddedXPCEventHandlerObserver;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
 @property (nonatomic) BOOL isFetchingClientState; // @synthesize isFetchingClientState=_isFetchingClientState;
@@ -36,11 +40,14 @@
 @property (readonly, nonatomic) WFDatabaseResult *workflows; // @synthesize workflows=_workflows;
 
 - (void).cxx_destruct;
-- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
-- (id)initWithDatabaseProvider:(id)arg1;
+- (void)databaseDidChange:(id)arg1 modified:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (void)dealloc;
+- (id)initWithDatabaseProvider:(id)arg1 eventHandler:(id)arg2;
 - (void)requestSync;
+- (void)start;
 - (void)sync;
 - (void)syncOperationFinishedWithRequestToRelaunch:(BOOL)arg1;
+- (void)syncWithModifiedObjects:(id)arg1 inserted:(id)arg2 removed:(id)arg3;
 
 @end
 

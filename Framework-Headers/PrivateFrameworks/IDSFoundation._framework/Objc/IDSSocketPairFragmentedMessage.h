@@ -20,6 +20,7 @@
 }
 
 @property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL didWakeHint;
 @property (readonly, nonatomic) BOOL expectsPeerResponse;
 @property (strong, nonatomic) NSDate *expiryDate;
 @property (readonly, nonatomic) unsigned int fragmentIndex; // @synthesize fragmentIndex=_fragmentIndex;

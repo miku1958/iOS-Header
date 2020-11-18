@@ -40,11 +40,18 @@
 @property (readonly) Class superclass;
 
 + (id)connectionSettingsForServiceType:(long long)arg1;
++ (id)createSessionRequest;
 + (void)initialize;
 + (BOOL)isRetriableErrorCode:(long long)arg1;
++ (id)loadPlansRequestWithUrl:(id)arg1 postData:(id)arg2;
++ (id)newInitiatePurchaseWithSessionId:(id)arg1 planId:(id)arg2;
++ (id)newPurchaseWithSessionId:(id)arg1 receipt:(id)arg2 userId:(id)arg3 userName:(id)arg4;
++ (id)plansRequestWithSignIdMap:(id)arg1 renewalIccid:(id)arg2 urls:(id)arg3;
++ (id)requestHandoffTokenWithSignIdMap:(id)arg1 urls:(id)arg2;
 + (void)setBootstrapConnectionSettings:(id)arg1;
 + (void)setInternetConnectionSettings:(id)arg1;
 + (void)setRequestUrls:(id)arg1;
++ (id)subscriptionDetailsRequestWithIccids:(id)arg1 signIdMap:(id)arg2 urls:(id)arg3;
 - (void)_callback;
 - (BOOL)_canTryAnotherConnectionType;
 - (id)_connectionSettingsForNextConnectionType;

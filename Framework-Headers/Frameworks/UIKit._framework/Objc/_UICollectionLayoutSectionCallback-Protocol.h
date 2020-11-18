@@ -6,9 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UICollectionViewLayoutAttributes;
+@class NSIndexPath, UICollectionViewLayoutAttributes, UICollectionViewLayoutInvalidationContext;
+@protocol _UICollectionViewLayoutInteractionStateProviding;
 
 @protocol _UICollectionLayoutSectionCallback <NSObject>
-- (void)_enrichLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1;
+- (void)_enrichLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id<_UICollectionViewLayoutInteractionStateProviding>)arg2;
+- (void)_enrichPreferredLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id<_UICollectionViewLayoutInteractionStateProviding>)arg2;
+- (UICollectionViewLayoutInvalidationContext *)_invalidationContextForBackgroundChangeAtIndexPath:(NSIndexPath *)arg1 interactionState:(id<_UICollectionViewLayoutInteractionStateProviding>)arg2;
 @end
 

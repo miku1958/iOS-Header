@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithSize:(struct CGSize)arg1;
+- (id)initWithSquarePoints:(id)arg1;
 - (id)initWithSquareSize:(double)arg1;
 
 @end

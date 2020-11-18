@@ -15,6 +15,7 @@
 @property (strong) HMBModelCloudReference *associatedClip; // @dynamic associatedClip;
 @property (strong) NSNumber *confidenceLevel; // @dynamic confidenceLevel;
 @property (strong) NSDate *dateOfOccurrence; // @dynamic dateOfOccurrence;
+@property (strong) CKAsset *faceCropAsset; // @dynamic faceCropAsset;
 @property (strong) CKAsset *heroFrameAsset; // @dynamic heroFrameAsset;
 @property (strong) NSDictionary *homePresenceByPairingIdentity; // @dynamic homePresenceByPairingIdentity;
 @property (strong) NSNumber *significantEvent; // @dynamic significantEvent;
@@ -22,7 +23,9 @@
 
 + (id)hmbExternalRecordType;
 + (id)hmbProperties;
-- (id)createSignificantEvent;
++ (id)hmbQueries;
++ (id)significantEventsBetweenDatesQueryWithIsAscending:(BOOL)arg1;
+- (id)createClipSignificantEventWithCameraProfileUUID:(id)arg1 faceClassification:(id)arg2;
 
 @end
 

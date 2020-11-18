@@ -10,6 +10,7 @@
 
 @class NSDictionary, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MPStorePlayWhileDownloadSession : NSObject <NSCopying>
 {
     NSURL *_destinationURL;

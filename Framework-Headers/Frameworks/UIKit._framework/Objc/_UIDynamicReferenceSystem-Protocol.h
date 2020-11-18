@@ -9,7 +9,9 @@
 @class UIView;
 
 @protocol _UIDynamicReferenceSystem <NSObject>
-- (struct CGRect)bounds;
+
+@property (readonly, nonatomic) struct CGRect bounds;
+
 
 @optional
 - (struct CGRect)_dynamicReferenceBounds;

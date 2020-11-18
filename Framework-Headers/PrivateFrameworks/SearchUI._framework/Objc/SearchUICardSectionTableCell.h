@@ -16,7 +16,10 @@
 @property (strong, nonatomic) SearchUICardSectionView *sizingContainer; // @dynamic sizingContainer;
 
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+- (id)leadingTextView;
+- (id)leadingView;
 - (void)setDelegate:(id)arg1;
+- (void)tabKeyPressed;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;
 

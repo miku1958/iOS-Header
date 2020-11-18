@@ -63,6 +63,7 @@
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
+- (void)setShouldShowUnsnapshotableContent:(BOOL)arg1;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;
 
 @end

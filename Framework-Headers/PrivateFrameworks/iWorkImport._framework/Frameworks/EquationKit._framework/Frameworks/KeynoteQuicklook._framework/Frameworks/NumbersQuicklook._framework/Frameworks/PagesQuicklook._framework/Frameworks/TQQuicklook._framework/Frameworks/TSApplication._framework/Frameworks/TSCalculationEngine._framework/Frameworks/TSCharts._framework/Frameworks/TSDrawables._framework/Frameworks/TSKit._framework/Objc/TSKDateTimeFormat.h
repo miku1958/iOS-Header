@@ -22,7 +22,7 @@
 - (id)asDateTimeFormat;
 - (unsigned long long)hash;
 - (id)initWithFormatString:(id)arg1;
-- (id)initWithFormatType:(int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1;
 - (id)initWithLocale:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringFromDate:(id)arg1 locale:(id)arg2;

@@ -14,6 +14,7 @@
     BOOL _shouldGenerateMedicalID;
     BOOL _shouldEnsureRecentWorkoutHasRoute;
     BOOL _shouldGenerateRecentLiquidsIntake;
+    BOOL _shouldGenerateLoudHeadphoneData;
     long long _profileType;
     long long _generationPeriodInDays;
     long long _biologicalSex;
@@ -31,6 +32,7 @@
 @property (nonatomic) long long sampleTrackingType; // @synthesize sampleTrackingType=_sampleTrackingType;
 @property (nonatomic) BOOL shouldEnsureRecentWorkoutHasRoute; // @synthesize shouldEnsureRecentWorkoutHasRoute=_shouldEnsureRecentWorkoutHasRoute;
 @property (nonatomic) BOOL shouldGenerateHealthDocuments; // @synthesize shouldGenerateHealthDocuments=_shouldGenerateHealthDocuments;
+@property (nonatomic) BOOL shouldGenerateLoudHeadphoneData; // @synthesize shouldGenerateLoudHeadphoneData=_shouldGenerateLoudHeadphoneData;
 @property (nonatomic) BOOL shouldGenerateMedicalID; // @synthesize shouldGenerateMedicalID=_shouldGenerateMedicalID;
 @property (nonatomic) BOOL shouldGenerateRecentLiquidsIntake; // @synthesize shouldGenerateRecentLiquidsIntake=_shouldGenerateRecentLiquidsIntake;
 @property (nonatomic) BOOL shouldPresentNotifications; // @synthesize shouldPresentNotifications=_shouldPresentNotifications;

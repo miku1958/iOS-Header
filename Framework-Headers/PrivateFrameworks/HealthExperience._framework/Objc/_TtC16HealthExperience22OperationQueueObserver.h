@@ -15,5 +15,7 @@
     MISSING_TYPE *currentOperations;
 }
 
+- (void)debuggingInfoRequestedWithNote:(id)arg1;
+
 @end
 

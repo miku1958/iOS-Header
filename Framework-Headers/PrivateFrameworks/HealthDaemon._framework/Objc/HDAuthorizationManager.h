@@ -55,6 +55,8 @@
 - (void)_queue_resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_resetAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (void)_queue_setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_reportAuthorizationChangeForBundleIdentifier:(id)arg1;
+- (void)_updateSourceOrderWithAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)_validateRequiredAuthorizationWithRequestGroup:(id)arg1;
 - (void)applicationsUninstalledNotification:(id)arg1;
 - (long long)authorizationRequestStatusForClientBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 error:(id *)arg4;
@@ -73,6 +75,7 @@
 - (void)requestRemoteAuthorizationForRequestRecord:(id)arg1 requestSentHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)verifyProfileAuthorizationForClient:(id)arg1 error:(id *)arg2;
 
 @end
 

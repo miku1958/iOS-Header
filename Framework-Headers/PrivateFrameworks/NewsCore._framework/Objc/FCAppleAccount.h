@@ -35,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 @property (readonly, nonatomic) BOOL isContentStoreFrontSupported;
+@property (readonly, nonatomic) BOOL isSignedInStoreFrontSupported;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (copy, nonatomic) NSString *overrideContentStoreFrontID; // @synthesize overrideContentStoreFrontID=_overrideContentStoreFrontID;
 @property (strong) ACAccount *primaryAccount; // @synthesize primaryAccount=_primaryAccount;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled;
 @property (getter=isRunningPPT) BOOL runningPPT; // @synthesize runningPPT=_runningPPT;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long supportedContentLanguage;
 @property (readonly, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic) NSArray *supportedLanguageCodes;
 @property (readonly, nonatomic, getter=isUserSignedInToiCloud) BOOL userSignedInToiCloud;

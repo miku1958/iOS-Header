@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CPLEngineLibrary, CPLSyncSession, NSString;
+@class CPLEngineLibrary, CPLSyncSession, NSDate, NSString;
 @protocol CPLEngineSyncTaskDelegate, NSCoding;
 
 @interface CPLEngineSyncTask : NSObject
 {
+    struct os_unfair_lock_s _phaseDescriptionLock;
+    NSDate *_lastChangeDateForPhaseDescription;
     BOOL _foreground;
     BOOL _forceSync;
     BOOL _cancelled;
+    NSString *_phaseDescription;
     id<CPLEngineSyncTaskDelegate> _delegate;
     CPLEngineLibrary *_engineLibrary;
     CPLSyncSession *_session;
     id<NSCoding> _transportUserIdentifier;
-    NSString *_phaseDescription;
 }
 
 @property (getter=isCancelled, setter=_setCancelled:) BOOL cancelled; // @synthesize cancelled=_cancelled;
@@ -26,7 +28,7 @@
 @property (readonly, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property (nonatomic) BOOL forceSync; // @synthesize forceSync=_forceSync;
 @property (nonatomic) BOOL foreground; // @synthesize foreground=_foreground;
-@property (readonly) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
+@property (copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 @property (readonly, nonatomic) CPLSyncSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) NSString *taskIdentifier;
 @property (strong, nonatomic) id<NSCoding> transportUserIdentifier; // @synthesize transportUserIdentifier=_transportUserIdentifier;
@@ -38,6 +40,8 @@
 - (unsigned long long)diskPressureState;
 - (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (void)launch;
+- (void)launchTransportTask:(id)arg1 withTransportGroup:(id)arg2;
+- (id)phaseDescriptionLastChangeDate:(id *)arg1;
 - (void)taskDidFinishWithError:(id)arg1;
 - (void)taskDidProgress:(float)arg1 userInfo:(id)arg2;
 

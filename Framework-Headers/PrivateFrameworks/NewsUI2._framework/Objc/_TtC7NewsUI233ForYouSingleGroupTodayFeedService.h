@@ -11,10 +11,8 @@
 @interface _TtC7NewsUI233ForYouSingleGroupTodayFeedService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *group;
-    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidBundleConfigManager;
-    MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *feedContextFactory;
 }
 
 @end

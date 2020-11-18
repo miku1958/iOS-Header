@@ -28,9 +28,13 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _requestTransactionType;
+    BOOL _isAppleCard;
     struct {
         unsigned int has_merchantIndustryCode:1;
         unsigned int has_transactionTime:1;
+        unsigned int has_requestTransactionType:1;
+        unsigned int has_isAppleCard:1;
         unsigned int read_correlationId:1;
         unsigned int read_merchantAdamId:1;
         unsigned int read_merchantFormattedAddress:1;
@@ -41,23 +45,13 @@
         unsigned int read_merchantUrl:1;
         unsigned int read_transactionLocation:1;
         unsigned int read_transactionType:1;
-        unsigned int wrote_correlationId:1;
-        unsigned int wrote_merchantAdamId:1;
-        unsigned int wrote_merchantFormattedAddress:1;
-        unsigned int wrote_merchantId:1;
-        unsigned int wrote_merchantIndustryCategory:1;
-        unsigned int wrote_merchantIndustryCode:1;
-        unsigned int wrote_merchantName:1;
-        unsigned int wrote_merchantRawName:1;
-        unsigned int wrote_merchantUrl:1;
-        unsigned int wrote_transactionLocation:1;
-        unsigned int wrote_transactionTime:1;
-        unsigned int wrote_transactionType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) NSString *correlationId;
 @property (readonly, nonatomic) BOOL hasCorrelationId;
+@property (nonatomic) BOOL hasIsAppleCard;
 @property (readonly, nonatomic) BOOL hasMerchantAdamId;
 @property (readonly, nonatomic) BOOL hasMerchantFormattedAddress;
 @property (readonly, nonatomic) BOOL hasMerchantId;
@@ -66,9 +60,11 @@
 @property (readonly, nonatomic) BOOL hasMerchantName;
 @property (readonly, nonatomic) BOOL hasMerchantRawName;
 @property (readonly, nonatomic) BOOL hasMerchantUrl;
+@property (nonatomic) BOOL hasRequestTransactionType;
 @property (readonly, nonatomic) BOOL hasTransactionLocation;
 @property (nonatomic) BOOL hasTransactionTime;
 @property (readonly, nonatomic) BOOL hasTransactionType;
+@property (nonatomic) BOOL isAppleCard;
 @property (strong, nonatomic) NSString *merchantAdamId;
 @property (strong, nonatomic) NSString *merchantFormattedAddress;
 @property (strong, nonatomic) GEOPDMapsIdentifier *merchantId;
@@ -77,22 +73,14 @@
 @property (strong, nonatomic) NSString *merchantName;
 @property (strong, nonatomic) NSString *merchantRawName;
 @property (strong, nonatomic) NSString *merchantUrl;
+@property (nonatomic) int requestTransactionType;
 @property (strong, nonatomic) GEOLocation *transactionLocation;
 @property (nonatomic) double transactionTime;
 @property (strong, nonatomic) NSString *transactionType;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readCorrelationId;
-- (void)_readMerchantAdamId;
-- (void)_readMerchantFormattedAddress;
-- (void)_readMerchantId;
-- (void)_readMerchantIndustryCategory;
-- (void)_readMerchantName;
-- (void)_readMerchantRawName;
-- (void)_readMerchantUrl;
-- (void)_readTransactionLocation;
-- (void)_readTransactionType;
+- (int)StringAsRequestTransactionType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -100,10 +88,14 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestTransactionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

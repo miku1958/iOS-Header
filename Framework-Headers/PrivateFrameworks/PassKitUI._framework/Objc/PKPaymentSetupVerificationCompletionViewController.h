@@ -6,13 +6,14 @@
 
 #import <PassKitUI/PKPaymentSetupTableViewController.h>
 
+#import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPaymentVerificationObserverDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
 @class NSString, PKActivityTableCell, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, PKPaymentVerificationObserver, PKTableHeaderView, UIColor;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupVerificationCompletionViewController : PKPaymentSetupTableViewController <UITextFieldDelegate, PKPaymentVerificationObserverDelegate>
+@interface PKPaymentSetupVerificationCompletionViewController : PKPaymentSetupTableViewController <UITextFieldDelegate, PKPaymentVerificationObserverDelegate, PKForegroundActiveArbiterObserver>
 {
     PKActivityTableCell *_verificationCodeCell;
     BOOL _verificationCodeAccepted;
@@ -23,6 +24,8 @@
     UIColor *_editableTextFieldColor;
     long long _mode;
     BOOL _offerOtherMethods;
+    CDStruct_973bafd3 _foregroundActiveState;
+    BOOL _verificationAlreadyHandled;
     PKPaymentVerificationController *_verificationController;
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
@@ -37,6 +40,8 @@
 @property (readonly, nonatomic) PKPaymentVerificationController *verificationController; // @synthesize verificationController=_verificationController;
 
 - (void).cxx_destruct;
+- (void)_applicationDidBecomeActive;
+- (void)_applicationWillResignActive;
 - (void)_disableUI;
 - (void)_enableUI;
 - (void)_handleNextStep;
@@ -46,9 +51,12 @@
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_showCompletedUIForPass:(id)arg1;
 - (void)_showCompletedUIWithNextHandler:(CDUnknownBlockType)arg1;
+- (void)_startVerificationObserver;
+- (void)_stopVerificationObserver;
 - (void)_submitVerificationCode;
 - (void)_terminateFlow;
 - (void)dealloc;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithVerificationController:(id)arg1 mode:(long long)arg2 offerOtherMethods:(BOOL)arg3;
 - (void)loadView;
 - (void)next:(id)arg1;

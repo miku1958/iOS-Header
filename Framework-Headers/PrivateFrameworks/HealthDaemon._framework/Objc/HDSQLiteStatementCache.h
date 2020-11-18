@@ -6,28 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSSet, _HDSQLiteStatementCacheStorage;
 
 @interface HDSQLiteStatementCache : NSObject
 {
     struct sqlite3 *_db;
-    struct __CFDictionary *_statementCache;
-    struct __CFDictionary *_transactionStatementCache;
+    _HDSQLiteStatementCacheStorage *_defaultStatementStorage;
+    _HDSQLiteStatementCacheStorage *_transactionStatementStorage;
     struct __CFSet *_activeStatements;
     struct __CFSet *_uncachedActiveStatements;
-    long long _cacheScope;
     BOOL _inTransaction;
+    long long _faultCount;
 }
 
 @property (readonly, copy, nonatomic) NSSet *allStatmentSQLStrings;
-@property (readonly, nonatomic) unsigned long long count;
+@property (readonly, nonatomic) long long count;
+@property (readonly, nonatomic) long long faultCount; // @synthesize faultCount=_faultCount;
 
+- (void).cxx_destruct;
+- (void)_activateStatement:(struct sqlite3_stmt *)arg1 cached:(BOOL)arg2;
 - (void)_assertNoActiveStatements;
-- (struct sqlite3_stmt *)_cachedStatementForSQL:(id)arg1;
-- (void)_clearCachedTransactionStatements;
-- (void)_setStatement:(struct sqlite3_stmt *)arg1 forSQL:(id)arg2;
-- (void)beginTransactionWithCacheScope:(long long)arg1;
+- (struct sqlite3_stmt *)_cachedStatementForKey:(const char *)arg1 active:(BOOL *)arg2;
+- (struct sqlite3_stmt *)_cachedStatementForSQL:(id)arg1 active:(BOOL *)arg2;
+- (struct sqlite3_stmt *)_prepareStatementForSQL:(id)arg1 error:(id *)arg2;
+- (void)_setCachedStatement:(struct sqlite3_stmt *)arg1 forKey:(const char *)arg2;
+- (void)_setCachedStatement:(struct sqlite3_stmt *)arg1 forSQL:(id)arg2;
+- (id)_statementStorage;
+- (void)beginTransaction;
 - (void)checkInStatement:(struct sqlite3_stmt *)arg1;
+- (struct sqlite3_stmt *)checkOutCachedStatementForKey:(const char *)arg1 SQLGenerator:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (struct sqlite3_stmt *)checkOutStatementForSQL:(id)arg1 shouldCache:(BOOL)arg2 error:(id *)arg3;
 - (void)clearCachedStatements;
 - (void)dealloc;

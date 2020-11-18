@@ -50,13 +50,14 @@
 + (id)dropSessionWithWindowUIDragSession:(id)arg1;
 + (void)getDropSessionWithUIDropSession:(id)arg1 sceneProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_activityContinuationActionFromActivity:(id)arg1 activityData:(id)arg2;
 - (id)_initWithUIDragDropSession:(id)arg1 application:(id)arg2 targetContentIdentifier:(id)arg3;
 - (BOOL)_isApplicationBoundToVisibleIcon;
 - (void)calculateSceneIdentityWithSceneProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 activity:(id)arg4 activityData:(id)arg5;
 - (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 targetContentIdentifier:(id)arg4;
 - (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 targetContentIdentifier:(id)arg4 URL:(id)arg5 requiresOpenInPlace:(BOOL)arg6;
-- (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 targetContentIdentifier:(id)arg4 localContext:(id)arg5;
+- (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 targetContentIdentifier:(id)arg4 localContext:(id)arg5 activity:(id)arg6 activityData:(id)arg7;
 
 @end
 

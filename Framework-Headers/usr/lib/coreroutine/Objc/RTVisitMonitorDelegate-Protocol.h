@@ -11,7 +11,6 @@
 @protocol RTVisitMonitorDelegate <NSObject>
 
 @optional
-- (void)onLeechedVisitIncident:(RTVisit *)arg1 error:(NSError *)arg2;
 - (void)onLowConfidenceVisitIncident:(RTVisit *)arg1 error:(NSError *)arg2;
 - (void)onVisitIncident:(RTVisit *)arg1 error:(NSError *)arg2;
 @end

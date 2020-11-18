@@ -16,6 +16,7 @@
     UIToolbar *_toolbar;
 }
 
+@property (readonly, nonatomic) BOOL shouldCloseGapOnScroll;
 @property (readonly, nonatomic) BOOL shouldCompressAtTop;
 @property (strong, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (nonatomic) double topOffset; // @synthesize topOffset=_topOffset;

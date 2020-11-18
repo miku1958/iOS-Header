@@ -6,23 +6,28 @@
 
 #import <BaseBoard/BSSpringAnimationSettings.h>
 
-@class CAMediaTimingFunction;
+#import <BaseBoard/BSAnimationSettingsMutating-Protocol.h>
 
-@interface BSMutableSpringAnimationSettings : BSSpringAnimationSettings
+@class CAMediaTimingFunction, NSString;
+
+@interface BSMutableSpringAnimationSettings : BSSpringAnimationSettings <BSAnimationSettingsMutating>
 {
 }
 
 @property (nonatomic) double damping; // @dynamic damping;
-@property (nonatomic) double delay; // @dynamic delay;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) double delay;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double epsilon; // @dynamic epsilon;
-@property (nonatomic) double frameInterval; // @dynamic frameInterval;
+@property (nonatomic) double frameInterval;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double initialVelocity; // @dynamic initialVelocity;
 @property (nonatomic) double mass; // @dynamic mass;
-@property (nonatomic) float speed; // @dynamic speed;
+@property (nonatomic) float speed;
 @property (nonatomic) double stiffness; // @dynamic stiffness;
-@property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @dynamic timingFunction;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) CAMediaTimingFunction *timingFunction;
 
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

@@ -40,7 +40,7 @@
 - (void).cxx_destruct;
 - (void)acceptCurrentSentence;
 - (void)acceptText:(id)arg1 isAutoshifted:(BOOL)arg2;
-- (void)acceptToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 saveToDifferentialPrivacy:(int)arg4;
+- (void)acceptToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 saveToDifferentialPrivacy:(int)arg4 contextStringTokens:(id)arg5;
 - (void)acceptTokensInRange:(struct _NSRange)arg1;
 - (void)addRevisedTokenString:(id)arg1 withTokenID:(struct TITokenID)arg2 inDocumentRange:(struct _NSRange)arg3 toRevision:(id)arg4;
 - (void)adjustTokenOffsetAfterDeletedTokenRange:(struct _NSRange)arg1 withDeletedCharacterCount:(unsigned long long)arg2;
@@ -55,7 +55,7 @@
 - (id)documentState;
 - (void)enumerateSentenceStemUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSentenceStemUsingIteratorBlock:(CDUnknownBlockType)arg1;
-- (unsigned long long)fillTokenBuffer:(struct TITokenID *)arg1 withContextForTokenAtIndex:(unsigned long long)arg2;
+- (unsigned long long)fillTokenIDBuffer:(struct TITokenID *)arg1 withContextForTokenAtIndex:(unsigned long long)arg2 contextStringsBuffer:(id)arg3;
 - (void)handleRevisedTokenString:(id)arg1 withTokenID:(struct TITokenID)arg2 forRevision:(id)arg3;
 - (id)init;
 - (id)initWithLocale:(id)arg1;
@@ -77,7 +77,7 @@
 - (struct _TIRevisionHistoryTokenIterator)previousTokenIterator:(struct _TIRevisionHistoryTokenIterator)arg1;
 - (void)pushSelectedTextToTokenizerForRevision:(id)arg1;
 - (void)rejectCandidate:(id)arg1 forInput:(id)arg2;
-- (void)rejectToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 negativeLearningHint:(int)arg4 withRevisedToken:(id)arg5;
+- (void)rejectToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 contextStringTokens:(id)arg4 negativeLearningHint:(int)arg5 withRevisedToken:(id)arg6;
 - (void)rejectTokensInRange:(struct _NSRange)arg1 negativeLearningHint:(int)arg2 newRevision:(id)arg3;
 - (void)replaceSelectionWithText:(id)arg1 negativeLearningHint:(int)arg2 selectedTokenReplacementHandler:(CDUnknownBlockType)arg3;
 - (void)resetToDocumentState:(id)arg1;

@@ -15,6 +15,7 @@
 {
     id<CNUIPRLikenessProvider> _placeholderProvider;
     id<CNUIPRLikenessProvider> _loadingPlaceholderProvider;
+    id<CNUIPRLikenessProvider> _loadingGroupPlaceholderProvider;
     id<CNScheduler> _resourceLock;
     id<CNScheduler> _highPriorityLock;
 }
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<CNScheduler> highPriorityLock; // @synthesize highPriorityLock=_highPriorityLock;
+@property (readonly) id<CNUIPRLikenessProvider> loadingGroupPlaceholderProvider; // @synthesize loadingGroupPlaceholderProvider=_loadingGroupPlaceholderProvider;
 @property (readonly) id<CNUIPRLikenessProvider> loadingPlaceholderProvider;
 @property (readonly) id<CNUIPRLikenessProvider> placeholderProvider;
 @property (strong, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
@@ -30,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)loadingGroupPlaceholderProviderWithBackgroundStyle:(unsigned long long)arg1;
 
 @end
 

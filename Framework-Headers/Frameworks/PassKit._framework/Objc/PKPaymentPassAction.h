@@ -14,11 +14,12 @@
 {
     NSDictionary *_rawDictionary;
     NSDictionary *_localizations;
+    NSString *_title;
     BOOL _hasRemoteContent;
+    BOOL _reverseButtonTitleForLegacySuica;
     BOOL _featured;
     NSString *_identifier;
     unsigned long long _type;
-    NSString *_title;
     NSString *_actionDescription;
     NSString *_confirmationTitle;
     NSString *_relevantPropertyIdentifier;
@@ -31,7 +32,7 @@
     NSString *_unavailableAfterReason;
     NSString *_serviceProviderIdentifier;
     NSString *_serviceProviderCountryCode;
-    NSArray *_serviceProviderSupportedNetworks;
+    NSArray *_serviceProviderAcceptedNetworks;
     NSSet *_serviceProviderSupportedCountries;
     unsigned long long _serviceProviderCapabilities;
     PKEnteredValueActionItem *_enteredValueItem;
@@ -55,13 +56,15 @@
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isActionAvailable;
 @property (readonly, copy, nonatomic) NSString *relevantPropertyIdentifier; // @synthesize relevantPropertyIdentifier=_relevantPropertyIdentifier;
+@property (nonatomic) BOOL reverseButtonTitleForLegacySuica; // @synthesize reverseButtonTitleForLegacySuica=_reverseButtonTitleForLegacySuica;
 @property (readonly, copy, nonatomic) NSArray *selectedActionItems; // @synthesize selectedActionItems=_selectedActionItems;
+@property (readonly, copy, nonatomic) NSArray *serviceProviderAcceptedNetworks; // @synthesize serviceProviderAcceptedNetworks=_serviceProviderAcceptedNetworks;
 @property (readonly, nonatomic) unsigned long long serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
 @property (readonly, copy, nonatomic) NSString *serviceProviderCountryCode; // @synthesize serviceProviderCountryCode=_serviceProviderCountryCode;
 @property (readonly, copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
 @property (readonly, copy, nonatomic) NSSet *serviceProviderSupportedCountries; // @synthesize serviceProviderSupportedCountries=_serviceProviderSupportedCountries;
-@property (readonly, copy, nonatomic) NSArray *serviceProviderSupportedNetworks; // @synthesize serviceProviderSupportedNetworks=_serviceProviderSupportedNetworks;
-@property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) NSArray *serviceProviderSupportedNetworks;
+@property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSString *unavailableAfterReason; // @synthesize unavailableAfterReason=_unavailableAfterReason;
 @property (readonly, copy, nonatomic) NSString *unavailableBeforeReason; // @synthesize unavailableBeforeReason=_unavailableBeforeReason;

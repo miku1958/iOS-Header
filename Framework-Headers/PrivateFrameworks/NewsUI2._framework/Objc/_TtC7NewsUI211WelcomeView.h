@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI211WelcomeView : UIView
 {
     MISSING_TYPE *scrollView;

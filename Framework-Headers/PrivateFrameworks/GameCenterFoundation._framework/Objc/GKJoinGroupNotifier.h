@@ -17,10 +17,11 @@
 }
 
 @property (strong) NSError *error; // @synthesize error=_error;
-@property (nonatomic) GKJoinGroup *group; // @synthesize group=_group;
+@property (weak, nonatomic) GKJoinGroup *group; // @synthesize group=_group;
 @property (strong) NSLock *lock; // @synthesize lock=_lock;
 @property (strong, nonatomic) NSMutableArray *updateQueue; // @synthesize updateQueue=_updateQueue;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (oneway void)release;

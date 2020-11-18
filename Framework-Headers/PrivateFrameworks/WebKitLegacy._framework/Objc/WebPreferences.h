@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) BOOL CSSOMViewScrollingAPIEnabled;
+@property (nonatomic) BOOL CSSOMViewSmoothScrollingEnabled;
 @property (nonatomic) BOOL accessibilityObjectModelEnabled;
 @property (strong, nonatomic) NSArray *additionalSupportedImageTypes;
 @property (nonatomic) BOOL allowCrossOriginSubresourcesToAskForCredentials;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL allowsInlineMediaPlaybackAfterFullscreen;
 @property (nonatomic) BOOL animatedImageAsyncDecodingEnabled;
 @property (nonatomic) BOOL ariaReflectionEnabled;
+@property (nonatomic) BOOL aspectRatioOfImgFromWidthAndHeightEnabled;
 @property (nonatomic) BOOL asyncClipboardAPIEnabled;
 @property (nonatomic) BOOL attachmentElementEnabled;
 @property (nonatomic) BOOL autosaves;
@@ -101,6 +103,7 @@
 + (void)initialize;
 + (void)setWebKitLinkTimeVersion:(int)arg1;
 + (id)standardPreferences;
+- (BOOL)CSSCustomPropertiesAndValuesEnabled;
 - (BOOL)_allowMultiElementImplicitFormSubmission;
 - (BOOL)_allowPasswordEcho;
 - (BOOL)_alwaysRequestGeolocationPermission;
@@ -113,7 +116,6 @@
 - (int)_integerValueForKey:(id)arg1;
 - (int)_interpolationQuality;
 - (void)_invalidateCachedPreferences;
-- (int)_layoutInterval;
 - (id)_localStorageDatabasePath;
 - (long long)_longLongValueForKey:(id)arg1;
 - (float)_maxParseDuration;
@@ -132,7 +134,6 @@
 - (void)_setForceFTPDirectoryListings:(BOOL)arg1;
 - (void)_setIntegerValue:(int)arg1 forKey:(id)arg2;
 - (void)_setInterpolationQuality:(int)arg1;
-- (void)_setLayoutInterval:(int)arg1;
 - (void)_setLocalStorageDatabasePath:(id)arg1;
 - (void)_setLongLongValue:(long long)arg1 forKey:(id)arg2;
 - (void)_setMaxParseDuration:(float)arg1;
@@ -163,6 +164,7 @@
 - (BOOL)acceleratedDrawingEnabled;
 - (BOOL)adClickAttributionEnabled;
 - (BOOL)allowFileAccessFromFileURLs;
+- (BOOL)allowTopNavigationToDataURLs;
 - (BOOL)allowUniversalAccessFromFileURLs;
 - (BOOL)allowsAlternateFullscreen;
 - (BOOL)allowsPictureInPictureMediaPlayback;
@@ -233,10 +235,13 @@
 - (BOOL)isXSSAuditorEnabled;
 - (BOOL)javaScriptCanAccessClipboard;
 - (int)javaScriptRuntimeFlags;
+- (BOOL)layoutFormattingContextIntegrationEnabled;
+- (BOOL)lineHeightUnitsEnabled;
 - (BOOL)loadsSiteIconsIgnoringImageLoadingPreference;
 - (BOOL)localFileContentSniffingEnabled;
 - (BOOL)localStorageEnabled;
 - (BOOL)lowPowerVideoAudioBufferSizeEnabled;
+- (BOOL)maskWebGLStringsEnabled;
 - (BOOL)mediaCaptureRequiresSecureConnection;
 - (BOOL)mediaControlsScaleWithPageZoom;
 - (BOOL)mediaDevicesEnabled;
@@ -252,6 +257,7 @@
 - (BOOL)mockCaptureDevicesPromptEnabled;
 - (BOOL)mockScrollbarsEnabled;
 - (BOOL)modernMediaControlsEnabled;
+- (BOOL)modernUnprefixedWebAudioEnabled;
 - (BOOL)needsStorageAccessFromFileURLsQuirk;
 - (BOOL)networkDataUsageTrackingEnabled;
 - (id)networkInterfaceName;
@@ -263,9 +269,7 @@
 - (BOOL)peerConnectionEnabled;
 - (id)pictographFontFamily;
 - (BOOL)plugInSnapshottingEnabled;
-- (BOOL)pointerEventsEnabled;
 - (BOOL)readableByteStreamAPIEnabled;
-- (BOOL)renderingUpdateThrottlingEnabled;
 - (BOOL)requestAnimationFrameEnabled;
 - (BOOL)resourceLoadStatisticsEnabled;
 - (BOOL)selectionAcrossShadowBoundariesEnabled;
@@ -279,6 +283,7 @@
 - (void)setAcceleratedDrawingEnabled:(BOOL)arg1;
 - (void)setAdClickAttributionEnabled:(BOOL)arg1;
 - (void)setAllowFileAccessFromFileURLs:(BOOL)arg1;
+- (void)setAllowTopNavigationToDataURLs:(BOOL)arg1;
 - (void)setAllowUniversalAccessFromFileURLs:(BOOL)arg1;
 - (void)setAllowsAlternateFullscreen:(BOOL)arg1;
 - (void)setAllowsPictureInPictureMediaPlayback:(BOOL)arg1;
@@ -292,6 +297,7 @@
 - (void)setAuthorAndUserStylesEnabled:(BOOL)arg1;
 - (void)setAutomaticallyDetectsCacheModel:(BOOL)arg1;
 - (void)setBackspaceKeyNavigationEnabled:(BOOL)arg1;
+- (void)setCSSCustomPropertiesAndValuesEnabled:(BOOL)arg1;
 - (void)setCSSLogicalEnabled:(BOOL)arg1;
 - (void)setCSSShadowPartsEnabled:(BOOL)arg1;
 - (void)setCacheAPIEnabled:(BOOL)arg1;
@@ -336,10 +342,13 @@
 - (void)setInvisibleAutoplayNotPermitted:(BOOL)arg1;
 - (void)setJavaScriptCanAccessClipboard:(BOOL)arg1;
 - (void)setJavaScriptRuntimeFlags:(int)arg1;
+- (void)setLayoutFormattingContextIntegrationEnabled:(BOOL)arg1;
+- (void)setLineHeightUnitsEnabled:(BOOL)arg1;
 - (void)setLoadsSiteIconsIgnoringImageLoadingPreference:(BOOL)arg1;
 - (void)setLocalFileContentSniffingEnabled:(BOOL)arg1;
 - (void)setLocalStorageEnabled:(BOOL)arg1;
 - (void)setLowPowerVideoAudioBufferSizeEnabled:(BOOL)arg1;
+- (void)setMaskWebGLStringsEnabled:(BOOL)arg1;
 - (void)setMediaCaptureRequiresSecureConnection:(BOOL)arg1;
 - (void)setMediaControlsScaleWithPageZoom:(BOOL)arg1;
 - (void)setMediaDevicesEnabled:(BOOL)arg1;
@@ -355,6 +364,7 @@
 - (void)setMockCaptureDevicesPromptEnabled:(BOOL)arg1;
 - (void)setMockScrollbarsEnabled:(BOOL)arg1;
 - (void)setModernMediaControlsEnabled:(BOOL)arg1;
+- (void)setModernUnprefixedWebAudioEnabled:(BOOL)arg1;
 - (void)setNeedsStorageAccessFromFileURLsQuirk:(BOOL)arg1;
 - (void)setNetworkDataUsageTrackingEnabled:(BOOL)arg1;
 - (void)setNetworkInterfaceName:(id)arg1;
@@ -366,9 +376,7 @@
 - (void)setPeerConnectionEnabled:(BOOL)arg1;
 - (void)setPictographFontFamily:(id)arg1;
 - (void)setPlugInSnapshottingEnabled:(BOOL)arg1;
-- (void)setPointerEventsEnabled:(BOOL)arg1;
 - (void)setReadableByteStreamAPIEnabled:(BOOL)arg1;
-- (void)setRenderingUpdateThrottlingEnabled:(BOOL)arg1;
 - (void)setRequestAnimationFrameEnabled:(BOOL)arg1;
 - (void)setResourceLoadStatisticsEnabled:(BOOL)arg1;
 - (void)setSelectionAcrossShadowBoundariesEnabled:(BOOL)arg1;
@@ -407,6 +415,7 @@
 - (void)setWebGL2Enabled:(BOOL)arg1;
 - (void)setWebGLEnabled:(BOOL)arg1;
 - (void)setWebGPUEnabled:(BOOL)arg1;
+- (void)setWebSQLEnabled:(BOOL)arg1;
 - (void)setWebSecurityEnabled:(BOOL)arg1;
 - (void)setWritableStreamAPIEnabled:(BOOL)arg1;
 - (void)setXSSAuditorEnabled:(BOOL)arg1;
@@ -442,6 +451,7 @@
 - (BOOL)webGL2Enabled;
 - (BOOL)webGLEnabled;
 - (BOOL)webGPUEnabled;
+- (BOOL)webSQLEnabled;
 - (void)willAddToWebView;
 - (BOOL)writableStreamAPIEnabled;
 - (BOOL)zoomsTextOnly;

@@ -8,6 +8,7 @@
 
 @protocol HDWorkoutSessionStateController;
 
+__attribute__((visibility("hidden")))
 @interface _HDHeartRateRecoveryAssertion : HDAssertion
 {
     id<HDWorkoutSessionStateController> _sessionStateController;

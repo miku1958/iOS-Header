@@ -6,13 +6,13 @@
 
 #import <PhotosUICore/PXGItemsLayout.h>
 
-#import <PhotosUICore/PXCuratedLibraryAllPhotosBodyLayout-Protocol.h>
 #import <PhotosUICore/PXGDiagnosticsProvider-Protocol.h>
 #import <PhotosUICore/PXGItemsGeometry-Protocol.h>
+#import <PhotosUICore/PXZoomablePhotosContentLayout-Protocol.h>
 
 @class NSString;
 
-@interface PXGGridLayout : PXGItemsLayout <PXCuratedLibraryAllPhotosBodyLayout, PXGItemsGeometry, PXGDiagnosticsProvider>
+@interface PXGGridLayout : PXGItemsLayout <PXZoomablePhotosContentLayout, PXGItemsGeometry, PXGDiagnosticsProvider>
 {
     CDStruct_d97c9657 _updateFlags;
     BOOL _isUpdating;
@@ -21,13 +21,18 @@
     struct UIEdgeInsets _finalInsets;
     BOOL _canHandleVisibleRectRejection;
     BOOL _enableBestCropRect;
+    BOOL _enableEffects;
     unsigned char _mediaFlags;
     BOOL _fillSafeAreaTopInset;
+    BOOL _supportsAutomaticContentRotation;
     BOOL _hideIncompleteLastRow;
     BOOL _mediaTargetSizeIgnoresSpacing;
     BOOL _loadItemsOutsideAnchorViewport;
     int _mediaKind;
     int _presentationType;
+    int _accessoryMediaKind;
+    int _accessoryPresentationType;
+    float _itemZPosition;
     long long _style;
     long long _contentMode;
     long long _numberOfColumns;
@@ -35,6 +40,7 @@
     double _itemCaptionSpacing;
     double _itemAspectRatio;
     double _aspectRatioLimit;
+    double _accessoryAlpha;
     long long _visualItemShift;
     id _anchorObjectReference;
     CDStruct_2bd92d94 _itemCornerRadius;
@@ -44,6 +50,10 @@
     struct UIEdgeInsets _padding;
 }
 
+@property (nonatomic) double accessoryAlpha;
+@property (nonatomic) double accessoryAlpha; // @synthesize accessoryAlpha=_accessoryAlpha;
+@property (nonatomic) int accessoryMediaKind; // @synthesize accessoryMediaKind=_accessoryMediaKind;
+@property (nonatomic) int accessoryPresentationType; // @synthesize accessoryPresentationType=_accessoryPresentationType;
 @property (strong, nonatomic) id anchorObjectReference;
 @property (strong, nonatomic) id anchorObjectReference; // @synthesize anchorObjectReference=_anchorObjectReference;
 @property (nonatomic) struct CGPoint anchorViewportCenter;
@@ -61,6 +71,8 @@
 @property (nonatomic) CDStruct_2bd92d94 edgeCornerRadius; // @synthesize edgeCornerRadius=_edgeCornerRadius;
 @property (nonatomic) BOOL enableBestCropRect;
 @property (nonatomic) BOOL enableBestCropRect; // @synthesize enableBestCropRect=_enableBestCropRect;
+@property (nonatomic) BOOL enableEffects;
+@property (nonatomic) BOOL enableEffects; // @synthesize enableEffects=_enableEffects;
 @property (nonatomic) BOOL fillSafeAreaTopInset;
 @property (nonatomic) BOOL fillSafeAreaTopInset; // @synthesize fillSafeAreaTopInset=_fillSafeAreaTopInset;
 @property (readonly) unsigned long long hash;
@@ -74,6 +86,7 @@
 @property (nonatomic) double itemCaptionSpacing; // @synthesize itemCaptionSpacing=_itemCaptionSpacing;
 @property (readonly, nonatomic) BOOL itemCaptionsVisible;
 @property (nonatomic) CDStruct_2bd92d94 itemCornerRadius; // @synthesize itemCornerRadius=_itemCornerRadius;
+@property (nonatomic) float itemZPosition; // @synthesize itemZPosition=_itemZPosition;
 @property (nonatomic, getter=isLazy) BOOL lazy; // @dynamic lazy;
 @property (nonatomic) BOOL loadItemsOutsideAnchorViewport;
 @property (nonatomic) BOOL loadItemsOutsideAnchorViewport; // @synthesize loadItemsOutsideAnchorViewport=_loadItemsOutsideAnchorViewport;
@@ -96,6 +109,7 @@
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsAutomaticContentRotation; // @synthesize supportsAutomaticContentRotation=_supportsAutomaticContentRotation;
 @property (readonly, nonatomic) BOOL supportsContentMode;
 @property (readonly, nonatomic) long long visualItemShift;
 @property (nonatomic) long long visualItemShift; // @synthesize visualItemShift=_visualItemShift;
@@ -103,7 +117,7 @@
 - (void).cxx_destruct;
 - (struct CGPoint)_contentPointInLayout:(struct CGPoint)arg1;
 - (struct CGRect)_contentRectInLayout:(struct CGRect)arg1;
-- (struct CGRect)_frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2 itemSize:(struct CGSize)arg3 insets:(struct UIEdgeInsets)arg4;
+- (struct CGRect)_frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2 itemSize:(struct CGSize)arg3 insets:(struct UIEdgeInsets)arg4 contentMode:(long long)arg5;
 - (void)_getItemSize:(struct CGSize *)arg1 finalInteritemSpacing:(double *)arg2 finalInsets:(struct UIEdgeInsets *)arg3 forDesiredInterItemSpacing:(double)arg4 padding:(struct UIEdgeInsets)arg5;
 - (struct _NSRange)_itemsToLoadForVisibleRect:(struct CGRect)arg1;
 - (struct CGPoint)_layoutPointInContent:(struct CGPoint)arg1;
@@ -114,9 +128,12 @@
 - (void)_updateContentSize;
 - (void)_updateSpriteStyles;
 - (void)_updateSprites;
+- (void)accessoryItemsDidChange;
 - (void)alphaDidChange;
 - (void)applySpriteChangeDetails:(id)arg1 countAfterChanges:(unsigned int)arg2 initialState:(CDUnknownBlockType)arg3 modifyState:(CDUnknownBlockType)arg4;
 - (long long)columnForItem:(long long)arg1;
+- (void)dropTargetObjectReferenceDidChange;
+- (id)dropTargetObjectReferenceForLocation:(struct CGPoint)arg1;
 - (struct CGRect)frameForItem:(long long)arg1;
 - (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2;
 - (id)init;
@@ -129,6 +146,7 @@
 - (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
 - (struct _NSRange)itemsToLoad;
 - (void)loadedItemsDidChange;
+- (void)numberOfAccessoryItemsDidChange;
 - (void)referenceSizeDidChange;
 - (void)safeAreaInsetsDidChange;
 - (void)screenScaleDidChange;

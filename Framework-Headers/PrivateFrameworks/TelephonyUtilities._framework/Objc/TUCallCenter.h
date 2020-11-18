@@ -93,6 +93,7 @@
 - (BOOL)_isEmergencyDialRequest:(id)arg1;
 - (void)_preflightDisconnectForCalls:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldPreferRelayOverDirectSecondaryCallingForRelayingCallingAvailability:(int)arg1 isRelayCallingSupported:(BOOL)arg2 isEmergencyCallbackPossible:(BOOL)arg3;
+- (void)activateInCallUIWithActivityContinuationIdentifier:(id)arg1;
 - (id)activeConversationForCall:(id)arg1;
 - (BOOL)allCallsAreOfService:(int)arg1;
 - (BOOL)allCallsPassTest:(CDUnknownBlockType)arg1;
@@ -139,6 +140,7 @@
 - (void)groupCall:(id)arg1 withOtherCall:(id)arg2;
 - (void)handleActionForWiredHeadsetMiddleButtonLongPress;
 - (void)handleActionForWiredHeadsetMiddleButtonPress;
+- (void)handleActionForWiredHeadsetMiddleButtonPressWithSourceIdentifier:(id)arg1 allowBluetoothAnswerWithoutDowngrade:(BOOL)arg2;
 - (void)holdActiveAndAnswerCall:(id)arg1;
 - (void)holdCall:(id)arg1;
 - (id)init;
@@ -167,6 +169,7 @@
 - (void)resumeCall:(id)arg1;
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)setTTYType:(int)arg1 forCall:(id)arg2;
+- (void)shouldAllowRingingCallStatusIndicator:(BOOL)arg1;
 - (BOOL)shouldPreferRelayOverDirectSecondaryCallingForProvider:(id)arg1 isVideo:(BOOL)arg2;
 - (void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (void)swapCalls;

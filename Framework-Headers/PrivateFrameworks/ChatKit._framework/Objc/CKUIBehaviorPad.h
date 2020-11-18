@@ -6,7 +6,6 @@
 
 #import <ChatKit/CKUIBehavior.h>
 
-__attribute__((visibility("hidden")))
 @interface CKUIBehaviorPad : CKUIBehavior
 {
 }
@@ -17,25 +16,29 @@ __attribute__((visibility("hidden")))
 - (BOOL)canShowContactPhotosInConversationList;
 - (struct UIEdgeInsets)contactPhotoTranscriptInsets;
 - (double)conversationListMinimumWidthForHiddenContactImage;
+- (struct UIEdgeInsets)defaultAVPlayerViewContorllerControlsInsets;
 - (unsigned long long)defaultConversationViewingMessageCount;
 - (struct CGSize)documentIconSize;
 - (double)entryViewMaxHandWritingPluginShelfHeight;
 - (id)fullscreenPickerActionLayoutAxisPrioritiesForWidth:(double)arg1;
 - (BOOL)isAppStripInKeyboard;
 - (BOOL)lowClearanceInLandscape;
-- (double)maxPrimaryColumnWidthForInterfaceOrientation:(long long)arg1;
+- (double)maxNavigationBarNoContactPhotoCollapsedHeightValue;
 - (struct UIEdgeInsets)minTranscriptMarginInsets;
+- (double)navigationBarMaxHeight;
 - (unsigned long long)numberOfButtonsInPhotoPicker;
 - (double)photoPickerMaxPopoverPhotoHeight;
 - (double)photoPickerPopoverWidth;
 - (BOOL)photoPickerShouldZoomOnSelection;
 - (BOOL)presentForwardingUIModally;
-- (BOOL)presentsFullscreenInViewService;
+- (BOOL)presentsAutocompleteInAPopover;
 - (BOOL)presentsQuickLookController;
+- (double)primaryColumnWidthForInterfaceOrientation:(long long)arg1;
 - (double)resumeToConversationListTimeInterval;
-- (double)searchLinkThumbnailWidth;
-- (double)searchPhotoThumbnailWidth;
+- (double)searchLinksThumbnailWidth;
+- (double)searchPhotosThumbnailWidth;
 - (BOOL)shouldAlignRecipientGlyphsWithMargins;
+- (BOOL)shouldDisableFocusRing;
 - (BOOL)shouldOnlyResumeToConversationListAfterTimeout;
 - (BOOL)shouldPopoverSuggestionsBanner;
 - (BOOL)shouldRefreshAlternateAddressesSheet;

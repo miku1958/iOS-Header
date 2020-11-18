@@ -13,10 +13,13 @@
 @interface CHRemoteRecognitionRequest : NSObject <NSSecureCoding>
 {
     BOOL _shouldUseTextReplacements;
-    BOOL _shouldEnableCachingIfAvailable;
+    BOOL _enableCachingIfAvailable;
+    BOOL _enableGen2ModelIfAvailable;
+    BOOL _enableGen2CharacterLMIfAvailable;
     BOOL _hasBeenSubmitted;
     int _recognitionMode;
     int _contentType;
+    int _autoCapitalizationMode;
     NSLocale *_locale;
     NSCharacterSet *_activeCharacterSet;
     unsigned long long _maxRecognitionResultCount;
@@ -27,8 +30,12 @@
 }
 
 @property (copy, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
+@property (nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property (nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property (copy, nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
+@property (nonatomic) BOOL enableCachingIfAvailable; // @synthesize enableCachingIfAvailable=_enableCachingIfAvailable;
+@property (nonatomic) BOOL enableGen2CharacterLMIfAvailable; // @synthesize enableGen2CharacterLMIfAvailable=_enableGen2CharacterLMIfAvailable;
+@property (nonatomic) BOOL enableGen2ModelIfAvailable; // @synthesize enableGen2ModelIfAvailable=_enableGen2ModelIfAvailable;
 @property (nonatomic) BOOL hasBeenSubmitted; // @synthesize hasBeenSubmitted=_hasBeenSubmitted;
 @property (copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (nonatomic) unsigned long long maxRecognitionResultCount; // @synthesize maxRecognitionResultCount=_maxRecognitionResultCount;
@@ -36,7 +43,6 @@
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (nonatomic) int recognitionMode; // @synthesize recognitionMode=_recognitionMode;
-@property (nonatomic) BOOL shouldEnableCachingIfAvailable; // @synthesize shouldEnableCachingIfAvailable=_shouldEnableCachingIfAvailable;
 @property (nonatomic) BOOL shouldUseTextReplacements; // @synthesize shouldUseTextReplacements=_shouldUseTextReplacements;
 
 + (BOOL)supportsSecureCoding;

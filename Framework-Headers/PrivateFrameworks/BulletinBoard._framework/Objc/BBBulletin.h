@@ -22,7 +22,6 @@
     BOOL _ignoresQuietMode;
     BOOL _ignoresDowntime;
     BOOL _preemptsPresentedAlert;
-    BOOL _preemptsSTAR;
     BOOL _expiresOnPublisherDeath;
     BOOL _usesExternalSync;
     BOOL _loading;
@@ -72,7 +71,7 @@
     long long _lockScreenPriority;
     long long _backgroundStyle;
     NSString *_header;
-    unsigned long long realertCount_deprecated;
+    unsigned long long realertCount;
     NSSet *alertSuppressionAppIDs_deprecated;
 }
 
@@ -141,7 +140,6 @@
 @property (readonly, nonatomic) BOOL playsMediaWhenRaised;
 @property (readonly, nonatomic) BOOL playsSoundForModify;
 @property (nonatomic) BOOL preemptsPresentedAlert; // @synthesize preemptsPresentedAlert=_preemptsPresentedAlert;
-@property (nonatomic) BOOL preemptsSTAR; // @synthesize preemptsSTAR=_preemptsSTAR;
 @property (readonly, nonatomic) BOOL preservesUnlockActionCase;
 @property (nonatomic) BOOL preventAutomaticRemovalFromLockScreen; // @synthesize preventAutomaticRemovalFromLockScreen=_preventAutomaticRemovalFromLockScreen;
 @property (readonly, nonatomic) BOOL preventLock;
@@ -152,8 +150,7 @@
 @property (copy, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
 @property (readonly, copy, nonatomic) NSString *publisherMatchID;
 @property (copy, nonatomic) BBAction *raiseAction;
-@property (readonly, nonatomic) unsigned long long realertCount;
-@property (nonatomic) unsigned long long realertCount_deprecated; // @synthesize realertCount_deprecated;
+@property (nonatomic) unsigned long long realertCount; // @synthesize realertCount;
 @property (strong, nonatomic) NSDate *recencyDate; // @synthesize recencyDate=_recencyDate;
 @property (copy, nonatomic) NSString *recordID; // @synthesize recordID=_publisherRecordID;
 @property (readonly, nonatomic) BOOL revealsAdditionalContentOnPresentation;
@@ -218,8 +215,6 @@
 - (id)actionWithIdentifier:(id)arg1;
 - (void)addLifeAssertion:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (struct CGSize)composedAttachmentImageSizeWithObserver:(id)arg1;
-- (id)composedAttachmentImageWithObserver:(id)arg1;
 - (void)copyAssociationsForBulletin:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

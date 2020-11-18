@@ -19,7 +19,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)_loadAssetData;
-- (void)dealloc;
 - (id)init;
 - (id)mappedTopicForEntity:(id)arg1;
 

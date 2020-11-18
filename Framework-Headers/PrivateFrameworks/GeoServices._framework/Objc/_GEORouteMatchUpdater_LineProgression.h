@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithTransitRouteMatcher:(id)arg1 tripLeg:(id)arg2;
+- (id)initWithTransitRouteMatcher:(id)arg1 tripSegment:(id)arg2;
 - (unsigned long long)priority;
 - (BOOL)updateRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 

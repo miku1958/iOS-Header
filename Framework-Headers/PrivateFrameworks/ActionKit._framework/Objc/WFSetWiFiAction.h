@@ -14,6 +14,7 @@
 - (id)localizedDescriptionSummary;
 - (id)localizedName;
 - (id)parameterSummary;
+- (BOOL)shouldCreateIntentAvailableResource;
 
 @end
 

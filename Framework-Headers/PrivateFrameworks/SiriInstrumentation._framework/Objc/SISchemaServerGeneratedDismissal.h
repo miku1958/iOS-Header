@@ -11,8 +11,12 @@
 @interface SISchemaServerGeneratedDismissal : PBCodable
 {
     int _serverGeneratedDismissalReason;
+    struct {
+        unsigned int serverGeneratedDismissalReason:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasServerGeneratedDismissalReason;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int serverGeneratedDismissalReason; // @synthesize serverGeneratedDismissalReason=_serverGeneratedDismissalReason;
 

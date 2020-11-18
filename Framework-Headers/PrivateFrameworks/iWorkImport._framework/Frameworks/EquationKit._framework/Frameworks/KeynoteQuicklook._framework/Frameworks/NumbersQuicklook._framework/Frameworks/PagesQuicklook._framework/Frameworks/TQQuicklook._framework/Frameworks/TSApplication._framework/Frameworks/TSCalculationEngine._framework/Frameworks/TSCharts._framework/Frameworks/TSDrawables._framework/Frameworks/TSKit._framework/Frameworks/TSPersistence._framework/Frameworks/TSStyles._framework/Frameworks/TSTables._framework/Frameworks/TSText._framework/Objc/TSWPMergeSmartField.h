@@ -35,7 +35,7 @@
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (id)scriptTag;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 
 @end
 

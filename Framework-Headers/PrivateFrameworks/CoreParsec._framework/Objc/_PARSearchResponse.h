@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _PARSearchResponse : PBCodable <_PARSearchResponse, NSSecureCoding>
 {
+    BOOL _suggestionsAreBlended;
     int _status;
     float _completionScore;
     int _maxAgeSeconds;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (copy, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
+@property (nonatomic) BOOL suggestionsAreBlended; // @synthesize suggestionsAreBlended=_suggestionsAreBlended;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

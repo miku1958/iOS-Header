@@ -4,40 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKTimerRichComplicationBaseCircularView.h>
 
-@class NSDate, NSNumber, NTKColoringLabel, NTKRichComplicationDialView, UIImageView;
-
-@interface NTKTimerRichComplicationCircularView : NTKRichComplicationCircularBaseView
+@interface NTKTimerRichComplicationCircularView : NTKTimerRichComplicationBaseCircularView
 {
-    NTKRichComplicationDialView *_backgroundDial;
-    NTKRichComplicationDialView *_foregroundDial;
-    UIImageView *_timerImageView;
-    NTKColoringLabel *_timerLabel;
-    NSDate *_timerDate;
-    double _timerDuration;
-    NSNumber *_updateToken;
-    struct {
-        long long numberTicks;
-        struct CGSize tickSize;
-        double dialDiameter;
-        double timerLabelBottom;
-        double timerLabelFontSize;
-        double timerLabelMaxWidth;
-    } _layoutConstants;
 }
 
-- (void).cxx_destruct;
-- (void)_applyPausedUpdate;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)_pause;
-- (void)_resume;
-- (void)_updateDialProgress;
-- (void)dealloc;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (id)init;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

@@ -70,7 +70,7 @@
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
 @property (copy, nonatomic) NSDictionary *sessionMetadata; // @synthesize sessionMetadata=_sessionMetadata;
 @property (nonatomic) unsigned long long sessionSignpost; // @synthesize sessionSignpost=_sessionSignpost;
-@property long long state;
+@property unsigned int state;
 @property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
@@ -95,7 +95,7 @@
 - (BOOL)_handleStartSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleSyncBatch:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
-- (void)_onSessionStateChangedTo:(long long)arg1 do:(CDUnknownBlockType)arg2;
+- (void)_onSessionStateChangedTo:(unsigned int)arg1 do:(CDUnknownBlockType)arg2;
 - (void)_pause;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (BOOL)_readyToProcessIncomingMessages;
@@ -103,7 +103,7 @@
 - (void)_resolvedIdentifier:(id)arg1 forResponse:(id)arg2;
 - (void)_resolvedIdentifierForRequest:(id)arg1;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (void)_supercededWithSession:(id)arg1;
 - (BOOL)_willAcquiesceToNewSessionFromPeer:(id)arg1;
 - (void)cancel;

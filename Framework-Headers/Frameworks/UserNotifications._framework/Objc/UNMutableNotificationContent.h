@@ -34,7 +34,6 @@
 @property (nonatomic) BOOL shouldIgnoreDoNotDisturb; // @dynamic shouldIgnoreDoNotDisturb;
 @property (nonatomic) BOOL shouldIgnoreDowntime; // @dynamic shouldIgnoreDowntime;
 @property (nonatomic) BOOL shouldPreemptPresentedNotification; // @dynamic shouldPreemptPresentedNotification;
-@property (nonatomic) BOOL shouldPreemptSTAR; // @dynamic shouldPreemptSTAR;
 @property (nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @dynamic shouldPreventNotificationDismissalAfterDefaultAction;
 @property (nonatomic) BOOL shouldSuppressDefaultAction; // @dynamic shouldSuppressDefaultAction;
 @property (nonatomic) BOOL shouldSuppressScreenLightUp; // @dynamic shouldSuppressScreenLightUp;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKComingSoonInfo, WLKLocale, WLKOfferListing, WLKPlayEvent, WLKStoreOffer;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, WLKBasicContentMetadata, WLKChannelDetails, WLKComingSoonInfo, WLKLocale, WLKOfferListing, WLKPlayEvent, WLKStoreOffer;
 
 @interface WLKPlayable : NSObject
 {
@@ -44,11 +44,6 @@
     NSArray *_movieClips;
     NSArray *_subscriptionOffers;
     WLKOfferListing *_offerListing;
-    NSDictionary *_itsData;
-    SSLookupItem *_lookupItem;
-    NSArray *_offers;
-    SSLookupItemOffer *_bestBuyOffer;
-    SSLookupItemOffer *_bestRentalOffer;
 }
 
 @property (readonly, copy, nonatomic) NSArray *SDHLocales; // @synthesize SDHLocales=_SDHLocales;
@@ -57,8 +52,6 @@
 @property (readonly, nonatomic, getter=isAppInstalled) BOOL appInstalled; // @synthesize appInstalled=_appInstalled;
 @property (readonly, copy, nonatomic) NSArray *audioTrackFormats; // @synthesize audioTrackFormats=_audioTrackFormats;
 @property (readonly, copy, nonatomic) NSArray *audioTrackLocales; // @synthesize audioTrackLocales=_audioTrackLocales;
-@property (readonly, copy, nonatomic) SSLookupItemOffer *bestBuyOffer; // @synthesize bestBuyOffer=_bestBuyOffer;
-@property (readonly, copy, nonatomic) SSLookupItemOffer *bestRentalOffer; // @synthesize bestRentalOffer=_bestRentalOffer;
 @property (readonly, copy, nonatomic) WLKStoreOffer *bestStoreBuyOffer;
 @property (readonly, copy, nonatomic) WLKStoreOffer *bestStoreRentalOffer;
 @property (readonly, copy, nonatomic) WLKStoreOffer *bestStoreSubscriptionOffer;
@@ -76,12 +69,9 @@
 @property (readonly, nonatomic, getter=isEntitledAnywhere) BOOL entitledAnywhere; // @synthesize entitledAnywhere=_entitledAnywhere;
 @property (readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property (readonly, copy, nonatomic) NSString *externalServiceID; // @synthesize externalServiceID=_externalServiceID;
-@property (readonly, copy, nonatomic) NSDictionary *itsData; // @synthesize itsData=_itsData;
 @property (readonly, nonatomic, getter=isiTunes) BOOL itunes; // @synthesize itunes=_itunes;
-@property (readonly, copy, nonatomic) SSLookupItem *lookupItem; // @synthesize lookupItem=_lookupItem;
 @property (readonly, copy, nonatomic) NSArray *movieClips; // @synthesize movieClips=_movieClips;
 @property (readonly, copy, nonatomic) WLKOfferListing *offerListing; // @synthesize offerListing=_offerListing;
-@property (readonly, copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property (readonly, nonatomic) WLKPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
 @property (readonly, copy, nonatomic) NSString *playableID; // @synthesize playableID=_playableID;
 @property (readonly, copy, nonatomic) WLKLocale *primaryLocale; // @synthesize primaryLocale=_primaryLocale;

@@ -19,5 +19,6 @@
 - (void)setContentInsets:(struct UIEdgeInsets)arg1 changeReason:(long long)arg2;
 
 @optional
+- (void)setMaxVisibleContentInsetsWhenInEdit:(struct UIEdgeInsets)arg1;
 @end
 

@@ -12,6 +12,7 @@
 {
     NSNumberFormatter *_currencyFormatter;
     NSNumberFormatter *_amountFormatter;
+    NSMutableCharacterSet *_allowedCharacters;
     BOOL _secureText;
     BOOL _secureVisibleText;
     BOOL _numeric;
@@ -21,11 +22,10 @@
     unsigned long long _maxLength;
     NSString *_currencyCode;
     NSString *_displayFormatPlaceholder;
-    NSMutableCharacterSet *_allowedCharacters;
     NSArray *_paddingCharacters;
 }
 
-@property (strong, nonatomic) NSMutableCharacterSet *allowedCharacters; // @synthesize allowedCharacters=_allowedCharacters;
+@property (copy, nonatomic) NSMutableCharacterSet *allowedCharacters;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (copy, nonatomic) NSString *displayFormatPlaceholder; // @synthesize displayFormatPlaceholder=_displayFormatPlaceholder;
 @property (nonatomic) BOOL keepPaddingCharactersForSubmission; // @synthesize keepPaddingCharactersForSubmission=_keepPaddingCharactersForSubmission;
@@ -45,6 +45,7 @@
 - (BOOL)hasDisplayFormat;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (void)setCurrentValue:(id)arg1;
+- (void)setDefaultValue:(id)arg1;
 - (id)stringByApplyingDisplayFormat:(id)arg1;
 - (BOOL)submissionStringMeetsAllRequirements;
 - (void)updateDisplayFormat:(id)arg1;

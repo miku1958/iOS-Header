@@ -12,6 +12,9 @@
 - (oneway void)getGameMetadataForBundleIDs:(NSArray *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getGameStatsForPlayer:(GKPlayerInternal *)arg1 bundleIDs:(NSArray *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)getGamesForPlayer:(GKPlayerInternal *)arg1 includeInstalled:(BOOL)arg2 handler:(void (^)(NSArray *, NSString *, NSError *))arg3;
+- (oneway void)getGamesPlayedMetaData:(NSString *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getGamesPlayedSummaries:(NSString *)arg1 limit:(NSNumber *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getGamesPlayedSummaries:(NSString *)arg1 limit:(NSNumber *)arg2 withinSecs:(NSNumber *)arg3 handler:(void (^)(NSArray *, NSError *))arg4;
 - (oneway void)getGamesWithAchievementStatsForPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSArray *, NSString *, NSError *))arg2;
 - (oneway void)getRatingForGameDescriptor:(NSDictionary *)arg1 handler:(void (^)(float, NSError *))arg2;
 - (oneway void)getStoreItemsForAdamIDs:(NSArray *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _hasCompleteDataSet;
     NSPredicate *defaultQueryPredicate;
+    NSString *_profileName;
     NSMutableArray *_data;
     NSMutableArray *_activeDataQueries;
     NSMutableSet *_activeQueryTypes;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long numberOfSections;
 @property (readonly, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
+@property (copy, nonatomic) NSString *profileName; // @synthesize profileName=_profileName;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL textAdjustsFontSizeToFitWidth;
 @property (readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;

@@ -15,14 +15,12 @@
 @interface _INPBDataString : PBCodable <_INPBDataString, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSArray *_alternatives;
     NSString *_localizedValue;
     NSString *_pronunciationHint;
     NSString *_vocabularyIdentifier;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
 @property (readonly, nonatomic) unsigned long long alternativesCount;
 @property (readonly, copy) NSString *debugDescription;

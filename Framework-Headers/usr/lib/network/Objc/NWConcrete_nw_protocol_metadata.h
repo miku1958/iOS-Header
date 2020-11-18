@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NWConcrete_nw_protocol_definition *definition;
     unsigned char identifier[16];
     void *handle;
+    char *data;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithDefinition:(id)arg1 identifier:(unsigned char [16])arg2;
 
 @end
 

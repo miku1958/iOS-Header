@@ -6,28 +6,28 @@
 
 #import <HealthDaemon/HDSimpleGraphObject.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 
 @interface HDSimpleGraphNode : HDSimpleGraphObject
 {
-    BOOL _areAllRelationshipsLoaded;
-    BOOL _areAttributesLoaded;
-    NSString *_name;
-    NSMutableArray *_relationships;
     NSMutableArray *_attributes;
+    BOOL _areAttributesLoaded;
+    BOOL _areAllRelationshipsLoaded;
+    NSString *_name;
+    NSArray *_relationships;
 }
 
-@property (nonatomic) BOOL areAllRelationshipsLoaded; // @synthesize areAllRelationshipsLoaded=_areAllRelationshipsLoaded;
-@property (nonatomic) BOOL areAttributesLoaded; // @synthesize areAttributesLoaded=_areAttributesLoaded;
-@property (strong, nonatomic) NSMutableArray *attributes; // @synthesize attributes=_attributes;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSMutableArray *relationships; // @synthesize relationships=_relationships;
+@property (readonly, nonatomic) BOOL areAllRelationshipsLoaded; // @synthesize areAllRelationshipsLoaded=_areAllRelationshipsLoaded;
+@property (readonly, nonatomic) NSArray *attributes;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSArray *relationships; // @synthesize relationships=_relationships;
 
++ (id)nodeWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 loadAttributes:(BOOL)arg4 loadRelationshipsWithDepth:(long long)arg5 error:(id *)arg6;
 - (void).cxx_destruct;
 - (BOOL)_work_loadRelatedNodesRecursiveForRelationships:(id)arg1 maxDepth:(long long)arg2 currentDepth:(long long)arg3 fetchType:(long long)arg4 error:(id *)arg5;
 - (id)description;
 - (id)init;
-- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 shouldLoadRelationships:(BOOL)arg4;
+- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 attributes:(id)arg4 relationships:(id)arg5;
 - (BOOL)work_addAttribute:(id)arg1 ofType:(id)arg2 forKey:(id)arg3 error:(id *)arg4;
 - (BOOL)work_addAttribute:(id)arg1 ofType:(id)arg2 forKeyID:(long long)arg3 error:(id *)arg4;
 - (id)work_attributesWithError:(id *)arg1;

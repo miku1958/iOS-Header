@@ -7,6 +7,7 @@
 #import <HealthRecordsUI/_TtC15HealthRecordsUI22SettingsViewController.h>
 
 @interface _TtC15HealthRecordsUI22SettingsViewController (HealthRecordsUI)
+- (void)closeButtonTapped;
 - (void)sourceListDataSourceDidUpdate:(id)arg1;
 @end
 

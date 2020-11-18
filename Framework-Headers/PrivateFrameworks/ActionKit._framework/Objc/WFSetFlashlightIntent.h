@@ -11,6 +11,7 @@
 
 @class NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface WFSetFlashlightIntent : INIntent <WFBooleanSettingIntent, WFDecimalSettingIntent>
 {
 }

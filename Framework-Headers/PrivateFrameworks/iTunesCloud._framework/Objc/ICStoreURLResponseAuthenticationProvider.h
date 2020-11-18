@@ -15,7 +15,6 @@
 + (BOOL)supportsSecureCoding;
 - (void)_adjustedAuthenticationPolicyForResponse:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_performAuthenticationUsingRequestContext:(id)arg1 usingVerificationInteractionLevel:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)isEqual:(id)arg1;
 - (void)performAuthenticationToHandleResponse:(id)arg1 toRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)performAuthenticationUsingRequestContext:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 

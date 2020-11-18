@@ -16,10 +16,14 @@
 - (id)_accessibilityBriefLabel;
 - (BOOL)_accessibilityIsInCardMode;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetLowHighTemp:(id)arg1;
 - (void)_axSetPrecipitation:(double)arg1;
 - (id)accessibilityElements;
-- (void)setMode:(long long)arg1;
+- (id)axDayForecastValue;
+- (void)axSetDayForecastValue:(id)arg1;
+- (void)setMode:(long long)arg1 forCity:(id)arg2;
 - (void)setPrecipitation:(double)arg1;
+- (id)temperatureFormatter;
 
 @end
 

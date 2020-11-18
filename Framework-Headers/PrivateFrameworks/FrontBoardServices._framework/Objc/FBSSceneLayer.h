@@ -34,6 +34,8 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isCAContextLayer;
 - (BOOL)isExternalSceneLayer;
+- (BOOL)isKeyboardLayer;
+- (BOOL)isKeyboardProxyLayer;
 
 @end
 

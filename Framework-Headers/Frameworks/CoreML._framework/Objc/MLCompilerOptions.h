@@ -6,18 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSNumber, NSString;
 
 @interface MLCompilerOptions : NSObject
 {
     BOOL _dryRun;
+    BOOL _containerIsCloud;
+    BOOL _encryptModel;
     NSString *_platform;
     NSString *_platformVersion;
+    NSNumber *_keyInfoVersion;
+    NSString *_keyID;
+    NSData *_key;
+    NSData *_iv;
+    NSData *_sinf;
+    NSData *_mlsinf;
 }
 
+@property BOOL containerIsCloud; // @synthesize containerIsCloud=_containerIsCloud;
 @property BOOL dryRun; // @synthesize dryRun=_dryRun;
+@property BOOL encryptModel; // @synthesize encryptModel=_encryptModel;
+@property (copy) NSData *iv; // @synthesize iv=_iv;
+@property (copy) NSData *key; // @synthesize key=_key;
+@property (copy) NSString *keyID; // @synthesize keyID=_keyID;
+@property (copy) NSNumber *keyInfoVersion; // @synthesize keyInfoVersion=_keyInfoVersion;
+@property (copy) NSData *mlsinf; // @synthesize mlsinf=_mlsinf;
 @property (strong) NSString *platform; // @synthesize platform=_platform;
 @property (strong) NSString *platformVersion; // @synthesize platformVersion=_platformVersion;
+@property (copy) NSData *sinf; // @synthesize sinf=_sinf;
 
 + (id)defaultOptions;
 - (void).cxx_destruct;

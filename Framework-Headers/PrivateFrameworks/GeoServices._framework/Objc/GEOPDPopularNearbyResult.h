@@ -26,9 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_litePlaceResults:1;
         unsigned int read_sectionHeader:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_litePlaceResults:1;
-        unsigned int wrote_sectionHeader:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,9 +38,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsLitePlaceResult:(struct GEOPDLitePlaceResult)arg1;
-- (void)_readLitePlaceResults;
-- (void)_readSectionHeader;
 - (void)addLitePlaceResult:(struct GEOPDLitePlaceResult)arg1;
 - (void)clearLitePlaceResults;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -54,7 +49,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (struct GEOPDLitePlaceResult)litePlaceResultAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

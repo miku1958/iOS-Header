@@ -23,13 +23,14 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 callId:(unsigned int)arg3 localSSRC:(unsigned int)arg4;
 - (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 callId:(unsigned int)arg3 localSSRC:(unsigned int)arg4 enableNetworkMonitor:(BOOL)arg5;
 - (void)onRTCPPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
-- (void)onStart;
+- (int)onStart;
 - (void)onStop;
 - (void)reportWRMMetrics:(const CDStruct_dea828ac *)arg1;
 - (void)setPreWarmState:(BOOL)arg1;
 - (void)setWRMCallId:(unsigned int)arg1;
+- (void)setWRMCoexMetrics:(id)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
-- (void)setWRMNotification:(CDStruct_0693755d *)arg1;
+- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
 - (void)startWRM;
 - (void)stopWRM;
 

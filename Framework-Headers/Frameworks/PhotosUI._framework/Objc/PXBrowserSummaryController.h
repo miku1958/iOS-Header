@@ -36,6 +36,7 @@
         BOOL selectionSnapshot;
         BOOL filteringContainerContent;
         BOOL useAssetImportDate;
+        BOOL shouldUpdateImmediately;
     } _dataSourceRespondsTo;
     BOOL _shouldUseSubtitles;
     BOOL _shouldUseNavigationTitle;
@@ -46,6 +47,7 @@
     NSDictionary *_defaultAttributes;
     NSDictionary *_emphasizedAttributes;
     NSDictionary *_selectionAttributes;
+    unsigned long long _containerDateFormatGranularity;
     id<PXBrowserSummaryControllerDataSource> _dataSource;
     NSAttributedString *_attributedPrimaryTitle;
     NSString *_secondaryTitle;
@@ -70,6 +72,7 @@
 
 @property (copy, nonatomic) NSAttributedString *attributedPrimaryTitle; // @synthesize attributedPrimaryTitle=_attributedPrimaryTitle;
 @property (copy, nonatomic) NSAttributedString *attributedSelectionTitle; // @synthesize attributedSelectionTitle=_attributedSelectionTitle;
+@property (readonly, nonatomic) unsigned long long containerDateFormatGranularity; // @synthesize containerDateFormatGranularity=_containerDateFormatGranularity;
 @property (copy, nonatomic) NSDateInterval *containerDateInterval; // @synthesize containerDateInterval=_containerDateInterval;
 @property (copy, nonatomic) NSString *containerTitle; // @synthesize containerTitle=_containerTitle;
 @property (weak, nonatomic) id<PXBrowserSummaryControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -112,6 +115,7 @@
 - (void)_invalidateStackedAssets;
 - (void)_invalidateTitles;
 - (BOOL)_needsUpdate;
+- (id)_performRequestBlock:(CDUnknownBlockType)arg1;
 - (id)_requestTitlesInfoWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)_setNeedsUpdate;
 - (void)_updateAttributedSelectionTitleIfNeeded;
@@ -136,6 +140,8 @@
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (long long)priorityForInfoRequestOfKind:(id)arg1;
 - (id)requestInfoOfKind:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
+- (void)setContainerDateFormatGranularity:(unsigned long long)arg1;
+- (BOOL)shouldUpdateImmediately;
 
 @end
 

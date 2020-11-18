@@ -13,7 +13,7 @@
 @property (readonly, nonatomic) NSArray *eventData;
 @property (readonly, nonatomic) unsigned long long overallPosition;
 @property (readonly, nonatomic) unsigned long long startOverallPosition;
-@property (readonly, nonatomic) long long startPosition;
+@property (readonly, nonatomic) unsigned long long startPosition;
 
 
 @optional

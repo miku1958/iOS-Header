@@ -13,8 +13,11 @@
 @optional
 - (void)loader:(RUILoader *)arg1 didFailWithError:(NSError *)arg2;
 - (void)loader:(RUILoader *)arg1 didFinishLoadWithError:(NSError *)arg2;
+- (void)loader:(RUILoader *)arg1 didFinishLoadWithError:(NSError *)arg2 forRequest:(NSURLRequest *)arg3;
 - (void)loader:(RUILoader *)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;
 - (void)loader:(RUILoader *)arg1 didReceiveHTTPResponse:(NSHTTPURLResponse *)arg2;
+- (void)loader:(RUILoader *)arg1 didReceiveHTTPResponse:(NSHTTPURLResponse *)arg2 forRequest:(NSURLRequest *)arg3;
+- (void)loader:(RUILoader *)arg1 loadResourcesForObjectModel:(RUIObjectModel *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)loader:(RUILoader *)arg1 receivedObjectModel:(RUIObjectModel *)arg2 actionSignal:(unsigned long long)arg3;
 - (void)loader:(RUILoader *)arg1 receivedObjectModel:(RUIObjectModel *)arg2 topActionSignal:(RUIActionSignal *)arg3;
 - (NSURLRequest *)loader:(RUILoader *)arg1 willLoadRequest:(NSURLRequest *)arg2 redirectResponse:(NSURLResponse *)arg3;

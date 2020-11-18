@@ -6,12 +6,13 @@
 
 #import <Photos/PHPhotoLibrary.h>
 
-@class PXPhotoLibraryLocalDefaults;
+@class PHFetchOptions, PXPhotoLibraryLocalDefaults;
 
 @interface PHPhotoLibrary (PhotosUICore)
 
 @property (readonly, nonatomic, getter=px_areChangesPaused) BOOL px_changesPaused;
 @property (readonly) PXPhotoLibraryLocalDefaults *px_localDefaults;
+@property (readonly, copy, nonatomic) PHFetchOptions *px_standardLibrarySpecificFetchOptions;
 
 + (id)px_appPhotoLibrary;
 - (id)px_assetCollectionForSmartAlbumWithSubtype:(long long)arg1;

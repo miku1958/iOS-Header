@@ -27,11 +27,7 @@
         unsigned int read_ess:1;
         unsigned int read_location:1;
         unsigned int read_tiles:1;
-        unsigned int wrote_ess:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_tileKey:1;
-        unsigned int wrote_tiles:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,11 +45,6 @@
 + (Class)tileType;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
-- (void)_addNoFlagsEss:(id)arg1;
-- (void)_addNoFlagsTile:(id)arg1;
-- (void)_readEss;
-- (void)_readLocation;
-- (void)_readTiles;
 - (void)addEss:(id)arg1;
 - (void)addTile:(id)arg1;
 - (void)clearEss;
@@ -67,7 +58,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -24,6 +24,7 @@
 - (id)commitItem;
 - (id)copyForCreatingNewAction;
 - (id)createNewAction;
+- (id)description;
 - (BOOL)hasSameTargetAsAction:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (id)performValidation;

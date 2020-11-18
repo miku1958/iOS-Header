@@ -6,14 +6,12 @@
 
 #import <PhotosUICore/PXGadgetProvider.h>
 
-#import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXFeedSectionInfosManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXForYouRankable-Protocol.h>
-#import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
 @class NSDate, NSString, PXFeedSectionInfosManager, PXInboxAggregateDataSourceManager;
 
-@interface PXSharedAlbumActivityHorizontalGadgetProvider : PXGadgetProvider <PXFeedSectionInfosManagerDelegate, PXChangeObserver, PXSectionedDataSourceManagerObserver, PXForYouRankable>
+@interface PXSharedAlbumActivityHorizontalGadgetProvider : PXGadgetProvider <PXFeedSectionInfosManagerDelegate, PXForYouRankable>
 {
     PXFeedSectionInfosManager *_feedSectionInfosManager;
     PXInboxAggregateDataSourceManager *_inboxDataSourceManager;
@@ -44,7 +42,6 @@
 - (void)feedSectionInfosManager:(id)arg1 sectionInfosDidChange:(id)arg2;
 - (void)generateGadgets;
 - (id)init;
-- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)resetPriorityDate;
 - (BOOL)supportsDynamicRanking;
 

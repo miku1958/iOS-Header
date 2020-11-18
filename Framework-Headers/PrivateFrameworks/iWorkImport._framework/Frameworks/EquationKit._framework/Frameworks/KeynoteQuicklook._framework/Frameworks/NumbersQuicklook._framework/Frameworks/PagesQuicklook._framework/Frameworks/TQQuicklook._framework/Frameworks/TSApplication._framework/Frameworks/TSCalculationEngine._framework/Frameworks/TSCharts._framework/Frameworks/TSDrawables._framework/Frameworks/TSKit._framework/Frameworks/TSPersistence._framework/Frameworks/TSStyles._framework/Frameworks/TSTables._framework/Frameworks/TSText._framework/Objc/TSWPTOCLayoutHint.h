@@ -9,6 +9,7 @@
 #import <TSText/TSDHint-Protocol.h>
 
 @class NSString;
+@protocol TSDHint;
 
 @interface TSWPTOCLayoutHint : NSObject <TSDHint>
 {
@@ -18,18 +19,19 @@
 @property (readonly, nonatomic) struct _NSRange charRange; // @synthesize charRange=_charRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct CGSize effectiveSize;
+@property (readonly, nonatomic) id<TSDHint> firstChildHint;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFirstHint;
+@property (readonly, nonatomic) id<TSDHint> lastChildHint;
+@property (readonly, nonatomic) struct CGSize maximumSize;
 @property (readonly) Class superclass;
 
 + (Class)archivedHintClass;
 - (id)copyForArchiving;
-- (id)firstChildHint;
 - (id)init;
 - (id)initWithArchive:(const struct TOCLayoutHintArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithRange:(struct _NSRange)arg1;
-- (BOOL)isFirstHint;
-- (id)lastChildHint;
-- (void)offsetByDelta:(int)arg1;
 - (BOOL)overlapsWithSelectionPath:(id)arg1;
 - (void)saveToArchive:(struct TOCLayoutHintArchive *)arg1 archiver:(id)arg2;
 

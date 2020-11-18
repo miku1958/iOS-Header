@@ -27,10 +27,10 @@
     HKObjectType *_objectType;
     NSPredicate *_predicate;
     NSUUID *_activationUUID;
+    _HKFilter *_filter;
     NSString *_debugIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    _HKFilter *_filter;
     long long _qualityOfService;
 }
 
@@ -64,14 +64,20 @@
 + (void)configureServerInterface:(id)arg1;
 + (id)predicateForActivityCachesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForActivitySummariesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
++ (id)predicateForActivitySummariesWithActivityMoveMode:(long long)arg1;
 + (id)predicateForActivitySummaryWithDateComponents:(id)arg1;
 + (id)predicateForCategorySamplesWithOperatorType:(unsigned long long)arg1 value:(long long)arg2;
 + (id)predicateForClinicalRecordsFromSource:(id)arg1 FHIRResourceType:(id)arg2 identifier:(id)arg3;
 + (id)predicateForClinicalRecordsWithFHIRResourceType:(id)arg1;
 + (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
 + (id)predicateForDiagnosticTestResultCategory:(id)arg1;
++ (id)predicateForElectrocardiogramsWithClassification:(long long)arg1;
++ (id)predicateForElectrocardiogramsWithPrivateClassification:(unsigned long long)arg1;
++ (id)predicateForElectrocardiogramsWithSymptomsStatus:(long long)arg1;
 + (id)predicateForMedicalRecordWithState:(unsigned long long)arg1;
 + (id)predicateForObjectWithUUID:(id)arg1;
++ (id)predicateForObjectsAssociatedWithElectrocardiogram:(id)arg1;
++ (id)predicateForObjectsFromContributorWithUUID:(id)arg1;
 + (id)predicateForObjectsFromDevices:(id)arg1;
 + (id)predicateForObjectsFromSource:(id)arg1;
 + (id)predicateForObjectsFromSourceRevisions:(id)arg1;
@@ -106,21 +112,20 @@
 - (void).cxx_destruct;
 - (id)_filterForPredicate:(id)arg1 objectType:(id)arg2;
 - (id)_initWithObjectType:(id)arg1 predicate:(id)arg2;
-- (id)_predicateFilterClasses;
 - (void)_queue_activateWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_queue_deactivateWithError:(id)arg1;
+- (BOOL)_queue_deactivateWithError:(id)arg1;
 - (void)_queue_finishActivationWithServerProxy:(id)arg1 activationUUID:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_throwInvalidArgumentExceptionIfHasBeenExecuted:(SEL)arg1;
 - (void)activateWithClientQueue:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3 time:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)client_deliverError:(id)arg1 forQuery:(id)arg2;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;
-- (void)deactivate;
+- (BOOL)deactivate;
 - (id)exportedInterface;
 - (BOOL)hasQueryUUID:(id)arg1;
 - (void)queue_deactivate;
 - (void)queue_deliverError:(id)arg1;
-- (void)queue_dispatchToClientForUUID:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)queue_dispatchToClientForUUID:(id)arg1 shouldDeactivate:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (void)queue_queryDidFinishActivation:(id)arg1 success:(BOOL)arg2 error:(id)arg3;

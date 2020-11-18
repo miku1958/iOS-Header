@@ -79,10 +79,8 @@
 + (void)insertPageControllerAtIndexes:(id)arg1 withNames:(id)arg2 contexts:(id)arg3;
 + (void)movePageControllerAtIndex:(long long)arg1 toIndex:(long long)arg2;
 + (void)notificationController:(id)arg1 showNotificationInterfaceType:(long long)arg2;
-+ (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)openSystemURL:(id)arg1;
 + (void)reloadRootControllersWithNames:(id)arg1 contexts:(id)arg2;
-+ (void)reloadRootPageControllersWithNames:(id)arg1 contexts:(id)arg2 orientation:(long long)arg3 pageIndex:(long long)arg4;
 + (void)removePageControllerAtIndexes:(id)arg1;
 + (void)sendCacheRequest:(id)arg1;
 + (void)sendCacheRequestMessage:(id)arg1;
@@ -115,7 +113,6 @@
 - (void)_saveReceiveTime;
 - (void)_saveSendTimeAndSize:(unsigned long long)arg1;
 - (BOOL)_sendDataToApp:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_sendOpenParentApplicationRequest;
 - (id)_setupSignal:(int)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setupSignalHandlers;
 - (void)_tellApplicationThatInterfaceControllerCantBeFound:(id)arg1;
@@ -159,7 +156,6 @@
 - (void)layoutDirection:(long long)arg1;
 - (void)movePageControllerAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)notificationController:(id)arg1 showNotificationInterfaceType:(long long)arg2;
-- (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)openSystemURL:(id)arg1;
 - (id)pageInterfaceCreationContextForID:(id)arg1;
 - (void)performAfterApplicationDidFinishLaunching:(CDUnknownBlockType)arg1;

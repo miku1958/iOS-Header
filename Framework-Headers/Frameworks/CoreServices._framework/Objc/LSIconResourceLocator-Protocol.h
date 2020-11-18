@@ -6,14 +6,13 @@
 
 #import <CoreServices/NSObject-Protocol.h>
 
-@class LSBundleProxy, NSDictionary, NSString, NSURL;
+@class NSDictionary, NSString, NSURL;
 
 @protocol LSIconResourceLocator <NSObject>
 
 @property (readonly, copy) NSString *applicationIdentifier;
 @property (readonly) NSDictionary *bundleIconsDictionary;
 @property (readonly) NSURL *resourcesDirectoryURL;
-@property (readonly, copy) LSBundleProxy *typeOwner;
 
 @end
 

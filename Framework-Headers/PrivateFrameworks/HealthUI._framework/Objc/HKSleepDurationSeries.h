@@ -6,31 +6,51 @@
 
 #import <HealthUI/HKBarSeries.h>
 
-@class HKStrokeStyle, NSArray;
+@class HKLineSeriesPointMarkerStyle, HKStrokeStyle, NSArray, UIImage;
 
 @interface HKSleepDurationSeries : HKBarSeries
 {
+    UIImage *_goalLineMarkerImage;
+    BOOL _extendGoalLineToAxis;
+    BOOL _hideInBedData;
+    BOOL _hideAsleepData;
     NSArray *_defaultFillStyles;
     NSArray *_highlightedFillStyles;
-    HKStrokeStyle *_goalLineStokeStyle;
+    NSArray *_inactiveFillStyles;
+    HKStrokeStyle *_goalLineStrokeStyle;
+    HKLineSeriesPointMarkerStyle *_goalLineMarkerStyle;
     CDUnknownBlockType _startOfDayTransform;
 }
 
 @property (copy, nonatomic) NSArray *defaultFillStyles; // @synthesize defaultFillStyles=_defaultFillStyles;
-@property (copy, nonatomic) HKStrokeStyle *goalLineStokeStyle; // @synthesize goalLineStokeStyle=_goalLineStokeStyle;
+@property (nonatomic) BOOL extendGoalLineToAxis; // @synthesize extendGoalLineToAxis=_extendGoalLineToAxis;
+@property (strong, nonatomic) HKLineSeriesPointMarkerStyle *goalLineMarkerStyle; // @synthesize goalLineMarkerStyle=_goalLineMarkerStyle;
+@property (copy, nonatomic) HKStrokeStyle *goalLineStrokeStyle; // @synthesize goalLineStrokeStyle=_goalLineStrokeStyle;
+@property (nonatomic) BOOL hideAsleepData; // @synthesize hideAsleepData=_hideAsleepData;
+@property (nonatomic) BOOL hideInBedData; // @synthesize hideInBedData=_hideInBedData;
 @property (copy, nonatomic) NSArray *highlightedFillStyles; // @synthesize highlightedFillStyles=_highlightedFillStyles;
+@property (copy, nonatomic) NSArray *inactiveFillStyles; // @synthesize inactiveFillStyles=_inactiveFillStyles;
 @property (copy, nonatomic) CDUnknownBlockType startOfDayTransform; // @synthesize startOfDayTransform=_startOfDayTransform;
 
 - (void).cxx_destruct;
 - (void)_addAnnotationForValue:(double)arg1;
+- (void)_addGoalAnnotationAtLocation:(double)arg1;
+- (BOOL)_currentGoal:(id)arg1 differentFrom:(id)arg2;
+- (BOOL)_dataIsHidden:(long long)arg1;
+- (void)_drawGoalLineMarkers:(id)arg1 context:(struct CGContext *)arg2;
 - (void)_drawGoalLinePath:(id)arg1 context:(struct CGContext *)arg2;
 - (void)_drawPaths:(id)arg1 withFillStyles:(id)arg2 strokeStyle:(id)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
-- (id)_durationFormatter;
+- (id)_durationAbbreviatedFormatter;
+- (id)_durationShortFormatter;
+- (void)_rebuildPointMarkerImages;
+- (id)_stringForDuration:(double)arg1;
 - (double)barWidthForVisibleBarCount:(long long)arg1 axisRect:(struct CGRect)arg2 minimumSpacing:(double)arg3;
+- (void)clearCaches;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
+- (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
 - (void)drawWithBlockCoordinates:(id)arg1 visibleBarCount:(long long)arg2 pointTransform:(struct CGAffineTransform)arg3 context:(struct CGContext *)arg4 axisRect:(struct CGRect)arg5;
+- (id)init;
 - (BOOL)supportsMultiTouchSelection;
-- (long long)visibleBarCountWithZoomLevelConfiguration:(id)arg1;
 
 @end
 

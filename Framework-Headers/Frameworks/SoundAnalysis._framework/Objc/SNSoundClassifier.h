@@ -8,7 +8,7 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class MLModel, NSString;
+@class MLModel, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNSoundClassifier : NSObject <SNAnalyzing>
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     shared_ptr_f6ac7592 _graph;
     int _modelBlockSize;
     int _resultsToDiscardCount;
-    int _primeFrameCount;
+    NSArray *_feedbackConnections;
     double _overlapFactor;
 }
 
@@ -25,8 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) shared_ptr_f6ac7592 graph;
 @property (readonly) unsigned long long hash;
-@property double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
-@property (readonly) int primeFrameCount; // @synthesize primeFrameCount=_primeFrameCount;
+@property (readonly) double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 @property (readonly, nonatomic) struct Box *resultsBox;
 @property (readonly) Class superclass;
 
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)init;
-- (id)initWithMLModel:(id)arg1 error:(id *)arg2;
+- (id)initWithMLModel:(id)arg1 overlapFactor:(double)arg2 error:(id *)arg3;
 - (void)primeGraph;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;

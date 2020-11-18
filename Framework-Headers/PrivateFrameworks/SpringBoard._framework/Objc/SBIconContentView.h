@@ -16,6 +16,7 @@
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 
 - (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithOrientation:(long long)arg1;
 - (void)layoutSubviews;
 

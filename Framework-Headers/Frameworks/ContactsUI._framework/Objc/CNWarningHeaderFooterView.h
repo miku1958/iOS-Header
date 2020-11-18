@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 + (id)exclamationMark;
 - (void).cxx_destruct;
-- (void)prepareForReuse;
 - (id)warningAttributedText;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSData, NSDate, NSNumber, NSSet, NSString, NSURL;
+@class NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface VUIVideoManagedObject : NSManagedObject
@@ -14,7 +14,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSString *adamID; // @dynamic adamID;
+@property (readonly, nonatomic) NSDictionary *additionalFPSRequestParams;
 @property (strong, nonatomic) NSData *additionalFPSRequestParamsJSONData; // @dynamic additionalFPSRequestParamsJSONData;
+@property (nonatomic) BOOL allowsCellular; // @dynamic allowsCellular;
+@property (nonatomic) BOOL allowsManualRenewal; // @dynamic allowsManualRenewal;
+@property (copy, nonatomic) NSDate *availabilityEndDate; // @dynamic availabilityEndDate;
 @property (copy, nonatomic) NSNumber *bookmarkTime; // @dynamic bookmarkTime;
 @property (copy, nonatomic) NSDate *bookmarkTimeStamp; // @dynamic bookmarkTimeStamp;
 @property (copy, nonatomic) NSString *brandID; // @dynamic brandID;
@@ -23,11 +27,13 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *contentRatingDomain; // @dynamic contentRatingDomain;
 @property (copy, nonatomic) NSNumber *contentRatingRank; // @dynamic contentRatingRank;
 @property (copy, nonatomic) NSDate *dateAdded; // @dynamic dateAdded;
+@property (strong, nonatomic) NSData *downloadQOSMetricsJSONData; // @dynamic downloadQOSMetricsJSONData;
 @property (nonatomic) long long downloadState; // @dynamic downloadState;
 @property (copy, nonatomic) NSNumber *downloadTaskIdentifier; // @dynamic downloadTaskIdentifier;
 @property (copy, nonatomic) NSURL *downloadURL; // @dynamic downloadURL;
 @property (copy, nonatomic) NSNumber *dsid; // @dynamic dsid;
 @property (copy, nonatomic) NSNumber *duration; // @dynamic duration;
+@property (readonly, nonatomic) NSDate *expirationDate;
 @property (copy, nonatomic) NSString *externalID; // @dynamic externalID;
 @property (copy, nonatomic) NSURL *fpsCertificateURL; // @dynamic fpsCertificateURL;
 @property (strong, nonatomic) NSSet *fpsKeyInfo; // @dynamic fpsKeyInfo;
@@ -35,23 +41,27 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSURL *fpsNonceURL; // @dynamic fpsNonceURL;
 @property (copy, nonatomic) NSNumber *frequencyOfAgeConfirmation; // @dynamic frequencyOfAgeConfirmation;
 @property (copy, nonatomic) NSString *genreName; // @dynamic genreName;
+@property (nonatomic) BOOL hasExpirationDate; // @dynamic hasExpirationDate;
 @property (strong, nonatomic) NSSet *imageInfos; // @dynamic imageInfos;
 @property (nonatomic) BOOL isAdultContent; // @dynamic isAdultContent;
 @property (copy, nonatomic) NSString *localPlaybackRelativeFilePath; // @dynamic localPlaybackRelativeFilePath;
 @property (copy, nonatomic) NSURL *localPlaybackURL; // @dynamic localPlaybackURL;
+@property (nonatomic) BOOL markedAsDeleted; // @dynamic markedAsDeleted;
+@property (readonly, nonatomic) NSDictionary *mediaMetrics;
 @property (strong, nonatomic) NSData *mediaMetricsJSONData; // @dynamic mediaMetricsJSONData;
+@property (copy, nonatomic) NSNumber *offlineKeyRenewalPolicy; // @dynamic offlineKeyRenewalPolicy;
 @property (copy, nonatomic) NSURL *playbackURL; // @dynamic playbackURL;
 @property (copy, nonatomic) NSString *referenceID; // @dynamic referenceID;
 @property (copy, nonatomic) NSDate *releaseDate; // @dynamic releaseDate;
 @property (copy, nonatomic) NSNumber *requiredAgeForPlayback; // @dynamic requiredAgeForPlayback;
 @property (copy, nonatomic) NSString *rtcServiceIdentifier; // @dynamic rtcServiceIdentifier;
+@property (nonatomic) BOOL shouldMarkAsDeletedAfterCancellationOrFailure; // @dynamic shouldMarkAsDeletedAfterCancellationOrFailure;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (strong, nonatomic) NSData *vpafMetricsJSONData; // @dynamic vpafMetricsJSONData;
 
 + (id)fetchRequest;
++ (id)keyPathsForValuesAffectingExpirationDate;
 + (id)keyPathsForValuesAffectingLocalPlaybackURL;
-- (id)additionalFPSRequestParams;
-- (id)mediaMetrics;
 
 @end
 

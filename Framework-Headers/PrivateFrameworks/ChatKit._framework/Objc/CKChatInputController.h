@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+#import <ChatKit/CKAppMenuViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKAppSelectionInterface-Protocol.h>
 #import <ChatKit/CKBrowserAppManagerViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKBrowserSwitcherViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKBrowserTransitionCoordinatorDelegate-Protocol.h>
@@ -17,12 +19,14 @@
 #import <ChatKit/CKMessageEntryViewInputDelegate-Protocol.h>
 #import <ChatKit/CKPhotoBrowserViewControllerSendDelegate-Protocol.h>
 #import <ChatKit/CKPluginEntryViewControllerDelegate-Protocol.h>
+#import <ChatKit/SKStoreProductViewControllerDelegate-Protocol.h>
 #import <ChatKit/UITextInputPayloadDelegate-Protocol.h>
+#import <ChatKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class CKBrowserSwitcherViewController, CKChatEagerUploadController, CKDeviceOrientationManager, CKHandwritingPresentationController, CKKeyboardContentViewController, CKMessageEntryView, CKScheduledUpdater, IMBalloonPlugin, IMBalloonPluginDataSource, IMScheduledUpdater, NSDate, NSString, UINavigationController, UITextInputPayloadController, UIViewController;
 @protocol CKBrowserViewControllerProtocol, CKChatInputControllerDelegate;
 
-@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate>
+@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate, CKAppMenuViewControllerDelegate, UIViewControllerTransitioningDelegate, SKStoreProductViewControllerDelegate, CKAppSelectionInterface>
 {
     BOOL _isDismissingAppModal;
     BOOL _shouldSuppressStatusBarForHandwriting;
@@ -44,7 +48,7 @@
     CKDeviceOrientationManager *_orientationManager;
     long long _lastSeenOrientation;
     UINavigationController *_presentedBrowserNavigationController;
-    UIViewController<CKBrowserViewControllerProtocol> *_modalBrowserViewController;
+    UIViewController<CKBrowserViewControllerProtocol> *_macBrowserViewController;
     IMScheduledUpdater *_dismissEntryViewShelfUpdater;
     CKScheduledUpdater *_orientationUpdater;
     CKHandwritingPresentationController *_handwritingPresentationController;
@@ -80,7 +84,7 @@
 @property (readonly, nonatomic) BOOL isDismissingAppModal; // @synthesize isDismissingAppModal=_isDismissingAppModal;
 @property (nonatomic) BOOL keyboardIsHiding; // @synthesize keyboardIsHiding=_keyboardIsHiding;
 @property (nonatomic) long long lastSeenOrientation; // @synthesize lastSeenOrientation=_lastSeenOrientation;
-@property (strong, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *modalBrowserViewController; // @synthesize modalBrowserViewController=_modalBrowserViewController;
+@property (strong, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *macBrowserViewController; // @synthesize macBrowserViewController=_macBrowserViewController;
 @property (strong, nonatomic) CKDeviceOrientationManager *orientationManager; // @synthesize orientationManager=_orientationManager;
 @property (strong, nonatomic) CKScheduledUpdater *orientationUpdater; // @synthesize orientationUpdater=_orientationUpdater;
 @property (strong, nonatomic) UINavigationController *presentedBrowserNavigationController; // @synthesize presentedBrowserNavigationController=_presentedBrowserNavigationController;
@@ -101,7 +105,7 @@
 - (void)_deferredCommitSticker:(id)arg1;
 - (void)_deferredDismissToKeyboardAndFocusEntryView:(id)arg1;
 - (void)_deferredRequestPresentationStyleExpanded:(id)arg1;
-- (void)_deferredRequestPresentationStyleFullScreenModalForPlugin:(id)arg1;
+- (void)_deferredRequestPresentationStyleFullScreenModalForPluginInfo:(id)arg1;
 - (void)_dismissBrowserViewControllerAndReloadInputViews:(BOOL)arg1;
 - (void)_dismissCompactSwitcherOverKeyboardWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_entryViewSnapshotWithFrame:(struct CGRect)arg1;
@@ -124,7 +128,11 @@
 - (BOOL)_switcherPluginCanMessageAPI;
 - (BOOL)_switcherPluginCanMessageAPIOnBehalfOfPlugin:(id)arg1;
 - (BOOL)_switcherPluginHasTouchTokenForDirectSend;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)appIconOverride;
+- (void)appMenuViewController:(id)arg1 didSelectMenuItem:(id)arg2;
+- (void)appSelectionInterfaceSelectedItem:(id)arg1;
 - (id)appTitleOverride;
 - (void)applicationWillAddDeactivationReasonNotification:(id)arg1;
 - (id)balloonPluginForIndexPath:(id)arg1;
@@ -182,6 +190,10 @@
 - (void)keyboardWillShow:(id)arg1;
 - (void)launchAndShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (id)localizedTitleForClientActionFromUrl:(id)arg1 context:(id)arg2;
+- (void)macPresentStoreViewControllerForAdamID:(id)arg1;
+- (void)macShowAppMenu;
+- (void)macShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
+- (void)macShowExpandedBrowser:(id)arg1;
 - (BOOL)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryView:(id)arg1 didSelectPluginAtIndex:(id)arg2;
 - (void)messageEntryViewBrowserButtonHit:(id)arg1;
@@ -192,18 +204,23 @@
 - (long long)messageEntryViewHighLightInputButton:(id)arg1;
 - (void)messageEntryViewPhotoButtonHit:(id)arg1;
 - (void)messageEntryViewPhotoButtonTouchDown:(id)arg1;
+- (void)messageEntryViewSelectedAppMenuItem:(id)arg1;
 - (void)notifyBrowserViewControllerOfMatchingNewMessages:(id)arg1;
 - (void)openAppExtensionWithAdamID:(id)arg1;
 - (void)openURL:(id)arg1 applicationIdentifier:(id)arg2 pluginID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openURL:(id)arg1 pluginID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)participantHandles;
 - (id)pluginBundleID;
 - (void)prepareForSuspend;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentAppManager;
 - (void)presentAppStoreForAdamID:(id)arg1;
 - (void)presentAppStoreForURL:(id)arg1;
 - (void)presentAppStoreForURL:(id)arg1 fromSourceApplication:(id)arg2;
 - (void)presentPluginWithBundleID:(id)arg1 appLaunchPayload:(id)arg2;
 - (void)presentViewControllerWithPluginChatItem:(id)arg1 presentationStyle:(unsigned long long)arg2;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (void)productViewControllerDidFinish:(id)arg1;
 - (void)registerForTextInputPayloadHandling:(BOOL)arg1 isGroupChat:(BOOL)arg2;
 - (void)requestPhotoBrowserInitFromDraft:(id)arg1;
 - (void)requestPhotoBrowserToAppendFinalImagesToComposition;
@@ -211,13 +228,12 @@
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1 forPlugin:(id)arg2;
 - (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1;
-- (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1 skipValidation:(BOOL)arg2;
+- (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1 datasource:(id)arg2 skipValidation:(BOOL)arg3;
 - (void)setEntryViewHidden:(BOOL)arg1;
 - (void)setInputViewVisible:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)setInputViewVisible:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3 messageDelegate:(BOOL)arg4;
 - (void)setLocalUserIsTyping:(BOOL)arg1;
 - (BOOL)shouldPreventAppFromDisplayingForBundleIdentifier:(id)arg1;
-- (void)showAppsBrowser;
 - (void)showBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (void)showDTCompose;
 - (void)showEntryViewShelf:(id)arg1;
@@ -239,13 +255,10 @@
 - (void)swipeDismissBrowser;
 - (void)switcherViewController:(id)arg1 didSelectPluginAtIndexPath:(id)arg2;
 - (void)switcherViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
-- (void)switcherViewController:(id)arg1 willHideSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
-- (void)switcherViewController:(id)arg1 willShowSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
 - (void)switcherViewControllerDidCollapse:(id)arg1;
 - (void)switcherViewControllerDidFinishSwitching:(id)arg1 toViewController:(id)arg2;
 - (void)switcherViewControllerDidSelectAppManager:(id)arg1 shouldRestoreAppSwitcher:(BOOL)arg2;
 - (void)switcherViewControllerDidSelectAppStore:(id)arg1 shouldRestoreAppSwitcher:(BOOL)arg2;
-- (void)switcherViewControllerDidStartSwitching:(id)arg1;
 - (void)unregisterForTextInputPayloadHandling;
 - (void)willSendComposition;
 - (id)workingDirForDraft;

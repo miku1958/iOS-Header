@@ -39,6 +39,7 @@
 - (id)fetchSubscriptionInfo;
 - (id)fetchSystemCapabilitiesForSubscriptions:(id)arg1;
 - (id)init;
+- (BOOL)isSubscriptionOrderedSet:(id)arg1 equivalentToSubscriptionOrderedSet:(id)arg2;
 - (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
 - (void)subscriptionInfoDidChange;
 - (BOOL)supportsCellularNetworkSelectionForSubscriptionContext:(id)arg1;

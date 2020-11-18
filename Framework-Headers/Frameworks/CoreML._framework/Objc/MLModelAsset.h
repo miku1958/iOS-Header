@@ -25,10 +25,15 @@
 @property BOOL ranLoad; // @synthesize ranLoad=_ranLoad;
 @property (readonly, nonatomic) id<MLRegressor> regressor;
 
++ (id)fetchNetworkURLFromCompiledModelAtURL:(id)arg1 error:(id *)arg2;
++ (BOOL)isANESupported;
 + (id)modelAssetWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
 + (id)modelAssetWithSpecificationURL:(id)arg1 error:(id *)arg2;
 + (id)modelAssetWithURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)modelAssetWithURL:(id)arg1 error:(id *)arg2;
++ (BOOL)needsANECompilationForModelAtURL:(id)arg1 result:(BOOL *)arg2 error:(id *)arg3;
++ (BOOL)purgeANEBinaryForModelAtURL:(id)arg1 error:(id *)arg2;
++ (BOOL)purgeANEIRForModelAtURL:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)classifierWithError:(id *)arg1;
 - (id)description;

@@ -27,16 +27,21 @@
 - (id)constantFeaturesFromContextItems:(id)arg1;
 - (id)constantPETFeaturesFromContextItems:(id)arg1;
 - (id)contextItemsFromEvent:(id)arg1;
+- (BOOL)doesSuggestionProxyMatch:(id)arg1 withInteraction:(id)arg2;
 - (id)feedbackPETPayloadForRule:(id)arg1 ForInteraction:(id)arg2 ForContextItems:(id)arg3 WithConstantFeatures:(id)arg4;
 - (id)feedbackPayloadForRule:(id)arg1 ForInteraction:(id)arg2 ForContextItems:(id)arg3 WithConstantFeatures:(id)arg4;
+- (id)getInteractionRecipientFromInteraction:(id)arg1;
 - (id)init;
 - (id)interactionStoreEventsSinceDate:(id)arg1;
 - (void)loggingForKnowledgeStoreEvent:(id)arg1 WithMatchingInteraction:(id)arg2;
 - (id)matchFeedbackEvent:(id)arg1 WithInteractions:(id)arg2;
+- (void)modelAccuracyLogging:(id)arg1 WithMatchingInteraction:(id)arg2;
 - (BOOL)recipientPredictedCorrectlyByRule:(id)arg1 interaction:(id)arg2 bundleId:(id)arg3;
 - (void)reviewLastDayOfShares;
 - (id)sharesheetFeedbackEventsSinceDate:(id)arg1;
 - (BOOL)targetAppPredictedCorrectlyByRule:(id)arg1 bundleId:(id)arg2;
+- (BOOL)wasInteractionAmongSuggestLess:(id)arg1;
+- (void)writeRecordObjcWithData:(id)arg1;
 
 @end
 

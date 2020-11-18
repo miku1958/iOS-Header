@@ -15,10 +15,6 @@
     NSDate *_eventTimestamp;
 }
 
-@property (nonatomic) long long brightnessLevel; // @synthesize brightnessLevel=_brightnessLevel;
-@property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (copy, nonatomic) NSDate *eventTimestamp; // @synthesize eventTimestamp=_eventTimestamp;
-
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_publishMetrics;

@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)shouldWrapView:(id)arg1;
 - (void).cxx_destruct;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (void)didMoveToWindow;
 - (id)initWithView:(id)arg1;
 - (void)layoutSubviews;

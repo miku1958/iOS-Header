@@ -6,7 +6,7 @@
 
 #import <GameCenterFoundation/GKGameDescriptor.h>
 
-@class GKStoreItemInternal, NSDictionary, NSString;
+@class GKStoreItemInternal, NSDictionary, NSSet, NSString;
 
 @interface GKGameInternal : GKGameDescriptor
 {
@@ -26,7 +26,9 @@
             unsigned int _valid:1;
             unsigned int _unused:1;
             unsigned int _supportsTurnBasedMultiplayer:1;
-            unsigned int _reserved:15;
+            unsigned int _isArcadeGame:1;
+            unsigned int _supportsChallenges:1;
+            unsigned int _reserved:13;
         } ;
         unsigned int _value;
     } _flags;
@@ -34,14 +36,17 @@
     unsigned short _numberOfLeaderboardSets;
     unsigned short _numberOfAchievements;
     unsigned short _maxAchievementPoints;
+    NSSet *_compatiblePlatforms;
 }
 
 @property (readonly, nonatomic) BOOL canBeIndexed;
+@property (strong, nonatomic) NSSet *compatiblePlatforms; // @synthesize compatiblePlatforms=_compatiblePlatforms;
 @property (strong, nonatomic) NSString *defaultLeaderboardIdentifier; // @synthesize defaultLeaderboardIdentifier=_defaultLeaderboardIdentifier;
 @property (nonatomic) unsigned int flags; // @dynamic flags;
 @property (readonly, nonatomic) GKGameDescriptor *gameDescriptor;
 @property (nonatomic) BOOL hasAggregateLeaderboard;
 @property (strong, nonatomic) NSDictionary *icons; // @synthesize icons=_icons;
+@property (nonatomic) BOOL isArcadeGame; // @dynamic isArcadeGame;
 @property (nonatomic) unsigned short maxAchievementPoints; // @synthesize maxAchievementPoints=_maxAchievementPoints;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned short numberOfAchievements; // @synthesize numberOfAchievements=_numberOfAchievements;
@@ -50,6 +55,7 @@
 @property (nonatomic, getter=isPrerendered) BOOL prerendered; // @dynamic prerendered;
 @property (strong, nonatomic) GKStoreItemInternal *storeItem; // @synthesize storeItem=_storeItem;
 @property (nonatomic) BOOL supportsAchievements; // @dynamic supportsAchievements;
+@property (nonatomic) BOOL supportsChallenges; // @dynamic supportsChallenges;
 @property (nonatomic) BOOL supportsLeaderboardSets; // @dynamic supportsLeaderboardSets;
 @property (nonatomic) BOOL supportsLeaderboards; // @dynamic supportsLeaderboards;
 @property (nonatomic) BOOL supportsMultiplayer; // @dynamic supportsMultiplayer;

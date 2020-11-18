@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PPLocalContactStore, PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, PPLocalQuickTypeBroker, PPLocalTopicStore, PPSQLDatabase;
+@class PPLocalConnectionsStore, PPLocalContactStore, PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, PPLocalQuickTypeBroker, PPLocalTopicStore, PPSQLDatabase;
 
 @interface PPFeedbackStorage : NSObject
 {
@@ -17,21 +17,25 @@
     PPLocalQuickTypeBroker *_quickTypeBrokerOverride;
     PPLocalContactStore *_contactStoreOverride;
     PPLocalEventStore *_eventStoreOverride;
+    PPLocalConnectionsStore *_connectionsStoreOverride;
 }
 
++ (void)logFeedback:(id)arg1 domain:(unsigned char)arg2 domainStatus:(int)arg3;
 + (id)storeTypeDescription:(unsigned char)arg1;
 + (void)transformOfferedItemsIntoEngagementAndRejection:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_clearPendingFeedbackRecordsWithStoreType:(unsigned char)arg1 limit:(int)arg2;
+- (void)_emitMaxRowCountEvent;
+- (id)connectionsStore;
 - (id)contactStore;
+- (BOOL)deleteAllPendingFeedbackOlderThanDate:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
 - (id)eventStore;
 - (void)filterPendingFeedbackItems:(id)arg1 storeType:(unsigned char)arg2 timestamp:(double)arg3 clientIdentifier:(id)arg4 clientBundleId:(id)arg5 mappingId:(id)arg6;
-- (id)filteredLocationsFromPendingFeedbackItems:(id)arg1 maxCount:(unsigned long long)arg2 scoringDate:(id)arg3;
 - (id)init;
-- (id)initWithDatabase:(id)arg1 namedEntityStoreOverride:(id)arg2 topicStoreOverride:(id)arg3 locationStoreOverride:(id)arg4 quickTypeBrokerOverride:(id)arg5 contactStoreOverride:(id)arg6 eventStoreOverride:(id)arg7;
+- (id)initWithDatabase:(id)arg1 namedEntityStoreOverride:(id)arg2 topicStoreOverride:(id)arg3 locationStoreOverride:(id)arg4 quickTypeBrokerOverride:(id)arg5 contactStoreOverride:(id)arg6 eventStoreOverride:(id)arg7 connectionsStoreOverride:(id)arg8;
 - (id)locationStore;
 - (id)namedEntityStore;
-- (void)processFilteredPendingFeedbackWithItems:(id)arg1 timestamp:(double)arg2 clientIdentifier:(id)arg3 clientBundleId:(id)arg4 mappingId:(id)arg5 store:(id)arg6;
-- (BOOL)processPendingFeedbackWithStoreType:(unsigned char)arg1 error:(id *)arg2;
+- (BOOL)processPendingFeedbackWithStoreType:(unsigned char)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)quickTypeBroker;
 - (BOOL)storePendingFeedback:(id)arg1 storeType:(unsigned char)arg2 error:(id *)arg3;
 - (id)topicStore;

@@ -11,9 +11,12 @@
 @protocol MTAlarmServer <MTXPCServer>
 - (void)addAlarm:(MTAlarm *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)dismissAlarmWithIdentifier:(NSString *)arg1 dismissAction:(unsigned long long)arg2 withCompletion:(void (^)(NSError *))arg3;
-- (void)getAlarmsWithCompletion:(void (^)(NSArray *, MTAlarm *, MTAlarm *, NSError *))arg1;
+- (void)getAlarmsWithCompletion:(void (^)(NSArray *, NSArray *, MTAlarm *, NSError *))arg1;
+- (void)nextSleepAlarmWithCompletion:(void (^)(MTAlarm *, NSError *))arg1;
 - (void)removeAlarm:(MTAlarm *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)resetSleepAlarmSnoozeStateWithCompletion:(void (^)(NSError *))arg1;
 - (void)snoozeAlarmWithIdentifier:(NSString *)arg1 snoozeAction:(unsigned long long)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)updateAlarm:(MTAlarm *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)updateSleepAlarmsWithCompletion:(void (^)(NSError *))arg1;
 @end
 

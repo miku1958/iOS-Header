@@ -15,6 +15,7 @@
 {
     BOOL _shared;
     BOOL _isSystemService;
+    unsigned int _extensionPointPlatform;
     PKServicePersonality *_solePersonality;
     id<PKServiceDelegate> _delegate;
     NSXPCListener *_serviceListener;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) id<PKServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property unsigned int extensionPointPlatform; // @synthesize extensionPointPlatform=_extensionPointPlatform;
 @property (strong) NSObject<OS_dispatch_source> *firstHostRequestTimer; // @synthesize firstHostRequestTimer=_firstHostRequestTimer;
 @property (readonly) unsigned long long hash;
 @property BOOL isSystemService; // @synthesize isSystemService=_isSystemService;

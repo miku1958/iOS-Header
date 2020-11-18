@@ -4,23 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
+#import <OnBoardingKit/OBBaseWelcomeController.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC28HealthExposureNotificationUI35VerificationCodeEntryViewController : OBWelcomeController
+@interface _TtC28HealthExposureNotificationUI35VerificationCodeEntryViewController : OBBaseWelcomeController
 {
     MISSING_TYPE *flow;
     MISSING_TYPE *healthAgencyModel;
     MISSING_TYPE *statusView;
+    MISSING_TYPE *scrollView;
     MISSING_TYPE *entryView;
+    MISSING_TYPE *contentLayoutGuideBottomConstraint;
+    MISSING_TYPE *itemStackTopConstraint;
+    MISSING_TYPE *keyboardHeight;
 }
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)didTapCancel;
 - (void)didTapHelpButton;
-- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)keyboardWillChangeFrame:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

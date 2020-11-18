@@ -6,18 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class HRSimulatedAtrialFibrillationQuickLookView;
-
 @interface HRSimulatedAtrialFibrillationNotificationView : UIView
 {
-    HRSimulatedAtrialFibrillationQuickLookView *_simView;
 }
 
-@property (strong, nonatomic) HRSimulatedAtrialFibrillationQuickLookView *simView; // @synthesize simView=_simView;
-
-- (void).cxx_destruct;
 - (id)init;
-- (void)layoutSubviews;
 
 @end
 

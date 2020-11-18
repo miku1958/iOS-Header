@@ -13,6 +13,7 @@
 @interface SBVolumeControlState : NSObject <NSCopying>
 {
     BOOL _isAudioPlayingSomewhere;
+    BOOL _isCallOrFaceTimeActive;
     BOOL _currentRouteHasVolumeControl;
     BOOL _isFullyMuted;
     BOOL _isRingerMuted;
@@ -25,6 +26,7 @@
 @property (copy, nonatomic) NSString *activeVolumeCategoryName; // @synthesize activeVolumeCategoryName=_activeVolumeCategoryName;
 @property (nonatomic, setter=setCurrentRouteHasVolumeControl:) BOOL currentRouteHasVolumeControl; // @synthesize currentRouteHasVolumeControl=_currentRouteHasVolumeControl;
 @property (nonatomic, setter=setAudioPlayingSomewhere:) BOOL isAudioPlayingSomewhere; // @synthesize isAudioPlayingSomewhere=_isAudioPlayingSomewhere;
+@property (nonatomic, setter=setCallOrFaceTimeActive:) BOOL isCallOrFaceTimeActive; // @synthesize isCallOrFaceTimeActive=_isCallOrFaceTimeActive;
 @property (nonatomic, setter=setFullyMuted:) BOOL isFullyMuted; // @synthesize isFullyMuted=_isFullyMuted;
 @property (nonatomic, setter=setHostingAppOnLockScreen:) BOOL isHostingAppOnLockScreen; // @synthesize isHostingAppOnLockScreen=_isHostingAppOnLockScreen;
 @property (nonatomic, setter=setRingerMuted:) BOOL isRingerMuted; // @synthesize isRingerMuted=_isRingerMuted;

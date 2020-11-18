@@ -6,8 +6,8 @@
 
 #import <MetalTools/NSObject-Protocol.h>
 
-@class MTLRenderPassDescriptor, NSError, NSString;
-@protocol MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLEvent, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder, MTLResourceStateCommandEncoder;
+@class MTLBlitPassDescriptor, MTLComputePassDescriptor, MTLRenderPassDescriptor, MTLResourceStatePassDescriptor, NSError, NSString;
+@protocol MTLAccelerationStructureCommandEncoder, MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLEvent, MTLLogContainer, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder, MTLResourceStateCommandEncoder;
 
 @protocol MTLCommandBuffer <NSObject>
 
@@ -16,17 +16,22 @@
 @property (readonly) id<MTLCommandQueue> commandQueue;
 @property (readonly) id<MTLDevice> device;
 @property (readonly) NSError *error;
+@property (readonly) unsigned long long errorOptions;
 @property (readonly) double kernelEndTime;
 @property (readonly) double kernelStartTime;
 @property (copy) NSString *label;
+@property (readonly) id<MTLLogContainer> logs;
 @property (readonly) BOOL retainedReferences;
 @property (readonly) unsigned long long status;
 
+- (id<MTLAccelerationStructureCommandEncoder>)accelerationStructureCommandEncoder;
 - (void)addCompletedHandler:(void (^)(id<MTLCommandBuffer>))arg1;
 - (void)addScheduledHandler:(void (^)(id<MTLCommandBuffer>))arg1;
 - (id<MTLBlitCommandEncoder>)blitCommandEncoder;
+- (id<MTLBlitCommandEncoder>)blitCommandEncoderWithDescriptor:(MTLBlitPassDescriptor *)arg1;
 - (void)commit;
 - (id<MTLComputeCommandEncoder>)computeCommandEncoder;
+- (id<MTLComputeCommandEncoder>)computeCommandEncoderWithDescriptor:(MTLComputePassDescriptor *)arg1;
 - (id<MTLComputeCommandEncoder>)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)encodeSignalEvent:(id<MTLEvent>)arg1 value:(unsigned long long)arg2;
 - (void)encodeWaitForEvent:(id<MTLEvent>)arg1 value:(unsigned long long)arg2;
@@ -34,11 +39,11 @@
 - (id<MTLParallelRenderCommandEncoder>)parallelRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (void)popDebugGroup;
 - (void)presentDrawable:(id<MTLDrawable>)arg1;
-- (void)presentDrawable:(id<MTLDrawable>)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id<MTLDrawable>)arg1 atTime:(double)arg2;
 - (void)pushDebugGroup:(NSString *)arg1;
 - (id<MTLRenderCommandEncoder>)renderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (id<MTLResourceStateCommandEncoder>)resourceStateCommandEncoder;
+- (id<MTLResourceStateCommandEncoder>)resourceStateCommandEncoderWithDescriptor:(MTLResourceStatePassDescriptor *)arg1;
 - (void)waitUntilCompleted;
 - (void)waitUntilScheduled;
 @end

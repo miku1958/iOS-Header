@@ -235,6 +235,20 @@ struct PSDGradientColorStop;
 
 struct PSDGradientOpacityStop;
 
+struct _CUIVibrantColorMatrixOptions {
+    double _field1[4];
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+};
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
@@ -247,12 +261,6 @@ struct _PSDImageInfo {
     unsigned short _field4;
     unsigned short _field5;
     int _field6;
-};
-
-struct __CUIThemeGradientRenditionInitializerStruct {
-    unsigned int _field1;
-    double _field2;
-    id _field3;
 };
 
 struct _carextendedMetadata {
@@ -307,19 +315,6 @@ struct _csicolor {
     unsigned int :21;
     unsigned int _field3;
     double _field4[0];
-};
-
-struct _csigradientdatanode {
-    unsigned int _field1;
-    float _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
 };
 
 struct _csiheader {
@@ -401,13 +396,6 @@ struct _rgbquad {
     unsigned int :8;
 };
 
-struct _slice {
-    unsigned int x;
-    unsigned int y;
-    unsigned int width;
-    unsigned int height;
-};
-
 struct crmFlags {
     unsigned int scalesVertically:1;
     unsigned int scalesHorizontally:1;
@@ -415,8 +403,6 @@ struct crmFlags {
 };
 
 struct cuithemerenditionrenditionflags {
-    unsigned int isHeaderFlaggedFPO:1;
-    unsigned int isExcludedFromContrastFilter:1;
     unsigned int isVectorBased:1;
     unsigned int isOpaque:1;
     unsigned int bitmapEncoding:4;
@@ -424,7 +410,7 @@ struct cuithemerenditionrenditionflags {
     unsigned int isFlippable:1;
     unsigned int isTintable:1;
     unsigned int preservedVectorRepresentation:1;
-    unsigned int reserved:20;
+    unsigned int reserved:22;
 };
 
 struct os_unfair_lock_s {
@@ -543,7 +529,8 @@ typedef struct {
     float _field4;
     float _field5;
     BOOL _field6;
-} CDStruct_2844c7c7;
+    BOOL _field7;
+} CDStruct_2a8bd0fe;
 
 typedef struct {
     float _field1;
@@ -631,8 +618,8 @@ typedef struct {
     char *_field2;
     BOOL _field3;
     long long _field4;
-    CDStruct_26b2aa83 _field5[7];
-} CDStruct_e3362728;
+    CDStruct_26b2aa83 _field5[8];
+} CDStruct_22c2ae3f;
 
 typedef struct {
     unsigned long long _field1;

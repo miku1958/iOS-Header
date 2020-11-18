@@ -8,42 +8,42 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class NSDate, NSLock, NSString, TSTFormulaPredArg;
+@class NSDate, NSLock, NSString, TSCEFormulaObject, TSTFormulaPredArg;
 
 @interface TSTFormulaPredicate : NSObject <NSCopying>
 {
-    struct TSCEFormula mFormula;
-    int mPredicateType;
-    int mQualifier1;
-    int mQualifier2;
-    int mArgIndex0;
-    int mArgIndex1;
-    int mArgIndex2;
-    BOOL mParamsAreDone;
-    unsigned char mNodeTag0;
-    unsigned char mNodeTag1;
-    unsigned char mNodeTag2;
-    double mNumberParam1;
-    double mNumberParam2;
-    NSString *mStringParam1;
-    NSDate *mDateTimeParam1;
-    NSDate *mDateTimeParam2;
-    struct TSCENumberValue *mDurationParam1;
-    struct TSCENumberValue *mDurationParam2;
+    TSCEFormulaObject *_formula;
+    unsigned char _predicateType;
+    unsigned char _qualifier1;
+    unsigned char _qualifier2;
+    short _argIndex0;
+    short _argIndex1;
+    short _argIndex2;
+    BOOL _paramsAreDone;
+    unsigned char _nodeTag0;
+    unsigned char _nodeTag1;
+    unsigned char _nodeTag2;
+    double _numberParam1;
+    double _numberParam2;
+    NSString *_stringParam1;
+    NSDate *_dateTimeParam1;
+    NSDate *_dateTimeParam2;
+    struct TSCENumberValue *_durationParam1;
+    struct TSCENumberValue *_durationParam2;
     struct TSCECrossTableReference _crossTableRefParam0;
     struct TSCECrossTableReference _crossTableRefParam1;
     struct TSCECrossTableReference _crossTableRefParam2;
-    TSTFormulaPredArg *mPredArg1;
-    TSTFormulaPredArg *mPredArg2;
-    NSLock *mPopulateMembersLock;
+    TSTFormulaPredArg *_predArg1;
+    TSTFormulaPredArg *_predArg2;
+    NSLock *_populateMembersLock;
 }
 
-@property (strong, nonatomic) TSTFormulaPredArg *predArg1; // @synthesize predArg1=mPredArg1;
-@property (strong, nonatomic) TSTFormulaPredArg *predArg2; // @synthesize predArg2=mPredArg2;
+@property (strong, nonatomic) TSTFormulaPredArg *predArg1; // @synthesize predArg1=_predArg1;
+@property (strong, nonatomic) TSTFormulaPredArg *predArg2; // @synthesize predArg2=_predArg2;
 
-+ (id)defaultPredicateForType:(int)arg1 argumentCellRef:(struct TSCECellRef)arg2 hostCell:(struct TSUCellCoord)arg3;
-+ (id)defaultPredicateForType:(int)arg1 argumentCellReference:(id)arg2 hostCell:(struct TSUCellCoord)arg3;
-+ (BOOL)isThresholdNeededForType:(int)arg1;
++ (id)defaultPredicateForType:(unsigned char)arg1 argumentCellRef:(struct TSCECellRef)arg2 hostCell:(struct TSUCellCoord)arg3;
++ (id)defaultPredicateForType:(unsigned char)arg1 argumentCellReference:(id)arg2 hostCell:(struct TSUCellCoord)arg3;
++ (BOOL)isThresholdNeededForType:(unsigned char)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)containsUidReferences;
@@ -76,20 +76,20 @@
 - (void)encodeToArchive:(struct FormulaPredicateArchive *)arg1 archiver:(id)arg2;
 - (BOOL)evaluateAtCellID:(struct TSUCellCoord)arg1 inFormulaOwner:(const UUIDData_5fbc143e *)arg2 calcEngine:(id)arg3;
 - (BOOL)evaluateAtCellID:(struct TSUCellCoord)arg1 onSubOwnerID:(const struct TSCESubFormulaOwnerID *)arg2 calcEngine:(id)arg3;
-- (struct TSCEFormula *)formula;
+- (id)formula;
 - (void)getPrecedents:(struct TSCEReferenceSet *)arg1 calcEngine:(id)arg2 hostOwnerUID:(const UUIDData_5fbc143e *)arg3 hostCellID:(const struct TSUCellCoord *)arg4;
 - (BOOL)hasBadRefWithUidInfo;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initFromArchive:(const struct FormulaPredicateArchive *)arg1;
-- (id)initWithLiteralDateType:(int)arg1 date1:(id)arg2 date2:(id)arg3 number1:(double)arg4 number2:(double)arg5 qualifier1:(int)arg6 qualifier2:(int)arg7 argumentCellRef:(struct TSCECellRef)arg8 hostCell:(struct TSUCellCoord)arg9;
-- (id)initWithLiteralDateType:(int)arg1 date1:(id)arg2 date2:(id)arg3 number1:(double)arg4 number2:(double)arg5 qualifier1:(int)arg6 qualifier2:(int)arg7 argumentCellRef:(struct TSCECellRef)arg8 hostCell:(struct TSUCellCoord)arg9 forConditionalStyle:(BOOL)arg10;
-- (id)initWithLiteralDurationType:(int)arg1 duration1:(double)arg2 durationUnits1:(int)arg3 duration2:(double)arg4 durationUnits2:(int)arg5 qualifier:(int)arg6 argumentCellRef:(struct TSCECellRef)arg7 hostCell:(struct TSUCellCoord)arg8;
-- (id)initWithLiteralNumberType:(int)arg1 number1:(double)arg2 number2:(double)arg3 qualifier:(int)arg4 argumentCellRef:(struct TSCECellRef)arg5 hostCell:(struct TSUCellCoord)arg6;
-- (id)initWithLiteralTextType:(int)arg1 string:(id)arg2 argumentCellRef:(struct TSCECellRef)arg3 hostCell:(struct TSUCellCoord)arg4;
-- (id)initWithPredicateType:(int)arg1 arg1:(id)arg2 arg2:(id)arg3 qualifier1:(int)arg4 qualifier2:(int)arg5 argumentCellRef:(struct TSCECellRef)arg6 hostCell:(struct TSUCellCoord)arg7 calcEngine:(id)arg8;
-- (id)initWithPredicateType:(int)arg1 arg1:(id)arg2 arg2:(id)arg3 qualifier1:(int)arg4 qualifier2:(int)arg5 argumentCellRef:(struct TSCECellRef)arg6 hostCell:(struct TSUCellCoord)arg7 calcEngine:(id)arg8 forConditionalStyle:(BOOL)arg9;
-- (id)initWithPredicateType:(int)arg1 arg1:(id)arg2 arg2:(id)arg3 qualifier1:(int)arg4 qualifier2:(int)arg5 argumentCellReference:(id)arg6 hostCell:(struct TSUCellCoord)arg7 calcEngine:(id)arg8 forConditionalStyle:(BOOL)arg9;
+- (id)initWithLiteralDateType:(unsigned char)arg1 date1:(id)arg2 date2:(id)arg3 number1:(double)arg4 number2:(double)arg5 qualifier1:(unsigned char)arg6 qualifier2:(unsigned char)arg7 argumentCellRef:(struct TSCECellRef)arg8 hostCell:(struct TSUCellCoord)arg9;
+- (id)initWithLiteralDateType:(unsigned char)arg1 date1:(id)arg2 date2:(id)arg3 number1:(double)arg4 number2:(double)arg5 qualifier1:(unsigned char)arg6 qualifier2:(unsigned char)arg7 argumentCellRef:(struct TSCECellRef)arg8 hostCell:(struct TSUCellCoord)arg9 forConditionalStyle:(BOOL)arg10;
+- (id)initWithLiteralDurationType:(unsigned char)arg1 duration1:(double)arg2 durationUnits1:(int)arg3 duration2:(double)arg4 durationUnits2:(int)arg5 qualifier:(unsigned char)arg6 argumentCellRef:(struct TSCECellRef)arg7 hostCell:(struct TSUCellCoord)arg8;
+- (id)initWithLiteralNumberType:(unsigned char)arg1 number1:(double)arg2 number2:(double)arg3 qualifier:(unsigned char)arg4 argumentCellRef:(struct TSCECellRef)arg5 hostCell:(struct TSUCellCoord)arg6;
+- (id)initWithLiteralTextType:(unsigned char)arg1 string:(id)arg2 argumentCellRef:(struct TSCECellRef)arg3 hostCell:(struct TSUCellCoord)arg4;
+- (id)initWithPredicateType:(unsigned char)arg1 arg1:(id)arg2 arg2:(id)arg3 qualifier1:(unsigned char)arg4 qualifier2:(unsigned char)arg5 argumentCellRef:(struct TSCECellRef)arg6 hostCell:(struct TSUCellCoord)arg7 calcEngine:(id)arg8;
+- (id)initWithPredicateType:(unsigned char)arg1 arg1:(id)arg2 arg2:(id)arg3 qualifier1:(unsigned char)arg4 qualifier2:(unsigned char)arg5 argumentCellRef:(struct TSCECellRef)arg6 hostCell:(struct TSUCellCoord)arg7 calcEngine:(id)arg8 forConditionalStyle:(BOOL)arg9;
+- (id)initWithPredicateType:(unsigned char)arg1 arg1:(id)arg2 arg2:(id)arg3 qualifier1:(unsigned char)arg4 qualifier2:(unsigned char)arg5 argumentCellReference:(id)arg6 hostCell:(struct TSUCellCoord)arg7 calcEngine:(id)arg8 forConditionalStyle:(BOOL)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualForInspector:(id)arg1 atHostCoordinate:(struct TSUCellCoord)arg2;
 - (void)iterateFormulasWithContext:(struct TSCEFormulaRewriteContext *)arg1 shouldStop:(BOOL *)arg2 block:(CDUnknownBlockType)arg3;
@@ -100,7 +100,7 @@
 - (double)numberParam2;
 - (int)p_argTypeForNodeTag:(unsigned char)arg1 argNum:(unsigned long long)arg2 calculationEngine:(id)arg3 hostCell:(struct TSUCellCoord)arg4;
 - (void)p_clearDerivedVariables;
-- (struct TSCEFormulaCreator)p_creatorForPeriodBoundaryWithScale:(int)arg1 direction:(int)arg2 offset:(id)arg3 argIndex:(unsigned int)arg4 earlierBound:(BOOL)arg5 isCalPers:(BOOL)arg6 hostCell:(const struct TSCECellRef *)arg7 calcEngine:(id)arg8;
+- (struct TSCEFormulaCreator)p_creatorForPeriodBoundaryWithScale:(unsigned char)arg1 direction:(unsigned char)arg2 offset:(id)arg3 argIndex:(unsigned int)arg4 earlierBound:(BOOL)arg5 isCalPers:(BOOL)arg6 hostCell:(const struct TSCECellRef *)arg7 calcEngine:(id)arg8;
 - (BOOL)p_isEqualForNonFormulaItems:(id)arg1;
 - (void)p_populateMembersFromFormula;
 - (void)p_setArgumentAt:(long long)arg1 nodeTag:(unsigned char)arg2 withCategoryRef:(const struct TSCECategoryRef *)arg3;
@@ -110,19 +110,19 @@
 - (void)p_setArgumentAt:(long long)arg1 nodeTag:(unsigned char)arg2 withDurationValue:(double)arg3 withUnit:(int)arg4;
 - (void)p_setArgumentAt:(long long)arg1 nodeTag:(unsigned char)arg2 withString:(id)arg3;
 - (void)p_setArgumentAt:(long long)arg1 nodeTag:(unsigned char)arg2 withUIDRectRef:(id)arg3;
-- (void)p_setParamIndex0:(int)arg1;
-- (void)p_setParamIndex1:(int)arg1;
-- (void)p_setParamIndex2:(int)arg1;
-- (void)p_setPredicateType:(int)arg1;
-- (void)p_setQualifier1:(int)arg1;
-- (void)p_setQualifier2:(int)arg1;
+- (void)p_setParamIndex0:(short)arg1;
+- (void)p_setParamIndex1:(short)arg1;
+- (void)p_setParamIndex2:(short)arg1;
+- (void)p_setPredicateType:(unsigned char)arg1;
+- (void)p_setQualifier1:(unsigned char)arg1;
+- (void)p_setQualifier2:(unsigned char)arg1;
 - (BOOL)p_testDataTypesForArg0:(int)arg1 arg1:(int)arg2 arg2:(int)arg3 predShouldReturn:(BOOL *)arg4;
 - (id)predicateArg1atBaseHostCoord:(struct TSUModelCellCoord)arg1 calcEngine:(id)arg2;
 - (id)predicateArg2atBaseHostCoord:(struct TSUModelCellCoord)arg1 calcEngine:(id)arg2;
-- (int)predicateType;
-- (int)qualifier1;
-- (int)qualifier2;
-- (void)setFormula:(const struct TSCEFormula *)arg1;
+- (unsigned char)predicateType;
+- (unsigned char)qualifier1;
+- (unsigned char)qualifier2;
+- (void)setFormula:(id)arg1;
 - (void)setHostCell:(const UUIDData_5fbc143e *)arg1 hostColumnUID:(const UUIDData_5fbc143e *)arg2 hostRowUID:(const UUIDData_5fbc143e *)arg3;
 - (id)stringParam1;
 - (void)upgradeTopAndBottom;

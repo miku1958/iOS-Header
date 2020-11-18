@@ -18,6 +18,7 @@
 
 @property (readonly, nonatomic) _ICQAlertSpecification *alertSpecification;
 @property (readonly, nonatomic, getter=isBuddyOffer) BOOL buddyOffer;
+@property (readonly, nonatomic, getter=isDefaultOffer) BOOL defaultOffer;
 @property (readonly, nonatomic) _ICQFollowupSpecification *followupSpecification;
 @property (strong, nonatomic) _ICQAlertSpecification *internalAlertSpecification; // @synthesize internalAlertSpecification=_internalAlertSpecification;
 @property (strong, nonatomic) _ICQFollowupSpecification *internalFollowupSpecification; // @synthesize internalFollowupSpecification=_internalFollowupSpecification;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BOOL __needsUpdateImageView;
     BOOL __needsUpdateFullsizeImageMetadata;
     BOOL __needsUpdateFullsizeTiledLayer;
+    BOOL _needsUpdateTargetSize;
     BOOL __isDisplayingFullQualityImage;
     BOOL _shouldUsePenultimateVersionForNextImageUpdate;
     BOOL _canUseFullsizeTiledLayer;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property (strong, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (nonatomic) BOOL needsUpdateTargetSize; // @synthesize needsUpdateTargetSize=_needsUpdateTargetSize;
 @property (copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (nonatomic) BOOL shouldUseFullsizeImageData; // @synthesize shouldUseFullsizeImageData=_shouldUseFullsizeImageData;
 @property (nonatomic, setter=_setShouldUsePenultimateVersionForNextImageUpdate:) BOOL shouldUsePenultimateVersionForNextImageUpdate; // @synthesize shouldUsePenultimateVersionForNextImageUpdate=_shouldUsePenultimateVersionForNextImageUpdate;
@@ -94,10 +96,10 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateImageLayerModulator;
 - (void)_invalidateImageLayerModulatorInput;
 - (void)_invalidateImageView;
+- (void)_invalidateTargetSize;
 - (BOOL)_needsUpdate;
 - (void)_setAssetWithoutUpdateIfNeeded:(id)arg1;
 - (void)_setImage:(id)arg1 isFullQuality:(BOOL)arg2;
-- (void)_setNeedsUpdate;
 - (void)_updateAssetLoadingStage;
 - (void)_updateFullsizeImageMetadataIfNeeded;
 - (void)_updateFullsizeTiledLayerIfNeeded;
@@ -107,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateImageLayerModulatorInputIfNeeded;
 - (void)_updateImageViewIfNeeded;
 - (void)_updateReadyForDisplay;
+- (void)_updateTargetSizeIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)assetContentDidChange;
 - (void)assetDidChange;
@@ -121,6 +124,9 @@ __attribute__((visibility("hidden")))
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
 - (void)setPreloadedImage:(id)arg1;
 - (BOOL)shouldAvoidInPlaceSnapshottedFadeOut;
+- (struct CGSize)targetSizeForProposedTargetSize:(struct CGSize)arg1;
+- (void)updateModulator;
+- (void)updateModulatorInputs;
 - (void)updateMutableImageLayerModulator:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (BOOL)wantsVisibleRectChanges;

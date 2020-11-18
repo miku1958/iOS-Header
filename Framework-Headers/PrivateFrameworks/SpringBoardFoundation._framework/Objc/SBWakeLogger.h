@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 
 @interface SBWakeLogger : NSObject
 {
@@ -16,8 +16,11 @@
     unsigned int _backlightService;
     long long _homeButtonType;
     NSMutableDictionary *_wakeSouceToEventDict;
+    long long _activeWakeLoggerSource;
 }
 
+@property (nonatomic) long long activeWakeLoggerSource; // @synthesize activeWakeLoggerSource=_activeWakeLoggerSource;
+@property (readonly, copy, nonatomic) NSString *activeWakeSourceDescription;
 @property (nonatomic) unsigned int backlightService; // @synthesize backlightService=_backlightService;
 @property (nonatomic) long long homeButtonType; // @synthesize homeButtonType=_homeButtonType;
 @property (nonatomic) unsigned int timesyncService; // @synthesize timesyncService=_timesyncService;

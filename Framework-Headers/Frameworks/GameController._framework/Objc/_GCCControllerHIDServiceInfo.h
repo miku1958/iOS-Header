@@ -6,26 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSNumber, NSString;
+#import <GameController/NSCopying-Protocol.h>
+#import <GameController/_GCImplicitIPCObject-Protocol.h>
 
-@interface _GCCControllerHIDServiceInfo : NSObject
+@class NSData, NSNumber, NSString;
+@protocol NSObject><NSCopying><NSSecureCoding;
+
+@interface _GCCControllerHIDServiceInfo : NSObject <_GCImplicitIPCObject, NSCopying>
 {
     struct __IOHIDServiceClient *_service;
     NSNumber *_registryID;
-    NSString *_name;
-    BOOL _isPreallocatedSiriRemote;
     NSData *_inputData;
+    BOOL _isPreallocatedSiriRemote;
 }
 
-@property (strong, nonatomic) NSData *inputData; // @synthesize inputData=_inputData;
-@property (nonatomic) BOOL isPreallocatedSiriRemote; // @synthesize isPreallocatedSiriRemote=_isPreallocatedSiriRemote;
-@property (readonly, nonatomic) struct __IOHIDServiceClient *service;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) id<NSObject><NSCopying><NSSecureCoding> identifier;
+@property (strong, nonatomic) NSData *inputData;
+@property (nonatomic) BOOL isPreallocatedSiriRemote;
+@property (readonly, nonatomic) NSNumber *registryID; // @synthesize registryID=_registryID;
+@property (readonly, nonatomic) struct __IOHIDServiceClient *service; // @synthesize service=_service;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)init;
 - (id)initWithService:(struct __IOHIDServiceClient *)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToHIDServiceInfo:(id)arg1;
 - (id)name;
-- (id)registryID;
+- (id)redactedDescription;
 
 @end
 

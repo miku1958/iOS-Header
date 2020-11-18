@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+#import <CloudKit/CKFetchRecordVersionsOperationCallbacks-Protocol.h>
 
-@interface CKFetchRecordVersionsOperation : CKDatabaseOperation
+@class CKFetchRecordVersionsOperationInfo, NSArray, NSMutableDictionary, NSString;
+@protocol CKFetchRecordVersionsOperationCallbacks;
+
+@interface CKFetchRecordVersionsOperation : CKDatabaseOperation <CKFetchRecordVersionsOperationCallbacks>
 {
     BOOL _isDeleted;
     BOOL _shouldFetchAssetContent;
@@ -20,23 +23,27 @@
     NSMutableDictionary *_recordErrors;
 }
 
+@property (readonly, nonatomic) id<CKFetchRecordVersionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordVersionsCompletionBlock; // @synthesize fetchRecordVersionsCompletionBlock=_fetchRecordVersionsCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordVersionsProgressBlock; // @synthesize fetchRecordVersionsProgressBlock=_fetchRecordVersionsProgressBlock;
 @property (nonatomic) BOOL isDeleted; // @synthesize isDeleted=_isDeleted;
 @property (copy, nonatomic) NSString *minimumVersionETag; // @synthesize minimumVersionETag=_minimumVersionETag;
+@property (readonly, nonatomic) CKFetchRecordVersionsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property (copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleFetchForRecordID:(id)arg1 isDeleted:(BOOL)arg2 versions:(id)arg3 error:(id)arg4;
 - (BOOL)hasCKOperationCallbacksSet;
+- (id)init;
 - (id)initWithRecordIDs:(id)arg1;
 - (void)performCKOperation;
 

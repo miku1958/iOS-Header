@@ -22,7 +22,7 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 + (BOOL)shouldPropagateAppearanceCustomizations;
-- (void)didFinishWithPass:(id)arg1 error:(id)arg2;
+- (void)didFinishWithPasses:(id)arg1 error:(id)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

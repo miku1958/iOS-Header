@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FCPurchase, NSError, NSString;
+@class FCPurchase, NFPromise, NSError, NSString;
 @protocol FCPurchaseFlowOverrideProviderType, FCPurchaseManagerDelegate;
 
 @protocol FCPurchaseManagerType
@@ -13,8 +13,7 @@
 @property (nonatomic, strong) id<FCPurchaseFlowOverrideProviderType> purchaseFlowOverrideProvider;
 
 - (BOOL)anyOngoingPurchases;
-- (void)authenticateAppleIDWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (id)fetchPurchaseMetadataForPurchaseID:(NSString *)arg1 restorePurcase:(BOOL)arg2;
+- (NFPromise *)fetchPurchaseMetadataForPurchaseID:(NSString *)arg1 restorePurchase:(BOOL)arg2;
 - (BOOL)isPurchaseOngoingForTagID:(NSString *)arg1;
 - (void)simulateFailurePurchaseWithProductID:(NSString *)arg1 transactionState:(long long)arg2 error:(NSError *)arg3;
 - (void)simulateSuccessfulPurchaseWithProductID:(NSString *)arg1 tagID:(NSString *)arg2 purchaseID:(NSString *)arg3;

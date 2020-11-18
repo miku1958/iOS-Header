@@ -11,6 +11,7 @@
 
 @protocol SecuritydXPCProtocol <NSObject>
 - (void)SecItemAddAndNotifyOnSync:(NSDictionary *)arg1 syncCallback:(id<SecuritydXPCCallbackProtocol>)arg2 complete:(void (^)(NSDictionary *, NSArray *, NSError *))arg3;
+- (void)secItemDeleteForAppClipApplicationIdentifier:(NSString *)arg1 completion:(void (^)(int))arg2;
 - (void)secItemDigest:(NSString *)arg1 accessGroup:(NSString *)arg2 complete:(void (^)(NSArray *, NSError *))arg3;
 - (void)secItemFetchCurrentItemAcrossAllDevices:(NSString *)arg1 identifier:(NSString *)arg2 viewHint:(NSString *)arg3 fetchCloudValue:(BOOL)arg4 complete:(void (^)(NSData *, NSError *))arg5;
 - (void)secItemSetCurrentItemAcrossAllDevices:(NSData *)arg1 newCurrentItemHash:(NSData *)arg2 accessGroup:(NSString *)arg3 identifier:(NSString *)arg4 viewHint:(NSString *)arg5 oldCurrentItemReference:(NSData *)arg6 oldCurrentItemHash:(NSData *)arg7 complete:(void (^)(NSError *))arg8;

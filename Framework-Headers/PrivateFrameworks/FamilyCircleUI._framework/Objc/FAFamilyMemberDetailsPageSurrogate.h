@@ -8,14 +8,14 @@
 
 #import <FamilyCircleUI/UITableViewDelegate-Protocol.h>
 
-@class AAFamilyMember, AAUIProfilePictureStore, NSString, UITableView;
+@class AAUIProfilePictureStore, FAFamilyMember, NSString, UITableView;
 @protocol UITableViewDelegate;
 
 @interface FAFamilyMemberDetailsPageSurrogate : NSObject <UITableViewDelegate>
 {
     NSObject<UITableViewDelegate> *_remoteTableViewController;
     UITableView *_remoteTableView;
-    AAFamilyMember *_familyMember;
+    FAFamilyMember *_familyMember;
     AAUIProfilePictureStore *_pictureStore;
 }
 

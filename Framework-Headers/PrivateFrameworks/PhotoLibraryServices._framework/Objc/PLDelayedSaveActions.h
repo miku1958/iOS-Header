@@ -27,6 +27,8 @@
     NSMutableSet *_delayedAlbumCountsAndDateRangeUpdates;
     NSMutableDictionary *_delayedWorkerTypesToAnalyzeByAssetUUID;
     NSMutableSet *_delayedAssetsForDuetDelete;
+    NSMutableSet *_delayedMemoriesForDuetDelete;
+    BOOL _delayedWidgetTimelineReloadNeeded;
     PLClientServerTransaction *_clientTransaction;
 }
 
@@ -34,7 +36,6 @@
 
 - (void).cxx_destruct;
 - (void)_popAlbumCountChangesIntoDetail:(id)arg1;
-- (void)_popAssetsForAnalysisChangesIntoDetail:(id)arg1;
 - (void)_popAssetsForFilesystemPersistencyChangesIntoDetail:(id)arg1;
 - (void)_popCloudFeedChangesIntoDetail:(id)arg1;
 - (void)_popDelayedAlbumCountsAndDateRangeUpdates:(id *)arg1;
@@ -45,9 +46,11 @@
 - (void)_popDelayedMomentInsertsAndUpdates:(id *)arg1 deletes:(id *)arg2 updatedAssetIDsForHighlights:(id *)arg3 updatedMomentIDsForHighlights:(id *)arg4;
 - (void)_popDelayedSearchIndexUpdates:(id *)arg1;
 - (void)_popDuetDeletedAssetsIntoDetail:(id)arg1;
+- (void)_popDuetDeletedMemoriesIntoDetail:(id)arg1;
 - (void)_popDupeAnalysisChangesIntoDetail:(id)arg1;
 - (void)_popMomentChangesIntoDetail:(id)arg1;
 - (void)_popSearchIndexChangesIntoDetail:(id)arg1;
+- (void)_popWidgetTimelineReloadNeeded:(id)arg1;
 - (void)_recordAlbumUUIDForSearchIndexUpdate:(id)arg1 isInsert:(BOOL)arg2;
 - (void)_recordAssetForSearchIndexUpdate:(id)arg1;
 - (void)_recordAssetUUIDForSearchIndexUpdate:(id)arg1 isInsert:(BOOL)arg2;
@@ -89,9 +92,11 @@
 - (void)recordCommentForCloudFeedUpdate:(id)arg1;
 - (void)recordDetectedFaceForSearchIndexUpdate:(id)arg1;
 - (void)recordInvitationRecordForCloudFeedUpdate:(id)arg1;
+- (void)recordMemoryForDuetDelete:(id)arg1;
 - (void)recordMemoryForSearchIndexUpdate:(id)arg1;
 - (void)recordMomentForHighlightUpdate:(id)arg1;
 - (void)recordPersonForSearchIndexUpdate:(id)arg1;
+- (void)recordWidgetTimelineReloadNeeded;
 
 @end
 

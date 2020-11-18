@@ -28,6 +28,9 @@
 - (void)didTapChoice:(id)arg1;
 - (double)estimatedViewHeight;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
+- (void)startActivityIndicatorForChoice:(id)arg1;
+- (void)stopActivityIndicatorForChoice:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 
 @end
 

@@ -7,13 +7,13 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class CKShareMetadata, NSData, NSString;
+@protocol CKCompleteParticipantVettingOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDCompleteParticipantVettingOperation : CKDOperation
 {
     CDUnknownBlockType _verifyProgressURLReconstructedBlock;
     CDUnknownBlockType _verifyProgressShareMetadataFetchedBlock;
-    CDUnknownBlockType _verifyCompletionBlock;
     NSString *_vettingToken;
     NSString *_vettingEmail;
     NSString *_vettingPhone;
@@ -27,13 +27,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
+@property (strong, nonatomic) id<CKCompleteParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (readonly, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property (readonly, nonatomic) NSData *encryptedKey; // @synthesize encryptedKey=_encryptedKey;
 @property (nonatomic) struct _OpaquePCSShareProtection *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
 @property (readonly, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
 @property (strong, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
 @property (strong, nonatomic) NSString *shortToken; // @synthesize shortToken=_shortToken;
-@property (copy, nonatomic) CDUnknownBlockType verifyCompletionBlock; // @synthesize verifyCompletionBlock=_verifyCompletionBlock;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (copy, nonatomic) CDUnknownBlockType verifyProgressShareMetadataFetchedBlock; // @synthesize verifyProgressShareMetadataFetchedBlock=_verifyProgressShareMetadataFetchedBlock;
 @property (copy, nonatomic) CDUnknownBlockType verifyProgressURLReconstructedBlock; // @synthesize verifyProgressURLReconstructedBlock=_verifyProgressURLReconstructedBlock;
 @property (readonly, nonatomic) NSString *vettingEmail; // @synthesize vettingEmail=_vettingEmail;

@@ -17,13 +17,9 @@
 
 @property (strong) _DKEventStatsCounterInternal *internal; // @synthesize internal=_internal;
 
-+ (id)counterInCollection:(id)arg1 withEventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4;
 - (void).cxx_destruct;
-- (unsigned long long)countWithTypeValue:(id)arg1;
 - (id)eventName;
 - (id)eventType;
-- (void)incrementCountByNumber:(unsigned long long)arg1 typeValue:(id)arg2;
-- (void)incrementCountWithTypeValue:(id)arg1;
 - (id)typeValues;
 
 @end

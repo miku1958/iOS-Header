@@ -29,7 +29,7 @@
     NSString *_failedGeoSearchesSettingsPath;
     NSString *_failedDirectionsSettingsPath;
     NSString *_failedGeoDirectionsSettingsPath;
-    NSString *_transitAppRankerPath;
+    NSString *_routingAppLaunchRecordPath;
     NSString *_directionsCachePath;
     NSString *_pinsSettingsPath;
     NSString *_reportAProblemDirectionsRecordingsPath;
@@ -63,9 +63,9 @@
 @property (readonly, nonatomic) NSString *reportAProblemDirectionsRecordingsPath; // @synthesize reportAProblemDirectionsRecordingsPath=_reportAProblemDirectionsRecordingsPath;
 @property (readonly, nonatomic) NSString *reportAProblemNotificationsPath; // @synthesize reportAProblemNotificationsPath=_reportAProblemNotificationsPath;
 @property (readonly, nonatomic) NSString *reportAProblemSearchRecordingsPath; // @synthesize reportAProblemSearchRecordingsPath=_reportAProblemSearchRecordingsPath;
+@property (readonly, nonatomic) NSString *routingAppLaunchRecordPath; // @synthesize routingAppLaunchRecordPath=_routingAppLaunchRecordPath;
 @property (readonly, nonatomic) BOOL shouldSyncMergeFavoritesAfterCheckingOrCreatingMarkerFile;
 @property (readonly, nonatomic) BOOL shouldSyncMergeHistoryAfterCheckingOrCreatingMarkerFile;
-@property (readonly, nonatomic) NSString *transitAppRankerPath; // @synthesize transitAppRankerPath=_transitAppRankerPath;
 
 + (id)bookmarksSettingsPath;
 + (id)cacheDirectory;
@@ -95,7 +95,7 @@
 + (id)reportAProblemDirectionsRecordingsPath;
 + (id)reportAProblemNotificationsPath;
 + (id)reportAProblemSearchRecordingsPath;
-+ (id)transitAppRankerPath;
++ (id)routingAppLaunchRecordPath;
 - (void).cxx_destruct;
 - (BOOL)_deleteSyncedFileAtPath:(id)arg1;
 - (void)_invalidate;

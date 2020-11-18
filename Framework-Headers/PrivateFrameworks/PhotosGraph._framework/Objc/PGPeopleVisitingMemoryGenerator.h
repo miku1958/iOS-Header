@@ -14,7 +14,7 @@
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 - (id)consolidatedDateIntervalsFromDateIntervals:(id)arg1;
-- (void)enumeratePeopleAndVisitsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePeopleNodesAndVisitsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateVerifiedPeopleNodesUsingBlock:(CDUnknownBlockType)arg1;
 
 @end

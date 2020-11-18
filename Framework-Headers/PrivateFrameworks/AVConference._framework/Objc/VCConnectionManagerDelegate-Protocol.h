@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCLinkProbingHandlerDelegate-Protocol.h>
 
+@class NSNumber;
 @protocol VCConnectionProtocol;
 
-@protocol VCConnectionManagerDelegate <NSObject>
+@protocol VCConnectionManagerDelegate <VCLinkProbingHandlerDelegate>
 - (void)connectionCallback:(id<VCConnectionProtocol>)arg1 isInitialConnection:(BOOL)arg2;
 - (void)didEnableDuplication:(BOOL)arg1 activeConnection:(id<VCConnectionProtocol>)arg2;
 - (void)primaryConnectionChanged:(id<VCConnectionProtocol>)arg1 oldPrimaryConnection:(id<VCConnectionProtocol>)arg2;
 
 @optional
 - (void)discardConnection:(id<VCConnectionProtocol>)arg1;
+- (void)handleRATChanged:(NSNumber *)arg1;
 - (void)optOutAllStreamsForConnection:(id<VCConnectionProtocol>)arg1;
 - (void)resetParticipantGenerationCounter;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;

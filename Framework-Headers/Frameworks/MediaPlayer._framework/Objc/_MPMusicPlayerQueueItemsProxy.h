@@ -8,6 +8,7 @@
 
 @class MPMusicPlayerApplicationController;
 
+__attribute__((visibility("hidden")))
 @interface _MPMusicPlayerQueueItemsProxy : NSArray
 {
     MPMusicPlayerApplicationController *_controller;

@@ -26,7 +26,7 @@
 - (int)durationUnitLargestWithTimeInterval:(double)arg1;
 - (id)formatByFixingUnitsIfNecessaryForTimeInterval:(double)arg1;
 - (unsigned long long)hash;
-- (id)initWithFormatType:(int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1;
 - (id)initWithUseAutomaticUnits:(BOOL)arg1 durationUnitSmallest:(int)arg2 durationUnitLargest:(int)arg3 durationStyle:(int)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (int)maxAndMinDurationUnitsForTimeInterval:(double)arg1;

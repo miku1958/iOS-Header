@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLiteStatementCache, NSMutableArray, NSMutableDictionary, NSNumber, NSURL;
+@class HDSQLiteStatementCache, HDSQLiteVFS, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL;
 @protocol HDSQLiteDatabaseDelegate;
 
 @interface HDSQLiteDatabase : NSObject
@@ -16,44 +16,52 @@
     BOOL _requiresRollback;
     long long _transactionType;
     NSMutableDictionary *_attachedDatabaseURLsByName;
+    _Atomic BOOL _transactionInterruptRequested;
     BOOL _isHandlingTransactionEnd;
     NSMutableArray *_beforeCommitBlocks;
     NSMutableArray *_onCommitBlocks;
     NSMutableArray *_onRollbackBlocks;
+    struct os_unfair_lock_s _interruptionLock;
     BOOL _writer;
     BOOL _checkpointRequired;
-    BOOL _hasEncounteredCorruptionError;
     int _corruptionResultCode;
-    id<HDSQLiteDatabaseDelegate> _delegate;
     NSURL *_fileURL;
+    HDSQLiteVFS *_virtualFileSystem;
+    NSString *_fileProtectionType;
+    id<HDSQLiteDatabaseDelegate> _delegate;
     long long _cacheScope;
     HDSQLiteStatementCache *_statementCache;
+    NSError *_corruptionError;
 }
 
 @property (nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
 @property (nonatomic) BOOL checkpointRequired; // @synthesize checkpointRequired=_checkpointRequired;
+@property (readonly, copy, nonatomic) NSError *corruptionError; // @synthesize corruptionError=_corruptionError;
 @property (readonly, nonatomic) int corruptionResultCode; // @synthesize corruptionResultCode=_corruptionResultCode;
 @property (weak, nonatomic) id<HDSQLiteDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (readonly, nonatomic) BOOL hasEncounteredCorruptionError; // @synthesize hasEncounteredCorruptionError=_hasEncounteredCorruptionError;
+@property (copy, nonatomic) NSString *fileProtectionType; // @synthesize fileProtectionType=_fileProtectionType;
+@property (readonly, copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly, copy, nonatomic) NSNumber *lastInsertRowID;
 @property (readonly, nonatomic, getter=isOpen) BOOL open;
 @property (readonly, nonatomic) HDSQLiteStatementCache *statementCache; // @synthesize statementCache=_statementCache;
-@property (readonly, nonatomic) long long statementCacheScope;
+@property BOOL transactionInterruptRequested;
+@property (strong, nonatomic) HDSQLiteVFS *virtualFileSystem; // @synthesize virtualFileSystem=_virtualFileSystem;
 @property (nonatomic, getter=isWriter) BOOL writer; // @synthesize writer=_writer;
 
++ (int)_copyContentsFromDatabase:(struct sqlite3 *)arg1 toDatabase:(struct sqlite3 *)arg2;
++ (BOOL)databaseSchemas:(id)arg1 containTable:(id)arg2;
 + (id)highFrequencyDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (id)mainDatabaseURLWithProfileDirectoryPath:(id)arg1;
++ (id)memoryDatabaseFromURL:(id)arg1;
 + (id)protectedDatabaseURLWithProfileDirectoryPath:(id)arg1;
-+ (id)virtualFilesystemModule;
 - (void).cxx_destruct;
-- (int)_copyContentsFromDatabase:(struct sqlite3 *)arg1 toDatabase:(struct sqlite3 *)arg2;
 - (BOOL)_executeSQL:(id)arg1 cache:(BOOL)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4 enumerationHandler:(CDUnknownBlockType)arg5;
+- (BOOL)_executeStatementWithError:(id *)arg1 statementProvider:(CDUnknownBlockType)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_executeUncachedSQL:(id)arg1 error:(id *)arg2;
-- (BOOL)_executeUncachedSQL:(id)arg1 error:(id *)arg2 retryIfBusy:(BOOL)arg3;
+- (BOOL)_executeUncachedSQL:(id)arg1 error:(id *)arg2 retryIfBusy:(BOOL)arg3 interruptible:(BOOL)arg4;
+- (BOOL)_handleInterruptionWithError:(id *)arg1;
 - (BOOL)_integerValueForPragma:(id)arg1 databaseName:(id)arg2 value:(long long *)arg3 error:(id *)arg4;
 - (int)_openForWriting:(BOOL)arg1 additionalFlags:(int)arg2 error:(id *)arg3;
-- (BOOL)_prepareStatementForSQL:(id)arg1 cache:(BOOL)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)_schemaForDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (id)_schemaForIndexWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_schemaForTableWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
@@ -73,11 +81,13 @@
 - (BOOL)correlationCountForDataEntitySubclassTable:(id)arg1 count:(long long *)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (BOOL)deleteDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
+- (BOOL)deleteDataEntitySubclassTablesIfExist:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 - (BOOL)deleteRowsFromDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 - (BOOL)detachDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)detachProtectedDatabaseWithError:(id *)arg1;
 - (id)dumpSchemaWithError:(id *)arg1;
 - (BOOL)enableIncrementalAutovacuumForDatabaseWithName:(id)arg1 error:(id *)arg2;
+- (BOOL)executeCachedStatementForKey:(const char *)arg1 error:(id *)arg2 SQLGenerator:(CDUnknownBlockType)arg3 bindingHandler:(CDUnknownBlockType)arg4 enumerationHandler:(CDUnknownBlockType)arg5;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)executeSQLStatements:(id)arg1 error:(id *)arg2;
 - (BOOL)executeUncachedSQL:(id)arg1 error:(id *)arg2;
@@ -85,19 +95,15 @@
 - (BOOL)foreignKeyExistsFromTable:(id)arg1 column:(id)arg2 toTable:(id)arg3 column:(id)arg4 error:(id *)arg5;
 - (int)getChangesCount;
 - (id)getLastErrorWithResultCode:(int)arg1;
-- (id)highFrequencyDatabaseURL;
 - (BOOL)incrementalVacuumDatabaseIfNeeded:(id)arg1 error:(id *)arg2;
-- (id)initMemoryDatabaseFromURL:(id)arg1 delegate:(id)arg2;
-- (id)initMemoryDatabaseWithDelegate:(id)arg1;
-- (id)initWithDatabaseURL:(id)arg1 copyingDatabase:(id)arg2 delegate:(id)arg3;
-- (id)initWithDatabaseURL:(id)arg1 delegate:(id)arg2;
+- (id)initMemoryDatabase;
+- (id)initWithDatabaseURL:(id)arg1;
 - (BOOL)isDatabaseWithNameAttached:(id)arg1;
 - (BOOL)isProtectedDatabaseAttached;
 - (void)onCommit:(CDUnknownBlockType)arg1 orRollback:(CDUnknownBlockType)arg2;
 - (int)openForReadingWithError:(id *)arg1;
 - (int)openWithError:(id *)arg1;
-- (int)openWithFileProtectionCompleteUnlessOpenWithError:(id *)arg1;
-- (BOOL)performIntegrityCheckWithError:(id *)arg1 integrityErrorHandler:(CDUnknownBlockType)arg2;
+- (BOOL)performIntegrityCheckOnDatabase:(id)arg1 error:(id *)arg2 integrityErrorHandler:(CDUnknownBlockType)arg3;
 - (BOOL)performTransactionWithType:(long long)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)queryPlanForSQL:(id)arg1 error:(id *)arg2;
 - (void)requireRollback;

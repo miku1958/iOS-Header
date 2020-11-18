@@ -13,14 +13,14 @@
     unsigned short _resizableCapInsetsCapacity;
     CDStruct_0054b44d *_resizableCapInsets;
     unsigned short _effectsCapacity;
-    CDStruct_ee569e91 *_effectData;
+    CDStruct_8a1a641f *_effectData;
     int *_effectShaderFlags;
     NSMutableIndexSet *_reusableEffectIds;
     unsigned short _numberOfResizableCapInsets;
     unsigned short _numberOfEffects;
 }
 
-@property (readonly, nonatomic) const CDStruct_ee569e91 *effectData; // @synthesize effectData=_effectData;
+@property (readonly, nonatomic) const CDStruct_8a1a641f *effectData; // @synthesize effectData=_effectData;
 @property (readonly, nonatomic) const int *effectShaderFlags; // @synthesize effectShaderFlags=_effectShaderFlags;
 @property (readonly, nonatomic) unsigned short numberOfEffects; // @synthesize numberOfEffects=_numberOfEffects;
 @property (readonly, nonatomic) unsigned short numberOfResizableCapInsets; // @synthesize numberOfResizableCapInsets=_numberOfResizableCapInsets;
@@ -28,9 +28,9 @@
 
 - (void).cxx_destruct;
 - (unsigned short)_indexOfResizableCapInsets:(CDStruct_0054b44d)arg1;
-- (unsigned short)addEffectWithShaderFlags:(int)arg1;
+- (unsigned short)addEffectWithType:(unsigned short)arg1 shaderFlags:(int)arg2;
 - (unsigned short)addResizableCapInsets:(CDStruct_0054b44d)arg1;
-- (CDStruct_ee569e91 *)dataForEffectId:(unsigned short)arg1;
+- (CDStruct_8a1a641f *)dataForEffectId:(unsigned short)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)removeEffectWithId:(unsigned short)arg1;

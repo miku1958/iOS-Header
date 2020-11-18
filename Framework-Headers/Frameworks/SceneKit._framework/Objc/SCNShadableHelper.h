@@ -55,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithOwner:(id)arg1;
 - (BOOL)isOpaque;
 - (void)ownerWillDie;
-- (id)shaderModifierCache;
 
 @end
 

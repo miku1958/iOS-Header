@@ -14,10 +14,10 @@
 
 @property (copy, nonatomic) NSString *accessory;
 @property (copy, nonatomic) NSURL *accessoryIdentifier;
-@property (copy, nonatomic) NSString *accessoryType;
 @property (copy, nonatomic) NSArray *attributes;
 @property (copy, nonatomic) NSNumber *currentDevice;
 @property (copy, nonatomic) NSString *entityType;
+@property (copy, nonatomic) NSString *groupType;
 @property (copy, nonatomic) NSString *hashedRouteUID;
 @property (copy, nonatomic) NSString *home;
 @property (copy, nonatomic) NSURL *homeIdentifier;

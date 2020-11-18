@@ -15,7 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateLabelOnToField;
-- (void)loadView;
+- (id)accessibilityElements;
+- (void)addRecipient:(id)arg1;
+- (void)viewDidLoad;
 
 @end
 

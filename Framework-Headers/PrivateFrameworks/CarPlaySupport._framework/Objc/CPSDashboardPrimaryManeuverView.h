@@ -10,6 +10,9 @@
 {
 }
 
++ (id)instructionsForManeuver:(id)arg1;
++ (id)junctionImageForManeuver:(id)arg1;
++ (id)symbolImageForManeuver:(id)arg1;
 - (BOOL)centersManeuverInView;
 - (BOOL)fitJunctionViewToHeight;
 - (BOOL)hasJunctionImageBackground;

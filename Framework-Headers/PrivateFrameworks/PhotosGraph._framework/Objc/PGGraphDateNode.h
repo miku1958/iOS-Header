@@ -4,28 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphOptimizedNode.h>
 
-@class PGGraphSeasonNode;
+@class NSString, PGGraphCalendarUnitNode, PGGraphSeasonNode;
 
-@interface PGGraphDateNode : PGGraphNode
+@interface PGGraphDateNode : PGGraphOptimizedNode
 {
-    PGGraphSeasonNode *_seasonNode;
+    NSString *_name;
 }
 
 @property (readonly) long long day;
+@property (readonly) PGGraphCalendarUnitNode *dayNode;
 @property (readonly) long long month;
-@property (readonly, nonatomic) PGGraphSeasonNode *seasonNode; // @synthesize seasonNode=_seasonNode;
+@property (readonly) PGGraphCalendarUnitNode *monthNode;
+@property (readonly) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) PGGraphSeasonNode *seasonNode;
+@property (readonly) PGGraphCalendarUnitNode *weekOfMonthNode;
+@property (readonly) PGGraphCalendarUnitNode *weekOfYearNode;
 @property (readonly) long long year;
+@property (readonly) PGGraphCalendarUnitNode *yearNode;
 
 + (id)dateNodeForDayNode:(id)arg1 monthNode:(id)arg2 yearNode:(id)arg3;
++ (id)filter;
++ (id)momentOfDate;
++ (id)seasonOfDate;
++ (id)yearOfDate;
 - (void).cxx_destruct;
 - (id)associatedNodesForRemoval;
+- (id)description;
+- (unsigned short)domain;
 - (void)enumerateHolidayNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)hasProperties:(id)arg1;
+- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
 - (id)lastWeekDateNodes;
 - (id)localDate;
+- (id)momentNodes;
+- (id)propertyDictionary;
 - (id)sameWeekDateNodes;
+- (void)setLocalProperties:(id)arg1;
 
 @end
 

@@ -6,6 +6,20 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
+@class NSProgress;
+
 @protocol HKCloudSyncControlServerInterface <NSObject>
+- (void)remote_accountConfigurationDidChangeWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSProgress *)remote_disableCloudSyncAndDeleteAllCloudDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_disableCloudSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_enableCloudSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSProgress *)remote_fetchCloudDescriptionWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (NSProgress *)remote_fetchCloudSyncProgressWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_fetchCloudSyncStatusWithCompletion:(void (^)(BOOL, NSDate *, NSDate *, BOOL, NSError *))arg1;
+- (NSProgress *)remote_forceCloudResetWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSProgress *)remote_forceCloudSyncDataUploadForProfileWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSProgress *)remote_forceCloudSyncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)remote_oldestSampleStartDateInHealthDatabaseWithCompletion:(void (^)(NSDate *, NSError *))arg1;
+- (void)remote_requestDataRefreshWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end
 

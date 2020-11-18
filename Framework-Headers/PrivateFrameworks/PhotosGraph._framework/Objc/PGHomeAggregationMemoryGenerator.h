@@ -19,7 +19,7 @@
 + (unsigned long long)numberOfPotentialMemoriesWithGraph:(id)arg1;
 - (void).cxx_destruct;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)_lastMonthPotentialMemory;
+- (id)_lastMonthPotentialMemories;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 

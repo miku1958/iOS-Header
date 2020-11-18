@@ -21,11 +21,15 @@
         unsigned int longitude:1;
         unsigned int isITunes:1;
         unsigned int mediaEntityType:1;
+        unsigned int shouldSearchDirectionsAlongCurrentRoute:1;
+        unsigned int directionsMode:1;
     } _has;
     BOOL _isOverlay;
     BOOL _requiresLocalMedia;
     BOOL _isITunes;
+    BOOL _shouldSearchDirectionsAlongCurrentRoute;
     int _mediaEntityType;
+    int _directionsMode;
     NSString *_label;
     NSString *_labelForLocalMedia;
     NSArray *_storeIdentifiers;
@@ -49,17 +53,22 @@
     NSURL *_messageURL;
     NSString *_persistentID;
     NSString *_universalLibraryID;
+    NSString *_interactionContentType;
+    SFPunchout *_customDirectionsPunchout;
 }
 
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (strong, nonatomic) SFImage *baseIcon; // @synthesize baseIcon=_baseIcon;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (strong, nonatomic) SFPunchout *customDirectionsPunchout; // @synthesize customDirectionsPunchout=_customDirectionsPunchout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) int directionsMode; // @synthesize directionsMode=_directionsMode;
 @property (copy, nonatomic) NSString *email; // @synthesize email=_email;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SFImage *icon; // @synthesize icon=_icon;
+@property (copy, nonatomic) NSString *interactionContentType; // @synthesize interactionContentType=_interactionContentType;
 @property (nonatomic) BOOL isITunes; // @synthesize isITunes=_isITunes;
 @property (nonatomic) BOOL isOverlay; // @synthesize isOverlay=_isOverlay;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -80,6 +89,7 @@
 @property (copy, nonatomic) NSString *provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
 @property (nonatomic) BOOL requiresLocalMedia; // @synthesize requiresLocalMedia=_requiresLocalMedia;
+@property (nonatomic) BOOL shouldSearchDirectionsAlongCurrentRoute; // @synthesize shouldSearchDirectionsAlongCurrentRoute=_shouldSearchDirectionsAlongCurrentRoute;
 @property (copy, nonatomic) NSArray *storeIdentifiers; // @synthesize storeIdentifiers=_storeIdentifiers;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
@@ -89,14 +99,17 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasDirectionsMode;
 - (BOOL)hasIsITunes;
 - (BOOL)hasIsOverlay;
 - (BOOL)hasLatitude;
 - (BOOL)hasLongitude;
 - (BOOL)hasMediaEntityType;
 - (BOOL)hasRequiresLocalMedia;
+- (BOOL)hasShouldSearchDirectionsAlongCurrentRoute;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

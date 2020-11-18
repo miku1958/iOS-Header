@@ -6,12 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC19NewsPersonalization29PersonalizationFeatureFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *headlineService;
-    MISSING_TYPE *issueService;
 }
 
 @end

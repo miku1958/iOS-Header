@@ -21,7 +21,10 @@
 - (BOOL)isExpandable;
 - (BOOL)isMenuItemSelected:(id)arg1;
 - (id)loadMenuItems;
+- (void)setFlashMode:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
+- (BOOL)shouldUseSlash;
 
 @end
 

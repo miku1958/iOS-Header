@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXCMMViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMWorkflowPresenting-Protocol.h>
 
-@class NSString, PXCMMViewController, UINavigationController;
+@class NSString, PXCMMViewController, PXCPLStatusProvider, UINavigationController;
 @protocol PXCMMWorkflowCoordinatorDelegate;
 
 @interface PXCMMWorkflowCoordinator : NSObject <PXCMMViewControllerDelegate, PXCMMActionPerformerDelegate, PXCMMActionControllerDelegate, PXCMMWorkflowPresenting>
@@ -20,8 +20,10 @@
     PXCMMViewController *_rootWorkflowViewController;
     PXCMMViewController *_sendBackWorkflowViewController;
     id<PXCMMWorkflowCoordinatorDelegate> _delegate;
+    PXCPLStatusProvider *_cplStatusProvider;
 }
 
+@property (strong, nonatomic) PXCPLStatusProvider *cplStatusProvider; // @synthesize cplStatusProvider=_cplStatusProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXCMMWorkflowCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -58,6 +60,7 @@
 - (id)completeMyMomentViewController:(id)arg1 performSendBackActionForSession:(id)arg2;
 - (void)completeMyMomentViewController:(id)arg1 showPhotoPickerForSession:(id)arg2;
 - (void)didCancelCompleteMyMomentViewController:(id)arg1;
+- (id)init;
 - (void)startPreloadingTasksForCompleteMyMomentViewController:(id)arg1;
 - (id)workflowViewControllerWithContext:(id)arg1;
 - (id)workflowViewControllerWithContext:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2;

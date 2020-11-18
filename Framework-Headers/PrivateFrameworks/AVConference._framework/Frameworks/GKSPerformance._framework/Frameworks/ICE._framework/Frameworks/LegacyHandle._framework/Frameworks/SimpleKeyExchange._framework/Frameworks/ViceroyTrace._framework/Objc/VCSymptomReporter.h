@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (int)reportNoPacketsWithOptionalDictionary:(id)arg1;
 - (int)reportNoRelayResponseWithOptionalDictionary:(id)arg1;
 - (int)reportNoSNATMAPResponseWithOptionalDictionary:(id)arg1;
+- (int)reportOptedOutAndInToSameVideoStreamID;
 - (int)reportQRATKNTokenError;
 - (int)reportRateTargetMismatch;
 - (int)reportReceiveSessionStatsFailed;

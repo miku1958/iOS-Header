@@ -17,7 +17,7 @@
     id<PKAddPaymentPassDevicePickerDelegate> _delegate;
 }
 
-@property (nonatomic) id<PKAddPaymentPassDevicePickerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKAddPaymentPassDevicePickerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (void)dealloc;

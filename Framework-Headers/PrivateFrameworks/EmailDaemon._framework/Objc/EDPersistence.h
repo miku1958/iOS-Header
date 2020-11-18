@@ -53,6 +53,7 @@
 - (id)init;
 - (id)initWithVIPManager:(id)arg1;
 - (void)scheduleRecurringActivity;
+- (void)test_tearDown;
 
 @end
 

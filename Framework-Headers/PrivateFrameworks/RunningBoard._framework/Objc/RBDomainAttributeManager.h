@@ -25,8 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_compareTargetBundleProperties:(id)arg1 withTargetProperties:(id)arg2;
-- (void)_prepareAttributeTemplates;
+- (id)additionalRestrictionsForDomain:(id)arg1 andName:(id)arg2;
 - (id)allEntitlements;
 - (BOOL)areTargetPropertiesValid:(id)arg1 forAttributeWithDomain:(id)arg2 andName:(id)arg3;
 - (id)attributesForDomain:(id)arg1 andName:(id)arg2 targetProperties:(id)arg3 withError:(id *)arg4;
@@ -35,6 +34,7 @@
 - (id)endowmentNamespaceForDomain:(id)arg1 andName:(id)arg2;
 - (id)initWithDataProvider:(id)arg1;
 - (id)originatorEntitlementsForDomain:(id)arg1 andName:(id)arg2;
+- (id)targetEntitlementsForDomain:(id)arg1 andName:(id)arg2;
 
 @end
 

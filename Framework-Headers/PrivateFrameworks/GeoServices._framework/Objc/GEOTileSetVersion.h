@@ -27,7 +27,14 @@ __attribute__((visibility("hidden")))
     unsigned int _identifier;
     unsigned int _supportedLanguagesVersion;
     unsigned int _timeToLiveSeconds;
-    CDStruct_40288aee _flags;
+    struct {
+        unsigned int has_supportedLanguagesVersion:1;
+        unsigned int has_timeToLiveSeconds:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_availableTiles:1;
+        unsigned int read_genericTiles:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) struct GEOTileSetRegion *availableTiles;
@@ -43,10 +50,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAvailableTiles:(struct GEOTileSetRegion)arg1;
-- (void)_addNoFlagsGenericTile:(struct GEOGenericTile)arg1;
-- (void)_readAvailableTiles;
-- (void)_readGenericTiles;
 - (void)addAvailableTiles:(struct GEOTileSetRegion)arg1;
 - (void)addGenericTile:(struct GEOGenericTile)arg1;
 - (struct GEOTileSetRegion)availableTilesAtIndex:(unsigned long long)arg1;
@@ -62,7 +65,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

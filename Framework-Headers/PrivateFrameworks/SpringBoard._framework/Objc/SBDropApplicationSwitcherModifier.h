@@ -15,14 +15,14 @@
 }
 
 - (void).cxx_destruct;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToResignActive;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
-- (long long)keyboardSuppressionMode;
-- (long long)layoutUpdateMode;
-- (long long)liveContentRasterizationStyle;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

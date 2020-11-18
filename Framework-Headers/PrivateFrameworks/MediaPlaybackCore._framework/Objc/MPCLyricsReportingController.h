@@ -24,7 +24,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)init;
 - (void)recordLyricsViewEvent:(id)arg1;

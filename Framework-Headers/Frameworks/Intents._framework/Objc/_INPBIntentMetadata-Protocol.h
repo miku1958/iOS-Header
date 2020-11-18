@@ -6,10 +6,13 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBImageValue, _INPBPair, _INPBString;
+@class NSArray, NSData, NSString, _INPBImageValue, _INPBPair, _INPBString;
 
 @protocol _INPBIntentMetadata <NSObject>
 
+@property (copy, nonatomic) NSArray *airPlayRouteIds;
+@property (readonly, nonatomic) unsigned long long airPlayRouteIdsCount;
+@property (copy, nonatomic) NSData *auditTokenData;
 @property (nonatomic) BOOL backgroundLaunch;
 @property (copy, nonatomic) NSString *categoryVerb;
 @property (nonatomic) BOOL confirmed;
@@ -17,6 +20,7 @@
 @property (nonatomic) int executionContext;
 @property (copy, nonatomic) NSArray *forceNeedsValueForParameters;
 @property (readonly, nonatomic) unsigned long long forceNeedsValueForParametersCount;
+@property (readonly, nonatomic) BOOL hasAuditTokenData;
 @property (nonatomic) BOOL hasBackgroundLaunch;
 @property (readonly, nonatomic) BOOL hasCategoryVerb;
 @property (nonatomic) BOOL hasConfirmed;
@@ -33,6 +37,7 @@
 @property (readonly, nonatomic) BOOL hasOriginatingDeviceIdsIdentifier;
 @property (readonly, nonatomic) BOOL hasOriginatingDeviceRapportEffectiveId;
 @property (readonly, nonatomic) BOOL hasOriginatingDeviceRapportMediaSystemId;
+@property (nonatomic) BOOL hasShowsWhenRun;
 @property (readonly, nonatomic) BOOL hasSuggestedInvocationPhrase;
 @property (readonly, nonatomic) BOOL hasSystemExtensionBundleId;
 @property (readonly, nonatomic) BOOL hasSystemUIExtensionBundleId;
@@ -54,6 +59,9 @@
 @property (readonly, nonatomic) unsigned long long parameterImagesCount;
 @property (readonly, nonatomic) int *requiredEntitlements;
 @property (readonly, nonatomic) unsigned long long requiredEntitlementsCount;
+@property (readonly, nonatomic) int *shortcutAvailabilities;
+@property (readonly, nonatomic) unsigned long long shortcutAvailabilitiesCount;
+@property (nonatomic) BOOL showsWhenRun;
 @property (copy, nonatomic) NSString *suggestedInvocationPhrase;
 @property (copy, nonatomic) NSString *systemExtensionBundleId;
 @property (copy, nonatomic) NSString *systemUIExtensionBundleId;
@@ -66,13 +74,19 @@
 - (int)StringAsIdiom:(NSString *)arg1;
 - (int)StringAsIntentCategory:(NSString *)arg1;
 - (int)StringAsRequiredEntitlements:(NSString *)arg1;
+- (int)StringAsShortcutAvailabilities:(NSString *)arg1;
 - (int)StringAsTriggerMethod:(NSString *)arg1;
+- (void)addAirPlayRouteIds:(NSString *)arg1;
 - (void)addForceNeedsValueForParameter:(NSString *)arg1;
 - (void)addParameterImages:(_INPBPair *)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
+- (void)addShortcutAvailability:(int)arg1;
+- (NSString *)airPlayRouteIdsAtIndex:(unsigned long long)arg1;
+- (void)clearAirPlayRouteIds;
 - (void)clearForceNeedsValueForParameters;
 - (void)clearParameterImages;
 - (void)clearRequiredEntitlements;
+- (void)clearShortcutAvailabilities;
 - (NSString *)executionContextAsString:(int)arg1;
 - (NSString *)forceNeedsValueForParameterAtIndex:(unsigned long long)arg1;
 - (NSString *)idiomAsString:(int)arg1;
@@ -81,6 +95,9 @@
 - (int)requiredEntitlementAtIndex:(unsigned long long)arg1;
 - (NSString *)requiredEntitlementsAsString:(int)arg1;
 - (void)setRequiredEntitlements:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setShortcutAvailabilities:(int *)arg1 count:(unsigned long long)arg2;
+- (NSString *)shortcutAvailabilitiesAsString:(int)arg1;
+- (int)shortcutAvailabilityAtIndex:(unsigned long long)arg1;
 - (NSString *)triggerMethodAsString:(int)arg1;
 @end
 

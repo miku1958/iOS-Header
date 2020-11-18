@@ -11,7 +11,6 @@
 }
 
 @property (readonly, nonatomic) BOOL isAppExtension;
-@property (readonly, nonatomic) BOOL isMemoryConstrained;
 @property (readonly, nonatomic) BOOL isWatchOS;
 
 + (id)currentEnvironment;

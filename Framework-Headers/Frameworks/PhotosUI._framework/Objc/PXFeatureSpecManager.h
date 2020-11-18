@@ -18,6 +18,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) unsigned long long defaultChangesToUpdateFor;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PXExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property (readonly) unsigned long long hash;

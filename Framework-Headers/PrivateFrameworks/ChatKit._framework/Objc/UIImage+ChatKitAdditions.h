@@ -6,11 +6,14 @@
 
 #import <UIKit/UIImage.h>
 
-@interface UIImage (ChatKitAdditions)
+#import <ChatKit/NSDiscardableContent-Protocol.h>
+
+@interface UIImage (ChatKitAdditions) <NSDiscardableContent>
 + (id)abImageNamed:(id)arg1;
 + (id)badgeIconForImageNamed:(id)arg1 inBundle:(id)arg2;
 + (id)ckColorImageOfSize:(struct CGSize)arg1 withColor:(id)arg2;
 + (id)ckImageNamed:(id)arg1;
++ (id)ckImageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)ckImageNamed:(id)arg1 withTintColor:(id)arg2;
 + (id)ckImageWithData:(id)arg1;
 + (id)ckTemplateImageNamed:(id)arg1;
@@ -19,8 +22,12 @@
 - (struct CGRect)__ck_contentsCenter;
 - (id)__ck_imageWithOrientation:(long long)arg1;
 - (id)__ck_resizableBalloonWithBalloonDescriptor:(struct CKBalloonDescriptor_t)arg1 framed:(BOOL)arg2;
+- (BOOL)beginContentAccess;
 - (id)ckImageWithTintColor:(id)arg1;
 - (void)decode;
+- (void)discardContentIfPossible;
+- (void)endContentAccess;
 - (id)iconForInterfaceStyle:(long long)arg1;
+- (BOOL)isContentDiscarded;
 @end
 

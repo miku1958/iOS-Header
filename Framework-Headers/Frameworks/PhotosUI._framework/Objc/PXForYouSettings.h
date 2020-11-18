@@ -8,7 +8,6 @@
 
 @interface PXForYouSettings : PXSettings
 {
-    BOOL _showForYouSettingsAtTopLevel;
     BOOL _showMemories;
     BOOL _showSharedAlbumActivity;
     BOOL _showCMMSuggestions;
@@ -17,6 +16,7 @@
     BOOL _showRecentInterestSuggestions;
     BOOL _showPeopleQuestions;
     BOOL _showSurveyQuestions;
+    BOOL _showSurveyQuestionsWithProfile;
     BOOL _showFooter;
     BOOL _showSampleSuggestionGadgets;
     BOOL _showVerticalSampleGadgets;
@@ -30,7 +30,6 @@
     BOOL _useSquareSharedAlbumActivity;
     BOOL _disableSharedAlbumTopMargin;
     BOOL _alwaysShowSuggestionRenderingOverlay;
-    BOOL _showFeaturedPhotosBadges;
     BOOL _delayEditRenders;
     BOOL _useCachedEditRenders;
     unsigned long long _maxSimultaneousVideoCount;
@@ -53,9 +52,7 @@
 @property (nonatomic) BOOL showCMMInvitations; // @synthesize showCMMInvitations=_showCMMInvitations;
 @property (nonatomic) BOOL showCMMSuggestions; // @synthesize showCMMSuggestions=_showCMMSuggestions;
 @property (nonatomic) BOOL showEditSuggestions; // @synthesize showEditSuggestions=_showEditSuggestions;
-@property (nonatomic) BOOL showFeaturedPhotosBadges; // @synthesize showFeaturedPhotosBadges=_showFeaturedPhotosBadges;
 @property (nonatomic) BOOL showFooter; // @synthesize showFooter=_showFooter;
-@property (nonatomic) BOOL showForYouSettingsAtTopLevel; // @synthesize showForYouSettingsAtTopLevel=_showForYouSettingsAtTopLevel;
 @property (nonatomic) BOOL showHorizontalGadget; // @synthesize showHorizontalGadget=_showHorizontalGadget;
 @property (nonatomic) BOOL showMemories; // @synthesize showMemories=_showMemories;
 @property (nonatomic) BOOL showPeopleQuestions; // @synthesize showPeopleQuestions=_showPeopleQuestions;
@@ -63,6 +60,7 @@
 @property (nonatomic) BOOL showSampleSuggestionGadgets; // @synthesize showSampleSuggestionGadgets=_showSampleSuggestionGadgets;
 @property (nonatomic) BOOL showSharedAlbumActivity; // @synthesize showSharedAlbumActivity=_showSharedAlbumActivity;
 @property (nonatomic) BOOL showSurveyQuestions; // @synthesize showSurveyQuestions=_showSurveyQuestions;
+@property (nonatomic) BOOL showSurveyQuestionsWithProfile; // @synthesize showSurveyQuestionsWithProfile=_showSurveyQuestionsWithProfile;
 @property (nonatomic) BOOL showVerticalSampleGadgets; // @synthesize showVerticalSampleGadgets=_showVerticalSampleGadgets;
 @property (nonatomic) long long sortingAlgorithm; // @synthesize sortingAlgorithm=_sortingAlgorithm;
 @property (nonatomic) BOOL useCachedEditRenders; // @synthesize useCachedEditRenders=_useCachedEditRenders;
@@ -74,6 +72,7 @@
 + (id)sharedInstance;
 - (id)parentSettings;
 - (void)setDefaultValues;
+- (long long)version;
 
 @end
 

@@ -16,8 +16,16 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
-+ (id)allDefaultsInfo;
++ (id)builtInMicrophoneAnalysisChannelNumber;
++ (unsigned int)builtInMicrophoneAnalysisChannelNumberOrDefault:(unsigned int)arg1;
++ (id)daemonRecordingPath;
++ (BOOL)deleteRecordingsWithoutDetection;
++ (BOOL)enableFileServer;
++ (BOOL)enableSecondPassRecordingInDaemon;
++ (id)fileServerRootDirectory;
 + (id)instance;
++ (long long)recordingDirectoryMaximumSizeBytes;
++ (double)recordingTimeToLiveSeconds;
 + (id)userDefaults;
 - (void).cxx_destruct;
 - (id)init;

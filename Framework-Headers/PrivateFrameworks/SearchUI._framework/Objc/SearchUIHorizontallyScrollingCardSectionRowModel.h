@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)cardSection;
 - (Class)cellViewClass;
+- (BOOL)hasLeadingImage;
 - (id)initWithResults:(id)arg1;
 - (id)reuseIdentifier;
 

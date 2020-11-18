@@ -21,9 +21,12 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *updateTime; // @synthesize updateTime=_updateTime;
 
++ (BOOL)_bufferHasSpace:(const char **)arg1 beforeByte:(const char *)arg2 count:(unsigned long long)arg3 resetOnFailure:(BOOL)arg4;
 + (id)_buildWithBinaryValue:(id)arg1 error:(id *)arg2;
++ (BOOL)_copySignedInt:(int *)arg1 fromData:(const char **)arg2 byteCount:(unsigned long long)arg3 beforeByte:(const char *)arg4;
++ (BOOL)_copyUnsignedInt:(unsigned int *)arg1 fromData:(const char **)arg2 byteCount:(unsigned long long)arg3 beforeByte:(const char *)arg4;
 + (id)buildWithBinaryValue:(id)arg1 updateTime:(id)arg2 error:(id *)arg3;
-+ (id)dateFromData:(const char **)arg1 before:(const char *)arg2;
++ (id)dateFromData:(const char **)arg1 before:(const char *)arg2 calendar:(id)arg3;
 + (double)doubleFromFLOAT:(unsigned int)arg1;
 + (double)doubleFromFLOATData:(const char **)arg1 before:(const char *)arg2;
 + (float)floatFromSFLOAT:(unsigned short)arg1;

@@ -16,7 +16,7 @@
     CDUnknownBlockType _completion;
     BOOL canRestart;
     BOOL canRollback;
-    long long state;
+    unsigned int state;
 }
 
 - (void).cxx_destruct;
@@ -33,9 +33,9 @@
 - (unsigned long long)protocolVersion;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 - (BOOL)wasCancelled;
 
 @end

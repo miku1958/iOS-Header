@@ -18,11 +18,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_controlInfoPool;
     struct _opaque_pthread_mutex_t _controlInfoPoolLock;
     unsigned char _version;
+    unsigned char _fecFeedbackVersion;
     unsigned int _optionBitmap;
+    struct _opaque_pthread_rwlock_t _callbackDictLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned char fecFeedbackVersion; // @synthesize fecFeedbackVersion=_fecFeedbackVersion;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly) unsigned int type; // @synthesize type=_type;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void *)newControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3;
 - (void *)newMediaControlInfo;
 - (void *)newMediaControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3;
+- (void)passMediaControlInfo:(id)arg1 isFillBlobCallback:(BOOL)arg2;
 - (int)registerFillBlobCallback:(CDUnknownFunctionPointerType)arg1 processBlobCallback:(CDUnknownFunctionPointerType)arg2 context:(void *)arg3;
 
 @end

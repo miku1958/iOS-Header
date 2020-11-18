@@ -19,7 +19,9 @@
 
 @property (readonly, copy, nonatomic) NSString *batchID; // @synthesize batchID=_batchID;
 @property (readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
+@property (readonly, nonatomic, getter=isFakeBrandForTestAccounts) BOOL fakeBrandForTestAccounts;
 
++ (id)createFakeBrandForTestAccounts;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

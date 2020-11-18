@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBIconViewDelegate-Protocol.h>
 
-@class MTMaterialShadowView, NSLayoutConstraint, NSMutableArray, NSMutableOrderedSet, NSString, SBIconController, SBIconModel, SBIconView, UIHoverGestureRecognizer, UILabel, UIPanGestureRecognizer, UIStackView, UIView;
+@class MTMaterialShadowView, NSLayoutConstraint, NSMutableArray, NSMutableOrderedSet, NSString, SBIconController, SBIconModel, SBIconView, UIHoverGestureRecognizer, UILabel, UIPanGestureRecognizer, UIStackView, UITapGestureRecognizer, UIView;
 @protocol SBCommandTabViewControllerDelegate;
 
 @interface SBCommandTabViewController : UIViewController <SBIconViewDelegate>
@@ -29,6 +29,7 @@
     UIStackView *_stackView;
     SBIconView *_homeIconView;
     UIPanGestureRecognizer *_panGestureRecognizer;
+    UITapGestureRecognizer *_tapDismissGestureRecognizer;
     UIHoverGestureRecognizer *_hoverGestureRecognizer;
     struct CGPoint _lastHoverLocation;
     BOOL _isTouchDown;
@@ -42,9 +43,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)canActivateWithRecentDisplayItems:(id)arg1;
 - (void).cxx_destruct;
 - (void)_handleCommandTab:(id)arg1;
 - (void)_handleShiftCommandTab:(id)arg1;
+- (void)_handleTapDismissGesture:(id)arg1;
 - (void)_handleUIGesture:(id)arg1;
 - (void)_moveSelectionSquareToIconAtIndex:(unsigned long long)arg1;
 - (void)_updateForUserInterfaceStyle;

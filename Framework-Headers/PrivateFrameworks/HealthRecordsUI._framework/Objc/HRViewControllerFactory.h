@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HRProfile, MISSING_TYPE;
-
 @interface HRViewControllerFactory : NSObject
 {
-    MISSING_TYPE *profile;
 }
-
-@property (nonatomic, readonly) HRProfile *profile; // @synthesize profile;
 
 + (id)shared;
 - (void).cxx_destruct;
 - (id)init;
-- (id)makeDetailViewControllerForRecord:(id)arg1;
-- (id)makeSettingsViewController;
-- (id)makeViewControllerForRecord:(id)arg1;
+- (id)makeDetailViewControllerForRecord:(id)arg1 usingProfile:(id)arg2;
+- (id)makeOnboadingTileViewControllerUsing:(id)arg1;
+- (id)makeSettingsViewControllerUsing:(id)arg1;
+- (id)makeViewControllerForRecord:(id)arg1 usingProfile:(id)arg2;
 
 @end
 

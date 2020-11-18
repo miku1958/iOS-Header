@@ -22,6 +22,7 @@
 + (double)confidenceFromDataPointCount:(unsigned long long)arg1;
 + (id)shiftLocation:(id)arg1 shifter:(id)arg2;
 - (void).cxx_destruct;
+- (void)calculateAltitude:(double *)arg1 verticalUncertainty:(double *)arg2 learnedLocations:(id)arg3;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

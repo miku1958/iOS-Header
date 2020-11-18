@@ -8,15 +8,13 @@
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
-@class BKSAnimationFenceHandle, FBSSceneMessage, NSString;
+@class FBSSceneMessage, NSString;
 
 @interface FBSWorkspaceResponse : NSObject <BSXPCCoding>
 {
     FBSSceneMessage *_message;
-    BKSAnimationFenceHandle *_animationFence;
 }
 
-@property (strong, nonatomic) BKSAnimationFenceHandle *animationFence; // @synthesize animationFence=_animationFence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

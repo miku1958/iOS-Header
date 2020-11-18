@@ -12,7 +12,7 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMMailboxChangeObserver-Protocol.h>
 
-@class EDMessagePersistence, EDMessageQueryEvaluator, EDPersistenceHookRegistry, EDUpdateThrottler, EFCancelationToken, EFQuery, EMMailboxScope, EMObjectID, NSMutableDictionary, NSMutableSet, NSPredicate, NSString;
+@class EDMessagePersistence, EDMessageQueryEvaluator, EDPersistenceHookRegistry, EDUpdateThrottler, EFCancelationToken, EFMutableInt64Set, EFQuery, EFStoppableScheduler, EMMailboxScope, EMObjectID, NSMutableDictionary, NSMutableSet, NSPredicate, NSString;
 @protocol EMMessageRepositoryCountQueryObserver_xpc;
 
 @interface EDMessageCountQueryHandler : NSObject <EFLoggable, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EMMailboxChangeObserver, EFCancelable>
@@ -21,12 +21,13 @@
     NSMutableSet *_mailboxesBeingSynced;
     long long _resyncDatabaseGeneration;
     EMObjectID *_mailboxObserverID;
-    NSMutableSet *_seenMessageIDs;
-    NSMutableSet *_newMessageIDs;
+    EFMutableInt64Set *_seenMessageIDs;
+    EFMutableInt64Set *_newMessageIDs;
     struct os_unfair_lock_s _seenMessageIDsLock;
     _Atomic unsigned long long _recalculationPending;
     struct EFAtomicObject _atomicQueryDescription;
     struct EFAtomicObject _atomicMailboxScopeDescription;
+    EFStoppableScheduler *_scheduler;
     EFQuery *_query;
     EFQuery *_expandedQuery;
     NSPredicate *_predicateIgnoringFlags;
@@ -54,24 +55,24 @@
 @property (strong, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) EDMessageQueryEvaluator *queryEvaluator; // @synthesize queryEvaluator=_queryEvaluator;
 @property (strong, nonatomic) id<EMMessageRepositoryCountQueryObserver_xpc> resultsObserver; // @synthesize resultsObserver=_resultsObserver;
+@property (readonly, nonatomic) EFStoppableScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly, nonatomic) EMMailboxScope *serverCountMailboxScope; // @synthesize serverCountMailboxScope=_serverCountMailboxScope;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) EDUpdateThrottler *updateThrottler; // @synthesize updateThrottler=_updateThrottler;
 
-+ (id)defaultScheduler;
 + (id)log;
 - (void).cxx_destruct;
 - (void)_decrementLocalCount:(long long)arg1 logMessage:(id)arg2 generationWindow:(id)arg3;
 - (id)_filterMessages:(id)arg1 potentiallyMatchingMessages:(id *)arg2;
 - (void)_fireCountCalculation;
 - (void)_incrementLocalCount:(long long)arg1 logMessage:(id)arg2 generationWindow:(id)arg3;
-- (BOOL)_moreThan:(long long)arg1 messagesExistWithMessageIDHeaderHash:(id)arg2;
+- (BOOL)_moreThan:(long long)arg1 messagesExistWithGlobalMessageID:(long long)arg2;
 - (void)_notifyObserverWithLogMessage:(id)arg1;
 - (id)_originalMessagesKeyForKey:(id)arg1;
 - (void)_persistenceDidDeleteMessages:(id)arg1 includeMessagesWithDeletedFlag:(BOOL)arg2 generationWindow:(id)arg3;
 - (void)_prepareForChangeWithMessages:(id)arg1 changeKey:(id)arg2;
 - (void)_processChangedMessages:(id)arg1 changeKey:(id)arg2 generationWindow:(id)arg3;
-- (void)_scheduleCountCalculation;
+- (void)_scheduleCountCalculationWithReason:(id)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (void)didSyncMailbox:(id)arg1;
@@ -79,7 +80,7 @@
 - (void)mailboxListChanged:(id)arg1;
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidChangeFlags:(id)arg1 messages:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 oldConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
+- (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceDidDeleteMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidUpdateLastSyncAndMostRecentStatusCount:(long long)arg1 forMailboxWithObjectID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidUpdateMostRecentStatusCount:(long long)arg1 forMailboxWithObjectID:(id)arg2 generationWindow:(id)arg3;
@@ -87,6 +88,7 @@
 - (void)persistenceDidUpdateServerCount:(long long)arg1 forMailboxWithObjectID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceIsAddingMailboxWithDatabaseID:(long long)arg1 objectID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceWillChangeFlags:(id)arg1 messages:(id)arg2;
+- (void)test_tearDown;
 - (void)willSyncMailbox:(id)arg1;
 
 @end

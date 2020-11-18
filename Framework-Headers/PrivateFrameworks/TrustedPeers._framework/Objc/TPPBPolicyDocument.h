@@ -17,7 +17,9 @@
     NSMutableArray *_introducersByCategorys;
     NSMutableArray *_keyViewMappings;
     NSMutableArray *_modelToCategorys;
+    NSMutableArray *_piggybackViews;
     NSMutableArray *_redactions;
+    NSMutableArray *_userControllableViews;
     CDStruct_0e29c504 _has;
 }
 
@@ -26,27 +28,35 @@
 @property (strong, nonatomic) NSMutableArray *introducersByCategorys; // @synthesize introducersByCategorys=_introducersByCategorys;
 @property (strong, nonatomic) NSMutableArray *keyViewMappings; // @synthesize keyViewMappings=_keyViewMappings;
 @property (strong, nonatomic) NSMutableArray *modelToCategorys; // @synthesize modelToCategorys=_modelToCategorys;
+@property (strong, nonatomic) NSMutableArray *piggybackViews; // @synthesize piggybackViews=_piggybackViews;
 @property (nonatomic) unsigned long long policyVersion; // @synthesize policyVersion=_policyVersion;
 @property (strong, nonatomic) NSMutableArray *redactions; // @synthesize redactions=_redactions;
+@property (strong, nonatomic) NSMutableArray *userControllableViews; // @synthesize userControllableViews=_userControllableViews;
 
 + (Class)categoriesByViewType;
 + (Class)introducersByCategoryType;
 + (Class)keyViewMappingType;
 + (Class)modelToCategoryType;
++ (Class)piggybackViewsType;
 + (Class)redactionsType;
++ (Class)userControllableViewsType;
 - (void).cxx_destruct;
 - (void)addCategoriesByView:(id)arg1;
 - (void)addIntroducersByCategory:(id)arg1;
 - (void)addKeyViewMapping:(id)arg1;
 - (void)addModelToCategory:(id)arg1;
+- (void)addPiggybackViews:(id)arg1;
 - (void)addRedactions:(id)arg1;
+- (void)addUserControllableViews:(id)arg1;
 - (id)categoriesByViewAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categoriesByViewsCount;
 - (void)clearCategoriesByViews;
 - (void)clearIntroducersByCategorys;
 - (void)clearKeyViewMappings;
 - (void)clearModelToCategorys;
+- (void)clearPiggybackViews;
 - (void)clearRedactions;
+- (void)clearUserControllableViews;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -60,9 +70,13 @@
 - (void)mergeFrom:(id)arg1;
 - (id)modelToCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)modelToCategorysCount;
+- (id)piggybackViewsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)piggybackViewsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)redactionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)redactionsCount;
+- (id)userControllableViewsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)userControllableViewsCount;
 - (void)writeTo:(id)arg1;
 
 @end

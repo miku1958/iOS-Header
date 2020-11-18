@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 + (void)_noteProcessHasUsedKVOSwiftOverlay;
++ (BOOL)_releasesObservationBlockOnInvalidation;
 + (void)_setRequiresSilencingExceptions:(BOOL)arg1;
 
 @end

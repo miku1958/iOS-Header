@@ -14,6 +14,7 @@
 {
     NSLinguisticTagger *_tagger;
     BOOL _nameTagging;
+    BOOL _trustCoreNLP;
     NSString *_punctuationMapping;
     NSString *_personalNameMapping;
     NSString *_locale;
@@ -27,12 +28,13 @@
 @property (readonly) Class superclass;
 
 + (id)forLocale:(id)arg1;
-+ (id)forLocale:(id)arg1 withNameTagging:(BOOL)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
++ (id)forLocale:(id)arg1 tagNames:(BOOL)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
++ (id)forLocale:(id)arg1 tagNames:(BOOL)arg2 trustCoreNLP:(BOOL)arg3 personalNameMapping:(id)arg4 punctuationMapping:(id)arg5;
 + (id)forLocale:(id)arg1 withPersonalNameMapping:(id)arg2;
 - (void).cxx_destruct;
 - (void)_registerForNotifications;
 - (void)dealloc;
-- (id)initForLocale:(id)arg1 withNameTagging:(BOOL)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
+- (id)initForLocale:(id)arg1 tagNames:(BOOL)arg2 trustCoreNLP:(BOOL)arg3 personalNameMapping:(id)arg4 punctuationMapping:(id)arg5;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTokenizerMappingTransformer:(id)arg1;

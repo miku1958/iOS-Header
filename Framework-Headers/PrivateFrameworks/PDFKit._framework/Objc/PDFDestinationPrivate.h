@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     PDFDocument *document;
     PDFPage *page;
+    struct CGPDFArray *array;
     int type;
     double left;
     double top;

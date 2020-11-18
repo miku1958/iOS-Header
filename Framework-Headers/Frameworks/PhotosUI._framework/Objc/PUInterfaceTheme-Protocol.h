@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSString, PUFeedTextCell, PUPhotoDecoration, PUStackView, UIButton, UIColor, UIFont, UIFontDescriptor, UIImage, UILabel, UINavigationController, UIProgressView, UISwitch, UITableView, UITableViewCell, UITextField, UITextView;
+@class NSAttributedString, NSDictionary, NSString, PUFeedTextCell, PUPhotoDecoration, PUStackView, UIButton, UIColor, UIFont, UIImage, UILabel, UINavigationController, UISwitch, UITableView, UITableViewCell, UITextField;
 
 @protocol PUInterfaceTheme <NSObject>
 
@@ -51,11 +51,6 @@
 @property (readonly, nonatomic) UIColor *contentCommentsShownButtonImageColor;
 @property (readonly, nonatomic) NSDictionary *contentCommentsShownButtonTextAttributes;
 @property (readonly, nonatomic) UIColor *folderCellBackgroundColor;
-@property (readonly, nonatomic) UIColor *gridViewCellBannerBackgroundColor;
-@property (readonly, nonatomic) UIImage *gridViewCellBannerBackgroundImage;
-@property (readonly, nonatomic) UIColor *gridViewCellBannerDestructiveTextColor;
-@property (readonly, nonatomic) UIColor *gridViewCellBannerTextColor;
-@property (readonly, nonatomic) UIFont *gridViewCellBannerTextFont;
 @property (readonly, nonatomic) double padAlbumCornerRadius;
 @property (readonly, nonatomic) double phoneAlbumCornerRadius;
 @property (readonly, nonatomic) long long photoBrowserBarStyle;
@@ -174,7 +169,6 @@
 
 - (NSAttributedString *)attributedStringForCloudFeedGroupHeaderWithText:(NSString *)arg1;
 - (NSString *)commentsButtonStringForCount:(long long)arg1;
-- (void)configureAlbumListDeleteButton:(UIButton *)arg1;
 - (void)configureAlbumListSectionTitleLabel:(UILabel *)arg1;
 - (void)configureAlbumListStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListSubtitleLabel:(UILabel *)arg1 asOpaque:(BOOL)arg2;
@@ -187,22 +181,14 @@
 - (void)configureCloudFeedInvitationReplyButton:(UIButton *)arg1;
 - (void)configureCloudFeedSectionHeaderTextCell:(PUFeedTextCell *)arg1 contentInsets:(struct UIEdgeInsets)arg2 descriptionAttributedText:(NSAttributedString *)arg3 detailAttributedText:(NSAttributedString *)arg4;
 - (void)configureCloudFeedStackView:(PUStackView *)arg1 withStackSize:(struct CGSize)arg2;
+- (void)configureCompactProgressIndicatorMessageLabel:(UILabel *)arg1;
 - (void)configureEditPluginListCellLabel:(UILabel *)arg1;
 - (void)configureEditPluginListNavigationController:(UINavigationController *)arg1;
 - (void)configureEditPluginNavigationController:(UINavigationController *)arg1;
 - (void)configureEditPluginUserDefaultsAccessorySwitch:(UISwitch *)arg1;
 - (void)configureEditPluginUserDefaultsCell:(UITableViewCell *)arg1 withIcon:(UIImage *)arg2 title:(NSString *)arg3;
 - (void)configureEditPluginUserDefaultsTableView:(UITableView *)arg1;
-- (void)configureImportHeaderSubtitleLabel:(UILabel *)arg1;
-- (void)configureImportHeaderTitleLabel:(UILabel *)arg1;
 - (void)configureMapViewAnnotationCountLabel:(UILabel *)arg1;
-- (void)configurePhotoCollectionGlobalFooterProgressView:(UIProgressView *)arg1 paused:(BOOL)arg2;
-- (void)configurePhotoCollectionGlobalFooterSubtitleLabel:(UILabel *)arg1;
-- (void)configurePhotoCollectionGlobalFooterSubtitleTextView:(UITextView *)arg1;
-- (void)configurePhotoCollectionGlobalFooterTitleLabel:(UILabel *)arg1;
-- (void)configurePhotoCollectionHeaderDateLabel:(UILabel *)arg1 forStyle:(long long)arg2;
-- (void)configurePhotoCollectionHeaderLocationsLabel:(UILabel *)arg1 forStyle:(long long)arg2;
-- (void)configurePhotoCollectionHeaderTitleLabel:(UILabel *)arg1 forStyle:(long long)arg2;
 - (void)configureProgressIndicatorMessageLabel:(UILabel *)arg1;
 - (void)configureSearchResultCountLabel:(UILabel *)arg1;
 - (void)configureSearchSubtitleLabel:(UILabel *)arg1;
@@ -215,15 +201,6 @@
 - (long long)photoCollectionCloudQuotaBannerTextAlignment;
 - (UIColor *)photoCollectionCloudQuotaBannerTextColorHighlighted:(BOOL)arg1;
 - (struct NSDirectionalEdgeInsets)photoCollectionCloudQuotaBannerTextMargins;
-- (NSDictionary *)photoCollectionGlobalFooterSubtitleTextViewAttributesDisabled:(BOOL)arg1;
-- (NSDictionary *)photoCollectionGlobalFooterSubtitleTextViewLinkTextAttributes;
-- (NSDictionary *)photoCollectionHeaderActionButtonAttributesForStyle:(long long)arg1;
-- (UIFontDescriptor *)photoCollectionHeaderActionButtonFontDescriptorForStyle:(long long)arg1;
-- (UIColor *)photoCollectionHeaderBackgroundColorForBackgroundStyle:(unsigned long long)arg1;
-- (UIImage *)photoCollectionHeaderDisclosureIconForStyle:(long long)arg1;
-- (struct UIOffset)photoCollectionHeaderLocationIconOffsetForStyle:(long long)arg1;
-- (UIFontDescriptor *)photoCollectionHeaderSubtitleFontDescriptorForStyle:(long long)arg1;
-- (UIFontDescriptor *)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(long long)arg1;
 - (NSDictionary *)searchDefaultAttributes;
 - (NSDictionary *)searchDimmedAttributes;
 - (NSDictionary *)searchItalicTitleAttributes;

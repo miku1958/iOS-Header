@@ -32,8 +32,7 @@
 - (void).cxx_destruct;
 - (void)_copyFileData:(CDUnknownBlockType)arg1;
 - (void)_finishWithURL:(id)arg1;
-- (void)_showDocumentPickerForFileURL:(id)arg1 sourceURL:(id)arg2;
-- (id)_suggestedFilenameFromWebView;
+- (void)_showDocumentPickerForFileURL:(id)arg1 sourceURL:(id)arg2 willStartDownload:(BOOL)arg3;
 - (id)_temporaryFileWithName:(id)arg1;
 - (void)dealloc;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;

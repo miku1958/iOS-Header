@@ -7,19 +7,20 @@
 #import <GameCenterFoundation/CKXPCShareDaemon-Protocol.h>
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
-@class CKShareMetadata, GKGameInternal, GKPlayerInternal, GKQuickAction, NSDictionary, NSString, NSURL;
+@class CKShareMetadata, GKGameInternal, GKPlayerInternal, NSDictionary, NSString, NSURL;
 
 @protocol GKDaemonProtocol <NSObject, CKXPCShareDaemon>
 - (oneway void)getAccountNameWithHandler:(void (^)(NSString *))arg1;
 - (oneway void)getAuthenticatedLocalPlayersWithStatus:(unsigned long long)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getAuthenticatedPlayerIDWithHandler:(void (^)(NSString *))arg1;
 - (oneway void)getAuthenticatedPlayerInfo:(void (^)(GKAuthenticateResponse *, NSError *))arg1;
+- (oneway void)getGamedFiredUpWithHandler:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)getPreferenceForKey:(NSString *)arg1 handler:(void (^)(BOOL, BOOL))arg2;
 - (oneway void)getPrivateServicesForPID:(int)arg1 localPlayer:(GKPlayerInternal *)arg2 reply:(void (^)(id<GKAccountServicePrivate>, id<GKProfileServicePrivate>, id<GKFriendServicePrivate>, id<GKGameServicePrivate>, id<GKGameStatServicePrivate>, id<GKChallengeServicePrivate>, id<GKMultiplayerServicePrivate>, id<GKTurnBasedServicePrivate>, id<GKUtilityServicePrivate>, id<GKBulletinServicePrivate>, id<GKAnalyticsServicePrivate>, id<GKGameSessionServicePrivate>, id<GKTournamentServicePrivate>))arg3;
 - (oneway void)getServicesForPID:(int)arg1 localPlayer:(GKPlayerInternal *)arg2 reply:(void (^)(id<GKAccountService>, id<GKProfileService>, id<GKFriendService>, id<GKGameService>, id<GKGameStatService>, id<GKChallengeService>, id<GKMultiplayerService>, id<GKTurnBasedService>, id<GKUtilityService>, id<GKBulletinService>, id<GKAnalyticsService>, id<GKGameSessionService>, id<GKTournamentService>))arg3;
 - (void)handleCloudKitShareMetadata:(CKShareMetadata *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (oneway void)loadRemoteImageDataForURL:(NSURL *)arg1 reply:(void (^)(NSData *))arg2;
 - (oneway void)localizedMessageFromDictionary:(NSDictionary *)arg1 forBundleID:(NSString *)arg2 handler:(void (^)(NSString *))arg3;
-- (oneway void)processQuickAction:(GKQuickAction *)arg1;
 - (void)resetLoginCancelCount;
 - (oneway void)setHostPID:(int)arg1 reply:(void (^)(void))arg2;
 - (oneway void)setTestGame:(GKGameInternal *)arg1 reply:(void (^)(void))arg2;

@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilitySummaryView;
+- (id)_accessibilityControlItem;
+- (id)_accessibilityControlName;
+- (id)_accessibilitySingleControlHostViewController;
 - (double)_axCurrentAdjustableValue;
 - (double)_axCurrentPrimary;
 - (double)_axCurrentSecondary;

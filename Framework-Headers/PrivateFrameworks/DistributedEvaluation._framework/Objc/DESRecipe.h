@@ -8,18 +8,22 @@
 
 #import <DistributedEvaluation/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface DESRecipe : NSObject <NSCopying>
 {
     NSDictionary *_recipeUserInfo;
+    NSData *_certificate;
     NSArray *_attachments;
+    NSArray *_attachmentSignatures;
     NSDictionary *_parametersUsed;
     NSString *_recipeId;
     NSString *_recipeType;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attachmentSignatures; // @synthesize attachmentSignatures=_attachmentSignatures;
 @property (copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+@property (readonly, copy, nonatomic) NSData *certificate; // @synthesize certificate=_certificate;
 @property (readonly, copy, nonatomic) NSDictionary *parametersUsed; // @synthesize parametersUsed=_parametersUsed;
 @property (copy, nonatomic) NSString *recipeId; // @synthesize recipeId=_recipeId;
 @property (copy, nonatomic) NSString *recipeType; // @synthesize recipeType=_recipeType;

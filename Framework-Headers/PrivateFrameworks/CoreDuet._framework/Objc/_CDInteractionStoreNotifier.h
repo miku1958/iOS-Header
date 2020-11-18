@@ -24,6 +24,8 @@
 - (id)initWithInteractionStore:(id)arg1;
 - (void)postPackedMechanisms:(unsigned long long)arg1;
 - (void)recorded:(id)arg1;
+- (void)resume;
+- (void)suspend;
 
 @end
 

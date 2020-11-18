@@ -22,6 +22,7 @@
 - (void)_enumerateGroupConfigsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateMessageConfigsWithBlock:(CDUnknownBlockType)arg1;
 - (id)_groupConfigForMessageName:(id)arg1;
+- (id)_nestedFieldsHelper:(id)arg1;
 - (id)_whitelistHelper:(id)arg1;
 - (id)bucketsForMessageName:(id)arg1;
 - (double)deviceSamplingForMessageName:(id)arg1 isSeed:(BOOL)arg2;
@@ -30,6 +31,7 @@
 - (id)initWithFile:(id)arg1;
 - (BOOL)isAggregatedForMessageName:(id)arg1;
 - (double)messageSamplingForMessageName:(id)arg1;
+- (id)nestedFieldsForMessageName:(id)arg1;
 - (unsigned long long)samplingLimitForMessageGroup:(id)arg1;
 - (unsigned long long)sigFigsForMessageName:(id)arg1;
 - (id)whitelistForMessageName:(id)arg1;

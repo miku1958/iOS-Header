@@ -6,7 +6,7 @@
 
 #import <TSApplication/TSKDocumentRootDelegate-Protocol.h>
 
-@class NSString, TSACollaborationErrorAction, TSADocumentInfo, TSADocumentRoot, TSKMailboxDocStatusMessage;
+@class NSString, TSACollaborationErrorAction, TSADocumentInfo, TSADocumentRoot, TSKMailboxDocStatusMessage, TSUDocumentSerializationToken;
 
 @protocol TSADocumentRootDelegate <TSKDocumentRootDelegate>
 
@@ -23,7 +23,7 @@
 - (void)didMailboxShutdown;
 - (void)documentRoot:(TSADocumentRoot *)arg1 didReceiveDocumentStatusNotification:(TSKMailboxDocStatusMessage *)arg2;
 - (void)enqueueCollaborationErrorAction:(TSACollaborationErrorAction *)arg1;
-- (void)handleCollaborationErrorAction:(TSACollaborationErrorAction *)arg1 completion:(void (^)(void))arg2;
+- (void)handleCollaborationErrorAction:(TSACollaborationErrorAction *)arg1 parentDocumentSerializationToken:(TSUDocumentSerializationToken *)arg2 completion:(void (^)(void))arg3;
 - (BOOL)hasPersistenceWarningsOfKind:(long long)arg1;
 - (void)invalidateRestorableState;
 - (void)willPostUndoManagerNotificationsUsingBlock:(void (^)(void))arg1;

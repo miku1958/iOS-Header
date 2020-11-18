@@ -26,9 +26,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_enabledDataclasses;
     NSString *_identifier;
     ACProtobufDate *_lastCredentialRenewalRejectionDate;
+    NSString *_modificationID;
     ACProtobufURL *_objectID;
     NSString *_owningBundleID;
-    NSString *_parentAccountIdentifier;
+    ACProtobufAccount *_parentAccount;
     NSMutableArray *_properties;
     NSMutableArray *_provisionedDataclasses;
     NSString *_username;
@@ -36,6 +37,10 @@ __attribute__((visibility("hidden")))
     BOOL _authenticated;
     BOOL _supportsAuthentication;
     BOOL _visible;
+    BOOL _warmingUp;
+    struct {
+        unsigned int warmingUp:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
@@ -58,21 +63,25 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasCredentialType;
 @property (readonly, nonatomic) BOOL hasDate;
 @property (readonly, nonatomic) BOOL hasLastCredentialRenewalRejectionDate;
+@property (readonly, nonatomic) BOOL hasModificationID;
 @property (readonly, nonatomic) BOOL hasObjectID;
 @property (readonly, nonatomic) BOOL hasOwningBundleID;
-@property (readonly, nonatomic) BOOL hasParentAccountIdentifier;
+@property (readonly, nonatomic) BOOL hasParentAccount;
 @property (readonly, nonatomic) BOOL hasUsername;
+@property (nonatomic) BOOL hasWarmingUp;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) ACProtobufDate *lastCredentialRenewalRejectionDate; // @synthesize lastCredentialRenewalRejectionDate=_lastCredentialRenewalRejectionDate;
+@property (strong, nonatomic) NSString *modificationID; // @synthesize modificationID=_modificationID;
 @property (strong, nonatomic) ACProtobufURL *objectID; // @synthesize objectID=_objectID;
 @property (strong, nonatomic) NSString *owningBundleID; // @synthesize owningBundleID=_owningBundleID;
-@property (strong, nonatomic) NSString *parentAccountIdentifier; // @synthesize parentAccountIdentifier=_parentAccountIdentifier;
+@property (strong, nonatomic) ACProtobufAccount *parentAccount; // @synthesize parentAccount=_parentAccount;
 @property (strong, nonatomic) NSMutableArray *properties; // @synthesize properties=_properties;
 @property (copy, nonatomic) NSDictionary *propertiesDictionary;
 @property (strong, nonatomic) NSMutableArray *provisionedDataclasses; // @synthesize provisionedDataclasses=_provisionedDataclasses;
 @property (nonatomic) BOOL supportsAuthentication; // @synthesize supportsAuthentication=_supportsAuthentication;
 @property (strong, nonatomic) NSString *username; // @synthesize username=_username;
 @property (nonatomic) BOOL visible; // @synthesize visible=_visible;
+@property (nonatomic) BOOL warmingUp; // @synthesize warmingUp=_warmingUp;
 
 + (Class)dataclassPropertiesType;
 + (Class)dirtyAccountPropertiesType;

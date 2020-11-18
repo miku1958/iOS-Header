@@ -18,7 +18,6 @@
 - (UITraitCollection *)traitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 
 @optional
-- (BOOL)allowsPresentationWithOnlySettings;
 - (id<HUOpenURLHandling>)detailViewURLHandlerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (UIViewController<HUDetailsPresentationDelegateHost> *)detailsViewControllerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 item:(HFItem *)arg2;
 - (long long)preferredModalPresentationStyleForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
@@ -31,7 +30,8 @@
 - (void)presentationCoordinatorDidCancelDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
 - (BOOL)presentationCoordinatorShouldDisablePullToUnlockSettings:(HUQuickControlPresentationCoordinator *)arg1;
 - (BOOL)presentationCoordinatorShouldProvideCancellationFeedback:(HUQuickControlPresentationCoordinator *)arg1;
-- (void)presentationCoordinatorWillBeginDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
+- (void)presentationCoordinatorWillBeginTransition:(HUQuickControlPresentationCoordinator *)arg1 presenting:(BOOL)arg2;
+- (void)presentationCoordinatorWillEndTransition:(HUQuickControlPresentationCoordinator *)arg1 presenting:(BOOL)arg2;
 - (BOOL)shouldOverrideTraitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 @end
 

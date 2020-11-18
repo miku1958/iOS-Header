@@ -62,6 +62,7 @@
 - (BOOL)_keyPathsAffectSorting:(id)arg1;
 - (id)_messageForPersistedMessage:(id)arg1;
 - (void)_oldestThreadsNeedUpdate;
+- (void)_onScheduler:(id)arg1 performCancelableBlock:(CDUnknownBlockType)arg2;
 - (void)_persistenceIsAddingThreadWithObjectID:(id)arg1;
 - (void)_persistenceIsChangingThreadWithObjectID:(id)arg1 changedKeyPaths:(id)arg2;
 - (void)cancel;
@@ -69,7 +70,7 @@
 - (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
 - (id)labelForStateCapture;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 oldConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
+- (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceDidFinishThreadUpdates;
 - (void)persistenceDidUpdateProperties:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceIsAddingThreadWithObjectID:(id)arg1 journaled:(BOOL)arg2 generationWindow:(id)arg3;
@@ -79,6 +80,7 @@
 - (void)persistenceIsReconcilingJournaledThreadsWithObjectIDs:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceWillResetThreadScope:(id)arg1 denyBlock:(CDUnknownBlockType)arg2;
 - (void)start;
+- (void)test_tearDown;
 - (id)threadForObjectID:(id)arg1 error:(id *)arg2;
 
 @end

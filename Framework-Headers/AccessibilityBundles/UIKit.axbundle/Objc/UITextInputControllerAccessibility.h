@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityUpdateSelectionNotification:(id)arg1;
+- (id)_axTextInputResponderAccessibilityParentElementForDelegate:(id)arg1;
 - (void)_sendDelegateChangeNotificationsForText:(BOOL)arg1 selection:(BOOL)arg2;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;

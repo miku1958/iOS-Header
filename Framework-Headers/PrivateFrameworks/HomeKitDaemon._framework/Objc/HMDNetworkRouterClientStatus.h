@@ -6,30 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddressList, HMDTLVSignedNumberValue, HMDTLVUnsignedNumberValue, NSData, NSString;
+@class HAPTLVSignedNumberValue, HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddressList, NSData, NSString;
 
-@interface HMDNetworkRouterClientStatus : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientStatus : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
     NSData *_macAddress;
     HMDNetworkRouterIPAddressList *_ipAddressList;
-    HMDTLVUnsignedNumberValue *_lanIdentifier;
+    HAPTLVUnsignedNumberValue *_lanIdentifier;
     NSString *_name;
-    HMDTLVSignedNumberValue *_rssi;
+    HAPTLVSignedNumberValue *_rssi;
 }
 
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDNetworkRouterIPAddressList *ipAddressList; // @synthesize ipAddressList=_ipAddressList;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
 @property (strong, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) HMDTLVSignedNumberValue *rssi; // @synthesize rssi=_rssi;
+@property (strong, nonatomic) HAPTLVSignedNumberValue *rssi; // @synthesize rssi=_rssi;
 @property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;

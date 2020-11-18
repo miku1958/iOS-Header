@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) UIFocusAnimationCoordinator *animationCoordinator;
 @property (readonly, weak, nonatomic) UIFocusSystem *focusSystem;
 @property (readonly, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo;
+@property (readonly, nonatomic, getter=isMovementRequest) BOOL movementRequest;
 @property (readonly, nonatomic) BOOL requiresEnvironmentValidation;
 @property (readonly, nonatomic) BOOL requiresNextFocusedItem;
 @property (readonly, nonatomic) BOOL shouldPerformHapticFeedback;

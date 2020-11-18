@@ -11,6 +11,7 @@
 
 @protocol FCNewsAppConfiguration <FCCoreConfiguration, NFCopying>
 
+@property (readonly, nonatomic) double adRequestThrottle;
 @property (readonly, nonatomic) long long analyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) NSString *anfRenderingConfiguration;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationEnd;
@@ -54,6 +55,8 @@
 @property (readonly, nonatomic) long long newsletterSubscriptionType;
 @property (readonly, nonatomic) long long notificationArticleCacheTimeout;
 @property (readonly, nonatomic) long long notificationArticleWithRapidUpdatesCacheTimeout;
+@property (readonly, nonatomic) BOOL notificationAssetPrefetchingRequiresWatch;
+@property (readonly, nonatomic) BOOL notificationEnableAssetPrefetching;
 @property (readonly, nonatomic) NSArray *onboardingFeedIDs;
 @property (readonly, nonatomic) double parsecPopulationCeiling;
 @property (readonly, nonatomic) double parsecPopulationFloor;
@@ -68,17 +71,20 @@
 @property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
 @property (readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
 @property (readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
+@property (readonly, nonatomic) NSString *tagFeedLayoutConfigurationResourceId;
 @property (readonly, nonatomic) BOOL terminateAppOnBackgroundAfterJoiningOrLeavingExperiment;
 @property (readonly, nonatomic) double tileProminenceScoreBalanceValue;
 @property (readonly, copy, nonatomic) NSArray *topStoriesPublishDates;
 @property (readonly, nonatomic) NSString *translationMapResourceID;
 @property (readonly, nonatomic) unsigned long long trendingStyle;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
+@property (readonly, nonatomic) BOOL userSegmentationInWidgetAllowed;
 @property (readonly, nonatomic) NSString *userVectorModelResourceId;
 @property (readonly, nonatomic) NSString *userVectorWhitelistResourceId;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property (readonly, nonatomic) NSString *widgetConfigID;
+@property (readonly, nonatomic) BOOL widgetContentPrefetchEnabled;
 @property (readonly, nonatomic) long long widgetMinimumArticleExposureDurationToBePreseenInMilliseconds;
 @property (readonly, nonatomic) unsigned int widgetMinimumNumberOfTimesPreseenToBeSeen;
 

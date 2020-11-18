@@ -23,8 +23,8 @@
 @property (weak, nonatomic) UIView<CKGradientReferenceView> *gradientReferenceView; // @synthesize gradientReferenceView=_gradientReferenceView;
 @property (nonatomic) BOOL solidColor; // @synthesize solidColor=_solidColor;
 
-+ (id)_middleBubbleSquareImage;
-+ (id)_topBubbleSquareImage;
++ (id)_middleBubbleSquareImageWithTraitCollection:(id)arg1;
++ (id)_topBubbleSquareImageWithTraitCollection:(id)arg1;
 - (void).cxx_destruct;
 - (void)configureForAggregateAcknowledgmentChatItem:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

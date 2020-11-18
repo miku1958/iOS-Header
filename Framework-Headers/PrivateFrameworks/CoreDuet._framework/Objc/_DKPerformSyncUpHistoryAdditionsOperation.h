@@ -24,21 +24,10 @@
     _DKSyncHistory *_history;
 }
 
-@property (readonly) _DKSyncHistory *history; // @synthesize history=_history;
-
-+ (void)_updateEventStatsWithPreviousSyncDate:(id)arg1 transportType:(long long)arg2;
-+ (void)_updateEventStatsWithTotal:(unsigned long long)arg1 streamNameCounts:(id)arg2 transportType:(long long)arg3;
 - (void).cxx_destruct;
 - (void)endOperation;
-- (void)endPerfMetrics;
-- (void)handleUpdateStorageWithFetchedWindow:(id)arg1 eventsCount:(unsigned long long)arg2 error:(id)arg3;
-- (id)initWithParent:(id)arg1 localStorage:(id)arg2 transport:(id)arg3 peer:(id)arg4 policy:(id)arg5 type:(id)arg6;
 - (BOOL)isAsynchronous;
 - (void)main;
-- (void)performSyncUpHistoryAdditions;
-- (void)performSyncUpHistoryAdditionsWithAdditionsHighWaterMark:(id)arg1 orError:(id)arg2;
-- (void)performSyncUpHistoryAdditionsWithPreviousHighWaterMark:(id)arg1;
-- (void)startPerfMetrics;
 
 @end
 

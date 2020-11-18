@@ -17,6 +17,7 @@
     MISSING_TYPE *startCount;
     MISSING_TYPE *isExternallyManaged;
     MISSING_TYPE *hasRenderedThisFrame;
+    MISSING_TYPE *namedFileAssetResolver;
 }
 
 @end

@@ -8,12 +8,13 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSData, NSString, _MRAVOutputDeviceSourceInfoProtobuf;
+@class NSData, NSMutableArray, NSString, _MRAVOutputDeviceSourceInfoProtobuf;
 
 @interface _MRAVOutputDeviceDescriptorProtobuf : PBCodable <NSCopying>
 {
     float _batteryLevel;
     NSString *_bluetoothID;
+    NSMutableArray *_clusterCompositions;
     int _deviceSubType;
     int _deviceType;
     NSString *_firmwareVersion;
@@ -51,6 +52,7 @@
     BOOL _supportsBufferedAirPlay;
     BOOL _supportsExternalScreen;
     BOOL _supportsHAP;
+    BOOL _usingJSONProtocol;
     struct {
         unsigned int batteryLevel:1;
         unsigned int deviceSubType:1;
@@ -80,6 +82,7 @@
         unsigned int supportsBufferedAirPlay:1;
         unsigned int supportsExternalScreen:1;
         unsigned int supportsHAP:1;
+        unsigned int usingJSONProtocol:1;
     } _has;
 }
 
@@ -91,6 +94,7 @@
 @property (nonatomic) BOOL canFetchMediaDataFromSender; // @synthesize canFetchMediaDataFromSender=_canFetchMediaDataFromSender;
 @property (nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
 @property (nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
+@property (strong, nonatomic) NSMutableArray *clusterCompositions; // @synthesize clusterCompositions=_clusterCompositions;
 @property (nonatomic) int deviceSubType; // @synthesize deviceSubType=_deviceSubType;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property (strong, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
@@ -133,6 +137,7 @@
 @property (nonatomic) BOOL hasSupportsExternalScreen;
 @property (nonatomic) BOOL hasSupportsHAP;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
+@property (nonatomic) BOOL hasUsingJSONProtocol;
 @property (nonatomic) BOOL hasVolume;
 @property (nonatomic) BOOL hasVolumeCapabilities;
 @property (nonatomic) BOOL isAddedToHomeKit; // @synthesize isAddedToHomeKit=_isAddedToHomeKit;
@@ -159,12 +164,18 @@
 @property (nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
 @property (nonatomic) BOOL supportsHAP; // @synthesize supportsHAP=_supportsHAP;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (nonatomic) BOOL usingJSONProtocol; // @synthesize usingJSONProtocol=_usingJSONProtocol;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 @property (nonatomic) int volumeCapabilities; // @synthesize volumeCapabilities=_volumeCapabilities;
 
++ (Class)clusterCompositionType;
 - (void).cxx_destruct;
 - (int)StringAsDeviceSubType:(id)arg1;
 - (int)StringAsDeviceType:(id)arg1;
+- (void)addClusterComposition:(id)arg1;
+- (void)clearClusterCompositions;
+- (id)clusterCompositionAtIndex:(unsigned long long)arg1;
+- (unsigned long long)clusterCompositionsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -9,7 +9,7 @@
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVVolumeWarningView, NSNumber, NSString, UIImageView;
+@class AVLayoutItemAttributes, AVVolumeWarningView, NSNumber, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     float _effectiveVolumeLimit;
     UIImageView *_thumbView;
     NSNumber *_unclampedValue;
+    AVLayoutItemAttributes *_layoutAttributes;
     AVVolumeWarningView *_volumeWarningView;
     struct CGSize _extrinsicContentSize;
 }
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) BOOL scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
 @property (readonly) Class superclass;
@@ -51,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_endTracking;
 - (BOOL)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
+- (void)_updateLayoutItem;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -63,9 +66,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)hitRect;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutAttributesDidChange;
 - (void)layoutSubviews;
+- (struct CGSize)minimumSize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)setHidden:(BOOL)arg1;
 - (void)setValue:(float)arg1 animated:(BOOL)arg2;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;

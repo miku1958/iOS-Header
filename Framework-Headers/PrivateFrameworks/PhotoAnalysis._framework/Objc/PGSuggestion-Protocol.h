@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) id recipe;
 @property (readonly, nonatomic) unsigned long long relevanceDurationInDays;
 @property (readonly, nonatomic) NSArray *representativeAssets;
+@property (readonly, nonatomic) double score;
 @property (readonly, nonatomic) unsigned short state;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) unsigned short subtype;

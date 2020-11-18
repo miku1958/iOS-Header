@@ -27,6 +27,7 @@
         BOOL willPlayToPhotoObserver;
         BOOL status;
     } _isValid;
+    long long _mainQueue_mediaServicesResetCounter;
     BOOL _audioEnabled;
     float _audioVolume;
     ISPlayerItem *_playerItem;
@@ -66,13 +67,14 @@
 - (void).cxx_destruct;
 - (void)_configureNewOutput:(id)arg1;
 - (void)_handleErrorsIfNeeded;
-- (void)_handleMediaServicesReset;
 - (void)_invalidateContentFromPlayerItem;
 - (void)_invalidateStatus;
 - (void)_invalidateVideoPlayer;
 - (void)_invalidateVideoPlayerVolume;
 - (void)_invalidateWillPlayToEndObserver;
 - (void)_invalidateWillPlayToPhotoObserver;
+- (void)_mainQueue_handleMediaServicesReset;
+- (void)_mainQueue_resetAVObjectsWithResetCount:(long long)arg1;
 - (BOOL)_needsUpdate;
 - (void)_outputVideoReadyForDisplayDidChange:(id)arg1;
 - (void)_setForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg1;
@@ -93,7 +95,6 @@
 - (void)applyOutputInfo:(id)arg1 fromBehavior:(id)arg2 withTransitionOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
-- (void)avPlayerDidDeallocate;
 - (id)behavior:(id)arg1 addBoundaryTimeObserverForTimes:(id)arg2 queue:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)behavior:(id)arg1 didSetOutputInfo:(id)arg2 withTransitionOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)behavior:(id)arg1 playVideoToTime:(CDStruct_1b6d18a9)arg2 initialRate:(float)arg3 overDuration:(double)arg4 progressHandler:(CDUnknownBlockType)arg5;

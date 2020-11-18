@@ -6,53 +6,62 @@
 
 #import <objc/NSObject.h>
 
-@class ACHQuery, ACHVisibilityEvaluator, HKHealthStore, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
-@protocol AAUIAchievementsDataProviderDelegate, AAUIAchievementsDataProviderInitialLoadListener, OS_dispatch_queue;
+@class ACHQuery, ACHVisibilityEvaluator, HKHealthStore, NSArray, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface AAUIAchievementsDataProvider : NSObject
 {
     BOOL _didFinishInitialLoad;
     struct os_unfair_lock_s _modelLock;
-    id<AAUIAchievementsDataProviderDelegate> _recentAndRelevantSectionDelegate;
-    id<AAUIAchievementsDataProviderDelegate> _mainSectionDelegate;
-    id<AAUIAchievementsDataProviderInitialLoadListener> _initialLoadListener;
     HKHealthStore *_healthStore;
     ACHQuery *_query;
     ACHVisibilityEvaluator *_visibilityEvaluator;
     NSMutableDictionary *_achievementsBySection;
     NSMutableArray *_recentAchievements;
     NSMutableArray *_relevantAchievements;
+    NSMutableDictionary *_filteredAchievementsByTemplateUniqueName;
+    NSMutableDictionary *_achievementsByTemplateUniqueName;
+    NSMutableDictionary *_achievementsByEarnedDateComponents;
     NSArray *_orderedSections;
     NSArray *_orderedMainSectionHeaderStrings;
     NSArray *_orderedRecentAndRelevantHeaderStrings;
     NSDictionary *_clientAchievementsBySection;
+    NSArray *_clientAllAchievementsSortedByEarnedDate;
     NSArray *_clientRecentAchievements;
     NSArray *_clientRelevantAchievements;
+    NSDictionary *_clientFilteredAchievementsByTemplateUniqueName;
+    NSDictionary *_clientAchievementsByTemplateUniqueName;
     NSDictionary *_clientAchievementsByEarnedDateComponents;
-    NSMutableDictionary *_filteredAchievementsByTemplateUniqueName;
-    NSMutableDictionary *_achievementsByTemplateUniqueName;
-    NSMutableDictionary *_achievementsByEarnedDateComponents;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_achievementsDataQueue;
+    NSObject<OS_dispatch_queue> *_observerQueue;
     long long _overrideDisplayState;
     double _queryRetryDelay;
     long long _queryRetryCount;
+    NSHashTable *_initialLoadObservers;
+    NSHashTable *_recentAndRelevantSectionObservers;
+    NSHashTable *_mainSectionObservers;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *achievementsByEarnedDateComponents; // @synthesize achievementsByEarnedDateComponents=_achievementsByEarnedDateComponents;
 @property (strong, nonatomic) NSMutableDictionary *achievementsBySection; // @synthesize achievementsBySection=_achievementsBySection;
 @property (strong, nonatomic) NSMutableDictionary *achievementsByTemplateUniqueName; // @synthesize achievementsByTemplateUniqueName=_achievementsByTemplateUniqueName;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *achievementsDataQueue; // @synthesize achievementsDataQueue=_achievementsDataQueue;
 @property (strong, nonatomic) NSDictionary *clientAchievementsByEarnedDateComponents; // @synthesize clientAchievementsByEarnedDateComponents=_clientAchievementsByEarnedDateComponents;
 @property (strong, nonatomic) NSDictionary *clientAchievementsBySection; // @synthesize clientAchievementsBySection=_clientAchievementsBySection;
+@property (strong, nonatomic) NSDictionary *clientAchievementsByTemplateUniqueName; // @synthesize clientAchievementsByTemplateUniqueName=_clientAchievementsByTemplateUniqueName;
+@property (strong, nonatomic) NSArray *clientAllAchievementsSortedByEarnedDate; // @synthesize clientAllAchievementsSortedByEarnedDate=_clientAllAchievementsSortedByEarnedDate;
+@property (strong, nonatomic) NSDictionary *clientFilteredAchievementsByTemplateUniqueName; // @synthesize clientFilteredAchievementsByTemplateUniqueName=_clientFilteredAchievementsByTemplateUniqueName;
 @property (strong, nonatomic) NSArray *clientRecentAchievements; // @synthesize clientRecentAchievements=_clientRecentAchievements;
 @property (strong, nonatomic) NSArray *clientRelevantAchievements; // @synthesize clientRelevantAchievements=_clientRelevantAchievements;
 @property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
 @property (strong, nonatomic) NSMutableDictionary *filteredAchievementsByTemplateUniqueName; // @synthesize filteredAchievementsByTemplateUniqueName=_filteredAchievementsByTemplateUniqueName;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property (weak, nonatomic) id<AAUIAchievementsDataProviderInitialLoadListener> initialLoadListener; // @synthesize initialLoadListener=_initialLoadListener;
-@property (weak, nonatomic) id<AAUIAchievementsDataProviderDelegate> mainSectionDelegate; // @synthesize mainSectionDelegate=_mainSectionDelegate;
+@property (strong, nonatomic) NSHashTable *initialLoadObservers; // @synthesize initialLoadObservers=_initialLoadObservers;
+@property (strong, nonatomic) NSHashTable *mainSectionObservers; // @synthesize mainSectionObservers=_mainSectionObservers;
 @property (nonatomic) struct os_unfair_lock_s modelLock; // @synthesize modelLock=_modelLock;
 @property (readonly, nonatomic) long long numberOfRecentAndRelevantSections;
 @property (readonly, nonatomic) long long numberOfSections;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property (strong, nonatomic) NSArray *orderedMainSectionHeaderStrings; // @synthesize orderedMainSectionHeaderStrings=_orderedMainSectionHeaderStrings;
 @property (strong, nonatomic) NSArray *orderedRecentAndRelevantHeaderStrings; // @synthesize orderedRecentAndRelevantHeaderStrings=_orderedRecentAndRelevantHeaderStrings;
 @property (strong, nonatomic) NSArray *orderedSections; // @synthesize orderedSections=_orderedSections;
@@ -60,9 +69,8 @@
 @property (strong, nonatomic) ACHQuery *query; // @synthesize query=_query;
 @property (nonatomic) long long queryRetryCount; // @synthesize queryRetryCount=_queryRetryCount;
 @property (nonatomic) double queryRetryDelay; // @synthesize queryRetryDelay=_queryRetryDelay;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableArray *recentAchievements; // @synthesize recentAchievements=_recentAchievements;
-@property (weak, nonatomic) id<AAUIAchievementsDataProviderDelegate> recentAndRelevantSectionDelegate; // @synthesize recentAndRelevantSectionDelegate=_recentAndRelevantSectionDelegate;
+@property (strong, nonatomic) NSHashTable *recentAndRelevantSectionObservers; // @synthesize recentAndRelevantSectionObservers=_recentAndRelevantSectionObservers;
 @property (strong, nonatomic) NSMutableArray *relevantAchievements; // @synthesize relevantAchievements=_relevantAchievements;
 @property (strong, nonatomic) ACHVisibilityEvaluator *visibilityEvaluator; // @synthesize visibilityEvaluator=_visibilityEvaluator;
 
@@ -87,12 +95,19 @@
 - (id)achievementAtIndexPath:(id)arg1;
 - (id)achievementForTemplateUniqueName:(id)arg1;
 - (id)achievementsForDateComponents:(id)arg1;
+- (void)addInitialLoadObserver:(id)arg1;
+- (void)addMainSectionObserver:(id)arg1;
+- (void)addRecentAndRelevantSectionObserver:(id)arg1;
+- (id)allAchievementsSortedByEarnedDate;
 - (void)cycleQuery;
 - (id)headerStringForSection:(long long)arg1 isRecentAndRelevant:(BOOL)arg2;
 - (id)initWithHealthStore:(id)arg1 layoutMode:(unsigned long long)arg2;
 - (long long)numberOfItemsInRecentAndRelevantSection:(long long)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (id)recentAndRelevantAchievementAtIndexPath:(id)arg1;
+- (void)removeInitialLoadObserver:(id)arg1;
+- (void)removeMainSectionObserver:(id)arg1;
+- (void)removeRecentAndRelevantSectionObserver:(id)arg1;
 - (void)startFetching;
 - (void)stopFetching;
 - (id)trophyCaseAchievementForTemplateUniqueName:(id)arg1;

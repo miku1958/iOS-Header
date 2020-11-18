@@ -17,6 +17,7 @@
 + (id)itemWithItems:(id)arg1 named:(id)arg2;
 + (id)itemWithObjects:(id)arg1 named:(id)arg2;
 + (id)ownedTypes;
+- (id)allowedClassesForDecodingInternalRepresentations;
 - (BOOL)getListSubtitle:(CDUnknownBlockType)arg1;
 
 @end

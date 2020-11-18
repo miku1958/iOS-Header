@@ -8,7 +8,7 @@
 
 @protocol PUMutableActivityItemSource <NSObject>
 
-@property (nonatomic) CDStruct_2a4d9400 sharingPreferences;
+@property (nonatomic) CDStruct_df7f102b sharingPreferences;
 @property (nonatomic) unsigned long long state;
 
 @end

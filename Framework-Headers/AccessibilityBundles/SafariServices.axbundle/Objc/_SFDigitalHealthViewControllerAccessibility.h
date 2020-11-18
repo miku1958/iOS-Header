@@ -16,8 +16,8 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axHideWebView:(BOOL)arg1;
 - (BOOL)_axShouldHideWebView;
-- (void)hideLockOutForURL:(id)arg1;
-- (id)showLockOutForURL:(id)arg1;
+- (void)hideBlockingViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)showBlockingViewControllerForURL:(id)arg1 withPolicy:(long long)arg2 animated:(BOOL)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

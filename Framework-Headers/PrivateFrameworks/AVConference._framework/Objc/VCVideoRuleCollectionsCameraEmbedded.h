@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (struct _VCHardwareConfiguration *)hardwareConfigurationForPayload:(int)arg1 transportType:(unsigned char)arg2;
 - (void)initSupportedPayloads;
 - (id)initWithHardwareSettings:(id)arg1;
+- (BOOL)isPreferredVideoRule:(id)arg1 preferredFormat:(id)arg2;
 - (double)preferredAspectRatio;
 - (BOOL)setupH264Rules;
 - (BOOL)setupRules;

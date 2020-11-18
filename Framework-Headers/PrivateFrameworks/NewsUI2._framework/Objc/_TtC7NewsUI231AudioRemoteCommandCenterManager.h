@@ -8,11 +8,11 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI231AudioRemoteCommandCenterManager : NSObject
 {
     MISSING_TYPE *center;
     MISSING_TYPE *playingItemState;
+    MISSING_TYPE *commandCenter;
 }
 
 - (void).cxx_destruct;

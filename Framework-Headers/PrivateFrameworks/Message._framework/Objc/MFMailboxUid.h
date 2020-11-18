@@ -118,6 +118,7 @@
 - (id)pathRelativeToMailbox:(id)arg1;
 - (id)pathRelativeToMailboxForDisplay:(id)arg1;
 - (id)realFullPath;
+- (id)redactedName:(id)arg1;
 - (void)removeChild:(id)arg1;
 - (id)representedAccount;
 - (id)rootMailbox;

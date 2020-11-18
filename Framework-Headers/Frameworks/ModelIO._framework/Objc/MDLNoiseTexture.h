@@ -15,8 +15,8 @@
     int _noiseMode;
 }
 
-- (id)_generateCellularNoiseAtLevel:(long long)arg1;
-- (id)generateDataAtLevel:(long long)arg1;
+- (id)_generateCellularNoiseAtLevel:(long long)arg1 selector:(SEL)arg2;
+- (id)generateDataAtLevel:(long long)arg1 selector:(SEL)arg2;
 - (id)initCellularNoiseWithFrequency:(float)arg1 name:(id)arg2 textureDimensions:(long long)arg3 channelEncoding: /* Error: Ran out of types for this method. */;
 - (id)initScalarNoiseWithSmoothness:(float)arg1 name:(id)arg2 textureDimensions:(int)arg3 channelCount:(long long)arg4 channelEncoding:(BOOL)arg5 grayscale: /* Error: Ran out of types for this method. */;
 - (id)initVectorNoiseWithSmoothness:(float)arg1 name:(id)arg2 textureDimensions:(long long)arg3 channelEncoding: /* Error: Ran out of types for this method. */;

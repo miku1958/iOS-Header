@@ -16,15 +16,16 @@
     HDPrimaryProfile *_primaryProfile;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    double _collectionInterval;
+    long long _state;
     HKObjectType *_observedType;
     HDDeviceEntity *_deviceEntity;
-    long long _state;
-    double _collectionInterval;
     long long _failureRetryCount;
     BOOL _disabled;
     HDSourceEntity *_sourceEntity;
 }
 
+@property double collectionInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property BOOL disabled;
@@ -68,14 +69,12 @@
 - (id)_retrievePrimaryContext;
 - (id)_retrieveSecondaryContext;
 - (id)_sensorDatumFromContext:(id)arg1;
-- (double)collectionInterval;
 - (void)collectionStartedForType:(id)arg1 collectionInterval:(double)arg2;
 - (void)collectionStoppedForType:(id)arg1;
 - (id)dataCollectorDiagnosticDescription;
 - (id)deviceEntity;
 - (id)initWithPrimaryProfile:(id)arg1;
 - (id)initWithProfile:(id)arg1;
-- (void)setCollectionInterval:(double)arg1;
 - (void)stopPerformingUpdatesWithErrorEncountered:(BOOL)arg1;
 - (void)updateCollectionInterval:(double)arg1 forType:(id)arg2;
 - (void)updateHistoricalData;

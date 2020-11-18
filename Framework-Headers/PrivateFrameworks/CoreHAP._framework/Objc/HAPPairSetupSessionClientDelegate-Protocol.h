@@ -6,13 +6,14 @@
 
 #import <CoreHAP/HAPPairSetupSessionDelegate-Protocol.h>
 
-@class HAPPairSetupSession;
+@class HAPPairSetupSession, NSString;
 
 @protocol HAPPairSetupSessionClientDelegate <HAPPairSetupSessionDelegate>
 - (void)pairSetupSession:(HAPPairSetupSession *)arg1 didReceiveSetupCodeRequestWithCompletionHandler:(void (^)(NSString *, NSError *))arg2;
 
 @optional
 - (BOOL)pairSetupSession:(HAPPairSetupSession *)arg1 didReceiveBackoffRequestWithTimeInterval:(double)arg2;
+- (void)pairSetupSession:(HAPPairSetupSession *)arg1 didReceiveProductData:(NSString *)arg2;
 - (void)pairSetupSessionDidReceiveInvalidSetupCode:(HAPPairSetupSession *)arg1;
 @end
 

@@ -8,13 +8,20 @@
 
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSDate, NSNumber, NSString, NSURL;
 
 @interface ASDAppUsageStats : NSObject <NSCopying>
 {
     BOOL _isExtensionUsage;
     NSString *_bundleID;
     NSString *_bundleVersion;
+    NSString *_clipBundleID;
+    NSURL *_clipFullURL;
+    NSString *_clipLaunchReason;
+    NSString *_clipReferrerURL;
+    NSString *_clipReferrerBundleID;
+    NSString *_clipWebAppBundleID;
+    NSString *_containingBundleID;
     NSDate *_endDate;
     long long _eventTime;
     NSNumber *_evid;
@@ -22,6 +29,7 @@
     NSString *_itemName;
     NSDate *_lastEventEndDate;
     NSString *_launchReason;
+    NSString *_sourceStream;
     NSDate *_startDate;
     long long _usageTime;
     long long _usageCount;
@@ -29,6 +37,13 @@
 
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (copy, nonatomic) NSString *clipBundleID; // @synthesize clipBundleID=_clipBundleID;
+@property (copy, nonatomic) NSURL *clipFullURL; // @synthesize clipFullURL=_clipFullURL;
+@property (copy, nonatomic) NSString *clipLaunchReason; // @synthesize clipLaunchReason=_clipLaunchReason;
+@property (copy, nonatomic) NSString *clipReferrerBundleID; // @synthesize clipReferrerBundleID=_clipReferrerBundleID;
+@property (copy, nonatomic) NSString *clipReferrerURL; // @synthesize clipReferrerURL=_clipReferrerURL;
+@property (copy, nonatomic) NSString *clipWebAppBundleID; // @synthesize clipWebAppBundleID=_clipWebAppBundleID;
+@property (copy, nonatomic) NSString *containingBundleID; // @synthesize containingBundleID=_containingBundleID;
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (nonatomic) long long eventTime; // @synthesize eventTime=_eventTime;
 @property (copy, nonatomic) NSNumber *evid; // @synthesize evid=_evid;
@@ -37,11 +52,13 @@
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property (copy, nonatomic) NSDate *lastEventEndDate; // @synthesize lastEventEndDate=_lastEventEndDate;
 @property (copy, nonatomic) NSString *launchReason; // @synthesize launchReason=_launchReason;
+@property (copy, nonatomic) NSString *sourceStream; // @synthesize sourceStream=_sourceStream;
 @property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) long long usageCount; // @synthesize usageCount=_usageCount;
 @property (nonatomic) long long usageTime; // @synthesize usageTime=_usageTime;
 
 - (void).cxx_destruct;
+- (id)_formatShortDate:(id)arg1;
 - (id)_formatTimeInternal:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -11,9 +11,10 @@
 
 @interface PXVideoSessionManager : PXObservable
 {
-    NSMutableDictionary *_sessionsByIdentifier;
+    NSMutableDictionary *_ivarQueue_sessionsByIdentifier;
+    NSCountedSet *_ivarQueue_sessionCounts;
     NSObject<OS_dispatch_queue> *_ivarQueue;
-    NSCountedSet *_sessionCounts;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (readonly, nonatomic) NSArray *activeSessions;

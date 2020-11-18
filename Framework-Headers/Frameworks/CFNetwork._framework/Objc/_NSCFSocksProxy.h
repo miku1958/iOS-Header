@@ -8,7 +8,7 @@
 
 #import <CFNetwork/NSProxyConnectionDelegate-Protocol.h>
 
-@class NSDictionary, NSProxyConnection, NSString, SocksHandshake;
+@class NSDictionary, NSProxyConnection, NSString, __CFN_SocksHandshake;
 @protocol OS_dispatch_queue;
 
 @interface _NSCFSocksProxy : NSObject <NSProxyConnectionDelegate>
@@ -16,32 +16,24 @@
     NSObject<OS_dispatch_queue> *_queue;
     int _outPort;
     NSString *_outHost;
-    SocksHandshake *_socksHandshake;
+    __CFN_SocksHandshake *_socksHandshake;
     NSProxyConnection *_inbound;
     NSProxyConnection *_outbound;
     NSDictionary *_configuration;
 }
 
-@property (strong) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSProxyConnection *inbound; // @synthesize inbound=_inbound;
-@property (strong) NSProxyConnection *outbound; // @synthesize outbound=_outbound;
 @property (readonly) Class superclass;
 
 + (void)handleIncomingConnection:(id)arg1 queue:(id)arg2 configuration:(id)arg3;
-+ (id)proxyServers;
 - (void).cxx_destruct;
 - (void)cleanup;
 - (void)connected:(int)arg1;
 - (void)dealloc;
-- (void)handshakeRead;
-- (id)initWithConnection:(id)arg1 queue:(id)arg2;
 - (void)outboundConnectionCompleteWithError:(int)arg1;
 - (void)outboundConnectionReceivedData:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)readInbound;
-- (void)readOutbound;
 
 @end
 

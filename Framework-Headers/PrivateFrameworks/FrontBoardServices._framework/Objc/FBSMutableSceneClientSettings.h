@@ -9,7 +9,7 @@
 #import <FrontBoardServices/BSDebugDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 
-@class NSOrderedSet, NSSet, NSString;
+@class FBSSceneIdentityToken, NSOrderedSet, NSString;
 
 @interface FBSMutableSceneClientSettings : FBSSceneClientSettings <BSDebugDescriptionProviding, BSXPCSecureCoding>
 {
@@ -19,10 +19,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic, setter=_setLayers:) NSOrderedSet *layers; // @dynamic layers;
-@property (copy, nonatomic) NSSet *occlusions; // @dynamic occlusions;
 @property (nonatomic) long long preferredInterfaceOrientation; // @dynamic preferredInterfaceOrientation;
 @property (nonatomic) double preferredLevel; // @dynamic preferredLevel;
 @property (copy, nonatomic) NSString *preferredSceneHostIdentifier; // @dynamic preferredSceneHostIdentifier;
+@property (copy, nonatomic) FBSSceneIdentityToken *preferredSceneHostIdentity; // @dynamic preferredSceneHostIdentity;
 @property (readonly) Class superclass;
 
 + (BOOL)_isMutable;

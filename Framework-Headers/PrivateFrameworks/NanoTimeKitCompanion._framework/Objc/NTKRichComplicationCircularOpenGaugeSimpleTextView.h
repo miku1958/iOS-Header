@@ -4,31 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationBaseCircularOpenGaugeSimpleTextView.h>
 
-@class NTKColoringLabel, NTKRichComplicationCurvedProgressView;
-
-@interface NTKRichComplicationCircularOpenGaugeSimpleTextView : NTKRichComplicationCircularBaseView
+@interface NTKRichComplicationCircularOpenGaugeSimpleTextView : NTKRichComplicationBaseCircularOpenGaugeSimpleTextView
 {
-    NTKColoringLabel *_smallLabel;
-    NTKColoringLabel *_centerLabel;
-    NTKRichComplicationCurvedProgressView *_progressView;
 }
-
-@property (readonly, nonatomic) NTKColoringLabel *centerLabel; // @synthesize centerLabel=_centerLabel;
-@property (readonly, nonatomic) NTKRichComplicationCurvedProgressView *progressView; // @synthesize progressView=_progressView;
-@property (readonly, nonatomic) NTKColoringLabel *smallLabel; // @synthesize smallLabel=_smallLabel;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
-- (void).cxx_destruct;
-- (void)_editingDidEnd;
-- (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

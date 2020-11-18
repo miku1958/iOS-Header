@@ -12,21 +12,23 @@
 {
     long long _statusCode;
     NSDictionary *_data;
-    NSString *_token;
+    NSString *_accessToken;
     NSString *_refreshToken;
+    NSString *_idToken;
     NSDate *_expiryDate;
     NSError *_error;
     NSString *_errorMessage;
     NSString *_user_id;
 }
 
+@property (readonly, nonatomic) NSString *accessToken; // @synthesize accessToken=_accessToken;
 @property (readonly, nonatomic) NSDictionary *data; // @synthesize data=_data;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
 @property (readonly, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
+@property (readonly, nonatomic) NSString *idToken; // @synthesize idToken=_idToken;
 @property (readonly, nonatomic) NSString *refreshToken; // @synthesize refreshToken=_refreshToken;
 @property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
-@property (readonly, nonatomic) NSString *token; // @synthesize token=_token;
 @property (readonly, nonatomic) NSString *user_id; // @synthesize user_id=_user_id;
 
 - (void).cxx_destruct;

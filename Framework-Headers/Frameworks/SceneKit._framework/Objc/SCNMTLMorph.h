@@ -47,12 +47,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithMorph:(struct __C3DMorph *)arg1 baseGeometry:(struct __C3DGeometry *)arg2 resourceManager:(id)arg3;
 - (BOOL)isCompatibleWithMorph:(struct __C3DMorph *)arg1;
-- (void)morphIncrementalMesh:(id)arg1 morpher:(struct __C3DMorpher *)arg2 renderContext:(id)arg3;
-- (void)morphMesh:(id)arg1 morph:(struct __C3DMorph *)arg2 renderContext:(id)arg3;
-- (void)morphSparseMesh:(id)arg1 morpher:(struct __C3DMorpher *)arg2 renderContext:(id)arg3;
+- (void)morphIncrementallyForMorpher:(struct __C3DMorpher *)arg1 renderContext:(id)arg2 positionBuffer:(id)arg3 normalBuffer:(id)arg4;
+- (void)morphSparseMorpher:(struct __C3DMorpher *)arg1 renderContext:(id)arg2 positionBuffer:(id)arg3 normalBuffer:(id)arg4;
 - (CDStruct_798fd7c0)newBufferWithLength:(unsigned long long)arg1;
 - (unsigned int)sparseIndexSize;
-- (void)unifyMesh:(id)arg1 renderContext:(id)arg2;
+- (void)unifyMeshWithRenderContext:(id)arg1 positionBuffer:(id)arg2 normalBuffer:(id)arg3;
 
 @end
 

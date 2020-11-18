@@ -8,6 +8,7 @@
 
 @class MPModelLibraryAlbumAppDataChangeRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryAlbumAppDataChangeRequestOperation : MPAsyncOperation
 {
     CDUnknownBlockType _responseHandler;

@@ -13,6 +13,7 @@
 @interface SOAuthorizationRequestParametersCore : NSObject <NSSecureCoding>
 {
     BOOL _useInternalExtensions;
+    BOOL _callerManaged;
     NSURL *_url;
     NSString *_requestedOperation;
     NSDictionary *_httpHeaders;
@@ -23,14 +24,19 @@
     NSString *_callerBundleIdentifier;
     NSDictionary *_authorizationOptions;
     long long _responseCode;
+    NSString *_callerTeamIdentifier;
+    NSString *_localizedCallerDisplayName;
 }
 
 @property (strong, nonatomic) NSData *auditTokenData; // @synthesize auditTokenData=_auditTokenData;
 @property (strong, nonatomic) NSDictionary *authorizationOptions; // @synthesize authorizationOptions=_authorizationOptions;
 @property (copy, nonatomic) NSString *callerBundleIdentifier; // @synthesize callerBundleIdentifier=_callerBundleIdentifier;
+@property (nonatomic, getter=isCallerManaged) BOOL callerManaged; // @synthesize callerManaged=_callerManaged;
+@property (copy, nonatomic) NSString *callerTeamIdentifier; // @synthesize callerTeamIdentifier=_callerTeamIdentifier;
 @property (copy, nonatomic) NSDictionary *extensionData; // @synthesize extensionData=_extensionData;
 @property (copy, nonatomic) NSData *httpBody; // @synthesize httpBody=_httpBody;
 @property (copy, nonatomic) NSDictionary *httpHeaders; // @synthesize httpHeaders=_httpHeaders;
+@property (copy, nonatomic) NSString *localizedCallerDisplayName; // @synthesize localizedCallerDisplayName=_localizedCallerDisplayName;
 @property (copy, nonatomic) NSString *realm; // @synthesize realm=_realm;
 @property (copy, nonatomic) NSString *requestedOperation; // @synthesize requestedOperation=_requestedOperation;
 @property (nonatomic) long long responseCode; // @synthesize responseCode=_responseCode;

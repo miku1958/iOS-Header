@@ -13,8 +13,6 @@
 }
 
 - (void)dealloc;
-- (void)doit;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

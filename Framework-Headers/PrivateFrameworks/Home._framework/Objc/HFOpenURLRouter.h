@@ -17,6 +17,8 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_sendAnalyticsEventForURL:(id)arg1;
+- (id)openSensitiveURL:(id)arg1;
 - (id)openURL:(id)arg1;
 
 @end

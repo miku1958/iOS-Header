@@ -13,9 +13,12 @@
 @property (copy, nonatomic) NSString *applicationBundleIdentifier;
 @property (strong, nonatomic) SFImage *baseIcon;
 @property (copy, nonatomic) NSString *contactIdentifier;
+@property (strong, nonatomic) SFPunchout *customDirectionsPunchout;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) int directionsMode;
 @property (copy, nonatomic) NSString *email;
 @property (strong, nonatomic) SFImage *icon;
+@property (copy, nonatomic) NSString *interactionContentType;
 @property (nonatomic) BOOL isITunes;
 @property (nonatomic) BOOL isOverlay;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -36,6 +39,7 @@
 @property (copy, nonatomic) NSString *provider;
 @property (strong, nonatomic) SFPunchout *punchout;
 @property (nonatomic) BOOL requiresLocalMedia;
+@property (nonatomic) BOOL shouldSearchDirectionsAlongCurrentRoute;
 @property (copy, nonatomic) NSArray *storeIdentifiers;
 @property (copy, nonatomic) NSString *type;
 @property (copy, nonatomic) NSString *universalLibraryID;

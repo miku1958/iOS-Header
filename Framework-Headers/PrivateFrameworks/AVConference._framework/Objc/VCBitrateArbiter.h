@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrate2G;
     unsigned int _maxAllowedBitrate3G;
     unsigned int _maxAllowedBitrateLTE;
+    unsigned int _maxAllowedBitrate5G;
     unsigned int _maxAllowedBitrateWifi;
     unsigned int _maxAllowedScreenShareBitrate2G;
     unsigned int _maxAllowedScreenShareBitrate3G;
@@ -39,12 +40,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int maxAllowedBitrateUSB; // @synthesize maxAllowedBitrateUSB=_maxAllowedBitrateUSB;
 @property (readonly) unsigned int maxAllowedBitrateWifi; // @synthesize maxAllowedBitrateWifi=_maxAllowedBitrateWifi;
 
++ (void)updateMaxAllowedBitratePerConnection:(unsigned int *)arg1 connectionType:(int)arg2 bandwidthSettings:(id)arg3;
+- (void)addRuleForBitrate:(unsigned int)arg1 connectionType:(int)arg2 limitingRule:(id)arg3;
 - (void)createSupportedBitrateRuleSets;
 - (void)dealloc;
 - (id)initWithDeviceRole:(int)arg1 callLogFile:(void *)arg2;
 - (unsigned int)maxAllowedAudioOnlyBitrateForConnection:(int)arg1;
-- (unsigned int)maxAllowedBitrateForConnection:(int)arg1;
-- (unsigned int)maxAllowedBitrateForConnection:(int)arg1 operatingMode:(int)arg2;
+- (unsigned int)maxAllowedBitrateForConnectionType:(int)arg1;
+- (unsigned int)maxAllowedBitrateForConnectionType:(int)arg1 operatingMode:(int)arg2;
+- (unsigned int)maxAllowedBitrateForVCConnection:(id)arg1 forLocalInterface:(BOOL)arg2 encodeRule:(id)arg3;
+- (unsigned int)maxAllowedBitrateForVCConnection:(id)arg1 forLocalInterface:(BOOL)arg2 operatingMode:(int)arg3 encodeRule:(id)arg4;
 - (id)maxAllowedBitrateRuleForConnection:(int)arg1;
 - (unsigned int)maxAllowedCellularBitrate;
 - (unsigned int)maxAllowedScreenShareBitrateForConnection:(int)arg1;
@@ -52,6 +57,9 @@ __attribute__((visibility("hidden")))
 - (void)readCarrierBundleValues;
 - (void)readHardwareValues;
 - (void)readStoreBagValues:(void *)arg1;
+- (int)storeBagBitrateForKey:(id)arg1;
+- (void)updateMaxAllowedBitrate:(unsigned int *)arg1 key:(struct __CFString *)arg2 type:(id)arg3 isAudio:(BOOL)arg4 carrierBundleBitrates:(struct __CFDictionary *)arg5;
+- (void)updateNegotiatedSettings:(id)arg1;
 
 @end
 

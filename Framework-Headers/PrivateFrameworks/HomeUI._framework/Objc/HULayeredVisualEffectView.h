@@ -12,6 +12,8 @@
 {
     HULayeredContentEffect *_contentEffect;
     HULayeredBackgroundEffect *_backgroundEffect;
+    double _contentEffectAlpha;
+    double _backgroundEffectAlpha;
     double _cornerRadius;
     UIVisualEffectView *_contentEffectView;
     UIVisualEffectView *_backgroundEffectView;
@@ -19,9 +21,11 @@
 }
 
 @property (strong, nonatomic) HULayeredBackgroundEffect *backgroundEffect; // @synthesize backgroundEffect=_backgroundEffect;
+@property (nonatomic) double backgroundEffectAlpha; // @synthesize backgroundEffectAlpha=_backgroundEffectAlpha;
 @property (strong, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property (strong, nonatomic) UIView *backgroundFillView; // @synthesize backgroundFillView=_backgroundFillView;
 @property (strong, nonatomic) HULayeredContentEffect *contentEffect; // @synthesize contentEffect=_contentEffect;
+@property (nonatomic) double contentEffectAlpha; // @synthesize contentEffectAlpha=_contentEffectAlpha;
 @property (strong, nonatomic) UIVisualEffectView *contentEffectView; // @synthesize contentEffectView=_contentEffectView;
 @property (readonly, nonatomic) UIView *contentView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;

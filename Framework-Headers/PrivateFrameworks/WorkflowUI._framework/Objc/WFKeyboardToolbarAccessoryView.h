@@ -6,14 +6,21 @@
 
 #import <UIKit/UIInputView.h>
 
-@class NSArray, UIToolbar;
+#import <WorkflowUI/UIInputViewAudioFeedback-Protocol.h>
 
-@interface WFKeyboardToolbarAccessoryView : UIInputView
+@class NSArray, NSString, UIToolbar;
+
+@interface WFKeyboardToolbarAccessoryView : UIInputView <UIInputViewAudioFeedback>
 {
     UIToolbar *_toolbar;
 }
 
 @property (copy, nonatomic) NSArray *barItems;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL enableInputClicksWhenVisible;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 
 - (void).cxx_destruct;

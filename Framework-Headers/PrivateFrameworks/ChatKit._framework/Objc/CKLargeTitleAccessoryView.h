@@ -6,16 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton;
+@class NSArray;
 
 @interface CKLargeTitleAccessoryView : UIView
 {
-    UIButton *_leftAccessoryButton;
-    UIButton *_rightAccessoryButton;
+    NSArray *_accessoryButtons;
 }
 
-@property (strong, nonatomic) UIButton *leftAccessoryButton; // @synthesize leftAccessoryButton=_leftAccessoryButton;
-@property (strong, nonatomic) UIButton *rightAccessoryButton; // @synthesize rightAccessoryButton=_rightAccessoryButton;
+@property (strong, nonatomic) NSArray *accessoryButtons; // @synthesize accessoryButtons=_accessoryButtons;
 
 + (id)newComposeButton;
 + (id)newOptionsButton;

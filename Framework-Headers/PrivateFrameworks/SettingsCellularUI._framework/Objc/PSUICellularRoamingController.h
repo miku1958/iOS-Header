@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)_voiceRoamingFooterTextWithVoiceRoamingOn:(BOOL)arg1;
 - (id)cdmaRoamingSpecifiers;
+- (void)cellularPlanChangedNotification:(id)arg1;
 - (id)dataRoamingSpecifiers;
 - (void)dealloc;
 - (id)getCDMARoamingStatus:(id)arg1;

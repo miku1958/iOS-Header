@@ -6,10 +6,16 @@
 
 #import <PassKitCore/PKAccountWebServiceRequest.h>
 
+@class NSURL;
+
 @interface PKAccountWebServiceAccountsRequest : PKAccountWebServiceRequest
 {
+    NSURL *_accountServicesURL;
 }
 
+@property (strong, nonatomic) NSURL *accountServicesURL; // @synthesize accountServicesURL=_accountServicesURL;
+
+- (void).cxx_destruct;
 - (id)_urlRequestWithServiceURL:(id)arg1 AppleAccountInformation:(id)arg2;
 
 @end

@@ -6,13 +6,13 @@
 
 #import <PhotoLibraryServices/PLGenericAlbumJournalEntryPayload.h>
 
-@class NSOrderedSet;
+@class NSSet;
 
 @interface PLImportSessionJournalEntryPayload : PLGenericAlbumJournalEntryPayload
 {
 }
 
-@property (readonly, nonatomic) NSOrderedSet *assetUUIDs;
+@property (readonly, nonatomic) NSSet *assetUUIDs;
 
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (id)modelProperties;

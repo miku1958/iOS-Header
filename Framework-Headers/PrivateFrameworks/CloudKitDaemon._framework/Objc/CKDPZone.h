@@ -8,12 +8,11 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSData, NSMutableArray;
+@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZone : PBCodable <NSCopying>
 {
-    NSData *_encryptedZoneishLastRollDate;
     CKDPProtectionInfo *_protectionInfo;
     NSMutableArray *_protectionInfoKeysToRemoves;
     CKDPProtectionInfo *_recordProtectionInfo;
@@ -22,8 +21,6 @@ __attribute__((visibility("hidden")))
     CKDPRecordZoneIdentifier *_zoneIdentifier;
 }
 
-@property (strong, nonatomic) NSData *encryptedZoneishLastRollDate; // @synthesize encryptedZoneishLastRollDate=_encryptedZoneishLastRollDate;
-@property (readonly, nonatomic) BOOL hasEncryptedZoneishLastRollDate;
 @property (readonly, nonatomic) BOOL hasProtectionInfo;
 @property (readonly, nonatomic) BOOL hasRecordProtectionInfo;
 @property (readonly, nonatomic) BOOL hasShareId;

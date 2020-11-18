@@ -29,8 +29,9 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 domainIdentifiers:(id)arg2;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2;
-- (void)extractAndDonateTopicsForText:(id)arg1 isPlainText:(BOOL)arg2 bundleId:(id)arg3 groupId:(id)arg4 documentId:(id)arg5 weight:(double)arg6 isOutgoing:(BOOL)arg7;
+- (void)extractAndDonateTopicsForText:(id)arg1 isPlainText:(BOOL)arg2 bundleId:(id)arg3 groupId:(id)arg4 documentId:(id)arg5 contactHandles:(id)arg6 weight:(double)arg7 isOutgoing:(BOOL)arg8;
 - (id)extractionsFromSearchableItem:(id)arg1;
+- (id)extractionsFromText:(id)arg1 bundleId:(id)arg2;
 - (id)init;
 - (id)initWithTopicDissector:(id)arg1;
 - (BOOL)interestedInSearchableItem:(id)arg1;

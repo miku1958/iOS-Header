@@ -11,12 +11,12 @@
 #import <FamilyCircleUI/FASetupDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAFamilyDetailsResponse, AAFamilyEligibilityResponse, AAGrandSlamSigner, AIDAAccountManager, FACircleContext, FAFamilyMemberDetailsPageSurrogate, FAFamilyNotificationObserver, FARequestConfigurator, NSArray, NSMutableArray, NSOperationQueue, NSString, PSListController, PSSpecifier;
+@class AAFamilyEligibilityResponse, AAGrandSlamSigner, AIDAAccountManager, FACircleContext, FAFamilyCircle, FAFamilyNotificationObserver, FAProfilePictureStore, FARequestConfigurator, FATableViewDecorator, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, PSListController, PSSpecifier;
 @protocol AAUISpecifierProviderDelegate;
 
 @interface FASettingsSpecifierProvider : NSObject <FASetupDelegate, FAFamilySettingsViewControllerDelegate, RemoteUIControllerDelegate, AAUISpecifierProvider>
 {
-    FAFamilyMemberDetailsPageSurrogate *_profileSurrogate;
+    FATableViewDecorator *_remoteUIDecorator;
     FAFamilyNotificationObserver *_familyNotificationObserver;
     PSListController *_presenter;
     PSSpecifier *_familyCellSpecifier;
@@ -24,7 +24,7 @@
     BOOL _isLoadingFamilyDetails;
     BOOL _didFailToGetFamilyDetails;
     NSMutableArray *_pendingFamilyDetailsCompletionBlocks;
-    AAFamilyDetailsResponse *_familyDetailsResponse;
+    FAFamilyCircle *_familyCircle;
     AAFamilyEligibilityResponse *_familyEligibilityResponse;
     NSMutableArray *_pendingInvites;
     NSString *_familyStatusSummary;
@@ -37,6 +37,8 @@
     FARequestConfigurator *_requestConfigurator;
     FACircleContext *_context;
     BOOL _delayedEnterInitiateFlow;
+    FAProfilePictureStore *_familyPictureStore;
+    NSDictionary *_cachedResourceDictionary;
     id<AAUISpecifierProviderDelegate> _delegate;
     NSArray *_specifiers;
 }
@@ -54,10 +56,11 @@
 - (id)_appleAccount;
 - (void)_clearFamilyState;
 - (id)_configureContextWithType:(id)arg1 resourceDictionary:(id)arg2;
+- (id)_familyBaseSpecifierWithState:(unsigned long long)arg1;
 - (id)_familySpecifier;
 - (unsigned long long)_familyState;
 - (id)_grandSlamSigner;
-- (void)_handleFamilyDetailsResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleFamilyDetailsResponse:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleFamilyEligibilityResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(BOOL)arg3;
 - (void)_handleShowChildTransferActionURL:(id)arg1;
@@ -82,7 +85,8 @@
 - (void)_showUnderageAlertWithEligibilityResponse:(id)arg1;
 - (id)_valueForFamilySpecifier:(id)arg1;
 - (id)_valueForInvitiationsSpecifier:(id)arg1;
-- (void)_viewFamilySpecifierWasTapped:(id)arg1;
+- (void)_viewFamilySpecifierWasTapped;
+- (void)_viewFamilyWithResourceDictionary:(id)arg1;
 - (void)dealloc;
 - (void)familySettingsViewControllerDidDeleteFamily:(id)arg1;
 - (void)familySettingsViewControllerDidUpdateFamily:(id)arg1;

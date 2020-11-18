@@ -6,15 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+@protocol OS_os_transaction;
+
 @interface MCProcessAssertion : NSObject
 {
+    NSObject<OS_os_transaction> *_transaction;
+    NSString *_reason;
 }
 
-+ (id)assertion;
-+ (id)executionQueue;
+@property (readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
+
+- (void).cxx_destruct;
+- (void)_createAssertion;
+- (void)_releaseAssertion;
 - (void)dealloc;
-- (id)init;
-- (void)touch;
+- (id)initWithReason:(id)arg1;
 
 @end
 

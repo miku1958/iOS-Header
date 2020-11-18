@@ -8,12 +8,12 @@
 
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class ISAnimatedImage, ISAnimatedImageTimer, NSHashTable, NSString;
+@class ISAnimatedImageTimer, NSHashTable, NSString, PFAnimatedImage;
 
 @interface ISAnimatedImagePlayer : NSObject <ISChangeObserver>
 {
     NSHashTable *_weakDestinations;
-    ISAnimatedImage *_image;
+    PFAnimatedImage *_image;
     ISAnimatedImageTimer *_timer;
     struct CGImage *_currentImage;
     BOOL _hasStartedAnimating;
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic) BOOL allowFrameDrops; // @synthesize allowFrameDrops=_allowFrameDrops;
-@property (readonly, nonatomic) ISAnimatedImage *animatedImage;
+@property (readonly, nonatomic) PFAnimatedImage *animatedImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long displayedFrameIndex; // @synthesize displayedFrameIndex=_displayedFrameIndex;

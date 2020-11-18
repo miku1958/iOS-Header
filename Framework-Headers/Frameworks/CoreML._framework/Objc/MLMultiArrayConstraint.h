@@ -35,7 +35,7 @@
 - (BOOL)isAllowedDataType:(long long)arg1 error:(id *)arg2;
 - (BOOL)isAllowedShape:(id)arg1 error:(id *)arg2;
 - (BOOL)isAllowedValue:(id)arg1 error:(id *)arg2;
-- (BOOL)isAllowedValue:(id)arg1 isNeuralNetworkInput:(BOOL)arg2 usingRank5Mapping:(BOOL)arg3 featureName:(id)arg4 error:(id *)arg5;
+- (BOOL)isAllowedValue:(id)arg1 isNeuralNetworkInputOrOutput:(BOOL)arg2 usingRank5Mapping:(BOOL)arg3 featureName:(id)arg4 error:(id *)arg5;
 
 @end
 

@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) BOOL destinationsAreTransposed; // @synthesize destinationsAreTransposed=_destinationsAreTransposed;
 @property (readonly, nonatomic) BOOL sourcesAreTransposed; // @synthesize sourcesAreTransposed=_sourcesAreTransposed;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 copyDescriptor:(id)arg2;

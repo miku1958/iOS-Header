@@ -26,6 +26,7 @@
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_performWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)_synchronousPerformWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)connectionInvalidated;
 - (void)dealloc;
 - (void)executeFHIRExtractionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -35,7 +36,8 @@
 - (id)initWithListenerEndpoint:(id)arg1;
 - (void)optInDataForFHIRDocumentWithRequest:(id)arg1 redactor:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)remoteInterface;
-- (void)rulesVersionForFHIRDocumentExtractionWithCompletion:(CDUnknownBlockType)arg1;
+- (id)rulesVersionForFHIRDocumentExtractionWithError:(id *)arg1;
+- (id)supportedFHIRConfigurationWithError:(id *)arg1;
 
 @end
 

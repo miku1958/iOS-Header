@@ -28,12 +28,18 @@
 - (void).cxx_destruct;
 - (id)DSIDForAccount:(id)arg1 service:(id)arg2;
 - (id)_buildServiceOwnerMapping;
+- (id)_postCloudSupportedServicesForAltDSID:(id)arg1;
 - (id)accountForService:(id)arg1;
 - (id)altDSIDForAccount:(id)arg1 service:(id)arg2;
 - (id)init;
 - (id)initWithAccountStore:(id)arg1;
 - (id)nameComponentsForAccount:(id)arg1 service:(id)arg2;
 - (void)signInService:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)signInToAllServicesInBackground:(BOOL)arg1 usingContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)signInToAllServicesInBackgroundUsingContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)signInToServices:(id)arg1 usingContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)signOutOfAllServicesUsingContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)signOutOfServices:(id)arg1 usingContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)signOutService:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

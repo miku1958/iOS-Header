@@ -17,6 +17,7 @@
     MISSING_TYPE *feedService;
     MISSING_TYPE *audioConfigurationManager;
     MISSING_TYPE *paidBundleConfigurationManager;
+    MISSING_TYPE *offerManager;
 }
 
 @end

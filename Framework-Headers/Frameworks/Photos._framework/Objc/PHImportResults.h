@@ -33,9 +33,9 @@
 - (void).cxx_destruct;
 - (void)addImportRecord:(id)arg1;
 - (void)addUnsupportedPath:(id)arg1;
-- (id)criticalExceptions;
+- (id)exceptions;
 - (id)generatePMRInfo;
-- (id)importRecordExceptionsOfImportance:(unsigned long long)arg1;
+- (id)importRecordExceptions;
 - (id)init;
 - (void)insertStart:(id)arg1 end:(id)arg2 intoGroups:(id)arg3 ofType:(unsigned long long)arg4;
 - (void)log:(id)arg1 activity:(id)arg2 description:(id)arg3 digits:(unsigned long long)arg4;

@@ -78,7 +78,6 @@
     BOOL mAnimatingScroll;
     BOOL mSuppressedAutozoom;
     BOOL mTextGesturesInFlight;
-    BOOL _orbTextGesturesInFlight;
     id<TSDEditor> mSelectionChangeNotificationDeferredEditor;
     BOOL mShouldAutoscrollToSelectionAfterGestures;
     BOOL mSuspendedLowPriorityThreadDispatcher;
@@ -161,7 +160,6 @@
 @property (readonly, nonatomic) TSDLayoutController *layoutController;
 @property (nonatomic) BOOL nestedCanvasAllowLayoutAndRenderOnThread; // @synthesize nestedCanvasAllowLayoutAndRenderOnThread=mNestedCanvasAllowLayoutAndRenderOnThread;
 @property (readonly, nonatomic) TSPObjectContext *objectContext;
-@property (nonatomic) BOOL orbTextGesturesInFlight; // @synthesize orbTextGesturesInFlight=_orbTextGesturesInFlight;
 @property (readonly, nonatomic) CALayer *overlayLayer; // @synthesize overlayLayer=mOverlayLayer;
 @property (nonatomic) BOOL overlayLayerSuppressed; // @synthesize overlayLayerSuppressed=mOverlayLayerSuppressed;
 @property (copy) NSSet *p_cachedTopLevelTilingLayers; // @synthesize p_cachedTopLevelTilingLayers=mCachedTopLevelTilingLayers;
@@ -527,6 +525,7 @@
 - (void)teardown;
 - (void)teardownBackgroundRendering;
 - (void)teardownCanvasEditor;
+- (struct CGImage *)textImageFromRect:(struct CGRect)arg1;
 - (void)toggleHyperlinkUIForRep:(id)arg1;
 - (void)toggleShouldShowUserDefinedGuides;
 - (id)topLevelRepsForDragSelecting;

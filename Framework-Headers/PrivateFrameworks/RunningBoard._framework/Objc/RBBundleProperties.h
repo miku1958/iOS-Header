@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBBundleProperties-Protocol.h>
 
 @class NSDictionary, NSString, NSURL, RBBundlePropertiesBSXPCProvider, RBBundlePropertiesBackgroundRefreshProvider, RBBundlePropertiesLSProvider, RBLSBundleProperties, RBSProcessIdentifier, RBSProcessIdentity, RBXPCBundleProperties;
 
-@interface RBBundleProperties : NSObject <RBBundleProperties, BSDescriptionProviding>
+@interface RBBundleProperties : NSObject <RBBundleProperties>
 {
     RBBundlePropertiesLSProvider *_lsProvider;
     RBBundlePropertiesBSXPCProvider *_xpcProvider;
@@ -36,6 +35,7 @@
 @property (readonly, nonatomic) BOOL hasPreferredJetsamBand;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isExtension;
+@property (readonly, nonatomic) int platform;
 @property (readonly, nonatomic) int preferredJetsamBand;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsBackgroundAudio;
@@ -45,15 +45,8 @@
 @property (readonly, nonatomic) BOOL usesSocketMonitoring;
 
 - (void).cxx_destruct;
-- (id)_bundleProperties;
-- (id)_lsBundleProperties;
-- (id)_xpcBundleProperties;
 - (id)bundleInfoValuesForKeys:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithLSProvider:(id)arg1 xpcProvider:(id)arg2 backgroundRefreshProvider:(id)arg3 processIdentity:(id)arg4 processIdentifier:(id)arg5;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (BOOL)_accessibilityScrollAcrossPageBoundaries;
 
 @end
 

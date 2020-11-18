@@ -6,14 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-@class UIStatusBar, UIView, _UIBackdropView;
+#import <AssistantUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+
+@class NSString, UIStatusBar, UIView;
 @protocol AFUISiriSetupViewControllerDelegate;
 
-@interface AFUISiriSetupViewController : UIViewController
+@interface AFUISiriSetupViewController : UIViewController <UIAdaptivePresentationControllerDelegate>
 {
     UIView *_contentView;
-    _UIBackdropView *_backdropView;
-    BOOL _backdropViewVisible;
     BOOL _visible;
     BOOL _lastTimeShown;
     id<AFUISiriSetupViewControllerDelegate> _delegate;
@@ -21,33 +21,32 @@
     UIStatusBar *_statusBar;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AFUISiriSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL lastTimeShown; // @synthesize lastTimeShown=_lastTimeShown;
 @property (strong, nonatomic) UIView *siriSetupView; // @synthesize siriSetupView=_siriSetupView;
 @property (strong, nonatomic, getter=_statusBar, setter=_setStatusBar:) UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
 - (void).cxx_destruct;
-- (void)_addStatusBar;
 - (BOOL)_canShowWhileLocked;
 - (void)_continueTapped:(id)arg1;
 - (void)_laterTapped:(id)arg1;
-- (void)_removeStatusBar;
-- (struct CGRect)_statusBarFrame;
 - (void)animatedAppearanceWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)animatedDisappearanceWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)dimBackdropSettings;
 - (id)init;
 - (void)loadView;
-- (void)setBackdropVisible:(BOOL)arg1;
-- (void)setFluidDismissalState:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <Navigation/NSCopying-Protocol.h>
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteTraffic, GEOComposedWaypoint, GEODirectionsRequest, GEOETARoute, GEOETATrafficUpdateResponse, MNCommuteDestinationSuggestion, MNLocation, MNObserverHashTable, NSDictionary, NSString;
+@class GEOComposedETARoute, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEOETATrafficUpdateResponse, MNCommuteDestinationSuggestion, MNLocation, MNObserverHashTable, NSDictionary, NSString;
 
 @interface MNCommuteDestination : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,10 +18,9 @@
     BOOL _rerouting;
     MNCommuteDestinationSuggestion *_suggestion;
     GEOComposedRoute *_route;
-    GEOComposedRouteTraffic *_traffic;
     GEODirectionsRequest *_directionsRequest;
     MNLocation *_lastMatchedLocation;
-    GEOETARoute *_etaRoute;
+    GEOComposedETARoute *_etaRoute;
     GEOETATrafficUpdateResponse *_etaResponse;
     double _remainingTime;
     double _remainingDistance;
@@ -35,7 +34,7 @@
 @property (readonly) BOOL canGetETARoute;
 @property (strong, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
 @property (strong, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
-@property (strong, nonatomic) GEOETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
+@property (strong, nonatomic) GEOComposedETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
 @property (readonly, nonatomic) double geodesicDistance;
 @property (nonatomic) BOOL invalid; // @synthesize invalid=_invalid;
 @property (strong, nonatomic) MNLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
@@ -51,7 +50,6 @@
 @property (copy, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
-@property (strong, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
 @property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic) GEOComposedWaypoint *waypoint;
 

@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, SGOffsetDictionary, _PASNotificationToken;
+@class SGLazyPurgeableResult, _PASNotificationToken;
 @protocol SGSeekable;
 
 @interface SGFlightData : NSObject
 {
     id<SGSeekable> _flightsFh;
-    SGOffsetDictionary *_flightDataOffsets;
+    SGLazyPurgeableResult *_flightDataOffsets;
     id<SGSeekable> _flightsUpdateFh;
-    SGOffsetDictionary *_flightUpdateDataOffsets;
+    SGLazyPurgeableResult *_flightUpdateDataOffsets;
     id<SGSeekable> _airportsFh;
-    SGOffsetDictionary *_airportDataOffsets;
+    SGLazyPurgeableResult *_airportDataOffsets;
     id<SGSeekable> _airportsUpdateFh;
-    SGOffsetDictionary *_airportUpdateDataOffsets;
+    SGLazyPurgeableResult *_airportUpdateDataOffsets;
     _PASNotificationToken *_assetUpdateToken;
-    NSDictionary *_carrierNames;
-    NSDictionary *_carrierCodesByName;
-    NSDictionary *_carrierUpdateNames;
-    NSDictionary *_carrierUpdateCodesByName;
+    SGLazyPurgeableResult *_carrierNames;
+    SGLazyPurgeableResult *_carrierCodesByName;
+    SGLazyPurgeableResult *_carrierUpdateNames;
+    SGLazyPurgeableResult *_carrierUpdateCodesByName;
 }
 
 + (id)airportNameNoiseKeywords;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_read_request : NSObject <OS_nw_read_request>
 {
     NWConcrete_nw_read_request *next;
+    NWConcrete_nw_read_request *tail;
     CDUnknownBlockType data_completion;
     CDUnknownBlockType data_multiple_completion;
     CDUnknownBlockType buffer_completion;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_content_context> *repliable_message;
     NSObject<OS_nw_error> *error;
     NSObject<OS_nw_array> *read_array;
+    NSObject<OS_nw_array> *context_array;
     unsigned int reported:1;
     unsigned int is_complete:1;
 }

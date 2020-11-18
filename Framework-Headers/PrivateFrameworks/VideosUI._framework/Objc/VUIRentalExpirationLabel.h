@@ -12,20 +12,31 @@
 __attribute__((visibility("hidden")))
 @interface VUIRentalExpirationLabel : VUILabel
 {
+    BOOL _contentIsAvailable;
+    BOOL _forDownload;
+    BOOL _useWarningColor;
     NSDate *_expirationDate;
     id<VUIRentalExpirationLabelDelegate> _delegate;
     NSString *_locStringPrefix;
     NSTimer *_expiryUpdateTimer;
 }
 
+@property (nonatomic) BOOL contentIsAvailable; // @synthesize contentIsAvailable=_contentIsAvailable;
 @property (weak, nonatomic) id<VUIRentalExpirationLabelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (strong, nonatomic) NSTimer *expiryUpdateTimer; // @synthesize expiryUpdateTimer=_expiryUpdateTimer;
+@property (nonatomic) BOOL forDownload; // @synthesize forDownload=_forDownload;
 @property (copy, nonatomic) NSString *locStringPrefix; // @synthesize locStringPrefix=_locStringPrefix;
+@property (nonatomic) BOOL useWarningColor; // @synthesize useWarningColor=_useWarningColor;
 
 + (id)_calculateExpirationStringForDate:(id)arg1 displayWarningColor:(BOOL *)arg2 updateInterval:(long long *)arg3 locStringPrefix:(id)arg4;
 + (id)calculateExpirationStringForDate:(id)arg1 updateInterval:(long long *)arg2 locStringPrefix:(id)arg3;
++ (id)labelForRentalExpirationDate:(id)arg1 downloadExpirationDate:(id)arg2 contentAvailabilityDate:(id)arg3 downloadStatus:(unsigned long long)arg4;
 + (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4;
++ (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4 forDownload:(BOOL)arg5 contentIsAvailable:(BOOL)arg6;
++ (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4 useWarningColor:(BOOL)arg5;
++ (id)labelWithTextLayout:(id)arg1 existingLabel:(id)arg2 locStringPrefix:(id)arg3;
++ (BOOL)shouldShowLabelForDownloadExpirationDate:(id)arg1;
 - (void).cxx_destruct;
 - (void)_computeExpirationLabel:(id)arg1;
 - (void)dealloc;

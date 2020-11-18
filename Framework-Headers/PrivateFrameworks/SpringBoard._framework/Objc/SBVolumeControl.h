@@ -10,7 +10,7 @@
 #import <SpringBoard/SBAVSystemControllerCacheObserver-Protocol.h>
 #import <SpringBoard/SBVolumeHUDViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, SBAVSystemControllerCache, SBHUDController, SBRingerControl, SBVolumeHUDSettings;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, SBAVSystemControllerCache, SBConferenceManager, SBHUDController, SBRingerControl, SBTelephonyManager, SBVolumeHUDSettings;
 @protocol OS_dispatch_queue;
 
 @interface SBVolumeControl : NSObject <SBVolumeHUDViewControllerDelegate, PTSettingsKeyObserver, SBAVSystemControllerCacheObserver>
@@ -18,6 +18,8 @@
     SBHUDController *_hudController;
     SBVolumeHUDSettings *_volumeHUDSettings;
     SBRingerControl *_ringerControl;
+    SBTelephonyManager *_telephonyManager;
+    SBConferenceManager *_conferenceManager;
     BOOL _debounce;
     unsigned long long _mode;
     NSMutableArray *_activeAudioRoutes;
@@ -33,6 +35,10 @@
     int _anyCallActive;
     struct os_unfair_lock_s _effectiveVolumeLock;
     float _effectiveVolume;
+    struct os_unfair_lock_s _volumeLimitLock;
+    float _volumeLimit;
+    struct os_unfair_lock_s _volumeLimitEnforcedLock;
+    BOOL _volumeLimitEnforced;
     NSObject<OS_dispatch_queue> *_avSystemControllerQueue;
     SBAVSystemControllerCache *_avCache;
     int _darwinNotificationToken;
@@ -69,7 +75,7 @@
 - (BOOL)_isVolumeHUDVisible;
 - (BOOL)_isVolumeHUDVisibleOrFading;
 - (BOOL)_outputDevicesRepresentWirelessSplitterGroup:(id)arg1;
-- (void)_presentVolumeHUDIfDisplayableOrRefreshIfPresented:(id)arg1;
+- (void)_presentVolumeHUDIfDisplayable:(BOOL)arg1 orRefreshIfPresentedWithReason:(id)arg2;
 - (void)_presentVolumeHUDWithVolume:(float)arg1;
 - (void)_resetMediaServerConnection;
 - (void)_sendEUVolumeLimitAcknowledgementIfNecessary;
@@ -80,12 +86,15 @@
 - (void)_updateAudioRoutesIfNecessary:(BOOL)arg1 forRoute:(id)arg2 withAttributes:(id)arg3 andOutputDevices:(id)arg4;
 - (void)_updateEUVolumeSettings;
 - (void)_updateEffectiveVolume:(float)arg1;
+- (void)_updateVolumeLimit:(float)arg1;
+- (void)_updateVolumeLimitEnforced:(BOOL)arg1;
 - (void)_userAcknowledgedEUEnforcement:(float)arg1;
 - (float)_volumeStepUp:(BOOL)arg1;
 - (id)acquireVolumeHUDHiddenAssertionForReason:(id)arg1;
 - (void)addAlwaysHiddenCategory:(id)arg1;
 - (id)avSystemControllerDispatchQueue;
 - (void)cache:(id)arg1 didUpdateActiveAudioRoutingWithRoute:(id)arg2 routeAttributes:(id)arg3 activeOutputDevices:(id)arg4;
+- (void)cache:(id)arg1 didUpdateVolumeLimit:(float)arg2;
 - (void)cache:(id)arg1 didUpdateVolumeLimitEnforced:(BOOL)arg2;
 - (void)cancelVolumeEvent;
 - (void)changeVolumeByDelta:(float)arg1;
@@ -96,7 +105,7 @@
 - (void)handleVolumeButtonWithType:(long long)arg1 down:(BOOL)arg2;
 - (void)hideVolumeHUDIfVisible;
 - (void)increaseVolume;
-- (id)initWithHUDController:(id)arg1 ringerControl:(id)arg2;
+- (id)initWithHUDController:(id)arg1 ringerControl:(id)arg2 telephonyManager:(id)arg3 conferenceManager:(id)arg4;
 - (BOOL)isEUDevice;
 - (BOOL)isEUVolumeLimitEnabled;
 - (BOOL)isEUVolumeLimitEnforced;

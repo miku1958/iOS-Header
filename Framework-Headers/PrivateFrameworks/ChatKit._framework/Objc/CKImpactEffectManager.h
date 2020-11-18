@@ -42,9 +42,11 @@
 @property (weak, nonatomic) id<CKSendAnimationManagerDelegate> sendAnimationManagerDelegate; // @synthesize sendAnimationManagerDelegate;
 @property (readonly) Class superclass;
 
++ (id)effectIdentifiers;
 + (BOOL)identifierIsAnimatedImpactEffect:(id)arg1;
 + (BOOL)identifierIsValidImpactEffect:(id)arg1;
 + (BOOL)identifierShouldPlayInWindow:(id)arg1;
++ (id)localizedEffectNameForEffectWithIdentifier:(id)arg1;
 + (id)maskingStringForID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_animateLastMessage:(id)arg1;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNPropertyGroupItem *propertyItem;
 @property (readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
++ (BOOL)shouldIndentWhileEditing;
 - (void).cxx_destruct;
 - (id)constantConstraints;
 - (void)contentSizeCategoryDidChange:(id)arg1;
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (double)minCellHeight;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setCardGroupItem:(id)arg1;
-- (BOOL)shouldIndentWhileEditing;
 - (void)textFieldChanged:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

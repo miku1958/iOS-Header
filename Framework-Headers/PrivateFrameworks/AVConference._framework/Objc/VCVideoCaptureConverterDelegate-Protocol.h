@@ -9,6 +9,6 @@
 @class VCVideoCaptureConverter;
 
 @protocol VCVideoCaptureConverterDelegate <NSObject>
-- (void)converter:(VCVideoCaptureConverter *)arg1 didConvertFrame:(struct opaqueCMSampleBuffer *)arg2 frameTime:(CDStruct_1b6d18a9)arg3 droppedFrames:(int)arg4 cameraStatusBits:(unsigned char)arg5;
+- (void)converter:(VCVideoCaptureConverter *)arg1 didConvertFrame:(struct opaqueCMSampleBuffer *)arg2 frameTime:(CDStruct_1b6d18a9)arg3 cameraStatusBits:(unsigned char)arg4;
 @end
 

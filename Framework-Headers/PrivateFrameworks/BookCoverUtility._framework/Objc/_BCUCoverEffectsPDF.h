@@ -31,7 +31,7 @@
 - (struct UIEdgeInsets)_roundedInsetsWithSize:(struct CGSize)arg1;
 - (id)coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3;
 - (id)initWithIdentifier:(id)arg1 renderer:(id)arg2 image:(BOOL)arg3 shadow:(BOOL)arg4 night:(BOOL)arg5;
-- (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 waitForCPUSynchronization:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)shadowLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 kind:(unsigned long long)arg4;
 
 @end

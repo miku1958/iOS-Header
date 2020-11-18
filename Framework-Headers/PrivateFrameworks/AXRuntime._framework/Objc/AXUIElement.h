@@ -28,6 +28,8 @@
 
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 + (void)initialize;
++ (id)proxiedMLElementsForApp:(id)arg1;
++ (id)scrollAncestorAtCoordinate:(struct CGPoint)arg1;
 + (struct __AXUIElement *)systemWideAXUIElement;
 + (id)uiApplicationAtCoordinate:(struct CGPoint)arg1;
 + (id)uiApplicationForContext:(unsigned int)arg1;
@@ -45,6 +47,7 @@
 - (void)_invalidate;
 - (long long)_lineEndPosition;
 - (struct _NSRange)_lineRangeForPosition:(unsigned long long)arg1;
+- (struct _NSRange)_lineRangeWithFaultTolerance:(long long)arg1 forward:(BOOL)arg2;
 - (long long)_lineStartPosition;
 - (id)_objectForRange:(struct _NSRange)arg1 withParameterizedAttribute:(long long)arg2;
 - (id)_outputCache;
@@ -54,6 +57,7 @@
 - (id)arrayWithAXAttribute:(long long)arg1;
 - (BOOL)boolWithAXAttribute:(long long)arg1;
 - (BOOL)canPerformAXAction:(int)arg1;
+- (id)childrenIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (struct CGColor *)colorWithAXAttribute:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -62,6 +66,7 @@
 - (id)initWithAXElement:(struct __AXUIElement *)arg1;
 - (id)initWithAXElement:(struct __AXUIElement *)arg1 cache:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isMLElement;
 - (BOOL)isMockElement;
 - (BOOL)isValid;
 - (BOOL)isValidForApplication:(id)arg1;

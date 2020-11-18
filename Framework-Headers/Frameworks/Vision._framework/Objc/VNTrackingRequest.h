@@ -22,7 +22,7 @@
 + (unsigned int)frameCVPixelBufferFormatForRequestRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (id)trackerTypeForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_resetTrackerIfNeeded:(id)arg1 trackerProvider:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)_trackingLevelOptionFromTrackingLevelEnum;
@@ -31,10 +31,11 @@
 - (id)initWithDetectedObjectObservation:(id)arg1;
 - (id)initWithDetectedObjectObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (id)newDefaultRequestInstance;
+- (void)populateDetectorProcessingOptions:(id)arg1 session:(id)arg2;
 - (id)sequencedRequestPreviousObservationsKey;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

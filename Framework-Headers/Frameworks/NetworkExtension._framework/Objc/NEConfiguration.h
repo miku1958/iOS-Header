@@ -11,7 +11,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NEAOVPN, NEContentFilter, NEDNSProxy, NEPathController, NEProfileIngestionPayloadInfo, NEVPN, NEVPNApp, NSString, NSUUID;
+@class NEAOVPN, NEAppPush, NEContentFilter, NEDNSProxy, NEDNSSettingsBundle, NEPathController, NEProfileIngestionPayloadInfo, NEVPN, NEVPNApp, NSString, NSUUID;
 
 @interface NEConfiguration : NSObject <NEProfilePayloadHandlerDelegate, NEConfigurationValidating, NSSecureCoding, NSCopying>
 {
@@ -29,16 +29,22 @@
     NEProfileIngestionPayloadInfo *_payloadInfo;
     NEPathController *_pathController;
     NEDNSProxy *_dnsProxy;
+    NEDNSSettingsBundle *_dnsSettings;
+    NEAppPush *_appPush;
+    long long _appPermissionType;
 }
 
 @property (copy) NEVPN *VPN; // @synthesize VPN=_VPN;
 @property (copy) NEAOVPN *alwaysOnVPN; // @synthesize alwaysOnVPN=_alwaysOnVPN;
+@property (nonatomic) long long appPermissionType; // @synthesize appPermissionType=_appPermissionType;
+@property (copy) NEAppPush *appPush; // @synthesize appPush=_appPush;
 @property (copy) NEVPNApp *appVPN; // @synthesize appVPN=_appVPN;
 @property (copy) NSString *application; // @synthesize application=_application;
 @property (copy) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (copy) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy) NEContentFilter *contentFilter; // @synthesize contentFilter=_contentFilter;
 @property (copy) NEDNSProxy *dnsProxy; // @synthesize dnsProxy=_dnsProxy;
+@property (copy) NEDNSSettingsBundle *dnsSettings; // @synthesize dnsSettings=_dnsSettings;
 @property (copy) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (readonly) long long grade; // @synthesize grade=_grade;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -99,6 +105,7 @@
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithContentFilterPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (id)initWithDNSProxyPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
+- (id)initWithDNSSettingsPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithName:(id)arg1 grade:(long long)arg2;
 - (id)initWithPathControllerPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
@@ -109,6 +116,7 @@
 - (BOOL)needToUpdateKeychain;
 - (BOOL)setAppLayerVPNRuleSettings:(id)arg1 withAppIdentifier:(id)arg2;
 - (BOOL)setAppLayerVPNUUID:(id)arg1 andSafariDomains:(id)arg2;
+- (BOOL)setAssociatedDomains:(id)arg1;
 - (BOOL)setCalendarDomains:(id)arg1;
 - (BOOL)setCalendarDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (BOOL)setCertificateContentFilter:(id)arg1;
@@ -120,6 +128,7 @@
 - (BOOL)setConfigurationVPNPassword:(id)arg1;
 - (BOOL)setContactsDomains:(id)arg1;
 - (BOOL)setContactsDomains:(id)arg1 accountIdentifiers:(id)arg2;
+- (BOOL)setExcludedDomains:(id)arg1;
 - (BOOL)setMailDomains:(id)arg1;
 - (BOOL)setMailDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (BOOL)setPayloadInfoCommon:(id)arg1 payloadOrganization:(id)arg2;

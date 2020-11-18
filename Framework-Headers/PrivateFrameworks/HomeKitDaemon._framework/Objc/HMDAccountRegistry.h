@@ -53,6 +53,7 @@
 - (id)deviceForHandle:(id)arg1;
 - (id)deviceForHandle:(id)arg1 exists:(BOOL *)arg2;
 - (id)deviceForIdentifier:(id)arg1;
+- (id)deviceForPushToken:(id)arg1;
 - (id)init;
 - (id)initWithAppleAccountManager:(id)arg1 remoteAccountManager:(id)arg2;
 - (void)reset;

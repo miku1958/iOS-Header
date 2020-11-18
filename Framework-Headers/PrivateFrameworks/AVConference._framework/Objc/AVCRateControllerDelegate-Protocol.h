@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AVConference/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol AVCRateControllerDelegate
+@protocol AVCRateControllerDelegate <NSObject>
 - (void)rateController:(void *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 
 @optional

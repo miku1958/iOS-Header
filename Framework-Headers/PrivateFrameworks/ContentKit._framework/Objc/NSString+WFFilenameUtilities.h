@@ -35,6 +35,7 @@
 - (id)gtm_stringByUnescapingFromHTML;
 - (id)wf_filenameTruncatedToMaximumLength;
 - (id)wf_filenameTruncatedToMaximumLengthWithSuffix:(id)arg1;
+- (BOOL)wf_hasStrongRTLCharacter;
 - (id)wf_stringByTrimmingLeadingCharactersInSet:(id)arg1;
 - (id)wf_stringByTrimmingLeadingWhitespaceAndNewlineCharacters;
 - (id)wf_stringByTrimmingTrailingCharactersInSet:(id)arg1;

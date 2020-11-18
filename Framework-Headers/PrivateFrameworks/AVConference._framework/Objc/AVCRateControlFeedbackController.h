@@ -17,27 +17,23 @@ __attribute__((visibility("hidden")))
     unsigned int _remoteTotalPacketReceivedCount;
     BOOL _isFeedbackReceived;
     BOOL _didRegisterPacketReceivedHandler;
-    unsigned int _maxVideoBurstyLossCache;
-    unsigned int _maxAudioConsecutiveLossCache;
 }
 
-@property (nonatomic) unsigned int maxAudioConsecutiveLossCache; // @synthesize maxAudioConsecutiveLossCache=_maxAudioConsecutiveLossCache;
-@property (nonatomic) unsigned int maxVideoBurstyLossCache; // @synthesize maxVideoBurstyLossCache=_maxVideoBurstyLossCache;
 @property (nonatomic) unsigned int mode; // @synthesize mode=_mode;
 
-- (BOOL)detectOutOfOrderFeedbackMessage:(CDStruct_0ee80423)arg1;
+- (BOOL)detectOutOfOrderFeedbackMessage:(CDStruct_de0ff4c0)arg1;
 - (BOOL)getFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
 - (BOOL)getRateControlFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
-- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_b21f1e06 *)arg1 time:(double)arg2;
+- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_56e8fa21 *)arg1 time:(double)arg2;
 - (id)initWithStatisticsCollector:(id)arg1;
 - (BOOL)processFeedbackMessage:(id)arg1 type:(unsigned int)arg2 metaData:(id)arg3 error:(id *)arg4;
-- (BOOL)processRateControlFeedbackMessage:(CDStruct_0ee80423)arg1 type:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)processRateControlProbingMessage:(CDStruct_4c345eff)arg1 type:(unsigned int)arg2 error:(id *)arg3;
-- (void)setPacketReceivedStatistics:(CDStruct_cbf42801)arg1;
-- (CDStruct_0ee80423)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
-- (BOOL)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_0ee80423 *)arg2;
-- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_0ee80423)arg1;
-- (CDStruct_0ee80423)translateRateControlFeedbackMessageFromData:(id)arg1;
+- (BOOL)processRateControlFeedbackMessage:(CDStruct_de0ff4c0)arg1 type:(unsigned int)arg2 error:(id *)arg3 time:(double)arg4;
+- (BOOL)processRateControlProbingMessage:(CDStruct_d30cff71)arg1 type:(unsigned int)arg2 error:(id *)arg3;
+- (void)resetBurstyLossStatistics;
+- (CDStruct_de0ff4c0)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
+- (BOOL)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_de0ff4c0 *)arg2;
+- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_de0ff4c0)arg1;
+- (CDStruct_de0ff4c0)translateRateControlFeedbackMessageFromData:(id)arg1;
 
 @end
 

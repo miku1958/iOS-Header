@@ -16,8 +16,10 @@
 {
     UIScrollView *_scrollView;
     PKEnterCurrencyAmountPassView *_amountPassView;
+    unsigned char _visibility;
     BOOL _keyboardVisible;
     struct CGRect _keyboardFrame;
+    struct CGRect _lastKeyboardFrame;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -49,6 +51,10 @@
 - (void)setMinLoadAmount:(id)arg1;
 - (void)updateAccountValues;
 - (void)updateFirstResponder;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)willDismissViewController;
 

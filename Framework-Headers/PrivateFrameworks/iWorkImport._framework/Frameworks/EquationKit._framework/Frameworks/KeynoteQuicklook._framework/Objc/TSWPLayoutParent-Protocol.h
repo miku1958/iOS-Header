@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSKSelectionPath, TSWPAttachment, TSWPLayout;
+@class NSSet, TSKSelectionPath, TSWPAttachment, TSWPLayout;
 @protocol NSFastEnumeration, TSWPStyleProvider;
 
 @protocol TSWPLayoutParent
@@ -27,6 +27,7 @@
 - (int)naturalAlignmentForTextLayout:(TSWPLayout *)arg1;
 - (unsigned long long)pageCountForAttachment:(TSWPAttachment *)arg1;
 - (unsigned long long)pageNumberForAttachment:(TSWPAttachment *)arg1;
+- (NSSet *)reliedOnLayoutsForTextLayout:(TSWPLayout *)arg1;
 - (id<TSWPStyleProvider>)styleProvider;
 - (BOOL)textLayoutShouldLayoutVertically:(TSWPLayout *)arg1;
 - (BOOL)textLayoutShouldWrapAroundExternalDrawables:(TSWPLayout *)arg1;

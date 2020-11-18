@@ -26,9 +26,10 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (Box_3d7e3c2c)_bounds;
+- (struct CGRect)_calloutAnchorRect:(BOOL)arg1;
 - (unsigned long long)animationID;
 - (unsigned long long)businessID;
-- (struct CGPoint)calloutAnchorPointWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2 snapToPixels:(BOOL)arg3;
+- (struct CGPoint)calloutAnchorPointWithSnapToPixels:(BOOL)arg1;
 - (struct CGRect)calloutAnchorRect;
 - (id)clusterContentBounds;
 - (id)clusterFeatureAnnotations;
@@ -54,7 +55,9 @@
 - (BOOL)isLeafCluster;
 - (BOOL)isOnRoute;
 - (BOOL)isOneWayArrow;
+- (BOOL)isRouteAnnotation;
 - (BOOL)isRouteEta;
+- (BOOL)isRouteWaypoint;
 - (BOOL)isSelectable;
 - (BOOL)isSelected;
 - (BOOL)isTextVisible;
@@ -66,14 +69,15 @@
 - (BOOL)isVenueButton;
 - (BOOL)isVisible;
 - (const shared_ptr_2d33c5e4 *)labelMarkerImpl;
+- (struct CGRect)lateralCalloutAnchorRect;
 - (id)locale;
 - (id)mapRegion;
 - (id)parentClusterLabelMarker;
 - (unsigned char)pickedLabelBalloonBehavior;
 - (BOOL)positionOfInterest:(CDStruct_c3b9c2ee *)arg1 zoom:(float *)arg2;
+- (id)routeAnnotations;
 - (id)routeInfo;
 - (struct CGRect)screenCollisionBounds;
-- (struct CGPoint)screenPointToScrollRelativeToWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2;
 - (int)selectionType;
 - (void)setIsPickedIconDrawnExternally:(BOOL)arg1;
 - (void)setLabelPressed:(BOOL)arg1;
@@ -88,6 +92,7 @@
 - (unsigned long long)venueID;
 - (unsigned long long)venueLevelID;
 - (short)venueLookInsideFloorOrdinal;
+- (id)waypointInfo;
 
 @end
 

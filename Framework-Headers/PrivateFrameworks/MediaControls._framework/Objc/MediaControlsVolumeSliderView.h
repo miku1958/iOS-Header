@@ -35,6 +35,7 @@
 - (void)_serverConnectionDied:(id)arg1;
 - (void)_unregisterForAVSystemControllerNotifications;
 - (float)_valueByApplyingEULimitsToValue:(float)arg1;
+- (id)createBackgroundView;
 - (float)filteredValueForValue:(float)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

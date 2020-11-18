@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MCRestrictionManager : NSObject
@@ -19,6 +19,8 @@
     NSMutableDictionary *_memberQueueUserUserSettings;
     NSMutableDictionary *_memberQueueUserNamespacedUserSettings;
     NSMutableDictionary *_memberQueueEffectiveUserSettings;
+    NSMutableDictionary *_memberQueueSettingsEvents;
+    NSArray *_memberQueueEffectiveWhitelistedAppsAndOptions;
     NSObject<OS_dispatch_queue> *_memberQueue;
     NSMutableDictionary *_memberQueueSystemProfileRestrictions;
     NSMutableDictionary *_memberQueueUserProfileRestrictions;
@@ -31,8 +33,11 @@
 @property (readonly, copy, nonatomic) NSDictionary *effectiveUserSettings;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 @property (readonly, nonatomic) NSMutableDictionary *memberQueueCombinedProfileRestrictions;
+@property (readonly, nonatomic) NSMutableDictionary *memberQueueCombinedSystemProfileRestrictions;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueEffectiveUserSettings; // @synthesize memberQueueEffectiveUserSettings=_memberQueueEffectiveUserSettings;
+@property (strong, nonatomic) NSArray *memberQueueEffectiveWhitelistedAppsAndOptions; // @synthesize memberQueueEffectiveWhitelistedAppsAndOptions=_memberQueueEffectiveWhitelistedAppsAndOptions;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueRestrictions; // @synthesize memberQueueRestrictions=_memberQueueRestrictions;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueSettingsEvents; // @synthesize memberQueueSettingsEvents=_memberQueueSettingsEvents;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueSystemClientRestrictions; // @synthesize memberQueueSystemClientRestrictions=_memberQueueSystemClientRestrictions;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueSystemNamespacedUserSettings; // @synthesize memberQueueSystemNamespacedUserSettings=_memberQueueSystemNamespacedUserSettings;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueSystemProfileRestrictions; // @synthesize memberQueueSystemProfileRestrictions=_memberQueueSystemProfileRestrictions;
@@ -123,11 +128,15 @@
 - (id)_effectiveUnionValuesForSetting:(id)arg1 effectiveUserSettings:(id)arg2;
 - (BOOL)_isBoolSettingLockedDown:(id)arg1;
 - (BOOL)_isValueSettingLockedDown:(id)arg1 effectiveSetting:(id)arg2;
+- (id)_settingsEventFromProcess:(id)arg1 withTag:(id)arg2;
+- (id)_updatedDomainSettingsEvents:(id)arg1 fromPreviousSettings:(id)arg2 toNewSettings:(id)arg3 sender:(id)arg4;
 - (id)allClientUUIDsForClientType:(id)arg1;
 - (BOOL)allowedToRunAppWithBundleID:(id)arg1;
 - (int)appWhitelistState;
+- (BOOL)applyConfiguration:(id)arg1 toDomain:(unsigned long long)arg2 inNamespace:(id)arg3 fromSender:(id)arg4;
 - (id)appsAndOptionsForClientUUID:(id)arg1;
 - (int)boolSettingForFeature:(id)arg1;
+- (void)clearEffectiveWhitelistedAppsAndOptionsCache;
 - (id)clientRestrictionsForClientUUID:(id)arg1;
 - (id)description;
 - (id)effectiveBlacklistedAppBundleIDs;

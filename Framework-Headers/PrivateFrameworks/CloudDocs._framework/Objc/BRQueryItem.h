@@ -11,7 +11,7 @@
 #import <CloudDocs/NSFileProviderItem_Private-Protocol.h>
 #import <CloudDocs/NSSecureCoding-Protocol.h>
 
-@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
 @protocol NSFileProviderItemFlags;
 
 @interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating, NSSecureCoding, NSCopying>
@@ -53,8 +53,8 @@
             unsigned int itemMode:3;
             unsigned int fromReadOnlyDB:1;
             unsigned int isSharedFolderSubItem:1;
-            unsigned int possiblyContainsSharedToMeItem:1;
-            unsigned int possiblyContainsSharedByMeItem:1;
+            unsigned int isSharedToMeOrContainsSharedToMeItem:1;
+            unsigned int isSharedByMeOrContainsSharedByMeItem:1;
             unsigned int editedSinceShared:1;
             unsigned char BRQueryItemKind;
             unsigned char kind;
@@ -69,14 +69,15 @@
 }
 
 @property (readonly, nonatomic) NSString *appLibraryID;
-@property (readonly, nonatomic) unsigned int br_downloadStatus;
+@property (readonly, nonatomic) unsigned short br_downloadStatus;
 @property (readonly, nonatomic) unsigned int br_shareOptions;
-@property (readonly, nonatomic) unsigned int br_uploadStatus;
+@property (readonly, nonatomic) unsigned short br_uploadStatus;
 @property (readonly, nonatomic) NSNumber *btime;
 @property (readonly, nonatomic) unsigned long long capabilities;
 @property (readonly, copy, nonatomic) NSNumber *childItemCount;
 @property (readonly, copy) NSString *containerDisplayName;
 @property (readonly, copy, nonatomic) NSDate *contentModificationDate;
+@property (readonly, copy, nonatomic) UTType *contentType;
 @property (readonly, copy, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSArray *decorations;

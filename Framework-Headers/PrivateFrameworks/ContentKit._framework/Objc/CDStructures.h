@@ -68,6 +68,13 @@ typedef struct {
 // Ambiguous groups
 typedef struct {
     unsigned int actionCount:1;
-    unsigned int source:1;
-} CDStruct_fce072d8;
+} CDStruct_810980b6;
+
+typedef struct {
+    unsigned int completed:1;
+} CDStruct_c267e6e8;
+
+typedef struct {
+    unsigned int duration:1;
+} CDStruct_84479c50;
 

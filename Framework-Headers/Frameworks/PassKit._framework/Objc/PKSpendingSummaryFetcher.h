@@ -57,10 +57,10 @@
 - (id)cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)registerObserver:(id)arg1;
 - (void)spendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)unregisterObserver:(id)arg1;
 
 @end

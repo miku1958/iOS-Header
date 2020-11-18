@@ -10,19 +10,16 @@
 #import <TextToSpeechBundleSupport/TTSSpeechServiceUnitTesting-Protocol.h>
 
 @class NSMutableDictionary, NSString, TTSSpeechServerInstance;
-@protocol OS_dispatch_queue;
 
 @interface TTSSpeechServer : NSObject <TTSSpeechService, TTSSpeechServiceUnitTesting>
 {
     NSMutableDictionary *_serverInstances;
-    NSObject<OS_dispatch_queue> *serviceQueue;
     TTSSpeechServerInstance *_speechInitializationInstance;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) NSObject<OS_dispatch_queue> *serviceQueue; // @synthesize serviceQueue;
 @property (strong, nonatomic) TTSSpeechServerInstance *speechInitializationInstance; // @synthesize speechInitializationInstance=_speechInitializationInstance;
 @property (readonly) Class superclass;
 
@@ -55,6 +52,7 @@
 - (oneway void)pauseSpeechRequest:(id)arg1 atMark:(long long)arg2;
 - (id)phonemesFromIPA:(id)arg1 language:(id)arg2;
 - (BOOL)requiresLHPPhonemes;
+- (void)setServiceQueue:(id)arg1 forSynthesizerInstanceID:(unsigned long long)arg2;
 - (id)speechMarkupStringForType:(long long)arg1 voice:(id)arg2 string:(id)arg3;
 - (oneway void)startSpeechRequest:(id)arg1;
 - (oneway void)stopSpeechRequest:(id)arg1 atMark:(long long)arg2;

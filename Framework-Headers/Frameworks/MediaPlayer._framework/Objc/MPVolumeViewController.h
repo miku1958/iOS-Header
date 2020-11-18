@@ -8,6 +8,7 @@
 
 @class MPVolumeView;
 
+__attribute__((visibility("hidden")))
 @interface MPVolumeViewController : UIViewController
 {
     MPVolumeView *_volumeView;

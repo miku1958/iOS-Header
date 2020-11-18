@@ -6,10 +6,13 @@
 
 #import <SAObjects/SAUISayIt.h>
 
-@interface SAUISayIt (CommandUserInfo)
+#import <SiriUI/SiriUIUUFRSayable-Protocol.h>
+
+@interface SAUISayIt (CommandUserInfo) <SiriUIUUFRSayable>
 
 @property (nonatomic, setter=siriui_setIgnoresMuteSwitch:) BOOL siriui_ignoresMuteSwitch;
 
 - (void)_siriui_applyUserInfoDictionary:(id)arg1;
+- (id)_uufrSaid;
 @end
 

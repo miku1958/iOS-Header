@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class ARUIRingsView, ARUIRingsViewRenderer, HKActivitySummary, _HKShapeView;
+@class ARUIRenderer, ARUIRingsView, HKActivitySummary, _HKShapeView;
 
 @interface HKActivityRingView : UIView
 {
     ARUIRingsView *_ringsView;
-    ARUIRingsViewRenderer *_renderer;
+    ARUIRenderer *_renderer;
     _HKShapeView *_maskView;
     BOOL _shouldBypassApplicationStateChecking;
     HKActivitySummary *_activitySummary;
@@ -25,7 +25,7 @@
 @property (nonatomic, getter=_shouldBypassApplicationStateChecking, setter=_setShouldBypassApplicationStateChecking:) BOOL shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;
 
 - (void).cxx_destruct;
-- (void)_displayIcons;
+- (void)_displayIconsForWheelchairUser:(BOOL)arg1;
 - (double)_ringDiameter;
 - (void)_setActivityRingViewBackgroundColor:(id)arg1;
 - (void)_setActivityRingViewBackgroundTransparent:(BOOL)arg1;

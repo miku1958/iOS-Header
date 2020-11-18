@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)presentAlert:(id)arg1;
 - (void)selectedBillingPeriodChanged:(unsigned long long)arg1;
 - (void)setGroupSpecifierTitle:(id)arg1;
+- (void)sortGroup;
 - (id)specifiers;
 
 @end

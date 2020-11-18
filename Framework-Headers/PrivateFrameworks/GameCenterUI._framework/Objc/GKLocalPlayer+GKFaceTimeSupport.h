@@ -8,57 +8,33 @@
 
 #import <GameCenterUI/GKLocalPlayerAuthenticationUIPersonality-Protocol.h>
 
-@class NSString, UIViewController;
-@protocol GKAuthenticateViewController;
+@class NSString;
 
 @interface GKLocalPlayer (GKFaceTimeSupport) <GKLocalPlayerAuthenticationUIPersonality>
 
-@property (strong, nonatomic) UIViewController *activeViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIViewController *rootViewController;
-@property (strong, nonatomic) UIViewController<GKAuthenticateViewController> *signInViewController;
 @property (readonly) Class superclass;
 
 + (id)accountName;
-+ (id)authenticationPersonality;
 + (BOOL)hasAuthenticatedAccount;
-+ (void)setAuthenticationPersonality:(id)arg1;
-+ (id)sharedLocalPlayerAuthenticator;
-- (void)_showActionRestrictedAlertWithTitle:(id)arg1 message:(id)arg2;
-- (void)_showViewControllerForLegacyApps:(id)arg1;
-- (void)_showWelcomeBanner;
-- (BOOL)alertUserInStoreDemoModeEnabled;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)applicationDidEnterBackground:(id)arg1;
-- (void)applicationWillEnterForeground:(id)arg1;
-- (void)authenticationDidCompleteWithError:(id)arg1;
-- (void)authenticationShowGreenBuddyUIForLocalPlayer:(id)arg1;
-- (void)authenticationShowSignInUIForLocalPlayer:(id)arg1;
-- (void)cancelAuthentication;
+- (void)authenticationShowGreenBuddyUIForLocalPlayer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)authenticationShowSignInUIForLocalPlayer:(id)arg1 dismiss:(CDUnknownBlockType)arg2;
 - (id)deleteAvatarAlertControllerWithHandler:(CDUnknownBlockType)arg1;
 - (void)deleteMonogramsWithHandler:(CDUnknownBlockType)arg1;
 - (void)deletePhoto;
 - (void)deletePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)isAuthenticating;
-- (void)removeActiveViewControllerAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)hideAccessPoint;
+- (void)reloadAccessPoint;
 - (void)setPhoto:(id)arg1 avatarType:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setPhotoFromCNContactImage:(id)arg1 pendingContact:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)shouldShowOnBoardingUI;
-- (BOOL)shouldShowPersonalization;
-- (BOOL)shouldShowPrivacyNotice;
+- (void)showAccessPoint;
 - (void)showAlertForTag:(unsigned long long)arg1;
-- (void)showAuthenticateViewControllerForGameCenter;
-- (void)showCancelledAlertForPlayer:(id)arg1;
-- (void)showCreateAccountRestrictedAlert;
-- (void)showEditAccountRestrictedAlert;
 - (void)showLoginFailedAlert;
 - (void)showOnboardingUIFromViewController:(id)arg1;
-- (void)showSignInAccountRestrictedAlert;
-- (void)showViewController:(id)arg1 usingPresentingViewController:(id)arg2 wrapInNavController:(BOOL)arg3;
-- (void)startAuthenticationForExistingPrimaryPlayer;
-- (void)startLegacyAuthenticationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)validateAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)showWelcomeBannerWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

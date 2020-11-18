@@ -36,7 +36,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)layoutInfoAsString:(int)arg1;
 - (id)layoutStyleAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

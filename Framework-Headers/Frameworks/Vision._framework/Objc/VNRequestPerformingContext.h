@@ -8,11 +8,12 @@
 
 #import <Vision/VNImageBufferProviding-Protocol.h>
 
-@class NSMapTable, VNImageBuffer, VNObservationsCache, VNRequestForensics, VNRequestPerformer;
+@class NSMapTable, VNImageBuffer, VNObservationsCache, VNRequestForensics, VNRequestPerformer, VNSession;
 
 __attribute__((visibility("hidden")))
 @interface VNRequestPerformingContext : NSObject <VNImageBufferProviding>
 {
+    VNSession *_session;
     unsigned int _qosClass;
     VNRequestPerformer *_requestPerformer_DO_NOT_DIRECTLY_ACCESS;
     VNImageBuffer *_imageBuffer_DO_NOT_DIRECTLY_ACCESS;
@@ -21,13 +22,15 @@ __attribute__((visibility("hidden")))
     VNRequestForensics *_requestForensics;
 }
 
+@property (readonly) VNSession *session;
+
 - (void).cxx_destruct;
 - (id)_observationsCacheKeyForRequest:(id)arg1;
 - (BOOL)cacheObservationsForRequest:(id)arg1;
 - (id)cachedObservationsForRequest:(id)arg1;
 - (id)imageBufferAndReturnError:(id *)arg1;
-- (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 forensics:(id)arg3 observationsCache:(id)arg4;
-- (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 forensics:(id)arg3 observationsCache:(id)arg4 qosClass:(unsigned int)arg5;
+- (id)initWithSession:(id)arg1 requestPerformer:(id)arg2 imageBuffer:(id)arg3 forensics:(id)arg4 observationsCache:(id)arg5;
+- (id)initWithSession:(id)arg1 requestPerformer:(id)arg2 imageBuffer:(id)arg3 forensics:(id)arg4 observationsCache:(id)arg5 qosClass:(unsigned int)arg6;
 - (id)modelRequestHandlerAndReturnError:(id *)arg1;
 - (BOOL)performDependentRequests:(id)arg1 onBehalfOfRequest:(id)arg2 error:(id *)arg3;
 - (id)previousSequencedObservationsForRequest:(id)arg1;

@@ -8,12 +8,13 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, PKColor, PKDiscoveryMedia;
+@class NSArray, NSDictionary, NSSet, NSString, PKColor, PKDiscoveryMedia;
 
 @interface PKDiscoveryCallToAction : NSObject <NSSecureCoding>
 {
+    NSArray *_paymentNetworks;
     NSSet *_allowedFeatureIdentifiers;
-    NSString *_transitNetworkIdentifier;
+    NSSet *_transitNetworkIdentifiers;
     NSString *_referrerIdentifier;
     BOOL _foregroundContentModeIsSet;
     BOOL _roundIcon;
@@ -40,12 +41,13 @@
 @property (strong, nonatomic) NSString *localizedButtonText; // @synthesize localizedButtonText=_localizedButtonText;
 @property (strong, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (strong, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+@property (readonly, nonatomic) NSArray *paymentNetworks;
 @property (readonly, nonatomic) long long paymentSetupMode;
 @property (readonly, nonatomic) NSString *referrerIdentifier;
 @property (nonatomic, getter=shouldRoundIcon) BOOL roundIcon; // @synthesize roundIcon=_roundIcon;
 @property (readonly, nonatomic) NSString *subtitleKey; // @synthesize subtitleKey=_subtitleKey;
 @property (readonly, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
-@property (readonly, nonatomic) NSString *transitNetworkIdentifier;
+@property (readonly, nonatomic) NSSet *transitNetworkIdentifiers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

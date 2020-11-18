@@ -35,11 +35,8 @@
 - (id)definitionForKey:(id)arg1;
 - (id)init;
 - (id)initAsPrivateContainer;
-- (id)initWithAssemblies:(id)arg1;
-- (id)initWithBundleAssemblies:(id)arg1;
 - (id)initWithBundleAssemblies:(id)arg1 assemblies:(id)arg2;
-- (id)initWithFrameworkAssemblies:(id)arg1;
-- (id)initWithFrameworkAssemblies:(id)arg1 assemblies:(id)arg2;
+- (id)initWithBundleAssemblies:(id)arg1 assemblies:(id)arg2 singletonPool:(id)arg3 bridgedContainer:(id)arg4;
 - (id)register:(id)arg1 createDefinitionBlock:(CDUnknownBlockType)arg2;
 - (id)registerClass:(Class)arg1 factory:(CDUnknownBlockType)arg2;
 - (id)registerClass:(Class)arg1 name:(id)arg2 factory:(CDUnknownBlockType)arg3;

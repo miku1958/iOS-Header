@@ -17,8 +17,8 @@
     CKMetric *_MMCSMetrics;
 }
 
-@property (strong, nonatomic) CKMetric *MMCSMetrics; // @synthesize MMCSMetrics=_MMCSMetrics;
-@property (strong, nonatomic) CKMetric *cloudKitMetrics; // @synthesize cloudKitMetrics=_cloudKitMetrics;
+@property (copy, nonatomic) CKMetric *MMCSMetrics; // @synthesize MMCSMetrics=_MMCSMetrics;
+@property (copy, nonatomic) CKMetric *cloudKitMetrics; // @synthesize cloudKitMetrics=_cloudKitMetrics;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

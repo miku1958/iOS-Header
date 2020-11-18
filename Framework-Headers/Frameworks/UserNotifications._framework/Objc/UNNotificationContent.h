@@ -37,7 +37,6 @@
     BOOL _shouldSuppressSyncDismissalWhenRemoved;
     BOOL _shouldUseRequestIdentifierForDismissalSync;
     BOOL _shouldPreemptPresentedNotification;
-    BOOL _shouldPreemptSTAR;
     UNNotificationSound *_sound;
     NSString *_accessoryImageName;
     NSString *_subtitle;
@@ -74,7 +73,6 @@
 @property (readonly, nonatomic) BOOL shouldIgnoreDoNotDisturb; // @synthesize shouldIgnoreDoNotDisturb=_shouldIgnoreDoNotDisturb;
 @property (readonly, nonatomic) BOOL shouldIgnoreDowntime; // @synthesize shouldIgnoreDowntime=_shouldIgnoreDowntime;
 @property (readonly, nonatomic) BOOL shouldPreemptPresentedNotification; // @synthesize shouldPreemptPresentedNotification=_shouldPreemptPresentedNotification;
-@property (readonly, nonatomic) BOOL shouldPreemptSTAR; // @synthesize shouldPreemptSTAR=_shouldPreemptSTAR;
 @property (readonly, nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
 @property (readonly, nonatomic) BOOL shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
 @property (readonly, nonatomic) BOOL shouldSuppressScreenLightUp; // @synthesize shouldSuppressScreenLightUp=_shouldSuppressScreenLightUp;
@@ -93,7 +91,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionForDebug:(BOOL)arg1;
-- (id)_initWithAccessoryImageName:(id)arg1 attachments:(id)arg2 badge:(id)arg3 body:(id)arg4 categoryIdentifier:(id)arg5 date:(id)arg6 icon:(id)arg7 defaultActionTitle:(id)arg8 defaultActionURL:(id)arg9 expirationDate:(id)arg10 header:(id)arg11 launchImageName:(id)arg12 peopleIdentifiers:(id)arg13 shouldHideDate:(BOOL)arg14 shouldHideTime:(BOOL)arg15 shouldIgnoreDoNotDisturb:(BOOL)arg16 shouldIgnoreDowntime:(BOOL)arg17 shouldSuppressScreenLightUp:(BOOL)arg18 shouldAuthenticateDefaultAction:(BOOL)arg19 shouldBackgroundDefaultAction:(BOOL)arg20 shouldPreventNotificationDismissalAfterDefaultAction:(BOOL)arg21 shouldSuppressDefaultAction:(BOOL)arg22 shouldSuppressSyncDismissalWhenRemoved:(BOOL)arg23 shouldUseRequestIdentifierForDismissalSync:(BOOL)arg24 shouldPreemptPresentedNotification:(BOOL)arg25 shouldPreemptSTAR:(BOOL)arg26 sound:(id)arg27 subtitle:(id)arg28 threadIdentifier:(id)arg29 title:(id)arg30 topicIdentifiers:(id)arg31 realertCount:(unsigned long long)arg32 summaryArgument:(id)arg33 summaryArgumentCount:(unsigned long long)arg34 targetContentIdentifier:(id)arg35 userInfo:(id)arg36;
+- (id)_initWithAccessoryImageName:(id)arg1 attachments:(id)arg2 badge:(id)arg3 body:(id)arg4 categoryIdentifier:(id)arg5 date:(id)arg6 icon:(id)arg7 defaultActionTitle:(id)arg8 defaultActionURL:(id)arg9 expirationDate:(id)arg10 header:(id)arg11 launchImageName:(id)arg12 peopleIdentifiers:(id)arg13 shouldHideDate:(BOOL)arg14 shouldHideTime:(BOOL)arg15 shouldIgnoreDoNotDisturb:(BOOL)arg16 shouldIgnoreDowntime:(BOOL)arg17 shouldSuppressScreenLightUp:(BOOL)arg18 shouldAuthenticateDefaultAction:(BOOL)arg19 shouldBackgroundDefaultAction:(BOOL)arg20 shouldPreventNotificationDismissalAfterDefaultAction:(BOOL)arg21 shouldSuppressDefaultAction:(BOOL)arg22 shouldSuppressSyncDismissalWhenRemoved:(BOOL)arg23 shouldUseRequestIdentifierForDismissalSync:(BOOL)arg24 shouldPreemptPresentedNotification:(BOOL)arg25 sound:(id)arg26 subtitle:(id)arg27 threadIdentifier:(id)arg28 title:(id)arg29 topicIdentifiers:(id)arg30 realertCount:(unsigned long long)arg31 summaryArgument:(id)arg32 summaryArgumentCount:(unsigned long long)arg33 targetContentIdentifier:(id)arg34 userInfo:(id)arg35;
 - (id)_safeStringForString:(id)arg1 debug:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

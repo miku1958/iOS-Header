@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSDate, NSNumber, NSSet, NSString, NSUUID;
+@class CHRecentCall, NSDate, NSNumber, NSSet, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface CallRecord : NSManagedObject
@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSNumber *answered; // @dynamic answered;
 @property (copy, nonatomic) NSNumber *call_category; // @dynamic call_category;
 @property (copy, nonatomic) NSNumber *calltype; // @dynamic calltype;
+@property (nonatomic) unsigned int chCallStatus;
 @property (readonly, nonatomic) long long chHandleType;
+@property (readonly, nonatomic) CHRecentCall *chRecentCall;
 @property (readonly, copy, nonatomic) NSSet *chRemoteParticipantHandles;
 @property (copy, nonatomic) NSDate *date; // @dynamic date;
 @property (copy, nonatomic) NSNumber *disconnected_cause; // @dynamic disconnected_cause;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSNumber *filtered_out_reason; // @dynamic filtered_out_reason;
 @property (copy, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
 @property (copy, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
+@property (copy, nonatomic) NSNumber *junkConfidence; // @dynamic junkConfidence;
 @property (copy, nonatomic) NSUUID *localParticipantUUID; // @dynamic localParticipantUUID;
 @property (copy, nonatomic) NSString *location; // @dynamic location;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
@@ -48,11 +51,13 @@ __attribute__((visibility("hidden")))
 + (id)fetchRequest;
 - (id)compositeCallCategoryForContext:(id)arg1;
 - (id)compositeHandleTypeForContext:(id)arg1;
+- (id)compositeJunkConfidenceForContext:(id)arg1;
 - (id)compositeLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeOutgoingLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeRemoteParticipantHandlesForContext:(id)arg1;
 - (id)compositeServiceProviderForContext:(id)arg1;
 - (id)compositeVerificationStatusForContext:(id)arg1;
+- (BOOL)supportsJunkConfidence;
 
 @end
 

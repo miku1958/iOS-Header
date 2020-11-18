@@ -9,17 +9,19 @@
 #import <VideosUI/VUIDownloadEntityTableViewCellDelegate-Protocol.h>
 #import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIBarButtonItem, VUIDownloadShowDataSource, VUIDownloadShowTableHeaderView;
+@class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadShowDataSource, VUIDownloadShowTableHeaderView, VUIMediaEntitiesDataSource;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadShowTableViewController : UITableViewController <VUILibraryDataSourceDelegate, VUIDownloadEntityTableViewCellDelegate>
 {
     VUIDownloadShowDataSource *_downloadDataSource;
+    VUIMediaEntitiesDataSource *_seasonsDataSource;
     VUIDownloadShowTableHeaderView *_sizingHeader;
     NSMutableArray *_groupings;
     UIBarButtonItem *_rightBarButtonItem;
     UIBarButtonItem *_leftBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
+    NSArray *_seasons;
     NSMutableArray *_assetControllersToRemove;
 }
 
@@ -32,18 +34,25 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIBarButtonItem *leftBarButtonItem; // @synthesize leftBarButtonItem=_leftBarButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *rightBarButtonItem; // @synthesize rightBarButtonItem=_rightBarButtonItem;
+@property (strong, nonatomic) NSArray *seasons; // @synthesize seasons=_seasons;
+@property (strong, nonatomic) VUIMediaEntitiesDataSource *seasonsDataSource; // @synthesize seasonsDataSource=_seasonsDataSource;
 @property (strong, nonatomic) VUIDownloadShowTableHeaderView *sizingHeader; // @synthesize sizingHeader=_sizingHeader;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelPressed;
-- (id)_configureAlertControllerForIndexPath:(id)arg1;
+- (id)_configureDeleteAlertControllerForIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_configureRenewAlertControllerForIndexPath:(id)arg1 forPreferredStyle:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_didPressGetMoreEpisodes:(id)arg1;
 - (void)_editToggled;
+- (BOOL)_episodeHasAllCanonicalIDs:(id)arg1;
 - (void)_exitEditingMode;
+- (BOOL)_mediaItemShouldShowRenewOption:(id)arg1;
+- (id)_moreEpisodesURLForSection:(long long)arg1;
 - (void)_popIfNeeded;
 - (void)dataSourceDidFinishFetching:(id)arg1;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
-- (id)initWithDataSource:(id)arg1;
+- (id)initWithDataSource:(id)arg1 seasonsDataSource:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -55,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -61,6 +61,7 @@
 @property (readonly, strong, nonatomic) NSArray *localizedPayloadSummaryByType;
 @property (nonatomic, getter=isLocked) BOOL locked; // @synthesize locked=_isLocked;
 @property (readonly, strong, nonatomic) NSArray *managedPayloads;
+@property (readonly, nonatomic) NSString *managingProfileIdentifier;
 @property (nonatomic) BOOL mustInstallNonInteractively; // @synthesize mustInstallNonInteractively=_mustInstallNonInteractively;
 @property (readonly, nonatomic) BOOL needsReboot; // @synthesize needsReboot=_needsReboot;
 @property (readonly, strong, nonatomic) NSString *organization; // @synthesize organization=_organization;
@@ -128,10 +129,12 @@
 - (id)payloadsWithClass:(Class)arg1;
 - (void)replacePayloadWithUUID:(id)arg1 withPayload:(id)arg2;
 - (id)restrictionsWithHeuristicsAppliedOutError:(id *)arg1;
+- (id)serializedDictionary;
 - (id)signatureVersion;
 - (id)stubDictionary;
 - (id)subjectSummaryFromCertificatePayloadWithUUID:(id)arg1;
 - (id)subjectSummaryFromCertificateWithPersistentID:(id)arg1;
+- (id)verboseDescription;
 - (BOOL)writeStubToDirectory:(id)arg1;
 - (BOOL)writeStubToPath:(id)arg1;
 

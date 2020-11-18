@@ -34,6 +34,7 @@
 - (void)applyComplicationContentSpecificAttributesAnimated:(BOOL)arg1 attributes:(unsigned long long)arg2 faceView:(id)arg3;
 - (void)applyComplicationContentSpecificAttributesAnimated:(BOOL)arg1 faceView:(id)arg2;
 - (void)cleanupAfterEditingForFaceView:(id)arg1;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;
 - (id)createComplicationContentSpecificAttributesAnimationWithAttributes:(unsigned long long)arg1 faceView:(id)arg2 forSlots:(id)arg3;
 - (id)detachedComplicationDisplaysForFaceView:(id)arg1;

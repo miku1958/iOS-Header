@@ -14,6 +14,7 @@
     id<HDSyncSessionDelegate> _delegate;
     id<HDSyncStore> _syncStore;
     NSUUID *_sessionUUID;
+    NSString *_shortSessionIdentifier;
     NSDate *_startDate;
     NSCalendar *_calendar;
     NSString *_reason;
@@ -27,19 +28,21 @@
 @property (readonly, weak, nonatomic) id<HDSyncSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, copy, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
+@property (readonly, copy, nonatomic) NSString *shortSessionIdentifier; // @synthesize shortSessionIdentifier=_shortSessionIdentifier;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, copy, nonatomic) HDSyncPredicate *syncPredicate;
 @property (readonly, nonatomic) id<HDSyncStore> syncStore; // @synthesize syncStore=_syncStore;
 
-+ (BOOL)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (void).cxx_destruct;
 - (id)description;
 - (id)excludedSyncStores;
 - (id)init;
 - (id)initWithSyncStore:(id)arg1 reason:(id)arg2 delegate:(id)arg3;
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 - (void)sendChanges:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (BOOL)syncDidBeginWithProfile:(id)arg1 error:(id *)arg2;
 - (void)syncDidFinishWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)syncWillBegin;

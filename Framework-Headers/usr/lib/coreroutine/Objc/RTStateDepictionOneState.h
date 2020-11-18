@@ -17,7 +17,7 @@
     long long _type;
     unsigned long long _typeSource;
     RTMapItem *_mapItem;
-    long long _mapItemSource;
+    unsigned long long _mapItemSource;
     NSDate *_geocodeDate;
     NSMutableArray *_histEntryExit_s;
     NSString *_customLabel;
@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSMutableArray *histEntryExit_s; // @synthesize histEntryExit_s=_histEntryExit_s;
 @property (strong, nonatomic) RTStateModelLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) RTMapItem *mapItem; // @synthesize mapItem=_mapItem;
-@property (nonatomic) long long mapItemSource; // @synthesize mapItemSource=_mapItemSource;
+@property (nonatomic) unsigned long long mapItemSource; // @synthesize mapItemSource=_mapItemSource;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (nonatomic) unsigned long long typeSource; // @synthesize typeSource=_typeSource;
 

@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDApplicationMetadata : NSObject
 {
     BOOL _isCKSystemService;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
     BOOL _displaysSystemAcceptPrompt;
     BOOL _canUseNonLegacyShareURL;
     BOOL _allowUnverifiedAccount;
-    BOOL _canSetExplicitCodeOperationURL;
     NSString *_apsEnvironmentString;
     long long _contextType;
     NSString *_entitlementSpecifiedPCSServiceName;
@@ -51,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL canMasquerade; // @synthesize canMasquerade=_canMasquerade;
 @property (nonatomic) BOOL canSetDeviceIdentifier; // @synthesize canSetDeviceIdentifier=_canSetDeviceIdentifier;
 @property (nonatomic) BOOL canSetEnvironment; // @synthesize canSetEnvironment=_canSetEnvironment;
-@property (nonatomic) BOOL canSetExplicitCodeOperationURL; // @synthesize canSetExplicitCodeOperationURL=_canSetExplicitCodeOperationURL;
 @property (nonatomic) BOOL canUseNonLegacyShareURL; // @synthesize canUseNonLegacyShareURL=_canUseNonLegacyShareURL;
 @property (strong, nonatomic) NSString *clientPrefix; // @synthesize clientPrefix=_clientPrefix;
 @property (nonatomic) long long contextType; // @synthesize contextType=_contextType;

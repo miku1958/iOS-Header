@@ -10,10 +10,12 @@
 
 @interface AVTCoreModelPreset : NSObject
 {
+    BOOL _defaultPreset;
     NSDictionary *_tags;
     AVTPreset *_preset;
 }
 
+@property (readonly, nonatomic, getter=isDefaultPreset) BOOL defaultPreset; // @synthesize defaultPreset=_defaultPreset;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) AVTPreset *preset; // @synthesize preset=_preset;
@@ -25,6 +27,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithPreset:(id)arg1;
+- (id)initWithPreset:(id)arg1 isDefaultPreset:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

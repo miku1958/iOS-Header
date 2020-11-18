@@ -11,9 +11,11 @@
 @interface SISchemaTextToSpeechEnd : PBCodable
 {
     NSString *_aceID;
+    BOOL _hasAceID;
 }
 
 @property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
+@property (nonatomic) BOOL hasAceID; // @synthesize hasAceID=_hasAceID;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

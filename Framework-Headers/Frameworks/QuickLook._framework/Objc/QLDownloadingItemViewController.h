@@ -47,7 +47,9 @@ __attribute__((visibility("hidden")))
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
-- (BOOL)shouldAutoDownloadInNetworkState:(unsigned long long)arg1 downloadSize:(id)arg2;
+- (BOOL)shouldAutoDownloadInNetworkState:(unsigned long long)arg1 downloadSize:(id)arg2 forceIfPossible:(BOOL)arg3;
+- (void)startDownload:(BOOL)arg1;
+- (void)startDownloadIfNeeded;
 - (void)viewDidLoad;
 
 @end

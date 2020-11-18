@@ -18,6 +18,9 @@
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
+- (id)activitySystemImageName;
+- (id)activityType;
+- (BOOL)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
 - (id)initWithActionType:(id)arg1;
 - (id)initWithActionType:(id)arg1 viewModel:(id)arg2;
 - (id)localizedTitleForUseCase:(unsigned long long)arg1;

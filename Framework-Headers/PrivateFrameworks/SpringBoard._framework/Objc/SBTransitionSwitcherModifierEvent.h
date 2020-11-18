@@ -21,17 +21,18 @@
     long long _toInterfaceOrientation;
 }
 
-@property (readonly, nonatomic, getter=isAnimated) BOOL animated; // @synthesize animated=_animated;
+@property (nonatomic, getter=isAnimated) BOOL animated; // @synthesize animated=_animated;
 @property (strong, nonatomic) SBAppLayout *fromAppLayout; // @synthesize fromAppLayout=_fromAppLayout;
 @property (nonatomic) long long fromEnvironmentMode; // @synthesize fromEnvironmentMode=_fromEnvironmentMode;
 @property (nonatomic) long long fromInterfaceOrientation; // @synthesize fromInterfaceOrientation=_fromInterfaceOrientation;
-@property (readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
+@property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) SBAppLayout *toAppLayout; // @synthesize toAppLayout=_toAppLayout;
 @property (nonatomic) long long toEnvironmentMode; // @synthesize toEnvironmentMode=_toEnvironmentMode;
 @property (nonatomic) long long toInterfaceOrientation; // @synthesize toInterfaceOrientation=_toInterfaceOrientation;
 @property (readonly, nonatomic) NSUUID *transitionID; // @synthesize transitionID=_transitionID;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 phase:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (BOOL)isTransitionEvent;

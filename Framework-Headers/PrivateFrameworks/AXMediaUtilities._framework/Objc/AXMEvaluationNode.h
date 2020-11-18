@@ -22,12 +22,13 @@
 + (void)configureForRunningOnANEIfPossibleWithRequest:(id)arg1;
 + (unsigned long long)defaultPriority;
 + (BOOL)isANEDeviceAvailable;
++ (struct CGSize)preferredModelInputSize;
 + (BOOL)supportsSecureCoding;
-- (id)_diagnosticNameForRequests:(id)arg1 diagnostics:(id)arg2;
+- (id)_diagnosticNameForRequests:(id)arg1 metrics:(id)arg2;
 - (void)boostEffectivePriority;
 - (void)encodeWithCoder:(id)arg1;
-- (void)evaluate:(id)arg1;
-- (BOOL)evaluateRequests:(id)arg1 withContext:(id)arg2 requestHandlerOptions:(id)arg3 error:(id *)arg4;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
+- (BOOL)evaluateRequests:(id)arg1 withContext:(id)arg2 requestHandlerOptions:(id)arg3 metrics:(id)arg4 error:(id *)arg5;
 - (id)initWithCoder:(id)arg1;
 - (void)nodeInitialize;
 - (void)resetEffectivePriority;

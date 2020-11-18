@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _allowRotation;
     BOOL _disablingRotation;
+    BOOL _isShowingKeyboard;
     CNPhotoPickerTrapView *_trapOverlayView;
     NSArray *_trapOverlayConstraints;
     struct CGSize _previousSize;
@@ -20,14 +21,19 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL allowRotation; // @synthesize allowRotation=_allowRotation;
 @property (nonatomic) BOOL disablingRotation; // @synthesize disablingRotation=_disablingRotation;
+@property (nonatomic) BOOL isShowingKeyboard; // @synthesize isShowingKeyboard=_isShowingKeyboard;
 @property (nonatomic) struct CGSize previousSize; // @synthesize previousSize=_previousSize;
 @property (strong, nonatomic) NSArray *trapOverlayConstraints; // @synthesize trapOverlayConstraints=_trapOverlayConstraints;
 @property (strong, nonatomic) CNPhotoPickerTrapView *trapOverlayView; // @synthesize trapOverlayView=_trapOverlayView;
 
 - (void).cxx_destruct;
 - (void)beginDisablingAutorotation;
+- (void)dealloc;
 - (void)endDisablingAutorotation;
 - (id)initWithRootViewController:(id)arg1;
+- (BOOL)isDisplayingTrapView;
+- (void)keyboardWillHide:(id)arg1;
+- (void)keyboardWillShow:(id)arg1;
 - (void)setupTrapOverlayView;
 - (BOOL)shouldDisplayTrapOverlayView;
 - (void)updateTrapOverlayViewIfNecessaryWithCoordinator:(id)arg1;

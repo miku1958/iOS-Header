@@ -13,6 +13,7 @@
 
 @interface SBHomeGestureDismissableCoverSheetViewController : CSCoverSheetViewControllerBase <SBHomeGestureParticipantDelegate, SBSystemGestureRecognizerDelegate>
 {
+    BOOL _wantsHomeGestureOwnership;
     SBHomeGesturePanGestureRecognizer *_bottomEdgeRecognizer;
     SBHomeGestureParticipant *_homeGestureParticipant;
 }
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property (readonly, nonatomic) long long homeGestureParticipantIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wantsHomeGestureOwnership; // @synthesize wantsHomeGestureOwnership=_wantsHomeGestureOwnership;
 
 - (void).cxx_destruct;
 - (void)_addOrRemoveGestureForCurrentSettings;

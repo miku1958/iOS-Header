@@ -51,7 +51,7 @@
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)numberOfRulesInFilter:(unsigned long long)arg1;
 - (void)p_addRules:(id)arg1 atRuleIndices:(id)arg2 inFilter:(unsigned long long)arg3 isNew:(BOOL)arg4;
-- (BOOL)p_thresholdComparisonMatchesFilter:(long long)arg1 withPredicateType:(int)arg2;
+- (BOOL)p_thresholdComparisonMatchesFilter:(long long)arg1 withPredicateType:(unsigned char)arg2;
 - (void)removeRulesForBaseColumnIndices:(id)arg1 withTableInfo:(id)arg2;
 - (id)removeRulesWithAbsoluteIndices:(id)arg1;
 - (void)removeRulesWithIndices:(id)arg1 inFilter:(unsigned long long)arg2;

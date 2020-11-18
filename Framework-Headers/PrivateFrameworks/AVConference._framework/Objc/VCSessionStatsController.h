@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, VCConnectionManager, VCTransportStream;
+@class AVCStatisticsCollector, VCConnectionManager, VCTransportStreamGFT;
 @protocol OS_dispatch_source, VCSessionStatsControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_localSessionStatsTimemoutSource;
     unsigned int _statsRequestCounter;
     VCConnectionManager *_connectionManager;
-    VCTransportStream *_transportStream;
+    VCTransportStreamGFT *_transportStream;
     double _lastTriggerRateControlTime;
     id _reportingAgentWeak;
     unsigned int _uplinkServerStatsByteUsed;
@@ -47,12 +47,16 @@ __attribute__((visibility("hidden")))
     double _lastUpdateTime;
     double _lastTimeReceiveStatsFailed;
     BOOL _isReceiveStatsFailedSymptomReported;
+    unsigned int _statsNoResponseCounter;
     unsigned int _statsResponseCounter;
     unsigned int _numStatsDroppedDueToStatsID;
     unsigned int _numStatsDroppedDueToLinkID;
     unsigned int _numStatsDroppedDueToTooLate;
     unsigned int _numStatsProcessed;
-    unsigned int _numStatsTriggered;
+    unsigned int _numStatsTriggeredForUplink;
+    unsigned int _numStatsTriggeredForDownlink;
+    double _averageInterCallbackDuration;
+    double _lastPacketReceiveCallbackTime;
     double _totalStatsTransportStreamQueueTime;
     double _maxStatsTransportStreamQueueTime;
     double _lastHealthPrintTime;
@@ -60,8 +64,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) id reportingAgent;
 @property (nonatomic) double statsReportingInterval; // @synthesize statsReportingInterval=_statsReportingInterval;
-@property (readonly) id strongDelegate;
 
+- (void)calculateInterCallbackDurationWithTime:(double)arg1;
 - (void)dealloc;
 - (void)deregisterPeriodicTask;
 - (void)flushRealTimeReportingStats;
@@ -80,7 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)statsReceiveStatsPayload;
 - (void)stopLocalSessionStatsUpdate;
 - (unsigned short)translateTimestampFromMicro:(double)arg1;
-- (void)triggerRateControlWithLocalSessionStats:(CDStruct_b5e1e8f2)arg1 time:(double)arg2;
+- (void)triggerRateControlWithLocalSessionStats:(CDStruct_b5e1e8f2)arg1 time:(double)arg2 forUplink:(BOOL)arg3 forDownlink:(BOOL)arg4 fromVCRCExternalThread:(BOOL)arg5;
 - (void)updateRemoteSessionStats:(CDStruct_2756d7ac)arg1;
 
 @end

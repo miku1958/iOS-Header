@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/BSProtobufSerializable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSMutableCopying-Protocol.h>
@@ -13,7 +14,7 @@
 
 @class BKSHIDEventDeferringToken, NSString;
 
-@interface BKSHIDEventDeferringTarget : NSObject <NSSecureCoding, BSProtobufSerializable, NSCopying, NSMutableCopying>
+@interface BKSHIDEventDeferringTarget : NSObject <NSSecureCoding, BSProtobufSerializable, BSDescriptionStreamable, NSCopying, NSMutableCopying>
 {
     int _pid;
     BKSHIDEventDeferringToken *_token;
@@ -30,6 +31,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithPID:(int)arg1 token:(id)arg2;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

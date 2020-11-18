@@ -8,34 +8,53 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTimeCheckpoints, PBUnknownFields;
+@class GEOEVStateInfo, GEOStopStepEVInfo, GEOTimeCheckpoints, PBDataReader, PBUnknownFields;
 
 @interface GEOETAStep : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOStopStepEVInfo *_evInfo;
+    GEOEVStateInfo *_evStateInfo;
     GEOTimeCheckpoints *_timeCheckpoints;
-    unsigned int _distanceRemaining;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    float _distanceRemaining;
     unsigned int _expectedTime;
     unsigned int _stepID;
+    unsigned int _zilchPathIndex;
     int _zilchPointIndex;
     struct {
         unsigned int has_distanceRemaining:1;
         unsigned int has_expectedTime:1;
         unsigned int has_stepID:1;
+        unsigned int has_zilchPathIndex:1;
         unsigned int has_zilchPointIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_evInfo:1;
+        unsigned int read_evStateInfo:1;
+        unsigned int read_timeCheckpoints:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
-@property (nonatomic) unsigned int distanceRemaining;
+@property (nonatomic) float distanceRemaining;
+@property (strong, nonatomic) GEOStopStepEVInfo *evInfo;
+@property (strong, nonatomic) GEOEVStateInfo *evStateInfo;
 @property (nonatomic) unsigned int expectedTime;
 @property (nonatomic) BOOL hasDistanceRemaining;
+@property (readonly, nonatomic) BOOL hasEvInfo;
+@property (readonly, nonatomic) BOOL hasEvStateInfo;
 @property (nonatomic) BOOL hasExpectedTime;
 @property (nonatomic) BOOL hasStepID;
 @property (readonly, nonatomic) BOOL hasTimeCheckpoints;
+@property (nonatomic) BOOL hasZilchPathIndex;
 @property (nonatomic) BOOL hasZilchPointIndex;
 @property (nonatomic) unsigned int stepID;
 @property (strong, nonatomic) GEOTimeCheckpoints *timeCheckpoints;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) unsigned int zilchPathIndex;
 @property (nonatomic) int zilchPointIndex;
 
 + (BOOL)isValid:(id)arg1;
@@ -46,7 +65,12 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -9,21 +9,23 @@
 #import <AppleAccountUI/RUILoaderDelegate-Protocol.h>
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSMutableArray, NSString, RUILoader, UINavigationController, UIViewController;
+@class ACAccount, ACAccountStore, NSMutableArray, NSSet, NSString, RUILoader, UINavigationController, UIViewController;
 @protocol AAUIGenericTermsRemoteUIDelegate;
 
 @interface AAUIGenericTermsRemoteUI : NSObject <RUILoaderDelegate, RUIObjectModelDelegate>
 {
     UINavigationController *_parentNavController;
-    UIViewController *_originatingViewController;
     UINavigationController *_genericTermsUIViewController;
     RUILoader *_loader;
     NSMutableArray *_objectModels;
     ACAccount *_account;
     ACAccountStore *_accountStore;
+    NSSet *_termsEntries;
     BOOL _isModal;
     BOOL _isPreferringPassword;
+    BOOL _didRenewCredentials;
     id<AAUIGenericTermsRemoteUIDelegate> _delegate;
+    UIViewController *_originatingViewController;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
@@ -32,19 +34,23 @@
 @property (weak, nonatomic) id<AAUIGenericTermsRemoteUIDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) UIViewController *originatingViewController; // @synthesize originatingViewController=_originatingViewController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addHeadersToRequest:(id)arg1;
 - (void)_agreeToTermsWithURLString:(id)arg1 preferPassword:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_cancelButtonTapped:(id)arg1;
+- (id)_authContextForRenewCredentials;
 - (void)_cleanUpAndDismissWithSuccess:(BOOL)arg1 agreeURL:(id)arg2;
 - (void)_cleanupRUILoader;
 - (void)_displayConnectionErrorAndDismiss;
 - (BOOL)_isUnauthorizedError:(id)arg1;
 - (void)_loadRequestPreferringPassword:(BOOL)arg1;
 - (void)_popObjectModelAnimated:(BOOL)arg1;
+- (void)_renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_sendAcceptedTermsInfo:(id)arg1;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;
+- (id)initWithAccount:(id)arg1 inStore:(id)arg2 termsEntries:(id)arg3;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;
 - (void)objectModel:(id)arg1 pressedButton:(id)arg2 attributes:(id)arg3;

@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface VCVideoRuleCollectionKey : NSObject <NSCopying>
 {
-    int _payload;
     unsigned char _transportType;
     unsigned char _encodingType;
+    int _payload;
 }
 
 @property (readonly, nonatomic) unsigned char encodingType; // @synthesize encodingType=_encodingType;

@@ -17,7 +17,6 @@
     struct {
         unsigned int phase:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _phase;
     NSArray *_additionalActionItems;
     _INPBRideCompletionStatus *_completionStatus;
@@ -35,7 +34,6 @@
     NSArray *_waypoints;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *additionalActionItems; // @synthesize additionalActionItems=_additionalActionItems;
 @property (readonly, nonatomic) unsigned long long additionalActionItemsCount;
 @property (strong, nonatomic) _INPBRideCompletionStatus *completionStatus; // @synthesize completionStatus=_completionStatus;

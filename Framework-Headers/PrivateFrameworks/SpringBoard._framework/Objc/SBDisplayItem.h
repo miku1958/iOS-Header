@@ -47,11 +47,13 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)displayItemForFloatingDockSuggestionsComparison;
 - (id)init;
 - (id)initWithLegacyPlistRepresentation:(id)arg1;
 - (id)initWithPlistRepresentation:(id)arg1;
 - (id)initWithType:(long long)arg1 bundleIdentifier:(id)arg2 uniqueIdentifier:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDisplayItemForFloatingDockSuggestions:(id)arg1;
 - (BOOL)isHomeScreenDisplayItem;
 - (id)plistRepresentation;
 - (id)protobufRepresentation;

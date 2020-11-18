@@ -17,6 +17,7 @@
 @property (weak, nonatomic) id<PUHorizontalAlbumListGadgetLayoutDelegate> horizontalLayoutDelegate; // @synthesize horizontalLayoutDelegate=_horizontalLayoutDelegate;
 
 - (void).cxx_destruct;
+- (unsigned long long)_numberOfAlbums;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (id)init;
 - (id)initWithHorizontalLayoutDelegate:(id)arg1;

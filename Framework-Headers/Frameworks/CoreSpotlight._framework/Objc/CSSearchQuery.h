@@ -42,6 +42,7 @@
     CDUnknownBlockType _countChangedHandler;
     CDUnknownBlockType _resolvedAttributeNamesHandler;
     CDUnknownBlockType _completionsHandler;
+    CDUnknownBlockType _completionScoresHandler;
     CDUnknownBlockType _foundItemHandler;
     CDUnknownBlockType _interruptedHandler;
     CDUnknownBlockType _restartedHandler;
@@ -53,6 +54,7 @@
 @property (copy) CDUnknownBlockType changedAttributesHandler; // @synthesize changedAttributesHandler=_changedAttributesHandler;
 @property (copy) CDUnknownBlockType changedItemsHandler; // @synthesize changedItemsHandler=_changedItemsHandler;
 @property (copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (copy) CDUnknownBlockType completionScoresHandler; // @synthesize completionScoresHandler=_completionScoresHandler;
 @property (copy) CDUnknownBlockType completionsHandler; // @synthesize completionsHandler=_completionsHandler;
 @property (copy) CDUnknownBlockType countChangedHandler; // @synthesize countChangedHandler=_countChangedHandler;
 @property (readonly, nonatomic) NSArray *fetchAttributes;
@@ -79,6 +81,9 @@
 @property (nonatomic) BOOL userFSIndex; // @synthesize userFSIndex=_userFSIndex;
 
 + (id)_makeQueryErrorWithErrorCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
++ (void)initialize;
++ (void)preheat:(id)arg1;
++ (void)setConnectionName:(id)arg1;
 + (void)userEngagedWithUniqueIdentifier:(id)arg1 bundleId:(id)arg2 forUserQuery:(id)arg3 interactionType:(int)arg4;
 - (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;

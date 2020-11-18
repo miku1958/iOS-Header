@@ -13,6 +13,7 @@
 
 @optional
 - (void)dashboardDidChangeToLeaderboardIdentifier:(NSString *)arg1;
+- (void)dashboardDidChangeToLeaderboardPlayerScope:(long long)arg1;
 - (void)dashboardDidChangeToLeaderboardTimeScope:(long long)arg1;
 - (void)dashboardDidChangeToViewState:(long long)arg1;
 - (void)finishAndPlayChallenge:(GKChallenge *)arg1;

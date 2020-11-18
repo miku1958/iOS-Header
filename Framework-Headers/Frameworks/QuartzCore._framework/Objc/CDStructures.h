@@ -15,19 +15,20 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct Animation {
     CDUnknownFunctionPointerType *_field1;
     struct Atomic _field2;
-    float _field3;
-    struct Ref<CA::Render::Timing> _field4;
-    struct Ref<CA::Render::Vector> _field5;
-    struct __CFString *_field6;
-    unsigned long long _field7;
-    unsigned int _field8;
+    unsigned long long _field3;
+    float _field4;
+    struct Ref<CA::Render::Timing> _field5;
+    struct Ref<CA::Render::Vector> _field6;
+    struct __CFString *_field7;
+    unsigned long long _field8;
     unsigned int _field9;
     unsigned int _field10;
     unsigned int _field11;
+    unsigned int _field12;
 };
 
 struct Atomic {
-    CDStruct_fcaf9308 _field1;
+    CDStruct_8837c899 _field1;
 };
 
 struct Bounds {
@@ -35,6 +36,14 @@ struct Bounds {
     int _field2;
     int _field3;
     int _field4;
+};
+
+struct CABrightnessTransaction {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    unsigned int _field5;
 };
 
 struct CAColorMatrix {
@@ -144,6 +153,7 @@ struct CATransform3D {
 struct CAWindowServerDisplayImpl {
     struct Mutex _field1;
     struct Server *_field2;
+    struct CABrightnessTransaction _field3;
 };
 
 struct CAWindowServerImpl {
@@ -162,6 +172,37 @@ struct CGAffineTransform {
 };
 
 struct CGColorSpace;
+
+struct CGColorTRC {
+    int _field1;
+    union {
+        struct CGColorTRCParametric _field1;
+        struct CGColorTRCTable _field2;
+    } _field2;
+};
+
+struct CGColorTRCBoundaryExtension {
+    float _field1;
+    float _field2;
+};
+
+struct CGColorTRCParametric {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+};
+
+struct CGColorTRCTable {
+    unsigned long long _field1;
+    float *_field2;
+    struct CGColorTRCBoundaryExtension _field3;
+    struct CGColorTRCBoundaryExtension _field4;
+};
 
 struct CGPathElement {
     int _field1;
@@ -206,40 +247,6 @@ struct Condition {
     } _field1;
 };
 
-struct Context {
-    unsigned int _field1;
-    struct Context *_field2;
-    struct Mutex _field3;
-    struct Weak<const void *> _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    id _field8;
-    struct Context *_field9;
-    struct CGColorSpace *_field10;
-    int _field11;
-    struct __CFDictionary *_field12;
-    unsigned int _field13;
-    unsigned int _field14;
-    unsigned int _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    struct ObjectCache *_field18;
-    id _field19;
-    id _field20;
-    unsigned int _field21;
-    float _field22;
-    struct Commit *_field23;
-    struct Generic _field24;
-    struct __CFString *_field25;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-};
-
 struct ContextItem;
 
 struct Data {
@@ -255,6 +262,9 @@ struct Data {
     unsigned int :4;
     unsigned int :5;
     unsigned int :2;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -328,7 +338,8 @@ struct Display {
     unsigned int _field32;
     long long _field33;
     double _field34;
-    unsigned int _field35;
+    unsigned long long _field35;
+    unsigned long long _field36;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -385,6 +396,11 @@ struct EDIDAttributes {
     int bt2020YCC;
     int hdrStaticMetadataType1;
     BOOL legacyHDMI;
+    unsigned int product_id;
+    unsigned int manufacturer_id;
+    unsigned int week_of_manufacture;
+    unsigned int year_of_manufacture;
+    unsigned int serial_number;
 };
 
 struct Ext;
@@ -424,10 +440,13 @@ struct Layer {
     struct Ref<CA::Render::Object> _field4;
     struct Ref<CA::Render::TypedArray<CA::Render::Layer>> _field5;
     struct Layer *_field6;
-    struct Ref<CA::Render::Layer::Ext> _field7;
-    struct Ref<CA::Render::TypedArray<CA::Render::Animation>> _field8;
-    struct Ref<CA::Render::Handle> _field9;
+    struct Ref<CA::Render::String> _field7;
+    struct Ref<CA::Render::Layer::Ext> _field8;
+    struct Ref<CA::Render::TypedArray<CA::Render::Animation>> _field9;
+    struct Ref<CA::Render::Handle> _field10;
 };
+
+struct LayerHost;
 
 struct LayoutList;
 
@@ -437,21 +456,25 @@ struct List<CA::Layer *>;
 
 struct List<_CAMetalDrawablePrivate *>;
 
+struct List<const CA::Render::LayerHost *>;
+
 struct List<const __CFString *>;
 
 struct List<const void *>;
+
+struct List<unsigned int>;
 
 struct List<void (^)()>;
 
 struct Mode {
     union {
         struct {
-            unsigned int :16;
-            unsigned int :16;
+            unsigned int :14;
+            unsigned int :14;
             unsigned int :1;
-            unsigned int :23;
+            unsigned int :24;
             unsigned int :1;
-            unsigned int :4;
+            unsigned int :5;
             unsigned int :2;
             unsigned int :1;
         } _field1;
@@ -466,9 +489,9 @@ struct ModeSet {
 
 struct Mutex {
     struct _opaque_pthread_mutex_t {
-        long long _field1;
-        char _field2[56];
-    } _field1;
+        long long __sig;
+        char __opaque[56];
+    } _m;
 };
 
 struct Object {
@@ -513,6 +536,10 @@ struct Ref<CA::Render::Shmem> {
     struct Shmem *_field1;
 };
 
+struct Ref<CA::Render::String> {
+    struct String *_field1;
+};
+
 struct Ref<CA::Render::Timing> {
     struct Timing *_field1;
 };
@@ -530,6 +557,16 @@ struct Ref<CA::Render::Vector> {
 };
 
 struct Renderer;
+
+struct ResourceItem;
+
+struct ResourceTable {
+    struct ResourceItem **_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned long long _field5;
+};
 
 struct Server {
     CDUnknownFunctionPointerType *_field1;
@@ -551,9 +588,12 @@ struct Server {
     struct Context *_field17;
     struct Renderer *_field18;
     struct Bounds _field19;
-    double _field20;
-    double _field21;
-    unsigned int _field22;
+    CDUnknownBlockType _field20;
+    CDUnknownBlockType _field21;
+    double _field22;
+    double _field23;
+    unsigned int _field24;
+    unsigned long long _field25;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -581,29 +621,32 @@ struct Shmem {
 };
 
 struct SpinLock {
-    CDStruct_fcaf9308 _field1;
+    CDStruct_8837c899 _l;
 };
+
+struct String;
+
+struct SyncRequest;
 
 struct Timing;
 
 struct Transaction {
     struct Shared *_field1;
-    int _field2;
-    struct HashTable<CA::Layer *, unsigned int *> *_field3;
-    struct SpinLock *_field4;
-    unsigned int _field5;
-    struct Level *_field6;
-    struct List<void (^)()> *_field7;
-    struct Command *_field8;
-    struct Deleted *_field9;
-    struct List<const void *> *_field10;
-    struct Context *_field11;
-    struct HashTable<CA::Layer *, CA::Layer *> *_field12;
-    struct __CFRunLoop *_field13;
-    struct __CFRunLoopObserver *_field14;
-    struct LayoutList *_field15;
-    struct List<CA::Layer *> *_field16;
-    struct Atomic _field17;
+    struct HashTable<CA::Layer *, unsigned int *> *_field2;
+    int _field3;
+    unsigned int _field4;
+    struct Level *_field5;
+    struct List<void (^)()> *_field6;
+    struct Command *_field7;
+    struct Deleted *_field8;
+    struct List<const void *> *_field9;
+    struct Context *_field10;
+    struct HashTable<CA::Layer *, CA::Layer *> *_field11;
+    struct __CFRunLoop *_field12;
+    struct __CFRunLoopObserver *_field13;
+    struct LayoutList *_field14;
+    struct List<CA::Layer *> *_field15;
+    struct Atomic _field16;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -744,7 +787,8 @@ struct _CAMetalDrawablePrivate {
     id _field9;
     id _field10;
     struct CGColorSpace *_field11;
-    unsigned int _field12;
+    unsigned char _field12;
+    unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -779,11 +823,8 @@ struct _CAMetalLayerPrivate {
     struct SpinLock _field24;
     id _field25;
     unsigned long long _field26;
-    struct SpinLock _field27;
-    id _field28;
-    unsigned long long _field29;
-    struct CGColorSpace *_field30;
-    unsigned long long _field31;
+    struct CGColorSpace *_field27;
+    unsigned long long _field28;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -842,9 +883,15 @@ struct __CFDictionary;
 
 struct __CFString;
 
+struct __hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*> *_field1;
+};
+
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
 };
+
+struct pair<double, double>;
 
 struct set<std::__1::tuple<unsigned short, unsigned short>, std::__1::less<std::__1::tuple<unsigned short, unsigned short>>, std::__1::allocator<std::__1::tuple<unsigned short, unsigned short>>> {
     struct __tree<std::__1::tuple<unsigned short, unsigned short>, std::__1::less<std::__1::tuple<unsigned short, unsigned short>>, std::__1::allocator<std::__1::tuple<unsigned short, unsigned short>>> {
@@ -858,6 +905,50 @@ struct set<std::__1::tuple<unsigned short, unsigned short>, std::__1::less<std::
     } _field1;
 };
 
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
+};
+
+struct unordered_set<CA::Render::String *, std::__1::hash<CA::Render::String *>, std::__1::equal_to<CA::Render::String *>, std::__1::allocator<CA::Render::String *>> {
+    struct __hash_table<CA::Render::String *, std::__1::hash<CA::Render::String *>, std::__1::equal_to<CA::Render::String *>, std::__1::allocator<CA::Render::String *>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*>, std::__1::allocator<std::__1::__hash_node<CA::Render::String *, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<CA::Render::String *, void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::hash<CA::Render::String *>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__1::equal_to<CA::Render::String *>> {
+            float _field1;
+        } _field4;
+    } _field1;
+};
+
+struct unordered_set<unsigned int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<unsigned int>>;
+
+struct vector<CA::Render::Handle *, std::__1::allocator<CA::Render::Handle *>> {
+    struct Handle **_field1;
+    struct Handle **_field2;
+    struct __compressed_pair<CA::Render::Handle **, std::__1::allocator<CA::Render::Handle *>> {
+        struct Handle **_field1;
+    } _field3;
+};
+
+struct vector<CA::Render::Object *, std::__1::allocator<CA::Render::Object *>> {
+    struct Object **_field1;
+    struct Object **_field2;
+    struct __compressed_pair<CA::Render::Object **, std::__1::allocator<CA::Render::Object *>> {
+        struct Object **_field1;
+    } _field3;
+};
+
 struct vector<CA::WindowServer::Display::Mode, std::__1::allocator<CA::WindowServer::Display::Mode>> {
     struct Mode *_field1;
     struct Mode *_field2;
@@ -866,7 +957,85 @@ struct vector<CA::WindowServer::Display::Mode, std::__1::allocator<CA::WindowSer
     } _field3;
 };
 
+struct vector<std::__1::pair<double, double>, std::__1::allocator<std::__1::pair<double, double>>> {
+    struct pair<double, double> *_field1;
+    struct pair<double, double> *_field2;
+    struct __compressed_pair<std::__1::pair<double, double>*, std::__1::allocator<std::__1::pair<double, double>>> {
+        struct pair<double, double> *_field1;
+    } _field3;
+};
+
 struct x_list_struct;
+
+#if 0
+// Names with conflicting types:
+typedef struct {
+    CDUnknownFunctionPointerType *_field1;
+    struct Atomic _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    struct __CFDictionary *_field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    struct SpinLock _field8;
+    struct SyncRequest *_field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    struct Mutex _field12;
+    struct ResourceTable _field13;
+    struct List<unsigned int> *_field14;
+    float _field15;
+    int _field16;
+    struct Ref<CA::Render::String> _field17;
+    struct Ref<CA::Render::String> _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    unsigned int _field21;
+    unsigned int _field22;
+    unsigned long long _field23;
+    struct Ref<CA::Render::Handle> _field24;
+    unsigned int _field25;
+    unsigned int _field26;
+    unsigned int _field27;
+    int _field28;
+    unsigned int _field29;
+    float _field30;
+    struct unordered_set<CA::Render::String *, std::__1::hash<CA::Render::String *>, std::__1::equal_to<CA::Render::String *>, std::__1::allocator<CA::Render::String *>> _field31;
+    struct Atomic _field32;
+    struct SpinLock _field33;
+    struct vector<CA::Render::Object *, std::__1::allocator<CA::Render::Object *>> _field34;
+    struct vector<CA::Render::Handle *, std::__1::allocator<CA::Render::Handle *>> _field35;
+    struct LayerHost *_field36;
+    struct List<const CA::Render::LayerHost *> *_field37;
+    struct Context *_field38;
+    struct Atomic _field39;
+    struct SpinLock _field40;
+    struct unordered_set<unsigned int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<unsigned int>> *_field41;
+    struct CGColorSpace *_field42;
+    double _field43;
+    double _field44;
+    struct SpinLock _field45;
+    struct vector<std::__1::pair<double, double>, std::__1::allocator<std::__1::pair<double, double>>> _field46;
+    struct __CFString *_field47;
+    struct Context *_field48;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    double _field49;
+    struct Shape *_field50;
+    struct Shape *_field51;
+    struct Bounds _field52;
+    unsigned long long _field53;
+    unsigned int _field54;
+    unsigned int _field55;
+    CDUnknownBlockType _field56;
+    CDUnknownBlockType _field57;
+} Context_0fb0a1f1;
+
+#endif
 
 #pragma mark Typedef'd Structures
 
@@ -883,8 +1052,8 @@ typedef struct {
 } CDStruct_b2fbf00d;
 
 typedef struct {
-    int _field1;
-} CDStruct_fcaf9308;
+    int x;
+} CDStruct_8837c899;
 
 typedef struct {
     unsigned int _field1;
@@ -897,4 +1066,11 @@ typedef struct {
     unsigned long long _field8;
     unsigned long long _field9;
 } CDStruct_e50ab651;
+
+typedef struct {
+    CDStruct_b2fbf00d _field1;
+    CDStruct_b2fbf00d _field2;
+    CDStruct_b2fbf00d _field3;
+    CDStruct_b2fbf00d _field4;
+} CDStruct_31cefc2d;
 

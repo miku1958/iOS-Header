@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSSet;
-@protocol BSInvalidatable;
+@protocol RBSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface RBSStateCaptureSet : NSObject
 {
-    id<BSInvalidatable> _invalidatable;
+    id<RBSInvalidatable> _invalidatable;
     NSMutableSet *_stateCaptureSegments;
 }
 

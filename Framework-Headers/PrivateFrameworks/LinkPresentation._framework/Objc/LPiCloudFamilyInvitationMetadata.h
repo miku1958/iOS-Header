@@ -17,14 +17,18 @@
     NSString *_title;
     NSString *_subtitle;
     NSString *_action;
+    NSString *_kind;
     LPImage *_image;
+    LPImage *_icon;
 }
 
 @property (copy, nonatomic) NSString *action; // @synthesize action=_action;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) LPImage *icon; // @synthesize icon=_icon;
 @property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
+@property (copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

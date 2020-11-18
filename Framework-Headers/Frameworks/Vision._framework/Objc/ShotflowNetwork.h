@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsPosOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsNegOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _offsetsOutputs;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _objectnessOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _rollOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _yawOutputs;
     unsigned long long _currentNetworkWidth;
@@ -35,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) float threshold; // @synthesize threshold=_threshold;
 
 + (const vector_7584168e *)defaultBoxesSides;
++ (BOOL)hasPose;
 + (BOOL)inputBGR;
 + (tuple_8621cb4d)inputBiasRGB;
 + (float)inputImageAspectRatio;

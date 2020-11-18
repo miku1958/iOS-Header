@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, WFContentCollection, WFWorkflow;
+@class NSDictionary, NSString, WFContentCollection, WFWorkflow, WFWorkflowRunningContext;
 
 @interface WFWorkflowControllerState : NSObject <NSSecureCoding>
 {
@@ -17,19 +17,27 @@
     NSDictionary *_currentProcessedParameters;
     NSDictionary *_variables;
     unsigned long long _currentActionIndex;
+    WFWorkflowRunningContext *_runningContext;
+    long long _numberOfDialogsPresented;
+    NSString *_currentRunSource;
 }
 
 @property (readonly, nonatomic) unsigned long long currentActionIndex; // @synthesize currentActionIndex=_currentActionIndex;
 @property (readonly, nonatomic) WFContentCollection *currentInput; // @synthesize currentInput=_currentInput;
 @property (readonly, nonatomic) NSDictionary *currentProcessedParameters; // @synthesize currentProcessedParameters=_currentProcessedParameters;
+@property (readonly, nonatomic) NSString *currentRunSource; // @synthesize currentRunSource=_currentRunSource;
+@property (readonly, nonatomic) long long numberOfDialogsPresented; // @synthesize numberOfDialogsPresented=_numberOfDialogsPresented;
+@property (readonly, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;
 @property (readonly, nonatomic) NSDictionary *variables; // @synthesize variables=_variables;
 @property (readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
++ (void)getStateFromURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithWorkflow:(id)arg1 variables:(id)arg2 currentActionIndex:(unsigned long long)arg3 currentInput:(id)arg4 currentProcessedParameters:(id)arg5;
+- (id)initWithWorkflow:(id)arg1 variables:(id)arg2 currentActionIndex:(unsigned long long)arg3 runningContext:(id)arg4 currentInput:(id)arg5 currentProcessedParameters:(id)arg6 currentRunSource:(id)arg7 numberOfDialogsPresented:(long long)arg8;
+- (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 
 @end
 

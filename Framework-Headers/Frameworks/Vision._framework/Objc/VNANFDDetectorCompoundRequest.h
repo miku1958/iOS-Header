@@ -11,14 +11,17 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (long long)compoundRequestRevisionForRequest:(id)arg1;
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (const CDStruct_7d93034e *)revisionAvailability;
++ (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void)assignOriginalRequestsResultsFromObservations:(id)arg1 obtainedInPerformingContext:(id)arg2;
+- (long long)dependencyProcessingOrdinality;
 - (id)initWithDetectorType:(id)arg1 configuration:(id)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

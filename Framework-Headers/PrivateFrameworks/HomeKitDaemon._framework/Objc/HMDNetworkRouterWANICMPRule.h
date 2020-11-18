@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDNetworkRouterWANRule-Protocol.h>
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class HMDNetworkRouterICMPTypeList, HMDNetworkRouterIPAddress, NSString;
 
-@interface HMDNetworkRouterWANICMPRule : NSObject <HMDNetworkRouterWANRule, NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterWANICMPRule : NSObject <HMDNetworkRouterWANRule, NSCopying, HAPTLVProtocol>
 {
     NSString *_hostDNSName;
     HMDNetworkRouterIPAddress *_hostIPStart;

@@ -6,9 +6,13 @@
 
 #import <NewsSubscription/_TtC16NewsSubscription15PurchaseManager.h>
 
+#import <NewsSubscription/AMSPurchaseResponseProtocol-Protocol.h>
 #import <NewsSubscription/FCPurchaseManagerDelegate-Protocol.h>
 
-@interface _TtC16NewsSubscription15PurchaseManager (NewsSubscription) <FCPurchaseManagerDelegate>
+@interface _TtC16NewsSubscription15PurchaseManager (NewsSubscription) <AMSPurchaseResponseProtocol, FCPurchaseManagerDelegate>
+- (void)handleAuthenticateRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleDialogRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleEngagementRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)purchaseFailedForInvalidPurchaseReceiptWithProductID:(id)arg1 ongoingPurchaseEntry:(id)arg2;
 - (void)purchaseFailedWithProductID:(id)arg1 transactionState:(long long)arg2 transactionError:(id)arg3 ongoingPurchaseEntry:(id)arg4;
 - (void)purchaseSuccessWithProductID:(id)arg1 purchaseReceipt:(id)arg2 chargeCurrencyCode:(id)arg3 ongoingPurchaseEntry:(id)arg4;

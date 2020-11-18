@@ -8,12 +8,11 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNLocation, MNStartNavigationDetails, NSArray, NSMapTable, NSMutableDictionary, NSString, geo_isolater;
+@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNDisplayETAInfo, MNLocation, MNRouteDistanceInfo, NSArray, NSMapTable, NSMutableDictionary, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationDetails : NSObject <NSSecureCoding>
 {
-    MNStartNavigationDetails *_startNavigationDetails;
     unsigned long long _state;
     int _navigationType;
     int _desiredNavigationType;
@@ -43,8 +42,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _selectedPreviewRouteIndex;
     double _proceedToRouteDistance;
     NSString *_displayString;
-    double _remainingTime;
-    double _remainingDistance;
     unsigned long long _closestStepIndex;
     double _distanceUntilSign;
     double _timeUntilSign;
@@ -66,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int desiredTransportType; // @synthesize desiredTransportType=_desiredTransportType;
 @property (strong, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
 @property (strong, nonatomic) GEODirectionsResponse *directionsResponse; // @synthesize directionsResponse=_directionsResponse;
+@property (readonly, nonatomic) MNDisplayETAInfo *displayETAInfo;
 @property (strong, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (nonatomic) double distanceUntilManeuver; // @synthesize distanceUntilManeuver=_distanceUntilManeuver;
 @property (nonatomic) double distanceUntilSign; // @synthesize distanceUntilSign=_distanceUntilSign;
@@ -74,7 +72,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int headingOrientation; // @synthesize headingOrientation=_headingOrientation;
 @property (nonatomic) BOOL isDetour; // @synthesize isDetour=_isDetour;
 @property (nonatomic) BOOL isInPreArrivalState; // @synthesize isInPreArrivalState=_isInPreArrivalState;
-@property (readonly, nonatomic) unsigned long long legIndex;
 @property (strong, nonatomic) MNLocation *location; // @synthesize location=_location;
 @property (nonatomic) int navigationState; // @synthesize navigationState=_navigationState;
 @property (nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
@@ -84,11 +81,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *previewRoutes;
 @property (nonatomic) double proceedToRouteDistance; // @synthesize proceedToRouteDistance=_proceedToRouteDistance;
 @property (readonly, nonatomic) unsigned long long reconnectionRouteIndex; // @synthesize reconnectionRouteIndex=_reconnectionRouteIndex;
-@property (nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
-@property (nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
+@property (readonly, nonatomic) MNRouteDistanceInfo *remainingDistanceInfo;
 @property (readonly, nonatomic) NSMapTable *routeIDLookup;
 @property (readonly, nonatomic) unsigned long long routeIndex; // @synthesize routeIndex=_routeIndex;
 @property (readonly, nonatomic) NSMutableDictionary *routeLookup; // @synthesize routeLookup=_routeLookup;
+@property (readonly, nonatomic) unsigned long long segmentIndex;
 @property (readonly, nonatomic) unsigned long long selectedPreviewRouteIndex; // @synthesize selectedPreviewRouteIndex=_selectedPreviewRouteIndex;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) unsigned long long stepIndex;
@@ -117,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (void)setCurrentRoute:(id)arg1 withAlternateRoutes:(id)arg2;
 - (void)setPreviewRoutes:(id)arg1 withSelectedRouteIndex:(unsigned long long)arg2;
 - (void)updateETATrafficForRoute:(id)arg1;
-- (void)updateLocationFromDetails:(id)arg1;
 - (void)updatePossibleCommuteDestinations:(id)arg1;
 - (id)updateWithTrafficIncidentAlert:(id)arg1;
 

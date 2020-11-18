@@ -19,6 +19,7 @@
     BOOL _clearsBackground;
     BOOL _opaque;
     int _colorMode;
+    double _scale;
     struct CGSize _size;
     CDStruct_0b1c536a _clearColor;
 }
@@ -28,6 +29,7 @@
 @property (nonatomic) int colorMode; // @synthesize colorMode=_colorMode;
 @property (strong, nonatomic) RBDisplayList *displayList;
 @property (nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_opaque;
+@property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 
 - (id).cxx_construct;

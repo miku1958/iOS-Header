@@ -10,7 +10,7 @@
 #import <NanoTimeKitCompanion/PUICCrownInputSequencerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSDateFormatter, NSDictionary, NSMutableSet, NSNumber, NSString, NSTimer, NTKBezierPathView, NTKColorCurve, NTKComplicationController, NTKDateComplicationLabel, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, NTKFloatCurve, NTKLayoutRule, NTKSolarDiskView, NTKSolarPath, NTKSolarTimeModel, UIImageView, UILabel, UITapGestureRecognizer, UIView;
+@class CLKClockTimerToken, NSDateFormatter, NSDictionary, NSMutableSet, NSString, NSTimer, NTKBezierPathView, NTKColorCurve, NTKComplicationController, NTKDateComplicationLabel, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, NTKFloatCurve, NTKLayoutRule, NTKSolarDiskView, NTKSolarPath, NTKSolarTimeModel, UIImageView, UILabel, UITapGestureRecognizer, UIView;
 
 @interface NTKSolarFaceView : NTKDigitalFaceView <NTKTimeView, PUICCrownInputSequencerDelegate, UIGestureRecognizerDelegate>
 {
@@ -46,7 +46,7 @@
     UITapGestureRecognizer *_viewModeTapGesture;
     long long _previousViewMode;
     long long _nextViewMode;
-    NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
     NTKComplicationController *_dateComplicationController;
     NTKDateComplicationLabel *_dateComplicationLabel;
     NTKLayoutRule *_dateComplicationLayoutRule;

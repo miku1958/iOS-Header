@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelObject.h>
 
-@class NSArray, NSData, NSNumber, NSObject, NSString;
+@class HMDUserManagementOperationTimestamp, NSArray, NSData, NSNumber, NSObject, NSString;
 @protocol OS_dispatch_group;
 
 @interface HMDAccessoryTransaction : HMDBackingStoreModelObject
@@ -36,13 +36,15 @@
 @property (strong, nonatomic) NSNumber *networkClientLAN; // @dynamic networkClientLAN;
 @property (strong, nonatomic) NSString *networkClientProfileFingerprint; // @dynamic networkClientProfileFingerprint;
 @property (strong, nonatomic) NSString *networkRouterUUID; // @dynamic networkRouterUUID;
+@property (strong, nonatomic) HMDUserManagementOperationTimestamp *pairingsAuditedTimestamp; // @dynamic pairingsAuditedTimestamp;
 @property (strong, nonatomic) NSString *primaryProfileVersion; // @dynamic primaryProfileVersion;
 @property (strong, nonatomic) NSString *productData; // @dynamic productData;
+@property (strong, nonatomic) NSString *productDataV2; // @dynamic productDataV2;
 @property (strong, nonatomic) NSString *providedName; // @dynamic providedName;
 @property (strong, nonatomic) NSString *roomUUID; // @dynamic roomUUID;
 @property (strong, nonatomic) NSString *serialNumber; // @dynamic serialNumber;
+@property (strong, nonatomic) HMDUserManagementOperationTimestamp *sharedAdminAddedTimestamp; // @dynamic sharedAdminAddedTimestamp;
 @property (strong, nonatomic) NSNumber *suspendCapable; // @dynamic suspendCapable;
-@property (strong, nonatomic) NSNumber *targetNetworkProtectionMode; // @dynamic targetNetworkProtectionMode;
 @property (strong, nonatomic) NSNumber *wiFiCredentialType; // @dynamic wiFiCredentialType;
 @property (strong, nonatomic) NSData *wiFiUniquePreSharedKey; // @dynamic wiFiUniquePreSharedKey;
 

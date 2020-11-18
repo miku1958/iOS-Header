@@ -10,15 +10,15 @@
 
 @interface USKPropertyIterator : NSObject <USKIterator>
 {
-    vector_8221fbb7 _properties;
-    struct __wrap_iter<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty *> {
+    vector_6f2ba469 _properties;
+    struct __wrap_iter<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *> {
         struct UsdProperty *__i;
     } _it;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithProperties:(const vector_8221fbb7 *)arg1;
+- (id)initWithProperties:(const vector_6f2ba469 *)arg1;
 - (id)nextObject;
 
 @end

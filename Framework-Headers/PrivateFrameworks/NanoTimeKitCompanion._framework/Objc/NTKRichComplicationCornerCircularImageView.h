@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)_circularView;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)_updatePlatterColor;
 - (void)setPaused:(BOOL)arg1;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;

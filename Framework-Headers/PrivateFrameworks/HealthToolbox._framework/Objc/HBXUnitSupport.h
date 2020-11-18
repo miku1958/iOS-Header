@@ -19,8 +19,8 @@
 
 - (void).cxx_destruct;
 - (id)initWithUnitPreferenceController:(id)arg1 displayTypeController:(id)arg2;
-- (id)localizedDisplayNameForUnit:(id)arg1;
-- (id)localizedPreferredUnitDisplayNameForType:(id)arg1;
+- (id)localizedDisplayNameForUnit:(id)arg1 nameContext:(long long)arg2;
+- (id)localizedPreferredUnitDisplayNameForType:(id)arg1 nameContext:(long long)arg2;
 - (id)preferredUnitForType:(id)arg1;
 - (void)updatePreferredUnit:(id)arg1 forType:(id)arg2;
 

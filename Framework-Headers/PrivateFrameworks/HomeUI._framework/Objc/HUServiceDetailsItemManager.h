@@ -6,13 +6,12 @@
 
 #import <Home/HFItemManager.h>
 
-#import <HomeUI/HUCameraRecordingSettingsModuleDelegate-Protocol.h>
 #import <HomeUI/HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate-Protocol.h>
 
-@class ACAccount, HFAccessoryInfoDetailsItemProvider, HFAssociatedServiceTypeOptionItemProvider, HFItem, HFItemBuilder, HFItemProvider, HFRemoteControlItemModule, HFSelectedRoomItemProvider, HFStaticItemProvider, HMAccessory, HMHome, HUAccessoryDebugModule, HUAccessoryServicesItemModule, HUAccessorySettingsItemModule, HUAssociatedSceneAndTriggerModule, HUCameraRecordingSettingsModule, HUFirmwareUpdateItemProvider, HUInputSourceItemModule, HULinkedApplicationItemProvider, HUNameItemModule, HUServiceDetailsControlAndCharacteristicStateItemModule, HUServiceDetailsProgrammableSwitchItemModule, HUSoftwareUpdateItemModule, HUTelevisionSettingsItemModule, HUValveItemModule, NSArray, NSString;
+@class ACAccount, HFAccessoryInfoDetailsItemProvider, HFAssociatedServiceTypeOptionItemProvider, HFItem, HFItemBuilder, HFItemProvider, HFRemoteControlItemModule, HFSelectedRoomItemProvider, HFStaticItemProvider, HMAccessory, HMHome, HUAccessoryDebugModule, HUAccessoryServicesItemModule, HUAccessorySettingsItemModule, HUAssociatedSceneAndTriggerModule, HUAvailableRelatedTriggerItemModule, HUFirmwareUpdateItemProvider, HUInputSourceItemModule, HULinkedApplicationItemProvider, HUNameItemModule, HUServiceDetailsControlAndCharacteristicStateItemModule, HUServiceDetailsProgrammableSwitchItemModule, HUSoftwareUpdateItemModule, HUTelevisionSettingsItemModule, HUValveItemModule, NSArray, NSString;
 @protocol HFHomeKitObject, HFItemBuilderItem, HFServiceLikeBuilder, HFServiceLikeItem, HUServiceDetailsItemManagerDelegate;
 
-@interface HUServiceDetailsItemManager : HFItemManager <HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate, HUCameraRecordingSettingsModuleDelegate>
+@interface HUServiceDetailsItemManager : HFItemManager <HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate>
 {
     BOOL _shouldHideAccessoryItem;
     BOOL _shouldHideSeparateTileItem;
@@ -28,16 +27,16 @@
     HUNameItemModule *_nameModule;
     HUAccessorySettingsItemModule *_accessorySettingsItemModule;
     HUSoftwareUpdateItemModule *_softwareUpdateItemModule;
+    HUAvailableRelatedTriggerItemModule *_relatedTriggerItemModule;
     HFRemoteControlItemModule *_serviceDetailsRemoteControlItemModule;
     HUTelevisionSettingsItemModule *_televisionSettingsItemModule;
     HUInputSourceItemModule *_inputSourceItemModule;
-    HUCameraRecordingSettingsModule *_cameraRecordingItemModule;
     HUValveItemModule *_valveEditorItemModule;
     HUAccessoryServicesItemModule *_accessoryServicesEditorItemModule;
     HUAssociatedSceneAndTriggerModule *_sceneAndTriggerModule;
     HUAccessoryDebugModule *_debugAccessoryItemModule;
     HFItem *_selectedRoomItem;
-    HFItem<HFItemBuilderItem> *_headerItem;
+    HFItem *_headerItem;
     HFItem *_splitMediaAccountTitleItem;
     HFItem *_splitMediaAccountUseDefaultAccountItem;
     HFItem *_splitMediaAccountSignoutAccountItem;
@@ -51,14 +50,19 @@
     HFItem *_alarmItem;
     HFItem *_statusAndNotificationItem;
     HFItem *_separateTileItem;
-    NSArray *_supportedMultiUserLanguageCodes;
+    NSArray *_supportedVoiceRecognitionLanguages;
     ACAccount *_homeMediaAccount;
     HFItem *_removeItem;
     HFItem *_resetItem;
     HFItem *_accessoryItem;
     HFItem *_audioSettingsItem;
+    HFItem *_cameraActivityZonesItem;
     HFItem *_cameraStatusLightItem;
     HFItem *_cameraNightModeItem;
+    HFItem *_cameraRecordingOptionsItem;
+    HFItem *_cameraFaceRecognitionItem;
+    HFItem *_cameraDoorbellChimeMuteItem;
+    HFItem *_collectDiagnosticsItem;
     HFItem *_internalDebuggingItem;
     HFItem *_restartItem;
     HMHome *_overrideHome;
@@ -67,6 +71,7 @@
     NSArray *_splitMediaAccountSections;
     NSArray *_nameAndIconSections;
     NSArray *_characteristicSections;
+    NSArray *_relatedTriggerSections;
     NSArray *_programmableSwitchSections;
     NSArray *_accessorySettingsSections;
     NSArray *_softwareUpdateSections;
@@ -74,9 +79,13 @@
     NSArray *_sceneAndTriggerSections;
     NSArray *_inputSourceEditorSections;
     NSArray *_televisionSettingsSections;
-    NSArray *_cameraRecordingSettingSections;
+    NSArray *_advancedCameraSettingsSection;
     NSArray *_cameraStatusLightSections;
     NSArray *_cameraNightModeSections;
+    NSArray *_cameraActivityZonesSections;
+    NSArray *_doorbellMuteSections;
+    NSArray *_collectDiagnosticsSections;
+    NSArray *_lockAuthenticatedNFCSections;
     HFAssociatedServiceTypeOptionItemProvider *_associatedServiceTypeOptionItemProvider;
     HFStaticItemProvider *_staticItemProvider;
     HULinkedApplicationItemProvider *_linkedApplicationItemProvider;
@@ -90,34 +99,42 @@
 @property (strong, nonatomic) HUAccessorySettingsItemModule *accessorySettingsItemModule; // @synthesize accessorySettingsItemModule=_accessorySettingsItemModule;
 @property (strong, nonatomic) NSArray *accessorySettingsSections; // @synthesize accessorySettingsSections=_accessorySettingsSections;
 @property (strong, nonatomic) HFItem *addGroupItem; // @synthesize addGroupItem=_addGroupItem;
+@property (strong, nonatomic) NSArray *advancedCameraSettingsSection; // @synthesize advancedCameraSettingsSection=_advancedCameraSettingsSection;
 @property (strong, nonatomic) HFItem *alarmItem; // @synthesize alarmItem=_alarmItem;
 @property (strong, nonatomic) HFItem *associatedServiceTypeItem; // @synthesize associatedServiceTypeItem=_associatedServiceTypeItem;
 @property (strong, nonatomic) HFAssociatedServiceTypeOptionItemProvider *associatedServiceTypeOptionItemProvider; // @synthesize associatedServiceTypeOptionItemProvider=_associatedServiceTypeOptionItemProvider;
 @property (strong, nonatomic) HFItem *audioSettingsItem; // @synthesize audioSettingsItem=_audioSettingsItem;
 @property (readonly, nonatomic) HFItem<HFItemBuilderItem> *builderItem; // @synthesize builderItem=_builderItem;
+@property (strong, nonatomic) HFItem *cameraActivityZonesItem; // @synthesize cameraActivityZonesItem=_cameraActivityZonesItem;
+@property (strong, nonatomic) NSArray *cameraActivityZonesSections; // @synthesize cameraActivityZonesSections=_cameraActivityZonesSections;
+@property (strong, nonatomic) HFItem *cameraDoorbellChimeMuteItem; // @synthesize cameraDoorbellChimeMuteItem=_cameraDoorbellChimeMuteItem;
+@property (strong, nonatomic) HFItem *cameraFaceRecognitionItem; // @synthesize cameraFaceRecognitionItem=_cameraFaceRecognitionItem;
 @property (strong, nonatomic) HFItem *cameraNightModeItem; // @synthesize cameraNightModeItem=_cameraNightModeItem;
 @property (strong, nonatomic) NSArray *cameraNightModeSections; // @synthesize cameraNightModeSections=_cameraNightModeSections;
-@property (strong, nonatomic) HUCameraRecordingSettingsModule *cameraRecordingItemModule; // @synthesize cameraRecordingItemModule=_cameraRecordingItemModule;
-@property (strong, nonatomic) NSArray *cameraRecordingSettingSections; // @synthesize cameraRecordingSettingSections=_cameraRecordingSettingSections;
+@property (strong, nonatomic) HFItem *cameraRecordingOptionsItem; // @synthesize cameraRecordingOptionsItem=_cameraRecordingOptionsItem;
 @property (strong, nonatomic) HFItem *cameraStatusLightItem; // @synthesize cameraStatusLightItem=_cameraStatusLightItem;
 @property (strong, nonatomic) NSArray *cameraStatusLightSections; // @synthesize cameraStatusLightSections=_cameraStatusLightSections;
 @property (strong, nonatomic) NSArray *characteristicSections; // @synthesize characteristicSections=_characteristicSections;
+@property (strong, nonatomic) HFItem *collectDiagnosticsItem; // @synthesize collectDiagnosticsItem=_collectDiagnosticsItem;
+@property (strong, nonatomic) NSArray *collectDiagnosticsSections; // @synthesize collectDiagnosticsSections=_collectDiagnosticsSections;
 @property (strong, nonatomic) HFItem *createNewRoomItem; // @synthesize createNewRoomItem=_createNewRoomItem;
 @property (readonly, nonatomic) HUAccessoryDebugModule *debugAccessoryItemModule; // @synthesize debugAccessoryItemModule=_debugAccessoryItemModule;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSArray *doorbellMuteSections; // @synthesize doorbellMuteSections=_doorbellMuteSections;
 @property (strong, nonatomic) HFItemProvider *existingRoomItemProvider; // @synthesize existingRoomItemProvider=_existingRoomItemProvider;
 @property (strong, nonatomic) HFItem *favoriteItem; // @synthesize favoriteItem=_favoriteItem;
 @property (strong, nonatomic) HUFirmwareUpdateItemProvider *firmwareUpdateItemProvider; // @synthesize firmwareUpdateItemProvider=_firmwareUpdateItemProvider;
 @property (nonatomic) BOOL groupedAccessoryReachableOverRapport; // @synthesize groupedAccessoryReachableOverRapport=_groupedAccessoryReachableOverRapport;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HFItem<HFItemBuilderItem> *headerItem; // @synthesize headerItem=_headerItem;
+@property (strong, nonatomic) HFItem *headerItem; // @synthesize headerItem=_headerItem;
 @property (strong, nonatomic) ACAccount *homeMediaAccount; // @synthesize homeMediaAccount=_homeMediaAccount;
 @property (strong, nonatomic) NSArray *inputSourceEditorSections; // @synthesize inputSourceEditorSections=_inputSourceEditorSections;
 @property (strong, nonatomic) HUInputSourceItemModule *inputSourceItemModule; // @synthesize inputSourceItemModule=_inputSourceItemModule;
 @property (strong, nonatomic) HFItem *internalDebuggingItem; // @synthesize internalDebuggingItem=_internalDebuggingItem;
 @property (readonly, nonatomic) BOOL isItemGroup;
 @property (strong, nonatomic) HULinkedApplicationItemProvider *linkedApplicationItemProvider; // @synthesize linkedApplicationItemProvider=_linkedApplicationItemProvider;
+@property (strong, nonatomic) NSArray *lockAuthenticatedNFCSections; // @synthesize lockAuthenticatedNFCSections=_lockAuthenticatedNFCSections;
 @property (readonly, nonatomic) ACAccount *loggedInMediaAccountOnHomePod;
 @property (strong, nonatomic) NSArray *nameAndIconSections; // @synthesize nameAndIconSections=_nameAndIconSections;
 @property (strong, nonatomic) HUNameItemModule *nameModule; // @synthesize nameModule=_nameModule;
@@ -125,6 +142,8 @@
 @property (readonly, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property (strong, nonatomic) HUServiceDetailsProgrammableSwitchItemModule *programmableSwitchItemModule; // @synthesize programmableSwitchItemModule=_programmableSwitchItemModule;
 @property (strong, nonatomic) NSArray *programmableSwitchSections; // @synthesize programmableSwitchSections=_programmableSwitchSections;
+@property (strong, nonatomic) HUAvailableRelatedTriggerItemModule *relatedTriggerItemModule; // @synthesize relatedTriggerItemModule=_relatedTriggerItemModule;
+@property (strong, nonatomic) NSArray *relatedTriggerSections; // @synthesize relatedTriggerSections=_relatedTriggerSections;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
 @property (strong, nonatomic) HFItem *resetItem; // @synthesize resetItem=_resetItem;
 @property (strong, nonatomic) HFItem *restartItem; // @synthesize restartItem=_restartItem;
@@ -159,7 +178,7 @@
 @property (strong, nonatomic) HFItem *statusAndNotificationItem; // @synthesize statusAndNotificationItem=_statusAndNotificationItem;
 @property (strong, nonatomic) HFItemProvider *suggestedRoomItemProvider; // @synthesize suggestedRoomItemProvider=_suggestedRoomItemProvider;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *supportedMultiUserLanguageCodes; // @synthesize supportedMultiUserLanguageCodes=_supportedMultiUserLanguageCodes;
+@property (strong, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property (strong, nonatomic) HUTelevisionSettingsItemModule *televisionSettingsItemModule; // @synthesize televisionSettingsItemModule=_televisionSettingsItemModule;
 @property (strong, nonatomic) NSArray *televisionSettingsSections; // @synthesize televisionSettingsSections=_televisionSettingsSections;
 @property (strong, nonatomic) HUValveItemModule *valveEditorItemModule; // @synthesize valveEditorItemModule=_valveEditorItemModule;
@@ -188,7 +207,6 @@
 - (BOOL)_shouldShowSplitAccountUI;
 - (void)_unregisterForExternalUpdates;
 - (void)accessoryReachableOverRapport:(BOOL)arg1;
-- (void)cameraRecordingSettingsModule:(id)arg1 didUpdateItem:(id)arg2;
 - (BOOL)canToggleAccessoryInfoItem:(id)arg1;
 - (id)controlAndCharacteristicStateItemModule:(id)arg1 childItemsForItem:(id)arg2;
 - (id)controlAndCharacteristicStateItemModule:(id)arg1 sectionFooterForControlPanelItem:(id)arg2 forServiceItem:(id)arg3;
@@ -217,6 +235,7 @@
 - (void)unregisterKVO;
 - (void)updateCameraNightMode:(BOOL)arg1;
 - (void)updateCameraStatusLight:(BOOL)arg1;
+- (void)updateDoorbellChimeMuteMode:(BOOL)arg1;
 
 @end
 

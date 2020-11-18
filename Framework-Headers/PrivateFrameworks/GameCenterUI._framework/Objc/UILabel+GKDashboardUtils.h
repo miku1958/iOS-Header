@@ -7,6 +7,10 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (GKDashboardUtils)
+
+@property (nonatomic, readonly) double firstBaselineFromTop;
+@property (nonatomic, readonly) double lastBaselineFromBottom;
+
 - (void)_gkUpdateShadowForFocusChange:(BOOL)arg1;
 @end
 

@@ -18,26 +18,28 @@
     NSMutableArray *_bss;
     NSString *_identifier;
     NSString *_name;
+    NSMutableArray *_ownerIdentifiers;
     NSMutableArray *_qualities;
     long long _uniqueIdentifier;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _networkType;
+    int _venueGroup;
+    unsigned int _venueType;
     struct {
         unsigned int has_uniqueIdentifier:1;
+        unsigned int has_networkType:1;
+        unsigned int has_venueGroup:1;
+        unsigned int has_venueType:1;
         unsigned int read_attributes:1;
         unsigned int read_authTraits:1;
         unsigned int read_bss:1;
         unsigned int read_identifier:1;
         unsigned int read_name:1;
+        unsigned int read_ownerIdentifiers:1;
         unsigned int read_qualities:1;
-        unsigned int wrote_attributes:1;
-        unsigned int wrote_authTraits:1;
-        unsigned int wrote_bss:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_qualities:1;
-        unsigned int wrote_uniqueIdentifier:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,31 +50,32 @@
 @property (strong, nonatomic) NSMutableArray *bss;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasName;
+@property (nonatomic) BOOL hasNetworkType;
 @property (nonatomic) BOOL hasUniqueIdentifier;
+@property (nonatomic) BOOL hasVenueGroup;
+@property (nonatomic) BOOL hasVenueType;
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSString *name;
+@property (nonatomic) int networkType;
+@property (strong, nonatomic) NSMutableArray *ownerIdentifiers;
 @property (strong, nonatomic) NSMutableArray *qualities;
 @property (nonatomic) long long uniqueIdentifier;
+@property (nonatomic) int venueGroup;
+@property (nonatomic) unsigned int venueType;
 
 + (Class)bssType;
 + (BOOL)isValid:(id)arg1;
++ (Class)ownerIdentifierType;
 + (Class)qualitiesType;
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
 - (int)StringAsAuthTraits:(id)arg1;
-- (void)_addNoFlagsAttributes:(int)arg1;
-- (void)_addNoFlagsAuthTraits:(int)arg1;
-- (void)_addNoFlagsBss:(id)arg1;
-- (void)_addNoFlagsQualities:(id)arg1;
-- (void)_readAttributes;
-- (void)_readAuthTraits;
-- (void)_readBss;
-- (void)_readIdentifier;
-- (void)_readName;
-- (void)_readQualities;
+- (int)StringAsNetworkType:(id)arg1;
+- (int)StringAsVenueGroup:(id)arg1;
 - (void)addAttributes:(int)arg1;
 - (void)addAuthTraits:(int)arg1;
 - (void)addBss:(id)arg1;
+- (void)addOwnerIdentifier:(id)arg1;
 - (void)addQualities:(id)arg1;
 - (id)attributesAsString:(int)arg1;
 - (int)attributesAtIndex:(unsigned long long)arg1;
@@ -83,6 +86,7 @@
 - (void)clearAttributes;
 - (void)clearAuthTraits;
 - (void)clearBss;
+- (void)clearOwnerIdentifiers;
 - (void)clearQualities;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -92,14 +96,21 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (id)networkTypeAsString:(int)arg1;
+- (id)ownerIdentifierAtIndex:(unsigned long long)arg1;
+- (unsigned long long)ownerIdentifiersCount;
 - (id)qualitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)qualitiesCount;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAttributes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setAuthTraits:(int *)arg1 count:(unsigned long long)arg2;
+- (id)venueGroupAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -32,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_merchantId:1;
         unsigned int read_rawMerchantCode:1;
         unsigned int read_warsawIdentifier:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_appIdentifier:1;
-        unsigned int wrote_merchantCanl:1;
-        unsigned int wrote_merchantCode:1;
-        unsigned int wrote_merchantId:1;
-        unsigned int wrote_rawMerchantCode:1;
-        unsigned int wrote_warsawIdentifier:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,12 +52,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAppIdentifier;
-- (void)_readMerchantCanl;
-- (void)_readMerchantCode;
-- (void)_readMerchantId;
-- (void)_readRawMerchantCode;
-- (void)_readWarsawIdentifier;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -72,7 +60,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

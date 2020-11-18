@@ -21,8 +21,10 @@
     NSString *_body;
     NSString *_referenceMessageId;
     NSString *_standaloneReferenceMessageId;
+    NSString *_accountId;
 }
 
+@property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
 @property (strong, nonatomic) NSString *body; // @synthesize body=_body;
 @property (strong, nonatomic) NSArray *cc; // @synthesize cc=_cc;
 @property (strong, nonatomic) NSString *composedMessageId; // @synthesize composedMessageId=_composedMessageId;

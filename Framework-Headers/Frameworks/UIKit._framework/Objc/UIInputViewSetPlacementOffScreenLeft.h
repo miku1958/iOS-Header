@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIInputViewSetPlacement.h>
+#import <UIKitCore/UIInputViewSetPlacementOffScreenLeftOrRight.h>
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacementOffScreenLeft : UIInputViewSetPlacement <NSSecureCoding>
+@interface UIInputViewSetPlacementOffScreenLeft : UIInputViewSetPlacementOffScreenLeftOrRight <NSSecureCoding>
 {
 }
 

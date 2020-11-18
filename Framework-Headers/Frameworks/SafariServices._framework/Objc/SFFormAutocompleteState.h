@@ -7,8 +7,8 @@
 #import <objc/NSObject.h>
 
 #import <SafariServices/CNContactPickerDelegate-Protocol.h>
+#import <SafariServices/SFAppAutoFillOneTimeCodeProviderObserver-Protocol.h>
 #import <SafariServices/SFContactAutoFillViewControllerFiller-Protocol.h>
-#import <SafariServices/WBSOneTimeCodeMonitorObserver-Protocol.h>
 #import <SafariServices/_ASCredentialListViewControllerDelegate-Protocol.h>
 #import <SafariServices/_ASPasswordCredentialAuthenticationViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFCreditCardCaptureViewControllerDelegate-Protocol.h>
@@ -16,7 +16,7 @@
 @class NSArray, NSDictionary, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormControlMetadata, WBSFormMetadata, WBSMultiRoundAutoFillManager, _ASPasswordCredentialAuthenticationViewController, _SFFormAutoFillController, _SFFormAutoFillInputSession, _SFFormDataController;
 
 __attribute__((visibility("hidden")))
-@interface SFFormAutocompleteState : NSObject <CNContactPickerDelegate, SFContactAutoFillViewControllerFiller, _SFCreditCardCaptureViewControllerDelegate, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, WBSOneTimeCodeMonitorObserver>
+@interface SFFormAutocompleteState : NSObject <CNContactPickerDelegate, SFContactAutoFillViewControllerFiller, _SFCreditCardCaptureViewControllerDelegate, SFAppAutoFillOneTimeCodeProviderObserver, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate>
 {
     long long _action;
     _SFFormAutoFillController *_autoFillController;
@@ -125,7 +125,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateSuggestions:(unsigned long long)arg1;
 - (id)_viewControllerToPresentFrom;
 - (void)autoFill;
-- (void)codesUpdatedForOneTimeCodeMonitor:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)credentialListViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -137,6 +136,7 @@ __attribute__((visibility("hidden")))
 - (void)getTextSuggestionForStreamlinedAutoFillWithCredentialIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(id)arg1 form:(id)arg2 textField:(id)arg3 inputSession:(id)arg4 autoFillController:(id)arg5;
 - (void)invalidate;
+- (void)oneTimeCodeProviderReceivedCode:(id)arg1;
 - (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)performAutoFillWithMatchSelections:(id)arg1 doNotFill:(id)arg2 contact:(id)arg3;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;

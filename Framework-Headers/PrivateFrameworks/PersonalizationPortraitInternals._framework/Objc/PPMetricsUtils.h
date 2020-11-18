@@ -10,25 +10,18 @@
 {
 }
 
-+ (struct PPMObjectDonationSource_)donationSourceForBundleId:(id)arg1;
 + (int)feedbackTypeForPET2:(unsigned int)arg1;
-+ (struct PPMPortraitFeedbackType_)feedbackTypeForPET:(unsigned int)arg1;
-+ (struct PPMLocationDonationSource_)locationSourceForBundleId:(id)arg1;
++ (id)filterGroupIdAllowance:(id)arg1;
 + (id)loggingQueue;
-+ (struct PPMLocationAlgorithm_)mapLocationAlgorithm:(unsigned short)arg1;
-+ (struct PPMNamedEntityAlgorithm_)mapNamedEntityAlgorithm:(unsigned long long)arg1;
++ (int)mapDomainForPET2:(unsigned char)arg1;
++ (int)mapLocationAlgorithmForPET2:(unsigned short)arg1;
 + (int)mapNamedEntityAlgorithmForPET2:(unsigned long long)arg1;
-+ (struct PPMTopicAlgorithm_)mapTopicAlgorithm:(unsigned long long)arg1;
++ (int)mapNamedEntityCategory:(unsigned long long)arg1;
 + (int)mapTopicAlgorithmForPET2:(unsigned long long)arg1;
-+ (struct PPMTopicDonationErrorReason_)mapTopicDonationErrorForPET1:(long long)arg1;
 + (int)mapTopicDonationErrorForPET2:(long long)arg1;
-+ (struct PPMNamedEntityDonationSource_)namedEntitySourceForBundleId:(id)arg1;
-+ (int)namedEntitySourceForPET2WithBundleId:(id)arg1;
-+ (struct PPMTopicDonationSource_)topicSourceForBundleId:(id)arg1;
-+ (int)topicSourceForPET2WithBundleId:(id)arg1;
++ (int)sourceForBundleId:(id)arg1;
 + (id)truncatedClientBundleId:(id)arg1;
 + (id)truncatedClientBundleIdOrCurrentBundleId:(id)arg1;
-+ (struct PPMTypeSafeBool_)typeSafeBoolOfCond:(BOOL)arg1;
 
 @end
 

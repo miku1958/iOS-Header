@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_allowsPaintSelectionForLoupeInteraction:(id)arg1;
 - (void)adjustVariableDelaySettingsForLoupeInteraction:(id)arg1;
 - (void)configureGestureExclusionRequirementsForTextLoupeInteraction:(id)arg1;
 - (void)configureLoupeGestureRecognizer:(id)arg1 forTextLoupeInteraction:(id)arg2;

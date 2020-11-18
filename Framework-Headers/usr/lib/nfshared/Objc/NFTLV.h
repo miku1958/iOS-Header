@@ -32,10 +32,10 @@
 + (id)_parseTLVs:(const char **)arg1 end:(const char *)arg2 simple:(BOOL)arg3 definite:(BOOL)arg4;
 + (id)simpleTLVsWithData:(id)arg1;
 + (id)simpleTLVsWithTag:(unsigned int)arg1 fromData:(id)arg2;
+- (void).cxx_destruct;
 - (id)asData;
 - (id)childWithTag:(unsigned int)arg1;
 - (id)childrenWithTag:(unsigned int)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)valueAsHexString;
 - (id)valueAsString;

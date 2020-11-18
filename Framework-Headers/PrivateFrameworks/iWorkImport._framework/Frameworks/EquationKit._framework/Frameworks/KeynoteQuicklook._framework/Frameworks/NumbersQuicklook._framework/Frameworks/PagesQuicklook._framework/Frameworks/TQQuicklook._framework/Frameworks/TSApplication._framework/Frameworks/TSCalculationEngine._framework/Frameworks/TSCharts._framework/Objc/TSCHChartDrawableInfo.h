@@ -41,6 +41,8 @@
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (id)animationFilters;
 - (id)applyStyleSwapTuple:(id)arg1;
 - (id)applyStyleSwapTuples:(id)arg1;
@@ -52,11 +54,12 @@
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 animationFilter:(id)arg2;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
 - (id)geometry;
 - (BOOL)hasBackgroundLayerForPieChart;
 - (BOOL)hasReferenceLines;
+- (void)hideAllTitles;
 - (id)infoGeometryForVisiblePositioningInfoGeometry:(id)arg1;
 - (id)initWithContext:(id)arg1 chart:(id)arg2;
 - (id)initWithContext:(id)arg1 chartType:(id)arg2 chartAreaFrame:(id)arg3 legendFrame:(id)arg4 stylePreset:(id)arg5 privateSeriesStyles:(id)arg6;
@@ -103,6 +106,7 @@
 - (void)upgradeFormatsForCustomFormatListU2_0;
 - (BOOL)validatedLoadFromUnarchiver:(id)arg1;
 - (struct CGRect)visibleBoundsForPositioning;
+- (BOOL)wantsCounterRotationWhenNotSupportingParentRotationInRotatedParent;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

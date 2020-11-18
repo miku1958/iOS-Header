@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (double)cellAspectRatioHint;
 - (long long)cellFillMode;
 - (void)configureSectionHeaderView:(id)arg1 forVisualSection:(long long)arg2;
-- (unsigned long long)dateRangeFormatterPreset;
+- (long long)dateRangeFormatterPreset;
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;
 - (long long)imageDeliveryMode;

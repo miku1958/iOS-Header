@@ -13,17 +13,15 @@
     GKTurnBasedParticipantInternal *_internal;
 }
 
-@property (readonly, strong) GKTurnBasedParticipantInternal *internal; // @synthesize internal=_internal;
+@property (readonly) GKTurnBasedParticipantInternal *internal; // @synthesize internal=_internal;
 @property (readonly, nonatomic) NSString *inviteMessage; // @dynamic inviteMessage;
 @property (readonly, nonatomic) GKPlayer *invitedBy; // @dynamic invitedBy;
 @property (readonly, nonatomic) BOOL isLocalPlayer;
 @property (readonly, nonatomic) BOOL isWinner;
 @property (copy, nonatomic) NSDate *lastTurnDate; // @dynamic lastTurnDate;
 @property (nonatomic) long long matchOutcome; // @dynamic matchOutcome;
-@property (readonly, nonatomic) NSString *matchOutcomeString;
 @property (readonly, nonatomic) NSString *matchStatusString;
-@property (readonly, strong, nonatomic) GKPlayer *player; // @dynamic player;
-@property (readonly, copy, nonatomic) NSString *playerID;
+@property (readonly, nonatomic) GKPlayer *player; // @dynamic player;
 @property (readonly, nonatomic) long long status;
 @property (copy, nonatomic) NSDate *timeoutDate; // @dynamic timeoutDate;
 
@@ -33,17 +31,19 @@
 + (id)keyPathsForValuesAffectingMatchOutcomeString;
 + (id)keyPathsForValuesAffectingStatus;
 + (BOOL)matchOutcomeIsValidForDoneState:(long long)arg1;
-+ (id)stringForMatchOutcome:(long long)arg1;
-- (id)basicMatchOutcomeString;
-- (void)dealloc;
++ (id)stringForMatchOutcome:(long long)arg1 totalParticipant:(long long)arg2;
+- (void).cxx_destruct;
+- (id)basicMatchOutcomeString:(long long)arg1;
 - (id)description;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)matchOutcomeStringForLocalPlayer;
+- (id)matchOutcomeString:(long long)arg1;
+- (id)matchOutcomeStringForLocalPlayer:(long long)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (id)playerID;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setStatus:(long long)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

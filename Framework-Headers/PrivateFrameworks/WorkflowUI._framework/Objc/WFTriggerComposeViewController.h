@@ -24,7 +24,9 @@
 - (id)emptyStateString;
 - (id)initWithWorkflow:(id)arg1 mode:(unsigned long long)arg2 database:(id)arg3;
 - (BOOL)isModalInPresentation;
+- (unsigned long long)navigationUpdateBehavior;
 - (void)viewDidLoad;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

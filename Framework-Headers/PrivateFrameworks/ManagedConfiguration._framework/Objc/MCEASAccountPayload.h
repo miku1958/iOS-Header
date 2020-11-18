@@ -33,6 +33,8 @@
     NSNumber *_enableCalendarsUserOverridableNum;
     NSNumber *_enableRemindersUserOverridableNum;
     NSNumber *_enableNotesUserOverridableNum;
+    BOOL _overridePreviousPassword;
+    NSString *_acAccountIdentifier;
     NSNumber *_useSSL;
     NSNumber *_useOAuth;
     NSString *_OAuthSignInURL;
@@ -43,6 +45,7 @@
 
 @property (strong, nonatomic) NSString *OAuthSignInURL; // @synthesize OAuthSignInURL=_OAuthSignInURL;
 @property (strong, nonatomic) NSString *OAuthTokenRequestURL; // @synthesize OAuthTokenRequestURL=_OAuthTokenRequestURL;
+@property (strong, nonatomic) NSString *acAccountIdentifier; // @synthesize acAccountIdentifier=_acAccountIdentifier;
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
 @property (strong, nonatomic) NSData *certificatePersistentID; // @synthesize certificatePersistentID=_certificatePersistentID;
@@ -65,6 +68,7 @@
 @property (readonly, nonatomic) BOOL hasCertificate;
 @property (readonly, strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (readonly, strong, nonatomic) NSNumber *mailNumberOfPastDaysToSync; // @synthesize mailNumberOfPastDaysToSync=_mailNumberOfPastDaysToSync;
+@property (readonly, nonatomic) BOOL overridePreviousPassword; // @synthesize overridePreviousPassword=_overridePreviousPassword;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) BOOL syncDefaultFoldersOnly; // @synthesize syncDefaultFoldersOnly=_syncDefaultFoldersOnly;
 @property (readonly, nonatomic) NSNumber *syncDefaultFoldersOnlyNum; // @synthesize syncDefaultFoldersOnlyNum=_syncDefaultFoldersOnlyNum;
@@ -77,8 +81,8 @@
 + (id)typeStrings;
 - (void).cxx_destruct;
 - (BOOL)containsSensitiveUserInformation;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+- (id)mailAccountIdentifiers;
 - (id)payloadDescriptionKeyValueSections;
 - (id)restrictions;
 - (id)stubDictionary;
@@ -86,7 +90,7 @@
 - (id)subtitle1Label;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
-- (id)title;
+- (id)verboseDescription;
 
 @end
 

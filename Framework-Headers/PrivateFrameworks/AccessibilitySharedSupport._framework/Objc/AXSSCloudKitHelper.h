@@ -21,7 +21,7 @@
     NSManagedObjectContext *_managedObjectContext;
     NSString *_containerIdentifier;
     CKContainer *_container;
-    CKRecordZone *_zone;
+    CKRecordZone *_recordZone;
     CKRecordZoneSubscription *_zoneSubscription;
     CKDatabase *_database;
     NSObject<OS_dispatch_queue> *_cloudkitQueue;
@@ -47,8 +47,8 @@
 @property (nonatomic) BOOL observeLocalDatabaseChanges; // @synthesize observeLocalDatabaseChanges=_observeLocalDatabaseChanges;
 @property (readonly, nonatomic) NSPersistentStoreCoordinator *observedCoordinator; // @synthesize observedCoordinator=_observedCoordinator;
 @property (readonly, weak, nonatomic) NSPersistentStore *observedStore; // @synthesize observedStore=_observedStore;
+@property (readonly, nonatomic) CKRecordZone *recordZone; // @synthesize recordZone=_recordZone;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CKRecordZone *zone; // @synthesize zone=_zone;
 @property (readonly, nonatomic) CKRecordZoneSubscription *zoneSubscription; // @synthesize zoneSubscription=_zoneSubscription;
 
 - (void).cxx_destruct;

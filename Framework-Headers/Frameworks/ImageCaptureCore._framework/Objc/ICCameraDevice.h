@@ -107,7 +107,7 @@
 @property (nonatomic, getter=isLocked) BOOL locked; // @synthesize locked=_locked;
 @property (readonly, nonatomic) NSArray *mediaFiles; // @dynamic mediaFiles;
 @property (nonatomic) unsigned long long mediaObjectCount; // @synthesize mediaObjectCount=_mediaObjectCount;
-@property unsigned long long mediaPresentation;
+@property (nonatomic) unsigned long long mediaPresentation;
 @property (readonly, nonatomic) NSString *mountPoint; // @synthesize mountPoint=_mountPoint;
 @property (readonly, nonatomic) unsigned long long numberOfDownloadableItems;
 @property (strong, nonatomic) NSMutableArray *originalMediaFiles; // @synthesize originalMediaFiles=_originalMediaFiles;

@@ -8,42 +8,66 @@
 
 #import <TSKit/TSKLayerMediaPlayerController-Protocol.h>
 
-@class AVPlayer, NSMutableSet, NSString;
-@protocol TSKMediaPlayerControllerDelegate;
+@class AVAsset, AVPlayerItem, AVPlayerLooper, AVQueuePlayer, NSArray, NSMutableSet, NSString;
+@protocol TSKAVPlayerControllerPlayerItemMediating, TSKMediaPlayerControllerDelegate;
 
 @interface TSKAVPlayerController : NSObject <TSKLayerMediaPlayerController>
 {
-    AVPlayer *mPlayer;
+    AVQueuePlayer *mPlayer;
     id<TSKMediaPlayerControllerDelegate> mDelegate;
     BOOL mStreaming;
+    NSArray *mEnqueuedAssets;
     long long mRepeatMode;
+    CDStruct_1b6d18a9 mStartCMTime;
+    CDStruct_1b6d18a9 mEndCMTime;
+    struct {
+        CDStruct_1b6d18a9 start;
+        CDStruct_1b6d18a9 duration;
+    } mPlayerItemTimeRange;
+    BOOL mIsPlayerItemTimeRangeForScrubbing;
+    AVPlayerLooper *mPlayerLooper;
+    BOOL mIsUpdatingPlayerItems;
     float mVolume;
+    AVPlayerItem *mVolumeRampPlayerItem;
+    id mVolumeRampBoundaryTimeObserver;
     float mRateBeforeScrubbing;
     unsigned long long mScrubbingCount;
     BOOL mCanPlay;
+    float mPendingRate;
+    BOOL mWasPlayingBeforeChangeToZeroRate;
+    BOOL mWasFastReversingBeforeChangeToZeroRate;
+    BOOL mWasFastForwardingBeforeChangeToZeroRate;
+    NSMutableSet *mObservationTokens;
+    BOOL mDidNotifyDelegateOfPlaybackError;
     BOOL mPlaying;
     BOOL mFastReversing;
     BOOL mFastForwarding;
-    BOOL mIsObservingStatus;
-    NSMutableSet *mObservationTokens;
+    id<TSKAVPlayerControllerPlayerItemMediating> mPlayerItemMediator;
 }
 
+@property (readonly, nonatomic) AVAsset *currentAsset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isExternalPlaybackActive) BOOL externalPlaybackActive;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) AVPlayer *player; // @synthesize player=mPlayer;
+@property (readonly, nonatomic) AVQueuePlayer *player; // @synthesize player=mPlayer;
+@property (strong, nonatomic) id<TSKAVPlayerControllerPlayerItemMediating> playerItemMediator; // @synthesize playerItemMediator=mPlayerItemMediator;
 @property (readonly) Class superclass;
 
-+ (BOOL)automaticallyNotifiesObserversOfEndTime;
 + (BOOL)automaticallyNotifiesObserversOfRate;
-+ (BOOL)automaticallyNotifiesObserversOfStartTime;
++ (void)initialize;
 + (id)keyPathsForValuesAffectingAbsoluteDuration;
 + (id)keyPathsForValuesAffectingCanFastForward;
 + (id)keyPathsForValuesAffectingCanFastReverse;
++ (id)keyPathsForValuesAffectingCurrentAsset;
 + (id)keyPathsForValuesAffectingDuration;
 + (id)keyPathsForValuesAffectingEndTime;
++ (id)keyPathsForValuesAffectingExternalPlaybackActive;
++ (id)keyPathsForValuesAffectingHasCurrentTime;
 + (id)keyPathsForValuesAffectingRate;
 + (id)keyPathsForValuesAffectingStartTime;
++ (BOOL)p_canApplyVolumeRampAtRate:(float)arg1;
+- (void).cxx_destruct;
 - (double)absoluteCurrentTime;
 - (double)absoluteDuration;
 - (void)addObservationToken:(id)arg1;
@@ -59,21 +83,34 @@
 - (double)duration;
 - (void)endScrubbing;
 - (double)endTime;
-- (id)init;
-- (id)initWithPlayer:(id)arg1 delegate:(id)arg2 streaming:(BOOL)arg3;
+- (BOOL)hasCurrentTime;
+- (id)initWithAssets:(id)arg1 initialAssetIndex:(unsigned long long)arg2 delegate:(id)arg3;
+- (id)initWithInitialPlayerItem:(id)arg1 enqueuedAssets:(id)arg2 initialEnqueuedAssetIndex:(unsigned long long)arg3 delegate:(id)arg4 streaming:(BOOL)arg5;
+- (id)initWithPlayerItem:(id)arg1 delegate:(id)arg2 streaming:(BOOL)arg3;
 - (BOOL)isFastForwarding;
 - (BOOL)isFastReversing;
 - (BOOL)isPlaying;
 - (BOOL)isScrubbing;
 - (id)newLayer;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)p_applyVolumeToPlayerItem;
+- (id)p_addTimeObserverForTime:(CDStruct_1b6d18a9)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)p_applyConstantVolumeToPlayerItem:(id)arg1;
+- (void)p_applyPendingRateIfNeeded;
+- (void)p_applyRate:(float)arg1;
 - (BOOL)p_canFastForwardAtCurrentTime;
 - (BOOL)p_canFastReverseAtCurrentTime;
-- (void)p_playbackDidFailWithError:(id)arg1;
+- (void)p_clearVolumeRampFromPlayerItem;
+- (CDStruct_1b6d18a9)p_endCMTime;
+- (void)p_enqueueAssetsFromIndex:(unsigned long long)arg1;
+- (BOOL)p_notifyDelegateOfPlaybackErrorIfNeeded;
+- (void)p_notifyPlayerItemMediatorWithRate:(float)arg1;
 - (void)p_playerItemDidJumpTime:(id)arg1;
 - (void)p_playerItemDidPlayToEndTime:(id)arg1;
-- (void)playerItemDidPlayToEndTimeAtRate:(float)arg1;
+- (void)p_playerItemDidPlayToEndTimeAtRate:(float)arg1;
+- (BOOL)p_shouldUsePlayerLooperAtRate:(float)arg1;
+- (CDStruct_1b6d18a9)p_startCMTime;
+- (void)p_updatePlayerItemsAndApplyRate:(float)arg1;
+- (id)p_workingPlayerItems;
 - (float)rate;
 - (double)remainingTime;
 - (void)removeObservationToken:(id)arg1;
@@ -93,6 +130,8 @@
 - (void)setRepeatMode:(long long)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setVolume:(float)arg1;
+- (void)setVolume:(float)arg1 rampDuration:(double)arg2;
+- (void)skipToAssetAtIndex:(unsigned long long)arg1;
 - (double)startTime;
 - (void)stopSynchronously;
 - (void)teardown;

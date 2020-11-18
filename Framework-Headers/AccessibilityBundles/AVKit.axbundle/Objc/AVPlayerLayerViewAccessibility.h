@@ -13,9 +13,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_axCanZoomIn;
+- (BOOL)_axCanZoomOut;
 - (BOOL)_axHasVideo;
+- (BOOL)_axIsZoomable;
+- (id)_axZoomableView;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
+- (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (BOOL)isAccessibilityElement;
 
 @end

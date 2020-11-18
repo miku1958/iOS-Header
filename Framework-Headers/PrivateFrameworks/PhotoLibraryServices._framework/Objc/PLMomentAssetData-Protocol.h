@@ -21,6 +21,7 @@
 @property (nonatomic) id<PLPhotosHighlightData> dayGroupHighlightBeingKeyAsset;
 @property (nonatomic) double duration;
 @property (nonatomic) BOOL favorite;
+@property (readonly, nonatomic) double gpsHorizontalAccuracy;
 @property (readonly, nonatomic) BOOL hasChanges;
 @property (nonatomic) long long height;
 @property (nonatomic) id<PLPhotosHighlightData> highlightBeingAssets;

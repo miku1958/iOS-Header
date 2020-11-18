@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (const CDStruct_7d93034e *)revisionAvailability;
++ (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputfacesThatNeedAttributes:(id)arg3 isFaceprintRequest:(BOOL)arg4 isAttributeRequest:(BOOL)arg5;
 - (void)assignOriginalRequestsResultsFromObservations:(id)arg1 obtainedInPerformingContext:(id)arg2;
+- (long long)dependencyProcessingOrdinality;
 - (unsigned long long)detectionLevel;
 - (id)initWithDetectorType:(id)arg1 configuration:(id)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;

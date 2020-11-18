@@ -8,30 +8,33 @@
 
 #import <coreroutine/CLLocationManagerDelegate-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
+#import <coreroutine/RTStoreManager-Protocol.h>
 
-@class CLLocation, CLLocationManager, CLLocationManagerRoutine, NSMutableArray, NSObject, NSString, RTAuthorizationManager, RTDefaultsManager, RTInvocationDispatcher, RTLocationStore, RTPlatform, RTPowerAssertion;
-@protocol OS_dispatch_source;
+@class CLLocation, CLLocationManager, CLLocationManagerRoutine, NSMutableArray, NSMutableDictionary, NSString, RTAuthorizationManager, RTDefaultsManager, RTInvocationDispatcher, RTLocationStore, RTPlatform, RTPowerAssertion, RTTimer, RTTimerManager;
 
-@interface RTLocationManager : RTService <CLLocationManagerDelegate, RTPurgable>
+@interface RTLocationManager : RTService <CLLocationManagerDelegate, RTPurgable, RTStoreManager>
 {
-    BOOL _updating;
     BOOL _leechingLocations;
     BOOL _monitoringLocations;
+    BOOL _updating;
     BOOL _enabled;
     BOOL _supported;
     BOOL _locationStoreAvailable;
     BOOL _persistingLocations;
-    CLLocation *_lastLocation;
     NSMutableArray *_currentLocationHandlers;
-    NSObject<OS_dispatch_source> *_stopUpdatingLocationTimer;
+    RTTimer *_stopUpdatingLocationTimer;
     RTPowerAssertion *_powerAssertion;
     RTInvocationDispatcher *_dispatcher;
     CLLocationManager *_locationManager;
     CLLocationManagerRoutine *_locationManagerRoutine;
+    CLLocation *_lastLocation;
     RTAuthorizationManager *_authorizationManager;
     RTLocationStore *_locationStore;
     RTPlatform *_platform;
     RTDefaultsManager *_defaultsManager;
+    RTTimerManager *_timerManager;
+    NSMutableDictionary *_regionEventHandlerDictionary;
+    RTInvocationDispatcher *_regionEventDispatcher;
 }
 
 @property (strong, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
@@ -52,46 +55,80 @@
 @property (nonatomic) BOOL persistingLocations; // @synthesize persistingLocations=_persistingLocations;
 @property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) RTPowerAssertion *powerAssertion; // @synthesize powerAssertion=_powerAssertion;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *stopUpdatingLocationTimer; // @synthesize stopUpdatingLocationTimer=_stopUpdatingLocationTimer;
+@property (strong, nonatomic) RTInvocationDispatcher *regionEventDispatcher; // @synthesize regionEventDispatcher=_regionEventDispatcher;
+@property (strong, nonatomic) NSMutableDictionary *regionEventHandlerDictionary; // @synthesize regionEventHandlerDictionary=_regionEventHandlerDictionary;
+@property (strong, nonatomic) RTTimer *stopUpdatingLocationTimer; // @synthesize stopUpdatingLocationTimer=_stopUpdatingLocationTimer;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supported; // @synthesize supported=_supported;
+@property (strong, nonatomic) RTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
 @property (nonatomic) BOOL updating; // @synthesize updating=_updating;
 
++ (id)clientRegionForRegion:(id)arg1 clientIdentifierPrefix:(id)arg2;
++ (id)errorDuplicateClientIdentifier:(id)arg1;
++ (id)errorUnregisteredClientIdentifier:(id)arg1;
++ (id)errorUsedDelimiter;
++ (BOOL)isValidIdentifier:(id)arg1;
++ (id)regionIdentifierDelimiterString;
++ (id)regionWithModifiedIdentifier:(id)arg1 forRegion:(id)arg2;
++ (id)stringForRegionCallbackType:(long long)arg1;
 + (BOOL)supportsNotificationName:(id)arg1;
++ (id)vendedClasses;
 - (void).cxx_destruct;
+- (id)_clientIdentifierForRegion:(id)arg1;
 - (void)_createLocationManager;
 - (void)_fetchStoredLocationsCountFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)_fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchStoredLocationsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_fullIdentifierForClientIdentifier:(id)arg1 regionIdentifier:(id)arg2 error:(id *)arg3;
+- (BOOL)_isClientIdentifierAvailable:(id)arg1;
+- (BOOL)_performCallbackForClientRegion:(id)arg1 clientIdentifier:(id)arg2 regionEvent:(long long)arg3 callbackError:(id)arg4 handler:(CDUnknownBlockType)arg5;
+- (BOOL)_performCallbackForRegion:(id)arg1 regionEvent:(long long)arg2 callbackError:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)_prefixForClientIdentifier:(id)arg1 error:(id *)arg2;
+- (id)_regionForClientRegion:(id)arg1 clientIdentifier:(id)arg2 error:(id *)arg3;
+- (void)_registerForRegionEventsWithClientIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_registerNotifications;
 - (void)_removeLocationsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setup;
 - (void)_shutdown;
+- (BOOL)_stopMonitoringAllRegionsForClientIdentifier:(id)arg1 error:(id *)arg2;
 - (void)_storeLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_unregisterForRegionEventsWithClientIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_unregisterNotifications;
 - (void)fetchCachedLocationWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchStoredLocationsCountFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchStoredLocationsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithAuthorizationManager:(id)arg1 defaultsManager:(id)arg2 locationStore:(id)arg3 platform:(id)arg4 routineLocationManager:(id)arg5;
+- (id)initWithAuthorizationManager:(id)arg1 defaultsManager:(id)arg2 locationStore:(id)arg3 platform:(id)arg4 routineLocationManager:(id)arg5 timerManager:(id)arg6;
 - (void)injectLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
+- (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didStartMonitoringForRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
 - (void)onAuthorizationNotification:(id)arg1;
 - (void)onLocationStoreNotification:(id)arg1;
 - (void)onStopUpdatingLocationTimerExpiry;
 - (void)onUserSessionChangeNotification:(id)arg1;
+- (void)performCallbackForRegion:(id)arg1 regionEvent:(long long)arg2 callbackError:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)registerForRegionEventsWithClientIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)shouldLeechLocations;
 - (void)shouldMonitorLocations;
 - (void)shouldPersistLocations;
+- (BOOL)startMonitoringForRegion:(id)arg1 clientIdentifier:(id)arg2 error:(id *)arg3;
 - (void)startUpdatingLocation;
+- (BOOL)stopMonitoringAllRegionsForClientIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)stopMonitoringForRegion:(id)arg1 clientIdentifier:(id)arg2 error:(id *)arg3;
 - (void)stopUpdatingLocation;
 - (void)submitHarvestSample:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)unregisterForRegionEventsWithClientIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end
 

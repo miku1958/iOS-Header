@@ -38,15 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_namedFeatures:1;
         unsigned int read_searchQueryDisplayString:1;
         unsigned int read_suggestionEntryMetadata:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_textHighlights:1;
-        unsigned int wrote_calloutTitle:1;
-        unsigned int wrote_displayLines:1;
-        unsigned int wrote_iconID:1;
-        unsigned int wrote_latlng:1;
-        unsigned int wrote_namedFeatures:1;
-        unsigned int wrote_searchQueryDisplayString:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,17 +62,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)namedFeatureType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsDisplayLine:(id)arg1;
-- (void)_addNoFlagsNamedFeature:(id)arg1;
-- (void)_addNoFlagsTextHighlights:(struct GEOHighlight)arg1;
-- (void)_readCalloutTitle;
-- (void)_readDisplayLines;
-- (void)_readIconID;
-- (void)_readLatlng;
-- (void)_readNamedFeatures;
-- (void)_readSearchQueryDisplayString;
-- (void)_readSuggestionEntryMetadata;
-- (void)_readTextHighlights;
 - (void)addDisplayLine:(id)arg1;
 - (void)addNamedFeature:(id)arg1;
 - (void)addTextHighlights:(struct GEOHighlight)arg1;
@@ -98,7 +79,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)namedFeatureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedFeaturesCount;

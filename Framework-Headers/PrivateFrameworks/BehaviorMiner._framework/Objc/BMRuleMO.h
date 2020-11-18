@@ -12,10 +12,15 @@
 {
 }
 
+@property (nonatomic) long long absoluteAntecedentSupport; // @dynamic absoluteAntecedentSupport;
+@property (nonatomic) long long absoluteConsequentSupport; // @dynamic absoluteConsequentSupport;
+@property (nonatomic) long long absoluteSupport; // @dynamic absoluteSupport;
 @property (strong, nonatomic) NSSet *antecedent; // @dynamic antecedent;
 @property (nonatomic) double confidence; // @dynamic confidence;
 @property (strong, nonatomic) NSSet *consequent; // @dynamic consequent;
 @property (nonatomic) double support; // @dynamic support;
+@property (nonatomic) long long uniqueDaysLastWeek; // @dynamic uniqueDaysLastWeek;
+@property (nonatomic) long long uniqueDaysTotal; // @dynamic uniqueDaysTotal;
 
 + (id)fetchRequest;
 

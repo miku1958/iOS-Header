@@ -16,10 +16,12 @@
     _CDSharedMemoryKeyValueStore *_store;
     NSObject<OS_dispatch_queue> *_queue;
     NSCountedSet *_keyPathRegistrationCount;
+    NSCountedSet *_legacyKeyPathRegistrationCount;
     NSString *_localDeviceID;
 }
 
 @property (strong, nonatomic) NSCountedSet *keyPathRegistrationCount; // @synthesize keyPathRegistrationCount=_keyPathRegistrationCount;
+@property (strong, nonatomic) NSCountedSet *legacyKeyPathRegistrationCount; // @synthesize legacyKeyPathRegistrationCount=_legacyKeyPathRegistrationCount;
 @property (strong, nonatomic) NSString *localDeviceID; // @synthesize localDeviceID=_localDeviceID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) _CDSharedMemoryKeyValueStore *store; // @synthesize store=_store;

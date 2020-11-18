@@ -15,11 +15,10 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (id)_credentialIdentityStoreForBundleIdentifier:(id)arg1;
-- (void)getCredentialIdentityStoreForAppBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getPrimaryCredentialIdentityStoreWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_credentialIdentityStoreWithIdentifier:(id)arg1;
+- (void)getCredentialIdentityStoreWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)removeCredentialIdentityStoreForAppBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeCredentialIdentityStoreWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

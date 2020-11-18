@@ -24,7 +24,7 @@
 + (id)gPTPMask1;
 + (id)gPTPMask2;
 + (id)gPTPMask3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)mtieConformsToMask:(id)arg1 withErrors:(id *)arg2;
 - (id)mtieMaskFromStart:(double)arg1 toEnd:(double)arg2 withStep:(double)arg3;

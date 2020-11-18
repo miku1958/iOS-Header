@@ -6,15 +6,19 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <HomeUI/HUCellProtocol-Protocol.h>
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
-@class NSArray, NSString, UIImage, UILabel, UISlider;
-@protocol HUSliderValueTableViewCellDelegate;
+@class HFItem, NSArray, NSString, UIImage, UILabel, UISlider;
+@protocol HUResizableCellDelegate, HUSliderValueTableViewCellDelegate;
 
-@interface HUSliderValueTableViewCell : UITableViewCell <HUDisableableCellProtocol>
+@interface HUSliderValueTableViewCell : UITableViewCell <HUDisableableCellProtocol, HUCellProtocol>
 {
     BOOL _showValue;
+    BOOL _useLargeCell;
+    HFItem *_item;
     id<HUSliderValueTableViewCellDelegate> _delegate;
+    NSString *_title;
     UISlider *_slider;
     UILabel *_valueLabel;
     NSArray *_constraints;
@@ -27,13 +31,17 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (nonatomic) double maximumValue;
 @property (strong, nonatomic) UIImage *maximumValueImage;
 @property (nonatomic) double minimumValue;
 @property (strong, nonatomic) UIImage *minimumValueImage;
+@property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (nonatomic) BOOL showValue; // @synthesize showValue=_showValue;
 @property (strong, nonatomic) UISlider *slider; // @synthesize slider=_slider;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (nonatomic) BOOL useLargeCell; // @synthesize useLargeCell=_useLargeCell;
 @property (nonatomic) double value;
 @property (strong, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 
@@ -44,6 +52,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
-@class NSNumber;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableNumberAttributeMetadata : INCodableAttributeMetadata
+@class NSNumber, NSString;
+
+@interface INCodableNumberAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     long long _type;
     NSNumber *_defaultValue;
@@ -16,15 +18,35 @@
     NSNumber *_maximumValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSNumber *defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property (strong, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsNegativeNumbers;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionMaximumValueKey;
+- (id)__INCodableDescriptionMinimumValueKey;
+- (id)__INCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
+- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
+- (id)__INIntentResponseCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionMaximumValueKey;
+- (id)__INTypeCodableDescriptionMinimumValueKey;
+- (id)__INTypeCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INTypeCodableDescriptionTypeKey;
 - (id)_localizedDialogTokensWithLocalizer:(id)arg1;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

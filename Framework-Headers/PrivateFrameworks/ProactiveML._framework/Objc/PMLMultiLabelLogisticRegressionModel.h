@@ -7,15 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ProactiveML/PMLMultiLabelClassifierModelProtocol-Protocol.h>
-#import <ProactiveML/PMLMultiLabelRegressionModelProtocol-Protocol.h>
 #import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
 
-@class NSArray, NSString, PMLModelFullyConnectedLayer;
+@class NSArray, NSString;
 
-@interface PMLMultiLabelLogisticRegressionModel : NSObject <PMLMultiLabelRegressionModelProtocol, PMLMultiLabelClassifierModelProtocol, PMLPlistAndChunksSerializableProtocol>
+@interface PMLMultiLabelLogisticRegressionModel : NSObject <PMLMultiLabelClassifierModelProtocol, PMLPlistAndChunksSerializableProtocol>
 {
     NSArray *_models;
-    PMLModelFullyConnectedLayer *_layer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,15 +21,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (Class)pyClass;
 - (void).cxx_destruct;
-- (id)classify:(id)arg1;
-- (void)convertToLayerWithDataType:(int)arg1;
-- (unsigned long long)count;
-- (id)initWithLayer:(id)arg1;
 - (id)initWithModels:(id)arg1;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)initWithWeightsArray:(id)arg1 andIntercept:(BOOL)arg2;
+- (unsigned long long)outputDimension;
 - (id)predict:(id)arg1;
 - (id)serialize;
 - (id)toPlistWithChunks:(id)arg1;

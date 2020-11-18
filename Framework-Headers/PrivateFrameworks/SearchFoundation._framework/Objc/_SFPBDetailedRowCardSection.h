@@ -18,6 +18,7 @@
     BOOL _hasBottomPadding;
     BOOL _preventThumbnailImageScaling;
     BOOL _isSecondaryTitleDetached;
+    BOOL _shouldUseCompactDisplay;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -57,6 +58,7 @@
 @property (strong, nonatomic) _SFPBFormattedText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong, nonatomic) _SFPBImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property (nonatomic) BOOL shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _SFPBImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (strong, nonatomic) _SFPBRichText *title; // @synthesize title=_title;

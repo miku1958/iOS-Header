@@ -32,15 +32,9 @@
 @property (readonly, nonatomic) unsigned long long count;
 @property (readonly, nonatomic) NRMutableDeviceCollection *deviceCollection; // @synthesize deviceCollection=_deviceCollection;
 @property (readonly, nonatomic) BOOL dirty;
-@property (strong, nonatomic) NSMutableArray *history; // @synthesize history=_history;
-@property (strong, nonatomic) NSMutableDictionary *historyStateCache; // @synthesize historyStateCache=_historyStateCache;
-@property (strong, nonatomic) NSMutableArray *historyStateCacheIndex; // @synthesize historyStateCacheIndex=_historyStateCacheIndex;
-@property (strong, nonatomic) NSMutableArray *historyStateCacheMRU; // @synthesize historyStateCacheMRU=_historyStateCacheMRU;
 @property (readonly, nonatomic) unsigned long long nextIndex;
 @property (readonly, nonatomic) NRPBDeviceCollectionHistory *protobuf;
-@property (nonatomic) unsigned long long startIndex; // @synthesize startIndex=_startIndex;
 @property (readonly, nonatomic) unsigned int switchIndex;
-@property (strong, nonatomic) NRSwitchRecordCollection *switchRecords; // @synthesize switchRecords=_switchRecords;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -68,7 +62,6 @@
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (void)pruneStateCacheItems:(unsigned long long)arg1;
 - (void)removeObserver:(id)arg1;
-- (id)stateAtIndex:(unsigned long long)arg1;
 - (id)switchDeviceIDFromDiff:(id)arg1;
 
 @end

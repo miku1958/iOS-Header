@@ -10,6 +10,7 @@
 
 @protocol UIApplicationSceneSettings <NSObject>
 
+@property (readonly, nonatomic) long long accessibilityContrast;
 @property (readonly, nonatomic) unsigned long long artworkSubtype;
 @property (readonly, nonatomic) BOOL canShowAlerts;
 @property (readonly, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) BOOL idleModeEnabled;
 @property (readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
 @property (readonly, nonatomic) NSString *persistenceIdentifier;
+@property (readonly, nonatomic) long long pointerLockStatus;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;

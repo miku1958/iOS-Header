@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) TLKKeyValueView *contentView; // @dynamic contentView;
 
-+ (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (id)convertSFKeyValueData:(id)arg1;
 - (id)setupContentView;

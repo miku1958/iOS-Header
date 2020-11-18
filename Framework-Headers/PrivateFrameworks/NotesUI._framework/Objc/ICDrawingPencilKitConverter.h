@@ -48,7 +48,6 @@
 - (unsigned long long)countOfDrawingsNeedingConversionInNote:(id)arg1;
 - (id)init;
 - (void)operationComplete:(id)arg1;
-- (void)performThrowawayConversionIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)shouldAutoConvertNote:(id)arg1;
 - (BOOL)shouldConvertAllDrawingsIfNeeded;
 - (id)updateInlineDrawingAttachment:(id)arg1;

@@ -6,18 +6,11 @@
 
 #import <BoardServices/BSXPCServiceConnectionRootContext.h>
 
-@class NSString;
-
 @interface BSXPCServiceConnectionRootClientServiceContext : BSXPCServiceConnectionRootContext
 {
     BOOL _privileged;
 }
 
-@property (readonly, nonatomic, getter=isPrivileged) BOOL privileged; // @synthesize privileged=_privileged;
-@property (readonly, copy, nonatomic) NSString *serviceName;
-
-+ (id)uniqueClientContextWithServiceName:(id)arg1 privileged:(BOOL)arg2;
-- (id)_initWithService:(id)arg1 privileged:(BOOL)arg2;
 - (BOOL)isClient;
 
 @end

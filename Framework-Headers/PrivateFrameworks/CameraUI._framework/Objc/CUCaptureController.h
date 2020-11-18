@@ -10,7 +10,7 @@
 #import <CameraUI/CAMCaptureService-Protocol.h>
 
 @class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequestIntervalometer, CAMIrisVideoController, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMStillImageCaptureRequest, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableDictionary, NSMutableSet, NSString;
-@protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMMachineReadableCodeDelegate, CAMPanoramaChangeDelegate, CAMPreviewLayerOverCaptureStatusDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
+@protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMHistogramDelegate, CAMMachineReadableCodeDelegate, CAMPanoramaChangeDelegate, CAMPreviewLayerOverCaptureStatusDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
 
 @interface CUCaptureController : NSObject <CAMCaptureService, CAMCaptureRequestIntervalometerDelegate>
 {
@@ -28,6 +28,7 @@
     BOOL _rampingVideoZoom;
     BOOL __capturingPairedVideoPaused;
     BOOL __needsInitialPairedVideoUpdate;
+    BOOL __didCompleteInitialConfiguration;
     BOOL _failedConfigurationPreventingCapture;
     BOOL __isVideoCaptureAvailable;
     id<CAMPreviewLayerOverCaptureStatusDelegate> _previewLayerOverCaptureStatusDelegate;
@@ -43,6 +44,7 @@
     id<CAMShallowDepthOfFieldStatusDelegate> _shallowDepthOfFieldStatusDelegate;
     id<CAMFacesDelegate> _facesDelegate;
     id<CAMMachineReadableCodeDelegate> _machineReadableCodeDelegate;
+    id<CAMHistogramDelegate> _histogramDelegate;
     id<CAMCaptureResultDelegate> _resultDelegate;
     id<CAMZoomDelegate> _zoomDelegate;
     id<CAMCaptureRecoveryDelegate> _recoveryDelegate;
@@ -82,6 +84,7 @@
 @property (nonatomic, getter=_isCapturingPairedVideoPaused, setter=_setCapturingPairedVideoPaused:) BOOL _capturingPairedVideoPaused; // @synthesize _capturingPairedVideoPaused=__capturingPairedVideoPaused;
 @property (strong, nonatomic, setter=_setCapturingPanoramaRequest:) CAMPanoramaCaptureRequest *_capturingPanoramaRequest; // @synthesize _capturingPanoramaRequest=__capturingPanoramaRequest;
 @property (strong, nonatomic, setter=_setCapturingVideoRequest:) CAMVideoCaptureRequest *_capturingVideoRequest; // @synthesize _capturingVideoRequest=__capturingVideoRequest;
+@property (nonatomic, setter=_setDidCompleteInitialConfiguration:) BOOL _didCompleteInitialConfiguration; // @synthesize _didCompleteInitialConfiguration=__didCompleteInitialConfiguration;
 @property (readonly, nonatomic) CAMKeyValueCoalescer *_exposureCoalescer; // @synthesize _exposureCoalescer=__exposureCoalescer;
 @property (readonly, nonatomic) CAMKeyValueCoalescer *_focusCoalescer; // @synthesize _focusCoalescer=__focusCoalescer;
 @property (readonly, nonatomic) NSMutableSet *_identifiersForActiveCTMVideoCaptures; // @synthesize _identifiersForActiveCTMVideoCaptures=__identifiersForActiveCTMVideoCaptures;
@@ -109,7 +112,6 @@
 @property (readonly, nonatomic, getter=isCapturingCTMVideo) BOOL capturingCTMVideo;
 @property (readonly, nonatomic, getter=isCapturingLivePhotoVideo) BOOL capturingLivePhotoVideo;
 @property (readonly, nonatomic, getter=isCapturingLowLightImage) BOOL capturingLowLightImage;
-@property (readonly, nonatomic, getter=isCapturingMaximumLowLightImage) BOOL capturingMaximumLowLightImage;
 @property (readonly, nonatomic, getter=isCapturingPanorama) BOOL capturingPanorama;
 @property (readonly, nonatomic, getter=isCapturingStandardVideo) BOOL capturingStandardVideo;
 @property (readonly, nonatomic, getter=isCapturingStillImage) BOOL capturingStillImage;
@@ -128,6 +130,7 @@
 @property (nonatomic, getter=isFlashAvailable, setter=_setFlashAvailable:) BOOL flashAvailable; // @synthesize flashAvailable=_flashAvailable;
 @property (weak, nonatomic) id<CAMFocusDelegate> focusDelegate; // @synthesize focusDelegate=_focusDelegate;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<CAMHistogramDelegate> histogramDelegate; // @synthesize histogramDelegate=_histogramDelegate;
 @property (readonly, nonatomic, getter=isInterrupted) BOOL interrupted;
 @property (weak, nonatomic) id<CAMCaptureInterruptionDelegate> interruptionDelegate; // @synthesize interruptionDelegate=_interruptionDelegate;
 @property (nonatomic, setter=_setLowLightStatus:) long long lowLightStatus; // @synthesize lowLightStatus=_lowLightStatus;
@@ -156,6 +159,7 @@
 - (void)_availabilityResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (void)_beginTrackingCTMVideoRecordingForIdentifier:(id)arg1;
 - (void)_beginTrackingLivePhotoVideoRecordingForIdentifier:(id)arg1;
+- (BOOL)_canBeginCaptureCheckAvailability:(BOOL)arg1 error:(id *)arg2;
 - (id)_commandForChangeToGraphConfiguration:(id)arg1 zoomFactor:(double)arg2 minimumExecutionTime:(double)arg3 outRequestID:(int *)arg4;
 - (id)_commandForConfiguration:(id)arg1 outRequestID:(int *)arg2;
 - (id)_commandForResetFocus:(BOOL)arg1 resetExposure:(BOOL)arg2 resetExposureTargetBias:(BOOL)arg3;
@@ -182,7 +186,7 @@
 - (void)_overCapturePreviewStatusChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (void)_processCapturedBurstRequest:(id)arg1 withResult:(id)arg2;
 - (void)_processPendingVideoCaptureRequest:(id)arg1;
-- (id)_realtimeMetadataCommandsForMode:(long long)arg1 capturing:(BOOL)arg2 wantsMachineReadableCodes:(BOOL)arg3;
+- (id)_realtimeMetadataCommandsForMode:(long long)arg1 videoConfiguration:(long long)arg2 capturing:(BOOL)arg3 wantsMachineReadableCodes:(BOOL)arg4;
 - (void)_resetFocusAndExposureAfterCapture;
 - (void)_resetFocusAndExposureIfAppropriateForReason:(long long)arg1;
 - (id)_sanitizePanoramaRequest:(id)arg1;
@@ -199,6 +203,7 @@
 - (void)_setupZoomMonitoring;
 - (BOOL)_shouldMonitorSystemPressureState;
 - (BOOL)_shouldTrackInflightCountForRequest:(id)arg1;
+- (BOOL)_shouldUseShotBufferForRequest:(id)arg1;
 - (void)_startCaptureSignpostIntervalForPersistenceUUID:(id)arg1;
 - (void)_subjectAreaDidChange:(id)arg1;
 - (id)_suggestionKeyPaths;
@@ -248,6 +253,7 @@
 - (void)changeToPreviewDisabled;
 - (void)changeToPreviewEnabledWithConfiguration:(unsigned long long)arg1;
 - (void)changeToPreviewFilters:(id)arg1;
+- (void)changeToTimelapseCaptureRate:(float)arg1;
 - (void)changeToTorchLevel:(float)arg1;
 - (void)changeToTorchMode:(long long)arg1;
 - (void)changeToVideoHDRSuspended:(BOOL)arg1;
@@ -265,12 +271,13 @@
 - (void)handleSessionInterruptionForReason:(long long)arg1;
 - (BOOL)hasActiveCTMVideoCaptures;
 - (id)initWithCaptureConfiguration:(id)arg1 engineOptions:(long long)arg2 locationController:(id)arg3 motionController:(id)arg4 burstController:(id)arg5 protectionController:(id)arg6 powerController:(id)arg7 irisVideoController:(id)arg8 remoteShutterController:(id)arg9;
-- (void)initiateCTMCaptureWithSettings:(id)arg1;
+- (BOOL)initiateCTMCaptureWithSettings:(id)arg1 error:(id *)arg2;
 - (BOOL)intervalometer:(id)arg1 didGenerateCaptureRequest:(id)arg2;
-- (void)intervalometerDidReachMaximumCount:(id)arg1;
+- (void)intervalometer:(id)arg1 didReachMaximumCountWithRequest:(id)arg2;
 - (void)invalidateController;
 - (void)lockFocusAtLensPosition:(float)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)metadataWasRecognized:(id)arg1 forMetadataObjectTypes:(id)arg2;
+- (void)logCaptureAvailabilityDescription;
+- (void)metadataWasRecognized:(id)arg1 forMetadataObjectTypes:(id)arg2 deviceFormat:(id)arg3;
 - (void)notifyTimelapseControllerFinishedUpdatingWithLocation;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)panoramaConfigurationDidChangeWithImageQueue:(struct _CAImageQueue *)arg1 direction:(long long)arg2;
@@ -298,6 +305,7 @@
 - (void)stillImageRequest:(id)arg1 didCompleteVideoCaptureWithResult:(id)arg2;
 - (void)stillImageRequest:(id)arg1 didStopCapturingCTMVideoForCoordinationInfo:(id)arg2;
 - (void)stillImageRequest:(id)arg1 didStopCapturingLivePhotoVideoForCoordinationInfo:(id)arg2;
+- (void)stillImageRequestDidBeginCaptureBeforeResolvingSettings:(id)arg1;
 - (void)stillImageRequestDidCompleteCapture:(id)arg1 error:(id)arg2;
 - (void)stillImageRequestDidStartCapturing:(id)arg1 resolvedSettings:(id)arg2;
 - (void)stillImageRequestDidStopCapturingStillImage:(id)arg1;

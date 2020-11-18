@@ -6,17 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HAPEncryptedSession-Protocol.h>
 #import <CoreHAP/HMFLogging-Protocol.h>
 
-@class HAPSecuritySessionEncryption, NSData, NSObject, NSString;
+@class HAPSecuritySessionEncryption, NSData, NSDictionary, NSObject, NSString;
 @protocol HAPSecuritySessionDelegate, HMFLocking, OS_dispatch_queue;
 
-@interface HAPSecuritySession : HMFObject <HMFLogging>
+@interface HAPSecuritySession : HMFObject <HMFLogging, HAPEncryptedSession>
 {
     id<HMFLocking> _lock;
     unsigned long long _state;
     unsigned long long _resumeSessionID;
     NSData *_broadcastKey;
+    NSDictionary *_additionalDerivedKeys;
     id<HAPSecuritySessionDelegate> _delegate;
     unsigned long long _role;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,6 +26,7 @@
     HAPSecuritySessionEncryption *_encryption;
 }
 
+@property (readonly) NSDictionary *additionalDerivedKeys; // @synthesize additionalDerivedKeys=_additionalDerivedKeys;
 @property (readonly) NSData *broadcastKey; // @synthesize broadcastKey=_broadcastKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HAPSecuritySessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -62,6 +65,7 @@
 - (void)open;
 - (void)reallyOpen;
 - (void)receivedSetupExchangeData:(id)arg1 error:(id)arg2;
+- (void)setAdditionalDerivedKeys:(id)arg1;
 - (void)setBroadcastKey:(id)arg1;
 - (void)setResumeSessionID:(unsigned long long)arg1;
 

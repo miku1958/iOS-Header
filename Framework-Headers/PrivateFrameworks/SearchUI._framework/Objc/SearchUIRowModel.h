@@ -12,6 +12,9 @@
 {
     BOOL _isTappable;
     BOOL _isDraggable;
+    BOOL _supportsCustomUserReportRequestAfforance;
+    BOOL _hasLeadingImage;
+    BOOL _prefersNoSeparatorAbove;
     NSArray *_results;
     SFSearchResult *_identifyingResult;
     SFCardSection *_cardSection;
@@ -19,7 +22,6 @@
     NSArray *_contactIdentifiers;
     Class _cellViewClass;
     SFCard *_nextCard;
-    double _leadingSeparatorImageInset;
     unsigned long long _queryId;
     NSString *_dragTitle;
     NSString *_dragSubtitle;
@@ -28,6 +30,7 @@
     NSString *_dragAppBundleID;
 }
 
+@property (readonly, nonatomic) NSString *accessibilityIdentifier;
 @property (strong, nonatomic) SFCardSection *cardSection; // @synthesize cardSection=_cardSection;
 @property (readonly, nonatomic) Class cellViewClass; // @synthesize cellViewClass=_cellViewClass;
 @property (readonly, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
@@ -36,17 +39,20 @@
 @property (readonly, nonatomic) NSString *dragText; // @synthesize dragText=_dragText;
 @property (readonly, nonatomic) NSString *dragTitle; // @synthesize dragTitle=_dragTitle;
 @property (readonly, nonatomic) NSURL *dragURL; // @synthesize dragURL=_dragURL;
+@property (readonly, nonatomic) BOOL fillsBackgroundWithContent;
+@property (readonly, nonatomic) BOOL hasLeadingImage; // @synthesize hasLeadingImage=_hasLeadingImage;
 @property (strong, nonatomic) SFSearchResult *identifyingResult; // @synthesize identifyingResult=_identifyingResult;
 @property (readonly, nonatomic) BOOL isDraggable; // @synthesize isDraggable=_isDraggable;
 @property (readonly, nonatomic) BOOL isQuerySuggestion;
 @property (readonly, nonatomic) BOOL isTappable; // @synthesize isTappable=_isTappable;
-@property (readonly, nonatomic) double leadingSeparatorImageInset; // @synthesize leadingSeparatorImageInset=_leadingSeparatorImageInset;
 @property (readonly, nonatomic) SFCard *nextCard; // @synthesize nextCard=_nextCard;
+@property (readonly, nonatomic) BOOL prefersNoSeparatorAbove; // @synthesize prefersNoSeparatorAbove=_prefersNoSeparatorAbove;
 @property (readonly, nonatomic) NSArray *punchouts; // @synthesize punchouts=_punchouts;
 @property (readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) NSString *reuseIdentifier;
 @property (readonly, nonatomic) int separatorStyle;
+@property (readonly, nonatomic) BOOL supportsCustomUserReportRequestAfforance; // @synthesize supportsCustomUserReportRequestAfforance=_supportsCustomUserReportRequestAfforance;
 
 - (void).cxx_destruct;
 - (id)initWithCardSection:(id)arg1 queryId:(unsigned long long)arg2;

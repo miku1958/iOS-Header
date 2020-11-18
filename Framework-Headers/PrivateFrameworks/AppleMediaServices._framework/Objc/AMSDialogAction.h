@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
-@class AMSMetricsEvent, NSMutableDictionary, NSString, NSURL, NSURLRequest;
+@class AMSDialogRequest, AMSMetricsEvent, NSDictionary, NSMutableDictionary, NSString, NSURL, NSURLRequest;
 
-@interface AMSDialogAction : NSObject <NSSecureCoding>
+@interface AMSDialogAction : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _inferLinkDestination;
     BOOL _shouldRetry;
@@ -19,14 +20,21 @@
     AMSMetricsEvent *_metricsEvent;
     NSURLRequest *_request;
     long long _style;
+    AMSDialogRequest *_dialogRequest;
     NSString *_title;
     NSMutableDictionary *_userInfo;
 }
 
 @property (nonatomic, setter=ams_setURLType:) long long ams_URLType;
 @property (nonatomic, setter=ams_setActionType:) long long ams_actionType;
+@property (strong, nonatomic, setter=ams_setButtonDictionary:) NSDictionary *ams_buttonDictionary;
+@property (strong, nonatomic, setter=ams_setBuyParams:) NSString *ams_buyParams;
+@property (nonatomic, setter=ams_setCommerceUIURL:) BOOL ams_commerceUIURL;
+@property (strong, nonatomic, setter=ams_setRawURL:) NSURL *ams_rawURL;
+@property (nonatomic, setter=ams_setResolvedInterruption:) BOOL ams_resolvedInterruption;
 @property (strong, nonatomic, setter=ams_setSubtarget:) NSString *ams_subtarget;
 @property (copy, nonatomic) NSURL *deepLink; // @synthesize deepLink=_deepLink;
+@property (copy, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL inferLinkDestination; // @synthesize inferLinkDestination=_inferLinkDestination;
 @property (copy, nonatomic) AMSMetricsEvent *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
@@ -41,6 +49,7 @@
 + (id)actionWithTitle:(id)arg1 style:(long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

@@ -6,16 +6,23 @@
 
 #import <HomeKitDaemon/HMDLogEvent.h>
 
-@interface HMDRemoteMessageExceedBudgetLogEvent : HMDLogEvent
+#import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
+
+@class NSString;
+
+@interface HMDRemoteMessageExceedBudgetLogEvent : HMDLogEvent <HMDDiagnosticReportLogging>
 {
     struct _HMFRate _budgetRate;
 }
 
 @property (readonly, nonatomic) struct _HMFRate budgetRate; // @synthesize budgetRate=_budgetRate;
+@property (readonly, copy) NSString *diagnosticReportEventSubType;
+@property (readonly, copy) NSString *diagnosticReportEventType;
 
 + (id)eventWithBudgetRate:(struct _HMFRate)arg1;
 + (id)identifier;
 - (id)initWithBudgetRate:(struct _HMFRate)arg1;
+- (void)updateDiagnosticReportSignature:(id)arg1;
 
 @end
 

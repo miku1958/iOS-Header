@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, PKColor;
+@class NSDictionary, NSString, NSURL, PKColor;
 
 @interface PKDiscoveryMedia : NSObject <NSSecureCoding>
 {
@@ -18,10 +18,12 @@
     double _height;
     PKColor *_backgroundColor;
     NSString *_passKitUIImageName;
+    NSURL *_localAssetURL;
 }
 
 @property (readonly, nonatomic) PKColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) double height; // @synthesize height=_height;
+@property (readonly, nonatomic) NSURL *localAssetURL; // @synthesize localAssetURL=_localAssetURL;
 @property (readonly, nonatomic) NSString *passKitUIImageName; // @synthesize passKitUIImageName=_passKitUIImageName;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSDictionary *urls; // @synthesize urls=_urls;

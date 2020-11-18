@@ -32,6 +32,7 @@
 @property (nonatomic) struct CGRect reframeRect; // @synthesize reframeRect=_reframeRect;
 @property (nonatomic) double rollAngleDegrees; // @synthesize rollAngleDegrees=_rollAngleDegrees;
 @property (strong, nonatomic) VNSaliencyImageObservation *saliencyObservation; // @synthesize saliencyObservation=_saliencyObservation;
+@property (readonly, nonatomic) BOOL shouldAllowPerspectiveCorrection;
 @property (nonatomic) CDStruct_996ac03c stabCropRect; // @synthesize stabCropRect=_stabCropRect;
 @property (nonatomic) double yawAngleDegrees; // @synthesize yawAngleDegrees=_yawAngleDegrees;
 

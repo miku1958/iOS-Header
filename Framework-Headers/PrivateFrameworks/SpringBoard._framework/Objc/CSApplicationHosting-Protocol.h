@@ -7,6 +7,7 @@
 #import <SpringBoard/SBApplicationHosting-Protocol.h>
 
 @protocol CSApplicationHosting <SBApplicationHosting>
+- (void)conformsToCSApplicationHosting;
 - (BOOL)handlesRotationIndependentOfCoverSheet;
 @end
 

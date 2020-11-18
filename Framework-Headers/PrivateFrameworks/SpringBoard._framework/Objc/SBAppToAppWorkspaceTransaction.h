@@ -28,6 +28,7 @@
 - (BOOL)_canBeInterrupted;
 - (void)_cleanUpAfterAnimation;
 - (void)_clearAnimation;
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (void)_didComplete;
 - (void)_handleApplicationDidNotChange:(id)arg1;
 - (void)_handleApplicationUpdateScenesTransactionFailed:(id)arg1;

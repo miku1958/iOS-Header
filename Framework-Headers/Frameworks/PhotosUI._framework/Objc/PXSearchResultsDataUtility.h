@@ -12,7 +12,7 @@
 
 + (id)_bestParentWordEmbeddingsWithWordEmbeddings:(id)arg1 sceneAncestoryInformation:(id)arg2;
 + (id)_localizedTitleForAssetCollection:(id)arg1 titleCategory:(long long *)arg2 dateRangeFormatter:(id)arg3;
-+ (id)_macOSImageNameForSearchUserCategory:(unsigned long long)arg1 useSearchFieldStyle:(BOOL)arg2;
++ (id)_symbolNameForSearchUserCategory:(unsigned long long)arg1;
 + (id)fetchResultFromTopAssetsSearchResult:(id)arg1;
 + (id)imageForSearchUserCategory:(unsigned long long)arg1 useSearchFieldStyle:(BOOL)arg2;
 + (id)photosDetailsContextForPhotosUUIDs:(id)arg1 title:(id)arg2;

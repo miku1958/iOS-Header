@@ -17,7 +17,8 @@
 }
 
 @property (readonly) struct Object *_apiObject;
-@property (readonly, nonatomic) _WKFrameHandle *_handle;
+@property (readonly, copy, nonatomic) _WKFrameHandle *_handle;
+@property (readonly, copy, nonatomic) _WKFrameHandle *_parentFrameHandle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

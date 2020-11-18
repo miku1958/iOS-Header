@@ -20,6 +20,8 @@
     BOOL _allowPlaceholder;
     BOOL _allowSecondaryOpportunisticImage;
     BOOL _onlyUseFetchedAssetPropertiesDuringChoosing;
+    BOOL _useLowMemoryMode;
+    BOOL _useLimitedLibraryMode;
     long long _version;
     long long _deliveryMode;
     long long _resizeMode;
@@ -27,6 +29,7 @@
     long long _loadingMode;
     NSObject<OS_dispatch_queue> *_resultHandlerQueue;
     CDUnknownBlockType _cachingCompleteHandler;
+    long long _downloadIntent;
     struct CGRect _normalizedCropRect;
 }
 
@@ -36,6 +39,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long loadingMode; // @synthesize loadingMode=_loadingMode;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
@@ -46,6 +50,8 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSynchronous) BOOL synchronous; // @synthesize synchronous=_synchronous;
+@property (nonatomic) BOOL useLimitedLibraryMode; // @synthesize useLimitedLibraryMode=_useLimitedLibraryMode;
+@property (nonatomic) BOOL useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 + (id)defaultOptionsAllowingPlaceholder;

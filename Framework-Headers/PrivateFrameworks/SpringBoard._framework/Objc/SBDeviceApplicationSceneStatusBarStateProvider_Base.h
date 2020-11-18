@@ -10,19 +10,23 @@
 #import <SpringBoard/SBApplicationSceneStatusBarDescribingInternal-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride-Protocol.h>
 
-@class NSMutableArray, NSString, SBDeviceApplicationSceneHandle;
+@class FBScene, NSMutableArray, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, _UIStatusBarData;
 
 @interface SBDeviceApplicationSceneStatusBarStateProvider_Base : NSObject <SBApplicationSceneStatusBarDescribingInternal, SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride, SBApplicationSceneStatusBarDescribing>
 {
     NSMutableArray *_observers;
 }
 
+@property (readonly, nonatomic) SBDeviceApplicationSceneStatusBarBreadcrumbProvider *breadcrumbProvider;
+@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *classicApplicationSceneHandleIfExists;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _UIStatusBarData *overlayStatusBarData;
+@property (readonly, nonatomic) FBScene *sceneToHandleStatusBarTapIfExists;
+@property (readonly, nonatomic) BOOL sceneWantsDeviceOrientationEventsEnabled;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
-@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *statusBarControllingSceneHandle;
 @property (readonly, nonatomic) BOOL statusBarHidden;
 @property (readonly, nonatomic) long long statusBarOrientation;
 @property (readonly, nonatomic) NSString *statusBarSceneIdentifier;
@@ -31,6 +35,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)SB_conformsToSBApplicationSceneStatusBarDescribing;
 - (id)_allObservers;
 - (long long)_fallbackInterfaceOrientation;
 - (id)_observerRecords;

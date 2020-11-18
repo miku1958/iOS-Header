@@ -8,14 +8,14 @@
 
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class SSLookupItem;
+@class AMSLookupItem;
 
 @interface HULinkedApplicationStoreItem : HULinkedApplicationItem <NSCopying>
 {
-    SSLookupItem *_storeItem;
+    AMSLookupItem *_storeItem;
 }
 
-@property (readonly, nonatomic) SSLookupItem *storeItem; // @synthesize storeItem=_storeItem;
+@property (readonly, nonatomic) AMSLookupItem *storeItem; // @synthesize storeItem=_storeItem;
 
 - (void).cxx_destruct;
 - (id)_imageForSize:(struct CGSize)arg1 fromArtwork:(id)arg2;
@@ -25,6 +25,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithStoreItem:(id)arg1;
+- (id)initWithStoreItem:(id)arg1 associatedAccessories:(id)arg2;
 
 @end
 

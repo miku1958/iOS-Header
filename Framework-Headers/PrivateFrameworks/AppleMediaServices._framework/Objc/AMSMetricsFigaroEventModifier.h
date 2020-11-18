@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSDictionary *fieldFilters; // @synthesize fieldFilters=_fieldFilters;
+@property (readonly, nonatomic) double flushInterval;
 @property (readonly, nonatomic) NSDictionary *metricsDictionary; // @synthesize metricsDictionary=_metricsDictionary;
 @property (readonly, nonatomic) NSDictionary *overrideDictionary; // @synthesize overrideDictionary=_overrideDictionary;
 @property (readonly, nonatomic) NSString *sampleSessionKey; // @synthesize sampleSessionKey=_sampleSessionKey;
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)_overridePropertyForKey:(id)arg1;
 - (BOOL)_shouldSampleEvent:(id)arg1;
 - (BOOL)fieldFiltersMatchEvent:(id)arg1;
-- (id)initWithMetricsDictionary:(id)arg1 matchedOverrideDictionary:(id)arg2;
+- (id)initWithMetricsDictionary:(id)arg1 overrideDictionary:(id)arg2;
 - (id)prepareEvent:(id)arg1;
 - (id)reportingURLForEvent:(id)arg1;
 - (BOOL)shouldDropEvent:(id)arg1;

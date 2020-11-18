@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *locateMode;
+@property (nonatomic) BOOL stopAtFirstPyramidWith2DCode;
 @property (copy, nonatomic) NSArray *symbologies;
 
 + (id)ACBSBarcodeTypeForBarcodeSymbology:(id)arg1;
@@ -33,6 +34,7 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)newBarcodeObservationForACBSBarcodeInfo:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 roiCroppingPixelRect:(struct CGRect)arg4 requestRevision:(unsigned long long)arg5 error:(id *)arg6;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

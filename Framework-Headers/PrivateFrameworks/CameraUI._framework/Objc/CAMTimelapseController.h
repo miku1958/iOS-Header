@@ -71,7 +71,7 @@
 - (void)_deviceStarted:(id)arg1;
 - (BOOL)_enqueueCaptureRequest;
 - (void)_invalidateCachedGraphConfiguration;
-- (void)_notifyAGGDForDidStopCapturingWithState:(id)arg1;
+- (void)_notifyAnalyticsForDidStopCapturingWithState:(id)arg1;
 - (void)_notifyInsufficientDiskSpaceForContinuingCapture;
 - (void)_notifyInsufficientDiskSpaceForStartingCaptureWithNeededBytes:(long long)arg1 availableBytes:(long long)arg2;
 - (void)_prepareForTimelapseCaptureSetModeAndDevice:(BOOL)arg1;

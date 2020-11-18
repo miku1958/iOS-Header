@@ -42,7 +42,10 @@
 - (id)labelArray;
 - (id)labelMap;
 - (id)mlModel;
+- (id)predictedLabelArraysForTokenArrays:(id)arg1;
 - (id)predictedLabelForString:(id)arg1;
+- (id)predictedLabelHypothesesForString:(id)arg1 maximumCount:(unsigned long long)arg2;
+- (id)predictedLabelHypothesesForTokens:(id)arg1 maximumCount:(unsigned long long)arg2;
 - (id)predictedLabelsForTokens:(id)arg1;
 - (id)sequenceTestResultsWithDataProvider:(id)arg1;
 - (unsigned long long)systemVersion;

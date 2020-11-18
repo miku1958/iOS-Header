@@ -29,7 +29,7 @@
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (void)_performSynchronizedCommit:(id)arg1;
-- (void)_sendActivationResultWithSuccess:(BOOL)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 - (id)initWithApplicationSceneEntity:(id)arg1 transitionRequest:(id)arg2;
 
 @end

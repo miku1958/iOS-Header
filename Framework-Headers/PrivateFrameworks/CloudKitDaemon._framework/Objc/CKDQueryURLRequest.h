@@ -45,8 +45,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithQuery:(id)arg1 cursor:(id)arg2 limit:(unsigned long long)arg3 requestedFields:(id)arg4 zoneID:(id)arg5;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 query:(id)arg2 cursor:(id)arg3 limit:(unsigned long long)arg4 requestedFields:(id)arg5 zoneID:(id)arg6;
 - (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;

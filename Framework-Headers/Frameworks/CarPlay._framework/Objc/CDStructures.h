@@ -25,6 +25,11 @@ struct CGSize {
     double _field2;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct UIEdgeInsets {
     double _field1;
     double _field2;
@@ -50,6 +55,14 @@ typedef struct {
 } CDStruct_a002d41c;
 
 typedef struct {
-    unsigned int :1;
-} CDStruct_65389fcd;
+    BOOL _field1;
+} CDStruct_b31ca263;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    struct {
+        double _field1;
+        double _field2;
+    } _field2;
+} CDStruct_2b0c6e0b;
 

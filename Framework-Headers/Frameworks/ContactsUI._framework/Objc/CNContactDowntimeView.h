@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
 @interface CNContactDowntimeView : UIView
 {
     NSDictionary *_ab_textAttributes;
+    long long _elements;
     UILabel *_downtimeLabel;
     NSTextAttachment *_imageAttachment;
 }
 
 @property (copy, nonatomic) NSDictionary *ab_textAttributes; // @synthesize ab_textAttributes=_ab_textAttributes;
 @property (readonly, nonatomic) UILabel *downtimeLabel; // @synthesize downtimeLabel=_downtimeLabel;
+@property (nonatomic) long long elements; // @synthesize elements=_elements;
 @property (readonly, nonatomic) NSTextAttachment *imageAttachment; // @synthesize imageAttachment=_imageAttachment;
 
 + (id)lockImageAttachment;
@@ -25,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateIntrinsicContentSize;
-- (void)setupAttributedText;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateAttributedText;
 
 @end
 

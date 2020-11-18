@@ -6,18 +6,22 @@
 
 #import <IconServices/ISIconCacheIOS.h>
 
+@class NSXPCConnection;
+
 __attribute__((visibility("hidden")))
 @interface ISIconCacheClient : ISIconCacheIOS
 {
     unsigned long long _sandboxExtensionHandle;
+    NSXPCConnection *_connection;
 }
 
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property unsigned long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 
 + (id)serviceName;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_fetchCacheURLAndSalt;
-- (id)connection;
 - (id)iconBitmapDataWithResourceLocator:(id)arg1 variant:(int)arg2 options:(int)arg3;
 - (id)init;
 - (void)invalidateCacheEntriesForBundleIdentifier:(id)arg1;

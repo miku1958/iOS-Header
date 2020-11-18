@@ -11,7 +11,7 @@
 @interface PGPeopleMemoryGenerator : PGFeaturedMemoryGenerator
 {
     NSString *_peopleUUID;
-    NSSet *_peopleNodes;
+    NSSet *_personNodes;
     NSSet *_birthdayPersonUUIDs;
     long long _year;
     NSSet *_extraFeatures;
@@ -19,18 +19,20 @@
 
 @property (strong, nonatomic) NSSet *birthdayPersonUUIDs; // @synthesize birthdayPersonUUIDs=_birthdayPersonUUIDs;
 @property (nonatomic) NSSet *extraFeatures; // @synthesize extraFeatures=_extraFeatures;
-@property (strong, nonatomic) NSSet *peopleNodes; // @synthesize peopleNodes=_peopleNodes;
 @property (strong, nonatomic) NSString *peopleUUID; // @synthesize peopleUUID=_peopleUUID;
+@property (strong, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property (nonatomic) long long year; // @synthesize year=_year;
 
 - (void).cxx_destruct;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 - (void)_potentialMemoriesWithPeopleNode:(id)arg1 inYear:(long long)arg2 result:(CDUnknownBlockType)arg3;
 - (BOOL)_upcomingBirthdayWillCollideWithPotentialMemory:(id)arg1;
 - (BOOL)canFallbackToDejunkAndDedupeForShowMore;
+- (unsigned long long)durationForCuration;
+- (unsigned long long)durationForExtendedCuration;
+- (BOOL)semanticalDedupingEnabledForExtendedCuration;
 
 @end
 

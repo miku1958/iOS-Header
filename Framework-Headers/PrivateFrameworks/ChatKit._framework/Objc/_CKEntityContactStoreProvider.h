@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
-- (void *)addressBook;
 - (id)contactStore;
 
 @end

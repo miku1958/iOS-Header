@@ -8,12 +8,11 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class NSString, SNSystemConfiguration;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNNullDetector : NSObject <SNAnalyzing>
 {
-    SNSystemConfiguration *_systemConfiguration;
     shared_ptr_f6ac7592 _graph;
     BOOL _graphIsDeadEnded;
     BOOL _shouldThrowException;
@@ -37,10 +36,9 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (id)init;
+- (id)initWithSampleRate:(double)arg1 blockSize:(unsigned int)arg2 computationalDutyCycle:(double)arg3 graphIsDeadEnded:(BOOL)arg4 shouldThrowException:(BOOL)arg5;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
-- (void)updateGraph;
 
 @end
 

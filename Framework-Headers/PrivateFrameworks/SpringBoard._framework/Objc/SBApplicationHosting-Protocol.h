@@ -10,6 +10,7 @@
 
 @protocol SBApplicationHosting <NSObject>
 - (BOOL)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 - (SBDeviceApplicationSceneHandle *)hostedAppSceneHandle;
 - (NSArray *)hostedAppSceneHandles;
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;

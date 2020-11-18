@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKFetchRecordZoneChangesOperationCallbacks-Protocol.h>
 
-@interface CKFetchRecordZoneChangesOperation : CKDatabaseOperation
+@class CKFetchRecordZoneChangesOperationInfo, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchRecordZoneChangesOperationCallbacks;
+
+@interface CKFetchRecordZoneChangesOperation : CKDatabaseOperation <CKFetchRecordZoneChangesOperationCallbacks>
 {
     BOOL _fetchAllChanges;
     BOOL _shouldFetchAssetContents;
@@ -28,9 +31,11 @@
 }
 
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
+@property (readonly, nonatomic) id<CKFetchRecordZoneChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) NSDictionary *configurationsByRecordZoneID; // @synthesize configurationsByRecordZoneID=_configurationsByRecordZoneID;
 @property (nonatomic) BOOL fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordZoneChangesCompletionBlock; // @synthesize fetchRecordZoneChangesCompletionBlock=_fetchRecordZoneChangesCompletionBlock;
+@property (readonly, nonatomic) CKFetchRecordZoneChangesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) NSDictionary *optionsByRecordZoneID;
 @property (strong, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
 @property (copy, nonatomic) CDUnknownBlockType perRecordChangeCompletionBlock; // @synthesize perRecordChangeCompletionBlock=_perRecordChangeCompletionBlock;
@@ -44,14 +49,17 @@
 @property (strong, nonatomic) NSMutableDictionary *statusByZoneID; // @synthesize statusByZoneID=_statusByZoneID;
 @property (strong, nonatomic) NSMutableSet *zoneIDsWithPendingArchivedRecords; // @synthesize zoneIDsWithPendingArchivedRecords=_zoneIDsWithPendingArchivedRecords;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (long long)changeTypesFromSetCallbacks;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleChangeForRecordID:(id)arg1 record:(id)arg2 error:(id)arg3;
+- (void)handleChangeSetCompletionForRecordZoneID:(id)arg1 serverChangeToken:(id)arg2 clientChangeTokenData:(id)arg3 recordChangesStatus:(long long)arg4 hasPendingArchivedRecords:(BOOL)arg5 error:(id)arg6 reply:(CDUnknownBlockType)arg7;
+- (void)handleDeleteForRecordID:(id)arg1 recordType:(id)arg2;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
@@ -60,6 +68,7 @@
 - (void)performCKOperation;
 - (id)recordZoneChangesStatusByZoneID;
 - (id)recordZoneIDsWithPendingArchivedRecords;
+- (id)relevantZoneIDs;
 
 @end
 

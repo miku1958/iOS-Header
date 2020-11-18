@@ -51,14 +51,14 @@
 - (void)_populateArtworksWithDecoderData:(id)arg1;
 - (void)_populateIncidentsWithDecoderData:(id)arg1;
 - (id)description;
-- (unsigned int)distance;
+- (double)distance;
 - (unsigned int)duration;
 - (void)encodeWithCoder:(id)arg1;
 - (CDStruct_39925896)endGeoCoordinate;
 - (id)endingStop;
 - (BOOL)hasDuration;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 routeLegType:(long long)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 duration:(unsigned int)arg6 pointRange:(struct _NSRange)arg7;
+- (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 routeSegmentType:(long long)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 duration:(unsigned int)arg6 pointRange:(struct _NSRange)arg7;
 - (id)instructions;
 - (BOOL)isArrivalStep;
 - (id)nextAlightingStep;

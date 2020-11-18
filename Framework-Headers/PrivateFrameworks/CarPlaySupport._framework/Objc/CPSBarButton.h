@@ -11,6 +11,7 @@
 @interface CPSBarButton : CPSButton
 {
     BOOL _showBackIndicator;
+    BOOL _usesSystemComposeGlyph;
     CPBarButton *_cyBarButton;
     UIImageView *_backIndicatorImageView;
     UIImage *_backIndicatorImage;
@@ -24,13 +25,16 @@
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) CPBarButton *cyBarButton; // @synthesize cyBarButton=_cyBarButton;
 @property (nonatomic) BOOL showBackIndicator; // @synthesize showBackIndicator=_showBackIndicator;
+@property (nonatomic) BOOL usesSystemComposeGlyph; // @synthesize usesSystemComposeGlyph=_usesSystemComposeGlyph;
 
 + (id)buttonWithCPBarButton:(id)arg1 showBackIndicator:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_externalUnfocusedBorderColor;
 - (void)_resetAlpha;
 - (void)_setupBackButtonImagesIfNeccessary;
+- (BOOL)_showsRoundedBackground;
 - (void)_updateBackIndicatorImageView;
+- (void)_updateButtonImage:(id)arg1;
 - (void)didAddSubview:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

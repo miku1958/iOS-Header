@@ -6,11 +6,16 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBIconView;
+@class SBIconView, UIViewController;
 
 @protocol SBIconViewObserver <NSObject>
 
 @optional
+- (void)iconView:(SBIconView *)arg1 didChangeCustomImageViewController:(UIViewController *)arg2;
+- (void)iconViewDidEndDrag:(SBIconView *)arg1;
+- (void)iconViewDidHandleTap:(SBIconView *)arg1;
+- (void)iconViewSizeDidChange:(SBIconView *)arg1;
 - (void)iconViewWasRecycled:(SBIconView *)arg1;
+- (void)iconViewWillBeginDrag:(SBIconView *)arg1;
 @end
 

@@ -6,9 +6,7 @@
 
 #import <HealthExperience/_TtC16HealthExperience37FirstRestoreNotInProgressPrecondition.h>
 
-#import <HealthExperience/HKCloudSyncObserverDelegate-Protocol.h>
-
-@interface _TtC16HealthExperience37FirstRestoreNotInProgressPrecondition (HealthExperience) <HKCloudSyncObserverDelegate>
+@interface _TtC16HealthExperience37FirstRestoreNotInProgressPrecondition (HealthExperience)
 - (void)cloudSyncObserver:(id)arg1 syncDidStartWithProgress:(id)arg2;
 - (void)cloudSyncObserver:(id)arg1 syncFailedWithError:(id)arg2;
 - (void)cloudSyncObserverStatusUpdated:(id)arg1 status:(id)arg2;

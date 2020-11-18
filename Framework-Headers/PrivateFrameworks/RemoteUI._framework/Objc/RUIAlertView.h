@@ -7,11 +7,12 @@
 #import <RemoteUI/RUIElement.h>
 
 @class NSString, RUIObjectModel, UIAlertController;
-@protocol RUIAlertViewDelegate;
+@protocol RUIAlertViewDelegate, RUIPresentationHandling;
 
 @interface RUIAlertView : RUIElement
 {
     UIAlertController *_alertController;
+    id<RUIPresentationHandling> _presentationContext;
     RUIObjectModel<RUIAlertViewDelegate> *_objectModel;
     NSString *_title;
     NSString *_message;
@@ -27,6 +28,7 @@
 
 + (void)_enableTestMode;
 - (void).cxx_destruct;
+- (void)_dismissAlertController;
 - (void)addButtonWithTitle:(id)arg1 URL:(id)arg2 style:(long long)arg3 attributes:(id)arg4;
 - (id)alertController;
 - (void)dealloc;

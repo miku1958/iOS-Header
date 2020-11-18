@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, HMDTriggerConfirmationTimer, HMFTimer, HomeKitEventTriggerExecutionSessionEvent, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSPredicate, NSString;
+@class HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, HMDTriggerConfirmationTimer, HMFTimer, HomeKitEventTriggerExecutionSessionLogEvent, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSPredicate, NSString;
 
 @interface HMDEventTriggerExecutionSession : HMDEventTriggerSession <HMFDumpState, HMFLogging, HMDEventDelegate, HMFTimerDelegate>
 {
@@ -30,13 +30,14 @@
     HMDEventTriggerUserConfirmationSession *_userConfirmationSession;
     HMDTriggerConfirmationTimer *_secureTriggerConfirmationTimer;
     HMFTimer *_startCharacteristicsMonitorTimer;
-    HomeKitEventTriggerExecutionSessionEvent *_metricEvent;
+    HomeKitEventTriggerExecutionSessionLogEvent *_analyticsEvent;
     NSMapTable *_writeRequests;
     NSMutableSet *_mediaProfiles;
 }
 
 @property (nonatomic) BOOL actionSetExecutionInProgress; // @synthesize actionSetExecutionInProgress=_actionSetExecutionInProgress;
 @property (readonly, nonatomic) NSArray *actionSets; // @synthesize actionSets=_actionSets;
+@property (readonly, nonatomic) HomeKitEventTriggerExecutionSessionLogEvent *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
 @property (readonly, nonatomic) NSMutableArray *causingDevices; // @synthesize causingDevices=_causingDevices;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -46,7 +47,6 @@
 @property (nonatomic) unsigned long long executionState; // @synthesize executionState=_executionState;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableSet *mediaProfiles; // @synthesize mediaProfiles=_mediaProfiles;
-@property (readonly, nonatomic) HomeKitEventTriggerExecutionSessionEvent *metricEvent; // @synthesize metricEvent=_metricEvent;
 @property (strong, nonatomic) NSArray *monitorEvents; // @synthesize monitorEvents=_monitorEvents;
 @property (readonly, nonatomic) BOOL needsUserConfirmation;
 @property (readonly, nonatomic) HMDPredicateUtilities *predicateUtilities; // @synthesize predicateUtilities=_predicateUtilities;
@@ -76,7 +76,7 @@
 - (void)_handleMonitoringEvent:(id)arg1;
 - (void)_removeUserDialog;
 - (void)_restoreState;
-- (void)_submitMetric:(id)arg1;
+- (void)_submitAnalyticsData:(id)arg1;
 - (void)_userResponse:(unsigned long long)arg1 device:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addEvent:(id)arg1 causingDevice:(id)arg2;
 - (void)cancelSessionIfWaitingForUserResponse;

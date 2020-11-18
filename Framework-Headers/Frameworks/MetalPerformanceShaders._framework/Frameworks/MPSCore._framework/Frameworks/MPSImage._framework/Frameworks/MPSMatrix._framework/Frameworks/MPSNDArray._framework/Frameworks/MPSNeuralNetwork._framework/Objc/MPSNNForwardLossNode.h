@@ -20,6 +20,7 @@
     float _delta;
     MPSCNNLossDescriptor *_descriptor;
     id<MPSNNLossCallback> _propertyCallBack;
+    BOOL _reduceAcrossBatch;
 }
 
 @property (readonly, nonatomic) float delta; // @synthesize delta=_delta;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 @property (readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
 @property (strong, nonatomic) id<MPSNNLossCallback> propertyCallBack; // @synthesize propertyCallBack=_propertyCallBack;
+@property (readonly, nonatomic) BOOL reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property (readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property (readonly, nonatomic) float weight; // @synthesize weight=_weight;
 

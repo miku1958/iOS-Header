@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIRecentsInputViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView;
+@class NSArray, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView;
 @protocol UISystemInputViewControllerDelegate, UITextInput, UITraitEnvironment;
 
 @interface UISystemInputViewController : UIViewController <UIRecentsInputViewControllerDelegate>
@@ -34,8 +34,8 @@
     UIButton *_doneButton;
     UIViewController *_inputVC;
     UIRecentsInputViewController *_recentsVC;
-    NSLayoutConstraint *_verticalAlignment;
-    NSLayoutConstraint *_horizontalAlignment;
+    NSArray *_verticalAlignments;
+    NSArray *_horizontalAlignments;
     UIResponder<UITextInput> *_nextInputDelegate;
     UITextInputTraits *_textInputTraits;
     UILexicon *_cachedRecents;
@@ -58,7 +58,7 @@
 @property (strong, nonatomic) NSArray *editorConstraints; // @synthesize editorConstraints=_editorConstraints;
 @property (strong, nonatomic) UIKBSystemLayoutViewController *editorVC; // @synthesize editorVC=_editorVC;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSLayoutConstraint *horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
+@property (strong, nonatomic) NSArray *horizontalAlignments; // @synthesize horizontalAlignments=_horizontalAlignments;
 @property (strong, nonatomic) UIViewController *inputVC; // @synthesize inputVC=_inputVC;
 @property (nonatomic) BOOL isAutomaticResponderTransition; // @synthesize isAutomaticResponderTransition=_isAutomaticResponderTransition;
 @property (strong, nonatomic) UIKeyboard *keyboard; // @synthesize keyboard=_keyboard;
@@ -74,7 +74,7 @@
 @property (nonatomic) id<UISystemInputViewControllerDelegate> systemInputViewControllerDelegate; // @synthesize systemInputViewControllerDelegate=_systemInputViewControllerDelegate;
 @property (strong, nonatomic) UITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 @property (nonatomic) struct UIEdgeInsets unfocusedFocusGuideOutsets;
-@property (strong, nonatomic) NSLayoutConstraint *verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
+@property (strong, nonatomic) NSArray *verticalAlignments; // @synthesize verticalAlignments=_verticalAlignments;
 @property (nonatomic) BOOL willPresentFullscreen; // @synthesize willPresentFullscreen=_willPresentFullscreen;
 @property (nonatomic) BOOL willUpdateBackgroundEffectOnInputModeChange; // @synthesize willUpdateBackgroundEffectOnInputModeChange=_willUpdateBackgroundEffectOnInputModeChange;
 
@@ -94,7 +94,6 @@
 - (void)_didSuspend:(id)arg1;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (void)_dismissSystemInputViewController;
-- (id)_effectView;
 - (unsigned long long)_horizontalLayoutTypeForEdge:(long long)arg1;
 - (void)_removeAccessoryViewController:(id)arg1;
 - (void)_resetDelegate;
@@ -108,6 +107,7 @@
 - (void)_windowDidBecomeKey:(id)arg1;
 - (void)_windowWillBecomeKey:(id)arg1;
 - (id)accessoryViewControllerForEdge:(long long)arg1;
+- (id)alignmentConstraintArrayForAxis:(long long)arg1;
 - (id)alignmentConstraintForAxis:(long long)arg1;
 - (void)configureRecentsVCIfNecessary;
 - (id)constraintFromView:(id)arg1 attribute:(long long)arg2 toView:(id)arg3 attribute:(long long)arg4;
@@ -130,6 +130,7 @@
 - (void)resetContainingResponder;
 - (void)setAccessoryViewController:(id)arg1 forEdge:(long long)arg2;
 - (void)setAlignmentConstraint:(id)arg1 forAxis:(long long)arg2;
+- (void)setAlignmentConstraintArray:(id)arg1 forAxis:(long long)arg2;
 - (void)setConstraints:(id)arg1 forEdge:(long long)arg2;
 - (void)setupKeyboard;
 - (void)switchToKeyboard;

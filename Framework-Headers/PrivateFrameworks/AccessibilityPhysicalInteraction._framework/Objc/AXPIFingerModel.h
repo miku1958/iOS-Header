@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)setPressed:(BOOL)arg1 sendDelegateCallback:(BOOL)arg2;
+- (void)updateWithPropertiesFromFingerModel:(id)arg1;
 
 @end
 

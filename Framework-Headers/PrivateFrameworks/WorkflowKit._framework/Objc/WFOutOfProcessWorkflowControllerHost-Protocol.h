@@ -6,10 +6,10 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSError;
+@class NSError, WFDialogAttribution, WFWorkflowReference;
 
 @protocol WFOutOfProcessWorkflowControllerHost <NSObject>
-- (void)workflowDidFinishRunningWithError:(NSError *)arg1 cancelled:(BOOL)arg2;
-- (void)workflowDidStart;
+- (void)workflowDidFinishRunningWithError:(NSError *)arg1 cancelled:(BOOL)arg2 reference:(WFWorkflowReference *)arg3;
+- (void)workflowDidStartFromWorkflowReference:(WFWorkflowReference *)arg1 attribution:(WFDialogAttribution *)arg2;
 @end
 

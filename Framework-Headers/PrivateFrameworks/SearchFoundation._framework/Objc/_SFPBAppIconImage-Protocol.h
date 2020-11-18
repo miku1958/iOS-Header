@@ -11,6 +11,7 @@
 @protocol _SFPBAppIconImage <NSObject>
 
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (nonatomic) int iconType;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

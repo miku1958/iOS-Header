@@ -11,6 +11,7 @@
 @protocol HFHomeStatusVisible <NSObject>
 
 @property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
+@property (readonly, nonatomic) BOOL hf_isForcedVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_supportsHomeStatus;
 

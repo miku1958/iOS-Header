@@ -24,6 +24,7 @@
     _UILegibilitySettings *_legibilitySettings;
     BOOL _transitioningPresentation;
     BOOL _useDismissHitTestPadding;
+    SBFloatingDockSuggestionsModel *_suggestionsModel;
     id<SBFloatingDockRootViewControllerDelegate> _delegate;
     SBApplication *_requestedSuggestedApplication;
     FBDisplayLayoutElement *_displayLayoutElement;
@@ -37,7 +38,6 @@
     SBFAnalyticsClient *_analyticsClient;
     SBWorkspaceApplicationSceneTransitionContext *_currentTransitionContext;
     id<SBIconViewProviding> _iconViewProvider;
-    SBFloatingDockSuggestionsModel *_suggestionsModel;
 }
 
 @property (strong, nonatomic) SBFAnalyticsClient *analyticsClient; // @synthesize analyticsClient=_analyticsClient;
@@ -95,6 +95,7 @@
 - (id)firstIconViewForIcon:(id)arg1;
 - (id)firstIconViewForIcon:(id)arg1 excludingLocations:(id)arg2;
 - (id)firstIconViewForIcon:(id)arg1 inLocations:(id)arg2;
+- (void)floatingDockViewController:(id)arg1 didChangeContentFrame:(struct CGRect)arg2;
 - (void)floatingDockViewController:(id)arg1 didChangeContentHeight:(double)arg2;
 - (void)floatingDockViewController:(id)arg1 wantsToBePresented:(BOOL)arg2;
 - (void)floatingDockViewController:(id)arg1 willPerformTransitionWithFolder:(id)arg2 presenting:(BOOL)arg3 withTransitionCoordinator:(id)arg4;
@@ -123,7 +124,6 @@
 - (void)setPresentationProgress:(double)arg1 interactive:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setPresentationProgressInteractively:(double)arg1;
 - (void)setPresentationProgressInteractively:(double)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (double)statusBarHeightForFloatingDockViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

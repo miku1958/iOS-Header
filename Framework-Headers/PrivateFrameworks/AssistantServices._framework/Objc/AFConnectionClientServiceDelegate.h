@@ -27,6 +27,7 @@
 - (oneway void)aceConnectionWillRetryOnError:(id)arg1;
 - (oneway void)acousticIDRequestDidFinishWithSuccess:(BOOL)arg1;
 - (oneway void)acousticIDRequestWillStart;
+- (oneway void)appLaunchFailedWithBundleIdentifier:(id)arg1;
 - (oneway void)audioPlaybackRequestDidStart:(id)arg1;
 - (oneway void)audioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
 - (oneway void)audioPlaybackRequestWillStart:(id)arg1;
@@ -68,6 +69,7 @@
 - (oneway void)startPlaybackDidFail:(long long)arg1;
 - (oneway void)startUIRequestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)willProcessAppLaunchWithBundleIdentifier:(id)arg1;
 - (oneway void)willProcessStartPlayback:(long long)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

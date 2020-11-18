@@ -6,19 +6,19 @@
 
 #import <Home/HFSimpleItemManager.h>
 
-@class HFStaticItem, HUInstructionsItem;
+@class HUButtonItem, HUInstructionsItem, HUTriggerHeaderItem, HUViewControllerTableViewItem;
 
 @interface HUTriggerActionEditorItemManager : HFSimpleItemManager
 {
-    HFStaticItem *_gridItem;
-    HFStaticItem *_addShortcutHeader;
-    HFStaticItem *_addShortcutItem;
+    HUButtonItem *_addShortcutItem;
+    HUViewControllerTableViewItem *_gridItem;
     HUInstructionsItem *_instructionsItem;
+    HUTriggerHeaderItem *_addShortcutHeader;
 }
 
-@property (strong, nonatomic) HFStaticItem *addShortcutHeader; // @synthesize addShortcutHeader=_addShortcutHeader;
-@property (strong, nonatomic) HFStaticItem *addShortcutItem; // @synthesize addShortcutItem=_addShortcutItem;
-@property (strong, nonatomic) HFStaticItem *gridItem; // @synthesize gridItem=_gridItem;
+@property (strong, nonatomic) HUTriggerHeaderItem *addShortcutHeader; // @synthesize addShortcutHeader=_addShortcutHeader;
+@property (strong, nonatomic) HUButtonItem *addShortcutItem; // @synthesize addShortcutItem=_addShortcutItem;
+@property (strong, nonatomic) HUViewControllerTableViewItem *gridItem; // @synthesize gridItem=_gridItem;
 @property (strong, nonatomic) HUInstructionsItem *instructionsItem; // @synthesize instructionsItem=_instructionsItem;
 
 - (void).cxx_destruct;

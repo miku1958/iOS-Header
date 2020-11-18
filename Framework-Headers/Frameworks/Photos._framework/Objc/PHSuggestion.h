@@ -21,6 +21,7 @@
     unsigned short _subtype;
     unsigned short _state;
     unsigned short _notificationState;
+    unsigned short _featuredState;
     NSDictionary *_actionProperties;
     NSDictionary *_featuresProperties;
     long long _version;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSDate *activationDate; // @synthesize activationDate=_activationDate;
 @property (readonly, nonatomic) BOOL containsUnverifiedPersons;
 @property (readonly, nonatomic) NSDate *expungeDate; // @synthesize expungeDate=_expungeDate;
+@property (readonly, nonatomic) unsigned short featuredState; // @synthesize featuredState=_featuredState;
 @property (readonly, nonatomic) NSDictionary *featuresProperties; // @synthesize featuresProperties=_featuresProperties;
 @property (readonly, nonatomic) unsigned short notificationState; // @synthesize notificationState=_notificationState;
 @property (readonly, nonatomic) NSDate *relevantUntilDate; // @synthesize relevantUntilDate=_relevantUntilDate;
@@ -56,6 +58,7 @@
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsTrashedState;
++ (id)predicateForAllFeaturedStateEnabledSuggestionTypes;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)suggestionInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;

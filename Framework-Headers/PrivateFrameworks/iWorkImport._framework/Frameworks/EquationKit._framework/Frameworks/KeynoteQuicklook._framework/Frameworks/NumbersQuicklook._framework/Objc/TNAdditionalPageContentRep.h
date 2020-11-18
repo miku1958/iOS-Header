@@ -10,6 +10,7 @@
 {
 }
 
+- (struct CGRect)clipRect;
 - (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (BOOL)forcesPlacementOnTop;

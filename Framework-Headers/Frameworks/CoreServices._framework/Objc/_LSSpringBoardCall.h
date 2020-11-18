@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
     BOOL _callCompletionHandlerWhenFullyComplete;
     NSDictionary *_launchOptions;
     BSServiceConnectionEndpoint *_targetServiceConnectionEndpoint;
-    NSString *_applicationIdentifier;
+    NSString *_bundleIdentifier;
     NSXPCConnection *_clientXPCConnection;
 }
 
-@property (copy) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
+@property (copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property BOOL callCompletionHandlerWhenFullyComplete; // @synthesize callCompletionHandlerWhenFullyComplete=_callCompletionHandlerWhenFullyComplete;
 @property (strong) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
 @property (copy) NSDictionary *launchOptions; // @synthesize launchOptions=_launchOptions;

@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (void)_setBestAppSuggestion:(id)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (id)bestAppSuggestion;
-- (id)handleGestureDidBegin:(id)arg1;
+- (void)handleGestureDidBegin:(id)arg1;
 - (id)initWithRootModifier:(id)arg1 liveContentOverlayCoordinator:(id)arg2 debugName:(id)arg3;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;

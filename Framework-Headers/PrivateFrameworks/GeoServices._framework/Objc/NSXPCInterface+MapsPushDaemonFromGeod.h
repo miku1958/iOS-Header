@@ -7,6 +7,7 @@
 #import <Foundation/NSXPCInterface.h>
 
 @interface NSXPCInterface (MapsPushDaemonFromGeod)
++ (id)_geo_GEOAppleMediaServicesProtocolInterface;
 + (id)geo_MapsPushDaemonFromGeodInterface;
 @end
 

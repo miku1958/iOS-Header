@@ -6,27 +6,48 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <SpotlightUIInternal/SPUISearchViewControllerSizingDelegate-Protocol.h>
+#import <SpotlightUIInternal/SearchUICardViewDelegate-Protocol.h>
 #import <SpotlightUIInternal/UINavigationControllerDelegate-Protocol.h>
 
-@class NSString, SPUINavigationBar;
+@class NSString, SPUINavigationBar, SPUISearchViewController;
+@protocol SPUINavigationControllerDelegate;
 
-@interface SPUINavigationController : UINavigationController <UINavigationControllerDelegate>
+@interface SPUINavigationController : UINavigationController <UINavigationControllerDelegate, SPUISearchViewControllerSizingDelegate, SearchUICardViewDelegate>
 {
+    double _contentHeight;
+    long long _navigationMode;
+    id<SPUINavigationControllerDelegate> _sizingDelegate;
+    SPUISearchViewController *_searchViewController;
 }
 
+@property (readonly) double contentHeight; // @synthesize contentHeight=_contentHeight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) SPUINavigationBar *navigationBar; // @dynamic navigationBar;
+@property (readonly, nonatomic) SPUINavigationBar *navigationBar; // @dynamic navigationBar;
+@property (nonatomic) long long navigationMode; // @synthesize navigationMode=_navigationMode;
+@property (strong) SPUISearchViewController *searchViewController; // @synthesize searchViewController=_searchViewController;
+@property (nonatomic) BOOL shouldShowKeyboardInputBars;
+@property (weak, nonatomic) id<SPUINavigationControllerDelegate> sizingDelegate; // @synthesize sizingDelegate=_sizingDelegate;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (void)applyCardHeightAnimated:(BOOL)arg1;
+- (void)cardViewController:(id)arg1 preferredContentSizeDidChange:(struct CGSize)arg2 animated:(BOOL)arg3;
+- (double)contentHeightIncludingCardViewController;
+- (double)contentHeightIncludingSearchView;
+- (void)didInvalidateSizeAnimated:(BOOL)arg1;
+- (double)heightOfNavigationBar;
 - (id)init;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithRootViewController:(id)arg1;
+- (id)initWithSearchViewController:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (long long)preferredUserInterfaceStyle;
+- (void)setContentHeight:(double)arg1 animated:(BOOL)arg2;
 
 @end
 

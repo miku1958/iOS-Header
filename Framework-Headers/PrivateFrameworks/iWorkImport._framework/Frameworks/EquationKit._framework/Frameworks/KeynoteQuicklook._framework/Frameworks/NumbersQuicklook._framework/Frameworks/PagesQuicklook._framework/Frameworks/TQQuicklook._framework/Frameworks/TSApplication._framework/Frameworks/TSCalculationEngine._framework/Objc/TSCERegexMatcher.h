@@ -10,13 +10,27 @@
 
 @interface TSCERegexMatcher : NSObject
 {
-    NSRegularExpression *_regex;
+    NSRegularExpression *_regularExpression;
 }
 
+@property (readonly, nonatomic) NSRegularExpression *regularExpression; // @synthesize regularExpression=_regularExpression;
+
++ (id)regexMatcherWithRegexString:(id)arg1;
++ (id)regexMatcherWithRegexString:(id)arg1 caseSensitive:(BOOL)arg2;
++ (id)regexMatcherWithRegexString:(id)arg1 caseSensitive:(BOOL)arg2 entireMatch:(BOOL)arg3;
 + (id)regexMatcherWithStringMatch:(id)arg1;
++ (id)regexMatcherWithStringMatch:(id)arg1 caseSensitive:(BOOL)arg2 entireMatch:(BOOL)arg3;
 - (void).cxx_destruct;
-- (id)initWithStringToMatch:(id)arg1;
-- (BOOL)matches:(id)arg1;
+- (BOOL)containsMatchInString:(id)arg1;
+- (id)initWithRegexString:(id)arg1 caseSensitive:(BOOL)arg2 entireMatch:(BOOL)arg3;
+- (id)initWithString:(id)arg1 caseSensitive:(BOOL)arg2 entireMatch:(BOOL)arg3;
+- (id)matchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3;
+- (unsigned long long)numberOfMatchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3;
+- (struct _NSRange)rangeOfFirstMatchInString:(id)arg1;
+- (struct _NSRange)rangeOfFirstMatchInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3;
+- (struct _NSRange)rangeOfMatchInString:(id)arg1 occurrence:(long long)arg2;
+- (struct _NSRange)rangeOfMatchInString:(id)arg1 occurrence:(long long)arg2 matchesFound:(out long long *)arg3;
+- (id)stringByReplacingMatchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3 withTemplate:(id)arg4;
 
 @end
 

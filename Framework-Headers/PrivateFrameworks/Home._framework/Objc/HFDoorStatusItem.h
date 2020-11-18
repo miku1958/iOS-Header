@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFAbstractDoorAndWindowStatusItem.h>
+#import <Home/HFAbstractPositionStatusItem.h>
 
-@interface HFDoorStatusItem : HFAbstractDoorAndWindowStatusItem
+@interface HFDoorStatusItem : HFAbstractPositionStatusItem
 {
 }
 
++ (id)serviceType;
 - (id)_formatStringTypeComponent;
-- (id)_isOpenCharacteristicType;
-- (CDUnknownBlockType)_isOpenTest;
-- (id)_serviceType;
+- (id)multipleClosedServicesFormatString;
+- (id)multipleClosingServicesFormatString;
+- (id)multipleObstructedServicesFormatString;
+- (id)multipleOpenServicesFormatString;
+- (id)multipleOpeningServicesFormatString;
+- (id)multipleUnknownServicesFormatString;
+- (id)oneClosedServiceFormatString;
+- (id)oneClosingServiceFormatString;
+- (id)oneObstructedServiceFormatString;
+- (id)oneOpenServiceFormatString;
+- (id)oneOpeningServiceFormatString;
+- (id)oneUnknownServiceFormatString;
 
 @end
 

@@ -12,11 +12,15 @@ __attribute__((visibility("hidden")))
     BOOL _loadingStatusChanged;
     BOOL _saveProgressChanged;
     BOOL _saveStateChanged;
+    BOOL _needsDeferredProcessingChanged;
+    BOOL _deferredProcessingNeededChanged;
     BOOL _flippingFullSizeRenderStateChanged;
 }
 
+@property (nonatomic) BOOL deferredProcessingNeededChanged; // @synthesize deferredProcessingNeededChanged=_deferredProcessingNeededChanged;
 @property (nonatomic) BOOL flippingFullSizeRenderStateChanged; // @synthesize flippingFullSizeRenderStateChanged=_flippingFullSizeRenderStateChanged;
 @property (nonatomic) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
+@property (nonatomic) BOOL needsDeferredProcessingChanged; // @synthesize needsDeferredProcessingChanged=_needsDeferredProcessingChanged;
 @property (nonatomic) BOOL saveProgressChanged; // @synthesize saveProgressChanged=_saveProgressChanged;
 @property (nonatomic) BOOL saveStateChanged; // @synthesize saveStateChanged=_saveStateChanged;
 

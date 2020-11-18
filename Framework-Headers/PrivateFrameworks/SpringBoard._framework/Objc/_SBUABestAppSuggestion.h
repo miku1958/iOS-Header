@@ -13,13 +13,10 @@
     UABestAppSuggestion *_appSuggestion;
 }
 
-@property (readonly, nonatomic) UABestAppSuggestion *appSuggestion; // @synthesize appSuggestion=_appSuggestion;
-
 - (void).cxx_destruct;
 - (id)activityType;
 - (id)bundleIdentifier;
 - (unsigned long long)hash;
-- (id)initWithAppSuggestion:(id)arg1;
 - (BOOL)isCallContinuitySuggestion;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHandoff;

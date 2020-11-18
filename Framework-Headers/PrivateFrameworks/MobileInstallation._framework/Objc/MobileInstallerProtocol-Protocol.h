@@ -10,10 +10,14 @@
 - (void)checkCapabilities:(NSObject *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)clearUninstalledIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)dieForTesting;
+- (void)endTestModeWithCompletion:(void (^)(NSError *))arg1;
 - (void)enumerateInstalledAppsWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)fetchDiskUsageForIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
-- (void)fetchInstalledDeveloperAppsWithMountPath:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)fetchInfoForContainerizedAppWithBundleID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchInfoForFrameworkAtURL:(NSURL *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getAppMetadataForApp:(NSString *)arg1 completion:(void (^)(MIBundleMetadata *, NSError *))arg2;
+- (void)getPidForTestingWithCompletion:(void (^)(int))arg1;
+- (void)getTestModeWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)installURL:(NSURL *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)listSafeHarborsOfType:(long long)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)lookupSystemAppStateWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -22,6 +26,7 @@
 - (void)registerSafeHarborAtPath:(NSString *)arg1 forIdentifier:(NSString *)arg2 ofType:(long long)arg3 withOptions:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)removeSafeHarborForIdentifier:(NSString *)arg1 ofType:(long long)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setSystemAppMigrationComplete:(void (^)(NSError *))arg1;
+- (void)setTestModeWithCompletion:(void (^)(NSError *))arg1;
 - (void)snapshotWKAppInCompanionAppID:(NSString *)arg1 toURL:(NSURL *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)systemAppMigratorHasCompleted:(void (^)(BOOL, NSError *))arg1;
 - (void)uninstallIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;

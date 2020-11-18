@@ -6,15 +6,19 @@
 
 #import <ActionKit/WFStorageServiceAction.h>
 
-@protocol WFFileStorageServiceOperation;
+@protocol WFFileStorageServiceOperation, WFSaveFileActionUserInterface;
 
 @interface WFSaveFileAction : WFStorageServiceAction
 {
+    id<WFSaveFileActionUserInterface> _actionUserInterface;
     id<WFFileStorageServiceOperation> _saveOperation;
 }
 
+@property (strong, nonatomic) id<WFSaveFileActionUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
 @property (strong, nonatomic) id<WFFileStorageServiceOperation> saveOperation; // @synthesize saveOperation=_saveOperation;
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)filePathKey;
@@ -22,8 +26,9 @@
 - (BOOL)inputsMultipleItems;
 - (BOOL)outputsMultipleItems;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
+- (void)runWithRemoteUserInterface:(id)arg1 path:(id)arg2 input:(id)arg3 storageService:(id)arg4;
 - (id)showPickerKey;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 
 @end
 

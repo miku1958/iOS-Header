@@ -15,15 +15,14 @@
 #import <Silex/_WKFullscreenDelegate-Protocol.h>
 
 @class NFMultiDelegate, NSMutableSet, NSString, SWCrashRetryThrottler, SXEmbedResource, SXRelatedWebViewCache, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
-@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedService, SXEmbedType, SXLayoutInvalidator;
+@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedDataProvider, SXEmbedType, SXLayoutInvalidator, SXProxyAuthenticationHandler;
 
 @interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
     BOOL _failedLoading;
-    BOOL _isCurrentlyLoadingEmbedData;
     BOOL _hasRegisteredScriptMessageHandlers;
     id<SWReachabilityProvider> _reachabilityProvider;
-    id<SXEmbedService> _embedService;
+    id<SXEmbedDataProvider> _embedDataProvider;
     id<SXComponentActionHandler> _actionHandler;
     id<SXLayoutInvalidator> _layoutInvalidator;
     id<SXEmbedType> _embedConfiguration;
@@ -40,6 +39,7 @@
     NFMultiDelegate *_scriptMessageHandler;
     WKWebsiteDataStore *_dataStore;
     SXRelatedWebViewCache *_relatedWebViewCache;
+    id<SXProxyAuthenticationHandler> _proxyAuthenticationHandler;
     struct CGSize _currentlyLayoutingForSize;
     struct CGSize _currentLayoutSize;
     struct CGSize _currentViewportSize;
@@ -55,16 +55,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<SXEmbedType> embedConfiguration; // @synthesize embedConfiguration=_embedConfiguration;
+@property (readonly, nonatomic) id<SXEmbedDataProvider> embedDataProvider; // @synthesize embedDataProvider=_embedDataProvider;
 @property (strong, nonatomic) SXEmbedResource *embedResource; // @synthesize embedResource=_embedResource;
-@property (readonly, nonatomic) id<SXEmbedService> embedService; // @synthesize embedService=_embedService;
 @property (strong, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property (strong, nonatomic) NSMutableSet *expectedMessages; // @synthesize expectedMessages=_expectedMessages;
 @property (nonatomic) BOOL failedLoading; // @synthesize failedLoading=_failedLoading;
 @property (nonatomic) BOOL hasRegisteredScriptMessageHandlers; // @synthesize hasRegisteredScriptMessageHandlers=_hasRegisteredScriptMessageHandlers;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WKNavigation *initialNavigation; // @synthesize initialNavigation=_initialNavigation;
-@property (nonatomic) BOOL isCurrentlyLoadingEmbedData; // @synthesize isCurrentlyLoadingEmbedData=_isCurrentlyLoadingEmbedData;
 @property (readonly, nonatomic) id<SXLayoutInvalidator> layoutInvalidator; // @synthesize layoutInvalidator=_layoutInvalidator;
+@property (readonly, nonatomic) id<SXProxyAuthenticationHandler> proxyAuthenticationHandler; // @synthesize proxyAuthenticationHandler=_proxyAuthenticationHandler;
 @property (readonly, nonatomic) id<SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, nonatomic) SXRelatedWebViewCache *relatedWebViewCache; // @synthesize relatedWebViewCache=_relatedWebViewCache;
 @property (readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
@@ -77,7 +77,9 @@
 - (void).cxx_destruct;
 - (id)HTMLByEnclosingHTML:(id)arg1 withHTML:(id)arg2;
 - (void)_webViewDidEnterElementFullscreen:(id)arg1;
+- (void)_webViewDidEnterFullscreen:(id)arg1;
 - (void)_webViewDidExitElementFullscreen:(id)arg1;
+- (void)_webViewDidExitFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)addScriptMessageHandlers;
 - (BOOL)allowHierarchyRemoval;
@@ -89,7 +91,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleError:(id)arg1;
 - (BOOL)hasLoadedEmbedData;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedService:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedDataProvider:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10 proxyAuthenticationHandler:(id)arg11;
 - (double)initialScale;
 - (void)layoutWebViewForSize:(struct CGSize)arg1;
 - (void)loadComponent:(id)arg1;
@@ -97,7 +99,7 @@
 - (void)loadEmbedIfNeeded;
 - (void)loadWebView;
 - (void)loadWebViewIfNeeded;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)prewarmWebView;
 - (void)reloadEmbed;
 - (void)removeScriptMessageHandlers;
@@ -116,7 +118,10 @@
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
-- (void)willPresentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)webView:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)webViewEnteredFullscreen:(id)arg1;
+- (void)webViewExitedFullscreen:(id)arg1;
+- (void)willPresentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 
 @end
 

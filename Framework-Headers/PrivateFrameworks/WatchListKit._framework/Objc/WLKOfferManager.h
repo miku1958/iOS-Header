@@ -22,6 +22,7 @@
 + (id)_offerPath;
 + (id)defaultOfferManager;
 - (void).cxx_destruct;
+- (void)_activeAccountChangedNotification:(id)arg1;
 - (id)_connection;
 - (id)_offers;
 - (void)_setOffers:(id)arg1;

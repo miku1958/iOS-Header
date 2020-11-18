@@ -21,29 +21,30 @@
     NSArray *_deletes;
     NSError *_error;
     NSArray *_filterByTransactionAuthorStrings;
-    NSArray *_unfilteredTransactions;
+    NSArray *_filteredTransactions;
 }
 
 @property (strong, nonatomic) NSArray *deletes; // @synthesize deletes=_deletes;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSArray *filterByTransactionAuthorStrings; // @synthesize filterByTransactionAuthorStrings=_filterByTransactionAuthorStrings;
 @property (nonatomic) BOOL filterByTransactionAuthorsIsExclusion; // @synthesize filterByTransactionAuthorsIsExclusion=_filterByTransactionAuthorsIsExclusion;
+@property (strong, nonatomic) NSArray *filteredTransactions; // @synthesize filteredTransactions=_filteredTransactions;
 @property (strong, nonatomic) NSArray *inserts; // @synthesize inserts=_inserts;
 @property (nonatomic) BOOL isTruncated; // @synthesize isTruncated=_isTruncated;
 @property (readonly, nonatomic) NSArray *transactions; // @synthesize transactions=_transactions;
-@property (strong, nonatomic) NSArray *unfilteredTransactions; // @synthesize unfilteredTransactions=_unfilteredTransactions;
 @property (strong, nonatomic) NSArray *updates; // @synthesize updates=_updates;
 
 + (id)errorChangeSetWithError:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_flattenAndConsolidateChanges;
+- (BOOL)_filterAndFlattenAndConsolidateChanges;
 - (BOOL)applyFilterByTransactionAuthors:(id)arg1 isExclusion:(BOOL)arg2;
+- (BOOL)consolidateAndFilterChangesWithTransactionAuthors:(id)arg1 isExclusion:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)enumerateChanges:(long long)arg1 forModelsOfClass:(Class)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)initWithChangeTransactions:(id)arg1;
-- (id)initWithChangeTransactions:(id)arg1 unfilteredTransactions:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithError:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

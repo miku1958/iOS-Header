@@ -9,7 +9,7 @@
 #import <ContentKit/NSCopying-Protocol.h>
 #import <ContentKit/NSSecureCoding-Protocol.h>
 
-@class NSBundle, NSData, NSImage, NSString, NSURL, UIImage;
+@class NSData, NSImage, NSURL, UIImage;
 
 @interface WFImage : NSObject <NSCopying, NSSecureCoding>
 {
@@ -20,13 +20,11 @@
     unsigned int _orientation;
     struct CGImage *_CGImage;
     double _scale;
+    unsigned long long _renderingMode;
     NSImage *_NSImage;
-    long long _renderingMode;
     long long _representationType;
     NSURL *_URL;
     NSData *_data;
-    NSString *_name;
-    NSBundle *_bundle;
 }
 
 @property (readonly, nonatomic) struct CGImage *CGImage; // @synthesize CGImage=_CGImage;
@@ -36,15 +34,13 @@
 @property (readonly, nonatomic) UIImage *UIImage;
 @property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) BOOL allowsAnimated; // @synthesize allowsAnimated=_allowsAnimated;
-@property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) struct CGImage *internalCGImage;
 @property (readonly, nonatomic) struct CGImageSource *internalImageSource;
 @property (readonly, nonatomic) BOOL isScreenshot;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
 @property (readonly, nonatomic) UIImage *platformImage;
-@property (nonatomic) long long renderingMode; // @synthesize renderingMode=_renderingMode;
+@property (readonly, nonatomic) unsigned long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (readonly, nonatomic) long long representationType; // @synthesize representationType=_representationType;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
@@ -66,6 +62,10 @@
 + (id)imageWithDeviceScreenScaleImageData:(id)arg1;
 + (id)imageWithPlatformImage:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2;
++ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2 inCatalogs:(id)arg3;
++ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2 scaleFactor:(double)arg3 rightToLeft:(BOOL)arg4 appearanceName:(id)arg5;
++ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2 scaleFactor:(double)arg3 rightToLeft:(BOOL)arg4 appearanceName:(id)arg5 inCatalogs:(id)arg6;
 - (void).cxx_destruct;
 - (id)applicationIconImageWithFormat:(unsigned long long)arg1;
 - (struct CGAffineTransform)contentsTransformForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2;
@@ -77,15 +77,19 @@
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasValidImage;
 - (unsigned long long)hash;
+- (id)imageWithRenderingMode:(unsigned long long)arg1;
+- (id)imageWithTintColor:(id)arg1;
 - (id)init;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(unsigned int)arg3;
+- (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(unsigned int)arg3 renderingMode:(unsigned long long)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)initWithData:(id)arg1 scale:(double)arg2 allowAnimated:(BOOL)arg3;
-- (id)initWithName:(id)arg1 inBundle:(id)arg2 scale:(double)arg3;
 - (id)initWithPlatformImage:(id)arg1;
 - (id)initWithRepresentationType:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)resizedImageWithSizeInPoints:(struct CGSize)arg1;
+- (id)resizedImageWithSizeInPoints:(struct CGSize)arg1 scale:(double)arg2;
 - (id)tintedImageWithColor:(id)arg1;
 
 @end

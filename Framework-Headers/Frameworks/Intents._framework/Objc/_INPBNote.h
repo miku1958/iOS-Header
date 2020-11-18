@@ -15,7 +15,6 @@
 @interface _INPBNote : PBCodable <_INPBNote, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     NSString *_accountIdentifier;
     NSArray *_contents;
     _INPBDateTime *_createdDateTime;
@@ -25,7 +24,6 @@
     _INPBDataString *_title;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (copy, nonatomic) NSArray *contents; // @synthesize contents=_contents;
 @property (readonly, nonatomic) unsigned long long contentsCount;

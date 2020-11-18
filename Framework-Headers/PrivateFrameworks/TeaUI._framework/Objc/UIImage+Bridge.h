@@ -45,6 +45,7 @@
 + (id)ts_heartFill;
 + (id)ts_iCloudAndArrowDown;
 + (id)ts_link;
++ (id)ts_macSidebar;
 + (id)ts_minusCircle;
 + (id)ts_minusCircleFill;
 + (id)ts_minusCircleFillWhite;

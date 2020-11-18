@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _UIStatusBarCellularSignalView *_topSignalView;
     _UIStatusBarCellularSignalView *_bottomSignalView;
     long long _iconSize;
+    NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_verticalInterspaceConstraint;
     struct UIEdgeInsets _alignmentRectInsets;
 }
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
 @property (readonly) _UIStatusBarCellularSignalView *topSignalView; // @synthesize topSignalView=_topSignalView;
 @property (strong, nonatomic) NSLayoutConstraint *verticalInterspaceConstraint; // @synthesize verticalInterspaceConstraint=_verticalInterspaceConstraint;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)applyStyleAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (id)viewForLastBaselineLayout;
 
 @end

@@ -28,6 +28,8 @@
     NSNumber *_outgoingMailServerPortNumber;
     BOOL _outgoingMailServerUseSSL;
     NSString *_outgoingMailServerUsername;
+    NSString *_incomingACAccountIdentifier;
+    NSString *_outgoingACAccountIdentifier;
     NSNumber *_incomingMailServerUseSSLNum;
     NSNumber *_outgoingPasswordSameAsIncomingPasswordNum;
     NSNumber *_outgoingMailServerUseSSLNum;
@@ -37,6 +39,7 @@
 @property (readonly, strong, nonatomic) NSString *emailAccountName; // @synthesize emailAccountName=_emailAccountName;
 @property (readonly, strong, nonatomic) NSString *emailAccountType; // @synthesize emailAccountType=_emailAccountType;
 @property (readonly, strong, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
+@property (strong, nonatomic) NSString *incomingACAccountIdentifier; // @synthesize incomingACAccountIdentifier=_incomingACAccountIdentifier;
 @property (readonly, strong, nonatomic) NSString *incomingMailServerAuthentication; // @synthesize incomingMailServerAuthentication=_incomingMailServerAuthentication;
 @property (readonly, strong, nonatomic) NSString *incomingMailServerHostname; // @synthesize incomingMailServerHostname=_incomingMailServerHostname;
 @property (readonly, strong, nonatomic) NSString *incomingMailServerIMAPPathPrefix; // @synthesize incomingMailServerIMAPPathPrefix=_incomingMailServerIMAPPathPrefix;
@@ -45,6 +48,7 @@
 @property (readonly, nonatomic) NSNumber *incomingMailServerUseSSLNum; // @synthesize incomingMailServerUseSSLNum=_incomingMailServerUseSSLNum;
 @property (readonly, strong, nonatomic) NSString *incomingMailServerUsername; // @synthesize incomingMailServerUsername=_incomingMailServerUsername;
 @property (readonly, strong, nonatomic) NSString *incomingPassword; // @synthesize incomingPassword=_incomingPassword;
+@property (strong, nonatomic) NSString *outgoingACAccountIdentifier; // @synthesize outgoingACAccountIdentifier=_outgoingACAccountIdentifier;
 @property (readonly, strong, nonatomic) NSString *outgoingMailServerAuthentication; // @synthesize outgoingMailServerAuthentication=_outgoingMailServerAuthentication;
 @property (readonly, strong, nonatomic) NSString *outgoingMailServerHostname; // @synthesize outgoingMailServerHostname=_outgoingMailServerHostname;
 @property (readonly, strong, nonatomic) NSNumber *outgoingMailServerPortNumber; // @synthesize outgoingMailServerPortNumber=_outgoingMailServerPortNumber;
@@ -63,15 +67,15 @@
 - (id)_authenticationTypeLocalizedString:(id)arg1;
 - (id)_emailAccountTypeLocalizedString;
 - (BOOL)containsSensitiveUserInformation;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+- (id)mailAccountIdentifiers;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
-- (id)title;
+- (id)verboseDescription;
 
 @end
 

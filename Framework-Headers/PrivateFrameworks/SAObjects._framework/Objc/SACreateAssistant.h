@@ -16,6 +16,8 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSData *activationToken;
+@property (copy, nonatomic) NSString *appleConnectServiceTicket;
+@property (copy, nonatomic) NSString *appleConnectSessionToken;
 @property (copy, nonatomic) NSString *connectionMode;
 @property (copy, nonatomic) NSString *connectionType;
 @property (readonly, copy) NSString *debugDescription;

@@ -11,5 +11,6 @@
 - (void)readingHistory:(id)arg1 didChangeFeaturesForArticles:(id)arg2;
 - (void)readingHistory:(id)arg1 didRemoveArticlesWithIDs:(id)arg2;
 - (void)readingHistoryDidClear:(id)arg1;
+- (void)readingList:(id)arg1 didAddArticles:(id)arg2 removeArticles:(id)arg3 eventInitiationLevel:(long long)arg4;
 @end
 

@@ -35,6 +35,7 @@
 - (BOOL)_includesNativeCallStackWhenReportingExceptions;
 - (BOOL)_remoteInspectionEnabled;
 - (void)_setDebuggerRunLoop:(struct __CFRunLoop *)arg1;
+- (void)_setITMLDebuggableType;
 - (void)_setIncludesNativeCallStackWhenReportingExceptions:(BOOL)arg1;
 - (void)_setRemoteInspectionEnabled:(BOOL)arg1;
 - (void)beginCallbackWithData:(struct CallbackData *)arg1 calleeValue:(struct OpaqueJSValue *)arg2 thisValue:(struct OpaqueJSValue *)arg3 argumentCount:(unsigned long long)arg4 arguments:(const struct OpaqueJSValue **)arg5;

@@ -14,6 +14,7 @@
     MISSING_TYPE *pages;
     MISSING_TYPE *issue;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *newsActivityManager;
 }
 
 @end

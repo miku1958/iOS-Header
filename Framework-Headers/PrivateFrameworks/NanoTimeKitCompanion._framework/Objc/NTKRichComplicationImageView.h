@@ -46,11 +46,13 @@
 - (void).cxx_destruct;
 - (long long)_filterStyle;
 - (id)colorForView:(id)arg1 accented:(BOOL)arg2;
+- (void)enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)filterForView:(id)arg1 style:(long long)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
 - (id)initWithDevice:(id)arg1 useAccentColor:(BOOL)arg2;
 - (id)interpolatedColorForView:(id)arg1;
 - (void)layoutSubviews;
+- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (void)setImageProvider:(id)arg1 reason:(long long)arg2;
 - (void)setImageViewContentMode:(long long)arg1;
 - (void)transitionToMonochromeWithFraction:(double)arg1;

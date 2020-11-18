@@ -14,10 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_axIsPictureInPictureActive;
 - (void)_axPostPIPStoppedNotification;
+- (void)_axSetIsPictureInPictureActive:(BOOL)arg1;
 - (id)init;
 - (void)pictureInPictureViewControllerViewDidAppear:(id)arg1;
 - (void)pictureInPictureViewControllerViewWillDisappear:(id)arg1;
+- (void)startPictureInPicture;
 
 @end
 

@@ -12,18 +12,23 @@
 {
     BOOL _shouldLoadPageImmediately;
     NSString *_documentRef;
+    NSString *_documentType;
+    NSString *_controllerRef;
     VUIDocumentContextData *_contextData;
     VUIDocumentPreFetchedData *_prefetchData;
     VUIDocumentUIConfiguration *_uiConfiguration;
 }
 
 @property (strong, nonatomic) VUIDocumentContextData *contextData; // @synthesize contextData=_contextData;
+@property (strong, nonatomic) NSString *controllerRef; // @synthesize controllerRef=_controllerRef;
 @property (strong, nonatomic) NSString *documentRef; // @synthesize documentRef=_documentRef;
+@property (strong, nonatomic) NSString *documentType; // @synthesize documentType=_documentType;
 @property (strong, nonatomic) VUIDocumentPreFetchedData *prefetchData; // @synthesize prefetchData=_prefetchData;
 @property (nonatomic) BOOL shouldLoadPageImmediately; // @synthesize shouldLoadPageImmediately=_shouldLoadPageImmediately;
 @property (strong, nonatomic) VUIDocumentUIConfiguration *uiConfiguration; // @synthesize uiConfiguration=_uiConfiguration;
 
 + (id)documentDataSourceWithDictionary:(id)arg1;
++ (BOOL)isCanonicalDocumentRef:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithDataSourceDict:(id)arg1;
 - (id)initWithDocumentRef:(id)arg1;

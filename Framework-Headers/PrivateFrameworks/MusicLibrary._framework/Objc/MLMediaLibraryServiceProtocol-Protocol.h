@@ -16,6 +16,7 @@
 - (void)endTransaction:(NSUUID *)arg1 shouldCommit:(BOOL)arg2 withCompletionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)executeQuery:(NSString *)arg1 withParameters:(NSArray *)arg2 options:(NSDictionary *)arg3 onTransaction:(NSUUID *)arg4 withCompletionHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)executeUpdate:(NSString *)arg1 withParameters:(NSArray *)arg2 onTransaction:(NSUUID *)arg3 withCompletionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)getClientImportServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)getLanguageResourcesWithCompletion:(void (^)(ML3LanguageResources *, NSError *))arg1;
 - (void)getMediaLibraryResourcesServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)lockDatabaseForReason:(long long)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;

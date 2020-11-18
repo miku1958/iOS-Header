@@ -14,16 +14,8 @@
     NSMutableDictionary *_sizeMetrics;
 }
 
-@property (readonly) NSString *name; // @synthesize name=_name;
-@property (readonly) NSMutableDictionary *sizeMetrics; // @synthesize sizeMetrics=_sizeMetrics;
-
-+ (id)sizeMetricFamilyWithName:(id)arg1;
 - (void).cxx_destruct;
-- (id)allSizeMetrics;
 - (id)description;
-- (id)initWithName:(id)arg1;
-- (id)sizeMetricWithName:(id)arg1;
-- (id)sizeMetricWithName:(id)arg1 string:(id)arg2 scale:(unsigned long long)arg3;
 
 @end
 

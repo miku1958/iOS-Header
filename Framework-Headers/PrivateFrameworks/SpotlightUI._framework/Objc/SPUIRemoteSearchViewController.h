@@ -11,10 +11,12 @@
 
 @interface SPUIRemoteSearchViewController : SPUISpotlightRemoteViewController
 {
+    unsigned int _searchHeaderContextID;
     double _revealProgress;
     unsigned long long _source;
     id<SPUIRemoteSearchViewDelegate> _delegate;
     double _distanceToTopOfIcons;
+    unsigned long long _searchHeaderLayerRenderID;
     UIView *_dummyTransitionView;
     CDUnknownBlockType _willStartPresetingSpotlightHandler;
     CDUnknownBlockType _finishedPresentingSpotlightHandler;
@@ -28,17 +30,21 @@
 @property (strong, nonatomic) UIView *dummyTransitionView; // @synthesize dummyTransitionView=_dummyTransitionView;
 @property (copy, nonatomic) CDUnknownBlockType finishedPresentingSpotlightHandler; // @synthesize finishedPresentingSpotlightHandler=_finishedPresentingSpotlightHandler;
 @property (nonatomic) double revealProgress; // @synthesize revealProgress=_revealProgress;
+@property (nonatomic) unsigned int searchHeaderContextID; // @synthesize searchHeaderContextID=_searchHeaderContextID;
+@property (nonatomic) unsigned long long searchHeaderLayerRenderID; // @synthesize searchHeaderLayerRenderID=_searchHeaderLayerRenderID;
 @property (nonatomic) unsigned long long source; // @synthesize source=_source;
 @property (copy, nonatomic) CDUnknownBlockType willBeginDismissingSpotlightHandler; // @synthesize willBeginDismissingSpotlightHandler=_willBeginDismissingSpotlightHandler;
 @property (copy, nonatomic) CDUnknownBlockType willStartPresetingSpotlightHandler; // @synthesize willStartPresetingSpotlightHandler=_willStartPresetingSpotlightHandler;
 
 - (void).cxx_destruct;
-- (void)beginTodayViewAnimationWithSourceLayerRenderId:(unsigned long long)arg1 sourceContextId:(unsigned int)arg2;
 - (void)didInvalidateSceneWhenForeground;
+- (void)finishCompletionHandlerIfNeeded;
 - (id)init;
+- (BOOL)prewarmSceneInTheBackground;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
+- (void)sceneContentStateDidChange:(id)arg1;
+- (void)sceneDidInvalidate:(id)arg1;
 - (id)sceneSpecification;
-- (void)startMatchMoveIfNeeded;
 - (void)updateIntent:(unsigned long long)arg1;
 - (void)updateSceneSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

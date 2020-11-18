@@ -17,8 +17,6 @@
     long long _colNum;
     long long _rowSpan;
     long long _colSpan;
-    void *_tableBlockPrimary;
-    void *_tableBlockSecondary;
 }
 
 + (void)initialize;

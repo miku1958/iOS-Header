@@ -7,7 +7,7 @@
 #import <Email/EMCollectionItem-Protocol.h>
 #import <Email/EMObject-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EMMessage, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
+@class ECMessageFlags, ECSubject, EFFuture, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
 @protocol EMCollectionItemID;
 
 @protocol EMMessageListItem <EMCollectionItem, EMObject>
@@ -18,7 +18,7 @@
 @property (readonly) unsigned long long count;
 @property (readonly) NSDate *date;
 @property (readonly) BOOL deleteMovesToTrash;
-@property (readonly) EMMessage *displayMessage;
+@property (readonly) EFFuture *displayMessage;
 @property (readonly) id<EMCollectionItemID> displayMessageItemID;
 @property (readonly) EMObjectID *displayMessageObjectID;
 @property (readonly, copy) NSIndexSet *flagColors;

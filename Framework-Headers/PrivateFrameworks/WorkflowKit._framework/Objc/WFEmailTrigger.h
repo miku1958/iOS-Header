@@ -10,19 +10,20 @@
 
 @interface WFEmailTrigger : WFTrigger
 {
-    NSString *_selectedAccount;
+    NSArray *_selectedAccountIdentifiers;
+    NSArray *_selectedAccountDescriptions;
     NSString *_selectedSubject;
     NSArray *_selectedRecipients;
     NSArray *_selectedSenders;
-    unsigned long long _attachmentConfiguration;
 }
 
-@property (nonatomic) unsigned long long attachmentConfiguration; // @synthesize attachmentConfiguration=_attachmentConfiguration;
-@property (strong, nonatomic) NSString *selectedAccount; // @synthesize selectedAccount=_selectedAccount;
+@property (strong, nonatomic) NSArray *selectedAccountDescriptions; // @synthesize selectedAccountDescriptions=_selectedAccountDescriptions;
+@property (strong, nonatomic) NSArray *selectedAccountIdentifiers; // @synthesize selectedAccountIdentifiers=_selectedAccountIdentifiers;
 @property (strong, nonatomic) NSArray *selectedRecipients; // @synthesize selectedRecipients=_selectedRecipients;
 @property (strong, nonatomic) NSArray *selectedSenders; // @synthesize selectedSenders=_selectedSenders;
 @property (strong, nonatomic) NSString *selectedSubject; // @synthesize selectedSubject=_selectedSubject;
 
++ (BOOL)isAllowedToRunAutomatically;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (BOOL)supportsSecureCoding;
@@ -32,6 +33,7 @@
 - (BOOL)hasValidConfiguration;
 - (id)initWithCoder:(id)arg1;
 - (id)localizedDescriptionWithConfigurationSummary;
+- (id)localizedDescriptionWithConfigurationSummaryWithCount:(unsigned long long)arg1;
 - (id)localizedPastTenseDescription;
 
 @end

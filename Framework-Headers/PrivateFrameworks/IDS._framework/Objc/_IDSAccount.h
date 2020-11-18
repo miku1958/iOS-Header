@@ -113,8 +113,10 @@
 - (void)deactivateAlias:(id)arg1;
 - (void)deactivateAndPurgeIdentify;
 - (void)dealloc;
+- (void)forceRemoveAccount;
 - (id)initWithDictionary:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;
 - (id)initWithLoginID:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;
+- (BOOL)isTemporary;
 - (void)passwordUpdated;
 - (void)refreshRegistrationForAccount:(id)arg1;
 - (void)registerAccount;

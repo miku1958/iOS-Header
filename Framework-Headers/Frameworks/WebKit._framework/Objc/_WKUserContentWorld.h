@@ -12,7 +12,7 @@
 
 @interface _WKUserContentWorld : NSObject <WKObject>
 {
-    struct ObjectStorage<API::UserContentWorld> _userContentWorld;
+    struct RetainPtr<WKContentWorld> _contentWorld;
 }
 
 @property (readonly) struct Object *_apiObject;
@@ -24,7 +24,11 @@
 
 + (id)normalWorld;
 + (id)worldWithName:(id)arg1;
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)_init;
+- (id)_initWithContentWorld:(id)arg1;
+- (id)_initWithName:(id)arg1;
 
 @end
 

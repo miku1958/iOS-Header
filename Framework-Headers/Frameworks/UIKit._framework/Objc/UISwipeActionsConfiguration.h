@@ -13,8 +13,10 @@
     BOOL _performsFirstActionWithFullSwipe;
     BOOL _autosizesButtons;
     NSArray *_actions;
+    long long __swipeActionsStyle;
 }
 
+@property (nonatomic, getter=_swipeActionsStyle, setter=_setSwipeActionsStyle:) long long _swipeActionsStyle; // @synthesize _swipeActionsStyle=__swipeActionsStyle;
 @property (readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (nonatomic, getter=_autosizesButtons, setter=_setAutosizesButtons:) BOOL autosizesButtons; // @synthesize autosizesButtons=_autosizesButtons;
 @property (nonatomic) BOOL performsFirstActionWithFullSwipe; // @synthesize performsFirstActionWithFullSwipe=_performsFirstActionWithFullSwipe;

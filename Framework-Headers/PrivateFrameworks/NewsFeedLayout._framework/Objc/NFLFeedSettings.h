@@ -75,8 +75,8 @@
 - (id)description;
 - (id)init;
 - (id)initWithViewportSize:(struct CGSize)arg1 defaultFeedLayoutSearchConfiguration:(id)arg2 columnCount:(long long)arg3 feedGutter:(double)arg4 feedTopMargin:(double)arg5 verticalMarginInRows:(double)arg6 preferredContentSizeCategory:(id)arg7 maximumContentInset:(double)arg8 selectionCornerRadius:(double)arg9 selectionInset:(double)arg10 showAccessoryText:(BOOL)arg11 layoutOptions:(unsigned long long)arg12;
-- (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4;
 - (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 layoutType:(long long)arg5 layoutOptions:(unsigned long long)arg6;
+- (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 traitCollection:(id)arg5;
 - (BOOL)preservesLayoutMargins:(struct UIEdgeInsets)arg1;
 - (BOOL)preservesTraitCollection:(id)arg1;
 

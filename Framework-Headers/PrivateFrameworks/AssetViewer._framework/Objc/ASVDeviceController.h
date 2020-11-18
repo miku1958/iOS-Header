@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithDeviceMaskImage:(id)arg1;
-- (void)update:(double)arg1 visible:(double)arg2 layer:(id)arg3;
+- (void)update:(double)arg1 visibility:(double)arg2 layer:(id)arg3;
 
 @end
 

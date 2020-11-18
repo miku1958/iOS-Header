@@ -18,9 +18,11 @@
     MISSING_TYPE *userInfo;
     MISSING_TYPE *router;
     MISSING_TYPE *didUpdateAfterInitialLaunch;
-    MISSING_TYPE *formalAppLaunchWasExplicit;
+    MISSING_TYPE *appLaunchedWithOptions;
     MISSING_TYPE *openingURL;
     MISSING_TYPE *continuingUserActivity;
+    MISSING_TYPE *didEnterBackground;
+    MISSING_TYPE *sceneActivationURL;
 }
 
 @end

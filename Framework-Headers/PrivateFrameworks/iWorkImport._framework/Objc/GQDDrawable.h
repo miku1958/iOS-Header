@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)geometry;
 - (BOOL)hasPagesOrder;
 - (int)pagesOrder;
+- (void)setPagesOrder:(int)arg1;
 - (const char *)uid;
 - (struct __CFURL *)url;
 - (struct __CFString *)urlString;

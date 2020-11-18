@@ -8,7 +8,7 @@
 
 #import <Intents/INAddMediaIntentExport-Protocol.h>
 
-@class INMediaDestination, INMediaSearch, NSArray, NSString;
+@class INMediaDestination, INMediaSearch, INPrivateAddMediaIntentData, NSArray, NSString;
 
 @interface INAddMediaIntent : INIntent <INAddMediaIntentExport>
 {
@@ -20,9 +20,11 @@
 @property (readonly, copy, nonatomic) INMediaDestination *mediaDestination;
 @property (readonly, copy, nonatomic) NSArray *mediaItems;
 @property (readonly, copy, nonatomic) INMediaSearch *mediaSearch;
+@property (copy, nonatomic) INPrivateAddMediaIntentData *privateAddMediaIntentData;
 @property (readonly) Class superclass;
 
 - (id)_dictionaryRepresentation;
+- (BOOL)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;

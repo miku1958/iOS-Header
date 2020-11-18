@@ -38,3 +38,8 @@ struct HCImagePerspectiveReader {
 
 struct InternalDataStructPersp;
 
+struct MediaContentStatus {
+    BOOL playerReady;
+    BOOL looperReady;
+};
+

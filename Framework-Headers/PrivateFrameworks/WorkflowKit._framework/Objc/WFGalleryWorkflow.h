@@ -8,12 +8,11 @@
 
 #import <WorkflowKit/NSMutableCopying-Protocol.h>
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
-#import <WorkflowKit/WFLoggableObject-Protocol.h>
 #import <WorkflowKit/WFSortableGalleryObject-Protocol.h>
 
-@class CKRecordID, NSDate, NSDictionary, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
+@class CKRecordID, NSData, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
 
-@interface WFGalleryWorkflow : NSObject <WFCloudKitItem, WFLoggableObject, WFSortableGalleryObject, NSMutableCopying>
+@interface WFGalleryWorkflow : NSObject <WFCloudKitItem, WFSortableGalleryObject, NSMutableCopying>
 {
     WFWorkflowRecord *_workflowRecord;
     CKRecordID *_identifier;
@@ -47,7 +46,7 @@
 @property (readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
-@property (readonly, nonatomic) NSDictionary *propertiesForEventLogging;
+@property (copy, nonatomic) NSData *recordSystemFieldsData;
 @property (readonly, nonatomic) NSNumber *searchable; // @synthesize searchable=_searchable;
 @property (readonly, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
 @property (readonly, nonatomic) WFFileRepresentation *shortcutFile; // @synthesize shortcutFile=_shortcutFile;
@@ -61,6 +60,7 @@
 - (void)ensureFileAssets;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)propertiesForEventLogging;
 - (unsigned long long)referenceActionForKey:(id)arg1;
 - (void)setCreatedAt:(id)arg1 modifiedAt:(id)arg2 createdBy:(id)arg3;
 - (id)sharingURL;

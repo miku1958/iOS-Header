@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     HKMCAnalysisQuery *_analysisQuery;
     HKMCAnalysis *_analysis;
+    BOOL _didUpdate;
     HKHealthStore *_healthStore;
     HKMCAnalysis *__test_analysis;
 }
@@ -27,7 +28,9 @@
 - (void)_updateAnalysis:(id)arg1;
 - (void)addObserver:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
+- (id)description;
 - (id)initWithHealthStore:(id)arg1;
+- (id)initWithHealthStore:(id)arg1 initialAnalysisForTest:(id)arg2;
 - (void)removeObserver:(id)arg1;
 
 @end

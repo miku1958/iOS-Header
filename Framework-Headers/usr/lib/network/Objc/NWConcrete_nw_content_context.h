@@ -22,12 +22,16 @@ __attribute__((visibility("hidden")))
     double relative_priority;
     NSObject<OS_nw_array> *protocol_metadatas;
     NSObject<OS_nw_error> *error;
+    NSObject<OS_nw_array> *connection_group_info;
     struct os_unfair_lock_s lock;
     unsigned int is_final:1;
     unsigned int expiration_checked:1;
     unsigned int completed_send:1;
     unsigned int has_packet_id:1;
-    unsigned int __pad_bits:4;
+    unsigned int connection_group_connection:1;
+    unsigned int connection_group_multicast:1;
+    unsigned int supports_replies:1;
+    unsigned int __pad_bits:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +41,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithIdentifier:(const char *)arg1;
 - (id)redactedDescription;
 
 @end

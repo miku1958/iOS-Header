@@ -13,16 +13,27 @@
 
 @interface CKQuerySubscription : CKSubscription <NSSecureCoding, NSCopying>
 {
+    NSPredicate *_predicate;
+    CKRecordZoneID *_zoneID;
+    unsigned long long _querySubscriptionOptions;
 }
 
-@property (readonly, copy, nonatomic) NSPredicate *predicate; // @dynamic predicate;
-@property (readonly, nonatomic) unsigned long long querySubscriptionOptions;
+@property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
+@property (nonatomic) unsigned long long querySubscriptionOptions; // @synthesize querySubscriptionOptions=_querySubscriptionOptions;
 @property (readonly, copy, nonatomic) NSString *recordType; // @dynamic recordType;
-@property (copy, nonatomic) CKRecordZoneID *zoneID; // @dynamic zoneID;
+@property (copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)CKPropertiesDescription;
+- (void)_validateQuerySubscriptionOptions:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 subscriptionID:(id)arg3 options:(unsigned long long)arg4;
+- (BOOL)isEqual:(id)arg1;
+- (void)setRecordType:(id)arg1;
 
 @end
 

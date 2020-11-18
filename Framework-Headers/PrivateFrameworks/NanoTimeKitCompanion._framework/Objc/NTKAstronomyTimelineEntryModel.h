@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long vista; // @synthesize vista=_vista;
 
 - (void).cxx_destruct;
+- (id)_graphicRectangular;
 - (id)initWithVista:(unsigned long long)arg1 entryDate:(id)arg2 currentDate:(id)arg3 currentLocation:(id)arg4 anyLocation:(id)arg5;
 - (id)templateForComplicationFamily:(long long)arg1;
 

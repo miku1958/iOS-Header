@@ -11,6 +11,7 @@
 }
 
 + (id)cachedInstanceForConfigurationMessagePolicy:(id)arg1;
++ (BOOL)enabled;
 
 @end
 

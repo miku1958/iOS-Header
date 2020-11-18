@@ -6,12 +6,26 @@
 
 #import <Preferences/PSListController.h>
 
-@interface DiagnosticDataController : PSListController
+#import <Preferences/UISearchResultsUpdating-Protocol.h>
+
+@class NSArray, NSString, UISearchController;
+
+@interface DiagnosticDataController : PSListController <UISearchResultsUpdating>
 {
+    NSArray *_allSpecifiers;
+    UISearchController *_searchController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
 - (id)init;
 - (id)specifiers;
+- (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)viewDidLoad;
 
 @end

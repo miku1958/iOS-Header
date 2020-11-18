@@ -10,7 +10,7 @@
 #import <CameraUI/CAMPersistenceResultDelegate-Protocol.h>
 #import <CameraUI/CAMVideoCaptureRequestDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, CAMNebulaKeepAliveController, CAMPersistenceController, CAMTimelapseState, NSMutableArray, NSString;
+@class BKSApplicationStateMonitor, CAMNebulaKeepAliveController, CAMPersistenceController, CAMTimelapseState, NSMutableArray, NSMutableDictionary, NSString;
 @protocol CAMTimelapseMovieWriterProtocol, OS_dispatch_queue;
 
 @interface CAMTimelapseBackendController : NSObject <CAMVideoCaptureRequestDelegate, CAMNebulaDaemonTimelapseProtocol, CAMPersistenceResultDelegate>
@@ -26,6 +26,7 @@
     CAMTimelapseState *__currentState;
     CAMNebulaKeepAliveController *__keepAliveController;
     CAMPersistenceController *__persistenceController;
+    NSMutableDictionary *__transactionForPersistenceUUID;
     BKSApplicationStateMonitor *__applicationStateMonitor;
 }
 
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) BOOL _oldMovieWriterEnabled; // @synthesize _oldMovieWriterEnabled=__oldMovieWriterEnabled;
 @property (readonly, nonatomic) CAMPersistenceController *_persistenceController; // @synthesize _persistenceController=__persistenceController;
 @property (readonly, nonatomic) NSMutableArray *_sessionContexts; // @synthesize _sessionContexts=__sessionContexts;
+@property (readonly, nonatomic) NSMutableDictionary *_transactionForPersistenceUUID; // @synthesize _transactionForPersistenceUUID=__transactionForPersistenceUUID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_workQueue; // @synthesize _workQueue=__workQueue;
 @property (readonly, nonatomic) BOOL _writingMovie; // @synthesize _writingMovie=__writingMovie;
 @property (readonly, copy) NSString *debugDescription;

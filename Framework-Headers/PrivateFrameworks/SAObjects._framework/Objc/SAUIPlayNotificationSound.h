@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSString *notificationId;
+@property (copy, nonatomic) NSString *notificationType;
 
 + (id)playNotificationSound;
 + (id)playNotificationSoundWithDictionary:(id)arg1 context:(id)arg2;

@@ -16,7 +16,9 @@
 @interface _UIStatusBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, UIPointerInteractionDelegate>
 {
     id<_UIStatusBarVisualProvider> _visualProvider;
+    BOOL _needsLayoutUpdateForPartFrames;
     UIScreen *_targetScreen;
+    NSDictionary *_visualProviderInfo;
     long long _style;
     UIColor *_foregroundColor;
     long long _mode;
@@ -77,8 +79,12 @@
 @property (readonly, nonatomic) id<_UIStatusBarVisualProvider> visualProvider;
 @property (strong, nonatomic, getter=_visualProviderClass, setter=_setVisualProviderClass:) Class visualProviderClass; // @synthesize visualProviderClass=_visualProviderClass;
 @property (strong, nonatomic, getter=_visualProviderClassName, setter=_setVisualProviderClassName:) NSString *visualProviderClassName;
+@property (strong, nonatomic) NSDictionary *visualProviderInfo; // @synthesize visualProviderInfo=_visualProviderInfo;
 
 + (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(BOOL)arg3;
++ (id)sensorActivityIndicator;
++ (id)sensorActivityIndicatorPartIdentifier;
++ (void)setSensorActivityIndicator:(id)arg1;
 + (id)stringForStatusBarStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;

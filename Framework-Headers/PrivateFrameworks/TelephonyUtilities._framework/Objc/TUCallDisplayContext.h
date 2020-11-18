@@ -17,7 +17,6 @@
     int _legacyAddressBookIdentifier;
     NSPersonNameComponents *_personNameComponents;
     NSString *_suggestedName;
-    NSString *_label;
     NSString *_companyName;
     NSString *_mapName;
     NSString *_location;
@@ -28,6 +27,7 @@
     NSString *_callDirectoryExtensionIdentifier;
     NSString *_contactIdentifier;
     NSString *_name;
+    NSString *_label;
 }
 
 @property (copy, nonatomic) NSString *callDirectoryExtensionIdentifier; // @synthesize callDirectoryExtensionIdentifier=_callDirectoryExtensionIdentifier;

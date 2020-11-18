@@ -12,13 +12,13 @@
 @interface VNPersonsModelConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _maximumIdentities;
-    unsigned long long _maximumFaceprintsPerIdentity;
+    unsigned long long _maximumTrainingFaceprintsPerIdentity;
     unsigned long long _faceprintRequestRevision;
 }
 
 @property (nonatomic) unsigned long long faceprintRequestRevision; // @synthesize faceprintRequestRevision=_faceprintRequestRevision;
-@property (nonatomic) unsigned long long maximumFaceprintsPerIdentity; // @synthesize maximumFaceprintsPerIdentity=_maximumFaceprintsPerIdentity;
 @property (nonatomic) unsigned long long maximumIdentities; // @synthesize maximumIdentities=_maximumIdentities;
+@property (nonatomic) unsigned long long maximumTrainingFaceprintsPerIdentity; // @synthesize maximumTrainingFaceprintsPerIdentity=_maximumTrainingFaceprintsPerIdentity;
 
 + (unsigned long long)maximumAllowableFaceprintsPerIdentity;
 + (unsigned long long)maximumAllowableIdentities;

@@ -20,6 +20,7 @@
         BOOL assetActionManager;
         BOOL assetCollectionActionManager;
     } _needsUpdateFlags;
+    BOOL _topTrailingSelectCancelButtonVisible;
     BOOL __showTitleView;
     BOOL _shouldAddActionButton;
     PXAssetActionManager *__assetActionManager;
@@ -59,6 +60,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL shouldAddActionButton; // @synthesize shouldAddActionButton=_shouldAddActionButton;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL topTrailingSelectCancelButtonVisible; // @synthesize topTrailingSelectCancelButtonVisible=_topTrailingSelectCancelButtonVisible;
 @property (weak, nonatomic) PXPhotosDetailsUIViewController *viewController; // @dynamic viewController;
 
 - (void).cxx_destruct;
@@ -96,6 +98,7 @@
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)removeActionButton;
 - (void)selectBarButtonItemTapped:(id)arg1;
+- (void)setTopTrailingSelectCancelButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)shouldShowTitleView:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateBars;
 

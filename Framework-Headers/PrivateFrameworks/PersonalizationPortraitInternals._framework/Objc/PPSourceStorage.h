@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class PPContactStorage, PPSQLDatabase;
+
 @interface PPSourceStorage : NSObject
 {
+    PPSQLDatabase *_db;
+    PPContactStorage *_contactStorage;
 }
 
-+ (id)createSourceWithStatement:(id)arg1;
-+ (id)loadSourcesWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 txnWitness:(id)arg4;
 + (double)matchAccuracyForSecondsFrom1970;
-+ (id)sha256ForSource:(id)arg1;
-+ (id)statsForTableWithName:(id)arg1 medianRefCountNeeded:(BOOL)arg2 txnWitness:(id)arg3;
-+ (id)statsWithDatabase:(id)arg1 medianRefCountNeeded:(BOOL)arg2;
-+ (id)statsWithDatabase:(id)arg1 medianRefCountNeeded:(BOOL)arg2 table:(id)arg3 txnWitness:(id)arg4;
-+ (id)statsWithMedianRefCountNeeded:(BOOL)arg1;
-+ (long long)updateOrCreateRowForSource:(id)arg1 addingRefCount:(long long)arg2 txnWitness:(id)arg3;
+- (void).cxx_destruct;
+- (id)createSourceWithStatement:(id)arg1 txnWitness:(id)arg2;
+- (id)init;
+- (id)initWithDatabase:(id)arg1;
+- (BOOL)iterSourcesWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (id)loadSourcesWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 txnWitness:(id)arg4;
+- (long long)pruneSourcesWithNoReferencesWithTxnWitness:(id)arg1;
+- (long long)updateOrCreateRowForSource:(id)arg1 addingRefCount:(long long)arg2 txnWitness:(id)arg3;
+- (id)whereSourceIdInSubclauseWithSourceIds:(id)arg1 tableNameAlias:(id)arg2 binders:(id)arg3;
 
 @end
 

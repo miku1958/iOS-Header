@@ -16,7 +16,7 @@
 - (id)initWithVideoExportRequest:(id)arg1;
 - (BOOL)prepare:(out id *)arg1;
 - (BOOL)render:(out id *)arg1;
-- (BOOL)renderVideoFrames:(id)arg1 intoPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 colorSpace:(id)arg4 error:(out id *)arg5;
+- (id)renderer:(out id *)arg1;
 - (BOOL)requiresVideoComposition;
 - (id)scalePolicy;
 - (id)videoExportRequest;

@@ -32,7 +32,6 @@
     INIntentKeyParameter *_keyParameter;
     NSString *_identifier;
     PBCodable *_backingStore;
-    NSArray *_airPlayRouteIds;
     NSString *_recordRoute;
     NSUUID *_recordDeviceUID;
     NSString *_recordDeviceIdentifier;
@@ -48,12 +47,12 @@
 @property (strong, nonatomic, setter=_setDefaultImage:) INImage *_defaultImage;
 @property (readonly, nonatomic) NSOrderedSet *_displayOrderedAttributes;
 @property (readonly, nonatomic, getter=_isEligibleForSuggestions) BOOL _eligibleForSuggestions;
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData;
 @property (nonatomic, setter=_setExecutionContext:) long long _executionContext;
 @property (readonly, nonatomic) BOOL _hasTitle;
 @property (nonatomic, setter=_setIdiom:) long long _idiom;
 @property (readonly, nonatomic) long long _indexingHash; // @synthesize _indexingHash;
 @property (readonly, nonatomic) long long _intentCategory;
+@property (readonly, nonatomic, getter=_intents_isExemptFromMulitWindowRequirementForInAppHandling) BOOL _intents_exemptFromMulitWindowRequirementForInAppHandling;
 @property (readonly) long long _intents_toggleState;
 @property (strong, nonatomic, setter=_setIsOwnedByCurrentUser:) NSNumber *_isOwnedByCurrentUser;
 @property (readonly) INImage *_keyImage;
@@ -78,7 +77,7 @@
 @property (strong, nonatomic, setter=_setUiExtensionBundleId:) NSString *_uiExtensionBundleId;
 @property (nonatomic, getter=_isUserConfirmationRequired, setter=_setUserConfirmationRequired:) BOOL _userConfirmationRequired;
 @property (readonly, nonatomic) NSDictionary *_validParameterCombinations;
-@property (strong, nonatomic, setter=_setAirPlayRouteIds:) NSArray *airPlayRouteIds; // @synthesize airPlayRouteIds=_airPlayRouteIds;
+@property (strong, nonatomic, setter=_setAirPlayRouteIds:) NSArray *airPlayRouteIds;
 @property (copy, nonatomic) PBCodable *backingStore; // @synthesize backingStore=_backingStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -103,6 +102,7 @@
 @property (strong, nonatomic, setter=_setRecordDeviceIdentifier:) NSString *recordDeviceIdentifier; // @synthesize recordDeviceIdentifier=_recordDeviceIdentifier;
 @property (strong, nonatomic, setter=_setRecordDeviceUID:) NSUUID *recordDeviceUID; // @synthesize recordDeviceUID=_recordDeviceUID;
 @property (copy, nonatomic, setter=_setRecordRoute:) NSString *recordRoute; // @synthesize recordRoute=_recordRoute;
+@property (nonatomic) unsigned long long shortcutAvailability;
 @property (readonly, copy, nonatomic, getter=_sortedParameterImages) NSArray *sortedParameterImages;
 @property (copy, nonatomic) NSString *suggestedInvocationPhrase;
 @property (readonly) Class superclass;
@@ -123,8 +123,10 @@
 + (BOOL)supportsSecureCoding;
 + (id)typeName;
 - (void).cxx_destruct;
+- (id)_JSONDictionaryRepresentationWithConfiguration:(id)arg1;
 - (id)_className;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
+- (id)_currentParameterCombination;
 - (id)_defaultImageName;
 - (id)_dictionaryRepresentation;
 - (id)_displayOrderedNonNilParameters;
@@ -141,6 +143,7 @@
 - (void)_injectProxiesForParameterImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_injectProxyForDefaultImage:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intentInstanceDescription;
+- (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_intents_bestBundleIdentifier;
 - (id)_intents_bundleIdForDisplay;
 - (id)_intents_bundleIdForLaunching;
@@ -184,7 +187,7 @@
 - (void)setImage:(id)arg1 forParameterNamed:(id)arg2;
 - (BOOL)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
-- (void)trimDataAgainstTCCForAuditToken:(CDStruct_6ad76789)arg1 bundle:(id)arg2;
+- (void)trimDataAgainstTCCForAuditToken:(CDStruct_4c969caf)arg1 bundle:(id)arg2;
 - (id)valueForKey:(id)arg1;
 - (id)valueForProperty:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;

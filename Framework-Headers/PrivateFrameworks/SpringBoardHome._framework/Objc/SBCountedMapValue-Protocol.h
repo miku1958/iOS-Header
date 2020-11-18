@@ -10,7 +10,7 @@
 
 @protocol SBCountedMapValue <NSObject>
 
-@property (readonly, copy, nonatomic) id<NSCopying><NSObject> countedMapKey;
+@property (readonly, copy, nonatomic) id<NSCopying><NSObject> sbh_countedMapKey;
 
 @end
 

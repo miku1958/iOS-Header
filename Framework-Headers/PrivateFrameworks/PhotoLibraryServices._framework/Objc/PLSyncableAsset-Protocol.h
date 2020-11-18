@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSSet *detectedFaces;
 @property (readonly, nonatomic) id faceAdjustmentVersion;
 @property (readonly, nonatomic) BOOL faceDetectionComplete;
-@property (readonly, nonatomic) BOOL hasAdjustmentsOrLegacyAdjustments;
+@property (readonly, nonatomic) BOOL hasAdjustments;
 @property (readonly, nonatomic) long long height;
 @property (readonly, copy, nonatomic) NSString *syncedAdjustmentFingerprint;
 @property (readonly, nonatomic) long long width;

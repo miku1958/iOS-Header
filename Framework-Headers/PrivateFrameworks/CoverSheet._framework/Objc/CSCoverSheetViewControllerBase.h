@@ -65,7 +65,6 @@
 + (Class)viewClass;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)_conformsToCSCoverSheetViewPresenting;
 - (void)_layoutIfNeededForPresentation;
 - (BOOL)_presentationParticipant;
 - (id)_presenter;
@@ -78,6 +77,11 @@
 - (void)aggregateBehavior:(id)arg1;
 - (void)aggregatePresentation:(id)arg1;
 - (void)configureDisplayLayoutElement:(id)arg1;
+- (void)conformsToCSAppearanceProviding;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSCoverSheetViewControlling;
+- (void)conformsToCSCoverSheetViewPresenting;
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

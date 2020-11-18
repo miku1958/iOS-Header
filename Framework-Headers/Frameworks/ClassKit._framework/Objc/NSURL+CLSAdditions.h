@@ -14,7 +14,9 @@
 
 + (id)cls_configURL;
 + (id)cls_documentsURL;
++ (id)cls_documentsURLAndReturnError:(id *)arg1;
 + (id)cls_draftsURL;
++ (id)cls_draftsURLAndReturnError:(id *)arg1;
 + (void)cls_getUbiquitousContainerURLWithCompletion:(CDUnknownBlockType)arg1;
 + (id)cls_libraryURL;
 + (id)cls_ubiquitousContainerURL;

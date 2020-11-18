@@ -27,6 +27,7 @@
     float _maxIOUForObjectAbsence;
     NSData *_anchorBoxes;
     unsigned long long _numberOfAnchorBoxes;
+    BOOL _reduceAcrossBatch;
 }
 
 @property (strong, nonatomic) MPSCNNLossDescriptor *WHLossDescriptor; // @synthesize WHLossDescriptor=_WHLossDescriptor;
@@ -37,6 +38,7 @@
 @property (nonatomic) float maxIOUForObjectAbsence; // @synthesize maxIOUForObjectAbsence=_maxIOUForObjectAbsence;
 @property (nonatomic) float minIOUForObjectPresence; // @synthesize minIOUForObjectPresence=_minIOUForObjectPresence;
 @property (nonatomic) unsigned long long numberOfAnchorBoxes; // @synthesize numberOfAnchorBoxes=_numberOfAnchorBoxes;
+@property (nonatomic) BOOL reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property (nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property (nonatomic) BOOL rescore; // @synthesize rescore=_rescore;
 @property (nonatomic) float scaleClass; // @synthesize scaleClass=_scaleClass;

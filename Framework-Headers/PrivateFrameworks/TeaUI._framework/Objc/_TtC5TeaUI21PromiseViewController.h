@@ -10,6 +10,7 @@
 
 @interface _TtC5TeaUI21PromiseViewController : UIViewController
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *promise;
     MISSING_TYPE *contentViewController;
     MISSING_TYPE *coverViewManager;

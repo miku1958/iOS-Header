@@ -8,8 +8,12 @@
 
 @interface _TtC7NewsUI226MagazineGridViewController (NewsUI2)
 - (id)contentScrollView;
+- (void)tabBarSplitViewDidUnobsureView;
+- (void)tabBarSplitViewWillObsureView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 @end
 

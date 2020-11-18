@@ -16,12 +16,13 @@
 
 @interface HMDCalendarEvent : HMDTimeEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
+    struct os_unfair_lock_s _lock;
     NSDateComponents *_fireDateComponents;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSDateComponents *fireDateComponents; // @synthesize fireDateComponents=_fireDateComponents;
+@property (strong) NSDateComponents *fireDateComponents; // @synthesize fireDateComponents=_fireDateComponents;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -35,13 +36,13 @@
 - (id)_nextTimerDate;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)analyticsTriggerEventData;
 - (BOOL)areMonthDayNotMatching:(id)arg1;
 - (id)createPayload;
 - (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end

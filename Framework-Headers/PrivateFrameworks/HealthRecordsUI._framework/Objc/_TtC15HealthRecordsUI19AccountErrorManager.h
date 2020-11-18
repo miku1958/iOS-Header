@@ -6,12 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC15HealthRecordsUI19AccountErrorManager : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *profile;
-    MISSING_TYPE *healthRecordsStore;
 }
 
 @end

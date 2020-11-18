@@ -12,10 +12,14 @@
 @interface PUPhotoEditValuesCalculator : PXObservable
 {
     PUPhotoEditImageValues *_currentImageValues;
+    PUPhotoEditImageValues *_currentGeometricValues;
     PUPhotoEditImageValues *_initialImageValues;
+    PUPhotoEditImageValues *_initialGeometricValues;
     PICompositionController *_compositionControllerForCurrentValues;
-    NSObject<OS_dispatch_queue> *_computationQueue;
-    NSObject<OS_dispatch_group> *_computingValuesGroup;
+    NSObject<OS_dispatch_queue> *_imageValuesComputationQueue;
+    NSObject<OS_dispatch_group> *_computingImageValuesGroup;
+    NSObject<OS_dispatch_queue> *_geometricValuesComputationQueue;
+    NSObject<OS_dispatch_group> *_computingGeometricValuesGroup;
     long long _currentSourceSelection;
     PLEditSource *_editSource;
     PLEditSource *_overcaptureEditSource;
@@ -31,8 +35,11 @@
 
 + (BOOL)shouldRunGeometricAutoCalculatorForSource:(id)arg1;
 - (void).cxx_destruct;
+- (void)_ensureCurrentGeometricValuesAreComputed;
 - (void)_ensureCurrentImageValuesAreComputed;
+- (void)_ensureInitialGeometricValuesAreComputed;
 - (void)_ensureInitialImageValuesAreComputed;
+- (BOOL)_geometricCurrentValuesCacheIsValid;
 - (BOOL)_imageCurrentValuesCacheIsValid;
 - (id)apertureValuesWithAccuracy:(long long)arg1;
 - (id)autoCropValuesWithAccuracy:(long long)arg1;
@@ -44,6 +51,7 @@
 - (id)mutableChangeObject;
 - (id)overcaptureSmartToneStatisticsWithAccuracy:(long long)arg1;
 - (id)portraitValuesWithAccuracy:(long long)arg1;
+- (void)precomputeGeometricValues;
 - (void)precomputeImageValues;
 - (void)precomputeImageValuesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)precomputeImageValuesWithOptionalCompletion:(CDUnknownBlockType)arg1;

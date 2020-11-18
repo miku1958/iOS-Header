@@ -14,7 +14,7 @@
 #import <PhotosUICore/PXTilingControllerTransitionDelegate-Protocol.h>
 
 @class NSDate, NSString, PHPhotoLibrary, PXExtendedTraitCollection, PXMemoriesFeedDataSourceManager, PXMemoriesFeedScrollFilter, PXMemoriesFeedTilingLayout, PXMemoriesFeedTransitionAnimationCoordinator, PXMemoriesSpec, PXMemoriesSpecManager, PXScrollViewController, PXSectionedLayoutEngine, PXSectionedObjectReference, PXSectionedSelectionManager, PXTilingController;
-@protocol PXMemoriesFeedViewControllerHelperDelegate;
+@protocol PXMemoriesFeedViewControllerHelperDelegate, PXViewControllerEventTracker;
 
 @interface PXMemoriesFeedViewControllerHelper : PXObservable <PXSectionedDataSourceManagerObserver, PXSectionedLayoutEngineDelegate, PXMemoriesFeedScrollFilterDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXMemoriesFeedTilingLayoutDelegate>
 {
@@ -42,6 +42,7 @@
     PXSectionedObjectReference *_activatedMemoryReference;
     PXSectionedObjectReference *_lastActionPresentationMemoryReference;
     NSString *_scrollTargetMemoryUUID;
+    id<PXViewControllerEventTracker> _eventTracker;
     NSDate *__lastUserMemoryGenerationRequestDate;
     PXSectionedObjectReference *__memoryReferenceToScrollToVisible;
     PXSectionedObjectReference *_anchorMemoryReference;
@@ -71,6 +72,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXMemoriesFeedViewControllerHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<PXViewControllerEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXSectionedObjectReference *highlightedMemoryReference; // @synthesize highlightedMemoryReference=_highlightedMemoryReference;
 @property (strong, nonatomic) PXSectionedObjectReference *lastActionPresentationMemoryReference; // @synthesize lastActionPresentationMemoryReference=_lastActionPresentationMemoryReference;
@@ -88,8 +90,6 @@
 - (void)_configureLayout:(id)arg1;
 - (void)_configureMetrics:(id)arg1;
 - (void)_enumerateInsertedItemsInChangeDetails:(id)arg1 withDataSource:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)_generateMemoriesForReason:(unsigned long long)arg1;
-- (void)_generateMemoriesForReason:(unsigned long long)arg1 contextualMemoriesSettings:(id)arg2;
 - (void)_handleChangeFromDataSource:(id)arg1 toDataSource:(id)arg2 withChangeDetails:(id)arg3;
 - (void)_handleDataSourceChange;
 - (void)_handleFinishedRequestingNewMemoriesWithSuccess:(BOOL)arg1 reason:(unsigned long long)arg2 error:(id)arg3;
@@ -110,8 +110,8 @@
 - (BOOL)canRequestNewMemories;
 - (BOOL)canRequestNewMemoriesForReason:(unsigned long long)arg1;
 - (void)didChangeTilingControllerLayout;
-- (void)feedViewControllerDidAppear:(BOOL)arg1;
-- (void)feedViewControllerDidDisappear;
+- (void)feedViewControllerDidAppear:(id)arg1 shouldUpdateNotifications:(BOOL)arg2;
+- (void)feedViewControllerDidDisappear:(id)arg1;
 - (void)feedViewControllerWillLayoutSubviews;
 - (struct PXSimpleIndexPath)indexPathForMemoryInScrollViewAtPoint:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)indexPathForMemoryObjectReference:(id)arg1;

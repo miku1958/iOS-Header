@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSString *wfName;
 
-+ (long long)predictedEntryTypeForHandleValue:(id)arg1;
++ (id)processingValueClasses;
 - (void).cxx_destruct;
 - (id)containedVariables;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -10,7 +10,8 @@
 {
 }
 
-+ (id)_iconSetForServiceType:(id)arg1 serviceSubtype:(id)arg2;
++ (id)_defaultIconDescriptorForServiceType:(id)arg1 serviceSubtype:(id)arg2 fallbackToPlaceholderIcon:(BOOL)arg3;
++ (id)_iconSetForServiceType:(id)arg1 serviceSubtype:(id)arg2 fallbackToPlaceholderIcon:(BOOL)arg3;
 + (id)_multiSubtypeIconSetForServiceType:(id)arg1 serviceSubtype:(id)arg2;
 + (id)_replacementIdentifierForIconIdentifier:(id)arg1;
 + (id)allIconDescriptorsForService:(id)arg1;
@@ -19,7 +20,8 @@
 + (id)defaultIconDescriptorForServiceType:(id)arg1 serviceSubtype:(id)arg2;
 + (id)iconDescriptorForAccessory:(id)arg1;
 + (id)iconDescriptorForAccessoryCategory:(id)arg1;
-+ (id)iconDescriptorForAccessoryCategoryType:(id)arg1;
++ (id)iconDescriptorForAccessoryCategoryOrServiceType:(id)arg1;
++ (id)iconDescriptorForSensorAccessoryWithNumberOfServices:(unsigned long long)arg1;
 + (id)iconDescriptorWithIdentifier:(id)arg1 forService:(id)arg2;
 + (id)iconDescriptorWithIdentifier:(id)arg1 forServiceType:(id)arg2 serviceSubtype:(id)arg3;
 + (id)iconModifiersForService:(id)arg1;

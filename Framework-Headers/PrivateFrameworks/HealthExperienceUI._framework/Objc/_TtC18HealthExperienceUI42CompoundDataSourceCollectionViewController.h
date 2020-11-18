@@ -19,7 +19,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

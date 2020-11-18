@@ -6,14 +6,16 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class ACAccount, AMSBagKeyInfo, NSDate, NSString;
+@class ACAccount, AMSBagKeyInfo, AMSProcessInfo, NSDate, NSString;
 
 @protocol AMSBagDataSourceProtocol <NSObject>
 
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler;
+@property (strong, nonatomic) NSString *descriptionExtended;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 

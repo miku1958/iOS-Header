@@ -9,6 +9,10 @@
 @class NSString, SBIcon, SBLeafIcon, UIImage;
 
 @protocol SBLeafIconDataSource <NSObject>
+
+@property (readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
+@property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
+
 - (NSString *)icon:(SBLeafIcon *)arg1 displayNameForLocation:(NSString *)arg2;
 - (unsigned long long)priorityForIcon:(SBLeafIcon *)arg1;
 
@@ -26,11 +30,15 @@
 - (BOOL)iconCanTruncateLabel:(SBLeafIcon *)arg1;
 - (BOOL)iconCompleteUninstall:(SBLeafIcon *)arg1;
 - (BOOL)iconDisallowsLaunchForObscuredReason:(SBLeafIcon *)arg1;
+- (BOOL)iconShouldIgnoreOtherDataSources:(SBLeafIcon *)arg1;
+- (BOOL)iconSupportsConfiguration:(SBLeafIcon *)arg1;
+- (BOOL)iconSupportsRasterization:(SBLeafIcon *)arg1;
 - (BOOL)iconSupportsUninstall:(SBLeafIcon *)arg1;
 - (BOOL)isProgressPausedForIcon:(SBLeafIcon *)arg1;
 - (BOOL)isTimedOutForIcon:(SBIcon *)arg1;
 - (long long)labelAccessoryTypeForIcon:(SBLeafIcon *)arg1;
 - (double)progressPercentForIcon:(SBLeafIcon *)arg1;
 - (long long)progressStateForIcon:(SBLeafIcon *)arg1;
+- (unsigned long long)supportedGridSizeClassesForIcon:(SBLeafIcon *)arg1;
 @end
 

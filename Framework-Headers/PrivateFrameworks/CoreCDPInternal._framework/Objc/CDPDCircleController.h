@@ -27,13 +27,13 @@
 
 - (void).cxx_destruct;
 - (void)_joinCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (unsigned long long)_peerCount;
 - (id)_peerDeviceNamesByPeerID;
 - (void)_requestCircleJoinWithObserver:(id)arg1 requestBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestToJoinAfterRestoreAndWaitForSuccessWithHandler:(CDUnknownBlockType)arg1;
 - (void)_requestToJoinAndWaitForSuccessWithHandler:(CDUnknownBlockType)arg1;
 - (void)_requestToJoinWithObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_requestToJoinWithRequestBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_silentReauthWithCompletion:(CDUnknownBlockType)arg1;
 - (void)applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg1;
 - (BOOL)canRetryCliqueStatus;
 - (void)cancelApplicationToJoinCircle;

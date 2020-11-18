@@ -13,6 +13,7 @@
 }
 
 - (void)assetVersionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)readableTrialTreatmentsMappingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)variantNameWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

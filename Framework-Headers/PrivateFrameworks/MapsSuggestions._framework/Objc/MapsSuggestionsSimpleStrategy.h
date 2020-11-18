@@ -28,12 +28,6 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (void)_addFilter:(id)arg1 processingType:(long long)arg2;
-- (BOOL)_dedupeByEnrichingEntries:(id)arg1 withEntry:(id)arg2;
-- (BOOL)_entry:(id)arg1 existsInStorage:(id)arg2;
-- (id)_filteredPreviousResultsCrosscheckingStorage:(id)arg1;
-- (id)_filtersForprocessingType:(long long)arg1;
-- (BOOL)_improveEntry:(id)arg1;
 - (void)addDeduper:(id)arg1;
 - (void)addImprover:(id)arg1;
 - (void)addPostFilter:(id)arg1;

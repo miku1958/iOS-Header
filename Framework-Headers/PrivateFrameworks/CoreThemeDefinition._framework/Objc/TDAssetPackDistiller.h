@@ -15,12 +15,12 @@
 
 @property (strong, nonatomic) NSSet *assetPackMap; // @synthesize assetPackMap;
 
-- (BOOL)_storeRenditions;
 - (id)assetPackForTags:(id)arg1;
 - (BOOL)assetStoreWriteToDisk;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1 outputPath:(id)arg2 versionString:(id)arg3 usingAssetPackMapping:(id)arg4 attemptIncremental:(BOOL)arg5;
 - (void)removeRenditionsFromAssetStoreWithKey:(id)arg1;
+- (BOOL)setAsset:(id)arg1 withKey:(const struct _renditionkeytoken *)arg2 fromRenditionSpec:(id)arg3;
 - (void)setAssetColorSpaceID:(unsigned int)arg1;
 - (void)setAssetSchemaVersion:(unsigned int)arg1;
 - (void)setAssetStorageVersion:(unsigned int)arg1;

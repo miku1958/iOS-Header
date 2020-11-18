@@ -6,100 +6,65 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
-#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDSettingGroup-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingContainer, HMDAccessorySettingGroupModel, HMFMessageDispatcher, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class NSArray, NSMutableSet, NSString, NSUUID;
 
-@interface HMDAccessorySettingGroup : HMFObject <HMDBackingStoreObjectProtocol, HMFLogging, HMDHomeMessageReceiver, NSSecureCoding, NSCopying>
+@interface HMDAccessorySettingGroup : HMFObject <HMFLogging, NSSecureCoding, HMDSettingGroup>
 {
+    struct os_unfair_lock_s _lock;
     NSMutableSet *_settings;
     NSMutableSet *_groups;
     HMDAccessorySettingGroup *_mediaSystemSettingGroup;
+    NSUUID *_parentIdentifier;
+    NSString *_keyPath;
     NSUUID *_identifier;
-    HMDAccessorySettingGroup *_group;
     NSString *_name;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMFMessageDispatcher *_messageDispatcher;
-    HMDAccessorySettingContainer *_container;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (strong, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak) HMDAccessorySettingGroup *group; // @synthesize group=_group;
 @property (readonly, copy) NSArray *groups;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly) NSString *keyPath;
+@property (readonly, copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (weak) HMDAccessorySettingGroup *mediaSystemSettingGroup; // @synthesize mediaSystemSettingGroup=_mediaSystemSettingGroup;
-@property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, copy) NSSet *messageReceiverChildren;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (readonly) HMDAccessorySettingGroupModel *model;
-@property (readonly, copy) NSArray *models;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (readonly, copy) NSArray *settings;
 @property (readonly) Class superclass;
 
-+ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)supportedGroupsClasses;
 + (id)supportedSettingsClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_fixupAccessorySetting;
-- (void)_handleAddGroup:(id)arg1;
-- (void)_handleAddSetting:(id)arg1;
-- (void)_handleRemoveGroup:(id)arg1;
-- (void)_handleRemoveSetting:(id)arg1;
-- (void)_relayRequestMessage:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)accessoryFromTarget;
+- (void)_reevaluateParentGroup:(id)arg1;
+- (void)_setParentGroup:(id)arg1;
 - (void)addGroup:(id)arg1;
 - (void)addSetting:(id)arg1;
 - (BOOL)compareSettingsTree:(id)arg1;
-- (void)configureWithContainer:(id)arg1 messageDispatcher:(id)arg2;
+- (id)copyIdentical;
+- (id)copyReplica;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fixupAccessorySetting;
 - (id)fullDescription;
 - (id)groupWithIdentifier:(id)arg1;
-- (void)handleAddedGroupModel:(id)arg1 message:(id)arg2;
-- (void)handleAddedSettingModel:(id)arg1 message:(id)arg2;
-- (void)handleRemovedGroupModel:(id)arg1 message:(id)arg2;
-- (void)handleRemovedSettingModel:(id)arg1 message:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1;
-- (id)initWithName:(id)arg1;
-- (void)intersectSettingGroup:(id)arg1 groupMetadata:(id)arg2;
+- (id)initWithName:(id)arg1 identifier:(id)arg2 parentIdentifier:(id)arg3;
+- (void)intersectSettingGroup:(id)arg1 groupMetadata:(id)arg2 shouldAddMissingItems:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isOwnerCurrentDevice;
 - (BOOL)isPrivateToDevice;
-- (BOOL)isTargetCurrentDevice;
 - (id)logIdentifier;
-- (id)mergeWithGroupMetadata:(id)arg1;
-- (id)messageDestination;
-- (id)ownerAccessory;
-- (void)registerForMessages;
-- (id)remoteMessageDestination:(id)arg1;
 - (void)removeGroup:(id)arg1;
 - (void)removeSetting:(id)arg1;
 - (id)settingWithIdentifier:(id)arg1;
 - (BOOL)shouldEncodeForCoder:(id)arg1;
-- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
-- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
-- (id)transactionWithObjectChangeType:(unsigned long long)arg1;
-- (void)updateMediaSystemSettingsGroup:(id)arg1;
 
 @end
 

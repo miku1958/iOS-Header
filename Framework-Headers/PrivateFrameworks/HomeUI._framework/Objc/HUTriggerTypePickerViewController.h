@@ -6,16 +6,18 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-@class HFActionSetBuilder, HUTriggerTypePickerItemManager;
+@class HFActionSetBuilder, HUTriggerTypePickerItemManager, NSArray;
 @protocol HUTriggerEditorDelegate;
 
 @interface HUTriggerTypePickerViewController : HUItemTableViewController
 {
     id<HUTriggerEditorDelegate> _delegate;
     HFActionSetBuilder *_actionSetBuilder;
+    NSArray *_anonymousActionBuilders;
 }
 
 @property (strong, nonatomic) HFActionSetBuilder *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
+@property (strong, nonatomic) NSArray *anonymousActionBuilders; // @synthesize anonymousActionBuilders=_anonymousActionBuilders;
 @property (weak, nonatomic) id<HUTriggerEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) HUTriggerTypePickerItemManager *itemManager; // @dynamic itemManager;
 
@@ -24,6 +26,7 @@
 - (id)_createTriggerBuilderOfClass:(Class)arg1;
 - (id)_createTriggerEditorForItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)initWithActionSetBuilder:(id)arg1 anonymousActionBuilders:(id)arg2 delegate:(id)arg3;
 - (id)initWithActionSetBuilder:(id)arg1 delegate:(id)arg2;
 - (BOOL)shouldHideFooterBelowSection:(long long)arg1;
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;

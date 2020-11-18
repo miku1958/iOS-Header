@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_reviewId:1;
         unsigned int read_reviewer:1;
         unsigned int read_snippets:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_rating:1;
-        unsigned int wrote_reviewId:1;
-        unsigned int wrote_reviewTime:1;
-        unsigned int wrote_reviewer:1;
-        unsigned int wrote_snippets:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,13 +49,8 @@ __attribute__((visibility("hidden")))
 + (id)reviewsForPlaceData:(id)arg1;
 + (Class)snippetType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsSnippet:(id)arg1;
 - (id)_bestSnippet;
 - (id)_bestSnippetLocale;
-- (void)_readRating;
-- (void)_readReviewId;
-- (void)_readReviewer;
-- (void)_readSnippets;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -71,7 +61,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 + (id)_verticalAxis;
 + (void)determineChartabilityOfConcept:(id)arg1 withApplicationItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (BOOL)_usePreferredOverlayAndAllFiltersButton;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (id)createChartOverlayViewController;
@@ -42,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithConcept:(id)arg1 configuration:(id)arg2 displayDate:(id)arg3 masterDataSource:(id)arg4 seriesDataSources:(id)arg5 outOfRangeDataSource:(id)arg6 noRangeDataSource:(id)arg7 overlayMode:(long long)arg8 applicationItems:(id)arg9;
 - (id)initialSelectedContextForMode:(long long)arg1;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
+- (BOOL)supportsShowAllFilters;
 
 @end
 

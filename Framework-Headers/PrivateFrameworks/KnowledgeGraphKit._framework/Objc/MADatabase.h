@@ -69,6 +69,7 @@
 - (void)addEdge:(id)arg1 requiresTesting:(BOOL)arg2;
 - (void)addNode:(id)arg1 requiresTesting:(BOOL)arg2;
 - (void)closePersistentStore;
+- (BOOL)copyToURL:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)deleteMarker;
 - (void)enterBatch;
@@ -103,11 +104,13 @@
 - (void)removeModelNodesPropertiesForIdentifiers:(id)arg1;
 - (void)removePreviousPersistenceStore;
 - (void)save:(CDUnknownBlockType)arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (void)setMarker;
 - (void)setModelEdgeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(BOOL)arg3;
 - (void)setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)setModelNodeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(BOOL)arg3;
 - (void)setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (id)valueForModelProperty:(id)arg1;
 
 @end

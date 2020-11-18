@@ -30,29 +30,27 @@
 @property (readonly, strong, nonatomic) NSArray *containedClasses; // @synthesize containedClasses=_containedClasses;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *encoding; // @synthesize encoding=_encoding;
+@property (readonly, copy, nonatomic) NSString *encoding;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long index; // @synthesize index=_index;
+@property (readonly, nonatomic) long long index; // @synthesize index=_index;
 @property (readonly, nonatomic, getter=isVoid) BOOL isVoid;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic, getter=isObject) BOOL object;
 @property (readonly, strong, nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
 @property (readonly, nonatomic, getter=isOnewayVoid) BOOL onewayVoid; // @synthesize onewayVoid=_onewayVoid;
 @property (readonly, nonatomic, getter=isPlistObject) BOOL plistObject; // @synthesize plistObject=_plistObject;
 @property (readonly, nonatomic, getter=isPointer) BOOL pointer;
 @property (readonly, copy, nonatomic) NSArray *protocols; // @synthesize protocols=_protocols;
-@property (readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
+@property (readonly, nonatomic) unsigned long long size;
 @property (readonly, copy, nonatomic) NSString *structName; // @synthesize structName=_structName;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL type; // @synthesize type=_type;
+@property (readonly, nonatomic) BOOL type;
 @property (readonly, nonatomic, getter=isXPCObject) BOOL xpcObject;
 
-+ (id)argumentWithSignature:(id)arg1 atIndex:(long long)arg2;
 - (void).cxx_destruct;
 - (id)_prettyTypeString;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithSignature:(id)arg1 atIndex:(long long)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

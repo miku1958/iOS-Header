@@ -8,19 +8,17 @@
 
 #import <NanoPassKit/PKPeerPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class NPSDomainAccessor, NPSManager, NSString;
+@class NSString, PKPeerPaymentWebService;
 
 @interface NPKPeerPaymentWebServiceCompanionTargetDevice : NSObject <PKPeerPaymentWebServiceTargetDeviceProtocol>
 {
-    NPSDomainAccessor *_globalDomainAccessor;
-    NPSManager *_preferencesSyncManager;
+    PKPeerPaymentWebService *_peerPaymentWebService;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NPSDomainAccessor *globalDomainAccessor; // @synthesize globalDomainAccessor=_globalDomainAccessor;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NPSManager *preferencesSyncManager; // @synthesize preferencesSyncManager=_preferencesSyncManager;
+@property (weak, nonatomic) PKPeerPaymentWebService *peerPaymentWebService; // @synthesize peerPaymentWebService=_peerPaymentWebService;
 @property (readonly) Class superclass;
 
 + (void)attemptToDownloadPeerPaymentPassAtURL:(id)arg1 withWebService:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -32,15 +30,19 @@
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)deviceClass;
 - (id)deviceRegion;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)preferences;
 - (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (id)secureElementIdentifiers;
+- (void)setPreferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setUserHasDisabledPeerPayment:(BOOL)arg1;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)userHasDisabledPeerPayment;

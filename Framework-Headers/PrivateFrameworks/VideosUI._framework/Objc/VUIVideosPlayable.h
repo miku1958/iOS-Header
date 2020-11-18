@@ -12,13 +12,12 @@ __attribute__((visibility("hidden")))
 @interface VUIVideosPlayable : NSObject
 {
     NSDictionary *_videosPlayableDict;
-    NSString *_bookmarkID;
     NSURL *_previewArtwork;
     VUIContentMetadata *_metadata;
 }
 
 @property (readonly, nonatomic) NSString *adamID;
-@property (readonly, nonatomic) NSString *bookmarkID; // @synthesize bookmarkID=_bookmarkID;
+@property (readonly, nonatomic) NSString *bookmarkID;
 @property (readonly, nonatomic) NSString *buyParams;
 @property (readonly, nonatomic) NSString *canonicalID;
 @property (readonly, nonatomic) NSString *channelID;
@@ -34,6 +33,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *fpsNonceURL;
 @property (readonly, nonatomic) NSNumber *frequencyOfAgeConfirmation;
 @property (readonly, nonatomic) NSURL *hlsURL;
+@property (readonly, nonatomic) BOOL isAmbientVideo;
+@property (readonly, nonatomic) BOOL isFamilySharingContent;
 @property (readonly, nonatomic) BOOL isMovie;
 @property (readonly, nonatomic) BOOL isRental;
 @property (readonly, nonatomic) BOOL isSubscription;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *previewArtwork; // @synthesize previewArtwork=_previewArtwork;
 @property (readonly, nonatomic) NSString *referenceID;
 @property (readonly, nonatomic) NSNumber *rentalID;
+@property (readonly, nonatomic) NSNumber *repeatLoopCount;
 @property (readonly, nonatomic) NSNumber *requiredAgeForPlayback;
 @property (readonly, nonatomic) NSNumber *resumeTime;
 @property (readonly, nonatomic) NSDate *resumeTimeTimeStamp;
@@ -65,6 +67,7 @@ __attribute__((visibility("hidden")))
 + (id)videosPlayablesFromDictionaries:(id)arg1 andMetadataDictionary:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1 andMetadataDictionary:(id)arg2;
+- (BOOL)mostRecentResumeTime:(id *)arg1 mostRecentTimestamp:(id *)arg2;
 
 @end
 

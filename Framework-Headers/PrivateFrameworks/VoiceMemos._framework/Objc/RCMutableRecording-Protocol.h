@@ -12,13 +12,16 @@
 
 @property (copy, nonatomic) NSString *customLabel;
 @property (copy, nonatomic) NSDate *date;
+@property (nonatomic) BOOL deleted;
 @property (nonatomic) BOOL downloading;
 @property (nonatomic) double duration;
-@property (nonatomic) BOOL editing;
+@property (nonatomic) BOOL enhanced;
 @property (copy, nonatomic) NSDate *evictionDate;
+@property (nonatomic) BOOL favorite;
 @property (nonatomic) long long iTunesPersistentID;
 @property (copy, nonatomic) CLLocation *location;
 @property (nonatomic) BOOL manuallyRenamed;
+@property (nonatomic) BOOL musicMemo;
 @property (copy, nonatomic) NSString *path;
 @property (nonatomic) BOOL pendingRestore;
 @property (nonatomic) BOOL playable;
@@ -26,6 +29,7 @@
 @property (nonatomic) BOOL synced;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *uniqueID;
+@property (nonatomic) BOOL watchOS;
 
 @end
 

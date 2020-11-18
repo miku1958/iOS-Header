@@ -44,6 +44,7 @@
 - (id)description;
 - (id)initWithDisplayAsset:(id)arg1 mediaProvider:(id)arg2 geometryReference:(id)arg3;
 - (void)prepareForInvisible;
+- (void)prepareForOneUpVisible;
 - (void)prepareForVisible;
 
 @end

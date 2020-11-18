@@ -27,7 +27,7 @@
 @property (strong, nonatomic) GKButton *button; // @synthesize button=_button;
 @property (nonatomic) double buttonBaselineOffset; // @synthesize buttonBaselineOffset=_buttonBaselineOffset;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GKRemoteUIAuxiliaryViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GKRemoteUIAuxiliaryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int layoutStyle; // @synthesize layoutStyle=_layoutStyle;

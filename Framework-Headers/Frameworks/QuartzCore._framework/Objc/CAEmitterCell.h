@@ -89,6 +89,7 @@
 - (BOOL)CAMLTypeSupportedForKey:(id)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (void)CA_prepareRenderValue;
+- (BOOL)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)debugDescription;

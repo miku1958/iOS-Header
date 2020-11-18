@@ -41,12 +41,11 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (struct CGSize)_clearButtonPreferredSize;
-+ (void)_contentSizeCategoryDidChange:(id)arg1;
 + (double)headerHeightWithWidth:(double)arg1 title:(id)arg2;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)_configureClearButtonIfNecessary;
 - (void)_configureHeaderTitleViewIfNecessary;
+- (void)_contentSizeCategoryDidChange;
 - (void)_handleClearAll:(id)arg1;
 - (void)_handleClearButtonPrimaryActionTriggered:(id)arg1;
 - (void)_handleClearButtonTouchUpInside:(id)arg1;
@@ -65,6 +64,7 @@
 - (void)toggleControlDidBeginClickInteraction:(id)arg1;
 - (void)toggleControlDidDismssClickInteractionPresentedContent:(id)arg1;
 - (void)toggleControlDidPresentClickInteractionPresentedContent:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

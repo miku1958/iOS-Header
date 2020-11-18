@@ -13,7 +13,7 @@
 #import <WorkflowUI/WFTriggerComposeViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFTriggerConfigurationViewControllerDelegate-Protocol.h>
 
-@class NSString, UINavigationController, WFConfiguredTriggerRecord, WFDatabase, WFHomeManager, WFTriggerManager, WFWorkflow;
+@class NSString, UINavigationController, WFConfiguredTriggerRecord, WFDatabase, WFHomeManager, WFTriggerManager, WFWorkflow, WFWorkflowReference;
 @protocol WFCreateAutomationCoordinatorDelegate;
 
 @interface WFCreateAutomationCoordinator : NSObject <WFAutomationTypeChooserViewControllerDelegate, WFAutomationSelectTypeViewControllerDelegate, WFTriggerConfigurationViewControllerDelegate, WFTriggerComposeViewControllerDelegate, WFAutomationSummaryViewControllerDelegate, HUTriggerEditorDelegate>
@@ -21,10 +21,11 @@
     UINavigationController *_navigationController;
     id<WFCreateAutomationCoordinatorDelegate> _delegate;
     WFTriggerManager *_triggerManager;
-    NSString *_triggerID;
+    NSString *_triggerIdentifier;
     WFDatabase *_database;
     WFConfiguredTriggerRecord *_triggerRecord;
     WFWorkflow *_workflow;
+    WFWorkflowReference *_workflowReference;
     WFHomeManager *_homeManager;
 }
 
@@ -36,10 +37,11 @@
 @property (readonly, nonatomic) WFHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *triggerID; // @synthesize triggerID=_triggerID;
+@property (strong, nonatomic) NSString *triggerIdentifier; // @synthesize triggerIdentifier=_triggerIdentifier;
 @property (strong, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 @property (strong, nonatomic) WFConfiguredTriggerRecord *triggerRecord; // @synthesize triggerRecord=_triggerRecord;
 @property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
+@property (strong, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 
 - (void).cxx_destruct;
 - (void)automationSummaryViewController:(id)arg1 didFinishWithTrigger:(id)arg2;
@@ -48,12 +50,13 @@
 - (void)buildViewControllerForHomeTriggerChooserStepWithBackButtonAction:(unsigned long long)arg1 hostingViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)buildViewControllerForPersonalTriggerChooserStepWithBackButtonAction:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancel;
-- (void)finish;
+- (void)finishWithTriggerRecord:(id)arg1;
 - (id)initWithDatabase:(id)arg1 homeManager:(id)arg2;
 - (void)openHomeApp;
 - (void)selectTypeViewController:(id)arg1 didChooseTriggerClass:(Class)arg2;
 - (void)startAtStep:(unsigned long long)arg1 hostingViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)triggerComposeViewController:(id)arg1 didFinishWithWorkflow:(id)arg2;
+- (void)triggerComposeViewControllerDidCancel:(id)arg1;
 - (void)triggerConfigurationViewController:(id)arg1 didFinishWithTrigger:(id)arg2;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 

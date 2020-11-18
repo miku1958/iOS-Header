@@ -18,15 +18,15 @@
 }
 
 @property (nonatomic) struct UIEdgeInsets cellMarginInsets; // @synthesize cellMarginInsets=_cellMarginInsets;
-@property (nonatomic) NSObject<GKTurnBasedMatchesDataSourceDelegate> *delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) NSObject<GKTurnBasedMatchesDataSourceDelegate> *delegate; // @synthesize delegate=_delegateWeak;
 @property (nonatomic) SEL detailPressedAction; // @synthesize detailPressedAction=_detailPressedAction;
 @property (strong, nonatomic) GKGame *game; // @synthesize game=_game;
 
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionViewWillBecomeActive:(id)arg1;
 - (void)configureCollectionView:(id)arg1;
 - (void)configureDataSource;
-- (void)dealloc;
 - (unsigned long long)numberOfMatches;
 - (void)removeItemAtIndexPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

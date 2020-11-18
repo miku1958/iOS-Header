@@ -14,13 +14,13 @@
     NSMutableSet *_mutableMomentNodes;
     unsigned long long _meaning;
     NSString *_key;
-    NSArray *_relevantAssets;
+    NSArray *_relevantAssetLocalIdentifiers;
 }
 
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly) unsigned long long meaning; // @synthesize meaning=_meaning;
 @property (strong, nonatomic) NSSet *meaningfulEvents; // @synthesize meaningfulEvents=_meaningfulEvents;
-@property (strong, nonatomic) NSArray *relevantAssets; // @synthesize relevantAssets=_relevantAssets;
+@property (strong, nonatomic) NSArray *relevantAssetLocalIdentifiers; // @synthesize relevantAssetLocalIdentifiers=_relevantAssetLocalIdentifiers;
 
 - (void).cxx_destruct;
 - (void)addMeaningfulEvent:(id)arg1 controller:(id)arg2;

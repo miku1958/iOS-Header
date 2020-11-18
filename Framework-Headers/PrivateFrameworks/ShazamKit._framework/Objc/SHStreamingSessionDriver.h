@@ -8,42 +8,44 @@
 
 #import <ShazamKit/SHSessionDriver-Protocol.h>
 
-@class NSDate, NSString, SHConfiguration, SHMutableSignature, SHSignature;
-@protocol SHRecognitionSessionDelegate, SHSessionDriverDelegate;
+@class NSDate, NSString, SHSignature, SHSignatureBuffer;
+@protocol SHSessionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SHStreamingSessionDriver : NSObject <SHSessionDriver>
 {
     BOOL _waiting;
     id<SHSessionDriverDelegate> _sessionDelegate;
-    id<SHRecognitionSessionDelegate> _recognitionDelegate;
-    SHMutableSignature *_mutableSignature;
-    SHConfiguration *_configuration;
     double _currentRequiredLength;
     NSDate *_sessionStartDate;
+    double _maximumSignatureLength;
+    double _minimumSignatureLength;
+    SHSignatureBuffer *_signatureBuffer;
 }
 
-@property (strong, nonatomic) SHConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (nonatomic) double currentRequiredLength; // @synthesize currentRequiredLength=_currentRequiredLength;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SHSignature *matchingSignature;
-@property (strong, nonatomic) SHMutableSignature *mutableSignature; // @synthesize mutableSignature=_mutableSignature;
-@property (weak, nonatomic) id<SHRecognitionSessionDelegate> recognitionDelegate; // @synthesize recognitionDelegate=_recognitionDelegate;
+@property (nonatomic) double maximumSignatureLength; // @synthesize maximumSignatureLength=_maximumSignatureLength;
+@property (nonatomic) double minimumSignatureLength; // @synthesize minimumSignatureLength=_minimumSignatureLength;
 @property (weak, nonatomic) id<SHSessionDriverDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
 @property (strong, nonatomic) NSDate *sessionStartDate; // @synthesize sessionStartDate=_sessionStartDate;
+@property (strong, nonatomic) SHSignatureBuffer *signatureBuffer; // @synthesize signatureBuffer=_signatureBuffer;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL waiting; // @synthesize waiting=_waiting;
 
 - (void).cxx_destruct;
+- (double)clampTimeInterval:(double)arg1;
+- (void)didFinishForMatcher:(id)arg1;
 - (void)flow:(id)arg1 time:(id)arg2;
-- (id)initWithConfiguration:(id)arg1;
-- (void)matcher:(id)arg1 didFailForSignature:(id)arg2 apiResponse:(id)arg3 withError:(id)arg4;
-- (void)matcher:(id)arg1 didFindMatch:(id)arg2 forSignature:(id)arg3 apiResponse:(id)arg4;
-- (void)matcher:(id)arg1 didNotFindMatchForSignature:(id)arg2 apiResponse:(id)arg3;
-- (void)reset;
-- (void)startResetTimerForIntermission:(double)arg1;
+- (id)initWithMinimumSignatureLength:(double)arg1 maximumSignatureLength:(double)arg2;
+- (void)match;
+- (void)matcher:(id)arg1 didFailForSignature:(id)arg2 matcherResponse:(id)arg3 withError:(id)arg4;
+- (void)matcher:(id)arg1 didFindMatchingResponse:(id)arg2;
+- (void)matcher:(id)arg1 didNotFindMatchForSignature:(id)arg2 matcherResponse:(id)arg3;
+- (void)startResetTimerForIntermission:(double)arg1 requiredSignatureLength:(double)arg2;
 
 @end
 

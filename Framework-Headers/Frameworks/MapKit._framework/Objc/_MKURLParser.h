@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) GEOURLCollectionStorage *collectionStorage;
 @property (readonly, nonatomic) NSString *contentProvider;
 @property (readonly, nonatomic) NSString *contentProviderID;
+@property (readonly, nonatomic) unsigned long long curatedCollectionMUID;
 @property (readonly) NSString *directionsDestinationAddressString;
 @property (readonly) NSString *directionsSourceAddressString;
 @property (readonly, nonatomic) BOOL exactPositionSpecified;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) MKMapCamera *mapCamera;
 @property (readonly, nonatomic) unsigned long long mapType;
 @property (readonly, nonatomic) GEOMuninViewState *muninViewState;
+@property (readonly, nonatomic) unsigned long long publisherMUID;
 @property (readonly, nonatomic) double roll;
 @property (readonly, nonatomic) double rotation;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D searchCoordinate;
@@ -41,6 +43,7 @@
 @property (readonly) NSString *searchQuery;
 @property (readonly, nonatomic) CDStruct_b7cb895d searchRegion;
 @property (readonly, nonatomic) unsigned long long searchUID;
+@property (readonly) BOOL showAllCuratedCollections;
 @property (readonly) BOOL showCarDestinations;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee span;
 @property (readonly, nonatomic) BOOL tester;
@@ -51,6 +54,7 @@
 @property (readonly) GEOUserSessionEntity *userSessionEntity;
 @property (readonly, nonatomic) float zoomLevel;
 
++ (BOOL)isAppleMapsGuidesURL:(id)arg1;
 + (BOOL)isValidMapURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithURL:(id)arg1;

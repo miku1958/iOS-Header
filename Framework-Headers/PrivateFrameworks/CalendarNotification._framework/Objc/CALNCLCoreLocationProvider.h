@@ -23,6 +23,8 @@
 - (int)authorizationStatusForBundle:(id)arg1;
 - (int)authorizationStatusForBundleIdentifier:(id)arg1;
 - (void)markAsHavingReceivedLocationWithEffectiveBundleIdentifier:(id)arg1;
+- (BOOL)preciseLocationAuthorizedForBundle:(id)arg1;
+- (BOOL)preciseLocationAuthorizedForBundleIdentifier:(id)arg1;
 
 @end
 

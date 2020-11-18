@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
 
 @end

@@ -37,7 +37,7 @@
 + (void)_setSpecificContent:(id)arg1 forSnoozeCountdownNotification:(id)arg2;
 + (id)_snoozeCountdownIdentifier:(id)arg1;
 + (id)_timeFormatter;
-+ (id)_wakeUpAlarmStringForAlarm:(id)arg1 bundle:(struct __CFBundle *)arg2;
++ (id)_wakeUpAlarmStringForAlarm:(id)arg1;
 + (id)categoryForScheduledAlarm:(id)arg1;
 + (id)categoryForScheduledTimer:(id)arg1;
 + (id)contentForScheduledAlarm:(id)arg1;
@@ -70,6 +70,7 @@
 - (void)registerActionHandler:(id)arg1;
 - (void)removeAllDeliveredNotifications;
 - (void)setupNotificationCenter;
+- (void)tearDownNotificationsForEventIdentifiers:(id)arg1;
 - (id)timerCategories;
 
 @end

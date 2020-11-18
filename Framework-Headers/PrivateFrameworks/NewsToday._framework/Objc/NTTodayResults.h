@@ -9,20 +9,26 @@
 #import <NewsToday/NSCopying-Protocol.h>
 #import <NewsToday/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSOrderedSet;
+@class NSDate, NSOrderedSet, NSString;
 
 @interface NTTodayResults : NSObject <NSCopying, NSSecureCoding>
 {
+    int _promotionCriterion;
+    NSString *_sourceIdentifier;
     NSOrderedSet *_sections;
     NSDate *_expirationDate;
+    double _headlineScale;
     NSObject *_assetsHoldToken;
     NSObject *_recordsHoldToken;
 }
 
-@property (copy, nonatomic) NSObject *assetsHoldToken; // @synthesize assetsHoldToken=_assetsHoldToken;
+@property (readonly, nonatomic) NSObject *assetsHoldToken; // @synthesize assetsHoldToken=_assetsHoldToken;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (copy, nonatomic) NSObject *recordsHoldToken; // @synthesize recordsHoldToken=_recordsHoldToken;
-@property (copy, nonatomic) NSOrderedSet *sections; // @synthesize sections=_sections;
+@property (readonly, nonatomic) double headlineScale; // @synthesize headlineScale=_headlineScale;
+@property (readonly, nonatomic) int promotionCriterion; // @synthesize promotionCriterion=_promotionCriterion;
+@property (readonly, nonatomic) NSObject *recordsHoldToken; // @synthesize recordsHoldToken=_recordsHoldToken;
+@property (readonly, copy, nonatomic) NSOrderedSet *sections; // @synthesize sections=_sections;
+@property (readonly, copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -32,8 +38,8 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSections:(id)arg1 expirationDate:(id)arg2;
-- (id)initWithSections:(id)arg1 expirationDate:(id)arg2 assetsHoldToken:(id)arg3 recordsHoldToken:(id)arg4;
+- (id)initWithSourceIdentifier:(id)arg1 sections:(id)arg2 expirationDate:(id)arg3 headlineScale:(double)arg4;
+- (id)initWithSourceIdentifier:(id)arg1 sections:(id)arg2 promotionCriterion:(int)arg3 expirationDate:(id)arg4 headlineScale:(double)arg5 assetsHoldToken:(id)arg6 recordsHoldToken:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)itemCount;
 

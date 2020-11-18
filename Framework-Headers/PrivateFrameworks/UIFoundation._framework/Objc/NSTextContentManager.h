@@ -14,10 +14,10 @@
 
 @interface NSTextContentManager : NSObject <NSTextElementProvider, NSSecureCoding>
 {
-    NSMutableArray *_textLayoutManagers;
     NSTextLayoutManager *_primaryTextLayoutManager;
     _Atomic unsigned long long _transactionStack;
     NSMutableArray *_editHistory;
+    NSMutableArray *_textLayoutManagers;
     BOOL _synchronizesTextLayoutManagersAutomatically;
     BOOL _synchronizesToBackingStoreAutomatically;
     id<NSTextContentManagerDelegate> _delegate;
@@ -35,20 +35,23 @@
 @property (readonly) Class superclass;
 @property BOOL synchronizesTextLayoutManagersAutomatically; // @synthesize synchronizesTextLayoutManagersAutomatically=_synchronizesTextLayoutManagersAutomatically;
 @property BOOL synchronizesToBackingStoreAutomatically; // @synthesize synchronizesToBackingStoreAutomatically=_synchronizesToBackingStoreAutomatically;
-@property (readonly, copy) NSArray *textLayoutManagers; // @synthesize textLayoutManagers=_textLayoutManagers;
+@property (readonly, copy) NSArray *textLayoutManagers; // @dynamic textLayoutManagers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_decrementTransactionStack;
 - (void)_incrementTransactionStack;
-- (void)addEditActionInRange:(id)arg1 newTextRange:(id)arg2;
 - (void)addTextLayoutManager:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)enumerateTextElementsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isCountableDataSource;
+- (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
+- (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
 - (void)performEditingTransactionWithBlock:(CDUnknownBlockType)arg1;
+- (void)recordEditActionInRange:(id)arg1 newTextRange:(id)arg2;
 - (void)removeTextLayoutManager:(id)arg1;
 - (void)replaceCharactersInRange:(id)arg1 withTextElements:(id)arg2;
 - (BOOL)synchronizeTextLayoutManagers:(CDUnknownBlockType)arg1;

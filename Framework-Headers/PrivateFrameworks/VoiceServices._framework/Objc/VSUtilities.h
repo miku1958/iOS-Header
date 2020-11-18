@@ -13,7 +13,7 @@
 + (id)hardwarePlatform;
 + (BOOL)hasAMX;
 + (BOOL)hasANE;
-+ (BOOL)isAudioAccessory;
++ (BOOL)isHomePod;
 + (BOOL)isInternalBuild;
 + (BOOL)isNeuralTTSPlatform;
 + (BOOL)isSeedBuild;

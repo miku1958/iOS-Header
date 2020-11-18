@@ -15,7 +15,6 @@
 @interface PXCMMCloudGadgetViewController : UIViewController <PXCMMCloudViewViewDelegate, PXGadget>
 {
     BOOL _isCPLOn;
-    BOOL _hasContentToDisplay;
     long long _priority;
     id<PXCMMCloudGadgetViewControllerDelegate> _delegate;
     PXGadgetSpec *_gadgetSpec;
@@ -35,7 +34,6 @@
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (copy, nonatomic) NSString *gadgetTitle; // @synthesize gadgetTitle=_gadgetTitle;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay; // @synthesize hasContentToDisplay=_hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;
@@ -49,9 +47,10 @@
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
 - (void)_updateCPLStatus;
-- (void)_updateViewInsets;
+- (void)_updateContentInsets;
 - (void)completeMyMomentCloudPhotoViewDismissTapped:(id)arg1;
 - (void)completeMyMomentCloudPhotoViewLearnMoreTapped:(id)arg1;
+- (void)completeMyMomentCloudPhotoViewSizeThatFitsDidChange:(id)arg1;
 - (id)contentViewController;
 - (id)initWithSourceType:(unsigned long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -4,22 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKWorkoutRichComplicationBaseCircularView.h>
 
-@class NTKWorkoutRichComplicationBaseCircularView;
-
-@interface NTKWorkoutRichComplicationCircularView : NTKRichComplicationCircularBaseView
+@interface NTKWorkoutRichComplicationCircularView : NTKWorkoutRichComplicationBaseCircularView
 {
-    NTKWorkoutRichComplicationBaseCircularView *_richView;
 }
 
-- (void).cxx_destruct;
-- (void)_applyPausedUpdate;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
+- (id)_animatedImagesName;
+- (id)_workoutImageName;
 - (id)init;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

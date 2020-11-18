@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <TSTables/NSCopying-Protocol.h>
 #import <TSTables/TSDHint-Protocol.h>
 
 @class NSNumber, NSString, TSTLayout;
+@protocol TSDHint;
 
-@interface TSTLayoutHint : NSObject <TSDHint>
+@interface TSTLayoutHint : NSObject <NSCopying, TSDHint>
 {
     BOOL mIsValid;
     BOOL mHorizontal;
@@ -28,9 +30,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGSize effectiveSize; // @synthesize effectiveSize=mEffectiveSize;
+@property (readonly, nonatomic) id<TSDHint> firstChildHint;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL horizontal; // @synthesize horizontal=mHorizontal;
+@property (readonly, nonatomic) BOOL isFirstHint;
 @property (nonatomic) BOOL isValid; // @synthesize isValid=mIsValid;
+@property (readonly, nonatomic) id<TSDHint> lastChildHint;
 @property (nonatomic) TSTLayout *layout; // @synthesize layout=mLayout;
 @property (nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=mMaximumSize;
 @property (nonatomic) unsigned int partitionPosition; // @synthesize partitionPosition=mPartitionPosition;
@@ -39,15 +44,12 @@
 
 + (Class)archivedHintClass;
 - (id)copyForArchiving;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)firstChildHint;
 - (id)init;
 - (id)initWithArchive:(const struct LayoutHintArchive *)arg1;
 - (id)initWithRange:(struct TSUCellRect)arg1 hintId:(struct TSUCellCoord)arg2 partitionPosition:(unsigned int)arg3 maximumSize:(struct CGSize)arg4 effectiveSize:(struct CGSize)arg5 layout:(id)arg6 validity:(BOOL)arg7 horizontal:(BOOL)arg8;
 - (void)invalidate;
-- (BOOL)isFirstHint;
-- (id)lastChildHint;
-- (void)offsetByDelta:(int)arg1;
 - (BOOL)overlapsWithSelectionPath:(id)arg1;
 - (oneway void)release;
 - (void)saveToArchive:(struct LayoutHintArchive *)arg1;

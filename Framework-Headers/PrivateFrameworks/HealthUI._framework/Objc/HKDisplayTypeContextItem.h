@@ -11,6 +11,7 @@
 @interface HKDisplayTypeContextItem : NSObject
 {
     BOOL _infoHidden;
+    BOOL _useTightSpacingBetweenValueAndUnit;
     NSString *_title;
     NSString *_unit;
     NSString *_value;
@@ -28,10 +29,12 @@
 @property (strong, nonatomic) HKUIMetricColors *selectedMetricColors; // @synthesize selectedMetricColors=_selectedMetricColors;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *unit; // @synthesize unit=_unit;
+@property (nonatomic) BOOL useTightSpacingBetweenValueAndUnit; // @synthesize useTightSpacingBetweenValueAndUnit=_useTightSpacingBetweenValueAndUnit;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property (copy, nonatomic) NSString *valueContext; // @synthesize valueContext=_valueContext;
 
 - (void).cxx_destruct;
+- (id)debugDescription;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContextItem:(id)arg1;

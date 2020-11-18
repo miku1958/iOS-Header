@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_auxMediaItemFromVideosPlayable:(id)arg1;
+- (id)_hlsURLEnsuringDsidQueryParamIsPresentFromURL:(id)arg1;
 - (id)_playbackOverridesForURL:(id)arg1 orAdamID:(id)arg2;
 - (id)_playlistForVUIMediaItems:(id)arg1;
 - (id)_playlistFromMPMediaItems:(id)arg1;
@@ -56,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)_populateMediaItem:(id)arg1 withMetadataOverrides:(id)arg2;
 - (id)_storeMediaItemFromMPMediaItem:(id)arg1;
 - (id)_storeMediaItemFromVideosPlayable:(id)arg1 andStoreDictionary:(id)arg2;
-- (id)_tvpMediaTypeFromPlayableType:(id)arg1 isRental:(BOOL)arg2;
+- (id)_tvpMediaTypeFromPlayable:(id)arg1;
 - (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
 - (void)_updatePlaybackStartReason;
 - (long long)_videoDynamimcRangeFromMPColorCapability:(long long)arg1;

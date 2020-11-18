@@ -16,6 +16,7 @@
     TSPDeepCopyObjectMap *_objectMap;
     TSPObject *_cachedMetadataObject;
     NSDictionary *_cachedDataMap;
+    unsigned long long _readVersion;
     TSPComponent *_component;
 }
 
@@ -26,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCrossAppPaste;
 @property (readonly, nonatomic) BOOL isCrossDocumentPaste;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly) Class superclass;
 

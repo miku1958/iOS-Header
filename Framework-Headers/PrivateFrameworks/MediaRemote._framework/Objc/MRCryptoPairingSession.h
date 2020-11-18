@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, NSArray;
 @protocol MRCryptoPairingSessionDelegate;
 
 @interface MRCryptoPairingSession : NSObject
 {
-    _MRDeviceInfoMessageProtobuf *_device;
+    MRDeviceInfo *_device;
     unsigned long long _role;
     id<MRCryptoPairingSessionDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<MRCryptoPairingSessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *device; // @synthesize device=_device;
+@property (readonly, nonatomic) MRDeviceInfo *device; // @synthesize device=_device;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) NSArray *pairedDevices;
 @property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;

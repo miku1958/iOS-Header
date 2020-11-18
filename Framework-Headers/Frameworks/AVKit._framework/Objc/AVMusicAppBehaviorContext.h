@@ -21,9 +21,9 @@
     BOOL _scrubbing;
     AVPlayerViewController *_playerViewController;
     AVMusicAppBehavior *_behavior;
+    NSNumber *_seekTargetTime;
     AVObservationController *_observationController;
     AVPlayerController *_playerController;
-    NSNumber *_seekTargetTime;
 }
 
 @property (weak, nonatomic) AVMusicAppBehavior *behavior; // @synthesize behavior=_behavior;
@@ -41,6 +41,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updatePlaybackControlsInclusion;
 - (void)_updateSkipItemButtonsEnabled;
 - (void)dealloc;
 - (void)didAddBehavior:(id)arg1;

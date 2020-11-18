@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)uniqueServerContextWithEndpointDescription:(id)arg1;
 - (BOOL)isServer;
 
 @end

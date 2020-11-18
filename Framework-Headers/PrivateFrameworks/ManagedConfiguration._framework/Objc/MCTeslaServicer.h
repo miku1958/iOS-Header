@@ -32,6 +32,7 @@
 - (void)_retrieveProxyObjectAndRunServiceType:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)fetchConfigurationWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)fetchConfigurationWithoutValidationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)provisionallyEnrollWithNonce:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)retrieveDeviceUploadOrganizationsWithCredentials:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

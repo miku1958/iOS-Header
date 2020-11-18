@@ -8,6 +8,7 @@
 
 @class NSCalendar, NSDate, SUAutoInstallForecast;
 
+__attribute__((visibility("hidden")))
 @interface _SUAutoInstallForecastDateCache : NSObject
 {
     long long _scheduleType;

@@ -12,11 +12,12 @@
 {
 }
 
-- (id)copyMRAVEndpointOutputDevices:(void *)arg1;
+- (id)copyMRAVEndpointOutputDevices:(id)arg1;
 - (id)copyMRAVOutputDeviceUniqueIdentifier:(void *)arg1;
 - (id)createMPCAssistantConnection;
 - (id)createMPCAssistantDiscovery;
-- (void)setMRAVOutputDeviceVolume:(float)arg1 endpoint:(void *)arg2 outputDeviceUID:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)getMRAVEndpointOutputDeviceUIDVolumeControlCapabilitiesForEndpoint:(id)arg1 outputDeviceUID:(id)arg2 queue:(id)arg3;
+- (id)setMRAVOutputDeviceVolume:(float)arg1 endpoint:(id)arg2 outputDeviceUID:(id)arg3 queue:(id)arg4;
 
 @end
 

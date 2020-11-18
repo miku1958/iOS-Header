@@ -11,8 +11,10 @@
 @interface PKCenteredTextCollectionViewCell : PKDashboardCollectionViewCell
 {
     UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
 }
 
+@property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
@@ -20,6 +22,7 @@
 - (void)layoutSubviews;
 - (void)resetFonts;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateTitleTextColor;
 
 @end
 

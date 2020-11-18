@@ -40,7 +40,7 @@
 - (void)convertToSignedShellField;
 - (void)differenceWithVoxels:(id)arg1;
 - (void)dilateNarrowBandInteriorWidthTo:(float)arg1 AndExteriorWidthTo:(float)arg2;
-- (void)erodeNarrowBandInteriorWidthTo:(float)arg1 AndExteriorWidthTo:(float)arg2;
+- (void)erodeNarrowBandInteriorWidthTo:(float)arg1 AndExteriorWidthTo:(float)arg2 selector:(SEL)arg3;
 - (MISSING_TYPE *)indexOfSpatialLocation: /* Error: Ran out of types for this method. */;
 - (id)init;
 - (id)initWithAsset:(id)arg1 divisions:(int)arg2 interiorNBWidth:(float)arg3 exteriorNBWidth:(float)arg4 patchRadius:(float)arg5;

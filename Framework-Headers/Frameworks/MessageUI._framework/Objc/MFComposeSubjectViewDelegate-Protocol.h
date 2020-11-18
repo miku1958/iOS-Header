@@ -9,8 +9,6 @@
 @class MFComposeSubjectView;
 
 @protocol MFComposeSubjectViewDelegate <CNComposeHeaderViewDelegate>
-- (void)composeSubjectViewDidSelectContentVariationButton:(MFComposeSubjectView *)arg1;
-- (void)composeSubjectViewDidSelectNotifyButton:(MFComposeSubjectView *)arg1;
 - (void)composeSubjectViewTextFieldDidBecomeFirstResponder:(MFComposeSubjectView *)arg1;
 - (void)composeSubjectViewTextFieldDidResignFirstResponder:(MFComposeSubjectView *)arg1;
 

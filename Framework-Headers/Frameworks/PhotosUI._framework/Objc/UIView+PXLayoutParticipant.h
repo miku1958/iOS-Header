@@ -37,12 +37,16 @@
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1 allowBackdropStatisticsSupression:(BOOL)arg2;
 - (void)px_animateAlpha:(BOOL)arg1 transformType:(long long)arg2 withZoomTransitionContext:(id)arg3;
 - (void)px_animateWithZoomTransitionContext:(id)arg1;
+- (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 fromView:(id)arg2;
+- (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
 - (void)px_enumerateDescendantSubviewsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)px_transferToSuperview:(id)arg1;
 - (void)px_transferToSuperview:(id)arg1 forZoomTransitionWithContex:(id)arg2;
 - (void)pxg_addToScrollViewController:(id)arg1;
 - (void)pxg_becomeReusable;
 - (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_3ab912e1 *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_506f5052 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d *)arg6;
 - (void)pxg_prepareForReuse;
+- (void)pxg_removeFromSuperview;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
 @end
 

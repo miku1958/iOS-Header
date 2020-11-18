@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) LPSize *size; // @synthesize size=_size;
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

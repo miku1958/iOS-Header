@@ -59,7 +59,6 @@
 - (BOOL)canDragIn;
 - (BOOL)canDragOut;
 - (BOOL)canHandleDropSession:(id)arg1;
-- (BOOL)canRouteToDestination:(id)arg1;
 - (long long)cellFillMode;
 - (void)configureGlobalFooterView:(id)arg1;
 - (void)configureGlobalHeaderView:(id)arg1;
@@ -84,6 +83,8 @@
 - (long long)oneUpPresentationOrigin;
 - (void)photosDataSource:(id)arg1 didReceivePhotoLibraryChange:(id)arg2;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (id)sessionInfoForTransferredAssets:(id)arg1;

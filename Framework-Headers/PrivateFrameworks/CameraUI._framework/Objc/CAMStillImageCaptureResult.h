@@ -11,6 +11,7 @@
 @interface CAMStillImageCaptureResult : NSObject
 {
     BOOL _shouldPersistAdjustmentSidecar;
+    BOOL _representsDeferredFilteredProxy;
     BOOL _expectingPairedVideo;
     AVCapturePhoto *_capturePhoto;
     NSString *_deferredPhotoIdentifier;
@@ -33,6 +34,7 @@
 @property (readonly, copy, nonatomic) NSString *imageGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
+@property (readonly, nonatomic) BOOL representsDeferredFilteredProxy; // @synthesize representsDeferredFilteredProxy=_representsDeferredFilteredProxy;
 @property (readonly, nonatomic) BOOL shouldPersistAdjustmentSidecar; // @synthesize shouldPersistAdjustmentSidecar=_shouldPersistAdjustmentSidecar;
 
 - (void).cxx_destruct;

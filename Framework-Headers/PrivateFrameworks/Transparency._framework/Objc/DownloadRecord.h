@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSData, NSString, NSUUID;
+@class KTRequest, NSData, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface DownloadRecord : NSManagedObject
@@ -16,8 +16,13 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *application; // @dynamic application;
 @property (copy, nonatomic) NSUUID *downloadId; // @dynamic downloadId;
 @property (nonatomic) long long downloadType; // @dynamic downloadType;
+@property (strong, nonatomic) KTRequest *ktRequest; // @dynamic ktRequest;
+@property (strong, nonatomic) NSData *requestData; // @dynamic requestData;
 @property (nonatomic) double requestTime; // @dynamic requestTime;
 @property (strong, nonatomic) NSData *response; // @dynamic response;
+@property (strong, nonatomic) NSData *revisions; // @dynamic revisions;
+@property (copy, nonatomic) NSString *serverHint; // @dynamic serverHint;
+@property (strong, nonatomic) KTRequest *smtRequest; // @dynamic smtRequest;
 @property (nonatomic) long long startSLHRevision; // @dynamic startSLHRevision;
 
 + (id)fetchRequest;

@@ -65,8 +65,7 @@
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (id)_imageForAsset:(unsigned long long)arg1;
 - (BOOL)_isEditOptionFullscreen:(id)arg1;
-- (double)_kaleidoscopeTimeForAsset:(unsigned long long)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (double)_kaleidoscopeTime;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -74,6 +73,7 @@
 - (id)_keylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadCurrentQuad;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;

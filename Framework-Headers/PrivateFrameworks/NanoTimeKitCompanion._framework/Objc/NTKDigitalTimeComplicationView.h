@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTemplateComplicationDisplay-Protocol.h>
 
-@class CLKComplicationTemplate, CLKDevice, NSDate, NSString, NTKDigitalTimeLabel, UIColor;
+@class CLKComplicationTemplate, CLKDevice, NSDate, NSString, NTKDigitalTimeLabel, UIColor, UIFont;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKDigitalTimeComplicationView : UIView <NTKComplicationDisplay, NTKTemplateComplicationDisplay>
@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
+@property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic) BOOL shouldUseTemplateColors;

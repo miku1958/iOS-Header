@@ -9,12 +9,13 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRoom : HMFObject <HMDHomeMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
+@interface HMDRoom : HMFObject <HMFLogging, HMDHomeMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSString *_name;
     NSUUID *_uuid;
@@ -36,19 +37,21 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *serializedIdentifier;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)hasMessageReceiverChildren;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateRoomModel:(id)arg1 message:(id)arg2;
-- (void)_logDuetEvent:(id)arg1;
+- (void)_logEventWithViewInformation:(id)arg1 source:(unsigned long long)arg2;
 - (void)_registerForMessages;
 - (id)assistantObject;
+- (id)attributeDescriptions;
 - (id)backingStoreObjects:(long long)arg1;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
@@ -56,8 +59,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3;
-- (void)logDuetEvent;
+- (void)logEvent:(unsigned long long)arg1;
+- (id)logIdentifier;
 - (id)messageDestination;
+- (id)privateDescription;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)urlString;

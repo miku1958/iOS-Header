@@ -22,6 +22,7 @@
 - (BOOL)supportsGroupedShadows;
 - (BOOL)supportsSeriesShadow;
 - (BOOL)supportsTrendLines;
+- (BOOL)supportsValueLabelSpacing;
 
 @end
 

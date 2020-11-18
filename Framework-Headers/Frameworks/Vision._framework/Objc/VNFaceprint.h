@@ -8,7 +8,10 @@
 
 @interface VNFaceprint : VNEspressoModelImageprint
 {
+    float _confidence;
 }
+
+@property (readonly, nonatomic) float confidence; // @synthesize confidence=_confidence;
 
 + (id)codingTypesToCodingKeys;
 + (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
@@ -17,9 +20,15 @@
 + (id)currentVersion;
 + (unsigned long long)serializationMagicNumber;
 + (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithState:(id)arg1 error:(id *)arg2;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 confidence:(float)arg6 requestRevision:(unsigned long long)arg7;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 requestRevision:(unsigned long long)arg6;
+- (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (unsigned long long)serializedLength;
 
 @end
 

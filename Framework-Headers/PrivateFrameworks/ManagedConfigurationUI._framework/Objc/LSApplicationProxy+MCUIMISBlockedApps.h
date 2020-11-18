@@ -9,10 +9,12 @@
 @interface LSApplicationProxy (MCUIMISBlockedApps)
 - (id)appIconForTableCell;
 - (BOOL)hasAppVPN;
+- (BOOL)hasAssociatedDomains;
 - (BOOL)hasManagedRestrictions;
 - (BOOL)isBlacklisted;
 - (BOOL)isExcludedFromBackup;
 - (BOOL)isExcludedFromCloudSync;
+- (BOOL)isNotRemovable;
 - (BOOL)isUnableToExportToUnmanaged;
 - (BOOL)isUnableToImportFromUnmanaged;
 - (BOOL)isUnableToUseCellData;

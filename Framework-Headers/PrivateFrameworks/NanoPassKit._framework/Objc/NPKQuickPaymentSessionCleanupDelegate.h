@@ -19,7 +19,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_saveTransactionFromContext:(id)arg1;
 - (void)paymentSession:(id)arg1 didCompleteForReason:(unsigned long long)arg2 withTransactionContext:(id)arg3;
+- (void)paymentSession:(id)arg1 didCompleteTransactionWithContext:(id)arg2;
 
 @end
 

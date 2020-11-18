@@ -7,8 +7,9 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/NSSecureCoding-Protocol.h>
 
-@interface PHAssetCreationAdjustmentBakeInOptions : NSObject <NSCopying>
+@interface PHAssetCreationAdjustmentBakeInOptions : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _shouldBakeInIfLivePhotoPlaybackDisabled;
     BOOL _shouldBakeInIfLivePhotoMuted;
@@ -30,11 +31,15 @@
 @property (nonatomic) BOOL shouldBakeInIfTimelineTrimmed; // @synthesize shouldBakeInIfTimelineTrimmed=_shouldBakeInIfTimelineTrimmed;
 
 + (id)adjustmentBakeInOptionsForPublishingOriginals;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDict:(id)arg1;
+- (id)plRepresentation;
 
 @end
 

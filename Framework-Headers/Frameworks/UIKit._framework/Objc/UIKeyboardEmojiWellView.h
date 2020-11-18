@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiWellView : UIView
 {
     BOOL _selected;
+    BOOL _activeSelection;
     NSArray *_compositeImageRepresentation;
     UIFont *_labelFont;
     NSString *_stringRepresentation;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _compositeImageSize;
 }
 
+@property (nonatomic, getter=isActiveSelection) BOOL activeSelection; // @synthesize activeSelection=_activeSelection;
 @property (strong, nonatomic) NSIndexPath *associatedIndexPath; // @synthesize associatedIndexPath=_associatedIndexPath;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) NSArray *compositeImageRepresentation; // @synthesize compositeImageRepresentation=_compositeImageRepresentation;

@@ -53,6 +53,7 @@
 @property (weak, nonatomic) DCSinglePixelVerticalLineView *verticalLineView; // @synthesize verticalLineView=_verticalLineView;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)applyToAll:(short)arg1;
 - (void)centerContent:(BOOL)arg1 isPortrait:(BOOL)arg2;
 - (void)dealloc;

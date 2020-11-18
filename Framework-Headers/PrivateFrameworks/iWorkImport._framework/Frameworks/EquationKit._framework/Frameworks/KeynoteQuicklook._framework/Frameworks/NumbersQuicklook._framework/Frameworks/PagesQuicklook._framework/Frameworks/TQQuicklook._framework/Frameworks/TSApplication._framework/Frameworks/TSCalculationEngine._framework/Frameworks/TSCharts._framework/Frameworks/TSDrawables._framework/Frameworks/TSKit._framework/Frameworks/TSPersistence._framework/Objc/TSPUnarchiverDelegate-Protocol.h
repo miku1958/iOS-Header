@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) BOOL hasDocumentVersionUUID;
 @property (readonly, nonatomic) BOOL isCrossAppPaste;
 @property (readonly, nonatomic) BOOL isCrossDocumentPaste;
+@property (readonly, nonatomic) unsigned long long readVersion;
 @property (readonly, nonatomic) long long sourceType;
 
 - (NSUUID *)UUIDForObjectIdentifier:(long long)arg1;

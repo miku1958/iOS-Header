@@ -42,6 +42,7 @@
 + (int)_nameSourceForFaceFromFaceCrop:(id)arg1;
 + (int)_trainingFaceTypeForFaceFromFaceCrop:(id)arg1;
 + (id)allFaceCropsInPhotoLibrary:(id)arg1;
++ (id)batchFetchFaceCropByFaceObjectIDWithFaceObjectIDs:(id)arg1 library:(id)arg2;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
 + (id)entityName;
@@ -52,7 +53,7 @@
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 resourceData:(id)arg3 type:(short)arg4;
 + (id)insertOrUpdateWithCPLFaceCrop:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)listOfSyncedProperties;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 - (void)applyPropertiesToTrainingFace;
 - (id)cplFaceCropChange;
 - (id)cplFullRecord;

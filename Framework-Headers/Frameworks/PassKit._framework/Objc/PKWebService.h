@@ -9,7 +9,7 @@
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
 @class ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURLSession, NSURLSessionConfiguration;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, PKTapToRadarDelegate;
 
 @interface PKWebService : NSObject <NSURLSessionTaskDelegate>
 {
@@ -22,9 +22,10 @@
     NSMutableArray *_diagnosticReasons;
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
-    NSObject<OS_dispatch_queue> *_stateQueue;
+    struct os_unfair_lock_s _stateLock;
     NSObject<OS_dispatch_queue> *_sessionQueue;
     NSSet *_sensitiveKeys;
+    id<PKTapToRadarDelegate> _tapToRadarDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSURLSessionConfiguration *sessionConfiguration;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id<PKTapToRadarDelegate> tapToRadarDelegate; // @synthesize tapToRadarDelegate=_tapToRadarDelegate;
 @property (readonly, nonatomic) NSString *webServiceSessionMarker;
 
 + (id)_sharedCookieStorage;
@@ -56,7 +58,7 @@
 - (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 originalRequest:(id)arg2 redirectHandler:(CDUnknownBlockType)arg3;
-- (id)init;
+- (id)initWithTapToRadarDelegate:(id)arg1;
 - (void)invalidate;
 - (id)logFacility;
 - (void)logRequest:(id)arg1;

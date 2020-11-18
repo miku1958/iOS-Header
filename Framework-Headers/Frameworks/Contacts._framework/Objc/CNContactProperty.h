@@ -19,9 +19,8 @@
 }
 
 @property (readonly, copy, nonatomic) CNContact *contact;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) CNContact *internalContact; // @synthesize internalContact=_internalContact;
-@property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSString *key;
 @property (readonly, copy, nonatomic) NSString *label;
 @property (readonly, nonatomic) id value;
 
@@ -35,11 +34,8 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isMultiValueProperty;
 - (id)labeledValue;
-- (id)labeledValueForContact:(id)arg1;
 - (int)multiValueIdentifier;
-- (id)primitiveValue;
 - (id)sourceContact;
 
 @end

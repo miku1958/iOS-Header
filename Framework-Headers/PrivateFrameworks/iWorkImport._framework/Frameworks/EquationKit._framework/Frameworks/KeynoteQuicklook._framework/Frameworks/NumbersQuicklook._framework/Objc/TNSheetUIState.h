@@ -43,6 +43,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)p_persistableSelectionPathFromSelectionPath:(id)arg1;
 - (void)saveToArchive:(struct SheetUIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (void)saveToArchive:(struct SheetUIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3 targetVersion:(unsigned long long)arg4;
 - (void)updateForCurrentDeviceIdiomIfNecessaryWithDefaultViewScale:(float)arg1;
 
 @end

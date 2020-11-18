@@ -14,6 +14,7 @@
 }
 
 @property (readonly, nonatomic) DOMDocument *DOMDocument;
+@property (nonatomic) struct CGColor *caretColor;
 @property (readonly, copy, nonatomic) NSArray *childFrames;
 @property (readonly, nonatomic) WebDataSource *dataSource;
 @property (readonly, nonatomic) DOMHTMLElement *frameElement;
@@ -50,7 +51,7 @@
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
 - (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
 - (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
-- (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
+- (struct _NSRange)_convertToNSRange:(const struct SimpleRange *)arg1;
 - (id)_dataSource;
 - (void)_detachScriptDebugger;
 - (void)_dispatchDidReceiveTitle:(id)arg1;
@@ -84,7 +85,6 @@
 - (BOOL)_loadsSynchronously;
 - (id)_markDOMRange;
 - (BOOL)_needsLayout;
-- (id)_nodesFromList:(Vector_ac56241c *)arg1;
 - (OptionSet_8e32cbf3)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (unsigned int)_pendingFrameUnloadEventCount;
 - (id)_rectsForRange:(id)arg1;
@@ -102,7 +102,7 @@
 - (void)_selectNSRange:(struct _NSRange)arg1;
 - (struct _NSRange)_selectedNSRange;
 - (id)_selectedString;
-- (int)_selectionGranularity;
+- (unsigned char)_selectionGranularity;
 - (id)_selectionRangeForFirstPoint:(struct CGPoint)arg1 secondPoint:(struct CGPoint)arg2;
 - (id)_selectionRangeForPoint:(struct CGPoint)arg1;
 - (void)_setInternalLoadDelegate:(id)arg1;
@@ -189,11 +189,9 @@
 - (void)moveSelectionToPoint:(struct CGPoint)arg1;
 - (void)moveSelectionToStart;
 - (BOOL)needsLayout;
-- (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (int)numberOfPagesWithPageWidth:(float)arg1 pageHeight:(float)arg2;
 - (int)preferredHeight;
 - (void)prepareForPause;
-- (id)previousUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (void)printToCGContext:(struct CGContext *)arg1 pageWidth:(float)arg2 pageHeight:(float)arg3;
 - (id)rangeByExtendingCurrentSelection:(int)arg1;
 - (id)rangeByMovingCurrentSelection:(int)arg1;
@@ -223,13 +221,12 @@
 - (BOOL)selectionAtWordStart;
 - (int)selectionBaseWritingDirection;
 - (id)selectionRects;
-- (id)selectionRectsForCoreRange:(struct Range *)arg1;
+- (id)selectionRectsForCoreRange:(const struct SimpleRange *)arg1;
 - (id)selectionRectsForRange:(id)arg1;
 - (int)selectionState;
 - (void)sendScrollEvent;
 - (void)setAccessibleName:(id)arg1;
 - (void)setBaseWritingDirection:(int)arg1;
-- (void)setCaretColor:(struct CGColor *)arg1;
 - (void)setDictationPhrases:(id)arg1 metadata:(id)arg2 asChildOfElement:(id)arg3;
 - (void)setEnhancedAccessibility:(BOOL)arg1;
 - (void)setIsActive:(BOOL)arg1;
@@ -245,6 +242,7 @@
 - (void)setRangedSelectionInitialExtentToCurrentSelectionStart;
 - (void)setRangedSelectionWithExtentPoint:(struct CGPoint)arg1;
 - (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2 closeTyping:(BOOL)arg3;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2 closeTyping:(BOOL)arg3 userTriggered:(BOOL)arg4;
 - (void)setSelectionChangeCallbacksDisabled:(BOOL)arg1;
 - (void)setSelectionGranularity:(int)arg1;
 - (BOOL)setSelectionWithBasePoint:(struct CGPoint)arg1 extentPoint:(struct CGPoint)arg2 baseIsStart:(BOOL)arg3;

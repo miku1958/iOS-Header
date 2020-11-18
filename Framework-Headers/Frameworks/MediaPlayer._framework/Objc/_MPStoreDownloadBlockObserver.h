@@ -10,6 +10,7 @@
 
 @class MPStoreDownload, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPStoreDownloadBlockObserver : NSObject <MPStoreDownloadManagerObserver>
 {
     CDUnknownBlockType _didFinishDownloadHandler;

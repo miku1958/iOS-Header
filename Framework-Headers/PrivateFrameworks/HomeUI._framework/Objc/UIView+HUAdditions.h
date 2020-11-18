@@ -35,5 +35,7 @@
 - (BOOL)hu_isHomeAffordancePresent;
 - (void)hu_setFramePreservingTransform:(struct CGRect)arg1;
 - (void)hu_traverseViewHierarchy:(CDUnknownBlockType)arg1;
+- (void)pinToEdges:(id)arg1;
+- (id)pinToEdgesConstraints:(id)arg1;
 @end
 

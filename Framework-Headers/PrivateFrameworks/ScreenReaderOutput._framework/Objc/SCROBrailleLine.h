@@ -126,7 +126,7 @@
 - (long long)masterStatusCellIndex;
 - (BOOL)moveCursorLeft;
 - (BOOL)moveCursorRight;
-- (BOOL)moveCursorToRouterIndex:(unsigned long long)arg1 forwardToScreenReader:(out BOOL *)arg2;
+- (BOOL)moveCursorToRouterIndex:(unsigned long long)arg1 forwardToScreenReader:(out BOOL *)arg2 updateRouterLocation:(long long *)arg3;
 - (id)newLineDescriptor;
 - (id)newLineDescriptorWithoutPadding;
 - (BOOL)panLeft;

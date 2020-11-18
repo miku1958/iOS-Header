@@ -19,6 +19,7 @@
     BOOL _hasEnded;
     BOOL _endpointOnCurrentDevice;
     BOOL _hostedOnCurrentDevice;
+    BOOL _video;
     NSUUID *_UUID;
     NSString *_providerIdentifier;
 }
@@ -35,6 +36,7 @@
 @property (nonatomic, getter=isOutgoing) BOOL outgoing; // @synthesize outgoing=_outgoing;
 @property (strong, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

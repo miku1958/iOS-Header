@@ -6,12 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSObject, NSSet;
-@protocol OS_dispatch_queue;
+@class NSArray, NSMapTable, NSMutableArray, NSSet;
 
 @interface HMDCloudChangeTree : HMFObject
 {
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_objects;
     NSMapTable *_objectMap;
     NSMapTable *_recordMap;
@@ -28,18 +27,18 @@
 @property (strong, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
 @property (readonly, nonatomic) NSArray *objectsWithPotentialChanges;
 @property (readonly, nonatomic) NSArray *orphans;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSMapTable *recordMap; // @synthesize recordMap=_recordMap;
 @property (strong, nonatomic) NSSet *validRootUUIDs; // @synthesize validRootUUIDs=_validRootUUIDs;
 
++ (id)logCategory;
 + (BOOL)modelTypeCanBeOrphaned:(id)arg1;
 + (id)shortDescription;
 - (void).cxx_destruct;
+- (void)_addNode:(id)arg1;
 - (id)_findNodeWithRecordMapping:(id)arg1;
 - (id)_objectForRecordName:(id)arg1;
 - (id)_objectForUUID:(id)arg1;
 - (void)_updateNode:(id)arg1 oldRecordName:(id)arg2;
-- (void)addNode:(id)arg1;
 - (id)description;
 - (void)findAndDeletedChildren;
 - (void)findAndMarkOrphanedBranches;

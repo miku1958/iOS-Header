@@ -6,9 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, _HKBaseDimension;
 
 @protocol _HKFactor <NSObject>
+- (_HKBaseDimension *)dimension;
 - (NSString *)unitString;
 @end
 

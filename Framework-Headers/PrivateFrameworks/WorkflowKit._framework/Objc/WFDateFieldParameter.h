@@ -6,11 +6,14 @@
 
 #import <WorkflowKit/WFTextInputParameter.h>
 
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
+
 @class NSDateFormatter, NSString;
 
-@interface WFDateFieldParameter : WFTextInputParameter
+@interface WFDateFieldParameter : WFTextInputParameter <WFParameterDialogProvider>
 {
     BOOL _detectsAllDayDates;
+    BOOL _displaysAllDayString;
     BOOL _forcesAllDayDates;
     NSDateFormatter *_hintDateFormatter;
     NSString *_reactiveParameterKey;
@@ -18,17 +21,27 @@
 }
 
 @property (readonly, nonatomic) BOOL dateOnlyMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL detectsAllDayDates; // @synthesize detectsAllDayDates=_detectsAllDayDates;
+@property (readonly, nonatomic) BOOL displaysAllDayString; // @synthesize displaysAllDayString=_displaysAllDayString;
 @property (nonatomic) BOOL forcesAllDayDates; // @synthesize forcesAllDayDates=_forcesAllDayDates;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDateFormatter *hintDateFormatter; // @synthesize hintDateFormatter=_hintDateFormatter;
 @property (readonly, nonatomic) NSString *hintDateMode; // @synthesize hintDateMode=_hintDateMode;
 @property (readonly, nonatomic) NSString *localizedIncompleteHintString;
 @property (readonly, nonatomic) NSString *reactiveParameterKey; // @synthesize reactiveParameterKey=_reactiveParameterKey;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL timeOnlyMode;
 
 - (void).cxx_destruct;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)createDialogTextFieldConfigurationWithDefaultState:(id)arg1;
+- (id)dateFormatterForConfiguration:(id)arg1;
+- (id)datePickerConfiguration;
 - (id)hintForState:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
+- (id)parameterStateFromDialogResponse:(id)arg1;
 
 @end
 

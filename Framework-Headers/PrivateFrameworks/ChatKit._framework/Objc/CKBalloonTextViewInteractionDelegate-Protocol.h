@@ -6,10 +6,16 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class UITextView;
+@class NSString, UITextView;
 
 @protocol CKBalloonTextViewInteractionDelegate <NSObject>
 - (void)interactionStartedFromPreviewItemControllerInTextView:(UITextView *)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInTextView:(UITextView *)arg1;
+
+@optional
+- (void)interactionStartedLongPressInTextView:(UITextView *)arg1;
+- (void)interactionStartedTapInTextView:(UITextView *)arg1 withModifierFlags:(long long)arg2 selectedText:(NSString *)arg3;
+- (void)interactionTextView:(UITextView *)arg1 userDidDragOutsideViewWithPoint:(struct CGPoint)arg2;
+- (void)interactionTextViewShouldCopyToPasteboard:(UITextView *)arg1;
 @end
 

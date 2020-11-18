@@ -6,14 +6,12 @@
 
 #import <UserNotificationsServer/BBSectionIdentity-Protocol.h>
 
-@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBSectionParameters, BBThumbnailSizeConstraints, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID;
+@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBSectionParameters, NSArray, NSDate, NSDictionary, NSSet, NSString;
 
 @protocol BBDataProvider <BBSectionIdentity>
 - (NSArray *)sortDescriptors;
 
 @optional
-- (float)attachmentAspectRatioForRecordID:(NSString *)arg1;
-- (NSData *)attachmentPNGDataForRecordID:(NSString *)arg1 sizeConstraints:(BBThumbnailSizeConstraints *)arg2;
 - (NSSet *)bulletinsFilteredBy:(unsigned long long)arg1 count:(unsigned long long)arg2 lastCleared:(id)arg3;
 - (NSSet *)bulletinsFilteredBy:(unsigned long long)arg1 enabledSectionIDs:(NSSet *)arg2 count:(unsigned long long)arg3 lastCleared:(id)arg4;
 - (NSSet *)bulletinsWithRequestParameters:(BBBulletinRequestParameters *)arg1 lastCleared:(id)arg2;
@@ -24,14 +22,10 @@
 - (void)dataProviderDidLoad;
 - (NSArray *)defaultSubsectionInfos;
 - (NSString *)displayNameForSubsectionID:(NSString *)arg1;
-- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(float))arg3;
-- (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(NSData *))arg3;
-- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 sizeConstraints:(BBThumbnailSizeConstraints *)arg3 withCompletionHandler:(void (^)(NSData *))arg4;
 - (void)handleBulletinActionResponse:(BBActionResponse *)arg1;
 - (void)handleBulletinActionResponse:(BBActionResponse *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (BOOL)migrateSectionInfo:(BBSectionInfo *)arg1 oldSectionInfo:(BBSectionInfo *)arg2;
 - (void)noteSectionInfoDidChange:(BBSectionInfo *)arg1;
-- (NSData *)primaryAttachmentDataForRecordID:(NSString *)arg1;
 - (void)receiveMessageWithName:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
 - (BBSectionParameters *)sectionParameters;
 - (BOOL)syncsBulletinDismissal;

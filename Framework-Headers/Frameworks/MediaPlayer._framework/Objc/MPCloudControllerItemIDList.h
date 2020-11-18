@@ -13,6 +13,8 @@
     ICCloudItemIDList *_cloudItemIDList;
 }
 
+@property (strong, nonatomic) ICCloudItemIDList *cloudItemIDList; // @synthesize cloudItemIDList=_cloudItemIDList;
+
 + (id)cloudItemIDListForPlaylist:(id)arg1;
 - (void).cxx_destruct;
 - (id)ICCloudItemIDList;

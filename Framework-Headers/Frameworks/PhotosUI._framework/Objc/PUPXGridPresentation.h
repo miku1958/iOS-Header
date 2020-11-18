@@ -27,14 +27,20 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_assetCollectionToAssetsMapForAssets:(id)arg1;
+- (void)_customizePhotosViewConfiguationForAssetPicker:(id)arg1 assetCollection:(id)arg2;
 - (BOOL)_isEmpty:(id)arg1;
+- (id)createAlbumListViewControllerWithCollectionList:(id)arg1;
 - (id)createAlbumListViewControllerWithConfiguration:(id)arg1;
-- (void)createGridViewControllerWithAssets:(id)arg1 withTitle:(id)arg2 hideTabBar:(BOOL)arg3 gridPresentationContext:(long long)arg4 containerViewController:(id)arg5 navigationItemDelegate:(id)arg6 andCompletion:(CDUnknownBlockType)arg7;
+- (id)createAssetPickerPhotosAlbumViewControllerForAlbum:(id)arg1;
+- (void)createGridViewControllerWithAssets:(id)arg1 withTitle:(id)arg2 hideTabBar:(BOOL)arg3 gridPresentationContext:(long long)arg4 containerViewController:(id)arg5 barsUpdateDelegate:(id)arg6 andCompletion:(CDUnknownBlockType)arg7;
 - (id)createImportHistoryGridViewControllerWithCollection:(id)arg1;
 - (id)createPanoramaViewController;
 - (id)createPhotosAlbumViewControllerForAlbum:(id)arg1 withFetchResult:(id)arg2;
-- (id)createPhotosPickerViewControllerWithSelectedAssets:(id)arg1 anchorAtAsset:(id)arg2 inAssetCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)createPhotosPickerViewControllerWithSelectedAssets:(id)arg1 anchorAtAsset:(id)arg2 inAssetCollection:(id)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)createPlacesViewControllerForAssetCollection:(id)arg1;
 - (id)createSharedAlbumListViewControllerWithConfiguration:(id)arg1;
+- (id)createViewControllerForAssetCollection:(id)arg1;
+- (id)createViewControllerForAssetCollection:(id)arg1 existingAssetsFetchResult:(id)arg2;
 - (id)init;
 - (id)initWithUserInterfaceIdiom:(long long)arg1;
 

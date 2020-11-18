@@ -44,6 +44,7 @@
 - (id)description;
 - (void)event:(long long)arg1;
 - (void)eventAsync:(long long)arg1;
+- (void)export;
 - (id)graphDescription;
 - (id)initWithLabel:(id)arg1 queue:(id)arg2;
 - (id)queue;

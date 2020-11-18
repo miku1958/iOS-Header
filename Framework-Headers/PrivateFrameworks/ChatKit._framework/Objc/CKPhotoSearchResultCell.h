@@ -12,6 +12,8 @@
 
 @interface CKPhotoSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
+    BOOL _isLivePhoto;
+    BOOL _isVideo;
     UIImage *_image;
     UIImageView *_imageView;
     UIImageView *_livePhotoImage;
@@ -21,15 +23,17 @@
     struct UIEdgeInsets marginInsets;
 }
 
+@property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIImageView *durationGradientImage; // @synthesize durationGradientImage=_durationGradientImage;
 @property (strong, nonatomic) UILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
-@property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (nonatomic) BOOL isLivePhoto; // @synthesize isLivePhoto=_isLivePhoto;
+@property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (strong, nonatomic) UIImageView *livePhotoImage; // @synthesize livePhotoImage=_livePhotoImage;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 @property (readonly) Class superclass;

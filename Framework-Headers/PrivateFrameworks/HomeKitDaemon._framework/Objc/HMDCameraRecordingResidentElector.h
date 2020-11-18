@@ -34,11 +34,12 @@
 - (void)_updateReadyToRecordMetric;
 - (void)handleResidentMeshInitialized:(id)arg1;
 - (id)initWithHomeManager:(id)arg1 resourceUsageMonitor:(id)arg2;
-- (BOOL)isReadyToRecordForCamera:(id)arg1;
-- (id)preferredResidentDevicesForCamera:(id)arg1;
-- (void)recordingDidEndForCamera:(id)arg1;
-- (void)recordingDidStartForCamera:(id)arg1;
-- (void)setReadyToRecord:(BOOL)arg1 forCamera:(id)arg2;
+- (BOOL)isReadyToRecordForCameraWithUUID:(id)arg1;
+- (id)preferredResidentDevicesForCamera:(id)arg1 deviceFilter:(CDUnknownBlockType)arg2;
+- (void)recordingDidEndForCameraWithUUID:(id)arg1;
+- (void)recordingDidStartForCameraWithUUID:(id)arg1;
+- (void)removeDataForCameraWithUUID:(id)arg1;
+- (void)setReadyToRecord:(BOOL)arg1 forCameraWithUUID:(id)arg2;
 - (void)start;
 - (void)systemResourceUsageDidChangeTo:(long long)arg1;
 

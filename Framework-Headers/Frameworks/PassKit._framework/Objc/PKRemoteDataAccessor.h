@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)archiveData;
+- (id)cachedImageSetForType:(long long)arg1 withDisplayProfile:(id)arg2 displayTraits:(id)arg3;
 - (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dataForBundleResource:(id)arg1;
@@ -29,6 +30,7 @@
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)initWithLibrary:(id)arg1 objectUniqueID:(id)arg2;
 - (void)noteShared;
+- (id)passLocalizedStringForKey:(id)arg1;
 - (void)requestUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSettings:(unsigned long long)arg1;

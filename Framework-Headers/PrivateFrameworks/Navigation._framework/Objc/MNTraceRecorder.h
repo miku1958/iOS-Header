@@ -8,7 +8,7 @@
 
 #import <Navigation/MNLocationRecorder-Protocol.h>
 
-@class GEOComposedRouteLeg, MNTrace, NSDate, NSMapTable, NSString;
+@class GEOComposedRouteSegment, MNTrace, NSDate, NSMapTable, NSString;
 @protocol MNTraceRecorderBackgroundGuard;
 
 @interface MNTraceRecorder : NSObject <MNLocationRecorder>
@@ -65,7 +65,7 @@
     unsigned long long _etaTrafficUpdateCount;
     NSMapTable *_commuteDirectionsRequests;
     NSMapTable *_eventsPendingLocationReference;
-    GEOComposedRouteLeg *_currentLeg;
+    GEOComposedRouteSegment *_currentSegment;
     CDUnknownBlockType _timeSinceRecordingBeganHandler;
     CDUnknownBlockType _errorHandler;
     BOOL _lastPauseSpokenAudio;
@@ -99,6 +99,7 @@
 - (void)_recordLocationEvent:(long long)arg1 recordingTimestamp:(double)arg2 location:(id)arg3 correctedLocation:(id)arg4;
 - (void)_recordLocationMatchInfoOnWriteQueue:(id)arg1 forLocationID:(int)arg2;
 - (void)_serializationError:(id)arg1;
+- (void)_updateForExistingTrace;
 - (void)_updateNavigationEventsWithLocationReference:(id)arg1;
 - (void)beginTransaction;
 - (void)cancelTrace;
@@ -124,8 +125,8 @@
 - (void)recordError:(id)arg1;
 - (void)recordGuidanceWasEnded;
 - (void)recordGuidanceWasEndedAtTime:(double)arg1;
-- (void)recordGuidanceWasStartedForRouteLeg:(id)arg1;
-- (void)recordGuidanceWasStartedForRouteLeg:(id)arg1 timestamp:(double)arg2;
+- (void)recordGuidanceWasStartedForRouteSegment:(id)arg1;
+- (void)recordGuidanceWasStartedForRouteSegment:(id)arg1 timestamp:(double)arg2;
 - (void)recordInitialCourse:(double)arg1;
 - (void)recordLikelyRouteRequest:(id)arg1 response:(id)arg2 waypoints:(id)arg3;
 - (void)recordLocation:(id)arg1 correctedLocation:(id)arg2;
@@ -140,7 +141,7 @@
 - (void)recordRouteDeselected;
 - (void)recordRouteError:(id)arg1;
 - (void)recordRouteError:(id)arg1 forRouteRequest:(id)arg2;
-- (void)recordRouteRequest:(id)arg1 waypoints:(id)arg2;
+- (void)recordRouteRequest:(id)arg1 waypoints:(id)arg2 timeSinceRecordingBegan:(double)arg3;
 - (void)recordRouteResponse:(id)arg1 forRouteRequest:(id)arg2;
 - (void)recordRouteSelected:(id)arg1 routeIndex:(unsigned long long)arg2;
 - (void)recordSimulatedCoordinate:(struct CLLocationCoordinate2D)arg1 course:(double)arg2 altitude:(double)arg3 speed:(double)arg4 timestamp:(double)arg5 activeTransportType:(int)arg6;

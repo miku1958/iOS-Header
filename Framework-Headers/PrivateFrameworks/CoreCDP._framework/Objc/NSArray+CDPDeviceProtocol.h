@@ -8,6 +8,7 @@
 
 @interface NSArray (CDPDeviceProtocol)
 
+@property (readonly, nonatomic) BOOL hasMixedSecretType;
 @property (readonly, nonatomic) unsigned long long prevailingLocalSecretType;
 
 @end

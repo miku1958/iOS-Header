@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface AVPresentationContext : NSObject
 {
     BOOL _allowsSecondWindowPresentations;
+    BOOL _wasInitiallyPresentedWithoutSecondWindow;
     BOOL _allowsPausingWhenTransitionCompletes;
     UIView *_sourceView;
     UIView *_touchBlockingView;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (readonly, nonatomic) long long transitionType;
 @property (readonly, nonatomic) BOOL wasInitiallyInteractive;
+@property (nonatomic) BOOL wasInitiallyPresentedWithoutSecondWindow; // @synthesize wasInitiallyPresentedWithoutSecondWindow=_wasInitiallyPresentedWithoutSecondWindow;
 
 + (BOOL)supportsInteractiveCounterRotationDismissals;
 - (void).cxx_destruct;

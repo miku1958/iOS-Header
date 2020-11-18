@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
 @property (readonly, nonatomic) NSString *recordType;
 
++ (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)clearData;

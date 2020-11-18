@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *lastContentOffset;
     MISSING_TYPE *lastScrollDirection;
     MISSING_TYPE *currentPage;
+    MISSING_TYPE *isAnimationInProgress;
+    MISSING_TYPE *impressionsTracker;
+    MISSING_TYPE *impressionsCalculator;
     MISSING_TYPE *$__lazy_storage_$_imageProxyQueue;
     MISSING_TYPE *$__lazy_storage_$_animator;
     MISSING_TYPE *$__lazy_storage_$_rightSwipeGestureRecognizer;
@@ -32,7 +35,10 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

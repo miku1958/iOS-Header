@@ -8,8 +8,8 @@
 
 #import <boringssl/OS_boringssl_ctx-Protocol.h>
 
-@class NSString, boringssl_concrete_boringssl_identity, boringssl_concrete_boringssl_psk_cache, boringssl_concrete_nw_protocol_boringssl;
-@protocol OS_dispatch_data, OS_dispatch_queue, OS_nw_array, OS_nw_association, OS_nw_context, OS_nw_protocol_metadata, OS_nw_protocol_options, OS_xpc_object;
+@class NSString, boringssl_concrete_boringssl_identity, boringssl_concrete_boringssl_psk_cache, boringssl_concrete_boringssl_session_cache, boringssl_concrete_boringssl_session_state, boringssl_concrete_nw_protocol_boringssl;
+@protocol OS_dispatch_queue, OS_nw_array, OS_nw_context, OS_nw_protocol_metadata, OS_nw_protocol_options, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface boringssl_concrete_boringssl_ctx : NSObject <OS_boringssl_ctx>
@@ -17,25 +17,21 @@ __attribute__((visibility("hidden")))
     struct boringssl_legacy_ctx *legacy_context;
     boringssl_concrete_nw_protocol_boringssl *boringssl_handle;
     NSObject<OS_nw_context> *async_context;
-    NSObject<OS_nw_association> *association;
-    CDStruct_061587d8 selected_alpn_data;
+    boringssl_concrete_boringssl_session_cache *session_cache;
     boringssl_concrete_boringssl_psk_cache *psk_cache;
-    CDStruct_061587d8 ssl_ocsp_response;
-    int max_allowed_tls_version;
-    int max_allowed_dtls_version;
-    int min_allowed_tls_version;
-    int min_allowed_dtls_version;
-    int ssl_max_version;
-    int ssl_min_version;
-    int config;
+    unsigned short max_allowed_tls_version;
+    unsigned short max_allowed_dtls_version;
+    unsigned short min_allowed_tls_version;
+    unsigned short min_allowed_dtls_version;
+    unsigned short ssl_max_version;
+    unsigned short ssl_min_version;
     NSObject<OS_xpc_object> *alpn_protocols;
     NSObject<OS_nw_array> *callbacks;
     char *subject_name;
+    char *ciphersuite_configuration_string;
     char *experiment_identifier;
     boringssl_concrete_boringssl_identity *identity;
-    NSObject<OS_dispatch_queue> *client_queue;
     NSObject<OS_dispatch_queue> *metrics_queue;
-    CDUnknownBlockType boringssl_message_block;
     CDUnknownBlockType verify_block;
     NSObject<OS_dispatch_queue> *verify_queue;
     CDUnknownBlockType challenge_block;
@@ -47,25 +43,25 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *private_key_queue;
     CDUnknownBlockType private_key_sign_block;
     CDUnknownBlockType private_key_decrypt_block;
+    NSObject<OS_dispatch_queue> *handshake_message_callback_queue;
+    CDUnknownBlockType handshake_message_callback;
     union sockaddr_in_4_6 remote_address;
     unsigned char connection_id[16];
     CDUnknownBlockType alert_callback;
     CDUnknownBlockType connected_callback;
+    int internal_error;
     int ssl_state;
-    BOOL message_callback_in_progress;
-    int callback_message_type;
     int current_handshake_state;
+    unsigned char current_handshake_type;
     struct boringssl_ctx_alert ssl_alert;
-    NSObject<OS_nw_array> *pending_handshake_callbacks;
-    int peer_trust;
+    BOOL peer_trust_result;
+    int peer_trust_evaluation_error;
     unsigned long long handshake_timer_fires;
     unsigned short certificate_compression_algorithm;
-    struct SSLCertificate *ssl_peer_certs;
     struct __SecKey *peer_public_key;
     struct __CFArray *peer_cert_chain;
     struct __SecTrust *peer_trust_ref;
-    struct __CFArray *acceptable_domain_name_list;
-    NSObject<OS_dispatch_data> *session_state;
+    boringssl_concrete_boringssl_session_state *session_state;
     struct ssl_st *ssl_session;
     struct ssl_ctx_st *ssl_ctx;
     CDUnknownBlockType handshake_state_callback;
@@ -84,6 +80,8 @@ __attribute__((visibility("hidden")))
     unsigned long long minimum_rsa_key_size;
     unsigned long long minimum_ecdsa_key_size;
     unsigned int minimum_signature_algorithm;
+    int encryption_read_level;
+    int encryption_write_level;
     unsigned int started_flight:1;
     unsigned int cancelled:1;
     unsigned int sct_enable:1;
@@ -117,6 +115,8 @@ __attribute__((visibility("hidden")))
     unsigned int certificate_compression_used:1;
     unsigned int psk_negotiated:1;
     unsigned int grease_enabled:1;
+    unsigned int tls13_aesgcm_enabled:1;
+    unsigned int tls13_chacha20poly1305_enabled:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

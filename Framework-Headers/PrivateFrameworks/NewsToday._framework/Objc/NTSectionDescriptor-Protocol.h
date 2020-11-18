@@ -13,14 +13,15 @@
 
 @protocol NTSectionDescriptor <NTSectionDisplayDescriptor, NTSectionFetchDescriptor, NSObject, NFCopying>
 
+@property (readonly, nonatomic) NSString *backingTagID;
 @property (readonly, nonatomic) unsigned long long cachedResultCutoffTime;
 @property (readonly, copy, nonatomic) NSString *compactName;
 @property (readonly, nonatomic) unsigned long long fallbackOrder;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) int leadingCellPromotionPolicy;
 @property (readonly, nonatomic) unsigned long long maximumStoriesAllocation;
 @property (readonly, nonatomic) unsigned long long minimumStoriesAllocation;
 @property (readonly, copy, nonatomic) NSString *personalizationFeatureID;
+@property (readonly, nonatomic) int promotionCriterion;
 @property (readonly, nonatomic) int readArticlesFilterMethod;
 @property (readonly, copy, nonatomic) NSString *referralBarName;
 @property (readonly, nonatomic) int seenArticlesFilterMethod;

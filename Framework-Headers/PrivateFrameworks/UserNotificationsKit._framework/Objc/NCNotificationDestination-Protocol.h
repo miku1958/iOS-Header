@@ -22,6 +22,7 @@
 
 @optional
 - (BOOL)interceptsQueueRequest:(NCNotificationRequest *)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(NSString *)arg1;
 - (void)updateNotificationSectionSettings:(NCNotificationSectionSettings *)arg1 previousSectionSettings:(NCNotificationSectionSettings *)arg2;
 @end
 

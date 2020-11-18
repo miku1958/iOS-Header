@@ -46,6 +46,7 @@
 - (void).cxx_destruct;
 - (void)_animateShortcutContainerViewIn;
 - (void)_animateShortcutContainerViewOut;
+- (void)_focusHighlightColorChanged:(id)arg1;
 - (void)_launchApp:(id)arg1;
 - (void)_setupFakeButtonIfNecessary;
 - (void)_transitionFromViews:(id)arg1 inView:(id)arg2 animated:(BOOL)arg3;

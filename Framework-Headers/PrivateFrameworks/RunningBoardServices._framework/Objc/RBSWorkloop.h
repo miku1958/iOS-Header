@@ -24,9 +24,7 @@
 + (void)performCalloutWithServiceClass:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 + (id)sharedBackgroundWorkloop;
 + (id)sharedCalloutWorkloop;
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_init;
 
 @end
 

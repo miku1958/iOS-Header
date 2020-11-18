@@ -15,14 +15,15 @@
 @interface HACCContentViewController : UIViewController <UIGestureRecognizerDelegate, CCUIContentModuleContentViewController>
 {
     unsigned long long _controlType;
-    UIView<HACCContentModule> *_contentView;
     CCUIContentModuleDetailTransitioningDelegate *_detailTransitioningDelegate;
     UIViewController<CCUIContentModuleContentViewController> *_expandedViewController;
     UITapGestureRecognizer *_tapRecognizer;
+    UIView<HACCContentModule> *_contentView;
     struct CGRect _collapsedFrame;
 }
 
 @property (nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
+@property (strong, nonatomic) UIView<HACCContentModule> *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
 @property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
+@property (readonly, nonatomic) BOOL shouldPerformClickInteraction;
 @property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
@@ -50,6 +52,7 @@
 - (BOOL)supportsExpanding;
 - (void)updateValue;
 - (void)updateViewConstraints;
+- (void)updateWithValue:(id)arg1;
 - (id)value;
 - (id)viewControllerForExpandedView;
 

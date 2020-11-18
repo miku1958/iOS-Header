@@ -8,6 +8,7 @@
 
 @class IMAccount;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegSecureAccountWebViewController : CNFRegAuthorizedAccountWebViewController
 {
     IMAccount *_account;

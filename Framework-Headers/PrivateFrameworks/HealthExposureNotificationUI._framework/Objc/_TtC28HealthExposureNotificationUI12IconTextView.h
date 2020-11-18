@@ -12,9 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC28HealthExposureNotificationUI12IconTextView : UIView
 {
     MISSING_TYPE *icon;
-    MISSING_TYPE *title;
     MISSING_TYPE *details;
-    MISSING_TYPE *footer;
     MISSING_TYPE *highlightedText;
     MISSING_TYPE *delegate;
     MISSING_TYPE *textStack;

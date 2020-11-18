@@ -17,13 +17,21 @@
     long long _hourOfDay;
     long long _minuteOfHour;
     NSString *_label;
+    BOOL _sleepAlarm;
+    BOOL _overrideAlarm;
+    long long _bedtimeHour;
+    long long _bedtimeMinute;
 }
 
+@property (nonatomic) long long bedtimeHour; // @synthesize bedtimeHour=_bedtimeHour;
+@property (nonatomic) long long bedtimeMinute; // @synthesize bedtimeMinute=_bedtimeMinute;
 @property (nonatomic) long long daysOfWeek; // @synthesize daysOfWeek=_daysOfWeek;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) long long hourOfDay; // @synthesize hourOfDay=_hourOfDay;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) long long minuteOfHour; // @synthesize minuteOfHour=_minuteOfHour;
+@property (nonatomic, getter=isOverrideAlarm) BOOL overrideAlarm; // @synthesize overrideAlarm=_overrideAlarm;
+@property (nonatomic, getter=isSleepAlarm) BOOL sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

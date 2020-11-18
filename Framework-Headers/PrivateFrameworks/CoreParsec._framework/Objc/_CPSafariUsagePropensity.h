@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPSafariUsagePropensity-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, _CPEngagementShareRatio, _CPEngagementTriggerRatio;
 
 @interface _CPSafariUsagePropensity : PBCodable <_CPSafariUsagePropensity, NSSecureCoding>
 {
@@ -22,25 +22,48 @@
     float _thirdPartyCompletionOrRecentSearch;
     float _goToSite;
     float _other;
+    float _parsecWeb;
+    float _parsecAppStore;
+    float _parsecMaps;
+    float _parsecWiki;
+    float _parsecNews;
+    float _parsecStocks;
+    float _parsecWeather;
+    float _parsecOther;
     int _totalEngagements;
+    int _totalTopHitEngagements;
+    _CPEngagementTriggerRatio *_topHitTriggerRatio;
+    _CPEngagementShareRatio *_engagementShareRatio;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _CPEngagementShareRatio *engagementShareRatio; // @synthesize engagementShareRatio=_engagementShareRatio;
 @property (nonatomic) float goToSite; // @synthesize goToSite=_goToSite;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float localGoto; // @synthesize localGoto=_localGoto;
 @property (nonatomic) float localTap; // @synthesize localTap=_localTap;
 @property (nonatomic) float other; // @synthesize other=_other;
+@property (nonatomic) float parsecAppStore; // @synthesize parsecAppStore=_parsecAppStore;
 @property (nonatomic) float parsecGoto; // @synthesize parsecGoto=_parsecGoto;
+@property (nonatomic) float parsecMaps; // @synthesize parsecMaps=_parsecMaps;
+@property (nonatomic) float parsecNews; // @synthesize parsecNews=_parsecNews;
+@property (nonatomic) float parsecOther; // @synthesize parsecOther=_parsecOther;
+@property (nonatomic) float parsecStocks; // @synthesize parsecStocks=_parsecStocks;
 @property (nonatomic) float parsecTap; // @synthesize parsecTap=_parsecTap;
+@property (nonatomic) float parsecWeather; // @synthesize parsecWeather=_parsecWeather;
+@property (nonatomic) float parsecWeb; // @synthesize parsecWeb=_parsecWeb;
+@property (nonatomic) float parsecWiki; // @synthesize parsecWiki=_parsecWiki;
 @property (readonly) Class superclass;
 @property (nonatomic) float thirdPartyCompletionOrRecentSearch; // @synthesize thirdPartyCompletionOrRecentSearch=_thirdPartyCompletionOrRecentSearch;
 @property (nonatomic) float thirdPartyGoto; // @synthesize thirdPartyGoto=_thirdPartyGoto;
 @property (nonatomic) float thirdPartyTap; // @synthesize thirdPartyTap=_thirdPartyTap;
+@property (strong, nonatomic) _CPEngagementTriggerRatio *topHitTriggerRatio; // @synthesize topHitTriggerRatio=_topHitTriggerRatio;
 @property (nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
+@property (nonatomic) int totalTopHitEngagements; // @synthesize totalTopHitEngagements=_totalTopHitEngagements;
 
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

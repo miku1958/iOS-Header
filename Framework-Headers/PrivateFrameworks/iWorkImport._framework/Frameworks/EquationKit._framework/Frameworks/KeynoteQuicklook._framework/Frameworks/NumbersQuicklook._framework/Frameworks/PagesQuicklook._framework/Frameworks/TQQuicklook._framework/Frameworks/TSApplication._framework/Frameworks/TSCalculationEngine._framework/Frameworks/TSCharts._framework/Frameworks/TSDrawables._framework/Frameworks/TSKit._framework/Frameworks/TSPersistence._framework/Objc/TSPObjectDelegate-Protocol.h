@@ -18,6 +18,6 @@
 - (long long)newObjectIdentifier;
 - (NSUUID *)newObjectUUIDForObject:(TSPObject *)arg1 uuidNamespace:(unsigned char)arg2 offset:(unsigned long long)arg3 ignoringBaseUUIDForObjectUUID:(BOOL)arg4 requireDeterministicUUID:(BOOL)arg5;
 - (TSPObjectUUIDMap *)objectUUIDMap;
-- (void)willModifyObject:(TSPObject *)arg1 duringReadOperation:(BOOL)arg2;
+- (void)willModifyObject:(TSPObject *)arg1 options:(unsigned long long)arg2;
 @end
 

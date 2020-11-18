@@ -14,7 +14,7 @@
 - (UIViewController *)currentPresentationController;
 - (BOOL)didScrollWhenEventGestureController:(EKEventGestureController *)arg1 scrollTimerFiredToMoveLeft:(BOOL)arg2 right:(BOOL)arg3 vertically:(BOOL)arg4 towardPoint:(struct CGPoint)arg5;
 - (void)eventGestureController:(EKEventGestureController *)arg1 addViewToScroller:(UIView *)arg2 isAllDay:(BOOL)arg3;
-- (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingViewForAllDay:(BOOL)arg2;
+- (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingView:(EKDayOccurrenceView *)arg2 forAllDay:(BOOL)arg3;
 - (double)eventGestureController:(EKEventGestureController *)arg1 dateAtPoint:(struct CGPoint)arg2;
 - (void)eventGestureController:(EKEventGestureController *)arg1 didCancelEditingOccurrence:(EKEvent *)arg2 fadedOut:(BOOL)arg3;
 - (BOOL)eventGestureController:(EKEventGestureController *)arg1 didCommitOccurrence:(EKEvent *)arg2 toDate:(double)arg3 isAllDay:(BOOL)arg4 span:(long long)arg5;

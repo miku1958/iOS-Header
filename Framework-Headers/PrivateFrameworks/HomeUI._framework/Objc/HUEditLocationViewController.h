@@ -69,7 +69,10 @@
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3 context:(unsigned long long)arg4;
+- (id)presentBridgeSettings:(BOOL)arg1;
 - (id)presentNetworkSettings:(BOOL)arg1;
+- (id)presentNotificationSettingsForTopic:(id)arg1 animated:(BOOL)arg2;
+- (id)presentSoftwareUpdate:(BOOL)arg1;
 - (void)scrollToNotificationTopicsAnimated:(BOOL)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
@@ -77,7 +80,6 @@
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(BOOL)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)textViewDidChange:(id)arg1;
@@ -89,7 +91,6 @@
 - (void)wallpaperEditingDidCancel:(id)arg1;
 - (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
 - (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
-- (void)wallpaperPickerDidCancel:(id)arg1;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)wallpaperPickerRequestOpenWallpaperEditor:(id)arg1;
 - (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;

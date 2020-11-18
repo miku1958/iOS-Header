@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSArray, NSSet, NSString;
 
-@interface RBSProcessStateDescriptor : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSProcessStateDescriptor : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     NSSet *_endowmentNamespaces;
     unsigned long long _values;
@@ -25,19 +25,15 @@
 @property (nonatomic) unsigned long long values; // @synthesize values=_values;
 
 + (id)descriptor;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)_endowmentNamespaces;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (void)filterState:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

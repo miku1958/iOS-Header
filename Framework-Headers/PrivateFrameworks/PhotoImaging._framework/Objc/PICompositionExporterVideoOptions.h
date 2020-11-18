@@ -6,18 +6,30 @@
 
 #import <PhotoImaging/PICompositionExporterOptions.h>
 
+@class NSString;
+
 @interface PICompositionExporterVideoOptions : PICompositionExporterOptions
 {
     BOOL _increaseBitRateIfNecessary;
+    BOOL _preserveSourceColorSpace;
     BOOL _bypassOutputSettingsIfNoComposition;
+    BOOL _applyVideoOrientationAsMetadata;
+    BOOL _requireHardwareEncoder;
     CDUnknownBlockType _metadataProcessor;
+    NSString *_videoCodecType;
 }
 
+@property (nonatomic) BOOL applyVideoOrientationAsMetadata; // @synthesize applyVideoOrientationAsMetadata=_applyVideoOrientationAsMetadata;
 @property (nonatomic) BOOL bypassOutputSettingsIfNoComposition; // @synthesize bypassOutputSettingsIfNoComposition=_bypassOutputSettingsIfNoComposition;
 @property (nonatomic) BOOL increaseBitRateIfNecessary; // @synthesize increaseBitRateIfNecessary=_increaseBitRateIfNecessary;
 @property (copy) CDUnknownBlockType metadataProcessor; // @synthesize metadataProcessor=_metadataProcessor;
+@property (nonatomic) BOOL preserveSourceColorSpace; // @synthesize preserveSourceColorSpace=_preserveSourceColorSpace;
+@property (nonatomic) BOOL requireHardwareEncoder; // @synthesize requireHardwareEncoder=_requireHardwareEncoder;
+@property (copy, nonatomic) NSString *videoCodecType; // @synthesize videoCodecType=_videoCodecType;
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)init;
 
 @end
 

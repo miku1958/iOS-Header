@@ -12,13 +12,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 

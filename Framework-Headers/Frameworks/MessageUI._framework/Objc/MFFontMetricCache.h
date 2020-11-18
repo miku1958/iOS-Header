@@ -12,6 +12,8 @@
 {
     NSString *_preferredSizeValidationKey;
     NSMutableDictionary *_metricCacheDictionary;
+    NSMutableDictionary *_bodyLeadingDictionary;
+    NSMutableDictionary *_defaultBodyLeadingDictionary;
 }
 
 + (id)sharedFontMetricCache;

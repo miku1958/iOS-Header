@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, PKAccessPassProvisioningConfiguration, PKAddSecureElementPassConfiguration, PKPass;
+@class NSArray, NSString, PKAddSecureElementPassConfiguration, PKPass;
 
 @protocol PKPassLibraryDataProvider <NSObject>
 
@@ -18,8 +18,5 @@
 - (NSArray *)paymentPasses;
 - (NSString *)peerPaymentPassUniqueID;
 - (void)removePass:(PKPass *)arg1;
-
-@optional
-- (BOOL)canProvisionAccessPassWithConfiguration:(PKAccessPassProvisioningConfiguration *)arg1;
 @end
 

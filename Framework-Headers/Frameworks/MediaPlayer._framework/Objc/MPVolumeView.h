@@ -13,7 +13,6 @@
 
 @interface MPVolumeView : UIView <MPAVLightweightRoutingControllerDelegate, NSCoding>
 {
-    MPMediaControls *_mediaControls;
     MPAVLightweightRoutingController *_lightweightRoutingController;
     BOOL _hasNonDefaultRouteButtonImages;
     BOOL _hasNonDefaultMaxVolumeSliderImage;
@@ -29,6 +28,7 @@
     BOOL _showsRouteButton;
     BOOL _showsVolumeSlider;
     long long _style;
+    MPMediaControls *_mediaControls;
     MPVolumeSlider *_volumeSlider;
     BOOL _volumeSliderShrinksFromBothEnds;
     BOOL _wirelessRouteIsPicked;

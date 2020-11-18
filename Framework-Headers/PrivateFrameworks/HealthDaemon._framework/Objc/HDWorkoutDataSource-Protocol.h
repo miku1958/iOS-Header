@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKDataFlowLink, NSDate, NSSet, NSUUID;
+@class HKDataFlowLink, HKWorkoutConfiguration, NSDate, NSSet, NSUUID;
 @protocol HDWorkoutDataDestination;
 
 @protocol HDWorkoutDataSource <NSObject>
@@ -15,6 +15,7 @@
 @property (readonly, copy) NSUUID *workoutDataProcessorUUID;
 
 - (void)workoutDataDestination:(id<HDWorkoutDataDestination>)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)workoutDataDestination:(id<HDWorkoutDataDestination>)arg1 didUpdateConfiguration:(HKWorkoutConfiguration *)arg2;
 - (void)workoutDataDestination:(id<HDWorkoutDataDestination>)arg1 requestsDataFrom:(NSDate *)arg2 to:(NSDate *)arg3;
 - (void)workoutDataDestination:(id<HDWorkoutDataDestination>)arg1 requestsFinalDataFrom:(NSDate *)arg2 to:(NSDate *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 

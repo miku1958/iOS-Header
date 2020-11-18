@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKDevice, HKQuantityType, NSArray, NSDate, NSDictionary;
+@class HKDevice, HKQuantityType, NSArray, NSDate, NSDictionary, NSString;
 
 @protocol HKWorkoutBuilderServerInterface <NSObject>
 - (void)remote_addDataSourcesWithIdentifiers:(NSArray *)arg1;
@@ -15,6 +15,7 @@
 - (void)remote_addWorkoutEvents:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_recoverWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_removeDataSourcesWithIdentifiers:(NSArray *)arg1;
+- (void)remote_removeMetadata:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_setShouldCollectEvents:(BOOL)arg1;
 - (void)remote_setStatisticsComputationMethod:(long long)arg1 forType:(HKQuantityType *)arg2;
 - (void)remote_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(HKQuantityType *)arg2;

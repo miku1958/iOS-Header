@@ -45,9 +45,10 @@
 
 - (void).cxx_destruct;
 - (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
-- (void)assetResourceRequestDidFinish:(id)arg1;
+- (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancel;
 - (id)initWithAssetResource:(id)arg1 destinationFileURL:(id)arg2 options:(id)arg3 requestID:(int)arg4 managerID:(unsigned long long)arg5 delegate:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)setErrorIfNone:(id)arg1;
 - (void)startRequest;
 
 @end

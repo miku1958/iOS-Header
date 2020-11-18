@@ -24,50 +24,47 @@
     unsigned long long _calledfeedbackForMapItem;
     unsigned long long _calledfeedbackForContact;
     CDUnknownBlockType _handlerForFeedback;
-    long long _calledUserRemoveBehavior;
+    long long _lastUsedRemovalBehavior;
     unsigned long long _totalAdded;
-    double _configFrequency;
-    BOOL _configSendCopies;
+    double _configureFrequency;
+    BOOL _configureSendCopies;
 }
 
-@property (readonly) unsigned long long calledFeedbackForEntry;
-@property (readonly) unsigned long long calledStart;
-@property (readonly) unsigned long long calledStop;
-@property (readonly) unsigned long long calledUpdateSuggestionEntries;
-@property (readonly) unsigned long long calledUserRemove;
-@property (readonly) long long calledUserRemoveBehavior;
-@property (readonly) unsigned long long calledfeedbackForContact;
-@property (readonly) unsigned long long calledfeedbackForMapItem;
-@property double configFrequency; // @synthesize configFrequency=_configFrequency;
-@property BOOL configSendCopies; // @synthesize configSendCopies=_configSendCopies;
+@property (readonly, nonatomic) unsigned long long calledFeedbackForEntry;
+@property (readonly, nonatomic) unsigned long long calledStart;
+@property (readonly, nonatomic) unsigned long long calledStop;
+@property (readonly, nonatomic) unsigned long long calledUpdateSuggestionEntries;
+@property (readonly, nonatomic) unsigned long long calledUserRemove;
+@property (readonly, nonatomic) unsigned long long calledfeedbackForContact;
+@property (readonly, nonatomic) unsigned long long calledfeedbackForMapItem;
+@property (nonatomic) double configureFrequency; // @synthesize configureFrequency=_configureFrequency;
+@property (nonatomic) BOOL configureSendCopies; // @synthesize configureSendCopies=_configureSendCopies;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MapsSuggestionsSourceDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long lastUsedRemovalBehavior;
 @property (readonly) Class superclass;
-@property (readonly) unsigned long long totalAdded;
+@property (readonly, nonatomic) unsigned long long totalAdded;
 @property (readonly, nonatomic) NSString *uniqueName;
 
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)_addEntries:(id)arg1;
-- (id)_copyEntriesIfNecessary:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (void)configCanProduceEntriesOfType:(id)arg1;
+- (void)configureCanProduceEntriesOfType:(id)arg1;
 - (void)configureHandlerForFeedbackBlock:(CDUnknownBlockType)arg1;
+- (void)configurePullResponseEntries:(id)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
-- (id)initWithDelegate:(id)arg1 name:(id)arg2;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 - (void)pushEntries:(id)arg1;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)setPullResponseEntries:(id)arg1;
 - (void)start;
-- (void)startDebugTest;
 - (void)stop;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -42,7 +42,7 @@
 - (id)_indexesForRows:(id)arg1;
 - (id)_indexesIntersectingButNotContainingBaseCellRegion:(id)arg1;
 - (unsigned long long)addAnnotation:(id)arg1 withAnchorRange:(struct TSUCellRect)arg2;
-- (void)addAnnotation:(id)arg1 withFormula:(struct TSCEFormula)arg2 atIndex:(unsigned long long)arg3;
+- (void)addAnnotation:(id)arg1 withFormula:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)addAnnotation:(id)arg1 withFormulaObject:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)annotationsContainedByRegion:(id)arg1;
 - (id)annotationsStartingInRange:(struct TSUModelCellRect)arg1;
@@ -64,8 +64,8 @@
 - (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_71b9b5e2 *)arg1;
 - (void)removeAllAnnotations;
-- (const struct TSCEFormula *)removeAnnotation:(id)arg1;
-- (const struct TSCEFormula *)removeAnnotationAtIndex:(unsigned long long)arg1;
+- (id)removeAnnotation:(id)arg1;
+- (id)removeAnnotationAtIndex:(unsigned long long)arg1;
 - (void)removeAnnotations:(id)arg1;
 - (void)rollbackToMark:(unsigned long long)arg1;
 - (void)saveToArchive:(struct PencilAnnotationOwnerArchive *)arg1 archiver:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import <PassKitCore/PKPaymentValidating-Protocol.h>
 
-@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKBankAccountInformation, PKCurrencyAmount, PKDisbursementApplicationInformation, PKPassLibrary, PKPayment, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentWebService, PKPeerPaymentQuote, PKPeerPaymentService, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
+@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKBankAccountInformation, PKContactFormatValidator, PKCurrencyAmount, PKDisbursementApplicationInformation, PKPassLibrary, PKPayment, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentWebService, PKPeerPaymentQuote, PKPeerPaymentService, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
 
 @interface PKPaymentAuthorizationDataModel : NSObject <PKPaymentValidating>
 {
@@ -48,6 +48,8 @@
     CNContact *_billingAddress;
     NSArray *_paymentErrors;
     PKPayment *_payment;
+    NSArray *_paymentContactFormatErrors;
+    PKContactFormatValidator *_contactFormatValidator;
     PKPaymentOptionsDefaults *_defaults;
     PKPaymentOptionsRecents *_recents;
     PKPassLibrary *_library;
@@ -74,6 +76,7 @@
 
 @property (readonly, nonatomic) NSArray *acceptedPasses;
 @property (readonly, nonatomic) NSSet *allAcceptedRemotePaymentInstruments; // @synthesize allAcceptedRemotePaymentInstruments=_allAcceptedRemotePaymentInstruments;
+@property (readonly, nonatomic) NSArray *allErrors;
 @property (readonly, nonatomic) NSArray *allNearbyRemoteDevices;
 @property (readonly, nonatomic) NSArray *allRemoteDevices; // @synthesize allRemoteDevices=_allRemoteDevices;
 @property (readonly, nonatomic) NSSet *allUnavailableRemotePaymentInstruments; // @synthesize allUnavailableRemotePaymentInstruments=_allUnavailableRemotePaymentInstruments;
@@ -81,6 +84,7 @@
 @property (strong, nonatomic) CNContact *billingAddress; // @synthesize billingAddress=_billingAddress;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) CNContact *cachedRecentAddress; // @synthesize cachedRecentAddress=_cachedRecentAddress;
+@property (strong, nonatomic) PKContactFormatValidator *contactFormatValidator; // @synthesize contactFormatValidator=_contactFormatValidator;
 @property (readonly, nonatomic) NSString *currencyCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSString *defaultPaymentPassUniqueIdentifier;
@@ -102,6 +106,7 @@
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKPayment *payment; // @synthesize payment=_payment;
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
+@property (readonly, nonatomic) NSArray *paymentContactFormatErrors; // @synthesize paymentContactFormatErrors=_paymentContactFormatErrors;
 @property (strong, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
 @property (strong, nonatomic) NSArray *paymentErrors; // @synthesize paymentErrors=_paymentErrors;
 @property (strong, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
@@ -145,10 +150,12 @@
 - (void)_ensurePlaceholderItems;
 - (id)_filterAndProcessPaymentApplicationsUsingConfiguration:(id)arg1 withPrimaryPaymentApplication:(id)arg2;
 - (id)_filterAndProcessPaymentPassesUsingConfiguration:(id)arg1;
+- (id)_formatAddressContactIfNecessary:(id)arg1;
 - (id)_inAppPaymentPassesForPaymentRequest:(id)arg1;
 - (id)_inAppPrivateLabelPaymentPasses;
 - (unsigned long long)_insertionIndexForItem:(id)arg1;
 - (void)_notifyModelChanged;
+- (void)_populatePeerPaymentBalanceIfNecessaryForPasses:(id)arg1;
 - (void)_setDataItem:(id)arg1;
 - (void)_setPaymentContentDataItems:(id)arg1;
 - (void)_setStatus:(long long)arg1 forPass:(id)arg2;

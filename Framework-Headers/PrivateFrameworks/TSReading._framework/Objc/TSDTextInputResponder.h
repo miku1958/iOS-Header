@@ -8,11 +8,12 @@
 
 #import <TSReading/UIResponderStandardEditActions-Protocol.h>
 #import <TSReading/UITextInput-Protocol.h>
+#import <TSReading/_UITextInputRevealSupport-Protocol.h>
 
 @class NSDictionary, NSObject, NSString, TSDTextInputTokenizer, TSDTextPosition, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
 @protocol TSDTextInput, UITextInputDelegate, UITextInputTokenizer;
 
-@interface TSDTextInputResponder : UIResponder <UITextInput, UIResponderStandardEditActions>
+@interface TSDTextInputResponder : UIResponder <UITextInput, UIResponderStandardEditActions, _UITextInputRevealSupport>
 {
     NSObject<TSDTextInput> *_editor;
     TSDTextInputTokenizer *_tokenizer;
@@ -69,6 +70,11 @@
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 
 - (BOOL)_disableAutomaticKeyboardUI;
+- (long long)_indexForTextPosition:(id)arg1;
+- (struct _NSRange)_nsrangeForTextRange:(id)arg1;
+- (id)_selectableText;
+- (struct _NSRange)_selectedNSRange;
+- (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (void)acceptAutocorrection;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
 - (BOOL)becomeFirstResponder;

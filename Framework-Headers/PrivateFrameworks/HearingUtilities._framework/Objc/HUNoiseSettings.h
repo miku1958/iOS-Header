@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NPSDomainAccessor, NSDate, NSLock, NSMutableDictionary, NSMutableSet;
+@class NPSDomainAccessor, NSArray, NSAttributedString, NSDate, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL;
 
 @interface HUNoiseSettings : NSObject
 {
     NSLock *_synchronizeDomainsLock;
+    NSNumber *_notificationsEnabledOverride;
+    NSNumber *_notificationsThreshholdOverride;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
@@ -19,13 +21,28 @@
 
 @property (nonatomic) double currentLeq;
 @property (strong, nonatomic) NPSDomainAccessor *domainAccessor; // @synthesize domainAccessor=_domainAccessor;
+@property (readonly, nonatomic) NSString *environmentalMeasurementsFooterDescription;
+@property (readonly, nonatomic) NSString *environmentalMeasurementsTitleDescription;
+@property (readonly, nonatomic) NSString *launchNoiseOnboardingTitle;
 @property (nonatomic) double leqDuration;
-@property (nonatomic) NSDate *leqTimestamp;
+@property (strong, nonatomic) NSDate *leqTimestamp;
 @property (nonatomic) BOOL migratedThreshold;
 @property (nonatomic) BOOL noiseEnabled;
+@property (readonly, nonatomic) long long noiseThresholdCurrentValue;
+@property (readonly, nonatomic) NSString *noiseThresholdFooterDescription;
+@property (readonly, nonatomic) NSAttributedString *noiseThresholdFooterDescriptionWithLink;
+@property (readonly, nonatomic) NSString *noiseThresholdFooterLinkTitle;
+@property (readonly, nonatomic) NSURL *noiseThresholdFooterLinkURL;
+@property (readonly, nonatomic) long long noiseThresholdMinutesThreshold;
+@property (readonly, nonatomic) NSArray *noiseThresholdOptions;
+@property (readonly, nonatomic) NSString *noiseThresholdSectionTitle;
+@property (readonly, nonatomic) NSString *noiseThresholdTitleDescription;
+@property (readonly, nonatomic) NSString *noiseThresholdValueFooterDescription;
 @property (strong, nonatomic) NSDate *notificationMuteDate;
 @property (nonatomic) unsigned long long notificationThreshold;
 @property (nonatomic) BOOL notificationsEnabled;
+@property (strong, nonatomic) NSNumber *notificationsEnabledOverride; // @synthesize notificationsEnabledOverride=_notificationsEnabledOverride;
+@property (strong, nonatomic) NSNumber *notificationsThreshholdOverride; // @synthesize notificationsThreshholdOverride=_notificationsThreshholdOverride;
 @property (nonatomic) BOOL onboardingCompleted;
 @property (strong, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
 @property (strong, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
@@ -35,7 +52,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_handlePreferenceChanged:(id)arg1;
-- (id)_notificationForPreferenceKey:(id)arg1;
 - (id)_preferenceKeyForSelector:(SEL)arg1;
 - (void)_registerForNotification:(id)arg1;
 - (void)_setValue:(id)arg1 forPreferenceKey:(id)arg2;
@@ -43,6 +59,10 @@
 - (id)_valueForPreferenceKey:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)localizedNoiseThresholdDetailValue:(long long)arg1;
+- (id)localizedNoiseThresholdValue:(long long)arg1;
+- (id)notificationForPreferenceKey:(id)arg1;
+- (void)pairedWatchDidChange:(id)arg1;
 - (BOOL)preferenceIsSetForRetrieveSelector:(SEL)arg1;
 - (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;
 

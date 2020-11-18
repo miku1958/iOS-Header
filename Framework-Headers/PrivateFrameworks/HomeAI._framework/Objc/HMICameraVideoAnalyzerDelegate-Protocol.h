@@ -11,7 +11,9 @@
 @protocol HMICameraVideoAnalyzerDelegate <NSObject>
 - (void)analyzer:(HMICameraVideoAnalyzer *)arg1 didAnalyzeFragment:(HMICameraVideoFragment *)arg2 withResult:(HMICameraVideoAnalyzerResult *)arg3;
 - (void)analyzer:(HMICameraVideoAnalyzer *)arg1 didFailAnalysisForFragment:(HMICameraVideoFragment *)arg2 withError:(NSError *)arg3;
-- (void)analyzer:(HMICameraVideoAnalyzer *)arg1 didFindSignificantEvent:(HMICameraVideoAnalyzerSignificantEvent *)arg2 inFragment:(HMICameraVideoFragment *)arg3;
 - (void)analyzer:(HMICameraVideoAnalyzer *)arg1 didNotAnalyzeFragment:(HMICameraVideoFragment *)arg2 withResult:(HMICameraVideoAnalyzerResult *)arg3;
+
+@optional
+- (void)analyzer:(HMICameraVideoAnalyzer *)arg1 didFindSignificantEvent:(HMICameraVideoAnalyzerSignificantEvent *)arg2 inFragment:(HMICameraVideoFragment *)arg3;
 @end
 

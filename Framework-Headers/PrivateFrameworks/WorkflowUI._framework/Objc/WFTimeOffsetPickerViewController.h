@@ -6,22 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WorkflowUI/UIPickerViewDataSource-Protocol.h>
-#import <WorkflowUI/UIPickerViewDelegate-Protocol.h>
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 
 @class NSArray, NSString, UIPickerView, UITableView;
 @protocol WFTimeOffsetPickerViewControllerDelegate;
 
-@interface WFTimeOffsetPickerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface WFTimeOffsetPickerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     id<WFTimeOffsetPickerViewControllerDelegate> _delegate;
     unsigned long long _event;
     UIPickerView *_currentPickerView;
     UITableView *_tableView;
     NSArray *_sections;
-    NSArray *_pickerItems;
+    NSArray *_tableViewItems;
     unsigned long long _timeOffset;
 }
 
@@ -31,10 +29,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long event; // @synthesize event=_event;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *pickerItems; // @synthesize pickerItems=_pickerItems;
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (readonly, nonatomic) NSArray *tableViewItems; // @synthesize tableViewItems=_tableViewItems;
 @property (nonatomic) unsigned long long timeOffset; // @synthesize timeOffset=_timeOffset;
 
 - (void).cxx_destruct;
@@ -43,14 +41,12 @@
 - (id)infoForSection:(long long)arg1;
 - (id)initWithTimeTriggerEvent:(unsigned long long)arg1 timeOffset:(unsigned long long)arg2;
 - (void)loadView;
-- (long long)numberOfComponentsInPickerView:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
-- (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)titleForRow:(long long)arg1;
 
 @end
 

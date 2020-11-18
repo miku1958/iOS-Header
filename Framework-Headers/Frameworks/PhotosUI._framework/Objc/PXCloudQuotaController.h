@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/ICQBannerViewDelegate-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
+#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class ICQOffer, NSString, UIView;
-@protocol OS_dispatch_queue, PXCloudQuotaControllerDelegate;
+@class NSString, PXCloudQuotaOfferProvider, UIView;
+@protocol PXCloudQuotaControllerDelegate;
 
-@interface PXCloudQuotaController : NSObject <ICQBannerViewDelegate>
+@interface PXCloudQuotaController : NSObject <PXChangeObserver, ICQBannerViewDelegate, PXSettingsKeyObserver>
 {
-    ICQOffer *_currentOffer;
-    NSObject<OS_dispatch_queue> *_queue;
+    PXCloudQuotaOfferProvider *_offerProvider;
     UIView *_informationBanner;
     id<PXCloudQuotaControllerDelegate> _delegate;
 }
@@ -27,13 +28,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_currentOfferChangedNotification:(id)arg1;
-- (void)_queue_getCurrentOffer;
-- (void)_queue_initialSetup;
-- (void)_updateCurrentOffer:(id)arg1;
+- (BOOL)_mockOfferIncludeAssetCounts;
+- (long long)_mockOfferLevel;
+- (void)_updateInformationBanner;
 - (void)dealloc;
 - (id)init;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)presentingViewControllerForBannerView:(id)arg1;
+- (void)setInformationBanner:(id)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end
 

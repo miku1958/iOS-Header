@@ -14,12 +14,15 @@
     TSUBezierPath *mBezierPath;
 }
 
-@property (strong, nonatomic) NSURL *URL; // @synthesize URL=mURL;
-@property (strong, nonatomic) TSUBezierPath *bezierPath; // @synthesize bezierPath=mBezierPath;
+@property (copy, nonatomic) NSURL *URL; // @synthesize URL=mURL;
+@property (copy, nonatomic) TSUBezierPath *bezierPath; // @synthesize bezierPath=mBezierPath;
 
 + (id)hyperlinkRegionWithURL:(id)arg1 bezierPath:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)hash;
 - (id)initWithURL:(id)arg1 bezierPath:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

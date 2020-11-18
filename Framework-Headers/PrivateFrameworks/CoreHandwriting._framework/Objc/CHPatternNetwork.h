@@ -17,13 +17,15 @@
 }
 
 + (id)contentTypesToPatternsMapping;
-+ (id)cursorByAdvancingWithString:(id)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
-+ (id)cursorByAdvancingWithSymbol:(unsigned long long)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
++ (BOOL)isString:(id)arg1 fullPattern:(long long)arg2 inNetwork:(id)arg3;
++ (id)newCursorByAdvancingWithString:(id)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
++ (id)newCursorByAdvancingWithSymbol:(unsigned long long)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
 + (id)patternToSymbolMap;
 + (id)rootCursorForContentType:(int)arg1 inNetwork:(id)arg2 forFirstSegmentGroup:(BOOL)arg3;
-- (id)advanceCursor:(id)arg1 withSymbol:(unsigned long long)arg2;
++ (id)rootCursorForPatternType:(long long)arg1 inNetwork:(id)arg2 forFirstSegmentGroup:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithFile:(id)arg1;
+- (id)newCursorByAdvancingCursor:(id)arg1 withSymbol:(unsigned long long)arg2;
 - (unsigned long long)stateTypeForNodeIndex:(unsigned long long)arg1;
 
 @end

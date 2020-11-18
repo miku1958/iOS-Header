@@ -12,18 +12,17 @@
 
 @interface TSTCellFormulaSpec : TSTCellSpec <TSCEFormulaReturning>
 {
-    struct TSCEFormula *_formula;
+    TSCEFormulaObject *_formulaObject;
     TSULocale *_locale;
     unsigned char _categoryAggregateType;
-    int _interactionType;
+    unsigned int _interactionType;
     TSTStockDetails *_stockDetails;
 }
 
 @property (readonly, nonatomic) unsigned char categoryAggregateType; // @synthesize categoryAggregateType=_categoryAggregateType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) struct TSCEFormula *formula; // @synthesize formula=_formula;
-@property (readonly, nonatomic) TSCEFormulaObject *formulaObject;
+@property (readonly, nonatomic) TSCEFormulaObject *formulaObject; // @synthesize formulaObject=_formulaObject;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSTStockDetails *stockDetails; // @synthesize stockDetails=_stockDetails;
 @property (readonly) Class superclass;
@@ -31,13 +30,12 @@
 + (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 - (id)asFormulaSpec;
-- (id)cellSpecReplacingFormula:(struct TSCEFormula *)arg1 locale:(id)arg2;
-- (void)dealloc;
+- (id)cellSpecReplacingFormulaObject:(id)arg1 locale:(id)arg2;
 - (BOOL)hasTSCEFormula;
 - (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithFormula:(struct TSCEFormula *)arg1 fromTableModel:(id)arg2 fromCellID:(struct TSUCellCoord)arg3;
-- (id)initWithFormula:(struct TSCEFormula *)arg1 locale:(id)arg2;
-- (int)interactionType;
+- (id)initWithFormulaObject:(id)arg1 fromTableModel:(id)arg2 fromCellID:(struct TSUCellCoord)arg3;
+- (id)initWithFormulaObject:(id)arg1 locale:(id)arg2;
+- (unsigned int)interactionType;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (void)p_computeinteractionType:(id)arg1;

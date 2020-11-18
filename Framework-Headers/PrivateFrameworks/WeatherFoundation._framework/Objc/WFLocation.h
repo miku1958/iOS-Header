@@ -13,19 +13,20 @@
 
 @interface WFLocation : NSObject <NSSecureCoding, NSCopying>
 {
+    CLLocation *_geoLocation;
+    NSString *_weatherDisplayName;
+    NSString *_weatherLocationName;
     NSString *_city;
     NSString *_county;
     NSString *_state;
     NSString *_stateAbbreviation;
     NSString *_country;
     NSString *_countryAbbreviation;
-    CLLocation *_geoLocation;
-    NSString *_locationID;
     NSTimeZone *_timeZone;
-    long long _archiveVersion;
-    NSString *_weatherDisplayName;
-    NSString *_displayName;
     NSDate *_creationDate;
+    long long _archiveVersion;
+    NSString *_locationID;
+    NSString *_displayName;
 }
 
 @property long long archiveVersion; // @synthesize archiveVersion=_archiveVersion;
@@ -33,15 +34,17 @@
 @property (copy, nonatomic) NSString *country; // @synthesize country=_country;
 @property (copy, nonatomic) NSString *countryAbbreviation; // @synthesize countryAbbreviation=_countryAbbreviation;
 @property (copy, nonatomic) NSString *county; // @synthesize county=_county;
-@property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) CLLocation *geoLocation; // @synthesize geoLocation=_geoLocation;
 @property (copy, nonatomic) NSString *locationID; // @synthesize locationID=_locationID;
+@property (readonly, nonatomic) BOOL needsGeocoding;
 @property (readonly, nonatomic) BOOL shouldQueryForAirQualityData;
 @property (copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property (copy, nonatomic) NSString *stateAbbreviation; // @synthesize stateAbbreviation=_stateAbbreviation;
-@property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (copy, nonatomic) NSString *weatherDisplayName; // @synthesize weatherDisplayName=_weatherDisplayName;
+@property (copy, nonatomic) NSString *weatherLocationName; // @synthesize weatherLocationName=_weatherLocationName;
 @property (readonly, nonatomic) NSString *wf_weatherChannelGeocodeValue;
 
 + (long long)currentArchiveVersion;
@@ -51,6 +54,7 @@
 + (id)locationsByFilteringDuplicates:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_sunAlmanacForDate:(id)arg1;
 - (id)cloudDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)countriesSupportAQI;
@@ -70,6 +74,7 @@
 - (id)localDataRepresentation;
 - (id)summary;
 - (id)summaryThatIsCompact:(BOOL)arg1;
+- (void)sunrise:(id *)arg1 andSunset:(id *)arg2 forDate:(id)arg3;
 - (id)sunriseForDate:(id)arg1;
 - (id)sunsetForDate:(id)arg1;
 

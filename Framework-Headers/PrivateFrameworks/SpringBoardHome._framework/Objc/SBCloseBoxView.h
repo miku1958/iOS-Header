@@ -6,10 +6,12 @@
 
 #import <SpringBoardHome/SBHomeScreenButton.h>
 
-@class UITapGestureRecognizer;
+#import <SpringBoardHome/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString, UITapGestureRecognizer;
 @protocol SBCloseBoxViewDelegate, SBIconListLayout;
 
-@interface SBCloseBoxView : SBHomeScreenButton
+@interface SBCloseBoxView : SBHomeScreenButton <UIPointerInteractionDelegate>
 {
     UITapGestureRecognizer *_actionTapGestureRecognizer;
     id<SBCloseBoxViewDelegate> _delegate;
@@ -17,16 +19,19 @@
 }
 
 @property (strong, nonatomic) UITapGestureRecognizer *actionTapGestureRecognizer; // @synthesize actionTapGestureRecognizer=_actionTapGestureRecognizer;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBCloseBoxViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct UIEdgeInsets hitTestPadding;
 @property (strong, nonatomic) id<SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
+@property (readonly) Class superclass;
 
 + (struct UIEdgeInsets)backgroundInsets;
-+ (BOOL)supportsCursorInteraction;
 - (void).cxx_destruct;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (BOOL)shouldTrack;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

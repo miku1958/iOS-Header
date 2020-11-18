@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class CKRecordID, CKUploadRequestConfiguration, NSString;
+#import <CloudKit/CKMarkAssetBrokenOperationCallbacks-Protocol.h>
 
-@interface CKMarkAssetBrokenOperation : CKDatabaseOperation
+@class CKMarkAssetBrokenOperationInfo, CKRecordID, CKUploadRequestConfiguration, NSString;
+@protocol CKMarkAssetBrokenOperationCallbacks;
+
+@interface CKMarkAssetBrokenOperation : CKDatabaseOperation <CKMarkAssetBrokenOperationCallbacks>
 {
     BOOL _touchRepairZone;
     BOOL _bypassPCSEncryptionForTouchRepairZone;
@@ -23,9 +26,11 @@
 }
 
 @property (nonatomic) BOOL bypassPCSEncryptionForTouchRepairZone; // @synthesize bypassPCSEncryptionForTouchRepairZone=_bypassPCSEncryptionForTouchRepairZone;
+@property (readonly, nonatomic) id<CKMarkAssetBrokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSString *field; // @synthesize field=_field;
 @property (nonatomic) long long listIndex; // @synthesize listIndex=_listIndex;
 @property (copy, nonatomic) CDUnknownBlockType markAssetBrokenCompletionBlock; // @synthesize markAssetBrokenCompletionBlock=_markAssetBrokenCompletionBlock;
+@property (readonly, nonatomic) CKMarkAssetBrokenOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) CKRecordID *repairRecordID; // @synthesize repairRecordID=_repairRecordID;
 @property (readonly, copy, nonatomic) CKUploadRequestConfiguration *resolvedUploadRequestConfiguration;
@@ -34,13 +39,14 @@
 @property (copy, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property (nonatomic) BOOL writeRepairRecord; // @synthesize writeRepairRecord=_writeRepairRecord;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleMarkAssetBrokenCompletionWithRepairRecordID:(id)arg1 error:(id)arg2;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithNoRecord;
 - (id)initWithRecordID:(id)arg1 field:(id)arg2;

@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+#import <NanoTimeKitCompanion/NTKZeudleColorPalette-Protocol.h>
 
-@interface NTKZeusColorPalette : NSObject
+@class NSString, UIColor;
+
+@interface NTKZeusColorPalette : NSObject <NTKZeudleColorPalette>
 {
     unsigned long long _color;
+    UIColor *_handInlayColorForNonDetailedDensity;
+    UIColor *_bottomComplicationColor;
     UIColor *_dialColor;
-    UIColor *_complicationColor;
     UIColor *_secondHandColor;
     UIColor *_minuteHandColor;
     UIColor *_hourHandColor;
@@ -26,15 +29,21 @@
 
 @property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) unsigned long long bleed; // @synthesize bleed=_bleed;
-@property (readonly, nonatomic) UIColor *complicationColor; // @synthesize complicationColor=_complicationColor;
+@property (readonly, nonatomic) UIColor *bottomComplicationBackgroundColor;
+@property (readonly, nonatomic) UIColor *bottomComplicationColor; // @synthesize bottomComplicationColor=_bottomComplicationColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIColor *dialColor; // @synthesize dialColor=_dialColor;
 @property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIColor *hourHandColor; // @synthesize hourHandColor=_hourHandColor;
 @property (readonly, nonatomic) UIColor *minuteHandColor; // @synthesize minuteHandColor=_minuteHandColor;
 @property (readonly, nonatomic) UIColor *minuteHandDotColor; // @synthesize minuteHandDotColor=_minuteHandDotColor;
 @property (readonly, nonatomic) double secondHandAlpha; // @synthesize secondHandAlpha=_secondHandAlpha;
 @property (readonly, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
 @property (readonly, nonatomic) UIColor *splitColor; // @synthesize splitColor=_splitColor;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wantsStatusBarIconShadow;
 
 + (id)ambreColor;
 + (id)blancDialTextColor;
@@ -66,10 +75,16 @@
 + (id)sakuraMediumColor;
 + (id)swatchColorForColor:(unsigned long long)arg1;
 + (id)swatchImageForColor:(unsigned long long)arg1;
++ (id)zeusAnemoneColor;
++ (id)zeusBambouColor;
 + (id)zeusBlancColor;
++ (id)zeusJauneAmbreColor;
++ (id)zeusNavyColor;
 + (id)zeusOrangeColor;
++ (id)zeusRougePimentColor;
 + (id)zeusSilverColor;
 - (void).cxx_destruct;
+- (id)handInlayColorForDensity:(unsigned long long)arg1;
 - (id)initWithColor:(unsigned long long)arg1;
 
 @end

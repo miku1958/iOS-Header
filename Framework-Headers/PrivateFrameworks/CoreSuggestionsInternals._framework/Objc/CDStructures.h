@@ -88,10 +88,6 @@ struct SGMEventICSSourceType_ {
     unsigned long long _field1;
 };
 
-struct SGMFoundInMailModelType_ {
-    unsigned long long _field1;
-};
-
 struct SGMSelfIdModelType_ {
     unsigned long long _field1;
 };
@@ -216,13 +212,6 @@ typedef struct {
 } CDStruct_e59a5d79;
 
 typedef struct {
-    unsigned long long _field1;
-    id *_field2;
-    unsigned long long *_field3;
-    unsigned long long _field4[5];
-} CDStruct_70511ce9;
-
-typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -230,6 +219,11 @@ typedef struct {
     unsigned int :8;
     unsigned int :20;
 } CDStruct_a2e78aaa;
+
+typedef struct {
+    unsigned int app:1;
+    unsigned int wasSuggestedContact:1;
+} CDStruct_02d9bdfe;
 
 typedef struct {
     int _field1;
@@ -248,11 +242,12 @@ typedef struct {
     BOOL _field3;
     int _field4;
     int _field5;
-    CDStruct_beb4cc23 _field6;
+    int _field6;
     CDStruct_beb4cc23 _field7;
     CDStruct_beb4cc23 _field8;
-    long long _field9;
-} CDStruct_7663941a;
+    CDStruct_beb4cc23 _field9;
+    long long _field10;
+} CDStruct_632d45bc;
 
 typedef struct {
     struct {
@@ -299,11 +294,6 @@ typedef struct {
     unsigned int wasKnownContact:1;
     unsigned int wasSuggestedContact:1;
 } CDStruct_73da3db5;
-
-typedef struct {
-    unsigned int app:1;
-    unsigned int wasSuggestedContact:1;
-} CDStruct_02d9bdfe;
 
 typedef struct {
     unsigned int app:1;

@@ -35,8 +35,6 @@
 @property (readonly, nonatomic) double conversationHeaderViewCollapsedSuperTitleTopToFirstBaseline;
 @property (readonly, nonatomic) double conversationHeaderViewCollapsedTitleBottomToLastBaseline;
 @property (readonly, nonatomic) double conversationHeaderViewCollapsedTitleTopToFirstBaseline;
-@property (readonly, nonatomic) double conversationHeaderViewExpandedSuperTitleTopToFirstBaseline;
-@property (readonly, nonatomic) double conversationHeaderViewExpandedTitleBottomToLastBaseline;
 @property (readonly, nonatomic) double conversationHeaderViewExpandedTitleTopToFirstBaseline;
 @property (readonly, nonatomic) BOOL conversationHeaderViewShouldHideCollapsedSuperTitle;
 @property (readonly, nonatomic) double estimatedFooterViewHeight;

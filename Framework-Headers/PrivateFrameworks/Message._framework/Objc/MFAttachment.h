@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class EMMailDropMetadata, MFAttachmentManager, MFAttachmentPlaceholder, MFMimePart, NSString, NSURL;
+@class EMMailDropMetadata, MFAttachmentManager, MFAttachmentPlaceholder, MFMimePart, NSItemProvider, NSString, NSURL;
 @protocol MFDataConsumer;
 
 @interface MFAttachment : NSObject
@@ -18,11 +18,13 @@
     NSURL *_url;
     MFMimePart *_part;
     NSString *_disposition;
+    NSItemProvider *_attachmentDataProvider;
     CDUnknownBlockType _fetchCompletionBlock;
     id<MFDataConsumer> _customConsumer;
     struct CGSize _imageDimensions;
 }
 
+@property (strong, nonatomic) NSItemProvider *attachmentDataProvider; // @synthesize attachmentDataProvider=_attachmentDataProvider;
 @property (copy) NSString *contentID;
 @property (strong, nonatomic) id<MFDataConsumer> customConsumer; // @synthesize customConsumer=_customConsumer;
 @property (nonatomic) unsigned long long decodedFileSize;

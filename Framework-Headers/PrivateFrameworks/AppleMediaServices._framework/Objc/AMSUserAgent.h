@@ -33,6 +33,8 @@
 - (id)_sharedComponentFairPlayDeviceType;
 - (id)_sharedComponentFrameworkVersion;
 - (id)_sharedComponentParentheticalWithFairPlayDeviceType:(id)arg1;
+- (id)_sharedComponentParentheticalWithFairPlayDeviceType:(id)arg1 productType:(id)arg2;
+- (id)_userAgentSuffix;
 - (id)compile;
 - (id)initWithProcessInfo:(id)arg1;
 

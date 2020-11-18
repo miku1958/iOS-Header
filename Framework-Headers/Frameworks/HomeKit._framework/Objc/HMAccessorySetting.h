@@ -9,7 +9,7 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingDelegate-Protocol.h>
 
-@class HMAccessorySettingGroup, NSString, _HMAccessorySetting;
+@class HMAccessorySettingGroup, NSString, NSUUID, _HMAccessorySetting;
 
 @interface HMAccessorySetting : HMSetting <_HMAccesorySettingDelegate, HMFLogging>
 {
@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (weak) HMAccessorySettingGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSUUID *identifier;
 @property (readonly) _HMAccessorySetting *internal; // @synthesize internal=_internal;
 @property (readonly, copy) NSString *keyPath;
 @property (readonly, getter=isReflected) BOOL reflected;
@@ -31,9 +32,7 @@
 + (id)logCategory;
 + (id)settingForInternal:(id)arg1;
 - (void).cxx_destruct;
-- (void)_settingDidUpdateReflected:(id)arg1;
 - (void)_settingDidUpdateValue:(id)arg1;
-- (void)_settingWillUpdateReflected:(id)arg1;
 - (void)_settingWillUpdateValue:(id)arg1;
 - (id)init;
 - (id)initWithInternal:(id)arg1;
@@ -41,6 +40,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isWritable;
 - (id)logIdentifier;
+- (void)settingDidUpdateReflected;
+- (void)settingWillUpdateReflected;
+- (void)updateReflected:(BOOL)arg1;
 - (void)updateValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)value;
 

@@ -28,6 +28,9 @@
     BOOL _isAttemptingToPlayVideoOverlayDidChange;
     BOOL _isScrubbingActivationDidChange;
     BOOL _isVideoContentAllowedDidChange;
+    BOOL _reviewScreenSelectionDidChange;
+    BOOL _navigationBarTitleDidChange;
+    BOOL _resizeTaskDescriptorViewModelDidChange;
 }
 
 @property (readonly, nonatomic) NSMapTable *_mutableSharedViewModelChangesByAsset;
@@ -45,8 +48,11 @@
 @property (nonatomic, setter=_setIsScrubbingActivationDidChange:) BOOL isScrubbingActivationDidChange; // @synthesize isScrubbingActivationDidChange=_isScrubbingActivationDidChange;
 @property (nonatomic, setter=_setIsScrubbingDidChange:) BOOL isScrubbingDidChange; // @synthesize isScrubbingDidChange=_isScrubbingDidChange;
 @property (nonatomic) BOOL isVideoContentAllowedDidChange; // @synthesize isVideoContentAllowedDidChange=_isVideoContentAllowedDidChange;
+@property (nonatomic, setter=_setNavigationBarTitleDidChange:) BOOL navigationBarTitleDidChange; // @synthesize navigationBarTitleDidChange=_navigationBarTitleDidChange;
 @property (nonatomic, setter=_setPresentingOverOneUpDidChange:) BOOL presentingOverOneUpDidChange; // @synthesize presentingOverOneUpDidChange=_presentingOverOneUpDidChange;
+@property (nonatomic, setter=_setResizeTaskDescriptorViewModelDidChange:) BOOL resizeTaskDescriptorViewModelDidChange; // @synthesize resizeTaskDescriptorViewModelDidChange=_resizeTaskDescriptorViewModelDidChange;
 @property (nonatomic, setter=_setReviewScreenBarsModelDidChange:) BOOL reviewScreenBarsModelDidChange; // @synthesize reviewScreenBarsModelDidChange=_reviewScreenBarsModelDidChange;
+@property (nonatomic, setter=_setReviewScreenSelectionDidChange:) BOOL reviewScreenSelectionDidChange; // @synthesize reviewScreenSelectionDidChange=_reviewScreenSelectionDidChange;
 @property (nonatomic, setter=_setSecondScreenSizeDidChange:) BOOL secondScreenSizeDidChange; // @synthesize secondScreenSizeDidChange=_secondScreenSizeDidChange;
 @property (nonatomic, setter=_setTransitionDriverIdentifierDidChange:) BOOL transitionDriverIdentifierDidChange; // @synthesize transitionDriverIdentifierDidChange=_transitionDriverIdentifierDidChange;
 @property (nonatomic, setter=_setVideoOverlayPlayStateDidChange:) BOOL videoOverlayPlayStateDidChange; // @synthesize videoOverlayPlayStateDidChange=_videoOverlayPlayStateDidChange;

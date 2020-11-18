@@ -9,7 +9,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, UILongPressGestureRecognizer, UIResponder, UITextInteractionInputDelegate, UIView, _UIStatesFeedbackGenerator;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, UILongPressGestureRecognizer, UIResponder, UITextCursorAssertionController, UITextInteractionInputDelegate, UIView, _UIStatesFeedbackGenerator;
 @protocol UITextInput, UITextInteractionDelegate, UITextInteraction_AssistantDelegate;
 
 @interface UITextInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction>
@@ -18,6 +18,7 @@
     NSMutableArray *_children;
     NSMutableArray *_gestures;
     NSMutableDictionary *_gestureMap;
+    BOOL _viewOverridesInteractivityState;
     BOOL _inGesture;
     long long _textInteractionMode;
     UILongPressGestureRecognizer *_customHighlighterGesture;
@@ -29,6 +30,7 @@
     id<UITextInteraction_AssistantDelegate> _assistantDelegate;
 }
 
+@property (readonly, nonatomic) UITextCursorAssertionController *_assertionController;
 @property (strong, nonatomic) UILongPressGestureRecognizer *_customHighlighterGesture; // @synthesize _customHighlighterGesture;
 @property (weak, nonatomic) id<UITextInteraction_AssistantDelegate> assistantDelegate; // @synthesize assistantDelegate=_assistantDelegate;
 @property (readonly, nonatomic) NSArray *children; // @synthesize children=_children;
@@ -69,6 +71,8 @@
 - (BOOL)_shouldAllowEnforcedTouchTypeForTouch:(id)arg1 forGestureRecognizer:(id)arg2;
 - (BOOL)_shouldObscureTextInput;
 - (id)_textInput;
+- (BOOL)_textInputIsInteractive;
+- (BOOL)_textInputLivesInKeyWindow;
 - (id)_transientState;
 - (void)addChild:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1 withName:(id)arg2;
@@ -99,7 +103,7 @@
 - (BOOL)selection:(id)arg1 containsPoint:(struct CGPoint)arg2;
 - (BOOL)shouldAllowWithTouchTypes:(id)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldHandleFormGestureAtLocation:(struct CGPoint)arg1;
-- (void)turnOffDrawsAsAtomIfPlainStyleAtom;
+- (void)updateTextInputSourceForScribbleGesture:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 
 @end

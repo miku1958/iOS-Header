@@ -9,5 +9,7 @@
 @interface SACommandFailed (CFAdditions)
 + (id)commandFailedWithError:(id)arg1;
 + (id)commandFailedWithErrorCode:(long long)arg1 errorString:(id)arg2;
+- (id)initWithError:(id)arg1;
+- (id)initWithErrorCode:(long long)arg1 reason:(id)arg2;
 @end
 

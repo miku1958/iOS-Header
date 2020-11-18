@@ -24,7 +24,6 @@
     BOOL _enableCooling;
     BOOL _enableHeating;
     BOOL _enableMassage;
-    BOOL __encodeLegacyGloryData;
     int _relativeLevelSetting;
     int _seat;
     _INPBDataString *_carName;
@@ -32,7 +31,6 @@
     _INPBInteger *_level;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

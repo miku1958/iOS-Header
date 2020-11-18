@@ -53,6 +53,7 @@
 @property (readonly, nonatomic) BOOL willTryToSearchForWiFiNetwork;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_adjustCellularAutoAssociation;
 - (BOOL)_isDataConnectionAvailable;
 - (BOOL)_legacy_inValidSIMState;

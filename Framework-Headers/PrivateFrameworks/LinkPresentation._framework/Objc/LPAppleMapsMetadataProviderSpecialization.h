@@ -6,7 +6,7 @@
 
 #import <LinkPresentation/LPMetadataProviderSpecialization.h>
 
-@class CLGeocoder, LPMapCollectionMetadata, LPMapMetadata, _MKURLParser;
+@class CLGeocoder, LPMapCollectionMetadata, LPMapCollectionPublisherMetadata, LPMapMetadata, MKPlaceCuratedCollectionRefiner, MKPlacePublisherRefiner, _MKURLParser;
 
 __attribute__((visibility("hidden")))
 @interface LPAppleMapsMetadataProviderSpecialization : LPMetadataProviderSpecialization
@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     _MKURLParser *_parser;
     LPMapMetadata *_mapMetadata;
     LPMapCollectionMetadata *_collectionMetadata;
+    LPMapCollectionPublisherMetadata *_publisherMetadata;
+    MKPlaceCuratedCollectionRefiner *_curatedCollectionRefiner;
+    MKPlacePublisherRefiner *_publisherRefiner;
 }
 
 + (unsigned long long)specialization;
@@ -24,9 +27,11 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (void)complete;
 - (void)completeWithCollection;
+- (void)completeWithCuratedCollection;
 - (void)completeWithDirections;
 - (void)completeWithMapItem:(id)arg1;
 - (void)completeWithPlacemark:(id)arg1;
+- (void)completeWithPublisher;
 - (void)completeWithSearchQuery:(id)arg1;
 - (void)continueWithBaseSnapshotOptions:(id)arg1 mapItems:(id)arg2;
 - (void)fail;

@@ -82,6 +82,7 @@
 - (void)_handleSetGuidedAccessEnabledByRequestingApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_handleSetInCheckerBoardMode:(id)arg1;
 - (id)_handleSetInPreBoardMode:(id)arg1;
+- (id)_handleSetIsSpeakScreenHighlightVisible:(id)arg1;
 - (id)_handleSetSessionIsLoginSession:(id)arg1;
 - (id)_handleSetSwitchControlHasScreenSwitch:(id)arg1;
 - (id)_handleSetSwitchControlRendersDeviceUnusable:(id)arg1;

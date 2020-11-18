@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFAbstractDoorAndWindowStatusItem.h>
+#import <Home/HFStatusItem.h>
 
-@interface HFContactSensorStatusItem : HFAbstractDoorAndWindowStatusItem
+@interface HFContactSensorStatusItem : HFStatusItem
 {
 }
 
-- (id)_formatStringTypeComponent;
-- (id)_isOpenCharacteristicType;
-- (CDUnknownBlockType)_isOpenTest;
-- (id)_serviceType;
+- (id)_subclass_updateWithOptions:(id)arg1;
+- (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
 
 @end
 

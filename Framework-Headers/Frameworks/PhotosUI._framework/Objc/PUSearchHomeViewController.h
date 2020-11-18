@@ -6,26 +6,23 @@
 
 #import <PhotosUICore/PXGadgetUIViewController.h>
 
-#import <PhotosUI/PXNavigationRoot-Protocol.h>
-#import <PhotosUI/PXProgrammaticNavigationParticipant-Protocol.h>
+#import <PhotosUI/UISearchControllerDelegate-Protocol.h>
 
-@class NSString, PUSearchHomeGadgetDataSourceManager, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
+@class NSString, PUSearchHomeGadgetDataSourceManager, PXProgrammaticNavigationDestination;
+@protocol PXViewControllerEventTracker;
 
-@interface PUSearchHomeViewController : PXGadgetUIViewController <PXNavigationRoot, PXProgrammaticNavigationParticipant>
+@interface PUSearchHomeViewController : PXGadgetUIViewController <UISearchControllerDelegate>
 {
     BOOL _shouldActiveSearchFieldUponAppearing;
-    UIBarButtonItem *_navigationDisplayModeButtonItem;
+    PXProgrammaticNavigationDestination *_px_navigationDestination;
     PUSearchHomeGadgetDataSourceManager *_searchHomeDataSourceManager;
+    id<PXViewControllerEventTracker> _searchControllerEventTracker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
-@property (strong, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
-@property (readonly, nonatomic) NSString *navigationIdentifier;
-@property (readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager;
-@property (readonly, nonatomic) NSString *navigationTitle;
+@property (strong, nonatomic) id<PXViewControllerEventTracker> searchControllerEventTracker; // @synthesize searchControllerEventTracker=_searchControllerEventTracker;
 @property (strong, nonatomic) PUSearchHomeGadgetDataSourceManager *searchHomeDataSourceManager; // @synthesize searchHomeDataSourceManager=_searchHomeDataSourceManager;
 @property (nonatomic) BOOL shouldActiveSearchFieldUponAppearing; // @synthesize shouldActiveSearchFieldUponAppearing=_shouldActiveSearchFieldUponAppearing;
 @property (readonly) Class superclass;
@@ -36,20 +33,25 @@
 - (void)_clearSearchField;
 - (void)_configureSearchNavigationBar;
 - (void)_notifyAnalyticsSearchAction:(unsigned long long)arg1;
-- (BOOL)canRouteToDestination:(id)arg1;
+- (void)didDismissSearchController:(id)arg1;
+- (void)didPresentSearchController:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)init;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
 - (void)performRecentSearch:(id)arg1;
+- (void)performRecentSearchNew:(id)arg1;
 - (void)ppt_dismissKeyboard;
 - (void)ppt_prepareForSearchScrollingTestWithSearchText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)ppt_prepareForSearchTest:(CDUnknownBlockType)arg1;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
+- (void)presentForSearchHashtag:(id)arg1;
 - (void)presentOneYearAgo;
 - (void)presentSiriSearchRequest:(id)arg1 resultCount:(unsigned long long)arg2;
 - (BOOL)pu_scrollToInitialPositionAnimated:(BOOL)arg1;
 - (id)px_gridPresentation;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (long long)scrollAnimationIdentifier;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)selectZeroKeyword:(id)arg1;

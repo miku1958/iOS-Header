@@ -18,6 +18,7 @@
 + (id)crashReports;
 + (BOOL)createArchiveSourceURL:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 + (id)createDiagnosticsURLWithError:(id *)arg1;
++ (BOOL)fileNameEligibleForCollection:(id)arg1;
 + (id)stringFromDateWithFormat;
 - (void).cxx_destruct;
 - (id)_collectBackupWithError:(id *)arg1;

@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPerformActionViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSelectActionViewDelegate-Protocol.h>
 
-@class NSArray, NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKPerformActionPassView, PKSelectActionView;
+@class NSArray, NSDictionary, NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKPerformActionPassView, PKSelectActionView;
 @protocol PKPaymentDataProvider, PKSelectActionViewControllerDelegate;
 
 @interface PKSelectActionViewController : UIViewController <PKSelectActionViewDelegate, PKPerformActionViewControllerDelegate>
@@ -22,6 +22,7 @@
     PKPaymentPassAction *_selectedAction;
     id<PKPaymentDataProvider> _paymentDataProvider;
     PKPaymentWebService *_webService;
+    NSDictionary *_balances;
     id<PKSelectActionViewControllerDelegate> _delegate;
 }
 
@@ -35,7 +36,7 @@
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_reloadActionView;
 - (void)_rightBarButtonPressed:(id)arg1;
-- (id)initWithPass:(id)arg1 actions:(id)arg2 actionType:(unsigned long long)arg3 paymentDataProvider:(id)arg4 webService:(id)arg5;
+- (id)initWithPass:(id)arg1 actions:(id)arg2 actionType:(unsigned long long)arg3 paymentDataProvider:(id)arg4 webService:(id)arg5 balanceDictionary:(id)arg6;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;

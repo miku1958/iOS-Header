@@ -20,6 +20,7 @@
 - (void)currentMaterializedSetSyncAnchorForDomain:(NSFileProviderDomain *)arg1 completionHandler:(void (^)(NSData *))arg2;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)documentURLFromBookmarkableString:(NSString *)arg1 creatingPlaceholderIfMissing:(BOOL)arg2 ignoreAlternateContentsURL:(BOOL)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg4;
+- (void)documentURLFromItemID:(FPItemID *)arg1 creatingPlaceholderIfMissing:(BOOL)arg2 ignoreAlternateContentsURL:(BOOL)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)dumpStateTo:(NSFileHandle *)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)enumerateMaterializedSetForDomain:(NSFileProviderDomain *)arg1 inProvider:(NSString *)arg2 syncAnchor:(NSData *)arg3 completionHandler:(void (^)(NSArray *, NSArray *, BOOL, NSData *, NSError *))arg4;
 - (NSProgress *)evictItemAtURL:(NSURL *)arg1 evenIfEnumeratingFP:(BOOL)arg2 andClearACLForConsumer:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
@@ -62,6 +63,7 @@
 - (void)startAccessingOperationServiceForProviderDomainID:(NSString *)arg1 handler:(void (^)(id<FPXOperationService>, NSXPCListenerEndpoint *, id<FPDLifetimeServicing>, NSString *, NSError *))arg2;
 - (void)startAccessingServiceForItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSXPCListenerEndpoint *, id<FPDLifetimeServicing>, NSString *, NSArray *, NSError *))arg2;
 - (void)startAccessingServiceForItemURL:(NSURL *)arg1 completionHandler:(void (^)(NSXPCListenerEndpoint *, id<FPDLifetimeServicing>, NSString *, NSArray *, NSError *))arg2;
+- (void)startDownloadingItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)startOperation:(id<FPOperationClient>)arg1 toFetchIconsForAppBundleIDs:(NSArray *)arg2 requestedSize:(struct CGSize)arg3 scale:(double)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)startProvidingItemAtURL:(NSURL *)arg1 fromProviderID:(NSString *)arg2 forConsumerID:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)trashItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;

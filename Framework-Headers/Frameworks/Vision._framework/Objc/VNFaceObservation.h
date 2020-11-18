@@ -6,7 +6,7 @@
 
 #import <Vision/VNDetectedObjectObservation.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceRegionMap, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
+@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceLegacyFaceCore, VNFaceRegionMap, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
 
 @interface VNFaceObservation : VNDetectedObjectObservation
 {
@@ -48,6 +48,7 @@
     unsigned long long _landmarksRequestRevision;
     unsigned long long _landmarks3DRequestRevision;
     VNFaceLandmarks2D *_landmarks;
+    VNFaceLegacyFaceCore *_legacyFaceCore;
 }
 
 @property (nonatomic) struct _Geometry2D_rect2D_ alignedBoundingBox; // @synthesize alignedBoundingBox=_alignedBoundingBox;
@@ -77,6 +78,7 @@
 @property (readonly, nonatomic) VNFaceLandmarks2D *landmarks65;
 @property (nonatomic) unsigned long long landmarksConstellation; // @synthesize landmarksConstellation=_landmarksConstellation;
 @property (nonatomic) unsigned long long landmarksRequestRevision; // @synthesize landmarksRequestRevision=_landmarksRequestRevision;
+@property (readonly, nonatomic) VNFaceLegacyFaceCore *legacyFaceCore; // @synthesize legacyFaceCore=_legacyFaceCore;
 @property (readonly, nonatomic) float nameConfidence;
 @property (readonly, nonatomic) CDStruct_f1db2b5e pose;
 @property (strong, nonatomic) NSData *poseData; // @synthesize poseData=_poseData;
@@ -124,6 +126,7 @@
 - (void)setFaceSegments:(id)arg1;
 - (void)setIsBlinking:(BOOL)arg1;
 - (void)setLandmarkScore:(float)arg1;
+- (void)setLegacyFaceCore:(id)arg1;
 - (void)setUnalignedBoundingBox:(struct CGRect)arg1;
 
 @end

@@ -6,31 +6,30 @@
 
 #import <SpringBoard/SBSwitcherModifier.h>
 
-@class SBAppLayout;
-@protocol SBFluidSwitcherScrollProviding;
+@class NSSet, SBAppLayout;
 
 @interface SBRemovalSwitcherModifier : SBSwitcherModifier
 {
     SBAppLayout *_appLayout;
     long long _reason;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
     BOOL _simulatingPostRemovalState;
     unsigned long long _indexToScrollToAfterRemoval;
     unsigned long long _indexOfAppLayoutPriorToRemoval;
+    NSSet *_visibleAppLayoutsPriorToRemoval;
     unsigned long long _phase;
 }
 
 - (void).cxx_destruct;
 - (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
-- (id)appLayouts;
-- (id)appLayoutsForInsertionOrRemoval;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
+- (id)handleInsertionEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
-- (id)initWithAppLayout:(id)arg1 reason:(long long)arg2 multitaskingModifier:(id)arg3;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
+- (id)initWithAppLayout:(id)arg1 reason:(long long)arg2;
 - (struct CGPoint)scrollViewContentOffset;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
+- (id)visibleAppLayouts;
 
 @end
 

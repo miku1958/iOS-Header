@@ -8,5 +8,6 @@
 
 @interface NSString (EARStringView)
 + (id)ear_stringWithStringView:(basic_string_view_b5ef0455)arg1;
+- (basic_string_23d93216)ear_toString;
 @end
 

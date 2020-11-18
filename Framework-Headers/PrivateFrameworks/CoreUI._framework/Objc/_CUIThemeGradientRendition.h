@@ -15,14 +15,12 @@ __attribute__((visibility("hidden")))
     double gradientAngle;
 }
 
-+ (id)_nodesFromNodeList:(struct _csigradientdatanode *)arg1 count:(unsigned long long)arg2 header:(const struct _csiheader *)arg3;
-+ (struct __CUIThemeGradientRenditionInitializerStruct)_parseGradientInfoFromCSIHeader:(const struct _csiheader *)arg1;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)dealloc;
 - (id)gradient;
 - (double)gradientDrawingAngle;
 - (unsigned int)gradientStyle;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end
 

@@ -8,36 +8,28 @@
 
 @interface UIView (GKAdditionsAdditional)
 
+@property (nonatomic, readonly) double firstBaselineFromTop;
 @property (nonatomic) struct CGPoint integralCenter;
+@property (nonatomic, readonly) double lastBaselineFromBottom;
+@property (nonatomic, readonly) double lastBaselineMaxY;
 
 + (id)_gkStandardBackdropView;
 + (id)_gkViewFromNib;
-- (void)_gkAddPositionConstraints:(struct CGPoint)arg1 forBubble:(id)arg2;
-- (void)_gkAddStandardFadeTransition;
 - (id)_gkAncestryAffectingVisualLayout;
 - (id)_gkAncestryDescription;
 - (void)_gkApplyBackdropViewIfNeededWithGroupName:(id)arg1;
 - (void)_gkApplyBackdropViewWithGroupName:(id)arg1;
 - (id)_gkApplyFakeStatusBarView;
-- (void)_gkApplyPerspectiveTransform;
 - (id)_gkBackdropView;
-- (void)_gkClearPerspectiveTransform;
-- (void)_gkEnumerateSubviewsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)_gkPerformWithoutAnimationWhenRotating:(CDUnknownBlockType)arg1;
-- (double)_gkPerspectiveTransformEZ;
-- (struct CGRect)_gkPopoverPresentationArea;
-- (struct UIEdgeInsets)_gkPopoverPresentationInsets;
-- (struct CGRect)_gkPopoverPresentationRect;
 - (id)_gkRecursiveDescriptionForKey:(id)arg1;
 - (id)_gkRecursiveDescriptionForKey:(id)arg1 depth:(long long)arg2;
 - (id)_gkRecursiveDescriptionForValue:(id)arg1 forKey:(id)arg2;
 - (id)_gkRecursiveDescriptionForValue:(id)arg1 forKey:(id)arg2 depth:(long long)arg3;
 - (void)_gkRecursivelyApplyBlock:(CDUnknownBlockType)arg1 depth:(long long)arg2;
-- (void)_gkRemovePositionConstraintsForBubble:(id)arg1;
+- (void)_gkRemoveAllConstraints;
 - (void)_gkSetDrawsAsBackdropOverlay:(BOOL)arg1;
 - (void)_gkSetDrawsAsKnockout:(BOOL)arg1 inBackdrop:(id)arg2;
 - (void)_gkSetNeedsRender;
-- (BOOL)_gkSuperviewHasPerspectiveTransform;
 - (void)_gkUseAsModalSheetBackgroundWithGroupName:(id)arg1;
 @end
 

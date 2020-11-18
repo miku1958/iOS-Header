@@ -8,7 +8,7 @@
 
 #import <Home/NAIdentifiable-Protocol.h>
 
-@class MTAlarm, NSString;
+@class HMMediaProfile, MTAlarm, NSString;
 @protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmItem : HFItem <NAIdentifiable>
@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMMediaProfile *mediaProfile;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly) Class superclass;
 

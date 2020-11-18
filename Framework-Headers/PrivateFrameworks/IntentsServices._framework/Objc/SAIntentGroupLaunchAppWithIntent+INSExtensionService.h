@@ -14,5 +14,7 @@
 - (void)ins_launchAppWithConnection:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)ins_protobufEncodedIntent;
 - (id)ins_protobufEncodedIntentResponse;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 @end
 

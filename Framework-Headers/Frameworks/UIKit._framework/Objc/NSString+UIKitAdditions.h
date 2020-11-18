@@ -19,7 +19,6 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
-- (id)_adjustedFontFromFont:(id)arg1 withinFrame:(struct CGRect)arg2 minimumSize:(double)arg3 textSize:(struct CGSize *)arg4;
 - (struct CGSize)_drawInRect:(struct CGRect)arg1 withFont:(id)arg2 lineBreakMode:(long long)arg3 alignment:(long long)arg4 lineSpacing:(int)arg5 includeEmoji:(BOOL)arg6 truncationRect:(struct CGRect *)arg7;
 - (id)_initWithUTF8String:(const char *)arg1 maxLength:(unsigned long long)arg2;
 - (struct CGSize)_legacy_drawAtPoint:(struct CGPoint)arg1 forWidth:(double)arg2 withFont:(id)arg3 fontSize:(double)arg4 lineBreakMode:(long long)arg5 baselineAdjustment:(long long)arg6;
@@ -44,7 +43,7 @@
 - (struct CGSize)_legacy_sizeWithFont:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4;
 - (struct CGSize)_legacy_sizeWithFont:(id)arg1 minFontSize:(double)arg2 actualFontSize:(double *)arg3 forWidth:(double)arg4 lineBreakMode:(long long)arg5;
 - (struct CGSize)_optimizedSizeWithFont:(id)arg1;
-- (id)_ui_secureString;
+- (id)_uikit_stringByRemovingFirstMatchFromPrefixes:(id)arg1;
 - (id)_uikit_stringByTrimmingWhitespaceAndNewlines;
 - (id)_uikit_stringWithWritingDirection:(long long)arg1 asOverride:(BOOL)arg2;
 - (id)_uikit_unescapedQueryValue;

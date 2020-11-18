@@ -10,11 +10,13 @@
 {
 }
 
-- (id)allIndexableObjectIDsInReversedReindexingOrder;
+- (id)addNotesFromSubtree:(id)arg1;
+- (id)allIndexableObjectIDsInReversedReindexingOrderWithContext:(id)arg1;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
-- (id)indexableObjectIDsMatchingPredicate:(id)arg1 sortByReversedReindexingOrder:(BOOL)arg2;
+- (id)indexableObjectIDsMatchingPredicate:(id)arg1 sortByReversedReindexingOrder:(BOOL)arg2 context:(id)arg3;
 - (unsigned long long)indexingPriority;
+- (BOOL)isFolderWithServerShareChanged:(id)arg1;
 - (id)newManagedObjectContext;
 - (id)persistentStoreCoordinator;
 

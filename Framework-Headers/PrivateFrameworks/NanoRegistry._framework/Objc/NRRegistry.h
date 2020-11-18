@@ -31,7 +31,6 @@
 @property (strong, nonatomic) NRSecureDevicePropertyStore *secureProperties; // @synthesize secureProperties=_secureProperties;
 
 + (id)_nextToken;
-+ (BOOL)_supportsWatch;
 + (void)fixSecurePropertiesWithCollection:(id)arg1 secureProperties:(id)arg2 insecurePropertyNames:(id)arg3;
 + (id)getReferencedSecureProperties:(id)arg1 fromDiff:(id)arg2;
 + (id)getReferencedSecurePropertyIDsFromDiff:(id)arg1;

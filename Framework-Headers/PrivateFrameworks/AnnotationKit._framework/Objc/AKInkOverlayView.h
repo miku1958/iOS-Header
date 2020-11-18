@@ -49,6 +49,7 @@
 - (void)_canvasView:(id)arg1 endedStroke:(id)arg2;
 - (BOOL)_canvasView:(id)arg1 shouldBeginDrawingWithTouch:(id)arg2;
 - (void)_updateCanvasViewInk;
+- (void)_updatedSelectedStrokesWithColor:(id)arg1;
 - (void)awakeFromNib;
 - (BOOL)canvasNeedsUpdate;
 - (void)canvasViewDidBeginDrawing:(id)arg1;

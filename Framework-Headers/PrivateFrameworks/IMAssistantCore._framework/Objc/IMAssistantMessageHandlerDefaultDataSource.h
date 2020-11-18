@@ -9,7 +9,7 @@
 #import <IMAssistantCore/IMAssistantMessageHandlerDataSource-Protocol.h>
 
 @class CNContactStore, NSCache, NSString;
-@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMLocationManager;
+@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMAssistantFileManager, IMFileTransferCenter, IMLocationManager;
 
 @interface IMAssistantMessageHandlerDefaultDataSource : NSObject <IMAssistantMessageHandlerDataSource>
 {
@@ -26,6 +26,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRegisterForContactStoreChangeNotifications; // @synthesize didRegisterForContactStoreChangeNotifications=_didRegisterForContactStoreChangeNotifications;
+@property (readonly, nonatomic) id<IMAssistantFileManager> fileManagerDataSource;
+@property (readonly, nonatomic) id<IMFileTransferCenter> fileTransferCenterDataSource;
 @property (readonly, nonatomic) NSCache *handleToContactIdentifierCache;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isInternationalSpamFilteringEnabled;
@@ -36,8 +38,8 @@
 - (void).cxx_destruct;
 - (void)contactStoreDidChange:(id)arg1;
 - (void)registerForContactStoreChangeNotificationsIfNecessary;
-- (BOOL)screentimeAllowedToShowChat:(id)arg1;
-- (BOOL)screentimeAllowedToShowConversationWithHandleIDs:(id)arg1;
+- (BOOL)screentimeAllowedToShowChat:(id)arg1 error:(id *)arg2;
+- (BOOL)screentimeAllowedToShowConversationWithHandleIDs:(id)arg1 error:(id *)arg2;
 
 @end
 

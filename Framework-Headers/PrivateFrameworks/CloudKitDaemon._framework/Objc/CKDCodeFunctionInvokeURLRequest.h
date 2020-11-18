@@ -28,9 +28,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
+- (long long)databaseScope;
 - (id)generateRequestOperations;
-- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 attestationEntropy:(id)arg4 pccWrappedInvocationKeys:(id)arg5;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 attestationEntropy:(id)arg5 pccWrappedInvocationKeys:(id)arg6;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (BOOL)requestGETPreAuth;

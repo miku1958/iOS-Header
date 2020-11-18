@@ -9,6 +9,7 @@
 @class NSArray;
 @protocol NSCopying;
 
+__attribute__((visibility("hidden")))
 @interface MPTiledArtworkRepresentationToken : NSObject
 {
     id<NSCopying> _revisionIdentifier;

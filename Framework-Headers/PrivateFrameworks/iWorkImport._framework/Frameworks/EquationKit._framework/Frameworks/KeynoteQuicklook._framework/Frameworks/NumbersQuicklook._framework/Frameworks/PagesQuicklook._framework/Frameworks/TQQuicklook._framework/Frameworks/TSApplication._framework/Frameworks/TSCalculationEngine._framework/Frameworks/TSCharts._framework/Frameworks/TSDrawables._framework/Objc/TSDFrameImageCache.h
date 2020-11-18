@@ -18,6 +18,7 @@
 - (id)init;
 - (struct CGImage *)newCachedImageForFrame:(id)arg1 size:(struct CGSize)arg2 viewScale:(double)arg3 forCALayer:(BOOL)arg4 mask:(BOOL)arg5;
 - (void)p_didReceiveMemoryWarning:(id)arg1;
+- (void)p_flush;
 - (id)p_newEntryForFrame:(id)arg1 size:(struct CGSize)arg2 viewScale:(double)arg3 createIfNeeded:(BOOL)arg4;
 - (struct CGImage *)setCachedImage:(struct CGImage *)arg1 forFrame:(id)arg2 size:(struct CGSize)arg3 viewScale:(double)arg4 forCALayer:(BOOL)arg5 mask:(BOOL)arg6;
 

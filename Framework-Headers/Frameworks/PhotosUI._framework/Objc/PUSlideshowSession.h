@@ -10,7 +10,7 @@
 #import <PhotosUI/PUSlideshowViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, OKMediaFeederPhotoKit, OKPresentationViewController, OKProducerPreset, PHAssetCollection, PHFetchResult, PUSlideshowContextRegistry, PUSlideshowSettingsViewModel, PUSlideshowViewModel;
+@class NSString, NSUUID, OKMediaFeederPhotoKit, OKPresentationViewController, OKProducerPreset, PHAssetCollection, PHFetchResult, PUSlideshowContextRegistry, PUSlideshowSettingsViewModel, PUSlideshowViewModel;
 
 __attribute__((visibility("hidden")))
 @interface PUSlideshowSession : NSObject <PUSlideshowViewModelChangeObserver, PUSlideshowSettingsViewModelChangeObserver, PXSettingsKeyObserver>
@@ -19,34 +19,43 @@ __attribute__((visibility("hidden")))
     PUSlideshowContextRegistry *_contextRegistry;
     OKProducerPreset *_currentPreset;
     BOOL __disablingIdleTimer;
+    BOOL _didStartOnce;
     PHFetchResult *_fetchResult;
     PHAssetCollection *_assetCollection;
     PUSlideshowViewModel *_viewModel;
     PUSlideshowSettingsViewModel *_settingsViewModel;
     OKPresentationViewController *_presentationViewController;
     id __disablingIdleTimerToken;
+    NSUUID *_uuid;
+    long long _currentState;
 }
 
 @property (nonatomic, setter=_setDisablingIdleTimer:) BOOL _disablingIdleTimer; // @synthesize _disablingIdleTimer=__disablingIdleTimer;
 @property (strong, nonatomic, setter=_setDisablingIdleTimerToken:) id _disablingIdleTimerToken; // @synthesize _disablingIdleTimerToken=__disablingIdleTimerToken;
 @property (readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
+@property (nonatomic) long long currentState; // @synthesize currentState=_currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didStartOnce; // @synthesize didStartOnce=_didStartOnce;
 @property (readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) OKPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property (readonly, nonatomic) PUSlideshowSettingsViewModel *settingsViewModel; // @synthesize settingsViewModel=_settingsViewModel;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) PUSlideshowViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
+- (void)_addCurrentSettingsToPayload:(id)arg1;
 - (void)_beginDisablingIdleTimer;
 - (void)_configurePresentationViewController:(id)arg1;
 - (void)_distributeSlideshowDisplayContextWithPresentationController:(id)arg1;
 - (void)_endDisablingIdleTimerIfNecessary;
+- (void)_invalidateCurrentState;
 - (id)_resolutionSizes;
 - (void)_slideshowSettingsViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_slideshowViewModel:(id)arg1 didChange:(id)arg2;
+- (void)_updateCurrentState;
 - (void)dealloc;
 - (id)init;
 - (id)initWithFetchResult:(id)arg1 assetCollection:(id)arg2;

@@ -7,11 +7,12 @@
 #import <MetalTools/MTLToolsObject.h>
 
 #import <MetalTools/MTLCommandBufferSPI-Protocol.h>
+#import <MetalTools/MTLToolsRetainingContainer-Protocol.h>
 
-@class MTLToolsPointerArray, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSString;
-@protocol MTLCommandQueue, MTLDevice;
+@class NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSString;
+@protocol MTLCommandQueue, MTLDevice, MTLLogContainer;
 
-@interface MTLToolsCommandBuffer : MTLToolsObject <MTLCommandBufferSPI>
+@interface MTLToolsCommandBuffer : MTLToolsObject <MTLCommandBufferSPI, MTLToolsRetainingContainer>
 {
     struct {
         unsigned int hasCommit:1;
@@ -19,56 +20,58 @@
         unsigned int addedScheduledHandler:1;
         unsigned int padding:29;
     } _flags;
+    struct os_unfair_lock_s _retainedObjectsLock;
+    struct os_unfair_lock_s _handlerLock;
+    struct vector<void (^)(id<MTLCommandBuffer>), std::__1::allocator<void (^)(id<MTLCommandBuffer>)>> _scheduledHandlers;
+    struct vector<void (^)(id<MTLCommandBuffer>), std::__1::allocator<void (^)(id<MTLCommandBuffer>)>> _completedHandlers;
+    BOOL _didInvokeHandlers;
+    CDUnknownBlockType _perfSampleHandlerBlock;
+    BOOL _StatEnabled;
+    BOOL _useRetainedObjectsLock;
     NSMutableSet *_retainedObjects;
-    MTLToolsPointerArray *_renderCommandEncoders;
-    MTLToolsPointerArray *_computeCommandEncoders;
-    MTLToolsPointerArray *_blitCommandEncoders;
-    MTLToolsPointerArray *_parallelRenderCommandEncoders;
-    MTLToolsPointerArray *_fragmentRenderCommandEncoders;
-    MTLToolsPointerArray *_resourceStateCommandEncoders;
-    struct ILayerLockingPolicy *_retainedObjectsLock;
 }
 
 @property (readonly) double GPUEndTime;
 @property (readonly) double GPUStartTime;
-@property (readonly, nonatomic) MTLToolsPointerArray *blitCommandEncoders; // @synthesize blitCommandEncoders=_blitCommandEncoders;
 @property (readonly) id<MTLCommandQueue> commandQueue;
-@property (readonly, nonatomic) MTLToolsPointerArray *computeCommandEncoders; // @synthesize computeCommandEncoders=_computeCommandEncoders;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
 @property (readonly) NSError *error;
-@property (readonly, nonatomic) MTLToolsPointerArray *fragmentRenderCommandEncoders; // @synthesize fragmentRenderCommandEncoders=_fragmentRenderCommandEncoders;
+@property (readonly) unsigned long long errorOptions;
 @property (readonly) unsigned long long globalTraceObjectID;
 @property (readonly) unsigned long long hash;
 @property (readonly) double kernelEndTime;
 @property (readonly) double kernelStartTime;
 @property (copy) NSString *label;
-@property (nonatomic, getter=getListIndex) unsigned long long listIndex;
-@property (readonly, nonatomic) MTLToolsPointerArray *parallelRenderCommandEncoders; // @synthesize parallelRenderCommandEncoders=_parallelRenderCommandEncoders;
+@property (readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property (readonly) id<MTLLogContainer> logs;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
 @property (readonly) NSDictionary *profilingResults;
-@property (readonly, nonatomic) MTLToolsPointerArray *renderCommandEncoders; // @synthesize renderCommandEncoders=_renderCommandEncoders;
-@property (readonly, nonatomic) MTLToolsPointerArray *resourceStateCommandEncoders; // @synthesize resourceStateCommandEncoders=_resourceStateCommandEncoders;
 @property (readonly, nonatomic) NSMutableSet *retainedObjects; // @synthesize retainedObjects=_retainedObjects;
-@property (nonatomic) struct ILayerLockingPolicy *retainedObjectsLock; // @synthesize retainedObjectsLock=_retainedObjectsLock;
 @property (readonly) BOOL retainedReferences;
 @property (readonly) unsigned long long status;
 @property (readonly) Class superclass;
+@property BOOL useRetainedObjectsLock; // @synthesize useRetainedObjectsLock=_useRetainedObjectsLock;
 @property (readonly, nonatomic) NSMutableDictionary *userDictionary;
 
-- (void)acceptVisitor:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)accelerationStructureCommandEncoder;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)addPurgedHeap:(id)arg1;
 - (void)addPurgedResource:(id)arg1;
-- (void)addRetainedObject:(id)arg1;
+- (BOOL)addRetainedObject:(id)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
 - (void)addSynchronizationNotification:(CDUnknownBlockType)arg1;
 - (id)blitCommandEncoder;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (void)clearRetainedObjects;
 - (void)commit;
+- (void)commitAndHold;
 - (BOOL)commitAndWaitUntilSubmitted;
 - (id)computeCommandEncoder;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
@@ -82,8 +85,9 @@
 - (void)enqueue;
 - (void)executeSynchronizationNotifications:(int)arg1;
 - (void)executeSynchronizationNotifications:(int)arg1 scope:(unsigned long long)arg2 resources:(const id *)arg3 count:(unsigned long long)arg4;
-- (id)fragmentRenderCommandEncoderWithDescriptor:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
+- (void)invokeCompletedHandlers;
+- (void)invokeScheduledHandlers;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
 - (void)popDebugGroup;
 - (void)postCompletionHandlers;
@@ -92,19 +96,22 @@
 - (void)preCompletionHandlers;
 - (void)preScheduledHandlers;
 - (void)presentDrawable:(id)arg1;
-- (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (unsigned long long)protectionOptions;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (id)resourceStateCommandEncoder;
-- (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
-- (id)sampledFragmentRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
+- (id)sampledComputeCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
+- (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
 - (void)setProtectionOptions:(unsigned long long)arg1;
 - (void)setResourceGroups:(const id *)arg1 count:(unsigned long long)arg2;
+- (id)unwrapMTLBlitPassDescriptor:(id)arg1;
+- (id)unwrapMTLComputePassDescriptor:(id)arg1;
 - (id)unwrapMTLRenderPassDescriptor:(id)arg1;
+- (id)unwrapMTLResourceStatePassDescriptor:(id)arg1;
 - (void)waitUntilCompleted;
 - (void)waitUntilScheduled;
 - (void)willEncodeSignalEvent:(id)arg1 value:(unsigned long long)arg2 writeableResources:(id)arg3;

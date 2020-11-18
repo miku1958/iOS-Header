@@ -11,6 +11,7 @@
 }
 
 - (BOOL)shouldBeSuggestedAfterAction:(id)arg1 inWorkflow:(id)arg2;
+- (BOOL)shouldCreateIntentAvailableResource;
 
 @end
 

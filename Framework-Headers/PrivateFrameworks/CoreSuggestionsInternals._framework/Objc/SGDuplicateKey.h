@@ -23,8 +23,8 @@
 @property (readonly, nonatomic) long long entityType; // @synthesize entityType=_entityType;
 @property (readonly, nonatomic) SGDuplicateKey *parentKey; // @synthesize parentKey=_parentKey;
 
-+ (id)duplicateKeyForCuratedContactWithExternalId:(int)arg1;
 + (id)duplicateKeyForCuratedEventWithExternalID:(id)arg1;
++ (id)duplicateKeyForDeliveryWithProviderString:(id)arg1 trackingNumber:(id)arg2 parentKey:(id)arg3;
 + (id)duplicateKeyForEmailWithSource:(id)arg1 messageId:(id)arg2;
 + (id)duplicateKeyForInteraction:(id)arg1 fromBundleIdentifier:(id)arg2;
 + (id)duplicateKeyForInteractionIdentifier:(id)arg1 fromBundleIdentifier:(id)arg2;
@@ -33,18 +33,17 @@
 + (id)duplicateKeyForNaturalLanguageEventWithStartDate:(id)arg1 endDate:(id)arg2 title:(id)arg3 participants:(id)arg4 parentKey:(id)arg5;
 + (id)duplicateKeyForPseudoContactWithIdentity:(id)arg1 parentKey:(id)arg2;
 + (id)duplicateKeyForPseudoEventWithGroupId:(id)arg1 parentKey:(id)arg2;
-+ (id)duplicateKeyForPseudoReminderWithGroupId:(id)arg1 parentKey:(id)arg2;
++ (id)duplicateKeyForPseudoReminderWithGroupId:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 parentKey:(id)arg3;
 + (id)duplicateKeyForSchemaOrg;
 + (id)duplicateKeyForSearchableItem:(id)arg1;
 + (id)duplicateKeyForTextMessageWithSource:(id)arg1 uniqueIdentifier:(id)arg2;
-+ (id)duplicateKeyForUnrecognizedContactWithIdentity:(id)arg1;
 + (id)duplicateKeyForWebPageFromSource:(id)arg1;
 - (void).cxx_destruct;
 - (id)bundleId;
 - (id)contactDetailKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)curatedContactKey;
 - (id)curatedEventKey;
+- (id)deliveryKey;
 - (id)description;
 - (id)emailKey;
 - (unsigned long long)hash;
@@ -62,7 +61,6 @@
 - (id)pseudoReminderKey;
 - (id)serialize;
 - (id)textMessageKey;
-- (id)unrecognizedContactKey;
 - (id)webPageKey;
 
 @end

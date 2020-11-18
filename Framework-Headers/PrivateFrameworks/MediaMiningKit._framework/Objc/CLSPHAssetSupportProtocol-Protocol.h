@@ -6,40 +6,38 @@
 
 #import <MediaMiningKit/CLSInvestigationItem-Protocol.h>
 
-@class CLSAssetFaceInformationSummary, NSData, NSSet;
+@class CLSAssetFaceInformationSummary, NSSet, PHAssetAestheticProperties, PHAssetCurationProperties, PHAssetMediaAnalysisProperties;
+@protocol CLSAssetProcessedSignals;
 
 @protocol CLSPHAssetSupportProtocol <CLSInvestigationItem>
 
 @property (readonly, nonatomic) CLSAssetFaceInformationSummary *clsFaceInformationSummary;
-@property (readonly, nonatomic) unsigned long long clsPeopleCount;
+@property (readonly, nonatomic) id<CLSAssetProcessedSignals> clsProcessedSignals;
 
+- (PHAssetAestheticProperties *)aestheticProperties;
 - (double)clsActivityScore;
-- (double)clsAestheticScore;
-- (NSData *)clsDistanceIdentity;
-- (double)clsExposureScore;
 - (short)clsInterestingAudioClassifications;
-- (BOOL)clsIsTragicallyBad;
-- (long long)clsPlayCount;
+- (BOOL)clsIsTragicFailure;
 - (NSSet *)clsSceneClassifications;
-- (long long)clsShareCount;
-- (double)clsSharpnessScore;
 - (unsigned long long)clsVideoFaceCount;
 - (double)clsVideoScore;
-- (long long)clsViewCount;
+- (PHAssetCurationProperties *)curationProperties;
 - (double)duration;
-- (unsigned long long)facesCount;
 - (BOOL)hasAdjustments;
-- (long long)highestSupportedScoringVersion;
+- (BOOL)isAnimatedGIF;
 - (BOOL)isAudio;
-- (BOOL)isBlurry;
-- (BOOL)isFavorite;
 - (BOOL)isHidden;
 - (BOOL)isIncludedInCloudFeeds;
+- (BOOL)isPDF;
+- (BOOL)isPNG;
+- (BOOL)isPSD;
 - (BOOL)isPhoto;
 - (BOOL)isSubtype:(unsigned long long)arg1;
 - (BOOL)isTrashed;
-- (BOOL)isUtility;
-- (BOOL)isVideo;
+- (PHAssetMediaAnalysisProperties *)mediaAnalysisProperties;
+- (unsigned long long)pixelHeight;
+- (unsigned long long)pixelWidth;
+- (unsigned long long)reframeVariation;
 - (BOOL)representsBurst;
 @end
 

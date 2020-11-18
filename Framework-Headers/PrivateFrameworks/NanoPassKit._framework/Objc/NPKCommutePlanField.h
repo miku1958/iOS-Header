@@ -8,7 +8,7 @@
 
 #import <NanoPassKit/NPKCommutePlanField-Protocol.h>
 
-@class NSString, PKPaymentPassAction;
+@class NSArray, NSString, PKPaymentPassAction;
 @protocol NPKDateRange;
 
 @interface NPKCommutePlanField : NSObject <NPKCommutePlanField>
@@ -17,6 +17,7 @@
     NSString *_detailLabel;
     NSString *_formattedValue;
     NSString *_identifier;
+    NSArray *_details;
     PKPaymentPassAction *_action;
     id<NPKDateRange> _usageDateRange;
 }
@@ -24,7 +25,8 @@
 @property (readonly, nonatomic) PKPaymentPassAction *action; // @synthesize action=_action;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *detailLabel;
+@property (readonly, nonatomic) NSString *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (readonly, nonatomic) NSArray *details; // @synthesize details=_details;
 @property (readonly, nonatomic) NSString *formattedValue; // @synthesize formattedValue=_formattedValue;
 @property (readonly, nonatomic) BOOL hasPendingUpdate;
 @property (readonly) unsigned long long hash;
@@ -35,7 +37,7 @@
 @property (readonly, nonatomic) id<NPKDateRange> usageDateRange; // @synthesize usageDateRange=_usageDateRange;
 
 - (void).cxx_destruct;
-- (id)initWithLabel:(id)arg1 detailLabel:(id)arg2 formattedValue:(id)arg3 usageDateRange:(id)arg4 identifier:(id)arg5 action:(id)arg6;
+- (id)initWithLabel:(id)arg1 detailLabel:(id)arg2 formattedValue:(id)arg3 usageDateRange:(id)arg4 identifier:(id)arg5 details:(id)arg6 action:(id)arg7;
 
 @end
 

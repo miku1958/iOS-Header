@@ -7,6 +7,9 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (DOCFavoritesManager)
-- (id)computeNewRankForIndex:(long long)arg1;
+- (id)_doc_ranksForInsertingBelowRank:(id)arg1 spacing:(unsigned long long)arg2 count:(unsigned long long)arg3;
+- (id)doc_computeNewRankForIndex:(long long)arg1;
+- (id)doc_ranksForInsertingBelowRank:(id)arg1 count:(unsigned long long)arg2;
+- (id)doc_ranksForInsertingBetweenHigherRank:(id)arg1 lowerRank:(id)arg2 count:(unsigned long long)arg3;
 @end
 

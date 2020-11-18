@@ -13,11 +13,10 @@
 {
     ACAccount *_account;
     id<AMSBagProtocol> _bag;
-    NSError *_error;
     AMSProcessInfo *_clientInfo;
     NSString *_proxyBundleId;
-    AMSDialogRequest *_request;
     AMSDialogResult *_result;
+    NSError *_error;
 }
 
 @property (copy, nonatomic) ACAccount *account; // @synthesize account=_account;
@@ -25,12 +24,13 @@
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (copy, nonatomic) NSString *proxyBundleId; // @synthesize proxyBundleId=_proxyBundleId;
-@property (readonly, nonatomic) AMSDialogRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) AMSDialogRequest *request;
 @property (readonly, nonatomic) AMSDialogResult *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
 - (id)_handleAskPermissionRequestWithURL:(id)arg1 account:(id)arg2;
 - (id)initWithRequest:(id)arg1 result:(id)arg2 error:(id)arg3 bag:(id)arg4;
+- (id)initWithResult:(id)arg1 bag:(id)arg2;
 - (id)perform;
 
 @end

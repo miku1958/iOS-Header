@@ -23,8 +23,8 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -34,42 +34,14 @@ typedef struct {
 } CDStruct_14d5dc5e;
 
 typedef struct {
-    float a;
-    float b;
-    float c;
-    float d;
-    float e;
-    float f;
-    float g;
-    float h;
-} CDStruct_515bcf56;
+    float textureRect__opacity;
+} CDStruct_8ce0c528;
 
 typedef struct {
     CDStruct_14d5dc5e transformMatrix[2];
 } CDStruct_ee1f7a4d;
 
 typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    float _field9;
-    CDStruct_14d5dc5e _field10[2];
-} CDStruct_8c10a992;
-
-typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    CDStruct_14d5dc5e _field9;
-} CDStruct_58e0f28b;
+    CDStruct_14d5dc5e transformMatrix;
+} CDStruct_d98db243;
 

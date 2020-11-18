@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableArray;
+@class NSMapTable, NSMutableArray, VMUTaskThreadStates;
 
 @interface VMUVMRegionIdentifier : NSObject
 {
     unsigned int _task;
     int _pid;
+    VMUTaskThreadStates *_threadStates;
     NSMutableArray *_regions;
     NSMapTable *_mallocZoneStatisticsMap;
     BOOL _hasFractionalPageSizes;
@@ -35,6 +36,7 @@
 - (id)initWithTask:(unsigned int)arg1 pid:(int)arg2 options:(unsigned long long)arg3;
 - (id)nonSubmapRegionContainingAddress:(unsigned long long)arg1;
 - (id)regions;
+- (id)taskThreadStates;
 
 @end
 

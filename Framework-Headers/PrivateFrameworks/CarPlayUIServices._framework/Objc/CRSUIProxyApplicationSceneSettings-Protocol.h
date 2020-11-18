@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlayUIServices/NSObject-Protocol.h>
+#import <CarPlayUIServices/CRSUIMapStyleProviding-Protocol.h>
 
 @class NSString;
 
-@protocol CRSUIProxyApplicationSceneSettings <NSObject>
+@protocol CRSUIProxyApplicationSceneSettings <CRSUIMapStyleProviding>
 
 @property (readonly, copy, nonatomic) NSString *proxiedApplicationBundleIdentifier;
 @property (readonly, nonatomic) BOOL proxiedApplicationLinkedOnOrAfterYukon;

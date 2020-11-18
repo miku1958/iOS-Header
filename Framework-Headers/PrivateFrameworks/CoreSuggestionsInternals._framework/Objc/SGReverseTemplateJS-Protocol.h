@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary;
+@class NSArray, NSDictionary, NSString;
 
 @protocol SGReverseTemplateJS
+- (void)diffSchemas:(NSArray *)arg1 withExpectedSchemas:(NSArray *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)emailToJsonLd:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;
-- (void)emailToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSArray *, NSDictionary *))arg2;
-- (void)schemaOrgToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSArray *, NSDictionary *))arg2;
+- (void)emailToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSDictionary *, NSArray *, NSDictionary *))arg2;
+- (void)eventClassificationForEntity:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;
+- (void)parseHTML:(NSString *)arg1 reply:(void (^)(SGDOMParserResult *))arg2;
+- (void)resolveCandidatesForJSDict:(NSDictionary *)arg1 reply:(void (^)(NSString *))arg2;
+- (void)schemaOrgToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSDictionary *, NSArray *, NSDictionary *))arg2;
 - (void)shouldDownloadFull:(NSDictionary *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)textMessageToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSArray *, NSDictionary *))arg2;
+- (void)textMessageToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSDictionary *, NSArray *, NSDictionary *))arg2;
 @end
 

@@ -15,23 +15,24 @@
 #import <HomeKitDaemon/IDSAccountRegistrationDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class ACAccountStore, APSConnection, HMDAccount, HMDAppleAccountContext, HMDAppleAccountSettings, HMDBackingStore, HMDCloudCache, HMDDevice, HMFExponentialBackoffTimer, HMFTimer, HMFUnfairLock, IDSService, NSObject, NSString, NSUUID;
+@class ACAccountStore, APSConnection, HMDAccount, HMDAppleAccountContext, HMDAppleAccountSettings, HMDBackingStore, HMDCloudCache, HMDDevice, HMDIDSActivityMonitorBroadcaster, HMFExponentialBackoffTimer, HMFTimer, HMFUnfairLock, IDSService, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAppleAccountManager : HMFObject <APSConnectionDelegate, HMDAccountManager, HMFLogging, HMFMessageReceiver, HMFTimerDelegate, IDSAccountDelegate, IDSAccountRegistrationDelegate, IDSServiceDelegate>
 {
     HMFUnfairLock *_lock;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _monitoring;
     BOOL _rapportIdentitiesChangedNotificationTokenValid;
     int _rapportIdentitiesChangedNotificationToken;
     HMDAccount *_account;
     HMDAppleAccountContext *_accountContext;
     ACAccountStore *_accountStore;
-    NSObject<OS_dispatch_queue> *_clientQueue;
     APSConnection *_pushConnection;
     HMFExponentialBackoffTimer *_accountChangeBackoffTimer;
     HMFTimer *_devicesChangeBackoffTimer;
     IDSService *_service;
+    HMDIDSActivityMonitorBroadcaster *_activityBroadcaster;
     HMDBackingStore *_backingStore;
     HMDCloudCache *_cloudCache;
 }
@@ -40,8 +41,8 @@
 @property (readonly, nonatomic) HMFExponentialBackoffTimer *accountChangeBackoffTimer; // @synthesize accountChangeBackoffTimer=_accountChangeBackoffTimer;
 @property (readonly) HMDAppleAccountContext *accountContext; // @synthesize accountContext=_accountContext;
 @property (readonly) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (readonly, nonatomic) HMDIDSActivityMonitorBroadcaster *activityBroadcaster; // @synthesize activityBroadcaster=_activityBroadcaster;
 @property (strong, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) HMDCloudCache *cloudCache; // @synthesize cloudCache=_cloudCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -74,7 +75,7 @@
 - (void)account:(id)arg1 isActiveChanged:(BOOL)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (id)init;
-- (id)initWithIDSService:(id)arg1;
+- (id)initWithIDSService:(id)arg1 activityBroadcaster:(id)arg2;
 - (BOOL)isModelCurrentAccount:(id)arg1;
 - (id)primaryHandleForAccount:(id)arg1;
 - (void)processAccountModel:(id)arg1 message:(id)arg2;

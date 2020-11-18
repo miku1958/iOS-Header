@@ -8,13 +8,14 @@
 
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 
-@class HFCameraPlaybackEngine, HUCameraView, NSString;
+@class HFCameraPlaybackEngine, HUCameraMicrophoneControl, HUCameraView, NSString;
 
 @interface HUCameraPlayerLiveContentViewController : UIViewController <HFCameraPlaybackEngineObserver>
 {
     HFCameraPlaybackEngine *_playbackEngine;
     double _cornerRadius;
     HUCameraView *_cameraView;
+    HUCameraMicrophoneControl *_microphoneControl;
 }
 
 @property (strong, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HUCameraMicrophoneControl *microphoneControl; // @synthesize microphoneControl=_microphoneControl;
 @property (readonly, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (readonly) Class superclass;
 

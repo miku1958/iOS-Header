@@ -25,7 +25,7 @@
 - (void)recoverAndSynchronizeWithSquirrel:(CDUnknownBlockType)arg1;
 - (void)recoverWithSquirrel:(CDUnknownBlockType)arg1;
 - (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)shouldPerformRepair:(id *)arg1;
+- (BOOL)shouldPerformRepairWithOptionForceFetch:(BOOL)arg1 error:(id *)arg2;
 - (void)startCircleApplicationApprovalServer:(CDUnknownBlockType)arg1;
 
 @end

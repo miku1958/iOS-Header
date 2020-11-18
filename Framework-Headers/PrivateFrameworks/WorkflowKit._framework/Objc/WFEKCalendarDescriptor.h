@@ -34,6 +34,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)matchingCalendarsFromArray:(id)arg1;
+- (id)matchingRemindersListsFromArray:(id)arg1;
 
 @end
 

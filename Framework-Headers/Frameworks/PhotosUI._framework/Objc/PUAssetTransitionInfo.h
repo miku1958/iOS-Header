@@ -6,37 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PUPhotoViewContentHelper, UIImage, UIView;
+#import <PhotosUI/PUAssetTransitionInfoConfiguration-Protocol.h>
+
+@class NSArray, NSString, PUPhotoViewContentHelper, PXImageLayerModulator, UIImage, UIView;
 @protocol PUDisplayAsset;
 
-@interface PUAssetTransitionInfo : NSObject
+@interface PUAssetTransitionInfo : NSObject <PUAssetTransitionInfoConfiguration>
 {
+    BOOL _allowAutoPlay;
     UIView *_snapshotView;
     UIImage *_image;
-    NSArray *_filters;
     double _cornerRadius;
     id<PUDisplayAsset> _asset;
     NSArray *_badgeTransitionInfos;
     PUPhotoViewContentHelper *_contentHelper;
+    PXImageLayerModulator *_imageLayerModulator;
     CDStruct_1b6d18a9 _seekTime;
     struct CGRect _frame;
 }
 
+@property (nonatomic) BOOL allowAutoPlay; // @synthesize allowAutoPlay=_allowAutoPlay;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (copy, nonatomic) NSArray *badgeTransitionInfos; // @synthesize badgeTransitionInfos=_badgeTransitionInfos;
 @property (strong, nonatomic) PUPhotoViewContentHelper *contentHelper; // @synthesize contentHelper=_contentHelper;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property (copy, nonatomic, setter=_setFilters:) NSArray *filters; // @synthesize filters=_filters;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGRect frame; // @synthesize frame=_frame;
-@property (strong, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
-@property (nonatomic, setter=_setSeekTime:) CDStruct_1b6d18a9 seekTime; // @synthesize seekTime=_seekTime;
-@property (strong, nonatomic, setter=_setSnapshotView:) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
+@property (nonatomic) CDStruct_1b6d18a9 seekTime; // @synthesize seekTime=_seekTime;
+@property (strong, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
+@property (readonly) Class superclass;
 
-+ (id)assetTransitionInfoWithImage:(id)arg1;
-+ (id)assetTransitionInfoWithImage:(id)arg1 andSeekTime:(CDStruct_1b6d18a9)arg2;
-+ (id)assetTransitionInfoWithImage:(id)arg1 filters:(id)arg2;
-+ (id)assetTransitionInfoWithImage:(id)arg1 frame:(struct CGRect)arg2;
-+ (id)assetTransitionInfoWithSnapshotView:(id)arg1;
++ (id)assetTransitionInfoWithConfigurationBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)init;
 

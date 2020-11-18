@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HealthDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class HDAudioExposureEventObserver, HDBTLEHeartRateDataCollector, HDDatabaseCoalescedWritePool, HDDemoManager, HDPeriodicActivity, HDProfile, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class HDBTLEHeartRateDataCollector, HDDatabaseCoalescedWritePool, HDDemoManager, HDPeriodicActivity, HDProfile, HDSeriesQuantityEventObserver, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDAssertionObserver, HDPeriodicActivityDelegate>
@@ -26,10 +26,11 @@
     struct os_unfair_lock_s _collectorLock;
     NSMutableArray *_collectorLock_builtinCollectors;
     NSMutableDictionary *_collectorLock_dataCollectorsByType;
+    NSMutableDictionary *_lastFlushDateByType;
     struct os_unfair_lock_s _fakingLock;
     CDUnknownBlockType _unitTest_aggregatorConfigurationChangedHandler;
     NSSet *_collectibleTypes;
-    HDAudioExposureEventObserver *_audioExposureEventObserver;
+    HDSeriesQuantityEventObserver *_seriesQuantityEventObserver;
     HDProfile *_profile;
     NSMutableDictionary *_observersByType;
     HDBTLEHeartRateDataCollector *_blteHeartRateDataCollector;
@@ -53,8 +54,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_collectorForType:(id)arg1;
 - (id)_dataAggregatorConfigurationForCollectorState:(CDStruct_b3408c18)arg1;
 - (id)_dataAggregatorsDiagnosticDescription;
+- (id)_dataCollectorBlacklist;
 - (id)_dataCollectorsDiagnosticDescription;
 - (BOOL)_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(BOOL)arg3 error:(id *)arg4;
 - (void)_demoObjectsReceived:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -72,8 +75,8 @@
 - (void)_queue_setupUnprotectedDataDependantState;
 - (void)_queue_updateLegacyDataCollector:(id)arg1 forChangeFromState:(CDStruct_b3408c18)arg2 toState:(CDStruct_b3408c18)arg3 type:(id)arg4;
 - (void)_registerCollectors:(id)arg1;
-- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 freezeSeries:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 freezeSeries:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)_typeIsCollectible:(id)arg1;
 - (void)_updateDataCollectorsWithPrivacySettings;
 - (void)addDataCollectionObserver:(id)arg1 type:(id)arg2 collectionInterval:(double)arg3 state:(id)arg4;
@@ -97,15 +100,14 @@
 - (id)pluginDataCollectors;
 - (void)removeDataCollectionObserver:(id)arg1;
 - (void)removeDataCollectionObserver:(id)arg1 type:(id)arg2;
-- (void)requestAggregationForAllTypesThroughDate:(id)arg1 mode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 freezeSeries:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 error:(id *)arg3;
-- (void)sensorDataReceived:(id)arg1 deviceEntity:(id)arg2;
 - (void)startDataCollectionForType:(id)arg1 observer:(id)arg2 collectionInterval:(double)arg3;
 - (void)startFakingDataWithActivityType:(long long)arg1 speed:(id)arg2;
 - (void)startFakingWithHKWorkoutActivityType:(unsigned long long)arg1;
 - (void)stopDataCollectionForType:(id)arg1 observer:(id)arg2;
 - (void)stopFakingData;
+- (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 collectionIntervalsByType:(id)arg2 observerState:(id)arg3;
 - (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observer:(id)arg3 observerState:(id)arg4 collectionInterval:(double)arg5;
 - (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observerState:(id)arg3 collectionInterval:(double)arg4;
 - (void)unitTest_addCollectibleType:(id)arg1;

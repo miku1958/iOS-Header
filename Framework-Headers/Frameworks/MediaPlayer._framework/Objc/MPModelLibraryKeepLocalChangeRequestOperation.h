@@ -8,6 +8,7 @@
 
 @class MPModelLibraryKeepLocalChangeRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryKeepLocalChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

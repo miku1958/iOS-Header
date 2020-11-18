@@ -17,20 +17,21 @@
     struct {
         unsigned int callCapability:1;
         unsigned int callType:1;
+        unsigned int preferredCallProvider:1;
         unsigned int unseen:1;
     } _has;
     BOOL _unseen;
-    BOOL __encodeLegacyGloryData;
     int _callCapability;
     int _callType;
+    int _preferredCallProvider;
     _INPBCallMetrics *_callMetrics;
     _INPBContactValue *_caller;
     _INPBDateTime *_dateCreated;
     NSString *_identifier;
     _INPBInteger *_numberOfCalls;
+    NSString *_providerId;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int callCapability; // @synthesize callCapability=_callCapability;
 @property (strong, nonatomic) _INPBCallMetrics *callMetrics; // @synthesize callMetrics=_callMetrics;
 @property (nonatomic) int callType; // @synthesize callType=_callType;
@@ -45,10 +46,14 @@
 @property (readonly, nonatomic) BOOL hasDateCreated;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasNumberOfCalls;
+@property (nonatomic) BOOL hasPreferredCallProvider;
+@property (readonly, nonatomic) BOOL hasProviderId;
 @property (nonatomic) BOOL hasUnseen;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _INPBInteger *numberOfCalls; // @synthesize numberOfCalls=_numberOfCalls;
+@property (nonatomic) int preferredCallProvider; // @synthesize preferredCallProvider=_preferredCallProvider;
+@property (copy, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL unseen; // @synthesize unseen=_unseen;
 
@@ -56,6 +61,7 @@
 - (void).cxx_destruct;
 - (int)StringAsCallCapability:(id)arg1;
 - (int)StringAsCallType:(id)arg1;
+- (int)StringAsPreferredCallProvider:(id)arg1;
 - (id)callCapabilityAsString:(int)arg1;
 - (id)callTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -63,6 +69,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)preferredCallProviderAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)documentURLFromBookmarkableString:(id)arg1 creatingPlaceholderIfMissing:(BOOL)arg2 ignoreAlternateContentsURL:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)documentURLFromItemID:(id)arg1 creatingPlaceholderIfMissing:(BOOL)arg2 ignoreAlternateContentsURL:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dumpStateTo:(id)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enumerateMaterializedSetForDomain:(id)arg1 inProvider:(id)arg2 syncAnchor:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(BOOL)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)startAccessingServiceForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startAccessingServiceForItemID:(id)arg1 connection:(id)arg2 enumerateEntitlementRequired:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startAccessingServiceForItemURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)startDownloadingItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startOperation:(id)arg1 toFetchIconsForAppBundleIDs:(id)arg2 requestedSize:(struct CGSize)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)startProvidingItemAtURL:(id)arg1 fromProviderID:(id)arg2 forConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)trashItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

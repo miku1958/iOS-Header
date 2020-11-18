@@ -8,7 +8,6 @@
 
 @class WDDisplayTypeDescriptionView;
 
-__attribute__((visibility("hidden")))
 @interface WDDisplayTypeDescriptionTableFooterView : UIView
 {
     WDDisplayTypeDescriptionView *_descriptionView;

@@ -30,6 +30,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCurrencyAmount:(id)arg1;
 - (id)initWithCurrencyAmount:(id)arg1 label:(id)arg2;
+- (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

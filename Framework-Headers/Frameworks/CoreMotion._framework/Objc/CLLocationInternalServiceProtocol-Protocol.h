@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSData, NSDictionary, NSString, NSUUID;
+@class CLLocation, NSArray, NSData, NSDictionary, NSString, NSUUID;
 
 @protocol CLLocationInternalServiceProtocol
 - (void)applyArchivedAuthorizationDecisions:(NSData *)arg1 withConfirmationToken:(NSUUID *)arg2 replyBlock:(void (^)(NSError *))arg3;
@@ -12,6 +12,7 @@
 - (void)copyLastLogWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)displayStatisticsWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)dumpLogsWithDescription:(NSString *)arg1 replyBlock:(void (^)(NSError *))arg2;
+- (void)getAccessoryTypeBitSetWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)getActivitiesWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)getAppsUsingLocationWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;
 - (void)getArchivedAuthorizationDecisionsWithReplyBlock:(void (^)(NSError *, NSData *))arg1;
@@ -19,17 +20,22 @@
 - (void)getAuthorizationStatusForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, int))arg3;
 - (void)getGestureServiceEnabledWithReplyBlock:(void (^)(NSError *, BOOL))arg1;
 - (void)getGnssBandsInUseWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
+- (void)getGroundAltitudeForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 location:(CLLocation *)arg3 replyBlock:(void (^)(NSError *, struct))arg4;
+- (void)getIncidentalUseModeForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, int))arg3;
 - (void)getLocationDefaultForKey:(NSString *)arg1 replyBlock:(void (^)(NSError *, NSData *))arg2;
 - (void)getLocationForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 dynamicAccuracyReductionEnabled:(BOOL)arg3 allowsAlteredAccessoryLocations:(BOOL)arg4 replyBlock:(void (^)(NSError *, struct))arg5;
 - (void)getLocationServicesEnabledWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)getMonitoredRegionsForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, NSDictionary *))arg3;
 - (void)getOscarTimeSyncWithReplyBlock:(void (^)(NSError *, unsigned long long, unsigned long long))arg1;
 - (void)getPipelinedCacheWithReply:(void (^)(NSError *, NSArray *))arg1;
+- (void)getPrecisionPermissionForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, BOOL))arg3;
 - (void)getPrivateMode:(void (^)(NSError *, BOOL))arg1;
 - (void)getStatusBarIconEnabledForEntityClass:(unsigned int)arg1 replyBlock:(void (^)(NSError *, BOOL))arg2;
 - (void)getStatusBarIconState:(void (^)(NSError *, int))arg1;
 - (void)getTechnologiesInUseWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
+- (void)getTemporaryAuthorizationStatusForBundleId:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, NSData *))arg3;
 - (void)gyroCalibrationDatabaseSupportsMiniCalibrationWithReplyBlock:(void (^)(NSError *, int))arg1;
+- (void)modifyOrSetAuthorizationTime:(double)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *, double))arg4;
 - (void)notifyPassKitPayment:(NSString *)arg1 transaction:(NSString *)arg2 info:(NSDictionary *)arg3;
 - (void)notifyWeatherForecast:(NSDictionary *)arg1 airQualityConditions:(NSDictionary *)arg2 hourlyForecasts:(NSArray *)arg3 dailyForecasts:(NSArray *)arg4 latitude:(double)arg5 longitude:(double)arg6;
 - (void)performMigrationWithReplyBlock:(void (^)(NSError *))arg1;
@@ -40,13 +46,17 @@
 - (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 forBundleID:(NSString *)arg3 orBundlePath:(NSString *)arg4 replyBlock:(void (^)(NSError *))arg5;
 - (void)setBackgroundIndicatorEnabled:(BOOL)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)setGestureServiceEnabled:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
+- (void)setIncidentalUseMode:(int)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)setLocationDefaultForKey:(NSString *)arg1 andValue:(NSData *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)setLocationServicesEnabled:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
-- (void)setMapMatchingRouteHint:(NSData *)arg1 routingType:(int)arg2 replyBlock:(void (^)(NSError *))arg3;
+- (void)setMapMatchingRouteHint:(NSData *)arg1 routingType:(int)arg2 stepType:(int)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)setPrivateMode:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)setStatusBarIconEnabledForEntityClass:(unsigned int)arg1 enabled:(BOOL)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)setTemporaryAuthorizationGranted:(BOOL)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
+- (void)setTemporaryAuthorizationStatusForBundleId:(NSString *)arg1 orBundlePath:(NSString *)arg2 statusData:(NSData *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)shutdownDaemonWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)timeZoneForLocation:(CDStruct_a4140ae0)arg1 replyBlock:(void (^)(NSError *, NSString *))arg2;
+- (void)triggerExpiredAuthorizationPurgeWithReplyBlock:(void (^)(NSError *))arg1;
+- (void)updateCorrectiveCompensationChoiceForOutstandingPrompt:(int)arg1 replyBlock:(void (^)(NSError *))arg2;
 @end
 

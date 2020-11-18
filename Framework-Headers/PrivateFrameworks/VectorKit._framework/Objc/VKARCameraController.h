@@ -68,7 +68,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFullyPitched;
 - (BOOL)isPitched;
 - (id)mapRegion;
+- (double)maxPitch;
 - (double)maximumZoomLevel;
+- (double)minPitch;
 - (double)minimumZoomLevel;
 - (double)pitch;
 - (double)presentationYaw;

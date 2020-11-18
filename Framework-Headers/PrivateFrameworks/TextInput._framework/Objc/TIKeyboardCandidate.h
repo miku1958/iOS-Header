@@ -17,7 +17,10 @@
     BOOL _responseKitCandidate;
     BOOL _isSendCurrentLocation;
     BOOL _asIsCandidate;
+    BOOL _wubixingConvertedByPinyin;
+    BOOL _prefixMatched;
     unsigned int _slotID;
+    unsigned int _sourceMask;
     int _confidence;
     NSString *_alternativeText;
     NSString *_annotationText;
@@ -55,6 +58,7 @@
 @property (nonatomic) BOOL isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
 @property (copy, nonatomic) NSString *label;
 @property (readonly, nonatomic, getter=isPartialCandidate) BOOL partialCandidate;
+@property (readonly, nonatomic, getter=isPrefixMatched) BOOL prefixMatched; // @synthesize prefixMatched=_prefixMatched;
 @property (readonly, nonatomic) TIProactiveTrigger *proactiveTrigger;
 @property (readonly, nonatomic, getter=isPunctuationCompletionCandidate) BOOL punctuationCompletionCandidate;
 @property (readonly, nonatomic, getter=isPunctuationKeyCandidate) BOOL punctuationKeyCandidate;
@@ -65,10 +69,12 @@
 @property (readonly, nonatomic) BOOL shouldAccept;
 @property (readonly, nonatomic) BOOL shouldInsertSpaceAfterSelection;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
+@property (readonly, nonatomic) unsigned int sourceMask; // @synthesize sourceMask=_sourceMask;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTransliterationCandidate) BOOL transliterationCandidate;
 @property (readonly, nonatomic) unsigned int usageTrackingMask;
 @property (readonly, nonatomic) unsigned long long wordOriginFeedbackID;
+@property (readonly, nonatomic, getter=isWubixingConvertedByPinyin) BOOL wubixingConvertedByPinyin; // @synthesize wubixingConvertedByPinyin=_wubixingConvertedByPinyin;
 
 + (BOOL)supportsSecureCoding;
 + (int)type;

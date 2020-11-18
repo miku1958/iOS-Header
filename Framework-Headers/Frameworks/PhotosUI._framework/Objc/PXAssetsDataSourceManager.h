@@ -8,29 +8,54 @@
 
 #import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 
-@class NSString, PXAssetsDataSource;
+@class NSPredicate, NSString, PXAssetsDataSource;
 
 @interface PXAssetsDataSourceManager : PXSectionedDataSourceManager <PXMutableAssetsDataSourceManager>
 {
+    BOOL _isLoadingInitialDataSource;
+    BOOL _isBackgroundFetching;
+    BOOL _supportsFiltering;
+    NSString *_localizedEmptyPlaceholderTitle;
+    NSString *_localizedEmptyPlaceholderMessage;
+    NSString *_localizedLoadingInitialDataSourceMessage;
+    NSPredicate *_filterPredicate;
 }
 
 @property (nonatomic) long long backgroundFetchOriginSection;
 @property (readonly, nonatomic) PXAssetsDataSource *dataSource; // @dynamic dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBackgroundFetching; // @synthesize isBackgroundFetching=_isBackgroundFetching;
+@property (readonly, nonatomic) BOOL isLoadingInitialDataSource; // @synthesize isLoadingInitialDataSource=_isLoadingInitialDataSource;
+@property (readonly, copy, nonatomic) NSString *localizedEmptyPlaceholderMessage; // @synthesize localizedEmptyPlaceholderMessage=_localizedEmptyPlaceholderMessage;
+@property (readonly, copy, nonatomic) NSString *localizedEmptyPlaceholderTitle; // @synthesize localizedEmptyPlaceholderTitle=_localizedEmptyPlaceholderTitle;
+@property (readonly, copy, nonatomic) NSString *localizedLoadingInitialDataSourceMessage; // @synthesize localizedLoadingInitialDataSourceMessage=_localizedLoadingInitialDataSourceMessage;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsFiltering; // @synthesize supportsFiltering=_supportsFiltering;
 
+- (void).cxx_destruct;
+- (void)ensureLastSectionHasContent;
+- (void)ensureStartingSectionHasContent;
+- (void)excludeAssetsAtIndexPaths:(id)arg1;
 - (BOOL)forceAccurateAllSectionsIfNeeded;
 - (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (BOOL)forceAccurateSectionsIfNeeded:(id)arg1;
+- (void)forceIncludeAssetsAtIndexPaths:(id)arg1;
 - (id)mutableChangeObject;
 - (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (void)refreshResultsForAssetCollection:(id)arg1;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
 - (void)setCurationEnabled:(BOOL)arg1 forAssetCollection:(id)arg2;
+- (void)setFilterPredicate:(id)arg1 provideIncrementalChangeDetailsForAssetCollections:(id)arg2;
+- (void)setFilteringDisabled:(BOOL)arg1 forAssetCollection:(id)arg2;
 - (void)startBackgroundFetchIfNeeded;
+- (void)stopExcludingAssets:(id)arg1;
+- (void)stopForceIncludingAllAssets;
 - (void)unregisterChangeObserver:(id)arg1 context:(void *)arg2;
+- (void)waitForAvailabilityOfAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

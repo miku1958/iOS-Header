@@ -10,9 +10,7 @@
 
 @interface _TtC8NewsFeed23FormatImageNodeRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *imageCache;
-    MISSING_TYPE *rendererTool;
-    MISSING_TYPE *assetManager;
+    MISSING_TYPE *imageRenderer;
 }
 
 @end

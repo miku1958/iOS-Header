@@ -4,53 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContactsUI/CNPhotoPickerVariantListController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
-#import <ContactsUI/_UIScrollViewLayoutObserver-Protocol.h>
+#import <ContactsUI/CNPhotoPickerVariantListControllerDelegate-Protocol.h>
 
-@class OBBoldTrayButton, OBButtonTray, OBHeaderView, OBLinkTrayButton, OBNavigationBarDisplayState, UINavigationController;
+@class CNPhotoPickerProviderItem, CNPhotoPickerVariantListController, CNPhotoPickerVariantsManager, NSLayoutConstraint, NSString, OBBoldTrayButton, OBLinkTrayButton;
 @protocol CNSharingProfileOnboardingVariantViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNSharingProfileOnboardingVariantViewController : CNPhotoPickerVariantListController <_UIScrollViewLayoutObserver>
+@interface CNSharingProfileOnboardingVariantViewController : OBWelcomeController <CNPhotoPickerVariantListControllerDelegate>
 {
     BOOL _shouldShowPoseButton;
     id<CNSharingProfileOnboardingVariantViewControllerDelegate> _onboardingDelegate;
-    OBHeaderView *_onboardingHeaderView;
-    OBButtonTray *_buttonTray;
+    CNPhotoPickerProviderItem *_selectedItem;
+    CNPhotoPickerVariantsManager *_variantsManager;
+    CNPhotoPickerProviderItem *_item;
+    NSString *_variantName;
+    CNPhotoPickerVariantListController *_variantListController;
+    OBLinkTrayButton *_setupLaterButton;
+    OBBoldTrayButton *_backButton;
     OBBoldTrayButton *_continueButton;
     OBLinkTrayButton *_poseButton;
-    UINavigationController *_retainedNavigationController;
-    OBNavigationBarDisplayState *_cachedBarState;
+    NSLayoutConstraint *_heightLayoutConstraint;
 }
 
-@property (strong, nonatomic) OBButtonTray *buttonTray; // @synthesize buttonTray=_buttonTray;
-@property (strong, nonatomic) OBNavigationBarDisplayState *cachedBarState; // @synthesize cachedBarState=_cachedBarState;
+@property (strong, nonatomic) OBBoldTrayButton *backButton; // @synthesize backButton=_backButton;
 @property (strong, nonatomic) OBBoldTrayButton *continueButton; // @synthesize continueButton=_continueButton;
+@property (strong, nonatomic) NSLayoutConstraint *heightLayoutConstraint; // @synthesize heightLayoutConstraint=_heightLayoutConstraint;
+@property (strong, nonatomic) CNPhotoPickerProviderItem *item; // @synthesize item=_item;
 @property (weak, nonatomic) id<CNSharingProfileOnboardingVariantViewControllerDelegate> onboardingDelegate; // @synthesize onboardingDelegate=_onboardingDelegate;
-@property (strong, nonatomic) OBHeaderView *onboardingHeaderView; // @synthesize onboardingHeaderView=_onboardingHeaderView;
 @property (strong, nonatomic) OBLinkTrayButton *poseButton; // @synthesize poseButton=_poseButton;
-@property (strong, nonatomic) UINavigationController *retainedNavigationController; // @synthesize retainedNavigationController=_retainedNavigationController;
+@property (strong, nonatomic) CNPhotoPickerProviderItem *selectedItem; // @synthesize selectedItem=_selectedItem;
+@property (strong, nonatomic) OBLinkTrayButton *setupLaterButton; // @synthesize setupLaterButton=_setupLaterButton;
 @property (nonatomic) BOOL shouldShowPoseButton; // @synthesize shouldShowPoseButton=_shouldShowPoseButton;
+@property (strong, nonatomic) CNPhotoPickerVariantListController *variantListController; // @synthesize variantListController=_variantListController;
+@property (strong, nonatomic) NSString *variantName; // @synthesize variantName=_variantName;
+@property (strong, nonatomic) CNPhotoPickerVariantsManager *variantsManager; // @synthesize variantsManager=_variantsManager;
 
-+ (BOOL)_navigationBarTitleShouldShowForHeaderView:(id)arg1 inScrollView:(id)arg2;
-+ (void)updateNavigationBarWithNavigationItem:(id)arg1 forHeaderView:(id)arg2 inScrollView:(id)arg3 animated:(BOOL)arg4;
 - (void).cxx_destruct;
-- (BOOL)_scrollViewContentIsUnderTrayForScrollView:(id)arg1;
-- (void)_scrollViewDidLayoutSubviews:(id)arg1;
-- (void)applyAutomaticScrollToEdgeBehaviorToNavigationItem:(id)arg1 withDistance:(double)arg2;
-- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (void)didTapBack:(id)arg1;
 - (void)didTapContinue:(id)arg1;
 - (void)didTapPose:(id)arg1;
-- (id)navigationItem;
-- (void)restoreNavigationBarAppearance;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)updateContentInsets:(struct UIEdgeInsets)arg1;
-- (void)updateTrayBackgroundForScrollView:(id)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
+- (void)didTapSetupLater:(id)arg1;
+- (id)initWithVariantsManager:(id)arg1 originalItem:(id)arg2 selectedVariantIdentifier:(id)arg3;
+- (void)photoPickerVariantListController:(id)arg1 didSelectProviderItem:(id)arg2;
+- (void)photoPickerVariantListControllerDidCancel:(id)arg1;
+- (void)updateOriginalItem:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

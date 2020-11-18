@@ -12,6 +12,7 @@
 
 @interface GKBaseComposeController : GKLoadableContentViewController <UITextViewDelegate>
 {
+    BOOL _showHeaderFieldContainer;
     UIScrollView *_backgroundView;
     NSArray *_composeHeaderFields;
     GKTextView *_messageField;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) GKTextView *messageField; // @synthesize messageField=_messageField;
 @property (strong, nonatomic) NSLayoutConstraint *messageFieldTrailingConstraint; // @synthesize messageFieldTrailingConstraint=_messageFieldTrailingConstraint;
 @property (nonatomic) double scrollContentInsetAdjustY; // @synthesize scrollContentInsetAdjustY=_scrollContentInsetAdjustY;
+@property (nonatomic) BOOL showHeaderFieldContainer; // @synthesize showHeaderFieldContainer=_showHeaderFieldContainer;
 @property (readonly) Class superclass;
 
 - (void)_adjustContentInsetForShowingKeyboard:(BOOL)arg1;

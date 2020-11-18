@@ -10,24 +10,32 @@
 
 @interface _UIKeyboardFeedbackGeneratorConfiguration : _UIFeedbackGeneratorConfiguration
 {
+    BOOL _scalingForSpeedEnabled;
     NSDictionary *_feedbacks;
     double _slowTypingTime;
     double _fastTypingTime;
     double _fastTypingVolumeMultiplier;
+    double _slowTypingVolumeMultiplier;
+    double _releaseThreshold;
 }
 
 @property (nonatomic) double fastTypingTime; // @synthesize fastTypingTime=_fastTypingTime;
 @property (nonatomic) double fastTypingVolumeMultiplier; // @synthesize fastTypingVolumeMultiplier=_fastTypingVolumeMultiplier;
 @property (strong, nonatomic) NSDictionary *feedbacks; // @synthesize feedbacks=_feedbacks;
+@property (nonatomic) double releaseThreshold; // @synthesize releaseThreshold=_releaseThreshold;
+@property (nonatomic) BOOL scalingForSpeedEnabled; // @synthesize scalingForSpeedEnabled=_scalingForSpeedEnabled;
 @property (nonatomic) double slowTypingTime; // @synthesize slowTypingTime=_slowTypingTime;
+@property (nonatomic) double slowTypingVolumeMultiplier; // @synthesize slowTypingVolumeMultiplier=_slowTypingVolumeMultiplier;
 
++ (id)configuration1;
++ (id)configuration2;
++ (id)configuration3;
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)defaultEnabled;
 - (id)feedbackKeyPaths;
 - (BOOL)isEqual:(id)arg1;
-- (long long)requiredSupportLevel;
 
 @end
 

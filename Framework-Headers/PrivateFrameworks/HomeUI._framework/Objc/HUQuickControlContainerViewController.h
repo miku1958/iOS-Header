@@ -6,9 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <HomeUI/HUDetailsPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
-#import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUQuickControlContainerViewDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlContentHosting-Protocol.h>
 #import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
@@ -18,8 +18,9 @@
 @class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol HUOpenURLHandling, HUPresentationDelegate, HUQuickControlContainerViewControllerDelegate, NSCopying;
 
-@interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUPresentationDelegateHost, HUViewControllerCustomDismissing, HUQuickControlTouchContinuing>
+@interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUDetailsPresentationDelegateHost, HUViewControllerCustomDismissing, HUQuickControlTouchContinuing>
 {
+    BOOL _requiresPresentingViewControllerDismissal;
     BOOL _presentedDetailView;
     id<HUPresentationDelegate> presentationDelegate;
     HFItem<NSCopying> *_item;
@@ -54,6 +55,7 @@
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate;
 @property (nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
 @property (nonatomic) BOOL presentedDetailView; // @synthesize presentedDetailView=_presentedDetailView;
+@property (nonatomic) BOOL requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HUQuickControlViewControllerCoordinator *viewControllerCoordinator; // @synthesize viewControllerCoordinator=_viewControllerCoordinator;
@@ -68,6 +70,7 @@
 - (void)_backButtonPressed:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (void)_controlDidDismiss;
+- (void)_createControlContainerViewForMac;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
 - (id)_dismissDetailsViewControllerAnimated:(BOOL)arg1 dismissControl:(BOOL)arg2;
 - (void)_dismissQuickControls;
@@ -88,9 +91,10 @@
 - (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (void)hideAuxiliaryViewForQuickControlContent:(id)arg1;
 - (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
-- (id)initWithItem:(id)arg1 controlItems:(id)arg2 home:(id)arg3;
+- (id)initWithPresentationContext:(id)arg1;
 - (BOOL)isControlDismissedOrDismissing;
 - (BOOL)isControlPresentedOrPresenting;
+- (void)presentControlForMacAnimated:(BOOL)arg1;
 - (void)presentControlFromSourceRect:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (id)presentDetailViewControllerAnimated:(BOOL)arg1;
 - (void)quickControlContent:(id)arg1 requestDismissalOfType:(unsigned long long)arg2;

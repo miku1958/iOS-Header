@@ -17,12 +17,10 @@
     struct {
         unsigned int taskOutcome:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _taskOutcome;
     _INPBHomeUserTask *_userTask;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasTaskOutcome;

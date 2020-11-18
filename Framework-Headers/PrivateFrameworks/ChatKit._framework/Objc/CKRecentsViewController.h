@@ -44,6 +44,7 @@
 - (void)_postBrowserDidPrepareForDisplayNotificationIfNecessary;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (id)_stickerForMSSticker:(id)arg1;
+- (long long)_userInterfaceStyle;
 - (void)dealloc;
 - (void)didTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (BOOL)dragManager:(id)arg1 canPeelItem:(id)arg2;
@@ -69,6 +70,8 @@
 - (void)startDragSticker:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)stickerBrowserView:(id)arg1 shouldDrawBorderAroundSticker:(id)arg2;
 - (id)stickerBrowserView:(id)arg1 stickerAtIndex:(long long)arg2;
+- (void)stickerDragCanceled;
+- (void)stickerDragMoved:(id)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 fence:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

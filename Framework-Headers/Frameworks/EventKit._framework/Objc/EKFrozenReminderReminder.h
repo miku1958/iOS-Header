@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
 - (id)_reminder;
 - (id)action;
 - (id)alarms;
-- (id)appLink;
+- (id)allAlarms;
+- (id)appLinkData;
 - (id)attachments;
-- (id)attendees;
+- (id)attendeesRaw;
 - (id)calendar;
 - (id)calendarItemExternalIdentifier;
 - (id)calendarItemIdentifier;
@@ -31,12 +32,13 @@ __attribute__((visibility("hidden")))
 - (id)completionDate;
 - (id)creationDate;
 - (BOOL)defaultAlarmRemoved;
+- (BOOL)defaultAlarmWasDeleted;
 - (id)detachedItems;
 - (id)dueDateComponents;
 - (id)ekExceptionDates;
 - (BOOL)hasAttendees;
 - (BOOL)hasNotes;
-- (BOOL)hasRecurrenceRules;
+- (BOOL)hasRecurrences;
 - (id)initNewReminderInStore:(id)arg1;
 - (id)lastModifiedDate;
 - (id)notes;

@@ -34,11 +34,9 @@
 @property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDescription;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

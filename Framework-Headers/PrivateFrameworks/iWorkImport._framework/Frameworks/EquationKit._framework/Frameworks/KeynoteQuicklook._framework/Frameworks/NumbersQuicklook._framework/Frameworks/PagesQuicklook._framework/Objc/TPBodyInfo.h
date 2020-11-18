@@ -10,7 +10,7 @@
 #import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
 
 @class NSArray, NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
-@protocol TSDContainerInfo, TSDHint, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
+@protocol TSDHint, TSDInfo, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 @interface TPBodyInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
@@ -27,6 +27,7 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) BOOL laysOutVertically;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
@@ -36,7 +37,7 @@
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (readonly, nonatomic) TPPageHint *pageHint;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_pageInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_pageInfo;
 @property (readonly, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property (readonly, nonatomic) TSWPStorage *storage;

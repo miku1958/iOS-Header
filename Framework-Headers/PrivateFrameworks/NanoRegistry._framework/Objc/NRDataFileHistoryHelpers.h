@@ -13,8 +13,6 @@
 + (BOOL)archiveDeviceHistory:(id)arg1;
 + (BOOL)archiveSecureProperties:(id)arg1;
 + (BOOL)createMissingDates:(id)arg1;
-+ (id)findPairedDateForDeviceID:(id)arg1 inHistory:(id)arg2;
-+ (void)parseDiff:(id)arg1 forPropertyChange:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (id)unarchiveDeviceHistory;
 + (id)unarchiveSecureProperties;
 

@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) UIColor *overlayColor; // @synthesize overlayColor=_overlayColor;
 
 - (void).cxx_destruct;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_invalidateImage;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
@@ -43,6 +42,7 @@
 - (void)setCornersToRound:(unsigned long long)arg1;
 - (void)setDisplayScale:(double)arg1;
 - (void)setOverlayColor:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

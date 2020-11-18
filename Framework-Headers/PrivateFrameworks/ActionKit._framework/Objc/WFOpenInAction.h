@@ -15,14 +15,17 @@
 
 @property (strong, nonatomic) NSArray *contentClasses; // @synthesize contentClasses=_contentClasses;
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (void).cxx_destruct;
 - (id)inputContentClasses;
 - (void)openContentInSelectedApp:(id)arg1;
 - (id)outputContentClasses;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (id)selectedApp;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 - (void)updateContentClasses;
 
 @end

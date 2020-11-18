@@ -28,7 +28,7 @@
 - (void)_attemptToFixVoiceRecognitionOnboardingFailures:(id)arg1;
 - (void)_changeSiriLanguageOnlyForThisHomePod:(id)arg1 turnOffVoiceID:(BOOL)arg2;
 - (void)_clearSpinner;
-- (BOOL)_isAnyHomePodOnSupportedMultiUserLanguage;
+- (BOOL)_isAnyHomePodOnSupportedVoiceRecognitionLanguage;
 - (void)_presentAlertConfirmingLanguageChangeAndTurnOffVoiceRecognition:(id)arg1 indexPath:(id)arg2;
 - (void)_presentAlertConfirmingLanguageChangeForAllHomeMembers:(id)arg1 indexPath:(id)arg2;
 - (void)_presentAlertConfirmingLanguageChangeForThisORAllHomePods:(id)arg1 indexPath:(id)arg2;

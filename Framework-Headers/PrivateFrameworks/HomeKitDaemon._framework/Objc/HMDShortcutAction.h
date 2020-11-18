@@ -23,15 +23,17 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)associatedAccessories;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)entitlementsForNotification;
-- (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1 parent:(id)arg2 error:(id *)arg3;
 - (id)initWithSerializedShortcut:(id)arg1 uuid:(id)arg2 actionSet:(id)arg3;
+- (BOOL)isAssociatedWithAccessory:(id)arg1;
 - (Class)modelClass;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)removeShortcut;

@@ -31,6 +31,7 @@
 - (void)dismissFlowWithLocalSecret:(id)arg1 error:(id)arg2;
 - (CDUnknownBlockType)passcodeValidationCompletion;
 - (void)passcodeViewController:(id)arg1 didFinishWithPasscodeCreation:(id)arg2;
+- (BOOL)passcodeViewControllerAllowSkip:(id)arg1;
 - (id)passcodeViewControllerCustomFirstEntryInstructions:(id)arg1;
 - (void)setPasscodeValidationCompletion:(CDUnknownBlockType)arg1;
 

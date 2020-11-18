@@ -6,20 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+#import <AvatarUI/AVTGroupPicker-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSource-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegate-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTCenteringCollectionViewDelegate, AVTGroupDialMaskingView, AVTUIEnvironment, NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout;
-@protocol AVTGroupDialDelegate;
+@protocol AVTGroupPickerDelegate;
 
-@interface AVTGroupDial : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface AVTGroupDial : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVTGroupPicker>
 {
     BOOL _isMoving;
     BOOL _hasFinalizedSelection;
-    id<AVTGroupDialDelegate> _delegate;
+    id<AVTGroupPickerDelegate> delegate;
+    NSArray *_groupItems;
     AVTUIEnvironment *_environment;
-    NSArray *_groupTitles;
     NSArray *_cachedGroupTitleSizes;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_collectionViewLayout;
@@ -37,10 +38,10 @@
 @property (nonatomic) unsigned long long currentScrollDirection; // @synthesize currentScrollDirection=_currentScrollDirection;
 @property (nonatomic) long long currentSelectedItemIndex; // @synthesize currentSelectedItemIndex=_currentSelectedItemIndex;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<AVTGroupDialDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AVTGroupPickerDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
-@property (readonly, nonatomic) NSArray *groupTitles; // @synthesize groupTitles=_groupTitles;
+@property (readonly, nonatomic) NSArray *groupItems; // @synthesize groupItems=_groupItems;
 @property (nonatomic) BOOL hasFinalizedSelection; // @synthesize hasFinalizedSelection=_hasFinalizedSelection;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isMoving; // @synthesize isMoving=_isMoving;
@@ -59,7 +60,7 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (id)initWithGroupTitles:(id)arg1 environment:(id)arg2;
+- (id)initWithGroupItems:(id)arg1 environment:(id)arg2;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)reloadData;

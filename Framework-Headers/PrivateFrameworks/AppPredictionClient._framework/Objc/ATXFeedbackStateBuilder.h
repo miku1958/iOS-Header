@@ -19,7 +19,7 @@
 - (id)finish;
 - (id)init;
 - (id)initWithABGroup:(id)arg1 assetVersion:(long long)arg2;
-- (void)recordPrediction:(id)arg1 actionHash:(unsigned long long)arg2 totalScore:(float)arg3 scoreInputs:(const float *)arg4;
+- (void)recordPrediction:(id)arg1 actionHash:(unsigned long long)arg2 totalScore:(float)arg3 scoreInputs:(const float *)arg4 isMediumConfidenceForBlendingLayer:(BOOL)arg5 isHighConfidenceForBlendingLayer:(BOOL)arg6;
 
 @end
 

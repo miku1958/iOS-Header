@@ -80,7 +80,6 @@
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (unsigned int)activeParticleCount;
-- (void)addSubEmitterNode:(id)arg1;
 - (void)advanceSimulationTime:(double)arg1;
 - (void)commonInit;
 - (void)copyParticlePropertiesToNode:(id)arg1;

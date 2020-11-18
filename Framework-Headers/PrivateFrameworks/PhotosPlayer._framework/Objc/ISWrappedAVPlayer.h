@@ -6,10 +6,12 @@
 
 #import <PhotosPlayer/ISObservable.h>
 
-@class AVPlayer, AVPlayerItem, AVVideoComposition, ISWrappedAVAudioSession, NSArray, NSError, NSMutableDictionary, NSObject;
+#import <PhotosPlayer/ISKVOProxyDelegate-Protocol.h>
+
+@class AVPlayer, AVPlayerItem, AVVideoComposition, ISWrappedAVAudioSession, NSError, NSMutableDictionary, NSObject, NSString;
 @protocol ISWrappedAVPlayerDelegate, OS_dispatch_queue;
 
-@interface ISWrappedAVPlayer : ISObservable
+@interface ISWrappedAVPlayer : ISObservable <ISKVOProxyDelegate>
 {
     NSObject<OS_dispatch_queue> *_avPlayerQueue;
     NSObject<OS_dispatch_queue> *_ivarQueue;
@@ -25,6 +27,7 @@
     CDStruct_e83c9415 _ivarQueue_loopTimeRange;
     BOOL _ivarQueue_loopingEnabled;
     BOOL _ivarQueue_audioEnabled;
+    BOOL _ivarQueue_preventsSleepDuringVideoPlayback;
     long long _ivarQueue_itemStatus;
     NSError *_ivarQueue_itemError;
     CDStruct_1b6d18a9 _ivarQueue_itemForwardPlaybackEndTime;
@@ -33,18 +36,22 @@
     AVVideoComposition *_ivarQueue_itemVideoComposition;
     BOOL _ivarQueue_itemIsLikelyToKeepUp;
     BOOL _ivarQueue_itemPlaybackBufferEmpty;
-    NSArray *_ivarQueue_currentItemLoadedTimeRanges;
     NSMutableDictionary *_observersByID;
     void *_ivarQueueIdentifier;
-    BOOL _playerQueue_didBeginObservingPlayer;
+    NSString *_playerKVOIdentifier;
+    NSString *_playerItemKVOIdentifier;
     id<ISWrappedAVPlayerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<ISWrappedAVPlayerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (getter=isLoopingEnabled) BOOL loopingEnabled;
+@property (readonly) Class superclass;
 
-+ (id)observedAVPIKeysAndContexts;
-+ (id)observedAVPKeys;
++ (id)observedAVPlayerItemKeys;
++ (id)observedAVPlayerKeys;
 - (void).cxx_destruct;
 - (void)_assertOnIvarQueue;
 - (id)_initWithAVPlayer:(id)arg1;
@@ -67,7 +74,6 @@
 - (CDStruct_1b6d18a9)currentItemDuration;
 - (id)currentItemError;
 - (BOOL)currentItemIsLikelyToKeepUp;
-- (id)currentItemLoadedTimeRanges;
 - (BOOL)currentItemPlaybackBufferEmpty;
 - (BOOL)currentItemPlaybackBufferFull;
 - (long long)currentItemStatus;
@@ -80,10 +86,11 @@
 - (CDStruct_1b6d18a9)itemForwardPlaybackEndTime;
 - (CDStruct_e83c9415)loopTimeRange;
 - (id)mutableChangeObject;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)observeChangeforKVOProxyIdentifier:(id)arg1 keyPath:(id)arg2 change:(id)arg3;
 - (void)pause;
 - (void)playToTime:(CDStruct_1b6d18a9)arg1 withInitialRate:(float)arg2 overDuration:(double)arg3 progressHandler:(CDUnknownBlockType)arg4;
 - (void)prerollAtRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)preventsSleepDuringVideoPlayback;
 - (float)rate;
 - (void)removeTimeObserver:(id)arg1;
 - (void)replaceCurrentItemWithPlayerItem:(id)arg1;
@@ -97,6 +104,7 @@
 - (void)setItemForwardEndPlaybackTime:(CDStruct_1b6d18a9)arg1;
 - (void)setLoopTimeRange:(CDStruct_e83c9415)arg1;
 - (void)setLoopingEnabled:(BOOL)arg1 withTemplateItem:(id)arg2;
+- (void)setPreventsSleepDuringVideoPlayback:(BOOL)arg1;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;
 - (void)setVolume:(float)arg1;

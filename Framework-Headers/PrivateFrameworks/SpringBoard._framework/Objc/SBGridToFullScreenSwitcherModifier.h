@@ -4,36 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoard/SBSwitcherToFullScreenSwitcherModifier.h>
+#import <SpringBoard/SBTransitionSwitcherModifier.h>
 
-@interface SBGridToFullScreenSwitcherModifier : SBSwitcherToFullScreenSwitcherModifier
+@class SBAppLayout;
+
+@interface SBGridToFullScreenSwitcherModifier : SBTransitionSwitcherModifier
 {
+    long long _direction;
+    SBAppLayout *_fullScreenAppLayout;
 }
 
-- (BOOL)_isIndexFullScreenAppLayout:(unsigned long long)arg1;
-- (double)_unselectedCardScale;
-- (id)appLayoutToScrollToDuringTransition;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (struct CGRect)frameForIndex:(unsigned long long)arg1;
-- (double)homeScreenAlpha;
-- (double)homeScreenScale;
-- (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (BOOL)isSwitcherWindowUserInteractionEnabled;
-- (BOOL)isSwitcherWindowVisible;
-- (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (double)opacityForIndex:(unsigned long long)arg1;
-- (double)scaleForIndex:(unsigned long long)arg1;
-- (double)titleOpacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
+- (void).cxx_destruct;
+- (id)appLayoutToScrollToBeforeTransitioning;
+- (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 gridModifier:(id)arg4;
 - (id)transitionWillBegin;
-- (double)wallpaperScale;
-- (long long)wallpaperStyle;
 
 @end
 

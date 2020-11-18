@@ -69,6 +69,7 @@
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
 - (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateCurrentServerChangeToken;
 - (void)updateServerChangeToken:(id)arg1;
 
 @end

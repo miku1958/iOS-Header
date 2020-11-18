@@ -6,32 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class CSSearchableItem, NSDate;
+@class CSSearchableItem, ICRankingQueriesDefinition, NSArray, NSDate, NSDictionary, NSString;
 
 @interface ICSortableSearchableItem : NSObject
 {
     BOOL _isPrefixMatch;
+    BOOL _needsLazyInitialization;
+    NSDictionary *_highlightInfo;
     CSSearchableItem *_searchableItem;
     double _rankingScore;
+    NSArray *_attachmentUniqueIdentifiers;
     unsigned long long _relevanceBitField;
     unsigned long long _modificationDateBucket;
     NSDate *_modificationDate;
     NSDate *_creationDate;
     unsigned long long _searchResultType;
+    NSString *_searchString;
+    ICRankingQueriesDefinition *_rankingQueriesDefinition;
+    NSString *_language;
 }
 
-@property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
-@property (nonatomic) BOOL isPrefixMatch; // @synthesize isPrefixMatch=_isPrefixMatch;
-@property (strong, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
-@property (nonatomic) unsigned long long modificationDateBucket; // @synthesize modificationDateBucket=_modificationDateBucket;
-@property (nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
-@property (nonatomic) unsigned long long relevanceBitField; // @synthesize relevanceBitField=_relevanceBitField;
-@property (nonatomic) unsigned long long searchResultType; // @synthesize searchResultType=_searchResultType;
-@property (strong, nonatomic) CSSearchableItem *searchableItem; // @synthesize searchableItem=_searchableItem;
+@property (readonly, nonatomic) NSArray *attachmentUniqueIdentifiers; // @synthesize attachmentUniqueIdentifiers=_attachmentUniqueIdentifiers;
+@property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic) NSDictionary *highlightInfo; // @synthesize highlightInfo=_highlightInfo;
+@property (readonly, nonatomic) BOOL isPrefixMatch; // @synthesize isPrefixMatch=_isPrefixMatch;
+@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (readonly, nonatomic) unsigned long long modificationDateBucket; // @synthesize modificationDateBucket=_modificationDateBucket;
+@property (nonatomic) BOOL needsLazyInitialization; // @synthesize needsLazyInitialization=_needsLazyInitialization;
+@property (strong, nonatomic) ICRankingQueriesDefinition *rankingQueriesDefinition; // @synthesize rankingQueriesDefinition=_rankingQueriesDefinition;
+@property (readonly, nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
+@property (readonly, nonatomic) unsigned long long relevanceBitField; // @synthesize relevanceBitField=_relevanceBitField;
+@property (readonly, nonatomic) unsigned long long searchResultType; // @synthesize searchResultType=_searchResultType;
+@property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
+@property (readonly, nonatomic) CSSearchableItem *searchableItem; // @synthesize searchableItem=_searchableItem;
 
 + (id)sortDescriptorsForRankingStrategy:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)initWithSearchableItem:(id)arg1 rankingScore:(double)arg2 relevanceBitField:(unsigned long long)arg3 modificationDateBucket:(unsigned long long)arg4 searchResultType:(unsigned long long)arg5 isPrefixMatch:(BOOL)arg6;
+- (unsigned long long)hash;
+- (id)initWithSearchableItem:(id)arg1 highlightInfo:(id)arg2 rankingScore:(double)arg3 attachmentUniqueIdentifiers:(id)arg4;
+- (id)initWithSearchableItem:(id)arg1 searchString:(id)arg2 rankingQueriesDefinition:(id)arg3 rankingScore:(double)arg4 attachmentUniqueIdentifiers:(id)arg5 language:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
+- (void)lazilyInitializeHighlightInfoAndIsPrefixMatchIfNecessary;
 
 @end
 

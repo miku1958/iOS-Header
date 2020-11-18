@@ -17,6 +17,8 @@
     BOOL _isUniversalPersona;
     BOOL _isSystemPersona;
     BOOL _isDefaultPersona;
+    BOOL _isGuestPersona;
+    BOOL _isDataSeparatedPersona;
     BOOL _isDisabled;
     unsigned int _userPersona_id;
     NSString *_userPersonaUniqueString;
@@ -31,9 +33,11 @@
 }
 
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (nonatomic) BOOL isDataSeparatedPersona; // @synthesize isDataSeparatedPersona=_isDataSeparatedPersona;
 @property (nonatomic) BOOL isDefaultPersona; // @synthesize isDefaultPersona=_isDefaultPersona;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
 @property (nonatomic) BOOL isEnterprisePersona; // @synthesize isEnterprisePersona=_isEnterprisePersona;
+@property (nonatomic) BOOL isGuestPersona; // @synthesize isGuestPersona=_isGuestPersona;
 @property (nonatomic) BOOL isPersonalPersona; // @synthesize isPersonalPersona=_isPersonalPersona;
 @property (nonatomic) BOOL isSystemPersona; // @synthesize isSystemPersona=_isSystemPersona;
 @property (nonatomic) BOOL isUniversalPersona; // @synthesize isUniversalPersona=_isUniversalPersona;

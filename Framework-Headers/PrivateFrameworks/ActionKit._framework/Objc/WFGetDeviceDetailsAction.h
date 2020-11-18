@@ -12,7 +12,7 @@
 
 - (id)localizedDefaultOutputName;
 - (id)outputContentClasses;
-- (void)runWithInput:(id)arg1 error:(id *)arg2;
+- (void)runAsynchronouslyWithInput:(id)arg1;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 
 @end

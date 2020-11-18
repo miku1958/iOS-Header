@@ -6,17 +6,31 @@
 
 #import <PhotosUICore/PXSettings.h>
 
+@class NSString;
+
 @interface PXAlbumsDebugUISettings : PXSettings
 {
     BOOL _showBestKeyFrameDebugAlbum;
     BOOL _showUtilitiesDebugAlbum;
+    BOOL _showDreamyDebugAlbum;
+    BOOL _showCustomDebugAlbum;
+    NSString *_customDebugAlbumTitle;
+    NSString *_customDebugInternalPredicate;
+    NSString *_customDebugPredicate;
 }
 
+@property (copy, nonatomic) NSString *customDebugAlbumTitle; // @synthesize customDebugAlbumTitle=_customDebugAlbumTitle;
+@property (copy, nonatomic) NSString *customDebugInternalPredicate; // @synthesize customDebugInternalPredicate=_customDebugInternalPredicate;
+@property (copy, nonatomic) NSString *customDebugPredicate; // @synthesize customDebugPredicate=_customDebugPredicate;
 @property (nonatomic) BOOL showBestKeyFrameDebugAlbum; // @synthesize showBestKeyFrameDebugAlbum=_showBestKeyFrameDebugAlbum;
+@property (nonatomic) BOOL showCustomDebugAlbum; // @synthesize showCustomDebugAlbum=_showCustomDebugAlbum;
+@property (nonatomic) BOOL showDreamyDebugAlbum; // @synthesize showDreamyDebugAlbum=_showDreamyDebugAlbum;
 @property (nonatomic) BOOL showUtilitiesDebugAlbum; // @synthesize showUtilitiesDebugAlbum=_showUtilitiesDebugAlbum;
 
++ (CDUnknownBlockType)_predicateValidatorUsingInternalPredicate:(BOOL)arg1;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)parentSettings;
 - (void)setDefaultValues;
 

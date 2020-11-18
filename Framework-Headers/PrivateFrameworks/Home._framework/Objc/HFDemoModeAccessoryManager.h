@@ -18,9 +18,9 @@
 @property (strong, nonatomic) NSArray *demoAccessories; // @synthesize demoAccessories=_demoAccessories;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
-+ (id)_cameraClipForProfile:(id)arg1 url:(id)arg2 duration:(double)arg3;
 + (id)_clipStartDateFromComponents:(id)arg1 today:(id)arg2;
-+ (id)_eventsFromString:(id)arg1 startDate:(id)arg2;
++ (id)_demoClipWithURL:(id)arg1 duration:(double)arg2 cameraProfile:(id)arg3;
++ (id)_eventsFromString:(id)arg1 startDate:(id)arg2 cameraProfile:(id)arg3;
 + (id)accessoryProfileName:(id)arg1;
 + (id)accessoryWithContentsOfDictionary:(id)arg1 forHome:(id)arg2;
 + (id)clipsForCameraProfile:(id)arg1;

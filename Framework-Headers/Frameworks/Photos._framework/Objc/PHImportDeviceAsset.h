@@ -25,9 +25,8 @@
 - (BOOL)canPreserveFolderStructure;
 - (BOOL)canReference;
 - (BOOL)containsDateKey:(id)arg1;
-- (id)createMetadataFromCameraFile:(id)arg1;
-- (void)didDownloadFile:(id)arg1 error:(id)arg2 options:(id)arg3 contextInfo:(void *)arg4;
-- (void)downloadToPathAsync:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)copyToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)createMetadataFromProperties:(id)arg1;
 - (id)duration;
 - (id)exifImageDate;
 - (BOOL)hasAdjustments;

@@ -13,25 +13,27 @@
 
 @interface WFWeatherConditions : NSObject <NSCopying, NSSecureCoding>
 {
+    WFLocation *_location;
     BOOL _nightForecast;
     struct os_unfair_lock_s _componentsLock;
     NSMutableDictionary *_components;
-    WFLocation *_location;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *components; // @synthesize components=_components;
 @property (nonatomic) struct os_unfair_lock_s componentsLock; // @synthesize componentsLock=_componentsLock;
-@property (strong) WFLocation *location; // @synthesize location=_location;
+@property (copy) WFLocation *location;
 @property (getter=isNightForecast) BOOL nightForecast; // @synthesize nightForecast=_nightForecast;
 
++ (id)calendar;
++ (unsigned long long)dateComponentCalendarUnits;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_commonInit;
-- (void)_retrieveSunrise:(id *)arg1 sunset:(id *)arg2;
 - (id)allComponents;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)editLinksWithLocale:(id)arg1 trackingParameter:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

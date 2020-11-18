@@ -16,8 +16,8 @@
 #import <SafariServices/_WKInputDelegate-Protocol.h>
 #import <SafariServices/_WKWebAuthenticationPanelDelegate-Protocol.h>
 
-@class NSString, NSUUID, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialog, _SFDialogController, _SFFormAutoFillController;
-@protocol SFWebViewControllerDelegate, _SFAuthenticatorDialog;
+@class NSString, NSUUID, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
+@protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _WKWebAuthenticationPanelDelegate, _SFDialogPresenting>
@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
     BOOL _didFinishDocumentLoad;
     BOOL _shouldSuppressDialogsThatBlockWebProcess;
     NSString *_domainWhereUserDeclinedAutomaticStrongPassword;
-    _SFDialog<_SFAuthenticatorDialog> *_authenticatorDialog;
     BOOL _loading;
     BOOL _didFirstVisuallyNonEmptyLayout;
+    BOOL _didFirstPaint;
     BOOL _hasFocusedInputFieldOnCurrentPage;
     BOOL _hasFormControlInteraction;
     id<SFWebViewControllerDelegate> _delegate;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<SFWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) _SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
+@property (readonly, nonatomic) BOOL didFirstPaint; // @synthesize didFirstPaint=_didFirstPaint;
 @property (readonly, nonatomic) BOOL didFirstVisuallyNonEmptyLayout; // @synthesize didFirstVisuallyNonEmptyLayout=_didFirstVisuallyNonEmptyLayout;
 @property (readonly, nonatomic) BOOL hasFocusedInputFieldOnCurrentPage; // @synthesize hasFocusedInputFieldOnCurrentPage=_hasFocusedInputFieldOnCurrentPage;
 @property (readonly, nonatomic) BOOL hasFormControlInteraction; // @synthesize hasFormControlInteraction=_hasFormControlInteraction;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)_presentingViewControllerForWebView:(id)arg1;
 - (void)_userDeclinedAutomaticStrongPasswordForCurrentDomainOnTabWithUUID:(id)arg1;
 - (void)_webView:(id)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id)arg2;
+- (void)_webView:(id)arg1 authenticationChallenge:(id)arg2 shouldAllowLegacyTLS:(CDUnknownBlockType)arg3;
 - (void)_webView:(id)arg1 checkUserMediaPermissionForURL:(id)arg2 mainFrameURL:(id)arg3 frameIdentifier:(unsigned long long)arg4 decisionHandler:(CDUnknownBlockType)arg5;
 - (void)_webView:(id)arg1 contextMenuConfigurationForElement:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
@@ -71,10 +73,12 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 didChangeSafeAreaShouldAffectObscuredInsets:(BOOL)arg2;
 - (void)_webView:(id)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(id)arg2;
+- (void)_webView:(id)arg1 didNegotiateModernTLS:(id)arg2;
 - (void)_webView:(id)arg1 didPresentFocusedElementViewController:(id)arg2;
 - (void)_webView:(id)arg1 didResignInputElementStrongPasswordAppearanceWithUserInfo:(id)arg2;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(id)arg2 uti:(id)arg3;
+- (BOOL)_webView:(id)arg1 fileUploadPanelContentIsManagedWithInitiatingFrame:(id)arg2;
 - (BOOL)_webView:(id)arg1 focusRequiresStrongPasswordAssistance:(id)arg2;
 - (void)_webView:(id)arg1 insertTextSuggestion:(id)arg2 inInputSession:(id)arg3;
 - (void)_webView:(id)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
@@ -87,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 requestUserMediaAuthorizationForDevices:(unsigned long long)arg2 url:(id)arg3 mainFrameURL:(id)arg4 decisionHandler:(CDUnknownBlockType)arg5;
 - (void)_webView:(id)arg1 runWebAuthenticationPanel:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
+- (void)_webView:(id)arg1 willGoToBackForwardListItem:(id)arg2 inPageCache:(BOOL)arg3;
 - (void)_webView:(id)arg1 willPerformClientRedirectToURL:(id)arg2 delay:(double)arg3;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 willSubmitFormValues:(id)arg2 userObject:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
@@ -113,11 +118,15 @@ __attribute__((visibility("hidden")))
 - (id)initWithWebViewConfiguration:(id)arg1;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)panel:(id)arg1 decidePolicyForLocalAuthenticatorWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)panel:(id)arg1 dismissWebAuthenticationPanelWithResult:(long long)arg2;
+- (void)panel:(id)arg1 requestPINWithRemainingRetries:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)panel:(id)arg1 selectAssertionResponse:(id)arg2 source:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)panel:(id)arg1 updateWebAuthenticationPanel:(long long)arg2;
 - (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)sfWebView:(id)arg1 didStartDownload:(id)arg2;
+- (BOOL)sfWebViewCanPromptForAccountSecurityRecommendation;
 - (void)sfWebViewDidBecomeFirstResponder:(id)arg1;
 - (void)sfWebViewDidChangeSafeAreaInsets:(id)arg1;
 - (void)sfWebViewDidEndFormControlInteraction:(id)arg1;

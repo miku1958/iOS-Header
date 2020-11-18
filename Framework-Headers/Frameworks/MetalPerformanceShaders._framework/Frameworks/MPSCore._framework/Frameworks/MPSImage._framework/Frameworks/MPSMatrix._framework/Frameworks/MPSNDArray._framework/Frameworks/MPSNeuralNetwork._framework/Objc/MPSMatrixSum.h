@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) unsigned long long rows; // @synthesize rows=_rows;
 @property (readonly, nonatomic) BOOL transpose; // @synthesize transpose=_transpose;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeToCommandBuffer:(id)arg1 encoder:(id)arg2 sourceMatrices:(id)arg3 resultMatrix:(id)arg4 scaleVector:(id)arg5 offsetVector:(id)arg6 biasVector:(id)arg7 startIndex:(unsigned long long)arg8;
 - (void)encodeToCommandBuffer:(id)arg1 sourceMatrices:(id)arg2 resultMatrix:(id)arg3 scaleVector:(id)arg4 offsetVector:(id)arg5 biasVector:(id)arg6 startIndex:(unsigned long long)arg7;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;

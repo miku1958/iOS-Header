@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle;
-@protocol MTLBuffer, MTLDevice, MTLRenderPipelineState, OS_dispatch_queue;
+@class NSBundle, NTKPromise;
+@protocol MTLDevice;
 
 @interface NTKKaleidoscopeResourceManager : NSObject
 {
@@ -15,19 +15,16 @@
     id<MTLDevice> _device;
     unsigned long long _clients;
     unsigned long long _viewMtlPixelFormat;
-    NSObject<OS_dispatch_queue> *_queue;
-    id<MTLRenderPipelineState> _renderPipelines[4][2];
-    id<MTLBuffer> _mtlBuffer;
+    NTKPromise *_renderPipelines[4][2];
+    NTKPromise *_mtlBuffer;
 }
-
-@property (readonly, nonatomic) id<MTLBuffer> mtlBuffer; // @synthesize mtlBuffer=_mtlBuffer;
 
 + (void)_deallocInstance:(id)arg1;
 + (id)sharedInstanceWithPixelFormat:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_asyncDeallocInstance;
-- (void)_queue_loadMTLBufferData;
-- (void)_queue_loadPrograms;
+- (void)_loadMTLBufferData;
+- (void)_loadPrograms;
 - (void)_queue_setupPipelineForType:(unsigned long long)arg1 vertexFunction:(id)arg2 fragmentName:(id)arg3 inLibrary:(id)arg4 librarySPI:(id)arg5;
 - (void)addClient;
 - (void)dealloc;

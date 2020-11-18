@@ -41,6 +41,7 @@
 - (id)observers;
 - (void)processDiscoveryItemsAndMessagesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeDiscoveryMessageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeDiscoveryUserNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)rulesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateDiscoveryEngagementMessageWithIdentifier:(id)arg1 forAction:(long long)arg2 completion:(CDUnknownBlockType)arg3;

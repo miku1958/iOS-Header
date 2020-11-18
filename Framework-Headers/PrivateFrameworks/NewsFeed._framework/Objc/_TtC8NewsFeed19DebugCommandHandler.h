@@ -13,6 +13,8 @@
     MISSING_TYPE *resolver;
     MISSING_TYPE *fontManager;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

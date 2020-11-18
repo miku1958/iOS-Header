@@ -22,7 +22,7 @@
 @property (nonatomic) BOOL releasing; // @synthesize releasing=_releasing;
 
 - (id)initWithSampleRate:(double)arg1 envelope:(id)arg2;
-- (void)renderInBuffer:(vector_3203cf93 *)arg1 atFrame:(unsigned long long)arg2 numSamples:(unsigned long long)arg3;
+- (void)renderInBuffer:(vector_12bd641b *)arg1 atFrame:(unsigned long long)arg2 numSamples:(unsigned long long)arg3;
 - (void)resetRelease;
 - (void)setFrequency:(double)arg1;
 - (void)startRelease;

@@ -9,16 +9,19 @@
 #import <CoreSuggestions/SGDSuggestManagerAllProtocol-Protocol.h>
 
 @class SGDaemonConnection;
+@protocol SGDSuggestManagerAllProtocol;
 
 @interface SGRemoteObjectProxy : NSObject <SGDSuggestManagerAllProtocol>
 {
     SGDaemonConnection *_connection;
+    id<SGDSuggestManagerAllProtocol> _inProcessSuggestManager;
     BOOL _queuesRequestsIfBusy;
 }
 
 - (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithConnection:(id)arg1 queuesRequestsIfBusy:(BOOL)arg2;
+- (id)initWithInProcessSuggestManager:(id)arg1;
 
 @end
 

@@ -23,6 +23,9 @@
     TSWPDropCapStyle *_dropCapStyle;
     double _advance;
     double _wrapPadding;
+    TSWPCharacterStyle *_characterStyle;
+    TSWPParagraphStyle *_paragraphStyle;
+    double _underlineOffsetFromBaseline;
     long long _lineSpacingMode;
     double _lineSpacingAmount;
     double _singleLineHeight;
@@ -32,21 +35,20 @@
     TSUBezierPath *_shapePath;
     TSDWrapSegments *_wrapSegments;
     TSUBezierPath *_pathForExteriorWrap;
-    TSWPCharacterStyle *_characterStyle;
-    TSWPParagraphStyle *_paragraphStyle;
+    TSUBezierPath *_underlineWrapPath;
     NSString *_fontPostScriptName;
     double _unscaledFontSize;
     double _fontScaleFactor;
     struct CGSize _size;
     struct CGPoint _origin;
     struct CGPoint _glyphOffset;
-    struct CGRect _underlineRect;
+    struct CGRect _rectAllocatedForUnderline;
     struct CGRect _characterFillRect;
     struct CGRect _dropCapFrame;
     struct CGRect _textFrame;
     struct CGRect _insetTextFrame;
     struct TSWPFontHeightInfo _heightInfo;
-    struct TSWPFontHeightInfo _fontHeightInfo;
+    struct TSWPFontHeightInfo _unscaledFontHeightInfo;
 }
 
 @property (nonatomic) double advance; // @synthesize advance=_advance;
@@ -54,6 +56,7 @@
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) TSDFill *characterFill;
 @property (nonatomic) struct CGRect characterFillRect; // @synthesize characterFillRect=_characterFillRect;
+@property (readonly, nonatomic) BOOL characterFillShouldFillTextContainer;
 @property (strong, nonatomic) TSWPDropCapCharacterMetrics *characterMetrics; // @synthesize characterMetrics=_characterMetrics;
 @property (strong, nonatomic) TSWPCharacterStyle *characterStyle; // @synthesize characterStyle=_characterStyle;
 @property (strong, nonatomic) NSString *coreTextString; // @synthesize coreTextString=_coreTextString;
@@ -64,7 +67,6 @@
 @property (strong, nonatomic) TSWPDropCapStyle *dropCapStyle; // @synthesize dropCapStyle=_dropCapStyle;
 @property (readonly, nonatomic) double dynamicPadding;
 @property (readonly, nonatomic) struct CGRect erasableBounds;
-@property (nonatomic) struct TSWPFontHeightInfo fontHeightInfo; // @synthesize fontHeightInfo=_fontHeightInfo;
 @property (copy, nonatomic) NSString *fontPostScriptName; // @synthesize fontPostScriptName=_fontPostScriptName;
 @property (nonatomic) double fontScaleFactor; // @synthesize fontScaleFactor=_fontScaleFactor;
 @property (strong, nonatomic) NSArray *glyphAuthorColors; // @synthesize glyphAuthorColors=_glyphAuthorColors;
@@ -84,6 +86,7 @@
 @property (readonly, nonatomic) struct CGRect outermostPathRawBounds;
 @property (strong, nonatomic) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=_paragraphStyle;
 @property (strong, nonatomic) TSUBezierPath *pathForExteriorWrap; // @synthesize pathForExteriorWrap=_pathForExteriorWrap;
+@property (nonatomic) struct CGRect rectAllocatedForUnderline; // @synthesize rectAllocatedForUnderline=_rectAllocatedForUnderline;
 @property (strong, nonatomic) TSUBezierPath *shapePath; // @synthesize shapePath=_shapePath;
 @property (nonatomic) double singleLineHeight; // @synthesize singleLineHeight=_singleLineHeight;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
@@ -92,7 +95,9 @@
 @property (strong, nonatomic) id<TSWPTextSource> text; // @synthesize text=_text;
 @property (nonatomic) struct CGRect textFrame; // @synthesize textFrame=_textFrame;
 @property (readonly, nonatomic) struct CGRect trailingCaretBounds;
-@property (nonatomic) struct CGRect underlineRect; // @synthesize underlineRect=_underlineRect;
+@property (nonatomic) double underlineOffsetFromBaseline; // @synthesize underlineOffsetFromBaseline=_underlineOffsetFromBaseline;
+@property (strong, nonatomic) TSUBezierPath *underlineWrapPath; // @synthesize underlineWrapPath=_underlineWrapPath;
+@property (nonatomic) struct TSWPFontHeightInfo unscaledFontHeightInfo; // @synthesize unscaledFontHeightInfo=_unscaledFontHeightInfo;
 @property (nonatomic) double unscaledFontSize; // @synthesize unscaledFontSize=_unscaledFontSize;
 @property (nonatomic) double wrapPadding; // @synthesize wrapPadding=_wrapPadding;
 @property (strong, nonatomic) TSDWrapSegments *wrapSegments; // @synthesize wrapSegments=_wrapSegments;
@@ -101,9 +106,11 @@
 + (unsigned long long)convertPointsToConvexHull:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)adornmentRenderer;
-- (void)drawAdornment:(id)arg1 inContext:(struct CGContext *)arg2 viewScale:(double)arg3 flipShadows:(BOOL)arg4;
+- (void)drawAdornment:(id)arg1 inContext:(struct CGContext *)arg2 viewScale:(double)arg3 flipShadows:(BOOL)arg4 blackAndWhite:(BOOL)arg5;
+- (struct CGPoint)glyphOriginIncludingOutdent;
 - (id)initWithDropCapStyle:(id)arg1 characterStyle:(id)arg2 paragraphStyle:(id)arg3 text:(id)arg4 rightToLeft:(BOOL)arg5 vertical:(BOOL)arg6 fontHeightInfo:(struct TSWPFontHeightInfo)arg7 lineSpacingMode:(long long)arg8 lineSpacingAmount:(double)arg9;
 - (void)offsetBy:(struct CGSize)arg1;
+- (struct CGPoint)originIncludingOutdent;
 - (BOOL)p_calculateMetrics;
 - (id)p_createWrapSegments;
 - (struct CGRect)p_imageBoundsIncludingShadow:(BOOL)arg1;
@@ -115,6 +122,7 @@
 - (double)scaledFontSize;
 - (id)splitLine:(struct CGRect)arg1 skipHint:(out double *)arg2;
 - (id)styleArray;
+- (id)styleArrayWithFontSize:(double)arg1;
 - (double)widthForCharacterAtIndex:(unsigned long long)arg1;
 
 @end

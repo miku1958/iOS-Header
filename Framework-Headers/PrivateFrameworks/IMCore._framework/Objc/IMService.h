@@ -27,8 +27,6 @@
 + (id)notificationCenter;
 + (id)serviceWithName:(id)arg1;
 + (id)smsService;
-+ (unsigned long long)statusForABPerson:(id)arg1;
-+ (unsigned long long)statusForIMPerson:(id)arg1;
 + (id)subnetService;
 - (id)canonicalFormOfID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

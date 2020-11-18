@@ -17,9 +17,6 @@
 + (id)machServiceName;
 + (id)serverExportedInterface;
 + (id)serverRemoteObjectInterface;
-- (id)pairingDelegate;
-- (id)pairingQueue;
-- (id)pairingServicesDelegate;
 - (void)xpcAbortPairingReason:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)xpcActiveDeviceAssertions:(CDUnknownBlockType)arg1;
 - (void)xpcBeginDiscoveryWithBlock:(CDUnknownBlockType)arg1;
@@ -28,6 +25,7 @@
 - (void)xpcBeginMigrationWithDeviceID:(id)arg1 passcode:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)xpcCheckIfFlaggedForRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)xpcClearRecoveryFlagWithCompletion:(CDUnknownBlockType)arg1;
+- (void)xpcClearWatchNeedsGraduation:(CDUnknownBlockType)arg1;
 - (void)xpcCompanionOOBDiscoverAndPairWithName:(id)arg1 withOutOfBandPairingKey:(id)arg2 withOptions:(id)arg3 operationHasBegun:(CDUnknownBlockType)arg4;
 - (void)xpcCompanionPasscodePairWithDeviceID:(id)arg1 withOptions:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
 - (void)xpcEndDiscoveryWithBlock:(CDUnknownBlockType)arg1;
@@ -48,15 +46,19 @@
 - (void)xpcNotifyPasscode:(id)arg1 withDeviceID:(id)arg2;
 - (void)xpcPairWithSimulator:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)xpcPairingClientDidEnterPhase:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)xpcPairingClientSetAltAccountName:(id)arg1 altDSID:(id)arg2 forPairingID:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)xpcPairingClientSetPairingParentName:(id)arg1 pairingParentAltDSID:(id)arg2 forPairingID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)xpcPairingShouldContinue;
 - (void)xpcPingActiveGizmoWithPriority:(int)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)xpcPutMigrationChallengeCharacteristicWriteData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)xpcResumePairingClientCrashMonitoring:(CDUnknownBlockType)arg1;
 - (void)xpcRetriggerUnpairInfoDialogWithBlock:(CDUnknownBlockType)arg1;
 - (void)xpcScanForMigratableWatchesWithBlock:(CDUnknownBlockType)arg1;
+- (void)xpcSetWatchNeedsGraduation:(CDUnknownBlockType)arg1;
 - (void)xpcStartWatchSetupPushWithBlock:(CDUnknownBlockType)arg1;
 - (void)xpcStopWatchSetupPushWithBlock:(CDUnknownBlockType)arg1;
 - (void)xpcSubmitAlbertPairingReport:(CDUnknownBlockType)arg1;
+- (void)xpcSubmitRTCPairingMetricForMetricID:(id)arg1 withSuccess:(CDUnknownBlockType)arg2;
 - (void)xpcSubmitServerRequestReportWithRequestType:(id)arg1 duration:(double)arg2 errorCode:(unsigned int)arg3 block:(CDUnknownBlockType)arg4;
 - (void)xpcSuspendPairingClientCrashMonitoring:(CDUnknownBlockType)arg1;
 - (void)xpcSwitchActiveDeviceWithDeviceID:(id)arg1 isMagicSwitch:(BOOL)arg2 operationHasCompleted:(CDUnknownBlockType)arg3;
@@ -66,6 +68,7 @@
 - (void)xpcUnpairWithDeviceID:(id)arg1 withOptions:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
 - (void)xpcUnpairWithSimulator:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)xpcWaitForWatchPairingExtendedMetadataForAdvertisedName:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)xpcWatchNeedsGraduation:(CDUnknownBlockType)arg1;
 
 @end
 

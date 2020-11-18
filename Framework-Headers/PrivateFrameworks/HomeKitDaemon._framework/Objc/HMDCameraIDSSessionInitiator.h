@@ -6,6 +6,7 @@
 
 #import <HomeKitDaemon/HMDCameraIDSSessionHandler.h>
 
+#import <HomeKitDaemon/AVCPacketRelayDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRemoteStreamSenderProtocol-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
@@ -13,7 +14,7 @@
 @class AVCPacketRelay, HMDCameraNetworkConfig, HMDDevice, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSSessionInitiatorDelegate, OS_dispatch_queue;
 
-@interface HMDCameraIDSSessionInitiator : HMDCameraIDSSessionHandler <IDSServiceDelegate, IDSSessionDelegate, HMDCameraRemoteStreamSenderProtocol>
+@interface HMDCameraIDSSessionInitiator : HMDCameraIDSSessionHandler <AVCPacketRelayDelegate, IDSServiceDelegate, IDSSessionDelegate, HMDCameraRemoteStreamSenderProtocol>
 {
     id<HMDCameraIDSSessionInitiatorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -45,6 +46,8 @@
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 device:(id)arg3 localNetworkConfig:(id)arg4 delegate:(id)arg5 delegateQueue:(id)arg6;
 - (id)logIdentifier;
 - (void)openRelaySession;
+- (void)packetRelay:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
+- (void)packetRelay:(id)arg1 didStop:(BOOL)arg2 error:(id)arg3;
 - (void)session:(id)arg1 receivedInvitationAcceptFromID:(id)arg2;
 - (void)session:(id)arg1 receivedInvitationCancelFromID:(id)arg2;
 - (void)session:(id)arg1 receivedInvitationDeclineFromID:(id)arg2;

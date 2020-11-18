@@ -21,6 +21,7 @@
     NSDate *_dpidReconcileStartDate;
     CKRecordZoneID *_zoneID;
     CKRecordID *_recordID;
+    CKRecordID *_recordIDLegacy;
     CKContainer *_privateContainer;
     long long _qualityOfService;
     NSString *_DPID;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) CKContainer *privateContainer; // @synthesize privateContainer=_privateContainer;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+@property (strong, nonatomic) CKRecordID *recordIDLegacy; // @synthesize recordIDLegacy=_recordIDLegacy;
 @property (nonatomic) BOOL sandboxEnvironment; // @synthesize sandboxEnvironment=_sandboxEnvironment;
 @property (nonatomic) BOOL supportsDeviceToDeviceEncryption; // @synthesize supportsDeviceToDeviceEncryption=_supportsDeviceToDeviceEncryption;
 @property (nonatomic) BOOL updateInProgress; // @synthesize updateInProgress=_updateInProgress;
@@ -47,9 +49,11 @@
 - (void)backupFlowForCloudKitWorkAtTime:(id)arg1 with:(CDUnknownBlockType)arg2;
 - (BOOL)canContinueProcessing:(id)arg1;
 - (BOOL)canGenerateDPID;
+- (id)conformDPIDToUseWithRecord:(id)arg1 legacyRecord:(id)arg2;
 - (id)containerWithIDString:(id)arg1;
 - (void)continueReconcileWithAccountStatus:(long long)arg1 andError:(id)arg2 with:(CDUnknownBlockType)arg3;
 - (void)createErrorForPrivateDB:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)devicePersonalizedAdsEnabled;
 - (void)fetchDPIDfromiCloud:(CDUnknownBlockType)arg1;
 - (void)finishOperation:(unsigned long long)arg1;
 - (id)generateDPID;
@@ -60,7 +64,6 @@
 - (id)insecureContainer;
 - (BOOL)isLoggedIntoiTunes;
 - (BOOL)isRestrictedByApple;
-- (BOOL)limitAdTrackingEnabled;
 - (id)operationQueueLog;
 - (id)primaryiCloudAccountAltDSID;
 - (unsigned long long)primaryiCloudAccountSecurityLevel;

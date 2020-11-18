@@ -49,6 +49,7 @@
 - (void)_performOrEnqueueUpdateOfType:(long long)arg1 forFaceUUID:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_performSuppressingFaceObserverCallbacks:(CDUnknownBlockType)arg1;
 - (void)_pruneEnqueuedUpdatesMadeObsoleteByNewUpdate:(id)arg1;
+- (void)_register;
 - (void)_registerIfNeeded;
 - (void)_sendToDaemonAddedFace:(id)arg1 forUUID:(id)arg2;
 - (void)_sendToDaemonFlushWithIdentifier:(id)arg1;

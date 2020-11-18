@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
+
+#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
 
 @class AMSUIWebClientContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebNavigationBarModel : AMSUIWebModel
+@interface AMSUIWebNavigationBarModel : NSObject <AMSUIWebModelInterface>
 {
     BOOL _hidesBackButton;
     NSString *_backButtonTitle;
@@ -22,10 +24,14 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSString *backButtonTitle; // @synthesize backButtonTitle=_backButtonTitle;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesBackButton; // @synthesize hidesBackButton=_hidesBackButton;
 @property (strong, nonatomic) id leftButtonObj; // @synthesize leftButtonObj=_leftButtonObj;
 @property (strong, nonatomic) id rightButtonObj; // @synthesize rightButtonObj=_rightButtonObj;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

@@ -9,17 +9,16 @@
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
-#import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationViewControllerView, NSPointerArray, NSString, UIPanGestureRecognizer, UIScrollView, UIView;
+@class NCNotificationRequest, NCNotificationViewControllerView, NSHashTable, NSString, UIPanGestureRecognizer, UIView;
 @protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, PLPlatter><NCNotificationStaticContentAccepting, UIViewControllerTransitionCoordinator;
 
-@interface NCNotificationViewController : UIViewController <UIScrollViewDelegate, NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
+@interface NCNotificationViewController : UIViewController <NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
 {
     BOOL _didQueryCanPan;
     BOOL _canPan;
     long long _ncTransitionAnimationState;
-    NSPointerArray *_observers;
+    NSHashTable *_observers;
     UIView<PLContentSizeManaging> *_contentSizeManagingView;
     UIView<PLPlatter><NCNotificationStaticContentAccepting> *_lookView;
     BOOL _revealAdditionalContentOnPresentation;
@@ -58,7 +57,6 @@
 @property (weak, nonatomic) id<NCNotificationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic, getter=_dismissalCompletion, setter=_setDismissalCompletion:) CDUnknownBlockType dismissalCompletion; // @synthesize dismissalCompletion=_dismissalCompletion;
-@property (readonly, nonatomic, getter=isDragging) BOOL dragging;
 @property (nonatomic) BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInteractionEnabled) BOOL interactionEnabled; // @synthesize interactionEnabled=_interactionEnabled;
@@ -73,7 +71,6 @@
 @property (readonly, nonatomic, getter=_presentedLongLookViewController) NCNotificationViewController *presentedLongLookViewController;
 @property (readonly, nonatomic, getter=_isPresentingCustomContentProvidingViewController) BOOL presentingCustomContentProvidingViewController;
 @property (nonatomic) BOOL revealAdditionalContentOnPresentation; // @synthesize revealAdditionalContentOnPresentation=_revealAdditionalContentOnPresentation;
-@property (readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView; // @dynamic scrollView;
 @property (readonly, nonatomic, getter=isShortLook) BOOL shortLook;
 @property (nonatomic, getter=_shouldRestorePresentingShortLookOnDismiss, setter=_setShouldRestorePresentingShortLookOnDismiss:) BOOL shouldRestorePresentingShortLookOnDismiss; // @synthesize shouldRestorePresentingShortLookOnDismiss=_shouldRestorePresentingShortLookOnDismiss;
 @property (strong, nonatomic) id<NCNotificationStaticContentProviding> staticContentProvider; // @synthesize staticContentProvider=_staticContentProvider;
@@ -89,6 +86,7 @@
 - (void)_executeClearAction:(BOOL)arg1;
 - (void)_executeCloseAction:(BOOL)arg1;
 - (void)_executeDefaultAction:(BOOL)arg1;
+- (void)_executeNilAction:(BOOL)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(BOOL)arg2;
 - (void)_loadLookView;
 - (id)_lookView;
@@ -107,10 +105,8 @@
 - (void)_setupAuxiliaryOptionsContentProvider;
 - (void)_setupCustomContentProvider;
 - (void)_setupStaticContentProvider;
-- (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (void)_updateLookView:(id)arg1 withTitleFromProvidedStaticContent:(id)arg2;
 - (void)_updatePreferredContentSize;
-- (void)_updateScrollViewContentSize;
 - (void)_updateWithProvidedAuxiliaryOptionsContent;
 - (void)_updateWithProvidedCustomContent;
 - (void)_updateWithProvidedStaticContent;
@@ -124,8 +120,8 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
-- (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)dismissPresentedViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)expandAndPlayMedia;
 - (id)expandedPlatterPresentationController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
@@ -139,6 +135,7 @@
 - (long long)ncTransitionAnimationState;
 - (id)notificationUsageTrackingState;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
 - (BOOL)prefersStatusBarHidden;
 - (void)presentLongLookAnimated:(BOOL)arg1 trigger:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -162,7 +159,6 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

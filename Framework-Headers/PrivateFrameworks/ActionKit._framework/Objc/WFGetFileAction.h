@@ -10,15 +10,18 @@
 {
 }
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (id)filePathKey;
 - (id)filenamePlaceholderText;
 - (BOOL)multipleSelectionEnabled;
 - (BOOL)outputsMultipleItems;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
+- (void)runWithRemoteUserInterface:(id)arg1 path:(id)arg2 input:(id)arg3 storageService:(id)arg4;
 - (void)selectedStorageServiceChanged;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)showPickerKey;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 - (void)updateVisibleParameters;
 
 @end

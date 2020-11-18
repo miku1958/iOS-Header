@@ -13,6 +13,7 @@
 
 @interface _SFPBAppIconImage : PBCodable <_SFPBAppIconImage, NSSecureCoding>
 {
+    int _iconType;
     NSString *_bundleIdentifier;
 }
 
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) int iconType; // @synthesize iconType=_iconType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;
 

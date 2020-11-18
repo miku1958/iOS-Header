@@ -9,7 +9,7 @@
 #import <PersistentConnection/PCCarrierBundleHelperDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
 
-@class NSRunLoop, NSString, PCPersistentTimer;
+@class NSRunLoop, NSString, PCKeepAliveState, PCPersistentTimer;
 @protocol OS_dispatch_queue, OS_os_log, PCConnectionManagerDelegate, PCGrowthAlgorithm;
 
 @interface PCConnectionManager : NSObject <PCCarrierBundleHelperDelegate, PCInterfaceMonitorDelegate>
@@ -76,6 +76,7 @@
 @property (nonatomic) int currentAddressFamily;
 @property (readonly, nonatomic) int currentGrowthStage;
 @property (readonly, nonatomic) double currentKeepAliveInterval;
+@property (readonly, nonatomic) PCKeepAliveState *currentKeepAliveState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PCConnectionManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;

@@ -17,6 +17,7 @@
     BOOL _attemptedCGImage;
     NSValue *_targetSizeValue;
     NSNumber *_compressionQuality;
+    struct __CFString *_sourceImageFormatUTI;
 }
 
 @property (readonly, nonatomic) struct CGImage *CGImage; // @synthesize CGImage=_CGImage;
@@ -26,22 +27,27 @@
 @property (readonly, copy, nonatomic) NSData *originalData; // @synthesize originalData=_originalData;
 @property (readonly, nonatomic) struct CGSize originalSize; // @synthesize originalSize=_originalSize;
 @property (nonatomic) struct CGSize size;
+@property (nonatomic) struct __CFString *sourceImageFormatUTI; // @synthesize sourceImageFormatUTI=_sourceImageFormatUTI;
 @property (copy, nonatomic) NSValue *targetSizeValue; // @synthesize targetSizeValue=_targetSizeValue;
 
-+ (struct CGImage *)CGImageCreateWithData:(id)arg1 maxSizeValue:(id)arg2;
++ (id)CGImageCreateWithData:(id)arg1 maxSizeValue:(id)arg2;
 + (id)scaleCropRects:(id)arg1 factor:(double)arg2;
 + (struct CGRect)scaleRect:(struct CGRect)arg1 byFactor:(double)arg2;
 - (void).cxx_destruct;
-- (id)JPEGRepresentationOfCGImage:(struct CGImage *)arg1 quality:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)cropRects;
 - (id)data;
 - (void)dealloc;
 - (void)describePropertiesWithBuilder:(id)arg1;
+- (BOOL)hasAlphaChannel;
 - (id)initWithData:(id)arg1 cropRects:(id)arg2 size:(struct CGSize)arg3;
+- (BOOL)isSourceLossless;
+- (void)nts_initCGImage;
 - (void)nts_invalidateImageQuality;
 - (void)nts_invalidateImageSize;
 - (void)nts_updateRepresentation;
+- (id)renderCGImage:(struct CGImage *)arg1;
+- (BOOL)shouldReturnPNG;
 
 @end
 

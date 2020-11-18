@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     int _droppedFrameCount;
     int _failedFrameCount;
     BOOL _forceDisableEffectsHealthCheck;
+    struct __CVBuffer *_lastReceivedPixelBuffer;
+    struct __CVBuffer *_lastReceivedDepthBuffer;
     int _thermalPressureLevel;
 }
 
@@ -34,11 +36,9 @@ __attribute__((visibility("hidden")))
 @property (strong) NSMutableArray *effectsArray; // @synthesize effectsArray=_effectsArray;
 
 + (id)sharedManager;
-- (void)addStickerWithURL:(id)arg1 isFaceSticker:(BOOL)arg2 atPosition:(struct CGPoint)arg3 identifier:(id)arg4;
 - (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4 toClient:(id)arg5;
 - (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthDataPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4;
 - (BOOL)checkEffectsHealth;
-- (void)clearAllStickers:(BOOL)arg1;
 - (void)dealloc;
 - (void)effectsRegistered:(BOOL)arg1;
 - (void)encodeProcessedPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2 imageData:(id)arg3 processTime:(id)arg4;
@@ -48,8 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)registerBlocksForService;
 - (void)renderPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2;
 - (void)resetEffectsLogging;
-- (void)setAnimoji:(id)arg1;
-- (void)setMemoji:(id)arg1;
 - (void)updateThermalLevel:(int)arg1;
 
 @end

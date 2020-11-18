@@ -22,6 +22,7 @@
     MISSING_TYPE *audioConfigManager;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *audioTabVisibilitySignal;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

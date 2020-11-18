@@ -11,6 +11,8 @@
 @property (readonly, nonatomic, getter=isHMError) BOOL hmError;
 
 + (id)errorWithOSStatus:(int)arg1;
++ (id)hapErrorWithCode:(long long)arg1;
++ (id)hapErrorWithcode:(long long)arg1;
 + (id)hapErrorWithcode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4 underlyingError:(id)arg5;
 + (id)hmErrorWithCode:(long long)arg1;
 + (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4;

@@ -11,11 +11,11 @@
 
 @interface HDLegacyClinicalCredentialManager : NSObject
 {
-    NSData *__cachedCredentialKey;
+    NSData *_cachedCredentialKey;
     NSObject<OS_dispatch_queue> *_credentialKeyQueue;
 }
 
-@property (copy, nonatomic, setter=_setCachedCredentialKey:) NSData *_cachedCredentialKey;
+@property (copy, nonatomic) NSData *cachedCredentialKey;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *credentialKeyQueue; // @synthesize credentialKeyQueue=_credentialKeyQueue;
 
 - (void).cxx_destruct;

@@ -34,7 +34,7 @@
 - (void)beginWork;
 - (BOOL)canReference;
 - (void)dealloc;
-- (void)dispatchAssetDataRequestAsync:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)dispatchAssetDataRequestAsyncUsingBlock:(CDUnknownBlockType)arg1;
 - (void)endWork;
 - (unsigned long long)hash;
 - (id)initWithUrls:(id)arg1;

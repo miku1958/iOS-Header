@@ -14,13 +14,18 @@
 {
     NSMutableArray *_events;
     CLPMeta *_meta;
+    int _type;
+    CDStruct_f953fb60 _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
+@property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
+@property (nonatomic) int type; // @synthesize type=_type;
 
 + (Class)eventsType;
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)addEvents:(id)arg1;
 - (void)clearEvents;
 - (void)copyTo:(id)arg1;
@@ -35,6 +40,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

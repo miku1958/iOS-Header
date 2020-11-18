@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AFNotifyObserver, NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
+@class AFNotifyObserver, FBSDisplayLayoutMonitor, NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
 
 @interface SASSystemState : NSObject
 {
@@ -14,6 +14,7 @@
     BOOL _enabled;
     int _carPlayConnectionState;
     SASLockStateMonitor *_lockStateMonitor;
+    FBSDisplayLayoutMonitor *_displayLayoutMonitor;
     SUICApplicationStateHelper *_applicationStateHelper;
     NSHashTable *_listeners;
     AFNotifyObserver *_observerWirelessSplitter;
@@ -23,6 +24,7 @@
 @property (nonatomic) BOOL accessibilityShortcutEnabled; // @synthesize accessibilityShortcutEnabled=_accessibilityShortcutEnabled;
 @property (strong, nonatomic) SUICApplicationStateHelper *applicationStateHelper; // @synthesize applicationStateHelper=_applicationStateHelper;
 @property (nonatomic) int carPlayConnectionState; // @synthesize carPlayConnectionState=_carPlayConnectionState;
+@property (strong, nonatomic) FBSDisplayLayoutMonitor *displayLayoutMonitor; // @synthesize displayLayoutMonitor=_displayLayoutMonitor;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property (strong, nonatomic) SASLockStateMonitor *lockStateMonitor; // @synthesize lockStateMonitor=_lockStateMonitor;
@@ -32,21 +34,29 @@
 + (id)new;
 + (id)sharedSystemState;
 - (void).cxx_destruct;
+- (BOOL)_deviceIsUnlocked;
+- (id)_initForTesting;
+- (BOOL)_internalAlwaysEyesFreeEnabled;
+- (BOOL)_mapsAppIsVisibleOnLockscreen;
 - (void)_updateAccessibilityState;
 - (void)addStateChangeListener:(id)arg1;
 - (BOOL)carDNDActive;
+- (BOOL)carDNDActiveOrEyesFreeAndShouldHaveFullScreenPresentation;
 - (id)currentSpokenLanguageCode;
 - (BOOL)deviceIsBlocked;
 - (BOOL)deviceIsPasscodeLocked;
+- (BOOL)deviceScreenIsOn;
 - (id)foregroundAppInfosForPresentationIdentifier:(long long)arg1;
 - (BOOL)hasUnlockedSinceBoot;
 - (id)init;
+- (BOOL)isATV;
 - (BOOL)isConnectedToCarPlay;
 - (BOOL)isConnectedToEyesFreeDevice;
 - (BOOL)isConnectedToTrustedCarPlay;
 - (BOOL)isGuestConnected;
 - (BOOL)isInActiveCall;
 - (BOOL)isPad;
+- (BOOL)isRightHandDrive;
 - (BOOL)isWirelessSplitterOn;
 - (void)monitorCarSessions;
 - (void)removeStateChangeListener:(id)arg1;

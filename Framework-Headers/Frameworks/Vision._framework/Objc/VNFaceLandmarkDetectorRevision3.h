@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (unsigned char)landmarkDetectorDNNVersion;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
-- (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
-- (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 - (struct CGRect)normalizedFaceBBoxForLandmarks:(id)arg1;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 

@@ -6,18 +6,47 @@
 
 #import <MetalTools/MTLToolsRenderCommandEncoder.h>
 
-@interface MTLGPUDebugRenderCommandEncoder : MTLToolsRenderCommandEncoder
+#import <MetalTools/MTLGPUDebugCommandEncoder-Protocol.h>
+
+@class MTLGPUDebugCommandBuffer, MTLGPUDebugRenderPipelineState, MTLToolsDepthStencilState, NSString;
+
+@interface MTLGPUDebugRenderCommandEncoder : MTLToolsRenderCommandEncoder <MTLGPUDebugCommandEncoder>
 {
+    unsigned int useResourceIteration;
+    BOOL _tileStageActive;
+    BOOL _tileStageUsed;
+    BOOL _fragmentStageActive;
+    struct MTLGPUDebugStageBufferHandles _vertexHandles;
+    struct MTLGPUDebugStageBufferHandles _fragmentHandles;
+    struct MTLGPUDebugStageBufferHandles _tileHandles;
     struct MTLGPUDebugBufferArgumentData _vertexBuffers;
     struct MTLGPUDebugBufferArgumentData _fragmentBuffers;
     struct MTLGPUDebugBufferArgumentData _tileBuffers;
-    unsigned long long _pipelineStateID;
-    unsigned int _encoderID;
-    unsigned int _currentDrawID;
+    struct MTLGPUDebugTileThreadgroup _threadgroup;
+    struct Options *_options;
+    struct GPUDebugEventUUIDPacket _drawID;
+    unsigned long long _encoderType;
+    MTLGPUDebugRenderPipelineState *_currentPipeline;
+    MTLToolsDepthStencilState *_currentDepthStencil;
+    struct GPUBufferSubAlloc _vertexReportBuffer;
+    struct GPUBufferSubAlloc _fragmentReportBuffer;
+    struct GPUBufferSubAlloc _tileReportBuffer;
+    struct {
+        unsigned char count;
+        BOOL mappingsValid;
+        CDStruct_1987c1e3 mappings[2];
+    } _vertexAmpState;
 }
 
+@property (readonly) MTLGPUDebugCommandBuffer *commandBuffer; // @dynamic commandBuffer;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int encoderID;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id).cxx_construct;
-- (void)dealloc;
+- (void)_initBufferArgumentData:(id)arg1;
 - (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchIndexBuffer:(id)arg2 patchIndexBufferOffset:(unsigned long long)arg3 controlPointIndexBuffer:(id)arg4 controlPointIndexBufferOffset:(unsigned long long)arg5 indirectBuffer:(id)arg6 indirectBufferOffset:(unsigned long long)arg7;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9;
@@ -34,22 +63,34 @@
 - (void)endEncoding;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
+- (void)flushBindings;
 - (id)initWithRenderCommandEncoder:(id)arg1 commandBuffer:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;
 - (id)initWithRenderCommandEncoder:(id)arg1 parallelEncoder:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;
-- (void)onDraw;
+- (void)setDepthStencilState:(id)arg1;
 - (void)setFragmentBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setFragmentBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setFragmentBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setFragmentBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setFragmentReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)setRenderPipelineState:(id)arg1;
+- (void)setRenderPipelineStateBuffers:(id)arg1;
+- (void)setTessellationControlPointIndexBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setTileBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setTileBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTileBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setTileBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setTileReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setVertexBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setVertexReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
+- (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
 
 @end
 

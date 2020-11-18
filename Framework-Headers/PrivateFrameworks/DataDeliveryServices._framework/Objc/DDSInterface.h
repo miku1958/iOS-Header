@@ -17,17 +17,17 @@
     id<DDSManagingDelegate> _delegate;
     id<DDSManaging> _serverOverride;
     NSXPCConnection *_remoteServer;
-    NSObject<OS_dispatch_queue> *_queue;
     DDSInterface *_sharedInstance;
     id<DDSManagingDelegate> _mDelegate;
+    NSObject<OS_dispatch_queue> *_connectionUsageQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *connectionUsageQueue; // @synthesize connectionUsageQueue=_connectionUsageQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<DDSManagingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<DDSManagingDelegate> mDelegate; // @synthesize mDelegate=_mDelegate;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSXPCConnection *remoteServer; // @synthesize remoteServer=_remoteServer;
 @property (strong, nonatomic) id<DDSManaging> serverOverride; // @synthesize serverOverride=_serverOverride;
 @property (readonly, nonatomic) DDSInterface *sharedInstance; // @synthesize sharedInstance=_sharedInstance;
@@ -37,12 +37,10 @@
 + (id)sharedInstance;
 + (unsigned long long)xpcConnectionOptionsForServer;
 - (void).cxx_destruct;
-- (id)_assertionClientDispatchQueue;
 - (void)addAssertionForQuery:(id)arg1 policy:(id)arg2 assertionID:(id)arg3 clientID:(id)arg4;
 - (void)assertionIDsForClientID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)createConnectionIfNecessary;
 - (void)dealloc;
-- (void)didUpdateAssetsWithType:(id)arg1;
 - (id)init;
 - (void)removeAssertionWithID:(id)arg1;
 - (id)server;
@@ -50,6 +48,8 @@
 - (id)syncServer;
 - (id)syncServiceObjectProxy;
 - (void)teardownXPCConnection;
+- (void)triggerDump;
+- (void)triggerUpdate;
 
 @end
 

@@ -8,21 +8,21 @@
 
 @interface TSTCellRangeControlSpec : TSTCellSpec
 {
-    int _interactionType;
-    int _legacyDisplayFormatType;
+    unsigned int _interactionType;
+    unsigned int _legacyDisplayFormatType;
     double _minimum;
     double _maximum;
     double _increment;
 }
 
 @property (readonly, nonatomic) double increment; // @synthesize increment=_increment;
-@property (readonly, nonatomic) int legacyDisplayFormatType; // @synthesize legacyDisplayFormatType=_legacyDisplayFormatType;
+@property (readonly, nonatomic) unsigned int legacyDisplayFormatType; // @synthesize legacyDisplayFormatType=_legacyDisplayFormatType;
 @property (readonly, nonatomic) double maximum; // @synthesize maximum=_maximum;
 @property (readonly, nonatomic) double minimum; // @synthesize minimum=_minimum;
 
 + (id)cellSpecFromTSKFormat:(id)arg1;
-+ (double)defaultCellValueForInteractionType:(int)arg1;
-+ (id)defaultRangeControlSpecOfType:(int)arg1;
++ (double)defaultCellValueForInteractionType:(unsigned int)arg1;
++ (id)defaultRangeControlSpecOfType:(unsigned int)arg1;
 + (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
 + (BOOL)legalRangeControlMinimum:(double)arg1 maximum:(double)arg2 increment:(double)arg3;
 + (id)sliderSpecWithMinimum:(double)arg1 maximum:(double)arg2 increment:(double)arg3;
@@ -30,12 +30,12 @@
 - (id)asRangeControlSpec;
 - (unsigned long long)hash;
 - (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithInteractionType:(int)arg1 minimum:(double)arg2 maximum:(double)arg3 increment:(double)arg4;
-- (int)interactionType;
+- (id)initWithInteractionType:(unsigned int)arg1 minimum:(double)arg2 maximum:(double)arg3 increment:(double)arg4;
+- (unsigned int)interactionType;
 - (BOOL)isEqual:(id)arg1;
 - (double)recomputedValueFromValue:(double)arg1 changed:(BOOL *)arg2;
 - (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
-- (id)tskStepperSliderFormatWithDisplayFormatType:(int)arg1;
+- (id)tskStepperSliderFormatWithDisplayFormatType:(unsigned int)arg1;
 - (BOOL)validateFormatAndValue:(id)arg1;
 - (double)valueFromString:(id)arg1 locale:(id)arg2;
 

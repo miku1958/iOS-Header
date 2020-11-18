@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithTarget:(id)arg1;
-- (void)storeDidChangeWithIdentifier:(id)arg1 type:(long long)arg2 changeDictionary:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)storeDidChangeWithConfiguration:(id)arg1 changeDictionary:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end
 

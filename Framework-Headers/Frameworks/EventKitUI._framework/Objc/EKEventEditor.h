@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKEventAutocompleteResultsEditItemDelegate-Protocol.h>
 
-@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttachmentsEditItem, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
+@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttachmentsEditItem, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompleteSearchResult, EKUIAutocompleteTracker, NSString, NSTimer, UIColor;
 @protocol EKUIAutocompletePendingSearchProtocol;
 
 @interface EKEventEditor : EKCalendarItemEditor <EKEventAutocompleteResultsEditItemDelegate>
@@ -36,7 +36,7 @@
     EKUIAutocompleteSearchResult *_naturalLanguageResult;
     BOOL _hasShownZeroKeywordResult;
     BOOL _hasShownNaturalLanguageResult;
-    EKUIAutocompletePETTracker *_autocompletePETTracker;
+    EKUIAutocompleteTracker *_autocompleteTracker;
     BOOL _showAttachments;
     UIColor *_backgroundColor;
     NSString *_suggestionKey;
@@ -96,6 +96,7 @@
 - (void)refreshInvitees;
 - (void)refreshLocation;
 - (void)refreshStartAndEndDates;
+- (void)reloadTableViewSectionsForDates:(BOOL)arg1 invitees:(BOOL)arg2 location:(BOOL)arg3;
 - (BOOL)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
 - (void)setupDeleteButton;
 - (BOOL)shouldAutorotate;

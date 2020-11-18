@@ -11,7 +11,7 @@
 @interface GKTurnBasedExchange : NSObject
 {
     GKTurnBasedParticipant *_sender;
-    GKTurnBasedMatch *_matchWeak;
+    GKTurnBasedMatch *_match;
     GKTurnBasedExchangeInternal *_internal;
     NSArray *_replies;
     NSArray *_recipients;
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSData *data; // @dynamic data;
 @property (strong, nonatomic) NSString *exchangeID; // @dynamic exchangeID;
 @property (strong) GKTurnBasedExchangeInternal *internal; // @synthesize internal=_internal;
-@property (nonatomic) GKTurnBasedMatch *match; // @synthesize match=_matchWeak;
+@property (weak, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
 @property (readonly, nonatomic) NSString *message; // @dynamic message;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong, nonatomic) NSArray *replies; // @synthesize replies=_replies;
@@ -32,9 +32,9 @@
 
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
+- (void).cxx_destruct;
 - (void)_updateInternalFromMatchInternal:(id)arg1;
 - (void)cancelWithLocalizableMessageKey:(id)arg1 arguments:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (unsigned long long)hash;

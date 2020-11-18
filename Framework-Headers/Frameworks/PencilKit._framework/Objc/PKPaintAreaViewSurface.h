@@ -63,10 +63,10 @@
 - (void)_setupPKController;
 - (void)dealloc;
 - (void)dispatchSyncOnSurfaceQueue:(CDUnknownBlockType)arg1;
-- (void)drawingBegan:(id)arg1 transformedLocation:(struct CGPoint)arg2;
+- (void)drawingBegan:(id)arg1 transformedLocation:(struct CGPoint)arg2 activeInputProperties:(unsigned long long)arg3;
 - (void)drawingCancelled;
 - (void)drawingChanged:(id)arg1;
-- (void)drawingEndedWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)drawingEndedWithDetectedShape:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)eraseStrokesForPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2;
 - (BOOL)eraserBegan:(id)arg1 transformedLocation:(struct CGPoint)arg2;
 - (void)eraserCancelled;

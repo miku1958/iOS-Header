@@ -12,15 +12,17 @@ __attribute__((visibility("hidden")))
 @interface _UIContextMenuLayoutArbiterOutput : NSObject
 {
     NSMapTable *_accessoryPositions;
-    CDStruct_6f807b77 _anchor;
+    struct CGPoint _menuAnchorPoint;
     struct CGRect _contentBounds;
     struct CGRect _previewFrame;
     struct CGRect _menuFrame;
+    CDStruct_a36705e8 _anchor;
 }
 
 @property (strong, nonatomic) NSMapTable *accessoryPositions; // @synthesize accessoryPositions=_accessoryPositions;
-@property (nonatomic) CDStruct_6f807b77 anchor; // @synthesize anchor=_anchor;
+@property (nonatomic) CDStruct_a36705e8 anchor; // @synthesize anchor=_anchor;
 @property (nonatomic) struct CGRect contentBounds; // @synthesize contentBounds=_contentBounds;
+@property (nonatomic) struct CGPoint menuAnchorPoint; // @synthesize menuAnchorPoint=_menuAnchorPoint;
 @property (nonatomic) struct CGRect menuFrame; // @synthesize menuFrame=_menuFrame;
 @property (nonatomic) struct CGRect previewFrame; // @synthesize previewFrame=_previewFrame;
 

@@ -6,21 +6,24 @@
 
 #import <network/nw_listener_inbox.h>
 
+@class NSObject;
+@protocol OS_nw_fd_wrapper;
+
 __attribute__((visibility("hidden")))
 @interface nw_listener_inbox_socket : nw_listener_inbox
 {
     void *_source;
+    NSObject<OS_nw_fd_wrapper> *_sockfd_wrapper_for_connection_group_only;
     int _sockfd_for_logging_only_do_not_close_or_use;
     int _sockfd_from_client;
     unsigned char _ipProtocol;
     unsigned char _listenUUID[16];
 }
 
+- (void).cxx_destruct;
 - (BOOL)cancel;
 - (id)description;
 - (id)initWithParameters:(id)arg1 delegate:(id)arg2;
-- (id)initWithParameters:(id)arg1 delegate:(id)arg2 necpUUID:(unsigned char [16])arg3;
-- (id)initWithSocket:(int)arg1 parameters:(id)arg2 delegate:(id)arg3;
 - (BOOL)resume;
 - (id)start;
 - (BOOL)suspend;

@@ -28,6 +28,7 @@
     TLAlert *_alertForAudioEnvironmentSetup;
     NSString *_previousAudioCategory;
     unsigned long long _previousAudioCategoryOptions;
+    NSString *_previousAudioMode;
     BOOL _isBypassingRingerSwitchPolicy;
     BOOL _isAudioSessionActive;
     unsigned long long _audioSessionDeactivationPreventionRequestsCount;
@@ -44,6 +45,7 @@
 @property (readonly) Class superclass;
 
 + (id)_audioCategoryForAlert:(id)arg1;
++ (id)_audioModeForAlert:(id)arg1 audioCategory:(id)arg2;
 + (id)_celestialAudioCategoryForAudioSessionCategory:(id)arg1;
 + (id)_clientNameForAlert:(id)arg1;
 + (long long)_clientPriorityForAlert:(id)arg1;

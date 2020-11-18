@@ -18,9 +18,9 @@
     PHRelationshipChangeRequestHelper *_personHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *faceHelper; // @synthesize faceHelper=_faceHelper;
@@ -33,12 +33,12 @@
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *personHelper; // @synthesize personHelper=_personHelper;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedFaceCrop;
 @property (strong, nonatomic) NSData *resourceData;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (nonatomic) short state;
 @property (readonly) Class superclass;
 
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 person:(id)arg3;
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 personLocalIdentifier:(id)arg3;
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForFaceCrop:(id)arg1;
 + (id)creationRequestsForFaceCropsWithOriginatingFace:(id)arg1 resourceData:(id)arg2;
 + (void)deleteFaceCrops:(id)arg1;
@@ -53,8 +53,6 @@
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)setFace:(id)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 

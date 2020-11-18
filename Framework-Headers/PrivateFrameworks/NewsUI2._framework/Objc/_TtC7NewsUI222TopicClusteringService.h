@@ -10,13 +10,9 @@
 
 @interface _TtC7NewsUI222TopicClusteringService : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *clusterOptions;
-    MISSING_TYPE *configurationManager;
-    MISSING_TYPE *feedPersonalizer;
-    MISSING_TYPE *subscriptionController;
     MISSING_TYPE *tagService;
-    MISSING_TYPE *translationManager;
-    MISSING_TYPE *userInfo;
 }
 
 @end

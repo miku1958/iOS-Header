@@ -13,8 +13,8 @@
     MISSING_TYPE *customTriggerFiredActions;
     MISSING_TYPE *areInteractionsEnabled;
     MISSING_TYPE *automaticallyInvokesStartTrigger;
+    MISSING_TYPE *_proximityEnabled;
     MISSING_TYPE *sceneRef;
-    MISSING_TYPE *key;
     MISSING_TYPE *__entityLookupTable;
     MISSING_TYPE *__simulationSceneCoordinator;
     MISSING_TYPE *__runtimeSceneCoordinator;

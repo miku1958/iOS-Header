@@ -11,7 +11,7 @@
 #import <TSTables/TSWPRepParent-Protocol.h>
 #import <TSTables/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableInfo, TSTTableReferences;
+@class CALayer, CAShapeLayer, NSMutableArray, NSObject, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellRegionGatherer, TSTCellSelection, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableInfo, TSTTableReferences;
 @protocol TSDContainerInfo, TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 @interface TSTTableRep : TSWPTextHostRep <TSWPRepParent, TSTTableRepInternal, UITextFieldDelegate, CALayerDelegate>
@@ -20,7 +20,7 @@
     BOOL _selectionDragAbortedOnNewSelection;
     BOOL _selectionUsesBezierPath;
     BOOL _selectsCellOnInitialTap;
-    BOOL _usesWholeChromeResizer;
+    BOOL _usesSelectionChromeResizer;
     BOOL _isZoomToEditOperationInProgress;
     BOOL _tableNameValid;
     BOOL _shouldRepositionStockPopover;
@@ -29,7 +29,6 @@
     BOOL _zoomOperationIsInProgress;
     BOOL _recursivelyDrawingInContext;
     BOOL _dragByHandleOnly;
-    NSMutableDictionary *_childTextReps;
     struct TSUCellCoord _ratingsDragCellID;
     TSTTableReferences *_references;
     TSTSelectionDragController *_cellDragController;
@@ -47,10 +46,10 @@
     CALayer *_overlayFrozenHeaderTableBodyMask;
     CALayer *_overlayFrozenHeaderTableNameMask;
     double _currentScreenScale;
+    TSTCellRegionGatherer *_dirtyCellRegionGatherer;
     NSMutableArray *_animationStack;
-    CAShapeLayer *_cellEditingMaskLayer;
+    NSMutableArray *_cellEditingMaskLayers;
     CAShapeLayer *_findSelectionHighlightLayer;
-    struct TSUCellRect _dirtyCellRange;
     struct TSUCellRect _zoomToEditVisibleCellRange;
     struct CGRect _searchSelectionBounds;
 }
@@ -61,18 +60,17 @@
 @property (readonly, weak, nonatomic) id<TSTCanvasReferenceController> canvasReferenceController; // @synthesize canvasReferenceController=_canvasReferenceController;
 @property (readonly, nonatomic) struct CGRect canvasVisibleRect;
 @property (weak, nonatomic) TSTSelectionDragController *cellDragController; // @synthesize cellDragController=_cellDragController;
-@property (strong, nonatomic) CAShapeLayer *cellEditingMaskLayer; // @synthesize cellEditingMaskLayer=_cellEditingMaskLayer;
-@property (readonly, nonatomic) NSArray *childReps;
-@property (readonly, nonatomic) NSMutableDictionary *childTextReps; // @synthesize childTextReps=_childTextReps;
+@property (strong, nonatomic) NSMutableArray *cellEditingMaskLayers; // @synthesize cellEditingMaskLayers=_cellEditingMaskLayers;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, nonatomic) TSTAnimation *currentAnimation;
 @property (nonatomic) double currentScreenScale; // @synthesize currentScreenScale=_currentScreenScale;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<TSTTableRepDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct TSUCellRect dirtyCellRange; // @synthesize dirtyCellRange=_dirtyCellRange;
+@property (strong, nonatomic) TSTCellRegionGatherer *dirtyCellRegionGatherer; // @synthesize dirtyCellRegionGatherer=_dirtyCellRegionGatherer;
 @property (readonly, nonatomic) BOOL dragByHandleOnly; // @synthesize dragByHandleOnly=_dragByHandleOnly;
 @property (strong, nonatomic) CAShapeLayer *findSelectionHighlightLayer; // @synthesize findSelectionHighlightLayer=_findSelectionHighlightLayer;
+@property (readonly, nonatomic) BOOL hasVisibleCellWarnings;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isZoomToEditOperationInProgress; // @synthesize isZoomToEditOperationInProgress=_isZoomToEditOperationInProgress;
 @property (readonly, nonatomic) BOOL layoutDirectionIsLeftToRight;
@@ -104,7 +102,7 @@
 @property BOOL tableRepIsBeingRemovedFromBackgroundLayout; // @synthesize tableRepIsBeingRemovedFromBackgroundLayout=_tableRepIsBeingRemovedFromBackgroundLayout;
 @property (readonly, nonatomic) struct CGAffineTransform transformFromCanvas;
 @property (readonly, nonatomic) struct CGAffineTransform transformToCanvas;
-@property (readonly, nonatomic) BOOL usesWholeChromeResizer; // @synthesize usesWholeChromeResizer=_usesWholeChromeResizer;
+@property (readonly, nonatomic) BOOL usesSelectionChromeResizer; // @synthesize usesSelectionChromeResizer=_usesSelectionChromeResizer;
 @property (copy, nonatomic) NSSet *visibleFillKnobs; // @synthesize visibleFillKnobs=_visibleFillKnobs;
 @property (nonatomic) BOOL zoomOperationIsInProgress; // @synthesize zoomOperationIsInProgress=_zoomOperationIsInProgress;
 @property (nonatomic) BOOL zoomToEditOperationIsInProgress; // @synthesize zoomToEditOperationIsInProgress=_zoomToEditOperationIsInProgress;
@@ -116,6 +114,7 @@
 - (void).cxx_destruct;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)asyncPostTextChangedInRange:(struct TSUCellRect)arg1;
+- (id)attachmentCellRepForCellID:(struct TSUCellCoord)arg1 optionalCell:(id)arg2;
 - (struct CGRect)boundsForCellSelection:(struct TSUCellCoord)arg1;
 - (BOOL)canDrawInBackgroundDuringScroll;
 - (BOOL)canDrawInParallel;
@@ -128,7 +127,6 @@
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)editorSelection;
 - (id)hitRep:(struct CGPoint)arg1 withPrecision:(BOOL)arg2;
-- (id)hitRepChrome:(struct CGPoint)arg1;
 - (id)hyperlinkContainerRep;
 - (id)hyperlinkRegions;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
@@ -143,21 +141,20 @@
 - (void)p_addObservers;
 - (struct CGRect)p_alignedLayerFrameForLayoutSpace:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (struct TSUCellCoord)p_cellIDForHyperlinkField:(id)arg1;
-- (id)p_columnForCellID:(struct TSUCellCoord)arg1;
+- (id)p_columnForCellID:(struct TSUCellCoord)arg1 useCache:(BOOL)arg2;
+- (struct CGRect)p_contentFrameWithCellID:(struct TSUCellCoord)arg1;
+- (void)p_drawFinalElements:(id)arg1 inContext:(struct CGContext *)arg2;
 - (struct CGAffineTransform)p_horizontalAlignmentTransformForHyperlinkWithBounds:(struct CGRect)arg1 inCell:(struct TSUCellCoord)arg2;
+- (struct CGAffineTransform)p_horizontalAlignmentTransformForHyperlinkWithColumn:(id)arg1 cell:(id)arg2 cellID:(struct TSUCellCoord)arg3;
 - (BOOL)p_isTableRenderingRotated;
+- (struct CGRect)p_naturalBoundsRectForHyperlinkField:(id)arg1 cellID:(struct TSUCellCoord)arg2 column:(id)arg3 contentFrame:(struct CGRect)arg4 horizontalAlignmentTransform:(struct CGAffineTransform)arg5;
 - (void)p_removeObservers;
 - (void)p_resetDynamicModePropertiesForContainedTextEditing;
-- (BOOL)p_shouldPerformOnChildTextReps:(SEL)arg1;
 - (void)p_updateDynamicModePropertiesForContainedTextEditing;
 - (void)p_updateDynamicModePropertiesForContainedTextEditingWithSpillingTextRange:(struct TSUCellRect)arg1;
 - (void)popAnimation;
 - (void)pushAnimation:(id)arg1;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
-- (void)recursivelyPerformSelector:(SEL)arg1;
-- (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
 - (void)setTableChrome:(id)arg1;
 - (id)textureForDescription:(id)arg1;
 - (void)updateChildrenFromLayout;

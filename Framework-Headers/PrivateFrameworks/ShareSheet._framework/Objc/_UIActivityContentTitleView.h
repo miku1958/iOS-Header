@@ -10,16 +10,20 @@
 
 @interface _UIActivityContentTitleView : _UINavigationBarTitleView
 {
+    BOOL _photosCarouselMode;
     LPLinkView *_linkView;
     NSLayoutConstraint *_linkTrailingAnchor;
 }
 
 @property (strong, nonatomic) NSLayoutConstraint *linkTrailingAnchor; // @synthesize linkTrailingAnchor=_linkTrailingAnchor;
 @property (strong, nonatomic) LPLinkView *linkView; // @synthesize linkView=_linkView;
+@property (nonatomic) BOOL photosCarouselMode; // @synthesize photosCarouselMode=_photosCarouselMode;
 
 - (void).cxx_destruct;
+- (void)_updateContent;
 - (void)contentDidChange;
-- (void)updateConstraints;
+- (void)layoutSubviews;
+- (long long)preferredContentSizeForSize:(long long)arg1;
 
 @end
 

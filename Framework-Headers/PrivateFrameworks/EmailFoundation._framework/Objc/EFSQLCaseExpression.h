@@ -6,28 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSMapTable, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
-@interface EFSQLCaseExpression : NSObject <EFSQLExpressable>
+@interface EFSQLCaseExpression : NSObject <EFSQLValueExpressable>
 {
-    id<EFSQLExpressable> _elseExpression;
-    id<EFSQLExpressable> _baseExpression;
+    id<EFSQLValueExpressable> _elseExpression;
+    id<EFSQLValueExpressable> _baseExpression;
     NSMapTable *_whenExpressions;
 }
 
-@property (readonly, nonatomic) id<EFSQLExpressable> baseExpression; // @synthesize baseExpression=_baseExpression;
+@property (readonly, nonatomic) id<EFSQLValueExpressable> baseExpression; // @synthesize baseExpression=_baseExpression;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *ef_SQLExpression;
-@property (strong, nonatomic) id<EFSQLExpressable> elseExpression; // @synthesize elseExpression=_elseExpression;
+@property (strong, nonatomic) id<EFSQLValueExpressable> elseExpression; // @synthesize elseExpression=_elseExpression;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMapTable *whenExpressions; // @synthesize whenExpressions=_whenExpressions;
 
 - (void).cxx_destruct;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)init;
 - (id)initWithBaseExpression:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;

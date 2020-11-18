@@ -10,5 +10,6 @@
 
 @interface NSString (_DKDeduping) <_DKDeduping>
 - (id)dedup;
+- (id)dk_dedup;
 @end
 

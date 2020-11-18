@@ -8,7 +8,7 @@
 
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class HMFUnfairLock, HMHome, HMMediaSystem, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
+@class HMFActivity, HMFUnfairLock, HMHome, HMMediaSystem, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
 
 @interface HMMediaSystemBuilder : NSObject <HMFLogging>
 {
@@ -23,8 +23,10 @@
     HMHome *_home;
     HMMediaSystem *_mediaSystem;
     HMMutableArray *_componentsArray;
+    HMFActivity *_activity;
 }
 
+@property (readonly) HMFActivity *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) NSString *builderSessionID; // @synthesize builderSessionID=_builderSessionID;
 @property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) HMMutableArray *componentsArray; // @synthesize componentsArray=_componentsArray;
@@ -41,6 +43,7 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)canSupportMediaSystem:(id)arg1;
++ (BOOL)isStereoPairingSupportedForAccessories:(id)arg1;
 + (id)logCategory;
 + (BOOL)supportsMediaSystem:(id)arg1;
 - (void).cxx_destruct;

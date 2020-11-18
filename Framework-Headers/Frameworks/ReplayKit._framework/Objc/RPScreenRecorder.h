@@ -15,11 +15,11 @@
 
 @interface RPScreenRecorder : NSObject <RPPreviewViewControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
-    BOOL _available;
     BOOL _recording;
     BOOL _microphoneEnabled;
     BOOL _cameraEnabled;
     BOOL _broadcasting;
+    BOOL _available;
     BOOL _hasUserConsentForCamera;
     BOOL _hasUserConsentForMicrophone;
     BOOL _paused;
@@ -37,6 +37,7 @@
     RPBroadcastController *_activeBroadcastController;
     NSURL *_broadcastURL;
     id<RPScreenRecorderPrivateDelegate> _privateDelegate;
+    id<RPScreenRecorderDelegate> _secondDelegate;
 }
 
 @property (strong, nonatomic) RPBroadcastController *activeBroadcastController; // @synthesize activeBroadcastController=_activeBroadcastController;
@@ -62,52 +63,70 @@
 @property (nonatomic, setter=updateProcessIDForAudioCapture:) int processIDForAudioCapture; // @synthesize processIDForAudioCapture=_processIDForAudioCapture;
 @property (nonatomic, getter=isRecording) BOOL recording; // @synthesize recording=_recording;
 @property (copy, nonatomic) CDUnknownBlockType saveVideoToCameraRollCompletionBlock; // @synthesize saveVideoToCameraRollCompletionBlock=_saveVideoToCameraRollCompletionBlock;
+@property (strong, nonatomic) id<RPScreenRecorderDelegate> secondDelegate; // @synthesize secondDelegate=_secondDelegate;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL systemRecording; // @synthesize systemRecording=_systemRecording;
 @property (strong, nonatomic) UIWindow *windowToRecord; // @synthesize windowToRecord=_windowToRecord;
 
 + (id)sharedRecorder;
 - (void).cxx_destruct;
-- (void)_startRecordingWithMicrophoneEnabled:(BOOL)arg1 cameraEnabled:(BOOL)arg2 streamingEnabled:(BOOL)arg3 captureEnabled:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)applicationWindow;
 - (id)audioQueue;
-- (void)controlCenterDidDismiss;
-- (void)controlCenterWillPresent;
+- (void)clientDidUpdateBroadcastServiceInfo:(id)arg1;
 - (unsigned int)currentWindowLayerContextID;
 - (struct CGSize)currentWindowSize;
 - (void)dealloc;
 - (void)didStopRecordingWithError:(id)arg1 previewViewController:(id)arg2;
 - (void)discardRecordingWithHandler:(CDUnknownBlockType)arg1;
+- (void)generateClipWithSeconds:(double)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)handleUnavailableState;
 - (id)init;
-- (void)notifyDelegateOfRecorderAvailability;
+- (void)instantiatePipView;
+- (void)isScreenRecordingAvailable;
 - (void)notifyDelegateOfUpdatedState;
-- (void)pauseRecording;
+- (void)pauseInAppBroadcast;
+- (void)pauseInAppCapture;
+- (void)pauseInAppRecording;
 - (id)processQueue;
 - (void)recordingDidPause;
 - (void)recordingDidStopWithError:(id)arg1 movieURL:(id)arg2;
 - (void)recordingLockInterrupted:(id)arg1;
-- (void)recordingShouldResume;
 - (void)recordingTimerDidUpdate:(id)arg1;
-- (void)resumeRecording;
+- (void)registerAppForStateChangeSetRotationLock:(BOOL)arg1;
+- (void)removePipView;
+- (void)resumeInAppBroadcast;
+- (void)resumeInAppCapture;
+- (void)resumeInAppRecording;
+- (void)resumeSystemBroadcast;
+- (void)resumeSystemRecording;
+- (void)saveVideo:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)saveVideoToCameraRoll:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)screenRecordingAllowed;
 - (BOOL)screenRecordingSupportedOnDevice;
 - (void)setWindowRotationLocked:(BOOL)arg1;
-- (void)startBroadcastWithHandler:(CDUnknownBlockType)arg1;
+- (void)setupSystemBroadcastWithExtension:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)shouldNotifyDidStop;
+- (void)shouldResumeSessionType:(id)arg1;
 - (void)startCaptureWithHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)startClipBufferingWithMicrophoneEnabled:(BOOL)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)startInAppBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)startRecordingWithHandler:(CDUnknownBlockType)arg1;
-- (void)startRecordingWithMicrophoneEnabled:(BOOL)arg1 cameraEnabled:(BOOL)arg2 streamingEnabled:(BOOL)arg3 captureEnabled:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)startRecordingWithMicrophoneEnabled:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)startSystemBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)startSystemRecordingWithMicrophoneEnabled:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)stopBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopCaptureWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopRecordingAndSaveToCameraRoll:(CDUnknownBlockType)arg1;
+- (void)stopClipBufferingWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopInAppBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopRecordingWithAdditionalShareFileAttachment:(id)arg1 overrideShareMessage:(id)arg2 previewViewControllerOverrideTintColor:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)stopRecordingWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopRecordingWithOutputURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopRecordingWithVideoURLHandler:(CDUnknownBlockType)arg1;
+- (void)stopSystemBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopSystemRecording:(CDUnknownBlockType)arg1;
+- (void)stopSystemRecordingWithURLHandler:(CDUnknownBlockType)arg1;
 - (void)updateRecordingAvailability:(id)arg1;
-- (void)updateRecordingAvailabilityWithHandler:(CDUnknownBlockType)arg1;
 - (void)updateScreenRecordingStateWithCurrentState:(id)arg1;
+- (void)updateStateWithActive:(BOOL)arg1 error:(id)arg2;
 - (id)videoQueue;
 
 @end

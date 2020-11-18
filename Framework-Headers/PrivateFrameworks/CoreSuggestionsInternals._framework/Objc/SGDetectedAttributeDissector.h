@@ -6,9 +6,12 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class NSSet, SGContactPipelineHelper, SGDetectedAttributeML, SGHKHealthStore, SGQuickResponsesML;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGDetectedAttributeDissector : SGPipelineDissector
+@class NSSet, NSString, SGContactPipelineHelper, SGDetectedAttributeML, SGHKHealthStore, SGQuickResponsesML;
+
+@interface SGDetectedAttributeDissector : SGPipelineDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     SGDetectedAttributeML *_ml;
     SGQuickResponsesML *_mlQR;
@@ -18,11 +21,17 @@
     float _unlikelyPhoneSamplingRate;
     NSSet *_hmmTrustedLanguages;
     NSSet *_ddTrustedLanguages;
+    NSSet *_coreNLPTrustedLanguages;
     unsigned long long _selfIdentificationMessageCount;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long selfIdentificationMessageCount; // @synthesize selfIdentificationMessageCount=_selfIdentificationMessageCount;
+@property (readonly) Class superclass;
 
++ (void)_logSelfIDForMessage:(id)arg1 detection:(id)arg2 modelType:(struct SGMSelfIdModelType_)arg3 modelVersion:(unsigned long long)arg4;
 + (void)clearConversationCache;
 + (id)currentPatterns;
 + (id)dissectorWithMockedMLTrainingForTests;
@@ -34,22 +43,25 @@
 + (BOOL)isTwoPersonConversation:(id)arg1;
 + (id)patterns;
 - (void).cxx_destruct;
+- (void)_addAuthorContactForMessage:(id)arg1 entity:(id)arg2;
+- (void)_dissectMessage:(id)arg1 entity:(id)arg2;
 - (id)_extractEmailishTokenFromMailHeader:(id)arg1;
 - (id)_makeAlnum:(id)arg1;
 - (id)_makeSimplifiedListIdEmail:(id)arg1;
+- (void)_removeUnwantedContactDetails:(id)arg1 entity:(id)arg2;
 - (id)detailTypeFromPrefix:(id)arg1;
 - (id)detailTypeFromPrefix:(id)arg1 detectedLabelPointer:(struct _NSRange *)arg2;
-- (id)detectionFromBodyDDMatch:(id)arg1 onEntity:(id)arg2 withSupervisionToFill:(id)arg3 isUnlikelyPhone:(BOOL)arg4;
-- (id)detectionFromSignatureDDMatch:(id)arg1 onEntity:(id)arg2 detectedLabelRange:(struct _NSRange *)arg3 lastClaimedLabelRange:(struct _NSRange)arg4 isUnlikelyPhone:(BOOL)arg5;
-- (void)dissectForContacts:(id)arg1 inContext:(id)arg2 withConversationHistory:(id)arg3;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
-- (id)filterDangerousSigAddressDetections:(id)arg1 onEntity:(id)arg2;
-- (id)filterDangerousSigDetections:(id)arg1 onEntity:(id)arg2 inContext:(id)arg3;
-- (id)filterDangerousSigEmailDetections:(id)arg1 onEntity:(id)arg2 inContext:(id)arg3;
-- (id)filterDangerousSigPhoneDetections:(id)arg1 onEntity:(id)arg2;
+- (id)detectionFromBodyDDMatch:(id)arg1 message:(id)arg2 withSupervisionToFill:(id)arg3 isUnlikelyPhone:(BOOL)arg4;
+- (id)detectionFromSignatureDDMatch:(id)arg1 message:(id)arg2 detectedLabelRange:(struct _NSRange *)arg3 lastClaimedLabelRange:(struct _NSRange)arg4 isUnlikelyPhone:(BOOL)arg5;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (id)filterDangerousSigAddressDetections:(id)arg1;
+- (id)filterDangerousSigDetections:(id)arg1 message:(id)arg2;
+- (id)filterDangerousSigEmailDetections:(id)arg1 message:(id)arg2;
+- (id)filterDangerousSigPhoneDetections:(id)arg1 message:(id)arg2;
 - (id)getLineContaining:(struct _NSRange)arg1 inText:(id)arg2;
-- (void)handleTextMessageBirthdayCongratulation:(id)arg1 withConversationHistory:(id)arg2;
-- (void)handleTextMessageSelfIdentification:(id)arg1 withConversationHistory:(id)arg2;
+- (void)handleTextMessageBirthdayCongratulation:(id)arg1 entity:(id)arg2 withConversationHistory:(id)arg3;
+- (void)handleTextMessageSelfIdentification:(id)arg1 entity:(id)arg2 withConversationHistory:(id)arg3;
 - (id)init;
 - (id)initWithML:(id)arg1 withMLQR:(id)arg2 andHealthStore:(id)arg3;
 - (void)logBirthdayExtractionMetricForPerson:(id)arg1 forDate:(id)arg2 isFromCongratulation:(unsigned char)arg3 withModelVersion:(id)arg4 didRegexTrigger:(unsigned char)arg5;

@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
+@property (readonly, nonatomic) _UIFloatingContentView *floatingContentView;
 @property (strong, nonatomic) UILabel *floatingLabel; // @synthesize floatingLabel=_floatingLabel;
 @property (strong, nonatomic) UITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
-@property (readonly, nonatomic) _UIFloatingContentView *tvFloatingView;
 
 + (id)backgroundColorForBlurEffectStyle:(long long)arg1;
 + (id)focusedTextColorForBlurEffectStyle:(long long)arg1;

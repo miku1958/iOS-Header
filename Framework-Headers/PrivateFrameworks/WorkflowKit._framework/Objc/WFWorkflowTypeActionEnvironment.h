@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (id)initWithWorkflowType:(id)arg1;
 - (BOOL)isAppExtension;
-- (BOOL)isMemoryConstrained;
 - (BOOL)isWatchOS;
 
 @end

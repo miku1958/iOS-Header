@@ -6,13 +6,25 @@
 
 #import <BusinessChatService/BCSRemoteFetch.h>
 
-__attribute__((visibility("hidden")))
-@interface BCSConfigRemoteFetch : BCSRemoteFetch
+#import <BusinessChatService/BCSConfigRemoteFetching-Protocol.h>
+#import <BusinessChatService/BCSShardRemoteFetching-Protocol.h>
+
+@class NSString;
+
+@interface BCSConfigRemoteFetch : BCSRemoteFetch <BCSConfigRemoteFetching, BCSShardRemoteFetching>
 {
 }
 
-- (void)fetchBloomFilterWithStartIndex:(long long)arg1 shardCount:(long long)arg2 forClientBundleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchConfigItemForClientBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (id)_bloomFilterRequestForShardMatching:(id)arg1 timeout:(double)arg2;
+- (id)_configRequestForType:(long long)arg1;
+- (void)fetchConfigItemWithType:(long long)arg1 clientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchConfigItemWithType:(long long)arg1 clientBundleID:(id)arg2 xpcActivity:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchShardMatching:(id)arg1 clientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

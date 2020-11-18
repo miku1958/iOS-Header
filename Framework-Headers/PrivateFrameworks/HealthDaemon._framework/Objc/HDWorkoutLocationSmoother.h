@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/CLLocationSmootherDelegate-Protocol.h>
+#import <HealthDaemon/HDDataObserver-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDForegroundClientProcessObserver-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class CLLocationSmoother, HDProfile, HDSmoothingTask, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate, HDDatabaseProtectedDataObserver, HDForegroundClientProcessObserver>
+@interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate, HDDatabaseProtectedDataObserver, HDForegroundClientProcessObserver, HDDataObserver, HDHealthDaemonReadyObserver>
 {
     CLLocationSmoother *_smoother;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,12 +26,16 @@
     double _smoothingTaskTimeout;
     BOOL _needToCheckForLocationSeriesOnUnlock;
     BOOL _isFirstLaunchAndNotYetSmoothed;
+    CDUnknownBlockType _didCompleteAllPendingSmoothingTasksHandler;
+    CDUnknownBlockType _unitTest_wilTriggerSmoothing;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType didCompleteAllPendingSmoothingTasksHandler; // @synthesize didCompleteAllPendingSmoothingTasksHandler=_didCompleteAllPendingSmoothingTasksHandler;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType unitTest_wilTriggerSmoothing; // @synthesize unitTest_wilTriggerSmoothing=_unitTest_wilTriggerSmoothing;
 
 - (void).cxx_destruct;
 - (void)_associationsSyncedForWorkout:(id)arg1;
@@ -44,16 +50,20 @@
 - (void)_queue_locationManagerDidSmoothLocations:(id)arg1 forTask:(id)arg2 error:(id)arg3;
 - (void)_queue_saveLocations:(id)arg1 forTask:(id)arg2 smoothingError:(id)arg3;
 - (void)_queue_scheduleSmoothingTimeoutTimerForTask:(id)arg1;
+- (void)_queue_setupLocationObserversIfNeeded;
 - (void)_queue_smoothAllUnsmoothedLocationSeries;
 - (void)_queue_smoothNextSample;
 - (void)_queue_smoothRouteSampleForTask:(id)arg1;
 - (void)_queue_smoothingDidFailForTask:(id)arg1 error:(id)arg2 shouldRetry:(BOOL)arg3;
 - (void)_queue_startSmoothingTask:(id)arg1;
-- (void)_setupLocationObserversIfNeeded;
+- (BOOL)_shouldObserveWorkouts;
+- (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (void)foregroundClientProcessesDidChange:(id)arg1 previouslyForegroundBundleIdentifiers:(id)arg2;
 - (id)initWithProfile:(id)arg1;
+- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
+- (void)smoothRouteWithWorkoutUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unitTest_smoothRouteSample:(id)arg1 withSmoother:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

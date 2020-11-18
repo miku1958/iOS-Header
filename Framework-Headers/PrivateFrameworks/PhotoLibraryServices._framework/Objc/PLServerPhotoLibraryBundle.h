@@ -8,13 +8,14 @@
 
 #import <PhotoLibraryServices/NSFilePresenter-Protocol.h>
 
-@class NSOperationQueue, NSSet, NSString, NSURL, PLBackgroundJobService;
+@class NSOperationQueue, NSSet, NSString, NSURL, PLBackgroundJobService, PLLazyObject;
 
 @interface PLServerPhotoLibraryBundle : PLPhotoLibraryBundle <NSFilePresenter>
 {
     Class _libraryServicesDelegateClass;
     PLBackgroundJobService *_backgroundJobService;
     NSOperationQueue *_presentedItemOperationQueue;
+    PLLazyObject *_lazyTouchCoalescer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +28,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_newTouchCoalescer;
+- (void)_touch;
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)accommodatePresentedSubitemDeletionAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)bindAssetsdService:(id)arg1 error:(id *)arg2;
@@ -45,6 +48,7 @@
 - (void)savePresentedItemChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)shouldRelinquishToWriterOfSubitemAtURL:(id)arg1;
 - (void)shutdownWithReason:(id)arg1;
+- (void)touch;
 - (void)unbindAssetsdService:(id)arg1;
 
 @end

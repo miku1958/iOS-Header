@@ -10,13 +10,13 @@
 {
 }
 
-+ (id)_closestLocationNodeFromNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3 reverse:(BOOL)arg4;
++ (id)_closestLocationNodeFromLocationNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3 reverse:(BOOL)arg4;
 + (struct _NSRange)_closestSpaceMatchFromMatches:(id)arg1 withUsedNameRange:(struct _NSRange)arg2 searchForward:(BOOL)arg3;
 + (id)_locationLabelForDimension:(unsigned long long)arg1;
 + (id)addressNodesFromMomentNodes:(id)arg1;
 + (id)bestAddressNodeForMomentNodes:(id)arg1;
-+ (id)closestLocationNodeFromNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3;
-+ (id)closestLocationNodeFromNode:(id)arg1 withDimension:(unsigned long long)arg2 reverse:(BOOL)arg3;
++ (id)closestLocationNodeFromLocationNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3;
++ (id)closestLocationNodeFromLocationNode:(id)arg1 withDimension:(unsigned long long)arg2 reverse:(BOOL)arg3;
 + (BOOL)containsCelebrationForDateNodes:(id)arg1 holidayName:(id *)arg2;
 + (id)dateNodesFromMomentNodes:(id)arg1;
 + (unsigned long long)dimensionForLabel:(id)arg1;

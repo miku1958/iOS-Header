@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterAdvertisementProtocol, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterRuleDirection, HMDNetworkRouterServiceType, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterAdvertisementProtocol, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterRuleDirection, HMDNetworkRouterServiceType, NSString;
 
-@interface HMDNetworkRouterDynamicPortRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterDynamicPortRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;
     HMDNetworkRouterProtocol *_protocol;
     HMDNetworkRouterAdvertisementProtocol *_advertisementProtocol;
-    HMDTLVUnsignedNumberValue *_flags;
+    HAPTLVUnsignedNumberValue *_flags;
     HMDNetworkRouterServiceType *_serviceType;
 }
 
@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDNetworkRouterRuleDirection *direction; // @synthesize direction=_direction;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *flags; // @synthesize flags=_flags;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *flags; // @synthesize flags=_flags;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDNetworkRouterLANIdentifierList *lanIdentifierList; // @synthesize lanIdentifierList=_lanIdentifierList;
@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
++ (id)ruleForHAP;
 + (id)ruleFromFirewallRuleLAN:(id)arg1;
 - (void).cxx_destruct;
 - (void)addTo:(id)arg1;

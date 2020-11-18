@@ -10,7 +10,6 @@
 
 @interface PLLibraryBookmarkManager : NSObject
 {
-    NSMutableDictionary *_securityScopedBookmarksByPathKey;
     NSMutableDictionary *_activeURLsByPathKey;
 }
 
@@ -23,13 +22,9 @@
 - (void)_importLithiumAccessRights;
 - (void)_loadFromDefaults;
 - (id)_newSandboxExtensionDataForClient:(CDStruct_6ad76789)arg1 path:(id)arg2 writable:(BOOL)arg3;
-- (id)_newSecurityScopedBookmarkDataForURL:(id)arg1;
-- (void)_refreshSecurityScopedBookmarks;
 - (void)_removeActiveURLForPathKey:(id)arg1;
 - (void)_removeSSBForPathKey:(id)arg1;
-- (id)_resolveSecurityScopedBookmarkData:(id)arg1 error:(id *)arg2;
 - (void)_saveToDefaults;
-- (void)_storeBookmarkForURL:(id)arg1;
 - (void)_storeSecurityScopedURL:(id)arg1 pathKey:(id)arg2;
 - (id)allKnownLibraryURLs;
 - (void)dealloc;

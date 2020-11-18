@@ -10,6 +10,7 @@
 #import <HealthUI/HKSpokenLanguagesViewControllerDelegate-Protocol.h>
 
 @class HKMedicalIDEditorLanguageCell, HKSpokenLanguage, NSArray, _HKMedicalIDMultilineStringCell;
+@protocol HKEmergencyCardPrimaryLanguageUpdateDelegate;
 
 @interface HKEmergencyCardPrimaryLanguageTableItem : HKEmergencyCardTableItem <HKMedicalIDEditorCellEditDelegate, HKSpokenLanguagesViewControllerDelegate>
 {
@@ -19,13 +20,17 @@
     NSArray *_mostLikelyLanguages;
     NSArray *_allSpokenLanguages;
     HKSpokenLanguage *_currentLanguage;
+    id<HKEmergencyCardPrimaryLanguageUpdateDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<HKEmergencyCardPrimaryLanguageUpdateDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (id)_createEditableCell;
 - (id)attributedStringForCurrentLanguage;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
 - (long long)commitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
+- (void)didCancelLanguageSelection;
 - (void)didCommitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
 - (void)didSelectCellWithLanguage:(id)arg1;
 - (long long)editingStyleForRowAtIndex:(long long)arg1;

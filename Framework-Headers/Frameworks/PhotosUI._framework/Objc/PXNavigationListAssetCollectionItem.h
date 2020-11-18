@@ -11,7 +11,9 @@
 @interface PXNavigationListAssetCollectionItem : PXNavigationListItem
 {
     BOOL _draggable;
+    BOOL _reorderable;
     BOOL _renamable;
+    BOOL _deletable;
     PHAssetCollection *_collection;
     long long _indentationLevel;
 }
@@ -20,15 +22,17 @@
 @property (nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
 
 - (void).cxx_destruct;
-- (const struct __CFString *)aggregateDictionaryKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)cpAnalyticsEventName;
 - (id)glyphImageName;
 - (id)imageNameForIdentifier;
 - (id)initWithAssetCollection:(id)arg1 itemCount:(long long)arg2;
+- (BOOL)isDeletable;
 - (BOOL)isDraggable;
 - (BOOL)isRenamable;
+- (BOOL)isReorderable;
 - (id)representedObject;
-- (id)viewControllerForCollectionWithGridPresentation:(id)arg1;
+- (id)viewControllerForCollectionWithGridPresentation:(id)arg1 existingAssetsFetchResult:(id)arg2;
 
 @end
 

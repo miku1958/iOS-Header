@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *audioOutputType;
 @property (copy, nonatomic) NSNumber *endTime;
 @property (copy, nonatomic) NSString *speechRequestId;
 @property (copy, nonatomic) NSNumber *startTime;

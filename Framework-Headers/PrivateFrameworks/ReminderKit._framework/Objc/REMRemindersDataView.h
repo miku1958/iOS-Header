@@ -25,6 +25,7 @@
 - (id)fetchReminderWithExternalIdentifier:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchReminderWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchRemindersCountWithListID:(id)arg1 error:(id *)arg2;
+- (id)fetchRemindersMatchingPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)fetchRemindersWithDACalendarItemUniqueIdentifiers:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchRemindersWithExternalIdentifiers:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchRemindersWithListID:(id)arg1 includingSubtasks:(BOOL)arg2 error:(id *)arg3;

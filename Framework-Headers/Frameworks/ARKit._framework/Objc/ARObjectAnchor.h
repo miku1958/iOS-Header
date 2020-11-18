@@ -17,13 +17,10 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReferenceObject:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
-- (BOOL)isTracked;
-- (id)name;
 
 @end
 

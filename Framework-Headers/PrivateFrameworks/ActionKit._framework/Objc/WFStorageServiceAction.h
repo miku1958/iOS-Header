@@ -20,14 +20,16 @@
 - (void)initializeParameters;
 - (id)keywords;
 - (id)outputContentClasses;
+- (id)prioritizedParameterKeysForRemoteExecution;
 - (id)requiredResources;
+- (BOOL)requiresRemoteExecution;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 - (void)selectedStorageServiceChanged;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)showPickerKey;
 - (BOOL)showsSettingsWhenResourcesUnavailable;
-- (id)targetDataInfo;
+- (id)targetContentAttribution;
 - (void)updatePathPrefix;
 
 @end

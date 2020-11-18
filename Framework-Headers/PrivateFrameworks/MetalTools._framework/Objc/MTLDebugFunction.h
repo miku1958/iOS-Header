@@ -15,11 +15,16 @@
 
 @property (strong, nonatomic) MTLFunctionConstantValues *constantValues; // @synthesize constantValues=_constantValues;
 
++ (id)newFunctionWithBaseObject:(id)arg1 parent:(id)arg2;
 - (id)bitcodeData;
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
+- (id)precompiledOutput;
 
 @end
 

@@ -48,6 +48,7 @@
 - (void)resetParallaxFactorDefaults;
 - (void)resetPortraitDefaults;
 - (void)resetStillTimeInVideoDefaults;
+- (void)resetWallpaperKitDataDefaults;
 - (void)resetZoomScaleDefaults;
 - (void)setColorData:(id)arg1 forLocations:(long long)arg2;
 - (void)setColorName:(id)arg1 forLocations:(long long)arg2;
@@ -64,6 +65,7 @@
 - (void)setProceduralUserSet:(BOOL)arg1 forLocations:(long long)arg2;
 - (void)setStillTimeInVideo:(double)arg1;
 - (void)setSupportsCropping:(BOOL)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setWallpaperKitData:(id)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
 - (void)setWallpaperOptions:(id)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
 - (void)setZoomScale:(double)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
 - (double)stillTimeInVideo;
@@ -73,6 +75,7 @@
 - (id)wallpaperColorDataForVariant:(long long)arg1;
 - (id)wallpaperColorNameForVariant:(long long)arg1;
 - (id)wallpaperGradientDataForVariant:(long long)arg1;
+- (id)wallpaperKitDataForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)wallpaperOptionsForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (double)zoomScaleForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 

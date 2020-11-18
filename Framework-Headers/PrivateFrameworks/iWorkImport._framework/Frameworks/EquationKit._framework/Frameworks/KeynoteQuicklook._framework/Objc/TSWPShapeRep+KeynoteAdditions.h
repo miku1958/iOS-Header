@@ -26,6 +26,7 @@
 + (BOOL)p_shouldDisableTextMorphingBetweenOutgoingRep:(id)arg1 outgoingChunkRange:(struct _NSRange)arg2 incomingRep:(id)arg3 incomingChunkRange:(struct _NSRange)arg4;
 + (id)p_stringByApplyingCapitalizationPropertyFromStorage:(id)arg1 withRange:(struct _NSRange)arg2 toString:(id)arg3;
 + (id)p_textureSetFromRep:(id)arg1 range:(struct _NSRange)arg2 textureByGlyphStyle:(int)arg3 includeListLabel:(BOOL)arg4 desiredContentRect:(struct CGRect)arg5;
+- (void)addChildTexturesToTextureSet:(id)arg1 forDescription:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (id)newTextureRenderableForRange:(struct _NSRange)arg1 includeListLabel:(BOOL)arg2 isMagicMove:(BOOL)arg3 desiredContentRect:(struct CGRect)arg4 textureByGlyphStyle:(int)arg5 includeGroupedShadow:(BOOL)arg6 groupedShadowOnly:(BOOL)arg7 textureBounds:(struct CGRect *)arg8;
 - (void)p_drawRubyInContext:(struct CGContext *)arg1 forRange:(struct _NSRange)arg2;
 - (BOOL)p_getBoundsRect:(struct CGRect *)arg1 contentRect:(struct CGRect *)arg2 transform:(struct CGAffineTransform *)arg3 applyReflection:(BOOL *)arg4 applyShadow:(BOOL *)arg5 forRange:(struct _NSRange)arg6 includeListLabel:(BOOL)arg7 isMagicMove:(BOOL)arg8;

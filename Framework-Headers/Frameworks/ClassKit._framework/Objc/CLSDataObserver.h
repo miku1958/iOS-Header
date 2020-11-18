@@ -47,6 +47,7 @@
 + (id)predicateForObjectsWithParentObjectID:(id)arg1;
 + (id)predicateForObjectsWithParentObjectID:(id)arg1 andRole:(unsigned long long)arg2;
 + (id)predicateForObjectsWithPersonID:(id)arg1 andRole:(unsigned long long)arg2;
++ (id)predicateForUnexpiredObjects;
 - (void).cxx_destruct;
 - (oneway void)clientRemote_invalidate;
 - (oneway void)clientRemote_itemChanged:(unsigned long long)arg1;

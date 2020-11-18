@@ -34,6 +34,7 @@
 - (BOOL)supportsReferenceLines;
 - (BOOL)supportsStartAngleRotation;
 - (BOOL)supportsTrendLines;
+- (BOOL)supportsValueLabelSpacing;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
 - (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
 

@@ -13,5 +13,6 @@
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly, nonatomic) long long scrollingStrategy;
 
+- (void)conformsToCSBehaviorProviding;
 @end
 

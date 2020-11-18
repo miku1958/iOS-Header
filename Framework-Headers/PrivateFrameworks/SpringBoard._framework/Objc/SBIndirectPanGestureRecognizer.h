@@ -9,11 +9,12 @@
 #import <SpringBoard/SBGestureRecognizerPanGestureProviding-Protocol.h>
 #import <SpringBoard/SBGestureRecognizerTouchHistoryProviding-Protocol.h>
 #import <SpringBoard/SBIndirectTouchLifecycleObserving-Protocol.h>
+#import <SpringBoard/_UIHoverEventRespondable-Protocol.h>
 
-@class BSMonotonicReferenceTime, NSString, NSTimer, NSValue, SBTouchHistory, UIEvent, UITouch;
+@class BSMonotonicReferenceTime, NSString, NSTimer, NSValue, SBSystemGestureManager, SBTouchHistory, UIEvent, UITouch;
 @protocol SBIndirectPanGestureRecognizerOrientationProviding, SBSystemGestureRecognizerDelegate;
 
-@interface SBIndirectPanGestureRecognizer : UIGestureRecognizer <SBIndirectTouchLifecycleObserving, SBGestureRecognizerTouchHistoryProviding, SBGestureRecognizerPanGestureProviding>
+@interface SBIndirectPanGestureRecognizer : UIGestureRecognizer <_UIHoverEventRespondable, SBIndirectTouchLifecycleObserving, SBGestureRecognizerTouchHistoryProviding, SBGestureRecognizerPanGestureProviding>
 {
     BOOL _shouldCancelAfterMovingAwayFromEdge;
     BOOL _shouldInvertXAxis;
@@ -40,6 +41,7 @@
     BSMonotonicReferenceTime *_lastMouseActivationTimestamp;
     double _trackpadHysteresis;
     double _mouseHysteresis;
+    SBSystemGestureManager *_systemGestureManager;
     struct CGPoint _origin;
     struct CGPoint _lastKnownPoint;
     struct CGPoint _translationWithinHysteresisRange;
@@ -74,6 +76,7 @@
 @property (nonatomic) BOOL shouldRequireGestureToStartAtEdge; // @synthesize shouldRequireGestureToStartAtEdge=_shouldRequireGestureToStartAtEdge;
 @property (nonatomic) BOOL shouldSwitchAxes; // @synthesize shouldSwitchAxes=_shouldSwitchAxes;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SBSystemGestureManager *systemGestureManager; // @synthesize systemGestureManager=_systemGestureManager;
 @property (strong, nonatomic) SBTouchHistory *touchHistory; // @synthesize touchHistory=_touchHistory;
 @property (nonatomic) double trackpadHysteresis; // @synthesize trackpadHysteresis=_trackpadHysteresis;
 @property (copy, nonatomic) CDUnknownBlockType translationAdjustmentBlock; // @synthesize translationAdjustmentBlock=_translationAdjustmentBlock;
@@ -85,6 +88,7 @@
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (unsigned long long)_edgeForPointerModelLocation:(struct CGPoint)arg1 inView:(id)arg2 inset:(double)arg3;
 - (BOOL)_hasTranslationReachedThreshold:(double)arg1 withTranslation:(struct CGPoint)arg2 forEdge:(unsigned long long)arg3;
+- (void)_hoverCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverEntered:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverExited:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverMoved:(id)arg1 withEvent:(id)arg2;
@@ -97,15 +101,16 @@
 - (BOOL)_shouldReceiveEvent:(id)arg1;
 - (BOOL)_shouldSwitchAxes;
 - (void)_updateTranslationWithPointerEventAttributes:(id)arg1 activeEdge:(unsigned long long)arg2;
-- (BOOL)_wantsHoverEvents;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (id)containerView;
 - (void)dealloc;
 - (double)hysteresisForInputType:(unsigned long long)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2 edges:(unsigned long long)arg3;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2 edges:(unsigned long long)arg3 systemGestureManager:(id)arg4;
 - (struct CGPoint)locationInView:(id)arg1;
 - (double)peakSpeed;
 - (void)reset;

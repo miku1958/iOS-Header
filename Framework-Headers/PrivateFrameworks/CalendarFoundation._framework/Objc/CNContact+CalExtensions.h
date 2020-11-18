@@ -13,6 +13,7 @@
 - (id)CalDisplayName;
 - (id)CalEmailAddresses;
 - (id)CalFirstValueForKey:(id)arg1;
+- (id)CalPhoneNumbers;
 - (id)CalValueForKey:(id)arg1 withLabel:(id)arg2;
 @end
 

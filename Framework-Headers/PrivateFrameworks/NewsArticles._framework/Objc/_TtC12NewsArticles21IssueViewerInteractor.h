@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *adContextBuilder;
     MISSING_TYPE *coordinator;
     MISSING_TYPE *eventManager;
     MISSING_TYPE *issue;

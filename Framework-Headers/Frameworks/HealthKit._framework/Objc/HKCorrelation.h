@@ -32,7 +32,7 @@
 - (void)_filterCorrelatedObjectsWithFilterDictionary:(id)arg1;
 - (id)_init;
 - (void)_removeAllCorrelatedObjects;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

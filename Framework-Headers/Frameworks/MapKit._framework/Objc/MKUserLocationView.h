@@ -4,14 +4,83 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MapKit/_MKPuckAnnotationView.h>
+#import <MapKit/MKAnnotationView.h>
 
-@interface MKUserLocationView : _MKPuckAnnotationView
+@class _MKUserLocationView;
+
+@interface MKUserLocationView : MKAnnotationView
 {
+    BOOL _selected;
+    _MKUserLocationView *_mkUserLocationView;
 }
 
-- (unsigned long long)_innerPulseFrameWhenDisabled:(unsigned long long)arg1;
+@property (strong, nonatomic, getter=_mkUserLocationView, setter=_setMKUserLocationView:) _MKUserLocationView *mkUserLocationView; // @synthesize mkUserLocationView=_mkUserLocationView;
+
+- (void).cxx_destruct;
+- (double)_accuracyRingAlpha;
+- (BOOL)_allowedToShowCallout;
+- (BOOL)_allowsAccuracyRing;
+- (BOOL)_allowsPulse;
+- (struct UIEdgeInsets)_annotationTrackingInsets;
+- (BOOL)_canShowHeadingIndicator;
+- (double)_heading;
+- (long long)_headingIndicatorStyle;
+- (id)_innerImageMask;
+- (BOOL)_isStale;
+- (id)_lastLocation;
+- (void)_locationManagerFailedToUpdateLocation;
+- (struct CGRect)_mapkit_visibleRect;
+- (double)_maxRadiusToShowAccuracyRing;
+- (double)_puckAlpha;
+- (BOOL)_rotateInnerImageToMatchCourse;
+- (float)_selectionPriority;
+- (void)_setAccuracyRingAlpha:(double)arg1;
+- (void)_setAllowsAccuracyRing:(BOOL)arg1;
+- (void)_setAllowsPulse:(BOOL)arg1;
+- (void)_setCanShowHeadingIndicator:(BOOL)arg1;
+- (void)_setHeading:(double)arg1;
+- (void)_setHeadingIndicatorStyle:(long long)arg1;
+- (void)_setInnerImageMask:(id)arg1;
+- (void)_setMapDisplayStyle:(CDStruct_80aa614a)arg1;
+- (void)_setMapPitchRadians:(double)arg1;
+- (void)_setMapRotationRadians:(double)arg1;
+- (void)_setMapType:(unsigned long long)arg1;
+- (void)_setMaxRadiusToShowAccuracyRing:(double)arg1;
+- (void)_setPuckAlpha:(double)arg1;
+- (void)_setPuckScale:(double)arg1;
+- (void)_setRotateInnerImageToMatchCourse:(BOOL)arg1;
+- (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setSelectionPriority:(float)arg1;
+- (void)_setShouldDisplayHeading:(BOOL)arg1;
+- (void)_setShouldInnerPulse:(BOOL)arg1;
+- (void)_setShouldShowOuterRing:(BOOL)arg1;
+- (BOOL)_shouldDisplayHeading;
+- (BOOL)_shouldInnerPulse;
+- (BOOL)_shouldShowOuterRing;
+- (void)_updateFromMap;
+- (void)_updateStateFromLocation:(id)arg1 duration:(double)arg2;
+- (struct CGPoint)calloutOffset;
+- (BOOL)canShowCallout;
+- (struct CGPoint)centerOffset;
+- (id)detailCalloutAccessoryView;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
+- (BOOL)isDraggable;
+- (BOOL)isSelected;
+- (id)leftCalloutAccessoryView;
+- (struct CGPoint)leftCalloutOffset;
+- (void)prepareForDisplay;
+- (void)prepareForReuse;
+- (id)rightCalloutAccessoryView;
+- (struct CGPoint)rightCalloutOffset;
+- (void)setAnnotation:(id)arg1;
+- (void)setCalloutOffset:(struct CGPoint)arg1;
+- (void)setCanShowCallout:(BOOL)arg1;
+- (void)setCenterOffset:(struct CGPoint)arg1;
+- (void)setDetailCalloutAccessoryView:(id)arg1;
+- (void)setLeftCalloutAccessoryView:(id)arg1;
+- (void)setLeftCalloutOffset:(struct CGPoint)arg1;
+- (void)setRightCalloutAccessoryView:(id)arg1;
+- (void)setRightCalloutOffset:(struct CGPoint)arg1;
 
 @end
 

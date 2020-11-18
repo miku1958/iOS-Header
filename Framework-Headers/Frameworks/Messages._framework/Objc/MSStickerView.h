@@ -9,7 +9,7 @@
 #import <Messages/CKAnimationTimerObserver-Protocol.h>
 #import <Messages/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CKAnimatedImage, CKImageData, MSSticker, NSArray, NSError, NSString, UIImage, UIImageView, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class CKAnimatedImage, CKImageData, MSSticker, NSArray, NSError, NSString, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 
 @interface MSStickerView : UIView <UIGestureRecognizerDelegate, CKAnimationTimerObserver>
 {
@@ -26,6 +26,7 @@
     NSArray *_frames;
     UITapGestureRecognizer *_tapRecognizer;
     UILongPressGestureRecognizer *_longPressRecognizer;
+    UIPanGestureRecognizer *_panRecognizer;
 }
 
 @property (nonatomic) BOOL animating; // @synthesize animating=_animating;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL isAnimated;
 @property (nonatomic) BOOL isPeeled; // @synthesize isPeeled=_isPeeled;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *longPressRecognizer; // @synthesize longPressRecognizer=_longPressRecognizer;
+@property (readonly, nonatomic) UIPanGestureRecognizer *panRecognizer; // @synthesize panRecognizer=_panRecognizer;
 @property (strong, nonatomic) MSSticker *sticker; // @synthesize sticker=_sticker;
 @property (strong, nonatomic) NSError *stickerError; // @synthesize stickerError=_stickerError;
 @property (strong, nonatomic) UIImage *stickerImage; // @synthesize stickerImage=_stickerImage;
@@ -52,7 +54,7 @@
 - (void)_loadAnimatedStickerfIfNecessary;
 - (void)_loadSticker;
 - (void)_prepareForReuse;
-- (void)_resetPeel:(BOOL)arg1;
+- (void)_resetPeel;
 - (void)_setImage:(id)arg1;
 - (void)_stickerPreviewCachePreviewDidChange:(id)arg1;
 - (id)_stickerSendManager;

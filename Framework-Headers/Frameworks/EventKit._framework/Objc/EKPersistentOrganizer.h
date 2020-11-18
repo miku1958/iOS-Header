@@ -6,16 +6,16 @@
 
 #import <EventKit/EKPersistentParticipant.h>
 
-@class NSString, NSURL;
+@class NSString;
 
 @interface EKPersistentOrganizer : EKPersistentParticipant
 {
 }
 
-@property (strong, nonatomic) NSURL *address; // @dynamic address;
-@property (nonatomic, getter=isCurrentUser) BOOL currentUser; // @dynamic currentUser;
-@property (strong, nonatomic) NSString *displayName; // @dynamic displayName;
+@property (strong, nonatomic) NSString *URL; // @dynamic URL;
+@property (strong, nonatomic) NSString *displayNameRaw; // @dynamic displayNameRaw;
 @property (strong, nonatomic) NSString *emailAddress; // @dynamic emailAddress;
+@property (nonatomic) BOOL isCurrentUser; // @dynamic isCurrentUser;
 
 + (id)defaultPropertiesToLoad;
 + (Class)meltedClass;
@@ -26,7 +26,9 @@
 - (int)entityType;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(BOOL)arg4;
 - (id)owner;
+- (long long)scheduleAgent;
 - (void)setOwner:(id)arg1;
+- (void)setScheduleAgent:(long long)arg1;
 
 @end
 

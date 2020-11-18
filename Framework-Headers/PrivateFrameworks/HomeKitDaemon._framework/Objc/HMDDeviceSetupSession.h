@@ -9,11 +9,12 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDDeviceSetupSessionInternal, HMDHomeManager, NSObject, NSString, NSUUID;
+@class HMDDeviceSetupSessionInternal, HMDHomeManager, HMFActivity, NSObject, NSString, NSUUID;
 @protocol HMDDeviceSetupSessionDelegate, OS_dispatch_queue;
 
 @interface HMDDeviceSetupSession : HMFObject <HMFLogging, HMFMessageReceiver>
 {
+    HMFActivity *_activity;
     BOOL _open;
     id<HMDDeviceSetupSessionDelegate> _delegate;
     NSUUID *_identifier;

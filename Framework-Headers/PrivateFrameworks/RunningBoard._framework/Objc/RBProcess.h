@@ -6,29 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBSProcessIdentifier-Protocol.h>
 
-@class BSAuditToken, BSMachPortTaskNameRight, NSString, RBLaunchdJob, RBProcessState, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance;
+@class NSString, RBProcessState, RBSAuditToken, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance;
 @protocol OS_dispatch_source, RBBundleProperties, RBJetsamBandProviding;
 
-@interface RBProcess : NSObject <RBSProcessIdentifier, BSDescriptionProviding>
+@interface RBProcess : NSObject <RBSProcessIdentifier>
 {
     int _pid;
-    RBLaunchdJob *_job;
     RBSProcessIdentity *_identity;
     RBSProcessHandle *_handle;
-    BSMachPortTaskNameRight *_taskNameRight;
-    NSString *_logProem;
+    NSString *_shortDescription;
     id<RBJetsamBandProviding> _jetsamProvider;
     RBProcess *_hostProcess;
     struct os_unfair_lock_s _lock;
+    struct os_unfair_lock_s _dataLock;
     RBProcessState *_lock_appliedState;
     RBProcessState *_lock_state;
     int _appliedJetsamPriority;
     BOOL _platformBinary;
     BOOL _usesSocketMonitoring;
     BOOL _systemPreventsIdleSleep;
+    BOOL _diagnosticsStarted;
+    BOOL _diagnosticsComplete;
+    int _appNapEligible;
+    int _isTestApp;
     unsigned char _manageFlags;
     NSObject<OS_dispatch_source> *_procSource;
     double _cachedProcessStartTime;
@@ -41,70 +43,56 @@
     RBSProcessExitContext *_lastExitContext;
     RBSProcessExitStatus *_intendedExitStatus;
     id<RBBundleProperties> _bundleProperties;
-    BSAuditToken *_auditToken;
+    RBSAuditToken *_auditToken;
     NSString *_underlyingAssertion;
     double _processStartTime;
+    NSString *_homeDirectory;
+    NSString *_tmpDirectory;
 }
 
-@property (readonly, copy, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (copy, nonatomic) RBSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, nonatomic, getter=isBeingPtraced) BOOL beingPtraced;
 @property (readonly, nonatomic) id<RBBundleProperties> bundleProperties; // @synthesize bundleProperties=_bundleProperties;
+@property (readonly, nonatomic, getter=isContainerized) BOOL containerized;
 @property (readonly, nonatomic) int currentJetsamPriority;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) RBSProcessHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *homeDirectory; // @synthesize homeDirectory=_homeDirectory;
 @property (readonly, nonatomic) RBProcess *hostProcess; // @synthesize hostProcess=_hostProcess;
 @property (readonly, copy, nonatomic) RBSProcessIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 @property (readonly, copy, nonatomic) RBSProcessInstance *instance; // @synthesize instance=_instance;
 @property (copy, nonatomic) RBSProcessExitStatus *intendedExitStatus; // @synthesize intendedExitStatus=_intendedExitStatus;
-@property (readonly, nonatomic) RBLaunchdJob *job; // @synthesize job=_job;
-@property (readonly, copy, nonatomic) RBSProcessExitContext *lastExitContext; // @synthesize lastExitContext=_lastExitContext;
+@property (strong, nonatomic) RBSProcessExitContext *lastExitContext; // @synthesize lastExitContext=_lastExitContext;
 @property (readonly, nonatomic, getter=isLifecycleManaged) BOOL lifecycleManaged;
-@property (readonly, nonatomic) NSString *logProem; // @synthesize logProem=_logProem;
 @property (readonly, nonatomic, getter=isPlatformBinary) BOOL platformBinary; // @synthesize platformBinary=_platformBinary;
 @property (readonly, nonatomic) double processStartTime; // @synthesize processStartTime=_processStartTime;
 @property (readonly, nonatomic, getter=isReported) BOOL reported;
 @property (readonly, nonatomic) int requestedJetsamPriority; // @synthesize requestedJetsamPriority=_requestedJetsamPriority;
+@property (readonly, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 @property (readonly, nonatomic, getter=isSystemShell) BOOL systemShell; // @synthesize systemShell=_systemShell;
 @property (nonatomic, getter=isTerminating) BOOL terminating; // @synthesize terminating=_terminating;
+@property (readonly, nonatomic, getter=isTestApp) BOOL testApp;
+@property (readonly, nonatomic) NSString *tmpDirectory; // @synthesize tmpDirectory=_tmpDirectory;
 @property (readonly, nonatomic) NSString *underlyingAssertion; // @synthesize underlyingAssertion=_underlyingAssertion;
 
++ (id)testProcessWithPid:(int)arg1;
 - (void).cxx_destruct;
-- (void)_applyJetsamLenientModeState:(BOOL)arg1;
 - (void)_applyState:(id)arg1;
-- (id)_initWithInstance:(id)arg1 taskNameRight:(id)arg2 job:(id)arg3 bundleProperties:(id)arg4 jetsamBandProvider:(id)arg5 initialState:(id)arg6 hostProcess:(id)arg7 properties:(id)arg8 systemPreventsIdleSleep:(BOOL)arg9;
-- (id)_lock_allowedLockedFilePaths;
-- (void)_lock_applyCPULimits;
-- (void)_lock_applyCurrentStateIfPossible;
-- (void)_lock_applyGPU;
-- (void)_lock_applyJetsamLenientMode;
-- (void)_lock_applyJetsamPriority;
-- (void)_lock_applyRole;
-- (void)_lock_disableCPULimits;
-- (id)_lock_lockedFilePathsIgnoringAllowed;
-- (void)_lock_restoreCPULimitDefaults;
-- (void)_lock_resume;
-- (void)_lock_resumeCPUMonitoring;
-- (void)_lock_setCPULimits:(CDStruct_1ef3fb1f *)arg1 violationPolicy:(unsigned long long)arg2;
-- (void)_lock_shutdownSockets;
-- (void)_lock_suspend;
-- (BOOL)_lock_terminateWithContext:(id)arg1;
+- (id)_initWithInstance:(id)arg1 auditToken:(id)arg2 bundleProperties:(id)arg3 jetsamBandProvider:(id)arg4 initialState:(id)arg5 hostProcess:(id)arg6 properties:(id)arg7 systemPreventsIdleSleep:(BOOL)arg8;
 - (BOOL)_sendSignal:(int)arg1;
 - (void)_systemPreventIdleSleepStateDidChange:(BOOL)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)collectDiagnostic:(unsigned long long)arg1 description:(id)arg2 code:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 - (void)invalidate;
 - (void)invokeHandlerOnProcessDeath:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (BOOL)matchesProcess:(id)arg1;
 - (id)processPredicate;
 - (int)rbs_pid;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 - (BOOL)terminateWithContext:(id)arg1;
 
 @end

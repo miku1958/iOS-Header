@@ -12,7 +12,6 @@
 
 + (id)viewControllerForContact:(id)arg1 isUnknown:(BOOL)arg2;
 - (BOOL)canBecomeFirstResponder;
-- (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
 - (id)keyCommands;
 - (void)leftArrowPressed;

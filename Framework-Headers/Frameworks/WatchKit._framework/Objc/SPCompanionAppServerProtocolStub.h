@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SPCompanionAppServerProtocolStub : NSObject <SPCompanionAppServerProtocol>
 {
 }
@@ -21,7 +22,6 @@
 
 - (void)extensionWithIdentifier:(id)arg1 gotUnknownInterfaceController:(id)arg2;
 - (void)fetchNotificationForNotificationID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)launchCompanionAppForGizmoAppWithIdentifier:(id)arg1 withUserInfoData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestTimingData:(id)arg1 timingMetaData:(id)arg2;
 - (void)sendCacheRequest:(id)arg1 identifier:(id)arg2;
 - (void)sendData:(id)arg1 identifier:(id)arg2 clientIdentifiers:(id)arg3;

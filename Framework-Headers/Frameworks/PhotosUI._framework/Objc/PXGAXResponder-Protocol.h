@@ -15,5 +15,6 @@
 
 - (PXGView *)axContainingViewForAXGroup:(id<PXGAXGroup>)arg1;
 - (void)axGroup:(id<PXGAXGroup>)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (BOOL)axGroup:(id<PXGAXGroup>)arg1 didRequestToPerformAction:(long long)arg2 userInfo:(id)arg3;
 @end
 

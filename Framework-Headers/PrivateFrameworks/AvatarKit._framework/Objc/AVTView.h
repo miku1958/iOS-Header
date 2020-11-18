@@ -6,8 +6,7 @@
 
 #import <SceneKit/SCNView.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, AVTHUDView, NSLock, NSTimer, SCNNode;
-@protocol AVTViewFaceTrackingDelegate;
+@class AVTAvatar, AVTAvatarEnvironment, AVTHUDView, NSLock, NSString, NSTimer, SCNNode;
 
 @interface AVTView : SCNView
 {
@@ -16,14 +15,7 @@
     SCNNode *_avatarNode;
     BOOL _lockLookAt;
     AVTAvatarEnvironment *_environment;
-    AVTFaceTracker *_faceTracker;
-    BOOL _enableFaceTracking;
-    BOOL _faceIsTracked;
-    BOOL _captureImageIsTooDark;
-    BOOL _isSensorCovered;
-    BOOL _directRetargetingMode;
-    id<AVTViewFaceTrackingDelegate> _faceTrackingDelegate;
-    BOOL _arMode;
+    NSString *_framingMode;
     unsigned long long _lastTrackingUpdateTimestamp;
     unsigned long long _noTrackingFrameCount;
     double _currentlyRenderedTrackingDate;
@@ -31,7 +23,7 @@
         struct os_unfair_lock_s lock;
         struct *head;
         int current;
-        int capacity;
+        unsigned int capacity;
         BOOL reached_max_capacity;
     } _perfTimes;
     double _perfPacketUpdateTimestamp;
@@ -43,27 +35,15 @@
     AVTHUDView *_debugView;
     NSLock *_lock;
     AVTAvatar *_lastRenderedAvatar;
-    BOOL _faceTrackingPaused;
 }
 
-@property (nonatomic) BOOL arMode;
 @property (strong, nonatomic) AVTAvatar *avatar;
-@property (readonly, nonatomic) BOOL captureImageIsTooDark;
-@property (nonatomic) BOOL enableFaceTracking;
-@property (nonatomic) BOOL enableReticle; // @synthesize enableReticle=_enableReticle;
-@property (readonly, nonatomic) BOOL faceIsTracked; // @synthesize faceIsTracked=_faceIsTracked;
-@property (nonatomic, getter=faceTrackingIsPaused) BOOL faceTrackingPaused; // @synthesize faceTrackingPaused=_faceTrackingPaused;
-@property (readonly, nonatomic, getter=isSensorCovered) BOOL sensorCovered;
 
 - (void).cxx_destruct;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
-- (void)_animateToNoTrackingState:(BOOL)arg1;
 - (void)_avtCommonInit;
-- (void)_cancelDelayedtrackingLoss;
-- (void)_delayedTrackingLoss;
 - (void)_drawAtTime:(double)arg1;
 - (void)_enablePhysics:(BOOL)arg1;
-- (void)_fireTrackingLoss;
 - (void)_refreshPerfTimesInfo;
 - (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
@@ -71,26 +51,18 @@
 - (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)_resetFaceToRandomPosition;
-- (void)_updateAvatarForARMode:(BOOL)arg1;
 - (void)_updateFocal;
 - (void)_willRecord;
 - (BOOL)allowTrackSmoothing;
-- (id)arSession;
 - (void)avatarDidChange;
 - (double)currentAudioTime;
 - (double)currentlyRenderedTrackingDate;
 - (void)dealloc;
 - (void)didLostTrackingForAWhile;
 - (void)didMoveToWindow;
-- (BOOL)directRetargetingMode;
 - (id)environment;
 - (BOOL)faceIsFullyActive;
-- (id)faceTracker;
-- (void)faceTracker:(id)arg1 session:(id)arg2 didFailWithError:(id)arg3;
-- (void)faceTracker:(id)arg1 sessionInterruptionEnded:(id)arg2;
-- (void)faceTracker:(id)arg1 sessionWasInterrupted:(id)arg2;
-- (void)faceTrackerDidUpdate:(id)arg1 trackingInfo:(id)arg2;
-- (id)faceTrackingDelegate;
+- (id)framingMode;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
@@ -98,13 +70,8 @@
 - (BOOL)isDoubleBuffered;
 - (void)layoutSubviews;
 - (void)lockAvatar;
-- (void)setCaptureImageIsTooDark:(BOOL)arg1;
-- (void)setDirectRetargetingMode:(BOOL)arg1;
-- (void)setFaceIsTracked:(BOOL)arg1;
-- (void)setFaceTracker:(id)arg1;
-- (void)setFaceTrackingDelegate:(id)arg1;
+- (void)setFramingMode:(id)arg1;
 - (void)setInterfaceOrientation:(long long)arg1;
-- (void)setSensorCovered:(BOOL)arg1;
 - (void)setShowPerfHUD:(BOOL)arg1;
 - (void)setup;
 - (void)setupOrientation;
@@ -112,10 +79,8 @@
 - (id)snapshotWithSize:(struct CGSize)arg1;
 - (id)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2;
 - (id)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2 options:(id)arg3;
-- (id)transitionTexture;
 - (void)unlockAvatar;
 - (void)updateAtTime:(double)arg1;
-- (void)updateForChangedFaceTrackingPaused;
 - (void)updateInterfaceOrientation;
 - (void)warmupMemoji;
 - (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;

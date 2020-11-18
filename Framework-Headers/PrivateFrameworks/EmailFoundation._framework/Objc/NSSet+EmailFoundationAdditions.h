@@ -6,11 +6,21 @@
 
 #import <Foundation/NSSet.h>
 
-@interface NSSet (EmailFoundationAdditions)
+#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
 
+@class NSString;
+
+@interface NSSet (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *ef_SQLExpression;
 @property (readonly, nonatomic) NSSet *ef_flatten;
 @property (readonly, nonatomic) NSSet *ef_notEmpty;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
+- (id)ef_SQLIsolatedExpression;
 - (BOOL)ef_all:(CDUnknownBlockType)arg1;
 - (BOOL)ef_any:(CDUnknownBlockType)arg1;
 - (id)ef_anyPassingTest:(CDUnknownBlockType)arg1;
@@ -19,5 +29,7 @@
 - (id)ef_filter:(CDUnknownBlockType)arg1;
 - (id)ef_flatMap:(CDUnknownBlockType)arg1;
 - (id)ef_partition:(CDUnknownBlockType)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;
 @end
 

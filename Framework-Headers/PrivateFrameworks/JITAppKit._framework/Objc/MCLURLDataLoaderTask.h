@@ -8,6 +8,7 @@
 
 @class NSData, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest;
 
+__attribute__((visibility("hidden")))
 @interface MCLURLDataLoaderTask : NSObject
 {
     CDUnknownBlockType _completion;

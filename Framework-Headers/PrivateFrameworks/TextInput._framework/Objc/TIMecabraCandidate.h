@@ -21,6 +21,8 @@
     BOOL _asIsCandidate;
     BOOL _continuousPathConversion;
     BOOL _partialCandidate;
+    BOOL _wubixingConvertedByPinyin;
+    BOOL _prefixMatched;
     NSString *_candidate;
     NSString *_input;
     NSNumber *_mecabraCandidatePointerValue;
@@ -58,8 +60,10 @@
 - (BOOL)isFullwidthCandidate;
 - (BOOL)isOTAWordListCandidate;
 - (BOOL)isPartialCandidate;
+- (BOOL)isPrefixMatched;
 - (BOOL)isRegionalCandidate;
 - (BOOL)isResponseKitCandidate;
+- (BOOL)isWubixingConvertedByPinyin;
 - (id)label;
 - (id)responseKitCategory;
 

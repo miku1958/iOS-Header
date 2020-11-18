@@ -8,8 +8,8 @@
 
 #import <Metal/MTLParallelRenderCommandEncoder-Protocol.h>
 
-@class MTLRenderPassDescriptor, NSString, _MTLCommandBuffer;
-@protocol MTLCommandBuffer, MTLCommandQueue, MTLDevice;
+@class MTLRenderPassDescriptor, NSMutableArray, NSString, _MTLCommandBuffer;
+@protocol MTLCommandBuffer, MTLCommandQueue, MTLDevice, MTLFence;
 
 @interface _MTLParallelRenderCommandEncoder : _MTLObjectWithLabel <MTLParallelRenderCommandEncoder>
 {
@@ -26,6 +26,9 @@
     BOOL _retainedReferences;
     BOOL _StatEnabled;
     unsigned long long _numThisEncoder;
+    id<MTLFence> _progressFence;
+    BOOL _needsFrameworkAssistedErrorTracking;
+    NSMutableArray *_debugSignposts;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,13 +45,16 @@
 - (void)dealloc;
 - (void)endEncoding;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (unsigned long long)getDriverUniqueID;
 - (id)initWithCommandBuffer:(id)arg1 renderPassDescriptor:(id)arg2;
+- (void)initializeEnhancedCommandBufferErrors;
 - (void)insertDebugSignpost:(id)arg1;
 - (BOOL)isMemorylessRender;
 - (void)popDebugGroup;
+- (void)preEndEncoding;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoder;
-- (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
+- (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setDepthStoreAction:(unsigned long long)arg1;

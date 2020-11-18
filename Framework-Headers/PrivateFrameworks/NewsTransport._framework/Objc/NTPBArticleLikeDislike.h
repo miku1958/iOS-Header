@@ -56,6 +56,7 @@
     NSString *_surfacedBySectionId;
     NSString *_surfacedByTopicId;
     int _topStoryType;
+    NSMutableArray *_topicIds;
     int _userAction;
     NTPBWidgetEngagement *_widgetEngagement;
     BOOL _fromNextArticleAffordanceTap;
@@ -209,11 +210,13 @@
 @property (strong, nonatomic) NSString *surfacedBySectionId; // @synthesize surfacedBySectionId=_surfacedBySectionId;
 @property (strong, nonatomic) NSString *surfacedByTopicId; // @synthesize surfacedByTopicId=_surfacedByTopicId;
 @property (nonatomic) int topStoryType; // @synthesize topStoryType=_topStoryType;
+@property (strong, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 @property (nonatomic) int userAction; // @synthesize userAction=_userAction;
 @property (strong, nonatomic) NTPBWidgetEngagement *widgetEngagement; // @synthesize widgetEngagement=_widgetEngagement;
 
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
++ (Class)topicIdsType;
 - (void).cxx_destruct;
 - (int)StringAsArticleType:(id)arg1;
 - (int)StringAsContentType:(id)arg1;
@@ -223,9 +226,11 @@
 - (int)StringAsTopStoryType:(id)arg1;
 - (void)addFractionalCohortMembership:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
+- (void)addTopicIds:(id)arg1;
 - (id)articleTypeAsString:(int)arg1;
 - (void)clearFractionalCohortMemberships;
 - (void)clearNamedEntities;
+- (void)clearTopicIds;
 - (id)contentTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -242,6 +247,8 @@
 - (id)nextArticleAffordanceTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)topStoryTypeAsString:(int)arg1;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
 - (void)writeTo:(id)arg1;
 
 @end

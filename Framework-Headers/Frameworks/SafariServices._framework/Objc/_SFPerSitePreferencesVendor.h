@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) _SFUserMediaPermissionController *sharedUserMediaPermissionController;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)managerForPreference:(id)arg1;
 
 @end

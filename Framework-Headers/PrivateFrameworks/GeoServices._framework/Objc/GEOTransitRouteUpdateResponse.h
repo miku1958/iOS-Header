@@ -33,14 +33,7 @@
         unsigned int read_routeUpdateConfiguration:1;
         unsigned int read_routeUpdates:1;
         unsigned int read_transitDataVersion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_timepointUsed:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_responseId:1;
-        unsigned int wrote_routeUpdateConfiguration:1;
-        unsigned int wrote_routeUpdates:1;
-        unsigned int wrote_transitDataVersion:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -63,12 +56,6 @@
 + (Class)routeUpdateType;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
-- (void)_addNoFlagsRouteUpdate:(id)arg1;
-- (void)_readDatasetAbStatus;
-- (void)_readResponseId;
-- (void)_readRouteUpdateConfiguration;
-- (void)_readRouteUpdates;
-- (void)_readTransitDataVersion;
 - (void)addRouteUpdate:(id)arg1;
 - (void)clearRouteUpdates;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -79,7 +66,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

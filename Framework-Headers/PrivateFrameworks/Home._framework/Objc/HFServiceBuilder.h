@@ -6,12 +6,13 @@
 
 #import <Home/HFItemBuilder.h>
 
+#import <Home/HFNamedItemBuilder-Protocol.h>
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
 @class HFNamingComponents, HFRoomBuilder, HMService, NSArray, NSString;
 @protocol HFIconDescriptor;
 
-@interface HFServiceBuilder : HFItemBuilder <HFServiceLikeBuilder>
+@interface HFServiceBuilder : HFItemBuilder <HFServiceLikeBuilder, HFNamedItemBuilder>
 {
     BOOL isFavorite;
     NSString *name;

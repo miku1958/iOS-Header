@@ -120,7 +120,6 @@
 - (struct CGSize)_itemSizeForItemAtIndexPath:(id)arg1;
 - (id)_originalTargetIndexPathFromDragIndexPath:(id)arg1 targetIndexPath:(id)arg2;
 - (void)_performMerge:(BOOL)arg1 targetPerson:(id)arg2 dragPerson:(id)arg3;
-- (void)_presentAllPeopleViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_progressChanged:(id)arg1;
 - (void)_resetHomeIfNeeded;
 - (id)_rightBarItemsForMode:(unsigned long long)arg1;
@@ -164,6 +163,7 @@
 - (id)init;
 - (id)initWithDataSource:(id)arg1 progressManager:(id)arg2;
 - (id)initialSelectedIndexPathsForSwipeSelectionManager:(id)arg1;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)peopleCollectionViewCellDidToggleFavoriteState:(id)arg1;
 - (void)peopleSectionedDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
@@ -176,6 +176,8 @@
 - (BOOL)ppt_namePerson:(id)arg1;
 - (long long)ppt_numOfCellsLoadingImages;
 - (id)ppt_randomPerson;
+- (id)px_navigationDestination;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)selectionModeTitle;
 - (void)showDetailsForMemberAtIndexPath:(id)arg1;

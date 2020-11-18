@@ -185,6 +185,7 @@
 - (id)dayView:(id)arg1 selectedCopyViewForOccurrence:(id)arg2;
 - (void)dayViewDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dayViewDidTapEmptySpace:(id)arg1;
+- (BOOL)dayViewShouldDrawSynchronously:(id)arg1;
 - (void)dealloc;
 - (BOOL)didScrollWhenEventGestureController:(id)arg1 scrollTimerFiredToMoveLeft:(BOOL)arg2 right:(BOOL)arg3 vertically:(BOOL)arg4 towardPoint:(struct CGPoint)arg5;
 - (void)editorDidCancelEditingEvent:(id)arg1;
@@ -192,7 +193,7 @@
 - (void)editorDidSaveEvent:(id)arg1;
 - (BOOL)eventEditorPopoverActiveWhileDraggingForEventGestureController:(id)arg1;
 - (void)eventGestureController:(id)arg1 addViewToScroller:(id)arg2 isAllDay:(BOOL)arg3;
-- (void)eventGestureController:(id)arg1 adjustDraggingViewForAllDay:(BOOL)arg2;
+- (void)eventGestureController:(id)arg1 adjustDraggingView:(id)arg2 forAllDay:(BOOL)arg3;
 - (double)eventGestureController:(id)arg1 dateAtPoint:(struct CGPoint)arg2;
 - (void)eventGestureController:(id)arg1 didCancelEditingOccurrence:(id)arg2 fadedOut:(BOOL)arg3;
 - (BOOL)eventGestureController:(id)arg1 didCommitOccurrence:(id)arg2 toDate:(double)arg3 isAllDay:(BOOL)arg4 span:(long long)arg5;

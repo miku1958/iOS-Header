@@ -52,6 +52,7 @@
 - (void)_withSystemBudgetOverride:(CDUnknownBlockType)arg1;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)componentName;
+- (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;

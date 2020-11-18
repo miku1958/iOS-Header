@@ -8,23 +8,21 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOComposedWaypoint, MNRouteUpdateFreshness, MNTimeballService, MapsSuggestionsETARequirements, MapsSuggestionsNetworkRequester, NSLock, NSMutableDictionary, NSString;
-@protocol MapsSuggestionsPredictor, OS_dispatch_queue;
+@class CLLocation, GEOAutomobileOptions, GEOComposedWaypoint, MapsSuggestionsETARequirements, NSLock, NSMutableDictionary, NSString;
+@protocol MapsSuggestionsNetworkRequester, MapsSuggestionsPredictor, OS_dispatch_queue;
 
 @interface MapsSuggestionsETARequester : NSObject <MapsSuggestionsObject>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    id<MapsSuggestionsNetworkRequester> _networkRequester;
+    id<MapsSuggestionsPredictor> _transportModePredictor;
+    MapsSuggestionsETARequirements *_etaRequirements;
     CLLocation *_currentLocationUsed;
     GEOComposedWaypoint *_currentLocationWaypoint;
     NSMutableDictionary *_waypoints;
     NSLock *_waypointsLock;
-    id<MapsSuggestionsPredictor> _transportModePredictor;
     int _forcedTransportMode;
-    MapsSuggestionsETARequirements *_etaRequirements;
-    MNTimeballService *_timeballService;
-    MNRouteUpdateFreshness *_updateFreshness;
     int _mapType;
-    MapsSuggestionsNetworkRequester *_requester;
     GEOAutomobileOptions *_automobileOptions;
 }
 
@@ -33,22 +31,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property int mapType; // @synthesize mapType=_mapType;
-@property (weak) MapsSuggestionsNetworkRequester *requester; // @synthesize requester=_requester;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
 - (BOOL)ETAsFromLocation:(id)arg1 toEntries:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)_determineTransportTypeFromOrigin:(id)arg1 toEntry:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)_keepExistingWaypointsForEntries:(id)arg1;
-- (BOOL)_old_requestETAsToEntries:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)_requestETAsToEntries:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)_requestWaypointForCurrentLocation:(id)arg1;
-- (BOOL)_requestWaypointsForEntries:(id)arg1;
-- (BOOL)_timeball_requestETAsToEntries:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_transportTypesForDestinationEntries:(id)arg1;
 - (void)forceTransportType:(int)arg1;
 - (id)initWithNetworkRequester:(id)arg1 transportModePredictor:(id)arg2 requirements:(id)arg3;
+- (id)networkRequester;
+- (BOOL)transportTypeFromLocation:(id)arg1 toEntry:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

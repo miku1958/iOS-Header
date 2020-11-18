@@ -14,12 +14,22 @@
     int _countOfAlternativesAvailable;
     int _alternativeListPosition;
     SISchemaLocaleIdentifier *_alternativesLocale;
+    struct {
+        unsigned int countOfWordsReplaced:1;
+        unsigned int countOfAlternativesAvailable:1;
+        unsigned int alternativeListPosition:1;
+    } _has;
+    BOOL _hasAlternativesLocale;
 }
 
 @property (nonatomic) int alternativeListPosition; // @synthesize alternativeListPosition=_alternativeListPosition;
 @property (strong, nonatomic) SISchemaLocaleIdentifier *alternativesLocale; // @synthesize alternativesLocale=_alternativesLocale;
 @property (nonatomic) int countOfAlternativesAvailable; // @synthesize countOfAlternativesAvailable=_countOfAlternativesAvailable;
 @property (nonatomic) int countOfWordsReplaced; // @synthesize countOfWordsReplaced=_countOfWordsReplaced;
+@property (nonatomic) BOOL hasAlternativeListPosition;
+@property (nonatomic) BOOL hasAlternativesLocale; // @synthesize hasAlternativesLocale=_hasAlternativesLocale;
+@property (nonatomic) BOOL hasCountOfAlternativesAvailable;
+@property (nonatomic) BOOL hasCountOfWordsReplaced;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

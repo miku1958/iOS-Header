@@ -11,7 +11,6 @@
 @class ACAccountStore, CKAccountOverrideInfo, CKDBackingAccount, NSPersonNameComponents, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDAccount : NSObject <CKDAccountInfoProvider>
 {
     BOOL _isUnitTestingAccount;
@@ -43,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSPersonNameComponents *fullName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL haveWarnedAboutServerPreferredPushEnvironment; // @synthesize haveWarnedAboutServerPreferredPushEnvironment=_haveWarnedAboutServerPreferredPushEnvironment;
-@property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
 @property (nonatomic) BOOL isAnonymousAccount; // @synthesize isAnonymousAccount=_isAnonymousAccount;
 @property (readonly, nonatomic) BOOL isCarryAccount;
 @property (readonly, nonatomic) BOOL isFakeAccount;
@@ -56,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSURL *privateCloudDBURL;
 @property (readonly, nonatomic) NSURL *privateCodeServiceURL;
-@property (readonly, nonatomic) NSURL *privateDatabaseRPCServiceURL;
 @property (readonly, nonatomic) NSURL *privateDeviceServiceURL;
 @property (readonly, nonatomic) NSURL *privateMetricsServiceURL;
 @property (readonly, nonatomic) NSURL *privateShareServiceURL;
@@ -82,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)initPrimaryAccount;
 - (id)initWithAccountID:(id)arg1;
 - (BOOL)isDataclassEnabled:(id)arg1;
+- (BOOL)isDataclassEnabledForCellular:(id)arg1;
 - (void)renewCloudKitAuthTokenWithReason:(id)arg1 shouldForce:(BOOL)arg2 accessProvider:(id)arg3 failedToken:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)renewiCloudAuthTokenWithReason:(id)arg1 shouldForce:(BOOL)arg2 accessProvider:(id)arg3 failedToken:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)sharingURLHostname;

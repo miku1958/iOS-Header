@@ -25,8 +25,8 @@
 
 + (id)assetCollectionListFetchResultForPeople:(id)arg1 assetCount:(unsigned long long *)arg2;
 + (id)photosDetailsContextForAsset:(id)arg1 parentContext:(id)arg2;
-+ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 keyAssets:(id)arg3 enableCuration:(BOOL)arg4 enableKeyAssets:(BOOL)arg5 viewSourceOrigin:(unsigned long long)arg6;
-+ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 viewSourceOrigin:(unsigned long long)arg3;
++ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 keyAssets:(id)arg3 enableCuration:(BOOL)arg4 enableKeyAssets:(BOOL)arg5 viewSourceOrigin:(long long)arg6;
++ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 viewSourceOrigin:(long long)arg3;
 - (void).cxx_destruct;
 - (id)_displayTitleForPeople:(id)arg1;
 - (id)_fetchKeyFaceAssetFetchResultFromPerson:(id)arg1;

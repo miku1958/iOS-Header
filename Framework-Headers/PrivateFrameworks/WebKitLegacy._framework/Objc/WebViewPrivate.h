@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSString, NSURL, WAKWindow, WebFixedPositionContent, WebFullScreenController, WebIndicateLayer, WebInspector, WebNodeHighlight, WebPreferences, WebVideoFullscreenController;
+@class NSMutableSet, NSString, NSURL, WAKWindow, WebFixedPositionContent, WebFullScreenController, WebIndicateLayer, WebInspector, WebNodeHighlight, WebPreferences;
 @protocol WebCaretChangeListener, WebDeviceOrientationProvider, WebFormDelegate, WebGeolocationProvider, WebNotificationProvider;
 
 __attribute__((visibility("hidden")))
@@ -80,7 +80,7 @@ __attribute__((visibility("hidden")))
     unsigned long long dragSourceAction;
     struct RetainPtr<NSURL> draggedLinkURL;
     struct RetainPtr<NSString> draggedLinkTitle;
-    struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> identifierMap;
+    struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::DefaultHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> identifierMap;
     BOOL _keyboardUIModeAccessed;
     int _keyboardUIMode;
     BOOL shouldUpdateWhileOffscreen;
@@ -88,7 +88,8 @@ __attribute__((visibility("hidden")))
     BOOL postsAcceleratedCompositingNotifications;
     struct RefPtr<LayerFlushController, WTF::DumbPtrTraits<LayerFlushController>> layerFlushController;
     struct CGSize lastLayoutSize;
-    WebVideoFullscreenController *fullscreenController;
+    struct RetainPtr<WebVideoFullscreenController> fullscreenController;
+    struct Vector<WTF::RetainPtr<WebVideoFullscreenController>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> fullscreenControllersExiting;
     WebFullScreenController *newFullscreenController;
     WebIndicateLayer *indicateLayer;
     id<WebGeolocationProvider> _geolocationProvider;
@@ -98,6 +99,7 @@ __attribute__((visibility("hidden")))
     int validationMessageTimerMagnification;
     float customDeviceScaleFactor;
     WebFixedPositionContent *_fixedPositionContent;
+    struct unique_ptr<WebCore::AlternativeTextUIController, std::__1::default_delete<WebCore::AlternativeTextUIController>> m_alternativeTextUIController;
     struct RetainPtr<NSData> sourceApplicationAuditData;
     BOOL _didPerformFirstNavigation;
 }

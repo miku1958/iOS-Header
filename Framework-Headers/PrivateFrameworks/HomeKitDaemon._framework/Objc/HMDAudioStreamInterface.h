@@ -25,9 +25,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HMDAudioStreamInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long direction;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isMuted) BOOL mute;
+@property (nonatomic, getter=isMuted) BOOL muted;
 @property (nonatomic, getter=isRTCPEnabled) BOOL rtcpEnabled;
 @property (nonatomic) double rtcpSendIntervalSec; // @synthesize rtcpSendIntervalSec=_rtcpSendIntervalSec;
 @property (nonatomic, getter=isRTCPTimeOutEnabled) BOOL rtcpTimeOutEnabled;

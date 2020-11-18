@@ -26,7 +26,7 @@
 - (id)_titleFont;
 - (void)_viewDidLoad;
 - (void)didSelectButton:(id)arg1;
-- (id)initWithAlert:(id)arg1 alertDelegate:(id)arg2;
+- (id)initWithAlert:(id)arg1 alertDelegate:(id)arg2 templateEnvironment:(id)arg3;
 - (id)preferredFocusEnvironments;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -6,12 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMBLocalZone, HMBProcessingResult, NSSet, NSUUID;
+@class HMBLocalZone, HMBProcessingResult;
 
 @protocol HMBLocalZoneDelegate <NSObject>
 
 @optional
 - (void)localZone:(HMBLocalZone *)arg1 didCompleteProcessingWithResult:(HMBProcessingResult *)arg2;
-- (NSUUID *)localZone:(HMBLocalZone *)arg1 didUpdateFromToken:(NSUUID *)arg2 delta:(NSSet *)arg3;
 @end
 

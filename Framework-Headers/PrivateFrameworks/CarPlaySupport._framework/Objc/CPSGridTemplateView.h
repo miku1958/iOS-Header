@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (unsigned long long)buttonViewCountThatFits:(double)arg1 buttonPadding:(double)arg2;
 - (id)initWithGridButtons:(id)arg1;
 - (void)layoutSubviews;
 

@@ -6,30 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoard/SBSceneLayoutInterfaceOrientedView-Protocol.h>
+@class SBApplicationSceneView, SBLayoutElement, SBOrientationTransformWrapperView;
+@protocol BSInvalidatable;
 
-@class NSString, SBApplicationSceneView, SBLayoutElement, SBOrientationTransformWrapperView;
-
-@interface SBSceneLayoutElementAnimationWrapperView : UIView <SBSceneLayoutInterfaceOrientedView>
+@interface SBSceneLayoutElementAnimationWrapperView : UIView
 {
     SBLayoutElement *_layoutElement;
     SBApplicationSceneView *_appView;
     SBOrientationTransformWrapperView *_orientedView;
+    UIView<BSInvalidatable> *_contentView;
 }
 
-@property (readonly, nonatomic) SBApplicationSceneView *appView; // @synthesize appView=_appView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) SBApplicationSceneView *applicationSceneViewIfExists;
+@property (readonly, nonatomic) UIView<BSInvalidatable> *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) SBLayoutElement *layoutElement; // @synthesize layoutElement=_layoutElement;
-@property (readonly, nonatomic) long long layoutOrientation;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)addContentView:(id)arg1;
+- (id)description;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithLayoutElement:(id)arg1 appView:(id)arg2;
+- (id)initWithLayoutElement:(id)arg1 contentView:(id)arg2 orientation:(long long)arg3;
 - (void)invalidate;
 - (void)layoutSubviews;
 - (void)willMoveToSuperview:(id)arg1;

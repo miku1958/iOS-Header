@@ -63,7 +63,8 @@ struct Candidate {
 struct CandidateCollection {
     struct vector<KB::Candidate, std::__1::allocator<KB::Candidate>> _field1;
     struct vector<KB::Candidate, std::__1::allocator<KB::Candidate>> _field2;
-    int _field3;
+    struct vector<KB::Candidate, std::__1::allocator<KB::Candidate>> _field3;
+    int _field4;
 };
 
 struct CandidateScoreFactors {
@@ -107,6 +108,9 @@ struct LanguageModelContext {
     vector_5bda1073 _field1;
     unsigned long long _field2;
     unsigned long long _field3;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field4;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field6;
 };
 
 struct LockedInput {
@@ -221,6 +225,7 @@ struct TIInputManager {
     BOOL _field33;
     BOOL _field34;
     BOOL _field35;
+    int _field36;
 };
 
 struct TITokenID {
@@ -269,6 +274,30 @@ struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
+};
+
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
 };
 
 struct map<int, KB::ContinuousPathDetector::AnnotatedPath, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, KB::ContinuousPathDetector::AnnotatedPath>>> {
@@ -367,6 +396,14 @@ struct vector<float, std::__1::allocator<float>> {
     float *_field2;
     struct __compressed_pair<float *, std::__1::allocator<float>> {
         float *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
+    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
+        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
     } _field3;
 };
 

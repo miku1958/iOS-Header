@@ -27,6 +27,7 @@
 + (id)allProperties;
 + (id)anyInLibrary:(id)arg1 predicate:(id)arg2;
 + (id)anyInLibrary:(id)arg1 predicate:(id)arg2 options:(long long)arg3;
++ (BOOL)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (id)collectionClassesToUpdateBeforeDelete;
 + (id)countingQueryForBaseQuery:(id)arg1 countProperty:(id)arg2 forIdentifier:(long long)arg3;
 + (id)defaultFilterPredicates;

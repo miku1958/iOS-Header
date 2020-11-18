@@ -12,6 +12,7 @@
 
 @property (readonly) HMSettings *privateSettings;
 @property (readonly) HMSettings *settings;
+@property (readonly) BOOL settingsInitialized;
 
 @end
 

@@ -30,6 +30,7 @@
 - (void)_dismiss;
 - (BOOL)_shouldBlurBackground;
 - (void)contentModuleAlertViewControllerNeedsDismissal:(id)arg1;
+- (void)handleGestureDismissal;
 - (BOOL)handleHomeButtonPress;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -37,10 +38,12 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
 - (id)newTransientOverlayPresentationTransitionCoordinator;
+- (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredLockedGestureDismissalStyle;
 - (long long)preferredUnlockedGestureDismissalStyle;
 - (BOOL)shouldDisableControlCenter;
 - (BOOL)shouldDisableOrientationUpdates;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 
 @end

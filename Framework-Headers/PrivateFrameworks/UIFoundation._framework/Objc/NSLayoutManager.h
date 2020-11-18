@@ -72,6 +72,7 @@
     id _extraData;
     NSTextContainer *_cachedTextContainer;
     BOOL _cachedTextContainerIsVertical;
+    BOOL _delegateIsWeakValue;
 }
 
 @property (nonatomic) BOOL allowsNonContiguousLayout;
@@ -133,6 +134,7 @@
 - (void)_drawLineForGlyphRange:(struct _NSRange)arg1 type:(long long)arg2 baselineOffset:(double)arg3 lineFragmentRect:(struct CGRect)arg4 lineFragmentGlyphRange:(struct _NSRange)arg5 containerOrigin:(struct CGPoint)arg6 isStrikethrough:(BOOL)arg7;
 - (BOOL)_drawsDebugBaselines;
 - (BOOL)_drawsUnderlinesLikeWebKit;
+- (struct _NSRange)_exactGlyphRangeForCharacterRange:(struct _NSRange)arg1;
 - (struct _NSRange)_extendedCharRangeForInvalidation:(struct _NSRange)arg1 editedCharRange:(struct _NSRange)arg2;
 - (void)_fillGlyphHoleAtIndex:(unsigned long long)arg1 desiredNumberOfCharacters:(unsigned long long)arg2;
 - (void)_fillGlyphHoleForCharacterRange:(struct _NSRange)arg1 startGlyphIndex:(unsigned long long)arg2 desiredNumberOfCharacters:(unsigned long long)arg3;
@@ -157,6 +159,7 @@
 - (id)_glyphTreeDescription;
 - (void)_growCachedRectArrayToSize:(unsigned long long)arg1;
 - (BOOL)_hasSeenRightToLeft;
+- (double)_hyphenationFactor;
 - (unsigned long long)_indexOfFirstGlyphInTextContainer:(id)arg1 okToFillHoles:(BOOL)arg2;
 - (void)_insertGlyphs:(unsigned int *)arg1 elasticAttributes:(BOOL *)arg2 count:(unsigned long long)arg3 atGlyphIndex:(unsigned long long)arg4 characterIndex:(unsigned long long)arg5;
 - (id)_insertionPointHelperForGlyphAtIndex:(unsigned long long)arg1;
@@ -205,6 +208,7 @@
 - (void)_setGlyphsPerLineEstimate:(unsigned long long)arg1 integerOffsetPerLineEstimate:(unsigned long long)arg2;
 - (void)_setGlyphsPerLineEstimate:(unsigned long long)arg1 offsetPerLineEstimate:(double)arg2;
 - (void)_setHasSeenRightToLeft:(BOOL)arg1;
+- (void)_setHyphenationFactor:(double)arg1;
 - (void)_setMirrorsTextAlignment:(BOOL)arg1;
 - (void)_setNeedToFlushGlyph:(BOOL)arg1;
 - (void)_setRowArrayCache:(id)arg1;
@@ -215,6 +219,7 @@
 - (void)_simpleInsertGlyph:(unsigned int)arg1 atGlyphIndex:(unsigned long long)arg2 characterIndex:(unsigned long long)arg3 elastic:(BOOL)arg4;
 - (unsigned long long)_smallEncodingGlyphIndexForCharacterIndex:(unsigned long long)arg1 startOfRange:(BOOL)arg2 okToFillHoles:(BOOL)arg3;
 - (unsigned long long)_smallEncodingGlyphIndexForCharacterIndex:(unsigned long long)arg1 startOfRange:(BOOL)arg2 okToFillHoles:(BOOL)arg3 considerNulls:(BOOL)arg4;
+- (id)_stringForLoggingLineFragmentForGlyphAtIndex:(long long)arg1;
 - (id)_temporaryAttribute:(id)arg1 atCharacterIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)_temporaryAttribute:(id)arg1 atCharacterIndex:(unsigned long long)arg2 longestEffectiveRange:(struct _NSRange *)arg3 inRange:(struct _NSRange)arg4;
 - (id)_temporaryAttributesAtCharacterIndex:(unsigned long long)arg1 longestEffectiveRange:(struct _NSRange *)arg2 inRange:(struct _NSRange)arg3;
@@ -243,6 +248,7 @@
 - (void)deleteGlyphsInRange:(struct _NSRange)arg1;
 - (id)description;
 - (id)destinationTextContainerForRange:(struct _NSRange)arg1 inTextContainer:(id)arg2;
+- (CDUnknownBlockType)didCompleteLayoutObserverBlock;
 - (void)drawBackgroundForGlyphRange:(struct _NSRange)arg1 atPoint:(struct CGPoint)arg2;
 - (void)drawGlyphsForGlyphRange:(struct _NSRange)arg1 atPoint:(struct CGPoint)arg2;
 - (void)drawSpellingUnderlineForGlyphRange:(struct _NSRange)arg1 spellingState:(long long)arg2 inGlyphRange:(struct _NSRange)arg3 lineFragmentRect:(struct CGRect)arg4 lineFragmentGlyphRange:(struct _NSRange)arg5 containerOrigin:(struct CGPoint)arg6;
@@ -331,6 +337,7 @@
 - (void)setBaselineOffset:(double)arg1 forGlyphAtIndex:(unsigned long long)arg2;
 - (void)setBoundsRect:(struct CGRect)arg1 forTextBlock:(id)arg2 glyphRange:(struct _NSRange)arg3;
 - (void)setCharacterIndex:(unsigned long long)arg1 forGlyphAtIndex:(unsigned long long)arg2;
+- (void)setDidCompleteLayoutObserverBlock:(CDUnknownBlockType)arg1;
 - (void)setDrawsOutsideLineFragment:(BOOL)arg1 forGlyphAtIndex:(unsigned long long)arg2;
 - (void)setEllipsisGlyphAttribute:(BOOL)arg1 forGlyphAtIndex:(unsigned long long)arg2;
 - (void)setExtraLineFragmentRect:(struct CGRect)arg1 usedRect:(struct CGRect)arg2 textContainer:(id)arg3;

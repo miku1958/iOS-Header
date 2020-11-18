@@ -6,11 +6,19 @@
 
 #import <Vision/VNPixelBufferObservation.h>
 
+@class LKTOpticalFlow, VNImageSignature;
+
+__attribute__((visibility("hidden")))
 @interface VNOpticalFlowObservation : VNPixelBufferObservation
 {
+    VNImageSignature *_targetImageSignature;
+    LKTOpticalFlow *_opticalFlow;
 }
 
-- (struct __CVBuffer *)getPixelBufferFP32FormattedAndReturnError:(id *)arg1;
+@property (strong, nonatomic) LKTOpticalFlow *opticalFlow; // @synthesize opticalFlow=_opticalFlow;
+@property (strong, nonatomic) VNImageSignature *targetImageSignature; // @synthesize targetImageSignature=_targetImageSignature;
+
+- (void).cxx_destruct;
 
 @end
 

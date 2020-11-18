@@ -33,7 +33,7 @@
 
 + (void)fetchResourceFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setActiveStudentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (id)studentDaemonConnection;
++ (id)studentDaemonProxy;
 + (void)studentDidAuthenticate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;

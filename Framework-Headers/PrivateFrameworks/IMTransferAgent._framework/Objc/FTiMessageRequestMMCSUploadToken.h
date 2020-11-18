@@ -47,6 +47,7 @@
 @property (copy, nonatomic) NSData *sessionToken; // @synthesize sessionToken=_sessionToken;
 @property (copy) NSData *signature; // @synthesize signature=_signature;
 
+- (void).cxx_destruct;
 - (long long)command;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

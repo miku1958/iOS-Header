@@ -13,13 +13,13 @@
 #import <TSDrawables/TSKSearchable-Protocol.h>
 #import <TSDrawables/TSKTransformableObject-Protocol.h>
 
-@class NSArray, NSData, NSObject, NSSet, NSString, NSURL, TSDDefaultPartitioner, TSDDrawableComment, TSDExteriorTextWrap, TSDGroupInfo, TSDInfoGeometry, TSPLazyReference, TSSPropertySetChangeDetails;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@class NSArray, NSData, NSObject, NSSet, NSString, NSURL, NSUUID, TSDDefaultPartitioner, TSDDrawableComment, TSDExteriorTextWrap, TSDGroupInfo, TSDInfoGeometry, TSDStandinCaptionInfo, TSPLazyReference, TSSPropertySetChangeDetails;
+@protocol TSDInfo, TSDOwningAttachment, TSDTitlePlacementProviding;
 
 @interface TSDDrawableInfo : TSPObject <TSDChangeableInfo, TSDLockableInfo, TSKDocumentObject, TSKTransformableObject, TSKSearchable, TSDScrollingAwareChangeSource>
 {
     TSDInfoGeometry *mGeometry;
-    NSObject<TSDContainerInfo> *mParentInfo;
+    NSObject<TSDInfo> *mParentInfo;
     TSPLazyReference *mParentInfoReference;
     BOOL mLocked;
     BOOL mAspectRatioLocked;
@@ -31,21 +31,38 @@
     TSDDrawableComment *mComment;
     NSArray *mPencilAnnotations;
     NSString *mAccessibilityDescription;
+    TSDDrawableInfo *mCaption;
+    TSDDrawableInfo<TSDTitlePlacementProviding> *mTitle;
+    TSDStandinCaptionInfo *mCaptionStandin;
+    TSDStandinCaptionInfo *mTitleStandin;
+    BOOL mCaptionHidden;
+    BOOL mTitleHidden;
 }
 
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=mAccessibilityDescription;
 @property (readonly, nonatomic, getter=isAllowedInFreehandDrawings) BOOL allowedInFreehandDrawings;
 @property (readonly, nonatomic, getter=isAllowedInGroups) BOOL allowedInGroups;
+@property (readonly, nonatomic) BOOL allowsCaption;
 @property (readonly, nonatomic) BOOL allowsParentGroupToBeResizedWithoutAspectRatioLock;
+@property (readonly, nonatomic) BOOL allowsTitle;
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic) NSSet *animationFilters;
 @property (nonatomic) BOOL aspectRatioLocked; // @synthesize aspectRatioLocked=mAspectRatioLocked;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) BOOL canAddCaption;
+@property (readonly, nonatomic) BOOL canAddTitle;
 @property (readonly, nonatomic) BOOL canAnchor;
 @property (readonly, nonatomic) BOOL canAspectRatioLockBeChangedByUser;
 @property (readonly, nonatomic) BOOL canChangeWrapType;
+@property (readonly, nonatomic) BOOL canCommentInCaptionOrTitle;
 @property (readonly, nonatomic) BOOL canCopyData;
+@property (readonly, nonatomic) BOOL canRemoveCaption;
+@property (readonly, nonatomic) BOOL canRemoveTitle;
 @property (readonly, nonatomic) BOOL canSizeBeChangedIncrementally;
+@property (strong, nonatomic) TSDDrawableInfo *caption; // @synthesize caption=mCaption;
+@property (nonatomic) BOOL captionHidden; // @synthesize captionHidden=mCaptionHidden;
+@property (strong, nonatomic) TSDStandinCaptionInfo *captionStandin;
+@property (copy, nonatomic) NSUUID *captionUUID;
 @property (strong, nonatomic) TSDDrawableComment *comment;
 @property (readonly, nonatomic) TSDGroupInfo *containingGroup;
 @property (readonly, nonatomic) BOOL contentsAreRightToLeft;
@@ -58,7 +75,9 @@
 @property (readonly, nonatomic) BOOL hasPDFDataForCopy;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSURL *hyperlinkURL; // @synthesize hyperlinkURL=mHyperlinkURL;
+@property (readonly, nonatomic) NSObject<TSDInfo> *infoForAlignAndDistribute;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isLockedForSpecificInfo;
 @property (readonly, nonatomic, getter=isLockable) BOOL lockable;
 @property (nonatomic, getter=isLocked) BOOL locked; // @synthesize locked=mLocked;
@@ -67,7 +86,7 @@
 @property (readonly, nonatomic) NSData *originalPDFDataForCopy;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @synthesize owningAttachment=mOwningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (strong, nonatomic) NSArray *pencilAnnotations;
 @property (readonly, nonatomic) NSString *presetKind;
 @property (readonly, nonatomic) BOOL requiresStagesBuildingInReverse;
@@ -78,22 +97,34 @@
 @property (readonly, nonatomic) BOOL supportsAttachedComments;
 @property (readonly, nonatomic) BOOL supportsHyperlinks;
 @property (readonly, nonatomic) BOOL supportsParentRotation;
+@property (strong, nonatomic) TSDDrawableInfo<TSDTitlePlacementProviding> *title; // @synthesize title=mTitle;
+@property (nonatomic) BOOL titleHidden; // @synthesize titleHidden=mTitleHidden;
+@property (strong, nonatomic) TSDStandinCaptionInfo *titleStandin;
+@property (copy, nonatomic) NSUUID *titleUUID;
 @property (readonly, nonatomic) struct CGAffineTransform transformInRoot;
 @property (readonly, nonatomic) struct CGPoint transformableObjectAnchorPoint;
+@property (readonly, nonatomic) BOOL wantsCounterRotationWhenNotSupportingParentRotationInRotatedParent;
 @property (readonly, nonatomic) BOOL wantsPositionFixedWhenCopying;
+@property (readonly, nonatomic) BOOL wantsStandardTypesInAdditionToTypesToPromiseWhenCopyingSingleDrawable;
+@property (readonly, nonatomic) BOOL wantsStandardTypesInAdditionToTypesToPromiseWhenDraggingSingleDrawable;
 @property (readonly, nonatomic) BOOL willRenderContentViaImager;
 
 + (BOOL)canPartitionForPrinting;
 + (BOOL)canPartitionInline;
 + (Class)classForUnarchiver:(id)arg1;
 + (Class)i_drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
++ (BOOL)isCaption;
 + (BOOL)needsObjectUUID;
 + (void)registerClassForUnarchiving:(Class)arg1;
 + (void)setShouldPartitionForPrinting:(BOOL)arg1;
++ (BOOL)wantsTitleAndCaptionUUIDs;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 dynamicallyDraggedLayout:(id)arg2;
 - (void)beginCollectingChanges;
+- (id)captionInfoIgnoringVisibility;
+- (id)childEnumerator;
+- (id)childEnumeratorForUserSearch;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 animationFilter:(id)arg2;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 byGlyphStyle:(int)arg2 animationFilter:(id)arg3;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
@@ -108,6 +139,10 @@
 - (id)endCollectingChanges;
 - (id)exteriorTextWrapForMovingToFloating;
 - (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
+- (void)i_removeCaptionStandin;
+- (void)i_removeTitleStandin;
+- (void)i_setCaption:(id)arg1 withUUID:(id)arg2;
+- (void)i_setTitle:(id)arg1 withUUID:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (BOOL)isChildOfPossibleParentInfo:(id)arg1;
 - (BOOL)isSelectable;
@@ -117,6 +152,7 @@
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)objectUUIDPath;
+- (BOOL)p_allAncestorsAreUnrotatedAndUnflipped;
 - (id)partitioner;
 - (void)performBlockWithTemporaryLayout:(CDUnknownBlockType)arg1;
 - (id)promisedDataForType:(id)arg1;
@@ -128,8 +164,12 @@
 - (void)setPrimitiveGeometry:(id)arg1;
 - (BOOL)shouldCancelScrollingToSelectionPath:(id)arg1 forChanges:(id)arg2;
 - (BOOL)shouldPreventCopyOperationWithOtherInfos:(id)arg1;
+- (BOOL)shouldShowOnCanvas:(id)arg1;
 - (unsigned long long)textureDeliveryStyleFromDeliveryString:(id)arg1;
 - (id)textureDeliveryStylesLocalized:(BOOL)arg1 animationFilter:(id)arg2;
+- (id)titleAndCaptionInfos;
+- (id)titleAndCaptionInfosForUserSearch;
+- (id)titleInfoIgnoringVisibility;
 - (double)transformGeometryRatioForTransform:(struct CGAffineTransform)arg1;
 - (id)transformedGeometryWithTransform:(struct CGAffineTransform)arg1 inBounds:(struct CGRect)arg2;
 - (id)typesToPromiseWhenCopyingSingleDrawable;

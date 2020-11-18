@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class EKEventStore, NSMutableDictionary, NSMutableSet;
+@protocol OS_dispatch_queue;
 
 @interface CUIKEditingManager : NSObject
 {
     EKEventStore *_eventStore;
     NSMutableSet *_editingContextGroups;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_changeHistory;
     NSMutableDictionary *_changedObjectMap;
 }
@@ -20,6 +22,7 @@
 @property (strong) NSMutableDictionary *changedObjectMap; // @synthesize changedObjectMap=_changedObjectMap;
 @property (strong) NSMutableSet *editingContextGroups; // @synthesize editingContextGroups=_editingContextGroups;
 @property (weak) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
+@property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 

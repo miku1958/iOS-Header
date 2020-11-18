@@ -16,11 +16,13 @@
     NSArray *_updatedRecords;
     NSArray *_deletedRecordScopedIdentifiers;
     NSSet *_unquarantinedRecordScopedIdentifiers;
+    NSDictionary *_recordWithStatusChangesToNotify;
 }
 
 @property (readonly, nonatomic) NSArray *addedRecords; // @synthesize addedRecords=_addedRecords;
 @property (readonly, nonatomic) NSArray *deletedRecordScopedIdentifiers; // @synthesize deletedRecordScopedIdentifiers=_deletedRecordScopedIdentifiers;
 @property (readonly, nonatomic) CPLChangeBatch *diffBatch; // @synthesize diffBatch=_diffBatch;
+@property (readonly, nonatomic) NSDictionary *recordWithStatusChangesToNotify; // @synthesize recordWithStatusChangesToNotify=_recordWithStatusChangesToNotify;
 @property (readonly, nonatomic) NSSet *unquarantinedRecordScopedIdentifiers; // @synthesize unquarantinedRecordScopedIdentifiers=_unquarantinedRecordScopedIdentifiers;
 @property (readonly, nonatomic) NSArray *updatedRecords; // @synthesize updatedRecords=_updatedRecords;
 @property (readonly, nonatomic) NSDictionary *uploadIdentifiers; // @synthesize uploadIdentifiers=_uploadIdentifiers;

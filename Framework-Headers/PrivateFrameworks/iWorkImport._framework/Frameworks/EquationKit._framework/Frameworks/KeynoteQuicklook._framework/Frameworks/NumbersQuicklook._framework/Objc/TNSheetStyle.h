@@ -16,6 +16,7 @@
 - (id)backgroundColor;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadSheetStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct SheetStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (unsigned long long)minimumReadVersion;
 - (void)saveSheetStylePropertiesToArchive:(struct SheetStylePropertiesArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 

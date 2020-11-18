@@ -10,8 +10,10 @@
 {
     long long _sampleMode;
     CDStruct_1b6d18a9 _time;
+    CDStruct_1b6d18a9 _rawTime;
 }
 
+@property (nonatomic) CDStruct_1b6d18a9 rawTime; // @synthesize rawTime=_rawTime;
 @property (nonatomic) long long sampleMode; // @synthesize sampleMode=_sampleMode;
 @property (nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 

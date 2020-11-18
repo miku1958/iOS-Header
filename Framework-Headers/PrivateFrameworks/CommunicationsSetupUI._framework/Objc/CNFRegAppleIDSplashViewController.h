@@ -8,6 +8,7 @@
 
 @class CNFRegController;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegAppleIDSplashViewController : PSAppleIDSplashViewController
 {
     BOOL _showBusyUIOnAppearance;

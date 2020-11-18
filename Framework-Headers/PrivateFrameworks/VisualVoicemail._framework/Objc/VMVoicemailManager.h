@@ -73,6 +73,7 @@
 - (void)dealloc;
 - (id)deleteVoicemail:(id)arg1;
 - (id)deleteVoicemails:(id)arg1;
+- (id)fetchAccounts;
 - (void)greetingForAccountUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithClient:(id)arg1;
@@ -92,6 +93,7 @@
 - (void)obliterate;
 - (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
+- (void)remapAccount:(id)arg1 toAccount:(id)arg2;
 - (id)removeVoicemailFromTrash:(id)arg1;
 - (id)removeVoicemailsFromTrash:(id)arg1;
 - (void)reportTranscriptionProblemForVoicemail:(id)arg1;

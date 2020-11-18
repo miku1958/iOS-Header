@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AXDialectMap, NSArray, NSCharacterSet, NSLocale, NSSet, NSString;
+@class AXDialectMap, NSArray, NSCharacterSet, NSLocale, NSMutableDictionary, NSSet, NSString;
 
 @interface AXLanguageManager : NSObject
 {
     AXDialectMap *_dialectForSystemLanguage;
     AXDialectMap *_dialectForCurrentLocale;
     AXDialectMap *_dialectForCurrentRegion;
+    struct os_unfair_lock_s _languageFallbackLock;
+    NSMutableDictionary *_languageFallbacks;
     BOOL __unitTest_didUpdateForLocaleChange;
     NSArray *_langMaps;
     NSCharacterSet *_commonCharacters;
@@ -51,12 +53,17 @@
 - (id)descriptionOfWord:(id)arg1 forLanguage:(id)arg2;
 - (id)dialectForLanguageID:(id)arg1;
 - (id)dialectThatCanSpeakCharacter:(unsigned short)arg1;
+- (id)dialectsThatCanSpeak:(CDUnknownBlockType)arg1 dialectIsSecondary:(CDUnknownBlockType)arg2 overridePreferredLanguages:(id)arg3;
 - (id)dialectsThatCanSpeakCharacter:(unsigned short)arg1;
+- (id)dialectsThatCanSpeakCharacter:(unsigned short)arg1 overridePreferredLanguages:(id)arg2;
+- (id)dialectsThatCanSpeakCharacter:(unsigned short)arg1 overridePreferredLanguages:(id)arg2 allowTransliteration:(BOOL)arg3;
 - (id)dialectsThatCanSpeakString:(id)arg1;
+- (id)dialectsThatCanSpeakString:(id)arg1 overridePreferredLanguages:(id)arg2;
 - (BOOL)didUpdateForLocaleChange;
 - (id)init;
 - (BOOL)isCharacterCommon:(unsigned short)arg1;
 - (BOOL)isStringComposedByCommonCharacters:(id)arg1;
+- (id)outputLanguageIdentifierForLanguage:(id)arg1;
 - (void)updateCachedDialects;
 
 @end

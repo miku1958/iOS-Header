@@ -7,11 +7,12 @@
 #import <UIKit/UICollectionViewCell.h>
 
 #import <WorkflowUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <WorkflowUI/WFDraggableActionView-Protocol.h>
 
 @class NSArray, NSString, UILabel, UIViewController, WFActionDrawerImage, WFActionDrawerImageLoadTask, WFCircularImageView, WFDragController, WFDragGestureRecognizer;
 @protocol VCActionDonation;
 
-@interface WFActionDrawerSiriSuggestionsCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate>
+@interface WFActionDrawerSiriSuggestionsCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate, WFDraggableActionView>
 {
     NSString *_title;
     long long _cellType;
@@ -54,6 +55,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)initialSizeForBeginningDragController:(id)arg1;
 - (void)loadImageForInteractionDonation:(id)arg1;
 - (void)prepareForReuse;
 - (void)setImage:(id)arg1 animated:(BOOL)arg2;

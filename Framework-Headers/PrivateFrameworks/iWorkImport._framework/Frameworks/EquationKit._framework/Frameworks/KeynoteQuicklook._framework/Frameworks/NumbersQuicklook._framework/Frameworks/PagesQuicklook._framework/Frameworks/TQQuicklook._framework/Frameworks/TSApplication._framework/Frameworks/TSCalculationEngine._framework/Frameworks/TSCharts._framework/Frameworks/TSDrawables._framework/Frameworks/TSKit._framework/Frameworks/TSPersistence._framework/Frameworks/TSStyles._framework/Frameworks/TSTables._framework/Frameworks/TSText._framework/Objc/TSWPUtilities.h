@@ -11,6 +11,7 @@
 }
 
 + (BOOL)anyInputIsNonRoman;
++ (BOOL)inputIsOnlyRoman;
 
 @end
 

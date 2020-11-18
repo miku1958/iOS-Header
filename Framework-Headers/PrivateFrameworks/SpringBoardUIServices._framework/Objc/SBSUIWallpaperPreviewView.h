@@ -63,7 +63,7 @@
 - (void)_userDidTapOnSetButton:(id)arg1;
 - (void)dealloc;
 - (void)displayInstructionsForEffect:(unsigned long long)arg1 enabled:(BOOL)arg2 animated:(BOOL)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperView:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperView:(id)arg2 disableParallax:(BOOL)arg3;
 - (void)irisWallpaperViewPlaybackStateDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)setWallpaperView:(id)arg1;

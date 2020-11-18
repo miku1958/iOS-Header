@@ -25,6 +25,7 @@
     int _command;
     NSMutableArray *_currentPlaybackSessionTypes;
     int _currentQueueEndAction;
+    int _disabledReason;
     NSString *_localizedShortTitle;
     NSString *_localizedTitle;
     float _maximumRating;
@@ -47,6 +48,7 @@
         unsigned int canScrub:1;
         unsigned int command:1;
         unsigned int currentQueueEndAction:1;
+        unsigned int disabledReason:1;
         unsigned int maximumRating:1;
         unsigned int minimumRating:1;
         unsigned int numAvailableSkips:1;
@@ -68,11 +70,13 @@
 @property (nonatomic) int command; // @synthesize command=_command;
 @property (strong, nonatomic) NSMutableArray *currentPlaybackSessionTypes; // @synthesize currentPlaybackSessionTypes=_currentPlaybackSessionTypes;
 @property (nonatomic) int currentQueueEndAction; // @synthesize currentQueueEndAction=_currentQueueEndAction;
+@property (nonatomic) int disabledReason; // @synthesize disabledReason=_disabledReason;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL hasActive;
 @property (nonatomic) BOOL hasCanScrub;
 @property (nonatomic) BOOL hasCommand;
 @property (nonatomic) BOOL hasCurrentQueueEndAction;
+@property (nonatomic) BOOL hasDisabledReason;
 @property (nonatomic) BOOL hasEnabled;
 @property (readonly, nonatomic) BOOL hasLocalizedShortTitle;
 @property (readonly, nonatomic) BOOL hasLocalizedTitle;
@@ -120,8 +124,11 @@
 + (Class)supportedPlaybackSessionTypesType;
 - (void).cxx_destruct;
 - (int)StringAsCommand:(id)arg1;
+- (int)StringAsCurrentQueueEndAction:(id)arg1;
+- (int)StringAsDisabledReason:(id)arg1;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
+- (int)StringAsSupportedQueueEndActions:(id)arg1;
 - (void)addCurrentPlaybackSessionTypes:(id)arg1;
 - (void)addPreferredInterval:(double)arg1;
 - (void)addSupportedCustomQueueIdentifier:(id)arg1;
@@ -143,9 +150,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)currentPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)currentPlaybackSessionTypesCount;
+- (id)currentQueueEndActionAsString:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)disabledReasonAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -164,6 +173,7 @@
 - (int)supportedPlaybackQueueTypesAtIndex:(unsigned long long)arg1;
 - (id)supportedPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedPlaybackSessionTypesCount;
+- (id)supportedQueueEndActionsAsString:(int)arg1;
 - (int)supportedQueueEndActionsAtIndex:(unsigned long long)arg1;
 - (float)supportedRateAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;

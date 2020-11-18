@@ -6,12 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
-@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAirQualityConditions, WFAirQualityRequest, WFDailyForecastRequest, WFForecastRequest, WFHourlyForecastRequest, WFLocation, WFServiceConnection, WFWeatherConditions;
+@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAggregateCommonRequest, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFServiceConnection, WFWeatherConditions;
 
 @interface WAForecastOperation : NSOperation
 {
     BOOL _isDay;
     BOOL _shouldAttachRawAPIData;
+    int _units;
     City *_city;
     WFLocation *_location;
     WACurrentForecast *_currentConditions;
@@ -25,10 +26,10 @@
     WFWeatherConditions *_currentWeatherConditions;
     NSArray *_dailyForecastConditions;
     NSArray *_hourlyForecastConditions;
-    WFDailyForecastRequest *_dailyForecastRequest;
-    WFHourlyForecastRequest *_hourlyForecastRequest;
-    WFForecastRequest *_todayForecastRequest;
-    WFAirQualityRequest *_airQualityRequest;
+    NSArray *_severeWeatherEvents;
+    NSArray *_changeForecasts;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
+    WFAggregateCommonRequest *_aggregateRequest;
     NSCalendar *_calendar;
     NSLocale *_locale;
     NSString *_trackingParameter;
@@ -36,31 +37,32 @@
     WFServiceConnection *_connection;
 }
 
+@property (strong, nonatomic) WFAggregateCommonRequest *aggregateRequest; // @synthesize aggregateRequest=_aggregateRequest;
 @property (strong, nonatomic) WFAirQualityConditions *airQualityConditions; // @synthesize airQualityConditions=_airQualityConditions;
-@property (strong, nonatomic) WFAirQualityRequest *airQualityRequest; // @synthesize airQualityRequest=_airQualityRequest;
 @property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+@property (strong, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
 @property (strong, nonatomic) City *city; // @synthesize city=_city;
 @property (strong, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) WACurrentForecast *currentConditions; // @synthesize currentConditions=_currentConditions;
 @property (strong, nonatomic) WFWeatherConditions *currentWeatherConditions; // @synthesize currentWeatherConditions=_currentWeatherConditions;
 @property (strong, nonatomic) NSArray *dailyForecastConditions; // @synthesize dailyForecastConditions=_dailyForecastConditions;
-@property (strong, nonatomic) WFDailyForecastRequest *dailyForecastRequest; // @synthesize dailyForecastRequest=_dailyForecastRequest;
 @property (strong, nonatomic) NSArray *dailyForecasts; // @synthesize dailyForecasts=_dailyForecasts;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) WAForecastModel *forecastModel;
 @property (strong, nonatomic) NSArray *hourlyForecastConditions; // @synthesize hourlyForecastConditions=_hourlyForecastConditions;
-@property (strong, nonatomic) WFHourlyForecastRequest *hourlyForecastRequest; // @synthesize hourlyForecastRequest=_hourlyForecastRequest;
 @property (strong, nonatomic) NSArray *hourlyForecasts; // @synthesize hourlyForecasts=_hourlyForecasts;
 @property (nonatomic) BOOL isDay; // @synthesize isDay=_isDay;
 @property (strong, nonatomic) NSDictionary *links; // @synthesize links=_links;
 @property (strong) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
+@property (strong, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
 @property (strong, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
+@property (strong, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
 @property (nonatomic) BOOL shouldAttachRawAPIData; // @synthesize shouldAttachRawAPIData=_shouldAttachRawAPIData;
 @property (strong, nonatomic) NSDate *sunrise; // @synthesize sunrise=_sunrise;
 @property (strong, nonatomic) NSDate *sunset; // @synthesize sunset=_sunset;
-@property (strong, nonatomic) WFForecastRequest *todayForecastRequest; // @synthesize todayForecastRequest=_todayForecastRequest;
 @property (strong) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
+@property (nonatomic) int units; // @synthesize units=_units;
 
 - (void).cxx_destruct;
 - (void)_determineSunriseAndSunset;
@@ -69,6 +71,7 @@
 - (BOOL)_needsGeolocation;
 - (void)cancel;
 - (id)initWithCity:(id)arg1 onConnection:(id)arg2;
+- (id)initWithCity:(id)arg1 withUnits:(int)arg2 onConnection:(id)arg3;
 - (id)initWithLocation:(id)arg1 onConnection:(id)arg2;
 - (void)main;
 

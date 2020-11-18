@@ -6,7 +6,7 @@
 
 #import <Metal/NSObject-Protocol.h>
 
-@class NSString;
+@class MTLCommandBufferDescriptor, NSString;
 @protocol MTLCommandBuffer, MTLDevice;
 
 @protocol MTLCommandQueue <NSObject>
@@ -15,6 +15,7 @@
 @property (copy) NSString *label;
 
 - (id<MTLCommandBuffer>)commandBuffer;
+- (id<MTLCommandBuffer>)commandBufferWithDescriptor:(MTLCommandBufferDescriptor *)arg1;
 - (id<MTLCommandBuffer>)commandBufferWithUnretainedReferences;
 - (void)insertDebugCaptureBoundary;
 @end

@@ -6,9 +6,11 @@
 
 #import <iTunesStoreUI/SUStorePageViewController.h>
 
-@class ACAccount, NSDictionary, NSString, NSURL, SUMescalSession;
+#import <iTunesStoreUI/SUNavigationItemDelegate-Protocol.h>
 
-@interface SUAccountViewController : SUStorePageViewController
+@class ACAccount, NSDictionary, NSString, NSURL, SUMescalSession, UIBarButtonItem;
+
+@interface SUAccountViewController : SUStorePageViewController <SUNavigationItemDelegate>
 {
     BOOL _failed;
     long long _style;
@@ -17,12 +19,20 @@
     long long _mescalState;
     NSString *_primingSignature;
     NSDictionary *_tidHeaders;
+    BOOL _showAccountGlyph;
     ACAccount *_account;
+    UIBarButtonItem *_logoutButton;
 }
 
 @property (readonly, nonatomic, getter=_mescalSession) SUMescalSession *_mescalSession; // @synthesize _mescalSession;
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIBarButtonItem *logoutButton; // @synthesize logoutButton=_logoutButton;
+@property (nonatomic) BOOL showAccountGlyph; // @synthesize showAccountGlyph=_showAccountGlyph;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 
 + (id)_latestAccountViewController;
 - (void).cxx_destruct;
@@ -32,6 +42,7 @@
 - (void)_closeMescalSession;
 - (void)_didEnterBackground:(id)arg1;
 - (void)_forceOrientationBackToSupportedOrientation;
+- (void)_logoutPressed:(id)arg1;
 - (void)_mescalDidOpenWithSession:(id)arg1 error:(id)arg2;
 - (BOOL)_shouldUseWebViewFastPath;
 - (id)copyArchivableContext;
@@ -39,6 +50,8 @@
 - (void)handleFailureWithError:(id)arg1;
 - (id)init;
 - (id)initWithExternalAccountURL:(id)arg1;
+- (id)navigationItem:(id)arg1 willChangeLeftItem:(id)arg2 toNewItem:(id)arg3;
+- (id)navigationItem:(id)arg1 willChangeLeftItems:(id)arg2 toNewItems:(id)arg3;
 - (id)newFetchOperation;
 - (id)newViewControllerForPage:(id)arg1 ofType:(long long)arg2 returningError:(id *)arg3;
 - (BOOL)shouldSignRequests;

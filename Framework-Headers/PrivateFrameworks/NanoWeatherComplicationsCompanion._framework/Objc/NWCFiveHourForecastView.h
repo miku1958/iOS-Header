@@ -36,7 +36,7 @@
 - (id)initFullColorImageViewWithDevice:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)pauseLiveFullColorImageView;
-- (void)processHourlyForecastedConditions:(id)arg1 forTimeZone:(id)arg2;
+- (void)processHourlyForecastEntryModels:(id)arg1 forTimeZone:(id)arg2;
 - (void)resumeLiveFullColorImageView;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;

@@ -10,6 +10,7 @@
 
 @protocol WFSetAppearanceIntentHandling <NSObject>
 - (void)handleSetAppearance:(WFSetAppearanceIntent *)arg1 completion:(void (^)(WFSetAppearanceIntentResponse *))arg2;
+- (void)resolveOperationForSetAppearance:(WFSetAppearanceIntent *)arg1 withCompletion:(void (^)(WFBooleanSettingOperationResolutionResult *))arg2;
 - (void)resolveStyleForSetAppearance:(WFSetAppearanceIntent *)arg1 withCompletion:(void (^)(WFDeviceAppearanceTypeResolutionResult *))arg2;
 
 @optional

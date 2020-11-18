@@ -17,6 +17,7 @@
     NSMutableArray *_MTLResources;
     NSMutableArray *_originalMTLResources;
     struct apr_pool_t *_pool;
+    unsigned long long _blitRequestCount;
     struct apr_array_header_t *_requests;
     NSMutableArray *_objects;
     unsigned long long _usedGPUMemory;

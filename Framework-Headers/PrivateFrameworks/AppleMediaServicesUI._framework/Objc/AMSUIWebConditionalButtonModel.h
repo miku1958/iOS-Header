@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
 
-@class AMSUIWebButtonModel;
+#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
+
+@class AMSUIWebButtonModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebConditionalButtonModel : AMSUIWebModel
+@interface AMSUIWebConditionalButtonModel : NSObject <AMSUIWebModelInterface>
 {
     BOOL _hideOnModal;
     BOOL _hideOnPush;
@@ -17,8 +19,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) AMSUIWebButtonModel *button; // @synthesize button=_button;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideOnModal; // @synthesize hideOnModal=_hideOnModal;
 @property (nonatomic) BOOL hideOnPush; // @synthesize hideOnPush=_hideOnPush;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

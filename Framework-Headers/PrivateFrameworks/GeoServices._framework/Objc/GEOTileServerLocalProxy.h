@@ -8,11 +8,12 @@
 
 #import <GeoServices/GEOProactiveTileDownloaderDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
+#import <GeoServices/GEOTileDBDelegate-Protocol.h>
 
 @class GEOProactiveTileDownloader, GEOTileDB, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface GEOTileServerLocalProxy : GEOTileServerProxy <GEOProactiveTileDownloaderDelegate, GEOResourceManifestTileGroupObserver>
+@interface GEOTileServerLocalProxy : GEOTileServerProxy <GEOProactiveTileDownloaderDelegate, GEOResourceManifestTileGroupObserver, GEOTileDBDelegate>
 {
     GEOTileDB *_tileCache;
     NSString *_cacheLocation;
@@ -31,6 +32,7 @@
 
 + (void)enableCDSObserversIfNecessary;
 - (void).cxx_destruct;
+- (void)_deleteLocationSensitiveInformation:(id)arg1;
 - (void)_forceDataSaverPreload:(id)arg1;
 - (void)_initiateDataSaverPreloadIfPossible;
 - (void)_registerBuiltInProviders;
@@ -54,8 +56,9 @@
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2 batchID:(int)arg3;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
-- (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
+- (void)shrinkDiskCacheToSize:(unsigned long long)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
+- (void)tileDBDidDeleteExternalResource:(id)arg1;
 - (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSetDB:(unsigned int)arg4 tileSet:(id)arg5 etag:(id)arg6 forKey:(struct _GEOTileKey)arg7 userInfo:(id)arg8;
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2 forKey:(struct _GEOTileKey)arg3;
 - (void)tileRequesterFinished:(id)arg1;

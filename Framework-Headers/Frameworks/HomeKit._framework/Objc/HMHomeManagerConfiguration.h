@@ -17,11 +17,13 @@
     BOOL _shouldConnect;
     unsigned long long _options;
     BOOL _discretionary;
+    BOOL _adaptive;
     NSOperationQueue *_delegateQueue;
     HMFLocationAuthorization *_locationAuthorization;
     NSURL *_cacheURL;
 }
 
+@property (readonly, getter=isAdaptive) BOOL adaptive; // @synthesize adaptive=_adaptive;
 @property (nonatomic) unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
 @property (readonly) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
 @property (readonly) BOOL canUseCache;

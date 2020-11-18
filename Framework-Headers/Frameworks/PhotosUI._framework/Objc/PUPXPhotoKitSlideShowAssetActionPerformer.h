@@ -20,7 +20,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (BOOL)canPerformOnImplicitSelection;
++ (BOOL)canPerformOnSubsetOfSelection;
++ (BOOL)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
++ (id)createActivityWithActionManager:(id)arg1;
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
 - (void)_startSlideshow;
 - (void)performUserInteractionTask;
 - (void)slideshowViewControllerDidFinish:(id)arg1 withVisibleAssets:(id)arg2;

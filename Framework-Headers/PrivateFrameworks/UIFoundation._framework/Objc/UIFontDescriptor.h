@@ -37,7 +37,10 @@
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 options:(unsigned long long)arg3;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (id)_NSAffineTransform;
 - (id)_attributes;
+- (id)_fontDescriptorWithMatrix:(struct CGAffineTransform)arg1;
+- (struct CGAffineTransform)_matrix;
 - (id)_swapWithFontAttributes:(id)arg1 options:(unsigned long long)arg2;
 - (id)_visibleName;
 - (Class)classForCoder;

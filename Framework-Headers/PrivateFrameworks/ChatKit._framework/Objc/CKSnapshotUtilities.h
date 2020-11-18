@@ -16,6 +16,7 @@
 + (id)_snapshotViewForGUID:(id)arg1;
 + (void)cacheSnapshot:(id)arg1 guid:(id)arg2 postChangeNotification:(BOOL)arg3;
 + (id)snapshotForGUID:(id)arg1;
++ (id)snapshotKeyWithGuid:(id)arg1;
 
 @end
 

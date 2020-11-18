@@ -16,12 +16,14 @@
     NSArray *_buyParameters;
     BOOL _createsJobs;
     BOOL _displaysOnLockScreen;
-    BOOL _installUniversalVariant;
+    BOOL _forceWatchInstall;
+    BOOL _iOSBinaryMacOSCompatible;
     BOOL _isDSIDLess;
     BOOL _isUpdate;
     BOOL _isBackgroundUpdate;
     BOOL _isRedownload;
     BOOL _shouldCancelForInstalledBundleItems;
+    BOOL _installUniversalVariant;
     BOOL _isCompatibilityUpdate;
     BOOL _isRefresh;
     BOOL _sendGUID;
@@ -37,6 +39,7 @@
     NSArray *_gratisIdentifiers;
     NSString *_referrerName;
     NSString *_referrerURL;
+    long long _softwarePlatform;
     long long _purchaseID;
     NSArray *_requiredCapabilities;
     NSString *_preflightURLString;
@@ -55,7 +58,9 @@
 @property (nonatomic) BOOL createsJobs; // @synthesize createsJobs=_createsJobs;
 @property (nonatomic) BOOL displaysOnLockScreen; // @synthesize displaysOnLockScreen=_displaysOnLockScreen;
 @property long long extensionsToEnable; // @synthesize extensionsToEnable=_extensionsToEnable;
+@property (nonatomic) BOOL forceWatchInstall; // @synthesize forceWatchInstall=_forceWatchInstall;
 @property (copy, nonatomic) NSArray *gratisIdentifiers; // @synthesize gratisIdentifiers=_gratisIdentifiers;
+@property (nonatomic, getter=isIOSBinaryMacOSCompatible) BOOL iOSBinaryMacOSCompatible; // @synthesize iOSBinaryMacOSCompatible=_iOSBinaryMacOSCompatible;
 @property (nonatomic) BOOL installUniversalVariant; // @synthesize installUniversalVariant=_installUniversalVariant;
 @property (nonatomic) BOOL isBackgroundUpdate; // @synthesize isBackgroundUpdate=_isBackgroundUpdate;
 @property (nonatomic) BOOL isCompatibilityUpdate; // @synthesize isCompatibilityUpdate=_isCompatibilityUpdate;
@@ -74,6 +79,7 @@
 @property (copy, nonatomic) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;
 @property (nonatomic) BOOL sendGUID; // @synthesize sendGUID=_sendGUID;
 @property (nonatomic) BOOL shouldCancelForInstalledBundleItems; // @synthesize shouldCancelForInstalledBundleItems=_shouldCancelForInstalledBundleItems;
+@property (nonatomic) long long softwarePlatform; // @synthesize softwarePlatform=_softwarePlatform;
 @property (copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 
 + (BOOL)supportsSecureCoding;

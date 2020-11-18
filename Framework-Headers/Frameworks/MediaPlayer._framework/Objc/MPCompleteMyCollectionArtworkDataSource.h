@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPAbstractNetworkArtworkDataSource.h>
 
+__attribute__((visibility("hidden")))
 @interface MPCompleteMyCollectionArtworkDataSource : MPAbstractNetworkArtworkDataSource
 {
 }

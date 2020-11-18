@@ -24,12 +24,12 @@
     long long _displayOrder;
     long long _contextType;
     int _type;
-    NSArray *_assets;
     NSString *_storeIdentifier;
 }
 
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property (readonly, nonatomic) NSArray *assets; // @synthesize assets=_assets;
+@property (readonly, nonatomic) NSArray *archivedAssets;
+@property (readonly, nonatomic) NSArray *assets;
 @property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) NSString *contentStoreIdentifier; // @synthesize contentStoreIdentifier=_contentStoreIdentifier;
 @property (readonly, nonatomic) NSString *contextCustomTypeName; // @synthesize contextCustomTypeName=_contextCustomTypeName;
@@ -56,7 +56,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(int)arg1 title:(id)arg2;
-- (void)setAssets:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setContentStoreIdentifier:(id)arg1;
 - (void)setContextCustomTypeName:(id)arg1;

@@ -23,7 +23,9 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasRequiredDataForProvisioning;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1;
 

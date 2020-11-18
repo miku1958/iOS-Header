@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)finishIfAppropriate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

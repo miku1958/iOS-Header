@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebJSProperties : NSObject
 {
+    BOOL _telephonySetupFailed;
     id<AMSUIWebJSPropertiesDelegate> _delegate;
     AMSUIWebClientContext *_context;
     CoreTelephonyClient *_telephonyClient;
@@ -24,15 +25,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CoreTelephonyClient *telephonyClient; // @synthesize telephonyClient=_telephonyClient;
 @property (strong, nonatomic) CTXPCServiceSubscriptionContext *telephonyContext; // @synthesize telephonyContext=_telephonyContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *telephonyQueue; // @synthesize telephonyQueue=_telephonyQueue;
+@property (nonatomic) BOOL telephonySetupFailed; // @synthesize telephonySetupFailed=_telephonySetupFailed;
 
 + (BOOL)_hasRequiredTelephonyEntitlement;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
 - (id)_accountsProperties;
+- (id)_clientOptionsProperties;
 - (id)_deviceProperties;
 - (id)_hexStringFromColor:(id)arg1;
+- (id)_pluginProperties;
 - (id)_processProperties;
-- (id)_propertiesForAccount:(id)arg1 store:(id)arg2;
 - (id)_propertiesForClientInfo:(id)arg1;
 - (BOOL)_setupTelephonyIfNeeded;
 - (id)_telephoneProperties;

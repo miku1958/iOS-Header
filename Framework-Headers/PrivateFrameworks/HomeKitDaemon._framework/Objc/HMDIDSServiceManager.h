@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class IDSService, NSObject, _HMDIDSProxyLinkPreferenceAssertion;
+@class HMDIDSActivityMonitor, HMDIDSActivityMonitorBroadcaster, HMDIDSActivityMonitorObserver, IDSService, NSObject, _HMDIDSProxyLinkPreferenceAssertion;
 @protocol OS_dispatch_queue;
 
 @interface HMDIDSServiceManager : HMFObject
@@ -14,10 +14,16 @@
     IDSService *_service;
     IDSService *_proxyService;
     IDSService *_streamService;
+    HMDIDSActivityMonitorBroadcaster *_activityBroadcaster;
+    HMDIDSActivityMonitorObserver *_activityObserver;
     NSObject<OS_dispatch_queue> *_workQueue;
+    HMDIDSActivityMonitor *_activityMonitor;
     _HMDIDSProxyLinkPreferenceAssertion *_proxyLinkPreferenceAssertion;
 }
 
+@property (readonly) HMDIDSActivityMonitorBroadcaster *activityBroadcaster; // @synthesize activityBroadcaster=_activityBroadcaster;
+@property (readonly, nonatomic) HMDIDSActivityMonitor *activityMonitor; // @synthesize activityMonitor=_activityMonitor;
+@property (readonly) HMDIDSActivityMonitorObserver *activityObserver; // @synthesize activityObserver=_activityObserver;
 @property (weak) _HMDIDSProxyLinkPreferenceAssertion *proxyLinkPreferenceAssertion; // @synthesize proxyLinkPreferenceAssertion=_proxyLinkPreferenceAssertion;
 @property (readonly) IDSService *proxyService; // @synthesize proxyService=_proxyService;
 @property (readonly) IDSService *service; // @synthesize service=_service;
@@ -27,6 +33,7 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)init;
+- (void)setActivityMonitorDataSource:(id)arg1;
 - (void)setProxyServiceLinkPreferences:(id)arg1;
 
 @end

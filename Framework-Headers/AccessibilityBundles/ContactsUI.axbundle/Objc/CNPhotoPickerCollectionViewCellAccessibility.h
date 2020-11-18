@@ -15,9 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_axIsAddItem;
 - (BOOL)_axIsVariant;
+- (id)_axProviderGroup;
 - (id)_axProviderItem;
 - (void)_axSetIsAddItem:(BOOL)arg1;
 - (void)_axSetIsVariant:(BOOL)arg1;
+- (void)_axSetProviderGroup:(id)arg1;
 - (void)_axSetProviderItem:(id)arg1;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

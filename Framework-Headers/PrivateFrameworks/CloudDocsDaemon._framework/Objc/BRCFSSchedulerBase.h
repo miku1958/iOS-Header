@@ -9,20 +9,21 @@
 #import <CloudDocsDaemon/BRCLifeCycle-Protocol.h>
 
 @class BRCAccountSession, BRCDeadlineSource, NSString, PQLNameInjection;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCFSSchedulerBase : NSObject <BRCLifeCycle>
 {
     BRCAccountSession *_session;
     BRCDeadlineSource *_schedulerSource;
-    NSObject<OS_dispatch_queue> *_schedulerQueue;
+    NSObject<OS_dispatch_workloop> *_schedulerWorkloop;
     NSString *_name;
     BOOL _firstSchedulingAfterStartupDone;
     BOOL _hasActiveWork;
     BOOL _hasWork;
     BOOL _isCancelled;
     NSObject<OS_dispatch_group> *_hasWorkGroup;
+    NSObject<OS_dispatch_group> *_hasActiveWorkGroup;
     PQLNameInjection *_tableName;
 }
 
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasActiveWork; // @synthesize hasActiveWork=_hasActiveWork;
+@property (strong) NSObject<OS_dispatch_group> *hasActiveWorkGroup; // @synthesize hasActiveWorkGroup=_hasActiveWorkGroup;
 @property (nonatomic) BOOL hasWork; // @synthesize hasWork=_hasWork;
 @property (strong) NSObject<OS_dispatch_group> *hasWorkGroup; // @synthesize hasWorkGroup=_hasWorkGroup;
 @property (readonly) unsigned long long hash;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canRetryJobWithID:(id)arg1;
 - (BOOL)canScheduleMoreJobs;
 - (void)cancel;
+- (void)checkIfHasWork;
 - (void)close;
 - (void)computeStamps:(struct throttle_stamps *)arg1 forJobID:(id)arg2 throttle:(id)arg3 shouldBackoff:(BOOL)arg4;
 - (void)deleteExpiredJobs;

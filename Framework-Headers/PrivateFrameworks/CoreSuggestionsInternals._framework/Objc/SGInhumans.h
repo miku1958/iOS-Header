@@ -13,12 +13,11 @@
 + (BOOL)_isInhumanEmailAddressPatternMatch:(id)arg1;
 + (BOOL)areHumanHeaders:(id)arg1;
 + (BOOL)hasTooManyLongNumbers:(id)arg1;
-+ (BOOL)isInhuman:(id)arg1 inContext:(id)arg2;
 + (BOOL)isInhumanBody:(id)arg1;
 + (BOOL)isInhumanEmailAddress:(id)arg1;
-+ (BOOL)isInhumanEmailAddress:(id)arg1 inContext:(id)arg2;
 + (BOOL)isInhumanName:(id)arg1;
-+ (BOOL)isInhumanPerson:(id)arg1 inContext:(id)arg2;
++ (BOOL)isInhumanNamedEmailAddress:(id)arg1;
++ (BOOL)isInhumanPerson:(id)arg1;
 + (BOOL)isInhumanPhoneNumber:(id)arg1;
 
 @end

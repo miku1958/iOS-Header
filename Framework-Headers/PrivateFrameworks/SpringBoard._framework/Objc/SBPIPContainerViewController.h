@@ -7,37 +7,21 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/PGPictureInPictureViewControllerContentContainer-Protocol.h>
-#import <SpringBoard/SBPIPContentViewLayoutSettingsObserver-Protocol.h>
-#import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoard/SBPIPInteractionControllerDelegate-Protocol.h>
 
-@class FBDisplayLayoutElement, NSHashTable, NSLayoutConstraint, NSMutableArray, NSString, PGPictureInPictureViewController, UIView;
+@class BSTimer, FBDisplayLayoutElement, NSHashTable, NSString, PGPictureInPictureViewController, SBFFluidBehaviorSettings, SBPIPInteractionController, UIView;
 
-@interface SBPIPContainerViewController : UIViewController <PGPictureInPictureViewControllerContentContainer, SBPIPContentViewLayoutSettingsObserver, UIGestureRecognizerDelegate>
+@interface SBPIPContainerViewController : UIViewController <PGPictureInPictureViewControllerContentContainer, SBPIPInteractionControllerDelegate>
 {
     NSHashTable *_observerHashTable;
     BOOL _interfaceOrientationLockAcquired;
     UIView *_contentView;
-    struct CGSize _preferredContentSize;
-    long long _contentViewPosition;
-    struct CGSize _contentViewSize;
     struct UIEdgeInsets _contentViewPadding;
-    unsigned int _addContentViewLayoutConstraints:1;
-    unsigned int _stashContentView:1;
     unsigned int _updateContentViewLayoutSettingsAndLayoutIfNeeded:1;
-    unsigned int _panGestureHandled:1;
-    unsigned int _rotationGestureHandled:1;
-    unsigned int _pinchGestureHandled:1;
-    double _previousRotation;
-    double _initialGestureScale;
-    struct CGPoint _panGestureVelocity;
-    double _pinchGestureScaleFactor;
-    unsigned int _handlePanRotationPinchGestureEndedState:1;
-    NSMutableArray *_layoutConstraints;
-    NSLayoutConstraint *_contentViewGestureCenterXLayoutConstraint;
-    NSLayoutConstraint *_contentViewGestureCenterYLayoutConstraint;
-    NSLayoutConstraint *_contentViewGestureWidthLayoutConstraint;
-    NSLayoutConstraint *_contentViewGestureHeightLayoutConstraint;
-    long long _layoutConstraintStyle;
+    SBPIPInteractionController *_interactionController;
+    SBFFluidBehaviorSettings *_interactiveAnimationSettings;
+    SBFFluidBehaviorSettings *_stashTabFluidBehavior;
+    BSTimer *_stashedStateReduceResourcesUsageTimer;
     FBDisplayLayoutElement *_displayLayoutElement;
     double _displayLayoutElementLevel;
     BOOL _animateSafeAreaInsetsChanges;
@@ -58,45 +42,48 @@
 - (double)SB_accessibilityContentViewScale;
 - (void)SB_accessibilitySetContentViewScale:(double)arg1;
 - (void)_acquireInterfaceOrientationLock;
-- (void)_actuallyHandlePanRotationPinchGestureEndedState;
-- (void)_actuallyUpdateContentViewLayoutSettingsAndLayoutIfNeeded;
-- (void)_adjustContentViewAnchorPointForGestureRecognizer:(id)arg1;
-- (struct CGSize)_constrainContentViewSize:(struct CGSize)arg1;
-- (struct CGPoint)_contentViewCenter;
 - (struct CGRect)_contentViewFrameFromInterfaceOrientation:(long long)arg1 frameInFixedCoordinateSpace:(struct CGRect)arg2;
 - (struct CGRect)_contentViewFrameInDisplayReferenceSpace;
-- (void)_handlePanGesture:(id)arg1;
-- (void)_handlePanRotationPinchGestureBeganState;
-- (void)_handlePanRotationPinchGestureEndedState;
-- (void)_handlePinchGesture:(id)arg1;
-- (void)_handleRotationGesture:(id)arg1;
+- (long long)_currentInterfaceOrientation;
+- (BOOL)_isContentFromFillGravityWithInitialLayerFrame:(struct CGRect)arg1;
 - (void)_relinquishInterfaceOrientationLock;
 - (void)_requireInterfaceOrientation:(long long)arg1;
-- (BOOL)_stashContentViewWithContentViewCenter:(struct CGPoint)arg1;
-- (void)_updateContentViewLayoutConstraintsWithContentViewSize;
-- (void)_updateContentViewLayoutConstraintsWithFrame:(struct CGRect)arg1;
-- (void)_updateContentViewLayoutSettingsAndLayoutIfNeeded;
+- (void)_setStashState:(long long)arg1;
+- (void)_updateContentPadding;
+- (void)_updateContentViewFrame:(struct CGRect)arg1 reason:(id)arg2;
 - (void)_updateDisplayLayoutElementReferenceFrame;
 - (void)acquireInterfaceOrientationLock;
 - (void)addObserver:(id)arg1;
-- (void)contentViewLayoutSettingsDidChange;
 - (void)dealloc;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)forcePictureInPictureToFrame:(struct CGRect)arg1;
 - (BOOL)handleDoubleTapGesture;
-- (BOOL)handleTapGesture;
+- (BOOL)handleTapWhileStashedGesture;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPictureInPictureViewController:(id)arg1;
+- (void)interactionController:(id)arg1 didSettleOnStashState:(BOOL)arg2;
+- (void)interactionController:(id)arg1 didUpdateStashProgress:(double)arg2;
+- (void)interactionController:(id)arg1 wantsStashTabHidden:(BOOL)arg2 left:(BOOL)arg3;
+- (void)interactionControllerDidBeginSizeChange:(id)arg1 behavior:(int)arg2;
+- (void)interactionControllerDidEndAllInteractions:(id)arg1;
+- (void)interactionControllerDidEndSizeChange:(id)arg1;
+- (void)interactionControllerDidUpdateEdgeInsets:(id)arg1;
 - (void)loadView;
 - (void)performRotateAnimationWithRotation:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)performStartAnimationWithAnimationHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 animationHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)performStartAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preferredContentSizeDidChangeForPictureInPictureViewController;
 - (void)prepareStartAnimationWithInitialInterfaceOrientation:(long long)arg1 initialLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)relinquishInterfaceOrientationLock;
 - (void)removeObserver:(id)arg1;
-- (void)setContentViewPadding:(struct UIEdgeInsets)arg1 animationDuration:(double)arg2 animationOptions:(unsigned long long)arg3;
+- (void)setContentViewPadding:(struct UIEdgeInsets)arg1;
+- (void)setInteractionControllerEnabled:(BOOL)arg1;
+- (void)setNeedsLayoutForInteractionController:(id)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setStashState:(long long)arg1;
+- (void)startResourcesUsageReductionAfterTimeout:(double)arg1;
+- (void)stopResourcesUsageReduction;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

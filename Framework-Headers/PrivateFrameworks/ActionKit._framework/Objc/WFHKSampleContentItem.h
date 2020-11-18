@@ -30,11 +30,11 @@
 + (id)typeDescription;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
 - (id)categorySample;
-- (id)categorySampleValue;
 - (id)duration;
 - (id)endDate;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (BOOL)getListAltText:(CDUnknownBlockType)arg1;
+- (id)localizedCategorySampleValue;
 - (id)quantitySample;
 - (id)quantitySampleContainer;
 - (id)readableTypeIdentifier;

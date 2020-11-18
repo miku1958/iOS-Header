@@ -6,18 +6,18 @@
 
 #import <MediaRemote/MRAVBufferedOutputStream.h>
 
-@class AVOutputContext, AVOutputContextCommunicationChannel;
+@class AVOutputContext, AVOutputContextCommunicationChannel, NSError;
 
 @interface MRAVOutputStream : MRAVBufferedOutputStream
 {
     AVOutputContextCommunicationChannel *_communicationChannel;
+    NSError *_streamError;
     BOOL _channelOpen;
     BOOL _channelIsOpen;
     AVOutputContext *_outputContext;
     long long _connectionType;
 }
 
-@property (nonatomic) BOOL channelIsOpen; // @synthesize channelIsOpen=_channelIsOpen;
 @property (readonly, nonatomic, getter=isChannelOpen) BOOL channelOpen; // @synthesize channelOpen=_channelOpen;
 @property (readonly, nonatomic) AVOutputContextCommunicationChannel *communicationChannel; // @synthesize communicationChannel=_communicationChannel;
 @property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
@@ -31,8 +31,9 @@
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;
 - (id)initToMemory;
 - (id)initWithCommunicationChannel:(id)arg1;
-- (id)initWithOutputContext:(id)arg1 connectionType:(long long)arg2 error:(id *)arg3;
+- (id)initWithOutputContext:(id)arg1 connectionType:(long long)arg2 userInfo:(id)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1 append:(BOOL)arg2;
+- (id)streamError;
 - (long long)write:(const char *)arg1 maxLength:(unsigned long long)arg2;
 
 @end

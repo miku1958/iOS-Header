@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *topicName; // @synthesize topicName=_topicName;
 
++ (id)_cameraTopic;
 + (id)na_identity;
 - (void).cxx_destruct;
 - (id)init;

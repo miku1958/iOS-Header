@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) SXLayoutTask *task; // @synthesize task=_task;
 
 - (void).cxx_destruct;
+- (void)cancelOperation;
 - (id)createLayoutBlueprintForComponents:(id)arg1;
 - (void)finishBookKeeping;
 - (id)initWithTask:(id)arg1 layouter:(id)arg2 DOMObjectProvider:(id)arg3 componentSizerEngine:(id)arg4 layoutBlueprintFactory:(id)arg5;

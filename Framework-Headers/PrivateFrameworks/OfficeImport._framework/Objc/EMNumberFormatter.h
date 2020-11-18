@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithExcelFormatString:(id)arg1;
 - (BOOL)isNegativeRed;
 - (unsigned long long)optimalNumberOfDigitsForValue:(double)arg1;
+- (BOOL)useBigNumberFormatterForValue:(double)arg1;
 
 @end
 

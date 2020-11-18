@@ -16,6 +16,7 @@
 {
     BOOL _controlColor;
     BOOL _needsSwitcherAnimation;
+    BOOL _isInDarkMode;
     BOOL _isAnimating;
     BOOL _usesDarkVibrancyForLayers;
     id<CKEffectPickerViewDelegate> _delegate;
@@ -31,6 +32,7 @@
     UIFont *_effectLabelFont;
     UICollectionView *_momentsCollectionView;
     UIView *_backgroundView;
+    UIView *_roundedView;
     NSLayoutConstraint *_typeSegmentedControlBottomConstraint;
     NSLayoutConstraint *_mainLabelBottomConstraint;
     NSLayoutConstraint *_lastEffectDotTopConstraint;
@@ -76,7 +78,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *closeButtonBottomConstraint; // @synthesize closeButtonBottomConstraint=_closeButtonBottomConstraint;
 @property (nonatomic) BOOL controlColor; // @synthesize controlColor=_controlColor;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CKEffectPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CKEffectPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CKChatControllerDummyAnimator *dummyAnimator; // @synthesize dummyAnimator=_dummyAnimator;
 @property (strong, nonatomic) NSMutableArray *effectDescriptiveLabels; // @synthesize effectDescriptiveLabels=_effectDescriptiveLabels;
@@ -92,6 +94,7 @@
 @property (strong, nonatomic) UIView *hintContainer; // @synthesize hintContainer=_hintContainer;
 @property (nonatomic) UIView *hintSendButton; // @synthesize hintSendButton=_hintSendButton;
 @property (nonatomic) BOOL isAnimating; // @synthesize isAnimating=_isAnimating;
+@property (nonatomic) BOOL isInDarkMode; // @synthesize isInDarkMode=_isInDarkMode;
 @property (strong, nonatomic) NSLayoutConstraint *lastEffectDotTopConstraint; // @synthesize lastEffectDotTopConstraint=_lastEffectDotTopConstraint;
 @property (strong, nonatomic) UILabel *mainLabel; // @synthesize mainLabel=_mainLabel;
 @property (strong, nonatomic) NSLayoutConstraint *mainLabelBottomConstraint; // @synthesize mainLabelBottomConstraint=_mainLabelBottomConstraint;
@@ -105,6 +108,7 @@
 @property (strong, nonatomic) UIView *peekContainer; // @synthesize peekContainer=_peekContainer;
 @property (strong, nonatomic) UIView *roundedContainerView; // @synthesize roundedContainerView=_roundedContainerView;
 @property (strong, nonatomic) NSLayoutConstraint *roundedContainerViewTopConstraint; // @synthesize roundedContainerViewTopConstraint=_roundedContainerViewTopConstraint;
+@property (strong, nonatomic) UIView *roundedView; // @synthesize roundedView=_roundedView;
 @property (strong, nonatomic) CABackdropLayer *segmentedBackdrop; // @synthesize segmentedBackdrop=_segmentedBackdrop;
 @property (nonatomic) unsigned long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property (strong, nonatomic) UIButton *sendMomentButton; // @synthesize sendMomentButton=_sendMomentButton;
@@ -174,6 +178,7 @@
 - (void)setCloseButtonYPosition:(double)arg1;
 - (BOOL)shouldAnimatePreviousLabelForCancel:(id)arg1;
 - (void)startAnimationPreviewForIdentifier:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateColor:(BOOL)arg1;
 - (void)updateHintTransition:(double)arg1;
 - (void)updateMomentTitle:(BOOL)arg1;

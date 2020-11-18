@@ -22,10 +22,11 @@ __attribute__((visibility("hidden")))
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)createSyncTrackerForService:(id)arg1 manatee:(BOOL)arg2;
+- (void)getKeySyncEligibilityForService:(id)arg1 isManatee:(BOOL)arg2 zonePCSModificationDate:(id)arg3 testOverrideProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)init;
 - (void)performKeySyncWithSyncTracker:(id)arg1 testableSyncConfig:(unsigned long long)arg2 shouldThrottle:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)syncTrackerForService:(id)arg1 manatee:(BOOL)arg2 shortThrottlePeriod:(BOOL)arg3;
-- (void)syncUserKeysForService:(id)arg1 serviceIsManatee:(BOOL)arg2 account:(id)arg3 shouldThrottle:(BOOL)arg4 testOverrideProvider:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)syncUserKeysForService:(id)arg1 context:(id)arg2 bundleID:(id)arg3 serviceIsManatee:(BOOL)arg4 account:(id)arg5 shouldThrottle:(BOOL)arg6 testOverrideProvider:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 
 @end
 

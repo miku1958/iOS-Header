@@ -8,29 +8,38 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRNowPlayingPlayerProtobuf;
+@class MRClient, MRPlayer, MRPlayerPath, NSArray, NSMutableArray;
 
 @interface MRNowPlayingClient : NSObject <MRNowPlayingClientState>
 {
-    _MRNowPlayingPlayerProtobuf *_activePlayer;
+    MRPlayer *_activePlayer;
     NSMutableArray *_playerClients;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    BOOL _isForeground;
+    BOOL _useMediaRemoteActivePlayerHeuristic;
+    MRPlayerPath *_playerPath;
 }
 
-@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *activePlayerPath;
-@property (strong, nonatomic) _MRNowPlayingClientProtobuf *client;
+@property (readonly, nonatomic) MRPlayerPath *activePlayerPath;
+@property (strong, nonatomic) MRClient *client;
 @property (readonly, nonatomic) NSArray *playerClients;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (strong, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+@property (nonatomic) BOOL useMediaRemoteActivePlayerHeuristic; // @synthesize useMediaRemoteActivePlayerHeuristic=_useMediaRemoteActivePlayerHeuristic;
 
 - (void).cxx_destruct;
+- (void)applicationDidEnterBackground;
+- (void)applicationWillEnterForeground;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithPlayerPath:(id)arg1;
 - (void)mergeClient:(id)arg1;
 - (id)nowPlayingPlayerClientForPlayerPath:(id)arg1;
+- (void)reevaluateActivePlayerWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removePlayer:(id)arg1;
+- (void)requestActiveForPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)restoreNowPlayingClientState;
-- (BOOL)updateActivePlayerPath:(id)arg1;
+- (void)setActivePlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateActivePlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -20,9 +20,9 @@
     id<MNLocationProviderDelegate> _delegate;
 }
 
-@property (nonatomic) long long activityType;
 @property (copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property (readonly, nonatomic) int authorizationStatus;
+@property (readonly, nonatomic) BOOL coarseModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -51,6 +51,7 @@
 - (id)initWithEffectiveBundle:(id)arg1;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;
 - (id)leechedLocationProvider;
+- (void)locationProvider:(id)arg1 didChangeCoarseMode:(BOOL)arg2;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateLocation:(id)arg2;

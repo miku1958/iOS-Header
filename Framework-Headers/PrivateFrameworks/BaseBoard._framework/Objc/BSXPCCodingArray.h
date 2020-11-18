@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSFastEnumeration-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface BSXPCCodingArray : NSObject <NSFastEnumeration, BSXPCCoding>
+@interface BSXPCCodingArray : NSObject <NSFastEnumeration, BSXPCCoding, BSDescriptionProviding>
 {
     NSArray *_array;
 }

@@ -20,10 +20,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)avkit_beginReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
+- (void)avkit_endReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
 - (id)avkit_makePictureInPicturePlatformAdapterContentPlaceholderLayer;
 - (id)avkit_makePlayerControllerIfNeeded:(id)arg1;
 - (id)avkit_pictureInPictureViewController;
 - (void)avkit_startRoutingVideoToPictureInPictureViewController:(id)arg1;
 - (void)avkit_stopRoutingVideoToPictureInPictureViewController:(id)arg1;
+- (void)avkit_willBeginStoppingPictureInPictureForPictureInPictureViewController:(id)arg1;
 @end
 

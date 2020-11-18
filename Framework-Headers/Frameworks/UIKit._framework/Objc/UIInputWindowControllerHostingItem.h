@@ -95,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)clearInputAssistantViewEdgeConstraints;
 - (void)clearInputViewEdgeConstraints;
 - (void)clearInteractiveTransitionStateIfNecessary;
+- (void)clearVisibilityConstraints;
 - (void)completeTransition:(id)arg1 withInfo:(id)arg2;
 - (void)configureDockViewController:(BOOL)arg1;
 - (void)configureScrollDismissController:(BOOL)arg1;

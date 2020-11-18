@@ -91,7 +91,6 @@
 - (id)_parent;
 - (void)_publish;
 - (id)_publishingAppBundleIdentifier;
-- (void)_receiveProgressMessage:(id)arg1 forSequence:(unsigned long long)arg2;
 - (double)_remoteFractionCompleted;
 - (void)_setAcknowledgementHandler:(CDUnknownBlockType)arg1 forAppBundleIdentifier:(id)arg2;
 - (void)_setCompletedUnitCount:(long long)arg1 totalUnitCount:(long long)arg2;

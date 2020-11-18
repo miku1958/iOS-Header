@@ -6,11 +6,12 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
+@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown;
 
 @interface SISchemaClientEvent : PBCodable
 {
-    unsigned long long _whichEvent_Type;
+    SISchemaClientEventMetadata *_eventMetadata;
+    SISchemaClientTransportEventMetadata *_transportMetadata;
     SISchemaAudioFirstBufferRecorded *_audioFirstBufferRecorded;
     SISchemaAudioStopRecording *_audioStopRecording;
     SISchemaConversationTrace *_clientConversationTrace;
@@ -32,23 +33,92 @@
     SISchemaDictationEndPointCancel *_dictationEndPointCancel;
     SISchemaDictationAlternativeSelected *_dictationAlternativeSelected;
     SISchemaDictationTranscriptionMetadata *_dictationTranscriptionMetadata;
-    SISchemaClientEventMetadata *_eventMetadata;
-    SISchemaClientTransportEventMetadata *_transportMetadata;
+    SISchemaCarPlayHeadUnitContext *_carPlayHeadUnitContext;
+    SISchemaUUFRCompletion *_uufrCompletion;
+    SISchemaUUFRShown *_uufrShown;
+    SISchemaUUFRSaid *_uufrSaid;
+    SISchemaUUFRFatalError *_uufrFatalError;
+    SISchemaDictationAlternativesViewed *_dictationAlternativesViewed;
+    SISchemaCasinoRelationship *_casinoRelationship;
+    BOOL _hasEventMetadata;
+    BOOL _hasTransportMetadata;
+    BOOL _hasAudioFirstBufferRecorded;
+    BOOL _hasAudioStopRecording;
+    BOOL _hasClientConversationTrace;
+    BOOL _hasDeviceDynamicContext;
+    BOOL _hasDeviceFixedContext;
+    BOOL _hasDictationContext;
+    BOOL _hasInvocation;
+    BOOL _hasLocation;
+    BOOL _hasPunchOut;
+    BOOL _hasSiriCue;
+    BOOL _hasUufrPresented;
+    BOOL _hasSpeechTranscription;
+    BOOL _hasTextToSpeechBegin;
+    BOOL _hasTextToSpeechEnd;
+    BOOL _hasUiStateTransition;
+    BOOL _hasClientFlow;
+    BOOL _hasDialogOutput;
+    BOOL _hasDictationEndPointStop;
+    BOOL _hasDictationEndPointCancel;
+    BOOL _hasDictationAlternativeSelected;
+    BOOL _hasDictationTranscriptionMetadata;
+    BOOL _hasCarPlayHeadUnitContext;
+    BOOL _hasUufrCompletion;
+    BOOL _hasUufrShown;
+    BOOL _hasUufrSaid;
+    BOOL _hasUufrFatalError;
+    BOOL _hasDictationAlternativesViewed;
+    BOOL _hasCasinoRelationship;
+    unsigned long long _whichEvent_Type;
 }
 
 @property (strong, nonatomic) SISchemaAudioFirstBufferRecorded *audioFirstBufferRecorded; // @synthesize audioFirstBufferRecorded=_audioFirstBufferRecorded;
 @property (strong, nonatomic) SISchemaAudioStopRecording *audioStopRecording; // @synthesize audioStopRecording=_audioStopRecording;
+@property (strong, nonatomic) SISchemaCarPlayHeadUnitContext *carPlayHeadUnitContext; // @synthesize carPlayHeadUnitContext=_carPlayHeadUnitContext;
+@property (strong, nonatomic) SISchemaCasinoRelationship *casinoRelationship; // @synthesize casinoRelationship=_casinoRelationship;
 @property (strong, nonatomic) SISchemaConversationTrace *clientConversationTrace; // @synthesize clientConversationTrace=_clientConversationTrace;
 @property (strong, nonatomic) SISchemaClientFlow *clientFlow; // @synthesize clientFlow=_clientFlow;
 @property (strong, nonatomic) SISchemaDeviceDynamicContext *deviceDynamicContext; // @synthesize deviceDynamicContext=_deviceDynamicContext;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *deviceFixedContext; // @synthesize deviceFixedContext=_deviceFixedContext;
 @property (strong, nonatomic) SISchemaDialogOutput *dialogOutput; // @synthesize dialogOutput=_dialogOutput;
 @property (strong, nonatomic) SISchemaDictationAlternativeSelected *dictationAlternativeSelected; // @synthesize dictationAlternativeSelected=_dictationAlternativeSelected;
+@property (strong, nonatomic) SISchemaDictationAlternativesViewed *dictationAlternativesViewed; // @synthesize dictationAlternativesViewed=_dictationAlternativesViewed;
 @property (strong, nonatomic) SISchemaDictationContext *dictationContext; // @synthesize dictationContext=_dictationContext;
 @property (strong, nonatomic) SISchemaDictationEndPointCancel *dictationEndPointCancel; // @synthesize dictationEndPointCancel=_dictationEndPointCancel;
 @property (strong, nonatomic) SISchemaDictationEndPointStop *dictationEndPointStop; // @synthesize dictationEndPointStop=_dictationEndPointStop;
 @property (strong, nonatomic) SISchemaDictationTranscriptionMetadata *dictationTranscriptionMetadata; // @synthesize dictationTranscriptionMetadata=_dictationTranscriptionMetadata;
 @property (strong, nonatomic) SISchemaClientEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
+@property (nonatomic) BOOL hasAudioFirstBufferRecorded; // @synthesize hasAudioFirstBufferRecorded=_hasAudioFirstBufferRecorded;
+@property (nonatomic) BOOL hasAudioStopRecording; // @synthesize hasAudioStopRecording=_hasAudioStopRecording;
+@property (nonatomic) BOOL hasCarPlayHeadUnitContext; // @synthesize hasCarPlayHeadUnitContext=_hasCarPlayHeadUnitContext;
+@property (nonatomic) BOOL hasCasinoRelationship; // @synthesize hasCasinoRelationship=_hasCasinoRelationship;
+@property (nonatomic) BOOL hasClientConversationTrace; // @synthesize hasClientConversationTrace=_hasClientConversationTrace;
+@property (nonatomic) BOOL hasClientFlow; // @synthesize hasClientFlow=_hasClientFlow;
+@property (nonatomic) BOOL hasDeviceDynamicContext; // @synthesize hasDeviceDynamicContext=_hasDeviceDynamicContext;
+@property (nonatomic) BOOL hasDeviceFixedContext; // @synthesize hasDeviceFixedContext=_hasDeviceFixedContext;
+@property (nonatomic) BOOL hasDialogOutput; // @synthesize hasDialogOutput=_hasDialogOutput;
+@property (nonatomic) BOOL hasDictationAlternativeSelected; // @synthesize hasDictationAlternativeSelected=_hasDictationAlternativeSelected;
+@property (nonatomic) BOOL hasDictationAlternativesViewed; // @synthesize hasDictationAlternativesViewed=_hasDictationAlternativesViewed;
+@property (nonatomic) BOOL hasDictationContext; // @synthesize hasDictationContext=_hasDictationContext;
+@property (nonatomic) BOOL hasDictationEndPointCancel; // @synthesize hasDictationEndPointCancel=_hasDictationEndPointCancel;
+@property (nonatomic) BOOL hasDictationEndPointStop; // @synthesize hasDictationEndPointStop=_hasDictationEndPointStop;
+@property (nonatomic) BOOL hasDictationTranscriptionMetadata; // @synthesize hasDictationTranscriptionMetadata=_hasDictationTranscriptionMetadata;
+@property (nonatomic) BOOL hasEventMetadata; // @synthesize hasEventMetadata=_hasEventMetadata;
+@property (nonatomic) BOOL hasInvocation; // @synthesize hasInvocation=_hasInvocation;
+@property (nonatomic) BOOL hasLocation; // @synthesize hasLocation=_hasLocation;
+@property (nonatomic) BOOL hasPunchOut; // @synthesize hasPunchOut=_hasPunchOut;
+@property (nonatomic) BOOL hasSiriCue; // @synthesize hasSiriCue=_hasSiriCue;
+@property (nonatomic) BOOL hasSpeechTranscription; // @synthesize hasSpeechTranscription=_hasSpeechTranscription;
+@property (nonatomic) BOOL hasTextToSpeechBegin; // @synthesize hasTextToSpeechBegin=_hasTextToSpeechBegin;
+@property (nonatomic) BOOL hasTextToSpeechEnd; // @synthesize hasTextToSpeechEnd=_hasTextToSpeechEnd;
+@property (nonatomic) BOOL hasTransportMetadata; // @synthesize hasTransportMetadata=_hasTransportMetadata;
+@property (nonatomic) BOOL hasUiStateTransition; // @synthesize hasUiStateTransition=_hasUiStateTransition;
+@property (nonatomic) BOOL hasUufrCompletion; // @synthesize hasUufrCompletion=_hasUufrCompletion;
+@property (nonatomic) BOOL hasUufrFatalError; // @synthesize hasUufrFatalError=_hasUufrFatalError;
+@property (nonatomic) BOOL hasUufrPresented; // @synthesize hasUufrPresented=_hasUufrPresented;
+@property (nonatomic) BOOL hasUufrSaid; // @synthesize hasUufrSaid=_hasUufrSaid;
+@property (nonatomic) BOOL hasUufrShown; // @synthesize hasUufrShown=_hasUufrShown;
 @property (strong, nonatomic) SISchemaInvocation *invocation; // @synthesize invocation=_invocation;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaLocation *location; // @synthesize location=_location;
@@ -59,7 +129,11 @@
 @property (strong, nonatomic) SISchemaTextToSpeechEnd *textToSpeechEnd; // @synthesize textToSpeechEnd=_textToSpeechEnd;
 @property (strong, nonatomic) SISchemaClientTransportEventMetadata *transportMetadata; // @synthesize transportMetadata=_transportMetadata;
 @property (strong, nonatomic) SISchemaUIStateTransition *uiStateTransition; // @synthesize uiStateTransition=_uiStateTransition;
+@property (strong, nonatomic) SISchemaUUFRCompletion *uufrCompletion; // @synthesize uufrCompletion=_uufrCompletion;
+@property (strong, nonatomic) SISchemaUUFRFatalError *uufrFatalError; // @synthesize uufrFatalError=_uufrFatalError;
 @property (strong, nonatomic) SISchemaUUFRPresented *uufrPresented; // @synthesize uufrPresented=_uufrPresented;
+@property (strong, nonatomic) SISchemaUUFRSaid *uufrSaid; // @synthesize uufrSaid=_uufrSaid;
+@property (strong, nonatomic) SISchemaUUFRShown *uufrShown; // @synthesize uufrShown=_uufrShown;
 @property (readonly, nonatomic) unsigned long long whichEvent_Type; // @synthesize whichEvent_Type=_whichEvent_Type;
 
 + (Class)getEventTypeClassForTag:(int)arg1;

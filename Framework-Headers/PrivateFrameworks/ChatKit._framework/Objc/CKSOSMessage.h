@@ -13,7 +13,6 @@
 @interface CKSOSMessage : NSObject <NSCopying>
 {
     BOOL _useStandalone;
-    BOOL _isMMSEnabled;
     CLLocation *_location;
     NSString *_locationURL;
     NSArray *_recipients;
@@ -26,7 +25,6 @@
 
 @property (copy, nonatomic) CDUnknownBlockType failureBlock; // @synthesize failureBlock=_failureBlock;
 @property (copy, nonatomic, getter=handles) NSArray *handles; // @synthesize handles=_handles;
-@property (nonatomic) BOOL isMMSEnabled; // @synthesize isMMSEnabled=_isMMSEnabled;
 @property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (copy, nonatomic) NSString *locationURL; // @synthesize locationURL=_locationURL;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;

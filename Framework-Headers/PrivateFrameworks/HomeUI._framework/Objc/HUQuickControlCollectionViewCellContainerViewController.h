@@ -27,6 +27,7 @@
 - (id)initWithContentViewController:(id)arg1;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)loadView;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)setTitle:(id)arg1;
 
 @end

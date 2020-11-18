@@ -8,12 +8,13 @@
 
 #import <AvatarUI/AVTPresetResourcesProviding-Protocol.h>
 
-@class AVTCoreModelGroup, NSArray, NSString;
+@class AVTCoreModelGroup, NSArray, NSDictionary, NSString;
 
 @interface AVTAvatarAttributeEditorCategory : NSObject <AVTPresetResourcesProviding>
 {
     NSArray *_sections;
     NSString *_localizedName;
+    NSDictionary *_symbolNames;
     AVTCoreModelGroup *_modelGroup;
 }
 
@@ -24,9 +25,11 @@
 @property (readonly, nonatomic) AVTCoreModelGroup *modelGroup; // @synthesize modelGroup=_modelGroup;
 @property (readonly, copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) CDUnknownBlockType symbolNameProvider;
+@property (readonly, copy, nonatomic) NSDictionary *symbolNames; // @synthesize symbolNames=_symbolNames;
 
 - (void).cxx_destruct;
-- (id)initWithSections:(id)arg1 localizedName:(id)arg2 modelGroup:(id)arg3;
+- (id)initWithSections:(id)arg1 localizedName:(id)arg2 modelGroup:(id)arg3 symbolNames:(id)arg4;
 - (id)representedAVTPresetResources;
 
 @end

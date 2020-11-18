@@ -34,6 +34,7 @@
 - (id)_launchContext;
 - (void)_presetDialogWithError:(long long)arg1 appController:(id)arg2;
 - (void)_runScrollMoveTest:(id)arg1;
+- (void)_successTest:(id)arg1 callback:(id)arg2;
 - (void)appController:(id)arg1 didFailWithError:(id)arg2;
 - (void)appController:(id)arg1 evaluateAppJavaScriptInContext:(id)arg2;
 - (BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;

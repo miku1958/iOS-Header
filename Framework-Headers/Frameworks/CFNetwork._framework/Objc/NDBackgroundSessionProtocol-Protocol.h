@@ -17,6 +17,7 @@
 - (void)downloadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 downloadFilePath:(NSString *)arg3 identifier:(unsigned long long)arg4 uniqueIdentifier:(NSUUID *)arg5 reply:(void (^)(BOOL))arg6;
 - (void)downloadTaskWithResumeData:(NSData *)arg1 identifier:(unsigned long long)arg2 uniqueIdentifier:(NSUUID *)arg3 reply:(void (^)(BOOL))arg4;
 - (void)invalidateWithReply:(void (^)(void))arg1;
+- (void)pingForXPCObjectValidityWithReply:(void (^)(void))arg1;
 - (void)resetStorageWithReply:(void (^)(void))arg1;
 - (void)resumeTaskWithIdentifier:(unsigned long long)arg1 withProperties:(NSDictionary *)arg2;
 - (void)setBytesPerSecondLimit:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;

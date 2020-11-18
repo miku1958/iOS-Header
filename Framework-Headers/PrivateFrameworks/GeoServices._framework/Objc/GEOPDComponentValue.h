@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitVehiclePosition, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDBusinessHours, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDGroundViewLabel, GEOPDHours, GEOPDISO3166Code, GEOPDIcon, GEOPDLinkedService, GEOPDLocationEvent, GEOPDMessageLink, GEOPDOfflineArea, GEOPDOfflineIdentifier, GEOPDOfflineQuadNodes, GEOPDOfflineSize, GEOPDOfflineUpdateManifest, GEOPDPhoto, GEOPDPlaceCollection, GEOPDPlaceInfo, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDPrototypeContainer, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRelatedPlace, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDStorefront, GEOPDStorefrontPresentation, GEOPDSupportsOfflineMaps, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDTransitTripGeometry, GEOPDTransitTripStop, GEOPDTransitTripStopTime, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
+@class GEOPBTransitVehiclePosition, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDBusinessHours, GEOPDCaptionedPhoto, GEOPDCollectionIds, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDGroundViewLabel, GEOPDHours, GEOPDISO3166Code, GEOPDIcon, GEOPDLinkedService, GEOPDLocationEvent, GEOPDMessageLink, GEOPDMiniBrowseCategories, GEOPDPhoto, GEOPDPlaceCollection, GEOPDPlaceCollectionItem, GEOPDPlaceInfo, GEOPDPlaceQuestionnaireResult, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDPrototypeContainer, GEOPDPublisher, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRelatedPlace, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDStorefront, GEOPDStorefrontPresentation, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDTransitTripGeometry, GEOPDTransitTripStop, GEOPDTransitTripStopTime, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDComponentValue : PBCodable <NSCopying>
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     GEOPDBusinessClaim *_businessClaim;
     GEOPDBusinessHours *_businessHours;
     GEOPDCaptionedPhoto *_captionedPhoto;
+    GEOPDCollectionIds *_collectionIds;
     GEOPDContainedPlace *_containedPlace;
     GEOPDEntity *_entity;
     GEOPDETA *_eta;
@@ -38,18 +39,19 @@ __attribute__((visibility("hidden")))
     GEOPDLinkedService *_linkedService;
     GEOPDLocationEvent *_locationEvent;
     GEOPDMessageLink *_messageLink;
-    GEOPDOfflineArea *_offlineArea;
-    GEOPDOfflineIdentifier *_offlineIdentifier;
-    GEOPDOfflineQuadNodes *_offlineQuadNodes;
-    GEOPDOfflineSize *_offlineSize;
+    GEOPDMiniBrowseCategories *_miniPlaceBrowseCategories;
     GEOPDPhoto *_photo;
+    GEOPDBrowseCategories *_placeBrowseCategories;
+    GEOPDPlaceCollectionItem *_placeCollectionItem;
     GEOPDPlaceCollection *_placeCollection;
     GEOPDPlaceInfo *_placeInfo;
+    GEOPDPlaceQuestionnaireResult *_placeQuestionnaire;
     GEOPDPlacecardLayoutConfiguration *_placecardLayoutConfiguration;
     GEOPDPlacecardURL *_placecardUrl;
     GEOPDPoiEvent *_poiEvent;
     GEOPDPriceDescription *_priceDescription;
     GEOPDPrototypeContainer *_prototypeContainer;
+    GEOPDPublisher *_publisher;
     GEOPDQuickLink *_quickLink;
     GEOPDRap *_rap;
     GEOPDRating *_rating;
@@ -63,7 +65,6 @@ __attribute__((visibility("hidden")))
     GEOPDStorefrontPresentation *_storefrontPresentation;
     GEOPDStorefront *_storefront;
     GEOStyleAttributes *_styleAttributes;
-    GEOPDSupportsOfflineMaps *_supportsOfflineMaps;
     GEOPDTextBlock *_textBlock;
     GEOPDTip *_tip;
     GEOPDTransitAttribution *_transitAttribution;
@@ -75,7 +76,7 @@ __attribute__((visibility("hidden")))
     GEOPDTransitTripStopTime *_transitTripStopTime;
     GEOPDTransitTripStop *_transitTripStop;
     GEOPBTransitVehiclePosition *_transitVehiclePosition;
-    GEOPDOfflineUpdateManifest *_updateManifest;
+    GEOPDAmenities *_vendorAmenities;
     GEOPDVenueInfo *_venueInfo;
     GEOPDWifiFingerprint *_wifiFingerprint;
 }
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDBusinessClaim *businessClaim;
 @property (strong, nonatomic) GEOPDBusinessHours *businessHours;
 @property (strong, nonatomic) GEOPDCaptionedPhoto *captionedPhoto;
+@property (strong, nonatomic) GEOPDCollectionIds *collectionIds;
 @property (strong, nonatomic) GEOPDContainedPlace *containedPlace;
 @property (strong, nonatomic) GEOPDEntity *entity;
 @property (strong, nonatomic) GEOPDETA *eta;
@@ -109,6 +111,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasBusinessClaim;
 @property (readonly, nonatomic) BOOL hasBusinessHours;
 @property (readonly, nonatomic) BOOL hasCaptionedPhoto;
+@property (readonly, nonatomic) BOOL hasCollectionIds;
 @property (readonly, nonatomic) BOOL hasContainedPlace;
 @property (readonly, nonatomic) BOOL hasEntity;
 @property (readonly, nonatomic) BOOL hasEta;
@@ -122,18 +125,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasLinkedService;
 @property (readonly, nonatomic) BOOL hasLocationEvent;
 @property (readonly, nonatomic) BOOL hasMessageLink;
-@property (readonly, nonatomic) BOOL hasOfflineArea;
-@property (readonly, nonatomic) BOOL hasOfflineIdentifier;
-@property (readonly, nonatomic) BOOL hasOfflineQuadNodes;
-@property (readonly, nonatomic) BOOL hasOfflineSize;
+@property (readonly, nonatomic) BOOL hasMiniPlaceBrowseCategories;
 @property (readonly, nonatomic) BOOL hasPhoto;
+@property (readonly, nonatomic) BOOL hasPlaceBrowseCategories;
 @property (readonly, nonatomic) BOOL hasPlaceCollection;
+@property (readonly, nonatomic) BOOL hasPlaceCollectionItem;
 @property (readonly, nonatomic) BOOL hasPlaceInfo;
+@property (readonly, nonatomic) BOOL hasPlaceQuestionnaire;
 @property (readonly, nonatomic) BOOL hasPlacecardLayoutConfiguration;
 @property (readonly, nonatomic) BOOL hasPlacecardUrl;
 @property (readonly, nonatomic) BOOL hasPoiEvent;
 @property (readonly, nonatomic) BOOL hasPriceDescription;
 @property (readonly, nonatomic) BOOL hasPrototypeContainer;
+@property (readonly, nonatomic) BOOL hasPublisher;
 @property (readonly, nonatomic) BOOL hasQuickLink;
 @property (readonly, nonatomic) BOOL hasRap;
 @property (readonly, nonatomic) BOOL hasRating;
@@ -147,7 +151,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasStorefront;
 @property (readonly, nonatomic) BOOL hasStorefrontPresentation;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
-@property (readonly, nonatomic) BOOL hasSupportsOfflineMaps;
 @property (readonly, nonatomic) BOOL hasTextBlock;
 @property (readonly, nonatomic) BOOL hasTip;
 @property (readonly, nonatomic) BOOL hasTransitAttribution;
@@ -159,7 +162,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasTransitTripStop;
 @property (readonly, nonatomic) BOOL hasTransitTripStopTime;
 @property (readonly, nonatomic) BOOL hasTransitVehiclePosition;
-@property (readonly, nonatomic) BOOL hasUpdateManifest;
+@property (readonly, nonatomic) BOOL hasVendorAmenities;
 @property (readonly, nonatomic) BOOL hasVenueInfo;
 @property (readonly, nonatomic) BOOL hasWifiFingerprint;
 @property (strong, nonatomic) GEOPDHours *hours;
@@ -168,18 +171,19 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDLinkedService *linkedService;
 @property (strong, nonatomic) GEOPDLocationEvent *locationEvent;
 @property (strong, nonatomic) GEOPDMessageLink *messageLink;
-@property (strong, nonatomic) GEOPDOfflineArea *offlineArea;
-@property (strong, nonatomic) GEOPDOfflineIdentifier *offlineIdentifier;
-@property (strong, nonatomic) GEOPDOfflineQuadNodes *offlineQuadNodes;
-@property (strong, nonatomic) GEOPDOfflineSize *offlineSize;
+@property (strong, nonatomic) GEOPDMiniBrowseCategories *miniPlaceBrowseCategories;
 @property (strong, nonatomic) GEOPDPhoto *photo;
+@property (strong, nonatomic) GEOPDBrowseCategories *placeBrowseCategories;
 @property (strong, nonatomic) GEOPDPlaceCollection *placeCollection;
+@property (strong, nonatomic) GEOPDPlaceCollectionItem *placeCollectionItem;
 @property (strong, nonatomic) GEOPDPlaceInfo *placeInfo;
+@property (strong, nonatomic) GEOPDPlaceQuestionnaireResult *placeQuestionnaire;
 @property (strong, nonatomic) GEOPDPlacecardLayoutConfiguration *placecardLayoutConfiguration;
 @property (strong, nonatomic) GEOPDPlacecardURL *placecardUrl;
 @property (strong, nonatomic) GEOPDPoiEvent *poiEvent;
 @property (strong, nonatomic) GEOPDPriceDescription *priceDescription;
 @property (strong, nonatomic) GEOPDPrototypeContainer *prototypeContainer;
+@property (strong, nonatomic) GEOPDPublisher *publisher;
 @property (strong, nonatomic) GEOPDQuickLink *quickLink;
 @property (strong, nonatomic) GEOPDRap *rap;
 @property (strong, nonatomic) GEOPDRating *rating;
@@ -193,7 +197,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDStorefront *storefront;
 @property (strong, nonatomic) GEOPDStorefrontPresentation *storefrontPresentation;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
-@property (strong, nonatomic) GEOPDSupportsOfflineMaps *supportsOfflineMaps;
 @property (strong, nonatomic) GEOPDTextBlock *textBlock;
 @property (strong, nonatomic) GEOPDTip *tip;
 @property (strong, nonatomic) GEOPDTransitAttribution *transitAttribution;
@@ -206,7 +209,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDTransitTripStopTime *transitTripStopTime;
 @property (strong, nonatomic) GEOPBTransitVehiclePosition *transitVehiclePosition;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDOfflineUpdateManifest *updateManifest;
+@property (strong, nonatomic) GEOPDAmenities *vendorAmenities;
 @property (strong, nonatomic) GEOPDVenueInfo *venueInfo;
 @property (strong, nonatomic) GEOPDWifiFingerprint *wifiFingerprint;
 
@@ -218,9 +221,11 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
-- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

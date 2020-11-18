@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 + (long long)_playbackBackEndForAlert:(id)arg1;
++ (long long)_playbackBackEndForAlertType:(long long)arg1 topic:(id)arg2;
 + (BOOL)_shouldStopAlertForUserInterruption:(id)arg1;
 + (id)sharedAlertController;
 - (void).cxx_destruct;
@@ -43,6 +44,7 @@
 - (void)handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(BOOL)arg2;
 - (id)init;
 - (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)preheatForAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)stopAllAlerts;
 - (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;

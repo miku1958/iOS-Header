@@ -17,7 +17,6 @@
     struct {
         unsigned int billType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _billType;
     _INPBBillPayeeValue *_billPayee;
     _INPBDateTimeRange *_dueDate;
@@ -28,7 +27,6 @@
     _INPBDateTimeRange *_transactionScheduledDate;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
 @property (nonatomic) int billType; // @synthesize billType=_billType;
 @property (readonly, copy) NSString *debugDescription;

@@ -32,14 +32,16 @@
 @property (strong, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property (readonly) Class superclass;
 
++ (id)defaultCheckmarkImage;
 - (void).cxx_destruct;
 - (void)cancelAction;
+- (void)configureCancelButton;
 - (void)configureDataSource;
-- (void)configureNavigationBars;
 - (void)configureSearchController;
 - (void)doneAction;
 - (void)handleSearchSelection;
 - (id)initWithCurrentLanguage:(id)arg1 preferredLanguages:(id)arg2 andAllSpokenLanguages:(id)arg3;
+- (void)setConfirmButtonEnabledIfNeeded;
 - (id)snapshotForCurrentState;
 - (id)snapshotForSearchResults:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

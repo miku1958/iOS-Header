@@ -16,19 +16,26 @@
     NSMutableDictionary *__sectionIndexesByDataSourceIdentifier;
     NSMutableDictionary *__indexesForSectionsWithItemsByDataSourceIdentifier;
     NSMutableDictionary *__itemIndexesBySectionByDataSourceIdentifier;
+    NSMutableDictionary *__indexesForItemsWithSubitemsBySectionByDataSourceIdentifier;
     NSMutableDictionary *__subitemIndexesByItemBySectionByDataSourceIdentifier;
 }
 
+@property (readonly, nonatomic) NSMutableDictionary *_indexesForItemsWithSubitemsBySectionByDataSourceIdentifier; // @synthesize _indexesForItemsWithSubitemsBySectionByDataSourceIdentifier=__indexesForItemsWithSubitemsBySectionByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_indexesForSectionsWithItemsByDataSourceIdentifier; // @synthesize _indexesForSectionsWithItemsByDataSourceIdentifier=__indexesForSectionsWithItemsByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_itemIndexesBySectionByDataSourceIdentifier; // @synthesize _itemIndexesBySectionByDataSourceIdentifier=__itemIndexesBySectionByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_sectionIndexesByDataSourceIdentifier; // @synthesize _sectionIndexesByDataSourceIdentifier=__sectionIndexesByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_subitemIndexesByItemBySectionByDataSourceIdentifier; // @synthesize _subitemIndexesByItemBySectionByDataSourceIdentifier=__subitemIndexesByItemBySectionByDataSourceIdentifier;
 @property (readonly, nonatomic) struct PXSimpleIndexPath anyItemIndexPath;
 @property (readonly, nonatomic) struct PXSimpleIndexPath anySectionIndexPath;
+@property (readonly, nonatomic) struct PXSimpleIndexPath anySubitemIndexPath;
 @property (readonly, nonatomic) long long count;
+@property (readonly, nonatomic) long long itemCount;
+@property (readonly, nonatomic) long long sectionCount;
+@property (readonly, nonatomic) long long subitemCount;
 
 + (id)indexPathSet;
 + (id)indexPathSetWithIndexPath:(struct PXSimpleIndexPath)arg1;
++ (id)indexPathSetWithItemIndexPaths:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2;
 + (id)indexPathSetWithItemIndexes:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2 section:(long long)arg3;
 + (id)indexPathSetWithSectionIndexes:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2;
 + (id)indexPathSetWithSubitemIndexes:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2 section:(long long)arg3 item:(long long)arg4;
@@ -54,10 +61,12 @@
 - (BOOL)isSubsetOfSet:(id)arg1;
 - (BOOL)isSupersetOfSet:(id)arg1;
 - (id)itemIndexSetForDataSourceIdentifier:(unsigned long long)arg1 section:(long long)arg2;
+- (id)itemsWithSubitemsForDataSourceIdentifier:(unsigned long long)arg1 section:(long long)arg2;
 - (struct PXSimpleIndexPath)lastItemIndexPathForDataSourceIdentifier:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)sectionIndexSetForDataSourceIdentifier:(unsigned long long)arg1;
 - (id)sectionsWithItemsForDataSourceIdentifier:(unsigned long long)arg1;
+- (id)subitemIndexSetForDataSourceIdentifier:(unsigned long long)arg1 section:(long long)arg2 item:(long long)arg3;
 
 @end
 

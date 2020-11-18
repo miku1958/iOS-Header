@@ -16,6 +16,7 @@
     long long _state;
     PKAppletSubcredentialEntitlement *_entitlement;
     PKAppletSubcredentialSharingConfirguration *_sharingConfiguration;
+    NSString *_invitationIdentifier;
     NSString *_partnerIdentifier;
     NSString *_pairedReaderIdentifier;
     NSSet *_sharedCredentials;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSString *endpointIdentifier; // @synthesize endpointIdentifier=_endpointIdentifier;
 @property (strong, nonatomic) PKAppletSubcredentialEntitlement *entitlement; // @synthesize entitlement=_entitlement;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *invitationIdentifier; // @synthesize invitationIdentifier=_invitationIdentifier;
 @property (copy, nonatomic) NSSet *invitationReceipts; // @synthesize invitationReceipts=_invitationReceipts;
 @property (copy, nonatomic) NSString *originatorIDSHandle; // @synthesize originatorIDSHandle=_originatorIDSHandle;
 @property (copy, nonatomic) NSString *pairedReaderIdentifier; // @synthesize pairedReaderIdentifier=_pairedReaderIdentifier;

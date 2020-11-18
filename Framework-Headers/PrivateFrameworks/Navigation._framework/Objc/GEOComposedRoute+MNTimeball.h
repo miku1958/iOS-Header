@@ -33,7 +33,7 @@
 - (void)findDivergenceAndConvergenceWithRoute:(id)arg1 outDivergenceCoordinate:(out struct PolylineCoordinate *)arg2 outConvergenceCoordinate:(out struct PolylineCoordinate *)arg3;
 - (double)remainingTimeFromLocation:(id)arg1;
 - (double)remainingTimeFromLocation:(id)arg1 etaRoute:(id)arg2;
-- (double)remainingTimeFromLocation:(id)arg1 etaRoute:(id)arg2 outRemainingDistance:(out double *)arg3 outDistanceToManeuverStart:(out double *)arg4 outDistanceToManeuverEnd:(out double *)arg5;
-- (double)remainingTimeFromRouteMatch:(id)arg1 etaRoute:(id)arg2 outRemainingDistance:(out double *)arg3 outDistanceToManeuverStart:(out double *)arg4 outDistanceToManeuverEnd:(out double *)arg5;
+- (double)remainingTimeFromLocation:(id)arg1 etaRoute:(id)arg2 outRemainingDistanceToEndOfLeg:(out double *)arg3 outDistanceToManeuverStart:(out double *)arg4 outDistanceToManeuverEnd:(out double *)arg5 outRemainingTimeToEndOfRoute:(out double *)arg6 outRemainingDistanceToEndOfRoute:(out double *)arg7;
+- (double)remainingTimeFromRouteMatch:(id)arg1 etaRoute:(id)arg2 outRemainingDistanceToEndOfLeg:(out double *)arg3 outDistanceToManeuverStart:(out double *)arg4 outDistanceToManeuverEnd:(out double *)arg5 outRemainingTimeToEndOfRoute:(out double *)arg6 outRemainingDistanceToEndOfRoute:(out double *)arg7;
 @end
 

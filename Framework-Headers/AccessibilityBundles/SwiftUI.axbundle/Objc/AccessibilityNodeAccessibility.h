@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame; // @dynamic frame;
 @property (readonly) unsigned long long hash;
@@ -40,16 +41,15 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_axAreChildrenFocused;
-- (id)_axDefaultFocusGroupDescriptor;
-- (id)_axGetStoredDefaultFocusGroupDescriptor;
 - (void)_axSetAreChildrenFocused:(BOOL)arg1;
-- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
 - (void)_destroyFocusLayer;
 - (id)_focusGroupDescriptor;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_updateFocusLayerFrame;
+- (id)accessibilityLanguage;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;

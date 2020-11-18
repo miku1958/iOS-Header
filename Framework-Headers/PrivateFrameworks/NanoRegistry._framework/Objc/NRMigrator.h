@@ -24,21 +24,15 @@
 + (id)migrationDataPreRestoreForConsentedDevices:(id)arg1;
 + (id)sharedMigrator;
 - (void).cxx_destruct;
-- (id)UDIDUUID;
-- (id)_SHA256WithString:(id)arg1;
 - (void)beginMigrationWithDevice:(id)arg1 passcode:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)beginMigrationWithDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)compressMigrationProtobuf:(id)arg1;
 - (id)devicesFromMigrationConsentRequestData:(id)arg1;
 - (void)enterPreMigrationMode;
 - (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)lastMigrationRequestPhoneName;
 - (id)migrationConsentRequestData;
-- (id)packMigrationProtobufs:(id)arg1;
 - (void)setMigrationConsented:(BOOL)arg1 forDevice:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)setMigrationConsented:(BOOL)arg1 forDeviceID:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (id)shortenStringByCompleteUnicodeCharactersToReduceStorageSpace:(id)arg1;
-- (void)shrinkMigrationProtobufs:(id)arg1;
 
 @end
 

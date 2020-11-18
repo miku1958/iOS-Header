@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKDataFlowLink, NSArray, NSDictionary, NSUUID;
+@class HKDataFlowLink, HKWorkoutConfiguration, NSArray, NSDictionary, NSUUID;
 @protocol HDWorkoutDataAccumulator, HDWorkoutDataSource;
 
 @protocol HDWorkoutDataDestination <NSObject>
@@ -19,5 +19,6 @@
 - (void)addMetadata:(NSDictionary *)arg1 dataSource:(id<HDWorkoutDataSource>)arg2;
 - (void)addSamples:(NSArray *)arg1 dataSource:(id<HDWorkoutDataSource>)arg2;
 - (void)addWorkoutEvents:(NSArray *)arg1 dataSource:(id<HDWorkoutDataSource>)arg2;
+- (void)updateWorkoutConfiguration:(HKWorkoutConfiguration *)arg1 dataSource:(id<HDWorkoutDataSource>)arg2;
 @end
 

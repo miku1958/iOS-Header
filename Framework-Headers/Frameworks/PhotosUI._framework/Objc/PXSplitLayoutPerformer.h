@@ -18,7 +18,7 @@
     double _interItemSpacing;
 }
 
-@property (readonly, nonatomic) NSArray *children;
+@property (strong, nonatomic) NSArray *children; // @synthesize children;
 @property (nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property (nonatomic) long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property (nonatomic) CDStruct_392cfed4 layoutInput;
@@ -29,7 +29,6 @@
 - (void).cxx_destruct;
 - (struct CGSize)performLayout;
 - (void)prepareForReuse;
-- (void)setChildren:(id)arg1;
 
 @end
 

@@ -102,18 +102,24 @@
 - (void)setChannelTargetWeights:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)setShouldClearCPUDataAfterUpload:(BOOL)arg1;
 - (void)setShouldMorphNormals:(BOOL)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setTargets:(id)arg1 withInBetweenTargetCounts:(id)arg2 inBetweenWeights:(id)arg3;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (void)setWantsCPUMorphing:(BOOL)arg1;
 - (void)setWeight:(double)arg1 forTargetAtIndex:(unsigned long long)arg2;
 - (void)setWeight:(double)arg1 forTargetNamed:(id)arg2;
+- (void)setWeightIncrementalThreshold:(float)arg1;
+- (BOOL)shouldClearCPUDataAfterUpload;
 - (BOOL)shouldMorphNormals;
 - (id)targetsAndInBetween;
 - (void)unbindAnimatablePath:(id)arg1;
+- (id)valueForUndefinedKey:(id)arg1;
 - (BOOL)wantsCPUMorphing;
 - (double)weightForTargetAtIndex:(unsigned long long)arg1;
 - (double)weightForTargetNamed:(id)arg1;
+- (float)weightIncrementalThreshold;
 
 @end
 

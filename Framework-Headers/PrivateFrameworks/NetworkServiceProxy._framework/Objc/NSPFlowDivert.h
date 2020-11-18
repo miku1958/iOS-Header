@@ -18,7 +18,7 @@
     NEFlowDivertFileHandle *_flowDivertDataHandle;
 }
 
-@property (strong) NSPConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (strong, nonatomic) NSPConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (strong) NEFlowDivertFileHandle *flowDivertControlHandle; // @synthesize flowDivertControlHandle=_flowDivertControlHandle;
 @property (strong) NEFlowDivertFileHandle *flowDivertDataHandle; // @synthesize flowDivertDataHandle=_flowDivertDataHandle;
 @property (strong) NEPolicySession *policySession; // @synthesize policySession=_policySession;

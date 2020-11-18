@@ -6,25 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCMetricEndpoint, BRCSyncHealthReport, NSMutableDictionary;
+@class BRCAccountSession, BRCItemGlobalID, BRCMetricEndpoint, BRCSyncHealthReport, NSData, NSMutableDictionary, NSNumber;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCAnalyticsReporter : NSObject
 {
     BRCAccountSession *_session;
+    long long _telemetryEventCount;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_waitOnIdleQueue;
     BRCMetricEndpoint *_metricEndpoint;
     NSMutableDictionary *_eventsByKind;
     BRCSyncHealthReport *_syncHealthReport;
+    BRCItemGlobalID *_currentTelemetryItemGlobalID;
+    NSNumber *_currentTelemetryToken;
+    NSData *_lastSentTelemetryEvents;
+    BOOL _syncTelemetryState;
 }
 
 - (void).cxx_destruct;
 - (void)_cleanupTimedOutEventMetrics:(id)arg1;
+- (void)_fetchTelemetryEventCountOrAdd:(long long)arg1;
 - (void)_forgetEventMetrics:(id)arg1;
+- (void)_gatherAppTelemetryEventsWithActivity:(id)arg1;
+- (void)_handleApplySchedulerTimeoutWithActivity:(id)arg1;
+- (void)_reportSyncUpBackoffRatio;
+- (void)_waitForApplySchedulerToBeIdleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_withEventMetricsOfKind:(id)arg1 accessor:(CDUnknownBlockType)arg2;
 - (void)createFSEventToSyncUpEventForFileID:(unsigned long long)arg1 genID:(unsigned int)arg2;
 - (void)createUserDownloadEventForOperationID:(id)arg1 isRecursive:(BOOL)arg2 isForBackup:(BOOL)arg3;
+- (id)currentTelemetryToken;
+- (void)deleteMissingErrorThrottles;
+- (id)dequeueSyncTelemetryEvents;
+- (void)didApplyItemInsideSharedItemID:(id)arg1;
+- (void)dropAllSyncTelemetryEvents;
 - (void)dumpToContext:(id)arg1;
 - (void)forgetEventMetric:(id)arg1;
 - (id)initWithSession:(id)arg1;
@@ -33,6 +49,9 @@ __attribute__((visibility("hidden")))
 - (void)lookupUserDownloadEventByDocID:(id)arg1 accessor:(CDUnknownBlockType)arg2;
 - (void)lookupUserDownloadEventByOperationID:(id)arg1 accessor:(CDUnknownBlockType)arg2;
 - (void)submitEventMetric:(id)arg1;
+- (void)submitSyncTelemetryEvent:(id)arg1;
+- (id)syncTelemetryEventsToSend;
+- (void)updateCurrentTelemetryToken:(id)arg1;
 
 @end
 

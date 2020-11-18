@@ -32,7 +32,6 @@
 + (void)configureClientInterface:(id)arg1;
 + (BOOL)shouldApplyAdditionalPredicateForObjectType:(id)arg1;
 - (void).cxx_destruct;
-- (id)_predicateFilterClasses;
 - (void)client_deliverCorrelations:(id)arg1 clearPendingSamples:(BOOL)arg2 isFinalBatch:(BOOL)arg3 queryUUID:(id)arg4;
 - (id)initWithType:(id)arg1 predicate:(id)arg2 samplePredicates:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)queue_deliverError:(id)arg1;

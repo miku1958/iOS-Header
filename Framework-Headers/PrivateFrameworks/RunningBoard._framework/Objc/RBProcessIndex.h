@@ -23,7 +23,6 @@
 + (id)index;
 + (id)indexWithCapacity:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_lock_removeProcess:(id)arg1;
 - (BOOL)addProcess:(id)arg1;
 - (id)allProcesses;
 - (BOOL)containsIdentifier:(id)arg1;
@@ -32,7 +31,6 @@
 - (BOOL)containsProcess:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)init;
-- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)processForIdentifier:(id)arg1;
 - (id)processForIdentity:(id)arg1;
 - (id)processForInstance:(id)arg1;

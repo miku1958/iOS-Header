@@ -26,18 +26,25 @@
 - (unsigned long long)deletePersistentPasteboardWithName:(id)arg1 error:(id *)arg2;
 - (void)didPastePasteboard:(id)arg1;
 - (void)getAllPasteboardsCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)getAllPasteboardsWithAuthenticationBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)helloCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)localGeneralPasteboard:(id *)arg1;
 - (void)localGeneralPasteboardCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)localGeneralPasteboardWithAuthenticationBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)localGeneralPasteboardWithAuthenticationBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)pasteboardWithName:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)pasteboardWithName:(id)arg1 createIfNeeded:(BOOL)arg2 authenticationBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (id)pasteboardWithName:(id)arg1 createIfNeeded:(BOOL)arg2 authenticationBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)pasteboardWithName:(id)arg1 createIfNeeded:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)pasteboardWithName:(id)arg1 createIfNeeded:(BOOL)arg2 error:(id *)arg3;
 - (id)pasteboardWithName:(id)arg1 error:(id *)arg2;
 - (void)performJanitorialTasksCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)requestItemFromPasteboardWithName:(id)arg1 UUID:(id)arg2 itemIndex:(unsigned long long)arg3 typeIdentifier:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)requestItemFromPasteboardWithName:(id)arg1 UUID:(id)arg2 authenticationMessage:(id)arg3 itemIndex:(unsigned long long)arg4 typeIdentifier:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)requestPatternDetectionsFromPasteboardWithName:(id)arg1 UUID:(id)arg2 authenticationMessage:(id)arg3 itemIndex:(unsigned long long)arg4 patterns:(id)arg5 needValues:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)savePasteboard:(id)arg1 dataProviderEndpoint:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)savePasteboard:(id)arg1 dataProviderEndpoint:(id)arg2 error:(id *)arg3;
+- (unsigned int)transparentSlotWithSize:(struct CGSize)arg1 error:(id *)arg2;
 
 @end
 

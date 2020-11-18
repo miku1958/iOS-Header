@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPAddressCorrections, GEORPAmenityCorrections, GEORPCategoryCorrections, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEORPAddressCorrections, GEORPAmenityCorrections, GEORPCategoryCorrections, GEORPPlaceContainmentCorrections, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPPoiCorrections : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     GEORPAmenityCorrections *_amenity;
     NSMutableArray *_businessHours;
     GEORPCategoryCorrections *_category;
+    GEORPPlaceContainmentCorrections *_containmentCorrections;
     NSString *_hoursText;
     NSString *_name;
     NSString *_originalName;
@@ -28,9 +29,13 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    BOOL _flagBadCuratedCollectionDescription;
+    BOOL _flagBrokenCuratedCollectionUrl;
     BOOL _flagHoursIncorrect;
     BOOL _flagNotAtThisAddress;
     struct {
+        unsigned int has_flagBadCuratedCollectionDescription:1;
+        unsigned int has_flagBrokenCuratedCollectionUrl:1;
         unsigned int has_flagHoursIncorrect:1;
         unsigned int has_flagNotAtThisAddress:1;
         unsigned int read_unknownFields:1;
@@ -38,6 +43,7 @@
         unsigned int read_amenity:1;
         unsigned int read_businessHours:1;
         unsigned int read_category:1;
+        unsigned int read_containmentCorrections:1;
         unsigned int read_hoursText:1;
         unsigned int read_name:1;
         unsigned int read_originalName:1;
@@ -45,20 +51,7 @@
         unsigned int read_originalUrl:1;
         unsigned int read_phone:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_amenity:1;
-        unsigned int wrote_businessHours:1;
-        unsigned int wrote_category:1;
-        unsigned int wrote_hoursText:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_originalName:1;
-        unsigned int wrote_originalPhone:1;
-        unsigned int wrote_originalUrl:1;
-        unsigned int wrote_phone:1;
-        unsigned int wrote_url:1;
-        unsigned int wrote_flagHoursIncorrect:1;
-        unsigned int wrote_flagNotAtThisAddress:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -66,11 +59,17 @@
 @property (strong, nonatomic) GEORPAmenityCorrections *amenity;
 @property (strong, nonatomic) NSMutableArray *businessHours;
 @property (strong, nonatomic) GEORPCategoryCorrections *category;
+@property (strong, nonatomic) GEORPPlaceContainmentCorrections *containmentCorrections;
+@property (nonatomic) BOOL flagBadCuratedCollectionDescription;
+@property (nonatomic) BOOL flagBrokenCuratedCollectionUrl;
 @property (nonatomic) BOOL flagHoursIncorrect;
 @property (nonatomic) BOOL flagNotAtThisAddress;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) BOOL hasAmenity;
 @property (readonly, nonatomic) BOOL hasCategory;
+@property (readonly, nonatomic) BOOL hasContainmentCorrections;
+@property (nonatomic) BOOL hasFlagBadCuratedCollectionDescription;
+@property (nonatomic) BOOL hasFlagBrokenCuratedCollectionUrl;
 @property (nonatomic) BOOL hasFlagHoursIncorrect;
 @property (nonatomic) BOOL hasFlagNotAtThisAddress;
 @property (readonly, nonatomic) BOOL hasHoursText;
@@ -92,18 +91,6 @@
 + (Class)businessHoursType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsBusinessHours:(id)arg1;
-- (void)_readAddress;
-- (void)_readAmenity;
-- (void)_readBusinessHours;
-- (void)_readCategory;
-- (void)_readHoursText;
-- (void)_readName;
-- (void)_readOriginalName;
-- (void)_readOriginalPhone;
-- (void)_readOriginalUrl;
-- (void)_readPhone;
-- (void)_readUrl;
 - (void)addBusinessHours:(id)arg1;
 - (id)businessHoursAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessHoursCount;
@@ -116,7 +103,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

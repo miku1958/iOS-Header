@@ -14,22 +14,24 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     unsigned long long _currentLayout;
     _UIContextMenuLayoutArbiterInput *_currentInput;
-    CDStruct_6f807b77 _menuAnchor;
+    CDStruct_a36705e8 _menuAnchor;
 }
 
 @property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, nonatomic) struct CGRect contentBounds;
 @property (strong, nonatomic) _UIContextMenuLayoutArbiterInput *currentInput; // @synthesize currentInput=_currentInput;
 @property (nonatomic) unsigned long long currentLayout; // @synthesize currentLayout=_currentLayout;
-@property (readonly, nonatomic) CDStruct_6f807b77 menuAnchor; // @synthesize menuAnchor=_menuAnchor;
+@property (readonly, nonatomic) CDStruct_a36705e8 menuAnchor; // @synthesize menuAnchor=_menuAnchor;
 
 - (void).cxx_destruct;
 - (id)_accessoryPositionsForBaseLayout:(id)arg1;
+- (unsigned long long)_automaticAlignmentForAttachment:(unsigned long long)arg1 sourcePoint:(struct CGPoint)arg2;
+- (struct CGPoint)_computedMenuAnchorPointForMenuFrame:(struct CGRect)arg1 previewFrame:(struct CGRect)arg2;
 - (struct CGRect)_computedMenuBoundsForContentBounds:(struct CGRect)arg1 predictedPreviewFrame:(struct CGRect)arg2;
 - (struct CGRect)_computedPreviewBoundsForContentBounds:(struct CGRect)arg1;
+- (unsigned long long)_defaultAttachmentEdge;
 - (void)_drawContentBoundsDebugUI:(struct CGRect)arg1;
 - (void)_positionPlatterFrame:(inout struct CGRect *)arg1 andActionViewFrame:(inout struct CGRect *)arg2 inBounds:(struct CGRect)arg3 aboutSourcePoint:(struct CGPoint)arg4;
-- (unsigned long long)_updatedAttachmentEdge;
 - (id)computedLayoutWithInput:(id)arg1;
 - (double)contentMargin;
 - (id)initWithContainerView:(id)arg1 layout:(unsigned long long)arg2;

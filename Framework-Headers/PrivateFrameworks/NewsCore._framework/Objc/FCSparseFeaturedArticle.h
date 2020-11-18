@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCFeedTransformationItem-Protocol.h>
 
-@class CKRecord, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
+@class CKRecord, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
 @protocol FCChannelProviding;
 
 @interface FCSparseFeaturedArticle : NSObject <FCFeedTransformationItem>
@@ -16,6 +16,7 @@
     CKRecord *_articleRecord;
     NSString *_storefrontID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *_conversionStats;
 }
 
 @property (readonly, nonatomic, getter=isANF) BOOL anf;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) BOOL canBePurchased;
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (readonly, nonatomic) unsigned long long contentType;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isExplicitContent) BOOL explicitContent;
@@ -33,6 +35,7 @@
 @property (readonly, copy, nonatomic) NSString *feedID;
 @property (readonly, nonatomic, getter=isFromBlockedStorefront) BOOL fromBlockedStorefront;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
 @property (readonly, nonatomic) BOOL hasAudioTrack;
@@ -51,6 +54,7 @@
 @property (readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property (readonly, nonatomic) long long publisherArticleVersion;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *scores; // @synthesize scores=_scores;
 @property (readonly, copy, nonatomic) id<FCChannelProviding> sourceChannel;
@@ -60,10 +64,11 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *topicIDs;
 
-+ (id)requiredArticleRecordKeysWithStorefrontID:(id)arg1;
++ (id)requiredArticleRecordKeysWithRecordSource:(id)arg1;
 - (void).cxx_destruct;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithArticleRecord:(id)arg1 storefrontID:(id)arg2;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithArticleRecord:(id)arg1 storefrontID:(id)arg2 recordSource:(id)arg3;
 
 @end
 

@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isEligibleForFocusInteraction;
 - (void)_positionBadge;
 - (void)_positionBadgeAfterChangesIfNecessary:(CDUnknownBlockType)arg1;
+- (void)_reducedTransparencyDidChange:(id)arg1;
 - (void)_removeCarplayConstraints;
 - (struct CGRect)_responderSelectionRect;
 - (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
@@ -103,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (id)_tabBar;
 - (struct CGRect)_tabBarHitRect;
 - (struct UIOffset)_titlePositionAdjustment;
+- (void)_updateAfterTraitCollectionOrAccessibilityDidChangeTV;
 - (void)_updateBadgeAppearanceAndLayoutNow:(BOOL)arg1;
 - (void)_updateSelectedIndicatorFrame;
 - (void)_updateSelectedIndicatorView;

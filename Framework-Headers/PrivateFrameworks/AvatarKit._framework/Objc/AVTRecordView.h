@@ -6,138 +6,31 @@
 
 #import <AvatarKit/AVTView.h>
 
-#import <AvatarKit/AVTFaceTrackerDelegate-Protocol.h>
+@protocol AVTRecordViewDelegate;
 
-@class AVAssetWriter, AVAssetWriterInput, AVCaptureMovieFileOutput, AVPlayer, AVTAvatar, CAAnimationGroup, CALayer, NSLock, NSMutableArray, NSMutableData, NSObject, NSString;
-@protocol AVTRecordViewDelegate, OS_dispatch_queue;
-
-@interface AVTRecordView : AVTView <AVTFaceTrackerDelegate>
+@interface AVTRecordView : AVTView
 {
-    id<AVTRecordViewDelegate> _recordDelegate;
-    BOOL _exportingMovie;
-    BOOL _recording;
-    int _isFading;
-    NSObject<OS_dispatch_queue> *_preloadQueue;
-    BOOL _playBakedAnimation;
-    BOOL _disableRendering;
-    float _maxRecordingDuration;
-    NSMutableData *_rawTimesData;
-    NSMutableData *_rawBlendShapesData;
-    NSMutableData *_rawTransformsData;
-    NSMutableData *_rawParametersData;
-    double _referenceAnimationBeginTime;
-    double _recordingStartTime;
-    int _recordedCount;
-    int _recordingCapacity;
-    CAAnimationGroup *_recordedAnimationGroup;
-    AVTAvatar *_avatarForMovieExport;
-    AVCaptureMovieFileOutput *_movieFileOutput;
-    AVPlayer *_audioPlayer;
-    AVAssetWriterInput *_audioWriterInput;
-    AVAssetWriter *_audioWriter;
-    NSLock *_audioLock;
-    CDStruct_1b6d18a9 _currentAudioTime;
-    CDStruct_1b6d18a9 _startAudioTime;
-    CDStruct_1b6d18a9 _stopAudioTime;
-    long long _recordedSampleCount;
-    BOOL _audioIsRecording;
-    double _lastAudioPlayerTime;
-    double _lastAudioSystemTime;
-    BOOL _playing;
-    BOOL _mute;
-    BOOL _transitioningFromSnapshot;
-    double _t0;
-    int _benchFrameCounter;
-    BOOL _doubleBuffer;
-    BOOL _checkDrawableAvailable;
-    NSMutableArray *_droppedDoubleBufferFrames;
-    long long _preferredFramesPerSecond_user;
-    long long _preferredFramesPerSecond_thermal;
-    CALayer *_backingLayer;
+    BOOL mute;
+    float maxRecordingDuration;
+    id<AVTRecordViewDelegate> recordDelegate;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) float maxRecordingDuration;
-@property (nonatomic) BOOL mute; // @synthesize mute=_mute;
+@property (nonatomic) float maxRecordingDuration; // @synthesize maxRecordingDuration;
+@property (nonatomic) BOOL mute; // @synthesize mute;
 @property (readonly, nonatomic, getter=isPreviewing) BOOL previewing;
-@property (weak, nonatomic) id<AVTRecordViewDelegate> recordDelegate; // @synthesize recordDelegate=_recordDelegate;
-@property (readonly, nonatomic, getter=isRecording) BOOL recording; // @synthesize recording=_recording;
-@property (readonly) Class superclass;
+@property (weak, nonatomic) id<AVTRecordViewDelegate> recordDelegate; // @synthesize recordDelegate;
+@property (readonly, nonatomic, getter=isRecording) BOOL recording;
 
-+ (void)setUsesInternalTrackingPipeline:(BOOL)arg1;
-+ (BOOL)usesInternalTrackingPipeline;
 - (void).cxx_destruct;
-- (void)_avt_commonInit;
-- (void)_didUpdateAtTime:(double)arg1;
-- (void)_playLivePreviewAnimation;
-- (void)_processInfoThermalStateDidChange:(id)arg1;
-- (double)_renderer:(id)arg1 inputTimeForCurrentFrameWithTime:(double)arg2;
-- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
-- (void)_setEffectivePreferredFramesPerSecond;
-- (void)_smoothRecordedData;
-- (id)_tmpAudioURL;
-- (id)_tmpMaskVideoURL;
-- (id)_tmpVideoURL;
-- (void)_updateFrameRateForThermalState:(long long)arg1;
-- (void)_updateTrackingState;
-- (void)addRecordedAnimationToAvatar:(id)arg1;
-- (BOOL)allowTrackSmoothing;
-- (void)audioPlayerItemDidReachEnd:(id)arg1;
-- (void)avatarDidChange;
-- (void)cancelMovieExport;
 - (void)cancelRecording;
-- (void)cancelRecordingAudio;
-- (void)convertRecordedDataToAnimationGroup;
-- (struct opaqueCMSampleBuffer *)createSilentAudioAtFrame:(long long)arg1 nFrames:(int)arg2 sampleRate:(double)arg3 numChannels:(int)arg4;
-- (double)currentAudioTime;
-- (void)dealloc;
-- (void)didLostTrackingForAWhile;
-- (BOOL)disableRendering;
 - (BOOL)exportMovieToURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)faceIsFullyActive;
-- (void)faceTracker:(id)arg1 session:(id)arg2 didOutputAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg3;
-- (void)faceTrackerDidUpdate:(id)arg1 trackingInfo:(id)arg2;
-- (id)faceTrackingRecordingURL;
-- (void)fadePuppetToWhite:(float)arg1;
-- (double)finalVideoDuration;
-- (void)finalizeAudioFile;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
-- (BOOL)isDoubleBuffered;
-- (BOOL)mergeAudio:(id)arg1 andVideoTo:(id)arg2 error:(id *)arg3;
-- (BOOL)playBakedAnimation;
 - (void)playPreviewOnce;
-- (long long)preferredFramesPerSecond;
-- (id)puppetState;
-- (BOOL)recording;
-- (double)recordingDuration;
-- (void)removeRecordedAnimationFromAvatar:(id)arg1;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (void)setAvatar:(id)arg1;
-- (void)setDisableRendering:(BOOL)arg1;
-- (void)setFaceTrackingPaused:(BOOL)arg1;
-- (void)setFaceTrackingRecordingURL:(id)arg1;
-- (void)setPlayBakedAnimation:(BOOL)arg1;
-- (void)setPreferredFramesPerSecond:(long long)arg1;
-- (void)setPuppetState:(id)arg1;
-- (void)startPlayingAudio;
 - (void)startPreviewing;
 - (void)startRecording;
-- (void)startRecordingAudio;
-- (void)stopPlayingAudio;
 - (void)stopPreviewing;
 - (void)stopRecording;
-- (void)stopRecordingAudio;
-- (void)trimRecordedData;
-- (void)updateAtTime:(double)arg1;
-- (void)updateAudioState;
-- (void)updateForChangedFaceTrackingPaused;
-- (void)updateMuteState;
-- (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;
 
 @end
 

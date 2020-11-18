@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexSet, NSMutableIndexSet;
-@protocol PXGDisplayAssetPixelBufferSource;
+@class NSDate, NSIndexSet, NSMutableIndexSet;
+@protocol PXDisplayAsset, PXGDisplayAssetPixelBufferSource;
 
 @interface _PXGDisplayAssetTextureStreamingVideoSession : NSObject
 {
     NSMutableIndexSet *_textureRequestIDs;
     id<PXGDisplayAssetPixelBufferSource> _pixelBufferSource;
+    id<PXDisplayAsset> _displayAsset;
+    NSDate *_firstPixelBufferDisplayDate;
+    struct __CVPixelBufferPool *_pixelBufferPool;
 }
 
+@property (readonly, nonatomic) id<PXDisplayAsset> displayAsset; // @synthesize displayAsset=_displayAsset;
+@property (copy, nonatomic) NSDate *firstPixelBufferDisplayDate; // @synthesize firstPixelBufferDisplayDate=_firstPixelBufferDisplayDate;
+@property (strong, nonatomic) struct __CVPixelBufferPool *pixelBufferPool; // @synthesize pixelBufferPool=_pixelBufferPool;
 @property (readonly, nonatomic) id<PXGDisplayAssetPixelBufferSource> pixelBufferSource; // @synthesize pixelBufferSource=_pixelBufferSource;
 @property (readonly, copy, nonatomic) NSIndexSet *textureRequestIDs;
 
 - (void).cxx_destruct;
 - (void)addTextureRequestID:(int)arg1;
-- (id)initWithPixelBufferSource:(id)arg1;
+- (id)initWithPixelBufferSource:(id)arg1 displayAsset:(id)arg2;
 - (void)removeTextureRequestID:(int)arg1;
 - (void)removeTextureRequestIDs:(id)arg1;
 

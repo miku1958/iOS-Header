@@ -43,6 +43,7 @@
 - (void)_ignoredTransition:(long long)arg1;
 - (id)_initWithLiftToWakeController:(id)arg1;
 - (BOOL)_isLockScreenMainPageVisible;
+- (void)conformsToCSEventHandling;
 - (void)dealloc;
 - (BOOL)handleEvent:(id)arg1;
 - (id)init;

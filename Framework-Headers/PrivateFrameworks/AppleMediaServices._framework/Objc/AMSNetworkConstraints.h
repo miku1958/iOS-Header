@@ -28,6 +28,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 + (id)networkConstraintsForMediaType:(id)arg1 withBag:(id)arg2;
 - (void).cxx_destruct;
 - (void)_disableAllNetworkTypes;

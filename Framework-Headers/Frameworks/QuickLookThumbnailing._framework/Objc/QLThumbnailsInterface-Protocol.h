@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FPSandboxingURLWrapper, NSArray, NSDate, NSFileHandle, NSString, NSURL, QLThumbnailItem;
+@class FPItemID, FPSandboxingURLWrapper, NSArray, NSDate, NSFileHandle, NSNumber, NSString, NSURL, QLThumbnailItem;
 @protocol QLIncrementalThumbnailGenerationHandler;
 
 @protocol QLThumbnailsInterface
 - (void)askThumbnailAdditionIndex:(void (^)(id<QLThumbnailAdditionIndexInterface>))arg1;
 - (void)cancelThumbnailRequests:(NSArray *)arg1;
 - (void)generateSuccessiveThumbnailRepresentationsForRequests:(NSArray *)arg1 generationHandler:(id<QLIncrementalThumbnailGenerationHandler>)arg2 completionHandler:(void (^)(void))arg3;
+- (void)getAllThumbnailsForFPItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSArray *))arg2;
+- (void)getAllThumbnailsForIno:(NSNumber *)arg1 fsid:(NSArray *)arg2 completionHandler:(void (^)(NSArray *))arg3;
+- (void)getAllThumbnailsInfo:(void (^)(NSArray *))arg1;
+- (void)getCacheInfo:(void (^)(NSDictionary *))arg1;
 - (void)getCanGenerateThumbnailsForContentType:(NSString *)arg1 completionHandler:(void (^)(BOOL))arg2;
 - (void)hasThumbnailForURLWrapper:(FPSandboxingURLWrapper *)arg1 updateLastHitDate:(BOOL)arg2 andSize:(unsigned long long)arg3 completion:(void (^)(BOOL))arg4;
 - (void)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)removeThumbnailAdditionsOnURL:(NSURL *)arg1 completionBlock:(void (^)(NSError *))arg2;
-- (void)requestThumbnailOfMaximumSize:(struct CGSize)arg1 scale:(double)arg2 forThumbnailItem:(QLThumbnailItem *)arg3 completionHandler:(void (^)(UIImage *))arg4;
 - (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forDocumentAtURL:(NSURL *)arg2 sandboxExtension:(NSString *)arg3 toFileHandle:(NSFileHandle *)arg4 atBackgroundPriority:(BOOL)arg5 completionHandler:(void (^)(id<QLThumbnailGenerationRequest>))arg6;
 - (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forThumbnailItem:(QLThumbnailItem *)arg2 toFileHandle:(NSFileHandle *)arg3 atBackgroundPriority:(BOOL)arg4 completionHandler:(void (^)(id<QLThumbnailGenerationRequest>))arg5;
 - (void)reset;

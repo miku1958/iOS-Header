@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (long long)isPredominatelyDownload;
 - (id)activityCreate;
 - (void)main;
+- (int)operationType;
 - (BOOL)shouldCheckAppVersion;
 
 @end

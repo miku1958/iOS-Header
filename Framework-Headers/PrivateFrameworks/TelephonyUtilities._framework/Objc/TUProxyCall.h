@@ -44,6 +44,7 @@
     int _callRelaySupport;
     float _localMeterLevel;
     float _remoteMeterLevel;
+    int _originatingUIType;
     NSString *_callUUID;
     TUHandle *_handle;
     NSString *_isoCountryCode;
@@ -114,6 +115,7 @@
 @property (nonatomic, getter=isMediaStalled) BOOL mediaStalled; // @synthesize mediaStalled=_mediaStalled;
 @property (nonatomic, getter=isMutuallyExclusiveCall) BOOL mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
 @property (nonatomic) BOOL needsManualInCallSounds; // @synthesize needsManualInCallSounds=_needsManualInCallSounds;
+@property (nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic, getter=isOutgoing) BOOL outgoing; // @synthesize outgoing=_outgoing;
 @property (nonatomic) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;
 @property (nonatomic) BOOL prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;

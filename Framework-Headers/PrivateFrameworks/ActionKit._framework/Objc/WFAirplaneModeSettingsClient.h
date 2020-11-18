@@ -4,27 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ActionKit/WFSettingsClient.h>
+#import <ActionKit/WFRadiosPreferencesSettingsClient.h>
 
 #import <ActionKit/WFBooleanStateSetting-Protocol.h>
 
-@class NSString, RadiosPreferences;
+@class NSString;
 
-@interface WFAirplaneModeSettingsClient : WFSettingsClient <WFBooleanStateSetting>
+@interface WFAirplaneModeSettingsClient : WFRadiosPreferencesSettingsClient <WFBooleanStateSetting>
 {
-    RadiosPreferences *_radiosPreferences;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) RadiosPreferences *radiosPreferences; // @synthesize radiosPreferences=_radiosPreferences;
 @property (readonly) Class superclass;
 
-+ (void)createClientWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void).cxx_destruct;
 - (void)getStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithRadiosPreferences:(id)arg1;
 - (void)setState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

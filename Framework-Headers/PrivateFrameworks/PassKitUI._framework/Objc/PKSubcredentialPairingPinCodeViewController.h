@@ -11,7 +11,7 @@
 #import <PassKitUI/PKSubcredentialPairingFlowControllerOperation-Protocol.h>
 
 @class NSString, PKExplanationView, PKPinCodeField, PKSubcredentialPairingFlowControllerContext, UIBarButtonItem, UILabel;
-@protocol PKSubcredentialPairingFlowControllerProtocol, PKSubcredentialProvisioningFlowController;
+@protocol PKSubcredentialPairingFlowControllerProtocol;
 
 @interface PKSubcredentialPairingPinCodeViewController : UIViewController <PKPinCodeFieldDelegate, PKExplanationViewDelegate, PKSubcredentialPairingFlowControllerOperation>
 {
@@ -27,7 +27,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<PKSubcredentialProvisioningFlowController> flowController;
+@property (readonly, nonatomic) id<PKSubcredentialPairingFlowControllerProtocol> flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long operation;
 @property (strong, nonatomic) PKSubcredentialPairingFlowControllerContext *provisioningContext; // @synthesize provisioningContext=_provisioningContext;
@@ -41,6 +41,7 @@
 - (id)localizedIssuerName;
 - (void)nextButtonPressed;
 - (void)pinCodeTextFieldWasUpdated:(id)arg1 isComplete:(BOOL)arg2;
+- (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (void)resetPinCode;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

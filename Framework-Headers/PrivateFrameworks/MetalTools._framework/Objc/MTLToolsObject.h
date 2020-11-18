@@ -6,31 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class MTLToolsDevice, MTLToolsPointerArray;
+@class MTLToolsDevice;
 @protocol MTLDevice;
 
 @interface MTLToolsObject : NSObject
 {
     MTLToolsObject *_parent;
-    MTLToolsPointerArray *_tracker;
     MTLToolsObject *_baseObject;
     MTLToolsDevice *_device;
-    struct ILayerLockingPolicy *_lockingPolicy;
+    _Atomic int _externalReferences;
 }
 
 @property (strong, nonatomic) id baseObject; // @synthesize baseObject=_baseObject;
-@property (readonly, nonatomic) id<MTLDevice> device;
-@property (nonatomic) struct ILayerLockingPolicy *lockingPolicy; // @synthesize lockingPolicy=_lockingPolicy;
-@property (nonatomic) MTLToolsPointerArray *tracker; // @synthesize tracker=_tracker;
+@property (readonly) id<MTLDevice> device;
 
-+ (id)dispatchQueue;
-+ (void)visitObjects:(id)arg1 withVisitor:(id)arg2;
-- (void)acceptVisitor:(id)arg1;
-- (id)baseObjectWithClass:(Class)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2 lockingPolicy:(struct ILayerLockingPolicy *)arg3;
 - (id)originalObject;
 - (id)parent;
 - (void)setOriginalObject:(id)arg1;

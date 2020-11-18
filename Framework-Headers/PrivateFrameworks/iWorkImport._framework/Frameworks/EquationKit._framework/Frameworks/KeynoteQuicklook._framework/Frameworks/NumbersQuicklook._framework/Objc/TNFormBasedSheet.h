@@ -16,7 +16,7 @@
 }
 
 @property (strong, nonatomic) NSString *importedTargetName; // @synthesize importedTargetName=_importedTargetName;
-@property (readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (strong, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
 
 - (id).cxx_construct;

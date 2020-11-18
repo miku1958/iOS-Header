@@ -10,9 +10,10 @@
 {
 }
 
-- (void)_presentConfirmationViewController:(id)arg1 preferredContentSize:(struct CGSize)arg2;
+- (void)_presentConfirmationViewController:(id)arg1 preferredContentSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentConfirmationDialogWithType:(id)arg1;
 - (void)presentConfirmationDialogWithType:(id)arg1 name:(id)arg2;
+- (void)presentConfirmationDialogWithType:(id)arg1 name:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

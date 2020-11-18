@@ -45,6 +45,7 @@
 - (void)_checkForDingbatDuplicates;
 - (void)_cleanUpOldFlagsCaches;
 - (void)_pruneInvalidEmojiFromHistory;
+- (void)_pruneOldestEmojiUsageFromHistory;
 - (void)_readPreferencesFromDefaults;
 - (void)_setRecentStrings:(id)arg1;
 - (void)didDisplaySkinToneHelp;

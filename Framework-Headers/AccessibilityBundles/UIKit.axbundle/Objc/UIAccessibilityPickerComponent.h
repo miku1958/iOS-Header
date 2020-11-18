@@ -27,6 +27,7 @@
 - (double)_accessibilityNumberValue;
 - (long long)_accessibilityPickerType;
 - (id)_accessibilityScrollStatus;
+- (BOOL)_accessibilitySetNativeFocus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityViewForComponent;
 - (BOOL)_axIsInDatePickerView;

@@ -13,6 +13,7 @@
 
 @interface HKWorkoutConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _shouldDisambiguateLocation;
     unsigned long long _activityType;
     long long _locationType;
     long long _swimmingLocationType;
@@ -26,6 +27,7 @@
 @property (copy) HKQuantity *lapLength; // @synthesize lapLength=_lapLength;
 @property long long locationType; // @synthesize locationType=_locationType;
 @property (strong, nonatomic) NSUUID *predictionSessionUUID; // @synthesize predictionSessionUUID=_predictionSessionUUID;
+@property (nonatomic) BOOL shouldDisambiguateLocation; // @synthesize shouldDisambiguateLocation=_shouldDisambiguateLocation;
 @property long long swimmingLocationType; // @synthesize swimmingLocationType=_swimmingLocationType;
 
 + (id)_workoutConfigurationFromDictionary:(id)arg1;

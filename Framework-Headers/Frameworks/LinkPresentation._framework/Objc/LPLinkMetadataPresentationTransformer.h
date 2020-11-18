@@ -12,6 +12,7 @@
 {
     BOOL _complete;
     BOOL _allowsTapToLoad;
+    BOOL _allowsTapping;
     LPLinkMetadata *_metadata;
     NSURL *_URL;
     unsigned long long _preferredSizeClass;
@@ -22,6 +23,7 @@
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (nonatomic) BOOL allowsTapToLoad; // @synthesize allowsTapToLoad=_allowsTapToLoad;
+@property (nonatomic) BOOL allowsTapping; // @synthesize allowsTapping=_allowsTapping;
 @property (readonly, copy, nonatomic) NSURL *canonicalURL;
 @property (nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, nonatomic) BOOL hasMedia;
@@ -43,12 +45,15 @@
 - (id)audioForStyle:(long long)arg1;
 - (id)backgroundColorForStyle:(long long)arg1;
 - (id)commonPresentationPropertiesForStyle:(long long)arg1;
+- (id)domainName;
+- (id)domainNameForIndicator;
 - (id)imageForStyle:(long long)arg1 icon:(id *)arg2 alternateImages:(id *)arg3;
 - (id)init;
 - (id)mainCaptionBarForStyle:(long long)arg1;
 - (id)presentationProperties;
 - (id)quotedTextForStyle:(long long)arg1;
 - (long long)rendererStyle;
+- (BOOL)shouldUseAppClipPresentation;
 - (id)subtitleForStyle:(long long)arg1;
 - (id)titleForStyle:(long long)arg1;
 - (id)unspecializedPresentationProperties;

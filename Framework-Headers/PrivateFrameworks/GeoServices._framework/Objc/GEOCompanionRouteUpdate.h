@@ -25,10 +25,7 @@
         unsigned int has_type:1;
         unsigned int read_routeID:1;
         unsigned int read_transitRouteUpdate:1;
-        unsigned int wrote_lastUpdated:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_transitRouteUpdate:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,8 +41,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_readRouteID;
-- (void)_readTransitRouteUpdate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -53,8 +48,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithTransitRouteUpdate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

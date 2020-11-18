@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) unsigned long long gesturePhase; // @synthesize gesturePhase=_gesturePhase;
 
 - (void).cxx_destruct;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)handleEvent:(id)arg1;
@@ -26,7 +27,6 @@
 - (id)initWithGestureID:(id)arg1;
 - (BOOL)isPreparingLayout;
 - (BOOL)isUpdatingLayout;
-- (long long)layoutUpdateMode;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 
 @end

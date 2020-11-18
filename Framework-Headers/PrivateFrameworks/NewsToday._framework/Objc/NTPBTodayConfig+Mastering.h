@@ -9,6 +9,7 @@
 @interface NTPBTodayConfig (Mastering)
 - (id)_resolveArticle:(id)arg1 withPaidAccessChecker:(id)arg2 heldArticleRecords:(id)arg3;
 - (id)_resolveArticles:(id)arg1 withPaidAccessChecker:(id)arg2 heldArticleRecords:(id)arg3;
+- (id)configByResolvingWithTag:(id)arg1;
 - (void)nt_resolveFallbacksWithPaidAccessChecker:(id)arg1 heldArticleRecords:(id)arg2;
 @end
 

@@ -7,8 +7,8 @@
 #import <Foundation/NSCharacterSet.h>
 
 @interface NSCharacterSet (_HKXMLExtractorCharacterSets)
-+ (id)equalCharacterSet;
-+ (id)forwardSlashCharacterSet;
-+ (id)percentCharacterSet;
++ (id)hk_equalCharacterSet;
++ (id)hk_forwardSlashCharacterSet;
++ (id)hk_percentCharacterSet;
 @end
 

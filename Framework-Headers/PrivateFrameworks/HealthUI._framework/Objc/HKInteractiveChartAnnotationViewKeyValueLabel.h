@@ -4,23 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStackView.h>
+#import <UIKit/UIView.h>
 
 @class HKSelectedRangeLabel, UIColor;
 
-@interface HKInteractiveChartAnnotationViewKeyValueLabel : UIStackView
+@interface HKInteractiveChartAnnotationViewKeyValueLabel : UIView
 {
+    long long _orientation;
     HKSelectedRangeLabel *_keyLabel;
     HKSelectedRangeLabel *_valueLabel;
     UIColor *_textColor;
 }
 
 @property (readonly, nonatomic) HKSelectedRangeLabel *keyLabel; // @synthesize keyLabel=_keyLabel;
+@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (readonly, nonatomic) HKSelectedRangeLabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 
 - (void).cxx_destruct;
+- (void)_layoutSubviewsHorizontally;
+- (void)_layoutSubviewsVertically;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

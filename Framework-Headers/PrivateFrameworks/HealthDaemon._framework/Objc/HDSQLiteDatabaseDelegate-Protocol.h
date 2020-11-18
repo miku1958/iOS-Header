@@ -6,9 +6,6 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDSQLiteDatabase, NSString;
-
 @protocol HDSQLiteDatabaseDelegate <NSObject>
-- (NSString *)virtualFilesystemModuleForDatabase:(HDSQLiteDatabase *)arg1;
 @end
 

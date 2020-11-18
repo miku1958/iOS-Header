@@ -6,13 +6,12 @@
 
 #import <HomeKitDaemon/HMDBackingStoreOperation.h>
 
-@class HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, NSArray;
+@class HMDBackingStoreCacheGroup, NSArray;
 
 @interface HMDBackingStoreCacheFetchRecords : HMDBackingStoreOperation
 {
     BOOL _recursive;
     HMDBackingStoreCacheGroup *_group;
-    HMDBackingStoreCacheShareGroup *_share;
     CDUnknownBlockType _fetchResult;
     NSArray *_recordNames;
     NSArray *_uuids;
@@ -24,16 +23,12 @@
 @property (strong, nonatomic) NSArray *parentUuids; // @synthesize parentUuids=_parentUuids;
 @property (strong, nonatomic) NSArray *recordNames; // @synthesize recordNames=_recordNames;
 @property BOOL recursive; // @synthesize recursive=_recursive;
-@property (strong, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 @property (strong, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 
 - (void).cxx_destruct;
 - (id)initWithGroup:(id)arg1 parentUuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
 - (id)initWithGroup:(id)arg1 records:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
 - (id)initWithGroup:(id)arg1 uuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
-- (id)initWithShareGroup:(id)arg1 parentUuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
-- (id)initWithShareGroup:(id)arg1 records:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
-- (id)initWithShareGroup:(id)arg1 uuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
 - (id)mainReturningError;
 
 @end

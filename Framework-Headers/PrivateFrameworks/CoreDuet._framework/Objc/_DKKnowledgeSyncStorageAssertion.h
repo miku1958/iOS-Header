@@ -10,7 +10,6 @@
 {
 }
 
-+ (unsigned long long)assertionCount;
 - (void)dealloc;
 - (id)init;
 

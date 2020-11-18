@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_whiteList;
 + (id)new;
 - (void).cxx_destruct;
 - (BOOL)_accessGrantedForBundleID:(id)arg1 onAccountTypeID:(id)arg2;
@@ -75,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)isPushSupportedForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)openAuthenticationURL:(id)arg1 forAccount:(id)arg2 shouldConfirm:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -83,12 +83,12 @@ __attribute__((visibility("hidden")))
 - (void)permissionForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)provisionedDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)registerMonitorForAccountsOfTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)reportTelemetryForLandmarkEvent:(CDUnknownBlockType)arg1;
 - (void)requestAccessForAccountTypeWithIdentifier:(id)arg1 options:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 toPairedDeviceWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -100,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setNotificationsEnabled:(BOOL)arg1;
 - (void)setPermissionGranted:(id)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
 - (void)supportedDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)syncableDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;

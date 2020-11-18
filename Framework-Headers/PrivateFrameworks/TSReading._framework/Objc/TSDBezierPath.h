@@ -129,6 +129,7 @@
 - (id)bezierPathByFittingCurve;
 - (id)bezierPathByFittingCurve:(id)arg1;
 - (id)bezierPathByFlatteningPath;
+- (id)bezierPathByFlatteningPathWithFlatness:(double)arg1;
 - (id)bezierPathByOffsettingPath:(double)arg1 joinStyle:(unsigned long long)arg2 withThreshold:(double)arg3;
 - (id)bezierPathByRemovingRedundantElements;
 - (id)bezierPathByReversingPath;
@@ -145,6 +146,8 @@
 - (BOOL)containsPoint:(struct CGPoint)arg1;
 - (struct CGRect)controlPointBounds;
 - (id)copyFromSegment:(int)arg1 t:(float)arg2 toSegment:(int)arg3 t:(float)arg4;
+- (void)copyPathAttributesTo:(id)arg1;
+- (id)copyWithPointsInRange:(struct _NSRange)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGPoint)currentPoint;
 - (float)curvatureAt:(float)arg1;
@@ -158,11 +161,12 @@
 - (unsigned long long)elementAtIndex:(long long)arg1 associatedPoints:(struct CGPoint *)arg2;
 - (long long)elementCount;
 - (long long)elementPercentage:(float *)arg1 forOverallPercentage:(float)arg2;
+- (long long)elementPercentage:(double *)arg1 forOverallPercentage:(double)arg2 startingElementIndex:(long long)arg3 lengthToStartingElement:(double)arg4;
 - (float)elementPercentageFromElement:(int)arg1 forOverallPercentage:(float)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fill;
 - (double)flatness;
-- (void)flattenIntoPath:(id)arg1;
+- (void)flattenIntoPath:(id)arg1 flatness:(double)arg2;
 - (void)getLineDash:(double *)arg1 count:(long long *)arg2 phase:(double *)arg3;
 - (void)getStartPoint:(struct CGPoint *)arg1 andEndPoint:(struct CGPoint *)arg2;
 - (struct CGPoint)gradientAt:(float)arg1;
@@ -196,9 +200,12 @@
 - (id)outlineStroke;
 - (id)p_aliasedPathInContext:(struct CGContext *)arg1 viewScale:(float)arg2 effectiveStrokeWidth:(float)arg3;
 - (id)p_beziersFromSegmentIntersections:(id)arg1;
+- (id)p_copyWithPointsInRange:(struct _NSRange)arg1 countingSubpaths:(unsigned long long *)arg2;
+- (id)p_elementCountForSubpaths;
 - (id)p_pathAsSegments;
 - (id)pathBySplittingAtPointOnPath:(struct CGPoint)arg1;
 - (id)pathByWobblingByUpTo:(double)arg1 subdivisions:(unsigned long long)arg2;
+- (id)pathSplitAtSubpathBoundariesWithSoftElementLimit:(unsigned long long)arg1 hardElementLimit:(unsigned long long)arg2;
 - (struct CGPoint)pointAlongPathAtPercentage:(double)arg1;
 - (struct CGPoint)pointAt:(double)arg1 fromElement:(long long)arg2;
 - (BOOL)pointOnPath:(struct CGPoint)arg1 tolerance:(double)arg2;

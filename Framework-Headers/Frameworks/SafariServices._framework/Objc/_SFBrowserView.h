@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class SFNanoDomainContainerView, WKWebView, _SFCrashBanner, _SFLinkPreviewHeader, _SFNavigationBar, _SFToolbar;
+@class SFNanoDomainContainerView, WKWebView, _SFCrashBanner, _SFLinkPreviewHeader, _SFNavigationBar, _SFPinnableBanner, _SFToolbar;
 @protocol SFBrowserViewDelegate;
 
 @interface _SFBrowserView : UIView
@@ -26,12 +26,18 @@
     UIView *_scrollToTopView;
     _SFCrashBanner *_crashBanner;
     double _crashBannerOffset;
+    _SFPinnableBanner *_pinnableBanner;
+    _SFPinnableBanner *_appBannerPendingFirstPaint;
     UIView *_quickLookDocumentView;
     double _minimalUITopOffset;
     id<SFBrowserViewDelegate> _delegate;
+    double _unscaledWebViewWidth;
     SFNanoDomainContainerView *_nanoDomainContainerView;
+    struct CGPoint _pinnableBannerOffset;
+    struct UIEdgeInsets _obscuredInsets;
 }
 
+@property (strong, nonatomic) _SFPinnableBanner *appBannerPendingFirstPaint; // @synthesize appBannerPendingFirstPaint=_appBannerPendingFirstPaint;
 @property (nonatomic) double bottomBarOffset; // @synthesize bottomBarOffset=_bottomBarOffset;
 @property (readonly, nonatomic) UIView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
 @property (strong, nonatomic) _SFCrashBanner *crashBanner; // @synthesize crashBanner=_crashBanner;
@@ -44,6 +50,9 @@
 @property (strong, nonatomic) SFNanoDomainContainerView *nanoDomainContainerView; // @synthesize nanoDomainContainerView=_nanoDomainContainerView;
 @property (strong, nonatomic) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) unsigned long long navigationBarBehavior; // @synthesize navigationBarBehavior=_navigationBarBehavior;
+@property (nonatomic) struct UIEdgeInsets obscuredInsets; // @synthesize obscuredInsets=_obscuredInsets;
+@property (strong, nonatomic) _SFPinnableBanner *pinnableBanner; // @synthesize pinnableBanner=_pinnableBanner;
+@property (nonatomic) struct CGPoint pinnableBannerOffset; // @synthesize pinnableBannerOffset=_pinnableBannerOffset;
 @property (strong, nonatomic) _SFLinkPreviewHeader *previewHeader; // @synthesize previewHeader=_previewHeader;
 @property (strong, nonatomic) UIView *quickLookDocumentView; // @synthesize quickLookDocumentView=_quickLookDocumentView;
 @property (readonly, nonatomic) UIView *scrollToTopView; // @synthesize scrollToTopView=_scrollToTopView;
@@ -51,15 +60,19 @@
 @property (strong, nonatomic) UIView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
 @property (strong, nonatomic) _SFToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (nonatomic) double topBarHeight; // @synthesize topBarHeight=_topBarHeight;
+@property (nonatomic) double unscaledWebViewWidth; // @synthesize unscaledWebViewWidth=_unscaledWebViewWidth;
 
 - (void).cxx_destruct;
+- (void)_scaleContentInset;
 - (void)addWebView:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (double)previewScaleFactor;
 - (void)setContentReadyForDisplay;
+- (struct CGRect)unscaledWebViewBounds;
 - (void)updateDismissButtonStyle:(long long)arg1;
-- (void)updatePreviewHeader;
+- (void)updatePreviewHeaderWithURLString:(id)arg1;
 
 @end
 

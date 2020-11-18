@@ -11,7 +11,7 @@
 }
 
 - (id)copyWithContext:(id)arg1;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (void)saveToArchiver:(id)arg1;
 - (BOOL)shouldStyleBeExtended;
 - (id)stringEquivalent;

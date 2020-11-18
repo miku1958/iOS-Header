@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class IDSDestination, NSArray, NSData, NSDate, NSString, NSUUID, _IDSDevice;
+@class IDSDestination, IDSEndpointCapabilities, NSArray, NSData, NSDate, NSString, NSUUID, _IDSDevice;
 
 @interface IDSDevice : NSObject
 {
     _IDSDevice *_internal;
 }
 
+@property (readonly, nonatomic) IDSEndpointCapabilities *capabilities;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, nonatomic) IDSDestination *destination;
 @property (readonly, nonatomic) NSString *deviceColor;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) NSString *productName;
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, nonatomic) NSData *pushToken;
+@property (readonly, nonatomic) long long relationship;
 @property (readonly, nonatomic) NSString *service;
 @property (readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;
 @property (readonly, nonatomic) BOOL supportsApplePay;
@@ -56,6 +58,7 @@
 - (id)_internal;
 - (void)_setAccount:(id)arg1;
 - (void)_setService:(id)arg1;
+- (id)compactDescription;
 - (void)dealloc;
 - (id)description;
 - (id)fullDescription;

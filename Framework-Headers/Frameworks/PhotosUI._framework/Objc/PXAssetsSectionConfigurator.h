@@ -20,9 +20,13 @@
 - (void).cxx_destruct;
 - (void)configureAssetSectionLayout:(id)arg1;
 - (struct CGRect)containerFrameForAssetSectionLayout:(id)arg1;
+- (struct CGSize)estimatedSizeOfSectionForAssetCollection:(id)arg1 isCurated:(BOOL)arg2 numberOfAssets:(long long)arg3 referenceSize:(struct CGSize)arg4;
 - (id)headerSpecForHeaderStyle:(long long)arg1 assetSectionLayout:(id)arg2;
 - (id)init;
 - (id)initWithExtendedTraitCollection:(id)arg1 assetsSectionLayoutSpec:(id)arg2;
+- (long long)initialZoomStep;
+- (long long)numberOfZoomStepsWithDataSource:(id)arg1;
+- (BOOL)supportsAspectRatioToggle;
 - (id)updatedHeaderLayout:(id)arg1 withHeaderStyle:(long long)arg2 forAssetSectionLayout:(id)arg3;
 
 @end

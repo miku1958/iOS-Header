@@ -9,7 +9,6 @@
 @class MISSING_TYPE;
 @protocol TUPluggableDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI225MyMagazinesViewController : UIViewController
 {
     MISSING_TYPE *isBeingUsedAsPlugin;
@@ -17,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *blueprintLayoutProvider;
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *lastComputedSize;
     MISSING_TYPE *eventManager;

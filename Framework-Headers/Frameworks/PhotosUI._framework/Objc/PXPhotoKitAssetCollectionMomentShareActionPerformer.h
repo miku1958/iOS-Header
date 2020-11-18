@@ -20,9 +20,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
++ (BOOL)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollection:(id)arg2 person:(id)arg3;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
 - (void).cxx_destruct;
 - (void)completeUserInteractionTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)performUserInteractionTask;

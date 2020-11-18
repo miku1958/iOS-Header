@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKSparseMutableControllerArray, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSArray, NSMapTable, NSString, UIView;
+@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKSparseMutableControllerArray, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSArray, NSMapTable, NSString, PKToolPicker, UIView;
 @protocol AKControllerDelegateProtocol, PKRulerHostingDelegate;
 
 @interface AKController : NSObject
@@ -18,7 +18,6 @@
     BOOL _annotationEditingEnabled;
     BOOL _pencilAlwaysDraws;
     BOOL _isTestingInstance;
-    BOOL _showingMenu;
     BOOL _hideAllAdornments;
     BOOL _isLogging;
     BOOL _selectNewlyCreatedAnnotations;
@@ -92,12 +91,12 @@
 @property double screenPixelsToCanvasPixelsDownscale; // @synthesize screenPixelsToCanvasPixelsDownscale=_screenPixelsToCanvasPixelsDownscale;
 @property (nonatomic) BOOL selectNewlyCreatedAnnotations; // @synthesize selectNewlyCreatedAnnotations=_selectNewlyCreatedAnnotations;
 @property (nonatomic) BOOL shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
-@property (getter=isShowingMenu) BOOL showingMenu; // @synthesize showingMenu=_showingMenu;
 @property (strong) AKSidecarController *sidecarController; // @synthesize sidecarController=_sidecarController;
 @property (strong) AKSignatureModelController *signatureModelController; // @synthesize signatureModelController=_signatureModelController;
 @property (strong) AKStatistics *statisticsLogger; // @synthesize statisticsLogger=_statisticsLogger;
 @property (strong) AKTextEditorController *textEditorController; // @synthesize textEditorController=_textEditorController;
 @property (strong) AKToolController *toolController; // @synthesize toolController=_toolController;
+@property (readonly, nonatomic) PKToolPicker *toolPicker;
 @property (strong) UIView *toolbarView; // @synthesize toolbarView=_toolbarView;
 @property (strong) AKToolbarViewController *toolbarViewController; // @synthesize toolbarViewController=_toolbarViewController;
 @property (strong) AKUndoController *undoController; // @synthesize undoController=_undoController;
@@ -196,8 +195,6 @@
 - (BOOL)validateSender:(id)arg1;
 - (BOOL)validateShowAttributeInspector:(id)arg1;
 - (BOOL)validateUndo:(id)arg1;
-- (void)willHideMenu:(id)arg1;
-- (void)willShowMenu:(id)arg1;
 
 @end
 

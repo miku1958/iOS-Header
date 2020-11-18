@@ -7,78 +7,105 @@
 #import <UIKit/UIViewController.h>
 
 #import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
-#import <GameCenterUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <GameCenterUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class GKBubbleFlowContainerView, NSMutableDictionary, NSString, OBBoldTrayButton, OBPrivacyLinkController, UILabel, UIScrollView, UIView, UIVisualEffectView;
-@protocol GKOnboardingFlowDelegate;
+@class GKLabel, NSLayoutConstraint, NSString, OBBoldTrayButton, OBPrivacyLinkController, UIImageView, UILabel, UIScrollView, UIStackView, UIView;
 
-@interface GKOnboardingViewController : UIViewController <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate, UIScrollViewDelegate>
+@interface GKOnboardingViewController : UIViewController <UIScrollViewDelegate>
 {
-    BOOL _presenting;
-    id<GKOnboardingFlowDelegate> _delegate;
-    NSString *_lastPersonalizationVersionDisplayed;
-    unsigned long long _lastPrivacyNoticeVersionDisplayed;
-    NSMutableDictionary *_analyticsPayload;
     UIView *_privacyContainer;
-    UIView *_bubblePlaceholder;
+    NSLayoutConstraint *_topConstraint;
     UIView *_buttonContainer;
+    UIView *_privacyContainerInScrollView;
+    UIView *_continueButtonContainerInScrollView;
+    NSLayoutConstraint *_welcomeStackViewTrailingConstraint;
+    NSLayoutConstraint *_welcomeStackViewLeadingConstraint;
+    NSLayoutConstraint *_whatsnewStackViewTrailingConstraint;
+    NSLayoutConstraint *_whatsnewStackViewLeadingConstraint;
+    NSLayoutConstraint *_privacyContainerInScrollViewHeightConstraint;
+    NSLayoutConstraint *_bottomStackViewTopConstraint;
+    NSLayoutConstraint *_continueButtonContainerWidthConstraint;
+    NSLayoutConstraint *_bottomStackViewBottomConstraint;
+    NSLayoutConstraint *_continueButtonContainerInScrollViewHeightConstraint;
+    NSLayoutConstraint *_scrollViewToBottomContainerConstraint;
+    NSLayoutConstraint *_scrollViewToBottomSafeAreaConstraint;
+    UIImageView *_bubbleImageView;
+    UIView *_bottomContainerView;
     OBBoldTrayButton *_nextButton;
-    UIView *_privacyContentView;
     UIScrollView *_scrollView;
-    UIVisualEffectView *_visualEffectView;
-    GKBubbleFlowContainerView *_bubblesContainerView;
-    UIView *_bubblesAnchorView;
+    UIStackView *_welcomeStackView;
+    UIStackView *_whatsNewStackView;
+    UIImageView *_addFriendsImage;
+    GKLabel *_addFriendsTitle;
+    GKLabel *_addFriendsSubtitle;
+    UIImageView *_achievementImage;
+    GKLabel *_achievementTitle;
+    GKLabel *_achievementSubtitle;
+    UIImageView *_multiplayerImage;
+    GKLabel *_multiplayerTitle;
+    GKLabel *_multiplayerSubtitle;
+    UIView *_addFriendsContainer;
+    UIView *_achievementContainer;
+    UIView *_multiplayerContainer;
     UILabel *_mainTitle;
     UILabel *_subTitle;
     OBPrivacyLinkController *_privacyLink;
-    double _transitionDuration;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *analyticsPayload; // @synthesize analyticsPayload=_analyticsPayload;
-@property (strong, nonatomic) UIView *bubblePlaceholder; // @synthesize bubblePlaceholder=_bubblePlaceholder;
-@property (strong, nonatomic) UIView *bubblesAnchorView; // @synthesize bubblesAnchorView=_bubblesAnchorView;
-@property (strong, nonatomic) GKBubbleFlowContainerView *bubblesContainerView; // @synthesize bubblesContainerView=_bubblesContainerView;
+@property UIView *achievementContainer; // @synthesize achievementContainer=_achievementContainer;
+@property (strong, nonatomic) UIImageView *achievementImage; // @synthesize achievementImage=_achievementImage;
+@property (strong, nonatomic) GKLabel *achievementSubtitle; // @synthesize achievementSubtitle=_achievementSubtitle;
+@property (strong, nonatomic) GKLabel *achievementTitle; // @synthesize achievementTitle=_achievementTitle;
+@property UIView *addFriendsContainer; // @synthesize addFriendsContainer=_addFriendsContainer;
+@property (strong, nonatomic) UIImageView *addFriendsImage; // @synthesize addFriendsImage=_addFriendsImage;
+@property (strong, nonatomic) GKLabel *addFriendsSubtitle; // @synthesize addFriendsSubtitle=_addFriendsSubtitle;
+@property (strong, nonatomic) GKLabel *addFriendsTitle; // @synthesize addFriendsTitle=_addFriendsTitle;
+@property (strong, nonatomic) UIView *bottomContainerView; // @synthesize bottomContainerView=_bottomContainerView;
+@property (strong, nonatomic) NSLayoutConstraint *bottomStackViewBottomConstraint; // @synthesize bottomStackViewBottomConstraint=_bottomStackViewBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *bottomStackViewTopConstraint; // @synthesize bottomStackViewTopConstraint=_bottomStackViewTopConstraint;
+@property (strong, nonatomic) UIImageView *bubbleImageView; // @synthesize bubbleImageView=_bubbleImageView;
 @property (strong, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
+@property (strong, nonatomic) UIView *continueButtonContainerInScrollView; // @synthesize continueButtonContainerInScrollView=_continueButtonContainerInScrollView;
+@property (strong, nonatomic) NSLayoutConstraint *continueButtonContainerInScrollViewHeightConstraint; // @synthesize continueButtonContainerInScrollViewHeightConstraint=_continueButtonContainerInScrollViewHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *continueButtonContainerWidthConstraint; // @synthesize continueButtonContainerWidthConstraint=_continueButtonContainerWidthConstraint;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<GKOnboardingFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
-@property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
 @property (strong, nonatomic) UILabel *mainTitle; // @synthesize mainTitle=_mainTitle;
+@property UIView *multiplayerContainer; // @synthesize multiplayerContainer=_multiplayerContainer;
+@property (strong, nonatomic) UIImageView *multiplayerImage; // @synthesize multiplayerImage=_multiplayerImage;
+@property (strong, nonatomic) GKLabel *multiplayerSubtitle; // @synthesize multiplayerSubtitle=_multiplayerSubtitle;
+@property (strong, nonatomic) GKLabel *multiplayerTitle; // @synthesize multiplayerTitle=_multiplayerTitle;
 @property (strong, nonatomic) OBBoldTrayButton *nextButton; // @synthesize nextButton=_nextButton;
-@property (nonatomic, getter=isPresenting) BOOL presenting; // @synthesize presenting=_presenting;
 @property (strong, nonatomic) UIView *privacyContainer; // @synthesize privacyContainer=_privacyContainer;
-@property (strong, nonatomic) UIView *privacyContentView; // @synthesize privacyContentView=_privacyContentView;
+@property (strong, nonatomic) UIView *privacyContainerInScrollView; // @synthesize privacyContainerInScrollView=_privacyContainerInScrollView;
+@property (strong, nonatomic) NSLayoutConstraint *privacyContainerInScrollViewHeightConstraint; // @synthesize privacyContainerInScrollViewHeightConstraint=_privacyContainerInScrollViewHeightConstraint;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (strong, nonatomic) NSLayoutConstraint *scrollViewToBottomContainerConstraint; // @synthesize scrollViewToBottomContainerConstraint=_scrollViewToBottomContainerConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *scrollViewToBottomSafeAreaConstraint; // @synthesize scrollViewToBottomSafeAreaConstraint=_scrollViewToBottomSafeAreaConstraint;
 @property (strong, nonatomic) UILabel *subTitle; // @synthesize subTitle=_subTitle;
 @property (readonly) Class superclass;
-@property (nonatomic) double transitionDuration; // @synthesize transitionDuration=_transitionDuration;
-@property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
+@property (strong, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
+@property (strong, nonatomic) UIStackView *welcomeStackView; // @synthesize welcomeStackView=_welcomeStackView;
+@property (strong, nonatomic) NSLayoutConstraint *welcomeStackViewLeadingConstraint; // @synthesize welcomeStackViewLeadingConstraint=_welcomeStackViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *welcomeStackViewTrailingConstraint; // @synthesize welcomeStackViewTrailingConstraint=_welcomeStackViewTrailingConstraint;
+@property (strong, nonatomic) UIStackView *whatsNewStackView; // @synthesize whatsNewStackView=_whatsNewStackView;
+@property (strong, nonatomic) NSLayoutConstraint *whatsnewStackViewLeadingConstraint; // @synthesize whatsnewStackViewLeadingConstraint=_whatsnewStackViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *whatsnewStackViewTrailingConstraint; // @synthesize whatsnewStackViewTrailingConstraint=_whatsnewStackViewTrailingConstraint;
 
 - (void).cxx_destruct;
 - (void)addPrivacyLink;
-- (void)animateTransition:(id)arg1;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)animationEnded:(BOOL)arg1;
-- (id)basicAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
+- (void)configureWhatsNewList;
 - (void)constrainTextInView:(id)arg1 toFontSize:(double)arg2;
-- (BOOL)didDisplayPrivacyNotice;
 - (void)nextPressed:(id)arg1;
-- (void)presentPersonalizationScreen;
-- (void)removeConstraintsForView:(id)arg1;
+- (void)reparentGDPRToNewParent:(id)arg1;
+- (void)reparentView:(id)arg1 toSuperview:(id)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
-- (BOOL)shouldPresentPersonalizationScreen;
+- (void)setupNavigationBar;
 - (void)showSignOutAlert;
 - (void)signOutPressed:(id)arg1;
-- (double)transitionDuration:(id)arg1;
-- (void)updateBubbleRectsWithScale:(double)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateUIBasedOnTraitCollection;
 - (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;

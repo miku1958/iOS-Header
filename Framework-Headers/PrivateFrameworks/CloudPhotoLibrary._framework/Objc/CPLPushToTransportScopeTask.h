@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineScopedTask.h>
 
-@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, CPLExtractedBatch, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportGroup, CPLEngineTransportUploadBatchTask, OS_dispatch_queue;
 
 @interface CPLPushToTransportScopeTask : CPLEngineScopedTask
@@ -17,7 +17,6 @@
     CPLEnginePushRepository *_pushRepository;
     CPLEngineScheduler *_scheduler;
     CPLBatchExtractionStrategy *_currentStrategy;
-    CPLExtractedBatch *_extractedBatch;
     CPLChangeBatch *_uploadBatch;
     CPLChangeBatch *_batchToCommit;
     NSError *_preparationError;
@@ -59,11 +58,9 @@
     unsigned long long _recordCount;
     BOOL _didExtractOneBatch;
     BOOL _highPriority;
-    NSString *_phaseDescription;
 }
 
 @property (nonatomic) BOOL highPriority; // @synthesize highPriority=_highPriority;
-@property (copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 
 - (void).cxx_destruct;
 - (void)_checkForRecordExistence;
@@ -72,13 +69,13 @@
 - (void)_detectUpdatesNeedingExistenceCheck:(id)arg1;
 - (void)_didFinishTaskWithKey:(id)arg1 error:(BOOL)arg2 cancelled:(BOOL)arg3;
 - (void)_didStartTaskWithKey:(id)arg1 recordCount:(unsigned long long)arg2;
-- (BOOL)_discardUploadedExtractedBatchWithError:(id *)arg1;
+- (BOOL)_discardUploadedExtractedBatch:(id)arg1 error:(id *)arg2;
 - (void)_doOneIteration;
 - (void)_generateDerivativesForNextRecord:(id)arg1;
 - (void)_generateNeededDerivatives;
-- (BOOL)_markUploadedTasksDidFinishWithError:(id)arg1 error:(id *)arg2;
+- (BOOL)_markUploadedTasksDidFinishWithError:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (void)_popNextBatchAndContinue;
-- (BOOL)_prepareResourcesToUploadInBatch:(id)arg1 error:(id *)arg2;
+- (BOOL)_prepareResourcesToUploadInBatch:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (void)_prepareUploadBatchWithTransaction:(id)arg1 andStore:(id)arg2;
 - (void)_pushTaskDidFinishWithError:(id)arg1;
 - (BOOL)_reenqueueExtractedBatchWithRejectedRecords:(id)arg1 error:(id *)arg2;

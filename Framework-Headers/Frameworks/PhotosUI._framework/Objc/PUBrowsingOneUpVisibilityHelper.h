@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isPresentedForSecondScreen; // @synthesize isPresentedForSecondScreen=_isPresentedForSecondScreen;
 @property (readonly) Class superclass;
 
-+ (void)_performOnDemandReframingIfNeeded:(id)arg1;
-+ (BOOL)_shouldPerformOnDemandReframing:(id)arg1 isOneUpVisible:(BOOL)arg2 isPresentedForSecondScreen:(BOOL)arg3;
++ (void)_performOnDemandCameraProcessingAdjustmentIfNeeded:(id)arg1;
++ (BOOL)_shouldPerformOnDemandCameraProcessingAdjustment:(id)arg1 isOneUpVisible:(BOOL)arg2 isPresentedForSecondScreen:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithBrowsingViewModel:(id)arg1 isPresentedForSecondScreen:(BOOL)arg2;

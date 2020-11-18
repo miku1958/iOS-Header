@@ -9,18 +9,15 @@
 @interface CKMultiCache : IMMultiDict
 {
     BOOL _cacheEligibleForPrewarm;
-    BOOL _punchoutCacheEligibleForPrewarm;
     unsigned long long _limit;
 }
 
 @property (nonatomic) BOOL cacheEligibleForPrewarm; // @synthesize cacheEligibleForPrewarm=_cacheEligibleForPrewarm;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-@property (nonatomic) BOOL punchoutCacheEligibleForPrewarm; // @synthesize punchoutCacheEligibleForPrewarm=_punchoutCacheEligibleForPrewarm;
 
 - (void)dealloc;
 - (id)init;
 - (void)markCacheAsPrewarmed;
-- (void)markPunchoutCacheAsPrewarmed;
 - (void)pushObject:(id)arg1 forKey:(id)arg2;
 - (void)removeAllObjects;
 

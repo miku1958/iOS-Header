@@ -18,25 +18,26 @@
 - (void).cxx_destruct;
 - (BOOL)_isFromAppLayoutAtIndex:(unsigned long long)arg1;
 - (BOOL)_isToAppLayoutAtIndex:(unsigned long long)arg1;
-- (long long)backdropBlurType;
+- (id)_layoutSettings;
+- (id)_opacitySettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 direction:(unsigned long long)arg4;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (id)opacitySettings;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
-- (id)topMostAppLayouts;
+- (id)topMostLayoutElements;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;
 - (id)transitionWillUpdate;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

@@ -42,6 +42,7 @@
 - (void)nts_evictObjectsToFreeUpCost:(unsigned long long)arg1;
 - (id)observeChangesForItem:(id)arg1 key:(id)arg2;
 - (void)performStorageWork:(CDUnknownBlockType)arg1;
+- (BOOL)resourceExistsInCacheForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(CDUnknownBlockType)arg3;
 

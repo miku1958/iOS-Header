@@ -9,15 +9,15 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFActivity, HMFTimer, HMFUnfairLock, NSDate, NSError, NSObject, NSString, NSUUID;
+@class HMFActivity, HMFTimer, NSDate, NSError, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_voucher;
 
 @interface HMFOperation : NSOperation <HMFLogging, HMFTimerDelegate>
 {
+    struct os_unfair_lock_s _lock;
     BOOL _executing;
     BOOL _finished;
     NSError *_error;
-    HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_voucher> *_voucher;
     HMFActivity *_activity;
@@ -33,7 +33,7 @@
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSDate *timeoutDate;
-@property (strong) HMFTimer *timer; // @synthesize timer=_timer;
+@property (readonly, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
 @property (readonly) NSObject<OS_dispatch_queue> *underlyingQueue;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;

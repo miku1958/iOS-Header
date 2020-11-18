@@ -94,7 +94,9 @@
 - (BOOL)_setStatus:(unsigned long long)arg1 andError:(id)arg2;
 - (void)_statusDidChange;
 - (void)acceptMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)acceptSharedScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)acknowledgeChangedStatuses:(id)arg1;
+- (void)activateScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addInfoToLog:(id)arg1;
 - (void)addStatusChangesForRecordsWithIdentifiers:(id)arg1 persist:(BOOL)arg2;
 - (void)addStatusChangesForRecordsWithScopedIdentifiers:(id)arg1 persist:(BOOL)arg2;
@@ -102,6 +104,7 @@
 - (void)barrier;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 intent:(unsigned long long)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)beginDownloadForResource:(id)arg1 highPriority:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)beginInMemoryDownloadOfResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginPullChangeSessionWithKnownLibraryVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -116,7 +119,9 @@
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 related:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)compactFileCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)createScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)currentSession;
+- (void)deactivateScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deactivateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteResources:(id)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -129,6 +134,8 @@
 - (void)enableMingling;
 - (void)enableSynchronizationWithReason:(id)arg1;
 - (void)fetchMomentShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchSharedScopeFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)forceBackupWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)forceSynchronizingScopeWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getChangedStatusesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCloudCacheForRecordWithScopedIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -144,6 +151,7 @@
 - (void)getStatusForRecordsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusForRecordsWithScopedIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusesForScopesWithIdentifiers:(id)arg1 includeStorages:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 clientBundleID:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initForManagement;
@@ -156,18 +164,21 @@
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideScopeChangeForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)queryUserDetailsForShareParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)queryUserIdentitiesWithParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reportMiscInformation:(id)arg1;
 - (void)reportSetting:(id)arg1 hasBeenEnabled:(BOOL)arg2;
 - (void)reportSetting:(id)arg1 hasBeenSetToValue:(id)arg2;
+- (void)requestClientToPushAllChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetCacheWithOption:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetCacheWithOption:(unsigned long long)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetStatus;
+- (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setShouldOverride:(BOOL)arg1 forSystemBudgets:(unsigned long long)arg2;
 - (void)setShouldOverrideSystemBudgetsForSyncSession:(BOOL)arg1;
 - (void)startSyncSession;

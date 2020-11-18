@@ -38,15 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_departures:1;
         unsigned int read_directionNameString:1;
         unsigned int read_headsignString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_nextStopIds:1;
-        unsigned int wrote_operatingHours:1;
-        unsigned int wrote_departureFrequencys:1;
-        unsigned int wrote_departures:1;
-        unsigned int wrote_directionNameString:1;
-        unsigned int wrote_headsignString:1;
-        unsigned int wrote_lineId:1;
-        unsigned int wrote_stopId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,16 +62,6 @@ __attribute__((visibility("hidden")))
 + (Class)departureType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsDeparture:(id)arg1;
-- (void)_addNoFlagsDepartureFrequency:(id)arg1;
-- (void)_addNoFlagsNextStopId:(unsigned long long)arg1;
-- (void)_addNoFlagsOperatingHours:(struct GEOPDTimeRange)arg1;
-- (void)_readDepartureFrequencys;
-- (void)_readDepartures;
-- (void)_readDirectionNameString;
-- (void)_readHeadsignString;
-- (void)_readNextStopIds;
-- (void)_readOperatingHours;
 - (void)addDeparture:(id)arg1;
 - (void)addDepartureFrequency:(id)arg1;
 - (void)addNextStopId:(unsigned long long)arg1;
@@ -101,7 +83,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)nextStopIdAtIndex:(unsigned long long)arg1;
 - (struct GEOPDTimeRange)operatingHoursAtIndex:(unsigned long long)arg1;

@@ -8,7 +8,7 @@
 
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSError, NSString;
+@class CKContextRequest, NSArray, NSDate, NSError, NSString;
 
 @interface CKContextResponse : NSObject <NSSecureCoding>
 {
@@ -17,7 +17,10 @@
     _Atomic BOOL _shown;
     _Atomic BOOL _engaged;
     _Atomic BOOL _transactionSuccessful;
-    _Atomic BOOL _logged;
+    _Atomic BOOL _shownLogged;
+    _Atomic BOOL _engagementLogged;
+    _Atomic BOOL _transactionLogged;
+    NSArray *_loggingCouldHaveShown;
     _Atomic unsigned int _loggingShownMax;
     _Atomic BOOL _loggingServerOverride;
     _Atomic unsigned int _loggingCouldHaveShownMax;
@@ -28,16 +31,22 @@
     NSArray *_results;
     NSArray *_level1Topics;
     NSArray *_level2Topics;
+    NSArray *_donorBundleIdentifiers;
+    NSString *_languageTag;
     NSString *_debug;
     unsigned long long _requestType;
     unsigned long long _mustPrefixMatchLength;
     NSDate *_hideCompletionsAfterDate;
     NSDate *_responseDate;
+    CKContextRequest *_debugRequest;
 }
 
 @property (strong, nonatomic) NSString *debug; // @synthesize debug=_debug;
+@property (strong, nonatomic) CKContextRequest *debugRequest; // @synthesize debugRequest=_debugRequest;
+@property (strong, nonatomic) NSArray *donorBundleIdentifiers; // @synthesize donorBundleIdentifiers=_donorBundleIdentifiers;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSDate *hideCompletionsAfterDate; // @synthesize hideCompletionsAfterDate=_hideCompletionsAfterDate;
+@property (strong, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
 @property (strong, nonatomic) NSArray *level1Topics; // @synthesize level1Topics=_level1Topics;
 @property (strong, nonatomic) NSArray *level2Topics; // @synthesize level2Topics=_level2Topics;
 @property (nonatomic) unsigned long long mustPrefixMatchLength; // @synthesize mustPrefixMatchLength=_mustPrefixMatchLength;
@@ -49,12 +58,13 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_pm_isSensitive;
 - (void)addDebug:(id)arg1;
 - (void)appendToDebug:(id)arg1;
 - (id)completer;
 - (void)dealloc;
 - (void)discard;
-- (void)discardCompleter:(id)arg1;
+- (void)discardAndLogCompleter:(id)arg1 likelyUnsolicited:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initPlaceholderWithUUID:(id)arg1 requestType:(unsigned long long)arg2;
@@ -63,9 +73,9 @@
 - (id)initWithResults:(id)arg1 requestType:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPlaceholder;
-- (void)logEngagement:(id)arg1 forInput:(id)arg2 completion:(id)arg3;
-- (void)logResultsShown:(unsigned long long)arg1 serverOverride:(BOOL)arg2 forInput:(id)arg3 couldHaveShown:(unsigned long long)arg4;
-- (void)logTransactionSuccessfulForInput:(id)arg1 completion:(id)arg2;
+- (void)logEngagement:(id)arg1 forInputLength:(unsigned long long)arg2 completion:(id)arg3 likelyUnsolicited:(BOOL)arg4;
+- (void)logTransactionSuccessfulForInputLength:(unsigned long long)arg1 completion:(id)arg2 likelyUnsolicited:(BOOL)arg3;
+- (void)markResultsShown:(unsigned long long)arg1 serverOverride:(BOOL)arg2 forInputLength:(unsigned long long)arg3 results:(id)arg4;
 - (id)resultByQuery:(id)arg1;
 - (void)setHideCompletionsTimeLimit:(double)arg1;
 

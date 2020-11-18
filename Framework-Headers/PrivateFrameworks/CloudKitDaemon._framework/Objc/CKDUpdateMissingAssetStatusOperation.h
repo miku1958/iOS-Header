@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (nonatomic) BOOL recovered; // @synthesize recovered=_recovered;
 @property (strong, nonatomic) CKRecordID *repairRecordID; // @synthesize repairRecordID=_repairRecordID;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 - (void).cxx_destruct;
 - (void)_updateMissingAssetStatus;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
 
 @end
 

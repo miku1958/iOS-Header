@@ -12,14 +12,16 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusGroupMap : NSObject
 {
     NSMapTable *_environmentToGroupMap;
-    NSMapTable *_descriptorToGroupMap;
+    NSMapTable *_identifierToGroupMap;
+    NSMapTable *_identifierToPrimaryItemMap;
     _UIFocusGroup *_nullGroup;
 }
 
 - (void).cxx_destruct;
-- (id)_focusGroupForDescriptor:(id)arg1 withParent:(id)arg2;
+- (id)_focusGroupForIdentifier:(id)arg1 withParent:(id)arg2 groupRootEnvironment:(id)arg3;
 - (id)focusGroupForEnvironment:(id)arg1;
 - (id)init;
+- (id)primaryFocusItemForGroup:(id)arg1;
 
 @end
 

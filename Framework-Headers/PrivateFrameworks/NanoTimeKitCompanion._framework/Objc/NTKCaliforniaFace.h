@@ -6,23 +6,28 @@
 
 #import <NanoTimeKitCompanion/NTKFace.h>
 
-@interface NTKCaliforniaFace : NTKFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKCaliforniaFace : NTKFace <NTKFaceComplicationPreviewable>
 {
 }
 
-+ (id)_complicationSlotDescriptors;
-+ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
-+ (id)_orderedComplicationSlots;
-+ (id)_richComplicationSlotsForDevice:(id)arg1;
++ (id)complicationConfiguration;
 - (id)_customEditModes;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (id)_localizedNameForComplicationSlot:(id)arg1;
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
-- (BOOL)complicationExistenceInvalidatesSnapshot;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
 - (id)complicationSlotsHiddenByEditOption:(id)arg1;
 - (id)defaultColorForDevice:(id)arg1;
 - (BOOL)isFullscreenConfiguration;

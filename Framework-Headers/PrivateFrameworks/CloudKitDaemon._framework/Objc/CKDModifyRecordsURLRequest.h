@@ -47,9 +47,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(BOOL)arg3 sendAllFields:(BOOL)arg4 clientChangeTokenData:(id)arg5 requestedFieldsByRecordId:(id)arg6;
+- (id)initWithOperation:(id)arg1 recordsToSave:(id)arg2 recordIDsToDelete:(id)arg3 oplock:(BOOL)arg4 sendAllFields:(BOOL)arg5 clientChangeTokenData:(id)arg6 requestedFieldsByRecordId:(id)arg7;
 - (int)isolationLevel;
-- (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;

@@ -16,9 +16,12 @@
 @property (readonly, nonatomic) NSDictionary *authorizationOptions;
 @property (readonly, nonatomic) SOAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
 @property (readonly, copy, nonatomic) NSString *callerBundleIdentifier;
+@property (readonly, nonatomic, getter=isCallerManaged) BOOL callerManaged;
+@property (readonly, nonatomic) NSString *callerTeamIdentifier;
 @property (readonly, nonatomic) NSDictionary *extensionData;
 @property (readonly, nonatomic) NSData *httpBody;
 @property (readonly, nonatomic) NSDictionary *httpHeaders;
+@property (readonly, nonatomic) NSString *localizedCallerDisplayName;
 @property (readonly, copy, nonatomic) NSString *realm;
 @property (readonly, nonatomic) NSString *requestedOperation;
 @property (readonly, nonatomic) NSURL *url;

@@ -12,6 +12,7 @@
 {
 }
 
++ (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)baseUnit;
 + (id)bits;
 + (id)bytes;

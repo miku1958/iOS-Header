@@ -25,6 +25,7 @@
 @property (weak, nonatomic) id<CPAlertDelegate> templateDelegate; // @dynamic templateDelegate;
 @property (readonly, copy, nonatomic) NSArray *titleVariants; // @synthesize titleVariants=_titleVariants;
 
++ (unsigned long long)maximumActionCount;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addAction:(id)arg1;

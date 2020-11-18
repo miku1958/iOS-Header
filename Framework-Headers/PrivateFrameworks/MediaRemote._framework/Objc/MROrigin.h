@@ -6,27 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _MROriginProtobuf;
+#import <MediaRemote/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MROrigin : NSObject
+@class NSData, NSString, _MROriginProtobuf;
+
+@interface MROrigin : NSObject <NSCopying>
 {
-    long long _identifier;
+    BOOL _local;
+    int _identifier;
     long long _type;
     NSString *_displayName;
 }
 
-@property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isLocal) BOOL local;
+@property (readonly, nonatomic) NSData *data;
+@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (nonatomic) int identifier; // @synthesize identifier=_identifier;
+@property (nonatomic, getter=isLocal) BOOL local; // @synthesize local=_local;
 @property (readonly, nonatomic) _MROriginProtobuf *protobuf;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) MROrigin *skeleton;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)localOrigin;
 - (void).cxx_destruct;
-- (id)data;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithData:(id)arg1;
-- (id)initWithIdentifier:(long long)arg1 type:(long long)arg2 displayName:(id)arg3;
+- (id)initWithIdentifier:(int)arg1 type:(long long)arg2 displayName:(id)arg3;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

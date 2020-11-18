@@ -8,7 +8,7 @@
 
 #import <CoreSuggestionsInternals/SGDSuggestManagerAllProtocol-Protocol.h>
 
-@class CNContactStore, EKEventStore, NSDictionary, NSLock, NSOperationQueue, NSString, NSXPCConnection, SGDManagerForCTS, SGFuture, SGSearchableItemIdTriple, SGServiceContext, SGSqlEntityStore, SGSuggestHistory, SGXpcTransaction, _PASLock, _PASNotificationToken;
+@class CNContactStore, NSDictionary, NSLock, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection, PETEventTracker2, SGDManagerForCTS, SGEKEventStoreProvider, SGFuture, SGSearchableItemIdTriple, SGServiceContext, SGSqlEntityStore, SGSuggestHistory, SGXpcTransaction, _PASLock, _PASNotificationToken;
 
 @interface SGDSuggestManager : NSObject <SGDSuggestManagerAllProtocol>
 {
@@ -18,7 +18,7 @@
     _PASNotificationToken *_assetUpdateToken;
     NSOperationQueue *_messageHarvestQueue;
     SGDManagerForCTS *_ctsManager;
-    EKEventStore *_ekStore;
+    SGEKEventStoreProvider *_ekStoreProvider;
     CNContactStore *_contactStore;
     NSDictionary *_bundleIdToPET;
     NSLock *_dirtyLock;
@@ -27,7 +27,10 @@
     SGFuture *_lastSuggestionsFromMessageResponse;
     NSLock *_lastSuggestionsFromMessageLock;
     int _settingsChangeToken;
+    PETEventTracker2 *_pet2Tracker;
     _PASLock *_recentlyHarvestedDetailLock;
+    BOOL _keepRealtimeAsLost;
+    NSMutableDictionary *_bufferedInteractionsForBundle;
     SGServiceContext *_context;
     NSString *_clientName;
 }
@@ -36,6 +39,7 @@
 @property (readonly, nonatomic) SGServiceContext *context; // @synthesize context=_context;
 
 + (void)clearChangeHistory:(id)arg1;
++ (void)clearRequestCache;
 + (id)fetchChangeHistory;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -44,16 +48,13 @@
 - (BOOL)_clientIsMail;
 - (BOOL)_clientIsMessages;
 - (void)_confirmReminderByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_foundInAppsStringCompactVersionWithContactName:(id)arg1;
-- (id)_foundInAppsStringLongVersionForAppName:(id)arg1 contactName:(id)arg2;
-- (id)_foundInAppsStringWithoutContactForAppName:(id)arg1;
+- (id)_dissectMessage:(id)arg1 store:(id)arg2 context:(id)arg3;
 - (BOOL)_isContactInteresting:(id)arg1 emailEntity:(id)arg2 enrichments:(id)arg3 hasContactCard:(BOOL)arg4;
 - (id)_mapToPseudoEvents:(id)arg1;
 - (id)_maybeFormatString;
-- (void)_onInteractionBlacklistUpdate:(id)arg1;
-- (void)_performAction:(id)arg1 onContactDetailRecord:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_performAction:(id)arg1 onRecord:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_performAction:(id)arg1 onRecord:(id)arg2 completion:(CDUnknownBlockType)arg3 withParentConfirmation:(BOOL)arg4;
+- (void)_performAction:(id)arg1 onContactDetailRecord:(id)arg2 completion:(CDUnknownBlockType)arg3 confirmRejectUI:(int)arg4;
+- (void)_performAction:(id)arg1 onRecord:(id)arg2 completion:(CDUnknownBlockType)arg3 rejectionUI:(int)arg4;
+- (void)_performAction:(id)arg1 onRecord:(id)arg2 completion:(CDUnknownBlockType)arg3 withParentConfirmation:(BOOL)arg4 confirmRejectUI:(int)arg5;
 - (id)_pmlTraining;
 - (void)_rejectReminderByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_sendChatChangedNotificationWithDomainIdentifier:(id)arg1;
@@ -61,12 +62,13 @@
 - (id)_showInFormatStringWithLocalization:(id)arg1;
 - (void)_storeAndGeocodeEntity:(id)arg1 spotlightBundleIdentifier:(id)arg2 spotlightUniqueIdentifier:(id)arg3 spotlightDomainIdentifier:(id)arg4 store:(id)arg5 afterCallbackQueue:(id)arg6 finalize:(CDUnknownBlockType)arg7;
 - (void)_suggestionsFromMessage:(id)arg1 options:(unsigned long long)arg2 dissectIfNecessary:(BOOL)arg3 completionDelivery:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_suggestionsFromMessageWithIdentifier:(id)arg1 source:(id)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4 completionDelivery:(unsigned long long)arg5 providedBy:(CDUnknownBlockType)arg6 dissectIfNecessary:(BOOL)arg7;
+- (void)_suggestionsFromMessageWithIdentifier:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionDelivery:(unsigned long long)arg4 providedBy:(CDUnknownBlockType)arg5 dissectIfNecessary:(BOOL)arg6;
 - (void)_suggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 dissectIfNecessary:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addInteractions:(id)arg1 bundleId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addSearchableItemMetadata:(id)arg1 htmlData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addSearchableItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)allContactsWithSnippets:(BOOL)arg1 limitTo:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)allDeliveriesWithLimit:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)allEventsLimitedTo:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)allRemindersLimitedTo:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)bumptTTLForNLEvent:(id)arg1;
@@ -86,8 +88,6 @@
 - (void)contactFromRecordId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)contactMatchesByEmailAddress:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)contactMatchesByPhoneNumber:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)contactMatchesOrLookupIdByEmailAddress:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)contactMatchesOrLookupIdByPhoneNumber:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)contactMatchesWithContact:(id)arg1 limitTo:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)contactMatchesWithContactIdentifier:(id)arg1 limitTo:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)contactMatchesWithContactIdentifiers:(id)arg1 limitTo:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -99,18 +99,18 @@
 - (void)daemonExitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteCloudKitZoneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deleteEventByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteInteractionsWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteInteractionsWithBundleId:(id)arg1 groupIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteInteractionsWithBundleId:(id)arg1 identifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 domainIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)dissectMessage:(id)arg1 fromSource:(id)arg2 store:(id)arg3;
-- (id)dissectMessage:(id)arg1 fromSource:(id)arg2 store:(id)arg3 context:(id)arg4;
 - (void)drainQueueCompletelyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)emailAddressIsSignificant:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)enqueueSearchableItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)entityFromUniqueKey:(id)arg1;
+- (void)evaluateRecipe:(id)arg1 attachments:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)eventFromRecordId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)eventFromUniqueId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)eventsInFutureLimitTo:(unsigned long long)arg1 options:(unsigned int)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -118,24 +118,29 @@
 - (void)eventsStartingAt:(id)arg1 endingAt:(id)arg2 prefix:(id)arg3 limitTo:(unsigned long long)arg4 options:(unsigned int)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)filterPastEvents:(id)arg1;
 - (id)filterRealtimeEvents:(id)arg1;
+- (id)filterRealtimeReminders:(id)arg1;
 - (void)foundInStringForRecordId:(id)arg1 style:(unsigned char)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)fullDownloadRequestBatch:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)geocodeEnrichmentsInPipelineEntity:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getPet2Tracker;
 - (void)harvestedSuggestionsFromMessage:(id)arg1 bundleIdentifier:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)harvestedSuggestionsFromMessage:(id)arg1 bundleIdentifier:(id)arg2 options:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)harvestedSuggestionsFromMessages:(id)arg1 bundleIdentifier:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)harvestedSuggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)initWithConnection:(id)arg1 store:(id)arg2;
 - (id)initWithMessagesConnection:(id)arg1 store:(id)arg2;
 - (id)initWithStore:(id)arg1;
-- (id)initWithStore:(id)arg1 ctsManager:(id)arg2 ekStore:(id)arg3 contactStore:(id)arg4;
+- (id)initWithStore:(id)arg1 ctsManager:(id)arg2 ekStoreProvider:(id)arg3 contactStore:(id)arg4 pet2Tracker:(id)arg5;
+- (unsigned short)interfaceForRealtimeReminder:(id)arg1;
 - (void)ipsosMessagesWithSearchableItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)isEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)isEventCandidateForURL:(id)arg1 title:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)isSGEntity:(id)arg1 duplicateOfEKEvent:(id)arg2 withStore:(id)arg3;
 - (BOOL)isSearchableItemPartOfReimport:(id)arg1;
+- (BOOL)isSearchableItemPartOfReimportWithGetterBlock:(CDUnknownBlockType)arg1 bundleIdentifier:(id)arg2;
 - (void)keepDirty:(BOOL)arg1;
 - (void)launchAppForSuggestedEventUsingLaunchInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)launchInfoForSuggestedEventWithUniqueIdentifier:(id)arg1 sourceURL:(id)arg2 clientLocale:(id)arg3 ignoreUserActivitySupport:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)launchInfoForSuggestedEventWithUniqueIdentifier:(id)arg1 sourceURL:(id)arg2 clientLocale:(id)arg3 ignoreUserActivitySupport:(BOOL)arg4 ignoreMailCheck:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)logEventInteractionForEntity:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)logEventInteractionForEventWithExternalIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)logEventInteractionForEventWithUniqueKey:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
@@ -156,21 +161,22 @@
 - (void)noopWithCompletion:(CDUnknownBlockType)arg1;
 - (void)originFromRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)planReceivedFromServerWithPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)powerStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)predictedCCEmailAddressesWithToAddresses:(id)arg1 ccAddresses:(id)arg2 fromAddress:(id)arg3 date:(double)arg4 bounds:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)predictedToEmailAddressesWithToAddresses:(id)arg1 ccAddresses:(id)arg2 fromAddress:(id)arg3 date:(double)arg4 bounds:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)prepareForRealtimeExtraction:(CDUnknownBlockType)arg1;
+- (void)processInteractions:(id)arg1 bundleId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purgeSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)realtimeContactsFromEntity:(id)arg1 enrichments:(id)arg2 sourceTextMessage:(id)arg3 store:(id)arg4;
 - (void)realtimeSuggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 extractionDate:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)recentURLsWithLimit:(unsigned int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)registerForCoreSpotlightIndexing;
-- (void)rejectContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)rejectContactDetailRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)rejectCuratedContactDetail:(id)arg1 from:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)rejectContact:(id)arg1 completion:(CDUnknownBlockType)arg2 rejectionUI:(int)arg3;
+- (void)rejectContactDetailRecord:(id)arg1 completion:(CDUnknownBlockType)arg2 rejectionUI:(int)arg3;
 - (void)rejectEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)rejectEventByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)rejectRealtimeReminder:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)rejectRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)rejectRecord:(id)arg1 completion:(CDUnknownBlockType)arg2 rejectionUI:(int)arg3;
 - (void)rejectReminderByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reminderAlarmTriggeredForRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reminderTitleForContent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -180,8 +186,9 @@
 - (void)resolveFullDownloadRequests:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)schemaOrgToEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendRTCLogsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setupManagerWithConnection:(id)arg1 store:(id)arg2 ctsManager:(id)arg3 ekStore:(id)arg4 contactStore:(id)arg5;
+- (void)setupManagerWithConnection:(id)arg1 store:(id)arg2 ctsManager:(id)arg3 ekStoreProvider:(id)arg4 contactStore:(id)arg5 pet2Tracker:(id)arg6;
 - (id)shortNamesAndRealtimeEventsFromEntity:(id)arg1 enrichments:(id)arg2 store:(id)arg3;
+- (id)shortNamesAndRealtimeEventsFromEntity:(id)arg1 message:(id)arg2 enrichments:(id)arg3 store:(id)arg4;
 - (void)sleepWithCompletion:(CDUnknownBlockType)arg1;
 - (void)spotlightReimportFromIdentifier:(id)arg1 forPersonHandle:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)storageContactFromRecordId:(id)arg1;
@@ -191,6 +198,7 @@
 - (void)suggestionsFromMessage:(id)arg1 options:(unsigned long long)arg2 fullCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)suggestionsFromRFC822Data:(id)arg1 source:(id)arg2 options:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)suggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)suggestionsFromSimpleMailMessage:(id)arg1 headers:(id)arg2 options:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)suggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)updateMessages:(id)arg1 state:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 limit:(unsigned int)arg4 withCompletion:(CDUnknownBlockType)arg5;

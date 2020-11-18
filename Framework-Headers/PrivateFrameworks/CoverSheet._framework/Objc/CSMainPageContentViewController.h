@@ -13,7 +13,7 @@
 #import <CoverSheet/PTSettingsKeyObserver-Protocol.h>
 
 @class CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, CSUserPresenceMonitor, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
-@protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSNotificationDispatcher, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, UICoordinateSpace;
+@protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSMainPageContentViewControllerNotificationObserver, CSNotificationDispatcher, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, UICoordinateSpace;
 
 @interface CSMainPageContentViewController : CSPageViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSUserPresenceMonitorObserver, CSNotificationDestination, CSPageViewControllerProtocol>
 {
@@ -31,6 +31,7 @@
     id<CSTouchEnvironmentStatusProviding> _touchEnvironmentStatusProvider;
     id<CSUserSessionControlling> _userSessionController;
     id<CSWallpaperViewProviding> _wallpaperViewProvider;
+    id<CSMainPageContentViewControllerNotificationObserver> _notificationObserver;
 }
 
 @property (readonly, copy, nonatomic) CSAppearance *activeAppearance;
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) CSLayoutStrategy *layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
 @property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property (readonly, nonatomic) long long notificationBehavior;
+@property (weak, nonatomic) id<CSMainPageContentViewControllerNotificationObserver> notificationObserver; // @synthesize notificationObserver=_notificationObserver;
 @property (readonly, copy, nonatomic) NSString *pageRole;
 @property (readonly, nonatomic) long long participantState;
 @property (readonly, nonatomic) long long presentationAltitude;
@@ -111,6 +113,7 @@
 - (unsigned long long)listWidthStrategy;
 - (double)minimumDateToListSpacing;
 - (id)notificationSectionSettingsForCombinedListViewController:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)postNotificationRequest:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)updateForPresentation:(id)arg1;

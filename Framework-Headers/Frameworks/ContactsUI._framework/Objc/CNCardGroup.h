@@ -34,7 +34,9 @@
 - (void).cxx_destruct;
 - (id)_loadActionItems;
 - (void)addAction:(id)arg1 withTitle:(id)arg2;
+- (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 glyphColor:(id)arg4 transportType:(long long)arg5;
 - (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 transportType:(long long)arg4;
+- (void)addAction:(id)arg1 withTitle:(id)arg2 wrapTitle:(BOOL)arg3;
 - (id)addActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)addActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3 destructive:(BOOL)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;

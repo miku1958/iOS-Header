@@ -8,56 +8,71 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
-
 @interface GEORPFeedbackLayoutFieldName : PBCodable <NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     int _addressFieldName;
+    int _curatedCollectionFieldName;
     int _groundviewFieldName;
+    int _incidentType;
     int _otherFieldName;
     int _poiFieldName;
+    int _poiImageCorrectionType;
     int _workflowFieldName;
     struct {
         unsigned int has_addressFieldName:1;
+        unsigned int has_curatedCollectionFieldName:1;
         unsigned int has_groundviewFieldName:1;
+        unsigned int has_incidentType:1;
         unsigned int has_otherFieldName:1;
         unsigned int has_poiFieldName:1;
+        unsigned int has_poiImageCorrectionType:1;
         unsigned int has_workflowFieldName:1;
     } _flags;
 }
 
 @property (nonatomic) int addressFieldName;
+@property (nonatomic) int curatedCollectionFieldName;
 @property (nonatomic) int groundviewFieldName;
 @property (nonatomic) BOOL hasAddressFieldName;
+@property (nonatomic) BOOL hasCuratedCollectionFieldName;
 @property (nonatomic) BOOL hasGroundviewFieldName;
+@property (nonatomic) BOOL hasIncidentType;
 @property (nonatomic) BOOL hasOtherFieldName;
 @property (nonatomic) BOOL hasPoiFieldName;
+@property (nonatomic) BOOL hasPoiImageCorrectionType;
 @property (nonatomic) BOOL hasWorkflowFieldName;
+@property (nonatomic) int incidentType;
 @property (nonatomic) int otherFieldName;
 @property (nonatomic) int poiFieldName;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) int poiImageCorrectionType;
 @property (nonatomic) int workflowFieldName;
 
 + (BOOL)isValid:(id)arg1;
-- (void).cxx_destruct;
 - (int)StringAsAddressFieldName:(id)arg1;
+- (int)StringAsCuratedCollectionFieldName:(id)arg1;
 - (int)StringAsGroundviewFieldName:(id)arg1;
+- (int)StringAsIncidentType:(id)arg1;
 - (int)StringAsOtherFieldName:(id)arg1;
 - (int)StringAsPoiFieldName:(id)arg1;
+- (int)StringAsPoiImageCorrectionType:(id)arg1;
 - (int)StringAsWorkflowFieldName:(id)arg1;
 - (id)addressFieldNameAsString:(int)arg1;
-- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)curatedCollectionFieldNameAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)groundviewFieldNameAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)incidentTypeAsString:(int)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)otherFieldNameAsString:(int)arg1;
 - (id)poiFieldNameAsString:(int)arg1;
+- (id)poiImageCorrectionTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)workflowFieldNameAsString:(int)arg1;

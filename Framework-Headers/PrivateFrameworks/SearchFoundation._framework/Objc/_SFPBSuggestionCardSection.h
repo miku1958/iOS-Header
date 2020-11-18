@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBSuggestionCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBColor, _SFPBRichText;
+@class NSArray, NSData, NSString, _SFPBColor, _SFPBImage, _SFPBRichText;
 
 @interface _SFPBSuggestionCardSection : PBCodable <_SFPBSuggestionCardSection, NSSecureCoding>
 {
@@ -26,12 +26,15 @@
     _SFPBColor *_backgroundColor;
     _SFPBRichText *_suggestionText;
     NSString *_scopedSearchSectionBundleIdentifier;
+    _SFPBRichText *_detailText;
+    _SFPBImage *_thumbnail;
 }
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _SFPBRichText *detailText; // @synthesize detailText=_detailText;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
@@ -45,6 +48,7 @@
 @property (strong, nonatomic) _SFPBRichText *suggestionText; // @synthesize suggestionText=_suggestionText;
 @property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _SFPBImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

@@ -11,7 +11,7 @@
 #import <CloudDocsDaemon/BRCClientZoneDelegate-Protocol.h>
 
 @class APSConnection, BRCAccountSession, BRCContainerMetadataSyncPersistedState, BRCDeadlineScheduler, BRCDeadlineSource, BRCFairSource, BRCMigrateZonePCSOperation, BRCSideCarSyncPersistedState, BRCSyncBudgetThrottle, BRCSyncOperationThrottle, BRCZoneHealthSyncPersistedState, NSData, NSDate, NSMutableArray, NSString, _BRCOperation;
-@protocol BRCOperationSubclass, OS_dispatch_group, OS_dispatch_queue;
+@protocol BRCOperationSubclass, OS_dispatch_group, OS_dispatch_workloop;
 
 @interface BRCContainerScheduler : NSObject <APSConnectionDelegate, BRCClientZoneDelegate, BRCAppLibraryDelegate>
 {
@@ -24,7 +24,7 @@
     NSString *_environmentName;
     NSData *_pushToken;
     APSConnection *_pushConnection;
-    NSObject<OS_dispatch_queue> *_pushQueue;
+    NSObject<OS_dispatch_workloop> *_pushWorkloop;
     BRCContainerMetadataSyncPersistedState *_containerMetadataPersistedState;
     unsigned int _containerMetadataSyncState;
     _BRCOperation<BRCOperationSubclass> *_containerMetadataSyncOperation;

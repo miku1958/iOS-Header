@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKEditItemViewControllerProtocol-Protocol.h>
 
-@class EKCalendarEventInvitationNotificationAttendee, EKUIRecurrenceAlertController;
+@class EKCalendarEventInvitationNotificationAttendee, EKUIInviteesViewMessageSendingManager, EKUIRecurrenceAlertController;
 @protocol EKEditItemViewControllerDelegate;
 
 @interface EKUIProposedTimeEventViewController : EKEventViewController <EKEditItemViewControllerProtocol>
@@ -16,11 +16,13 @@
     CDUnknownBlockType _completionBlock;
     EKCalendarEventInvitationNotificationAttendee *_proposedTimeAttendee;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (weak, nonatomic) id<EKEditItemViewControllerDelegate> editDelegate;
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
+@property (strong) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property (nonatomic) BOOL presentModally;
 @property (strong) EKCalendarEventInvitationNotificationAttendee *proposedTimeAttendee; // @synthesize proposedTimeAttendee=_proposedTimeAttendee;
 @property (strong) EKUIRecurrenceAlertController *recurrenceAlertController; // @synthesize recurrenceAlertController=_recurrenceAlertController;

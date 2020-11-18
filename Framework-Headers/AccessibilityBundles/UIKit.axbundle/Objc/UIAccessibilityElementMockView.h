@@ -22,8 +22,10 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityAbsoluteValue;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityCanPerformEscapeAction;
+- (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (BOOL)_accessibilityIsScannerGroup;
@@ -50,6 +52,7 @@
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityUserTestingElementType;
 - (id)_accessibilityUserTestingParent;
+- (id)_accessibilityUserTestingProxyView;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (long long)accessibilityCompareGeometry:(id)arg1;

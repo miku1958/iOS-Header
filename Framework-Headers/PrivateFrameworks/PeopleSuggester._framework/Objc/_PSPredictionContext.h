@@ -12,6 +12,7 @@
 
 @interface _PSPredictionContext : NSObject <NSSecureCoding>
 {
+    BOOL _showPotentialFamilyMembers;
     NSDate *_suggestionDate;
     NSUUID *_locationUUID;
     NSArray *_locationUUIDs;
@@ -35,6 +36,7 @@
 @property (copy, nonatomic) NSArray *locationUUIDs; // @synthesize locationUUIDs=_locationUUIDs;
 @property (copy, nonatomic) NSArray *photoSuggestedPeople; // @synthesize photoSuggestedPeople=_photoSuggestedPeople;
 @property (copy, nonatomic) NSArray *seedRecipients; // @synthesize seedRecipients=_seedRecipients;
+@property (nonatomic) BOOL showPotentialFamilyMembers; // @synthesize showPotentialFamilyMembers=_showPotentialFamilyMembers;
 @property (copy, nonatomic) NSDate *suggestionDate; // @synthesize suggestionDate=_suggestionDate;
 
 + (BOOL)supportsSecureCoding;

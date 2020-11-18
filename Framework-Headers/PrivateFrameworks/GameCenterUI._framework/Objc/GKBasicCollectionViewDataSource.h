@@ -25,7 +25,7 @@
 @property (nonatomic) struct _NSRange preloadedRange; // @synthesize preloadedRange=_preloadedRange;
 @property (nonatomic) SEL showAllAction; // @synthesize showAllAction=_showAllAction;
 
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionViewDidBecomeInactive:(id)arg1;

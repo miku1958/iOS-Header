@@ -7,11 +7,11 @@
 #import <WorkflowUI/WFTriggerConfigurationViewController.h>
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
-#import <WorkflowUI/UITableViewDelegate-Protocol.h>
+#import <WorkflowUI/WFTriggerMultiSelectCellDelegate-Protocol.h>
 
 @class NSArray, NSString, UITableView;
 
-@interface WFAirplaneModeTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate>
+@interface WFAirplaneModeTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, WFTriggerMultiSelectCellDelegate>
 {
     UITableView *_tableView;
     NSArray *_sections;
@@ -25,12 +25,12 @@
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (void)cell:(id)arg1 didSelectOptionWithLeftViewSelected:(BOOL)arg2 rightViewSelected:(BOOL)arg3;
 - (id)infoForSection:(long long)arg1;
 - (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;

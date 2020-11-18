@@ -8,12 +8,14 @@
 
 @interface TKToneClassicsPickerItem : TKTonePickerItem
 {
+    TKTonePickerItem *_parentItem;
     long long _classicToneIndex;
 }
 
 @property (nonatomic, setter=_setClassicToneIndex:) long long classicToneIndex; // @synthesize classicToneIndex=_classicToneIndex;
-@property (readonly, nonatomic) TKTonePickerItem *parentItem;
+@property (weak, nonatomic, setter=_setParentItem:) TKTonePickerItem *parentItem; // @synthesize parentItem=_parentItem;
 
+- (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
 - (id)childItemAtIndex:(long long)arg1;
 

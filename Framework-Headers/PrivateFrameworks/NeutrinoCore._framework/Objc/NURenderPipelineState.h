@@ -26,6 +26,7 @@
     unsigned long long _groupCount;
     CDStruct_1e2b2e48 _scale;
     CDStruct_1b6d18a9 _time;
+    CDStruct_1b6d18a9 _rawTime;
 }
 
 @property long long auxiliaryImageType; // @synthesize auxiliaryImageType=_auxiliaryImageType;
@@ -34,6 +35,7 @@
 @property (readonly) unsigned long long groupCount; // @synthesize groupCount=_groupCount;
 @property long long mediaComponentType; // @synthesize mediaComponentType=_mediaComponentType;
 @property (copy, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;
+@property CDStruct_1b6d18a9 rawTime; // @synthesize rawTime=_rawTime;
 @property (readonly) NURenderTagGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property long long roundingPolicy; // @synthesize roundingPolicy=_roundingPolicy;
 @property long long sampleMode; // @synthesize sampleMode=_sampleMode;

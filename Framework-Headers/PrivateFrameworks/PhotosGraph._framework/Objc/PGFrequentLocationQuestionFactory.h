@@ -17,10 +17,9 @@
 
 - (void).cxx_destruct;
 - (BOOL)_addIfNeededFrequentLocationQuestionForAsset:(id)arg1 withLocationTypeName:(id)arg2 toQuestions:(id)arg3;
-- (id)_assetWithLocationFromMomentNode:(id)arg1;
 - (BOOL)_distanceTooCloseBetweenCoordinate:(struct CLLocationCoordinate2D)arg1 otherCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (double)_localFactoryScoreForLocationTypeName:(id)arg1;
-- (id)_selectedAssetForQuestionFromMomentNodes:(id)arg1;
+- (id)_selectedAssetFromMomentNodes:(id)arg1 closeToCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (long long)questionOptions;
 - (unsigned short)questionType;

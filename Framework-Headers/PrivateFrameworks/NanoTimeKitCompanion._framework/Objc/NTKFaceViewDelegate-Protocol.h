@@ -20,7 +20,9 @@
 - (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewDidHideOrShowComplicationSlot;
 - (void)faceViewDidReloadSnapshotContentViews;
+- (id)faceViewDidRequestCustomDataForKey:(NSString *)arg1;
 - (void)faceViewDidScrubToDate:(NSDate *)arg1 forced:(BOOL)arg2;
+- (void)faceViewDidUpdateCustomData:(id)arg1 forKey:(NSString *)arg2;
 - (NTKEditOption *)faceViewEditOptionThatHidesAllComplications;
 - (void)faceViewRequestedLaunchFromRect:(struct CGRect)arg1;
 - (BOOL)faceViewShouldIgnoreSnapshotImages;

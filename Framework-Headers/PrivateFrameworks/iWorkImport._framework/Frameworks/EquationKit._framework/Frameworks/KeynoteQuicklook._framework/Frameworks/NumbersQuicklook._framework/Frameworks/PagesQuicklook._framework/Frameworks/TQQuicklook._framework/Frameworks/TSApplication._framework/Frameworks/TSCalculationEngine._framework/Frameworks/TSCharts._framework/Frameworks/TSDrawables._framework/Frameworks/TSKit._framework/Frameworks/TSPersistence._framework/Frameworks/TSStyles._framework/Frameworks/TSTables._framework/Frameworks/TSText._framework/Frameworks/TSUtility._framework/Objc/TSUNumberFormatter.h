@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSString, TSUFormattingSymbols, TSULocale;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString, TSUDecimalFormatter, TSUFormattingSymbols, TSULocale;
 
 @interface TSUNumberFormatter : NSObject
 {
@@ -16,14 +16,13 @@
     NSDictionary *_currencyFormatters;
     NSArray *_percentageFormatters;
     NSArray *_scientificFormatters;
-    struct __CFNumberFormatter *_fractionFormatter;
+    TSUDecimalFormatter *_fractionFormatter;
     NSMutableDictionary *_currencyCodeToSymbolMap;
     NSMutableDictionary *_currencyCodeToHalfWidthSymbolMap;
     NSString *_additionalCurrencyCode;
     NSDictionary *_additionalCurrencyCodeFormatters;
 }
 
-+ (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterWithLocale:(id)arg1 style:(long long)arg2;
 + (id)defaultFormatStringForValueType:(int)arg1;
 + (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;
 + (void)formatString:(id)arg1 replaceOccurencesOfUnescapedString:(id)arg2 withString:(id)arg3;
@@ -39,14 +38,12 @@
 + (void)unlock;
 - (void).cxx_destruct;
 - (BOOL)currencyFromString:(id)arg1 additionalCurrencyCode:(id)arg2 value:(double *)arg3 formatString:(id *)arg4 currencyCode:(id *)arg5;
-- (void)dealloc;
 - (BOOL)decimalFromString:(id)arg1 value:(double *)arg2 formatString:(id *)arg3;
 - (id)defaultFormatStringForValueType:(int)arg1;
 - (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;
 - (BOOL)fractionFromString:(id)arg1 value:(double *)arg2;
 - (id)initWithLocale:(id)arg1;
 - (id)p_createDictionaryOfCurrencyFormattersForCurrencies:(id)arg1;
-- (struct __CFNumberFormatter *)p_createHarmonizedCFNumberFormatterOfStyle:(long long)arg1;
 - (id)p_currencyFormatters;
 - (id)p_decimalFormatters;
 - (id)p_findCurrencySymbolInString:(id)arg1 additionalCurrencyCode:(id)arg2 successfullString:(id *)arg3 currencyCode:(id *)arg4;

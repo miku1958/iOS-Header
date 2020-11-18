@@ -13,6 +13,7 @@
     MISSING_TYPE *config;
     MISSING_TYPE *debugging;
     MISSING_TYPE *files;
+    MISSING_TYPE *currentSession;
     MISSING_TYPE *pathProvider;
     MISSING_TYPE *fileManager;
     MISSING_TYPE *lock;

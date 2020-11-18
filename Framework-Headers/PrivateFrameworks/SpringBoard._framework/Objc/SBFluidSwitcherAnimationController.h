@@ -13,7 +13,6 @@
 @interface SBFluidSwitcherAnimationController : SBUIBlockAnimationController <SBUIAnimationControllerObserver>
 {
     CDUnknownBlockType _animationCompletion;
-    SBFluidSwitcherAnimationController *_tetheredAnimationController;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType animationCompletion; // @synthesize animationCompletion=_animationCompletion;
@@ -21,7 +20,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) SBFluidSwitcherAnimationController *tetheredAnimationController; // @synthesize tetheredAnimationController=_tetheredAnimationController;
 
 - (void).cxx_destruct;
 - (void)animationControllerDidFinishAnimation:(id)arg1;

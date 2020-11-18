@@ -67,6 +67,7 @@
 - (id)_naturalLanguageEventTagsInTags:(id)arg1;
 - (id)dateForUTCDate:(id)arg1 withTimeZone:(id)arg2;
 - (double)duration;
+- (long long)ekEventAvailabilityState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDateComponents;
 - (id)firstLocationForType:(unsigned long long)arg1;
@@ -83,12 +84,14 @@
 - (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tags:(id)arg15 URL:(id)arg16;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEvent:(id)arg1;
+- (id)loggingIdentifier;
 - (void)mergeIntoEKEvent:(id)arg1;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2 preservingValuesDifferentFrom:(id)arg3;
 - (id)poiFilters;
-- (BOOL)shouldAllowNotificationsInCalendar;
 - (BOOL)shouldAllowNotificationsInCalendarForBundleId:(id)arg1 appIsInForeground:(BOOL)arg2;
+- (BOOL)shouldAllowNotificationsInCalendarForBundleId:(id)arg1 appIsInForeground:(BOOL)arg2 allowListOverride:(id)arg3;
+- (BOOL)shouldAllowNotificationsInCalendarWithAllowListOverride:(id)arg1;
 - (id)startDateComponents;
 - (id)toEKEventWithStore:(id)arg1;
 

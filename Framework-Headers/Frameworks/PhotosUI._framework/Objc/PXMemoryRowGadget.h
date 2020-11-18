@@ -42,7 +42,6 @@
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (nonatomic) BOOL hasAppeared; // @synthesize hasAppeared=_hasAppeared;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) BOOL keepsSourceRegionOfInterestContent;
@@ -79,11 +78,13 @@
 - (void)gadgetControllerHasDisappeared;
 - (id)initWithDataSourceManager:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)prepareToNavigateToDetailsForMemoryUUID:(id)arg1;
 - (BOOL)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)px_endPointForTransition:(id)arg1;
 - (id)showAllMemoriesFeedAnimated:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)uniqueGadgetIdentifier;
 - (void)userDidSelectAccessoryButton:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

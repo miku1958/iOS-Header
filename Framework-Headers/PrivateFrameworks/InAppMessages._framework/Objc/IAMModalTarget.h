@@ -6,33 +6,48 @@
 
 #import <objc/NSObject.h>
 
+#import <InAppMessages/IAMMessageGroupInternalDelegate-Protocol.h>
 #import <InAppMessages/IAMMessageTarget-Protocol.h>
 #import <InAppMessages/IAMWebMessagePresentationCoordinatorDelegate-Protocol.h>
 
-@class IAMMessageCoordinator, IAMWebMessagePresentationCoordinator, NSString;
+@class IAMMessageCoordinator, IAMPresentingModalMessageContext, IAMWebMessagePresentationCoordinator, NSDictionary, NSString;
 
-@interface IAMModalTarget : NSObject <IAMWebMessagePresentationCoordinatorDelegate, IAMMessageTarget>
+@interface IAMModalTarget : NSObject <IAMWebMessagePresentationCoordinatorDelegate, IAMMessageGroupInternalDelegate, IAMMessageTarget>
 {
     IAMMessageCoordinator *_messageCoordinator;
     IAMWebMessagePresentationCoordinator *_webMessagePresentationCoordinator;
-    NSString *_presentingMessageIdentifier;
+    IAMPresentingModalMessageContext *_presentingMessageContext;
     NSString *_targetIdentifier;
+    NSDictionary *_messageGroupsByGroupIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *messageGroupsByGroupIdentifier; // @synthesize messageGroupsByGroupIdentifier=_messageGroupsByGroupIdentifier;
+@property (strong, nonatomic) IAMPresentingModalMessageContext *presentingMessageContext; // @synthesize presentingMessageContext=_presentingMessageContext;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *targetIdentifier; // @synthesize targetIdentifier=_targetIdentifier;
 
 + (void)initialize;
 + (BOOL)isAnyModalTargetPresentingMessage;
 - (void).cxx_destruct;
-- (void)_presentFromMessageEntry:(id)arg1;
+- (id)_applicationViewControllerForModalPresentation;
+- (void)_handlePresentation:(id)arg1;
+- (void)_handlePresentingMessageContextDidExpireBeforePresentation;
+- (void)_presentMessage:(id)arg1 messageEntry:(id)arg2 fromViewController:(id)arg3;
+- (void)_presentWebModalMessageEntry:(id)arg1;
+- (void)_reportMessageDidAppearWithIdentifier:(id)arg1;
+- (void)_reportMessageDidDisappearWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)initWithMessageCoordinator:(id)arg1 targetIdentifier:(id)arg2;
 - (void)messageCoordinator:(id)arg1 didUpdatePriorityMessage:(id)arg2 forTarget:(id)arg3;
-- (void)unregister;
+- (void)messageCoordinator:(id)arg1 didUpdatePriorityMessage:(id)arg2 fromMessageEntry:(id)arg3 forTarget:(id)arg4;
+- (void)messageGroup:(id)arg1 didReportModalMessagePresentationFailedWithIdentifier:(id)arg2;
+- (void)messageGroup:(id)arg1 didReportModalMessageWasDismissedWithIdentifier:(id)arg2;
+- (void)messageGroup:(id)arg1 didReportModalMessageWasPresentedWithIdentifier:(id)arg2;
+- (void)messageGroup:(id)arg1 didReportModalMessageWithIdentifier:(id)arg2 actionWasPerformedWithIdentifier:(id)arg3;
+- (void)presentationControllerDismissalTransitionDidEnd:(id)arg1;
 - (id)viewControllerForModalPresentationUsingCoordinator:(id)arg1;
 - (void)webMessagePresentationCoordinatorWebMessageDidFail:(id)arg1;
 - (void)webMessagePresentationCoordinatorWebMessageDidFinishPresentation:(id)arg1;

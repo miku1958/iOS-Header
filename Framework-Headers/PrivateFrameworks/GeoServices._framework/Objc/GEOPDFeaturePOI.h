@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_directoryGroup:1;
         unsigned int read_levels:1;
         unsigned int read_venueContainer:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_building:1;
-        unsigned int wrote_directoryGroup:1;
-        unsigned int wrote_levels:1;
-        unsigned int wrote_venueContainer:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,11 +44,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)levelType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsLevel:(id)arg1;
-- (void)_readBuilding;
-- (void)_readDirectoryGroup;
-- (void)_readLevels;
-- (void)_readVenueContainer;
 - (void)addLevel:(id)arg1;
 - (void)clearLevels;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -63,7 +54,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)levelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)levelsCount;
 - (void)mergeFrom:(id)arg1;

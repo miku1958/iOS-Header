@@ -9,6 +9,6 @@
 @interface HKQuantitySample (HKMostRecentValueDataProvider)
 - (void)addDetailValuesToSection:(id)arg1;
 - (id)dataProviderValue;
-- (id)hk_additionalMetadataSectionsWithHealthStore:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3;
+- (id)hk_additionalMetadataSectionsWithHealthStore:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3 subsampleDelegate:(id)arg4;
 @end
 

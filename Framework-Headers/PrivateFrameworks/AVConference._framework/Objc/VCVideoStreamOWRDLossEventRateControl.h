@@ -13,6 +13,10 @@
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamOWRDLossEventRateControl : NSObject <VCVideoStreamRateControlProtocol>
 {
+    double _rampUpFrozenDuration;
+    unsigned short _currentTierIndex;
+    long long _rampUpStatus;
+    double _rampDownLossEventBitrateThreshold;
     double _packetLossRate;
     double _packetLossRateVideo;
     double _roundTripTime;
@@ -28,19 +32,15 @@ __attribute__((visibility("hidden")))
     int _lossEventBufferIndex;
     double _lastLossEventTime;
     double _rampUpFrozenTime;
-    double _rampUpFrozenDuration;
     double _rampDownOWRDThreshold;
     double _rampDownLossRateThreshold;
-    double _rampDownLossEventBitrateThreshold;
     double _rampDownLossEventCountThreshold;
     double _rampUpNoLossEventDurationRatio;
     double _rampUpStatusRateLimitedThreshold;
-    long long _rampUpStatus;
     int _state;
     double _rateControlTime;
     unsigned int _targetBitrate;
     unsigned int _averageReceivedBitrate;
-    unsigned short _currentTierIndex;
     unsigned short _minTierIndex;
     unsigned short _maxTierIndex;
     double _rateControlInterval;

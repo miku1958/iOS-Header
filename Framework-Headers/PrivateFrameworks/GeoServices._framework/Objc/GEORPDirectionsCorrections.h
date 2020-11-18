@@ -31,13 +31,7 @@
         unsigned int read_instructionCorrections:1;
         unsigned int read_overviewScreenshotImageId:1;
         unsigned int read_problematicRouteIndexs:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_arrivalCoordinate:1;
-        unsigned int wrote_directionsResponseId:1;
-        unsigned int wrote_instructionCorrections:1;
-        unsigned int wrote_overviewScreenshotImageId:1;
-        unsigned int wrote_problematicRouteIndexs:1;
-        unsigned int wrote_noGoodRoutesShown:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -57,13 +51,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)problematicRouteIndexType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsInstructionCorrection:(id)arg1;
-- (void)_addNoFlagsProblematicRouteIndex:(id)arg1;
-- (void)_readArrivalCoordinate;
-- (void)_readDirectionsResponseId;
-- (void)_readInstructionCorrections;
-- (void)_readOverviewScreenshotImageId;
-- (void)_readProblematicRouteIndexs;
 - (void)addInstructionCorrection:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
 - (void)clearInstructionCorrections;
@@ -76,9 +63,12 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)instructionCorrectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)instructionCorrectionsCount;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)problematicRouteIndexAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problematicRouteIndexsCount;

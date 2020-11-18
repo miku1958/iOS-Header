@@ -9,40 +9,30 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARFaceTrackingData, MISSING_TYPE;
-@protocol OS_dispatch_semaphore;
+@class MISSING_TYPE;
 
 @interface ARFaceGeometry : NSObject <NSSecureCoding, NSCopying>
 {
-    vector_1cb3ea33 _customVertices;
-    vector_1cb3ea33 _normals;
-    ARFaceTrackingData *_trackingData;
-    NSObject<OS_dispatch_semaphore> *_normalsSemaphore;
+    unsigned long long _vertexCount;
+    const MISSING_TYPE **_vertices;
+    unsigned long long _textureCoordinateCount;
+    const MISSING_TYPE **_textureCoordinates;
+    unsigned long long _triangleCount;
+    const short *_triangleIndices;
 }
 
-@property (readonly, nonatomic) unsigned long long textureCoordinateCount;
-@property (readonly, nonatomic) const MISSING_TYPE **textureCoordinates;
-@property (readonly, nonatomic) unsigned long long triangleCount;
-@property (readonly, nonatomic) const short *triangleIndices;
-@property (readonly, nonatomic) unsigned long long vertexCount;
-@property (readonly, nonatomic) const MISSING_TYPE **vertices;
+@property (readonly, nonatomic) unsigned long long textureCoordinateCount; // @synthesize textureCoordinateCount=_textureCoordinateCount;
+@property (readonly, nonatomic) const MISSING_TYPE **textureCoordinates; // @synthesize textureCoordinates=_textureCoordinates;
+@property (readonly, nonatomic) unsigned long long triangleCount; // @synthesize triangleCount=_triangleCount;
+@property (readonly, nonatomic) const short *triangleIndices; // @synthesize triangleIndices=_triangleIndices;
+@property (readonly, nonatomic) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
+@property (readonly, nonatomic) const MISSING_TYPE **vertices; // @synthesize vertices=_vertices;
 
 + (BOOL)supportsSecureCoding;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (short)closestVertexIndexToLabeledFacePosition:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initPrivate;
 - (id)initWithBlendShapes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithCustomVertices:(const MISSING_TYPE **)arg1 verticesCount:(unsigned long long)arg2;
-- (id)initWithFaceTrackingData:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)normalCount;
-- (MISSING_TYPE *)normalForLabeledFacePosition:(id)arg1;
-- (const MISSING_TYPE **)normals;
-- (MISSING_TYPE *)positionForLabeledFacePosition:(id)arg1;
 
 @end
 

@@ -6,27 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapItemAttribution, GEOPDAttribution, GEOPDPlaceCollection, NSData, NSString;
+@class GEOCollectionPublisherAttribution, GEOMapItemIdentifier, GEOPDPlaceCollection, GEOPublisher, NSArray, NSDate, NSString, NSURL;
+@protocol GEOMapItemPhoto;
 
 @interface GEOPlaceCollection : NSObject
 {
     GEOPDPlaceCollection *_collection;
-    GEOPDAttribution *_dataAttribution;
-    GEOMapItemAttribution *_attribution;
+    GEOPublisher *_publisher;
+    GEOCollectionPublisherAttribution *_publisherAttribution;
+    NSString *_publisherAttributionIdentifierString;
 }
 
-@property (readonly, nonatomic) NSString *actionURLString;
-@property (readonly, nonatomic) NSString *description;
-@property (readonly, nonatomic) unsigned long long muid;
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) unsigned long long placeCount;
-@property (readonly, nonatomic) NSData *storageData;
+@property (readonly, nonatomic) NSString *authorName;
+@property (readonly, nonatomic) id<GEOMapItemPhoto> authorPhoto;
+@property (readonly, nonatomic, getter=isBlocked) BOOL blocked;
+@property (readonly, nonatomic) NSString *collectionDescription;
+@property (readonly, nonatomic) GEOMapItemIdentifier *collectionIdentifier;
+@property (readonly, nonatomic) NSString *collectionTitle;
+@property (readonly, nonatomic) NSURL *collectionURL;
+@property (readonly, nonatomic) NSArray *itemIds;
+@property (readonly, nonatomic) NSDate *lastModifiedDate;
+@property (readonly, nonatomic) unsigned long long numberOfItems;
+@property (readonly, nonatomic) NSArray *photos;
+@property (readonly, nonatomic) GEOPublisher *publisher; // @synthesize publisher=_publisher;
+@property (readonly, nonatomic) GEOCollectionPublisherAttribution *publisherAttribution; // @synthesize publisherAttribution=_publisherAttribution;
+@property (readonly, nonatomic) NSString *publisherAttributionIdentifierString; // @synthesize publisherAttributionIdentifierString=_publisherAttributionIdentifierString;
+@property (readonly, nonatomic, getter=isSuppressed) BOOL suppressed;
 
-+ (id)placeCollectionForData:(id)arg1;
 - (void).cxx_destruct;
-- (id)imageURLforSize:(struct CGSize)arg1;
-- (id)initWithCollection:(id)arg1 attribution:(id)arg2;
-- (void)loadAttribution;
+- (unsigned long long)hash;
+- (id)initWithCollection:(id)arg1 usingAttribution:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

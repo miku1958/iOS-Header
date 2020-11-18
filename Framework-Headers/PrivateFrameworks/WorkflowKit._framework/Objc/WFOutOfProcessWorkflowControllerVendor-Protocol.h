@@ -6,13 +6,16 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSData, NSString, WFContentCollection, WFWorkflowReference;
+@class NSArray, NSData, NSString, NSURL, VCSleepWorkflow, WFWorkflowRunRequest, WFWorkflowRunningContext;
 
 @protocol WFOutOfProcessWorkflowControllerVendor <NSObject>
-
-@property (copy, nonatomic) NSString *automationType;
-
-- (void)runWorkflow:(NSData *)arg1 withInput:(WFContentCollection *)arg2 inEnvironment:(long long)arg3 workflowReference:(WFWorkflowReference *)arg4;
+- (void)createSleepWorkflow:(VCSleepWorkflow *)arg1 completion:(void (^)(VCConfiguredSleepWorkflow *, NSError *))arg2;
+- (void)handleIncomingFileForRemoteExecutionWithURL:(NSURL *)arg1 withIdentifier:(NSString *)arg2;
+- (void)pauseWorkflowAndWriteStateToDisk;
+- (void)populateSleepWorkflowsFromWorkflowReferences:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)resumeRunningFromContext:(WFWorkflowRunningContext *)arg1;
+- (void)runActionFromRunRequestData:(NSData *)arg1 runningContext:(WFWorkflowRunningContext *)arg2;
+- (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 inEnvironment:(long long)arg2 runningContext:(WFWorkflowRunningContext *)arg3;
 - (void)stop;
 @end
 

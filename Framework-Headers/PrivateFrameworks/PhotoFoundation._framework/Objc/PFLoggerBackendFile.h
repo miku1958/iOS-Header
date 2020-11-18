@@ -6,7 +6,7 @@
 
 #import <PhotoFoundation/PFLoggerBackendAdapter.h>
 
-@class NSData, NSDateFormatter, NSFileHandle;
+@class NSDateFormatter, NSFileHandle;
 
 @interface PFLoggerBackendFile : PFLoggerBackendAdapter
 {
@@ -14,12 +14,10 @@
     BOOL _shouldCloseFileHandle;
     BOOL _isStandardErrorFileBackend;
     NSFileHandle *_fileHandle;
-    NSData *_lineTerminator;
 }
 
 @property (strong) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
 @property BOOL isStandardErrorFileBackend; // @synthesize isStandardErrorFileBackend=_isStandardErrorFileBackend;
-@property (strong) NSData *lineTerminator; // @synthesize lineTerminator=_lineTerminator;
 @property BOOL shouldCloseFileHandle; // @synthesize shouldCloseFileHandle=_shouldCloseFileHandle;
 
 + (id)backendsFromUserDefaultsWithLogLevel:(int)arg1;

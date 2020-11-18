@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)_formatAndListWithElements:(id)arg1;
 - (id)_formatOrListWithElements:(id)arg1;
+- (id)_formatSentenceListWithElements:(id)arg1;
 - (void)_invaildateFormatter;
 - (void)dealloc;
 - (id)stringForObjectValue:(id)arg1;

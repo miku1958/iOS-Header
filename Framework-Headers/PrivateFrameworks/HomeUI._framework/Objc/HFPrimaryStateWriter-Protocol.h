@@ -10,7 +10,6 @@
 @class NAFuture;
 
 @protocol HFPrimaryStateWriter <NSObject, HFTogglableControlItem>
-- (NAFuture *)togglePrimaryState;
 - (NAFuture *)writePrimaryState:(long long)arg1;
 @end
 

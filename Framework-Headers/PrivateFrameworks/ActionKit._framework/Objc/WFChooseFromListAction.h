@@ -10,14 +10,17 @@
 {
 }
 
++ (id)userInterfaceProtocol;
 - (id)contentItemsFromSelectedItem:(id)arg1;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)itemsFromDictionaryItem:(id)arg1;
 - (BOOL)populatesInputFromInputParameter;
 - (void)presentAlertWithUserInterface:(id)arg1 input:(id)arg2;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)roundedImageFromWFImage:(id)arg1 roundingStyle:(unsigned long long)arg2 desiredSize:(struct CGSize)arg3 desiredScale:(double)arg4;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (BOOL)shouldBeSuggestedAfterAction:(id)arg1 inWorkflow:(id)arg2;
+- (BOOL)shouldCreateIntentAvailableResource;
 
 @end
 

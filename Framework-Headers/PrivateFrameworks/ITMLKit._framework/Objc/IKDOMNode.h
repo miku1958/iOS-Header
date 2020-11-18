@@ -24,6 +24,7 @@
     NSMutableDictionary *_eventListenersMap;
     NSHashTable *_domObservers;
     long long _ITMLID;
+    IKDOMNodeData *_jsNodeData;
     JSManagedValue *_managedSelf;
     NSString *_identifier;
 }
@@ -38,7 +39,7 @@
 @property (readonly, strong, nonatomic) IKDOMNode *firstChild;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, strong, nonatomic) IKDOMNodeData *jsNodeData;
+@property (readonly, strong, nonatomic) IKDOMNodeData *jsNodeData; // @synthesize jsNodeData=_jsNodeData;
 @property (readonly, strong, nonatomic) IKDOMNode *lastChild;
 @property (strong, nonatomic) JSManagedValue *managedChildNodeList; // @synthesize managedChildNodeList=_managedChildNodeList;
 @property (strong, nonatomic) JSManagedValue *managedOwnerDocument; // @synthesize managedOwnerDocument=_managedOwnerDocument;
@@ -58,7 +59,8 @@
 + (id)ITMLIDStringforITMLID:(unsigned long long)arg1;
 + (id)_eventListenerMapKeyForType:(id)arg1 useCapture:(BOOL)arg2;
 + (void)handleNodeParentDidChange:(struct _xmlNode *)arg1;
-+ (void)handleNodeWillRelease:(struct _xmlNode *)arg1;
++ (void)load;
++ (id)nodeForNodePtr:(struct _xmlNode *)arg1;
 + (id)nodeWithAppContext:(id)arg1 nodePtr:(struct _xmlNode *)arg2;
 - (void).cxx_destruct;
 - (struct _xmlNode *)_appendNode:(struct _xmlNode *)arg1;

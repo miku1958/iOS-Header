@@ -92,10 +92,12 @@
 - (void)logErrorProcessingChangeTransactionsToUpdateThumbnails:(NSString *)arg1;
 - (void)logErrorReadingCurrentHistoryToken:(NSString *)arg1;
 - (void)logErrorRemovingStoreFolder:(NSString *)arg1;
+- (void)logErrorSandboxInit:(char *)arg1;
 - (void)logErrorSavingChangeToken:(NSString *)arg1 location:(NSString *)arg2;
 - (void)logErrorSavingRecentSticker:(NSString *)arg1;
 - (void)logErrorSettingUpStore:(NSString *)arg1;
-- (void)logErrorSettingUserDirSuffix;
+- (void)logErrorSettingUserDirSuffixForSandbox:(int)arg1;
+- (void)logErrorSnapshottingAVTView:(NSString *)arg1;
 - (void)logErrorStartingServer:(NSString *)arg1;
 - (void)logErrorTearingDownCoreDataStack:(NSString *)arg1;
 - (void)logErrorUpdatingBackupInclusionStatus:(NSString *)arg1;
@@ -111,6 +113,7 @@
 - (void)logFoundRecordIdentifier:(NSString *)arg1 changeType:(long long)arg2 managedObjectID:(NSString *)arg3;
 - (void)logGeneratingImageError:(NSString *)arg1;
 - (void)logGeneratingImageForRecord:(NSString *)arg1 scope:(NSString *)arg2 type:(long long)arg3;
+- (void)logGenericSandboxError:(NSString *)arg1 error:(int)arg2;
 - (void)logImageStoreBeginSavingImageForPath:(NSString *)arg1;
 - (void)logImageStoreCacheHitForItemDescription:(NSString *)arg1 sizeCost:(unsigned long long)arg2;
 - (void)logImageStoreCacheMiss:(NSString *)arg1;
@@ -177,6 +180,7 @@
 - (void)logStartingPreLoadingTask:(NSString *)arg1;
 - (void)logStartingServer;
 - (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
+- (void)logStickerViewSnapshotForBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
 - (void)logSyncEnabled;
 - (void)logTearingDownCoreDataStack:(NSString *)arg1;
 - (void)logThrottlingAVTView;
@@ -196,6 +200,7 @@
 - (void)logUsageTrackingRecordCount:(unsigned long long)arg1;
 - (void)logUsageTrackingSmallDifferencesClusterCount:(unsigned long long)arg1;
 - (void)logUserRequestedBackupXPCActivityFinished;
+- (void)logWarningNoHOME;
 - (void)logWillResetZone;
 - (void)migratingPersistedContent:(void (^)(void (^)(void)))arg1;
 - (void)performingMigrationXPCActivity:(void (^)(void (^)(void)))arg1;

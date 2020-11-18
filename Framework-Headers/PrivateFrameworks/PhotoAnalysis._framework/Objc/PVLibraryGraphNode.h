@@ -24,7 +24,6 @@
 @property (readonly, nonatomic) double centerX;
 @property (readonly, nonatomic) double centerY;
 @property (readonly, nonatomic) NSString *cloudIdentifier;
-@property (readonly, nonatomic) NSDate *clsDistanceIdentity;
 @property (readonly, nonatomic) long long clusterSequenceNumber;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
@@ -47,6 +46,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hidden;
+@property (readonly, nonatomic) BOOL isCoarse;
 @property (nonatomic) BOOL isVerified;
 @property (strong, nonatomic) id<PVFaceProtocol> keyFace;
 @property (readonly, nonatomic) NSString *localIdentifier;

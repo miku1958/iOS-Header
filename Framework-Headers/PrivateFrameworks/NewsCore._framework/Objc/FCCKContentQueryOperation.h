@@ -10,6 +10,7 @@
 
 @interface FCCKContentQueryOperation : FCNetworkOperation
 {
+    int _networkEventType;
     FCCKContentDatabase *_database;
     CKQuery *_query;
     CKQueryCursor *_cursor;
@@ -18,9 +19,9 @@
     CDUnknownBlockType _recordFetchedBlock;
     CDUnknownBlockType _queryCompletionBlock;
     NSArray *_requestUUIDs;
-    long long _networkEventType;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCEdgeCacheHint *_edgeCacheHint;
+    unsigned long long _queryPriority;
     NSArray *_networkEvents;
     CKQueryCursor *_resultCursor;
 }
@@ -30,10 +31,11 @@
 @property (strong, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
-@property (nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
+@property (nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;
+@property (nonatomic) unsigned long long queryPriority; // @synthesize queryPriority=_queryPriority;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
 @property (copy, nonatomic) NSArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property (strong, nonatomic) CKQueryCursor *resultCursor; // @synthesize resultCursor=_resultCursor;

@@ -11,6 +11,7 @@
 }
 
 + (void)initialize;
+- (id)fetchOptions;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

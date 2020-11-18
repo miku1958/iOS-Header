@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)sharedTrainingClientListener;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;

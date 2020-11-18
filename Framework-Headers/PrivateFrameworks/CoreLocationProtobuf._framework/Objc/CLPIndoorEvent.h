@@ -20,9 +20,7 @@
     CLPIndoorPressure *_pressure;
     int _type;
     CLPIndoorWifiScan *_wifiScan;
-    struct {
-        unsigned int type:1;
-    } _has;
+    CDStruct_f953fb60 _has;
 }
 
 @property (strong, nonatomic) CLPBundleId *bundleId; // @synthesize bundleId=_bundleId;

@@ -33,10 +33,11 @@
     int fLatencyAlertThreshold;
     BOOL fDisplayState;
     int fSelector;
-    id<CMWakeGestureDelegate> _delegate;
+    id<CMWakeGestureDelegate> fUpdatedDelegate;
+    id<CMWakeGestureDelegate> fDelegate;
 }
 
-@property (nonatomic) id<CMWakeGestureDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) id<CMWakeGestureDelegate> delegate;
 
 + (BOOL)hasSlowBootArgs;
 + (BOOL)isWakeGestureAvailable;

@@ -52,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (void)_resumeProgressForAnotherOperationIfNeeded;
 - (void)_startObservingProgress:(id)arg1;
 - (void)_stopObservingProgress:(id)arg1;
-- (id)_t_globalProgressInfo;
 - (void)_updateAppLibraryID:(id)arg1;
 - (void)_updateDocument:(id)arg1;
 - (void)_updateGlobalProgress;

@@ -41,6 +41,7 @@
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
+- (id)_itemsToHideInSet:(id)arg1;
 - (id)defaultOffsetForSignificantEvent:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithTimerTriggerBuilder:(id)arg1 delegate:(id)arg2;

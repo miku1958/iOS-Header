@@ -30,8 +30,6 @@
 @property (copy, nonatomic, getter=_productType, setter=_setProductType:) NSString *productType; // @synthesize productType=_productType;
 @property (strong, nonatomic, getter=_sourceID, setter=_setSourceID:) NSNumber *sourceID; // @synthesize sourceID=_sourceID;
 
-+ (id)_applicationNameForBundleIdentifier:(id)arg1;
-+ (id)_applicationNameForCompanionBundleIdentifier:(id)arg1;
 + (id)_connectedGymSource;
 + (id)_currentSourceProductType:(BOOL)arg1;
 + (id)_generateIdentifierForAppleDevice;
@@ -47,14 +45,9 @@
 + (unsigned long long)_sourceOptionsForAppEntitlements:(id)arg1;
 + (id)_sourceWithBundleIdentifier:(id)arg1 defaultBundleIdentifier:(id)arg2 appEntitlements:(id)arg3 name:(id)arg4;
 + (id)_sourceWithBundleIdentifier:(id)arg1 name:(id)arg2 productType:(id)arg3 options:(unsigned long long)arg4;
-+ (id)_studyNameForResearchStudySource:(id)arg1;
 + (id)_uncachedDefaultSource;
 + (id)_uncachedDefaultSourceWithEntitlements:(id)arg1;
 + (id)defaultSource;
-+ (id)hd_currentDeviceSourceName;
-+ (id)hd_getNameForSource:(id)arg1;
-+ (BOOL)hd_isSpartanDeviceBundleIdentifier:(id)arg1;
-+ (id)hd_sourceForClient:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_deducedClinicalAccountIdentifier;

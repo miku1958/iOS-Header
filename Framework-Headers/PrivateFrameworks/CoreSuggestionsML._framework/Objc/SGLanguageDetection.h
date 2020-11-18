@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)_defaultLanguage;
++ (id)defaultLanguage;
 + (id)detectLanguageFromLanguageTags:(id)arg1;
 + (id)detectLanguageFromLanguageTags:(id)arg1 withMinimumCount:(unsigned long long)arg2 withMinimumAgreement:(double)arg3;
 + (id)detectLanguageFromText:(id)arg1;

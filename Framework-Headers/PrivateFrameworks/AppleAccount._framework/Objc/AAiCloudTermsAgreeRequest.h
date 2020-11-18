@@ -6,20 +6,21 @@
 
 #import <AppleAccount/AARequest.h>
 
-@class ACAccount, ACAccountStore;
+@class ACAccount;
 
 @interface AAiCloudTermsAgreeRequest : AARequest
 {
     ACAccount *_account;
-    ACAccountStore *_accountStore;
     BOOL _preferPassword;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (nonatomic) BOOL preferPassword; // @synthesize preferPassword=_preferPassword;
 
++ (Class)responseClass;
 - (void).cxx_destruct;
 - (id)initWithURLString:(id)arg1 account:(id)arg2;
+- (void)performRequestWithHandler:(CDUnknownBlockType)arg1;
 - (id)urlRequest;
 
 @end

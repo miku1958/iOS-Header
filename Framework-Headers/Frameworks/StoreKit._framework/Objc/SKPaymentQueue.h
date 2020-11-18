@@ -17,14 +17,17 @@
 @property (weak, nonatomic) id<SKPaymentQueueDelegate> delegate;
 @property (readonly, nonatomic) SKPaymentQueueClient *paymentQueueClient;
 @property (readonly, nonatomic) SKStorefront *storefront;
+@property (readonly, nonatomic) NSArray *transactionObservers;
 @property (readonly, nonatomic) NSArray *transactions;
 
 + (BOOL)canMakePayments;
 + (id)defaultQueue;
 - (void).cxx_destruct;
+- (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (id)_applyDownloadChangeset:(id)arg1;
 - (void)_checkForMessages;
+- (void)_checkServerQueue;
 - (void)_completeRestoreWithMessage:(id)arg1;
 - (id)_copyDownloadIDsForDownloads:(id)arg1;
 - (id)_copyRemovalsFromUnmergedIndexSet:(id)arg1;
@@ -42,7 +45,9 @@
 - (void)_notifyObserversAboutRemovals:(id)arg1;
 - (void)_notifyObserversRestoreTransactionsFailedWithError:(id)arg1;
 - (void)_notifyObserversRestoreTransactionsFinished;
+- (void)_presentCodeRedemptionSheet;
 - (void)_processTransaction:(id)arg1;
+- (void)_processTransactionDict:(id)arg1 forTransaction:(id)arg2 error:(id)arg3;
 - (void)_processUpdates:(id)arg1 trimUnmatched:(BOOL)arg2 sendUpdatedDownloads:(BOOL)arg3;
 - (void)_refreshPaymentsWithPolicy:(long long)arg1;
 - (void)_removeLocalTransaction:(id)arg1;
@@ -55,6 +60,7 @@
 - (BOOL)_shouldContinueTransactionForMessage:(id)arg1;
 - (void)_updateDownloadsForMessage:(id)arg1;
 - (void)_updatePaymentsForMessage:(id)arg1;
+- (void)_updatedTransactions:(id)arg1 restored:(BOOL)arg2;
 - (void)addPayment:(id)arg1;
 - (void)addTransactionObserver:(id)arg1;
 - (void)askToShowMessageWithReplyBlock:(CDUnknownBlockType)arg1;
@@ -65,10 +71,13 @@
 - (void)downloadStatusChanged:(id)arg1;
 - (void)finishTransaction:(id)arg1;
 - (void)forceSandboxForBundleIdentifier:(id)arg1 untilDate:(id)arg2;
+- (void)handleEngagementRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithPaymentQueueClient:(id)arg1;
 - (void)pauseDownloads:(id)arg1;
+- (void)presentCodeRedemptionSheet;
 - (void)removeTransactionObserver:(id)arg1;
+- (void)removedEntitlementsForProductIdentifiers:(id)arg1;
 - (void)removedTransactions:(id)arg1;
 - (void)restoreCompletedTransactions;
 - (void)restoreCompletedTransactionsWithApplicationUsername:(id)arg1;

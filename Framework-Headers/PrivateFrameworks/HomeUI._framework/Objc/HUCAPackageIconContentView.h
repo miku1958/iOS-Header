@@ -8,28 +8,32 @@
 
 #import <HomeUI/CAStateControllerDelegate-Protocol.h>
 
-@class CALayer, CAStateController, NSMutableArray, NSString;
+@class CALayer, CAPackage, CAStateController, NSArray, NSString;
 
 @interface HUCAPackageIconContentView : HUIconContentView <CAStateControllerDelegate>
 {
     CAStateController *_stateController;
+    CAPackage *_package;
     CALayer *_rootLayer;
-    NSMutableArray *_packageLayers;
+    NSArray *_packageLayers;
     NSString *_stateName;
     struct CGSize _assetSize;
 }
 
 @property (nonatomic) struct CGSize assetSize; // @synthesize assetSize=_assetSize;
-@property (strong, nonatomic) NSMutableArray *packageLayers; // @synthesize packageLayers=_packageLayers;
+@property (strong, nonatomic) CAPackage *package; // @synthesize package=_package;
+@property (strong, nonatomic) NSArray *packageLayers; // @synthesize packageLayers=_packageLayers;
 @property (strong, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property (strong, nonatomic) CAStateController *stateController; // @synthesize stateController=_stateController;
 @property (strong, nonatomic) NSString *stateName; // @synthesize stateName=_stateName;
 
 - (void).cxx_destruct;
 - (void)_applyModifiers;
+- (void)_tryReclaimPackageForIconDescriptor:(id)arg1;
 - (void)_updateForRTL:(BOOL)arg1;
 - (void)_updatePackage;
 - (void)_updateStateAnimated:(BOOL)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setState:(id)arg1;

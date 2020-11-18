@@ -9,10 +9,9 @@
 
 @protocol TSDPartitioner
 
-@property (nonatomic) BOOL isPrintingCanvas;
-@property (nonatomic) BOOL shouldSuppressBackgrounds;
+@property (readonly, nonatomic) struct CGRect totalPartitionFrame;
 
-- (BOOL)didHint:(id<TSDHint>)arg1 syncWithNextHint:(id<TSDHint>)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;
+- (BOOL)didHint:(id<TSDHint>)arg1 syncWithNextHint:(id<TSDHint>)arg2 horizontally:(BOOL)arg3;
 - (id<TSDHint>)hintForLayout:(TSDLayout *)arg1;
 - (TSDLayout *)layoutForHint:(id<TSDHint>)arg1 parentLayout:(TSDLayout *)arg2;
 - (id<TSDHint>)nextHintForSize:(struct CGSize)arg1 parentLayout:(TSDLayout *)arg2 previousHint:(id<TSDHint>)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;

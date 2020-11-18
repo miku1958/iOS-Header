@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) unsigned long long toolsQueueAddress;
 
 + (BOOL)supportsSecureCoding;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCommandQueue:(id)arg1;

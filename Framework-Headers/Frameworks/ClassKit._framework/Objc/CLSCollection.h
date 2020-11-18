@@ -43,7 +43,6 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithCollectionName:(id)arg1 location:(id)arg2 type:(long long)arg3 icon:(id)arg4;
 - (id)initWithObjectID:(id)arg1 name:(id)arg2 location:(id)arg3 type:(long long)arg4 icon:(id)arg5;
 - (void)mergeWithObject:(id)arg1;
 - (void)removeCollectionItem:(id)arg1;

@@ -15,6 +15,7 @@
 - (id)genericPlayPodcastFailedError;
 - (id)getPlaybackURLForContentItem:(id)arg1;
 - (id)localizedKeyParameterDisplayName;
+- (void)playQueue:(struct _MRSystemAppPlaybackQueue *)arg1 onPlayerPath:(void *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
 

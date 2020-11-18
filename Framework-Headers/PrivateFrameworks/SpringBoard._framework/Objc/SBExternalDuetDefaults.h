@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, nonatomic) NSArray *duetWhitelistedApps; // @dynamic duetWhitelistedApps;
+@property (readonly, nonatomic) NSArray *duetAllowedApps; // @dynamic duetAllowedApps;
 
 - (void)_bindAndRegisterDefaults;
 - (id)init;

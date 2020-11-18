@@ -8,14 +8,13 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class MapsSuggestionsContacts, MapsSuggestionsRoutine, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol MapsSuggestionsLocationUpdater, MapsSuggestionsNetworkRequester, MapsSuggestionsRoutineRequester, MapsSuggestionsShortcutStorage, MapsSuggestionsShortcutSuggestor, MapsSuggestionsStrategy;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@protocol MapsSuggestionsFullResourceDepot, MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy;
 
 @interface MapsSuggestionsEngineBuilder : NSObject <MapsSuggestionsObject>
 {
     BOOL _hasTracker;
     id<MapsSuggestionsStrategy> _strategy;
-    long long _managerStyle;
     id<MapsSuggestionsLocationUpdater> _locationUpdater;
     NSMutableArray *_sourceClasses;
     NSMutableSet *_includePreFilters;
@@ -27,15 +26,9 @@
     NSMutableArray *_excludeImprovers;
     NSMutableArray *_excludeDedupers;
     NSMutableDictionary *_titleFormatters;
-    id<MapsSuggestionsNetworkRequester> _networkRequester;
-    id<MapsSuggestionsRoutineRequester> _routineRequester;
-    MapsSuggestionsRoutine *_routine;
-    MapsSuggestionsContacts *_contacts;
-    id<MapsSuggestionsShortcutStorage> _shortcutStorage;
-    id<MapsSuggestionsShortcutSuggestor> _shortcutSuggestor;
+    id<MapsSuggestionsFullResourceDepot> _resourceDepot;
 }
 
-@property (strong, nonatomic) MapsSuggestionsContacts *contacts; // @synthesize contacts=_contacts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *excludeDedupers; // @synthesize excludeDedupers=_excludeDedupers;
@@ -49,40 +42,27 @@
 @property (strong, nonatomic) NSMutableSet *includePostFilters; // @synthesize includePostFilters=_includePostFilters;
 @property (strong, nonatomic) NSMutableSet *includePreFilters; // @synthesize includePreFilters=_includePreFilters;
 @property (strong, nonatomic) id<MapsSuggestionsLocationUpdater> locationUpdater; // @synthesize locationUpdater=_locationUpdater;
-@property (nonatomic) long long managerStyle; // @synthesize managerStyle=_managerStyle;
-@property (strong, nonatomic) id<MapsSuggestionsNetworkRequester> networkRequester; // @synthesize networkRequester=_networkRequester;
-@property (strong, nonatomic) MapsSuggestionsRoutine *routine; // @synthesize routine=_routine;
-@property (strong, nonatomic) id<MapsSuggestionsRoutineRequester> routineRequester; // @synthesize routineRequester=_routineRequester;
-@property (strong, nonatomic) id<MapsSuggestionsShortcutStorage> shortcutStorage; // @synthesize shortcutStorage=_shortcutStorage;
-@property (strong, nonatomic) id<MapsSuggestionsShortcutSuggestor> shortcutSuggestor; // @synthesize shortcutSuggestor=_shortcutSuggestor;
+@property (strong, nonatomic) id<MapsSuggestionsFullResourceDepot> resourceDepot; // @synthesize resourceDepot=_resourceDepot;
 @property (strong, nonatomic) NSMutableArray *sourceClasses; // @synthesize sourceClasses=_sourceClasses;
 @property (strong, nonatomic) id<MapsSuggestionsStrategy> strategy; // @synthesize strategy=_strategy;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *titleFormatters; // @synthesize titleFormatters=_titleFormatters;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (id)_forPhone;
-+ (id)currentEngine;
 + (id)forDevice;
-+ (id)forEveryone;
-+ (id)forSimulator;
-+ (id)forTests;
 + (id)simpleStrategy;
 - (void).cxx_destruct;
 - (id)build;
-- (id)buildWithoutStoring;
 - (id)init;
 - (id)withDedupers:(id)arg1;
 - (id)withFavorites;
 - (id)withImprovers:(id)arg1;
 - (id)withLocationUpdater:(id)arg1;
-- (id)withManagerStyle:(long long)arg1;
 - (id)withPostFilters:(id)arg1;
 - (id)withPreFilters:(id)arg1;
+- (id)withResourceDepot:(id)arg1;
 - (id)withSourceClasses:(id)arg1;
 - (id)withTitleFormatter:(id)arg1 forType:(long long)arg2;
-- (id)withoutDedupers:(id)arg1;
-- (id)withoutImprovers:(id)arg1;
 - (id)withoutTracker;
 
 @end

@@ -6,28 +6,36 @@
 
 #import <UIKit/UIView.h>
 
-@class HUBlendedSeparatorView, HUClipScrubberPlayheadView, UIButton, UICollectionView;
+@class AVBackgroundView, HUBlendedSeparatorView, HUClipScrubberPlayheadView, UIButton, UICollectionView;
 
 @interface HUClipScrubberView : UIView
 {
     BOOL _isPlayingMedia;
     HUClipScrubberPlayheadView *_playHeadView;
     UIView *_contentView;
-    UIButton *_leftActionButton;
+    AVBackgroundView *_contentBackgroundView;
+    HUClipScrubberPlayheadView *_playheadView;
+    HUClipScrubberPlayheadView *_backgroundPlayheadView;
+    UIButton *_playPauseButton;
     UIButton *_rightActionButton;
     UICollectionView *_clipCollectionView;
+    UIView *_collectionViewContainer;
     unsigned long long _displayMode;
     HUBlendedSeparatorView *_leftBlendedSeparator;
     HUBlendedSeparatorView *_rightBlendedSeparator;
 }
 
+@property (strong, nonatomic) HUClipScrubberPlayheadView *backgroundPlayheadView; // @synthesize backgroundPlayheadView=_backgroundPlayheadView;
 @property (strong, nonatomic) UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
+@property (strong, nonatomic) UIView *collectionViewContainer; // @synthesize collectionViewContainer=_collectionViewContainer;
+@property (strong, nonatomic) AVBackgroundView *contentBackgroundView; // @synthesize contentBackgroundView=_contentBackgroundView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
 @property (nonatomic) BOOL isPlayingMedia; // @synthesize isPlayingMedia=_isPlayingMedia;
-@property (strong, nonatomic) UIButton *leftActionButton; // @synthesize leftActionButton=_leftActionButton;
 @property (strong, nonatomic) HUBlendedSeparatorView *leftBlendedSeparator; // @synthesize leftBlendedSeparator=_leftBlendedSeparator;
-@property (strong, nonatomic) HUClipScrubberPlayheadView *playHeadView; // @synthesize playHeadView=_playHeadView;
+@property (readonly, nonatomic) HUClipScrubberPlayheadView *playHeadView; // @synthesize playHeadView=_playHeadView;
+@property (strong, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;
+@property (strong, nonatomic) HUClipScrubberPlayheadView *playheadView; // @synthesize playheadView=_playheadView;
 @property (strong, nonatomic) UIButton *rightActionButton; // @synthesize rightActionButton=_rightActionButton;
 @property (strong, nonatomic) HUBlendedSeparatorView *rightBlendedSeparator; // @synthesize rightBlendedSeparator=_rightBlendedSeparator;
 
@@ -36,16 +44,19 @@
 - (id)_deleteImage;
 - (id)_pauseImage;
 - (id)_playImage;
+- (void)activateLiveButtonDisplay;
+- (void)deactivateLiveButtonDisplay;
+- (void)didUpdatePlaybackEngine:(id)arg1;
 - (void)displayEditInterface;
+- (id)displayModeDescription;
 - (void)hideEditInterface;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)navigateToLivePosition;
 - (void)navigateToOffset:(double)arg1;
 - (id)playOrPauseImageForEngineMode:(unsigned long long)arg1;
+- (void)updateAccessoryButtonsForPlaybackEngine:(id)arg1;
 - (void)updateDisplayMode:(unsigned long long)arg1;
-- (void)updateMode:(unsigned long long)arg1;
-- (void)updateTimeControlStatus:(unsigned long long)arg1 forEngineMode:(unsigned long long)arg2;
 
 @end
 

@@ -18,10 +18,12 @@
     Box_8bd38d92 _textureCoordinates;
     struct CGRect _collisionRect;
     struct CGPoint _anchorPoint;
+    struct CGPoint _labelingPoint;
     struct CGSize _size;
     double _scale;
     BOOL _hasCollisionRect;
     BOOL _hasAnchorPoint;
+    BOOL _hasLabelingPoint;
     BOOL _usedAsTextureAndImage;
     struct atomic<bool> _isTextureReady;
     struct atomic<bool> _isImageReady;
@@ -44,10 +46,12 @@
 - (id)initWithData:(id)arg1 scale:(double)arg2;
 - (id)initWithData:(id)arg1 scale:(double)arg2 usedAsTextureAndImage:(BOOL)arg3;
 - (id)initWithName:(id)arg1 scale:(double)arg2 resourceManager:(id)arg3;
+- (struct CGPoint)labelingPoint;
 - (void)prepareTextureWithAtlas:(struct TextureAtlas *)arg1;
 - (double)scale;
 - (void)setAnchorPoint:(struct CGPoint)arg1;
 - (void)setCollisionRect:(struct CGRect)arg1;
+- (void)setLabelingPoint:(struct CGPoint)arg1;
 - (struct CGSize)size;
 - (const Box_8bd38d92 *)textureCoordinates;
 

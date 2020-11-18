@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI218TodayBridgedConfig : NSObject
 {
     MISSING_TYPE *todayConfig;

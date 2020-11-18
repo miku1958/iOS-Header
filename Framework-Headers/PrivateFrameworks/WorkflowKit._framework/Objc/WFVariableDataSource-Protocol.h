@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, WFContentCollection;
+@class NSString, NSXPCListenerEndpoint, WFContentCollection;
 
 @protocol WFVariableDataSource
 - (WFContentCollection *)contentForVariableWithName:(NSString *)arg1;
+- (NSXPCListenerEndpoint *)listenerEndpointWithIdentifier:(NSString *)arg1;
 - (BOOL)setContent:(WFContentCollection *)arg1 forVariableWithName:(NSString *)arg2;
 - (WFContentCollection *)workflowInput;
 @end

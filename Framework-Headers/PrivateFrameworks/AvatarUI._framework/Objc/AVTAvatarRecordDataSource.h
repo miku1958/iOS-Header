@@ -52,6 +52,7 @@
 - (void)avatarStoreDidChange:(id)arg1;
 - (void)dealloc;
 - (void)enumerateObserversRespondingToSelector:(SEL)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)flushRecordsForEnteringBackground;
 - (unsigned long long)indexOfRecordPassingTest:(CDUnknownBlockType)arg1;
 - (id)indexSetForEditableRecords;
 - (id)indexesOfRecordsPassingTest:(CDUnknownBlockType)arg1;

@@ -6,30 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSError;
+@class NSError, NSString;
 
-@interface AFSiriActivationResult : NSObject <NSCopying, NSSecureCoding>
+@interface AFSiriActivationResult : NSObject <NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     long long _actionType;
     NSError *_error;
 }
 
 @property (readonly, nonatomic) long long actionType; // @synthesize actionType=_actionType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
+- (id)buildDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithActionType:(long long)arg1 error:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

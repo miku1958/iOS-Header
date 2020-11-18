@@ -11,13 +11,13 @@
 @interface KNAnimatedSlideModel : NSObject
 {
     KNAnimatedSlideView *_ASV;
-    NSArray *_infos;
     NSMutableArray *_buildEvents;
     NSMutableArray *_animatedBuilds;
     NSMapTable *_infoToArrayOfAnimatedBuildsMap;
     NSMapTable *_animatedBuildToRendererMap;
     NSMutableSet *_ambientBuildRenderers;
     BOOL _isMetalSlide;
+    NSArray *_infos;
     unsigned long long _numberOfAddedEvents;
     KNTransitionRenderer *_transitionRenderer;
     KNPlaybackSession *_session;
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) NSArray *animatedBuilds; // @synthesize animatedBuilds=_animatedBuilds;
 @property (readonly, nonatomic) unsigned long long buildEventCount;
 @property (readonly, nonatomic, getter=isFirstBuildEventAutomatic) BOOL firstBuildEventAutomatic;
+@property (readonly, nonatomic) NSArray *infos; // @synthesize infos=_infos;
 @property (readonly, nonatomic) BOOL isMetalSlide; // @synthesize isMetalSlide=_isMetalSlide;
 @property (nonatomic) unsigned long long numberOfAddedEvents; // @synthesize numberOfAddedEvents=_numberOfAddedEvents;
 @property (weak, nonatomic) KNPlaybackSession *session; // @synthesize session=_session;
@@ -61,11 +62,12 @@
 - (void)p_checkIfSlideIsMetalCapableWithBuildChunks:(id)arg1;
 - (void)p_convertToBuildEvents:(id)arg1;
 - (id)p_createBuildAnimationRecords:(id)arg1 info:(id)arg2 event:(long long)arg3 start:(double)arg4 eventStart:(double)arg5 animateAtEndOfPreviousBuild:(BOOL)arg6 previousAnimatedBuild:(id)arg7 parentBuild:(id)arg8;
-- (long long)p_eventNumberForInfo:(id)arg1 animationType:(long long)arg2 defaultResult:(long long)arg3;
+- (Class)p_effectClassForEffect:(id)arg1 animationType:(long long)arg2 hasParentBuild:(BOOL)arg3;
 - (id)p_getCurrentDocumentRoot;
 - (void)p_insertInitialAmbientAnimations;
 - (BOOL)p_isEmphasisBuild:(id)arg1;
 - (BOOL)p_isInfoInvalidWithImplicitAmbientAnimations:(id)arg1;
+- (long long)p_lastEventNumberForInfo:(id)arg1 animationType:(long long)arg2 defaultResult:(long long)arg3;
 - (id)p_newImplicitAmbientBuildRendererWithDrawable:(id)arg1 stageIndex:(long long)arg2 buildChunk:(id)arg3 startTime:(double)arg4 eventStartTime:(double)arg5 event:(long long)arg6 animateAtEndOfPreviousBuild:(BOOL)arg7;
 - (id)p_newTransition;
 - (id)p_previousAnimatedBuildOfType:(long long)arg1 forInfo:(id)arg2 priorToBuild:(id)arg3;

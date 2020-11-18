@@ -12,6 +12,7 @@
 
 @interface HDCodableProvenance : PBCodable <NSCopying>
 {
+    NSData *_contributorUUID;
     NSData *_deviceUUID;
     NSString *_originBuild;
     int _originMajorVersion;
@@ -28,7 +29,9 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSData *contributorUUID; // @synthesize contributorUUID=_contributorUUID;
 @property (strong, nonatomic) NSData *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
+@property (readonly, nonatomic) BOOL hasContributorUUID;
 @property (readonly, nonatomic) BOOL hasDeviceUUID;
 @property (readonly, nonatomic) BOOL hasOriginBuild;
 @property (nonatomic) BOOL hasOriginMajorVersion;

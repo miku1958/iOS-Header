@@ -11,16 +11,16 @@
 @interface _TtC5TeaUI11MenuManager : UIResponder
 {
     MISSING_TYPE *menu;
-    MISSING_TYPE *commandCenter;
     MISSING_TYPE *menuItems;
     MISSING_TYPE *alternateMenuItems;
+    MISSING_TYPE *stagedMenuActions;
+    MISSING_TYPE *stagedAlternateMenuActions;
 }
 
 - (void).cxx_destruct;
 - (void)buildMenuWithBuilder:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)init;
-- (void)validateCommand:(id)arg1;
 
 @end
 

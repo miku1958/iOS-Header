@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class AXPIFingerController;
 @protocol OS_dispatch_queue;
 
 @interface AXPISystemActionHelper : NSObject
@@ -13,30 +14,47 @@
     struct __IOHIDUserDevice *_homeButtonUserDevice;
     unsigned long long _sysdiagnoseCancelCount;
     NSObject<OS_dispatch_queue> *_sysdiagnoseCancelCountQueue;
+    AXPIFingerController *_fingerController;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_activateSpeakScreen;
 - (void)_handleHomeButtonDispatch:(BOOL)arg1;
+- (BOOL)_hasScreenSwitch;
+- (void)_performScrollAction:(BOOL)arg1;
 - (void)_sendButtonEvent:(unsigned int)arg1;
 - (void)_sendDeviceOrientationChange:(int)arg1;
 - (void)_sendShakeEvent;
 - (void)_showAlertForReboot;
+- (void)_toggleAssistiveTouch;
+- (void)_toggleClassicInvertColors;
+- (void)_toggleFullKeyboardAccess;
+- (void)_toggleMagnifier;
+- (void)_toggleSmartInvert;
+- (void)_toggleSwitchControl;
+- (void)_toggleVoiceOver;
+- (void)_toggleZoom;
 - (void)activateHomeButton;
 - (void)activateLockButton;
 - (void)activateSOSMode;
 - (void)activateSiri;
+- (void)activateSiriFromClient:(id)arg1;
 - (void)activateTripleClick;
 - (void)activateVoiceControl;
 - (void)adjustSystemZoom:(long long)arg1;
 - (void)armApplePay;
+- (void)confirmApplePay;
 - (void)decreaseVolume;
 - (void)increaseVolume;
 - (id)init;
+- (BOOL)isRingerSwitchOn;
 - (void)liftHomeButtonUp;
 - (void)liftLockButtonUp;
 - (void)liftVolumeDownButtonUp;
 - (void)liftVolumeUpButtonUp;
+- (void)performActionForSystemAction:(id)arg1;
+- (void)performActionForSystemAction:(id)arg1 fromClient:(id)arg2;
 - (void)performSysdiagnoseWithStatusUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)pressHomeButtonDown;
 - (void)pressLockButtonDown;

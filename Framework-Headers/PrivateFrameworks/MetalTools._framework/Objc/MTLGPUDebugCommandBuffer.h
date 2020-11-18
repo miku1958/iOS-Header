@@ -8,10 +8,12 @@
 
 #import <MetalTools/MTLGPUDebugBufferEncoder-Protocol.h>
 
+@class MTLGPUDebugDevice;
 @protocol MTLArgumentEncoder, MTLBuffer;
 
 @interface MTLGPUDebugCommandBuffer : MTLToolsCommandBuffer <MTLGPUDebugBufferEncoder>
 {
+    struct Options *_options;
     id<MTLArgumentEncoder> _stageArgumentEncoder;
     id<MTLBuffer> _vertexComputeReportBuffer;
     unsigned long long _vertexComputeReportOffset;
@@ -26,31 +28,39 @@
     struct vector<ReportBufferEntry, std::__1::allocator<ReportBufferEntry>> _reportEntryList;
     struct vector<NSString *, std::__1::allocator<NSString *>> _encoderLabels;
     struct mutex _allocationLock;
+    struct os_unfair_lock_s _tempBufLock;
+    BOOL _supportsTileStage;
 }
+
+@property (readonly) MTLGPUDebugDevice *device; // @dynamic device;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct ReportBufferEntry)_allocReportEntryStorageForType:(unsigned long long)arg1;
 - (void)_checkReportBuffers;
 - (void)_encodeReportBuffer:(id)arg1 type:(unsigned long long)arg2;
+- (id)_encoderIdentifierForEncoderIndex:(unsigned int)arg1;
 - (id)_newReportBuffer;
 - (pair_eb21f6dd)_temporaryBufferWithLength:(unsigned long long)arg1;
+- (void)beginingEncoder:(id)arg1 type:(unsigned long long)arg2;
+- (id)blitCommandEncoder;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoder;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)encodeBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3 resultOffset:(unsigned long long *)arg4;
-- (id)fragmentRenderCommandEncoderWithDescriptor:(id)arg1;
+- (void)endingEncoder:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithCommandBuffer:(id)arg1 commandQueue:(id)arg2;
-- (void)onEncoderBegin:(id)arg1 type:(unsigned long long)arg2;
-- (void)onEncoderEnd:(id)arg1 type:(unsigned long long)arg2;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
 - (void)preCompletionHandlers;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
-- (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
-- (id)sampledFragmentRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (pair_eb21f6dd)setBytes:(const void *)arg1 length:(unsigned long long)arg2;
+- (id)sampledComputeCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
+- (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)temporaryBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
+- (id)temporaryBufferWithLength:(unsigned long long)arg1;
 
 @end
 

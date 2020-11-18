@@ -82,10 +82,10 @@
 - (oneway void)expungeRecordingsFromCloud:(CDUnknownBlockType)arg1;
 - (oneway void)fetchCompositionAVURLsBeingExported:(CDUnknownBlockType)arg1;
 - (oneway void)fetchCompositionAVURLsBeingModified:(CDUnknownBlockType)arg1;
-- (oneway void)importRecordingWithSourceAudioURL:(id)arg1 name:(id)arg2 date:(id)arg3 importCompletionBlock:(CDUnknownBlockType)arg4;
+- (oneway void)importRecordingWithSourceAudioURL:(id)arg1 name:(id)arg2 date:(id)arg3 userInfo:(id)arg4 importCompletionBlock:(CDUnknownBlockType)arg5;
 - (oneway void)importRecordingsFromCloud:(CDUnknownBlockType)arg1;
 - (id)init;
-- (oneway void)openAudioFile:(id)arg1 settings:(id)arg2 accessRequestHandler:(CDUnknownBlockType)arg3;
+- (oneway void)openAudioFile:(id)arg1 settings:(id)arg2 metadata:(id)arg3 accessRequestHandler:(CDUnknownBlockType)arg4;
 - (id)openAudioFile:(id)arg1 settings:(id)arg2 metadata:(id)arg3 error:(id *)arg4;
 - (void)openServiceConnection;
 - (oneway void)performDatabaseMigrationWithCompletionBlock:(CDUnknownBlockType)arg1;

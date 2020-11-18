@@ -20,15 +20,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_os_log> *_log;
 }
 
-@property (nonatomic) BOOL isEnded; // @synthesize isEnded=_isEnded;
-@property (readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
-
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)endInterval;
-- (id)initWithName:(id)arg1 signpostID:(unsigned long long)arg2 log:(id)arg3;
 
 @end
 

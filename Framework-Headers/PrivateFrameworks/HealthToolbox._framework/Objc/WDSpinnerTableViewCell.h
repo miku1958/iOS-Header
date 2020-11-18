@@ -8,7 +8,6 @@
 
 @class NSString, UIActivityIndicatorView, UILabel, UIView;
 
-__attribute__((visibility("hidden")))
 @interface WDSpinnerTableViewCell : UITableViewCell
 {
     UIView *_contentContainerView;

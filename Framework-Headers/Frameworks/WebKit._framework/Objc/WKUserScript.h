@@ -9,7 +9,7 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, _WKUserContentWorld;
+@class NSString, WKContentWorld, _WKUserContentWorld;
 
 @interface WKUserScript : NSObject <WKObject, NSCopying>
 {
@@ -17,6 +17,7 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) WKContentWorld *_contentWorld;
 @property (readonly, nonatomic) _WKUserContentWorld *_userContentWorld;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,11 +27,16 @@
 @property (readonly, copy, nonatomic) NSString *source;
 @property (readonly) Class superclass;
 
+- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 includeMatchPatternStrings:(id)arg4 excludeMatchPatternStrings:(id)arg5 associatedURL:(id)arg6 contentWorld:(id)arg7 deferRunningUntilNotification:(BOOL)arg8;
+- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 associatedURL:(id)arg6 contentWorld:(id)arg7;
+- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 associatedURL:(id)arg6 contentWorld:(id)arg7 deferRunningUntilNotification:(BOOL)arg8;
 - (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 associatedURL:(id)arg6 userContentWorld:(id)arg7;
+- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 contentWorld:(id)arg6;
 - (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 userContentWorld:(id)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3;
+- (id)initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(BOOL)arg3 inContentWorld:(id)arg4;
 
 @end
 

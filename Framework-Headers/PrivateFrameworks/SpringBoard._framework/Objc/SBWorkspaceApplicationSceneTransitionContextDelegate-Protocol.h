@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBLayoutState, SBWorkspaceApplicationSceneTransitionContext;
+@class SBLayoutState, SBWorkspaceApplicationSceneTransitionContext, SBWorkspaceEntity;
 
 @protocol SBWorkspaceApplicationSceneTransitionContextDelegate <NSObject>
+- (struct CGRect)applicationTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1 frameForApplicationSceneEntity:(SBWorkspaceEntity *)arg2;
 - (SBLayoutState *)layoutStateForApplicationTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1;
 - (SBLayoutState *)previousLayoutStateForApplicationTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1;
 @end

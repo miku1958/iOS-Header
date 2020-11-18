@@ -42,9 +42,9 @@
     AXMLiveContinuousTone *_trendlineScrubbingTone;
     AXMLiveContinuousTone *_liveContinuousDataTone;
     CDUnknownBlockType _trendlineFunction;
-    vector_3203cf93 *_scrubbingDiscreteDataRenderingContext;
-    vector_3203cf93 *_scrubbingPlaybackCallbackRenderingContext;
-    vector_3203cf93 *_liveTonePlaybackCallbackRenderingContext;
+    vector_12bd641b *_scrubbingDiscreteDataRenderingContext;
+    vector_12bd641b *_scrubbingPlaybackCallbackRenderingContext;
+    vector_12bd641b *_liveTonePlaybackCallbackRenderingContext;
     unsigned long long _playbackSampleCount;
 }
 
@@ -62,7 +62,7 @@
 @property (strong, nonatomic) AXMAudioDataSource *liveContinuousAudioDataSource; // @synthesize liveContinuousAudioDataSource=_liveContinuousAudioDataSource;
 @property (readonly, nonatomic) AXMLiveContinuousTone *liveContinuousDataTone; // @synthesize liveContinuousDataTone=_liveContinuousDataTone;
 @property (strong, nonatomic) AXMAudioDataSourceMixer *liveContinuousMixerDataSource; // @synthesize liveContinuousMixerDataSource=_liveContinuousMixerDataSource;
-@property (readonly, nonatomic) vector_3203cf93 *liveTonePlaybackCallbackRenderingContext; // @synthesize liveTonePlaybackCallbackRenderingContext=_liveTonePlaybackCallbackRenderingContext;
+@property (readonly, nonatomic) vector_12bd641b *liveTonePlaybackCallbackRenderingContext; // @synthesize liveTonePlaybackCallbackRenderingContext=_liveTonePlaybackCallbackRenderingContext;
 @property (nonatomic) double maximumPlaybackFrequency; // @synthesize maximumPlaybackFrequency=_maximumPlaybackFrequency;
 @property (nonatomic) double minimumPlaybackFrequency; // @synthesize minimumPlaybackFrequency=_minimumPlaybackFrequency;
 @property (strong, nonatomic) AXMAudioDataSource *playbackChartDataAudioDataSource; // @synthesize playbackChartDataAudioDataSource=_playbackChartDataAudioDataSource;
@@ -74,9 +74,9 @@
 @property (strong, nonatomic) AXMAudioDataSource *playbackTrendlineAudioDataSource; // @synthesize playbackTrendlineAudioDataSource=_playbackTrendlineAudioDataSource;
 @property (strong, nonatomic) AXMAudioDataSource *scrubbingContinuousAudioDataSource; // @synthesize scrubbingContinuousAudioDataSource=_scrubbingContinuousAudioDataSource;
 @property (strong, nonatomic) AXMAudioDataSource *scrubbingDiscreteAudioDataSource; // @synthesize scrubbingDiscreteAudioDataSource=_scrubbingDiscreteAudioDataSource;
-@property (readonly, nonatomic) vector_3203cf93 *scrubbingDiscreteDataRenderingContext; // @synthesize scrubbingDiscreteDataRenderingContext=_scrubbingDiscreteDataRenderingContext;
+@property (readonly, nonatomic) vector_12bd641b *scrubbingDiscreteDataRenderingContext; // @synthesize scrubbingDiscreteDataRenderingContext=_scrubbingDiscreteDataRenderingContext;
 @property (strong, nonatomic) AXMAudioDataSourceMixer *scrubbingMixerDataSource; // @synthesize scrubbingMixerDataSource=_scrubbingMixerDataSource;
-@property (readonly, nonatomic) vector_3203cf93 *scrubbingPlaybackCallbackRenderingContext; // @synthesize scrubbingPlaybackCallbackRenderingContext=_scrubbingPlaybackCallbackRenderingContext;
+@property (readonly, nonatomic) vector_12bd641b *scrubbingPlaybackCallbackRenderingContext; // @synthesize scrubbingPlaybackCallbackRenderingContext=_scrubbingPlaybackCallbackRenderingContext;
 @property (strong, nonatomic) AXMAudioDataSource *scrubbingTrendlineAudioDataSource; // @synthesize scrubbingTrendlineAudioDataSource=_scrubbingTrendlineAudioDataSource;
 @property (nonatomic) unsigned long long toneWaveform; // @synthesize toneWaveform=_toneWaveform;
 @property (copy, nonatomic) CDUnknownBlockType trendlineFunction; // @synthesize trendlineFunction=_trendlineFunction;
@@ -90,7 +90,7 @@
 - (BOOL)_initializeAudioUnit;
 - (void)_initializeLiveToneDataSource;
 - (id)_newContinuousToneEnvelope;
-- (void)_peakNormalizeBuffer:(vector_3203cf93 *)arg1 length:(unsigned long long)arg2 level:(double)arg3;
+- (void)_peakNormalizeBuffer:(vector_12bd641b *)arg1 length:(unsigned long long)arg2 level:(double)arg3;
 - (void)_renderContinuousAudio;
 - (void)_renderDiscreteAudio;
 - (void)_renderUnivariateFunctionAudio;

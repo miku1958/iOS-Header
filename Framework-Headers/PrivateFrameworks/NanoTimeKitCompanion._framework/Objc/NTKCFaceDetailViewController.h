@@ -7,8 +7,8 @@
 #import <UIKit/UIViewController.h>
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailActionSectionDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKCFaceDetailComplicationPickerViewControllerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailComplicationSectionDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKCFaceDetailDataSourcesSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailDescriptionSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailOtherSectionDelegate-Protocol.h>
@@ -19,10 +19,10 @@
 #import <NanoTimeKitCompanion/UITableViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, UIActivityIndicatorView, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
+@class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, NTKGreenfieldCompanionShareController, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
 @protocol NTKCFaceDetailViewControllerDelegate;
 
-@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate, NTKCTableViewProviding>
+@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCTableViewProviding, NTKCFaceDetailComplicationPickerViewControllerDelegate>
 {
     BOOL _shared;
     BOOL _inGallery;
@@ -42,12 +42,16 @@
     NSMutableArray *_currentSections;
     NTKCFaceDetailDescriptionSectionController *_descriptionSection;
     NSMutableArray *_editOptionSections;
+    NSMutableArray *_dynamicEditOptionSections;
     NTKCFaceDetailPhotosSectionController *_photosSection;
     NTKCFaceDetailKaleidoscopeContentSectionController *_kaleidoscopeContentSection;
     NTKCFaceDetailKaleidoscopeStyleSectionController *_kaleidoscopeStyleSection;
     NTKCFaceDetailOtherSectionController *_otherSection;
     CDUnknownBlockType _selectionFinishedHandler;
     UITableViewCell *_editOptionToMakeFullyVisible;
+    UIBarButtonItem *_shareNavButton;
+    NTKGreenfieldCompanionShareController *_shareController;
+    UIViewController *_modalViewControllerPresentedByThisViewController;
     NTKCFaceContainerView *_faceContainer;
     struct CGSize _headerFaceSize;
 }
@@ -59,6 +63,7 @@
 @property (weak, nonatomic) id<NTKCFaceDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NTKCFaceDetailDescriptionSectionController *descriptionSection; // @synthesize descriptionSection=_descriptionSection;
+@property (strong, nonatomic) NSMutableArray *dynamicEditOptionSections; // @synthesize dynamicEditOptionSections=_dynamicEditOptionSections;
 @property (strong, nonatomic) NSMutableArray *editOptionSections; // @synthesize editOptionSections=_editOptionSections;
 @property (strong, nonatomic) UITableViewCell *editOptionToMakeFullyVisible; // @synthesize editOptionToMakeFullyVisible=_editOptionToMakeFullyVisible;
 @property (copy, nonatomic) NSArray *externalAssets; // @synthesize externalAssets=_externalAssets;
@@ -76,10 +81,14 @@
 @property (strong, nonatomic) NTKCFaceDetailKaleidoscopeContentSectionController *kaleidoscopeContentSection; // @synthesize kaleidoscopeContentSection=_kaleidoscopeContentSection;
 @property (strong, nonatomic) NTKCFaceDetailKaleidoscopeStyleSectionController *kaleidoscopeStyleSection; // @synthesize kaleidoscopeStyleSection=_kaleidoscopeStyleSection;
 @property (strong, nonatomic) NTKFaceCollection *library; // @synthesize library=_library;
+@property (strong, nonatomic) UIViewController *modalViewControllerPresentedByThisViewController; // @synthesize modalViewControllerPresentedByThisViewController=_modalViewControllerPresentedByThisViewController;
 @property (readonly, nonatomic) UITableView *ntk_tableView;
 @property (strong, nonatomic) NTKCFaceDetailOtherSectionController *otherSection; // @synthesize otherSection=_otherSection;
 @property (strong, nonatomic) NTKCFaceDetailPhotosSectionController *photosSection; // @synthesize photosSection=_photosSection;
+@property (readonly, nonatomic) NSString *reasonFaceCanNotBeAddedToLibrary;
 @property (copy, nonatomic) CDUnknownBlockType selectionFinishedHandler; // @synthesize selectionFinishedHandler=_selectionFinishedHandler;
+@property (strong, nonatomic) NTKGreenfieldCompanionShareController *shareController; // @synthesize shareController=_shareController;
+@property (strong, nonatomic) UIBarButtonItem *shareNavButton; // @synthesize shareNavButton=_shareNavButton;
 @property (nonatomic) BOOL shared; // @synthesize shared=_shared;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
@@ -87,33 +96,37 @@
 - (void).cxx_destruct;
 - (void)_addFace;
 - (void)_addFaceEndedForFace:(id)arg1;
+- (void)_addOrRemoveDynamicSectionsWithCollection:(id)arg1;
 - (void)_addTapped;
 - (BOOL)_cellIsHiddenBehindHeader:(id)arg1;
+- (void)_didTapShareButton;
+- (void)_dismissModalViewControllerPresentedByThisViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_ensureOtherSection;
+- (id)_errorMessageForErrorCode:(long long)arg1;
 - (void)_faceChangedOptionsForEditMode:(long long)arg1;
 - (void)_faceDidChange;
 - (void)_faceDidChangeResourceDirectory;
-- (id)_facesUnsupportedByDevice:(id)arg1;
 - (BOOL)_hasRemovedSystemApp;
 - (BOOL)_isEditOptionFullyVisible:(id)arg1;
 - (BOOL)_isEditable;
 - (void)_loadLibrary;
 - (id)_pruneComplicationsNotAvailableOnGizmo:(id)arg1;
 - (id)_pruneRemovedOrRestrictedComplications:(id)arg1;
-- (void)_reloadUpNextDataSourceSections;
 - (id)_sectionForEditOptionCollection:(id)arg1;
 - (void)_setComplication:(id)arg1 forSlot:(id)arg2;
-- (void)_setEditOption:(id)arg1 forMode:(long long)arg2;
+- (void)_setEditOption:(id)arg1 forMode:(long long)arg2 slot:(id)arg3;
 - (void)_setFaceHasBeenEdited;
 - (void)_updateAddButton;
+- (void)_updateShareButton;
 - (void)actionSectionDidDelete:(id)arg1;
 - (void)actionSectionDidSelect:(id)arg1;
+- (void)attemptToAddFace;
 - (id)complicationSection:(id)arg1 allowedComplicationsForSlot:(id)arg2;
 - (void)complicationSection:(id)arg1 didChangeToComplication:(id)arg2 forSlot:(id)arg3;
-- (void)dataSourcesSection:(id)arg1 didChangeDataSources:(id)arg2 forMode:(long long)arg3;
-- (void)dataSourcesSectionDidFinishLoading:(id)arg1;
+- (void)complicationSection:(id)arg1 wantsToPresentPickerForSlot:(id)arg2 selectedComplication:(id)arg3;
 - (void)dealloc;
 - (void)descriptionSection:(id)arg1 didExpand:(BOOL)arg2;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)editOptionSection:(id)arg1 didSelectActionForOptionAtIndex:(long long)arg2;
 - (void)editOptionSection:(id)arg1 didSelectOptionAtIndex:(long long)arg2;
 - (void)face:(id)arg1 didChangeOptionsForEditMode:(long long)arg2;
@@ -121,6 +134,7 @@
 - (void)faceCollection:(id)arg1 didRemoveFace:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)faceCollectionDidLoad:(id)arg1;
 - (void)faceConfigurationDidChange:(id)arg1;
+- (void)faceDetailComplicationPickerViewController:(id)arg1 didSelectComplication:(id)arg2;
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (id)initWithFace:(id)arg1;
 - (id)initWithFace:(id)arg1 externalAssets:(id)arg2;
@@ -131,6 +145,7 @@
 - (void)otherSection:(id)arg1 didToggleMonogram:(id)arg2 forSlot:(id)arg3;
 - (void)otherSectionDidSelectMonogramEdit:(id)arg1;
 - (void)photoSectionDidUpdate:(id)arg1;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

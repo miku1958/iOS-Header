@@ -6,25 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CLSPerson, NSArray, NSDate, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface PGPotentialRecentPersonCentricSuggestion : NSObject
 {
-    CLSPerson *_person;
     NSString *_personLocalIdentifier;
     NSArray *_assets;
     NSDate *_notSeenSinceDate;
+    unsigned long long _relationshipScore;
 }
 
 @property (readonly, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property (readonly, nonatomic) NSDate *notSeenSinceDate; // @synthesize notSeenSinceDate=_notSeenSinceDate;
-@property (readonly, nonatomic) CLSPerson *person; // @synthesize person=_person;
 @property (readonly, nonatomic) NSString *personLocalIdentifier; // @synthesize personLocalIdentifier=_personLocalIdentifier;
-@property (readonly, nonatomic) unsigned long long relationshipScore;
+@property (readonly, nonatomic) unsigned long long relationshipScore; // @synthesize relationshipScore=_relationshipScore;
 
 - (void).cxx_destruct;
-- (id)initWithCLSPerson:(id)arg1 assets:(id)arg2;
 - (id)initWithPersonLocalIdentifier:(id)arg1 assets:(id)arg2 notSeenSinceDate:(id)arg3;
+- (id)initWithPersonLocalIdentifier:(id)arg1 assets:(id)arg2 relationshipScore:(unsigned long long)arg3;
 
 @end
 

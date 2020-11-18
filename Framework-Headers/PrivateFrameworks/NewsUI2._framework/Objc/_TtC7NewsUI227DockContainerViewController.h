@@ -8,13 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227DockContainerViewController : UIViewController
 {
     MISSING_TYPE *rootViewController;
     MISSING_TYPE *lazyDockableViewController;
     MISSING_TYPE *presentationMode;
     MISSING_TYPE *dockView;
+    MISSING_TYPE *$__lazy_storage_$_longPressGestureRecognizer;
     MISSING_TYPE *$__lazy_storage_$_dockHeightConstraint;
     MISSING_TYPE *$__lazy_storage_$_dockedView;
     MISSING_TYPE *$__lazy_storage_$_expandedViewController;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dockedViewLongPressed;
 - (void)dockedViewTapped;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

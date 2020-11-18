@@ -34,7 +34,6 @@
     BOOL _hideClearActionInList;
     BOOL _numberOfLinesInfinite;
     BOOL _preemptsPresentedNotification;
-    BOOL _preemptsSTAR;
     BOOL _revealsAdditionalContentOnPresentation;
     BOOL _suppressesTitleWhenLocked;
     BOOL _suppressesSubtitleWhenLocked;
@@ -74,7 +73,6 @@
 @property (readonly, nonatomic) BOOL overridesQuietMode; // @synthesize overridesQuietMode=_overridesQuietMode;
 @property (readonly, nonatomic) BOOL playMediaWhenRaised; // @synthesize playMediaWhenRaised=_playMediaWhenRaised;
 @property (readonly, nonatomic) BOOL preemptsPresentedNotification; // @synthesize preemptsPresentedNotification=_preemptsPresentedNotification;
-@property (readonly, nonatomic) BOOL preemptsSTAR; // @synthesize preemptsSTAR=_preemptsSTAR;
 @property (readonly, nonatomic) BOOL preventsAutomaticLock; // @synthesize preventsAutomaticLock=_preventsAutomaticLock;
 @property (readonly, nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property (readonly, nonatomic) BOOL requestsFullScreenPresentation; // @synthesize requestsFullScreenPresentation=_requestsFullScreenPresentation;

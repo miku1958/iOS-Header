@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuPresentation : _UIClickPresentation
 {
+    BOOL _suppressInputViewDuringPresentation;
     UIView *_presentationContainer;
     UIView *_dragContainer;
     _UIPlatterView *_destinationPlatterView;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType postDismissCleanUp; // @synthesize postDismissCleanUp=_postDismissCleanUp;
 @property (copy, nonatomic) CDUnknownBlockType postDismissItemUpdate; // @synthesize postDismissItemUpdate=_postDismissItemUpdate;
 @property (readonly, nonatomic) UIView *presentationContainer; // @synthesize presentationContainer=_presentationContainer;
+@property (nonatomic) BOOL suppressInputViewDuringPresentation; // @synthesize suppressInputViewDuringPresentation=_suppressInputViewDuringPresentation;
 
 - (void).cxx_destruct;
 

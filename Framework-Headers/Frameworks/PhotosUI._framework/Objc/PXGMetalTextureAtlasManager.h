@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXGMetalTextureAtlasDelegate-Protocol.h>
 #import <PhotosUICore/PXGTextureAtlasManager-Protocol.h>
 
 @class NSArray, NSIndexSet, NSString, PXGColorProgram;
-@protocol MTLDevice, OS_dispatch_queue;
+@protocol MTLDevice, OS_dispatch_queue, PXGTextureAtlasManagerDelegate, PXGTextureConverter;
 
-@interface PXGMetalTextureAtlasManager : NSObject <PXGTextureAtlasManager>
+@interface PXGMetalTextureAtlasManager : NSObject <PXGMetalTextureAtlasDelegate, PXGTextureAtlasManager>
 {
     id<MTLDevice> _device;
     NSObject<OS_dispatch_queue> *_syncQueue;
@@ -19,19 +20,24 @@
     unsigned int _capacityPerAtlas;
     unsigned long long _pixelFormat;
     NSIndexSet *_skipRenderSpriteIndexes;
+    id<PXGTextureAtlasManagerDelegate> _delegate;
+    id<PXGTextureConverter> _textureConverter;
     PXGColorProgram *_colorProgram;
     NSArray *_atlasTextures;
     struct CGSize _thumbnailSize;
 }
 
 @property (copy) NSArray *atlasTextures; // @synthesize atlasTextures=_atlasTextures;
+@property (readonly, nonatomic) unsigned int capacityPerAtlas; // @synthesize capacityPerAtlas=_capacityPerAtlas;
 @property (readonly, nonatomic) PXGColorProgram *colorProgram; // @synthesize colorProgram=_colorProgram;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PXGTextureAtlasManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (strong, nonatomic) NSIndexSet *skipRenderSpriteIndexes; // @synthesize skipRenderSpriteIndexes=_skipRenderSpriteIndexes;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id<PXGTextureConverter> textureConverter; // @synthesize textureConverter=_textureConverter;
 @property (readonly, copy, nonatomic) NSArray *textures;
 @property (readonly, nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 
@@ -46,6 +52,7 @@
 - (void)processPendingThumbnailRequestIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)pruneUnusedTextures;
 - (void)removeSpriteIndex:(unsigned int)arg1 atThumbnailIndex:(unsigned int)arg2;
+- (void)textureAtlasDidBecomeUnused:(id)arg1;
 
 @end
 

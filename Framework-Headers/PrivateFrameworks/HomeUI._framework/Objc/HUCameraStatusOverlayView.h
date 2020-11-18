@@ -33,7 +33,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setBadgeStatus:(unsigned long long)arg1;
-- (void)updateStatusForCameraProfile:(id)arg1;
+- (void)updateStatusForPlaybackEngine:(id)arg1;
 - (void)updateStatusLabelBounds;
 
 @end

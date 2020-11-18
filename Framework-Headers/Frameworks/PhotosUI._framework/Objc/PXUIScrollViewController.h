@@ -43,7 +43,10 @@
 - (BOOL)isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (BOOL)isTracking;
 - (void)removeGestureRecognizer:(id)arg1;
+- (BOOL)respectsContentZOrder;
 - (void)scrollRectToVisible:(struct CGRect)arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(BOOL)arg3;
+- (void)scrollToEdge:(unsigned int)arg1 animated:(BOOL)arg2;
+- (void)scrollToEdge:(unsigned int)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)scrollView:(id)arg1 willBeginScrollingAnimationTowardsContentEdges:(unsigned long long)arg2;
 - (struct CGRect)scrollViewActiveRect;
 - (struct CGRect)scrollViewConstrainedVisibleRect;
@@ -64,9 +67,11 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillLayoutSubviews:(id)arg1;
 - (void)setDeferContentOffsetUpdates:(BOOL)arg1;
+- (void)setRespectsContentZOrder:(BOOL)arg1;
 - (void)setScrollViewContentBounds:(struct CGRect)arg1;
 - (void)setScrollViewNeedsLayout;
 - (void)setVisibleOrigin:(struct CGPoint)arg1;
+- (void)stopScrollingAndZoomingAnimations;
 
 @end
 

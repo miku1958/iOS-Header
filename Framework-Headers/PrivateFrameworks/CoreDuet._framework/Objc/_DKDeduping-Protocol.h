@@ -6,5 +6,6 @@
 
 @protocol _DKDeduping
 - (id)dedup;
+- (id)dk_dedup;
 @end
 

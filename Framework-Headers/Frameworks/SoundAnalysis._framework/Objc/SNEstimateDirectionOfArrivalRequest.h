@@ -6,28 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSArray, NSString, SNDirectionOfArrivalEstimator;
-@protocol SNAnalyzing;
+@class NSArray, NSString;
 
-@interface SNEstimateDirectionOfArrivalRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNEstimateDirectionOfArrivalRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
-    SNDirectionOfArrivalEstimator *_detector;
     NSArray *_spatialSpectrum;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
-@property (readonly, nonatomic) float azimuth;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *spatialSpectrum; // @synthesize spatialSpectrum=_spatialSpectrum;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)init;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToEstimateDirectionOfArrivalRequest:(id)arg1;
 
 @end
 

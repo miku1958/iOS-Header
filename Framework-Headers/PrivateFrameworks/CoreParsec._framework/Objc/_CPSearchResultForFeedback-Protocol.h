@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long blockId;
 @property (copy, nonatomic) NSString *completedQuery;
 @property (copy, nonatomic) NSString *correctedQuery;
+@property (nonatomic) BOOL didTakeoverGo;
 @property (nonatomic) BOOL doNotFold;
 @property (copy, nonatomic) NSData *entityData;
 @property (copy, nonatomic) NSString *fbr;
@@ -29,6 +30,8 @@
 @property (nonatomic) int knownResultBundleId;
 @property (nonatomic) int knownSectionBundleIdentifier;
 @property (strong, nonatomic) _CPStruct *localFeatures;
+@property (nonatomic) BOOL noGoTakeover;
+@property (nonatomic) BOOL preferTopPlatter;
 @property (nonatomic) BOOL publiclyIndexable;
 @property (strong, nonatomic) _CPPunchoutForFeedback *punchout;
 @property (nonatomic) unsigned long long queryId;
@@ -36,10 +39,12 @@
 @property (copy, nonatomic) NSString *resultBundleId;
 @property (copy, nonatomic) NSString *resultType;
 @property (copy, nonatomic) NSString *sectionBundleIdentifier;
-@property (copy, nonatomic) NSString *srf;
+@property (nonatomic) BOOL shouldUseCompactDisplay;
 @property (nonatomic) int topHit;
 @property (nonatomic) int type;
 @property (copy, nonatomic) NSString *userInput;
+@property (nonatomic) BOOL usesCompactDisplay;
+@property (nonatomic) BOOL wasCompact;
 @property (readonly, nonatomic) unsigned long long whichApplicationbundleid;
 @property (readonly, nonatomic) unsigned long long whichResultbundleidentifier;
 @property (readonly, nonatomic) unsigned long long whichSectionbundleid;

@@ -67,6 +67,9 @@
 - (BOOL)_isUserOwner:(id)arg1;
 - (BOOL)_isVoiceIDEnabled:(id)arg1;
 - (id)_itemsToHideInSet:(id)arg1;
+- (void)_registerForExternalUpdates;
+- (id)_siriSectionFooter;
+- (void)_unregisterForExternalUpdates;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithHome:(id)arg1 userItem:(id)arg2 delegate:(id)arg3;
 - (id)reuseIdentifierForFooterViewInSection:(unsigned long long)arg1;

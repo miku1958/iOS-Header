@@ -17,7 +17,6 @@
     XBSnapshotManifestIdentity *_identity;
     NSMutableDictionary *_snapshotGroupsByID;
     NSFileManager *_imageAccessFileManger;
-    _Atomic unsigned long long _bytesWaitingToWriteOut;
     BSTimer *_reapingTimer;
     BSAtomicSignal *_invalidatedSignal;
     unsigned long long _clientCount;
@@ -25,7 +24,10 @@
     NSMutableArray *_archiveSchedulingQueue_synchronizeCompletions;
     BOOL _archiveSchedulingQueue_dirty;
     BOOL _archiveSchedulingQueue_scheduled;
+    BOOL _logContainerIdentifierDirty;
     struct os_unfair_lock_s _accessLock;
+    NSString *_baseLogIdentifier;
+    NSString *_logIdentifier;
 }
 
 @property (readonly, copy, nonatomic) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
@@ -36,7 +38,6 @@
 @property (readonly) Class superclass;
 
 + (void)_configureSnapshot:(id)arg1 withCompatibilityInfo:(id)arg2 forLaunchRequest:(id)arg3;
-+ (void)_flushManifestQueue;
 + (long long)_outputFormatForSnapshot:(id)arg1;
 + (id)_snapshotPredicateForRequest:(id)arg1;
 + (void)_workloop_noteManifestInvalidated:(id)arg1;
@@ -48,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)_access_accessSnapshotsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_access_addSnapshotToGroup:(id)arg1;
+- (id)_access_allSnapshotGroups;
 - (void)_access_deletePaths:(id)arg1;
 - (void)_access_deleteSnapshots:(id)arg1;
 - (void)_access_doArchiveWithCompletions:(id)arg1;
@@ -63,13 +65,16 @@
 - (id)_allSnapshotGroups;
 - (void)_commonInit;
 - (id)_createSnapshotWithGroupID:(id)arg1 generationContext:(id)arg2;
+- (id)_descriptionForStateCaptureWithMultilinePrefix:(id)arg1;
 - (id)_generatableSnapshotForGroupID:(id)arg1 generationContext:(id)arg2;
 - (void)_handleMemoryPressure;
 - (BOOL)_imageAccessQueue_saveData:(id)arg1 forSnapshot:(id)arg2;
 - (id)_initWithContainerIdentity:(id)arg1;
 - (BOOL)_invalidate;
 - (void)_noteDirtied;
+- (void)_reapExpiredAndInvalidSnapshots;
 - (void)_scheduleArchivingIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_setContainerIdentity:(id)arg1;
 - (id)_snapshotGroupsByID;
 - (void)_synchronizeDataStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_validateWithContainerIdentity:(id)arg1;
@@ -95,7 +100,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
+- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 options:(unsigned long long)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 imageDataSavedHandler:(CDUnknownBlockType)arg5;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)purgeSnapshotsWithProtectedContent;

@@ -20,34 +20,5 @@ struct AVSystemControllerPrivate {
     id _field7;
 };
 
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
 struct OpaqueFigSystemController;
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    int width;
-    int height;
-} CDStruct_79c71658;
-
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
 

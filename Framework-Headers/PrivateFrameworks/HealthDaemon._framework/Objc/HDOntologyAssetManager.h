@@ -21,19 +21,18 @@
     NSMutableDictionary *_registeredHandlers;
     BOOL _assetDownloadEnabled;
     CDUnknownBlockType _AWDMetricPosterBlock;
-    NSURL *_assetFileURL;
-    MAAsset *_currentOntologyAsset;
     MAAsset *_latestOntologyAsset;
-    long long _simulatedCompatibilityVersion;
-    HDPeriodicActivity *_catalogUpdatePeriodicActivity;
     NSMutableDictionary *_completionsByActivityName;
     HDDaemon *_daemon;
+    MAAsset *_currentOntologyAsset;
+    long long _simulatedCompatibilityVersion;
+    HDPeriodicActivity *_catalogUpdatePeriodicActivity;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType AWDMetricPosterBlock; // @synthesize AWDMetricPosterBlock=_AWDMetricPosterBlock;
 @property (nonatomic) BOOL assetDownloadEnabled; // @synthesize assetDownloadEnabled=_assetDownloadEnabled;
 @property (readonly, nonatomic) _HKMobileAssetDownloadManager *assetDownloadManager;
-@property (copy, nonatomic) NSURL *assetFileURL; // @synthesize assetFileURL=_assetFileURL;
+@property (readonly, copy, nonatomic) NSURL *assetFileURL;
 @property (readonly, nonatomic) long long assetFileVersion;
 @property (strong, nonatomic) HDPeriodicActivity *catalogUpdatePeriodicActivity; // @synthesize catalogUpdatePeriodicActivity=_catalogUpdatePeriodicActivity;
 @property (readonly, copy, nonatomic) NSMutableDictionary *completionsByActivityName; // @synthesize completionsByActivityName=_completionsByActivityName;
@@ -42,7 +41,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MAAsset *latestOntologyAsset; // @synthesize latestOntologyAsset=_latestOntologyAsset;
+@property (readonly, nonatomic) MAAsset *latestOntologyAsset; // @synthesize latestOntologyAsset=_latestOntologyAsset;
 @property (nonatomic) long long simulatedCompatibilityVersion; // @synthesize simulatedCompatibilityVersion=_simulatedCompatibilityVersion;
 @property (readonly) Class superclass;
 

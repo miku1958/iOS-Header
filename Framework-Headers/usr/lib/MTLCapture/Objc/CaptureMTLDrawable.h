@@ -22,9 +22,7 @@
 @property (readonly) id<MTLDrawable> baseObject;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long drawableID;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) double presentedTime;
 @property (readonly) unsigned long long streamReference;
 @property (readonly) Class superclass;
 @property (readonly) struct GTTraceContext *traceContext;
@@ -37,7 +35,6 @@
 - (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2;
 - (id)layer;
 - (void)present;
-- (void)presentAfterMinimumDuration:(double)arg1;
 - (void)presentAtTime:(double)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)texture;

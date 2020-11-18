@@ -10,6 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct Arc4State {
+    unsigned int _field1;
+    unsigned int _field2;
+    char *_field3;
+};
+
 struct CGSize {
     double width;
     double height;

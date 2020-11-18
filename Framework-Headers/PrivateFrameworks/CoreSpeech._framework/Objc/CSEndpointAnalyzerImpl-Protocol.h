@@ -26,6 +26,7 @@
 
 @optional
 - (void)handleVoiceTriggerWithActivationInfo:(NSDictionary *)arg1;
+- (void)logFeaturesWithEvent:(NSString *)arg1 locale:(NSString *)arg2;
 - (void)processServerEndpointFeatures:(CSServerEndpointFeatures *)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(void (^)(BOOL, NSArray *))arg2;
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;

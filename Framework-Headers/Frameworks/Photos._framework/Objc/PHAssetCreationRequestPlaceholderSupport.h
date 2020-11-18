@@ -17,9 +17,6 @@
 
 @property (readonly, weak, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
 
-+ (BOOL)_shouldBakeInAdjustmentsAndFlattenLivePhoto:(BOOL *)arg1 forSourceAsset:(id)arg2 adjustmentBakeInOptions:(id)arg3;
-+ (BOOL)_shouldCopySpatialOverCaptureResourcesMetadataCopyOptions:(id)arg1;
-+ (BOOL)_shouldCopyTitleDescriptionAndKeywordsForMetadataCopyOptions:(id)arg1;
 - (void).cxx_destruct;
 - (id)_createPlaceholderManagedAssetFromSourceManagedAsset:(id)arg1 inPhotoLibrary:(id)arg2 error:(id *)arg3;
 - (id)_fetchOptionsForDuplicateAssetPhotoLibraryType:(id)arg1;

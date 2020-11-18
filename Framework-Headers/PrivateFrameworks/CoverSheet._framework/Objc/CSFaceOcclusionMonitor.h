@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 - (BOOL)_handleBiometricEvent:(unsigned long long)arg1;
+- (void)conformsToCSEventHandling;
 - (BOOL)handleEvent:(id)arg1;
 - (BOOL)wouldHandleButtonEvent:(id)arg1;
 

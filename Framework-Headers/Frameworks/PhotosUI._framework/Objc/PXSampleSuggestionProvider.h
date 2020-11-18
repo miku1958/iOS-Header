@@ -61,7 +61,7 @@
 - (void)suggestionGadget:(id)arg1 commitViewController:(id)arg2;
 - (void)suggestionGadget:(id)arg1 willDismissPreviewController:(id)arg2;
 - (id)suggestionGadgetPreviewController:(id)arg1;
-- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1;
+- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

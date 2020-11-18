@@ -15,6 +15,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_subscriptionInfo;
+    NSMutableDictionary *_subscriptionContext;
     CoreTelephonyClient *_telephonyClient;
 }
 
@@ -26,6 +27,7 @@
 - (void).cxx_destruct;
 - (void)carrierBundleChange:(id)arg1;
 - (id)init;
+- (id)subscriptionContextForSlot:(long long)arg1;
 - (void)subscriptionInfoDidChange;
 - (id)subscriptionInfoForSlot:(long long)arg1;
 

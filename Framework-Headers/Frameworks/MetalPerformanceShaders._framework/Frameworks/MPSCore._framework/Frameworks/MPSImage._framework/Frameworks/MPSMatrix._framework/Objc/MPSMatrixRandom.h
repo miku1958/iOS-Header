@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) unsigned int destinationDataType; // @synthesize destinationDataType=_destinationDataType;
 @property (readonly, nonatomic) unsigned long long distributionType; // @synthesize distributionType=_distributionType;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeToCommandBuffer:(id)arg1 destinationMatrix:(id)arg2;
 - (void)encodeToCommandBuffer:(id)arg1 destinationVector:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

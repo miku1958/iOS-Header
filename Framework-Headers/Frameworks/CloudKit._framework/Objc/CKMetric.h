@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class NSDate;
+@class NSDate, NSDictionary;
 
 @interface CKMetric : NSObject <NSCopying, NSSecureCoding>
 {
@@ -21,20 +21,28 @@
     unsigned long long _bytesDownloaded;
     unsigned long long _connections;
     unsigned long long _connectionsCreated;
+    NSDictionary *_totalBytesByChunkProfile;
+    NSDictionary *_chunkCountByChunkProfile;
+    NSDictionary *_fileCountByChunkProfile;
 }
 
 @property unsigned long long bytesDownloaded; // @synthesize bytesDownloaded=_bytesDownloaded;
 @property unsigned long long bytesUploaded; // @synthesize bytesUploaded=_bytesUploaded;
+@property (copy) NSDictionary *chunkCountByChunkProfile; // @synthesize chunkCountByChunkProfile=_chunkCountByChunkProfile;
 @property unsigned long long connections; // @synthesize connections=_connections;
 @property unsigned long long connectionsCreated; // @synthesize connectionsCreated=_connectionsCreated;
 @property double duration; // @synthesize duration=_duration;
 @property double executing; // @synthesize executing=_executing;
+@property (copy) NSDictionary *fileCountByChunkProfile; // @synthesize fileCountByChunkProfile=_fileCountByChunkProfile;
 @property double queueing; // @synthesize queueing=_queueing;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (copy) NSDictionary *totalBytesByChunkProfile; // @synthesize totalBytesByChunkProfile=_totalBytesByChunkProfile;
 
 + (BOOL)supportsSecureCoding;
++ (id)unionDictionary:(id)arg1 with:(id)arg2;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)ckPropertyDescriptionForChunkProfileDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

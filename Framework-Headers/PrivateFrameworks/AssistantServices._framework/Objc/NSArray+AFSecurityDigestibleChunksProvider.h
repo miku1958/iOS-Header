@@ -17,7 +17,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_af_lenient:(BOOL)arg1 map:(CDUnknownBlockType)arg2;
 - (id)af_arrayByMappingWithBlock:(CDUnknownBlockType)arg1;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)af_lenientMappedArray:(CDUnknownBlockType)arg1;
+- (id)af_mappedArray:(CDUnknownBlockType)arg1;
+- (id)af_mappedDictionary:(CDUnknownBlockType)arg1;
+- (id)af_objectsPassingTest:(CDUnknownBlockType)arg1;
 @end
 

@@ -11,8 +11,8 @@
 #import <VideosUI/VUIPostPlayViewDelegate-Protocol.h>
 #import <VideosUI/VideosExtrasContextDelegate-Protocol.h>
 
-@class AVExternalPlaybackController, AVPlayerViewController, NSDate, NSNumber, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIPostPlayView, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
-@protocol TVPMediaItem;
+@class AVExternalPlaybackController, NSDate, NSDictionary, NSNumber, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIPostPlayView, VUIProductPlacementView, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
+@protocol TVPMediaItem, VUIPlayerViewController;
 
 @interface VUIPlaybackManager : NSObject <AVPlayerViewControllerDelegatePrivate, VideosExtrasContextDelegate, VUINowPlayingFeatureMonitorDelegate, VUIPostPlayViewDelegate>
 {
@@ -20,18 +20,22 @@
     BOOL _configuredPostPlay;
     BOOL _shouldDisplayTVRatingWhenVideoBoundsIsAvailable;
     BOOL _shouldAnimateTVRatingView;
+    BOOL _shouldDisplayProductPlacementWhenVideoBoundsIsAvailable;
+    BOOL _shouldAnimateProductPlacementView;
     VUIPlayer *_mainPlayer;
     VUIPlayer *_backgroundAudioPlayer;
     VUIPlayer *_extrasPlayer;
     VUIPlayer *_activePlayer;
     TVPStateMachine *_stateMachine;
     VideosExtrasContext *_extrasContext;
-    AVPlayerViewController *_avPlayerViewController;
-    AVPlayerViewController *_mainAVPlayerViewController;
-    AVPlayerViewController *_extrasAVPlayerViewController;
+    UIViewController<VUIPlayerViewController> *_avPlayerViewController;
+    UIViewController<VUIPlayerViewController> *_mainAVPlayerViewController;
+    UIViewController<VUIPlayerViewController> *_extrasAVPlayerViewController;
     UIViewController *_presentingViewController;
     long long _dismissalOperation;
     AVExternalPlaybackController *_avExternalPlaybackController;
+    NSDictionary *_savedErrorUserInfo;
+    id _savedErrorContext;
     NSString *_mostRecentMediaType;
     VideosExtrasPresenter *_extrasPresenter;
     VUINowPlayingFeatureMonitor *_featureMonitor;
@@ -43,20 +47,22 @@
     VUIVideoAdvisoryLogoImageDownloader *_logoImageDownloader;
     UIImage *_ratingImage;
     VUIVideoAdvisoryView *_ratingView;
+    UIImage *_productPlacementImage;
+    VUIProductPlacementView *_productPlacementView;
     NSString *_postPlayItemId;
 }
 
 @property (weak, nonatomic) VUIPlayer *activePlayer; // @synthesize activePlayer=_activePlayer;
 @property (nonatomic) unsigned long long autoPlayedVideosCount; // @synthesize autoPlayedVideosCount=_autoPlayedVideosCount;
 @property (strong, nonatomic) AVExternalPlaybackController *avExternalPlaybackController; // @synthesize avExternalPlaybackController=_avExternalPlaybackController;
-@property (strong, nonatomic) AVPlayerViewController *avPlayerViewController; // @synthesize avPlayerViewController=_avPlayerViewController;
+@property (strong, nonatomic) UIViewController<VUIPlayerViewController> *avPlayerViewController; // @synthesize avPlayerViewController=_avPlayerViewController;
 @property (strong, nonatomic) VUIPlayer *backgroundAudioPlayer; // @synthesize backgroundAudioPlayer=_backgroundAudioPlayer;
 @property (nonatomic) BOOL configuredPostPlay; // @synthesize configuredPostPlay=_configuredPostPlay;
 @property (readonly, nonatomic) NSObject<TVPMediaItem> *currentMediaItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long dismissalOperation; // @synthesize dismissalOperation=_dismissalOperation;
-@property (strong, nonatomic) AVPlayerViewController *extrasAVPlayerViewController; // @synthesize extrasAVPlayerViewController=_extrasAVPlayerViewController;
+@property (strong, nonatomic) UIViewController<VUIPlayerViewController> *extrasAVPlayerViewController; // @synthesize extrasAVPlayerViewController=_extrasAVPlayerViewController;
 @property (strong, nonatomic) VideosExtrasContext *extrasContext; // @synthesize extrasContext=_extrasContext;
 @property (strong, nonatomic) VUIPlayer *extrasPlayer; // @synthesize extrasPlayer=_extrasPlayer;
 @property (strong, nonatomic) VideosExtrasPresenter *extrasPresenter; // @synthesize extrasPresenter=_extrasPresenter;
@@ -67,33 +73,43 @@
 @property (readonly, nonatomic) BOOL isPIPing;
 @property (readonly, nonatomic) BOOL isPlaybackUIBeingShown;
 @property (strong, nonatomic) VUIVideoAdvisoryLogoImageDownloader *logoImageDownloader; // @synthesize logoImageDownloader=_logoImageDownloader;
-@property (strong, nonatomic) AVPlayerViewController *mainAVPlayerViewController; // @synthesize mainAVPlayerViewController=_mainAVPlayerViewController;
+@property (strong, nonatomic) UIViewController<VUIPlayerViewController> *mainAVPlayerViewController; // @synthesize mainAVPlayerViewController=_mainAVPlayerViewController;
 @property (strong, nonatomic) VUIPlayer *mainPlayer; // @synthesize mainPlayer=_mainPlayer;
 @property (copy, nonatomic) NSString *mostRecentMediaType; // @synthesize mostRecentMediaType=_mostRecentMediaType;
 @property (strong, nonatomic) NSNumber *postPlayImpressionTime; // @synthesize postPlayImpressionTime=_postPlayImpressionTime;
 @property (strong, nonatomic) NSString *postPlayItemId; // @synthesize postPlayItemId=_postPlayItemId;
 @property (strong, nonatomic) VUIPostPlayView *postPlayView; // @synthesize postPlayView=_postPlayView;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (strong, nonatomic) UIImage *productPlacementImage; // @synthesize productPlacementImage=_productPlacementImage;
+@property (strong, nonatomic) VUIProductPlacementView *productPlacementView; // @synthesize productPlacementView=_productPlacementView;
 @property (strong, nonatomic) UIImage *ratingImage; // @synthesize ratingImage=_ratingImage;
 @property (strong, nonatomic) VUIVideoAdvisoryView *ratingView; // @synthesize ratingView=_ratingView;
 @property (nonatomic) BOOL requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
+@property (strong, nonatomic) id savedErrorContext; // @synthesize savedErrorContext=_savedErrorContext;
+@property (strong, nonatomic) NSDictionary *savedErrorUserInfo; // @synthesize savedErrorUserInfo=_savedErrorUserInfo;
+@property (nonatomic) BOOL shouldAnimateProductPlacementView; // @synthesize shouldAnimateProductPlacementView=_shouldAnimateProductPlacementView;
 @property (nonatomic) BOOL shouldAnimateTVRatingView; // @synthesize shouldAnimateTVRatingView=_shouldAnimateTVRatingView;
+@property (nonatomic) BOOL shouldDisplayProductPlacementWhenVideoBoundsIsAvailable; // @synthesize shouldDisplayProductPlacementWhenVideoBoundsIsAvailable=_shouldDisplayProductPlacementWhenVideoBoundsIsAvailable;
 @property (nonatomic) BOOL shouldDisplayTVRatingWhenVideoBoundsIsAvailable; // @synthesize shouldDisplayTVRatingWhenVideoBoundsIsAvailable=_shouldDisplayTVRatingWhenVideoBoundsIsAvailable;
 @property (strong, nonatomic) UIButton *skipButton; // @synthesize skipButton=_skipButton;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 
 + (void)_checkIfAllowedToPlayOnCellularNetworkWithMediaItem:(id)arg1 presentingController:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (BOOL)_mediaItemIsBeingDownloadedAndDownloadAllowsCellular:(id)arg1;
 + (void)_performRatingAndAgeVerificationWithMediaItem:(id)arg1 presentingController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_presentCantPlaybackOverCellularAlertControllerWithMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)_presentStartingPlaybackWindowWarningWithRentalMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)_rentalPlaybackStartDateWithMediaItem:(id)arg1;
++ (BOOL)_shouldPromptForExpiredDownload:(id)arg1;
 + (BOOL)_shouldWarnAboutRentalPlaybackQualityForRentalMediaItem:(id)arg1;
 + (BOOL)_shouldWarnStartingRentalPlaybackWindowWithMediaItem:(id)arg1;
++ (void)_showAlertControllerForExpirationPromptForDownload:(id)arg1 presentingViewController:(id)arg2;
 + (void)_showCellularPlaybackQualityOptionsForRentalMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)downloadDataSource;
 + (void)preflightPlaybackWithMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_addProductPlacementFeatureFromMediaItem:(id)arg1;
 - (void)_addRollsInfoFeaturesFromMediaItem:(id)arg1;
 - (void)_addSkipInfoFeaturesFromMediaItem:(id)arg1;
 - (void)_addTVRatingFeatureFromMediaItem:(id)arg1;
@@ -108,6 +124,7 @@
 - (void)_configureStillWatchingFeatureMonitoringIfLivePlayback;
 - (void)_currentMediaItemDidChange:(id)arg1;
 - (void)_dismissPostPlayWithSwipe:(id)arg1;
+- (void)_downloadProductPlacementImageIfAvailable:(id)arg1;
 - (void)_downloadRatingImageIfAvailable:(id)arg1;
 - (void)_externalPlaybackTypeDidChange:(id)arg1;
 - (void)_handleDismissSkipButtonGesture:(id)arg1;
@@ -122,20 +139,23 @@
 - (void)_registerStateMachineHandlers;
 - (void)_removeTappableViewForSkipButtonIfNeeded;
 - (void)_removeVideoDimmingViewForPostPlay;
+- (void)_resetAutoPlayBingeWatchingQualifications;
 - (void)_setExtrasButtonVisible:(BOOL)arg1;
 - (void)_setupBootstrapPostPlayFeatureMonitorForMediaItem:(id)arg1;
-- (void)_showOrUpdateTVRatingIfNeeded;
+- (void)_setupFeaturesFromMainPlayersCurrentMediaItem;
+- (void)_showOrUpdateAdvisoryViewsIfNeeded;
+- (void)_showProductPlacement:(BOOL)arg1 withImage:(id)arg2 animated:(BOOL)arg3;
 - (void)_showSkipButtonWithTitle:(id)arg1 show:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_showStillWatchingAlertFeature:(id)arg1;
 - (void)_showTVRating:(BOOL)arg1 withImage:(id)arg2 animated:(BOOL)arg3;
 - (void)_skipButtonTapped:(id)arg1;
 - (id)_stillWatchingAlertDurationOverride;
 - (void)_updateRequiresLinearPlayback;
-- (void)_updateRollsInfoFromMainPlayersCurrentMediaItem;
 - (void)_updateStopWhenBackgroundedFeatureForApplicationState:(long long)arg1 isFullScreen:(BOOL)arg2;
 - (void)_updateTimeBoundFeature:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateTimeTriggeredFeature:(id)arg1 animated:(BOOL)arg2;
 - (void)autoPlayTimerDidCompleteForPostPlayView:(id)arg1;
+- (id)createPlayerViewController;
 - (void)dismissPlaybackAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)extrasBackButtonPressed;
 - (void)extrasContext:(id)arg1 extrasVisibilityNeedsUpdate:(BOOL)arg2;
@@ -153,6 +173,7 @@
 - (void)playerViewController:(id)arg1 failedToStartPictureInPictureWithError:(id)arg2;
 - (void)playerViewController:(id)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (void)playerViewController:(id)arg1 willTransitionToVisibilityOfPlaybackControls:(BOOL)arg2 withAnimationCoordinator:(id)arg3;
 - (void)playerViewControllerDidStartPictureInPicture:(id)arg1;
 - (void)playerViewControllerDidStopPictureInPicture:(id)arg1;
 - (void)playerViewControllerWillStartPictureInPicture:(id)arg1;

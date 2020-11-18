@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVAppStorePlayerLayerView, AVBackdropView, AVButton, AVObservationController, AVPlayer, AVPlayerViewController, AVStyleSheet, NSMutableDictionary, NSString;
+@class AVAppStorePlayerLayerView, AVButton, AVLayoutView, AVObservationController, AVPlayer, AVPlayerViewController, AVStyleSheet, NSMutableDictionary, NSString;
 @protocol AVPlayerViewControllerDelegate;
 
 @interface AVAppStorePlayerView : UIView
@@ -24,7 +24,7 @@
     id<AVPlayerViewControllerDelegate> _playerViewControllerDelegate;
     AVPlayerViewController *_playerViewController;
     AVButton *_prominentPlayButton;
-    AVBackdropView *_prominentPlayButtonBackdropView;
+    AVLayoutView *_prominentPlayButtonLayoutView;
     AVStyleSheet *_styleSheet;
     AVAppStorePlayerLayerView *_playerLayerView;
     NSMutableDictionary *_videoGravityForLayoutClassDictionary;
@@ -42,7 +42,7 @@
 @property (weak, nonatomic) id<AVPlayerViewControllerDelegate> playerViewControllerDelegate; // @synthesize playerViewControllerDelegate=_playerViewControllerDelegate;
 @property (nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property (strong, nonatomic) AVButton *prominentPlayButton; // @synthesize prominentPlayButton=_prominentPlayButton;
-@property (strong, nonatomic) AVBackdropView *prominentPlayButtonBackdropView; // @synthesize prominentPlayButtonBackdropView=_prominentPlayButtonBackdropView;
+@property (strong, nonatomic) AVLayoutView *prominentPlayButtonLayoutView; // @synthesize prominentPlayButtonLayoutView=_prominentPlayButtonLayoutView;
 @property (nonatomic) BOOL showsMinimalPlaybackControlsWhenEmbeddedInline; // @synthesize showsMinimalPlaybackControlsWhenEmbeddedInline=_showsMinimalPlaybackControlsWhenEmbeddedInline;
 @property (nonatomic) BOOL showsPlaybackControls; // @synthesize showsPlaybackControls=_showsPlaybackControls;
 @property (strong, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;

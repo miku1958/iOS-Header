@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtCC7NewsUI211WelcomeView6Footer : UIVisualEffectView
 {
     MISSING_TYPE *continueButton;

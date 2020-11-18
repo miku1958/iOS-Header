@@ -7,7 +7,7 @@
 #import <Message/NSObject-Protocol.h>
 
 @class ECLocalMessageAction, ECMessageFlagChange, ECTransferMessageAction, ECTransferMessageActionResults, NSArray, NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL;
-@protocol ECMessage, EDReceivingAccount;
+@protocol ECMessage, EDPersistedMessage, EDReceivingAccount;
 
 @protocol EDMessageChangeManagerSubClassMethods <NSObject>
 - (id<EDReceivingAccount>)accountForMailboxURL:(NSURL *)arg1;
@@ -22,7 +22,7 @@
 - (long long)mailboxDatabaseIDForURL:(NSURL *)arg1;
 - (BOOL)mailboxIsAllMail:(NSURL *)arg1;
 - (BOOL)mailboxPartOfAllMail:(NSURL *)arg1;
-- (id<ECMessage>)messageForDatabaseID:(long long)arg1;
+- (id<EDPersistedMessage>)messageForDatabaseID:(long long)arg1;
 - (void)messageWasAppended:(id<ECMessage>)arg1;
 - (NSArray *)messagesForRemoteIDs:(NSArray *)arg1 mailboxURL:(NSURL *)arg2;
 - (BOOL)persistNewMessages:(NSArray *)arg1 mailboxURL:(NSURL *)arg2 oldMessagesByNewMessage:(NSMutableDictionary *)arg3 fromSyncing:(BOOL)arg4;

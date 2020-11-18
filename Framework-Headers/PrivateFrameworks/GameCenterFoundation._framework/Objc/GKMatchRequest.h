@@ -32,8 +32,8 @@
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
 + (unsigned long long)maxPlayersAllowedForMatchOfType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (BOOL)defaultNumberOfPlayersIsValid;
 - (id)description;
 - (void)ensureValidityHosted:(BOOL)arg1;

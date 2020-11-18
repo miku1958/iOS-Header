@@ -9,11 +9,13 @@
 #import <CoreSpeech/AVVoiceControllerRecordDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioDecoderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioFileReaderDelegate-Protocol.h>
+#import <CoreSpeech/CSAudioServerCrashEventProviding-Protocol.h>
+#import <CoreSpeech/CSAudioSessionEventProviding-Protocol.h>
 
 @class AVVoiceController, CSAudioFileReader, CSRemoteRecordClient, NSDictionary, NSHashTable, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@protocol CSAudioServerCrashEventProvidingDelegate, CSAudioSessionEventProvidingDelegate, OS_dispatch_queue;
 
-@interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate>
+@interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate, CSAudioServerCrashEventProviding, CSAudioSessionEventProviding>
 {
     AVVoiceController *_voiceController;
     struct OpaqueAudioConverter *_deinterleaver;
@@ -26,19 +28,24 @@
     CSAudioFileReader *_audioFileReader;
     unsigned long long _audioFilePathIndex;
     BOOL _waitingForDidStart;
-    BOOL _holdingPrewarmException;
+    unsigned long long _pendingTwoShotVTToken;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_voiceControllerCreationQueue;
     NSHashTable *_observers;
+    id<CSAudioServerCrashEventProvidingDelegate> _crashEventDelegate;
+    id<CSAudioSessionEventProvidingDelegate> _sessionEventDelegate;
 }
 
+@property (weak, nonatomic) id<CSAudioServerCrashEventProvidingDelegate> crashEventDelegate; // @synthesize crashEventDelegate=_crashEventDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL duckOthersOption;
 @property (readonly) unsigned long long hash;
-@property BOOL holdingPrewarmException; // @synthesize holdingPrewarmException=_holdingPrewarmException;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (weak, nonatomic) id<CSAudioSessionEventProvidingDelegate> sessionEventDelegate; // @synthesize sessionEventDelegate=_sessionEventDelegate;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *voiceControllerCreationQueue; // @synthesize voiceControllerCreationQueue=_voiceControllerCreationQueue;
 
 + (unsigned long long)_convertDeactivateOption:(unsigned long long)arg1;
 + (void)createSharedAudioSession;
@@ -50,7 +57,6 @@
 - (id)_deinterleaveBufferIfNeeded:(id)arg1;
 - (void)_destroyVoiceController;
 - (id)_getRecordSettingsWithRequest:(id)arg1;
-- (void)_logRecordingStopErrorIfNeeded:(long long)arg1;
 - (void)_logResourceNotAvailableErrorIfNeeded:(id)arg1;
 - (BOOL)_needResetAudioInjectionIndex:(id)arg1;
 - (void)_processAudioBuffer:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
@@ -60,6 +66,7 @@
 - (BOOL)_shouldUseRemoteBuiltInMic:(id)arg1;
 - (BOOL)_shouldUseRemoteRecordForContext:(id)arg1;
 - (BOOL)_startAudioStreamForAudioInjection;
+- (id)_updateLanguageCodeForRemoteVTEIResult:(id)arg1;
 - (id)_voiceControllerWithError:(id *)arg1;
 - (BOOL)activateAudioSessionWithReason:(unsigned long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
 - (unsigned long long)alertStartTime;
@@ -72,7 +79,7 @@
 - (BOOL)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)enableMiniDucking:(BOOL)arg1;
-- (void)holdPrewarmMSNException;
+- (void)enableSmartRoutingConsiderationForStream:(unsigned long long)arg1 enable:(BOOL)arg2;
 - (id)initWithQueue:(id)arg1 error:(id *)arg2;
 - (BOOL)isNarrowBandWithStreamHandleId:(unsigned long long)arg1;
 - (BOOL)isRecordingWithStreamHandleId:(unsigned long long)arg1;
@@ -89,11 +96,13 @@
 - (id)recordSettingsWithStreamHandleId:(unsigned long long)arg1;
 - (float)recordingSampleRateWithStreamHandleId:(unsigned long long)arg1;
 - (void)registerObserver:(id)arg1;
-- (void)releasePrewarmMSNException;
 - (BOOL)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
+- (void)setAudioServerCrashEventDelegate:(id)arg1;
+- (void)setAudioSessionEventDelegate:(id)arg1;
 - (unsigned long long)setContext:(id)arg1 error:(id *)arg2;
 - (BOOL)setCurrentContext:(id)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
 - (void)setMeteringEnabled:(BOOL)arg1;
+- (BOOL)setRecordMode:(long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)startAudioStreamWithOption:(id)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)stopAudioStreamWithStreamHandleId:(unsigned long long)arg1 error:(id *)arg2;
 - (void)unregisterObserver:(id)arg1;

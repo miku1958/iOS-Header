@@ -6,8 +6,11 @@
 
 #import <CloudKit/CKShare.h>
 
+@class NSArray;
+
 @interface CKShare (IC)
 
+@property (readonly, nonatomic) NSArray *ic_nonCurrentUserParticipants;
 @property (readonly, nonatomic) unsigned long long ic_nonOwnerAcceptedParticipantsCount;
 @property (readonly, nonatomic) unsigned long long ic_nonOwnerInvitedParticipantsCount;
 

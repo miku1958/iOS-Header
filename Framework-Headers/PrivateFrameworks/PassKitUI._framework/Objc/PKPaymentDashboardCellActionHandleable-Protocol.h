@@ -13,6 +13,7 @@
 - (BOOL)enableDisclosure;
 - (void)endUpdates:(BOOL)arg1;
 - (PKPaymentPass *)pass;
+- (long long)viewType;
 
 @optional
 - (void)setActionHandler:(void (^)(UIView<PKPaymentDashboardCellActionHandleable> *, PKPaymentPassAction *))arg1;

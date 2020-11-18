@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (void)_updateResultsForFuture:(id)arg1 withHiddenStatus:(BOOL)arg2;
 - (id)initWithCameraProfile:(id)arg1;
 
 @end

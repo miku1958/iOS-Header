@@ -25,18 +25,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)_hasBrokenAlertPresentationInvariants;
-- (BOOL)_hasBrokenHostingLayerInvariants;
-- (BOOL)_hasBrokenWindowInvariants;
-- (id)_init;
-- (void)_logAlertItemLayout;
-- (void)_performLayoutVerification;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)dealloc;
 - (void)handleReachabilityYOffsetDidChange;
+- (id)init;
 - (void)scheduleAlertLayoutVerificationForReason:(id)arg1;
 - (void)setAlertItemWindow:(id)arg1;
 - (void)setAlertPresenter:(id)arg1;

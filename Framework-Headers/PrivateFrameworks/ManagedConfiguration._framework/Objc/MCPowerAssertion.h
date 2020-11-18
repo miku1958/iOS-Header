@@ -14,7 +14,7 @@
 @property (readonly, nonatomic, getter=isParked) BOOL parked; // @synthesize parked=_parked;
 
 - (void)dealloc;
-- (id)init;
+- (id)initWithReason:(id)arg1;
 - (void)park;
 - (void)unpark;
 

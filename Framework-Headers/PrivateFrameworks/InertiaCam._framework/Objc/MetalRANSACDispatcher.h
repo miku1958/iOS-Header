@@ -11,6 +11,7 @@
 @interface MetalRANSACDispatcher : NSObject
 {
     float inlierLimit;
+    struct CGSize frameSize;
     id<MTLCommandQueue> m_metalCommandQueue;
     id<MTLDevice> m_metalDevice;
     id<MTLFunction> m_metalKernelFunction;
@@ -24,7 +25,6 @@
     id<MTLBuffer> _m_RansacParams;
     id<MTLBuffer> _m_RansacHomographies;
     id<MTLBuffer> _m_ModelScores;
-    struct CGSize frameSize;
 }
 
 @property (nonatomic) struct CGSize frameSize; // @synthesize frameSize;

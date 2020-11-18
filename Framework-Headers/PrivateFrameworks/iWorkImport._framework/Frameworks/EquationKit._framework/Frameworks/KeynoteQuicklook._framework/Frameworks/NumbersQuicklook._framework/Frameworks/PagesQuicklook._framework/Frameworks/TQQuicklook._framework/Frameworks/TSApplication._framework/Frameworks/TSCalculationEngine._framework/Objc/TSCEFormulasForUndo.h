@@ -14,7 +14,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addFormula:(struct TSCEFormula *)arg1 atCellRef:(const struct TSCECellRef *)arg2 forOwnerKind:(unsigned short)arg3;
 - (void)addFormulaObject:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2 forOwnerKind:(unsigned short)arg3;
 - (void)addFormulaString:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2;
 - (vector_8b45bc7e)allOwnerKinds;

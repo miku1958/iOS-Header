@@ -12,11 +12,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _nextItemRowID;
     unsigned long long _nextNotifRank;
     unsigned long long _nextPackageItemRank;
+    unsigned long long _telemetryMinRowID;
+    long long _telemetryToken;
 }
 
 @property (readonly, nonatomic) unsigned long long nextItemRowID;
 @property (nonatomic) unsigned long long nextNotifRank;
 @property (nonatomic) unsigned long long nextPackageItemRank;
+@property (nonatomic) unsigned long long telemetryMinRowID;
+@property (nonatomic) long long telemetryToken;
 
 + (id)loadFromClientStateInSession:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;

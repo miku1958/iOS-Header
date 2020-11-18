@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <AVConference/VCConnection.h>
 
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
 @class IDSDataChannelLinkContext, NSData, NSString, NSUUID, VCDatagramChannelIDS;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionIDS : NSObject <VCConnectionProtocol>
+@interface VCConnectionIDS : VCConnection <VCConnectionProtocol>
 {
     IDSDataChannelLinkContext *_linkContext;
     unsigned int _datagramChannelToken;
@@ -25,6 +25,10 @@ __attribute__((visibility("hidden")))
     unsigned int _downlinkBitrateCap;
     BOOL _isLocalConstrained;
     BOOL _isRemoteConstrained;
+    BOOL _isLocalExpensive;
+    BOOL _isRemoteExpensive;
+    BOOL _isLocalDelegated;
+    BOOL _isRemoteDelegated;
 }
 
 @property (readonly) int connectionId;
@@ -38,10 +42,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isIPv6;
 @property (readonly) BOOL isLocalConstrained; // @synthesize isLocalConstrained=_isLocalConstrained;
+@property (readonly) BOOL isLocalDelegated; // @synthesize isLocalDelegated=_isLocalDelegated;
+@property (readonly) BOOL isLocalExpensive; // @synthesize isLocalExpensive=_isLocalExpensive;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
 @property (readonly) BOOL isRelay;
 @property (readonly) BOOL isRemoteConstrained; // @synthesize isRemoteConstrained=_isRemoteConstrained;
+@property (readonly) BOOL isRemoteDelegated; // @synthesize isRemoteDelegated=_isRemoteDelegated;
+@property (readonly) BOOL isRemoteExpensive; // @synthesize isRemoteExpensive=_isRemoteExpensive;
 @property (readonly) BOOL isRemoteOnCellular;
 @property (readonly) BOOL isRemoteOnWiFi;
 @property (readonly) BOOL isVPN;
@@ -61,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property unsigned int uplinkBitrateCap; // @synthesize uplinkBitrateCap=_uplinkBitrateCap;
 
 + (unsigned int)worstCaseNetworkOverheadInBytesWithNumOfStreamId:(int)arg1 isPriorityIncluded:(BOOL)arg2;
+- (int)cellTechForSoMask:(unsigned int)arg1 fallbackTo:(int)arg2;
 - (id)connectionQRSessionID;
 - (void)dealloc;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;

@@ -6,15 +6,15 @@
 
 #import <UIKitCore/_UIStatusBarIndicatorItem.h>
 
-@class _UIStatusBarFocusableImageView;
+@class _UIStatusBarRadarView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarRadarItem : _UIStatusBarIndicatorItem
 {
-    _UIStatusBarFocusableImageView *_radarItemView;
+    _UIStatusBarRadarView *_radarItemView;
 }
 
-@property (strong, nonatomic) _UIStatusBarFocusableImageView *radarItemView; // @synthesize radarItemView=_radarItemView;
+@property (strong, nonatomic) _UIStatusBarRadarView *radarItemView; // @synthesize radarItemView=_radarItemView;
 
 - (void).cxx_destruct;
 - (void)_create_radarItemView;

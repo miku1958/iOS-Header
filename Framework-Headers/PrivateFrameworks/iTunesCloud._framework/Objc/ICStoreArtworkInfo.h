@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/NSCopying-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICStoreArtworkSizeInfo, NSArray, NSDictionary, NSURL;
+@class ICStoreArtworkSizeInfo, NSArray, NSDictionary, NSString, NSURL;
 
-@interface ICStoreArtworkInfo : NSObject <NSCopying>
+@interface ICStoreArtworkInfo : NSObject <NSCopying, NSSecureCoding>
 {
     ICStoreArtworkSizeInfo *_sizeInfo;
     NSURL *_artworkURL;
@@ -27,7 +28,9 @@
 @property (readonly, nonatomic) ICStoreArtworkSizeInfo *sizeInfo; // @synthesize sizeInfo=_sizeInfo;
 @property (copy, nonatomic) NSArray *sortedResponseArray; // @synthesize sortedResponseArray=_sortedResponseArray;
 @property (copy, nonatomic) NSArray *sortedSupportedSizesArray; // @synthesize sortedSupportedSizesArray=_sortedSupportedSizesArray;
+@property (readonly, copy, nonatomic) NSString *stringRepresentation;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_hasOriginalSize;
 - (void)_sortResponseArray;
@@ -36,10 +39,13 @@
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3 preferP3ColorSpace:(BOOL)arg4;
 - (struct CGColor *)copyColorWithKind:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithArtworkResponseArray:(id)arg1;
 - (id)initWithArtworkResponseDictionary:(id)arg1;
 - (id)initWithArtworkResponseValue:(id)arg1;
 - (id)initWithArtworkURL:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

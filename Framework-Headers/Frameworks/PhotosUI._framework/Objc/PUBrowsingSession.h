@@ -63,8 +63,8 @@
 - (void)configureTilingView:(id)arg1;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3;
-- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4;
-- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 gestureProvider:(id)arg5 importStatusManager:(id)arg6;
+- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 lowMemoryMode:(BOOL)arg5;
+- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 lowMemoryMode:(BOOL)arg5 gestureProvider:(id)arg6 importStatusManager:(id)arg7;
 - (void)loadingStatusManager:(id)arg1 didUpdateLoadingStatus:(id)arg2 forItem:(id)arg3;
 - (void)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
 

@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface AMSFinanceResponse : NSObject
 {
-    AMSFinanceDialogResponse *_dialogResponse;
-    AMSFinanceAuthenticateResponse *_authenticateResponse;
-    AMSFinancePaymentSheetResponse *_paymentSheetResponse;
+    AMSFinanceAuthenticateResponse *_cachedAuthenticateResponse;
+    AMSFinanceDialogResponse *_cachedDialogResponse;
+    AMSFinancePaymentSheetResponse *_cachedPaymentSheetResponse;
     long long _dialogKind;
     NSDictionary *_responseDictionary;
     AMSURLTaskInfo *_taskInfo;
@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) ACAccount *account;
 @property (readonly, nonatomic) NSArray *actions;
-@property (readonly, nonatomic) AMSFinanceAuthenticateResponse *authenticateResponse; // @synthesize authenticateResponse=_authenticateResponse;
+@property (strong, nonatomic) AMSFinanceAuthenticateResponse *cachedAuthenticateResponse; // @synthesize cachedAuthenticateResponse=_cachedAuthenticateResponse;
+@property (strong, nonatomic) AMSFinanceDialogResponse *cachedDialogResponse; // @synthesize cachedDialogResponse=_cachedDialogResponse;
+@property (strong, nonatomic) AMSFinancePaymentSheetResponse *cachedPaymentSheetResponse; // @synthesize cachedPaymentSheetResponse=_cachedPaymentSheetResponse;
 @property (readonly, nonatomic) long long dialogKind; // @synthesize dialogKind=_dialogKind;
-@property (readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
-@property (readonly, nonatomic) AMSFinancePaymentSheetResponse *paymentSheetResponse; // @synthesize paymentSheetResponse=_paymentSheetResponse;
 @property (readonly, nonatomic) NSArray *pingURLs;
 @property (strong, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (readonly, nonatomic) NSError *serverError;
@@ -32,7 +32,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 @property (readonly, nonatomic) NSURL *versionMismatchURL;
 
++ (id)valueForProtocolKey:(id)arg1 inResponse:(id)arg2;
 - (void).cxx_destruct;
+- (id)_performerForActionDictionary;
+- (id)_performerForAuthenticate;
+- (id)_performerForCreditDisplay;
+- (id)_performerForDialog;
+- (id)_performerForPaymentSheet;
 - (id)_valueForProtocolKey:(id)arg1;
 - (id)initWithTaskInfo:(id)arg1 decodedObject:(id)arg2;
 

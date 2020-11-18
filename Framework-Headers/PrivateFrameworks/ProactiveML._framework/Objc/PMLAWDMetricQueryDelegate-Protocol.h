@@ -6,6 +6,5 @@
 
 @protocol PMLAWDMetricQueryDelegate
 - (void)availableSessionsStatsReportedToAWD;
-- (void)enumerateAvailableSessionsStatsUsingBlock:(void (^)(PMLSessionDescriptor *, unsigned long long, float))arg1;
 @end
 

@@ -18,11 +18,13 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
+- (BOOL)_accessibilityRetainsFocusOnScreenChange;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;
 - (void)accessibilityIncrement;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;

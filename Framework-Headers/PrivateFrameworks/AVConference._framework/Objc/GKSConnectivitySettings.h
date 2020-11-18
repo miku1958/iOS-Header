@@ -39,8 +39,11 @@
 + (double)getShortTermValueWeightA;
 + (double)getShortTermValueWeightB;
 + (double)getShortTermValueWeightC;
++ (id)getStorebagValueForStorebagKey:(id)arg1 userDefaultKey:(struct __CFString *)arg2 defaultValue:(id)arg3 isDoubleType:(BOOL)arg4;
++ (id)getStorebagValueStorebagKey:(id)arg1 defaultValue:(id)arg2;
 + (id)getTestGroupPermutations:(unsigned char)arg1;
 + (double)getThresholdForSwitch:(unsigned int)arg1;
++ (id)getVCRCSeverBagConfigWithKey:(id)arg1;
 + (void)setAddress:(id)arg1 forService:(id)arg2;
 + (void)setClientOptions:(id)arg1;
 + (void)setServerAddresses:(id)arg1;

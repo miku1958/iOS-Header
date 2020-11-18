@@ -13,7 +13,7 @@
 
 @property (readonly, nonatomic) unsigned long long kernelDiameter; // @synthesize kernelDiameter=_filterDiameter;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (unsigned long long)maxKernelDiameter;
 + (unsigned long long)minKernelDiameter;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

@@ -11,8 +11,8 @@
 @property (nonatomic) unsigned long long mirroringBiasAxis;
 @property (readonly, nonatomic) unsigned long long type;
 
-- (CDStruct_d2b197d1)colorForCoordinate:(CDStruct_c3b9c2ee)arg1;
-- (CDStruct_c3b9c2ee)coordinateForColor:(CDStruct_d2b197d1)arg1 isValid:(out BOOL *)arg2;
+- (CDStruct_dbd0f16f)colorForCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (CDStruct_c3b9c2ee)coordinateForColor:(CDStruct_dbd0f16f)arg1 isValid:(out BOOL *)arg2;
 
 @optional
 @end

@@ -6,10 +6,13 @@
 
 #import <SoftwareUpdateServices/SUDefaultDownloadPolicy.h>
 
+__attribute__((visibility("hidden")))
 @interface SUDefaultCellCarrierOverrideDownloadPolicy : SUDefaultDownloadPolicy
 {
 }
 
+- (BOOL)allowExpensiveNetwork;
+- (id)description;
 - (BOOL)isDownloadAllowableForCellular;
 
 @end

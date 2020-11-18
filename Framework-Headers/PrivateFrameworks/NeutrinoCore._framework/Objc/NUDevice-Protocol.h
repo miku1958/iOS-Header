@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) long long openGLVirtualScreen;
 
 - (id<NURenderer>)lowPriorityRenderer:(out id *)arg1;
+- (id<NURenderer>)lowPriorityRendererWithoutIntermediateCaching:(out id *)arg1;
 - (id<NURenderer>)renderer:(out id *)arg1;
+- (id<NURenderer>)rendererWithoutIntermediateCaching:(out id *)arg1;
 @end
 

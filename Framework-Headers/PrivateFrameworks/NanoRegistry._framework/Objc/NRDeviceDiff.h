@@ -15,12 +15,10 @@
     NSDictionary *_diffPropertyDiffs;
 }
 
-@property (readonly, nonatomic) NSDictionary *diffPropertyDiffs; // @synthesize diffPropertyDiffs=_diffPropertyDiffs;
 @property (readonly, nonatomic) NRPBDeviceDiff *protobuf;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_createIndex;
 - (id)allPropertyNames;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

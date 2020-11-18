@@ -62,6 +62,7 @@
 @property (readonly, nonatomic) BOOL isBeingLocalized; // @synthesize isBeingLocalized=_isBeingLocalized;
 @property (readonly, nonatomic) BOOL isCollaborativeClient;
 @property (readonly, nonatomic) BOOL isCollaborativeClientOrServer;
+@property (readonly, nonatomic) BOOL isCollaborativeServer;
 @property (readonly, nonatomic) id<TSULogContext> logContext;
 @property (readonly, nonatomic) unsigned long long maxMediaItemFileSize;
 @property (strong, nonatomic) TSKPasteboardController *pasteboardController; // @synthesize pasteboardController=_pasteboardController;
@@ -125,6 +126,7 @@
 - (void)removeAllAnnotationsFromDrawables:(id)arg1;
 - (void)removeICloudTeardownObserver:(long long)arg1;
 - (void)resumeRecalculation;
+- (void)resumeRecalculationForBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
 - (void)setUpAccessControllerIfNeeded;
 - (BOOL)shouldDropOperationHistoryWithDocumentRevision:(id)arg1;

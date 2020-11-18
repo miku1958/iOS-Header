@@ -21,7 +21,6 @@
 @property (copy, nonatomic) CDUnknownBlockType messageSendBlock; // @synthesize messageSendBlock=_messageSendBlock;
 
 - (void).cxx_destruct;
-- (void)_lockQueue_processPendingMessages;
 - (BOOL)containsMessageWithIdentifier:(id)arg1;
 - (void)enqueueIdentifier:(id)arg1 message:(id)arg2;
 - (id)initWithQueue:(id)arg1;

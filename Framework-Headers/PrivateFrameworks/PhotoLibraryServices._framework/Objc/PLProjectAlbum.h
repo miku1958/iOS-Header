@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *projectExtensionIdentifier; // @dynamic projectExtensionIdentifier;
 @property (copy, nonatomic) NSString *projectRenderUuid; // @dynamic projectRenderUuid;
 
++ (id)albumSupportsAssetOrderKeysPredicate;
 + (BOOL)cleanupOrphanedProjectPreviewImagesInLibrary:(id)arg1 error:(id *)arg2;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 documentType:(id)arg3 projectExtensionIdentifier:(id)arg4;
@@ -29,6 +30,7 @@
 - (void)prepareForDeletion;
 - (id)projectPreviewImageData;
 - (BOOL)setProjectPreviewImageData:(id)arg1 error:(id *)arg2;
+- (BOOL)supportsAssetOrderKeys;
 - (void)willSave;
 
 @end

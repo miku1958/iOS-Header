@@ -7,7 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BRCBookmarkAdditions)
-+ (void)_t_brc_removeForcedPackageExtension:(id)arg1;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZoneName:(id)arg2 ownerName:(id)arg3 accountID:(id)arg4 salted:(BOOL)arg5;
 + (void)brc_addForcedPackageExtension:(id)arg1;
 + (id)brc_hexadecimalStringWithBytes:(const char *)arg1 length:(unsigned long long)arg2;

@@ -8,24 +8,22 @@
 
 #import <RemoteManagementModel/RMModelRegisteredTypeProtocol-Protocol.h>
 
-@class NSString, RMModelAssetBaseDescriptor, RMModelAssetBaseReference;
+@class NSString, RMModelAssetBaseReference;
 
 @interface RMModelImageDeclaration : RMModelAssetBase <RMModelRegisteredTypeProtocol>
 {
-    RMModelAssetBaseDescriptor *_payloadDescriptor;
     RMModelAssetBaseReference *_payloadReference;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) RMModelAssetBaseDescriptor *payloadDescriptor; // @synthesize payloadDescriptor=_payloadDescriptor;
 @property (copy, nonatomic) RMModelAssetBaseReference *payloadReference; // @synthesize payloadReference=_payloadReference;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 reference:(id)arg2;
-+ (id)buildWithIdentifier:(id)arg1 descriptor:(id)arg2 reference:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 reference:(id)arg2;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

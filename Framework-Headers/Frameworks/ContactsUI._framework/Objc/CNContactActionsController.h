@@ -10,12 +10,13 @@
 #import <ContactsUI/CNUINavigationListViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNUIUserActionListConsumer-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIViewController;
+@class CNContact, NSArray, NSDictionary, NSString, UIViewController;
 @protocol CNContactActionsControllerDelegate, CNUINavigationListStyle, CNUIUserActionListDataSource;
 
 @interface CNContactActionsController : NSObject <CNAvatarCardActionListController, CNUINavigationListViewControllerDelegate, CNUIUserActionListConsumer>
 {
-    NSArray *_actionTypes;
+    BOOL _shouldUseOutlinedActionGlyphStyle;
+    CNContact *_contact;
     id<CNUIUserActionListDataSource> _actionsDataSource;
     NSDictionary *_modelsByActionTypes;
     NSArray *_modelCancelables;
@@ -23,12 +24,14 @@
     id<CNContactActionsControllerDelegate> _delegate;
     id<CNUINavigationListStyle> _navigationListStyle;
     long long _actionsOrder;
+    NSArray *_actionTypes;
 }
 
-@property (copy, nonatomic) NSArray *actionTypes; // @synthesize actionTypes=_actionTypes;
+@property (readonly, copy, nonatomic) NSArray *actionTypes; // @synthesize actionTypes=_actionTypes;
 @property (strong, nonatomic) id<CNUIUserActionListDataSource> actionsDataSource; // @synthesize actionsDataSource=_actionsDataSource;
 @property (nonatomic) long long actionsOrder; // @synthesize actionsOrder=_actionsOrder;
 @property (nonatomic) BOOL actionsReversed;
+@property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNContactActionsControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -39,6 +42,7 @@
 @property (strong, nonatomic) NSArray *modelCancelables; // @synthesize modelCancelables=_modelCancelables;
 @property (copy, nonatomic) NSDictionary *modelsByActionTypes; // @synthesize modelsByActionTypes=_modelsByActionTypes;
 @property (weak, nonatomic) id<CNUINavigationListStyle> navigationListStyle; // @synthesize navigationListStyle=_navigationListStyle;
+@property (nonatomic) BOOL shouldUseOutlinedActionGlyphStyle; // @synthesize shouldUseOutlinedActionGlyphStyle=_shouldUseOutlinedActionGlyphStyle;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
@@ -46,12 +50,14 @@
 + (id)descriptorForRequiredKeys;
 + (id)supportedActionTypes;
 - (void).cxx_destruct;
+- (id)actionForItem:(id)arg1 withImage:(id)arg2;
 - (void)cancelModels;
 - (void)dealloc;
 - (id)displayedController;
+- (void)generateMenuForItem:(id)arg1 image:(id)arg2 withCurrentList:(id)arg3;
 - (id)imageForActionType:(id)arg1;
 - (id)initWithContact:(id)arg1 actionTypes:(id)arg2;
-- (id)initWithDataSource:(id)arg1 actionTypes:(id)arg2;
+- (id)initWithContact:(id)arg1 dataSource:(id)arg2 actionTypes:(id)arg3;
 - (id)modelForActionType:(id)arg1;
 - (void)navigationListController:(id)arg1 didSelectItem:(id)arg2;
 - (id)navigationListItemForUserActionType:(id)arg1;

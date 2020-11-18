@@ -19,6 +19,7 @@
     NSMutableSet *_bundlesWithIndexedCoreSpotlightItems;
     NSSet *_bundlesWithRemoteSearchSupport;
     NSObject<OS_dispatch_queue> *_appScopingQueue;
+    NSString *_serviceName;
     NSArray *_reindexIndexers;
     BOOL _updatePersonas;
     id<CSIndexExtensionDelegate> extensionDelegate;
@@ -114,6 +115,7 @@
 - (void)commitUpdatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)coolDown;
 - (void)dealloc;
+- (id)delegateServiceName;
 - (void)deleteActionsBeforeTime:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteActionsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -134,10 +136,14 @@
 - (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 personaID:(id)arg3 options:(long long)arg4 items:(id)arg5 itemsText:(id)arg6 itemsHTML:(id)arg7 clientState:(id)arg8 clientStateName:(id)arg9 deletes:(id)arg10 completionHandler:(CDUnknownBlockType)arg11;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 clientStateName:(id)arg4 protectionClass:(id)arg5 forBundleID:(id)arg6 options:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 protectionClass:(id)arg4 forBundleID:(id)arg5 options:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (id)indexServiceName;
 - (id)initWithDelegate:(id)arg1;
 - (void)issueCleanup:(id)arg1 flags:(int)arg2;
 - (void)issueConsistencyCheck:(id)arg1;
 - (void)issueDefrag:(id)arg1 group:(id)arg2;
+- (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDuplicateOidCheck:(id)arg1;
 - (void)issueRepair:(id)arg1;
 - (void)issueSplit:(id)arg1;
 - (double)lastUpdateTime;
@@ -156,11 +162,14 @@
 - (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)provideFileURLForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryForWord:(id)arg1 matchingAttributes:(id)arg2 prefixMatch:(BOOL)arg3;
+- (void)queryPreheat:(id)arg1;
 - (void)recordEngagementForBundleID:(id)arg1 uniqueIdentifier:(id)arg2 protectionClass:(id)arg3 userQuery:(id)arg4 date:(id)arg5;
 - (void)reindexAllItemsWithIndexers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resume;
 - (void)revokeExpiredItems:(id)arg1;
 - (void)runMigration;
+- (id)searchServiceName;
+- (void)setServiceName:(id)arg1;
 - (void)shrink:(unsigned long long)arg1;
 - (void)shutdown;
 - (void)start;

@@ -23,7 +23,6 @@
 @property (nonatomic) double speed; // @synthesize speed;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (id)copyWithZone:(struct _NSZone *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)addBody:(id)arg1;
 - (void)addJoint:(id)arg1;

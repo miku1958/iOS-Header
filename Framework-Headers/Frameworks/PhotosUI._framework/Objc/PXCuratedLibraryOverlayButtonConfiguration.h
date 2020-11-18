@@ -13,6 +13,7 @@
 @interface PXCuratedLibraryOverlayButtonConfiguration : NSObject <PXGViewUserData>
 {
     BOOL _isSystemSymbolIcon;
+    BOOL _forcePointerInteractionEnabled;
     UIColor *_contentColor;
     UIColor *_highlightedContentColor;
     UIImage *_iconImage;
@@ -27,16 +28,20 @@
     NSString *_title;
     NSSet *_possibleTitles;
     NSString *_caption;
+    UIColor *_tintColor;
+    UIColor *_backgroundColor;
     struct UIEdgeInsets _imageEdgeInsets;
     struct UIEdgeInsets _hitTestOutsets;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property (strong, nonatomic) PXCuratedLibraryActionPerformer *actionPerformer; // @synthesize actionPerformer=_actionPerformer;
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property (readonly, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forcePointerInteractionEnabled; // @synthesize forcePointerInteractionEnabled=_forcePointerInteractionEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIColor *highlightedContentColor; // @synthesize highlightedContentColor=_highlightedContentColor;
 @property (readonly, nonatomic) UIImage *highlightedIconImage; // @synthesize highlightedIconImage=_highlightedIconImage;
@@ -50,6 +55,7 @@
 @property (readonly, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *spec; // @synthesize spec=_spec;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (readonly, nonatomic) UIImage *tintedIconImage; // @synthesize tintedIconImage=_tintedIconImage;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 

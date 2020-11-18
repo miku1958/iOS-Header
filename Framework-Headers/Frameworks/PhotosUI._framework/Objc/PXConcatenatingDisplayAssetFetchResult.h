@@ -24,10 +24,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<PXDisplayAsset> firstObject;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<PXDisplayAsset> lastObject;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_subFetchResultForIndex:(long long)arg1 localIndex:(long long *)arg2;
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (BOOL)containsObject:(id)arg1;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
 - (void)dealloc;

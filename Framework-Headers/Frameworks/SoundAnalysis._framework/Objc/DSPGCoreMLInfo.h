@@ -6,26 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class DSPGMLInputProvider, MLModelDescription, NSArray;
-@protocol DSPGMLModel, MLFeatureProvider;
+@class DSPGMLInputProvider, NSArray;
+@protocol MLFeatureProvider, SNMLModel;
 
 __attribute__((visibility("hidden")))
 @interface DSPGCoreMLInfo : NSObject
 {
-    id<DSPGMLModel> _model;
-    MLModelDescription *_modelDescription;
+    id<SNMLModel> _model;
+    NSArray *_feedbackConnections;
     DSPGMLInputProvider *_inputProvider;
     id<MLFeatureProvider> _outputProvider;
-    NSArray *_outputs;
-    NSArray *_outputLabels;
 }
 
+@property (strong, nonatomic) NSArray *feedbackConnections; // @synthesize feedbackConnections=_feedbackConnections;
 @property (strong, nonatomic) DSPGMLInputProvider *inputProvider; // @synthesize inputProvider=_inputProvider;
-@property (strong, nonatomic) id<DSPGMLModel> model; // @synthesize model=_model;
-@property (strong, nonatomic) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
-@property (strong, nonatomic) NSArray *outputLabels; // @synthesize outputLabels=_outputLabels;
+@property (strong, nonatomic) id<SNMLModel> model; // @synthesize model=_model;
 @property (strong, nonatomic) id<MLFeatureProvider> outputProvider; // @synthesize outputProvider=_outputProvider;
-@property (strong, nonatomic) NSArray *outputs; // @synthesize outputs=_outputs;
 
 - (void).cxx_destruct;
 

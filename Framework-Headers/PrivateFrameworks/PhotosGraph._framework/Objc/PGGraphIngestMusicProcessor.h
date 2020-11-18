@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property (readonly) Class superclass;
 
++ (unsigned long long)nowPlayingStreamConverterOptions;
 - (void).cxx_destruct;
 - (id)_ingestStreamEventSession:(id)arg1 graph:(id)arg2 performerNodesByName:(id)arg3;
 - (void)processMusicForGraph:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;

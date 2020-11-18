@@ -8,6 +8,7 @@
 
 @class NSRegularExpression, NSSet, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MCLURLRewriteRule : MCLURLRequestRewriteRule
 {
     NSRegularExpression *_replacePattern;

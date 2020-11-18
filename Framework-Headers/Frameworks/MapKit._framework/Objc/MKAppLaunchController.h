@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, SSLookupRequest;
+@class NSString, NSURL;
 
 @interface MKAppLaunchController : NSObject
 {
-    SSLookupRequest *_request;
     NSString *_webURLString;
     NSURL *webURL;
 }
 
-@property (strong, nonatomic) SSLookupRequest *storeRequest; // @synthesize storeRequest=_request;
 @property (strong, nonatomic) NSURL *webURL; // @synthesize webURL;
 
 + (void)launchAttributionURLs:(id)arg1 withAttribution:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)sharedController;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)lookUpAppStoreURLForBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSArray *nativeDocumentTypes;
 @property (readonly, nonatomic) NSString *nativeSFFDocumentType;
 @property (readonly, nonatomic) NSArray *readableDocumentTypes;
+@property (readonly, nonatomic) BOOL supportsTabNavigationOfCanvasObjects;
 @property (readonly, nonatomic) NSString *tangierEditingFormatDocumentType;
 @property (readonly, nonatomic) NSString *templateDocumentExtension;
 @property (readonly, nonatomic) NSString *templateDocumentType;
@@ -28,6 +29,8 @@
 - (id)iWorkTextDefaultsPassphraseVerifier;
 - (BOOL)isReadableDocumentType:(id)arg1;
 - (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
+- (BOOL)supportsWebVideos;
+- (unsigned long long)webVideoRequiredDocumentWriteVersion;
 
 @end
 

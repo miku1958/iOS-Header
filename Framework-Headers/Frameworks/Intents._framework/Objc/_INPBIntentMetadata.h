@@ -11,11 +11,12 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBIntentMetadata-Protocol.h>
 
-@class NSArray, NSString, _INPBImageValue, _INPBString;
+@class NSArray, NSData, NSString, _INPBImageValue, _INPBString;
 
 @interface _INPBIntentMetadata : PBCodable <INJSONSerializable, _INPBIntentMetadata, NSSecureCoding, NSCopying>
 {
     CDStruct_95bda58d _requiredEntitlements;
+    CDStruct_95bda58d _shortcutAvailabilities;
     struct {
         unsigned int executionContext:1;
         unsigned int intentCategory:1;
@@ -24,6 +25,7 @@
         unsigned int idiom:1;
         unsigned int isOwnedByCurrentUser:1;
         unsigned int isPrimaryDisplayDisabled:1;
+        unsigned int showsWhenRun:1;
         unsigned int triggerMethod:1;
         unsigned int userConfirmationRequired:1;
     } _has;
@@ -31,8 +33,8 @@
     BOOL _confirmed;
     BOOL _isOwnedByCurrentUser;
     BOOL _isPrimaryDisplayDisabled;
+    BOOL _showsWhenRun;
     BOOL _userConfirmationRequired;
-    BOOL __encodeLegacyGloryData;
     int _executionContext;
     int _intentCategory;
     int _idiom;
@@ -43,6 +45,8 @@
     NSString *_nanoLaunchId;
     NSString *_systemExtensionBundleId;
     NSString *_systemUIExtensionBundleId;
+    NSArray *_airPlayRouteIds;
+    NSData *_auditTokenData;
     NSArray *_forceNeedsValueForParameters;
     NSString *_intentDescription;
     NSString *_intentId;
@@ -54,7 +58,9 @@
     _INPBString *_userUtterance;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (copy, nonatomic) NSArray *airPlayRouteIds; // @synthesize airPlayRouteIds=_airPlayRouteIds;
+@property (readonly, nonatomic) unsigned long long airPlayRouteIdsCount;
+@property (copy, nonatomic) NSData *auditTokenData; // @synthesize auditTokenData=_auditTokenData;
 @property (nonatomic) BOOL backgroundLaunch; // @synthesize backgroundLaunch=_backgroundLaunch;
 @property (copy, nonatomic) NSString *categoryVerb; // @synthesize categoryVerb=_categoryVerb;
 @property (nonatomic) BOOL confirmed; // @synthesize confirmed=_confirmed;
@@ -66,6 +72,7 @@
 @property (nonatomic) int executionContext; // @synthesize executionContext=_executionContext;
 @property (copy, nonatomic) NSArray *forceNeedsValueForParameters; // @synthesize forceNeedsValueForParameters=_forceNeedsValueForParameters;
 @property (readonly, nonatomic) unsigned long long forceNeedsValueForParametersCount;
+@property (readonly, nonatomic) BOOL hasAuditTokenData;
 @property (nonatomic) BOOL hasBackgroundLaunch;
 @property (readonly, nonatomic) BOOL hasCategoryVerb;
 @property (nonatomic) BOOL hasConfirmed;
@@ -82,6 +89,7 @@
 @property (readonly, nonatomic) BOOL hasOriginatingDeviceIdsIdentifier;
 @property (readonly, nonatomic) BOOL hasOriginatingDeviceRapportEffectiveId;
 @property (readonly, nonatomic) BOOL hasOriginatingDeviceRapportMediaSystemId;
+@property (nonatomic) BOOL hasShowsWhenRun;
 @property (readonly, nonatomic) BOOL hasSuggestedInvocationPhrase;
 @property (readonly, nonatomic) BOOL hasSystemExtensionBundleId;
 @property (readonly, nonatomic) BOOL hasSystemUIExtensionBundleId;
@@ -105,6 +113,9 @@
 @property (readonly, nonatomic) unsigned long long parameterImagesCount;
 @property (readonly, nonatomic) int *requiredEntitlements;
 @property (readonly, nonatomic) unsigned long long requiredEntitlementsCount;
+@property (readonly, nonatomic) int *shortcutAvailabilities;
+@property (readonly, nonatomic) unsigned long long shortcutAvailabilitiesCount;
+@property (nonatomic) BOOL showsWhenRun; // @synthesize showsWhenRun=_showsWhenRun;
 @property (copy, nonatomic) NSString *suggestedInvocationPhrase; // @synthesize suggestedInvocationPhrase=_suggestedInvocationPhrase;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -122,15 +133,21 @@
 - (int)StringAsIdiom:(id)arg1;
 - (int)StringAsIntentCategory:(id)arg1;
 - (int)StringAsRequiredEntitlements:(id)arg1;
+- (int)StringAsShortcutAvailabilities:(id)arg1;
 - (int)StringAsTriggerMethod:(id)arg1;
 - (void)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (void)addAirPlayRouteIds:(id)arg1;
 - (void)addForceNeedsValueForParameter:(id)arg1;
 - (void)addParameterImages:(id)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
+- (void)addShortcutAvailability:(int)arg1;
+- (id)airPlayRouteIdsAtIndex:(unsigned long long)arg1;
+- (void)clearAirPlayRouteIds;
 - (void)clearForceNeedsValueForParameters;
 - (void)clearParameterImages;
 - (void)clearRequiredEntitlements;
+- (void)clearShortcutAvailabilities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
@@ -146,6 +163,9 @@
 - (int)requiredEntitlementAtIndex:(unsigned long long)arg1;
 - (id)requiredEntitlementsAsString:(int)arg1;
 - (void)setRequiredEntitlements:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setShortcutAvailabilities:(int *)arg1 count:(unsigned long long)arg2;
+- (id)shortcutAvailabilitiesAsString:(int)arg1;
+- (int)shortcutAvailabilityAtIndex:(unsigned long long)arg1;
 - (id)triggerMethodAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

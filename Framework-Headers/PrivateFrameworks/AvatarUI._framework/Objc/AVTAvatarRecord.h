@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <AvatarUI/AVTAvatarRecord-Protocol.h>
 #import <AvatarUI/AVTAvatarRecordInternal-Protocol.h>
 #import <AvatarUI/NSCopying-Protocol.h>
 #import <AvatarUI/NSSecureCoding-Protocol.h>
@@ -13,7 +14,7 @@
 
 @class NSData, NSDate, NSString;
 
-@interface AVTAvatarRecord : NSObject <UIActivityItemSource, AVTAvatarRecordInternal, NSSecureCoding, NSCopying>
+@interface AVTAvatarRecord : NSObject <UIActivityItemSource, AVTAvatarRecordInternal, NSSecureCoding, NSCopying, AVTAvatarRecord>
 {
     NSString *_identifier;
     NSData *_avatarData;
@@ -49,6 +50,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithAvatarData:(id)arg1;
 - (id)initWithAvatarData:(id)arg1 identifier:(id)arg2 orderDate:(id)arg3;
 - (id)initWithAvatarData:(id)arg1 orderDate:(id)arg2;
 - (id)initWithCoder:(id)arg1;

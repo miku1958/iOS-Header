@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI230ArticleListTagFeedGroupEmitter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *config;
+    MISSING_TYPE *knobs;
+    MISSING_TYPE *formatService;
 }
 
 @end

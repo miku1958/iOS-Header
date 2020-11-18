@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_needToLoadBlockingMetadataKeys;
 - (id)_numberValueForKey:(id)arg1 fromMetadata:(id)arg2 andKeyIdentifierMap:(id)arg3;
 - (void)_postMediaServicesResetFailureWithNotification:(id)arg1;
+- (id)_productPlacementInfoFromMetadata:(id)arg1 keyIdentifierMap:(id)arg2;
 - (void)_registerStateMachineHandlers;
 - (id)_rollInfoFromMetadata:(id)arg1 keyIdentifierMap:(id)arg2 forType:(unsigned long long)arg3 withTotalCount:(unsigned long long)arg4;
 - (id)_rollKeyNameFromType:(unsigned long long)arg1;

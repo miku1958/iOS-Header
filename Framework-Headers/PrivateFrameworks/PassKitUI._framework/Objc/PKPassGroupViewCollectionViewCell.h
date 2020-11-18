@@ -16,6 +16,7 @@
 @property (strong, nonatomic) PKPassGroupView *groupView; // @synthesize groupView=_groupView;
 
 - (void).cxx_destruct;
+- (void)layoutSubviews;
 
 @end
 

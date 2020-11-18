@@ -19,7 +19,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)supportedKeys;
 - (BOOL)validateCondition:(id)arg1 context:(id)arg2;
 
 @end

@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) BOOL bu_isCancelError;
 @property (readonly, nonatomic) BOOL bu_isCorruptedError;
+@property (readonly, nonatomic) BOOL bu_isFileExistsError;
 @property (readonly, nonatomic) BOOL bu_isNoPermissionError;
 @property (readonly, nonatomic) BOOL bu_isNoSuchFileError;
 @property (readonly, nonatomic) BOOL bu_isOutOfSpaceError;

@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray, NSMutableDictionary, NSMutableSet;
+@protocol CKModifyWebSharingOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyWebSharingOperation : CKDDatabaseOperation
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_recordsToSaveByID;
 }
 
+@property (strong, nonatomic) id<CKModifyWebSharingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableSet *fetchedRecordIDs; // @synthesize fetchedRecordIDs=_fetchedRecordIDs;
 @property (nonatomic) int numSaveAttempts; // @synthesize numSaveAttempts=_numSaveAttempts;
 @property (strong, nonatomic) NSArray *recordIDsToShare; // @synthesize recordIDsToShare=_recordIDsToShare;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType recordWebSharedBlock; // @synthesize recordWebSharedBlock=_recordWebSharedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordWebUnsharedBlock; // @synthesize recordWebUnsharedBlock=_recordWebUnsharedBlock;
 @property (strong, nonatomic) NSMutableDictionary *recordsToSaveByID; // @synthesize recordsToSaveByID=_recordsToSaveByID;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 + (long long)isPredominatelyDownload;
 - (void).cxx_destruct;

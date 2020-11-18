@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/NSCopying-Protocol.h>
 #import <HealthDaemon/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
 
-@interface HDSyncAnchorRangeMap : NSObject <NSSecureCoding>
+@interface HDSyncAnchorRangeMap : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *_anchorRangesByEntityIdentifier;
 }
@@ -21,10 +22,12 @@
 - (void).cxx_destruct;
 - (unsigned long long)anchorRangeCount;
 - (id)codableSyncAnchorRangeMap;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateAnchorRangesAndEntityIdentifiersWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)getAnchorRange:(struct HDSyncAnchorRange *)arg1 forSyncEntityIdentifier:(id)arg2;
+- (unsigned long long)hash;
 - (id)initWithCodableSyncAnchorRangeMap:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

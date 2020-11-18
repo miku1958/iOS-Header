@@ -14,7 +14,7 @@
 #import <PassKitUI/PKSubcredentialProvisioningFlowControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKContactFormatValidator, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
 @interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKSubcredentialProvisioningFlowControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentPassTableCellDelegate>
@@ -24,7 +24,6 @@
     id<PKPaymentDataProvider> _paymentDataProvider;
     id<PKPaymentOptionsProtocol> _optionsDelegate;
     long long _context;
-    PKPaymentSetupAboutViewController *_privacyController;
     PKPaymentPreferencesViewController *_defaultCardsController;
     PKPaymentPreference *_availableCards;
     PKPaymentPreferenceCard *_unavailableCards;
@@ -52,6 +51,7 @@
     id<PKPassbookPeerPaymentSettingsDelegate> _peerPaymentDelegate;
     PKPeerPaymentWebService *_peerPaymentWebService;
     PSSpecifier *_peerPaymentSwitchSpecifier;
+    PSSpecifier *_peerPaymentTinkerSetupButton;
     PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     PKPeerPaymentAccount *_peerPaymentAccount;
     BOOL _registeringForPeerPayment;
@@ -65,13 +65,14 @@
     NSMutableDictionary *_latestTransitBalanceModel;
     id<PKPaymentDataProvider> _companionPaymentDataProvider;
     int _notifyToken;
+    PKContactFormatValidator *_contactFormatValidator;
     BOOL _ownerCredentialSharingAllowed;
     BOOL _canAcceptCredentialInvitations;
     id<PKPassbookSettingsDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPassbookSettingsDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassbookSettingsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -117,6 +118,7 @@
 - (void)_peerPaymentAccountDidChangeNotification:(id)arg1;
 - (id)_peerPaymentGroupSpecifiers;
 - (id)_peerPaymentSwitchSpecifier;
+- (id)_peerPaymentTinkerGroupSpecifiers;
 - (void)_peerPaymentWebServiceDidChangeNotification:(id)arg1;
 - (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentCredentialSetupViewControllerForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -161,6 +163,7 @@
 - (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)canShareCompanionPass:(id)arg1;
 - (void)dealloc;
+- (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 context:(long long)arg3;
 - (void)openExpressTransitSettings:(id)arg1 withPassUniqueIdentifier:(id)arg2;
 - (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2 allowedFeatureIdentifiers:(id)arg3;
@@ -177,6 +180,7 @@
 - (void)refreshPeerPaymentStatus;
 - (void)removeFooterForSpecifier:(id)arg1;
 - (id)rendererStateForPaymentPass:(id)arg1;
+- (void)setupPeerPaymentTinkerButtonTapped;
 - (id)specifiers;
 - (void)subcredentialProvisioningFlowController:(id)arg1 didFinishWithPass:(id)arg2 error:(id)arg3;
 - (void)switchSpinnerCell:(id)arg1 hasToggledSwitch:(BOOL)arg2;

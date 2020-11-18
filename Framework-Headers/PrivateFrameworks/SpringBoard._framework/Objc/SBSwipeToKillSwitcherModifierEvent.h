@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) double progress; // @synthesize progress=_progress;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithAppLayout:(id)arg1 progress:(double)arg2;
 - (long long)type;

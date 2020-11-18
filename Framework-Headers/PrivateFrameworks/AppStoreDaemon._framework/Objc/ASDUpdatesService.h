@@ -28,15 +28,23 @@
 - (BOOL)autoUpdateEnabled;
 - (BOOL)confirmAgentRequestedUpdateAll;
 - (void)dealloc;
+- (void)getManagedUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)getMetricsWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)getUpdatesIncludingMetricsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)getUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasEntitlement;
+- (void)hideApplicationBadgeForPendingUpdates;
 - (id)init;
 - (void)refreshUpdateCountWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)refreshUpdatesWithCompletionBlock:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)reloadForSettingsFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadManagedUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)setAutoUpdateEnabled:(BOOL)arg1;
+- (void)showApplicationBadgeForPendingUpdates;
+- (void)updateAllWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)updateAllWithJobResultsCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)updateAllWithOrder:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end

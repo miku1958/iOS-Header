@@ -23,8 +23,10 @@
 
 + (id)_sharedDomain;
 + (id)sharedDomainIdentifier;
++ (id)sharedDomainMachService;
 + (BOOL)sharedDomainUsesDefaultShellEndpoint;
 + (id)sharedInstance;
++ (BOOL)shouldInjectEndpoint;
 - (void).cxx_destruct;
 - (id)_initWithDomain:(id)arg1;
 - (void)dealloc;

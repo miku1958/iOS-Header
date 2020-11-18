@@ -21,7 +21,7 @@
 - (id)initWithPersistence:(id)arg1 categorySubsystem:(id)arg2;
 - (id)newAccountRepository;
 - (id)newActivityRegistry;
-- (id)newClientResumerWithForegroundReporter:(id)arg1;
+- (id)newClientResumerWithClientState:(id)arg1;
 - (id)newFetchController;
 - (id)newMailboxRepository;
 - (id)newMessageRepositoryWithResumable:(id)arg1;
@@ -30,6 +30,7 @@
 - (id)newVIPManagerInterface;
 - (id)sharedDonationController;
 - (id)sharedInteractionLogger;
+- (void)test_tearDown;
 
 @end
 

@@ -21,9 +21,9 @@
 }
 
 @property (readonly, nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
-@property (readonly, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
-@property (readonly, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
-@property (readonly, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
+@property (readonly, copy, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
+@property (readonly, copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+@property (readonly, copy, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 @property (readonly, nonatomic) CKRecordID *repairZoneRecordID; // @synthesize repairZoneRecordID=_repairZoneRecordID;
 
 + (BOOL)supportsSecureCoding;

@@ -14,29 +14,31 @@
 
 @interface TLKView : UIView <TLKObserver, TLKObservable>
 {
-    BOOL inBatchUpdate;
     id<TLKObserver> observer;
+    long long batchUpdateCount;
+    UIView *_leadingTextView;
     UIView *_contentView;
     TLKAppearance *_tlkAppearance;
 }
 
+@property (nonatomic) long long batchUpdateCount; // @synthesize batchUpdateCount;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
+@property (readonly) UIView *leadingTextView; // @synthesize leadingTextView=_leadingTextView;
 @property (weak) id<TLKObserver> observer; // @synthesize observer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TLKAppearance *tlkAppearance; // @synthesize tlkAppearance=_tlkAppearance;
-@property (readonly) BOOL usesDefaultInsets;
+@property (readonly) BOOL usesDefaultLayoutMargins;
 
-+ (struct UIEdgeInsets)defaultInsets;
++ (struct UIEdgeInsets)defaultLayoutMargins;
 + (void)enableLightKeylineStroke:(BOOL)arg1 forView:(id)arg2;
 + (void)enableShadow:(BOOL)arg1 forView:(id)arg2;
 + (Class)layerClass;
 + (void)makeContainerShadowCompatible:(id)arg1;
 - (void).cxx_destruct;
-- (struct CGSize)containerSizeForSize:(struct CGSize)arg1;
+- (struct UIEdgeInsets)defaultBaselineRelativeLayoutMargins;
 - (void)disableUnbatchedUpdates;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
@@ -48,8 +50,6 @@
 - (void)propertiesDidChange;
 - (id)setupContentView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

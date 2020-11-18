@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/CAAnimationDelegate-Protocol.h>
 
-@class LPCaptionBarAccessoryView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSString;
+@class LPCaptionBarAccessoryView, LPCaptionBarButtonView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSString;
 @protocol LPTextStyleable;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     LPPlayButtonView *_playButton;
     LPCaptionBarAccessoryView *_leftAccessoryView;
     LPCaptionBarAccessoryView *_rightAccessoryView;
+    LPCaptionBarButtonView *_buttonView;
     LPComponentView<LPTextStyleable> *_aboveTopCaptionView;
     LPComponentView<LPTextStyleable> *_topCaptionView;
     LPComponentView<LPTextStyleable> *_bottomCaptionView;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)animateInWithBaseAnimation:(id)arg1 currentTime:(double)arg2;
 - (void)animateOut;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (id)button;
 - (id)init;
 - (id)initWithStyle:(id)arg1 presentationProperties:(id)arg2;
 - (void)layoutComponentView;

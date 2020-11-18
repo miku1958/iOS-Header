@@ -18,7 +18,6 @@
     NSString *_visiblePublicURL;
     BOOL _showShareLink;
     PLCloudSharedAlbum *_album;
-    id<PXAlbumStreamingOptionsViewControllerDelegate> _delegate;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_doneButton;
     UITableView *_optionsTableView;
@@ -31,11 +30,12 @@
     NSArray *_familyMembers;
     AAUIProfilePictureStore *_familyMemberPictureStore;
     NSMutableDictionary *_familyProfilePictures;
-    BOOL _isPresentedModally;
+    BOOL _presentedModally;
     BOOL _streamOwner;
     BOOL __shouldScrollToTopOnNextViewLayout;
     BOOL _albumIsFamilyStream;
     BOOL __showingPublicURLActivitySpinner;
+    id<PXAlbumStreamingOptionsViewControllerDelegate> _delegate;
     NSString *_albumName;
     NSArray *_sharedAlbumSubscribers;
     PLCloudSharedAlbumInvitationRecord *__selectedSubscriberInvitationRecord;
@@ -52,16 +52,15 @@
 @property (nonatomic) BOOL albumIsFamilyStream; // @synthesize albumIsFamilyStream=_albumIsFamilyStream;
 @property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PXAlbumStreamingOptionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PXAlbumStreamingOptionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isPresentedModally; // @synthesize isPresentedModally=_isPresentedModally;
+@property (nonatomic, getter=isPresentedModally) BOOL presentedModally; // @synthesize presentedModally=_presentedModally;
 @property (strong, nonatomic) NSArray *sharedAlbumSubscribers; // @synthesize sharedAlbumSubscribers=_sharedAlbumSubscribers;
 @property (nonatomic) BOOL streamOwner; // @synthesize streamOwner=_streamOwner;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_cancelAction:(id)arg1;
 - (void)_changeWantsAcceptCloudNotification:(id)arg1;
 - (void)_changeWantsMultipleContributors:(id)arg1;
 - (void)_changeWantsPublicWebsite:(id)arg1;
@@ -82,6 +81,7 @@
 - (id)_suppressionContexts;
 - (void)_updateAllControls;
 - (void)_updateMultipleContributorsState;
+- (void)_updateNavigationItem;
 - (void)_updatePublicURLStateIfNecessaryAnimated:(BOOL)arg1;
 - (void)_updateWantsAcceptCloudNotificationField;
 - (void)_updateWantsMultipleContributorsField;
@@ -89,6 +89,9 @@
 - (struct CGSize)contentSizeForViewInPopover;
 - (void)dealloc;
 - (id)initWithAlbum:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithPHAlbum:(id)arg1;
 - (void)invitationRecordsDidChange:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;

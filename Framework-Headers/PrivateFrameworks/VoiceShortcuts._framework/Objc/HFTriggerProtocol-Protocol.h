@@ -6,10 +6,11 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class HMHome, NSString;
+@class HFTriggerNaturalLanguageOptions, HMHome, NSString;
 
 @protocol HFTriggerProtocol <NSObject>
 - (NSString *)hf_naturalLanguageNameWithHome:(HMHome *)arg1 type:(unsigned long long)arg2;
+- (NSString *)hf_naturalLanguageNameWithOptions:(HFTriggerNaturalLanguageOptions *)arg1;
 - (unsigned long long)hf_triggerType;
 @end
 

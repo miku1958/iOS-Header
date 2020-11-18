@@ -21,7 +21,7 @@
 - (void)_queue_addProcessAssertion:(id)arg1 forBundleID:(id)arg2;
 - (void)_queue_backgroundLaunchApplication:(id)arg1 withResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_queue_foregroundLaunchApplication:(id)arg1 withResponse:(id)arg2 launchImageName:(id)arg3 origin:(id)arg4 endpoint:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (id)_queue_newProcessAssertionForBundleID:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 watchdogInterval:(double)arg5 acquisitionHandler:(CDUnknownBlockType)arg6 invalidationHandler:(CDUnknownBlockType)arg7;
+- (id)_queue_newProcessAssertionForBundleID:(id)arg1 PID:(int)arg2 flags:(unsigned int)arg3 reason:(unsigned int)arg4 name:(id)arg5 watchdogInterval:(double)arg6 acquisitionHandler:(CDUnknownBlockType)arg7 invalidationHandler:(CDUnknownBlockType)arg8;
 - (void)_queue_removeAllProcessAssertionsAndInvalidate:(BOOL)arg1;
 - (void)_queue_removeProcessAssertion:(id)arg1 forBundleID:(id)arg2 invalidate:(BOOL)arg3;
 - (void)_queue_removeProcessAssertionsHavingReason:(unsigned int)arg1 forBundleID:(id)arg2 invalidate:(BOOL)arg3;

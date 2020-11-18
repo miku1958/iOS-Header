@@ -27,7 +27,7 @@
 
 + (id)activityType;
 - (void).cxx_destruct;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

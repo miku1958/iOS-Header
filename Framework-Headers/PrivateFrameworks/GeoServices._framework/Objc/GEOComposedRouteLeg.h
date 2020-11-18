@@ -6,46 +6,60 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOComposedRoutePortion-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOPBTransitStop, NSArray;
+@class GEOArrivalParameters, GEOComposedRoute, GEOComposedRouteEVChargingStationInfo, GEOComposedWaypoint, GEOWaypointInfo, NSArray, NSData, NSString;
 
-@interface GEOComposedRouteLeg : NSObject <NSSecureCoding>
+@interface GEOComposedRouteLeg : NSObject <NSSecureCoding, GEOComposedRoutePortion>
 {
-    GEOComposedRoute *_composedRoute;
-    long long _type;
+    GEOComposedRoute *_route;
+    GEOComposedWaypoint *_origin;
+    GEOComposedWaypoint *_destination;
+    GEOArrivalParameters *_arrivalParameters;
     struct _NSRange _pointRange;
     struct _NSRange _stepRange;
+    unsigned int _distance;
+    int _drivingSide;
+    GEOWaypointInfo *_geoOriginWaypointInfo;
+    GEOWaypointInfo *_geoDestinationWaypointInfo;
+    NSData *_serverLegIDForAnalytics;
 }
 
-@property (weak, nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
+@property (readonly, nonatomic) GEOArrivalParameters *arrivalParameters; // @synthesize arrivalParameters=_arrivalParameters;
+@property (readonly, nonatomic) double chargingDuration;
+@property (readonly, nonatomic) GEOComposedRouteEVChargingStationInfo *chargingStationInfo;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
+@property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
+@property (readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long endStepIndex;
-@property (readonly, nonatomic) GEOPBTransitStop *endingTransitStop;
 @property (readonly, nonatomic) double expectedTime;
-@property (readonly, nonatomic) unsigned long long numberOfTransitStops;
+@property (strong, nonatomic) GEOWaypointInfo *geoDestinationWaypointInfo; // @synthesize geoDestinationWaypointInfo=_geoDestinationWaypointInfo;
+@property (strong, nonatomic) GEOWaypointInfo *geoOriginWaypointInfo; // @synthesize geoOriginWaypointInfo=_geoOriginWaypointInfo;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long legIndex;
+@property (readonly, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
 @property (readonly, nonatomic) unsigned int pointCount;
-@property (readonly, nonatomic) struct _NSRange pointRange; // @synthesize pointRange=_pointRange;
+@property (nonatomic) struct _NSRange pointRange; // @synthesize pointRange=_pointRange;
+@property (weak, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+@property (readonly, nonatomic) NSData *serverLegIDForAnalytics; // @synthesize serverLegIDForAnalytics=_serverLegIDForAnalytics;
 @property (readonly, nonatomic) unsigned int startPointIndex;
 @property (readonly, nonatomic) unsigned long long startStepIndex;
-@property (readonly, nonatomic) GEOPBTransitStop *startingTransitStop;
 @property (readonly, nonatomic) unsigned long long stepCount;
-@property (readonly, nonatomic) struct _NSRange stepRange; // @synthesize stepRange=_stepRange;
+@property (nonatomic) struct _NSRange stepRange; // @synthesize stepRange=_stepRange;
 @property (readonly, nonatomic) NSArray *steps;
-@property (readonly, nonatomic) struct _NSRange transitStepRange;
-@property (readonly, nonatomic) int transportType;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_MapsCarPlay_isEqual:(id)arg1;
-- (BOOL)contains:(id)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepRange:(struct _NSRange)arg3 pointRange:(struct _NSRange)arg4;
-- (double)remainingDistanceAlongLegFromStepIndex:(unsigned long long)arg1 currentStepRemainingDistance:(double)arg2;
-- (double)remainingTimeAlongLegFromStepIndex:(unsigned long long)arg1 currentStepRemainingDistance:(double)arg2;
+- (id)initWithComposedRoute:(id)arg1 geoRouteLeg:(id)arg2 origin:(id)arg3 destination:(id)arg4 arrivalParameters:(id)arg5;
+- (id)initWithComposedRoute:(id)arg1 origin:(id)arg2 destination:(id)arg3 arrivalParameters:(id)arg4;
+- (void)setServerLegIDForAnalytics:(id)arg1;
 
 @end
 

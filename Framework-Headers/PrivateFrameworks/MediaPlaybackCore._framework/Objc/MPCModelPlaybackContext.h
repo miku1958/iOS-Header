@@ -10,12 +10,11 @@
 #import <MediaPlaybackCore/MPCPlaybackContextPrivateListeningOverridable-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackContextUserIdentityConsuming-Protocol.h>
 
-@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, NSDictionary, NSString;
+@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, NSDictionary, NSNumber, NSString;
 
 @interface MPCModelPlaybackContext : MPPlaybackContext <MPCModelPlaybackRequestEnvironmentConsuming, MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable>
 {
     BOOL _skipEncodingMediaLibraryUniqueID;
-    ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     MPModelRequest *_request;
     MPIdentifierSet *_startItemIdentifiers;
@@ -34,15 +33,17 @@
 @property (copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
+@property (copy, nonatomic) NSNumber *privateListeningOverride;
 @property (copy, nonatomic) MPModelRequest *request; // @synthesize request=_request;
 @property (nonatomic) BOOL skipEncodingMediaLibraryUniqueID; // @synthesize skipEncodingMediaLibraryUniqueID=_skipEncodingMediaLibraryUniqueID;
 @property (copy, nonatomic) MPIdentifierSet *startItemIdentifiers; // @synthesize startItemIdentifiers=_startItemIdentifiers;
 @property (copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property (copy, nonatomic) ICUserIdentity *userIdentity;
 
 + (Class)queueFeederClass;
 + (id)requiredPropertiesForStaticMediaClips;
++ (BOOL)supportsAutoPlay;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)clearStartItem;
@@ -54,7 +55,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isSupported;
-- (void)setPrivateListeningOverride:(id)arg1;
+- (void)updateRequestPlaybackEnvironment;
 
 @end
 

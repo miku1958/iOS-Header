@@ -9,7 +9,7 @@
 @class GKLocalPlayer;
 
 @protocol GKLocalPlayerAuthenticationUIPersonality <NSObject>
-- (void)authenticationShowGreenBuddyUIForLocalPlayer:(GKLocalPlayer *)arg1;
-- (void)authenticationShowSignInUIForLocalPlayer:(GKLocalPlayer *)arg1;
+- (void)authenticationShowGreenBuddyUIForLocalPlayer:(GKLocalPlayer *)arg1 withCompletionHandler:(void (^)(GKLocalPlayer *, NSError *))arg2;
+- (void)authenticationShowSignInUIForLocalPlayer:(GKLocalPlayer *)arg1 dismiss:(void (^)(void))arg2;
 @end
 

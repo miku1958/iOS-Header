@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *remotePubKeys;
     unsigned char localPrivKey[32];
     unsigned char localPubKey[32];
+    unsigned int useLargeUUIDForTesting:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

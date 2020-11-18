@@ -6,7 +6,7 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class NSArray, SearchUIAppIconsRowView, TLKAuxilliaryTextView, UIView;
+@class NSArray, SearchUIAppIconsRowView, TLKAuxilliaryTextView;
 
 @interface SearchUIMultiResultTableViewCell : SearchUITableViewCell
 {
@@ -15,23 +15,22 @@
     NSArray *_results;
     long long _indexOfSelectedKeyboardIcon;
     TLKAuxilliaryTextView *_folderLabelView;
-    UIView *_highlightBackgroundView;
 }
 
 @property (strong, nonatomic) SearchUIAppIconsRowView *bottomRow; // @synthesize bottomRow=_bottomRow;
 @property (strong, nonatomic) TLKAuxilliaryTextView *folderLabelView; // @synthesize folderLabelView=_folderLabelView;
-@property (strong, nonatomic) UIView *highlightBackgroundView; // @synthesize highlightBackgroundView=_highlightBackgroundView;
 @property (nonatomic) long long indexOfSelectedKeyboardIcon; // @synthesize indexOfSelectedKeyboardIcon=_indexOfSelectedKeyboardIcon;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (strong, nonatomic) SearchUIAppIconsRowView *topRow; // @synthesize topRow=_topRow;
 
 + (unsigned long long)numberOfColumnsForCurrentOrientation;
 - (void).cxx_destruct;
-- (double)appRowSpacing;
+- (double)appRowVerticalSpacingForTopRowSize:(struct CGSize)arg1;
 - (BOOL)canSetupKeyboardHandler;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (BOOL)isExpandable;
+- (id)keyboardResultForFocus;
 - (void)layoutSubviews;
 - (BOOL)navigateKeyboardDown;
 - (BOOL)navigateKeyboardLeft;
@@ -46,6 +45,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateExpanded:(BOOL)arg1;
 - (void)updateWithRowModel:(id)arg1;
+- (id)viewForHighlightedIndex:(long long)arg1;
 - (id)visibleResults;
 
 @end

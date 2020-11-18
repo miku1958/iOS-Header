@@ -8,15 +8,14 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription23BundlePurchasePrewarmer : NSObject
 {
+    MISSING_TYPE *_purchase;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *networkReachability;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *purchaseManager;
-    MISSING_TYPE *cachedPurchaseModel;
-    MISSING_TYPE *accessLock;
+    MISSING_TYPE *deduper;
 }
 
 - (void).cxx_destruct;

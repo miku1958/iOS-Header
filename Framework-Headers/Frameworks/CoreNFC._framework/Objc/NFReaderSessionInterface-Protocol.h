@@ -13,7 +13,7 @@
 - (oneway void)checkNdefSupport:(void (^)(long long, unsigned long long, NSError *))arg1;
 - (oneway void)checkPresence:(void (^)(NSError *, BOOL))arg1;
 - (oneway void)connect:(id<NFTag>)arg1 callback:(void (^)(NSError *))arg2;
-- (oneway void)disconnect:(void (^)(NSError *))arg1;
+- (oneway void)disconnectWithCardRemoval:(BOOL)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)ndefRead:(void (^)(NSError *, id<NFNdefMessage>))arg1;
 - (oneway void)ndefWrite:(id<NFNdefMessage>)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)restartPolling:(void (^)(NSError *))arg1;

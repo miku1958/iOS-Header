@@ -13,7 +13,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMDAccessoryNetworkAccessViolation, HMDAccessoryVersion, HMDApplicationData, HMDHome, HMDRoom, HMDVendorModelEntry, HMFMessageDispatcher, HMFVersion, NSArray, NSData, NSMutableSet, NSNumber, NSObject, NSSet, NSString, NSUUID;
+@class HMAccessoryCategory, HMDAccessoryNetworkAccessViolation, HMDAccessoryVersion, HMDApplicationData, HMDHome, HMDNetworkRouterFirewallRuleAccessoryIdentifier, HMDRoom, HMDSoftwareUpdate, HMDUserManagementOperationTimestamp, HMDVendorModelEntry, HMFMessageDispatcher, HMFVersion, NSArray, NSData, NSMutableSet, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDAccessory : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMDHomeMessageReceiver, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging>
@@ -23,6 +23,8 @@
     BOOL _reachable;
     BOOL _remotelyReachable;
     NSMutableSet *_accessoryProfiles;
+    BOOL _reachabilityPingEnabled;
+    BOOL _reachablilityPingNotificationEnabled;
     BOOL _suspended;
     BOOL _suspendCapable;
     BOOL _remoteAccessEnabled;
@@ -41,7 +43,6 @@
     unsigned long long _configNumber;
     NSNumber *_networkClientIdentifier;
     NSUUID *_networkRouterUUID;
-    long long _deprecatedTargetNetworkProtectionMode;
     long long _currentNetworkProtectionMode;
     long long _networkClientLAN;
     NSUUID *_networkClientProfileFingerprint;
@@ -52,6 +53,9 @@
     NSUUID *_defaultNetworkProtectionGroupUUID;
     HMFVersion *_primaryProfileVersion;
     NSNumber *_initialCategoryIdentifier;
+    HMDSoftwareUpdate *_softwareUpdate;
+    HMDUserManagementOperationTimestamp *_sharedAdminAddedTimestamp;
+    HMDUserManagementOperationTimestamp *_pairingsAuditedTimestamp;
     NSUUID *_uuid;
     HMAccessoryCategory *_category;
     HMDHome *_home;
@@ -84,7 +88,6 @@
 @property (nonatomic) BOOL custom1WoWLAN; // @synthesize custom1WoWLAN=_custom1WoWLAN;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSUUID *defaultNetworkProtectionGroupUUID; // @synthesize defaultNetworkProtectionGroupUUID=_defaultNetworkProtectionGroupUUID;
-@property (nonatomic) long long deprecatedTargetNetworkProtectionMode; // @synthesize deprecatedTargetNetworkProtectionMode=_deprecatedTargetNetworkProtectionMode;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) HMDAccessoryVersion *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property (readonly) unsigned long long hash;
@@ -98,6 +101,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (readonly) HMDNetworkRouterFirewallRuleAccessoryIdentifier *metadataIdentifier;
 @property (readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSString *name;
@@ -106,18 +110,23 @@
 @property (nonatomic) long long networkClientLAN; // @synthesize networkClientLAN=_networkClientLAN;
 @property (strong, nonatomic) NSUUID *networkClientProfileFingerprint; // @synthesize networkClientProfileFingerprint=_networkClientProfileFingerprint;
 @property (strong, nonatomic) NSUUID *networkRouterUUID; // @synthesize networkRouterUUID=_networkRouterUUID;
+@property (strong, nonatomic) HMDUserManagementOperationTimestamp *pairingsAuditedTimestamp; // @synthesize pairingsAuditedTimestamp=_pairingsAuditedTimestamp;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (strong, nonatomic) HMFVersion *primaryProfileVersion; // @synthesize primaryProfileVersion=_primaryProfileVersion;
 @property (readonly, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property (readonly, nonatomic) NSString *productGroup;
 @property (copy, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
+@property (nonatomic) BOOL reachabilityPingEnabled; // @synthesize reachabilityPingEnabled=_reachabilityPingEnabled;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (readonly, nonatomic) long long reachableTransports;
+@property (nonatomic) BOOL reachablilityPingNotificationEnabled; // @synthesize reachablilityPingNotificationEnabled=_reachablilityPingNotificationEnabled;
 @property (nonatomic, getter=isRemoteAccessEnabled) BOOL remoteAccessEnabled; // @synthesize remoteAccessEnabled=_remoteAccessEnabled;
 @property (nonatomic, getter=isRemotelyReachable) BOOL remotelyReachable; // @synthesize remotelyReachable=_remotelyReachable;
 @property (readonly) BOOL requiresHomeAppForManagement;
 @property (strong, nonatomic) HMDRoom *room; // @synthesize room=_room;
 @property (readonly, copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (strong, nonatomic) HMDUserManagementOperationTimestamp *sharedAdminAddedTimestamp; // @synthesize sharedAdminAddedTimestamp=_sharedAdminAddedTimestamp;
+@property (strong, nonatomic) HMDSoftwareUpdate *softwareUpdate; // @synthesize softwareUpdate=_softwareUpdate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsCompanionInitiatedRestart;
 @property (readonly, nonatomic) BOOL supportsMediaContentProfile;
@@ -125,6 +134,7 @@
 @property (readonly, nonatomic) BOOL supportsPersonalRequests;
 @property (readonly, nonatomic) BOOL supportsTargetControl;
 @property (readonly, nonatomic) BOOL supportsTargetController;
+@property (readonly, nonatomic) BOOL supportsThirdPartyMusic;
 @property (readonly) BOOL supportsUserManagement;
 @property (nonatomic, getter=isSuspendCapable) BOOL suspendCapable; // @synthesize suspendCapable=_suspendCapable;
 @property (nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
@@ -140,6 +150,7 @@
 + (BOOL)supportsSecureCoding;
 + (BOOL)validateProductData:(id)arg1;
 - (void).cxx_destruct;
+- (void)__handleAuditPairings:(id)arg1;
 - (void)__handleGetAccessoryAdvertisingParams:(id)arg1;
 - (void)__handleIdentify:(id)arg1;
 - (void)__handleListPairings:(id)arg1;
@@ -147,8 +158,11 @@
 - (void)__handleRename:(id)arg1;
 - (void)__handleSetAppData:(id)arg1;
 - (void)__handleUpdateRoom:(id)arg1;
-- (void)_handleUpdateNetworkProtection:(id)arg1;
+- (BOOL)_allowSoftwareUpdateChangeFromSource:(unsigned long long)arg1;
+- (void)_applySoftwareUpdateModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handlePreviewAllowedHosts:(id)arg1;
 - (void)_handleUpdatedName:(id)arg1;
+- (void)_handleWiFiReconfiguration:(id)arg1;
 - (void)_notifyConnectivityChangedWithReachabilityState:(BOOL)arg1 remoteAccessChanged:(BOOL)arg2;
 - (void)_registerForMessages;
 - (void)_relayIdentifyAccessorytoResidentForMessage:(id)arg1;
@@ -157,15 +171,17 @@
 - (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (id)_updateCategory:(id)arg1 notifyClients:(BOOL)arg2;
 - (BOOL)_updateRoom:(id)arg1;
+- (id)accessoryBulletinContext;
 - (void)addAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
 - (void)appDataRemoved:(id)arg1 message:(id)arg2;
 - (void)appDataUpdated:(id)arg1 message:(id)arg2;
 - (id)assistantObject;
 - (id)assistantUniqueIdentifier;
+- (id)attributeDescriptions;
 - (void)autoConfigureTargetControllers;
 - (id)backingStoreObjects:(long long)arg1;
-- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(BOOL)arg4;
 - (void)dealloc;
 - (void)didEncounterError:(id)arg1;
 - (void)didUpdateCurrentNetworkProtection;
@@ -173,20 +189,25 @@
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)getConfiguredName;
+- (void)handleAddedSoftwareUpdateModel:(id)arg1 message:(id)arg2;
+- (void)handleRemovedSoftwareUpdateModel:(id)arg1 message:(id)arg2;
+- (void)handleUpdatedSoftwareUpdateModel:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)hashRouteID;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
 - (BOOL)isReachableForXPCClients;
-- (void)logDuetRoomEvent;
 - (id)logIdentifier;
+- (void)logRoomEvent:(unsigned long long)arg1;
 - (id)messageDestination;
+- (id)messageSendPolicy;
 - (id)modelWithUpdatedRoom:(id)arg1;
 - (id)networkProtectionGroupUUID;
 - (id)networkProtectionReportForAWD;
-- (int)networkProtectionStatusForAWD;
+- (int)networkProtectionStatusForAnalytics;
 - (void)notifyAccessoryNameChanged:(BOOL)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
+- (void)populateVendorDetailsForCoreAnalytics:(id)arg1 keyPrefix:(id)arg2;
 - (id)privateDescription;
 - (BOOL)providesHashRouteID;
 - (void)registerForMessagesWithNewUUID:(id)arg1;
@@ -195,9 +216,9 @@
 - (void)removeAdvertisement:(id)arg1;
 - (void)removeCloudData;
 - (id)runtimeState;
-- (void)saveCurrentNetworkProtectionMode:(long long)arg1 assignedLAN:(long long)arg2 appliedFirewallWANRules:(id)arg3 profileFingerprint:(id)arg4;
+- (void)saveCurrentNetworkProtectionMode:(long long)arg1 assignedLAN:(long long)arg2 allowedWANHosts:(id)arg3 profileFingerprint:(id)arg4;
 - (void)saveNetworkAccessViolation:(id)arg1;
-- (void)saveNetworkClientIdentifier:(id)arg1 networkRouterUUID:(id)arg2;
+- (void)saveNetworkClientIdentifier:(id)arg1 networkRouterUUID:(id)arg2 clearProfileFingerprint:(BOOL)arg3;
 - (void)saveWiFiUniquePreSharedKey:(id)arg1 credentialType:(long long)arg2;
 - (void)setAccessoryProfiles:(id)arg1;
 - (void)setFirmwareVersion:(id)arg1;
@@ -211,8 +232,13 @@
 - (void)setSuspendedCapable:(BOOL)arg1;
 - (void)setWifiCredentialType:(long long)arg1;
 - (BOOL)shouldEnableDaemonRelaunch;
+- (void)startReachabilityCheck;
+- (void)stopReachabilityCheck;
+- (unsigned long long)supportedTransports;
+- (BOOL)supportsDiagnosticsTransfer;
 - (BOOL)supportsMinimumUserPrivilege;
 - (BOOL)supportsNetworkProtection;
+- (BOOL)supportsSoftwareUpdate;
 - (BOOL)supportsWiFiReconfiguration;
 - (void)takeOwnershipOfAppData:(id)arg1;
 - (long long)targetNetworkProtectionMode;
@@ -221,10 +247,10 @@
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 - (void)unconfigure;
 - (void)updateCategory:(id)arg1;
-- (void)updateManufacturer:(id)arg1 model:(id)arg2 firmwareVersion:(id)arg3 serialNumber:(id)arg4;
 - (void)updateMediaSession:(id)arg1;
-- (void)updateProvidedName:(id)arg1;
+- (void)updateReachabilityPingNotification;
 - (void)updateRoom:(id)arg1;
+- (void)updateSoftwareUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)urlString;
 - (id)vendorDetailsForAWD;
 

@@ -56,6 +56,7 @@
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setProgress:(double)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1;
+- (void)setTransportSlotHidden:(BOOL)arg1 animated:(BOOL)arg2 useDelay:(BOOL)arg3;
 - (void)setupConstraintsYukon;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateDarkening;

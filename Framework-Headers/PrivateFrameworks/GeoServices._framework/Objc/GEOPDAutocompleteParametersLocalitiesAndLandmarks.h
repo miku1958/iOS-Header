@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     int _maxResults;
     BOOL _highlightDiff;
-    CDStruct_58fcab42 _flags;
+    CDStruct_f55cf389 _flags;
 }
 
 @property (nonatomic) BOOL hasHighlightDiff;
@@ -37,8 +37,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readQuery;
-- (void)_readViewportInfo;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -47,7 +45,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

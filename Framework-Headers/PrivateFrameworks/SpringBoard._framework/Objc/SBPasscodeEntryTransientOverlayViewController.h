@@ -10,7 +10,7 @@
 #import <SpringBoard/SBFAuthenticationResponder-Protocol.h>
 #import <SpringBoard/SBUIPasscodeLockViewDelegate-Protocol.h>
 
-@class CSLockScreenPearlSettings, NSString, SBFUserAuthenticationController, SBUIPasscodeViewWithLockScreenStyle;
+@class CSLockScreenPearlSettings, CSPoseidonViewController, NSString, SBFUserAuthenticationController, SBUIPasscodeViewWithLockScreenStyle;
 @protocol SBPasscodeEntryTransientOverlayViewControllerDelegate, SBUIPasscodeLockView;
 
 @interface SBPasscodeEntryTransientOverlayViewController : SBTransientOverlayViewController <PTSettingsKeyObserver, SBFAuthenticationResponder, SBUIPasscodeLockViewDelegate>
@@ -20,8 +20,10 @@
     id<SBUIPasscodeLockView> _passcodeRequester;
     SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
     CSLockScreenPearlSettings *_pearlSettings;
+    CSPoseidonViewController *_poseidonViewController;
     BOOL _showEmergencyCallButton;
     BOOL _useBiometricPresentation;
+    int _intent;
     id<SBPasscodeEntryTransientOverlayViewControllerDelegate> _delegate;
     NSString *_unlockDestination;
 }
@@ -30,6 +32,7 @@
 @property (weak, nonatomic) id<SBPasscodeEntryTransientOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) int intent; // @synthesize intent=_intent;
 @property (nonatomic) BOOL showEmergencyCallButton; // @synthesize showEmergencyCallButton=_showEmergencyCallButton;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *unlockDestination; // @synthesize unlockDestination=_unlockDestination;
@@ -39,6 +42,7 @@
 - (void)_attemptUnlock:(id)arg1 passcode:(id)arg2;
 - (BOOL)_canShowWhileLocked;
 - (void)_passcodeLockViewPasscodeEntered:(id)arg1 viaMesa:(BOOL)arg2;
+- (int)_preferredStatusBarVisibility;
 - (void)_updatePrototypeSettings;
 - (void)handleFailedAuthenticationRequest:(id)arg1 error:(id)arg2;
 - (void)handleInvalidAuthenticationRequest:(id)arg1;

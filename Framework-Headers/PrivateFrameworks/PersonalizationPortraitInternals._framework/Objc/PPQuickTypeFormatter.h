@@ -12,6 +12,8 @@
 {
     PPQuickTypeQuery *_query;
     NSLocale *_locale;
+    NSString *_desiredLanguage;
+    NSString *_fallbackLanguage;
     _PASLock *_localizedStrings;
     NSDateFormatter *_birthdayFormatter;
     NSDateFormatter *_chineseBirthdayFormatter;
@@ -22,8 +24,6 @@
     NSCache *_dateFormatCache;
     NSURL *_labeledValueLocalizationURL;
     NSCache *_appNameCache;
-    NSString *_appNameFallbackLanguage;
-    NSString *_appNameDesiredLanguage;
     NSMeasurementFormatter *_measurementWholeFormatter;
     NSMeasurementFormatter *_measurementDecimalFormatter;
     NSMeasurementFormatter *_measurementUnscaledFormatter;

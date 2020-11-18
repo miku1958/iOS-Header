@@ -4,15 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BSMachPortSendRight, NSArray, NSNumber, NSString;
+@class BSMachPortSendRight, NSArray, NSDate, NSError, NSNumber, NSString, NSURL;
 
 @protocol SBSHomeScreenServiceClientToServerInterface
 
+@property (copy, nonatomic) NSNumber *addsNewIconsToHomeScreenValue;
+@property (readonly, copy, nonatomic) NSArray *allHomeScreenApplicationBundleIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *allHomeScreenApplicationPlaceholderBundleIdentifiers;
 @property (copy, nonatomic) NSNumber *lowDensityIconLayoutEnabledValue;
+@property (copy, nonatomic) NSNumber *showsBadgesInAppLibraryValue;
 
 - (void)addWidgetToTodayViewWithBundleIdentifier:(NSString *)arg1;
+- (void)changeDisplayedDateOffsetOverride:(NSNumber *)arg1;
+- (void)changeDisplayedDateOverride:(NSDate *)arg1;
+- (NSError *)configureCategoryMapProviderToUseCategoryMapAtURL:(NSURL *)arg1;
+- (void)configureDeweyEachAppHasItsOwnCategory;
+- (void)configureDeweyOneCategoryWithAllApps;
+- (BOOL)debugContinuityWithBadgeType:(NSString *)arg1;
 - (NSArray *)folderPathToIconWithBundleIdentifier:(NSString *)arg1;
+- (oneway void)forbidApplicationBundleIdentifierFromLibrary:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (BOOL)hasWidgetWithBundleIdentifier:(NSString *)arg1;
+- (void)ignoreAllApps;
+- (void)organizeAllIconsAcrossPagesWithPageCount:(NSNumber *)arg1;
+- (void)organizeAllIconsIntoFoldersWithPageCount:(NSNumber *)arg1;
+- (void)overrideBadgeValue:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (void)refreshAppLibrary:(NSNumber *)arg1 reason:(NSString *)arg2;
+- (void)reloadIcons;
+- (void)removeAllWidgets;
+- (void)requestAppLibraryUpdate:(NSNumber *)arg1 reason:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (oneway void)requestSuggestedApplicationWithBundleIdentifier:(NSString *)arg1 assertionPort:(BSMachPortSendRight *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)resetCategoriesLayoutWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)resetHomeScreenLayoutWithCompletion:(void (^)(NSError *))arg1;
+- (void)runDownloadingIconTest;
+- (oneway void)runFloatingDockStressTestWithCompletion:(void (^)(NSError *))arg1;
+- (void)runRemoveAndRestoreIconTest;
+- (oneway void)unforbidApplicationBundleIdentifierFromLibrary:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 @end
 

@@ -7,18 +7,20 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class CKServerChangeToken;
+@protocol CKFetchNotificationChangesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchNotificationChangesOperation : CKDOperation
 {
-    BOOL _wantsChanges;
     BOOL _moreComing;
+    BOOL _wantsChanges;
     CDUnknownBlockType _notificationChangedBlock;
+    CKServerChangeToken *_resultServerChangeToken;
     CKServerChangeToken *_previousServerChangeToken;
     unsigned long long _resultsLimit;
-    CKServerChangeToken *_resultServerChangeToken;
 }
 
+@property (strong, nonatomic) id<CKFetchNotificationChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (nonatomic) BOOL moreComing; // @synthesize moreComing=_moreComing;
 @property (copy, nonatomic) CDUnknownBlockType notificationChangedBlock; // @synthesize notificationChangedBlock=_notificationChangedBlock;
 @property (strong, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
@@ -30,10 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleFetchChangesRequestFinished:(id)arg1;
 - (id)activityCreate;
-- (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
-- (Class)operationResultClass;
+- (int)operationType;
 
 @end
 

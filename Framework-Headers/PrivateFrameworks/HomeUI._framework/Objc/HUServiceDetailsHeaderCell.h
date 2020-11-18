@@ -48,6 +48,8 @@
 - (void).cxx_destruct;
 - (void)_configureConstraints;
 - (id)_hiddenMessageTextViewConstraints;
+- (void)_setContinuousCornerRadius:(double)arg1;
+- (void)_setCornerRadius:(double)arg1;
 - (void)_updateErrorLabelConstraints;
 - (void)_updateRequiredHeightIfNeeded;
 - (id)_visibleMessageTextViewConstraints;

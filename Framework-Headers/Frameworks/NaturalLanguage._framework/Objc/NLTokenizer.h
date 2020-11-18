@@ -20,12 +20,15 @@
 @property (readonly, nonatomic) long long unit;
 
 - (void).cxx_destruct;
+- (const CDStruct_b1a60774 *)_tokenAtIndex:(unsigned long long)arg1;
+- (id)_wordCharacterSet;
 - (void)dealloc;
 - (void)enumerateTokensInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)initWithUnit:(long long)arg1;
 - (id)language;
 - (void)setLanguage:(id)arg1;
 - (struct _NSRange)tokenRangeAtIndex:(unsigned long long)arg1;
+- (struct _NSRange)tokenRangeForRange:(struct _NSRange)arg1;
 - (id)tokensForRange:(struct _NSRange)arg1;
 
 @end

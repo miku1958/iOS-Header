@@ -9,13 +9,14 @@
 #import <HomeUI/WKNavigationDelegate-Protocol.h>
 #import <HomeUI/WKUIDelegate-Protocol.h>
 
-@class NSString, WKUserContentController, WKWebView;
+@class NSString, UIFont, WKUserContentController, WKWebView;
 @protocol HUInlineWebContainerViewDelegate;
 
 @interface HUInlineWebContainerView : UIView <WKUIDelegate, WKNavigationDelegate>
 {
     WKWebView *_webView;
     NSString *_HTMLContent;
+    UIFont *_font;
     id<HUInlineWebContainerViewDelegate> _delegate;
     double _estimatedHeight;
     WKUserContentController *_contentController;
@@ -27,12 +28,12 @@
 @property (weak, nonatomic) id<HUInlineWebContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double estimatedHeight; // @synthesize estimatedHeight=_estimatedHeight;
+@property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
-- (id)_defaultFont;
 - (double)heightForWidth:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

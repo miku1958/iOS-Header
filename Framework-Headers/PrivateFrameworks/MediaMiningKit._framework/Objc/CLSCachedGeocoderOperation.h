@@ -4,28 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PipelineKit/PIOperationSubclass.h>
+#import <objc/NSObject.h>
 
 @class CLSLocationCache;
+@protocol OS_dispatch_source;
 
-@interface CLSCachedGeocoderOperation : PIOperationSubclass
+@interface CLSCachedGeocoderOperation : NSObject
 {
+    BOOL _forceQuery;
+    BOOL _cancelled;
     id _location;
     CLSLocationCache *_locationCache;
     double _accuracy;
-    BOOL _forceQuery;
+    NSObject<OS_dispatch_source> *_timer;
 }
 
-@property BOOL forceQuery; // @synthesize forceQuery=_forceQuery;
-
++ (id)operationForceGeocoderWithLocation:(id)arg1;
++ (id)operationForceGeocoderWithLocation:(id)arg1 withAccuracy:(double)arg2;
 + (id)operationWithLocation:(id)arg1;
-+ (id)operationWithLocation:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (id)operationWithLocation:(id)arg1 withAccuracy:(double)arg2;
-+ (double)recommendedAccuracy;
 - (void).cxx_destruct;
-- (void)cancel;
-- (void)execute;
+- (void)_executeQueryWithResultBlock:(CDUnknownBlockType)arg1;
+- (void)_returnsResultsForPlacemarks:(id)arg1 error:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
+- (void)_setupTimeOutForGeocoder:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
+- (void)_stopTimeOut;
+- (void)_timedOutForGeocoder:(id)arg1 withResultBlock:(CDUnknownBlockType)arg2;
 - (id)initWithLocation:(id)arg1 withAccuracy:(double)arg2;
+- (id)performSynchronouslyWithError:(id *)arg1;
 
 @end
 

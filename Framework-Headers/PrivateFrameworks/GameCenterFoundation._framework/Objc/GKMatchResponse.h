@@ -38,6 +38,8 @@
 - (void)dealloc;
 - (BOOL)isCancelled;
 - (BOOL)isFinished;
+- (BOOL)isNetworkError;
+- (BOOL)isTimeout;
 - (BOOL)transitionToState:(long long)arg1;
 
 @end

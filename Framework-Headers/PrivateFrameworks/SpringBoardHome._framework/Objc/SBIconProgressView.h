@@ -52,6 +52,7 @@
 + (id)_pieImageAtFraction:(double)arg1;
 + (id)_pieImagesMemoryPool;
 - (void).cxx_destruct;
+- (double)_circleScaleFactor;
 - (void)_clearDisplayLink;
 - (void)_drawIncomingCircleWithCenter:(struct CGPoint)arg1;
 - (void)_drawOutgoingCircleWithCenter:(struct CGPoint)arg1;

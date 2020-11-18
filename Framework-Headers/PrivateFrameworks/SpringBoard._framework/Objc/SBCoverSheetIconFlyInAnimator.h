@@ -8,7 +8,7 @@
 
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 
-@class CAMediaTimingFunction, NSString, UIViewFloatAnimatableProperty;
+@class CAMediaTimingFunction, NSString, UIPageControl, UIViewFloatAnimatableProperty;
 
 @interface SBCoverSheetIconFlyInAnimator : SBCenterIconZoomAnimator <PTSettingsKeyObserver>
 {
@@ -17,12 +17,14 @@
     double _distanceExponent;
     UIViewFloatAnimatableProperty *_labelAlphaDrivingProgressAnimatableProperty;
     CAMediaTimingFunction *_timingFunction;
+    UIPageControl *_pageControl;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *labelAlphaDrivingProgressAnimatableProperty; // @synthesize labelAlphaDrivingProgressAnimatableProperty=_labelAlphaDrivingProgressAnimatableProperty;
+@property (strong, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
 
@@ -31,6 +33,7 @@
 - (void)_createAnimatableProperties;
 - (double)_functionWithProgress:(double)arg1 distance:(double)arg2;
 - (double)_labelAlphaForFraction:(double)arg1;
+- (void)_prepareAnimation;
 - (void)_setAnimationFraction:(double)arg1 withCenter:(struct CGPoint)arg2;
 - (void)_updateDockForFraction:(double)arg1;
 - (void)_updateLabelAlphaForPresentationValue:(BOOL)arg1;

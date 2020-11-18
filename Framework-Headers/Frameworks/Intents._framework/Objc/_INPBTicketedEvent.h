@@ -15,14 +15,12 @@
 @interface _INPBTicketedEvent : PBCodable <_INPBTicketedEvent, NSSecureCoding, NSCopying>
 {
     CDStruct_74e42c4c _has;
-    BOOL __encodeLegacyGloryData;
     int _category;
     _INPBDateTimeRange *_eventDuration;
     _INPBLocationValue *_location;
     NSString *_name;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

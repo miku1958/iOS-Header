@@ -32,12 +32,12 @@
 @property (copy, nonatomic) NSString *vpnType; // @synthesize vpnType=_vpnType;
 
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
 - (BOOL)isPayloadAllowed;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
+- (id)verboseDescription;
 
 @end
 

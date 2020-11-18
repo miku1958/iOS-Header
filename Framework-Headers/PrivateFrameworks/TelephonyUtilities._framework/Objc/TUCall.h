@@ -22,12 +22,14 @@
     BOOL _video;
     BOOL _ringtoneSuppressedRemotely;
     BOOL _wasPulledToCurrentDevice;
+    BOOL _isKnownCaller;
     int _disconnectedReason;
     int _faceTimeIDStatus;
     int _filteredOutReason;
     int _transitionStatus;
     int _hardPauseDigitsState;
     int _ttyType;
+    int _originatingUIType;
     NSDate *_dateCreated;
     NSDate *_dateAnsweredOrDialed;
     NSDate *_dateSentInvitation;
@@ -52,6 +54,8 @@
     double _hostMessageSendTime;
     double _clientMessageReceiveTime;
     NSString *_hardPauseDigits;
+    long long _junkConfidence;
+    long long _identificationCategory;
     struct CGSize _remoteScreenAspectRatio;
 }
 
@@ -113,13 +117,17 @@
 @property (nonatomic) double hostCreationTime; // @synthesize hostCreationTime=_hostCreationTime;
 @property (nonatomic) double hostMessageSendTime; // @synthesize hostMessageSendTime=_hostMessageSendTime;
 @property (readonly, nonatomic, getter=isHostedOnCurrentDevice) BOOL hostedOnCurrentDevice;
+@property (readonly, nonatomic) long long identificationCategory; // @synthesize identificationCategory=_identificationCategory;
 @property (readonly, nonatomic, getter=isIncoming) BOOL incoming;
 @property (readonly, nonatomic) long long inputAudioPowerSpectrumToken;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isKnownCaller; // @synthesize isKnownCaller=_isKnownCaller;
 @property (readonly, nonatomic) BOOL isOnHold;
 @property (readonly, nonatomic) BOOL isSendingAudio;
 @property (nonatomic) BOOL isSendingVideo;
 @property (copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
+@property (readonly, nonatomic, getter=isJunk) BOOL junk;
+@property (readonly, nonatomic) long long junkConfidence; // @synthesize junkConfidence=_junkConfidence;
 @property (readonly, nonatomic) NSData *localFrequency;
 @property (readonly, nonatomic) float localMeterLevel;
 @property (readonly, copy, nonatomic) TUSenderIdentity *localSenderIdentity;
@@ -130,6 +138,7 @@
 @property (copy, nonatomic) TUCallModel *model; // @synthesize model=_model;
 @property (readonly, nonatomic, getter=isMutuallyExclusiveCall) BOOL mutuallyExclusiveCall;
 @property (readonly, nonatomic) BOOL needsManualInCallSounds;
+@property (readonly, nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (readonly, nonatomic, getter=isOutgoing) BOOL outgoing;
 @property (readonly, nonatomic) long long outputAudioPowerSpectrumToken;
 @property (readonly, nonatomic) BOOL prefersExclusiveAccessToCellularNetwork;
@@ -191,7 +200,10 @@
 @property (readonly, nonatomic, getter=isWiFiCall) BOOL wiFiCall;
 
 + (id)_supplementalDialTelephonyCallStringForLocString:(id)arg1 destination:(id)arg2 isPhoneNumber:(BOOL)arg3 includeFaceTimeAudio:(BOOL)arg4;
++ (long long)acceptableJunkConfidence;
 + (id)faceTimeSupplementalDialTelephonyCallStringIncludingFTA:(BOOL)arg1;
++ (BOOL)isJunkConfidenceLevelJunk:(long long)arg1;
++ (long long)maxJunkConfidence;
 + (id)supplementalDialTelephonyCallString;
 + (id)supplementalDialTelephonyCallStringForDestination:(id)arg1 isPhoneNumber:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
@@ -220,6 +232,7 @@
 - (BOOL)isVideoUpgradeFromCall:(id)arg1;
 - (struct CGSize)localAspectRatioForOrientation:(long long)arg1;
 - (void)playDTMFToneForKey:(unsigned char)arg1;
+- (void)postNotificationsAfterUpdatesInBlock:(CDUnknownBlockType)arg1;
 - (void)resetProvisionalState;
 - (void)resetWantsHoldMusic;
 - (void)sendHardPauseDigits;
@@ -230,7 +243,6 @@
 - (void)setRemoteVideoLayer:(id)arg1 forMode:(long long)arg2;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1;
 - (void)setRemoteVideoPresentationState:(int)arg1;
-- (id)statusDisplayStringWithLabel:(id)arg1;
 - (id)supplementalInCallString;
 - (void)suppressRingtone;
 - (void)suppressRingtoneDueToRemoteSuppression;

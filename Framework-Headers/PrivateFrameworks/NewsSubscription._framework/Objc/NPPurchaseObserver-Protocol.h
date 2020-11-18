@@ -8,8 +8,10 @@
 
 @protocol NPPurchaseObserver
 - (void)purchaseDidFailFor:(NSString *)arg1 transactionState:(long long)arg2 transactionError:(NSError *)arg3 purchaseContext:(NPPurchaseContext *)arg4 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg5;
+- (void)purchaseDidFailWithError:(NSError *)arg1 purchaseContext:(NPPurchaseContext *)arg2;
 - (void)purchaseDidFailWithInvalidReceiptFor:(NSString *)arg1 purchaseContext:(NPPurchaseContext *)arg2 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg3;
 - (void)purchaseDidSucceedFor:(NSString *)arg1 purchaseReceipt:(NSString *)arg2 chargeCurrencyCode:(NSString *)arg3 purchaseContext:(NPPurchaseContext *)arg4 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg5;
 - (void)purchaseDidSucceedOutsideNewsAppFor:(NSString *)arg1 purchaseContext:(NPPurchaseContext *)arg2;
+- (void)purchaseDidSucceedWithPurchaseContext:(NPPurchaseContext *)arg1;
 @end
 

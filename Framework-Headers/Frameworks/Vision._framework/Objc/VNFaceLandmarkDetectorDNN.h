@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) vector_f48c7054 *landmarkPoints65;
 
-+ (const map_c38c583f *)_requestConstellationToDetectorConstellationMap;
++ (const map_781928e9 *)_requestConstellationToDetectorConstellationMap;
 + (id)configurationOptionKeysForDetectorKey;
 + (id)inputBlobNames;
 + (id)outputBlobNames;

@@ -27,6 +27,7 @@
 + (BOOL)isRedditPostURL:(id)arg1;
 + (BOOL)isRedditStaticImage:(id)arg1;
 + (BOOL)isSinaWeiboURL:(id)arg1;
++ (BOOL)isTikTokURL:(id)arg1;
 + (BOOL)isTweetURL:(id)arg1;
 + (BOOL)isTwitterProfileImageURL:(id)arg1;
 + (BOOL)isTwitterShortenerURL:(id)arg1;

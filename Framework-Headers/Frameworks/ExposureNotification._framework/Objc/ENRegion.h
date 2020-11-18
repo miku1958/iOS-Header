@@ -21,6 +21,7 @@
 @property (readonly, copy, nonatomic) NSString *regionCode;
 @property (readonly, copy, nonatomic) NSString *subdivisionCode; // @synthesize subdivisionCode=_subdivisionCode;
 
++ (BOOL)_validSubdivisionCode:(id)arg1 forCountryCode:(id)arg2;
 + (id)regionFromServerResponseDictionary:(id)arg1;
 + (id)regionWithCode:(id)arg1;
 + (BOOL)supportsSecureCoding;

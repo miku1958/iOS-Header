@@ -10,24 +10,21 @@
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, WFActionDrawerResultsController;
-@protocol WFActionDrawerAppsViewControllerDelegate;
+@class NSArray, NSString, UICollectionView, WFActionDrawerCoordinator;
 
 @interface WFActionDrawerAppsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, WFActionDrawerStateConfigurable>
 {
-    id<WFActionDrawerAppsViewControllerDelegate> _delegate;
-    WFActionDrawerResultsController *_resultsController;
+    WFActionDrawerCoordinator *_coordinator;
     NSArray *_appItems;
     UICollectionView *_collectionView;
 }
 
 @property (strong, nonatomic) NSArray *appItems; // @synthesize appItems=_appItems;
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property (readonly, weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerAppsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) WFActionDrawerResultsController *resultsController; // @synthesize resultsController=_resultsController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -40,7 +37,7 @@
 - (double)expectedCollectionViewWidth;
 - (void)fetchBundleIdentifiersFromActionRegistryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchBundleIdentifiersFromRecentDonationsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithActionDrawerResultsController:(id)arg1;
+- (id)initWithCoordinator:(id)arg1;
 - (double)insetForCollectionViewWidth:(double)arg1 numberOfItems:(long long)arg2 itemSize:(double)arg3 spacing:(double)arg4;
 - (double)insetForEqualSpacingWithCollectionViewWidth:(double)arg1 numberOfItems:(long long)arg2 itemSize:(double)arg3;
 - (void)loadView;

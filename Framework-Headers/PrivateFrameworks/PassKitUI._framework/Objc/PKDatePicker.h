@@ -25,7 +25,7 @@
 
 @property (readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (nonatomic) id<PKDatePickerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKDatePickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly, nonatomic) BOOL showsDay; // @synthesize showsDay=_showsDay;
 @property (readonly, nonatomic) BOOL showsMonth; // @synthesize showsMonth=_showsMonth;

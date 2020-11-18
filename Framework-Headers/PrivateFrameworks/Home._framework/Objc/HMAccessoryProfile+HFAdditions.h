@@ -7,17 +7,22 @@
 #import <HomeKit/HMAccessoryProfile.h>
 
 #import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeKitObject-Protocol.h>
+#import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class HMRoom, NSString, NSUUID;
 @protocol HFIconDescriptor;
 
-@interface HMAccessoryProfile (HFAdditions) <HFStateDumpBuildable, HFFavoritable>
+@interface HMAccessoryProfile (HFAdditions) <HFStateDumpBuildable, HFFavoritable, HFHomeKitObject, HFRoomContextProviding>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hf_hasNonStandardTileUI;
@@ -25,13 +30,15 @@
 @property (readonly, nonatomic) id<HFIconDescriptor> hf_iconDescriptor;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
 @property (readonly, nonatomic) BOOL hf_offersAutomation;
+@property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)_profilesWithNonStandardTileUI;
 - (BOOL)hf_isValidObject;
-- (id)hf_parentRoom;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 @end

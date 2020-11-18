@@ -6,24 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSURL;
+@class NSArray, NSString, NSURL;
 
 @interface ETModelDefinition : NSObject
 {
     NSArray *_layerNames;
     NSArray *_inputs;
     NSArray *_outputs;
+    NSArray *_trainingInputs;
+    NSArray *_trainingOutputs;
     NSURL *_modelURL;
+    NSString *_isTrainingGlobalName;
+    NSString *_initializer;
 }
 
+@property (readonly) NSString *initializer; // @synthesize initializer=_initializer;
 @property (readonly) NSArray *inputs; // @synthesize inputs=_inputs;
+@property (readonly) NSString *isTrainingGlobalName; // @synthesize isTrainingGlobalName=_isTrainingGlobalName;
 @property (readonly) NSArray *layerNames; // @synthesize layerNames=_layerNames;
 @property (readonly) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 @property (readonly) NSArray *outputs; // @synthesize outputs=_outputs;
+@property (readonly) NSArray *trainingInputs; // @synthesize trainingInputs=_trainingInputs;
+@property (readonly) NSArray *trainingOutputs; // @synthesize trainingOutputs=_trainingOutputs;
 
 - (void).cxx_destruct;
 - (id)initWithInferenceNetworkPath:(id)arg1 error:(id *)arg2;
 - (id)initWithInferenceNetworkPath:(id)arg1 inferenceInputs:(id)arg2 inferenceOutputs:(id)arg3 error:(id *)arg4;
+- (id)initWithTrainingNetworkPath:(id)arg1 inferenceInputs:(id)arg2 inferenceOutputs:(id)arg3 trainingInputs:(id)arg4 trainingOutputs:(id)arg5 trainingControlVariableName:(id)arg6 withInitializer:(id)arg7 error:(id *)arg8;
 
 @end
 

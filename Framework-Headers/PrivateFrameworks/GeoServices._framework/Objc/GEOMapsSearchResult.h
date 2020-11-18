@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOPlaceActionDetails, PBDataReader;
+@class GEOAddress, GEOPDMapsIdentifier, GEOPlaceActionDetails, PBDataReader;
 
 @interface GEOMapsSearchResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     GEOAddress *_address;
+    GEOPDMapsIdentifier *_mapsId;
     unsigned long long _muid;
     GEOPlaceActionDetails *_placeActionDetails;
     unsigned int _readerMarkPos;
@@ -22,24 +23,23 @@
     struct {
         unsigned int has_muid:1;
         unsigned int read_address:1;
+        unsigned int read_mapsId:1;
         unsigned int read_placeActionDetails:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeActionDetails:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) GEOAddress *address;
 @property (readonly, nonatomic) BOOL hasAddress;
+@property (readonly, nonatomic) BOOL hasMapsId;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasPlaceActionDetails;
+@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId;
 @property (nonatomic) unsigned long long muid;
 @property (strong, nonatomic) GEOPlaceActionDetails *placeActionDetails;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAddress;
-- (void)_readPlaceActionDetails;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,7 +47,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

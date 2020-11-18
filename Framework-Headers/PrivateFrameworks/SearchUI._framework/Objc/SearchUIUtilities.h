@@ -10,37 +10,44 @@
 {
 }
 
-+ (id)addAspectRatioConstraintForImageView:(id)arg1;
++ (id)addAspectRatioConstraintForSize:(struct CGSize)arg1 toView:(id)arg2;
 + (BOOL)appIsValidForBundleIdentifier:(id)arg1;
 + (BOOL)backgroundColorPrefersWhiteForegroundText:(id)arg1;
 + (id)bundleIdentifierForApp:(unsigned long long)arg1;
 + (BOOL)bundleIdentifierIsBlockedForScreenTimeExpiration:(id)arg1;
++ (id)defaultBrowserBundleIdentifier;
 + (BOOL)deviceIsAuthenticated;
 + (BOOL)deviceSupportsRotation;
 + (void)dispatchAsyncIfNecessary:(CDUnknownBlockType)arg1;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
++ (id)environmentForDelegate:(id)arg1;
 + (void)fetchURLForFileResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)fileProviderItemIDForFileResult:(id)arg1;
 + (id)hyphenatableStringForString:(id)arg1;
 + (id)imageForBlockedApp;
-+ (void)initialize;
 + (BOOL)isLargeIpad;
++ (BOOL)isMinimizedHardwareKeyboardMode;
 + (BOOL)isPortraitForWindow:(id)arg1;
 + (BOOL)isWideScreen;
 + (id)localizedStringForKey:(id)arg1;
-+ (struct CGSize)maxThumbnailSize;
 + (double)onePixelForCurrentScreenResolution;
 + (void)openApplicationWithBundleIdentifier:(id)arg1;
++ (void)openApplicationWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)openOptions;
 + (void)openPunchout:(id)arg1;
++ (void)openPunchout:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)openPunchout:(id)arg1 fromCardSection:(id)arg2 toListener:(id)arg3 triggerEvent:(unsigned long long)arg4 queryId:(unsigned long long)arg5;
++ (void)openPunchout:(id)arg1 fromCardSection:(id)arg2 toListener:(id)arg3 triggerEvent:(unsigned long long)arg4 queryId:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)openURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)openUserActivity:(id)arg1 applicationBundleIdentifier:(id)arg2;
++ (void)openUserActivity:(id)arg1 applicationBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performOpenTask:(CDUnknownBlockType)arg1;
 + (void)playNegativeHaptic;
 + (id)pointerKeyMapTable;
-+ (void)presentViewController:(id)arg1 withFeedbackDelegate:(id)arg2 fromView:(id)arg3;
++ (void)presentViewController:(id)arg1 environment:(id)arg2 prefersModalPresentation:(BOOL)arg3;
 + (void)requestDeviceUnlock:(CDUnknownBlockType)arg1;
 + (void)requestDeviceUnlockWithSuccessHandler:(CDUnknownBlockType)arg1;
 + (BOOL)resultBlockedForScreenTime:(id)arg1;

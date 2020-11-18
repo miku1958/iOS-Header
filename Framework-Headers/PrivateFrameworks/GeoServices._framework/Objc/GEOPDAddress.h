@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_localizedAddress:1;
         unsigned int read_spokenNavigationAddress:1;
         unsigned int read_spokenStructuredAddress:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_localizedAddress:1;
-        unsigned int wrote_spokenNavigationAddress:1;
-        unsigned int wrote_spokenStructuredAddress:1;
-        unsigned int wrote_knownAccuracy:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,12 +45,6 @@ __attribute__((visibility("hidden")))
 + (Class)spokenStructuredAddressType;
 - (void).cxx_destruct;
 - (int)StringAsKnownAccuracy:(id)arg1;
-- (void)_addNoFlagsLocalizedAddress:(id)arg1;
-- (void)_addNoFlagsSpokenNavigationAddress:(id)arg1;
-- (void)_addNoFlagsSpokenStructuredAddress:(id)arg1;
-- (void)_readLocalizedAddress;
-- (void)_readSpokenNavigationAddress;
-- (void)_readSpokenStructuredAddress;
 - (void)addLocalizedAddress:(id)arg1;
 - (void)addSpokenNavigationAddress:(id)arg1;
 - (void)addSpokenStructuredAddress:(id)arg1;
@@ -69,7 +59,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)knownAccuracyAsString:(int)arg1;
 - (id)localizedAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedAddressCount;

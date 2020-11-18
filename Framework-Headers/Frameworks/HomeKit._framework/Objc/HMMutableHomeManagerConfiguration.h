@@ -14,6 +14,7 @@
     id<HMFLocking> _lock;
 }
 
+@property (getter=isAdaptive) BOOL adaptive;
 @property unsigned long long cachePolicy;
 @property (strong) NSOperationQueue *delegateQueue;
 @property (getter=isDiscretionary) BOOL discretionary;

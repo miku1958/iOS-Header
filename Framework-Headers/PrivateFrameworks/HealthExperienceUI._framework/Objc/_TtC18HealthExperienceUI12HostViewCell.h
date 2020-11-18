@@ -23,6 +23,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isHighlighted;
 - (BOOL)isSelected;
+- (void)prepareForReuse;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 
 @end

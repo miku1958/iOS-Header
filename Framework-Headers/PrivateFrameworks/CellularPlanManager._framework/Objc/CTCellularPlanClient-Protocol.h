@@ -37,7 +37,7 @@
 - (void)didSelectPlanItem:(CTCellularPlanItem *)arg1 enable:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)didSelectPlansForIMessage:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)didSelectRemotePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)didTransferPlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 profileServer:(NSString *)arg3 state:(NSString *)arg4;
+- (void)didTransferPlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 srcIccid:(NSString *)arg3 profileServer:(NSString *)arg4 state:(NSString *)arg5;
 - (void)enableVinylFlowTypeOverride:(BOOL)arg1;
 - (void)eraseAllPlansWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)eraseAllRemotePlansWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -62,6 +62,7 @@
 - (void)getSkipEligibilityCheck:(void (^)(BOOL))arg1;
 - (void)getSubscriptionContextUUIDforPlan:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSupportedFlowTypes:(void (^)(unsigned long long, NSError *))arg1;
+- (void)installPendingRemotePlan:(CTCellularPlanItem *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)isAddButtonEnabled:(void (^)(BOOL))arg1;
 - (void)isNewDataPlanCapable:(void (^)(BOOL))arg1;
 - (void)isRemotePlanCapableWithContext:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL))arg2;
@@ -74,7 +75,7 @@
 - (void)openInternalUrlId:(long long)arg1;
 - (void)pendingReleaseRemotePlan;
 - (void)ping;
-- (void)planItemsShouldUpdate:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)planItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)planLaunchInfoWithCompletion:(void (^)(NSString *, NSDictionary *, NSError *))arg1;
 - (void)registerHasNewProfileCompletion:(void (^)(BOOL, BOOL))arg1;
 - (void)remapSimLabel:(CTDanglingPlanItem *)arg1 to:(CTCellularPlanItem *)arg2 completion:(void (^)(NSError *))arg3;
@@ -106,6 +107,7 @@
 - (void)startRemoteProvisioningWithCompletion:(void (^)(BOOL))arg1;
 - (void)triggerAddNewDataPlan:(void (^)(NSError *))arg1;
 - (void)userDidProvideResponse:(long long)arg1 confirmationCode:(NSString *)arg2 plan:(CTCellularPlanItem *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)userSignupInitiatedOrFailed;
 - (void)willDisplayPlanItems;
 @end
 

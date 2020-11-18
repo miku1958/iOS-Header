@@ -16,17 +16,17 @@
     id<CRKClassKitFacade> _classKitFacade;
 }
 
+@property (readonly, nonatomic) long long accountState;
 @property (readonly, nonatomic) id<CRKClassKitFacade> classKitFacade; // @synthesize classKitFacade=_classKitFacade;
 @property (readonly, copy, nonatomic) NSString *currentUserDidChangeNotificationName;
 @property (readonly, copy, nonatomic) NSString *currentUserInfoKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEligibleAccountSignedIn) BOOL eligibleAccountSignedIn;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *studentClassMembershipChangeDarwinNotificationName;
 @property (readonly) Class superclass;
 
-+ (id)keyPathsForValuesAffectingEligibleAccountSignedIn;
++ (id)keyPathsForValuesAffectingAccountState;
 - (void).cxx_destruct;
 - (void)addInstructor:(id)arg1 toClass:(id)arg2;
 - (void)addStudent:(id)arg1 toClass:(id)arg2;
@@ -46,10 +46,12 @@
 - (void)locationsWithManagePermissionsForUserWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)locationsWithObjectIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)makeClassWithLocationID:(id)arg1 name:(id)arg2;
-- (id)makeInstructorQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
-- (id)makeStudentQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id)makeInstructorQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (id)makeQueryForPersonsWithIdentifiers:(id)arg1;
+- (id)makeStudentQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
 - (id)objectIDsOfInstructorsInClass:(id)arg1;
 - (id)objectIDsOfStudentsInClass:(id)arg1;
+- (BOOL)ownsError:(id)arg1;
 - (void)performBlockWithPersonalPersona:(CDUnknownBlockType)arg1;
 - (id)personalPersonaUniqueString;
 - (void)registerDataObserver:(id)arg1;

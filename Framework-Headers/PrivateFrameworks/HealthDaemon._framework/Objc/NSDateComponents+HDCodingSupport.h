@@ -8,6 +8,8 @@
 
 @interface NSDateComponents (HDCodingSupport)
 + (id)hk_dateComponentsWithCodableDateComponents:(id)arg1;
++ (id)hk_dateComponentsWithCodableDateComponents:(id)arg1 calendarUnits:(unsigned long long)arg2;
 - (id)hk_codableDateComponents;
+- (id)hk_codableDateComponentsForCalendarUnits:(unsigned long long)arg1;
 @end
 

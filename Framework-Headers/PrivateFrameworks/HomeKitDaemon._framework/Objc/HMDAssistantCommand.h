@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/AFServiceCommand-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, HMFLogEventSession, NSArray, NSObject, NSString, NSUUID;
+@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, NSArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommand : SAHACommand <AFServiceCommand, HMFLogging>
@@ -27,7 +27,6 @@
     HMDAssistantCommandHelper *_assistantCommandHelper;
     HMDHome *_home;
     unsigned long long _startTime;
-    HMFLogEventSession *_logEventSession;
 }
 
 @property (strong, nonatomic) HMDAssistantCommandHelper *assistantCommandHelper; // @synthesize assistantCommandHelper=_assistantCommandHelper;
@@ -41,7 +40,6 @@
 @property (strong, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSArray *homeKitObjects; // @synthesize homeKitObjects=_homeKitObjects;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (strong, nonatomic) HMFLogEventSession *logEventSession; // @synthesize logEventSession=_logEventSession;
 @property (nonatomic) long long numberOfHomes; // @synthesize numberOfHomes=_numberOfHomes;
 @property (strong, nonatomic) NSString *primaryHomeName; // @synthesize primaryHomeName=_primaryHomeName;
 @property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
@@ -72,12 +70,12 @@
 - (id)entityFromActionSet:(id)arg1;
 - (void)executeActionSet:(id)arg1 action:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)failedActionResultsFromResponse:(id)arg1 inActionSet:(id)arg2 withAction:(id)arg3;
-- (id)filterObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
-- (id)filterObjects:(id)arg1 byCharacteristicType:(id)arg2;
 - (id)filterObjects:(id)arg1 forCharacteristicTypes:(id)arg2;
 - (id)filterObjects:(id)arg1 forCharacteristics:(id)arg2;
-- (id)filterObjects:(id)arg1 forGroup:(id)arg2;
-- (id)filterObjects:(id)arg1 forRoom:(id)arg2 andZone:(id)arg3;
+- (id)filteredObjectsFromObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
+- (id)filteredObjectsFromObjects:(id)arg1 byCharacteristicType:(id)arg2;
+- (id)filteredObjectsFromObjects:(id)arg1 forGroup:(id)arg2;
+- (id)filteredObjectsFromObjects:(id)arg1 forHomeName:(id)arg2 roomName:(id)arg3 zoneName:(id)arg4;
 - (id)getLocaleUnits:(id)arg1;
 - (id)getValueOfType:(id)arg1 action:(id)arg2;
 - (id)getoverridingHomeUUIDFromName:(id)arg1;
@@ -85,18 +83,20 @@
 - (void)handleGetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleGetColor:(id)arg1 forObjects:(id)arg2 serviceType:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleGetMetadataActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)handleGetNaturalLightingAction:(id)arg1 forObjects:(id)arg2 serviceType:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleMediaAccessorySetActionType:(id)arg1 forObjects:(id)arg2 withServiceType:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleMediaReadWriteResponse:(id)arg1 forAction:(id)arg2 inServiceType:(id)arg3 inHome:(id)arg4 requestProperty:(id)arg5 results:(id)arg6 forObjects:(id)arg7;
 - (id)handleReadWriteResponses:(id)arg1 error:(id)arg2 forAction:(id)arg3 inServiceType:(id)arg4 results:(id)arg5 forObjects:(id)arg6;
 - (void)handleSetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleSetColor:(id)arg1 forObjects:(id)arg2 service:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)handleSetNaturalLightingAction:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleUpdateActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)isAttributeValue:(id)arg1 equalTo:(id)arg2;
 - (id)mediaProfileFromObject:(id)arg1;
-- (id)objectsWithIdentifierList:(id)arg1;
+- (id)objectsWithIdentifierList:(id)arg1 error:(id *)arg2;
 - (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2 serviceTypeIsATV:(BOOL)arg3 overrideServiceTypeIfNeeded:(id *)arg4;
 - (id)parseColorEncoding:(id)arg1;
-- (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 logEventSession:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)populateColorResult:(id)arg1 serviceType:(id)arg2 service:(id)arg3 action:(id)arg4 responses:(id)arg5 forObjects:(id)arg6;
 - (BOOL)populateMediaProfileWriteResult:(id)arg1 withValue:(id)arg2 serviceType:(id)arg3 action:(id)arg4;
 - (BOOL)populateResult:(id)arg1 fromResponse:(id)arg2 responses:(id)arg3 forAction:(id)arg4 serviceType:(id)arg5 forObjects:(id)arg6;

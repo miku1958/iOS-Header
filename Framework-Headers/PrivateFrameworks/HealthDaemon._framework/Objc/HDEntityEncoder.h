@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDSQLiteDatabase, NSDictionary;
+@class HDDatabaseTransaction, HDProfile, HDSQLiteDatabase, NSDictionary;
 
 @interface HDEntityEncoder : NSObject
 {
     HDProfile *_profile;
+    HDDatabaseTransaction *_transaction;
     HDSQLiteDatabase *_database;
     Class _entityClass;
     NSDictionary *_encodingOptions;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) long long purpose; // @synthesize purpose=_purpose;
 @property (readonly, nonatomic) HDEntityEncoder *superclassEncoder; // @synthesize superclassEncoder=_superclassEncoder;
+@property (readonly, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
 
 + (long long)estimatedEncodedSize;
 - (void).cxx_destruct;
@@ -36,6 +38,7 @@
 - (void)finish;
 - (BOOL)generateCodableRepresentationsForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 maxBytesPerRepresentation:(long long)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 database:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
+- (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 transaction:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
 - (id)objectForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)orderedProperties;
 

@@ -11,7 +11,7 @@
 @interface AXMAudioDataSource : NSObject
 {
     BOOL _circular;
-    vector_3203cf93 *_sampleBuffer;
+    vector_12bd641b *_sampleBuffer;
     unsigned long long _length;
     unsigned long long _currentSampleIndex;
     double _level;
@@ -26,7 +26,7 @@
 @property (nonatomic) unsigned long long length; // @synthesize length=_length;
 @property (nonatomic) double level; // @synthesize level=_level;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) vector_3203cf93 *sampleBuffer; // @synthesize sampleBuffer=_sampleBuffer;
+@property (readonly, nonatomic) vector_12bd641b *sampleBuffer; // @synthesize sampleBuffer=_sampleBuffer;
 @property (readonly, nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 
 - (void).cxx_destruct;

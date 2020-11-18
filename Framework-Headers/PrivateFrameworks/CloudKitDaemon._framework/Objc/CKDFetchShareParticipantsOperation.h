@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class CKDPublicIdentityLookupRequest, NSArray;
+@protocol CKFetchShareParticipantsOperationCallbacks;
 
 @interface CKDFetchShareParticipantsOperation : CKDOperation
 {
@@ -15,6 +16,7 @@
     NSArray *_userIdentityLookupInfos;
 }
 
+@property (strong, nonatomic) id<CKFetchShareParticipantsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) CKDPublicIdentityLookupRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantFetchedBlock; // @synthesize shareParticipantFetchedBlock=_shareParticipantFetchedBlock;
 @property (strong, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
@@ -27,6 +29,7 @@
 - (void)finishWithError:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

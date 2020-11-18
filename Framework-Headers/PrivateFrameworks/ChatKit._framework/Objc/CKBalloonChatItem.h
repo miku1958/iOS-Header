@@ -6,10 +6,12 @@
 
 #import <ChatKit/CKChatItem.h>
 
-@class IMHandle, NSDate;
+@class CKEntity, IMHandle, NSDate;
 
 @interface CKBalloonChatItem : CKChatItem
 {
+    CKEntity *_entity;
+    BOOL _isMultilineText;
 }
 
 @property (readonly, nonatomic) unsigned long long balloonCorners;
@@ -20,26 +22,33 @@
 @property (readonly, nonatomic, getter=isFromMe) BOOL fromMe;
 @property (readonly, nonatomic) Class impactBalloonViewClass;
 @property (readonly, nonatomic) BOOL isBlackholed;
+@property (readonly, nonatomic) BOOL isMultilineText; // @synthesize isMultilineText=_isMultilineText;
 @property (readonly, nonatomic) IMHandle *sender;
 @property (readonly, nonatomic) BOOL shouldCacheSize;
 @property (readonly, nonatomic) BOOL tailShape;
 @property (readonly, nonatomic) NSDate *time;
 
+- (void).cxx_destruct;
+- (BOOL)_shouldShowContactPhotosInTranscript;
 - (struct CKBalloonDescriptor_t)balloonDescriptor;
 - (Class)cellClass;
 - (id)cellIdentifier;
+- (Class)collectionViewCellClass;
 - (void)configureBalloonView:(id)arg1;
 - (id)contact;
 - (struct UIEdgeInsets)contentInsets;
 - (id)description;
 - (BOOL)displayDuringSend;
 - (BOOL)isEditable;
+- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptDrawerText;
 - (BOOL)needsAdjustedTextAlignmentInsets;
 - (BOOL)needsPreservedAspectRatio;
 - (BOOL)transcriptOrientation;
 - (struct UIEdgeInsets)transcriptTextAlignmentInsets;
+- (BOOL)wantsAvatarViewForLayoutEnvironment:(id)arg1;
 - (BOOL)wantsDrawerLayout;
 
 @end

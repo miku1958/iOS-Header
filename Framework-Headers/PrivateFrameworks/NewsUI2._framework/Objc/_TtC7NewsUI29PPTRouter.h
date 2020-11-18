@@ -14,7 +14,7 @@
 }
 
 - (void)routeToFeedWithTag:(id)arg1;
-- (void)routeToHeadlineForAritlceID:(id)arg1;
+- (void)routeToHeadlineForArticleID:(id)arg1;
 
 @end
 

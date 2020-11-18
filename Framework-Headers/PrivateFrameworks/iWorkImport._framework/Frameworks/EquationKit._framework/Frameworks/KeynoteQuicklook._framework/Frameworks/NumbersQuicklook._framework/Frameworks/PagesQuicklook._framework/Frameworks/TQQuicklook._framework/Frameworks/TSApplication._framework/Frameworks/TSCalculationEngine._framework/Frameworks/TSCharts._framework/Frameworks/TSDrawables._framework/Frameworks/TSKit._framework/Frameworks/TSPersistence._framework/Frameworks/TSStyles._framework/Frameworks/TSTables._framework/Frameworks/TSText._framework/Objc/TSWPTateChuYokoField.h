@@ -16,7 +16,7 @@
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct TateChuYokoFieldArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (int)smartFieldKind;
+- (unsigned short)smartFieldKind;
 - (int)styleAttributeArrayKind;
 
 @end

@@ -6,14 +6,14 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKClinicalBrand, HKMedicalRecord, HKSource, NSArray, NSFileHandle, NSNumber, NSString, NSUUID;
+@class HKClinicalBrand, HKFHIRVersion, HKMedicalRecord, HKSource, NSArray, NSFileHandle, NSNumber, NSString, NSUUID;
 
 @protocol HDHealthRecordsPluginServerInterface <NSObject>
 - (void)remote_badgeForNewHealthRecordsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_beginInitialLoginSessionForGatewayWithExternalID:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)remote_beginReloginSessionForAccountWithIdentifier:(NSUUID *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)remote_cancelInFlightSearchQueriesWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)remote_createStaticAccountWithTitle:(NSString *)arg1 subtitle:(NSString *)arg2 description:(NSString *)arg3 countryCode:(NSString *)arg4 onlyIfNeededForSimulatedGatewayID:(NSString *)arg5 completion:(void (^)(HKClinicalAccount *, NSError *))arg6;
+- (void)remote_createStaticAccountWithTitle:(NSString *)arg1 subtitle:(NSString *)arg2 description:(NSString *)arg3 countryCode:(NSString *)arg4 fhirVersion:(HKFHIRVersion *)arg5 onlyIfNeededForSimulatedGatewayID:(NSString *)arg6 completion:(void (^)(HKClinicalAccount *, NSError *))arg7;
 - (void)remote_deleteAccountWithIdentifier:(NSUUID *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_deregisterAppSourceFromClinicalUnlimitedAuthorizationModeConfirmation:(HKSource *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_endLoginSessionWithState:(NSUUID *)arg1 code:(NSString *)arg2 completion:(void (^)(BOOL, HKClinicalAccountLoginCompletionState *, NSError *))arg3;
@@ -32,8 +32,8 @@
 - (void)remote_fetchRemoteSearchResultsPageForQuery:(NSString *)arg1 latitude:(NSNumber *)arg2 longitude:(NSNumber *)arg3 from:(long long)arg4 completion:(void (^)(HKClinicalProviderSearchResultsPage *, NSError *))arg5;
 - (void)remote_getHealthRecordsIngestionFrequencyWithCompletion:(void (^)(BOOL, long long, NSError *))arg1;
 - (void)remote_hasHealthRecordsAccountWithCompletion:(void (^)(BOOL, BOOL, NSError *))arg1;
-- (void)remote_ingestHealthRecordsWithFHIRDocumentHandle:(NSFileHandle *)arg1 accountIdentifier:(NSUUID *)arg2 options:(unsigned long long)arg3 completion:(void (^)(BOOL, NSError *))arg4;
-- (void)remote_ingestHealthRecordsWithOptions:(unsigned long long)arg1 completion:(void (^)(BOOL, NSString *, NSError *))arg2;
+- (void)remote_ingestHealthRecordsWithFHIRDocumentHandle:(NSFileHandle *)arg1 accountIdentifier:(NSUUID *)arg2 options:(unsigned long long)arg3 completion:(void (^)(HKHealthRecordsIngestionOutcome *, NSError *))arg4;
+- (void)remote_ingestHealthRecordsWithOptions:(unsigned long long)arg1 completion:(void (^)(HKHealthRecordsIngestionOutcome *, NSError *))arg2;
 - (void)remote_ingestionStateWithCompletion:(void (^)(long long))arg1;
 - (void)remote_invalidateCredentialForAccountWithIdentifier:(NSUUID *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_notifyForNewHealthRecordsWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -48,5 +48,6 @@
 - (void)remote_triggerClinicalContentAnalyticsForReason:(long long)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)remote_triggerClinicalOptInDataCollectionForReason:(long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_triggerHealthCloudUploadWithCompletion:(void (^)(BOOL, NSString *, NSError *))arg1;
+- (void)remote_updateAccountCredentialStateWithIdentifier:(NSUUID *)arg1 state:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

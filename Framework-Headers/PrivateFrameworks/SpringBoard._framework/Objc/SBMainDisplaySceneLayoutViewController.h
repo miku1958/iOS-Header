@@ -10,13 +10,13 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver-Protocol.h>
 #import <SpringBoard/SBMainDisplaySceneLayoutStatusBarViewDataSource-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
-#import <SpringBoard/SBSystemCursorInteractionDelegate-Protocol.h>
+#import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 #import <SpringBoard/TFBetaLaunchHandleActivationDelegate-Protocol.h>
 
 @class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBMedusaSettings, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
 @protocol BSInvalidatable, OS_dispatch_queue;
 
-@interface SBMainDisplaySceneLayoutViewController : SBSceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver, SBSystemCursorInteractionDelegate>
+@interface SBMainDisplaySceneLayoutViewController : SBSceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver, SBSystemPointerInteractionDelegate>
 {
     SBMainDisplaySceneLayoutGestureManager *_gestureManager;
     NSMutableSet *_pushPopTransformReasons;
@@ -80,6 +80,7 @@
 - (unsigned int)_anchorEdgeForLayoutRole:(long long)arg1 inInterfaceOrientation:(long long)arg2;
 - (id)_animationWrapperViewForElement:(id)arg1 entity:(id)arg2 layoutState:(id)arg3;
 - (id)_applicationSceneLayoutElementControllerForLayoutRole:(long long)arg1;
+- (id)_bannerUnfurlAnimationControllerForTransitionRequest:(id)arg1;
 - (void)_beginLayoutStateTransitionWithTransitionContext:(id)arg1;
 - (void)_beginRequiringPushedInWallpaperForReason:(id)arg1 animationFactory:(id)arg2;
 - (void)_configureHomeGrabberForLayoutStateTransition;
@@ -100,6 +101,8 @@
 - (void)_doCommonCleanupUponEndingLayoutTransitionWithInterruption:(BOOL)arg1;
 - (void)_endRequiringPushedInWallpaperForReason:(id)arg1 animationFactory:(id)arg2;
 - (void)_fadeOutInlineOverlayForTransitionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fadeStatusBarStylesBetweenFromAndToViewControllersWithSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_fadeStatusBarStylesBetweenFromAndToViewControllersWithTransitionRequest:(id)arg1;
 - (id)_inlineAppExposeOverlayForLayoutRole:(long long)arg1;
 - (BOOL)_isCurrentlyRotating;
 - (BOOL)_isEdgeProtectedForHomeGestureAtEdgeLocation:(double)arg1;
@@ -176,7 +179,6 @@
 - (id)animationWrapperViewForLayoutState:(id)arg1 roleMask:(unsigned long long)arg2 interfaceOrientation:(long long)arg3 maskDisplayCorners:(BOOL)arg4;
 - (void)betaLaunchHandle:(id)arg1 activateIfNeededEndedWithResult:(BOOL)arg2;
 - (id)currentlyValidStatusBarPartIdentifiers;
-- (struct UIEdgeInsets)cursorInteractionHitTestInsetsForView:(id)arg1;
 - (void)dealloc;
 - (struct CGRect)frameForSceneIdentifier:(id)arg1 inView:(id)arg2;
 - (id)initWithSceneManager:(id)arg1;
@@ -188,12 +190,13 @@
 - (double)normalizedHalfHalfLocation;
 - (double)normalizedNarrowWideLocation;
 - (double)normalizedWideNarrowLocation;
+- (struct UIEdgeInsets)pointerInteractionHitTestInsetsForView:(id)arg1;
 - (struct CGRect)referenceFrameForEntity:(id)arg1 inLayoutState:(id)arg2;
 - (struct CGRect)referenceFrameForUniqueIdentifier:(id)arg1 inLayoutState:(id)arg2;
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
 - (void)setUserResizing:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (BOOL)shouldBeginCursorInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
+- (BOOL)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (struct CGRect)statusBarAvoidanceFrame;
 - (void)statusBarBreadcrumbProviderDidUpdateDisplayProperties:(id)arg1;
 - (id)statusBarDescriberAtPoint:(struct CGPoint)arg1 inView:(id)arg2 pointInSceneLayoutSpace:(struct CGPoint *)arg3;

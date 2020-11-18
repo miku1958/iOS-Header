@@ -6,30 +6,38 @@
 
 #import <objc/NSObject.h>
 
+@class PLAssetsdPrivacySupportClient;
 @protocol OS_dispatch_queue;
 
 @interface PLPrivacy : NSObject
 {
     NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    int _authStatusFullAccess;
-    int _authStatusSaveOnly;
+    long long _authRightFullAccess;
+    long long _authRightAddOnly;
+    PLAssetsdPrivacySupportClient *_privacySupportClient;
+    BOOL _hasHandledLimitedLibraryReprompt;
+    BOOL _limitedLibrarySupported;
 }
 
+@property BOOL hasHandledLimitedLibraryReprompt; // @synthesize hasHandledLimitedLibraryReprompt=_hasHandledLimitedLibraryReprompt;
+@property (nonatomic, getter=isLimitedLibrarySupported) BOOL limitedLibrarySupported; // @synthesize limitedLibrarySupported=_limitedLibrarySupported;
+
++ (BOOL)_isLimitedLibrarySupportedInClient;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (struct __CFString *)_TCCForScope:(long long)arg1;
-- (int)_authStatusForScope:(long long)arg1;
-- (BOOL)_isPhotosAccessAllowedWithScope:(long long)arg1 forceHandler:(BOOL)arg2 accessAllowedHandler:(CDUnknownBlockType)arg3;
-- (void)_setAuthStatus:(int)arg1 scope:(long long)arg2;
-- (void)_setPreflightStatusForScope:(long long)arg1;
+- (long long)_authStatusForScope:(long long)arg1;
+- (void)_checkAuthStatusForPhotosAccessScope:(long long)arg1 promptIfUnknown:(BOOL)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (void)_isPhotosAccessAllowedWithScope:(long long)arg1 promptIfUnknown:(BOOL)arg2 synchronous:(BOOL)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (void)_resolvePreflightStatusForScope:(long long)arg1;
+- (void)_setAuthStatus:(long long)arg1 scope:(long long)arg2;
+- (long long)checkPhotosAccessAllowedWithScope:(long long)arg1;
+- (void)checkPhotosAccessAllowedWithScope:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)isPhotosAccessAllowedWithScope:(long long)arg1 handler:(CDUnknownBlockType)arg2;
-- (BOOL)isPhotosAccessAllowedWithScope:(long long)arg1 promptIfNeededWithHandler:(CDUnknownBlockType)arg2;
-- (BOOL)isPhotosTCCAccessAllowed;
-- (BOOL)isPhotosTCCAccessNotAllowed;
-- (BOOL)isPhotosTCCAccessRestricted;
-- (int)photosTCCAccessStatus;
+- (long long)photosAccessAllowedWithScope:(long long)arg1;
+- (long long)photosAccessAllowedWithScope:(long long)arg1 auditToken:(CDStruct_6ad76789)arg2 clientAuthorization:(id)arg3;
+- (void)presentAsyncPromptForLimitedLibraryPickerIfNeeded;
+- (void)requestLimitedLibraryPromptForApplicationIdentifier:(id)arg1;
 
 @end
 

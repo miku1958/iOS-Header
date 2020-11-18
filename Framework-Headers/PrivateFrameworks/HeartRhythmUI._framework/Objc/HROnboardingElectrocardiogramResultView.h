@@ -17,14 +17,13 @@
     NSString *_title;
     UILabel *_numberedTitleLabel;
     HRVideoPlayerView *_playerView;
-    NSString *_localizationKey;
     NSString *_numberedTitle;
     NSString *_visibleBody;
     UILabel *_visibleBodyLabel;
     UIButton *_learnMoreButton;
     UIView *_expandedView;
     HKSeparatorLineView *_separatorLineView;
-    NSLayoutConstraint *_playerViewTopConstraint;
+    NSLayoutConstraint *_playerViewOrVisibleBodyLabelTopConstraint;
     NSLayoutConstraint *_bottomConstraint;
 }
 
@@ -34,37 +33,36 @@
 @property (strong, nonatomic) UIView *expandedView; // @synthesize expandedView=_expandedView;
 @property (nonatomic, getter=isHidingNumberedTitle) BOOL hideNumberedTitle; // @synthesize hideNumberedTitle=_hideNumberedTitle;
 @property (strong, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
-@property (copy, nonatomic) NSString *localizationKey; // @synthesize localizationKey=_localizationKey;
 @property (copy, nonatomic) NSString *numberedTitle; // @synthesize numberedTitle=_numberedTitle;
 @property (strong, nonatomic) UILabel *numberedTitleLabel; // @synthesize numberedTitleLabel=_numberedTitleLabel;
 @property (strong, nonatomic) HRVideoPlayerView *playerView; // @synthesize playerView=_playerView;
-@property (strong, nonatomic) NSLayoutConstraint *playerViewTopConstraint; // @synthesize playerViewTopConstraint=_playerViewTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *playerViewOrVisibleBodyLabelTopConstraint; // @synthesize playerViewOrVisibleBodyLabelTopConstraint=_playerViewOrVisibleBodyLabelTopConstraint;
 @property (strong, nonatomic) HKSeparatorLineView *separatorLineView; // @synthesize separatorLineView=_separatorLineView;
 @property (nonatomic) BOOL shouldHideSeparatorLine; // @synthesize shouldHideSeparatorLine=_shouldHideSeparatorLine;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *visibleBody; // @synthesize visibleBody=_visibleBody;
 @property (strong, nonatomic) UILabel *visibleBodyLabel; // @synthesize visibleBodyLabel=_visibleBodyLabel;
 
-+ (id)atrialFibrillationResultView;
-+ (id)highOrLowAbove120Below50HeartRateResultView;
-+ (id)inconclusiveResultViewWithDelegate:(id)arg1;
-+ (id)sinusRhythmResultView;
++ (id)resultViewWithItem:(id)arg1;
 - (void).cxx_destruct;
 - (double)_learnMoreButtonLastBaselineToBottom;
 - (id)_numberedTitleFont;
 - (double)_numberedTitleLastBaseLineToVideoTop;
 - (double)_numberedTitleTopToFirstBaseline;
+- (double)_playerViewOrVisibleBodyLabelTopConstant;
+- (id)_playerViewOrVisibleBodyLabelTopConstraint;
 - (void)_setUpConstraints;
 - (void)_setUpNumberedTitleLabelConstraints;
 - (void)_setUpPlayerViewTopConstraint;
 - (void)_setUpUI;
+- (void)_setUpVisibleBodyLabelTopConstraint;
 - (void)_updateExpandedViewState;
 - (void)_updateNumberedTitleViewState;
 - (double)_visibleBodyFirstBaselineDistance;
 - (id)_visibleBodyFont;
 - (id)_visibleBodyFontTextStyle;
 - (double)_visibleBodyLastBaselineToLearnMoreButtonFirstBaseline;
-- (id)initWithLocalizationKey:(id)arg1 video:(id)arg2 expandedView:(id)arg3;
+- (id)initWithTitle:(id)arg1 numberedTitle:(id)arg2 visibleBodyText:(id)arg3 video:(id)arg4 expandedView:(id)arg5;
 - (void)learnMoreButtonTapped:(id)arg1;
 
 @end

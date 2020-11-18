@@ -8,6 +8,7 @@
 
 @protocol SPLocalPairingManagerXPCProtocol <NSObject>
 - (oneway void)alwaysBeaconStateWithCompletion:(void (^)(BOOL))arg1;
+- (oneway void)currentBeaconingKeyWithCompletion:(void (^)(SPBeaconingKey *))arg1;
 - (oneway void)getLocalPairingDataWithCompletion:(void (^)(NSUUID *))arg1;
 - (oneway void)setAlwaysBeaconState:(BOOL)arg1 completion:(void (^)(BOOL))arg2;
 @end

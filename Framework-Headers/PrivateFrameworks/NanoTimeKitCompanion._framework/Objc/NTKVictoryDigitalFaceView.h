@@ -33,7 +33,7 @@
 - (void)_applyColor:(id)arg1 platterColor:(id)arg2 toComplicationView:(id)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (void)_applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3 fromPlatterColor:(id)arg4 toPlatterColor:(id)arg5 fromBackgroundColor:(id)arg6 toBackgroundColor:(id)arg7 slot:(id)arg8;
+- (void)_applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3 fromDigitsColor:(id)arg4 toDigitsColor:(id)arg5 fromPlatterColor:(id)arg6 toPlatterColor:(id)arg7 fromBackgroundColor:(id)arg8 toBackgroundColor:(id)arg9 slot:(id)arg10;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_bottomComplicationAlphaForEditMode:(long long)arg1;
 - (void)_cleanupAfterEditing;
@@ -42,6 +42,7 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (double)_keylineEdgeGapForState:(long long)arg1;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(BOOL)arg2;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;

@@ -21,22 +21,22 @@ struct CAMShutterButtonSpec {
 };
 
 struct CATransform3D {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
-    double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    double _field16;
+    double m11;
+    double m12;
+    double m13;
+    double m14;
+    double m21;
+    double m22;
+    double m23;
+    double m24;
+    double m31;
+    double m32;
+    double m33;
+    double m34;
+    double m41;
+    double m42;
+    double m43;
+    double m44;
 };
 
 struct CGAffineTransform {
@@ -73,6 +73,11 @@ struct UIEdgeInsets {
 struct UIOffset {
     double horizontal;
     double vertical;
+};
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct __sFILE {
@@ -195,6 +200,12 @@ typedef struct {
     double _field1;
     struct CGPoint _field2;
 } CDStruct_f31c9284;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    struct CGSize _field3;
+} CDStruct_7270c63f;
 
 typedef struct {
     struct CGPoint point;

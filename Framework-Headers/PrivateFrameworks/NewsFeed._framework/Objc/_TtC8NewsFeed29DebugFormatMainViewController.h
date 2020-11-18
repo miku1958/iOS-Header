@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *editorContainerController;
     MISSING_TYPE *layoutViewController;
     MISSING_TYPE *bindingViewController;
+    MISSING_TYPE *assetViewController;
     MISSING_TYPE *formatManager;
     MISSING_TYPE *packages;
 }
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

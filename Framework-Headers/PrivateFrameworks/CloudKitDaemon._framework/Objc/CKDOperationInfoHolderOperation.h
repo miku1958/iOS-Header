@@ -6,11 +6,14 @@
 
 #import <CloudKitDaemon/CKDOperation.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationInfoHolderOperation : CKDOperation
 {
+    int _operationType;
 }
 
+@property (nonatomic) int operationType; // @synthesize operationType=_operationType;
+
+- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2 operationType:(int)arg3;
 - (void)main;
 
 @end

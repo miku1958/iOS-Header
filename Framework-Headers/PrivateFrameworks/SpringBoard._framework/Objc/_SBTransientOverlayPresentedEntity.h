@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SBFluidDismissalState, SBPresentationObservationToken, SBTransientOverlayBackgroundWindow, SBTransientOverlayViewController, SBTransientOverlayWindow, UIView;
+@class SBFluidDismissalState, SBPresentationObservationToken, SBTransientOverlayBackgroundWindow, SBTransientOverlayViewController, SBTransientOverlayWindow;
 @protocol BSInvalidatable;
 
 @interface _SBTransientOverlayPresentedEntity : NSObject
@@ -23,7 +23,6 @@
     id<BSInvalidatable> _proximityEnabledAssertion;
     id<BSInvalidatable> _wallpaperAnimationSuspensionAssertion;
     SBFluidDismissalState *_fluidDismissalState;
-    UIView *_fluidDismissalDimmingView;
     SBPresentationObservationToken *_bannerLongLookPresentationObservationToken;
     id<BSInvalidatable> _bannerLongLookWindowLevelAssertion;
     SBPresentationObservationToken *_controlCenterPresentationObservationToken;
@@ -40,7 +39,6 @@
 @property (strong, nonatomic) id<BSInvalidatable> controlCenterWindowLevelAssertion; // @synthesize controlCenterWindowLevelAssertion=_controlCenterWindowLevelAssertion;
 @property (strong, nonatomic) id<BSInvalidatable> disableAutoUnlockAssertion; // @synthesize disableAutoUnlockAssertion=_disableAutoUnlockAssertion;
 @property (nonatomic, getter=isDismissing) BOOL dismissing; // @synthesize dismissing=_dismissing;
-@property (strong, nonatomic) UIView *fluidDismissalDimmingView; // @synthesize fluidDismissalDimmingView=_fluidDismissalDimmingView;
 @property (strong, nonatomic) SBFluidDismissalState *fluidDismissalState; // @synthesize fluidDismissalState=_fluidDismissalState;
 @property (nonatomic) BOOL hasFinishedWindowInitialization; // @synthesize hasFinishedWindowInitialization=_hasFinishedWindowInitialization;
 @property (nonatomic) BOOL hasPreservedInputViews; // @synthesize hasPreservedInputViews=_hasPreservedInputViews;

@@ -3,9 +3,18 @@
 	// class base protocol
 	// class method
  }
- protocol JetUI.Copyable // 1 requirements
+ protocol JetUI._AnyCollectionContentReloadTriggerPublisher // 1 requirements
  {
-	// class init
+	// method
+ }
+ protocol JetUI.CollectionContentReloadTriggerPublisher // 6 requirements
+ {
+	// class base protocol
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// getter
  }
  protocol JetUI.LayoutView // 9 requirements
  {
@@ -24,6 +33,18 @@
 	// class associated type access function
 	// method
 	// method
+	// method
+ }
+ protocol JetUI.ApplicationStatePresenterDelegate // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol JetUI.FlowActionFactory // 4 requirements
+ {
+	// class base protocol
+	// class associated conformance access function
+	// class associated type access function
 	// method
  }
  protocol JetUI.Layout // 1 requirements
@@ -63,19 +84,31 @@
  {
 	// method
  }
+ protocol JetUI.CollectionContentReloadableCell // 1 requirements
+ {
+	// getter
+ }
+ protocol JetUI.DiffableDataPresenter // 5 requirements
+ {
+	// class base protocol
+	// class associated type access function
+	// class associated type access function
+	// getter
+	// method
+ }
 
  struct __C.Weight {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : Ωf
+	let rawValue : yw
  }
 
  struct __C.SymbolicTraits {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : k
+	let rawValue : }
  }
 
  struct __C.TextStyle {
@@ -99,18 +132,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Ωf
+	var width : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Ωf
+	var height : yw
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Ωf
+	var x : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Ωf
+	var y : yw
  }
 
  struct __C.UIContentSizeCategory {
@@ -123,28 +156,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Ωf
+	var width : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Ωf
+	var height : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var firstBaseline : Ωf
+	var firstBaseline : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastBaseline : Ωf
+	var lastBaseline : yw
  }
-
- enum __C.UITraitEnvironmentLayoutDirection { }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : Ωf
+	var top : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : Ωf
+	var left : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : Ωf
+	var bottom : yw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : Ωf
+	var right : yw
  }
 
  struct __C._NSRange {
@@ -175,14 +206,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetUI.CacheKey : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let useCase : FontUseCase // +0x8 (0x29)
-	let traitCollection : UITraitCollection // +0x38 (0x8)
+	let useCase : FontUseCase
+	let traitCollection : UITraitCollection
 
 	// ObjC -> Swift bridged methods
-	0x2060  @objc CacheKey.hash <stripped>
-	0x2200  @objc CacheKey.isEqual: <stripped>
-	0x2310  @objc CacheKey.init <stripped>
-	0x22c0  @objc CacheKey..cxx_destruct <stripped>
+WARNING: couldn't find address 0x3f7400012268 (0x77400012268) in binary!
+	0x3f70  @objc CacheKey.(null) <stripped>
+WARNING: couldn't find address 0x44cc00012270 (0x4cc00012270) in binary!
+	0x436e  @objc CacheKey.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x30cfffced50  @objc CacheKey.(null) <stripped>
+	0xfffb6d28  @objc CacheKey.Hã}®Ë"ù <stripped>
 
 	// Swift methods
  }
@@ -200,25 +234,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let verticalSpaceStorage : Indirect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let multiplier : Ωf // +0x8
+	let multiplier : yw // +0x8
  }
 
  struct JetUI.AspectRatio {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontal : Ωf // +0x0
+	var horizontal : yw // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var vertical : Ωf // +0x8
+	var vertical : yw // +0x8
  }
 
  struct JetUI.Baselines {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var first : Ωf // +0x0
+	var first : yw // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var last : Ωf // +0x8
+	var last : yw // +0x8
  }
 
  struct JetUI.LayoutRect {
@@ -262,20 +296,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetUI.ImmutableBox {
  class JetUI.MutableBox {
+ class JetUI.ApplicationStatePresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var isEnabled : Bool
+	var delegate : ApplicationStatePresenterDelegate
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onActiveDidChange : Õu
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x42fa00012300 (0x2fa00012300) in binary!
+	0x42ee  @objc ApplicationStatePresenter.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x18cfffc4f60  @objc ApplicationStatePresenter.(null) <stripped>
+
+	// Swift methods
+	0xb820  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
+ }
+
  class JetUI.LayoutAttributedTextViewPlaceholder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var attributedText : NSAttributedString // +0x10 (0x8)
-	var textAlignment : NSTextAlignment // +0x18 (0x8)
-	var lineSpacing : Int // +0x20 (0x8)
-	var frame : CGRect // +0x28 (0x20)
-	var isHidden : Bool // +0x48 (0x1)
-	var numberOfLines : Int // +0x50 (0x8)
-	var lineBreakMode : NSLineBreakMode // +0x58 (0x8)
-	var font : UIFont? // +0x60 (0x8)
+	var attributedText : NSAttributedString
+	var textAlignment : NSTextAlignment
+	var lineSpacing : Int
+	var frame : CGRect
+	var isHidden : Bool
+	var numberOfLines : Int
+	var lineBreakMode : NSLineBreakMode
+	var font : UIFont?
 
 	// Swift methods
-	0xba20  class func LayoutAttributedTextViewPlaceholder.__allocating_init(attributedText:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
+	0xbf60  class func LayoutAttributedTextViewPlaceholder.__allocating_init(attributedText:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
  }
 
  struct JetUI.VerticalStackLayout {
@@ -309,7 +361,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let view : LayoutView // +0x0
 	let space : AnyDimension // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spaceMultiplier : Ωf // +0x50
+	let spaceMultiplier : yw // +0x50
 	let excludeWhen : ExclusionCondition // +0x58
 	let alignment : Alignment // +0x60
  }
@@ -337,22 +389,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case vertical  
  }
 
- class JetUI.TraitsExpression {
  struct JetUI.ViewRecycler { }
 
  class JetUI.TraitEnvironmentPlaceholder : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let traitCollection : UITraitCollection // +0x8 (0x8)
+	let traitCollection : UITraitCollection
 
 	// ObjC -> Swift bridged methods
-	0x14260  @objc TraitEnvironmentPlaceholder.traitCollection <stripped>
-	0x142b0  @objc TraitEnvironmentPlaceholder.traitCollectionDidChange: <stripped>
-	0x14360  @objc TraitEnvironmentPlaceholder.init <stripped>
-	0x142f0  @objc TraitEnvironmentPlaceholder..cxx_destruct <stripped>
+WARNING: couldn't find address 0x442c00012260 (0x42c00012260) in binary!
+	0x4428  @objc TraitEnvironmentPlaceholder.(null) <stripped>
+WARNING: couldn't find address 0x4414000121b8 (0x414000121b8) in binary!
+	0x42b6  @objc TraitEnvironmentPlaceholder.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffcee78  @objc TraitEnvironmentPlaceholder.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x3bcffff6220  @objc TraitEnvironmentPlaceholder.(null) <stripped>
 
 	// Swift methods
-	0x14110  class func TraitEnvironmentPlaceholder.__allocating_init(traitCollection:) // init 
+	0x13c80  class func TraitEnvironmentPlaceholder.__allocating_init(traitCollection:) // init 
  }
 
  struct JetUI.VerticalMarginsMeasurable {
@@ -371,13 +426,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let shouldMeasureToBaseline : Bool // +0x79
  }
 
- class JetUI.DimensionExpression {
- struct JetUI.AnyDimensionWrapper {
-
-	// Properties
-	let conditional : Conditional // +0x0
- }
-
  enum JetUI.FontSource {
 
 	// Properties
@@ -385,23 +433,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case useCase : FontUseCase
  }
 
+ class JetUI.CollectionContent {
+ enum JetUI.SupplementaryViewProvider {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case section : UICollectionReusableView
+	case generic : CollectionContent
+ }
+
  struct JetUI.ZeroDimension { }
 
  class JetUI.LayoutViewPlaceholder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let measureLogic : Measurements // +0x10 (0x10)
-	var hasContent : Bool // +0x20 (0x1)
-	var frame : CGRect // +0x28 (0x20)
-	var isHidden : Bool // +0x48 (0x1)
+	let measureLogic : Measurements
+	var hasContent : Bool
+	var frame : CGRect
+	var isHidden : Bool
 
 	// Swift methods
-	0x17320  class func LayoutViewPlaceholder.__allocating_init(measureWith:) // init 
-	0x17440  class func LayoutViewPlaceholder.__allocating_init(measurements:) // init 
-	0x175d0  class func LayoutViewPlaceholder.__allocating_init(representing:) // init 
+	0x17d20  class func LayoutViewPlaceholder.__allocating_init(measureWith:) // init 
+	0x17e60  class func LayoutViewPlaceholder.__allocating_init(measurements:) // init 
+	0x18100  class func LayoutViewPlaceholder.__allocating_init(representing:) // init 
  }
 
- class JetUI.InvariantExpression {
+ enum JetUI.AppStore { }
+
  struct JetUI.CenteredThreeLineTextLayout {
 
 	// Properties
@@ -454,50 +512,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bottom  
  }
 
+ enum JetUI.DiffableData { }
+
  struct JetUI.StaticMeasurable {
 
 	// Properties
 	let measurementsStorage : Indirect // +0x0
  }
 
- struct JetUI.InsetLayout {
-
-	// Properties
-	var storage : Indirect // +0x0
- }
-
- struct JetUI.Storage {
-
-	// Properties
-	var sublayout : Layout // +0x0
-	var layoutMargins : UIEdgeInsets // +0x30
- }
-
+ class JetUI.DiffableDataStatePresenter {
  struct JetUI.Dimensions { }
 
  class JetUI.InsetLayoutView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let internalLayoutView : LayoutView // +0x10 (0x28)
-	let insets : UIEdgeInsets // +0x38 (0x20)
+	let internalLayoutView : LayoutView
+	let insets : UIEdgeInsets
 
 	// Swift methods
  }
 
- class JetUI.ClosureExpression {
  struct JetUI.HorizontalSpaceMeasurable {
 
 	// Properties
 	let horizontalSpaceStorage : Indirect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let multiplier : Ωf // +0x8
- }
-
- class JetUI.Expression {
- struct JetUI.Conditional {
-
-	// Properties
-	let expression : Expression
+	let multiplier : yw // +0x8
  }
 
  struct JetUI.Indirect {
@@ -512,32 +552,56 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dimensionStorage : Indirect // +0x0
  }
 
- struct JetUI.EdgeInsetsDimension {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topConstant : Ωf // +0x0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let leftConstant : Ωf // +0x8
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomConstant : Ωf // +0x10
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rightConstant : Ωf // +0x18
-	let source : FontSource // +0x20
- }
-
  struct JetUI.AspectFitMeasurable {
 
 	// Properties
 	var aspectRatio : AspectRatio // +0x0
  }
 
+ enum JetUI.PlatformUI { }
+
  struct JetUI.LineHeightDimension {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let multiplier : Ωf // +0x0
+	let multiplier : yw // +0x0
 	let sourceStorage : Indirect // +0x8
+ }
+
+ class JetUI.ShelvesPresenter {
+ enum JetUI.InsertionPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case before : ID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case after : ID
+	case start  
+	case end  
+ }
+
+ enum JetUI.ReplaceSolution {
+
+	// Properties
+	case insert : InsertionPoint
+	case discard  
+ }
+
+ enum JetUI.MergeProblem {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case missingShelf : ID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case mergeFailure : óp
+ }
+
+ enum JetUI.MergeSolution {
+
+	// Properties
+	case insert : InsertionPoint
+	case rollbackAndAbort  
+	case discard  
  }
 
  struct JetUI.FourLineTextLayout {
@@ -580,8 +644,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class JetUI.PartialLayoutView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let measurable : Measurable // +0x10 (0x28)
-	let layoutView : LayoutView // +0x38 (0x28)
+	let measurable : Measurable
+	let layoutView : LayoutView
 
 	// Swift methods
  }
@@ -597,6 +661,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let measurable : Measurable // +0x0
 	let layout : Layout // +0x28
+ }
+
+ struct JetUI.PresenterMultiplexer {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var presenters :  empty-list  // +0x0
  }
 
  struct JetUI.FrameLayout {
@@ -667,9 +738,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var position : Position // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var leadingInset : Ωf // +0x8
+	var leadingInset : yw // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailingInset : Ωf // +0x10
+	var trailingInset : yw // +0x10
 	var verticalOutset : AnyDimension // +0x18
  }
 
@@ -693,28 +764,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var children : Child // +0x8
  }
 
+ enum JetUI.VerticalPlacement {
+
+	// Properties
+	case top  
+	case firstBaseline  
+ }
+
+ enum JetUI.HorizontalPlacement {
+
+	// Properties
+	case leading  
+	case center  
+	case trailing  
+ }
+
+ struct JetUI.ExclusionCondition {
+
+	// Properties
+	let rawValue : UInt // +0x0
+ }
+
  struct JetUI.Child {
 
 	// Properties
 	let view : LayoutView // +0x0
 	let topSpace : AnyDimension // +0x28
 	let bottomSpace : AnyDimension // +0x50
+	let verticalPlacement : VerticalPlacement // +0x78
+	let horizontalPlacement : HorizontalPlacement // +0x79
+	let excludeWhen : ExclusionCondition // +0x80
  }
 
  class JetUI.LayoutTextViewPlaceholder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var text : String // +0x10 (0x10)
-	var textAlignment : NSTextAlignment // +0x20 (0x8)
-	var lineSpacing : Int // +0x28 (0x8)
-	var frame : CGRect // +0x30 (0x20)
-	var isHidden : Bool // +0x50 (0x1)
-	var numberOfLines : Int // +0x58 (0x8)
-	var lineBreakMode : NSLineBreakMode // +0x60 (0x8)
-	var font : UIFont? // +0x68 (0x8)
+	var text : String
+	var textAlignment : NSTextAlignment
+	var lineSpacing : Int
+	var frame : CGRect
+	var isHidden : Bool
+	var numberOfLines : Int
+	var lineBreakMode : NSLineBreakMode
+	var font : UIFont?
 
 	// Swift methods
-	0x34300  class func LayoutTextViewPlaceholder.__allocating_init(text:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
+	0x48140  class func LayoutTextViewPlaceholder.__allocating_init(text:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
  }
 
  enum JetUI.FontUseCase {
@@ -731,6 +826,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let constant : Ωf // +0x0
+	let constant : yw // +0x0
 	let sourceStorage : Indirect // +0x8
  }
+
+ class JetUI.TableContent {

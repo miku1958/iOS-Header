@@ -11,12 +11,15 @@
 @protocol SPOwnerSessionXPCProtocol <NSObject>
 - (oneway void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
 - (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
+- (oneway void)beaconStoreStatusWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)executeCommand:(SPCommand *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)forceDistributeKeysWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)forceUpdateKeyAlignmentRecordForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)forceUpdateKeyMapsForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)latestLocationsForIdentifiers:(NSArray *)arg1 fetchLimit:(NSDate *)arg2 sources:(NSSet *)arg3 completion:(void (^)(NSDictionary *))arg4;
 - (oneway void)rawSearchResultsForIdentifier:(NSUUID *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
 - (oneway void)removeBeacon:(SPBeacon *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)unacceptedBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (oneway void)waitForBeaconStoreAvailableWithCompletion:(void (^)(void))arg1;
 @end
 

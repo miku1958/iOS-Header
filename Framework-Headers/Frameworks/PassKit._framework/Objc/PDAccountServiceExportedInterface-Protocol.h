@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class CNContact, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, PKAccount, PKAccountAction, PKAccountPreferences, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKApplePayTrustSignature, PKPaymentDeviceMetadata, PKPhysicalCardAction, PKPhysicalCardOrder, PKVirtualCard;
+@class CNContact, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, PKAccount, PKAccountAction, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKApplePayTrustSignature, PKPaymentDeviceMetadata, PKPhysicalCardAction, PKPhysicalCardOrder, PKVirtualCard;
 
 @protocol PDAccountServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)accountForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKAccount *))arg2;
@@ -44,14 +44,12 @@
 - (void)noteVirtualCardAutoFilledBySafari:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)performAccountAction:(PKAccountAction *)arg1 withAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKAccount *, NSError *))arg3;
 - (void)performVirtualCardAction:(long long)arg1 forVirtualCardIdentifier:(NSString *)arg2 forAccountIdentifier:(NSString *)arg3 completion:(void (^)(PKVirtualCard *, PKAccount *, NSError *))arg4;
-- (void)preferencesForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountPreferences *, NSError *))arg2;
 - (void)scheduleSetupReminderForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)scheduledPaymentsWithAccountIdentifier:(NSString *)arg1 includeFailedRecurringPayments:(BOOL)arg2 allowFetchFromServer:(BOOL)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)termsWithIdentifier:(NSString *)arg1 accepted:(BOOL)arg2 withAccountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)updateAccountWithIdentifier:(NSString *)arg1 extended:(BOOL)arg2 completion:(void (^)(PKAccount *, NSError *))arg3;
 - (void)updateAccountsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)updateMockAccountWithAccount:(PKAccount *)arg1 completion:(void (^)(PKAccount *))arg2;
-- (void)updatePreferences:(PKAccountPreferences *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(PKAccountPreferences *, NSError *))arg3;
 - (void)updateScheduledPaymentsWithAccount:(PKAccount *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)updateUserInfoForAccountIdentifier:(NSString *)arg1 contact:(CNContact *)arg2 completion:(void (^)(CNContact *, NSError *))arg3;
 - (void)updateVirtualCardsWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, PKAccount *, NSError *))arg2;

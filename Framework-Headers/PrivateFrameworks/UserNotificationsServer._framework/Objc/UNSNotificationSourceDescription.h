@@ -21,14 +21,16 @@
     BOOL _suppressUserAuthorizationPrompt;
     BOOL _useDefaultDataProvider;
     BOOL _usesCloudKit;
+    BOOL _requiresTopics;
     BOOL _supportsContentAvailableRemoteNotifications;
     BOOL _restricted;
     BOOL _daemonShouldReceiveBackgroundResponses;
     BOOL _daemonShouldReceiveNotificationSettingsUpdates;
     BOOL _daemonShouldReceiveApplicationEvents;
+    BOOL _isAppClip;
+    BOOL _wantsEphemeralNotifications;
     BOOL _allowUnlimitedPendingNotifications;
     NSString *_bundleIdentifier;
-    NSString *_processBundleIdentifier;
     NSString *_universalApplicationIdentifier;
     NSString *_displayName;
     NSString *_pushEnvironment;
@@ -72,8 +74,9 @@
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSDictionary *groupContainerURLS; // @synthesize groupContainerURLS=_groupContainerURLS;
 @property (nonatomic) BOOL hideSettings; // @synthesize hideSettings=_hideSettings;
-@property (copy, nonatomic) NSString *processBundleIdentifier; // @synthesize processBundleIdentifier=_processBundleIdentifier;
+@property (nonatomic) BOOL isAppClip; // @synthesize isAppClip=_isAppClip;
 @property (copy, nonatomic) NSString *pushEnvironment; // @synthesize pushEnvironment=_pushEnvironment;
+@property (nonatomic) BOOL requiresTopics; // @synthesize requiresTopics=_requiresTopics;
 @property (nonatomic, getter=isRestricted) BOOL restricted; // @synthesize restricted=_restricted;
 @property (copy, nonatomic) NSString *settingsIconFile; // @synthesize settingsIconFile=_settingsIconFile;
 @property (copy, nonatomic) NSString *settingsSheetIconFile; // @synthesize settingsSheetIconFile=_settingsSheetIconFile;
@@ -84,6 +87,7 @@
 @property (copy, nonatomic) NSString *universalApplicationIdentifier; // @synthesize universalApplicationIdentifier=_universalApplicationIdentifier;
 @property (nonatomic) BOOL useDefaultDataProvider; // @synthesize useDefaultDataProvider=_useDefaultDataProvider;
 @property (nonatomic) BOOL usesCloudKit; // @synthesize usesCloudKit=_usesCloudKit;
+@property (nonatomic) BOOL wantsEphemeralNotifications; // @synthesize wantsEphemeralNotifications=_wantsEphemeralNotifications;
 @property (copy, nonatomic) NSString *watchList394hIconFile; // @synthesize watchList394hIconFile=_watchList394hIconFile;
 @property (copy, nonatomic) NSString *watchList448hIconFile; // @synthesize watchList448hIconFile=_watchList448hIconFile;
 @property (copy, nonatomic) NSString *watchListLargeIconFile; // @synthesize watchListLargeIconFile=_watchListLargeIconFile;

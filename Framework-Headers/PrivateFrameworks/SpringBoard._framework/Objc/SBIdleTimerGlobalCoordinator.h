@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoard/FBSDisplayLayoutObserver-Protocol.h>
 #import <SpringBoard/SBIdleTimerCoordinating-Protocol.h>
 #import <SpringBoard/SBIdleTimerGlobalStateMonitorObserving-Protocol.h>
 #import <SpringBoard/SBIdleTimerObserving-Protocol.h>
@@ -14,7 +13,7 @@
 @class FBSDisplayLayoutMonitor, NSMutableDictionary, NSString, PTTestRecipe, SBIdleTimerCoordinatorHelper, SBIdleTimerDescriptor, SBIdleTimerDescriptorFactory, SBIdleTimerGlobalStateMonitor, SBIdleTimerProxy;
 @protocol BSInvalidatable, SBIdleTimer, SBIdleTimerGlobalCoordinatorDelegate, SBIdleTimerProviding, SBIdleTimerResetSource;
 
-@interface SBIdleTimerGlobalCoordinator : NSObject <FBSDisplayLayoutObserver, SBIdleTimerObserving, SBIdleTimerGlobalStateMonitorObserving, SBIdleTimerCoordinating>
+@interface SBIdleTimerGlobalCoordinator : NSObject <SBIdleTimerObserving, SBIdleTimerGlobalStateMonitorObserving, SBIdleTimerCoordinating>
 {
     SBIdleTimerDescriptorFactory *_idleTimerDescriptorFactory;
     SBIdleTimerGlobalStateMonitor *_globalStateMonitor;

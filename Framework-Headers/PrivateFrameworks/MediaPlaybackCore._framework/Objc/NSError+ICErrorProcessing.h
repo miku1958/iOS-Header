@@ -6,11 +6,29 @@
 
 #import <Foundation/NSError.h>
 
-@interface NSError (ICErrorProcessing)
+#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
+
+@class NSString;
+
+@interface NSError (ICErrorProcessing) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL mpc_isAirplayDeviceBusyError;
+@property (readonly, nonatomic) BOOL mpc_isAirplayStreamingNotSupportedError;
+@property (readonly, nonatomic) BOOL mpc_isAssetUnavailableFailure;
+@property (readonly, nonatomic) BOOL mpc_isQueueLoadingFailure;
+@property (readonly, nonatomic) BOOL mpc_isRentalContentRequiresDownloadError;
+@property (readonly, nonatomic) BOOL mpc_isUnrecoverableAssetLoadingError;
+@property (readonly) Class superclass;
+
 + (id)MPCErrorWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3;
 + (id)MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescription:(id)arg4;
 + (id)_MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescriptionFormat:(id)arg4 arguments:(struct __va_list_tag [1])arg5;
 + (BOOL)_isAgeVerificationError:(id)arg1;
 + (id)errorForICError:(id)arg1 response:(id)arg2;
++ (id)payloadValueFromJSONValue:(id)arg1;
+- (id)mpc_jsonValue;
 @end
 

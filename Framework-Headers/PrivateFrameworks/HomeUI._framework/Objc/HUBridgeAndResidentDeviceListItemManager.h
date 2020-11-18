@@ -25,6 +25,7 @@
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_homeFuture;
 - (id)_itemsToHideInSet:(id)arg1;
+- (id)bridgeItemForAccessory:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithHome:(id)arg1 delegate:(id)arg2;
 - (BOOL)isBridgeItem:(id)arg1;

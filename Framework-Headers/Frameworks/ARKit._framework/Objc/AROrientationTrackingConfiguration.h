@@ -8,14 +8,12 @@
 
 @interface AROrientationTrackingConfiguration : ARConfiguration
 {
+    BOOL _autoFocusEnabled;
 }
 
-@property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @dynamic autoFocusEnabled;
+@property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @synthesize autoFocusEnabled=_autoFocusEnabled;
 
 + (id)new;
-+ (id)supportedVideoFormats;
-+ (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
-- (id)description;
 - (id)init;
 
 @end

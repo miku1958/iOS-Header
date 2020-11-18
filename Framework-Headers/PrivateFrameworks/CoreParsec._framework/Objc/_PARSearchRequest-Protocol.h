@@ -10,16 +10,20 @@
 
 @protocol _PARSearchRequest <NSObject>
 
+@property (nonatomic) int abTestSeed;
 @property (copy, nonatomic) NSString *calendar;
 @property (copy, nonatomic) NSString *countryCode;
 @property (copy, nonatomic) NSData *dictionarySignature;
 @property (copy, nonatomic) NSString *effectiveSystemLanguage;
 @property (nonatomic) long long exp;
+@property (copy, nonatomic) NSString *experimentNamespaceId;
 @property (nonatomic) int hourFormat;
 @property (nonatomic) BOOL hsEnabled;
 @property (copy, nonatomic) NSString *inputMode;
 @property (copy, nonatomic) NSData *installedAppsSignature;
 @property (nonatomic) BOOL internalBuild;
+@property (nonatomic) BOOL isClientOnlyExperiment;
+@property (nonatomic) BOOL isInReservedAllocationForExperiment;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *localSuggestions;
 @property (copy, nonatomic) NSString *locale;

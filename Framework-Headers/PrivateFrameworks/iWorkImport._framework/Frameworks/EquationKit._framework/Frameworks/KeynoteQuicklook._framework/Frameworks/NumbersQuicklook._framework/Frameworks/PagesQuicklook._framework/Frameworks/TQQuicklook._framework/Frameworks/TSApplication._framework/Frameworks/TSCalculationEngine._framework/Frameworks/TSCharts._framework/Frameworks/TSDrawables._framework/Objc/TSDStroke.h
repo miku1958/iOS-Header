@@ -68,6 +68,7 @@
 @property (readonly, nonatomic) double width;
 
 + (BOOL)canMixWithNilObjects;
++ (id)colorOnSuppressedBackgrounds;
 + (id)editedStrokeFromModelStroke:(id)arg1 selectedStroke:(id)arg2;
 + (id)emptyStroke;
 + (id)i_newEmptyStroke;

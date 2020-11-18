@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)activityTitle;
+- (BOOL)canPerformWithActivityItems:(id)arg1;
 
 @end
 

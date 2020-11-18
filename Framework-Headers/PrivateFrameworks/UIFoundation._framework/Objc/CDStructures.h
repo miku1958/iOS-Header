@@ -223,10 +223,10 @@ struct _NSStoredContainerUsage {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    id _field1;
-    id _field2;
-    id _field3;
-} CDStruct_0f015c83;
+    unsigned char _field1;
+    long long _field2;
+    BOOL _field3;
+} CDStruct_65ebe2bc;
 
 typedef struct {
     unsigned long long _field1;
@@ -240,6 +240,20 @@ typedef struct {
     unsigned int _mirrorsTextAlignment:1;
     unsigned int _reserved:29;
 } CDStruct_1f053566;
+
+typedef struct {
+    double _field1;
+    id _field2;
+    id _field3;
+    BOOL _field4;
+    BOOL _field5;
+} CDStruct_5b583d96;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
 
 typedef struct {
     long long location;

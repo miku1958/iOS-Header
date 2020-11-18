@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property BOOL watchPaired; // @synthesize watchPaired=_watchPaired;
 
 - (void).cxx_destruct;
+- (BOOL)_shouldDisplayPrivacySection;
 - (void)_updateFont;
 - (void)addUnpairedWatchHeaderView;
 - (void)handlePairedDevicesSnapshot:(id)arg1;

@@ -10,32 +10,17 @@
 {
 }
 
-+ (id)_contactsForEmailAddresses:(id)arg1 names:(id)arg2;
-+ (id)_contactsForPersons:(id)arg1;
-+ (id)_locationMetadataForSearchableItem:(id)arg1 userAction:(id)arg2;
-+ (id)_metadataForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (id)collectionEventForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (BOOL)contentTypeTree:(id)arg1 conformsToUTIType:(id)arg2;
-+ (BOOL)contentTypeTree:(id)arg1 conformsToUTITypes:(id)arg2;
 + (id)contextDictionaryForSearchableItem:(id)arg1 userAction:(id)arg2;
-+ (id)emailContextDictionaryForSearchableItem:(id)arg1;
 + (id)expectedSupportedUTIs;
 + (id)expectedUTIsForMechanism:(long long)arg1;
 + (long long)getInteractionMechanismForContentUTI:(id)arg1 typeTree:(id)arg2;
 + (id)interactionForSearchableItem:(id)arg1;
 + (id)interactionUUIDForSearchableItemWithUID:(id)arg1 bundleID:(id)arg2;
-+ (BOOL)isLocationBasedItem:(id)arg1;
 + (id)knowledgeEventsForSearchableItem:(id)arg1 userAction:(id)arg2;
-+ (id)mechanismUtiMap;
-+ (id)messageContextDictionaryForSearchableItem:(id)arg1;
-+ (id)policies;
++ (id)messageContextDictionaryForSendMessageIntent:(id)arg1;
 + (id)querySpotlightItemsWithStartDate:(id)arg1 endDate:(id)arg2 getMail:(BOOL)arg3 getMessages:(BOOL)arg4;
-+ (id)safariUTIs;
-+ (BOOL)shouldFilterEmailAddress:(id)arg1;
-+ (BOOL)uncachedUtType:(id)arg1 conformsTo:(id)arg2;
-+ (BOOL)utType:(id)arg1 conformsTo:(id)arg2;
-+ (id)utiConformCache;
-+ (BOOL)whitelistedCSSearchableItem:(id)arg1;
 
 @end
 

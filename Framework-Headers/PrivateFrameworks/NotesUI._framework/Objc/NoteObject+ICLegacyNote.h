@@ -8,18 +8,29 @@
 
 #import <NotesUI/ICLegacyNote-Protocol.h>
 
-@class NSString;
+@class NSArray, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString;
+@protocol ICLegacyAccount, ICLegacyFolder;
 
 @interface NoteObject (ICLegacyNote) <ICLegacyNote>
 
+@property (readonly, nonatomic) id<ICLegacyAccount> account;
+@property (readonly, nonatomic) NSArray *attachments;
+@property (readonly, copy, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<ICLegacyFolder> folder;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *htmlString;
+@property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
+@property (readonly, nonatomic) BOOL isMarkedForDeletion;
+@property (readonly, nonatomic) BOOL isPlainText;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, copy, nonatomic) NSDate *modificationDate;
+@property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *title;
 
 - (id)createAttachmentWithName:(id)arg1;
-- (id)folder;
-- (id)htmlString;
-- (void)setHtmlString:(id)arg1;
 @end
 

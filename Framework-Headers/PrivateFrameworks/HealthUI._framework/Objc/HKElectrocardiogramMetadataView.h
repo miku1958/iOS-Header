@@ -23,10 +23,10 @@
 - (id)_ecgChart;
 - (id)_footerLabel;
 - (id)_separatorLine;
-- (void)_setupUI;
+- (void)_setupUIWithActiveAlgorithmVersion:(long long)arg1;
 - (id)_sharePDFControl;
 - (void)detailButtonTapped:(id)arg1;
-- (id)initWithSample:(id)arg1 delegate:(id)arg2;
+- (id)initWithSample:(id)arg1 activeAlgorithmVersion:(long long)arg2 delegate:(id)arg3;
 - (void)sharedPDFControlTapped:(id)arg1;
 
 @end

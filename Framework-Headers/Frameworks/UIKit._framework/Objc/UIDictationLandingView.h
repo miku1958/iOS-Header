@@ -9,6 +9,7 @@
 #import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 
 @class CADisplayLink, NSOperation, NSString, UITextRange;
+@protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
 @interface UIDictationLandingView : UIView <_UIBasicAnimationFactory>
@@ -24,8 +25,10 @@ __attribute__((visibility("hidden")))
     double _shrinkStartTime;
     BOOL _shrinking;
     NSOperation *_afterShrinkCompletionInvocation;
+    id<UITextCursorAssertion> _blinkAssertion;
 }
 
+@property (strong, nonatomic) id<UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

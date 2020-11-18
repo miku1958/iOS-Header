@@ -6,7 +6,7 @@
 
 #import <SiriActivation/NSObject-Protocol.h>
 
-@class AFMyriadCoordinator;
+@class AFMyriadCoordinator, AFMyriadSession;
 
 @protocol AFMyriadDelegate <NSObject>
 
@@ -20,5 +20,7 @@
 - (void)shouldContinue:(AFMyriadCoordinator *)arg1;
 - (void)shouldHandleEmergency:(AFMyriadCoordinator *)arg1;
 - (void)shouldUnduck:(AFMyriadCoordinator *)arg1;
+- (void)willEndSession:(AFMyriadSession *)arg1;
+- (void)willStartWithSession:(AFMyriadSession *)arg1;
 @end
 

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIButton.h>
 
-@class MKPlaceCardActionItem, MKVibrantView, NSArray, UIImageView, _MKUILabel;
+@class MKPlaceCardActionItem, MKVibrantView, NSArray, UIImageView, UIView, _MKUILabel;
 @protocol MKActionRowItemViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKActionRowItemView : UIView
+@interface MKActionRowItemView : UIButton
 {
     _MKUILabel *_label;
     UIImageView *_glyphImageView;
@@ -18,19 +18,19 @@ __attribute__((visibility("hidden")))
     UIView *_backgroundView;
     unsigned long long _style;
     NSArray *_constraints;
-    BOOL _enabled;
     BOOL _touched;
     BOOL _fullWidthMode;
-    BOOL _highlighted;
+    BOOL _hovering;
+    BOOL _showSelectedState;
     id<MKActionRowItemViewDelegate> _delegate;
     MKPlaceCardActionItem *_actionRowItem;
 }
 
 @property (strong, nonatomic) MKPlaceCardActionItem *actionRowItem; // @synthesize actionRowItem=_actionRowItem;
 @property (weak, nonatomic) id<MKActionRowItemViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL fullWidthMode; // @synthesize fullWidthMode=_fullWidthMode;
-@property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (nonatomic) BOOL hovering; // @synthesize hovering=_hovering;
+@property (nonatomic) BOOL showSelectedState; // @synthesize showSelectedState=_showSelectedState;
 @property (nonatomic) BOOL touched; // @synthesize touched=_touched;
 
 + (id)glyphFont;
@@ -46,8 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)createConstraints;
 - (void)dealloc;
 - (void)didMoveToWindow;
+- (void)handleHoverGesture:(id)arg1;
+- (void)handlePress;
 - (void)infoCardThemeChanged;
-- (id)initWithActionRowItem:(id)arg1 style:(unsigned long long)arg2;
+- (id)initWithActionRowItem:(id)arg1 menuElement:(id)arg2 style:(unsigned long long)arg3;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)tintColorDidChange;

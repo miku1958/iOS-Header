@@ -20,7 +20,6 @@
         unsigned int taskReference:1;
         unsigned int taskType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _priority;
     int _status;
     int _taskReference;
@@ -35,7 +34,6 @@
     _INPBDataString *_title;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBContactEventTrigger *contactEventTrigger; // @synthesize contactEventTrigger=_contactEventTrigger;
 @property (strong, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
 @property (readonly, copy) NSString *debugDescription;

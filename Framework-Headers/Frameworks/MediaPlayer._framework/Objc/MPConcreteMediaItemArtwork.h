@@ -8,6 +8,7 @@
 
 @class MPArtworkCatalog;
 
+__attribute__((visibility("hidden")))
 @interface MPConcreteMediaItemArtwork : MPMediaItemArtwork
 {
     MPArtworkCatalog *_catalog;

@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <PencilKit/PKSelectionObserving-Protocol.h>
+#import <PencilKit/PKSelectionRenderingDelegate-Protocol.h>
 #import <PencilKit/UIDropInteractionDelegate_Private-Protocol.h>
 
-@class NSString, NSUUID, PKSelectionView, PKSpaceInsertionController, PKStrokeSelection, PKTiledView, UIDropInteraction;
+@class NSString, NSUUID, PKSelectionGestureView, PKSelectionInteraction, PKSelectionView, PKSpaceInsertionController, PKStrokeSelection, PKTiledView, PKTranscriptionController, UIDropInteraction;
 @protocol OS_dispatch_queue;
 
-@interface PKSelectionController : NSObject <UIDropInteractionDelegate_Private>
+@interface PKSelectionController : NSObject <UIDropInteractionDelegate_Private, PKSelectionRenderingDelegate, PKSelectionObserving>
 {
     struct CGPoint _dropPosition;
     NSUUID *_previousDrawingUUIDForSelection;
     int _selectionViewCount;
-    double _cachedStrokeImageScale;
-    PKSpaceInsertionController *_spaceInsertionController;
+    long long _currentIntersectionAlgorithm;
+    PKTranscriptionController *_transcriptionController;
+    NSObject<OS_dispatch_queue> *_intersectionQueue;
+    CDUnknownBlockType _intersectStrokesBetweenLollipopBlock;
     UIDropInteraction *_dropInteraction;
+    BOOL _isChangingColor;
+    CDUnknownBlockType _deferredChangingColorBlock;
     BOOL _hasCurrentSelection;
+    BOOL _isClearingSelection;
+    BOOL _insertSpaceEnabled;
     BOOL _isCurrentlyAddingSpace;
     PKTiledView *_tiledView;
     PKStrokeSelection *_currentStrokeSelection;
     NSObject<OS_dispatch_queue> *_selectionHullQueue;
+    PKSpaceInsertionController *_spaceInsertionController;
     PKSelectionView *_selectionView;
+    PKSelectionGestureView *_selectionGestureView;
     struct CGAffineTransform _selectionTransform;
 }
 
@@ -33,67 +43,97 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCurrentSelection; // @synthesize hasCurrentSelection=_hasCurrentSelection;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL insertSpaceEnabled; // @synthesize insertSpaceEnabled=_insertSpaceEnabled;
+@property (readonly, nonatomic) BOOL isClearingSelection; // @synthesize isClearingSelection=_isClearingSelection;
 @property (nonatomic) BOOL isCurrentlyAddingSpace; // @synthesize isCurrentlyAddingSpace=_isCurrentlyAddingSpace;
+@property (readonly, nonatomic) PKSelectionGestureView *selectionGestureView; // @synthesize selectionGestureView=_selectionGestureView;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *selectionHullQueue; // @synthesize selectionHullQueue=_selectionHullQueue;
+@property (readonly, nonatomic) PKSelectionInteraction *selectionInteraction;
 @property (nonatomic) struct CGAffineTransform selectionTransform; // @synthesize selectionTransform=_selectionTransform;
 @property (strong, nonatomic) PKSelectionView *selectionView; // @synthesize selectionView=_selectionView;
 @property (readonly, nonatomic) BOOL shouldClampInputPoints;
+@property (strong, nonatomic) PKSpaceInsertionController *spaceInsertionController; // @synthesize spaceInsertionController=_spaceInsertionController;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) PKTiledView *tiledView; // @synthesize tiledView=_tiledView;
 
++ (id)_orderedStrokes:(id)arg1 relativeToStrokeOrderInDrawing:(id)arg2;
++ (id)_selectStrandedBitmapStrokesForIntersectedStrokesIfNecessary:(id)arg1 visibleOnscreenStrokes:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addItemsToPasteboard:(id)arg1;
-- (void)_addViewForStrokeSelection:(id)arg1 isDragSource:(BOOL)arg2 drawing:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_addViewForStrokeSelection:(id)arg1 isDragSource:(BOOL)arg2 drawing:(id)arg3 selectionType:(long long)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (id)_attachmentForSelectionRect:(struct CGRect)arg1;
 - (struct CGRect)_calculateFrameForSelectionView:(id)arg1 inDrawing:(id)arg2;
-- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 selectionAction:(long long)arg3;
-- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 selectionAction:(long long)arg3 inkChanges:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 selectionAction:(long long)arg3 inkChanges:(id)arg4 selectionType:(long long)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 selectionAction:(long long)arg3 selectionType:(long long)arg4;
 - (void)_createSelectionViewForDropSession:(id)arg1 removeFromSource:(BOOL)arg2;
 - (void)_createSelectionViewForDropSession:(id)arg1 removeFromSource:(BOOL)arg2 withStrokeSelection:(id)arg3;
-- (id)_drawingForLiveAttachment;
+- (void)_didAddDrawingAttachmentView;
+- (id)_drawingForMenuController:(id)arg1;
 - (id)_drawingForSelectionRect:(struct CGRect)arg1;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (struct CGRect)_extendedBoundsForDrawing:(id)arg1;
+- (void)_findIntersectedStrokesWithoutRecognitionToSelectBetweenTopPoint:(struct CGPoint)arg1 bottomPoint:(struct CGPoint)arg2 inDrawing:(id)arg3 visibleOnscreenStrokes:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_firstStrokesInStrokes:(id)arg1;
 - (BOOL)_isValidDropPointForStrokes:(struct CGPoint)arg1;
+- (BOOL)_isValidDropPointForStrokes:(struct CGPoint)arg1 didInsertNewAttachment:(BOOL *)arg2;
+- (id)_lastStrokesInStrokes:(id)arg1;
 - (void)_layoutViewsIfNecessary;
 - (BOOL)_liveDrawingIsAtEndOfDocument;
 - (id)_newInk:(id)arg1 withChange:(id)arg2;
-- (void)_pasteStrokeSelection:(id)arg1 atPoint:(struct CGPoint)arg2 inDrawing:(id)arg3;
+- (void)_pasteStrokeSelection:(id)arg1 atPoint:(struct CGPoint)arg2 inDrawing:(id)arg3 withSelectionType:(long long)arg4;
 - (struct CGPoint)_pointInStrokeSpace:(struct CGPoint)arg1 inDrawing:(id)arg2;
+- (void)_refreshTiledViewWithSelectionForDrawing:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeSelectionView;
 - (void)_removeSelectionViewAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_resetSelectedStrokeStateForRenderer;
 - (id)_rotateImageIfNecessary:(id)arg1;
+- (struct CGPoint)_scrollContent:(struct CGPoint)arg1;
 - (struct CGRect)_scrollViewDrawingFrame;
 - (struct CGRect)_scrollViewVisibleBounds;
+- (void)_selectionBeganInDrawing:(id)arg1 withPath:(id)arg2;
 - (struct CGAffineTransform)_selectionDrawingTransformForDrawing:(id)arg1;
 - (struct CGPoint)_selectionOffsetForDrawing:(id)arg1;
 - (void)_selectionRefreshWithChangeToDrawings:(id)arg1;
 - (void)_selectionRefreshWithChangeToDrawings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGAffineTransform)_selectionTransformForStrokes:(id)arg1 atLocation:(struct CGPoint)arg2 dragOffsetInDragView:(struct CGPoint)arg3 transform:(struct CGAffineTransform)arg4 constrainSelection:(BOOL)arg5 inDrawing:(id)arg6;
 - (void)_setAdditionalStrokes:(id)arg1 inDrawing:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (struct CGRect)_visibleOnscreenBoundsForDrawing:(id)arg1;
+- (id)_strokeForLassoPath:(id)arg1 inDrawing:(id)arg2;
+- (id)_visibleOnscreenStrokesForDrawing:(id)arg1;
+- (id)_visibleOnscreenStrokesIncludingCurrentSelection:(id)arg1 forDrawing:(id)arg2;
 - (id)_visibleStrokesWithinExtendedBounds:(id)arg1 forDrawing:(id)arg2;
+- (void)addTranscriptionToPasteboard:(id)arg1;
 - (void)applyCommand:(id)arg1 toDrawing:(id)arg2;
+- (id)applySpaceInsertionWithStrokeSelection:(id)arg1 inDrawing:(id)arg2 offset:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGPoint)autoscrollForPointIfNecessary:(struct CGPoint)arg1;
 - (struct CGRect)boundsForDrawing:(id)arg1;
+- (id)cachedImageConfigForSelection:(id)arg1 scaleStrategy:(long long)arg2;
 - (void)changeColorOfSelection:(id)arg1;
+- (void)changeColorOfSelection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)clearSelectionIfNecessary;
 - (void)clearSelectionIfNecessaryAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)clearSelectionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (struct CGPoint)closestPointForPastedSelectionRect:(struct CGRect)arg1 withDrawing:(id *)arg2;
+- (void)commitSpacingResize;
 - (void)commitStrokesWithCompletion:(CDUnknownBlockType)arg1;
+- (long long)contentTypeForIntersectedStrokes:(id)arg1 inDrawing:(id)arg2;
 - (void)copy:(id)arg1;
+- (void)copyTranscription:(id)arg1;
+- (long long)currentIntersectionAlgorithm;
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)delete:(id)arg1;
-- (void)didBeginSpaceInsertionWithLassoStroke:(id)arg1 drawing:(id)arg2;
+- (void)didBeginDraggingSelection;
+- (void)didBeginModifyDrawing;
+- (void)didBeginSpaceInsertionWithLassoPath:(id)arg1 atLocation:(struct CGPoint)arg2;
+- (void)didBeginSpaceInsertionWithLassoStroke:(id)arg1 drawing:(id)arg2 addDefaultSpace:(BOOL)arg3 strokesAbove:(id)arg4 strokesBelow:(id)arg5;
+- (void)didEndDraggingSelection;
+- (void)didEndModifyDrawing;
 - (void)didMoveStrokeSelectionToLocation:(struct CGPoint)arg1 transform:(struct CGAffineTransform)arg2;
 - (BOOL)didResizeWhitespace;
 - (void)didScroll:(struct CGPoint)arg1;
 - (void)didSelect:(id)arg1 lassoStroke:(id)arg2 transform:(struct CGAffineTransform)arg3 drawing:(id)arg4;
-- (void)didSelect:(id)arg1 lassoStroke:(id)arg2 transform:(struct CGAffineTransform)arg3 drawing:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)didSelect:(id)arg1 lassoStroke:(id)arg2 transform:(struct CGAffineTransform)arg3 drawing:(id)arg4 selectionType:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)didSelectStrokesNotification:(id)arg1;
-- (void)dismissSpacingResizeHandles;
 - (id)drawingForUUID:(id)arg1;
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -103,22 +143,34 @@
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)duplicate:(id)arg1;
 - (void)eraseSelection;
-- (void)generateImageForStrokeSelection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchStrokesToSelectAtPoint:(struct CGPoint)arg1 inDrawing:(id)arg2 withSelectionType:(long long)arg3 inputType:(long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)fetchStrokesToSelectAtPoint:(struct CGPoint)arg1 inDrawing:(id)arg2 withSelectionType:(long long)arg3 inputType:(long long)arg4 existingSelection:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)fetchStrokesToSelectBetweenTopPoint:(struct CGPoint)arg1 bottomPoint:(struct CGPoint)arg2 inDrawing:(id)arg3 liveScrollOffset:(struct CGPoint)arg4 existingSelection:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)findTranscriptionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)generateImageForStrokeSelection:(id)arg1 scaleStrategy:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)hideStrokes:(id)arg1 inDrawing:(id)arg2;
 - (id)initWithTiledView:(id)arg1;
-- (id)intersectedStrokesFromStroke:(id)arg1 drawing:(id)arg2;
-- (id)intersectedStrokesFromStroke:(id)arg1 drawing:(id)arg2 visibleOnscreenStrokes:(id)arg3;
-- (struct CGPoint)intersectionPointAlongStroke:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3;
+- (void)insertSpace:(id)arg1;
+- (void)insertSpaceAtPoint:(struct CGPoint)arg1 addDefaultSpace:(BOOL)arg2 strokesAbove:(id)arg3 strokesBelow:(id)arg4;
+- (BOOL)isRTL;
+- (void)lassoSelectStrokesInDrawing:(id)arg1 withPath:(id)arg2;
 - (void)moveSelectionViewBasedOnStrokeTransform:(struct CGAffineTransform)arg1 drawing:(id)arg2;
+- (BOOL)needsToClearSelection;
 - (id)newStrokesForSelection:(id)arg1 toDrawing:(id)arg2;
 - (void)paste:(id)arg1;
 - (void)registerCommandWithUndoManager:(id)arg1;
-- (void)resetStrokesAndClearSelection;
-- (id)rotateUIImage:(id)arg1 clockwise:(BOOL)arg2;
+- (double)scaleForDrawing:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)selectStrokes:(id)arg1 forSelectionType:(long long)arg2 inDrawing:(id)arg3;
+- (void)selectStrokes:(id)arg1 forSelectionType:(long long)arg2 inDrawing:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)selectedStrokesViewClipRectForDrawing:(id)arg1;
+- (struct CGColor *)selectionColor;
 - (void)setImageOnSelectionViewForStrokeSelection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)setupSpaceInsertionControllerIfNecessary;
-- (id)strokesForSpaceInsertionWithStrokeSelection:(id)arg1 inDrawing:(id)arg2 offset:(double)arg3;
+- (id)strokeForInsertSpaceAtPoint:(struct CGPoint)arg1 inDrawing:(id)arg2;
 - (id)topView;
+- (struct CGAffineTransform)transformFromStrokeSpaceToViewInDrawing:(id)arg1;
+- (void)updateCurrentSelectionWithNewDrawingIfNecessary:(id)arg1;
 - (void)updateCurrentStrokeSelectionTransformForLocation:(id)arg1 atLocation:(struct CGPoint)arg2 offsetInTouchView:(struct CGPoint)arg3 transform:(struct CGAffineTransform)arg4;
 - (struct CGSize)viewSizeForStrokeSelection:(id)arg1;
 

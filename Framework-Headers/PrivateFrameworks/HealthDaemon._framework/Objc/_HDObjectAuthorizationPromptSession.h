@@ -14,9 +14,9 @@
     NSMutableArray *_requests;
     NSMutableArray *_completions;
     BOOL _didStartTransaction;
+    CDUnknownBlockType _sessionCompletion;
     NSString *_bundleIdentifier;
     NSUUID *_sessionIdentifier;
-    CDUnknownBlockType _sessionCompletion;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;

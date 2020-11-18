@@ -17,7 +17,7 @@
 @property (strong) id object; // @synthesize object=_object;
 @property (strong) IMDoubleLinkedListNode *prev; // @synthesize prev=_prev;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithObject:(id)arg1;
 - (void)orphan;
 - (void)removeFromList;

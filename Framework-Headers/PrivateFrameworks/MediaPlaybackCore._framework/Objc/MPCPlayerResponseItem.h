@@ -14,6 +14,7 @@
 {
     unsigned long long _seekSupport;
     BOOL _placeholder;
+    BOOL _autoPlay;
     NSString *_contentItemIdentifier;
     long long _revision;
     NSString *_localizedDurationString;
@@ -25,6 +26,7 @@
     CDStruct_fce57115 _duration;
 }
 
+@property (readonly, nonatomic, getter=isAutoPlay) BOOL autoPlay; // @synthesize autoPlay=_autoPlay;
 @property (readonly, nonatomic) NSString *contentItemIdentifier; // @synthesize contentItemIdentifier=_contentItemIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface _HDCachedSourceOrder : NSObject
 {
     BOOL _userOrdered;

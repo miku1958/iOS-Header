@@ -13,6 +13,8 @@
 - (void)dismissSiriSetupViewController:(AFUISiriSetupViewController *)arg1;
 - (void)openSiriRequestedBySiriSetupViewController:(AFUISiriSetupViewController *)arg1;
 - (BOOL)siriSetupViewController:(AFUISiriSetupViewController *)arg1 openURL:(NSURL *)arg2;
-- (void)siriSetupViewControllerDidChangeVisibility:(AFUISiriSetupViewController *)arg1;
+
+@optional
+- (void)updateHomeGestureSharingForSiriSetup:(BOOL)arg1;
 @end
 

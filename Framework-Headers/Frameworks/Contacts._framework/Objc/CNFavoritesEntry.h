@@ -15,12 +15,12 @@
     int _abUid;
     int _abIdentifier;
     int _oldAbUid;
+    NSString *_value;
     NSString *_actionType;
     NSString *_bundleIdentifier;
     long long _type;
     CNContactStore *_contactStore;
     NSString *_label;
-    NSString *_value;
     NSString *_propertyKey;
     NSString *_abDatabaseUUID;
     NSString *_originalName;
@@ -29,40 +29,20 @@
     NSString *_actionChannel;
 }
 
-@property (strong, nonatomic) NSString *abDatabaseUUID; // @synthesize abDatabaseUUID=_abDatabaseUUID;
 @property (nonatomic) int abIdentifier; // @synthesize abIdentifier=_abIdentifier;
 @property (nonatomic) int abUid; // @synthesize abUid=_abUid;
 @property (strong, nonatomic) NSString *actionChannel; // @synthesize actionChannel=_actionChannel;
-@property (strong, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
-@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (readonly, nonatomic) NSString *actionType;
+@property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) CNContactProperty *contactProperty;
-@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (nonatomic) BOOL dirty; // @synthesize dirty=_dirty;
-@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
-@property (strong, nonatomic) NSString *labeledValueIdentifier; // @synthesize labeledValueIdentifier=_labeledValueIdentifier;
 @property (readonly, nonatomic) NSString *name;
 @property (nonatomic) int oldAbUid; // @synthesize oldAbUid=_oldAbUid;
-@property (copy, nonatomic) NSString *originalName; // @synthesize originalName=_originalName;
-@property (strong, nonatomic) NSString *propertyKey; // @synthesize propertyKey=_propertyKey;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) long long type;
 @property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
-+ (id)contactFormatter;
-+ (id)createLabeledValueForFavoritesEntryValue:(id)arg1 label:(id)arg2 iOSLegacyIdentifier:(int)arg3 propertyKey:(id)arg4;
-+ (id)descriptorsForRequiredKeysForPropertyKey:(id)arg1;
-+ (id)favoritesEntryValueForLabeledValueValue:(id)arg1 propertyKey:(id)arg2;
-+ (BOOL)favoritesEntryValueForLabeledValueValue:(id)arg1 propertyKey:(id)arg2 isEqualToValue:(id)arg3;
 + (void)initialize;
-+ (id)instantMessageAddressForFavoritesEntryValue:(id)arg1;
-+ (id)labeledValueValueForFavoritesEntryValue:(id)arg1 propertyKey:(id)arg2;
-+ (id)socialProfileForFavoritesEntryValue:(id)arg1;
-+ (id)valueStringFromInstantMessageAddress:(id)arg1;
-+ (id)valueStringFromSocialProfile:(id)arg1;
 - (void).cxx_destruct;
-- (void)_convertFromEntryType:(long long)arg1 toActionType:(id *)arg2 bundleIdentifier:(id *)arg3;
-- (int)_entryTypeForActionType:(id)arg1 bundleIdentifier:(id)arg2;
-- (id)_initWithContact:(id)arg1 propertyKey:(id)arg2 labeledValueIdentifier:(id)arg3 entryType:(long long)arg4 actionType:(id)arg5 bundleIdentifier:(id)arg6 store:(id)arg7;
 - (void)applyChangeRecord:(id)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;

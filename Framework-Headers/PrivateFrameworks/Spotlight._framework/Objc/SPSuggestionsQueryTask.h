@@ -6,36 +6,30 @@
 
 #import <Spotlight/SPGeneralQueryTask.h>
 
-@class NSArray;
-
 @interface SPSuggestionsQueryTask : SPGeneralQueryTask
 {
-    NSArray *_mutableCombinedSuggestions;
-    NSArray *_mutableParsecSuggestions;
-    NSArray *_mutableLocalSuggestions;
 }
 
-- (void).cxx_destruct;
 - (id)_appResultSection;
-- (unsigned int)_lexiconTokenIDForToken:(id)arg1 lexicon:(struct _LXLexicon *)arg2;
+- (id)_makeSuggestionsSectionFromSuggestions:(id)arg1 andResultSection:(id)arg2 withSectionBundleIdentifier:(id)arg3;
 - (id)_newSuggestionSection;
 - (id)_originalTopResultFromSections:(id)arg1;
-- (id)_suggestionResultFromSuggestion:(id)arg1 forQuery:(id)arg2;
+- (id)_topResultOnlySectionFrom:(id)arg1;
 - (id)_whiteListedTopResultFromSection:(id)arg1;
-- (id)appSuggestions:(id)arg1 maxCount:(long long)arg2;
+- (void)addAsYouTypeRelatedSearchResultToSections:(id)arg1 withRelatedSearchSection:(id)arg2;
+- (id)bundleIdentifiersForHiddenSections;
 - (void)clearInternal:(int)arg1 invalidate:(BOOL)arg2;
-- (id)contactSuggestions:(id)arg1 maxCount:(long long)arg2;
-- (id)dedupedSuggestions:(id)arg1 dedupeQueries:(id)arg2 maxCount:(long long)arg3;
+- (id)committedSearchSections;
 - (id)displayedText;
+- (void)filterSearchThroughStringsNotInShowMore:(id)arg1 excludedBundleIdentifiers:(id)arg2;
 - (id)initForSession:(id)arg1 withQuery:(id)arg2;
-- (id)makeSuggestionsSection;
+- (id)makeSearchThroughSuggestions;
+- (void)processAppResults:(id)arg1 maxAppResults:(unsigned long long)arg2 section:(id)arg3 topHitsIndex:(unsigned long long *)arg4;
 - (BOOL)readyToUpdate;
-- (void)searchDaemonLocalSuggestionsData:(id)arg1;
-- (void)searchDaemonSuggestionsArray:(id)arg1;
 - (id)searchThroughSection:(id)arg1;
+- (id)searchThroughSuggestions:(id)arg1 maxCount:(long long)arg2;
 - (id)sectionsForCompletions;
-- (id)suggestionsDebugLog:(id)arg1;
-- (id)unsafeCombinedSuggestions;
+- (id)showMoreButtonResultSection;
 - (id)unsafeSections;
 
 @end

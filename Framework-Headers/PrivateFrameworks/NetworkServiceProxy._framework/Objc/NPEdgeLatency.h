@@ -15,7 +15,6 @@
 {
     BOOL _probeTFO;
     BOOL _probeNoTFOCookie;
-    BOOL _probeUseTFOHeuristics;
     BOOL _passedReprobeThreshold;
     BOOL _needReprobe;
     BOOL _isObserving;
@@ -56,7 +55,6 @@
 @property BOOL probeNoTFOCookie; // @synthesize probeNoTFOCookie=_probeNoTFOCookie;
 @property BOOL probeTFO; // @synthesize probeTFO=_probeTFO;
 @property (strong) NSObject<OS_dispatch_source> *probeTimer; // @synthesize probeTimer=_probeTimer;
-@property BOOL probeUseTFOHeuristics; // @synthesize probeUseTFOHeuristics=_probeUseTFOHeuristics;
 @property long long reprobeCount; // @synthesize reprobeCount=_reprobeCount;
 @property (strong) NPAverage *roundTripAverage; // @synthesize roundTripAverage=_roundTripAverage;
 @property (strong) NPAverage *roundTripAverageObserved; // @synthesize roundTripAverageObserved=_roundTripAverageObserved;

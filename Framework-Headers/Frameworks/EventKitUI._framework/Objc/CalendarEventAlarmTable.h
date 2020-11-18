@@ -26,6 +26,7 @@
     BOOL _eventHasTravelTime;
     id<CalendarEventAlarmTableDelegate> _alarmTableDelegate;
     id<EKStyleProvider> _styleProvider;
+    unsigned long long _timeToLeaveLocationStatus;
 }
 
 @property (weak, nonatomic) id<CalendarEventAlarmTableDelegate> alarmTableDelegate; // @synthesize alarmTableDelegate=_alarmTableDelegate;
@@ -39,6 +40,7 @@
 @property (nonatomic) BOOL shouldShowLeaveNowOption; // @synthesize shouldShowLeaveNowOption=_shouldShowLeaveNowOption;
 @property (strong, nonatomic) id<EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long timeToLeaveLocationStatus; // @synthesize timeToLeaveLocationStatus=_timeToLeaveLocationStatus;
 @property (nonatomic) BOOL useAllDayAlarms; // @synthesize useAllDayAlarms=_useAllDayAlarms;
 
 - (void).cxx_destruct;
@@ -59,6 +61,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
+- (BOOL)timeToLeaveAlarmIsEffectivelyDisabled;
 
 @end
 

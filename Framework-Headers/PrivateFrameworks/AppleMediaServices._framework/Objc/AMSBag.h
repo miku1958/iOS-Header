@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagProtocol-Protocol.h>
 
-@class NSDate, NSString;
+@class AMSProcessInfo, NSDate, NSString;
 @protocol AMSBagDataSourceProtocol;
 
 @interface AMSBag : NSObject <AMSBagProtocol>
@@ -19,9 +19,11 @@
 @property (strong, nonatomic) id<AMSBagDataSourceProtocol> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *descriptionExtended;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 @property (readonly) Class superclass;
@@ -31,7 +33,6 @@
 + (id)bagCacheAccessQueue;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
-+ (id)internalBag;
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
 - (id)URLForKey:(id)arg1 account:(id)arg2;

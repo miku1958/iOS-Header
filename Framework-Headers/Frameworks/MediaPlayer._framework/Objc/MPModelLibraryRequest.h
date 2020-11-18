@@ -18,6 +18,7 @@
     NSArray *_allowedSectionIdentifiers;
     NSArray *_scopedContainers;
     unsigned long long _filteringOptions;
+    NSString *_filterText;
     MPMediaQuery *_legacyMediaQuery;
     struct _NSRange _contentRange;
 }
@@ -27,6 +28,7 @@
 @property (nonatomic) struct _NSRange contentRange; // @synthesize contentRange=_contentRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *filterText; // @synthesize filterText=_filterText;
 @property (nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MPMediaQuery *legacyMediaQuery; // @synthesize legacyMediaQuery=_legacyMediaQuery;

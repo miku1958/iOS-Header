@@ -17,10 +17,10 @@
     BOOL _isMuted;
     BOOL _isListeningToVideoPlayer;
     CKMovieMediaObject *_mediaObject;
+    UIImageView *_muteButton;
     ISVideoPlayerUIView *_videoPlayer;
     ISWrappedAVPlayer *_avPlayer;
     ISWrappedAVAudioSession *_audioSession;
-    UIImageView *_muteButton;
     UIView *_snapshotView;
 }
 
@@ -52,7 +52,7 @@
 - (void)_thermalStateDidChange:(id)arg1;
 - (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
 - (void)avPlayerDidDeallocate;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(BOOL)arg4;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -19,20 +19,11 @@ __attribute__((visibility("hidden")))
     long long _bytesNeededToResume;
 }
 
-@property (nonatomic) long long bytesNeededToResume; // @synthesize bytesNeededToResume=_bytesNeededToResume;
 @property (readonly) BOOL hasPendingContacts;
 @property (copy, nonatomic) CNContactKeyVector *keyDescriptorToMakeAvailable; // @synthesize keyDescriptorToMakeAvailable=_keyDescriptorToMakeAvailable;
 @property (nonatomic) BOOL mutableResults; // @synthesize mutableResults=_mutableResults;
-@property (strong, nonatomic) CNMutableContact *pendingContact; // @synthesize pendingContact=_pendingContact;
-@property (strong, nonatomic) NSMutableData *resumeBuffer; // @synthesize resumeBuffer=_resumeBuffer;
-@property (nonatomic) long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
-- (void)_applyImageDataFromByteCursor:(char **)arg1 end:(char *)arg2;
-- (void)_applyMultivalueFromByteCursor:(char **)arg1 end:(char *)arg2 abPropertyID:(int)arg3;
-- (void)_applyPropertiesFromFromByteCursor:(char **)arg1 end:(char *)arg2;
-- (id)_contactFromByteCursor:(char **)arg1 end:(char *)arg2;
-- (id)completedPendingContactFromByteCursor:(char **)arg1 end:(char *)arg2;
 - (id)contactsFromBuffer:(id)arg1;
 - (id)initWithKeyDescriptorToMakeAvailable:(id)arg1 mutableResults:(BOOL)arg2;
 

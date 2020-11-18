@@ -6,7 +6,12 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface NSURL (WebBookmarksExtras)
+
+@property (readonly, nonatomic) NSString *_wb_userVisibleString;
+
 - (BOOL)_webBookmarks_isHTTPFamilyURL;
 @end
 

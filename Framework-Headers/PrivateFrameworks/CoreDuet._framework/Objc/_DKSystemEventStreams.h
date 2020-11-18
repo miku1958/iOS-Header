@@ -14,11 +14,14 @@
 + (id)airplayPredictionStream;
 + (id)alarmStream;
 + (id)appActivityStream;
++ (id)appClipUsageStream;
++ (id)appDirectoryInteractionStream;
 + (id)appInFocusStream;
 + (id)appInstallStream;
 + (id)appIntentsStream;
 + (id)appLaunchFeedbackStream;
 + (id)appLocationActivityStream;
++ (id)appMediaUsageStream;
 + (id)appRelevantShortcutsStream;
 + (id)appUsageStream;
 + (id)appViewedInDockStream;
@@ -26,6 +29,7 @@
 + (id)audioInputRouteStream;
 + (id)audioOutputRoutStream;
 + (id)audioOutputRouteStream;
++ (id)behavioralRuleFeaturesStream;
 + (id)bluetoothIsConnectedStream;
 + (id)calendarEventStream;
 + (id)callInProgressStream;
@@ -47,6 +51,7 @@
 + (id)displayIsBacklit;
 + (id)displayOrientationStream;
 + (id)doNotDisturbStream;
++ (id)familyPredictionStream;
 + (id)focusModeStream;
 + (id)homeKitAccessoryControlStream;
 + (id)homeKitAppViewStream;
@@ -62,10 +67,13 @@
 + (id)notificationUsageStream;
 + (id)nowPlayingStream;
 + (id)pairedDeviceForecastStream;
++ (id)peopleSuggesterOutputForSiriNLStream;
 + (id)remoteDeviceInBedTimesStream;
 + (id)safariHistoryStream;
 + (id)searchFeedbackStream;
 + (id)shareSheetFeedbackStream;
++ (id)shareSheetSuggestLessFeedbackStream;
++ (id)siriIntentEventStream;
 + (id)siriServiceStream;
 + (id)standbyTimerStream;
 + (id)timerStream;
@@ -74,6 +82,7 @@
 + (id)watchActiveStream;
 + (id)watchNearbyStream;
 + (id)widgetsViewedStream;
++ (id)wifiConnectionStream;
 
 @end
 

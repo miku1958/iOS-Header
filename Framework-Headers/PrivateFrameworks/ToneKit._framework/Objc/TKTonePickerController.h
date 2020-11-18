@@ -27,8 +27,6 @@
     BOOL _hasLoadedTonesOnce;
     NSMutableArray *_cachedPickerSectionItems;
     NSMutableArray *_cachedPickerRowItems;
-    NSMutableArray *_cachedClassicRingtonePickerItems;
-    NSMutableArray *_cachedClassicAlertTonePickerItems;
     NSArray *_installedTones;
     NSMutableArray *_toneGroupLists;
     NSMutableArray *_toneGroupNames;
@@ -107,10 +105,8 @@
 - (void)_applyBatchUpdatesWithDeletedPickerRowItems:(id)arg1 deletedTonePickerSectionItems:(id)arg2 insertedPickerRowItems:(id)arg3 insertedTonePickerSectionItems:(id)arg4 tonePickerSectionItemsWithUpdatedHeaderText:(id)arg5 tonePickerSectionItemsWithUpdatedFooterText:(id)arg6;
 - (void)_cachePickerRowItem:(id)arg1 atIndex:(long long)arg2 inSectionForItem:(id)arg3;
 - (void)_cachePickerSectionItem:(id)arg1 forSection:(long long)arg2;
-- (void)_cacheToneClassicsPickerItem:(id)arg1 forIndex:(long long)arg2 headerKind:(unsigned long long)arg3;
 - (id)_cachedPickerItemForSection:(long long)arg1;
 - (id)_cachedPickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
-- (id)_cachedToneClassicsPickerItemForIndex:(long long)arg1 headerKind:(unsigned long long)arg2;
 - (void)_didFinishPlayingAlert:(id)arg1;
 - (void)_didReloadTones;
 - (void)_didSelectMediaItemWithIdentifier:(id)arg1;
@@ -170,7 +166,7 @@
 - (BOOL)_showsMedia;
 - (void)_sortToneIdentifiersArray:(id)arg1;
 - (void)_togglePlayForToneWithIdentifier:(id)arg1;
-- (id)_toneClassicsPickerItemAtIndex:(long long)arg1 belowTonePickerItem:(id)arg2;
+- (id)_toneClassicsPickerItemAtIndex:(long long)arg1 withToneIdentifier:(id)arg2 belowTonePickerItem:(id)arg3;
 - (void)_toneManagerContentsChanged:(id)arg1;
 - (void)_uncachePickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (void)_unregisterForUserGeneratedVibrationsDidChangeNotification;

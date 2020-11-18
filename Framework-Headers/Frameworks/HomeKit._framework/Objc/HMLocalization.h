@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HMFUnfairLock, NSDictionary;
+@class HMFUnfairLock, NSArray, NSBundle;
 
 @interface HMLocalization : NSObject
 {
     HMFUnfairLock *_lock;
-    NSDictionary *_localizedStrings;
+    NSArray *_stringTable;
+    NSBundle *_bundle;
 }
 
-@property (readonly, nonatomic) NSDictionary *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
+@property (readonly, copy) NSArray *stringTable; // @synthesize stringTable=_stringTable;
 
 + (id)sharedManager;
 - (void).cxx_destruct;

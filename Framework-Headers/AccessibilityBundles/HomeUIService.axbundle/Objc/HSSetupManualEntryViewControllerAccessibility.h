@@ -13,9 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (void)pair:(id)arg1;
-- (void)viewDidLoad;
 
 @end
 

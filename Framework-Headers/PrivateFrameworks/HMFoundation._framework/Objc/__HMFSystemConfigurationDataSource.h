@@ -8,13 +8,13 @@
 
 #import <HMFoundation/HMFSystemInfoNameDataSource-Protocol.h>
 
-@class HMFUnfairLock, NSObject, NSString;
+@class NSObject, NSString;
 @protocol HMFSystemInfoNameDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface __HMFSystemConfigurationDataSource : HMFObject <HMFSystemInfoNameDataSource>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     id<HMFSystemInfoNameDataSourceDelegate> _delegate;
     NSString *_name;
     NSObject<OS_dispatch_queue> *_queue;

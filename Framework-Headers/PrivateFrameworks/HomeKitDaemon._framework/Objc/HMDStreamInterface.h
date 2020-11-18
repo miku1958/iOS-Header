@@ -9,10 +9,11 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDCameraNetworkConfig, HMDCameraStreamSessionID, NSObject, NSString;
-@protocol HMDCameraRemoteStreamProtocol, OS_dispatch_queue;
+@protocol HMDCameraRemoteStreamProtocol, HMFLocking, OS_dispatch_queue;
 
 @interface HMDStreamInterface : HMFObject <HMFLogging>
 {
+    id<HMFLocking> _lock;
     int _localRTPSocket;
     unsigned long long _streamInterfaceState;
     HMDCameraNetworkConfig *_localNetworkConfig;

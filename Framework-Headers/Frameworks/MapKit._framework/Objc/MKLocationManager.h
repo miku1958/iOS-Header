@@ -9,7 +9,7 @@
 #import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <MapKit/MKLocationProviderDelegate-Protocol.h>
 
-@class CLHeading, CLLocation, GEOLocation, GEOLocationShifter, NSBundle, NSError, NSHashTable, NSLock, NSMutableArray, NSString, NSTimer;
+@class CLHeading, CLLocation, GEOLocation, GEOLocationShifter, NSBundle, NSError, NSHashTable, NSLock, NSMutableArray, NSString, NSTimer, geo_isolater;
 @protocol MKLocationProvider, MNLocationRecorder;
 
 @interface MKLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MKLocationProviderDelegate>
@@ -50,12 +50,14 @@
     double _navCourse;
     CDUnknownBlockType _locationCorrector;
     double _minimumLocationUpdateInterval;
-    BOOL _allowOldLocations;
     BOOL _continuedAfterBecomingInactive;
     BOOL _suspended;
     NSMutableArray *_recentLocationUpdateIntervals;
     NSLock *_lastLocationLock;
     NSLock *_observersLock;
+    int _preciseLocationAuthorizationState;
+    BOOL _temporaryPreciseLocationAuthorizationPromptShown;
+    geo_isolater *_authorizedForPreciseLocationIsolater;
     BOOL _hasCustomDesiredAccuracy;
     BOOL _continuesWhileInactive;
     BOOL _logStartStopLocationUpdates;
@@ -63,7 +65,6 @@
 }
 
 @property (nonatomic) long long activityType;
-@property (nonatomic) BOOL allowOldLocations; // @synthesize allowOldLocations=_allowOldLocations;
 @property (copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property (nonatomic) BOOL continuesWhileInactive; // @synthesize continuesWhileInactive=_continuesWhileInactive;
 @property (readonly, nonatomic) GEOLocation *courseCorrectedLocation;
@@ -78,12 +79,14 @@
 @property (copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) double expectedGpsUpdateInterval;
+@property (nonatomic) BOOL fusionInfoEnabled;
 @property (readonly, nonatomic) GEOLocation *gridSnappedCurrentLocation;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CLHeading *heading; // @synthesize heading=_heading;
 @property (nonatomic) long long headingOrientation;
 @property (readonly, nonatomic) double headingUpdateTimeInterval;
+@property (readonly, nonatomic) BOOL isAuthorizedForPreciseLocation;
 @property (readonly, nonatomic) BOOL isHeadingServicesAvailable;
 @property (readonly, nonatomic) BOOL isLastLocationStale; // @synthesize isLastLocationStale=_isLastLocationStale;
 @property (readonly, nonatomic) BOOL isLocationServicesApproved;
@@ -92,6 +95,7 @@
 @property (readonly, nonatomic) BOOL isLocationServicesEnabled;
 @property (readonly, nonatomic) BOOL isLocationServicesPossiblyAvailable;
 @property (readonly, nonatomic) BOOL isLocationServicesRestricted;
+@property (readonly, nonatomic) BOOL isTemporaryPreciseLocationAuthorizationPromptShown;
 @property (readonly, nonatomic) CLLocation *lastGoodLocation; // @synthesize lastGoodLocation=_lastGoodLocation;
 @property (readonly, nonatomic) CLLocation *lastLocation;
 @property (readonly, nonatomic, getter=wasLastLocationPushed) BOOL lastLocationPushed; // @synthesize lastLocationPushed=_lastLocationPushed;
@@ -103,7 +107,6 @@
 @property (strong, nonatomic) id<MNLocationRecorder> locationRecorder; // @synthesize locationRecorder=_locationRecorder;
 @property (readonly, nonatomic, getter=isLocationServicesAuthorizationNeeded) BOOL locationServicesAuthorizationNeeded;
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
-@property (readonly, nonatomic) BOOL locationShiftEnabled;
 @property (nonatomic) BOOL logStartStopLocationUpdates; // @synthesize logStartStopLocationUpdates=_logStartStopLocationUpdates;
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (nonatomic) double minimumLocationUpdateInterval; // @synthesize minimumLocationUpdateInterval=_minimumLocationUpdateInterval;
@@ -134,7 +137,7 @@
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
 - (void)_suspend;
 - (void)_syncLocationProviderWithTracking;
-- (void)_useCoreLocationProvider;
+- (void)_useDefaultCoreLocationProvider;
 - (void)_waitForAccurateLocationsTimerFired:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;
@@ -142,6 +145,7 @@
 - (void)dealloc;
 - (void)dismissHeadingCalibrationDisplay;
 - (id)init;
+- (id)initWithCLLocationManager:(id)arg1;
 - (BOOL)isLocationServicesPossiblyAvailable:(id *)arg1;
 - (void)listenForLocationUpdates:(id)arg1;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
@@ -156,6 +160,7 @@
 - (BOOL)locationProviderShouldPauseLocationUpdates:(id)arg1;
 - (id)observersDescription;
 - (void)pushLocation:(id)arg1;
+- (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)reset;

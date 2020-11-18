@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBClientInheritanceManagerDelegate-Protocol.h>
 #import <RunningBoard/RBEntitlementPossessing-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSMutableSet, NSString, RBClientInheritanceManager, RBProcess, RBProcessMonitorObserver, RBSAssertionIdentifier, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity;
+@class NSMutableSet, NSString, RBClientInheritanceManager, RBConnectionListener, RBProcess, RBProcessMonitorObserver, RBSAssertionIdentifier, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity;
 @protocol OS_xpc_object, RBAssertionManaging, RBEntitlementManaging, RBEntitlementPossessing, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
 
 __attribute__((visibility("hidden")))
-@interface RBConnectionClient : NSObject <RBClientInheritanceManagerDelegate, RBEntitlementPossessing, BSDescriptionProviding, RBStateCapturing>
+@interface RBConnectionClient : NSObject <RBClientInheritanceManagerDelegate, RBEntitlementPossessing, RBStateCapturing>
 {
     NSObject<OS_xpc_object> *_connection;
     struct os_unfair_lock_s _lock;
@@ -24,8 +23,10 @@ __attribute__((visibility("hidden")))
     id<RBProcessManaging> _processManager;
     id<RBProcessMonitoring> _processMonitor;
     id<RBStateCaptureManaging> _stateCaptureManager;
+    RBConnectionListener *_listener;
     RBProcess *_containingProcess;
-    NSString *_logProem;
+    BOOL _ready;
+    NSString *_shortDescription;
     RBProcess *_process;
     RBSProcessHandle *_processHandle;
     RBSProcessIdentity *_processIdentity;
@@ -42,54 +43,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) RBProcess *process; // @synthesize process=_process;
-@property (readonly, copy, nonatomic) RBSProcessIdentifier *processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-@property (readonly, copy, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
 @property (readonly, copy, nonatomic) NSString *stateCaptureTitle;
 @property (readonly) Class superclass;
 
-+ (id)sharedLaunchWorkloop;
-+ (id)sharedTerminationWorkloop;
 - (void).cxx_destruct;
-- (void)acquireAssertionForDescriptor:(id)arg1 withReply:(id)arg2;
-- (id)assertionDescriptorsWithFlattenedAttributes:(BOOL)arg1 error:(out id *)arg2;
-- (id)busyExtensionInstancesFromSet:(id)arg1 error:(out id *)arg2;
 - (id)captureState;
-- (void)captureStateForSubsystem:(id)arg1 withReply:(id)arg2;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)didInvalidateAssertions:(id)arg1;
-- (void)didRemoveProcess:(id)arg1 withState:(id)arg2;
-- (void)didUpdateProcessStates:(id)arg1;
-- (void)executeLaunchRequest:(id)arg1 withReply:(id)arg2;
-- (void)executeTerminateRequest:(id)arg1 withReply:(id)arg2;
-- (void)handleMessage:(id)arg1;
-- (id)handshakeWithRequest:(id)arg1;
 - (BOOL)hasEntitlement:(id)arg1;
 - (BOOL)hasEntitlementDomain:(unsigned long long)arg1;
-- (id)hostProcessForInstance:(id)arg1 error:(out id *)arg2;
-- (id)identifiersForStateCaptureSubsystemsWithError:(out id *)arg1;
-- (id)infoPlistResultForInstance:(id)arg1 forKeys:(id)arg2 error:(out id *)arg3;
 - (void)inheritanceManager:(id)arg1 didChangeInheritances:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initWithContext:(id)arg1 process:(id)arg2 connection:(id)arg3;
-- (BOOL)intendToExit:(id)arg1 withStatus:(id)arg2 error:(out id *)arg3;
-- (void)invalidate;
-- (oneway void)invalidateAssertionWithIdentifier:(id)arg1;
-- (BOOL)invalidateAssertionWithIdentifier:(id)arg1 error:(out id *)arg2;
-- (id)lastExitContextForInstance:(id)arg1 error:(out id *)arg2;
-- (id)limitationsForInstance:(id)arg1 error:(out id *)arg2;
-- (id)lookupHandleForKey:(id)arg1 error:(out id *)arg2;
-- (id)lookupHandleForPredicate:(id)arg1 error:(out id *)arg2;
-- (void)requestPluginHoldForIdentity:(id)arg1 terminate:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)statesForPredicate:(id)arg1 withDescriptor:(id)arg2 withReply:(id)arg3;
-- (id)subscribeToProcessDeath:(id)arg1 error:(out id *)arg2;
-- (BOOL)subscribeToProcessStateChangesWithConfiguration:(id)arg1 error:(out id *)arg2;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
-- (void)unsubscribeFromProcessStateChangesWithIdentifier:(unsigned long long)arg1;
-- (void)willExpireAssertionsSoonForProcess:(id)arg1 expirationTime:(double)arg2;
-- (void)willInvalidateAssertion:(id)arg1;
 
 @end
 

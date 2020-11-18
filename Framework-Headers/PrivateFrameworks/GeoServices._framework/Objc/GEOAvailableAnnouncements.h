@@ -21,8 +21,7 @@
     struct {
         unsigned int read_announcements:1;
         unsigned int read_languageCode:1;
-        unsigned int wrote_announcements:1;
-        unsigned int wrote_languageCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -33,9 +32,6 @@
 + (Class)announcementType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAnnouncement:(id)arg1;
-- (void)_readAnnouncements;
-- (void)_readLanguageCode;
 - (void)addAnnouncement:(id)arg1;
 - (id)announcementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)announcementsCount;
@@ -47,7 +43,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

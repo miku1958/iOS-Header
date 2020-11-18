@@ -19,6 +19,7 @@
     FCKeyedOperationQueue *_prefetchQueue;
     NSMutableDictionary *_articleDataProviderCache;
     NSCountedSet *_interestedArticleIDs;
+    NSMutableDictionary *_headlinesForArticles;
     NSMutableDictionary *_interestModificationDates;
     unsigned long long _highWaterMark;
     NSTimer *_reprocessTimer;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *headlinesForArticles; // @synthesize headlinesForArticles=_headlinesForArticles;
 @property (nonatomic) unsigned long long highWaterMark; // @synthesize highWaterMark=_highWaterMark;
 @property (strong, nonatomic) NSMutableDictionary *interestModificationDates; // @synthesize interestModificationDates=_interestModificationDates;
 @property (strong, nonatomic) NSCountedSet *interestedArticleIDs; // @synthesize interestedArticleIDs=_interestedArticleIDs;
@@ -42,7 +44,7 @@
 - (void)_flushUnusedDataProvidersIfNeeded;
 - (void)_reprocessInterestedArticleIDs;
 - (void)_revisitSuspendedState;
-- (void)addPrefetchInterestInArticleID:(id)arg1;
+- (void)addPrefetchInterestInArticleID:(id)arg1 headline:(id)arg2;
 - (id)init;
 - (id)initWithArticleFactory:(id)arg1 articleDataProviderFactory:(id)arg2;
 - (id)keyedOperationQueue:(id)arg1 performAsyncOperationForKey:(id)arg2 completion:(CDUnknownBlockType)arg3;

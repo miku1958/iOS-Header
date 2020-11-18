@@ -11,7 +11,7 @@
 }
 
 + (long long)_deviceLocalCategory;
-+ (id)_insertOrReplaceSQL;
++ (const char *)_insertStatementKey;
 + (id)_keyForDataType:(id)arg1 error:(id *)arg2;
 + (id)databaseTable;
 + (id)keyForUserCharacteristicType:(id)arg1;

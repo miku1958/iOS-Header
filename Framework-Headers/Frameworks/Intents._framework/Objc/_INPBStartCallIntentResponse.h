@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBStartCallIntentResponse-Protocol.h>
 
-@class NSString;
+@class NSString, _INPBConnectedCall;
 
 @interface _INPBStartCallIntentResponse : PBCodable <_INPBStartCallIntentResponse, NSSecureCoding, NSCopying>
 {
@@ -19,21 +19,23 @@
         unsigned int shouldDoEmergencyCountdown:1;
     } _has;
     BOOL _shouldDoEmergencyCountdown;
-    BOOL __encodeLegacyGloryData;
     int _confirmationReason;
+    _INPBConnectedCall *_startedCall;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int confirmationReason; // @synthesize confirmationReason=_confirmationReason;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasConfirmationReason;
 @property (nonatomic) BOOL hasShouldDoEmergencyCountdown;
+@property (readonly, nonatomic) BOOL hasStartedCall;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL shouldDoEmergencyCountdown; // @synthesize shouldDoEmergencyCountdown=_shouldDoEmergencyCountdown;
+@property (strong, nonatomic) _INPBConnectedCall *startedCall; // @synthesize startedCall=_startedCall;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (int)StringAsConfirmationReason:(id)arg1;
 - (id)confirmationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

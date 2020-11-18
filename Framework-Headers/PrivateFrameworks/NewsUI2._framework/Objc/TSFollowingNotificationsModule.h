@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface TSFollowingNotificationsModule : NSObject
 {
     MISSING_TYPE *resolver;

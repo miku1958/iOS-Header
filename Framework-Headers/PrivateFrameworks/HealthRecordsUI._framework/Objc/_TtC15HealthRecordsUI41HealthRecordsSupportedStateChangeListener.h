@@ -13,6 +13,7 @@
 @interface _TtC15HealthRecordsUI41HealthRecordsSupportedStateChangeListener : NSObject <HKHealthRecordsStoreHealthRecordsSupportedStateChangeListener>
 {
     MISSING_TYPE *handler;
+    MISSING_TYPE *_latestChange;
 }
 
 - (void).cxx_destruct;

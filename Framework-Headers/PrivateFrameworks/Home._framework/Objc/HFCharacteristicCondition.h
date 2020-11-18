@@ -22,6 +22,8 @@
 + (id)_characteristicPredicateInCompoundPredicate:(id)arg1;
 + (id)_valuePredicateInCompoundPredicate:(id)arg1;
 - (void).cxx_destruct;
+- (id)_nameFormattingContext:(long long)arg1;
+- (id)hf_naturalLanguageSummaryWithOptions:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 operatorType:(unsigned long long)arg2 value:(id)arg3;
 - (id)initWithPredicate:(id)arg1;
 

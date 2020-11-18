@@ -10,10 +10,11 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HAPPairingIdentity, HMDAccessory, HMDAccessoryInvitation, HMDUser, HMDUserManagementOperationManager, HMFTimer, NSArray, NSDate, NSDictionary, NSMutableArray, NSObject, NSString, NSUUID;
-@protocol HMDUserManagementOperationDelegate, OS_dispatch_queue;
+@protocol HMDUserManagementOperationDelegate, HMFLocking, OS_dispatch_queue;
 
 @interface HMDUserManagementOperation : HMFObject <HMFTimerDelegate, NSSecureCoding>
 {
+    id<HMFLocking> _lock;
     NSMutableArray *_dependencies;
     BOOL _executing;
     BOOL _backingOff;
@@ -28,15 +29,18 @@
     NSDate *_expirationDate;
     HAPPairingIdentity *_ownerPairingIdentity;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFTimer *_expirationTimer;
     double _backoffInterval;
     HMFTimer *_backoffTimer;
+    NSArray *_auditUsersToBeAdded;
 }
 
 @property (strong, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) HMDAccessoryInvitation *accessoryInvitation;
 @property (readonly, nonatomic) NSDictionary *accessoryInvitationInformation;
+@property (readonly, nonatomic, getter=isAddOperation) BOOL addOperation;
+@property (readonly, nonatomic, getter=isAuditOperation) BOOL auditOperation;
+@property (strong, nonatomic) NSArray *auditUsersToBeAdded; // @synthesize auditUsersToBeAdded=_auditUsersToBeAdded;
 @property (nonatomic, getter=isBackingOff) BOOL backingOff; // @synthesize backingOff=_backingOff;
 @property (readonly, nonatomic) double backoffInterval; // @synthesize backoffInterval=_backoffInterval;
 @property (strong, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
@@ -57,13 +61,14 @@
 @property (strong, nonatomic) HMDUserManagementOperationManager *operationManager; // @synthesize operationManager=_operationManager;
 @property (readonly, nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
 @property (copy, nonatomic) HAPPairingIdentity *ownerPairingIdentity; // @synthesize ownerPairingIdentity=_ownerPairingIdentity;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic, getter=isReady) BOOL ready;
+@property (readonly, nonatomic, getter=isRemoveOperation) BOOL removeOperation;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMDUser *user; // @synthesize user=_user;
 
 + (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
++ (id)auditUserManagementOperationAccessory:(id)arg1 model:(id)arg2;
 + (void)initialize;
 + (id)operationWithDictionary:(id)arg1 home:(id)arg2;
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
@@ -72,7 +77,9 @@
 - (void).cxx_destruct;
 - (long long)_accessoryInvitationState;
 - (void)_addPairingToHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_auditPairingsForHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_endBackoffTimer;
+- (id)_findConflictingAccessory:(id)arg1;
 - (BOOL)_isFinished;
 - (void)_removePairingFromHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setupExpirationTimer;
@@ -89,9 +96,13 @@
 - (BOOL)isValid;
 - (BOOL)mergeWithOperation:(id)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 parentUUID:(id)arg2;
 - (double)nextBackoffInterval;
+- (void)populateModelObjectWithChangeType:(id)arg1 version:(long long)arg2;
 - (id)shortDescription;
 - (void)timerDidFire:(id)arg1;
+- (id)transactionWithObjectChangeType:(unsigned long long)arg1 parentUUID:(id)arg2;
+- (void)updateDelegate:(id)arg1;
 
 @end
 

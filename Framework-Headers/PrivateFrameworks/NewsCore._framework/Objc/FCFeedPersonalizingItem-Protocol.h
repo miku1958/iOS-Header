@@ -6,7 +6,7 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
 
@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) long long bodyTextLength;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) unsigned long long halfLife;
 @property (readonly, nonatomic) BOOL hasAudioTrack;
@@ -27,11 +28,13 @@
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property (readonly, copy, nonatomic) NSDate *publishDate;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property (readonly, copy, nonatomic) NSString *publisherID;
 @property (readonly, copy, nonatomic) NSString *sourceFeedID;
 @property (readonly, copy, nonatomic) NSArray *topicIDs;
 
 - (void)enumerateTopicCohortsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *))arg1;
+- (void)enumerateTopicConversionStatsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *))arg1;
 
 @optional
 @end

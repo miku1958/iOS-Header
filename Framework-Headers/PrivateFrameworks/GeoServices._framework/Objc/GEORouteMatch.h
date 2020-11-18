@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedRouteStep, GEOComposedTransitStationRouteStep, GEOComposedTransitTripRouteStep, GEONavigationMatchInfo, NSArray, NSDate;
+@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedRouteSegment, GEOComposedRouteStep, GEOComposedTransitStationRouteStep, GEOComposedTransitTripRouteStep, GEONavigationMatchInfo, NSArray, NSDate;
 
 @interface GEORouteMatch : NSObject
 {
@@ -22,7 +22,7 @@
     unsigned long long _consecutiveProgressionsOffRoute;
     double _distanceTraveledOffRoute;
     BOOL _isGoodMatch;
-    CDStruct_c8b5ad3f *_road;
+    CDStruct_4da79865 *_road;
     double _roadWidth;
     GEORouteMatch *_projectedFrom;
     NSDate *_timestamp;
@@ -39,19 +39,23 @@
 @property (nonatomic) BOOL isGoodMatch; // @synthesize isGoodMatch=_isGoodMatch;
 @property (readonly, nonatomic) BOOL isOnParkingLotRoad;
 @property (nonatomic) BOOL isTunnelProjection; // @synthesize isTunnelProjection=_isTunnelProjection;
+@property (readonly, nonatomic) GEOComposedRouteLeg *leg;
+@property (readonly, nonatomic) unsigned long long legIndex;
 @property (nonatomic) CDStruct_c3b9c2ee locationCoordinate; // @synthesize locationCoordinate=_locationCoordinate;
-@property (readonly, nonatomic) double matchedCourse; // @synthesize matchedCourse=_matchedCourse;
+@property (nonatomic) double matchedCourse; // @synthesize matchedCourse=_matchedCourse;
 @property (nonatomic) double modifiedCourseAccuracy; // @synthesize modifiedCourseAccuracy=_modifiedCourseAccuracy;
 @property (nonatomic) double modifiedHorizontalAccuracy; // @synthesize modifiedHorizontalAccuracy=_modifiedHorizontalAccuracy;
 @property (strong, nonatomic) GEORouteMatch *projectedFrom; // @synthesize projectedFrom=_projectedFrom;
-@property (nonatomic) CDStruct_c8b5ad3f *road; // @synthesize road=_road;
+@property (nonatomic) CDStruct_4da79865 *road; // @synthesize road=_road;
 @property (readonly, nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
-@property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
-@property (readonly, nonatomic) struct PolylineCoordinate routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
+@property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+@property (nonatomic) struct PolylineCoordinate routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
 @property (readonly, nonatomic) BOOL routeMatchedToEnd;
+@property (readonly, nonatomic) GEOComposedRouteSegment *segment;
+@property (readonly, nonatomic) unsigned long long segmentIndex;
 @property (readonly, nonatomic) GEOComposedRouteStep *step;
 @property (nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
-@property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) unsigned long long transitID; // @synthesize transitID=_transitID;
 @property (readonly, nonatomic) GEOComposedTransitStationRouteStep *transitStationStep;
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *transitTripStep;
@@ -67,7 +71,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringScore:(id)arg1;
 - (BOOL)routeMatchBehind:(id)arg1;
-- (void)setRouteCoordinate:(struct PolylineCoordinate)arg1;
 - (void)updateOffRouteProgress:(id)arg1 minDistanceToGetOnRoute:(double)arg2;
 
 @end

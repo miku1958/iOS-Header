@@ -29,6 +29,7 @@
 - (BOOL)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 showable:(id<SXFullscreenCanvasShowable>)arg2 gestureRecognizerShouldBegin:(UIGestureRecognizer *)arg3;
 - (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 showable:(id<SXFullscreenCanvasShowable>)arg2 willShowViewWithIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 willHideShowable:(id<SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
+- (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 willReturnToFullscreenForShowable:(id<SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 - (BOOL)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 willShowShowable:(id<SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 @end
 

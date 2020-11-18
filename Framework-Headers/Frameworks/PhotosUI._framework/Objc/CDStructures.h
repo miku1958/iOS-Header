@@ -94,6 +94,11 @@ struct PXFaceTileImageParams {
     BOOL cropBounded;
 };
 
+struct PXFloatRange {
+    double _field1;
+    double _field2;
+};
+
 struct PXGDecorationSpriteInfo {
     long long _field1;
     double _field2;
@@ -269,6 +274,7 @@ struct _PXGEngineScrollState {
     struct CGRect targetRect;
     struct CGRect constrainedVisibleRect;
     struct CGPoint lastScrollDirection;
+    long long scrollSpeedRegime;
 };
 
 struct _PXGSpriteIndexRange {
@@ -429,6 +435,11 @@ typedef struct {
 } CDStruct_aa0b146f;
 
 typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
+
+typedef struct {
     unsigned long long pixelFormat;
     unsigned short width;
     unsigned short height;
@@ -502,7 +513,9 @@ typedef struct {
     float _field6;
     float _field7;
     float _field8;
-} CDStruct_ee569e91;
+    unsigned int _field9;
+    unsigned short _field10;
+} CDStruct_8a1a641f;
 
 typedef struct {
     float topLeft;
@@ -557,7 +570,8 @@ typedef struct {
 typedef struct {
     long long _field1;
     float _field2;
-} CDStruct_fd7332cd;
+    float _field3;
+} CDStruct_4f961314;
 
 typedef struct {
     long long value;
@@ -571,6 +585,14 @@ typedef struct {
     long long _field2;
     BOOL _field3;
 } CDStruct_b8f58034;
+
+typedef struct {
+    long long contentFormat;
+    long long filterType;
+    float hdrGain;
+    long long fallbackFilterType;
+    float fallbackHdrGain;
+} CDStruct_0b45e515;
 
 typedef struct {
     long long _field1;
@@ -614,6 +636,12 @@ typedef struct {
 } CDStruct_92550dd7;
 
 typedef struct {
+    CDStruct_183601bc *_field1;
+    CDStruct_183601bc *_field2;
+    CDStruct_183601bc *_field3;
+} CDStruct_a6175b54;
+
+typedef struct {
     long long _field1;
     double _field2;
     double _field3;
@@ -622,7 +650,8 @@ typedef struct {
     void *_field6;
     void *_field7;
     void *_field8;
-} CDStruct_c4a51d40;
+    void *_field9;
+} CDStruct_14c8b8c5;
 
 typedef struct {
     CDStruct_14d5dc5e viewMatrix;
@@ -683,12 +712,14 @@ typedef struct {
     double normalizedColumnWidth;
     BOOL isAnimating;
     BOOL isInteractive;
+    BOOL isTracking;
+    BOOL hasBeenInitialized;
     long long fromColumnIndex;
     long long toColumnIndex;
     double interactiveProgress;
     double animatedProgress;
     double stickyHeaderOpacity;
-} CDStruct_3a6a7d8f;
+} CDStruct_8bc229d5;
 
 typedef struct {
     struct CGPoint normalizedInitialPosition;
@@ -731,8 +762,27 @@ typedef struct {
     unsigned long long zoomBehavior;
     BOOL isViewBoundsChanging;
     BOOL isInitialLoad;
+    BOOL isVisible;
     struct CGRect targetRect;
-} CDStruct_93894d6c;
+} CDStruct_a02a4563;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
+    struct CGRect _field5;
+    BOOL _field6;
+} CDStruct_89e59a70;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    struct CGRect _field4;
+    struct UIEdgeInsets _field5;
+    BOOL _field6;
+} CDStruct_46c45068;
 
 typedef struct {
     struct CGRect layoutRect;

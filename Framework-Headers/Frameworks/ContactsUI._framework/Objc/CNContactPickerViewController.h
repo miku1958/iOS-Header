@@ -10,7 +10,7 @@
 #import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ContactsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class CNContact, FAFamilyMember, NSArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController, _UIRemoteViewController;
+@class CNContact, CNContainer, FAFamilyMember, NSArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController, _UIRemoteViewController;
 @protocol CNContactPickerContentViewController, CNContactPickerDelegate;
 
 @interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate, _UIRemoteViewControllerContaining, UIAdaptivePresentationControllerDelegate>
@@ -34,6 +34,7 @@
     UIViewController<CNContactPickerContentViewController> *_viewController;
     CNContact *_scrollContact;
     FAFamilyMember *_familyMember;
+    CNContainer *_parentContainer;
     long long _mode;
     long long _behavior;
     long long _cardActions;
@@ -67,6 +68,7 @@
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) UINavigationController *navigationController;
 @property (nonatomic) BOOL onlyRealContacts; // @synthesize onlyRealContacts=_onlyRealContacts;
+@property (strong, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
 @property (copy, nonatomic) NSPredicate *predicateForEnablingContact; // @synthesize predicateForEnablingContact=_predicateForEnablingContact;
 @property (copy, nonatomic) NSPredicate *predicateForSelectionOfContact; // @synthesize predicateForSelectionOfContact=_predicateForSelectionOfContact;
 @property (copy, nonatomic) NSPredicate *predicateForSelectionOfProperty; // @synthesize predicateForSelectionOfProperty=_predicateForSelectionOfProperty;

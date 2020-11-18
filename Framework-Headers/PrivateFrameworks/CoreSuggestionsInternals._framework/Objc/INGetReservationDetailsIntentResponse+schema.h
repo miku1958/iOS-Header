@@ -19,6 +19,7 @@
 
 + (id)fromSchemas:(id)arg1;
 + (Class)reservationClassForSchema:(id)arg1;
+- (BOOL)reservationsContainUniqueItemReferences;
 - (id)toSchemas;
 @end
 

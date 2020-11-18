@@ -8,6 +8,7 @@
 
 @class TKKeyPathObserver, UIScrollView;
 
+__attribute__((visibility("hidden")))
 @interface MCLContentSizingView : UIView
 {
     TKKeyPathObserver *_observer;

@@ -21,7 +21,7 @@
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithString:(id)arg1 options:(unsigned long long)arg2 hitBlock:(CDUnknownBlockType)arg3;
 
 @end

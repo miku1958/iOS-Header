@@ -11,10 +11,10 @@
 @interface _SFNavigationIntent : NSObject
 {
     id _value;
-    BOOL _isUnifiedFieldNavigation;
     BOOL _shouldRelateToSourceTab;
     unsigned long long _type;
     long long _policy;
+    long long _provenance;
     NSUUID *_sourceTabUUID;
     NSUUID *_sourceWindowUUID;
     _WKActivatedElementInfo *_sourceElementInfo;
@@ -25,12 +25,13 @@
 @property (readonly, nonatomic) BOOL canUseExistingBlankTab;
 @property (readonly, nonatomic) WBSCloudTab *cloudTab;
 @property (readonly, copy, nonatomic) NSDictionary *externalOptions;
-@property (nonatomic) BOOL isUnifiedFieldNavigation; // @synthesize isUnifiedFieldNavigation=_isUnifiedFieldNavigation;
+@property (readonly, nonatomic) BOOL externalURLSourceApplicationIsSpotlight;
 @property (readonly, copy, nonatomic) NSArray *navigationIntents;
 @property (readonly, nonatomic) BOOL opensInNewTab;
 @property (readonly, nonatomic) BOOL opensInNewWindow;
 @property (nonatomic) long long policy; // @synthesize policy=_policy;
 @property (readonly, copy, nonatomic) NSString *privacyPreservingDescription;
+@property (nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property (readonly, nonatomic) _SFTabStateData *recentlyClosedTabStateData;
 @property (readonly, nonatomic) BOOL shouldOrderToForeground;
 @property (nonatomic) BOOL shouldRelateToSourceTab; // @synthesize shouldRelateToSourceTab=_shouldRelateToSourceTab;

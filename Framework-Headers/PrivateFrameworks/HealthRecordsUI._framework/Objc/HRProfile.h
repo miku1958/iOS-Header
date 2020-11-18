@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class HKConceptStore, HKDateCache, HKHealthRecordsStore, HKHealthStore, HKSampleTypeUpdateController, HKUCUMUnitDisplayConverter, HRWDUserActivityManager, WDClinicalSampleAccountsLoader, WDClinicalSourcesDataProvider, WDMedicalRecordCountProvider;
+@class HKConceptStore, HKDateCache, HKHealthRecordsStore, HKHealthStore, HKSampleTypeUpdateController, HKUCUMUnitDisplayConverter, HRHealthRecordsMigrator, HRWDUserActivityManager, WDClinicalOnboardingManager, WDClinicalSampleAccountsLoader, WDClinicalSourcesDataProvider;
 
 __attribute__((visibility("hidden")))
 @interface HRProfile : NSObject
 {
     HKConceptStore *_conceptStore;
+    HRHealthRecordsMigrator *_migrator;
     HKHealthStore *_healthStore;
     HKHealthRecordsStore *_healthRecordsStore;
     HKUCUMUnitDisplayConverter *_ucumDisplayConverter;
     WDClinicalSourcesDataProvider *_clinicalSourcesDataProvider;
-    WDMedicalRecordCountProvider *_medicalRecordCountProvider;
     HKSampleTypeUpdateController *_updateController;
     HKDateCache *_dateCache;
     WDClinicalSampleAccountsLoader *_clinicalSampleAccountsLoader;
+    WDClinicalOnboardingManager *_onboardingManager;
 }
 
 @property (weak, nonatomic) WDClinicalSampleAccountsLoader *clinicalSampleAccountsLoader; // @synthesize clinicalSampleAccountsLoader=_clinicalSampleAccountsLoader;
@@ -28,15 +29,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (readonly, nonatomic) HKHealthRecordsStore *healthRecordsStore; // @synthesize healthRecordsStore=_healthRecordsStore;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property (readonly, nonatomic) WDMedicalRecordCountProvider *medicalRecordCountProvider; // @synthesize medicalRecordCountProvider=_medicalRecordCountProvider;
+@property (readonly, nonatomic) WDClinicalOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property (readonly, nonatomic) HKUCUMUnitDisplayConverter *ucumDisplayConverter; // @synthesize ucumDisplayConverter=_ucumDisplayConverter;
 @property (readonly, nonatomic) HKSampleTypeUpdateController *updateController; // @synthesize updateController=_updateController;
 @property (readonly, nonatomic) HRWDUserActivityManager *userActivityManager;
 
-+ (id)sharedInstance;
++ (id)userProfileWithProfileIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithHealthRecordsStore:(id)arg1;
 - (id)_initWithHealthStore:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithHealthStore:(id)arg1 profileIdentifier:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

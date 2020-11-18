@@ -12,7 +12,7 @@
 #import <NotesShared/NSTextStorageDelegate-Protocol.h>
 #import <NotesShared/TTMergeableStringDelegate-Protocol.h>
 
-@class ICAccount, ICAttachment, ICFolder, ICMergableDictionary, ICNoteData, NSArray, NSData, NSDate, NSMutableArray, NSNumber, NSSet, NSString, NSUUID, TTMergeableStringVersionedDocument, TTVectorMultiTimestamp;
+@class ICAccount, ICAttachment, ICFolder, ICMergableDictionary, ICNoteData, NSData, NSDate, NSMutableArray, NSNumber, NSSet, NSString, NSUUID, TTMergeableStringVersionedDocument, TTVectorMultiTimestamp;
 @protocol ICNoteMergeabilityDelegate;
 
 @interface ICNote : ICCloudSyncingObject <ICSearchIndexableNote, ICCloudObject, TTMergeableStringDelegate, ICNoteUI, NSTextStorageDelegate>
@@ -25,6 +25,7 @@
     BOOL preventReleasingTextStorage;
     BOOL shouldAddMediaAsynchronously;
     BOOL isRecoveringCryptoWrappedKey;
+    BOOL _isPerformingMerge;
     TTVectorMultiTimestamp *archivedTimestamp;
     NSData *decryptedData;
     TTMergeableStringVersionedDocument *_document;
@@ -42,6 +43,7 @@
 @property (nonatomic) short attachmentViewType; // @dynamic attachmentViewType;
 @property (strong, nonatomic) NSSet *attachments; // @dynamic attachments;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property (readonly, nonatomic) long long currentStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -54,15 +56,21 @@
 @property (strong, nonatomic) ICFolder *folder; // @dynamic folder;
 @property (strong, nonatomic) NSDate *folderModificationDate; // @dynamic folderModificationDate;
 @property (readonly, nonatomic) BOOL hasUnreadChanges;
+@property (readonly, nonatomic) BOOL hasUnreadChanges;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
 @property (readonly, nonatomic) BOOL isModernNote;
+@property (nonatomic) BOOL isPerformingMerge; // @synthesize isPerformingMerge=_isPerformingMerge;
+@property (readonly, nonatomic) BOOL isPinned;
 @property (nonatomic) BOOL isPinned; // @dynamic isPinned;
 @property BOOL isRecoveringCryptoWrappedKey; // @synthesize isRecoveringCryptoWrappedKey;
+@property (readonly, nonatomic) BOOL isSharedAndEmpty;
 @property (strong, nonatomic) NSDate *lastNotifiedDate; // @dynamic lastNotifiedDate;
 @property (copy, nonatomic) TTVectorMultiTimestamp *lastNotifiedTimestamp; // @synthesize lastNotifiedTimestamp=_lastNotifiedTimestamp;
 @property (strong, nonatomic) NSData *lastNotifiedTimestampData; // @dynamic lastNotifiedTimestampData;
+@property (strong, nonatomic) NSDate *lastOpenedDate; // @dynamic lastOpenedDate;
 @property (strong, nonatomic) NSDate *lastViewedModificationDate; // @dynamic lastViewedModificationDate;
 @property (copy, nonatomic) TTVectorMultiTimestamp *lastViewedTimestamp; // @synthesize lastViewedTimestamp=_lastViewedTimestamp;
 @property (strong, nonatomic) NSData *lastViewedTimestampData; // @dynamic lastViewedTimestampData;
@@ -75,7 +83,7 @@
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property (nonatomic) BOOL needsRefresh; // @synthesize needsRefresh;
 @property (nonatomic) BOOL needsToSaveLastViewedTimestamp; // @synthesize needsToSaveLastViewedTimestamp;
-@property (readonly, nonatomic) NSArray *noteCellKeyPaths;
+@property (readonly, nonatomic) NSSet *noteCellKeyPaths;
 @property (strong, nonatomic) ICNoteData *noteData; // @dynamic noteData;
 @property (strong, nonatomic) NSNumber *noteHasChanges; // @dynamic noteHasChanges;
 @property (nonatomic) short paperStyleType; // @dynamic paperStyleType;
@@ -100,18 +108,22 @@
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 @property (strong, nonatomic) ICAttachment *titleSourceAttachment; // @dynamic titleSourceAttachment;
 
++ (id)accountIdentifiersOfNotes:(id)arg1;
 + (id)allNotesInContext:(id)arg1;
 + (id)allPasswordProtectedNoteIdentifiersInContext:(id)arg1;
 + (BOOL)containsUndeletableNotes:(id)arg1;
++ (BOOL)containsUnduplicatableNotes:(id)arg1;
 + (BOOL)containsUnmovableNotes:(id)arg1;
 + (unsigned long long)countOfAllNotesInContext:(id)arg1;
 + (unsigned long long)countOfNotesMatchingPredicate:(id)arg1 context:(id)arg2;
++ (unsigned long long)countOfPasswordProtectedNotesInContext:(id)arg1;
 + (unsigned long long)countOfVisibleNotesInContext:(id)arg1;
 + (id)createNoteFromNote:(id)arg1 inFolder:(id)arg2 isPasswordProtected:(BOOL)arg3 removingOriginalNote:(BOOL)arg4;
 + (id)createNoteFromNote:(id)arg1 isPasswordProtected:(BOOL)arg2 removingOriginalNote:(BOOL)arg3;
 + (id)defaultTitleForEmptyNote;
 + (void)deleteEmptyNote:(id)arg1;
 + (void)deleteNote:(id)arg1;
++ (BOOL)didShowExceededStorageQuotaAlertForNoteWithIdentifier:(id)arg1;
 + (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
 + (id)keyPathsForValuesAffectingCloudAccount;
@@ -145,13 +157,14 @@
 + (id)passwordProtectedNoteIdentifiersForAccount:(id)arg1;
 + (id)predicateForNote:(id)arg1;
 + (id)predicateForPinnedNotes;
-+ (id)predicateForSearchableNotes;
-+ (id)predicateForVisibleNotes;
-+ (id)predicateForVisibleNotesIncludingTrash:(BOOL)arg1;
++ (id)predicateForSearchableNotesInContext:(id)arg1;
++ (id)predicateForVisibleNotesInContext:(id)arg1;
++ (id)predicateForVisibleNotesIncludingTrash:(BOOL)arg1 inContext:(id)arg2;
 + (void)purgeAllNotesInContext:(id)arg1;
 + (void)purgeNote:(id)arg1;
 + (void)redactNote:(id)arg1;
 + (id)refreshAllOfNoteWithIdentifier:(id)arg1 context:(id)arg2;
++ (void)setDidShowExceededStorageQuotaAlert:(BOOL)arg1 forNoteWithIdentifier:(id)arg2;
 + (id)snippetForPasswordProtectedNote:(id)arg1;
 + (BOOL)supportsUserSpecificRecords;
 + (id)visibleNoteWithIdentifier:(id)arg1 context:(id)arg2;
@@ -169,7 +182,7 @@
 - (id)addAttachmentWithUTI:(id)arg1 data:(id)arg2 filename:(id)arg3;
 - (id)addAttachmentWithUTI:(id)arg1 data:(id)arg2 filename:(id)arg3 updateFileBasedAttributes:(BOOL)arg4 analytics:(BOOL)arg5;
 - (id)addAttachmentWithUTI:(id)arg1 data:(id)arg2 filenameExtension:(id)arg3;
-- (id)addAttachmentWithUTI:(id)arg1 identifier:(id)arg2 analytics:(BOOL)arg3;
+- (id)addAttachmentWithUTI:(id)arg1 identifier:(id)arg2 urlString:(id)arg3 analytics:(BOOL)arg4;
 - (id)addAttachmentWithUTI:(id)arg1 withURL:(id)arg2;
 - (id)addAttachmentWithUTI:(id)arg1 withURL:(id)arg2 updateFileBasedAttributes:(BOOL)arg3 analytics:(BOOL)arg4;
 - (id)addGalleryAttachmentWithIdentifier:(id)arg1;
@@ -183,12 +196,14 @@
 - (id)addURLAttachmentWithURL:(id)arg1;
 - (void)addUndoCommand:(id)arg1;
 - (id)allAttachmentsIncludingSubAttachments;
+- (id)allDrawings;
 - (id)allNoteTextAttachmentsIncludingSubAttachments:(BOOL)arg1;
 - (BOOL)allowsNewTextLength:(unsigned long long)arg1;
 - (BOOL)attachmentExceedsMaxSizeAllowed:(unsigned long long)arg1;
 - (id)attachmentForWebThumbnail;
 - (id)attachmentWithIdentifier:(id)arg1;
 - (id)attachmentsInOrder;
+- (id)attachmentsWithUTType:(id)arg1;
 - (id)attributedString;
 - (id)authorsExcludingCurrentUser;
 - (void)awakeFromFetch;
@@ -204,7 +219,7 @@
 - (BOOL)containsAttachmentsUnsupportedInPasswordProtection;
 - (id)contentIdentifier;
 - (id)contentInfoText;
-- (id)dateForCurrentSortType;
+- (id)dataSourceIdentifier;
 - (void)dealloc;
 - (void)decrypt;
 - (void)deduplicateSelfAndCreateNewObjectFromRecord:(id)arg1;
@@ -226,13 +241,14 @@
 - (id)ic_loggingValues;
 - (long long)intrinsicNotesVersion;
 - (BOOL)isDeletable;
-- (BOOL)isDeletedOrInTrash;
+- (BOOL)isDuplicatable;
 - (BOOL)isEditable;
 - (BOOL)isEmpty;
 - (BOOL)isHiddenFromSearch;
 - (BOOL)isInICloudAccount;
 - (BOOL)isLockable;
 - (BOOL)isMovable;
+- (BOOL)isPasswordProtectedAndLocked;
 - (BOOL)isPinnable;
 - (BOOL)isSharable;
 - (BOOL)isSharedViaICloudFolder;
@@ -249,7 +265,7 @@
 - (void)mergeReplicaAndUserIDsFromDictionary:(id)arg1;
 - (void)mergeTextData:(id)arg1 record:(id)arg2 mergePolicy:(long long)arg3;
 - (void)mergeTextDataFromRecord:(id)arg1 mergePolicy:(long long)arg2;
-- (void)mergeUnappliedEncryptedRecordsIncludingAttachments;
+- (void)mergeUnappliedEncryptedRecordsIncludingAttachmentsImmediately;
 - (void)mergeUnappliedEncryptedRecordsIncludingAttachmentsInBackground;
 - (unsigned long long)mergeWithNoteData:(id)arg1;
 - (unsigned long long)mergeWithNoteDocument:(id)arg1;
@@ -314,6 +330,7 @@
 - (id)uuid;
 - (long long)visibilityTestingType;
 - (id)visibleAttachments;
+- (id)visibleAttachmentsWithType:(short)arg1;
 - (id)visibleTopLevelAttachments;
 - (BOOL)wantsUndoCommands;
 - (void)willAddOrRemovePassword;

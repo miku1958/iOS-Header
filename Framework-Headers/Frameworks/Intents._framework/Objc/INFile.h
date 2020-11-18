@@ -8,10 +8,11 @@
 
 #import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, NSURL;
 
-@interface INFile : NSObject <INEnumerable, INJSONSerializable>
+@interface INFile : NSObject <INEnumerable, INJSONSerializable, NSSecureCoding>
 {
     NSData *_memoryMappedFileData;
     BOOL _deletesFileOnDeallocationIfNeeded;
@@ -44,13 +45,13 @@
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_associatedAuditTokenIsEqualToAuditToken:(CDStruct_6ad76789)arg1;
+- (BOOL)_associatedAuditTokenIsEqualToAuditToken:(CDStruct_4c969caf)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithData:(id)arg1 filename:(id)arg2 fileURL:(id)arg3 typeIdentifier:(id)arg4;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
-- (void)_setAssociatedAuditToken:(CDStruct_6ad76789)arg1;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (void)_setAssociatedAuditToken:(CDStruct_4c969caf)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

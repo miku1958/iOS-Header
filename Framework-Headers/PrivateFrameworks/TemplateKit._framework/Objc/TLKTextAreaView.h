@@ -4,52 +4,82 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TemplateKit/TLKStackView.h>
+#import <TemplateKit/TLKView.h>
 
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSMutableArray, NSString, NUIContainerStackView, TLKRichTextField, TLKTextButton, TLKTitleContainerView;
+@class NSArray, NSMutableArray, NSString, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKLabel, TLKRichText, TLKRichTextField, TLKStackView, TLKTextButton, TLKTitleContainerView;
 @protocol TLKTextAreaViewDelegate;
 
-@interface TLKTextAreaView : TLKStackView <TLKTextAreaViewTesting>
+@interface TLKTextAreaView : TLKView <TLKTextAreaViewTesting>
 {
+    BOOL _truncateTitleMiddle;
+    BOOL _secondaryTitleIsDetached;
+    BOOL _useCompactMode;
     BOOL _disableAllObservers;
     id<TLKTextAreaViewDelegate> _buttonDelegate;
+    TLKRichText *_bannerText;
+    TLKRichText *_title;
+    TLKRichText *_secondaryTitle;
+    TLKImage *_secondaryTitleImage;
+    NSArray *_detailTexts;
+    TLKRichText *_footnote;
+    NSString *_footnoteButtonText;
+    TLKEmbossedLabel *_bannerBadgeView;
     TLKTitleContainerView *_titleContainer;
+    NUIContainerStackView *_detailFieldStackView;
     NSMutableArray *_detailsFields;
+    NSMutableArray *_bulletFields;
+    TLKLabel *_hyphenField;
     TLKRichTextField *_footnoteLabel;
     TLKTextButton *_footnoteButton;
     NUIContainerStackView *_footnoteContainer;
 }
 
+@property (strong, nonatomic) TLKEmbossedLabel *bannerBadgeView; // @synthesize bannerBadgeView=_bannerBadgeView;
+@property (strong, nonatomic) TLKRichText *bannerText; // @synthesize bannerText=_bannerText;
+@property (strong, nonatomic) NSMutableArray *bulletFields; // @synthesize bulletFields=_bulletFields;
 @property (weak) id<TLKTextAreaViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
+@property (strong, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NUIContainerStackView *detailFieldStackView; // @synthesize detailFieldStackView=_detailFieldStackView;
+@property (strong, nonatomic) NSArray *detailTexts; // @synthesize detailTexts=_detailTexts;
 @property (strong, nonatomic) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
 @property (nonatomic) BOOL disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
+@property (strong, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
 @property (strong, nonatomic) TLKTextButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
+@property (strong, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property (strong, nonatomic) NUIContainerStackView *footnoteContainer; // @synthesize footnoteContainer=_footnoteContainer;
 @property (strong, nonatomic) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) TLKLabel *hyphenField; // @synthesize hyphenField=_hyphenField;
+@property (strong, nonatomic) TLKRichText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property (strong, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
+@property (nonatomic) BOOL secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) TLKRichText *title; // @synthesize title=_title;
 @property (strong, nonatomic) TLKTitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
+@property (nonatomic) BOOL truncateTitleMiddle; // @synthesize truncateTitleMiddle=_truncateTitleMiddle;
+@property (nonatomic) BOOL useCompactMode; // @synthesize useCompactMode=_useCompactMode;
 
 + (id)footNoteLabelFont;
 - (void).cxx_destruct;
+- (id)detailsStrings;
 - (id)detailsViews;
 - (id)footnoteLabelString;
-- (id)init;
 - (void)internalTextFieldsInBatchUpdate:(BOOL)arg1;
 - (BOOL)noFootNote;
 - (BOOL)noRichTextFields;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (void)propertiesDidChange;
 - (id)secondaryTitleLabelString;
-- (id)textAreaLabelStrings;
+- (id)setupContentView;
 - (id)titleLabelString;
 - (id)titleView;
-- (void)updateDetails:(id)arg1;
-- (void)updateFootnote:(id)arg1 buttonText:(id)arg2;
-- (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(BOOL)arg4;
+- (void)updateBannerBadge;
+- (void)updateDetails;
+- (void)updateFootnote;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

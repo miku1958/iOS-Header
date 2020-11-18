@@ -17,7 +17,7 @@
 - (id)codecInContext:(id)arg1;
 - (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;
 - (id)description;
-- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 progress:(id *)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 progress:(id *)arg5 reason:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)initWithRecipeID:(unsigned int)arg1;
 - (id)supportedVersionsForLocalResourceGeneration;
 - (id)utiInContext:(id)arg1;

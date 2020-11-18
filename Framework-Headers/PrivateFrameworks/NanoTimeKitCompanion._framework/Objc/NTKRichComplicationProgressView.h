@@ -14,6 +14,7 @@
 
 @interface NTKRichComplicationProgressView : UIView <CLKMonochromeFilterProvider, CLKMonochromeComplicationView>
 {
+    long long _family;
     CLKDevice *_device;
     NSNumber *_updateToken;
     float _currentBackgroundViewAlphaPercentage;
@@ -52,7 +53,7 @@
 - (void)dealloc;
 - (id)filterForView:(id)arg1 style:(long long)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
-- (id)initForDevice:(id)arg1 backgroundShapeView:(id)arg2 foregroundShapeView:(id)arg3;
+- (id)initForFamily:(long long)arg1 device:(id)arg2 backgroundShapeView:(id)arg3 foregroundShapeView:(id)arg4;
 - (void)layoutSubviews;
 - (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1;
 - (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1 locations:(id)arg2;

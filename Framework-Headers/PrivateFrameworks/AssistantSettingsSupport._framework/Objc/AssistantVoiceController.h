@@ -6,10 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-@class AFVoiceInfo, AssistantVoiceViewModel, NSArray, NSDate, PSSpecifier, SUICAssistantVoiceSettingsConnection, VSVoiceAsset;
+@class AFVoiceInfo, AssistantSettingsSignalEmitter, AssistantVoiceViewModel, NSArray, NSDate, PSSpecifier, SUICAssistantVoiceSettingsConnection, VSVoiceAsset;
 
 @interface AssistantVoiceController : PSListController
 {
+    AssistantSettingsSignalEmitter *_signalEmitter;
     BOOL _ignoreNextVoiceChangeNotification;
     SUICAssistantVoiceSettingsConnection *_settingsConnection;
     PSSpecifier *_languageGroupSpecifier;
@@ -18,6 +19,7 @@
     PSSpecifier *_genderGroupSpecifier;
     PSSpecifier *_maleSpecifier;
     PSSpecifier *_femaleSpecifier;
+    NSArray *_cellularUpdatesSpecifiers;
     VSVoiceAsset *_downloadingAsset;
     NSArray *_genderGroupSpecifierTemplate;
     NSDate *_startDate;
@@ -26,6 +28,7 @@
     AssistantVoiceViewModel *_currentViewModel;
 }
 
+@property (strong, nonatomic) NSArray *cellularUpdatesSpecifiers; // @synthesize cellularUpdatesSpecifiers=_cellularUpdatesSpecifiers;
 @property (strong, nonatomic) AssistantVoiceViewModel *currentViewModel; // @synthesize currentViewModel=_currentViewModel;
 @property (strong, nonatomic) AFVoiceInfo *currentVoice; // @synthesize currentVoice=_currentVoice;
 @property (strong, nonatomic) VSVoiceAsset *downloadingAsset; // @synthesize downloadingAsset=_downloadingAsset;
@@ -42,24 +45,24 @@
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (id)bundle;
-+ (BOOL)gryphonAssetsExistForLanguage:(id)arg1;
-+ (BOOL)selectedLanguageHasGryphonAssets;
 - (void).cxx_destruct;
 - (id)_languageSpecifiersForLanguage:(id)arg1;
+- (void)_signalDidSelectVoice;
 - (void)applyViewModel:(id)arg1;
 - (id)deriveVoicesWithTargetVoice:(id)arg1 currentVoice:(id)arg2;
 - (id)dialectsForLanguageIdentifiers:(id)arg1;
 - (void)downloadVoice:(id)arg1 gender:(long long)arg2;
-- (BOOL)hasNonWWANNetworkConnection;
 - (id)inProgressOutputVoice;
-- (id)installedVocalizerVoicesForLanguage:(id)arg1;
-- (id)installedVoicesForLanguage:(id)arg1 gender:(long long)arg2;
-- (BOOL)isVocalizerVoiceInstalled:(id)arg1;
+- (id)init;
 - (BOOL)isVoiceInstalled:(id)arg1 gender:(long long)arg2;
 - (void)languageCodeDidChange:(id)arg1;
 - (id)outputVoice;
 - (void)outputVoiceDidChange:(id)arg1;
+- (void)playVoicePreview:(id)arg1;
+- (void)presentVoiceDownloadDisabledNoInternetAlert;
 - (void)presentVoiceDownloadDisabledNoWifiAlert;
+- (void)resetMetrics;
+- (void)selectVoice:(id)arg1 inProgressVoice:(id)arg2;
 - (void)setAssistantInProgressVoice:(id)arg1;
 - (void)setAssistantOutputVoice:(id)arg1;
 - (void)setInProgressVoicePreference:(id)arg1;

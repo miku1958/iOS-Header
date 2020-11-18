@@ -7,35 +7,33 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitBackingStore/HMBModelObjectCoder-Protocol.h>
-#import <HomeKitBackingStore/HMBModelObjectStorage-Protocol.h>
+#import <HomeKitBackingStore/HMBQueryableModelFieldCoder-Protocol.h>
 #import <HomeKitBackingStore/NSSecureCoding-Protocol.h>
 
 @class HMBLocalZone, NSString, NSUUID;
 
-@interface HMBModelReference : HMFObject <HMBModelObjectStorage, HMBModelObjectCoder, NSSecureCoding>
+@interface HMBModelReference : HMFObject <HMBModelObjectCoder, NSSecureCoding, HMBQueryableModelFieldCoder>
 {
     NSUUID *_hmbModelID;
     HMBLocalZone *_localZone;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSUUID *hmbModelID; // @synthesize hmbModelID=_hmbModelID;
+@property (readonly, nonatomic) NSUUID *hmbModelID; // @synthesize hmbModelID=_hmbModelID;
 @property (weak, nonatomic) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
-+ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
++ (id)hmbDecodeQueryableParameter:(id)arg1;
++ (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
++ (id)hmbEncodeQueryableParameter:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)associateWithContainer:(id)arg1;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
-- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 - (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelID:(id)arg1;

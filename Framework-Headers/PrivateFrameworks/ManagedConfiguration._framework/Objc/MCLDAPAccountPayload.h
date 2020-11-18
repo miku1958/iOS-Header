@@ -6,9 +6,11 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
+#import <ManagedConfiguration/MCPerAccountVPNPayloadProtocol-Protocol.h>
+
 @class NSArray, NSDictionary, NSNumber, NSString;
 
-@interface MCLDAPAccountPayload : MCPayload
+@interface MCLDAPAccountPayload : MCPayload <MCPerAccountVPNPayloadProtocol>
 {
     NSString *_accountDescription;
     NSString *_hostname;
@@ -17,14 +19,21 @@
     BOOL _useSSL;
     NSArray *_searchSettings;
     NSString *_accountPersistentUUID;
+    NSString *_VPNUUID;
+    NSString *_acAccountIdentifier;
     NSDictionary *_communicationServiceRules;
     NSNumber *_useSSLNum;
 }
 
+@property (readonly, strong, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
+@property (strong, nonatomic) NSString *acAccountIdentifier; // @synthesize acAccountIdentifier=_acAccountIdentifier;
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
+@property (readonly, strong, nonatomic) NSArray *calendarAccountIdentifiers;
 @property (readonly, nonatomic) NSDictionary *communicationServiceRules; // @synthesize communicationServiceRules=_communicationServiceRules;
+@property (readonly, strong, nonatomic) NSArray *contactsAccountIdentifiers;
 @property (readonly, strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
+@property (readonly, strong, nonatomic) NSArray *mailAccountIdentifiers;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, strong, nonatomic) NSArray *searchSettings; // @synthesize searchSettings=_searchSettings;
 @property (readonly, nonatomic) BOOL useSSL; // @synthesize useSSL=_useSSL;
@@ -36,7 +45,6 @@
 + (id)typeStrings;
 - (void).cxx_destruct;
 - (BOOL)containsSensitiveUserInformation;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)restrictions;
@@ -45,7 +53,7 @@
 - (id)subtitle1Label;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
-- (id)title;
+- (id)verboseDescription;
 
 @end
 

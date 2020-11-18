@@ -49,6 +49,7 @@
 
 - (void).cxx_destruct;
 - (id)_initWithWorkspace:(id)arg1 displayConfiguration:(id)arg2;
+- (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (id)compactDescriptionBuilder;
 - (void)declineWithReason:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

@@ -27,7 +27,6 @@
 @property (copy, nonatomic) CDUnknownBlockType sourceServiceGenerator; // @synthesize sourceServiceGenerator=_sourceServiceGenerator;
 @property (strong, nonatomic) id<HFCharacteristicValueSource> valueSource;
 
-+ (id)standardServices;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1;

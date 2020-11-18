@@ -8,29 +8,33 @@
 
 @interface CRNMS : NSObject
 {
-    unsigned long long secondRoundNMSOnLines;
-    struct deque<nms::RectForest<unsigned short, float>, std::__1::allocator<nms::RectForest<unsigned short, float>>> _wordForests;
-    struct PyramidTokenizer<unsigned short, float> _wordTokenizer;
-    struct PyramidNMS<unsigned short, float, unsigned char> _wordNMS;
-    struct deque<nms::RectForest<unsigned short, float>, std::__1::allocator<nms::RectForest<unsigned short, float>>> _postWordNMSForests;
-    struct PyramidNMS<unsigned short, float, unsigned char> _lineNMS;
-    struct deque<nms::RectForest<unsigned short, float>, std::__1::allocator<nms::RectForest<unsigned short, float>>> _postLineNMSForests;
-    struct PyramidTokenizer<unsigned short, float> _lineTokenizer;
+    struct deque<nms::RectForest<unsigned short, double>, std::__1::allocator<nms::RectForest<unsigned short, double>>> _preNMSForests;
+    struct PyramidNMS<unsigned short, double, unsigned char> _pyrNMS;
+    struct deque<nms::RectForest<unsigned short, double>, std::__1::allocator<nms::RectForest<unsigned short, double>>> _postNMSForests;
+    struct PyramidTokenizer<unsigned short, double> _pyrTokenizer;
+    unsigned long long _forestFeatureType;
+    unsigned long long _outputTextFeatureLevel;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)addDocument:(struct Document *)arg1 withIncludedCandidates:(const vector_a7cf9eda *)arg2 options:(id)arg3;
+- (BOOL)addTextDetectorQuadFeatures:(const vector_ef8269a8 *)arg1 withInputSize:(struct CGSize)arg2 andScoreMap:(struct vImage_Buffer *)arg3 options:(id)arg4;
+- (BOOL)addTextDetectorQuadFeatures:(const vector_ef8269a8 *)arg1 withInputSize:(struct CGSize)arg2 scoreMap:(struct vImage_Buffer *)arg3 andScoreMapScaleFactor:(double)arg4 options:(id)arg5;
+- (BOOL)addTextDetectorQuadFeatures:(const vector_ef8269a8 *)arg1 withInputSize:(struct CGSize)arg2 scoreMap:(struct vImage_Buffer *)arg3 scoreMapScaleFactor:(double)arg4 andTileRects:(id)arg5 options:(id)arg6;
 - (BOOL)addTextFeatures:(id)arg1 options:(id)arg2;
-- (BOOL)buildRectForest:(RectForest_e546815d *)arg1 fromDocument:(struct Document *)arg2 withIncludedCandidates:(const vector_a7cf9eda *)arg3 options:(id)arg4;
-- (BOOL)buildRectForest:(RectForest_e546815d *)arg1 fromTextFeatures:(id)arg2 options:(id)arg3;
-- (id)buildTextFeaturesFromRectForest:(const RectForest_e546815d *)arg1 byEdge:(unsigned long long)arg2 options:(id)arg3;
-- (unsigned long long)convertSubTextFeatures:(id)arg1 toRects:(valarray_6968ec29 *)arg2;
-- (void)fillRectForestDatum:(slice_array_409c861c *)arg1 withCGRect:(const struct CGRect *)arg2;
-- (BOOL)fillRectForestDatum:(slice_array_409c861c *)arg1 withRect:(const Rect__0538c5d4 *)arg2 normalizedByPlaneWidth:(unsigned long long)arg3 andPlaneHeight:(unsigned long long)arg4;
-- (void)fillTextFeature:(id)arg1 withRectDatum:(const valarray_6968ec29 *)arg2;
+- (BOOL)buildRectForest:(RectForest_bfab4076 *)arg1 fromTextDetectorQuadFeatures:(const vector_ef8269a8 *)arg2 forestFeatureType:(unsigned long long)arg3 withInputSize:(struct CGSize)arg4 scoreMap:(struct vImage_Buffer *)arg5 andScoreMapScaleFactor:(double)arg6 options:(id)arg7;
+- (BOOL)buildRectForest:(RectForest_bfab4076 *)arg1 fromTextDetectorQuadFeatures:(const vector_ef8269a8 *)arg2 forestFeatureType:(unsigned long long)arg3 withInputSize:(struct CGSize)arg4 scoreMap:(struct vImage_Buffer *)arg5 scoreMapScaleFactor:(double)arg6 andTileRects:(id)arg7 options:(id)arg8;
+- (BOOL)buildRectForest:(RectForest_bfab4076 *)arg1 fromTextFeatures:(id)arg2 forestFeatureType:(unsigned long long)arg3 options:(id)arg4;
+- (id)buildTextFeaturesFromRectForest:(const RectForest_bfab4076 *)arg1 byEdge:(unsigned long long)arg2 options:(id)arg3;
+- (unsigned long long)convertSubTextFeatures:(id)arg1 toRects:(valarray_714eba2c *)arg2;
+- (void)fillRectForestDatum:(slice_array_cd375196 *)arg1 asDimType:(unsigned long long)arg2 withCGRect:(const struct CGRect *)arg3;
+- (void)fillRectForestDatum:(slice_array_cd375196 *)arg1 asDimType:(unsigned long long)arg2 withCRTextDetectorQuad:(const struct CRTextDetectorQuad *)arg3 andInputSize:(struct CGSize)arg4;
+- (void)fillRectForestDatum:(slice_array_cd375196 *)arg1 asDimType:(unsigned long long)arg2 withQuad:(const valarray_714eba2c *)arg3 andDimType:(unsigned long long)arg4;
+- (void)fillTextFeature:(id)arg1 withRectDatum:(const valarray_714eba2c *)arg2;
 - (id)generateConsolidatedTextFeatures:(id)arg1;
-- (id)initWithOptions:(id)arg1;
+- (id)getTextFeatureFromQuadAngleDatum:(const valarray_714eba2c *)arg1;
+- (id)initWithNMSMethodType:(unsigned long long)arg1 NMSScoreType:(unsigned long long)arg2 TKZMethodType:(unsigned long long)arg3;
+- (BOOL)preprocessScoreMaps;
 - (unsigned long long)tokenizeTextFeature:(id)arg1 intoCutpoints:(deque_534810ca *)arg2 options:(id)arg3;
 
 @end

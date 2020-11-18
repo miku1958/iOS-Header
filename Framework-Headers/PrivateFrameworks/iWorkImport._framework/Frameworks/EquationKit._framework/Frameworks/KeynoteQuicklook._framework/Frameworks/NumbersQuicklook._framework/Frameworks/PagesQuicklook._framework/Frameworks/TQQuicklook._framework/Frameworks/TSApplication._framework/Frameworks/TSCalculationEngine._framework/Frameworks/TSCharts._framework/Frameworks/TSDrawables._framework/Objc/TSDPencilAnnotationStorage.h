@@ -76,6 +76,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long textBaselinesTouchedCount; // @synthesize textBaselinesTouchedCount=_textBaselinesTouchedCount;
 @property (readonly, nonatomic) long long toolType; // @synthesize toolType=_toolType;
+@property (readonly, nonatomic) struct CGAffineTransform transformFromStrokeToUnscaledCanvas;
+@property (readonly, nonatomic) struct CGAffineTransform transformFromUnscaledCanvasToStroke;
 @property (nonatomic) struct CGRect unscaledBoundsOfStrokes; // @synthesize unscaledBoundsOfStrokes=_unscaledBoundsOfStrokes;
 @property (readonly, nonatomic) TSUBezierPath *unscaledPath;
 @property (readonly, nonatomic) struct CGRect unscaledRenderedFrame;

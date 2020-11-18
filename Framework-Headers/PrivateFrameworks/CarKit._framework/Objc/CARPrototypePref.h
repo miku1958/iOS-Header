@@ -33,11 +33,14 @@
 
 + (id)_confirmedSafe;
 + (id)_qaModeLockout;
++ (id)audioSharingEnabled;
 + (BOOL)confirmedSafe;
 + (id)contentSize;
++ (id)disableLocationNightMode;
 + (id)fakeNeatlineDashboardSupport;
 + (id)flipDashboardLayout;
 + (id)interfaceStyle;
++ (id)latestInterfaceStyle;
 + (id)nowPlayingAlbumArt;
 + (id)prefWithDomain:(id)arg1 key:(id)arg2 title:(id)arg3 defaultValue:(id)arg4 valueChangedBlock:(CDUnknownBlockType)arg5;
 + (id)prototypePrefCache;
@@ -53,6 +56,10 @@
 + (id)smartWidgetDebugGestures;
 + (id)smartWidgetDebugShowScore;
 + (id)smartWidgetRelaxHomeInRangeCheck;
++ (id)statusBarEdgeOverride;
++ (id)statusBarHorizontalThreshold;
++ (id)useNightModeTester;
++ (id)useSceneInterfaceStyle;
 - (void).cxx_destruct;
 - (id)description;
 

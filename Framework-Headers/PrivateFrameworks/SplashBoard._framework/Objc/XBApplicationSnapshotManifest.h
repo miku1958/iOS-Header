@@ -32,8 +32,8 @@
 + (id)debugDescription;
 + (void)deleteAllSystemSnapshots;
 + (void)initialize;
-+ (unsigned long long)maximumInFlightDataSize;
 - (void).cxx_destruct;
+- (id)_allSnapshotGroups;
 - (BOOL)_invalidate;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)createSnapshotWithGroupID:(id)arg1;
@@ -49,8 +49,10 @@
 - (void)deleteSnapshotsUsingPredicateBuilder:(CDUnknownBlockType)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 options:(unsigned long long)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 imageDataSavedHandler:(CDUnknownBlockType)arg5;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
+- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 imageDataSavedHandler:(CDUnknownBlockType)arg5;
 - (id)initWithApplicationInfo:(id)arg1;
 - (id)initWithContainerIdentity:(id)arg1 store:(id)arg2;
 - (void)manifest:(id)arg1 didPurgeProtectedContentSnapshotsWithGroupIdentifiers:(id)arg2;

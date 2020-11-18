@@ -46,7 +46,7 @@
 + (unsigned long long)maximumResourceDownloadSizeForResourceType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)cancelTask;
-- (id)initWithLaunchHandler:(CDUnknownBlockType)arg1 cancelHandler:(CDUnknownBlockType)arg2 didStartHandler:(CDUnknownBlockType)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithResource:(id)arg1 taskIdentifier:(id)arg2 launchHandler:(CDUnknownBlockType)arg3 cancelHandler:(CDUnknownBlockType)arg4 didStartHandler:(CDUnknownBlockType)arg5 progressHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)launch;
 - (void)noteActiveQueuesStatusAtEnqueingTime:(id)arg1;
 - (void)noteStateDidProgress:(unsigned long long)arg1;

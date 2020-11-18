@@ -13,12 +13,11 @@
 #import <AppPredictionUI/CRKCardViewControllerDelegate-Protocol.h>
 #import <AppPredictionUI/PLClickPresentationInteractionManagerDelegate-Protocol.h>
 #import <AppPredictionUI/PLClickPresentationInteractionPresenting-Protocol.h>
-#import <AppPredictionUI/SearchUIResultShortLook-Protocol.h>
 
 @class APUIIntentHandlingViewController, APUILongLookViewController, APUITVIntentHandler, ATXAction, CRKCardPresentation, INIntent, INInteraction, NSString, NSUserActivity, NSUserDefaults, PLClickPresentationInteractionManager, SFSearchResult, UIView;
-@protocol APUIShortLookViewControllerDelegate, CRKCardViewControllerDelegate, CRKCardViewControlling, PLClickPresentationInteractionPresentable;
+@protocol APUIActionFeedbackDelegate, APUIShortLookViewControllerDelegate, CRKCardViewControllerDelegate, CRKCardViewControlling, PLClickPresentationInteractionPresentable;
 
-@interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLClickPresentationInteractionPresenting, PLClickPresentationInteractionManagerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, SearchUIResultShortLook>
+@interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLClickPresentationInteractionPresenting, PLClickPresentationInteractionManagerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate>
 {
     APUILongLookViewController<PLClickPresentationInteractionPresentable> *_presentableViewController;
     APUITVIntentHandler *_tvIntentHandler;
@@ -35,7 +34,9 @@
     PLClickPresentationInteractionManager *_clickPresentationInteractionManager;
     NSString *_bundleId;
     SFSearchResult *_searchResult;
+    long long _displayContext;
     id<APUIShortLookViewControllerDelegate> _delegate;
+    id<APUIActionFeedbackDelegate> _actionFeedbackDelegate;
     APUIIntentHandlingViewController *_intentHandlingViewController;
     ATXAction *_atxAction;
     INInteraction *_interaction;
@@ -43,6 +44,7 @@
     UIViewController<CRKCardViewControlling> *_currentCardViewController;
 }
 
+@property (weak, nonatomic) id<APUIActionFeedbackDelegate> actionFeedbackDelegate; // @synthesize actionFeedbackDelegate=_actionFeedbackDelegate;
 @property (strong, nonatomic) ATXAction *atxAction; // @synthesize atxAction=_atxAction;
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong, nonatomic) CRKCardPresentation *cardPresentation; // @synthesize cardPresentation=_cardPresentation;
@@ -52,6 +54,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<APUIShortLookViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long displayContext; // @synthesize displayContext=_displayContext;
 @property (readonly, nonatomic) struct CGRect finalDismissedFrameOfViewForPreview;
 @property (readonly, nonatomic) struct CGRect finalPresentedFrameOfViewForPreview;
 @property (readonly) unsigned long long hash;
@@ -75,6 +78,7 @@
 - (void)_handleActionButtonForIntent;
 - (id)_intentConfirmationActions;
 - (BOOL)_isDoNotDisturbIntent;
+- (BOOL)_isLongLookDebugUIEnabled;
 - (void)_resetRepresentedObjectState;
 - (BOOL)_shouldAcceptPlatterTaps;
 - (BOOL)_shouldTellDelegateToClearActionOnDismissal:(long long)arg1;

@@ -12,12 +12,14 @@
 {
     BOOL _useObliteration;
     BOOL _brickDevice;
+    BOOL _hasBridgeCoProcessor;
     double _customDelay;
     double _maxDelayInterval;
 }
 
 @property (nonatomic) BOOL brickDevice; // @synthesize brickDevice=_brickDevice;
 @property (nonatomic) double customDelay; // @synthesize customDelay=_customDelay;
+@property (nonatomic) BOOL hasBridgeCoProcessor; // @synthesize hasBridgeCoProcessor=_hasBridgeCoProcessor;
 @property (nonatomic) double maxDelayInterval; // @synthesize maxDelayInterval=_maxDelayInterval;
 @property (nonatomic) BOOL useObliteration; // @synthesize useObliteration=_useObliteration;
 

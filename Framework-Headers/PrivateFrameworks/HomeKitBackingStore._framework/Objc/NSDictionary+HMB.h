@@ -6,9 +6,13 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSString;
+
 @interface NSDictionary (HMB)
+
+@property (readonly, copy) NSString *hmbDescription;
+
 + (id)hmbDictionaryFromOPACKData:(id)arg1 error:(id *)arg2;
-- (id)hmbDescription;
 - (id)hmbOPACKDataFromDictionaryWithError:(id *)arg1;
 @end
 

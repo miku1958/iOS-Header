@@ -13,7 +13,6 @@
     BOOL _matchOncePerTerm;
     BOOL _fuzzyMatching;
     NSString *_queryString;
-    unsigned long long _attributeTokenCount;
     unsigned long long _options;
     unsigned long long _matcherCount;
     const void **_matchers;
@@ -21,12 +20,9 @@
     void *_tokenizer;
     NSMutableArray *_tokenizedQueryTerms;
     NSString *_language;
-    CDUnknownBlockType _handler;
 }
 
-@property (nonatomic) unsigned long long attributeTokenCount; // @synthesize attributeTokenCount=_attributeTokenCount;
 @property (nonatomic) BOOL fuzzyMatching; // @synthesize fuzzyMatching=_fuzzyMatching;
-@property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (nonatomic) BOOL matchOncePerTerm; // @synthesize matchOncePerTerm=_matchOncePerTerm;
 @property (nonatomic) unsigned long long matcherCount; // @synthesize matcherCount=_matcherCount;
@@ -43,8 +39,13 @@
 - (void)dealloc;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 skipTranscriptions:(BOOL)arg3 withFuzzyHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 skipTranscriptions:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 strongCompounds:(BOOL)arg3 skipTranscriptions:(BOOL)arg4 withFuzzyHandler:(CDUnknownBlockType)arg5;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 strongCompounds:(BOOL)arg3 skipTranscriptions:(BOOL)arg4 withHandler:(CDUnknownBlockType)arg5;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 strongCompounds:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)initWithQuery:(id)arg1 language:(id)arg2 fuzzyThreshold:(unsigned char)arg3 options:(unsigned long long)arg4;
+- (BOOL)processPropertyToken:(const unsigned short *)arg1 length:(long long)arg2 tokenType:(int)arg3 range:(CDStruct_912cb5d2)arg4 index:(long long)arg5 evaluationHandler:(CDUnknownBlockType)arg6;
+- (void)processTranscriptionTokens:(struct CSAttributeEvaluatorContext *)arg1;
 
 @end
 

@@ -24,6 +24,10 @@
 + (id)formatForTimeRange;
 + (id)formatForTimeZoneClarifiedDateString;
 + (id)nextRoundedHour;
+- (id)CalDateByComponentwiseAddingComponents:(id)arg1 inCalendar:(id)arg2;
+- (id)CalDateByComponentwiseAddingHours:(long long)arg1 inCalendar:(id)arg2;
+- (id)CalDateByComponentwiseAddingMinutes:(long long)arg1 inCalendar:(id)arg2;
+- (id)CalDateByComponentwiseAddingSeconds:(long long)arg1 inCalendar:(id)arg2;
 - (id)CalDateRoundedDownToNearestMinuteIncrement:(long long)arg1 inCalendar:(id)arg2;
 - (BOOL)CalIsAfterDate:(id)arg1;
 - (BOOL)CalIsAfterOrSameAsDate:(id)arg1;

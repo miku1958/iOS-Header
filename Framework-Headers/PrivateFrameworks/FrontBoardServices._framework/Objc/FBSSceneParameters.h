@@ -30,12 +30,12 @@
 
 + (id)parametersForSpecification:(id)arg1;
 - (void).cxx_destruct;
-- (void)_configureCopy:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
+- (id)initWithParameters:(id)arg1;
 - (id)initWithSpecification:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

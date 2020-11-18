@@ -13,8 +13,8 @@
 
 @interface BSUIAnimationFactory : NSObject <_UIBasicAnimationFactory, NSCopying>
 {
-    BSAnimationSettings *_settings;
     BOOL _allowsAdditiveAnimations;
+    BSAnimationSettings *_settings;
 }
 
 @property (nonatomic) BOOL allowsAdditiveAnimations; // @synthesize allowsAdditiveAnimations=_allowsAdditiveAnimations;
@@ -54,9 +54,7 @@
 + (id)factoryWithSettings:(id)arg1 timingFunction:(id)arg2;
 + (double)globalSlowDownFactor;
 - (void).cxx_destruct;
-- (void)_animateWithAdditionalDelay:(double)arg1 options:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
-- (id)_initWithSettings:(id)arg1;
 - (BOOL)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
 - (id)_timingFunctionForAnimation;
 - (void)applySettingsToCAAnimation:(id)arg1;

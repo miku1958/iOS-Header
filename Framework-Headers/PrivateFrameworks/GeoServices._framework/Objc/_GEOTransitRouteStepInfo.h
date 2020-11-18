@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _GEOTransitRouteStepInfo : NSObject
 {
-    long long _routeLegType;
+    long long _routeSegmentType;
     struct _NSRange _pointRange;
     GEOTransitStep *_transitStep;
     unsigned int _duration;
@@ -19,14 +19,16 @@ __attribute__((visibility("hidden")))
     struct _NSRange _maneuverPointRange;
 }
 
+@property (readonly, nonatomic) double distance;
 @property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property (nonatomic) struct _NSRange maneuverPointRange; // @synthesize maneuverPointRange=_maneuverPointRange;
 @property (nonatomic) struct _NSRange pointRange; // @synthesize pointRange=_pointRange;
-@property (nonatomic) long long routeLegType; // @synthesize routeLegType=_routeLegType;
+@property (nonatomic) long long routeSegmentType; // @synthesize routeSegmentType=_routeSegmentType;
 @property (strong, nonatomic) GEOTransitStep *transitStep; // @synthesize transitStep=_transitStep;
 @property (strong, nonatomic) GEOStep *walkingStep; // @synthesize walkingStep=_walkingStep;
 
 - (void).cxx_destruct;
+- (unsigned long long)numPoints;
 
 @end
 

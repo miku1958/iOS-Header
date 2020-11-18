@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)addNewDocument:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)animateLayoutChange;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

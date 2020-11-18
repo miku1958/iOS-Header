@@ -13,6 +13,7 @@
     MISSING_TYPE *exposureNotificationStatus;
     MISSING_TYPE *isExposureLoggingDataPresent;
     MISSING_TYPE *areAvailabilityAlertsEnabled;
+    MISSING_TYPE *isAvailabilityAlertsSwitchEnabled;
     MISSING_TYPE *statusChangeHandler;
     MISSING_TYPE *manager;
     MISSING_TYPE *activationGroup;
@@ -21,6 +22,7 @@
 
 @property (nonatomic) BOOL areAvailabilityAlertsEnabled; // @synthesize areAvailabilityAlertsEnabled;
 @property (nonatomic) long long exposureNotificationStatus; // @synthesize exposureNotificationStatus;
+@property (nonatomic) BOOL isAvailabilityAlertsSwitchEnabled; // @synthesize isAvailabilityAlertsSwitchEnabled;
 @property (nonatomic) BOOL isExposureLoggingDataPresent; // @synthesize isExposureLoggingDataPresent;
 @property (nonatomic, readonly) ENManager *manager; // @synthesize manager;
 @property (nonatomic, copy) CDUnknownBlockType statusChangeHandler;
@@ -51,6 +53,7 @@
 - (void)setTravelStatusEnabled:(BOOL)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setUserConsent:(long long)arg1 region:(id)arg2 text:(id)arg3 version:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setWeeklySummaryEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)tccContainsRecordForBundleIdentifier:(id)arg1;
 
 @end
 

@@ -6,17 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, UIImage;
+@class NSArray, NSDictionary, NSString;
 
 @interface AVTPreset : NSObject
 {
     long long _category;
     NSString *_identifier;
     NSArray *_assets;
-    NSString *_variant;
-    float _intensity;
+    NSString *_morphVariant;
+    NSString *_imageVariant;
+    NSString *_materialVariant;
+    float _morphVariantIntensity;
+    float _textureAssetPresence;
     BOOL _mirrored;
     NSArray *_dependencies;
+    NSDictionary *_assetSpecificMorphVariantDependencies;
+    NSDictionary *_assetSpecificImageVariantDependencies;
+    NSDictionary *_assetSpecificMaterialVariantDependencies;
+    NSDictionary *_presetSpecificPresetDependencies;
     NSDictionary *_tags;
     NSDictionary *_specializationSettings;
 }
@@ -28,30 +35,25 @@
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly) NSDictionary *specializationSettings; // @synthesize specializationSettings=_specializationSettings;
 @property (readonly, nonatomic) NSDictionary *tags; // @synthesize tags=_tags;
-@property (readonly, nonatomic) UIImage *thumbnail;
 
 + (id)_colorPresetsForCategory:(long long)arg1 palette:(id)arg2;
 + (id)availablePresetsForCategory:(long long)arg1;
 + (id)colorPresetsForCategory:(long long)arg1;
 + (id)colorPresetsForCategory:(long long)arg1 colorIndex:(unsigned long long)arg2;
-+ (void)enumerateVariantDependenciesForComponentType:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)findPresetWithIdentifier:(id)arg1 inPresets:(id)arg2;
 + (void)loadPresets;
 + (id)presetWithCategory:(long long)arg1 identifier:(id)arg2;
-+ (void)registerVariantNamed:(id)arg1 forComponentType:(long long)arg2;
 + (id)secondaryColorPresetsForCategory:(long long)arg1;
 - (void).cxx_destruct;
-- (void)applyPresetOnAvatar:(id)arg1;
+- (void)applyPresetByChangingComponentsOfMemoji:(id)arg1;
 - (id)assets;
 - (id)cache;
 - (id)colorPresets;
 - (id)description;
+- (void)enumerateAssetSpecificVariantDependenciesOfKind:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumeratePresetDependencies:(CDUnknownBlockType)arg1;
-- (void)enumerateVariantDependencies:(CDUnknownBlockType)arg1;
-- (BOOL)hasDependency;
-- (id)init;
-- (float)intensity;
-- (id)maskImage;
+- (void)enumeratePresetSpecificPresetDependencies:(CDUnknownBlockType)arg1;
+- (void)enumerateVariantDependenciesOfKind:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)rebuildSpecializationSettings;
 
 @end

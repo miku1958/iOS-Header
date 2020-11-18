@@ -6,23 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class PXCPLServiceStatus, PXUICPLService;
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@interface PUStorageManagementCPLService : NSObject
+@class NSString, PXCPLUIStatusProvider;
+
+@interface PUStorageManagementCPLService : NSObject <PXChangeObserver>
 {
-    PXUICPLService *_cplUIService;
-    PXCPLServiceStatus *_lastServiceStatusUpdated;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
+    BOOL _hasCompletedInitialUpload;
     CDUnknownBlockType _uploadCallbackHandler;
 }
 
-@property (readonly, nonatomic) BOOL hasCompletedInitialUpload;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasCompletedInitialUpload; // @synthesize hasCompletedInitialUpload=_hasCompletedInitialUpload;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType uploadCallbackHandler; // @synthesize uploadCallbackHandler=_uploadCallbackHandler;
 
 + (id)sharedCPLService;
 - (void).cxx_destruct;
-- (void)_initCPLService;
-- (void)_updateUploadCallbackHandler:(id)arg1;
+- (void)_initCPLUIStatusProvider;
 - (id)init;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 
 @end
 

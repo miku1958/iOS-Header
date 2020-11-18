@@ -82,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)getAvailableFormats_:(id)arg1;
 - (id)getFormattingTemplate_:(id)arg1 numberFormat:(id)arg2;
 - (id)getMetadataForRegion_:(id)arg1;
-- (long long)getRememberedPosition;
+- (unsigned long long)getRememberedPosition;
 - (id)init;
 - (id)initWithRegionCode:(id)arg1;
 - (id)initWithRegionCode:(id)arg1 bundle:(id)arg2;

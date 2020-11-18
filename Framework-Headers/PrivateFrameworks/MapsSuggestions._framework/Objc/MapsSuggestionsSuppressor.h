@@ -23,10 +23,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (id)defaultFilePath;
 - (void).cxx_destruct;
-- (BOOL)_loadSuppressedEntries;
-- (BOOL)_saveSuppressedEntries;
+- (void)awaitQueue;
 - (id)init;
 - (id)initWithFilePath:(id)arg1;
 - (BOOL)isSuppressedEntry:(id)arg1;

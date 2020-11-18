@@ -6,13 +6,14 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions;
 @protocol UIScrollViewDelegate;
 
 @protocol _MKInfoCardController <NSObject>
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions;
 @property (nonatomic) double contentAlpha;
+@property (strong, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property (weak, nonatomic) id<UIScrollViewDelegate> scrollViewDelegate;
 @property (strong, nonatomic) GEOTransitOptions *transitOptions;
 

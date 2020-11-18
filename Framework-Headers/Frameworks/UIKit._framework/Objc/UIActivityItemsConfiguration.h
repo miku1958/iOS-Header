@@ -22,10 +22,12 @@
     CDUnknownBlockType _perItemMetadataProvider;
     CDUnknownBlockType _previewProvider;
     CDUnknownBlockType _applicationActivitiesProvider;
+    NSArray *__excludedInteractions;
 }
 
 @property (readonly, copy, nonatomic) NSArray *_activityItems;
 @property (copy, nonatomic, setter=_setExcludedActivityTypes:) NSArray *_excludedActivityTypes;
+@property (copy, nonatomic, setter=_setExcludedInteractions:) NSArray *_excludedInteractions; // @synthesize _excludedInteractions=__excludedInteractions;
 @property (readonly, nonatomic) BOOL _hasItemsForActivityItemsConfiguration;
 @property (readonly, copy, nonatomic) NSArray *applicationActivitiesForActivityItemsConfiguration;
 @property (copy, nonatomic) CDUnknownBlockType applicationActivitiesProvider; // @synthesize applicationActivitiesProvider=_applicationActivitiesProvider;

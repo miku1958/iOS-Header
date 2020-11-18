@@ -39,7 +39,6 @@
 + (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (BOOL)shouldGenerateVideoDerivativeForAVAsset:(id)arg1 forResourceType:(unsigned long long)arg2 adjusted:(BOOL)arg3;
 + (id)transcodeVideoAtURL:(id)arg1 withAdjustments:(id)arg2 destinationURL:(id)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-+ (unsigned int)videoCodecFourCharCodeNumberForAVAsset:(id)arg1;
 + (id)workQueue;
 
 @end

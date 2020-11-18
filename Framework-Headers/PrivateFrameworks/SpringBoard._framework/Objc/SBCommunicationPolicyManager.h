@@ -16,8 +16,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (unsigned long long)_communicationPolicyForBundleIdentifier:(id)arg1;
-- (void)_setPoliciesByBundleIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKZeusFramedComplicationView.h>
+#import <NanoTimeKitCompanion/NTKZeusComplicationView.h>
 
 #import <NanoTimeKitCompanion/CLKTimeFormatterObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKWorldClockComplicationDisplay-Protocol.h>
@@ -12,7 +12,7 @@
 @class CLKTimeFormatter, NSString, UILabel;
 @protocol NTKComplicationDisplayObserver;
 
-@interface NTKZeusWorldClockComplicationView : NTKZeusFramedComplicationView <CLKTimeFormatterObserver, NTKWorldClockComplicationDisplay>
+@interface NTKZeusWorldClockComplicationView : NTKZeusComplicationView <CLKTimeFormatterObserver, NTKWorldClockComplicationDisplay>
 {
     UILabel *_timeLabel;
     UILabel *_cityLabel;
@@ -34,8 +34,9 @@
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
 - (void)dealloc;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 - (void)layoutSubviews;
+- (struct CGRect)padContentFrame:(struct CGRect)arg1;
 - (void)setOverrideDate:(id)arg1;
 - (void)setShortCity:(id)arg1;
 - (void)setTimeZone:(id)arg1;

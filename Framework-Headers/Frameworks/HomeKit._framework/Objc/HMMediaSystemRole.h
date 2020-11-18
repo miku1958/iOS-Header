@@ -17,6 +17,7 @@
 
 + (id)leftRole;
 + (id)rightRole;
++ (BOOL)roleFromDictionary:(id)arg1 roleOutput:(unsigned long long *)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

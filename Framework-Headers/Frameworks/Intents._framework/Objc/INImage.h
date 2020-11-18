@@ -19,6 +19,7 @@
 @interface INImage : NSObject <INJSONSerializable, INKeyImageProducing, INCacheableObject, INImageProxyInjecting, INImageExport, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
+    long long __renderingMode;
     CDStruct_8caa76fc _imageSize;
 }
 
@@ -31,7 +32,9 @@
 @property (readonly, nonatomic) BOOL _isSupportedForDonation;
 @property (readonly) INImage *_keyImage;
 @property (copy, nonatomic, setter=_setName:) NSString *_name;
+@property (nonatomic, setter=_setRenderingMode:) long long _renderingMode; // @synthesize _renderingMode=__renderingMode;
 @property (readonly, nonatomic) BOOL _requiresRetrieval;
+@property (copy, nonatomic, setter=_setSandboxExtensionData:) NSData *_sandboxExtensionData;
 @property (copy, nonatomic, setter=_setUri:) NSURL *_uri;
 @property (readonly, copy, nonatomic) NSString *cacheIdentifier;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,6 +53,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=_isSystem) BOOL system;
 
 + (id)_bundleImageWithURL:(id)arg1;
 + (id)_classesInCluster;
@@ -62,6 +66,7 @@
 + (void)initialize;
 + (void)registerImageLoadersOnce;
 + (BOOL)supportsSecureCoding;
++ (id)systemImageNamed:(id)arg1;
 - (void).cxx_destruct;
 - (id)_URLRepresentation;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
@@ -76,7 +81,7 @@
 - (id)_initWithURLRepresentation:(id)arg1;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_preferredImageLoader;
 - (void)_requestProxy:(CDUnknownBlockType)arg1;

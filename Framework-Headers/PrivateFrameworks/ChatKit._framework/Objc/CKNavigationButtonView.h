@@ -4,22 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIButton.h>
 
-@class NSString, UIButton, UIImage, UILabel, UIVisualEffect, UIVisualEffectView;
+@class NSString, UIImage, UIImageView, UILabel, UIVisualEffect, UIVisualEffectView;
 
-@interface CKNavigationButtonView : UIView
+@interface CKNavigationButtonView : UIButton
 {
-    BOOL _wantsLongPress;
-    BOOL _buttonEnabled;
     BOOL _wantsVibrancy;
-    CDUnknownBlockType _buttonTappedCallback;
-    CDUnknownBlockType _buttonLongPressCallback;
+    BOOL _wantsLongPress;
     long long _joinButtonStyle;
+    UIButton *_imageButton;
     UIImage *_image;
     UIImage *_defaultImage;
     UIImage *_disabledImage;
-    UIButton *_imageButton;
+    UIImageView *_iconImageView;
     UILabel *_textLabel;
     UIVisualEffectView *_vibrancyView;
     UIVisualEffect *_vibrancyEffect;
@@ -27,14 +25,12 @@
     NSString *_text;
 }
 
-@property (nonatomic, getter=isButtonEnabled) BOOL buttonEnabled; // @synthesize buttonEnabled=_buttonEnabled;
-@property (copy, nonatomic) CDUnknownBlockType buttonLongPressCallback; // @synthesize buttonLongPressCallback=_buttonLongPressCallback;
-@property (copy, nonatomic) CDUnknownBlockType buttonTappedCallback; // @synthesize buttonTappedCallback=_buttonTappedCallback;
 @property (strong, nonatomic) UIImage *defaultImage; // @synthesize defaultImage=_defaultImage;
 @property (strong, nonatomic) UIImage *disabledImage; // @synthesize disabledImage=_disabledImage;
 @property (strong, nonatomic) UIVisualEffect *disabledVibrancyEffect; // @synthesize disabledVibrancyEffect=_disabledVibrancyEffect;
+@property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (strong, nonatomic) UIButton *imageButton; // @synthesize imageButton=_imageButton;
+@property (readonly, nonatomic) UIButton *imageButton; // @synthesize imageButton=_imageButton;
 @property (nonatomic) long long joinButtonStyle; // @synthesize joinButtonStyle=_joinButtonStyle;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
@@ -44,13 +40,13 @@
 @property (nonatomic) BOOL wantsVibrancy; // @synthesize wantsVibrancy=_wantsVibrancy;
 
 - (void).cxx_destruct;
-- (void)_buttonLongPressed:(id)arg1;
-- (void)_buttonTapped:(id)arg1;
-- (void)_setupImageButton;
+- (id)_imageForCurrentState;
+- (void)_setupIconImageView;
 - (id)initWithImage:(id)arg1 disabledImage:(id)arg2 text:(id)arg3 wantsLongPress:(BOOL)arg4;
 - (id)initWithImage:(id)arg1 text:(id)arg2 wantsLongPress:(BOOL)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setEnabled:(BOOL)arg1;
 
 @end
 

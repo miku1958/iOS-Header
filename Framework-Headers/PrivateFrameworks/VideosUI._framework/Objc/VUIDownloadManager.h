@@ -34,18 +34,18 @@
 - (void)_activeAccountDidChange:(id)arg1;
 - (id)_alertControllerForFailedDownloads:(id)arg1;
 - (BOOL)_anyDownloadsFailedDueToInvalidUserToken:(id)arg1;
-- (void)_configureDownloadFromLegacyUserPrefs:(id)arg1;
-- (void)_configureDownloadFromNewUserPrefs:(id)arg1 allowCellular:(BOOL)arg2 quality:(long long)arg3;
 - (void)_configureDownloadFromUserPrefs:(id)arg1 allowCellular:(BOOL)arg2 quality:(long long)arg3;
 - (void)_isPlaybackUIBeingShownDidChange:(id)arg1;
-- (void)_loadImageForImageInfoManagedObject:(id)arg1 imageType:(unsigned long long)arg2;
-- (void)_loadImageForSeriesManagedObject:(id)arg1 imageType:(unsigned long long)arg2;
-- (void)_loadImageForVideoManagedObject:(id)arg1 imageType:(unsigned long long)arg2;
+- (void)_loadImageForImageInfoManagedObject:(id)arg1 imageType:(unsigned long long)arg2 download:(id)arg3 useForStorageSettings:(BOOL)arg4;
+- (void)_loadImageForSeriesManagedObject:(id)arg1 imageType:(unsigned long long)arg2 download:(id)arg3 useForStorageSettings:(BOOL)arg4;
+- (void)_loadImageForVideoManagedObject:(id)arg1 imageType:(unsigned long long)arg2 download:(id)arg3 useForStorageSettings:(BOOL)arg4;
 - (void)_notifyDelegatesThatDownloadsDidChange;
 - (void)_showDownloadErrorDialogIfAppropriate;
 - (void)_showDownloadErrorDialogIfAppropriateAllowingSignInPrompt:(BOOL)arg1;
 - (void)addDelegate:(id)arg1;
-- (void)addDownloadForVideoManagedObject:(id)arg1 allowCellular:(BOOL)arg2 quality:(long long)arg3;
+- (void)addDownloadForVideoManagedObject:(id)arg1 allowCellular:(BOOL)arg2 quality:(long long)arg3 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg4;
+- (void)addDownloadOrRenewKeysForMediaItem:(id)arg1 allowCellular:(BOOL)arg2 quality:(long long)arg3 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg4;
+- (void)cancelAndRemoveDownloadForMediaItem:(id)arg1;
 - (void)cancelDownloadForCanonicalID:(id)arg1;
 - (void)dealloc;
 - (void)download:(id)arg1 didChangeStateTo:(long long)arg2;
@@ -54,8 +54,10 @@
 - (void)download:(id)arg1 willDownloadToURL:(id)arg2;
 - (void)downloadSession:(id)arg1 didAddRestoredDownloads:(id)arg2;
 - (id)existingDownloadForCanonicalID:(id)arg1;
+- (void)fetchNewKeysForDownloadedVideoManagedObject:(id)arg1;
 - (id)init;
 - (void)initializeDownloadManager;
+- (void)preflightDownloadForPresentingViewController:(id)arg1 contentAllowsCellularDownload:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeDelegate:(id)arg1;
 
 @end

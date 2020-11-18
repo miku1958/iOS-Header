@@ -65,10 +65,10 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_createActivityRelatedUIs;
+- (void)_createTimeViewIfNecessary;
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (void)_enumerateActivityLabels:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -78,6 +78,7 @@
 - (void)_launchButtonPressed:(id)arg1;
 - (void)_layoutForegroundContainerView;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (BOOL)_needsForegroundContainerView;
@@ -105,8 +106,8 @@
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
-- (void)screenDidTurnOff;
-- (void)screenWillTurnOn;
+- (void)screenDidTurnOffAnimated:(BOOL)arg1;
+- (void)screenWillTurnOnAnimated:(BOOL)arg1;
 - (void)setDataMode:(long long)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (BOOL)slotUsesCurvedText:(id)arg1;

@@ -10,12 +10,17 @@
 
 @interface WFAppInFocusTrigger : WFTrigger
 {
-    NSArray *_selectedApps;
+    BOOL _onFocus;
+    BOOL _onBackground;
+    NSArray *_selectedBundleIdentifiers;
 }
 
-@property (copy, nonatomic) NSArray *selectedApps; // @synthesize selectedApps=_selectedApps;
+@property (nonatomic) BOOL onBackground; // @synthesize onBackground=_onBackground;
+@property (nonatomic) BOOL onFocus; // @synthesize onFocus=_onFocus;
+@property (copy, nonatomic) NSArray *selectedBundleIdentifiers; // @synthesize selectedBundleIdentifiers=_selectedBundleIdentifiers;
 
 + (BOOL)isAllowedToRunAutomatically;
++ (BOOL)isUserInitiated;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (BOOL)supportsSecureCoding;

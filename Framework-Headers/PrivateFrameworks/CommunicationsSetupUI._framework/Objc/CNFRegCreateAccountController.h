@@ -8,6 +8,7 @@
 
 @protocol CNFRegCreateAccountControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegCreateAccountController : CNFRegAccountWebViewController
 {
     id<CNFRegCreateAccountControllerDelegate> _delegate;

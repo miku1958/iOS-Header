@@ -73,6 +73,7 @@
 @property (nonatomic) BOOL useForTimeAdjustement; // @synthesize useForTimeAdjustement=_useForTimeAdjustement;
 
 + (double)_averageDistanceBetweenFeatureKeyword:(id)arg1 featureDates:(id)arg2 subjectLength:(unsigned long long)arg3 inSubject:(BOOL)arg4;
++ (id)_dateComponentsFromTaxonomyHHMMString:(id)arg1;
 + (id)_identifierForCluster:(unsigned long long)arg1;
 + (id)_identifiersForClusters:(id)arg1;
 + (id)_loadTaxonomyForLanguageID:(id)arg1 clusterIdentifier:(id)arg2 error:(id *)arg3;

@@ -29,7 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct UIEdgeInsets hitTestEdgeInsets; // @synthesize hitTestEdgeInsets=_hitTestEdgeInsets;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isVibrancyAllowed) BOOL vibrancyAllowed; // @synthesize vibrancyAllowed=_vibrancyAllowed;

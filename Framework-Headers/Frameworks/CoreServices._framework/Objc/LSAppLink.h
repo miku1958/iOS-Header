@@ -8,12 +8,13 @@
 
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSApplicationProxy, NSDictionary, NSURL, _LSValidationToken;
+@class LSApplicationProxy, LSApplicationRecord, NSDictionary, NSURL, _LSValidationToken;
 
 @interface LSAppLink : NSObject <NSSecureCoding>
 {
     NSURL *_URL;
     LSApplicationProxy *_targetApplicationProxy;
+    LSApplicationRecord *_targetApplicationRecord;
     _LSValidationToken *__validationToken;
 }
 
@@ -22,11 +23,12 @@
 @property (strong, nonatomic) NSDictionary *browserSettings;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @dynamic enabled;
 @property long long openStrategy; // @dynamic openStrategy;
-@property (strong) LSApplicationProxy *targetApplicationProxy; // @synthesize targetApplicationProxy=_targetApplicationProxy;
+@property (readonly) LSApplicationProxy *targetApplicationProxy; // @synthesize targetApplicationProxy=_targetApplicationProxy;
+@property (strong) LSApplicationRecord *targetApplicationRecord; // @synthesize targetApplicationRecord=_targetApplicationRecord;
 
 + (BOOL)URLComponentsAreValidForAppLinks:(id)arg1 error:(id *)arg2;
 + (BOOL)_URLIsValidForAppLinks:(id)arg1 error:(id *)arg2;
-+ (id)_appLinkWithURL:(id)arg1 applicationProxy:(id)arg2 plugInClass:(Class)arg3;
++ (id)_appLinkWithURL:(id)arg1 applicationRecord:(id)arg2 plugInClass:(Class)arg3;
 + (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 URLComponents:(id)arg4 error:(id *)arg5;
 + (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 requireEntitlement:(BOOL)arg4 error:(id *)arg5;
 + (id)_appLinksWithState:(id)arg1 limit:(unsigned long long)arg2 requireEntitlement:(BOOL)arg3 error:(id *)arg4;
@@ -40,6 +42,8 @@
 + (void)openWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)openWithURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (BOOL)removeAllSettingsReturningError:(id *)arg1;
++ (BOOL)setSettingsSwitchState:(long long)arg1 forApplicationIdentifier:(id)arg2 error:(id *)arg3;
++ (long long)settingsSwitchStateForApplicationIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_userActivityWithState:(id)arg1 error:(id *)arg2;

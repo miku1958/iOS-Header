@@ -16,6 +16,7 @@
 - (id)_middleDateFromInterval:(id)arg1 endDate:(id)arg2;
 - (id)initWithUnitController:(id)arg1 displayType:(id)arg2 healthStore:(id)arg3;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 
 @end
 

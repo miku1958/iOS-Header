@@ -56,6 +56,7 @@
 - (id)footerView;
 - (void)hideActivitySpinner;
 - (id)initWithSetupDelegate:(id)arg1 context:(long long)arg2 provisioningController:(id)arg3;
+- (void)insertPickerSection:(id)arg1 atIndex:(unsigned long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)paymentSetupMarker;
 - (void)productSelectionViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

@@ -6,23 +6,34 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSDate;
+@class NSDate, NSString;
 
 @interface SBHomeScreenDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
 
+@property (nonatomic) BOOL automaticallyAddsNewApplications; // @dynamic automaticallyAddsNewApplications;
 @property (nonatomic, getter=isLayoutLowDensity) BOOL layoutLowDensity; // @dynamic layoutLowDensity;
+@property (copy, nonatomic) NSString *overriddenScreenType; // @dynamic overriddenScreenType;
+@property (nonatomic) BOOL pageHidingUIEverEntered; // @dynamic pageHidingUIEverEntered;
+@property (nonatomic) BOOL pagesHaveEverBeenHidden; // @dynamic pagesHaveEverBeenHidden;
+@property (nonatomic) BOOL shouldAutoFillFavoriteList; // @dynamic shouldAutoFillFavoriteList;
 @property (nonatomic) BOOL shouldFudgeShortcutsToCauseMaximumPain; // @dynamic shouldFudgeShortcutsToCauseMaximumPain;
-@property (nonatomic) BOOL shouldShowWidgetsTeachingView; // @dynamic shouldShowWidgetsTeachingView;
+@property (nonatomic) BOOL shouldPrepareDefaultTodayList; // @dynamic shouldPrepareDefaultTodayList;
+@property (nonatomic) BOOL shouldPrepareStackForDefaultTodayList; // @dynamic shouldPrepareStackForDefaultTodayList;
+@property (nonatomic) BOOL shouldShowAppLibraryOnBoardingAlert; // @dynamic shouldShowAppLibraryOnBoardingAlert;
+@property (nonatomic) BOOL shouldShowAvocadoWidgetsOnBoardingAlert; // @dynamic shouldShowAvocadoWidgetsOnBoardingAlert;
+@property (nonatomic) BOOL shouldShowLibraryEducationView; // @dynamic shouldShowLibraryEducationView;
+@property (nonatomic) BOOL shouldShowPageHidingOnBoardingAlert; // @dynamic shouldShowPageHidingOnBoardingAlert;
+@property (nonatomic) BOOL showsBadgesInAppLibrary; // @dynamic showsBadgesInAppLibrary;
 @property (nonatomic, getter=hasSidebarEverBeenVisible) BOOL sidebarEverBeenVisible; // @dynamic sidebarEverBeenVisible;
 @property (copy, nonatomic) NSDate *sidebarLearningCadenceCommenceDate; // @dynamic sidebarLearningCadenceCommenceDate;
 @property (nonatomic) long long sidebarLearningCadenceEpoch; // @dynamic sidebarLearningCadenceEpoch;
 @property (nonatomic, getter=isSidebarPinned) BOOL sidebarPinned; // @dynamic sidebarPinned;
 @property (nonatomic, getter=isSidebarVisible) BOOL sidebarVisible; // @dynamic sidebarVisible;
-@property (nonatomic) BOOL usesAutomaticHomeScreenEnvironment; // @dynamic usesAutomaticHomeScreenEnvironment;
 
 - (void)_bindAndRegisterDefaults;
+- (BOOL)automaticallyAddsNewApplicationsExists;
 
 @end
 

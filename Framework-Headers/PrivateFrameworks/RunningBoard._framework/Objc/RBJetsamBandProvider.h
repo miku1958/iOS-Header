@@ -22,9 +22,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (int)_backgroundJetsamPriorityForProcess:(id)arg1 state:(id)arg2;
-- (int)_foregroundJetsamPriorityForProcess:(id)arg1 state:(id)arg2;
-- (int)_inactiveJetsamPriorityForProcess:(id)arg1 state:(id)arg2;
 - (int)defaultPriorityForProcess:(id)arg1 inBand:(unsigned char)arg2;
 - (id)init;
 - (id)initWithEntitlementManager:(id)arg1;

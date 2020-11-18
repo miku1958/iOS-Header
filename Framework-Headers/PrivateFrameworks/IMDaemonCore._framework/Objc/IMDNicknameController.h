@@ -48,6 +48,7 @@
 - (void)_beginNicknameUpload:(id)arg1;
 - (void)_broadcastPendingMapChanged;
 - (void)_ckAccountChanged:(id)arg1;
+- (void)_clearSharingLists;
 - (void)_deleteAvatarForNickname:(id)arg1;
 - (void)_deleteHandleIDFromHandledMap:(id)arg1;
 - (void)_deleteHandleIDFromPendingMap:(id)arg1;
@@ -72,6 +73,7 @@
 - (unsigned long long)_reuploadLocalProfileVersionNumber;
 - (BOOL)_sendMessageDictionary:(id)arg1 toDevice:(id)arg2;
 - (void)_setUnderScrutiny:(BOOL)arg1;
+- (void)_showDebugAlertWithHeader:(id)arg1 message:(id)arg2;
 - (void)_storePendingNicknameForUpload:(id)arg1;
 - (void)_storePublicNickname:(id)arg1 nicknameLocation:(id)arg2 encryptionKey:(id)arg3;
 - (void)_syncHandleWhitelistBlacklistToOtherDevices;
@@ -108,6 +110,7 @@
 - (void)loadHandledNicknamesAndPendingUpdates;
 - (void)loadPersonalNicknameIfNeeded;
 - (void)loadSharingHandlesPrefs;
+- (void)markAllNicknamesAsPending;
 - (void)markNicknameAsUpdated:(id)arg1;
 - (id)messageDictionaryWithPersonalRecordIDAndVersion;
 - (void)newDeviceDidSignIntoiMessage;

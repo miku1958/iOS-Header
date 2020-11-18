@@ -13,6 +13,7 @@
     NSArray *_items;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (id)allItems;
 - (id)approximateLocation;

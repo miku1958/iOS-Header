@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HearingUtilities/AXIDCControllerBrowserDelegateProtocol-Protocol.h>
-
 @class AXDispatchTimer, HCXPCMessage, NSDictionary, NSString;
 @protocol OS_os_transaction;
 
-@interface AXHAController : NSObject <AXIDCControllerBrowserDelegateProtocol>
+@interface AXHAController : NSObject
 {
     BOOL _isListening;
     AXDispatchTimer *_liveListenLevelsTimer;
@@ -22,12 +20,8 @@
 }
 
 @property (strong, nonatomic) NSDictionary *availableDevicesDescription; // @synthesize availableDevicesDescription=_availableDevicesDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HCXPCMessage *liveListenMessage; // @synthesize liveListenMessage=_liveListenMessage;
 @property (strong, nonatomic) NSString *pairedDeviceUUID; // @synthesize pairedDeviceUUID=_pairedDeviceUUID;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
 + (id)sharedController;

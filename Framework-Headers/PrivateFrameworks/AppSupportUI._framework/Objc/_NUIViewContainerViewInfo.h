@@ -13,10 +13,13 @@ __attribute__((visibility("hidden")))
     struct CGSize _minSize;
     struct CGSize _maxSize;
     struct UIEdgeInsets _alignmentInsets;
+    struct UIEdgeInsets _cachedAlignmentInsets;
     CDStruct_6c92d79e _baselines;
     struct {
+        unsigned int neverCacheLayoutSize:1;
+        unsigned int shouldCacheLayoutSize:1;
         unsigned int alsoInvalidateSuperview:1;
-        unsigned int alignmentInsetsAreCustom:1;
+        unsigned int cachedAlignmentInsetsAreValid:1;
         unsigned int topBaselineIsCustom:1;
         unsigned int bottomBaselineIsCustom:1;
     } _flags;
@@ -25,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)init;
-- (void)resetCaches;
 
 @end
 

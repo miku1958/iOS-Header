@@ -10,8 +10,8 @@
 
 @interface _TtC8NewsFeed16CoverChannelView : UIView
 {
-    MISSING_TYPE *followButton;
     MISSING_TYPE *moreActionsButton;
+    MISSING_TYPE *followButton;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *coverImage;
     MISSING_TYPE *accessoryLabel;

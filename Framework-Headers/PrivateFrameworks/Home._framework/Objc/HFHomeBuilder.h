@@ -6,16 +6,22 @@
 
 #import <Home/HFItemBuilder.h>
 
+#import <Home/HFNamedItemBuilder-Protocol.h>
+
 @class HFWallpaperEditCollectionBuilder, NSString;
 
-@interface HFHomeBuilder : HFItemBuilder
+@interface HFHomeBuilder : HFItemBuilder <HFNamedItemBuilder>
 {
     NSString *_name;
     NSString *_userNotes;
     HFWallpaperEditCollectionBuilder *_wallpaperBuilder;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *userNotes; // @synthesize userNotes=_userNotes;
 @property (strong, nonatomic) HFWallpaperEditCollectionBuilder *wallpaperBuilder; // @synthesize wallpaperBuilder=_wallpaperBuilder;
 

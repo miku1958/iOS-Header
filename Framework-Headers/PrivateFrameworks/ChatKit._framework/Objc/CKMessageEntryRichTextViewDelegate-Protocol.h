@@ -15,6 +15,7 @@
 - (BOOL)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 shouldPasteMediaObjects:(NSArray *)arg2;
 - (BOOL)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 shouldRecognizeGesture:(UIGestureRecognizer *)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(CKMessageEntryRichTextView *)arg1;
+- (void)messageEntryRichTextViewDidTapMention:(CKMessageEntryRichTextView *)arg1 characterIndex:(double)arg2;
 - (void)messageEntryRichTextViewWasTapped:(CKMessageEntryRichTextView *)arg1 isLongPress:(BOOL)arg2;
 @end
 

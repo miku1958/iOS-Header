@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)computeRedundancyWithBurstyLoss;
 - (unsigned int)computeRedundancyWithLossPercentage;
 - (void)updateBurstyLoss:(unsigned int)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
 
 @end
 

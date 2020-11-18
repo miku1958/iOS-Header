@@ -7,11 +7,12 @@
 #import <TSKit/TSKSosBase.h>
 
 #import <TSTables/TSCEFormulaOwning-Protocol.h>
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
 #import <TSTables/TSTGroupByChangeProtocol-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, TSKCustomFormatWrapper, TSTCategoryOwner, TSTGroupByChangeDistributor, TSTGroupNode, TSTTableInfo, TSULocale;
 
-@interface TSTGroupBy : TSKSosBase <TSCEFormulaOwning, TSTGroupByChangeProtocol>
+@interface TSTGroupBy : TSKSosBase <TSCEFormulaOwning, TSTGroupByChangeProtocol, TSTCompatibilityVersionProviding>
 {
     UUIDData_5fbc143e _groupByUid;
     BOOL _isEnabled;
@@ -26,6 +27,7 @@
     struct TSUCellCoord _allAggsInGroupRootFormulaCoord;
     struct TSUCellCoord _columnOrderChangedCoord;
     struct TSUCellCoord _rowOrderChangedCoord;
+    struct TSUCellCoord _rowOrderChangedIgnoringRecalcCoord;
     TSTGroupByChangeDistributor *_groupByChangeDistributor;
     struct TSUCellCoord _nextAggFormulaCoord;
     struct os_unfair_lock_s _aggValuesLock;
@@ -36,6 +38,7 @@
     unsigned long long _deferGroupByChangeNotificationsLevel;
     NSMutableArray *_deferredGroupByChangeNotifications;
     NSMutableArray *_calcEngineGroupByChangeNotifications;
+    BOOL _inCalcEngineMode;
     BOOL _groupingColumnHeadersChanged;
     TSKCustomFormatWrapper *_customFormatForBlankGroup;
     TSKCustomFormatWrapper *_customFormatForErrorGroup;
@@ -65,6 +68,7 @@
 @property (nonatomic) BOOL needsRebuildOfAggFormulas; // @synthesize needsRebuildOfAggFormulas=_needsRebuildOfAggFormulas;
 @property (readonly) unsigned char numberOfLevels;
 @property (readonly, nonatomic) struct TSCECellRef rowOrderChangedPrecedent;
+@property (readonly, nonatomic) struct TSCECellRef rowOrderChangedPrecedentIgnoringRecalc;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TSTTableInfo *tableInfo;
 @property (readonly, nonatomic) TSTGroupNode *topLevelGroupNode;
@@ -173,6 +177,7 @@
 - (vector_ae66d7ff)groupingColumnLevelsForColumn:(const UUIDData_5fbc143e *)arg1;
 - (id)groupingColumnListCopy;
 - (id)groupsAtLevel:(unsigned char)arg1;
+- (BOOL)inCalcEngineMode;
 - (unsigned long long)indexOfGroupingColumn:(id)arg1;
 - (id)indexesOfGroupUidsInUids:(const vector_4dc5f307 *)arg1;
 - (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive *)arg1 forCategoryOwner:(id)arg2;

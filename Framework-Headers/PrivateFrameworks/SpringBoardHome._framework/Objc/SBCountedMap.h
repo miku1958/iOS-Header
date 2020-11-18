@@ -20,6 +20,7 @@
 - (id)checkoutValueForKey:(id)arg1 creationBlock:(CDUnknownBlockType)arg2;
 - (BOOL)containsKey:(id)arg1;
 - (BOOL)containsValue:(id)arg1;
+- (id)description;
 - (id)init;
 
 @end

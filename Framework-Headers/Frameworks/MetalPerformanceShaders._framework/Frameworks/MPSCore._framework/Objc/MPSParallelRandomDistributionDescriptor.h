@@ -24,8 +24,11 @@
 @property (nonatomic) float standardDeviation; // @synthesize standardDeviation=_standardDeviation;
 
 + (id)defaultDistributionDescriptor;
++ (id)normalDistributionDescriptorWithMean:(float)arg1 standardDeviation:(float)arg2;
++ (id)normalDistributionDescriptorWithMean:(float)arg1 standardDeviation:(float)arg2 minimum:(float)arg3 maximum:(float)arg4;
 + (id)uniformDistributionDescriptorWithMinimum:(float)arg1 maximum:(float)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

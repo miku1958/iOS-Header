@@ -4,41 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDSubserver.h>
+#import <objc/NSObject.h>
 
-#import <HealthDaemon/HDQueryControlServerInterface-Protocol.h>
 #import <HealthDaemon/HDQueryServerDelegate-Protocol.h>
-#import <HealthDaemon/HDTaskServerDelegate-Protocol.h>
+#import <HealthDaemon/HDTaskServerEndpointDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString;
+@class HDHealthStoreClient, HDHealthStoreServer, HDProfile, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDQueryControlServer : HDSubserver <HDQueryServerDelegate, HDTaskServerDelegate, HDQueryControlServerInterface>
+@interface HDQueryControlServer : NSObject <HDQueryServerDelegate, HDTaskServerEndpointDelegate>
 {
     NSMutableDictionary *_queryServersByUUID;
     NSMutableDictionary *_queryServerEndpointsByUUID;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     struct os_unfair_lock_s _lock;
+    HDHealthStoreServer *_server;
+    HDHealthStoreClient *_client;
+    HDProfile *_profile;
 }
 
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (readonly, weak, nonatomic) HDHealthStoreServer *server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_hasActiveQueries;
 - (BOOL)_lock_hasActiveQueries;
 - (void)_startQueryServer:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)addObserver:(id)arg1 forTaskServerUUID:(id)arg2;
+- (id)createQueryServerEndpointForIdentifier:(id)arg1 queryUUID:(id)arg2 configuration:(id)arg3 error:(id *)arg4;
+- (BOOL)hasActiveQueries;
 - (id)initWithParentServer:(id)arg1 connectionQueue:(id)arg2;
 - (void)invalidate;
 - (void)queryServer:(id)arg1 requestsAuthorizationForSamples:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queryServer:(id)arg1 shouldStartWithCompletion:(CDUnknownBlockType)arg2;
 - (void)queryServerDidFinish:(id)arg1;
-- (void)remote_createQueryServerEndpointForIdentifier:(id)arg1 queryUUID:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)removeObserver:(id)arg1 forTaskServerUUID:(id)arg2;
-- (void)removeTaskServerObserver:(id)arg1;
 - (void)taskServerDidFailToInitializeForUUID:(id)arg1;
 - (void)taskServerDidFinishInitialization:(id)arg1;
 - (void)taskServerDidInvalidate:(id)arg1;

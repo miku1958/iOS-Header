@@ -17,17 +17,14 @@
     id _context;
 }
 
-@property (nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
-@property (weak, nonatomic) id context; // @synthesize context=_context;
+@property (readonly, nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
+@property (readonly, nonatomic) id context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isFailed) BOOL failed; // @synthesize failed=_failed;
+@property (readonly, nonatomic, getter=isFailed) BOOL failed; // @synthesize failed=_failed;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)context;
-+ (id)failureContext;
-- (void).cxx_destruct;
 
 @end
 

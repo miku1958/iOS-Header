@@ -40,6 +40,8 @@
 + (id)weatherServiceClientInterface;
 + (id)weatherServiceInterface;
 - (void).cxx_destruct;
+- (void)_callbackAllPendingTasksOnInvalidate:(id)arg1;
+- (void)_cleanup;
 - (void)_handleRemoteObjectProxyError:(id)arg1;
 - (void)_onQueueInvalidateConnection:(id)arg1;
 - (void)_onQueueOpenConnection;

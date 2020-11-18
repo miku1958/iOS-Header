@@ -6,16 +6,19 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class NSArray, NSString;
+@class MRNowPlayingState, NSArray, NSString;
 
 @interface MRSetDefaultSupportedCommandsMessage : MRProtocolMessage
 {
+    MRNowPlayingState *_state;
 }
 
 @property (readonly, nonatomic) NSString *bundleID;
 @property (readonly, nonatomic) NSArray *supportedCommands;
 
-- (id)initWithDefaultSupportedCommands:(id)arg1 forClient:(id)arg2;
+- (void).cxx_destruct;
+- (id)initWithDefaultSupportedCommands:(id)arg1 forPlayerPath:(id)arg2;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
 - (unsigned long long)type;
 
 @end

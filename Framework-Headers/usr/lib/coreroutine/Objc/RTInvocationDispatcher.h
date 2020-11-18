@@ -26,6 +26,7 @@
 - (BOOL)dispatchPendingInvocations;
 - (void)enqueueBlock:(CDUnknownBlockType)arg1 description:(id)arg2;
 - (void)enqueueBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 description:(id)arg3;
+- (id)init;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)invocationsPending;
 - (void)removeAllPendingInvocations;

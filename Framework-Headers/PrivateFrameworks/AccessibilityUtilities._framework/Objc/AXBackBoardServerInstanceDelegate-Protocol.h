@@ -28,6 +28,7 @@
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;
 - (void)setFullKeyboardAccessDaemonPID:(int)arg1;
 - (void)setHearingAidServerPid:(int)arg1;
+- (void)setIsSpeakScreenHighlightVisible:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setSiriViewServicePid:(int)arg1;
 - (void)userEventOccurred;

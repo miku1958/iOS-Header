@@ -17,6 +17,7 @@
 
 + (id)iosOptions;
 + (id)macOptions;
++ (id)macOptionsLocal;
 - (id)init;
 - (id)initWithShouldPrepopulateEmptyWhitelist:(BOOL)arg1 shouldRequireConfirmationOfChanges:(BOOL)arg2;
 

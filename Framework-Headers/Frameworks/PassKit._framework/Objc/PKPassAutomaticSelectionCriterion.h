@@ -14,6 +14,7 @@
 @interface PKPassAutomaticSelectionCriterion : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _supportsExpress;
+    BOOL _supportsInSessionExpress;
     NSString *_type;
     long long _technologyType;
     NSSet *_primaryTCIs;
@@ -25,6 +26,7 @@
 @property (copy, nonatomic) NSData *mask; // @synthesize mask=_mask;
 @property (copy, nonatomic) NSSet *primaryTCIs; // @synthesize primaryTCIs=_primaryTCIs;
 @property (nonatomic) BOOL supportsExpress; // @synthesize supportsExpress=_supportsExpress;
+@property (nonatomic) BOOL supportsInSessionExpress; // @synthesize supportsInSessionExpress=_supportsInSessionExpress;
 @property (nonatomic) long long technologyType; // @synthesize technologyType=_technologyType;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 

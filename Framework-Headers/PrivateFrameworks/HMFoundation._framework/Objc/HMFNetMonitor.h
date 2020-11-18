@@ -9,11 +9,11 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 
 @class HMFNetAddress, NSString;
-@protocol HMFLocking, HMFNetMonitorDelegate;
+@protocol HMFNetMonitorDelegate;
 
 @interface HMFNetMonitor : HMFObject <HMFLogging>
 {
-    id<HMFLocking> _lock;
+    struct os_unfair_lock_s _lock;
     BOOL _reachable;
     id<HMFNetMonitorDelegate> _delegate;
     HMFNetAddress *_netAddress;

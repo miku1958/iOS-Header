@@ -63,6 +63,7 @@
 - (void)_updateSeparatorInsets;
 - (BOOL)_useLargeFonts;
 - (void)addLocation:(id)arg1;
+- (void)contentSizeCategoryChanged:(id)arg1;
 - (void)dealloc;
 - (void)editButtonTapped;
 - (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;

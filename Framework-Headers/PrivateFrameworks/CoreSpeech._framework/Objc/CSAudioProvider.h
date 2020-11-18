@@ -25,6 +25,7 @@
     BOOL _waitingForAlertFinish;
     NSString *_UUID;
     NSObject<OS_dispatch_queue> *_recordQueue;
+    NSObject<OS_dispatch_queue> *_loggingQueue;
     CSAudioRecorder *_audioRecorder;
     unsigned long long _streamState;
     NSHashTable *_startPendingStreams;
@@ -71,6 +72,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSHashTable *historicalBufferRequestStreams; // @synthesize historicalBufferRequestStreams=_historicalBufferRequestStreams;
 @property (strong, nonatomic) CSAudioRecordContext *lastAudioRecorderContext; // @synthesize lastAudioRecorderContext=_lastAudioRecorderContext;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *loggingQueue; // @synthesize loggingQueue=_loggingQueue;
 @property (strong, nonatomic) NSMutableArray *pendingStartCompletions; // @synthesize pendingStartCompletions=_pendingStartCompletions;
 @property (strong, nonatomic) NSMutableArray *pendingStopCompletions; // @synthesize pendingStopCompletions=_pendingStopCompletions;
 @property (weak, nonatomic) id<CSAudioProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
@@ -103,7 +105,6 @@
 - (BOOL)_didPlayStartAlertSoundForSiri:(id)arg1 audioStream:(id)arg2;
 - (void)_didReceiveFinishStartAlertPlaybackAt:(unsigned long long)arg1;
 - (void)_fetchHistoricalAudioAndForwardToStream:(id)arg1 remoteVAD:(id)arg2;
-- (void)_forwardAudioChunk:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3 toStream:(id)arg4;
 - (void)_handleAudioSystemFailure;
 - (void)_handleDidStartAudioStreamWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_handleDidStopAudioStreamWithReason:(long long)arg1;
@@ -115,7 +116,6 @@
 - (void)_prepareAudioStream:(id)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_prepareAudioStreamSync:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (void)_processAudioBuffer:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
-- (void)_processAudioBufferForWatch:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)_releaseRecordingTransactionIfNeeded;
 - (void)_resetCircularBufferStartTime;
 - (void)_saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
@@ -129,8 +129,10 @@
 - (void)_startAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_streamStateName:(unsigned long long)arg1;
+- (void)_switchToListeningMode;
+- (void)_switchToRecordingMode;
 - (void)_tearDownCircularBufferIfNeeded;
-- (BOOL)activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)activateAudioSessionWithReason:(unsigned long long)arg1 dynamicAttribute:(unsigned long long)arg2 bundleID:(id)arg3 error:(id *)arg4;
 - (unsigned long long)alertStartTime;
 - (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (id)audioChunkToEndFrom:(unsigned long long)arg1;
@@ -160,6 +162,7 @@
 - (void)dealloc;
 - (BOOL)duckOthersOption;
 - (void)enableMiniDucking:(BOOL)arg1;
+- (void)enableSmartRoutingConsideration:(BOOL)arg1;
 - (id)holdAudioStreamWithDescription:(id)arg1 timeout:(double)arg2;
 - (id)initWithAudioStreamHandleId:(unsigned long long)arg1 audioRecorder:(id)arg2;
 - (BOOL)isNarrowBand;

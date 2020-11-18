@@ -12,37 +12,38 @@
 
 @interface PPM2FeedbackPortraitRegistered : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
     NSString *_clientId;
     int _domain;
+    int _feedbackDomainStatus;
     NSString *_mappingId;
     NSMutableArray *_records;
     int _type;
-    NSString *_variantId;
-    BOOL _fromPortrait;
     struct {
         unsigned int domain:1;
+        unsigned int feedbackDomainStatus:1;
         unsigned int type:1;
-        unsigned int fromPortrait:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 @property (strong, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
 @property (nonatomic) int domain; // @synthesize domain=_domain;
-@property (nonatomic) BOOL fromPortrait; // @synthesize fromPortrait=_fromPortrait;
+@property (nonatomic) int feedbackDomainStatus; // @synthesize feedbackDomainStatus=_feedbackDomainStatus;
+@property (readonly, nonatomic) BOOL hasActiveTreatments;
 @property (readonly, nonatomic) BOOL hasClientId;
 @property (nonatomic) BOOL hasDomain;
-@property (nonatomic) BOOL hasFromPortrait;
+@property (nonatomic) BOOL hasFeedbackDomainStatus;
 @property (readonly, nonatomic) BOOL hasMappingId;
 @property (nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasVariantId;
 @property (strong, nonatomic) NSString *mappingId; // @synthesize mappingId=_mappingId;
 @property (strong, nonatomic) NSMutableArray *records; // @synthesize records=_records;
 @property (nonatomic) int type; // @synthesize type=_type;
-@property (strong, nonatomic) NSString *variantId; // @synthesize variantId=_variantId;
 
 + (Class)recordsType;
 - (void).cxx_destruct;
 - (int)StringAsDomain:(id)arg1;
+- (int)StringAsFeedbackDomainStatus:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)addRecords:(id)arg1;
 - (void)clearRecords;
@@ -51,6 +52,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)domainAsString:(int)arg1;
+- (id)feedbackDomainStatusAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

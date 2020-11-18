@@ -19,6 +19,7 @@
     BOOL _fullyConnected;
     BOOL _convolutionTranspose;
     unsigned int _weightsDataType;
+    unsigned int _preferredWeightsDataType;
     unsigned int _weightsLayout;
     id<MPSCNNConvolutionDataSource> _dataSource;
     struct _opaque_pthread_mutex_t {
@@ -36,7 +37,7 @@
 @property (readonly, nonatomic) unsigned long long sourceGradientFeatureChannels; // @synthesize sourceGradientFeatureChannels=_inputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long sourceImageFeatureChannels; // @synthesize sourceImageFeatureChannels=_outputFeatureChannels;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)PeakAtWeightsWithConvolutionGradientState:(id)arg1;
 - (id)PeakAtWeightsWithConvolutionTransposeGradientState:(id)arg1;
 - (unsigned long long)batchEncodingStorageSizeForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
@@ -53,13 +54,15 @@
 - (id)initWithDevice:(id)arg1 weights:(id)arg2;
 - (id)initWithDevice:(id)arg1 weights:(id)arg2 convolutionTranspose:(BOOL)arg3;
 - (id)initWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3;
-- (void)initialize:(id)arg1 convDesc:(id)arg2 weights:(void *)arg3 dataType:(unsigned int)arg4 weightsLayout:(unsigned int)arg5 fullyConnected:(BOOL)arg6 convolutionTranspose:(BOOL)arg7;
+- (void)initialize:(id)arg1 convDesc:(id)arg2 weights:(void *)arg3 dataType:(unsigned int)arg4 weightsLayout:(unsigned int)arg5 fullyConnected:(BOOL)arg6 convolutionTranspose:(BOOL)arg7 preferredWeightsDataType:(unsigned int)arg8;
 - (void)initialize:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3 convolutionTranspose:(BOOL)arg4;
 - (BOOL)isResultStateReusedAcrossBatch;
 - (unsigned long long)maxBatchSize;
+- (unsigned int)preferredWeightsDataType;
 - (void)reloadWeightsAndBiasesFromDataSource;
 - (void)reloadWeightsAndBiasesWithCommandBuffer:(id)arg1 state:(id)arg2;
 - (id)weights;
+- (unsigned int)weightsDataType;
 - (unsigned int)weightsLayout;
 
 @end

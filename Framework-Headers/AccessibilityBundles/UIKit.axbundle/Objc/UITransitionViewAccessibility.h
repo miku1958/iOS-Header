@@ -16,10 +16,15 @@
 - (id)_accessibilityDimmingView;
 - (id)_accessibilityHitTestingObscuredScreenAllowedViews;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityObscuredScreenAllowedViews;
+- (id)_accessibilityPresentationController;
 - (id)_accessibilityRetrieveDelegate;
+- (id)_axPresentationController;
+- (void)_axSetPresentationController:(id)arg1;
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityViewIsModal;
+- (id)axAdditionalElements;
 
 @end
 

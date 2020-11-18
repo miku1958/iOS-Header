@@ -6,33 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSUbiquitousKeyValueStore, PGManager;
+@class NSMutableDictionary, NSUbiquitousKeyValueStore, PGManager, PGTrialSession;
 @protocol OS_os_log;
 
 @interface PHAQuestionController : NSObject
 {
     PGManager *_graphManager;
     NSObject<OS_os_log> *_loggingConnection;
+    PGTrialSession *_trialSession;
+    NSMutableDictionary *_questionTypeImportanceByQuestionType;
     NSUbiquitousKeyValueStore *_store;
 }
 
 @property (strong, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
+@property (strong, nonatomic) NSMutableDictionary *questionTypeImportanceByQuestionType; // @synthesize questionTypeImportanceByQuestionType=_questionTypeImportanceByQuestionType;
 @property (strong, nonatomic) NSUbiquitousKeyValueStore *store; // @synthesize store=_store;
+@property (strong, nonatomic) PGTrialSession *trialSession; // @synthesize trialSession=_trialSession;
 
 - (void).cxx_destruct;
-- (void)_handleKVSQuestionsUpdateIfNeeded;
-- (void)_syncAnsweredQuestions;
+- (void)_handleKVSQuestionsUpdateIfNeededWithProgressBlock:(CDUnknownBlockType)arg1;
+- (void)_syncAnsweredQuestionsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (void)_updateInvalidQuestionsWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)allQuestionFactories;
 - (void)assignScoreToQuestions:(id)arg1;
 - (id)currentQuestionsKVSData;
 - (BOOL)generateQuestionsWithOptions:(long long)arg1 limit:(unsigned long long)arg2 progress:(CDUnknownBlockType)arg3;
-- (double)importanceOfFactory:(Class)arg1;
+- (BOOL)generateQuestionsWithOptions:(long long)arg1 progress:(CDUnknownBlockType)arg2;
+- (double)importanceOfQuestionType:(id)arg1;
 - (id)initWithGraphManager:(id)arg1;
 - (BOOL)persistQuestions:(id)arg1;
 - (id)questionFactoriesForOptions:(long long)arg1;
 - (void)removeCurrentKVSData;
-- (id)selectedQuestionsFromSortedQuestionsByQuestionFactory:(id)arg1 withLimit:(unsigned long long)arg2;
+- (id)selectedQuestionsFromSortedQuestionsByQuestionType:(id)arg1 withLimit:(unsigned long long)arg2;
 
 @end
 

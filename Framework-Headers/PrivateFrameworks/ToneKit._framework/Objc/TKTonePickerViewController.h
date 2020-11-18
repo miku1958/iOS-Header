@@ -24,6 +24,7 @@
     UIImage *_checkmarkImage;
     TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForIndentedRows;
     TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForUnindentedRows;
+    long long _tonePickerTableViewStyle;
     BOOL _showsToneStoreWasSetExplicitly;
     BOOL _needsScrollPositionReset;
     UIBarButtonItem *_storeBarButtonItem;
@@ -81,6 +82,7 @@
 - (void)_handleMediaLibraryDidChangeNotification;
 - (void)_handlePreferredContentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_handleSwitchControlValueChanged:(id)arg1;
+- (id)_initWithAlertType:(long long)arg1 tableViewStyle:(long long)arg2;
 - (id)_mediaItemForIdentifier:(id)arg1;
 - (double)_minimumTextIndentationForTableView:(id)arg1 withCheckmarkImage:(id)arg2;
 - (id)_musicPlayer;

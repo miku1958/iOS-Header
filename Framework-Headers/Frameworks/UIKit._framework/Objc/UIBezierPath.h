@@ -57,6 +57,7 @@
 + (id)shadowBezierPath:(struct CGRect)arg1 withRoundedEdges:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(BOOL)arg4;
+- (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(BOOL)arg4 leadInIsContinuous:(BOOL)arg5 leadOutIsContinuous:(BOOL)arg6;
 - (struct CGPath *)_createMutablePathByDecodingData:(id)arg1;
 - (id)_initWithCGMutablePath:(struct CGPath *)arg1;
 - (struct CGPath *)_mutablePath;

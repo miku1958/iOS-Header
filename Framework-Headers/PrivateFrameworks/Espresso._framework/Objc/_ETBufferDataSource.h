@@ -8,6 +8,8 @@
 
 #import <Espresso/ETDataProvider-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface _ETBufferDataSource : NSObject <ETDataProvider>
 {
@@ -21,8 +23,12 @@ __attribute__((visibility("hidden")))
 @property unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property unordered_map_1de83e55 blobShapes; // @synthesize blobShapes=_blobShapes;
 @property unordered_map_4e50001a dataStorage; // @synthesize dataStorage=_dataStorage;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property vector_ebb6ef3e nonBatchBlobNames; // @synthesize nonBatchBlobNames=_nonBatchBlobNames;
 @property unsigned long long number_of_data_points; // @synthesize number_of_data_points=_number_of_data_points;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

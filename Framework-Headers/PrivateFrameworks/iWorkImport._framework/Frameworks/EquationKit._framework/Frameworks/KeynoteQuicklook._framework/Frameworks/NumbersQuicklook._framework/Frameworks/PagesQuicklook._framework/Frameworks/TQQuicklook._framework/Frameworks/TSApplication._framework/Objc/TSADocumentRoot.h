@@ -10,8 +10,8 @@
 #import <TSApplication/TSDScrollingAwareChangeSource-Protocol.h>
 #import <TSApplication/TSKPencilAnnotationSupportedDocument-Protocol.h>
 
-@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSADocumentInfo, TSADrawableFactory, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSDFreehandDrawingToolkitUIState, TSKCustomFormatList, TSKViewState, TSPLazyReference, TSTCustomFormatList;
-@protocol OS_dispatch_queue;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSADocumentInfo, TSADrawableFactory, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSDFreehandDrawingToolkitUIState, TSKCustomFormatList, TSKPencilAnnotationUIState, TSKViewState, TSPLazyReference, TSTCustomFormatList;
+@protocol OS_dispatch_queue, TSAUIState;
 
 @interface TSADocumentRoot : TSWPDocumentRoot <TSKPencilAnnotationSupportedDocument, TSDImportExportDelegate, TSDScrollingAwareChangeSource>
 {
@@ -42,6 +42,7 @@
     BOOL _didLoadDocumentFromTemplate;
     BOOL _didLoadDocumentFromRevert;
     NSArray *_buildVersionHistory;
+    id<TSAUIState> _uiState;
 }
 
 @property (copy, nonatomic) NSArray *buildVersionHistory; // @synthesize buildVersionHistory=_buildVersionHistory;
@@ -70,16 +71,24 @@
 @property (readonly, nonatomic) NSString *name;
 @property (nonatomic) BOOL needsMediaCompatibilityUpgrade;
 @property (readonly, nonatomic) NSDictionary *packageDataForWrite;
+@property (readonly, nonatomic) TSKPencilAnnotationUIState *pencilAnnotationUIState;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *templateIdentifier;
+@property (strong, nonatomic) id<TSAUIState> uiState; // @synthesize uiState=_uiState;
 @property (readonly, nonatomic) TSKViewState *viewState;
 
 + (id)_localeForUnlocalizedValues;
 + (id)_localizedStringKeyForValue:(double)arg1 templateName:(id)arg2 tableInfo:(id)arg3 unlocalizedTableName:(id)arg4 cellAddress:(struct TSUCellCoord)arg5 defaultValue:(out id *)arg6;
 + (id)buildVersionHistoryPath;
 + (id)buildVersionHistoryPathPreUFF;
++ (BOOL)doesTopMostContainerSupportRTLOrigin;
 + (void)localizeChartInfo:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
++ (void)localizeDropCapsInStorage:(id)arg1 withLocale:(id)arg2;
 + (void)localizeModelObject:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
++ (void)localizePropertiesOfIdentifiedStyle:(id)arg1 withMap:(id)arg2;
++ (void)localizePropertiesOfNamedStyle:(id)arg1 withMap:(id)arg2;
++ (void)localizePropertiesOfStyle:(id)arg1 withMap:(id)arg2;
++ (void)localizePropertiesOfStylesInStylesheet:(id)arg1 withMap:(id)arg2;
 + (void)localizeTableInfo:(id)arg1 templateBundle:(id)arg2 andLocale:(id)arg3;
 + (void)localizeTextStorage:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
 + (id)localizedFontNameForFontName:(id)arg1 withLocale:(id)arg2;
@@ -89,6 +98,7 @@
 + (struct CGSize)previewImageSizeForType:(unsigned long long)arg1;
 + (unsigned long long)previewTypeForCurrentDevice;
 + (void)removeExistingPreviewsForDocumentAtPath:(id)arg1;
++ (void)replacePropertiesOfStyle:(id)arg1 withMap:(id)arg2;
 + (id)scaledPreviewImageForType:(unsigned long long)arg1 scalableImage:(id)arg2;
 + (BOOL)shouldShowImportedDataNotificationsOnOpen;
 + (id)supportedPreviewImageExtensions;
@@ -114,8 +124,6 @@
 - (void)captureViewStateIfNeeded;
 - (BOOL)childrenCanBeAnnotatedWithPencil;
 - (void)cleanupForImportFailure;
-- (void)collectDocumentCloseAnalyticsWithLogger:(id)arg1;
-- (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (id)commandForPropagatingPresetChangeCommand:(id)arg1 alwaysPreserveAppearance:(BOOL)arg2;
 - (void)commonInit;
 - (long long)compareLocationSortingInfo:(id)arg1 toSortingInfo:(id)arg2;
@@ -159,6 +167,7 @@
 - (BOOL)objectsNeedToBeMigrated:(id)arg1;
 - (void)pUpgradeHyperlinks;
 - (void)pUpgradeHyperlinksInStorage:(id)arg1;
+- (void)p_addCaptionShapeStyles;
 - (id)p_captureViewStateForImport:(BOOL)arg1;
 - (void)p_cleanupColumnStyles;
 - (id)p_parseNumberOutOfBasename:(id)arg1 hasNumber:(BOOL *)arg2 number:(unsigned long long *)arg3;
@@ -175,13 +184,14 @@
 - (void)p_verifyEntireDocument;
 - (void)pauseRecalculation;
 - (void)pauseRecalculationSometimeSoon;
-- (id)pencilAnnotationEnumeratorFromRootObect:(id)arg1;
+- (id)pencilAnnotationEnumeratorFromRootObject:(id)arg1;
 - (void)performHyperlinkUpgradesIfNecessaryForVersion:(unsigned long long)arg1;
 - (void)performStylesheetUpdatesIfNecessaryForVersion:(unsigned long long)arg1;
 - (void)prepareForSavingAsTemplate;
 - (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (void)prepareNewDocumentWithUserTemplateIdentifier:(id)arg1;
 - (void)prepareToGeneratePreview;
+- (void)prepareUIStateForInitialViewing:(id)arg1;
 - (id)previewImage;
 - (id)previewImageForSize:(struct CGSize)arg1;
 - (id)protected_defaultTextPresetOrdering;
@@ -194,6 +204,7 @@
 - (void)resetViewState;
 - (void)resumeBackgroundActivities;
 - (void)resumeRecalculation;
+- (void)resumeRecalculationForBlock:(CDUnknownBlockType)arg1;
 - (void)resumeThumbnailing;
 - (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
 - (void)sendDocumentEditedAnalyticsWithWasEdited:(BOOL)arg1;
@@ -205,7 +216,7 @@
 - (void)setFunctionBrowserState:(id)arg1;
 - (void)setShortcutController:(id)arg1;
 - (id)shortcutController;
-- (BOOL)shouldAllowDrawableInGroups:(id)arg1 forImport:(BOOL)arg2;
+- (BOOL)shouldAllowDrawableInGroups:(id)arg1;
 - (BOOL)shouldCancelScrollingToSelectionPath:(id)arg1 forChanges:(id)arg2;
 - (BOOL)shouldShowFontWarningNotificationForWarnings:(id)arg1;
 - (void)stashUpgradeState:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
@@ -224,6 +235,7 @@
 - (void)upgradeTextboxPresets;
 - (void)upgradeToFixNonVariationChildStylesWithFileFormatVersion:(unsigned long long)arg1;
 - (void)upgradeToSingleStylesheet;
+- (BOOL)validatedLoadFromUnarchiver:(id)arg1;
 - (id)warningLocationDescriptionForAffectedObjects:(id)arg1 sortingInfo:(id *)arg2;
 - (id)warnings;
 - (id)warningsByCombiningSortedWarnings:(id)arg1 withWarnings:(id)arg2;

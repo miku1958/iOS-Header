@@ -17,6 +17,7 @@
     BOOL _startOfSpeechDetected;
     BOOL _needsToUpdateModel;
     int _notifyToken;
+    id<CSLanguageDetectorDelegate> _delegate;
     _EARLanguageDetector *_languageDetector;
     _EARLanguageDetectorAudioBuffer *_audioBuffer;
     CSStartOfSpeechDetector *_startOfSpeechDetector;
@@ -28,7 +29,6 @@
     CSAsset *_currentAsset;
     NSString *_interactionID;
     NSObject<OS_dispatch_queue> *_queue;
-    id<CSLanguageDetectorDelegate> _delegate;
 }
 
 @property (strong, nonatomic) _EARLanguageDetectorAudioBuffer *audioBuffer; // @synthesize audioBuffer=_audioBuffer;
@@ -54,7 +54,7 @@
 - (void).cxx_destruct;
 - (id)_constructLangPriors;
 - (id)_getDefaultValues;
-- (void)_initializeStartOfSpeechDetector:(id)arg1;
+- (void)_initializeStartOfSpeechDetector:(id)arg1 samplingRate:(float)arg2;
 - (void)_logLanguageDetectorMetricsForLoggingInfo:(id)arg1;
 - (void)_logSoSResult:(id)arg1 toPath:(id)arg2;
 - (id)_readJsonDictionaryAt:(id)arg1;
@@ -68,6 +68,7 @@
 - (void)dealloc;
 - (void)endAudio;
 - (id)init;
+- (id)initWithModelURL:(id)arg1;
 - (void)languageDetector:(id)arg1 result:(id)arg2;
 - (void)languageDetectorDidCompleteProcessing:(id)arg1 loggingInfo:(id)arg2;
 - (void)recordRecognitionLanguage:(id)arg1;

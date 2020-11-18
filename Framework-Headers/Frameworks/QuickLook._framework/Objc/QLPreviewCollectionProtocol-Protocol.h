@@ -16,6 +16,7 @@
 - (void)keyCommandWasPerformed:(QLKeyCommand *)arg1;
 - (void)keyCommandsWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
+- (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(NSString *)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(void (^)(void))arg1;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(void (^)(void))arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(BOOL)arg1 withCompletionHandler:(void (^)(unsigned long long, QLPreviewItemEditedCopy *))arg2;

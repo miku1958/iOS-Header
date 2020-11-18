@@ -14,7 +14,6 @@
 - (void)didCompleteOnboarding;
 - (void)didDismissOnboarding;
 - (void)didEnableAtrialFibrillationNotifications;
-- (void)didTapOnAtrialFibrillationNotificationLearnMore;
 - (void)didTapOnElectrocardiogram:(HKElectrocardiogram *)arg1;
 @end
 

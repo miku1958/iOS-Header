@@ -9,21 +9,26 @@
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXUIKeyCommandNamespace-Protocol.h>
 
-@class NSString, PXMutableIndexPathSet, PXSectionedDataSource, PXSectionedDataSourceManager, PXSelectionSnapshot;
+@class NSString, PXAssetSelectionTypeCounter, PXMutableIndexPathSet, PXSectionedDataSource, PXSectionedDataSourceManager, PXSelectionSnapshot;
+@protocol PXSectionedSelectionManagerSnapshotValidator;
 
 @interface PXSectionedSelectionManager : PXObservable <PXUIKeyCommandNamespace, PXSectionedDataSourceManagerObserver>
 {
     struct {
         BOOL selectionSnapshot;
     } _needsUpdateFlags;
+    BOOL _selectionLimitReached;
+    BOOL _disableAssetTypeCounting;
     PXSectionedDataSourceManager *_dataSourceManager;
     PXSelectionSnapshot *_selectionSnapshot;
     PXSectionedDataSource *_dataSource;
     PXMutableIndexPathSet *_selectedIndexPaths;
+    id<PXSectionedSelectionManagerSnapshotValidator> _snapshotValidator;
     struct PXSimpleIndexPath _cursorIndexPath;
     struct PXSimpleIndexPath _pendingIndexPath;
 }
 
+@property (readonly, nonatomic) PXAssetSelectionTypeCounter *assetTypeCounter;
 @property (nonatomic, setter=_setCursorIndexPath:) struct PXSimpleIndexPath cursorIndexPath; // @synthesize cursorIndexPath=_cursorIndexPath;
 @property (strong, nonatomic, setter=_setDataSource:) PXSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) PXSectionedDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
@@ -31,41 +36,50 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableAssetTypeCounting; // @synthesize disableAssetTypeCounting=_disableAssetTypeCounting;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *namespaceIdentifier;
 @property (nonatomic, setter=_setPendingIndexPath:) struct PXSimpleIndexPath pendingIndexPath; // @synthesize pendingIndexPath=_pendingIndexPath;
 @property (strong, nonatomic, setter=_setSelectedIndexPaths:) PXMutableIndexPathSet *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
+@property (nonatomic, setter=_setSelectionLimitReached:) BOOL selectionLimitReached; // @synthesize selectionLimitReached=_selectionLimitReached;
 @property (strong, nonatomic, setter=_setSelectionSnapshot:) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
+@property (weak, nonatomic) id<PXSectionedSelectionManagerSnapshotValidator> snapshotValidator; // @synthesize snapshotValidator=_snapshotValidator;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct PXSimpleIndexPath)_extendSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 inDirection:(unsigned long long)arg3 withDelegate:(id)arg4;
 - (struct PXSimpleIndexPath)_initialItemIndexPathForMoveInDirection:(unsigned long long)arg1;
 - (struct PXSimpleIndexPath)_initialSectionIndexPathForMoveInDirection:(unsigned long long)arg1;
 - (void)_invalidateSelectionSnapshot;
 - (void)_makeSimpleModificationToSelectedIndexPathsUsingBlock:(CDUnknownBlockType)arg1;
+- (struct PXSimpleIndexPath)_moveItemSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (struct PXSimpleIndexPath)_moveSectionSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
 - (struct PXSimpleIndexPath)_moveSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1 inDirection:(unsigned long long)arg2 withDelegate:(id)arg3;
-- (BOOL)_performCommand:(long long)arg1 withDelegate:(id)arg2;
+- (BOOL)_needsUpdate;
+- (long long)_performCommand:(long long)arg1 withDelegate:(id)arg2;
 - (void)_performExtendInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (void)_performMoveInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
 - (void)_performSelectAll;
 - (void)_performUnselectAll;
-- (struct PXSimpleIndexPath)_selectInitialItemForMoveInDirection:(unsigned long long)arg1;
-- (struct PXSimpleIndexPath)_selectInitialSectionForMoveInDirection:(unsigned long long)arg1;
+- (struct PXSimpleIndexPath)_selectInitialItemForMoveInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (struct PXSimpleIndexPath)_selectInitialSectionForMoveInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
 - (void)_setDataSource:(id)arg1 withChangeHistory:(id)arg2;
 - (void)_updateIfNeeded;
 - (void)_updateSelectionSnapshotIfNeeded;
+- (id)_validatedSnapshotForSnapshot:(id)arg1;
 - (void)deselectAll;
 - (void)didPerformChanges;
 - (struct PXSimpleIndexPath)extendSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1 inDirection:(unsigned long long)arg2 withDelegate:(id)arg3;
+- (struct PXSimpleIndexPath)extendSelectionToItemIndexPath:(struct PXSimpleIndexPath)arg1 withDelegate:(id)arg2;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1;
-- (struct PXSimpleIndexPath)moveItemSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
-- (struct PXSimpleIndexPath)moveSectionSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (struct PXSimpleIndexPath)moveSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
 - (id)mutableChangeObject;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
-- (BOOL)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
+- (long long)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
 - (void)selectAllItems;
 - (void)selectNonCopiedAssetsWithImportStatusManager:(id)arg1;
@@ -74,7 +88,9 @@
 - (void)setSelectedIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)setSelectedIndexPaths:(id)arg1;
 - (void)setSelectedState:(BOOL)arg1 forIndexPath:(struct PXSimpleIndexPath)arg2;
+- (void)setSelectedState:(BOOL)arg1 forIndexPath:(struct PXSimpleIndexPath)arg2 andUpdateCursorIndexPath:(BOOL)arg3;
 - (void)setSelectedState:(BOOL)arg1 forIndexPathSet:(id)arg2;
+- (void)setSelectionLimitReached:(BOOL)arg1;
 - (struct PXSimpleIndexPath)startingIndexPathForMoveInDirection:(unsigned long long)arg1;
 - (id)uiKeyCommandsWithDelegate:(id)arg1;
 

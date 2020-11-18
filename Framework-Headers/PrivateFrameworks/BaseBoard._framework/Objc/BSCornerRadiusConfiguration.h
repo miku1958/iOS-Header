@@ -35,7 +35,6 @@
 - (id)initWithTopLeft:(double)arg1 bottomLeft:(double)arg2 bottomRight:(double)arg3 topRight:(double)arg4;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToCornerRadiusConfiguration:(id)arg1;
 
 @end
 

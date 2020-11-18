@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (void)setIndexBufferIndex:(unsigned long long)arg1;
 - (void)setIndexType:(unsigned long long)arg1;
-- (BOOL)validateWithVertexFunction:(id)arg1 error:(id *)arg2;
+- (BOOL)validateWithVertexFunction:(id)arg1 error:(id *)arg2 renderPipelineDescriptor:(id)arg3;
 
 @end
 

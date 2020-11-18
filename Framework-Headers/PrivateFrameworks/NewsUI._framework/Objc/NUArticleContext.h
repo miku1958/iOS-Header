@@ -8,15 +8,20 @@
 
 #import <NewsUI/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NUArticleContext : NSObject <NSCopying>
 {
     BOOL _shouldAutoPlayVideo;
+    NSString *_componentIdentifier;
 }
 
+@property (readonly, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
 @property (readonly, nonatomic) BOOL shouldAutoPlayVideo; // @synthesize shouldAutoPlayVideo=_shouldAutoPlayVideo;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithShouldAutoPlayVideo:(BOOL)arg1;
+- (id)initWithShouldAutoPlayVideo:(BOOL)arg1 componentIdentifier:(id)arg2;
 
 @end
 

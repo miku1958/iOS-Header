@@ -14,7 +14,41 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct DataStore;
+struct BlockAccessFile {
+    struct TransactionalFile _field1;
+    struct BlockAccessFileHeader _field2;
+};
+
+struct BlockAccessFileHeader {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned long long _field4;
+    struct BlockPointer _field5;
+    struct BlockPointer _field6;
+    struct BlockPointer _field7;
+};
+
+struct BlockPointer {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct CacheEntry;
+
+struct DataStore {
+    struct BlockAccessFile _field1;
+    struct BlockPointer _field2;
+};
+
+struct FileHeader {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+};
 
 struct HDActivityCacheActiveSource {
     double _field1;
@@ -71,13 +105,60 @@ struct ObjectIdentifier {
     unsigned long long identifier;
 };
 
+struct TransactionalCache<unsigned long long, health::FilePage> {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    struct unordered_map<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>>> _field3;
+    struct CacheEntry *_field4;
+    struct CacheEntry *_field5;
+    struct function<bool (unsigned long long, const unsigned long long &, const health::FilePage &)> _field6;
+};
+
+struct TransactionalFile {
+    shared_ptr_c7cae3aa _field1;
+    struct WriteAheadLog _field2;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
+    struct shared_ptr<health::VirtualFile> _field4;
+    BOOL _field5;
+    struct FileHeader _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    int _field9;
+    struct mutex _field10;
+    struct TransactionalCache<unsigned long long, health::FilePage> _field11;
+    struct mutex _field12;
+    struct condition_variable _field13;
+    struct map<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *, std::__1::less<std::__1::__thread_id>, std::__1::allocator<std::__1::pair<const std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>>> _field14;
+    struct queue<std::__1::__thread_id, std::__1::deque<std::__1::__thread_id, std::__1::allocator<std::__1::__thread_id>>> _field15;
+    struct map<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *, std::__1::less<std::__1::__thread_id>, std::__1::allocator<std::__1::pair<const std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>>> _field16;
+};
+
+struct VirtualFile;
+
+struct VirtualFilesystem;
+
+struct WriteAheadLog {
+    struct mutex _field1;
+    struct condition_variable _field2;
+    shared_ptr_c7cae3aa _field3;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
+    struct shared_ptr<health::VirtualFile> _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    long long _field8;
+    BOOL _field9;
+    struct vector<std::__1::shared_ptr<health::WriteAheadLog::Transaction>, std::__1::allocator<std::__1::shared_ptr<health::WriteAheadLog::Transaction>>> _field10;
+    struct unordered_multiset<unsigned long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<unsigned long long>> _field11;
+    struct map<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>>> _field12;
+};
+
 struct _HDActivityCacheActiveSourceCalculatorSourceEvent {
     double _field1;
     long long _field2;
     long long _field3;
 };
 
-struct _HDDeleteObjectDataDefn {
+struct _HDObjectDeletionInfo {
     BOOL _field1;
     long long _field2;
     long long _field3;
@@ -101,12 +182,70 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long l
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, bool>, void *>*> *__next_;
 };
 
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*> *_field1;
+};
+
+struct __hash_node_base<std::__1::__hash_node<unsigned long long, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<unsigned long long, void *>*> *_field1;
+};
+
+struct __shared_weak_count;
+
+struct __thread_id;
+
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
 };
 
 struct atomic_flag {
     _Atomic BOOL _Value;
+};
+
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+};
+
+struct condition_variable {
+    struct _opaque_pthread_cond_t {
+        long long _field1;
+        char _field2[40];
+    } _field1;
+};
+
+struct deque<std::__1::__thread_id, std::__1::allocator<std::__1::__thread_id>> {
+    struct __split_buffer<std::__1::__thread_id *, std::__1::allocator<std::__1::__thread_id *>> {
+        struct __thread_id **_field1;
+        struct __thread_id **_field2;
+        struct __thread_id **_field3;
+        struct __compressed_pair<std::__1::__thread_id **, std::__1::allocator<std::__1::__thread_id *>> {
+            struct __thread_id **_field1;
+        } _field4;
+    } _field1;
+    unsigned long long _field2;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__thread_id>> {
+        unsigned long long _field1;
+    } _field3;
 };
 
 struct deque<std::__1::tuple<double, double, float>, std::__1::allocator<std::__1::tuple<double, double, float>>> {
@@ -122,6 +261,20 @@ struct deque<std::__1::tuple<double, double, float>, std::__1::allocator<std::__
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::tuple<double, double, float>>> {
         unsigned long long __value_;
     } __size_;
+};
+
+struct function<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
+    struct __value_func<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
+        struct type _field1;
+        struct __base<bool (health::DataStore *, health::DataStore *, unsigned long long)> *_field2;
+    } _field1;
+};
+
+struct function<bool (unsigned long long, const unsigned long long &, const health::FilePage &)> {
+    struct __value_func<bool (unsigned long long, const unsigned long long &, const health::FilePage &)> {
+        struct type _field1;
+        struct __base<bool (unsigned long long, const unsigned long long &, const health::FilePage &)> *_field2;
+    } _field1;
 };
 
 struct linear_congruential_engine<unsigned int, 48271, 0, 2147483647> {
@@ -152,10 +305,61 @@ struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, st
     } _field1;
 };
 
+struct map<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *, std::__1::less<std::__1::__thread_id>, std::__1::allocator<std::__1::pair<const std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>>> {
+    struct __tree<std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>, std::__1::__map_value_compare<std::__1::__thread_id, std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>, std::__1::less<std::__1::__thread_id>, true>, std::__1::allocator<std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::__thread_id, std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::ReadTransaction *>, std::__1::less<std::__1::__thread_id>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *, std::__1::less<std::__1::__thread_id>, std::__1::allocator<std::__1::pair<const std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>>> {
+    struct __tree<std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>, std::__1::__map_value_compare<std::__1::__thread_id, std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>, std::__1::less<std::__1::__thread_id>, true>, std::__1::allocator<std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::__thread_id, std::__1::__value_type<std::__1::__thread_id, health::TransactionalFile::WriteTransaction *>, std::__1::less<std::__1::__thread_id>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>>> {
+    struct __tree<std::__1::__value_type<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, std::__1::vector<health::WriteAheadLog::PageEntry, std::__1::allocator<health::WriteAheadLog::PageEntry>>>, std::__1::less<unsigned long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct mutex {
+    struct _opaque_pthread_mutex_t {
+        long long _field1;
+        char _field2[56];
+    } _field1;
+};
+
 struct normal_distribution<double> {
     struct param_type __p_;
     double _V_;
     BOOL _V_hot_;
+};
+
+struct optional<std::__1::set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>>> {
+    union {
+        char _field1;
+        set_b4d22a2d _field2;
+    } _field1;
+    BOOL _field2;
 };
 
 struct os_unfair_lock_s {
@@ -167,9 +371,68 @@ struct param_type {
     double __stddev_;
 };
 
+struct queue<std::__1::__thread_id, std::__1::deque<std::__1::__thread_id, std::__1::allocator<std::__1::__thread_id>>> {
+    struct deque<std::__1::__thread_id, std::__1::allocator<std::__1::__thread_id>> _field1;
+};
+
+struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
+    struct __tree<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long long, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::less<unsigned long long>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
 struct shared_ptr<health::DataStore> {
     struct DataStore *__ptr_;
     struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<health::VirtualFile> {
+    struct VirtualFile *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct shared_ptr<health::VirtualFilesystem> {
+    struct VirtualFilesystem *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<health::WriteAheadLog::Transaction>;
+
+struct sqlite3_file {
+    struct sqlite3_io_methods *_field1;
+};
+
+struct sqlite3_io_methods;
+
+struct sqlite3_vfs {
+    int _field1;
+    int _field2;
+    int _field3;
+    struct sqlite3_vfs *_field4;
+    char *_field5;
+    void *_field6;
+    CDUnknownFunctionPointerType _field7;
+    CDUnknownFunctionPointerType _field8;
+    CDUnknownFunctionPointerType _field9;
+    CDUnknownFunctionPointerType _field10;
+    CDUnknownFunctionPointerType _field11;
+    CDUnknownFunctionPointerType _field12;
+    CDUnknownFunctionPointerType _field13;
+    CDUnknownFunctionPointerType _field14;
+    CDUnknownFunctionPointerType _field15;
+    CDUnknownFunctionPointerType _field16;
+    CDUnknownFunctionPointerType _field17;
+    CDUnknownFunctionPointerType _field18;
+    CDUnknownFunctionPointerType _field19;
+    CDUnknownFunctionPointerType _field20;
+    CDUnknownFunctionPointerType _field21;
+    CDUnknownFunctionPointerType _field22;
 };
 
 struct tuple<double, double, float>;
@@ -181,10 +444,20 @@ struct tuple<long long, HKSample *> {
     } __base_;
 };
 
+struct type {
+    unsigned char _field1[32];
+};
+
 struct unique_ptr<_HDStatisticsCollectionCalculatorImplementation, std::__1::default_delete<_HDStatisticsCollectionCalculatorImplementation>> {
     struct __compressed_pair<_HDStatisticsCollectionCalculatorImplementation *, std::__1::default_delete<_HDStatisticsCollectionCalculatorImplementation>> {
         struct _HDStatisticsCollectionCalculatorImplementation *__value_;
     } __ptr_;
+};
+
+struct unique_ptr<health::DataStore, std::__1::default_delete<health::DataStore>> {
+    struct __compressed_pair<health::DataStore *, std::__1::default_delete<health::DataStore>> {
+        struct DataStore *_field1;
+    } _field1;
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, HKSource *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, HKSource *>, void *>*>*>>> {
@@ -207,6 +480,28 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
             } __data_;
         } __value_;
     } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<unsigned long long, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
 };
 
 struct unordered_map<long long, HKSource *, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, HKSource *>>> {
@@ -237,6 +532,36 @@ struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal
             float __value_;
         } __p3_;
     } __table_;
+};
+
+struct unordered_map<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, std::__1::hash<unsigned long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, health::TransactionalCache<unsigned long long, health::FilePage>::CacheLine>, std::__1::equal_to<unsigned long long>, true>> {
+            float _field1;
+        } _field4;
+    } _field1;
+};
+
+struct unordered_multiset<unsigned long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<unsigned long long>> {
+    struct __hash_table<unsigned long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<unsigned long long>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<unsigned long long, void *>*>, std::__1::allocator<std::__1::__hash_node<unsigned long long, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<unsigned long long, void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::hash<unsigned long long>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__1::equal_to<unsigned long long>> {
+            float _field1;
+        } _field4;
+    } _field1;
 };
 
 struct vector<HDActivityCacheActiveSource, std::__1::allocator<HDActivityCacheActiveSource>> {
@@ -308,6 +633,14 @@ struct vector<long long, std::__1::allocator<long long>> {
     long long *_field2;
     struct __compressed_pair<long long *, std::__1::allocator<long long>> {
         long long *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::shared_ptr<health::WriteAheadLog::Transaction>, std::__1::allocator<std::__1::shared_ptr<health::WriteAheadLog::Transaction>>> {
+    struct shared_ptr<health::WriteAheadLog::Transaction> *_field1;
+    struct shared_ptr<health::WriteAheadLog::Transaction> *_field2;
+    struct __compressed_pair<std::__1::shared_ptr<health::WriteAheadLog::Transaction>*, std::__1::allocator<std::__1::shared_ptr<health::WriteAheadLog::Transaction>>> {
+        struct shared_ptr<health::WriteAheadLog::Transaction> *_field1;
     } _field3;
 };
 
@@ -383,6 +716,13 @@ typedef struct {
     long long patchVersion;
 } CDStruct_f6aba300;
 
+typedef struct function<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
+    struct __value_func<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
+        struct type _field1;
+        struct __base<bool (health::DataStore *, health::DataStore *, unsigned long long)> *_field2;
+    } _field1;
+} function_196a1805;
+
 typedef struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>> {
     struct __tree<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -395,10 +735,41 @@ typedef struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long l
     } _field1;
 } map_c63dce6d;
 
+typedef struct optional<std::__1::set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>>> {
+    union {
+        char _field1;
+        set_b4d22a2d _field2;
+    } _field1;
+    BOOL _field2;
+} optional_329458b2;
+
+typedef struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
+    struct __tree<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long long, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::less<unsigned long long>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+} set_b4d22a2d;
+
 typedef struct shared_ptr<health::DataStore> {
     struct DataStore *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_88ae0538;
+
+typedef struct shared_ptr<health::VirtualFilesystem> {
+    struct VirtualFilesystem *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_c7cae3aa;
+
+typedef struct unique_ptr<health::DataStore, std::__1::default_delete<health::DataStore>> {
+    struct __compressed_pair<health::DataStore *, std::__1::default_delete<health::DataStore>> {
+        struct DataStore *_field1;
+    } _field1;
+} unique_ptr_8ada683d;
 
 typedef struct unordered_map<long long, HKSource *, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, HKSource *>>> {
     struct __hash_table<std::__1::__hash_value_type<long long, HKSource *>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, HKSource *>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, HKSource *>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, HKSource *>>> {

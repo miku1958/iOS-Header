@@ -7,15 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsResourceDepot-Protocol.h>
 
-@class GEOAutomobileOptions, MapsSuggestionsManager, MapsSuggestionsShortcutManager, MapsSuggestionsUser, NSString;
-@protocol OS_dispatch_queue;
+@class GEOAutomobileOptions, MapsSuggestionsManager, NSString;
+@protocol MapsSuggestionsResourceDepot, OS_dispatch_queue;
 
-@interface MapsSuggestionsEngine : NSObject <MapsSuggestionsObject>
+@interface MapsSuggestionsEngine : NSObject <MapsSuggestionsObject, MapsSuggestionsResourceDepot>
 {
+    id<MapsSuggestionsResourceDepot> _resourceDepot;
     MapsSuggestionsManager *_entryManager;
-    MapsSuggestionsShortcutManager *_shortcutManager;
-    MapsSuggestionsUser *_user;
     NSObject<OS_dispatch_queue> *_optionsSerialQueue;
     int _mapType;
     GEOAutomobileOptions *_automobileOptions;
@@ -29,34 +29,39 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (id)defaultCachePath;
 - (void).cxx_destruct;
 - (void)addAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (void)attachSink:(id)arg1;
-- (BOOL)detachSink:(id)arg1;
-- (id)fakeSource;
+- (void)detachSink:(id)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (void)hintRefreshOfType:(long long)arg1;
-- (id)initWithEntryManager:(id)arg1 shortcutManager:(id)arg2;
+- (id)initWithEntryManager:(id)arg1 resourceDepot:(id)arg2;
 - (BOOL)loadStorageFromFile:(id)arg1;
 - (BOOL)loadStorageFromFile:(id)arg1 callback:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
 - (id)manager;
+- (id)oneContacts;
+- (id)oneEventKit;
+- (id)oneFavorites;
+- (id)oneFlightUpdater;
+- (id)oneInsights;
+- (id)oneMapsSync;
+- (id)oneNetworkRequester;
+- (id)onePortrait;
+- (id)oneRoutine;
+- (BOOL)oneShotTopSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3 callback:(CDUnknownBlockType)arg4 onQueue:(id)arg5;
+- (id)oneSourceDelegate;
+- (id)oneUser;
+- (id)oneVirtualGarage;
 - (void)removeAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)reset;
-- (id)routine;
-- (BOOL)saveStorageToFile:(id)arg1;
-- (void)setFakeSource:(id)arg1;
-- (id)shortcutManager;
-- (void)startDemoMode;
+- (BOOL)saveStorageToFile:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)strategy;
 - (id)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3;
 - (BOOL)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3 callback:(CDUnknownBlockType)arg4 onQueue:(id)arg5;
 - (id)topSuggestionsFromStorageFile:(id)arg1 sink:(id)arg2 count:(unsigned long long)arg3 transportType:(int)arg4;
 - (BOOL)topSuggestionsFromStorageFile:(id)arg1 sink:(id)arg2 count:(unsigned long long)arg3 transportType:(int)arg4 callback:(CDUnknownBlockType)arg5 onQueue:(id)arg6;
-- (id)user;
 
 @end
 

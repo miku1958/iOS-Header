@@ -13,6 +13,7 @@
     BOOL _scaleMetricsAutomatically;
     UIFont *_axisLabelFont;
     UIColor *_lineColor;
+    UIColor *_axisLabelTextColor;
     double _lineWidth;
     double _axisLineToLabelSpacing;
     double _topBaselineMargin;
@@ -20,6 +21,7 @@
 }
 
 @property (readonly, nonatomic) UIFont *axisLabelFont; // @synthesize axisLabelFont=_axisLabelFont;
+@property (readonly, nonatomic) UIColor *axisLabelTextColor; // @synthesize axisLabelTextColor=_axisLabelTextColor;
 @property (readonly, nonatomic) double axisLineToLabelSpacing; // @synthesize axisLineToLabelSpacing=_axisLineToLabelSpacing;
 @property (readonly, nonatomic) double bottomBaselineMargin; // @synthesize bottomBaselineMargin=_bottomBaselineMargin;
 @property (readonly, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
@@ -28,7 +30,7 @@
 @property (readonly, nonatomic) double topBaselineMargin; // @synthesize topBaselineMargin=_topBaselineMargin;
 
 - (void).cxx_destruct;
-- (id)initWithAxisLabelFont:(id)arg1 scaleMetricsAutomatically:(BOOL)arg2 lineColor:(id)arg3 lineWidth:(double)arg4 axisLineToLabelSpacing:(double)arg5 topBaselineMargin:(double)arg6 bottomBaselineMargin:(double)arg7;
+- (id)initWithAxisLabelFont:(id)arg1 axisLabelTextColor:(id)arg2 scaleMetricsAutomatically:(BOOL)arg3 lineColor:(id)arg4 lineWidth:(double)arg5 axisLineToLabelSpacing:(double)arg6 topBaselineMargin:(double)arg7 bottomBaselineMargin:(double)arg8;
 
 @end
 

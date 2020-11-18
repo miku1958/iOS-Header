@@ -23,11 +23,15 @@
     NSString *_extensionBundleID;
     CSSearchContext *_searchContext;
     NSData *_importData;
+    NSString *_fileType;
+    NSArray *_fileAttributeSets;
 }
 
 @property (strong, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (strong, nonatomic) NSArray *excludedBundleIDs; // @synthesize excludedBundleIDs=_excludedBundleIDs;
 @property (strong, nonatomic) NSString *extensionBundleID; // @synthesize extensionBundleID=_extensionBundleID;
+@property (copy, nonatomic) NSArray *fileAttributeSets; // @synthesize fileAttributeSets=_fileAttributeSets;
+@property (strong, nonatomic) NSString *fileType; // @synthesize fileType=_fileType;
 @property (strong, nonatomic) NSArray *identifiersToReindex; // @synthesize identifiersToReindex=_identifiersToReindex;
 @property (strong, nonatomic) NSData *importData; // @synthesize importData=_importData;
 @property (nonatomic) long long jobOptions; // @synthesize jobOptions=_jobOptions;

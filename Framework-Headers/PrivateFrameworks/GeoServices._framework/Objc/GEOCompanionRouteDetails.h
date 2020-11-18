@@ -9,7 +9,7 @@
 #import <GeoServices/GEOCompanionCompatibility-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEODirectionsRequest, GEODirectionsResponse, GEOMapItemStorage, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSData, NSMutableArray, NSString, PBDataReader;
+@class GEOCompanionWaypoint, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOMapItemStorage, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSData, NSMutableArray, NSString, PBDataReader;
 
 @interface GEOCompanionRouteDetails : PBCodable <GEOCompanionCompatibility, NSCopying>
 {
@@ -31,12 +31,14 @@
     NSData *_routeID;
     NSMutableArray *_steps;
     NSString *_trafficDescription;
+    NSMutableArray *_waypoints;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     unsigned int _distance;
     unsigned int _historicalDuration;
     unsigned int _originalDuration;
+    unsigned int _routeIndex;
     int _transportType;
     BOOL _canNavigate;
     BOOL _isTrace;
@@ -45,6 +47,7 @@
         unsigned int has_distance:1;
         unsigned int has_historicalDuration:1;
         unsigned int has_originalDuration:1;
+        unsigned int has_routeIndex:1;
         unsigned int has_transportType:1;
         unsigned int has_canNavigate:1;
         unsigned int has_isTrace:1;
@@ -66,34 +69,16 @@
         unsigned int read_routeID:1;
         unsigned int read_steps:1;
         unsigned int read_trafficDescription:1;
-        unsigned int wrote_coordinates:1;
-        unsigned int wrote_trafficColorOffsets:1;
-        unsigned int wrote_trafficColors:1;
-        unsigned int wrote_decoderData:1;
-        unsigned int wrote_destinationName:1;
-        unsigned int wrote_destination:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_originalRouteID:1;
-        unsigned int wrote_originalSuggestedRoute:1;
-        unsigned int wrote_origin:1;
-        unsigned int wrote_request:1;
-        unsigned int wrote_response:1;
-        unsigned int wrote_revisionID:1;
-        unsigned int wrote_routeDescriptions:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_steps:1;
-        unsigned int wrote_trafficDescription:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_historicalDuration:1;
-        unsigned int wrote_originalDuration:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_canNavigate:1;
-        unsigned int wrote_isTrace:1;
-        unsigned int wrote_showTransitSchedules:1;
+        unsigned int read_waypoints:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (nonatomic) BOOL canNavigate;
+@property (readonly, nonatomic) GEOCompanionWaypoint *companionDestination;
+@property (readonly, nonatomic) GEOCompanionWaypoint *companionOrigin;
+@property (readonly, nonatomic) GEOComposedWaypoint *composedDestination;
+@property (readonly, nonatomic) GEOComposedWaypoint *composedOrigin;
 @property (readonly, nonatomic) double *coordinates;
 @property (readonly, nonatomic) unsigned long long coordinatesCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -118,11 +103,13 @@
 @property (readonly, nonatomic) BOOL hasResponse;
 @property (readonly, nonatomic) BOOL hasRevisionID;
 @property (readonly, nonatomic) BOOL hasRouteID;
+@property (nonatomic) BOOL hasRouteIndex;
 @property (nonatomic) BOOL hasShowTransitSchedules;
 @property (readonly, nonatomic) BOOL hasTrafficDescription;
 @property (nonatomic) BOOL hasTransportType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int historicalDuration;
+@property (readonly, nonatomic) BOOL isSyntheticRoute;
 @property (nonatomic) BOOL isTrace;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) GEOMapItemStorage *origin;
@@ -134,6 +121,7 @@
 @property (strong, nonatomic) NSData *revisionID;
 @property (strong, nonatomic) NSMutableArray *routeDescriptions;
 @property (strong, nonatomic) NSData *routeID;
+@property (nonatomic) unsigned int routeIndex;
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (nonatomic) BOOL showTransitSchedules;
 @property (strong, nonatomic) NSMutableArray *steps;
@@ -144,45 +132,28 @@
 @property (readonly, nonatomic) unsigned long long trafficColorsCount;
 @property (strong, nonatomic) NSString *trafficDescription;
 @property (nonatomic) int transportType;
+@property (strong, nonatomic) NSMutableArray *waypoints;
 
 + (BOOL)isValid:(id)arg1;
 + (Class)routeDescriptionsType;
 + (Class)stepType;
 + (id)syntheticRouteDetailsWithOrigin:(id)arg1 destination:(id)arg2 transportType:(int)arg3 destinationName:(id)arg4;
++ (Class)waypointsType;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
-- (void)_addNoFlagsCoordinates:(double)arg1;
-- (void)_addNoFlagsRouteDescriptions:(id)arg1;
-- (void)_addNoFlagsStep:(id)arg1;
-- (void)_addNoFlagsTrafficColor:(unsigned int)arg1;
-- (void)_addNoFlagsTrafficColorOffset:(unsigned int)arg1;
-- (void)_readCoordinates;
-- (void)_readDecoderData;
-- (void)_readDestination;
-- (void)_readDestinationName;
-- (void)_readName;
-- (void)_readOrigin;
-- (void)_readOriginalRouteID;
-- (void)_readOriginalSuggestedRoute;
-- (void)_readRequest;
-- (void)_readResponse;
-- (void)_readRevisionID;
-- (void)_readRouteDescriptions;
-- (void)_readRouteID;
-- (void)_readSteps;
-- (void)_readTrafficColorOffsets;
-- (void)_readTrafficColors;
-- (void)_readTrafficDescription;
+- (void)_initForPreHunterWithRoute:(id)arg1 stringFormatter:(id)arg2;
 - (void)addCoordinates:(double)arg1;
 - (void)addRouteDescriptions:(id)arg1;
 - (void)addStep:(id)arg1;
 - (void)addTrafficColor:(unsigned int)arg1;
 - (void)addTrafficColorOffset:(unsigned int)arg1;
+- (void)addWaypoints:(id)arg1;
 - (void)clearCoordinates;
 - (void)clearRouteDescriptions;
 - (void)clearSteps;
 - (void)clearTrafficColorOffsets;
 - (void)clearTrafficColors;
+- (void)clearWaypoints;
 - (double)coordinatesAtIndex:(unsigned long long)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -190,11 +161,14 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithRoute:(id)arg1 destinationName:(id)arg2 stringFormatter:(id)arg3 traffic:(id)arg4;
 - (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isSyntheticRoute;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (BOOL)needsStepsRewrite;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)routeDescriptionsAtIndex:(unsigned long long)arg1;
@@ -209,6 +183,8 @@
 - (unsigned int)trafficColorAtIndex:(unsigned long long)arg1;
 - (unsigned int)trafficColorOffsetAtIndex:(unsigned long long)arg1;
 - (id)transportTypeAsString:(int)arg1;
+- (id)waypointsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)waypointsCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class HDDatabaseValueCache, HDProfile, NSLock, NSNumber, NSString;
+@class HDContributorReference, HDDatabaseValueCache, HDProfile, NSLock, NSNumber, NSString;
 
 @interface HDDataProvenanceManager : NSObject <HDDiagnosticObject>
 {
@@ -18,6 +18,8 @@
     NSNumber *_propertyLock_localSourceID;
     NSNumber *_propertyLock_localDeviceID;
     NSNumber *_propertyLock_deviceNoneID;
+    HDContributorReference *_propertyLock_noneContributorReference;
+    HDContributorReference *_propertyLock_primaryUserContributorReference;
     _Atomic BOOL _defaultsLoaded;
     HDDatabaseValueCache *_persistentIDsByProvenanceKey;
     HDDatabaseValueCache *_originProvenanceByPersistentID;
@@ -27,33 +29,37 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSNumber *deviceNoneID;
+@property (readonly, copy, nonatomic) NSNumber *deviceNoneID;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *localDeviceID;
+@property (readonly, copy, nonatomic) NSNumber *localDeviceID;
 @property (copy, nonatomic) NSString *localProductType; // @synthesize localProductType=_localProductType;
-@property (readonly, nonatomic) NSNumber *localSourceID;
+@property (readonly, copy, nonatomic) NSNumber *localSourceID;
 @property (copy, nonatomic) NSString *localSystemBuild; // @synthesize localSystemBuild=_localSystemBuild;
+@property (readonly, copy, nonatomic) HDContributorReference *noneContributorReference;
 @property (strong, nonatomic) HDDatabaseValueCache *originProvenanceByPersistentID; // @synthesize originProvenanceByPersistentID=_originProvenanceByPersistentID;
 @property (strong, nonatomic) HDDatabaseValueCache *persistentIDsByProvenanceKey; // @synthesize persistentIDsByProvenanceKey=_persistentIDsByProvenanceKey;
+@property (readonly, copy, nonatomic) HDContributorReference *primaryUserContributorReference;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_loadDefaults;
-- (id)_localDataProvenanceWithSourceID:(id)arg1 sourceVersion:(id)arg2 deviceID:(id)arg3;
+- (id)_localDataProvenanceWithSourceID:(id)arg1 sourceVersion:(id)arg2 deviceID:(id)arg3 contributorReference:(id)arg4;
 - (id)_localTimeZoneName;
-- (id)_lookupOrInsertProvenance:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)_lookupOrInsertProvenance:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (void)checkDefaultsLoaded;
 - (id)defaultLocalDataProvenance;
 - (id)defaultLocalDataProvenanceWithDeviceEntity:(id)arg1;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
 - (id)localDataProvenanceForSourceEntity:(id)arg1 version:(id)arg2 deviceEntity:(id)arg3;
-- (id)originProvenanceForPersistentID:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (id)provenanceEntityForProvenance:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)originProvenanceForPersistentID:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 error:(id *)arg2;
+- (id)provenanceEntityForProvenance:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (void)setDeviceNoneID:(id)arg1;
 - (void)setLocalDeviceID:(id)arg1;
 - (void)setLocalSourceID:(id)arg1;
+- (void)setNoneContributorReference:(id)arg1;
+- (void)setPrimaryUserContributorReference:(id)arg1;
 
 @end
 

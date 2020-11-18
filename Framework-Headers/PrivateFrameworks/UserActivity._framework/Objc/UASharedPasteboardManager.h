@@ -58,11 +58,13 @@
 - (void).cxx_destruct;
 - (BOOL)addData:(id)arg1 toItemAtIndex:(unsigned long long)arg2 generation:(unsigned long long)arg3;
 - (void)clearLocalPasteboardInformation;
+- (id)currentRemoteDeviceName;
 - (void)dealloc;
 - (void)doClearLocalPasteboardInfo;
 - (void)fetchPasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchPasteboardStatus:(CDUnknownBlockType)arg1;
 - (void)fetchPasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)fetchRemoteName;
 - (id)init;
 - (BOOL)isRemotePasteboardAvaliable;
 - (void)pickupLocalChanges:(id)arg1 iterNumber:(long long)arg2 cloneDir:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -76,6 +78,7 @@
 - (void)startPreventingPasteboardSharing;
 - (void)stopPreventingPasteboardSharing;
 - (void)tellClientDebuggingEnabled:(BOOL)arg1 logFileHandle:(id)arg2;
+- (BOOL)typeIsDisallowed:(id)arg1;
 - (void)writeLocalPasteboardToFile:(id)arg1 itemDir:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 
 @end

@@ -18,7 +18,7 @@
     BOOL _useAllSpareFormats;
     BOOL _suppressApplyValue;
     BOOL _applySpareFormatOnly;
-    int _spareFormatType;
+    unsigned int _spareFormatType;
     BOOL _boolValue;
     struct TSUDecimal _decimalValue;
     NSObject *_objValue;
@@ -47,7 +47,7 @@
 @property (readonly, nonatomic) int valueType;
 
 + (id)cellDiffProperties;
-+ (id)formatAndValueFromCell:(id)arg1 applySpareFormatOnly:(int)arg2;
++ (id)formatAndValueFromCell:(id)arg1 applySpareFormatOnly:(unsigned int)arg2;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2 forceNoContent:(BOOL)arg3;
 + (id)formatAndValueFromRichTextCell:(id)arg1 updatingStorageWithBlock:(CDUnknownBlockType)arg2;
@@ -62,7 +62,7 @@
 - (id)getCurrentFormat;
 - (BOOL)hasStringContentMatchingCell:(id)arg1;
 - (id)initFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2;
-- (id)initFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2 forceNoContent:(BOOL)arg3 applySpareFormatOnly:(int)arg4;
+- (id)initFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2 forceNoContent:(BOOL)arg3 applySpareFormatOnly:(unsigned int)arg4;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
 - (id)p_copyStorage:(id)arg1;

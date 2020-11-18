@@ -49,6 +49,7 @@
 - (void)scene:(id)arg1 didPrepareUpdateWithContext:(id)arg2;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
+- (void)sceneManager:(id)arg1 clientDidConnectWithHandshake:(id)arg2;
 - (id)sceneManager:(id)arg1 createDefaultTransitionContextForScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;

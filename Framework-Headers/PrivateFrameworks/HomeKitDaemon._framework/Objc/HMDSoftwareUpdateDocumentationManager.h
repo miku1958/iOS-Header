@@ -9,25 +9,22 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 
-@class HMFNetMonitor, NSArray, NSMutableSet, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class HMFNetMonitor, NSArray, NSMutableOrderedSet, NSMutableSet, NSObject, NSString;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSoftwareUpdateDocumentationManager : HMFObject <HMFLogging, HMFNetMonitorDelegate>
 {
-    NSMutableSet *_assets;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     HMFNetMonitor *_netMonitor;
+    NSMutableOrderedSet *_assets;
     NSMutableSet *_registeredMetadata;
 }
 
 @property (readonly) NSArray *assets;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMFNetMonitor *netMonitor; // @synthesize netMonitor=_netMonitor;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) NSMutableSet *registeredMetadata; // @synthesize registeredMetadata=_registeredMetadata;
 @property (readonly) Class superclass;
 

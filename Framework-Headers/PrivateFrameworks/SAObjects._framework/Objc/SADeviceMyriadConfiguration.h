@@ -14,6 +14,7 @@
 @property (nonatomic) double deviceClass;
 @property (nonatomic) double deviceDelay;
 @property (nonatomic) double deviceTrumpDelay;
+@property (nonatomic) double deviceVTEndtimeDistanceThreshold;
 
 + (id)deviceMyriadConfiguration;
 + (id)deviceMyriadConfigurationWithDictionary:(id)arg1 context:(id)arg2;

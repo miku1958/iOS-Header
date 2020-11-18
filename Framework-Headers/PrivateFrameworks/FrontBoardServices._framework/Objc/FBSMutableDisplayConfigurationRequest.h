@@ -13,7 +13,6 @@
 @property (nonatomic) long long hdrMode; // @dynamic hdrMode;
 @property (nonatomic) struct CGSize nativePixelSize; // @dynamic nativePixelSize;
 @property (nonatomic) long long overscanCompensation; // @dynamic overscanCompensation;
-@property (nonatomic) struct CGSize pixelSize; // @dynamic pixelSize;
 @property (nonatomic) double refreshRate; // @dynamic refreshRate;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

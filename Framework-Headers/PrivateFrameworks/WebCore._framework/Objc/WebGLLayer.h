@@ -4,20 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuartzCore/CAEAGLLayer.h>
+#import <QuartzCore/CALayer.h>
 
 __attribute__((visibility("hidden")))
-@interface WebGLLayer : CAEAGLLayer
+@interface WebGLLayer : CALayer
 {
-    struct GraphicsContext3D *_context;
     float _devicePixelRatio;
+    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> _contentsBuffer;
+    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> _drawingBuffer;
+    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> _spareBuffer;
+    struct IntSize _bufferSize;
+    BOOL _usingAlpha;
+    void *_eglDisplay;
+    void *_eglConfig;
+    void *_contentsPbuffer;
+    void *_drawingPbuffer;
+    void *_sparePbuffer;
+    void *_latchedPbuffer;
+    BOOL _preparedForDisplay;
+    NakedPtr_06b7f1a7 _context;
 }
 
-@property (nonatomic) struct GraphicsContext3D *context; // @synthesize context=_context;
+@property (nonatomic) NakedPtr_06b7f1a7 context; // @synthesize context=_context;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (BOOL)allocateIOSurfaceBackingStoreWithSize:(struct IntSize)arg1 usingAlpha:(BOOL)arg2;
+- (void)bindFramebufferToNextAvailableSurface;
 - (struct CGImage *)copyImageSnapshotWithColorSpace:(struct CGColorSpace *)arg1;
 - (void)display;
-- (id)initWithGraphicsContext3D:(struct GraphicsContext3D *)arg1;
+- (id)initWithGraphicsContextGL:(NakedPtr_06b7f1a7)arg1;
+- (void)prepareForDisplay;
+- (void)releaseGLResources;
+- (void)setAnchorPoint:(struct CGPoint)arg1;
+- (void)setEGLDisplay:(void *)arg1 config:(void *)arg2;
+- (void)setTransform:(struct CATransform3D)arg1;
 
 @end
 

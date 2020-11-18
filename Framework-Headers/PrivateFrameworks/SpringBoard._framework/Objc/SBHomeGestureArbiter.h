@@ -9,14 +9,14 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/SBHardwareButtonServiceObserver-Protocol.h>
 
-@class NSMutableArray, NSString, SBHomeGestureParticipant;
+@class NSArray, NSMutableArray, NSString, SBHomeGestureParticipant;
 @protocol BSInvalidatable;
 
 @interface SBHomeGestureArbiter : NSObject <BSDescriptionProviding, SBHardwareButtonServiceObserver>
 {
     id<BSInvalidatable> _stateCaptureHandle;
     NSMutableArray *_participants;
-    SBHomeGestureParticipant *_owningParticipant;
+    NSArray *_owningParticipants;
     SBHomeGestureParticipant *_hardwareButtonServiceParticipant;
     id<BSInvalidatable> _hardwareButtonObserverAssertion;
 }
@@ -26,7 +26,7 @@
 @property (strong, nonatomic) id<BSInvalidatable> hardwareButtonObserverAssertion; // @synthesize hardwareButtonObserverAssertion=_hardwareButtonObserverAssertion;
 @property (strong, nonatomic) SBHomeGestureParticipant *hardwareButtonServiceParticipant; // @synthesize hardwareButtonServiceParticipant=_hardwareButtonServiceParticipant;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SBHomeGestureParticipant *owningParticipant; // @synthesize owningParticipant=_owningParticipant;
+@property (strong, nonatomic, getter=_owningParticipants, setter=_setOwningParticipants:) NSArray *owningParticipants; // @synthesize owningParticipants=_owningParticipants;
 @property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
 @property (strong, nonatomic) id<BSInvalidatable> stateCaptureHandle; // @synthesize stateCaptureHandle=_stateCaptureHandle;
 @property (readonly) Class superclass;
@@ -35,7 +35,7 @@
 - (void)_registerParticipant:(id)arg1;
 - (void)_unregisterParticipant:(id)arg1;
 - (void)_updateHardwareButtonServiceParticipant;
-- (void)_updateOwningParticipant;
+- (void)_updateOwningParticipants;
 - (void)buttonService:(id)arg1 buttonKind:(long long)arg2 eventsConsumedDidChange:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

@@ -34,6 +34,22 @@ struct CGSize {
     double height;
 };
 
+struct HomographyInfoRecord;
+
+struct Int32Size {
+    int _field1;
+    int _field2;
+};
+
+struct StabStatsRecord {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+};
+
 struct WorkingPixmapRecord {
     char *_field1;
     unsigned long long _field2;
@@ -49,6 +65,22 @@ struct ransac_homography_record {
     float _field1[9];
 };
 
+struct vector<HomographyInfoRecord, std::__1::allocator<HomographyInfoRecord>> {
+    struct HomographyInfoRecord *_field1;
+    struct HomographyInfoRecord *_field2;
+    struct __compressed_pair<HomographyInfoRecord *, std::__1::allocator<HomographyInfoRecord>> {
+        struct HomographyInfoRecord *_field1;
+    } _field3;
+};
+
+struct vector<double, std::__1::allocator<double>> {
+    double *_field1;
+    double *_field2;
+    struct __compressed_pair<double *, std::__1::allocator<double>> {
+        double *_field1;
+    } _field3;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -57,4 +89,21 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+// Template types
+typedef struct vector<HomographyInfoRecord, std::__1::allocator<HomographyInfoRecord>> {
+    struct HomographyInfoRecord *_field1;
+    struct HomographyInfoRecord *_field2;
+    struct __compressed_pair<HomographyInfoRecord *, std::__1::allocator<HomographyInfoRecord>> {
+        struct HomographyInfoRecord *_field1;
+    } _field3;
+} vector_87633213;
+
+typedef struct vector<double, std::__1::allocator<double>> {
+    double *_field1;
+    double *_field2;
+    struct __compressed_pair<double *, std::__1::allocator<double>> {
+        double *_field1;
+    } _field3;
+} vector_8f06c10f;
 

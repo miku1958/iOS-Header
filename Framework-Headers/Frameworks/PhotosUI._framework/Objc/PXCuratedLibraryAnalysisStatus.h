@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXMutableCuratedLibraryAnalysisStatus-Protocol.h>
 
 @class NSString, NSTimer, PXCuratedLibraryAssetsDataSourceManager;
-@protocol PXCuratedLibraryEventLogger;
+@protocol PXCuratedLibraryEventTracker;
 
 @interface PXCuratedLibraryAnalysisStatus : PXObservable <PXMutableCuratedLibraryAnalysisStatus>
 {
@@ -21,7 +21,7 @@
     float _progress;
     float _displayProgress;
     PXCuratedLibraryAssetsDataSourceManager *_dataSourceManager;
-    id<PXCuratedLibraryEventLogger> _eventLogger;
+    id<PXCuratedLibraryEventTracker> _eventTracker;
     long long _state;
     NSString *_localizedTitle;
     NSString *_localizedDescription;
@@ -33,7 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) float displayProgress; // @synthesize displayProgress=_displayProgress;
-@property (strong, nonatomic) id<PXCuratedLibraryEventLogger> eventLogger; // @synthesize eventLogger=_eventLogger;
+@property (strong, nonatomic) id<PXCuratedLibraryEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property (readonly, nonatomic) BOOL hasBattery; // @synthesize hasBattery=_hasBattery;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDaysMonthsYearsStructureEnabled; // @synthesize isDaysMonthsYearsStructureEnabled=_isDaysMonthsYearsStructureEnabled;
@@ -47,7 +47,7 @@
 - (void).cxx_destruct;
 - (void)_handleAlternateTitleTimer:(id)arg1;
 - (id)_initWithDataSourceManager:(id)arg1;
-- (void)_updateEventLogging;
+- (void)_updateEventsTracking;
 - (void)alternateTitleIndexDidChange;
 - (void)cycleToNextAlternateTitle;
 - (void)dealloc;

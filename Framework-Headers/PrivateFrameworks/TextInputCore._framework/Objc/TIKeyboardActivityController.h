@@ -11,7 +11,7 @@
 #import <TextInputCore/TIKeyboardAssertionManagerDelegate-Protocol.h>
 
 @class NSHashTable, NSString, NSTimer, TIKeyboardApplicationStateMonitor;
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_source, OS_os_transaction;
 
 @interface TIKeyboardActivityController : NSObject <TIKeyboardAssertionManagerDelegate, TIKeyboardActivityControlling, TIKeyboardApplicationStateResponses>
 {
@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     long long _inactiveMemoryPressureCount;
     BOOL _isDirty;
+    NSObject<OS_os_transaction> *_isDirtyTransaction;
     NSTimer *_inactivityTimer;
     NSHashTable *_observers;
     TIKeyboardApplicationStateMonitor *_appMonitor;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSTimer *inactivityTimer; // @synthesize inactivityTimer=_inactivityTimer;
 @property (nonatomic) BOOL isDirty; // @synthesize isDirty=_isDirty;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *isDirtyTransaction; // @synthesize isDirtyTransaction=_isDirtyTransaction;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
 
@@ -59,7 +61,7 @@
 - (void)releaseInputManagers;
 - (void)removeActivityObserver:(id)arg1;
 - (void)setKeyboardCleanIfNecessary;
-- (void)setKeyboardDirtyIfNecessary;
+- (void)setKeyboardDirtyIfNecessaryWithReason:(id)arg1;
 - (BOOL)shouldBecomeClean;
 - (BOOL)shouldBecomeDirty;
 - (void)touchInactivityTimer;

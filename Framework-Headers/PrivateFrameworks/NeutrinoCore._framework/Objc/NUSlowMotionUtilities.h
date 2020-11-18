@@ -10,8 +10,6 @@
 {
 }
 
-+ (id)photosFormatsSlomoFactory;
-+ (id)slomoFactory;
 + (id)slowMotionAudioMixFromAsset:(id)arg1 rate:(float)arg2 range:(CDStruct_e83c9415)arg3 error:(out id *)arg4;
 + (id)slowMotionVideoFromAsset:(id)arg1 rate:(float)arg2 range:(CDStruct_e83c9415)arg3 error:(out id *)arg4;
 + (id)timeMapperForAssetDuration:(double)arg1 rate:(float)arg2 range:(CDStruct_e83c9415)arg3 error:(out id *)arg4;

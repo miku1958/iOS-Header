@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLAssetsdSyncServiceProtocol-Protocol.h>
 
-@class NSObject, NSString, PLFileSystemAssetImporter, PLXPCTransaction;
+@class NSObject, NSString, PLFileSystemAssetImporter, PLLibraryServicesManager, PLXPCTransaction;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PLAssetsdSyncService : PLAbstractLibraryServicesManagerService <PLAssetsdSyncServiceProtocol>
@@ -17,6 +17,8 @@
     NSObject<OS_dispatch_group> *_updateGroup;
     PLXPCTransaction *_libraryTransaction;
     PLFileSystemAssetImporter *_importer;
+    PLLibraryServicesManager *_libraryServicesManager;
+    BOOL _didFinalizeRestore;
 }
 
 @property (readonly, copy) NSString *debugDescription;

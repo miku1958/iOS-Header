@@ -117,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleTapAtIndexPath:(id)arg1;
 - (void)_handleTapInMainCollectionView:(id)arg1;
 - (double)_horizontalOffsetInCollectionView:(id)arg1 forCenteringOnItemAtIndexPath:(id)arg2;
-- (void)_importAction:(id)arg1;
 - (void)_importControllerDidEndAction;
 - (void)_importControllerWillBeginAction;
 - (id)_indexPathInCollectionView:(id)arg1 closestToPoint:(struct CGPoint)arg2 excludingIndexPath:(id)arg3;

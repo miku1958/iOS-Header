@@ -49,6 +49,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)evaluateWithObject:(id)arg1;
+- (BOOL)evaluateWithState:(id)arg1 previousValue:(id)arg2;
 - (unsigned long long)hash;
 - (id)initForChangeAtKeyPath:(id)arg1;
 - (id)initForChangeAtKeyPath:(id)arg1 equalToValue:(id)arg2;

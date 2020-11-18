@@ -10,39 +10,79 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBGetCarPowerLevelStatusIntentResponse-Protocol.h>
 
-@class NSString, _INPBDistance, _INPBDouble, _INPBInteger;
+@class NSString, _INPBDateTime, _INPBDistance, _INPBDouble, _INPBEnergy, _INPBInteger, _INPBJSONDictionary;
 
 @interface _INPBGetCarPowerLevelStatusIntentResponse : PBCodable <_INPBGetCarPowerLevelStatusIntentResponse, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int activeConnector:1;
         unsigned int charging:1;
     } _has;
     BOOL _charging;
-    BOOL __encodeLegacyGloryData;
+    int _activeConnector;
+    NSString *_carIdentifier;
     _INPBDouble *_chargePercentRemaining;
+    _INPBJSONDictionary *_chargingFormulaArguments;
+    _INPBJSONDictionary *_consumptionFormulaArguments;
+    _INPBEnergy *_currentBatteryCapacity;
+    _INPBDateTime *_dateOfLastStateUpdate;
     _INPBDistance *_distanceRemaining;
+    _INPBDistance *_distanceRemainingElectric;
+    _INPBDistance *_distanceRemainingFuel;
     _INPBDouble *_fuelPercentRemaining;
+    _INPBEnergy *_maximumBatteryCapacity;
+    _INPBDistance *_maximumDistance;
+    _INPBDistance *_maximumDistanceElectric;
+    _INPBDistance *_maximumDistanceFuel;
+    _INPBEnergy *_minimumBatteryCapacity;
     _INPBInteger *_minutesToFull;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (nonatomic) int activeConnector; // @synthesize activeConnector=_activeConnector;
+@property (copy, nonatomic) NSString *carIdentifier; // @synthesize carIdentifier=_carIdentifier;
 @property (strong, nonatomic) _INPBDouble *chargePercentRemaining; // @synthesize chargePercentRemaining=_chargePercentRemaining;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
+@property (strong, nonatomic) _INPBJSONDictionary *chargingFormulaArguments; // @synthesize chargingFormulaArguments=_chargingFormulaArguments;
+@property (strong, nonatomic) _INPBJSONDictionary *consumptionFormulaArguments; // @synthesize consumptionFormulaArguments=_consumptionFormulaArguments;
+@property (strong, nonatomic) _INPBEnergy *currentBatteryCapacity; // @synthesize currentBatteryCapacity=_currentBatteryCapacity;
+@property (strong, nonatomic) _INPBDateTime *dateOfLastStateUpdate; // @synthesize dateOfLastStateUpdate=_dateOfLastStateUpdate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDistance *distanceRemaining; // @synthesize distanceRemaining=_distanceRemaining;
+@property (strong, nonatomic) _INPBDistance *distanceRemainingElectric; // @synthesize distanceRemainingElectric=_distanceRemainingElectric;
+@property (strong, nonatomic) _INPBDistance *distanceRemainingFuel; // @synthesize distanceRemainingFuel=_distanceRemainingFuel;
 @property (strong, nonatomic) _INPBDouble *fuelPercentRemaining; // @synthesize fuelPercentRemaining=_fuelPercentRemaining;
+@property (nonatomic) BOOL hasActiveConnector;
+@property (readonly, nonatomic) BOOL hasCarIdentifier;
 @property (readonly, nonatomic) BOOL hasChargePercentRemaining;
 @property (nonatomic) BOOL hasCharging;
+@property (readonly, nonatomic) BOOL hasChargingFormulaArguments;
+@property (readonly, nonatomic) BOOL hasConsumptionFormulaArguments;
+@property (readonly, nonatomic) BOOL hasCurrentBatteryCapacity;
+@property (readonly, nonatomic) BOOL hasDateOfLastStateUpdate;
 @property (readonly, nonatomic) BOOL hasDistanceRemaining;
+@property (readonly, nonatomic) BOOL hasDistanceRemainingElectric;
+@property (readonly, nonatomic) BOOL hasDistanceRemainingFuel;
 @property (readonly, nonatomic) BOOL hasFuelPercentRemaining;
+@property (readonly, nonatomic) BOOL hasMaximumBatteryCapacity;
+@property (readonly, nonatomic) BOOL hasMaximumDistance;
+@property (readonly, nonatomic) BOOL hasMaximumDistanceElectric;
+@property (readonly, nonatomic) BOOL hasMaximumDistanceFuel;
+@property (readonly, nonatomic) BOOL hasMinimumBatteryCapacity;
 @property (readonly, nonatomic) BOOL hasMinutesToFull;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _INPBEnergy *maximumBatteryCapacity; // @synthesize maximumBatteryCapacity=_maximumBatteryCapacity;
+@property (strong, nonatomic) _INPBDistance *maximumDistance; // @synthesize maximumDistance=_maximumDistance;
+@property (strong, nonatomic) _INPBDistance *maximumDistanceElectric; // @synthesize maximumDistanceElectric=_maximumDistanceElectric;
+@property (strong, nonatomic) _INPBDistance *maximumDistanceFuel; // @synthesize maximumDistanceFuel=_maximumDistanceFuel;
+@property (strong, nonatomic) _INPBEnergy *minimumBatteryCapacity; // @synthesize minimumBatteryCapacity=_minimumBatteryCapacity;
 @property (strong, nonatomic) _INPBInteger *minutesToFull; // @synthesize minutesToFull=_minutesToFull;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsActiveConnector:(id)arg1;
+- (id)activeConnectorAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

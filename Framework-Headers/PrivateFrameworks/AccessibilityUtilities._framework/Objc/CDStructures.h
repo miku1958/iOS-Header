@@ -120,11 +120,6 @@ typedef struct {
 } CDStruct_3a8d9e70;
 
 typedef struct {
-    short _field1;
-    int _field2;
-} CDStruct_6d9e24e6;
-
-typedef struct {
     unsigned char _field1;
     unsigned char _field2;
     unsigned char _field3;

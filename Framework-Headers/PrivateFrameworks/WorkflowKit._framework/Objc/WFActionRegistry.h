@@ -34,6 +34,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *identifiersOfActionsDisabledOnWatch;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
 @property (readonly) Class superclass;
@@ -53,6 +54,7 @@
 - (id)handleIntentActionForDonatedIntent:(id)arg1;
 - (id)init;
 - (void)removeActionsWithIdentifiers:(id)arg1 fromActionProvider:(id)arg2;
+- (id)replacementActionForActionIdentifier:(id)arg1 serializedParameters:(id)arg2;
 - (id)residentBasedActionsForHome:(id)arg1 residentCompatible:(BOOL)arg2;
 - (id)residentCompatibleActionsForCategory:(id)arg1 home:(id)arg2;
 - (id)residentCompatibleActionsForHome:(id)arg1;

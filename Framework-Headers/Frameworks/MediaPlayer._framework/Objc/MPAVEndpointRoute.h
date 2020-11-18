@@ -34,6 +34,7 @@
 - (BOOL)canAccessRemoteAssets;
 - (BOOL)canFetchMediaDataFromSender;
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
+- (id)clusterComposition;
 - (void)dealloc;
 - (id)description;
 - (id)designatedGroupLeaderName;
@@ -45,6 +46,7 @@
 - (id)initWithEndpoint:(void *)arg1;
 - (BOOL)isAirPlayingToDevice;
 - (BOOL)isAppleTVRoute;
+- (BOOL)isClusterRoute;
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
@@ -56,6 +58,7 @@
 - (BOOL)isStereoPair;
 - (BOOL)isTVRoute;
 - (long long)numberOfOutputDevices;
+- (long long)originalRouteSubtype;
 - (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (id)routeName;
 - (id)routeNames;

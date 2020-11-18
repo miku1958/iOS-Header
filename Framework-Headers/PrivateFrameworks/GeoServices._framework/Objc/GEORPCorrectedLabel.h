@@ -31,13 +31,7 @@
         unsigned int read_featureHandles:1;
         unsigned int read_featureRegion:1;
         unsigned int read_originalValue:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_correctedValue:1;
-        unsigned int wrote_featureHandles:1;
-        unsigned int wrote_featureRegion:1;
-        unsigned int wrote_originalValue:1;
-        unsigned int wrote_uid:1;
-        unsigned int wrote_localizedLabels:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,12 +52,6 @@
 + (Class)featureHandleType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsFeatureHandle:(id)arg1;
-- (void)_readCoordinate;
-- (void)_readCorrectedValue;
-- (void)_readFeatureHandles;
-- (void)_readFeatureRegion;
-- (void)_readOriginalValue;
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;
 - (void)copyTo:(id)arg1;
@@ -75,7 +63,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

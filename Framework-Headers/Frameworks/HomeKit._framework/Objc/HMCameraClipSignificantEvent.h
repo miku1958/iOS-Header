@@ -4,38 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKit/HMCameraSignificantEvent.h>
 
-#import <HomeKit/NSCopying-Protocol.h>
-#import <HomeKit/NSSecureCoding-Protocol.h>
+@class NSUUID;
 
-@class NSDate, NSUUID;
-
-@interface HMCameraClipSignificantEvent : NSObject <NSCopying, NSSecureCoding>
+@interface HMCameraClipSignificantEvent : HMCameraSignificantEvent
 {
-    NSUUID *_uniqueIdentifier;
-    unsigned long long _reason;
-    NSDate *_dateOfOccurrence;
     double _timeOffsetWithinClip;
-    unsigned long long _confidenceLevel;
+    NSUUID *_clipUUID;
 }
 
-@property (readonly) BOOL canAskForUserFeedback;
-@property (readonly) unsigned long long confidenceLevel; // @synthesize confidenceLevel=_confidenceLevel;
-@property (readonly, copy) NSDate *dateOfOccurrence; // @synthesize dateOfOccurrence=_dateOfOccurrence;
-@property (readonly) unsigned long long reason; // @synthesize reason=_reason;
+@property (readonly, copy) NSUUID *clipUUID; // @synthesize clipUUID=_clipUUID;
 @property (readonly) double timeOffsetWithinClip; // @synthesize timeOffsetWithinClip=_timeOffsetWithinClip;
-@property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 dateOfOccurrence:(id)arg3 confidenceLevel:(unsigned long long)arg4;
-- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 timeOffsetWithinClip:(double)arg3 dateOfOccurrence:(id)arg4 confidenceLevel:(unsigned long long)arg5;
+- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 dateOfOccurrence:(id)arg3 confidenceLevel:(unsigned long long)arg4 cameraProfileUUID:(id)arg5 faceClassification:(id)arg6 timeOffsetWithinClip:(double)arg7 clipUUID:(id)arg8;
+- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 dateOfOccurrence:(id)arg3 confidenceLevel:(unsigned long long)arg4 faceClassification:(id)arg5 timeOffsetWithinClip:(double)arg6 clipUUID:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

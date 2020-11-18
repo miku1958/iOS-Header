@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface CKMessageEntryAudioHintView : UIView
 {
+    BOOL _shouldAnimateReferenceButton;
     UIButton *_referenceButton;
     UILabel *_hintLabel;
     UIImageView *_hintImageView;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImageView *hintImageView; // @synthesize hintImageView=_hintImageView;
 @property (strong, nonatomic) UILabel *hintLabel; // @synthesize hintLabel=_hintLabel;
 @property (strong, nonatomic) UIButton *referenceButton; // @synthesize referenceButton=_referenceButton;
+@property (nonatomic) BOOL shouldAnimateReferenceButton; // @synthesize shouldAnimateReferenceButton=_shouldAnimateReferenceButton;
 
 - (void).cxx_destruct;
 - (id)initWithReferenceButton:(id)arg1 coverInsets:(struct UIEdgeInsets)arg2;

@@ -31,10 +31,15 @@
 + (void)addKeyValuePairForQuery:(id *)arg1 assetType:(unsigned long long)arg2;
 + (id)filteredAssetsForAssets:(id)arg1 assetType:(unsigned long long)arg2 language:(id)arg3;
 + (id)filteredAssetsForFetchRemoteMetaDataForAssets:(id)arg1 assetType:(unsigned long long)arg2;
++ (id)getAdBlockerAssetTypeString;
++ (unsigned long long)getAdBlockerCurrentCompatibilityVersion;
++ (id)getAssetTypeStringForType:(unsigned long long)arg1;
 + (unsigned long long)getEndpointAssetCurrentCompatibilityVersion;
 + (id)getEndpointAssetTypeString;
 + (id)getLanguageDetectorAssetTypeString;
 + (unsigned long long)getLanguageDetectorCurrentCompatibilityVersion;
++ (id)getSpeakerRecognitionAssetTypeString;
++ (unsigned long long)getSpeakerRecognitionCurrentCompatibilityVersion;
 + (unsigned long long)getVoiceTriggerAssetCurrentCompatibilityVersion;
 + (id)getVoiceTriggerAssetTypeString;
 + (id)sharedController;
@@ -50,6 +55,7 @@
 - (id)_installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2;
 - (void)_installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_isReadyToUse;
+- (BOOL)_isRetryRecommendedWithResult:(long long)arg1;
 - (void)_runAssetQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startDownloadingAsset:(id)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_updateFromRemoteToLocalAssets:(id)arg1 forAssetType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -58,6 +64,7 @@
 - (id)assetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchRemoteMetaOfType:(unsigned long long)arg1;
+- (void)fetchRemoteMetaOfType:(unsigned long long)arg1 allowRetry:(BOOL)arg2;
 - (id)init;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;

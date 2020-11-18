@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
+- (void)_handleDismissedAirPlayPicker;
 - (void)_showAirPlayPicker;
 - (void)performUserInteractionTask;
 

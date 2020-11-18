@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property unsigned long long QLType; // @synthesize QLType=_QLType;
 
-- (BOOL)isEqual:(id)arg1;
+- (BOOL)_qlIsEqual:(id)arg1;
 
 @end
 

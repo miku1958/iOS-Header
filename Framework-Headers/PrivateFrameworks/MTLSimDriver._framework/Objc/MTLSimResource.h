@@ -9,7 +9,7 @@
 #import <MTLSimDriver/MTLResourceSPI-Protocol.h>
 #import <MTLSimDriver/MTLSerializerResource-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLSimDevice, MTLSimHeap, NSString;
+@class MTLSimDevice, MTLSimHeap, NSString;
 @protocol MTLDevice, MTLHeap;
 
 __attribute__((visibility("hidden")))
@@ -29,14 +29,11 @@ __attribute__((visibility("hidden")))
     BOOL _isAliasable;
     int responsibleProcess;
     unsigned long long allocatedSize;
-    MTLResourceAllocationInfo *cachedAllocationInfo;
     unsigned long long protectionOptions;
-    MTLResourceAllocationInfo *sharedAllocationInfo;
 }
 
 @property (readonly) unsigned long long allocatedSize; // @synthesize allocatedSize;
 @property (readonly) unsigned long long allocationID;
-@property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo; // @synthesize cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode; // @synthesize cpuCacheMode=_cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -48,9 +45,8 @@ __attribute__((visibility("hidden")))
 @property (copy) NSString *label; // @dynamic label;
 @property (readonly) unsigned long long protectionOptions; // @synthesize protectionOptions;
 @property (readonly) unsigned long long resourceOptions; // @dynamic resourceOptions;
-@property (readonly) unsigned int resourceRef; // @synthesize resourceRef=_resourceRef;
 @property int responsibleProcess; // @synthesize responsibleProcess;
-@property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo; // @synthesize sharedAllocationInfo;
+@property (readonly) unsigned int serializerResourceRef; // @synthesize serializerResourceRef=_resourceRef;
 @property (readonly) unsigned long long storageMode; // @synthesize storageMode=_storageMode;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long unfilteredResourceOptions; // @dynamic unfilteredResourceOptions;

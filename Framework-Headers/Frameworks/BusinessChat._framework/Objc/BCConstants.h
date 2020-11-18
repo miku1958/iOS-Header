@@ -10,6 +10,8 @@
 {
 }
 
++ (BOOL)isRunningInMac;
++ (BOOL)isRunningInMacCatalyst;
 + (id)whitelistedAppleURNs;
 
 @end

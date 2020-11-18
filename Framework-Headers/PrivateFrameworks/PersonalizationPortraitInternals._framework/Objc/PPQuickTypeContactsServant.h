@@ -8,17 +8,13 @@
 
 #import <PersonalizationPortraitInternals/PPQuickTypeServantProtocol-Protocol.h>
 
-@class NSCache, PPLocalContactStore, _PASLock;
-@protocol OS_dispatch_semaphore;
+@class NSCache, PPLocalContactStore;
 
 @interface PPQuickTypeContactsServant : NSObject <PPQuickTypeServantProtocol>
 {
     PPLocalContactStore *_localContactStore;
-    _PASLock *_meCardCacheLock;
-    _PASLock *_meContactDataLock;
     NSCache *_meQuickTypeItemCache;
     NSCache *_cachedNameLookups;
-    NSObject<OS_dispatch_semaphore> *_initializationComplete;
 }
 
 + (id)_supportedPeopleSemanticTypes;
@@ -26,9 +22,8 @@
 - (id)_applySmartLimitingToCandidates:(id)arg1 clientLimit:(unsigned long long)arg2 explanationSet:(id)arg3;
 - (BOOL)_isMeCardQuery:(id)arg1;
 - (BOOL)_isSemanticTagEligible:(unsigned char)arg1;
-- (id)_loadMeCard;
-- (id)_lookupPeopleWithNamePrefix:(id)arg1 recipients:(id)arg2 explanationSet:(id)arg3 justPreloadCache:(BOOL)arg4;
-- (id)_lookupScoredPeopleWithNamePrefix:(id)arg1 recipients:(id)arg2 explanationSet:(id)arg3 justPreloadCache:(BOOL)arg4;
+- (id)_lookupPeopleWithNamePrefix:(id)arg1 explanationSet:(id)arg2 justPreloadCache:(BOOL)arg3 timeoutSeconds:(id)arg4;
+- (id)_lookupScoredPeopleWithNamePrefix:(id)arg1 subtype:(unsigned char)arg2 explanationSet:(id)arg3 justPreloadCache:(BOOL)arg4 timeoutSeconds:(id)arg5;
 - (id)_mePredictionCacheKeyForQuery:(id)arg1;
 - (id)_predictMeCardDetailForQuery:(id)arg1 limit:(unsigned long long)arg2 explanationSet:(id)arg3;
 - (id)_predictMeCardDetailForQuery:(id)arg1 limit:(unsigned long long)arg2 fromSemanticTextField:(BOOL)arg3 explanationSet:(id)arg4;
@@ -37,7 +32,6 @@
 - (void)_registerForNotifications;
 - (id)_scoredMeContactWithMeContact:(id)arg1;
 - (id)_selfContactQueryqueryFromSemanticTagquery:(id)arg1;
-- (id)_updateMeCardFromSource;
 - (void)_warmUpFormatters;
 - (void)clearCaches;
 - (id)init;

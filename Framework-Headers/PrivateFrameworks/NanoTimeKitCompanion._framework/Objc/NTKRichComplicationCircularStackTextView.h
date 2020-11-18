@@ -4,30 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationBaseCircularStackTextView.h>
 
-@class NTKColoringLabel;
-
-@interface NTKRichComplicationCircularStackTextView : NTKRichComplicationCircularBaseView
+@interface NTKRichComplicationCircularStackTextView : NTKRichComplicationBaseCircularStackTextView
 {
-    NTKColoringLabel *_line1Label;
-    NTKColoringLabel *_line2Label;
-    unsigned long long _highlightMode;
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
-- (void).cxx_destruct;
-- (id)_createAndAddLabel;
-- (id)_desiredFontForLabel:(id)arg1;
-- (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (long long)_line1FilterStyle;
-- (long long)_line2FilterStyle;
 - (id)init;
-- (void)layoutSubviews;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
+- (void)makeBackgroundTransparent;
 
 @end
 

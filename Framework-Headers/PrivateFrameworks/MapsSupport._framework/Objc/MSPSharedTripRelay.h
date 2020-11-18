@@ -8,7 +8,7 @@
 
 #import <MapsSupport/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, MSPSharedTripGroupSession, MSPSharedTripStorageController, NSArray, NSMutableDictionary, NSString;
+@class IDSService, MSPSharedTripGroupSession, MSPSharedTripSharingIdentity, MSPSharedTripStorageController, NSArray, NSMutableDictionary, NSString;
 @protocol MSPSharedTripAvailabiltyDelegate, MSPSharedTripRelayDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasValidIDSAccount;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *sharingHandle;
+@property (readonly, nonatomic) MSPSharedTripSharingIdentity *sharingIdentity;
 @property (readonly, nonatomic) NSString *sharingName;
 @property (strong, nonatomic) MSPSharedTripStorageController *storageController; // @synthesize storageController=_storageController;
 @property (readonly) Class superclass;

@@ -15,6 +15,7 @@
 @property (nonatomic) NSString *bundleIdentifierToForceHomeAffordanceInset; // @dynamic bundleIdentifierToForceHomeAffordanceInset;
 @property (readonly, nonatomic) BOOL forcesMedusaAdoption; // @dynamic forcesMedusaAdoption;
 @property (readonly, nonatomic) BOOL ignoresDeclaredNetworkUsage; // @dynamic ignoresDeclaredNetworkUsage;
+@property (readonly, nonatomic) BOOL laserForLaunchPPT; // @dynamic laserForLaunchPPT;
 @property (readonly, nonatomic) BOOL shouldAllowScreenshotsInLoginWindow; // @dynamic shouldAllowScreenshotsInLoginWindow;
 @property (readonly, nonatomic) BOOL shouldAllowUseOfNonRecapPPT; // @dynamic shouldAllowUseOfNonRecapPPT;
 @property (readonly, nonatomic) BOOL shouldShowInternalApplications; // @dynamic shouldShowInternalApplications;

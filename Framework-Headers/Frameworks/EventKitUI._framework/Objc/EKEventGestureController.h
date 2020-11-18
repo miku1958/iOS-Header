@@ -12,7 +12,7 @@
 #import <EventKitUI/UIDropInteractionDelegate-Protocol.h>
 #import <EventKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class EKCalendarDate, EKDayOccurrenceView, EKEvent, EKICSPreviewController, EKUIRecurrenceAlertController, NSString, NSTimer, UIDragInteraction, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _UIDragSnappingFeedbackGenerator;
+@class EKCalendarDate, EKDayOccurrenceView, EKEvent, EKICSPreviewController, EKUIInviteesViewMessageSendingManager, EKUIRecurrenceAlertController, NSString, NSTimer, UIDragInteraction, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _UIDragSnappingFeedbackGenerator;
 @protocol EKEventGestureControllerDelegate, EKEventGestureControllerUntimedDelegate;
 
 @interface EKEventGestureController : NSObject <UIDropInteractionDelegate, UIDragInteractionDelegate, EKICSPreviewControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
@@ -67,6 +67,7 @@
     id<EKEventGestureControllerDelegate> _delegate;
     NSString *_sessionIdentifierForDebug;
     EKDayOccurrenceView *_draggingViewSource;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
 }
 
 @property (nonatomic) BOOL commitBlocked; // @synthesize commitBlocked=_commitBlocked;
@@ -80,6 +81,7 @@
 @property (readonly, nonatomic) struct CGPoint firstTouchPoint; // @synthesize firstTouchPoint=_firstTouchPoint;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGPoint latestTouchPoint; // @synthesize latestTouchPoint=_latestTouchPoint;
+@property (strong, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property (strong, nonatomic) NSString *sessionIdentifierForDebug; // @synthesize sessionIdentifierForDebug=_sessionIdentifierForDebug;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGPoint touchOffset; // @synthesize touchOffset=_touchOffset;

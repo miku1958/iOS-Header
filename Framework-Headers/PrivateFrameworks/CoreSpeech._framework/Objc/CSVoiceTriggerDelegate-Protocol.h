@@ -14,8 +14,10 @@
 @optional
 - (void)keywordDetectorDidDetectKeyword;
 - (void)raiseToSpeakDetected:(NSDictionary *)arg1;
+- (void)voiceTriggerDidDetectKeyword:(NSDictionary *)arg1 deviceId:(NSString *)arg2 completion:(void (^)(void))arg3;
 - (void)voiceTriggerDidDetectNearMiss:(NSDictionary *)arg1;
 - (void)voiceTriggerDidDetectSpeakerReject:(NSDictionary *)arg1;
+- (void)voiceTriggerDidRejected:(NSDictionary *)arg1;
 - (void)voiceTriggerGotSuperVector:(NSData *)arg1;
 @end
 

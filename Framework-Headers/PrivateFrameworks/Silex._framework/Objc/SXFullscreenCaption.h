@@ -35,7 +35,6 @@
 - (id)initWithCaption:(id)arg1 dataSource:(id)arg2;
 - (id)initWithText:(id)arg1 dataSource:(id)arg2;
 - (id)inlineTextStylesForTextSource:(id)arg1;
-- (id)linkStyleForTextSource:(id)arg1;
 - (id)textResizerForTextSource:(id)arg1;
 - (id)textRulesForTextSource:(id)arg1;
 - (id)textStyleForIdentifier:(id)arg1;

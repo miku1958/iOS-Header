@@ -20,8 +20,11 @@
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)allNestedChildrenInfosForWrap;
+- (BOOL)allowsCaption;
+- (BOOL)allowsTitle;
 - (id)animationFilters;
 - (id)childEnumerator;
+- (id)childEnumeratorForUserSearch;
 - (id)copyWithContext:(id)arg1;
 - (id)infosToObserveForAttachedInfo;
 - (id)initWithSpacerShapeAndContext:(id)arg1 geometry:(id)arg2;

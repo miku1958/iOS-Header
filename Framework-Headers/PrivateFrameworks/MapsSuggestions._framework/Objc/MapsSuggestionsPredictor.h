@@ -28,12 +28,6 @@
 
 + (id)sharedPredictor;
 - (void).cxx_destruct;
-- (void)_closeConnection;
-- (void)_initCloseTimerIfNecessary;
-- (BOOL)_openConnectionIfNecessary;
-- (void)_overrideTempPredictedTransportModeForCarPlay:(id)arg1;
-- (void)_scheduleCloseConnection;
-- (void)_unscheduleCloseConnection;
 - (void)cancelCapturingAnalytics;
 - (void)captureActualTransportationMode:(int)arg1 originMapItem:(id)arg2 destinationMapItem:(id)arg3;
 - (void)capturePredictedTransportationMode:(int)arg1;

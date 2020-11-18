@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *videoStreamConfigurations; // @synthesize videoStreamConfigurations=_videoStreamConfigurations;
 
 + (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 audioStreamIndex:(unsigned int)arg4;
++ (BOOL)isAudioStreamOnDemand:(struct _VCMediaStreamConfigurationProviderAudio *)arg1;
++ (BOOL)isVideoStreamOnDemand:(struct _VCMediaStreamConfigurationProviderVideo *)arg1;
 - (id)audioRuleCollectionWithAudioConfig:(struct _VCMediaStreamConfigurationProviderAudio *)arg1 supportedAudioRules:(id)arg2;
 - (void)dealloc;
 - (unsigned short)generateStreamID;

@@ -9,7 +9,7 @@
 #import <ReminderKit/REMExternalSyncMetadataProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 
-@class NSOrderedSet, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContext, REMAccountStorage, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap, REMStore;
+@class NSData, NSOrderedSet, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContext, REMAccountStorage, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap, REMStore;
 
 @interface REMAccount : NSObject <REMObjectIDProviding, REMExternalSyncMetadataProviding>
 {
@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property (readonly, nonatomic) REMObjectID *remObjectID;
 @property (readonly, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property (readonly, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property (readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property (strong, nonatomic) REMStore *store; // @synthesize store=_store;
 @property (readonly, nonatomic) BOOL supportsSharingLists;
@@ -56,6 +57,7 @@
 + (id)newObjectID;
 + (id)objectIDWithUUID:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)MCIsManagedWithResultPtr:(BOOL *)arg1 error:(id *)arg2;
 - (BOOL)canCopyReminderLosslesslyToAccount:(id)arg1;
 - (id)debugDescription;
 - (id)description;

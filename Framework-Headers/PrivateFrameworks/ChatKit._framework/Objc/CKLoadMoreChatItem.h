@@ -13,6 +13,7 @@
 - (Class)cellClass;
 - (struct UIEdgeInsets)contentInsets;
 - (BOOL)displayDuringSend;
+- (unsigned long long)layoutType;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (BOOL)transcriptOrientation;
 - (struct UIEdgeInsets)transcriptTextAlignmentInsets;

@@ -22,11 +22,15 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;
++ (id)propertyBuilders;
 + (id)typeDescription;
+- (id)actionCount;
+- (id)folderName;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (BOOL)getListSubtitle:(CDUnknownBlockType)arg1;
 - (BOOL)getListThumbnail:(CDUnknownBlockType)arg1 forSize:(struct CGSize)arg2;
+- (id)workflowIcon;
 
 @end
 

@@ -89,7 +89,6 @@
 - (void)setMessageFlagsWithoutCommitting:(unsigned long long)arg1;
 - (void)setMutableInfoFromMessage:(id)arg1;
 - (void)setPriorityFromHeaders:(id)arg1;
-- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 messageIDHash:(long long)arg8 conversationIDHash:(long long)arg9 summary:(id)arg10 withOptions:(unsigned int)arg11;
 - (void)setSummary:(id)arg1;
 - (BOOL)shouldSetSummary;
 

@@ -6,32 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class CARSession, CARSessionChangedNotificationConverter;
+@class CARObserverHashTable, CARSession, CARSessionChangedNotificationConverter;
 @protocol CARSessionObserving, OS_dispatch_source;
 
 @interface CARSessionStatus : NSObject
 {
-    BOOL _requiresCarCapabilitiesValues;
+    BOOL _clientIsCarPlayShell;
     id<CARSessionObserving> _sessionObserver;
     CARSession *_session;
     CARSessionChangedNotificationConverter *_notificationConverter;
+    CARObserverHashTable *_sessionObservers;
     NSObject<OS_dispatch_source> *_connectingTimer;
     unsigned long long _timeoutInterval;
 }
 
+@property (readonly, nonatomic) BOOL clientIsCarPlayShell; // @synthesize clientIsCarPlayShell=_clientIsCarPlayShell;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *connectingTimer; // @synthesize connectingTimer=_connectingTimer;
 @property (readonly, nonatomic) CARSession *currentSession;
 @property (strong, nonatomic) CARSessionChangedNotificationConverter *notificationConverter; // @synthesize notificationConverter=_notificationConverter;
-@property (nonatomic) BOOL requiresCarCapabilitiesValues; // @synthesize requiresCarCapabilitiesValues=_requiresCarCapabilitiesValues;
 @property (strong, nonatomic) CARSession *session; // @synthesize session=_session;
 @property (weak, nonatomic) id<CARSessionObserving> sessionObserver; // @synthesize sessionObserver=_sessionObserver;
+@property (strong, nonatomic) CARObserverHashTable *sessionObservers; // @synthesize sessionObservers=_sessionObservers;
 @property (nonatomic) unsigned long long timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 
 + (id)sessionUpdatesQueue;
 - (void).cxx_destruct;
 - (void)_handleAuthenticationSucceeded:(id)arg1;
-- (void)_handleCarCapabilitiesUpdated:(id)arg1;
-- (void)_handleConfigurationUpdated:(id)arg1;
+- (void)_handleCarCapabilitiesUpdated;
+- (void)_handleConfigurationUpdated;
 - (void)_handleConnectingTimeout;
 - (void)_handleInCarNotification;
 - (void)_handleSessionChanged;
@@ -43,10 +45,12 @@
 - (void)_startConnectingTimer;
 - (void)_stopConnectingTimer;
 - (void)_updateSession;
+- (void)addSessionObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initAndWaitUntilCarCapabilitiesUpdate;
 - (id)initAndWaitUntilSessionUpdated;
+- (id)initForCarPlayShell;
+- (void)removeSessionObserver:(id)arg1;
 - (void)waitForSessionInitialization;
 
 @end

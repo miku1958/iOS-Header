@@ -26,10 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_spatialEventLookupResults:1;
         unsigned int read_spatialPlaceLookupResults:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_spatialEventLookupResults:1;
-        unsigned int wrote_spatialPlaceLookupResults:1;
-        unsigned int wrote_statusCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,10 +41,6 @@ __attribute__((visibility("hidden")))
 + (Class)spatialPlaceLookupResultType;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
-- (void)_addNoFlagsSpatialEventLookupResult:(id)arg1;
-- (void)_addNoFlagsSpatialPlaceLookupResult:(id)arg1;
-- (void)_readSpatialEventLookupResults;
-- (void)_readSpatialPlaceLookupResults;
 - (void)addSpatialEventLookupResult:(id)arg1;
 - (void)addSpatialPlaceLookupResult:(id)arg1;
 - (void)clearSpatialEventLookupResults;
@@ -60,7 +53,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

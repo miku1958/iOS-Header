@@ -20,6 +20,7 @@
     long long _userConsentResponse;
     BOOL _isMidOperation;
     UIBarButtonItem *_nextButton;
+    UIBarButtonItem *_cancelButton;
     id<TSSIMSetupFlowDelegate> _delegate;
     UILabel *_confirmationCodeTitleLabel;
     UITableView *_infoTableView;
@@ -46,6 +47,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)userDidTapCancel;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

@@ -37,10 +37,12 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
 - (id)initWithTokenService:(id)arg1 bag:(id)arg2;
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2;
 - (id)requestWithComponents:(id)arg1;
+- (id)requestWithURL:(id)arg1;
 
 @end
 

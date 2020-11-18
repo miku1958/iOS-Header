@@ -9,6 +9,7 @@
 @interface MPSImageSpatioTemporalGuidedFilterDescriptor : NSObject
 {
     BOOL _preallocateIntermediates;
+    BOOL _useHighPrecisionIntermediates;
     float _epsilon;
     unsigned long long _width;
     unsigned long long _height;
@@ -27,6 +28,7 @@
 @property (nonatomic) unsigned long long kernelTemporalDiameter; // @synthesize kernelTemporalDiameter=_kernelTemporalDiameter;
 @property (nonatomic) BOOL preallocateIntermediates; // @synthesize preallocateIntermediates=_preallocateIntermediates;
 @property (nonatomic) unsigned long long sourceChannels; // @synthesize sourceChannels=_sourceChannels;
+@property (nonatomic) BOOL useHighPrecisionIntermediates; // @synthesize useHighPrecisionIntermediates=_useHighPrecisionIntermediates;
 @property (nonatomic) unsigned long long width; // @synthesize width=_width;
 
 + (id)filterDescriptorWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 arrayLength:(unsigned long long)arg3 kernelSpatialDiameter:(unsigned long long)arg4 kernelTemporalDiameter:(unsigned long long)arg5 epsilon:(float)arg6 sourceChannels:(unsigned long long)arg7 guideChannels:(unsigned long long)arg8;

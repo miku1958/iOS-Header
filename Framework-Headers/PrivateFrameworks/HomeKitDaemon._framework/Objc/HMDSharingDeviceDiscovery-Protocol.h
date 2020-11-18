@@ -6,7 +6,8 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class SFDevice;
+@class NSObject, SFDevice;
+@protocol OS_dispatch_queue;
 
 @protocol HMDSharingDeviceDiscovery <NSObject>
 
@@ -14,6 +15,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler;
 @property (nonatomic) unsigned long long discoveryFlags;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 
 - (void)repairDevice:(SFDevice *)arg1 flags:(unsigned int)arg2 completion:(void (^)(NSError *))arg3;
 - (void)start;

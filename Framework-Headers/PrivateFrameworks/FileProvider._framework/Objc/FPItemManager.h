@@ -21,6 +21,7 @@
 + (id)defaultManager;
 + (BOOL)isAnyDocumentRecentlyUsed:(id)arg1 excludedFileTypes:(id)arg2 allowedFileProviderIdentifiers:(id)arg3;
 - (void).cxx_destruct;
+- (id)__itemForURLWithBuggyNullability:(id)arg1 error:(id *)arg2;
 - (void)_fetchHierarchyForItemID:(id)arg1 recursively:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchHierarchyForItemID:(id)arg1 recursively:(BOOL)arg2 depth:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_fetchItemForURL:(id)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

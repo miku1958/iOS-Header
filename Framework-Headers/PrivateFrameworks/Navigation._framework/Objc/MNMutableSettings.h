@@ -12,28 +12,15 @@
 {
 }
 
-@property (nonatomic) double backgroundTimeWindow; // @dynamic backgroundTimeWindow;
 @property (nonatomic) BOOL beepBeforeInstruction; // @dynamic beepBeforeInstruction;
 @property (nonatomic) unsigned long long distanceUnits; // @dynamic distanceUnits;
-@property (nonatomic) BOOL drivingVoiceGuidance; // @dynamic drivingVoiceGuidance;
-@property (nonatomic) double etaRequestInterval; // @dynamic etaRequestInterval;
-@property (nonatomic) long long fakeTrafficIncidentAlert; // @dynamic fakeTrafficIncidentAlert;
-@property (nonatomic) double initialRequestDelay; // @dynamic initialRequestDelay;
-@property (nonatomic) double initialTraceSpeedMultiplier; // @dynamic initialTraceSpeedMultiplier;
-@property (nonatomic) BOOL isTracePlaybackCameraTestMode; // @dynamic isTracePlaybackCameraTestMode;
 @property (nonatomic) unsigned long long maxAlternateRoutesCount; // @dynamic maxAlternateRoutesCount;
 @property (nonatomic) BOOL muteSpeechOverride; // @dynamic muteSpeechOverride;
 @property (nonatomic) BOOL pauseSpokenAudio; // @dynamic pauseSpokenAudio;
-@property (nonatomic) BOOL shouldLoadETAUpdatesFromTrace; // @dynamic shouldLoadETAUpdatesFromTrace;
-@property (nonatomic) BOOL shouldLoadReroutesFromTrace; // @dynamic shouldLoadReroutesFromTrace;
-@property (nonatomic) BOOL shouldRecordTrace; // @dynamic shouldRecordTrace;
 @property (nonatomic) BOOL shouldUseGuidanceEventManager; // @dynamic shouldUseGuidanceEventManager;
-@property (nonatomic) double simulationGPSError; // @dynamic simulationGPSError;
-@property (nonatomic) double simulationSpeed; // @dynamic simulationSpeed;
 @property (nonatomic) BOOL speechEnabled; // @dynamic speechEnabled;
 @property (copy, nonatomic) NSString *voiceLanguage; // @dynamic voiceLanguage;
 @property (nonatomic) unsigned long long voiceVolume; // @dynamic voiceVolume;
-@property (nonatomic) BOOL walkingVoiceGuidance; // @dynamic walkingVoiceGuidance;
 
 + (id)settingsWithSettings:(id)arg1;
 

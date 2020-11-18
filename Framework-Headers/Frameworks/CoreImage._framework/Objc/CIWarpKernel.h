@@ -14,7 +14,7 @@
 @property (nonatomic) BOOL preservesRange;
 
 + (id)kernelWithString:(id)arg1;
-- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2 constantTypes:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 inputImage:(id)arg3 arguments:(id)arg4;

@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface GEOEncyclopedicInfoUserLocation : NSObject <GEOEncyclopedicInfo>
 {
+    BOOL _isUserLocation;
     MKMapItem *_mapItem;
 }
 
@@ -30,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *textBlockTitle;
 
 - (void).cxx_destruct;
-- (id)initWithMapItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1 isUserLocation:(BOOL)arg2;
 
 @end
 

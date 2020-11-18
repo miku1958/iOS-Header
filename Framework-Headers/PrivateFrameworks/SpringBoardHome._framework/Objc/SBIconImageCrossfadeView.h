@@ -6,38 +6,48 @@
 
 #import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
-@class SBIconImageView, UIView;
+@class UIView;
+@protocol SBCrossfadingIconImageSource;
 
 @interface SBIconImageCrossfadeView : SBFTouchPassThroughView
 {
-    UIView *_containerView;
-    UIView *_crossfadeContainerView;
-    SBIconImageView *_iconImageView;
-    UIView *_crossfadeView;
     double _containerScaleX;
     double _containerScaleY;
-    double _morphFraction;
     BOOL _masksCorners;
     BOOL _performsTrueCrossfade;
+    unsigned long long _crossfadeStyle;
+    UIView *_containerView;
+    id<SBCrossfadingIconImageSource> _iconImageSource;
+    UIView *_iconImageView;
+    UIView *_crossfadeView;
+    UIView *_crossfadeContainerView;
+    double _morphFraction;
     struct CGPoint _stretchAnchorPoint;
 }
 
 @property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
-@property (readonly, nonatomic) UIView *crossfadeView;
-@property (readonly, nonatomic) SBIconImageView *iconImageView;
+@property (readonly, nonatomic) UIView *crossfadeContainerView; // @synthesize crossfadeContainerView=_crossfadeContainerView;
+@property (nonatomic) unsigned long long crossfadeStyle; // @synthesize crossfadeStyle=_crossfadeStyle;
+@property (readonly, nonatomic) UIView *crossfadeView; // @synthesize crossfadeView=_crossfadeView;
+@property (readonly, nonatomic) id<SBCrossfadingIconImageSource> iconImageSource; // @synthesize iconImageSource=_iconImageSource;
+@property (readonly, nonatomic) UIView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (nonatomic) BOOL masksCorners; // @synthesize masksCorners=_masksCorners;
+@property (readonly, nonatomic) double morphFraction; // @synthesize morphFraction=_morphFraction;
 @property (nonatomic) BOOL performsTrueCrossfade; // @synthesize performsTrueCrossfade=_performsTrueCrossfade;
+@property (readonly, nonatomic) BOOL reparentsSourceView;
 @property (nonatomic) struct CGPoint stretchAnchorPoint; // @synthesize stretchAnchorPoint=_stretchAnchorPoint;
 
++ (Class)_containerViewClass;
 - (void).cxx_destruct;
+- (void)_applyCornerRadius:(double)arg1;
+- (void)_applyCrossfadeScaleX:(double)arg1 scaleY:(double)arg2;
+- (void)_setCornerRadiusEnabled:(BOOL)arg1;
 - (void)_updateCornerMask;
-- (void)applyCornerRadius:(double)arg1;
 - (void)cleanup;
-- (id)initWithImageView:(id)arg1 crossfadeView:(id)arg2;
+- (id)initWithSource:(id)arg1 crossfadeView:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareGeometry;
 - (void)setAppSnapshotCornerRadius:(double)arg1;
-- (void)setCornerRadiusEnabled:(BOOL)arg1;
 - (void)setCrossfadeFraction:(double)arg1;
 - (void)setMorphFraction:(double)arg1;
 

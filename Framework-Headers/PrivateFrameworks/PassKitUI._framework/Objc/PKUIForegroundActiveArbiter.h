@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKForegroundActiveArbiter-Protocol.h>
 
-@class NSHashTable, NSLock, NSString;
+@class NSHashTable, NSString;
 @protocol OS_dispatch_source;
 
 @interface PKUIForegroundActiveArbiter : NSObject <PKForegroundActiveArbiter>
@@ -23,7 +23,7 @@
     NSHashTable *_deactivationObservers;
     unsigned long long _backgroundTaskIdentifier;
     NSObject<OS_dispatch_source> *_enteringForegroundTimeout;
-    NSLock *_lock;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,7 +33,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_beginEnteringForeground;
+- (void)_beginEnteringForegroundTimer;
 - (void)_didRemoveDeactivationReasonNotification:(id)arg1;
 - (id)_init;
 - (void)_updateForegroundActiveWithEnteringForegroundPolicy:(long long)arg1;
@@ -46,7 +46,8 @@
 - (CDStruct_973bafd3)registerObserver:(id)arg1;
 - (void)unregisterDeactivationObserver:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
-- (void)willEnterForeground;
+- (void)willEnterForegroundPostlude;
+- (void)willEnterForegroundPrelude;
 - (void)willResignActive;
 - (void)willTerminate;
 

@@ -11,7 +11,6 @@
 @class NSArray, NSError, NSString;
 @protocol OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface _EARSyncResultStreamHelper : NSObject <_EARSpeechRecognitionResultStream>
 {
     NSObject<OS_dispatch_semaphore> *_finishSemaphore;

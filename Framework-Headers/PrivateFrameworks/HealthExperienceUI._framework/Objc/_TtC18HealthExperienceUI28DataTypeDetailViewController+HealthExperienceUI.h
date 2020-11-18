@@ -6,7 +6,13 @@
 
 #import <HealthExperienceUI/_TtC18HealthExperienceUI28DataTypeDetailViewController.h>
 
+@class NSString;
+
 @interface _TtC18HealthExperienceUI28DataTypeDetailViewController (HealthExperienceUI)
+
+@property (nonatomic, readonly) NSString *description;
+
 - (void)addDataTapped:(id)arg1;
+- (void)debugActionGestureRecognized;
 @end
 

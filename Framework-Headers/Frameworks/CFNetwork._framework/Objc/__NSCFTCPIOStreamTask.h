@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CFNetwork/__NSCFURLSessionTask.h>
+#import <CFNetwork/NSURLSessionTask.h>
 
 @class CFNetworkTimer, NSData, NSMutableArray, NSObject, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
 @protocol OS_dispatch_queue;
 
-@interface __NSCFTCPIOStreamTask : __NSCFURLSessionTask
+@interface __NSCFTCPIOStreamTask : NSURLSessionTask
 {
     CDUnknownBlockType _disavow;
     struct shared_ptr<TCPIO_EstablishBase> _establish;
-    shared_ptr_ced42cc3 _ios;
+    struct shared_ptr<TransportConnectionObjCPP> _ios;
     unsigned char _captureStreamsUponCompletion;
     unsigned char _secure;
     NSData *__initialDataPayload;
@@ -41,8 +41,6 @@
 }
 
 @property (copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
-@property (strong, nonatomic) __NSCFURLLocalStreamTaskWorkRead *currentReadTask; // @synthesize currentReadTask=_currentReadTask;
-@property (strong, nonatomic) __NSCFURLLocalStreamTaskWorkWrite *currentWriteTask; // @synthesize currentWriteTask=_currentWriteTask;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -90,7 +88,6 @@
 - (void)dealloc;
 - (id)initWithHost:(id)arg1 port:(long long)arg2 taskGroup:(id)arg3 disavow:(CDUnknownBlockType)arg4;
 - (id)initWithTask:(id)arg1 connection:(shared_ptr_8da4e70b)arg2 extraBytes:(id)arg3 disavow:(CDUnknownBlockType)arg4;
-- (shared_ptr_ced42cc3)ios;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldDoWorkConsideringTlsState;

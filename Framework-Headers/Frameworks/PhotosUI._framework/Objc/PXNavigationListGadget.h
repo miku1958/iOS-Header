@@ -14,9 +14,8 @@
 
 @interface PXNavigationListGadget : PXNavigationListController <PXGadget, PXNavigableCollectionContainer>
 {
-    BOOL _visibleContentRectIsStale;
-    PXGadgetSpec *_gadgetSpec;
     id<PXGadgetDelegate> _delegate;
+    PXGadgetSpec *_gadgetSpec;
     struct CGRect _visibleContentRect;
 }
 
@@ -29,7 +28,6 @@
 @property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;
@@ -39,16 +37,15 @@
 
 - (void).cxx_destruct;
 - (id)_listItemForCollection:(id)arg1;
-- (void)_updateTableViewForVisibleContentRect;
 - (void)_updateTableViewLayoutMargins;
 - (BOOL)canNavigateToCollection:(id)arg1;
+- (void)contentHeightDidChange;
 - (id)contentViewController;
 - (void)navigateToCollection:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)tableViewContentSizeDidChange;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

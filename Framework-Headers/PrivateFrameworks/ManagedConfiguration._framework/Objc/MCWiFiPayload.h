@@ -14,6 +14,7 @@
     BOOL _captiveBypass;
     BOOL _isWEP;
     BOOL _isWPA;
+    BOOL _disableAssociationMACRandomization;
     BOOL _passwordRequired;
     BOOL _usernameRequired;
     BOOL _autoJoin;
@@ -49,6 +50,7 @@
     NSNumber *_proxyPACFallbackAllowedNum;
     NSNumber *_isHotspotNum;
     NSNumber *_serviceProviderRoamingEnabledNum;
+    NSNumber *_disableAssociationMACRandomizationNum;
 }
 
 @property (strong, nonatomic) NSString *HESSID; // @synthesize HESSID=_HESSID;
@@ -60,6 +62,8 @@
 @property (strong, nonatomic) NSNumber *captiveBypassNum; // @synthesize captiveBypassNum=_captiveBypassNum;
 @property (strong, nonatomic) NSString *certificateUUID; // @synthesize certificateUUID=_certificateUUID;
 @property (strong, nonatomic) NSString *credentialUUID; // @synthesize credentialUUID=_credentialUUID;
+@property (nonatomic) BOOL disableAssociationMACRandomization; // @synthesize disableAssociationMACRandomization=_disableAssociationMACRandomization;
+@property (strong, nonatomic) NSNumber *disableAssociationMACRandomizationNum; // @synthesize disableAssociationMACRandomizationNum=_disableAssociationMACRandomizationNum;
 @property (strong, nonatomic) NSString *displayedOperatorName; // @synthesize displayedOperatorName=_displayedOperatorName;
 @property (strong, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 @property (strong, nonatomic) NSDictionary *eapClientConfig; // @synthesize eapClientConfig=_eapClientConfig;
@@ -101,7 +105,6 @@
 - (BOOL)_isEAPSIMConfig:(id)arg1;
 - (id)_localizedEncryptionTypeString;
 - (BOOL)_qosMarkingConfigIsValid:(id)arg1 error:(id *)arg2;
-- (id)description;
 - (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
@@ -112,6 +115,7 @@
 - (id)subtitle2Description;
 - (id)subtitle2Label;
 - (id)userInputFields;
+- (id)verboseDescription;
 
 @end
 

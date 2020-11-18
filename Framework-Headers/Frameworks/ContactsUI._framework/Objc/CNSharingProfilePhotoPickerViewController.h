@@ -9,7 +9,7 @@
 #import <ContactsUI/UICollectionViewDataSource-Protocol.h>
 #import <ContactsUI/UICollectionViewDelegate-Protocol.h>
 
-@class CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItemProvider, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerItem, NSArray, NSString, PRMonogramColor, UICollectionView, UICollectionViewFlowLayout, UIImageView;
+@class CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItemProvider, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerItem, NSArray, NSString, PRMonogramColor, UIButton, UICollectionView, UICollectionViewFlowLayout, UIImageView;
 @protocol AVTAvatarRecord, CNSharingProfilePhotoPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     CNSharingProfileAvatarItemProviderConfiguration *_avatarItemProviderConfiguration;
     CNSharingProfileAvatarItemProvider *_itemProvider;
     NSArray *_items;
+    UIButton *_customizeButton;
     CNPhotoPickerVariantsManager *_variantsManager;
     CNPhotoPickerColorVariant *_animojiBackgroundColor;
     PRMonogramColor *_monogramBackgroundColor;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNSharingProfileAvatarItemProviderConfiguration *avatarItemProviderConfiguration; // @synthesize avatarItemProviderConfiguration=_avatarItemProviderConfiguration;
 @property (strong, nonatomic) id<AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (strong, nonatomic) UIButton *customizeButton; // @synthesize customizeButton=_customizeButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNSharingProfilePhotoPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -58,8 +60,10 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)didSelectCustomizeButton:(id)arg1;
 - (id)initWithContact:(id)arg1 avatarRecord:(id)arg2 avatarItemProviderConfiguration:(id)arg3 logger:(id)arg4;
 - (double)previewEdgeSize;
+- (double)previewToSelectorSpacing;
 - (void)reloadData;
 - (void)reloadItems;
 - (void)setupConstraints;

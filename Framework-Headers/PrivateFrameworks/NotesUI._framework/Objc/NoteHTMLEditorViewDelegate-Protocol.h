@@ -6,7 +6,7 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSFileWrapper, NSString, NSURL, NoteAttachmentPresentation, NoteHTMLEditorView, UIScrollView;
+@class NSArray, NSDictionary, NSFileWrapper, NSString, NSURL, NoteAttachmentPresentation, NoteHTMLEditorView;
 
 @protocol NoteHTMLEditorViewDelegate <NSObject>
 
@@ -22,10 +22,8 @@
 - (NSURL *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 fileURLForAttachmentWithContentID:(NSString *)arg2;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 openURL:(NSURL *)arg2;
 - (NSDictionary *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 updateAttachments:(NSArray *)arg2;
-- (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 webScrollViewDidScroll:(UIScrollView *)arg2;
 - (void)noteHTMLEditorViewDidBeginEditing:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewDidChange:(NoteHTMLEditorView *)arg1;
-- (void)noteHTMLEditorViewDidChangeSelection:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewDidEndEditing:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewNeedsContentReload:(NoteHTMLEditorView *)arg1;
 - (BOOL)noteHTMLEditorViewShouldBeginEditing:(NoteHTMLEditorView *)arg1 isUserInitiated:(BOOL)arg2;

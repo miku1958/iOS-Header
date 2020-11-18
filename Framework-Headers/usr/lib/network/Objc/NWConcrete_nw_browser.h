@@ -31,13 +31,14 @@ __attribute__((visibility("hidden")))
     struct _DNSServiceRef_t *secondary_dns_ref;
     NSObject<OS_nw_array> *old_results;
     NSObject<OS_nw_array> *new_results;
-    BOOL include_txt_record;
     NSObject<OS_xpc_object> *dns_ref_map;
     NSObject<OS_xpc_object> *changes_map;
     NSObject<OS_nw_dictionary> *txt_record_map;
-    unsigned int log_id;
     char *description;
     char *logging_description;
+    unsigned int log_id;
+    BOOL include_txt_record;
+    BOOL redact_logs;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -47,7 +48,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithDescriptor:(id)arg1 parameters:(id)arg2;
 - (id)redactedDescription;
 
 @end

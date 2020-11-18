@@ -39,6 +39,7 @@
 - (id)CA_interpolateValues:(id)arg1:(id)arg2:(id)arg3 interpolator:(const struct ValueInterpolator *)arg4;
 - (void)CA_prepareRenderValue;
 - (id)CA_roundToIntegerFromValue:(id)arg1;
+- (BOOL)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (void)encodeWithCAMLWriter:(id)arg1;
 @end
 

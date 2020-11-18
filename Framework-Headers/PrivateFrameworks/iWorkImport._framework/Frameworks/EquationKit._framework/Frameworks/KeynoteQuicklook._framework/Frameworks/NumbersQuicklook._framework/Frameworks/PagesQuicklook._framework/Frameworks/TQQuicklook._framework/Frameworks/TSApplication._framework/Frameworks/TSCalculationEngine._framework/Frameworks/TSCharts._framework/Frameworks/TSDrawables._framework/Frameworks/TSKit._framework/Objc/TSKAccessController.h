@@ -33,7 +33,7 @@
     NSMutableArray *_writerQueue;
     NSObject<OS_dispatch_semaphore> *_outstandingTicketReadLock;
     unsigned int _outstandingTicketCount;
-    BOOL _writeLockHeld;
+    _Atomic BOOL _writeLockHeld;
     unsigned long long _writeBlockedPrimaryThreadCount;
     unsigned long long _primaryThreadWriteCount;
     _Atomic struct __CFRunLoop *_runLoop;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNAccountsAndGroupsItem *rootItem; // @synthesize rootItem=_rootItem;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly, nonatomic) CNContactStoreFilter *serverFilter;
+@property (readonly, nonatomic) CNAccountsAndGroupsItem *showAllSectionItem;
 @property (strong, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property (readonly, nonatomic, getter=isTrivial) BOOL trivial;
 
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_reloadSections;
 - (id)initWithStore:(id)arg1;
 - (void)reload;
+- (void)removeServerFilter;
 - (void)setServerFilterForItem:(id)arg1;
 - (void)updateRootItemSelection;
 

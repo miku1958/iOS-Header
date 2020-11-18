@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
 
-@class GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -22,10 +22,13 @@ __attribute__((visibility("hidden")))
     NSArray *_lineHighlights;
     id<GEOMapItem> _mapItem;
     GEOSearchCategory *_category;
+    GEOCollectionResult *_collectionResult;
+    GEOPublisherResult *_publisherResult;
 }
 
 @property (readonly, nonatomic) long long autocompleteCellType;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolved;
+@property (readonly, nonatomic) GEOCollectionResult *collectionResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
@@ -43,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSData *metadata;
 @property (readonly, nonatomic, getter=_placeDataAutocompleteEntry) GEOPDAutocompleteEntry *placeDataAutocompleteEntry;
 @property (readonly, nonatomic) int placeType;
+@property (readonly, nonatomic) GEOPublisherResult *publisherResult;
 @property (readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
@@ -55,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)calloutTitle;
 - (BOOL)getCoordinate:(CDStruct_c3b9c2ee *)arg1;
 - (id)highlightsForLine:(unsigned long long)arg1;
-- (id)initWithEntry:(id)arg1 traits:(id)arg2 entryListIndex:(int)arg3 entryIndex:(int)arg4 mapItems:(id)arg5;
+- (id)initWithEntry:(id)arg1 traits:(id)arg2 entryListIndex:(int)arg3 entryIndex:(int)arg4 mapItems:(id)arg5 collections:(id)arg6 publishers:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)queryLine;
 - (void)sendFeedback;

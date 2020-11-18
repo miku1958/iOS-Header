@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (EFKVOAdditions)
+- (id)ef_observeKeyPath:(id)arg1 options:(unsigned long long)arg2 autoCancelToken:(BOOL)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)ef_observeKeyPath:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)ef_onScheduler:(id)arg1;
 @end

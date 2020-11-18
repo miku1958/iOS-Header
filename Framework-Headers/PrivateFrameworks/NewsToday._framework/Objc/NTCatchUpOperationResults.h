@@ -27,7 +27,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithFeedItems:(id)arg1 supplementalInterestToken:(id)arg2;
-- (id)initWithHeadlines:(id)arg1 rankingFeedback:(id)arg2;
+- (id)initWithHeadlines:(id)arg1 rankingFeedback:(id)arg2 actionURLsByArticleID:(id)arg3;
 - (id)initWithItems:(id)arg1 rankingFeedback:(id)arg2 supplementalInterestToken:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)resultsByCombiningWithResults:(id)arg1;

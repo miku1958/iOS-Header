@@ -14,7 +14,6 @@
 @optional
 - (BOOL)oneUpBarsController:(PUOneUpBarsController *)arg1 canShowCommentsForAsset:(id<PUDisplayAsset>)arg2;
 - (BOOL)oneUpBarsController:(PUOneUpBarsController *)arg1 canShowOriginalForAsset:(id<PUDisplayAsset>)arg2;
-- (BOOL)oneUpBarsController:(PUOneUpBarsController *)arg1 canViewInLibraryForAsset:(id<PUDisplayAsset>)arg2;
 - (void)oneUpBarsController:(PUOneUpBarsController *)arg1 didTapPlayPauseButton:(BOOL)arg2;
 - (BOOL)oneUpBarsController:(PUOneUpBarsController *)arg1 isAccessoryAvailableForAssetReference:(PUAssetReference *)arg2;
 - (BOOL)oneUpBarsController:(PUOneUpBarsController *)arg1 shouldEnableShowOriginalForAsset:(id<PUDisplayAsset>)arg2;

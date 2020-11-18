@@ -12,6 +12,7 @@
 
 + (BOOL)isInternalInstall;
 + (BOOL)isInternetReachable;
++ (BOOL)isSeedInstall;
 + (struct _NSRange)range:(struct _NSRange)arg1 liesWithinRange:(struct _NSRange)arg2 assert:(BOOL)arg3;
 
 @end

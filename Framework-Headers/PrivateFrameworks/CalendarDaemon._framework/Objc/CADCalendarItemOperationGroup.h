@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseAddContactWithIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseCancelFetchRequestWithIdentifier:(unsigned int)arg1;
 - (void)CADDatabaseCountEntitiesOfType:(int)arg1 withContactIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)CADDatabaseExportCalendarItemAsICS:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseExportCalendarItemAsICS:(id)arg1 withOptions:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseFetchCalendarItemsWithPredicate:(id)arg1 entityType:(int)arg2 fetchIdentifier:(int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseFetchEntitiesOfType:(int)arg1 withContactIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetCalendarItemWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;

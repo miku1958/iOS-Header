@@ -70,6 +70,10 @@
 - (struct UIEdgeInsets)tv_scrollableBoundsInset;
 - (id)tv_searchStyle;
 - (id)tv_shadow;
+- (double)tv_symbolPointSize;
+- (long long)tv_symbolScale;
+- (id)tv_symbolTextStyle;
+- (long long)tv_symbolWeight;
 - (long long)tv_textAlignment;
 - (id)tv_textHighlightStyle;
 - (double)tv_textHyphenationFactor;

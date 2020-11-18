@@ -8,6 +8,8 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface FCColor : NSObject <NSCopying>
 {
     double _red;
@@ -19,6 +21,7 @@
 @property (readonly, nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (readonly, nonatomic) double blue; // @synthesize blue=_blue;
 @property (readonly, nonatomic) double green; // @synthesize green=_green;
+@property (readonly, nonatomic) NSString *hex;
 @property (readonly, nonatomic) double red; // @synthesize red=_red;
 
 + (id)blackColor;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowsNetworkTileLoad;
-- (CDStruct_c8b5ad3f *)findRoadOnCoordinate:(CDStruct_c3b9c2ee)arg1 withCourse:(double)arg2;
+- (CDStruct_4da79865 *)findRoadOnCoordinate:(CDStruct_c3b9c2ee)arg1 withCourse:(double)arg2;
 - (id)init;
 
 @end

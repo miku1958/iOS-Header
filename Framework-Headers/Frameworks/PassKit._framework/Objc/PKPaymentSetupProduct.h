@@ -8,11 +8,13 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL, PKPaymentSetupProductConfiguration, PKPaymentSetupProductImageAssetURLs, PKPaymentSetupProductImageAssets;
+@class NSArray, NSDictionary, NSExtension, NSMutableDictionary, NSSet, NSString, NSURL, PKPaymentSetupProductConfiguration, PKPaymentSetupProductImageAssetURLs, PKPaymentSetupProductImageAssets;
 
 @interface PKPaymentSetupProduct : NSObject <NSCopying>
 {
     BOOL _suppressPendingPurchases;
+    BOOL _meetsAgeRequirements;
+    BOOL _provisioningExtensionRequiresAuthorization;
     BOOL _hasAccount;
     PKPaymentSetupProductConfiguration *_configuration;
     NSSet *_regions;
@@ -25,14 +27,18 @@
     long long _hsa2Requirement;
     PKPaymentSetupProductImageAssetURLs *_imageAssetURLs;
     PKPaymentSetupProductImageAssets *_imageAssets;
+    long long _minimumSupportedAge;
+    long long _maximumSupportedAge;
     NSArray *_associatedStoreIdentifiers;
     NSURL *_appLaunchURL;
     NSArray *_searchTerms;
     NSArray *_supportedCameraCaptureTypes;
     NSArray *_supportedInAppTypes;
     NSArray *_supportedTransitNetworkIdentifiers;
+    NSExtension *_provisioningExtension;
     NSArray *_featureApplications;
     NSArray *_onboardingItems;
+    NSString *_regionIdentifier;
     NSArray *_paymentOptions;
     NSDictionary *_rawDictionary;
     NSDictionary *_minimumOSVersion;
@@ -50,12 +56,18 @@
 @property (nonatomic) long long hsa2Requirement; // @synthesize hsa2Requirement=_hsa2Requirement;
 @property (readonly, nonatomic) PKPaymentSetupProductImageAssetURLs *imageAssetURLs; // @synthesize imageAssetURLs=_imageAssetURLs;
 @property (readonly, nonatomic) PKPaymentSetupProductImageAssets *imageAssets; // @synthesize imageAssets=_imageAssets;
+@property (nonatomic) long long maximumSupportedAge; // @synthesize maximumSupportedAge=_maximumSupportedAge;
+@property (nonatomic) BOOL meetsAgeRequirements; // @synthesize meetsAgeRequirements=_meetsAgeRequirements;
 @property (strong, nonatomic) NSDictionary *minimumOSVersion; // @synthesize minimumOSVersion=_minimumOSVersion;
+@property (nonatomic) long long minimumSupportedAge; // @synthesize minimumSupportedAge=_minimumSupportedAge;
 @property (strong, nonatomic) NSArray *onboardingItems; // @synthesize onboardingItems=_onboardingItems;
 @property (readonly, copy, nonatomic) NSString *partnerName;
 @property (readonly, copy, nonatomic) NSArray *paymentOptions; // @synthesize paymentOptions=_paymentOptions;
+@property (readonly, nonatomic) NSExtension *provisioningExtension; // @synthesize provisioningExtension=_provisioningExtension;
+@property (readonly, nonatomic) BOOL provisioningExtensionRequiresAuthorization; // @synthesize provisioningExtensionRequiresAuthorization=_provisioningExtensionRequiresAuthorization;
 @property (copy, nonatomic) NSDictionary *rawDictionary; // @synthesize rawDictionary=_rawDictionary;
 @property (readonly, copy, nonatomic) NSDictionary *readerModeMetadata; // @synthesize readerModeMetadata=_readerModeMetadata;
+@property (readonly, copy, nonatomic) NSString *regionIdentifier; // @synthesize regionIdentifier=_regionIdentifier;
 @property (copy, nonatomic) NSSet *regions; // @synthesize regions=_regions;
 @property (strong, nonatomic) NSMutableDictionary *requestedProvisioningMethods; // @synthesize requestedProvisioningMethods=_requestedProvisioningMethods;
 @property (copy, nonatomic) NSArray *requiredFields; // @synthesize requiredFields=_requiredFields;
@@ -72,11 +84,13 @@
 + (id)_inAppProvisioningURLWthScheme:(id)arg1 path:(id)arg2;
 + (void)_updateProduct:(id)arg1 withDebugConfigurationForState:(unsigned long long)arg2;
 + (id)partnerProductsFromArrayOfPartners:(id)arg1 andProducts:(id)arg2;
++ (id)productForIssuerProvisioningExtension:(id)arg1 withStatus:(id)arg2;
 + (id)productsFromBrowseableBankApps:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 supportedTransitNetworkIdentifiers:(id)arg14 onboardingItems:(id)arg15 actionBaseURL:(id)arg16 productState:(id)arg17;
+- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 supportedTransitNetworkIdentifiers:(id)arg14 onboardingItems:(id)arg15 actionBaseURL:(id)arg16 productState:(id)arg17 minimumProductAge:(id)arg18 maximumProductAge:(id)arg19 associatedStoreIdentifiers:(id)arg20 appLaunchURL:(id)arg21 regionIdentifier:(id)arg22;
 - (long long)allSupportedProtocols;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)didAuthorizeProvisioningExtension;
 - (id)initWithFeatureIdentifier:(unsigned long long)arg1;
 - (id)initWithProductDictionary:(id)arg1;
 - (id)partnerIdentifier;

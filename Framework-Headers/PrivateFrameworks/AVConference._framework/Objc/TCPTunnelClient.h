@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)createDispatchTimer:(float)arg1 withDetailedError:(long long)arg2;
 - (void)dealloc;
 - (void)destroyDispatchTimer;
-- (void)finalize;
 - (id)initWithRelayRequestDictionary:(id)arg1 withCallID:(unsigned int)arg2 relayType:(unsigned char)arg3 errorCode:(int *)arg4;
 - (BOOL)isTunnelSocketClosed;
 - (void)processSocketRead;

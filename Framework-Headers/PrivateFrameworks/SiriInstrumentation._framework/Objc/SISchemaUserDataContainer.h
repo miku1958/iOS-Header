@@ -10,10 +10,12 @@
 
 @interface SISchemaUserDataContainer : PBCodable
 {
+    BOOL _hasC;
     NSData *_c;
 }
 
 @property (copy, nonatomic) NSData *c; // @synthesize c=_c;
+@property (nonatomic) BOOL hasC; // @synthesize hasC=_hasC;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void).cxx_destruct;

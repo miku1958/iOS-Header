@@ -20,6 +20,7 @@
 
 @property (readonly, nonatomic) CPLAccountFlags *accountFlags;
 @property (copy, nonatomic) NSData *accountFlagsData;
+@property (readonly, nonatomic, getter=isCellularRestricted) BOOL cellularRestricted;
 @property (readonly, nonatomic) NSDictionary *cloudAssetCountPerType;
 @property (readonly, nonatomic) NSDate *cloudAssetCountPerTypeLastCheckDate;
 @property (readonly, nonatomic, getter=isConnectedToNetwork) BOOL connectedToNetwork;
@@ -33,6 +34,7 @@
 @property (nonatomic) BOOL iCloudLibraryClientVersionTooOld;
 @property (nonatomic) BOOL iCloudLibraryExists;
 @property (nonatomic) BOOL iCloudLibraryHasBeenWiped;
+@property (readonly, nonatomic, getter=isInAirplaneMode) BOOL inAirplaneMode;
 @property (copy, nonatomic) NSDate *initialSyncDate;
 @property (readonly, nonatomic) BOOL isConstrainedNetwork;
 @property (nonatomic) BOOL isExceedingQuota;
@@ -52,7 +54,7 @@
 - (id)initWithClientLibraryBaseURLForCPLEngine:(id)arg1;
 - (void)refetchFromDisk;
 - (void)setCloudAssetCountPerType:(id)arg1 updateCheckDate:(BOOL)arg2;
-- (void)setConnectedToNetwork:(BOOL)arg1;
+- (void)setConnectedToNetwork:(BOOL)arg1 cellularIsRestricted:(BOOL)arg2 inAirplaneMode:(BOOL)arg3;
 - (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isConstrainedNetwork:(BOOL)arg3 isBudgetValid:(BOOL)arg4;
 - (id)statusDescription;
 - (BOOL)writeInitialSyncMarker:(id *)arg1;

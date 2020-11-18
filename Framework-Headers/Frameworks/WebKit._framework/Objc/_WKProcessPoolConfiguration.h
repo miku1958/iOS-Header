@@ -14,6 +14,7 @@
 @interface _WKProcessPoolConfiguration : NSObject <WKObject, NSCopying>
 {
     struct ObjectStorage<API::ProcessPoolConfiguration> _processPoolConfiguration;
+    BOOL _shouldCaptureAudioInUIProcess;
 }
 
 @property (nonatomic, getter=isJITEnabled) BOOL JITEnabled;
@@ -41,12 +42,11 @@
 @property (nonatomic) BOOL prewarmsProcessesAutomatically;
 @property (nonatomic) BOOL processSwapsOnNavigation;
 @property (nonatomic) BOOL processSwapsOnWindowOpenWithOpener;
-@property (nonatomic) BOOL shouldCaptureAudioInUIProcess;
+@property (nonatomic) BOOL shouldCaptureAudioInUIProcess; // @synthesize shouldCaptureAudioInUIProcess=_shouldCaptureAudioInUIProcess;
 @property (nonatomic) BOOL shouldTakeUIBackgroundAssertion;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL suppressesConnectionTerminationOnSystemChange;
 @property (nonatomic) BOOL usesSingleWebProcess;
 @property (nonatomic) BOOL usesWebProcessCache;
 

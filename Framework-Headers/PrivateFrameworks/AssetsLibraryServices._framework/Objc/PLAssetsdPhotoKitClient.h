@@ -6,13 +6,19 @@
 
 #import <AssetsLibraryServices/PLAssetsdBaseClient.h>
 
-@interface PLAssetsdPhotoKitClient : PLAssetsdBaseClient
+#import <AssetsLibraryServices/PLAssetsdPhotoKitChangesRequestClient-Protocol.h>
+
+@interface PLAssetsdPhotoKitClient : PLAssetsdBaseClient <PLAssetsdPhotoKitChangesRequestClient>
 {
 }
 
 + (BOOL)inTransactionProxy;
-- (void)clearSaveTokens:(id)arg1;
-- (void)requestUUIDWithCustomUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (BOOL)sendChangesRequest:(id)arg1 usingProxyFactory:(id)arg2 error:(id *)arg3;
++ (void)sendChangesRequest:(id)arg1 usingProxyFactory:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)setInTransactionProxy:(BOOL)arg1 queue:(id)arg2;
+- (id)clientName;
+- (id)getUUIDsForCloudIdentifiers:(id)arg1 error:(id *)arg2;
+- (BOOL)sendChangesRequest:(id)arg1 error:(id *)arg2;
 - (void)sendChangesRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

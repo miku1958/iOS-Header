@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContentKit/WFContentLibraryFiltering.h>
+#import <ContentKit/WFContentLibraryANDFiltering.h>
 
 __attribute__((visibility("hidden")))
-@interface WFMPMediaLibraryFiltering : WFContentLibraryFiltering
+@interface WFMPMediaLibraryFiltering : WFContentLibraryANDFiltering
 {
 }
 

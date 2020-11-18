@@ -8,16 +8,18 @@
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMFTimer, NSMutableSet, NSString, NSUUID;
+@class HMDHome, HMFTimer, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
+@protocol HMFLocking;
 
 @interface HMDDeviceNotificationHandler : HMFObject <HMFTimerDelegate>
 {
+    id<HMFLocking> _lock;
     BOOL _delaySupported;
     HMDHome *_home;
+    NSMutableDictionary *_updatedMediaPropertiesByMediaProfile;
     NSString *_destination;
     NSString *_requestIdentifier;
     NSMutableSet *_updatedCharacteristics;
-    NSMutableSet *_updatedMediaProperties;
     HMFTimer *_coalesceTimer;
     HMFTimer *_delayTimer;
     NSUUID *_notificationUpdateIdentifier;
@@ -35,7 +37,7 @@
 @property (strong, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *updatedCharacteristics; // @synthesize updatedCharacteristics=_updatedCharacteristics;
-@property (strong, nonatomic) NSMutableSet *updatedMediaProperties; // @synthesize updatedMediaProperties=_updatedMediaProperties;
+@property (strong, nonatomic) NSMutableDictionary *updatedMediaPropertiesByMediaProfile; // @synthesize updatedMediaPropertiesByMediaProfile=_updatedMediaPropertiesByMediaProfile;
 
 - (void).cxx_destruct;
 - (id)_beginCoalesce:(BOOL)arg1;

@@ -20,15 +20,15 @@
 }
 
 - (void).cxx_destruct;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 direction:(unsigned long long)arg3 animationSettings:(id)arg4 multitaskingModifier:(id)arg5;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (id)layoutSettings;
 - (double)scaleForIndex:(unsigned long long)arg1;
-- (id)transitionWillBegin;
 - (id)transitionWillUpdate;
+- (id)visibleAppLayouts;
 
 @end
 

@@ -15,7 +15,6 @@
     UIImageView *_disclosureView;
     PKContinuousButton *_actionButton;
     double _topPadding;
-    double _middlePadding;
     BOOL _isTemplateLayout;
     UILabel *_titleView;
     UILabel *_detailView;
@@ -63,6 +62,7 @@
 - (BOOL)_needsThirdLine;
 - (void)_performInit;
 - (void)_setupViews;
+- (id)_smallerDetailFont;
 - (id)_subDetailFont;
 - (id)_titleFont;
 - (void)_updateContent:(BOOL)arg1;
@@ -75,6 +75,7 @@
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (long long)viewType;
 
 @end
 

@@ -6,26 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIView;
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface UICellAccessory : NSObject
+@class NSString, UIColor;
+
+@interface UICellAccessory : NSObject <NSCopying, NSSecureCoding>
 {
-    UIView *_view;
-    BOOL _alwaysNeedsLayout;
-    NSString *_identifier;
+    BOOL _hidden;
+    long long _displayedState;
+    double _reservedLayoutWidth;
+    UIColor *_tintColor;
+    UIColor *_backgroundColor;
 }
 
-@property (readonly, nonatomic) BOOL alwaysNeedsLayout; // @synthesize alwaysNeedsLayout=_alwaysNeedsLayout;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) BOOL requestsHuggingLayoutWidth;
-@property (readonly, nonatomic) UIView *view; // @synthesize view=_view;
+@property (strong, nonatomic, getter=_backgroundColor, setter=_setBackgroundColor:) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) long long displayedState; // @synthesize displayedState=_displayedState;
+@property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic, getter=_identifier) NSString *identifier;
+@property (readonly, nonatomic, getter=_isSystemType) BOOL isSystemType;
+@property (nonatomic) double reservedLayoutWidth; // @synthesize reservedLayoutWidth=_reservedLayoutWidth;
+@property (readonly, nonatomic, getter=_systemType) long long systemType;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
-+ (id)accessoryWithIdentifier:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
+- (long long)_defaultPlacementForHeader:(BOOL)arg1;
+- (long long)_systemTypePlacementForHeader:(BOOL)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

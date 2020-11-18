@@ -66,7 +66,7 @@
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidChangeFlags:(id)arg1 messages:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 oldConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
+- (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceDidDeleteAllMessagesInMailboxesWithURLs:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidDeleteMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidReconcileJournaledMessages:(id)arg1 generationWindow:(id)arg2;

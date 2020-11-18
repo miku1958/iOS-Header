@@ -14,6 +14,8 @@
     MISSING_TYPE *debugEnabled;
     MISSING_TYPE *debugColors;
     MISSING_TYPE *shineImageFactory;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *tracker;
 }
 
 @end

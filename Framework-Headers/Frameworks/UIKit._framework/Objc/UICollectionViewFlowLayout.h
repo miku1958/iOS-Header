@@ -75,7 +75,7 @@
 - (void)_calculateAttributesForRect:(struct CGRect)arg1;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
-- (void)_didPerformUpdateVisibleCellsPass;
+- (void)_didPerformUpdateVisibleCellsPassWithLayoutOffset:(struct CGPoint)arg1;
 - (double)_dimensionFromCollectionView;
 - (struct CGSize)_effectiveEstimatedItemSize;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;

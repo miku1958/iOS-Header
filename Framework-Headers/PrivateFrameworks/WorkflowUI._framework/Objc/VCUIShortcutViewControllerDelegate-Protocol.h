@@ -6,13 +6,14 @@
 
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class NSString, VCUIShortcutViewController, WFWorkflow, WFWorkflowReference;
+@class NSString, VCUIShortcutViewController, WFConfiguredTrigger, WFWorkflow, WFWorkflowReference;
 
 @protocol VCUIShortcutViewControllerDelegate <NSObject>
 - (void)shortcutViewControllerDidCancel:(VCUIShortcutViewController *)arg1;
 
 @optional
 - (void)shortcutViewController:(VCUIShortcutViewController *)arg1 didCreateShortcut:(WFWorkflow *)arg2;
+- (void)shortcutViewController:(VCUIShortcutViewController *)arg1 didCreateShortcut:(WFWorkflow *)arg2 withTrigger:(WFConfiguredTrigger *)arg3;
 - (void)shortcutViewController:(VCUIShortcutViewController *)arg1 didDeleteShortcut:(WFWorkflowReference *)arg2;
 - (void)shortcutViewController:(VCUIShortcutViewController *)arg1 didFinishWithName:(NSString *)arg2;
 - (void)shortcutViewController:(VCUIShortcutViewController *)arg1 didSaveShortcut:(WFWorkflow *)arg2;

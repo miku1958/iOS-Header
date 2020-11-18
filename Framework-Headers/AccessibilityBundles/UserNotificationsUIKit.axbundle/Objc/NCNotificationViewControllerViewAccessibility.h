@@ -16,7 +16,6 @@
 - (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
-- (BOOL)accessibilityScroll:(long long)arg1;
 
 @end
 

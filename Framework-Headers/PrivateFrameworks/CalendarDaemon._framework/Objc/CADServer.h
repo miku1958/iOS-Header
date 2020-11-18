@@ -11,7 +11,7 @@
 #import <CalendarDaemon/DatabaseChangeHandling-Protocol.h>
 #import <CalendarDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class CDBDataProtectionObserver, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
+@class NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate, DatabaseChangeHandling, CalActivatable>
@@ -24,8 +24,8 @@
     NSMutableSet *_clientConnections;
     NSLock *_connectionLock;
     NSArray *_signalSensors;
+    BOOL _initializationFinished;
     BOOL _active;
-    CDBDataProtectionObserver *_dataProtectionObserver;
     NSArray *_modules;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_alarmQueue;
@@ -33,7 +33,6 @@
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *alarmQueue; // @synthesize alarmQueue=_alarmQueue;
-@property (strong, nonatomic) CDBDataProtectionObserver *dataProtectionObserver; // @synthesize dataProtectionObserver=_dataProtectionObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -55,13 +54,11 @@
 - (void)_registerForAlarmEvents;
 - (void)_registerForAnalyticsCollection;
 - (void)_registerForAttachmentCleanup;
-- (void)_registerForBackgroundTaskAgentJobs;
 - (void)_registerForChangeTableCleanup;
 - (void)_registerForDatabaseCleanup;
 - (void)_registerForNotifications;
 - (void)_registerMaintenanceActivities;
 - (void)_setUpSignalHandlers;
-- (void)_startBirthdayManager;
 - (void)_tearDownSignalHandlers;
 - (BOOL)_trimAndExtendOccurrenceCache;
 - (void)_updateOccurrenceCacheTimeZone;

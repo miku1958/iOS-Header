@@ -10,7 +10,7 @@
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlaybackCore/MPRequestResponseControllerDelegate-Protocol.h>
 
-@class ICUserIdentity, MPAVItem, MPCModelGenericAVItemUserIdentityPropertySet, MPCModelPlaybackContext, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
+@class MPAVItem, MPCModelGenericAVItemUserIdentityPropertySet, MPCModelPlaybackContext, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
 @protocol MPCModelPlaybackRequest, MPCModelPlaybackResponse, MPMutableIdentifierListSection, OS_dispatch_queue;
 
 @interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPRequestResponseControllerDelegate, MPCQueueControllerDataSource>
@@ -30,7 +30,6 @@
     NSString *_rtcReportingPlayQueueSourceIdentifier;
     BOOL _isSiriInitiated;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
-    ICUserIdentity *_proactiveCacheIdentity;
     MPIdentifierSet *_startItemIdentifiers;
     NSDictionary *_startTimeModifications;
     id<MPMutableIdentifierListSection> _section;
@@ -57,7 +56,6 @@
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;
 - (id)_sectionedModelObjectsRepresentationForSectionedCollection:(id)arg1;
 - (id)_supplementalLibraryRequest;
-- (void)_updateProactiveCaching;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
 - (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
@@ -77,6 +75,7 @@
 - (BOOL)shouldUsePlaceholderForItem:(id)arg1 inSection:(id)arg2;
 - (long long)supplementalPlaybackContextBehavior;
 - (id)supplementalPlaybackContextWithReason:(long long)arg1;
+- (BOOL)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
 - (id)uniqueIdentifier;
 - (id)updatedPlaybackContext;
 - (void)willBeginLoadingRequestForController:(id)arg1;

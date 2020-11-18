@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VoiceShortcuts/VCIntentDefinitionSyncDataHandler.h>
+#import <objc/NSObject.h>
 
 #import <VoiceShortcuts/INVCIntentDefinitionManager-Protocol.h>
 
 @class NSString;
 
-@interface VCIntentDefinitionManager : VCIntentDefinitionSyncDataHandler <INVCIntentDefinitionManager>
+@interface VCIntentDefinitionManager : NSObject <INVCIntentDefinitionManager>
 {
 }
 
@@ -19,10 +19,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)allBundleIdentifiers;
 + (id)appInfoForBundleID:(id)arg1;
++ (id)intentDefinitionBundleURLForBundleID:(id)arg1;
 + (id)intentDefinitionLocalizableFileURLsForBundleID:(id)arg1;
 + (id)intentDefinitionURLsForBundleID:(id)arg1;
-+ (id)intentDefinitionURLsForBundleID:(id)arg1 withExtensions:(id)arg2;
++ (id)intentDefinitionURLsForBundleID:(id)arg1 inDirectory:(id)arg2;
 
 @end
 

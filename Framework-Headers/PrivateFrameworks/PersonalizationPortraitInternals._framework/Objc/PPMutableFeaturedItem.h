@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, PPSourceStats;
+@class NSDate, NSMutableArray, PPDecayedFeedbackCounts, PPSourceStats;
 
 @interface PPMutableFeaturedItem : NSObject
 {
-    unsigned short _countForAlgorithm[15];
+    unsigned short _countForAlgorithm[16];
+    unsigned short _countForNECategory[20];
     unsigned short _rankCount[5];
+    BOOL _userCreated;
     BOOL _strictFiltering;
+    BOOL _matchesPrimaryLanguage;
     float _maxScore;
     float _minScore;
     float _meanScore;
@@ -20,6 +23,7 @@
     float _varianceScoreWithOutliersRemoved;
     float _sumDwellTimeInHours;
     float _recordCount;
+    unsigned int _exactMatchInSourceTextCount;
     unsigned int _countInMobileMail;
     unsigned int _countInSafari;
     unsigned int _countInMail;
@@ -48,9 +52,11 @@
     float _varianceSourceDateInHours;
     float _timeSpanInHours;
     float _timeElapsedInHours;
+    float _relativeTimeToRelevanceDate;
     float _decayedSum;
     float _decayRate;
     unsigned long long _uniqueAlgorithmCount;
+    unsigned long long _uniqueNamedEntityCategoryCount;
     unsigned long long _uniqueOsBuildCount;
     unsigned long long _uniqueAssetVersionCount;
     unsigned long long _uniqueBundleIdCount;
@@ -61,6 +67,11 @@
     NSDate *_scoringDate;
     PPSourceStats *_sourceStats;
     unsigned long long _namedEntityCharacterLength;
+    PPDecayedFeedbackCounts *_decayedFeedbackCounts;
+    unsigned long long _sumLengthSeconds;
+    unsigned long long _sumLengthCharacters;
+    unsigned long long _sumDonationCount;
+    unsigned long long _sumContactHandleCount;
 }
 
 @property (readonly, nonatomic) unsigned int countInCal; // @synthesize countInCal=_countInCal;
@@ -87,7 +98,10 @@
 @property (readonly, nonatomic) unsigned int countInYelp; // @synthesize countInYelp=_countInYelp;
 @property (readonly, nonatomic) unsigned int countInYoutube; // @synthesize countInYoutube=_countInYoutube;
 @property (readonly, nonatomic) float decayRate; // @synthesize decayRate=_decayRate;
+@property (readonly, nonatomic) PPDecayedFeedbackCounts *decayedFeedbackCounts; // @synthesize decayedFeedbackCounts=_decayedFeedbackCounts;
 @property (readonly, nonatomic) float decayedSum; // @synthesize decayedSum=_decayedSum;
+@property (readonly, nonatomic) unsigned int exactMatchInSourceTextCount; // @synthesize exactMatchInSourceTextCount=_exactMatchInSourceTextCount;
+@property (readonly, nonatomic) BOOL matchesPrimaryLanguage; // @synthesize matchesPrimaryLanguage=_matchesPrimaryLanguage;
 @property (readonly, nonatomic) float maxScore; // @synthesize maxScore=_maxScore;
 @property (readonly, nonatomic) float meanInterArrivalHour; // @synthesize meanInterArrivalHour=_meanInterArrivalHour;
 @property (readonly, nonatomic) float meanScore; // @synthesize meanScore=_meanScore;
@@ -96,19 +110,26 @@
 @property (readonly, nonatomic) float minScore; // @synthesize minScore=_minScore;
 @property (readonly, nonatomic) unsigned long long namedEntityCharacterLength; // @synthesize namedEntityCharacterLength=_namedEntityCharacterLength;
 @property (readonly, nonatomic) float recordCount; // @synthesize recordCount=_recordCount;
+@property (readonly, nonatomic) float relativeTimeToRelevanceDate; // @synthesize relativeTimeToRelevanceDate=_relativeTimeToRelevanceDate;
 @property (readonly, nonatomic) NSDate *scoringDate; // @synthesize scoringDate=_scoringDate;
 @property (readonly, nonatomic) PPSourceStats *sourceStats; // @synthesize sourceStats=_sourceStats;
 @property (readonly, nonatomic) BOOL strictFiltering; // @synthesize strictFiltering=_strictFiltering;
+@property (readonly, nonatomic) unsigned long long sumContactHandleCount; // @synthesize sumContactHandleCount=_sumContactHandleCount;
+@property (readonly, nonatomic) unsigned long long sumDonationCount; // @synthesize sumDonationCount=_sumDonationCount;
 @property (readonly, nonatomic) float sumDwellTimeInHours; // @synthesize sumDwellTimeInHours=_sumDwellTimeInHours;
+@property (readonly, nonatomic) unsigned long long sumLengthCharacters; // @synthesize sumLengthCharacters=_sumLengthCharacters;
+@property (readonly, nonatomic) unsigned long long sumLengthSeconds; // @synthesize sumLengthSeconds=_sumLengthSeconds;
 @property (readonly, nonatomic) float timeElapsedInHours; // @synthesize timeElapsedInHours=_timeElapsedInHours;
 @property (readonly, nonatomic) float timeSpanInHours; // @synthesize timeSpanInHours=_timeSpanInHours;
 @property (readonly, nonatomic) unsigned long long uniqueAlgorithmCount; // @synthesize uniqueAlgorithmCount=_uniqueAlgorithmCount;
 @property (readonly, nonatomic) unsigned long long uniqueAssetVersionCount; // @synthesize uniqueAssetVersionCount=_uniqueAssetVersionCount;
 @property (readonly, nonatomic) unsigned long long uniqueBundleIdCount; // @synthesize uniqueBundleIdCount=_uniqueBundleIdCount;
 @property (readonly, nonatomic) unsigned long long uniqueGroupIdCount; // @synthesize uniqueGroupIdCount=_uniqueGroupIdCount;
+@property (readonly, nonatomic) unsigned long long uniqueNamedEntityCategoryCount; // @synthesize uniqueNamedEntityCategoryCount=_uniqueNamedEntityCategoryCount;
 @property (readonly, nonatomic) unsigned long long uniqueOsBuildCount; // @synthesize uniqueOsBuildCount=_uniqueOsBuildCount;
 @property (readonly, nonatomic) unsigned long long uniqueSourceDayOfWeekCount; // @synthesize uniqueSourceDayOfWeekCount=_uniqueSourceDayOfWeekCount;
 @property (readonly, nonatomic) unsigned long long uniqueSourceHourCount; // @synthesize uniqueSourceHourCount=_uniqueSourceHourCount;
+@property (readonly, nonatomic) BOOL userCreated; // @synthesize userCreated=_userCreated;
 @property (readonly, nonatomic) float varianceInterArrivalHour; // @synthesize varianceInterArrivalHour=_varianceInterArrivalHour;
 @property (readonly, nonatomic) float varianceScoreWithOutliersRemoved; // @synthesize varianceScoreWithOutliersRemoved=_varianceScoreWithOutliersRemoved;
 @property (readonly, nonatomic) float varianceSourceDateInHours; // @synthesize varianceSourceDateInHours=_varianceSourceDateInHours;
@@ -116,8 +137,9 @@
 - (void).cxx_destruct;
 - (id)computeModelScoreAndReturnFeaturesWithScoreInterpreter:(id)arg1;
 - (float)computeModelScoreWithScoreInterpreter:(id)arg1;
-- (id)generateScoreDict;
-- (id)initWithMutableAggregatedItem:(id)arg1 scoringDate:(id)arg2 decayRate:(float)arg3 sourceStats:(id)arg4 strictFiltering:(BOOL)arg5;
+- (id)initWithMutableAggregatedItem:(id)arg1 scoringDate:(id)arg2 decayRate:(float)arg3 sourceStats:(id)arg4 decayedFeedbackCounts:(id)arg5 strictFiltering:(BOOL)arg6;
+- (CDUnknownBlockType)inputAssignmentBlock;
+- (CDUnknownBlockType)inputInitializationBlock;
 - (void)updateSpecializedFeaturesNamedEntity:(id)arg1;
 
 @end

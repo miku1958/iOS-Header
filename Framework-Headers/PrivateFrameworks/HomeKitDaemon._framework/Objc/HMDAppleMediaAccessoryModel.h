@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMDMediaAccessoryModel.h>
 
-@class HMDDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiNetworkInfo, NSData, NSString;
+@class HMDDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiNetworkInfo, NSData, NSNumber, NSString;
 
 @interface HMDAppleMediaAccessoryModel : HMDMediaAccessoryModel
 {
@@ -18,10 +18,14 @@
 @property (strong, nonatomic) NSData *loggedInAccount; // @dynamic loggedInAccount;
 @property (strong, nonatomic) HMFPairingIdentity *pairingIdentity; // @dynamic pairingIdentity;
 @property (strong, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
+@property (strong, nonatomic) NSNumber *supportedStereoPairVersions; // @dynamic supportedStereoPairVersions;
 @property (strong, nonatomic) NSData *symptoms; // @dynamic symptoms;
 @property (strong, nonatomic) HMFWiFiNetworkInfo *wifiNetworkInfo; // @dynamic wifiNetworkInfo;
 
++ (id)appleMediaAccessoryModelWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
++ (id)homePodAccessoryModelWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 + (id)properties;
+- (id)_initWithObjectChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 
 @end
 

@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)nts_lazyContactStore;
 - (id)policyForContact:(id)arg1;
 - (id)policyForDefaultContainer;
+- (id)predicateForContainerForContact:(id)arg1 inStore:(id)arg2;
 - (void)resetCache;
 
 @end

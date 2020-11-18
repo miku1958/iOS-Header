@@ -20,6 +20,7 @@
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (long long)accessibilityContainerType;
 - (id)accessibilityIdentifier;
+- (id)accessibilityLabel;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

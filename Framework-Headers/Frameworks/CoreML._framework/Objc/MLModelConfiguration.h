@@ -18,10 +18,12 @@
     BOOL _useWatchSPIForScribble;
     BOOL _allowLowPrecisionAccumulationOnGPU;
     BOOL _enableTestVectorMode;
+    BOOL _usePreloadedKey;
     long long _computeUnits;
     id<MTLDevice> _preferredMetalDevice;
     NSDictionary *_parameters;
     NSURL *_rootModelURL;
+    long long _profilingOptions;
 }
 
 @property (nonatomic) BOOL allowBackgroundGPUCompute;
@@ -33,7 +35,9 @@
 @property (strong) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (strong, nonatomic) id<MTLDevice> preferredMTLDevice;
 @property (strong, nonatomic) id<MTLDevice> preferredMetalDevice; // @synthesize preferredMetalDevice=_preferredMetalDevice;
+@property (nonatomic) long long profilingOptions; // @synthesize profilingOptions=_profilingOptions;
 @property (strong) NSURL *rootModelURL; // @synthesize rootModelURL=_rootModelURL;
+@property (nonatomic) BOOL usePreloadedKey; // @synthesize usePreloadedKey=_usePreloadedKey;
 @property (nonatomic) BOOL useWatchSPIForScribble; // @synthesize useWatchSPIForScribble=_useWatchSPIForScribble;
 
 + (id)defaultConfiguration;

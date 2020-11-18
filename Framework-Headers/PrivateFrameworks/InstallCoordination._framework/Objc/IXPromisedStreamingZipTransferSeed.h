@@ -9,17 +9,19 @@
 #import <InstallCoordination/NSCopying-Protocol.h>
 #import <InstallCoordination/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface IXPromisedStreamingZipTransferSeed : IXOwnedDataPromiseSeed <NSSecureCoding, NSCopying>
 {
     unsigned long long _archiveBytesConsumed;
     unsigned long long _archiveSizeBytes;
     NSDictionary *_szOptions;
+    NSString *_sandboxExtensionToken;
 }
 
 @property (nonatomic) unsigned long long archiveBytesConsumed; // @synthesize archiveBytesConsumed=_archiveBytesConsumed;
 @property (nonatomic) unsigned long long archiveSizeBytes; // @synthesize archiveSizeBytes=_archiveSizeBytes;
+@property (copy, nonatomic) NSString *sandboxExtensionToken; // @synthesize sandboxExtensionToken=_sandboxExtensionToken;
 @property (copy, nonatomic) NSDictionary *szOptions; // @synthesize szOptions=_szOptions;
 
 + (BOOL)supportsSecureCoding;

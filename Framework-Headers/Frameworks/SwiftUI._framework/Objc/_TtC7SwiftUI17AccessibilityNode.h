@@ -6,22 +6,76 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+#import <SwiftUI/AXContainerDataSeries-Protocol.h>
+
+@class MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI17AccessibilityNode : NSObject
+@interface _TtC7SwiftUI17AccessibilityNode : NSObject <AXContainerDataSeries>
 {
+    MISSING_TYPE *id;
+    MISSING_TYPE *version;
     MISSING_TYPE *children;
     MISSING_TYPE *parent;
     MISSING_TYPE *viewRendererHost;
     MISSING_TYPE *oldAttachmentForNotification;
-    MISSING_TYPE *skipNotifyForAttachmentChanged;
     MISSING_TYPE *attachmentsStorage;
     MISSING_TYPE *cachedCombinedAttachment;
+    MISSING_TYPE *isEnabled;
+    MISSING_TYPE *needsUpdatePath;
+    MISSING_TYPE *needsGlobalFrameUpdate;
     MISSING_TYPE *focusableAncestor;
+    MISSING_TYPE *relationshipScope;
 }
 
+@property (nonatomic, readonly) NSArray *_accessibilityUserDefinedLinkedUIElements;
+@property (nonatomic) struct CGPoint accessibilityActivationPoint;
+@property (nonatomic, strong) NSAttributedString *accessibilityAttributedHint;
+@property (nonatomic, strong) NSAttributedString *accessibilityAttributedLabel;
+@property (nonatomic, copy) NSArray *accessibilityAttributedUserInputLabels;
+@property (nonatomic, strong) NSAttributedString *accessibilityAttributedValue;
+@property (nonatomic) long long accessibilityContainerType;
+@property (nonatomic, copy) NSArray *accessibilityCustomActions;
+@property (nonatomic, copy) NSArray *accessibilityElements;
+@property (nonatomic) BOOL accessibilityElementsHidden;
+@property (nonatomic) struct CGRect accessibilityFrame;
+@property (nonatomic, copy) NSString *accessibilityHint;
+@property (nonatomic, copy) NSString *accessibilityIdentifier;
+@property (nonatomic, copy) NSString *accessibilityLabel;
+@property (nonatomic, copy) NSString *accessibilityLanguage;
+@property (nonatomic, strong) UIBezierPath *accessibilityPath;
+@property (nonatomic) unsigned long long accessibilityTraits;
+@property (nonatomic, copy) NSArray *accessibilityUserInputLabels;
+@property (nonatomic, copy) NSString *accessibilityValue;
+@property (nonatomic) BOOL accessibilityViewIsModal;
+@property (nonatomic) BOOL isAccessibilityElement;
+@property (nonatomic) BOOL shouldGroupAccessibilityChildren;
+
 - (void).cxx_destruct;
+- (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityDataSeriesGridlinePositionsForAxis:(long long)arg1;
+- (BOOL)_accessibilityDataSeriesIncludesTrendlineInSonification;
+- (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesName;
+- (double)_accessibilityDataSeriesSonificationDuration;
+- (BOOL)_accessibilityDataSeriesSupportsSonification;
+- (BOOL)_accessibilityDataSeriesSupportsSummarization;
+- (id)_accessibilityDataSeriesTitleForAxis:(long long)arg1;
+- (long long)_accessibilityDataSeriesType;
+- (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;
+- (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
+- (id)_accessibilityRoleDescription;
+- (BOOL)_internal_handleCustomActionWithUiAction:(id)arg1;
+- (BOOL)accessibilityActivate;
+- (void)accessibilityDecrement;
+- (void)accessibilityElementDidBecomeFocused;
+- (void)accessibilityElementDidLoseFocus;
+- (void)accessibilityIncrement;
+- (BOOL)accessibilityPerformEscape;
+- (BOOL)accessibilityPerformMagicTap;
+- (BOOL)accessibilityScroll:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 

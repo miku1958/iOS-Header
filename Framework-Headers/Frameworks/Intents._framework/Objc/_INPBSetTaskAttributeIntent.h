@@ -18,7 +18,6 @@
         unsigned int priority:1;
         unsigned int status:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _priority;
     int _status;
     _INPBContactEventTrigger *_contactEventTrigger;
@@ -29,7 +28,6 @@
     _INPBTemporalEventTrigger *_temporalEventTrigger;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBContactEventTrigger *contactEventTrigger; // @synthesize contactEventTrigger=_contactEventTrigger;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

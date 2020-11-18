@@ -11,13 +11,18 @@
 @interface MKMultiPolylineRenderer : MKOverlayPathRenderer
 {
     VKVectorOverlayPolylineGroup *_vectorGeometry;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 @property (readonly, nonatomic) MKMultiPolyline *multiPolyline;
+@property (nonatomic, getter=_strokeEnd, setter=_setStrokeEnd:) double strokeEnd;
+@property (nonatomic, getter=_strokeStart, setter=_setStrokeStart:) double strokeStart;
 
 + (Class)_mapkitLeafClass;
 - (void).cxx_destruct;
 - (BOOL)_canProvideVectorGeometry;
+- (void)_performInitialConfiguration;
 - (void)_updateRenderColors;
 - (id)_vectorGeometry;
 - (void)createPath;

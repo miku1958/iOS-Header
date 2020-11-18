@@ -22,9 +22,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
+@property (copy, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property (copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
 + (BOOL)isValidRecordName:(id)arg1 outError:(id *)arg2;
 + (BOOL)supportsSecureCoding;
@@ -34,6 +34,7 @@
 - (id)CKPropertiesDescriptionWithProperties:(id)arg1;
 - (id)CKXPCSuitableString;
 - (id)ckShortDescription;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 - (long long)compareToRecordID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

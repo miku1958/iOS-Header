@@ -16,7 +16,11 @@ __attribute__((visibility("hidden")))
     id _wrmClientDelegate;
     int _mediaControlInfoVersion;
     int _mode;
-    CDStruct_21a0265e _metricsConfig;
+    struct {
+        BOOL reportImmediateMetricsEnabled;
+        BOOL reportRtpErasureMetricsEnabled;
+        BOOL allowPreWarmCellEnabled;
+    } _metricsConfig;
 }
 
 @property id<WRMClientDelegate> delegate;
@@ -28,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)processNotificationList:(id)arg1;
+- (void)processWRMCoexMetrics:(id)arg1 isAlertedMode:(BOOL)arg2;
 - (void)releaseServiceConnection;
 - (void)reportImmediateMetric:(int)arg1 value:(unsigned long long)arg2;
 - (void)reportMetricsFaceTimeCalling:(const CDStruct_dea828ac *)arg1;
@@ -42,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)setConfiguration:(CDStruct_69d7cc99 *)arg1;
 - (void)setPreWarmState:(BOOL)arg1;
 - (BOOL)setupServiceConnection;
-- (void)startWRMClientWithMode:(int)arg1 metricsConfig:(CDStruct_21a0265e)arg2;
+- (void)startWRMClientWithMode:(int)arg1 metricsConfig:(CDStruct_2a4d9400)arg2;
 - (void)stopWRMClient;
 
 @end

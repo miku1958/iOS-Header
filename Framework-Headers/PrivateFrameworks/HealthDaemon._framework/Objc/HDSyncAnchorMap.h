@@ -24,12 +24,14 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
++ (id)syncAnchorMapWithCodableSyncAnchorRangeMap:(id)arg1;
 + (id)syncAnchorMapWithSyncAnchorRangeMap:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)anchorCount;
 - (long long)anchorForSyncEntityClass:(Class)arg1;
 - (long long)anchorForSyncEntityIdentifier:(id)arg1;
 - (id)anchorIfPresentForSyncEntityIdentifier:(id)arg1;
+- (id)codableSyncAnchorRangeMap;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateAnchorsAndEntityIdentifiersWithBlock:(CDUnknownBlockType)arg1;

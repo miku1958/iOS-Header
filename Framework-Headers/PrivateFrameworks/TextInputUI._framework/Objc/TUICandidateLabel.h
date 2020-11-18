@@ -30,6 +30,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (void)commonInit;
+- (struct __CTLine *)createLineFromAttributedText:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

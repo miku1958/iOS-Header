@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <DataDeliveryServices/DDSManagingDelegate-Protocol.h>
 #import <DataDeliveryServices/NSXPCListenerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, NSXPCListener;
 @protocol DDSManaging, OS_dispatch_queue;
 
-@interface DDSServer : NSObject <NSXPCListenerDelegate, DDSManagingDelegate>
+@interface DDSServer : NSObject <NSXPCListenerDelegate>
 {
     id<DDSManaging> _manager;
     NSXPCListener *_listener;
@@ -33,7 +32,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)didUpdateAssetsWithType:(id)arg1;
 - (void)handleEndedConnection:(id)arg1;
 - (id)init;
 - (id)initWithManager:(id)arg1;

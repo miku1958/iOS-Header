@@ -20,14 +20,14 @@
 @property (strong, nonatomic) UIView *tintView; // @synthesize tintView=_tintView;
 
 + (id)imageViewWithImage:(id)arg1;
-+ (id)thumbnailForResult:(id)arg1;
++ (id)thumbnailForRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)appIconDidChange:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
 - (void)updateWithImage:(id)arg1;
 - (void)updateWithImage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateWithImage:(id)arg1 needsOverlayButton:(BOOL)arg2 preventImageScaling:(BOOL)arg3 useMinimumWidthIfPossible:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)updateWithImage:(id)arg1 needsOverlayButton:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

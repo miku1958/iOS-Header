@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _captionsLastUpdateNumber;
     id _delegate;
     VCCaptionsTranscription *_currentTranscription;
+    struct opaqueVCCaptionsDecoder *_captionsDecoder;
 }
 
 @property (strong, nonatomic) VCCaptionsTranscription *currentTranscription; // @synthesize currentTranscription=_currentTranscription;

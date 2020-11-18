@@ -4,42 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFDatabaseObjectDescriptor.h>
+#import <VoiceShortcutClient/WFWorkflowDescriptor.h>
 
 #import <WorkflowKit/WFNaming-Protocol.h>
 
-@class NSString, WFWorkflowIcon;
+@class NSDate, NSString, NSUserActivity, WFImage, WFWorkflowIcon;
 
-@interface WFWorkflowReference : WFDatabaseObjectDescriptor <WFNaming>
+@interface WFWorkflowReference : WFWorkflowDescriptor <WFNaming>
 {
     BOOL _isDeleted;
-    NSString *_name;
+    BOOL _hiddenFromLibraryAndSync;
     NSString *_subtitle;
     NSString *_actionsDescription;
-    NSString *_associatedAppBundleIdentifier;
+    unsigned long long _actionCount;
     WFWorkflowIcon *_icon;
+    NSDate *_modificationDate;
 }
 
+@property (readonly, nonatomic) unsigned long long actionCount; // @synthesize actionCount=_actionCount;
 @property (readonly, copy, nonatomic) NSString *actionsDescription; // @synthesize actionsDescription=_actionsDescription;
-@property (readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
+@property (readonly, nonatomic) WFImage *attributionIcon;
+@property (readonly, nonatomic) NSString *attributionTitle;
+@property (readonly, nonatomic) BOOL hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;
 @property (readonly, copy, nonatomic) WFWorkflowIcon *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) BOOL isDeleted; // @synthesize isDeleted=_isDeleted;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly, nonatomic) NSUserActivity *userActivityForViewing;
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 + (BOOL)supportsSecureCoding;
-+ (id)workflowReferenceConsumingSingleUseToken:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)deleteAssociatedInteractions;
+- (id)attributionIconWithSize:(struct CGSize)arg1 scale:(double)arg2 rounded:(BOOL)arg3;
 - (void)donateRunInteraction;
 - (void)encodeWithCoder:(id)arg1;
-- (id)eventDictionary;
 - (id)externalURLForRunningWithSource:(id)arg1;
 - (id)externalURLForViewing;
-- (id)generateSingleUseToken;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 subtitle:(id)arg3 actionsDescription:(id)arg4 associatedAppBundleIdentifier:(id)arg5 icon:(id)arg6 isDeleted:(BOOL)arg7;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 color:(long long)arg3 glyphCharacter:(unsigned short)arg4 associatedAppBundleIdentifier:(id)arg5 subtitle:(id)arg6 actionsDescription:(id)arg7 actionCount:(unsigned long long)arg8 isDeleted:(BOOL)arg9 hiddenFromLibraryAndSync:(BOOL)arg10 modificationDate:(id)arg11;
+- (BOOL)isEqual:(id)arg1;
 - (id)speakableString;
 
 @end

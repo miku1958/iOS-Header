@@ -9,12 +9,13 @@
 #import <CameraUI/CAMPanoramaChangeDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaViewDelegate-Protocol.h>
 
-@class CAMPanoramaView, CMMotionManager, CUCaptureController, NSString, UITapGestureRecognizer;
+@class CAMAnalyticsCaptureEvent, CAMPanoramaView, CMMotionManager, CUCaptureController, NSString, UITapGestureRecognizer;
 
 @interface CAMPanoramaViewController : UIViewController <CAMPanoramaViewDelegate, CAMPanoramaChangeDelegate>
 {
     BOOL _painting;
     long long _layoutStyle;
+    CAMAnalyticsCaptureEvent *_analyticsCaptureEvent;
     CUCaptureController *__captureController;
     CMMotionManager *__motionManager;
     long long __captureOrientation;
@@ -25,6 +26,7 @@
 @property (nonatomic, setter=_setCaptureOrientation:) long long _captureOrientation; // @synthesize _captureOrientation=__captureOrientation;
 @property (readonly, nonatomic) UITapGestureRecognizer *_directionChangeGestureRecognizer; // @synthesize _directionChangeGestureRecognizer=__directionChangeGestureRecognizer;
 @property (strong, nonatomic, setter=_setMotionManager:) CMMotionManager *_motionManager; // @synthesize _motionManager=__motionManager;
+@property (strong, nonatomic) CAMAnalyticsCaptureEvent *analyticsCaptureEvent; // @synthesize analyticsCaptureEvent=_analyticsCaptureEvent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -46,6 +48,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)loadView;
 - (void)panoramaConfigurationDidChangeWithDirection:(long long)arg1;
+- (void)panoramaView:(id)arg1 didUpdateInstruction:(long long)arg2;
 - (void)panoramaViewDidRequestSynchronizedDirectionChange:(id)arg1 toDirection:(long long)arg2;
 - (void)startPainting;
 - (void)startProcessingPanorama;

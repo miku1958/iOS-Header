@@ -24,11 +24,14 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)indexOfItem:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItems:(id)arg1;
 - (id)initWithItems:(id)arg1 header:(id)arg2 sectionIndexTitle:(id)arg3;
-- (id)itemAtIndex:(long long)arg1;
+- (id)itemAtIndex:(unsigned long long)arg1;
 - (long long)numberOfItems;
+- (void)replaceItemAtIndex:(unsigned long long)arg1 withItem:(id)arg2;
+- (void)replaceItems:(id)arg1;
 
 @end
 

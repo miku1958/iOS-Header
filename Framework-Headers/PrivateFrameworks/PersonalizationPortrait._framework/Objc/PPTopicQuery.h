@@ -18,15 +18,19 @@
     BOOL _excludeWithoutSentiment;
     BOOL _scoreWithCalibration;
     BOOL _orderByIdentifier;
+    BOOL _removeNearDuplicates;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
     NSDate *_scoringDate;
     NSSet *_matchingSourceBundleIds;
     NSSet *_excludingSourceBundleIds;
+    NSSet *_matchingGroupIds;
+    NSSet *_matchingDocumentIds;
     unsigned long long _deviceFilter;
     double _decayRate;
     NSSet *_matchingTopicIds;
+    NSString *_matchingContactHandle;
     unsigned long long _minimumComponentCount;
     NSSet *_matchingAlgorithms;
     NSSet *_excludingAlgorithms;
@@ -41,12 +45,16 @@
 @property (strong, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (strong, nonatomic) NSSet *matchingAlgorithms; // @synthesize matchingAlgorithms=_matchingAlgorithms;
+@property (strong, nonatomic) NSString *matchingContactHandle; // @synthesize matchingContactHandle=_matchingContactHandle;
+@property (strong, nonatomic) NSSet *matchingDocumentIds; // @synthesize matchingDocumentIds=_matchingDocumentIds;
+@property (strong, nonatomic) NSSet *matchingGroupIds; // @synthesize matchingGroupIds=_matchingGroupIds;
 @property (strong, nonatomic) NSSet *matchingSourceBundleIds; // @synthesize matchingSourceBundleIds=_matchingSourceBundleIds;
 @property (strong, nonatomic) NSSet *matchingTopicIds; // @synthesize matchingTopicIds=_matchingTopicIds;
 @property (strong, nonatomic) NSString *matchingTopicTrie; // @synthesize matchingTopicTrie=_matchingTopicTrie;
 @property (nonatomic) unsigned long long minimumComponentCount; // @synthesize minimumComponentCount=_minimumComponentCount;
 @property (nonatomic) BOOL orderByIdentifier; // @synthesize orderByIdentifier=_orderByIdentifier;
 @property (nonatomic) BOOL overrideDecayRate;
+@property (nonatomic) BOOL removeNearDuplicates; // @synthesize removeNearDuplicates=_removeNearDuplicates;
 @property (nonatomic) BOOL scoreWithBiases; // @synthesize scoreWithBiases=_scoreWithBiases;
 @property (nonatomic) BOOL scoreWithCalibration; // @synthesize scoreWithCalibration=_scoreWithCalibration;
 @property (nonatomic) BOOL scoreWithStrictFiltering; // @synthesize scoreWithStrictFiltering=_scoreWithStrictFiltering;
@@ -54,6 +62,7 @@
 @property (strong, nonatomic) NSDate *toDate; // @synthesize toDate=_toDate;
 
 + (id)_algorithmsDescription:(id)arg1;
++ (id)queryForCSSearchableItem:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

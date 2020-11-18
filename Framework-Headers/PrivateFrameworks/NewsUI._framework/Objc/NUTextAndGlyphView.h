@@ -15,8 +15,10 @@
     NUTextAndGlyph *_textAndGlyph;
     UILabel *_label;
     UIImageView *_imageView;
+    unsigned long long _alignment;
 }
 
+@property (nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

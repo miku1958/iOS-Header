@@ -31,7 +31,6 @@
 - (BOOL)isMakingEmergencyCall;
 - (void)launchEmergencyDialer;
 - (void)launchEmergencyDialerAnimated:(BOOL)arg1;
-- (void)launchInCallAlert;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end

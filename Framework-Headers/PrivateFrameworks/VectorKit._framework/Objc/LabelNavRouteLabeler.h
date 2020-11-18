@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_fadingLabels;
     NSMutableDictionary *_visibleLabelsByName;
     NSMutableArray *_visibleLabels;
+    NSMutableSet *_visibleShieldGroups;
     unsigned long long _countVisibleOnRouteRoadSigns;
     unsigned long long _countVisibleOffRouteRoadSigns;
     unsigned long long _countVisibleRoadSigns;
@@ -59,9 +60,11 @@ __attribute__((visibility("hidden")))
     BOOL _debugEnableShieldsOnRouteLine;
     shared_ptr_a3c46825 _styleManager;
     BOOL _shouldLabelOppositeCarriageways;
-    vector_7c356ace _externalCollisionLabelsForLayout;
+    vector_fac3c691 _avoidanceRects;
     BOOL _hasPendingTilesInSnappingRegion;
     BOOL _needsDebugConsoleClear;
+    struct range_map<geo::Unit<RadianUnitDescription, float>, md::OrientationAction, std::__1::less<geo::Unit<RadianUnitDescription, float>>, std::__1::allocator<std::__1::pair<const gm::Range<geo::Unit<RadianUnitDescription, float>>, md::OrientationAction>>> _onRouteOrientations;
+    struct range_map<geo::Unit<RadianUnitDescription, float>, md::OrientationAction, std::__1::less<geo::Unit<RadianUnitDescription, float>>, std::__1::allocator<std::__1::pair<const gm::Range<geo::Unit<RadianUnitDescription, float>>, md::OrientationAction>>> _relatedRouteOrientations;
 }
 
 @property (readonly, nonatomic) const vector_e3e87145 *activeSigns; // @synthesize activeSigns=_activeSigns;
@@ -101,14 +104,18 @@ __attribute__((visibility("hidden")))
 - (void)_updateUniqueOffRouteRoads;
 - (void)clearSceneIsMemoryWarning:(BOOL)arg1;
 - (unsigned char)computeRoutePositionForPOIAtPixel:(const Matrix_8746f91e *)arg1 currentPosition:(unsigned char)arg2 context:(struct NavContext *)arg3;
+- (optional_49d759ff)createRoadSignOrientationResolver:(id)arg1 navContext:(struct NavContext *)arg2;
 - (void)dealloc;
 - (void)debugDraw:(id)arg1 overlayConsole:(struct DebugConsole *)arg2 navContext:(struct NavContext *)arg3;
+- (void)drawNavOverlayDebugView:(struct DebugConsole *)arg1 navContext:(struct NavContext *)arg2;
+- (void)drawRoadSignOrientationDebugView:(struct DebugConsole *)arg1 navContext:(struct NavContext *)arg2;
 - (void)grabTilesFromScene:(const struct SceneContext *)arg1;
 - (id)init;
 - (BOOL)isNavMode;
-- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_7c356ace *)arg2;
+- (void)layoutWithNavContext:(struct NavContext *)arg1 avoidanceRects:(const vector_fac3c691 *)arg2;
 - (BOOL)needsDebugDraw;
 - (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
+- (unsigned char)resolveOrientation:(struct NavContext *)arg1 road:(id)arg2 currentOrientation:(unsigned char)arg3;
 - (void)setMaxVisibleRoadsigns:(unsigned int)arg1;
 - (void)setStyleManager:(shared_ptr_a3c46825)arg1;
 - (void)styleManagerDidChange:(BOOL)arg1;

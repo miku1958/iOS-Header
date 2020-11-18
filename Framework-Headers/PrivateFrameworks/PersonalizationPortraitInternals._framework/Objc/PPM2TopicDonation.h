@@ -8,27 +8,31 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2TopicDonation : PBCodable <NSCopying>
 {
-    int _source;
-    struct {
-        unsigned int source:1;
-    } _has;
+    NSString *_activeTreatments;
+    int _donationSource;
+    CDStruct_a8edabe5 _has;
 }
 
-@property (nonatomic) BOOL hasSource;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (strong, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
+@property (nonatomic) int donationSource; // @synthesize donationSource=_donationSource;
+@property (readonly, nonatomic) BOOL hasActiveTreatments;
+@property (nonatomic) BOOL hasDonationSource;
 
-- (int)StringAsSource:(id)arg1;
+- (void).cxx_destruct;
+- (int)StringAsDonationSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)donationSourceAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

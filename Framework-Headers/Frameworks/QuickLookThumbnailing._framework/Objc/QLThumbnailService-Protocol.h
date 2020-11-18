@@ -6,7 +6,9 @@
 
 #import <QuickLookThumbnailing/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol QLThumbnailService <NSObject>
-- (void)generateThumbnailOfSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 withContents:(id)arg5 additionalResourcesWrapper:(id)arg6 completionHandler:(void (^)(NSData *, QLURLHandler *, IOSurface *, struct CGSize, BOOL, NSError *))arg7;
+- (void)generateThumbnailOfSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 withContents:(id)arg5 additionalResourcesWrapper:(id)arg6 generatorData:(NSDictionary *)arg7 completionHandler:(void (^)(NSData *, QLURLHandler *, IOSurface *, struct CGSize, NSDictionary *, BOOL, NSError *))arg8;
 @end
 

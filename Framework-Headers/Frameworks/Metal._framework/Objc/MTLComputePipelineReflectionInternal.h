@@ -6,7 +6,7 @@
 
 #import <Metal/MTLComputePipelineReflection.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MTLComputePipelineReflectionInternal : MTLComputePipelineReflection
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_performanceStatistics;
     CDStruct_596dc0d1 _flags;
     unsigned int _traceBufferIndex;
+    NSData *_pluginReturnData;
     NSArray *_constantSamplerUniqueIdentifiers;
     NSArray *_constantSamplerDescriptors;
 }
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSerializedData:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 flags:(CDStruct_596dc0d1)arg4;
 - (id)initWithSerializedData:(id)arg1 serializedStageInputDescriptor:(id)arg2 device:(id)arg3 options:(unsigned long long)arg4 flags:(CDStruct_596dc0d1)arg5;
 - (id)performanceStatistics;
+- (id)pluginReturnData;
 - (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setConstantSamplerUniqueIdentifiers:(id)arg1;
 - (void)setPerformanceStatistics:(id)arg1;

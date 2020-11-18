@@ -18,7 +18,7 @@
     UIImageView *_incidentIconImageView;
     _MKUILabel *_primaryLabel;
     MKThemeMultiPartLabel *_secondaryLabel;
-    _MKUILabel *_tertiaryLabel;
+    MKThemeMultiPartLabel *_tertiaryLabel;
     UIButton *_incidentButton;
     _MKUILabel *_departureLabel;
     _MKUILabel *_departureDetailLabel;

@@ -30,6 +30,8 @@
 - (id)initWithTemperatureInKelvin:(float)arg1;
 - (id)initWithTemperatureInMired:(float)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)valueDescription;
+- (id)valueDescriptionInKelvin;
 
 @end
 

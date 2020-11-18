@@ -8,40 +8,46 @@
 
 #import <AppleMediaServicesUI/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebActionRunnerDelegate-Protocol.h>
+#import <AppleMediaServicesUI/AMSUIWebPageViewControllerDelegate-Protocol.h>
+#import <AppleMediaServicesUI/AMSUIWebProtocolDelegate-Protocol.h>
 #import <AppleMediaServicesUI/AMSURLProtocolDelegate-Protocol.h>
 #import <AppleMediaServicesUI/NSURLSessionDelegate-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebContainerViewController, AMSUIWebPageViewController, NSString, NSURL;
-@protocol AMSUIWebDelegate;
+@class ACAccount, AMSProcessInfo, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebContainerViewController, AMSUIWebPageViewController, NSDictionary, NSString, NSURL;
+@protocol AMSBagProtocol, AMSUIWebDelegate;
 
-@interface AMSUIWebViewController : UIViewController <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSUIWebActionRunnerDelegate, AMSBagConsumer>
+@interface AMSUIWebViewController : UIViewController <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSUIWebActionRunnerDelegate, AMSUIWebPageViewControllerDelegate, AMSUIWebProtocolDelegate, AMSBagConsumer>
 {
     BOOL _hasAppeared;
-    BOOL _showingCancelButton;
-    ACAccount *_account;
-    AMSProcessInfo *_clientInfo;
+    BOOL _hasStarted;
     id<AMSUIWebDelegate> _delegate;
     AMSUIWebClientContext *_context;
+    UIViewController *_childViewController;
     long long _currentLoadState;
     NSURL *_lastLoadedURL;
     AMSUIWebContainerViewController *_rootContainer;
     AMSUIWebPageViewController *_webPage;
 }
 
-@property (readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) AMSUIWebAppearance *appearance;
-@property (readonly, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property (strong, nonatomic) id<AMSBagProtocol> bag;
+@property (strong, nonatomic) UIViewController *childViewController; // @synthesize childViewController=_childViewController;
+@property (strong, nonatomic) NSDictionary *clientData;
+@property (strong, nonatomic) AMSProcessInfo *clientInfo;
+@property (strong, nonatomic) NSDictionary *clientOptions;
 @property (readonly, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (nonatomic) long long currentLoadState; // @synthesize currentLoadState=_currentLoadState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AMSUIWebDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAppeared; // @synthesize hasAppeared=_hasAppeared;
+@property (nonatomic) BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSURL *lastLoadedURL; // @synthesize lastLoadedURL=_lastLoadedURL;
 @property (nonatomic) BOOL loadUsingWebKit;
+@property (strong, nonatomic) NSDictionary *metricsOverlay;
 @property (readonly, nonatomic) AMSUIWebContainerViewController *rootContainer; // @synthesize rootContainer=_rootContainer;
-@property (nonatomic) BOOL showingCancelButton; // @synthesize showingCancelButton=_showingCancelButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AMSUIWebPageViewController *webPage; // @synthesize webPage=_webPage;
 
@@ -55,26 +61,35 @@
 - (void)_dismiss;
 - (id)_handleAuthenticateRequest:(id)arg1 pauseTimeouts:(BOOL)arg2;
 - (id)_handleDialogRequest:(id)arg1 pauseTimeouts:(BOOL)arg2;
+- (void)_handleDidEncodeNetworkRequest:(id)arg1;
+- (void)_handleWillAppear;
+- (void)_handleWillLayout;
+- (id)_lazyPromiseForBagSnapshot;
 - (id)_lazyPromiseForLoadingRequest:(id)arg1 bagValue:(id)arg2;
 - (id)_lazyPromiseForLoadingSession;
-- (id)_lazyPromiseForPageRefresh;
+- (id)_lazyPromiseForPageLoad;
 - (id)_loadRequest:(id)arg1 bagValue:(id)arg2;
-- (void)_showCancelButtonIfNeeded;
+- (id)_parseWebPropertiesFromRequest:(id)arg1;
+- (id)_rootNavigationController;
 - (void)_showErrorViewWithError:(id)arg1 request:(id)arg2 bagValue:(id)arg3;
 - (id)_stringForLoadState:(long long)arg1;
+- (void)action:(id)arg1 didEncodeNetworkRequest:(id)arg2;
 - (id)action:(id)arg1 handleActionObject:(id)arg2;
 - (id)action:(id)arg1 pauseTimeouts:(BOOL)arg2 handleAuthenticateRequest:(id)arg3;
 - (id)action:(id)arg1 pauseTimeouts:(BOOL)arg2 handleDialogRequest:(id)arg3;
+- (void)actionDidFinishPurchaseWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithBag:(id)arg1;
 - (id)initWithBag:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;
 - (id)loadBagValue:(id)arg1;
 - (id)loadRequest:(id)arg1;
 - (id)loadURL:(id)arg1;
 - (void)loadView;
+- (void)protocolHandler:(id)arg1 didEncodeNetworkRequest:(id)arg2;
 - (id)runJSRequest:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)webPageViewController:(id)arg1 didEncodeNetworkRequest:(id)arg2;
 
 @end
 

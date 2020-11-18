@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface CKDSharePCSData : CKDPCSData <NSSecureCoding, NSCopying>
 {
-    struct _OpaquePCSShareProtection *_publicPCS;
     CKRecordID *_shareID;
     unsigned long long _serviceType;
     NSString *_shareEtag;
@@ -23,6 +22,8 @@ __attribute__((visibility("hidden")))
     long long _myParticipantPermission;
     struct _OpaquePCSShareProtection *_myParticipantPCS;
     NSData *_myParticipantPCSData;
+    struct _OpaquePCSShareProtection *_preKeyRollInvitedPCS;
+    struct _OpaquePCSShareProtection *_publicPCS;
     NSString *_publicPCSEtag;
     NSData *_publicPCSData;
 }
@@ -32,7 +33,8 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *myParticipantPCSData; // @synthesize myParticipantPCSData=_myParticipantPCSData;
 @property (nonatomic) long long myParticipantPermission; // @synthesize myParticipantPermission=_myParticipantPermission;
 @property (nonatomic) long long myParticipantRole; // @synthesize myParticipantRole=_myParticipantRole;
-@property (nonatomic) struct _OpaquePCSShareProtection *publicPCS;
+@property (nonatomic) struct _OpaquePCSShareProtection *preKeyRollInvitedPCS; // @synthesize preKeyRollInvitedPCS=_preKeyRollInvitedPCS;
+@property (nonatomic) struct _OpaquePCSShareProtection *publicPCS; // @synthesize publicPCS=_publicPCS;
 @property (copy, nonatomic) NSData *publicPCSData; // @synthesize publicPCSData=_publicPCSData;
 @property (copy, nonatomic) NSString *publicPCSEtag; // @synthesize publicPCSEtag=_publicPCSEtag;
 @property (nonatomic) long long publicPermission; // @synthesize publicPermission=_publicPermission;

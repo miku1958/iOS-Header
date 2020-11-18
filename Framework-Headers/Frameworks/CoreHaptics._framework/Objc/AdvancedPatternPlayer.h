@@ -7,37 +7,60 @@
 #import <objc/NSObject.h>
 
 #import <CoreHaptics/CHHapticAdvancedPatternPlayerExtended-Protocol.h>
+#import <CoreHaptics/PatternPlayerDetails-Protocol.h>
 
-@class NSString;
+@class AVHapticSequence, CHHapticEngine, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AdvancedPatternPlayer : NSObject <CHHapticAdvancedPatternPlayerExtended>
+@interface AdvancedPatternPlayer : NSObject <CHHapticAdvancedPatternPlayerExtended, PatternPlayerDetails>
 {
+    CHHapticEngine *_engine;
+    AVHapticSequence *_sequence;
+    double _patternDuration;
+    double _loopEnd;
+    int _state;
+    NSArray *_events;
+    int _muteState;
+    double _seekOffset;
     CDUnknownBlockType _completionHandler;
 }
 
-@property (copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (copy) CDUnknownBlockType completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak) CHHapticEngine *engine; // @synthesize engine=_engine;
 @property (readonly) unsigned long long hash;
 @property BOOL isMuted;
 @property BOOL loopEnabled;
 @property double loopEnd;
+@property (readonly) double patternDuration;
+@property (readonly) BOOL paused;
 @property float playbackRate;
+@property (readonly) BOOL running;
+@property double seekOffset; // @synthesize seekOffset=_seekOffset;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (BOOL)cancelAndReturnError:(id *)arg1;
+- (void)clearExternalResources:(id)arg1;
 - (void)dealloc;
+- (BOOL)doResumeAtTime:(double)arg1 error:(id *)arg2;
+- (void)doSetMute:(BOOL)arg1;
+- (BOOL)doStartFromPausedAtTime:(double)arg1 error:(id *)arg2;
+- (BOOL)doStartFromStoppedAtTime:(double)arg1 error:(id *)arg2;
+- (void)finishInit;
 - (id)init;
 - (id)initWithPattern:(id)arg1 engine:(id)arg2 privileged:(BOOL)arg3 error:(id *)arg4;
 - (id)initWithRingtoneData:(id)arg1 engine:(id)arg2 error:(id *)arg3;
 - (BOOL)pauseAtTime:(double)arg1 error:(id *)arg2;
+- (void)resetState;
 - (BOOL)resumeAtTime:(double)arg1 error:(id *)arg2;
 - (BOOL)scheduleParameterCurve:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (BOOL)seekToOffset:(double)arg1 error:(id *)arg2;
 - (BOOL)sendParameters:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (void)setPaused;
+- (void)setRunning;
 - (BOOL)setVolume:(float)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (BOOL)startAtTime:(double)arg1 error:(id *)arg2;
 - (BOOL)stopAtTime:(double)arg1 error:(id *)arg2;

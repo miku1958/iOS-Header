@@ -18,12 +18,10 @@
         unsigned int isStopRequest:1;
     } _has;
     BOOL _isStopRequest;
-    BOOL __encodeLegacyGloryData;
     NSArray *_devices;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;

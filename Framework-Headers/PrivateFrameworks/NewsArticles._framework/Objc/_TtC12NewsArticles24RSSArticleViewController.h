@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles24RSSArticleViewController : UIViewController
 {
     MISSING_TYPE *identifier;
-    MISSING_TYPE *headline;
+    MISSING_TYPE *article;
     MISSING_TYPE *contentContext;
     MISSING_TYPE *contentViewController;
     MISSING_TYPE *contentBackgroundColor;

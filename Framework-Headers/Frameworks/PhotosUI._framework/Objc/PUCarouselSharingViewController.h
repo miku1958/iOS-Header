@@ -33,6 +33,7 @@
     BOOL _inFlightRotation;
     BOOL _shouldPlayVitalityHintAfterViewDidAppear;
     BOOL _readyForInteraction;
+    BOOL _sendAsOriginals;
     BOOL __viewInSyncWithModel;
     BOOL __loopingPlaybackAllowed;
     PHFetchResult *_photoCollectionsFetchResult;
@@ -86,6 +87,7 @@
 @property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (strong, nonatomic) PUPhotosSharingTransitionContext *photosSharingTransitionContext; // @synthesize photosSharingTransitionContext=_photosSharingTransitionContext;
 @property (nonatomic, getter=isReadyForInteraction) BOOL readyForInteraction; // @synthesize readyForInteraction=_readyForInteraction;
+@property (nonatomic) BOOL sendAsOriginals; // @synthesize sendAsOriginals=_sendAsOriginals;
 @property (readonly, nonatomic) NSObject<OS_os_log> *sharingLog;
 @property (strong, nonatomic) PUPhotosSharingViewControllerSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
@@ -128,16 +130,15 @@
 - (void)_playVitalityHintAfterViewDidAppear;
 - (void)_processCollectionListChangeNotifications:(id)arg1 singleCollectionNotifications:(id)arg2 needsReloadData:(BOOL)arg3;
 - (void)_removeActivityAssetItem:(id)arg1;
-- (void)_replaceActivityAssetItem:(id)arg1 withAssetItem:(id)arg2;
+- (void)_replaceActivityAssetItem:(id)arg1 withAssetItem:(id)arg2 notifyDelegate:(BOOL)arg3;
 - (void)_resetPreheating;
 - (id)_selectionViewAtIndexPath:(id)arg1 forCollectionView:(id)arg2;
 - (void)_setLastKnownReferenceAsset:(id)arg1 indexPath:(id)arg2;
 - (void)_setSelected:(BOOL)arg1 atIndexPath:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)_shouldShowAsset:(id)arg1;
 - (struct CGSize)_sizeForItemAtIndexPath:(id)arg1;
-- (void)_statusBarFrameDidChange:(id)arg1;
-- (void)_statusBarFrameWillChange:(id)arg1;
 - (void)_updateAdditionalContentForAsset:(id)arg1 cell:(id)arg2;
+- (void)_updateAdditionalContentForVisibleCells;
 - (void)_updateAssetTransitionInfo:(id)arg1;
 - (void)_updateCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)_updateCellAtIndexPath:(id)arg1 withTransitionInfo:(id)arg2;
@@ -147,6 +148,7 @@
 - (void)_updateOptionView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updatePhotoForAsset:(id)arg1 cell:(id)arg2 atIndexPath:(id)arg3;
 - (void)_updatePreheatedAssets;
+- (void)_updateVisibleCellBadges;
 - (void)_updateVisibleCells;
 - (id)_updatedActivityAssetItemsForAssets:(id)arg1;
 - (id)_validIndexPathFromIndexPath:(id)arg1;

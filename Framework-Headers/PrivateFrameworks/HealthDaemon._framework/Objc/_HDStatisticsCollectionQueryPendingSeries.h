@@ -8,6 +8,7 @@
 
 @class HKQuantitySample, NSMutableArray, NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface _HDStatisticsCollectionQueryPendingSeries : NSObject
 {
     HKQuantitySample *_series;

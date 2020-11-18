@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long userInterfaceStyle;
 @property (readonly, nonatomic) NSString *userInterfaceType; // @synthesize userInterfaceType=_userInterfaceType;
 @property (nonatomic) BOOL wfIdleTimerDisabled;
 

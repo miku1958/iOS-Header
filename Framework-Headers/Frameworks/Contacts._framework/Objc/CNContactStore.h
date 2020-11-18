@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContainerCache, CNiOSAddressBook, CNiOSAddressBookDataMapper, NSData;
+@class CNContainerCache, CNResult, CNiOSAddressBook, CNiOSAddressBookDataMapper, NSData;
 
 @interface CNContactStore : NSObject
 {
@@ -14,12 +14,11 @@
 }
 
 @property (readonly, nonatomic) CNiOSAddressBook *addressBook;
-@property (strong, nonatomic) CNContainerCache *containerCache; // @synthesize containerCache=_containerCache;
+@property (readonly, copy, nonatomic) CNResult *currentHistoryAnchor;
 @property (readonly, copy, nonatomic) NSData *currentHistoryToken;
 @property (readonly, nonatomic) CNiOSAddressBookDataMapper *iOSMapper;
 
 + (id)_contactStoreForPublicAddressBook:(void *)arg1;
-+ (id)allLabelsForPropertyWithKey:(id)arg1;
 + (long long)authorizationStatusForEntityType:(long long)arg1;
 + (id)contactIdentifierFromInternalIdentifier:(id)arg1;
 + (id)contactStoreForPublicAddressBook:(void *)arg1;
@@ -50,7 +49,6 @@
 - (id)_labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (void *)_publicABPersonFromContact:(id)arg1 publicAddressBook:(const void **)arg2;
 - (int)_publicMultiValueIdentifierFromLabeledValue:(id)arg1;
-- (id)_unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)authorizedKeysForContactKeys:(id)arg1;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
@@ -98,8 +96,6 @@
 - (id)labeledValueFromMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)latestConsumedChangeHistoryAnchorForClientIdentifier:(id)arg1 error:(id *)arg2;
-- (id)legacyTetheredSyncComputerAnchor;
-- (id)legacyTetheredSyncDeviceAnchor;
 - (id)mainContactStore;
 - (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifiers:(id *)arg1;
@@ -124,8 +120,6 @@
 - (BOOL)setBestMeIfNeededForGivenName:(id)arg1 familyName:(id)arg2 email:(id)arg3 error:(id *)arg4;
 - (BOOL)setDefaultAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)setDefaultContainer:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
-- (void)setLegacyTetheredSyncComputerAnchor:(id)arg1;
-- (void)setLegacyTetheredSyncDeviceAnchor:(id)arg1;
 - (BOOL)setMeContact:(id)arg1 error:(id *)arg2;
 - (BOOL)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;

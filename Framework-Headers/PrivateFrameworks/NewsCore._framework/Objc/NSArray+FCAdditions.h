@@ -69,6 +69,8 @@
 - (BOOL)fc_isEqualToArray:(id)arg1;
 - (BOOL)fc_isEqualToArray:(id)arg1 inRange:(struct _NSRange)arg2;
 - (BOOL)fc_isSortedUsingComparator:(CDUnknownBlockType)arg1;
+- (id)fc_objectsOfMaxValueWithValueBlock:(CDUnknownBlockType)arg1 comparator:(CDUnknownBlockType)arg2;
+- (id)fc_objectsOfMinValueWithValueBlock:(CDUnknownBlockType)arg1 comparator:(CDUnknownBlockType)arg2;
 - (id)fc_onlyObject;
 - (id)fc_orderedSetByTransformingWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_randomObject;

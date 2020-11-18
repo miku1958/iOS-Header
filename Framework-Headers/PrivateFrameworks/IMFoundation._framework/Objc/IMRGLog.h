@@ -32,7 +32,6 @@
 + (id)deviceHeartbeat;
 + (id)deviceIDMap;
 + (id)deviceState;
-+ (id)dill;
 + (id)engram;
 + (id)healthDebug;
 + (id)healthDebugging;

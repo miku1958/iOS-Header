@@ -28,25 +28,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_connectionProperties;
 - (void)_invalidate;
 - (void)_setDelegateQueue:(id)arg1;
 - (id)_timingData;
-- (void)_withActiveConnectionAndDelegate:(CDUnknownBlockType)arg1;
-- (void)_withConnectionAndDelegate:(CDUnknownBlockType)arg1;
-- (void)_withConnectionAndDelegate:(CDUnknownBlockType)arg1 onlyActive:(BOOL)arg2;
-- (void)_withConnectionDisconnectFromConnection;
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
-- (id)currentRequest;
 - (void)dealloc;
 - (id)initWithInfo:(const struct InternalInit *)arg1;
 - (void)invokeForDelegate:(CDUnknownBlockType)arg1;
-- (BOOL)isConnectionActive;
-- (id)originalRequest;
 - (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
-- (void)setConnectionActive:(BOOL)arg1;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
 
 @end

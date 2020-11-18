@@ -11,7 +11,7 @@
 @interface HKElectrocardiogram (WDExtensions)
 
 @property (readonly, nonatomic) NSString *wd_commaSeparatedData;
-@property (readonly, nonatomic) NSString *wd_commaSeparatedHeader;
 
+- (id)wd_commaSeparatedHeaderWithActiveAlgorithmVersion:(long long)arg1;
 @end
 

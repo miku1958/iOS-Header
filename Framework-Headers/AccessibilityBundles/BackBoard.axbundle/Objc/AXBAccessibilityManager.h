@@ -27,6 +27,7 @@
 - (struct CGPoint)_accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (BOOL)_accessibilityDisplayRequiresRotateForPoints:(id)arg1;
 - (BOOL)_accessibilityEventTapCallback:(id)arg1;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1;
 - (BOOL)_accessibilityIsInternalInstall;
 - (id)_accessibilityNativeFocusedApplication;
 - (void)_accessibilityRepostEvent:(id)arg1;
@@ -36,11 +37,12 @@
 - (id)_accessibilitySystemAppApplicationPid;
 - (id)_accessibilityUIServerApplication;
 - (struct CGPoint)_accessibilityViewPointFromHostedViewContext:(struct CGPoint)arg1 displayId:(unsigned int)arg2;
+- (id)_axElementForUID:(CDStruct_4bcfbbae)arg1;
 - (id)_commonEventRepForTouchEventWithType:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (id)_deliveryManager;
 - (BOOL)_handleItemChooserVisible:(unsigned int)arg1;
 - (int)_handlePidForSpecialCases:(unsigned int)arg1;
-- (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1 element:(id)arg2;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (BOOL)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (void)_iosAccessibilitySetValue:(id)arg1 forAttribute:(long long)arg2;
@@ -54,6 +56,7 @@
 - (void)_sendPressFingerEvent:(BOOL)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (void)_sendStylusEvent:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 altitude:(double)arg4 azimuth:(double)arg5 flags:(unsigned int)arg6 contextId:(unsigned int)arg7;
 - (void)_setDeviceOrientationCapability:(BOOL)arg1;
+- (BOOL)_showingBootUI;
 - (void)_startPassiveResendThread;
 - (void)_undoContextShiftedPoints:(id)arg1;
 - (void)_userEventOccurred;

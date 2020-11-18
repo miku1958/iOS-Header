@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)_routeAttributes;
 - (void)_setAuditToken:(id)arg1;
 - (void)dealloc;
-- (void)etaUpdater:(id)arg1 receivedETATrafficUpdateResponse:(id)arg2;
+- (void)etaUpdater:(id)arg1 receivedETATrafficUpdateResponse:(id)arg2 etaRoute:(id)arg3;
 - (void)etaUpdater:(id)arg1 receivedError:(id)arg2;
 - (void)etaUpdater:(id)arg1 willSendETATrafficUpdateRequest:(id)arg2;
 - (void)etaUpdaterReceivedInvalidRoute:(id)arg1 newRoute:(id)arg2 incidentsOnRoute:(id)arg3 incidentsOffRoute:(id)arg4;

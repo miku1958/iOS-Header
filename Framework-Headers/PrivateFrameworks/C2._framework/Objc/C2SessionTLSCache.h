@@ -10,6 +10,7 @@
 
 @class C2Session, NSString;
 
+__attribute__((visibility("hidden")))
 @interface C2SessionTLSCache : NSObject <C2SessionDelegate>
 {
     C2Session *_pinnedSession;

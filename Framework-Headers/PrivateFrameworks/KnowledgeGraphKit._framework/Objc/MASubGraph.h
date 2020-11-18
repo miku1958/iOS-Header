@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MAGraph, NSMutableDictionary;
+@class MABaseGraph, NSMutableDictionary;
 
 @interface MASubGraph : NSObject
 {
-    MAGraph *_graph;
+    MABaseGraph *_graph;
     NSMutableDictionary *_nodesByIdentifier;
     NSMutableDictionary *_nodesByLabel;
     NSMutableDictionary *_nodesByName;
@@ -20,7 +20,7 @@
     NSMutableDictionary *_nodesByNameGroupByNodes;
 }
 
-@property (readonly, nonatomic) MAGraph *graph; // @synthesize graph=_graph;
+@property (readonly, nonatomic) MABaseGraph *graph; // @synthesize graph=_graph;
 
 + (id)subGraphIntersectionsWithSubGraphs:(id)arg1;
 + (id)subGraphWithGraph:(id)arg1;

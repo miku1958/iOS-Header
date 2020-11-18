@@ -24,11 +24,11 @@
 
 - (void).cxx_destruct;
 - (void)addBCCRecipient:(id)arg1;
-- (void)addBCCRecipientWithAddress:(id)arg1 comment:(id)arg2;
+- (void)addBCCRecipientWithAddress:(id)arg1 displayName:(id)arg2;
 - (void)addCCRecipient:(id)arg1;
-- (void)addCCRecipientWithAddress:(id)arg1 comment:(id)arg2;
+- (void)addCCRecipientWithAddress:(id)arg1 displayName:(id)arg2;
 - (void)addToRecipient:(id)arg1;
-- (void)addToRecipientWithAddress:(id)arg1 comment:(id)arg2;
+- (void)addToRecipientWithAddress:(id)arg1 displayName:(id)arg2;
 - (id)init;
 
 @end

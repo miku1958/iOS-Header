@@ -4,15 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BCSBusinessItem, NSArray, NSString;
+@class BCSBusinessItem, NSArray, NSString, NSURL;
 
 @protocol BCSXPCDaemonProtocol
 - (void)_deleteInMemoryCache;
+- (void)clearCachesForLinkItemsAssociatedWithBundleID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)clearCachesForType:(long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)clearExpiredCachesForType:(long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)fetchBusinessItemWithBizID:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessItem *, NSError *))arg3;
 - (void)fetchBusinessItemWithDetailsForPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessItem *, BOOL, BOOL, NSError *))arg3;
 - (void)fetchBusinessItemWithPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessItem *, NSError *))arg3;
 - (void)fetchIsBusinessPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)fetchLinkItemModelWithHash:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSLinkItemModel *, NSError *))arg3;
+- (void)fetchLinkItemModelWithURL:(NSURL *)arg1 chopURL:(BOOL)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(BCSLinkItemModel *, NSError *))arg4;
 - (void)fetchSquareIconDataForBusinessItem:(BCSBusinessItem *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
+- (void)isBusinessRegisteredForURL:(NSURL *)arg1 chopURL:(BOOL)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)prefetchBloomFilterAndConfigsWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)prefetchConfigsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)warmCacheIfNecessaryForPhoneNumbers:(NSArray *)arg1 forClientBundleID:(NSString *)arg2;
 @end
 

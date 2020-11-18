@@ -26,7 +26,7 @@
 
 @property (readonly, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
+@property (copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSUUID *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property (readonly, nonatomic, getter=hasLoaded) BOOL hasLoaded;
@@ -53,7 +53,6 @@
 - (void)_selectFaceUUID:(id)arg1 notify:(BOOL)arg2;
 - (void)_setContentWithFaces:(id)arg1 order:(id)arg2 selection:(id)arg3;
 - (void)_setSelectedUUID:(id)arg1 notify:(BOOL)arg2 suppressingCallbackToObserver:(id)arg3;
-- (void)_systemAppStateDidChange;
 - (void)_throwIfNotLoaded:(SEL)arg1;
 - (void)_updateLogIdentifier;
 - (void)_updateOrderedUUIDsFromReference:(id)arg1 andNotifyReordered:(BOOL)arg2;
@@ -62,11 +61,11 @@
 - (void)addObserver:(id)arg1;
 - (void)appendFace:(id)arg1 suppressingCallbackToObserver:(id)arg2;
 - (BOOL)containsFace:(id)arg1;
-- (void)dealloc;
 - (void)enumerateFaceNamesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFacesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFacesWithIndexesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)faceAtIndex:(unsigned long long)arg1;
+- (id)faceForUUID:(id)arg1;
 - (id)facesByUUID;
 - (unsigned long long)indexOfFace:(id)arg1;
 - (id)initWithCollectionIdentifier:(id)arg1 deviceUUID:(id)arg2;
@@ -83,6 +82,7 @@
 - (id)selectedUUID;
 - (void)setSelectedFace:(id)arg1 suppressingCallbackToObserver:(id)arg2;
 - (void)setSelectedFaceIndex:(unsigned long long)arg1 suppressingCallbackToObserver:(id)arg2;
+- (id)uuidForFace:(id)arg1;
 
 @end
 

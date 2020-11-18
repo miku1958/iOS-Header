@@ -22,8 +22,11 @@
 
 + (double)containerSupportForPoints:(const vector_2e7754b6 *)arg1 withBounds:(struct CGRect)arg2;
 + (id)nonTextCandidateForStroke:(id)arg1 withSubstrokes:(id)arg2;
+- (long long)_tileIndexForYPosition:(double)arg1 tileHeight:(long long)arg2;
+- (BOOL)changeableClassificationByRefinement:(long long)arg1 stroke:(id)arg2;
 - (void)dealloc;
 - (id)initWithStrokeProvider:(id)arg1 strokeClassificationLastResult:(id)arg2 textOnly:(BOOL)arg3;
+- (id)refineStrokeClassificationResultUsingClassificationResult:(id)arg1 strokeClassificationModel:(id)arg2 sortedAddedStrokes:(id)arg3 removedStrokeIdentifiers:(id)arg4 cancellationBlock:(CDUnknownBlockType)arg5;
 - (id)updatedStrokeClassificationResultByAddingStrokes:(id)arg1 removingStrokeIdentifiers:(id)arg2 clutterFilter:(id)arg3 affectedClutterStrokeIDs:(id)arg4 cancellationBlock:(CDUnknownBlockType)arg5;
 
 @end

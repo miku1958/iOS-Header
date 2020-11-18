@@ -13,12 +13,11 @@
     NSArray *_faces;
 }
 
-@property (strong, nonatomic) NSArray *faces; // @synthesize faces=_faces;
+@property (copy, nonatomic) NSArray *faces; // @synthesize faces=_faces;
 
 - (void).cxx_destruct;
 - (id)faceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexOfFace:(id)arg1;
-- (id)initWithTitle:(id)arg1 faces:(id)arg2;
 - (unsigned long long)numberOfFaces;
 
 @end

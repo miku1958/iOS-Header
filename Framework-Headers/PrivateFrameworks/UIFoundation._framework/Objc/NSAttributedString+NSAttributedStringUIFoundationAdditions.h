@@ -28,6 +28,7 @@
 - (struct _NSRange)_rangeOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2 completeRow:(BOOL *)arg3;
 - (id)_ui_attributedSubstringFromRange:(struct _NSRange)arg1 scaledByScaleFactor:(double)arg2;
 - (id)_ui_attributedSubstringFromRange:(struct _NSRange)arg1 withTrackingAdjustment:(double)arg2;
+- (void)_ui_scaleAttributes:(id)arg1 withFont:(id)arg2 byScaleFactor:(double)arg3;
 - (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2;
 - (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2 context:(id)arg3;
 - (BOOL)containsAttachments;

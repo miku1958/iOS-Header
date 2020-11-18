@@ -16,19 +16,12 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property (nonatomic) int assertionToken; // @synthesize assertionToken=_assertionToken;
 @property (readonly, nonatomic) BOOL hasActiveAssertion;
-@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)addObserver:(id)arg1;
-- (void)notifyObserversWithTokenValue:(int)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)startObservingToken;
-- (void)stopObservingToken;
 
 @end
 

@@ -6,16 +6,16 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFUnfairLock, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface HMFClassRegistry : HMFObject
 {
-    HMFUnfairLock *_lock;
+    struct hmf_unfair_data_lock_s _lock;
     NSMutableDictionary *_classes;
     Class _defaultClass;
 }
 
-@property (readonly) Class defaultClass; // @synthesize defaultClass=_defaultClass;
+@property (readonly, nonatomic) Class defaultClass; // @synthesize defaultClass=_defaultClass;
 
 - (void).cxx_destruct;
 - (Class)classForKey:(id)arg1;

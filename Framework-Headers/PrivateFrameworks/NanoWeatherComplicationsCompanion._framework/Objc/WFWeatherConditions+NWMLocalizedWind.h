@@ -15,9 +15,6 @@
 @property (readonly, nonatomic) unsigned long long nwc_ultravioletIndexCategory;
 @property (readonly, nonatomic) UIColor *nwc_ultravioletIndexCategoryColor;
 @property (readonly, nonatomic) NSString *nwc_ultravioletIndexRiskDescription;
-@property (readonly, nonatomic) NSString *nwm_localizedDescription;
-@property (readonly, nonatomic) NSString *nwm_localizedDescriptionKey;
-@property (readonly, nonatomic) NSString *nwm_localizedDescriptionShort;
 @property (readonly, nonatomic) NSString *nwm_localizedUltravioletIndexRiskDescription;
 @property (readonly, nonatomic) NSString *nwm_localizedWindDirection;
 @property (readonly, nonatomic) NSString *nwm_localizedWindDirectionAbbreviation;
@@ -37,6 +34,7 @@
 + (id)nwm_localizedDescriptionForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedDescriptionKeyForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedDescriptionShortForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
++ (id)nwm_localizedDescriptionShortKeyForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedNoData;
 + (id)nwm_localizedNoDataRounded;
 + (id)nwm_localizedWindpeedUnit;
@@ -45,10 +43,14 @@
 - (unsigned long long)_nwc_code;
 - (double)_speedByConverting:(double)arg1 toUnit:(int)arg2;
 - (unsigned long long)nw_timeOfDay;
-- (id)nwc_conditionImageForComplicationFamily:(long long)arg1;
-- (id)nwc_conditionImageProviderForComplicationFamily:(long long)arg1;
-- (id)nwc_daytimeConditionImageForComplicationFamily:(long long)arg1;
-- (id)nwc_nighttimeConditionImageForComplicationFamily:(long long)arg1;
+- (id)nwc_conditionImageForTimeOfDay:(unsigned long long)arg1 andFamily:(long long)arg2;
+- (id)nwc_conditionImageProviderForTimeOfDay:(unsigned long long)arg1 andFamily:(long long)arg2;
+- (id)nwm_localizedDescription;
+- (id)nwm_localizedDescriptionForTimeOfDay:(unsigned long long)arg1;
+- (id)nwm_localizedDescriptionKey;
+- (id)nwm_localizedDescriptionKeyForTimeOfDay:(unsigned long long)arg1;
+- (id)nwm_localizedDescriptionShort;
+- (id)nwm_localizedDescriptionShortForTimeOfDay:(unsigned long long)arg1;
 - (id)nwm_windDirectionKey;
 @end
 

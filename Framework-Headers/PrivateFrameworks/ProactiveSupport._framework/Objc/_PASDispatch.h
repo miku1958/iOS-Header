@@ -13,6 +13,7 @@
 + (id)autoreleasingSerialQueueWithLabel:(const char *)arg1;
 + (id)autoreleasingSerialQueueWithLabel:(const char *)arg1 qosClass:(unsigned int)arg2;
 + (unsigned long long)dispatchTimeWithSecondsFromNow:(double)arg1;
++ (void)notifyGroup:(id)arg1 onQueue:(id)arg2 withTimeout:(double)arg3 block:(CDUnknownBlockType)arg4;
 + (void)runAsyncOnQueue:(id)arg1 afterDelaySeconds:(double)arg2 block:(CDUnknownBlockType)arg3;
 + (void)runSyncOnMainThreadWithBlock:(CDUnknownBlockType)arg1;
 + (void)waitForBlock:(CDUnknownBlockType)arg1;

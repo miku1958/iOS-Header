@@ -27,8 +27,6 @@
 
 + (id)_stretchableImageNamed:(id)arg1 withCapInsets:(struct UIEdgeInsets)arg2;
 + (id)createSnappingControllerWithSnappingTarget:(double)arg1;
-+ (id)playheadImage;
-+ (id)playheadImageMini;
 + (id)trimEndHighlightedImage;
 + (id)trimEndHighlightedImageMini;
 + (id)trimEndImage;

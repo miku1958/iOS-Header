@@ -6,20 +6,20 @@
 
 #import <SpotlightUI/SPUISpotlightRemoteViewController.h>
 
-@class SPUISpotlightSearchBarView;
+@class NSLayoutConstraint, _UINavigationBarTitleView;
 @protocol SPUISearchBarDelegate;
 
 @interface SPUISearchBarController : SPUISpotlightRemoteViewController
 {
     BOOL _roundedCornerVisible;
     id<SPUISearchBarDelegate> _delegate;
-    double _heightOfBar;
+    NSLayoutConstraint *_heightAnchor;
 }
 
 @property (weak, nonatomic) id<SPUISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
-@property double heightOfBar; // @synthesize heightOfBar=_heightOfBar;
+@property (strong) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (nonatomic) BOOL roundedCornerVisible; // @synthesize roundedCornerVisible=_roundedCornerVisible;
-@property (strong) SPUISpotlightSearchBarView *view; // @dynamic view;
+@property (strong) _UINavigationBarTitleView *view; // @dynamic view;
 
 + (id)notificationCenterSearchBar;
 + (id)todayViewSearchBar;

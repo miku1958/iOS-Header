@@ -43,18 +43,7 @@
         unsigned int read_etaResults:1;
         unsigned int read_etaServiceSummary:1;
         unsigned int read_originPlaceSearchResponse:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_problemDetails:1;
-        unsigned int wrote_clientMetrics:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_debugData:1;
-        unsigned int wrote_debugServerLatencyMs:1;
-        unsigned int wrote_etaResultReferencePointDestinations:1;
-        unsigned int wrote_etaResultReferencePointOrigin:1;
-        unsigned int wrote_etaResults:1;
-        unsigned int wrote_etaServiceSummary:1;
-        unsigned int wrote_originPlaceSearchResponse:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -85,18 +74,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
-- (void)_addNoFlagsEtaResult:(id)arg1;
-- (void)_addNoFlagsEtaResultReferencePointDestination:(id)arg1;
-- (void)_addNoFlagsProblemDetail:(struct GEOProblemDetail)arg1;
-- (void)_readClientMetrics;
-- (void)_readDatasetAbStatus;
-- (void)_readDebugData;
-- (void)_readEtaResultReferencePointDestinations;
-- (void)_readEtaResultReferencePointOrigin;
-- (void)_readEtaResults;
-- (void)_readEtaServiceSummary;
-- (void)_readOriginPlaceSearchResponse;
-- (void)_readProblemDetails;
 - (void)addEtaResult:(id)arg1;
 - (void)addEtaResultReferencePointDestination:(id)arg1;
 - (void)addProblemDetail:(struct GEOProblemDetail)arg1;
@@ -117,7 +94,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOProblemDetail)problemDetailAtIndex:(unsigned long long)arg1;
 - (void)readAll:(BOOL)arg1;

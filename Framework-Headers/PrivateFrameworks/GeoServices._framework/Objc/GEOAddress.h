@@ -26,10 +26,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_formattedAddressLines:1;
         unsigned int read_structuredAddress:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_formattedAddressLines:1;
-        unsigned int wrote_structuredAddress:1;
-        unsigned int wrote_formattedAddressType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,10 +46,7 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFormattedAddressType:(id)arg1;
-- (void)_addNoFlagsFormattedAddressLine:(id)arg1;
 - (BOOL)_isEquivalentURLRepresentationTo:(id)arg1;
-- (void)_readFormattedAddressLines;
-- (void)_readStructuredAddress;
 - (void)addFormattedAddressLine:(id)arg1;
 - (id)addressDictionary;
 - (id)bestName;
@@ -67,9 +61,12 @@
 - (id)init;
 - (id)initWithAddressDictionary:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithPostalAddress:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)postalAddress;
 - (void)readAll:(BOOL)arg1;

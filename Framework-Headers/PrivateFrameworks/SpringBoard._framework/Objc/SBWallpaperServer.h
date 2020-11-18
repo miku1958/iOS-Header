@@ -20,14 +20,21 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (BOOL)_clientPermittedToModifyWallpaper:(id)arg1;
+- (long long)_deviceOrientationFromXPCDictionary:(id)arg1;
+- (void)_handleFetchContentCutoutBoundsMessage:(id)arg1 fromClient:(id)arg2;
+- (void)_handleFetchOriginalImageMessage:(id)arg1 fromClient:(id)arg2;
+- (void)_handleFetchOriginalVideoURLMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleFetchThumbnailMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleRestoreDefaultWallpaperMessage:(id)arg1 fromClient:(id)arg2;
+- (void)_handleSetColorMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSetColorNameMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSetGradientMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSetVideoMessageWithWallpaperMode:(id)arg1 fromClient:(id)arg2;
 - (id)_init;
 - (long long)_wallpaperModeFromXPCDictionary:(id)arg1;
 - (long long)_wallpaperVariantFromXPCDictionary:(id)arg1;
+- (BOOL)_xpcObjectIsDictionary:(id)arg1;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 
 @end

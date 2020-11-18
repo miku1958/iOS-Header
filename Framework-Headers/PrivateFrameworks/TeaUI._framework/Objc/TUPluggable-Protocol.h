@@ -10,6 +10,8 @@
 
 @property (nonatomic) BOOL isBeingUsedAsPlugin;
 @property (nonatomic, strong) id<TUPluggableDelegate> pluggableDelegate;
+@property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) long long pluginVisibleItemCount;
 
 - (void)initializeWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)relayoutWithCompletion:(void (^)(struct CGSize))arg1;

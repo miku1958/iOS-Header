@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXSearchRecipientControllerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CNContactPickerViewController, NSArray, NSLayoutConstraint, NSString, PXComposeRecipientView, PXRecipientSearchDataSourceManager, PXSearchRecipientController, UIBarButtonItem;
+@class CNContactPickerViewController, NSArray, NSLayoutConstraint, NSString, PXComposeRecipientView, PXRecipientSearchDataSourceManager, PXSearchRecipientController, UIBarButtonItem, UILabel;
 @protocol PXPhotoRecipientViewControllerDelegate;
 
 @interface PXPhotoRecipientViewController : UIViewController <PXSearchRecipientControllerDelegate, PXComposeRecipientViewDelegate, UIPopoverPresentationControllerDelegate, CNContactPickerDelegate>
@@ -26,6 +26,7 @@
     PXSearchRecipientController *_searchRecipientController;
     PXRecipientSearchDataSourceManager *_searchDataSourceManager;
     PXComposeRecipientView *_composeRecipientView;
+    UILabel *_noContentLabel;
     NSArray *_layoutConstraints;
 }
 
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NSString *initialLocalizedNameToQuery; // @synthesize initialLocalizedNameToQuery=_initialLocalizedNameToQuery;
 @property (strong, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
 @property (nonatomic) long long maxRecipients; // @synthesize maxRecipients=_maxRecipients;
+@property (strong, nonatomic) UILabel *noContentLabel; // @synthesize noContentLabel=_noContentLabel;
 @property (readonly, nonatomic) PXRecipientSearchDataSourceManager *searchDataSourceManager; // @synthesize searchDataSourceManager=_searchDataSourceManager;
 @property (strong, nonatomic) PXSearchRecipientController *searchRecipientController; // @synthesize searchRecipientController=_searchRecipientController;
 @property (readonly) Class superclass;
@@ -46,15 +48,19 @@
 - (void).cxx_destruct;
 - (void)_commonInitialization;
 - (void)_contactPicker:(id)arg1 didSelectContact:(id)arg2;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_dismissContactPickerViewController;
 - (void)_handleCancelButton:(id)arg1;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_presentContactPickerViewController:(id)arg1;
 - (void)_updateAddButton;
+- (void)_updateNoContentLabelFont;
+- (void)_updateNoContentLabelVisibility;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didRemoveRecipient:(id)arg2;
+- (void)composeRecipientView:(id)arg1 disambiguateRecipient:(id)arg2;
 - (void)composeRecipientView:(id)arg1 textDidChange:(id)arg2;
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
@@ -66,7 +72,10 @@
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)searchRecipientController:(id)arg1 didSelectRecipient:(id)arg2;
+- (void)searchRecipientController:(id)arg1 numberOfSearchRecipientsDidChange:(unsigned long long)arg2;
+- (void)searchRecipientController:(id)arg1 searchStateDidChange:(long long)arg2;
 - (void)updateViewConstraints;
+- (id)viewControllerForPresentingContactViewControllerBySearchRecipientController:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

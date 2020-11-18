@@ -27,15 +27,11 @@
 @property (copy, nonatomic) NSString *meIdentifier; // @dynamic meIdentifier;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (nonatomic) unsigned long long restrictions; // @dynamic restrictions;
+@property (copy, nonatomic) CNContainer *snapshot; // @dynamic snapshot;
 @property (nonatomic) long long type; // @dynamic type;
 
-- (void)adoptValuesFromAndSetSnapshot:(id)arg1;
 - (id)copy;
-- (id)freeze;
-- (id)freezeWithSelfAsSnapshot;
 - (void)setGuardianRestricted:(BOOL)arg1 shouldPushChangeToServer:(BOOL)arg2;
-- (void)setParentallyManaged:(BOOL)arg1;
-- (void)setSnapshot:(id)arg1;
 
 @end
 

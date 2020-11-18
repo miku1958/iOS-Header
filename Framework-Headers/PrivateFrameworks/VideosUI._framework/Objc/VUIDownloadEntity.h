@@ -9,7 +9,7 @@
 #import <VideosUI/NSCopying-Protocol.h>
 #import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSMutableArray, NSNumber, NSString;
 @protocol VUIDownloadEntityDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     id<VUIDownloadEntityDelegate> _delegate;
     long long _downloadType;
+    NSObject<VUIMediaEntityIdentifier> *_identifier;
     NSObject<VUIMediaEntityIdentifier> *_showIdentifier;
     NSArray *_mediaEntities;
     NSString *_title;
@@ -25,8 +26,10 @@ __attribute__((visibility("hidden")))
     NSNumber *_episodeNumber;
     NSNumber *_numberOfMediaItems;
     NSNumber *_numberOfMediaItemsDownloading;
+    NSMutableArray *_assetControllers;
 }
 
+@property (strong, nonatomic) NSMutableArray *assetControllers; // @synthesize assetControllers=_assetControllers;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIDownloadEntityDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NSNumber *episodeNumber; // @synthesize episodeNumber=_episodeNumber;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<VUIMediaEntityIdentifier> *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSArray *mediaEntities; // @synthesize mediaEntities=_mediaEntities;
 @property (strong, nonatomic) NSNumber *numberOfMediaItems; // @synthesize numberOfMediaItems=_numberOfMediaItems;
 @property (strong, nonatomic) NSNumber *numberOfMediaItemsDownloading; // @synthesize numberOfMediaItemsDownloading=_numberOfMediaItemsDownloading;
@@ -47,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMediaEntities:(id)arg1 withDownloadType:(long long)arg2;
 - (id)initWithMediaEntity:(id)arg1 withDownloadType:(long long)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
 
 @end

@@ -8,6 +8,7 @@
 
 @class NSString, UIActivityIndicatorView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegLoadingView : UIView
 {
     UILabel *_label;

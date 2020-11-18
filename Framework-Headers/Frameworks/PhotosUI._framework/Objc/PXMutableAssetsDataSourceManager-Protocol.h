@@ -6,19 +6,29 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSIndexSet;
+@class NSArray, NSIndexSet, NSPredicate, NSSet, PXIndexPathSet;
 @protocol PXDisplayAssetCollection;
 
 @protocol PXMutableAssetsDataSourceManager <NSObject>
 
 @property (nonatomic) long long backgroundFetchOriginSection;
+@property (strong, nonatomic) NSPredicate *filterPredicate;
 
+- (void)ensureLastSectionHasContent;
+- (void)ensureStartingSectionHasContent;
+- (void)excludeAssetsAtIndexPaths:(PXIndexPathSet *)arg1;
 - (BOOL)forceAccurateAllSectionsIfNeeded;
 - (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (BOOL)forceAccurateSectionsIfNeeded:(NSIndexSet *)arg1;
+- (void)forceIncludeAssetsAtIndexPaths:(PXIndexPathSet *)arg1;
 - (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (void)refreshResultsForAssetCollection:(id<PXDisplayAssetCollection>)arg1;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
 - (void)setCurationEnabled:(BOOL)arg1 forAssetCollection:(id<PXDisplayAssetCollection>)arg2;
+- (void)setFilterPredicate:(NSPredicate *)arg1 provideIncrementalChangeDetailsForAssetCollections:(NSSet *)arg2;
+- (void)setFilteringDisabled:(BOOL)arg1 forAssetCollection:(id<PXDisplayAssetCollection>)arg2;
 - (void)startBackgroundFetchIfNeeded;
+- (void)stopExcludingAssets:(NSArray *)arg1;
+- (void)stopForceIncludingAllAssets;
 @end
 

@@ -10,8 +10,8 @@
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/_MKStackViewDelegate-Protocol.h>
 
-@class MKMaskContentView, MKPlaceSectionRowView, NSArray, NSLayoutConstraint, NSString, NSURL, UIImageView, UILayoutGuide, UIView, _MKDataHeaderModel, _MKLocalizedHoursBuilder, _MKTokenAttributedString, _MKUILabel;
-@protocol GEOTransitLineItem, MKPlaceCardHeaderViewControllerDelegate, _MKPlaceItem;
+@class MKPlaceSectionRowView, MKUGCCallToActionView, MKUGCCallToActionViewAppearance, NSArray, NSLayoutConstraint, NSString, NSURL, UIImageView, UILayoutGuide, UIView, _MKDataHeaderModel, _MKLocalizedHoursBuilder, _MKTokenAttributedString, _MKUILabel;
+@protocol GEOTransitLineItem, MKPlaceCardHeaderViewControllerDelegate, MKUGCCallToActionViewDelegate, _MKPlaceItem;
 
 @interface MKPlaceCardHeaderViewController : MKPlaceSectionViewController <_MKStackViewDelegate, MKModuleViewControllerProtocol, MKETAProviderObserver>
 {
@@ -23,7 +23,6 @@
     _MKUILabel *_firstLabel;
     _MKUILabel *_secondLabel;
     _MKUILabel *_secondaryNameLabel;
-    MKMaskContentView *_contentMaskView;
     _MKUILabel *_thirdLabel;
     UIView *_thirdDisplayedLabel;
     NSArray *_constraints;
@@ -41,27 +40,37 @@
     _MKTokenAttributedString *_venueToken;
     _MKTokenAttributedString *_verifiedToken;
     NSLayoutConstraint *_titleTrailingConstraint;
+    MKUGCCallToActionView *_callToActionView;
     NSLayoutConstraint *_secondLabelToFirstLabelConstraint;
+    NSLayoutConstraint *_lastLabelToBottomConstraint;
     double _secondLabelToFirstLabelConstraintConstantMax;
     double _secondLabelToFirstLabelConstraintConstantMin;
     BOOL _isUserLocation;
     BOOL _optionSmallScreen;
     BOOL _constraintsCreated;
     BOOL _notVerified;
+    double _lastMaskAlphaValueApplied;
     id<_MKPlaceItem> _placeItem;
     id<GEOTransitLineItem> _lineItem;
+    double _contentAlpha;
     id<MKPlaceCardHeaderViewControllerDelegate> _delegate;
+    MKUGCCallToActionViewAppearance *_callToActionAppearance;
+    id<MKUGCCallToActionViewDelegate> _callToActionDelegate;
     _MKLocalizedHoursBuilder *_localizedHoursBuilder;
 }
 
-@property (nonatomic) double contentAlpha;
+@property (strong, nonatomic) MKUGCCallToActionViewAppearance *callToActionAppearance; // @synthesize callToActionAppearance=_callToActionAppearance;
+@property (weak, nonatomic) id<MKUGCCallToActionViewDelegate> callToActionDelegate; // @synthesize callToActionDelegate=_callToActionDelegate;
+@property (nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKPlaceCardHeaderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double lastLabelToBottomConstant;
 @property (readonly, nonatomic) id<GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
 @property (strong, nonatomic) _MKLocalizedHoursBuilder *localizedHoursBuilder; // @synthesize localizedHoursBuilder=_localizedHoursBuilder;
 @property (readonly, nonatomic) id<_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
+@property (readonly, nonatomic) BOOL shouldShowCallToActionWithRatingHeaderInfo;
 @property (readonly) Class superclass;
 
 + (double)minimalModeHeight;
@@ -80,7 +89,9 @@
 - (id)_openStateString;
 - (id)_reviewLabelText;
 - (id)_secondaryNameTitle;
+- (void)_setAlpha:(double)arg1 toView:(id)arg2 ifIntersects:(struct CGRect)arg3;
 - (void)_setupDatas;
+- (void)_upateContentAlpha;
 - (id)_verifiedText;
 - (void)animateSecondLabelWithPercentage:(double)arg1;
 - (void)hideTitle:(BOOL)arg1;
@@ -98,7 +109,6 @@
 - (void)updateViews;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

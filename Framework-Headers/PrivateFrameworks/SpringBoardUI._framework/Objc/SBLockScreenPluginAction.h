@@ -28,7 +28,6 @@
 - (BOOL)isApplicationAction;
 - (BOOL)isCallAction;
 - (BOOL)isEmergencyDialerAction;
-- (BOOL)isInCallAction;
 - (void)sendResponseWithSuccess:(BOOL)arg1;
 
 @end

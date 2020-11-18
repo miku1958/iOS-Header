@@ -20,6 +20,7 @@
     BOOL _previouslyHadMarkedText;
     BOOL _wantsUndoCommands;
     BOOL _wantsUpdateTrackingForInitialLoading;
+    BOOL _shouldInhibitAddingExtraNewlinesAtEndDuringFixup;
     BOOL _convertAttributes;
     BOOL _shouldConvertTablesToTabs;
     BOOL _retainOriginalFormatting;
@@ -77,6 +78,7 @@
 @property (nonatomic) BOOL filterSubstringAttributesForPlainText; // @synthesize filterSubstringAttributesForPlainText=_filterSubstringAttributesForPlainText;
 @property (readonly, nonatomic) BOOL hasAnyTextViewWithDarkAppearance;
 @property (nonatomic) BOOL hasEditedCharactersAfterTextSelection; // @synthesize hasEditedCharactersAfterTextSelection=_hasEditedCharactersAfterTextSelection;
+@property (readonly, nonatomic) BOOL hasMultipleTextViews;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isApplyingUndoCommand; // @synthesize isApplyingUndoCommand=_isApplyingUndoCommand;
 @property (nonatomic) BOOL isChangingSelectionByGestures; // @synthesize isChangingSelectionByGestures=_isChangingSelectionByGestures;
@@ -99,6 +101,7 @@
 @property (nonatomic) BOOL pendingFixupAfterEditing; // @synthesize pendingFixupAfterEditing=_pendingFixupAfterEditing;
 @property (nonatomic) BOOL retainOriginalFormatting; // @synthesize retainOriginalFormatting=_retainOriginalFormatting;
 @property (nonatomic) BOOL shouldConvertTablesToTabs; // @synthesize shouldConvertTablesToTabs=_shouldConvertTablesToTabs;
+@property (nonatomic) BOOL shouldInhibitAddingExtraNewlinesAtEndDuringFixup; // @synthesize shouldInhibitAddingExtraNewlinesAtEndDuringFixup=_shouldInhibitAddingExtraNewlinesAtEndDuringFixup;
 @property (nonatomic) BOOL shouldRemoveLeadingWhitespaceForChecklistDrop; // @synthesize shouldRemoveLeadingWhitespaceForChecklistDrop=_shouldRemoveLeadingWhitespaceForChecklistDrop;
 @property (strong, nonatomic) id<TTTextStorageStyler> styler; // @synthesize styler=_styler;
 @property (readonly) Class superclass;
@@ -112,16 +115,15 @@
 @property (nonatomic) BOOL wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 @property (nonatomic) BOOL wantsUpdateTrackingForInitialLoading; // @synthesize wantsUpdateTrackingForInitialLoading=_wantsUpdateTrackingForInitialLoading;
 
-+ (id)bulletTextAttributesWithTextFont:(id)arg1 paragraphStyle:(id)arg2 letterpress:(BOOL)arg3 withStyler:(id)arg4;
++ (id)bulletTextAttributesWithTextFont:(id)arg1 paragraphStyle:(id)arg2 zoomFactor:(double)arg3;
 + (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 forStandardizedText:(BOOL)arg4 fixAttachments:(BOOL)arg5 insertListMarkers:(BOOL)arg6;
 + (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(BOOL)arg2 forStandardizedText:(BOOL)arg3;
-+ (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 withStyler:(id)arg2;
++ (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 zoomFactor:(double)arg2;
 + (id)removeDataDetectorLinksForAttributedString:(id)arg1;
 + (id)removeTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(BOOL)arg2;
 + (id)standardizedAttributedStringFromAttributedString:(id)arg1 withStyler:(id)arg2 fixAttachments:(BOOL)arg3 translateTTFont:(BOOL)arg4;
 - (void).cxx_destruct;
 - (BOOL)_shouldSetOriginalFontAttribute;
-- (BOOL)_usesSimpleTextEffects;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)addUndoCommand:(id)arg1;
 - (void)applyUndoGroup:(id)arg1;

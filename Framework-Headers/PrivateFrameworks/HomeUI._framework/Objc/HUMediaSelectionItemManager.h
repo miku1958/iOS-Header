@@ -63,7 +63,6 @@
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
-- (id)_defaultCurrentVolume;
 - (id)_itemsToHideInSet:(id)arg1;
 - (id)_volumeForMediaAction;
 - (id)initWithDelegate:(id)arg1 mediaPlaybackActionBuilder:(id)arg2;

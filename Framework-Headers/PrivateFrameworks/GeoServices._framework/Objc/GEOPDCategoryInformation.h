@@ -27,11 +27,7 @@
         unsigned int read_mapsCategoryId:1;
         unsigned int read_mapsCategoryStyleAttributes:1;
         unsigned int read_walletCategoryId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_localizedMapsCategoryName:1;
-        unsigned int wrote_mapsCategoryId:1;
-        unsigned int wrote_mapsCategoryStyleAttributes:1;
-        unsigned int wrote_walletCategoryId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,10 +43,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readLocalizedMapsCategoryName;
-- (void)_readMapsCategoryId;
-- (void)_readMapsCategoryStyleAttributes;
-- (void)_readWalletCategoryId;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

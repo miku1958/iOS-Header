@@ -9,7 +9,7 @@
 #import <GeoServices/GEOServerFormattedString-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOConditionalFormattedString, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOConditionalFormattedString, GEOFormattedStringMetaData, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 @protocol GEOServerConditionalString;
 
 @interface GEOFormattedString : PBCodable <GEOServerFormattedString, NSCopying>
@@ -20,6 +20,7 @@
     NSMutableArray *_formatArguments;
     NSMutableArray *_formatStrings;
     NSMutableArray *_formatStyles;
+    GEOFormattedStringMetaData *_metaData;
     NSMutableArray *_separators;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -30,13 +31,9 @@
         unsigned int read_formatArguments:1;
         unsigned int read_formatStrings:1;
         unsigned int read_formatStyles:1;
+        unsigned int read_metaData:1;
         unsigned int read_separators:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_alternativeString:1;
-        unsigned int wrote_formatArguments:1;
-        unsigned int wrote_formatStrings:1;
-        unsigned int wrote_formatStyles:1;
-        unsigned int wrote_separators:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -51,7 +48,9 @@
 @property (strong, nonatomic) NSMutableArray *formatStyles;
 @property (readonly, nonatomic) NSArray *formatTokens;
 @property (readonly, nonatomic) BOOL hasAlternativeString;
+@property (readonly, nonatomic) BOOL hasMetaData;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) GEOFormattedStringMetaData *metaData;
 @property (readonly, nonatomic) NSArray *separators;
 @property (strong, nonatomic) NSMutableArray *separators;
 @property (readonly) Class superclass;
@@ -63,15 +62,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)separatorType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsFormatArgument:(id)arg1;
-- (void)_addNoFlagsFormatString:(id)arg1;
-- (void)_addNoFlagsFormatStyle:(id)arg1;
-- (void)_addNoFlagsSeparator:(id)arg1;
-- (void)_readAlternativeString;
-- (void)_readFormatArguments;
-- (void)_readFormatStrings;
-- (void)_readFormatStyles;
-- (void)_readSeparators;
 - (void)addFormatArgument:(id)arg1;
 - (void)addFormatString:(id)arg1;
 - (void)addFormatStyle:(id)arg1;
@@ -92,8 +82,11 @@
 - (unsigned long long)formatStylesCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 - (double)_localBusinessItemFactoryScoreForMomentNode:(id)arg1;
+- (BOOL)_shouldAddNewBusinessItemQuestionForAssetUUID:(id)arg1;
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (long long)questionOptions;
 - (unsigned short)questionType;

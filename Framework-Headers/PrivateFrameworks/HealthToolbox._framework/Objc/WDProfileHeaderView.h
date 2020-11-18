@@ -8,7 +8,6 @@
 
 @class NSPersonNameComponentsFormatter, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface WDProfileHeaderView : UIView
 {
     UIView *_avatarView;

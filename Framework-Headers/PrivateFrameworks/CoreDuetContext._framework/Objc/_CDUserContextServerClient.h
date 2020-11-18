@@ -36,7 +36,9 @@
 @property (strong, nonatomic) _CDInMemoryUserContext *userContext; // @synthesize userContext=_userContext;
 @property (strong, nonatomic) NSMutableSet *wakingRegistrations; // @synthesize wakingRegistrations=_wakingRegistrations;
 
++ (id)clientInterface;
 + (id)clientOfService:(id)arg1 withConnection:(id)arg2 andContext:(id)arg3;
++ (id)serverInterface;
 - (void).cxx_destruct;
 - (void)_hasKnowledgeOfPath:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_propertiesOfPath:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -74,6 +76,7 @@
 - (id)remoteUserContextProxySourceDeviceUUIDByDeviceID;
 - (id)remoteUserContextProxySourceDeviceUUIDForKeyPath:(id)arg1;
 - (void)removeObjects:(id)arg1 fromArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)setObject:(id)arg1 forPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)setObject:(id)arg1 lastModifiedDate:(id)arg2 forContextualKeyPath:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)subscribeToContextValueNotificationsWithRegistration:(id)arg1 deviceIDs:(id)arg2;

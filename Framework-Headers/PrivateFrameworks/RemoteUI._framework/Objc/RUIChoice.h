@@ -21,6 +21,8 @@
 
 - (void).cxx_destruct;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
+- (void)startActivityIndicator;
+- (void)stopActivityIndicator;
 - (unsigned long long)typeForChoiceString:(id)arg1;
 
 @end

@@ -19,6 +19,7 @@
     BOOL _enabled;
     BOOL _onDemandEnabled;
     BOOL _disconnectOnDemandEnabled;
+    BOOL _onDemandUserOverrideDisabled;
     NSArray *_onDemandRules;
     NEVPNProtocol *_protocol;
     long long _tunnelType;
@@ -30,6 +31,7 @@
 @property (copy) NSArray *exceptionApps; // @synthesize exceptionApps=_exceptionApps;
 @property (getter=isOnDemandEnabled) BOOL onDemandEnabled; // @synthesize onDemandEnabled=_onDemandEnabled;
 @property (copy) NSArray *onDemandRules; // @synthesize onDemandRules=_onDemandRules;
+@property (nonatomic, getter=isOnDemandUserOverrideDisabled) BOOL onDemandUserOverrideDisabled; // @synthesize onDemandUserOverrideDisabled=_onDemandUserOverrideDisabled;
 @property (copy) NEVPNProtocol *protocol; // @synthesize protocol=_protocol;
 @property long long tunnelType; // @synthesize tunnelType=_tunnelType;
 

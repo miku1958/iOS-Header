@@ -31,6 +31,7 @@
 - (struct CGPoint)labelPointForPosition:(unsigned int)arg1 rect:(struct CGRect)arg2 stringSize:(struct CGSize)arg3;
 - (struct CGPoint)labelPointForPosition:(unsigned int)arg1 rect:(struct CGRect)arg2 stringSize:(struct CGSize)arg3 offset:(double)arg4;
 - (unsigned long long)p_countOfReferenceLineLabelsForReferenceLine:(id)arg1 forRefLineLabelsLayout:(id)arg2 substringRange:(struct _NSRange *)arg3 outNewTransforms:(struct CGAffineTransform **)arg4 outNewElementSizes:(struct CGSize **)arg5 outNewClipRects:(struct CGRect **)arg6 outNewParagraphStyles:(id *)arg7 outNewStrings:(id *)arg8 outNewLabelTypes:(unsigned long long **)arg9 includeOutsideChartBodyBounds:(BOOL)arg10 outOutsideChartBodyBounds:(BOOL **)arg11;
+- (void)p_insertRectValue:(id)arg1 intoArray:(id)arg2 isVertical:(BOOL)arg3 showAll:(BOOL)arg4;
 - (struct CGRect)p_strideTestingRectFromRect:(struct CGRect)arg1 withOffset:(double)arg2 isVertical:(BOOL)arg3;
 - (BOOL)p_testIntersectionOfRect:(struct CGRect)arg1 againstSortedRects:(id)arg2 withInset:(double)arg3 isVertical:(BOOL)arg4;
 - (struct CGAffineTransform)p_transformForRenderingTrendlineTextNotR2:(BOOL)arg1 forSeries:(id)arg2 forAreaLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outParagraphStyle:(id *)arg6 outString:(const struct __CFAttributedString **)arg7;

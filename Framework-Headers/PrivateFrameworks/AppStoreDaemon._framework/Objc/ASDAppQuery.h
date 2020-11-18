@@ -9,7 +9,7 @@
 #import <AppStoreDaemon/ASDNotificationCenterNotificationObserver-Protocol.h>
 #import <AppStoreDaemon/ASDNotificationCenterProgressObserver-Protocol.h>
 
-@class ASDNotificationCenter, ASDServiceBroker, NRDevice, NSMutableDictionary, NSPredicate, NSString;
+@class ASDAppQueryExecutor, ASDNotificationCenter, ASDServiceBroker, NRDevice, NSMutableDictionary, NSPredicate, NSString;
 @protocol ASDAppQueryResultsObserver, OS_dispatch_queue;
 
 @interface ASDAppQuery : NSObject <ASDNotificationCenterNotificationObserver, ASDNotificationCenterProgressObserver>
@@ -19,6 +19,7 @@
     ASDNotificationCenter *_notificationCenter;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     id<ASDAppQueryResultsObserver> _observer;
+    ASDAppQueryExecutor *_queryExecutor;
     NSMutableDictionary *_resultCache;
     ASDServiceBroker *_serviceBroker;
     NRDevice *_device;
@@ -32,10 +33,12 @@
 @property (readonly) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly) Class superclass;
 
-+ (void)_executeQueryWithPredicate:(id)arg1 onPairedDevice:(id)arg2 usingServiceBroker:(id)arg3 withResultHandler:(CDUnknownBlockType)arg4;
++ (id)_defaultExecutor;
 + (id)_newProgressForApp:(id)arg1 fromRemoteProgress:(id)arg2 usingServiceBroker:(id)arg3;
 + (void)anyWithPredicate:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (id)queryDefaultPairedWatchForBetaApps;
++ (id)queryForAlmondApps;
++ (id)queryForAppClipWithStoreItemID:(long long)arg1;
 + (id)queryForBeagleApps;
 + (id)queryForBetaApps;
 + (id)queryForBetaAppsOnPairedDevice:(id)arg1;
@@ -47,10 +50,12 @@
 + (id)queryWithPredicate:(id)arg1;
 + (id)queryWithPredicate:(id)arg1 onPairedDevice:(id)arg2;
 - (void).cxx_destruct;
+- (void)_debugReceivedApps:(id)arg1;
 - (void)_handleAppsRemovedWithBundleIDs:(id)arg1;
 - (void)_handleAppsReplacedWithResults:(id)arg1;
 - (void)_handleAppsUpdatedWithResults:(id)arg1;
 - (void)_handleBrokerConnectionNotification:(id)arg1;
+- (void)_handleNotificationErrorWithUserInfo:(id)arg1;
 - (void)_handleNotificationRefreshWithUserInfo:(id)arg1;
 - (void)_handleNotificationRegisteredWithUserInfo:(id)arg1;
 - (void)_handleNotificationUnregisteredWithUserInfo:(id)arg1;
@@ -64,8 +69,8 @@
 - (id)init;
 - (id)initWithPredicate:(id)arg1;
 - (id)initWithPredicate:(id)arg1 onPairedDevice:(id)arg2;
-- (id)initWithPredicate:(id)arg1 onPairedDevice:(id)arg2 serviceBroker:(id)arg3 notificationCenter:(id)arg4;
-- (id)initWithPredicate:(id)arg1 serviceBroker:(id)arg2 notificationCenter:(id)arg3;
+- (id)initWithPredicate:(id)arg1 queryExecutor:(id)arg2 onPairedDevice:(id)arg3 serviceBroker:(id)arg4 notificationCenter:(id)arg5;
+- (id)initWithPredicate:(id)arg1 queryExecutor:(id)arg2 serviceBroker:(id)arg3 notificationCenter:(id)arg4;
 - (void)notificationCenter:(id)arg1 receivedNotifications:(id)arg2;
 - (void)notificationCenter:(id)arg1 receivedProgress:(id)arg2;
 

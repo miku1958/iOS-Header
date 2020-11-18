@@ -8,10 +8,11 @@
 
 #import <GeoServices/GEOCompanionCompatibility-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
+#import <GeoServices/_GEOEnrouteNoticesProvider-Protocol.h>
 
 @class GEOAlert, GEOClientMetrics, GEOETAServiceResponseSummary, GEOPBTransitRoutingIncidentMessage, GEOPDDatasetABStatus, GEORouteDisplayHints, GEOSnapScoreMetadata, GEOStyleAttributes, GEOTransitDecoderData, GEOTransitRouteUpdateConfiguration, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-@interface GEODirectionsResponse : PBCodable <GEOCompanionCompatibility, NSCopying>
+@interface GEODirectionsResponse : PBCodable <GEOCompanionCompatibility, _GEOEnrouteNoticesProvider, NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -47,6 +48,7 @@
     NSString *_transitDataVersion;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
     GEOTransitRouteUpdateConfiguration *_transitRouteUpdateConfiguration;
+    NSMutableArray *_waypointRoutes;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -99,46 +101,8 @@
         unsigned int read_transitDataVersion:1;
         unsigned int read_transitIncidentMessage:1;
         unsigned int read_transitRouteUpdateConfiguration:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_problemDetails:1;
-        unsigned int wrote_supportedTransportTypes:1;
-        unsigned int wrote_timepointUsed:1;
-        unsigned int wrote_arrivalParameters:1;
-        unsigned int wrote_clientMetrics:1;
-        unsigned int wrote_dataVersion:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_debugData:1;
-        unsigned int wrote_debugLatencyMs:1;
-        unsigned int wrote_decoderData:1;
-        unsigned int wrote_directionsResponseID:1;
-        unsigned int wrote_displayHints:1;
-        unsigned int wrote_etaServiceSummary:1;
-        unsigned int wrote_failureAlert:1;
-        unsigned int wrote_incidentsOffRoutes:1;
-        unsigned int wrote_incidentsOnRoutes:1;
-        unsigned int wrote_nonRecommendedRoutesCache:1;
-        unsigned int wrote_placeSearchResponses:1;
-        unsigned int wrote_routes:1;
-        unsigned int wrote_serviceGaps:1;
-        unsigned int wrote_serviceVersion:1;
-        unsigned int wrote_sessionState:1;
-        unsigned int wrote_snapScoreMetadataDebug:1;
-        unsigned int wrote_styleAttributes:1;
-        unsigned int wrote_suggestedRoutes:1;
-        unsigned int wrote_trafficCameras:1;
-        unsigned int wrote_trafficSignals:1;
-        unsigned int wrote_transitDataVersion:1;
-        unsigned int wrote_transitIncidentMessage:1;
-        unsigned int wrote_transitRouteUpdateConfiguration:1;
-        unsigned int wrote_instructionSignFillColor:1;
-        unsigned int wrote_liveRouteSavingsSeconds:1;
-        unsigned int wrote_localDistanceUnits:1;
-        unsigned int wrote_selectedRouteIndex:1;
-        unsigned int wrote_status:1;
-        unsigned int wrote_hasKhSegments:1;
-        unsigned int wrote_isNavigable:1;
-        unsigned int wrote_isOfflineResponse:1;
-        unsigned int wrote_routeDeviatesFromOriginal:1;
+        unsigned int read_waypointRoutes:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -148,8 +112,10 @@
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property (strong, nonatomic) NSString *debugData;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugLatencyMs;
 @property (strong, nonatomic) GEOTransitDecoderData *decoderData;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSData *directionsResponseID;
 @property (strong, nonatomic) GEORouteDisplayHints *displayHints;
@@ -184,6 +150,7 @@
 @property (readonly, nonatomic) BOOL hasTransitIncidentMessage;
 @property (readonly, nonatomic) BOOL hasTransitRouteUpdateConfiguration;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *incidentsOffRoutes;
 @property (strong, nonatomic) NSMutableArray *incidentsOnRoutes;
 @property (nonatomic) int instructionSignFillColor;
@@ -206,6 +173,7 @@
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (strong, nonatomic) NSMutableArray *suggestedRoutes;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) int *supportedTransportTypes;
 @property (readonly, nonatomic) unsigned long long supportedTransportTypesCount;
 @property (nonatomic) struct GEOTimepoint timepointUsed;
@@ -215,6 +183,7 @@
 @property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage;
 @property (strong, nonatomic) GEOTransitRouteUpdateConfiguration *transitRouteUpdateConfiguration;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) NSMutableArray *waypointRoutes;
 
 + (Class)arrivalParametersType;
 + (Class)incidentsOffRoutesType;
@@ -226,51 +195,14 @@
 + (Class)suggestedRouteType;
 + (Class)trafficCameraType;
 + (Class)trafficSignalType;
++ (Class)waypointRouteType;
 - (void).cxx_destruct;
 - (int)StringAsInstructionSignFillColor:(id)arg1;
 - (int)StringAsLocalDistanceUnits:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsSupportedTransportTypes:(id)arg1;
-- (void)_addNoFlagsArrivalParameters:(id)arg1;
-- (void)_addNoFlagsIncidentsOffRoutes:(id)arg1;
-- (void)_addNoFlagsIncidentsOnRoutes:(id)arg1;
-- (void)_addNoFlagsPlaceSearchResponse:(id)arg1;
-- (void)_addNoFlagsProblemDetail:(struct GEOProblemDetail)arg1;
-- (void)_addNoFlagsRoute:(id)arg1;
-- (void)_addNoFlagsServiceGap:(id)arg1;
-- (void)_addNoFlagsSuggestedRoute:(id)arg1;
-- (void)_addNoFlagsSupportedTransportType:(int)arg1;
-- (void)_addNoFlagsTrafficCamera:(id)arg1;
-- (void)_addNoFlagsTrafficSignal:(id)arg1;
-- (id)_destinationMapItem;
-- (void)_readArrivalParameters;
-- (void)_readClientMetrics;
-- (void)_readDataVersion;
-- (void)_readDatasetAbStatus;
-- (void)_readDebugData;
-- (void)_readDecoderData;
-- (void)_readDirectionsResponseID;
-- (void)_readDisplayHints;
-- (void)_readEtaServiceSummary;
-- (void)_readFailureAlert;
-- (void)_readIncidentsOffRoutes;
-- (void)_readIncidentsOnRoutes;
-- (void)_readNonRecommendedRoutesCache;
-- (void)_readPlaceSearchResponses;
-- (void)_readProblemDetails;
-- (void)_readRoutes;
-- (void)_readServiceGaps;
-- (void)_readServiceVersion;
-- (void)_readSessionState;
-- (void)_readSnapScoreMetadataDebug;
-- (void)_readStyleAttributes;
-- (void)_readSuggestedRoutes;
-- (void)_readSupportedTransportTypes;
-- (void)_readTrafficCameras;
-- (void)_readTrafficSignals;
-- (void)_readTransitDataVersion;
-- (void)_readTransitIncidentMessage;
-- (void)_readTransitRouteUpdateConfiguration;
+- (id)_geoTrafficCameras;
+- (id)_geoTrafficSignals;
 - (void)addArrivalParameters:(id)arg1;
 - (void)addIncidentsOffRoutes:(id)arg1;
 - (void)addIncidentsOnRoutes:(id)arg1;
@@ -282,6 +214,7 @@
 - (void)addSupportedTransportType:(int)arg1;
 - (void)addTrafficCamera:(id)arg1;
 - (void)addTrafficSignal:(id)arg1;
+- (void)addWaypointRoute:(id)arg1;
 - (id)arrivalParametersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)arrivalParametersCount;
 - (void)clearArrivalParameters;
@@ -298,6 +231,7 @@
 - (void)clearTrafficCameras;
 - (void)clearTrafficSignals;
 - (void)clearUnknownFields:(BOOL)arg1;
+- (void)clearWaypointRoutes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -308,10 +242,12 @@
 - (unsigned long long)incidentsOnRoutesCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
-- (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
 - (id)instructionSignFillColorAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)localDistanceUnitsAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeSearchResponseAtIndex:(unsigned long long)arg1;
@@ -334,6 +270,8 @@
 - (unsigned long long)trafficCamerasCount;
 - (id)trafficSignalAtIndex:(unsigned long long)arg1;
 - (unsigned long long)trafficSignalsCount;
+- (id)waypointRouteAtIndex:(unsigned long long)arg1;
+- (unsigned long long)waypointRoutesCount;
 - (void)writeTo:(id)arg1;
 
 @end

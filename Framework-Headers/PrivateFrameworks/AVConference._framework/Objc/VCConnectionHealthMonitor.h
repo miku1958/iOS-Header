@@ -11,18 +11,22 @@
 __attribute__((visibility("hidden")))
 @interface VCConnectionHealthMonitor : NSObject
 {
-    struct _opaque_pthread_rwlock_t _stateRWLock;
     unsigned char _lastReportedIndex;
-    struct ConnectionStats _currentReceivingStats;
     struct ConnectionStatsHistory _statsHistory;
     struct _opaque_pthread_rwlock_t _peerStateRWLock;
     struct ConnectionStatsHistory _peerStatsHistory;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    struct _opaque_pthread_rwlock_t _stateRWLock;
+    struct ConnectionStats _currentReceivingStats;
+    struct ConnectionStats _tempReceivingStats;
     BOOL _firstPacketReceived;
+    double _primaryConnHealthAllowedDelay;
+    struct ConnectionStatsSequenceNumberData _secondaryConnReceivedSequenceNumberStats[1024];
 }
 
 @property id<VCConnectionHealthMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property double primaryConnHealthAllowedDelay; // @synthesize primaryConnHealthAllowedDelay=_primaryConnHealthAllowedDelay;
 
 - (void)dealloc;
 - (unsigned int)generateStatsBlob;
@@ -31,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isHistoryValid:(char *)arg1;
 - (BOOL)isPrimaryConnectionImprovedFromHistory:(struct ConnectionStatsHistory *)arg1 withIndex:(int)arg2;
 - (void)processPeerStatsBlob:(unsigned int)arg1;
-- (void)receiveNewPacket:(BOOL)arg1;
 - (void)reportConnectionHealthWithStatsHistory:(struct ConnectionStatsHistory *)arg1 index:(int)arg2 isPeerStats:(BOOL)arg3;
 - (void)resetConnectionStats:(BOOL)arg1;
 - (void)resetHistory:(struct ConnectionStatsHistory *)arg1;

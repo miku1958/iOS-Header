@@ -12,7 +12,6 @@
 
 - (void)_enumerateBestPotentialMemoriesInLifeTimePotentialMemories:(id)arg1 andYearPotentialMemories:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 - (void)_potentialPetMemoryForPet:(id)arg1 results:(CDUnknownBlockType)arg2;
@@ -20,6 +19,9 @@
 - (BOOL)canFallbackToDejunkAndDedupeForShowMore;
 - (id)confidenceThresholdByBlacklistedSceneIdentifier;
 - (id)confidenceThresholdByWhitelistedSceneIdentifier;
+- (unsigned long long)durationForCuration;
+- (unsigned long long)durationForExtendedCuration;
+- (BOOL)semanticalDedupingEnabledForExtendedCuration;
 
 @end
 

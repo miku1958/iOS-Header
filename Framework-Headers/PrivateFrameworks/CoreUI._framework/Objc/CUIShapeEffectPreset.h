@@ -15,11 +15,15 @@
 }
 
 @property float minimumShadowSpread; // @synthesize minimumShadowSpread=_minimumShadowSpread;
-@property (nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 
++ (id)caFilterFromCUIEffectBlendMode:(unsigned int)arg1;
 + (int)cgBlendModeFromCUIEffectBlendMode:(unsigned int)arg1;
++ (void)configureVibrantColorMatrixFilter:(id)arg1 withOptions:(struct _CUIVibrantColorMatrixOptions)arg2;
 + (unsigned int)cuiEffectBlendModeFromCGBlendMode:(int)arg1;
++ (struct _CUIVibrantColorMatrixOptions)monochromeVibrantColorMatrixOptions;
 + (id)requiredEffectParametersForEffectType:(unsigned int)arg1;
++ (struct _CUIVibrantColorMatrixOptions)standardVibrantColorMatrixOptionsForColor:(struct CGColor *)arg1;
++ (struct _CUIVibrantColorMatrixOptions)vibrantColorMatrixOptionsWithColor:(struct CGColor *)arg1 saturation:(double)arg2 brightness:(double)arg3;
 - (id)CUIEffectDataRepresentation;
 - (void)_insertEffectTuple:(CDStruct_c57d91d4)arg1 atEffectIndex:(unsigned long long)arg2;
 - (unsigned long long)_parameterCount;

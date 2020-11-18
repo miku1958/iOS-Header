@@ -27,28 +27,31 @@
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)acceptShareInvitation:(id)arg1 qualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreStatusForContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)copyDataFromZoneName:(id)arg1 toZoneName:(id)arg2 inContainerName:(id)arg3 passUniqueID:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)declineInvitationForRecipientHandle:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)deleteZone:(id)arg1 containerName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAndStoreRecordsForTransactionSourceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generateRandomTransactionForTransactionSourceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)itemOfItemTypeFromAllZones:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)noteAccountDeleted;
 - (void)noteCloudSyncPassesSwitchChanged;
 - (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)recreateZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeRecordWithRecordName:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
-- (void)resetContainerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resetContainerWithIdentifier:(id)arg1 zoneNames:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendShareInvitationForRecipientHandle:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setupCloudDatabaseForContainerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shareForZoneName:(id)arg1 containerName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 includeServerData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)uploadTransaction:(id)arg1 forPassWithUniqueIdentifier:(id)arg2 includeServerData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)uploadTransaction:(id)arg1 forTransactionSourceIdentifier:(id)arg2 includeServerData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

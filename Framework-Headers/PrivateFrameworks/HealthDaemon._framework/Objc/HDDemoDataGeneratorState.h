@@ -15,6 +15,9 @@
     BOOL _createdFromNSKeyedUnarchiver;
     BOOL _finished;
     BOOL _firstRun;
+    BOOL _coreTraining;
+    BOOL _dancing;
+    BOOL _functionalStrengthTraining;
     NSDate *_firstSampleDate;
     NSDate *_lastSampleDate;
     NSDate *_lastRunDate;
@@ -26,10 +29,13 @@
 }
 
 @property (readonly, nonatomic) long long calendarDay;
+@property (readonly, nonatomic, getter=isCoolingDown) BOOL coolingDown;
+@property (readonly, nonatomic, getter=isCoreTraining) BOOL coreTraining; // @synthesize coreTraining=_coreTraining;
 @property (readonly, nonatomic) NSDate *currentDate;
 @property (nonatomic) long long currentDay; // @synthesize currentDay=_currentDay;
 @property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (readonly, nonatomic, getter=isCycling) BOOL cycling;
+@property (readonly, nonatomic, getter=isDancing) BOOL dancing; // @synthesize dancing=_dancing;
 @property (readonly, nonatomic, getter=isDoingElliptical) BOOL doingElliptical;
 @property (readonly, nonatomic, getter=isDoingHIIT) BOOL doingHIIT;
 @property (readonly, nonatomic, getter=isDoingYoga) BOOL doingYoga;
@@ -38,6 +44,7 @@
 @property (nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (nonatomic, getter=isFirstRun) BOOL firstRun; // @synthesize firstRun=_firstRun;
 @property (strong, nonatomic) NSDate *firstSampleDate; // @synthesize firstSampleDate=_firstSampleDate;
+@property (readonly, nonatomic, getter=isFunctionalStrengthTraining) BOOL functionalStrengthTraining; // @synthesize functionalStrengthTraining=_functionalStrengthTraining;
 @property (readonly, nonatomic, getter=isHiking) BOOL hiking;
 @property (strong, nonatomic) NSDate *lastRunDate; // @synthesize lastRunDate=_lastRunDate;
 @property (strong, nonatomic) NSDate *lastSampleDate; // @synthesize lastSampleDate=_lastSampleDate;
@@ -53,6 +60,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isDoingCardioDance;
+- (BOOL)isDoingCoreTraining;
+- (BOOL)isDoingFunctionalStrengthTraining;
 
 @end
 

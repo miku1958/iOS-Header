@@ -61,8 +61,9 @@
 @property (strong, nonatomic) PUSearchResultsFooterView *tableFooterView; // @synthesize tableFooterView=_tableFooterView;
 @property (strong, nonatomic) PXSearchResultsViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
++ (id)_albumViewControllerWithAlbumUUID:(id)arg1;
 + (id)_gridViewControllerSpec;
-+ (id)_newSearchResultsControllerWithSpec:(id)arg1 searchResults:(id)arg2 orAlbum:(id)arg3 title:(id)arg4 headerViewTitle:(id)arg5;
++ (id)_searchResultsControllerWithSearchResults:(id)arg1 title:(id)arg2 headerViewTitle:(id)arg3;
 + (id)preQuerySearchResultsLog;
 - (void).cxx_destruct;
 - (id)_activeSearch;
@@ -118,6 +119,7 @@
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)ppt_expandAllSections;
+- (id)ppt_scrollView;
 - (void)prepareDataSource;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;

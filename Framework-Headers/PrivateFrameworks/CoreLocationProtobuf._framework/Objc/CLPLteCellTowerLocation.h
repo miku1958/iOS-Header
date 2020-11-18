@@ -18,6 +18,7 @@
     int _bandInfo;
     int _bandwidth;
     int _ci;
+    unsigned int _deploymentType;
     int _ecn0;
     CLPLocation *_location;
     int _mcc;
@@ -38,6 +39,7 @@
         unsigned int cellLongitude:1;
         unsigned int bandInfo:1;
         unsigned int bandwidth:1;
+        unsigned int deploymentType:1;
         unsigned int ecn0:1;
         unsigned int pid:1;
         unsigned int rscp:1;
@@ -54,12 +56,14 @@
 @property (nonatomic) double cellLatitude; // @synthesize cellLatitude=_cellLatitude;
 @property (nonatomic) double cellLongitude; // @synthesize cellLongitude=_cellLongitude;
 @property (nonatomic) int ci; // @synthesize ci=_ci;
+@property (nonatomic) unsigned int deploymentType; // @synthesize deploymentType=_deploymentType;
 @property (nonatomic) int ecn0; // @synthesize ecn0=_ecn0;
 @property (readonly, nonatomic) BOOL hasAppBundleId;
 @property (nonatomic) BOOL hasBandInfo;
 @property (nonatomic) BOOL hasBandwidth;
 @property (nonatomic) BOOL hasCellLatitude;
 @property (nonatomic) BOOL hasCellLongitude;
+@property (nonatomic) BOOL hasDeploymentType;
 @property (nonatomic) BOOL hasEcn0;
 @property (nonatomic) BOOL hasIsLimitedService;
 @property (readonly, nonatomic) BOOL hasNeighborGroup;

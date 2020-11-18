@@ -18,6 +18,7 @@
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)assetVersionWithError:(id *)arg1;
 - (id)init;
+- (id)readableTrialTreatmentsMappingWithError:(id *)arg1;
 - (id)variantNameWithError:(id *)arg1;
 
 @end

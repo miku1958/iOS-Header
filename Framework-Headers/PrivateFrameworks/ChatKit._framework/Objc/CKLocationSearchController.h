@@ -25,15 +25,17 @@
 + (id)sectionIdentifier;
 + (id)sectionTitle;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_additionalMenuActionsForResult:(id)arg1;
 - (id)_mapItemForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
+- (id)additionalMenuElementsForResult:(id)arg1;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
 - (id)chatGUIDForSearchableItem:(id)arg1;
 - (id)detailsFilterQueriesForChatGUIDs:(id)arg1;
 - (id)fetchAttributes;
 - (id)filterQueries;
+- (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
+- (BOOL)handleSelectionForResult:(id)arg1;
 - (double)interGroupSpacing;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;

@@ -6,10 +6,12 @@
 
 #import <TSDrawables/TSDAbstractLayout.h>
 
-@class NSArray, NSMutableSet, NSObject, NSSet, TSDInfoGeometry, TSDLayoutGeometry, TSDStroke, TSUBezierPath;
+#import <TSDrawables/TSDWrappableParent-Protocol.h>
+
+@class NSArray, NSHashTable, NSMutableSet, NSObject, NSSet, TSDInfoGeometry, TSDLayoutGeometry, TSDStroke, TSUBezierPath;
 @protocol TSDInfo;
 
-@interface TSDLayout : TSDAbstractLayout
+@interface TSDLayout : TSDAbstractLayout <TSDWrappableParent>
 {
     NSObject<TSDInfo> *mInfo;
     int mLayoutState;
@@ -17,19 +19,25 @@
     struct CGRect mDirtyRect;
     BOOL mInvalidatingSize;
     struct {
+        unsigned int genericInvalidated:1;
+        unsigned int sizeInvalidated:1;
+    } mAlreadyInvalidatedFlags;
+    NSHashTable *mDependentLayoutsForLastInvalidate;
+    NSHashTable *mDependentLayoutsForLastInvalidateSize;
+    NSHashTable *mBidirectionalSizeDependentLayoutsForLastInvalidateSize;
+    struct {
         unsigned int position:1;
         unsigned int size:1;
     } mInvalidFlags;
     TSDLayoutGeometry *mBaseGeometry;
     struct CGRect mInitialBoundsForStandardKnobs;
     struct CGPoint mCapturedInfoGeometryPositionForAttached;
-    struct CGPoint mCapturedAlignmentFrameOriginForAttached;
     NSMutableSet *mConnectedLayouts;
     struct CGSize mMaximumInlineFrameSize;
 }
 
-@property (readonly, nonatomic) NSSet *additionalGuides;
 @property (readonly, nonatomic) NSArray *additionalLayoutsForRepCreation;
+@property (readonly, nonatomic) struct CGRect alignmentFrameForCaptionEdgeInsetsCalculation;
 @property (readonly, nonatomic) NSArray *bidirectionalSizeDependentLayouts;
 @property (readonly, nonatomic) struct CGRect boundsForStandardKnobs;
 @property (readonly, nonatomic) BOOL canAspectRatioLockBeChangedByUser;
@@ -45,6 +53,11 @@
 @property (copy, nonatomic) TSDLayoutGeometry *dynamicGeometry;
 @property (readonly, nonatomic) NSObject *dynamicOverride;
 @property (readonly, nonatomic) TSDInfoGeometry *finalInfoGeometryForResize;
+@property (readonly, nonatomic) struct CGRect frameForCaptionPositioning;
+@property (readonly, nonatomic) struct CGRect frameForPartitioning;
+@property (readonly, nonatomic) BOOL i_anyAncestorCurrentlyBeingRotatedWantsNormalLayoutDuringDynamicRotation;
+@property (readonly, nonatomic) TSUBezierPath *i_wrapPath;
+@property (readonly, nonatomic) TSUBezierPath *i_wrapPathIncludingTitleAndCaption;
 @property (readonly, nonatomic) NSObject<TSDInfo> *info; // @synthesize info=mInfo;
 @property (readonly, nonatomic) struct CGRect initialBoundsForStandardKnobs;
 @property (readonly, nonatomic) TSDInfoGeometry *initialInfoGeometry;
@@ -53,6 +66,7 @@
 @property (readonly, nonatomic) BOOL invalidGeometry;
 @property (readonly, nonatomic) BOOL isBeingManipulated;
 @property (readonly, nonatomic) BOOL isBeingTransformed;
+@property (readonly, nonatomic) BOOL isDynamicallyChangingAvailableSpaceForContainedChild;
 @property (readonly, nonatomic) BOOL isInGroup;
 @property (readonly, nonatomic) BOOL isInTopLevelContainerForEditing;
 @property (readonly, nonatomic) BOOL isStrokeBeingManipulated;
@@ -75,11 +89,12 @@
 @property (readonly, nonatomic) BOOL resizeMayChangeAspectRatio;
 @property (readonly, nonatomic, getter=isSelectable) BOOL selectable;
 @property (readonly, nonatomic) BOOL shouldBeDisplayedInShowMode;
-@property (readonly, nonatomic) BOOL shouldDisplayGuides;
 @property (readonly, nonatomic) BOOL shouldProvideGuidesDuringExclusiveAlignmentOperation;
-@property (readonly, nonatomic) BOOL shouldProvideSizingGuides;
+@property (readonly, nonatomic) BOOL shouldShowCaption;
 @property (readonly, nonatomic) BOOL shouldValidate;
 @property (readonly, nonatomic) TSDStroke *stroke;
+@property (readonly, nonatomic) BOOL supportsParentFlipping;
+@property (readonly, nonatomic) BOOL wantsNormalLayoutDuringDynamicRotation;
 
 - (struct CGPoint)activityLineUnscaledEndPointForSearchReference:(id)arg1;
 - (void)addConnectedLayout:(id)arg1;
@@ -87,6 +102,7 @@
 - (struct CGPoint)alignmentFrameOriginForFixingInterimPosition;
 - (BOOL)allowIntersectionOfChildLayout:(id)arg1;
 - (BOOL)allowsConnections;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (void)beginDrag;
 - (void)beginDynamicOperation;
 - (void)beginResize;
@@ -94,8 +110,11 @@
 - (void)calculateAndSetPointsToSearchReference:(id)arg1;
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
+- (struct UIEdgeInsets)captionEdgeInsets;
 - (struct CGPoint)capturedInfoPositionForAttachment;
+- (id)childInfosForChildLayouts;
 - (BOOL)childLayoutIsCurrentlyHiddenWhileManipulating:(id)arg1;
+- (id)childrenForPencilAnnotations;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
@@ -106,6 +125,8 @@
 - (struct CGRect)convertNaturalRectFromUnscaledCanvas:(struct CGRect)arg1;
 - (struct CGRect)convertNaturalRectToUnscaledCanvas:(struct CGRect)arg1;
 - (void)dealloc;
+- (id)descendentWrappables;
+- (BOOL)descendentWrappablesContainsWrappable:(id)arg1;
 - (void)dragBy:(struct CGPoint)arg1;
 - (void)dragByUnscaled:(struct CGPoint)arg1;
 - (void)dynamicOverrideDidChange;
@@ -116,13 +137,19 @@
 - (void)endDynamicOperation;
 - (void)endResize;
 - (void)endRotate;
+- (struct CGRect)frameForCulling;
+- (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
+- (id)i_captionAndTitleLayouts;
+- (void)i_clearInvalidationCache;
+- (void)i_didValidateLayout;
+- (void)i_recursivelyClearInvalidationCache;
 - (struct CGRect)i_takeDirtyRect;
 - (void)i_willValidateLayout;
-- (id)i_wrapPath;
 - (id)initWithInfo:(id)arg1;
 - (void)invalidate;
 - (void)invalidateChildren;
 - (void)invalidateExteriorWrap;
+- (void)invalidateForChangedPrintingSettings;
 - (void)invalidateFrame;
 - (void)invalidateInlineAndDepedentsForInlineFrameResize;
 - (void)invalidatePosition;
@@ -137,11 +164,15 @@
 - (BOOL)orderedBefore:(id)arg1;
 - (struct CGAffineTransform)p_additionalTransformForInlineRoot;
 - (void)p_calculateClampModelValuesWithAdditionalTransform:(struct CGAffineTransform)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
+- (struct CGRect)p_frameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (void)p_invalidateConnectedLayouts;
+- (void)p_invalidateDescendentWrapPaths;
+- (void)p_invalidateDescendentWrapPathsInRoot;
 - (struct CGSize)p_newMaxInlineFrameSize;
 - (void)p_recursiveInvalidate;
 - (void)p_registerWithLayoutController:(id)arg1;
 - (void)p_unregisterWithLayoutController:(id)arg1;
+- (void)p_updateDescendentWrapPathsWithTransform:(struct CGAffineTransform)arg1;
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
 - (void)pauseDynamicTransformation;
@@ -159,10 +190,12 @@
 - (id)rootLayout;
 - (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (BOOL)selectionMustBeEntirelyOnscreenToCountAsVisibleInSelectionPath:(id)arg1;
+- (void)setGeometry:(id)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setParent:(id)arg1;
 - (BOOL)shouldInvalidateSizeWhenInvalidateSizeOfReliedOnLayout:(id)arg1;
+- (BOOL)shouldUseCaptionEdgeInsetsInInterimPosition;
 - (void)takeRotationFromTracker:(id)arg1;
 - (void)takeSizeFromTracker:(id)arg1;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
